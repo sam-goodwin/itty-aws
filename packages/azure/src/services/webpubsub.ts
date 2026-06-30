@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17,10 +18,43 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.SignalRService/operations",
     apiVersion: "2024-03-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          fillGapWithZero?: string;
+          category?: string;
+          dimensions?: {
+            name?: string;
+            displayName?: string;
+            internalName?: string;
+            toBeExportedForShoebox?: boolean;
+          }[];
+        }[];
+        logSpecifications?: { name?: string; displayName?: string }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -81,8 +115,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -95,6 +128,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface UsagesListInput {
+  location: string;
+  subscriptionId: string;
+}
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -104,10 +141,19 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/usages",
     apiVersion: "2024-03-01",
   }),
-);
-export type UsagesListInput = typeof UsagesListInput.Type;
+) as unknown as Schema.Codec<UsagesListInput>;
 
 // Output Schema
+export interface UsagesListOutput {
+  value?: {
+    id?: string;
+    currentValue?: number;
+    limit?: number;
+    name?: { value?: string; localizedValue?: string };
+    unit?: string;
+  }[];
+  nextLink?: string;
+}
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -126,8 +172,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UsagesListOutput = typeof UsagesListOutput.Type;
+}) as unknown as Schema.Codec<UsagesListOutput>;
 
 // The operation
 /**
@@ -142,6 +187,12 @@ export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsagesListOutput,
 }));
 // Input Schema
+export interface WebPubSubCheckNameAvailabilityInput {
+  location: string;
+  subscriptionId: string;
+  type: string;
+  name: string;
+}
 export const WebPubSubCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -154,19 +205,20 @@ export const WebPubSubCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/checkNameAvailability",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCheckNameAvailabilityInput =
-  typeof WebPubSubCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface WebPubSubCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const WebPubSubCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type WebPubSubCheckNameAvailabilityOutput =
-  typeof WebPubSubCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -182,6 +234,120 @@ export const WebPubSubCheckNameAvailability =
     outputSchema: WebPubSubCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface WebPubSubCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    externalIP?: string;
+    hostName?: string;
+    publicPort?: number;
+    serverPort?: number;
+    version?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    sharedPrivateLinkResources?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    tls?: { clientCertEnabled?: boolean };
+    hostNamePrefix?: string;
+    liveTraceConfiguration?: {
+      enabled?: string;
+      categories?: { name?: string; enabled?: string }[];
+    };
+    resourceLogConfiguration?: {
+      categories?: { name?: string; enabled?: string }[];
+    };
+    networkACLs?: {
+      defaultAction?: "Allow" | "Deny";
+      publicNetwork?: {
+        allow?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+        deny?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+      };
+      privateEndpoints?: {
+        allow?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+        deny?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+      }[];
+      ipRules?: { value?: string; action?: "Allow" | "Deny" }[];
+    };
+    publicNetworkAccess?: string;
+    disableLocalAuth?: boolean;
+    disableAadAuth?: boolean;
+    regionEndpointEnabled?: string;
+    resourceStopped?: string;
+    socketIO?: { serviceMode?: string };
+  };
+  kind?: "WebPubSub" | "SocketIO";
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+    principalId?: string;
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WebPubSubCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -417,11 +583,22 @@ export const WebPubSubCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCreateOrUpdateInput =
-  typeof WebPubSubCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebPubSubCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -441,9 +618,7 @@ export const WebPubSubCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubCreateOrUpdateOutput =
-  typeof WebPubSubCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -461,6 +636,27 @@ export const WebPubSubCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubCustomCertificatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+  properties: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    keyVaultBaseUri: string;
+    keyVaultSecretName: string;
+    keyVaultSecretVersion?: string;
+  };
+}
 export const WebPubSubCustomCertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -491,11 +687,22 @@ export const WebPubSubCustomCertificatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates/{certificateName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCustomCertificatesCreateOrUpdateInput =
-  typeof WebPubSubCustomCertificatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCustomCertificatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebPubSubCustomCertificatesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubCustomCertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -515,9 +722,7 @@ export const WebPubSubCustomCertificatesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubCustomCertificatesCreateOrUpdateOutput =
-  typeof WebPubSubCustomCertificatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubCustomCertificatesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -535,6 +740,12 @@ export const WebPubSubCustomCertificatesCreateOrUpdate =
     outputSchema: WebPubSubCustomCertificatesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface WebPubSubCustomCertificatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+}
 export const WebPubSubCustomCertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -547,15 +758,12 @@ export const WebPubSubCustomCertificatesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates/{certificateName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCustomCertificatesDeleteInput =
-  typeof WebPubSubCustomCertificatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCustomCertificatesDeleteInput>;
 
 // Output Schema
+export type WebPubSubCustomCertificatesDeleteOutput = void;
 export const WebPubSubCustomCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubCustomCertificatesDeleteOutput =
-  typeof WebPubSubCustomCertificatesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubCustomCertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -573,6 +781,12 @@ export const WebPubSubCustomCertificatesDelete =
     outputSchema: WebPubSubCustomCertificatesDeleteOutput,
   }));
 // Input Schema
+export interface WebPubSubCustomCertificatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+}
 export const WebPubSubCustomCertificatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -585,11 +799,22 @@ export const WebPubSubCustomCertificatesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates/{certificateName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCustomCertificatesGetInput =
-  typeof WebPubSubCustomCertificatesGetInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCustomCertificatesGetInput>;
 
 // Output Schema
+export interface WebPubSubCustomCertificatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubCustomCertificatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -609,9 +834,7 @@ export const WebPubSubCustomCertificatesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubCustomCertificatesGetOutput =
-  typeof WebPubSubCustomCertificatesGetOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubCustomCertificatesGetOutput>;
 
 // The operation
 /**
@@ -629,6 +852,11 @@ export const WebPubSubCustomCertificatesGet =
     outputSchema: WebPubSubCustomCertificatesGetOutput,
   }));
 // Input Schema
+export interface WebPubSubCustomCertificatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubCustomCertificatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -640,11 +868,25 @@ export const WebPubSubCustomCertificatesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCustomCertificatesListInput =
-  typeof WebPubSubCustomCertificatesListInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCustomCertificatesListInput>;
 
 // Output Schema
+export interface WebPubSubCustomCertificatesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubCustomCertificatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -681,9 +923,7 @@ export const WebPubSubCustomCertificatesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubCustomCertificatesListOutput =
-  typeof WebPubSubCustomCertificatesListOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubCustomCertificatesListOutput>;
 
 // The operation
 /**
@@ -700,6 +940,26 @@ export const WebPubSubCustomCertificatesList =
     outputSchema: WebPubSubCustomCertificatesListOutput,
   }));
 // Input Schema
+export interface WebPubSubCustomDomainsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+  properties: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    domainName: string;
+    customCertificate: { id?: string };
+  };
+}
 export const WebPubSubCustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -731,11 +991,22 @@ export const WebPubSubCustomDomainsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCustomDomainsCreateOrUpdateInput =
-  typeof WebPubSubCustomDomainsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCustomDomainsCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebPubSubCustomDomainsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubCustomDomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -755,9 +1026,7 @@ export const WebPubSubCustomDomainsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubCustomDomainsCreateOrUpdateOutput =
-  typeof WebPubSubCustomDomainsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubCustomDomainsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -775,6 +1044,12 @@ export const WebPubSubCustomDomainsCreateOrUpdate =
     outputSchema: WebPubSubCustomDomainsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface WebPubSubCustomDomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+}
 export const WebPubSubCustomDomainsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -787,15 +1062,12 @@ export const WebPubSubCustomDomainsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCustomDomainsDeleteInput =
-  typeof WebPubSubCustomDomainsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCustomDomainsDeleteInput>;
 
 // Output Schema
+export type WebPubSubCustomDomainsDeleteOutput = void;
 export const WebPubSubCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubCustomDomainsDeleteOutput =
-  typeof WebPubSubCustomDomainsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubCustomDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -813,6 +1085,12 @@ export const WebPubSubCustomDomainsDelete =
     outputSchema: WebPubSubCustomDomainsDeleteOutput,
   }));
 // Input Schema
+export interface WebPubSubCustomDomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+}
 export const WebPubSubCustomDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -825,11 +1103,22 @@ export const WebPubSubCustomDomainsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCustomDomainsGetInput =
-  typeof WebPubSubCustomDomainsGetInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCustomDomainsGetInput>;
 
 // Output Schema
+export interface WebPubSubCustomDomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubCustomDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -849,9 +1138,7 @@ export const WebPubSubCustomDomainsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubCustomDomainsGetOutput =
-  typeof WebPubSubCustomDomainsGetOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubCustomDomainsGetOutput>;
 
 // The operation
 /**
@@ -870,6 +1157,11 @@ export const WebPubSubCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubCustomDomainsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubCustomDomainsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -881,11 +1173,25 @@ export const WebPubSubCustomDomainsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubCustomDomainsListInput =
-  typeof WebPubSubCustomDomainsListInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubCustomDomainsListInput>;
 
 // Output Schema
+export interface WebPubSubCustomDomainsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubCustomDomainsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -922,9 +1228,7 @@ export const WebPubSubCustomDomainsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubCustomDomainsListOutput =
-  typeof WebPubSubCustomDomainsListOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubCustomDomainsListOutput>;
 
 // The operation
 /**
@@ -942,6 +1246,11 @@ export const WebPubSubCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -952,12 +1261,12 @@ export const WebPubSubDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type WebPubSubDeleteInput = typeof WebPubSubDeleteInput.Type;
+) as unknown as Schema.Codec<WebPubSubDeleteInput>;
 
 // Output Schema
-export const WebPubSubDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubDeleteOutput = typeof WebPubSubDeleteOutput.Type;
+export type WebPubSubDeleteOutput = void;
+export const WebPubSubDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubDeleteOutput>;
 
 // The operation
 /**
@@ -973,6 +1282,11 @@ export const WebPubSubDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebPubSubDeleteOutput,
 }));
 // Input Schema
+export interface WebPubSubGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -983,10 +1297,22 @@ export const WebPubSubGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type WebPubSubGetInput = typeof WebPubSubGetInput.Type;
+) as unknown as Schema.Codec<WebPubSubGetInput>;
 
 // Output Schema
+export interface WebPubSubGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1005,8 +1331,7 @@ export const WebPubSubGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebPubSubGetOutput = typeof WebPubSubGetOutput.Type;
+}) as unknown as Schema.Codec<WebPubSubGetOutput>;
 
 // The operation
 /**
@@ -1022,6 +1347,29 @@ export const WebPubSubGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebPubSubGetOutput,
 }));
 // Input Schema
+export interface WebPubSubHubsCreateOrUpdateInput {
+  hubName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties: {
+    eventHandlers?: {
+      urlTemplate: string;
+      userEventPattern?: string;
+      systemEvents?: string[];
+      auth?: {
+        type?: "None" | "ManagedIdentity";
+        managedIdentity?: { resource?: string };
+      };
+    }[];
+    eventListeners?: {
+      filter: { type: "EventName" };
+      endpoint: { type: "EventHub" };
+    }[];
+    anonymousConnectPolicy?: string;
+    webSocketKeepAliveIntervalInSeconds?: number;
+  };
+}
 export const WebPubSubHubsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hubName: Schema.String.pipe(T.PathParam()),
@@ -1071,11 +1419,22 @@ export const WebPubSubHubsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubHubsCreateOrUpdateInput =
-  typeof WebPubSubHubsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubHubsCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebPubSubHubsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubHubsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1095,9 +1454,7 @@ export const WebPubSubHubsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubHubsCreateOrUpdateOutput =
-  typeof WebPubSubHubsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubHubsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1116,6 +1473,12 @@ export const WebPubSubHubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubHubsDeleteInput {
+  hubName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubHubsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hubName: Schema.String.pipe(T.PathParam()),
@@ -1128,13 +1491,12 @@ export const WebPubSubHubsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubHubsDeleteInput = typeof WebPubSubHubsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubHubsDeleteInput>;
 
 // Output Schema
+export type WebPubSubHubsDeleteOutput = void;
 export const WebPubSubHubsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubHubsDeleteOutput = typeof WebPubSubHubsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubHubsDeleteOutput>;
 
 // The operation
 /**
@@ -1151,6 +1513,12 @@ export const WebPubSubHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebPubSubHubsDeleteOutput,
 }));
 // Input Schema
+export interface WebPubSubHubsGetInput {
+  hubName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hubName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1162,10 +1530,22 @@ export const WebPubSubHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type WebPubSubHubsGetInput = typeof WebPubSubHubsGetInput.Type;
+) as unknown as Schema.Codec<WebPubSubHubsGetInput>;
 
 // Output Schema
+export interface WebPubSubHubsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1186,8 +1566,7 @@ export const WebPubSubHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type WebPubSubHubsGetOutput = typeof WebPubSubHubsGetOutput.Type;
+) as unknown as Schema.Codec<WebPubSubHubsGetOutput>;
 
 // The operation
 /**
@@ -1204,6 +1583,11 @@ export const WebPubSubHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebPubSubHubsGetOutput,
 }));
 // Input Schema
+export interface WebPubSubHubsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubHubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1216,10 +1600,25 @@ export const WebPubSubHubsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs",
     apiVersion: "2024-03-01",
   }),
-);
-export type WebPubSubHubsListInput = typeof WebPubSubHubsListInput.Type;
+) as unknown as Schema.Codec<WebPubSubHubsListInput>;
 
 // Output Schema
+export interface WebPubSubHubsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubHubsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1256,8 +1655,7 @@ export const WebPubSubHubsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubHubsListOutput = typeof WebPubSubHubsListOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubHubsListOutput>;
 
 // The operation
 /**
@@ -1273,6 +1671,10 @@ export const WebPubSubHubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebPubSubHubsListOutput,
 }));
 // Input Schema
+export interface WebPubSubListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const WebPubSubListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1283,11 +1685,25 @@ export const WebPubSubListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubListByResourceGroupInput =
-  typeof WebPubSubListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubListByResourceGroupInput>;
 
 // Output Schema
+export interface WebPubSubListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1324,9 +1740,7 @@ export const WebPubSubListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubListByResourceGroupOutput =
-  typeof WebPubSubListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1342,6 +1756,9 @@ export const WebPubSubListByResourceGroup =
     outputSchema: WebPubSubListByResourceGroupOutput,
   }));
 // Input Schema
+export interface WebPubSubListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const WebPubSubListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1351,11 +1768,25 @@ export const WebPubSubListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/webPubSub",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubListBySubscriptionInput =
-  typeof WebPubSubListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubListBySubscriptionInput>;
 
 // Output Schema
+export interface WebPubSubListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1392,9 +1823,7 @@ export const WebPubSubListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubListBySubscriptionOutput =
-  typeof WebPubSubListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1410,6 +1839,11 @@ export const WebPubSubListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1422,18 +1856,22 @@ export const WebPubSubListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/listKeys",
     apiVersion: "2024-03-01",
   }),
-);
-export type WebPubSubListKeysInput = typeof WebPubSubListKeysInput.Type;
+) as unknown as Schema.Codec<WebPubSubListKeysInput>;
 
 // Output Schema
+export interface WebPubSubListKeysOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+}
 export const WebPubSubListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
     secondaryConnectionString: Schema.optional(Schema.String),
-  });
-export type WebPubSubListKeysOutput = typeof WebPubSubListKeysOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubListKeysOutput>;
 
 // The operation
 /**
@@ -1449,6 +1887,12 @@ export const WebPubSubListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebPubSubListKeysOutput,
 }));
 // Input Schema
+export interface WebPubSubListReplicaSkusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const WebPubSubListReplicaSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1461,11 +1905,29 @@ export const WebPubSubListReplicaSkusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/skus",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubListReplicaSkusInput =
-  typeof WebPubSubListReplicaSkusInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubListReplicaSkusInput>;
 
 // Output Schema
+export interface WebPubSubListReplicaSkusOutput {
+  value?: {
+    resourceType?: string;
+    sku?: {
+      name: string;
+      tier?: "Free" | "Basic" | "Standard" | "Premium";
+      size?: string;
+      family?: string;
+      capacity?: number;
+    };
+    capacity?: {
+      minimum?: number;
+      maximum?: number;
+      default?: number;
+      allowedValues?: number[];
+      scaleType?: "None" | "Manual" | "Automatic";
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubListReplicaSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1498,9 +1960,7 @@ export const WebPubSubListReplicaSkusOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubListReplicaSkusOutput =
-  typeof WebPubSubListReplicaSkusOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubListReplicaSkusOutput>;
 
 // The operation
 /**
@@ -1519,6 +1979,11 @@ export const WebPubSubListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubListSkusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1531,10 +1996,29 @@ export const WebPubSubListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/skus",
     apiVersion: "2024-03-01",
   }),
-);
-export type WebPubSubListSkusInput = typeof WebPubSubListSkusInput.Type;
+) as unknown as Schema.Codec<WebPubSubListSkusInput>;
 
 // Output Schema
+export interface WebPubSubListSkusOutput {
+  value?: {
+    resourceType?: string;
+    sku?: {
+      name: string;
+      tier?: "Free" | "Basic" | "Standard" | "Premium";
+      size?: string;
+      family?: string;
+      capacity?: number;
+    };
+    capacity?: {
+      minimum?: number;
+      maximum?: number;
+      default?: number;
+      allowedValues?: number[];
+      scaleType?: "None" | "Manual" | "Automatic";
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1567,8 +2051,7 @@ export const WebPubSubListSkusOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubListSkusOutput = typeof WebPubSubListSkusOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubListSkusOutput>;
 
 // The operation
 /**
@@ -1584,6 +2067,12 @@ export const WebPubSubListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebPubSubListSkusOutput,
 }));
 // Input Schema
+export interface WebPubSubPrivateEndpointConnectionsDeleteInput {
+  privateEndpointConnectionName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubPrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -1596,15 +2085,12 @@ export const WebPubSubPrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubPrivateEndpointConnectionsDeleteInput =
-  typeof WebPubSubPrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type WebPubSubPrivateEndpointConnectionsDeleteOutput = void;
 export const WebPubSubPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubPrivateEndpointConnectionsDeleteOutput =
-  typeof WebPubSubPrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1622,6 +2108,12 @@ export const WebPubSubPrivateEndpointConnectionsDelete =
     outputSchema: WebPubSubPrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface WebPubSubPrivateEndpointConnectionsGetInput {
+  privateEndpointConnectionName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubPrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -1634,11 +2126,22 @@ export const WebPubSubPrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubPrivateEndpointConnectionsGetInput =
-  typeof WebPubSubPrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface WebPubSubPrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubPrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1658,9 +2161,7 @@ export const WebPubSubPrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubPrivateEndpointConnectionsGetOutput =
-  typeof WebPubSubPrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1678,6 +2179,11 @@ export const WebPubSubPrivateEndpointConnectionsGet =
     outputSchema: WebPubSubPrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface WebPubSubPrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubPrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1689,11 +2195,25 @@ export const WebPubSubPrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/privateEndpointConnections",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubPrivateEndpointConnectionsListInput =
-  typeof WebPubSubPrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface WebPubSubPrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubPrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1730,9 +2250,7 @@ export const WebPubSubPrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubPrivateEndpointConnectionsListOutput =
-  typeof WebPubSubPrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -1749,6 +2267,31 @@ export const WebPubSubPrivateEndpointConnectionsList =
     outputSchema: WebPubSubPrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface WebPubSubPrivateEndpointConnectionsUpdateInput {
+  privateEndpointConnectionName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const WebPubSubPrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -1798,11 +2341,22 @@ export const WebPubSubPrivateEndpointConnectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubPrivateEndpointConnectionsUpdateInput =
-  typeof WebPubSubPrivateEndpointConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsUpdateInput>;
 
 // Output Schema
+export interface WebPubSubPrivateEndpointConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubPrivateEndpointConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1822,9 +2376,7 @@ export const WebPubSubPrivateEndpointConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubPrivateEndpointConnectionsUpdateOutput =
-  typeof WebPubSubPrivateEndpointConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubPrivateEndpointConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -1842,6 +2394,11 @@ export const WebPubSubPrivateEndpointConnectionsUpdate =
     outputSchema: WebPubSubPrivateEndpointConnectionsUpdateOutput,
   }));
 // Input Schema
+export interface WebPubSubPrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1853,11 +2410,25 @@ export const WebPubSubPrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/privateLinkResources",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubPrivateLinkResourcesListInput =
-  typeof WebPubSubPrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubPrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface WebPubSubPrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1894,9 +2465,7 @@ export const WebPubSubPrivateLinkResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubPrivateLinkResourcesListOutput =
-  typeof WebPubSubPrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubPrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -1913,6 +2482,12 @@ export const WebPubSubPrivateLinkResourcesList =
     outputSchema: WebPubSubPrivateLinkResourcesListOutput,
   }));
 // Input Schema
+export interface WebPubSubRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  keyType?: "Primary" | "Secondary" | "Salt";
+}
 export const WebPubSubRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1925,20 +2500,22 @@ export const WebPubSubRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/regenerateKey",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubRegenerateKeyInput =
-  typeof WebPubSubRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubRegenerateKeyInput>;
 
 // Output Schema
+export interface WebPubSubRegenerateKeyOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+}
 export const WebPubSubRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
     secondaryConnectionString: Schema.optional(Schema.String),
-  });
-export type WebPubSubRegenerateKeyOutput =
-  typeof WebPubSubRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -1956,6 +2533,35 @@ export const WebPubSubRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubReplicasCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    regionEndpointEnabled?: string;
+    resourceStopped?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WebPubSubReplicasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2000,11 +2606,22 @@ export const WebPubSubReplicasCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicasCreateOrUpdateInput =
-  typeof WebPubSubReplicasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicasCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebPubSubReplicasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubReplicasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2024,9 +2641,7 @@ export const WebPubSubReplicasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubReplicasCreateOrUpdateOutput =
-  typeof WebPubSubReplicasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubReplicasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2044,6 +2659,12 @@ export const WebPubSubReplicasCreateOrUpdate =
     outputSchema: WebPubSubReplicasCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface WebPubSubReplicasDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const WebPubSubReplicasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2056,15 +2677,12 @@ export const WebPubSubReplicasDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicasDeleteInput =
-  typeof WebPubSubReplicasDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicasDeleteInput>;
 
 // Output Schema
+export type WebPubSubReplicasDeleteOutput = void;
 export const WebPubSubReplicasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubReplicasDeleteOutput =
-  typeof WebPubSubReplicasDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubReplicasDeleteOutput>;
 
 // The operation
 /**
@@ -2083,6 +2701,12 @@ export const WebPubSubReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubReplicasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const WebPubSubReplicasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2095,10 +2719,22 @@ export const WebPubSubReplicasGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicasGetInput = typeof WebPubSubReplicasGetInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicasGetInput>;
 
 // Output Schema
+export interface WebPubSubReplicasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubReplicasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2118,8 +2754,7 @@ export const WebPubSubReplicasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubReplicasGetOutput = typeof WebPubSubReplicasGetOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubReplicasGetOutput>;
 
 // The operation
 /**
@@ -2138,6 +2773,29 @@ export const WebPubSubReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+  sharedPrivateLinkResourceName: string;
+  properties?: {
+    groupId: string;
+    privateLinkResourceId: string;
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    requestMessage?: string;
+    status?: "Pending" | "Approved" | "Rejected" | "Disconnected" | "Timeout";
+  };
+}
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2180,11 +2838,22 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
-  typeof WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2204,9 +2873,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  typeof WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2226,6 +2893,13 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdate =
       WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface WebPubSubReplicaSharedPrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+  sharedPrivateLinkResourceName: string;
+}
 export const WebPubSubReplicaSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2239,11 +2913,22 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicaSharedPrivateLinkResourcesGetInput =
-  typeof WebPubSubReplicaSharedPrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicaSharedPrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface WebPubSubReplicaSharedPrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2263,9 +2948,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
-  typeof WebPubSubReplicaSharedPrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubReplicaSharedPrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -2284,6 +2967,12 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesGet =
     outputSchema: WebPubSubReplicaSharedPrivateLinkResourcesGetOutput,
   }));
 // Input Schema
+export interface WebPubSubReplicaSharedPrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const WebPubSubReplicaSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2296,11 +2985,25 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicaSharedPrivateLinkResourcesListInput =
-  typeof WebPubSubReplicaSharedPrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicaSharedPrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface WebPubSubReplicaSharedPrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2337,9 +3040,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
-  typeof WebPubSubReplicaSharedPrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubReplicaSharedPrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -2357,6 +3058,11 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesList =
     outputSchema: WebPubSubReplicaSharedPrivateLinkResourcesListOutput,
   }));
 // Input Schema
+export interface WebPubSubReplicasListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubReplicasListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2368,10 +3074,25 @@ export const WebPubSubReplicasListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicasListInput = typeof WebPubSubReplicasListInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicasListInput>;
 
 // Output Schema
+export interface WebPubSubReplicasListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubReplicasListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2408,9 +3129,7 @@ export const WebPubSubReplicasListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubReplicasListOutput =
-  typeof WebPubSubReplicasListOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubReplicasListOutput>;
 
 // The operation
 /**
@@ -2428,6 +3147,12 @@ export const WebPubSubReplicasList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubReplicasRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const WebPubSubReplicasRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2440,15 +3165,12 @@ export const WebPubSubReplicasRestartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/restart",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicasRestartInput =
-  typeof WebPubSubReplicasRestartInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicasRestartInput>;
 
 // Output Schema
+export type WebPubSubReplicasRestartOutput = void;
 export const WebPubSubReplicasRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubReplicasRestartOutput =
-  typeof WebPubSubReplicasRestartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubReplicasRestartOutput>;
 
 // The operation
 /**
@@ -2467,6 +3189,35 @@ export const WebPubSubReplicasRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubReplicasUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    regionEndpointEnabled?: string;
+    resourceStopped?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WebPubSubReplicasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2511,11 +3262,22 @@ export const WebPubSubReplicasUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubReplicasUpdateInput =
-  typeof WebPubSubReplicasUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubReplicasUpdateInput>;
 
 // Output Schema
+export interface WebPubSubReplicasUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubReplicasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2535,9 +3297,7 @@ export const WebPubSubReplicasUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubReplicasUpdateOutput =
-  typeof WebPubSubReplicasUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubReplicasUpdateOutput>;
 
 // The operation
 /**
@@ -2556,6 +3316,11 @@ export const WebPubSubReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebPubSubRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2566,12 +3331,12 @@ export const WebPubSubRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/restart",
     apiVersion: "2024-03-01",
   }),
-);
-export type WebPubSubRestartInput = typeof WebPubSubRestartInput.Type;
+) as unknown as Schema.Codec<WebPubSubRestartInput>;
 
 // Output Schema
-export const WebPubSubRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubRestartOutput = typeof WebPubSubRestartOutput.Type;
+export type WebPubSubRestartOutput = void;
+export const WebPubSubRestartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubRestartOutput>;
 
 // The operation
 /**
@@ -2587,6 +3352,28 @@ export const WebPubSubRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebPubSubRestartOutput,
 }));
 // Input Schema
+export interface WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput {
+  sharedPrivateLinkResourceName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    groupId: string;
+    privateLinkResourceId: string;
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    requestMessage?: string;
+    status?: "Pending" | "Approved" | "Rejected" | "Disconnected" | "Timeout";
+  };
+}
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
@@ -2628,11 +3415,22 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
-  typeof WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2652,9 +3450,7 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  typeof WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2672,6 +3468,12 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdate =
     outputSchema: WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface WebPubSubSharedPrivateLinkResourcesDeleteInput {
+  sharedPrivateLinkResourceName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubSharedPrivateLinkResourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
@@ -2684,15 +3486,12 @@ export const WebPubSubSharedPrivateLinkResourcesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubSharedPrivateLinkResourcesDeleteInput =
-  typeof WebPubSubSharedPrivateLinkResourcesDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesDeleteInput>;
 
 // Output Schema
+export type WebPubSubSharedPrivateLinkResourcesDeleteOutput = void;
 export const WebPubSubSharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebPubSubSharedPrivateLinkResourcesDeleteOutput =
-  typeof WebPubSubSharedPrivateLinkResourcesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -2710,6 +3509,12 @@ export const WebPubSubSharedPrivateLinkResourcesDelete =
     outputSchema: WebPubSubSharedPrivateLinkResourcesDeleteOutput,
   }));
 // Input Schema
+export interface WebPubSubSharedPrivateLinkResourcesGetInput {
+  sharedPrivateLinkResourceName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
@@ -2722,11 +3527,22 @@ export const WebPubSubSharedPrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubSharedPrivateLinkResourcesGetInput =
-  typeof WebPubSubSharedPrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface WebPubSubSharedPrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubSharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2746,9 +3562,7 @@ export const WebPubSubSharedPrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebPubSubSharedPrivateLinkResourcesGetOutput =
-  typeof WebPubSubSharedPrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -2766,6 +3580,11 @@ export const WebPubSubSharedPrivateLinkResourcesGet =
     outputSchema: WebPubSubSharedPrivateLinkResourcesGetOutput,
   }));
 // Input Schema
+export interface WebPubSubSharedPrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WebPubSubSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2777,11 +3596,25 @@ export const WebPubSubSharedPrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/sharedPrivateLinkResources",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WebPubSubSharedPrivateLinkResourcesListInput =
-  typeof WebPubSubSharedPrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface WebPubSubSharedPrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebPubSubSharedPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2818,9 +3651,7 @@ export const WebPubSubSharedPrivateLinkResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebPubSubSharedPrivateLinkResourcesListOutput =
-  typeof WebPubSubSharedPrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<WebPubSubSharedPrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -2837,6 +3668,120 @@ export const WebPubSubSharedPrivateLinkResourcesList =
     outputSchema: WebPubSubSharedPrivateLinkResourcesListOutput,
   }));
 // Input Schema
+export interface WebPubSubUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    externalIP?: string;
+    hostName?: string;
+    publicPort?: number;
+    serverPort?: number;
+    version?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    sharedPrivateLinkResources?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    tls?: { clientCertEnabled?: boolean };
+    hostNamePrefix?: string;
+    liveTraceConfiguration?: {
+      enabled?: string;
+      categories?: { name?: string; enabled?: string }[];
+    };
+    resourceLogConfiguration?: {
+      categories?: { name?: string; enabled?: string }[];
+    };
+    networkACLs?: {
+      defaultAction?: "Allow" | "Deny";
+      publicNetwork?: {
+        allow?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+        deny?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+      };
+      privateEndpoints?: {
+        allow?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+        deny?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+      }[];
+      ipRules?: { value?: string; action?: "Allow" | "Deny" }[];
+    };
+    publicNetworkAccess?: string;
+    disableLocalAuth?: boolean;
+    disableAadAuth?: boolean;
+    regionEndpointEnabled?: string;
+    resourceStopped?: string;
+    socketIO?: { serviceMode?: string };
+  };
+  kind?: "WebPubSub" | "SocketIO";
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+    principalId?: string;
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WebPubSubUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3071,10 +4016,22 @@ export const WebPubSubUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type WebPubSubUpdateInput = typeof WebPubSubUpdateInput.Type;
+) as unknown as Schema.Codec<WebPubSubUpdateInput>;
 
 // Output Schema
+export interface WebPubSubUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebPubSubUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3093,8 +4050,7 @@ export const WebPubSubUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebPubSubUpdateOutput = typeof WebPubSubUpdateOutput.Type;
+}) as unknown as Schema.Codec<WebPubSubUpdateOutput>;
 
 // The operation
 /**

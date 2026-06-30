@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetBillingMetersInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+  status?: "active" | "inactive";
+}
 export const GetBillingMetersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -15,10 +22,29 @@ export const GetBillingMetersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/billing/meters",
     contentType: "form-urlencoded",
   }),
-);
-export type GetBillingMetersInput = typeof GetBillingMetersInput.Type;
+) as unknown as Schema.Codec<GetBillingMetersInput>;
 
 // Output Schema
+export interface GetBillingMetersOutput {
+  data: {
+    created: number;
+    customer_mapping: { event_payload_key: string; type: "by_id" };
+    default_aggregation: { formula: "count" | "last" | "sum" };
+    display_name: string;
+    event_name: string;
+    event_time_window: "day" | "hour" | null;
+    id: string;
+    livemode: boolean;
+    object: "billing.meter";
+    status: "active" | "inactive";
+    status_transitions: { deactivated_at: number | null };
+    updated: number;
+    value_settings: { event_payload_key: string };
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetBillingMetersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     data: Schema.Array(
@@ -51,8 +77,7 @@ export const GetBillingMetersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     object: Schema.Literals(["list"]),
     url: Schema.String,
   },
-);
-export type GetBillingMetersOutput = typeof GetBillingMetersOutput.Type;
+) as unknown as Schema.Codec<GetBillingMetersOutput>;
 
 // The operation
 /**

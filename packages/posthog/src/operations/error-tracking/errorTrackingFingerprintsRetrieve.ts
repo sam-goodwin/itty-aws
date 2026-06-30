@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingFingerprintsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingFingerprintsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,20 +16,22 @@ export const ErrorTrackingFingerprintsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/fingerprints/{id}/",
     }),
-  );
-export type ErrorTrackingFingerprintsRetrieveInput =
-  typeof ErrorTrackingFingerprintsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingFingerprintsRetrieveInput>;
 
 // Output Schema
+export interface ErrorTrackingFingerprintsRetrieveOutput {
+  id?: string;
+  fingerprint?: string;
+  issue_id?: string;
+  created_at?: string;
+}
 export const ErrorTrackingFingerprintsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     fingerprint: Schema.optional(Schema.String),
     issue_id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingFingerprintsRetrieveOutput =
-  typeof ErrorTrackingFingerprintsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingFingerprintsRetrieveOutput>;
 
 // The operation
 /**

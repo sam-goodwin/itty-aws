@@ -4,6 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsCommandCreateInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  jsonrpc?: "2.0";
+  method?:
+    | "user_message"
+    | "cancel"
+    | "close"
+    | "permission_response"
+    | "set_config_option";
+  params?: Record<string, unknown>;
+}
 export const TasksRunsCommandCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -25,20 +38,22 @@ export const TasksRunsCommandCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/command/",
     }),
-  );
-export type TasksRunsCommandCreateInput =
-  typeof TasksRunsCommandCreateInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsCommandCreateInput>;
 
 // Output Schema
+export interface TasksRunsCommandCreateOutput {
+  jsonrpc?: string;
+  id?: unknown;
+  result?: Record<string, unknown>;
+  error?: Record<string, unknown>;
+}
 export const TasksRunsCommandCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jsonrpc: Schema.optional(Schema.String),
     id: Schema.optional(Schema.Unknown),
     result: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  });
-export type TasksRunsCommandCreateOutput =
-  typeof TasksRunsCommandCreateOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsCommandCreateOutput>;
 
 // The operation
 /**

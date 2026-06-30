@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseColumnStatisticsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  table_id?: string;
+}
 export const WarehouseColumnStatisticsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,31 @@ export const WarehouseColumnStatisticsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/warehouse_column_statistics/",
     }),
-  );
-export type WarehouseColumnStatisticsListInput =
-  typeof WarehouseColumnStatisticsListInput.Type;
+  ) as unknown as Schema.Codec<WarehouseColumnStatisticsListInput>;
 
 // Output Schema
+export interface WarehouseColumnStatisticsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    table: string;
+    column_name: string;
+    column_type: string;
+    row_count: number;
+    null_count: number;
+    null_fraction: number;
+    min_value: string;
+    max_value: string;
+    has_min_max: boolean;
+    computed_at: string;
+    computed_for_delta_version: number;
+    stats_basis: string;
+    created_at: string;
+    updated_at: string | null;
+  }[];
+}
 export const WarehouseColumnStatisticsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -43,9 +69,7 @@ export const WarehouseColumnStatisticsListOutput =
         updated_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type WarehouseColumnStatisticsListOutput =
-  typeof WarehouseColumnStatisticsListOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseColumnStatisticsListOutput>;
 
 // The operation
 /**

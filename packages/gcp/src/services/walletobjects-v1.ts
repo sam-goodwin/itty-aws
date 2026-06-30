@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface UpcomingNotification {
   enableNotification?: boolean;
 }
 
-export const UpcomingNotification: Schema.Schema<UpcomingNotification> =
+export const UpcomingNotification: Schema.Codec<UpcomingNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableNotification: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "UpcomingNotification" });
@@ -41,7 +41,7 @@ export interface TranslatedString {
   value?: string;
 }
 
-export const TranslatedString: Schema.Schema<TranslatedString> =
+export const TranslatedString: Schema.Codec<TranslatedString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface LocalizedString {
   defaultValue?: TranslatedString;
 }
 
-export const LocalizedString: Schema.Schema<LocalizedString> =
+export const LocalizedString: Schema.Codec<LocalizedString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     translatedValues: Schema.optional(Schema.Array(TranslatedString)),
@@ -75,7 +75,7 @@ export interface LabelValue {
   label?: string;
 }
 
-export const LabelValue: Schema.Schema<LabelValue> =
+export const LabelValue: Schema.Codec<LabelValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localizedLabel: Schema.optional(LocalizedString),
     localizedValue: Schema.optional(LocalizedString),
@@ -88,7 +88,7 @@ export interface LabelValueRow {
   columns?: ReadonlyArray<LabelValue>;
 }
 
-export const LabelValueRow: Schema.Schema<LabelValueRow> =
+export const LabelValueRow: Schema.Codec<LabelValueRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(Schema.Array(LabelValue)),
   }).annotate({ identifier: "LabelValueRow" });
@@ -99,7 +99,7 @@ export interface InfoModuleData {
   showLastUpdateTime?: boolean;
 }
 
-export const InfoModuleData: Schema.Schema<InfoModuleData> =
+export const InfoModuleData: Schema.Codec<InfoModuleData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelValueRows: Schema.optional(Schema.Array(LabelValueRow)),
     showLastUpdateTime: Schema.optional(Schema.Boolean),
@@ -112,7 +112,7 @@ export interface RotatingBarcodeTotpDetailsTotpParameters {
   key?: string;
 }
 
-export const RotatingBarcodeTotpDetailsTotpParameters: Schema.Schema<RotatingBarcodeTotpDetailsTotpParameters> =
+export const RotatingBarcodeTotpDetailsTotpParameters: Schema.Codec<RotatingBarcodeTotpDetailsTotpParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valueLength: Schema.optional(Schema.Number),
     key: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export interface RotatingBarcodeTotpDetails {
   parameters?: ReadonlyArray<RotatingBarcodeTotpDetailsTotpParameters>;
 }
 
-export const RotatingBarcodeTotpDetails: Schema.Schema<RotatingBarcodeTotpDetails> =
+export const RotatingBarcodeTotpDetails: Schema.Codec<RotatingBarcodeTotpDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     periodMillis: Schema.optional(Schema.String),
@@ -145,7 +145,7 @@ export interface SetPassUpdateNoticeRequest {
   updateUri?: string;
 }
 
-export const SetPassUpdateNoticeRequest: Schema.Schema<SetPassUpdateNoticeRequest> =
+export const SetPassUpdateNoticeRequest: Schema.Codec<SetPassUpdateNoticeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalPassId: Schema.optional(Schema.String),
     updatedPassJwtSignature: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export interface ModifyLinkedOfferObjects {
   removeLinkedOfferObjectIds?: ReadonlyArray<string>;
 }
 
-export const ModifyLinkedOfferObjects: Schema.Schema<ModifyLinkedOfferObjects> =
+export const ModifyLinkedOfferObjects: Schema.Codec<ModifyLinkedOfferObjects> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addLinkedOfferObjectIds: Schema.optional(Schema.Array(Schema.String)),
     removeLinkedOfferObjectIds: Schema.optional(Schema.Array(Schema.String)),
@@ -170,7 +170,7 @@ export interface ModifyLinkedOfferObjectsRequest {
   linkedOfferObjectIds?: ModifyLinkedOfferObjects;
 }
 
-export const ModifyLinkedOfferObjectsRequest: Schema.Schema<ModifyLinkedOfferObjectsRequest> =
+export const ModifyLinkedOfferObjectsRequest: Schema.Codec<ModifyLinkedOfferObjectsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkedOfferObjectIds: Schema.optional(ModifyLinkedOfferObjects),
   }).annotate({ identifier: "ModifyLinkedOfferObjectsRequest" });
@@ -180,7 +180,7 @@ export interface SignUpInfo {
   classId?: string;
 }
 
-export const SignUpInfo: Schema.Schema<SignUpInfo> =
+export const SignUpInfo: Schema.Codec<SignUpInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     classId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignUpInfo" });
@@ -200,7 +200,7 @@ export interface IssuerToUserInfo {
   value?: string;
 }
 
-export const IssuerToUserInfo: Schema.Schema<IssuerToUserInfo> =
+export const IssuerToUserInfo: Schema.Codec<IssuerToUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signUpInfo: Schema.optional(SignUpInfo),
     action: Schema.optional(Schema.String),
@@ -219,7 +219,7 @@ export interface SmartTap {
   merchantId?: string;
 }
 
-export const SmartTap: Schema.Schema<SmartTap> =
+export const SmartTap: Schema.Codec<SmartTap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     infos: Schema.optional(Schema.Array(IssuerToUserInfo)),
@@ -236,7 +236,7 @@ export interface ImageUri {
   uri?: string;
 }
 
-export const ImageUri: Schema.Schema<ImageUri> =
+export const ImageUri: Schema.Codec<ImageUri> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localizedDescription: Schema.optional(LocalizedString),
     description: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface Image {
   contentDescription?: LocalizedString;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateImageId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -269,7 +269,7 @@ export interface ImageModuleData {
   id?: string;
 }
 
-export const ImageModuleData: Schema.Schema<ImageModuleData> =
+export const ImageModuleData: Schema.Codec<ImageModuleData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mainImage: Schema.optional(Image),
     id: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export interface RotatingBarcodeValues {
   values?: ReadonlyArray<string>;
 }
 
-export const RotatingBarcodeValues: Schema.Schema<RotatingBarcodeValues> =
+export const RotatingBarcodeValues: Schema.Codec<RotatingBarcodeValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     periodMillis: Schema.optional(Schema.String),
     startDateTime: Schema.optional(Schema.String),
@@ -337,7 +337,7 @@ export interface RotatingBarcode {
   initialRotatingBarcodeValues?: RotatingBarcodeValues;
 }
 
-export const RotatingBarcode: Schema.Schema<RotatingBarcode> =
+export const RotatingBarcode: Schema.Codec<RotatingBarcode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valuePattern: Schema.optional(Schema.String),
     showCodeText: Schema.optional(LocalizedString),
@@ -355,7 +355,7 @@ export interface MerchantLocation {
   longitude?: number;
 }
 
-export const MerchantLocation: Schema.Schema<MerchantLocation> =
+export const MerchantLocation: Schema.Codec<MerchantLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -370,7 +370,7 @@ export interface Money {
   micros?: string;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -382,7 +382,7 @@ export interface DateTime {
   date?: string;
 }
 
-export const DateTime: Schema.Schema<DateTime> =
+export const DateTime: Schema.Codec<DateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Schema.String),
   }).annotate({ identifier: "DateTime" });
@@ -394,7 +394,7 @@ export interface CallbackOptions {
   updateRequestUrl?: string;
 }
 
-export const CallbackOptions: Schema.Schema<CallbackOptions> =
+export const CallbackOptions: Schema.Codec<CallbackOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     updateRequestUrl: Schema.optional(Schema.String),
@@ -404,7 +404,7 @@ export interface Review {
   comments?: string;
 }
 
-export const Review: Schema.Schema<Review> =
+export const Review: Schema.Codec<Review> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     comments: Schema.optional(Schema.String),
   }).annotate({ identifier: "Review" });
@@ -430,7 +430,7 @@ export interface FieldReference {
     | (string & {});
 }
 
-export const FieldReference: Schema.Schema<FieldReference> =
+export const FieldReference: Schema.Codec<FieldReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldPath: Schema.optional(Schema.String),
     dateFormat: Schema.optional(Schema.String),
@@ -441,7 +441,7 @@ export interface FieldSelector {
   fields?: ReadonlyArray<FieldReference>;
 }
 
-export const FieldSelector: Schema.Schema<FieldSelector> =
+export const FieldSelector: Schema.Codec<FieldSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(FieldReference)),
   }).annotate({ identifier: "FieldSelector" });
@@ -461,7 +461,7 @@ export interface TemplateItem {
     | (string & {});
 }
 
-export const TemplateItem: Schema.Schema<TemplateItem> =
+export const TemplateItem: Schema.Codec<TemplateItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstValue: Schema.optional(FieldSelector),
     secondValue: Schema.optional(FieldSelector),
@@ -475,7 +475,7 @@ export interface CardRowTwoItems {
   startItem?: TemplateItem;
 }
 
-export const CardRowTwoItems: Schema.Schema<CardRowTwoItems> =
+export const CardRowTwoItems: Schema.Codec<CardRowTwoItems> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endItem: Schema.optional(TemplateItem),
     startItem: Schema.optional(TemplateItem),
@@ -490,7 +490,7 @@ export interface CardRowThreeItems {
   endItem?: TemplateItem;
 }
 
-export const CardRowThreeItems: Schema.Schema<CardRowThreeItems> =
+export const CardRowThreeItems: Schema.Codec<CardRowThreeItems> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     middleItem: Schema.optional(TemplateItem),
     startItem: Schema.optional(TemplateItem),
@@ -502,7 +502,7 @@ export interface CardRowOneItem {
   item?: TemplateItem;
 }
 
-export const CardRowOneItem: Schema.Schema<CardRowOneItem> =
+export const CardRowOneItem: Schema.Codec<CardRowOneItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item: Schema.optional(TemplateItem),
   }).annotate({ identifier: "CardRowOneItem" });
@@ -516,7 +516,7 @@ export interface CardRowTemplateInfo {
   oneItem?: CardRowOneItem;
 }
 
-export const CardRowTemplateInfo: Schema.Schema<CardRowTemplateInfo> =
+export const CardRowTemplateInfo: Schema.Codec<CardRowTemplateInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     twoItems: Schema.optional(CardRowTwoItems),
     threeItems: Schema.optional(CardRowThreeItems),
@@ -528,7 +528,7 @@ export interface CardTemplateOverride {
   cardRowTemplateInfos?: ReadonlyArray<CardRowTemplateInfo>;
 }
 
-export const CardTemplateOverride: Schema.Schema<CardTemplateOverride> =
+export const CardTemplateOverride: Schema.Codec<CardTemplateOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cardRowTemplateInfos: Schema.optional(Schema.Array(CardRowTemplateInfo)),
   }).annotate({ identifier: "CardTemplateOverride" });
@@ -547,7 +547,7 @@ export interface FirstRowOption {
   fieldOption?: FieldSelector;
 }
 
-export const FirstRowOption: Schema.Schema<FirstRowOption> =
+export const FirstRowOption: Schema.Codec<FirstRowOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transitOption: Schema.optional(Schema.String),
     fieldOption: Schema.optional(FieldSelector),
@@ -562,7 +562,7 @@ export interface ListTemplateOverride {
   firstRowOption?: FirstRowOption;
 }
 
-export const ListTemplateOverride: Schema.Schema<ListTemplateOverride> =
+export const ListTemplateOverride: Schema.Codec<ListTemplateOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thirdRowOption: Schema.optional(FieldSelector),
     secondRowOption: Schema.optional(FieldSelector),
@@ -574,7 +574,7 @@ export interface BarcodeSectionDetail {
   fieldSelector?: FieldSelector;
 }
 
-export const BarcodeSectionDetail: Schema.Schema<BarcodeSectionDetail> =
+export const BarcodeSectionDetail: Schema.Codec<BarcodeSectionDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldSelector: Schema.optional(FieldSelector),
   }).annotate({ identifier: "BarcodeSectionDetail" });
@@ -588,7 +588,7 @@ export interface CardBarcodeSectionDetails {
   firstBottomDetail?: BarcodeSectionDetail;
 }
 
-export const CardBarcodeSectionDetails: Schema.Schema<CardBarcodeSectionDetails> =
+export const CardBarcodeSectionDetails: Schema.Codec<CardBarcodeSectionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secondTopDetail: Schema.optional(BarcodeSectionDetail),
     firstTopDetail: Schema.optional(BarcodeSectionDetail),
@@ -600,7 +600,7 @@ export interface DetailsItemInfo {
   item?: TemplateItem;
 }
 
-export const DetailsItemInfo: Schema.Schema<DetailsItemInfo> =
+export const DetailsItemInfo: Schema.Codec<DetailsItemInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item: Schema.optional(TemplateItem),
   }).annotate({ identifier: "DetailsItemInfo" });
@@ -610,7 +610,7 @@ export interface DetailsTemplateOverride {
   detailsItemInfos?: ReadonlyArray<DetailsItemInfo>;
 }
 
-export const DetailsTemplateOverride: Schema.Schema<DetailsTemplateOverride> =
+export const DetailsTemplateOverride: Schema.Codec<DetailsTemplateOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detailsItemInfos: Schema.optional(Schema.Array(DetailsItemInfo)),
   }).annotate({ identifier: "DetailsTemplateOverride" });
@@ -626,7 +626,7 @@ export interface ClassTemplateInfo {
   detailsTemplateOverride?: DetailsTemplateOverride;
 }
 
-export const ClassTemplateInfo: Schema.Schema<ClassTemplateInfo> =
+export const ClassTemplateInfo: Schema.Codec<ClassTemplateInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cardTemplateOverride: Schema.optional(CardTemplateOverride),
     listTemplateOverride: Schema.optional(ListTemplateOverride),
@@ -647,14 +647,15 @@ export interface Uri {
   localizedDescription?: LocalizedString;
 }
 
-export const Uri: Schema.Schema<Uri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Uri: Schema.Codec<Uri> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     description: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     localizedDescription: Schema.optional(LocalizedString),
-  }).annotate({ identifier: "Uri" });
+  },
+).annotate({ identifier: "Uri" });
 
 export interface AppLinkDataAppLinkInfoAppTarget {
   /** Package name for AppTarget. For example: com.google.android.gm */
@@ -663,7 +664,7 @@ export interface AppLinkDataAppLinkInfoAppTarget {
   targetUri?: Uri;
 }
 
-export const AppLinkDataAppLinkInfoAppTarget: Schema.Schema<AppLinkDataAppLinkInfoAppTarget> =
+export const AppLinkDataAppLinkInfoAppTarget: Schema.Codec<AppLinkDataAppLinkInfoAppTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     targetUri: Schema.optional(Uri),
@@ -680,7 +681,7 @@ export interface AppLinkDataAppLinkInfo {
   description?: LocalizedString;
 }
 
-export const AppLinkDataAppLinkInfo: Schema.Schema<AppLinkDataAppLinkInfo> =
+export const AppLinkDataAppLinkInfo: Schema.Codec<AppLinkDataAppLinkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appTarget: Schema.optional(AppLinkDataAppLinkInfoAppTarget),
     appLogoImage: Schema.optional(Image),
@@ -699,7 +700,7 @@ export interface AppLinkData {
   iosAppLinkInfo?: AppLinkDataAppLinkInfo;
 }
 
-export const AppLinkData: Schema.Schema<AppLinkData> =
+export const AppLinkData: Schema.Codec<AppLinkData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayText: Schema.optional(LocalizedString),
     androidAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
@@ -716,7 +717,7 @@ export interface TimeInterval {
   start?: DateTime;
 }
 
-export const TimeInterval: Schema.Schema<TimeInterval> =
+export const TimeInterval: Schema.Codec<TimeInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(DateTime),
     kind: Schema.optional(Schema.String),
@@ -728,7 +729,7 @@ export interface ModuleViewConstraints {
   displayInterval?: TimeInterval;
 }
 
-export const ModuleViewConstraints: Schema.Schema<ModuleViewConstraints> =
+export const ModuleViewConstraints: Schema.Codec<ModuleViewConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayInterval: Schema.optional(TimeInterval),
   }).annotate({ identifier: "ModuleViewConstraints" });
@@ -748,7 +749,7 @@ export interface ValueAddedModuleData {
   header?: LocalizedString;
 }
 
-export const ValueAddedModuleData: Schema.Schema<ValueAddedModuleData> =
+export const ValueAddedModuleData: Schema.Codec<ValueAddedModuleData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sortIndex: Schema.optional(Schema.Number),
     uri: Schema.optional(Schema.String),
@@ -767,7 +768,7 @@ export interface SecurityAnimation {
     | (string & {});
 }
 
-export const SecurityAnimation: Schema.Schema<SecurityAnimation> =
+export const SecurityAnimation: Schema.Codec<SecurityAnimation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     animationType: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecurityAnimation" });
@@ -785,7 +786,7 @@ export interface TextModuleData {
   localizedBody?: LocalizedString;
 }
 
-export const TextModuleData: Schema.Schema<TextModuleData> =
+export const TextModuleData: Schema.Codec<TextModuleData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
     localizedHeader: Schema.optional(LocalizedString),
@@ -803,7 +804,7 @@ export interface LatLongPoint {
   latitude?: number;
 }
 
-export const LatLongPoint: Schema.Schema<LatLongPoint> =
+export const LatLongPoint: Schema.Codec<LatLongPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     longitude: Schema.optional(Schema.Number),
@@ -836,7 +837,7 @@ export interface Message {
   localizedBody?: LocalizedString;
 }
 
-export const Message: Schema.Schema<Message> =
+export const Message: Schema.Codec<Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
     displayInterval: Schema.optional(TimeInterval),
@@ -853,7 +854,7 @@ export interface LinksModuleData {
   uris?: ReadonlyArray<Uri>;
 }
 
-export const LinksModuleData: Schema.Schema<LinksModuleData> =
+export const LinksModuleData: Schema.Codec<LinksModuleData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uris: Schema.optional(Schema.Array(Uri)),
   }).annotate({ identifier: "LinksModuleData" });
@@ -968,7 +969,7 @@ export interface GiftCardClass {
   wideProgramLogo?: Image;
 }
 
-export const GiftCardClass: Schema.Schema<GiftCardClass> =
+export const GiftCardClass: Schema.Codec<GiftCardClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
     localizedIssuerName: Schema.optional(LocalizedString),
@@ -1029,7 +1030,7 @@ export interface PassConstraints {
     | (string & {});
 }
 
-export const PassConstraints: Schema.Schema<PassConstraints> =
+export const PassConstraints: Schema.Codec<PassConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nfcConstraint: Schema.optional(Schema.Array(Schema.String)),
     screenshotEligibility: Schema.optional(Schema.String),
@@ -1040,7 +1041,7 @@ export interface SaveRestrictions {
   restrictToEmailSha256?: string;
 }
 
-export const SaveRestrictions: Schema.Schema<SaveRestrictions> =
+export const SaveRestrictions: Schema.Codec<SaveRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restrictToEmailSha256: Schema.optional(Schema.String),
   }).annotate({ identifier: "SaveRestrictions" });
@@ -1052,7 +1053,7 @@ export interface GroupingInfo {
   groupingId?: string;
 }
 
-export const GroupingInfo: Schema.Schema<GroupingInfo> =
+export const GroupingInfo: Schema.Codec<GroupingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sortIndex: Schema.optional(Schema.Number),
     groupingId: Schema.optional(Schema.String),
@@ -1102,7 +1103,7 @@ export interface Barcode {
   showCodeText?: LocalizedString;
 }
 
-export const Barcode: Schema.Schema<Barcode> =
+export const Barcode: Schema.Codec<Barcode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1194,7 +1195,7 @@ export interface GiftCardObject {
   linksModuleData?: LinksModuleData;
 }
 
-export const GiftCardObject: Schema.Schema<GiftCardObject> =
+export const GiftCardObject: Schema.Codec<GiftCardObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notifyPreference: Schema.optional(Schema.String),
     disableExpirationNotification: Schema.optional(Schema.Boolean),
@@ -1238,7 +1239,7 @@ export interface EventReservationInfo {
   confirmationCode?: string;
 }
 
-export const EventReservationInfo: Schema.Schema<EventReservationInfo> =
+export const EventReservationInfo: Schema.Codec<EventReservationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     confirmationCode: Schema.optional(Schema.String),
@@ -1251,7 +1252,7 @@ export interface AuthenticationKey {
   id?: number;
 }
 
-export const AuthenticationKey: Schema.Schema<AuthenticationKey> =
+export const AuthenticationKey: Schema.Codec<AuthenticationKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKeyPem: Schema.optional(Schema.String),
     id: Schema.optional(Schema.Number),
@@ -1266,7 +1267,7 @@ export interface EventVenue {
   address?: LocalizedString;
 }
 
-export const EventVenue: Schema.Schema<EventVenue> =
+export const EventVenue: Schema.Codec<EventVenue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(LocalizedString),
@@ -1294,7 +1295,7 @@ export interface EventDateTime {
   customDoorsOpenLabel?: LocalizedString;
 }
 
-export const EventDateTime: Schema.Schema<EventDateTime> =
+export const EventDateTime: Schema.Codec<EventDateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     doorsOpen: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
@@ -1450,7 +1451,7 @@ export interface EventTicketClass {
   eventName?: LocalizedString;
 }
 
-export const EventTicketClass: Schema.Schema<EventTicketClass> =
+export const EventTicketClass: Schema.Codec<EventTicketClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableSmartTap: Schema.optional(Schema.Boolean),
     countryCode: Schema.optional(Schema.String),
@@ -1514,7 +1515,7 @@ export interface EventSeat {
   seat?: LocalizedString;
 }
 
-export const EventSeat: Schema.Schema<EventSeat> =
+export const EventSeat: Schema.Codec<EventSeat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gate: Schema.optional(LocalizedString),
     kind: Schema.optional(Schema.String),
@@ -1611,7 +1612,7 @@ export interface EventTicketObject {
   valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
 }
 
-export const EventTicketObject: Schema.Schema<EventTicketObject> =
+export const EventTicketObject: Schema.Codec<EventTicketObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
     version: Schema.optional(Schema.String),
@@ -1656,7 +1657,7 @@ export interface EventTicketObjectAddMessageResponse {
   resource?: EventTicketObject;
 }
 
-export const EventTicketObjectAddMessageResponse: Schema.Schema<EventTicketObjectAddMessageResponse> =
+export const EventTicketObjectAddMessageResponse: Schema.Codec<EventTicketObjectAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(EventTicketObject),
   }).annotate({ identifier: "EventTicketObjectAddMessageResponse" });
@@ -1674,7 +1675,7 @@ export interface AirportInfo {
   airportIataCode?: string;
 }
 
-export const AirportInfo: Schema.Schema<AirportInfo> =
+export const AirportInfo: Schema.Codec<AirportInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     terminal: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1700,7 +1701,7 @@ export interface FlightCarrier {
   airlineLogo?: Image;
 }
 
-export const FlightCarrier: Schema.Schema<FlightCarrier> =
+export const FlightCarrier: Schema.Codec<FlightCarrier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     airlineAllianceLogo: Schema.optional(Image),
     kind: Schema.optional(Schema.String),
@@ -1726,7 +1727,7 @@ export interface Permission {
     | (string & {});
 }
 
-export const Permission: Schema.Schema<Permission> =
+export const Permission: Schema.Codec<Permission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -1737,7 +1738,7 @@ export interface GiftCardClassAddMessageResponse {
   resource?: GiftCardClass;
 }
 
-export const GiftCardClassAddMessageResponse: Schema.Schema<GiftCardClassAddMessageResponse> =
+export const GiftCardClassAddMessageResponse: Schema.Codec<GiftCardClassAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(GiftCardClass),
   }).annotate({ identifier: "GiftCardClassAddMessageResponse" });
@@ -1769,7 +1770,7 @@ export interface BoardingAndSeatingPolicy {
   kind?: string;
 }
 
-export const BoardingAndSeatingPolicy: Schema.Schema<BoardingAndSeatingPolicy> =
+export const BoardingAndSeatingPolicy: Schema.Codec<BoardingAndSeatingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boardingPolicy: Schema.optional(Schema.String),
     seatClassPolicy: Schema.optional(Schema.String),
@@ -1791,7 +1792,7 @@ export interface FlightHeader {
   operatingFlightNumber?: string;
 }
 
-export const FlightHeader: Schema.Schema<FlightHeader> =
+export const FlightHeader: Schema.Codec<FlightHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     flightNumber: Schema.optional(Schema.String),
@@ -1927,7 +1928,7 @@ export interface FlightClass {
   linksModuleData?: LinksModuleData;
 }
 
-export const FlightClass: Schema.Schema<FlightClass> =
+export const FlightClass: Schema.Codec<FlightClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
     languageOverride: Schema.optional(Schema.String),
@@ -1982,7 +1983,7 @@ export interface Pagination {
   nextPageToken?: string;
 }
 
-export const Pagination: Schema.Schema<Pagination> =
+export const Pagination: Schema.Codec<Pagination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultsPerPage: Schema.optional(Schema.Number),
     kind: Schema.optional(Schema.String),
@@ -1996,7 +1997,7 @@ export interface FlightClassListResponse {
   pagination?: Pagination;
 }
 
-export const FlightClassListResponse: Schema.Schema<FlightClassListResponse> =
+export const FlightClassListResponse: Schema.Codec<FlightClassListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(FlightClass)),
     pagination: Schema.optional(Pagination),
@@ -2009,7 +2010,7 @@ export interface SmartTapMerchantData {
   authenticationKeys?: ReadonlyArray<AuthenticationKey>;
 }
 
-export const SmartTapMerchantData: Schema.Schema<SmartTapMerchantData> =
+export const SmartTapMerchantData: Schema.Codec<SmartTapMerchantData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     smartTapMerchantId: Schema.optional(Schema.String),
     authenticationKeys: Schema.optional(Schema.Array(AuthenticationKey)),
@@ -2037,7 +2038,7 @@ export interface DiscoverableProgramMerchantSignupInfo {
   >;
 }
 
-export const DiscoverableProgramMerchantSignupInfo: Schema.Schema<DiscoverableProgramMerchantSignupInfo> =
+export const DiscoverableProgramMerchantSignupInfo: Schema.Codec<DiscoverableProgramMerchantSignupInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signupWebsite: Schema.optional(Uri),
     signupSharedDatas: Schema.optional(Schema.Array(Schema.String)),
@@ -2048,7 +2049,7 @@ export interface FlightClassAddMessageResponse {
   resource?: FlightClass;
 }
 
-export const FlightClassAddMessageResponse: Schema.Schema<FlightClassAddMessageResponse> =
+export const FlightClassAddMessageResponse: Schema.Codec<FlightClassAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(FlightClass),
   }).annotate({ identifier: "FlightClassAddMessageResponse" });
@@ -2080,7 +2081,7 @@ export interface BoardingAndSeatingInfo {
   seatNumber?: string;
 }
 
-export const BoardingAndSeatingInfo: Schema.Schema<BoardingAndSeatingInfo> =
+export const BoardingAndSeatingInfo: Schema.Codec<BoardingAndSeatingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boardingPosition: Schema.optional(Schema.String),
     boardingGroup: Schema.optional(Schema.String),
@@ -2102,7 +2103,7 @@ export interface FrequentFlyerInfo {
   frequentFlyerNumber?: string;
 }
 
-export const FrequentFlyerInfo: Schema.Schema<FrequentFlyerInfo> =
+export const FrequentFlyerInfo: Schema.Codec<FrequentFlyerInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     frequentFlyerProgramName: Schema.optional(LocalizedString),
@@ -2120,7 +2121,7 @@ export interface ReservationInfo {
   eticketNumber?: string;
 }
 
-export const ReservationInfo: Schema.Schema<ReservationInfo> =
+export const ReservationInfo: Schema.Codec<ReservationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     frequentFlyerInfo: Schema.optional(FrequentFlyerInfo),
@@ -2210,7 +2211,7 @@ export interface FlightObject {
   linkedObjectIds?: ReadonlyArray<string>;
 }
 
-export const FlightObject: Schema.Schema<FlightObject> =
+export const FlightObject: Schema.Codec<FlightObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
     classId: Schema.optional(Schema.String),
@@ -2254,7 +2255,7 @@ export interface FlightObjectListResponse {
   pagination?: Pagination;
 }
 
-export const FlightObjectListResponse: Schema.Schema<FlightObjectListResponse> =
+export const FlightObjectListResponse: Schema.Codec<FlightObjectListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(FlightObject)),
     pagination: Schema.optional(Pagination),
@@ -2277,7 +2278,7 @@ export interface ContentTypeInfo {
   fromFusionId?: string;
 }
 
-export const ContentTypeInfo: Schema.Schema<ContentTypeInfo> =
+export const ContentTypeInfo: Schema.Codec<ContentTypeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fromHeader: Schema.optional(Schema.String),
     fusionIdDetectionMetadata: Schema.optional(Schema.String),
@@ -2293,7 +2294,7 @@ export interface DiscoverableProgramMerchantSigninInfo {
   signinWebsite?: Uri;
 }
 
-export const DiscoverableProgramMerchantSigninInfo: Schema.Schema<DiscoverableProgramMerchantSigninInfo> =
+export const DiscoverableProgramMerchantSigninInfo: Schema.Codec<DiscoverableProgramMerchantSigninInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signinWebsite: Schema.optional(Uri),
   }).annotate({ identifier: "DiscoverableProgramMerchantSigninInfo" });
@@ -2315,7 +2316,7 @@ export interface DiscoverableProgram {
   merchantSigninInfo?: DiscoverableProgramMerchantSigninInfo;
 }
 
-export const DiscoverableProgram: Schema.Schema<DiscoverableProgram> =
+export const DiscoverableProgram: Schema.Codec<DiscoverableProgram> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     merchantSignupInfo: Schema.optional(DiscoverableProgramMerchantSignupInfo),
     state: Schema.optional(Schema.String),
@@ -2444,7 +2445,7 @@ export interface LoyaltyClass {
     | (string & {});
 }
 
-export const LoyaltyClass: Schema.Schema<LoyaltyClass> =
+export const LoyaltyClass: Schema.Codec<LoyaltyClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
     redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
@@ -2506,7 +2507,7 @@ export interface TicketRestrictions {
   otherRestrictions?: LocalizedString;
 }
 
-export const TicketRestrictions: Schema.Schema<TicketRestrictions> =
+export const TicketRestrictions: Schema.Codec<TicketRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routeRestrictions: Schema.optional(LocalizedString),
     routeRestrictionsDetails: Schema.optional(LocalizedString),
@@ -2523,7 +2524,7 @@ export interface TicketCost {
   discountMessage?: LocalizedString;
 }
 
-export const TicketCost: Schema.Schema<TicketCost> =
+export const TicketCost: Schema.Codec<TicketCost> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     faceValue: Schema.optional(Money),
     purchasePrice: Schema.optional(Money),
@@ -2543,7 +2544,7 @@ export interface PurchaseDetails {
   ticketCost?: TicketCost;
 }
 
-export const PurchaseDetails: Schema.Schema<PurchaseDetails> =
+export const PurchaseDetails: Schema.Codec<PurchaseDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confirmationCode: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -2557,7 +2558,7 @@ export interface DeviceContext {
   deviceToken?: string;
 }
 
-export const DeviceContext: Schema.Schema<DeviceContext> =
+export const DeviceContext: Schema.Codec<DeviceContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeviceContext" });
@@ -2569,7 +2570,7 @@ export interface ActivationOptions {
   allowReactivation?: boolean;
 }
 
-export const ActivationOptions: Schema.Schema<ActivationOptions> =
+export const ActivationOptions: Schema.Codec<ActivationOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activationUrl: Schema.optional(Schema.String),
     allowReactivation: Schema.optional(Schema.Boolean),
@@ -2727,7 +2728,7 @@ export interface TransitClass {
   customTimeRestrictionsLabel?: LocalizedString;
 }
 
-export const TransitClass: Schema.Schema<TransitClass> =
+export const TransitClass: Schema.Codec<TransitClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customTransitTerminusNameLabel: Schema.optional(LocalizedString),
     appLinkData: Schema.optional(AppLinkData),
@@ -2797,7 +2798,7 @@ export interface ActivationStatus {
     | (string & {});
 }
 
-export const ActivationStatus: Schema.Schema<ActivationStatus> =
+export const ActivationStatus: Schema.Codec<ActivationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActivationStatus" });
@@ -2823,7 +2824,7 @@ export interface TicketSeat {
   coach?: string;
 }
 
-export const TicketSeat: Schema.Schema<TicketSeat> =
+export const TicketSeat: Schema.Codec<TicketSeat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seat: Schema.optional(Schema.String),
     customFareClass: Schema.optional(LocalizedString),
@@ -2863,7 +2864,7 @@ export interface TicketLeg {
   destinationStationCode?: string;
 }
 
-export const TicketLeg: Schema.Schema<TicketLeg> =
+export const TicketLeg: Schema.Codec<TicketLeg> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     carriage: Schema.optional(Schema.String),
     ticketSeat: Schema.optional(TicketSeat),
@@ -3011,7 +3012,7 @@ export interface TransitObject {
   hasUsers?: boolean;
 }
 
-export const TransitObject: Schema.Schema<TransitObject> =
+export const TransitObject: Schema.Codec<TransitObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customConcessionCategory: Schema.optional(LocalizedString),
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
@@ -3063,7 +3064,7 @@ export interface TransitObjectAddMessageResponse {
   resource?: TransitObject;
 }
 
-export const TransitObjectAddMessageResponse: Schema.Schema<TransitObjectAddMessageResponse> =
+export const TransitObjectAddMessageResponse: Schema.Codec<TransitObjectAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(TransitObject),
   }).annotate({ identifier: "TransitObjectAddMessageResponse" });
@@ -3085,7 +3086,7 @@ export interface Blobstore2Info {
   uploadFragmentListCreationInfo?: string;
 }
 
-export const Blobstore2Info: Schema.Schema<Blobstore2Info> =
+export const Blobstore2Info: Schema.Codec<Blobstore2Info> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobGeneration: Schema.optional(Schema.String),
     readToken: Schema.optional(Schema.String),
@@ -3105,7 +3106,7 @@ export interface ObjectId {
   objectName?: string;
 }
 
-export const ObjectId: Schema.Schema<ObjectId> =
+export const ObjectId: Schema.Codec<ObjectId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generation: Schema.optional(Schema.String),
     bucketName: Schema.optional(Schema.String),
@@ -3143,7 +3144,7 @@ export interface CompositeMedia {
   path?: string;
 }
 
-export const CompositeMedia: Schema.Schema<CompositeMedia> =
+export const CompositeMedia: Schema.Codec<CompositeMedia> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cosmoBinaryReference: Schema.optional(Schema.String),
     length: Schema.optional(Schema.String),
@@ -3284,7 +3285,7 @@ export interface OfferClass {
   countryCode?: string;
 }
 
-export const OfferClass: Schema.Schema<OfferClass> =
+export const OfferClass: Schema.Codec<OfferClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityAnimation: Schema.optional(SecurityAnimation),
     valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
@@ -3337,7 +3338,7 @@ export interface ExpiryNotification {
   enableNotification?: boolean;
 }
 
-export const ExpiryNotification: Schema.Schema<ExpiryNotification> =
+export const ExpiryNotification: Schema.Codec<ExpiryNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableNotification: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ExpiryNotification" });
@@ -3349,7 +3350,7 @@ export interface Notifications {
   upcomingNotification?: UpcomingNotification;
 }
 
-export const Notifications: Schema.Schema<Notifications> =
+export const Notifications: Schema.Codec<Notifications> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expiryNotification: Schema.optional(ExpiryNotification),
     upcomingNotification: Schema.optional(UpcomingNotification),
@@ -3445,7 +3446,7 @@ export interface GenericObject {
   appLinkData?: AppLinkData;
 }
 
-export const GenericObject: Schema.Schema<GenericObject> =
+export const GenericObject: Schema.Codec<GenericObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupingInfo: Schema.optional(GroupingInfo),
     barcode: Schema.optional(Barcode),
@@ -3488,7 +3489,7 @@ export interface LoyaltyPointsBalance {
   money?: Money;
 }
 
-export const LoyaltyPointsBalance: Schema.Schema<LoyaltyPointsBalance> =
+export const LoyaltyPointsBalance: Schema.Codec<LoyaltyPointsBalance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     double: Schema.optional(Schema.Number),
     string: Schema.optional(Schema.String),
@@ -3505,7 +3506,7 @@ export interface LoyaltyPoints {
   balance?: LoyaltyPointsBalance;
 }
 
-export const LoyaltyPoints: Schema.Schema<LoyaltyPoints> =
+export const LoyaltyPoints: Schema.Codec<LoyaltyPoints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     localizedLabel: Schema.optional(LocalizedString),
@@ -3594,7 +3595,7 @@ export interface LoyaltyObject {
   accountName?: string;
 }
 
-export const LoyaltyObject: Schema.Schema<LoyaltyObject> =
+export const LoyaltyObject: Schema.Codec<LoyaltyObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rotatingBarcode: Schema.optional(RotatingBarcode),
     merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
@@ -3703,7 +3704,7 @@ export interface OfferObject {
   hasUsers?: boolean;
 }
 
-export const OfferObject: Schema.Schema<OfferObject> =
+export const OfferObject: Schema.Codec<OfferObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
     disableExpirationNotification: Schema.optional(Schema.Boolean),
@@ -3780,7 +3781,7 @@ export interface GenericClass {
   imageModulesData?: ReadonlyArray<ImageModuleData>;
 }
 
-export const GenericClass: Schema.Schema<GenericClass> =
+export const GenericClass: Schema.Codec<GenericClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     classTemplateInfo: Schema.optional(ClassTemplateInfo),
     linksModuleData: Schema.optional(LinksModuleData),
@@ -3830,7 +3831,7 @@ export interface Resources {
   genericClasses?: ReadonlyArray<GenericClass>;
 }
 
-export const Resources: Schema.Schema<Resources> =
+export const Resources: Schema.Codec<Resources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flightClasses: Schema.optional(Schema.Array(FlightClass)),
     offerClasses: Schema.optional(Schema.Array(OfferClass)),
@@ -3850,7 +3851,7 @@ export const Resources: Schema.Schema<Resources> =
 
 export interface TransitObjectUploadRotatingBarcodeValuesResponse {}
 
-export const TransitObjectUploadRotatingBarcodeValuesResponse: Schema.Schema<TransitObjectUploadRotatingBarcodeValuesResponse> =
+export const TransitObjectUploadRotatingBarcodeValuesResponse: Schema.Codec<TransitObjectUploadRotatingBarcodeValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TransitObjectUploadRotatingBarcodeValuesResponse",
   });
@@ -3859,7 +3860,7 @@ export interface AddMessageRequest {
   message?: Message;
 }
 
-export const AddMessageRequest: Schema.Schema<AddMessageRequest> =
+export const AddMessageRequest: Schema.Codec<AddMessageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "AddMessageRequest" });
@@ -3871,7 +3872,7 @@ export interface OfferClassListResponse {
   pagination?: Pagination;
 }
 
-export const OfferClassListResponse: Schema.Schema<OfferClassListResponse> =
+export const OfferClassListResponse: Schema.Codec<OfferClassListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(OfferClass)),
     pagination: Schema.optional(Pagination),
@@ -3882,7 +3883,7 @@ export interface EventTicketClassAddMessageResponse {
   resource?: EventTicketClass;
 }
 
-export const EventTicketClassAddMessageResponse: Schema.Schema<EventTicketClassAddMessageResponse> =
+export const EventTicketClassAddMessageResponse: Schema.Codec<EventTicketClassAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(EventTicketClass),
   }).annotate({ identifier: "EventTicketClassAddMessageResponse" });
@@ -3894,7 +3895,7 @@ export interface DownloadParameters {
   ignoreRange?: boolean;
 }
 
-export const DownloadParameters: Schema.Schema<DownloadParameters> =
+export const DownloadParameters: Schema.Codec<DownloadParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowGzipCompression: Schema.optional(Schema.Boolean),
     ignoreRange: Schema.optional(Schema.Boolean),
@@ -3905,7 +3906,7 @@ export interface GenericObjectAddMessageResponse {
   resource?: GenericObject;
 }
 
-export const GenericObjectAddMessageResponse: Schema.Schema<GenericObjectAddMessageResponse> =
+export const GenericObjectAddMessageResponse: Schema.Codec<GenericObjectAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(GenericObject),
   }).annotate({ identifier: "GenericObjectAddMessageResponse" });
@@ -3915,7 +3916,7 @@ export interface OfferObjectAddMessageResponse {
   resource?: OfferObject;
 }
 
-export const OfferObjectAddMessageResponse: Schema.Schema<OfferObjectAddMessageResponse> =
+export const OfferObjectAddMessageResponse: Schema.Codec<OfferObjectAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(OfferObject),
   }).annotate({ identifier: "OfferObjectAddMessageResponse" });
@@ -3933,7 +3934,7 @@ export interface DiffChecksumsResponse {
   objectVersion?: string;
 }
 
-export const DiffChecksumsResponse: Schema.Schema<DiffChecksumsResponse> =
+export const DiffChecksumsResponse: Schema.Codec<DiffChecksumsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectSizeBytes: Schema.optional(Schema.String),
     checksumsLocation: Schema.optional(CompositeMedia),
@@ -3949,7 +3950,7 @@ export interface EventTicketClassListResponse {
   pagination?: Pagination;
 }
 
-export const EventTicketClassListResponse: Schema.Schema<EventTicketClassListResponse> =
+export const EventTicketClassListResponse: Schema.Codec<EventTicketClassListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(EventTicketClass)),
     pagination: Schema.optional(Pagination),
@@ -3964,7 +3965,7 @@ export interface DiffUploadRequest {
   checksumsInfo?: CompositeMedia;
 }
 
-export const DiffUploadRequest: Schema.Schema<DiffUploadRequest> =
+export const DiffUploadRequest: Schema.Codec<DiffUploadRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectInfo: Schema.optional(CompositeMedia),
@@ -3976,7 +3977,7 @@ export interface DiffDownloadResponse {
   objectLocation?: CompositeMedia;
 }
 
-export const DiffDownloadResponse: Schema.Schema<DiffDownloadResponse> =
+export const DiffDownloadResponse: Schema.Codec<DiffDownloadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectLocation: Schema.optional(CompositeMedia),
   }).annotate({ identifier: "DiffDownloadResponse" });
@@ -3988,7 +3989,7 @@ export interface DiffVersionResponse {
   objectSizeBytes?: string;
 }
 
-export const DiffVersionResponse: Schema.Schema<DiffVersionResponse> =
+export const DiffVersionResponse: Schema.Codec<DiffVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectSizeBytes: Schema.optional(Schema.String),
@@ -4001,7 +4002,7 @@ export interface DiffUploadResponse {
   objectVersion?: string;
 }
 
-export const DiffUploadResponse: Schema.Schema<DiffUploadResponse> =
+export const DiffUploadResponse: Schema.Codec<DiffUploadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalObject: Schema.optional(CompositeMedia),
     objectVersion: Schema.optional(Schema.String),
@@ -4086,7 +4087,7 @@ export interface Media {
   crc32cHash?: number;
 }
 
-export const Media: Schema.Schema<Media> =
+export const Media: Schema.Codec<Media> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     blobRef: Schema.optional(Schema.String),
@@ -4128,7 +4129,7 @@ export interface OfferObjectListResponse {
   pagination?: Pagination;
 }
 
-export const OfferObjectListResponse: Schema.Schema<OfferObjectListResponse> =
+export const OfferObjectListResponse: Schema.Codec<OfferObjectListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(OfferObject)),
     pagination: Schema.optional(Pagination),
@@ -4139,7 +4140,7 @@ export interface UploadPrivateImageResponse {
   privateImageId?: string;
 }
 
-export const UploadPrivateImageResponse: Schema.Schema<UploadPrivateImageResponse> =
+export const UploadPrivateImageResponse: Schema.Codec<UploadPrivateImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateImageId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UploadPrivateImageResponse" });
@@ -4151,7 +4152,7 @@ export interface JwtInsertResponse {
   saveUri?: string;
 }
 
-export const JwtInsertResponse: Schema.Schema<JwtInsertResponse> =
+export const JwtInsertResponse: Schema.Codec<JwtInsertResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Resources),
     saveUri: Schema.optional(Schema.String),
@@ -4186,7 +4187,7 @@ export interface MediaRequestInfo {
   totalBytes?: string;
 }
 
-export const MediaRequestInfo: Schema.Schema<MediaRequestInfo> =
+export const MediaRequestInfo: Schema.Codec<MediaRequestInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notificationType: Schema.optional(Schema.String),
     totalBytesIsEstimated: Schema.optional(Schema.Boolean),
@@ -4207,7 +4208,7 @@ export interface TransitObjectUploadRotatingBarcodeValuesRequest {
   blob?: Media;
 }
 
-export const TransitObjectUploadRotatingBarcodeValuesRequest: Schema.Schema<TransitObjectUploadRotatingBarcodeValuesRequest> =
+export const TransitObjectUploadRotatingBarcodeValuesRequest: Schema.Codec<TransitObjectUploadRotatingBarcodeValuesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mediaRequestInfo: Schema.optional(MediaRequestInfo),
     blob: Schema.optional(Media),
@@ -4222,7 +4223,7 @@ export interface GiftCardObjectListResponse {
   pagination?: Pagination;
 }
 
-export const GiftCardObjectListResponse: Schema.Schema<GiftCardObjectListResponse> =
+export const GiftCardObjectListResponse: Schema.Codec<GiftCardObjectListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GiftCardObject)),
     pagination: Schema.optional(Pagination),
@@ -4233,7 +4234,7 @@ export interface TransitClassAddMessageResponse {
   resource?: TransitClass;
 }
 
-export const TransitClassAddMessageResponse: Schema.Schema<TransitClassAddMessageResponse> =
+export const TransitClassAddMessageResponse: Schema.Codec<TransitClassAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(TransitClass),
   }).annotate({ identifier: "TransitClassAddMessageResponse" });
@@ -4245,7 +4246,7 @@ export interface TransitObjectListResponse {
   pagination?: Pagination;
 }
 
-export const TransitObjectListResponse: Schema.Schema<TransitObjectListResponse> =
+export const TransitObjectListResponse: Schema.Codec<TransitObjectListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(TransitObject)),
     pagination: Schema.optional(Pagination),
@@ -4256,7 +4257,7 @@ export interface OfferClassAddMessageResponse {
   resource?: OfferClass;
 }
 
-export const OfferClassAddMessageResponse: Schema.Schema<OfferClassAddMessageResponse> =
+export const OfferClassAddMessageResponse: Schema.Codec<OfferClassAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(OfferClass),
   }).annotate({ identifier: "OfferClassAddMessageResponse" });
@@ -4268,7 +4269,7 @@ export interface Permissions {
   permissions?: ReadonlyArray<Permission>;
 }
 
-export const Permissions: Schema.Schema<Permissions> =
+export const Permissions: Schema.Codec<Permissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issuerId: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Permission)),
@@ -4281,7 +4282,7 @@ export interface LoyaltyObjectListResponse {
   pagination?: Pagination;
 }
 
-export const LoyaltyObjectListResponse: Schema.Schema<LoyaltyObjectListResponse> =
+export const LoyaltyObjectListResponse: Schema.Codec<LoyaltyObjectListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(LoyaltyObject)),
     pagination: Schema.optional(Pagination),
@@ -4298,7 +4299,7 @@ export interface IssuerContactInfo {
   name?: string;
 }
 
-export const IssuerContactInfo: Schema.Schema<IssuerContactInfo> =
+export const IssuerContactInfo: Schema.Codec<IssuerContactInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phone: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -4321,7 +4322,7 @@ export interface Issuer {
   callbackOptions?: CallbackOptions;
 }
 
-export const Issuer: Schema.Schema<Issuer> =
+export const Issuer: Schema.Codec<Issuer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     smartTapMerchantData: Schema.optional(SmartTapMerchantData),
     contactInfo: Schema.optional(IssuerContactInfo),
@@ -4333,7 +4334,7 @@ export const Issuer: Schema.Schema<Issuer> =
 
 export interface UploadPrivateImageRequest {}
 
-export const UploadPrivateImageRequest: Schema.Schema<UploadPrivateImageRequest> =
+export const UploadPrivateImageRequest: Schema.Codec<UploadPrivateImageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadPrivateImageRequest",
   });
@@ -4343,7 +4344,7 @@ export interface JwtResource {
   jwt?: string;
 }
 
-export const JwtResource: Schema.Schema<JwtResource> =
+export const JwtResource: Schema.Codec<JwtResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jwt: Schema.optional(Schema.String),
   }).annotate({ identifier: "JwtResource" });
@@ -4353,7 +4354,7 @@ export interface GenericClassAddMessageResponse {
   resource?: GenericClass;
 }
 
-export const GenericClassAddMessageResponse: Schema.Schema<GenericClassAddMessageResponse> =
+export const GenericClassAddMessageResponse: Schema.Codec<GenericClassAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(GenericClass),
   }).annotate({ identifier: "GenericClassAddMessageResponse" });
@@ -4363,7 +4364,7 @@ export interface LoyaltyObjectAddMessageResponse {
   resource?: LoyaltyObject;
 }
 
-export const LoyaltyObjectAddMessageResponse: Schema.Schema<LoyaltyObjectAddMessageResponse> =
+export const LoyaltyObjectAddMessageResponse: Schema.Codec<LoyaltyObjectAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(LoyaltyObject),
   }).annotate({ identifier: "LoyaltyObjectAddMessageResponse" });
@@ -4375,7 +4376,7 @@ export interface LoyaltyClassListResponse {
   pagination?: Pagination;
 }
 
-export const LoyaltyClassListResponse: Schema.Schema<LoyaltyClassListResponse> =
+export const LoyaltyClassListResponse: Schema.Codec<LoyaltyClassListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(LoyaltyClass)),
     pagination: Schema.optional(Pagination),
@@ -4388,7 +4389,7 @@ export interface GenericClassListResponse {
   pagination?: Pagination;
 }
 
-export const GenericClassListResponse: Schema.Schema<GenericClassListResponse> =
+export const GenericClassListResponse: Schema.Codec<GenericClassListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GenericClass)),
     pagination: Schema.optional(Pagination),
@@ -4399,7 +4400,7 @@ export interface LoyaltyClassAddMessageResponse {
   resource?: LoyaltyClass;
 }
 
-export const LoyaltyClassAddMessageResponse: Schema.Schema<LoyaltyClassAddMessageResponse> =
+export const LoyaltyClassAddMessageResponse: Schema.Codec<LoyaltyClassAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(LoyaltyClass),
   }).annotate({ identifier: "LoyaltyClassAddMessageResponse" });
@@ -4409,7 +4410,7 @@ export interface FlightObjectAddMessageResponse {
   resource?: FlightObject;
 }
 
-export const FlightObjectAddMessageResponse: Schema.Schema<FlightObjectAddMessageResponse> =
+export const FlightObjectAddMessageResponse: Schema.Codec<FlightObjectAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(FlightObject),
   }).annotate({ identifier: "FlightObjectAddMessageResponse" });
@@ -4421,7 +4422,7 @@ export interface TransitClassListResponse {
   pagination?: Pagination;
 }
 
-export const TransitClassListResponse: Schema.Schema<TransitClassListResponse> =
+export const TransitClassListResponse: Schema.Codec<TransitClassListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(TransitClass)),
     pagination: Schema.optional(Pagination),
@@ -4434,7 +4435,7 @@ export interface GenericObjectListResponse {
   pagination?: Pagination;
 }
 
-export const GenericObjectListResponse: Schema.Schema<GenericObjectListResponse> =
+export const GenericObjectListResponse: Schema.Codec<GenericObjectListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GenericObject)),
     pagination: Schema.optional(Pagination),
@@ -4445,7 +4446,7 @@ export interface IssuerListResponse {
   resources?: ReadonlyArray<Issuer>;
 }
 
-export const IssuerListResponse: Schema.Schema<IssuerListResponse> =
+export const IssuerListResponse: Schema.Codec<IssuerListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Issuer)),
   }).annotate({ identifier: "IssuerListResponse" });
@@ -4457,7 +4458,7 @@ export interface GiftCardClassListResponse {
   pagination?: Pagination;
 }
 
-export const GiftCardClassListResponse: Schema.Schema<GiftCardClassListResponse> =
+export const GiftCardClassListResponse: Schema.Codec<GiftCardClassListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GiftCardClass)),
     pagination: Schema.optional(Pagination),
@@ -4465,7 +4466,7 @@ export const GiftCardClassListResponse: Schema.Schema<GiftCardClassListResponse>
 
 export interface SetPassUpdateNoticeResponse {}
 
-export const SetPassUpdateNoticeResponse: Schema.Schema<SetPassUpdateNoticeResponse> =
+export const SetPassUpdateNoticeResponse: Schema.Codec<SetPassUpdateNoticeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPassUpdateNoticeResponse",
   });
@@ -4475,7 +4476,7 @@ export interface GiftCardObjectAddMessageResponse {
   resource?: GiftCardObject;
 }
 
-export const GiftCardObjectAddMessageResponse: Schema.Schema<GiftCardObjectAddMessageResponse> =
+export const GiftCardObjectAddMessageResponse: Schema.Codec<GiftCardObjectAddMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(GiftCardObject),
   }).annotate({ identifier: "GiftCardObjectAddMessageResponse" });
@@ -4487,7 +4488,7 @@ export interface EventTicketObjectListResponse {
   pagination?: Pagination;
 }
 
-export const EventTicketObjectListResponse: Schema.Schema<EventTicketObjectListResponse> =
+export const EventTicketObjectListResponse: Schema.Codec<EventTicketObjectListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(EventTicketObject)),
     pagination: Schema.optional(Pagination),
@@ -4557,7 +4558,7 @@ export const InsertJwtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "walletobjects/v1/jwt", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertJwtRequest>;
+) as unknown as Schema.Codec<InsertJwtRequest>;
 
 export type InsertJwtResponse = JwtInsertResponse;
 export const InsertJwtResponse = /*@__PURE__*/ /*#__PURE__*/ JwtInsertResponse;
@@ -4596,7 +4597,7 @@ export const InsertOfferclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertOfferclassRequest>;
+  ) as unknown as Schema.Codec<InsertOfferclassRequest>;
 
 export type InsertOfferclassResponse = OfferClass;
 export const InsertOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
@@ -4636,7 +4637,7 @@ export const ListOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/offerClass" }),
   svc,
-) as unknown as Schema.Schema<ListOfferclassRequest>;
+) as unknown as Schema.Codec<ListOfferclassRequest>;
 
 export type ListOfferclassResponse = OfferClassListResponse;
 export const ListOfferclassResponse =
@@ -4675,7 +4676,7 @@ export const PatchOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchOfferclassRequest>;
+) as unknown as Schema.Codec<PatchOfferclassRequest>;
 
 export type PatchOfferclassResponse = OfferClass;
 export const PatchOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
@@ -4717,7 +4718,7 @@ export const AddmessageOfferclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageOfferclassRequest>;
+  ) as unknown as Schema.Codec<AddmessageOfferclassRequest>;
 
 export type AddmessageOfferclassResponse = OfferClassAddMessageResponse;
 export const AddmessageOfferclassResponse =
@@ -4760,7 +4761,7 @@ export const UpdateOfferclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOfferclassRequest>;
+  ) as unknown as Schema.Codec<UpdateOfferclassRequest>;
 
 export type UpdateOfferclassResponse = OfferClass;
 export const UpdateOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
@@ -4794,7 +4795,7 @@ export const GetOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/offerClass/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetOfferclassRequest>;
+) as unknown as Schema.Codec<GetOfferclassRequest>;
 
 export type GetOfferclassResponse = OfferClass;
 export const GetOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
@@ -4827,7 +4828,7 @@ export const GetEventticketobjectRequest =
       path: "walletobjects/v1/eventTicketObject/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEventticketobjectRequest>;
+  ) as unknown as Schema.Codec<GetEventticketobjectRequest>;
 
 export type GetEventticketobjectResponse = EventTicketObject;
 export const GetEventticketobjectResponse =
@@ -4865,7 +4866,7 @@ export const AddmessageEventticketobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageEventticketobjectRequest>;
+  ) as unknown as Schema.Codec<AddmessageEventticketobjectRequest>;
 
 export type AddmessageEventticketobjectResponse =
   EventTicketObjectAddMessageResponse;
@@ -4909,7 +4910,7 @@ export const UpdateEventticketobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEventticketobjectRequest>;
+  ) as unknown as Schema.Codec<UpdateEventticketobjectRequest>;
 
 export type UpdateEventticketobjectResponse = EventTicketObject;
 export const UpdateEventticketobjectResponse =
@@ -4951,7 +4952,7 @@ export const ListEventticketobjectRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/eventTicketObject" }),
     svc,
-  ) as unknown as Schema.Schema<ListEventticketobjectRequest>;
+  ) as unknown as Schema.Codec<ListEventticketobjectRequest>;
 
 export type ListEventticketobjectResponse = EventTicketObjectListResponse;
 export const ListEventticketobjectResponse =
@@ -4989,7 +4990,7 @@ export const ModifylinkedofferobjectsEventticketobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifylinkedofferobjectsEventticketobjectRequest>;
+  ) as unknown as Schema.Codec<ModifylinkedofferobjectsEventticketobjectRequest>;
 
 export type ModifylinkedofferobjectsEventticketobjectResponse =
   EventTicketObject;
@@ -5033,7 +5034,7 @@ export const PatchEventticketobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchEventticketobjectRequest>;
+  ) as unknown as Schema.Codec<PatchEventticketobjectRequest>;
 
 export type PatchEventticketobjectResponse = EventTicketObject;
 export const PatchEventticketobjectResponse =
@@ -5073,7 +5074,7 @@ export const InsertEventticketobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertEventticketobjectRequest>;
+  ) as unknown as Schema.Codec<InsertEventticketobjectRequest>;
 
 export type InsertEventticketobjectResponse = EventTicketObject;
 export const InsertEventticketobjectResponse =
@@ -5113,7 +5114,7 @@ export const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest>;
+  ) as unknown as Schema.Codec<SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest>;
 
 export type SetPassUpdateNoticeWalletobjectsV1PrivateContentResponse =
   SetPassUpdateNoticeResponse;
@@ -5156,7 +5157,7 @@ export const ListLoyaltyobjectRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/loyaltyObject" }),
     svc,
-  ) as unknown as Schema.Schema<ListLoyaltyobjectRequest>;
+  ) as unknown as Schema.Codec<ListLoyaltyobjectRequest>;
 
 export type ListLoyaltyobjectResponse = LoyaltyObjectListResponse;
 export const ListLoyaltyobjectResponse =
@@ -5194,7 +5195,7 @@ export const ModifylinkedofferobjectsLoyaltyobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifylinkedofferobjectsLoyaltyobjectRequest>;
+  ) as unknown as Schema.Codec<ModifylinkedofferobjectsLoyaltyobjectRequest>;
 
 export type ModifylinkedofferobjectsLoyaltyobjectResponse = LoyaltyObject;
 export const ModifylinkedofferobjectsLoyaltyobjectResponse =
@@ -5237,7 +5238,7 @@ export const PatchLoyaltyobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchLoyaltyobjectRequest>;
+  ) as unknown as Schema.Codec<PatchLoyaltyobjectRequest>;
 
 export type PatchLoyaltyobjectResponse = LoyaltyObject;
 export const PatchLoyaltyobjectResponse =
@@ -5277,7 +5278,7 @@ export const InsertLoyaltyobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertLoyaltyobjectRequest>;
+  ) as unknown as Schema.Codec<InsertLoyaltyobjectRequest>;
 
 export type InsertLoyaltyobjectResponse = LoyaltyObject;
 export const InsertLoyaltyobjectResponse =
@@ -5316,7 +5317,7 @@ export const GetLoyaltyobjectRequest =
       path: "walletobjects/v1/loyaltyObject/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetLoyaltyobjectRequest>;
+  ) as unknown as Schema.Codec<GetLoyaltyobjectRequest>;
 
 export type GetLoyaltyobjectResponse = LoyaltyObject;
 export const GetLoyaltyobjectResponse =
@@ -5354,7 +5355,7 @@ export const AddmessageLoyaltyobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageLoyaltyobjectRequest>;
+  ) as unknown as Schema.Codec<AddmessageLoyaltyobjectRequest>;
 
 export type AddmessageLoyaltyobjectResponse = LoyaltyObjectAddMessageResponse;
 export const AddmessageLoyaltyobjectResponse =
@@ -5397,7 +5398,7 @@ export const UpdateLoyaltyobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateLoyaltyobjectRequest>;
+  ) as unknown as Schema.Codec<UpdateLoyaltyobjectRequest>;
 
 export type UpdateLoyaltyobjectResponse = LoyaltyObject;
 export const UpdateLoyaltyobjectResponse =
@@ -5441,7 +5442,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse =
   TransitObjectUploadRotatingBarcodeValuesResponse;
@@ -5480,7 +5481,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues",
   }),
   svc,
-) as unknown as Schema.Schema<DownloadMediaRequest>;
+) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Media;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
@@ -5514,7 +5515,7 @@ export const InsertGiftcardclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGiftcardclassRequest>;
+  ) as unknown as Schema.Codec<InsertGiftcardclassRequest>;
 
 export type InsertGiftcardclassResponse = GiftCardClass;
 export const InsertGiftcardclassResponse =
@@ -5556,7 +5557,7 @@ export const ListGiftcardclassRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/giftCardClass" }),
     svc,
-  ) as unknown as Schema.Schema<ListGiftcardclassRequest>;
+  ) as unknown as Schema.Codec<ListGiftcardclassRequest>;
 
 export type ListGiftcardclassResponse = GiftCardClassListResponse;
 export const ListGiftcardclassResponse =
@@ -5594,7 +5595,7 @@ export const PatchGiftcardclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchGiftcardclassRequest>;
+  ) as unknown as Schema.Codec<PatchGiftcardclassRequest>;
 
 export type PatchGiftcardclassResponse = GiftCardClass;
 export const PatchGiftcardclassResponse =
@@ -5637,7 +5638,7 @@ export const UpdateGiftcardclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGiftcardclassRequest>;
+  ) as unknown as Schema.Codec<UpdateGiftcardclassRequest>;
 
 export type UpdateGiftcardclassResponse = GiftCardClass;
 export const UpdateGiftcardclassResponse =
@@ -5680,7 +5681,7 @@ export const AddmessageGiftcardclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageGiftcardclassRequest>;
+  ) as unknown as Schema.Codec<AddmessageGiftcardclassRequest>;
 
 export type AddmessageGiftcardclassResponse = GiftCardClassAddMessageResponse;
 export const AddmessageGiftcardclassResponse =
@@ -5719,7 +5720,7 @@ export const GetGiftcardclassRequest =
       path: "walletobjects/v1/giftCardClass/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGiftcardclassRequest>;
+  ) as unknown as Schema.Codec<GetGiftcardclassRequest>;
 
 export type GetGiftcardclassResponse = GiftCardClass;
 export const GetGiftcardclassResponse =
@@ -5754,7 +5755,7 @@ export const InsertFlightobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertFlightobjectRequest>;
+  ) as unknown as Schema.Codec<InsertFlightobjectRequest>;
 
 export type InsertFlightobjectResponse = FlightObject;
 export const InsertFlightobjectResponse =
@@ -5796,7 +5797,7 @@ export const ListFlightobjectRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/flightObject" }),
     svc,
-  ) as unknown as Schema.Schema<ListFlightobjectRequest>;
+  ) as unknown as Schema.Codec<ListFlightobjectRequest>;
 
 export type ListFlightobjectResponse = FlightObjectListResponse;
 export const ListFlightobjectResponse =
@@ -5834,7 +5835,7 @@ export const PatchFlightobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchFlightobjectRequest>;
+  ) as unknown as Schema.Codec<PatchFlightobjectRequest>;
 
 export type PatchFlightobjectResponse = FlightObject;
 export const PatchFlightobjectResponse =
@@ -5877,7 +5878,7 @@ export const AddmessageFlightobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageFlightobjectRequest>;
+  ) as unknown as Schema.Codec<AddmessageFlightobjectRequest>;
 
 export type AddmessageFlightobjectResponse = FlightObjectAddMessageResponse;
 export const AddmessageFlightobjectResponse =
@@ -5920,7 +5921,7 @@ export const UpdateFlightobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateFlightobjectRequest>;
+  ) as unknown as Schema.Codec<UpdateFlightobjectRequest>;
 
 export type UpdateFlightobjectResponse = FlightObject;
 export const UpdateFlightobjectResponse =
@@ -5957,7 +5958,7 @@ export const GetFlightobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/flightObject/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetFlightobjectRequest>;
+) as unknown as Schema.Codec<GetFlightobjectRequest>;
 
 export type GetFlightobjectResponse = FlightObject;
 export const GetFlightobjectResponse = /*@__PURE__*/ /*#__PURE__*/ FlightObject;
@@ -5991,7 +5992,7 @@ export const InsertLoyaltyclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertLoyaltyclassRequest>;
+  ) as unknown as Schema.Codec<InsertLoyaltyclassRequest>;
 
 export type InsertLoyaltyclassResponse = LoyaltyClass;
 export const InsertLoyaltyclassResponse =
@@ -6033,7 +6034,7 @@ export const ListLoyaltyclassRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/loyaltyClass" }),
     svc,
-  ) as unknown as Schema.Schema<ListLoyaltyclassRequest>;
+  ) as unknown as Schema.Codec<ListLoyaltyclassRequest>;
 
 export type ListLoyaltyclassResponse = LoyaltyClassListResponse;
 export const ListLoyaltyclassResponse =
@@ -6071,7 +6072,7 @@ export const PatchLoyaltyclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchLoyaltyclassRequest>;
+  ) as unknown as Schema.Codec<PatchLoyaltyclassRequest>;
 
 export type PatchLoyaltyclassResponse = LoyaltyClass;
 export const PatchLoyaltyclassResponse =
@@ -6114,7 +6115,7 @@ export const AddmessageLoyaltyclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageLoyaltyclassRequest>;
+  ) as unknown as Schema.Codec<AddmessageLoyaltyclassRequest>;
 
 export type AddmessageLoyaltyclassResponse = LoyaltyClassAddMessageResponse;
 export const AddmessageLoyaltyclassResponse =
@@ -6157,7 +6158,7 @@ export const UpdateLoyaltyclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateLoyaltyclassRequest>;
+  ) as unknown as Schema.Codec<UpdateLoyaltyclassRequest>;
 
 export type UpdateLoyaltyclassResponse = LoyaltyClass;
 export const UpdateLoyaltyclassResponse =
@@ -6194,7 +6195,7 @@ export const GetLoyaltyclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/loyaltyClass/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetLoyaltyclassRequest>;
+) as unknown as Schema.Codec<GetLoyaltyclassRequest>;
 
 export type GetLoyaltyclassResponse = LoyaltyClass;
 export const GetLoyaltyclassResponse = /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
@@ -6231,7 +6232,7 @@ export const ListOfferobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/offerObject" }),
   svc,
-) as unknown as Schema.Schema<ListOfferobjectRequest>;
+) as unknown as Schema.Codec<ListOfferobjectRequest>;
 
 export type ListOfferobjectResponse = OfferObjectListResponse;
 export const ListOfferobjectResponse =
@@ -6269,7 +6270,7 @@ export const PatchOfferobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchOfferobjectRequest>;
+  ) as unknown as Schema.Codec<PatchOfferobjectRequest>;
 
 export type PatchOfferobjectResponse = OfferObject;
 export const PatchOfferobjectResponse = /*@__PURE__*/ /*#__PURE__*/ OfferObject;
@@ -6308,7 +6309,7 @@ export const InsertOfferobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertOfferobjectRequest>;
+  ) as unknown as Schema.Codec<InsertOfferobjectRequest>;
 
 export type InsertOfferobjectResponse = OfferObject;
 export const InsertOfferobjectResponse =
@@ -6343,7 +6344,7 @@ export const GetOfferobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/offerObject/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetOfferobjectRequest>;
+) as unknown as Schema.Codec<GetOfferobjectRequest>;
 
 export type GetOfferobjectResponse = OfferObject;
 export const GetOfferobjectResponse = /*@__PURE__*/ /*#__PURE__*/ OfferObject;
@@ -6380,7 +6381,7 @@ export const UpdateOfferobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOfferobjectRequest>;
+  ) as unknown as Schema.Codec<UpdateOfferobjectRequest>;
 
 export type UpdateOfferobjectResponse = OfferObject;
 export const UpdateOfferobjectResponse =
@@ -6423,7 +6424,7 @@ export const AddmessageOfferobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageOfferobjectRequest>;
+  ) as unknown as Schema.Codec<AddmessageOfferobjectRequest>;
 
 export type AddmessageOfferobjectResponse = OfferObjectAddMessageResponse;
 export const AddmessageOfferobjectResponse =
@@ -6466,7 +6467,7 @@ export const AddmessageTransitclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageTransitclassRequest>;
+  ) as unknown as Schema.Codec<AddmessageTransitclassRequest>;
 
 export type AddmessageTransitclassResponse = TransitClassAddMessageResponse;
 export const AddmessageTransitclassResponse =
@@ -6509,7 +6510,7 @@ export const UpdateTransitclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateTransitclassRequest>;
+  ) as unknown as Schema.Codec<UpdateTransitclassRequest>;
 
 export type UpdateTransitclassResponse = TransitClass;
 export const UpdateTransitclassResponse =
@@ -6546,7 +6547,7 @@ export const GetTransitclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/transitClass/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetTransitclassRequest>;
+) as unknown as Schema.Codec<GetTransitclassRequest>;
 
 export type GetTransitclassResponse = TransitClass;
 export const GetTransitclassResponse = /*@__PURE__*/ /*#__PURE__*/ TransitClass;
@@ -6580,7 +6581,7 @@ export const InsertTransitclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTransitclassRequest>;
+  ) as unknown as Schema.Codec<InsertTransitclassRequest>;
 
 export type InsertTransitclassResponse = TransitClass;
 export const InsertTransitclassResponse =
@@ -6622,7 +6623,7 @@ export const ListTransitclassRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/transitClass" }),
     svc,
-  ) as unknown as Schema.Schema<ListTransitclassRequest>;
+  ) as unknown as Schema.Codec<ListTransitclassRequest>;
 
 export type ListTransitclassResponse = TransitClassListResponse;
 export const ListTransitclassResponse =
@@ -6660,7 +6661,7 @@ export const PatchTransitclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchTransitclassRequest>;
+  ) as unknown as Schema.Codec<PatchTransitclassRequest>;
 
 export type PatchTransitclassResponse = TransitClass;
 export const PatchTransitclassResponse =
@@ -6703,7 +6704,7 @@ export const AddmessageGenericobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageGenericobjectRequest>;
+  ) as unknown as Schema.Codec<AddmessageGenericobjectRequest>;
 
 export type AddmessageGenericobjectResponse = GenericObjectAddMessageResponse;
 export const AddmessageGenericobjectResponse =
@@ -6746,7 +6747,7 @@ export const UpdateGenericobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGenericobjectRequest>;
+  ) as unknown as Schema.Codec<UpdateGenericobjectRequest>;
 
 export type UpdateGenericobjectResponse = GenericObject;
 export const UpdateGenericobjectResponse =
@@ -6785,7 +6786,7 @@ export const GetGenericobjectRequest =
       path: "walletobjects/v1/genericObject/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGenericobjectRequest>;
+  ) as unknown as Schema.Codec<GetGenericobjectRequest>;
 
 export type GetGenericobjectResponse = GenericObject;
 export const GetGenericobjectResponse =
@@ -6820,7 +6821,7 @@ export const InsertGenericobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGenericobjectRequest>;
+  ) as unknown as Schema.Codec<InsertGenericobjectRequest>;
 
 export type InsertGenericobjectResponse = GenericObject;
 export const InsertGenericobjectResponse =
@@ -6862,7 +6863,7 @@ export const ListGenericobjectRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/genericObject" }),
     svc,
-  ) as unknown as Schema.Schema<ListGenericobjectRequest>;
+  ) as unknown as Schema.Codec<ListGenericobjectRequest>;
 
 export type ListGenericobjectResponse = GenericObjectListResponse;
 export const ListGenericobjectResponse =
@@ -6900,7 +6901,7 @@ export const PatchGenericobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchGenericobjectRequest>;
+  ) as unknown as Schema.Codec<PatchGenericobjectRequest>;
 
 export type PatchGenericobjectResponse = GenericObject;
 export const PatchGenericobjectResponse =
@@ -6942,7 +6943,7 @@ export const UpdateIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateIssuerRequest>;
+) as unknown as Schema.Codec<UpdateIssuerRequest>;
 
 export type UpdateIssuerResponse = Issuer;
 export const UpdateIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
@@ -6976,7 +6977,7 @@ export const GetIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/issuer/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetIssuerRequest>;
+) as unknown as Schema.Codec<GetIssuerRequest>;
 
 export type GetIssuerResponse = Issuer;
 export const GetIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
@@ -7005,7 +7006,7 @@ export const InsertIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "walletobjects/v1/issuer", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertIssuerRequest>;
+) as unknown as Schema.Codec<InsertIssuerRequest>;
 
 export type InsertIssuerResponse = Issuer;
 export const InsertIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
@@ -7036,7 +7037,7 @@ export const ListIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/issuer" }),
   svc,
-) as unknown as Schema.Schema<ListIssuerRequest>;
+) as unknown as Schema.Codec<ListIssuerRequest>;
 
 export type ListIssuerResponse = IssuerListResponse;
 export const ListIssuerResponse =
@@ -7073,7 +7074,7 @@ export const PatchIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchIssuerRequest>;
+) as unknown as Schema.Codec<PatchIssuerRequest>;
 
 export type PatchIssuerResponse = Issuer;
 export const PatchIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
@@ -7107,7 +7108,7 @@ export const GetFlightclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/flightClass/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetFlightclassRequest>;
+) as unknown as Schema.Codec<GetFlightclassRequest>;
 
 export type GetFlightclassResponse = FlightClass;
 export const GetFlightclassResponse = /*@__PURE__*/ /*#__PURE__*/ FlightClass;
@@ -7144,7 +7145,7 @@ export const UpdateFlightclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateFlightclassRequest>;
+  ) as unknown as Schema.Codec<UpdateFlightclassRequest>;
 
 export type UpdateFlightclassResponse = FlightClass;
 export const UpdateFlightclassResponse =
@@ -7187,7 +7188,7 @@ export const AddmessageFlightclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageFlightclassRequest>;
+  ) as unknown as Schema.Codec<AddmessageFlightclassRequest>;
 
 export type AddmessageFlightclassResponse = FlightClassAddMessageResponse;
 export const AddmessageFlightclassResponse =
@@ -7230,7 +7231,7 @@ export const ListFlightclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/flightClass" }),
   svc,
-) as unknown as Schema.Schema<ListFlightclassRequest>;
+) as unknown as Schema.Codec<ListFlightclassRequest>;
 
 export type ListFlightclassResponse = FlightClassListResponse;
 export const ListFlightclassResponse =
@@ -7268,7 +7269,7 @@ export const PatchFlightclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchFlightclassRequest>;
+  ) as unknown as Schema.Codec<PatchFlightclassRequest>;
 
 export type PatchFlightclassResponse = FlightClass;
 export const PatchFlightclassResponse = /*@__PURE__*/ /*#__PURE__*/ FlightClass;
@@ -7307,7 +7308,7 @@ export const InsertFlightclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertFlightclassRequest>;
+  ) as unknown as Schema.Codec<InsertFlightclassRequest>;
 
 export type InsertFlightclassResponse = FlightClass;
 export const InsertFlightclassResponse =
@@ -7349,7 +7350,7 @@ export const ListGenericclassRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/genericClass" }),
     svc,
-  ) as unknown as Schema.Schema<ListGenericclassRequest>;
+  ) as unknown as Schema.Codec<ListGenericclassRequest>;
 
 export type ListGenericclassResponse = GenericClassListResponse;
 export const ListGenericclassResponse =
@@ -7387,7 +7388,7 @@ export const PatchGenericclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchGenericclassRequest>;
+  ) as unknown as Schema.Codec<PatchGenericclassRequest>;
 
 export type PatchGenericclassResponse = GenericClass;
 export const PatchGenericclassResponse =
@@ -7427,7 +7428,7 @@ export const InsertGenericclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGenericclassRequest>;
+  ) as unknown as Schema.Codec<InsertGenericclassRequest>;
 
 export type InsertGenericclassResponse = GenericClass;
 export const InsertGenericclassResponse =
@@ -7464,7 +7465,7 @@ export const GetGenericclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/genericClass/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetGenericclassRequest>;
+) as unknown as Schema.Codec<GetGenericclassRequest>;
 
 export type GetGenericclassResponse = GenericClass;
 export const GetGenericclassResponse = /*@__PURE__*/ /*#__PURE__*/ GenericClass;
@@ -7501,7 +7502,7 @@ export const AddmessageGenericclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageGenericclassRequest>;
+  ) as unknown as Schema.Codec<AddmessageGenericclassRequest>;
 
 export type AddmessageGenericclassResponse = GenericClassAddMessageResponse;
 export const AddmessageGenericclassResponse =
@@ -7544,7 +7545,7 @@ export const UpdateGenericclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGenericclassRequest>;
+  ) as unknown as Schema.Codec<UpdateGenericclassRequest>;
 
 export type UpdateGenericclassResponse = GenericClass;
 export const UpdateGenericclassResponse =
@@ -7586,7 +7587,7 @@ export const ListTransitobjectRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/transitObject" }),
     svc,
-  ) as unknown as Schema.Schema<ListTransitobjectRequest>;
+  ) as unknown as Schema.Codec<ListTransitobjectRequest>;
 
 export type ListTransitobjectResponse = TransitObjectListResponse;
 export const ListTransitobjectResponse =
@@ -7624,7 +7625,7 @@ export const PatchTransitobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchTransitobjectRequest>;
+  ) as unknown as Schema.Codec<PatchTransitobjectRequest>;
 
 export type PatchTransitobjectResponse = TransitObject;
 export const PatchTransitobjectResponse =
@@ -7664,7 +7665,7 @@ export const InsertTransitobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTransitobjectRequest>;
+  ) as unknown as Schema.Codec<InsertTransitobjectRequest>;
 
 export type InsertTransitobjectResponse = TransitObject;
 export const InsertTransitobjectResponse =
@@ -7703,7 +7704,7 @@ export const GetTransitobjectRequest =
       path: "walletobjects/v1/transitObject/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTransitobjectRequest>;
+  ) as unknown as Schema.Codec<GetTransitobjectRequest>;
 
 export type GetTransitobjectResponse = TransitObject;
 export const GetTransitobjectResponse =
@@ -7741,7 +7742,7 @@ export const UpdateTransitobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateTransitobjectRequest>;
+  ) as unknown as Schema.Codec<UpdateTransitobjectRequest>;
 
 export type UpdateTransitobjectResponse = TransitObject;
 export const UpdateTransitobjectResponse =
@@ -7784,7 +7785,7 @@ export const AddmessageTransitobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageTransitobjectRequest>;
+  ) as unknown as Schema.Codec<AddmessageTransitobjectRequest>;
 
 export type AddmessageTransitobjectResponse = TransitObjectAddMessageResponse;
 export const AddmessageTransitobjectResponse =
@@ -7827,7 +7828,7 @@ export const AddmessageGiftcardobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageGiftcardobjectRequest>;
+  ) as unknown as Schema.Codec<AddmessageGiftcardobjectRequest>;
 
 export type AddmessageGiftcardobjectResponse = GiftCardObjectAddMessageResponse;
 export const AddmessageGiftcardobjectResponse =
@@ -7870,7 +7871,7 @@ export const UpdateGiftcardobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGiftcardobjectRequest>;
+  ) as unknown as Schema.Codec<UpdateGiftcardobjectRequest>;
 
 export type UpdateGiftcardobjectResponse = GiftCardObject;
 export const UpdateGiftcardobjectResponse =
@@ -7909,7 +7910,7 @@ export const GetGiftcardobjectRequest =
       path: "walletobjects/v1/giftCardObject/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGiftcardobjectRequest>;
+  ) as unknown as Schema.Codec<GetGiftcardobjectRequest>;
 
 export type GetGiftcardobjectResponse = GiftCardObject;
 export const GetGiftcardobjectResponse =
@@ -7944,7 +7945,7 @@ export const InsertGiftcardobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGiftcardobjectRequest>;
+  ) as unknown as Schema.Codec<InsertGiftcardobjectRequest>;
 
 export type InsertGiftcardobjectResponse = GiftCardObject;
 export const InsertGiftcardobjectResponse =
@@ -7986,7 +7987,7 @@ export const ListGiftcardobjectRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/giftCardObject" }),
     svc,
-  ) as unknown as Schema.Schema<ListGiftcardobjectRequest>;
+  ) as unknown as Schema.Codec<ListGiftcardobjectRequest>;
 
 export type ListGiftcardobjectResponse = GiftCardObjectListResponse;
 export const ListGiftcardobjectResponse =
@@ -8024,7 +8025,7 @@ export const PatchGiftcardobjectRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchGiftcardobjectRequest>;
+  ) as unknown as Schema.Codec<PatchGiftcardobjectRequest>;
 
 export type PatchGiftcardobjectResponse = GiftCardObject;
 export const PatchGiftcardobjectResponse =
@@ -8059,7 +8060,7 @@ export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "walletobjects/v1/permissions/{resourceId}" }),
   svc,
-) as unknown as Schema.Schema<GetPermissionsRequest>;
+) as unknown as Schema.Codec<GetPermissionsRequest>;
 
 export type GetPermissionsResponse = Permissions;
 export const GetPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permissions;
@@ -8096,7 +8097,7 @@ export const UpdatePermissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePermissionsRequest>;
+  ) as unknown as Schema.Codec<UpdatePermissionsRequest>;
 
 export type UpdatePermissionsResponse = Permissions;
 export const UpdatePermissionsResponse =
@@ -8136,7 +8137,7 @@ export const InsertEventticketclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertEventticketclassRequest>;
+  ) as unknown as Schema.Codec<InsertEventticketclassRequest>;
 
 export type InsertEventticketclassResponse = EventTicketClass;
 export const InsertEventticketclassResponse =
@@ -8178,7 +8179,7 @@ export const ListEventticketclassRequest =
   }).pipe(
     T.Http({ method: "GET", path: "walletobjects/v1/eventTicketClass" }),
     svc,
-  ) as unknown as Schema.Schema<ListEventticketclassRequest>;
+  ) as unknown as Schema.Codec<ListEventticketclassRequest>;
 
 export type ListEventticketclassResponse = EventTicketClassListResponse;
 export const ListEventticketclassResponse =
@@ -8216,7 +8217,7 @@ export const PatchEventticketclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchEventticketclassRequest>;
+  ) as unknown as Schema.Codec<PatchEventticketclassRequest>;
 
 export type PatchEventticketclassResponse = EventTicketClass;
 export const PatchEventticketclassResponse =
@@ -8259,7 +8260,7 @@ export const UpdateEventticketclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEventticketclassRequest>;
+  ) as unknown as Schema.Codec<UpdateEventticketclassRequest>;
 
 export type UpdateEventticketclassResponse = EventTicketClass;
 export const UpdateEventticketclassResponse =
@@ -8302,7 +8303,7 @@ export const AddmessageEventticketclassRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddmessageEventticketclassRequest>;
+  ) as unknown as Schema.Codec<AddmessageEventticketclassRequest>;
 
 export type AddmessageEventticketclassResponse =
   EventTicketClassAddMessageResponse;
@@ -8342,7 +8343,7 @@ export const GetEventticketclassRequest =
       path: "walletobjects/v1/eventTicketClass/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEventticketclassRequest>;
+  ) as unknown as Schema.Codec<GetEventticketclassRequest>;
 
 export type GetEventticketclassResponse = EventTicketClass;
 export const GetEventticketclassResponse =
@@ -8372,7 +8373,7 @@ export const InsertSmarttapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "walletobjects/v1/smartTap", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertSmarttapRequest>;
+) as unknown as Schema.Codec<InsertSmarttapRequest>;
 
 export type InsertSmarttapResponse = SmartTap;
 export const InsertSmarttapResponse = /*@__PURE__*/ /*#__PURE__*/ SmartTap;

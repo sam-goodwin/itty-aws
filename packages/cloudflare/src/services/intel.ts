@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service intel
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -46,6 +46,845 @@ export class IndicatorFeedsNotEntitled extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Payload {
+  /** Describes the method used to detect insight. */
+  detectionMethod?: string | null;
+  zoneTag?: string | null;
+}
+const Payload = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    detectionMethod: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      detectionMethod: "detection_method",
+      zoneTag: "zone_tag",
+    }),
+  ),
+) as unknown as Schema.Codec<Payload>;
+
+interface Issue {
+  id?: string | null;
+  dismissed?: boolean | null;
+  /** Indicates whether the insight has a large payload that requires fetching via the context endpoint. */
+  hasExtendedContext?: boolean | null;
+  issueClass?: string | null;
+  issueType?:
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+    | null;
+  payload?: { detectionMethod?: string | null; zoneTag?: string | null } | null;
+  resolveLink?: string | null;
+  resolveText?: string | null;
+  severity?: "Low" | "Moderate" | "Critical" | (string & {}) | null;
+  since?: string | null;
+  /** The current status of the insight. */
+  status?: "active" | "resolved" | (string & {}) | null;
+  subject?: string | null;
+  timestamp?: string | null;
+  /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
+  userClassification?: "false_positive" | "accept_risk" | "other" | null;
+}
+const Issue = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    dismissed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    hasExtendedContext: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    issueClass: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issueType: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    payload: Schema.optional(Schema.Union([Payload, Schema.Null])),
+    resolveLink: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    resolveText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    severity: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["Low", "Moderate", "Critical"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    since: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["active", "resolved"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    subject: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    timestamp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    userClassification: Schema.optional(
+      Schema.Union([
+        Schema.Literal("false_positive"),
+        Schema.Literal("accept_risk"),
+        Schema.Literal("other"),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      dismissed: "dismissed",
+      hasExtendedContext: "has_extended_context",
+      issueClass: "issue_class",
+      issueType: "issue_type",
+      payload: "payload",
+      resolveLink: "resolve_link",
+      resolveText: "resolve_text",
+      severity: "severity",
+      since: "since",
+      status: "status",
+      subject: "subject",
+      timestamp: "timestamp",
+      userClassification: "user_classification",
+    }),
+  ),
+) as unknown as Schema.Codec<Issue>;
+
+interface ListAttackSurfaceReportIssuesResponseResultItem {
+  /** Indicates the total number of results. */
+  count?: number | null;
+  issues?:
+    | {
+        id?: string | null;
+        dismissed?: boolean | null;
+        hasExtendedContext?: boolean | null;
+        issueClass?: string | null;
+        issueType?:
+          | "compliance_violation"
+          | "email_security"
+          | "exposed_infrastructure"
+          | "insecure_configuration"
+          | "weak_authentication"
+          | "configuration_suggestion"
+          | (string & {})
+          | null;
+        payload?: {
+          detectionMethod?: string | null;
+          zoneTag?: string | null;
+        } | null;
+        resolveLink?: string | null;
+        resolveText?: string | null;
+        severity?: "Low" | "Moderate" | "Critical" | (string & {}) | null;
+        since?: string | null;
+        status?: "active" | "resolved" | (string & {}) | null;
+        subject?: string | null;
+        timestamp?: string | null;
+        userClassification?: "false_positive" | "accept_risk" | "other" | null;
+      }[]
+    | null;
+  /** Specifies the current page within paginated list of results. */
+  page?: number | null;
+  /** Sets the number of results per page of results. */
+  perPage?: number | null;
+}
+const ListAttackSurfaceReportIssuesResponseResultItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      issues: Schema.optional(Schema.Union([Schema.Array(Issue), Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        issues: "issues",
+        page: "page",
+        perPage: "per_page",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListAttackSurfaceReportIssuesResponseResultItem>;
+
+interface ListAttackSurfaceReportIssuesResponseResult {
+  items?:
+    | {
+        count?: number | null;
+        issues?:
+          | {
+              id?: string | null;
+              dismissed?: boolean | null;
+              hasExtendedContext?: boolean | null;
+              issueClass?: string | null;
+              issueType?:
+                | "compliance_violation"
+                | "email_security"
+                | "exposed_infrastructure"
+                | "insecure_configuration"
+                | "weak_authentication"
+                | "configuration_suggestion"
+                | (string & {})
+                | null;
+              payload?: {
+                detectionMethod?: string | null;
+                zoneTag?: string | null;
+              } | null;
+              resolveLink?: string | null;
+              resolveText?: string | null;
+              severity?: "Low" | "Moderate" | "Critical" | (string & {}) | null;
+              since?: string | null;
+              status?: "active" | "resolved" | (string & {}) | null;
+              subject?: string | null;
+              timestamp?: string | null;
+              userClassification?:
+                | "false_positive"
+                | "accept_risk"
+                | "other"
+                | null;
+            }[]
+          | null;
+        page?: number | null;
+        perPage?: number | null;
+      }[]
+    | null;
+}
+const ListAttackSurfaceReportIssuesResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      items: Schema.optional(
+        Schema.Union([
+          Schema.Array(ListAttackSurfaceReportIssuesResponseResultItem),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListAttackSurfaceReportIssuesResponseResult>;
+
+interface ListAttackSurfaceReportIssuesResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListAttackSurfaceReportIssuesResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListAttackSurfaceReportIssuesResponseResultInfo>;
+
+interface IssueClassResponseItem {
+  count?: number | null;
+  value?: string | null;
+}
+const IssueClassResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<IssueClassResponseItem>;
+
+interface Source {
+  pointer?: string | null;
+}
+const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Source>;
+
+interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: { pointer?: string | null } | null;
+}
+const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.Number,
+    message: Schema.String,
+    documentationUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      code: "code",
+      message: "message",
+      documentationUrl: "documentation_url",
+      source: "source",
+    }),
+  ),
+) as unknown as Schema.Codec<Error2>;
+
+interface ReverseRecord {
+  /** First seen date of the DNS record during the time period. */
+  firstSeen?: string | null;
+  /** Hostname that the IP was observed resolving to. */
+  hostname?: string | null;
+  /** Last seen date of the DNS record during the time period. */
+  lastSeen?: string | null;
+}
+const ReverseRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    firstSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      firstSeen: "first_seen",
+      hostname: "hostname",
+      lastSeen: "last_seen",
+    }),
+  ),
+) as unknown as Schema.Codec<ReverseRecord>;
+
+interface ListDnsResponseResultItem {
+  /** Total results returned based on your search parameters. */
+  count?: number | null;
+  /** Current page within paginated list of results. */
+  page?: number | null;
+  /** Number of results per page of results. */
+  perPage?: number | null;
+  /** Reverse DNS look-ups observed during the time period. */
+  reverseRecords?:
+    | {
+        firstSeen?: string | null;
+        hostname?: string | null;
+        lastSeen?: string | null;
+      }[]
+    | null;
+}
+const ListDnsResponseResultItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      reverseRecords: Schema.optional(
+        Schema.Union([Schema.Array(ReverseRecord), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        reverseRecords: "reverse_records",
+      }),
+    ),
+) as unknown as Schema.Codec<ListDnsResponseResultItem>;
+
+interface ListDnsResponseResult {
+  items?:
+    | {
+        count?: number | null;
+        page?: number | null;
+        perPage?: number | null;
+        reverseRecords?:
+          | {
+              firstSeen?: string | null;
+              hostname?: string | null;
+              lastSeen?: string | null;
+            }[]
+          | null;
+      }[]
+    | null;
+}
+const ListDnsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    items: Schema.optional(
+      Schema.Union([Schema.Array(ListDnsResponseResultItem), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<ListDnsResponseResult>;
+
+interface AdditionalInformation {
+  /** Suspected DGA malware family. */
+  suspectedMalwareFamily?: string | null;
+}
+const AdditionalInformation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    suspectedMalwareFamily: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ suspectedMalwareFamily: "suspected_malware_family" }),
+  ),
+) as unknown as Schema.Codec<AdditionalInformation>;
+
+interface Application {
+  id?: number | null;
+  name?: string | null;
+}
+const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Application>;
+
+interface ContentCategory {
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
+}
+const ContentCategory = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    superCategoryId: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      name: "name",
+      superCategoryId: "super_category_id",
+    }),
+  ),
+) as unknown as Schema.Codec<ContentCategory>;
+
+interface ResolvesToRef {
+  /** STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c. */
+  id?: string | null;
+  /** IP address or domain name. */
+  value?: string | null;
+}
+const ResolvesToRef = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ResolvesToRef>;
+
+interface BulkGetResponseItem {
+  /** Additional information related to the host name. */
+  additionalInformation?: { suspectedMalwareFamily?: string | null } | null;
+  /** Application that the hostname belongs to. */
+  application?: { id?: number | null; name?: string | null } | null;
+  contentCategories?:
+    | {
+        id?: number | null;
+        name?: string | null;
+        superCategoryId?: number | null;
+      }[]
+    | null;
+  domain?: string | null;
+  inheritedContentCategories?:
+    | {
+        id?: number | null;
+        name?: string | null;
+        superCategoryId?: number | null;
+      }[]
+    | null;
+  /** Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable. */
+  inheritedFrom?: string | null;
+  inheritedRiskTypes?:
+    | {
+        id?: number | null;
+        name?: string | null;
+        superCategoryId?: number | null;
+      }[]
+    | null;
+  /** Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000. */
+  popularityRank?: number | null;
+  /** Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk). */
+  riskScore?: number | null;
+  riskTypes?:
+    | {
+        id?: number | null;
+        name?: string | null;
+        superCategoryId?: number | null;
+      }[]
+    | null;
+}
+const BulkGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    additionalInformation: Schema.optional(
+      Schema.Union([AdditionalInformation, Schema.Null]),
+    ),
+    application: Schema.optional(Schema.Union([Application, Schema.Null])),
+    contentCategories: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+    domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    inheritedContentCategories: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+    inheritedFrom: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    inheritedRiskTypes: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+    popularityRank: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    riskScore: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    riskTypes: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      additionalInformation: "additional_information",
+      application: "application",
+      contentCategories: "content_categories",
+      domain: "domain",
+      inheritedContentCategories: "inherited_content_categories",
+      inheritedFrom: "inherited_from",
+      inheritedRiskTypes: "inherited_risk_types",
+      popularityRank: "popularity_rank",
+      riskScore: "risk_score",
+      riskTypes: "risk_types",
+    }),
+  ),
+) as unknown as Schema.Codec<BulkGetResponseItem>;
+
+interface Categorization {
+  categories?: { id?: number | null; name?: string | null }[] | null;
+  end?: string | null;
+  start?: string | null;
+}
+const Categorization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    categories: Schema.optional(
+      Schema.Union([Schema.Array(Application), Schema.Null]),
+    ),
+    end: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    start: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Categorization>;
+
+interface DomainHistory {
+  categorizations?:
+    | {
+        categories?: { id?: number | null; name?: string | null }[] | null;
+        end?: string | null;
+        start?: string | null;
+      }[]
+    | null;
+  domain?: string | null;
+}
+const DomainHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    categorizations: Schema.optional(
+      Schema.Union([Schema.Array(Categorization), Schema.Null]),
+    ),
+    domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<DomainHistory>;
+
+interface Persisted {
+  domainsAdded?: number | null;
+  domainsRemoved?: number | null;
+  ipsAdded?: number | null;
+  ipsRemoved?: number | null;
+  urlsAdded?: number | null;
+  urlsRemoved?: number | null;
+}
+const Persisted = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    domainsAdded: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    domainsRemoved: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    ipsAdded: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    ipsRemoved: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    urlsAdded: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    urlsRemoved: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      domainsAdded: "domains_added",
+      domainsRemoved: "domains_removed",
+      ipsAdded: "ips_added",
+      ipsRemoved: "ips_removed",
+      urlsAdded: "urls_added",
+      urlsRemoved: "urls_removed",
+    }),
+  ),
+) as unknown as Schema.Codec<Persisted>;
+
+interface Skipped {
+  /** Domains filtered by the global popularity allowlist at QS provisioning time. Popular domains (bing.com, naver.com, etc.) are protected from custom-threat-feed enforcement. */
+  allowlistedDomains?: number | null;
+  /** Indicators in the upload whose valid_until is already in the past. These are not added to QS; the expiration cron handles cleanup. */
+  expiredIndicators?: number | null;
+  /** Reserved for future use. Currently always 0 — the unifier aborts the entire upload on a single bad indicator. */
+  invalidIndicators?: number | null;
+}
+const Skipped = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    allowlistedDomains: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    expiredIndicators: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    invalidIndicators: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      allowlistedDomains: "allowlisted_domains",
+      expiredIndicators: "expired_indicators",
+      invalidIndicators: "invalid_indicators",
+    }),
+  ),
+) as unknown as Schema.Codec<Skipped>;
+
+interface Uploaded {
+  /** Number of domain indicators in the upload */
+  domains?: number | null;
+  /** Number of IP indicators in the upload */
+  ips?: number | null;
+  /** Number of URL indicators in the upload */
+  urls?: number | null;
+}
+const Uploaded = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    domains: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    ips: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    urls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Uploaded>;
+
+interface LastUploadSummary {
+  /** Net delta applied to feed indicators by this upload. Snapshot uploads emit both _\_added and _\_removed; delta-add emits only _\_added; delta-remove emits only _\_removed. */
+  persisted?: {
+    domainsAdded?: number | null;
+    domainsRemoved?: number | null;
+    ipsAdded?: number | null;
+    ipsRemoved?: number | null;
+    urlsAdded?: number | null;
+    urlsRemoved?: number | null;
+  } | null;
+  /** Counts of indicators that were uploaded but did not reach QuickSilver, broken down by reason. */
+  skipped?: {
+    allowlistedDomains?: number | null;
+    expiredIndicators?: number | null;
+    invalidIndicators?: number | null;
+  } | null;
+  /** Indicator counts from the unified file the loader received */
+  uploaded?: {
+    domains?: number | null;
+    ips?: number | null;
+    urls?: number | null;
+  } | null;
+}
+const LastUploadSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    persisted: Schema.optional(Schema.Union([Persisted, Schema.Null])),
+    skipped: Schema.optional(Schema.Union([Skipped, Schema.Null])),
+    uploaded: Schema.optional(Schema.Union([Uploaded, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<LastUploadSummary>;
+
+interface ListIndicatorFeedsResponseResult {
+  /** The unique identifier for the indicator feed */
+  id?: number | null;
+  /** The date and time when the data entry was created */
+  createdOn?: string | null;
+  /** The description of the example test */
+  description?: string | null;
+  /** Whether the indicator feed can be attributed to a provider */
+  isAttributable?: boolean | null;
+  /** Whether the indicator feed can be downloaded */
+  isDownloadable?: boolean | null;
+  /** Whether the indicator feed is exposed to customers */
+  isPublic?: boolean | null;
+  /** The date and time when the data entry was last modified */
+  modifiedOn?: string | null;
+  /** The name of the indicator feed */
+  name?: string | null;
+}
+const ListIndicatorFeedsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      isAttributable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      isDownloadable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      isPublic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        isAttributable: "is_attributable",
+        isDownloadable: "is_downloadable",
+        isPublic: "is_public",
+        modifiedOn: "modified_on",
+        name: "name",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListIndicatorFeedsResponseResult>;
+
+interface PermissionListResponseItem {
+  /** The unique identifier for the indicator feed */
+  id?: number | null;
+  /** The description of the example test */
+  description?: string | null;
+  /** Whether the indicator feed can be attributed to a provider */
+  isAttributable?: boolean | null;
+  /** Whether the indicator feed can be downloaded */
+  isDownloadable?: boolean | null;
+  /** Whether the indicator feed is exposed to customers */
+  isPublic?: boolean | null;
+  /** The name of the indicator feed */
+  name?: string | null;
+}
+const PermissionListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      isAttributable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      isDownloadable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      isPublic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        description: "description",
+        isAttributable: "is_attributable",
+        isDownloadable: "is_downloadable",
+        isPublic: "is_public",
+        name: "name",
+      }),
+    ),
+) as unknown as Schema.Codec<PermissionListResponseItem>;
+
+interface BelongsToRef {
+  id?: string | null;
+  country?: string | null;
+  description?: string | null;
+  /** Infrastructure type of this ASN. */
+  type?: "hosting_provider" | "isp" | "organization" | (string & {}) | null;
+  value?: string | null;
+}
+const BelongsToRef = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["hosting_provider", "isp", "organization"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<BelongsToRef>;
+
+interface Ip {
+  /** Specifies a reference to the autonomous systems (AS) that the IP address belongs to. */
+  belongsToRef?: {
+    id?: string | null;
+    country?: string | null;
+    description?: string | null;
+    type?: "hosting_provider" | "isp" | "organization" | (string & {}) | null;
+    value?: string | null;
+  } | null;
+  ip?: string | null;
+  riskTypes?:
+    | {
+        id?: number | null;
+        name?: string | null;
+        superCategoryId?: number | null;
+      }[]
+    | null;
+}
+const Ip = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    belongsToRef: Schema.optional(Schema.Union([BelongsToRef, Schema.Null])),
+    ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    riskTypes: Schema.optional(
+      Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      belongsToRef: "belongs_to_ref",
+      ip: "ip",
+      riskTypes: "risk_types",
+    }),
+  ),
+) as unknown as Schema.Codec<Ip>;
+
+interface ListSinkholesResponseResult {
+  /** The unique identifier for the sinkhole. */
+  id?: string | null;
+  /** The account tag that owns this sinkhole. */
+  accountTag?: string | null;
+  /** The date and time when the sinkhole was created. */
+  createdOn?: string | null;
+  /** The date and time when the sinkhole was last modified. */
+  modifiedOn?: string | null;
+  /** The name of the sinkhole. */
+  name?: string | null;
+  /** The name of the R2 bucket to store results. */
+  r2Bucket?: string | null;
+  /** The id of the R2 instance. */
+  r2Id?: string | null;
+}
+const ListSinkholesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      r2Bucket: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      r2Id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        accountTag: "account_tag",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        name: "name",
+        r2Bucket: "r2_bucket",
+        r2Id: "r2_id",
+      }),
+    ),
+) as unknown as Schema.Codec<ListSinkholesResponseResult>;
+
+// =============================================================================
 // Asn
 // =============================================================================
 
@@ -62,13 +901,13 @@ export const GetAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/intel/asn/{asn}" }),
   ),
-) as unknown as Schema.Schema<GetAsnRequest>;
+) as unknown as Schema.Codec<GetAsnRequest>;
 
 export type GetAsnResponse = number;
 
 export const GetAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Number.pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetAsnResponse>;
+) as unknown as Schema.Codec<GetAsnResponse>;
 
 export type GetAsnError = DefaultErrors;
 
@@ -104,7 +943,7 @@ export const GetAsnSubnetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/intel/asn/{asn}/subnets",
       }),
     ),
-) as unknown as Schema.Schema<GetAsnSubnetRequest>;
+) as unknown as Schema.Codec<GetAsnSubnetRequest>;
 
 export interface GetAsnSubnetResponse {
   asn?: number | null;
@@ -139,7 +978,7 @@ export const GetAsnSubnetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         subnets: "subnets",
       }),
     ),
-) as unknown as Schema.Schema<GetAsnSubnetResponse>;
+) as unknown as Schema.Codec<GetAsnSubnetResponse>;
 
 export type GetAsnSubnetError = DefaultErrors;
 
@@ -280,7 +1119,7 @@ export const ListAttackSurfaceReportIssuesRequest =
         path: "/accounts/{account_id}/intel/attack-surface-report/issues",
       }),
     ),
-  ) as unknown as Schema.Schema<ListAttackSurfaceReportIssuesRequest>;
+  ) as unknown as Schema.Codec<ListAttackSurfaceReportIssuesRequest>;
 
 export interface ListAttackSurfaceReportIssuesResponse {
   result: {
@@ -341,170 +1180,15 @@ export interface ListAttackSurfaceReportIssuesResponse {
 export const ListAttackSurfaceReportIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Struct({
-        items: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                count: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                issues: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        dismissed: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        hasExtendedContext: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        issueClass: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        issueType: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "compliance_violation",
-                                "email_security",
-                                "exposed_infrastructure",
-                                "insecure_configuration",
-                                "weak_authentication",
-                                "configuration_suggestion",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        payload: Schema.optional(
-                          Schema.Union([
-                            Schema.Struct({
-                              detectionMethod: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                              zoneTag: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                detectionMethod: "detection_method",
-                                zoneTag: "zone_tag",
-                              }),
-                            ),
-                            Schema.Null,
-                          ]),
-                        ),
-                        resolveLink: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        resolveText: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        severity: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["Low", "Moderate", "Critical"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        since: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        status: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["active", "resolved"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        subject: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        timestamp: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        userClassification: Schema.optional(
-                          Schema.Union([
-                            Schema.Literal("false_positive"),
-                            Schema.Literal("accept_risk"),
-                            Schema.Literal("other"),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          id: "id",
-                          dismissed: "dismissed",
-                          hasExtendedContext: "has_extended_context",
-                          issueClass: "issue_class",
-                          issueType: "issue_type",
-                          payload: "payload",
-                          resolveLink: "resolve_link",
-                          resolveText: "resolve_text",
-                          severity: "severity",
-                          since: "since",
-                          status: "status",
-                          subject: "subject",
-                          timestamp: "timestamp",
-                          userClassification: "user_classification",
-                        }),
-                      ),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                page: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                perPage: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  count: "count",
-                  issues: "issues",
-                  page: "page",
-                  perPage: "per_page",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
+      result: ListAttackSurfaceReportIssuesResponseResult,
       resultInfo: Schema.optional(
         Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
+          ListAttackSurfaceReportIssuesResponseResultInfo,
           Schema.Null,
         ]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListAttackSurfaceReportIssuesResponse>;
+  ) as unknown as Schema.Codec<ListAttackSurfaceReportIssuesResponse>;
 
 export type ListAttackSurfaceReportIssuesError = DefaultErrors;
 
@@ -644,7 +1328,7 @@ export const ClassAttackSurfaceReportIssueRequest =
         path: "/accounts/{account_id}/intel/attack-surface-report/issues/class",
       }),
     ),
-  ) as unknown as Schema.Schema<ClassAttackSurfaceReportIssueRequest>;
+  ) as unknown as Schema.Codec<ClassAttackSurfaceReportIssueRequest>;
 
 export type ClassAttackSurfaceReportIssueResponse = {
   count?: number | null;
@@ -653,13 +1337,8 @@ export type ClassAttackSurfaceReportIssueResponse = {
 
 export const ClassAttackSurfaceReportIssueResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ClassAttackSurfaceReportIssueResponse>;
+    Schema.Array(IssueClassResponseItem).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<ClassAttackSurfaceReportIssueResponse>;
 
 export type ClassAttackSurfaceReportIssueError = DefaultErrors;
 
@@ -694,7 +1373,7 @@ export const DismissAttackSurfaceReportIssueRequest =
         path: "/accounts/{account_id}/intel/attack-surface-report/{issueId}/dismiss",
       }),
     ),
-  ) as unknown as Schema.Schema<DismissAttackSurfaceReportIssueRequest>;
+  ) as unknown as Schema.Codec<DismissAttackSurfaceReportIssueRequest>;
 
 export interface DismissAttackSurfaceReportIssueResponse {
   errors: {
@@ -716,61 +1395,11 @@ export interface DismissAttackSurfaceReportIssueResponse {
 export const DismissAttackSurfaceReportIssueResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<DismissAttackSurfaceReportIssueResponse>;
+  ) as unknown as Schema.Codec<DismissAttackSurfaceReportIssueResponse>;
 
 export type DismissAttackSurfaceReportIssueError = DefaultErrors;
 
@@ -903,7 +1532,7 @@ export const SeverityAttackSurfaceReportIssueRequest =
         path: "/accounts/{account_id}/intel/attack-surface-report/issues/severity",
       }),
     ),
-  ) as unknown as Schema.Schema<SeverityAttackSurfaceReportIssueRequest>;
+  ) as unknown as Schema.Codec<SeverityAttackSurfaceReportIssueRequest>;
 
 export type SeverityAttackSurfaceReportIssueResponse = {
   count?: number | null;
@@ -912,13 +1541,8 @@ export type SeverityAttackSurfaceReportIssueResponse = {
 
 export const SeverityAttackSurfaceReportIssueResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<SeverityAttackSurfaceReportIssueResponse>;
+    Schema.Array(IssueClassResponseItem).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<SeverityAttackSurfaceReportIssueResponse>;
 
 export type SeverityAttackSurfaceReportIssueError = DefaultErrors;
 
@@ -1051,7 +1675,7 @@ export const TypeAttackSurfaceReportIssueRequest =
         path: "/accounts/{account_id}/intel/attack-surface-report/issues/type",
       }),
     ),
-  ) as unknown as Schema.Schema<TypeAttackSurfaceReportIssueRequest>;
+  ) as unknown as Schema.Codec<TypeAttackSurfaceReportIssueRequest>;
 
 export type TypeAttackSurfaceReportIssueResponse = {
   count?: number | null;
@@ -1060,13 +1684,8 @@ export type TypeAttackSurfaceReportIssueResponse = {
 
 export const TypeAttackSurfaceReportIssueResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<TypeAttackSurfaceReportIssueResponse>;
+    Schema.Array(IssueClassResponseItem).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<TypeAttackSurfaceReportIssueResponse>;
 
 export type TypeAttackSurfaceReportIssueError = DefaultErrors;
 
@@ -1100,7 +1719,7 @@ export const GetAttackSurfaceReportIssueTypeRequest =
         path: "/accounts/{account_id}/intel/attack-surface-report/issue-types",
       }),
     ),
-  ) as unknown as Schema.Schema<GetAttackSurfaceReportIssueTypeRequest>;
+  ) as unknown as Schema.Codec<GetAttackSurfaceReportIssueTypeRequest>;
 
 export interface GetAttackSurfaceReportIssueTypeResponse {
   result: string[];
@@ -1111,7 +1730,7 @@ export const GetAttackSurfaceReportIssueTypeResponse =
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
-  ) as unknown as Schema.Schema<GetAttackSurfaceReportIssueTypeResponse>;
+  ) as unknown as Schema.Codec<GetAttackSurfaceReportIssueTypeResponse>;
 
 export type GetAttackSurfaceReportIssueTypeError = DefaultErrors;
 
@@ -1158,7 +1777,7 @@ export const ListDnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       }),
     ).pipe(T.HttpQuery("start_end_params")),
   }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/intel/dns" })),
-) as unknown as Schema.Schema<ListDnsRequest>;
+) as unknown as Schema.Codec<ListDnsRequest>;
 
 export interface ListDnsResponse {
   result: {
@@ -1187,77 +1806,15 @@ export interface ListDnsResponse {
 
 export const ListDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
-    result: Schema.Struct({
-      items: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              count: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-              perPage: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              reverseRecords: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      firstSeen: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      hostname: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      lastSeen: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        firstSeen: "first_seen",
-                        hostname: "hostname",
-                        lastSeen: "last_seen",
-                      }),
-                    ),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                count: "count",
-                page: "page",
-                perPage: "per_page",
-                reverseRecords: "reverse_records",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }),
+    result: ListDnsResponseResult,
     resultInfo: Schema.optional(
       Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
+        ListAttackSurfaceReportIssuesResponseResultInfo,
         Schema.Null,
       ]),
     ),
   }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListDnsResponse>;
+) as unknown as Schema.Codec<ListDnsResponse>;
 
 export type ListDnsError = DefaultErrors;
 
@@ -1305,7 +1862,7 @@ export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/intel/domain" }),
   ),
-) as unknown as Schema.Schema<GetDomainRequest>;
+) as unknown as Schema.Codec<GetDomainRequest>;
 
 export interface GetDomainResponse {
   /** Additional information related to the host name. */
@@ -1355,128 +1912,31 @@ export const GetDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       additionalInformation: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            suspectedMalwareFamily: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              suspectedMalwareFamily: "suspected_malware_family",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([AdditionalInformation, Schema.Null]),
       ),
-      application: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      application: Schema.optional(Schema.Union([Application, Schema.Null])),
       contentCategories: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              superCategoryId: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                name: "name",
-                superCategoryId: "super_category_id",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
       ),
       domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       inheritedContentCategories: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              superCategoryId: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                name: "name",
-                superCategoryId: "super_category_id",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
       ),
       inheritedFrom: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       inheritedRiskTypes: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              superCategoryId: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                name: "name",
-                superCategoryId: "super_category_id",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
       ),
       popularityRank: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       resolvesToRefs: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              value: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(ResolvesToRef), Schema.Null]),
       ),
       riskScore: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       riskTypes: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              superCategoryId: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                name: "name",
-                superCategoryId: "super_category_id",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(ContentCategory), Schema.Null]),
       ),
     })
       .pipe(
@@ -1495,7 +1955,7 @@ export const GetDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetDomainResponse>;
+) as unknown as Schema.Codec<GetDomainResponse>;
 
 export type GetDomainError = DefaultErrors;
 
@@ -1544,7 +2004,7 @@ export const GetDomainBulkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/intel/domain/bulk",
       }),
     ),
-) as unknown as Schema.Schema<GetDomainBulkRequest>;
+) as unknown as Schema.Codec<GetDomainBulkRequest>;
 
 export type GetDomainBulkResponse = {
   additionalInformation?: { suspectedMalwareFamily?: string | null } | null;
@@ -1584,144 +2044,8 @@ export type GetDomainBulkResponse = {
 }[];
 
 export const GetDomainBulkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Array(
-      Schema.Struct({
-        additionalInformation: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              suspectedMalwareFamily: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                suspectedMalwareFamily: "suspected_malware_family",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        application: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        contentCategories: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                superCategoryId: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  name: "name",
-                  superCategoryId: "super_category_id",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        inheritedContentCategories: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                superCategoryId: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  name: "name",
-                  superCategoryId: "super_category_id",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        inheritedFrom: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        inheritedRiskTypes: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                superCategoryId: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  name: "name",
-                  superCategoryId: "super_category_id",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        popularityRank: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        riskScore: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        riskTypes: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                superCategoryId: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  name: "name",
-                  superCategoryId: "super_category_id",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          additionalInformation: "additional_information",
-          application: "application",
-          contentCategories: "content_categories",
-          domain: "domain",
-          inheritedContentCategories: "inherited_content_categories",
-          inheritedFrom: "inherited_from",
-          inheritedRiskTypes: "inherited_risk_types",
-          popularityRank: "popularity_rank",
-          riskScore: "risk_score",
-          riskTypes: "risk_types",
-        }),
-      ),
-    ).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetDomainBulkResponse>;
+  () => Schema.Array(BulkGetResponseItem).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetDomainBulkResponse>;
 
 export type GetDomainBulkError = DefaultErrors;
 
@@ -1758,7 +2082,7 @@ export const GetDomainHistoryRequest =
         path: "/accounts/{account_id}/intel/domain-history",
       }),
     ),
-  ) as unknown as Schema.Schema<GetDomainHistoryRequest>;
+  ) as unknown as Schema.Codec<GetDomainHistoryRequest>;
 
 export type GetDomainHistoryResponse = {
   categorizations?:
@@ -1773,42 +2097,8 @@ export type GetDomainHistoryResponse = {
 
 export const GetDomainHistoryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        categorizations: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                categories: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        name: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                end: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                start: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetDomainHistoryResponse>;
+    Schema.Array(DomainHistory).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<GetDomainHistoryResponse>;
 
 export type GetDomainHistoryError = DefaultErrors;
 
@@ -1844,7 +2134,7 @@ export const GetIndicatorFeedRequest =
         path: "/accounts/{account_id}/intel/indicator-feeds/{feedId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetIndicatorFeedRequest>;
+  ) as unknown as Schema.Codec<GetIndicatorFeedRequest>;
 
 export interface GetIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
@@ -1916,83 +2206,7 @@ export const GetIndicatorFeedResponse =
       ),
       isPublic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       lastUploadSummary: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            persisted: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  domainsAdded: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  domainsRemoved: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  ipsAdded: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  ipsRemoved: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  urlsAdded: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  urlsRemoved: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    domainsAdded: "domains_added",
-                    domainsRemoved: "domains_removed",
-                    ipsAdded: "ips_added",
-                    ipsRemoved: "ips_removed",
-                    urlsAdded: "urls_added",
-                    urlsRemoved: "urls_removed",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            skipped: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  allowlistedDomains: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  expiredIndicators: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  invalidIndicators: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    allowlistedDomains: "allowlisted_domains",
-                    expiredIndicators: "expired_indicators",
-                    invalidIndicators: "invalid_indicators",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            uploaded: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  domains: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  ips: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  urls: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([LastUploadSummary, Schema.Null]),
       ),
       latestUploadError: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -2036,7 +2250,7 @@ export const GetIndicatorFeedResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetIndicatorFeedResponse>;
+  ) as unknown as Schema.Codec<GetIndicatorFeedResponse>;
 
 export type GetIndicatorFeedError =
   | DefaultErrors
@@ -2069,7 +2283,7 @@ export const ListIndicatorFeedsRequest =
         path: "/accounts/{account_id}/intel/indicator-feeds",
       }),
     ),
-  ) as unknown as Schema.Schema<ListIndicatorFeedsRequest>;
+  ) as unknown as Schema.Codec<ListIndicatorFeedsRequest>;
 
 export interface ListIndicatorFeedsResponse {
   result: {
@@ -2087,43 +2301,9 @@ export interface ListIndicatorFeedsResponse {
 export const ListIndicatorFeedsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          createdOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          isAttributable: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isDownloadable: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isPublic: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          modifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdOn: "created_on",
-            description: "description",
-            isAttributable: "is_attributable",
-            isDownloadable: "is_downloadable",
-            isPublic: "is_public",
-            modifiedOn: "modified_on",
-            name: "name",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListIndicatorFeedsResponseResult),
     }),
-  ) as unknown as Schema.Schema<ListIndicatorFeedsResponse>;
+  ) as unknown as Schema.Codec<ListIndicatorFeedsResponse>;
 
 export type ListIndicatorFeedsError = DefaultErrors | Forbidden;
 
@@ -2163,7 +2343,7 @@ export const CreateIndicatorFeedRequest =
         path: "/accounts/{account_id}/intel/indicator-feeds",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateIndicatorFeedRequest>;
+  ) as unknown as Schema.Codec<CreateIndicatorFeedRequest>;
 
 export interface CreateIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
@@ -2213,7 +2393,7 @@ export const CreateIndicatorFeedResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateIndicatorFeedResponse>;
+  ) as unknown as Schema.Codec<CreateIndicatorFeedResponse>;
 
 export type CreateIndicatorFeedError =
   | DefaultErrors
@@ -2270,7 +2450,7 @@ export const UpdateIndicatorFeedRequest =
         path: "/accounts/{account_id}/intel/indicator-feeds/{feedId}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateIndicatorFeedRequest>;
+  ) as unknown as Schema.Codec<UpdateIndicatorFeedRequest>;
 
 export interface UpdateIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
@@ -2320,7 +2500,7 @@ export const UpdateIndicatorFeedResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateIndicatorFeedResponse>;
+  ) as unknown as Schema.Codec<UpdateIndicatorFeedResponse>;
 
 export type UpdateIndicatorFeedError =
   | DefaultErrors
@@ -2355,14 +2535,14 @@ export const DataIndicatorFeedRequest =
         path: "/accounts/{account_id}/intel/indicator-feeds/{feedId}/data",
       }),
     ),
-  ) as unknown as Schema.Schema<DataIndicatorFeedRequest>;
+  ) as unknown as Schema.Codec<DataIndicatorFeedRequest>;
 
 export type DataIndicatorFeedResponse = string;
 
 export const DataIndicatorFeedResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.String,
-  ) as unknown as Schema.Schema<DataIndicatorFeedResponse>;
+  ) as unknown as Schema.Codec<DataIndicatorFeedResponse>;
 
 export type DataIndicatorFeedError = DefaultErrors;
 
@@ -2396,7 +2576,7 @@ export const ListIndicatorFeedPermissionsRequest =
         path: "/accounts/{account_id}/intel/indicator-feeds/permissions/view",
       }),
     ),
-  ) as unknown as Schema.Schema<ListIndicatorFeedPermissionsRequest>;
+  ) as unknown as Schema.Codec<ListIndicatorFeedPermissionsRequest>;
 
 export type ListIndicatorFeedPermissionsResponse = {
   id?: number | null;
@@ -2409,32 +2589,8 @@ export type ListIndicatorFeedPermissionsResponse = {
 
 export const ListIndicatorFeedPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        isAttributable: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        isDownloadable: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        isPublic: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          description: "description",
-          isAttributable: "is_attributable",
-          isDownloadable: "is_downloadable",
-          isPublic: "is_public",
-          name: "name",
-        }),
-      ),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ListIndicatorFeedPermissionsResponse>;
+    Schema.Array(PermissionListResponseItem).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<ListIndicatorFeedPermissionsResponse>;
 
 export type ListIndicatorFeedPermissionsError = DefaultErrors | Forbidden;
 
@@ -2471,7 +2627,7 @@ export const CreateIndicatorFeedPermissionRequest =
         path: "/accounts/{account_id}/intel/indicator-feeds/permissions/add",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateIndicatorFeedPermissionRequest>;
+  ) as unknown as Schema.Codec<CreateIndicatorFeedPermissionRequest>;
 
 export interface CreateIndicatorFeedPermissionResponse {
   /** Whether the update succeeded or not */
@@ -2483,7 +2639,7 @@ export const CreateIndicatorFeedPermissionResponse =
     Schema.Struct({
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateIndicatorFeedPermissionResponse>;
+  ) as unknown as Schema.Codec<CreateIndicatorFeedPermissionResponse>;
 
 export type CreateIndicatorFeedPermissionError =
   | DefaultErrors
@@ -2523,7 +2679,7 @@ export const DeleteIndicatorFeedPermissionRequest =
         path: "/accounts/{account_id}/intel/indicator-feeds/permissions/remove",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteIndicatorFeedPermissionRequest>;
+  ) as unknown as Schema.Codec<DeleteIndicatorFeedPermissionRequest>;
 
 export interface DeleteIndicatorFeedPermissionResponse {
   /** Whether the update succeeded or not */
@@ -2535,7 +2691,7 @@ export const DeleteIndicatorFeedPermissionResponse =
     Schema.Struct({
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteIndicatorFeedPermissionResponse>;
+  ) as unknown as Schema.Codec<DeleteIndicatorFeedPermissionResponse>;
 
 export type DeleteIndicatorFeedPermissionError =
   | DefaultErrors
@@ -2578,7 +2734,7 @@ export const PutIndicatorFeedSnapshotRequest =
         contentType: "multipart",
       }),
     ),
-  ) as unknown as Schema.Schema<PutIndicatorFeedSnapshotRequest>;
+  ) as unknown as Schema.Codec<PutIndicatorFeedSnapshotRequest>;
 
 export interface PutIndicatorFeedSnapshotResponse {
   /** Feed id */
@@ -2604,7 +2760,7 @@ export const PutIndicatorFeedSnapshotResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutIndicatorFeedSnapshotResponse>;
+  ) as unknown as Schema.Codec<PutIndicatorFeedSnapshotResponse>;
 
 export type PutIndicatorFeedSnapshotError =
   | DefaultErrors
@@ -2641,7 +2797,7 @@ export const GetIpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     ipv4: Schema.optional(Schema.String).pipe(T.HttpQuery("ipv4")),
     ipv6: Schema.optional(Schema.String).pipe(T.HttpQuery("ipv6")),
   }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/intel/ip" })),
-) as unknown as Schema.Schema<GetIpRequest>;
+) as unknown as Schema.Codec<GetIpRequest>;
 
 export type GetIpResponse = {
   belongsToRef?: {
@@ -2662,62 +2818,8 @@ export type GetIpResponse = {
 }[];
 
 export const GetIpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-  Schema.Array(
-    Schema.Struct({
-      belongsToRef: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            country: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            description: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            type: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["hosting_provider", "isp", "organization"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      riskTypes: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              superCategoryId: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                name: "name",
-                superCategoryId: "super_category_id",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        belongsToRef: "belongs_to_ref",
-        ip: "ip",
-        riskTypes: "risk_types",
-      }),
-    ),
-  ).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetIpResponse>;
+  Schema.Array(Ip).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetIpResponse>;
 
 export type GetIpError = DefaultErrors;
 
@@ -2786,7 +2888,7 @@ export const CreateMiscategorizationRequest =
         path: "/accounts/{account_id}/intel/miscategorization",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateMiscategorizationRequest>;
+  ) as unknown as Schema.Codec<CreateMiscategorizationRequest>;
 
 export interface CreateMiscategorizationResponse {
   errors: {
@@ -2808,61 +2910,11 @@ export interface CreateMiscategorizationResponse {
 export const CreateMiscategorizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<CreateMiscategorizationResponse>;
+  ) as unknown as Schema.Codec<CreateMiscategorizationResponse>;
 
 export type CreateMiscategorizationError = DefaultErrors;
 
@@ -2893,7 +2945,7 @@ export const ListSinkholesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/intel/sinkholes" }),
     ),
-) as unknown as Schema.Schema<ListSinkholesRequest>;
+) as unknown as Schema.Codec<ListSinkholesRequest>;
 
 export interface ListSinkholesResponse {
   result: {
@@ -2910,35 +2962,9 @@ export interface ListSinkholesResponse {
 export const ListSinkholesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          accountTag: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          createdOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          modifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          r2Bucket: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          r2Id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            accountTag: "account_tag",
-            createdOn: "created_on",
-            modifiedOn: "modified_on",
-            name: "name",
-            r2Bucket: "r2_bucket",
-            r2Id: "r2_id",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListSinkholesResponseResult),
     }),
-) as unknown as Schema.Schema<ListSinkholesResponse>;
+) as unknown as Schema.Codec<ListSinkholesResponse>;
 
 export type ListSinkholesError = DefaultErrors;
 
@@ -2975,7 +3001,7 @@ export const GetWhoiRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/intel/whois" }),
   ),
-) as unknown as Schema.Schema<GetWhoiRequest>;
+) as unknown as Schema.Codec<GetWhoiRequest>;
 
 export interface GetWhoiResponse {
   dnssec: boolean;
@@ -3335,7 +3361,7 @@ export const GetWhoiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       }),
     )
     .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetWhoiResponse>;
+) as unknown as Schema.Codec<GetWhoiResponse>;
 
 export type GetWhoiError = DefaultErrors;
 

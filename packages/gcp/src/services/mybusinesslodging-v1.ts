@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -52,7 +52,7 @@ export interface Business {
   meetingRooms?: boolean;
 }
 
-export const Business: Schema.Schema<Business> =
+export const Business: Schema.Codec<Business> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meetingRoomsException: Schema.optional(Schema.String),
     meetingRoomsCountException: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export interface LodgingMetadata {
   updateTime?: string;
 }
 
-export const LodgingMetadata: Schema.Schema<LodgingMetadata> =
+export const LodgingMetadata: Schema.Codec<LodgingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "LodgingMetadata" });
@@ -83,7 +83,7 @@ export interface TimeOfDay {
   minutes?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
@@ -139,7 +139,7 @@ export interface PaymentOptions {
   creditCard?: boolean;
 }
 
-export const PaymentOptions: Schema.Schema<PaymentOptions> =
+export const PaymentOptions: Schema.Codec<PaymentOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debitCardException: Schema.optional(Schema.String),
     cash: Schema.optional(Schema.Boolean),
@@ -230,7 +230,7 @@ export interface Policies {
   allInclusiveAvailable?: boolean;
 }
 
-export const Policies: Schema.Schema<Policies> =
+export const Policies: Schema.Codec<Policies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     checkinTime: Schema.optional(TimeOfDay),
     maxKidsStayFreeCountException: Schema.optional(Schema.String),
@@ -290,7 +290,7 @@ export interface Pets {
   petsAllowedFree?: boolean;
 }
 
-export const Pets: Schema.Schema<Pets> =
+export const Pets: Schema.Codec<Pets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dogsAllowed: Schema.optional(Schema.Boolean),
     catsAllowedException: Schema.optional(Schema.String),
@@ -368,7 +368,7 @@ export interface Parking {
   valetParkingAvailable?: boolean;
 }
 
-export const Parking: Schema.Schema<Parking> =
+export const Parking: Schema.Codec<Parking> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     electricCarChargingStationsException: Schema.optional(Schema.String),
     selfParkingAvailable: Schema.optional(Schema.Boolean),
@@ -443,7 +443,7 @@ export interface EnhancedCleaning {
     | (string & {});
 }
 
-export const EnhancedCleaning: Schema.Schema<EnhancedCleaning> =
+export const EnhancedCleaning: Schema.Codec<EnhancedCleaning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commercialGradeDisinfectantCleaningException: Schema.optional(
       Schema.String,
@@ -506,7 +506,7 @@ export interface EcoCertification {
     | (string & {});
 }
 
-export const EcoCertification: Schema.Schema<EcoCertification> =
+export const EcoCertification: Schema.Codec<EcoCertification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     awarded: Schema.optional(Schema.Boolean),
     awardedException: Schema.optional(Schema.String),
@@ -588,7 +588,7 @@ export interface SustainableSourcing {
     | (string & {});
 }
 
-export const SustainableSourcing: Schema.Schema<SustainableSourcing> =
+export const SustainableSourcing: Schema.Codec<SustainableSourcing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ecoFriendlyToiletriesException: Schema.optional(Schema.String),
     organicCageFreeEggsException: Schema.optional(Schema.String),
@@ -647,7 +647,7 @@ export interface PersonalProtection {
     | (string & {});
 }
 
-export const PersonalProtection: Schema.Schema<PersonalProtection> =
+export const PersonalProtection: Schema.Codec<PersonalProtection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commonAreasOfferSanitizingItems: Schema.optional(Schema.Boolean),
     commonAreasOfferSanitizingItemsException: Schema.optional(Schema.String),
@@ -707,7 +707,7 @@ export interface IncreasedFoodSafety {
     | (string & {});
 }
 
-export const IncreasedFoodSafety: Schema.Schema<IncreasedFoodSafety> =
+export const IncreasedFoodSafety: Schema.Codec<IncreasedFoodSafety> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     singleUseFoodMenusException: Schema.optional(Schema.String),
     diningAreasAdditionalSanitation: Schema.optional(Schema.Boolean),
@@ -789,7 +789,7 @@ export interface MinimizedContact {
   housekeepingScheduledRequestOnly?: boolean;
 }
 
-export const MinimizedContact: Schema.Schema<MinimizedContact> =
+export const MinimizedContact: Schema.Codec<MinimizedContact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     housekeepingScheduledRequestOnlyException: Schema.optional(Schema.String),
     noHighTouchItemsCommonAreasException: Schema.optional(Schema.String),
@@ -855,7 +855,7 @@ export interface PhysicalDistancing {
     | (string & {});
 }
 
-export const PhysicalDistancing: Schema.Schema<PhysicalDistancing> =
+export const PhysicalDistancing: Schema.Codec<PhysicalDistancing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     safetyDividers: Schema.optional(Schema.Boolean),
     physicalDistancingRequired: Schema.optional(Schema.Boolean),
@@ -884,7 +884,7 @@ export interface HealthAndSafety {
   physicalDistancing?: PhysicalDistancing;
 }
 
-export const HealthAndSafety: Schema.Schema<HealthAndSafety> =
+export const HealthAndSafety: Schema.Codec<HealthAndSafety> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     personalProtection: Schema.optional(PersonalProtection),
     increasedFoodSafety: Schema.optional(IncreasedFoodSafety),
@@ -1040,7 +1040,7 @@ export interface LivingAreaEating {
     | (string & {});
 }
 
-export const LivingAreaEating: Schema.Schema<LivingAreaEating> =
+export const LivingAreaEating: Schema.Codec<LivingAreaEating> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toasterException: Schema.optional(Schema.String),
     teaStation: Schema.optional(Schema.Boolean),
@@ -1106,7 +1106,7 @@ export interface Housekeeping {
   dailyHousekeeping?: boolean;
 }
 
-export const Housekeeping: Schema.Schema<Housekeeping> =
+export const Housekeeping: Schema.Codec<Housekeeping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dailyHousekeepingException: Schema.optional(Schema.String),
     turndownService: Schema.optional(Schema.Boolean),
@@ -1173,7 +1173,7 @@ export interface WaterConservation {
     | (string & {});
 }
 
-export const WaterConservation: Schema.Schema<WaterConservation> =
+export const WaterConservation: Schema.Codec<WaterConservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     waterSavingShowers: Schema.optional(Schema.Boolean),
     waterSavingSinksException: Schema.optional(Schema.String),
@@ -1338,7 +1338,7 @@ export interface WasteReduction {
     | (string & {});
 }
 
-export const WasteReduction: Schema.Schema<WasteReduction> =
+export const WasteReduction: Schema.Codec<WasteReduction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     noSingleUsePlasticWaterBottlesException: Schema.optional(Schema.String),
     foodWasteReductionProgramException: Schema.optional(Schema.String),
@@ -1414,7 +1414,7 @@ export interface SustainabilityCertifications {
     | (string & {});
 }
 
-export const SustainabilityCertifications: Schema.Schema<SustainabilityCertifications> =
+export const SustainabilityCertifications: Schema.Codec<SustainabilityCertifications> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     breeamCertification: Schema.optional(Schema.String),
     leedCertification: Schema.optional(Schema.String),
@@ -1606,7 +1606,7 @@ export interface LivingAreaFeatures {
   tvStreaming?: boolean;
 }
 
-export const LivingAreaFeatures: Schema.Schema<LivingAreaFeatures> =
+export const LivingAreaFeatures: Schema.Codec<LivingAreaFeatures> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bidetException: Schema.optional(Schema.String),
     airConditioning: Schema.optional(Schema.Boolean),
@@ -1806,7 +1806,7 @@ export interface Activities {
   gameRoom?: boolean;
 }
 
-export const Activities: Schema.Schema<Activities> =
+export const Activities: Schema.Codec<Activities> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateBeach: Schema.optional(Schema.Boolean),
     golf: Schema.optional(Schema.Boolean),
@@ -1883,7 +1883,7 @@ export interface Accessibility {
     | (string & {});
 }
 
-export const Accessibility: Schema.Schema<Accessibility> =
+export const Accessibility: Schema.Codec<Accessibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mobilityAccessiblePool: Schema.optional(Schema.Boolean),
     mobilityAccessiblePoolException: Schema.optional(Schema.String),
@@ -1961,7 +1961,7 @@ export interface EnergyEfficiency {
     | (string & {});
 }
 
-export const EnergyEfficiency: Schema.Schema<EnergyEfficiency> =
+export const EnergyEfficiency: Schema.Codec<EnergyEfficiency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     greenBuildingDesignException: Schema.optional(Schema.String),
     independentOrganizationAuditsEnergyUseException: Schema.optional(
@@ -1996,7 +1996,7 @@ export interface Sustainability {
   waterConservation?: WaterConservation;
 }
 
-export const Sustainability: Schema.Schema<Sustainability> =
+export const Sustainability: Schema.Codec<Sustainability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sustainabilityCertifications: Schema.optional(SustainabilityCertifications),
     energyEfficiency: Schema.optional(EnergyEfficiency),
@@ -2080,7 +2080,7 @@ export interface LivingAreaAccessibility {
     | (string & {});
 }
 
-export const LivingAreaAccessibility: Schema.Schema<LivingAreaAccessibility> =
+export const LivingAreaAccessibility: Schema.Codec<LivingAreaAccessibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mobilityAccessibleUnit: Schema.optional(Schema.Boolean),
     mobilityAccessibleUnitException: Schema.optional(Schema.String),
@@ -2229,7 +2229,7 @@ export interface LivingAreaSleeping {
   hypoallergenicBedding?: boolean;
 }
 
-export const LivingAreaSleeping: Schema.Schema<LivingAreaSleeping> =
+export const LivingAreaSleeping: Schema.Codec<LivingAreaSleeping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kingBedsCountException: Schema.optional(Schema.String),
     hypoallergenicBeddingException: Schema.optional(Schema.String),
@@ -2318,7 +2318,7 @@ export interface LivingAreaLayout {
   patio?: boolean;
 }
 
-export const LivingAreaLayout: Schema.Schema<LivingAreaLayout> =
+export const LivingAreaLayout: Schema.Codec<LivingAreaLayout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stairsException: Schema.optional(Schema.String),
     livingAreaSqMetersException: Schema.optional(Schema.String),
@@ -2347,7 +2347,7 @@ export interface LivingArea {
   eating?: LivingAreaEating;
 }
 
-export const LivingArea: Schema.Schema<LivingArea> =
+export const LivingArea: Schema.Codec<LivingArea> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     features: Schema.optional(LivingAreaFeatures),
     accessibility: Schema.optional(LivingAreaAccessibility),
@@ -2431,7 +2431,7 @@ export interface ViewsFromUnit {
   poolView?: boolean;
 }
 
-export const ViewsFromUnit: Schema.Schema<ViewsFromUnit> =
+export const ViewsFromUnit: Schema.Codec<ViewsFromUnit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cityViewException: Schema.optional(Schema.String),
     gardenViewException: Schema.optional(Schema.String),
@@ -2543,7 +2543,7 @@ export interface GuestUnitFeatures {
     | (string & {});
 }
 
-export const GuestUnitFeatures: Schema.Schema<GuestUnitFeatures> =
+export const GuestUnitFeatures: Schema.Codec<GuestUnitFeatures> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executiveFloor: Schema.optional(Schema.Boolean),
     totalLivingAreas: Schema.optional(LivingArea),
@@ -2576,7 +2576,7 @@ export interface GuestUnitType {
   label?: string;
 }
 
-export const GuestUnitType: Schema.Schema<GuestUnitType> =
+export const GuestUnitType: Schema.Codec<GuestUnitType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     features: Schema.optional(GuestUnitFeatures),
     codes: Schema.optional(Schema.Array(Schema.String)),
@@ -2597,7 +2597,7 @@ export interface LanguageSpoken {
   spoken?: boolean;
 }
 
-export const LanguageSpoken: Schema.Schema<LanguageSpoken> =
+export const LanguageSpoken: Schema.Codec<LanguageSpoken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     spokenException: Schema.optional(Schema.String),
@@ -2717,7 +2717,7 @@ export interface Services {
     | (string & {});
 }
 
-export const Services: Schema.Schema<Services> =
+export const Services: Schema.Codec<Services> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfServiceLaundry: Schema.optional(Schema.Boolean),
     currencyExchange: Schema.optional(Schema.Boolean),
@@ -2875,7 +2875,7 @@ export interface Pools {
   hotTub?: boolean;
 }
 
-export const Pools: Schema.Schema<Pools> =
+export const Pools: Schema.Codec<Pools> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hotTubException: Schema.optional(Schema.String),
     wavePool: Schema.optional(Schema.Boolean),
@@ -2946,7 +2946,7 @@ export interface Property {
   lastRenovatedYear?: number;
 }
 
-export const Property: Schema.Schema<Property> =
+export const Property: Schema.Codec<Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     builtYear: Schema.optional(Schema.Number),
     lastRenovatedYearException: Schema.optional(Schema.String),
@@ -3069,7 +3069,7 @@ export interface FoodAndDrink {
     | (string & {});
 }
 
-export const FoodAndDrink: Schema.Schema<FoodAndDrink> =
+export const FoodAndDrink: Schema.Codec<FoodAndDrink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buffet: Schema.optional(Schema.Boolean),
     breakfastAvailableException: Schema.optional(Schema.String),
@@ -3136,7 +3136,7 @@ export interface Connectivity {
   publicAreaWifiAvailable?: boolean;
 }
 
-export const Connectivity: Schema.Schema<Connectivity> =
+export const Connectivity: Schema.Codec<Connectivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freeWifiException: Schema.optional(Schema.String),
     publicInternetTerminalException: Schema.optional(Schema.String),
@@ -3187,7 +3187,7 @@ export interface Families {
   kidsFriendly?: boolean;
 }
 
-export const Families: Schema.Schema<Families> =
+export const Families: Schema.Codec<Families> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     babysitting: Schema.optional(Schema.Boolean),
     babysittingException: Schema.optional(Schema.String),
@@ -3265,7 +3265,7 @@ export interface Transportation {
     | (string & {});
 }
 
-export const Transportation: Schema.Schema<Transportation> =
+export const Transportation: Schema.Codec<Transportation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transfer: Schema.optional(Schema.Boolean),
     freeAirportShuttleException: Schema.optional(Schema.String),
@@ -3385,7 +3385,7 @@ export interface Wellness {
   fitnessCenter?: boolean;
 }
 
-export const Wellness: Schema.Schema<Wellness> =
+export const Wellness: Schema.Codec<Wellness> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     saunaException: Schema.optional(Schema.String),
     weightMachineException: Schema.optional(Schema.String),
@@ -3460,7 +3460,7 @@ export interface Lodging {
   healthAndSafety?: HealthAndSafety;
 }
 
-export const Lodging: Schema.Schema<Lodging> =
+export const Lodging: Schema.Codec<Lodging> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessibility: Schema.optional(Accessibility),
     sustainability: Schema.optional(Sustainability),
@@ -3494,7 +3494,7 @@ export interface GetGoogleUpdatedLodgingResponse {
   diffMask?: string;
 }
 
-export const GetGoogleUpdatedLodgingResponse: Schema.Schema<GetGoogleUpdatedLodgingResponse> =
+export const GetGoogleUpdatedLodgingResponse: Schema.Codec<GetGoogleUpdatedLodgingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lodging: Schema.optional(Lodging),
     diffMask: Schema.optional(Schema.String),
@@ -3568,7 +3568,7 @@ export const GetLodgingLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetLodgingLocationsRequest>;
+  ) as unknown as Schema.Codec<GetLodgingLocationsRequest>;
 
 export type GetLodgingLocationsResponse = Lodging;
 export const GetLodgingLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Lodging;
@@ -3604,7 +3604,7 @@ export const UpdateLodgingLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateLodgingLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateLodgingLocationsRequest>;
 
 export type UpdateLodgingLocationsResponse = Lodging;
 export const UpdateLodgingLocationsResponse =
@@ -3643,7 +3643,7 @@ export const GetGoogleUpdatedLocationsLodgingRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getGoogleUpdated" }),
     svc,
-  ) as unknown as Schema.Schema<GetGoogleUpdatedLocationsLodgingRequest>;
+  ) as unknown as Schema.Codec<GetGoogleUpdatedLocationsLodgingRequest>;
 
 export type GetGoogleUpdatedLocationsLodgingResponse =
   GetGoogleUpdatedLodgingResponse;

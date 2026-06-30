@@ -10,6 +10,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface UpgradeGroupClusterTenantUpgradeInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpgradeGroupClusterTenantUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -20,15 +25,12 @@ export const UpgradeGroupClusterTenantUpgradeInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade",
     }),
-  );
-export type UpgradeGroupClusterTenantUpgradeInput =
-  typeof UpgradeGroupClusterTenantUpgradeInput.Type;
+  ) as unknown as Schema.Codec<UpgradeGroupClusterTenantUpgradeInput>;
 
 // Output Schema
+export type UpgradeGroupClusterTenantUpgradeOutput = void;
 export const UpgradeGroupClusterTenantUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpgradeGroupClusterTenantUpgradeOutput =
-  typeof UpgradeGroupClusterTenantUpgradeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpgradeGroupClusterTenantUpgradeOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleIamAdminV1AuditDataPermissionDelta {
   removedPermissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamAdminV1AuditDataPermissionDelta: Schema.Schema<GoogleIamAdminV1AuditDataPermissionDelta> =
+export const GoogleIamAdminV1AuditDataPermissionDelta: Schema.Codec<GoogleIamAdminV1AuditDataPermissionDelta> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addedPermissions: Schema.optional(Schema.Array(Schema.String)),
     removedPermissions: Schema.optional(Schema.Array(Schema.String)),
@@ -40,7 +40,7 @@ export interface GoogleIamAdminV1AuditData {
   permissionDelta?: GoogleIamAdminV1AuditDataPermissionDelta;
 }
 
-export const GoogleIamAdminV1AuditData: Schema.Schema<GoogleIamAdminV1AuditData> =
+export const GoogleIamAdminV1AuditData: Schema.Codec<GoogleIamAdminV1AuditData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissionDelta: Schema.optional(GoogleIamAdminV1AuditDataPermissionDelta),
   }).annotate({ identifier: "GoogleIamAdminV1AuditData" });
@@ -62,7 +62,7 @@ export interface GoogleIamV3betaOperationMetadata {
   verb?: string;
 }
 
-export const GoogleIamV3betaOperationMetadata: Schema.Schema<GoogleIamV3betaOperationMetadata> =
+export const GoogleIamV3betaOperationMetadata: Schema.Codec<GoogleIamV3betaOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -84,7 +84,7 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -103,7 +103,7 @@ export interface GoogleIamV1BindingDelta {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1BindingDelta: Schema.Schema<GoogleIamV1BindingDelta> =
+export const GoogleIamV1BindingDelta: Schema.Codec<GoogleIamV1BindingDelta> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     member: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface GoogleIamV1PolicyDelta {
   bindingDeltas?: ReadonlyArray<GoogleIamV1BindingDelta>;
 }
 
-export const GoogleIamV1PolicyDelta: Schema.Schema<GoogleIamV1PolicyDelta> =
+export const GoogleIamV1PolicyDelta: Schema.Codec<GoogleIamV1PolicyDelta> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindingDeltas: Schema.optional(Schema.Array(GoogleIamV1BindingDelta)),
   }).annotate({ identifier: "GoogleIamV1PolicyDelta" });
@@ -126,7 +126,7 @@ export interface GoogleIamV1LoggingAuditData {
   policyDelta?: GoogleIamV1PolicyDelta;
 }
 
-export const GoogleIamV1LoggingAuditData: Schema.Schema<GoogleIamV1LoggingAuditData> =
+export const GoogleIamV1LoggingAuditData: Schema.Codec<GoogleIamV1LoggingAuditData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyDelta: Schema.optional(GoogleIamV1PolicyDelta),
   }).annotate({ identifier: "GoogleIamV1LoggingAuditData" });
@@ -148,7 +148,7 @@ export interface GoogleIamV3alphaOperationMetadata {
   verb?: string;
 }
 
-export const GoogleIamV3alphaOperationMetadata: Schema.Schema<GoogleIamV3alphaOperationMetadata> =
+export const GoogleIamV3alphaOperationMetadata: Schema.Codec<GoogleIamV3alphaOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -172,7 +172,7 @@ export interface GoogleIamV2betaDenyRule {
   deniedPermissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV2betaDenyRule: Schema.Schema<GoogleIamV2betaDenyRule> =
+export const GoogleIamV2betaDenyRule: Schema.Codec<GoogleIamV2betaDenyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deniedPrincipals: Schema.optional(Schema.Array(Schema.String)),
     exceptionPermissions: Schema.optional(Schema.Array(Schema.String)),
@@ -188,7 +188,7 @@ export interface GoogleIamV2betaPolicyRule {
   denyRule?: GoogleIamV2betaDenyRule;
 }
 
-export const GoogleIamV2betaPolicyRule: Schema.Schema<GoogleIamV2betaPolicyRule> =
+export const GoogleIamV2betaPolicyRule: Schema.Codec<GoogleIamV2betaPolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     denyRule: Schema.optional(GoogleIamV2betaDenyRule),
@@ -217,7 +217,7 @@ export interface GoogleIamV2betaPolicy {
   kind?: string;
 }
 
-export const GoogleIamV2betaPolicy: Schema.Schema<GoogleIamV2betaPolicy> =
+export const GoogleIamV2betaPolicy: Schema.Codec<GoogleIamV2betaPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -238,7 +238,7 @@ export interface GoogleIamV2betaListPoliciesResponse {
   policies?: ReadonlyArray<GoogleIamV2betaPolicy>;
 }
 
-export const GoogleIamV2betaListPoliciesResponse: Schema.Schema<GoogleIamV2betaListPoliciesResponse> =
+export const GoogleIamV2betaListPoliciesResponse: Schema.Codec<GoogleIamV2betaListPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     policies: Schema.optional(Schema.Array(GoogleIamV2betaPolicy)),
@@ -246,7 +246,7 @@ export const GoogleIamV2betaListPoliciesResponse: Schema.Schema<GoogleIamV2betaL
 
 export interface GoogleIamV1betaWorkloadIdentityPoolOperationMetadata {}
 
-export const GoogleIamV1betaWorkloadIdentityPoolOperationMetadata: Schema.Schema<GoogleIamV1betaWorkloadIdentityPoolOperationMetadata> =
+export const GoogleIamV1betaWorkloadIdentityPoolOperationMetadata: Schema.Codec<GoogleIamV1betaWorkloadIdentityPoolOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleIamV1betaWorkloadIdentityPoolOperationMetadata",
   });
@@ -268,7 +268,7 @@ export interface GoogleIamV3mainOperationMetadata {
   statusMessage?: string;
 }
 
-export const GoogleIamV3mainOperationMetadata: Schema.Schema<GoogleIamV3mainOperationMetadata> =
+export const GoogleIamV3mainOperationMetadata: Schema.Codec<GoogleIamV3mainOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -284,7 +284,7 @@ export interface GoogleIamV2betaPolicyOperationMetadata {
   createTime?: string;
 }
 
-export const GoogleIamV2betaPolicyOperationMetadata: Schema.Schema<GoogleIamV2betaPolicyOperationMetadata> =
+export const GoogleIamV2betaPolicyOperationMetadata: Schema.Codec<GoogleIamV2betaPolicyOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIamV2betaPolicyOperationMetadata" });
@@ -298,7 +298,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -320,7 +320,7 @@ export interface GoogleLongrunningOperation {
   done?: boolean;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(GoogleRpcStatus),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -346,7 +346,7 @@ export interface GoogleCloudCommonOperationMetadata {
   cancelRequested?: boolean;
 }
 
-export const GoogleCloudCommonOperationMetadata: Schema.Schema<GoogleCloudCommonOperationMetadata> =
+export const GoogleCloudCommonOperationMetadata: Schema.Codec<GoogleCloudCommonOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -374,7 +374,7 @@ export interface GoogleIamV3OperationMetadata {
   verb?: string;
 }
 
-export const GoogleIamV3OperationMetadata: Schema.Schema<GoogleIamV3OperationMetadata> =
+export const GoogleIamV3OperationMetadata: Schema.Codec<GoogleIamV3OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -396,7 +396,7 @@ export interface CloudControl2SharedOperationsReconciliationOperationMetadata {
     | (string & {});
 }
 
-export const CloudControl2SharedOperationsReconciliationOperationMetadata: Schema.Schema<CloudControl2SharedOperationsReconciliationOperationMetadata> =
+export const CloudControl2SharedOperationsReconciliationOperationMetadata: Schema.Codec<CloudControl2SharedOperationsReconciliationOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteResource: Schema.optional(Schema.Boolean),
     exclusiveAction: Schema.optional(Schema.String),
@@ -475,7 +475,7 @@ export const CreatePolicyPoliciesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2beta/{+parent}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePolicyPoliciesRequest>;
+  ) as unknown as Schema.Codec<CreatePolicyPoliciesRequest>;
 
 export type CreatePolicyPoliciesResponse = GoogleLongrunningOperation;
 export const CreatePolicyPoliciesResponse =
@@ -517,7 +517,7 @@ export const ListPoliciesPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta/{+parent}" }),
     svc,
-  ) as unknown as Schema.Schema<ListPoliciesPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListPoliciesPoliciesRequest>;
 
 export type ListPoliciesPoliciesResponse = GoogleIamV2betaListPoliciesResponse;
 export const ListPoliciesPoliciesResponse =
@@ -554,7 +554,7 @@ export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "v2beta/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdatePoliciesRequest>;
+) as unknown as Schema.Codec<UpdatePoliciesRequest>;
 
 export type UpdatePoliciesResponse = GoogleLongrunningOperation;
 export const UpdatePoliciesResponse =
@@ -592,7 +592,7 @@ export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v2beta/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeletePoliciesRequest>;
+) as unknown as Schema.Codec<DeletePoliciesRequest>;
 
 export type DeletePoliciesResponse = GoogleLongrunningOperation;
 export const DeletePoliciesResponse =
@@ -627,7 +627,7 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2beta/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetPoliciesRequest>;
+) as unknown as Schema.Codec<GetPoliciesRequest>;
 
 export type GetPoliciesResponse = GoogleIamV2betaPolicy;
 export const GetPoliciesResponse =
@@ -658,7 +658,7 @@ export const GetPoliciesOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPoliciesOperationsRequest>;
+  ) as unknown as Schema.Codec<GetPoliciesOperationsRequest>;
 
 export type GetPoliciesOperationsResponse = GoogleLongrunningOperation;
 export const GetPoliciesOperationsResponse =

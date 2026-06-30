@@ -3,6 +3,57 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MessagingTemplatesPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  description?: string;
+  created_at?: string;
+  updated_at?: string;
+  content?: {
+    templating?: "liquid";
+    email?: {
+      subject?: string;
+      text?: string;
+      html?: string;
+      design?: {
+        counters?: unknown;
+        schemaVersion: number;
+        body: {
+          id?: string;
+          rows: unknown[];
+          headers?: unknown[];
+          footers?: unknown[];
+          values?: unknown;
+        };
+      };
+    } | null;
+  };
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  type?: string;
+  message_category?: string | null;
+  deleted?: boolean;
+}
 export const MessagingTemplatesPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,7 +65,28 @@ export const MessagingTemplatesPartialUpdateInput =
     content: Schema.optional(
       Schema.Struct({
         templating: Schema.optional(Schema.Literals(["liquid"])),
-        email: Schema.optional(Schema.Unknown),
+        email: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              subject: Schema.optional(Schema.String),
+              text: Schema.optional(Schema.String),
+              html: Schema.optional(Schema.String),
+              design: Schema.optional(
+                Schema.Struct({
+                  counters: Schema.optional(Schema.Unknown),
+                  schemaVersion: Schema.Number,
+                  body: Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    rows: Schema.Array(Schema.Unknown),
+                    headers: Schema.optional(Schema.Array(Schema.Unknown)),
+                    footers: Schema.optional(Schema.Array(Schema.Unknown)),
+                    values: Schema.optional(Schema.Unknown),
+                  }),
+                }),
+              ),
+            }),
+          ),
+        ),
       }),
     ),
     created_by: Schema.optional(
@@ -29,7 +101,23 @@ export const MessagingTemplatesPartialUpdateInput =
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
     type: Schema.optional(Schema.String),
@@ -40,11 +128,59 @@ export const MessagingTemplatesPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/messaging_templates/{id}/",
     }),
-  );
-export type MessagingTemplatesPartialUpdateInput =
-  typeof MessagingTemplatesPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<MessagingTemplatesPartialUpdateInput>;
 
 // Output Schema
+export interface MessagingTemplatesPartialUpdateOutput {
+  id: string;
+  name: string;
+  description?: string;
+  created_at: string;
+  updated_at: string;
+  content?: {
+    templating?: "liquid";
+    email?: {
+      subject?: string;
+      text?: string;
+      html?: string;
+      design?: {
+        counters?: unknown;
+        schemaVersion: number;
+        body: {
+          id?: string;
+          rows: unknown[];
+          headers?: unknown[];
+          footers?: unknown[];
+          values?: unknown;
+        };
+      };
+    } | null;
+  };
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  type?: string;
+  message_category?: string | null;
+  deleted?: boolean;
+}
 export const MessagingTemplatesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -55,7 +191,28 @@ export const MessagingTemplatesPartialUpdateOutput =
     content: Schema.optional(
       Schema.Struct({
         templating: Schema.optional(Schema.Literals(["liquid"])),
-        email: Schema.optional(Schema.Unknown),
+        email: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              subject: Schema.optional(Schema.String),
+              text: Schema.optional(Schema.String),
+              html: Schema.optional(Schema.String),
+              design: Schema.optional(
+                Schema.Struct({
+                  counters: Schema.optional(Schema.Unknown),
+                  schemaVersion: Schema.Number,
+                  body: Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    rows: Schema.Array(Schema.Unknown),
+                    headers: Schema.optional(Schema.Array(Schema.Unknown)),
+                    footers: Schema.optional(Schema.Array(Schema.Unknown)),
+                    values: Schema.optional(Schema.Unknown),
+                  }),
+                }),
+              ),
+            }),
+          ),
+        ),
       }),
     ),
     created_by: Schema.Struct({
@@ -69,14 +226,28 @@ export const MessagingTemplatesPartialUpdateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     type: Schema.optional(Schema.String),
     message_category: Schema.optional(Schema.NullOr(Schema.String)),
     deleted: Schema.optional(Schema.Boolean),
-  });
-export type MessagingTemplatesPartialUpdateOutput =
-  typeof MessagingTemplatesPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MessagingTemplatesPartialUpdateOutput>;
 
 // The operation
 /**

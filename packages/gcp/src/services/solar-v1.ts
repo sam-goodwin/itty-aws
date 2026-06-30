@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Money {
   units?: string;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -53,7 +53,7 @@ export interface SavingsOverTime {
   savingsYear20?: Money;
 }
 
-export const SavingsOverTime: Schema.Schema<SavingsOverTime> =
+export const SavingsOverTime: Schema.Codec<SavingsOverTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     financiallyViable: Schema.optional(Schema.Boolean),
     presentValueOfSavingsLifetime: Schema.optional(Money),
@@ -74,7 +74,7 @@ export interface LeasingSavings {
   annualLeasingCost?: Money;
 }
 
-export const LeasingSavings: Schema.Schema<LeasingSavings> =
+export const LeasingSavings: Schema.Codec<LeasingSavings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     savings: Schema.optional(SavingsOverTime),
     leasesAllowed: Schema.optional(Schema.Boolean),
@@ -89,7 +89,7 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const LatLng: Schema.Codec<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -102,7 +102,7 @@ export interface LatLngBox {
   ne?: LatLng;
 }
 
-export const LatLngBox: Schema.Schema<LatLngBox> =
+export const LatLngBox: Schema.Codec<LatLngBox> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sw: Schema.optional(LatLng),
     ne: Schema.optional(LatLng),
@@ -117,7 +117,7 @@ export interface SizeAndSunshineStats {
   groundAreaMeters2?: number;
 }
 
-export const SizeAndSunshineStats: Schema.Schema<SizeAndSunshineStats> =
+export const SizeAndSunshineStats: Schema.Codec<SizeAndSunshineStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     areaMeters2: Schema.optional(Schema.Number),
     sunshineQuantiles: Schema.optional(Schema.Array(Schema.Number)),
@@ -139,7 +139,7 @@ export interface RoofSegmentSizeAndSunshineStats {
   boundingBox?: LatLngBox;
 }
 
-export const RoofSegmentSizeAndSunshineStats: Schema.Schema<RoofSegmentSizeAndSunshineStats> =
+export const RoofSegmentSizeAndSunshineStats: Schema.Codec<RoofSegmentSizeAndSunshineStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pitchDegrees: Schema.optional(Schema.Number),
     stats: Schema.optional(SizeAndSunshineStats),
@@ -160,7 +160,7 @@ export interface FinancedPurchaseSavings {
   savings?: SavingsOverTime;
 }
 
-export const FinancedPurchaseSavings: Schema.Schema<FinancedPurchaseSavings> =
+export const FinancedPurchaseSavings: Schema.Codec<FinancedPurchaseSavings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rebateValue: Schema.optional(Money),
     annualLoanPayment: Schema.optional(Money),
@@ -191,7 +191,7 @@ export interface FinancialDetails {
   netMeteringAllowed?: boolean;
 }
 
-export const FinancialDetails: Schema.Schema<FinancialDetails> =
+export const FinancialDetails: Schema.Codec<FinancialDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     costOfElectricityWithoutSolar: Schema.optional(Money),
     initialAcKwhPerYear: Schema.optional(Schema.Number),
@@ -218,7 +218,7 @@ export interface CashPurchaseSavings {
   paybackYears?: number;
 }
 
-export const CashPurchaseSavings: Schema.Schema<CashPurchaseSavings> =
+export const CashPurchaseSavings: Schema.Codec<CashPurchaseSavings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rebateValue: Schema.optional(Money),
     upfrontCost: Schema.optional(Money),
@@ -246,7 +246,7 @@ export interface FinancialAnalysis {
   cashPurchaseSavings?: CashPurchaseSavings;
 }
 
-export const FinancialAnalysis: Schema.Schema<FinancialAnalysis> =
+export const FinancialAnalysis: Schema.Codec<FinancialAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     leasingSavings: Schema.optional(LeasingSavings),
     panelConfigIndex: Schema.optional(Schema.Number),
@@ -273,7 +273,7 @@ export interface SolarPanel {
   center?: LatLng;
 }
 
-export const SolarPanel: Schema.Schema<SolarPanel> =
+export const SolarPanel: Schema.Codec<SolarPanel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orientation: Schema.optional(Schema.String),
     yearlyEnergyDcKwh: Schema.optional(Schema.Number),
@@ -294,7 +294,7 @@ export interface RoofSegmentSummary {
   yearlyEnergyDcKwh?: number;
 }
 
-export const RoofSegmentSummary: Schema.Schema<RoofSegmentSummary> =
+export const RoofSegmentSummary: Schema.Codec<RoofSegmentSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     segmentIndex: Schema.optional(Schema.Number),
     pitchDegrees: Schema.optional(Schema.Number),
@@ -312,7 +312,7 @@ export interface SolarPanelConfig {
   panelsCount?: number;
 }
 
-export const SolarPanelConfig: Schema.Schema<SolarPanelConfig> =
+export const SolarPanelConfig: Schema.Codec<SolarPanelConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yearlyEnergyDcKwh: Schema.optional(Schema.Number),
     roofSegmentSummaries: Schema.optional(Schema.Array(RoofSegmentSummary)),
@@ -350,7 +350,7 @@ export interface SolarPotential {
   carbonOffsetFactorKgPerMwh?: number;
 }
 
-export const SolarPotential: Schema.Schema<SolarPotential> =
+export const SolarPotential: Schema.Codec<SolarPotential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxArrayAreaMeters2: Schema.optional(Schema.Number),
     panelWidthMeters: Schema.optional(Schema.Number),
@@ -379,7 +379,7 @@ export interface Solar_Date {
   year?: number;
 }
 
-export const Solar_Date: Schema.Schema<Solar_Date> =
+export const Solar_Date: Schema.Codec<Solar_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -398,7 +398,7 @@ export interface BuildingInsightsDetectedArrays {
   latestCaptureDate?: Solar_Date;
 }
 
-export const BuildingInsightsDetectedArrays: Schema.Schema<BuildingInsightsDetectedArrays> =
+export const BuildingInsightsDetectedArrays: Schema.Codec<BuildingInsightsDetectedArrays> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectionStatus: Schema.optional(Schema.String),
     latestCaptureDate: Schema.optional(Solar_Date),
@@ -437,7 +437,7 @@ export interface BuildingInsights {
   statisticalArea?: string;
 }
 
-export const BuildingInsights: Schema.Schema<BuildingInsights> =
+export const BuildingInsights: Schema.Codec<BuildingInsights> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     administrativeArea: Schema.optional(Schema.String),
     postalCode: Schema.optional(Schema.String),
@@ -480,7 +480,7 @@ export interface DataLayers {
   maskUrl?: string;
 }
 
-export const DataLayers: Schema.Schema<DataLayers> =
+export const DataLayers: Schema.Codec<DataLayers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageryProcessedDate: Schema.optional(Solar_Date),
     imageryDate: Schema.optional(Solar_Date),
@@ -502,7 +502,7 @@ export interface HttpBody {
   extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
+export const HttpBody: Schema.Codec<HttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -603,7 +603,7 @@ export const GetDataLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/dataLayers:get" }),
   svc,
-) as unknown as Schema.Schema<GetDataLayersRequest>;
+) as unknown as Schema.Codec<GetDataLayersRequest>;
 
 export type GetDataLayersResponse = DataLayers;
 export const GetDataLayersResponse = /*@__PURE__*/ /*#__PURE__*/ DataLayers;
@@ -632,7 +632,7 @@ export const GetGeoTiffRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/geoTiff:get" }),
   svc,
-) as unknown as Schema.Schema<GetGeoTiffRequest>;
+) as unknown as Schema.Codec<GetGeoTiffRequest>;
 
 export type GetGeoTiffResponse = HttpBody;
 export const GetGeoTiffResponse = /*@__PURE__*/ /*#__PURE__*/ HttpBody;
@@ -701,7 +701,7 @@ export const FindClosestBuildingInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/buildingInsights:findClosest" }),
     svc,
-  ) as unknown as Schema.Schema<FindClosestBuildingInsightsRequest>;
+  ) as unknown as Schema.Codec<FindClosestBuildingInsightsRequest>;
 
 export type FindClosestBuildingInsightsResponse = BuildingInsights;
 export const FindClosestBuildingInsightsResponse =

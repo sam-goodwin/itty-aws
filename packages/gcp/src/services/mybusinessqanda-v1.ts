@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -36,7 +36,7 @@ export interface Author {
     | (string & {});
 }
 
-export const Author: Schema.Schema<Author> =
+export const Author: Schema.Codec<Author> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     profilePhotoUri: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface Answer {
   text?: string;
 }
 
-export const Answer: Schema.Schema<Answer> =
+export const Answer: Schema.Codec<Answer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upvoteCount: Schema.optional(Schema.Number),
     createTime: Schema.optional(Schema.String),
@@ -73,7 +73,7 @@ export interface UpsertAnswerRequest {
   answer?: Answer;
 }
 
-export const UpsertAnswerRequest: Schema.Schema<UpsertAnswerRequest> =
+export const UpsertAnswerRequest: Schema.Codec<UpsertAnswerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answer: Schema.optional(Answer),
   }).annotate({ identifier: "UpsertAnswerRequest" });
@@ -87,7 +87,7 @@ export interface ListAnswersResponse {
   totalSize?: number;
 }
 
-export const ListAnswersResponse: Schema.Schema<ListAnswersResponse> =
+export const ListAnswersResponse: Schema.Codec<ListAnswersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answers: Schema.optional(Schema.Array(Answer)),
     nextPageToken: Schema.optional(Schema.String),
@@ -96,7 +96,7 @@ export const ListAnswersResponse: Schema.Schema<ListAnswersResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -120,7 +120,7 @@ export interface Question {
   totalAnswerCount?: number;
 }
 
-export const Question: Schema.Schema<Question> =
+export const Question: Schema.Codec<Question> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     author: Schema.optional(Author),
@@ -141,7 +141,7 @@ export interface ListQuestionsResponse {
   questions?: ReadonlyArray<Question>;
 }
 
-export const ListQuestionsResponse: Schema.Schema<ListQuestionsResponse> =
+export const ListQuestionsResponse: Schema.Codec<ListQuestionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -213,7 +213,7 @@ export const DeleteLocationsQuestionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLocationsQuestionsRequest>;
+  ) as unknown as Schema.Codec<DeleteLocationsQuestionsRequest>;
 
 export type DeleteLocationsQuestionsResponse = Empty;
 export const DeleteLocationsQuestionsResponse =
@@ -266,7 +266,7 @@ export const ListLocationsQuestionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}" }),
     svc,
-  ) as unknown as Schema.Schema<ListLocationsQuestionsRequest>;
+  ) as unknown as Schema.Codec<ListLocationsQuestionsRequest>;
 
 export type ListLocationsQuestionsResponse = ListQuestionsResponse;
 export const ListLocationsQuestionsResponse =
@@ -307,7 +307,7 @@ export const PatchLocationsQuestionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchLocationsQuestionsRequest>;
+  ) as unknown as Schema.Codec<PatchLocationsQuestionsRequest>;
 
 export type PatchLocationsQuestionsResponse = Question;
 export const PatchLocationsQuestionsResponse =
@@ -346,7 +346,7 @@ export const CreateLocationsQuestionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateLocationsQuestionsRequest>;
+  ) as unknown as Schema.Codec<CreateLocationsQuestionsRequest>;
 
 export type CreateLocationsQuestionsResponse = Question;
 export const CreateLocationsQuestionsResponse =
@@ -391,7 +391,7 @@ export const ListLocationsQuestionsAnswersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/answers" }),
     svc,
-  ) as unknown as Schema.Schema<ListLocationsQuestionsAnswersRequest>;
+  ) as unknown as Schema.Codec<ListLocationsQuestionsAnswersRequest>;
 
 export type ListLocationsQuestionsAnswersResponse = ListAnswersResponse;
 export const ListLocationsQuestionsAnswersResponse =
@@ -436,7 +436,7 @@ export const UpsertLocationsQuestionsAnswersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpsertLocationsQuestionsAnswersRequest>;
+  ) as unknown as Schema.Codec<UpsertLocationsQuestionsAnswersRequest>;
 
 export type UpsertLocationsQuestionsAnswersResponse = Answer;
 export const UpsertLocationsQuestionsAnswersResponse =
@@ -472,7 +472,7 @@ export const DeleteLocationsQuestionsAnswersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/answers:delete" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLocationsQuestionsAnswersRequest>;
+  ) as unknown as Schema.Codec<DeleteLocationsQuestionsAnswersRequest>;
 
 export type DeleteLocationsQuestionsAnswersResponse = Empty;
 export const DeleteLocationsQuestionsAnswersResponse =

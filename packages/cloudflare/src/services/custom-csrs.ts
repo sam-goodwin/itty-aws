@@ -5,12 +5,113 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-csrs
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListCustomCsrsResponseResult {
+  /** Custom CSR identifier tag. */
+  id: string;
+  /** When the CSR was created. */
+  createdAt: string;
+  /** The key algorithm used to generate the CSR. */
+  keyType: "rsa2048" | "p256v1" | (string & {});
+  /** Account identifier associated with this CSR. */
+  accountTag?: string | null;
+  /** The common name (domain) for the CSR. */
+  commonName?: string | null;
+  /** Two-letter ISO 3166-1 alpha-2 country code. */
+  country?: string | null;
+  /** The PEM-encoded Certificate Signing Request. */
+  csr?: string | null;
+  /** Optional description for the CSR. */
+  description?: string | null;
+  /** City or locality name. */
+  locality?: string | null;
+  /** Human-readable name for the CSR. */
+  name?: string | null;
+  /** Organization name. */
+  organization?: string | null;
+  /** Organizational unit name. */
+  organizationalUnit?: string | null;
+  /** Subject Alternative Names included in the CSR. */
+  sans?: string[] | null;
+  /** State or province name. */
+  state?: string | null;
+}
+const ListCustomCsrsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      keyType: Schema.Union([
+        Schema.Literals(["rsa2048", "p256v1"]),
+        Schema.String,
+      ]),
+      accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      locality: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      organization: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      organizationalUnit: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      sans: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        keyType: "key_type",
+        accountTag: "account_tag",
+        commonName: "common_name",
+        country: "country",
+        csr: "csr",
+        description: "description",
+        locality: "locality",
+        name: "name",
+        organization: "organization",
+        organizationalUnit: "organizational_unit",
+        sans: "sans",
+        state: "state",
+      }),
+    ),
+) as unknown as Schema.Codec<ListCustomCsrsResponseResult>;
+
+interface ListCustomCsrsResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListCustomCsrsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListCustomCsrsResponseResultInfo>;
 
 // =============================================================================
 // CustomCsr
@@ -45,7 +146,7 @@ export const GetCustomCsrForAccountRequest =
         path: "/accounts/{account_id}/custom_csrs/{customCsrId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetCustomCsrForAccountRequest>;
+  ) as unknown as Schema.Codec<GetCustomCsrForAccountRequest>;
 
 export const GetCustomCsrForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -58,7 +159,7 @@ export const GetCustomCsrForZoneRequest =
         path: "/zones/{zone_id}/custom_csrs/{customCsrId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetCustomCsrForZoneRequest>;
+  ) as unknown as Schema.Codec<GetCustomCsrForZoneRequest>;
 
 export interface GetCustomCsrResponse {
   /** Custom CSR identifier tag. */
@@ -135,7 +236,7 @@ export const GetCustomCsrResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetCustomCsrResponse>;
+) as unknown as Schema.Codec<GetCustomCsrResponse>;
 
 export type GetCustomCsrError = DefaultErrors;
 
@@ -189,7 +290,7 @@ export const ListCustomCsrsForAccountRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/custom_csrs" }),
     ),
-  ) as unknown as Schema.Schema<ListCustomCsrsForAccountRequest>;
+  ) as unknown as Schema.Codec<ListCustomCsrsForAccountRequest>;
 
 export const ListCustomCsrsForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -197,7 +298,7 @@ export const ListCustomCsrsForZoneRequest =
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListCustomCsrsBaseFields,
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/custom_csrs" })),
-  ) as unknown as Schema.Schema<ListCustomCsrsForZoneRequest>;
+  ) as unknown as Schema.Codec<ListCustomCsrsForZoneRequest>;
 
 export interface ListCustomCsrsResponse {
   result: {
@@ -227,80 +328,12 @@ export interface ListCustomCsrsResponse {
 export const ListCustomCsrsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          keyType: Schema.Union([
-            Schema.Literals(["rsa2048", "p256v1"]),
-            Schema.String,
-          ]),
-          accountTag: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          commonName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          locality: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          organization: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          organizationalUnit: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          sans: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            keyType: "key_type",
-            accountTag: "account_tag",
-            commonName: "common_name",
-            country: "country",
-            csr: "csr",
-            description: "description",
-            locality: "locality",
-            name: "name",
-            organization: "organization",
-            organizationalUnit: "organizational_unit",
-            sans: "sans",
-            state: "state",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListCustomCsrsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListCustomCsrsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListCustomCsrsResponse>;
+  ) as unknown as Schema.Codec<ListCustomCsrsResponse>;
 
 export type ListCustomCsrsError = DefaultErrors;
 
@@ -408,7 +441,7 @@ export const CreateCustomCsrForAccountRequest =
       }),
       T.Http({ method: "POST", path: "/accounts/{account_id}/custom_csrs" }),
     ),
-  ) as unknown as Schema.Schema<CreateCustomCsrForAccountRequest>;
+  ) as unknown as Schema.Codec<CreateCustomCsrForAccountRequest>;
 
 export const CreateCustomCsrForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -430,7 +463,7 @@ export const CreateCustomCsrForZoneRequest =
       }),
       T.Http({ method: "POST", path: "/zones/{zone_id}/custom_csrs" }),
     ),
-  ) as unknown as Schema.Schema<CreateCustomCsrForZoneRequest>;
+  ) as unknown as Schema.Codec<CreateCustomCsrForZoneRequest>;
 
 export interface CreateCustomCsrResponse {
   /** Custom CSR identifier tag. */
@@ -507,7 +540,7 @@ export const CreateCustomCsrResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateCustomCsrResponse>;
+  ) as unknown as Schema.Codec<CreateCustomCsrResponse>;
 
 export type CreateCustomCsrError = DefaultErrors;
 
@@ -562,7 +595,7 @@ export const DeleteCustomCsrForAccountRequest =
         path: "/accounts/{account_id}/custom_csrs/{customCsrId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteCustomCsrForAccountRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomCsrForAccountRequest>;
 
 export const DeleteCustomCsrForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -575,7 +608,7 @@ export const DeleteCustomCsrForZoneRequest =
         path: "/zones/{zone_id}/custom_csrs/{customCsrId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteCustomCsrForZoneRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomCsrForZoneRequest>;
 
 export interface DeleteCustomCsrResponse {
   /** Custom CSR identifier tag. */
@@ -587,7 +620,7 @@ export const DeleteCustomCsrResponse =
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteCustomCsrResponse>;
+  ) as unknown as Schema.Codec<DeleteCustomCsrResponse>;
 
 export type DeleteCustomCsrError = DefaultErrors;
 

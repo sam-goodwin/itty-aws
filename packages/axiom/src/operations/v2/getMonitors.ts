@@ -3,12 +3,48 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface GetMonitorsInput {}
 export const GetMonitorsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v2/monitors" }));
-export type GetMonitorsInput = typeof GetMonitorsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v2/monitors" }),
+) as unknown as Schema.Codec<GetMonitorsInput>;
 
 // Output Schema
+export type GetMonitorsOutput = {
+  alertOnNoData?: boolean;
+  aplQuery?: string;
+  columnName?: string;
+  compareDays?: number;
+  createdAt?: string;
+  createdBy?: string;
+  description?: string;
+  disabled?: boolean;
+  disabledUntil?: string | null;
+  intervalMinutes?: number;
+  mplQuery?: string;
+  name: string;
+  notifierIds?: string[];
+  notifyByGroup?: boolean;
+  notifyEveryRun?: boolean;
+  operator?:
+    | "Below"
+    | "BelowOrEqual"
+    | "Above"
+    | "AboveOrEqual"
+    | "AboveOrBelow";
+  rangeMinutes?: number;
+  resolvable?: boolean;
+  secondDelay?: number;
+  skipResolved?: boolean;
+  threshold?: number;
+  tolerance?: number;
+  triggerAfterNPositiveResults?: number;
+  triggerFromNRuns?: number;
+  type: "Threshold" | "MatchEvent" | "AnomalyDetection";
+  updatedAt?: string;
+  id: string;
+}[];
 export const GetMonitorsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     alertOnNoData: Schema.optional(Schema.Boolean),
@@ -47,8 +83,7 @@ export const GetMonitorsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     updatedAt: Schema.optional(Schema.String),
     id: Schema.String,
   }),
-);
-export type GetMonitorsOutput = typeof GetMonitorsOutput.Type;
+) as unknown as Schema.Codec<GetMonitorsOutput>;
 
 // The operation
 /**

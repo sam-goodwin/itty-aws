@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MarketingAnalyticsConversionGoalsRetrieveInput {
+  project_id: string;
+}
 export const MarketingAnalyticsConversionGoalsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,30 @@ export const MarketingAnalyticsConversionGoalsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/marketing_analytics/conversion_goals/",
     }),
-  );
-export type MarketingAnalyticsConversionGoalsRetrieveInput =
-  typeof MarketingAnalyticsConversionGoalsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MarketingAnalyticsConversionGoalsRetrieveInput>;
 
 // Output Schema
+export interface MarketingAnalyticsConversionGoalsRetrieveOutput {
+  goals: {
+    id: string;
+    name: string;
+    kind: string;
+    target_label: string;
+    last_30d_count: number;
+    integrated_count: number | null;
+    events_without_utm_source: number | null;
+    events_with_unmatched_utm_source: number | null;
+    non_integrated_count: number | null;
+    integrated_pct: number | null;
+    is_misconfigured: boolean;
+    misconfig_reason: string | null;
+    is_approximate: boolean;
+    approximation_reason: string | null;
+  }[];
+  attribution_window_days: number;
+  attribution_mode: string;
+  has_misconfigured: boolean;
+}
 export const MarketingAnalyticsConversionGoalsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goals: Schema.Array(
@@ -39,9 +61,7 @@ export const MarketingAnalyticsConversionGoalsRetrieveOutput =
     attribution_window_days: Schema.Number,
     attribution_mode: Schema.String,
     has_misconfigured: Schema.Boolean,
-  });
-export type MarketingAnalyticsConversionGoalsRetrieveOutput =
-  typeof MarketingAnalyticsConversionGoalsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MarketingAnalyticsConversionGoalsRetrieveOutput>;
 
 // The operation
 /**

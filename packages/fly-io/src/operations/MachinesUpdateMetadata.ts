@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface MachinesUpdateMetadataInput {
+  app_name: string;
+  machine_id: string;
+  machine_version?: string;
+  metadata?: Record<string, string>;
+  updated_at?: string;
+}
 export const MachinesUpdateMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const MachinesUpdateMetadataInput =
       method: "PATCH",
       path: "/apps/{app_name}/machines/{machine_id}/metadata",
     }),
-  );
-export type MachinesUpdateMetadataInput =
-  typeof MachinesUpdateMetadataInput.Type;
+  ) as unknown as Schema.Codec<MachinesUpdateMetadataInput>;
 
 // Output Schema
+export type MachinesUpdateMetadataOutput = void;
 export const MachinesUpdateMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesUpdateMetadataOutput =
-  typeof MachinesUpdateMetadataOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesUpdateMetadataOutput>;
 
 // The operation
 /**

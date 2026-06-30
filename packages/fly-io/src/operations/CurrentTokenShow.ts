@@ -3,12 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CurrentTokenShowInput {}
 export const CurrentTokenShowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/tokens/current" }));
-export type CurrentTokenShowInput = typeof CurrentTokenShowInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/tokens/current" }),
+) as unknown as Schema.Codec<CurrentTokenShowInput>;
 
 // Output Schema
+export interface CurrentTokenShowOutput {
+  tokens?: {
+    apps?: string[];
+    org_slug?: string;
+    organization?: string;
+    restricted_to_machine?: string;
+    source_machine_id?: string;
+    token_id?: string;
+    user?: string;
+  }[];
+}
 export const CurrentTokenShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     tokens: Schema.optional(
@@ -25,8 +38,7 @@ export const CurrentTokenShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type CurrentTokenShowOutput = typeof CurrentTokenShowOutput.Type;
+) as unknown as Schema.Codec<CurrentTokenShowOutput>;
 
 // The operation
 /**

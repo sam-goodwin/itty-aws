@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -37,7 +37,7 @@ export interface TranscriptEntry {
   languageCode?: string;
 }
 
-export const TranscriptEntry: Schema.Schema<TranscriptEntry> =
+export const TranscriptEntry: Schema.Codec<TranscriptEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export interface ListTranscriptEntriesResponse {
   transcriptEntries?: ReadonlyArray<TranscriptEntry>;
 }
 
-export const ListTranscriptEntriesResponse: Schema.Schema<ListTranscriptEntriesResponse> =
+export const ListTranscriptEntriesResponse: Schema.Codec<ListTranscriptEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     transcriptEntries: Schema.optional(Schema.Array(TranscriptEntry)),
@@ -67,7 +67,7 @@ export interface GatewaySipAccess {
   sipAccessCode?: string;
 }
 
-export const GatewaySipAccess: Schema.Schema<GatewaySipAccess> =
+export const GatewaySipAccess: Schema.Codec<GatewaySipAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     sipAccessCode: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export interface PhoneUser {
   displayName?: string;
 }
 
-export const PhoneUser: Schema.Schema<PhoneUser> =
+export const PhoneUser: Schema.Codec<PhoneUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "PhoneUser" });
@@ -92,7 +92,7 @@ export interface ParticipantSession {
   name?: string;
 }
 
-export const ParticipantSession: Schema.Schema<ParticipantSession> =
+export const ParticipantSession: Schema.Codec<ParticipantSession> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -106,7 +106,7 @@ export interface DriveDestination {
   exportUri?: string;
 }
 
-export const DriveDestination: Schema.Schema<DriveDestination> =
+export const DriveDestination: Schema.Codec<DriveDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     file: Schema.optional(Schema.String),
     exportUri: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface ConferenceRecord {
   endTime?: string;
 }
 
-export const ConferenceRecord: Schema.Schema<ConferenceRecord> =
+export const ConferenceRecord: Schema.Codec<ConferenceRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -143,7 +143,7 @@ export interface SmartNotesConfig {
     | (string & {});
 }
 
-export const SmartNotesConfig: Schema.Schema<SmartNotesConfig> =
+export const SmartNotesConfig: Schema.Codec<SmartNotesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoSmartNotesGeneration: Schema.optional(Schema.String),
   }).annotate({ identifier: "SmartNotesConfig" });
@@ -155,7 +155,7 @@ export interface ListParticipantSessionsResponse {
   participantSessions?: ReadonlyArray<ParticipantSession>;
 }
 
-export const ListParticipantSessionsResponse: Schema.Schema<ListParticipantSessionsResponse> =
+export const ListParticipantSessionsResponse: Schema.Codec<ListParticipantSessionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     participantSessions: Schema.optional(Schema.Array(ParticipantSession)),
@@ -179,7 +179,7 @@ export interface Recording {
   driveDestination?: DriveDestination;
 }
 
-export const Recording: Schema.Schema<Recording> =
+export const Recording: Schema.Codec<Recording> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -195,7 +195,7 @@ export interface ListRecordingsResponse {
   nextPageToken?: string;
 }
 
-export const ListRecordingsResponse: Schema.Schema<ListRecordingsResponse> =
+export const ListRecordingsResponse: Schema.Codec<ListRecordingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordings: Schema.optional(Schema.Array(Recording)),
     nextPageToken: Schema.optional(Schema.String),
@@ -210,7 +210,7 @@ export interface RecordingConfig {
     | (string & {});
 }
 
-export const RecordingConfig: Schema.Schema<RecordingConfig> =
+export const RecordingConfig: Schema.Codec<RecordingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoRecordingGeneration: Schema.optional(Schema.String),
   }).annotate({ identifier: "RecordingConfig" });
@@ -224,7 +224,7 @@ export interface TranscriptionConfig {
     | (string & {});
 }
 
-export const TranscriptionConfig: Schema.Schema<TranscriptionConfig> =
+export const TranscriptionConfig: Schema.Codec<TranscriptionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoTranscriptionGeneration: Schema.optional(Schema.String),
   }).annotate({ identifier: "TranscriptionConfig" });
@@ -240,7 +240,7 @@ export interface PhoneAccess {
   pin?: string;
 }
 
-export const PhoneAccess: Schema.Schema<PhoneAccess> =
+export const PhoneAccess: Schema.Codec<PhoneAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -253,7 +253,7 @@ export interface ActiveConference {
   conferenceRecord?: string;
 }
 
-export const ActiveConference: Schema.Schema<ActiveConference> =
+export const ActiveConference: Schema.Codec<ActiveConference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conferenceRecord: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActiveConference" });
@@ -285,7 +285,7 @@ export interface ModerationRestrictions {
     | (string & {});
 }
 
-export const ModerationRestrictions: Schema.Schema<ModerationRestrictions> =
+export const ModerationRestrictions: Schema.Codec<ModerationRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reactionRestriction: Schema.optional(Schema.String),
     chatRestriction: Schema.optional(Schema.String),
@@ -302,7 +302,7 @@ export interface ArtifactConfig {
   smartNotesConfig?: SmartNotesConfig;
 }
 
-export const ArtifactConfig: Schema.Schema<ArtifactConfig> =
+export const ArtifactConfig: Schema.Codec<ArtifactConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordingConfig: Schema.optional(RecordingConfig),
     transcriptionConfig: Schema.optional(TranscriptionConfig),
@@ -337,7 +337,7 @@ export interface SpaceConfig {
     | (string & {});
 }
 
-export const SpaceConfig: Schema.Schema<SpaceConfig> =
+export const SpaceConfig: Schema.Codec<SpaceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     moderationRestrictions: Schema.optional(ModerationRestrictions),
     moderation: Schema.optional(Schema.String),
@@ -364,7 +364,7 @@ export interface Space {
   meetingCode?: string;
 }
 
-export const Space: Schema.Schema<Space> =
+export const Space: Schema.Codec<Space> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     gatewaySipAccess: Schema.optional(Schema.Array(GatewaySipAccess)),
@@ -377,7 +377,7 @@ export const Space: Schema.Schema<Space> =
 
 export interface EndActiveConferenceRequest {}
 
-export const EndActiveConferenceRequest: Schema.Schema<EndActiveConferenceRequest> =
+export const EndActiveConferenceRequest: Schema.Codec<EndActiveConferenceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EndActiveConferenceRequest",
   });
@@ -389,7 +389,7 @@ export interface DocsDestination {
   exportUri?: string;
 }
 
-export const DocsDestination: Schema.Schema<DocsDestination> =
+export const DocsDestination: Schema.Codec<DocsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     exportUri: Schema.optional(Schema.String),
@@ -413,7 +413,7 @@ export interface SmartNote {
   endTime?: string;
 }
 
-export const SmartNote: Schema.Schema<SmartNote> =
+export const SmartNote: Schema.Codec<SmartNote> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -427,7 +427,7 @@ export interface AnonymousUser {
   displayName?: string;
 }
 
-export const AnonymousUser: Schema.Schema<AnonymousUser> =
+export const AnonymousUser: Schema.Codec<AnonymousUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnonymousUser" });
@@ -439,7 +439,7 @@ export interface ListSmartNotesResponse {
   smartNotes?: ReadonlyArray<SmartNote>;
 }
 
-export const ListSmartNotesResponse: Schema.Schema<ListSmartNotesResponse> =
+export const ListSmartNotesResponse: Schema.Codec<ListSmartNotesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     smartNotes: Schema.optional(Schema.Array(SmartNote)),
@@ -452,7 +452,7 @@ export interface ListConferenceRecordsResponse {
   conferenceRecords?: ReadonlyArray<ConferenceRecord>;
 }
 
-export const ListConferenceRecordsResponse: Schema.Schema<ListConferenceRecordsResponse> =
+export const ListConferenceRecordsResponse: Schema.Codec<ListConferenceRecordsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     conferenceRecords: Schema.optional(Schema.Array(ConferenceRecord)),
@@ -465,7 +465,7 @@ export interface SignedinUser {
   displayName?: string;
 }
 
-export const SignedinUser: Schema.Schema<SignedinUser> =
+export const SignedinUser: Schema.Codec<SignedinUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -486,7 +486,7 @@ export interface Participant {
   earliestStartTime?: string;
 }
 
-export const Participant: Schema.Schema<Participant> =
+export const Participant: Schema.Codec<Participant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneUser: Schema.optional(PhoneUser),
     signedinUser: Schema.optional(SignedinUser),
@@ -505,7 +505,7 @@ export interface ListParticipantsResponse {
   nextPageToken?: string;
 }
 
-export const ListParticipantsResponse: Schema.Schema<ListParticipantsResponse> =
+export const ListParticipantsResponse: Schema.Codec<ListParticipantsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     participants: Schema.optional(Schema.Array(Participant)),
     totalSize: Schema.optional(Schema.Number),
@@ -530,7 +530,7 @@ export interface Transcript {
   docsDestination?: DocsDestination;
 }
 
-export const Transcript: Schema.Schema<Transcript> =
+export const Transcript: Schema.Codec<Transcript> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -546,7 +546,7 @@ export interface ListTranscriptsResponse {
   nextPageToken?: string;
 }
 
-export const ListTranscriptsResponse: Schema.Schema<ListTranscriptsResponse> =
+export const ListTranscriptsResponse: Schema.Codec<ListTranscriptsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transcripts: Schema.optional(Schema.Array(Transcript)),
     nextPageToken: Schema.optional(Schema.String),
@@ -554,7 +554,7 @@ export const ListTranscriptsResponse: Schema.Schema<ListTranscriptsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -623,7 +623,7 @@ export const CreateSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/spaces", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateSpacesRequest>;
+) as unknown as Schema.Codec<CreateSpacesRequest>;
 
 export type CreateSpacesResponse = Space;
 export const CreateSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
@@ -665,7 +665,7 @@ export const EndActiveConferenceSpacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EndActiveConferenceSpacesRequest>;
+  ) as unknown as Schema.Codec<EndActiveConferenceSpacesRequest>;
 
 export type EndActiveConferenceSpacesResponse = Empty;
 export const EndActiveConferenceSpacesResponse =
@@ -700,7 +700,7 @@ export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetSpacesRequest>;
+) as unknown as Schema.Codec<GetSpacesRequest>;
 
 export type GetSpacesResponse = Space;
 export const GetSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
@@ -735,7 +735,7 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchSpacesRequest>;
+) as unknown as Schema.Codec<PatchSpacesRequest>;
 
 export type PatchSpacesResponse = Space;
 export const PatchSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
@@ -770,7 +770,7 @@ export const GetConferenceRecordsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsRequest>;
+  ) as unknown as Schema.Codec<GetConferenceRecordsRequest>;
 
 export type GetConferenceRecordsResponse = ConferenceRecord;
 export const GetConferenceRecordsResponse =
@@ -807,7 +807,7 @@ export const ListConferenceRecordsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/conferenceRecords" }),
     svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsRequest>;
+  ) as unknown as Schema.Codec<ListConferenceRecordsRequest>;
 
 export type ListConferenceRecordsResponse_Op = ListConferenceRecordsResponse;
 export const ListConferenceRecordsResponse_Op =
@@ -842,7 +842,7 @@ export const GetConferenceRecordsTranscriptsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsTranscriptsRequest>;
+  ) as unknown as Schema.Codec<GetConferenceRecordsTranscriptsRequest>;
 
 export type GetConferenceRecordsTranscriptsResponse = Transcript;
 export const GetConferenceRecordsTranscriptsResponse =
@@ -882,7 +882,7 @@ export const ListConferenceRecordsTranscriptsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/transcripts" }),
     svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsTranscriptsRequest>;
+  ) as unknown as Schema.Codec<ListConferenceRecordsTranscriptsRequest>;
 
 export type ListConferenceRecordsTranscriptsResponse = ListTranscriptsResponse;
 export const ListConferenceRecordsTranscriptsResponse =
@@ -926,7 +926,7 @@ export const ListConferenceRecordsTranscriptsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/entries" }),
     svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsTranscriptsEntriesRequest>;
+  ) as unknown as Schema.Codec<ListConferenceRecordsTranscriptsEntriesRequest>;
 
 export type ListConferenceRecordsTranscriptsEntriesResponse =
   ListTranscriptEntriesResponse;
@@ -965,7 +965,7 @@ export const GetConferenceRecordsTranscriptsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsTranscriptsEntriesRequest>;
+  ) as unknown as Schema.Codec<GetConferenceRecordsTranscriptsEntriesRequest>;
 
 export type GetConferenceRecordsTranscriptsEntriesResponse = TranscriptEntry;
 export const GetConferenceRecordsTranscriptsEntriesResponse =
@@ -1008,7 +1008,7 @@ export const ListConferenceRecordsParticipantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/participants" }),
     svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsRequest>;
+  ) as unknown as Schema.Codec<ListConferenceRecordsParticipantsRequest>;
 
 export type ListConferenceRecordsParticipantsResponse =
   ListParticipantsResponse;
@@ -1047,7 +1047,7 @@ export const GetConferenceRecordsParticipantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsRequest>;
+  ) as unknown as Schema.Codec<GetConferenceRecordsParticipantsRequest>;
 
 export type GetConferenceRecordsParticipantsResponse = Participant;
 export const GetConferenceRecordsParticipantsResponse =
@@ -1081,7 +1081,7 @@ export const GetConferenceRecordsParticipantsParticipantSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>;
+  ) as unknown as Schema.Codec<GetConferenceRecordsParticipantsParticipantSessionsRequest>;
 
 export type GetConferenceRecordsParticipantsParticipantSessionsResponse =
   ParticipantSession;
@@ -1125,7 +1125,7 @@ export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/participantSessions" }),
     svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
+  ) as unknown as Schema.Codec<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
 
 export type ListConferenceRecordsParticipantsParticipantSessionsResponse =
   ListParticipantSessionsResponse;
@@ -1170,7 +1170,7 @@ export const ListConferenceRecordsRecordingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/recordings" }),
     svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsRecordingsRequest>;
+  ) as unknown as Schema.Codec<ListConferenceRecordsRecordingsRequest>;
 
 export type ListConferenceRecordsRecordingsResponse = ListRecordingsResponse;
 export const ListConferenceRecordsRecordingsResponse =
@@ -1208,7 +1208,7 @@ export const GetConferenceRecordsRecordingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsRecordingsRequest>;
+  ) as unknown as Schema.Codec<GetConferenceRecordsRecordingsRequest>;
 
 export type GetConferenceRecordsRecordingsResponse = Recording;
 export const GetConferenceRecordsRecordingsResponse =
@@ -1248,7 +1248,7 @@ export const ListConferenceRecordsSmartNotesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/smartNotes" }),
     svc,
-  ) as unknown as Schema.Schema<ListConferenceRecordsSmartNotesRequest>;
+  ) as unknown as Schema.Codec<ListConferenceRecordsSmartNotesRequest>;
 
 export type ListConferenceRecordsSmartNotesResponse = ListSmartNotesResponse;
 export const ListConferenceRecordsSmartNotesResponse =
@@ -1286,7 +1286,7 @@ export const GetConferenceRecordsSmartNotesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConferenceRecordsSmartNotesRequest>;
+  ) as unknown as Schema.Codec<GetConferenceRecordsSmartNotesRequest>;
 
 export type GetConferenceRecordsSmartNotesResponse = SmartNote;
 export const GetConferenceRecordsSmartNotesResponse =

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -44,7 +44,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -57,7 +57,7 @@ export interface CloudSqlCredential {
   password?: string;
 }
 
-export const CloudSqlCredential: Schema.Schema<CloudSqlCredential> =
+export const CloudSqlCredential: Schema.Codec<CloudSqlCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export interface CloudSqlProperties {
   credential?: CloudSqlCredential;
 }
 
-export const CloudSqlProperties: Schema.Schema<CloudSqlProperties> =
+export const CloudSqlProperties: Schema.Codec<CloudSqlProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     serviceAccountId: Schema.optional(Schema.String),
@@ -102,7 +102,7 @@ export interface Connection {
   hasCredential?: boolean;
 }
 
-export const Connection: Schema.Schema<Connection> =
+export const Connection: Schema.Codec<Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastModifiedTime: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface ListConnectionsResponse {
   connections?: ReadonlyArray<Connection>;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
+export const ListConnectionsResponse: Schema.Codec<ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     connections: Schema.optional(Schema.Array(Connection)),
@@ -128,7 +128,7 @@ export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -138,7 +138,7 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
@@ -150,7 +150,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -161,7 +161,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -177,7 +177,7 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -194,7 +194,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -212,7 +212,7 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
@@ -227,7 +227,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -238,7 +238,7 @@ export interface ConnectionCredential {
   cloudSql?: CloudSqlCredential;
 }
 
-export const ConnectionCredential: Schema.Schema<ConnectionCredential> =
+export const ConnectionCredential: Schema.Codec<ConnectionCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudSql: Schema.optional(CloudSqlCredential),
   }).annotate({ identifier: "ConnectionCredential" });
@@ -248,7 +248,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -325,7 +325,7 @@ export const TestIamPermissionsProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsConnectionsRequest>;
 
 export type TestIamPermissionsProjectsLocationsConnectionsResponse =
   TestIamPermissionsResponse;
@@ -368,7 +368,7 @@ export const PatchProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConnectionsRequest>;
 
 export type PatchProjectsLocationsConnectionsResponse = Connection;
 export const PatchProjectsLocationsConnectionsResponse =
@@ -416,7 +416,7 @@ export const CreateProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionsRequest>;
 
 export type CreateProjectsLocationsConnectionsResponse = Connection;
 export const CreateProjectsLocationsConnectionsResponse =
@@ -455,7 +455,7 @@ export const UpdateCredentialProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCredentialProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<UpdateCredentialProjectsLocationsConnectionsRequest>;
 
 export type UpdateCredentialProjectsLocationsConnectionsResponse = Empty;
 export const UpdateCredentialProjectsLocationsConnectionsResponse =
@@ -497,7 +497,7 @@ export const ListProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRequest>;
 
 export type ListProjectsLocationsConnectionsResponse = ListConnectionsResponse;
 export const ListProjectsLocationsConnectionsResponse =
@@ -542,7 +542,7 @@ export const SetIamPolicyProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsConnectionsRequest>;
 
 export type SetIamPolicyProjectsLocationsConnectionsResponse = Policy;
 export const SetIamPolicyProjectsLocationsConnectionsResponse =
@@ -578,7 +578,7 @@ export const DeleteProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionsRequest>;
 
 export type DeleteProjectsLocationsConnectionsResponse = Empty;
 export const DeleteProjectsLocationsConnectionsResponse =
@@ -614,7 +614,7 @@ export const GetProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionsRequest>;
 
 export type GetProjectsLocationsConnectionsResponse = Connection;
 export const GetProjectsLocationsConnectionsResponse =
@@ -655,7 +655,7 @@ export const GetIamPolicyProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsConnectionsRequest>;
 
 export type GetIamPolicyProjectsLocationsConnectionsResponse = Policy;
 export const GetIamPolicyProjectsLocationsConnectionsResponse =

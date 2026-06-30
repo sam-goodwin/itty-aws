@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsTicketsBulkUpdateTagsCreateInput {
+  project_id: string;
+  ids?: number[];
+  action?: "add" | "remove" | "set";
+  tags?: string[];
+}
 export const ConversationsTicketsBulkUpdateTagsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,13 @@ export const ConversationsTicketsBulkUpdateTagsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/conversations/tickets/bulk_update_tags/",
     }),
-  );
-export type ConversationsTicketsBulkUpdateTagsCreateInput =
-  typeof ConversationsTicketsBulkUpdateTagsCreateInput.Type;
+  ) as unknown as Schema.Codec<ConversationsTicketsBulkUpdateTagsCreateInput>;
 
 // Output Schema
+export interface ConversationsTicketsBulkUpdateTagsCreateOutput {
+  updated?: { id?: number; tags?: string[] }[];
+  skipped?: { id?: number; reason?: string }[];
+}
 export const ConversationsTicketsBulkUpdateTagsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updated: Schema.optional(
@@ -38,9 +46,7 @@ export const ConversationsTicketsBulkUpdateTagsCreateOutput =
         }),
       ),
     ),
-  });
-export type ConversationsTicketsBulkUpdateTagsCreateOutput =
-  typeof ConversationsTicketsBulkUpdateTagsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsTicketsBulkUpdateTagsCreateOutput>;
 
 // The operation
 /**

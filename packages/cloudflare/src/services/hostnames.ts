@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service hostnames
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -41,6 +41,54 @@ export class HostnameTlsSettingNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface GetSettingTlsResponseResult {
+  /** This is the time the tls setting was originally created for this hostname. */
+  createdAt?: string | null;
+  /** The hostname for which the tls settings are set. */
+  hostname?: string | null;
+  /** Deployment status for the given tls setting. */
+  status?: string | null;
+  /** This is the time the tls setting was updated. */
+  updatedAt?: string | null;
+  /** The TLS setting value. The type depends on the `setting_id` used in the request path:  - `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `["ECDHE-RSA-AES128-GCM-SHA256", */
+  value?: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[] | null;
+}
+const GetSettingTlsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literal("1.0"),
+            Schema.Literal("1.1"),
+            Schema.Literal("1.2"),
+            Schema.Literal("1.3"),
+            Schema.Literal("on"),
+            Schema.Literal("off"),
+            Schema.Array(Schema.String),
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        hostname: "hostname",
+        status: "status",
+        updatedAt: "updated_at",
+        value: "value",
+      }),
+    ),
+) as unknown as Schema.Codec<GetSettingTlsResponseResult>;
+
+// =============================================================================
 // SettingTl
 // =============================================================================
 
@@ -61,7 +109,7 @@ export const GetSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/hostnames/settings/{settingId}",
       }),
     ),
-) as unknown as Schema.Schema<GetSettingTlsRequest>;
+) as unknown as Schema.Codec<GetSettingTlsRequest>;
 
 export interface GetSettingTlsResponse {
   result: {
@@ -76,42 +124,9 @@ export interface GetSettingTlsResponse {
 export const GetSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          createdAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          updatedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literal("1.0"),
-                Schema.Literal("1.1"),
-                Schema.Literal("1.2"),
-                Schema.Literal("1.3"),
-                Schema.Literal("on"),
-                Schema.Literal("off"),
-                Schema.Array(Schema.String),
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            createdAt: "created_at",
-            hostname: "hostname",
-            status: "status",
-            updatedAt: "updated_at",
-            value: "value",
-          }),
-        ),
-      ),
+      result: Schema.Array(GetSettingTlsResponseResult),
     }),
-) as unknown as Schema.Schema<GetSettingTlsResponse>;
+) as unknown as Schema.Codec<GetSettingTlsResponse>;
 
 export type GetSettingTlsError =
   | DefaultErrors
@@ -163,7 +178,7 @@ export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/hostnames/settings/{settingId}/{hostname}",
       }),
     ),
-) as unknown as Schema.Schema<PutSettingTlsRequest>;
+) as unknown as Schema.Codec<PutSettingTlsRequest>;
 
 export interface PutSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
@@ -210,7 +225,7 @@ export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PutSettingTlsResponse>;
+) as unknown as Schema.Codec<PutSettingTlsResponse>;
 
 export type PutSettingTlsError =
   | DefaultErrors
@@ -247,7 +262,7 @@ export const DeleteSettingTlsRequest =
         path: "/zones/{zone_id}/hostnames/settings/{settingId}/{hostname}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteSettingTlsRequest>;
+  ) as unknown as Schema.Codec<DeleteSettingTlsRequest>;
 
 export interface DeleteSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
@@ -294,7 +309,7 @@ export const DeleteSettingTlsResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteSettingTlsResponse>;
+  ) as unknown as Schema.Codec<DeleteSettingTlsResponse>;
 
 export type DeleteSettingTlsError =
   | DefaultErrors

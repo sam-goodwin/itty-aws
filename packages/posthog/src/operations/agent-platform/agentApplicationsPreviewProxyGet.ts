@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsPreviewProxyGetInput {
+  id: string;
+  project_id: string;
+  rest: string;
+  format?: "json" | "sse";
+  revision_id: string;
+}
 export const AgentApplicationsPreviewProxyGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,26 @@ export const AgentApplicationsPreviewProxyGetInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{id}/preview-proxy/{rest}/",
     }),
-  );
-export type AgentApplicationsPreviewProxyGetInput =
-  typeof AgentApplicationsPreviewProxyGetInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsPreviewProxyGetInput>;
 
 // Output Schema
+export interface AgentApplicationsPreviewProxyGetOutput {
+  id: string;
+  team_id: number;
+  name: string;
+  slug?: string;
+  description?: string;
+  live_revision: string | null;
+  archived?: boolean;
+  archived_at: string | null;
+  created_by_id: number | null;
+  created_by: { id?: number; first_name?: string; email?: string } | null;
+  created_at: string;
+  updated_at: string;
+  slack_events_url: string | null;
+  slack_interactivity_url: string | null;
+  ingress_base_url: string | null;
+}
 export const AgentApplicationsPreviewProxyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -43,9 +65,7 @@ export const AgentApplicationsPreviewProxyGetOutput =
     slack_events_url: Schema.NullOr(Schema.String),
     slack_interactivity_url: Schema.NullOr(Schema.String),
     ingress_base_url: Schema.NullOr(Schema.String),
-  });
-export type AgentApplicationsPreviewProxyGetOutput =
-  typeof AgentApplicationsPreviewProxyGetOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsPreviewProxyGetOutput>;
 
 // The operation
 /**

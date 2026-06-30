@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CimdVerificationTokensDestroyInput {
+  id: string;
+  organization_id: string;
+}
 export const CimdVerificationTokensDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const CimdVerificationTokensDestroyInput =
       method: "DELETE",
       path: "/api/organizations/{organization_id}/cimd_verification_tokens/{id}/",
     }),
-  );
-export type CimdVerificationTokensDestroyInput =
-  typeof CimdVerificationTokensDestroyInput.Type;
+  ) as unknown as Schema.Codec<CimdVerificationTokensDestroyInput>;
 
 // Output Schema
+export type CimdVerificationTokensDestroyOutput = void;
 export const CimdVerificationTokensDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CimdVerificationTokensDestroyOutput =
-  typeof CimdVerificationTokensDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CimdVerificationTokensDestroyOutput>;
 
 // The operation
 /**

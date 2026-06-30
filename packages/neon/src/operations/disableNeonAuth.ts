@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DisableNeonAuthInput {
+  project_id: string;
+  branch_id: string;
+  delete_data?: boolean;
+}
 export const DisableNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
@@ -12,12 +17,12 @@ export const DisableNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/projects/{project_id}/branches/{branch_id}/auth",
   }),
-);
-export type DisableNeonAuthInput = typeof DisableNeonAuthInput.Type;
+) as unknown as Schema.Codec<DisableNeonAuthInput>;
 
 // Output Schema
-export const DisableNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisableNeonAuthOutput = typeof DisableNeonAuthOutput.Type;
+export type DisableNeonAuthOutput = void;
+export const DisableNeonAuthOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisableNeonAuthOutput>;
 
 // The operation
 /**

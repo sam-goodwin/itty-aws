@@ -4,17 +4,27 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PostV1ScmInstallationsInstallIntentsInput {
+  provider: "github";
+  workspaceId: string;
+}
 export const PostV1ScmInstallationsInstallIntentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provider: Schema.Literals(["github"]),
     workspaceId: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/v1/scm-installations/install-intents" }),
-  );
-export type PostV1ScmInstallationsInstallIntentsInput =
-  typeof PostV1ScmInstallationsInstallIntentsInput.Type;
+  ) as unknown as Schema.Codec<PostV1ScmInstallationsInstallIntentsInput>;
 
 // Output Schema
+export interface PostV1ScmInstallationsInstallIntentsOutput {
+  data: {
+    type: string;
+    provider: "github";
+    workspaceId: string;
+    installUrl: string;
+  };
+}
 export const PostV1ScmInstallationsInstallIntentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -23,9 +33,7 @@ export const PostV1ScmInstallationsInstallIntentsOutput =
       workspaceId: Schema.String,
       installUrl: Schema.String,
     }),
-  });
-export type PostV1ScmInstallationsInstallIntentsOutput =
-  typeof PostV1ScmInstallationsInstallIntentsOutput.Type;
+  }) as unknown as Schema.Codec<PostV1ScmInstallationsInstallIntentsOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,28 +33,28 @@ export interface StartEnvironmentMetadata {
     | (string & {});
 }
 
-export const StartEnvironmentMetadata: Schema.Schema<StartEnvironmentMetadata> =
+export const StartEnvironmentMetadata: Schema.Codec<StartEnvironmentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "StartEnvironmentMetadata" });
 
 export interface RemovePublicKeyResponse {}
 
-export const RemovePublicKeyResponse: Schema.Schema<RemovePublicKeyResponse> =
+export const RemovePublicKeyResponse: Schema.Codec<RemovePublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemovePublicKeyResponse",
   });
 
 export interface AuthorizeEnvironmentResponse {}
 
-export const AuthorizeEnvironmentResponse: Schema.Schema<AuthorizeEnvironmentResponse> =
+export const AuthorizeEnvironmentResponse: Schema.Codec<AuthorizeEnvironmentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AuthorizeEnvironmentResponse",
   });
 
 export interface AuthorizeEnvironmentMetadata {}
 
-export const AuthorizeEnvironmentMetadata: Schema.Schema<AuthorizeEnvironmentMetadata> =
+export const AuthorizeEnvironmentMetadata: Schema.Codec<AuthorizeEnvironmentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AuthorizeEnvironmentMetadata",
   });
@@ -64,7 +64,7 @@ export interface RemovePublicKeyRequest {
   key?: string;
 }
 
-export const RemovePublicKeyRequest: Schema.Schema<RemovePublicKeyRequest> =
+export const RemovePublicKeyRequest: Schema.Codec<RemovePublicKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemovePublicKeyRequest" });
@@ -78,7 +78,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -114,7 +114,7 @@ export interface Environment {
   sshPort?: number;
 }
 
-export const Environment: Schema.Schema<Environment> =
+export const Environment: Schema.Codec<Environment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface StartEnvironmentResponse {
   environment?: Environment;
 }
 
-export const StartEnvironmentResponse: Schema.Schema<StartEnvironmentResponse> =
+export const StartEnvironmentResponse: Schema.Codec<StartEnvironmentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(Environment),
   }).annotate({ identifier: "StartEnvironmentResponse" });
@@ -150,7 +150,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -168,7 +168,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -177,7 +177,7 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -189,7 +189,7 @@ export interface StartEnvironmentRequest {
   publicKeys?: ReadonlyArray<string>;
 }
 
-export const StartEnvironmentRequest: Schema.Schema<StartEnvironmentRequest> =
+export const StartEnvironmentRequest: Schema.Codec<StartEnvironmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(Schema.String),
     publicKeys: Schema.optional(Schema.Array(Schema.String)),
@@ -197,28 +197,28 @@ export const StartEnvironmentRequest: Schema.Schema<StartEnvironmentRequest> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
 export interface DeleteEnvironmentMetadata {}
 
-export const DeleteEnvironmentMetadata: Schema.Schema<DeleteEnvironmentMetadata> =
+export const DeleteEnvironmentMetadata: Schema.Codec<DeleteEnvironmentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteEnvironmentMetadata",
   });
 
 export interface AddPublicKeyMetadata {}
 
-export const AddPublicKeyMetadata: Schema.Schema<AddPublicKeyMetadata> =
+export const AddPublicKeyMetadata: Schema.Codec<AddPublicKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddPublicKeyMetadata",
   });
 
 export interface CreateEnvironmentMetadata {}
 
-export const CreateEnvironmentMetadata: Schema.Schema<CreateEnvironmentMetadata> =
+export const CreateEnvironmentMetadata: Schema.Codec<CreateEnvironmentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateEnvironmentMetadata",
   });
@@ -228,14 +228,14 @@ export interface AddPublicKeyRequest {
   key?: string;
 }
 
-export const AddPublicKeyRequest: Schema.Schema<AddPublicKeyRequest> =
+export const AddPublicKeyRequest: Schema.Codec<AddPublicKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddPublicKeyRequest" });
 
 export interface RemovePublicKeyMetadata {}
 
-export const RemovePublicKeyMetadata: Schema.Schema<RemovePublicKeyMetadata> =
+export const RemovePublicKeyMetadata: Schema.Codec<RemovePublicKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemovePublicKeyMetadata",
   });
@@ -245,7 +245,7 @@ export interface AddPublicKeyResponse {
   key?: string;
 }
 
-export const AddPublicKeyResponse: Schema.Schema<AddPublicKeyResponse> =
+export const AddPublicKeyResponse: Schema.Codec<AddPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddPublicKeyResponse" });
@@ -259,7 +259,7 @@ export interface AuthorizeEnvironmentRequest {
   expireTime?: string;
 }
 
-export const AuthorizeEnvironmentRequest: Schema.Schema<AuthorizeEnvironmentRequest> =
+export const AuthorizeEnvironmentRequest: Schema.Codec<AuthorizeEnvironmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(Schema.String),
     idToken: Schema.optional(Schema.String),
@@ -271,7 +271,7 @@ export interface GenerateAccessTokenResponse {
   accessToken?: string;
 }
 
-export const GenerateAccessTokenResponse: Schema.Schema<GenerateAccessTokenResponse> =
+export const GenerateAccessTokenResponse: Schema.Codec<GenerateAccessTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateAccessTokenResponse" });
@@ -340,7 +340,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -370,7 +370,7 @@ export const DeleteOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -418,7 +418,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
@@ -456,7 +456,7 @@ export const CancelOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -498,7 +498,7 @@ export const RemovePublicKeyUsersEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemovePublicKeyUsersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<RemovePublicKeyUsersEnvironmentsRequest>;
 
 export type RemovePublicKeyUsersEnvironmentsResponse = Operation;
 export const RemovePublicKeyUsersEnvironmentsResponse =
@@ -540,7 +540,7 @@ export const GenerateAccessTokenUsersEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+environment}:generateAccessToken" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateAccessTokenUsersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GenerateAccessTokenUsersEnvironmentsRequest>;
 
 export type GenerateAccessTokenUsersEnvironmentsResponse =
   GenerateAccessTokenResponse;
@@ -582,7 +582,7 @@ export const AddPublicKeyUsersEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddPublicKeyUsersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<AddPublicKeyUsersEnvironmentsRequest>;
 
 export type AddPublicKeyUsersEnvironmentsResponse = Operation;
 export const AddPublicKeyUsersEnvironmentsResponse =
@@ -618,7 +618,7 @@ export const GetUsersEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetUsersEnvironmentsRequest>;
 
 export type GetUsersEnvironmentsResponse = Environment;
 export const GetUsersEnvironmentsResponse =
@@ -652,7 +652,7 @@ export const StartUsersEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StartUsersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<StartUsersEnvironmentsRequest>;
 
 export type StartUsersEnvironmentsResponse = Operation;
 export const StartUsersEnvironmentsResponse =
@@ -691,7 +691,7 @@ export const AuthorizeUsersEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:authorize", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AuthorizeUsersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<AuthorizeUsersEnvironmentsRequest>;
 
 export type AuthorizeUsersEnvironmentsResponse = Operation;
 export const AuthorizeUsersEnvironmentsResponse =

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis {
   minValidScore?: number;
 }
 
-export const GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis: Schema.Schema<GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis> =
+export const GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis: Schema.Codec<GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minValidScore: Schema.optional(Schema.Number),
   }).annotate({
@@ -45,7 +45,7 @@ export interface GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig {
   riskAnalysis?: GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis;
 }
 
-export const GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig: Schema.Schema<GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig> =
+export const GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig: Schema.Codec<GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenTtl: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsRespo
   configs?: ReadonlyArray<GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse> =
+export const GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse: Schema.Codec<GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configs: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig),
@@ -79,7 +79,7 @@ export interface GoogleFirebaseAppcheckV1AppCheckToken {
   token?: string;
 }
 
-export const GoogleFirebaseAppcheckV1AppCheckToken: Schema.Schema<GoogleFirebaseAppcheckV1AppCheckToken> =
+export const GoogleFirebaseAppcheckV1AppCheckToken: Schema.Codec<GoogleFirebaseAppcheckV1AppCheckToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export interface GoogleFirebaseAppcheckV1Service {
   name?: string;
 }
 
-export const GoogleFirebaseAppcheckV1Service: Schema.Schema<GoogleFirebaseAppcheckV1Service> =
+export const GoogleFirebaseAppcheckV1Service: Schema.Codec<GoogleFirebaseAppcheckV1Service> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforcementMode: Schema.optional(Schema.String),
     replayProtection: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface GoogleFirebaseAppcheckV1BatchUpdateServicesResponse {
   services?: ReadonlyArray<GoogleFirebaseAppcheckV1Service>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchUpdateServicesResponse: Schema.Schema<GoogleFirebaseAppcheckV1BatchUpdateServicesResponse> =
+export const GoogleFirebaseAppcheckV1BatchUpdateServicesResponse: Schema.Codec<GoogleFirebaseAppcheckV1BatchUpdateServicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(GoogleFirebaseAppcheckV1Service)),
   }).annotate({
@@ -132,7 +132,7 @@ export interface GoogleFirebaseAppcheckV1DeviceCheckConfig {
   name?: string;
 }
 
-export const GoogleFirebaseAppcheckV1DeviceCheckConfig: Schema.Schema<GoogleFirebaseAppcheckV1DeviceCheckConfig> =
+export const GoogleFirebaseAppcheckV1DeviceCheckConfig: Schema.Codec<GoogleFirebaseAppcheckV1DeviceCheckConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenTtl: Schema.optional(Schema.String),
     privateKeySet: Schema.optional(Schema.Boolean),
@@ -146,7 +146,7 @@ export interface GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse {
   configs?: ReadonlyArray<GoogleFirebaseAppcheckV1DeviceCheckConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse> =
+export const GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse: Schema.Codec<GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configs: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1DeviceCheckConfig),
@@ -166,7 +166,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest> =
+export const GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assertion: Schema.optional(Schema.String),
     challenge: Schema.optional(Schema.String),
@@ -183,7 +183,7 @@ export interface GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse 
   challenge?: string;
 }
 
-export const GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse: Schema.Schema<GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse> =
+export const GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse: Schema.Codec<GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     challenge: Schema.optional(Schema.String),
@@ -194,7 +194,7 @@ export const GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse: Sch
 
 export interface GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest {}
 
-export const GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest: Schema.Schema<GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest> =
+export const GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest: Schema.Codec<GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest",
   });
@@ -204,7 +204,7 @@ export interface GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity {
   allowUnrecognizedVersion?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity: Schema.Schema<GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity> =
+export const GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity: Schema.Codec<GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowUnrecognizedVersion: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -224,7 +224,7 @@ export interface GoogleFirebaseAppcheckV1ResourcePolicy {
   etag?: string;
 }
 
-export const GoogleFirebaseAppcheckV1ResourcePolicy: Schema.Schema<GoogleFirebaseAppcheckV1ResourcePolicy> =
+export const GoogleFirebaseAppcheckV1ResourcePolicy: Schema.Codec<GoogleFirebaseAppcheckV1ResourcePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     enforcementMode: Schema.optional(Schema.String),
@@ -240,7 +240,7 @@ export interface GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest: Schema.Schema<GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest> =
+export const GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest: Schema.Codec<GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicy: Schema.optional(GoogleFirebaseAppcheckV1ResourcePolicy),
     updateMask: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest {
   requests?: ReadonlyArray<GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest: Schema.Schema<GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest> =
+export const GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest: Schema.Codec<GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     requests: Schema.optional(
@@ -272,7 +272,7 @@ export interface GoogleFirebaseAppcheckV1SafetyNetConfig {
   tokenTtl?: string;
 }
 
-export const GoogleFirebaseAppcheckV1SafetyNetConfig: Schema.Schema<GoogleFirebaseAppcheckV1SafetyNetConfig> =
+export const GoogleFirebaseAppcheckV1SafetyNetConfig: Schema.Codec<GoogleFirebaseAppcheckV1SafetyNetConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     tokenTtl: Schema.optional(Schema.String),
@@ -283,7 +283,7 @@ export interface GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse {
   configs?: ReadonlyArray<GoogleFirebaseAppcheckV1SafetyNetConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse> =
+export const GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse: Schema.Codec<GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configs: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1SafetyNetConfig),
@@ -303,7 +303,7 @@ export interface GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity {
     | (string & {});
 }
 
-export const GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity: Schema.Schema<GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity> =
+export const GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity: Schema.Codec<GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minDeviceRecognitionLevel: Schema.optional(Schema.String),
   }).annotate({
@@ -315,7 +315,7 @@ export interface GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails {
   requireLicensed?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails: Schema.Schema<GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails> =
+export const GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails: Schema.Codec<GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requireLicensed: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -335,7 +335,7 @@ export interface GoogleFirebaseAppcheckV1PlayIntegrityConfig {
   appIntegrity?: GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity;
 }
 
-export const GoogleFirebaseAppcheckV1PlayIntegrityConfig: Schema.Schema<GoogleFirebaseAppcheckV1PlayIntegrityConfig> =
+export const GoogleFirebaseAppcheckV1PlayIntegrityConfig: Schema.Codec<GoogleFirebaseAppcheckV1PlayIntegrityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     tokenTtl: Schema.optional(Schema.String),
@@ -365,7 +365,7 @@ export interface GoogleFirebaseAppcheckV1PublicJwk {
   e?: string;
 }
 
-export const GoogleFirebaseAppcheckV1PublicJwk: Schema.Schema<GoogleFirebaseAppcheckV1PublicJwk> =
+export const GoogleFirebaseAppcheckV1PublicJwk: Schema.Codec<GoogleFirebaseAppcheckV1PublicJwk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kty: Schema.optional(Schema.String),
     use: Schema.optional(Schema.String),
@@ -380,7 +380,7 @@ export interface GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse {
   configs?: ReadonlyArray<GoogleFirebaseAppcheckV1PlayIntegrityConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse> =
+export const GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse: Schema.Codec<GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configs: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1PlayIntegrityConfig),
@@ -396,7 +396,7 @@ export interface GoogleFirebaseAppcheckV1AppAttestConfig {
   tokenTtl?: string;
 }
 
-export const GoogleFirebaseAppcheckV1AppAttestConfig: Schema.Schema<GoogleFirebaseAppcheckV1AppAttestConfig> =
+export const GoogleFirebaseAppcheckV1AppAttestConfig: Schema.Codec<GoogleFirebaseAppcheckV1AppAttestConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     tokenTtl: Schema.optional(Schema.String),
@@ -409,7 +409,7 @@ export interface GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
   playIntegrityToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest> =
+export const GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limitedUse: Schema.optional(Schema.Boolean),
     playIntegrityToken: Schema.optional(Schema.String),
@@ -419,7 +419,7 @@ export const GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest: Schema.S
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -437,7 +437,7 @@ export interface GoogleFirebaseAppcheckV1DebugToken {
   name?: string;
 }
 
-export const GoogleFirebaseAppcheckV1DebugToken: Schema.Schema<GoogleFirebaseAppcheckV1DebugToken> =
+export const GoogleFirebaseAppcheckV1DebugToken: Schema.Codec<GoogleFirebaseAppcheckV1DebugToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -453,7 +453,7 @@ export interface GoogleFirebaseAppcheckV1ListDebugTokensResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1ListDebugTokensResponse: Schema.Schema<GoogleFirebaseAppcheckV1ListDebugTokensResponse> =
+export const GoogleFirebaseAppcheckV1ListDebugTokensResponse: Schema.Codec<GoogleFirebaseAppcheckV1ListDebugTokensResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debugTokens: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1DebugToken),
@@ -468,7 +468,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest {
   safetyNetToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest> =
+export const GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     safetyNetToken: Schema.optional(Schema.String),
   }).annotate({
@@ -477,7 +477,7 @@ export const GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest: Schema.Schem
 
 export interface GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest {}
 
-export const GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest: Schema.Schema<GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest> =
+export const GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest: Schema.Codec<GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest",
   });
@@ -493,7 +493,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest {
   challenge?: string;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest> =
+export const GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attestationStatement: Schema.optional(Schema.String),
     limitedUse: Schema.optional(Schema.Boolean),
@@ -510,7 +510,7 @@ export interface GoogleFirebaseAppcheckV1ListResourcePoliciesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1ListResourcePoliciesResponse: Schema.Schema<GoogleFirebaseAppcheckV1ListResourcePoliciesResponse> =
+export const GoogleFirebaseAppcheckV1ListResourcePoliciesResponse: Schema.Codec<GoogleFirebaseAppcheckV1ListResourcePoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1ResourcePolicy),
@@ -527,7 +527,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest> =
+export const GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recaptchaV3Token: Schema.optional(Schema.String),
     limitedUse: Schema.optional(Schema.Boolean),
@@ -542,7 +542,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest> =
+export const GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recaptchaEnterpriseToken: Schema.optional(Schema.String),
     limitedUse: Schema.optional(Schema.Boolean),
@@ -556,7 +556,7 @@ export interface GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse {
   configs?: ReadonlyArray<GoogleFirebaseAppcheckV1AppAttestConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse> =
+export const GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse: Schema.Codec<GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configs: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1AppAttestConfig),
@@ -578,7 +578,7 @@ export interface GoogleFirebaseAppcheckV1RecaptchaV3Config {
   siteSecretSet?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1RecaptchaV3Config: Schema.Schema<GoogleFirebaseAppcheckV1RecaptchaV3Config> =
+export const GoogleFirebaseAppcheckV1RecaptchaV3Config: Schema.Codec<GoogleFirebaseAppcheckV1RecaptchaV3Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minValidScore: Schema.optional(Schema.Number),
     tokenTtl: Schema.optional(Schema.String),
@@ -594,7 +594,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest> =
+export const GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceToken: Schema.optional(Schema.String),
     limitedUse: Schema.optional(Schema.Boolean),
@@ -609,7 +609,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest> =
+export const GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debugToken: Schema.optional(Schema.String),
     limitedUse: Schema.optional(Schema.Boolean),
@@ -624,7 +624,7 @@ export interface GoogleFirebaseAppcheckV1ListServicesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1ListServicesResponse: Schema.Schema<GoogleFirebaseAppcheckV1ListServicesResponse> =
+export const GoogleFirebaseAppcheckV1ListServicesResponse: Schema.Codec<GoogleFirebaseAppcheckV1ListServicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(GoogleFirebaseAppcheckV1Service)),
     nextPageToken: Schema.optional(Schema.String),
@@ -637,7 +637,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse {
   artifact?: string;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse> =
+export const GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appCheckToken: Schema.optional(GoogleFirebaseAppcheckV1AppCheckToken),
     artifact: Schema.optional(Schema.String),
@@ -650,7 +650,7 @@ export interface GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse {
   resourcePolicies?: ReadonlyArray<GoogleFirebaseAppcheckV1ResourcePolicy>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse: Schema.Schema<GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse> =
+export const GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse: Schema.Codec<GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1ResourcePolicy),
@@ -666,7 +666,7 @@ export interface GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest> =
+export const GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest: Schema.Codec<GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customToken: Schema.optional(Schema.String),
     limitedUse: Schema.optional(Schema.Boolean),
@@ -681,7 +681,7 @@ export interface GoogleFirebaseAppcheckV1UpdateServiceRequest {
   updateMask?: string;
 }
 
-export const GoogleFirebaseAppcheckV1UpdateServiceRequest: Schema.Schema<GoogleFirebaseAppcheckV1UpdateServiceRequest> =
+export const GoogleFirebaseAppcheckV1UpdateServiceRequest: Schema.Codec<GoogleFirebaseAppcheckV1UpdateServiceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(GoogleFirebaseAppcheckV1Service),
     updateMask: Schema.optional(Schema.String),
@@ -694,7 +694,7 @@ export interface GoogleFirebaseAppcheckV1BatchUpdateServicesRequest {
   updateMask?: string;
 }
 
-export const GoogleFirebaseAppcheckV1BatchUpdateServicesRequest: Schema.Schema<GoogleFirebaseAppcheckV1BatchUpdateServicesRequest> =
+export const GoogleFirebaseAppcheckV1BatchUpdateServicesRequest: Schema.Codec<GoogleFirebaseAppcheckV1BatchUpdateServicesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1UpdateServiceRequest),
@@ -711,7 +711,7 @@ export interface GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse {
   challenge?: string;
 }
 
-export const GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse: Schema.Schema<GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse> =
+export const GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse: Schema.Codec<GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     challenge: Schema.optional(Schema.String),
@@ -724,7 +724,7 @@ export interface GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse {
   configs?: ReadonlyArray<GoogleFirebaseAppcheckV1RecaptchaV3Config>;
 }
 
-export const GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse> =
+export const GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse: Schema.Codec<GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configs: Schema.optional(
       Schema.Array(GoogleFirebaseAppcheckV1RecaptchaV3Config),
@@ -738,7 +738,7 @@ export interface GoogleFirebaseAppcheckV1PublicJwkSet {
   keys?: ReadonlyArray<GoogleFirebaseAppcheckV1PublicJwk>;
 }
 
-export const GoogleFirebaseAppcheckV1PublicJwkSet: Schema.Schema<GoogleFirebaseAppcheckV1PublicJwkSet> =
+export const GoogleFirebaseAppcheckV1PublicJwkSet: Schema.Codec<GoogleFirebaseAppcheckV1PublicJwkSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.optional(Schema.Array(GoogleFirebaseAppcheckV1PublicJwk)),
   }).annotate({ identifier: "GoogleFirebaseAppcheckV1PublicJwkSet" });
@@ -814,7 +814,7 @@ export const ListProjectsServicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/services" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsServicesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsServicesRequest>;
 
 export type ListProjectsServicesResponse =
   GoogleFirebaseAppcheckV1ListServicesResponse;
@@ -850,7 +850,7 @@ export const GetProjectsServicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsServicesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsServicesRequest>;
 
 export type GetProjectsServicesResponse = GoogleFirebaseAppcheckV1Service;
 export const GetProjectsServicesResponse =
@@ -887,7 +887,7 @@ export const PatchProjectsServicesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsServicesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsServicesRequest>;
 
 export type PatchProjectsServicesResponse = GoogleFirebaseAppcheckV1Service;
 export const PatchProjectsServicesResponse =
@@ -932,7 +932,7 @@ export const BatchUpdateProjectsServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateProjectsServicesRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateProjectsServicesRequest>;
 
 export type BatchUpdateProjectsServicesResponse =
   GoogleFirebaseAppcheckV1BatchUpdateServicesResponse;
@@ -978,7 +978,7 @@ export const CreateProjectsServicesResourcePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsServicesResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsServicesResourcePoliciesRequest>;
 
 export type CreateProjectsServicesResourcePoliciesResponse =
   GoogleFirebaseAppcheckV1ResourcePolicy;
@@ -1015,7 +1015,7 @@ export const GetProjectsServicesResourcePoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsServicesResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsServicesResourcePoliciesRequest>;
 
 export type GetProjectsServicesResourcePoliciesResponse =
   GoogleFirebaseAppcheckV1ResourcePolicy;
@@ -1058,7 +1058,7 @@ export const PatchProjectsServicesResourcePoliciesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsServicesResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsServicesResourcePoliciesRequest>;
 
 export type PatchProjectsServicesResourcePoliciesResponse =
   GoogleFirebaseAppcheckV1ResourcePolicy;
@@ -1104,7 +1104,7 @@ export const BatchUpdateProjectsServicesResourcePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateProjectsServicesResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateProjectsServicesResourcePoliciesRequest>;
 
 export type BatchUpdateProjectsServicesResourcePoliciesResponse =
   GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse;
@@ -1150,7 +1150,7 @@ export const ListProjectsServicesResourcePoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/resourcePolicies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsServicesResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsServicesResourcePoliciesRequest>;
 
 export type ListProjectsServicesResourcePoliciesResponse =
   GoogleFirebaseAppcheckV1ListResourcePoliciesResponse;
@@ -1192,7 +1192,7 @@ export const DeleteProjectsServicesResourcePoliciesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsServicesResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsServicesResourcePoliciesRequest>;
 
 export type DeleteProjectsServicesResourcePoliciesResponse =
   GoogleProtobufEmpty;
@@ -1238,7 +1238,7 @@ export const ExchangeSafetyNetTokenProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeSafetyNetTokenProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangeSafetyNetTokenProjectsAppsRequest>;
 
 export type ExchangeSafetyNetTokenProjectsAppsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -1284,7 +1284,7 @@ export const ExchangeCustomTokenProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeCustomTokenProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangeCustomTokenProjectsAppsRequest>;
 
 export type ExchangeCustomTokenProjectsAppsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -1330,7 +1330,7 @@ export const GenerateAppAttestChallengeProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateAppAttestChallengeProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<GenerateAppAttestChallengeProjectsAppsRequest>;
 
 export type GenerateAppAttestChallengeProjectsAppsResponse =
   GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse;
@@ -1376,7 +1376,7 @@ export const ExchangeAppAttestAssertionProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeAppAttestAssertionProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangeAppAttestAssertionProjectsAppsRequest>;
 
 export type ExchangeAppAttestAssertionProjectsAppsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -1422,7 +1422,7 @@ export const ExchangeAppAttestAttestationProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeAppAttestAttestationProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangeAppAttestAttestationProjectsAppsRequest>;
 
 export type ExchangeAppAttestAttestationProjectsAppsResponse =
   GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse;
@@ -1468,7 +1468,7 @@ export const ExchangeDeviceCheckTokenProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeDeviceCheckTokenProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangeDeviceCheckTokenProjectsAppsRequest>;
 
 export type ExchangeDeviceCheckTokenProjectsAppsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -1514,7 +1514,7 @@ export const ExchangeRecaptchaEnterpriseTokenProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeRecaptchaEnterpriseTokenProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangeRecaptchaEnterpriseTokenProjectsAppsRequest>;
 
 export type ExchangeRecaptchaEnterpriseTokenProjectsAppsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -1560,7 +1560,7 @@ export const GeneratePlayIntegrityChallengeProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GeneratePlayIntegrityChallengeProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<GeneratePlayIntegrityChallengeProjectsAppsRequest>;
 
 export type GeneratePlayIntegrityChallengeProjectsAppsResponse =
   GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse;
@@ -1606,7 +1606,7 @@ export const ExchangeRecaptchaV3TokenProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeRecaptchaV3TokenProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangeRecaptchaV3TokenProjectsAppsRequest>;
 
 export type ExchangeRecaptchaV3TokenProjectsAppsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -1652,7 +1652,7 @@ export const ExchangePlayIntegrityTokenProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangePlayIntegrityTokenProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangePlayIntegrityTokenProjectsAppsRequest>;
 
 export type ExchangePlayIntegrityTokenProjectsAppsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -1698,7 +1698,7 @@ export const ExchangeDebugTokenProjectsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeDebugTokenProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<ExchangeDebugTokenProjectsAppsRequest>;
 
 export type ExchangeDebugTokenProjectsAppsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -1735,7 +1735,7 @@ export const GetProjectsAppsDeviceCheckConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsDeviceCheckConfigRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsDeviceCheckConfigRequest>;
 
 export type GetProjectsAppsDeviceCheckConfigResponse =
   GoogleFirebaseAppcheckV1DeviceCheckConfig;
@@ -1778,7 +1778,7 @@ export const BatchGetProjectsAppsDeviceCheckConfigRequest =
       path: "v1/{+parent}/apps/-/deviceCheckConfig:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetProjectsAppsDeviceCheckConfigRequest>;
+  ) as unknown as Schema.Codec<BatchGetProjectsAppsDeviceCheckConfigRequest>;
 
 export type BatchGetProjectsAppsDeviceCheckConfigResponse =
   GoogleFirebaseAppcheckV1BatchGetDeviceCheckConfigsResponse;
@@ -1821,7 +1821,7 @@ export const PatchProjectsAppsDeviceCheckConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAppsDeviceCheckConfigRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAppsDeviceCheckConfigRequest>;
 
 export type PatchProjectsAppsDeviceCheckConfigResponse =
   GoogleFirebaseAppcheckV1DeviceCheckConfig;
@@ -1864,7 +1864,7 @@ export const ListProjectsAppsDebugTokensRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/debugTokens" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAppsDebugTokensRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAppsDebugTokensRequest>;
 
 export type ListProjectsAppsDebugTokensResponse =
   GoogleFirebaseAppcheckV1ListDebugTokensResponse;
@@ -1906,7 +1906,7 @@ export const DeleteProjectsAppsDebugTokensRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsAppsDebugTokensRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsAppsDebugTokensRequest>;
 
 export type DeleteProjectsAppsDebugTokensResponse = GoogleProtobufEmpty;
 export const DeleteProjectsAppsDebugTokensResponse =
@@ -1947,7 +1947,7 @@ export const CreateProjectsAppsDebugTokensRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/debugTokens", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsAppsDebugTokensRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsAppsDebugTokensRequest>;
 
 export type CreateProjectsAppsDebugTokensResponse =
   GoogleFirebaseAppcheckV1DebugToken;
@@ -1984,7 +1984,7 @@ export const GetProjectsAppsDebugTokensRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsDebugTokensRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsDebugTokensRequest>;
 
 export type GetProjectsAppsDebugTokensResponse =
   GoogleFirebaseAppcheckV1DebugToken;
@@ -2027,7 +2027,7 @@ export const PatchProjectsAppsDebugTokensRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAppsDebugTokensRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAppsDebugTokensRequest>;
 
 export type PatchProjectsAppsDebugTokensResponse =
   GoogleFirebaseAppcheckV1DebugToken;
@@ -2064,7 +2064,7 @@ export const GetProjectsAppsRecaptchaV3ConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsRecaptchaV3ConfigRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsRecaptchaV3ConfigRequest>;
 
 export type GetProjectsAppsRecaptchaV3ConfigResponse =
   GoogleFirebaseAppcheckV1RecaptchaV3Config;
@@ -2107,7 +2107,7 @@ export const BatchGetProjectsAppsRecaptchaV3ConfigRequest =
       path: "v1/{+parent}/apps/-/recaptchaV3Config:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetProjectsAppsRecaptchaV3ConfigRequest>;
+  ) as unknown as Schema.Codec<BatchGetProjectsAppsRecaptchaV3ConfigRequest>;
 
 export type BatchGetProjectsAppsRecaptchaV3ConfigResponse =
   GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse;
@@ -2150,7 +2150,7 @@ export const PatchProjectsAppsRecaptchaV3ConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAppsRecaptchaV3ConfigRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAppsRecaptchaV3ConfigRequest>;
 
 export type PatchProjectsAppsRecaptchaV3ConfigResponse =
   GoogleFirebaseAppcheckV1RecaptchaV3Config;
@@ -2187,7 +2187,7 @@ export const GetProjectsAppsAppAttestConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsAppAttestConfigRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsAppAttestConfigRequest>;
 
 export type GetProjectsAppsAppAttestConfigResponse =
   GoogleFirebaseAppcheckV1AppAttestConfig;
@@ -2230,7 +2230,7 @@ export const BatchGetProjectsAppsAppAttestConfigRequest =
       path: "v1/{+parent}/apps/-/appAttestConfig:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetProjectsAppsAppAttestConfigRequest>;
+  ) as unknown as Schema.Codec<BatchGetProjectsAppsAppAttestConfigRequest>;
 
 export type BatchGetProjectsAppsAppAttestConfigResponse =
   GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse;
@@ -2273,7 +2273,7 @@ export const PatchProjectsAppsAppAttestConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAppsAppAttestConfigRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAppsAppAttestConfigRequest>;
 
 export type PatchProjectsAppsAppAttestConfigResponse =
   GoogleFirebaseAppcheckV1AppAttestConfig;
@@ -2310,7 +2310,7 @@ export const GetProjectsAppsRecaptchaEnterpriseConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsRecaptchaEnterpriseConfigRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsRecaptchaEnterpriseConfigRequest>;
 
 export type GetProjectsAppsRecaptchaEnterpriseConfigResponse =
   GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig;
@@ -2353,7 +2353,7 @@ export const BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest =
       path: "v1/{+parent}/apps/-/recaptchaEnterpriseConfig:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest>;
+  ) as unknown as Schema.Codec<BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest>;
 
 export type BatchGetProjectsAppsRecaptchaEnterpriseConfigResponse =
   GoogleFirebaseAppcheckV1BatchGetRecaptchaEnterpriseConfigsResponse;
@@ -2396,7 +2396,7 @@ export const PatchProjectsAppsRecaptchaEnterpriseConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAppsRecaptchaEnterpriseConfigRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAppsRecaptchaEnterpriseConfigRequest>;
 
 export type PatchProjectsAppsRecaptchaEnterpriseConfigResponse =
   GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig;
@@ -2433,7 +2433,7 @@ export const GetProjectsAppsSafetyNetConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsSafetyNetConfigRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsSafetyNetConfigRequest>;
 
 export type GetProjectsAppsSafetyNetConfigResponse =
   GoogleFirebaseAppcheckV1SafetyNetConfig;
@@ -2476,7 +2476,7 @@ export const BatchGetProjectsAppsSafetyNetConfigRequest =
       path: "v1/{+parent}/apps/-/safetyNetConfig:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetProjectsAppsSafetyNetConfigRequest>;
+  ) as unknown as Schema.Codec<BatchGetProjectsAppsSafetyNetConfigRequest>;
 
 export type BatchGetProjectsAppsSafetyNetConfigResponse =
   GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse;
@@ -2519,7 +2519,7 @@ export const PatchProjectsAppsSafetyNetConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAppsSafetyNetConfigRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAppsSafetyNetConfigRequest>;
 
 export type PatchProjectsAppsSafetyNetConfigResponse =
   GoogleFirebaseAppcheckV1SafetyNetConfig;
@@ -2556,7 +2556,7 @@ export const GetProjectsAppsPlayIntegrityConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsPlayIntegrityConfigRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsPlayIntegrityConfigRequest>;
 
 export type GetProjectsAppsPlayIntegrityConfigResponse =
   GoogleFirebaseAppcheckV1PlayIntegrityConfig;
@@ -2599,7 +2599,7 @@ export const BatchGetProjectsAppsPlayIntegrityConfigRequest =
       path: "v1/{+parent}/apps/-/playIntegrityConfig:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetProjectsAppsPlayIntegrityConfigRequest>;
+  ) as unknown as Schema.Codec<BatchGetProjectsAppsPlayIntegrityConfigRequest>;
 
 export type BatchGetProjectsAppsPlayIntegrityConfigResponse =
   GoogleFirebaseAppcheckV1BatchGetPlayIntegrityConfigsResponse;
@@ -2642,7 +2642,7 @@ export const PatchProjectsAppsPlayIntegrityConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAppsPlayIntegrityConfigRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAppsPlayIntegrityConfigRequest>;
 
 export type PatchProjectsAppsPlayIntegrityConfigResponse =
   GoogleFirebaseAppcheckV1PlayIntegrityConfig;
@@ -2688,7 +2688,7 @@ export const GenerateAppAttestChallengeOauthClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateAppAttestChallengeOauthClientsRequest>;
+  ) as unknown as Schema.Codec<GenerateAppAttestChallengeOauthClientsRequest>;
 
 export type GenerateAppAttestChallengeOauthClientsResponse =
   GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse;
@@ -2734,7 +2734,7 @@ export const ExchangeAppAttestAssertionOauthClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeAppAttestAssertionOauthClientsRequest>;
+  ) as unknown as Schema.Codec<ExchangeAppAttestAssertionOauthClientsRequest>;
 
 export type ExchangeAppAttestAssertionOauthClientsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -2780,7 +2780,7 @@ export const ExchangeAppAttestAttestationOauthClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeAppAttestAttestationOauthClientsRequest>;
+  ) as unknown as Schema.Codec<ExchangeAppAttestAttestationOauthClientsRequest>;
 
 export type ExchangeAppAttestAttestationOauthClientsResponse =
   GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse;
@@ -2826,7 +2826,7 @@ export const ExchangeDebugTokenOauthClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExchangeDebugTokenOauthClientsRequest>;
+  ) as unknown as Schema.Codec<ExchangeDebugTokenOauthClientsRequest>;
 
 export type ExchangeDebugTokenOauthClientsResponse =
   GoogleFirebaseAppcheckV1AppCheckToken;
@@ -2862,7 +2862,7 @@ export const GetJwksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetJwksRequest>;
+) as unknown as Schema.Codec<GetJwksRequest>;
 
 export type GetJwksResponse = GoogleFirebaseAppcheckV1PublicJwkSet;
 export const GetJwksResponse =

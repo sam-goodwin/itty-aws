@@ -9,6 +9,10 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface DeleteOrganizationTeamInput {
+  organization: string;
+  team: string;
+}
 export const DeleteOrganizationTeamInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -18,15 +22,12 @@ export const DeleteOrganizationTeamInput =
       method: "DELETE",
       path: "/organizations/{organization}/teams/{team}",
     }),
-  );
-export type DeleteOrganizationTeamInput =
-  typeof DeleteOrganizationTeamInput.Type;
+  ) as unknown as Schema.Codec<DeleteOrganizationTeamInput>;
 
 // Output Schema
+export type DeleteOrganizationTeamOutput = void;
 export const DeleteOrganizationTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrganizationTeamOutput =
-  typeof DeleteOrganizationTeamOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrganizationTeamOutput>;
 
 // The operation
 /**

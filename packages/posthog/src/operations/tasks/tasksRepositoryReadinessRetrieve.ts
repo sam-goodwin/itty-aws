@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRepositoryReadinessRetrieveInput {
+  project_id: string;
+  refresh?: boolean;
+  repository: string;
+  window_days?: number;
+}
 export const TasksRepositoryReadinessRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,63 @@ export const TasksRepositoryReadinessRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tasks/repository_readiness/",
     }),
-  );
-export type TasksRepositoryReadinessRetrieveInput =
-  typeof TasksRepositoryReadinessRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TasksRepositoryReadinessRetrieveInput>;
 
 // Output Schema
+export interface TasksRepositoryReadinessRetrieveOutput {
+  repository?: string;
+  classification?: string;
+  excluded?: boolean;
+  coreSuggestions?: {
+    state?:
+      | "needs_setup"
+      | "detected"
+      | "waiting_for_data"
+      | "ready"
+      | "not_applicable"
+      | "unknown";
+    estimated?: boolean;
+    reason?: string;
+    evidence?: Record<string, unknown>;
+  };
+  replayInsights?: {
+    state?:
+      | "needs_setup"
+      | "detected"
+      | "waiting_for_data"
+      | "ready"
+      | "not_applicable"
+      | "unknown";
+    estimated?: boolean;
+    reason?: string;
+    evidence?: Record<string, unknown>;
+  };
+  errorInsights?: {
+    state?:
+      | "needs_setup"
+      | "detected"
+      | "waiting_for_data"
+      | "ready"
+      | "not_applicable"
+      | "unknown";
+    estimated?: boolean;
+    reason?: string;
+    evidence?: Record<string, unknown>;
+  };
+  overall?: string;
+  evidenceTaskCount?: number;
+  windowDays?: number;
+  generatedAt?: string;
+  cacheAgeSeconds?: number;
+  scan?: {
+    filesScanned?: number;
+    detectedFilesCount?: number;
+    eventNameCount?: number;
+    foundPosthogInit?: boolean;
+    foundPosthogCapture?: boolean;
+    foundErrorSignal?: boolean;
+  };
+}
 export const TasksRepositoryReadinessRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repository: Schema.optional(Schema.String),
@@ -91,9 +149,7 @@ export const TasksRepositoryReadinessRetrieveOutput =
         foundErrorSignal: Schema.optional(Schema.Boolean),
       }),
     ),
-  });
-export type TasksRepositoryReadinessRetrieveOutput =
-  typeof TasksRepositoryReadinessRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<TasksRepositoryReadinessRetrieveOutput>;
 
 // The operation
 /**

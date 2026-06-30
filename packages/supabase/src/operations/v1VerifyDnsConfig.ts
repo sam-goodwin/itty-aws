@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1VerifyDnsConfigInput {
+  ref: string;
+}
 export const V1VerifyDnsConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,10 +16,36 @@ export const V1VerifyDnsConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/v1/projects/{ref}/custom-hostname/reverify",
   }),
-);
-export type V1VerifyDnsConfigInput = typeof V1VerifyDnsConfigInput.Type;
+) as unknown as Schema.Codec<V1VerifyDnsConfigInput>;
 
 // Output Schema
+export interface V1VerifyDnsConfigOutput {
+  status:
+    | "1_not_started"
+    | "2_initiated"
+    | "3_challenge_verified"
+    | "4_origin_setup_completed"
+    | "5_services_reconfigured";
+  custom_hostname: string;
+  data: {
+    success: boolean;
+    errors: unknown[];
+    messages: unknown[];
+    result: {
+      id: string;
+      hostname: string;
+      ssl: {
+        status: string;
+        validation_records: { txt_name: string; txt_value: string }[];
+        validation_errors?: { message: string }[];
+      };
+      ownership_verification: { type: string; name: string; value: string };
+      custom_origin_server: string;
+      verification_errors?: string[];
+      status: string;
+    };
+  };
+}
 export const V1VerifyDnsConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.Literals([
@@ -60,8 +89,7 @@ export const V1VerifyDnsConfigOutput =
         status: Schema.String,
       }),
     }),
-  });
-export type V1VerifyDnsConfigOutput = typeof V1VerifyDnsConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1VerifyDnsConfigOutput>;
 
 // The operation
 /**

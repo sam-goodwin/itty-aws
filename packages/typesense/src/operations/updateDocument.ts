@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateDocumentInput {
+  collectionName: string;
+  documentId: string;
+  dirty_values?: string;
+}
 export const UpdateDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   documentId: Schema.String.pipe(T.PathParam()),
@@ -13,12 +18,12 @@ export const UpdateDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/collections/{collectionName}/documents/{documentId}",
   }),
-);
-export type UpdateDocumentInput = typeof UpdateDocumentInput.Type;
+) as unknown as Schema.Codec<UpdateDocumentInput>;
 
 // Output Schema
-export const UpdateDocumentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type UpdateDocumentOutput = typeof UpdateDocumentOutput.Type;
+export type UpdateDocumentOutput = unknown;
+export const UpdateDocumentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<UpdateDocumentOutput>;
 
 // The operation
 /**

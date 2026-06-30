@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest> =
+export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export interface GoogleCloudRecommenderV1beta1RecommendationInsightReference {
   insight?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommendationInsightReference: Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReference> =
+export const GoogleCloudRecommenderV1beta1RecommendationInsightReference: Schema.Codec<GoogleCloudRecommenderV1beta1RecommendationInsightReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insight: Schema.optional(Schema.String),
   }).annotate({
@@ -57,7 +57,7 @@ export interface GoogleCloudRecommenderV1beta1SustainabilityProjection {
   duration?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1SustainabilityProjection: Schema.Schema<GoogleCloudRecommenderV1beta1SustainabilityProjection> =
+export const GoogleCloudRecommenderV1beta1SustainabilityProjection: Schema.Codec<GoogleCloudRecommenderV1beta1SustainabilityProjection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kgCO2e: Schema.optional(Schema.Number),
     duration: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface GoogleCloudRecommenderV1beta1SecurityProjection {
   details?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1SecurityProjection: Schema.Schema<GoogleCloudRecommenderV1beta1SecurityProjection> =
+export const GoogleCloudRecommenderV1beta1SecurityProjection: Schema.Codec<GoogleCloudRecommenderV1beta1SecurityProjection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
@@ -86,7 +86,7 @@ export interface GoogleTypeMoney {
   nanos?: number;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
+export const GoogleTypeMoney: Schema.Codec<GoogleTypeMoney> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -108,7 +108,7 @@ export interface GoogleCloudRecommenderV1beta1CostProjection {
   costInLocalCurrency?: GoogleTypeMoney;
 }
 
-export const GoogleCloudRecommenderV1beta1CostProjection: Schema.Schema<GoogleCloudRecommenderV1beta1CostProjection> =
+export const GoogleCloudRecommenderV1beta1CostProjection: Schema.Codec<GoogleCloudRecommenderV1beta1CostProjection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pricingType: Schema.optional(Schema.String),
     cost: Schema.optional(GoogleTypeMoney),
@@ -129,7 +129,7 @@ export interface GoogleCloudRecommenderV1beta1ReliabilityProjection {
   >;
 }
 
-export const GoogleCloudRecommenderV1beta1ReliabilityProjection: Schema.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjection> =
+export const GoogleCloudRecommenderV1beta1ReliabilityProjection: Schema.Codec<GoogleCloudRecommenderV1beta1ReliabilityProjection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     risks: Schema.optional(Schema.Array(Schema.String)),
@@ -160,7 +160,7 @@ export interface GoogleCloudRecommenderV1beta1Impact {
   reliabilityProjection?: GoogleCloudRecommenderV1beta1ReliabilityProjection;
 }
 
-export const GoogleCloudRecommenderV1beta1Impact: Schema.Schema<GoogleCloudRecommenderV1beta1Impact> =
+export const GoogleCloudRecommenderV1beta1Impact: Schema.Codec<GoogleCloudRecommenderV1beta1Impact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sustainabilityProjection: Schema.optional(
       GoogleCloudRecommenderV1beta1SustainabilityProjection,
@@ -183,7 +183,7 @@ export interface GoogleCloudRecommenderV1beta1ValueMatcher {
   matchesPattern?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ValueMatcher: Schema.Schema<GoogleCloudRecommenderV1beta1ValueMatcher> =
+export const GoogleCloudRecommenderV1beta1ValueMatcher: Schema.Codec<GoogleCloudRecommenderV1beta1ValueMatcher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchesPattern: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudRecommenderV1beta1ValueMatcher" });
@@ -211,7 +211,7 @@ export interface GoogleCloudRecommenderV1beta1Operation {
   resourceType?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1Operation: Schema.Schema<GoogleCloudRecommenderV1beta1Operation> =
+export const GoogleCloudRecommenderV1beta1Operation: Schema.Codec<GoogleCloudRecommenderV1beta1Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     valueMatcher: Schema.optional(GoogleCloudRecommenderV1beta1ValueMatcher),
@@ -232,7 +232,7 @@ export interface GoogleCloudRecommenderV1beta1OperationGroup {
   operations?: ReadonlyArray<GoogleCloudRecommenderV1beta1Operation>;
 }
 
-export const GoogleCloudRecommenderV1beta1OperationGroup: Schema.Schema<GoogleCloudRecommenderV1beta1OperationGroup> =
+export const GoogleCloudRecommenderV1beta1OperationGroup: Schema.Codec<GoogleCloudRecommenderV1beta1OperationGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1Operation),
@@ -246,7 +246,7 @@ export interface GoogleCloudRecommenderV1beta1RecommendationContent {
   overview?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommendationContent: Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationContent> =
+export const GoogleCloudRecommenderV1beta1RecommendationContent: Schema.Codec<GoogleCloudRecommenderV1beta1RecommendationContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationGroups: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1OperationGroup),
@@ -270,7 +270,7 @@ export interface GoogleCloudRecommenderV1beta1RecommendationStateInfo {
   stateMetadata?: Record<string, string>;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommendationStateInfo: Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationStateInfo> =
+export const GoogleCloudRecommenderV1beta1RecommendationStateInfo: Schema.Codec<GoogleCloudRecommenderV1beta1RecommendationStateInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -307,7 +307,7 @@ export interface GoogleCloudRecommenderV1beta1Recommendation {
   targetResources?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudRecommenderV1beta1Recommendation: Schema.Schema<GoogleCloudRecommenderV1beta1Recommendation> =
+export const GoogleCloudRecommenderV1beta1Recommendation: Schema.Codec<GoogleCloudRecommenderV1beta1Recommendation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     associatedInsights: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1RecommendationInsightReference),
@@ -339,7 +339,7 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ListRecommendationsResponse: Schema.Schema<GoogleCloudRecommenderV1beta1ListRecommendationsResponse> =
+export const GoogleCloudRecommenderV1beta1ListRecommendationsResponse: Schema.Codec<GoogleCloudRecommenderV1beta1ListRecommendationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendations: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1Recommendation),
@@ -354,7 +354,7 @@ export interface GoogleCloudRecommenderV1beta1RecommenderGenerationConfig {
   params?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig: Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig> =
+export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig: Schema.Codec<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
@@ -378,7 +378,7 @@ export interface GoogleCloudRecommenderV1beta1RecommenderConfig {
   revisionId?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommenderConfig: Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderConfig> =
+export const GoogleCloudRecommenderV1beta1RecommenderConfig: Schema.Codec<GoogleCloudRecommenderV1beta1RecommenderConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommenderGenerationConfig: Schema.optional(
       GoogleCloudRecommenderV1beta1RecommenderGenerationConfig,
@@ -398,7 +398,7 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest {
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest> =
+export const GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
@@ -419,7 +419,7 @@ export interface GoogleCloudLocationLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
+export const GoogleCloudLocationLocation: Schema.Codec<GoogleCloudLocationLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -435,7 +435,7 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
+export const GoogleCloudLocationListLocationsResponse: Schema.Codec<GoogleCloudLocationListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -446,7 +446,7 @@ export interface GoogleCloudRecommenderV1beta1InsightType {
   name?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightType: Schema.Schema<GoogleCloudRecommenderV1beta1InsightType> =
+export const GoogleCloudRecommenderV1beta1InsightType: Schema.Codec<GoogleCloudRecommenderV1beta1InsightType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightType" });
@@ -456,7 +456,7 @@ export interface GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig {
   params?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig: Schema.Schema<GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig> =
+export const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig: Schema.Codec<GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
@@ -468,7 +468,7 @@ export interface GoogleCloudRecommenderV1beta1RecommenderType {
   name?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommenderType: Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderType> =
+export const GoogleCloudRecommenderV1beta1RecommenderType: Schema.Codec<GoogleCloudRecommenderV1beta1RecommenderType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommenderType" });
@@ -480,7 +480,7 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ListRecommendersResponse: Schema.Schema<GoogleCloudRecommenderV1beta1ListRecommendersResponse> =
+export const GoogleCloudRecommenderV1beta1ListRecommendersResponse: Schema.Codec<GoogleCloudRecommenderV1beta1ListRecommendersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommenders: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1RecommenderType),
@@ -495,7 +495,7 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest> =
+export const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
   }).annotate({
@@ -515,7 +515,7 @@ export interface GoogleCloudRecommenderV1beta1InsightStateInfo {
   stateMetadata?: Record<string, string>;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightStateInfo: Schema.Schema<GoogleCloudRecommenderV1beta1InsightStateInfo> =
+export const GoogleCloudRecommenderV1beta1InsightStateInfo: Schema.Codec<GoogleCloudRecommenderV1beta1InsightStateInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -526,7 +526,7 @@ export interface GoogleCloudRecommenderV1beta1InsightRecommendationReference {
   recommendation?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightRecommendationReference: Schema.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReference> =
+export const GoogleCloudRecommenderV1beta1InsightRecommendationReference: Schema.Codec<GoogleCloudRecommenderV1beta1InsightRecommendationReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendation: Schema.optional(Schema.String),
   }).annotate({
@@ -574,7 +574,7 @@ export interface GoogleCloudRecommenderV1beta1Insight {
     | (string & {});
 }
 
-export const GoogleCloudRecommenderV1beta1Insight: Schema.Schema<GoogleCloudRecommenderV1beta1Insight> =
+export const GoogleCloudRecommenderV1beta1Insight: Schema.Codec<GoogleCloudRecommenderV1beta1Insight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -599,7 +599,7 @@ export interface GoogleCloudRecommenderV1beta1ListInsightsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ListInsightsResponse: Schema.Schema<GoogleCloudRecommenderV1beta1ListInsightsResponse> =
+export const GoogleCloudRecommenderV1beta1ListInsightsResponse: Schema.Codec<GoogleCloudRecommenderV1beta1ListInsightsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insights: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1Insight),
@@ -616,7 +616,7 @@ export interface GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest {
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest> =
+export const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
@@ -631,7 +631,7 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest {
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest> =
+export const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest: Schema.Codec<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
@@ -656,7 +656,7 @@ export interface GoogleCloudRecommenderV1beta1InsightTypeConfig {
   revisionId?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightTypeConfig: Schema.Schema<GoogleCloudRecommenderV1beta1InsightTypeConfig> =
+export const GoogleCloudRecommenderV1beta1InsightTypeConfig: Schema.Codec<GoogleCloudRecommenderV1beta1InsightTypeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -676,7 +676,7 @@ export interface GoogleCloudRecommenderV1beta1ListInsightTypesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ListInsightTypesResponse: Schema.Schema<GoogleCloudRecommenderV1beta1ListInsightTypesResponse> =
+export const GoogleCloudRecommenderV1beta1ListInsightTypesResponse: Schema.Codec<GoogleCloudRecommenderV1beta1ListInsightTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insightTypes: Schema.optional(
       Schema.Array(GoogleCloudRecommenderV1beta1InsightType),
@@ -765,7 +765,7 @@ export const ListFoldersLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersLocationsRequest>;
+  ) as unknown as Schema.Codec<ListFoldersLocationsRequest>;
 
 export type ListFoldersLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
@@ -810,7 +810,7 @@ export const ListFoldersLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/insights" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<ListFoldersLocationsInsightTypesInsightsRequest>;
 
 export type ListFoldersLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1ListInsightsResponse;
@@ -849,7 +849,7 @@ export const GetFoldersLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<GetFoldersLocationsInsightTypesInsightsRequest>;
 
 export type GetFoldersLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
@@ -893,7 +893,7 @@ export const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkAcceptedFoldersLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<MarkAcceptedFoldersLocationsInsightTypesInsightsRequest>;
 
 export type MarkAcceptedFoldersLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
@@ -939,7 +939,7 @@ export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkSucceededFoldersLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkSucceededFoldersLocationsRecommendersRecommendationsRequest>;
 
 export type MarkSucceededFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -985,7 +985,7 @@ export const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkClaimedFoldersLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkClaimedFoldersLocationsRecommendersRecommendationsRequest>;
 
 export type MarkClaimedFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1022,7 +1022,7 @@ export const GetFoldersLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<GetFoldersLocationsRecommendersRecommendationsRequest>;
 
 export type GetFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1066,7 +1066,7 @@ export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkFailedFoldersLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkFailedFoldersLocationsRecommendersRecommendationsRequest>;
 
 export type MarkFailedFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1112,7 +1112,7 @@ export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkDismissedFoldersLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkDismissedFoldersLocationsRecommendersRecommendationsRequest>;
 
 export type MarkDismissedFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1158,7 +1158,7 @@ export const ListFoldersLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/recommendations" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<ListFoldersLocationsRecommendersRecommendationsRequest>;
 
 export type ListFoldersLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
@@ -1211,7 +1211,7 @@ export const ListOrganizationsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsRequest>;
 
 export type ListOrganizationsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
@@ -1250,7 +1250,7 @@ export const GetConfigOrganizationsLocationsRecommendersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigOrganizationsLocationsRecommendersRequest>;
+  ) as unknown as Schema.Codec<GetConfigOrganizationsLocationsRecommendersRequest>;
 
 export type GetConfigOrganizationsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
@@ -1298,7 +1298,7 @@ export const UpdateConfigOrganizationsLocationsRecommendersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigOrganizationsLocationsRecommendersRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigOrganizationsLocationsRecommendersRequest>;
 
 export type UpdateConfigOrganizationsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
@@ -1344,7 +1344,7 @@ export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkSucceededOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1352,7 +1352,11 @@ export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededOrganizationsLocationsRecommendersRecommendationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -1387,7 +1391,7 @@ export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkClaimedOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1424,7 +1428,7 @@ export const GetOrganizationsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export type GetOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1468,7 +1472,7 @@ export const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkFailedOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1514,7 +1518,7 @@ export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkDismissedOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -1522,7 +1526,11 @@ export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedOrganizationsLocationsRecommendersRecommendationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -1557,7 +1565,7 @@ export const ListOrganizationsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/recommendations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export type ListOrganizationsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
@@ -1596,7 +1604,7 @@ export const GetConfigOrganizationsLocationsInsightTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigOrganizationsLocationsInsightTypesRequest>;
+  ) as unknown as Schema.Codec<GetConfigOrganizationsLocationsInsightTypesRequest>;
 
 export type GetConfigOrganizationsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
@@ -1644,7 +1652,7 @@ export const UpdateConfigOrganizationsLocationsInsightTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigOrganizationsLocationsInsightTypesRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigOrganizationsLocationsInsightTypesRequest>;
 
 export type UpdateConfigOrganizationsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
@@ -1690,7 +1698,7 @@ export const ListOrganizationsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/insights" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsInsightTypesInsightsRequest>;
 
 export type ListOrganizationsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1ListInsightsResponse;
@@ -1729,7 +1737,7 @@ export const GetOrganizationsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsInsightTypesInsightsRequest>;
 
 export type GetOrganizationsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
@@ -1773,7 +1781,7 @@ export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest>;
 
 export type MarkAcceptedOrganizationsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
@@ -1813,7 +1821,7 @@ export const ListRecommendersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/recommenders" }),
     svc,
-  ) as unknown as Schema.Schema<ListRecommendersRequest>;
+  ) as unknown as Schema.Codec<ListRecommendersRequest>;
 
 export type ListRecommendersResponse =
   GoogleCloudRecommenderV1beta1ListRecommendersResponse;
@@ -1863,7 +1871,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
@@ -1899,7 +1907,7 @@ export const GetConfigProjectsLocationsRecommendersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsLocationsRecommendersRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsLocationsRecommendersRequest>;
 
 export type GetConfigProjectsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
@@ -1947,7 +1955,7 @@ export const UpdateConfigProjectsLocationsRecommendersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsRecommendersRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigProjectsLocationsRecommendersRequest>;
 
 export type UpdateConfigProjectsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
@@ -1993,7 +2001,7 @@ export const MarkFailedProjectsLocationsRecommendersRecommendationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkFailedProjectsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkFailedProjectsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkFailedProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2039,7 +2047,7 @@ export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkDismissedProjectsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkDismissedProjectsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkDismissedProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2085,7 +2093,7 @@ export const ListProjectsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/recommendations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRecommendersRecommendationsRequest>;
 
 export type ListProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
@@ -2133,7 +2141,7 @@ export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkSucceededProjectsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkSucceededProjectsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkSucceededProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2179,7 +2187,7 @@ export const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkClaimedProjectsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkClaimedProjectsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkClaimedProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2216,7 +2224,7 @@ export const GetProjectsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRecommendersRecommendationsRequest>;
 
 export type GetProjectsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2251,7 +2259,7 @@ export const GetConfigProjectsLocationsInsightTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsLocationsInsightTypesRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsLocationsInsightTypesRequest>;
 
 export type GetConfigProjectsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
@@ -2299,7 +2307,7 @@ export const UpdateConfigProjectsLocationsInsightTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsInsightTypesRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigProjectsLocationsInsightTypesRequest>;
 
 export type UpdateConfigProjectsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
@@ -2345,7 +2353,7 @@ export const ListProjectsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/insights" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInsightTypesInsightsRequest>;
 
 export type ListProjectsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1ListInsightsResponse;
@@ -2384,7 +2392,7 @@ export const GetProjectsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInsightTypesInsightsRequest>;
 
 export type GetProjectsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
@@ -2428,7 +2436,7 @@ export const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkAcceptedProjectsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<MarkAcceptedProjectsLocationsInsightTypesInsightsRequest>;
 
 export type MarkAcceptedProjectsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
@@ -2479,7 +2487,7 @@ export const ListBillingAccountsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListBillingAccountsLocationsRequest>;
 
 export type ListBillingAccountsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
@@ -2518,7 +2526,7 @@ export const GetConfigBillingAccountsLocationsRecommendersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigBillingAccountsLocationsRecommendersRequest>;
+  ) as unknown as Schema.Codec<GetConfigBillingAccountsLocationsRecommendersRequest>;
 
 export type GetConfigBillingAccountsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
@@ -2566,7 +2574,7 @@ export const UpdateConfigBillingAccountsLocationsRecommendersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigBillingAccountsLocationsRecommendersRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigBillingAccountsLocationsRecommendersRequest>;
 
 export type UpdateConfigBillingAccountsLocationsRecommendersResponse =
   GoogleCloudRecommenderV1beta1RecommenderConfig;
@@ -2612,7 +2620,7 @@ export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/recommendations" }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type ListBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
@@ -2660,7 +2668,7 @@ export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsReq
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkDismissedBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2668,7 +2676,11 @@ export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2704,7 +2716,7 @@ export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsReques
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkFailedBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2712,7 +2724,11 @@ export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2737,7 +2753,7 @@ export const GetBillingAccountsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBillingAccountsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<GetBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type GetBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2781,7 +2797,7 @@ export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkClaimedBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2789,7 +2805,11 @@ export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2824,7 +2844,7 @@ export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsReq
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest>;
+  ) as unknown as Schema.Codec<MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type MarkSucceededBillingAccountsLocationsRecommendersRecommendationsResponse =
   GoogleCloudRecommenderV1beta1Recommendation;
@@ -2832,7 +2852,11 @@ export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2859,7 +2883,7 @@ export const GetConfigBillingAccountsLocationsInsightTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigBillingAccountsLocationsInsightTypesRequest>;
+  ) as unknown as Schema.Codec<GetConfigBillingAccountsLocationsInsightTypesRequest>;
 
 export type GetConfigBillingAccountsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
@@ -2907,7 +2931,7 @@ export const UpdateConfigBillingAccountsLocationsInsightTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigBillingAccountsLocationsInsightTypesRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigBillingAccountsLocationsInsightTypesRequest>;
 
 export type UpdateConfigBillingAccountsLocationsInsightTypesResponse =
   GoogleCloudRecommenderV1beta1InsightTypeConfig;
@@ -2953,7 +2977,7 @@ export const ListBillingAccountsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/insights" }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export type ListBillingAccountsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1ListInsightsResponse;
@@ -2992,7 +3016,7 @@ export const GetBillingAccountsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBillingAccountsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<GetBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export type GetBillingAccountsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
@@ -3036,7 +3060,7 @@ export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest>;
+  ) as unknown as Schema.Codec<MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export type MarkAcceptedBillingAccountsLocationsInsightTypesInsightsResponse =
   GoogleCloudRecommenderV1beta1Insight;
@@ -3076,7 +3100,7 @@ export const ListInsightTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/insightTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListInsightTypesRequest>;
+  ) as unknown as Schema.Codec<ListInsightTypesRequest>;
 
 export type ListInsightTypesResponse =
   GoogleCloudRecommenderV1beta1ListInsightTypesResponse;

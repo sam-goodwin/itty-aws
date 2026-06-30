@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface GoogleCloudAssetV1p7beta1PartitionSpec {
     | (string & {});
 }
 
-export const GoogleCloudAssetV1p7beta1PartitionSpec: Schema.Schema<GoogleCloudAssetV1p7beta1PartitionSpec> =
+export const GoogleCloudAssetV1p7beta1PartitionSpec: Schema.Codec<GoogleCloudAssetV1p7beta1PartitionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudAssetV1p7beta1PartitionSpec" });
@@ -49,7 +49,7 @@ export interface GoogleCloudAssetV1p7beta1BigQueryDestination {
   dataset?: string;
 }
 
-export const GoogleCloudAssetV1p7beta1BigQueryDestination: Schema.Schema<GoogleCloudAssetV1p7beta1BigQueryDestination> =
+export const GoogleCloudAssetV1p7beta1BigQueryDestination: Schema.Codec<GoogleCloudAssetV1p7beta1BigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionSpec: Schema.optional(GoogleCloudAssetV1p7beta1PartitionSpec),
     separateTablesPerAssetType: Schema.optional(Schema.Boolean),
@@ -65,7 +65,7 @@ export interface GoogleCloudAssetV1p7beta1GcsDestination {
   uriPrefix?: string;
 }
 
-export const GoogleCloudAssetV1p7beta1GcsDestination: Schema.Schema<GoogleCloudAssetV1p7beta1GcsDestination> =
+export const GoogleCloudAssetV1p7beta1GcsDestination: Schema.Codec<GoogleCloudAssetV1p7beta1GcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     uriPrefix: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export interface GoogleCloudAssetV1p7beta1OutputConfig {
   gcsDestination?: GoogleCloudAssetV1p7beta1GcsDestination;
 }
 
-export const GoogleCloudAssetV1p7beta1OutputConfig: Schema.Schema<GoogleCloudAssetV1p7beta1OutputConfig> =
+export const GoogleCloudAssetV1p7beta1OutputConfig: Schema.Codec<GoogleCloudAssetV1p7beta1OutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryDestination: Schema.optional(
       GoogleCloudAssetV1p7beta1BigQueryDestination,
@@ -106,7 +106,7 @@ export interface GoogleCloudAssetV1p7beta1ExportAssetsRequest {
   readTime?: string;
 }
 
-export const GoogleCloudAssetV1p7beta1ExportAssetsRequest: Schema.Schema<GoogleCloudAssetV1p7beta1ExportAssetsRequest> =
+export const GoogleCloudAssetV1p7beta1ExportAssetsRequest: Schema.Codec<GoogleCloudAssetV1p7beta1ExportAssetsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relationshipTypes: Schema.optional(Schema.Array(Schema.String)),
     contentType: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export interface GoogleCloudAssetV1p7beta1RelationshipAttributes {
   action?: string;
 }
 
-export const GoogleCloudAssetV1p7beta1RelationshipAttributes: Schema.Schema<GoogleCloudAssetV1p7beta1RelationshipAttributes> =
+export const GoogleCloudAssetV1p7beta1RelationshipAttributes: Schema.Codec<GoogleCloudAssetV1p7beta1RelationshipAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     sourceResourceType: Schema.optional(Schema.String),
@@ -145,7 +145,7 @@ export interface GoogleCloudAssetV1p7beta1RelatedAsset {
   assetType?: string;
 }
 
-export const GoogleCloudAssetV1p7beta1RelatedAsset: Schema.Schema<GoogleCloudAssetV1p7beta1RelatedAsset> =
+export const GoogleCloudAssetV1p7beta1RelatedAsset: Schema.Codec<GoogleCloudAssetV1p7beta1RelatedAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     ancestors: Schema.optional(Schema.Array(Schema.String)),
@@ -159,7 +159,7 @@ export interface GoogleCloudAssetV1p7beta1RelatedAssets {
   assets?: ReadonlyArray<GoogleCloudAssetV1p7beta1RelatedAsset>;
 }
 
-export const GoogleCloudAssetV1p7beta1RelatedAssets: Schema.Schema<GoogleCloudAssetV1p7beta1RelatedAssets> =
+export const GoogleCloudAssetV1p7beta1RelatedAssets: Schema.Codec<GoogleCloudAssetV1p7beta1RelatedAssets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relationshipAttributes: Schema.optional(
       GoogleCloudAssetV1p7beta1RelationshipAttributes,
@@ -186,7 +186,7 @@ export interface GoogleCloudAssetV1p7beta1Resource {
   location?: string;
 }
 
-export const GoogleCloudAssetV1p7beta1Resource: Schema.Schema<GoogleCloudAssetV1p7beta1Resource> =
+export const GoogleCloudAssetV1p7beta1Resource: Schema.Codec<GoogleCloudAssetV1p7beta1Resource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -199,7 +199,7 @@ export const GoogleCloudAssetV1p7beta1Resource: Schema.Schema<GoogleCloudAssetV1
 
 export interface GoogleCloudOrgpolicyV1RestoreDefault {}
 
-export const GoogleCloudOrgpolicyV1RestoreDefault: Schema.Schema<GoogleCloudOrgpolicyV1RestoreDefault> =
+export const GoogleCloudOrgpolicyV1RestoreDefault: Schema.Codec<GoogleCloudOrgpolicyV1RestoreDefault> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudOrgpolicyV1RestoreDefault",
   });
@@ -217,7 +217,7 @@ export interface GoogleCloudOrgpolicyV1ListPolicy {
   allowedValues?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudOrgpolicyV1ListPolicy: Schema.Schema<GoogleCloudOrgpolicyV1ListPolicy> =
+export const GoogleCloudOrgpolicyV1ListPolicy: Schema.Codec<GoogleCloudOrgpolicyV1ListPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestedValue: Schema.optional(Schema.String),
     inheritFromParent: Schema.optional(Schema.Boolean),
@@ -231,7 +231,7 @@ export interface GoogleCloudOrgpolicyV1BooleanPolicy {
   enforced?: boolean;
 }
 
-export const GoogleCloudOrgpolicyV1BooleanPolicy: Schema.Schema<GoogleCloudOrgpolicyV1BooleanPolicy> =
+export const GoogleCloudOrgpolicyV1BooleanPolicy: Schema.Codec<GoogleCloudOrgpolicyV1BooleanPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforced: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudOrgpolicyV1BooleanPolicy" });
@@ -253,7 +253,7 @@ export interface GoogleCloudOrgpolicyV1Policy {
   constraint?: string;
 }
 
-export const GoogleCloudOrgpolicyV1Policy: Schema.Schema<GoogleCloudOrgpolicyV1Policy> =
+export const GoogleCloudOrgpolicyV1Policy: Schema.Codec<GoogleCloudOrgpolicyV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     restoreDefault: Schema.optional(GoogleCloudOrgpolicyV1RestoreDefault),
@@ -269,7 +269,7 @@ export interface GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoi
   forwardingRule?: string;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint: Schema.Schema<GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint> =
+export const GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint: Schema.Codec<GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forwardingRule: Schema.optional(Schema.String),
   }).annotate({
@@ -286,7 +286,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressSource {
   accessLevel?: string;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1EgressSource: Schema.Schema<GoogleIdentityAccesscontextmanagerV1EgressSource> =
+export const GoogleIdentityAccesscontextmanagerV1EgressSource: Schema.Codec<GoogleIdentityAccesscontextmanagerV1EgressSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     pscEndpoint: Schema.optional(
@@ -317,7 +317,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
   identities?: ReadonlyArray<string>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1EgressFrom: Schema.Schema<GoogleIdentityAccesscontextmanagerV1EgressFrom> =
+export const GoogleIdentityAccesscontextmanagerV1EgressFrom: Schema.Codec<GoogleIdentityAccesscontextmanagerV1EgressFrom> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1EgressSource),
@@ -334,7 +334,7 @@ export interface GoogleIdentityAccesscontextmanagerV1MethodSelector {
   permission?: string;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1MethodSelector: Schema.Schema<GoogleIdentityAccesscontextmanagerV1MethodSelector> =
+export const GoogleIdentityAccesscontextmanagerV1MethodSelector: Schema.Codec<GoogleIdentityAccesscontextmanagerV1MethodSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
@@ -349,7 +349,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ApiOperation {
   methodSelectors?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1ApiOperation: Schema.Schema<GoogleIdentityAccesscontextmanagerV1ApiOperation> =
+export const GoogleIdentityAccesscontextmanagerV1ApiOperation: Schema.Codec<GoogleIdentityAccesscontextmanagerV1ApiOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.optional(Schema.String),
     methodSelectors: Schema.optional(
@@ -370,7 +370,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressTo {
   externalResources?: ReadonlyArray<string>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1EgressTo: Schema.Schema<GoogleIdentityAccesscontextmanagerV1EgressTo> =
+export const GoogleIdentityAccesscontextmanagerV1EgressTo: Schema.Codec<GoogleIdentityAccesscontextmanagerV1EgressTo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1ApiOperation),
@@ -389,7 +389,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressPolicy {
   title?: string;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1EgressPolicy: Schema.Schema<GoogleIdentityAccesscontextmanagerV1EgressPolicy> =
+export const GoogleIdentityAccesscontextmanagerV1EgressPolicy: Schema.Codec<GoogleIdentityAccesscontextmanagerV1EgressPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     egressFrom: Schema.optional(GoogleIdentityAccesscontextmanagerV1EgressFrom),
     egressTo: Schema.optional(GoogleIdentityAccesscontextmanagerV1EgressTo),
@@ -405,7 +405,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AddRequestHeader {
   value?: string;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1AddRequestHeader: Schema.Schema<GoogleIdentityAccesscontextmanagerV1AddRequestHeader> =
+export const GoogleIdentityAccesscontextmanagerV1AddRequestHeader: Schema.Codec<GoogleIdentityAccesscontextmanagerV1AddRequestHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -418,7 +418,7 @@ export interface GoogleIdentityAccesscontextmanagerV1Modifier {
   addRequestHeader?: GoogleIdentityAccesscontextmanagerV1AddRequestHeader;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1Modifier: Schema.Schema<GoogleIdentityAccesscontextmanagerV1Modifier> =
+export const GoogleIdentityAccesscontextmanagerV1Modifier: Schema.Codec<GoogleIdentityAccesscontextmanagerV1Modifier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addRequestHeader: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1AddRequestHeader,
@@ -434,7 +434,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePattern {
   modifiers?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1Modifier>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1ServicePattern: Schema.Schema<GoogleIdentityAccesscontextmanagerV1ServicePattern> =
+export const GoogleIdentityAccesscontextmanagerV1ServicePattern: Schema.Codec<GoogleIdentityAccesscontextmanagerV1ServicePattern> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     pattern: Schema.optional(Schema.String),
@@ -460,7 +460,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
   allowedServices?: ReadonlyArray<string>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices: Schema.Schema<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices> =
+export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices: Schema.Codec<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedServicePatterns: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1ServicePattern),
@@ -483,7 +483,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressSource {
   resource?: string;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1IngressSource: Schema.Schema<GoogleIdentityAccesscontextmanagerV1IngressSource> =
+export const GoogleIdentityAccesscontextmanagerV1IngressSource: Schema.Codec<GoogleIdentityAccesscontextmanagerV1IngressSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pscEndpoint: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint,
@@ -508,7 +508,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressFrom {
   identities?: ReadonlyArray<string>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1IngressFrom: Schema.Schema<GoogleIdentityAccesscontextmanagerV1IngressFrom> =
+export const GoogleIdentityAccesscontextmanagerV1IngressFrom: Schema.Codec<GoogleIdentityAccesscontextmanagerV1IngressFrom> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identityType: Schema.optional(Schema.String),
     sources: Schema.optional(
@@ -528,7 +528,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressTo {
   roles?: ReadonlyArray<string>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1IngressTo: Schema.Schema<GoogleIdentityAccesscontextmanagerV1IngressTo> =
+export const GoogleIdentityAccesscontextmanagerV1IngressTo: Schema.Codec<GoogleIdentityAccesscontextmanagerV1IngressTo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(
@@ -546,7 +546,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressPolicy {
   ingressTo?: GoogleIdentityAccesscontextmanagerV1IngressTo;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1IngressPolicy: Schema.Schema<GoogleIdentityAccesscontextmanagerV1IngressPolicy> =
+export const GoogleIdentityAccesscontextmanagerV1IngressPolicy: Schema.Codec<GoogleIdentityAccesscontextmanagerV1IngressPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingressFrom: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1IngressFrom,
@@ -572,7 +572,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   accessLevels?: ReadonlyArray<string>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig: Schema.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig> =
+export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig: Schema.Codec<GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     egressPolicies: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1EgressPolicy),
@@ -612,7 +612,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   status?: GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1ServicePerimeter: Schema.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeter> =
+export const GoogleIdentityAccesscontextmanagerV1ServicePerimeter: Schema.Codec<GoogleIdentityAccesscontextmanagerV1ServicePerimeter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -643,7 +643,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   etag?: string;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1AccessPolicy: Schema.Schema<GoogleIdentityAccesscontextmanagerV1AccessPolicy> =
+export const GoogleIdentityAccesscontextmanagerV1AccessPolicy: Schema.Codec<GoogleIdentityAccesscontextmanagerV1AccessPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -665,7 +665,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -682,7 +682,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -701,7 +701,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -714,7 +714,7 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
@@ -731,7 +731,7 @@ export interface Policy {
   auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -756,7 +756,7 @@ export interface GoogleIdentityAccesscontextmanagerV1OsConstraint {
   requireVerifiedChromeOs?: boolean;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1OsConstraint: Schema.Schema<GoogleIdentityAccesscontextmanagerV1OsConstraint> =
+export const GoogleIdentityAccesscontextmanagerV1OsConstraint: Schema.Codec<GoogleIdentityAccesscontextmanagerV1OsConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minimumVersion: Schema.optional(Schema.String),
     osType: Schema.optional(Schema.String),
@@ -788,7 +788,7 @@ export interface GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   requireCorpOwned?: boolean;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicy: Schema.Schema<GoogleIdentityAccesscontextmanagerV1DevicePolicy> =
+export const GoogleIdentityAccesscontextmanagerV1DevicePolicy: Schema.Codec<GoogleIdentityAccesscontextmanagerV1DevicePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osConstraints: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1OsConstraint),
@@ -809,7 +809,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcSubNetwork {
   vpcIpSubnetworks?: ReadonlyArray<string>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork: Schema.Schema<GoogleIdentityAccesscontextmanagerV1VpcSubNetwork> =
+export const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork: Schema.Codec<GoogleIdentityAccesscontextmanagerV1VpcSubNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     vpcIpSubnetworks: Schema.optional(Schema.Array(Schema.String)),
@@ -822,7 +822,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcNetworkSource {
   vpcSubnetwork?: GoogleIdentityAccesscontextmanagerV1VpcSubNetwork;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource: Schema.Schema<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource> =
+export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource: Schema.Codec<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpcSubnetwork: Schema.optional(
       GoogleIdentityAccesscontextmanagerV1VpcSubNetwork,
@@ -848,7 +848,7 @@ export interface GoogleIdentityAccesscontextmanagerV1Condition {
   vpcNetworkSources?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1Condition: Schema.Schema<GoogleIdentityAccesscontextmanagerV1Condition> =
+export const GoogleIdentityAccesscontextmanagerV1Condition: Schema.Codec<GoogleIdentityAccesscontextmanagerV1Condition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negate: Schema.optional(Schema.Boolean),
     regions: Schema.optional(Schema.Array(Schema.String)),
@@ -870,7 +870,7 @@ export interface GoogleIdentityAccesscontextmanagerV1BasicLevel {
   combiningFunction?: "AND" | "OR" | (string & {});
 }
 
-export const GoogleIdentityAccesscontextmanagerV1BasicLevel: Schema.Schema<GoogleIdentityAccesscontextmanagerV1BasicLevel> =
+export const GoogleIdentityAccesscontextmanagerV1BasicLevel: Schema.Codec<GoogleIdentityAccesscontextmanagerV1BasicLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(
       Schema.Array(GoogleIdentityAccesscontextmanagerV1Condition),
@@ -883,7 +883,7 @@ export interface GoogleIdentityAccesscontextmanagerV1CustomLevel {
   expr?: Expr;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1CustomLevel: Schema.Schema<GoogleIdentityAccesscontextmanagerV1CustomLevel> =
+export const GoogleIdentityAccesscontextmanagerV1CustomLevel: Schema.Codec<GoogleIdentityAccesscontextmanagerV1CustomLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expr: Schema.optional(Expr),
   }).annotate({
@@ -903,7 +903,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessLevel {
   name?: string;
 }
 
-export const GoogleIdentityAccesscontextmanagerV1AccessLevel: Schema.Schema<GoogleIdentityAccesscontextmanagerV1AccessLevel> =
+export const GoogleIdentityAccesscontextmanagerV1AccessLevel: Schema.Codec<GoogleIdentityAccesscontextmanagerV1AccessLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     basic: Schema.optional(GoogleIdentityAccesscontextmanagerV1BasicLevel),
@@ -939,7 +939,7 @@ export interface GoogleCloudAssetV1p7beta1Asset {
   accessLevel?: GoogleIdentityAccesscontextmanagerV1AccessLevel;
 }
 
-export const GoogleCloudAssetV1p7beta1Asset: Schema.Schema<GoogleCloudAssetV1p7beta1Asset> =
+export const GoogleCloudAssetV1p7beta1Asset: Schema.Codec<GoogleCloudAssetV1p7beta1Asset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     relatedAssets: Schema.optional(GoogleCloudAssetV1p7beta1RelatedAssets),
@@ -962,7 +962,7 @@ export const GoogleCloudAssetV1p7beta1Asset: Schema.Schema<GoogleCloudAssetV1p7b
 
 export interface AnalyzeIamPolicyLongrunningResponse {}
 
-export const AnalyzeIamPolicyLongrunningResponse: Schema.Schema<AnalyzeIamPolicyLongrunningResponse> =
+export const AnalyzeIamPolicyLongrunningResponse: Schema.Codec<AnalyzeIamPolicyLongrunningResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AnalyzeIamPolicyLongrunningResponse",
   });
@@ -976,7 +976,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -990,7 +990,7 @@ export interface AnalyzeIamPolicyLongrunningMetadata {
   createTime?: string;
 }
 
-export const AnalyzeIamPolicyLongrunningMetadata: Schema.Schema<AnalyzeIamPolicyLongrunningMetadata> =
+export const AnalyzeIamPolicyLongrunningMetadata: Schema.Codec<AnalyzeIamPolicyLongrunningMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnalyzeIamPolicyLongrunningMetadata" });
@@ -1008,7 +1008,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     name: Schema.optional(Schema.String),
@@ -1081,7 +1081,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1p7beta1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1120,7 +1120,7 @@ export const ExportAssetsV1p7beta1Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportAssetsV1p7beta1Request>;
+  ) as unknown as Schema.Codec<ExportAssetsV1p7beta1Request>;
 
 export type ExportAssetsV1p7beta1Response = Operation;
 export const ExportAssetsV1p7beta1Response =

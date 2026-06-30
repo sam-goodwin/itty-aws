@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface UpsertSynonymSetItemInput {
+  synonymSetName: string;
+  itemId: string;
+  synonyms: string[];
+  root?: string;
+  locale?: string;
+  symbols_to_index?: string[];
+}
 export const UpsertSynonymSetItemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     synonymSetName: Schema.String.pipe(T.PathParam()),
@@ -17,10 +25,16 @@ export const UpsertSynonymSetItemInput =
       method: "PUT",
       path: "/synonym_sets/{synonymSetName}/items/{itemId}",
     }),
-  );
-export type UpsertSynonymSetItemInput = typeof UpsertSynonymSetItemInput.Type;
+  ) as unknown as Schema.Codec<UpsertSynonymSetItemInput>;
 
 // Output Schema
+export interface UpsertSynonymSetItemOutput {
+  id: string;
+  synonyms: string[];
+  root?: string;
+  locale?: string;
+  symbols_to_index?: string[];
+}
 export const UpsertSynonymSetItemOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -28,8 +42,7 @@ export const UpsertSynonymSetItemOutput =
     root: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
     symbols_to_index: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type UpsertSynonymSetItemOutput = typeof UpsertSynonymSetItemOutput.Type;
+  }) as unknown as Schema.Codec<UpsertSynonymSetItemOutput>;
 
 // The operation
 /**

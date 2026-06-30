@@ -4,6 +4,33 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksStagedArtifactsFinalizeUploadCreateInput {
+  id: string;
+  project_id: string;
+  artifacts?: {
+    id?: string;
+    name?: string;
+    type?:
+      | "plan"
+      | "context"
+      | "reference"
+      | "output"
+      | "artifact"
+      | "tree_snapshot"
+      | "user_attachment"
+      | "skill_bundle";
+    source?: string;
+    storage_path?: string;
+    content_type?: string;
+    metadata?: {
+      skill_name: string;
+      skill_source: "user" | "repo" | "marketplace" | "codex";
+      content_sha256: string;
+      bundle_format: "zip";
+      schema_version: number;
+    };
+  }[];
+}
 export const TasksStagedArtifactsFinalizeUploadCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -50,11 +77,28 @@ export const TasksStagedArtifactsFinalizeUploadCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tasks/{id}/staged_artifacts/finalize_upload/",
     }),
-  );
-export type TasksStagedArtifactsFinalizeUploadCreateInput =
-  typeof TasksStagedArtifactsFinalizeUploadCreateInput.Type;
+  ) as unknown as Schema.Codec<TasksStagedArtifactsFinalizeUploadCreateInput>;
 
 // Output Schema
+export interface TasksStagedArtifactsFinalizeUploadCreateOutput {
+  artifacts?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    source?: string;
+    size?: number;
+    content_type?: string;
+    metadata?: {
+      skill_name: string;
+      skill_source: "user" | "repo" | "marketplace" | "codex";
+      content_sha256: string;
+      bundle_format: "zip";
+      schema_version: number;
+    };
+    storage_path?: string;
+    uploaded_at?: string;
+  }[];
+}
 export const TasksStagedArtifactsFinalizeUploadCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifacts: Schema.optional(
@@ -85,9 +129,7 @@ export const TasksStagedArtifactsFinalizeUploadCreateOutput =
         }),
       ),
     ),
-  });
-export type TasksStagedArtifactsFinalizeUploadCreateOutput =
-  typeof TasksStagedArtifactsFinalizeUploadCreateOutput.Type;
+  }) as unknown as Schema.Codec<TasksStagedArtifactsFinalizeUploadCreateOutput>;
 
 // The operation
 /**

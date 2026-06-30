@@ -4,12 +4,83 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateEventsV1NamespacedEventInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  action?: string;
+  apiVersion?: string;
+  deprecatedCount?: number;
+  deprecatedFirstTimestamp?: string;
+  deprecatedLastTimestamp?: string;
+  deprecatedSource?: { component?: string; host?: string };
+  eventTime: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  note?: string;
+  reason?: string;
+  regarding?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  related?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  reportingController?: string;
+  reportingInstance?: string;
+  series?: { count: number; lastObservedTime: string };
+  type?: string;
+}
 export const CreateEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -112,11 +183,75 @@ export const CreateEventsV1NamespacedEventInput =
       method: "POST",
       path: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
     }),
-  );
-export type CreateEventsV1NamespacedEventInput =
-  typeof CreateEventsV1NamespacedEventInput.Type;
+  ) as unknown as Schema.Codec<CreateEventsV1NamespacedEventInput>;
 
 // Output Schema
+export interface CreateEventsV1NamespacedEventOutput {
+  action?: string;
+  apiVersion?: string;
+  deprecatedCount?: number;
+  deprecatedFirstTimestamp?: string;
+  deprecatedLastTimestamp?: string;
+  deprecatedSource?: { component?: string; host?: string };
+  eventTime: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  note?: string;
+  reason?: string;
+  regarding?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  related?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  reportingController?: string;
+  reportingInstance?: string;
+  series?: { count: number; lastObservedTime: string };
+  type?: string;
+}
 export const CreateEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
@@ -209,9 +344,7 @@ export const CreateEventsV1NamespacedEventOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type CreateEventsV1NamespacedEventOutput =
-  typeof CreateEventsV1NamespacedEventOutput.Type;
+  }) as unknown as Schema.Codec<CreateEventsV1NamespacedEventOutput>;
 
 // The operation
 /**
@@ -230,6 +363,27 @@ export const createEventsV1NamespacedEvent =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteEventsV1CollectionNamespacedEventInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteEventsV1CollectionNamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -263,11 +417,32 @@ export const DeleteEventsV1CollectionNamespacedEventInput =
       method: "DELETE",
       path: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
     }),
-  );
-export type DeleteEventsV1CollectionNamespacedEventInput =
-  typeof DeleteEventsV1CollectionNamespacedEventInput.Type;
+  ) as unknown as Schema.Codec<DeleteEventsV1CollectionNamespacedEventInput>;
 
 // Output Schema
+export interface DeleteEventsV1CollectionNamespacedEventOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteEventsV1CollectionNamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -307,9 +482,7 @@ export const DeleteEventsV1CollectionNamespacedEventOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteEventsV1CollectionNamespacedEventOutput =
-  typeof DeleteEventsV1CollectionNamespacedEventOutput.Type;
+  }) as unknown as Schema.Codec<DeleteEventsV1CollectionNamespacedEventOutput>;
 
 // The operation
 /**
@@ -379,6 +552,19 @@ export const deleteEventsV1CollectionNamespacedEvent =
     outputSchema: DeleteEventsV1CollectionNamespacedEventOutput,
   }));
 // Input Schema
+export interface DeleteEventsV1NamespacedEventInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -404,11 +590,32 @@ export const DeleteEventsV1NamespacedEventInput =
       method: "DELETE",
       path: "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}",
     }),
-  );
-export type DeleteEventsV1NamespacedEventInput =
-  typeof DeleteEventsV1NamespacedEventInput.Type;
+  ) as unknown as Schema.Codec<DeleteEventsV1NamespacedEventInput>;
 
 // Output Schema
+export interface DeleteEventsV1NamespacedEventOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -448,9 +655,7 @@ export const DeleteEventsV1NamespacedEventOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteEventsV1NamespacedEventOutput =
-  typeof DeleteEventsV1NamespacedEventOutput.Type;
+  }) as unknown as Schema.Codec<DeleteEventsV1NamespacedEventOutput>;
 
 // The operation
 /**
@@ -472,12 +677,22 @@ export const deleteEventsV1NamespacedEvent =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetEventsAPIGroupInput {}
 export const GetEventsAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/apis/events.k8s.io/" }));
-export type GetEventsAPIGroupInput = typeof GetEventsAPIGroupInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/apis/events.k8s.io/" }),
+) as unknown as Schema.Codec<GetEventsAPIGroupInput>;
 
 // Output Schema
+export interface GetEventsAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetEventsAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -503,8 +718,7 @@ export const GetEventsAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetEventsAPIGroupOutput = typeof GetEventsAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetEventsAPIGroupOutput>;
 
 // The operation
 /**
@@ -515,14 +729,30 @@ export const getEventsAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetEventsAPIGroupOutput,
 }));
 // Input Schema
+export interface GetEventsV1APIResourcesInput {}
 export const GetEventsV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/events.k8s.io/v1/" }),
-  );
-export type GetEventsV1APIResourcesInput =
-  typeof GetEventsV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetEventsV1APIResourcesInput>;
 
 // Output Schema
+export interface GetEventsV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetEventsV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -542,9 +772,7 @@ export const GetEventsV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetEventsV1APIResourcesOutput =
-  typeof GetEventsV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetEventsV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -557,6 +785,20 @@ export const getEventsV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListEventsV1EventForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListEventsV1EventForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -571,11 +813,88 @@ export const ListEventsV1EventForAllNamespacesInput =
     shardSelector: Schema.optional(Schema.String),
     timeoutSeconds: Schema.optional(Schema.Number),
     watch: Schema.optional(Schema.Boolean),
-  }).pipe(T.Http({ method: "GET", path: "/apis/events.k8s.io/v1/events" }));
-export type ListEventsV1EventForAllNamespacesInput =
-  typeof ListEventsV1EventForAllNamespacesInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/apis/events.k8s.io/v1/events" }),
+  ) as unknown as Schema.Codec<ListEventsV1EventForAllNamespacesInput>;
 
 // Output Schema
+export interface ListEventsV1EventForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    action?: string;
+    apiVersion?: string;
+    deprecatedCount?: number;
+    deprecatedFirstTimestamp?: string;
+    deprecatedLastTimestamp?: string;
+    deprecatedSource?: { component?: string; host?: string };
+    eventTime: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    note?: string;
+    reason?: string;
+    regarding?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    related?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    reportingController?: string;
+    reportingInstance?: string;
+    series?: { count: number; lastObservedTime: string };
+    type?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListEventsV1EventForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -689,9 +1008,7 @@ export const ListEventsV1EventForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListEventsV1EventForAllNamespacesOutput =
-  typeof ListEventsV1EventForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListEventsV1EventForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -757,6 +1074,21 @@ export const listEventsV1EventForAllNamespaces =
     outputSchema: ListEventsV1EventForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListEventsV1NamespacedEventInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -777,11 +1109,86 @@ export const ListEventsV1NamespacedEventInput =
       method: "GET",
       path: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
     }),
-  );
-export type ListEventsV1NamespacedEventInput =
-  typeof ListEventsV1NamespacedEventInput.Type;
+  ) as unknown as Schema.Codec<ListEventsV1NamespacedEventInput>;
 
 // Output Schema
+export interface ListEventsV1NamespacedEventOutput {
+  apiVersion?: string;
+  items: {
+    action?: string;
+    apiVersion?: string;
+    deprecatedCount?: number;
+    deprecatedFirstTimestamp?: string;
+    deprecatedLastTimestamp?: string;
+    deprecatedSource?: { component?: string; host?: string };
+    eventTime: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    note?: string;
+    reason?: string;
+    regarding?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    related?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    reportingController?: string;
+    reportingInstance?: string;
+    series?: { count: number; lastObservedTime: string };
+    type?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -895,9 +1302,7 @@ export const ListEventsV1NamespacedEventOutput =
         ),
       }),
     ),
-  });
-export type ListEventsV1NamespacedEventOutput =
-  typeof ListEventsV1NamespacedEventOutput.Type;
+  }) as unknown as Schema.Codec<ListEventsV1NamespacedEventOutput>;
 
 // The operation
 /**
@@ -965,6 +1370,15 @@ export const listEventsV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PatchEventsV1NamespacedEventInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -979,11 +1393,75 @@ export const PatchEventsV1NamespacedEventInput =
       method: "PATCH",
       path: "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}",
     }),
-  );
-export type PatchEventsV1NamespacedEventInput =
-  typeof PatchEventsV1NamespacedEventInput.Type;
+  ) as unknown as Schema.Codec<PatchEventsV1NamespacedEventInput>;
 
 // Output Schema
+export interface PatchEventsV1NamespacedEventOutput {
+  action?: string;
+  apiVersion?: string;
+  deprecatedCount?: number;
+  deprecatedFirstTimestamp?: string;
+  deprecatedLastTimestamp?: string;
+  deprecatedSource?: { component?: string; host?: string };
+  eventTime: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  note?: string;
+  reason?: string;
+  regarding?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  related?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  reportingController?: string;
+  reportingInstance?: string;
+  series?: { count: number; lastObservedTime: string };
+  type?: string;
+}
 export const PatchEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
@@ -1076,9 +1554,7 @@ export const PatchEventsV1NamespacedEventOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type PatchEventsV1NamespacedEventOutput =
-  typeof PatchEventsV1NamespacedEventOutput.Type;
+  }) as unknown as Schema.Codec<PatchEventsV1NamespacedEventOutput>;
 
 // The operation
 /**
@@ -1099,6 +1575,11 @@ export const patchEventsV1NamespacedEvent =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadEventsV1NamespacedEventInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1109,11 +1590,75 @@ export const ReadEventsV1NamespacedEventInput =
       method: "GET",
       path: "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}",
     }),
-  );
-export type ReadEventsV1NamespacedEventInput =
-  typeof ReadEventsV1NamespacedEventInput.Type;
+  ) as unknown as Schema.Codec<ReadEventsV1NamespacedEventInput>;
 
 // Output Schema
+export interface ReadEventsV1NamespacedEventOutput {
+  action?: string;
+  apiVersion?: string;
+  deprecatedCount?: number;
+  deprecatedFirstTimestamp?: string;
+  deprecatedLastTimestamp?: string;
+  deprecatedSource?: { component?: string; host?: string };
+  eventTime: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  note?: string;
+  reason?: string;
+  regarding?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  related?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  reportingController?: string;
+  reportingInstance?: string;
+  series?: { count: number; lastObservedTime: string };
+  type?: string;
+}
 export const ReadEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
@@ -1206,9 +1751,7 @@ export const ReadEventsV1NamespacedEventOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ReadEventsV1NamespacedEventOutput =
-  typeof ReadEventsV1NamespacedEventOutput.Type;
+  }) as unknown as Schema.Codec<ReadEventsV1NamespacedEventOutput>;
 
 // The operation
 /**
@@ -1226,6 +1769,78 @@ export const readEventsV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReplaceEventsV1NamespacedEventInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  action?: string;
+  apiVersion?: string;
+  deprecatedCount?: number;
+  deprecatedFirstTimestamp?: string;
+  deprecatedLastTimestamp?: string;
+  deprecatedSource?: { component?: string; host?: string };
+  eventTime: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  note?: string;
+  reason?: string;
+  regarding?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  related?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  reportingController?: string;
+  reportingInstance?: string;
+  series?: { count: number; lastObservedTime: string };
+  type?: string;
+}
 export const ReplaceEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1329,11 +1944,75 @@ export const ReplaceEventsV1NamespacedEventInput =
       method: "PUT",
       path: "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}",
     }),
-  );
-export type ReplaceEventsV1NamespacedEventInput =
-  typeof ReplaceEventsV1NamespacedEventInput.Type;
+  ) as unknown as Schema.Codec<ReplaceEventsV1NamespacedEventInput>;
 
 // Output Schema
+export interface ReplaceEventsV1NamespacedEventOutput {
+  action?: string;
+  apiVersion?: string;
+  deprecatedCount?: number;
+  deprecatedFirstTimestamp?: string;
+  deprecatedLastTimestamp?: string;
+  deprecatedSource?: { component?: string; host?: string };
+  eventTime: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  note?: string;
+  reason?: string;
+  regarding?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  related?: {
+    apiVersion?: string;
+    fieldPath?: string;
+    kind?: string;
+    name?: string;
+    namespace?: string;
+    resourceVersion?: string;
+    uid?: string;
+  };
+  reportingController?: string;
+  reportingInstance?: string;
+  series?: { count: number; lastObservedTime: string };
+  type?: string;
+}
 export const ReplaceEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
@@ -1426,9 +2105,7 @@ export const ReplaceEventsV1NamespacedEventOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ReplaceEventsV1NamespacedEventOutput =
-  typeof ReplaceEventsV1NamespacedEventOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceEventsV1NamespacedEventOutput>;
 
 // The operation
 /**
@@ -1448,6 +2125,20 @@ export const replaceEventsV1NamespacedEvent =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchEventsV1EventListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchEventsV1EventListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1464,18 +2155,18 @@ export const WatchEventsV1EventListForAllNamespacesInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/events.k8s.io/v1/watch/events" }),
-  );
-export type WatchEventsV1EventListForAllNamespacesInput =
-  typeof WatchEventsV1EventListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchEventsV1EventListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchEventsV1EventListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchEventsV1EventListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchEventsV1EventListForAllNamespacesOutput =
-  typeof WatchEventsV1EventListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchEventsV1EventListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -1541,6 +2232,22 @@ export const watchEventsV1EventListForAllNamespaces =
     outputSchema: WatchEventsV1EventListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchEventsV1NamespacedEventInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1562,18 +2269,18 @@ export const WatchEventsV1NamespacedEventInput =
       method: "GET",
       path: "/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}",
     }),
-  );
-export type WatchEventsV1NamespacedEventInput =
-  typeof WatchEventsV1NamespacedEventInput.Type;
+  ) as unknown as Schema.Codec<WatchEventsV1NamespacedEventInput>;
 
 // Output Schema
+export interface WatchEventsV1NamespacedEventOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchEventsV1NamespacedEventOutput =
-  typeof WatchEventsV1NamespacedEventOutput.Type;
+  }) as unknown as Schema.Codec<WatchEventsV1NamespacedEventOutput>;
 
 // The operation
 /**
@@ -1641,6 +2348,21 @@ export const watchEventsV1NamespacedEvent =
     outputSchema: WatchEventsV1NamespacedEventOutput,
   }));
 // Input Schema
+export interface WatchEventsV1NamespacedEventListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchEventsV1NamespacedEventListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1661,18 +2383,18 @@ export const WatchEventsV1NamespacedEventListInput =
       method: "GET",
       path: "/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events",
     }),
-  );
-export type WatchEventsV1NamespacedEventListInput =
-  typeof WatchEventsV1NamespacedEventListInput.Type;
+  ) as unknown as Schema.Codec<WatchEventsV1NamespacedEventListInput>;
 
 // Output Schema
+export interface WatchEventsV1NamespacedEventListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchEventsV1NamespacedEventListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchEventsV1NamespacedEventListOutput =
-  typeof WatchEventsV1NamespacedEventListOutput.Type;
+  }) as unknown as Schema.Codec<WatchEventsV1NamespacedEventListOutput>;
 
 // The operation
 /**

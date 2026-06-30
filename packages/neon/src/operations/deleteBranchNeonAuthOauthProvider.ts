@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteBranchNeonAuthOauthProviderInput {
+  project_id: string;
+  branch_id: string;
+  oauth_provider_id: string;
+}
 export const DeleteBranchNeonAuthOauthProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const DeleteBranchNeonAuthOauthProviderInput =
       method: "DELETE",
       path: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}",
     }),
-  );
-export type DeleteBranchNeonAuthOauthProviderInput =
-  typeof DeleteBranchNeonAuthOauthProviderInput.Type;
+  ) as unknown as Schema.Codec<DeleteBranchNeonAuthOauthProviderInput>;
 
 // Output Schema
+export type DeleteBranchNeonAuthOauthProviderOutput = void;
 export const DeleteBranchNeonAuthOauthProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteBranchNeonAuthOauthProviderOutput =
-  typeof DeleteBranchNeonAuthOauthProviderOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchNeonAuthOauthProviderOutput>;
 
 // The operation
 /**

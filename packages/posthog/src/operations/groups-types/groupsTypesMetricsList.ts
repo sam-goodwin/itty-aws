@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesMetricsListInput {
+  group_type_index: number;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const GroupsTypesMetricsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_type_index: Schema.Number.pipe(T.PathParam()),
@@ -15,11 +21,24 @@ export const GroupsTypesMetricsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/groups_types/{group_type_index}/metrics/",
     }),
-  );
-export type GroupsTypesMetricsListInput =
-  typeof GroupsTypesMetricsListInput.Type;
+  ) as unknown as Schema.Codec<GroupsTypesMetricsListInput>;
 
 // Output Schema
+export interface GroupsTypesMetricsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    format?: "numeric" | "currency";
+    interval?: number;
+    display?: "number" | "sparkline";
+    filters?: Record<string, unknown>;
+    math?: "count" | "sum";
+    math_property?: string | null;
+  }[];
+}
 export const GroupsTypesMetricsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -41,9 +60,7 @@ export const GroupsTypesMetricsListOutput =
         }),
       ),
     ),
-  });
-export type GroupsTypesMetricsListOutput =
-  typeof GroupsTypesMetricsListOutput.Type;
+  }) as unknown as Schema.Codec<GroupsTypesMetricsListOutput>;
 
 // The operation
 /**

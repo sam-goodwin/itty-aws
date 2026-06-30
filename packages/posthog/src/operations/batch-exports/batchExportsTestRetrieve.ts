@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface BatchExportsTestRetrieveInput {
+  project_id: string;
+}
 export const BatchExportsTestRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const BatchExportsTestRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/batch_exports/test/",
     }),
-  );
-export type BatchExportsTestRetrieveInput =
-  typeof BatchExportsTestRetrieveInput.Type;
+  ) as unknown as Schema.Codec<BatchExportsTestRetrieveInput>;
 
 // Output Schema
+export type BatchExportsTestRetrieveOutput = void;
 export const BatchExportsTestRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BatchExportsTestRetrieveOutput =
-  typeof BatchExportsTestRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsTestRetrieveOutput>;
 
 // The operation
 /**

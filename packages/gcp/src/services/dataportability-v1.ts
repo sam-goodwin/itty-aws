@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface InitiatePortabilityArchiveRequest {
   endTime?: string;
 }
 
-export const InitiatePortabilityArchiveRequest: Schema.Schema<InitiatePortabilityArchiveRequest> =
+export const InitiatePortabilityArchiveRequest: Schema.Codec<InitiatePortabilityArchiveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Schema.String)),
     startTime: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export interface InitiatePortabilityArchiveResponse {
     | (string & {});
 }
 
-export const InitiatePortabilityArchiveResponse: Schema.Schema<InitiatePortabilityArchiveResponse> =
+export const InitiatePortabilityArchiveResponse: Schema.Codec<InitiatePortabilityArchiveResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     archiveJobId: Schema.optional(Schema.String),
     accessType: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface PortabilityArchiveState {
   exportTime?: string;
 }
 
-export const PortabilityArchiveState: Schema.Schema<PortabilityArchiveState> =
+export const PortabilityArchiveState: Schema.Codec<PortabilityArchiveState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     urls: Schema.optional(Schema.Array(Schema.String)),
@@ -85,21 +85,21 @@ export const PortabilityArchiveState: Schema.Schema<PortabilityArchiveState> =
 
 export interface ResetAuthorizationRequest {}
 
-export const ResetAuthorizationRequest: Schema.Schema<ResetAuthorizationRequest> =
+export const ResetAuthorizationRequest: Schema.Codec<ResetAuthorizationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetAuthorizationRequest",
   });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface RetryPortabilityArchiveRequest {}
 
-export const RetryPortabilityArchiveRequest: Schema.Schema<RetryPortabilityArchiveRequest> =
+export const RetryPortabilityArchiveRequest: Schema.Codec<RetryPortabilityArchiveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RetryPortabilityArchiveRequest",
   });
@@ -109,28 +109,28 @@ export interface RetryPortabilityArchiveResponse {
   archiveJobId?: string;
 }
 
-export const RetryPortabilityArchiveResponse: Schema.Schema<RetryPortabilityArchiveResponse> =
+export const RetryPortabilityArchiveResponse: Schema.Codec<RetryPortabilityArchiveResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     archiveJobId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RetryPortabilityArchiveResponse" });
 
 export interface CancelPortabilityArchiveRequest {}
 
-export const CancelPortabilityArchiveRequest: Schema.Schema<CancelPortabilityArchiveRequest> =
+export const CancelPortabilityArchiveRequest: Schema.Codec<CancelPortabilityArchiveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelPortabilityArchiveRequest",
   });
 
 export interface CancelPortabilityArchiveResponse {}
 
-export const CancelPortabilityArchiveResponse: Schema.Schema<CancelPortabilityArchiveResponse> =
+export const CancelPortabilityArchiveResponse: Schema.Codec<CancelPortabilityArchiveResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelPortabilityArchiveResponse",
   });
 
 export interface CheckAccessTypeRequest {}
 
-export const CheckAccessTypeRequest: Schema.Schema<CheckAccessTypeRequest> =
+export const CheckAccessTypeRequest: Schema.Codec<CheckAccessTypeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CheckAccessTypeRequest",
   });
@@ -142,7 +142,7 @@ export interface CheckAccessTypeResponse {
   oneTimeResources?: ReadonlyArray<string>;
 }
 
-export const CheckAccessTypeResponse: Schema.Schema<CheckAccessTypeResponse> =
+export const CheckAccessTypeResponse: Schema.Codec<CheckAccessTypeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeBasedResources: Schema.optional(Schema.Array(Schema.String)),
     oneTimeResources: Schema.optional(Schema.Array(Schema.String)),
@@ -217,7 +217,7 @@ export const InitiatePortabilityArchiveRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InitiatePortabilityArchiveRequest_Op>;
+  ) as unknown as Schema.Codec<InitiatePortabilityArchiveRequest_Op>;
 
 export type InitiatePortabilityArchiveResponse_Op =
   InitiatePortabilityArchiveResponse;
@@ -254,7 +254,7 @@ export const GetPortabilityArchiveStateArchiveJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPortabilityArchiveStateArchiveJobsRequest>;
+  ) as unknown as Schema.Codec<GetPortabilityArchiveStateArchiveJobsRequest>;
 
 export type GetPortabilityArchiveStateArchiveJobsResponse =
   PortabilityArchiveState;
@@ -292,7 +292,7 @@ export const RetryArchiveJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:retry", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RetryArchiveJobsRequest>;
+  ) as unknown as Schema.Codec<RetryArchiveJobsRequest>;
 
 export type RetryArchiveJobsResponse = RetryPortabilityArchiveResponse;
 export const RetryArchiveJobsResponse =
@@ -331,7 +331,7 @@ export const CancelArchiveJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelArchiveJobsRequest>;
+  ) as unknown as Schema.Codec<CancelArchiveJobsRequest>;
 
 export type CancelArchiveJobsResponse = CancelPortabilityArchiveResponse;
 export const CancelArchiveJobsResponse =
@@ -367,7 +367,7 @@ export const ResetAuthorizationRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/authorization:reset", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResetAuthorizationRequest_Op>;
+  ) as unknown as Schema.Codec<ResetAuthorizationRequest_Op>;
 
 export type ResetAuthorizationResponse = Empty;
 export const ResetAuthorizationResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -402,7 +402,7 @@ export const CheckAccessTypeRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/accessType:check", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CheckAccessTypeRequest_Op>;
+  ) as unknown as Schema.Codec<CheckAccessTypeRequest_Op>;
 
 export type CheckAccessTypeResponse_Op = CheckAccessTypeResponse;
 export const CheckAccessTypeResponse_Op =

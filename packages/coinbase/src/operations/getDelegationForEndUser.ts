@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetDelegationForEndUserInput {
+  userId: string;
+  projectID?: string;
+}
 export const GetDelegationForEndUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const GetDelegationForEndUserInput =
       method: "GET",
       path: "/v2/embedded-wallet-api/end-users/{userId}/delegation",
     }),
-  );
-export type GetDelegationForEndUserInput =
-  typeof GetDelegationForEndUserInput.Type;
+  ) as unknown as Schema.Codec<GetDelegationForEndUserInput>;
 
 // Output Schema
+export interface GetDelegationForEndUserOutput {
+  expiresAt: string;
+}
 export const GetDelegationForEndUserOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expiresAt: Schema.String,
-  });
-export type GetDelegationForEndUserOutput =
-  typeof GetDelegationForEndUserOutput.Type;
+  }) as unknown as Schema.Codec<GetDelegationForEndUserOutput>;
 
 // The operation
 /**

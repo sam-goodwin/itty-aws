@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1EnvironmentVariablesInput {
+  cursor?: string;
+  limit?: number;
+  projectId?: string;
+  class?: "production" | "preview";
+  key?: string;
+  branchId?: string;
+}
 export const GetV1EnvironmentVariablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
@@ -12,11 +20,27 @@ export const GetV1EnvironmentVariablesInput =
     class: Schema.optional(Schema.Literals(["production", "preview"])),
     key: Schema.optional(Schema.String),
     branchId: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v1/environment-variables" }));
-export type GetV1EnvironmentVariablesInput =
-  typeof GetV1EnvironmentVariablesInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/environment-variables" }),
+  ) as unknown as Schema.Codec<GetV1EnvironmentVariablesInput>;
 
 // Output Schema
+export interface GetV1EnvironmentVariablesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    projectId: string;
+    branchId: string | null;
+    class: "production" | "preview";
+    key: string;
+    valueKid: string;
+    isManagedBySystem: boolean;
+    createdAt: string;
+    updatedAt: string;
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1EnvironmentVariablesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -38,9 +62,7 @@ export const GetV1EnvironmentVariablesOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1EnvironmentVariablesOutput =
-  typeof GetV1EnvironmentVariablesOutput.Type;
+  }) as unknown as Schema.Codec<GetV1EnvironmentVariablesOutput>;
 
 // The operation
 /**

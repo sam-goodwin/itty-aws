@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1ListAllSsoProviderInput {
+  ref: string;
+}
 export const V1ListAllSsoProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,10 +15,44 @@ export const V1ListAllSsoProviderInput =
       method: "GET",
       path: "/v1/projects/{ref}/config/auth/sso/providers",
     }),
-  );
-export type V1ListAllSsoProviderInput = typeof V1ListAllSsoProviderInput.Type;
+  ) as unknown as Schema.Codec<V1ListAllSsoProviderInput>;
 
 // Output Schema
+export interface V1ListAllSsoProviderOutput {
+  items: {
+    id: string;
+    saml?: {
+      id: string;
+      entity_id: string;
+      metadata_url?: string;
+      metadata_xml?: string;
+      attribute_mapping?: {
+        keys: Record<
+          string,
+          {
+            name?: string;
+            names?: string[];
+            default?: {} | number | string | boolean;
+            array?: boolean;
+          }
+        >;
+      };
+      name_id_format?:
+        | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+        | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+        | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+        | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
+    };
+    domains?: {
+      id: string;
+      domain?: string;
+      created_at?: string;
+      updated_at?: string;
+    }[];
+    created_at?: string;
+    updated_at?: string;
+  }[];
+}
 export const V1ListAllSsoProviderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.Array(
@@ -34,7 +71,14 @@ export const V1ListAllSsoProviderOutput =
                   Schema.Struct({
                     name: Schema.optional(Schema.String),
                     names: Schema.optional(Schema.Array(Schema.String)),
-                    default: Schema.optional(Schema.Unknown),
+                    default: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({}),
+                        Schema.Number,
+                        Schema.String,
+                        Schema.Boolean,
+                      ]),
+                    ),
                     array: Schema.optional(Schema.Boolean),
                   }),
                 ),
@@ -64,8 +108,7 @@ export const V1ListAllSsoProviderOutput =
         updated_at: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type V1ListAllSsoProviderOutput = typeof V1ListAllSsoProviderOutput.Type;
+  }) as unknown as Schema.Codec<V1ListAllSsoProviderOutput>;
 
 // The operation
 /**

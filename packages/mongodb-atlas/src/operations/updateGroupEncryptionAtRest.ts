@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupEncryptionAtRestInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupEncryptionAtRestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const UpdateGroupEncryptionAtRestInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest",
     }),
-  );
-export type UpdateGroupEncryptionAtRestInput =
-  typeof UpdateGroupEncryptionAtRestInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupEncryptionAtRestInput>;
 
 // Output Schema
+export type UpdateGroupEncryptionAtRestOutput = void;
 export const UpdateGroupEncryptionAtRestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupEncryptionAtRestOutput =
-  typeof UpdateGroupEncryptionAtRestOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupEncryptionAtRestOutput>;
 
 // The operation
 /**

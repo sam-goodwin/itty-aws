@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsClusteringJobsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  analysis_level?: "trace" | "generation" | "evaluation";
+  event_filters?: unknown;
+  enabled?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
 export const LlmAnalyticsClusteringJobsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +30,18 @@ export const LlmAnalyticsClusteringJobsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/llm_analytics/clustering_jobs/{id}/",
     }),
-  );
-export type LlmAnalyticsClusteringJobsPartialUpdateInput =
-  typeof LlmAnalyticsClusteringJobsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsClusteringJobsPartialUpdateInput>;
 
 // Output Schema
+export interface LlmAnalyticsClusteringJobsPartialUpdateOutput {
+  id?: string;
+  name?: string;
+  analysis_level?: "trace" | "generation" | "evaluation";
+  event_filters?: unknown;
+  enabled?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
 export const LlmAnalyticsClusteringJobsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -36,9 +53,7 @@ export const LlmAnalyticsClusteringJobsPartialUpdateOutput =
     enabled: Schema.optional(Schema.Boolean),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type LlmAnalyticsClusteringJobsPartialUpdateOutput =
-  typeof LlmAnalyticsClusteringJobsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsClusteringJobsPartialUpdateOutput>;
 
 // The operation
 /**

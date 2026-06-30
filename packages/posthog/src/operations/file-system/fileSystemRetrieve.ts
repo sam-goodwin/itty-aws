@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const FileSystemRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,21 @@ export const FileSystemRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/file_system/{id}/",
     }),
-  );
-export type FileSystemRetrieveInput = typeof FileSystemRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FileSystemRetrieveInput>;
 
 // Output Schema
+export interface FileSystemRetrieveOutput {
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const FileSystemRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -29,8 +44,7 @@ export const FileSystemRetrieveOutput =
     shortcut: Schema.optional(Schema.NullOr(Schema.Boolean)),
     created_at: Schema.optional(Schema.String),
     last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type FileSystemRetrieveOutput = typeof FileSystemRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<FileSystemRetrieveOutput>;
 
 // The operation
 /**

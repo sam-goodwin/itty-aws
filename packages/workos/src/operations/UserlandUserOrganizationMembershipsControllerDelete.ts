@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserOrganizationMembershipsControllerDeleteInput {
+  id: string;
+}
 export const UserlandUserOrganizationMembershipsControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const UserlandUserOrganizationMembershipsControllerDeleteInput =
       method: "DELETE",
       path: "/user_management/organization_memberships/{id}",
     }),
-  );
-export type UserlandUserOrganizationMembershipsControllerDeleteInput =
-  typeof UserlandUserOrganizationMembershipsControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerDeleteInput>;
 
 // Output Schema
+export type UserlandUserOrganizationMembershipsControllerDeleteOutput = void;
 export const UserlandUserOrganizationMembershipsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserlandUserOrganizationMembershipsControllerDeleteOutput =
-  typeof UserlandUserOrganizationMembershipsControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerDeleteOutput>;
 
 // The operation
 /**

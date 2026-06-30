@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInLis
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter> =
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
     caseSensitive: Schema.optional(Schema.Boolean),
@@ -43,7 +43,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessDimensionHeader {
   dimensionName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeader> =
+export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessDimensionHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
   }).annotate({
@@ -71,7 +71,7 @@ export interface GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails: Schema.Schema<GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails> =
+export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails: Schema.Codec<GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestorEmail: Schema.optional(Schema.String),
     linkProposalState: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposa
   linkProposalStatusDetails?: GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails;
 }
 
-export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal: Schema.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal> =
+export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal: Schema.Codec<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserId: Schema.optional(Schema.String),
     validationEmail: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface GoogleAnalyticsAdminV1alphaBigQueryLink {
   includeAdvertisingId?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaBigQueryLink: Schema.Schema<GoogleAnalyticsAdminV1alphaBigQueryLink> =
+export const GoogleAnalyticsAdminV1alphaBigQueryLink: Schema.Codec<GoogleAnalyticsAdminV1alphaBigQueryLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportStreams: Schema.optional(Schema.Array(Schema.String)),
     dailyExportEnabled: Schema.optional(Schema.Boolean),
@@ -158,7 +158,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessMetricValue {
   value?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessMetricValue: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetricValue> =
+export const GoogleAnalyticsAdminV1alphaAccessMetricValue: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessMetricValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessMetricValue" });
@@ -172,7 +172,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessBinding {
   user?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessBinding: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessBinding> =
+export const GoogleAnalyticsAdminV1alphaAccessBinding: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     roles: Schema.optional(Schema.Array(Schema.String)),
@@ -184,7 +184,7 @@ export interface GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse {
   accessBindings?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessBinding>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse> =
+export const GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessBindings: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
@@ -210,7 +210,7 @@ export interface GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaGoogleSignalsSettings> =
+export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettings: Schema.Codec<GoogleAnalyticsAdminV1alphaGoogleSignalsSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface GoogleAnalyticsAdminV1alphaCalculatedMetric {
   >;
 }
 
-export const GoogleAnalyticsAdminV1alphaCalculatedMetric: Schema.Schema<GoogleAnalyticsAdminV1alphaCalculatedMetric> =
+export const GoogleAnalyticsAdminV1alphaCalculatedMetric: Schema.Codec<GoogleAnalyticsAdminV1alphaCalculatedMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricUnit: Schema.optional(Schema.String),
     invalidMetricReference: Schema.optional(Schema.Boolean),
@@ -274,7 +274,7 @@ export interface GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse {
   calculatedMetrics?: ReadonlyArray<GoogleAnalyticsAdminV1alphaCalculatedMetric>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse> =
+export const GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     calculatedMetrics: Schema.optional(
@@ -300,7 +300,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStrin
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter> =
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -317,7 +317,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumer
   doubleValue?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue> =
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     int64Value: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
@@ -338,7 +338,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumer
   value?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter> =
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     value: Schema.optional(
@@ -356,7 +356,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetwe
   fromValue?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter> =
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toValue: Schema.optional(
       GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue,
@@ -386,7 +386,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter {
   fieldName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter> =
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringFilter: Schema.optional(
       GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter,
@@ -424,7 +424,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessStringFilter {
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessStringFilter> =
+export const GoogleAnalyticsAdminV1alphaAccessStringFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessStringFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -446,7 +446,7 @@ export interface GoogleAnalyticsAdminV1alphaDataSharingSettings {
   sharingWithOthersEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataSharingSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaDataSharingSettings> =
+export const GoogleAnalyticsAdminV1alphaDataSharingSettings: Schema.Codec<GoogleAnalyticsAdminV1alphaDataSharingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharingWithGoogleSupportEnabled: Schema.optional(Schema.Boolean),
     sharingWithGoogleAnySalesEnabled: Schema.optional(Schema.Boolean),
@@ -483,7 +483,7 @@ export interface GoogleAnalyticsAdminV1alphaMatchingCondition {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaMatchingCondition: Schema.Schema<GoogleAnalyticsAdminV1alphaMatchingCondition> =
+export const GoogleAnalyticsAdminV1alphaMatchingCondition: Schema.Codec<GoogleAnalyticsAdminV1alphaMatchingCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     negated: Schema.optional(Schema.Boolean),
@@ -498,7 +498,7 @@ export interface GoogleAnalyticsAdminV1alphaParameterMutation {
   parameterValue?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaParameterMutation: Schema.Schema<GoogleAnalyticsAdminV1alphaParameterMutation> =
+export const GoogleAnalyticsAdminV1alphaParameterMutation: Schema.Codec<GoogleAnalyticsAdminV1alphaParameterMutation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameter: Schema.optional(Schema.String),
     parameterValue: Schema.optional(Schema.String),
@@ -517,7 +517,7 @@ export interface GoogleAnalyticsAdminV1alphaEventCreateRule {
   destinationEvent?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaEventCreateRule: Schema.Schema<GoogleAnalyticsAdminV1alphaEventCreateRule> =
+export const GoogleAnalyticsAdminV1alphaEventCreateRule: Schema.Codec<GoogleAnalyticsAdminV1alphaEventCreateRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventConditions: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaMatchingCondition),
@@ -537,7 +537,7 @@ export interface GoogleAnalyticsAdminV1alphaAdSenseLink {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAdSenseLink: Schema.Schema<GoogleAnalyticsAdminV1alphaAdSenseLink> =
+export const GoogleAnalyticsAdminV1alphaAdSenseLink: Schema.Codec<GoogleAnalyticsAdminV1alphaAdSenseLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adClientCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -556,7 +556,7 @@ export interface GoogleAnalyticsAdminV1alphaEventMapping {
   minEventCount?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaEventMapping: Schema.Schema<GoogleAnalyticsAdminV1alphaEventMapping> =
+export const GoogleAnalyticsAdminV1alphaEventMapping: Schema.Codec<GoogleAnalyticsAdminV1alphaEventMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventName: Schema.optional(Schema.String),
     minEventValue: Schema.optional(Schema.Number),
@@ -583,7 +583,7 @@ export interface GoogleAnalyticsAdminV1alphaConversionValues {
   lockEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaConversionValues: Schema.Schema<GoogleAnalyticsAdminV1alphaConversionValues> =
+export const GoogleAnalyticsAdminV1alphaConversionValues: Schema.Codec<GoogleAnalyticsAdminV1alphaConversionValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coarseValue: Schema.optional(Schema.String),
     eventMappings: Schema.optional(
@@ -601,7 +601,7 @@ export interface GoogleAnalyticsAdminV1alphaPostbackWindow {
   postbackWindowSettingsEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaPostbackWindow: Schema.Schema<GoogleAnalyticsAdminV1alphaPostbackWindow> =
+export const GoogleAnalyticsAdminV1alphaPostbackWindow: Schema.Codec<GoogleAnalyticsAdminV1alphaPostbackWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversionValues: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaConversionValues),
@@ -622,7 +622,7 @@ export interface GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema: Schema.Schema<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema> =
+export const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema: Schema.Codec<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applyConversionValues: Schema.optional(Schema.Boolean),
     postbackWindowThree: Schema.optional(
@@ -656,7 +656,7 @@ export interface GoogleAnalyticsAdminV1alphaAccount {
   updateTime?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccount: Schema.Schema<GoogleAnalyticsAdminV1alphaAccount> =
+export const GoogleAnalyticsAdminV1alphaAccount: Schema.Codec<GoogleAnalyticsAdminV1alphaAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gmpOrganization: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -692,7 +692,7 @@ export interface GoogleAnalyticsAdminV1alphaDataRetentionSettings {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaDataRetentionSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaDataRetentionSettings> =
+export const GoogleAnalyticsAdminV1alphaDataRetentionSettings: Schema.Codec<GoogleAnalyticsAdminV1alphaDataRetentionSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     userDataRetention: Schema.optional(Schema.String),
@@ -719,7 +719,7 @@ export interface GoogleAnalyticsAdminV1alphaSearchAds360Link {
   siteStatsSharingEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaSearchAds360Link: Schema.Schema<GoogleAnalyticsAdminV1alphaSearchAds360Link> =
+export const GoogleAnalyticsAdminV1alphaSearchAds360Link: Schema.Codec<GoogleAnalyticsAdminV1alphaSearchAds360Link> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     advertiserDisplayName: Schema.optional(Schema.String),
@@ -739,7 +739,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter {
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter> =
+export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -755,7 +755,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter {
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter> =
+export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
     caseSensitive: Schema.optional(Schema.Boolean),
@@ -772,7 +772,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilter {
   fieldName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilter> =
+export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaExpandedDataSetFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringFilter: Schema.optional(
       GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter,
@@ -790,7 +790,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList 
   filterExpressions?: ReadonlyArray<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList> =
+export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList: Schema.Codec<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterExpressions: Schema.optional(
@@ -802,7 +802,7 @@ export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList: Sch
   ).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList>;
 
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression {
   /** A filter expression to be NOT'ed (that is, inverted, complemented). It must include a dimension_filter. This cannot be set on the top level ExpandedDataSetFilterExpression. */
@@ -813,7 +813,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression {
   andGroup?: GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression> =
+export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression: Schema.Codec<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       notExpression: Schema.optional(
@@ -826,7 +826,7 @@ export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression: Schema.
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>;
 
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSet {
   /** Immutable. The list of metrics included in the ExpandedDataSet. See the [API Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#metrics) for the list of dimension names. */
@@ -845,7 +845,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSet {
   dimensionNames?: ReadonlyArray<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSet: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSet> =
+export const GoogleAnalyticsAdminV1alphaExpandedDataSet: Schema.Codec<GoogleAnalyticsAdminV1alphaExpandedDataSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricNames: Schema.optional(Schema.Array(Schema.String)),
     dataCollectionStartTime: Schema.optional(Schema.String),
@@ -865,7 +865,7 @@ export interface GoogleAnalyticsAdminV1alphaKeyEventDefaultValue {
   currencyCode?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaKeyEventDefaultValue: Schema.Schema<GoogleAnalyticsAdminV1alphaKeyEventDefaultValue> =
+export const GoogleAnalyticsAdminV1alphaKeyEventDefaultValue: Schema.Codec<GoogleAnalyticsAdminV1alphaKeyEventDefaultValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numericValue: Schema.optional(Schema.Number),
     currencyCode: Schema.optional(Schema.String),
@@ -894,7 +894,7 @@ export interface GoogleAnalyticsAdminV1alphaKeyEvent {
   custom?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaKeyEvent: Schema.Schema<GoogleAnalyticsAdminV1alphaKeyEvent> =
+export const GoogleAnalyticsAdminV1alphaKeyEvent: Schema.Codec<GoogleAnalyticsAdminV1alphaKeyEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countingMethod: Schema.optional(Schema.String),
     defaultValue: Schema.optional(
@@ -914,7 +914,7 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData {
   bundleId?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData: Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData> =
+export const GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData: Schema.Codec<GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firebaseAppId: Schema.optional(Schema.String),
     bundleId: Schema.optional(Schema.String),
@@ -931,7 +931,7 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamWebStreamData {
   defaultUri?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataStreamWebStreamData: Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamWebStreamData> =
+export const GoogleAnalyticsAdminV1alphaDataStreamWebStreamData: Schema.Codec<GoogleAnalyticsAdminV1alphaDataStreamWebStreamData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     measurementId: Schema.optional(Schema.String),
     firebaseAppId: Schema.optional(Schema.String),
@@ -947,7 +947,7 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData {
   packageName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData: Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData> =
+export const GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData: Schema.Codec<GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firebaseAppId: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -979,7 +979,7 @@ export interface GoogleAnalyticsAdminV1alphaDataStream {
   createTime?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataStream: Schema.Schema<GoogleAnalyticsAdminV1alphaDataStream> =
+export const GoogleAnalyticsAdminV1alphaDataStream: Schema.Codec<GoogleAnalyticsAdminV1alphaDataStream> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     iosAppStreamData: Schema.optional(
@@ -1009,7 +1009,7 @@ export interface GoogleAnalyticsAdminV1alphaReportingIdentitySettings {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaReportingIdentitySettings: Schema.Schema<GoogleAnalyticsAdminV1alphaReportingIdentitySettings> =
+export const GoogleAnalyticsAdminV1alphaReportingIdentitySettings: Schema.Codec<GoogleAnalyticsAdminV1alphaReportingIdentitySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     reportingIdentity: Schema.optional(Schema.String),
@@ -1028,7 +1028,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceEventTrigger {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceEventTrigger: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceEventTrigger> =
+export const GoogleAnalyticsAdminV1alphaAudienceEventTrigger: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceEventTrigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventName: Schema.optional(Schema.String),
     logCondition: Schema.optional(Schema.String),
@@ -1041,7 +1041,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList {
   filterExpressions?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAudienceFilterExpression>;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList> =
+export const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterExpressions: Schema.optional(
@@ -1050,7 +1050,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList: Schema.Sch
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList>;
 
 export interface GoogleAnalyticsAdminV1alphaAudienceEventFilter {
   /** Required. Immutable. The name of the event to match against. */
@@ -1059,7 +1059,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceEventFilter {
   eventParameterFilterExpression?: GoogleAnalyticsAdminV1alphaAudienceFilterExpression;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceEventFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceEventFilter> =
+export const GoogleAnalyticsAdminV1alphaAudienceEventFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceEventFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       eventName: Schema.optional(Schema.String),
@@ -1069,7 +1069,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceEventFilter: Schema.Schema<Googl
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAudienceEventFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceEventFilter>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceEventFilter>;
 
 export interface GoogleAnalyticsAdminV1alphaAudienceFilterExpression {
   /** A filter expression to be NOT'ed (For example, inverted, complemented). It can only include a dimension_or_metric_filter. This cannot be set on the top level AudienceFilterExpression. */
@@ -1084,7 +1084,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceFilterExpression {
   andGroup?: GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceFilterExpression: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterExpression> =
+export const GoogleAnalyticsAdminV1alphaAudienceFilterExpression: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceFilterExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       notExpression: Schema.optional(
@@ -1105,7 +1105,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceFilterExpression: Schema.Schema<
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAudienceFilterExpression",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterExpression>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceFilterExpression>;
 
 export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep {
   /** Optional. If true, the event satisfying this step must be the very next event after the event satisfying the last step. If unset or false, this step indirectly follows the prior step; for example, there may be events between the prior step and this step. It is ignored for the first step. */
@@ -1123,7 +1123,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequen
   filterExpression?: GoogleAnalyticsAdminV1alphaAudienceFilterExpression;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep> =
+export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     immediatelyFollows: Schema.optional(Schema.Boolean),
     scope: Schema.optional(Schema.String),
@@ -1150,7 +1150,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilter {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilter> =
+export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceSequenceFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sequenceMaximumDuration: Schema.optional(Schema.String),
     sequenceSteps: Schema.optional(
@@ -1175,7 +1175,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSimpleFilter {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSimpleFilter> =
+export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceSimpleFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterExpression: Schema.optional(
       GoogleAnalyticsAdminV1alphaAudienceFilterExpression,
@@ -1198,7 +1198,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceFilterClause {
   simpleFilter?: GoogleAnalyticsAdminV1alphaAudienceSimpleFilter;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceFilterClause: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterClause> =
+export const GoogleAnalyticsAdminV1alphaAudienceFilterClause: Schema.Codec<GoogleAnalyticsAdminV1alphaAudienceFilterClause> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sequenceFilter: Schema.optional(
       GoogleAnalyticsAdminV1alphaAudienceSequenceFilter,
@@ -1236,7 +1236,7 @@ export interface GoogleAnalyticsAdminV1alphaAudience {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudience: Schema.Schema<GoogleAnalyticsAdminV1alphaAudience> =
+export const GoogleAnalyticsAdminV1alphaAudience: Schema.Codec<GoogleAnalyticsAdminV1alphaAudience> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     eventTrigger: Schema.optional(
@@ -1262,7 +1262,7 @@ export interface GoogleAnalyticsAdminV1alphaFirebaseLink {
   project?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaFirebaseLink: Schema.Schema<GoogleAnalyticsAdminV1alphaFirebaseLink> =
+export const GoogleAnalyticsAdminV1alphaFirebaseLink: Schema.Codec<GoogleAnalyticsAdminV1alphaFirebaseLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1278,7 +1278,7 @@ export interface GoogleAnalyticsAdminV1alphaUserProvidedDataSettings {
   automaticallyDetectedDataCollectionEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaUserProvidedDataSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaUserProvidedDataSettings> =
+export const GoogleAnalyticsAdminV1alphaUserProvidedDataSettings: Schema.Codec<GoogleAnalyticsAdminV1alphaUserProvidedDataSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userProvidedDataCollectionEnabled: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -1292,7 +1292,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList {
   filterExpressions?: ReadonlyArray<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression>;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList> =
+export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList: Schema.Codec<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterExpressions: Schema.optional(
@@ -1301,7 +1301,7 @@ export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList: Schema
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList>;
 
 export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
   /** Required. The match type for the string filter. */
@@ -1318,7 +1318,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
   value?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter> =
+export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1331,7 +1331,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter {
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter> =
+export const GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1347,7 +1347,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilter {
   fieldName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilter> =
+export const GoogleAnalyticsAdminV1alphaChannelGroupFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaChannelGroupFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringFilter: Schema.optional(
       GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter,
@@ -1369,7 +1369,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression {
   filter?: GoogleAnalyticsAdminV1alphaChannelGroupFilter;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression> =
+export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression: Schema.Codec<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       andGroup: Schema.optional(
@@ -1385,7 +1385,7 @@ export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression: Schema.Sch
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression>;
 
 export interface GoogleAnalyticsAdminV1alphaGroupingRule {
   /** Required. Customer defined display name for the channel. */
@@ -1394,7 +1394,7 @@ export interface GoogleAnalyticsAdminV1alphaGroupingRule {
   expression?: GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression;
 }
 
-export const GoogleAnalyticsAdminV1alphaGroupingRule: Schema.Schema<GoogleAnalyticsAdminV1alphaGroupingRule> =
+export const GoogleAnalyticsAdminV1alphaGroupingRule: Schema.Codec<GoogleAnalyticsAdminV1alphaGroupingRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     expression: Schema.optional(
@@ -1417,7 +1417,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroup {
   description?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroup: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroup> =
+export const GoogleAnalyticsAdminV1alphaChannelGroup: Schema.Codec<GoogleAnalyticsAdminV1alphaChannelGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primary: Schema.optional(Schema.Boolean),
     groupingRule: Schema.optional(
@@ -1440,7 +1440,7 @@ export interface GoogleAnalyticsAdminV1alphaDataRedactionSettings {
   queryParameterRedactionEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataRedactionSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaDataRedactionSettings> =
+export const GoogleAnalyticsAdminV1alphaDataRedactionSettings: Schema.Codec<GoogleAnalyticsAdminV1alphaDataRedactionSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailRedactionEnabled: Schema.optional(Schema.Boolean),
     queryParameterKeys: Schema.optional(Schema.Array(Schema.String)),
@@ -1459,7 +1459,7 @@ export interface GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret {
   secretValue?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret: Schema.Schema<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> =
+export const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret: Schema.Codec<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1534,7 +1534,7 @@ export interface GoogleAnalyticsAdminV1alphaProperty {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaProperty: Schema.Schema<GoogleAnalyticsAdminV1alphaProperty> =
+export const GoogleAnalyticsAdminV1alphaProperty: Schema.Codec<GoogleAnalyticsAdminV1alphaProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertyType: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1558,7 +1558,7 @@ export interface GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValu
   currencyCode?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue: Schema.Schema<GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue> =
+export const GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue: Schema.Codec<GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     currencyCode: Schema.optional(Schema.String),
@@ -1588,7 +1588,7 @@ export interface GoogleAnalyticsAdminV1alphaConversionEvent {
   eventName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaConversionEvent: Schema.Schema<GoogleAnalyticsAdminV1alphaConversionEvent> =
+export const GoogleAnalyticsAdminV1alphaConversionEvent: Schema.Codec<GoogleAnalyticsAdminV1alphaConversionEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletable: Schema.optional(Schema.Boolean),
     createTime: Schema.optional(Schema.String),
@@ -1626,7 +1626,7 @@ export interface GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
   uriQueryParameter?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings> =
+export const GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings: Schema.Codec<GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     streamEnabled: Schema.optional(Schema.Boolean),
     outboundClicksEnabled: Schema.optional(Schema.Boolean),
@@ -1652,7 +1652,7 @@ export interface GoogleTypeDate {
   month?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
+export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -1666,7 +1666,7 @@ export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange {
   endDate?: GoogleTypeDate;
 }
 
-export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange: Schema.Schema<GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange> =
+export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange: Schema.Codec<GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.optional(GoogleTypeDate),
     endDate: Schema.optional(GoogleTypeDate),
@@ -1700,7 +1700,7 @@ export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotation {
   annotationDateRange?: GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange;
 }
 
-export const GoogleAnalyticsAdminV1alphaReportingDataAnnotation: Schema.Schema<GoogleAnalyticsAdminV1alphaReportingDataAnnotation> =
+export const GoogleAnalyticsAdminV1alphaReportingDataAnnotation: Schema.Codec<GoogleAnalyticsAdminV1alphaReportingDataAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(Schema.String),
     systemGenerated: Schema.optional(Schema.Boolean),
@@ -1735,7 +1735,7 @@ export interface GoogleAnalyticsAdminV1alphaCustomDimension {
   disallowAdsPersonalization?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaCustomDimension: Schema.Schema<GoogleAnalyticsAdminV1alphaCustomDimension> =
+export const GoogleAnalyticsAdminV1alphaCustomDimension: Schema.Codec<GoogleAnalyticsAdminV1alphaCustomDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1760,7 +1760,7 @@ export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   costDataSharingEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink: Schema.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> =
+export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink: Schema.Codec<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     campaignDataSharingEnabled: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -1785,7 +1785,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertySyncConfig {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfig: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig> =
+export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfig: Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applyToProperty: Schema.optional(Schema.String),
     customDimensionAndMetricSyncMode: Schema.optional(Schema.String),
@@ -1811,7 +1811,7 @@ export interface GoogleAnalyticsAdminV1alphaGoogleAdsLink {
   adsPersonalizationEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaGoogleAdsLink: Schema.Schema<GoogleAnalyticsAdminV1alphaGoogleAdsLink> =
+export const GoogleAnalyticsAdminV1alphaGoogleAdsLink: Schema.Codec<GoogleAnalyticsAdminV1alphaGoogleAdsLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerId: Schema.optional(Schema.String),
     canManageClients: Schema.optional(Schema.Boolean),
@@ -1856,7 +1856,7 @@ export interface GoogleAnalyticsAdminV1alphaCustomMetric {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaCustomMetric: Schema.Schema<GoogleAnalyticsAdminV1alphaCustomMetric> =
+export const GoogleAnalyticsAdminV1alphaCustomMetric: Schema.Codec<GoogleAnalyticsAdminV1alphaCustomMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
@@ -1899,7 +1899,7 @@ export interface GoogleAnalyticsAdminV1alphaAttributionSettings {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAttributionSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaAttributionSettings> =
+export const GoogleAnalyticsAdminV1alphaAttributionSettings: Schema.Codec<GoogleAnalyticsAdminV1alphaAttributionSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingAttributionModel: Schema.optional(Schema.String),
     acquisitionConversionEventLookbackWindow: Schema.optional(Schema.String),
@@ -1971,7 +1971,7 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryReso
   attributionSettings?: GoogleAnalyticsAdminV1alphaAttributionSettings;
 }
 
-export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource: Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource> =
+export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource: Schema.Codec<GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventCreateRule: Schema.optional(
       GoogleAnalyticsAdminV1alphaEventCreateRule,
@@ -2062,7 +2062,7 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryChange {
   resourceAfterChange?: GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource;
 }
 
-export const GoogleAnalyticsAdminV1alphaChangeHistoryChange: Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChange> =
+export const GoogleAnalyticsAdminV1alphaChangeHistoryChange: Schema.Codec<GoogleAnalyticsAdminV1alphaChangeHistoryChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
@@ -2094,7 +2094,7 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
   userActorEmail?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaChangeHistoryEvent: Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryEvent> =
+export const GoogleAnalyticsAdminV1alphaChangeHistoryEvent: Schema.Codec<GoogleAnalyticsAdminV1alphaChangeHistoryEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changeTime: Schema.optional(Schema.String),
     actorType: Schema.optional(Schema.String),
@@ -2111,7 +2111,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessDimensionValue {
   value?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessDimensionValue: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValue> =
+export const GoogleAnalyticsAdminV1alphaAccessDimensionValue: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessDimensionValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -2125,7 +2125,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessRow {
   metricValues?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessRow: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessRow> =
+export const GoogleAnalyticsAdminV1alphaAccessRow: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionValues: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaAccessDimensionValue),
@@ -2140,7 +2140,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList
   filterExpressions?: ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList> =
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList: Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filterExpressions: Schema.optional(
@@ -2152,7 +2152,7 @@ export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList: Sc
   ).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList>;
 
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter {
   /** Required. The match type for the string filter. */
@@ -2171,7 +2171,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStrin
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter> =
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -2190,7 +2190,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition {
   fieldName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition> =
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition: Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nullFilter: Schema.optional(Schema.Boolean),
     stringFilter: Schema.optional(
@@ -2210,7 +2210,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression {
   filterCondition?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression> =
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression: Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       orGroup: Schema.optional(
@@ -2225,7 +2225,7 @@ export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression: Schema
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>;
 
 export interface GoogleAnalyticsAdminV1alphaRollupPropertySourceLink {
   /** Output only. Resource name of this RollupPropertySourceLink. Format: 'properties/{property_id}/rollupPropertySourceLinks/{rollup_property_source_link}' Format: 'properties/123/rollupPropertySourceLinks/456' */
@@ -2234,7 +2234,7 @@ export interface GoogleAnalyticsAdminV1alphaRollupPropertySourceLink {
   sourceProperty?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaRollupPropertySourceLink: Schema.Schema<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink> =
+export const GoogleAnalyticsAdminV1alphaRollupPropertySourceLink: Schema.Codec<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sourceProperty: Schema.optional(Schema.String),
@@ -2249,7 +2249,7 @@ export interface GoogleAnalyticsAdminV1alphaListAccessBindingsResponse {
   accessBindings?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessBinding>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAccessBindingsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAccessBindingsResponse> =
+export const GoogleAnalyticsAdminV1alphaListAccessBindingsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListAccessBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accessBindings: Schema.optional(
@@ -2266,7 +2266,7 @@ export interface GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest {
   accessBinding?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
 
-export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest> =
+export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     accessBinding: Schema.optional(GoogleAnalyticsAdminV1alphaAccessBinding),
@@ -2279,7 +2279,7 @@ export interface GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest {
   requests?: ReadonlyArray<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest> =
+export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest),
@@ -2293,7 +2293,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessMetricHeader {
   metricName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessMetricHeader: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeader> =
+export const GoogleAnalyticsAdminV1alphaAccessMetricHeader: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessMetricHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessMetricHeader" });
@@ -2303,7 +2303,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessMetric {
   metricName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessMetric: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetric> =
+export const GoogleAnalyticsAdminV1alphaAccessMetric: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessMetric" });
@@ -2315,7 +2315,7 @@ export interface GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksRespons
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse> =
+export const GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollupPropertySourceLinks: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaRollupPropertySourceLink),
@@ -2331,7 +2331,7 @@ export interface GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest {
   accessBinding?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
 
-export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest> =
+export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessBinding: Schema.optional(GoogleAnalyticsAdminV1alphaAccessBinding),
   }).annotate({
@@ -2343,7 +2343,7 @@ export interface GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest {
   requests?: ReadonlyArray<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest> =
+export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest),
@@ -2359,7 +2359,7 @@ export interface GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchema
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse> =
+export const GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skadnetworkConversionValueSchemas: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema),
@@ -2377,7 +2377,7 @@ export interface GoogleAnalyticsAdminV1alphaNumericValue {
   doubleValue?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaNumericValue: Schema.Schema<GoogleAnalyticsAdminV1alphaNumericValue> =
+export const GoogleAnalyticsAdminV1alphaNumericValue: Schema.Codec<GoogleAnalyticsAdminV1alphaNumericValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     int64Value: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
@@ -2390,7 +2390,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessBetweenFilter {
   toValue?: GoogleAnalyticsAdminV1alphaNumericValue;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessBetweenFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessBetweenFilter> =
+export const GoogleAnalyticsAdminV1alphaAccessBetweenFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessBetweenFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fromValue: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
     toValue: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
@@ -2410,7 +2410,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessNumericFilter {
   value?: GoogleAnalyticsAdminV1alphaNumericValue;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessNumericFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessNumericFilter> =
+export const GoogleAnalyticsAdminV1alphaAccessNumericFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessNumericFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     value: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
@@ -2423,7 +2423,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessInListFilter {
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessInListFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessInListFilter> =
+export const GoogleAnalyticsAdminV1alphaAccessInListFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessInListFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
     caseSensitive: Schema.optional(Schema.Boolean),
@@ -2442,7 +2442,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessFilter {
   fieldName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessFilter> =
+export const GoogleAnalyticsAdminV1alphaAccessFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     betweenFilter: Schema.optional(
       GoogleAnalyticsAdminV1alphaAccessBetweenFilter,
@@ -2466,7 +2466,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessQuotaStatus {
   remaining?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessQuotaStatus: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessQuotaStatus> =
+export const GoogleAnalyticsAdminV1alphaAccessQuotaStatus: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessQuotaStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumed: Schema.optional(Schema.Number),
     remaining: Schema.optional(Schema.Number),
@@ -2485,7 +2485,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessQuota {
   tokensPerProjectPerHour?: GoogleAnalyticsAdminV1alphaAccessQuotaStatus;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessQuota: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessQuota> =
+export const GoogleAnalyticsAdminV1alphaAccessQuota: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessQuota> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serverErrorsPerProjectPerHour: Schema.optional(
       GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
@@ -2513,7 +2513,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause {
   filterExpression?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause> =
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause: Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterClauseType: Schema.optional(Schema.String),
     filterExpression: Schema.optional(
@@ -2530,7 +2530,7 @@ export interface GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
   googleAdsLinks?: ReadonlyArray<GoogleAnalyticsAdminV1alphaGoogleAdsLink>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse> =
+export const GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     googleAdsLinks: Schema.optional(
@@ -2542,7 +2542,7 @@ export const GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse: Schema.Schem
 
 export interface GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest {}
 
-export const GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest> =
+export const GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest",
   });
@@ -2554,7 +2554,7 @@ export interface GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse> =
+export const GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firebaseLinks: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaFirebaseLink),
@@ -2569,7 +2569,7 @@ export interface GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLink
   displayVideo360AdvertiserLink?: GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink;
 }
 
-export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse> =
+export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayVideo360AdvertiserLink: Schema.optional(
       GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
@@ -2586,7 +2586,7 @@ export interface GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListCustomMetricsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListCustomMetricsResponse> =
+export const GoogleAnalyticsAdminV1alphaListCustomMetricsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListCustomMetricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customMetrics: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaCustomMetric),
@@ -2605,7 +2605,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilter {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter> =
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilter: Schema.Codec<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applyToProperty: Schema.optional(Schema.String),
     filterClauses: Schema.optional(
@@ -2623,7 +2623,7 @@ export interface GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse {
   subpropertyEventFilter?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
 }
 
-export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse> =
+export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subproperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
     subpropertyEventFilter: Schema.optional(
@@ -2651,7 +2651,7 @@ export interface GoogleAnalyticsAdminV1alphaPropertySummary {
   parent?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaPropertySummary: Schema.Schema<GoogleAnalyticsAdminV1alphaPropertySummary> =
+export const GoogleAnalyticsAdminV1alphaPropertySummary: Schema.Codec<GoogleAnalyticsAdminV1alphaPropertySummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     propertyType: Schema.optional(Schema.String),
@@ -2671,7 +2671,7 @@ export interface GoogleAnalyticsAdminV1alphaAccountSummary {
   account?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccountSummary: Schema.Schema<GoogleAnalyticsAdminV1alphaAccountSummary> =
+export const GoogleAnalyticsAdminV1alphaAccountSummary: Schema.Codec<GoogleAnalyticsAdminV1alphaAccountSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertySummaries: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaPropertySummary),
@@ -2688,7 +2688,7 @@ export interface GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
   accountSummaries?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAccountSummary>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAccountSummariesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAccountSummariesResponse> =
+export const GoogleAnalyticsAdminV1alphaListAccountSummariesResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListAccountSummariesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accountSummaries: Schema.optional(
@@ -2705,7 +2705,7 @@ export interface GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse> =
+export const GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchAds360Links: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaSearchAds360Link),
@@ -2720,7 +2720,7 @@ export interface GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest> =
+export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -2734,7 +2734,7 @@ export interface GoogleAnalyticsAdminV1alphaListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAccountsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAccountsResponse> =
+export const GoogleAnalyticsAdminV1alphaListAccountsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(GoogleAnalyticsAdminV1alphaAccount)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2800,7 +2800,7 @@ export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {
   earliestChangeTime?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest> =
+export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actorEmail: Schema.optional(Schema.Array(Schema.String)),
     resourceType: Schema.optional(Schema.Array(Schema.String)),
@@ -2819,7 +2819,7 @@ export interface GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse {
   deletionRequestTime?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse> =
+export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletionRequestTime: Schema.optional(Schema.String),
   }).annotate({
@@ -2833,7 +2833,7 @@ export interface GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse> =
+export const GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingDataAnnotations: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaReportingDataAnnotation),
@@ -2851,7 +2851,7 @@ export interface GoogleAnalyticsAdminV1alphaListDataStreamsResponse {
   dataStreams?: ReadonlyArray<GoogleAnalyticsAdminV1alphaDataStream>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListDataStreamsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListDataStreamsResponse> =
+export const GoogleAnalyticsAdminV1alphaListDataStreamsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListDataStreamsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dataStreams: Schema.optional(
@@ -2863,7 +2863,7 @@ export const GoogleAnalyticsAdminV1alphaListDataStreamsResponse: Schema.Schema<G
 
 export interface GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest {}
 
-export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest> =
+export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest",
@@ -2876,7 +2876,7 @@ export interface GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse {
   rollupPropertySourceLinks?: ReadonlyArray<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>;
 }
 
-export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse> =
+export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollupProperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
     rollupPropertySourceLinks: Schema.optional(
@@ -2888,7 +2888,7 @@ export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse: Schema.Sch
 
 export interface GoogleAnalyticsAdminV1alphaArchiveAudienceRequest {}
 
-export const GoogleAnalyticsAdminV1alphaArchiveAudienceRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveAudienceRequest> =
+export const GoogleAnalyticsAdminV1alphaArchiveAudienceRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaArchiveAudienceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaArchiveAudienceRequest",
   });
@@ -2906,7 +2906,7 @@ export interface GoogleAnalyticsAdminV1alphaEventEditRule {
   eventConditions?: ReadonlyArray<GoogleAnalyticsAdminV1alphaMatchingCondition>;
 }
 
-export const GoogleAnalyticsAdminV1alphaEventEditRule: Schema.Schema<GoogleAnalyticsAdminV1alphaEventEditRule> =
+export const GoogleAnalyticsAdminV1alphaEventEditRule: Schema.Codec<GoogleAnalyticsAdminV1alphaEventEditRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2926,7 +2926,7 @@ export interface GoogleAnalyticsAdminV1alphaListEventEditRulesResponse {
   eventEditRules?: ReadonlyArray<GoogleAnalyticsAdminV1alphaEventEditRule>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListEventEditRulesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListEventEditRulesResponse> =
+export const GoogleAnalyticsAdminV1alphaListEventEditRulesResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListEventEditRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     eventEditRules: Schema.optional(
@@ -2943,7 +2943,7 @@ export interface GoogleAnalyticsAdminV1alphaGlobalSiteTag {
   snippet?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaGlobalSiteTag: Schema.Schema<GoogleAnalyticsAdminV1alphaGlobalSiteTag> =
+export const GoogleAnalyticsAdminV1alphaGlobalSiteTag: Schema.Codec<GoogleAnalyticsAdminV1alphaGlobalSiteTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     snippet: Schema.optional(Schema.String),
@@ -2956,7 +2956,7 @@ export interface GoogleAnalyticsAdminV1alphaListPropertiesResponse {
   properties?: ReadonlyArray<GoogleAnalyticsAdminV1alphaProperty>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListPropertiesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListPropertiesResponse> =
+export const GoogleAnalyticsAdminV1alphaListPropertiesResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListPropertiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -2968,7 +2968,7 @@ export const GoogleAnalyticsAdminV1alphaListPropertiesResponse: Schema.Schema<Go
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -2978,7 +2978,7 @@ export interface GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest {
   eventEditRules?: ReadonlyArray<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest> =
+export const GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventEditRules: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -2992,7 +2992,7 @@ export interface GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListConversionEventsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListConversionEventsResponse> =
+export const GoogleAnalyticsAdminV1alphaListConversionEventsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListConversionEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversionEvents: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaConversionEvent),
@@ -3009,7 +3009,7 @@ export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
   changeHistoryEvents?: ReadonlyArray<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>;
 }
 
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse> =
+export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     changeHistoryEvents: Schema.optional(
@@ -3024,7 +3024,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessFilterExpressionList {
   expressions?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessFilterExpression>;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessFilterExpressionList> =
+export const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessFilterExpressionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expressions: Schema.optional(
@@ -3033,7 +3033,7 @@ export const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList: Schema.Schem
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAccessFilterExpressionList",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessFilterExpressionList>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaAccessFilterExpressionList>;
 
 export interface GoogleAnalyticsAdminV1alphaAccessFilterExpression {
   /** Each of the FilterExpressions in the and_group has an AND relationship. */
@@ -3046,7 +3046,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessFilterExpression {
   notExpression?: GoogleAnalyticsAdminV1alphaAccessFilterExpression;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessFilterExpression: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessFilterExpression> =
+export const GoogleAnalyticsAdminV1alphaAccessFilterExpression: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessFilterExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       andGroup: Schema.optional(
@@ -3062,14 +3062,14 @@ export const GoogleAnalyticsAdminV1alphaAccessFilterExpression: Schema.Schema<Go
     }),
   ).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAccessFilterExpression",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessFilterExpression>;
+  }) as any as Schema.Codec<GoogleAnalyticsAdminV1alphaAccessFilterExpression>;
 
 export interface GoogleAnalyticsAdminV1alphaAccessDimension {
   /** The API name of the dimension. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of dimensions supported in this API. Dimensions are referenced by name in `dimensionFilter` and `orderBys`. */
   dimensionName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessDimension: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimension> =
+export const GoogleAnalyticsAdminV1alphaAccessDimension: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessDimension" });
@@ -3081,7 +3081,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessDateRange {
   endDate?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessDateRange: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDateRange> =
+export const GoogleAnalyticsAdminV1alphaAccessDateRange: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessDateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
@@ -3099,7 +3099,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy> =
+export const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
     orderType: Schema.optional(Schema.String),
@@ -3112,7 +3112,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy {
   metricName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy> =
+export const GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
   }).annotate({
@@ -3128,7 +3128,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessOrderBy {
   metric?: GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessOrderBy: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderBy> =
+export const GoogleAnalyticsAdminV1alphaAccessOrderBy: Schema.Codec<GoogleAnalyticsAdminV1alphaAccessOrderBy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(
       GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy,
@@ -3166,7 +3166,7 @@ export interface GoogleAnalyticsAdminV1alphaRunAccessReportRequest {
   includeAllUsers?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaRunAccessReportRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaRunAccessReportRequest> =
+export const GoogleAnalyticsAdminV1alphaRunAccessReportRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaRunAccessReportRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(Schema.String),
     expandGroups: Schema.optional(Schema.Boolean),
@@ -3203,7 +3203,7 @@ export interface GoogleAnalyticsAdminV1alphaListChannelGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListChannelGroupsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListChannelGroupsResponse> =
+export const GoogleAnalyticsAdminV1alphaListChannelGroupsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListChannelGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelGroups: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaChannelGroup),
@@ -3218,7 +3218,7 @@ export interface GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
   accountTicketId?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse> =
+export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountTicketId: Schema.optional(Schema.String),
   }).annotate({
@@ -3232,7 +3232,7 @@ export interface GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse> =
+export const GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventCreateRules: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaEventCreateRule),
@@ -3249,7 +3249,7 @@ export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkPro
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse> =
+export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayVideo360AdvertiserLinkProposals: Schema.optional(
       Schema.Array(
@@ -3267,7 +3267,7 @@ export interface GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
   acknowledgement?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest> =
+export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acknowledgement: Schema.optional(Schema.String),
   }).annotate({
@@ -3282,7 +3282,7 @@ export interface GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse {
   adsenseLinks?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAdSenseLink>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse> =
+export const GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     adsenseLinks: Schema.optional(
@@ -3299,7 +3299,7 @@ export interface GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse {
   subpropertySyncConfigs?: ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse> =
+export const GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     subpropertySyncConfigs: Schema.optional(
@@ -3316,7 +3316,7 @@ export interface GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest {
   rollupProperty?: GoogleAnalyticsAdminV1alphaProperty;
 }
 
-export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest> =
+export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceProperties: Schema.optional(Schema.Array(Schema.String)),
     rollupProperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
@@ -3329,7 +3329,7 @@ export interface GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse {
   accessBindings?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessBinding>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse> =
+export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessBindings: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
@@ -3343,7 +3343,7 @@ export interface GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse {
   accessBindings?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessBinding>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse> =
+export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessBindings: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
@@ -3359,7 +3359,7 @@ export interface GoogleAnalyticsAdminV1alphaListKeyEventsResponse {
   keyEvents?: ReadonlyArray<GoogleAnalyticsAdminV1alphaKeyEvent>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListKeyEventsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListKeyEventsResponse> =
+export const GoogleAnalyticsAdminV1alphaListKeyEventsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListKeyEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     keyEvents: Schema.optional(
@@ -3371,7 +3371,7 @@ export const GoogleAnalyticsAdminV1alphaListKeyEventsResponse: Schema.Schema<Goo
 
 export interface GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest {}
 
-export const GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest> =
+export const GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest",
   });
@@ -3383,7 +3383,7 @@ export interface GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse 
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse> =
+export const GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subpropertyEventFilters: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaSubpropertyEventFilter),
@@ -3407,7 +3407,7 @@ export interface GoogleAnalyticsAdminV1alphaRunAccessReportResponse {
   metricHeaders?: ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
 }
 
-export const GoogleAnalyticsAdminV1alphaRunAccessReportResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaRunAccessReportResponse> =
+export const GoogleAnalyticsAdminV1alphaRunAccessReportResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaRunAccessReportResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionHeaders: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaAccessDimensionHeader),
@@ -3424,7 +3424,7 @@ export const GoogleAnalyticsAdminV1alphaRunAccessReportResponse: Schema.Schema<G
 
 export interface GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest {}
 
-export const GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest> =
+export const GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest",
@@ -3441,7 +3441,7 @@ export interface GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest {
   appInstanceId?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest> =
+export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userProvidedData: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -3458,7 +3458,7 @@ export interface GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse {
   bigqueryLinks?: ReadonlyArray<GoogleAnalyticsAdminV1alphaBigQueryLink>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse> =
+export const GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     bigqueryLinks: Schema.optional(
@@ -3475,7 +3475,7 @@ export interface GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsRespon
   measurementProtocolSecrets?: ReadonlyArray<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> =
+export const GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     measurementProtocolSecrets: Schema.optional(
@@ -3493,7 +3493,7 @@ export interface GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse> =
+export const GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customDimensions: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaCustomDimension),
@@ -3510,7 +3510,7 @@ export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksRe
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse> =
+export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayVideo360AdvertiserLinks: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink),
@@ -3528,7 +3528,7 @@ export interface GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse {
   expandedDataSets?: ReadonlyArray<GoogleAnalyticsAdminV1alphaExpandedDataSet>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse> =
+export const GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     expandedDataSets: Schema.optional(
@@ -3545,7 +3545,7 @@ export interface GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
   redirectUri?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest> =
+export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.optional(GoogleAnalyticsAdminV1alphaAccount),
     redirectUri: Schema.optional(Schema.String),
@@ -3566,7 +3566,7 @@ export interface GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest> =
+export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subpropertyEventFilter: Schema.optional(
       GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
@@ -3579,7 +3579,7 @@ export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest: Schema.Sche
 
 export interface GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse {}
 
-export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse> =
+export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse",
@@ -3590,7 +3590,7 @@ export interface GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest {
   requests?: ReadonlyArray<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest> =
+export const GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest: Schema.Codec<GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest),
@@ -3606,7 +3606,7 @@ export interface GoogleAnalyticsAdminV1alphaListAudiencesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAudiencesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAudiencesResponse> =
+export const GoogleAnalyticsAdminV1alphaListAudiencesResponse: Schema.Codec<GoogleAnalyticsAdminV1alphaListAudiencesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audiences: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1alphaAudience),
@@ -3680,7 +3680,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetAccountsRequest>;
+) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = GoogleAnalyticsAdminV1alphaAccount;
 export const GetAccountsResponse =
@@ -3711,7 +3711,7 @@ export const GetDataSharingSettingsAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDataSharingSettingsAccountsRequest>;
+  ) as unknown as Schema.Codec<GetDataSharingSettingsAccountsRequest>;
 
 export type GetDataSharingSettingsAccountsResponse =
   GoogleAnalyticsAdminV1alphaDataSharingSettings;
@@ -3755,7 +3755,7 @@ export const SearchChangeHistoryEventsAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchChangeHistoryEventsAccountsRequest>;
+  ) as unknown as Schema.Codec<SearchChangeHistoryEventsAccountsRequest>;
 
 export type SearchChangeHistoryEventsAccountsResponse =
   GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse;
@@ -3801,7 +3801,7 @@ export const RunAccessReportAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunAccessReportAccountsRequest>;
+  ) as unknown as Schema.Codec<RunAccessReportAccountsRequest>;
 
 export type RunAccessReportAccountsResponse =
   GoogleAnalyticsAdminV1alphaRunAccessReportResponse;
@@ -3837,7 +3837,7 @@ export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteAccountsRequest>;
+) as unknown as Schema.Codec<DeleteAccountsRequest>;
 
 export type DeleteAccountsResponse = GoogleProtobufEmpty;
 export const DeleteAccountsResponse =
@@ -3879,7 +3879,7 @@ export const ProvisionAccountTicketAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionAccountTicketAccountsRequest>;
+  ) as unknown as Schema.Codec<ProvisionAccountTicketAccountsRequest>;
 
 export type ProvisionAccountTicketAccountsResponse =
   GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse;
@@ -3921,7 +3921,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchAccountsRequest>;
+) as unknown as Schema.Codec<PatchAccountsRequest>;
 
 export type PatchAccountsResponse = GoogleAnalyticsAdminV1alphaAccount;
 export const PatchAccountsResponse =
@@ -3962,7 +3962,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha/accounts" }),
   svc,
-) as unknown as Schema.Schema<ListAccountsRequest>;
+) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse =
   GoogleAnalyticsAdminV1alphaListAccountsResponse;
@@ -4007,7 +4007,7 @@ export const BatchDeleteAccountsAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteAccountsAccessBindingsRequest>;
 
 export type BatchDeleteAccountsAccessBindingsResponse = GoogleProtobufEmpty;
 export const BatchDeleteAccountsAccessBindingsResponse =
@@ -4043,7 +4043,7 @@ export const DeleteAccountsAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsAccessBindingsRequest>;
 
 export type DeleteAccountsAccessBindingsResponse = GoogleProtobufEmpty;
 export const DeleteAccountsAccessBindingsResponse =
@@ -4088,7 +4088,7 @@ export const BatchCreateAccountsAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<BatchCreateAccountsAccessBindingsRequest>;
 
 export type BatchCreateAccountsAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse;
@@ -4133,7 +4133,7 @@ export const BatchGetAccountsAccessBindingsRequest =
       path: "v1alpha/{+parent}/accessBindings:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<BatchGetAccountsAccessBindingsRequest>;
 
 export type BatchGetAccountsAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse;
@@ -4174,7 +4174,7 @@ export const ListAccountsAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/accessBindings" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsAccessBindingsRequest>;
 
 export type ListAccountsAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaListAccessBindingsResponse;
@@ -4218,7 +4218,7 @@ export const PatchAccountsAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsAccessBindingsRequest>;
 
 export type PatchAccountsAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaAccessBinding;
@@ -4255,7 +4255,7 @@ export const GetAccountsAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsAccessBindingsRequest>;
 
 export type GetAccountsAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaAccessBinding;
@@ -4299,7 +4299,7 @@ export const BatchUpdateAccountsAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateAccountsAccessBindingsRequest>;
 
 export type BatchUpdateAccountsAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse;
@@ -4345,7 +4345,7 @@ export const CreateAccountsAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsAccessBindingsRequest>;
 
 export type CreateAccountsAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaAccessBinding;
@@ -4385,7 +4385,7 @@ export const ListAccountSummariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/accountSummaries" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountSummariesRequest>;
+  ) as unknown as Schema.Codec<ListAccountSummariesRequest>;
 
 export type ListAccountSummariesResponse =
   GoogleAnalyticsAdminV1alphaListAccountSummariesResponse;
@@ -4421,7 +4421,7 @@ export const DeletePropertiesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesRequest>;
 
 export type DeletePropertiesResponse = GoogleAnalyticsAdminV1alphaProperty;
 export const DeletePropertiesResponse =
@@ -4457,7 +4457,7 @@ export const GetDataRetentionSettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDataRetentionSettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<GetDataRetentionSettingsPropertiesRequest>;
 
 export type GetDataRetentionSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaDataRetentionSettings;
@@ -4501,7 +4501,7 @@ export const RunAccessReportPropertiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunAccessReportPropertiesRequest>;
+  ) as unknown as Schema.Codec<RunAccessReportPropertiesRequest>;
 
 export type RunAccessReportPropertiesResponse =
   GoogleAnalyticsAdminV1alphaRunAccessReportResponse;
@@ -4538,7 +4538,7 @@ export const GetReportingIdentitySettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetReportingIdentitySettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<GetReportingIdentitySettingsPropertiesRequest>;
 
 export type GetReportingIdentitySettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaReportingIdentitySettings;
@@ -4573,7 +4573,7 @@ export const GetGoogleSignalsSettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetGoogleSignalsSettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<GetGoogleSignalsSettingsPropertiesRequest>;
 
 export type GetGoogleSignalsSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaGoogleSignalsSettings;
@@ -4614,7 +4614,7 @@ export const CreateRollupPropertyPropertiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateRollupPropertyPropertiesRequest>;
+  ) as unknown as Schema.Codec<CreateRollupPropertyPropertiesRequest>;
 
 export type CreateRollupPropertyPropertiesResponse =
   GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse;
@@ -4660,7 +4660,7 @@ export const AcknowledgeUserDataCollectionPropertiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcknowledgeUserDataCollectionPropertiesRequest>;
+  ) as unknown as Schema.Codec<AcknowledgeUserDataCollectionPropertiesRequest>;
 
 export type AcknowledgeUserDataCollectionPropertiesResponse =
   GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse;
@@ -4696,7 +4696,7 @@ export const GetPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetPropertiesRequest>;
+) as unknown as Schema.Codec<GetPropertiesRequest>;
 
 export type GetPropertiesResponse = GoogleAnalyticsAdminV1alphaProperty;
 export const GetPropertiesResponse =
@@ -4727,7 +4727,7 @@ export const GetUserProvidedDataSettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetUserProvidedDataSettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<GetUserProvidedDataSettingsPropertiesRequest>;
 
 export type GetUserProvidedDataSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaUserProvidedDataSettings;
@@ -4764,7 +4764,7 @@ export const CreatePropertiesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/properties", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesRequest>;
 
 export type CreatePropertiesResponse = GoogleAnalyticsAdminV1alphaProperty;
 export const CreatePropertiesResponse =
@@ -4808,7 +4808,7 @@ export const UpdateReportingIdentitySettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateReportingIdentitySettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<UpdateReportingIdentitySettingsPropertiesRequest>;
 
 export type UpdateReportingIdentitySettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaReportingIdentitySettings;
@@ -4853,7 +4853,7 @@ export const UpdateAttributionSettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAttributionSettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<UpdateAttributionSettingsPropertiesRequest>;
 
 export type UpdateAttributionSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaAttributionSettings;
@@ -4890,7 +4890,7 @@ export const GetAttributionSettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAttributionSettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<GetAttributionSettingsPropertiesRequest>;
 
 export type GetAttributionSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaAttributionSettings;
@@ -4934,7 +4934,7 @@ export const SubmitUserDeletionPropertiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SubmitUserDeletionPropertiesRequest>;
+  ) as unknown as Schema.Codec<SubmitUserDeletionPropertiesRequest>;
 
 export type SubmitUserDeletionPropertiesResponse =
   GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse;
@@ -4979,7 +4979,7 @@ export const ListPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha/properties" }),
   svc,
-) as unknown as Schema.Schema<ListPropertiesRequest>;
+) as unknown as Schema.Codec<ListPropertiesRequest>;
 
 export type ListPropertiesResponse =
   GoogleAnalyticsAdminV1alphaListPropertiesResponse;
@@ -5024,7 +5024,7 @@ export const PatchPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchPropertiesRequest>;
+) as unknown as Schema.Codec<PatchPropertiesRequest>;
 
 export type PatchPropertiesResponse = GoogleAnalyticsAdminV1alphaProperty;
 export const PatchPropertiesResponse =
@@ -5068,7 +5068,7 @@ export const UpdateGoogleSignalsSettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGoogleSignalsSettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<UpdateGoogleSignalsSettingsPropertiesRequest>;
 
 export type UpdateGoogleSignalsSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaGoogleSignalsSettings;
@@ -5111,7 +5111,7 @@ export const ProvisionSubpropertyPropertiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionSubpropertyPropertiesRequest>;
+  ) as unknown as Schema.Codec<ProvisionSubpropertyPropertiesRequest>;
 
 export type ProvisionSubpropertyPropertiesResponse =
   GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse;
@@ -5156,7 +5156,7 @@ export const UpdateDataRetentionSettingsPropertiesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDataRetentionSettingsPropertiesRequest>;
+  ) as unknown as Schema.Codec<UpdateDataRetentionSettingsPropertiesRequest>;
 
 export type UpdateDataRetentionSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1alphaDataRetentionSettings;
@@ -5201,7 +5201,7 @@ export const PatchPropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesDataStreamsRequest>;
 
 export type PatchPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaDataStream;
@@ -5244,7 +5244,7 @@ export const ListPropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/dataStreams" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesDataStreamsRequest>;
 
 export type ListPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaListDataStreamsResponse;
@@ -5292,7 +5292,7 @@ export const CreatePropertiesDataStreamsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesDataStreamsRequest>;
 
 export type CreatePropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaDataStream;
@@ -5329,7 +5329,7 @@ export const GetGlobalSiteTagPropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetGlobalSiteTagPropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<GetGlobalSiteTagPropertiesDataStreamsRequest>;
 
 export type GetGlobalSiteTagPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaGlobalSiteTag;
@@ -5364,7 +5364,7 @@ export const GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
 
 export type GetEnhancedMeasurementSettingsPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings;
@@ -5399,7 +5399,7 @@ export const GetDataRedactionSettingsPropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDataRedactionSettingsPropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<GetDataRedactionSettingsPropertiesDataStreamsRequest>;
 
 export type GetDataRedactionSettingsPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaDataRedactionSettings;
@@ -5434,7 +5434,7 @@ export const GetPropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesDataStreamsRequest>;
 
 export type GetPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaDataStream;
@@ -5477,7 +5477,7 @@ export const UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
 
 export type UpdateEnhancedMeasurementSettingsPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings;
@@ -5514,7 +5514,7 @@ export const DeletePropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesDataStreamsRequest>;
 
 export type DeletePropertiesDataStreamsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesDataStreamsResponse =
@@ -5558,7 +5558,7 @@ export const UpdateDataRedactionSettingsPropertiesDataStreamsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDataRedactionSettingsPropertiesDataStreamsRequest>;
+  ) as unknown as Schema.Codec<UpdateDataRedactionSettingsPropertiesDataStreamsRequest>;
 
 export type UpdateDataRedactionSettingsPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1alphaDataRedactionSettings;
@@ -5595,7 +5595,7 @@ export const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type DeletePropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleProtobufEmpty;
@@ -5641,7 +5641,7 @@ export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest =
       path: "v1alpha/{+parent}/measurementProtocolSecrets",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type ListPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse;
@@ -5688,7 +5688,7 @@ export const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type PatchPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret;
@@ -5725,7 +5725,7 @@ export const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type GetPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret;
@@ -5769,7 +5769,7 @@ export const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type CreatePropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret;
@@ -5806,7 +5806,7 @@ export const DeletePropertiesDataStreamsEventEditRulesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesDataStreamsEventEditRulesRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesDataStreamsEventEditRulesRequest>;
 
 export type DeletePropertiesDataStreamsEventEditRulesResponse =
   GoogleProtobufEmpty;
@@ -5849,7 +5849,7 @@ export const ListPropertiesDataStreamsEventEditRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/eventEditRules" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesDataStreamsEventEditRulesRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesDataStreamsEventEditRulesRequest>;
 
 export type ListPropertiesDataStreamsEventEditRulesResponse =
   GoogleAnalyticsAdminV1alphaListEventEditRulesResponse;
@@ -5897,7 +5897,7 @@ export const ReorderPropertiesDataStreamsEventEditRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReorderPropertiesDataStreamsEventEditRulesRequest>;
+  ) as unknown as Schema.Codec<ReorderPropertiesDataStreamsEventEditRulesRequest>;
 
 export type ReorderPropertiesDataStreamsEventEditRulesResponse =
   GoogleProtobufEmpty;
@@ -5942,7 +5942,7 @@ export const PatchPropertiesDataStreamsEventEditRulesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesDataStreamsEventEditRulesRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesDataStreamsEventEditRulesRequest>;
 
 export type PatchPropertiesDataStreamsEventEditRulesResponse =
   GoogleAnalyticsAdminV1alphaEventEditRule;
@@ -5979,7 +5979,7 @@ export const GetPropertiesDataStreamsEventEditRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesDataStreamsEventEditRulesRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesDataStreamsEventEditRulesRequest>;
 
 export type GetPropertiesDataStreamsEventEditRulesResponse =
   GoogleAnalyticsAdminV1alphaEventEditRule;
@@ -6023,7 +6023,7 @@ export const CreatePropertiesDataStreamsEventEditRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesDataStreamsEventEditRulesRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesDataStreamsEventEditRulesRequest>;
 
 export type CreatePropertiesDataStreamsEventEditRulesResponse =
   GoogleAnalyticsAdminV1alphaEventEditRule;
@@ -6069,7 +6069,7 @@ export const CreatePropertiesDataStreamsEventCreateRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesDataStreamsEventCreateRulesRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesDataStreamsEventCreateRulesRequest>;
 
 export type CreatePropertiesDataStreamsEventCreateRulesResponse =
   GoogleAnalyticsAdminV1alphaEventCreateRule;
@@ -6106,7 +6106,7 @@ export const GetPropertiesDataStreamsEventCreateRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesDataStreamsEventCreateRulesRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesDataStreamsEventCreateRulesRequest>;
 
 export type GetPropertiesDataStreamsEventCreateRulesResponse =
   GoogleAnalyticsAdminV1alphaEventCreateRule;
@@ -6149,7 +6149,7 @@ export const PatchPropertiesDataStreamsEventCreateRulesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesDataStreamsEventCreateRulesRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesDataStreamsEventCreateRulesRequest>;
 
 export type PatchPropertiesDataStreamsEventCreateRulesResponse =
   GoogleAnalyticsAdminV1alphaEventCreateRule;
@@ -6192,7 +6192,7 @@ export const ListPropertiesDataStreamsEventCreateRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/eventCreateRules" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesDataStreamsEventCreateRulesRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesDataStreamsEventCreateRulesRequest>;
 
 export type ListPropertiesDataStreamsEventCreateRulesResponse =
   GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse;
@@ -6231,7 +6231,7 @@ export const DeletePropertiesDataStreamsEventCreateRulesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesDataStreamsEventCreateRulesRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesDataStreamsEventCreateRulesRequest>;
 
 export type DeletePropertiesDataStreamsEventCreateRulesResponse =
   GoogleProtobufEmpty;
@@ -6276,7 +6276,7 @@ export const PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export type PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaResponse =
   GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema;
@@ -6322,7 +6322,7 @@ export const ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
       path: "v1alpha/{+parent}/sKAdNetworkConversionValueSchema",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export type ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaResponse =
   GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse;
@@ -6361,7 +6361,7 @@ export const DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest 
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export type DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaResponse =
   GoogleProtobufEmpty;
@@ -6407,7 +6407,7 @@ export const CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export type CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaResponse =
   GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema;
@@ -6444,7 +6444,7 @@ export const GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export type GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaResponse =
   GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema;
@@ -6485,7 +6485,7 @@ export const ListPropertiesAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/accessBindings" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesAccessBindingsRequest>;
 
 export type ListPropertiesAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaListAccessBindingsResponse;
@@ -6529,7 +6529,7 @@ export const PatchPropertiesAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesAccessBindingsRequest>;
 
 export type PatchPropertiesAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaAccessBinding;
@@ -6575,7 +6575,7 @@ export const CreatePropertiesAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesAccessBindingsRequest>;
 
 export type CreatePropertiesAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaAccessBinding;
@@ -6612,7 +6612,7 @@ export const GetPropertiesAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesAccessBindingsRequest>;
 
 export type GetPropertiesAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaAccessBinding;
@@ -6656,7 +6656,7 @@ export const BatchUpdatePropertiesAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdatePropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdatePropertiesAccessBindingsRequest>;
 
 export type BatchUpdatePropertiesAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse;
@@ -6702,7 +6702,7 @@ export const BatchDeletePropertiesAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeletePropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<BatchDeletePropertiesAccessBindingsRequest>;
 
 export type BatchDeletePropertiesAccessBindingsResponse = GoogleProtobufEmpty;
 export const BatchDeletePropertiesAccessBindingsResponse =
@@ -6738,7 +6738,7 @@ export const DeletePropertiesAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesAccessBindingsRequest>;
 
 export type DeletePropertiesAccessBindingsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesAccessBindingsResponse =
@@ -6782,7 +6782,7 @@ export const BatchGetPropertiesAccessBindingsRequest =
       path: "v1alpha/{+parent}/accessBindings:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetPropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<BatchGetPropertiesAccessBindingsRequest>;
 
 export type BatchGetPropertiesAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse;
@@ -6826,7 +6826,7 @@ export const BatchCreatePropertiesAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreatePropertiesAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<BatchCreatePropertiesAccessBindingsRequest>;
 
 export type BatchCreatePropertiesAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse;
@@ -6869,7 +6869,7 @@ export const ListPropertiesAudiencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/audiences" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesAudiencesRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesAudiencesRequest>;
 
 export type ListPropertiesAudiencesResponse =
   GoogleAnalyticsAdminV1alphaListAudiencesResponse;
@@ -6910,7 +6910,7 @@ export const ArchivePropertiesAudiencesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:archive", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ArchivePropertiesAudiencesRequest>;
+  ) as unknown as Schema.Codec<ArchivePropertiesAudiencesRequest>;
 
 export type ArchivePropertiesAudiencesResponse = GoogleProtobufEmpty;
 export const ArchivePropertiesAudiencesResponse =
@@ -6954,7 +6954,7 @@ export const PatchPropertiesAudiencesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesAudiencesRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesAudiencesRequest>;
 
 export type PatchPropertiesAudiencesResponse =
   GoogleAnalyticsAdminV1alphaAudience;
@@ -7000,7 +7000,7 @@ export const CreatePropertiesAudiencesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesAudiencesRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesAudiencesRequest>;
 
 export type CreatePropertiesAudiencesResponse =
   GoogleAnalyticsAdminV1alphaAudience;
@@ -7037,7 +7037,7 @@ export const GetPropertiesAudiencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesAudiencesRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesAudiencesRequest>;
 
 export type GetPropertiesAudiencesResponse =
   GoogleAnalyticsAdminV1alphaAudience;
@@ -7077,7 +7077,7 @@ export const PatchPropertiesChannelGroupsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesChannelGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesChannelGroupsRequest>;
 
 export type PatchPropertiesChannelGroupsResponse =
   GoogleAnalyticsAdminV1alphaChannelGroup;
@@ -7120,7 +7120,7 @@ export const ListPropertiesChannelGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/channelGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesChannelGroupsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesChannelGroupsRequest>;
 
 export type ListPropertiesChannelGroupsResponse =
   GoogleAnalyticsAdminV1alphaListChannelGroupsResponse;
@@ -7159,7 +7159,7 @@ export const DeletePropertiesChannelGroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesChannelGroupsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesChannelGroupsRequest>;
 
 export type DeletePropertiesChannelGroupsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesChannelGroupsResponse =
@@ -7204,7 +7204,7 @@ export const CreatePropertiesChannelGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesChannelGroupsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesChannelGroupsRequest>;
 
 export type CreatePropertiesChannelGroupsResponse =
   GoogleAnalyticsAdminV1alphaChannelGroup;
@@ -7241,7 +7241,7 @@ export const GetPropertiesChannelGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesChannelGroupsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesChannelGroupsRequest>;
 
 export type GetPropertiesChannelGroupsResponse =
   GoogleAnalyticsAdminV1alphaChannelGroup;
@@ -7285,7 +7285,7 @@ export const ListPropertiesRollupPropertySourceLinksRequest =
       path: "v1alpha/{+parent}/rollupPropertySourceLinks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesRollupPropertySourceLinksRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesRollupPropertySourceLinksRequest>;
 
 export type ListPropertiesRollupPropertySourceLinksResponse =
   GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse;
@@ -7333,7 +7333,7 @@ export const CreatePropertiesRollupPropertySourceLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesRollupPropertySourceLinksRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesRollupPropertySourceLinksRequest>;
 
 export type CreatePropertiesRollupPropertySourceLinksResponse =
   GoogleAnalyticsAdminV1alphaRollupPropertySourceLink;
@@ -7370,7 +7370,7 @@ export const GetPropertiesRollupPropertySourceLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesRollupPropertySourceLinksRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesRollupPropertySourceLinksRequest>;
 
 export type GetPropertiesRollupPropertySourceLinksResponse =
   GoogleAnalyticsAdminV1alphaRollupPropertySourceLink;
@@ -7405,7 +7405,7 @@ export const DeletePropertiesRollupPropertySourceLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesRollupPropertySourceLinksRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesRollupPropertySourceLinksRequest>;
 
 export type DeletePropertiesRollupPropertySourceLinksResponse =
   GoogleProtobufEmpty;
@@ -7442,7 +7442,7 @@ export const DeletePropertiesFirebaseLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesFirebaseLinksRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesFirebaseLinksRequest>;
 
 export type DeletePropertiesFirebaseLinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesFirebaseLinksResponse =
@@ -7484,7 +7484,7 @@ export const ListPropertiesFirebaseLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/firebaseLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesFirebaseLinksRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesFirebaseLinksRequest>;
 
 export type ListPropertiesFirebaseLinksResponse =
   GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse;
@@ -7532,7 +7532,7 @@ export const CreatePropertiesFirebaseLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesFirebaseLinksRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesFirebaseLinksRequest>;
 
 export type CreatePropertiesFirebaseLinksResponse =
   GoogleAnalyticsAdminV1alphaFirebaseLink;
@@ -7578,7 +7578,7 @@ export const CreatePropertiesSearchAds360LinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesSearchAds360LinksRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesSearchAds360LinksRequest>;
 
 export type CreatePropertiesSearchAds360LinksResponse =
   GoogleAnalyticsAdminV1alphaSearchAds360Link;
@@ -7615,7 +7615,7 @@ export const GetPropertiesSearchAds360LinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesSearchAds360LinksRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesSearchAds360LinksRequest>;
 
 export type GetPropertiesSearchAds360LinksResponse =
   GoogleAnalyticsAdminV1alphaSearchAds360Link;
@@ -7656,7 +7656,7 @@ export const ListPropertiesSearchAds360LinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/searchAds360Links" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesSearchAds360LinksRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesSearchAds360LinksRequest>;
 
 export type ListPropertiesSearchAds360LinksResponse =
   GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse;
@@ -7703,7 +7703,7 @@ export const PatchPropertiesSearchAds360LinksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesSearchAds360LinksRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesSearchAds360LinksRequest>;
 
 export type PatchPropertiesSearchAds360LinksResponse =
   GoogleAnalyticsAdminV1alphaSearchAds360Link;
@@ -7740,7 +7740,7 @@ export const DeletePropertiesSearchAds360LinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesSearchAds360LinksRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesSearchAds360LinksRequest>;
 
 export type DeletePropertiesSearchAds360LinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesSearchAds360LinksResponse =
@@ -7776,7 +7776,7 @@ export const GetPropertiesExpandedDataSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesExpandedDataSetsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesExpandedDataSetsRequest>;
 
 export type GetPropertiesExpandedDataSetsResponse =
   GoogleAnalyticsAdminV1alphaExpandedDataSet;
@@ -7820,7 +7820,7 @@ export const CreatePropertiesExpandedDataSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesExpandedDataSetsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesExpandedDataSetsRequest>;
 
 export type CreatePropertiesExpandedDataSetsResponse =
   GoogleAnalyticsAdminV1alphaExpandedDataSet;
@@ -7857,7 +7857,7 @@ export const DeletePropertiesExpandedDataSetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesExpandedDataSetsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesExpandedDataSetsRequest>;
 
 export type DeletePropertiesExpandedDataSetsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesExpandedDataSetsResponse =
@@ -7899,7 +7899,7 @@ export const ListPropertiesExpandedDataSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/expandedDataSets" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesExpandedDataSetsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesExpandedDataSetsRequest>;
 
 export type ListPropertiesExpandedDataSetsResponse =
   GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse;
@@ -7946,7 +7946,7 @@ export const PatchPropertiesExpandedDataSetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesExpandedDataSetsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesExpandedDataSetsRequest>;
 
 export type PatchPropertiesExpandedDataSetsResponse =
   GoogleAnalyticsAdminV1alphaExpandedDataSet;
@@ -7983,7 +7983,7 @@ export const GetPropertiesAdSenseLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesAdSenseLinksRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesAdSenseLinksRequest>;
 
 export type GetPropertiesAdSenseLinksResponse =
   GoogleAnalyticsAdminV1alphaAdSenseLink;
@@ -8018,7 +8018,7 @@ export const DeletePropertiesAdSenseLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesAdSenseLinksRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesAdSenseLinksRequest>;
 
 export type DeletePropertiesAdSenseLinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesAdSenseLinksResponse =
@@ -8060,7 +8060,7 @@ export const ListPropertiesAdSenseLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/adSenseLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesAdSenseLinksRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesAdSenseLinksRequest>;
 
 export type ListPropertiesAdSenseLinksResponse =
   GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse;
@@ -8108,7 +8108,7 @@ export const CreatePropertiesAdSenseLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesAdSenseLinksRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesAdSenseLinksRequest>;
 
 export type CreatePropertiesAdSenseLinksResponse =
   GoogleAnalyticsAdminV1alphaAdSenseLink;
@@ -8159,7 +8159,7 @@ export const CreatePropertiesCalculatedMetricsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesCalculatedMetricsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesCalculatedMetricsRequest>;
 
 export type CreatePropertiesCalculatedMetricsResponse =
   GoogleAnalyticsAdminV1alphaCalculatedMetric;
@@ -8196,7 +8196,7 @@ export const GetPropertiesCalculatedMetricsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesCalculatedMetricsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesCalculatedMetricsRequest>;
 
 export type GetPropertiesCalculatedMetricsResponse =
   GoogleAnalyticsAdminV1alphaCalculatedMetric;
@@ -8239,7 +8239,7 @@ export const PatchPropertiesCalculatedMetricsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesCalculatedMetricsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesCalculatedMetricsRequest>;
 
 export type PatchPropertiesCalculatedMetricsResponse =
   GoogleAnalyticsAdminV1alphaCalculatedMetric;
@@ -8282,7 +8282,7 @@ export const ListPropertiesCalculatedMetricsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/calculatedMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesCalculatedMetricsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesCalculatedMetricsRequest>;
 
 export type ListPropertiesCalculatedMetricsResponse =
   GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse;
@@ -8321,7 +8321,7 @@ export const DeletePropertiesCalculatedMetricsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesCalculatedMetricsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesCalculatedMetricsRequest>;
 
 export type DeletePropertiesCalculatedMetricsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesCalculatedMetricsResponse =
@@ -8369,7 +8369,7 @@ export const ListPropertiesReportingDataAnnotationsRequest =
       path: "v1alpha/{+parent}/reportingDataAnnotations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesReportingDataAnnotationsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesReportingDataAnnotationsRequest>;
 
 export type ListPropertiesReportingDataAnnotationsResponse =
   GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse;
@@ -8416,7 +8416,7 @@ export const PatchPropertiesReportingDataAnnotationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesReportingDataAnnotationsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesReportingDataAnnotationsRequest>;
 
 export type PatchPropertiesReportingDataAnnotationsResponse =
   GoogleAnalyticsAdminV1alphaReportingDataAnnotation;
@@ -8453,7 +8453,7 @@ export const DeletePropertiesReportingDataAnnotationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesReportingDataAnnotationsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesReportingDataAnnotationsRequest>;
 
 export type DeletePropertiesReportingDataAnnotationsResponse =
   GoogleProtobufEmpty;
@@ -8499,7 +8499,7 @@ export const CreatePropertiesReportingDataAnnotationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesReportingDataAnnotationsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesReportingDataAnnotationsRequest>;
 
 export type CreatePropertiesReportingDataAnnotationsResponse =
   GoogleAnalyticsAdminV1alphaReportingDataAnnotation;
@@ -8536,7 +8536,7 @@ export const GetPropertiesReportingDataAnnotationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesReportingDataAnnotationsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesReportingDataAnnotationsRequest>;
 
 export type GetPropertiesReportingDataAnnotationsResponse =
   GoogleAnalyticsAdminV1alphaReportingDataAnnotation;
@@ -8577,7 +8577,7 @@ export const ListPropertiesSubpropertySyncConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/subpropertySyncConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesSubpropertySyncConfigsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesSubpropertySyncConfigsRequest>;
 
 export type ListPropertiesSubpropertySyncConfigsResponse =
   GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse;
@@ -8624,7 +8624,7 @@ export const PatchPropertiesSubpropertySyncConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesSubpropertySyncConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesSubpropertySyncConfigsRequest>;
 
 export type PatchPropertiesSubpropertySyncConfigsResponse =
   GoogleAnalyticsAdminV1alphaSubpropertySyncConfig;
@@ -8661,7 +8661,7 @@ export const GetPropertiesSubpropertySyncConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesSubpropertySyncConfigsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesSubpropertySyncConfigsRequest>;
 
 export type GetPropertiesSubpropertySyncConfigsResponse =
   GoogleAnalyticsAdminV1alphaSubpropertySyncConfig;
@@ -8696,7 +8696,7 @@ export const DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type DeletePropertiesDisplayVideo360AdvertiserLinkProposalsResponse =
   GoogleProtobufEmpty;
@@ -8742,7 +8742,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
       path: "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type ListPropertiesDisplayVideo360AdvertiserLinkProposalsResponse =
   GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse;
@@ -8786,7 +8786,7 @@ export const ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  ) as unknown as Schema.Codec<ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsResponse =
   GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse;
@@ -8823,7 +8823,7 @@ export const GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type GetPropertiesDisplayVideo360AdvertiserLinkProposalsResponse =
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal;
@@ -8867,7 +8867,7 @@ export const CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type CreatePropertiesDisplayVideo360AdvertiserLinkProposalsResponse =
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal;
@@ -8909,7 +8909,7 @@ export const CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  ) as unknown as Schema.Codec<CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type CancelPropertiesDisplayVideo360AdvertiserLinkProposalsResponse =
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal;
@@ -8955,7 +8955,7 @@ export const CreatePropertiesDisplayVideo360AdvertiserLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesDisplayVideo360AdvertiserLinksRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type CreatePropertiesDisplayVideo360AdvertiserLinksResponse =
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink;
@@ -8992,7 +8992,7 @@ export const GetPropertiesDisplayVideo360AdvertiserLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesDisplayVideo360AdvertiserLinksRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type GetPropertiesDisplayVideo360AdvertiserLinksResponse =
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink;
@@ -9036,7 +9036,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinksRequest =
       path: "v1alpha/{+parent}/displayVideo360AdvertiserLinks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesDisplayVideo360AdvertiserLinksRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type ListPropertiesDisplayVideo360AdvertiserLinksResponse =
   GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse;
@@ -9083,7 +9083,7 @@ export const PatchPropertiesDisplayVideo360AdvertiserLinksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesDisplayVideo360AdvertiserLinksRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type PatchPropertiesDisplayVideo360AdvertiserLinksResponse =
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink;
@@ -9120,7 +9120,7 @@ export const DeletePropertiesDisplayVideo360AdvertiserLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesDisplayVideo360AdvertiserLinksRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type DeletePropertiesDisplayVideo360AdvertiserLinksResponse =
   GoogleProtobufEmpty;
@@ -9163,7 +9163,7 @@ export const ListPropertiesCustomMetricsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/customMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesCustomMetricsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesCustomMetricsRequest>;
 
 export type ListPropertiesCustomMetricsResponse =
   GoogleAnalyticsAdminV1alphaListCustomMetricsResponse;
@@ -9207,7 +9207,7 @@ export const ArchivePropertiesCustomMetricsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:archive", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ArchivePropertiesCustomMetricsRequest>;
+  ) as unknown as Schema.Codec<ArchivePropertiesCustomMetricsRequest>;
 
 export type ArchivePropertiesCustomMetricsResponse = GoogleProtobufEmpty;
 export const ArchivePropertiesCustomMetricsResponse =
@@ -9251,7 +9251,7 @@ export const PatchPropertiesCustomMetricsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesCustomMetricsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesCustomMetricsRequest>;
 
 export type PatchPropertiesCustomMetricsResponse =
   GoogleAnalyticsAdminV1alphaCustomMetric;
@@ -9297,7 +9297,7 @@ export const CreatePropertiesCustomMetricsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesCustomMetricsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesCustomMetricsRequest>;
 
 export type CreatePropertiesCustomMetricsResponse =
   GoogleAnalyticsAdminV1alphaCustomMetric;
@@ -9334,7 +9334,7 @@ export const GetPropertiesCustomMetricsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesCustomMetricsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesCustomMetricsRequest>;
 
 export type GetPropertiesCustomMetricsResponse =
   GoogleAnalyticsAdminV1alphaCustomMetric;
@@ -9369,7 +9369,7 @@ export const DeletePropertiesGoogleAdsLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesGoogleAdsLinksRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesGoogleAdsLinksRequest>;
 
 export type DeletePropertiesGoogleAdsLinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesGoogleAdsLinksResponse =
@@ -9414,7 +9414,7 @@ export const CreatePropertiesGoogleAdsLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesGoogleAdsLinksRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesGoogleAdsLinksRequest>;
 
 export type CreatePropertiesGoogleAdsLinksResponse =
   GoogleAnalyticsAdminV1alphaGoogleAdsLink;
@@ -9459,7 +9459,7 @@ export const PatchPropertiesGoogleAdsLinksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesGoogleAdsLinksRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesGoogleAdsLinksRequest>;
 
 export type PatchPropertiesGoogleAdsLinksResponse =
   GoogleAnalyticsAdminV1alphaGoogleAdsLink;
@@ -9502,7 +9502,7 @@ export const ListPropertiesGoogleAdsLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/googleAdsLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesGoogleAdsLinksRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesGoogleAdsLinksRequest>;
 
 export type ListPropertiesGoogleAdsLinksResponse =
   GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse;
@@ -9541,7 +9541,7 @@ export const DeletePropertiesKeyEventsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesKeyEventsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesKeyEventsRequest>;
 
 export type DeletePropertiesKeyEventsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesKeyEventsResponse =
@@ -9583,7 +9583,7 @@ export const ListPropertiesKeyEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/keyEvents" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesKeyEventsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesKeyEventsRequest>;
 
 export type ListPropertiesKeyEventsResponse =
   GoogleAnalyticsAdminV1alphaListKeyEventsResponse;
@@ -9627,7 +9627,7 @@ export const PatchPropertiesKeyEventsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesKeyEventsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesKeyEventsRequest>;
 
 export type PatchPropertiesKeyEventsResponse =
   GoogleAnalyticsAdminV1alphaKeyEvent;
@@ -9664,7 +9664,7 @@ export const GetPropertiesKeyEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesKeyEventsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesKeyEventsRequest>;
 
 export type GetPropertiesKeyEventsResponse =
   GoogleAnalyticsAdminV1alphaKeyEvent;
@@ -9705,7 +9705,7 @@ export const CreatePropertiesKeyEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesKeyEventsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesKeyEventsRequest>;
 
 export type CreatePropertiesKeyEventsResponse =
   GoogleAnalyticsAdminV1alphaKeyEvent;
@@ -9751,7 +9751,7 @@ export const CreatePropertiesCustomDimensionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesCustomDimensionsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesCustomDimensionsRequest>;
 
 export type CreatePropertiesCustomDimensionsResponse =
   GoogleAnalyticsAdminV1alphaCustomDimension;
@@ -9788,7 +9788,7 @@ export const GetPropertiesCustomDimensionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesCustomDimensionsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesCustomDimensionsRequest>;
 
 export type GetPropertiesCustomDimensionsResponse =
   GoogleAnalyticsAdminV1alphaCustomDimension;
@@ -9831,7 +9831,7 @@ export const PatchPropertiesCustomDimensionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesCustomDimensionsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesCustomDimensionsRequest>;
 
 export type PatchPropertiesCustomDimensionsResponse =
   GoogleAnalyticsAdminV1alphaCustomDimension;
@@ -9874,7 +9874,7 @@ export const ListPropertiesCustomDimensionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/customDimensions" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesCustomDimensionsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesCustomDimensionsRequest>;
 
 export type ListPropertiesCustomDimensionsResponse =
   GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse;
@@ -9918,7 +9918,7 @@ export const ArchivePropertiesCustomDimensionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:archive", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ArchivePropertiesCustomDimensionsRequest>;
+  ) as unknown as Schema.Codec<ArchivePropertiesCustomDimensionsRequest>;
 
 export type ArchivePropertiesCustomDimensionsResponse = GoogleProtobufEmpty;
 export const ArchivePropertiesCustomDimensionsResponse =
@@ -9963,7 +9963,7 @@ export const CreatePropertiesConversionEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesConversionEventsRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesConversionEventsRequest>;
 
 export type CreatePropertiesConversionEventsResponse =
   GoogleAnalyticsAdminV1alphaConversionEvent;
@@ -10000,7 +10000,7 @@ export const GetPropertiesConversionEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesConversionEventsRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesConversionEventsRequest>;
 
 export type GetPropertiesConversionEventsResponse =
   GoogleAnalyticsAdminV1alphaConversionEvent;
@@ -10043,7 +10043,7 @@ export const PatchPropertiesConversionEventsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesConversionEventsRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesConversionEventsRequest>;
 
 export type PatchPropertiesConversionEventsResponse =
   GoogleAnalyticsAdminV1alphaConversionEvent;
@@ -10086,7 +10086,7 @@ export const ListPropertiesConversionEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/conversionEvents" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesConversionEventsRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesConversionEventsRequest>;
 
 export type ListPropertiesConversionEventsResponse =
   GoogleAnalyticsAdminV1alphaListConversionEventsResponse;
@@ -10125,7 +10125,7 @@ export const DeletePropertiesConversionEventsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesConversionEventsRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesConversionEventsRequest>;
 
 export type DeletePropertiesConversionEventsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesConversionEventsResponse =
@@ -10169,7 +10169,7 @@ export const PatchPropertiesSubpropertyEventFiltersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesSubpropertyEventFiltersRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesSubpropertyEventFiltersRequest>;
 
 export type PatchPropertiesSubpropertyEventFiltersResponse =
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
@@ -10215,7 +10215,7 @@ export const ListPropertiesSubpropertyEventFiltersRequest =
       path: "v1alpha/{+parent}/subpropertyEventFilters",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesSubpropertyEventFiltersRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesSubpropertyEventFiltersRequest>;
 
 export type ListPropertiesSubpropertyEventFiltersResponse =
   GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse;
@@ -10254,7 +10254,7 @@ export const DeletePropertiesSubpropertyEventFiltersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesSubpropertyEventFiltersRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesSubpropertyEventFiltersRequest>;
 
 export type DeletePropertiesSubpropertyEventFiltersResponse =
   GoogleProtobufEmpty;
@@ -10300,7 +10300,7 @@ export const CreatePropertiesSubpropertyEventFiltersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesSubpropertyEventFiltersRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesSubpropertyEventFiltersRequest>;
 
 export type CreatePropertiesSubpropertyEventFiltersResponse =
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
@@ -10337,7 +10337,7 @@ export const GetPropertiesSubpropertyEventFiltersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesSubpropertyEventFiltersRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesSubpropertyEventFiltersRequest>;
 
 export type GetPropertiesSubpropertyEventFiltersResponse =
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
@@ -10381,7 +10381,7 @@ export const CreatePropertiesBigQueryLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePropertiesBigQueryLinksRequest>;
+  ) as unknown as Schema.Codec<CreatePropertiesBigQueryLinksRequest>;
 
 export type CreatePropertiesBigQueryLinksResponse =
   GoogleAnalyticsAdminV1alphaBigQueryLink;
@@ -10418,7 +10418,7 @@ export const GetPropertiesBigQueryLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPropertiesBigQueryLinksRequest>;
+  ) as unknown as Schema.Codec<GetPropertiesBigQueryLinksRequest>;
 
 export type GetPropertiesBigQueryLinksResponse =
   GoogleAnalyticsAdminV1alphaBigQueryLink;
@@ -10461,7 +10461,7 @@ export const PatchPropertiesBigQueryLinksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchPropertiesBigQueryLinksRequest>;
+  ) as unknown as Schema.Codec<PatchPropertiesBigQueryLinksRequest>;
 
 export type PatchPropertiesBigQueryLinksResponse =
   GoogleAnalyticsAdminV1alphaBigQueryLink;
@@ -10504,7 +10504,7 @@ export const ListPropertiesBigQueryLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/bigQueryLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListPropertiesBigQueryLinksRequest>;
+  ) as unknown as Schema.Codec<ListPropertiesBigQueryLinksRequest>;
 
 export type ListPropertiesBigQueryLinksResponse =
   GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse;
@@ -10543,7 +10543,7 @@ export const DeletePropertiesBigQueryLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePropertiesBigQueryLinksRequest>;
+  ) as unknown as Schema.Codec<DeletePropertiesBigQueryLinksRequest>;
 
 export type DeletePropertiesBigQueryLinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesBigQueryLinksResponse =

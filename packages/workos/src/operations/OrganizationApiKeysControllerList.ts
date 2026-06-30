@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationApiKeysControllerListInput {
+  organizationId: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const OrganizationApiKeysControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -13,11 +20,25 @@ export const OrganizationApiKeysControllerListInput =
     order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{organizationId}/api_keys" }),
-  );
-export type OrganizationApiKeysControllerListInput =
-  typeof OrganizationApiKeysControllerListInput.Type;
+  ) as unknown as Schema.Codec<OrganizationApiKeysControllerListInput>;
 
 // Output Schema
+export interface OrganizationApiKeysControllerListOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    owner: { type: string; id: string };
+    name: string;
+    obfuscated_value: string;
+    last_used_at: string | null;
+    expires_at: string | null;
+    permissions: string[];
+    created_at: string;
+    updated_at: string;
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const OrganizationApiKeysControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -42,9 +63,7 @@ export const OrganizationApiKeysControllerListOutput =
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type OrganizationApiKeysControllerListOutput =
-  typeof OrganizationApiKeysControllerListOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationApiKeysControllerListOutput>;
 
 // The operation
 /**

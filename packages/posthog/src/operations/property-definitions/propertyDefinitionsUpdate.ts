@@ -4,6 +4,69 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PropertyDefinitionsUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  description?: string | null;
+  tags?: unknown[];
+  is_numerical?: boolean;
+  updated_at?: string;
+  updated_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  is_seen_on_filtered_events?: boolean | null;
+  property_type?:
+    | "DateTime"
+    | "String"
+    | "Numeric"
+    | "Boolean"
+    | "Duration"
+    | ""
+    | null;
+  verified?: boolean;
+  verified_at?: string | null;
+  verified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  hidden?: boolean | null;
+}
 export const PropertyDefinitionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -26,12 +89,41 @@ export const PropertyDefinitionsUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     is_seen_on_filtered_events: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    property_type: Schema.optional(Schema.Unknown),
+    property_type: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals([
+            "DateTime",
+            "String",
+            "Numeric",
+            "Boolean",
+            "Duration",
+          ]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     verified: Schema.optional(Schema.Boolean),
     verified_at: Schema.optional(Schema.NullOr(Schema.String)),
     verified_by: Schema.optional(
@@ -47,7 +139,23 @@ export const PropertyDefinitionsUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -57,11 +165,71 @@ export const PropertyDefinitionsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/property_definitions/{id}/",
     }),
-  );
-export type PropertyDefinitionsUpdateInput =
-  typeof PropertyDefinitionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PropertyDefinitionsUpdateInput>;
 
 // Output Schema
+export interface PropertyDefinitionsUpdateOutput {
+  id?: string;
+  name?: string;
+  description?: string | null;
+  tags?: unknown[];
+  is_numerical?: boolean;
+  updated_at?: string;
+  updated_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  is_seen_on_filtered_events?: boolean | null;
+  property_type?:
+    | "DateTime"
+    | "String"
+    | "Numeric"
+    | "Boolean"
+    | "Duration"
+    | ""
+    | null;
+  verified?: boolean;
+  verified_at?: string | null;
+  verified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  hidden?: boolean | null;
+}
 export const PropertyDefinitionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -83,12 +251,41 @@ export const PropertyDefinitionsUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     is_seen_on_filtered_events: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    property_type: Schema.optional(Schema.Unknown),
+    property_type: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals([
+            "DateTime",
+            "String",
+            "Numeric",
+            "Boolean",
+            "Duration",
+          ]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     verified: Schema.optional(Schema.Boolean),
     verified_at: Schema.optional(Schema.NullOr(Schema.String)),
     verified_by: Schema.optional(
@@ -104,14 +301,28 @@ export const PropertyDefinitionsUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     hidden: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  });
-export type PropertyDefinitionsUpdateOutput =
-  typeof PropertyDefinitionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PropertyDefinitionsUpdateOutput>;
 
 // The operation
 /**

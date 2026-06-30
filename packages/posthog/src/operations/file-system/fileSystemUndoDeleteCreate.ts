@@ -4,6 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemUndoDeleteCreateInput {
+  project_id: string;
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const FileSystemUndoDeleteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -22,15 +35,12 @@ export const FileSystemUndoDeleteCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/file_system/undo_delete/",
     }),
-  );
-export type FileSystemUndoDeleteCreateInput =
-  typeof FileSystemUndoDeleteCreateInput.Type;
+  ) as unknown as Schema.Codec<FileSystemUndoDeleteCreateInput>;
 
 // Output Schema
+export type FileSystemUndoDeleteCreateOutput = void;
 export const FileSystemUndoDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileSystemUndoDeleteCreateOutput =
-  typeof FileSystemUndoDeleteCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSystemUndoDeleteCreateOutput>;
 
 // The operation
 /**

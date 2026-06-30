@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupLogIntegrationInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupLogIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const CreateGroupLogIntegrationInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/logIntegrations",
     }),
-  );
-export type CreateGroupLogIntegrationInput =
-  typeof CreateGroupLogIntegrationInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupLogIntegrationInput>;
 
 // Output Schema
+export type CreateGroupLogIntegrationOutput = void;
 export const CreateGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupLogIntegrationOutput =
-  typeof CreateGroupLogIntegrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupLogIntegrationOutput>;
 
 // The operation
 /**

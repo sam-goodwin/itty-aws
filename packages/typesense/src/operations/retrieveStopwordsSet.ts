@@ -4,13 +4,20 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RetrieveStopwordsSetInput {
+  setId: string;
+}
 export const RetrieveStopwordsSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     setId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/stopwords/{setId}" }));
-export type RetrieveStopwordsSetInput = typeof RetrieveStopwordsSetInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/stopwords/{setId}" }),
+  ) as unknown as Schema.Codec<RetrieveStopwordsSetInput>;
 
 // Output Schema
+export interface RetrieveStopwordsSetOutput {
+  stopwords: { id: string; stopwords: string[]; locale?: string };
+}
 export const RetrieveStopwordsSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stopwords: Schema.Struct({
@@ -18,8 +25,7 @@ export const RetrieveStopwordsSetOutput =
       stopwords: Schema.Array(Schema.String),
       locale: Schema.optional(Schema.String),
     }),
-  });
-export type RetrieveStopwordsSetOutput = typeof RetrieveStopwordsSetOutput.Type;
+  }) as unknown as Schema.Codec<RetrieveStopwordsSetOutput>;
 
 // The operation
 /**

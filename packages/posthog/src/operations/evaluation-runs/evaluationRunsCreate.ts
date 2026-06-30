@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface EvaluationRunsCreateInput {
+  project_id: string;
+  evaluation_id?: string;
+  target_event_id?: string;
+  timestamp?: string;
+  event?: string;
+  distinct_id?: string | null;
+}
 export const EvaluationRunsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,13 +24,15 @@ export const EvaluationRunsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/evaluation_runs/",
     }),
-  );
-export type EvaluationRunsCreateInput = typeof EvaluationRunsCreateInput.Type;
+  ) as unknown as Schema.Codec<EvaluationRunsCreateInput>;
 
 // Output Schema
+export type EvaluationRunsCreateOutput = Record<string, unknown>;
 export const EvaluationRunsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type EvaluationRunsCreateOutput = typeof EvaluationRunsCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<EvaluationRunsCreateOutput>;
 
 // The operation
 /**

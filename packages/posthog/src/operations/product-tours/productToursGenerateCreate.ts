@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProductToursGenerateCreateInput {
+  id: string;
+  project_id: string;
+  title?: string;
+  goal?: string;
+  steps?: Record<string, unknown>[];
+}
 export const ProductToursGenerateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +25,12 @@ export const ProductToursGenerateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/product_tours/{id}/generate/",
     }),
-  );
-export type ProductToursGenerateCreateInput =
-  typeof ProductToursGenerateCreateInput.Type;
+  ) as unknown as Schema.Codec<ProductToursGenerateCreateInput>;
 
 // Output Schema
+export interface ProductToursGenerateCreateOutput {
+  steps?: { step_id?: string; title?: string; description?: string }[];
+}
 export const ProductToursGenerateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     steps: Schema.optional(
@@ -34,9 +42,7 @@ export const ProductToursGenerateCreateOutput =
         }),
       ),
     ),
-  });
-export type ProductToursGenerateCreateOutput =
-  typeof ProductToursGenerateCreateOutput.Type;
+  }) as unknown as Schema.Codec<ProductToursGenerateCreateOutput>;
 
 // The operation
 /**

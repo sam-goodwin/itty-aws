@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WizardSessionsStreamRetrieveInput {
+  project_id: string;
+  skill_id?: string;
+  workflow_id: string;
+}
 export const WizardSessionsStreamRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const WizardSessionsStreamRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/wizard/sessions/stream/",
     }),
-  );
-export type WizardSessionsStreamRetrieveInput =
-  typeof WizardSessionsStreamRetrieveInput.Type;
+  ) as unknown as Schema.Codec<WizardSessionsStreamRetrieveInput>;
 
 // Output Schema
+export type WizardSessionsStreamRetrieveOutput = void;
 export const WizardSessionsStreamRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WizardSessionsStreamRetrieveOutput =
-  typeof WizardSessionsStreamRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WizardSessionsStreamRetrieveOutput>;
 
 // The operation
 /**

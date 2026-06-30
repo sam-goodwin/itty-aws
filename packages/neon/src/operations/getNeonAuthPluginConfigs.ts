@@ -2,8 +2,13 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetNeonAuthPluginConfigsInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetNeonAuthPluginConfigsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,50 @@ export const GetNeonAuthPluginConfigsInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/auth/plugins",
     }),
-  );
-export type GetNeonAuthPluginConfigsInput =
-  typeof GetNeonAuthPluginConfigsInput.Type;
+  ) as unknown as Schema.Codec<GetNeonAuthPluginConfigsInput>;
 
 // Output Schema
+export interface GetNeonAuthPluginConfigsOutput {
+  organization?: {
+    enabled: boolean;
+    organization_limit: number;
+    membership_limit: number;
+    creator_role: "admin" | "owner";
+    send_invitation_email: boolean;
+  };
+  magic_link?: {
+    enabled: boolean;
+    expires_in: number;
+    disable_sign_up: boolean;
+  };
+  phone_number?: { enabled: boolean; otp_expires_in?: number };
+  email_provider?:
+    | {
+        host: string;
+        port: number;
+        username: string;
+        password: Redacted.Redacted<string>;
+        sender_email: string;
+        sender_name: string;
+      }
+    | { sender_email?: string; sender_name?: string };
+  email_and_password?: {
+    enabled: boolean;
+    email_verification_method: "link" | "otp";
+    require_email_verification: boolean;
+    auto_sign_in_after_verification: boolean;
+    send_verification_email_on_sign_up: boolean;
+    send_verification_email_on_sign_in: boolean;
+    disable_sign_up: boolean;
+  };
+  oauth_providers?: {
+    id: "google" | "github" | "microsoft" | "vercel";
+    type: "standard" | "shared";
+    client_id?: string;
+    client_secret?: Redacted.Redacted<string>;
+  }[];
+  allow_localhost?: boolean;
+}
 export const GetNeonAuthPluginConfigsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.optional(
@@ -42,7 +86,22 @@ export const GetNeonAuthPluginConfigsOutput =
         otp_expires_in: Schema.optional(Schema.Number),
       }),
     ),
-    email_provider: Schema.optional(Schema.Unknown),
+    email_provider: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          host: Schema.String,
+          port: Schema.Number,
+          username: Schema.String,
+          password: SensitiveOutputString,
+          sender_email: Schema.String,
+          sender_name: Schema.String,
+        }),
+        Schema.Struct({
+          sender_email: Schema.optional(Schema.String),
+          sender_name: Schema.optional(Schema.String),
+        }),
+      ]),
+    ),
     email_and_password: Schema.optional(
       Schema.Struct({
         enabled: Schema.Boolean,
@@ -65,9 +124,7 @@ export const GetNeonAuthPluginConfigsOutput =
       ),
     ),
     allow_localhost: Schema.optional(Schema.Boolean),
-  });
-export type GetNeonAuthPluginConfigsOutput =
-  typeof GetNeonAuthPluginConfigsOutput.Type;
+  }) as unknown as Schema.Codec<GetNeonAuthPluginConfigsOutput>;
 
 // The operation
 /**

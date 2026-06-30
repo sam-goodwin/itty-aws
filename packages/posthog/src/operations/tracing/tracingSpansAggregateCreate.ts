@@ -3,6 +3,30 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansAggregateCreateInput {
+  project_id: string;
+  query: {
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    compareFilter?: { compare?: boolean; compare_to?: string | null };
+    serviceNames?: string[];
+    filterGroup?: {
+      key: string;
+      type: "span" | "span_attribute" | "span_resource_attribute";
+      operator:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+  };
+}
 export const TracingSpansAggregateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -51,15 +75,12 @@ export const TracingSpansAggregateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tracing/spans/aggregate/",
     }),
-  );
-export type TracingSpansAggregateCreateInput =
-  typeof TracingSpansAggregateCreateInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansAggregateCreateInput>;
 
 // Output Schema
+export type TracingSpansAggregateCreateOutput = void;
 export const TracingSpansAggregateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TracingSpansAggregateCreateOutput =
-  typeof TracingSpansAggregateCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansAggregateCreateOutput>;
 
 // The operation
 /**

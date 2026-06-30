@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsSummarizationCreateInput {
+  project_id: string;
+  summarize_type?: "trace" | "event";
+  mode?: "minimal" | "detailed";
+  data?: unknown;
+  force_refresh?: boolean;
+  model?: string | null;
+  trace_id?: string;
+  generation_id?: string;
+  date_from?: string | null;
+  date_to?: string | null;
+}
 export const LlmAnalyticsSummarizationCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,11 +33,19 @@ export const LlmAnalyticsSummarizationCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_analytics/summarization/",
     }),
-  );
-export type LlmAnalyticsSummarizationCreateInput =
-  typeof LlmAnalyticsSummarizationCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsSummarizationCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsSummarizationCreateOutput {
+  summary?: {
+    title?: string;
+    flow_diagram?: string;
+    summary_bullets?: { text?: string; line_refs?: string }[];
+    interesting_notes?: { text?: string; line_refs?: string }[];
+  };
+  text_repr?: string;
+  metadata?: unknown;
+}
 export const LlmAnalyticsSummarizationCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summary: Schema.optional(
@@ -52,9 +72,7 @@ export const LlmAnalyticsSummarizationCreateOutput =
     ),
     text_repr: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Unknown),
-  });
-export type LlmAnalyticsSummarizationCreateOutput =
-  typeof LlmAnalyticsSummarizationCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsSummarizationCreateOutput>;
 
 // The operation
 /**

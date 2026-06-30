@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface Organization {
   displayName?: string;
 }
 
-export const Organization: Schema.Schema<Organization> =
+export const Organization: Schema.Codec<Organization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface ListOrganizationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOrganizationsResponse: Schema.Schema<ListOrganizationsResponse> =
+export const ListOrganizationsResponse: Schema.Codec<ListOrganizationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizations: Schema.optional(Schema.Array(Organization)),
     nextPageToken: Schema.optional(Schema.String),
@@ -63,7 +63,7 @@ export interface AnalyticsAccountLink {
     | (string & {});
 }
 
-export const AnalyticsAccountLink: Schema.Schema<AnalyticsAccountLink> =
+export const AnalyticsAccountLink: Schema.Codec<AnalyticsAccountLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export interface ListAnalyticsAccountLinksResponse {
   nextPageToken?: string;
 }
 
-export const ListAnalyticsAccountLinksResponse: Schema.Schema<ListAnalyticsAccountLinksResponse> =
+export const ListAnalyticsAccountLinksResponse: Schema.Codec<ListAnalyticsAccountLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsAccountLinks: Schema.optional(Schema.Array(AnalyticsAccountLink)),
     nextPageToken: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface PropertyUsage {
   billableEventCount?: string;
 }
 
-export const PropertyUsage: Schema.Schema<PropertyUsage> =
+export const PropertyUsage: Schema.Codec<PropertyUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceLevel: Schema.optional(Schema.String),
     propertyType: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export interface ReportPropertyUsageRequest {
   month?: string;
 }
 
-export const ReportPropertyUsageRequest: Schema.Schema<ReportPropertyUsageRequest> =
+export const ReportPropertyUsageRequest: Schema.Codec<ReportPropertyUsageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportPropertyUsageRequest" });
@@ -140,7 +140,7 @@ export interface Marketingplatformadmin_Date {
   day?: number;
 }
 
-export const Marketingplatformadmin_Date: Schema.Schema<Marketingplatformadmin_Date> =
+export const Marketingplatformadmin_Date: Schema.Codec<Marketingplatformadmin_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -156,7 +156,7 @@ export interface ClientData {
   endDate?: Marketingplatformadmin_Date;
 }
 
-export const ClientData: Schema.Schema<ClientData> =
+export const ClientData: Schema.Codec<ClientData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Marketingplatformadmin_Date),
     organization: Schema.optional(Organization),
@@ -168,14 +168,14 @@ export interface FindSalesPartnerManagedClientsResponse {
   clientData?: ReadonlyArray<ClientData>;
 }
 
-export const FindSalesPartnerManagedClientsResponse: Schema.Schema<FindSalesPartnerManagedClientsResponse> =
+export const FindSalesPartnerManagedClientsResponse: Schema.Codec<FindSalesPartnerManagedClientsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientData: Schema.optional(Schema.Array(ClientData)),
   }).annotate({ identifier: "FindSalesPartnerManagedClientsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -189,7 +189,7 @@ export interface Money {
   currencyCode?: string;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -207,7 +207,7 @@ export interface BillInfo {
   priceProtectionCredit?: Money;
 }
 
-export const BillInfo: Schema.Schema<BillInfo> =
+export const BillInfo: Schema.Codec<BillInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventFee: Schema.optional(Money),
     baseFee: Schema.optional(Money),
@@ -222,7 +222,7 @@ export interface ReportPropertyUsageResponse {
   propertyUsages?: ReadonlyArray<PropertyUsage>;
 }
 
-export const ReportPropertyUsageResponse: Schema.Schema<ReportPropertyUsageResponse> =
+export const ReportPropertyUsageResponse: Schema.Codec<ReportPropertyUsageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billInfo: Schema.optional(BillInfo),
     propertyUsages: Schema.optional(Schema.Array(PropertyUsage)),
@@ -233,14 +233,14 @@ export interface FindSalesPartnerManagedClientsRequest {
   isActive?: boolean;
 }
 
-export const FindSalesPartnerManagedClientsRequest: Schema.Schema<FindSalesPartnerManagedClientsRequest> =
+export const FindSalesPartnerManagedClientsRequest: Schema.Codec<FindSalesPartnerManagedClientsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isActive: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "FindSalesPartnerManagedClientsRequest" });
 
 export interface SetPropertyServiceLevelResponse {}
 
-export const SetPropertyServiceLevelResponse: Schema.Schema<SetPropertyServiceLevelResponse> =
+export const SetPropertyServiceLevelResponse: Schema.Codec<SetPropertyServiceLevelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPropertyServiceLevelResponse",
   });
@@ -256,7 +256,7 @@ export interface SetPropertyServiceLevelRequest {
     | (string & {});
 }
 
-export const SetPropertyServiceLevelRequest: Schema.Schema<SetPropertyServiceLevelRequest> =
+export const SetPropertyServiceLevelRequest: Schema.Codec<SetPropertyServiceLevelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsProperty: Schema.optional(Schema.String),
     serviceLevel: Schema.optional(Schema.String),
@@ -334,7 +334,7 @@ export const ReportPropertyUsageOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportPropertyUsageOrganizationsRequest>;
+  ) as unknown as Schema.Codec<ReportPropertyUsageOrganizationsRequest>;
 
 export type ReportPropertyUsageOrganizationsResponse =
   ReportPropertyUsageResponse;
@@ -380,7 +380,7 @@ export const FindSalesPartnerManagedClientsOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FindSalesPartnerManagedClientsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<FindSalesPartnerManagedClientsOrganizationsRequest>;
 
 export type FindSalesPartnerManagedClientsOrganizationsResponse =
   FindSalesPartnerManagedClientsResponse;
@@ -417,7 +417,7 @@ export const GetOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsRequest>;
 
 export type GetOrganizationsResponse = Organization;
 export const GetOrganizationsResponse =
@@ -451,7 +451,7 @@ export const ListOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/organizations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsRequest>;
 
 export type ListOrganizationsResponse_Op = ListOrganizationsResponse;
 export const ListOrganizationsResponse_Op =
@@ -493,7 +493,7 @@ export const CreateOrganizationsAnalyticsAccountLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsAnalyticsAccountLinksRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsAnalyticsAccountLinksRequest>;
 
 export type CreateOrganizationsAnalyticsAccountLinksResponse =
   AnalyticsAccountLink;
@@ -539,7 +539,7 @@ export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
+  ) as unknown as Schema.Codec<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
 
 export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse =
   SetPropertyServiceLevelResponse;
@@ -582,7 +582,7 @@ export const ListOrganizationsAnalyticsAccountLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/analyticsAccountLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsAnalyticsAccountLinksRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsAnalyticsAccountLinksRequest>;
 
 export type ListOrganizationsAnalyticsAccountLinksResponse =
   ListAnalyticsAccountLinksResponse;
@@ -621,7 +621,7 @@ export const DeleteOrganizationsAnalyticsAccountLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsAnalyticsAccountLinksRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsAnalyticsAccountLinksRequest>;
 
 export type DeleteOrganizationsAnalyticsAccountLinksResponse = Empty;
 export const DeleteOrganizationsAnalyticsAccountLinksResponse =

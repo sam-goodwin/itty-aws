@@ -3,6 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateAPITokenInput {
+  tokenName: string;
+  organization?: string;
+  group?: string;
+  scopes?: (
+    | "read"
+    | "db:create"
+    | "db:delete"
+    | "db:configure"
+    | "db:mint-token"
+    | "db:rotate-creds"
+    | "group:configure"
+    | "group:mint-token"
+    | "group:rotate-creds"
+    | "read-only"
+    | "full-access"
+  )[];
+}
 export const CreateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tokenName: Schema.String.pipe(T.PathParam()),
   organization: Schema.optional(Schema.String),
@@ -24,16 +42,21 @@ export const CreateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-}).pipe(T.Http({ method: "POST", path: "/v1/auth/api-tokens/{tokenName}" }));
-export type CreateAPITokenInput = typeof CreateAPITokenInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v1/auth/api-tokens/{tokenName}" }),
+) as unknown as Schema.Codec<CreateAPITokenInput>;
 
 // Output Schema
+export interface CreateAPITokenOutput {
+  name?: string;
+  id?: string;
+  token?: string;
+}
 export const CreateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   token: Schema.optional(Schema.String),
-});
-export type CreateAPITokenOutput = typeof CreateAPITokenOutput.Type;
+}) as unknown as Schema.Codec<CreateAPITokenOutput>;
 
 // The operation
 /**

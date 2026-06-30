@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetNeonAuthPhoneNumberPluginInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetNeonAuthPhoneNumberPluginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,18 +16,18 @@ export const GetNeonAuthPhoneNumberPluginInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/phone-number",
     }),
-  );
-export type GetNeonAuthPhoneNumberPluginInput =
-  typeof GetNeonAuthPhoneNumberPluginInput.Type;
+  ) as unknown as Schema.Codec<GetNeonAuthPhoneNumberPluginInput>;
 
 // Output Schema
+export interface GetNeonAuthPhoneNumberPluginOutput {
+  enabled: boolean;
+  otp_expires_in?: number;
+}
 export const GetNeonAuthPhoneNumberPluginOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     otp_expires_in: Schema.optional(Schema.Number),
-  });
-export type GetNeonAuthPhoneNumberPluginOutput =
-  typeof GetNeonAuthPhoneNumberPluginOutput.Type;
+  }) as unknown as Schema.Codec<GetNeonAuthPhoneNumberPluginOutput>;
 
 // The operation
 /**

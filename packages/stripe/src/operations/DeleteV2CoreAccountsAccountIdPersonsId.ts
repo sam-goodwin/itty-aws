@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteV2CoreAccountsAccountIdPersonsIdInput {
+  account_id: string;
+  id: string;
+}
 export const DeleteV2CoreAccountsAccountIdPersonsIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
@@ -12,18 +16,18 @@ export const DeleteV2CoreAccountsAccountIdPersonsIdInput =
       method: "DELETE",
       path: "/v2/core/accounts/{account_id}/persons/{id}",
     }),
-  );
-export type DeleteV2CoreAccountsAccountIdPersonsIdInput =
-  typeof DeleteV2CoreAccountsAccountIdPersonsIdInput.Type;
+  ) as unknown as Schema.Codec<DeleteV2CoreAccountsAccountIdPersonsIdInput>;
 
 // Output Schema
+export interface DeleteV2CoreAccountsAccountIdPersonsIdOutput {
+  id: string;
+  object?: string;
+}
 export const DeleteV2CoreAccountsAccountIdPersonsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     object: Schema.optional(Schema.String),
-  });
-export type DeleteV2CoreAccountsAccountIdPersonsIdOutput =
-  typeof DeleteV2CoreAccountsAccountIdPersonsIdOutput.Type;
+  }) as unknown as Schema.Codec<DeleteV2CoreAccountsAccountIdPersonsIdOutput>;
 
 // The operation
 /**

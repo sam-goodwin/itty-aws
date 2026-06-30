@@ -3,6 +3,22 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LogsSamplingRulesPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  enabled?: boolean;
+  priority?: number | null;
+  rule_type?: "severity_sampling" | "path_drop" | "rate_limit";
+  scope_service?: string | null;
+  scope_path_pattern?: string | null;
+  scope_attribute_filters?: Record<string, unknown>[];
+  config?: unknown;
+  version?: number;
+  created_by?: number;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const LogsSamplingRulesPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -28,11 +44,24 @@ export const LogsSamplingRulesPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/logs/sampling_rules/{id}/",
     }),
-  );
-export type LogsSamplingRulesPartialUpdateInput =
-  typeof LogsSamplingRulesPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<LogsSamplingRulesPartialUpdateInput>;
 
 // Output Schema
+export interface LogsSamplingRulesPartialUpdateOutput {
+  id: string;
+  name: string;
+  enabled?: boolean;
+  priority?: number | null;
+  rule_type: "severity_sampling" | "path_drop" | "rate_limit";
+  scope_service?: string | null;
+  scope_path_pattern?: string | null;
+  scope_attribute_filters?: Record<string, unknown>[];
+  config: unknown;
+  version: number;
+  created_by: number;
+  created_at: string;
+  updated_at: string | null;
+}
 export const LogsSamplingRulesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -54,9 +83,7 @@ export const LogsSamplingRulesPartialUpdateOutput =
     created_by: Schema.Number,
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type LogsSamplingRulesPartialUpdateOutput =
-  typeof LogsSamplingRulesPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LogsSamplingRulesPartialUpdateOutput>;
 
 // The operation
 /**

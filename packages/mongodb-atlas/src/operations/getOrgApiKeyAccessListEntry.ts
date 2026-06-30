@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgApiKeyAccessListEntryInput {
+  orgId: string;
+  ipAddress: string;
+  apiUserId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetOrgApiKeyAccessListEntryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const GetOrgApiKeyAccessListEntryInput =
       method: "GET",
       path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}",
     }),
-  );
-export type GetOrgApiKeyAccessListEntryInput =
-  typeof GetOrgApiKeyAccessListEntryInput.Type;
+  ) as unknown as Schema.Codec<GetOrgApiKeyAccessListEntryInput>;
 
 // Output Schema
+export type GetOrgApiKeyAccessListEntryOutput = void;
 export const GetOrgApiKeyAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgApiKeyAccessListEntryOutput =
-  typeof GetOrgApiKeyAccessListEntryOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgApiKeyAccessListEntryOutput>;
 
 // The operation
 /**

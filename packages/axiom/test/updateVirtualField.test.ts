@@ -56,7 +56,7 @@ describe("updateVirtualField", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -73,7 +73,7 @@ describe("updateVirtualField", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   // Removed: the client-side schema requires dataset/name/expression on

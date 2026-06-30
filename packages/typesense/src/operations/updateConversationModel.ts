@@ -3,8 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface UpdateConversationModelInput {
+  modelId: string;
+  id?: string;
+  model_name?: string;
+  api_key?: string | Redacted.Redacted<string>;
+  history_collection?: string;
+  account_id?: string;
+  system_prompt?: string;
+  ttl?: number;
+  max_bytes?: number;
+  vllm_url?: string;
+}
 export const UpdateConversationModelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
@@ -17,17 +30,18 @@ export const UpdateConversationModelInput =
     ttl: Schema.optional(Schema.Number),
     max_bytes: Schema.optional(Schema.Number),
     vllm_url: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "PUT", path: "/conversations/models/{modelId}" }));
-export type UpdateConversationModelInput =
-  typeof UpdateConversationModelInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/conversations/models/{modelId}" }),
+  ) as unknown as Schema.Codec<UpdateConversationModelInput>;
 
 // Output Schema
+export interface UpdateConversationModelOutput {
+  id: string;
+}
 export const UpdateConversationModelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type UpdateConversationModelOutput =
-  typeof UpdateConversationModelOutput.Type;
+  }) as unknown as Schema.Codec<UpdateConversationModelOutput>;
 
 // The operation
 /**

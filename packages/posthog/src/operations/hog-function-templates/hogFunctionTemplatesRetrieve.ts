@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFunctionTemplatesRetrieveInput {
+  project_id: string;
+  template_id: string;
+}
 export const HogFunctionTemplatesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,34 @@ export const HogFunctionTemplatesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_function_templates/{template_id}/",
     }),
-  );
-export type HogFunctionTemplatesRetrieveInput =
-  typeof HogFunctionTemplatesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HogFunctionTemplatesRetrieveInput>;
 
 // Output Schema
+export interface HogFunctionTemplatesRetrieveOutput {
+  id?: string;
+  name?: string;
+  description?: string | null;
+  code?: string;
+  code_language?: string;
+  inputs_schema?: unknown;
+  type?: string;
+  status?: string;
+  category?: unknown;
+  free?: boolean;
+  icon_url?: string | null;
+  filters?: unknown;
+  masking?: unknown;
+  mapping_templates?:
+    | {
+        name?: string;
+        include_by_default?: boolean | null;
+        use_all_events_by_default?: boolean | null;
+        filters?: unknown;
+        inputs?: unknown;
+        inputs_schema?: unknown;
+      }[]
+    | null;
+}
 export const HogFunctionTemplatesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -49,9 +76,7 @@ export const HogFunctionTemplatesRetrieveOutput =
         ),
       ),
     ),
-  });
-export type HogFunctionTemplatesRetrieveOutput =
-  typeof HogFunctionTemplatesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<HogFunctionTemplatesRetrieveOutput>;
 
 // The operation
 /**

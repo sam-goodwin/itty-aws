@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClustersInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  includeDeletedWithRetainedBackups?: boolean;
+}
 export const ListGroupClustersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,12 +25,12 @@ export const ListGroupClustersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters" }),
-);
-export type ListGroupClustersInput = typeof ListGroupClustersInput.Type;
+) as unknown as Schema.Codec<ListGroupClustersInput>;
 
 // Output Schema
-export const ListGroupClustersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClustersOutput = typeof ListGroupClustersOutput.Type;
+export type ListGroupClustersOutput = void;
+export const ListGroupClustersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClustersOutput>;
 
 // The operation
 /**

@@ -3,16 +3,74 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListX402DiscoveryMerchantInput {
+  payTo: string;
+  limit?: number;
+  offset?: number;
+}
 export const ListX402DiscoveryMerchantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     payTo: Schema.String,
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "GET", path: "/v2/x402/discovery/merchant" }));
-export type ListX402DiscoveryMerchantInput =
-  typeof ListX402DiscoveryMerchantInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v2/x402/discovery/merchant" }),
+  ) as unknown as Schema.Codec<ListX402DiscoveryMerchantInput>;
 
 // Output Schema
+export interface ListX402DiscoveryMerchantOutput {
+  x402Version: 1 | 2;
+  payTo: string;
+  resources: {
+    resource: string;
+    description?: string;
+    type: "http" | "mcp";
+    x402Version: 1 | 2;
+    lastUpdated?: string;
+    accepts?: (
+      | {
+          scheme: "exact" | "upto" | "batch-settlement";
+          network:
+            | "eip155:8453"
+            | "eip155:84532"
+            | "eip155:137"
+            | "eip155:42161"
+            | "eip155:480"
+            | "eip155:4801"
+            | "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+            | "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1";
+          asset: string;
+          amount: string;
+          payTo: string;
+          maxTimeoutSeconds: number;
+          extra?: Record<string, unknown>;
+        }
+      | {
+          scheme: "exact";
+          network: "base" | "base-sepolia" | "solana" | "solana-devnet";
+          maxAmountRequired: string;
+          resource: string;
+          description: string;
+          mimeType: string;
+          outputSchema?: Record<string, unknown>;
+          payTo: string;
+          maxTimeoutSeconds: number;
+          asset: string;
+          extra?: Record<string, unknown>;
+        }
+    )[];
+    extensions?: Record<string, unknown>;
+    quality?: {
+      l30DaysTotalCalls?: number;
+      l30DaysUniquePayers?: number;
+      lastCalledAt?: string;
+    };
+    serviceName?: string;
+    tags?: string[];
+    iconUrl?: string;
+  }[];
+  pagination: { limit?: number; offset?: number; total?: number };
+}
 export const ListX402DiscoveryMerchantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x402Version: Schema.Literals([1, 2]),
@@ -24,7 +82,54 @@ export const ListX402DiscoveryMerchantOutput =
         type: Schema.Literals(["http", "mcp"]),
         x402Version: Schema.Literals([1, 2]),
         lastUpdated: Schema.optional(Schema.String),
-        accepts: Schema.optional(Schema.Array(Schema.Unknown)),
+        accepts: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                scheme: Schema.Literals(["exact", "upto", "batch-settlement"]),
+                network: Schema.Literals([
+                  "eip155:8453",
+                  "eip155:84532",
+                  "eip155:137",
+                  "eip155:42161",
+                  "eip155:480",
+                  "eip155:4801",
+                  "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+                  "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+                ]),
+                asset: Schema.String,
+                amount: Schema.String,
+                payTo: Schema.String,
+                maxTimeoutSeconds: Schema.Number,
+                extra: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+              }),
+              Schema.Struct({
+                scheme: Schema.Literals(["exact"]),
+                network: Schema.Literals([
+                  "base",
+                  "base-sepolia",
+                  "solana",
+                  "solana-devnet",
+                ]),
+                maxAmountRequired: Schema.String,
+                resource: Schema.String,
+                description: Schema.String,
+                mimeType: Schema.String,
+                outputSchema: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+                payTo: Schema.String,
+                maxTimeoutSeconds: Schema.Number,
+                asset: Schema.String,
+                extra: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+              }),
+            ]),
+          ),
+        ),
         extensions: Schema.optional(
           Schema.Record(Schema.String, Schema.Unknown),
         ),
@@ -45,9 +150,7 @@ export const ListX402DiscoveryMerchantOutput =
       offset: Schema.optional(Schema.Number),
       total: Schema.optional(Schema.Number),
     }),
-  });
-export type ListX402DiscoveryMerchantOutput =
-  typeof ListX402DiscoveryMerchantOutput.Type;
+  }) as unknown as Schema.Codec<ListX402DiscoveryMerchantOutput>;
 
 // The operation
 /**

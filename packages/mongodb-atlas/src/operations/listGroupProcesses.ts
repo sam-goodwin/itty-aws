@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupProcessesInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupProcessesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +22,12 @@ export const ListGroupProcessesInput =
     pretty: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes" }),
-  );
-export type ListGroupProcessesInput = typeof ListGroupProcessesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupProcessesInput>;
 
 // Output Schema
-export const ListGroupProcessesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessesOutput = typeof ListGroupProcessesOutput.Type;
+export type ListGroupProcessesOutput = void;
+export const ListGroupProcessesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessesOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupCustomDbRoleRoleInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupCustomDbRoleRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const CreateGroupCustomDbRoleRoleInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles",
     }),
-  );
-export type CreateGroupCustomDbRoleRoleInput =
-  typeof CreateGroupCustomDbRoleRoleInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupCustomDbRoleRoleInput>;
 
 // Output Schema
+export type CreateGroupCustomDbRoleRoleOutput = void;
 export const CreateGroupCustomDbRoleRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupCustomDbRoleRoleOutput =
-  typeof CreateGroupCustomDbRoleRoleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupCustomDbRoleRoleOutput>;
 
 // The operation
 /**

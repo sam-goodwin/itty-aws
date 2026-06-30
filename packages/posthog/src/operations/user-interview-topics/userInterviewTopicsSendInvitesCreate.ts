@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsSendInvitesCreateInput {
+  id: string;
+  project_id: string;
+  subject?: string;
+  reply_to?: string;
+  send_async?: boolean;
+}
 export const UserInterviewTopicsSendInvitesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,21 @@ export const UserInterviewTopicsSendInvitesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/user_interview_topics/{id}/send_invites/",
     }),
-  );
-export type UserInterviewTopicsSendInvitesCreateInput =
-  typeof UserInterviewTopicsSendInvitesCreateInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsSendInvitesCreateInput>;
 
 // Output Schema
+export interface UserInterviewTopicsSendInvitesCreateOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    interviewee_identifier: string;
+    email?: string | null;
+    interview_url: string;
+    sent: boolean;
+    reason?: string;
+  }[];
+}
 export const UserInterviewTopicsSendInvitesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -34,9 +51,7 @@ export const UserInterviewTopicsSendInvitesCreateOutput =
         reason: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UserInterviewTopicsSendInvitesCreateOutput =
-  typeof UserInterviewTopicsSendInvitesCreateOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewTopicsSendInvitesCreateOutput>;
 
 // The operation
 /**

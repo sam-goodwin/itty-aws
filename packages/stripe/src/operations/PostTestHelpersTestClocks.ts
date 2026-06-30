@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostTestHelpersTestClocksInput {
+  customer?: string;
+  expand?: string[];
+  frozen_time: number;
+  name?: string;
+}
 export const PostTestHelpersTestClocksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
@@ -15,11 +21,20 @@ export const PostTestHelpersTestClocksInput =
       path: "/v1/test_helpers/test_clocks",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostTestHelpersTestClocksInput =
-  typeof PostTestHelpersTestClocksInput.Type;
+  ) as unknown as Schema.Codec<PostTestHelpersTestClocksInput>;
 
 // Output Schema
+export interface PostTestHelpersTestClocksOutput {
+  created: number;
+  deletes_after: number;
+  frozen_time: number;
+  id: string;
+  livemode: boolean;
+  name: string | null;
+  object: "test_helpers.test_clock";
+  status: "advancing" | "internal_failure" | "ready";
+  status_details: { advancing?: { target_frozen_time: number } };
+}
 export const PostTestHelpersTestClocksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -37,9 +52,7 @@ export const PostTestHelpersTestClocksOutput =
         }),
       ),
     }),
-  });
-export type PostTestHelpersTestClocksOutput =
-  typeof PostTestHelpersTestClocksOutput.Type;
+  }) as unknown as Schema.Codec<PostTestHelpersTestClocksOutput>;
 
 // The operation
 /**

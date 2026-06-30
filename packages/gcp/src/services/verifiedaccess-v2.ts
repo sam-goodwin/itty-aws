@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface VerifyChallengeResponseRequest {
   expectedIdentity?: string;
 }
 
-export const VerifyChallengeResponseRequest: Schema.Schema<VerifyChallengeResponseRequest> =
+export const VerifyChallengeResponseRequest: Schema.Codec<VerifyChallengeResponseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     challengeResponse: Schema.optional(Schema.String),
     expectedIdentity: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface CrowdStrikeAgent {
   customerId?: string;
 }
 
-export const CrowdStrikeAgent: Schema.Schema<CrowdStrikeAgent> =
+export const CrowdStrikeAgent: Schema.Codec<CrowdStrikeAgent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentId: Schema.optional(Schema.String),
     customerId: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface Antivirus {
     | (string & {});
 }
 
-export const Antivirus: Schema.Schema<Antivirus> =
+export const Antivirus: Schema.Codec<Antivirus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "Antivirus" });
@@ -178,7 +178,7 @@ export interface DeviceSignals {
   crowdStrikeAgent?: CrowdStrikeAgent;
 }
 
-export const DeviceSignals: Schema.Schema<DeviceSignals> =
+export const DeviceSignals: Schema.Codec<DeviceSignals> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatingSystem: Schema.optional(Schema.String),
     screenLockSecured: Schema.optional(Schema.String),
@@ -260,7 +260,7 @@ export interface VerifyChallengeResponseResult {
   deviceSignal?: string;
 }
 
-export const VerifyChallengeResponseResult: Schema.Schema<VerifyChallengeResponseResult> =
+export const VerifyChallengeResponseResult: Schema.Codec<VerifyChallengeResponseResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceSignals: Schema.optional(DeviceSignals),
     signedPublicKeyAndChallenge: Schema.optional(Schema.String),
@@ -279,7 +279,7 @@ export const VerifyChallengeResponseResult: Schema.Schema<VerifyChallengeRespons
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -289,7 +289,7 @@ export interface Challenge {
   challenge?: string;
 }
 
-export const Challenge: Schema.Schema<Challenge> =
+export const Challenge: Schema.Codec<Challenge> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     challenge: Schema.optional(Schema.String),
   }).annotate({ identifier: "Challenge" });
@@ -360,7 +360,7 @@ export const VerifyChallengeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v2/challenge:verify", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<VerifyChallengeRequest>;
+) as unknown as Schema.Codec<VerifyChallengeRequest>;
 
 export type VerifyChallengeResponse = VerifyChallengeResponseResult;
 export const VerifyChallengeResponse =
@@ -396,7 +396,7 @@ export const GenerateChallengeRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/challenge:generate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GenerateChallengeRequest>;
+  ) as unknown as Schema.Codec<GenerateChallengeRequest>;
 
 export type GenerateChallengeResponse = Challenge;
 export const GenerateChallengeResponse = /*@__PURE__*/ /*#__PURE__*/ Challenge;

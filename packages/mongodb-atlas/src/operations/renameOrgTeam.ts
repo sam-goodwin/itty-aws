@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface RenameOrgTeamInput {
+  orgId: string;
+  teamId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RenameOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const RenameOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}",
   }),
-);
-export type RenameOrgTeamInput = typeof RenameOrgTeamInput.Type;
+) as unknown as Schema.Codec<RenameOrgTeamInput>;
 
 // Output Schema
-export const RenameOrgTeamOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RenameOrgTeamOutput = typeof RenameOrgTeamOutput.Type;
+export type RenameOrgTeamOutput = void;
+export const RenameOrgTeamOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RenameOrgTeamOutput>;
 
 // The operation
 /**

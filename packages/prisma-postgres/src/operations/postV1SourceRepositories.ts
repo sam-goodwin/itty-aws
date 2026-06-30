@@ -9,17 +9,40 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface PostV1SourceRepositoriesInput {
+  projectId: string;
+  provider: string;
+  providerRepositoryId: number;
+  installationId?: string;
+}
 export const PostV1SourceRepositoriesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.String,
     provider: Schema.String,
     providerRepositoryId: Schema.Number,
     installationId: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v1/source-repositories" }));
-export type PostV1SourceRepositoriesInput =
-  typeof PostV1SourceRepositoriesInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/source-repositories" }),
+  ) as unknown as Schema.Codec<PostV1SourceRepositoriesInput>;
 
 // Output Schema
+export interface PostV1SourceRepositoriesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    repoId: number;
+    provider: "github";
+    repoFullName: string;
+    defaultBranch: string;
+    isPrivate: boolean;
+    status: "active" | "archived";
+    projectId: string;
+    installationId: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+}
 export const PostV1SourceRepositoriesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -37,9 +60,7 @@ export const PostV1SourceRepositoriesOutput =
       createdAt: Schema.String,
       updatedAt: Schema.String,
     }),
-  });
-export type PostV1SourceRepositoriesOutput =
-  typeof PostV1SourceRepositoriesOutput.Type;
+  }) as unknown as Schema.Codec<PostV1SourceRepositoriesOutput>;
 
 // The operation
 /**

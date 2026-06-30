@@ -4,6 +4,15 @@ import * as T from "../../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface CreateAnnotationInput {
+  datasets: string[];
+  description?: string;
+  endTime?: string;
+  time?: string;
+  title?: string;
+  type: string;
+  url?: string;
+}
 export const CreateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasets: Schema.Array(Schema.String),
   description: Schema.optional(Schema.String),
@@ -12,10 +21,21 @@ export const CreateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   title: Schema.optional(Schema.String),
   type: Schema.String,
   url: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/v2/annotations" }));
-export type CreateAnnotationInput = typeof CreateAnnotationInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/annotations" }),
+) as unknown as Schema.Codec<CreateAnnotationInput>;
 
 // Output Schema
+export interface CreateAnnotationOutput {
+  datasets: string[];
+  description?: string;
+  endTime?: string | null;
+  id: string;
+  time: string;
+  title?: string;
+  type: string;
+  url?: string;
+}
 export const CreateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     datasets: Schema.Array(Schema.String),
@@ -27,8 +47,7 @@ export const CreateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     type: Schema.String,
     url: Schema.optional(Schema.String),
   },
-);
-export type CreateAnnotationOutput = typeof CreateAnnotationOutput.Type;
+) as unknown as Schema.Codec<CreateAnnotationOutput>;
 
 // The operation
 /**

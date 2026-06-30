@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface SasPortalSetupSasAnalyticsResponse {}
 
-export const SasPortalSetupSasAnalyticsResponse: Schema.Schema<SasPortalSetupSasAnalyticsResponse> =
+export const SasPortalSetupSasAnalyticsResponse: Schema.Codec<SasPortalSetupSasAnalyticsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalSetupSasAnalyticsResponse",
   });
@@ -42,7 +42,7 @@ export interface SasPortalDeviceModel {
   hardwareVersion?: string;
 }
 
-export const SasPortalDeviceModel: Schema.Schema<SasPortalDeviceModel> =
+export const SasPortalDeviceModel: Schema.Codec<SasPortalDeviceModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     softwareVersion: Schema.optional(Schema.String),
     vendor: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export const SasPortalDeviceModel: Schema.Schema<SasPortalDeviceModel> =
 
 export interface SasPortalEmpty {}
 
-export const SasPortalEmpty: Schema.Schema<SasPortalEmpty> =
+export const SasPortalEmpty: Schema.Codec<SasPortalEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalEmpty",
   });
@@ -67,7 +67,7 @@ export interface SasPortalNode {
   sasUserIds?: ReadonlyArray<string>;
 }
 
-export const SasPortalNode: Schema.Schema<SasPortalNode> =
+export const SasPortalNode: Schema.Codec<SasPortalNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface SasPortalCustomer {
   displayName?: string;
 }
 
-export const SasPortalCustomer: Schema.Schema<SasPortalCustomer> =
+export const SasPortalCustomer: Schema.Codec<SasPortalCustomer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sasUserIds: Schema.optional(Schema.Array(Schema.String)),
@@ -97,7 +97,7 @@ export interface SasPortalListCustomersResponse {
   customers?: ReadonlyArray<SasPortalCustomer>;
 }
 
-export const SasPortalListCustomersResponse: Schema.Schema<SasPortalListCustomersResponse> =
+export const SasPortalListCustomersResponse: Schema.Codec<SasPortalListCustomersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     customers: Schema.optional(Schema.Array(SasPortalCustomer)),
@@ -108,7 +108,7 @@ export interface SasPortalMigrateOrganizationRequest {
   organizationId?: string;
 }
 
-export const SasPortalMigrateOrganizationRequest: Schema.Schema<SasPortalMigrateOrganizationRequest> =
+export const SasPortalMigrateOrganizationRequest: Schema.Codec<SasPortalMigrateOrganizationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalMigrateOrganizationRequest" });
@@ -120,7 +120,7 @@ export interface SasPortalAssignment {
   members?: ReadonlyArray<string>;
 }
 
-export const SasPortalAssignment: Schema.Schema<SasPortalAssignment> =
+export const SasPortalAssignment: Schema.Codec<SasPortalAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -133,7 +133,7 @@ export interface SasPortalPolicy {
   etag?: string;
 }
 
-export const SasPortalPolicy: Schema.Schema<SasPortalPolicy> =
+export const SasPortalPolicy: Schema.Codec<SasPortalPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignments: Schema.optional(Schema.Array(SasPortalAssignment)),
     etag: Schema.optional(Schema.String),
@@ -148,7 +148,7 @@ export interface SasPortalSetPolicyRequest {
   policy?: SasPortalPolicy;
 }
 
-export const SasPortalSetPolicyRequest: Schema.Schema<SasPortalSetPolicyRequest> =
+export const SasPortalSetPolicyRequest: Schema.Codec<SasPortalSetPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     disableNotification: Schema.optional(Schema.Boolean),
@@ -166,7 +166,7 @@ export interface SasPortalDeployment {
   frns?: ReadonlyArray<string>;
 }
 
-export const SasPortalDeployment: Schema.Schema<SasPortalDeployment> =
+export const SasPortalDeployment: Schema.Codec<SasPortalDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sasUserIds: Schema.optional(Schema.Array(Schema.String)),
@@ -181,7 +181,7 @@ export interface SasPortalGcpProjectDeployment {
   deployment?: SasPortalDeployment;
 }
 
-export const SasPortalGcpProjectDeployment: Schema.Schema<SasPortalGcpProjectDeployment> =
+export const SasPortalGcpProjectDeployment: Schema.Codec<SasPortalGcpProjectDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasEnabledAnalytics: Schema.optional(Schema.Boolean),
     deployment: Schema.optional(SasPortalDeployment),
@@ -194,7 +194,7 @@ export interface SasPortalUpdateSignedDeviceRequest {
   installerId?: string;
 }
 
-export const SasPortalUpdateSignedDeviceRequest: Schema.Schema<SasPortalUpdateSignedDeviceRequest> =
+export const SasPortalUpdateSignedDeviceRequest: Schema.Codec<SasPortalUpdateSignedDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encodedDevice: Schema.optional(Schema.String),
     installerId: Schema.optional(Schema.String),
@@ -218,7 +218,7 @@ export interface SasPortalDeviceAirInterface {
   supportedSpec?: string;
 }
 
-export const SasPortalDeviceAirInterface: Schema.Schema<SasPortalDeviceAirInterface> =
+export const SasPortalDeviceAirInterface: Schema.Codec<SasPortalDeviceAirInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     radioTechnology: Schema.optional(Schema.String),
     supportedSpec: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export interface SasPortalInstallationParams {
   verticalAccuracy?: number;
 }
 
-export const SasPortalInstallationParams: Schema.Schema<SasPortalInstallationParams> =
+export const SasPortalInstallationParams: Schema.Codec<SasPortalInstallationParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     height: Schema.optional(Schema.Number),
     indoorDeployment: Schema.optional(Schema.Boolean),
@@ -309,7 +309,7 @@ export interface SasPortalDeviceConfig {
   isSigned?: boolean;
 }
 
-export const SasPortalDeviceConfig: Schema.Schema<SasPortalDeviceConfig> =
+export const SasPortalDeviceConfig: Schema.Codec<SasPortalDeviceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -330,7 +330,7 @@ export interface SasPortalFrequencyRange {
   lowFrequencyMhz?: number;
 }
 
-export const SasPortalFrequencyRange: Schema.Schema<SasPortalFrequencyRange> =
+export const SasPortalFrequencyRange: Schema.Codec<SasPortalFrequencyRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     highFrequencyMhz: Schema.optional(Schema.Number),
     lowFrequencyMhz: Schema.optional(Schema.Number),
@@ -343,7 +343,7 @@ export interface SasPortalDpaMoveList {
   frequencyRange?: SasPortalFrequencyRange;
 }
 
-export const SasPortalDpaMoveList: Schema.Schema<SasPortalDpaMoveList> =
+export const SasPortalDpaMoveList: Schema.Codec<SasPortalDpaMoveList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dpaId: Schema.optional(Schema.String),
     frequencyRange: Schema.optional(SasPortalFrequencyRange),
@@ -381,7 +381,7 @@ export interface SasPortalDeviceGrant {
   maxEirp?: number;
 }
 
-export const SasPortalDeviceGrant: Schema.Schema<SasPortalDeviceGrant> =
+export const SasPortalDeviceGrant: Schema.Codec<SasPortalDeviceGrant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suspensionReason: Schema.optional(Schema.Array(Schema.String)),
     state: Schema.optional(Schema.String),
@@ -407,7 +407,7 @@ export interface SasPortalNrqzValidation {
   cpiId?: string;
 }
 
-export const SasPortalNrqzValidation: Schema.Schema<SasPortalNrqzValidation> =
+export const SasPortalNrqzValidation: Schema.Codec<SasPortalNrqzValidation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longitude: Schema.optional(Schema.Number),
     state: Schema.optional(Schema.String),
@@ -429,7 +429,7 @@ export interface SasPortalDeviceMetadata {
   nrqzValidation?: SasPortalNrqzValidation;
 }
 
-export const SasPortalDeviceMetadata: Schema.Schema<SasPortalDeviceMetadata> =
+export const SasPortalDeviceMetadata: Schema.Codec<SasPortalDeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interferenceCoordinationGroup: Schema.optional(Schema.String),
     commonChannelGroup: Schema.optional(Schema.String),
@@ -445,7 +445,7 @@ export interface SasPortalChannelWithScore {
   score?: number;
 }
 
-export const SasPortalChannelWithScore: Schema.Schema<SasPortalChannelWithScore> =
+export const SasPortalChannelWithScore: Schema.Codec<SasPortalChannelWithScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     frequencyRange: Schema.optional(SasPortalFrequencyRange),
     score: Schema.optional(Schema.Number),
@@ -481,7 +481,7 @@ export interface SasPortalDevice {
   grantRangeAllowlists?: ReadonlyArray<SasPortalFrequencyRange>;
 }
 
-export const SasPortalDevice: Schema.Schema<SasPortalDevice> =
+export const SasPortalDevice: Schema.Codec<SasPortalDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fccId: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -503,7 +503,7 @@ export interface SasPortalSignDeviceRequest {
   device?: SasPortalDevice;
 }
 
-export const SasPortalSignDeviceRequest: Schema.Schema<SasPortalSignDeviceRequest> =
+export const SasPortalSignDeviceRequest: Schema.Codec<SasPortalSignDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     device: Schema.optional(SasPortalDevice),
   }).annotate({ identifier: "SasPortalSignDeviceRequest" });
@@ -515,7 +515,7 @@ export interface SasPortalCreateSignedDeviceRequest {
   installerId?: string;
 }
 
-export const SasPortalCreateSignedDeviceRequest: Schema.Schema<SasPortalCreateSignedDeviceRequest> =
+export const SasPortalCreateSignedDeviceRequest: Schema.Codec<SasPortalCreateSignedDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encodedDevice: Schema.optional(Schema.String),
     installerId: Schema.optional(Schema.String),
@@ -530,7 +530,7 @@ export interface SasPortalValidateInstallerRequest {
   secret?: string;
 }
 
-export const SasPortalValidateInstallerRequest: Schema.Schema<SasPortalValidateInstallerRequest> =
+export const SasPortalValidateInstallerRequest: Schema.Codec<SasPortalValidateInstallerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encodedSecret: Schema.optional(Schema.String),
     installerId: Schema.optional(Schema.String),
@@ -542,7 +542,7 @@ export interface SasPortalSetupSasAnalyticsRequest {
   userId?: string;
 }
 
-export const SasPortalSetupSasAnalyticsRequest: Schema.Schema<SasPortalSetupSasAnalyticsRequest> =
+export const SasPortalSetupSasAnalyticsRequest: Schema.Codec<SasPortalSetupSasAnalyticsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalSetupSasAnalyticsRequest" });
@@ -552,7 +552,7 @@ export interface SasPortalListGcpProjectDeploymentsResponse {
   deployments?: ReadonlyArray<SasPortalGcpProjectDeployment>;
 }
 
-export const SasPortalListGcpProjectDeploymentsResponse: Schema.Schema<SasPortalListGcpProjectDeploymentsResponse> =
+export const SasPortalListGcpProjectDeploymentsResponse: Schema.Codec<SasPortalListGcpProjectDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(SasPortalGcpProjectDeployment)),
   }).annotate({ identifier: "SasPortalListGcpProjectDeploymentsResponse" });
@@ -562,7 +562,7 @@ export interface SasPortalGenerateSecretResponse {
   secret?: string;
 }
 
-export const SasPortalGenerateSecretResponse: Schema.Schema<SasPortalGenerateSecretResponse> =
+export const SasPortalGenerateSecretResponse: Schema.Codec<SasPortalGenerateSecretResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secret: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalGenerateSecretResponse" });
@@ -574,7 +574,7 @@ export interface SasPortalDeploymentAssociation {
   userId?: string;
 }
 
-export const SasPortalDeploymentAssociation: Schema.Schema<SasPortalDeploymentAssociation> =
+export const SasPortalDeploymentAssociation: Schema.Codec<SasPortalDeploymentAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcpProjectId: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -585,7 +585,7 @@ export interface SasPortalMigrateOrganizationResponse {
   deploymentAssociation?: ReadonlyArray<SasPortalDeploymentAssociation>;
 }
 
-export const SasPortalMigrateOrganizationResponse: Schema.Schema<SasPortalMigrateOrganizationResponse> =
+export const SasPortalMigrateOrganizationResponse: Schema.Codec<SasPortalMigrateOrganizationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentAssociation: Schema.optional(
       Schema.Array(SasPortalDeploymentAssociation),
@@ -594,14 +594,14 @@ export const SasPortalMigrateOrganizationResponse: Schema.Schema<SasPortalMigrat
 
 export interface SasPortalGenerateSecretRequest {}
 
-export const SasPortalGenerateSecretRequest: Schema.Schema<SasPortalGenerateSecretRequest> =
+export const SasPortalGenerateSecretRequest: Schema.Codec<SasPortalGenerateSecretRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalGenerateSecretRequest",
   });
 
 export interface SasPortalValidateInstallerResponse {}
 
-export const SasPortalValidateInstallerResponse: Schema.Schema<SasPortalValidateInstallerResponse> =
+export const SasPortalValidateInstallerResponse: Schema.Codec<SasPortalValidateInstallerResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalValidateInstallerResponse",
   });
@@ -615,7 +615,7 @@ export interface SasPortalStatus {
   code?: number;
 }
 
-export const SasPortalStatus: Schema.Schema<SasPortalStatus> =
+export const SasPortalStatus: Schema.Codec<SasPortalStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -631,7 +631,7 @@ export interface SasPortalListNodesResponse {
   nextPageToken?: string;
 }
 
-export const SasPortalListNodesResponse: Schema.Schema<SasPortalListNodesResponse> =
+export const SasPortalListNodesResponse: Schema.Codec<SasPortalListNodesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(SasPortalNode)),
     nextPageToken: Schema.optional(Schema.String),
@@ -642,7 +642,7 @@ export interface SasPortalGetPolicyRequest {
   resource?: string;
 }
 
-export const SasPortalGetPolicyRequest: Schema.Schema<SasPortalGetPolicyRequest> =
+export const SasPortalGetPolicyRequest: Schema.Codec<SasPortalGetPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalGetPolicyRequest" });
@@ -658,7 +658,7 @@ export interface SasPortalMigrateOrganizationMetadata {
     | (string & {});
 }
 
-export const SasPortalMigrateOrganizationMetadata: Schema.Schema<SasPortalMigrateOrganizationMetadata> =
+export const SasPortalMigrateOrganizationMetadata: Schema.Codec<SasPortalMigrateOrganizationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationState: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalMigrateOrganizationMetadata" });
@@ -670,7 +670,7 @@ export interface SasPortalListDevicesResponse {
   nextPageToken?: string;
 }
 
-export const SasPortalListDevicesResponse: Schema.Schema<SasPortalListDevicesResponse> =
+export const SasPortalListDevicesResponse: Schema.Codec<SasPortalListDevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(SasPortalDevice)),
     nextPageToken: Schema.optional(Schema.String),
@@ -681,7 +681,7 @@ export interface SasPortalTestPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const SasPortalTestPermissionsResponse: Schema.Schema<SasPortalTestPermissionsResponse> =
+export const SasPortalTestPermissionsResponse: Schema.Codec<SasPortalTestPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SasPortalTestPermissionsResponse" });
@@ -693,7 +693,7 @@ export interface SasPortalListDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const SasPortalListDeploymentsResponse: Schema.Schema<SasPortalListDeploymentsResponse> =
+export const SasPortalListDeploymentsResponse: Schema.Codec<SasPortalListDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(SasPortalDeployment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -704,7 +704,7 @@ export interface SasPortalProvisionDeploymentResponse {
   errorMessage?: string;
 }
 
-export const SasPortalProvisionDeploymentResponse: Schema.Schema<SasPortalProvisionDeploymentResponse> =
+export const SasPortalProvisionDeploymentResponse: Schema.Codec<SasPortalProvisionDeploymentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalProvisionDeploymentResponse" });
@@ -716,7 +716,7 @@ export interface SasPortalOrganization {
   displayName?: string;
 }
 
-export const SasPortalOrganization: Schema.Schema<SasPortalOrganization> =
+export const SasPortalOrganization: Schema.Codec<SasPortalOrganization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -727,7 +727,7 @@ export interface SasPortalListLegacyOrganizationsResponse {
   organizations?: ReadonlyArray<SasPortalOrganization>;
 }
 
-export const SasPortalListLegacyOrganizationsResponse: Schema.Schema<SasPortalListLegacyOrganizationsResponse> =
+export const SasPortalListLegacyOrganizationsResponse: Schema.Codec<SasPortalListLegacyOrganizationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizations: Schema.optional(Schema.Array(SasPortalOrganization)),
   }).annotate({ identifier: "SasPortalListLegacyOrganizationsResponse" });
@@ -737,7 +737,7 @@ export interface SasPortalMoveDeviceRequest {
   destination?: string;
 }
 
-export const SasPortalMoveDeviceRequest: Schema.Schema<SasPortalMoveDeviceRequest> =
+export const SasPortalMoveDeviceRequest: Schema.Codec<SasPortalMoveDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalMoveDeviceRequest" });
@@ -747,7 +747,7 @@ export interface SasPortalMoveDeploymentRequest {
   destination?: string;
 }
 
-export const SasPortalMoveDeploymentRequest: Schema.Schema<SasPortalMoveDeploymentRequest> =
+export const SasPortalMoveDeploymentRequest: Schema.Codec<SasPortalMoveDeploymentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalMoveDeploymentRequest" });
@@ -761,7 +761,7 @@ export interface SasPortalProvisionDeploymentRequest {
   organizationId?: string;
 }
 
-export const SasPortalProvisionDeploymentRequest: Schema.Schema<SasPortalProvisionDeploymentRequest> =
+export const SasPortalProvisionDeploymentRequest: Schema.Codec<SasPortalProvisionDeploymentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newOrganizationDisplayName: Schema.optional(Schema.String),
     newDeploymentDisplayName: Schema.optional(Schema.String),
@@ -775,7 +775,7 @@ export interface SasPortalTestPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const SasPortalTestPermissionsRequest: Schema.Schema<SasPortalTestPermissionsRequest> =
+export const SasPortalTestPermissionsRequest: Schema.Codec<SasPortalTestPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Schema.String)),
@@ -783,7 +783,7 @@ export const SasPortalTestPermissionsRequest: Schema.Schema<SasPortalTestPermiss
 
 export interface SasPortalSetupSasAnalyticsMetadata {}
 
-export const SasPortalSetupSasAnalyticsMetadata: Schema.Schema<SasPortalSetupSasAnalyticsMetadata> =
+export const SasPortalSetupSasAnalyticsMetadata: Schema.Codec<SasPortalSetupSasAnalyticsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalSetupSasAnalyticsMetadata",
   });
@@ -793,7 +793,7 @@ export interface SasPortalMoveNodeRequest {
   destination?: string;
 }
 
-export const SasPortalMoveNodeRequest: Schema.Schema<SasPortalMoveNodeRequest> =
+export const SasPortalMoveNodeRequest: Schema.Codec<SasPortalMoveNodeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalMoveNodeRequest" });
@@ -811,7 +811,7 @@ export interface SasPortalOperation {
   response?: Record<string, unknown>;
 }
 
-export const SasPortalOperation: Schema.Schema<SasPortalOperation> =
+export const SasPortalOperation: Schema.Codec<SasPortalOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -884,7 +884,7 @@ export const GetNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetNodesRequest>;
+) as unknown as Schema.Codec<GetNodesRequest>;
 
 export type GetNodesResponse = SasPortalNode;
 export const GetNodesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
@@ -923,7 +923,7 @@ export const ListNodesDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<ListNodesDevicesRequest>;
 
 export type ListNodesDevicesResponse = SasPortalListDevicesResponse;
 export const ListNodesDevicesResponse =
@@ -959,7 +959,7 @@ export const GetNodesDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetNodesDevicesRequest>;
+) as unknown as Schema.Codec<GetNodesDevicesRequest>;
 
 export type GetNodesDevicesResponse = SasPortalDevice;
 export const GetNodesDevicesResponse =
@@ -997,7 +997,7 @@ export const CreateNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesDevicesRequest>;
 
 export type CreateNodesDevicesResponse = SasPortalDevice;
 export const CreateNodesDevicesResponse =
@@ -1039,7 +1039,7 @@ export const PatchNodesDevicesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<PatchNodesDevicesRequest>;
 
 export type PatchNodesDevicesResponse = SasPortalDevice;
 export const PatchNodesDevicesResponse =
@@ -1075,7 +1075,7 @@ export const DeleteNodesDevicesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<DeleteNodesDevicesRequest>;
 
 export type DeleteNodesDevicesResponse = SasPortalEmpty;
 export const DeleteNodesDevicesResponse =
@@ -1120,7 +1120,7 @@ export const CreateSignedNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedNodesDevicesRequest>;
 
 export type CreateSignedNodesDevicesResponse = SasPortalDevice;
 export const CreateSignedNodesDevicesResponse =
@@ -1165,7 +1165,7 @@ export const UpdateSignedNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSignedNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<UpdateSignedNodesDevicesRequest>;
 
 export type UpdateSignedNodesDevicesResponse = SasPortalDevice;
 export const UpdateSignedNodesDevicesResponse =
@@ -1204,7 +1204,7 @@ export const MoveNodesDevicesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<MoveNodesDevicesRequest>;
 
 export type MoveNodesDevicesResponse = SasPortalOperation;
 export const MoveNodesDevicesResponse =
@@ -1247,7 +1247,7 @@ export const SignDeviceNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SignDeviceNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<SignDeviceNodesDevicesRequest>;
 
 export type SignDeviceNodesDevicesResponse = SasPortalEmpty;
 export const SignDeviceNodesDevicesResponse =
@@ -1289,7 +1289,7 @@ export const PatchNodesDeploymentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PatchNodesDeploymentsRequest>;
 
 export type PatchNodesDeploymentsResponse = SasPortalDeployment;
 export const PatchNodesDeploymentsResponse =
@@ -1328,7 +1328,7 @@ export const MoveNodesDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<MoveNodesDeploymentsRequest>;
 
 export type MoveNodesDeploymentsResponse = SasPortalOperation;
 export const MoveNodesDeploymentsResponse =
@@ -1364,7 +1364,7 @@ export const DeleteNodesDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteNodesDeploymentsRequest>;
 
 export type DeleteNodesDeploymentsResponse = SasPortalEmpty;
 export const DeleteNodesDeploymentsResponse =
@@ -1409,7 +1409,7 @@ export const ListNodesDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListNodesDeploymentsRequest>;
 
 export type ListNodesDeploymentsResponse = SasPortalListDeploymentsResponse;
 export const ListNodesDeploymentsResponse =
@@ -1444,7 +1444,7 @@ export const GetNodesDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetNodesDeploymentsRequest>;
 
 export type GetNodesDeploymentsResponse = SasPortalDeployment;
 export const GetNodesDeploymentsResponse =
@@ -1484,7 +1484,7 @@ export const ListNodesDeploymentsDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<ListNodesDeploymentsDevicesRequest>;
 
 export type ListNodesDeploymentsDevicesResponse = SasPortalListDevicesResponse;
 export const ListNodesDeploymentsDevicesResponse =
@@ -1531,7 +1531,7 @@ export const CreateSignedNodesDeploymentsDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedNodesDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedNodesDeploymentsDevicesRequest>;
 
 export type CreateSignedNodesDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateSignedNodesDeploymentsDevicesResponse =
@@ -1574,7 +1574,7 @@ export const CreateNodesDeploymentsDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesDeploymentsDevicesRequest>;
 
 export type CreateNodesDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateNodesDeploymentsDevicesResponse =
@@ -1609,7 +1609,7 @@ export const GetNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetNodesNodesRequest>;
+) as unknown as Schema.Codec<GetNodesNodesRequest>;
 
 export type GetNodesNodesResponse = SasPortalNode;
 export const GetNodesNodesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
@@ -1639,7 +1639,7 @@ export const DeleteNodesNodesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNodesNodesRequest>;
+  ) as unknown as Schema.Codec<DeleteNodesNodesRequest>;
 
 export type DeleteNodesNodesResponse = SasPortalEmpty;
 export const DeleteNodesNodesResponse =
@@ -1683,7 +1683,7 @@ export const ListNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
   svc,
-) as unknown as Schema.Schema<ListNodesNodesRequest>;
+) as unknown as Schema.Codec<ListNodesNodesRequest>;
 
 export type ListNodesNodesResponse = SasPortalListNodesResponse;
 export const ListNodesNodesResponse =
@@ -1721,7 +1721,7 @@ export const CreateNodesNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesNodesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesNodesRequest>;
 
 export type CreateNodesNodesResponse = SasPortalNode;
 export const CreateNodesNodesResponse =
@@ -1764,7 +1764,7 @@ export const PatchNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchNodesNodesRequest>;
+) as unknown as Schema.Codec<PatchNodesNodesRequest>;
 
 export type PatchNodesNodesResponse = SasPortalNode;
 export const PatchNodesNodesResponse =
@@ -1802,7 +1802,7 @@ export const MoveNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<MoveNodesNodesRequest>;
+) as unknown as Schema.Codec<MoveNodesNodesRequest>;
 
 export type MoveNodesNodesResponse = SasPortalOperation;
 export const MoveNodesNodesResponse =
@@ -1847,7 +1847,7 @@ export const ListNodesNodesDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<ListNodesNodesDevicesRequest>;
 
 export type ListNodesNodesDevicesResponse = SasPortalListDevicesResponse;
 export const ListNodesNodesDevicesResponse =
@@ -1889,7 +1889,7 @@ export const CreateNodesNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesNodesDevicesRequest>;
 
 export type CreateNodesNodesDevicesResponse = SasPortalDevice;
 export const CreateNodesNodesDevicesResponse =
@@ -1934,7 +1934,7 @@ export const CreateSignedNodesNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedNodesNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedNodesNodesDevicesRequest>;
 
 export type CreateSignedNodesNodesDevicesResponse = SasPortalDevice;
 export const CreateSignedNodesNodesDevicesResponse =
@@ -1977,7 +1977,7 @@ export const CreateNodesNodesDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateNodesNodesDeploymentsRequest>;
 
 export type CreateNodesNodesDeploymentsResponse = SasPortalDeployment;
 export const CreateNodesNodesDeploymentsResponse =
@@ -2022,7 +2022,7 @@ export const ListNodesNodesDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListNodesNodesDeploymentsRequest>;
 
 export type ListNodesNodesDeploymentsResponse =
   SasPortalListDeploymentsResponse;
@@ -2064,7 +2064,7 @@ export const CreateNodesNodesNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesNodesNodesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesNodesNodesRequest>;
 
 export type CreateNodesNodesNodesResponse = SasPortalNode;
 export const CreateNodesNodesNodesResponse =
@@ -2109,7 +2109,7 @@ export const ListNodesNodesNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesNodesNodesRequest>;
+  ) as unknown as Schema.Codec<ListNodesNodesNodesRequest>;
 
 export type ListNodesNodesNodesResponse = SasPortalListNodesResponse;
 export const ListNodesNodesNodesResponse =
@@ -2148,7 +2148,7 @@ export const ValidateInstallerRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ValidateInstallerRequest>;
+  ) as unknown as Schema.Codec<ValidateInstallerRequest>;
 
 export type ValidateInstallerResponse = SasPortalValidateInstallerResponse;
 export const ValidateInstallerResponse =
@@ -2188,7 +2188,7 @@ export const GenerateSecretInstallerRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateSecretInstallerRequest>;
+  ) as unknown as Schema.Codec<GenerateSecretInstallerRequest>;
 
 export type GenerateSecretInstallerResponse = SasPortalGenerateSecretResponse;
 export const GenerateSecretInstallerResponse =
@@ -2223,7 +2223,7 @@ export const GetDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetDeploymentsRequest>;
+) as unknown as Schema.Codec<GetDeploymentsRequest>;
 
 export type GetDeploymentsResponse = SasPortalDeployment;
 export const GetDeploymentsResponse =
@@ -2260,7 +2260,7 @@ export const PatchDeploymentsDevicesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<PatchDeploymentsDevicesRequest>;
 
 export type PatchDeploymentsDevicesResponse = SasPortalDevice;
 export const PatchDeploymentsDevicesResponse =
@@ -2299,7 +2299,7 @@ export const MoveDeploymentsDevicesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<MoveDeploymentsDevicesRequest>;
 
 export type MoveDeploymentsDevicesResponse = SasPortalOperation;
 export const MoveDeploymentsDevicesResponse =
@@ -2342,7 +2342,7 @@ export const SignDeviceDeploymentsDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SignDeviceDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<SignDeviceDeploymentsDevicesRequest>;
 
 export type SignDeviceDeploymentsDevicesResponse = SasPortalEmpty;
 export const SignDeviceDeploymentsDevicesResponse =
@@ -2378,7 +2378,7 @@ export const DeleteDeploymentsDevicesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<DeleteDeploymentsDevicesRequest>;
 
 export type DeleteDeploymentsDevicesResponse = SasPortalEmpty;
 export const DeleteDeploymentsDevicesResponse =
@@ -2414,7 +2414,7 @@ export const GetDeploymentsDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<GetDeploymentsDevicesRequest>;
 
 export type GetDeploymentsDevicesResponse = SasPortalDevice;
 export const GetDeploymentsDevicesResponse =
@@ -2454,7 +2454,7 @@ export const UpdateSignedDeploymentsDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSignedDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<UpdateSignedDeploymentsDevicesRequest>;
 
 export type UpdateSignedDeploymentsDevicesResponse = SasPortalDevice;
 export const UpdateSignedDeploymentsDevicesResponse =
@@ -2496,7 +2496,7 @@ export const MigrateOrganizationCustomersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MigrateOrganizationCustomersRequest>;
+  ) as unknown as Schema.Codec<MigrateOrganizationCustomersRequest>;
 
 export type MigrateOrganizationCustomersResponse = SasPortalOperation;
 export const MigrateOrganizationCustomersResponse =
@@ -2530,7 +2530,7 @@ export const ListGcpProjectDeploymentsCustomersRequest =
       path: "v1alpha1/customers:listGcpProjectDeployments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGcpProjectDeploymentsCustomersRequest>;
+  ) as unknown as Schema.Codec<ListGcpProjectDeploymentsCustomersRequest>;
 
 export type ListGcpProjectDeploymentsCustomersResponse =
   SasPortalListGcpProjectDeploymentsResponse;
@@ -2570,7 +2570,7 @@ export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchCustomersRequest>;
+) as unknown as Schema.Codec<PatchCustomersRequest>;
 
 export type PatchCustomersResponse = SasPortalCustomer;
 export const PatchCustomersResponse =
@@ -2604,7 +2604,7 @@ export const ListLegacyOrganizationsCustomersRequest =
       path: "v1alpha1/customers:listLegacyOrganizations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListLegacyOrganizationsCustomersRequest>;
+  ) as unknown as Schema.Codec<ListLegacyOrganizationsCustomersRequest>;
 
 export type ListLegacyOrganizationsCustomersResponse =
   SasPortalListLegacyOrganizationsResponse;
@@ -2641,7 +2641,7 @@ export const ListCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/customers" }),
   svc,
-) as unknown as Schema.Schema<ListCustomersRequest>;
+) as unknown as Schema.Codec<ListCustomersRequest>;
 
 export type ListCustomersResponse = SasPortalListCustomersResponse;
 export const ListCustomersResponse =
@@ -2675,7 +2675,7 @@ export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetCustomersRequest>;
+) as unknown as Schema.Codec<GetCustomersRequest>;
 
 export type GetCustomersResponse = SasPortalCustomer;
 export const GetCustomersResponse =
@@ -2712,7 +2712,7 @@ export const ProvisionDeploymentCustomersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionDeploymentCustomersRequest>;
+  ) as unknown as Schema.Codec<ProvisionDeploymentCustomersRequest>;
 
 export type ProvisionDeploymentCustomersResponse =
   SasPortalProvisionDeploymentResponse;
@@ -2753,7 +2753,7 @@ export const SetupSasAnalyticsCustomersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetupSasAnalyticsCustomersRequest>;
+  ) as unknown as Schema.Codec<SetupSasAnalyticsCustomersRequest>;
 
 export type SetupSasAnalyticsCustomersResponse = SasPortalOperation;
 export const SetupSasAnalyticsCustomersResponse =
@@ -2789,7 +2789,7 @@ export const GetCustomersNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersNodesRequest>;
+  ) as unknown as Schema.Codec<GetCustomersNodesRequest>;
 
 export type GetCustomersNodesResponse = SasPortalNode;
 export const GetCustomersNodesResponse =
@@ -2820,7 +2820,7 @@ export const DeleteCustomersNodesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCustomersNodesRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomersNodesRequest>;
 
 export type DeleteCustomersNodesResponse = SasPortalEmpty;
 export const DeleteCustomersNodesResponse =
@@ -2865,7 +2865,7 @@ export const ListCustomersNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersNodesRequest>;
+  ) as unknown as Schema.Codec<ListCustomersNodesRequest>;
 
 export type ListCustomersNodesResponse = SasPortalListNodesResponse;
 export const ListCustomersNodesResponse =
@@ -2903,7 +2903,7 @@ export const CreateCustomersNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersNodesRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersNodesRequest>;
 
 export type CreateCustomersNodesResponse = SasPortalNode;
 export const CreateCustomersNodesResponse =
@@ -2945,7 +2945,7 @@ export const PatchCustomersNodesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchCustomersNodesRequest>;
+  ) as unknown as Schema.Codec<PatchCustomersNodesRequest>;
 
 export type PatchCustomersNodesResponse = SasPortalNode;
 export const PatchCustomersNodesResponse =
@@ -2984,7 +2984,7 @@ export const MoveCustomersNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveCustomersNodesRequest>;
+  ) as unknown as Schema.Codec<MoveCustomersNodesRequest>;
 
 export type MoveCustomersNodesResponse = SasPortalOperation;
 export const MoveCustomersNodesResponse =
@@ -3029,7 +3029,7 @@ export const ListCustomersNodesDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<ListCustomersNodesDevicesRequest>;
 
 export type ListCustomersNodesDevicesResponse = SasPortalListDevicesResponse;
 export const ListCustomersNodesDevicesResponse =
@@ -3074,7 +3074,7 @@ export const CreateCustomersNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersNodesDevicesRequest>;
 
 export type CreateCustomersNodesDevicesResponse = SasPortalDevice;
 export const CreateCustomersNodesDevicesResponse =
@@ -3119,7 +3119,7 @@ export const CreateSignedCustomersNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedCustomersNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedCustomersNodesDevicesRequest>;
 
 export type CreateSignedCustomersNodesDevicesResponse = SasPortalDevice;
 export const CreateSignedCustomersNodesDevicesResponse =
@@ -3162,7 +3162,7 @@ export const CreateCustomersNodesDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersNodesDeploymentsRequest>;
 
 export type CreateCustomersNodesDeploymentsResponse = SasPortalDeployment;
 export const CreateCustomersNodesDeploymentsResponse =
@@ -3207,7 +3207,7 @@ export const ListCustomersNodesDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListCustomersNodesDeploymentsRequest>;
 
 export type ListCustomersNodesDeploymentsResponse =
   SasPortalListDeploymentsResponse;
@@ -3249,7 +3249,7 @@ export const CreateCustomersNodesNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersNodesNodesRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersNodesNodesRequest>;
 
 export type CreateCustomersNodesNodesResponse = SasPortalNode;
 export const CreateCustomersNodesNodesResponse =
@@ -3294,7 +3294,7 @@ export const ListCustomersNodesNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersNodesNodesRequest>;
+  ) as unknown as Schema.Codec<ListCustomersNodesNodesRequest>;
 
 export type ListCustomersNodesNodesResponse = SasPortalListNodesResponse;
 export const ListCustomersNodesNodesResponse =
@@ -3329,7 +3329,7 @@ export const GetCustomersDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<GetCustomersDevicesRequest>;
 
 export type GetCustomersDevicesResponse = SasPortalDevice;
 export const GetCustomersDevicesResponse =
@@ -3369,7 +3369,7 @@ export const ListCustomersDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<ListCustomersDevicesRequest>;
 
 export type ListCustomersDevicesResponse = SasPortalListDevicesResponse;
 export const ListCustomersDevicesResponse =
@@ -3411,7 +3411,7 @@ export const CreateCustomersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersDevicesRequest>;
 
 export type CreateCustomersDevicesResponse = SasPortalDevice;
 export const CreateCustomersDevicesResponse =
@@ -3453,7 +3453,7 @@ export const PatchCustomersDevicesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<PatchCustomersDevicesRequest>;
 
 export type PatchCustomersDevicesResponse = SasPortalDevice;
 export const PatchCustomersDevicesResponse =
@@ -3489,7 +3489,7 @@ export const DeleteCustomersDevicesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomersDevicesRequest>;
 
 export type DeleteCustomersDevicesResponse = SasPortalEmpty;
 export const DeleteCustomersDevicesResponse =
@@ -3534,7 +3534,7 @@ export const CreateSignedCustomersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedCustomersDevicesRequest>;
 
 export type CreateSignedCustomersDevicesResponse = SasPortalDevice;
 export const CreateSignedCustomersDevicesResponse =
@@ -3579,7 +3579,7 @@ export const UpdateSignedCustomersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSignedCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<UpdateSignedCustomersDevicesRequest>;
 
 export type UpdateSignedCustomersDevicesResponse = SasPortalDevice;
 export const UpdateSignedCustomersDevicesResponse =
@@ -3618,7 +3618,7 @@ export const MoveCustomersDevicesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<MoveCustomersDevicesRequest>;
 
 export type MoveCustomersDevicesResponse = SasPortalOperation;
 export const MoveCustomersDevicesResponse =
@@ -3661,7 +3661,7 @@ export const SignDeviceCustomersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SignDeviceCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<SignDeviceCustomersDevicesRequest>;
 
 export type SignDeviceCustomersDevicesResponse = SasPortalEmpty;
 export const SignDeviceCustomersDevicesResponse =
@@ -3703,7 +3703,7 @@ export const PatchCustomersDeploymentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PatchCustomersDeploymentsRequest>;
 
 export type PatchCustomersDeploymentsResponse = SasPortalDeployment;
 export const PatchCustomersDeploymentsResponse =
@@ -3742,7 +3742,7 @@ export const MoveCustomersDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<MoveCustomersDeploymentsRequest>;
 
 export type MoveCustomersDeploymentsResponse = SasPortalOperation;
 export const MoveCustomersDeploymentsResponse =
@@ -3778,7 +3778,7 @@ export const GetCustomersDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetCustomersDeploymentsRequest>;
 
 export type GetCustomersDeploymentsResponse = SasPortalDeployment;
 export const GetCustomersDeploymentsResponse =
@@ -3809,7 +3809,7 @@ export const DeleteCustomersDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomersDeploymentsRequest>;
 
 export type DeleteCustomersDeploymentsResponse = SasPortalEmpty;
 export const DeleteCustomersDeploymentsResponse =
@@ -3854,7 +3854,7 @@ export const ListCustomersDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListCustomersDeploymentsRequest>;
 
 export type ListCustomersDeploymentsResponse = SasPortalListDeploymentsResponse;
 export const ListCustomersDeploymentsResponse =
@@ -3899,7 +3899,7 @@ export const CreateCustomersDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersDeploymentsRequest>;
 
 export type CreateCustomersDeploymentsResponse = SasPortalDeployment;
 export const CreateCustomersDeploymentsResponse =
@@ -3944,7 +3944,7 @@ export const CreateSignedCustomersDeploymentsDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedCustomersDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedCustomersDeploymentsDevicesRequest>;
 
 export type CreateSignedCustomersDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateSignedCustomersDeploymentsDevicesResponse =
@@ -3987,7 +3987,7 @@ export const CreateCustomersDeploymentsDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersDeploymentsDevicesRequest>;
 
 export type CreateCustomersDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateCustomersDeploymentsDevicesResponse =
@@ -4032,7 +4032,7 @@ export const ListCustomersDeploymentsDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<ListCustomersDeploymentsDevicesRequest>;
 
 export type ListCustomersDeploymentsDevicesResponse =
   SasPortalListDevicesResponse;
@@ -4070,7 +4070,7 @@ export const SetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1alpha1/policies:set", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SetPoliciesRequest>;
+) as unknown as Schema.Codec<SetPoliciesRequest>;
 
 export type SetPoliciesResponse = SasPortalPolicy;
 export const SetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalPolicy;
@@ -4104,7 +4104,7 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1alpha1/policies:get", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<GetPoliciesRequest>;
+) as unknown as Schema.Codec<GetPoliciesRequest>;
 
 export type GetPoliciesResponse = SasPortalPolicy;
 export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalPolicy;
@@ -4138,7 +4138,7 @@ export const TestPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1alpha1/policies:test", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<TestPoliciesRequest>;
+) as unknown as Schema.Codec<TestPoliciesRequest>;
 
 export type TestPoliciesResponse = SasPortalTestPermissionsResponse;
 export const TestPoliciesResponse =

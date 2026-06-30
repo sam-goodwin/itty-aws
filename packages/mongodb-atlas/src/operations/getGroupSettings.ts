@@ -4,18 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupSettingsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/settings" }),
-);
-export type GetGroupSettingsInput = typeof GetGroupSettingsInput.Type;
+) as unknown as Schema.Codec<GetGroupSettingsInput>;
 
 // Output Schema
-export const GetGroupSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupSettingsOutput = typeof GetGroupSettingsOutput.Type;
+export type GetGroupSettingsOutput = void;
+export const GetGroupSettingsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupSettingsOutput>;
 
 // The operation
 /**

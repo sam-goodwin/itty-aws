@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsClusteringConfigSetEventFiltersCreateInput {
+  project_id: string;
+  event_filters: Record<string, unknown>[];
+}
 export const LlmAnalyticsClusteringConfigSetEventFiltersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,19 +16,20 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_analytics/clustering_config/set_event_filters/",
     }),
-  );
-export type LlmAnalyticsClusteringConfigSetEventFiltersCreateInput =
-  typeof LlmAnalyticsClusteringConfigSetEventFiltersCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsClusteringConfigSetEventFiltersCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput {
+  event_filters: Record<string, unknown>[];
+  created_at: string;
+  updated_at: string;
+}
 export const LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     event_filters: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput =
-  typeof LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsClusteringConfigSetEventFiltersCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsAttributesRetrieveInput {
+  project_id: string;
+  attribute_type?: "log" | "resource";
+  dateRange?: string;
+  filterGroup?: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+  search_values?: boolean;
+  serviceNames?: string;
+}
 export const LogsAttributesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +31,18 @@ export const LogsAttributesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/logs/attributes/",
     }),
-  );
-export type LogsAttributesRetrieveInput =
-  typeof LogsAttributesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LogsAttributesRetrieveInput>;
 
 // Output Schema
+export interface LogsAttributesRetrieveOutput {
+  results?: {
+    name?: string;
+    propertyFilterType?: string;
+    matchedOn?: "key" | "value";
+    matchedValue?: string | null;
+  }[];
+  count?: number;
+}
 export const LogsAttributesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -38,9 +56,7 @@ export const LogsAttributesRetrieveOutput =
       ),
     ),
     count: Schema.optional(Schema.Number),
-  });
-export type LogsAttributesRetrieveOutput =
-  typeof LogsAttributesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LogsAttributesRetrieveOutput>;
 
 // The operation
 /**

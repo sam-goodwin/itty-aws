@@ -116,19 +116,19 @@ describe("ACM", () => {
   });
 
   // --------------------------------------------------------------------------
-  // createTotalTl
+  // updateTotalTl
   // --------------------------------------------------------------------------
-  describe("createTotalTl", () => {
+  describe("updateTotalTl", () => {
     if (hasAcmZoneId()) {
       test("happy path - enables Total TLS for a zone", () =>
         Effect.gen(function* () {
           // Ensure disabled first to guarantee a state change
-          yield* ACM.createTotalTl({
+          yield* ACM.updateTotalTl({
             zoneId: acmZoneId(),
             enabled: false,
           }).pipe(Effect.catch(() => Effect.void));
 
-          const result = yield* ACM.createTotalTl({
+          const result = yield* ACM.updateTotalTl({
             zoneId: acmZoneId(),
             enabled: true,
           });
@@ -152,7 +152,7 @@ describe("ACM", () => {
             () => Effect.void,
           ),
           Effect.ensuring(
-            ACM.createTotalTl({
+            ACM.updateTotalTl({
               zoneId: acmZoneId(),
               enabled: false,
             }).pipe(Effect.catch(() => Effect.void)),
@@ -163,12 +163,12 @@ describe("ACM", () => {
         Effect.gen(function* () {
           // Enable first to guarantee a state change when we disable.
           // This may fail with NoStateChange if TLS is already enabled.
-          yield* ACM.createTotalTl({
+          yield* ACM.updateTotalTl({
             zoneId: acmZoneId(),
             enabled: true,
           }).pipe(Effect.catch(() => Effect.void));
 
-          const result = yield* ACM.createTotalTl({
+          const result = yield* ACM.updateTotalTl({
             zoneId: acmZoneId(),
             enabled: false,
           });
@@ -192,12 +192,12 @@ describe("ACM", () => {
       test("happy path - enables Total TLS with certificate authority", () =>
         Effect.gen(function* () {
           // Ensure disabled first to guarantee a state change
-          yield* ACM.createTotalTl({
+          yield* ACM.updateTotalTl({
             zoneId: acmZoneId(),
             enabled: false,
           }).pipe(Effect.catch(() => Effect.void));
 
-          const result = yield* ACM.createTotalTl({
+          const result = yield* ACM.updateTotalTl({
             zoneId: acmZoneId(),
             enabled: true,
             certificateAuthority: "lets_encrypt",
@@ -221,7 +221,7 @@ describe("ACM", () => {
             () => Effect.void,
           ),
           Effect.ensuring(
-            ACM.createTotalTl({
+            ACM.updateTotalTl({
               zoneId: acmZoneId(),
               enabled: false,
             }).pipe(Effect.catch(() => Effect.void)),
@@ -237,7 +237,7 @@ describe("ACM", () => {
 
     if (hasZoneId()) {
       test("error - AdvancedCertificateManagerRequired or NoStateChange when creating on non-ACM zone", () =>
-        ACM.createTotalTl({
+        ACM.updateTotalTl({
           zoneId: zoneId(),
           enabled: true,
         }).pipe(
@@ -256,7 +256,7 @@ describe("ACM", () => {
     }
 
     test("error - InvalidObjectIdentifier for invalid zoneId", () =>
-      ACM.createTotalTl({
+      ACM.updateTotalTl({
         zoneId: "invalid-zone-id-000",
         enabled: true,
       }).pipe(
@@ -265,7 +265,7 @@ describe("ACM", () => {
       ));
 
     test("error - InvalidObjectIdentifier for empty zoneId", () =>
-      ACM.createTotalTl({
+      ACM.updateTotalTl({
         zoneId: "",
         enabled: true,
       }).pipe(

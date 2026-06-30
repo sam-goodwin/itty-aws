@@ -3,8 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 import { SensitiveOutputNullableString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface DashboardsSharingListInput {
+  dashboard_id: number;
+  project_id: string;
+}
 export const DashboardsSharingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dashboard_id: Schema.Number.pipe(T.PathParam()),
@@ -14,10 +19,23 @@ export const DashboardsSharingListInput =
       method: "GET",
       path: "/api/projects/{project_id}/dashboards/{dashboard_id}/sharing/",
     }),
-  );
-export type DashboardsSharingListInput = typeof DashboardsSharingListInput.Type;
+  ) as unknown as Schema.Codec<DashboardsSharingListInput>;
 
 // Output Schema
+export type DashboardsSharingListOutput = {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}[];
 export const DashboardsSharingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -38,9 +56,7 @@ export const DashboardsSharingListOutput =
         ),
       ),
     }),
-  );
-export type DashboardsSharingListOutput =
-  typeof DashboardsSharingListOutput.Type;
+  ) as unknown as Schema.Codec<DashboardsSharingListOutput>;
 
 // The operation
 /**

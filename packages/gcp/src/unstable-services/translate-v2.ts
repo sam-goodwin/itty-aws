@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface TranslationsResource {
   model?: string;
 }
 
-export const TranslationsResource: Schema.Schema<TranslationsResource> =
+export const TranslationsResource: Schema.Codec<TranslationsResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectedSourceLanguage: Schema.optional(Schema.String),
     translatedText: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface DetectionsListResponse {
   detections?: ReadonlyArray<DetectionsResource>;
 }
 
-export const DetectionsListResponse: Schema.Schema<DetectionsListResponse> =
+export const DetectionsListResponse: Schema.Codec<DetectionsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detections: Schema.optional(Schema.Array(DetectionsResource)),
   }).annotate({ identifier: "DetectionsListResponse" });
@@ -58,7 +58,7 @@ export interface LanguagesResource {
   name?: string;
 }
 
-export const LanguagesResource: Schema.Schema<LanguagesResource> =
+export const LanguagesResource: Schema.Codec<LanguagesResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     language: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface TranslationsListResponse {
   translations?: ReadonlyArray<TranslationsResource>;
 }
 
-export const TranslationsListResponse: Schema.Schema<TranslationsListResponse> =
+export const TranslationsListResponse: Schema.Codec<TranslationsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     translations: Schema.optional(Schema.Array(TranslationsResource)),
   }).annotate({ identifier: "TranslationsListResponse" });
@@ -87,7 +87,7 @@ export interface TranslateTextRequest {
   q?: ReadonlyArray<string>;
 }
 
-export const TranslateTextRequest: Schema.Schema<TranslateTextRequest> =
+export const TranslateTextRequest: Schema.Codec<TranslateTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String),
     format: Schema.optional(Schema.String),
@@ -101,7 +101,7 @@ export interface DetectLanguageRequest {
   q?: ReadonlyArray<string>;
 }
 
-export const DetectLanguageRequest: Schema.Schema<DetectLanguageRequest> =
+export const DetectLanguageRequest: Schema.Codec<DetectLanguageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     q: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DetectLanguageRequest" });
@@ -111,7 +111,7 @@ export interface LanguagesListResponse {
   languages?: ReadonlyArray<LanguagesResource>;
 }
 
-export const LanguagesListResponse: Schema.Schema<LanguagesListResponse> =
+export const LanguagesListResponse: Schema.Codec<LanguagesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languages: Schema.optional(Schema.Array(LanguagesResource)),
   }).annotate({ identifier: "LanguagesListResponse" });
@@ -121,7 +121,7 @@ export interface GetSupportedLanguagesRequest {
   target?: string;
 }
 
-export const GetSupportedLanguagesRequest: Schema.Schema<GetSupportedLanguagesRequest> =
+export const GetSupportedLanguagesRequest: Schema.Codec<GetSupportedLanguagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetSupportedLanguagesRequest" });
@@ -201,7 +201,7 @@ export const ListLanguagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/languages" }),
   svc,
-) as unknown as Schema.Schema<ListLanguagesRequest>;
+) as unknown as Schema.Codec<ListLanguagesRequest>;
 
 export type ListLanguagesResponse = LanguagesListResponse;
 export const ListLanguagesResponse =
@@ -239,7 +239,7 @@ export const ListDetectionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/detect" }),
   svc,
-) as unknown as Schema.Schema<ListDetectionsRequest>;
+) as unknown as Schema.Codec<ListDetectionsRequest>;
 
 export type ListDetectionsResponse = DetectionsListResponse;
 export const ListDetectionsResponse =
@@ -278,7 +278,7 @@ export const DetectDetectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/detect", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DetectDetectionsRequest>;
+  ) as unknown as Schema.Codec<DetectDetectionsRequest>;
 
 export type DetectDetectionsResponse = DetectionsListResponse;
 export const DetectDetectionsResponse =
@@ -337,7 +337,7 @@ export const ListTranslationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2" }),
     svc,
-  ) as unknown as Schema.Schema<ListTranslationsRequest>;
+  ) as unknown as Schema.Codec<ListTranslationsRequest>;
 
 export type ListTranslationsResponse = TranslationsListResponse;
 export const ListTranslationsResponse =
@@ -376,7 +376,7 @@ export const TranslateTranslationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TranslateTranslationsRequest>;
+  ) as unknown as Schema.Codec<TranslateTranslationsRequest>;
 
 export type TranslateTranslationsResponse = TranslationsListResponse;
 export const TranslateTranslationsResponse =

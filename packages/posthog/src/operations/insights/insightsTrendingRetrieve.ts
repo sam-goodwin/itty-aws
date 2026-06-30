@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightsTrendingRetrieveInput {
+  project_id: string;
+  days?: number;
+  format?: "csv" | "json";
+  limit?: number;
+  offset?: number;
+}
 export const InsightsTrendingRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,102 @@ export const InsightsTrendingRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/insights/trending/",
     }),
-  );
-export type InsightsTrendingRetrieveInput =
-  typeof InsightsTrendingRetrieveInput.Type;
+  ) as unknown as Schema.Codec<InsightsTrendingRetrieveInput>;
 
 // Output Schema
+export interface InsightsTrendingRetrieveOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: number;
+    short_id: string;
+    name?: string | null;
+    derived_name?: string | null;
+    query?: unknown;
+    dashboards: number[];
+    dashboard_tiles: {
+      id?: number;
+      dashboard_id?: number;
+      deleted?: boolean | null;
+    }[];
+    description?: string | null;
+    last_refresh: string | null;
+    refreshing: boolean;
+    tags?: unknown[];
+    updated_at: string;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    created_at: string | null;
+    last_modified_at?: string;
+    favorited?: boolean;
+    user_access_level: string | null;
+    last_viewed_at: string | null;
+    search_match_type: "exact" | "similar" | null;
+    view_count: number;
+    viewers: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    }[];
+    last_modified_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+  }[];
+}
 export const InsightsTrendingRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -57,14 +155,30 @@ export const InsightsTrendingRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
         created_at: Schema.NullOr(Schema.String),
         last_modified_at: Schema.optional(Schema.String),
         favorited: Schema.optional(Schema.Boolean),
         user_access_level: Schema.NullOr(Schema.String),
         last_viewed_at: Schema.NullOr(Schema.String),
-        search_match_type: Schema.Unknown,
+        search_match_type: Schema.NullOr(Schema.Literals(["exact", "similar"])),
         view_count: Schema.Number,
         viewers: Schema.Array(
           Schema.Struct({
@@ -78,7 +192,23 @@ export const InsightsTrendingRetrieveOutput =
             hedgehog_config: Schema.optional(
               Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
             ),
-            role_at_organization: Schema.optional(Schema.Unknown),
+            role_at_organization: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals([
+                    "engineering",
+                    "data",
+                    "product",
+                    "founder",
+                    "leadership",
+                    "marketing",
+                    "sales",
+                    "other",
+                  ]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
           }),
         ),
         last_modified_by: Schema.Struct({
@@ -92,13 +222,27 @@ export const InsightsTrendingRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       }),
     ),
-  });
-export type InsightsTrendingRetrieveOutput =
-  typeof InsightsTrendingRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<InsightsTrendingRetrieveOutput>;
 
 // The operation
 /**

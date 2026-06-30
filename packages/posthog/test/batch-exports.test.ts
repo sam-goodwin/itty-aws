@@ -32,7 +32,7 @@ describe("BatchExports", () => {
       project_id?: string;
       batch_export_id?: string;
       id?: string;
-    }) => ({
+    }): BatchExports.BatchExportsBackfillsCancelCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       batch_export_id: overrides.batch_export_id ?? batchExportId(),
       id: overrides.id ?? backfillId(),
@@ -135,7 +135,7 @@ describe("BatchExports", () => {
       project_id?: string;
       batch_export_id?: string;
       id: string;
-    }) => ({
+    }): BatchExports.BatchExportsBackfillsCancelCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       batch_export_id: overrides.batch_export_id ?? batchExportId(),
       id: overrides.id,
@@ -161,7 +161,7 @@ describe("BatchExports", () => {
       batch_export_id?: string;
       start_at?: string;
       end_at?: string;
-    }) => ({
+    }): BatchExports.BatchExportsBackfillsCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       batch_export_id: overrides.batch_export_id ?? batchExportId(),
       // Server-set placeholders — required by the schema decoder.
@@ -196,7 +196,7 @@ describe("BatchExports", () => {
 
           expect(result).toBeDefined();
           expect(typeof result.id).toBe("string");
-          expect(result.id.length).toBeGreaterThan(0);
+          expect(result.id!.length).toBeGreaterThan(0);
           expect(typeof result.created_at).toBe("string");
           expect(typeof result.last_updated_at).toBe("string");
           expect(typeof result.team).toBe("number");
@@ -283,9 +283,9 @@ describe("BatchExports", () => {
           expect(Array.isArray(result.results)).toBe(true);
 
           // Validate shape of each entry, if any are present.
-          for (const entry of result.results) {
+          for (const entry of result.results!) {
             expect(typeof entry.id).toBe("string");
-            expect(entry.id.length).toBeGreaterThan(0);
+            expect(entry.id!.length).toBeGreaterThan(0);
             expect(typeof entry.created_at).toBe("string");
             expect(typeof entry.last_updated_at).toBe("string");
             expect(typeof entry.team).toBe("number");
@@ -328,7 +328,7 @@ describe("BatchExports", () => {
           onSuccess: (r) =>
             Effect.sync(() => {
               expect(Array.isArray(r.results)).toBe(true);
-              expect(r.results.length).toBe(0);
+              expect(r.results!.length).toBe(0);
             }),
         }),
       ));
@@ -442,28 +442,18 @@ describe("BatchExports", () => {
     //
     // Error paths still run unconditionally — they don't create real
     // resources.
-    const stubBody = (overrides: { project_id?: string; name?: string }) => ({
+    const stubBody = (overrides: { project_id?: string; name?: string }): BatchExports.BatchExportsCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
-      // Server-set placeholders — required by the schema decoder.
-      id: "00000000-0000-0000-0000-000000000000",
-      team_id: 0,
       name: overrides.name ?? `distilled-posthog-batch-export-${testRunId}`,
       destination: {
-        // HTTP destination is lightweight; combined with `paused: true`
-        // below, no real exports will fire. The schema declares this as
-        // an empty struct, but PostHog accepts a string discriminator
-        // ("HTTP", "S3", "Snowflake", …) on the wire.
-        type: "HTTP" as never,
+        type: "BigQuery",
+        integration_id: 0,
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
-      interval: "day" as const,
+      interval: "day",
       paused: true,
-      created_at: new Date().toISOString(),
-      last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
-      schema: null,
     });
 
     test.skipIf(!process.env.POSTHOG_RUN_BATCH_EXPORT_CREATE_TEST)(
@@ -479,7 +469,7 @@ describe("BatchExports", () => {
 
           expect(result).toBeDefined();
           expect(typeof result.id).toBe("string");
-          expect(result.id.length).toBeGreaterThan(0);
+          expect(result.id!.length).toBeGreaterThan(0);
           expect(result.name).toBe(exportName);
           expect(result.interval).toBe("day");
           expect(result.paused).toBe(true);
@@ -557,24 +547,18 @@ describe("BatchExports", () => {
     // The create body reuses the same schema-as-request anti-pattern as
     // batchExportsCreate: server-set fields are required by the decoder
     // and ignored by PostHog server-side.
-    const createStub = (name: string) => ({
+    const createStub = (name: string): BatchExports.BatchExportsCreateInput => ({
       project_id: getProjectId(),
-      // Server-set placeholders — required by the schema decoder.
-      id: "00000000-0000-0000-0000-000000000000",
-      team_id: 0,
       name,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
+        integration_id: 0,
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
-      interval: "day" as const,
+      interval: "day",
       paused: true,
-      created_at: new Date().toISOString(),
-      last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
-      schema: null,
     });
 
     test.skipIf(!process.env.POSTHOG_RUN_BATCH_EXPORT_CREATE_TEST)(
@@ -586,19 +570,19 @@ describe("BatchExports", () => {
             createStub(`distilled-posthog-batch-export-del-${testRunId}`),
           );
           expect(typeof created.id).toBe("string");
-          expect(created.id.length).toBeGreaterThan(0);
+          expect(created.id!.length).toBeGreaterThan(0);
 
           // Act: destroy it. Output schema is Schema.Void → undefined.
           const result = yield* BatchExports.batchExportsDestroy({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
           });
           expect(result).toBeUndefined();
 
           // Assert: deleting again returns NotFound.
           const followUp = yield* BatchExports.batchExportsDestroy({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
           }).pipe(Effect.flip);
           expect(followUp._tag).toBe("NotFound");
         }),
@@ -649,12 +633,12 @@ describe("BatchExports", () => {
         expect(typeof result.count).toBe("number");
         expect(result.count).toBeGreaterThanOrEqual(0);
         expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(5);
+        expect(result.results!.length).toBeLessThanOrEqual(5);
 
         // Validate shape of each entry, if any are present.
-        for (const entry of result.results) {
+        for (const entry of result.results!) {
           expect(typeof entry.id).toBe("string");
-          expect(entry.id.length).toBeGreaterThan(0);
+          expect(entry.id!.length).toBeGreaterThan(0);
           expect(typeof entry.name).toBe("string");
           expect(typeof entry.team_id).toBe("number");
           expect([
@@ -681,7 +665,7 @@ describe("BatchExports", () => {
         expect(result).toBeDefined();
         expect(typeof result.count).toBe("number");
         expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(1);
+        expect(result.results!.length).toBeLessThanOrEqual(1);
       }));
 
     test("error - NotFound for non-existent project_id", () =>
@@ -809,24 +793,18 @@ describe("BatchExports", () => {
     //
     // PATCH input is fully optional (apart from path params), so we only
     // pass the fields under test.
-    const createStub = (name: string) => ({
+    const createStub = (name: string): BatchExports.BatchExportsCreateInput => ({
       project_id: getProjectId(),
-      // Server-set placeholders — required by the create schema decoder.
-      id: "00000000-0000-0000-0000-000000000000",
-      team_id: 0,
       name,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
+        integration_id: 0,
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
-      interval: "day" as const,
+      interval: "day",
       paused: true,
-      created_at: new Date().toISOString(),
-      last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
-      schema: null,
     });
 
     test.skipIf(!process.env.POSTHOG_RUN_BATCH_EXPORT_CREATE_TEST)(
@@ -847,7 +825,7 @@ describe("BatchExports", () => {
           // Act: PATCH only the name + paused fields.
           const result = yield* BatchExports.batchExportsPartialUpdate({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
             name: updatedName,
             paused: false,
           });
@@ -929,31 +907,25 @@ describe("BatchExports", () => {
     //
     // Output schema is Schema.Void — successful response decodes to
     // `undefined`.
-    const createStub = (name: string) => ({
+    const createStub = (name: string): BatchExports.BatchExportsCreateInput => ({
       project_id: getProjectId(),
-      // Server-set placeholders — required by the create schema decoder.
-      id: "00000000-0000-0000-0000-000000000000",
-      team_id: 0,
       name,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
+        integration_id: 0,
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
-      interval: "day" as const,
+      interval: "day",
       paused: true,
-      created_at: new Date().toISOString(),
-      last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
-      schema: null,
     });
 
     const pauseStub = (overrides: {
       project_id?: string;
       id?: string;
       name?: string;
-    }) => ({
+    }): BatchExports.BatchExportsPauseCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       id: overrides.id ?? "00000000-0000-0000-0000-000000000000",
       // Server-set placeholders — required by the schema decoder.
@@ -961,16 +933,16 @@ describe("BatchExports", () => {
       name:
         overrides.name ?? `distilled-posthog-batch-export-pause-${testRunId}`,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
       interval: "day" as const,
       paused: true,
       created_at: new Date().toISOString(),
       last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
+      latest_runs: [],
       schema: null,
     });
 
@@ -990,7 +962,7 @@ describe("BatchExports", () => {
 
           const unpaused = yield* BatchExports.batchExportsPartialUpdate({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
             paused: false,
           });
           expect(unpaused.paused).toBe(false);
@@ -1152,7 +1124,7 @@ describe("BatchExports", () => {
       project_id?: string;
       batch_export_id?: string;
       id?: string;
-    }) => ({
+    }): BatchExports.BatchExportsRunsCancelCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       batch_export_id: overrides.batch_export_id ?? batchExportId(),
       id: overrides.id ?? runId(),
@@ -1246,9 +1218,9 @@ describe("BatchExports", () => {
           expect(Array.isArray(result.results)).toBe(true);
 
           // Validate shape of each entry, if any are present.
-          for (const entry of result.results) {
+          for (const entry of result.results!) {
             expect(typeof entry.id).toBe("string");
-            expect(entry.id.length).toBeGreaterThan(0);
+            expect(entry.id!.length).toBeGreaterThan(0);
             expect(typeof entry.created_at).toBe("string");
             expect(typeof entry.last_updated_at).toBe("string");
             expect(typeof entry.data_interval_end).toBe("string");
@@ -1291,7 +1263,7 @@ describe("BatchExports", () => {
           onSuccess: (r) =>
             Effect.sync(() => {
               expect(Array.isArray(r.results)).toBe(true);
-              expect(r.results.length).toBe(0);
+              expect(r.results!.length).toBe(0);
             }),
         }),
       ));
@@ -1511,7 +1483,7 @@ describe("BatchExports", () => {
       project_id?: string;
       batch_export_id?: string;
       id?: string;
-    }) => ({
+    }): BatchExports.BatchExportsRunsRetryCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       batch_export_id: overrides.batch_export_id ?? batchExportId(),
       id: overrides.id ?? runId(),
@@ -1601,7 +1573,7 @@ describe("BatchExports", () => {
       project_id?: string;
       id?: string;
       name?: string;
-    }) => ({
+    }): BatchExports.BatchExportsRunTestStepCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       id:
         overrides.id ??
@@ -1613,16 +1585,16 @@ describe("BatchExports", () => {
         overrides.name ??
         `distilled-posthog-batch-export-test-step-${testRunId}`,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
       interval: "day" as const,
       paused: true,
       created_at: new Date().toISOString(),
       last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
+      latest_runs: [],
       schema: null,
     });
 
@@ -1695,7 +1667,7 @@ describe("BatchExports", () => {
     //
     // Output schema is Schema.Void — successful response decodes to
     // `undefined`.
-    const stubBody = (overrides: { project_id?: string; name?: string }) => ({
+    const stubBody = (overrides: { project_id?: string; name?: string }): BatchExports.BatchExportsRunTestStepNewCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       // Server-set placeholders — required by the schema decoder.
       id: "00000000-0000-0000-0000-000000000000",
@@ -1704,16 +1676,16 @@ describe("BatchExports", () => {
         overrides.name ??
         `distilled-posthog-batch-export-test-step-new-${testRunId}`,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
       interval: "day" as const,
       paused: true,
       created_at: new Date().toISOString(),
       last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
+      latest_runs: [],
       schema: null,
     });
 
@@ -1857,31 +1829,25 @@ describe("BatchExports", () => {
     //
     // Output schema is Schema.Void — successful response decodes to
     // `undefined`.
-    const createStub = (name: string) => ({
+    const createStub = (name: string): BatchExports.BatchExportsCreateInput => ({
       project_id: getProjectId(),
-      // Server-set placeholders — required by the create schema decoder.
-      id: "00000000-0000-0000-0000-000000000000",
-      team_id: 0,
       name,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
+        integration_id: 0,
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
-      interval: "day" as const,
+      interval: "day",
       paused: true,
-      created_at: new Date().toISOString(),
-      last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
-      schema: null,
     });
 
     const unpauseStub = (overrides: {
       project_id?: string;
       id?: string;
       name?: string;
-    }) => ({
+    }): BatchExports.BatchExportsUnpauseCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       id: overrides.id ?? "00000000-0000-0000-0000-000000000000",
       // Server-set placeholders — required by the schema decoder.
@@ -1889,16 +1855,16 @@ describe("BatchExports", () => {
       name:
         overrides.name ?? `distilled-posthog-batch-export-unpause-${testRunId}`,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
       interval: "day" as const,
       paused: false,
       created_at: new Date().toISOString(),
       last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
+      latest_runs: [],
       schema: null,
     });
 
@@ -1925,7 +1891,7 @@ describe("BatchExports", () => {
           // Re-pause via PATCH so the resource is benign before destroy.
           const repaused = yield* BatchExports.batchExportsPartialUpdate({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
             paused: true,
           });
           expect(repaused.paused).toBe(true);
@@ -1997,48 +1963,37 @@ describe("BatchExports", () => {
     // server-set fields (team_id, created_at, last_updated_at, latest_runs,
     // schema, …). PostHog ignores client-set values for server fields; we
     // pass placeholders to satisfy the schema decoder.
-    const createStub = (name: string) => ({
+    const createStub = (name: string): BatchExports.BatchExportsCreateInput => ({
       project_id: getProjectId(),
-      // Server-set placeholders — required by the create schema decoder.
-      id: "00000000-0000-0000-0000-000000000000",
-      team_id: 0,
       name,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
+        integration_id: 0,
         config: {
-          url: "https://example.com/posthog-batch-export-test",
+          dataset_id: "distilled_test",
         },
       },
-      interval: "day" as const,
+      interval: "day",
       paused: true,
-      created_at: new Date().toISOString(),
-      last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
-      schema: null,
     });
 
     const updateStub = (overrides: {
       project_id?: string;
       id?: string;
       name?: string;
-    }) => ({
+    }): BatchExports.BatchExportsUpdateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       id: overrides.id ?? "00000000-0000-0000-0000-000000000000",
-      // Server-set placeholders — required by the schema decoder.
-      team_id: 0,
       name: overrides.name ?? `distilled-posthog-batch-export-put-${testRunId}`,
       destination: {
-        type: "HTTP" as never,
+        type: "BigQuery",
+        integration_id: 0,
         config: {
-          url: "https://example.com/posthog-batch-export-test-put",
+          dataset_id: "distilled_test",
         },
       },
-      interval: "day" as const,
+      interval: "day",
       paused: true,
-      created_at: new Date().toISOString(),
-      last_updated_at: new Date().toISOString(),
-      latest_runs: [] as never[],
-      schema: null,
     });
 
     test.skipIf(!process.env.POSTHOG_RUN_BATCH_EXPORT_CREATE_TEST)(

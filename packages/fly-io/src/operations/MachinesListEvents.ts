@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesListEventsInput {
+  app_name: string;
+  machine_id: string;
+  limit?: number;
+}
 export const MachinesListEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,17 @@ export const MachinesListEventsInput =
       method: "GET",
       path: "/apps/{app_name}/machines/{machine_id}/events",
     }),
-  );
-export type MachinesListEventsInput = typeof MachinesListEventsInput.Type;
+  ) as unknown as Schema.Codec<MachinesListEventsInput>;
 
 // Output Schema
+export type MachinesListEventsOutput = {
+  id?: string;
+  request?: unknown;
+  source?: string;
+  status?: string;
+  timestamp?: number;
+  type?: string;
+}[];
 export const MachinesListEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -28,8 +40,7 @@ export const MachinesListEventsOutput =
       timestamp: Schema.optional(Schema.Number),
       type: Schema.optional(Schema.String),
     }),
-  );
-export type MachinesListEventsOutput = typeof MachinesListEventsOutput.Type;
+  ) as unknown as Schema.Codec<MachinesListEventsOutput>;
 
 // The operation
 /**

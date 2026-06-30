@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsUpdatePropertyCreateInput {
+  id: string;
+  project_id: string;
+  format?: "csv" | "json";
+  key?: string;
+  value?: unknown;
+}
 export const PersonsUpdatePropertyCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const PersonsUpdatePropertyCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/persons/{id}/update_property/",
     }),
-  );
-export type PersonsUpdatePropertyCreateInput =
-  typeof PersonsUpdatePropertyCreateInput.Type;
+  ) as unknown as Schema.Codec<PersonsUpdatePropertyCreateInput>;
 
 // Output Schema
+export type PersonsUpdatePropertyCreateOutput = void;
 export const PersonsUpdatePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PersonsUpdatePropertyCreateOutput =
-  typeof PersonsUpdatePropertyCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsUpdatePropertyCreateOutput>;
 
 // The operation
 /**

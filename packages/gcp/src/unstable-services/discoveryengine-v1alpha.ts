@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSumma
   preamble?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelPromptSpec: Schema.Schema<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelPromptSpec> =
+export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelPromptSpec: Schema.Codec<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelPromptSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preamble: Schema.optional(Schema.String),
   }).annotate({
@@ -42,7 +42,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   targetFieldValueFloat?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetField: Schema.optional(Schema.String),
     targetFieldValueFloat: Schema.optional(Schema.Number),
@@ -56,7 +56,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   contextEventType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contextEventType: Schema.optional(Schema.String),
   }).annotate({
@@ -69,7 +69,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   timeWindowDays?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeWindowDays: Schema.optional(Schema.String),
   }).annotate({
@@ -84,7 +84,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   mostPopularConfig?: GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendedForYouConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig,
@@ -114,7 +114,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   engineFeaturesConfig?: GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     optimizationObjective: Schema.optional(Schema.String),
@@ -151,7 +151,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWorkspaceConfig {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWorkspaceConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWorkspaceConfig> =
+export const GoogleCloudDiscoveryengineV1alphaWorkspaceConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWorkspaceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dasherCustomerId: Schema.optional(Schema.String),
     superAdminServiceAccount: Schema.optional(Schema.String),
@@ -172,7 +172,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPageInfo {
   uri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPageInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPageInfo> =
+export const GoogleCloudDiscoveryengineV1alphaPageInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageCategory: Schema.optional(Schema.String),
     referrerUri: Schema.optional(Schema.String),
@@ -197,7 +197,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentInfo {
   promotionIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentInfo> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCustomAttribute {
   numbers?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCustomAttribute: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCustomAttribute> =
+export const GoogleCloudDiscoveryengineV1alphaCustomAttribute: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCustomAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
     numbers: Schema.optional(Schema.Array(Schema.Number)),
@@ -236,7 +236,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPanelInfo {
   panelId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPanelInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPanelInfo> =
+export const GoogleCloudDiscoveryengineV1alphaPanelInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPanelInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     panelPosition: Schema.optional(Schema.Number),
     displayName: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface GoogleTypeLatLng {
   longitude?: number;
 }
 
-export const GoogleTypeLatLng: Schema.Schema<GoogleTypeLatLng> =
+export const GoogleTypeLatLng: Schema.Codec<GoogleTypeLatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -267,7 +267,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation {
   address?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation> =
+export const GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     point: Schema.optional(GoogleTypeLatLng),
     address: Schema.optional(Schema.String),
@@ -286,7 +286,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUserInfo {
   preciseLocation?: GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUserInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUserInfo> =
+export const GoogleCloudDiscoveryengineV1alphaUserInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userAgent: Schema.optional(Schema.String),
     timeZone: Schema.optional(Schema.String),
@@ -305,7 +305,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchInfo {
   orderBy?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchInfo> =
+export const GoogleCloudDiscoveryengineV1alphaSearchInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offset: Schema.optional(Schema.Number),
     searchQuery: Schema.optional(Schema.String),
@@ -319,7 +319,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCompletionInfo {
   selectedSuggestion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCompletionInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCompletionInfo> =
+export const GoogleCloudDiscoveryengineV1alphaCompletionInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCompletionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selectedPosition: Schema.optional(Schema.Number),
     selectedSuggestion: Schema.optional(Schema.String),
@@ -342,7 +342,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTransactionInfo {
   transactionId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTransactionInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTransactionInfo> =
+export const GoogleCloudDiscoveryengineV1alphaTransactionInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTransactionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currency: Schema.optional(Schema.String),
     cost: Schema.optional(Schema.Number),
@@ -361,7 +361,7 @@ export interface GoogleCloudDiscoveryengineV1alphaMediaInfo {
   mediaProgressPercentage?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaMediaInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaMediaInfo> =
+export const GoogleCloudDiscoveryengineV1alphaMediaInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaMediaInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mediaProgressDuration: Schema.optional(Schema.String),
     mediaProgressPercentage: Schema.optional(Schema.Number),
@@ -382,7 +382,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReferenc
   documentName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference> =
+export const GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iconUri: Schema.optional(Schema.String),
     fileId: Schema.optional(Schema.String),
@@ -412,7 +412,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference {
   displayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference> =
+export const GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentName: Schema.optional(Schema.String),
     personId: Schema.optional(Schema.String),
@@ -440,7 +440,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference {
   urlForConnector?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference> =
+export const GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationUri: Schema.optional(Schema.String),
     displayTitle: Schema.optional(Schema.String),
@@ -467,7 +467,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQueryPart {
   mimeType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQueryPart: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQueryPart> =
+export const GoogleCloudDiscoveryengineV1alphaQueryPart: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQueryPart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveDocumentReference: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference,
@@ -494,7 +494,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQuery {
   parts?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaQueryPart>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQuery: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQuery> =
+export const GoogleCloudDiscoveryengineV1alphaQuery: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryId: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -517,7 +517,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFeedbackConversationInfo {
   session?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFeedbackConversationInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFeedbackConversationInfo> =
+export const GoogleCloudDiscoveryengineV1alphaFeedbackConversationInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFeedbackConversationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     questionIndex: Schema.optional(Schema.Number),
     answerQueryToken: Schema.optional(Schema.String),
@@ -569,7 +569,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFeedback {
   conversationInfo?: GoogleCloudDiscoveryengineV1alphaFeedbackConversationInfo;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFeedback: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFeedback> =
+export const GoogleCloudDiscoveryengineV1alphaFeedback: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFeedback> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     llmModelVersion: Schema.optional(Schema.String),
     feedbackType: Schema.optional(Schema.String),
@@ -634,7 +634,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUserEvent {
   panel?: GoogleCloudDiscoveryengineV1alphaPanelInfo;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUserEvent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUserEvent> =
+export const GoogleCloudDiscoveryengineV1alphaUserEvent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUserEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageInfo: Schema.optional(GoogleCloudDiscoveryengineV1alphaPageInfo),
     documents: Schema.optional(
@@ -680,7 +680,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportUserEventsRequestInlineS
   userEvents?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaUserEvent>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportUserEventsRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportUserEventsRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaImportUserEventsRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportUserEventsRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userEvents: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaUserEvent),
@@ -695,7 +695,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseCheckGro
   chunkText?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseCheckGroundingFactChunk: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseCheckGroundingFactChunk> =
+export const GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseCheckGroundingFactChunk: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseCheckGroundingFactChunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chunkText: Schema.optional(Schema.String),
   }).annotate({
@@ -716,7 +716,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelAr
   responseTemplate?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPromptTemplate: Schema.optional(Schema.String),
     failureMode: Schema.optional(Schema.String),
@@ -731,7 +731,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistResponseSessionInf
   session?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponseSessionInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistResponseSessionInfo> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponseSessionInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistResponseSessionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session: Schema.optional(Schema.String),
   }).annotate({
@@ -748,7 +748,7 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -762,7 +762,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
   }).annotate({
@@ -785,7 +785,7 @@ export interface GoogleCloudDiscoveryengineV1SearchLinkPromotion {
   imageUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1SearchLinkPromotion: Schema.Schema<GoogleCloudDiscoveryengineV1SearchLinkPromotion> =
+export const GoogleCloudDiscoveryengineV1SearchLinkPromotion: Schema.Codec<GoogleCloudDiscoveryengineV1SearchLinkPromotion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -804,7 +804,7 @@ export interface GoogleCloudDiscoveryengineV1ControlPromoteAction {
   searchLinkPromotion?: GoogleCloudDiscoveryengineV1SearchLinkPromotion;
 }
 
-export const GoogleCloudDiscoveryengineV1ControlPromoteAction: Schema.Schema<GoogleCloudDiscoveryengineV1ControlPromoteAction> =
+export const GoogleCloudDiscoveryengineV1ControlPromoteAction: Schema.Codec<GoogleCloudDiscoveryengineV1ControlPromoteAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(Schema.String),
     searchLinkPromotion: Schema.optional(
@@ -819,7 +819,7 @@ export interface GoogleCloudNotebooklmV1alphaSourceId {
   id?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaSourceId: Schema.Schema<GoogleCloudNotebooklmV1alphaSourceId> =
+export const GoogleCloudNotebooklmV1alphaSourceId: Schema.Codec<GoogleCloudNotebooklmV1alphaSourceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudNotebooklmV1alphaSourceId" });
@@ -833,7 +833,7 @@ export interface GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions {
   sourceIds?: ReadonlyArray<GoogleCloudNotebooklmV1alphaSourceId>;
 }
 
-export const GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions: Schema.Schema<GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions> =
+export const GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions: Schema.Codec<GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     episodeFocus: Schema.optional(Schema.String),
@@ -855,7 +855,7 @@ export interface GoogleCloudDiscoveryengineV1alphaReplyReference {
   start?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaReplyReference: Schema.Schema<GoogleCloudDiscoveryengineV1alphaReplyReference> =
+export const GoogleCloudDiscoveryengineV1alphaReplyReference: Schema.Codec<GoogleCloudDiscoveryengineV1alphaReplyReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     anchorText: Schema.optional(Schema.String),
     end: Schema.optional(Schema.Number),
@@ -872,7 +872,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAtt
   scores?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categories: Schema.optional(Schema.Array(Schema.String)),
     scores: Schema.optional(Schema.Array(Schema.Number)),
@@ -886,7 +886,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationS
   referenceIndex?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSource> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceIndex: Schema.optional(Schema.String),
   }).annotate({
@@ -903,7 +903,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitation 
   sources?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSource>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitation: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitation> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitation: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.String),
     endIndex: Schema.optional(Schema.String),
@@ -922,7 +922,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationM
   citations?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitation>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     citations: Schema.optional(
       Schema.Array(
@@ -941,7 +941,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttac
   data?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -961,7 +961,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttac
   data?: GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachmentBlob;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachment: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachment> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachment: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryBlobAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributionType: Schema.optional(Schema.String),
     data: Schema.optional(
@@ -981,7 +981,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference
   blobAttachmentIndexes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     pageIdentifier: Schema.optional(Schema.String),
@@ -1002,7 +1002,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference
   title?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     chunkContents: Schema.optional(
@@ -1028,7 +1028,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWi
   references?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summary: Schema.optional(Schema.String),
     citationMetadata: Schema.optional(
@@ -1073,7 +1073,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSummary {
   summaryWithMetadata?: GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadata;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummary: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSummary> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummary: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summarySkippedReasons: Schema.optional(Schema.Array(Schema.String)),
     summaryText: Schema.optional(Schema.String),
@@ -1096,7 +1096,7 @@ export interface GoogleCloudDiscoveryengineV1alphaReply {
   summary?: GoogleCloudDiscoveryengineV1alphaSearchResponseSummary;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaReply: Schema.Schema<GoogleCloudDiscoveryengineV1alphaReply> =
+export const GoogleCloudDiscoveryengineV1alphaReply: Schema.Codec<GoogleCloudDiscoveryengineV1alphaReply> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reply: Schema.optional(Schema.String),
     references: Schema.optional(
@@ -1114,7 +1114,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConversationContext {
   activeDocument?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConversationContext: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConversationContext> =
+export const GoogleCloudDiscoveryengineV1alphaConversationContext: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConversationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contextDocuments: Schema.optional(Schema.Array(Schema.String)),
     activeDocument: Schema.optional(Schema.String),
@@ -1129,7 +1129,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTextInput {
   context?: GoogleCloudDiscoveryengineV1alphaConversationContext;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTextInput: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTextInput> =
+export const GoogleCloudDiscoveryengineV1alphaTextInput: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTextInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(Schema.String),
     context: Schema.optional(
@@ -1146,7 +1146,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConversationMessage {
   createTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConversationMessage: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConversationMessage> =
+export const GoogleCloudDiscoveryengineV1alphaConversationMessage: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConversationMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reply: Schema.optional(GoogleCloudDiscoveryengineV1alphaReply),
     userInput: Schema.optional(GoogleCloudDiscoveryengineV1alphaTextInput),
@@ -1170,7 +1170,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConversation {
   endTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConversation: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConversation> =
+export const GoogleCloudDiscoveryengineV1alphaConversation: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConversation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1184,7 +1184,7 @@ export const GoogleCloudDiscoveryengineV1alphaConversation: Schema.Schema<Google
 
 export interface GoogleCloudDiscoveryengineV1ProvisionProjectMetadata {}
 
-export const GoogleCloudDiscoveryengineV1ProvisionProjectMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1ProvisionProjectMetadata> =
+export const GoogleCloudDiscoveryengineV1ProvisionProjectMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1ProvisionProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1ProvisionProjectMetadata",
   });
@@ -1196,7 +1196,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntrie
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1226,7 +1226,7 @@ export interface GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatu
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus: Schema.Schema<GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> =
+export const GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus: Schema.Codec<GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveTpmThreshold: Schema.optional(Schema.String),
     tpmThresholdNextUpdateTime: Schema.optional(Schema.String),
@@ -1246,7 +1246,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConf
   useNativeText?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig> =
+export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enhancedDocumentElements: Schema.optional(Schema.Array(Schema.String)),
     useNativeText: Schema.optional(Schema.Boolean),
@@ -1257,7 +1257,7 @@ export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOc
 
 export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig {}
 
-export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig> =
+export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig",
@@ -1282,7 +1282,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConf
   structuredContentTypes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig> =
+export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableTableAnnotation: Schema.optional(Schema.Boolean),
     enableImageAnnotation: Schema.optional(Schema.Boolean),
@@ -1306,7 +1306,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConf
   layoutParsingConfig?: GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig> =
+export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ocrParsingConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig,
@@ -1327,7 +1327,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSp
   mode?: "MODE_UNSPECIFIED" | "SUGGESTION_ONLY" | "AUTO" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({
@@ -1346,7 +1346,7 @@ export interface GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata {
   title?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structData: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     uri: Schema.optional(Schema.String),
@@ -1363,7 +1363,7 @@ export interface GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata {
   nextChunks?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaChunk>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       previousChunks: Schema.optional(
@@ -1375,7 +1375,7 @@ export const GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata: Schema.Schema<
     }),
   ).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata",
-  }) as any as Schema.Schema<GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata>;
+  }) as any as Schema.Codec<GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata>;
 
 export interface GoogleCloudDiscoveryengineV1alphaChunkStructuredContent {
   /** Output only. The structure type of the structured content. */
@@ -1389,7 +1389,7 @@ export interface GoogleCloudDiscoveryengineV1alphaChunkStructuredContent {
   content?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaChunkStructuredContent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaChunkStructuredContent> =
+export const GoogleCloudDiscoveryengineV1alphaChunkStructuredContent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaChunkStructuredContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structureType: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -1404,7 +1404,7 @@ export interface GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata {
   imageId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaChunkAnnotationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structuredContent: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaChunkStructuredContent,
@@ -1421,7 +1421,7 @@ export interface GoogleCloudDiscoveryengineV1alphaChunkPageSpan {
   pageEnd?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaChunkPageSpan: Schema.Schema<GoogleCloudDiscoveryengineV1alphaChunkPageSpan> =
+export const GoogleCloudDiscoveryengineV1alphaChunkPageSpan: Schema.Codec<GoogleCloudDiscoveryengineV1alphaChunkPageSpan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageStart: Schema.optional(Schema.Number),
     pageEnd: Schema.optional(Schema.Number),
@@ -1452,7 +1452,7 @@ export interface GoogleCloudDiscoveryengineV1alphaChunk {
   pageSpan?: GoogleCloudDiscoveryengineV1alphaChunkPageSpan;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaChunk: Schema.Schema<GoogleCloudDiscoveryengineV1alphaChunk> =
+export const GoogleCloudDiscoveryengineV1alphaChunk: Schema.Codec<GoogleCloudDiscoveryengineV1alphaChunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       content: Schema.optional(Schema.String),
@@ -1477,7 +1477,7 @@ export const GoogleCloudDiscoveryengineV1alphaChunk: Schema.Schema<GoogleCloudDi
     }),
   ).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaChunk",
-  }) as any as Schema.Schema<GoogleCloudDiscoveryengineV1alphaChunk>;
+  }) as any as Schema.Codec<GoogleCloudDiscoveryengineV1alphaChunk>;
 
 export interface GoogleCloudDiscoveryengineV1alphaListChunksResponse {
   /** The Chunks. */
@@ -1486,7 +1486,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListChunksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListChunksResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListChunksResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListChunksResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListChunksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chunks: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaChunk),
@@ -1507,7 +1507,7 @@ export interface GoogleTypeExpr {
   description?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1525,7 +1525,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageSource: Schema.optional(Schema.String),
   }).annotate({
@@ -1545,7 +1545,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStre
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingError: Schema.Schema<GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingError> =
+export const GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingError: Schema.Codec<GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     streamingErrorReason: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -1563,7 +1563,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfig {
   streamingError?: GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingError;
 }
 
-export const GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfig> =
+export const GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     realtimeSyncSecret: Schema.optional(Schema.String),
     webhookUri: Schema.optional(Schema.String),
@@ -1576,7 +1576,7 @@ export const GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfig: Schema
 
 export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig {}
 
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig> =
+export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig",
@@ -1587,7 +1587,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
   version?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({
@@ -1608,7 +1608,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGr
   endIndex?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataSegment: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataSegment> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataSegment: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.String),
     groundingScore: Schema.optional(Schema.Number),
@@ -1627,7 +1627,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGr
   contentId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataVisualSegment: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataVisualSegment> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataVisualSegment: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataVisualSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceIndices: Schema.optional(Schema.Array(Schema.Number)),
     contentId: Schema.optional(Schema.String),
@@ -1652,7 +1652,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGr
   uri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageIdentifier: Schema.optional(Schema.String),
     document: Schema.optional(Schema.String),
@@ -1675,7 +1675,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGr
   documentMetadata?: GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     codeSnippet: Schema.optional(Schema.String),
@@ -1696,7 +1696,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGr
   references?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     segments: Schema.optional(
       Schema.Array(
@@ -1727,7 +1727,7 @@ export interface GoogleIamV1Binding {
   members?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(GoogleTypeExpr),
     role: Schema.optional(Schema.String),
@@ -1736,7 +1736,7 @@ export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented",
@@ -1749,7 +1749,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProcessedDocument {
   jsonData?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProcessedDocument: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProcessedDocument> =
+export const GoogleCloudDiscoveryengineV1alphaProcessedDocument: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProcessedDocument> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     jsonData: Schema.optional(Schema.String),
@@ -1767,7 +1767,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageSource: Schema.optional(Schema.String),
   }).annotate({
@@ -1780,7 +1780,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
   preamble?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelPromptSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelPromptSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelPromptSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelPromptSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preamble: Schema.optional(Schema.String),
   }).annotate({
@@ -1813,7 +1813,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
   ignoreAdversarialQuery?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreJailBreakingQuery: Schema.optional(Schema.Boolean),
     useSemanticChunks: Schema.optional(Schema.Boolean),
@@ -1842,7 +1842,7 @@ export interface GoogleCloudDiscoveryengineV1ControlSynonymsAction {
   synonyms?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1ControlSynonymsAction: Schema.Schema<GoogleCloudDiscoveryengineV1ControlSynonymsAction> =
+export const GoogleCloudDiscoveryengineV1ControlSynonymsAction: Schema.Codec<GoogleCloudDiscoveryengineV1ControlSynonymsAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     synonyms: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1854,7 +1854,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportErrorConfig {
   gcsPrefix?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportErrorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportErrorConfig> =
+export const GoogleCloudDiscoveryengineV1alphaImportErrorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportErrorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsPrefix: Schema.optional(Schema.String),
   }).annotate({
@@ -1874,7 +1874,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse {
   metrics?: Record<string, number>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse> =
+export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelName: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -1889,7 +1889,7 @@ export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse: Schema.S
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty",
   });
@@ -1899,7 +1899,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigN
   policy?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy> =
+export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Schema.String),
   }).annotate({
@@ -1914,7 +1914,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConditionTimeRange {
   endTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConditionTimeRange: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConditionTimeRange> =
+export const GoogleCloudDiscoveryengineV1alphaConditionTimeRange: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConditionTimeRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1929,7 +1929,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation {
   address?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation: Schema.Schema<GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation> =
+export const GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation: Schema.Codec<GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     point: Schema.optional(GoogleTypeLatLng),
     address: Schema.optional(Schema.String),
@@ -1948,7 +1948,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserInfo {
   userAgent?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaUserInfo: Schema.Schema<GoogleCloudDiscoveryengineV1betaUserInfo> =
+export const GoogleCloudDiscoveryengineV1betaUserInfo: Schema.Codec<GoogleCloudDiscoveryengineV1betaUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
     preciseLocation: Schema.optional(
@@ -1963,7 +1963,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability
   actionName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability> =
+export const GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionName: Schema.optional(Schema.String),
   }).annotate({
@@ -1978,7 +1978,7 @@ export interface GoogleCloudDiscoveryengineV1DeleteIdentityMappingStoreMetadata 
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DeleteIdentityMappingStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DeleteIdentityMappingStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1DeleteIdentityMappingStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DeleteIdentityMappingStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1996,7 +1996,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchHighlightingCondition: Schema.optional(Schema.String),
   }).annotate({
@@ -2022,7 +2022,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig
   password?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
     database: Schema.optional(Schema.String),
@@ -2046,7 +2046,7 @@ export interface GoogleCloudDiscoveryengineV1betaInterval {
   minimum?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaInterval: Schema.Schema<GoogleCloudDiscoveryengineV1betaInterval> =
+export const GoogleCloudDiscoveryengineV1betaInterval: Schema.Codec<GoogleCloudDiscoveryengineV1betaInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maximum: Schema.optional(Schema.Number),
     exclusiveMaximum: Schema.optional(Schema.Number),
@@ -2071,7 +2071,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey 
   prefixes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     contains: Schema.optional(Schema.Array(Schema.String)),
@@ -2102,7 +2102,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2 
   clientSecret?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2> =
+export const GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenUri: Schema.optional(Schema.String),
     authorizationUri: Schema.optional(Schema.String),
@@ -2120,7 +2120,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenera
   modelVersion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelVersion: Schema.optional(Schema.String),
   }).annotate({
@@ -2139,7 +2139,7 @@ export interface GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreation
   location?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig> =
+export const GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     business: Schema.optional(Schema.String),
     defaultLanguageCode: Schema.optional(Schema.String),
@@ -2155,7 +2155,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveD
   policy?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy> =
+export const GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Schema.String),
   }).annotate({
@@ -2168,7 +2168,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy {
   sensitiveDataProtectionPolicy?: GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy> =
+export const GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitiveDataProtectionPolicy: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy,
@@ -2190,7 +2190,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedP
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreDiacritics: Schema.optional(Schema.Boolean),
     phrase: Schema.optional(Schema.String),
@@ -2209,7 +2209,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy {
   modelArmorConfig?: GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataProtectionPolicy: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy,
@@ -2231,7 +2231,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfigSyste
   additionalSystemInstruction?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfigSystemInstruction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfigSystemInstruction> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfigSystemInstruction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfigSystemInstruction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalSystemInstruction: Schema.optional(Schema.String),
   }).annotate({
@@ -2250,7 +2250,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfig {
   allowedModelIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultModelId: Schema.optional(Schema.String),
     systemInstruction: Schema.optional(
@@ -2269,7 +2269,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantToolInfo {
   toolDisplayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantToolInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantToolInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantToolInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantToolInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolName: Schema.optional(Schema.String),
     toolDisplayName: Schema.optional(Schema.String),
@@ -2282,7 +2282,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantToolList {
   toolInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAssistantToolInfo>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantToolList: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantToolList> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantToolList: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantToolList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolInfo: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaAssistantToolInfo),
@@ -2324,7 +2324,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistant {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistant: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistant> =
+export const GoogleCloudDiscoveryengineV1alphaAssistant: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     customerPolicy: Schema.optional(
@@ -2355,7 +2355,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListAssistantsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListAssistantsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListAssistantsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListAssistantsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListAssistantsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assistants: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaAssistant),
@@ -2399,7 +2399,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSafetyRating {
   severityScore?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSafetyRating: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSafetyRating> =
+export const GoogleCloudDiscoveryengineV1alphaSafetyRating: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSafetyRating> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     probability: Schema.optional(Schema.String),
@@ -2414,7 +2414,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerStepActionSearchAction {
   query?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionSearchAction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerStepActionSearchAction> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionSearchAction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerStepActionSearchAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
   }).annotate({
@@ -2430,7 +2430,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSea
   relevanceScore?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultChunkInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultChunkInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultChunkInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultChunkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     chunk: Schema.optional(Schema.String),
@@ -2447,7 +2447,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSea
   snippet?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippetStatus: Schema.optional(Schema.String),
     snippet: Schema.optional(Schema.String),
@@ -2471,7 +2471,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSea
   snippetInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     chunkInfo: Schema.optional(
@@ -2497,7 +2497,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation {
   searchResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchResults: Schema.optional(
       Schema.Array(
@@ -2515,7 +2515,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerStepAction {
   observation?: GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerStepAction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerStepAction> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerStepAction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerStepAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchAction: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerStepActionSearchAction,
@@ -2543,7 +2543,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerStep {
   actions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerStepAction>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerStep: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerStep> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerStep: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2564,7 +2564,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDoc
   blobAttachmentIndexes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     relevanceScore: Schema.optional(Schema.Number),
@@ -2588,7 +2588,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDoc
   chunkContents?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -2617,7 +2617,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocume
   structData?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -2642,7 +2642,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo {
   blobAttachmentIndexes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chunk: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -2666,7 +2666,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocum
   document?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     structData: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -2686,7 +2686,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerReference {
   structuredDocumentInfo?: GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerReference: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerReference> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerReference: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unstructuredDocumentInfo: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo,
@@ -2706,7 +2706,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerCitationSource {
   referenceId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerCitationSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerCitationSource> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerCitationSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerCitationSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceId: Schema.optional(Schema.String),
   }).annotate({
@@ -2722,7 +2722,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerCitation {
   endIndex?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerCitation: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerCitation> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerCitation: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerCitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaAnswerCitationSource),
@@ -2747,7 +2747,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQu
   positive?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     positive: Schema.optional(Schema.Boolean),
@@ -2761,7 +2761,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo {
   queryClassificationInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryClassificationInfo: Schema.optional(
       Schema.Array(
@@ -2779,7 +2779,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob {
   data?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -2798,7 +2798,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob,
@@ -2821,7 +2821,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport {
   groundingScore?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groundingCheckRequired: Schema.optional(Schema.Boolean),
     endIndex: Schema.optional(Schema.String),
@@ -2887,7 +2887,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswer {
   completeTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswer: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswer> =
+export const GoogleCloudDiscoveryengineV1alphaAnswer: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     safetyRatings: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaSafetyRating),
@@ -2927,7 +2927,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnfo
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult> =
+export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelArmorViolation: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -2941,7 +2941,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnfo
   bannedPhrases?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult> =
+export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bannedPhrases: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -2956,7 +2956,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnfo
   bannedPhraseEnforcementResult?: GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult> =
+export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelArmorEnforcementResult: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult,
@@ -2976,7 +2976,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnfo
   policyResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult> =
+export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verdict: Schema.optional(Schema.String),
     policyResults: Schema.optional(
@@ -3001,7 +3001,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantContentCodeExecutionR
   output?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantContentCodeExecutionResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantContentCodeExecutionResult> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantContentCodeExecutionResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantContentCodeExecutionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outcome: Schema.optional(Schema.String),
     output: Schema.optional(Schema.String),
@@ -3017,7 +3017,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantContentBlob {
   data?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantContentBlob: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantContentBlob> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantContentBlob: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantContentBlob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -3032,7 +3032,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantContentFile {
   fileId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantContentFile: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantContentFile> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantContentFile: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantContentFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     fileId: Schema.optional(Schema.String),
@@ -3045,7 +3045,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantContentExecutableCode
   code?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantContentExecutableCode: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantContentExecutableCode> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantContentExecutableCode: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantContentExecutableCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({
@@ -3070,7 +3070,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantContent {
   executableCode?: GoogleCloudDiscoveryengineV1alphaAssistantContentExecutableCode;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantContent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantContent> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantContent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     codeExecutionResult: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAssistantContentCodeExecutionResult,
@@ -3100,7 +3100,7 @@ export interface GoogleTypeDate {
   day?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
+export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -3122,7 +3122,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCitation {
   title?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCitation: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCitation> =
+export const GoogleCloudDiscoveryengineV1alphaCitation: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicationDate: Schema.optional(GoogleTypeDate),
     endIndex: Schema.optional(Schema.Number),
@@ -3137,7 +3137,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCitationMetadata {
   citations?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCitation>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCitationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCitationMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaCitationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCitationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     citations: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaCitation),
@@ -3155,7 +3155,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent {
   textGroundingMetadata?: GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadata;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent> =
+export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(GoogleCloudDiscoveryengineV1alphaAssistantContent),
     citationMetadata: Schema.optional(
@@ -3177,7 +3177,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistAnswerReply {
   groundedContent?: GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistAnswerReply: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistAnswerReply> =
+export const GoogleCloudDiscoveryengineV1alphaAssistAnswerReply: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistAnswerReply> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replyId: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -3213,7 +3213,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistAnswer {
   >;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistAnswer: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistAnswer> =
+export const GoogleCloudDiscoveryengineV1alphaAssistAnswer: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistAnswer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -3241,7 +3241,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSessionTurn {
   query?: GoogleCloudDiscoveryengineV1alphaQuery;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSessionTurn: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSessionTurn> =
+export const GoogleCloudDiscoveryengineV1alphaSessionTurn: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSessionTurn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     live: Schema.optional(Schema.Boolean),
     answer: Schema.optional(Schema.String),
@@ -3276,7 +3276,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSession {
   displayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSession: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSession> =
+export const GoogleCloudDiscoveryengineV1alphaSession: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSession> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     turns: Schema.optional(
@@ -3299,7 +3299,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListSessionsResponse {
   sessions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSession>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListSessionsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListSessionsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListSessionsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListSessionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     sessions: Schema.optional(
@@ -3316,7 +3316,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -3331,7 +3331,7 @@ export interface GoogleApiMetric {
   labels?: Record<string, string>;
 }
 
-export const GoogleApiMetric: Schema.Schema<GoogleApiMetric> =
+export const GoogleApiMetric: Schema.Codec<GoogleApiMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3344,7 +3344,7 @@ export interface GoogleApiMonitoredResourceMetadata {
   userLabels?: Record<string, string>;
 }
 
-export const GoogleApiMonitoredResourceMetadata: Schema.Schema<GoogleApiMonitoredResourceMetadata> =
+export const GoogleApiMonitoredResourceMetadata: Schema.Codec<GoogleApiMonitoredResourceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemLabels: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3357,7 +3357,7 @@ export interface GoogleMonitoringV3TimeInterval {
   startTime?: string;
 }
 
-export const GoogleMonitoringV3TimeInterval: Schema.Schema<GoogleMonitoringV3TimeInterval> =
+export const GoogleMonitoringV3TimeInterval: Schema.Codec<GoogleMonitoringV3TimeInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -3370,7 +3370,7 @@ export interface GoogleApiDistributionRange {
   min?: number;
 }
 
-export const GoogleApiDistributionRange: Schema.Schema<GoogleApiDistributionRange> =
+export const GoogleApiDistributionRange: Schema.Codec<GoogleApiDistributionRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     max: Schema.optional(Schema.Number),
     min: Schema.optional(Schema.Number),
@@ -3385,7 +3385,7 @@ export interface GoogleApiDistributionBucketOptionsExponential {
   numFiniteBuckets?: number;
 }
 
-export const GoogleApiDistributionBucketOptionsExponential: Schema.Schema<GoogleApiDistributionBucketOptionsExponential> =
+export const GoogleApiDistributionBucketOptionsExponential: Schema.Codec<GoogleApiDistributionBucketOptionsExponential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     growthFactor: Schema.optional(Schema.Number),
     scale: Schema.optional(Schema.Number),
@@ -3397,7 +3397,7 @@ export interface GoogleApiDistributionBucketOptionsExplicit {
   bounds?: ReadonlyArray<number>;
 }
 
-export const GoogleApiDistributionBucketOptionsExplicit: Schema.Schema<GoogleApiDistributionBucketOptionsExplicit> =
+export const GoogleApiDistributionBucketOptionsExplicit: Schema.Codec<GoogleApiDistributionBucketOptionsExplicit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bounds: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "GoogleApiDistributionBucketOptionsExplicit" });
@@ -3411,7 +3411,7 @@ export interface GoogleApiDistributionBucketOptionsLinear {
   width?: number;
 }
 
-export const GoogleApiDistributionBucketOptionsLinear: Schema.Schema<GoogleApiDistributionBucketOptionsLinear> =
+export const GoogleApiDistributionBucketOptionsLinear: Schema.Codec<GoogleApiDistributionBucketOptionsLinear> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offset: Schema.optional(Schema.Number),
     numFiniteBuckets: Schema.optional(Schema.Number),
@@ -3427,7 +3427,7 @@ export interface GoogleApiDistributionBucketOptions {
   linearBuckets?: GoogleApiDistributionBucketOptionsLinear;
 }
 
-export const GoogleApiDistributionBucketOptions: Schema.Schema<GoogleApiDistributionBucketOptions> =
+export const GoogleApiDistributionBucketOptions: Schema.Codec<GoogleApiDistributionBucketOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exponentialBuckets: Schema.optional(
       GoogleApiDistributionBucketOptionsExponential,
@@ -3447,7 +3447,7 @@ export interface GoogleApiDistributionExemplar {
   value?: number;
 }
 
-export const GoogleApiDistributionExemplar: Schema.Schema<GoogleApiDistributionExemplar> =
+export const GoogleApiDistributionExemplar: Schema.Codec<GoogleApiDistributionExemplar> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     attachments: Schema.optional(
@@ -3473,7 +3473,7 @@ export interface GoogleApiDistribution {
   exemplars?: ReadonlyArray<GoogleApiDistributionExemplar>;
 }
 
-export const GoogleApiDistribution: Schema.Schema<GoogleApiDistribution> =
+export const GoogleApiDistribution: Schema.Codec<GoogleApiDistribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketCounts: Schema.optional(Schema.Array(Schema.String)),
     range: Schema.optional(GoogleApiDistributionRange),
@@ -3497,7 +3497,7 @@ export interface GoogleMonitoringV3TypedValue {
   stringValue?: string;
 }
 
-export const GoogleMonitoringV3TypedValue: Schema.Schema<GoogleMonitoringV3TypedValue> =
+export const GoogleMonitoringV3TypedValue: Schema.Codec<GoogleMonitoringV3TypedValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     int64Value: Schema.optional(Schema.String),
     distributionValue: Schema.optional(GoogleApiDistribution),
@@ -3513,7 +3513,7 @@ export interface GoogleMonitoringV3Point {
   value?: GoogleMonitoringV3TypedValue;
 }
 
-export const GoogleMonitoringV3Point: Schema.Schema<GoogleMonitoringV3Point> =
+export const GoogleMonitoringV3Point: Schema.Codec<GoogleMonitoringV3Point> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interval: Schema.optional(GoogleMonitoringV3TimeInterval),
     value: Schema.optional(GoogleMonitoringV3TypedValue),
@@ -3526,7 +3526,7 @@ export interface GoogleApiMonitoredResource {
   type?: string;
 }
 
-export const GoogleApiMonitoredResource: Schema.Schema<GoogleApiMonitoredResource> =
+export const GoogleApiMonitoredResource: Schema.Codec<GoogleApiMonitoredResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     type: Schema.optional(Schema.String),
@@ -3564,7 +3564,7 @@ export interface GoogleMonitoringV3TimeSeries {
   resource?: GoogleApiMonitoredResource;
 }
 
-export const GoogleMonitoringV3TimeSeries: Schema.Schema<GoogleMonitoringV3TimeSeries> =
+export const GoogleMonitoringV3TimeSeries: Schema.Codec<GoogleMonitoringV3TimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricKind: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
@@ -3581,7 +3581,7 @@ export interface GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries {
   qpsTimeSeries?: GoogleMonitoringV3TimeSeries;
 }
 
-export const GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries: Schema.Schema<GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries> =
+export const GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries: Schema.Codec<GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qpsTimeSeries: Schema.optional(GoogleMonitoringV3TimeSeries),
   }).annotate({
@@ -3599,7 +3599,7 @@ export interface GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries {
   autoRefreshCrawlErrorRate?: GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries: Schema.Schema<GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries> =
+export const GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries: Schema.Codec<GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userTriggeredCrawlRate: Schema.optional(
       GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries,
@@ -3624,7 +3624,7 @@ export interface GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries {
   vertexAiOrganicCrawlRate?: GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries;
 }
 
-export const GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries: Schema.Schema<GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries> =
+export const GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries: Schema.Codec<GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleOrganicCrawlRate: Schema.optional(
       GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries,
@@ -3647,7 +3647,7 @@ export interface GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse> =
+export const GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     dedicatedCrawlRateTimeSeries: Schema.optional(
@@ -3668,7 +3668,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngin
   targetFieldValueFloat?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetField: Schema.optional(Schema.String),
     targetFieldValueFloat: Schema.optional(Schema.Number),
@@ -3682,7 +3682,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngin
   timeWindowDays?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeWindowDays: Schema.optional(Schema.String),
   }).annotate({
@@ -3695,7 +3695,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngin
   contextEventType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contextEventType: Schema.optional(Schema.String),
   }).annotate({
@@ -3710,7 +3710,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngin
   recommendedForYouConfig?: GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigEngineFeaturesConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigEngineFeaturesConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigEngineFeaturesConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigEngineFeaturesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mostPopularConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig,
@@ -3740,7 +3740,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngin
   type?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     optimizationObjectiveConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig,
@@ -3763,7 +3763,7 @@ export interface GoogleCloudDiscoveryengineV1betaUpdateTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaUpdateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaUpdateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1betaUpdateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaUpdateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -3786,7 +3786,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion {
   imageUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion> =
+export const GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -3805,7 +3805,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   pageIdentifier?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     pageIdentifier: Schema.optional(Schema.String),
@@ -3819,7 +3819,7 @@ export interface GoogleCloudDiscoveryengineV1alphaActionConfigScopeList {
   scopes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaActionConfigScopeList: Schema.Schema<GoogleCloudDiscoveryengineV1alphaActionConfigScopeList> =
+export const GoogleCloudDiscoveryengineV1alphaActionConfigScopeList: Schema.Codec<GoogleCloudDiscoveryengineV1alphaActionConfigScopeList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -3833,7 +3833,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -3848,7 +3848,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseQueryExpansionIn
   pinnedResultCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseQueryExpansionInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseQueryExpansionInfo> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseQueryExpansionInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseQueryExpansionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expandedQuery: Schema.optional(Schema.Boolean),
     pinnedResultCount: Schema.optional(Schema.String),
@@ -3864,7 +3864,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest {
   mimeType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest> =
+export const GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -3883,7 +3883,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField {
   displayTemplate?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     deviceVisibility: Schema.optional(Schema.Array(Schema.String)),
@@ -3899,7 +3899,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField {
   field?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     field: Schema.optional(Schema.String),
@@ -3921,7 +3921,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig 
   facetField?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -3948,7 +3948,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsSearchAd
   generativeAnswerAddOnDisabled?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsSearchAddonSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsSearchAddonSpec> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsSearchAddonSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsSearchAddonSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     semanticAddOnDisabled: Schema.optional(Schema.Boolean),
     kpiPersonalizationAddOnDisabled: Schema.optional(Schema.Boolean),
@@ -3986,7 +3986,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsGenerati
   modelVersion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsGenerativeAnswerConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsGenerativeAnswerConfig> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsGenerativeAnswerConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsGenerativeAnswerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     disableRelatedQuestions: Schema.optional(Schema.Boolean),
@@ -4016,7 +4016,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelCon
   displayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfoResolvedModel: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfoResolvedModel> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfoResolvedModel: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfoResolvedModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.optional(Schema.String),
     icon: Schema.optional(Schema.String),
@@ -4035,7 +4035,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelCon
   defaultModelId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfo> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resolvedModels: Schema.optional(
       Schema.Array(
@@ -4106,7 +4106,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettings {
   enablePeopleSearch?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettings: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettings> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettings: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableSafeSearch: Schema.optional(Schema.Boolean),
     dataStoreUiConfigs: Schema.optional(
@@ -4146,7 +4146,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo {
   scopes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo> =
+export const GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
@@ -4166,7 +4166,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfi
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError> =
+export const GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     streamingErrorReason: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -4184,7 +4184,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfi
   webhookUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     realtimeSyncSecret: Schema.optional(Schema.String),
     streamingError: Schema.optional(
@@ -4207,7 +4207,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDynamicTool {
   displayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDynamicTool: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDynamicTool> =
+export const GoogleCloudDiscoveryengineV1alphaDynamicTool: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDynamicTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4222,7 +4222,7 @@ export interface GoogleTypeTimeZone {
   version?: string;
 }
 
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
+export const GoogleTypeTimeZone: Schema.Codec<GoogleTypeTimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -4249,7 +4249,7 @@ export interface GoogleTypeDateTime {
   hours?: number;
 }
 
-export const GoogleTypeDateTime: Schema.Schema<GoogleTypeDateTime> =
+export const GoogleTypeDateTime: Schema.Codec<GoogleTypeDateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(GoogleTypeTimeZone),
     utcOffset: Schema.optional(Schema.String),
@@ -4269,7 +4269,7 @@ export interface GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig {
   nextSyncTime?: GoogleTypeDateTime;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig> =
+export const GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshInterval: Schema.optional(Schema.String),
     nextSyncTime: Schema.optional(GoogleTypeDateTime),
@@ -4353,7 +4353,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFieldConfig {
   keyPropertyType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFieldConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFieldConfig> =
+export const GoogleCloudDiscoveryengineV1alphaFieldConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFieldConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advancedSiteSearchDataSources: Schema.optional(Schema.Array(Schema.String)),
     completableOption: Schema.optional(Schema.String),
@@ -4381,7 +4381,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSchema {
   structSchema?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSchema: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSchema> =
+export const GoogleCloudDiscoveryengineV1alphaSchema: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jsonSchema: Schema.optional(Schema.String),
     fieldConfigs: Schema.optional(
@@ -4400,7 +4400,7 @@ export interface GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig {
   initialFilterGroups?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig> =
+export const GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableStaticIndexingForBatchIngestion: Schema.optional(Schema.Boolean),
     enableConfigurableSchema: Schema.optional(Schema.Boolean),
@@ -4426,7 +4426,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity {
   keyPropertyMappings?: Record<string, string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity> =
+export const GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jsonParams: Schema.optional(Schema.String),
     entityName: Schema.optional(Schema.String),
@@ -4450,7 +4450,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBAPConfigToolspecOverride {
   baseVersion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBAPConfigToolspecOverride: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBAPConfigToolspecOverride> =
+export const GoogleCloudDiscoveryengineV1alphaBAPConfigToolspecOverride: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBAPConfigToolspecOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tools: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -4475,7 +4475,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBAPConfig {
   enabledActions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBAPConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBAPConfig> =
+export const GoogleCloudDiscoveryengineV1alphaBAPConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBAPConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolspecOverride: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaBAPConfigToolspecOverride,
@@ -4493,7 +4493,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTenant {
   id?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTenant: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTenant> =
+export const GoogleCloudDiscoveryengineV1alphaTenant: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTenant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -4511,7 +4511,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig {
   jsonAuthParams?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenant: Schema.optional(GoogleCloudDiscoveryengineV1alphaTenant),
     authParams: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -4528,7 +4528,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCliConfig {
   enabledActions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCliConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCliConfig> =
+export const GoogleCloudDiscoveryengineV1alphaCliConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCliConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabledActions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudDiscoveryengineV1alphaCliConfig" });
@@ -4540,7 +4540,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination {
   port?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination> =
+export const GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -4559,7 +4559,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDestinationConfig {
   destinations?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDestinationConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDestinationConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDestinationConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDestinationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     key: Schema.optional(Schema.String),
@@ -4582,7 +4582,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig {
   authParams?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalParams: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -4613,7 +4613,7 @@ export interface GoogleCloudDiscoveryengineV1alphaActionConfig {
   useStaticSecrets?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaActionConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaActionConfig> =
+export const GoogleCloudDiscoveryengineV1alphaActionConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaActionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionParams: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     serviceName: Schema.optional(Schema.String),
@@ -4640,7 +4640,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollme
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment> =
+export const GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alertId: Schema.optional(Schema.String),
     enrollState: Schema.optional(Schema.String),
@@ -4656,7 +4656,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig {
   alertEnrollments?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alertPolicyName: Schema.optional(Schema.String),
     alertEnrollments: Schema.optional(
@@ -4819,7 +4819,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnector {
   alertPolicyConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataConnector: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataConnector> =
+export const GoogleCloudDiscoveryengineV1alphaDataConnector: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataConnector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jsonParams: Schema.optional(Schema.String),
     realtimeSyncConfig: Schema.optional(
@@ -4899,7 +4899,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCollection {
   dataConnector?: GoogleCloudDiscoveryengineV1alphaDataConnector;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCollection: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCollection> =
+export const GoogleCloudDiscoveryengineV1alphaCollection: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCollection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -4916,7 +4916,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateResponse 
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateResponse> =
+export const GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -4932,7 +4932,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -4947,7 +4947,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbe
   vector?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldPath: Schema.optional(Schema.String),
     vector: Schema.optional(Schema.Array(Schema.Number)),
@@ -4958,7 +4958,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddin
 
 export interface GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest {}
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest",
@@ -4992,7 +4992,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCustomTuningModel {
   metrics?: Record<string, number>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCustomTuningModel: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCustomTuningModel> =
+export const GoogleCloudDiscoveryengineV1alphaCustomTuningModel: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCustomTuningModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     modelVersion: Schema.optional(Schema.String),
@@ -5011,7 +5011,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse {
   models?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCustomTuningModel>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     models: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaCustomTuningModel),
@@ -5025,7 +5025,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigA
   nlConfigId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig> =
+export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nlConfigId: Schema.optional(Schema.String),
   }).annotate({
@@ -5052,7 +5052,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigA
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig> =
+export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password: Schema.optional(Schema.String),
     user: Schema.optional(Schema.String),
@@ -5074,7 +5074,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigA
   alloydbConnectionConfig?: GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig> =
+export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alloydbAiNlConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig,
@@ -5095,7 +5095,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec
   pinUnexpandedResults?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
     pinUnexpandedResults: Schema.optional(Schema.Boolean),
@@ -5117,7 +5117,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec {
   field?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxCount: Schema.optional(Schema.Number),
     mode: Schema.optional(Schema.String),
@@ -5135,7 +5135,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec {
   disableGenerativeAnswerAddOn?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableSemanticAddOn: Schema.optional(Schema.Boolean),
     disableKpiPersonalizationAddOn: Schema.optional(Schema.Boolean),
@@ -5157,7 +5157,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpe
   semanticRelevanceThreshold?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevanceThreshold: Schema.optional(Schema.String),
     semanticRelevanceThreshold: Schema.optional(Schema.Number),
@@ -5173,7 +5173,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpe
   semanticSearchThreshold?: GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keywordSearchThreshold: Schema.optional(
       GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec,
@@ -5193,7 +5193,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecCondition
   boostAmount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeValue: Schema.optional(Schema.String),
     boostAmount: Schema.optional(Schema.Number),
@@ -5220,7 +5220,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecCondition
   fieldName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeType: Schema.optional(Schema.String),
     interpolationType: Schema.optional(Schema.String),
@@ -5244,7 +5244,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecCondition
   boostControlSpec?: GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boost: Schema.optional(Schema.Number),
     condition: Schema.optional(Schema.String),
@@ -5261,7 +5261,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec {
   conditionBoostSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditionBoostSpecs: Schema.optional(
       Schema.Array(
@@ -5277,7 +5277,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpe
   mode?: "MODE_UNSPECIFIED" | "AUTO" | "DISABLED" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({
@@ -5292,7 +5292,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbed
   fieldPath?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vector: Schema.optional(Schema.Array(Schema.Number)),
     fieldPath: Schema.optional(Schema.String),
@@ -5306,7 +5306,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec {
   embeddingVectors?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     embeddingVectors: Schema.optional(
       Schema.Array(
@@ -5327,7 +5327,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpe
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
   }).annotate({
@@ -5340,7 +5340,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery {
   imageBytes?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageBytes: Schema.optional(Schema.String),
   }).annotate({
@@ -5360,7 +5360,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecE
   numNextSegments?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numPreviousSegments: Schema.optional(Schema.Number),
     returnExtractiveSegmentScore: Schema.optional(Schema.Boolean),
@@ -5379,7 +5379,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecC
   numPreviousChunks?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numNextChunks: Schema.optional(Schema.Number),
     numPreviousChunks: Schema.optional(Schema.Number),
@@ -5397,7 +5397,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
   maxSnippetCount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceOnly: Schema.optional(Schema.Boolean),
     returnSnippet: Schema.optional(Schema.Boolean),
@@ -5412,7 +5412,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
   preamble?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preamble: Schema.optional(Schema.String),
   }).annotate({
@@ -5425,7 +5425,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
   version?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({
@@ -5458,7 +5458,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
   useSemanticChunks?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreAdversarialQuery: Schema.optional(Schema.Boolean),
     ignoreLowRelevantContent: Schema.optional(Schema.Boolean),
@@ -5499,7 +5499,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec 
   summarySpec?: GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extractiveContentSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec,
@@ -5538,7 +5538,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQue
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterExtractionCondition: Schema.optional(Schema.String),
     allowedFieldNames: Schema.optional(Schema.Array(Schema.String)),
@@ -5562,7 +5562,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec {
   enableDynamicPosition?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedFilterKeys: Schema.optional(Schema.Array(Schema.String)),
     facetKey: Schema.optional(
@@ -5581,7 +5581,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec {
   searchResultPersistenceCount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryId: Schema.optional(Schema.String),
     searchResultPersistenceCount: Schema.optional(Schema.Number),
@@ -5594,7 +5594,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec
   returnRelevanceScore?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     returnRelevanceScore: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -5607,7 +5607,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpe
   mode?: "MODE_UNSPECIFIED" | "SUGGESTION_ONLY" | "AUTO" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({
@@ -5620,7 +5620,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParam
   expressionsToPrecompute?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expressionsToPrecompute: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -5641,7 +5641,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec {
   boostSpec?: GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customSearchOperators: Schema.optional(Schema.String),
     dataStore: Schema.optional(Schema.String),
@@ -5753,7 +5753,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequest {
   displaySpec?: GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchRequest: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchRequest> =
+export const GoogleCloudDiscoveryengineV1betaSearchRequest: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userInfo: Schema.optional(GoogleCloudDiscoveryengineV1betaUserInfo),
     pageSize: Schema.optional(Schema.Number),
@@ -5840,7 +5840,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata {
   dialogflowAgent?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowAgent: Schema.optional(Schema.String),
   }).annotate({
@@ -5852,7 +5852,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore {
   disabledForServing?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore: Schema.Schema<GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore> =
+export const GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore: Schema.Codec<GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabledForServing: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -5866,7 +5866,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataMetad
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -5877,7 +5877,7 @@ export const GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataMetadata:
 
 export interface GoogleCloudDiscoveryengineV1alphaTuneEngineResponse {}
 
-export const GoogleCloudDiscoveryengineV1alphaTuneEngineResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTuneEngineResponse> =
+export const GoogleCloudDiscoveryengineV1alphaTuneEngineResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTuneEngineResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaTuneEngineResponse",
   });
@@ -5887,7 +5887,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecE
   title?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
   }).annotate({
@@ -5956,7 +5956,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig {
   licenseCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig> =
+export const GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionName: Schema.optional(Schema.String),
     geminiBundle: Schema.optional(Schema.Boolean),
@@ -5981,7 +5981,7 @@ export const GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig: Schem
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonUploadError {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonUploadError: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonUploadError> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonUploadError: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonUploadError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonUploadError",
   });
@@ -5999,7 +5999,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSp
   semanticRelevanceThreshold?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevanceThreshold: Schema.optional(Schema.String),
     semanticRelevanceThreshold: Schema.optional(Schema.Number),
@@ -6015,7 +6015,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSp
   semanticSearchThreshold?: GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keywordSearchThreshold: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec,
@@ -6035,7 +6035,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeDocumentsResponse {
   purgeSample?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1PurgeDocumentsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1PurgeDocumentsResponse> =
+export const GoogleCloudDiscoveryengineV1PurgeDocumentsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1PurgeDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purgeCount: Schema.optional(Schema.String),
     purgeSample: Schema.optional(Schema.Array(Schema.String)),
@@ -6058,7 +6058,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchLinkPromotion {
   imageUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSearchLinkPromotion: Schema.Schema<GoogleCloudDiscoveryengineV1betaSearchLinkPromotion> =
+export const GoogleCloudDiscoveryengineV1betaSearchLinkPromotion: Schema.Codec<GoogleCloudDiscoveryengineV1betaSearchLinkPromotion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -6077,7 +6077,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlPromoteAction {
   searchLinkPromotion?: GoogleCloudDiscoveryengineV1betaSearchLinkPromotion;
 }
 
-export const GoogleCloudDiscoveryengineV1betaControlPromoteAction: Schema.Schema<GoogleCloudDiscoveryengineV1betaControlPromoteAction> =
+export const GoogleCloudDiscoveryengineV1betaControlPromoteAction: Schema.Codec<GoogleCloudDiscoveryengineV1betaControlPromoteAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(Schema.String),
     searchLinkPromotion: Schema.optional(
@@ -6094,7 +6094,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportDocumentsResponse {
   errorConfig?: GoogleCloudDiscoveryengineV1alphaImportErrorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportDocumentsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportDocumentsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaImportDocumentsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorConfig: Schema.optional(
@@ -6109,7 +6109,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition {
   dialogflowAgent?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition> =
+export const GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowAgent: Schema.optional(Schema.String),
   }).annotate({
@@ -6127,7 +6127,7 @@ export interface GoogleCloudDiscoveryengineV1DynamicTool {
   description?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DynamicTool: Schema.Schema<GoogleCloudDiscoveryengineV1DynamicTool> =
+export const GoogleCloudDiscoveryengineV1DynamicTool: Schema.Codec<GoogleCloudDiscoveryengineV1DynamicTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -6142,7 +6142,7 @@ export interface GoogleCloudDiscoveryengineV1alphaGcsSource {
   dataSchema?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaGcsSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaGcsSource> =
+export const GoogleCloudDiscoveryengineV1alphaGcsSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputUris: Schema.optional(Schema.Array(Schema.String)),
     dataSchema: Schema.optional(Schema.String),
@@ -6163,7 +6163,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAlloyDbSource {
   tableId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAlloyDbSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAlloyDbSource> =
+export const GoogleCloudDiscoveryengineV1alphaAlloyDbSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAlloyDbSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseId: Schema.optional(Schema.String),
     gcsStagingDir: Schema.optional(Schema.String),
@@ -6193,7 +6193,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn 
   fieldName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn> =
+export const GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6224,7 +6224,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnF
   fieldName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily> =
+export const GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6249,7 +6249,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBigtableOptions {
   >;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBigtableOptions: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBigtableOptions> =
+export const GoogleCloudDiscoveryengineV1alphaBigtableOptions: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBigtableOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyFieldName: Schema.optional(Schema.String),
     families: Schema.optional(
@@ -6273,7 +6273,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBigtableSource {
   projectId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBigtableSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBigtableSource> =
+export const GoogleCloudDiscoveryengineV1alphaBigtableSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBigtableSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String),
     instanceId: Schema.optional(Schema.String),
@@ -6300,7 +6300,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBigQuerySource {
   gcsStagingDir?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBigQuerySource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBigQuerySource> =
+export const GoogleCloudDiscoveryengineV1alphaBigQuerySource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBigQuerySource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionDate: Schema.optional(GoogleTypeDate),
     projectId: Schema.optional(Schema.String),
@@ -6323,7 +6323,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFirestoreSource {
   collectionId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFirestoreSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFirestoreSource> =
+export const GoogleCloudDiscoveryengineV1alphaFirestoreSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFirestoreSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     databaseId: Schema.optional(Schema.String),
@@ -6346,7 +6346,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSpannerSource {
   projectId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSpannerSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSpannerSource> =
+export const GoogleCloudDiscoveryengineV1alphaSpannerSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSpannerSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseId: Schema.optional(Schema.String),
     enableDataBoost: Schema.optional(Schema.Boolean),
@@ -6364,7 +6364,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPrincipal {
   externalEntityId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPrincipal: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPrincipal> =
+export const GoogleCloudDiscoveryengineV1alphaPrincipal: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPrincipal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
     groupId: Schema.optional(Schema.String),
@@ -6378,7 +6378,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestricti
   idpWide?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     principals: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaPrincipal),
@@ -6394,7 +6394,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentAclInfo {
   readers?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentAclInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentAclInfo> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentAclInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentAclInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readers: Schema.optional(
       Schema.Array(
@@ -6414,7 +6414,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentIndexStatus {
   pendingMessage?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentIndexStatus: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentIndexStatus> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentIndexStatus: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentIndexStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexTime: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -6432,7 +6432,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentContent {
   mimeType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentContent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentContent> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentContent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rawBytes: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -6466,7 +6466,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocument {
   jsonData?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocument: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocument> =
+export const GoogleCloudDiscoveryengineV1alphaDocument: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocument> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     indexTime: Schema.optional(Schema.String),
@@ -6490,7 +6490,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportDocumentsRequestInlineSo
   documents?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaDocument>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportDocumentsRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportDocumentsRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaImportDocumentsRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportDocumentsRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documents: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaDocument),
@@ -6511,7 +6511,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFhirStoreSource {
   resourceTypes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFhirStoreSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFhirStoreSource> =
+export const GoogleCloudDiscoveryengineV1alphaFhirStoreSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFhirStoreSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsStagingDir: Schema.optional(Schema.String),
     updateFromLatestPredefinedSchema: Schema.optional(Schema.Boolean),
@@ -6536,7 +6536,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCloudSqlSource {
   offload?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCloudSqlSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCloudSqlSource> =
+export const GoogleCloudDiscoveryengineV1alphaCloudSqlSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCloudSqlSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -6585,7 +6585,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest {
   forceRefreshContent?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GoogleCloudDiscoveryengineV1alphaGcsSource),
     reconciliationMode: Schema.optional(Schema.String),
@@ -6633,7 +6633,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntryTarget {
   score?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntryTarget: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntryTarget> =
+export const GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntryTarget: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageNumbers: Schema.optional(Schema.Array(Schema.Number)),
     uri: Schema.optional(Schema.String),
@@ -6649,7 +6649,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntry {
   targets?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntryTarget>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntry: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntry> =
+export const GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntry: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     targets: Schema.optional(
@@ -6670,7 +6670,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSampleQuery {
   queryEntry?: GoogleCloudDiscoveryengineV1alphaSampleQueryQueryEntry;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSampleQuery: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSampleQuery> =
+export const GoogleCloudDiscoveryengineV1alphaSampleQuery: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSampleQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6684,7 +6684,7 @@ export interface GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest {
   names?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest: Schema.Schema<GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest> =
+export const GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest: Schema.Codec<GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -6698,7 +6698,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantToolInfo {
   toolDisplayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1AssistantToolInfo: Schema.Schema<GoogleCloudDiscoveryengineV1AssistantToolInfo> =
+export const GoogleCloudDiscoveryengineV1AssistantToolInfo: Schema.Codec<GoogleCloudDiscoveryengineV1AssistantToolInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolName: Schema.optional(Schema.String),
     toolDisplayName: Schema.optional(Schema.String),
@@ -6709,7 +6709,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantToolList {
   toolInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantToolInfo>;
 }
 
-export const GoogleCloudDiscoveryengineV1AssistantToolList: Schema.Schema<GoogleCloudDiscoveryengineV1AssistantToolList> =
+export const GoogleCloudDiscoveryengineV1AssistantToolList: Schema.Codec<GoogleCloudDiscoveryengineV1AssistantToolList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolInfo: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1AssistantToolInfo),
@@ -6721,7 +6721,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInst
   additionalSystemInstruction?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction: Schema.Schema<GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction> =
+export const GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction: Schema.Codec<GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalSystemInstruction: Schema.optional(Schema.String),
   }).annotate({
@@ -6740,7 +6740,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantGenerationConfig {
   allowedModelIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1AssistantGenerationConfig: Schema.Schema<GoogleCloudDiscoveryengineV1AssistantGenerationConfig> =
+export const GoogleCloudDiscoveryengineV1AssistantGenerationConfig: Schema.Codec<GoogleCloudDiscoveryengineV1AssistantGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultModelId: Schema.optional(Schema.String),
     systemInstruction: Schema.optional(
@@ -6765,7 +6765,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorCo
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig> =
+export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responseTemplate: Schema.optional(Schema.String),
     userPromptTemplate: Schema.optional(Schema.String),
@@ -6788,7 +6788,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase: Schema.Schema<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase> =
+export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase: Schema.Codec<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreDiacritics: Schema.optional(Schema.Boolean),
     phrase: Schema.optional(Schema.String),
@@ -6805,7 +6805,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantCustomerPolicy {
   bannedPhrases?: ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase>;
 }
 
-export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1AssistantCustomerPolicy> =
+export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1AssistantCustomerPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelArmorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig,
@@ -6847,7 +6847,7 @@ export interface GoogleCloudDiscoveryengineV1Assistant {
   description?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1Assistant: Schema.Schema<GoogleCloudDiscoveryengineV1Assistant> =
+export const GoogleCloudDiscoveryengineV1Assistant: Schema.Codec<GoogleCloudDiscoveryengineV1Assistant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabledTools: Schema.optional(
       Schema.Record(
@@ -6875,7 +6875,7 @@ export interface GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGateway
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference: Schema.Schema<GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference> =
+export const GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference: Schema.Codec<GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -6885,7 +6885,7 @@ export const GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayRefe
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded",
   });
@@ -6901,7 +6901,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata
   filtersRemovedCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -6919,7 +6919,7 @@ export interface GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetada
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetadata> =
+export const GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -6937,7 +6937,7 @@ export interface GoogleCloudDiscoveryengineV1EngineChatEngineConfig {
   dialogflowAgentToLink?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineChatEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineChatEngineConfig> =
+export const GoogleCloudDiscoveryengineV1EngineChatEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineChatEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowCrossRegion: Schema.optional(Schema.Boolean),
     agentCreationConfig: Schema.optional(
@@ -6961,7 +6961,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   radiusInMeters?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     longitude: Schema.optional(Schema.Number),
@@ -6978,7 +6978,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   expressions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expressions: Schema.optional(
@@ -6990,7 +6990,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQuery
   ).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression",
-  }) as any as Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression>;
+  }) as any as Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression>;
 
 export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint {
   /** The value specified in the numerical constraint. */
@@ -7010,7 +7010,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   fieldName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     comparison: Schema.optional(Schema.String),
@@ -7030,7 +7030,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     querySegment: Schema.optional(Schema.String),
     fieldName: Schema.optional(Schema.String),
@@ -7045,7 +7045,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   expressions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expressions: Schema.optional(
@@ -7057,7 +7057,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQuery
   ).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression",
-  }) as any as Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
+  }) as any as Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
 
 export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression {
   /** Geolocation constraint expression. */
@@ -7072,7 +7072,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   orExpr?: GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       geolocationConstraint: Schema.optional(
@@ -7094,7 +7094,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQuery
   ).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression",
-  }) as any as Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
+  }) as any as Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
 
 export interface GoogleCloudDiscoveryengineV1alphaSampleQuerySet {
   /** The description of the SampleQuerySet. */
@@ -7107,7 +7107,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSampleQuerySet {
   createTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSampleQuerySet: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSampleQuerySet> =
+export const GoogleCloudDiscoveryengineV1alphaSampleQuerySet: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSampleQuerySet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -7124,7 +7124,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest {
   filterGroups?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest> =
+export const GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(Schema.String),
     filterGroups: Schema.optional(Schema.Array(Schema.String)),
@@ -7137,7 +7137,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore
   disabledForServing?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore> =
+export const GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabledForServing: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -7154,7 +7154,7 @@ export interface GoogleCloudDiscoveryengineV1betaSchema {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSchema: Schema.Schema<GoogleCloudDiscoveryengineV1betaSchema> =
+export const GoogleCloudDiscoveryengineV1betaSchema: Schema.Codec<GoogleCloudDiscoveryengineV1betaSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structSchema: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     jsonSchema: Schema.optional(Schema.String),
@@ -7168,7 +7168,7 @@ export interface GoogleCloudDiscoveryengineV1betaDeleteSitemapMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDeleteSitemapMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaDeleteSitemapMetadata> =
+export const GoogleCloudDiscoveryengineV1betaDeleteSitemapMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaDeleteSitemapMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -7183,7 +7183,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecChunk
   numPreviousChunks?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecChunkSpec: Schema.Schema<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecChunkSpec> =
+export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecChunkSpec: Schema.Codec<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecChunkSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numNextChunks: Schema.optional(Schema.Number),
     numPreviousChunks: Schema.optional(Schema.Number),
@@ -7199,7 +7199,7 @@ export interface GoogleCloudNotebooklmV1alphaAgentspaceMetadata {
   documentName?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaAgentspaceMetadata: Schema.Schema<GoogleCloudNotebooklmV1alphaAgentspaceMetadata> =
+export const GoogleCloudNotebooklmV1alphaAgentspaceMetadata: Schema.Codec<GoogleCloudNotebooklmV1alphaAgentspaceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentTitle: Schema.optional(Schema.String),
     documentName: Schema.optional(Schema.String),
@@ -7212,7 +7212,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWorkspaceSettings {
   customerDomainValid?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWorkspaceSettings: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWorkspaceSettings> =
+export const GoogleCloudDiscoveryengineV1alphaWorkspaceSettings: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWorkspaceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workspaceAccessEnabled: Schema.optional(Schema.Boolean),
     customerDomainValid: Schema.optional(Schema.Boolean),
@@ -7227,7 +7227,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResu
   attributeValue?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResultRefinementAttribute: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResultRefinementAttribute> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResultRefinementAttribute: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResultRefinementAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeKey: Schema.optional(Schema.String),
     attributeValue: Schema.optional(Schema.String),
@@ -7243,7 +7243,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResu
   followUpQuestions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refinementAttributes: Schema.optional(
       Schema.Array(
@@ -7261,7 +7261,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenera
   preamble?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecPromptSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecPromptSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecPromptSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecPromptSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preamble: Schema.optional(Schema.String),
   }).annotate({
@@ -7279,7 +7279,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenera
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageSource: Schema.optional(Schema.String),
   }).annotate({
@@ -7308,7 +7308,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenera
   modelSpec?: GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreNonAnswerSeekingQuery: Schema.optional(Schema.Boolean),
     includeCitations: Schema.optional(Schema.Boolean),
@@ -7341,7 +7341,7 @@ export interface GoogleCloudDiscoveryengineV1alphaLanguageInfo {
   region?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaLanguageInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaLanguageInfo> =
+export const GoogleCloudDiscoveryengineV1alphaLanguageInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaLanguageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     normalizedLanguageCode: Schema.optional(Schema.String),
@@ -7360,7 +7360,7 @@ export interface GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry {
   groupId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry: Schema.Schema<GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry> =
+export const GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry: Schema.Codec<GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalIdentityName: Schema.optional(Schema.String),
     externalIdentity: Schema.optional(Schema.String),
@@ -7375,7 +7375,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestIn
   identityMappingEntries?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identityMappingEntries: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry),
@@ -7394,7 +7394,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequest {
   force?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     inlineSource: Schema.optional(
@@ -7410,7 +7410,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata {
   engine?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     engine: Schema.optional(Schema.String),
   }).annotate({
@@ -7422,7 +7422,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateReques
   crawlRateScope?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest> =
+export const GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     crawlRateScope: Schema.optional(Schema.String),
   }).annotate({
@@ -7448,7 +7448,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImageCharacteristics {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImageCharacteristics: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImageCharacteristics> =
+export const GoogleCloudDiscoveryengineV1alphaImageCharacteristics: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImageCharacteristics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
@@ -7465,7 +7465,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageS
   date?: GoogleTypeDate;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseDatedUsage: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseDatedUsage> =
+export const GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseDatedUsage: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseDatedUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usage: Schema.optional(Schema.Number),
     date: Schema.optional(GoogleTypeDate),
@@ -7490,7 +7490,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageS
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseMetricUsage: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseMetricUsage> =
+export const GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseMetricUsage: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseMetricUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalUsage: Schema.optional(Schema.Number),
     datedUsages: Schema.optional(
@@ -7509,7 +7509,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageS
   metricUsages?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponseMetricUsage>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricUsages: Schema.optional(
       Schema.Array(
@@ -7526,7 +7526,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestRelatedQuest
   enable?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestRelatedQuestionsSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestRelatedQuestionsSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestRelatedQuestionsSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestRelatedQuestionsSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enable: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -7541,7 +7541,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListCollectionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListCollectionsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListCollectionsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListCollectionsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListCollectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collections: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaCollection),
@@ -7562,7 +7562,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeat
   disablePrivateKgQueryUiChips?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disablePrivateKgEnrichment: Schema.optional(Schema.Boolean),
     disablePrivateKgQueryUnderstanding: Schema.optional(Schema.Boolean),
@@ -7586,7 +7586,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig {
   featureConfig?: GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableCloudKnowledgeGraph: Schema.optional(Schema.Boolean),
     cloudKnowledgeGraphTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -7608,7 +7608,7 @@ export interface GoogleCloudDiscoveryengineV1Collection {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1Collection: Schema.Schema<GoogleCloudDiscoveryengineV1Collection> =
+export const GoogleCloudDiscoveryengineV1Collection: Schema.Codec<GoogleCloudDiscoveryengineV1Collection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -7622,7 +7622,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBo
   boost?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
     boost: Schema.optional(Schema.Number),
@@ -7638,7 +7638,7 @@ export interface GoogleCloudDiscoveryengineV1ControlFilterAction {
   dataStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ControlFilterAction: Schema.Schema<GoogleCloudDiscoveryengineV1ControlFilterAction> =
+export const GoogleCloudDiscoveryengineV1ControlFilterAction: Schema.Codec<GoogleCloudDiscoveryengineV1ControlFilterAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     dataStore: Schema.optional(Schema.String),
@@ -7655,7 +7655,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBin
   description?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBinding: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBinding> =
+export const GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBinding: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variableId: Schema.optional(Schema.String),
     sampleFilter: Schema.optional(Schema.String),
@@ -7670,7 +7670,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpe
   returnRelevanceScore?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     returnRelevanceScore: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -7689,7 +7689,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseQ
   score?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseQuerySuggestion: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseQuerySuggestion> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseQuerySuggestion: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseQuerySuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestion: Schema.optional(Schema.String),
     dataStore: Schema.optional(Schema.Array(Schema.String)),
@@ -7705,7 +7705,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistRequestGenerationS
   modelId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestGenerationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestGenerationSpec> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestGenerationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestGenerationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.optional(Schema.String),
   }).annotate({
@@ -7718,7 +7718,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries {
   qpsTimeSeries?: GoogleMonitoringV3TimeSeries;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries> =
+export const GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qpsTimeSeries: Schema.optional(GoogleMonitoringV3TimeSeries),
   }).annotate({
@@ -7736,7 +7736,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries {
   autoRefreshCrawlErrorRate?: GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries> =
+export const GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userTriggeredCrawlRate: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries,
@@ -7761,7 +7761,7 @@ export interface GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries {
   vertexAiOrganicCrawlRate?: GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries: Schema.Schema<GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries> =
+export const GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries: Schema.Codec<GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleOrganicCrawlRate: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries,
@@ -7784,7 +7784,7 @@ export interface GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse {
   state?: "STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse> =
+export const GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dedicatedCrawlRateTimeSeries: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries,
@@ -7803,7 +7803,7 @@ export interface GoogleCloudDiscoveryengineV1alphaContactDetails {
   emailAddress?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaContactDetails: Schema.Schema<GoogleCloudDiscoveryengineV1alphaContactDetails> =
+export const GoogleCloudDiscoveryengineV1alphaContactDetails: Schema.Codec<GoogleCloudDiscoveryengineV1alphaContactDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
   }).annotate({
@@ -7812,7 +7812,7 @@ export const GoogleCloudDiscoveryengineV1alphaContactDetails: Schema.Schema<Goog
 
 export interface GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata {}
 
-export const GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata",
   });
@@ -7842,7 +7842,7 @@ export interface GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatu
   terminateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus: Schema.Schema<GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus> =
+export const GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus: Schema.Codec<GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexingCoreThresholdNextUpdateTime: Schema.optional(Schema.String),
     effectiveSearchQpmThreshold: Schema.optional(Schema.String),
@@ -7873,7 +7873,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo> =
+export const GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verifyTime: Schema.optional(Schema.String),
     siteVerificationState: Schema.optional(Schema.String),
@@ -7886,7 +7886,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFa
   totalRequiredQuota?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure> =
+export const GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalRequiredQuota: Schema.optional(Schema.String),
   }).annotate({
@@ -7899,7 +7899,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReason {
   quotaFailure?: GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReason: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReason> =
+export const GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReason: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quotaFailure: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure,
@@ -7939,7 +7939,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTargetSite {
   providedUriPattern?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTargetSite: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTargetSite> =
+export const GoogleCloudDiscoveryengineV1alphaTargetSite: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTargetSite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexingStatus: Schema.optional(Schema.String),
     generatedUriPattern: Schema.optional(Schema.String),
@@ -7966,7 +7966,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListTargetSitesResponse {
   totalSize?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListTargetSitesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListTargetSitesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListTargetSitesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListTargetSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSites: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaTargetSite),
@@ -7988,7 +7988,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics {
   top5?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics> =
+export const GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     top1: Schema.optional(Schema.Number),
     top3: Schema.optional(Schema.Number),
@@ -8003,7 +8003,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewa
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference> =
+export const GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -8016,7 +8016,7 @@ export interface GoogleCloudDiscoveryengineV1CliConfig {
   enabledActions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1CliConfig: Schema.Schema<GoogleCloudDiscoveryengineV1CliConfig> =
+export const GoogleCloudDiscoveryengineV1CliConfig: Schema.Codec<GoogleCloudDiscoveryengineV1CliConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabledActions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudDiscoveryengineV1CliConfig" });
@@ -8028,7 +8028,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditio
   boostAmount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeValue: Schema.optional(Schema.String),
     boostAmount: Schema.optional(Schema.Number),
@@ -8055,7 +8055,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditio
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     controlPoints: Schema.optional(
@@ -8079,7 +8079,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditio
   boost?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
     boostControlSpec: Schema.optional(
@@ -8096,7 +8096,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigImage {
   url?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigImage: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigImage> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigImage: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({
@@ -8108,7 +8108,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigUiBrandingSettings
   logo?: GoogleCloudDiscoveryengineV1alphaWidgetConfigImage;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiBrandingSettings: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiBrandingSettings> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiBrandingSettings: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigUiBrandingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logo: Schema.optional(GoogleCloudDiscoveryengineV1alphaWidgetConfigImage),
   }).annotate({
@@ -8118,7 +8118,7 @@ export const GoogleCloudDiscoveryengineV1alphaWidgetConfigUiBrandingSettings: Sc
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed",
@@ -8131,7 +8131,7 @@ export interface GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNo
   responseTemplate?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig> =
+export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPromptTemplate: Schema.optional(Schema.String),
     responseTemplate: Schema.optional(Schema.String),
@@ -8147,7 +8147,7 @@ export interface GoogleCloudDiscoveryengineV1betaObservabilityConfig {
   sensitiveLoggingEnabled?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaObservabilityConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaObservabilityConfig> =
+export const GoogleCloudDiscoveryengineV1betaObservabilityConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaObservabilityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     observabilityEnabled: Schema.optional(Schema.Boolean),
     sensitiveLoggingEnabled: Schema.optional(Schema.Boolean),
@@ -8160,7 +8160,7 @@ export interface GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNo
   policy?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy> =
+export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Schema.String),
   }).annotate({
@@ -8173,7 +8173,7 @@ export interface GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNo
   sensitiveDataProtectionPolicy?: GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy;
 }
 
-export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy> =
+export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitiveDataProtectionPolicy: Schema.optional(
       GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy,
@@ -8194,7 +8194,7 @@ export interface GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNo
   dataProtectionPolicy?: GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy;
 }
 
-export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig> =
+export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelArmorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig,
@@ -8216,7 +8216,7 @@ export interface GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig {
   notebooklmConfig?: GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig> =
+export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebooklmConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig,
@@ -8227,7 +8227,7 @@ export const GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig: Sche
 
 export interface GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse {}
 
-export const GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse> =
+export const GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse",
@@ -8235,7 +8235,7 @@ export const GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse: S
 
 export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig {}
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig",
@@ -8248,7 +8248,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsin
   useNativeText?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enhancedDocumentElements: Schema.optional(Schema.Array(Schema.String)),
     useNativeText: Schema.optional(Schema.Boolean),
@@ -8276,7 +8276,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsin
   enableLlmLayoutParsing?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structuredContentTypes: Schema.optional(Schema.Array(Schema.String)),
     excludeHtmlElements: Schema.optional(Schema.Array(Schema.String)),
@@ -8300,7 +8300,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsin
   layoutParsingConfig?: GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     digitalParsingConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig,
@@ -8321,7 +8321,7 @@ export interface GoogleCloudDiscoveryengineV1ImportErrorConfig {
   gcsPrefix?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportErrorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ImportErrorConfig> =
+export const GoogleCloudDiscoveryengineV1ImportErrorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ImportErrorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsPrefix: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDiscoveryengineV1ImportErrorConfig" });
@@ -8333,7 +8333,7 @@ export interface GoogleCloudDiscoveryengineV1ImportDocumentsResponse {
   errorConfig?: GoogleCloudDiscoveryengineV1ImportErrorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportDocumentsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1ImportDocumentsResponse> =
+export const GoogleCloudDiscoveryengineV1ImportDocumentsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1ImportDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorConfig: Schema.optional(GoogleCloudDiscoveryengineV1ImportErrorConfig),
@@ -8348,7 +8348,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesM
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesMetadata> =
+export const GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -8364,7 +8364,7 @@ export interface GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong {
   wordLimit?: number;
 }
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wordCount: Schema.optional(Schema.Number),
     wordLimit: Schema.optional(Schema.Number),
@@ -8374,21 +8374,21 @@ export const GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong: Schema.Sche
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed",
   });
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonIngestionError {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonIngestionError: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonIngestionError> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonIngestionError: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonIngestionError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonIngestionError",
   });
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonPaywallError {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonPaywallError: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonPaywallError> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonPaywallError: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonPaywallError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonPaywallError",
   });
@@ -8398,7 +8398,7 @@ export interface GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError {
   downloadPrevented?: GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented;
 }
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadPrevented: Schema.optional(
       GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented,
@@ -8421,7 +8421,7 @@ export interface GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable {
     | (string & {});
 }
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorDetails: Schema.optional(Schema.String),
   }).annotate({
@@ -8430,21 +8430,21 @@ export const GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable: Schema.
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked",
   });
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonUnknown {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonUnknown: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonUnknown> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonUnknown: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonUnknown> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonUnknown",
   });
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted",
@@ -8455,7 +8455,7 @@ export interface GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError {
   videoDeleted?: GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted;
 }
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoDeleted: Schema.optional(
       GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted,
@@ -8466,7 +8466,7 @@ export const GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError: Schema.Schem
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected",
@@ -8479,7 +8479,7 @@ export interface GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErro
   noAudioDetected?: GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected;
 }
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageDetectionFailed: Schema.optional(
       GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed,
@@ -8494,7 +8494,7 @@ export const GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError: S
 
 export interface GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked {}
 
-export const GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked> =
+export const GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked",
   });
@@ -8530,7 +8530,7 @@ export interface GoogleCloudNotebooklmV1alphaFailureReason {
   mimeTypeBlocked?: GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked;
 }
 
-export const GoogleCloudNotebooklmV1alphaFailureReason: Schema.Schema<GoogleCloudNotebooklmV1alphaFailureReason> =
+export const GoogleCloudNotebooklmV1alphaFailureReason: Schema.Codec<GoogleCloudNotebooklmV1alphaFailureReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadError: Schema.optional(
       GoogleCloudNotebooklmV1alphaFailureReasonUploadError,
@@ -8605,7 +8605,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig {
   >;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchTier: Schema.optional(Schema.String),
     requiredSubscriptionTier: Schema.optional(Schema.String),
@@ -8623,7 +8623,7 @@ export interface GoogleCloudDiscoveryengineV1alphaExternalIdentityUserMetadata {
   familyName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaExternalIdentityUserMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaExternalIdentityUserMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaExternalIdentityUserMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaExternalIdentityUserMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryEmail: Schema.optional(Schema.String),
     givenName: Schema.optional(Schema.String),
@@ -8641,7 +8641,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSitemap {
   createTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSitemap: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSitemap> =
+export const GoogleCloudDiscoveryengineV1alphaSitemap: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSitemap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -8655,7 +8655,7 @@ export interface GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride {
   baseVersion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride: Schema.Schema<GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride> =
+export const GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride: Schema.Codec<GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tools: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -8672,7 +8672,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpe
   condition?: "CONDITION_UNSPECIFIED" | "DISABLED" | "AUTO" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pinUnexpandedResults: Schema.optional(Schema.Boolean),
     condition: Schema.optional(Schema.String),
@@ -8692,7 +8692,7 @@ export interface GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics {
   top5?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics: Schema.Schema<GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics> =
+export const GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics: Schema.Codec<GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     top1: Schema.optional(Schema.Number),
     top3: Schema.optional(Schema.Number),
@@ -8712,7 +8712,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSp
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
   }).annotate({
@@ -8733,7 +8733,7 @@ export interface GoogleCloudDiscoveryengineV1ImportDocumentsMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportDocumentsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1ImportDocumentsMetadata> =
+export const GoogleCloudDiscoveryengineV1ImportDocumentsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1ImportDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     successCount: Schema.optional(Schema.String),
@@ -8758,7 +8758,7 @@ export interface GoogleCloudNotebooklmV1alphaSourceSettings {
   failureReason?: GoogleCloudNotebooklmV1alphaFailureReason;
 }
 
-export const GoogleCloudNotebooklmV1alphaSourceSettings: Schema.Schema<GoogleCloudNotebooklmV1alphaSourceSettings> =
+export const GoogleCloudNotebooklmV1alphaSourceSettings: Schema.Codec<GoogleCloudNotebooklmV1alphaSourceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     failureReason: Schema.optional(GoogleCloudNotebooklmV1alphaFailureReason),
@@ -8771,7 +8771,7 @@ export interface GoogleCloudNotebooklmV1alphaYoutubeMetadata {
   channelName?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaYoutubeMetadata: Schema.Schema<GoogleCloudNotebooklmV1alphaYoutubeMetadata> =
+export const GoogleCloudNotebooklmV1alphaYoutubeMetadata: Schema.Codec<GoogleCloudNotebooklmV1alphaYoutubeMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoId: Schema.optional(Schema.String),
     channelName: Schema.optional(Schema.String),
@@ -8784,7 +8784,7 @@ export interface GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata {
   revisionId?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata: Schema.Schema<GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata> =
+export const GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata: Schema.Codec<GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentId: Schema.optional(Schema.String),
     revisionId: Schema.optional(Schema.String),
@@ -8807,7 +8807,7 @@ export interface GoogleCloudNotebooklmV1alphaSourceMetadata {
   googleDocsMetadata?: GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata;
 }
 
-export const GoogleCloudNotebooklmV1alphaSourceMetadata: Schema.Schema<GoogleCloudNotebooklmV1alphaSourceMetadata> =
+export const GoogleCloudNotebooklmV1alphaSourceMetadata: Schema.Codec<GoogleCloudNotebooklmV1alphaSourceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wordCount: Schema.optional(Schema.Number),
     agentspaceMetadata: Schema.optional(
@@ -8836,7 +8836,7 @@ export interface GoogleCloudNotebooklmV1alphaSource {
   metadata?: GoogleCloudNotebooklmV1alphaSourceMetadata;
 }
 
-export const GoogleCloudNotebooklmV1alphaSource: Schema.Schema<GoogleCloudNotebooklmV1alphaSource> =
+export const GoogleCloudNotebooklmV1alphaSource: Schema.Codec<GoogleCloudNotebooklmV1alphaSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceId: Schema.optional(GoogleCloudNotebooklmV1alphaSourceId),
     settings: Schema.optional(GoogleCloudNotebooklmV1alphaSourceSettings),
@@ -8850,7 +8850,7 @@ export interface GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse {
   sources?: ReadonlyArray<GoogleCloudNotebooklmV1alphaSource>;
 }
 
-export const GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse: Schema.Schema<GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse> =
+export const GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse: Schema.Codec<GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(GoogleCloudNotebooklmV1alphaSource)),
   }).annotate({
@@ -8859,7 +8859,7 @@ export const GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse: Schema.Sche
 
 export interface GoogleCloudDiscoveryengineV1alphaExportMetricsResponse {}
 
-export const GoogleCloudDiscoveryengineV1alphaExportMetricsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaExportMetricsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaExportMetricsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaExportMetricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaExportMetricsResponse",
   });
@@ -8871,7 +8871,7 @@ export interface GoogleCloudDiscoveryengineV1DeleteTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DeleteTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DeleteTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1DeleteTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DeleteTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -8884,7 +8884,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportErrorConfig {
   gcsPrefix?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportErrorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportErrorConfig> =
+export const GoogleCloudDiscoveryengineV1betaImportErrorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportErrorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsPrefix: Schema.optional(Schema.String),
   }).annotate({
@@ -8904,7 +8904,7 @@ export interface GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse {
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse> =
+export const GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaImportErrorConfig,
@@ -8924,7 +8924,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig
   instanceName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appName: Schema.optional(Schema.String),
     instanceName: Schema.optional(Schema.String),
@@ -8938,7 +8938,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig
   nlConfigId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nlConfigId: Schema.optional(Schema.String),
   }).annotate({
@@ -8955,7 +8955,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig
   alloydbAiNlConfig?: GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alloydbConnectionConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig,
@@ -8974,7 +8974,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig
   searchConfig?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchConfig: Schema.optional(Schema.String),
   }).annotate({
@@ -8991,7 +8991,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig
   notebooklmConfig?: GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thirdPartyOauthConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig,
@@ -9014,7 +9014,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunki
   chunkSize?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeAncestorHeadings: Schema.optional(Schema.Boolean),
     chunkSize: Schema.optional(Schema.Number),
@@ -9028,7 +9028,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunki
   layoutBasedChunkingConfig?: GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     layoutBasedChunkingConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig,
@@ -9052,7 +9052,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig {
   defaultParsingConfig?: GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     chunkingConfig: Schema.optional(
@@ -9086,7 +9086,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation {
   structuredDataSize?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation> =
+export const GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unstructuredDataUpdateTime: Schema.optional(Schema.String),
     websiteDataUpdateTime: Schema.optional(Schema.String),
@@ -9103,7 +9103,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSingleRegionKey {
   kmsKey?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSingleRegionKey: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSingleRegionKey> =
+export const GoogleCloudDiscoveryengineV1alphaSingleRegionKey: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSingleRegionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
   }).annotate({
@@ -9145,7 +9145,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCmekConfig {
   lastRotationTimestampMicros?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCmekConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCmekConfig> =
+export const GoogleCloudDiscoveryengineV1alphaCmekConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCmekConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     singleRegionKeys: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaSingleRegionKey),
@@ -9164,7 +9164,7 @@ export interface GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig {
   workforcePoolName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig> =
+export const GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workforcePoolName: Schema.optional(Schema.String),
   }).annotate({
@@ -9178,7 +9178,7 @@ export interface GoogleCloudDiscoveryengineV1alphaIdpConfig {
   idpType?: "IDP_TYPE_UNSPECIFIED" | "GSUITE" | "THIRD_PARTY" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaIdpConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaIdpConfig> =
+export const GoogleCloudDiscoveryengineV1alphaIdpConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaIdpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalIdpConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig,
@@ -9191,7 +9191,7 @@ export interface GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstand
   mode?: "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({
@@ -9204,7 +9204,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStor
   disabledForServing?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore> =
+export const GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabledForServing: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -9219,7 +9219,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig {
   disableAutomaticRefresh?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableInitialIndex: Schema.optional(Schema.Boolean),
     disableAutomaticRefresh: Schema.optional(Schema.Boolean),
@@ -9305,7 +9305,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStore {
   >;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDataStore: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDataStore> =
+export const GoogleCloudDiscoveryengineV1alphaDataStore: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDataStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federatedSearchConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig,
@@ -9362,7 +9362,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListDataStoresResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListDataStoresResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListDataStoresResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListDataStoresResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListDataStoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStores: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaDataStore),
@@ -9381,7 +9381,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseR
   recentSearchTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseRecentSearchSuggestion: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseRecentSearchSuggestion> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseRecentSearchSuggestion: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseRecentSearchSuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     suggestion: Schema.optional(Schema.String),
@@ -9400,7 +9400,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestDisplaySpec {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestDisplaySpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestDisplaySpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestDisplaySpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestDisplaySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchHighlightingCondition: Schema.optional(Schema.String),
   }).annotate({
@@ -9412,7 +9412,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec {
   conditionBoostSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditionBoostSpecs: Schema.optional(
       Schema.Array(
@@ -9436,7 +9436,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec {
   dataStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numResults: Schema.optional(Schema.Number),
     filter: Schema.optional(Schema.String),
@@ -9454,7 +9454,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingPara
   expressionsToPrecompute?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expressionsToPrecompute: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -9469,7 +9469,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec {
   queryId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchResultPersistenceCount: Schema.optional(Schema.Number),
     queryId: Schema.optional(Schema.String),
@@ -9488,7 +9488,7 @@ export interface GoogleCloudDiscoveryengineV1alphaInterval {
   minimum?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaInterval: Schema.Schema<GoogleCloudDiscoveryengineV1alphaInterval> =
+export const GoogleCloudDiscoveryengineV1alphaInterval: Schema.Codec<GoogleCloudDiscoveryengineV1alphaInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exclusiveMinimum: Schema.optional(Schema.Number),
     maximum: Schema.optional(Schema.Number),
@@ -9513,7 +9513,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey
   contains?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prefixes: Schema.optional(Schema.Array(Schema.String)),
     restrictedValues: Schema.optional(Schema.Array(Schema.String)),
@@ -9540,7 +9540,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec {
   enableDynamicPosition?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedFilterKeys: Schema.optional(Schema.Array(Schema.String)),
     facetKey: Schema.optional(
@@ -9571,7 +9571,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQu
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geoSearchQueryDetectionFieldNames: Schema.optional(
       Schema.Array(Schema.String),
@@ -9589,7 +9589,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery {
   imageBytes?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageBytes: Schema.optional(Schema.String),
   }).annotate({
@@ -9601,7 +9601,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec {
   enableSearchAdaptor?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec> =
+export const GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableSearchAdaptor: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -9621,7 +9621,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
   numNextSegments?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numPreviousSegments: Schema.optional(Schema.Number),
     returnExtractiveSegmentScore: Schema.optional(Schema.Boolean),
@@ -9640,7 +9640,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
   numNextChunks?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numPreviousChunks: Schema.optional(Schema.Number),
     numNextChunks: Schema.optional(Schema.Number),
@@ -9658,7 +9658,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
   maxSnippetCount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceOnly: Schema.optional(Schema.Boolean),
     returnSnippet: Schema.optional(Schema.Boolean),
@@ -9685,7 +9685,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec
   summarySpec?: GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extractiveContentSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec,
@@ -9710,7 +9710,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSp
   mode?: "MODE_UNSPECIFIED" | "AUTO" | "DISABLED" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({
@@ -9723,7 +9723,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec {
   embeddingVectors?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     embeddingVectors: Schema.optional(
       Schema.Array(
@@ -9747,7 +9747,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec {
   field?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxCount: Schema.optional(Schema.Number),
     mode: Schema.optional(Schema.String),
@@ -9765,7 +9765,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAddonSpec {
   disableKpiPersonalizationAddOn?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAddonSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAddonSpec> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAddonSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAddonSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableSemanticAddOn: Schema.optional(Schema.Boolean),
     disableGenerativeAnswerAddOn: Schema.optional(Schema.Boolean),
@@ -9877,7 +9877,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequest {
   boostSpec?: GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchRequest> =
+export const GoogleCloudDiscoveryengineV1alphaSearchRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     canonicalFilter: Schema.optional(Schema.String),
     branch: Schema.optional(Schema.String),
@@ -9968,7 +9968,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQueryS
   sampleQuerySet?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec> =
+export const GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleQuerySet: Schema.optional(Schema.String),
   }).annotate({
@@ -9983,7 +9983,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec {
   querySetSpec?: GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec> =
+export const GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchRequest: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaSearchRequest,
@@ -10008,7 +10008,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQualityMetrics {
   docRecall?: GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaQualityMetrics: Schema.Schema<GoogleCloudDiscoveryengineV1alphaQualityMetrics> =
+export const GoogleCloudDiscoveryengineV1alphaQualityMetrics: Schema.Codec<GoogleCloudDiscoveryengineV1alphaQualityMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     docPrecision: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics,
@@ -10054,7 +10054,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEvaluation {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEvaluation: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEvaluation> =
+export const GoogleCloudDiscoveryengineV1alphaEvaluation: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEvaluation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -10077,7 +10077,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListEvaluationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListEvaluationsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListEvaluationsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListEvaluationsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListEvaluationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluations: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaEvaluation),
@@ -10100,7 +10100,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetric
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetricQueryResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetricQueryResult> =
+export const GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetricQueryResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetricQueryResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricType: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
@@ -10119,7 +10119,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRequirementThresholdBindingThr
   value?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRequirementThresholdBindingThresholdValue: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRequirementThresholdBindingThresholdValue> =
+export const GoogleCloudDiscoveryengineV1alphaRequirementThresholdBindingThresholdValue: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRequirementThresholdBindingThresholdValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -10137,7 +10137,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding {
   variableId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding> =
+export const GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thresholdValues: Schema.optional(
       Schema.Array(
@@ -10163,7 +10163,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding {
   variableId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding> =
+export const GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
@@ -10193,7 +10193,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRequirement {
   metricBindings?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRequirement: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRequirement> =
+export const GoogleCloudDiscoveryengineV1alphaRequirement: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRequirement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.Array(Schema.String)),
@@ -10228,7 +10228,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse {
   result?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse> =
+export const GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricResults: Schema.optional(
       Schema.Array(
@@ -10258,7 +10258,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecommendRequest {
   params?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRecommendRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRecommendRequest> =
+export const GoogleCloudDiscoveryengineV1alphaRecommendRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRecommendRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     userEvent: Schema.optional(GoogleCloudDiscoveryengineV1alphaUserEvent),
@@ -10289,7 +10289,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloy
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig> =
+export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password: Schema.optional(Schema.String),
     user: Schema.optional(Schema.String),
@@ -10307,7 +10307,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloy
   nlConfigId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig> =
+export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nlConfigId: Schema.optional(Schema.String),
   }).annotate({
@@ -10324,7 +10324,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloy
   alloydbAiNlConfig?: GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig> =
+export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alloydbConnectionConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig,
@@ -10347,7 +10347,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse {
   answer?: GoogleCloudDiscoveryengineV1alphaAnswer;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session: Schema.optional(GoogleCloudDiscoveryengineV1alphaSession),
     answerQueryToken: Schema.optional(Schema.String),
@@ -10363,7 +10363,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolation
   boostAmount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint: Schema.Schema<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint> =
+export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint: Schema.Codec<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeValue: Schema.optional(Schema.String),
     boostAmount: Schema.optional(Schema.Number),
@@ -10390,7 +10390,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolation
   fieldName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec> =
+export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeType: Schema.optional(Schema.String),
     interpolationType: Schema.optional(Schema.String),
@@ -10424,7 +10424,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefine
   taskMarker?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     temperature: Schema.optional(Schema.Number),
     topP: Schema.optional(Schema.Number),
@@ -10444,7 +10444,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec {
   userDefinedClassifierSpec?: GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userDefinedClassifierSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec,
@@ -10460,7 +10460,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsing
   useNativeText?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig> =
+export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enhancedDocumentElements: Schema.optional(Schema.Array(Schema.String)),
     useNativeText: Schema.optional(Schema.Boolean),
@@ -10476,7 +10476,7 @@ export interface GoogleCloudDiscoveryengineV1alphaA2AAgentDefinitionCloudMarketp
   order?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaA2AAgentDefinitionCloudMarketplaceConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaA2AAgentDefinitionCloudMarketplaceConfig> =
+export const GoogleCloudDiscoveryengineV1alphaA2AAgentDefinitionCloudMarketplaceConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaA2AAgentDefinitionCloudMarketplaceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entitlement: Schema.optional(Schema.String),
     order: Schema.optional(Schema.String),
@@ -10492,7 +10492,7 @@ export interface GoogleCloudDiscoveryengineV1alphaA2AAgentDefinition {
   cloudMarketplaceConfig?: GoogleCloudDiscoveryengineV1alphaA2AAgentDefinitionCloudMarketplaceConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaA2AAgentDefinition: Schema.Schema<GoogleCloudDiscoveryengineV1alphaA2AAgentDefinition> =
+export const GoogleCloudDiscoveryengineV1alphaA2AAgentDefinition: Schema.Codec<GoogleCloudDiscoveryengineV1alphaA2AAgentDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jsonAgentCard: Schema.optional(Schema.String),
     cloudMarketplaceConfig: Schema.optional(
@@ -10513,7 +10513,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatu
   disablePrivateKgQueryUiChips?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disablePrivateKgEnrichment: Schema.optional(Schema.Boolean),
     disablePrivateKgQueryUnderstanding: Schema.optional(Schema.Boolean),
@@ -10537,7 +10537,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig {
   enableCloudKnowledgeGraph?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     featureConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig,
@@ -10557,7 +10557,7 @@ export interface GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateMetadata> =
+export const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -10572,7 +10572,7 @@ export interface GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoos
   boostAmount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint: Schema.Schema<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint> =
+export const GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint: Schema.Codec<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeValue: Schema.optional(Schema.String),
     boostAmount: Schema.optional(Schema.Number),
@@ -10599,7 +10599,7 @@ export interface GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoos
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec> =
+export const GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     controlPoints: Schema.optional(
@@ -10623,7 +10623,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseFacetFacetValue 
   interval?: GoogleCloudDiscoveryengineV1alphaInterval;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseFacetFacetValue: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseFacetFacetValue> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseFacetFacetValue: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseFacetFacetValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -10642,7 +10642,7 @@ export interface GoogleApiHttpBody {
   extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleApiHttpBody: Schema.Schema<GoogleApiHttpBody> =
+export const GoogleApiHttpBody: Schema.Codec<GoogleApiHttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     contentType: Schema.optional(Schema.String),
@@ -10662,7 +10662,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMet
   successCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -10686,7 +10686,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListSessionsRequest {
   filter?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListSessionsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListSessionsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaListSessionsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListSessionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     orderBy: Schema.optional(Schema.String),
@@ -10704,7 +10704,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponseE
   qualityMetrics?: GoogleCloudDiscoveryengineV1alphaQualityMetrics;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponseEvaluationResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponseEvaluationResult> =
+export const GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponseEvaluationResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponseEvaluationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleQuery: Schema.optional(GoogleCloudDiscoveryengineV1alphaSampleQuery),
     qualityMetrics: Schema.optional(
@@ -10726,7 +10726,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequestGcsTrai
   corpusDataPath?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequestGcsTrainingInput: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequestGcsTrainingInput> =
+export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequestGcsTrainingInput: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequestGcsTrainingInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainDataPath: Schema.optional(Schema.String),
     testDataPath: Schema.optional(Schema.String),
@@ -10748,7 +10748,7 @@ export interface GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequest {
   modelId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequest> =
+export const GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaImportErrorConfig,
@@ -10785,7 +10785,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   maxReturnResults?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchParams: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchParams> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchParams: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orderBy: Schema.optional(Schema.String),
     searchResultMode: Schema.optional(Schema.String),
@@ -10815,7 +10815,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   title?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -10833,7 +10833,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   chunk?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     documentMetadata: Schema.optional(
@@ -10852,7 +10852,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   content?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageIdentifier: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -10868,7 +10868,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   content?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageIdentifier: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -10892,7 +10892,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   extractiveSegments?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     documentContexts: Schema.optional(
@@ -10924,7 +10924,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   unstructuredDocumentInfo?: GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResult> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chunkInfo: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo,
@@ -10942,7 +10942,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   searchResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResult>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultList: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultList> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultList: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchResults: Schema.optional(
       Schema.Array(
@@ -10961,7 +10961,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpec {
   searchResultList?: GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultList;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchParams: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchParams,
@@ -10978,7 +10978,7 @@ export interface GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure
   totalRequiredQuota?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure: Schema.Schema<GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure> =
+export const GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure: Schema.Codec<GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalRequiredQuota: Schema.optional(Schema.String),
   }).annotate({
@@ -10991,7 +10991,7 @@ export interface GoogleCloudDiscoveryengineV1TargetSiteFailureReason {
   quotaFailure?: GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure;
 }
 
-export const GoogleCloudDiscoveryengineV1TargetSiteFailureReason: Schema.Schema<GoogleCloudDiscoveryengineV1TargetSiteFailureReason> =
+export const GoogleCloudDiscoveryengineV1TargetSiteFailureReason: Schema.Codec<GoogleCloudDiscoveryengineV1TargetSiteFailureReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quotaFailure: Schema.optional(
       GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure,
@@ -11012,7 +11012,7 @@ export interface GoogleCloudDiscoveryengineV1SiteVerificationInfo {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1SiteVerificationInfo: Schema.Schema<GoogleCloudDiscoveryengineV1SiteVerificationInfo> =
+export const GoogleCloudDiscoveryengineV1SiteVerificationInfo: Schema.Codec<GoogleCloudDiscoveryengineV1SiteVerificationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verifyTime: Schema.optional(Schema.String),
     siteVerificationState: Schema.optional(Schema.String),
@@ -11051,7 +11051,7 @@ export interface GoogleCloudDiscoveryengineV1TargetSite {
   generatedUriPattern?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1TargetSite: Schema.Schema<GoogleCloudDiscoveryengineV1TargetSite> =
+export const GoogleCloudDiscoveryengineV1TargetSite: Schema.Codec<GoogleCloudDiscoveryengineV1TargetSite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -11093,7 +11093,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserLicense {
   licenseConfig?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaUserLicense: Schema.Schema<GoogleCloudDiscoveryengineV1betaUserLicense> =
+export const GoogleCloudDiscoveryengineV1betaUserLicense: Schema.Codec<GoogleCloudDiscoveryengineV1betaUserLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userProfile: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -11111,7 +11111,7 @@ export interface GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse> =
+export const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userLicenses: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1betaUserLicense),
@@ -11129,7 +11129,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataRespo
   fhirResource?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue> =
+export const GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     fhirResource: Schema.optional(Schema.String),
@@ -11145,7 +11145,7 @@ export interface GoogleCloudDiscoveryengineV1DeleteSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DeleteSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DeleteSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1DeleteSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DeleteSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -11160,7 +11160,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo {
   queryId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     queryId: Schema.optional(Schema.String),
@@ -11175,7 +11175,7 @@ export interface GoogleCloudDiscoveryengineV1betaConditionQueryTerm {
   fullMatch?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaConditionQueryTerm: Schema.Schema<GoogleCloudDiscoveryengineV1betaConditionQueryTerm> =
+export const GoogleCloudDiscoveryengineV1betaConditionQueryTerm: Schema.Codec<GoogleCloudDiscoveryengineV1betaConditionQueryTerm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     fullMatch: Schema.optional(Schema.Boolean),
@@ -11196,7 +11196,7 @@ export interface GoogleCloudDiscoveryengineV1UserStore {
   defaultLicenseConfig?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1UserStore: Schema.Schema<GoogleCloudDiscoveryengineV1UserStore> =
+export const GoogleCloudDiscoveryengineV1UserStore: Schema.Codec<GoogleCloudDiscoveryengineV1UserStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     enableLicenseAutoRegister: Schema.optional(Schema.Boolean),
@@ -11216,7 +11216,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRankingRecord {
   score?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRankingRecord: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRankingRecord> =
+export const GoogleCloudDiscoveryengineV1alphaRankingRecord: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRankingRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -11229,7 +11229,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRankResponse {
   records?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaRankingRecord>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRankResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRankResponse> =
+export const GoogleCloudDiscoveryengineV1alphaRankResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRankResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     records: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaRankingRecord),
@@ -11238,7 +11238,7 @@ export const GoogleCloudDiscoveryengineV1alphaRankResponse: Schema.Schema<Google
 
 export interface GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata {}
 
-export const GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata",
@@ -11257,7 +11257,7 @@ export interface GoogleCloudDiscoveryengineV1alphaExternalIdentity {
   externalId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaExternalIdentity: Schema.Schema<GoogleCloudDiscoveryengineV1alphaExternalIdentity> =
+export const GoogleCloudDiscoveryengineV1alphaExternalIdentity: Schema.Codec<GoogleCloudDiscoveryengineV1alphaExternalIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
@@ -11274,7 +11274,7 @@ export const GoogleCloudDiscoveryengineV1alphaExternalIdentity: Schema.Schema<Go
 
 export interface GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse {}
 
-export const GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse: Schema.Schema<GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse> =
+export const GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse: Schema.Codec<GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse",
   });
@@ -11286,7 +11286,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportSampleQueriesResponse {
   errorConfig?: GoogleCloudDiscoveryengineV1betaImportErrorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportSampleQueriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportSampleQueriesResponse> =
+export const GoogleCloudDiscoveryengineV1betaImportSampleQueriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportSampleQueriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorConfig: Schema.optional(
@@ -11301,7 +11301,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlRedirectAction {
   redirectUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaControlRedirectAction: Schema.Schema<GoogleCloudDiscoveryengineV1betaControlRedirectAction> =
+export const GoogleCloudDiscoveryengineV1betaControlRedirectAction: Schema.Codec<GoogleCloudDiscoveryengineV1betaControlRedirectAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redirectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -11315,7 +11315,7 @@ export interface GoogleCloudDiscoveryengineV1betaConditionTimeRange {
   startTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaConditionTimeRange: Schema.Schema<GoogleCloudDiscoveryengineV1betaConditionTimeRange> =
+export const GoogleCloudDiscoveryengineV1betaConditionTimeRange: Schema.Codec<GoogleCloudDiscoveryengineV1betaConditionTimeRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -11332,7 +11332,7 @@ export interface GoogleCloudDiscoveryengineV1betaCondition {
   queryRegex?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaCondition: Schema.Schema<GoogleCloudDiscoveryengineV1betaCondition> =
+export const GoogleCloudDiscoveryengineV1betaCondition: Schema.Codec<GoogleCloudDiscoveryengineV1betaCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryTerms: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1betaConditionQueryTerm),
@@ -11348,7 +11348,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlSynonymsAction {
   synonyms?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaControlSynonymsAction: Schema.Schema<GoogleCloudDiscoveryengineV1betaControlSynonymsAction> =
+export const GoogleCloudDiscoveryengineV1betaControlSynonymsAction: Schema.Codec<GoogleCloudDiscoveryengineV1betaControlSynonymsAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     synonyms: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -11368,7 +11368,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlBoostAction {
   interpolationBoostSpec?: GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1betaControlBoostAction: Schema.Schema<GoogleCloudDiscoveryengineV1betaControlBoostAction> =
+export const GoogleCloudDiscoveryengineV1betaControlBoostAction: Schema.Codec<GoogleCloudDiscoveryengineV1betaControlBoostAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(Schema.String),
     fixedBoost: Schema.optional(Schema.Number),
@@ -11388,7 +11388,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlFilterAction {
   dataStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaControlFilterAction: Schema.Schema<GoogleCloudDiscoveryengineV1betaControlFilterAction> =
+export const GoogleCloudDiscoveryengineV1betaControlFilterAction: Schema.Codec<GoogleCloudDiscoveryengineV1betaControlFilterAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     dataStore: Schema.optional(Schema.String),
@@ -11433,7 +11433,7 @@ export interface GoogleCloudDiscoveryengineV1betaControl {
   filterAction?: GoogleCloudDiscoveryengineV1betaControlFilterAction;
 }
 
-export const GoogleCloudDiscoveryengineV1betaControl: Schema.Schema<GoogleCloudDiscoveryengineV1betaControl> =
+export const GoogleCloudDiscoveryengineV1betaControl: Schema.Codec<GoogleCloudDiscoveryengineV1betaControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionType: Schema.optional(Schema.String),
     useCases: Schema.optional(Schema.Array(Schema.String)),
@@ -11469,7 +11469,7 @@ export interface GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig {
   initialFilterGroups?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig> =
+export const GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableStaticIndexingForBatchIngestion: Schema.optional(Schema.Boolean),
     enableConfigurableSchema: Schema.optional(Schema.Boolean),
@@ -11483,7 +11483,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControlSynonymsAction {
   synonyms?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaControlSynonymsAction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaControlSynonymsAction> =
+export const GoogleCloudDiscoveryengineV1alphaControlSynonymsAction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaControlSynonymsAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     synonyms: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -11497,7 +11497,7 @@ export interface GoogleCloudDiscoveryengineV1betaCreateSitemapMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaCreateSitemapMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaCreateSitemapMetadata> =
+export const GoogleCloudDiscoveryengineV1betaCreateSitemapMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaCreateSitemapMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -11510,7 +11510,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest {
   dataStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest> =
+export const GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(Schema.String),
   }).annotate({
@@ -11524,7 +11524,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRank
   value?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -11556,7 +11556,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRank
   boostingFactor?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     semanticSimilarityScore: Schema.optional(Schema.Number),
     precomputedExpressionValues: Schema.optional(Schema.Array(Schema.Number)),
@@ -11579,7 +11579,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSign
 
 export interface GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchResponse {}
 
-export const GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchResponse: Schema.Schema<GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchResponse> =
+export const GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchResponse: Schema.Codec<GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchResponse",
   });
@@ -11591,7 +11591,7 @@ export interface GoogleCloudDiscoveryengineV1CreateTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1CreateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1CreateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1CreateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1CreateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -11604,7 +11604,7 @@ export interface GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig {
   workforcePoolName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig> =
+export const GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workforcePoolName: Schema.optional(Schema.String),
   }).annotate({
@@ -11632,7 +11632,7 @@ export interface GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAge
   tpmThresholdNextUpdateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus: Schema.Schema<GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> =
+export const GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus: Schema.Codec<GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     terminateTime: Schema.optional(Schema.String),
     modelVersion: Schema.optional(Schema.String),
@@ -11670,7 +11670,7 @@ export interface GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus {
   agentSearchTokenSubscriptionStatuses?: ReadonlyArray<GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus: Schema.Schema<GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus> =
+export const GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus: Schema.Codec<GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveSearchQpmThreshold: Schema.optional(Schema.String),
     indexingCoreThresholdNextUpdateTime: Schema.optional(Schema.String),
@@ -11706,7 +11706,7 @@ export interface GoogleCloudDiscoveryengineV1ProjectServiceTerms {
   id?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ProjectServiceTerms: Schema.Schema<GoogleCloudDiscoveryengineV1ProjectServiceTerms> =
+export const GoogleCloudDiscoveryengineV1ProjectServiceTerms: Schema.Codec<GoogleCloudDiscoveryengineV1ProjectServiceTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     declineTime: Schema.optional(Schema.String),
@@ -11724,7 +11724,7 @@ export interface GoogleCloudDiscoveryengineV1ObservabilityConfig {
   sensitiveLoggingEnabled?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1ObservabilityConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ObservabilityConfig> =
+export const GoogleCloudDiscoveryengineV1ObservabilityConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ObservabilityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     observabilityEnabled: Schema.optional(Schema.Boolean),
     sensitiveLoggingEnabled: Schema.optional(Schema.Boolean),
@@ -11739,7 +11739,7 @@ export interface GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebo
   responseTemplate?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig> =
+export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPromptTemplate: Schema.optional(Schema.String),
     responseTemplate: Schema.optional(Schema.String),
@@ -11753,7 +11753,7 @@ export interface GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebo
   policy?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy> =
+export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Schema.String),
   }).annotate({
@@ -11766,7 +11766,7 @@ export interface GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebo
   sensitiveDataProtectionPolicy?: GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy;
 }
 
-export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy> =
+export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitiveDataProtectionPolicy: Schema.optional(
       GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy,
@@ -11787,7 +11787,7 @@ export interface GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebo
   dataProtectionPolicy?: GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy;
 }
 
-export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig> =
+export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     observabilityConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1ObservabilityConfig,
@@ -11809,7 +11809,7 @@ export interface GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig {
   notebooklmConfig?: GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig> =
+export const GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebooklmConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig,
@@ -11836,7 +11836,7 @@ export interface GoogleCloudDiscoveryengineV1Project {
   customerProvidedConfig?: GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1Project: Schema.Schema<GoogleCloudDiscoveryengineV1Project> =
+export const GoogleCloudDiscoveryengineV1Project: Schema.Codec<GoogleCloudDiscoveryengineV1Project> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisionCompletionTime: Schema.optional(Schema.String),
     configurableBillingStatus: Schema.optional(
@@ -11860,7 +11860,7 @@ export interface GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFai
   totalRequiredQuota?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure: Schema.Schema<GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure> =
+export const GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure: Schema.Codec<GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalRequiredQuota: Schema.optional(Schema.String),
   }).annotate({
@@ -11873,7 +11873,7 @@ export interface GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason {
   quotaFailure?: GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure;
 }
 
-export const GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason: Schema.Schema<GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason> =
+export const GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason: Schema.Codec<GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quotaFailure: Schema.optional(
       GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure,
@@ -11894,7 +11894,7 @@ export interface GoogleCloudDiscoveryengineV1betaSiteVerificationInfo {
   verifyTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSiteVerificationInfo: Schema.Schema<GoogleCloudDiscoveryengineV1betaSiteVerificationInfo> =
+export const GoogleCloudDiscoveryengineV1betaSiteVerificationInfo: Schema.Codec<GoogleCloudDiscoveryengineV1betaSiteVerificationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     siteVerificationState: Schema.optional(Schema.String),
     verifyTime: Schema.optional(Schema.String),
@@ -11933,7 +11933,7 @@ export interface GoogleCloudDiscoveryengineV1betaTargetSite {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaTargetSite: Schema.Schema<GoogleCloudDiscoveryengineV1betaTargetSite> =
+export const GoogleCloudDiscoveryengineV1betaTargetSite: Schema.Codec<GoogleCloudDiscoveryengineV1betaTargetSite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     providedUriPattern: Schema.optional(Schema.String),
@@ -11956,7 +11956,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSumma
   version?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelSpec: Schema.Schema<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelSpec> =
+export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelSpec: Schema.Codec<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({
@@ -11987,7 +11987,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSumma
   modelPromptSpec?: GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelPromptSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpec: Schema.Schema<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpec> =
+export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpec: Schema.Codec<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreJailBreakingQuery: Schema.optional(Schema.Boolean),
     useSemanticChunks: Schema.optional(Schema.Boolean),
@@ -12021,7 +12021,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtra
   maxExtractiveAnswerCount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtractiveContentSpec: Schema.Schema<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtractiveContentSpec> =
+export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtractiveContentSpec: Schema.Codec<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtractiveContentSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     returnExtractiveSegmentScore: Schema.optional(Schema.Boolean),
     numPreviousSegments: Schema.optional(Schema.Number),
@@ -12042,7 +12042,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSnipp
   maxSnippetCount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSnippetSpec: Schema.Schema<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSnippetSpec> =
+export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSnippetSpec: Schema.Codec<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSnippetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceOnly: Schema.optional(Schema.Boolean),
     returnSnippet: Schema.optional(Schema.Boolean),
@@ -12069,7 +12069,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec: Schema.Schema<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec> =
+export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec: Schema.Codec<GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summarySpec: Schema.optional(
       GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpec,
@@ -12093,7 +12093,7 @@ export interface GoogleCloudDiscoveryengineV1ServingConfigGenericConfig {
   contentSearchSpec?: GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1ServingConfigGenericConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ServingConfigGenericConfig> =
+export const GoogleCloudDiscoveryengineV1ServingConfigGenericConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ServingConfigGenericConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentSearchSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec,
@@ -12109,7 +12109,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAgentImage {
   content?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAgentImage: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAgentImage> =
+export const GoogleCloudDiscoveryengineV1alphaAgentImage: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAgentImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -12117,7 +12117,7 @@ export const GoogleCloudDiscoveryengineV1alphaAgentImage: Schema.Schema<GoogleCl
 
 export interface GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition {}
 
-export const GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition: Schema.Schema<GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition> =
+export const GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition: Schema.Codec<GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition",
   });
@@ -12129,7 +12129,7 @@ export interface GoogleCloudDiscoveryengineV1alphaObservabilityConfig {
   sensitiveLoggingEnabled?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaObservabilityConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaObservabilityConfig> =
+export const GoogleCloudDiscoveryengineV1alphaObservabilityConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaObservabilityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     observabilityEnabled: Schema.optional(Schema.Boolean),
     sensitiveLoggingEnabled: Schema.optional(Schema.Boolean),
@@ -12142,7 +12142,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt {
   text?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt> =
+export const GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -12154,7 +12154,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAgentSharingConfig {
   scope?: "SCOPE_UNSPECIFIED" | "RESTRICTED" | "ALL_USERS" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAgentSharingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAgentSharingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAgentSharingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAgentSharingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(Schema.String),
   }).annotate({
@@ -12166,7 +12166,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedR
   reasoningEngine?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedReasoningEngine: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedReasoningEngine> =
+export const GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedReasoningEngine: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedReasoningEngine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reasoningEngine: Schema.optional(Schema.String),
   }).annotate({
@@ -12179,7 +12179,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdkAgentDefinition {
   provisionedReasoningEngine?: GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedReasoningEngine;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdkAgentDefinition: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdkAgentDefinition> =
+export const GoogleCloudDiscoveryengineV1alphaAdkAgentDefinition: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdkAgentDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisionedReasoningEngine: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedReasoningEngine,
@@ -12195,7 +12195,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAuthorizationConfig {
   agentAuthorization?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAuthorizationConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAuthorizationConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAuthorizationConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAuthorizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolAuthorizations: Schema.optional(Schema.Array(Schema.String)),
     agentAuthorization: Schema.optional(Schema.String),
@@ -12256,7 +12256,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAgent {
   customPlaceholderText?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAgent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAgent> =
+export const GoogleCloudDiscoveryengineV1alphaAgent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAgent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -12320,7 +12320,7 @@ export interface GoogleCloudDiscoveryengineV1UserLicense {
   createTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1UserLicense: Schema.Schema<GoogleCloudDiscoveryengineV1UserLicense> =
+export const GoogleCloudDiscoveryengineV1UserLicense: Schema.Codec<GoogleCloudDiscoveryengineV1UserLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastLoginTime: Schema.optional(Schema.String),
     userProfile: Schema.optional(Schema.String),
@@ -12333,7 +12333,7 @@ export const GoogleCloudDiscoveryengineV1UserLicense: Schema.Schema<GoogleCloudD
 
 export interface GoogleCloudDiscoveryengineV1betaTuneEngineResponse {}
 
-export const GoogleCloudDiscoveryengineV1betaTuneEngineResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaTuneEngineResponse> =
+export const GoogleCloudDiscoveryengineV1betaTuneEngineResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaTuneEngineResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1betaTuneEngineResponse",
   });
@@ -12345,7 +12345,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCompleteQueryResponseQuerySugg
   completableFieldPaths?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCompleteQueryResponseQuerySuggestion: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCompleteQueryResponseQuerySuggestion> =
+export const GoogleCloudDiscoveryengineV1alphaCompleteQueryResponseQuerySuggestion: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCompleteQueryResponseQuerySuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestion: Schema.optional(Schema.String),
     completableFieldPaths: Schema.optional(Schema.Array(Schema.String)),
@@ -12381,7 +12381,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata {
   successCount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     validUrisCount: Schema.optional(Schema.Number),
@@ -12401,7 +12401,7 @@ export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata: Schema.Schema
 
 export interface GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataResponse {}
 
-export const GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataResponse> =
+export const GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataResponse",
@@ -12414,7 +12414,7 @@ export interface GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -12433,7 +12433,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest
   licenseConfigId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest> =
+export const GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectNumber: Schema.optional(Schema.String),
     licenseCount: Schema.optional(Schema.String),
@@ -12449,7 +12449,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEmbeddingConfig {
   fieldPath?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEmbeddingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEmbeddingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEmbeddingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEmbeddingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldPath: Schema.optional(Schema.String),
   }).annotate({
@@ -12463,7 +12463,7 @@ export interface GoogleCloudDiscoveryengineV1CreateEngineMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1CreateEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1CreateEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1CreateEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1CreateEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -12482,7 +12482,7 @@ export interface GoogleCloudDiscoveryengineV1betaLanguageInfo {
   region?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaLanguageInfo: Schema.Schema<GoogleCloudDiscoveryengineV1betaLanguageInfo> =
+export const GoogleCloudDiscoveryengineV1betaLanguageInfo: Schema.Codec<GoogleCloudDiscoveryengineV1betaLanguageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     normalizedLanguageCode: Schema.optional(Schema.String),
@@ -12495,7 +12495,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBranchBranchStats {
   documentCounts?: Record<string, string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBranchBranchStats: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBranchBranchStats> =
+export const GoogleCloudDiscoveryengineV1alphaBranchBranchStats: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBranchBranchStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentCounts: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -12517,7 +12517,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBranch {
   branchStats?: GoogleCloudDiscoveryengineV1alphaBranchBranchStats;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBranch: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBranch> =
+export const GoogleCloudDiscoveryengineV1alphaBranch: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBranch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     isDefault: Schema.optional(Schema.Boolean),
@@ -12533,7 +12533,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListBranchesResponse {
   branches?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaBranch>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListBranchesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListBranchesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListBranchesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListBranchesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branches: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaBranch),
@@ -12555,7 +12555,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserStore {
   defaultLicenseConfig?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaUserStore: Schema.Schema<GoogleCloudDiscoveryengineV1betaUserStore> =
+export const GoogleCloudDiscoveryengineV1betaUserStore: Schema.Codec<GoogleCloudDiscoveryengineV1betaUserStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableLicenseAutoRegister: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
@@ -12571,7 +12571,7 @@ export interface GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata> =
+export const GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -12588,7 +12588,7 @@ export interface GoogleCloudDiscoveryengineV1Tenant {
   displayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1Tenant: Schema.Schema<GoogleCloudDiscoveryengineV1Tenant> =
+export const GoogleCloudDiscoveryengineV1Tenant: Schema.Codec<GoogleCloudDiscoveryengineV1Tenant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -12606,7 +12606,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig {
   additionalParams?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig> =
+export const GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authParams: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     tenant: Schema.optional(GoogleCloudDiscoveryengineV1Tenant),
@@ -12633,7 +12633,7 @@ export interface GoogleCloudDiscoveryengineV1BAPConfig {
   >;
 }
 
-export const GoogleCloudDiscoveryengineV1BAPConfig: Schema.Schema<GoogleCloudDiscoveryengineV1BAPConfig> =
+export const GoogleCloudDiscoveryengineV1BAPConfig: Schema.Codec<GoogleCloudDiscoveryengineV1BAPConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolspecOverride: Schema.optional(
       GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride,
@@ -12653,7 +12653,7 @@ export interface GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment: Schema.Schema<GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment> =
+export const GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment: Schema.Codec<GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alertId: Schema.optional(Schema.String),
     enrollState: Schema.optional(Schema.String),
@@ -12668,7 +12668,7 @@ export interface GoogleCloudDiscoveryengineV1AlertPolicyConfig {
   alertPolicyName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1AlertPolicyConfig: Schema.Schema<GoogleCloudDiscoveryengineV1AlertPolicyConfig> =
+export const GoogleCloudDiscoveryengineV1AlertPolicyConfig: Schema.Codec<GoogleCloudDiscoveryengineV1AlertPolicyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alertEnrollments: Schema.optional(
       Schema.Array(
@@ -12683,7 +12683,7 @@ export interface GoogleCloudDiscoveryengineV1ActionConfigScopeList {
   scopes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1ActionConfigScopeList: Schema.Schema<GoogleCloudDiscoveryengineV1ActionConfigScopeList> =
+export const GoogleCloudDiscoveryengineV1ActionConfigScopeList: Schema.Codec<GoogleCloudDiscoveryengineV1ActionConfigScopeList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -12710,7 +12710,7 @@ export interface GoogleCloudDiscoveryengineV1ActionConfig {
   >;
 }
 
-export const GoogleCloudDiscoveryengineV1ActionConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ActionConfig> =
+export const GoogleCloudDiscoveryengineV1ActionConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ActionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createBapConnection: Schema.optional(Schema.Boolean),
     isActionConfigured: Schema.optional(Schema.Boolean),
@@ -12735,7 +12735,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnectorFederatedConfig {
   authParams?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1DataConnectorFederatedConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataConnectorFederatedConfig> =
+export const GoogleCloudDiscoveryengineV1DataConnectorFederatedConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataConnectorFederatedConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalParams: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -12753,7 +12753,7 @@ export interface GoogleCloudDiscoveryengineV1DestinationConfigDestination {
   host?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DestinationConfigDestination: Schema.Schema<GoogleCloudDiscoveryengineV1DestinationConfigDestination> =
+export const GoogleCloudDiscoveryengineV1DestinationConfigDestination: Schema.Codec<GoogleCloudDiscoveryengineV1DestinationConfigDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     host: Schema.optional(Schema.String),
@@ -12772,7 +12772,7 @@ export interface GoogleCloudDiscoveryengineV1DestinationConfig {
   params?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1DestinationConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DestinationConfig> =
+export const GoogleCloudDiscoveryengineV1DestinationConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DestinationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinations: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1DestinationConfigDestination),
@@ -12791,7 +12791,7 @@ export interface GoogleCloudDiscoveryengineV1Schema {
   structSchema?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1Schema: Schema.Schema<GoogleCloudDiscoveryengineV1Schema> =
+export const GoogleCloudDiscoveryengineV1Schema: Schema.Codec<GoogleCloudDiscoveryengineV1Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     jsonSchema: Schema.optional(Schema.String),
@@ -12807,7 +12807,7 @@ export interface GoogleCloudDiscoveryengineV1HealthcareFhirConfig {
   enableStaticIndexingForBatchIngestion?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1HealthcareFhirConfig: Schema.Schema<GoogleCloudDiscoveryengineV1HealthcareFhirConfig> =
+export const GoogleCloudDiscoveryengineV1HealthcareFhirConfig: Schema.Codec<GoogleCloudDiscoveryengineV1HealthcareFhirConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableConfigurableSchema: Schema.optional(Schema.Boolean),
     initialFilterGroups: Schema.optional(Schema.Array(Schema.String)),
@@ -12833,7 +12833,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnectorSourceEntity {
   params?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1DataConnectorSourceEntity: Schema.Schema<GoogleCloudDiscoveryengineV1DataConnectorSourceEntity> =
+export const GoogleCloudDiscoveryengineV1DataConnectorSourceEntity: Schema.Codec<GoogleCloudDiscoveryengineV1DataConnectorSourceEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(Schema.String),
     jsonParams: Schema.optional(Schema.String),
@@ -12857,7 +12857,7 @@ export interface GoogleCloudDiscoveryengineV1IdentityScheduleConfig {
   nextSyncTime?: GoogleTypeDateTime;
 }
 
-export const GoogleCloudDiscoveryengineV1IdentityScheduleConfig: Schema.Schema<GoogleCloudDiscoveryengineV1IdentityScheduleConfig> =
+export const GoogleCloudDiscoveryengineV1IdentityScheduleConfig: Schema.Codec<GoogleCloudDiscoveryengineV1IdentityScheduleConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshInterval: Schema.optional(Schema.String),
     nextSyncTime: Schema.optional(GoogleTypeDateTime),
@@ -13014,7 +13014,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
   egressFqdns?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1DataConnector: Schema.Schema<GoogleCloudDiscoveryengineV1DataConnector> =
+export const GoogleCloudDiscoveryengineV1DataConnector: Schema.Codec<GoogleCloudDiscoveryengineV1DataConnector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshInterval: Schema.optional(Schema.String),
     staticIpAddresses: Schema.optional(Schema.Array(Schema.String)),
@@ -13085,7 +13085,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSampleQueriesResponse {
   errorConfig?: GoogleCloudDiscoveryengineV1alphaImportErrorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportSampleQueriesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportSampleQueriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorConfig: Schema.optional(
@@ -13100,7 +13100,7 @@ export interface GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandi
   mode?: "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig> =
+export const GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({
@@ -13113,7 +13113,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigN
   sensitiveDataProtectionPolicy?: GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy> =
+export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitiveDataProtectionPolicy: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy,
@@ -13130,7 +13130,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigN
   responseTemplate?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig> =
+export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPromptTemplate: Schema.optional(Schema.String),
     responseTemplate: Schema.optional(Schema.String),
@@ -13150,7 +13150,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigN
   modelArmorConfig?: GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig> =
+export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     optOutNotebookSharing: Schema.optional(Schema.Boolean),
     dataProtectionPolicy: Schema.optional(
@@ -13172,7 +13172,7 @@ export interface GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySe
   sampleQuerySet?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec> =
+export const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleQuerySet: Schema.optional(Schema.String),
   }).annotate({
@@ -13191,7 +13191,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSuggestionDenyListEntry {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSuggestionDenyListEntry: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSuggestionDenyListEntry> =
+export const GoogleCloudDiscoveryengineV1alphaSuggestionDenyListEntry: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSuggestionDenyListEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blockPhrase: Schema.optional(Schema.String),
     matchOperator: Schema.optional(Schema.String),
@@ -13204,7 +13204,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntrie
   entries?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSuggestionDenyListEntry>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaSuggestionDenyListEntry),
@@ -13221,7 +13221,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse {
   accessToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse> =
+export const GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshTokenInfo: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo,
@@ -13238,7 +13238,7 @@ export interface GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec {
   searchRequest?: GoogleCloudDiscoveryengineV1betaSearchRequest;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec> =
+export const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     querySetSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec,
@@ -13257,7 +13257,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingCon
   chunkSize?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig> =
+export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeAncestorHeadings: Schema.optional(Schema.Boolean),
     chunkSize: Schema.optional(Schema.Number),
@@ -13271,7 +13271,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingCon
   layoutBasedChunkingConfig?: GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig> =
+export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     layoutBasedChunkingConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig,
@@ -13295,7 +13295,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfig {
   defaultParsingConfig?: GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1DocumentProcessingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DocumentProcessingConfig> =
+export const GoogleCloudDiscoveryengineV1DocumentProcessingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DocumentProcessingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     chunkingConfig: Schema.optional(
@@ -13321,7 +13321,7 @@ export interface GoogleCloudDiscoveryengineV1alphaGroundingFact {
   factText?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaGroundingFact: Schema.Schema<GoogleCloudDiscoveryengineV1alphaGroundingFact> =
+export const GoogleCloudDiscoveryengineV1alphaGroundingFact: Schema.Codec<GoogleCloudDiscoveryengineV1alphaGroundingFact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     factText: Schema.optional(Schema.String),
@@ -13336,7 +13336,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingSho
   icon?: GoogleCloudDiscoveryengineV1alphaWidgetConfigImage;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingShortcut: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingShortcut> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingShortcut: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingShortcut> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationUri: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -13351,7 +13351,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting {
   shortcuts?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingShortcut>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shortcuts: Schema.optional(
       Schema.Array(
@@ -13367,7 +13367,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControlRedirectAction {
   redirectUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaControlRedirectAction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaControlRedirectAction> =
+export const GoogleCloudDiscoveryengineV1alphaControlRedirectAction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaControlRedirectAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redirectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -13381,7 +13381,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolatio
   boostAmount?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint: Schema.Schema<GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint> =
+export const GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint: Schema.Codec<GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeValue: Schema.optional(Schema.String),
     boostAmount: Schema.optional(Schema.Number),
@@ -13408,7 +13408,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolatio
   fieldName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec> =
+export const GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     controlPoints: Schema.optional(
       Schema.Array(
@@ -13436,7 +13436,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControlBoostAction {
   dataStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaControlBoostAction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaControlBoostAction> =
+export const GoogleCloudDiscoveryengineV1alphaControlBoostAction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaControlBoostAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fixedBoost: Schema.optional(Schema.Number),
     boost: Schema.optional(Schema.Number),
@@ -13456,7 +13456,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControlFilterAction {
   filter?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaControlFilterAction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaControlFilterAction> =
+export const GoogleCloudDiscoveryengineV1alphaControlFilterAction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaControlFilterAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -13471,7 +13471,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControlPromoteAction {
   searchLinkPromotion?: GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaControlPromoteAction: Schema.Schema<GoogleCloudDiscoveryengineV1alphaControlPromoteAction> =
+export const GoogleCloudDiscoveryengineV1alphaControlPromoteAction: Schema.Codec<GoogleCloudDiscoveryengineV1alphaControlPromoteAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(Schema.String),
     searchLinkPromotion: Schema.optional(
@@ -13488,7 +13488,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConditionQueryTerm {
   fullMatch?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConditionQueryTerm: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConditionQueryTerm> =
+export const GoogleCloudDiscoveryengineV1alphaConditionQueryTerm: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConditionQueryTerm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     fullMatch: Schema.optional(Schema.Boolean),
@@ -13505,7 +13505,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCondition {
   queryRegex?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCondition: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCondition> =
+export const GoogleCloudDiscoveryengineV1alphaCondition: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryTerms: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaConditionQueryTerm),
@@ -13553,7 +13553,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControl {
   displayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaControl: Schema.Schema<GoogleCloudDiscoveryengineV1alphaControl> =
+export const GoogleCloudDiscoveryengineV1alphaControl: Schema.Codec<GoogleCloudDiscoveryengineV1alphaControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionType: Schema.optional(Schema.String),
     useCases: Schema.optional(Schema.Array(Schema.String)),
@@ -13593,7 +13593,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigAccessSettings {
   allowPublicAccess?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigAccessSettings: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigAccessSettings> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigAccessSettings: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigAccessSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     allowlistedDomains: Schema.optional(Schema.Array(Schema.String)),
@@ -13615,7 +13615,7 @@ export interface GoogleCloudDiscoveryengineV1alphaIdentityMappingStore {
   cmekConfig?: GoogleCloudDiscoveryengineV1alphaCmekConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaIdentityMappingStore: Schema.Schema<GoogleCloudDiscoveryengineV1alphaIdentityMappingStore> =
+export const GoogleCloudDiscoveryengineV1alphaIdentityMappingStore: Schema.Codec<GoogleCloudDiscoveryengineV1alphaIdentityMappingStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     idpConfig: Schema.optional(GoogleCloudDiscoveryengineV1alphaIdpConfig),
@@ -13632,7 +13632,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresRespo
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identityMappingStores: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaIdentityMappingStore),
@@ -13658,7 +13658,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRankRequest {
   records?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaRankingRecord>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRankRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRankRequest> =
+export const GoogleCloudDiscoveryengineV1alphaRankRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRankRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topN: Schema.optional(Schema.Number),
     ignoreRecordDetailsInResponse: Schema.optional(Schema.Boolean),
@@ -13681,7 +13681,7 @@ export interface GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureCo
   disablePrivateKgEnrichment?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disablePrivateKgQueryUnderstanding: Schema.optional(Schema.Boolean),
     disablePrivateKgAutoComplete: Schema.optional(Schema.Boolean),
@@ -13705,7 +13705,7 @@ export interface GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig {
   privateKnowledgeGraphTypes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig> =
+export const GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudKnowledgeGraphTypes: Schema.optional(Schema.Array(Schema.String)),
     enablePrivateKnowledgeGraph: Schema.optional(Schema.Boolean),
@@ -13731,7 +13731,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportDocumentsMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportDocumentsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportDocumentsMetadata> =
+export const GoogleCloudDiscoveryengineV1betaImportDocumentsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     successCount: Schema.optional(Schema.String),
@@ -13753,7 +13753,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCrea
   location?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     business: Schema.optional(Schema.String),
     defaultLanguageCode: Schema.optional(Schema.String),
@@ -13773,7 +13773,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig {
   allowCrossRegion?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentCreationConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig,
@@ -13789,7 +13789,7 @@ export interface GoogleCloudDiscoveryengineV1betaTuneEngineMetadata {
   engine?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaTuneEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaTuneEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1betaTuneEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaTuneEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     engine: Schema.optional(Schema.String),
   }).annotate({
@@ -13798,7 +13798,7 @@ export const GoogleCloudDiscoveryengineV1betaTuneEngineMetadata: Schema.Schema<G
 
 export interface GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchResponse {}
 
-export const GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchResponse> =
+export const GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchResponse",
@@ -13811,7 +13811,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateMetadata 
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -13827,7 +13827,7 @@ export interface GoogleCloudDiscoveryengineV1DeleteSitemapMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DeleteSitemapMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DeleteSitemapMetadata> =
+export const GoogleCloudDiscoveryengineV1DeleteSitemapMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DeleteSitemapMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -13842,7 +13842,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasPar
   acceptBizQos?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams> =
+export const GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isBiz: Schema.optional(Schema.Boolean),
     acceptBizQos: Schema.optional(Schema.Boolean),
@@ -13860,7 +13860,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest {
   saasParams?: GoogleCloudDiscoveryengineV1alphaProvisionProjectRequestSaasParams;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest> =
+export const GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataUseTermsVersion: Schema.optional(Schema.String),
     acceptDataUseTerms: Schema.optional(Schema.Boolean),
@@ -13878,7 +13878,7 @@ export interface GoogleCloudDiscoveryengineV1TrainCustomModelMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1TrainCustomModelMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1TrainCustomModelMetadata> =
+export const GoogleCloudDiscoveryengineV1TrainCustomModelMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1TrainCustomModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -13891,7 +13891,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNoteb
   searchConfig?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig> =
+export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchConfig: Schema.optional(Schema.String),
   }).annotate({
@@ -13904,7 +13904,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineCommonConfig {
   companyName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineCommonConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineCommonConfig> =
+export const GoogleCloudDiscoveryengineV1betaEngineCommonConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineCommonConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     companyName: Schema.optional(Schema.String),
   }).annotate({
@@ -13913,7 +13913,7 @@ export const GoogleCloudDiscoveryengineV1betaEngineCommonConfig: Schema.Schema<G
 
 export interface GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec {}
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec",
@@ -13928,7 +13928,7 @@ export interface GoogleIamV1Policy {
   version?: number;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
@@ -13942,7 +13942,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse {
   documentCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse> =
+export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSizeBytes: Schema.optional(Schema.String),
     documentCount: Schema.optional(Schema.String),
@@ -13955,7 +13955,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResp
   externalIdentities?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaExternalIdentity>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalIdentities: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaExternalIdentity),
@@ -13970,7 +13970,7 @@ export interface GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConf
   timeWindowDays?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeWindowDays: Schema.optional(Schema.String),
   }).annotate({
@@ -13983,7 +13983,7 @@ export interface GoogleCloudDiscoveryengineV1alphaServingConfigGenericConfig {
   contentSearchSpec?: GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaServingConfigGenericConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaServingConfigGenericConfig> =
+export const GoogleCloudDiscoveryengineV1alphaServingConfigGenericConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaServingConfigGenericConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentSearchSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec,
@@ -14001,7 +14001,7 @@ export interface GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationM
   failureCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successCount: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.String),
@@ -14016,7 +14016,7 @@ export interface GoogleCloudDiscoveryengineLoggingServiceContext {
   service?: string;
 }
 
-export const GoogleCloudDiscoveryengineLoggingServiceContext: Schema.Schema<GoogleCloudDiscoveryengineLoggingServiceContext> =
+export const GoogleCloudDiscoveryengineLoggingServiceContext: Schema.Codec<GoogleCloudDiscoveryengineLoggingServiceContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
   }).annotate({
@@ -14028,7 +14028,7 @@ export interface GoogleCloudDiscoveryengineLoggingHttpRequestContext {
   responseStatusCode?: number;
 }
 
-export const GoogleCloudDiscoveryengineLoggingHttpRequestContext: Schema.Schema<GoogleCloudDiscoveryengineLoggingHttpRequestContext> =
+export const GoogleCloudDiscoveryengineLoggingHttpRequestContext: Schema.Codec<GoogleCloudDiscoveryengineLoggingHttpRequestContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responseStatusCode: Schema.optional(Schema.Number),
   }).annotate({
@@ -14040,7 +14040,7 @@ export interface GoogleCloudDiscoveryengineLoggingSourceLocation {
   functionName?: string;
 }
 
-export const GoogleCloudDiscoveryengineLoggingSourceLocation: Schema.Schema<GoogleCloudDiscoveryengineLoggingSourceLocation> =
+export const GoogleCloudDiscoveryengineLoggingSourceLocation: Schema.Codec<GoogleCloudDiscoveryengineLoggingSourceLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({
@@ -14054,7 +14054,7 @@ export interface GoogleCloudDiscoveryengineLoggingErrorContext {
   reportLocation?: GoogleCloudDiscoveryengineLoggingSourceLocation;
 }
 
-export const GoogleCloudDiscoveryengineLoggingErrorContext: Schema.Schema<GoogleCloudDiscoveryengineLoggingErrorContext> =
+export const GoogleCloudDiscoveryengineLoggingErrorContext: Schema.Codec<GoogleCloudDiscoveryengineLoggingErrorContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpRequest: Schema.optional(
       GoogleCloudDiscoveryengineLoggingHttpRequestContext,
@@ -14081,7 +14081,7 @@ export interface GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext {
   dataConnector?: string;
 }
 
-export const GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext: Schema.Schema<GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext> =
+export const GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext: Schema.Codec<GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     syncType: Schema.optional(Schema.String),
@@ -14107,7 +14107,7 @@ export interface GoogleCloudDiscoveryengineLoggingImportErrorContext {
   document?: string;
 }
 
-export const GoogleCloudDiscoveryengineLoggingImportErrorContext: Schema.Schema<GoogleCloudDiscoveryengineLoggingImportErrorContext> =
+export const GoogleCloudDiscoveryengineLoggingImportErrorContext: Schema.Codec<GoogleCloudDiscoveryengineLoggingImportErrorContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineNumber: Schema.optional(Schema.String),
     operation: Schema.optional(Schema.String),
@@ -14137,7 +14137,7 @@ export interface GoogleCloudDiscoveryengineLoggingErrorLog {
   responsePayload?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineLoggingErrorLog: Schema.Schema<GoogleCloudDiscoveryengineLoggingErrorLog> =
+export const GoogleCloudDiscoveryengineLoggingErrorLog: Schema.Codec<GoogleCloudDiscoveryengineLoggingErrorLog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceContext: Schema.optional(
       GoogleCloudDiscoveryengineLoggingServiceContext,
@@ -14172,7 +14172,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportSampleQueriesMetadata {
   totalCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportSampleQueriesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportSampleQueriesMetadata> =
+export const GoogleCloudDiscoveryengineV1betaImportSampleQueriesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportSampleQueriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -14202,7 +14202,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsing
   enableLlmLayoutParsing?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig> =
+export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structuredContentTypes: Schema.optional(Schema.Array(Schema.String)),
     excludeHtmlElements: Schema.optional(Schema.Array(Schema.String)),
@@ -14226,7 +14226,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsing
   digitalParsingConfig?: GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig> =
+export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     layoutParsingConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig,
@@ -14256,7 +14256,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestSu
   maxSuggestions?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestSuggestionTypeSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestSuggestionTypeSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestSuggestionTypeSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestSuggestionTypeSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestionType: Schema.optional(Schema.String),
     maxSuggestions: Schema.optional(Schema.Number),
@@ -14270,7 +14270,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBo
   conditionBoostSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditionBoostSpecs: Schema.optional(
       Schema.Array(
@@ -14311,7 +14311,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest {
   boostSpec?: GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeTailSuggestions: Schema.optional(Schema.Boolean),
     experimentIds: Schema.optional(Schema.Array(Schema.String)),
@@ -14341,7 +14341,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFetchDomainVerificationStatusR
   totalSize?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFetchDomainVerificationStatusResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFetchDomainVerificationStatusResponse> =
+export const GoogleCloudDiscoveryengineV1alphaFetchDomainVerificationStatusResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFetchDomainVerificationStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSites: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaTargetSite),
@@ -14360,7 +14360,7 @@ export interface GoogleCloudDiscoveryengineV1betaDeleteIdentityMappingStoreMetad
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDeleteIdentityMappingStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaDeleteIdentityMappingStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1betaDeleteIdentityMappingStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaDeleteIdentityMappingStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -14371,7 +14371,7 @@ export const GoogleCloudDiscoveryengineV1betaDeleteIdentityMappingStoreMetadata:
 
 export interface GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse {}
 
-export const GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse> =
+export const GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse",
   });
@@ -14389,7 +14389,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata {
   totalCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     failureCount: Schema.optional(Schema.String),
@@ -14405,7 +14405,7 @@ export interface GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest {
   names?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest: Schema.Schema<GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest> =
+export const GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest: Schema.Codec<GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -14419,7 +14419,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugIn
   originalAddressQuery?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
     originalAddressQuery: Schema.optional(Schema.String),
@@ -14437,7 +14437,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseFacet {
   dynamicFacet?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseFacet: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseFacet> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseFacet: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseFacet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     values: Schema.optional(
@@ -14455,7 +14455,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDoubleList {
   values?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDoubleList: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDoubleList> =
+export const GoogleCloudDiscoveryengineV1alphaDoubleList: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDoubleList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "GoogleCloudDiscoveryengineV1alphaDoubleList" });
@@ -14473,7 +14473,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult {
   rankSignals?: GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelScores: Schema.optional(
       Schema.Record(Schema.String, GoogleCloudDiscoveryengineV1alphaDoubleList),
@@ -14493,7 +14493,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   expression?: GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression,
@@ -14514,7 +14514,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   rewrittenQuery?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfo> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extractedFilters: Schema.optional(Schema.String),
     classifiedIntents: Schema.optional(Schema.Array(Schema.String)),
@@ -14540,7 +14540,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseOneBoxResult {
   searchResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponseOneBoxResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseOneBoxResult> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponseOneBoxResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponseOneBoxResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneBoxType: Schema.optional(Schema.String),
     searchResults: Schema.optional(
@@ -14592,7 +14592,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponse {
   oneBoxResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchResponseOneBoxResult>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSearchResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponse> =
+export const GoogleCloudDiscoveryengineV1alphaSearchResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guidedSearchResult: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult,
@@ -14651,7 +14651,7 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -14676,7 +14676,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataRespo
   matcherValue?: GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     dataIngestionSource: Schema.optional(Schema.String),
@@ -14694,7 +14694,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderst
   modelType?: "MODEL_TYPE_UNSPECIFIED" | "SMALL" | "LARGE" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelType: Schema.optional(Schema.String),
   }).annotate({
@@ -14711,7 +14711,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntries
   importedEntriesCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesResponse> =
+export const GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedEntriesCount: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -14728,7 +14728,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListSchemasResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListSchemasResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListSchemasResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListSchemasResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListSchemasResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemas: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaSchema),
@@ -14745,7 +14745,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListConversationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListConversationsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListConversationsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListConversationsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversations: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaConversation),
@@ -14762,7 +14762,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesR
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesResponse> =
+export const GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purgeCount: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -14795,7 +14795,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUserLicense {
   licenseConfig?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUserLicense: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUserLicense> =
+export const GoogleCloudDiscoveryengineV1alphaUserLicense: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUserLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userProfile: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -14813,7 +14813,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest
   updateMask?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userLicenses: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaUserLicense),
@@ -14831,7 +14831,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest
   deleteUnassignedUserLicenses?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest> =
+export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inlineSource: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRequestInlineSource,
@@ -14849,7 +14849,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateMetada
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -14867,7 +14867,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsite
   exactMatch?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSourceEstimatorUriPattern: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSourceEstimatorUriPattern> =
+export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSourceEstimatorUriPattern: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSourceEstimatorUriPattern> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     providedUriPattern: Schema.optional(Schema.String),
     exclusive: Schema.optional(Schema.Boolean),
@@ -14882,7 +14882,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsite
   estimatorUriPatterns?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSourceEstimatorUriPattern>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSource> =
+export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatorUriPatterns: Schema.optional(
       Schema.Array(
@@ -14905,7 +14905,7 @@ export interface GoogleCloudNotebooklmV1alphaNotebookMetadata {
   isShareable?: boolean;
 }
 
-export const GoogleCloudNotebooklmV1alphaNotebookMetadata: Schema.Schema<GoogleCloudNotebooklmV1alphaNotebookMetadata> =
+export const GoogleCloudNotebooklmV1alphaNotebookMetadata: Schema.Codec<GoogleCloudNotebooklmV1alphaNotebookMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     isShared: Schema.optional(Schema.Boolean),
@@ -14918,7 +14918,7 @@ export interface GoogleCloudNotebooklmV1alphaCmekConfig {
   kmsKey?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaCmekConfig: Schema.Schema<GoogleCloudNotebooklmV1alphaCmekConfig> =
+export const GoogleCloudNotebooklmV1alphaCmekConfig: Schema.Codec<GoogleCloudNotebooklmV1alphaCmekConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudNotebooklmV1alphaCmekConfig" });
@@ -14940,7 +14940,7 @@ export interface GoogleCloudNotebooklmV1alphaNotebook {
   title?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaNotebook: Schema.Schema<GoogleCloudNotebooklmV1alphaNotebook> =
+export const GoogleCloudNotebooklmV1alphaNotebook: Schema.Codec<GoogleCloudNotebooklmV1alphaNotebook> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(GoogleCloudNotebooklmV1alphaNotebookMetadata),
@@ -14958,7 +14958,7 @@ export interface GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
   nextPageToken?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse: Schema.Schema<GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse> =
+export const GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse: Schema.Codec<GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebooks: Schema.optional(
       Schema.Array(GoogleCloudNotebooklmV1alphaNotebook),
@@ -14976,7 +14976,7 @@ export interface GoogleCloudNotebooklmV1alphaUserContentWebContent {
   sourceName?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaUserContentWebContent: Schema.Schema<GoogleCloudNotebooklmV1alphaUserContentWebContent> =
+export const GoogleCloudNotebooklmV1alphaUserContentWebContent: Schema.Codec<GoogleCloudNotebooklmV1alphaUserContentWebContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     sourceName: Schema.optional(Schema.String),
@@ -14997,7 +14997,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest {
   forceRefreshContent?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest> =
+export const GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syncIdentity: Schema.optional(Schema.Boolean),
     healthcareFhirResourceTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -15013,7 +15013,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFileCharacteristics {
   characteristics?: Record<string, string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFileCharacteristics: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFileCharacteristics> =
+export const GoogleCloudDiscoveryengineV1alphaFileCharacteristics: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFileCharacteristics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     characteristics: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -15041,7 +15041,7 @@ export interface GoogleCloudDiscoveryengineV1alphaVideoCharacteristics {
   width?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaVideoCharacteristics: Schema.Schema<GoogleCloudDiscoveryengineV1alphaVideoCharacteristics> =
+export const GoogleCloudDiscoveryengineV1alphaVideoCharacteristics: Schema.Codec<GoogleCloudDiscoveryengineV1alphaVideoCharacteristics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     height: Schema.optional(Schema.Number),
     frameRate: Schema.optional(Schema.Number),
@@ -15074,7 +15074,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFileView {
   videoCharacteristics?: GoogleCloudDiscoveryengineV1alphaVideoCharacteristics;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFileView: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFileView> =
+export const GoogleCloudDiscoveryengineV1alphaFileView: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFileView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -15131,7 +15131,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFileMetadata {
   lastAddTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFileMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFileMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaFileMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFileMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalSourceType: Schema.optional(Schema.String),
     downloadUri: Schema.optional(Schema.String),
@@ -15154,7 +15154,7 @@ export interface GoogleCloudDiscoveryengineV1betaAgentGatewaySetting {
   defaultEgressAgentGateway?: GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference;
 }
 
-export const GoogleCloudDiscoveryengineV1betaAgentGatewaySetting: Schema.Schema<GoogleCloudDiscoveryengineV1betaAgentGatewaySetting> =
+export const GoogleCloudDiscoveryengineV1betaAgentGatewaySetting: Schema.Codec<GoogleCloudDiscoveryengineV1betaAgentGatewaySetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultEgressAgentGateway: Schema.optional(
       GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference,
@@ -15165,7 +15165,7 @@ export const GoogleCloudDiscoveryengineV1betaAgentGatewaySetting: Schema.Schema<
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
@@ -15177,7 +15177,7 @@ export interface GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateMetadat
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateMetadata> =
+export const GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -15211,7 +15211,7 @@ export interface GoogleCloudNotebooklmV1alphaAudioOverview {
   name?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaAudioOverview: Schema.Schema<GoogleCloudNotebooklmV1alphaAudioOverview> =
+export const GoogleCloudNotebooklmV1alphaAudioOverview: Schema.Codec<GoogleCloudNotebooklmV1alphaAudioOverview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generationOptions: Schema.optional(
       GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions,
@@ -15230,7 +15230,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListControlsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListControlsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListControlsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListControlsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListControlsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     controls: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaControl),
@@ -15245,7 +15245,7 @@ export interface GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest {
   generationOptions?: GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions;
 }
 
-export const GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest: Schema.Schema<GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest> =
+export const GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest: Schema.Codec<GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generationOptions: Schema.optional(
       GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions,
@@ -15259,7 +15259,7 @@ export interface GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest {
   crawlRateScope?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest> =
+export const GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     crawlRateScope: Schema.optional(Schema.String),
   }).annotate({
@@ -15273,7 +15273,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo
   errorMessage?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason> =
+export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     corpusType: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -15289,7 +15289,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo
   failureReasons?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo> =
+export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     failureReasons: Schema.optional(
@@ -15309,7 +15309,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse {
   failedUris?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse> =
+export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureSamples: Schema.optional(
       Schema.Array(
@@ -15326,7 +15326,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig {
   gcsPrefix?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsPrefix: Schema.optional(Schema.String),
   }).annotate({
@@ -15354,7 +15354,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseP
   suggestion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponsePersonSuggestion: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponsePersonSuggestion> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponsePersonSuggestion: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponsePersonSuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     displayPhotoUri: Schema.optional(Schema.String),
@@ -15373,7 +15373,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedCo
   customerType?: "DEFAULT_CUSTOMER" | "GOVERNMENT_CUSTOMER" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerType: Schema.optional(Schema.String),
   }).annotate({
@@ -15390,7 +15390,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest {
   fullRetract?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest> =
+export const GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     licenseConfig: Schema.optional(Schema.String),
     licenseCount: Schema.optional(Schema.String),
@@ -15406,7 +15406,7 @@ export interface GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -15421,7 +15421,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesRespo
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse> =
+export const GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purgeCount: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -15432,7 +15432,7 @@ export const GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse:
 
 export interface GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecWebGroundingSpec {}
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecWebGroundingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecWebGroundingSpec> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecWebGroundingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecWebGroundingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecWebGroundingSpec",
@@ -15453,7 +15453,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation {
   websiteDataUpdateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation> =
+export const GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structuredDataSize: Schema.optional(Schema.String),
     structuredDataUpdateTime: Schema.optional(Schema.String),
@@ -15472,7 +15472,7 @@ export interface GoogleCloudNotebooklmV1alphaUserContentTextContent {
   content?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaUserContentTextContent: Schema.Schema<GoogleCloudNotebooklmV1alphaUserContentTextContent> =
+export const GoogleCloudNotebooklmV1alphaUserContentTextContent: Schema.Codec<GoogleCloudNotebooklmV1alphaUserContentTextContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceName: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -15497,7 +15497,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCompletionSuggestion {
   alternativePhrases?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCompletionSuggestion: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCompletionSuggestion> =
+export const GoogleCloudDiscoveryengineV1alphaCompletionSuggestion: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCompletionSuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     frequency: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -15517,7 +15517,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRespon
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateResponse> =
+export const GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -15533,7 +15533,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResp
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purgeSucceeded: Schema.optional(Schema.Boolean),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -15547,7 +15547,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineCommonConfig {
   companyName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineCommonConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineCommonConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineCommonConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineCommonConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     companyName: Schema.optional(Schema.String),
   }).annotate({
@@ -15561,7 +15561,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -15576,7 +15576,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBigQueryDestination {
   tableId?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBigQueryDestination: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBigQueryDestination> =
+export const GoogleCloudDiscoveryengineV1alphaBigQueryDestination: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     tableId: Schema.optional(Schema.String),
@@ -15593,7 +15593,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress 
   totalCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress> =
+export const GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentile: Schema.optional(Schema.Number),
     currentCount: Schema.optional(Schema.String),
@@ -15648,7 +15648,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun {
   sourceApiRequestCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun> =
+export const GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extractedRecordCount: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -15706,7 +15706,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConnectorRun {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConnectorRun: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConnectorRun> =
+export const GoogleCloudDiscoveryengineV1alphaConnectorRun: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConnectorRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -15728,7 +15728,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectorRuns: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaConnectorRun),
@@ -15753,7 +15753,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState
   authorizationUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authState: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -15770,7 +15770,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResp
   errorConfig?: GoogleCloudDiscoveryengineV1betaImportErrorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse> =
+export const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorConfig: Schema.optional(
@@ -15786,7 +15786,7 @@ export interface GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayRefe
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference: Schema.Schema<GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference> =
+export const GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference: Schema.Codec<GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -15799,7 +15799,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequestInli
   sampleQueries?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSampleQuery>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleQueries: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaSampleQuery),
@@ -15818,7 +15818,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataReque
   schema?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataRequest> =
+export const GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentDataMap: Schema.optional(
       Schema.Record(
@@ -15840,7 +15840,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUpdateSessionRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUpdateSessionRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUpdateSessionRequest> =
+export const GoogleCloudDiscoveryengineV1alphaUpdateSessionRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUpdateSessionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session: Schema.optional(GoogleCloudDiscoveryengineV1alphaSession),
     updateMask: Schema.optional(Schema.String),
@@ -15853,7 +15853,7 @@ export interface GoogleCloudDiscoveryengineV1EngineCommonConfig {
   companyName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineCommonConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineCommonConfig> =
+export const GoogleCloudDiscoveryengineV1EngineCommonConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineCommonConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     companyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDiscoveryengineV1EngineCommonConfig" });
@@ -15865,7 +15865,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -15886,7 +15886,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlert
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment> =
+export const GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alertId: Schema.optional(Schema.String),
     notificationParams: Schema.optional(
@@ -15915,7 +15915,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFactChunk {
   domain?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFactChunk: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFactChunk> =
+export const GoogleCloudDiscoveryengineV1alphaFactChunk: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFactChunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     sourceMetadata: Schema.optional(
@@ -15943,7 +15943,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseClaim {
   citationIndices?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseClaim: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseClaim> =
+export const GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseClaim: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseClaim> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     startPos: Schema.optional(Schema.Number),
@@ -15966,7 +15966,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse {
   claims?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseClaim>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse> =
+export const GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportScore: Schema.optional(Schema.Number),
     citedChunks: Schema.optional(
@@ -15993,7 +15993,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistUserMetadata {
   timeZone?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAssistUserMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAssistUserMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaAssistUserMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAssistUserMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preferredLanguageCode: Schema.optional(Schema.String),
     timeZone: Schema.optional(Schema.String),
@@ -16008,7 +16008,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntries
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -16024,7 +16024,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUpdateTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUpdateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUpdateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaUpdateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUpdateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -16041,7 +16041,7 @@ export interface GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec {
   maxRelatedQuestions?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec> =
+export const GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableRelatedQuestions: Schema.optional(Schema.Boolean),
     enableRefinementAttributes: Schema.optional(Schema.Boolean),
@@ -16052,7 +16052,7 @@ export const GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec: Schema.Schema<Go
 
 export interface GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata {}
 
-export const GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata",
   });
@@ -16062,7 +16062,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
   targetSites?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaTargetSite>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSites: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaTargetSite),
@@ -16081,7 +16081,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecommendResponseRecommendatio
   document?: GoogleCloudDiscoveryengineV1alphaDocument;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRecommendResponseRecommendationResult: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRecommendResponseRecommendationResult> =
+export const GoogleCloudDiscoveryengineV1alphaRecommendResponseRecommendationResult: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRecommendResponseRecommendationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -16102,7 +16102,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecommendResponse {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRecommendResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRecommendResponse> =
+export const GoogleCloudDiscoveryengineV1alphaRecommendResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRecommendResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
@@ -16131,7 +16131,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreBillingEstimation {
   structuredDataSize?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DataStoreBillingEstimation: Schema.Schema<GoogleCloudDiscoveryengineV1DataStoreBillingEstimation> =
+export const GoogleCloudDiscoveryengineV1DataStoreBillingEstimation: Schema.Codec<GoogleCloudDiscoveryengineV1DataStoreBillingEstimation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unstructuredDataUpdateTime: Schema.optional(Schema.String),
     websiteDataUpdateTime: Schema.optional(Schema.String),
@@ -16148,7 +16148,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata {
   dialogflowAgent?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowAgent: Schema.optional(Schema.String),
   }).annotate({
@@ -16177,7 +16177,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata {
   lastTrainTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastTuneTime: Schema.optional(Schema.String),
     dataState: Schema.optional(Schema.String),
@@ -16199,7 +16199,7 @@ export interface GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata
   successCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata> =
+export const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -16217,7 +16217,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec {
   enableClaimLevelScore?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec> =
+export const GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     citationThreshold: Schema.optional(Schema.Number),
     enableClaimLevelScore: Schema.optional(Schema.Boolean),
@@ -16236,7 +16236,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest {
   userLabels?: Record<string, string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest> =
+export const GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groundingSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec,
@@ -16257,7 +16257,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse {
   tailMatchTriggered?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse> =
+export const GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     querySuggestions: Schema.optional(
       Schema.Array(
@@ -16290,7 +16290,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStat
   modelVersion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> =
+export const GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tpmThresholdNextUpdateTime: Schema.optional(Schema.String),
     effectiveTpmThreshold: Schema.optional(Schema.String),
@@ -16310,7 +16310,7 @@ export interface GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -16325,7 +16325,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest {
   force?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     force: Schema.optional(Schema.Boolean),
@@ -16346,7 +16346,7 @@ export interface GoogleCloudDiscoveryengineV1ControlBoostAction {
   dataStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ControlBoostAction: Schema.Schema<GoogleCloudDiscoveryengineV1ControlBoostAction> =
+export const GoogleCloudDiscoveryengineV1ControlBoostAction: Schema.Codec<GoogleCloudDiscoveryengineV1ControlBoostAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interpolationBoostSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec,
@@ -16364,7 +16364,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCreateTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCreateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCreateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaCreateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCreateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -16385,7 +16385,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderst
   >;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -16402,7 +16402,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderst
   maxRephraseSteps?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec,
@@ -16423,7 +16423,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderst
   queryRephraserSpec?: GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryClassificationSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec,
@@ -16444,7 +16444,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchMetad
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -16466,7 +16466,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig {
   alertPolicy?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactDetails: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaContactDetails),
@@ -16541,7 +16541,7 @@ export interface GoogleCloudDiscoveryengineV1alphaLicenseConfig {
   earlyTerminationDate?: GoogleTypeDate;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaLicenseConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaLicenseConfig> =
+export const GoogleCloudDiscoveryengineV1alphaLicenseConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaLicenseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alertPolicyResourceConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig,
@@ -16571,7 +16571,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCre
   location?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     business: Schema.optional(Schema.String),
     defaultLanguageCode: Schema.optional(Schema.String),
@@ -16591,7 +16591,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig {
   dialogflowAgentToLink?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowCrossRegion: Schema.optional(Schema.Boolean),
     agentCreationConfig: Schema.optional(
@@ -16609,7 +16609,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -16622,7 +16622,7 @@ export interface GoogleCloudDiscoveryengineV1alphaOutputConfig {
   bigqueryDestination?: GoogleCloudDiscoveryengineV1alphaBigQueryDestination;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaOutputConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaOutputConfig> =
+export const GoogleCloudDiscoveryengineV1alphaOutputConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaOutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryDestination: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaBigQueryDestination,
@@ -16634,7 +16634,7 @@ export interface GoogleCloudDiscoveryengineV1AgentGatewaySetting {
   defaultEgressAgentGateway?: GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference;
 }
 
-export const GoogleCloudDiscoveryengineV1AgentGatewaySetting: Schema.Schema<GoogleCloudDiscoveryengineV1AgentGatewaySetting> =
+export const GoogleCloudDiscoveryengineV1AgentGatewaySetting: Schema.Codec<GoogleCloudDiscoveryengineV1AgentGatewaySetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultEgressAgentGateway: Schema.optional(
       GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference,
@@ -16654,7 +16654,7 @@ export interface GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata {
   successCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata> =
+export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -16669,7 +16669,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMe
   sitemap?: GoogleCloudDiscoveryengineV1alphaSitemap;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sitemap: Schema.optional(GoogleCloudDiscoveryengineV1alphaSitemap),
   }).annotate({
@@ -16682,7 +16682,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse {
   sitemapsMetadata?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sitemapsMetadata: Schema.optional(
       Schema.Array(
@@ -16700,7 +16700,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -16715,7 +16715,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkin
   includeAncestorHeadings?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig> =
+export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chunkSize: Schema.optional(Schema.Number),
     includeAncestorHeadings: Schema.optional(Schema.Boolean),
@@ -16729,7 +16729,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkin
   layoutBasedChunkingConfig?: GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig> =
+export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     layoutBasedChunkingConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig,
@@ -16746,7 +16746,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestFileDat
   bigquerySource?: GoogleCloudDiscoveryengineV1alphaBigQuerySource;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestFileDataSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestFileDataSource> =
+export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestFileDataSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestFileDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GoogleCloudDiscoveryengineV1alphaGcsSource),
     bigquerySource: Schema.optional(
@@ -16764,7 +16764,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequest {
   fileDataSource?: GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestFileDataSource;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequest> =
+export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     websiteDataSource: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequestWebsiteDataSource,
@@ -16781,7 +16781,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting {
   defaultEgressAgentGateway?: GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting> =
+export const GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultEgressAgentGateway: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference,
@@ -16809,7 +16809,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConverseConversationRequest {
   query?: GoogleCloudDiscoveryengineV1alphaTextInput;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConverseConversationRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConverseConversationRequest> =
+export const GoogleCloudDiscoveryengineV1alphaConverseConversationRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConverseConversationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     boostSpec: Schema.optional(
@@ -16836,7 +16836,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -16857,7 +16857,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata {
   failureCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     successCount: Schema.optional(Schema.String),
@@ -16879,7 +16879,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportUserEventsResponse {
   unjoinedEventsCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportUserEventsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportUserEventsResponse> =
+export const GoogleCloudDiscoveryengineV1betaImportUserEventsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportUserEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaImportErrorConfig,
@@ -16904,7 +16904,7 @@ export interface GoogleCloudDiscoveryengineV1betaQualityMetrics {
   docNdcg?: GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics;
 }
 
-export const GoogleCloudDiscoveryengineV1betaQualityMetrics: Schema.Schema<GoogleCloudDiscoveryengineV1betaQualityMetrics> =
+export const GoogleCloudDiscoveryengineV1betaQualityMetrics: Schema.Codec<GoogleCloudDiscoveryengineV1betaQualityMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     docRecall: Schema.optional(
       GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics,
@@ -16948,7 +16948,7 @@ export interface GoogleCloudDiscoveryengineV1betaEvaluation {
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEvaluation: Schema.Schema<GoogleCloudDiscoveryengineV1betaEvaluation> =
+export const GoogleCloudDiscoveryengineV1betaEvaluation: Schema.Codec<GoogleCloudDiscoveryengineV1betaEvaluation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -16971,7 +16971,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntries
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purgeCount: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -16987,7 +16987,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVe
   filter?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVertexAiSearchSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVertexAiSearchSpec> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVertexAiSearchSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVertexAiSearchSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStoreSpecs: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec),
@@ -17005,7 +17005,7 @@ export interface GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig {
   disableAutomaticRefresh?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig: Schema.Schema<GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig> =
+export const GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig: Schema.Codec<GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableInitialIndex: Schema.optional(Schema.Boolean),
     disableAutomaticRefresh: Schema.optional(Schema.Boolean),
@@ -17022,7 +17022,7 @@ export interface GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent {
   engineName?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent: Schema.Schema<GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent> =
+export const GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent: Schema.Codec<GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentName: Schema.optional(Schema.String),
     ideaforgeIdeaName: Schema.optional(Schema.String),
@@ -17033,7 +17033,7 @@ export const GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent: Schema.Sc
 
 export interface GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse {}
 
-export const GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse> =
+export const GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse",
@@ -17046,7 +17046,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSki
   displayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSkill: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSkill> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSkill: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSkill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -17057,7 +17057,7 @@ export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSkill: 
 
 export interface GoogleCloudDiscoveryengineV1alphaCreateEvaluationMetadata {}
 
-export const GoogleCloudDiscoveryengineV1alphaCreateEvaluationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCreateEvaluationMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaCreateEvaluationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCreateEvaluationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaCreateEvaluationMetadata",
   });
@@ -17069,7 +17069,7 @@ export interface GoogleCloudDiscoveryengineV1DeleteCollectionMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DeleteCollectionMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DeleteCollectionMetadata> =
+export const GoogleCloudDiscoveryengineV1DeleteCollectionMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DeleteCollectionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -17084,7 +17084,7 @@ export interface GoogleCloudDiscoveryengineV1CreateSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1CreateSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1CreateSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1CreateSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1CreateSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -17094,7 +17094,7 @@ export const GoogleCloudDiscoveryengineV1CreateSchemaMetadata: Schema.Schema<Goo
 
 export interface GoogleCloudDiscoveryengineV1alphaTuneEngineRequest {}
 
-export const GoogleCloudDiscoveryengineV1alphaTuneEngineRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaTuneEngineRequest> =
+export const GoogleCloudDiscoveryengineV1alphaTuneEngineRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaTuneEngineRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaTuneEngineRequest",
   });
@@ -17106,7 +17106,7 @@ export interface GoogleCloudDiscoveryengineV1DeleteEngineMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DeleteEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DeleteEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1DeleteEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DeleteEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -17127,7 +17127,7 @@ export interface GoogleCloudDiscoveryengineV1alphaServingConfigMediaConfig {
   contentWatchedPercentageThreshold?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaServingConfigMediaConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaServingConfigMediaConfig> =
+export const GoogleCloudDiscoveryengineV1alphaServingConfigMediaConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaServingConfigMediaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentFreshnessCutoffDays: Schema.optional(Schema.Number),
     contentWatchedSecondsThreshold: Schema.optional(Schema.Number),
@@ -17196,7 +17196,7 @@ export interface GoogleCloudDiscoveryengineV1alphaServingConfig {
   boostControlIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaServingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaServingConfig> =
+export const GoogleCloudDiscoveryengineV1alphaServingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaServingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dissociateControlIds: Schema.optional(Schema.Array(Schema.String)),
     promoteControlIds: Schema.optional(Schema.Array(Schema.String)),
@@ -17245,7 +17245,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servingConfigs: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaServingConfig),
@@ -17276,7 +17276,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpecSa
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpecSafetySetting: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpecSafetySetting> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpecSafetySetting: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpecSafetySetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     threshold: Schema.optional(Schema.String),
@@ -17316,7 +17316,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchAddOns: Schema.optional(Schema.Array(Schema.String)),
     searchTier: Schema.optional(Schema.String),
@@ -17332,7 +17332,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListAgentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListAgentsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListAgentsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListAgentsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListAgentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agents: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaAgent),
@@ -17344,7 +17344,7 @@ export const GoogleCloudDiscoveryengineV1alphaListAgentsResponse: Schema.Schema<
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -17356,7 +17356,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigT
   appName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig> =
+export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceName: Schema.optional(Schema.String),
     appName: Schema.optional(Schema.String),
@@ -17370,7 +17370,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigN
   searchConfig?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig> =
+export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchConfig: Schema.optional(Schema.String),
   }).annotate({
@@ -17387,7 +17387,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig 
   notebooklmConfig?: GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig> =
+export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thirdPartyOauthConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig,
@@ -17417,7 +17417,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig {
   chunkingConfig?: GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig> =
+export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parsingConfigOverrides: Schema.optional(
       Schema.Record(
@@ -17457,7 +17457,7 @@ export interface GoogleCloudDiscoveryengineV1betaWorkspaceConfig {
   superAdminServiceAccount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaWorkspaceConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaWorkspaceConfig> =
+export const GoogleCloudDiscoveryengineV1betaWorkspaceConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaWorkspaceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     superAdminEmailAddress: Schema.optional(Schema.String),
@@ -17474,7 +17474,7 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig {
   disableAutomaticRefresh?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig> =
+export const GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableInitialIndex: Schema.optional(Schema.Boolean),
     disableAutomaticRefresh: Schema.optional(Schema.Boolean),
@@ -17487,7 +17487,7 @@ export interface GoogleCloudDiscoveryengineV1betaSingleRegionKey {
   kmsKey?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSingleRegionKey: Schema.Schema<GoogleCloudDiscoveryengineV1betaSingleRegionKey> =
+export const GoogleCloudDiscoveryengineV1betaSingleRegionKey: Schema.Codec<GoogleCloudDiscoveryengineV1betaSingleRegionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
   }).annotate({
@@ -17529,7 +17529,7 @@ export interface GoogleCloudDiscoveryengineV1betaCmekConfig {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaCmekConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaCmekConfig> =
+export const GoogleCloudDiscoveryengineV1betaCmekConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaCmekConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
     kmsKeyVersion: Schema.optional(Schema.String),
@@ -17617,7 +17617,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStore {
   startingSchema?: GoogleCloudDiscoveryengineV1betaSchema;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDataStore: Schema.Schema<GoogleCloudDiscoveryengineV1betaDataStore> =
+export const GoogleCloudDiscoveryengineV1betaDataStore: Schema.Codec<GoogleCloudDiscoveryengineV1betaDataStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federatedSearchConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig,
@@ -17688,7 +17688,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCompletionConfig {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCompletionConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCompletionConfig> =
+export const GoogleCloudDiscoveryengineV1alphaCompletionConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCompletionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchingOrder: Schema.optional(Schema.String),
     minPrefixLength: Schema.optional(Schema.Number),
@@ -17711,7 +17711,7 @@ export interface GoogleCloudDiscoveryengineV1DeleteDataStoreMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DeleteDataStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DeleteDataStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1DeleteDataStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DeleteDataStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -17726,7 +17726,7 @@ export interface GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats {
   usedLicenseCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats: Schema.Schema<GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats> =
+export const GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats: Schema.Codec<GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     licenseConfig: Schema.optional(Schema.String),
     usedLicenseCount: Schema.optional(Schema.String),
@@ -17739,7 +17739,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsRe
   licenseConfigUsageStats?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     licenseConfigUsageStats: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats),
@@ -17754,7 +17754,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt {
   promptText?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt> =
+export const GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     promptText: Schema.optional(Schema.String),
   }).annotate({
@@ -17770,7 +17770,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts {
   suggestedPrompts?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts> =
+export const GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     prefix: Schema.optional(Schema.String),
@@ -17801,7 +17801,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCannedQuery {
   defaultTexts?: GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCannedQuery: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCannedQuery> =
+export const GoogleCloudDiscoveryengineV1alphaCannedQuery: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCannedQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredCapabilities: Schema.optional(
       Schema.Array(
@@ -17830,7 +17830,7 @@ export interface GoogleCloudDiscoveryengineV1betaIdpConfig {
   idpType?: "IDP_TYPE_UNSPECIFIED" | "GSUITE" | "THIRD_PARTY" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaIdpConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaIdpConfig> =
+export const GoogleCloudDiscoveryengineV1betaIdpConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaIdpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalIdpConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig,
@@ -17845,7 +17845,7 @@ export interface GoogleCloudDiscoveryengineV1betaAclConfig {
   idpConfig?: GoogleCloudDiscoveryengineV1betaIdpConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaAclConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaAclConfig> =
+export const GoogleCloudDiscoveryengineV1betaAclConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaAclConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     idpConfig: Schema.optional(GoogleCloudDiscoveryengineV1betaIdpConfig),
@@ -17858,7 +17858,7 @@ export interface GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRespons
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateResponse> =
+export const GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -17874,7 +17874,7 @@ export interface GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -17884,7 +17884,7 @@ export const GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata: Schema.Sch
 
 export interface GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchRequest {}
 
-export const GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchRequest> =
+export const GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchRequest",
@@ -17946,7 +17946,7 @@ export interface GoogleCloudDiscoveryengineV1betaLicenseConfig {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1betaLicenseConfig: Schema.Schema<GoogleCloudDiscoveryengineV1betaLicenseConfig> =
+export const GoogleCloudDiscoveryengineV1betaLicenseConfig: Schema.Codec<GoogleCloudDiscoveryengineV1betaLicenseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     earlyTerminated: Schema.optional(Schema.Boolean),
@@ -17969,7 +17969,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecE
   documentMetadata?: GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     documentMetadata: Schema.optional(
@@ -17987,7 +17987,7 @@ export interface GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesMeta
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesMetadata> =
+export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -18003,7 +18003,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -18018,7 +18018,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistResponseConnectorA
   errorMessage?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponseConnectorAuthError: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistResponseConnectorAuthError> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponseConnectorAuthError: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistResponseConnectorAuthError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataConnector: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -18042,7 +18042,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistResponse {
   invokedSkills?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaStreamAssistResponseInvokedSkill>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistResponse> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionInfo: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaStreamAssistResponseSessionInfo,
@@ -18075,7 +18075,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportUserEventsMetadata {
   successCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportUserEventsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportUserEventsMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaImportUserEventsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportUserEventsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -18090,7 +18090,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec 
   actionDisabled?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionDisabled: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -18103,7 +18103,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequestInlineSou
   documents?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -18118,7 +18118,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse 
   purgeSucceeded?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse> =
+export const GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     purgeSucceeded: Schema.optional(Schema.Boolean),
@@ -18134,7 +18134,7 @@ export interface GoogleCloudDiscoveryengineV1betaDeleteTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDeleteTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaDeleteTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1betaDeleteTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaDeleteTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -18153,7 +18153,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestGroundingSpe
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestGroundingSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestGroundingSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestGroundingSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestGroundingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeGroundingSupports: Schema.optional(Schema.Boolean),
     filteringLevel: Schema.optional(Schema.String),
@@ -18164,7 +18164,7 @@ export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestGroundingSpec: S
 
 export interface GoogleCloudDiscoveryengineV1alphaResumeEngineRequest {}
 
-export const GoogleCloudDiscoveryengineV1alphaResumeEngineRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaResumeEngineRequest> =
+export const GoogleCloudDiscoveryengineV1alphaResumeEngineRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaResumeEngineRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaResumeEngineRequest",
   });
@@ -18207,7 +18207,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     entityName: Schema.optional(Schema.String),
@@ -18232,7 +18232,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequest {
   gcsSource?: GoogleCloudDiscoveryengineV1alphaGcsSource;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequest> =
+export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportSampleQueriesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaImportErrorConfig,
@@ -18253,7 +18253,7 @@ export interface GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse 
   targetSites?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaTargetSite>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse> =
+export const GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSites: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1betaTargetSite),
@@ -18288,7 +18288,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStat
   agentSearchTokenSubscriptionStatuses?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatusAgentSearchTokenSubscriptionStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus> =
+export const GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveSearchQpmThreshold: Schema.optional(Schema.String),
     indexingCoreThresholdNextUpdateTime: Schema.optional(Schema.String),
@@ -18312,7 +18312,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfig 
   notebooklmConfig?: GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfig> =
+export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebooklmConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig,
@@ -18340,7 +18340,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectServiceTerms {
   declineTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProjectServiceTerms: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProjectServiceTerms> =
+export const GoogleCloudDiscoveryengineV1alphaProjectServiceTerms: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProjectServiceTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     acceptTime: Schema.optional(Schema.String),
@@ -18369,7 +18369,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProject {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaProject: Schema.Schema<GoogleCloudDiscoveryengineV1alphaProject> =
+export const GoogleCloudDiscoveryengineV1alphaProject: Schema.Codec<GoogleCloudDiscoveryengineV1alphaProject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurableBillingStatus: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus,
@@ -18395,7 +18395,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchMetada
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEnableAdvancedSiteSearchMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -18409,7 +18409,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsReq
   suggestions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCompletionSuggestion>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaCompletionSuggestion),
@@ -18430,7 +18430,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsReq
   bigquerySource?: GoogleCloudDiscoveryengineV1alphaBigQuerySource;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaImportErrorConfig,
@@ -18458,7 +18458,7 @@ export interface GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata
   failureCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata> =
+export const GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -18474,7 +18474,7 @@ export interface GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConf
   contextEventType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig> =
+export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contextEventType: Schema.optional(Schema.String),
   }).annotate({
@@ -18489,7 +18489,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRes
   errorConfig?: GoogleCloudDiscoveryengineV1alphaImportErrorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorConfig: Schema.optional(
@@ -18509,7 +18509,7 @@ export interface GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent {
   mimeType?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent: Schema.Schema<GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent> =
+export const GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent: Schema.Codec<GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentId: Schema.optional(Schema.String),
     sourceName: Schema.optional(Schema.String),
@@ -18523,7 +18523,7 @@ export interface GoogleCloudNotebooklmV1alphaUserContentVideoContent {
   youtubeUrl?: string;
 }
 
-export const GoogleCloudNotebooklmV1alphaUserContentVideoContent: Schema.Schema<GoogleCloudNotebooklmV1alphaUserContentVideoContent> =
+export const GoogleCloudNotebooklmV1alphaUserContentVideoContent: Schema.Codec<GoogleCloudNotebooklmV1alphaUserContentVideoContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     youtubeUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -18543,7 +18543,7 @@ export interface GoogleCloudNotebooklmV1alphaUserContent {
   webContent?: GoogleCloudNotebooklmV1alphaUserContentWebContent;
 }
 
-export const GoogleCloudNotebooklmV1alphaUserContent: Schema.Schema<GoogleCloudNotebooklmV1alphaUserContent> =
+export const GoogleCloudNotebooklmV1alphaUserContent: Schema.Codec<GoogleCloudNotebooklmV1alphaUserContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleDriveContent: Schema.optional(
       GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent,
@@ -18567,7 +18567,7 @@ export interface GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest {
   userContents?: ReadonlyArray<GoogleCloudNotebooklmV1alphaUserContent>;
 }
 
-export const GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest: Schema.Schema<GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest> =
+export const GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest: Schema.Codec<GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userContents: Schema.optional(
       Schema.Array(GoogleCloudNotebooklmV1alphaUserContent),
@@ -18581,7 +18581,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse {
   licenseConfig?: GoogleCloudDiscoveryengineV1alphaLicenseConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse> =
+export const GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     licenseConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaLicenseConfig,
@@ -18595,7 +18595,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
   }).annotate({
@@ -18609,7 +18609,7 @@ export interface GoogleCloudDiscoveryengineV1betaCreateEngineMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaCreateEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaCreateEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1betaCreateEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaCreateEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -18622,7 +18622,7 @@ export interface GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse {
   audioOverview?: GoogleCloudNotebooklmV1alphaAudioOverview;
 }
 
-export const GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse: Schema.Schema<GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse> =
+export const GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse: Schema.Codec<GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioOverview: Schema.optional(GoogleCloudNotebooklmV1alphaAudioOverview),
   }).annotate({
@@ -18636,7 +18636,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListSampleQueriesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListSampleQueriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListSampleQueriesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListSampleQueriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListSampleQueriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleQueries: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaSampleQuery),
@@ -18651,7 +18651,7 @@ export interface GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataRespo
   documentDataMap?: Record<string, Record<string, unknown>>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataResponse> =
+export const GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentDataMap: Schema.optional(
       Schema.Record(
@@ -18671,7 +18671,7 @@ export interface GoogleCloudDiscoveryengineV1ConditionTimeRange {
   startTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ConditionTimeRange: Schema.Schema<GoogleCloudDiscoveryengineV1ConditionTimeRange> =
+export const GoogleCloudDiscoveryengineV1ConditionTimeRange: Schema.Codec<GoogleCloudDiscoveryengineV1ConditionTimeRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -18684,7 +18684,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnalyticsConfig {
   userLevelMetricsEnabled?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnalyticsConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnalyticsConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAnalyticsConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnalyticsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     userLevelMetricsEnabled: Schema.optional(Schema.Boolean),
@@ -18701,7 +18701,7 @@ export interface GoogleCloudDiscoveryengineV1Sitemap {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1Sitemap: Schema.Schema<GoogleCloudDiscoveryengineV1Sitemap> =
+export const GoogleCloudDiscoveryengineV1Sitemap: Schema.Codec<GoogleCloudDiscoveryengineV1Sitemap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -18715,7 +18715,7 @@ export interface GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata> =
+export const GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -18738,7 +18738,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigNode {
   outputSchema?: Record<string, unknown>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigNode: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigNode> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigNode: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     iconUrl: Schema.optional(Schema.String),
@@ -18771,7 +18771,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponen
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectorIconLink: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -18808,7 +18808,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings 
   defaultWebGroundingToggleOff?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleSearchGroundingEnabled: Schema.optional(Schema.Boolean),
     webGroundingType: Schema.optional(Schema.String),
@@ -18921,7 +18921,7 @@ export interface GoogleCloudDiscoveryengineV1alphaWidgetConfig {
   customerProvidedConfig?: GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaWidgetConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaWidgetConfig> =
+export const GoogleCloudDiscoveryengineV1alphaWidgetConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaWidgetConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableAutocomplete: Schema.optional(Schema.Boolean),
     enablePrivateKnowledgeGraph: Schema.optional(Schema.Boolean),
@@ -19000,7 +19000,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -19010,7 +19010,7 @@ export const GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata: Schema.Sche
 
 export interface GoogleCloudNotebooklmV1alphaShareNotebookResponse {}
 
-export const GoogleCloudNotebooklmV1alphaShareNotebookResponse: Schema.Schema<GoogleCloudNotebooklmV1alphaShareNotebookResponse> =
+export const GoogleCloudNotebooklmV1alphaShareNotebookResponse: Schema.Codec<GoogleCloudNotebooklmV1alphaShareNotebookResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudNotebooklmV1alphaShareNotebookResponse",
   });
@@ -19030,7 +19030,7 @@ export interface GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse {
   authorizationUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse> =
+export const GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     instance: Schema.optional(Schema.String),
@@ -19051,7 +19051,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAgentFile {
   mimeType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAgentFile: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAgentFile> =
+export const GoogleCloudDiscoveryengineV1alphaAgentFile: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAgentFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -19063,7 +19063,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse {
   agentFile?: GoogleCloudDiscoveryengineV1alphaAgentFile;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse> =
+export const GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentFile: Schema.optional(GoogleCloudDiscoveryengineV1alphaAgentFile),
   }).annotate({
@@ -19077,7 +19077,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identityMappingEntries: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry),
@@ -19096,7 +19096,7 @@ export interface GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMe
   totalCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata> =
+export const GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     successCount: Schema.optional(Schema.String),
@@ -19111,7 +19111,7 @@ export interface GoogleCloudDiscoveryengineV1EngineChatEngineMetadata {
   dialogflowAgent?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineChatEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1EngineChatEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1EngineChatEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1EngineChatEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowAgent: Schema.optional(Schema.String),
   }).annotate({
@@ -19131,7 +19131,7 @@ export interface GoogleCloudDiscoveryengineV1ServingConfigMediaConfig {
   demotionEventType?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ServingConfigMediaConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ServingConfigMediaConfig> =
+export const GoogleCloudDiscoveryengineV1ServingConfigMediaConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ServingConfigMediaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     demoteContentWatchedPastDays: Schema.optional(Schema.Number),
     contentWatchedPercentageThreshold: Schema.optional(Schema.Number),
@@ -19149,7 +19149,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest {
   resources?: ReadonlyArray<GoogleApiMonitoredResource>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest> =
+export const GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requirementType: Schema.optional(Schema.String),
     resources: Schema.optional(Schema.Array(GoogleApiMonitoredResource)),
@@ -19178,7 +19178,7 @@ export interface GoogleCloudDiscoveryengineV1WorkspaceConfig {
   superAdminServiceAccount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1WorkspaceConfig: Schema.Schema<GoogleCloudDiscoveryengineV1WorkspaceConfig> =
+export const GoogleCloudDiscoveryengineV1WorkspaceConfig: Schema.Codec<GoogleCloudDiscoveryengineV1WorkspaceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     superAdminEmailAddress: Schema.optional(Schema.String),
@@ -19198,7 +19198,7 @@ export interface GoogleCloudDiscoveryengineV1alphaReportConsentChangeRequest {
   serviceTermVersion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaReportConsentChangeRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaReportConsentChangeRequest> =
+export const GoogleCloudDiscoveryengineV1alphaReportConsentChangeRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaReportConsentChangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceTermId: Schema.optional(Schema.String),
     consentChangeAction: Schema.optional(Schema.String),
@@ -19214,7 +19214,7 @@ export interface GoogleCloudDiscoveryengineV1ConditionQueryTerm {
   fullMatch?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1ConditionQueryTerm: Schema.Schema<GoogleCloudDiscoveryengineV1ConditionQueryTerm> =
+export const GoogleCloudDiscoveryengineV1ConditionQueryTerm: Schema.Codec<GoogleCloudDiscoveryengineV1ConditionQueryTerm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     fullMatch: Schema.optional(Schema.Boolean),
@@ -19229,7 +19229,7 @@ export interface GoogleCloudDiscoveryengineV1Condition {
   queryRegex?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1Condition: Schema.Schema<GoogleCloudDiscoveryengineV1Condition> =
+export const GoogleCloudDiscoveryengineV1Condition: Schema.Codec<GoogleCloudDiscoveryengineV1Condition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryTerms: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1ConditionQueryTerm),
@@ -19245,7 +19245,7 @@ export interface GoogleCloudDiscoveryengineV1ControlRedirectAction {
   redirectUri?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ControlRedirectAction: Schema.Schema<GoogleCloudDiscoveryengineV1ControlRedirectAction> =
+export const GoogleCloudDiscoveryengineV1ControlRedirectAction: Schema.Codec<GoogleCloudDiscoveryengineV1ControlRedirectAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redirectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -19289,7 +19289,7 @@ export interface GoogleCloudDiscoveryengineV1Control {
   redirectAction?: GoogleCloudDiscoveryengineV1ControlRedirectAction;
 }
 
-export const GoogleCloudDiscoveryengineV1Control: Schema.Schema<GoogleCloudDiscoveryengineV1Control> =
+export const GoogleCloudDiscoveryengineV1Control: Schema.Codec<GoogleCloudDiscoveryengineV1Control> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boostAction: Schema.optional(
       GoogleCloudDiscoveryengineV1ControlBoostAction,
@@ -19321,7 +19321,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSiteSearchEngine {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSiteSearchEngine: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSiteSearchEngine> =
+export const GoogleCloudDiscoveryengineV1alphaSiteSearchEngine: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSiteSearchEngine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -19337,7 +19337,7 @@ export interface GoogleCloudDiscoveryengineV1betaSitemap {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSitemap: Schema.Schema<GoogleCloudDiscoveryengineV1betaSitemap> =
+export const GoogleCloudDiscoveryengineV1betaSitemap: Schema.Codec<GoogleCloudDiscoveryengineV1betaSitemap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -19351,7 +19351,7 @@ export interface GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse
   errorConfig?: GoogleCloudDiscoveryengineV1ImportErrorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse> =
+export const GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorConfig: Schema.optional(GoogleCloudDiscoveryengineV1ImportErrorConfig),
@@ -19365,7 +19365,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataRespo
   documentsMetadata?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadata>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse> =
+export const GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentsMetadata: Schema.optional(
       Schema.Array(
@@ -19384,7 +19384,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThird
   instanceName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig> =
+export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appName: Schema.optional(Schema.String),
     instanceName: Schema.optional(Schema.String),
@@ -19402,7 +19402,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig {
   alloyDbConfig?: GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig: Schema.Schema<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig> =
+export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig: Schema.Codec<GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thirdPartyOauthConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig,
@@ -19419,7 +19419,7 @@ export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig: Schema.
 
 export interface GoogleCloudDiscoveryengineV1alphaBatchVerifyTargetSitesRequest {}
 
-export const GoogleCloudDiscoveryengineV1alphaBatchVerifyTargetSitesRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchVerifyTargetSitesRequest> =
+export const GoogleCloudDiscoveryengineV1alphaBatchVerifyTargetSitesRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchVerifyTargetSitesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaBatchVerifyTargetSitesRequest",
@@ -19432,7 +19432,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata 
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata> =
+export const GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -19448,7 +19448,7 @@ export interface GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest {
   dataStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest> =
+export const GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterGroups: Schema.optional(Schema.Array(Schema.String)),
     dataStore: Schema.optional(Schema.String),
@@ -19463,7 +19463,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMeta
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -19479,7 +19479,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteCollectionMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteCollectionMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteCollectionMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteCollectionMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteCollectionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -19492,7 +19492,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse {
   refreshTokenInfo?: GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse> =
+export const GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshTokenInfo: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo,
@@ -19514,7 +19514,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRemoveSuggestionRequest {
   removeTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRemoveSuggestionRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRemoveSuggestionRequest> =
+export const GoogleCloudDiscoveryengineV1alphaRemoveSuggestionRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRemoveSuggestionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     removeAllSearchHistorySuggestions: Schema.optional(Schema.Boolean),
     searchHistorySuggestion: Schema.optional(Schema.String),
@@ -19530,7 +19530,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecE
   chunkInfo?: GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaData: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaData> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaData: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chunkInfo: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo,
@@ -19545,7 +19545,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpec 
   endUserMetadata?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpecEndUserMetaData>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestEndUserSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endUserMetadata: Schema.optional(
       Schema.Array(
@@ -19564,7 +19564,7 @@ export interface GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConf
   targetFieldValueFloat?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig> =
+export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetField: Schema.optional(Schema.String),
     targetFieldValueFloat: Schema.optional(Schema.Number),
@@ -19580,7 +19580,7 @@ export interface GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConf
   recommendedForYouConfig?: GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig> =
+export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mostPopularConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig,
@@ -19610,7 +19610,7 @@ export interface GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConf
   engineFeaturesConfig?: GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig> =
+export const GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     optimizationObjective: Schema.optional(Schema.String),
@@ -19682,7 +19682,7 @@ export interface GoogleCloudDiscoveryengineV1LicenseConfig {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1LicenseConfig: Schema.Schema<GoogleCloudDiscoveryengineV1LicenseConfig> =
+export const GoogleCloudDiscoveryengineV1LicenseConfig: Schema.Codec<GoogleCloudDiscoveryengineV1LicenseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endDate: Schema.optional(GoogleTypeDate),
     startDate: Schema.optional(GoogleTypeDate),
@@ -19705,7 +19705,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userLicenses: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaUserLicense),
@@ -19720,7 +19720,7 @@ export interface GoogleCloudDiscoveryengineV1SingleRegionKey {
   kmsKey?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1SingleRegionKey: Schema.Schema<GoogleCloudDiscoveryengineV1SingleRegionKey> =
+export const GoogleCloudDiscoveryengineV1SingleRegionKey: Schema.Codec<GoogleCloudDiscoveryengineV1SingleRegionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDiscoveryengineV1SingleRegionKey" });
@@ -19760,7 +19760,7 @@ export interface GoogleCloudDiscoveryengineV1CmekConfig {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1CmekConfig: Schema.Schema<GoogleCloudDiscoveryengineV1CmekConfig> =
+export const GoogleCloudDiscoveryengineV1CmekConfig: Schema.Codec<GoogleCloudDiscoveryengineV1CmekConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastRotationTimestampMicros: Schema.optional(Schema.String),
     kmsKey: Schema.optional(Schema.String),
@@ -19779,7 +19779,7 @@ export interface GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingCo
   mode?: "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig> =
+export const GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({
@@ -19859,7 +19859,7 @@ export interface GoogleCloudDiscoveryengineV1DataStore {
   identityMappingStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DataStore: Schema.Schema<GoogleCloudDiscoveryengineV1DataStore> =
+export const GoogleCloudDiscoveryengineV1DataStore: Schema.Codec<GoogleCloudDiscoveryengineV1DataStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isInfobotFaqDataStore: Schema.optional(Schema.Boolean),
     kmsKeyName: Schema.optional(Schema.String),
@@ -19920,7 +19920,7 @@ export interface GoogleCloudDiscoveryengineV1betaProjectServiceTerms {
   id?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaProjectServiceTerms: Schema.Schema<GoogleCloudDiscoveryengineV1betaProjectServiceTerms> =
+export const GoogleCloudDiscoveryengineV1betaProjectServiceTerms: Schema.Codec<GoogleCloudDiscoveryengineV1betaProjectServiceTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     declineTime: Schema.optional(Schema.String),
@@ -19949,7 +19949,7 @@ export interface GoogleCloudDiscoveryengineV1betaProject {
   createTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaProject: Schema.Schema<GoogleCloudDiscoveryengineV1betaProject> =
+export const GoogleCloudDiscoveryengineV1betaProject: Schema.Codec<GoogleCloudDiscoveryengineV1betaProject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisionCompletionTime: Schema.optional(Schema.String),
     configurableBillingStatus: Schema.optional(
@@ -19975,7 +19975,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse {
   purgeSample?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse> =
+export const GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purgeCount: Schema.optional(Schema.String),
     purgeSample: Schema.optional(Schema.Array(Schema.String)),
@@ -19990,7 +19990,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListDocumentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListDocumentsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListDocumentsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListDocumentsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documents: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaDocument),
@@ -20019,7 +20019,7 @@ export interface GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClas
   preamble?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec: Schema.Schema<GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec> =
+export const GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec: Schema.Codec<GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topK: Schema.optional(Schema.String),
     seed: Schema.optional(Schema.Number),
@@ -20041,7 +20041,7 @@ export interface GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadat
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata> =
+export const GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20052,7 +20052,7 @@ export const GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata: S
 
 export interface GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec {}
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecImageGenerationSpec",
@@ -20069,7 +20069,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpec {
   vertexAiSearchSpec?: GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVertexAiSearchSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpec> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoGenerationSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaStreamAssistRequestToolsSpecVideoGenerationSpec,
@@ -20100,7 +20100,7 @@ export interface GoogleCloudDiscoveryengineV1TrainCustomModelResponse {
   modelName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1TrainCustomModelResponse: Schema.Schema<GoogleCloudDiscoveryengineV1TrainCustomModelResponse> =
+export const GoogleCloudDiscoveryengineV1TrainCustomModelResponse: Schema.Codec<GoogleCloudDiscoveryengineV1TrainCustomModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelStatus: Schema.optional(Schema.String),
     metrics: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
@@ -20118,7 +20118,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata 
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20134,7 +20134,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportDocumentsResponse {
   errorConfig?: GoogleCloudDiscoveryengineV1betaImportErrorConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportDocumentsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportDocumentsResponse> =
+export const GoogleCloudDiscoveryengineV1betaImportDocumentsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorConfig: Schema.optional(
@@ -20151,7 +20151,7 @@ export interface GoogleCloudDiscoveryengineV1UpdateSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1UpdateSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1UpdateSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1UpdateSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1UpdateSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20180,7 +20180,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseC
   suggestion?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseContentSuggestion: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseContentSuggestion> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseContentSuggestion: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseContentSuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     destinationUri: Schema.optional(Schema.String),
@@ -20201,7 +20201,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteIdentityMappingStoreMeta
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteIdentityMappingStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteIdentityMappingStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteIdentityMappingStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteIdentityMappingStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20217,7 +20217,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse {
   purgeSample?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purgeCount: Schema.optional(Schema.String),
     purgeSample: Schema.optional(Schema.Array(Schema.String)),
@@ -20232,7 +20232,7 @@ export interface GoogleCloudDiscoveryengineV1betaDeleteEngineMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaDeleteEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaDeleteEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1betaDeleteEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaDeleteEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20249,7 +20249,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntrie
   importedEntriesCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedEntriesCount: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -20264,7 +20264,7 @@ export interface GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig {
   workforcePoolName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig: Schema.Schema<GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig> =
+export const GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig: Schema.Codec<GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workforcePoolName: Schema.optional(Schema.String),
   }).annotate({
@@ -20278,7 +20278,7 @@ export interface GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20293,7 +20293,7 @@ export interface GoogleCloudDiscoveryengineV1IdpConfig {
   externalIdpConfig?: GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1IdpConfig: Schema.Schema<GoogleCloudDiscoveryengineV1IdpConfig> =
+export const GoogleCloudDiscoveryengineV1IdpConfig: Schema.Codec<GoogleCloudDiscoveryengineV1IdpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     idpType: Schema.optional(Schema.String),
     externalIdpConfig: Schema.optional(
@@ -20308,7 +20308,7 @@ export interface GoogleCloudDiscoveryengineV1AclConfig {
   idpConfig?: GoogleCloudDiscoveryengineV1IdpConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1AclConfig: Schema.Schema<GoogleCloudDiscoveryengineV1AclConfig> =
+export const GoogleCloudDiscoveryengineV1AclConfig: Schema.Codec<GoogleCloudDiscoveryengineV1AclConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     idpConfig: Schema.optional(GoogleCloudDiscoveryengineV1IdpConfig),
@@ -20316,7 +20316,7 @@ export const GoogleCloudDiscoveryengineV1AclConfig: Schema.Schema<GoogleCloudDis
 
 export interface GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchRequest {}
 
-export const GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchRequest> =
+export const GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchRequest",
@@ -20327,7 +20327,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequestI
   identityMappingEntries?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequestInlineSource: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequestInlineSource> =
+export const GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequestInlineSource: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequestInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identityMappingEntries: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaIdentityMappingEntry),
@@ -20342,7 +20342,7 @@ export interface GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse {
   targetSites?: ReadonlyArray<GoogleCloudDiscoveryengineV1TargetSite>;
 }
 
-export const GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse> =
+export const GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSites: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1TargetSite),
@@ -20353,7 +20353,7 @@ export const GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse: Schema.
 
 export interface GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig {}
 
-export const GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig> =
+export const GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig",
@@ -20361,7 +20361,7 @@ export const GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig
 
 export interface GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest {}
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesRequest",
@@ -20372,7 +20372,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   policy?: GoogleIamV1Policy;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleIamV1Policy),
   }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
@@ -20388,7 +20388,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeUserEventsMetadata {
   failureCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeUserEventsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeUserEventsMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeUserEventsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeUserEventsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20405,7 +20405,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest {
   siteCredential?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest> =
+export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uris: Schema.optional(Schema.Array(Schema.String)),
     siteCredential: Schema.optional(Schema.String),
@@ -20426,7 +20426,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata {
   successCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata> =
+export const GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20444,7 +20444,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20542,7 +20542,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngine {
   displayName?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaEngine: Schema.Schema<GoogleCloudDiscoveryengineV1alphaEngine> =
+export const GoogleCloudDiscoveryengineV1alphaEngine: Schema.Codec<GoogleCloudDiscoveryengineV1alphaEngine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionType: Schema.optional(Schema.String),
     appType: Schema.optional(Schema.String),
@@ -20606,7 +20606,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportUserEventsMetadata {
   successCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportUserEventsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportUserEventsMetadata> =
+export const GoogleCloudDiscoveryengineV1betaImportUserEventsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportUserEventsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -20623,7 +20623,7 @@ export interface GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse {
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse> =
+export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userLicenses: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1UserLicense),
@@ -20644,7 +20644,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadat
   successCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -20666,7 +20666,7 @@ export interface GoogleCloudDiscoveryengineV1ImportUserEventsMetadata {
   successCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportUserEventsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1ImportUserEventsMetadata> =
+export const GoogleCloudDiscoveryengineV1ImportUserEventsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1ImportUserEventsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -20687,7 +20687,7 @@ export interface GoogleCloudDiscoveryengineV1ImportUserEventsResponse {
   joinedEventsCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportUserEventsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1ImportUserEventsResponse> =
+export const GoogleCloudDiscoveryengineV1ImportUserEventsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1ImportUserEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorConfig: Schema.optional(GoogleCloudDiscoveryengineV1ImportErrorConfig),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -20704,7 +20704,7 @@ export interface GoogleCloudDiscoveryengineV1betaUpdateSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaUpdateSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaUpdateSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1betaUpdateSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaUpdateSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20719,7 +20719,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest {
   dataStore?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest> =
+export const GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterGroups: Schema.optional(Schema.Array(Schema.String)),
     dataStore: Schema.optional(Schema.String),
@@ -20734,7 +20734,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20751,7 +20751,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest {
   dataConnector?: GoogleCloudDiscoveryengineV1alphaDataConnector;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest> =
+export const GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collectionDisplayName: Schema.optional(Schema.String),
     collectionId: Schema.optional(Schema.String),
@@ -20773,7 +20773,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConverseConversationResponse {
   searchResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaConverseConversationResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaConverseConversationResponse> =
+export const GoogleCloudDiscoveryengineV1alphaConverseConversationResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaConverseConversationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaConversation,
@@ -20794,7 +20794,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAclConfig {
   idpConfig?: GoogleCloudDiscoveryengineV1alphaIdpConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAclConfig: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAclConfig> =
+export const GoogleCloudDiscoveryengineV1alphaAclConfig: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAclConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     idpConfig: Schema.optional(GoogleCloudDiscoveryengineV1alphaIdpConfig),
@@ -20813,7 +20813,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata {
   ignoredCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata> =
+export const GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     successCount: Schema.optional(Schema.String),
@@ -20826,7 +20826,7 @@ export const GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata: Schema.Sche
 
 export interface GoogleCloudDiscoveryengineV1alphaPauseEngineRequest {}
 
-export const GoogleCloudDiscoveryengineV1alphaPauseEngineRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPauseEngineRequest> =
+export const GoogleCloudDiscoveryengineV1alphaPauseEngineRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPauseEngineRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1alphaPauseEngineRequest",
   });
@@ -20838,7 +20838,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntries
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesMetadata> =
+export const GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20854,7 +20854,7 @@ export interface GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata> =
+export const GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20869,7 +20869,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListLicenseConfigsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListLicenseConfigsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListLicenseConfigsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListLicenseConfigsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListLicenseConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     licenseConfigs: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaLicenseConfig),
@@ -20884,7 +20884,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequest 
   inlineSource?: GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequestInlineSource;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inlineSource: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequestInlineSource,
@@ -20901,7 +20901,7 @@ export interface GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -20918,7 +20918,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAuthorization {
   serverSideOauth2?: GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAuthorization: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAuthorization> =
+export const GoogleCloudDiscoveryengineV1alphaAuthorization: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAuthorization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -20958,7 +20958,7 @@ export interface GoogleCloudDiscoveryengineV1EngineSearchEngineConfig {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1EngineSearchEngineConfig: Schema.Schema<GoogleCloudDiscoveryengineV1EngineSearchEngineConfig> =
+export const GoogleCloudDiscoveryengineV1EngineSearchEngineConfig: Schema.Codec<GoogleCloudDiscoveryengineV1EngineSearchEngineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchAddOns: Schema.optional(Schema.Array(Schema.String)),
     requiredSubscriptionTier: Schema.optional(Schema.String),
@@ -20972,7 +20972,7 @@ export interface GoogleCloudDiscoveryengineV1AnswerGenerationSpec {
   userDefinedClassifierSpec?: GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1AnswerGenerationSpec: Schema.Schema<GoogleCloudDiscoveryengineV1AnswerGenerationSpec> =
+export const GoogleCloudDiscoveryengineV1AnswerGenerationSpec: Schema.Codec<GoogleCloudDiscoveryengineV1AnswerGenerationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userDefinedClassifierSpec: Schema.optional(
       GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec,
@@ -20996,7 +20996,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest {
   crawlRate?: number;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest> =
+export const GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     crawlType: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.String),
@@ -21013,7 +21013,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListFilesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListFilesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListFilesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListFilesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     files: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaFileMetadata),
@@ -21028,7 +21028,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse {
   cmekConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCmekConfig>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cmekConfigs: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaCmekConfig),
@@ -21042,7 +21042,7 @@ export interface GoogleCloudDiscoveryengineV1alphaExportMetricsRequest {
   outputConfig?: GoogleCloudDiscoveryengineV1alphaOutputConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaExportMetricsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaExportMetricsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaExportMetricsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaExportMetricsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaOutputConfig,
@@ -21053,7 +21053,7 @@ export const GoogleCloudDiscoveryengineV1alphaExportMetricsRequest: Schema.Schem
 
 export interface GoogleCloudDiscoveryengineV1SetUpDataConnectorMetadata {}
 
-export const GoogleCloudDiscoveryengineV1SetUpDataConnectorMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1SetUpDataConnectorMetadata> =
+export const GoogleCloudDiscoveryengineV1SetUpDataConnectorMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1SetUpDataConnectorMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1SetUpDataConnectorMetadata",
   });
@@ -21065,7 +21065,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesRespons
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userLicenses: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaUserLicense),
@@ -21089,7 +21089,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSampleQueriesMetadata {
   failureCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportSampleQueriesMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportSampleQueriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     successCount: Schema.optional(Schema.String),
@@ -21107,7 +21107,7 @@ export interface GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata> =
+export const GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21122,7 +21122,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesMetad
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesMetadata> =
+export const GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21136,7 +21136,7 @@ export interface GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse {
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse> =
+export const GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
   }).annotate({
@@ -21150,7 +21150,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCreateTargetSiteRequest {
   targetSite?: GoogleCloudDiscoveryengineV1alphaTargetSite;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCreateTargetSiteRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCreateTargetSiteRequest> =
+export const GoogleCloudDiscoveryengineV1alphaCreateTargetSiteRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCreateTargetSiteRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     targetSite: Schema.optional(GoogleCloudDiscoveryengineV1alphaTargetSite),
@@ -21165,7 +21165,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListEnginesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListEnginesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListEnginesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListEnginesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListEnginesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     engines: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaEngine),
@@ -21180,7 +21180,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRespons
   licenseConfig?: GoogleCloudDiscoveryengineV1alphaLicenseConfig;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse> =
+export const GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     licenseConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaLicenseConfig,
@@ -21203,7 +21203,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUserStore {
   enableLicenseAutoRegister?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUserStore: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUserStore> =
+export const GoogleCloudDiscoveryengineV1alphaUserStore: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUserStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableExpiredLicenseAutoUpdate: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -21217,7 +21217,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteSessionRequest {
   name?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteSessionRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteSessionRequest> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteSessionRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteSessionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -21235,7 +21235,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest {
   gcsSource?: GoogleCloudDiscoveryengineV1alphaGcsSource;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaImportErrorConfig,
@@ -21258,7 +21258,7 @@ export interface GoogleCloudDiscoveryengineV1betaTrainCustomModelMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaTrainCustomModelMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaTrainCustomModelMetadata> =
+export const GoogleCloudDiscoveryengineV1betaTrainCustomModelMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaTrainCustomModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21273,7 +21273,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponse 
   evaluationResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponseEvaluationResult>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     evaluationResults: Schema.optional(
@@ -21293,7 +21293,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse {
   cannedQueries?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCannedQuery>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     cannedQueries: Schema.optional(
@@ -21316,7 +21316,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse 
   recentSearchSuggestions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseRecentSearchSuggestion>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse> =
+export const GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentSuggestions: Schema.optional(
       Schema.Array(
@@ -21355,7 +21355,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMeta
   failureCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata> =
+export const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21379,7 +21379,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest {
   force?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GoogleCloudDiscoveryengineV1alphaGcsSource),
     filter: Schema.optional(Schema.String),
@@ -21401,7 +21401,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpec {
   safetySettings?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpecSafetySetting>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpec: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpec> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpec: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enable: Schema.optional(Schema.Boolean),
     safetySettings: Schema.optional(
@@ -21440,7 +21440,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest {
   asynchronousMode?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest> =
+export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session: Schema.optional(Schema.String),
     endUserSpec: Schema.optional(
@@ -21474,7 +21474,7 @@ export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest: Schema.Schema<
 
 export interface GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse {}
 
-export const GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse> =
+export const GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse",
@@ -21487,7 +21487,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListSampleQuerySetsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListSampleQuerySetsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListSampleQuerySetsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListSampleQuerySetsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListSampleQuerySetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleQuerySets: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaSampleQuerySet),
@@ -21506,7 +21506,7 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -21520,7 +21520,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfi
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfigsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfigsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfigsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountLicenseConfigs: Schema.optional(
       Schema.Array(
@@ -21535,7 +21535,7 @@ export const GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfigsRe
 
 export interface GoogleCloudDiscoveryengineV1betaCreateEvaluationMetadata {}
 
-export const GoogleCloudDiscoveryengineV1betaCreateEvaluationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaCreateEvaluationMetadata> =
+export const GoogleCloudDiscoveryengineV1betaCreateEvaluationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaCreateEvaluationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1betaCreateEvaluationMetadata",
   });
@@ -21547,7 +21547,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata {
   failureCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successCount: Schema.optional(Schema.String),
     failureCount: Schema.optional(Schema.String),
@@ -21566,7 +21566,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse {
   unjoinedEventsCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaImportErrorConfig,
@@ -21585,7 +21585,7 @@ export interface GoogleCloudDiscoveryengineV1UpdateTargetSiteMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1UpdateTargetSiteMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1UpdateTargetSiteMetadata> =
+export const GoogleCloudDiscoveryengineV1UpdateTargetSiteMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1UpdateTargetSiteMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21600,7 +21600,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizations: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaAuthorization),
@@ -21619,7 +21619,7 @@ export interface GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetada
   totalCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata> =
+export const GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureCount: Schema.optional(Schema.String),
     successCount: Schema.optional(Schema.String),
@@ -21636,7 +21636,7 @@ export interface GoogleCloudDiscoveryengineV1alphaUpdateCollectionMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaUpdateCollectionMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaUpdateCollectionMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaUpdateCollectionMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaUpdateCollectionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21653,7 +21653,7 @@ export interface GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesResp
   importedEntriesCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesResponse: Schema.Schema<GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesResponse> =
+export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesResponse: Schema.Codec<GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedEntriesCount: Schema.optional(Schema.String),
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -21749,7 +21749,7 @@ export interface GoogleCloudDiscoveryengineV1Engine {
     | (string & {});
 }
 
-export const GoogleCloudDiscoveryengineV1Engine: Schema.Schema<GoogleCloudDiscoveryengineV1Engine> =
+export const GoogleCloudDiscoveryengineV1Engine: Schema.Codec<GoogleCloudDiscoveryengineV1Engine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     commonConfig: Schema.optional(
@@ -21846,7 +21846,7 @@ export interface GoogleCloudDiscoveryengineV1ServingConfig {
   rankingExpression?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1ServingConfig: Schema.Schema<GoogleCloudDiscoveryengineV1ServingConfig> =
+export const GoogleCloudDiscoveryengineV1ServingConfig: Schema.Codec<GoogleCloudDiscoveryengineV1ServingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     genericConfig: Schema.optional(
       GoogleCloudDiscoveryengineV1ServingConfigGenericConfig,
@@ -21883,7 +21883,7 @@ export interface GoogleCloudDiscoveryengineV1CreateDataStoreMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1CreateDataStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1CreateDataStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1CreateDataStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1CreateDataStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21898,7 +21898,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDeleteSitemapMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaDeleteSitemapMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaDeleteSitemapMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaDeleteSitemapMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaDeleteSitemapMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21919,7 +21919,7 @@ export interface GoogleCloudNotebooklmV1alphaAccountAndRole {
     | (string & {});
 }
 
-export const GoogleCloudNotebooklmV1alphaAccountAndRole: Schema.Schema<GoogleCloudNotebooklmV1alphaAccountAndRole> =
+export const GoogleCloudNotebooklmV1alphaAccountAndRole: Schema.Codec<GoogleCloudNotebooklmV1alphaAccountAndRole> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -21932,7 +21932,7 @@ export interface GoogleCloudNotebooklmV1alphaShareNotebookRequest {
   notifyViaEmail?: boolean;
 }
 
-export const GoogleCloudNotebooklmV1alphaShareNotebookRequest: Schema.Schema<GoogleCloudNotebooklmV1alphaShareNotebookRequest> =
+export const GoogleCloudNotebooklmV1alphaShareNotebookRequest: Schema.Codec<GoogleCloudNotebooklmV1alphaShareNotebookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountAndRoles: Schema.optional(
       Schema.Array(GoogleCloudNotebooklmV1alphaAccountAndRole),
@@ -21949,7 +21949,7 @@ export interface GoogleCloudDiscoveryengineV1CreateSitemapMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1CreateSitemapMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1CreateSitemapMetadata> =
+export const GoogleCloudDiscoveryengineV1CreateSitemapMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1CreateSitemapMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21962,7 +21962,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse 
   errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse> =
+export const GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
   }).annotate({
@@ -21977,7 +21977,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata> =
+export const GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -21987,7 +21987,7 @@ export const GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata: Schema.Schem
 
 export interface GoogleCloudDiscoveryengineV1betaProvisionProjectMetadata {}
 
-export const GoogleCloudDiscoveryengineV1betaProvisionProjectMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaProvisionProjectMetadata> =
+export const GoogleCloudDiscoveryengineV1betaProvisionProjectMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaProvisionProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDiscoveryengineV1betaProvisionProjectMetadata",
   });
@@ -21999,7 +21999,7 @@ export interface GoogleCloudDiscoveryengineV1alphaGetSessionRequest {
   includeAnswerDetails?: boolean;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaGetSessionRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaGetSessionRequest> =
+export const GoogleCloudDiscoveryengineV1alphaGetSessionRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaGetSessionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     includeAnswerDetails: Schema.optional(Schema.Boolean),
@@ -22014,7 +22014,7 @@ export interface GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateResponse {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateResponse: Schema.Schema<GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateResponse> =
+export const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateResponse: Schema.Codec<GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -22029,7 +22029,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest {
   scope?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest> =
+export const GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
@@ -22044,7 +22044,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntrie
   gcsSource?: GoogleCloudDiscoveryengineV1alphaGcsSource;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequest> =
+export const GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inlineSource: Schema.optional(
       GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesRequestInlineSource,
@@ -22060,7 +22060,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse {
   purgeCount?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse: Schema.Schema<GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse> =
+export const GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse: Schema.Codec<GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purgeCount: Schema.optional(Schema.String),
   }).annotate({
@@ -22082,7 +22082,7 @@ export interface GoogleCloudDiscoveryengineV1alphaStreamAssistRequest {
   actionSpec?: GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaStreamAssistRequest> =
+export const GoogleCloudDiscoveryengineV1alphaStreamAssistRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaStreamAssistRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session: Schema.optional(Schema.String),
     userMetadata: Schema.optional(
@@ -22188,7 +22188,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngine {
   associatedAgentRegistry?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaEngine: Schema.Schema<GoogleCloudDiscoveryengineV1betaEngine> =
+export const GoogleCloudDiscoveryengineV1betaEngine: Schema.Codec<GoogleCloudDiscoveryengineV1betaEngine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solutionType: Schema.optional(Schema.String),
     appType: Schema.optional(Schema.String),
@@ -22242,7 +22242,7 @@ export interface GoogleCloudDiscoveryengineV1betaCreateDataStoreMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaCreateDataStoreMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaCreateDataStoreMetadata> =
+export const GoogleCloudDiscoveryengineV1betaCreateDataStoreMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaCreateDataStoreMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -22257,7 +22257,7 @@ export interface GoogleCloudDiscoveryengineV1betaCreateSchemaMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDiscoveryengineV1betaCreateSchemaMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1betaCreateSchemaMetadata> =
+export const GoogleCloudDiscoveryengineV1betaCreateSchemaMetadata: Schema.Codec<GoogleCloudDiscoveryengineV1betaCreateSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -22270,7 +22270,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesRequest 
   requests?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCreateTargetSiteRequest>;
 }
 
-export const GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesRequest: Schema.Schema<GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesRequest> =
+export const GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesRequest: Schema.Codec<GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleCloudDiscoveryengineV1alphaCreateTargetSiteRequest),
@@ -22356,7 +22356,7 @@ export const RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequ
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest>;
+  ) as unknown as Schema.Codec<RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest>;
 
 export type RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse;
@@ -22364,7 +22364,11 @@ export const RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse;
 
 export type RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This method is called from the billing account side to retract the LicenseConfig from the given project back to the billing account. */
 export const retractLicenseConfigBillingAccountsBillingAccountLicenseConfigs: API.OperationMethod<
@@ -22399,7 +22403,7 @@ export const ListBillingAccountsBillingAccountLicenseConfigsRequest =
       path: "v1alpha/{+parent}/billingAccountLicenseConfigs",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsBillingAccountLicenseConfigsRequest>;
+  ) as unknown as Schema.Codec<ListBillingAccountsBillingAccountLicenseConfigsRequest>;
 
 export type ListBillingAccountsBillingAccountLicenseConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfigsResponse;
@@ -22449,7 +22453,7 @@ export const DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsR
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest>;
+  ) as unknown as Schema.Codec<DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest>;
 
 export type DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse;
@@ -22457,7 +22461,11 @@ export const DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse;
 
 export type DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Distributes a LicenseConfig from billing account level to project level. */
 export const distributeLicenseConfigBillingAccountsBillingAccountLicenseConfigs: API.OperationMethod<
@@ -22484,7 +22492,7 @@ export const GetBillingAccountsBillingAccountLicenseConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBillingAccountsBillingAccountLicenseConfigsRequest>;
+  ) as unknown as Schema.Codec<GetBillingAccountsBillingAccountLicenseConfigsRequest>;
 
 export type GetBillingAccountsBillingAccountLicenseConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig;
@@ -22528,7 +22536,7 @@ export const ReportConsentChangeProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportConsentChangeProjectsRequest>;
+  ) as unknown as Schema.Codec<ReportConsentChangeProjectsRequest>;
 
 export type ReportConsentChangeProjectsResponse =
   GoogleCloudDiscoveryengineV1alphaProject;
@@ -22574,7 +22582,7 @@ export const ProvisionProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionProjectsRequest>;
+  ) as unknown as Schema.Codec<ProvisionProjectsRequest>;
 
 export type ProvisionProjectsResponse = GoogleLongrunningOperation;
 export const ProvisionProjectsResponse =
@@ -22617,7 +22625,7 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchProjectsRequest>;
+) as unknown as Schema.Codec<PatchProjectsRequest>;
 
 export type PatchProjectsResponse = GoogleCloudDiscoveryengineV1alphaProject;
 export const PatchProjectsResponse =
@@ -22652,7 +22660,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
+) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = GoogleCloudDiscoveryengineV1alphaProject;
 export const GetProjectsResponse =
@@ -22692,7 +22700,7 @@ export const SetDedicatedCrawlRateProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetDedicatedCrawlRateProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SetDedicatedCrawlRateProjectsLocationsRequest>;
 
 export type SetDedicatedCrawlRateProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -22756,7 +22764,7 @@ export const CompleteExternalIdentitiesProjectsLocationsRequest =
       path: "v1alpha/{+parent}:completeExternalIdentities",
     }),
     svc,
-  ) as unknown as Schema.Schema<CompleteExternalIdentitiesProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<CompleteExternalIdentitiesProjectsLocationsRequest>;
 
 export type CompleteExternalIdentitiesProjectsLocationsResponse =
   GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse;
@@ -22791,7 +22799,7 @@ export const GetAclConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAclConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetAclConfigProjectsLocationsRequest>;
 
 export type GetAclConfigProjectsLocationsResponse =
   GoogleCloudDiscoveryengineV1alphaAclConfig;
@@ -22831,7 +22839,7 @@ export const UpdateAclConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAclConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateAclConfigProjectsLocationsRequest>;
 
 export type UpdateAclConfigProjectsLocationsResponse =
   GoogleCloudDiscoveryengineV1alphaAclConfig;
@@ -22916,7 +22924,7 @@ export const QueryConfigurablePricingUsageStatsProjectsLocationsRequest =
       path: "v1alpha/{+project}/locations/{location}:queryConfigurablePricingUsageStats",
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryConfigurablePricingUsageStatsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<QueryConfigurablePricingUsageStatsProjectsLocationsRequest>;
 
 export type QueryConfigurablePricingUsageStatsProjectsLocationsResponse =
   GoogleCloudDiscoveryengineV1alphaQueryConfigurablePricingUsageStatsResponse;
@@ -22960,7 +22968,7 @@ export const ObtainCrawlRateProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ObtainCrawlRateProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ObtainCrawlRateProjectsLocationsRequest>;
 
 export type ObtainCrawlRateProjectsLocationsResponse =
   GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse;
@@ -23006,7 +23014,7 @@ export const RemoveDedicatedCrawlRateProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveDedicatedCrawlRateProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<RemoveDedicatedCrawlRateProjectsLocationsRequest>;
 
 export type RemoveDedicatedCrawlRateProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -23051,7 +23059,7 @@ export const UpdateCmekConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCmekConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateCmekConfigProjectsLocationsRequest>;
 
 export type UpdateCmekConfigProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -23097,7 +23105,7 @@ export const EstimateDataSizeProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EstimateDataSizeProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<EstimateDataSizeProjectsLocationsRequest>;
 
 export type EstimateDataSizeProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -23134,7 +23142,7 @@ export const GetCmekConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCmekConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetCmekConfigProjectsLocationsRequest>;
 
 export type GetCmekConfigProjectsLocationsResponse =
   GoogleCloudDiscoveryengineV1alphaCmekConfig;
@@ -23178,7 +23186,7 @@ export const SetUpDataConnectorProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetUpDataConnectorProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SetUpDataConnectorProjectsLocationsRequest>;
 
 export type SetUpDataConnectorProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -23234,7 +23242,7 @@ export const SetUpDataConnectorV2ProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetUpDataConnectorV2ProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SetUpDataConnectorV2ProjectsLocationsRequest>;
 
 export type SetUpDataConnectorV2ProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -23271,7 +23279,7 @@ export const GetProjectsLocationsCollectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsRequest>;
 
 export type GetProjectsLocationsCollectionsResponse =
   GoogleCloudDiscoveryengineV1alphaCollection;
@@ -23314,7 +23322,7 @@ export const PatchProjectsLocationsCollectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsRequest>;
 
 export type PatchProjectsLocationsCollectionsResponse =
   GoogleLongrunningOperation;
@@ -23360,7 +23368,7 @@ export const ListProjectsLocationsCollectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/collections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsRequest>;
 
 export type ListProjectsLocationsCollectionsResponse =
   GoogleCloudDiscoveryengineV1alphaListCollectionsResponse;
@@ -23399,7 +23407,7 @@ export const DeleteProjectsLocationsCollectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsRequest>;
 
 export type DeleteProjectsLocationsCollectionsResponse =
   GoogleLongrunningOperation;
@@ -23436,7 +23444,7 @@ export const GetDataConnectorProjectsLocationsCollectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDataConnectorProjectsLocationsCollectionsRequest>;
+  ) as unknown as Schema.Codec<GetDataConnectorProjectsLocationsCollectionsRequest>;
 
 export type GetDataConnectorProjectsLocationsCollectionsResponse =
   GoogleCloudDiscoveryengineV1alphaDataConnector;
@@ -23479,7 +23487,7 @@ export const UpdateDataConnectorProjectsLocationsCollectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDataConnectorProjectsLocationsCollectionsRequest>;
+  ) as unknown as Schema.Codec<UpdateDataConnectorProjectsLocationsCollectionsRequest>;
 
 export type UpdateDataConnectorProjectsLocationsCollectionsResponse =
   GoogleCloudDiscoveryengineV1alphaDataConnector;
@@ -23516,7 +23524,7 @@ export const DeleteProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsEnginesRequest>;
 
 export type DeleteProjectsLocationsCollectionsEnginesResponse =
   GoogleLongrunningOperation;
@@ -23553,7 +23561,7 @@ export const GetWorkspaceSettingsProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:getWorkspaceSettings" }),
     svc,
-  ) as unknown as Schema.Schema<GetWorkspaceSettingsProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<GetWorkspaceSettingsProjectsLocationsCollectionsEnginesRequest>;
 
 export type GetWorkspaceSettingsProjectsLocationsCollectionsEnginesResponse =
   GoogleCloudDiscoveryengineV1alphaWorkspaceSettings;
@@ -23600,7 +23608,7 @@ export const CreateProjectsLocationsCollectionsEnginesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsEnginesRequest>;
 
 export type CreateProjectsLocationsCollectionsEnginesResponse =
   GoogleLongrunningOperation;
@@ -23642,7 +23650,7 @@ export const ResumeProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:resume", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResumeProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<ResumeProjectsLocationsCollectionsEnginesRequest>;
 
 export type ResumeProjectsLocationsCollectionsEnginesResponse =
   GoogleCloudDiscoveryengineV1alphaEngine;
@@ -23687,7 +23695,7 @@ export const UpdateCompletionConfigProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCompletionConfigProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<UpdateCompletionConfigProjectsLocationsCollectionsEnginesRequest>;
 
 export type UpdateCompletionConfigProjectsLocationsCollectionsEnginesResponse =
   GoogleCloudDiscoveryengineV1alphaCompletionConfig;
@@ -23732,7 +23740,7 @@ export const PatchProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesResponse =
   GoogleCloudDiscoveryengineV1alphaEngine;
@@ -23774,7 +23782,7 @@ export const TuneProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:tune", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TuneProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<TuneProjectsLocationsCollectionsEnginesRequest>;
 
 export type TuneProjectsLocationsCollectionsEnginesResponse =
   GoogleLongrunningOperation;
@@ -23820,7 +23828,7 @@ export const ListProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/engines" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesResponse =
   GoogleCloudDiscoveryengineV1alphaListEnginesResponse;
@@ -23859,7 +23867,7 @@ export const GetCompletionConfigProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCompletionConfigProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<GetCompletionConfigProjectsLocationsCollectionsEnginesRequest>;
 
 export type GetCompletionConfigProjectsLocationsCollectionsEnginesResponse =
   GoogleCloudDiscoveryengineV1alphaCompletionConfig;
@@ -23899,7 +23907,7 @@ export const GetIamPolicyProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsCollectionsEnginesRequest>;
 
 export type GetIamPolicyProjectsLocationsCollectionsEnginesResponse =
   GoogleIamV1Policy;
@@ -23941,7 +23949,7 @@ export const SetIamPolicyProjectsLocationsCollectionsEnginesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsCollectionsEnginesRequest>;
 
 export type SetIamPolicyProjectsLocationsCollectionsEnginesResponse =
   GoogleIamV1Policy;
@@ -23983,7 +23991,7 @@ export const PauseProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:pause", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PauseProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<PauseProjectsLocationsCollectionsEnginesRequest>;
 
 export type PauseProjectsLocationsCollectionsEnginesResponse =
   GoogleCloudDiscoveryengineV1alphaEngine;
@@ -24020,7 +24028,7 @@ export const GetProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesResponse =
   GoogleCloudDiscoveryengineV1alphaEngine;
@@ -24063,7 +24071,7 @@ export const PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesWidgetConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaWidgetConfig;
@@ -24117,7 +24125,7 @@ export const GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesWidgetConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaWidgetConfig;
@@ -24161,7 +24169,7 @@ export const RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfig
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfigRequest>;
+  ) as unknown as Schema.Codec<RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfigRequest>;
 
 export type RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfigResponse =
   GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse;
@@ -24169,7 +24177,11 @@ export const RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfig
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse;
 
 export type RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfigError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the search history suggestion in an engine for a user. This will remove the suggestion from being returned in the AdvancedCompleteQueryResponse.recent_search_suggestions for this user. If the user searches the same suggestion again, the new history will override and suggest this suggestion again. */
 export const removeSuggestionProjectsLocationsCollectionsEnginesCompletionConfig: API.OperationMethod<
@@ -24205,7 +24217,7 @@ export const CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigReq
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest>;
+  ) as unknown as Schema.Codec<CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest>;
 
 export type CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigResponse =
   GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse;
@@ -24213,7 +24225,11 @@ export const CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse;
 
 export type CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the user input with advanced keyword suggestions. */
 export const completeQueryProjectsLocationsCollectionsEnginesCompletionConfig: API.OperationMethod<
@@ -24249,7 +24265,7 @@ export const SearchProjectsLocationsCollectionsEnginesServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type SearchProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaSearchResponse;
@@ -24295,7 +24311,7 @@ export const AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type AnswerProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse;
@@ -24346,7 +24362,7 @@ export const CreateProjectsLocationsCollectionsEnginesServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type CreateProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -24392,7 +24408,7 @@ export const SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type SearchLiteProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaSearchResponse;
@@ -24437,7 +24453,7 @@ export const PatchProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -24474,7 +24490,7 @@ export const GetProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -24518,7 +24534,7 @@ export const StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsReques
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse;
@@ -24526,7 +24542,11 @@ export const StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse;
 
 export type StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream. */
 export const streamAnswerProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -24551,7 +24571,7 @@ export const DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type DeleteProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleProtobufEmpty;
@@ -24597,7 +24617,7 @@ export const RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type RecommendProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaRecommendResponse;
@@ -24640,7 +24660,7 @@ export const ListProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/servingConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse;
@@ -24688,7 +24708,7 @@ export const CreateProjectsLocationsCollectionsEnginesConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesConversationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export type CreateProjectsLocationsCollectionsEnginesConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -24730,7 +24750,7 @@ export const ConverseProjectsLocationsCollectionsEnginesConversationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:converse", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ConverseProjectsLocationsCollectionsEnginesConversationsRequest>;
+  ) as unknown as Schema.Codec<ConverseProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export type ConverseProjectsLocationsCollectionsEnginesConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConverseConversationResponse;
@@ -24779,7 +24799,7 @@ export const ListProjectsLocationsCollectionsEnginesConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/conversations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesConversationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaListConversationsResponse;
@@ -24818,7 +24838,7 @@ export const DeleteProjectsLocationsCollectionsEnginesConversationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesConversationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export type DeleteProjectsLocationsCollectionsEnginesConversationsResponse =
   GoogleProtobufEmpty;
@@ -24855,7 +24875,7 @@ export const GetProjectsLocationsCollectionsEnginesConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesConversationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -24898,7 +24918,7 @@ export const PatchProjectsLocationsCollectionsEnginesConversationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesConversationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -24949,7 +24969,7 @@ export const ListProjectsLocationsCollectionsEnginesOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -24988,7 +25008,7 @@ export const GetProjectsLocationsCollectionsEnginesOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesOperationsResponse =
   GoogleLongrunningOperation;
@@ -25023,7 +25043,7 @@ export const GetConfigProjectsLocationsCollectionsEnginesAnalyticsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsLocationsCollectionsEnginesAnalyticsRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsLocationsCollectionsEnginesAnalyticsRequest>;
 
 export type GetConfigProjectsLocationsCollectionsEnginesAnalyticsResponse =
   GoogleCloudDiscoveryengineV1alphaAnalyticsConfig;
@@ -25066,7 +25086,7 @@ export const UpdateConfigProjectsLocationsCollectionsEnginesAnalyticsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsCollectionsEnginesAnalyticsRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigProjectsLocationsCollectionsEnginesAnalyticsRequest>;
 
 export type UpdateConfigProjectsLocationsCollectionsEnginesAnalyticsResponse =
   GoogleCloudDiscoveryengineV1alphaAnalyticsConfig;
@@ -25112,7 +25132,7 @@ export const ExportMetricsProjectsLocationsCollectionsEnginesAnalyticsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportMetricsProjectsLocationsCollectionsEnginesAnalyticsRequest>;
+  ) as unknown as Schema.Codec<ExportMetricsProjectsLocationsCollectionsEnginesAnalyticsRequest>;
 
 export type ExportMetricsProjectsLocationsCollectionsEnginesAnalyticsResponse =
   GoogleLongrunningOperation;
@@ -25154,7 +25174,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesSessionsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -25197,7 +25217,7 @@ export const PatchProjectsLocationsCollectionsEnginesSessionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesSessionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesSessionsRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -25246,7 +25266,7 @@ export const ListProjectsLocationsCollectionsEnginesSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/sessions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesSessionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesSessionsRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaListSessionsResponse;
@@ -25285,7 +25305,7 @@ export const DeleteProjectsLocationsCollectionsEnginesSessionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesSessionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsEnginesSessionsRequest>;
 
 export type DeleteProjectsLocationsCollectionsEnginesSessionsResponse =
   GoogleProtobufEmpty;
@@ -25334,7 +25354,7 @@ export const CreateProjectsLocationsCollectionsEnginesSessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesSessionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsEnginesSessionsRequest>;
 
 export type CreateProjectsLocationsCollectionsEnginesSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -25383,7 +25403,7 @@ export const ListProjectsLocationsCollectionsEnginesSessionsFilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/files" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesSessionsFilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesSessionsFilesRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesSessionsFilesResponse =
   GoogleCloudDiscoveryengineV1alphaListFilesResponse;
@@ -25422,7 +25442,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperiment
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsOperationsResponse =
   GoogleLongrunningOperation;
@@ -25430,7 +25450,9 @@ export const GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperiment
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsOperations: API.OperationMethod<
@@ -25457,7 +25479,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesSessionsOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesSessionsOperationsResponse =
   GoogleLongrunningOperation;
@@ -25492,7 +25514,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesSessionsAnswersResponse =
   GoogleCloudDiscoveryengineV1alphaAnswer;
@@ -25527,7 +25549,7 @@ export const GetProjectsLocationsCollectionsEnginesControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesControlsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesControlsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -25570,7 +25592,7 @@ export const PatchProjectsLocationsCollectionsEnginesControlsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesControlsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesControlsRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -25616,7 +25638,7 @@ export const ListProjectsLocationsCollectionsEnginesControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/controls" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesControlsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesControlsRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesControlsResponse =
   GoogleCloudDiscoveryengineV1alphaListControlsResponse;
@@ -25655,7 +25677,7 @@ export const DeleteProjectsLocationsCollectionsEnginesControlsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesControlsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsEnginesControlsRequest>;
 
 export type DeleteProjectsLocationsCollectionsEnginesControlsResponse =
   GoogleProtobufEmpty;
@@ -25704,7 +25726,7 @@ export const CreateProjectsLocationsCollectionsEnginesControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesControlsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsEnginesControlsRequest>;
 
 export type CreateProjectsLocationsCollectionsEnginesControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -25755,7 +25777,7 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesAssistantsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 export type CreateProjectsLocationsCollectionsEnginesAssistantsResponse =
   GoogleCloudDiscoveryengineV1alphaAssistant;
@@ -25798,7 +25820,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/assistants" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesAssistantsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesAssistantsResponse =
   GoogleCloudDiscoveryengineV1alphaListAssistantsResponse;
@@ -25846,7 +25868,7 @@ export const StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest>;
+  ) as unknown as Schema.Codec<StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 export type StreamAssistProjectsLocationsCollectionsEnginesAssistantsResponse =
   GoogleCloudDiscoveryengineV1alphaStreamAssistResponse;
@@ -25883,7 +25905,7 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 export type DeleteProjectsLocationsCollectionsEnginesAssistantsResponse =
   GoogleProtobufEmpty;
@@ -25920,7 +25942,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsResponse =
   GoogleCloudDiscoveryengineV1alphaAssistant;
@@ -25963,7 +25985,7 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesAssistantsResponse =
   GoogleCloudDiscoveryengineV1alphaAssistant;
@@ -26005,7 +26027,7 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+parent}/agents", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
 export type CreateProjectsLocationsCollectionsEnginesAssistantsAgentsResponse =
   GoogleCloudDiscoveryengineV1alphaAgent;
@@ -26042,7 +26064,7 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
 export type DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsResponse =
   GoogleLongrunningOperation;
@@ -26091,7 +26113,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/agents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesAssistantsAgentsResponse =
   GoogleCloudDiscoveryengineV1alphaListAgentsResponse;
@@ -26138,7 +26160,7 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesAssistantsAgentsResponse =
   GoogleCloudDiscoveryengineV1alphaAgent;
@@ -26175,7 +26197,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsAgentsResponse =
   GoogleCloudDiscoveryengineV1alphaAgent;
@@ -26210,7 +26232,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsReq
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsResponse =
   GoogleLongrunningOperation;
@@ -26218,7 +26240,9 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsEnginesAssistantsAgentsOperations: API.OperationMethod<
@@ -26254,7 +26278,7 @@ export const ImportProjectsLocationsCollectionsEnginesAssistantsAgentsFilesReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsCollectionsEnginesAssistantsAgentsFilesRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsCollectionsEnginesAssistantsAgentsFilesRequest>;
 
 export type ImportProjectsLocationsCollectionsEnginesAssistantsAgentsFilesResponse =
   GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse;
@@ -26262,7 +26286,11 @@ export const ImportProjectsLocationsCollectionsEnginesAssistantsAgentsFilesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse;
 
 export type ImportProjectsLocationsCollectionsEnginesAssistantsAgentsFilesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports a file to an Agent. Currently only No-Code agents are supported. */
 export const importProjectsLocationsCollectionsEnginesAssistantsAgentsFiles: API.OperationMethod<
@@ -26302,7 +26330,7 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsCannedQueriesReq
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
 export type CreateProjectsLocationsCollectionsEnginesAssistantsCannedQueriesResponse =
   GoogleCloudDiscoveryengineV1alphaCannedQuery;
@@ -26310,7 +26338,11 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaCannedQuery;
 
 export type CreateProjectsLocationsCollectionsEnginesAssistantsCannedQueriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a CannedQuery. */
 export const createProjectsLocationsCollectionsEnginesAssistantsCannedQueries: API.OperationMethod<
@@ -26345,7 +26377,7 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequ
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
 export type PatchProjectsLocationsCollectionsEnginesAssistantsCannedQueriesResponse =
   GoogleCloudDiscoveryengineV1alphaCannedQuery;
@@ -26353,7 +26385,11 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsCannedQueriesResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaCannedQuery;
 
 export type PatchProjectsLocationsCollectionsEnginesAssistantsCannedQueriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a CannedQuery. */
 export const patchProjectsLocationsCollectionsEnginesAssistantsCannedQueries: API.OperationMethod<
@@ -26379,7 +26415,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsCannedQueriesReques
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsCannedQueriesResponse =
   GoogleCloudDiscoveryengineV1alphaCannedQuery;
@@ -26387,7 +26423,9 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaCannedQuery;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsCannedQueriesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a CannedQuery. */
 export const getProjectsLocationsCollectionsEnginesAssistantsCannedQueries: API.OperationMethod<
@@ -26412,7 +26450,7 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsCannedQueriesReq
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
 export type DeleteProjectsLocationsCollectionsEnginesAssistantsCannedQueriesResponse =
   GoogleProtobufEmpty;
@@ -26420,7 +26458,11 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsEnginesAssistantsCannedQueriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a CannedQuery. */
 export const deleteProjectsLocationsCollectionsEnginesAssistantsCannedQueries: API.OperationMethod<
@@ -26456,7 +26498,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsCannedQueriesReque
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/cannedQueries" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
 export type ListProjectsLocationsCollectionsEnginesAssistantsCannedQueriesResponse =
   GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse;
@@ -26464,7 +26506,9 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse;
 
 export type ListProjectsLocationsCollectionsEnginesAssistantsCannedQueriesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all CannedQuerys under an Assistant. */
 export const listProjectsLocationsCollectionsEnginesAssistantsCannedQueries: API.PaginatedOperationMethod<
@@ -26508,7 +26552,7 @@ export const ListProjectsLocationsCollectionsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -26547,7 +26591,7 @@ export const GetProjectsLocationsCollectionsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsOperationsResponse =
   GoogleLongrunningOperation;
@@ -26591,7 +26635,7 @@ export const AcquireAccessTokenProjectsLocationsCollectionsDataConnectorRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcquireAccessTokenProjectsLocationsCollectionsDataConnectorRequest>;
+  ) as unknown as Schema.Codec<AcquireAccessTokenProjectsLocationsCollectionsDataConnectorRequest>;
 
 export type AcquireAccessTokenProjectsLocationsCollectionsDataConnectorResponse =
   GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse;
@@ -26628,7 +26672,7 @@ export const GetConnectorSecretProjectsLocationsCollectionsDataConnectorRequest 
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:getConnectorSecret" }),
     svc,
-  ) as unknown as Schema.Schema<GetConnectorSecretProjectsLocationsCollectionsDataConnectorRequest>;
+  ) as unknown as Schema.Codec<GetConnectorSecretProjectsLocationsCollectionsDataConnectorRequest>;
 
 export type GetConnectorSecretProjectsLocationsCollectionsDataConnectorResponse =
   GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse;
@@ -26682,7 +26726,7 @@ export const McpProjectsLocationsCollectionsDataConnectorRequest =
       path: "v1alpha/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataConnector/mcp",
     }),
     svc,
-  ) as unknown as Schema.Schema<McpProjectsLocationsCollectionsDataConnectorRequest>;
+  ) as unknown as Schema.Codec<McpProjectsLocationsCollectionsDataConnectorRequest>;
 
 export type McpProjectsLocationsCollectionsDataConnectorResponse =
   GoogleApiHttpBody;
@@ -26728,7 +26772,7 @@ export const StartConnectorRunProjectsLocationsCollectionsDataConnectorRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartConnectorRunProjectsLocationsCollectionsDataConnectorRequest>;
+  ) as unknown as Schema.Codec<StartConnectorRunProjectsLocationsCollectionsDataConnectorRequest>;
 
 export type StartConnectorRunProjectsLocationsCollectionsDataConnectorResponse =
   GoogleCloudDiscoveryengineV1alphaConnectorRun;
@@ -26765,7 +26809,7 @@ export const CheckRefreshTokenProjectsLocationsCollectionsDataConnectorRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:checkRefreshToken" }),
     svc,
-  ) as unknown as Schema.Schema<CheckRefreshTokenProjectsLocationsCollectionsDataConnectorRequest>;
+  ) as unknown as Schema.Codec<CheckRefreshTokenProjectsLocationsCollectionsDataConnectorRequest>;
 
 export type CheckRefreshTokenProjectsLocationsCollectionsDataConnectorResponse =
   GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse;
@@ -26814,7 +26858,7 @@ export const ListProjectsLocationsCollectionsDataConnectorOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataConnectorOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsDataConnectorOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -26853,7 +26897,7 @@ export const GetProjectsLocationsCollectionsDataConnectorOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataConnectorOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsDataConnectorOperationsResponse =
   GoogleLongrunningOperation;
@@ -26894,7 +26938,7 @@ export const ListProjectsLocationsCollectionsDataConnectorConnectorRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/connectorRuns" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataConnectorConnectorRunsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataConnectorConnectorRunsRequest>;
 
 export type ListProjectsLocationsCollectionsDataConnectorConnectorRunsResponse =
   GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse;
@@ -26933,7 +26977,7 @@ export const GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest>;
 
 export type GetSiteSearchEngineProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaSiteSearchEngine;
@@ -26977,7 +27021,7 @@ export const DeletePatientFilterProjectsLocationsCollectionsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePatientFilterProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<DeletePatientFilterProjectsLocationsCollectionsDataStoresRequest>;
 
 export type DeletePatientFilterProjectsLocationsCollectionsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -27014,7 +27058,7 @@ export const GetCompletionConfigProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCompletionConfigProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<GetCompletionConfigProjectsLocationsCollectionsDataStoresRequest>;
 
 export type GetCompletionConfigProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaCompletionConfig;
@@ -27058,7 +27102,7 @@ export const TrainCustomModelProjectsLocationsCollectionsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TrainCustomModelProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<TrainCustomModelProjectsLocationsCollectionsDataStoresRequest>;
 
 export type TrainCustomModelProjectsLocationsCollectionsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -27104,7 +27148,7 @@ export const ListProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/dataStores" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaListDataStoresResponse;
@@ -27152,7 +27196,7 @@ export const RemovePatientFilterProjectsLocationsCollectionsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemovePatientFilterProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<RemovePatientFilterProjectsLocationsCollectionsDataStoresRequest>;
 
 export type RemovePatientFilterProjectsLocationsCollectionsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -27205,7 +27249,7 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+dataStore}:completeQuery" }),
     svc,
-  ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<CompleteQueryProjectsLocationsCollectionsDataStoresRequest>;
 
 export type CompleteQueryProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse;
@@ -27240,7 +27284,7 @@ export const GetProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaDataStore;
@@ -27284,7 +27328,7 @@ export const ReplacePatientFilterProjectsLocationsCollectionsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReplacePatientFilterProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<ReplacePatientFilterProjectsLocationsCollectionsDataStoresRequest>;
 
 export type ReplacePatientFilterProjectsLocationsCollectionsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -27330,7 +27374,7 @@ export const AddPatientFilterProjectsLocationsCollectionsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddPatientFilterProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<AddPatientFilterProjectsLocationsCollectionsDataStoresRequest>;
 
 export type AddPatientFilterProjectsLocationsCollectionsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -27367,7 +27411,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -27412,7 +27456,7 @@ export const UpdateCompletionConfigProjectsLocationsCollectionsDataStoresRequest
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCompletionConfigProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<UpdateCompletionConfigProjectsLocationsCollectionsDataStoresRequest>;
 
 export type UpdateCompletionConfigProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaCompletionConfig;
@@ -27483,7 +27527,7 @@ export const CreateProjectsLocationsCollectionsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -27528,7 +27572,7 @@ export const PatchProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaDataStore;
@@ -27565,7 +27609,7 @@ export const GetDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRe
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<GetDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRequest>;
 
 export type GetDocumentProcessingConfigProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig;
@@ -27573,7 +27617,9 @@ export const GetDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig;
 
 export type GetDocumentProcessingConfigProjectsLocationsCollectionsDataStoresError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DocumentProcessingConfig. */
 export const getDocumentProcessingConfigProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -27608,7 +27654,7 @@ export const UpdateDocumentProcessingConfigProjectsLocationsCollectionsDataStore
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRequest>;
+  ) as unknown as Schema.Codec<UpdateDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRequest>;
 
 export type UpdateDocumentProcessingConfigProjectsLocationsCollectionsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig;
@@ -27616,7 +27662,11 @@ export const UpdateDocumentProcessingConfigProjectsLocationsCollectionsDataStore
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig;
 
 export type UpdateDocumentProcessingConfigProjectsLocationsCollectionsDataStoresError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleon resource of DataStore. It's empty when DataStore is created. The first call to this method will set up DocumentProcessingConfig. */
 export const updateDocumentProcessingConfigProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -27650,7 +27700,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresBranchesRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresBranchesResponse =
   GoogleCloudDiscoveryengineV1alphaBranch;
@@ -27692,7 +27742,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/branches" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresBranchesRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresBranchesResponse =
   GoogleCloudDiscoveryengineV1alphaListBranchesResponse;
@@ -27740,7 +27790,7 @@ export const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBran
       path: "v1alpha/{+parent}/batchGetDocumentsMetadata",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest>;
+  ) as unknown as Schema.Codec<BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest>;
 
 export type BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesResponse =
   GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse;
@@ -27748,7 +27798,9 @@ export const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBran
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse;
 
 export type BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets index freshness metadata for Documents. Supported for website search only. */
 export const batchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranches: API.OperationMethod<
@@ -27775,7 +27827,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest 
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresBranchesOperationsResponse =
   GoogleLongrunningOperation;
@@ -27815,7 +27867,7 @@ export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsReque
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
 export type CancelProjectsLocationsCollectionsDataStoresBranchesOperationsResponse =
   GoogleProtobufEmpty;
@@ -27823,7 +27875,11 @@ export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsCollectionsDataStoresBranchesOperationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsCollectionsDataStoresBranchesOperations: API.OperationMethod<
@@ -27863,7 +27919,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresBranchesOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -27915,7 +27971,7 @@ export const PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaDocument;
@@ -27952,7 +28008,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaDocument;
@@ -27987,7 +28043,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse =
   GoogleProtobufEmpty;
@@ -27995,7 +28051,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Document. */
 export const deleteProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28026,7 +28086,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest 
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/documents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaListDocumentsResponse;
@@ -28074,7 +28134,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export type PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse =
   GoogleLongrunningOperation;
@@ -28123,7 +28183,7 @@ export const CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaDocument;
@@ -28131,7 +28191,11 @@ export const CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaDocument;
 
 export type CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Document. */
 export const createProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28165,7 +28229,7 @@ export const ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export type ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse =
   GoogleLongrunningOperation;
@@ -28173,7 +28237,11 @@ export const ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items are created. Note: It is possible for a subset of the Documents to be successfully updated. */
 export const importProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28220,7 +28288,7 @@ export const GetProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesD
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:getProcessedDocument" }),
     svc,
-  ) as unknown as Schema.Schema<GetProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<GetProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export type GetProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaProcessedDocument;
@@ -28228,7 +28296,9 @@ export const GetProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesD
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaProcessedDocument;
 
 export type GetProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the parsed layout information for a Document. */
 export const getProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28255,7 +28325,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksReq
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksResponse =
   GoogleCloudDiscoveryengineV1alphaChunk;
@@ -28263,7 +28333,9 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaChunk;
 
 export type GetProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Document. */
 export const getProjectsLocationsCollectionsDataStoresBranchesDocumentsChunks: API.OperationMethod<
@@ -28296,7 +28368,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRe
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/chunks" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksResponse =
   GoogleCloudDiscoveryengineV1alphaListChunksResponse;
@@ -28304,7 +28376,9 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaListChunksResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of Chunks. */
 export const listProjectsLocationsCollectionsDataStoresBranchesDocumentsChunks: API.PaginatedOperationMethod<
@@ -28344,7 +28418,7 @@ export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
 
 export type BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse =
   GoogleLongrunningOperation;
@@ -28352,7 +28426,11 @@ export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verify target sites' ownership and validity. This API sends all the target sites under site search engine for verification. */
 export const batchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -28388,7 +28466,7 @@ export const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteS
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
 
 export type EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse =
   GoogleLongrunningOperation;
@@ -28396,7 +28474,11 @@ export const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteS
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upgrade from basic site search to advanced site search. */
 export const enableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -28432,7 +28514,7 @@ export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
       path: "v1alpha/{+siteSearchEngine}:fetchDomainVerificationStatus",
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
 
 export type FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse =
   GoogleCloudDiscoveryengineV1alphaFetchDomainVerificationStatusResponse;
@@ -28440,7 +28522,9 @@ export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaFetchDomainVerificationStatusResponse;
 
 export type FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns list of target sites with its domain verification status. This method can only be called under data store with BASIC_SITE_SEARCH state at the moment. */
 export const fetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.PaginatedOperationMethod<
@@ -28474,7 +28558,7 @@ export const GetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSite
       path: "v1alpha/{+siteSearchEngine}:getUriPatternDocumentData",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<GetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
 
 export type GetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse =
   GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataResponse;
@@ -28482,7 +28566,9 @@ export const GetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSite
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataResponse;
 
 export type GetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the URI Pattern to Document data mapping for an Advanced Site Search DataStore. */
 export const getUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -28518,7 +28604,7 @@ export const SetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSite
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<SetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
 
 export type SetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse =
   GoogleLongrunningOperation;
@@ -28526,7 +28612,11 @@ export const SetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSite
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type SetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the URI Pattern to Document data mapping for an Advanced Site Search DataStore. */
 export const setUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -28562,7 +28652,7 @@ export const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSite
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
 
 export type DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse =
   GoogleLongrunningOperation;
@@ -28570,7 +28660,11 @@ export const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSite
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Downgrade from advanced site search to basic site search. */
 export const disableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -28606,7 +28700,7 @@ export const RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRe
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
 
 export type RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse =
   GoogleLongrunningOperation;
@@ -28614,7 +28708,11 @@ export const RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Request on-demand recrawl for a list of URIs. */
 export const recrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -28655,7 +28753,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperation
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -28663,7 +28761,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations: API.PaginatedOperationMethod<
@@ -28694,7 +28794,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsResponse =
   GoogleLongrunningOperation;
@@ -28702,7 +28802,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations: API.OperationMethod<
@@ -28738,7 +28840,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleLongrunningOperation;
@@ -28746,7 +28848,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetSite. */
 export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -28782,7 +28888,7 @@ export const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTa
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleLongrunningOperation;
@@ -28790,7 +28896,11 @@ export const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTa
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates TargetSite in a batch. */
 export const batchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -28817,7 +28927,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleLongrunningOperation;
@@ -28825,7 +28935,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TargetSite. */
 export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -28858,7 +28972,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/targetSites" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleCloudDiscoveryengineV1alphaListTargetSitesResponse;
@@ -28866,7 +28980,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaListTargetSitesResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of TargetSites. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.PaginatedOperationMethod<
@@ -28902,7 +29018,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSi
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleLongrunningOperation;
@@ -28910,7 +29026,11 @@ export const PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSi
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a TargetSite. */
 export const patchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -28937,7 +29057,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleCloudDiscoveryengineV1alphaTargetSite;
@@ -28945,7 +29065,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaTargetSite;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a TargetSite. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -28986,7 +29108,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -28994,7 +29116,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperations: API.PaginatedOperationMethod<
@@ -29025,7 +29149,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsResponse =
   GoogleLongrunningOperation;
@@ -29033,7 +29157,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperations: API.OperationMethod<
@@ -29060,7 +29186,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsResponse =
   GoogleLongrunningOperation;
@@ -29068,7 +29194,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Sitemap. */
 export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -29100,7 +29230,7 @@ export const FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/sitemaps:fetch" }),
     svc,
-  ) as unknown as Schema.Schema<FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
+  ) as unknown as Schema.Codec<FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export type FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsResponse =
   GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse;
@@ -29108,7 +29238,9 @@ export const FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse;
 
 export type FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetch Sitemaps in a DataStore. */
 export const fetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -29144,7 +29276,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsResponse =
   GoogleLongrunningOperation;
@@ -29152,7 +29284,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Sitemap. */
 export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -29191,7 +29327,7 @@ export const CreateProjectsLocationsCollectionsDataStoresControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresControlsRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -29228,7 +29364,7 @@ export const GetProjectsLocationsCollectionsDataStoresControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresControlsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -29271,7 +29407,7 @@ export const PatchProjectsLocationsCollectionsDataStoresControlsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresControlsRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -29317,7 +29453,7 @@ export const ListProjectsLocationsCollectionsDataStoresControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/controls" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresControlsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresControlsResponse =
   GoogleCloudDiscoveryengineV1alphaListControlsResponse;
@@ -29356,7 +29492,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresControlsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresControlsRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresControlsResponse =
   GoogleProtobufEmpty;
@@ -29405,7 +29541,7 @@ export const ListProjectsLocationsCollectionsDataStoresSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/sessions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaListSessionsResponse;
@@ -29444,7 +29580,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSessionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSessionsResponse =
   GoogleProtobufEmpty;
@@ -29486,7 +29622,7 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -29529,7 +29665,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSessionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -29578,7 +29714,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -29615,7 +29751,7 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresSessionsAnswersResponse =
   GoogleCloudDiscoveryengineV1alphaAnswer;
@@ -29659,7 +29795,7 @@ export const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRe
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest>;
 
 export type ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsResponse =
   GoogleLongrunningOperation;
@@ -29667,7 +29803,11 @@ export const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports CompletionSuggestions for a DataStore. */
 export const importProjectsLocationsCollectionsDataStoresCompletionSuggestions: API.OperationMethod<
@@ -29703,7 +29843,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsReq
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest>;
 
 export type PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsResponse =
   GoogleLongrunningOperation;
@@ -29711,7 +29851,11 @@ export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all CompletionSuggestions for a DataStore. */
 export const purgeProjectsLocationsCollectionsDataStoresCompletionSuggestions: API.OperationMethod<
@@ -29747,7 +29891,7 @@ export const SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaSearchResponse;
@@ -29755,7 +29899,11 @@ export const SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaSearchResponse;
 
 export type SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security. */
 export const searchLiteProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -29789,7 +29937,7 @@ export const PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -29826,7 +29974,7 @@ export const GetProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -29870,7 +30018,7 @@ export const AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type AnswerProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse;
@@ -29921,7 +30069,7 @@ export const CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -29967,7 +30115,7 @@ export const SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type SearchProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaSearchResponse;
@@ -30004,7 +30152,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleProtobufEmpty;
@@ -30050,7 +30198,7 @@ export const RecommendProjectsLocationsCollectionsDataStoresServingConfigsReques
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RecommendProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<RecommendProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type RecommendProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaRecommendResponse;
@@ -30058,7 +30206,11 @@ export const RecommendProjectsLocationsCollectionsDataStoresServingConfigsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaRecommendResponse;
 
 export type RecommendProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes a recommendation, which requires a contextual user event. */
 export const recommendProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -30089,7 +30241,7 @@ export const ListProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/servingConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse;
@@ -30137,7 +30289,7 @@ export const StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsReq
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse;
@@ -30145,7 +30297,11 @@ export const StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse;
 
 export type StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream. */
 export const streamAnswerProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -30172,7 +30328,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresConversationsResponse =
   GoogleProtobufEmpty;
@@ -30221,7 +30377,7 @@ export const ListProjectsLocationsCollectionsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/conversations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaListConversationsResponse;
@@ -30268,7 +30424,7 @@ export const PatchProjectsLocationsCollectionsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -30305,7 +30461,7 @@ export const GetProjectsLocationsCollectionsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -30349,7 +30505,7 @@ export const CreateProjectsLocationsCollectionsDataStoresConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -30391,7 +30547,7 @@ export const ConverseProjectsLocationsCollectionsDataStoresConversationsRequest 
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:converse", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ConverseProjectsLocationsCollectionsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<ConverseProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type ConverseProjectsLocationsCollectionsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConverseConversationResponse;
@@ -30442,7 +30598,7 @@ export const ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresModelsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -30481,7 +30637,7 @@ export const GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresModelsOperationsResponse =
   GoogleLongrunningOperation;
@@ -30525,7 +30681,7 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfig
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest>;
+  ) as unknown as Schema.Codec<CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest>;
 
 export type CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigResponse =
   GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse;
@@ -30533,7 +30689,11 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfig
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse;
 
 export type CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the user input with advanced keyword suggestions. */
 export const completeQueryProjectsLocationsCollectionsDataStoresCompletionConfig: API.OperationMethod<
@@ -30569,7 +30729,7 @@ export const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntri
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest>;
 
 export type ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesResponse =
   GoogleLongrunningOperation;
@@ -30577,7 +30737,11 @@ export const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntri
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports all SuggestionDenyListEntry for a DataStore. */
 export const importProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries: API.OperationMethod<
@@ -30613,7 +30777,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntrie
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest>;
 
 export type PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesResponse =
   GoogleLongrunningOperation;
@@ -30621,7 +30785,11 @@ export const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntrie
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all SuggestionDenyListEntry for a DataStore. */
 export const purgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries: API.OperationMethod<
@@ -30648,7 +30816,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSchemasRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSchemasResponse =
   GoogleLongrunningOperation;
@@ -30691,7 +30859,7 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/schemas" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresSchemasResponse =
   GoogleCloudDiscoveryengineV1alphaListSchemasResponse;
@@ -30740,7 +30908,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSchemasRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresSchemasResponse =
   GoogleLongrunningOperation;
@@ -30777,7 +30945,7 @@ export const GetProjectsLocationsCollectionsDataStoresSchemasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresSchemasResponse =
   GoogleCloudDiscoveryengineV1alphaSchema;
@@ -30824,7 +30992,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSchemasRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
 export type CreateProjectsLocationsCollectionsDataStoresSchemasResponse =
   GoogleLongrunningOperation;
@@ -30875,7 +31043,7 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest 
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresSchemasOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -30914,7 +31082,7 @@ export const GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresSchemasOperationsResponse =
   GoogleLongrunningOperation;
@@ -30966,7 +31134,7 @@ export const GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresWidgetConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaWidgetConfig;
@@ -31009,7 +31177,7 @@ export const PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>;
 
 export type PatchProjectsLocationsCollectionsDataStoresWidgetConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaWidgetConfig;
@@ -31046,7 +31214,7 @@ export const ListProjectsLocationsCollectionsDataStoresCustomModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+dataStore}/customModels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresCustomModelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresCustomModelsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresCustomModelsResponse =
   GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse;
@@ -31095,7 +31263,7 @@ export const ListProjectsLocationsCollectionsDataStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCollectionsDataStoresOperationsRequest>;
 
 export type ListProjectsLocationsCollectionsDataStoresOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -31134,7 +31302,7 @@ export const GetProjectsLocationsCollectionsDataStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCollectionsDataStoresOperationsRequest>;
 
 export type GetProjectsLocationsCollectionsDataStoresOperationsResponse =
   GoogleLongrunningOperation;
@@ -31178,7 +31346,7 @@ export const CollectProjectsLocationsCollectionsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/userEvents:collect" }),
     svc,
-  ) as unknown as Schema.Schema<CollectProjectsLocationsCollectionsDataStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<CollectProjectsLocationsCollectionsDataStoresUserEventsRequest>;
 
 export type CollectProjectsLocationsCollectionsDataStoresUserEventsResponse =
   GoogleApiHttpBody;
@@ -31222,7 +31390,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest>;
 
 export type PurgeProjectsLocationsCollectionsDataStoresUserEventsResponse =
   GoogleLongrunningOperation;
@@ -31271,7 +31439,7 @@ export const WriteProjectsLocationsCollectionsDataStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WriteProjectsLocationsCollectionsDataStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<WriteProjectsLocationsCollectionsDataStoresUserEventsRequest>;
 
 export type WriteProjectsLocationsCollectionsDataStoresUserEventsResponse =
   GoogleCloudDiscoveryengineV1alphaUserEvent;
@@ -31317,7 +31485,7 @@ export const ImportProjectsLocationsCollectionsDataStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsCollectionsDataStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsCollectionsDataStoresUserEventsRequest>;
 
 export type ImportProjectsLocationsCollectionsDataStoresUserEventsResponse =
   GoogleLongrunningOperation;
@@ -31363,7 +31531,7 @@ export const CreateProjectsLocationsNotebooksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsNotebooksRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsNotebooksRequest>;
 
 export type CreateProjectsLocationsNotebooksResponse =
   GoogleCloudNotebooklmV1alphaNotebook;
@@ -31409,7 +31577,7 @@ export const ListRecentlyViewedProjectsLocationsNotebooksRequest =
       path: "v1alpha/{+parent}/notebooks:listRecentlyViewed",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRecentlyViewedProjectsLocationsNotebooksRequest>;
+  ) as unknown as Schema.Codec<ListRecentlyViewedProjectsLocationsNotebooksRequest>;
 
 export type ListRecentlyViewedProjectsLocationsNotebooksResponse =
   GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse;
@@ -31453,7 +31621,7 @@ export const ShareProjectsLocationsNotebooksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:share", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ShareProjectsLocationsNotebooksRequest>;
+  ) as unknown as Schema.Codec<ShareProjectsLocationsNotebooksRequest>;
 
 export type ShareProjectsLocationsNotebooksResponse =
   GoogleCloudNotebooklmV1alphaShareNotebookResponse;
@@ -31490,7 +31658,7 @@ export const GetProjectsLocationsNotebooksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNotebooksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsNotebooksRequest>;
 
 export type GetProjectsLocationsNotebooksResponse =
   GoogleCloudNotebooklmV1alphaNotebook;
@@ -31534,7 +31702,7 @@ export const BatchDeleteProjectsLocationsNotebooksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteProjectsLocationsNotebooksRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteProjectsLocationsNotebooksRequest>;
 
 export type BatchDeleteProjectsLocationsNotebooksResponse = GoogleProtobufEmpty;
 export const BatchDeleteProjectsLocationsNotebooksResponse =
@@ -31570,7 +31738,7 @@ export const DeleteProjectsLocationsNotebooksAudioOverviewsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsNotebooksAudioOverviewsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsNotebooksAudioOverviewsRequest>;
 
 export type DeleteProjectsLocationsNotebooksAudioOverviewsResponse =
   GoogleProtobufEmpty;
@@ -31616,7 +31784,7 @@ export const CreateProjectsLocationsNotebooksAudioOverviewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsNotebooksAudioOverviewsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsNotebooksAudioOverviewsRequest>;
 
 export type CreateProjectsLocationsNotebooksAudioOverviewsResponse =
   GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse;
@@ -31653,7 +31821,7 @@ export const GetProjectsLocationsNotebooksSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNotebooksSourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsNotebooksSourcesRequest>;
 
 export type GetProjectsLocationsNotebooksSourcesResponse =
   GoogleCloudNotebooklmV1alphaSource;
@@ -31697,7 +31865,7 @@ export const BatchDeleteProjectsLocationsNotebooksSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteProjectsLocationsNotebooksSourcesRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteProjectsLocationsNotebooksSourcesRequest>;
 
 export type BatchDeleteProjectsLocationsNotebooksSourcesResponse =
   GoogleProtobufEmpty;
@@ -31743,7 +31911,7 @@ export const BatchCreateProjectsLocationsNotebooksSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateProjectsLocationsNotebooksSourcesRequest>;
+  ) as unknown as Schema.Codec<BatchCreateProjectsLocationsNotebooksSourcesRequest>;
 
 export type BatchCreateProjectsLocationsNotebooksSourcesResponse =
   GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse;
@@ -31794,7 +31962,7 @@ export const CreateProjectsLocationsAuthorizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAuthorizationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAuthorizationsRequest>;
 
 export type CreateProjectsLocationsAuthorizationsResponse =
   GoogleCloudDiscoveryengineV1alphaAuthorization;
@@ -31831,7 +31999,7 @@ export const GetProjectsLocationsAuthorizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAuthorizationsRequest>;
 
 export type GetProjectsLocationsAuthorizationsResponse =
   GoogleCloudDiscoveryengineV1alphaAuthorization;
@@ -31874,7 +32042,7 @@ export const PatchProjectsLocationsAuthorizationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAuthorizationsRequest>;
 
 export type PatchProjectsLocationsAuthorizationsResponse =
   GoogleCloudDiscoveryengineV1alphaAuthorization;
@@ -31917,7 +32085,7 @@ export const ListProjectsLocationsAuthorizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/authorizations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthorizationsRequest>;
 
 export type ListProjectsLocationsAuthorizationsResponse =
   GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse;
@@ -31956,7 +32124,7 @@ export const DeleteProjectsLocationsAuthorizationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAuthorizationsRequest>;
 
 export type DeleteProjectsLocationsAuthorizationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAuthorizationsResponse =
@@ -32006,7 +32174,7 @@ export const CreateProjectsLocationsSampleQuerySetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSampleQuerySetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSampleQuerySetsRequest>;
 
 export type CreateProjectsLocationsSampleQuerySetsResponse =
   GoogleCloudDiscoveryengineV1alphaSampleQuerySet;
@@ -32043,7 +32211,7 @@ export const DeleteProjectsLocationsSampleQuerySetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSampleQuerySetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSampleQuerySetsRequest>;
 
 export type DeleteProjectsLocationsSampleQuerySetsResponse =
   GoogleProtobufEmpty;
@@ -32086,7 +32254,7 @@ export const ListProjectsLocationsSampleQuerySetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/sampleQuerySets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSampleQuerySetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSampleQuerySetsRequest>;
 
 export type ListProjectsLocationsSampleQuerySetsResponse =
   GoogleCloudDiscoveryengineV1alphaListSampleQuerySetsResponse;
@@ -32133,7 +32301,7 @@ export const PatchProjectsLocationsSampleQuerySetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSampleQuerySetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSampleQuerySetsRequest>;
 
 export type PatchProjectsLocationsSampleQuerySetsResponse =
   GoogleCloudDiscoveryengineV1alphaSampleQuerySet;
@@ -32170,7 +32338,7 @@ export const GetProjectsLocationsSampleQuerySetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSampleQuerySetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSampleQuerySetsRequest>;
 
 export type GetProjectsLocationsSampleQuerySetsResponse =
   GoogleCloudDiscoveryengineV1alphaSampleQuerySet;
@@ -32205,7 +32373,7 @@ export const GetProjectsLocationsSampleQuerySetsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSampleQuerySetsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSampleQuerySetsOperationsRequest>;
 
 export type GetProjectsLocationsSampleQuerySetsOperationsResponse =
   GoogleLongrunningOperation;
@@ -32248,7 +32416,7 @@ export const PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
 export type PatchProjectsLocationsSampleQuerySetsSampleQueriesResponse =
   GoogleCloudDiscoveryengineV1alphaSampleQuery;
@@ -32285,7 +32453,7 @@ export const GetProjectsLocationsSampleQuerySetsSampleQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
 export type GetProjectsLocationsSampleQuerySetsSampleQueriesResponse =
   GoogleCloudDiscoveryengineV1alphaSampleQuery;
@@ -32320,7 +32488,7 @@ export const DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
 export type DeleteProjectsLocationsSampleQuerySetsSampleQueriesResponse =
   GoogleProtobufEmpty;
@@ -32363,7 +32531,7 @@ export const ListProjectsLocationsSampleQuerySetsSampleQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/sampleQueries" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
 export type ListProjectsLocationsSampleQuerySetsSampleQueriesResponse =
   GoogleCloudDiscoveryengineV1alphaListSampleQueriesResponse;
@@ -32416,7 +32584,7 @@ export const CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
 export type CreateProjectsLocationsSampleQuerySetsSampleQueriesResponse =
   GoogleCloudDiscoveryengineV1alphaSampleQuery;
@@ -32462,7 +32630,7 @@ export const ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
 export type ImportProjectsLocationsSampleQuerySetsSampleQueriesResponse =
   GoogleLongrunningOperation;
@@ -32508,7 +32676,7 @@ export const RankProjectsLocationsRankingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RankProjectsLocationsRankingConfigsRequest>;
+  ) as unknown as Schema.Codec<RankProjectsLocationsRankingConfigsRequest>;
 
 export type RankProjectsLocationsRankingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaRankResponse;
@@ -32554,7 +32722,7 @@ export const CheckRequirementProjectsLocationsRequirementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckRequirementProjectsLocationsRequirementsRequest>;
+  ) as unknown as Schema.Codec<CheckRequirementProjectsLocationsRequirementsRequest>;
 
 export type CheckRequirementProjectsLocationsRequirementsResponse =
   GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse;
@@ -32591,7 +32759,7 @@ export const DeleteProjectsLocationsCmekConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCmekConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCmekConfigsRequest>;
 
 export type DeleteProjectsLocationsCmekConfigsResponse =
   GoogleLongrunningOperation;
@@ -32628,7 +32796,7 @@ export const ListProjectsLocationsCmekConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/cmekConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCmekConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCmekConfigsRequest>;
 
 export type ListProjectsLocationsCmekConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse;
@@ -32671,7 +32839,7 @@ export const PatchProjectsLocationsCmekConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCmekConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCmekConfigsRequest>;
 
 export type PatchProjectsLocationsCmekConfigsResponse =
   GoogleLongrunningOperation;
@@ -32708,7 +32876,7 @@ export const GetProjectsLocationsCmekConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCmekConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCmekConfigsRequest>;
 
 export type GetProjectsLocationsCmekConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaCmekConfig;
@@ -32743,7 +32911,7 @@ export const GetProjectsLocationsUserStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsUserStoresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsUserStoresRequest>;
 
 export type GetProjectsLocationsUserStoresResponse =
   GoogleCloudDiscoveryengineV1alphaUserStore;
@@ -32786,7 +32954,7 @@ export const PatchProjectsLocationsUserStoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsUserStoresRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsUserStoresRequest>;
 
 export type PatchProjectsLocationsUserStoresResponse =
   GoogleCloudDiscoveryengineV1alphaUserStore;
@@ -32832,7 +33000,7 @@ export const BatchUpdateUserLicensesProjectsLocationsUserStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateUserLicensesProjectsLocationsUserStoresRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateUserLicensesProjectsLocationsUserStoresRequest>;
 
 export type BatchUpdateUserLicensesProjectsLocationsUserStoresResponse =
   GoogleLongrunningOperation;
@@ -32881,7 +33049,7 @@ export const ListProjectsLocationsUserStoresUserLicensesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/userLicenses" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsUserStoresUserLicensesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsUserStoresUserLicensesRequest>;
 
 export type ListProjectsLocationsUserStoresUserLicensesResponse =
   GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse;
@@ -32934,7 +33102,7 @@ export const ListProjectsLocationsUserStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsUserStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsUserStoresOperationsRequest>;
 
 export type ListProjectsLocationsUserStoresOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -32973,7 +33141,7 @@ export const GetProjectsLocationsUserStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsUserStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsUserStoresOperationsRequest>;
 
 export type GetProjectsLocationsUserStoresOperationsResponse =
   GoogleLongrunningOperation;
@@ -33011,7 +33179,7 @@ export const ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest =
       path: "v1alpha/{+parent}/licenseConfigsUsageStats",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest>;
 
 export type ListProjectsLocationsUserStoresLicenseConfigsUsageStatsResponse =
   GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse;
@@ -33046,7 +33214,7 @@ export const GetProjectsLocationsPodcastsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsPodcastsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsPodcastsOperationsRequest>;
 
 export type GetProjectsLocationsPodcastsOperationsResponse =
   GoogleLongrunningOperation;
@@ -33090,7 +33258,7 @@ export const DeletePatientFilterProjectsLocationsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePatientFilterProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<DeletePatientFilterProjectsLocationsDataStoresRequest>;
 
 export type DeletePatientFilterProjectsLocationsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -33127,7 +33295,7 @@ export const GetSiteSearchEngineProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSiteSearchEngineProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<GetSiteSearchEngineProjectsLocationsDataStoresRequest>;
 
 export type GetSiteSearchEngineProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaSiteSearchEngine;
@@ -33171,7 +33339,7 @@ export const ListProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/dataStores" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresRequest>;
 
 export type ListProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaListDataStoresResponse;
@@ -33210,7 +33378,7 @@ export const GetCompletionConfigProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCompletionConfigProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<GetCompletionConfigProjectsLocationsDataStoresRequest>;
 
 export type GetCompletionConfigProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaCompletionConfig;
@@ -33254,7 +33422,7 @@ export const RemovePatientFilterProjectsLocationsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemovePatientFilterProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<RemovePatientFilterProjectsLocationsDataStoresRequest>;
 
 export type RemovePatientFilterProjectsLocationsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -33307,7 +33475,7 @@ export const CompleteQueryProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+dataStore}:completeQuery" }),
     svc,
-  ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<CompleteQueryProjectsLocationsDataStoresRequest>;
 
 export type CompleteQueryProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse;
@@ -33342,7 +33510,7 @@ export const GetProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresRequest>;
 
 export type GetProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaDataStore;
@@ -33386,7 +33554,7 @@ export const ReplacePatientFilterProjectsLocationsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReplacePatientFilterProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<ReplacePatientFilterProjectsLocationsDataStoresRequest>;
 
 export type ReplacePatientFilterProjectsLocationsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -33432,7 +33600,7 @@ export const AddPatientFilterProjectsLocationsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddPatientFilterProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<AddPatientFilterProjectsLocationsDataStoresRequest>;
 
 export type AddPatientFilterProjectsLocationsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -33469,7 +33637,7 @@ export const DeleteProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresRequest>;
 
 export type DeleteProjectsLocationsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -33540,7 +33708,7 @@ export const CreateProjectsLocationsDataStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresRequest>;
 
 export type CreateProjectsLocationsDataStoresResponse =
   GoogleLongrunningOperation;
@@ -33585,7 +33753,7 @@ export const UpdateCompletionConfigProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCompletionConfigProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<UpdateCompletionConfigProjectsLocationsDataStoresRequest>;
 
 export type UpdateCompletionConfigProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaCompletionConfig;
@@ -33630,7 +33798,7 @@ export const UpdateDocumentProcessingConfigProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDocumentProcessingConfigProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<UpdateDocumentProcessingConfigProjectsLocationsDataStoresRequest>;
 
 export type UpdateDocumentProcessingConfigProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig;
@@ -33675,7 +33843,7 @@ export const PatchProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresRequest>;
 
 export type PatchProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaDataStore;
@@ -33712,7 +33880,7 @@ export const GetDocumentProcessingConfigProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDocumentProcessingConfigProjectsLocationsDataStoresRequest>;
+  ) as unknown as Schema.Codec<GetDocumentProcessingConfigProjectsLocationsDataStoresRequest>;
 
 export type GetDocumentProcessingConfigProjectsLocationsDataStoresResponse =
   GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig;
@@ -33759,7 +33927,7 @@ export const CreateProjectsLocationsDataStoresControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresControlsRequest>;
 
 export type CreateProjectsLocationsDataStoresControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -33804,7 +33972,7 @@ export const PatchProjectsLocationsDataStoresControlsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresControlsRequest>;
 
 export type PatchProjectsLocationsDataStoresControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -33841,7 +34009,7 @@ export const GetProjectsLocationsDataStoresControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresControlsRequest>;
 
 export type GetProjectsLocationsDataStoresControlsResponse =
   GoogleCloudDiscoveryengineV1alphaControl;
@@ -33876,7 +34044,7 @@ export const DeleteProjectsLocationsDataStoresControlsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresControlsRequest>;
 
 export type DeleteProjectsLocationsDataStoresControlsResponse =
   GoogleProtobufEmpty;
@@ -33922,7 +34090,7 @@ export const ListProjectsLocationsDataStoresControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/controls" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresControlsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresControlsRequest>;
 
 export type ListProjectsLocationsDataStoresControlsResponse =
   GoogleCloudDiscoveryengineV1alphaListControlsResponse;
@@ -33970,7 +34138,7 @@ export const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest>;
 
 export type EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineResponse =
   GoogleLongrunningOperation;
@@ -33978,7 +34146,11 @@ export const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upgrade from basic site search to advanced site search. */
 export const enableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -34014,7 +34186,7 @@ export const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngin
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest>;
 
 export type DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineResponse =
   GoogleLongrunningOperation;
@@ -34022,7 +34194,11 @@ export const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngin
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Downgrade from advanced site search to basic site search. */
 export const disableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -34058,7 +34234,7 @@ export const RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest>;
+  ) as unknown as Schema.Codec<RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest>;
 
 export type RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineResponse =
   GoogleLongrunningOperation;
@@ -34104,7 +34280,7 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleLongrunningOperation;
@@ -34147,7 +34323,7 @@ export const ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/targetSites" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleCloudDiscoveryengineV1alphaListTargetSitesResponse;
@@ -34195,7 +34371,7 @@ export const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRe
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleLongrunningOperation;
@@ -34203,7 +34379,11 @@ export const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates TargetSite in a batch. */
 export const batchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -34230,7 +34410,7 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleLongrunningOperation;
@@ -34267,7 +34447,7 @@ export const GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleCloudDiscoveryengineV1alphaTargetSite;
@@ -34307,7 +34487,7 @@ export const PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest 
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export type PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse =
   GoogleLongrunningOperation;
@@ -34353,7 +34533,7 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export type CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse =
   GoogleLongrunningOperation;
@@ -34390,7 +34570,7 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export type DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse =
   GoogleLongrunningOperation;
@@ -34432,7 +34612,7 @@ export const FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/sitemaps:fetch" }),
     svc,
-  ) as unknown as Schema.Schema<FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
+  ) as unknown as Schema.Codec<FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export type FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse =
   GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse;
@@ -34479,7 +34659,7 @@ export const CreateProjectsLocationsDataStoresSessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresSessionsRequest>;
 
 export type CreateProjectsLocationsDataStoresSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -34521,7 +34701,7 @@ export const GetProjectsLocationsDataStoresSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresSessionsRequest>;
 
 export type GetProjectsLocationsDataStoresSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -34564,7 +34744,7 @@ export const PatchProjectsLocationsDataStoresSessionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresSessionsRequest>;
 
 export type PatchProjectsLocationsDataStoresSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaSession;
@@ -34613,7 +34793,7 @@ export const ListProjectsLocationsDataStoresSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/sessions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresSessionsRequest>;
 
 export type ListProjectsLocationsDataStoresSessionsResponse =
   GoogleCloudDiscoveryengineV1alphaListSessionsResponse;
@@ -34652,7 +34832,7 @@ export const DeleteProjectsLocationsDataStoresSessionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSessionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresSessionsRequest>;
 
 export type DeleteProjectsLocationsDataStoresSessionsResponse =
   GoogleProtobufEmpty;
@@ -34689,7 +34869,7 @@ export const GetProjectsLocationsDataStoresSessionsAnswersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSessionsAnswersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresSessionsAnswersRequest>;
 
 export type GetProjectsLocationsDataStoresSessionsAnswersResponse =
   GoogleCloudDiscoveryengineV1alphaAnswer;
@@ -34733,7 +34913,7 @@ export const ImportProjectsLocationsDataStoresCompletionSuggestionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsDataStoresCompletionSuggestionsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsDataStoresCompletionSuggestionsRequest>;
 
 export type ImportProjectsLocationsDataStoresCompletionSuggestionsResponse =
   GoogleLongrunningOperation;
@@ -34779,7 +34959,7 @@ export const PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest>;
 
 export type PurgeProjectsLocationsDataStoresCompletionSuggestionsResponse =
   GoogleLongrunningOperation;
@@ -34823,7 +35003,7 @@ export const GetProjectsLocationsDataStoresBranchesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresBranchesRequest>;
 
 export type GetProjectsLocationsDataStoresBranchesResponse =
   GoogleCloudDiscoveryengineV1alphaBranch;
@@ -34865,7 +35045,7 @@ export const ListProjectsLocationsDataStoresBranchesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/branches" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresBranchesRequest>;
 
 export type ListProjectsLocationsDataStoresBranchesResponse =
   GoogleCloudDiscoveryengineV1alphaListBranchesResponse;
@@ -34913,7 +35093,7 @@ export const BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest
       path: "v1alpha/{+parent}/batchGetDocumentsMetadata",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest>;
+  ) as unknown as Schema.Codec<BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest>;
 
 export type BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesResponse =
   GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse;
@@ -34948,7 +35128,7 @@ export const GetProjectsLocationsDataStoresBranchesOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresBranchesOperationsRequest>;
 
 export type GetProjectsLocationsDataStoresBranchesOperationsResponse =
   GoogleLongrunningOperation;
@@ -34997,7 +35177,7 @@ export const ListProjectsLocationsDataStoresBranchesOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresBranchesOperationsRequest>;
 
 export type ListProjectsLocationsDataStoresBranchesOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -35041,7 +35221,7 @@ export const CancelProjectsLocationsDataStoresBranchesOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsDataStoresBranchesOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsDataStoresBranchesOperationsRequest>;
 
 export type CancelProjectsLocationsDataStoresBranchesOperationsResponse =
   GoogleProtobufEmpty;
@@ -35090,7 +35270,7 @@ export const CreateProjectsLocationsDataStoresBranchesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
 export type CreateProjectsLocationsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaDocument;
@@ -35136,7 +35316,7 @@ export const ImportProjectsLocationsDataStoresBranchesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
 export type ImportProjectsLocationsDataStoresBranchesDocumentsResponse =
   GoogleLongrunningOperation;
@@ -35195,7 +35375,7 @@ export const GetProcessedDocumentProjectsLocationsDataStoresBranchesDocumentsReq
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:getProcessedDocument" }),
     svc,
-  ) as unknown as Schema.Schema<GetProcessedDocumentProjectsLocationsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<GetProcessedDocumentProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
 export type GetProcessedDocumentProjectsLocationsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaProcessedDocument;
@@ -35203,7 +35383,9 @@ export const GetProcessedDocumentProjectsLocationsDataStoresBranchesDocumentsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1alphaProcessedDocument;
 
 export type GetProcessedDocumentProjectsLocationsDataStoresBranchesDocumentsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the parsed layout information for a Document. */
 export const getProcessedDocumentProjectsLocationsDataStoresBranchesDocuments: API.OperationMethod<
@@ -35239,7 +35421,7 @@ export const PurgeProjectsLocationsDataStoresBranchesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
 export type PurgeProjectsLocationsDataStoresBranchesDocumentsResponse =
   GoogleLongrunningOperation;
@@ -35282,7 +35464,7 @@ export const ListProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/documents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
 export type ListProjectsLocationsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaListDocumentsResponse;
@@ -35321,7 +35503,7 @@ export const DeleteProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
 export type DeleteProjectsLocationsDataStoresBranchesDocumentsResponse =
   GoogleProtobufEmpty;
@@ -35358,7 +35540,7 @@ export const GetProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
 export type GetProjectsLocationsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaDocument;
@@ -35406,7 +35588,7 @@ export const PatchProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresBranchesDocumentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
 export type PatchProjectsLocationsDataStoresBranchesDocumentsResponse =
   GoogleCloudDiscoveryengineV1alphaDocument;
@@ -35443,7 +35625,7 @@ export const GetProjectsLocationsDataStoresBranchesDocumentsChunksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesDocumentsChunksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresBranchesDocumentsChunksRequest>;
 
 export type GetProjectsLocationsDataStoresBranchesDocumentsChunksResponse =
   GoogleCloudDiscoveryengineV1alphaChunk;
@@ -35484,7 +35666,7 @@ export const ListProjectsLocationsDataStoresBranchesDocumentsChunksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/chunks" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesDocumentsChunksRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresBranchesDocumentsChunksRequest>;
 
 export type ListProjectsLocationsDataStoresBranchesDocumentsChunksResponse =
   GoogleCloudDiscoveryengineV1alphaListChunksResponse;
@@ -35537,7 +35719,7 @@ export const ListProjectsLocationsDataStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresOperationsRequest>;
 
 export type ListProjectsLocationsDataStoresOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -35576,7 +35758,7 @@ export const GetProjectsLocationsDataStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresOperationsRequest>;
 
 export type GetProjectsLocationsDataStoresOperationsResponse =
   GoogleLongrunningOperation;
@@ -35623,7 +35805,7 @@ export const WriteProjectsLocationsDataStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WriteProjectsLocationsDataStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<WriteProjectsLocationsDataStoresUserEventsRequest>;
 
 export type WriteProjectsLocationsDataStoresUserEventsResponse =
   GoogleCloudDiscoveryengineV1alphaUserEvent;
@@ -35669,7 +35851,7 @@ export const ImportProjectsLocationsDataStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsDataStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsDataStoresUserEventsRequest>;
 
 export type ImportProjectsLocationsDataStoresUserEventsResponse =
   GoogleLongrunningOperation;
@@ -35715,7 +35897,7 @@ export const CollectProjectsLocationsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/userEvents:collect" }),
     svc,
-  ) as unknown as Schema.Schema<CollectProjectsLocationsDataStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<CollectProjectsLocationsDataStoresUserEventsRequest>;
 
 export type CollectProjectsLocationsDataStoresUserEventsResponse =
   GoogleApiHttpBody;
@@ -35759,7 +35941,7 @@ export const PurgeProjectsLocationsDataStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsDataStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsDataStoresUserEventsRequest>;
 
 export type PurgeProjectsLocationsDataStoresUserEventsResponse =
   GoogleLongrunningOperation;
@@ -35810,7 +35992,7 @@ export const ListProjectsLocationsDataStoresModelsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresModelsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresModelsOperationsRequest>;
 
 export type ListProjectsLocationsDataStoresModelsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -35849,7 +36031,7 @@ export const GetProjectsLocationsDataStoresModelsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresModelsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresModelsOperationsRequest>;
 
 export type GetProjectsLocationsDataStoresModelsOperationsResponse =
   GoogleLongrunningOperation;
@@ -35893,7 +36075,7 @@ export const RecommendProjectsLocationsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RecommendProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<RecommendProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type RecommendProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaRecommendResponse;
@@ -35936,7 +36118,7 @@ export const ListProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/servingConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type ListProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaListServingConfigsResponse;
@@ -35975,7 +36157,7 @@ export const DeleteProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type DeleteProjectsLocationsDataStoresServingConfigsResponse =
   GoogleProtobufEmpty;
@@ -36021,7 +36203,7 @@ export const StreamAnswerProjectsLocationsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StreamAnswerProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<StreamAnswerProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type StreamAnswerProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse;
@@ -36058,7 +36240,7 @@ export const GetProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type GetProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -36102,7 +36284,7 @@ export const SearchLiteProjectsLocationsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchLiteProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<SearchLiteProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type SearchLiteProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaSearchResponse;
@@ -36147,7 +36329,7 @@ export const PatchProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type PatchProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -36193,7 +36375,7 @@ export const AnswerProjectsLocationsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnswerProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<AnswerProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type AnswerProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse;
@@ -36244,7 +36426,7 @@ export const CreateProjectsLocationsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type CreateProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaServingConfig;
@@ -36290,7 +36472,7 @@ export const SearchProjectsLocationsDataStoresServingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsDataStoresServingConfigsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsDataStoresServingConfigsRequest>;
 
 export type SearchProjectsLocationsDataStoresServingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaSearchResponse;
@@ -36332,7 +36514,7 @@ export const ConverseProjectsLocationsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:converse", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ConverseProjectsLocationsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<ConverseProjectsLocationsDataStoresConversationsRequest>;
 
 export type ConverseProjectsLocationsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConverseConversationResponse;
@@ -36378,7 +36560,7 @@ export const CreateProjectsLocationsDataStoresConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresConversationsRequest>;
 
 export type CreateProjectsLocationsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -36423,7 +36605,7 @@ export const PatchProjectsLocationsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresConversationsRequest>;
 
 export type PatchProjectsLocationsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -36460,7 +36642,7 @@ export const GetProjectsLocationsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresConversationsRequest>;
 
 export type GetProjectsLocationsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaConversation;
@@ -36495,7 +36677,7 @@ export const DeleteProjectsLocationsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresConversationsRequest>;
 
 export type DeleteProjectsLocationsDataStoresConversationsResponse =
   GoogleProtobufEmpty;
@@ -36544,7 +36726,7 @@ export const ListProjectsLocationsDataStoresConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/conversations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresConversationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresConversationsRequest>;
 
 export type ListProjectsLocationsDataStoresConversationsResponse =
   GoogleCloudDiscoveryengineV1alphaListConversationsResponse;
@@ -36595,7 +36777,7 @@ export const CreateProjectsLocationsDataStoresSchemasRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataStoresSchemasRequest>;
 
 export type CreateProjectsLocationsDataStoresSchemasResponse =
   GoogleLongrunningOperation;
@@ -36632,7 +36814,7 @@ export const GetProjectsLocationsDataStoresSchemasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresSchemasRequest>;
 
 export type GetProjectsLocationsDataStoresSchemasResponse =
   GoogleCloudDiscoveryengineV1alphaSchema;
@@ -36677,7 +36859,7 @@ export const PatchProjectsLocationsDataStoresSchemasRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresSchemasRequest>;
 
 export type PatchProjectsLocationsDataStoresSchemasResponse =
   GoogleLongrunningOperation;
@@ -36720,7 +36902,7 @@ export const ListProjectsLocationsDataStoresSchemasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/schemas" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataStoresSchemasRequest>;
 
 export type ListProjectsLocationsDataStoresSchemasResponse =
   GoogleCloudDiscoveryengineV1alphaListSchemasResponse;
@@ -36759,7 +36941,7 @@ export const DeleteProjectsLocationsDataStoresSchemasRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSchemasRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataStoresSchemasRequest>;
 
 export type DeleteProjectsLocationsDataStoresSchemasResponse =
   GoogleLongrunningOperation;
@@ -36813,7 +36995,7 @@ export const GetProjectsLocationsDataStoresWidgetConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresWidgetConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataStoresWidgetConfigsRequest>;
 
 export type GetProjectsLocationsDataStoresWidgetConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaWidgetConfig;
@@ -36856,7 +37038,7 @@ export const PatchProjectsLocationsDataStoresWidgetConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresWidgetConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataStoresWidgetConfigsRequest>;
 
 export type PatchProjectsLocationsDataStoresWidgetConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaWidgetConfig;
@@ -36902,7 +37084,7 @@ export const CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest>;
+  ) as unknown as Schema.Codec<CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest>;
 
 export type CompleteQueryProjectsLocationsDataStoresCompletionConfigResponse =
   GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse;
@@ -36948,7 +37130,7 @@ export const ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
 
 export type ImportProjectsLocationsDataStoresSuggestionDenyListEntriesResponse =
   GoogleLongrunningOperation;
@@ -36994,7 +37176,7 @@ export const PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
 
 export type PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesResponse =
   GoogleLongrunningOperation;
@@ -37037,7 +37219,7 @@ export const ListResultsProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+evaluation}:listResults" }),
     svc,
-  ) as unknown as Schema.Schema<ListResultsProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<ListResultsProjectsLocationsEvaluationsRequest>;
 
 export type ListResultsProjectsLocationsEvaluationsResponse =
   GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponse;
@@ -37082,7 +37264,7 @@ export const ListProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/evaluations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEvaluationsRequest>;
 
 export type ListProjectsLocationsEvaluationsResponse =
   GoogleCloudDiscoveryengineV1alphaListEvaluationsResponse;
@@ -37130,7 +37312,7 @@ export const CreateProjectsLocationsEvaluationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEvaluationsRequest>;
 
 export type CreateProjectsLocationsEvaluationsResponse =
   GoogleLongrunningOperation;
@@ -37167,7 +37349,7 @@ export const GetProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEvaluationsRequest>;
 
 export type GetProjectsLocationsEvaluationsResponse =
   GoogleCloudDiscoveryengineV1alphaEvaluation;
@@ -37202,7 +37384,7 @@ export const GetProjectsLocationsEvaluationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEvaluationsOperationsRequest>;
 
 export type GetProjectsLocationsEvaluationsOperationsResponse =
   GoogleLongrunningOperation;
@@ -37237,7 +37419,7 @@ export const GetProjectsLocationsLicenseConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsLicenseConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsLicenseConfigsRequest>;
 
 export type GetProjectsLocationsLicenseConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaLicenseConfig;
@@ -37280,7 +37462,7 @@ export const PatchProjectsLocationsLicenseConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsLicenseConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsLicenseConfigsRequest>;
 
 export type PatchProjectsLocationsLicenseConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaLicenseConfig;
@@ -37331,7 +37513,7 @@ export const CreateProjectsLocationsLicenseConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsLicenseConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsLicenseConfigsRequest>;
 
 export type CreateProjectsLocationsLicenseConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaLicenseConfig;
@@ -37377,7 +37559,7 @@ export const ListProjectsLocationsLicenseConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/licenseConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLicenseConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLicenseConfigsRequest>;
 
 export type ListProjectsLocationsLicenseConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaListLicenseConfigsResponse;
@@ -37430,7 +37612,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -37469,7 +37651,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -37512,7 +37694,7 @@ export const CollectProjectsLocationsUserEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/userEvents:collect" }),
     svc,
-  ) as unknown as Schema.Schema<CollectProjectsLocationsUserEventsRequest>;
+  ) as unknown as Schema.Codec<CollectProjectsLocationsUserEventsRequest>;
 
 export type CollectProjectsLocationsUserEventsResponse = GoogleApiHttpBody;
 export const CollectProjectsLocationsUserEventsResponse =
@@ -37558,7 +37740,7 @@ export const WriteProjectsLocationsUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WriteProjectsLocationsUserEventsRequest>;
+  ) as unknown as Schema.Codec<WriteProjectsLocationsUserEventsRequest>;
 
 export type WriteProjectsLocationsUserEventsResponse =
   GoogleCloudDiscoveryengineV1alphaUserEvent;
@@ -37604,7 +37786,7 @@ export const ImportProjectsLocationsUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsUserEventsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsUserEventsRequest>;
 
 export type ImportProjectsLocationsUserEventsResponse =
   GoogleLongrunningOperation;
@@ -37652,7 +37834,7 @@ export const PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
+  ) as unknown as Schema.Codec<PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
 
 export type PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresResponse =
   GoogleLongrunningOperation;
@@ -37700,7 +37882,7 @@ export const ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
+  ) as unknown as Schema.Codec<ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
 
 export type ImportIdentityMappingsProjectsLocationsIdentityMappingStoresResponse =
   GoogleLongrunningOperation;
@@ -37748,7 +37930,7 @@ export const ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest =
       path: "v1alpha/{+identityMappingStore}:listIdentityMappings",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
+  ) as unknown as Schema.Codec<ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
 
 export type ListIdentityMappingsProjectsLocationsIdentityMappingStoresResponse =
   GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse;
@@ -37811,7 +37993,7 @@ export const CreateProjectsLocationsIdentityMappingStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsIdentityMappingStoresRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsIdentityMappingStoresRequest>;
 
 export type CreateProjectsLocationsIdentityMappingStoresResponse =
   GoogleCloudDiscoveryengineV1alphaIdentityMappingStore;
@@ -37848,7 +38030,7 @@ export const GetProjectsLocationsIdentityMappingStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsIdentityMappingStoresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsIdentityMappingStoresRequest>;
 
 export type GetProjectsLocationsIdentityMappingStoresResponse =
   GoogleCloudDiscoveryengineV1alphaIdentityMappingStore;
@@ -37883,7 +38065,7 @@ export const DeleteProjectsLocationsIdentityMappingStoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsIdentityMappingStoresRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsIdentityMappingStoresRequest>;
 
 export type DeleteProjectsLocationsIdentityMappingStoresResponse =
   GoogleLongrunningOperation;
@@ -37926,7 +38108,7 @@ export const ListProjectsLocationsIdentityMappingStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/identityMappingStores" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIdentityMappingStoresRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIdentityMappingStoresRequest>;
 
 export type ListProjectsLocationsIdentityMappingStoresResponse =
   GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse;
@@ -37979,7 +38161,7 @@ export const ListProjectsLocationsIdentityMappingStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIdentityMappingStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIdentityMappingStoresOperationsRequest>;
 
 export type ListProjectsLocationsIdentityMappingStoresOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -38018,7 +38200,7 @@ export const GetProjectsLocationsIdentityMappingStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsIdentityMappingStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsIdentityMappingStoresOperationsRequest>;
 
 export type GetProjectsLocationsIdentityMappingStoresOperationsResponse =
   GoogleLongrunningOperation;
@@ -38062,7 +38244,7 @@ export const CheckProjectsLocationsGroundingConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckProjectsLocationsGroundingConfigsRequest>;
+  ) as unknown as Schema.Codec<CheckProjectsLocationsGroundingConfigsRequest>;
 
 export type CheckProjectsLocationsGroundingConfigsResponse =
   GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse;
@@ -38113,7 +38295,7 @@ export const ListProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsOperationsRequest>;
 
 export type ListProjectsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -38149,7 +38331,7 @@ export const GetProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =

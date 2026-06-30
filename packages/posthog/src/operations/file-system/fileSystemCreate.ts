@@ -4,6 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemCreateInput {
+  project_id: string;
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const FileSystemCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
@@ -18,10 +31,21 @@ export const FileSystemCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/file_system/" }),
-);
-export type FileSystemCreateInput = typeof FileSystemCreateInput.Type;
+) as unknown as Schema.Codec<FileSystemCreateInput>;
 
 // Output Schema
+export interface FileSystemCreateOutput {
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const FileSystemCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -35,8 +59,7 @@ export const FileSystemCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     created_at: Schema.optional(Schema.String),
     last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
   },
-);
-export type FileSystemCreateOutput = typeof FileSystemCreateOutput.Type;
+) as unknown as Schema.Codec<FileSystemCreateOutput>;
 
 // The operation
 /**

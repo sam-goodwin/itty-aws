@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupPeerInput {
+  groupId: string;
+  peerId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   peerId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const UpdateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/api/atlas/v2/groups/{groupId}/peers/{peerId}",
   }),
-);
-export type UpdateGroupPeerInput = typeof UpdateGroupPeerInput.Type;
+) as unknown as Schema.Codec<UpdateGroupPeerInput>;
 
 // Output Schema
-export const UpdateGroupPeerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupPeerOutput = typeof UpdateGroupPeerOutput.Type;
+export type UpdateGroupPeerOutput = void;
+export const UpdateGroupPeerOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupPeerOutput>;
 
 // The operation
 /**

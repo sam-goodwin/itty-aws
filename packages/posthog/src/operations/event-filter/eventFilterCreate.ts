@@ -3,6 +3,15 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface EventFilterCreateInput {
+  project_id: string;
+  id?: string;
+  mode?: "disabled" | "dry_run" | "live";
+  filter_tree?: unknown;
+  test_cases?: unknown;
+  created_at?: string;
+  updated_at?: string;
+}
 export const EventFilterCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,10 +24,17 @@ export const EventFilterCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/event_filter/" }),
-);
-export type EventFilterCreateInput = typeof EventFilterCreateInput.Type;
+) as unknown as Schema.Codec<EventFilterCreateInput>;
 
 // Output Schema
+export interface EventFilterCreateOutput {
+  id?: string;
+  mode?: "disabled" | "dry_run" | "live";
+  filter_tree?: unknown;
+  test_cases?: unknown;
+  created_at?: string;
+  updated_at?: string;
+}
 export const EventFilterCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -27,8 +43,7 @@ export const EventFilterCreateOutput =
     test_cases: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type EventFilterCreateOutput = typeof EventFilterCreateOutput.Type;
+  }) as unknown as Schema.Codec<EventFilterCreateOutput>;
 
 // The operation
 /**

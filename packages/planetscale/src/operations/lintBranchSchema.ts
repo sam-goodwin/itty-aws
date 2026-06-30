@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface LintBranchSchemaInput {
+  organization: string;
+  database: string;
+  branch: string;
+  page?: number;
+  per_page?: number;
+}
 export const LintBranchSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -15,10 +22,36 @@ export const LintBranchSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/schema/lint",
   }),
-);
-export type LintBranchSchemaInput = typeof LintBranchSchemaInput.Type;
+) as unknown as Schema.Codec<LintBranchSchemaInput>;
 
 // Output Schema
+export interface LintBranchSchemaOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    lint_error: string;
+    subject_type: "table" | "vschema" | "routing_rules";
+    keyspace_name: string;
+    table_name: string;
+    error_description: string;
+    docs_url: string;
+    column_name: string;
+    foreign_key_column_names: string[];
+    auto_increment_column_names: string[];
+    charset_name: string;
+    engine_name: string;
+    vindex_name: string;
+    json_path: string;
+    check_constraint_name: string;
+    enum_value: string;
+    partitioning_type: string;
+    partition_name: string;
+  }[];
+}
 export const LintBranchSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     type: Schema.String,
@@ -49,8 +82,7 @@ export const LintBranchSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type LintBranchSchemaOutput = typeof LintBranchSchemaOutput.Type;
+) as unknown as Schema.Codec<LintBranchSchemaOutput>;
 
 // The operation
 /**

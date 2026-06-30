@@ -4,16 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetSkuInput {
+  skuId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   skuId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/skus/{skuId}" }));
-export type GetSkuInput = typeof GetSkuInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/skus/{skuId}" }),
+) as unknown as Schema.Codec<GetSkuInput>;
 
 // Output Schema
-export const GetSkuOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetSkuOutput = typeof GetSkuOutput.Type;
+export type GetSkuOutput = void;
+export const GetSkuOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetSkuOutput>;
 
 // The operation
 /**

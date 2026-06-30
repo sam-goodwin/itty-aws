@@ -4,15 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface GetSystemStatusInput {
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetSystemStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2" }));
-export type GetSystemStatusInput = typeof GetSystemStatusInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2" }),
+) as unknown as Schema.Codec<GetSystemStatusInput>;
 
 // Output Schema
-export const GetSystemStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetSystemStatusOutput = typeof GetSystemStatusOutput.Type;
+export type GetSystemStatusOutput = void;
+export const GetSystemStatusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetSystemStatusOutput>;
 
 // The operation
 /**

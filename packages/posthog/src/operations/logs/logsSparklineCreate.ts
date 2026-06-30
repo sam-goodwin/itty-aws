@@ -4,6 +4,42 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsSparklineCreateInput {
+  project_id: string;
+  query?: {
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    severityLevels?: (
+      | "trace"
+      | "debug"
+      | "info"
+      | "warn"
+      | "error"
+      | "fatal"
+    )[];
+    serviceNames?: string[];
+    searchTerm?: string;
+    filterGroup?: {
+      key?: string;
+      type?: "log" | "log_attribute" | "log_resource_attribute";
+      operator?:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_date_exact"
+        | "is_date_before"
+        | "is_date_after"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+    sparklineBreakdownBy?: "severity" | "service";
+  };
+}
 export const LogsSparklineCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -71,10 +107,18 @@ export const LogsSparklineCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/logs/sparkline/",
     }),
-  );
-export type LogsSparklineCreateInput = typeof LogsSparklineCreateInput.Type;
+  ) as unknown as Schema.Codec<LogsSparklineCreateInput>;
 
 // Output Schema
+export interface LogsSparklineCreateOutput {
+  results?: {
+    time?: string;
+    severity?: string;
+    service?: string;
+    count?: number;
+    bytes_uncompressed?: number;
+  }[];
+}
 export const LogsSparklineCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -88,8 +132,7 @@ export const LogsSparklineCreateOutput =
         }),
       ),
     ),
-  });
-export type LogsSparklineCreateOutput = typeof LogsSparklineCreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsSparklineCreateOutput>;
 
 // The operation
 /**

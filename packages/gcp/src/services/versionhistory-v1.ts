@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -40,7 +40,7 @@ export interface Channel {
     | (string & {});
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     channelType: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export interface Version {
   version?: string;
 }
 
-export const Version: Schema.Schema<Version> =
+export const Version: Schema.Codec<Version> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface ListVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
+export const ListVersionsResponse: Schema.Codec<ListVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(Version)),
     nextPageToken: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -92,7 +92,7 @@ export interface RolloutData {
   tag?: ReadonlyArray<string>;
 }
 
-export const RolloutData: Schema.Schema<RolloutData> =
+export const RolloutData: Schema.Codec<RolloutData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rolloutName: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.Array(Schema.String)),
@@ -115,7 +115,7 @@ export interface Release {
   pinnable?: boolean;
 }
 
-export const Release: Schema.Schema<Release> =
+export const Release: Schema.Codec<Release> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     serving: Schema.optional(Interval),
@@ -133,7 +133,7 @@ export interface ListReleasesResponse {
   releases?: ReadonlyArray<Release>;
 }
 
-export const ListReleasesResponse: Schema.Schema<ListReleasesResponse> =
+export const ListReleasesResponse: Schema.Codec<ListReleasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     releases: Schema.optional(Schema.Array(Release)),
@@ -163,7 +163,7 @@ export interface Platform {
   name?: string;
 }
 
-export const Platform: Schema.Schema<Platform> =
+export const Platform: Schema.Codec<Platform> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platformType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export interface ListPlatformsResponse {
   nextPageToken?: string;
 }
 
-export const ListPlatformsResponse: Schema.Schema<ListPlatformsResponse> =
+export const ListPlatformsResponse: Schema.Codec<ListPlatformsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platforms: Schema.optional(Schema.Array(Platform)),
     nextPageToken: Schema.optional(Schema.String),
@@ -189,7 +189,7 @@ export interface ListChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
+export const ListChannelsResponse: Schema.Codec<ListChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channels: Schema.optional(Schema.Array(Channel)),
     nextPageToken: Schema.optional(Schema.String),
@@ -242,7 +242,7 @@ export const ListPlatformsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+parent}/platforms" }),
   svc,
-) as unknown as Schema.Schema<ListPlatformsRequest>;
+) as unknown as Schema.Codec<ListPlatformsRequest>;
 
 export type ListPlatformsResponse_Op = ListPlatformsResponse;
 export const ListPlatformsResponse_Op =
@@ -283,7 +283,7 @@ export const ListPlatformsChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/channels" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlatformsChannelsRequest>;
+  ) as unknown as Schema.Codec<ListPlatformsChannelsRequest>;
 
 export type ListPlatformsChannelsResponse = ListChannelsResponse;
 export const ListPlatformsChannelsResponse =
@@ -330,7 +330,7 @@ export const ListPlatformsChannelsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlatformsChannelsVersionsRequest>;
+  ) as unknown as Schema.Codec<ListPlatformsChannelsVersionsRequest>;
 
 export type ListPlatformsChannelsVersionsResponse = ListVersionsResponse;
 export const ListPlatformsChannelsVersionsResponse =
@@ -380,7 +380,7 @@ export const ListPlatformsChannelsVersionsReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/releases" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlatformsChannelsVersionsReleasesRequest>;
+  ) as unknown as Schema.Codec<ListPlatformsChannelsVersionsReleasesRequest>;
 
 export type ListPlatformsChannelsVersionsReleasesResponse =
   ListReleasesResponse;

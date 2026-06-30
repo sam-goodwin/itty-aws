@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansTraceCreateInput {
+  project_id: string;
+  trace_id: string;
+  dateRange?: { date_from?: string | null; date_to?: string | null };
+  excludeAttributes?: boolean;
+  offset?: number;
+}
 export const TracingSpansTraceCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -20,15 +27,12 @@ export const TracingSpansTraceCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tracing/spans/trace/{trace_id}/",
     }),
-  );
-export type TracingSpansTraceCreateInput =
-  typeof TracingSpansTraceCreateInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansTraceCreateInput>;
 
 // Output Schema
+export type TracingSpansTraceCreateOutput = void;
 export const TracingSpansTraceCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TracingSpansTraceCreateOutput =
-  typeof TracingSpansTraceCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansTraceCreateOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -52,7 +52,7 @@ export interface GoogleCloudEssentialcontactsV1Contact {
   validateTime?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1Contact: Schema.Schema<GoogleCloudEssentialcontactsV1Contact> =
+export const GoogleCloudEssentialcontactsV1Contact: Schema.Codec<GoogleCloudEssentialcontactsV1Contact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1ListContactsResponse: Schema.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse> =
+export const GoogleCloudEssentialcontactsV1ListContactsResponse: Schema.Codec<GoogleCloudEssentialcontactsV1ListContactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contacts: Schema.optional(
       Schema.Array(GoogleCloudEssentialcontactsV1Contact),
@@ -83,7 +83,7 @@ export const GoogleCloudEssentialcontactsV1ListContactsResponse: Schema.Schema<G
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -95,7 +95,7 @@ export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1ComputeContactsResponse: Schema.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse> =
+export const GoogleCloudEssentialcontactsV1ComputeContactsResponse: Schema.Codec<GoogleCloudEssentialcontactsV1ComputeContactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contacts: Schema.optional(
       Schema.Array(GoogleCloudEssentialcontactsV1Contact),
@@ -122,7 +122,7 @@ export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
     | (string & {});
 }
 
-export const GoogleCloudEssentialcontactsV1SendTestMessageRequest: Schema.Schema<GoogleCloudEssentialcontactsV1SendTestMessageRequest> =
+export const GoogleCloudEssentialcontactsV1SendTestMessageRequest: Schema.Codec<GoogleCloudEssentialcontactsV1SendTestMessageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contacts: Schema.optional(Schema.Array(Schema.String)),
     notificationCategory: Schema.optional(Schema.String),
@@ -200,7 +200,7 @@ export const CreateProjectsContactsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/contacts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsContactsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsContactsRequest>;
 
 export type CreateProjectsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
@@ -245,7 +245,7 @@ export const PatchProjectsContactsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsContactsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsContactsRequest>;
 
 export type PatchProjectsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
@@ -288,7 +288,7 @@ export const ListProjectsContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/contacts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsContactsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsContactsRequest>;
 
 export type ListProjectsContactsResponse =
   GoogleCloudEssentialcontactsV1ListContactsResponse;
@@ -324,7 +324,7 @@ export const GetProjectsContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsContactsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsContactsRequest>;
 
 export type GetProjectsContactsResponse = GoogleCloudEssentialcontactsV1Contact;
 export const GetProjectsContactsResponse =
@@ -355,7 +355,7 @@ export const DeleteProjectsContactsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsContactsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsContactsRequest>;
 
 export type DeleteProjectsContactsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsContactsResponse =
@@ -412,7 +412,7 @@ export const ComputeProjectsContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/contacts:compute" }),
     svc,
-  ) as unknown as Schema.Schema<ComputeProjectsContactsRequest>;
+  ) as unknown as Schema.Codec<ComputeProjectsContactsRequest>;
 
 export type ComputeProjectsContactsResponse =
   GoogleCloudEssentialcontactsV1ComputeContactsResponse;
@@ -457,7 +457,7 @@ export const SendTestMessageProjectsContactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SendTestMessageProjectsContactsRequest>;
+  ) as unknown as Schema.Codec<SendTestMessageProjectsContactsRequest>;
 
 export type SendTestMessageProjectsContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageProjectsContactsResponse =
@@ -498,7 +498,7 @@ export const CreateFoldersContactsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/contacts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateFoldersContactsRequest>;
+  ) as unknown as Schema.Codec<CreateFoldersContactsRequest>;
 
 export type CreateFoldersContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
@@ -543,7 +543,7 @@ export const PatchFoldersContactsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchFoldersContactsRequest>;
+  ) as unknown as Schema.Codec<PatchFoldersContactsRequest>;
 
 export type PatchFoldersContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
@@ -586,7 +586,7 @@ export const ListFoldersContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/contacts" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersContactsRequest>;
+  ) as unknown as Schema.Codec<ListFoldersContactsRequest>;
 
 export type ListFoldersContactsResponse =
   GoogleCloudEssentialcontactsV1ListContactsResponse;
@@ -622,7 +622,7 @@ export const GetFoldersContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersContactsRequest>;
+  ) as unknown as Schema.Codec<GetFoldersContactsRequest>;
 
 export type GetFoldersContactsResponse = GoogleCloudEssentialcontactsV1Contact;
 export const GetFoldersContactsResponse =
@@ -653,7 +653,7 @@ export const DeleteFoldersContactsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteFoldersContactsRequest>;
+  ) as unknown as Schema.Codec<DeleteFoldersContactsRequest>;
 
 export type DeleteFoldersContactsResponse = GoogleProtobufEmpty;
 export const DeleteFoldersContactsResponse =
@@ -710,7 +710,7 @@ export const ComputeFoldersContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/contacts:compute" }),
     svc,
-  ) as unknown as Schema.Schema<ComputeFoldersContactsRequest>;
+  ) as unknown as Schema.Codec<ComputeFoldersContactsRequest>;
 
 export type ComputeFoldersContactsResponse =
   GoogleCloudEssentialcontactsV1ComputeContactsResponse;
@@ -755,7 +755,7 @@ export const SendTestMessageFoldersContactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SendTestMessageFoldersContactsRequest>;
+  ) as unknown as Schema.Codec<SendTestMessageFoldersContactsRequest>;
 
 export type SendTestMessageFoldersContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageFoldersContactsResponse =
@@ -796,7 +796,7 @@ export const CreateOrganizationsContactsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/contacts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsContactsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsContactsRequest>;
 
 export type CreateOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
@@ -841,7 +841,7 @@ export const PatchOrganizationsContactsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsContactsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsContactsRequest>;
 
 export type PatchOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
@@ -884,7 +884,7 @@ export const ListOrganizationsContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/contacts" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsContactsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsContactsRequest>;
 
 export type ListOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1ListContactsResponse;
@@ -923,7 +923,7 @@ export const GetOrganizationsContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsContactsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsContactsRequest>;
 
 export type GetOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1Contact;
@@ -958,7 +958,7 @@ export const DeleteOrganizationsContactsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsContactsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsContactsRequest>;
 
 export type DeleteOrganizationsContactsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsContactsResponse =
@@ -1015,7 +1015,7 @@ export const ComputeOrganizationsContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/contacts:compute" }),
     svc,
-  ) as unknown as Schema.Schema<ComputeOrganizationsContactsRequest>;
+  ) as unknown as Schema.Codec<ComputeOrganizationsContactsRequest>;
 
 export type ComputeOrganizationsContactsResponse =
   GoogleCloudEssentialcontactsV1ComputeContactsResponse;
@@ -1063,7 +1063,7 @@ export const SendTestMessageOrganizationsContactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SendTestMessageOrganizationsContactsRequest>;
+  ) as unknown as Schema.Codec<SendTestMessageOrganizationsContactsRequest>;
 
 export type SendTestMessageOrganizationsContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageOrganizationsContactsResponse =

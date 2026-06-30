@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOauthApplicationInput {
+  organization: string;
+  application_id: string;
+}
 export const GetOauthApplicationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,26 @@ export const GetOauthApplicationInput =
       method: "GET",
       path: "/organizations/{organization}/oauth-applications/{application_id}",
     }),
-  );
-export type GetOauthApplicationInput = typeof GetOauthApplicationInput.Type;
+  ) as unknown as Schema.Codec<GetOauthApplicationInput>;
 
 // Output Schema
+export interface GetOauthApplicationOutput {
+  id: string;
+  name: string;
+  redirect_uri: string;
+  domain: string;
+  created_at: string;
+  updated_at: string;
+  scopes: string;
+  avatar: string;
+  client_id: string;
+  tokens: number;
+  dcr: boolean;
+  single_org_authorization: boolean;
+  requires_org_scope: boolean;
+  scopes_by_resource: Record<string, unknown>;
+  all_scopes_by_resource: Record<string, unknown>;
+}
 export const GetOauthApplicationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -34,8 +54,7 @@ export const GetOauthApplicationOutput =
     requires_org_scope: Schema.Boolean,
     scopes_by_resource: Schema.Record(Schema.String, Schema.Unknown),
     all_scopes_by_resource: Schema.Record(Schema.String, Schema.Unknown),
-  });
-export type GetOauthApplicationOutput = typeof GetOauthApplicationOutput.Type;
+  }) as unknown as Schema.Codec<GetOauthApplicationOutput>;
 
 // The operation
 /**

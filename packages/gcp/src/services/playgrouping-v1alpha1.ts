@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,28 +35,29 @@ export interface Tag {
   stringValue?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     int64Value: Schema.optional(Schema.String),
     timeValue: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
     booleanValue: Schema.optional(Schema.Boolean),
     stringValue: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tag" });
+  },
+).annotate({ identifier: "Tag" });
 
 export interface CreateOrUpdateTagsRequest {
   /** Tags to be inserted or updated. */
   tags?: ReadonlyArray<Tag>;
 }
 
-export const CreateOrUpdateTagsRequest: Schema.Schema<CreateOrUpdateTagsRequest> =
+export const CreateOrUpdateTagsRequest: Schema.Codec<CreateOrUpdateTagsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "CreateOrUpdateTagsRequest" });
 
 export interface VerifyTokenResponse {}
 
-export const VerifyTokenResponse: Schema.Schema<VerifyTokenResponse> =
+export const VerifyTokenResponse: Schema.Codec<VerifyTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "VerifyTokenResponse",
   });
@@ -66,7 +67,7 @@ export interface CreateOrUpdateTagsResponse {
   tags?: ReadonlyArray<Tag>;
 }
 
-export const CreateOrUpdateTagsResponse: Schema.Schema<CreateOrUpdateTagsResponse> =
+export const CreateOrUpdateTagsResponse: Schema.Codec<CreateOrUpdateTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "CreateOrUpdateTagsResponse" });
@@ -76,7 +77,7 @@ export interface VerifyTokenRequest {
   persona?: string;
 }
 
-export const VerifyTokenRequest: Schema.Schema<VerifyTokenRequest> =
+export const VerifyTokenRequest: Schema.Codec<VerifyTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     persona: Schema.optional(Schema.String),
   }).annotate({ identifier: "VerifyTokenRequest" });
@@ -156,7 +157,7 @@ export const VerifyAppsTokensRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<VerifyAppsTokensRequest>;
+  ) as unknown as Schema.Codec<VerifyAppsTokensRequest>;
 
 export type VerifyAppsTokensResponse = VerifyTokenResponse;
 export const VerifyAppsTokensResponse =
@@ -202,7 +203,7 @@ export const CreateOrUpdateAppsTokensTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrUpdateAppsTokensTagsRequest>;
+  ) as unknown as Schema.Codec<CreateOrUpdateAppsTokensTagsRequest>;
 
 export type CreateOrUpdateAppsTokensTagsResponse = CreateOrUpdateTagsResponse;
 export const CreateOrUpdateAppsTokensTagsResponse =

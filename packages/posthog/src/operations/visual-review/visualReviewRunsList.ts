@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewRunsListInput {
+  project_id: string;
+  branch?: string;
+  commit_sha?: string;
+  limit?: number;
+  offset?: number;
+  pr_number?: number;
+  review_state?: string;
+  search?: string;
+}
 export const VisualReviewRunsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -19,10 +29,42 @@ export const VisualReviewRunsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/runs/",
     }),
-  );
-export type VisualReviewRunsListInput = typeof VisualReviewRunsListInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsListInput>;
 
 // Output Schema
+export interface VisualReviewRunsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    approved_by?: { id?: number; first_name?: string; email?: string } | null;
+    search_match_type?: "exact" | "similar" | null;
+    id?: string;
+    repo_id?: string;
+    status?: string;
+    run_type?: string;
+    commit_sha?: string;
+    branch?: string;
+    pr_number?: number | null;
+    approved?: boolean;
+    approved_at?: string | null;
+    summary?: {
+      total?: number;
+      changed?: number;
+      new?: number;
+      removed?: number;
+      unchanged?: number;
+      unresolved?: number;
+      tolerated_matched?: number;
+    };
+    error_message?: string | null;
+    created_at?: string;
+    completed_at?: string | null;
+    is_stale?: boolean;
+    superseded_by_id?: string | null;
+    metadata?: Record<string, unknown>;
+  }[];
+}
 export const VisualReviewRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -31,8 +73,18 @@ export const VisualReviewRunsListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          approved_by: Schema.optional(Schema.Unknown),
-          search_match_type: Schema.optional(Schema.Unknown),
+          approved_by: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.Number),
+                first_name: Schema.optional(Schema.String),
+                email: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          search_match_type: Schema.optional(
+            Schema.NullOr(Schema.Literals(["exact", "similar"])),
+          ),
           id: Schema.optional(Schema.String),
           repo_id: Schema.optional(Schema.String),
           status: Schema.optional(Schema.String),
@@ -64,8 +116,7 @@ export const VisualReviewRunsListOutput =
         }),
       ),
     ),
-  });
-export type VisualReviewRunsListOutput = typeof VisualReviewRunsListOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsListOutput>;
 
 // The operation
 /**

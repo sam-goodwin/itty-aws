@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsMyFlagsRetrieveInput {
+  project_id: string;
+  groups?: string;
+}
 export const FeatureFlagsMyFlagsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,26 @@ export const FeatureFlagsMyFlagsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/feature_flags/my_flags/",
     }),
-  );
-export type FeatureFlagsMyFlagsRetrieveInput =
-  typeof FeatureFlagsMyFlagsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsMyFlagsRetrieveInput>;
 
 // Output Schema
+export type FeatureFlagsMyFlagsRetrieveOutput = {
+  feature_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  value?: unknown;
+}[];
 export const FeatureFlagsMyFlagsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -36,16 +55,28 @@ export const FeatureFlagsMyFlagsRetrieveOutput =
             Schema.NullOr(Schema.Boolean),
           ),
           version: Schema.optional(Schema.NullOr(Schema.Number)),
-          evaluation_runtime: Schema.optional(Schema.Unknown),
-          bucketing_identifier: Schema.optional(Schema.Unknown),
+          evaluation_runtime: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals(["server", "client", "all"]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
+          bucketing_identifier: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals(["distinct_id", "device_id"]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
           evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
         }),
       ),
       value: Schema.optional(Schema.Unknown),
     }),
-  );
-export type FeatureFlagsMyFlagsRetrieveOutput =
-  typeof FeatureFlagsMyFlagsRetrieveOutput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsMyFlagsRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionRecordingsSharingPasswordsDestroyInput {
+  password_id: string;
+  project_id: string;
+  recording_id: string;
+}
 export const SessionRecordingsSharingPasswordsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const SessionRecordingsSharingPasswordsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/session_recordings/{recording_id}/sharing/passwords/{password_id}/",
     }),
-  );
-export type SessionRecordingsSharingPasswordsDestroyInput =
-  typeof SessionRecordingsSharingPasswordsDestroyInput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingsSharingPasswordsDestroyInput>;
 
 // Output Schema
+export type SessionRecordingsSharingPasswordsDestroyOutput = void;
 export const SessionRecordingsSharingPasswordsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SessionRecordingsSharingPasswordsDestroyOutput =
-  typeof SessionRecordingsSharingPasswordsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SessionRecordingsSharingPasswordsDestroyOutput>;
 
 // The operation
 /**

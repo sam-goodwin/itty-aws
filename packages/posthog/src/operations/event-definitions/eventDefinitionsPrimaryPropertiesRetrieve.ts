@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface EventDefinitionsPrimaryPropertiesRetrieveInput {
+  project_id: string;
+  names?: string;
+}
 export const EventDefinitionsPrimaryPropertiesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const EventDefinitionsPrimaryPropertiesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/event_definitions/primary_properties/",
     }),
-  );
-export type EventDefinitionsPrimaryPropertiesRetrieveInput =
-  typeof EventDefinitionsPrimaryPropertiesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EventDefinitionsPrimaryPropertiesRetrieveInput>;
 
 // Output Schema
+export interface EventDefinitionsPrimaryPropertiesRetrieveOutput {
+  primary_properties: Record<string, string>;
+}
 export const EventDefinitionsPrimaryPropertiesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primary_properties: Schema.Record(Schema.String, Schema.String),
-  });
-export type EventDefinitionsPrimaryPropertiesRetrieveOutput =
-  typeof EventDefinitionsPrimaryPropertiesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<EventDefinitionsPrimaryPropertiesRetrieveOutput>;
 
 // The operation
 /**

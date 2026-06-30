@@ -4,11 +4,31 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface EmployeesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  employeeName: string;
+  properties?: {
+    age?: number;
+    city?: string;
+    profile?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const EmployeesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -40,11 +60,22 @@ export const EmployeesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
       apiVersion: "2021-11-01",
     }),
-  );
-export type EmployeesCreateOrUpdateInput =
-  typeof EmployeesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EmployeesCreateOrUpdateInput>;
 
 // Output Schema
+export interface EmployeesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EmployeesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -64,9 +95,7 @@ export const EmployeesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EmployeesCreateOrUpdateOutput =
-  typeof EmployeesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EmployeesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -84,6 +113,11 @@ export const EmployeesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EmployeesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  employeeName: string;
+}
 export const EmployeesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -94,12 +128,12 @@ export const EmployeesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
     apiVersion: "2021-11-01",
   }),
-);
-export type EmployeesDeleteInput = typeof EmployeesDeleteInput.Type;
+) as unknown as Schema.Codec<EmployeesDeleteInput>;
 
 // Output Schema
-export const EmployeesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EmployeesDeleteOutput = typeof EmployeesDeleteOutput.Type;
+export type EmployeesDeleteOutput = void;
+export const EmployeesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EmployeesDeleteOutput>;
 
 // The operation
 /**
@@ -115,6 +149,11 @@ export const EmployeesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmployeesDeleteOutput,
 }));
 // Input Schema
+export interface EmployeesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  employeeName: string;
+}
 export const EmployeesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -125,10 +164,22 @@ export const EmployeesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
     apiVersion: "2021-11-01",
   }),
-);
-export type EmployeesGetInput = typeof EmployeesGetInput.Type;
+) as unknown as Schema.Codec<EmployeesGetInput>;
 
 // Output Schema
+export interface EmployeesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EmployeesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -147,8 +198,7 @@ export const EmployeesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EmployeesGetOutput = typeof EmployeesGetOutput.Type;
+}) as unknown as Schema.Codec<EmployeesGetOutput>;
 
 // The operation
 /**
@@ -164,6 +214,10 @@ export const EmployeesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmployeesGetOutput,
 }));
 // Input Schema
+export interface EmployeesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const EmployeesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -174,11 +228,25 @@ export const EmployeesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees",
       apiVersion: "2021-11-01",
     }),
-  );
-export type EmployeesListByResourceGroupInput =
-  typeof EmployeesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<EmployeesListByResourceGroupInput>;
 
 // Output Schema
+export interface EmployeesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EmployeesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -213,9 +281,7 @@ export const EmployeesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EmployeesListByResourceGroupOutput =
-  typeof EmployeesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<EmployeesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -231,6 +297,9 @@ export const EmployeesListByResourceGroup =
     outputSchema: EmployeesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface EmployeesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const EmployeesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -240,11 +309,25 @@ export const EmployeesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Contoso/employees",
       apiVersion: "2021-11-01",
     }),
-  );
-export type EmployeesListBySubscriptionInput =
-  typeof EmployeesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<EmployeesListBySubscriptionInput>;
 
 // Output Schema
+export interface EmployeesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EmployeesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -279,9 +362,7 @@ export const EmployeesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EmployeesListBySubscriptionOutput =
-  typeof EmployeesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<EmployeesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -297,6 +378,25 @@ export const EmployeesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EmployeesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  employeeName: string;
+  properties?: {
+    age?: number;
+    city?: string;
+    profile?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+  tags?: Record<string, string>;
+}
 export const EmployeesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -326,10 +426,22 @@ export const EmployeesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees/{employeeName}",
     apiVersion: "2021-11-01",
   }),
-);
-export type EmployeesUpdateInput = typeof EmployeesUpdateInput.Type;
+) as unknown as Schema.Codec<EmployeesUpdateInput>;
 
 // Output Schema
+export interface EmployeesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EmployeesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -348,8 +460,7 @@ export const EmployeesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EmployeesUpdateOutput = typeof EmployeesUpdateOutput.Type;
+}) as unknown as Schema.Codec<EmployeesUpdateOutput>;
 
 // The operation
 /**
@@ -365,6 +476,7 @@ export const EmployeesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmployeesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -373,10 +485,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Contoso/operations",
     apiVersion: "2021-11-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -399,8 +525,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

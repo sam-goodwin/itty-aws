@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetInvoiceRenderingTemplatesTemplateInput {
+  template: string;
+  expand?: string;
+  version?: number;
+}
 export const GetInvoiceRenderingTemplatesTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,19 @@ export const GetInvoiceRenderingTemplatesTemplateInput =
       path: "/v1/invoice_rendering_templates/{template}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetInvoiceRenderingTemplatesTemplateInput =
-  typeof GetInvoiceRenderingTemplatesTemplateInput.Type;
+  ) as unknown as Schema.Codec<GetInvoiceRenderingTemplatesTemplateInput>;
 
 // Output Schema
+export interface GetInvoiceRenderingTemplatesTemplateOutput {
+  created: number;
+  id: string;
+  livemode: boolean;
+  metadata: Record<string, string> | null;
+  nickname: string | null;
+  object: "invoice_rendering_template";
+  status: "active" | "archived";
+  version: number;
+}
 export const GetInvoiceRenderingTemplatesTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -29,9 +42,7 @@ export const GetInvoiceRenderingTemplatesTemplateOutput =
     object: Schema.Literals(["invoice_rendering_template"]),
     status: Schema.Literals(["active", "archived"]),
     version: Schema.Number,
-  });
-export type GetInvoiceRenderingTemplatesTemplateOutput =
-  typeof GetInvoiceRenderingTemplatesTemplateOutput.Type;
+  }) as unknown as Schema.Codec<GetInvoiceRenderingTemplatesTemplateOutput>;
 
 // The operation
 /**

@@ -2,19 +2,40 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface WebhookEndpointsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const WebhookEndpointsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     order: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/webhook_endpoints" }));
-export type WebhookEndpointsControllerListInput =
-  typeof WebhookEndpointsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/webhook_endpoints" }),
+  ) as unknown as Schema.Codec<WebhookEndpointsControllerListInput>;
 
 // Output Schema
+export interface WebhookEndpointsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    endpoint_url?: string;
+    secret?: Redacted.Redacted<string>;
+    status?: "enabled" | "disabled";
+    events?: string[];
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const WebhookEndpointsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -38,9 +59,7 @@ export const WebhookEndpointsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type WebhookEndpointsControllerListOutput =
-  typeof WebhookEndpointsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<WebhookEndpointsControllerListOutput>;
 
 // The operation
 /**

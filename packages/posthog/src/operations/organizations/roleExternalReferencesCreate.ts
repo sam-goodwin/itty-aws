@@ -4,6 +4,38 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface RoleExternalReferencesCreateInput {
+  organization_id: string;
+  id?: string;
+  provider?: string;
+  provider_organization_id?: string;
+  provider_role_id?: string;
+  provider_role_slug?: string | null;
+  provider_role_name?: string;
+  role?: string;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}
 export const RoleExternalReferencesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -28,7 +60,23 @@ export const RoleExternalReferencesCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -37,11 +85,40 @@ export const RoleExternalReferencesCreateInput =
       method: "POST",
       path: "/api/organizations/{organization_id}/role_external_references/",
     }),
-  );
-export type RoleExternalReferencesCreateInput =
-  typeof RoleExternalReferencesCreateInput.Type;
+  ) as unknown as Schema.Codec<RoleExternalReferencesCreateInput>;
 
 // Output Schema
+export interface RoleExternalReferencesCreateOutput {
+  id?: string;
+  provider?: string;
+  provider_organization_id?: string;
+  provider_role_id?: string;
+  provider_role_slug?: string | null;
+  provider_role_name?: string;
+  role?: string;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}
 export const RoleExternalReferencesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -65,13 +142,27 @@ export const RoleExternalReferencesCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
-  });
-export type RoleExternalReferencesCreateOutput =
-  typeof RoleExternalReferencesCreateOutput.Type;
+  }) as unknown as Schema.Codec<RoleExternalReferencesCreateOutput>;
 
 // The operation
 /**

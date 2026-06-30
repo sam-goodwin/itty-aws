@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DnsResourceReferenceGetByTargetResourcesInput {
+  subscriptionId: string;
+  properties?: { targetResources?: { id?: string }[] };
+}
 export const DnsResourceReferenceGetByTargetResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -29,11 +33,17 @@ export const DnsResourceReferenceGetByTargetResourcesInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/getDnsResourceReference",
       apiVersion: "2018-05-01",
     }),
-  );
-export type DnsResourceReferenceGetByTargetResourcesInput =
-  typeof DnsResourceReferenceGetByTargetResourcesInput.Type;
+  ) as unknown as Schema.Codec<DnsResourceReferenceGetByTargetResourcesInput>;
 
 // Output Schema
+export interface DnsResourceReferenceGetByTargetResourcesOutput {
+  properties?: {
+    dnsResourceReferences?: {
+      dnsResources?: { id?: string }[];
+      targetResource?: { id?: string };
+    }[];
+  };
+}
 export const DnsResourceReferenceGetByTargetResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -58,9 +68,7 @@ export const DnsResourceReferenceGetByTargetResourcesOutput =
         ),
       }),
     ),
-  });
-export type DnsResourceReferenceGetByTargetResourcesOutput =
-  typeof DnsResourceReferenceGetByTargetResourcesOutput.Type;
+  }) as unknown as Schema.Codec<DnsResourceReferenceGetByTargetResourcesOutput>;
 
 // The operation
 /**
@@ -75,6 +83,57 @@ export const DnsResourceReferenceGetByTargetResources =
     outputSchema: DnsResourceReferenceGetByTargetResourcesOutput,
   }));
 // Input Schema
+export interface RecordSetsCreateOrUpdateInput {
+  resourceGroupName: string;
+  zoneName: string;
+  relativeRecordSetName: string;
+  recordType:
+    | "A"
+    | "AAAA"
+    | "CAA"
+    | "CNAME"
+    | "MX"
+    | "NS"
+    | "PTR"
+    | "SOA"
+    | "SRV"
+    | "TXT";
+  subscriptionId: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    TTL?: number;
+    fqdn?: string;
+    provisioningState?: string;
+    targetResource?: { id?: string };
+    ARecords?: { ipv4Address?: string }[];
+    AAAARecords?: { ipv6Address?: string }[];
+    MXRecords?: { preference?: number; exchange?: string }[];
+    NSRecords?: { nsdname?: string }[];
+    PTRRecords?: { ptrdname?: string }[];
+    SRVRecords?: {
+      priority?: number;
+      weight?: number;
+      port?: number;
+      target?: string;
+    }[];
+    TXTRecords?: { value?: string[] }[];
+    CNAMERecord?: { cname?: string };
+    SOARecord?: {
+      host?: string;
+      email?: string;
+      serialNumber?: number;
+      refreshTime?: number;
+      retryTime?: number;
+      expireTime?: number;
+      minimumTTL?: number;
+    };
+    caaRecords?: { flags?: number; tag?: string; value?: string }[];
+  };
+}
 export const RecordSetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -194,11 +253,45 @@ export const RecordSetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
       apiVersion: "2018-05-01",
     }),
-  );
-export type RecordSetsCreateOrUpdateInput =
-  typeof RecordSetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RecordSetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RecordSetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    TTL?: number;
+    fqdn?: string;
+    provisioningState?: string;
+    targetResource?: { id?: string };
+    ARecords?: { ipv4Address?: string }[];
+    AAAARecords?: { ipv6Address?: string }[];
+    MXRecords?: { preference?: number; exchange?: string }[];
+    NSRecords?: { nsdname?: string }[];
+    PTRRecords?: { ptrdname?: string }[];
+    SRVRecords?: {
+      priority?: number;
+      weight?: number;
+      port?: number;
+      target?: string;
+    }[];
+    TXTRecords?: { value?: string[] }[];
+    CNAMERecord?: { cname?: string };
+    SOARecord?: {
+      host?: string;
+      email?: string;
+      serialNumber?: number;
+      refreshTime?: number;
+      retryTime?: number;
+      expireTime?: number;
+      minimumTTL?: number;
+    };
+    caaRecords?: { flags?: number; tag?: string; value?: string }[];
+  };
+}
 export const RecordSetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -296,9 +389,7 @@ export const RecordSetsCreateOrUpdateOutput =
         ),
       }),
     ),
-  });
-export type RecordSetsCreateOrUpdateOutput =
-  typeof RecordSetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RecordSetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -320,6 +411,23 @@ export const RecordSetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RecordSetsDeleteInput {
+  resourceGroupName: string;
+  zoneName: string;
+  relativeRecordSetName: string;
+  recordType:
+    | "A"
+    | "AAAA"
+    | "CAA"
+    | "CNAME"
+    | "MX"
+    | "NS"
+    | "PTR"
+    | "SOA"
+    | "SRV"
+    | "TXT";
+  subscriptionId: string;
+}
 export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
@@ -343,12 +451,12 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
     apiVersion: "2018-05-01",
   }),
-);
-export type RecordSetsDeleteInput = typeof RecordSetsDeleteInput.Type;
+) as unknown as Schema.Codec<RecordSetsDeleteInput>;
 
 // Output Schema
-export const RecordSetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RecordSetsDeleteOutput = typeof RecordSetsDeleteOutput.Type;
+export type RecordSetsDeleteOutput = void;
+export const RecordSetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RecordSetsDeleteOutput>;
 
 // The operation
 /**
@@ -367,6 +475,23 @@ export const RecordSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RecordSetsDeleteOutput,
 }));
 // Input Schema
+export interface RecordSetsGetInput {
+  resourceGroupName: string;
+  zoneName: string;
+  relativeRecordSetName: string;
+  recordType:
+    | "A"
+    | "AAAA"
+    | "CAA"
+    | "CNAME"
+    | "MX"
+    | "NS"
+    | "PTR"
+    | "SOA"
+    | "SRV"
+    | "TXT";
+  subscriptionId: string;
+}
 export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
@@ -390,10 +515,45 @@ export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
     apiVersion: "2018-05-01",
   }),
-);
-export type RecordSetsGetInput = typeof RecordSetsGetInput.Type;
+) as unknown as Schema.Codec<RecordSetsGetInput>;
 
 // Output Schema
+export interface RecordSetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    TTL?: number;
+    fqdn?: string;
+    provisioningState?: string;
+    targetResource?: { id?: string };
+    ARecords?: { ipv4Address?: string }[];
+    AAAARecords?: { ipv6Address?: string }[];
+    MXRecords?: { preference?: number; exchange?: string }[];
+    NSRecords?: { nsdname?: string }[];
+    PTRRecords?: { ptrdname?: string }[];
+    SRVRecords?: {
+      priority?: number;
+      weight?: number;
+      port?: number;
+      target?: string;
+    }[];
+    TXTRecords?: { value?: string[] }[];
+    CNAMERecord?: { cname?: string };
+    SOARecord?: {
+      host?: string;
+      email?: string;
+      serialNumber?: number;
+      refreshTime?: number;
+      retryTime?: number;
+      expireTime?: number;
+      minimumTTL?: number;
+    };
+    caaRecords?: { flags?: number; tag?: string; value?: string }[];
+  };
+}
 export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -490,8 +650,7 @@ export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type RecordSetsGetOutput = typeof RecordSetsGetOutput.Type;
+}) as unknown as Schema.Codec<RecordSetsGetOutput>;
 
 // The operation
 /**
@@ -509,6 +668,13 @@ export const RecordSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RecordSetsGetOutput,
 }));
 // Input Schema
+export interface RecordSetsListAllByDnsZoneInput {
+  resourceGroupName: string;
+  zoneName: string;
+  subscriptionId: string;
+  $top?: number;
+  $recordsetnamesuffix?: string;
+}
 export const RecordSetsListAllByDnsZoneInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -522,11 +688,48 @@ export const RecordSetsListAllByDnsZoneInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/all",
       apiVersion: "2018-05-01",
     }),
-  );
-export type RecordSetsListAllByDnsZoneInput =
-  typeof RecordSetsListAllByDnsZoneInput.Type;
+  ) as unknown as Schema.Codec<RecordSetsListAllByDnsZoneInput>;
 
 // Output Schema
+export interface RecordSetsListAllByDnsZoneOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    etag?: string;
+    properties?: {
+      metadata?: Record<string, string>;
+      TTL?: number;
+      fqdn?: string;
+      provisioningState?: string;
+      targetResource?: { id?: string };
+      ARecords?: { ipv4Address?: string }[];
+      AAAARecords?: { ipv6Address?: string }[];
+      MXRecords?: { preference?: number; exchange?: string }[];
+      NSRecords?: { nsdname?: string }[];
+      PTRRecords?: { ptrdname?: string }[];
+      SRVRecords?: {
+        priority?: number;
+        weight?: number;
+        port?: number;
+        target?: string;
+      }[];
+      TXTRecords?: { value?: string[] }[];
+      CNAMERecord?: { cname?: string };
+      SOARecord?: {
+        host?: string;
+        email?: string;
+        serialNumber?: number;
+        refreshTime?: number;
+        retryTime?: number;
+        expireTime?: number;
+        minimumTTL?: number;
+      };
+      caaRecords?: { flags?: number; tag?: string; value?: string }[];
+    };
+  }[];
+  nextLink?: string;
+}
 export const RecordSetsListAllByDnsZoneOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -633,9 +836,7 @@ export const RecordSetsListAllByDnsZoneOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RecordSetsListAllByDnsZoneOutput =
-  typeof RecordSetsListAllByDnsZoneOutput.Type;
+  }) as unknown as Schema.Codec<RecordSetsListAllByDnsZoneOutput>;
 
 // The operation
 /**
@@ -655,6 +856,13 @@ export const RecordSetsListAllByDnsZone = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RecordSetsListByDnsZoneInput {
+  resourceGroupName: string;
+  zoneName: string;
+  subscriptionId: string;
+  $top?: number;
+  $recordsetnamesuffix?: string;
+}
 export const RecordSetsListByDnsZoneInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -668,11 +876,48 @@ export const RecordSetsListByDnsZoneInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/recordsets",
       apiVersion: "2018-05-01",
     }),
-  );
-export type RecordSetsListByDnsZoneInput =
-  typeof RecordSetsListByDnsZoneInput.Type;
+  ) as unknown as Schema.Codec<RecordSetsListByDnsZoneInput>;
 
 // Output Schema
+export interface RecordSetsListByDnsZoneOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    etag?: string;
+    properties?: {
+      metadata?: Record<string, string>;
+      TTL?: number;
+      fqdn?: string;
+      provisioningState?: string;
+      targetResource?: { id?: string };
+      ARecords?: { ipv4Address?: string }[];
+      AAAARecords?: { ipv6Address?: string }[];
+      MXRecords?: { preference?: number; exchange?: string }[];
+      NSRecords?: { nsdname?: string }[];
+      PTRRecords?: { ptrdname?: string }[];
+      SRVRecords?: {
+        priority?: number;
+        weight?: number;
+        port?: number;
+        target?: string;
+      }[];
+      TXTRecords?: { value?: string[] }[];
+      CNAMERecord?: { cname?: string };
+      SOARecord?: {
+        host?: string;
+        email?: string;
+        serialNumber?: number;
+        refreshTime?: number;
+        retryTime?: number;
+        expireTime?: number;
+        minimumTTL?: number;
+      };
+      caaRecords?: { flags?: number; tag?: string; value?: string }[];
+    };
+  }[];
+  nextLink?: string;
+}
 export const RecordSetsListByDnsZoneOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -779,9 +1024,7 @@ export const RecordSetsListByDnsZoneOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RecordSetsListByDnsZoneOutput =
-  typeof RecordSetsListByDnsZoneOutput.Type;
+  }) as unknown as Schema.Codec<RecordSetsListByDnsZoneOutput>;
 
 // The operation
 /**
@@ -801,6 +1044,24 @@ export const RecordSetsListByDnsZone = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RecordSetsListByTypeInput {
+  resourceGroupName: string;
+  zoneName: string;
+  recordType:
+    | "A"
+    | "AAAA"
+    | "CAA"
+    | "CNAME"
+    | "MX"
+    | "NS"
+    | "PTR"
+    | "SOA"
+    | "SRV"
+    | "TXT";
+  subscriptionId: string;
+  $top?: number;
+  $recordsetnamesuffix?: string;
+}
 export const RecordSetsListByTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -826,10 +1087,48 @@ export const RecordSetsListByTypeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}",
       apiVersion: "2018-05-01",
     }),
-  );
-export type RecordSetsListByTypeInput = typeof RecordSetsListByTypeInput.Type;
+  ) as unknown as Schema.Codec<RecordSetsListByTypeInput>;
 
 // Output Schema
+export interface RecordSetsListByTypeOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    etag?: string;
+    properties?: {
+      metadata?: Record<string, string>;
+      TTL?: number;
+      fqdn?: string;
+      provisioningState?: string;
+      targetResource?: { id?: string };
+      ARecords?: { ipv4Address?: string }[];
+      AAAARecords?: { ipv6Address?: string }[];
+      MXRecords?: { preference?: number; exchange?: string }[];
+      NSRecords?: { nsdname?: string }[];
+      PTRRecords?: { ptrdname?: string }[];
+      SRVRecords?: {
+        priority?: number;
+        weight?: number;
+        port?: number;
+        target?: string;
+      }[];
+      TXTRecords?: { value?: string[] }[];
+      CNAMERecord?: { cname?: string };
+      SOARecord?: {
+        host?: string;
+        email?: string;
+        serialNumber?: number;
+        refreshTime?: number;
+        retryTime?: number;
+        expireTime?: number;
+        minimumTTL?: number;
+      };
+      caaRecords?: { flags?: number; tag?: string; value?: string }[];
+    };
+  }[];
+  nextLink?: string;
+}
 export const RecordSetsListByTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -936,8 +1235,7 @@ export const RecordSetsListByTypeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RecordSetsListByTypeOutput = typeof RecordSetsListByTypeOutput.Type;
+  }) as unknown as Schema.Codec<RecordSetsListByTypeOutput>;
 
 // The operation
 /**
@@ -958,6 +1256,57 @@ export const RecordSetsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RecordSetsUpdateInput {
+  resourceGroupName: string;
+  zoneName: string;
+  relativeRecordSetName: string;
+  recordType:
+    | "A"
+    | "AAAA"
+    | "CAA"
+    | "CNAME"
+    | "MX"
+    | "NS"
+    | "PTR"
+    | "SOA"
+    | "SRV"
+    | "TXT";
+  subscriptionId: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    TTL?: number;
+    fqdn?: string;
+    provisioningState?: string;
+    targetResource?: { id?: string };
+    ARecords?: { ipv4Address?: string }[];
+    AAAARecords?: { ipv6Address?: string }[];
+    MXRecords?: { preference?: number; exchange?: string }[];
+    NSRecords?: { nsdname?: string }[];
+    PTRRecords?: { ptrdname?: string }[];
+    SRVRecords?: {
+      priority?: number;
+      weight?: number;
+      port?: number;
+      target?: string;
+    }[];
+    TXTRecords?: { value?: string[] }[];
+    CNAMERecord?: { cname?: string };
+    SOARecord?: {
+      host?: string;
+      email?: string;
+      serialNumber?: number;
+      refreshTime?: number;
+      retryTime?: number;
+      expireTime?: number;
+      minimumTTL?: number;
+    };
+    caaRecords?: { flags?: number; tag?: string; value?: string }[];
+  };
+}
 export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
@@ -1076,10 +1425,45 @@ export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
     apiVersion: "2018-05-01",
   }),
-);
-export type RecordSetsUpdateInput = typeof RecordSetsUpdateInput.Type;
+) as unknown as Schema.Codec<RecordSetsUpdateInput>;
 
 // Output Schema
+export interface RecordSetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    TTL?: number;
+    fqdn?: string;
+    provisioningState?: string;
+    targetResource?: { id?: string };
+    ARecords?: { ipv4Address?: string }[];
+    AAAARecords?: { ipv6Address?: string }[];
+    MXRecords?: { preference?: number; exchange?: string }[];
+    NSRecords?: { nsdname?: string }[];
+    PTRRecords?: { ptrdname?: string }[];
+    SRVRecords?: {
+      priority?: number;
+      weight?: number;
+      port?: number;
+      target?: string;
+    }[];
+    TXTRecords?: { value?: string[] }[];
+    CNAMERecord?: { cname?: string };
+    SOARecord?: {
+      host?: string;
+      email?: string;
+      serialNumber?: number;
+      refreshTime?: number;
+      retryTime?: number;
+      expireTime?: number;
+      minimumTTL?: number;
+    };
+    caaRecords?: { flags?: number; tag?: string; value?: string }[];
+  };
+}
 export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1178,8 +1562,7 @@ export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type RecordSetsUpdateOutput = typeof RecordSetsUpdateOutput.Type;
+) as unknown as Schema.Codec<RecordSetsUpdateOutput>;
 
 // The operation
 /**
@@ -1198,6 +1581,26 @@ export const RecordSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RecordSetsUpdateOutput,
 }));
 // Input Schema
+export interface ZonesCreateOrUpdateInput {
+  resourceGroupName: string;
+  zoneName: string;
+  subscriptionId: string;
+  etag?: string;
+  properties?: {
+    maxNumberOfRecordSets?: number;
+    maxNumberOfRecordsPerRecordSet?: number;
+    numberOfRecordSets?: number;
+    nameServers?: string[];
+    zoneType?: "Public" | "Private";
+    registrationVirtualNetworks?: { id?: string }[];
+    resolutionVirtualNetworks?: { id?: string }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const ZonesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1238,10 +1641,16 @@ export const ZonesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
       apiVersion: "2018-05-01",
     }),
-  );
-export type ZonesCreateOrUpdateInput = typeof ZonesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ZonesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ZonesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const ZonesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1249,8 +1658,7 @@ export const ZonesCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ZonesCreateOrUpdateOutput = typeof ZonesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ZonesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1268,6 +1676,11 @@ export const ZonesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ZonesCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface ZonesDeleteInput {
+  resourceGroupName: string;
+  zoneName: string;
+  subscriptionId: string;
+}
 export const ZonesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
@@ -1278,12 +1691,12 @@ export const ZonesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
     apiVersion: "2018-05-01",
   }),
-);
-export type ZonesDeleteInput = typeof ZonesDeleteInput.Type;
+) as unknown as Schema.Codec<ZonesDeleteInput>;
 
 // Output Schema
-export const ZonesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ZonesDeleteOutput = typeof ZonesDeleteOutput.Type;
+export type ZonesDeleteOutput = void;
+export const ZonesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ZonesDeleteOutput>;
 
 // The operation
 /**
@@ -1300,6 +1713,11 @@ export const ZonesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ZonesDeleteOutput,
 }));
 // Input Schema
+export interface ZonesGetInput {
+  resourceGroupName: string;
+  zoneName: string;
+  subscriptionId: string;
+}
 export const ZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
@@ -1310,18 +1728,23 @@ export const ZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
     apiVersion: "2018-05-01",
   }),
-);
-export type ZonesGetInput = typeof ZonesGetInput.Type;
+) as unknown as Schema.Codec<ZonesGetInput>;
 
 // Output Schema
+export interface ZonesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const ZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ZonesGetOutput = typeof ZonesGetOutput.Type;
+}) as unknown as Schema.Codec<ZonesGetOutput>;
 
 // The operation
 /**
@@ -1337,6 +1760,10 @@ export const ZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ZonesGetOutput,
 }));
 // Input Schema
+export interface ZonesListInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const ZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
@@ -1346,10 +1773,19 @@ export const ZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnszones",
     apiVersion: "2018-05-01",
   }),
-);
-export type ZonesListInput = typeof ZonesListInput.Type;
+) as unknown as Schema.Codec<ZonesListInput>;
 
 // Output Schema
+export interface ZonesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1363,8 +1799,7 @@ export const ZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ZonesListOutput = typeof ZonesListOutput.Type;
+}) as unknown as Schema.Codec<ZonesListOutput>;
 
 // The operation
 /**
@@ -1379,6 +1814,11 @@ export const ZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ZonesListOutput,
 }));
 // Input Schema
+export interface ZonesListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  $top?: number;
+}
 export const ZonesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1390,11 +1830,19 @@ export const ZonesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones",
       apiVersion: "2018-05-01",
     }),
-  );
-export type ZonesListByResourceGroupInput =
-  typeof ZonesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ZonesListByResourceGroupInput>;
 
 // Output Schema
+export interface ZonesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ZonesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1409,9 +1857,7 @@ export const ZonesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ZonesListByResourceGroupOutput =
-  typeof ZonesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ZonesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1429,6 +1875,12 @@ export const ZonesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ZonesUpdateInput {
+  resourceGroupName: string;
+  zoneName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const ZonesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   zoneName: Schema.String.pipe(T.PathParam()),
@@ -1440,18 +1892,23 @@ export const ZonesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
     apiVersion: "2018-05-01",
   }),
-);
-export type ZonesUpdateInput = typeof ZonesUpdateInput.Type;
+) as unknown as Schema.Codec<ZonesUpdateInput>;
 
 // Output Schema
+export interface ZonesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const ZonesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ZonesUpdateOutput = typeof ZonesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ZonesUpdateOutput>;
 
 // The operation
 /**

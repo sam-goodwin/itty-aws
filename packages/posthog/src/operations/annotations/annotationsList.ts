@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface AnnotationsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const AnnotationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
@@ -11,10 +17,58 @@ export const AnnotationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   search: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/annotations/" }),
-);
-export type AnnotationsListInput = typeof AnnotationsListInput.Type;
+) as unknown as Schema.Codec<AnnotationsListInput>;
 
 // Output Schema
+export interface AnnotationsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: number;
+    content?: string | null;
+    date_marker?: string | null;
+    creation_type?: "USR" | "GIT";
+    dashboard_item?: number | null;
+    dashboard_id?: number | null;
+    dashboard_name?: string | null;
+    insight_short_id?: string | null;
+    insight_name?: string | null;
+    insight_derived_name?: string | null;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string | null;
+    updated_at?: string;
+    deleted?: boolean;
+    scope?:
+      | "dashboard_item"
+      | "dashboard"
+      | "project"
+      | "organization"
+      | "recording";
+    emoji?: string | null;
+    hidden_in_user_interface?: boolean | null;
+  }[];
+}
 export const AnnotationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -45,7 +99,23 @@ export const AnnotationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -68,8 +138,7 @@ export const AnnotationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type AnnotationsListOutput = typeof AnnotationsListOutput.Type;
+}) as unknown as Schema.Codec<AnnotationsListOutput>;
 
 // The operation
 /**

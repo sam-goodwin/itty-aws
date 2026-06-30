@@ -4,6 +4,38 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProjectSecretApiKeysCreateInput {
+  project_id: string;
+  id?: string;
+  label?: string;
+  value?: string;
+  mask_value?: string | null;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  last_used_at?: string | null;
+  last_rolled_at?: string | null;
+  scopes?: string[];
+}
 export const ProjectSecretApiKeysCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -24,7 +56,23 @@ export const ProjectSecretApiKeysCreateInput =
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -35,11 +83,40 @@ export const ProjectSecretApiKeysCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/project_secret_api_keys/",
     }),
-  );
-export type ProjectSecretApiKeysCreateInput =
-  typeof ProjectSecretApiKeysCreateInput.Type;
+  ) as unknown as Schema.Codec<ProjectSecretApiKeysCreateInput>;
 
 // Output Schema
+export interface ProjectSecretApiKeysCreateOutput {
+  id?: string;
+  label?: string;
+  value?: string;
+  mask_value?: string | null;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  last_used_at?: string | null;
+  last_rolled_at?: string | null;
+  scopes?: string[];
+}
 export const ProjectSecretApiKeysCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -59,15 +136,29 @@ export const ProjectSecretApiKeysCreateOutput =
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
     last_rolled_at: Schema.optional(Schema.NullOr(Schema.String)),
     scopes: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ProjectSecretApiKeysCreateOutput =
-  typeof ProjectSecretApiKeysCreateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectSecretApiKeysCreateOutput>;
 
 // The operation
 /**

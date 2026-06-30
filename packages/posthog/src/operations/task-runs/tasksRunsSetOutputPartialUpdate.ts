@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsSetOutputPartialUpdateInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  output?: unknown;
+}
 export const TasksRunsSetOutputPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,45 @@ export const TasksRunsSetOutputPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_output/",
     }),
-  );
-export type TasksRunsSetOutputPartialUpdateInput =
-  typeof TasksRunsSetOutputPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsSetOutputPartialUpdateInput>;
 
 // Output Schema
+export interface TasksRunsSetOutputPartialUpdateOutput {
+  id: string;
+  task: string;
+  stage: string | null;
+  branch: string | null;
+  status: string;
+  environment: string;
+  runtime_adapter?: "claude" | "codex" | null;
+  provider?: "anthropic" | "openai" | null;
+  model?: string | null;
+  reasoning_effort?: "low" | "medium" | "high" | "xhigh" | "max" | null;
+  log_url?: string | null;
+  error_message: string | null;
+  output: Record<string, unknown> | null;
+  state: Record<string, unknown>;
+  artifacts: {
+    id?: string;
+    name?: string;
+    type?: string;
+    source?: string;
+    size?: number;
+    content_type?: string;
+    metadata?: {
+      skill_name: string;
+      skill_source: "user" | "repo" | "marketplace" | "codex";
+      content_sha256: string;
+      bundle_format: "zip";
+      schema_version: number;
+    };
+    storage_path?: string;
+    uploaded_at?: string;
+  }[];
+  created_at?: string | null;
+  updated_at?: string | null;
+  completed_at?: string | null;
+}
 export const TasksRunsSetOutputPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -28,10 +68,16 @@ export const TasksRunsSetOutputPartialUpdateOutput =
     branch: Schema.NullOr(Schema.String),
     status: Schema.String,
     environment: Schema.String,
-    runtime_adapter: Schema.optional(Schema.Unknown),
-    provider: Schema.optional(Schema.Unknown),
+    runtime_adapter: Schema.optional(
+      Schema.NullOr(Schema.Literals(["claude", "codex"])),
+    ),
+    provider: Schema.optional(
+      Schema.NullOr(Schema.Literals(["anthropic", "openai"])),
+    ),
     model: Schema.optional(Schema.NullOr(Schema.String)),
-    reasoning_effort: Schema.optional(Schema.Unknown),
+    reasoning_effort: Schema.optional(
+      Schema.NullOr(Schema.Literals(["low", "medium", "high", "xhigh", "max"])),
+    ),
     log_url: Schema.optional(Schema.NullOr(Schema.String)),
     error_message: Schema.NullOr(Schema.String),
     output: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
@@ -65,9 +111,7 @@ export const TasksRunsSetOutputPartialUpdateOutput =
     created_at: Schema.optional(Schema.NullOr(Schema.String)),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
     completed_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type TasksRunsSetOutputPartialUpdateOutput =
-  typeof TasksRunsSetOutputPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsSetOutputPartialUpdateOutput>;
 
 // The operation
 /**

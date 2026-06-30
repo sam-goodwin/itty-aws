@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuditLogValidatorVersionsControllerCreateInput {
+  actionName: string;
+  actor?: { metadata?: unknown };
+  targets?: { type?: string; metadata?: unknown }[];
+  metadata?: unknown;
+}
 export const AuditLogValidatorVersionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionName: Schema.String.pipe(T.PathParam()),
@@ -26,11 +32,17 @@ export const AuditLogValidatorVersionsControllerCreateInput =
       method: "POST",
       path: "/audit_logs/actions/{actionName}/schemas",
     }),
-  );
-export type AuditLogValidatorVersionsControllerCreateInput =
-  typeof AuditLogValidatorVersionsControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<AuditLogValidatorVersionsControllerCreateInput>;
 
 // Output Schema
+export interface AuditLogValidatorVersionsControllerCreateOutput {
+  object?: string;
+  version?: number;
+  actor?: { metadata: Record<string, unknown> };
+  targets?: { type: string; metadata?: Record<string, unknown> }[];
+  metadata?: Record<string, unknown>;
+  created_at?: string;
+}
 export const AuditLogValidatorVersionsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -52,9 +64,7 @@ export const AuditLogValidatorVersionsControllerCreateOutput =
     ),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.optional(Schema.String),
-  });
-export type AuditLogValidatorVersionsControllerCreateOutput =
-  typeof AuditLogValidatorVersionsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<AuditLogValidatorVersionsControllerCreateOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -46,7 +46,7 @@ export interface Document {
   dataSource?: string;
 }
 
-export const Document: Schema.Schema<Document> =
+export const Document: Schema.Codec<Document> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     view: Schema.optional(Schema.String),
@@ -63,7 +63,7 @@ export interface BatchGetDocumentsResponse {
   documents?: ReadonlyArray<Document>;
 }
 
-export const BatchGetDocumentsResponse: Schema.Schema<BatchGetDocumentsResponse> =
+export const BatchGetDocumentsResponse: Schema.Codec<BatchGetDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Document)),
   }).annotate({ identifier: "BatchGetDocumentsResponse" });
@@ -79,7 +79,7 @@ export interface DocumentChunk {
   id?: string;
 }
 
-export const DocumentChunk: Schema.Schema<DocumentChunk> =
+export const DocumentChunk: Schema.Codec<DocumentChunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     document: Schema.optional(Document),
@@ -94,7 +94,7 @@ export interface SearchDocumentChunksResponse {
   nextPageToken?: string;
 }
 
-export const SearchDocumentChunksResponse: Schema.Schema<SearchDocumentChunksResponse> =
+export const SearchDocumentChunksResponse: Schema.Codec<SearchDocumentChunksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(DocumentChunk)),
     nextPageToken: Schema.optional(Schema.String),
@@ -151,7 +151,7 @@ export const SearchDocumentChunksDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/documents:searchDocumentChunks" }),
     svc,
-  ) as unknown as Schema.Schema<SearchDocumentChunksDocumentsRequest>;
+  ) as unknown as Schema.Codec<SearchDocumentChunksDocumentsRequest>;
 
 export type SearchDocumentChunksDocumentsResponse =
   SearchDocumentChunksResponse;
@@ -200,7 +200,7 @@ export const BatchGetDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/documents:batchGet" }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetDocumentsRequest>;
+  ) as unknown as Schema.Codec<BatchGetDocumentsRequest>;
 
 export type BatchGetDocumentsResponse_Op = BatchGetDocumentsResponse;
 export const BatchGetDocumentsResponse_Op =
@@ -238,7 +238,7 @@ export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetDocumentsRequest>;
+) as unknown as Schema.Codec<GetDocumentsRequest>;
 
 export type GetDocumentsResponse = Document;
 export const GetDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Document;

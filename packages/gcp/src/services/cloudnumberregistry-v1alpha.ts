@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -47,7 +47,7 @@ export interface DiscoveryMetadata {
   sourceSubId?: string;
 }
 
-export const DiscoveryMetadata: Schema.Schema<DiscoveryMetadata> =
+export const DiscoveryMetadata: Schema.Codec<DiscoveryMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface RealmAggregatedData {
   discoveredRangesCount?: number;
 }
 
-export const RealmAggregatedData: Schema.Schema<RealmAggregatedData> =
+export const RealmAggregatedData: Schema.Codec<RealmAggregatedData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customRangesCount: Schema.optional(Schema.Number),
     discoveredRangesCount: Schema.optional(Schema.Number),
@@ -105,7 +105,7 @@ export interface Realm {
   ipVersion?: "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6" | (string & {});
 }
 
-export const Realm: Schema.Schema<Realm> =
+export const Realm: Schema.Codec<Realm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trafficType: Schema.optional(Schema.String),
     discoveryMetadata: Schema.optional(DiscoveryMetadata),
@@ -128,7 +128,7 @@ export interface RangeUtilization {
   totalConsumed?: string;
 }
 
-export const RangeUtilization: Schema.Schema<RangeUtilization> =
+export const RangeUtilization: Schema.Codec<RangeUtilization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usage: Schema.optional(Schema.Number),
     totalProduced: Schema.optional(Schema.String),
@@ -142,7 +142,7 @@ export interface Attribute {
   value?: string;
 }
 
-export const Attribute: Schema.Schema<Attribute> =
+export const Attribute: Schema.Codec<Attribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -169,7 +169,7 @@ export interface CustomRange {
   registryBook?: string;
 }
 
-export const CustomRange: Schema.Schema<CustomRange> =
+export const CustomRange: Schema.Codec<CustomRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     parentRange: Schema.optional(Schema.String),
@@ -211,7 +211,7 @@ export interface DiscoveredRange {
   attributes?: ReadonlyArray<Attribute>;
 }
 
-export const DiscoveredRange: Schema.Schema<DiscoveredRange> =
+export const DiscoveredRange: Schema.Codec<DiscoveredRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registryBook: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -237,7 +237,7 @@ export interface Range {
   discoveredRange?: DiscoveredRange;
 }
 
-export const Range: Schema.Schema<Range> =
+export const Range: Schema.Codec<Range> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     utilization: Schema.optional(RangeUtilization),
     customRange: Schema.optional(CustomRange),
@@ -251,7 +251,7 @@ export interface SearchIpResourcesResult {
   range?: Range;
 }
 
-export const SearchIpResourcesResult: Schema.Schema<SearchIpResourcesResult> =
+export const SearchIpResourcesResult: Schema.Codec<SearchIpResourcesResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     realm: Schema.optional(Realm),
     range: Schema.optional(Range),
@@ -266,7 +266,7 @@ export interface ListCustomRangesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListCustomRangesResponse: Schema.Schema<ListCustomRangesResponse> =
+export const ListCustomRangesResponse: Schema.Codec<ListCustomRangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customRanges: Schema.optional(Schema.Array(CustomRange)),
     nextPageToken: Schema.optional(Schema.String),
@@ -282,7 +282,7 @@ export interface ListRealmsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListRealmsResponse: Schema.Schema<ListRealmsResponse> =
+export const ListRealmsResponse: Schema.Codec<ListRealmsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     realms: Schema.optional(Schema.Array(Realm)),
     nextPageToken: Schema.optional(Schema.String),
@@ -298,7 +298,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -320,7 +320,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -361,7 +361,7 @@ export interface IpamAdminScope {
   name?: string;
 }
 
-export const IpamAdminScope: Schema.Schema<IpamAdminScope> =
+export const IpamAdminScope: Schema.Codec<IpamAdminScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -383,7 +383,7 @@ export interface SearchIpResourcesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const SearchIpResourcesResponse: Schema.Schema<SearchIpResourcesResponse> =
+export const SearchIpResourcesResponse: Schema.Codec<SearchIpResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ranges: Schema.optional(Schema.Array(Range)),
     results: Schema.optional(Schema.Array(SearchIpResourcesResult)),
@@ -398,7 +398,7 @@ export interface ShowDiscoveredRangeUtilizationResponse {
   rangeUtilization?: RangeUtilization;
 }
 
-export const ShowDiscoveredRangeUtilizationResponse: Schema.Schema<ShowDiscoveredRangeUtilizationResponse> =
+export const ShowDiscoveredRangeUtilizationResponse: Schema.Codec<ShowDiscoveredRangeUtilizationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     discoveredRange: Schema.optional(DiscoveredRange),
     rangeUtilization: Schema.optional(RangeUtilization),
@@ -413,7 +413,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -425,7 +425,7 @@ export interface FindDiscoveredRangeFreeIpRangesResponse {
   freeIpCidrRanges?: ReadonlyArray<string>;
 }
 
-export const FindDiscoveredRangeFreeIpRangesResponse: Schema.Schema<FindDiscoveredRangeFreeIpRangesResponse> =
+export const FindDiscoveredRangeFreeIpRangesResponse: Schema.Codec<FindDiscoveredRangeFreeIpRangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freeIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "FindDiscoveredRangeFreeIpRangesResponse" });
@@ -443,7 +443,7 @@ export interface AggregatedData {
   discoveredRealmsCount?: number;
 }
 
-export const AggregatedData: Schema.Schema<AggregatedData> =
+export const AggregatedData: Schema.Codec<AggregatedData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     discoveredRangesCount: Schema.optional(Schema.Number),
     uniqueScopesCount: Schema.optional(Schema.Number),
@@ -469,7 +469,7 @@ export interface RegistryBook {
   claimedScopes?: ReadonlyArray<string>;
 }
 
-export const RegistryBook: Schema.Schema<RegistryBook> =
+export const RegistryBook: Schema.Codec<RegistryBook> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregatedData: Schema.optional(AggregatedData),
     name: Schema.optional(Schema.String),
@@ -482,7 +482,7 @@ export const RegistryBook: Schema.Schema<RegistryBook> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -496,7 +496,7 @@ export interface ListRegistryBooksResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListRegistryBooksResponse: Schema.Schema<ListRegistryBooksResponse> =
+export const ListRegistryBooksResponse: Schema.Codec<ListRegistryBooksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registryBooks: Schema.optional(Schema.Array(RegistryBook)),
     nextPageToken: Schema.optional(Schema.String),
@@ -516,7 +516,7 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
@@ -542,7 +542,7 @@ export interface OperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -570,7 +570,7 @@ export interface SearchIpResourcesRequest {
   showUtilization?: boolean;
 }
 
-export const SearchIpResourcesRequest: Schema.Schema<SearchIpResourcesRequest> =
+export const SearchIpResourcesRequest: Schema.Codec<SearchIpResourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
@@ -582,7 +582,7 @@ export const SearchIpResourcesRequest: Schema.Schema<SearchIpResourcesRequest> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -596,7 +596,7 @@ export interface ListDiscoveredRangesResponse {
   discoveredRanges?: ReadonlyArray<DiscoveredRange>;
 }
 
-export const ListDiscoveredRangesResponse: Schema.Schema<ListDiscoveredRangesResponse> =
+export const ListDiscoveredRangesResponse: Schema.Codec<ListDiscoveredRangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -608,7 +608,7 @@ export interface FindCustomRangeFreeIpRangesResponse {
   freeIpCidrRanges?: ReadonlyArray<string>;
 }
 
-export const FindCustomRangeFreeIpRangesResponse: Schema.Schema<FindCustomRangeFreeIpRangesResponse> =
+export const FindCustomRangeFreeIpRangesResponse: Schema.Codec<FindCustomRangeFreeIpRangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freeIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "FindCustomRangeFreeIpRangesResponse" });
@@ -626,7 +626,7 @@ export interface IpamAdminScopeAvailability {
     | (string & {});
 }
 
-export const IpamAdminScopeAvailability: Schema.Schema<IpamAdminScopeAvailability> =
+export const IpamAdminScopeAvailability: Schema.Codec<IpamAdminScopeAvailability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adminProject: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
@@ -638,7 +638,7 @@ export interface CheckAvailabilityIpamAdminScopesResponse {
   scopeAvailabilities?: ReadonlyArray<IpamAdminScopeAvailability>;
 }
 
-export const CheckAvailabilityIpamAdminScopesResponse: Schema.Schema<CheckAvailabilityIpamAdminScopesResponse> =
+export const CheckAvailabilityIpamAdminScopesResponse: Schema.Codec<CheckAvailabilityIpamAdminScopesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopeAvailabilities: Schema.optional(
       Schema.Array(IpamAdminScopeAvailability),
@@ -652,7 +652,7 @@ export interface ShowCustomRangeUtilizationResponse {
   rangeUtilization?: RangeUtilization;
 }
 
-export const ShowCustomRangeUtilizationResponse: Schema.Schema<ShowCustomRangeUtilizationResponse> =
+export const ShowCustomRangeUtilizationResponse: Schema.Codec<ShowCustomRangeUtilizationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customRange: Schema.optional(CustomRange),
     rangeUtilization: Schema.optional(RangeUtilization),
@@ -665,7 +665,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -680,7 +680,7 @@ export interface ListIpamAdminScopesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListIpamAdminScopesResponse: Schema.Schema<ListIpamAdminScopesResponse> =
+export const ListIpamAdminScopesResponse: Schema.Codec<ListIpamAdminScopesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipamAdminScopes: Schema.optional(Schema.Array(IpamAdminScope)),
     nextPageToken: Schema.optional(Schema.String),
@@ -692,7 +692,7 @@ export interface CleanupIpamAdminScopeRequest {
   requestId?: string;
 }
 
-export const CleanupIpamAdminScopeRequest: Schema.Schema<CleanupIpamAdminScopeRequest> =
+export const CleanupIpamAdminScopeRequest: Schema.Codec<CleanupIpamAdminScopeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CleanupIpamAdminScopeRequest" });
@@ -702,7 +702,7 @@ export interface DisableIpamAdminScopeRequest {
   requestId?: string;
 }
 
-export const DisableIpamAdminScopeRequest: Schema.Schema<DisableIpamAdminScopeRequest> =
+export const DisableIpamAdminScopeRequest: Schema.Codec<DisableIpamAdminScopeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisableIpamAdminScopeRequest" });
@@ -786,7 +786,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -821,7 +821,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -859,7 +859,7 @@ export const SearchIpResourcesProjectsLocationsRegistryBooksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchIpResourcesProjectsLocationsRegistryBooksRequest>;
+  ) as unknown as Schema.Codec<SearchIpResourcesProjectsLocationsRegistryBooksRequest>;
 
 export type SearchIpResourcesProjectsLocationsRegistryBooksResponse =
   SearchIpResourcesResponse;
@@ -916,7 +916,7 @@ export const ListProjectsLocationsRegistryBooksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/registryBooks" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRegistryBooksRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRegistryBooksRequest>;
 
 export type ListProjectsLocationsRegistryBooksResponse =
   ListRegistryBooksResponse;
@@ -964,7 +964,7 @@ export const PatchProjectsLocationsRegistryBooksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRegistryBooksRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRegistryBooksRequest>;
 
 export type PatchProjectsLocationsRegistryBooksResponse = Operation;
 export const PatchProjectsLocationsRegistryBooksResponse =
@@ -1008,7 +1008,7 @@ export const GetProjectsLocationsRegistryBooksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRegistryBooksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRegistryBooksRequest>;
 
 export type GetProjectsLocationsRegistryBooksResponse = RegistryBook;
 export const GetProjectsLocationsRegistryBooksResponse =
@@ -1048,7 +1048,7 @@ export const DeleteProjectsLocationsRegistryBooksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRegistryBooksRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRegistryBooksRequest>;
 
 export type DeleteProjectsLocationsRegistryBooksResponse = Operation;
 export const DeleteProjectsLocationsRegistryBooksResponse =
@@ -1099,7 +1099,7 @@ export const CreateProjectsLocationsRegistryBooksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRegistryBooksRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRegistryBooksRequest>;
 
 export type CreateProjectsLocationsRegistryBooksResponse = Operation;
 export const CreateProjectsLocationsRegistryBooksResponse =
@@ -1141,7 +1141,7 @@ export const DeleteProjectsLocationsRealmsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRealmsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRealmsRequest>;
 
 export type DeleteProjectsLocationsRealmsResponse = Operation;
 export const DeleteProjectsLocationsRealmsResponse =
@@ -1186,7 +1186,7 @@ export const CreateProjectsLocationsRealmsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+parent}/realms", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRealmsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRealmsRequest>;
 
 export type CreateProjectsLocationsRealmsResponse = Operation;
 export const CreateProjectsLocationsRealmsResponse =
@@ -1242,7 +1242,7 @@ export const ListProjectsLocationsRealmsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/realms" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRealmsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRealmsRequest>;
 
 export type ListProjectsLocationsRealmsResponse = ListRealmsResponse;
 export const ListProjectsLocationsRealmsResponse =
@@ -1289,7 +1289,7 @@ export const PatchProjectsLocationsRealmsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRealmsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRealmsRequest>;
 
 export type PatchProjectsLocationsRealmsResponse = Operation;
 export const PatchProjectsLocationsRealmsResponse =
@@ -1333,7 +1333,7 @@ export const GetProjectsLocationsRealmsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRealmsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRealmsRequest>;
 
 export type GetProjectsLocationsRealmsResponse = Realm;
 export const GetProjectsLocationsRealmsResponse =
@@ -1381,7 +1381,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -1419,7 +1419,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -1455,7 +1455,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1492,7 +1492,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -1536,7 +1536,7 @@ export const CheckAvailabilityProjectsLocationsIpamAdminScopesRequest =
       path: "v1alpha/{+parent}/ipamAdminScopes:checkAvailability",
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckAvailabilityProjectsLocationsIpamAdminScopesRequest>;
+  ) as unknown as Schema.Codec<CheckAvailabilityProjectsLocationsIpamAdminScopesRequest>;
 
 export type CheckAvailabilityProjectsLocationsIpamAdminScopesResponse =
   CheckAvailabilityIpamAdminScopesResponse;
@@ -1586,7 +1586,7 @@ export const CreateProjectsLocationsIpamAdminScopesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsIpamAdminScopesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsIpamAdminScopesRequest>;
 
 export type CreateProjectsLocationsIpamAdminScopesResponse = Operation;
 export const CreateProjectsLocationsIpamAdminScopesResponse =
@@ -1625,7 +1625,7 @@ export const CleanupProjectsLocationsIpamAdminScopesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:cleanup", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CleanupProjectsLocationsIpamAdminScopesRequest>;
+  ) as unknown as Schema.Codec<CleanupProjectsLocationsIpamAdminScopesRequest>;
 
 export type CleanupProjectsLocationsIpamAdminScopesResponse = Operation;
 export const CleanupProjectsLocationsIpamAdminScopesResponse =
@@ -1667,7 +1667,7 @@ export const DeleteProjectsLocationsIpamAdminScopesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsIpamAdminScopesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsIpamAdminScopesRequest>;
 
 export type DeleteProjectsLocationsIpamAdminScopesResponse = Operation;
 export const DeleteProjectsLocationsIpamAdminScopesResponse =
@@ -1703,7 +1703,7 @@ export const GetProjectsLocationsIpamAdminScopesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsIpamAdminScopesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsIpamAdminScopesRequest>;
 
 export type GetProjectsLocationsIpamAdminScopesResponse = IpamAdminScope;
 export const GetProjectsLocationsIpamAdminScopesResponse =
@@ -1740,7 +1740,7 @@ export const DisableProjectsLocationsIpamAdminScopesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:disable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DisableProjectsLocationsIpamAdminScopesRequest>;
+  ) as unknown as Schema.Codec<DisableProjectsLocationsIpamAdminScopesRequest>;
 
 export type DisableProjectsLocationsIpamAdminScopesResponse = Operation;
 export const DisableProjectsLocationsIpamAdminScopesResponse =
@@ -1788,7 +1788,7 @@ export const ListProjectsLocationsIpamAdminScopesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/ipamAdminScopes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIpamAdminScopesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIpamAdminScopesRequest>;
 
 export type ListProjectsLocationsIpamAdminScopesResponse =
   ListIpamAdminScopesResponse;
@@ -1836,7 +1836,7 @@ export const PatchProjectsLocationsIpamAdminScopesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsIpamAdminScopesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsIpamAdminScopesRequest>;
 
 export type PatchProjectsLocationsIpamAdminScopesResponse = Operation;
 export const PatchProjectsLocationsIpamAdminScopesResponse =
@@ -1872,7 +1872,7 @@ export const GetProjectsLocationsDiscoveredRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredRangesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDiscoveredRangesRequest>;
 
 export type GetProjectsLocationsDiscoveredRangesResponse = DiscoveredRange;
 export const GetProjectsLocationsDiscoveredRangesResponse =
@@ -1918,7 +1918,7 @@ export const ListProjectsLocationsDiscoveredRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/discoveredRanges" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredRangesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDiscoveredRangesRequest>;
 
 export type ListProjectsLocationsDiscoveredRangesResponse =
   ListDiscoveredRangesResponse;
@@ -1968,7 +1968,7 @@ export const FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:findFreeIpRanges" }),
     svc,
-  ) as unknown as Schema.Schema<FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest>;
+  ) as unknown as Schema.Codec<FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest>;
 
 export type FindFreeIpRangesProjectsLocationsDiscoveredRangesResponse =
   FindDiscoveredRangeFreeIpRangesResponse;
@@ -2003,7 +2003,7 @@ export const ShowUtilizationProjectsLocationsDiscoveredRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:showUtilization" }),
     svc,
-  ) as unknown as Schema.Schema<ShowUtilizationProjectsLocationsDiscoveredRangesRequest>;
+  ) as unknown as Schema.Codec<ShowUtilizationProjectsLocationsDiscoveredRangesRequest>;
 
 export type ShowUtilizationProjectsLocationsDiscoveredRangesResponse =
   ShowDiscoveredRangeUtilizationResponse;
@@ -2038,7 +2038,7 @@ export const GetProjectsLocationsCustomRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCustomRangesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCustomRangesRequest>;
 
 export type GetProjectsLocationsCustomRangesResponse = CustomRange;
 export const GetProjectsLocationsCustomRangesResponse =
@@ -2084,7 +2084,7 @@ export const ListProjectsLocationsCustomRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/customRanges" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCustomRangesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCustomRangesRequest>;
 
 export type ListProjectsLocationsCustomRangesResponse =
   ListCustomRangesResponse;
@@ -2132,7 +2132,7 @@ export const PatchProjectsLocationsCustomRangesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCustomRangesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCustomRangesRequest>;
 
 export type PatchProjectsLocationsCustomRangesResponse = Operation;
 export const PatchProjectsLocationsCustomRangesResponse =
@@ -2179,7 +2179,7 @@ export const FindFreeIpRangesProjectsLocationsCustomRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:findFreeIpRanges" }),
     svc,
-  ) as unknown as Schema.Schema<FindFreeIpRangesProjectsLocationsCustomRangesRequest>;
+  ) as unknown as Schema.Codec<FindFreeIpRangesProjectsLocationsCustomRangesRequest>;
 
 export type FindFreeIpRangesProjectsLocationsCustomRangesResponse =
   FindCustomRangeFreeIpRangesResponse;
@@ -2214,7 +2214,7 @@ export const ShowUtilizationProjectsLocationsCustomRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:showUtilization" }),
     svc,
-  ) as unknown as Schema.Schema<ShowUtilizationProjectsLocationsCustomRangesRequest>;
+  ) as unknown as Schema.Codec<ShowUtilizationProjectsLocationsCustomRangesRequest>;
 
 export type ShowUtilizationProjectsLocationsCustomRangesResponse =
   ShowCustomRangeUtilizationResponse;
@@ -2264,7 +2264,7 @@ export const CreateProjectsLocationsCustomRangesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCustomRangesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCustomRangesRequest>;
 
 export type CreateProjectsLocationsCustomRangesResponse = Operation;
 export const CreateProjectsLocationsCustomRangesResponse =
@@ -2306,7 +2306,7 @@ export const DeleteProjectsLocationsCustomRangesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCustomRangesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCustomRangesRequest>;
 
 export type DeleteProjectsLocationsCustomRangesResponse = Operation;
 export const DeleteProjectsLocationsCustomRangesResponse =

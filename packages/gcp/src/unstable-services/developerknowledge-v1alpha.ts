@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -46,7 +46,7 @@ export interface Document {
     | (string & {});
 }
 
-export const Document: Schema.Schema<Document> =
+export const Document: Schema.Codec<Document> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface DocumentChunk {
   document?: Document;
 }
 
-export const DocumentChunk: Schema.Schema<DocumentChunk> =
+export const DocumentChunk: Schema.Codec<DocumentChunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -82,7 +82,7 @@ export interface DocumentReference {
   documentChunk?: DocumentChunk;
 }
 
-export const DocumentReference: Schema.Schema<DocumentReference> =
+export const DocumentReference: Schema.Codec<DocumentReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentChunk: Schema.optional(DocumentChunk),
   }).annotate({ identifier: "DocumentReference" });
@@ -92,7 +92,7 @@ export interface AnswerReference {
   documentReference?: DocumentReference;
 }
 
-export const AnswerReference: Schema.Schema<AnswerReference> =
+export const AnswerReference: Schema.Codec<AnswerReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentReference: Schema.optional(DocumentReference),
   }).annotate({ identifier: "AnswerReference" });
@@ -102,7 +102,7 @@ export interface BatchGetDocumentsResponse {
   documents?: ReadonlyArray<Document>;
 }
 
-export const BatchGetDocumentsResponse: Schema.Schema<BatchGetDocumentsResponse> =
+export const BatchGetDocumentsResponse: Schema.Codec<BatchGetDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Document)),
   }).annotate({ identifier: "BatchGetDocumentsResponse" });
@@ -112,7 +112,7 @@ export interface AnswerQueryRequest {
   query?: string;
 }
 
-export const AnswerQueryRequest: Schema.Schema<AnswerQueryRequest> =
+export const AnswerQueryRequest: Schema.Codec<AnswerQueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnswerQueryRequest" });
@@ -122,7 +122,7 @@ export interface CitationSource {
   referenceIndex?: number;
 }
 
-export const CitationSource: Schema.Schema<CitationSource> =
+export const CitationSource: Schema.Codec<CitationSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceIndex: Schema.optional(Schema.Number),
   }).annotate({ identifier: "CitationSource" });
@@ -136,7 +136,7 @@ export interface AnswerCitation {
   sources?: ReadonlyArray<CitationSource>;
 }
 
-export const AnswerCitation: Schema.Schema<AnswerCitation> =
+export const AnswerCitation: Schema.Codec<AnswerCitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     endIndex: Schema.optional(Schema.Number),
@@ -152,7 +152,7 @@ export interface Answer {
   references?: ReadonlyArray<AnswerReference>;
 }
 
-export const Answer: Schema.Schema<Answer> =
+export const Answer: Schema.Codec<Answer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     citations: Schema.optional(Schema.Array(AnswerCitation)),
     answerText: Schema.optional(Schema.String),
@@ -164,7 +164,7 @@ export interface AnswerQueryResponse {
   answer?: Answer;
 }
 
-export const AnswerQueryResponse: Schema.Schema<AnswerQueryResponse> =
+export const AnswerQueryResponse: Schema.Codec<AnswerQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answer: Schema.optional(Answer),
   }).annotate({ identifier: "AnswerQueryResponse" });
@@ -176,7 +176,7 @@ export interface SearchDocumentChunksResponse {
   nextPageToken?: string;
 }
 
-export const SearchDocumentChunksResponse: Schema.Schema<SearchDocumentChunksResponse> =
+export const SearchDocumentChunksResponse: Schema.Codec<SearchDocumentChunksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(DocumentChunk)),
     nextPageToken: Schema.optional(Schema.String),
@@ -257,7 +257,7 @@ export const BatchGetDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/documents:batchGet" }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetDocumentsRequest>;
+  ) as unknown as Schema.Codec<BatchGetDocumentsRequest>;
 
 export type BatchGetDocumentsResponse_Op = BatchGetDocumentsResponse;
 export const BatchGetDocumentsResponse_Op =
@@ -297,7 +297,7 @@ export const SearchDocumentChunksDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/documents:searchDocumentChunks" }),
     svc,
-  ) as unknown as Schema.Schema<SearchDocumentChunksDocumentsRequest>;
+  ) as unknown as Schema.Codec<SearchDocumentChunksDocumentsRequest>;
 
 export type SearchDocumentChunksDocumentsResponse =
   SearchDocumentChunksResponse;
@@ -343,7 +343,7 @@ export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetDocumentsRequest>;
+) as unknown as Schema.Codec<GetDocumentsRequest>;
 
 export type GetDocumentsResponse = Document;
 export const GetDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Document;
@@ -373,7 +373,7 @@ export const AnswerQueryV1alphaRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha:answerQuery", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AnswerQueryV1alphaRequest>;
+  ) as unknown as Schema.Codec<AnswerQueryV1alphaRequest>;
 
 export type AnswerQueryV1alphaResponse = AnswerQueryResponse;
 export const AnswerQueryV1alphaResponse =

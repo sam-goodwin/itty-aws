@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SdkHealthReportRetrieveInput {
+  project_id: string;
+  force_refresh?: boolean;
+}
 export const SdkHealthReportRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,45 @@ export const SdkHealthReportRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/sdk_health/report/",
     }),
-  );
-export type SdkHealthReportRetrieveInput =
-  typeof SdkHealthReportRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SdkHealthReportRetrieveInput>;
 
 // Output Schema
+export interface SdkHealthReportRetrieveOutput {
+  overall_health?: "healthy" | "needs_attention";
+  health?: "success" | "warning" | "danger";
+  needs_updating_count?: number;
+  team_sdk_count?: number;
+  sdks?: {
+    lib?: string;
+    readable_name?: string;
+    latest_version?: string;
+    needs_updating?: boolean;
+    is_outdated?: boolean;
+    is_old?: boolean;
+    severity?: "none" | "warning" | "danger";
+    reason?: string;
+    banners?: string[];
+    releases?: {
+      version?: string;
+      count?: number;
+      max_timestamp?: string;
+      release_date?: string | null;
+      days_since_release?: number | null;
+      released_ago?: string | null;
+      is_outdated?: boolean;
+      is_old?: boolean;
+      needs_updating?: boolean;
+      is_current_or_newer?: boolean;
+      status_reason?: string;
+      sql_query?: string;
+      activity_page_url?: string;
+    }[];
+    outdated_traffic_alerts?: {
+      version?: string;
+      threshold_percent?: number;
+    }[];
+  }[];
+}
 export const SdkHealthReportRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overall_health: Schema.optional(
@@ -71,9 +109,7 @@ export const SdkHealthReportRetrieveOutput =
         }),
       ),
     ),
-  });
-export type SdkHealthReportRetrieveOutput =
-  typeof SdkHealthReportRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SdkHealthReportRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,22 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsBulkDeleteCreateInput {
+  project_id: string;
+  filters?: {
+    active?: "true" | "false" | "STALE";
+    created_by_id?: number;
+    search?: string;
+    type?: "boolean" | "multivariant" | "experiment" | "remote_config";
+    evaluation_runtime?: "server" | "client" | "all";
+    excluded_properties?: string;
+    tags?: string[];
+    excluded_tags?: string[];
+    has_evaluation_contexts?: boolean;
+    archived?: boolean;
+  };
+  ids?: number[];
+}
 export const FeatureFlagsBulkDeleteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -36,11 +52,18 @@ export const FeatureFlagsBulkDeleteCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/feature_flags/bulk_delete/",
     }),
-  );
-export type FeatureFlagsBulkDeleteCreateInput =
-  typeof FeatureFlagsBulkDeleteCreateInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsBulkDeleteCreateInput>;
 
 // Output Schema
+export interface FeatureFlagsBulkDeleteCreateOutput {
+  deleted: {
+    id: number;
+    key: string;
+    rollout_state: "fully_rolled_out" | "not_rolled_out" | "partial";
+    active_variant: string | null;
+  }[];
+  errors: { id: unknown; key?: string; reason: string }[];
+}
 export const FeatureFlagsBulkDeleteCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Array(
@@ -62,9 +85,7 @@ export const FeatureFlagsBulkDeleteCreateOutput =
         reason: Schema.String,
       }),
     ),
-  });
-export type FeatureFlagsBulkDeleteCreateOutput =
-  typeof FeatureFlagsBulkDeleteCreateOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsBulkDeleteCreateOutput>;
 
 // The operation
 /**

@@ -4,11 +4,91 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ConnectedClusterCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties: {
+    agentPublicKeyCertificate: string;
+    kubernetesVersion?: string;
+    totalNodeCount?: number;
+    totalCoreCount?: number;
+    agentVersion?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    distribution?: string;
+    distributionVersion?: string;
+    infrastructure?: string;
+    offering?: string;
+    managedIdentityCertificateExpirationTime?: string;
+    lastConnectivityTime?: string;
+    connectivityStatus?:
+      | "Connecting"
+      | "Connected"
+      | "Offline"
+      | "Expired"
+      | "AgentNotInstalled";
+    privateLinkState?: "Enabled" | "Disabled";
+    privateLinkScopeResourceId?: string;
+    azureHybridBenefit?: "True" | "False" | "NotApplicable";
+    aadProfile?: {
+      enableAzureRBAC?: boolean;
+      adminGroupObjectIDs?: string[];
+      tenantID?: string;
+    };
+    arcAgentProfile?: {
+      desiredAgentVersion?: string;
+      agentAutoUpgrade?: "Enabled" | "Disabled";
+      systemComponents?: {
+        type?: string;
+        userSpecifiedVersion?: string;
+        majorVersion?: number;
+        currentVersion?: string;
+      }[];
+      agentErrors?: {
+        message?: string;
+        severity?: string;
+        component?: string;
+        time?: string;
+      }[];
+      agentState?: string;
+    };
+    securityProfile?: { workloadIdentity?: { enabled?: boolean } };
+    oidcIssuerProfile?: {
+      enabled?: boolean;
+      issuerUrl?: string;
+      selfHostedIssuerUrl?: string;
+    };
+    gateway?: { enabled?: boolean };
+    arcAgentryConfigurations?:
+      | {
+          feature?: string;
+          settings?: Record<string, string> | null;
+          protectedSettings?: Record<string, string> | null;
+        }[]
+      | null;
+    miscellaneousProperties?: Record<string, string>;
+  };
+  identity: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  kind?: "ProvisionedCluster";
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConnectedClusterCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -143,11 +223,22 @@ export const ConnectedClusterCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
       apiVersion: "2026-05-01",
     }),
-  );
-export type ConnectedClusterCreateOrReplaceInput =
-  typeof ConnectedClusterCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<ConnectedClusterCreateOrReplaceInput>;
 
 // Output Schema
+export interface ConnectedClusterCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectedClusterCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -167,9 +258,7 @@ export const ConnectedClusterCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectedClusterCreateOrReplaceOutput =
-  typeof ConnectedClusterCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedClusterCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -188,6 +277,11 @@ export const ConnectedClusterCreateOrReplace =
     outputSchema: ConnectedClusterCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface ConnectedClusterDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ConnectedClusterDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -199,15 +293,12 @@ export const ConnectedClusterDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
       apiVersion: "2026-05-01",
     }),
-  );
-export type ConnectedClusterDeleteInput =
-  typeof ConnectedClusterDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConnectedClusterDeleteInput>;
 
 // Output Schema
+export type ConnectedClusterDeleteOutput = void;
 export const ConnectedClusterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectedClusterDeleteOutput =
-  typeof ConnectedClusterDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedClusterDeleteOutput>;
 
 // The operation
 /**
@@ -227,6 +318,11 @@ export const ConnectedClusterDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectedClusterGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ConnectedClusterGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -238,10 +334,22 @@ export const ConnectedClusterGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
       apiVersion: "2026-05-01",
     }),
-  );
-export type ConnectedClusterGetInput = typeof ConnectedClusterGetInput.Type;
+  ) as unknown as Schema.Codec<ConnectedClusterGetInput>;
 
 // Output Schema
+export interface ConnectedClusterGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectedClusterGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -261,8 +369,7 @@ export const ConnectedClusterGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectedClusterGetOutput = typeof ConnectedClusterGetOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedClusterGetOutput>;
 
 // The operation
 /**
@@ -280,6 +387,10 @@ export const ConnectedClusterGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectedClusterGetOutput,
 }));
 // Input Schema
+export interface ConnectedClusterListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConnectedClusterListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -290,11 +401,25 @@ export const ConnectedClusterListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters",
       apiVersion: "2026-05-01",
     }),
-  );
-export type ConnectedClusterListByResourceGroupInput =
-  typeof ConnectedClusterListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ConnectedClusterListByResourceGroupInput>;
 
 // Output Schema
+export interface ConnectedClusterListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectedClusterListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -329,9 +454,7 @@ export const ConnectedClusterListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectedClusterListByResourceGroupOutput =
-  typeof ConnectedClusterListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedClusterListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -349,6 +472,9 @@ export const ConnectedClusterListByResourceGroup =
     outputSchema: ConnectedClusterListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ConnectedClusterListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ConnectedClusterListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -358,11 +484,25 @@ export const ConnectedClusterListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kubernetes/connectedClusters",
       apiVersion: "2026-05-01",
     }),
-  );
-export type ConnectedClusterListBySubscriptionInput =
-  typeof ConnectedClusterListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ConnectedClusterListBySubscriptionInput>;
 
 // Output Schema
+export interface ConnectedClusterListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectedClusterListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -397,9 +537,7 @@ export const ConnectedClusterListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectedClusterListBySubscriptionOutput =
-  typeof ConnectedClusterListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedClusterListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -416,6 +554,13 @@ export const ConnectedClusterListBySubscription =
     outputSchema: ConnectedClusterListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ConnectedClusterListClusterUserCredentialInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  authenticationMethod: "Token" | "AAD";
+  clientProxy: boolean;
+}
 export const ConnectedClusterListClusterUserCredentialInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -429,11 +574,20 @@ export const ConnectedClusterListClusterUserCredentialInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}/listClusterUserCredential",
       apiVersion: "2026-05-01",
     }),
-  );
-export type ConnectedClusterListClusterUserCredentialInput =
-  typeof ConnectedClusterListClusterUserCredentialInput.Type;
+  ) as unknown as Schema.Codec<ConnectedClusterListClusterUserCredentialInput>;
 
 // Output Schema
+export interface ConnectedClusterListClusterUserCredentialOutput {
+  hybridConnectionConfig?: {
+    expirationTime?: number;
+    hybridConnectionName?: string;
+    relay?: string;
+    token?: string;
+    relayTid?: string;
+    relayType?: string;
+  };
+  kubeconfigs?: { name?: string; value?: string }[];
+}
 export const ConnectedClusterListClusterUserCredentialOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hybridConnectionConfig: Schema.optional(
@@ -454,9 +608,7 @@ export const ConnectedClusterListClusterUserCredentialOutput =
         }),
       ),
     ),
-  });
-export type ConnectedClusterListClusterUserCredentialOutput =
-  typeof ConnectedClusterListClusterUserCredentialOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedClusterListClusterUserCredentialOutput>;
 
 // The operation
 /**
@@ -475,6 +627,18 @@ export const ConnectedClusterListClusterUserCredential =
     outputSchema: ConnectedClusterListClusterUserCredentialOutput,
   }));
 // Input Schema
+export interface ConnectedClusterUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    distribution?: string;
+    distributionVersion?: string;
+    azureHybridBenefit?: "True" | "False" | "NotApplicable";
+    gateway?: { enabled?: boolean };
+  };
+}
 export const ConnectedClusterUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -501,11 +665,22 @@ export const ConnectedClusterUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
       apiVersion: "2026-05-01",
     }),
-  );
-export type ConnectedClusterUpdateInput =
-  typeof ConnectedClusterUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConnectedClusterUpdateInput>;
 
 // Output Schema
+export interface ConnectedClusterUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectedClusterUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -525,9 +700,7 @@ export const ConnectedClusterUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectedClusterUpdateOutput =
-  typeof ConnectedClusterUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedClusterUpdateOutput>;
 
 // The operation
 /**
@@ -547,6 +720,7 @@ export const ConnectedClusterUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsGetInput {}
 export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -555,10 +729,24 @@ export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Kubernetes/operations",
     apiVersion: "2026-05-01",
   }),
-);
-export type OperationsGetInput = typeof OperationsGetInput.Type;
+) as unknown as Schema.Codec<OperationsGetInput>;
 
 // Output Schema
+export interface OperationsGetOutput {
+  value: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -579,8 +767,7 @@ export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsGetOutput = typeof OperationsGetOutput.Type;
+}) as unknown as Schema.Codec<OperationsGetOutput>;
 
 // The operation
 /**

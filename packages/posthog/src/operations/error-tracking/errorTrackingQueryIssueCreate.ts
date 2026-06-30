@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingQueryIssueCreateInput {
+  project_id: string;
+  issueId: string;
+  dateRange?: { date_from?: string; date_to?: string | null };
+  filterTestAccounts?: boolean;
+  volumeResolution?: number;
+  includeSparkline?: boolean;
+}
 export const ErrorTrackingQueryIssueCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -22,11 +30,45 @@ export const ErrorTrackingQueryIssueCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/query/issue/",
     }),
-  );
-export type ErrorTrackingQueryIssueCreateInput =
-  typeof ErrorTrackingQueryIssueCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingQueryIssueCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingQueryIssueCreateOutput {
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  status?: string;
+  first_seen?: string | null;
+  last_seen?: string | null;
+  library?: string | null;
+  source?: string | null;
+  assignee?: { id?: string | number | null; type?: string | null } | null;
+  aggregations?: {
+    occurrences?: number;
+    users?: number;
+    sessions?: number;
+    volumeRange?: number[];
+    volume_buckets?: { label: string; value?: number | null }[];
+  } | null;
+  function?: string | null;
+  top_in_app_frame?: {
+    function?: string;
+    source?: string;
+    line?: number;
+    column?: number;
+    in_app?: boolean;
+  };
+  latest_release?: {
+    version?: string;
+    project?: string;
+    timestamp?: string;
+    commit_id?: string;
+    branch?: string;
+    repo_name?: string;
+  };
+  impact?: { occurrences?: number; users?: number; sessions?: number };
+  sparkline?: number[];
+}
 export const ErrorTrackingQueryIssueCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -37,8 +79,34 @@ export const ErrorTrackingQueryIssueCreateOutput =
     last_seen: Schema.optional(Schema.NullOr(Schema.String)),
     library: Schema.optional(Schema.NullOr(Schema.String)),
     source: Schema.optional(Schema.NullOr(Schema.String)),
-    assignee: Schema.optional(Schema.Unknown),
-    aggregations: Schema.optional(Schema.Unknown),
+    assignee: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(
+            Schema.NullOr(Schema.Union([Schema.String, Schema.Number])),
+          ),
+          type: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
+    ),
+    aggregations: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          occurrences: Schema.optional(Schema.Number),
+          users: Schema.optional(Schema.Number),
+          sessions: Schema.optional(Schema.Number),
+          volumeRange: Schema.optional(Schema.Array(Schema.Number)),
+          volume_buckets: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                label: Schema.String,
+                value: Schema.optional(Schema.NullOr(Schema.Number)),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
     function: Schema.optional(Schema.NullOr(Schema.String)),
     top_in_app_frame: Schema.optional(
       Schema.Struct({
@@ -67,9 +135,7 @@ export const ErrorTrackingQueryIssueCreateOutput =
       }),
     ),
     sparkline: Schema.optional(Schema.Array(Schema.Number)),
-  });
-export type ErrorTrackingQueryIssueCreateOutput =
-  typeof ErrorTrackingQueryIssueCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingQueryIssueCreateOutput>;
 
 // The operation
 /**

@@ -4,15 +4,33 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1AuthorizeJitAccessInput {
+  ref: string;
+  role: string;
+  rhost: string;
+}
 export const V1AuthorizeJitAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     role: Schema.String,
     rhost: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/database/jit" }));
-export type V1AuthorizeJitAccessInput = typeof V1AuthorizeJitAccessInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/projects/{ref}/database/jit" }),
+  ) as unknown as Schema.Codec<V1AuthorizeJitAccessInput>;
 
 // Output Schema
+export interface V1AuthorizeJitAccessOutput {
+  user_id: string;
+  user_role: {
+    role: string;
+    expires_at?: number;
+    allowed_networks?: {
+      allowed_cidrs?: { cidr: string }[];
+      allowed_cidrs_v6?: { cidr: string }[];
+    };
+    branches_only?: boolean;
+  };
+}
 export const V1AuthorizeJitAccessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user_id: Schema.String,
@@ -39,8 +57,7 @@ export const V1AuthorizeJitAccessOutput =
       ),
       branches_only: Schema.optional(Schema.Boolean),
     }),
-  });
-export type V1AuthorizeJitAccessOutput = typeof V1AuthorizeJitAccessOutput.Type;
+  }) as unknown as Schema.Codec<V1AuthorizeJitAccessOutput>;
 
 // The operation
 /**

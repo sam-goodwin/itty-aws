@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationControllerCheckInput {
+  organization_membership_id: string;
+  permission_slug: string;
+}
 export const AuthorizationControllerCheckInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -13,17 +17,16 @@ export const AuthorizationControllerCheckInput =
       method: "POST",
       path: "/authorization/organization_memberships/{organization_membership_id}/check",
     }),
-  );
-export type AuthorizationControllerCheckInput =
-  typeof AuthorizationControllerCheckInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationControllerCheckInput>;
 
 // Output Schema
+export interface AuthorizationControllerCheckOutput {
+  authorized?: boolean;
+}
 export const AuthorizationControllerCheckOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorized: Schema.optional(Schema.Boolean),
-  });
-export type AuthorizationControllerCheckOutput =
-  typeof AuthorizationControllerCheckOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationControllerCheckOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsScoutScratchpadForgetInput {
+  project_id: string;
+  key: string;
+}
 export const SignalsScoutScratchpadForgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const SignalsScoutScratchpadForgetInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/scout/scratchpad/forget/",
     }),
-  );
-export type SignalsScoutScratchpadForgetInput =
-  typeof SignalsScoutScratchpadForgetInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutScratchpadForgetInput>;
 
 // Output Schema
+export interface SignalsScoutScratchpadForgetOutput {
+  deleted: boolean;
+}
 export const SignalsScoutScratchpadForgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Boolean,
-  });
-export type SignalsScoutScratchpadForgetOutput =
-  typeof SignalsScoutScratchpadForgetOutput.Type;
+  }) as unknown as Schema.Codec<SignalsScoutScratchpadForgetOutput>;
 
 // The operation
 /**

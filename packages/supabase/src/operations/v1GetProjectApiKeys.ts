@@ -3,16 +3,34 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface V1GetProjectApiKeysInput {
+  ref: string;
+  reveal?: boolean;
+}
 export const V1GetProjectApiKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     reveal: Schema.optional(Schema.Boolean),
-  }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/api-keys" }));
-export type V1GetProjectApiKeysInput = typeof V1GetProjectApiKeysInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/projects/{ref}/api-keys" }),
+  ) as unknown as Schema.Codec<V1GetProjectApiKeysInput>;
 
 // Output Schema
+export type V1GetProjectApiKeysOutput = {
+  api_key?: Redacted.Redacted<string> | null;
+  id?: string | null;
+  type?: "legacy" | "publishable" | "secret" | null;
+  prefix?: string | null;
+  name: string;
+  description?: string | null;
+  hash?: string | null;
+  secret_jwt_template?: Record<string, unknown> | null;
+  inserted_at?: string | null;
+  updated_at?: string | null;
+}[];
 export const V1GetProjectApiKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -31,8 +49,7 @@ export const V1GetProjectApiKeysOutput =
       inserted_at: Schema.optional(Schema.NullOr(Schema.String)),
       updated_at: Schema.optional(Schema.NullOr(Schema.String)),
     }),
-  );
-export type V1GetProjectApiKeysOutput = typeof V1GetProjectApiKeysOutput.Type;
+  ) as unknown as Schema.Codec<V1GetProjectApiKeysOutput>;
 
 // The operation
 /**

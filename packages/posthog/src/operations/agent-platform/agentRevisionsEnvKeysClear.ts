@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentRevisionsEnvKeysClearInput {
+  application_id: string;
+  id: string;
+  key: string;
+  project_id: string;
+}
 export const AgentRevisionsEnvKeysClearInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +20,12 @@ export const AgentRevisionsEnvKeysClearInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/env_keys/{key}/",
     }),
-  );
-export type AgentRevisionsEnvKeysClearInput =
-  typeof AgentRevisionsEnvKeysClearInput.Type;
+  ) as unknown as Schema.Codec<AgentRevisionsEnvKeysClearInput>;
 
 // Output Schema
+export type AgentRevisionsEnvKeysClearOutput = void;
 export const AgentRevisionsEnvKeysClearOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentRevisionsEnvKeysClearOutput =
-  typeof AgentRevisionsEnvKeysClearOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentRevisionsEnvKeysClearOutput>;
 
 // The operation
 /**

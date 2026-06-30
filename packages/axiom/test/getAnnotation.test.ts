@@ -44,7 +44,7 @@ describe("getAnnotation", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -62,7 +62,7 @@ describe("getAnnotation", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -76,6 +76,6 @@ describe("getAnnotation", () => {
 
       expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

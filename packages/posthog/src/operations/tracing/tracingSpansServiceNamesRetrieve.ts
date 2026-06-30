@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansServiceNamesRetrieveInput {
+  project_id: string;
+  dateRange?: string;
+  search?: string;
+}
 export const TracingSpansServiceNamesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const TracingSpansServiceNamesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tracing/spans/service-names/",
     }),
-  );
-export type TracingSpansServiceNamesRetrieveInput =
-  typeof TracingSpansServiceNamesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansServiceNamesRetrieveInput>;
 
 // Output Schema
+export type TracingSpansServiceNamesRetrieveOutput = void;
 export const TracingSpansServiceNamesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TracingSpansServiceNamesRetrieveOutput =
-  typeof TracingSpansServiceNamesRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansServiceNamesRetrieveOutput>;
 
 // The operation
 /**

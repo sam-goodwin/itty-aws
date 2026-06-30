@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsStatsInput {
+  id: string;
+  project_id: string;
+  since?: string;
+}
 export const AgentApplicationsStatsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,17 @@ export const AgentApplicationsStatsInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{id}/stats/",
     }),
-  );
-export type AgentApplicationsStatsInput =
-  typeof AgentApplicationsStatsInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsStatsInput>;
 
 // Output Schema
+export interface AgentApplicationsStatsOutput {
+  liveCount: number;
+  sessionsInWindowCount: number;
+  spendInWindowUsd: number;
+  lastActivityAt: string | null;
+  failedInWindowCount: number;
+  pendingApprovalsCount: number;
+}
 export const AgentApplicationsStatsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     liveCount: Schema.Number,
@@ -26,9 +37,7 @@ export const AgentApplicationsStatsOutput =
     lastActivityAt: Schema.NullOr(Schema.String),
     failedInWindowCount: Schema.Number,
     pendingApprovalsCount: Schema.Number,
-  });
-export type AgentApplicationsStatsOutput =
-  typeof AgentApplicationsStatsOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsStatsOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface Notice {
   message?: string;
 }
 
-export const Notice: Schema.Schema<Notice> =
+export const Notice: Schema.Codec<Notice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "Notice" });
@@ -39,7 +39,7 @@ export interface SapDiscoveryWorkloadPropertiesProductVersion {
   name?: string;
 }
 
-export const SapDiscoveryWorkloadPropertiesProductVersion: Schema.Schema<SapDiscoveryWorkloadPropertiesProductVersion> =
+export const SapDiscoveryWorkloadPropertiesProductVersion: Schema.Codec<SapDiscoveryWorkloadPropertiesProductVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface SapDiscoveryResourceInstancePropertiesKernelVersionVersion {
   minor?: number;
 }
 
-export const SapDiscoveryResourceInstancePropertiesKernelVersionVersion: Schema.Schema<SapDiscoveryResourceInstancePropertiesKernelVersionVersion> =
+export const SapDiscoveryResourceInstancePropertiesKernelVersionVersion: Schema.Codec<SapDiscoveryResourceInstancePropertiesKernelVersionVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remainder: Schema.optional(Schema.String),
     patch: Schema.optional(Schema.Number),
@@ -76,7 +76,7 @@ export interface Product {
   name?: string;
 }
 
-export const Product: Schema.Schema<Product> =
+export const Product: Schema.Codec<Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -89,7 +89,7 @@ export interface IAMPermission {
   name?: string;
 }
 
-export const IAMPermission: Schema.Schema<IAMPermission> =
+export const IAMPermission: Schema.Codec<IAMPermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     granted: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export interface ServiceStates {
   iamPermissions?: ReadonlyArray<IAMPermission>;
 }
 
-export const ServiceStates: Schema.Schema<ServiceStates> =
+export const ServiceStates: Schema.Codec<ServiceStates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     iamPermissions: Schema.optional(Schema.Array(IAMPermission)),
@@ -130,7 +130,7 @@ export interface AgentStates {
   hanaMonitoring?: ServiceStates;
 }
 
-export const AgentStates: Schema.Schema<AgentStates> =
+export const AgentStates: Schema.Codec<AgentStates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installedVersion: Schema.optional(Schema.String),
     processMetrics: Schema.optional(ServiceStates),
@@ -147,7 +147,7 @@ export interface SapInstanceProperties {
   agentStates?: AgentStates;
 }
 
-export const SapInstanceProperties: Schema.Schema<SapInstanceProperties> =
+export const SapInstanceProperties: Schema.Codec<SapInstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numbers: Schema.optional(Schema.Array(Schema.String)),
     agentStates: Schema.optional(AgentStates),
@@ -166,7 +166,7 @@ export interface UpcomingMaintenanceEvent {
   type?: string;
 }
 
-export const UpcomingMaintenanceEvent: Schema.Schema<UpcomingMaintenanceEvent> =
+export const UpcomingMaintenanceEvent: Schema.Codec<UpcomingMaintenanceEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     maintenanceStatus: Schema.optional(Schema.String),
@@ -198,7 +198,7 @@ export interface InstanceProperties {
   >;
 }
 
-export const InstanceProperties: Schema.Schema<InstanceProperties> =
+export const InstanceProperties: Schema.Codec<InstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sapInstanceProperties: Schema.optional(SapInstanceProperties),
     instanceNumber: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface CloudResource {
   instanceProperties?: InstanceProperties;
 }
 
-export const CloudResource: Schema.Schema<CloudResource> =
+export const CloudResource: Schema.Codec<CloudResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -248,7 +248,7 @@ export interface BackupProperties {
     | (string & {});
 }
 
-export const BackupProperties: Schema.Schema<BackupProperties> =
+export const BackupProperties: Schema.Codec<BackupProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latestBackupTime: Schema.optional(Schema.String),
     latestBackupStatus: Schema.optional(Schema.String),
@@ -269,7 +269,7 @@ export interface DatabaseProperties {
     | (string & {});
 }
 
-export const DatabaseProperties: Schema.Schema<DatabaseProperties> =
+export const DatabaseProperties: Schema.Codec<DatabaseProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backupProperties: Schema.optional(BackupProperties),
     databaseType: Schema.optional(Schema.String),
@@ -292,7 +292,7 @@ export interface SapComponent {
   haHosts?: ReadonlyArray<string>;
 }
 
-export const SapComponent: Schema.Schema<SapComponent> =
+export const SapComponent: Schema.Codec<SapComponent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topologyType: Schema.optional(Schema.String),
     resources: Schema.optional(Schema.Array(CloudResource)),
@@ -322,7 +322,7 @@ export interface SapWorkload {
   application?: SapComponent;
 }
 
-export const SapWorkload: Schema.Schema<SapWorkload> =
+export const SapWorkload: Schema.Codec<SapWorkload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     products: Schema.optional(Schema.Array(Product)),
@@ -344,7 +344,7 @@ export interface WorkloadProfile {
   name?: string;
 }
 
-export const WorkloadProfile: Schema.Schema<WorkloadProfile> =
+export const WorkloadProfile: Schema.Codec<WorkloadProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadType: Schema.optional(Schema.String),
     sapWorkload: Schema.optional(SapWorkload),
@@ -362,7 +362,7 @@ export interface ListDiscoveredProfilesResponse {
   nextPageToken?: string;
 }
 
-export const ListDiscoveredProfilesResponse: Schema.Schema<ListDiscoveredProfilesResponse> =
+export const ListDiscoveredProfilesResponse: Schema.Codec<ListDiscoveredProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadProfiles: Schema.optional(Schema.Array(WorkloadProfile)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -371,7 +371,7 @@ export const ListDiscoveredProfilesResponse: Schema.Schema<ListDiscoveredProfile
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -406,7 +406,7 @@ export interface LocationDetails {
   subnetName?: string;
 }
 
-export const LocationDetails: Schema.Schema<LocationDetails> =
+export const LocationDetails: Schema.Codec<LocationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createCommsFirewall: Schema.optional(Schema.Boolean),
     dnsZoneNameSuffix: Schema.optional(Schema.String),
@@ -440,7 +440,7 @@ export interface SapValidationValidationDetail {
   isPresent?: boolean;
 }
 
-export const SapValidationValidationDetail: Schema.Schema<SapValidationValidationDetail> =
+export const SapValidationValidationDetail: Schema.Codec<SapValidationValidationDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sapValidationType: Schema.optional(Schema.String),
     details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -476,7 +476,7 @@ export interface Rule {
   displayName?: string;
 }
 
-export const Rule: Schema.Schema<Rule> =
+export const Rule: Schema.Codec<Rule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -500,7 +500,7 @@ export interface OpenShiftValidation {
   clusterId?: string;
 }
 
-export const OpenShiftValidation: Schema.Schema<OpenShiftValidation> =
+export const OpenShiftValidation: Schema.Codec<OpenShiftValidation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationDetails: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -513,7 +513,7 @@ export interface SqlserverValidationDetails {
   fields?: Record<string, string>;
 }
 
-export const SqlserverValidationDetails: Schema.Schema<SqlserverValidationDetails> =
+export const SqlserverValidationDetails: Schema.Codec<SqlserverValidationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "SqlserverValidationDetails" });
@@ -539,7 +539,7 @@ export interface SqlserverValidationValidationDetail {
   details?: ReadonlyArray<SqlserverValidationDetails>;
 }
 
-export const SqlserverValidationValidationDetail: Schema.Schema<SqlserverValidationValidationDetail> =
+export const SqlserverValidationValidationDetail: Schema.Codec<SqlserverValidationValidationDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     details: Schema.optional(Schema.Array(SqlserverValidationDetails)),
@@ -582,7 +582,7 @@ export interface ActuationOutput {
   hasUserFacingErrorMsg?: boolean;
 }
 
-export const ActuationOutput: Schema.Schema<ActuationOutput> =
+export const ActuationOutput: Schema.Codec<ActuationOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blueprintId: Schema.optional(Schema.String),
     terraformTemplate: Schema.optional(Schema.String),
@@ -603,7 +603,7 @@ export interface DeploymentOutput {
   name?: string;
 }
 
-export const DeploymentOutput: Schema.Schema<DeploymentOutput> =
+export const DeploymentOutput: Schema.Codec<DeploymentOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -632,7 +632,7 @@ export interface Actuation {
   endTime?: string;
 }
 
-export const Actuation: Schema.Schema<Actuation> =
+export const Actuation: Schema.Codec<Actuation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actuationOutput: Schema.optional(ActuationOutput),
     state: Schema.optional(Schema.String),
@@ -651,7 +651,7 @@ export interface ListActuationsResponse {
   nextPageToken?: string;
 }
 
-export const ListActuationsResponse: Schema.Schema<ListActuationsResponse> =
+export const ListActuationsResponse: Schema.Codec<ListActuationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     actuations: Schema.optional(Schema.Array(Actuation)),
@@ -675,7 +675,7 @@ export interface OperationMetadata {
   verb?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -693,7 +693,7 @@ export interface ScannedResource {
   type?: string;
 }
 
-export const ScannedResource: Schema.Schema<ScannedResource> =
+export const ScannedResource: Schema.Codec<ScannedResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -706,7 +706,7 @@ export interface ListScannedResourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListScannedResourcesResponse: Schema.Schema<ListScannedResourcesResponse> =
+export const ListScannedResourcesResponse: Schema.Codec<ListScannedResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scannedResources: Schema.optional(Schema.Array(ScannedResource)),
     nextPageToken: Schema.optional(Schema.String),
@@ -747,7 +747,7 @@ export interface AppDetails {
   secretManagerSecret?: string;
 }
 
-export const AppDetails: Schema.Schema<AppDetails> =
+export const AppDetails: Schema.Codec<AppDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineType: Schema.optional(Schema.String),
     ersVm: Schema.optional(Schema.String),
@@ -787,7 +787,7 @@ export interface HealthCheck {
   source?: string;
 }
 
-export const HealthCheck: Schema.Schema<HealthCheck> =
+export const HealthCheck: Schema.Codec<HealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     metric: Schema.optional(Schema.String),
@@ -820,7 +820,7 @@ export interface ComponentHealth {
   subComponentsHealth?: ReadonlyArray<ComponentHealth>;
 }
 
-export const ComponentHealth: Schema.Schema<ComponentHealth> =
+export const ComponentHealth: Schema.Codec<ComponentHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       componentHealthChecks: Schema.optional(Schema.Array(HealthCheck)),
@@ -831,7 +831,7 @@ export const ComponentHealth: Schema.Schema<ComponentHealth> =
     }),
   ).annotate({
     identifier: "ComponentHealth",
-  }) as any as Schema.Schema<ComponentHealth>;
+  }) as any as Schema.Codec<ComponentHealth>;
 
 export interface WorkloadProfileHealth {
   /** The detailed condition reports of each component. */
@@ -848,7 +848,7 @@ export interface WorkloadProfileHealth {
     | (string & {});
 }
 
-export const WorkloadProfileHealth: Schema.Schema<WorkloadProfileHealth> =
+export const WorkloadProfileHealth: Schema.Codec<WorkloadProfileHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     componentsHealth: Schema.optional(Schema.Array(ComponentHealth)),
     checkTime: Schema.optional(Schema.String),
@@ -876,7 +876,7 @@ export interface DatabaseDetails {
   diskType?: string;
 }
 
-export const DatabaseDetails: Schema.Schema<DatabaseDetails> =
+export const DatabaseDetails: Schema.Codec<DatabaseDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     primaryDbVm: Schema.optional(Schema.String),
@@ -896,7 +896,7 @@ export interface RuleOutput {
   details?: Record<string, string>;
 }
 
-export const RuleOutput: Schema.Schema<RuleOutput> =
+export const RuleOutput: Schema.Codec<RuleOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -911,7 +911,7 @@ export interface Summary {
   newFixes?: string;
 }
 
-export const Summary: Schema.Schema<Summary> =
+export const Summary: Schema.Codec<Summary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failures: Schema.optional(Schema.String),
     newFailures: Schema.optional(Schema.String),
@@ -923,7 +923,7 @@ export interface TerraformVariable {
   inputValue?: unknown;
 }
 
-export const TerraformVariable: Schema.Schema<TerraformVariable> =
+export const TerraformVariable: Schema.Codec<TerraformVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputValue: Schema.optional(Schema.Unknown),
   }).annotate({ identifier: "TerraformVariable" });
@@ -943,7 +943,7 @@ export interface Pacemaker {
   pacemakerClusterUsername?: string;
 }
 
-export const Pacemaker: Schema.Schema<Pacemaker> =
+export const Pacemaker: Schema.Codec<Pacemaker> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketNameNodeCertificates: Schema.optional(Schema.String),
     sqlPacemakerSecret: Schema.optional(Schema.String),
@@ -978,7 +978,7 @@ export interface SqlLocationDetails {
   subnetwork?: string;
 }
 
-export const SqlLocationDetails: Schema.Schema<SqlLocationDetails> =
+export const SqlLocationDetails: Schema.Codec<SqlLocationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
@@ -1020,7 +1020,7 @@ export interface Database {
   secondarySoleTenantNodeType?: string;
 }
 
-export const Database: Schema.Schema<Database> =
+export const Database: Schema.Codec<Database> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineType: Schema.optional(Schema.String),
     tempdbOnSsd: Schema.optional(Schema.Boolean),
@@ -1052,7 +1052,7 @@ export interface ActiveDirectory {
   domainUsername?: string;
 }
 
-export const ActiveDirectory: Schema.Schema<ActiveDirectory> =
+export const ActiveDirectory: Schema.Codec<ActiveDirectory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secretManagerSecret: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1127,7 +1127,7 @@ export interface SqlServerWorkload {
   activeDirectory?: ActiveDirectory;
 }
 
-export const SqlServerWorkload: Schema.Schema<SqlServerWorkload> =
+export const SqlServerWorkload: Schema.Codec<SqlServerWorkload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     haType: Schema.optional(Schema.String),
     pacemaker: Schema.optional(Pacemaker),
@@ -1193,7 +1193,7 @@ export interface SapSystemS4Config {
   mediaBucketName?: string;
 }
 
-export const SapSystemS4Config: Schema.Schema<SapSystemS4Config> =
+export const SapSystemS4Config: Schema.Codec<SapSystemS4Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowStoppingForUpdate: Schema.optional(Schema.Boolean),
     gcpProjectId: Schema.optional(Schema.String),
@@ -1247,7 +1247,7 @@ export interface Deployment {
     | (string & {});
 }
 
-export const Deployment: Schema.Schema<Deployment> =
+export const Deployment: Schema.Codec<Deployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     terraformVariables: Schema.optional(
@@ -1273,7 +1273,7 @@ export interface ListDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListDeploymentsResponse: Schema.Schema<ListDeploymentsResponse> =
+export const ListDeploymentsResponse: Schema.Codec<ListDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     deployments: Schema.optional(Schema.Array(Deployment)),
@@ -1291,7 +1291,7 @@ export interface ViolationDetails {
   ruleOutput?: ReadonlyArray<RuleOutput>;
 }
 
-export const ViolationDetails: Schema.Schema<ViolationDetails> =
+export const ViolationDetails: Schema.Codec<ViolationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
     observed: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1308,7 +1308,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1326,7 +1326,7 @@ export interface SapValidation {
   zone?: string;
 }
 
-export const SapValidation: Schema.Schema<SapValidation> =
+export const SapValidation: Schema.Codec<SapValidation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     validationDetails: Schema.optional(
@@ -1353,7 +1353,7 @@ export interface TorsoValidation {
   validationDetails?: Record<string, string>;
 }
 
-export const TorsoValidation: Schema.Schema<TorsoValidation> =
+export const TorsoValidation: Schema.Codec<TorsoValidation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentVersion: Schema.optional(Schema.String),
     workloadType: Schema.optional(Schema.String),
@@ -1369,7 +1369,7 @@ export interface GceInstanceFilter {
   serviceAccounts?: ReadonlyArray<string>;
 }
 
-export const GceInstanceFilter: Schema.Schema<GceInstanceFilter> =
+export const GceInstanceFilter: Schema.Codec<GceInstanceFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccounts: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GceInstanceFilter" });
@@ -1385,7 +1385,7 @@ export interface ResourceFilter {
   resourceIdPatterns?: ReadonlyArray<string>;
 }
 
-export const ResourceFilter: Schema.Schema<ResourceFilter> =
+export const ResourceFilter: Schema.Codec<ResourceFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Schema.String)),
     inclusionLabels: Schema.optional(
@@ -1404,7 +1404,7 @@ export interface SapDiscoveryResourceInstancePropertiesKernelVersion {
   distroKernel?: SapDiscoveryResourceInstancePropertiesKernelVersionVersion;
 }
 
-export const SapDiscoveryResourceInstancePropertiesKernelVersion: Schema.Schema<SapDiscoveryResourceInstancePropertiesKernelVersion> =
+export const SapDiscoveryResourceInstancePropertiesKernelVersion: Schema.Codec<SapDiscoveryResourceInstancePropertiesKernelVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rawString: Schema.optional(Schema.String),
     osKernel: Schema.optional(
@@ -1427,7 +1427,7 @@ export interface ResourceStatus {
     | (string & {});
 }
 
-export const ResourceStatus: Schema.Schema<ResourceStatus> =
+export const ResourceStatus: Schema.Codec<ResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResourceStatus" });
@@ -1439,7 +1439,7 @@ export interface BigQueryDestination {
   createNewResultsTable?: boolean;
 }
 
-export const BigQueryDestination: Schema.Schema<BigQueryDestination> =
+export const BigQueryDestination: Schema.Codec<BigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationDataset: Schema.optional(Schema.String),
     createNewResultsTable: Schema.optional(Schema.Boolean),
@@ -1479,7 +1479,7 @@ export interface Evaluation {
   customRulesBucket?: string;
 }
 
-export const Evaluation: Schema.Schema<Evaluation> =
+export const Evaluation: Schema.Codec<Evaluation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1507,7 +1507,7 @@ export interface SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
   extVersion?: string;
 }
 
-export const SapDiscoveryWorkloadPropertiesSoftwareComponentProperties: Schema.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties> =
+export const SapDiscoveryWorkloadPropertiesSoftwareComponentProperties: Schema.Codec<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1524,7 +1524,7 @@ export interface SapDiscoveryResourceInstancePropertiesAppInstance {
   number?: string;
 }
 
-export const SapDiscoveryResourceInstancePropertiesAppInstance: Schema.Schema<SapDiscoveryResourceInstancePropertiesAppInstance> =
+export const SapDiscoveryResourceInstancePropertiesAppInstance: Schema.Codec<SapDiscoveryResourceInstancePropertiesAppInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     number: Schema.optional(Schema.String),
@@ -1537,7 +1537,7 @@ export interface ListRulesResponse {
   rules?: ReadonlyArray<Rule>;
 }
 
-export const ListRulesResponse: Schema.Schema<ListRulesResponse> =
+export const ListRulesResponse: Schema.Codec<ListRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(Rule)),
   }).annotate({ identifier: "ListRulesResponse" });
@@ -1566,7 +1566,7 @@ export interface SapDiscoveryComponentApplicationProperties {
   ersInstanceNumber?: string;
 }
 
-export const SapDiscoveryComponentApplicationProperties: Schema.Schema<SapDiscoveryComponentApplicationProperties> =
+export const SapDiscoveryComponentApplicationProperties: Schema.Codec<SapDiscoveryComponentApplicationProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kernelVersion: Schema.optional(Schema.String),
     abap: Schema.optional(Schema.Boolean),
@@ -1587,7 +1587,7 @@ export interface SapDiscoveryResourceInstancePropertiesDiskMount {
   diskNames?: ReadonlyArray<string>;
 }
 
-export const SapDiscoveryResourceInstancePropertiesDiskMount: Schema.Schema<SapDiscoveryResourceInstancePropertiesDiskMount> =
+export const SapDiscoveryResourceInstancePropertiesDiskMount: Schema.Codec<SapDiscoveryResourceInstancePropertiesDiskMount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mountPoint: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1632,7 +1632,7 @@ export interface SapDiscoveryResourceInstanceProperties {
     | (string & {});
 }
 
-export const SapDiscoveryResourceInstanceProperties: Schema.Schema<SapDiscoveryResourceInstanceProperties> =
+export const SapDiscoveryResourceInstanceProperties: Schema.Codec<SapDiscoveryResourceInstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osKernelVersion: Schema.optional(
       SapDiscoveryResourceInstancePropertiesKernelVersion,
@@ -1683,7 +1683,7 @@ export interface SapDiscoveryResource {
   resourceUri?: string;
 }
 
-export const SapDiscoveryResource: Schema.Schema<SapDiscoveryResource> =
+export const SapDiscoveryResource: Schema.Codec<SapDiscoveryResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedResources: Schema.optional(Schema.Array(Schema.String)),
     resourceType: Schema.optional(Schema.String),
@@ -1700,7 +1700,7 @@ export interface SapDiscoveryComponentReplicationSite {
   sourceSite?: string;
 }
 
-export const SapDiscoveryComponentReplicationSite: Schema.Schema<SapDiscoveryComponentReplicationSite> =
+export const SapDiscoveryComponentReplicationSite: Schema.Codec<SapDiscoveryComponentReplicationSite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       component: Schema.optional(SapDiscoveryComponent),
@@ -1708,7 +1708,7 @@ export const SapDiscoveryComponentReplicationSite: Schema.Schema<SapDiscoveryCom
     }),
   ).annotate({
     identifier: "SapDiscoveryComponentReplicationSite",
-  }) as any as Schema.Schema<SapDiscoveryComponentReplicationSite>;
+  }) as any as Schema.Codec<SapDiscoveryComponentReplicationSite>;
 
 export interface SapDiscoveryComponentDatabaseProperties {
   /** Optional. The version of the database software running in the system. */
@@ -1735,7 +1735,7 @@ export interface SapDiscoveryComponentDatabaseProperties {
   landscapeId?: string;
 }
 
-export const SapDiscoveryComponentDatabaseProperties: Schema.Schema<SapDiscoveryComponentDatabaseProperties> =
+export const SapDiscoveryComponentDatabaseProperties: Schema.Codec<SapDiscoveryComponentDatabaseProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseVersion: Schema.optional(Schema.String),
     instanceNumber: Schema.optional(Schema.String),
@@ -1771,7 +1771,7 @@ export interface SapDiscoveryComponent {
   databaseProperties?: SapDiscoveryComponentDatabaseProperties;
 }
 
-export const SapDiscoveryComponent: Schema.Schema<SapDiscoveryComponent> =
+export const SapDiscoveryComponent: Schema.Codec<SapDiscoveryComponent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       applicationProperties: Schema.optional(
@@ -1792,7 +1792,7 @@ export const SapDiscoveryComponent: Schema.Schema<SapDiscoveryComponent> =
     }),
   ).annotate({
     identifier: "SapDiscoveryComponent",
-  }) as any as Schema.Schema<SapDiscoveryComponent>;
+  }) as any as Schema.Codec<SapDiscoveryComponent>;
 
 export interface SapDiscoveryMetadata {
   /** Optional. Should be "prod", "QA", "dev", "staging", etc. */
@@ -1805,7 +1805,7 @@ export interface SapDiscoveryMetadata {
   definedSystem?: string;
 }
 
-export const SapDiscoveryMetadata: Schema.Schema<SapDiscoveryMetadata> =
+export const SapDiscoveryMetadata: Schema.Codec<SapDiscoveryMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentType: Schema.optional(Schema.String),
     customerRegion: Schema.optional(Schema.String),
@@ -1820,7 +1820,7 @@ export interface SapDiscoveryWorkloadProperties {
   softwareComponentVersions?: ReadonlyArray<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
 }
 
-export const SapDiscoveryWorkloadProperties: Schema.Schema<SapDiscoveryWorkloadProperties> =
+export const SapDiscoveryWorkloadProperties: Schema.Codec<SapDiscoveryWorkloadProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productVersions: Schema.optional(
       Schema.Array(SapDiscoveryWorkloadPropertiesProductVersion),
@@ -1849,7 +1849,7 @@ export interface SapDiscovery {
   useDrReconciliation?: boolean;
 }
 
-export const SapDiscovery: Schema.Schema<SapDiscovery> =
+export const SapDiscovery: Schema.Codec<SapDiscovery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseLayer: Schema.optional(SapDiscoveryComponent),
     metadata: Schema.optional(SapDiscoveryMetadata),
@@ -1872,7 +1872,7 @@ export interface SqlserverValidation {
   validationDetails?: ReadonlyArray<SqlserverValidationValidationDetail>;
 }
 
-export const SqlserverValidation: Schema.Schema<SqlserverValidation> =
+export const SqlserverValidation: Schema.Codec<SqlserverValidation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     instance: Schema.optional(Schema.String),
@@ -1889,7 +1889,7 @@ export interface AgentStatusReference {
   url?: string;
 }
 
-export const AgentStatusReference: Schema.Schema<AgentStatusReference> =
+export const AgentStatusReference: Schema.Codec<AgentStatusReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -1907,7 +1907,7 @@ export interface AgentStatusIAMPermission {
   name?: string;
 }
 
-export const AgentStatusIAMPermission: Schema.Schema<AgentStatusIAMPermission> =
+export const AgentStatusIAMPermission: Schema.Codec<AgentStatusIAMPermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     granted: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1922,7 +1922,7 @@ export interface AgentStatusConfigValue {
   value?: string;
 }
 
-export const AgentStatusConfigValue: Schema.Schema<AgentStatusConfigValue> =
+export const AgentStatusConfigValue: Schema.Codec<AgentStatusConfigValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isDefault: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -1956,7 +1956,7 @@ export interface AgentStatusServiceStatus {
   name?: string;
 }
 
-export const AgentStatusServiceStatus: Schema.Schema<AgentStatusServiceStatus> =
+export const AgentStatusServiceStatus: Schema.Codec<AgentStatusServiceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unspecifiedStateMessage: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -2016,7 +2016,7 @@ export interface AgentStatus {
     | (string & {});
 }
 
-export const AgentStatus: Schema.Schema<AgentStatus> =
+export const AgentStatus: Schema.Codec<AgentStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kernelVersion: Schema.optional(
       SapDiscoveryResourceInstancePropertiesKernelVersion,
@@ -2054,7 +2054,7 @@ export interface Insight {
   agentStatus?: AgentStatus;
 }
 
-export const Insight: Schema.Schema<Insight> =
+export const Insight: Schema.Codec<Insight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sentTime: Schema.optional(Schema.String),
     openShiftValidation: Schema.optional(OpenShiftValidation),
@@ -2075,7 +2075,7 @@ export interface WriteInsightRequest {
   requestId?: string;
 }
 
-export const WriteInsightRequest: Schema.Schema<WriteInsightRequest> =
+export const WriteInsightRequest: Schema.Codec<WriteInsightRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentVersion: Schema.optional(Schema.String),
     insight: Schema.optional(Insight),
@@ -2093,7 +2093,7 @@ export interface ExternalDataSources {
   type?: "TYPE_UNSPECIFIED" | "BIG_QUERY_TABLE" | (string & {});
 }
 
-export const ExternalDataSources: Schema.Schema<ExternalDataSources> =
+export const ExternalDataSources: Schema.Codec<ExternalDataSources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     assetType: Schema.optional(Schema.String),
@@ -2119,7 +2119,7 @@ export interface RuleExecutionResult {
   resultCount?: string;
 }
 
-export const RuleExecutionResult: Schema.Schema<RuleExecutionResult> =
+export const RuleExecutionResult: Schema.Codec<RuleExecutionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scannedResourceCount: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -2162,7 +2162,7 @@ export interface Execution {
   endTime?: string;
 }
 
-export const Execution: Schema.Schema<Execution> =
+export const Execution: Schema.Codec<Execution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     engine: Schema.optional(Schema.String),
@@ -2188,7 +2188,7 @@ export interface ListExecutionsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListExecutionsResponse: Schema.Schema<ListExecutionsResponse> =
+export const ListExecutionsResponse: Schema.Codec<ListExecutionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executions: Schema.optional(Schema.Array(Execution)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2208,7 +2208,7 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -2224,7 +2224,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -2232,7 +2232,7 @@ export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -2246,7 +2246,7 @@ export interface Resource {
   type?: string;
 }
 
-export const Resource: Schema.Schema<Resource> =
+export const Resource: Schema.Codec<Resource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2262,7 +2262,7 @@ export interface ShellCommand {
   timeoutSeconds?: number;
 }
 
-export const ShellCommand: Schema.Schema<ShellCommand> =
+export const ShellCommand: Schema.Codec<ShellCommand> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     command: Schema.optional(Schema.String),
     args: Schema.optional(Schema.String),
@@ -2276,7 +2276,7 @@ export interface AgentCommand {
   parameters?: Record<string, string>;
 }
 
-export const AgentCommand: Schema.Schema<AgentCommand> =
+export const AgentCommand: Schema.Codec<AgentCommand> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     command: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2289,7 +2289,7 @@ export interface Command {
   agentCommand?: AgentCommand;
 }
 
-export const Command: Schema.Schema<Command> =
+export const Command: Schema.Codec<Command> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shellCommand: Schema.optional(ShellCommand),
     agentCommand: Schema.optional(AgentCommand),
@@ -2314,7 +2314,7 @@ export interface ExecutionResult {
   violationDetails?: ViolationDetails;
 }
 
-export const ExecutionResult: Schema.Schema<ExecutionResult> =
+export const ExecutionResult: Schema.Codec<ExecutionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Resource),
     commands: Schema.optional(Schema.Array(Command)),
@@ -2339,7 +2339,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     name: Schema.optional(Schema.String),
@@ -2357,7 +2357,7 @@ export interface ListEvaluationsResponse {
   nextPageToken?: string;
 }
 
-export const ListEvaluationsResponse: Schema.Schema<ListEvaluationsResponse> =
+export const ListEvaluationsResponse: Schema.Codec<ListEvaluationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     evaluations: Schema.optional(Schema.Array(Evaluation)),
@@ -2371,7 +2371,7 @@ export interface ListExecutionResultsResponse {
   nextPageToken?: string;
 }
 
-export const ListExecutionResultsResponse: Schema.Schema<ListExecutionResultsResponse> =
+export const ListExecutionResultsResponse: Schema.Codec<ListExecutionResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionResults: Schema.optional(Schema.Array(ExecutionResult)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2386,7 +2386,7 @@ export interface RunEvaluationRequest {
   requestId?: string;
 }
 
-export const RunEvaluationRequest: Schema.Schema<RunEvaluationRequest> =
+export const RunEvaluationRequest: Schema.Codec<RunEvaluationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     execution: Schema.optional(Execution),
     executionId: Schema.optional(Schema.String),
@@ -2402,7 +2402,7 @@ export interface ListOperationsResponse {
   operations?: ReadonlyArray<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2411,7 +2411,7 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface WriteInsightResponse {}
 
-export const WriteInsightResponse: Schema.Schema<WriteInsightResponse> =
+export const WriteInsightResponse: Schema.Codec<WriteInsightResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WriteInsightResponse",
   });
@@ -2495,7 +2495,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -2530,7 +2530,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -2585,7 +2585,7 @@ export const ListProjectsLocationsRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/rules" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRulesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRulesRequest>;
 
 export type ListProjectsLocationsRulesResponse = ListRulesResponse;
 export const ListProjectsLocationsRulesResponse =
@@ -2626,7 +2626,7 @@ export const WriteInsightProjectsLocationsInsightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WriteInsightProjectsLocationsInsightsRequest>;
+  ) as unknown as Schema.Codec<WriteInsightProjectsLocationsInsightsRequest>;
 
 export type WriteInsightProjectsLocationsInsightsResponse =
   WriteInsightResponse;
@@ -2666,7 +2666,7 @@ export const DeleteProjectsLocationsInsightsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInsightsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsInsightsRequest>;
 
 export type DeleteProjectsLocationsInsightsResponse = Empty;
 export const DeleteProjectsLocationsInsightsResponse =
@@ -2713,7 +2713,7 @@ export const CreateProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/deployments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDeploymentsRequest>;
 
 export type CreateProjectsLocationsDeploymentsResponse = Operation;
 export const CreateProjectsLocationsDeploymentsResponse =
@@ -2752,7 +2752,7 @@ export const DeleteProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDeploymentsRequest>;
 
 export type DeleteProjectsLocationsDeploymentsResponse = Operation;
 export const DeleteProjectsLocationsDeploymentsResponse =
@@ -2788,7 +2788,7 @@ export const GetProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDeploymentsRequest>;
 
 export type GetProjectsLocationsDeploymentsResponse = Deployment;
 export const GetProjectsLocationsDeploymentsResponse =
@@ -2834,7 +2834,7 @@ export const ListProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDeploymentsRequest>;
 
 export type ListProjectsLocationsDeploymentsResponse = ListDeploymentsResponse;
 export const ListProjectsLocationsDeploymentsResponse =
@@ -2878,7 +2878,7 @@ export const CreateProjectsLocationsDeploymentsActuationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/actuations", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentsActuationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDeploymentsActuationsRequest>;
 
 export type CreateProjectsLocationsDeploymentsActuationsResponse = Operation;
 export const CreateProjectsLocationsDeploymentsActuationsResponse =
@@ -2914,7 +2914,7 @@ export const DeleteProjectsLocationsDeploymentsActuationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentsActuationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDeploymentsActuationsRequest>;
 
 export type DeleteProjectsLocationsDeploymentsActuationsResponse = Operation;
 export const DeleteProjectsLocationsDeploymentsActuationsResponse =
@@ -2962,7 +2962,7 @@ export const ListProjectsLocationsDeploymentsActuationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/actuations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentsActuationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDeploymentsActuationsRequest>;
 
 export type ListProjectsLocationsDeploymentsActuationsResponse =
   ListActuationsResponse;
@@ -3001,7 +3001,7 @@ export const GetProjectsLocationsDeploymentsActuationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentsActuationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDeploymentsActuationsRequest>;
 
 export type GetProjectsLocationsDeploymentsActuationsResponse = Actuation;
 export const GetProjectsLocationsDeploymentsActuationsResponse =
@@ -3035,7 +3035,7 @@ export const GetProjectsLocationsDiscoveredprofilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredprofilesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDiscoveredprofilesRequest>;
 
 export type GetProjectsLocationsDiscoveredprofilesResponse = WorkloadProfile;
 export const GetProjectsLocationsDiscoveredprofilesResponse =
@@ -3078,7 +3078,7 @@ export const ListProjectsLocationsDiscoveredprofilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/discoveredprofiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredprofilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDiscoveredprofilesRequest>;
 
 export type ListProjectsLocationsDiscoveredprofilesResponse =
   ListDiscoveredProfilesResponse;
@@ -3117,7 +3117,7 @@ export const GetProjectsLocationsDiscoveredprofilesHealthRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredprofilesHealthRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDiscoveredprofilesHealthRequest>;
 
 export type GetProjectsLocationsDiscoveredprofilesHealthResponse =
   WorkloadProfileHealth;
@@ -3166,7 +3166,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -3204,7 +3204,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -3238,7 +3238,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -3277,7 +3277,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -3325,7 +3325,7 @@ export const ListProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/evaluations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEvaluationsRequest>;
 
 export type ListProjectsLocationsEvaluationsResponse = ListEvaluationsResponse;
 export const ListProjectsLocationsEvaluationsResponse =
@@ -3363,7 +3363,7 @@ export const GetProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEvaluationsRequest>;
 
 export type GetProjectsLocationsEvaluationsResponse = Evaluation;
 export const GetProjectsLocationsEvaluationsResponse =
@@ -3403,7 +3403,7 @@ export const DeleteProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEvaluationsRequest>;
 
 export type DeleteProjectsLocationsEvaluationsResponse = Operation;
 export const DeleteProjectsLocationsEvaluationsResponse =
@@ -3450,7 +3450,7 @@ export const CreateProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/evaluations", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEvaluationsRequest>;
 
 export type CreateProjectsLocationsEvaluationsResponse = Operation;
 export const CreateProjectsLocationsEvaluationsResponse =
@@ -3495,7 +3495,7 @@ export const PatchProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEvaluationsRequest>;
 
 export type PatchProjectsLocationsEvaluationsResponse = Operation;
 export const PatchProjectsLocationsEvaluationsResponse =
@@ -3543,7 +3543,7 @@ export const ListProjectsLocationsEvaluationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/executions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEvaluationsExecutionsRequest>;
 
 export type ListProjectsLocationsEvaluationsExecutionsResponse =
   ListExecutionsResponse;
@@ -3582,7 +3582,7 @@ export const GetProjectsLocationsEvaluationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEvaluationsExecutionsRequest>;
 
 export type GetProjectsLocationsEvaluationsExecutionsResponse = Execution;
 export const GetProjectsLocationsEvaluationsExecutionsResponse =
@@ -3623,7 +3623,7 @@ export const RunProjectsLocationsEvaluationsExecutionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunProjectsLocationsEvaluationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<RunProjectsLocationsEvaluationsExecutionsRequest>;
 
 export type RunProjectsLocationsEvaluationsExecutionsResponse = Operation;
 export const RunProjectsLocationsEvaluationsExecutionsResponse =
@@ -3662,7 +3662,7 @@ export const DeleteProjectsLocationsEvaluationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEvaluationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEvaluationsExecutionsRequest>;
 
 export type DeleteProjectsLocationsEvaluationsExecutionsResponse = Operation;
 export const DeleteProjectsLocationsEvaluationsExecutionsResponse =
@@ -3713,7 +3713,7 @@ export const ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/scannedResources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest>;
 
 export type ListProjectsLocationsEvaluationsExecutionsScannedResourcesResponse =
   ListScannedResourcesResponse;
@@ -3761,7 +3761,7 @@ export const ListProjectsLocationsEvaluationsExecutionsResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/results" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsExecutionsResultsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEvaluationsExecutionsResultsRequest>;
 
 export type ListProjectsLocationsEvaluationsExecutionsResultsResponse =
   ListExecutionResultsResponse;

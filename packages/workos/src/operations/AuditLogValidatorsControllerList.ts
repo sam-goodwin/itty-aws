@@ -4,17 +4,41 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuditLogValidatorsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const AuditLogValidatorsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     order: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/audit_logs/actions" }));
-export type AuditLogValidatorsControllerListInput =
-  typeof AuditLogValidatorsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/audit_logs/actions" }),
+  ) as unknown as Schema.Codec<AuditLogValidatorsControllerListInput>;
 
 // Output Schema
+export interface AuditLogValidatorsControllerListOutput {
+  object?: string;
+  list_metadata?: { before: string | null; after: string | null };
+  data?: {
+    object?: string;
+    name?: string;
+    schema?: {
+      object?: string;
+      version?: number;
+      actor?: { metadata: Record<string, unknown> };
+      targets?: { type: string; metadata?: Record<string, unknown> }[];
+      metadata?: Record<string, unknown>;
+      created_at?: string;
+    };
+    created_at?: string;
+    updated_at?: string;
+  }[];
+}
 export const AuditLogValidatorsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -59,9 +83,7 @@ export const AuditLogValidatorsControllerListOutput =
         }),
       ),
     ),
-  });
-export type AuditLogValidatorsControllerListOutput =
-  typeof AuditLogValidatorsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<AuditLogValidatorsControllerListOutput>;
 
 // The operation
 /**

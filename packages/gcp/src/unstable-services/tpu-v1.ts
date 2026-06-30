@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -53,7 +53,7 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     name: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -83,7 +83,7 @@ export interface ReimageNodeRequest {
   tensorflowVersion?: string;
 }
 
-export const ReimageNodeRequest: Schema.Schema<ReimageNodeRequest> =
+export const ReimageNodeRequest: Schema.Codec<ReimageNodeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tensorflowVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReimageNodeRequest" });
@@ -105,7 +105,7 @@ export interface OperationMetadata {
   cancelRequested?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -129,7 +129,7 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -145,7 +145,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
 
 export interface StopNodeRequest {}
 
-export const StopNodeRequest: Schema.Schema<StopNodeRequest> =
+export const StopNodeRequest: Schema.Codec<StopNodeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopNodeRequest",
   });
@@ -165,7 +165,7 @@ export interface TensorFlowVersion {
   version?: string;
 }
 
-export const TensorFlowVersion: Schema.Schema<TensorFlowVersion> =
+export const TensorFlowVersion: Schema.Codec<TensorFlowVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -180,7 +180,7 @@ export interface ListTensorFlowVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListTensorFlowVersionsResponse: Schema.Schema<ListTensorFlowVersionsResponse> =
+export const ListTensorFlowVersionsResponse: Schema.Codec<ListTensorFlowVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     tensorflowVersions: Schema.optional(Schema.Array(TensorFlowVersion)),
@@ -194,7 +194,7 @@ export interface NetworkEndpoint {
   port?: number;
 }
 
-export const NetworkEndpoint: Schema.Schema<NetworkEndpoint> =
+export const NetworkEndpoint: Schema.Codec<NetworkEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -202,7 +202,7 @@ export const NetworkEndpoint: Schema.Schema<NetworkEndpoint> =
 
 export interface StartNodeRequest {}
 
-export const StartNodeRequest: Schema.Schema<StartNodeRequest> =
+export const StartNodeRequest: Schema.Codec<StartNodeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StartNodeRequest",
   });
@@ -214,7 +214,7 @@ export interface AcceleratorType {
   type?: string;
 }
 
-export const AcceleratorType: Schema.Schema<AcceleratorType> =
+export const AcceleratorType: Schema.Codec<AcceleratorType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export interface ListAcceleratorTypesResponse {
   nextPageToken?: string;
 }
 
-export const ListAcceleratorTypesResponse: Schema.Schema<ListAcceleratorTypesResponse> =
+export const ListAcceleratorTypesResponse: Schema.Codec<ListAcceleratorTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     acceleratorTypes: Schema.optional(Schema.Array(AcceleratorType)),
@@ -243,7 +243,7 @@ export interface SchedulingConfig {
   preemptible?: boolean;
 }
 
-export const SchedulingConfig: Schema.Schema<SchedulingConfig> =
+export const SchedulingConfig: Schema.Codec<SchedulingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reserved: Schema.optional(Schema.Boolean),
     preemptible: Schema.optional(Schema.Boolean),
@@ -268,7 +268,7 @@ export interface Symptom {
     | (string & {});
 }
 
-export const Symptom: Schema.Schema<Symptom> =
+export const Symptom: Schema.Codec<Symptom> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.String),
     workerId: Schema.optional(Schema.String),
@@ -346,7 +346,7 @@ export interface Node {
   name?: string;
 }
 
-export const Node: Schema.Schema<Node> =
+export const Node: Schema.Codec<Node> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
@@ -378,7 +378,7 @@ export interface ListNodesResponse {
   nextPageToken?: string;
 }
 
-export const ListNodesResponse: Schema.Schema<ListNodesResponse> =
+export const ListNodesResponse: Schema.Codec<ListNodesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(Node)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -387,7 +387,7 @@ export const ListNodesResponse: Schema.Schema<ListNodesResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -471,7 +471,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -506,7 +506,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -537,7 +537,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -573,7 +573,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -609,7 +609,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -657,7 +657,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -698,7 +698,7 @@ export const StopProjectsLocationsNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StopProjectsLocationsNodesRequest>;
+  ) as unknown as Schema.Codec<StopProjectsLocationsNodesRequest>;
 
 export type StopProjectsLocationsNodesResponse = Operation;
 export const StopProjectsLocationsNodesResponse =
@@ -737,7 +737,7 @@ export const StartProjectsLocationsNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StartProjectsLocationsNodesRequest>;
+  ) as unknown as Schema.Codec<StartProjectsLocationsNodesRequest>;
 
 export type StartProjectsLocationsNodesResponse = Operation;
 export const StartProjectsLocationsNodesResponse =
@@ -779,7 +779,7 @@ export const CreateProjectsLocationsNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/nodes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsNodesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsNodesRequest>;
 
 export type CreateProjectsLocationsNodesResponse = Operation;
 export const CreateProjectsLocationsNodesResponse =
@@ -815,7 +815,7 @@ export const GetProjectsLocationsNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNodesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsNodesRequest>;
 
 export type GetProjectsLocationsNodesResponse = Node;
 export const GetProjectsLocationsNodesResponse =
@@ -849,7 +849,7 @@ export const DeleteProjectsLocationsNodesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsNodesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsNodesRequest>;
 
 export type DeleteProjectsLocationsNodesResponse = Operation;
 export const DeleteProjectsLocationsNodesResponse =
@@ -891,7 +891,7 @@ export const ListProjectsLocationsNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/nodes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsNodesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsNodesRequest>;
 
 export type ListProjectsLocationsNodesResponse = ListNodesResponse;
 export const ListProjectsLocationsNodesResponse =
@@ -932,7 +932,7 @@ export const ReimageProjectsLocationsNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reimage", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReimageProjectsLocationsNodesRequest>;
+  ) as unknown as Schema.Codec<ReimageProjectsLocationsNodesRequest>;
 
 export type ReimageProjectsLocationsNodesResponse = Operation;
 export const ReimageProjectsLocationsNodesResponse =
@@ -980,7 +980,7 @@ export const ListProjectsLocationsAcceleratorTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/acceleratorTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAcceleratorTypesRequest>;
 
 export type ListProjectsLocationsAcceleratorTypesResponse =
   ListAcceleratorTypesResponse;
@@ -1019,7 +1019,7 @@ export const GetProjectsLocationsAcceleratorTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAcceleratorTypesRequest>;
 
 export type GetProjectsLocationsAcceleratorTypesResponse = AcceleratorType;
 export const GetProjectsLocationsAcceleratorTypesResponse =
@@ -1065,7 +1065,7 @@ export const ListProjectsLocationsTensorflowVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/tensorflowVersions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTensorflowVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTensorflowVersionsRequest>;
 
 export type ListProjectsLocationsTensorflowVersionsResponse =
   ListTensorFlowVersionsResponse;
@@ -1104,7 +1104,7 @@ export const GetProjectsLocationsTensorflowVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTensorflowVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTensorflowVersionsRequest>;
 
 export type GetProjectsLocationsTensorflowVersionsResponse = TensorFlowVersion;
 export const GetProjectsLocationsTensorflowVersionsResponse =

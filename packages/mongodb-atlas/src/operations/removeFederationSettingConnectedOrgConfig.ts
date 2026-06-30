@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RemoveFederationSettingConnectedOrgConfigInput {
+  federationSettingsId: string;
+  orgId: string;
+  envelope?: boolean;
+}
 export const RemoveFederationSettingConnectedOrgConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const RemoveFederationSettingConnectedOrgConfigInput =
       method: "DELETE",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}",
     }),
-  );
-export type RemoveFederationSettingConnectedOrgConfigInput =
-  typeof RemoveFederationSettingConnectedOrgConfigInput.Type;
+  ) as unknown as Schema.Codec<RemoveFederationSettingConnectedOrgConfigInput>;
 
 // Output Schema
+export type RemoveFederationSettingConnectedOrgConfigOutput = void;
 export const RemoveFederationSettingConnectedOrgConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemoveFederationSettingConnectedOrgConfigOutput =
-  typeof RemoveFederationSettingConnectedOrgConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveFederationSettingConnectedOrgConfigOutput>;
 
 // The operation
 /**

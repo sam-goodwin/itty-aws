@@ -4,12 +4,36 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput {
+  resourceGroupName: string;
+  targetResourceName: string;
+  migrationName: string;
+  subscriptionId: string;
+  properties?: {
+    kind: "SqlMi" | "SqlVm" | "SqlDb" | "MongoToCosmosDbMongo";
+    scope?: string;
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    migrationStatus?: string;
+    startedOn?: string;
+    endedOn?: string;
+    migrationService?: string;
+    migrationOperationId?: string;
+    migrationFailureError?: { code?: string; message?: string };
+    provisioningError?: string;
+  };
+}
 export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -54,11 +78,22 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput =
-  typeof DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput>;
 
 // Output Schema
+export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -78,9 +113,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput =
-  typeof DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput>;
 
 // The operation
 /**
@@ -98,6 +131,13 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoCreate =
     outputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoCreateOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput {
+  resourceGroupName: string;
+  targetResourceName: string;
+  migrationName: string;
+  subscriptionId: string;
+  force?: boolean;
+}
 export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -111,15 +151,12 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
-  typeof DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput>;
 
 // Output Schema
+export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput = void;
 export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput =
-  typeof DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput>;
 
 // The operation
 /**
@@ -138,6 +175,12 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoDelete =
     outputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoDeleteOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetInput {
+  resourceGroupName: string;
+  targetResourceName: string;
+  migrationName: string;
+  subscriptionId: string;
+}
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -150,11 +193,22 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsMongoToCosmosDbRUMongoGetInput =
-  typeof DatabaseMigrationsMongoToCosmosDbRUMongoGetInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoGetInput>;
 
 // Output Schema
+export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -174,9 +228,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput =
-  typeof DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput>;
 
 // The operation
 /**
@@ -194,6 +246,11 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGet =
     outputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoGetOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput {
+  resourceGroupName: string;
+  targetResourceName: string;
+  subscriptionId: string;
+}
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -205,11 +262,25 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput =
-  typeof DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeInput>;
 
 // Output Schema
+export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -246,9 +317,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput =
-  typeof DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput>;
 
 // The operation
 /**
@@ -265,6 +334,29 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScope =
     outputSchema: DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput {
+  resourceGroupName: string;
+  targetResourceName: string;
+  migrationName: string;
+  subscriptionId: string;
+  properties?: {
+    kind: "SqlMi" | "SqlVm" | "SqlDb" | "MongoToCosmosDbMongo";
+    scope?: string;
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    migrationStatus?: string;
+    startedOn?: string;
+    endedOn?: string;
+    migrationService?: string;
+    migrationOperationId?: string;
+    migrationFailureError?: { code?: string; message?: string };
+    provisioningError?: string;
+  };
+}
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -309,11 +401,22 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput =
-  typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput>;
 
 // Output Schema
+export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -333,9 +436,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput =
-  typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput>;
 
 // The operation
 /**
@@ -353,6 +454,13 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreate =
     outputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput {
+  resourceGroupName: string;
+  targetResourceName: string;
+  migrationName: string;
+  subscriptionId: string;
+  force?: boolean;
+}
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -366,15 +474,12 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
-  typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput>;
 
 // Output Schema
+export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput = void;
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput =
-  typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput>;
 
 // The operation
 /**
@@ -393,6 +498,12 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDelete =
     outputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput {
+  resourceGroupName: string;
+  targetResourceName: string;
+  migrationName: string;
+  subscriptionId: string;
+}
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -405,11 +516,22 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput =
-  typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoGetInput>;
 
 // Output Schema
+export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -429,9 +551,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput =
-  typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput>;
 
 // The operation
 /**
@@ -449,6 +569,11 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGet =
     outputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput {
+  resourceGroupName: string;
+  targetResourceName: string;
+  subscriptionId: string;
+}
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -460,11 +585,25 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput =
-  typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeInput>;
 
 // Output Schema
+export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -501,9 +640,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput =
-  typeof DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput>;
 
 // The operation
 /**
@@ -520,6 +657,13 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScope =
     outputSchema: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlDbCancelInput {
+  resourceGroupName: string;
+  sqlDbInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+}
 export const DatabaseMigrationsSqlDbCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -533,15 +677,12 @@ export const DatabaseMigrationsSqlDbCancelInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlDbCancelInput =
-  typeof DatabaseMigrationsSqlDbCancelInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlDbCancelInput>;
 
 // Output Schema
+export type DatabaseMigrationsSqlDbCancelOutput = void;
 export const DatabaseMigrationsSqlDbCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsSqlDbCancelOutput =
-  typeof DatabaseMigrationsSqlDbCancelOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbCancelOutput>;
 
 // The operation
 /**
@@ -558,6 +699,29 @@ export const DatabaseMigrationsSqlDbCancel =
     outputSchema: DatabaseMigrationsSqlDbCancelOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlDbCreateOrUpdateInput {
+  resourceGroupName: string;
+  sqlDbInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  properties?: {
+    kind: "SqlMi" | "SqlVm" | "SqlDb" | "MongoToCosmosDbMongo";
+    scope?: string;
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    migrationStatus?: string;
+    startedOn?: string;
+    endedOn?: string;
+    migrationService?: string;
+    migrationOperationId?: string;
+    migrationFailureError?: { code?: string; message?: string };
+    provisioningError?: string;
+  };
+}
 export const DatabaseMigrationsSqlDbCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -602,11 +766,22 @@ export const DatabaseMigrationsSqlDbCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlDbCreateOrUpdateInput =
-  typeof DatabaseMigrationsSqlDbCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlDbCreateOrUpdateInput>;
 
 // Output Schema
+export interface DatabaseMigrationsSqlDbCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsSqlDbCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -626,9 +801,7 @@ export const DatabaseMigrationsSqlDbCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsSqlDbCreateOrUpdateOutput =
-  typeof DatabaseMigrationsSqlDbCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsSqlDbCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -645,6 +818,13 @@ export const DatabaseMigrationsSqlDbCreateOrUpdate =
     outputSchema: DatabaseMigrationsSqlDbCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlDbDeleteInput {
+  resourceGroupName: string;
+  sqlDbInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  force?: boolean;
+}
 export const DatabaseMigrationsSqlDbDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -658,15 +838,12 @@ export const DatabaseMigrationsSqlDbDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlDbDeleteInput =
-  typeof DatabaseMigrationsSqlDbDeleteInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlDbDeleteInput>;
 
 // Output Schema
+export type DatabaseMigrationsSqlDbDeleteOutput = void;
 export const DatabaseMigrationsSqlDbDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsSqlDbDeleteOutput =
-  typeof DatabaseMigrationsSqlDbDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbDeleteOutput>;
 
 // The operation
 /**
@@ -684,6 +861,14 @@ export const DatabaseMigrationsSqlDbDelete =
     outputSchema: DatabaseMigrationsSqlDbDeleteOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlDbGetInput {
+  resourceGroupName: string;
+  sqlDbInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+  $expand?: string;
+}
 export const DatabaseMigrationsSqlDbGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -698,11 +883,22 @@ export const DatabaseMigrationsSqlDbGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlDbGetInput =
-  typeof DatabaseMigrationsSqlDbGetInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlDbGetInput>;
 
 // Output Schema
+export interface DatabaseMigrationsSqlDbGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsSqlDbGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -722,9 +918,7 @@ export const DatabaseMigrationsSqlDbGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsSqlDbGetOutput =
-  typeof DatabaseMigrationsSqlDbGetOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsSqlDbGetOutput>;
 
 // The operation
 /**
@@ -744,6 +938,13 @@ export const DatabaseMigrationsSqlDbGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseMigrationsSqlDbRetryInput {
+  resourceGroupName: string;
+  sqlDbInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+}
 export const DatabaseMigrationsSqlDbRetryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -757,15 +958,12 @@ export const DatabaseMigrationsSqlDbRetryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/retry",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlDbRetryInput =
-  typeof DatabaseMigrationsSqlDbRetryInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlDbRetryInput>;
 
 // Output Schema
+export type DatabaseMigrationsSqlDbRetryOutput = void;
 export const DatabaseMigrationsSqlDbRetryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsSqlDbRetryOutput =
-  typeof DatabaseMigrationsSqlDbRetryOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlDbRetryOutput>;
 
 // The operation
 /**
@@ -782,6 +980,13 @@ export const DatabaseMigrationsSqlDbRetry =
     outputSchema: DatabaseMigrationsSqlDbRetryOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlMiCancelInput {
+  resourceGroupName: string;
+  managedInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+}
 export const DatabaseMigrationsSqlMiCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -795,15 +1000,12 @@ export const DatabaseMigrationsSqlMiCancelInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlMiCancelInput =
-  typeof DatabaseMigrationsSqlMiCancelInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlMiCancelInput>;
 
 // Output Schema
+export type DatabaseMigrationsSqlMiCancelOutput = void;
 export const DatabaseMigrationsSqlMiCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsSqlMiCancelOutput =
-  typeof DatabaseMigrationsSqlMiCancelOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlMiCancelOutput>;
 
 // The operation
 /**
@@ -820,6 +1022,29 @@ export const DatabaseMigrationsSqlMiCancel =
     outputSchema: DatabaseMigrationsSqlMiCancelOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlMiCreateOrUpdateInput {
+  resourceGroupName: string;
+  managedInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  properties?: {
+    kind: "SqlMi" | "SqlVm" | "SqlDb" | "MongoToCosmosDbMongo";
+    scope?: string;
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    migrationStatus?: string;
+    startedOn?: string;
+    endedOn?: string;
+    migrationService?: string;
+    migrationOperationId?: string;
+    migrationFailureError?: { code?: string; message?: string };
+    provisioningError?: string;
+  };
+}
 export const DatabaseMigrationsSqlMiCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -864,11 +1089,22 @@ export const DatabaseMigrationsSqlMiCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlMiCreateOrUpdateInput =
-  typeof DatabaseMigrationsSqlMiCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlMiCreateOrUpdateInput>;
 
 // Output Schema
+export interface DatabaseMigrationsSqlMiCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsSqlMiCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -888,9 +1124,7 @@ export const DatabaseMigrationsSqlMiCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsSqlMiCreateOrUpdateOutput =
-  typeof DatabaseMigrationsSqlMiCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsSqlMiCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -907,6 +1141,13 @@ export const DatabaseMigrationsSqlMiCreateOrUpdate =
     outputSchema: DatabaseMigrationsSqlMiCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlMiCutoverInput {
+  resourceGroupName: string;
+  managedInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+}
 export const DatabaseMigrationsSqlMiCutoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -920,15 +1161,12 @@ export const DatabaseMigrationsSqlMiCutoverInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlMiCutoverInput =
-  typeof DatabaseMigrationsSqlMiCutoverInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlMiCutoverInput>;
 
 // Output Schema
+export type DatabaseMigrationsSqlMiCutoverOutput = void;
 export const DatabaseMigrationsSqlMiCutoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsSqlMiCutoverOutput =
-  typeof DatabaseMigrationsSqlMiCutoverOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlMiCutoverOutput>;
 
 // The operation
 /**
@@ -945,6 +1183,13 @@ export const DatabaseMigrationsSqlMiCutover =
     outputSchema: DatabaseMigrationsSqlMiCutoverOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlMiDeleteInput {
+  resourceGroupName: string;
+  managedInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  force?: boolean;
+}
 export const DatabaseMigrationsSqlMiDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -958,11 +1203,22 @@ export const DatabaseMigrationsSqlMiDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlMiDeleteInput =
-  typeof DatabaseMigrationsSqlMiDeleteInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlMiDeleteInput>;
 
 // Output Schema
+export interface DatabaseMigrationsSqlMiDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsSqlMiDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -982,9 +1238,7 @@ export const DatabaseMigrationsSqlMiDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsSqlMiDeleteOutput =
-  typeof DatabaseMigrationsSqlMiDeleteOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsSqlMiDeleteOutput>;
 
 // The operation
 /**
@@ -1002,6 +1256,14 @@ export const DatabaseMigrationsSqlMiDelete =
     outputSchema: DatabaseMigrationsSqlMiDeleteOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlMiGetInput {
+  resourceGroupName: string;
+  managedInstanceName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+  $expand?: string;
+}
 export const DatabaseMigrationsSqlMiGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1016,11 +1278,22 @@ export const DatabaseMigrationsSqlMiGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlMiGetInput =
-  typeof DatabaseMigrationsSqlMiGetInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlMiGetInput>;
 
 // Output Schema
+export interface DatabaseMigrationsSqlMiGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsSqlMiGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1040,9 +1313,7 @@ export const DatabaseMigrationsSqlMiGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsSqlMiGetOutput =
-  typeof DatabaseMigrationsSqlMiGetOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsSqlMiGetOutput>;
 
 // The operation
 /**
@@ -1062,6 +1333,13 @@ export const DatabaseMigrationsSqlMiGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseMigrationsSqlVmCancelInput {
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+}
 export const DatabaseMigrationsSqlVmCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1075,15 +1353,12 @@ export const DatabaseMigrationsSqlVmCancelInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlVmCancelInput =
-  typeof DatabaseMigrationsSqlVmCancelInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlVmCancelInput>;
 
 // Output Schema
+export type DatabaseMigrationsSqlVmCancelOutput = void;
 export const DatabaseMigrationsSqlVmCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsSqlVmCancelOutput =
-  typeof DatabaseMigrationsSqlVmCancelOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlVmCancelOutput>;
 
 // The operation
 /**
@@ -1100,6 +1375,29 @@ export const DatabaseMigrationsSqlVmCancel =
     outputSchema: DatabaseMigrationsSqlVmCancelOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlVmCreateOrUpdateInput {
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  properties?: {
+    kind: "SqlMi" | "SqlVm" | "SqlDb" | "MongoToCosmosDbMongo";
+    scope?: string;
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    migrationStatus?: string;
+    startedOn?: string;
+    endedOn?: string;
+    migrationService?: string;
+    migrationOperationId?: string;
+    migrationFailureError?: { code?: string; message?: string };
+    provisioningError?: string;
+  };
+}
 export const DatabaseMigrationsSqlVmCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1144,11 +1442,22 @@ export const DatabaseMigrationsSqlVmCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlVmCreateOrUpdateInput =
-  typeof DatabaseMigrationsSqlVmCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlVmCreateOrUpdateInput>;
 
 // Output Schema
+export interface DatabaseMigrationsSqlVmCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsSqlVmCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1168,9 +1477,7 @@ export const DatabaseMigrationsSqlVmCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsSqlVmCreateOrUpdateOutput =
-  typeof DatabaseMigrationsSqlVmCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsSqlVmCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1187,6 +1494,13 @@ export const DatabaseMigrationsSqlVmCreateOrUpdate =
     outputSchema: DatabaseMigrationsSqlVmCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlVmCutoverInput {
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+}
 export const DatabaseMigrationsSqlVmCutoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1200,15 +1514,12 @@ export const DatabaseMigrationsSqlVmCutoverInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlVmCutoverInput =
-  typeof DatabaseMigrationsSqlVmCutoverInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlVmCutoverInput>;
 
 // Output Schema
+export type DatabaseMigrationsSqlVmCutoverOutput = void;
 export const DatabaseMigrationsSqlVmCutoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseMigrationsSqlVmCutoverOutput =
-  typeof DatabaseMigrationsSqlVmCutoverOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseMigrationsSqlVmCutoverOutput>;
 
 // The operation
 /**
@@ -1225,6 +1536,13 @@ export const DatabaseMigrationsSqlVmCutover =
     outputSchema: DatabaseMigrationsSqlVmCutoverOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlVmDeleteInput {
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  force?: boolean;
+}
 export const DatabaseMigrationsSqlVmDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1238,11 +1556,22 @@ export const DatabaseMigrationsSqlVmDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlVmDeleteInput =
-  typeof DatabaseMigrationsSqlVmDeleteInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlVmDeleteInput>;
 
 // Output Schema
+export interface DatabaseMigrationsSqlVmDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsSqlVmDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1262,9 +1591,7 @@ export const DatabaseMigrationsSqlVmDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsSqlVmDeleteOutput =
-  typeof DatabaseMigrationsSqlVmDeleteOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsSqlVmDeleteOutput>;
 
 // The operation
 /**
@@ -1282,6 +1609,14 @@ export const DatabaseMigrationsSqlVmDelete =
     outputSchema: DatabaseMigrationsSqlVmDeleteOutput,
   }));
 // Input Schema
+export interface DatabaseMigrationsSqlVmGetInput {
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  targetDbName: string;
+  subscriptionId: string;
+  migrationOperationId?: string;
+  $expand?: string;
+}
 export const DatabaseMigrationsSqlVmGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1296,11 +1631,22 @@ export const DatabaseMigrationsSqlVmGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type DatabaseMigrationsSqlVmGetInput =
-  typeof DatabaseMigrationsSqlVmGetInput.Type;
+  ) as unknown as Schema.Codec<DatabaseMigrationsSqlVmGetInput>;
 
 // Output Schema
+export interface DatabaseMigrationsSqlVmGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseMigrationsSqlVmGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1320,9 +1666,7 @@ export const DatabaseMigrationsSqlVmGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseMigrationsSqlVmGetOutput =
-  typeof DatabaseMigrationsSqlVmGetOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseMigrationsSqlVmGetOutput>;
 
 // The operation
 /**
@@ -1342,6 +1686,32 @@ export const DatabaseMigrationsSqlVmGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FilesCreateOrUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  fileName: string;
+  etag?: string;
+  properties?: {
+    extension?: string;
+    filePath?: string;
+    lastModified?: string;
+    mediaType?: string;
+    size?: number;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1382,10 +1752,22 @@ export const FilesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type FilesCreateOrUpdateInput = typeof FilesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FilesCreateOrUpdateInput>;
 
 // Output Schema
+export interface FilesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1405,8 +1787,7 @@ export const FilesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FilesCreateOrUpdateOutput = typeof FilesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FilesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1429,6 +1810,13 @@ export const FilesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FilesCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface FilesDeleteInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  fileName: string;
+}
 export const FilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -1441,12 +1829,12 @@ export const FilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type FilesDeleteInput = typeof FilesDeleteInput.Type;
+) as unknown as Schema.Codec<FilesDeleteInput>;
 
 // Output Schema
-export const FilesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FilesDeleteOutput = typeof FilesDeleteOutput.Type;
+export type FilesDeleteOutput = void;
+export const FilesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FilesDeleteOutput>;
 
 // The operation
 /**
@@ -1466,6 +1854,13 @@ export const FilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FilesDeleteOutput,
 }));
 // Input Schema
+export interface FilesGetInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  fileName: string;
+}
 export const FilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -1478,10 +1873,22 @@ export const FilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type FilesGetInput = typeof FilesGetInput.Type;
+) as unknown as Schema.Codec<FilesGetInput>;
 
 // Output Schema
+export interface FilesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1500,8 +1907,7 @@ export const FilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FilesGetOutput = typeof FilesGetOutput.Type;
+}) as unknown as Schema.Codec<FilesGetOutput>;
 
 // The operation
 /**
@@ -1521,6 +1927,12 @@ export const FilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FilesGetOutput,
 }));
 // Input Schema
+export interface FilesListInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+}
 export const FilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -1532,10 +1944,25 @@ export const FilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files",
     apiVersion: "2025-06-30",
   }),
-);
-export type FilesListInput = typeof FilesListInput.Type;
+) as unknown as Schema.Codec<FilesListInput>;
 
 // Output Schema
+export interface FilesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1571,8 +1998,7 @@ export const FilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FilesListOutput = typeof FilesListOutput.Type;
+}) as unknown as Schema.Codec<FilesListOutput>;
 
 // The operation
 /**
@@ -1591,6 +2017,13 @@ export const FilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FilesListOutput,
 }));
 // Input Schema
+export interface FilesReadInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  fileName: string;
+}
 export const FilesReadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -1603,15 +2036,17 @@ export const FilesReadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}/read",
     apiVersion: "2025-06-30",
   }),
-);
-export type FilesReadInput = typeof FilesReadInput.Type;
+) as unknown as Schema.Codec<FilesReadInput>;
 
 // Output Schema
+export interface FilesReadOutput {
+  uri?: string;
+  headers?: Record<string, string>;
+}
 export const FilesReadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uri: Schema.optional(Schema.String),
   headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type FilesReadOutput = typeof FilesReadOutput.Type;
+}) as unknown as Schema.Codec<FilesReadOutput>;
 
 // The operation
 /**
@@ -1631,6 +2066,13 @@ export const FilesRead = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FilesReadOutput,
 }));
 // Input Schema
+export interface FilesReadWriteInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  fileName: string;
+}
 export const FilesReadWriteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -1643,15 +2085,17 @@ export const FilesReadWriteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}/readwrite",
     apiVersion: "2025-06-30",
   }),
-);
-export type FilesReadWriteInput = typeof FilesReadWriteInput.Type;
+) as unknown as Schema.Codec<FilesReadWriteInput>;
 
 // Output Schema
+export interface FilesReadWriteOutput {
+  uri?: string;
+  headers?: Record<string, string>;
+}
 export const FilesReadWriteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uri: Schema.optional(Schema.String),
   headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type FilesReadWriteOutput = typeof FilesReadWriteOutput.Type;
+}) as unknown as Schema.Codec<FilesReadWriteOutput>;
 
 // The operation
 /**
@@ -1671,6 +2115,32 @@ export const FilesReadWrite = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FilesReadWriteOutput,
 }));
 // Input Schema
+export interface FilesUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  fileName: string;
+  etag?: string;
+  properties?: {
+    extension?: string;
+    filePath?: string;
+    lastModified?: string;
+    mediaType?: string;
+    size?: number;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -1710,10 +2180,22 @@ export const FilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type FilesUpdateInput = typeof FilesUpdateInput.Type;
+) as unknown as Schema.Codec<FilesUpdateInput>;
 
 // Output Schema
+export interface FilesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1732,8 +2214,7 @@ export const FilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FilesUpdateOutput = typeof FilesUpdateOutput.Type;
+}) as unknown as Schema.Codec<FilesUpdateOutput>;
 
 // The operation
 /**
@@ -1756,6 +2237,22 @@ export const FilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FilesUpdateOutput,
 }));
 // Input Schema
+export interface MigrationServicesCreateOrUpdateInput {
+  resourceGroupName: string;
+  migrationServiceName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    integrationRuntimeState?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MigrationServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1783,11 +2280,22 @@ export const MigrationServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type MigrationServicesCreateOrUpdateInput =
-  typeof MigrationServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MigrationServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface MigrationServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrationServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1807,9 +2315,7 @@ export const MigrationServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MigrationServicesCreateOrUpdateOutput =
-  typeof MigrationServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MigrationServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1826,6 +2332,11 @@ export const MigrationServicesCreateOrUpdate =
     outputSchema: MigrationServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MigrationServicesDeleteInput {
+  resourceGroupName: string;
+  migrationServiceName: string;
+  subscriptionId: string;
+}
 export const MigrationServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1837,15 +2348,12 @@ export const MigrationServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type MigrationServicesDeleteInput =
-  typeof MigrationServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<MigrationServicesDeleteInput>;
 
 // Output Schema
+export type MigrationServicesDeleteOutput = void;
 export const MigrationServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MigrationServicesDeleteOutput =
-  typeof MigrationServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MigrationServicesDeleteOutput>;
 
 // The operation
 /**
@@ -1863,6 +2371,11 @@ export const MigrationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MigrationServicesGetInput {
+  resourceGroupName: string;
+  migrationServiceName: string;
+  subscriptionId: string;
+}
 export const MigrationServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1874,10 +2387,22 @@ export const MigrationServicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type MigrationServicesGetInput = typeof MigrationServicesGetInput.Type;
+  ) as unknown as Schema.Codec<MigrationServicesGetInput>;
 
 // Output Schema
+export interface MigrationServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrationServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1897,8 +2422,7 @@ export const MigrationServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MigrationServicesGetOutput = typeof MigrationServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<MigrationServicesGetOutput>;
 
 // The operation
 /**
@@ -1916,6 +2440,10 @@ export const MigrationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MigrationServicesListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const MigrationServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1926,11 +2454,25 @@ export const MigrationServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices",
       apiVersion: "2025-06-30",
     }),
-  );
-export type MigrationServicesListByResourceGroupInput =
-  typeof MigrationServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<MigrationServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface MigrationServicesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MigrationServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1967,9 +2509,7 @@ export const MigrationServicesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MigrationServicesListByResourceGroupOutput =
-  typeof MigrationServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<MigrationServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1985,6 +2525,9 @@ export const MigrationServicesListByResourceGroup =
     outputSchema: MigrationServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface MigrationServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const MigrationServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1994,11 +2537,25 @@ export const MigrationServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/migrationServices",
       apiVersion: "2025-06-30",
     }),
-  );
-export type MigrationServicesListBySubscriptionInput =
-  typeof MigrationServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<MigrationServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface MigrationServicesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MigrationServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2035,9 +2592,7 @@ export const MigrationServicesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MigrationServicesListBySubscriptionOutput =
-  typeof MigrationServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<MigrationServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2052,6 +2607,11 @@ export const MigrationServicesListBySubscription =
     outputSchema: MigrationServicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface MigrationServicesListMigrationsInput {
+  resourceGroupName: string;
+  migrationServiceName: string;
+  subscriptionId: string;
+}
 export const MigrationServicesListMigrationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2063,11 +2623,25 @@ export const MigrationServicesListMigrationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}/listMigrations",
       apiVersion: "2025-06-30",
     }),
-  );
-export type MigrationServicesListMigrationsInput =
-  typeof MigrationServicesListMigrationsInput.Type;
+  ) as unknown as Schema.Codec<MigrationServicesListMigrationsInput>;
 
 // Output Schema
+export interface MigrationServicesListMigrationsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MigrationServicesListMigrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2104,9 +2678,7 @@ export const MigrationServicesListMigrationsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MigrationServicesListMigrationsOutput =
-  typeof MigrationServicesListMigrationsOutput.Type;
+  }) as unknown as Schema.Codec<MigrationServicesListMigrationsOutput>;
 
 // The operation
 /**
@@ -2123,6 +2695,12 @@ export const MigrationServicesListMigrations =
     outputSchema: MigrationServicesListMigrationsOutput,
   }));
 // Input Schema
+export interface MigrationServicesUpdateInput {
+  resourceGroupName: string;
+  migrationServiceName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const MigrationServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2135,11 +2713,22 @@ export const MigrationServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type MigrationServicesUpdateInput =
-  typeof MigrationServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<MigrationServicesUpdateInput>;
 
 // Output Schema
+export interface MigrationServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrationServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2159,9 +2748,7 @@ export const MigrationServicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MigrationServicesUpdateOutput =
-  typeof MigrationServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MigrationServicesUpdateOutput>;
 
 // The operation
 /**
@@ -2179,6 +2766,7 @@ export const MigrationServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2187,10 +2775,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DataMigration/operations",
     apiVersion: "2025-06-30",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system";
+    properties?: Record<string, unknown>;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2213,8 +2815,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2227,6 +2828,52 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProjectsCreateOrUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  properties?: {
+    sourcePlatform: "SQL" | "MySQL" | "PostgreSql" | "MongoDb" | "Unknown";
+    azureAuthenticationInfo?: {
+      applicationId?: string;
+      appKey?: string;
+      tenantId?: string;
+      ignoreAzurePermissions?: boolean;
+    };
+    targetPlatform:
+      | "SQLDB"
+      | "SQLMI"
+      | "AzureDbForMySql"
+      | "AzureDbForPostgreSql"
+      | "MongoDb"
+      | "Unknown";
+    creationTime?: string;
+    sourceConnectionInfo?: {
+      type: string;
+      userName?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    targetConnectionInfo?: {
+      type: string;
+      userName?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    databasesInfo?: { sourceDatabaseName: string }[];
+    provisioningState?: "Deleting" | "Succeeded";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ProjectsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2308,11 +2955,22 @@ export const ProjectsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ProjectsCreateOrUpdateInput =
-  typeof ProjectsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProjectsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2332,9 +2990,7 @@ export const ProjectsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectsCreateOrUpdateOutput =
-  typeof ProjectsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2358,6 +3014,13 @@ export const ProjectsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectsDeleteInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  deleteRunningTasks?: boolean;
+}
 export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -2370,12 +3033,12 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
+) as unknown as Schema.Codec<ProjectsDeleteInput>;
 
 // Output Schema
-export const ProjectsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
+export type ProjectsDeleteOutput = void;
+export const ProjectsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectsDeleteOutput>;
 
 // The operation
 /**
@@ -2395,6 +3058,12 @@ export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsDeleteOutput,
 }));
 // Input Schema
+export interface ProjectsGetInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+}
 export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -2406,10 +3075,22 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type ProjectsGetInput = typeof ProjectsGetInput.Type;
+) as unknown as Schema.Codec<ProjectsGetInput>;
 
 // Output Schema
+export interface ProjectsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2428,8 +3109,7 @@ export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsGetOutput = typeof ProjectsGetOutput.Type;
+}) as unknown as Schema.Codec<ProjectsGetOutput>;
 
 // The operation
 /**
@@ -2448,6 +3128,11 @@ export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsGetOutput,
 }));
 // Input Schema
+export interface ProjectsListInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+}
 export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -2458,10 +3143,25 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects",
     apiVersion: "2025-06-30",
   }),
-);
-export type ProjectsListInput = typeof ProjectsListInput.Type;
+) as unknown as Schema.Codec<ProjectsListInput>;
 
 // Output Schema
+export interface ProjectsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2497,8 +3197,7 @@ export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ProjectsListOutput = typeof ProjectsListOutput.Type;
+}) as unknown as Schema.Codec<ProjectsListOutput>;
 
 // The operation
 /**
@@ -2516,6 +3215,52 @@ export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsListOutput,
 }));
 // Input Schema
+export interface ProjectsUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  properties?: {
+    sourcePlatform: "SQL" | "MySQL" | "PostgreSql" | "MongoDb" | "Unknown";
+    azureAuthenticationInfo?: {
+      applicationId?: string;
+      appKey?: string;
+      tenantId?: string;
+      ignoreAzurePermissions?: boolean;
+    };
+    targetPlatform:
+      | "SQLDB"
+      | "SQLMI"
+      | "AzureDbForMySql"
+      | "AzureDbForPostgreSql"
+      | "MongoDb"
+      | "Unknown";
+    creationTime?: string;
+    sourceConnectionInfo?: {
+      type: string;
+      userName?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    targetConnectionInfo?: {
+      type: string;
+      userName?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    databasesInfo?: { sourceDatabaseName: string }[];
+    provisioningState?: "Deleting" | "Succeeded";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -2596,10 +3341,22 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
+) as unknown as Schema.Codec<ProjectsUpdateInput>;
 
 // Output Schema
+export interface ProjectsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2618,8 +3375,7 @@ export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsUpdateOutput = typeof ProjectsUpdateOutput.Type;
+}) as unknown as Schema.Codec<ProjectsUpdateOutput>;
 
 // The operation
 /**
@@ -2641,6 +3397,9 @@ export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsUpdateOutput,
 }));
 // Input Schema
+export interface ResourceSkusListSkusInput {
+  subscriptionId: string;
+}
 export const ResourceSkusListSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2650,10 +3409,35 @@ export const ResourceSkusListSkusInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/skus",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ResourceSkusListSkusInput = typeof ResourceSkusListSkusInput.Type;
+  ) as unknown as Schema.Codec<ResourceSkusListSkusInput>;
 
 // Output Schema
+export interface ResourceSkusListSkusOutput {
+  value: {
+    resourceType?: string;
+    name?: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    kind?: string;
+    capacity?: {
+      minimum?: number;
+      maximum?: number;
+      default?: number;
+      scaleType?: "Automatic" | "Manual" | "None";
+    };
+    locations?: string[];
+    apiVersions?: string[];
+    costs?: { meterID?: string; quantity?: number; extendedUnit?: string }[];
+    capabilities?: { name?: string; value?: string }[];
+    restrictions?: {
+      type?: "location";
+      values?: string[];
+      reasonCode?: "QuotaId" | "NotAvailableForSubscription";
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const ResourceSkusListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2707,8 +3491,7 @@ export const ResourceSkusListSkusOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ResourceSkusListSkusOutput = typeof ResourceSkusListSkusOutput.Type;
+  }) as unknown as Schema.Codec<ResourceSkusListSkusOutput>;
 
 // The operation
 /**
@@ -2726,6 +3509,13 @@ export const ResourceSkusListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesCheckChildrenNameAvailabilityInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  name?: string;
+  type?: string;
+}
 export const ServicesCheckChildrenNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2739,19 +3529,20 @@ export const ServicesCheckChildrenNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkNameAvailability",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServicesCheckChildrenNameAvailabilityInput =
-  typeof ServicesCheckChildrenNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ServicesCheckChildrenNameAvailabilityInput>;
 
 // Output Schema
+export interface ServicesCheckChildrenNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "AlreadyExists" | "Invalid";
+  message?: string;
+}
 export const ServicesCheckChildrenNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["AlreadyExists", "Invalid"])),
     message: Schema.optional(Schema.String),
-  });
-export type ServicesCheckChildrenNameAvailabilityOutput =
-  typeof ServicesCheckChildrenNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCheckChildrenNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -2772,6 +3563,12 @@ export const ServicesCheckChildrenNameAvailability =
     outputSchema: ServicesCheckChildrenNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ServicesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  name?: string;
+  type?: string;
+}
 export const ServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2784,19 +3581,20 @@ export const ServicesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/checkNameAvailability",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServicesCheckNameAvailabilityInput =
-  typeof ServicesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ServicesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ServicesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "AlreadyExists" | "Invalid";
+  message?: string;
+}
 export const ServicesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["AlreadyExists", "Invalid"])),
     message: Schema.optional(Schema.String),
-  });
-export type ServicesCheckNameAvailabilityOutput =
-  typeof ServicesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -2816,6 +3614,11 @@ export const ServicesCheckNameAvailability =
     outputSchema: ServicesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ServicesCheckStatusInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+}
 export const ServicesCheckStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2827,10 +3630,16 @@ export const ServicesCheckStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkStatus",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServicesCheckStatusInput = typeof ServicesCheckStatusInput.Type;
+  ) as unknown as Schema.Codec<ServicesCheckStatusInput>;
 
 // Output Schema
+export interface ServicesCheckStatusOutput {
+  agentVersion?: string;
+  agentConfiguration?: unknown;
+  status?: string;
+  vmSize?: string;
+  supportedTaskTypes?: string[];
+}
 export const ServicesCheckStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentVersion: Schema.optional(Schema.String),
@@ -2838,8 +3647,7 @@ export const ServicesCheckStatusOutput =
     status: Schema.optional(Schema.String),
     vmSize: Schema.optional(Schema.String),
     supportedTaskTypes: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ServicesCheckStatusOutput = typeof ServicesCheckStatusOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCheckStatusOutput>;
 
 // The operation
 /**
@@ -2857,6 +3665,48 @@ export const ServicesCheckStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesCheckStatusOutput,
 }));
 // Input Schema
+export interface ServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  etag?: string;
+  kind?: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Deleting"
+      | "Deploying"
+      | "Stopped"
+      | "Stopping"
+      | "Starting"
+      | "FailedToStart"
+      | "FailedToStop"
+      | "Succeeded"
+      | "Failed";
+    publicKey?: string;
+    virtualSubnetId?: string;
+    virtualNicId?: string;
+    autoStopDelay?: string;
+    deleteResourcesOnStop?: boolean;
+  };
+  sku?: {
+    name?: string;
+    tier?: string;
+    family?: string;
+    size?: string;
+    capacity?: number;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2918,11 +3768,22 @@ export const ServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServicesCreateOrUpdateInput =
-  typeof ServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2942,9 +3803,7 @@ export const ServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServicesCreateOrUpdateOutput =
-  typeof ServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2969,6 +3828,12 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesDeleteInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  deleteRunningTasks?: boolean;
+}
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -2980,12 +3845,12 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+export type ServicesDeleteOutput = void;
+export const ServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -3004,6 +3869,11 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
+export interface ServicesGetInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+}
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -3014,10 +3884,22 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServicesGetInput = typeof ServicesGetInput.Type;
+) as unknown as Schema.Codec<ServicesGetInput>;
 
 // Output Schema
+export interface ServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3036,8 +3918,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServicesGetOutput = typeof ServicesGetOutput.Type;
+}) as unknown as Schema.Codec<ServicesGetOutput>;
 
 // The operation
 /**
@@ -3055,6 +3936,9 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
+export interface ServicesListInput {
+  subscriptionId: string;
+}
 export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3063,10 +3947,25 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/services",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServicesListInput = typeof ServicesListInput.Type;
+) as unknown as Schema.Codec<ServicesListInput>;
 
 // Output Schema
+export interface ServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -3102,8 +4001,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ServicesListOutput = typeof ServicesListOutput.Type;
+}) as unknown as Schema.Codec<ServicesListOutput>;
 
 // The operation
 /**
@@ -3119,6 +4017,10 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
+export interface ServicesListByResourceGroupInput {
+  subscriptionId: string;
+  groupName: string;
+}
 export const ServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3129,11 +4031,25 @@ export const ServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServicesListByResourceGroupInput =
-  typeof ServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface ServicesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3170,9 +4086,7 @@ export const ServicesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServicesListByResourceGroupOutput =
-  typeof ServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3191,6 +4105,11 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListSkusInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+}
 export const ServicesListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -3201,10 +4120,22 @@ export const ServicesListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/skus",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServicesListSkusInput = typeof ServicesListSkusInput.Type;
+) as unknown as Schema.Codec<ServicesListSkusInput>;
 
 // Output Schema
+export interface ServicesListSkusOutput {
+  value?: {
+    resourceType?: string;
+    sku?: { name?: string; family?: string; size?: string; tier?: string };
+    capacity?: {
+      minimum?: number;
+      maximum?: number;
+      default?: number;
+      scaleType?: "none" | "manual" | "automatic";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -3234,8 +4165,7 @@ export const ServicesListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ServicesListSkusOutput = typeof ServicesListSkusOutput.Type;
+) as unknown as Schema.Codec<ServicesListSkusOutput>;
 
 // The operation
 /**
@@ -3253,6 +4183,11 @@ export const ServicesListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListSkusOutput,
 }));
 // Input Schema
+export interface ServicesStartInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+}
 export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -3263,12 +4198,12 @@ export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/start",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServicesStartInput = typeof ServicesStartInput.Type;
+) as unknown as Schema.Codec<ServicesStartInput>;
 
 // Output Schema
-export const ServicesStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesStartOutput = typeof ServicesStartOutput.Type;
+export type ServicesStartOutput = void;
+export const ServicesStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesStartOutput>;
 
 // The operation
 /**
@@ -3286,6 +4221,11 @@ export const ServicesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesStartOutput,
 }));
 // Input Schema
+export interface ServicesStopInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+}
 export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -3296,12 +4236,12 @@ export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/stop",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServicesStopInput = typeof ServicesStopInput.Type;
+) as unknown as Schema.Codec<ServicesStopInput>;
 
 // Output Schema
-export const ServicesStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesStopOutput = typeof ServicesStopOutput.Type;
+export type ServicesStopOutput = void;
+export const ServicesStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesStopOutput>;
 
 // The operation
 /**
@@ -3319,6 +4259,48 @@ export const ServicesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesStopOutput,
 }));
 // Input Schema
+export interface ServicesUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  etag?: string;
+  kind?: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Deleting"
+      | "Deploying"
+      | "Stopped"
+      | "Stopping"
+      | "Starting"
+      | "FailedToStart"
+      | "FailedToStop"
+      | "Succeeded"
+      | "Failed";
+    publicKey?: string;
+    virtualSubnetId?: string;
+    virtualNicId?: string;
+    autoStopDelay?: string;
+    deleteResourcesOnStop?: boolean;
+  };
+  sku?: {
+    name?: string;
+    tier?: string;
+    family?: string;
+    size?: string;
+    capacity?: number;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -3379,10 +4361,22 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
+) as unknown as Schema.Codec<ServicesUpdateInput>;
 
 // Output Schema
+export interface ServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3401,8 +4395,7 @@ export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ServicesUpdateOutput>;
 
 // The operation
 /**
@@ -3425,6 +4418,12 @@ export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
+export interface ServiceTasksCancelInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  taskName: string;
+}
 export const ServiceTasksCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3437,10 +4436,22 @@ export const ServiceTasksCancelInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}/cancel",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServiceTasksCancelInput = typeof ServiceTasksCancelInput.Type;
+  ) as unknown as Schema.Codec<ServiceTasksCancelInput>;
 
 // Output Schema
+export interface ServiceTasksCancelOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceTasksCancelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3460,8 +4471,7 @@ export const ServiceTasksCancelOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceTasksCancelOutput = typeof ServiceTasksCancelOutput.Type;
+  }) as unknown as Schema.Codec<ServiceTasksCancelOutput>;
 
 // The operation
 /**
@@ -3480,6 +4490,94 @@ export const ServiceTasksCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceTasksCancelOutput,
 }));
 // Input Schema
+export interface ServiceTasksCreateOrUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  taskName: string;
+  etag?: string;
+  properties?: {
+    taskType:
+      | "Connect.MongoDb"
+      | "ConnectToSource.SqlServer"
+      | "ConnectToSource.SqlServer.Sync"
+      | "ConnectToSource.PostgreSql.Sync"
+      | "ConnectToSource.MySql"
+      | "ConnectToSource.Oracle.Sync"
+      | "ConnectToTarget.SqlDb"
+      | "ConnectToTarget.SqlDb.Sync"
+      | "ConnectToTarget.AzureDbForPostgreSql.Sync"
+      | "ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync"
+      | "ConnectToTarget.AzureSqlDbMI"
+      | "ConnectToTarget.AzureSqlDbMI.Sync.LRS"
+      | "ConnectToTarget.AzureDbForMySql"
+      | "GetUserTables.Sql"
+      | "GetUserTables.AzureSqlDb.Sync"
+      | "GetUserTablesOracle"
+      | "GetUserTablesPostgreSql"
+      | "GetUserTablesMySql"
+      | "Migrate.MongoDb"
+      | "Migrate.SqlServer.AzureSqlDbMI"
+      | "Migrate.SqlServer.AzureSqlDbMI.Sync.LRS"
+      | "Migrate.SqlServer.SqlDb"
+      | "Migrate.SqlServer.AzureSqlDb.Sync"
+      | "Migrate.MySql.AzureDbForMySql.Sync"
+      | "Migrate.MySql.AzureDbForMySql"
+      | "Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2"
+      | "Migrate.Oracle.AzureDbForPostgreSql.Sync"
+      | "ValidateMigrationInput.SqlServer.SqlDb.Sync"
+      | "ValidateMigrationInput.SqlServer.AzureSqlDbMI"
+      | "ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"
+      | "Validate.MongoDb"
+      | "Validate.Oracle.AzureDbPostgreSql.Sync"
+      | "GetTDECertificates.Sql"
+      | "Migrate.Ssis"
+      | "Service.Check.OCI"
+      | "Service.Upload.OCI"
+      | "Service.Install.OCI"
+      | "MigrateSchemaSqlServerSqlDb";
+    errors?: {
+      code?: string;
+      message?: string;
+      details?: { code?: string; message?: string; details?: unknown[] }[];
+    }[];
+    state?:
+      | "Unknown"
+      | "Queued"
+      | "Running"
+      | "Canceled"
+      | "Succeeded"
+      | "Failed"
+      | "FailedInputValidation"
+      | "Faulted";
+    commands?: {
+      commandType:
+        | "Migrate.Sync.Complete.Database"
+        | "Migrate.SqlServer.AzureDbSqlMi.Complete"
+        | "cancel"
+        | "finish"
+        | "restart";
+      errors?: {
+        code?: string;
+        message?: string;
+        details?: { code?: string; message?: string; details?: unknown[] }[];
+      }[];
+      state?: "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
+    }[];
+    clientData?: Record<string, string>;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ServiceTasksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3627,11 +4725,22 @@ export const ServiceTasksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServiceTasksCreateOrUpdateInput =
-  typeof ServiceTasksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceTasksCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServiceTasksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceTasksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3651,9 +4760,7 @@ export const ServiceTasksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceTasksCreateOrUpdateOutput =
-  typeof ServiceTasksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceTasksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3677,6 +4784,13 @@ export const ServiceTasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceTasksDeleteInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  taskName: string;
+  deleteRunningTasks?: boolean;
+}
 export const ServiceTasksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3690,12 +4804,12 @@ export const ServiceTasksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServiceTasksDeleteInput = typeof ServiceTasksDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServiceTasksDeleteInput>;
 
 // Output Schema
-export const ServiceTasksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceTasksDeleteOutput = typeof ServiceTasksDeleteOutput.Type;
+export type ServiceTasksDeleteOutput = void;
+export const ServiceTasksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceTasksDeleteOutput>;
 
 // The operation
 /**
@@ -3715,6 +4829,13 @@ export const ServiceTasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceTasksDeleteOutput,
 }));
 // Input Schema
+export interface ServiceTasksGetInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  taskName: string;
+  $expand?: string;
+}
 export const ServiceTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -3727,10 +4848,22 @@ export const ServiceTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServiceTasksGetInput = typeof ServiceTasksGetInput.Type;
+) as unknown as Schema.Codec<ServiceTasksGetInput>;
 
 // Output Schema
+export interface ServiceTasksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3749,8 +4882,7 @@ export const ServiceTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServiceTasksGetOutput = typeof ServiceTasksGetOutput.Type;
+}) as unknown as Schema.Codec<ServiceTasksGetOutput>;
 
 // The operation
 /**
@@ -3770,6 +4902,12 @@ export const ServiceTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceTasksGetOutput,
 }));
 // Input Schema
+export interface ServiceTasksListInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  taskType?: string;
+}
 export const ServiceTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -3781,10 +4919,25 @@ export const ServiceTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks",
     apiVersion: "2025-06-30",
   }),
-);
-export type ServiceTasksListInput = typeof ServiceTasksListInput.Type;
+) as unknown as Schema.Codec<ServiceTasksListInput>;
 
 // Output Schema
+export interface ServiceTasksListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServiceTasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -3822,8 +4975,7 @@ export const ServiceTasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ServiceTasksListOutput = typeof ServiceTasksListOutput.Type;
+) as unknown as Schema.Codec<ServiceTasksListOutput>;
 
 // The operation
 /**
@@ -3842,6 +4994,94 @@ export const ServiceTasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceTasksListOutput,
 }));
 // Input Schema
+export interface ServiceTasksUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  taskName: string;
+  etag?: string;
+  properties?: {
+    taskType:
+      | "Connect.MongoDb"
+      | "ConnectToSource.SqlServer"
+      | "ConnectToSource.SqlServer.Sync"
+      | "ConnectToSource.PostgreSql.Sync"
+      | "ConnectToSource.MySql"
+      | "ConnectToSource.Oracle.Sync"
+      | "ConnectToTarget.SqlDb"
+      | "ConnectToTarget.SqlDb.Sync"
+      | "ConnectToTarget.AzureDbForPostgreSql.Sync"
+      | "ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync"
+      | "ConnectToTarget.AzureSqlDbMI"
+      | "ConnectToTarget.AzureSqlDbMI.Sync.LRS"
+      | "ConnectToTarget.AzureDbForMySql"
+      | "GetUserTables.Sql"
+      | "GetUserTables.AzureSqlDb.Sync"
+      | "GetUserTablesOracle"
+      | "GetUserTablesPostgreSql"
+      | "GetUserTablesMySql"
+      | "Migrate.MongoDb"
+      | "Migrate.SqlServer.AzureSqlDbMI"
+      | "Migrate.SqlServer.AzureSqlDbMI.Sync.LRS"
+      | "Migrate.SqlServer.SqlDb"
+      | "Migrate.SqlServer.AzureSqlDb.Sync"
+      | "Migrate.MySql.AzureDbForMySql.Sync"
+      | "Migrate.MySql.AzureDbForMySql"
+      | "Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2"
+      | "Migrate.Oracle.AzureDbForPostgreSql.Sync"
+      | "ValidateMigrationInput.SqlServer.SqlDb.Sync"
+      | "ValidateMigrationInput.SqlServer.AzureSqlDbMI"
+      | "ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"
+      | "Validate.MongoDb"
+      | "Validate.Oracle.AzureDbPostgreSql.Sync"
+      | "GetTDECertificates.Sql"
+      | "Migrate.Ssis"
+      | "Service.Check.OCI"
+      | "Service.Upload.OCI"
+      | "Service.Install.OCI"
+      | "MigrateSchemaSqlServerSqlDb";
+    errors?: {
+      code?: string;
+      message?: string;
+      details?: { code?: string; message?: string; details?: unknown[] }[];
+    }[];
+    state?:
+      | "Unknown"
+      | "Queued"
+      | "Running"
+      | "Canceled"
+      | "Succeeded"
+      | "Failed"
+      | "FailedInputValidation"
+      | "Faulted";
+    commands?: {
+      commandType:
+        | "Migrate.Sync.Complete.Database"
+        | "Migrate.SqlServer.AzureDbSqlMi.Complete"
+        | "cancel"
+        | "finish"
+        | "restart";
+      errors?: {
+        code?: string;
+        message?: string;
+        details?: { code?: string; message?: string; details?: unknown[] }[];
+      }[];
+      state?: "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
+    }[];
+    clientData?: Record<string, string>;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ServiceTasksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3989,10 +5229,22 @@ export const ServiceTasksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type ServiceTasksUpdateInput = typeof ServiceTasksUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceTasksUpdateInput>;
 
 // Output Schema
+export interface ServiceTasksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceTasksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4012,8 +5264,7 @@ export const ServiceTasksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceTasksUpdateOutput = typeof ServiceTasksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceTasksUpdateOutput>;
 
 // The operation
 /**
@@ -4035,6 +5286,14 @@ export const ServiceTasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceTasksUpdateOutput,
 }));
 // Input Schema
+export interface SqlMigrationServicesCreateOrUpdateInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+  properties?: { provisioningState?: string; integrationRuntimeState?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlMigrationServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4054,11 +5313,22 @@ export const SqlMigrationServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesCreateOrUpdateInput =
-  typeof SqlMigrationServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SqlMigrationServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlMigrationServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4078,9 +5348,7 @@ export const SqlMigrationServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlMigrationServicesCreateOrUpdateOutput =
-  typeof SqlMigrationServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4097,6 +5365,11 @@ export const SqlMigrationServicesCreateOrUpdate =
     outputSchema: SqlMigrationServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SqlMigrationServicesDeleteInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+}
 export const SqlMigrationServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4108,15 +5381,12 @@ export const SqlMigrationServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesDeleteInput =
-  typeof SqlMigrationServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesDeleteInput>;
 
 // Output Schema
+export type SqlMigrationServicesDeleteOutput = void;
 export const SqlMigrationServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlMigrationServicesDeleteOutput =
-  typeof SqlMigrationServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlMigrationServicesDeleteOutput>;
 
 // The operation
 /**
@@ -4134,6 +5404,13 @@ export const SqlMigrationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlMigrationServicesDeleteNodeInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+  nodeName?: string;
+  integrationRuntimeName?: string;
+}
 export const SqlMigrationServicesDeleteNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4147,18 +5424,18 @@ export const SqlMigrationServicesDeleteNodeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/deleteNode",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesDeleteNodeInput =
-  typeof SqlMigrationServicesDeleteNodeInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesDeleteNodeInput>;
 
 // Output Schema
+export interface SqlMigrationServicesDeleteNodeOutput {
+  nodeName?: string;
+  integrationRuntimeName?: string;
+}
 export const SqlMigrationServicesDeleteNodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeName: Schema.optional(Schema.String),
     integrationRuntimeName: Schema.optional(Schema.String),
-  });
-export type SqlMigrationServicesDeleteNodeOutput =
-  typeof SqlMigrationServicesDeleteNodeOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesDeleteNodeOutput>;
 
 // The operation
 /**
@@ -4175,6 +5452,11 @@ export const SqlMigrationServicesDeleteNode =
     outputSchema: SqlMigrationServicesDeleteNodeOutput,
   }));
 // Input Schema
+export interface SqlMigrationServicesGetInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+}
 export const SqlMigrationServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4186,11 +5468,22 @@ export const SqlMigrationServicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesGetInput =
-  typeof SqlMigrationServicesGetInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesGetInput>;
 
 // Output Schema
+export interface SqlMigrationServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlMigrationServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4210,9 +5503,7 @@ export const SqlMigrationServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlMigrationServicesGetOutput =
-  typeof SqlMigrationServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesGetOutput>;
 
 // The operation
 /**
@@ -4230,6 +5521,11 @@ export const SqlMigrationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlMigrationServicesListAuthKeysInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+}
 export const SqlMigrationServicesListAuthKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4241,18 +5537,18 @@ export const SqlMigrationServicesListAuthKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listAuthKeys",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesListAuthKeysInput =
-  typeof SqlMigrationServicesListAuthKeysInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesListAuthKeysInput>;
 
 // Output Schema
+export interface SqlMigrationServicesListAuthKeysOutput {
+  authKey1?: string;
+  authKey2?: string;
+}
 export const SqlMigrationServicesListAuthKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
-  });
-export type SqlMigrationServicesListAuthKeysOutput =
-  typeof SqlMigrationServicesListAuthKeysOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesListAuthKeysOutput>;
 
 // The operation
 /**
@@ -4269,6 +5565,10 @@ export const SqlMigrationServicesListAuthKeys =
     outputSchema: SqlMigrationServicesListAuthKeysOutput,
   }));
 // Input Schema
+export interface SqlMigrationServicesListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const SqlMigrationServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4279,11 +5579,25 @@ export const SqlMigrationServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesListByResourceGroupInput =
-  typeof SqlMigrationServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface SqlMigrationServicesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlMigrationServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4320,9 +5634,7 @@ export const SqlMigrationServicesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlMigrationServicesListByResourceGroupOutput =
-  typeof SqlMigrationServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4338,6 +5650,9 @@ export const SqlMigrationServicesListByResourceGroup =
     outputSchema: SqlMigrationServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SqlMigrationServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SqlMigrationServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4347,11 +5662,25 @@ export const SqlMigrationServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/sqlMigrationServices",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesListBySubscriptionInput =
-  typeof SqlMigrationServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface SqlMigrationServicesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlMigrationServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4388,9 +5717,7 @@ export const SqlMigrationServicesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlMigrationServicesListBySubscriptionOutput =
-  typeof SqlMigrationServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4405,6 +5732,11 @@ export const SqlMigrationServicesListBySubscription =
     outputSchema: SqlMigrationServicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SqlMigrationServicesListMigrationsInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+}
 export const SqlMigrationServicesListMigrationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4416,11 +5748,25 @@ export const SqlMigrationServicesListMigrationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMigrations",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesListMigrationsInput =
-  typeof SqlMigrationServicesListMigrationsInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesListMigrationsInput>;
 
 // Output Schema
+export interface SqlMigrationServicesListMigrationsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlMigrationServicesListMigrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4457,9 +5803,7 @@ export const SqlMigrationServicesListMigrationsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlMigrationServicesListMigrationsOutput =
-  typeof SqlMigrationServicesListMigrationsOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesListMigrationsOutput>;
 
 // The operation
 /**
@@ -4476,6 +5820,11 @@ export const SqlMigrationServicesListMigrations =
     outputSchema: SqlMigrationServicesListMigrationsOutput,
   }));
 // Input Schema
+export interface SqlMigrationServicesListMonitoringDataInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+}
 export const SqlMigrationServicesListMonitoringDataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4487,11 +5836,23 @@ export const SqlMigrationServicesListMonitoringDataInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMonitoringData",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesListMonitoringDataInput =
-  typeof SqlMigrationServicesListMonitoringDataInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesListMonitoringDataInput>;
 
 // Output Schema
+export interface SqlMigrationServicesListMonitoringDataOutput {
+  name?: string;
+  nodes?: {
+    additionalProperties?: Record<string, unknown>;
+    nodeName?: string;
+    availableMemoryInMB?: number;
+    cpuUtilization?: number;
+    concurrentJobsLimit?: number;
+    concurrentJobsRunning?: number;
+    maxConcurrentJobs?: number;
+    sentBytes?: number;
+    receivedBytes?: number;
+  }[];
+}
 export const SqlMigrationServicesListMonitoringDataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -4512,9 +5873,7 @@ export const SqlMigrationServicesListMonitoringDataOutput =
         }),
       ),
     ),
-  });
-export type SqlMigrationServicesListMonitoringDataOutput =
-  typeof SqlMigrationServicesListMonitoringDataOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesListMonitoringDataOutput>;
 
 // The operation
 /**
@@ -4531,6 +5890,14 @@ export const SqlMigrationServicesListMonitoringData =
     outputSchema: SqlMigrationServicesListMonitoringDataOutput,
   }));
 // Input Schema
+export interface SqlMigrationServicesRegenerateAuthKeysInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+  keyName?: string;
+  authKey1?: string;
+  authKey2?: string;
+}
 export const SqlMigrationServicesRegenerateAuthKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4545,19 +5912,20 @@ export const SqlMigrationServicesRegenerateAuthKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/regenerateAuthKeys",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesRegenerateAuthKeysInput =
-  typeof SqlMigrationServicesRegenerateAuthKeysInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesRegenerateAuthKeysInput>;
 
 // Output Schema
+export interface SqlMigrationServicesRegenerateAuthKeysOutput {
+  keyName?: string;
+  authKey1?: string;
+  authKey2?: string;
+}
 export const SqlMigrationServicesRegenerateAuthKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyName: Schema.optional(Schema.String),
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
-  });
-export type SqlMigrationServicesRegenerateAuthKeysOutput =
-  typeof SqlMigrationServicesRegenerateAuthKeysOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesRegenerateAuthKeysOutput>;
 
 // The operation
 /**
@@ -4574,6 +5942,12 @@ export const SqlMigrationServicesRegenerateAuthKeys =
     outputSchema: SqlMigrationServicesRegenerateAuthKeysOutput,
   }));
 // Input Schema
+export interface SqlMigrationServicesUpdateInput {
+  resourceGroupName: string;
+  sqlMigrationServiceName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const SqlMigrationServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4586,11 +5960,22 @@ export const SqlMigrationServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type SqlMigrationServicesUpdateInput =
-  typeof SqlMigrationServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlMigrationServicesUpdateInput>;
 
 // Output Schema
+export interface SqlMigrationServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlMigrationServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4610,9 +5995,7 @@ export const SqlMigrationServicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlMigrationServicesUpdateOutput =
-  typeof SqlMigrationServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlMigrationServicesUpdateOutput>;
 
 // The operation
 /**
@@ -4630,6 +6013,13 @@ export const SqlMigrationServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TasksCancelInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  taskName: string;
+}
 export const TasksCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -4642,10 +6032,22 @@ export const TasksCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/cancel",
     apiVersion: "2025-06-30",
   }),
-);
-export type TasksCancelInput = typeof TasksCancelInput.Type;
+) as unknown as Schema.Codec<TasksCancelInput>;
 
 // Output Schema
+export interface TasksCancelOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TasksCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4664,8 +6066,7 @@ export const TasksCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TasksCancelOutput = typeof TasksCancelOutput.Type;
+}) as unknown as Schema.Codec<TasksCancelOutput>;
 
 // The operation
 /**
@@ -4685,6 +6086,25 @@ export const TasksCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksCancelOutput,
 }));
 // Input Schema
+export interface TasksCommandInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  taskName: string;
+  commandType:
+    | "Migrate.Sync.Complete.Database"
+    | "Migrate.SqlServer.AzureDbSqlMi.Complete"
+    | "cancel"
+    | "finish"
+    | "restart";
+  errors?: {
+    code?: string;
+    message?: string;
+    details?: { code?: string; message?: string; details?: unknown[] }[];
+  }[];
+  state?: "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
+}
 export const TasksCommandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -4724,10 +6144,23 @@ export const TasksCommandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/command",
     apiVersion: "2025-06-30",
   }),
-);
-export type TasksCommandInput = typeof TasksCommandInput.Type;
+) as unknown as Schema.Codec<TasksCommandInput>;
 
 // Output Schema
+export interface TasksCommandOutput {
+  commandType:
+    | "Migrate.Sync.Complete.Database"
+    | "Migrate.SqlServer.AzureDbSqlMi.Complete"
+    | "cancel"
+    | "finish"
+    | "restart";
+  errors?: {
+    code?: string;
+    message?: string;
+    details?: { code?: string; message?: string; details?: unknown[] }[];
+  }[];
+  state?: "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
+}
 export const TasksCommandOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   commandType: Schema.Literals([
     "Migrate.Sync.Complete.Database",
@@ -4756,8 +6189,7 @@ export const TasksCommandOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   state: Schema.optional(
     Schema.Literals(["Unknown", "Accepted", "Running", "Succeeded", "Failed"]),
   ),
-});
-export type TasksCommandOutput = typeof TasksCommandOutput.Type;
+}) as unknown as Schema.Codec<TasksCommandOutput>;
 
 // The operation
 /**
@@ -4780,6 +6212,95 @@ export const TasksCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksCommandOutput,
 }));
 // Input Schema
+export interface TasksCreateOrUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  taskName: string;
+  etag?: string;
+  properties?: {
+    taskType:
+      | "Connect.MongoDb"
+      | "ConnectToSource.SqlServer"
+      | "ConnectToSource.SqlServer.Sync"
+      | "ConnectToSource.PostgreSql.Sync"
+      | "ConnectToSource.MySql"
+      | "ConnectToSource.Oracle.Sync"
+      | "ConnectToTarget.SqlDb"
+      | "ConnectToTarget.SqlDb.Sync"
+      | "ConnectToTarget.AzureDbForPostgreSql.Sync"
+      | "ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync"
+      | "ConnectToTarget.AzureSqlDbMI"
+      | "ConnectToTarget.AzureSqlDbMI.Sync.LRS"
+      | "ConnectToTarget.AzureDbForMySql"
+      | "GetUserTables.Sql"
+      | "GetUserTables.AzureSqlDb.Sync"
+      | "GetUserTablesOracle"
+      | "GetUserTablesPostgreSql"
+      | "GetUserTablesMySql"
+      | "Migrate.MongoDb"
+      | "Migrate.SqlServer.AzureSqlDbMI"
+      | "Migrate.SqlServer.AzureSqlDbMI.Sync.LRS"
+      | "Migrate.SqlServer.SqlDb"
+      | "Migrate.SqlServer.AzureSqlDb.Sync"
+      | "Migrate.MySql.AzureDbForMySql.Sync"
+      | "Migrate.MySql.AzureDbForMySql"
+      | "Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2"
+      | "Migrate.Oracle.AzureDbForPostgreSql.Sync"
+      | "ValidateMigrationInput.SqlServer.SqlDb.Sync"
+      | "ValidateMigrationInput.SqlServer.AzureSqlDbMI"
+      | "ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"
+      | "Validate.MongoDb"
+      | "Validate.Oracle.AzureDbPostgreSql.Sync"
+      | "GetTDECertificates.Sql"
+      | "Migrate.Ssis"
+      | "Service.Check.OCI"
+      | "Service.Upload.OCI"
+      | "Service.Install.OCI"
+      | "MigrateSchemaSqlServerSqlDb";
+    errors?: {
+      code?: string;
+      message?: string;
+      details?: { code?: string; message?: string; details?: unknown[] }[];
+    }[];
+    state?:
+      | "Unknown"
+      | "Queued"
+      | "Running"
+      | "Canceled"
+      | "Succeeded"
+      | "Failed"
+      | "FailedInputValidation"
+      | "Faulted";
+    commands?: {
+      commandType:
+        | "Migrate.Sync.Complete.Database"
+        | "Migrate.SqlServer.AzureDbSqlMi.Complete"
+        | "cancel"
+        | "finish"
+        | "restart";
+      errors?: {
+        code?: string;
+        message?: string;
+        details?: { code?: string; message?: string; details?: unknown[] }[];
+      }[];
+      state?: "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
+    }[];
+    clientData?: Record<string, string>;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TasksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4928,10 +6449,22 @@ export const TasksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
       apiVersion: "2025-06-30",
     }),
-  );
-export type TasksCreateOrUpdateInput = typeof TasksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TasksCreateOrUpdateInput>;
 
 // Output Schema
+export interface TasksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TasksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4951,8 +6484,7 @@ export const TasksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TasksCreateOrUpdateOutput = typeof TasksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TasksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4975,6 +6507,14 @@ export const TasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface TasksDeleteInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  taskName: string;
+  deleteRunningTasks?: boolean;
+}
 export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -4988,12 +6528,12 @@ export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type TasksDeleteInput = typeof TasksDeleteInput.Type;
+) as unknown as Schema.Codec<TasksDeleteInput>;
 
 // Output Schema
-export const TasksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TasksDeleteOutput = typeof TasksDeleteOutput.Type;
+export type TasksDeleteOutput = void;
+export const TasksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksDeleteOutput>;
 
 // The operation
 /**
@@ -5014,6 +6554,14 @@ export const TasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksDeleteOutput,
 }));
 // Input Schema
+export interface TasksGetInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  taskName: string;
+  $expand?: string;
+}
 export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -5027,10 +6575,22 @@ export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type TasksGetInput = typeof TasksGetInput.Type;
+) as unknown as Schema.Codec<TasksGetInput>;
 
 // Output Schema
+export interface TasksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5049,8 +6609,7 @@ export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TasksGetOutput = typeof TasksGetOutput.Type;
+}) as unknown as Schema.Codec<TasksGetOutput>;
 
 // The operation
 /**
@@ -5071,6 +6630,13 @@ export const TasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksGetOutput,
 }));
 // Input Schema
+export interface TasksListInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  taskType?: string;
+}
 export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -5083,10 +6649,25 @@ export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks",
     apiVersion: "2025-06-30",
   }),
-);
-export type TasksListInput = typeof TasksListInput.Type;
+) as unknown as Schema.Codec<TasksListInput>;
 
 // Output Schema
+export interface TasksListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -5122,8 +6703,7 @@ export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TasksListOutput = typeof TasksListOutput.Type;
+}) as unknown as Schema.Codec<TasksListOutput>;
 
 // The operation
 /**
@@ -5143,6 +6723,95 @@ export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksListOutput,
 }));
 // Input Schema
+export interface TasksUpdateInput {
+  subscriptionId: string;
+  groupName: string;
+  serviceName: string;
+  projectName: string;
+  taskName: string;
+  etag?: string;
+  properties?: {
+    taskType:
+      | "Connect.MongoDb"
+      | "ConnectToSource.SqlServer"
+      | "ConnectToSource.SqlServer.Sync"
+      | "ConnectToSource.PostgreSql.Sync"
+      | "ConnectToSource.MySql"
+      | "ConnectToSource.Oracle.Sync"
+      | "ConnectToTarget.SqlDb"
+      | "ConnectToTarget.SqlDb.Sync"
+      | "ConnectToTarget.AzureDbForPostgreSql.Sync"
+      | "ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync"
+      | "ConnectToTarget.AzureSqlDbMI"
+      | "ConnectToTarget.AzureSqlDbMI.Sync.LRS"
+      | "ConnectToTarget.AzureDbForMySql"
+      | "GetUserTables.Sql"
+      | "GetUserTables.AzureSqlDb.Sync"
+      | "GetUserTablesOracle"
+      | "GetUserTablesPostgreSql"
+      | "GetUserTablesMySql"
+      | "Migrate.MongoDb"
+      | "Migrate.SqlServer.AzureSqlDbMI"
+      | "Migrate.SqlServer.AzureSqlDbMI.Sync.LRS"
+      | "Migrate.SqlServer.SqlDb"
+      | "Migrate.SqlServer.AzureSqlDb.Sync"
+      | "Migrate.MySql.AzureDbForMySql.Sync"
+      | "Migrate.MySql.AzureDbForMySql"
+      | "Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2"
+      | "Migrate.Oracle.AzureDbForPostgreSql.Sync"
+      | "ValidateMigrationInput.SqlServer.SqlDb.Sync"
+      | "ValidateMigrationInput.SqlServer.AzureSqlDbMI"
+      | "ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"
+      | "Validate.MongoDb"
+      | "Validate.Oracle.AzureDbPostgreSql.Sync"
+      | "GetTDECertificates.Sql"
+      | "Migrate.Ssis"
+      | "Service.Check.OCI"
+      | "Service.Upload.OCI"
+      | "Service.Install.OCI"
+      | "MigrateSchemaSqlServerSqlDb";
+    errors?: {
+      code?: string;
+      message?: string;
+      details?: { code?: string; message?: string; details?: unknown[] }[];
+    }[];
+    state?:
+      | "Unknown"
+      | "Queued"
+      | "Running"
+      | "Canceled"
+      | "Succeeded"
+      | "Failed"
+      | "FailedInputValidation"
+      | "Faulted";
+    commands?: {
+      commandType:
+        | "Migrate.Sync.Complete.Database"
+        | "Migrate.SqlServer.AzureDbSqlMi.Complete"
+        | "cancel"
+        | "finish"
+        | "restart";
+      errors?: {
+        code?: string;
+        message?: string;
+        details?: { code?: string; message?: string; details?: unknown[] }[];
+      }[];
+      state?: "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
+    }[];
+    clientData?: Record<string, string>;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -5286,10 +6955,22 @@ export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
     apiVersion: "2025-06-30",
   }),
-);
-export type TasksUpdateInput = typeof TasksUpdateInput.Type;
+) as unknown as Schema.Codec<TasksUpdateInput>;
 
 // Output Schema
+export interface TasksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5308,8 +6989,7 @@ export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TasksUpdateOutput = typeof TasksUpdateOutput.Type;
+}) as unknown as Schema.Codec<TasksUpdateOutput>;
 
 // The operation
 /**
@@ -5332,6 +7012,10 @@ export const TasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksUpdateOutput,
 }));
 // Input Schema
+export interface UsagesListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -5341,10 +7025,19 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/usages",
     apiVersion: "2025-06-30",
   }),
-);
-export type UsagesListInput = typeof UsagesListInput.Type;
+) as unknown as Schema.Codec<UsagesListInput>;
 
 // Output Schema
+export interface UsagesListOutput {
+  value?: {
+    currentValue?: number;
+    id?: string;
+    limit?: number;
+    name?: { localizedValue?: string; value?: string };
+    unit?: string;
+  }[];
+  nextLink?: string;
+}
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -5363,8 +7056,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UsagesListOutput = typeof UsagesListOutput.Type;
+}) as unknown as Schema.Codec<UsagesListOutput>;
 
 // The operation
 /**

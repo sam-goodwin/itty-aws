@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface BatchExportsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const BatchExportsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const BatchExportsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/batch_exports/{id}/",
     }),
-  );
-export type BatchExportsDestroyInput = typeof BatchExportsDestroyInput.Type;
+  ) as unknown as Schema.Codec<BatchExportsDestroyInput>;
 
 // Output Schema
+export type BatchExportsDestroyOutput = void;
 export const BatchExportsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BatchExportsDestroyOutput = typeof BatchExportsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsDestroyOutput>;
 
 // The operation
 /**

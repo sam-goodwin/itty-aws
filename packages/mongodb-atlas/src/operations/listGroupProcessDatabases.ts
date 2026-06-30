@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupProcessDatabasesInput {
+  groupId: string;
+  processId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupProcessDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const ListGroupProcessDatabasesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases",
     }),
-  );
-export type ListGroupProcessDatabasesInput =
-  typeof ListGroupProcessDatabasesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupProcessDatabasesInput>;
 
 // Output Schema
+export type ListGroupProcessDatabasesOutput = void;
 export const ListGroupProcessDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessDatabasesOutput =
-  typeof ListGroupProcessDatabasesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessDatabasesOutput>;
 
 // The operation
 /**

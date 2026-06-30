@@ -4,18 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupLimitsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListGroupLimitsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/limits" }),
-);
-export type ListGroupLimitsInput = typeof ListGroupLimitsInput.Type;
+) as unknown as Schema.Codec<ListGroupLimitsInput>;
 
 // Output Schema
-export const ListGroupLimitsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupLimitsOutput = typeof ListGroupLimitsOutput.Type;
+export type ListGroupLimitsOutput = void;
+export const ListGroupLimitsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupLimitsOutput>;
 
 // The operation
 /**

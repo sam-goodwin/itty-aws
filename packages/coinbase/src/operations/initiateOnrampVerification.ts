@@ -3,22 +3,28 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface InitiateOnrampVerificationInput {
+  channel: "sms" | "email";
+  destination: string;
+}
 export const InitiateOnrampVerificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channel: Schema.Literals(["sms", "email"]),
-    destination: Schema.Unknown,
-  }).pipe(T.Http({ method: "POST", path: "/v2/onramp/verifications" }));
-export type InitiateOnrampVerificationInput =
-  typeof InitiateOnrampVerificationInput.Type;
+    destination: Schema.String,
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/onramp/verifications" }),
+  ) as unknown as Schema.Codec<InitiateOnrampVerificationInput>;
 
 // Output Schema
+export interface InitiateOnrampVerificationOutput {
+  verificationId: string;
+  otpExpiresAt: string;
+}
 export const InitiateOnrampVerificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verificationId: Schema.String,
     otpExpiresAt: Schema.String,
-  });
-export type InitiateOnrampVerificationOutput =
-  typeof InitiateOnrampVerificationOutput.Type;
+  }) as unknown as Schema.Codec<InitiateOnrampVerificationOutput>;
 
 // The operation
 /**

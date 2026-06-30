@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardTemplatesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const DashboardTemplatesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const DashboardTemplatesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/dashboard_templates/{id}/",
     }),
-  );
-export type DashboardTemplatesDestroyInput =
-  typeof DashboardTemplatesDestroyInput.Type;
+  ) as unknown as Schema.Codec<DashboardTemplatesDestroyInput>;
 
 // Output Schema
+export type DashboardTemplatesDestroyOutput = void;
 export const DashboardTemplatesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DashboardTemplatesDestroyOutput =
-  typeof DashboardTemplatesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardTemplatesDestroyOutput>;
 
 // The operation
 /**

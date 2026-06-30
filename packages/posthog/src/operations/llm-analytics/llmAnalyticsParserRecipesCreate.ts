@@ -3,13 +3,72 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsParserRecipesCreateInput {
+  project_id: string;
+  id: string;
+  name: string;
+  source: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at: string;
+  updated_at: string | null;
+}
 export const LlmAnalyticsParserRecipesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
     name: Schema.String,
     source: Schema.String,
-    created_by: Schema.Unknown,
+    created_by: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+      }),
+    ),
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
   }).pipe(
@@ -17,22 +76,76 @@ export const LlmAnalyticsParserRecipesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_analytics/parser_recipes/",
     }),
-  );
-export type LlmAnalyticsParserRecipesCreateInput =
-  typeof LlmAnalyticsParserRecipesCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsParserRecipesCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsParserRecipesCreateOutput {
+  id: string;
+  name: string;
+  source: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at: string;
+  updated_at: string | null;
+}
 export const LlmAnalyticsParserRecipesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     source: Schema.String,
-    created_by: Schema.Unknown,
+    created_by: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+      }),
+    ),
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type LlmAnalyticsParserRecipesCreateOutput =
-  typeof LlmAnalyticsParserRecipesCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsParserRecipesCreateOutput>;
 
 // The operation
 /**

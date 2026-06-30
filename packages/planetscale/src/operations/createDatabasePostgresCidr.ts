@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateDatabasePostgresCidrInput {
+  organization: string;
+  database: string;
+  schema?: string;
+  role?: string;
+  cidrs: string[];
+}
 export const CreateDatabasePostgresCidrInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,19 @@ export const CreateDatabasePostgresCidrInput =
       method: "POST",
       path: "/organizations/{organization}/databases/{database}/cidrs",
     }),
-  );
-export type CreateDatabasePostgresCidrInput =
-  typeof CreateDatabasePostgresCidrInput.Type;
+  ) as unknown as Schema.Codec<CreateDatabasePostgresCidrInput>;
 
 // Output Schema
+export interface CreateDatabasePostgresCidrOutput {
+  id: string;
+  schema: string;
+  role: string;
+  cidrs: string[];
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+  actor: { id: string; display_name: string; avatar_url: string };
+}
 export const CreateDatabasePostgresCidrOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -35,9 +50,7 @@ export const CreateDatabasePostgresCidrOutput =
       display_name: Schema.String,
       avatar_url: Schema.String,
     }),
-  });
-export type CreateDatabasePostgresCidrOutput =
-  typeof CreateDatabasePostgresCidrOutput.Type;
+  }) as unknown as Schema.Codec<CreateDatabasePostgresCidrOutput>;
 
 // The operation
 /**

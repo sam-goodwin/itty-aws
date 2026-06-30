@@ -3,6 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpAnalyticsMissingCapabilitiesCreateInput {
+  project_id: string;
+  attempted_tool?: string;
+  mcp_client_name?: string;
+  mcp_client_version?: string;
+  mcp_protocol_version?: string;
+  mcp_transport?: string;
+  mcp_session_id?: string;
+  mcp_trace_id?: string;
+  goal: string;
+  missing_capability: string;
+  blocked?: boolean;
+}
 export const McpAnalyticsMissingCapabilitiesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,11 +34,26 @@ export const McpAnalyticsMissingCapabilitiesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/mcp_analytics/missing_capabilities/",
     }),
-  );
-export type McpAnalyticsMissingCapabilitiesCreateInput =
-  typeof McpAnalyticsMissingCapabilitiesCreateInput.Type;
+  ) as unknown as Schema.Codec<McpAnalyticsMissingCapabilitiesCreateInput>;
 
 // Output Schema
+export interface McpAnalyticsMissingCapabilitiesCreateOutput {
+  id: string;
+  kind: "feedback" | "missing_capability";
+  goal: string;
+  summary: string;
+  category: string;
+  blocked: boolean | null;
+  attempted_tool: string;
+  mcp_client_name: string;
+  mcp_client_version: string;
+  mcp_protocol_version: string;
+  mcp_transport: string;
+  mcp_session_id: string;
+  mcp_trace_id: string;
+  created_at: string;
+  updated_at: string;
+}
 export const McpAnalyticsMissingCapabilitiesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -43,9 +71,7 @@ export const McpAnalyticsMissingCapabilitiesCreateOutput =
     mcp_trace_id: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type McpAnalyticsMissingCapabilitiesCreateOutput =
-  typeof McpAnalyticsMissingCapabilitiesCreateOutput.Type;
+  }) as unknown as Schema.Codec<McpAnalyticsMissingCapabilitiesCreateOutput>;
 
 // The operation
 /**

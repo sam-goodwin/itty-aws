@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFunctionsMetricsTotalsRetrieveInput {
+  id: string;
+  project_id: string;
+  after?: string;
+  before?: string;
+  breakdown_by?: "name" | "kind";
+  instance_id?: string;
+  interval?: "hour" | "day" | "week";
+  kind?: string;
+  name?: string;
+}
 export const HogFunctionsMetricsTotalsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,17 +31,16 @@ export const HogFunctionsMetricsTotalsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_functions/{id}/metrics/totals/",
     }),
-  );
-export type HogFunctionsMetricsTotalsRetrieveInput =
-  typeof HogFunctionsMetricsTotalsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HogFunctionsMetricsTotalsRetrieveInput>;
 
 // Output Schema
+export interface HogFunctionsMetricsTotalsRetrieveOutput {
+  totals?: Record<string, number>;
+}
 export const HogFunctionsMetricsTotalsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totals: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-  });
-export type HogFunctionsMetricsTotalsRetrieveOutput =
-  typeof HogFunctionsMetricsTotalsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<HogFunctionsMetricsTotalsRetrieveOutput>;
 
 // The operation
 /**

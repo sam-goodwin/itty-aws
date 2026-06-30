@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -39,7 +39,7 @@ export interface TraceSpan {
   spanId?: string;
 }
 
-export const TraceSpan: Schema.Schema<TraceSpan> =
+export const TraceSpan: Schema.Codec<TraceSpan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentSpanId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface Trace {
   spans?: ReadonlyArray<TraceSpan>;
 }
 
-export const Trace: Schema.Schema<Trace> =
+export const Trace: Schema.Codec<Trace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     traceId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface Traces {
   traces?: ReadonlyArray<Trace>;
 }
 
-export const Traces: Schema.Schema<Traces> =
+export const Traces: Schema.Codec<Traces> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     traces: Schema.optional(Schema.Array(Trace)),
   }).annotate({ identifier: "Traces" });
@@ -83,7 +83,7 @@ export interface ListTracesResponse {
   traces?: ReadonlyArray<Trace>;
 }
 
-export const ListTracesResponse: Schema.Schema<ListTracesResponse> =
+export const ListTracesResponse: Schema.Codec<ListTracesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     traces: Schema.optional(Schema.Array(Trace)),
@@ -91,7 +91,7 @@ export const ListTracesResponse: Schema.Schema<ListTracesResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -168,7 +168,7 @@ export const PatchTracesProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchTracesProjectsRequest>;
+  ) as unknown as Schema.Codec<PatchTracesProjectsRequest>;
 
 export type PatchTracesProjectsResponse = Empty;
 export const PatchTracesProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -206,7 +206,7 @@ export const GetProjectsTracesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{projectId}/traces/{traceId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTracesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTracesRequest>;
 
 export type GetProjectsTracesResponse = Trace;
 export const GetProjectsTracesResponse = /*@__PURE__*/ /*#__PURE__*/ Trace;
@@ -262,7 +262,7 @@ export const ListProjectsTracesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{projectId}/traces" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTracesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTracesRequest>;
 
 export type ListProjectsTracesResponse = ListTracesResponse;
 export const ListProjectsTracesResponse =

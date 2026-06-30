@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AggregatedCostGetByManagementGroupInput {
+  managementGroupId: string;
+  $filter?: string;
+}
 export const AggregatedCostGetByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -19,11 +23,22 @@ export const AggregatedCostGetByManagementGroupInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
       apiVersion: "2024-08-01",
     }),
-  );
-export type AggregatedCostGetByManagementGroupInput =
-  typeof AggregatedCostGetByManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<AggregatedCostGetByManagementGroupInput>;
 
 // Output Schema
+export interface AggregatedCostGetByManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AggregatedCostGetByManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -43,9 +58,7 @@ export const AggregatedCostGetByManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AggregatedCostGetByManagementGroupOutput =
-  typeof AggregatedCostGetByManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<AggregatedCostGetByManagementGroupOutput>;
 
 // The operation
 /**
@@ -61,6 +74,10 @@ export const AggregatedCostGetByManagementGroup =
     outputSchema: AggregatedCostGetByManagementGroupOutput,
   }));
 // Input Schema
+export interface AggregatedCostGetForBillingPeriodByManagementGroupInput {
+  managementGroupId: string;
+  billingPeriodName: string;
+}
 export const AggregatedCostGetForBillingPeriodByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -71,11 +88,22 @@ export const AggregatedCostGetForBillingPeriodByManagementGroupInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
       apiVersion: "2024-08-01",
     }),
-  );
-export type AggregatedCostGetForBillingPeriodByManagementGroupInput =
-  typeof AggregatedCostGetForBillingPeriodByManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<AggregatedCostGetForBillingPeriodByManagementGroupInput>;
 
 // Output Schema
+export interface AggregatedCostGetForBillingPeriodByManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AggregatedCostGetForBillingPeriodByManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -95,9 +123,7 @@ export const AggregatedCostGetForBillingPeriodByManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AggregatedCostGetForBillingPeriodByManagementGroupOutput =
-  typeof AggregatedCostGetForBillingPeriodByManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<AggregatedCostGetForBillingPeriodByManagementGroupOutput>;
 
 // The operation
 /**
@@ -113,6 +139,9 @@ export const AggregatedCostGetForBillingPeriodByManagementGroup =
     outputSchema: AggregatedCostGetForBillingPeriodByManagementGroupOutput,
   }));
 // Input Schema
+export interface BalancesGetByBillingAccountInput {
+  billingAccountId: string;
+}
 export const BalancesGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -122,11 +151,22 @@ export const BalancesGetByBillingAccountInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
       apiVersion: "2024-08-01",
     }),
-  );
-export type BalancesGetByBillingAccountInput =
-  typeof BalancesGetByBillingAccountInput.Type;
+  ) as unknown as Schema.Codec<BalancesGetByBillingAccountInput>;
 
 // Output Schema
+export interface BalancesGetByBillingAccountOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BalancesGetByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -146,9 +186,7 @@ export const BalancesGetByBillingAccountOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BalancesGetByBillingAccountOutput =
-  typeof BalancesGetByBillingAccountOutput.Type;
+  }) as unknown as Schema.Codec<BalancesGetByBillingAccountOutput>;
 
 // The operation
 /**
@@ -164,6 +202,10 @@ export const BalancesGetByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BalancesGetForBillingPeriodByBillingAccountInput {
+  billingAccountId: string;
+  billingPeriodName: string;
+}
 export const BalancesGetForBillingPeriodByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -174,11 +216,22 @@ export const BalancesGetForBillingPeriodByBillingAccountInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
       apiVersion: "2024-08-01",
     }),
-  );
-export type BalancesGetForBillingPeriodByBillingAccountInput =
-  typeof BalancesGetForBillingPeriodByBillingAccountInput.Type;
+  ) as unknown as Schema.Codec<BalancesGetForBillingPeriodByBillingAccountInput>;
 
 // Output Schema
+export interface BalancesGetForBillingPeriodByBillingAccountOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BalancesGetForBillingPeriodByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -198,9 +251,7 @@ export const BalancesGetForBillingPeriodByBillingAccountOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BalancesGetForBillingPeriodByBillingAccountOutput =
-  typeof BalancesGetForBillingPeriodByBillingAccountOutput.Type;
+  }) as unknown as Schema.Codec<BalancesGetForBillingPeriodByBillingAccountOutput>;
 
 // The operation
 /**
@@ -216,6 +267,67 @@ export const BalancesGetForBillingPeriodByBillingAccount =
     outputSchema: BalancesGetForBillingPeriodByBillingAccountOutput,
   }));
 // Input Schema
+export interface BudgetsCreateOrUpdateInput {
+  scope: string;
+  budgetName: string;
+  properties?: {
+    category: "Cost";
+    amount: number;
+    timeGrain:
+      | "Monthly"
+      | "Quarterly"
+      | "Annually"
+      | "BillingMonth"
+      | "BillingQuarter"
+      | "BillingAnnual";
+    timePeriod: { startDate: string; endDate?: string };
+    filter?: {
+      and?: {
+        dimensions?: { name: string; operator: "In"; values: string[] };
+        tags?: { name: string; operator: "In"; values: string[] };
+      }[];
+      dimensions?: { name: string; operator: "In"; values: string[] };
+      tags?: { name: string; operator: "In"; values: string[] };
+    };
+    currentSpend?: { amount?: number; unit?: string };
+    notifications?: Record<
+      string,
+      {
+        enabled: boolean;
+        operator: "EqualTo" | "GreaterThan" | "GreaterThanOrEqualTo";
+        threshold: number;
+        contactEmails: string[];
+        contactRoles?: string[];
+        contactGroups?: string[];
+        thresholdType?: "Actual" | "Forecasted";
+        locale?:
+          | "en-us"
+          | "ja-jp"
+          | "zh-cn"
+          | "de-de"
+          | "es-es"
+          | "fr-fr"
+          | "it-it"
+          | "ko-kr"
+          | "pt-br"
+          | "ru-ru"
+          | "zh-tw"
+          | "cs-cz"
+          | "pl-pl"
+          | "tr-tr"
+          | "da-dk"
+          | "en-gb"
+          | "hu-hu"
+          | "nb-no"
+          | "nl-nl"
+          | "pt-pt"
+          | "sv-se";
+      }
+    >;
+    forecastSpend?: { amount?: number; unit?: string };
+  };
+  eTag?: string;
+}
 export const BudgetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -340,10 +452,22 @@ export const BudgetsCreateOrUpdateInput =
       path: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
       apiVersion: "2024-08-01",
     }),
-  );
-export type BudgetsCreateOrUpdateInput = typeof BudgetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BudgetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface BudgetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BudgetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -363,9 +487,7 @@ export const BudgetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BudgetsCreateOrUpdateOutput =
-  typeof BudgetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BudgetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -382,6 +504,10 @@ export const BudgetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BudgetsDeleteInput {
+  scope: string;
+  budgetName: string;
+}
 export const BudgetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
@@ -391,12 +517,12 @@ export const BudgetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
     apiVersion: "2024-08-01",
   }),
-);
-export type BudgetsDeleteInput = typeof BudgetsDeleteInput.Type;
+) as unknown as Schema.Codec<BudgetsDeleteInput>;
 
 // Output Schema
-export const BudgetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BudgetsDeleteOutput = typeof BudgetsDeleteOutput.Type;
+export type BudgetsDeleteOutput = void;
+export const BudgetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BudgetsDeleteOutput>;
 
 // The operation
 /**
@@ -411,6 +537,10 @@ export const BudgetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BudgetsDeleteOutput,
 }));
 // Input Schema
+export interface BudgetsGetInput {
+  scope: string;
+  budgetName: string;
+}
 export const BudgetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   budgetName: Schema.String.pipe(T.PathParam()),
@@ -420,10 +550,22 @@ export const BudgetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
     apiVersion: "2024-08-01",
   }),
-);
-export type BudgetsGetInput = typeof BudgetsGetInput.Type;
+) as unknown as Schema.Codec<BudgetsGetInput>;
 
 // Output Schema
+export interface BudgetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BudgetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -442,8 +584,7 @@ export const BudgetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BudgetsGetOutput = typeof BudgetsGetOutput.Type;
+}) as unknown as Schema.Codec<BudgetsGetOutput>;
 
 // The operation
 /**
@@ -458,6 +599,9 @@ export const BudgetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BudgetsGetOutput,
 }));
 // Input Schema
+export interface BudgetsListInput {
+  scope: string;
+}
 export const BudgetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -466,10 +610,25 @@ export const BudgetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Consumption/budgets",
     apiVersion: "2024-08-01",
   }),
-);
-export type BudgetsListInput = typeof BudgetsListInput.Type;
+) as unknown as Schema.Codec<BudgetsListInput>;
 
 // Output Schema
+export interface BudgetsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BudgetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -505,8 +664,7 @@ export const BudgetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type BudgetsListOutput = typeof BudgetsListOutput.Type;
+}) as unknown as Schema.Codec<BudgetsListOutput>;
 
 // The operation
 /**
@@ -520,6 +678,13 @@ export const BudgetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BudgetsListOutput,
 }));
 // Input Schema
+export interface ChargesListInput {
+  scope: string;
+  startDate?: string;
+  endDate?: string;
+  $filter?: string;
+  $apply?: string;
+}
 export const ChargesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   startDate: Schema.optional(Schema.String),
@@ -532,10 +697,24 @@ export const ChargesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Consumption/charges",
     apiVersion: "2024-08-01",
   }),
-);
-export type ChargesListInput = typeof ChargesListInput.Type;
+) as unknown as Schema.Codec<ChargesListInput>;
 
 // Output Schema
+export interface ChargesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ChargesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -570,8 +749,7 @@ export const ChargesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ChargesListOutput = typeof ChargesListOutput.Type;
+}) as unknown as Schema.Codec<ChargesListOutput>;
 
 // The operation
 /**
@@ -589,6 +767,10 @@ export const ChargesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ChargesListOutput,
 }));
 // Input Schema
+export interface CreditsGetInput {
+  billingAccountId: string;
+  billingProfileId: string;
+}
 export const CreditsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   billingAccountId: Schema.String.pipe(T.PathParam()),
   billingProfileId: Schema.String.pipe(T.PathParam()),
@@ -598,10 +780,22 @@ export const CreditsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/credits/balanceSummary",
     apiVersion: "2024-08-01",
   }),
-);
-export type CreditsGetInput = typeof CreditsGetInput.Type;
+) as unknown as Schema.Codec<CreditsGetInput>;
 
 // Output Schema
+export interface CreditsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CreditsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -620,8 +814,7 @@ export const CreditsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CreditsGetOutput = typeof CreditsGetOutput.Type;
+}) as unknown as Schema.Codec<CreditsGetOutput>;
 
 // The operation
 /**
@@ -636,6 +829,10 @@ export const CreditsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CreditsGetOutput,
 }));
 // Input Schema
+export interface EventsListByBillingAccountInput {
+  billingAccountId: string;
+  $filter?: string;
+}
 export const EventsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -646,11 +843,25 @@ export const EventsListByBillingAccountInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/events",
       apiVersion: "2024-08-01",
     }),
-  );
-export type EventsListByBillingAccountInput =
-  typeof EventsListByBillingAccountInput.Type;
+  ) as unknown as Schema.Codec<EventsListByBillingAccountInput>;
 
 // Output Schema
+export interface EventsListByBillingAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EventsListByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -687,9 +898,7 @@ export const EventsListByBillingAccountOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventsListByBillingAccountOutput =
-  typeof EventsListByBillingAccountOutput.Type;
+  }) as unknown as Schema.Codec<EventsListByBillingAccountOutput>;
 
 // The operation
 /**
@@ -706,6 +915,12 @@ export const EventsListByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EventsListByBillingProfileInput {
+  billingAccountId: string;
+  billingProfileId: string;
+  startDate: string;
+  endDate: string;
+}
 export const EventsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -718,11 +933,25 @@ export const EventsListByBillingProfileInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/events",
       apiVersion: "2024-08-01",
     }),
-  );
-export type EventsListByBillingProfileInput =
-  typeof EventsListByBillingProfileInput.Type;
+  ) as unknown as Schema.Codec<EventsListByBillingProfileInput>;
 
 // Output Schema
+export interface EventsListByBillingProfileOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EventsListByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -759,9 +988,7 @@ export const EventsListByBillingProfileOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventsListByBillingProfileOutput =
-  typeof EventsListByBillingProfileOutput.Type;
+  }) as unknown as Schema.Codec<EventsListByBillingProfileOutput>;
 
 // The operation
 /**
@@ -780,6 +1007,10 @@ export const EventsListByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LotsListByBillingAccountInput {
+  billingAccountId: string;
+  $filter?: string;
+}
 export const LotsListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -790,11 +1021,25 @@ export const LotsListByBillingAccountInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/lots",
       apiVersion: "2024-08-01",
     }),
-  );
-export type LotsListByBillingAccountInput =
-  typeof LotsListByBillingAccountInput.Type;
+  ) as unknown as Schema.Codec<LotsListByBillingAccountInput>;
 
 // Output Schema
+export interface LotsListByBillingAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LotsListByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -831,9 +1076,7 @@ export const LotsListByBillingAccountOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LotsListByBillingAccountOutput =
-  typeof LotsListByBillingAccountOutput.Type;
+  }) as unknown as Schema.Codec<LotsListByBillingAccountOutput>;
 
 // The operation
 /**
@@ -850,6 +1093,10 @@ export const LotsListByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LotsListByBillingProfileInput {
+  billingAccountId: string;
+  billingProfileId: string;
+}
 export const LotsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -860,11 +1107,25 @@ export const LotsListByBillingProfileInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/lots",
       apiVersion: "2024-08-01",
     }),
-  );
-export type LotsListByBillingProfileInput =
-  typeof LotsListByBillingProfileInput.Type;
+  ) as unknown as Schema.Codec<LotsListByBillingProfileInput>;
 
 // Output Schema
+export interface LotsListByBillingProfileOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LotsListByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -901,9 +1162,7 @@ export const LotsListByBillingProfileOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LotsListByBillingProfileOutput =
-  typeof LotsListByBillingProfileOutput.Type;
+  }) as unknown as Schema.Codec<LotsListByBillingProfileOutput>;
 
 // The operation
 /**
@@ -920,6 +1179,11 @@ export const LotsListByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LotsListByCustomerInput {
+  billingAccountId: string;
+  customerId: string;
+  $filter?: string;
+}
 export const LotsListByCustomerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -931,10 +1195,25 @@ export const LotsListByCustomerInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}/providers/Microsoft.Consumption/lots",
       apiVersion: "2024-08-01",
     }),
-  );
-export type LotsListByCustomerInput = typeof LotsListByCustomerInput.Type;
+  ) as unknown as Schema.Codec<LotsListByCustomerInput>;
 
 // Output Schema
+export interface LotsListByCustomerOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LotsListByCustomerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -971,8 +1250,7 @@ export const LotsListByCustomerOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LotsListByCustomerOutput = typeof LotsListByCustomerOutput.Type;
+  }) as unknown as Schema.Codec<LotsListByCustomerOutput>;
 
 // The operation
 /**
@@ -988,6 +1266,12 @@ export const LotsListByCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LotsListByCustomerOutput,
 }));
 // Input Schema
+export interface MarketplacesListInput {
+  scope: string;
+  $filter?: string;
+  $top?: number;
+  $skiptoken?: string;
+}
 export const MarketplacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
@@ -999,10 +1283,25 @@ export const MarketplacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Consumption/marketplaces",
     apiVersion: "2024-08-01",
   }),
-);
-export type MarketplacesListInput = typeof MarketplacesListInput.Type;
+) as unknown as Schema.Codec<MarketplacesListInput>;
 
 // Output Schema
+export interface MarketplacesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MarketplacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -1040,8 +1339,7 @@ export const MarketplacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type MarketplacesListOutput = typeof MarketplacesListOutput.Type;
+) as unknown as Schema.Codec<MarketplacesListOutput>;
 
 // The operation
 /**
@@ -1058,6 +1356,7 @@ export const MarketplacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MarketplacesListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1066,10 +1365,22 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Consumption/operations",
     apiVersion: "2024-08-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1088,8 +1399,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1102,6 +1412,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PriceSheetDownloadByBillingAccountPeriodInput {
+  billingAccountId: string;
+  billingPeriodName: string;
+}
 export const PriceSheetDownloadByBillingAccountPeriodInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -1112,11 +1426,13 @@ export const PriceSheetDownloadByBillingAccountPeriodInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
       apiVersion: "2024-08-01",
     }),
-  );
-export type PriceSheetDownloadByBillingAccountPeriodInput =
-  typeof PriceSheetDownloadByBillingAccountPeriodInput.Type;
+  ) as unknown as Schema.Codec<PriceSheetDownloadByBillingAccountPeriodInput>;
 
 // Output Schema
+export interface PriceSheetDownloadByBillingAccountPeriodOutput {
+  status?: "Running" | "Completed" | "Failed";
+  properties?: { downloadUrl?: string; validTill?: string };
+}
 export const PriceSheetDownloadByBillingAccountPeriodOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(
@@ -1128,9 +1444,7 @@ export const PriceSheetDownloadByBillingAccountPeriodOutput =
         validTill: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PriceSheetDownloadByBillingAccountPeriodOutput =
-  typeof PriceSheetDownloadByBillingAccountPeriodOutput.Type;
+  }) as unknown as Schema.Codec<PriceSheetDownloadByBillingAccountPeriodOutput>;
 
 // The operation
 /**
@@ -1146,6 +1460,12 @@ export const PriceSheetDownloadByBillingAccountPeriod =
     outputSchema: PriceSheetDownloadByBillingAccountPeriodOutput,
   }));
 // Input Schema
+export interface PriceSheetGetInput {
+  subscriptionId: string;
+  $expand?: string;
+  $skiptoken?: string;
+  $top?: number;
+}
 export const PriceSheetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
@@ -1157,10 +1477,22 @@ export const PriceSheetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default",
     apiVersion: "2024-08-01",
   }),
-);
-export type PriceSheetGetInput = typeof PriceSheetGetInput.Type;
+) as unknown as Schema.Codec<PriceSheetGetInput>;
 
 // Output Schema
+export interface PriceSheetGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PriceSheetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1179,8 +1511,7 @@ export const PriceSheetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PriceSheetGetOutput = typeof PriceSheetGetOutput.Type;
+}) as unknown as Schema.Codec<PriceSheetGetOutput>;
 
 // The operation
 /**
@@ -1197,6 +1528,13 @@ export const PriceSheetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PriceSheetGetOutput,
 }));
 // Input Schema
+export interface PriceSheetGetByBillingPeriodInput {
+  subscriptionId: string;
+  billingPeriodName: string;
+  $expand?: string;
+  $skiptoken?: string;
+  $top?: number;
+}
 export const PriceSheetGetByBillingPeriodInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1210,11 +1548,22 @@ export const PriceSheetGetByBillingPeriodInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default",
       apiVersion: "2024-08-01",
     }),
-  );
-export type PriceSheetGetByBillingPeriodInput =
-  typeof PriceSheetGetByBillingPeriodInput.Type;
+  ) as unknown as Schema.Codec<PriceSheetGetByBillingPeriodInput>;
 
 // Output Schema
+export interface PriceSheetGetByBillingPeriodOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PriceSheetGetByBillingPeriodOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1234,9 +1583,7 @@ export const PriceSheetGetByBillingPeriodOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PriceSheetGetByBillingPeriodOutput =
-  typeof PriceSheetGetByBillingPeriodOutput.Type;
+  }) as unknown as Schema.Codec<PriceSheetGetByBillingPeriodOutput>;
 
 // The operation
 /**
@@ -1255,6 +1602,15 @@ export const PriceSheetGetByBillingPeriod =
     outputSchema: PriceSheetGetByBillingPeriodOutput,
   }));
 // Input Schema
+export interface ReservationRecommendationDetailsGetInput {
+  resourceScope: string;
+  scope: "Single" | "Shared";
+  region: string;
+  term: "P1M" | "P1Y" | "P3Y";
+  lookBackPeriod: "Last7Days" | "Last30Days" | "Last60Days";
+  product: string;
+  $filter?: string;
+}
 export const ReservationRecommendationDetailsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
@@ -1270,11 +1626,22 @@ export const ReservationRecommendationDetailsGetInput =
       path: "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendationDetails",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationRecommendationDetailsGetInput =
-  typeof ReservationRecommendationDetailsGetInput.Type;
+  ) as unknown as Schema.Codec<ReservationRecommendationDetailsGetInput>;
 
 // Output Schema
+export interface ReservationRecommendationDetailsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReservationRecommendationDetailsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1294,9 +1661,7 @@ export const ReservationRecommendationDetailsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReservationRecommendationDetailsGetOutput =
-  typeof ReservationRecommendationDetailsGetOutput.Type;
+  }) as unknown as Schema.Codec<ReservationRecommendationDetailsGetOutput>;
 
 // The operation
 /**
@@ -1317,6 +1682,10 @@ export const ReservationRecommendationDetailsGet =
     outputSchema: ReservationRecommendationDetailsGetOutput,
   }));
 // Input Schema
+export interface ReservationRecommendationsListInput {
+  resourceScope: string;
+  $filter?: string;
+}
 export const ReservationRecommendationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
@@ -1327,11 +1696,31 @@ export const ReservationRecommendationsListInput =
       path: "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendations",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationRecommendationsListInput =
-  typeof ReservationRecommendationsListInput.Type;
+  ) as unknown as Schema.Codec<ReservationRecommendationsListInput>;
 
 // Output Schema
+export interface ReservationRecommendationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    location?: string;
+    sku?: string;
+    etag?: string;
+    tags?: Record<string, string>;
+    kind: "legacy" | "modern";
+  }[];
+  nextLink?: string;
+  previousLink?: string;
+}
 export const ReservationRecommendationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1374,9 +1763,7 @@ export const ReservationRecommendationsListOutput =
     ),
     nextLink: Schema.optional(Schema.String),
     previousLink: Schema.optional(Schema.String),
-  });
-export type ReservationRecommendationsListOutput =
-  typeof ReservationRecommendationsListOutput.Type;
+  }) as unknown as Schema.Codec<ReservationRecommendationsListOutput>;
 
 // The operation
 /**
@@ -1392,6 +1779,14 @@ export const ReservationRecommendationsList =
     outputSchema: ReservationRecommendationsListOutput,
   }));
 // Input Schema
+export interface ReservationsDetailsListInput {
+  resourceScope: string;
+  startDate?: string;
+  endDate?: string;
+  $filter?: string;
+  reservationId?: string;
+  reservationOrderId?: string;
+}
 export const ReservationsDetailsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
@@ -1406,11 +1801,25 @@ export const ReservationsDetailsListInput =
       path: "/{resourceScope}/providers/Microsoft.Consumption/reservationDetails",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationsDetailsListInput =
-  typeof ReservationsDetailsListInput.Type;
+  ) as unknown as Schema.Codec<ReservationsDetailsListInput>;
 
 // Output Schema
+export interface ReservationsDetailsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationsDetailsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1447,9 +1856,7 @@ export const ReservationsDetailsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationsDetailsListOutput =
-  typeof ReservationsDetailsListOutput.Type;
+  }) as unknown as Schema.Codec<ReservationsDetailsListOutput>;
 
 // The operation
 /**
@@ -1470,6 +1877,10 @@ export const ReservationsDetailsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationsDetailsListByReservationOrderInput {
+  reservationOrderId: string;
+  $filter: string;
+}
 export const ReservationsDetailsListByReservationOrderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1480,11 +1891,25 @@ export const ReservationsDetailsListByReservationOrderInput =
       path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationsDetailsListByReservationOrderInput =
-  typeof ReservationsDetailsListByReservationOrderInput.Type;
+  ) as unknown as Schema.Codec<ReservationsDetailsListByReservationOrderInput>;
 
 // Output Schema
+export interface ReservationsDetailsListByReservationOrderOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationsDetailsListByReservationOrderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1521,9 +1946,7 @@ export const ReservationsDetailsListByReservationOrderOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationsDetailsListByReservationOrderOutput =
-  typeof ReservationsDetailsListByReservationOrderOutput.Type;
+  }) as unknown as Schema.Codec<ReservationsDetailsListByReservationOrderOutput>;
 
 // The operation
 /**
@@ -1539,6 +1962,11 @@ export const ReservationsDetailsListByReservationOrder =
     outputSchema: ReservationsDetailsListByReservationOrderOutput,
   }));
 // Input Schema
+export interface ReservationsDetailsListByReservationOrderAndReservationInput {
+  reservationOrderId: string;
+  reservationId: string;
+  $filter: string;
+}
 export const ReservationsDetailsListByReservationOrderAndReservationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1550,11 +1978,25 @@ export const ReservationsDetailsListByReservationOrderAndReservationInput =
       path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationsDetailsListByReservationOrderAndReservationInput =
-  typeof ReservationsDetailsListByReservationOrderAndReservationInput.Type;
+  ) as unknown as Schema.Codec<ReservationsDetailsListByReservationOrderAndReservationInput>;
 
 // Output Schema
+export interface ReservationsDetailsListByReservationOrderAndReservationOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationsDetailsListByReservationOrderAndReservationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1591,9 +2033,7 @@ export const ReservationsDetailsListByReservationOrderAndReservationOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationsDetailsListByReservationOrderAndReservationOutput =
-  typeof ReservationsDetailsListByReservationOrderAndReservationOutput.Type;
+  }) as unknown as Schema.Codec<ReservationsDetailsListByReservationOrderAndReservationOutput>;
 
 // The operation
 /**
@@ -1610,6 +2050,15 @@ export const ReservationsDetailsListByReservationOrderAndReservation =
     outputSchema: ReservationsDetailsListByReservationOrderAndReservationOutput,
   }));
 // Input Schema
+export interface ReservationsSummariesListInput {
+  resourceScope: string;
+  grain: "daily" | "monthly";
+  startDate?: string;
+  endDate?: string;
+  $filter?: string;
+  reservationId?: string;
+  reservationOrderId?: string;
+}
 export const ReservationsSummariesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
@@ -1625,11 +2074,25 @@ export const ReservationsSummariesListInput =
       path: "/{resourceScope}/providers/Microsoft.Consumption/reservationSummaries",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationsSummariesListInput =
-  typeof ReservationsSummariesListInput.Type;
+  ) as unknown as Schema.Codec<ReservationsSummariesListInput>;
 
 // Output Schema
+export interface ReservationsSummariesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationsSummariesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1666,9 +2129,7 @@ export const ReservationsSummariesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationsSummariesListOutput =
-  typeof ReservationsSummariesListOutput.Type;
+  }) as unknown as Schema.Codec<ReservationsSummariesListOutput>;
 
 // The operation
 /**
@@ -1690,6 +2151,11 @@ export const ReservationsSummariesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationsSummariesListByReservationOrderInput {
+  reservationOrderId: string;
+  grain: "daily" | "monthly";
+  $filter?: string;
+}
 export const ReservationsSummariesListByReservationOrderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1701,11 +2167,25 @@ export const ReservationsSummariesListByReservationOrderInput =
       path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationSummaries",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationsSummariesListByReservationOrderInput =
-  typeof ReservationsSummariesListByReservationOrderInput.Type;
+  ) as unknown as Schema.Codec<ReservationsSummariesListByReservationOrderInput>;
 
 // Output Schema
+export interface ReservationsSummariesListByReservationOrderOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationsSummariesListByReservationOrderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1742,9 +2222,7 @@ export const ReservationsSummariesListByReservationOrderOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationsSummariesListByReservationOrderOutput =
-  typeof ReservationsSummariesListByReservationOrderOutput.Type;
+  }) as unknown as Schema.Codec<ReservationsSummariesListByReservationOrderOutput>;
 
 // The operation
 /**
@@ -1761,6 +2239,12 @@ export const ReservationsSummariesListByReservationOrder =
     outputSchema: ReservationsSummariesListByReservationOrderOutput,
   }));
 // Input Schema
+export interface ReservationsSummariesListByReservationOrderAndReservationInput {
+  reservationOrderId: string;
+  reservationId: string;
+  grain: "daily" | "monthly";
+  $filter?: string;
+}
 export const ReservationsSummariesListByReservationOrderAndReservationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1773,11 +2257,25 @@ export const ReservationsSummariesListByReservationOrderAndReservationInput =
       path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationSummaries",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationsSummariesListByReservationOrderAndReservationInput =
-  typeof ReservationsSummariesListByReservationOrderAndReservationInput.Type;
+  ) as unknown as Schema.Codec<ReservationsSummariesListByReservationOrderAndReservationInput>;
 
 // Output Schema
+export interface ReservationsSummariesListByReservationOrderAndReservationOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationsSummariesListByReservationOrderAndReservationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1814,9 +2312,7 @@ export const ReservationsSummariesListByReservationOrderAndReservationOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationsSummariesListByReservationOrderAndReservationOutput =
-  typeof ReservationsSummariesListByReservationOrderAndReservationOutput.Type;
+  }) as unknown as Schema.Codec<ReservationsSummariesListByReservationOrderAndReservationOutput>;
 
 // The operation
 /**
@@ -1835,6 +2331,12 @@ export const ReservationsSummariesListByReservationOrderAndReservation =
       ReservationsSummariesListByReservationOrderAndReservationOutput,
   }));
 // Input Schema
+export interface ReservationTransactionsListInput {
+  billingAccountId: string;
+  $filter?: string;
+  useMarkupIfPartner?: boolean;
+  previewMarkupPercentage?: number;
+}
 export const ReservationTransactionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -1847,11 +2349,25 @@ export const ReservationTransactionsListInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationTransactionsListInput =
-  typeof ReservationTransactionsListInput.Type;
+  ) as unknown as Schema.Codec<ReservationTransactionsListInput>;
 
 // Output Schema
+export interface ReservationTransactionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationTransactionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1888,9 +2404,7 @@ export const ReservationTransactionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationTransactionsListOutput =
-  typeof ReservationTransactionsListOutput.Type;
+  }) as unknown as Schema.Codec<ReservationTransactionsListOutput>;
 
 // The operation
 /**
@@ -1909,6 +2423,11 @@ export const ReservationTransactionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationTransactionsListByBillingProfileInput {
+  billingAccountId: string;
+  billingProfileId: string;
+  $filter?: string;
+}
 export const ReservationTransactionsListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
@@ -1920,11 +2439,25 @@ export const ReservationTransactionsListByBillingProfileInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/reservationTransactions",
       apiVersion: "2024-08-01",
     }),
-  );
-export type ReservationTransactionsListByBillingProfileInput =
-  typeof ReservationTransactionsListByBillingProfileInput.Type;
+  ) as unknown as Schema.Codec<ReservationTransactionsListByBillingProfileInput>;
 
 // Output Schema
+export interface ReservationTransactionsListByBillingProfileOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationTransactionsListByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1961,9 +2494,7 @@ export const ReservationTransactionsListByBillingProfileOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationTransactionsListByBillingProfileOutput =
-  typeof ReservationTransactionsListByBillingProfileOutput.Type;
+  }) as unknown as Schema.Codec<ReservationTransactionsListByBillingProfileOutput>;
 
 // The operation
 /**
@@ -1980,6 +2511,9 @@ export const ReservationTransactionsListByBillingProfile =
     outputSchema: ReservationTransactionsListByBillingProfileOutput,
   }));
 // Input Schema
+export interface TagsGetInput {
+  scope: string;
+}
 export const TagsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1988,10 +2522,22 @@ export const TagsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Consumption/tags",
     apiVersion: "2024-08-01",
   }),
-);
-export type TagsGetInput = typeof TagsGetInput.Type;
+) as unknown as Schema.Codec<TagsGetInput>;
 
 // Output Schema
+export interface TagsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TagsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2010,8 +2556,7 @@ export const TagsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TagsGetOutput = typeof TagsGetOutput.Type;
+}) as unknown as Schema.Codec<TagsGetOutput>;
 
 // The operation
 /**
@@ -2025,6 +2570,14 @@ export const TagsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TagsGetOutput,
 }));
 // Input Schema
+export interface UsageDetailsListInput {
+  scope: string;
+  $expand?: string;
+  $filter?: string;
+  $skiptoken?: string;
+  $top?: number;
+  metric?: "actualcost" | "amortizedcost" | "usage";
+}
 export const UsageDetailsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
@@ -2040,10 +2593,25 @@ export const UsageDetailsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Consumption/usageDetails",
     apiVersion: "2024-08-01",
   }),
-);
-export type UsageDetailsListInput = typeof UsageDetailsListInput.Type;
+) as unknown as Schema.Codec<UsageDetailsListInput>;
 
 // Output Schema
+export interface UsageDetailsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UsageDetailsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -2081,8 +2649,7 @@ export const UsageDetailsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type UsageDetailsListOutput = typeof UsageDetailsListOutput.Type;
+) as unknown as Schema.Codec<UsageDetailsListOutput>;
 
 // The operation
 /**

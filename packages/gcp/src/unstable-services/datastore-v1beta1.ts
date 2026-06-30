@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -32,7 +32,7 @@ export interface GoogleDatastoreAdminV1MigrationStateEvent {
     | (string & {});
 }
 
-export const GoogleDatastoreAdminV1MigrationStateEvent: Schema.Schema<GoogleDatastoreAdminV1MigrationStateEvent> =
+export const GoogleDatastoreAdminV1MigrationStateEvent: Schema.Codec<GoogleDatastoreAdminV1MigrationStateEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDatastoreAdminV1MigrationStateEvent" });
@@ -44,7 +44,7 @@ export interface GoogleDatastoreAdminV1beta1Progress {
   workEstimated?: string;
 }
 
-export const GoogleDatastoreAdminV1beta1Progress: Schema.Schema<GoogleDatastoreAdminV1beta1Progress> =
+export const GoogleDatastoreAdminV1beta1Progress: Schema.Codec<GoogleDatastoreAdminV1beta1Progress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workCompleted: Schema.optional(Schema.String),
     workEstimated: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface GoogleDatastoreAdminV1beta1EntityFilter {
   namespaceIds?: ReadonlyArray<string>;
 }
 
-export const GoogleDatastoreAdminV1beta1EntityFilter: Schema.Schema<GoogleDatastoreAdminV1beta1EntityFilter> =
+export const GoogleDatastoreAdminV1beta1EntityFilter: Schema.Codec<GoogleDatastoreAdminV1beta1EntityFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kinds: Schema.optional(Schema.Array(Schema.String)),
     namespaceIds: Schema.optional(Schema.Array(Schema.String)),
@@ -72,7 +72,7 @@ export interface GoogleDatastoreAdminV1beta1ExportEntitiesRequest {
   outputUrlPrefix?: string;
 }
 
-export const GoogleDatastoreAdminV1beta1ExportEntitiesRequest: Schema.Schema<GoogleDatastoreAdminV1beta1ExportEntitiesRequest> =
+export const GoogleDatastoreAdminV1beta1ExportEntitiesRequest: Schema.Codec<GoogleDatastoreAdminV1beta1ExportEntitiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     entityFilter: Schema.optional(GoogleDatastoreAdminV1beta1EntityFilter),
@@ -86,7 +86,7 @@ export interface GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
   outputUrl?: string;
 }
 
-export const GoogleDatastoreAdminV1beta1ExportEntitiesResponse: Schema.Schema<GoogleDatastoreAdminV1beta1ExportEntitiesResponse> =
+export const GoogleDatastoreAdminV1beta1ExportEntitiesResponse: Schema.Codec<GoogleDatastoreAdminV1beta1ExportEntitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -100,7 +100,7 @@ export interface GoogleDatastoreAdminV1Progress {
   workEstimated?: string;
 }
 
-export const GoogleDatastoreAdminV1Progress: Schema.Schema<GoogleDatastoreAdminV1Progress> =
+export const GoogleDatastoreAdminV1Progress: Schema.Codec<GoogleDatastoreAdminV1Progress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workCompleted: Schema.optional(Schema.String),
     workEstimated: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface GoogleDatastoreAdminV1beta1CommonMetadata {
     | (string & {});
 }
 
-export const GoogleDatastoreAdminV1beta1CommonMetadata: Schema.Schema<GoogleDatastoreAdminV1beta1CommonMetadata> =
+export const GoogleDatastoreAdminV1beta1CommonMetadata: Schema.Codec<GoogleDatastoreAdminV1beta1CommonMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -169,7 +169,7 @@ export interface GoogleDatastoreAdminV1CommonMetadata {
     | (string & {});
 }
 
-export const GoogleDatastoreAdminV1CommonMetadata: Schema.Schema<GoogleDatastoreAdminV1CommonMetadata> =
+export const GoogleDatastoreAdminV1CommonMetadata: Schema.Codec<GoogleDatastoreAdminV1CommonMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -187,7 +187,7 @@ export interface GoogleDatastoreAdminV1IndexOperationMetadata {
   indexId?: string;
 }
 
-export const GoogleDatastoreAdminV1IndexOperationMetadata: Schema.Schema<GoogleDatastoreAdminV1IndexOperationMetadata> =
+export const GoogleDatastoreAdminV1IndexOperationMetadata: Schema.Codec<GoogleDatastoreAdminV1IndexOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     common: Schema.optional(GoogleDatastoreAdminV1CommonMetadata),
     progressEntities: Schema.optional(GoogleDatastoreAdminV1Progress),
@@ -203,7 +203,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -225,7 +225,7 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -239,7 +239,7 @@ export interface GoogleDatastoreAdminV1ExportEntitiesResponse {
   outputUrl?: string;
 }
 
-export const GoogleDatastoreAdminV1ExportEntitiesResponse: Schema.Schema<GoogleDatastoreAdminV1ExportEntitiesResponse> =
+export const GoogleDatastoreAdminV1ExportEntitiesResponse: Schema.Codec<GoogleDatastoreAdminV1ExportEntitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDatastoreAdminV1ExportEntitiesResponse" });
@@ -251,7 +251,7 @@ export interface GoogleDatastoreAdminV1EntityFilter {
   kinds?: ReadonlyArray<string>;
 }
 
-export const GoogleDatastoreAdminV1EntityFilter: Schema.Schema<GoogleDatastoreAdminV1EntityFilter> =
+export const GoogleDatastoreAdminV1EntityFilter: Schema.Codec<GoogleDatastoreAdminV1EntityFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaceIds: Schema.optional(Schema.Array(Schema.String)),
     kinds: Schema.optional(Schema.Array(Schema.String)),
@@ -270,7 +270,7 @@ export interface GoogleDatastoreAdminV1ImportEntitiesMetadata {
   progressBytes?: GoogleDatastoreAdminV1Progress;
 }
 
-export const GoogleDatastoreAdminV1ImportEntitiesMetadata: Schema.Schema<GoogleDatastoreAdminV1ImportEntitiesMetadata> =
+export const GoogleDatastoreAdminV1ImportEntitiesMetadata: Schema.Codec<GoogleDatastoreAdminV1ImportEntitiesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     common: Schema.optional(GoogleDatastoreAdminV1CommonMetadata),
     inputUrl: Schema.optional(Schema.String),
@@ -289,7 +289,7 @@ export interface GoogleDatastoreAdminV1PrepareStepDetails {
     | (string & {});
 }
 
-export const GoogleDatastoreAdminV1PrepareStepDetails: Schema.Schema<GoogleDatastoreAdminV1PrepareStepDetails> =
+export const GoogleDatastoreAdminV1PrepareStepDetails: Schema.Codec<GoogleDatastoreAdminV1PrepareStepDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     concurrencyMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDatastoreAdminV1PrepareStepDetails" });
@@ -304,7 +304,7 @@ export interface GoogleDatastoreAdminV1RedirectWritesStepDetails {
     | (string & {});
 }
 
-export const GoogleDatastoreAdminV1RedirectWritesStepDetails: Schema.Schema<GoogleDatastoreAdminV1RedirectWritesStepDetails> =
+export const GoogleDatastoreAdminV1RedirectWritesStepDetails: Schema.Codec<GoogleDatastoreAdminV1RedirectWritesStepDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     concurrencyMode: Schema.optional(Schema.String),
   }).annotate({
@@ -329,7 +329,7 @@ export interface GoogleDatastoreAdminV1MigrationProgressEvent {
   redirectWritesStepDetails?: GoogleDatastoreAdminV1RedirectWritesStepDetails;
 }
 
-export const GoogleDatastoreAdminV1MigrationProgressEvent: Schema.Schema<GoogleDatastoreAdminV1MigrationProgressEvent> =
+export const GoogleDatastoreAdminV1MigrationProgressEvent: Schema.Codec<GoogleDatastoreAdminV1MigrationProgressEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     prepareStepDetails: Schema.optional(
@@ -353,7 +353,7 @@ export interface GoogleDatastoreAdminV1ExportEntitiesMetadata {
   entityFilter?: GoogleDatastoreAdminV1EntityFilter;
 }
 
-export const GoogleDatastoreAdminV1ExportEntitiesMetadata: Schema.Schema<GoogleDatastoreAdminV1ExportEntitiesMetadata> =
+export const GoogleDatastoreAdminV1ExportEntitiesMetadata: Schema.Codec<GoogleDatastoreAdminV1ExportEntitiesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputUrlPrefix: Schema.optional(Schema.String),
     common: Schema.optional(GoogleDatastoreAdminV1CommonMetadata),
@@ -371,7 +371,7 @@ export interface GoogleDatastoreAdminV1beta1ImportEntitiesRequest {
   inputUrl?: string;
 }
 
-export const GoogleDatastoreAdminV1beta1ImportEntitiesRequest: Schema.Schema<GoogleDatastoreAdminV1beta1ImportEntitiesRequest> =
+export const GoogleDatastoreAdminV1beta1ImportEntitiesRequest: Schema.Codec<GoogleDatastoreAdminV1beta1ImportEntitiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     entityFilter: Schema.optional(GoogleDatastoreAdminV1beta1EntityFilter),
@@ -393,7 +393,7 @@ export interface GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
   common?: GoogleDatastoreAdminV1beta1CommonMetadata;
 }
 
-export const GoogleDatastoreAdminV1beta1ExportEntitiesMetadata: Schema.Schema<GoogleDatastoreAdminV1beta1ExportEntitiesMetadata> =
+export const GoogleDatastoreAdminV1beta1ExportEntitiesMetadata: Schema.Codec<GoogleDatastoreAdminV1beta1ExportEntitiesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputUrlPrefix: Schema.optional(Schema.String),
     progressBytes: Schema.optional(GoogleDatastoreAdminV1beta1Progress),
@@ -425,7 +425,7 @@ export interface GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata {
     | (string & {});
 }
 
-export const GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata: Schema.Schema<GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata> =
+export const GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata: Schema.Codec<GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     migrationState: Schema.optional(Schema.String),
     migrationStep: Schema.optional(Schema.String),
@@ -446,7 +446,7 @@ export interface GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
   entityFilter?: GoogleDatastoreAdminV1beta1EntityFilter;
 }
 
-export const GoogleDatastoreAdminV1beta1ImportEntitiesMetadata: Schema.Schema<GoogleDatastoreAdminV1beta1ImportEntitiesMetadata> =
+export const GoogleDatastoreAdminV1beta1ImportEntitiesMetadata: Schema.Codec<GoogleDatastoreAdminV1beta1ImportEntitiesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     common: Schema.optional(GoogleDatastoreAdminV1beta1CommonMetadata),
     inputUrl: Schema.optional(Schema.String),
@@ -530,7 +530,7 @@ export const ExportProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ExportProjectsRequest>;
+) as unknown as Schema.Codec<ExportProjectsRequest>;
 
 export type ExportProjectsResponse = GoogleLongrunningOperation;
 export const ExportProjectsResponse =
@@ -574,7 +574,7 @@ export const ImportProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ImportProjectsRequest>;
+) as unknown as Schema.Codec<ImportProjectsRequest>;
 
 export type ImportProjectsResponse = GoogleLongrunningOperation;
 export const ImportProjectsResponse =

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface HealthIssuesRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const HealthIssuesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,24 @@ export const HealthIssuesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/health_issues/{id}/",
     }),
-  );
-export type HealthIssuesRetrieveInput = typeof HealthIssuesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HealthIssuesRetrieveInput>;
 
 // Output Schema
+export interface HealthIssuesRetrieveOutput {
+  id: string;
+  kind: string;
+  severity: "critical" | "warning" | "info";
+  status: "active" | "resolved";
+  dismissed?: boolean;
+  payload: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+  resolved_at: string | null;
+  title: string;
+  summary: string;
+  link: string;
+  remediation: { human: string; agent: string } | null;
+}
 export const HealthIssuesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -30,9 +48,13 @@ export const HealthIssuesRetrieveOutput =
     title: Schema.String,
     summary: Schema.String,
     link: Schema.String,
-    remediation: Schema.Unknown,
-  });
-export type HealthIssuesRetrieveOutput = typeof HealthIssuesRetrieveOutput.Type;
+    remediation: Schema.NullOr(
+      Schema.Struct({
+        human: Schema.String,
+        agent: Schema.String,
+      }),
+    ),
+  }) as unknown as Schema.Codec<HealthIssuesRetrieveOutput>;
 
 // The operation
 /**

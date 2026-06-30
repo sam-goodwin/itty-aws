@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SavedRegenerateCreateInput {
+  project_id: string;
+  short_id: string;
+}
 export const SavedRegenerateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,47 @@ export const SavedRegenerateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/saved/{short_id}/regenerate/",
     }),
-  );
-export type SavedRegenerateCreateInput = typeof SavedRegenerateCreateInput.Type;
+  ) as unknown as Schema.Codec<SavedRegenerateCreateInput>;
 
 // Output Schema
+export interface SavedRegenerateCreateOutput {
+  id?: string;
+  short_id?: string;
+  name?: string | null;
+  url?: string;
+  data_url?: string | null;
+  target_widths?: unknown;
+  type?: "screenshot" | "iframe" | "recording";
+  status?: "processing" | "completed" | "failed";
+  has_content?: boolean;
+  snapshots?: { width: number; has_content: boolean }[];
+  deleted?: boolean;
+  block_consent_modals?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  exception?: string | null;
+}
 export const SavedRegenerateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -55,16 +96,30 @@ export const SavedRegenerateCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     exception: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type SavedRegenerateCreateOutput =
-  typeof SavedRegenerateCreateOutput.Type;
+  }) as unknown as Schema.Codec<SavedRegenerateCreateOutput>;
 
 // The operation
 /**

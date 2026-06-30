@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingSettingsRetrieveSettingsRetrieveInput {
+  project_id: string;
+}
 export const ErrorTrackingSettingsRetrieveSettingsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,15 @@ export const ErrorTrackingSettingsRetrieveSettingsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/settings/retrieve_settings/",
     }),
-  );
-export type ErrorTrackingSettingsRetrieveSettingsRetrieveInput =
-  typeof ErrorTrackingSettingsRetrieveSettingsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSettingsRetrieveSettingsRetrieveInput>;
 
 // Output Schema
+export interface ErrorTrackingSettingsRetrieveSettingsRetrieveOutput {
+  project_rate_limit_value?: number | null;
+  project_rate_limit_bucket_size_minutes?: number | null;
+  per_issue_rate_limit_value?: number | null;
+  per_issue_rate_limit_bucket_size_minutes?: number | null;
+}
 export const ErrorTrackingSettingsRetrieveSettingsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_rate_limit_value: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -26,9 +33,7 @@ export const ErrorTrackingSettingsRetrieveSettingsRetrieveOutput =
     per_issue_rate_limit_bucket_size_minutes: Schema.optional(
       Schema.NullOr(Schema.Number),
     ),
-  });
-export type ErrorTrackingSettingsRetrieveSettingsRetrieveOutput =
-  typeof ErrorTrackingSettingsRetrieveSettingsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSettingsRetrieveSettingsRetrieveOutput>;
 
 // The operation
 /**

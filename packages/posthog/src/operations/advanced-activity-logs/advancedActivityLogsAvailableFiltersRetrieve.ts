@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface AdvancedActivityLogsAvailableFiltersRetrieveInput {
+  project_id: string;
+}
 export const AdvancedActivityLogsAvailableFiltersRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,18 @@ export const AdvancedActivityLogsAvailableFiltersRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/advanced_activity_logs/available_filters/",
     }),
-  );
-export type AdvancedActivityLogsAvailableFiltersRetrieveInput =
-  typeof AdvancedActivityLogsAvailableFiltersRetrieveInput.Type;
+  ) as unknown as Schema.Codec<AdvancedActivityLogsAvailableFiltersRetrieveInput>;
 
 // Output Schema
+export interface AdvancedActivityLogsAvailableFiltersRetrieveOutput {
+  static_filters?: {
+    users?: Record<string, unknown>[];
+    scopes?: Record<string, unknown>[];
+    activities?: Record<string, unknown>[];
+    clients?: Record<string, unknown>[];
+  };
+  detail_fields?: Record<string, unknown>;
+}
 export const AdvancedActivityLogsAvailableFiltersRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     static_filters: Schema.optional(
@@ -38,9 +48,7 @@ export const AdvancedActivityLogsAvailableFiltersRetrieveOutput =
     detail_fields: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
-  });
-export type AdvancedActivityLogsAvailableFiltersRetrieveOutput =
-  typeof AdvancedActivityLogsAvailableFiltersRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<AdvancedActivityLogsAvailableFiltersRetrieveOutput>;
 
 // The operation
 /**

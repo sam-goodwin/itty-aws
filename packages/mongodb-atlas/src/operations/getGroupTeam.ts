@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupTeamInput {
+  groupId: string;
+  teamId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const GetGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/groups/{groupId}/teams/{teamId}",
   }),
-);
-export type GetGroupTeamInput = typeof GetGroupTeamInput.Type;
+) as unknown as Schema.Codec<GetGroupTeamInput>;
 
 // Output Schema
-export const GetGroupTeamOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupTeamOutput = typeof GetGroupTeamOutput.Type;
+export type GetGroupTeamOutput = void;
+export const GetGroupTeamOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupTeamOutput>;
 
 // The operation
 /**

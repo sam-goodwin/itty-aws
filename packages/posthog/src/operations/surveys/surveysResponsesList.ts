@@ -3,6 +3,18 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SurveysResponsesListInput {
+  id: string;
+  project_id: string;
+  exclude_archived?: boolean;
+  limit?: number;
+  offset?: number;
+  question_id?: string;
+  score_gte?: number;
+  score_lte?: number;
+  since?: string;
+  until?: string;
+}
 export const SurveysResponsesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,10 +32,37 @@ export const SurveysResponsesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/surveys/{id}/responses/",
     }),
-  );
-export type SurveysResponsesListInput = typeof SurveysResponsesListInput.Type;
+  ) as unknown as Schema.Codec<SurveysResponsesListInput>;
 
 // Output Schema
+export interface SurveysResponsesListOutput {
+  results: {
+    uuid: string;
+    distinct_id: string;
+    session_id: string | null;
+    submitted_at: string;
+    answers: {
+      question_id: string;
+      question_index: number;
+      question_text: string;
+      question_type: string;
+      answer: unknown;
+    }[];
+    extra: {
+      device_type?: string | null;
+      browser?: string | null;
+      os?: string | null;
+      geoip_country_code?: string | null;
+      geoip_country_name?: string | null;
+      geoip_city_name?: string | null;
+      current_url?: string | null;
+      iteration?: string | null;
+    };
+  }[];
+  has_more: boolean;
+  limit: number;
+  offset: number;
+}
 export const SurveysResponsesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -56,8 +95,7 @@ export const SurveysResponsesListOutput =
     has_more: Schema.Boolean,
     limit: Schema.Number,
     offset: Schema.Number,
-  });
-export type SurveysResponsesListOutput = typeof SurveysResponsesListOutput.Type;
+  }) as unknown as Schema.Codec<SurveysResponsesListOutput>;
 
 // The operation
 /**

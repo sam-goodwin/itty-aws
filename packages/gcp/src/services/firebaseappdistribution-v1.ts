@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
   emails?: ReadonlyArray<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse: Schema.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse> =
+export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse: Schema.Codec<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -41,7 +41,7 @@ export interface GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   createMissingTesters?: boolean;
 }
 
-export const GoogleFirebaseAppdistroV1BatchJoinGroupRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchJoinGroupRequest> =
+export const GoogleFirebaseAppdistroV1BatchJoinGroupRequest: Schema.Codec<GoogleFirebaseAppdistroV1BatchJoinGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
     createMissingTesters: Schema.optional(Schema.Boolean),
@@ -62,7 +62,7 @@ export interface GoogleFirebaseAppdistroV1FeedbackReport {
   text?: string;
 }
 
-export const GoogleFirebaseAppdistroV1FeedbackReport: Schema.Schema<GoogleFirebaseAppdistroV1FeedbackReport> =
+export const GoogleFirebaseAppdistroV1FeedbackReport: Schema.Codec<GoogleFirebaseAppdistroV1FeedbackReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     firebaseConsoleUri: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface GdataObjectId {
   generation?: string;
 }
 
-export const GdataObjectId: Schema.Schema<GdataObjectId> =
+export const GdataObjectId: Schema.Codec<GdataObjectId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     objectName: Schema.optional(Schema.String),
@@ -105,7 +105,7 @@ export interface GdataBlobstore2Info {
   uploadFragmentListCreationInfo?: string;
 }
 
-export const GdataBlobstore2Info: Schema.Schema<GdataBlobstore2Info> =
+export const GdataBlobstore2Info: Schema.Codec<GdataBlobstore2Info> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadReadHandle: Schema.optional(Schema.String),
     downloadExternalReadToken: Schema.optional(Schema.String),
@@ -147,7 +147,7 @@ export interface GdataCompositeMedia {
   inline?: string;
 }
 
-export const GdataCompositeMedia: Schema.Schema<GdataCompositeMedia> =
+export const GdataCompositeMedia: Schema.Codec<GdataCompositeMedia> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha1Hash: Schema.optional(Schema.String),
     referenceType: Schema.optional(Schema.String),
@@ -173,7 +173,7 @@ export interface GoogleFirebaseAppdistroV1Tester {
   lastActivityTime?: string;
 }
 
-export const GoogleFirebaseAppdistroV1Tester: Schema.Schema<GoogleFirebaseAppdistroV1Tester> =
+export const GoogleFirebaseAppdistroV1Tester: Schema.Codec<GoogleFirebaseAppdistroV1Tester> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -188,7 +188,7 @@ export interface GoogleFirebaseAppdistroV1ListTestersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ListTestersResponse: Schema.Schema<GoogleFirebaseAppdistroV1ListTestersResponse> =
+export const GoogleFirebaseAppdistroV1ListTestersResponse: Schema.Codec<GoogleFirebaseAppdistroV1ListTestersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testers: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Tester)),
     nextPageToken: Schema.optional(Schema.String),
@@ -199,7 +199,7 @@ export interface GdataDiffDownloadResponse {
   objectLocation?: GdataCompositeMedia;
 }
 
-export const GdataDiffDownloadResponse: Schema.Schema<GdataDiffDownloadResponse> =
+export const GdataDiffDownloadResponse: Schema.Codec<GdataDiffDownloadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectLocation: Schema.optional(GdataCompositeMedia),
   }).annotate({ identifier: "GdataDiffDownloadResponse" });
@@ -211,7 +211,7 @@ export interface GdataDownloadParameters {
   ignoreRange?: boolean;
 }
 
-export const GdataDownloadParameters: Schema.Schema<GdataDownloadParameters> =
+export const GdataDownloadParameters: Schema.Codec<GdataDownloadParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowGzipCompression: Schema.optional(Schema.Boolean),
     ignoreRange: Schema.optional(Schema.Boolean),
@@ -224,7 +224,7 @@ export interface GdataDiffUploadResponse {
   objectVersion?: string;
 }
 
-export const GdataDiffUploadResponse: Schema.Schema<GdataDiffUploadResponse> =
+export const GdataDiffUploadResponse: Schema.Codec<GdataDiffUploadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalObject: Schema.optional(GdataCompositeMedia),
     objectVersion: Schema.optional(Schema.String),
@@ -239,7 +239,7 @@ export interface GdataDiffUploadRequest {
   checksumsInfo?: GdataCompositeMedia;
 }
 
-export const GdataDiffUploadRequest: Schema.Schema<GdataDiffUploadRequest> =
+export const GdataDiffUploadRequest: Schema.Codec<GdataDiffUploadRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectInfo: Schema.optional(GdataCompositeMedia),
@@ -253,7 +253,7 @@ export interface GdataDiffVersionResponse {
   objectSizeBytes?: string;
 }
 
-export const GdataDiffVersionResponse: Schema.Schema<GdataDiffVersionResponse> =
+export const GdataDiffVersionResponse: Schema.Codec<GdataDiffVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectSizeBytes: Schema.optional(Schema.String),
@@ -272,7 +272,7 @@ export interface GdataDiffChecksumsResponse {
   checksumsLocation?: GdataCompositeMedia;
 }
 
-export const GdataDiffChecksumsResponse: Schema.Schema<GdataDiffChecksumsResponse> =
+export const GdataDiffChecksumsResponse: Schema.Codec<GdataDiffChecksumsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chunkSizeBytes: Schema.optional(Schema.String),
     objectVersion: Schema.optional(Schema.String),
@@ -298,7 +298,7 @@ export interface GdataContentTypeInfo {
   fromFileName?: string;
 }
 
-export const GdataContentTypeInfo: Schema.Schema<GdataContentTypeInfo> =
+export const GdataContentTypeInfo: Schema.Codec<GdataContentTypeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fromUrlPath: Schema.optional(Schema.String),
     fromFusionId: Schema.optional(Schema.String),
@@ -388,7 +388,7 @@ export interface GdataMedia {
   crc32cHash?: number;
 }
 
-export const GdataMedia: Schema.Schema<GdataMedia> =
+export const GdataMedia: Schema.Codec<GdataMedia> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     md5Hash: Schema.optional(Schema.String),
@@ -428,7 +428,7 @@ export interface GoogleFirebaseAppdistroV1BatchAddTestersRequest {
   emails?: ReadonlyArray<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchAddTestersRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchAddTestersRequest> =
+export const GoogleFirebaseAppdistroV1BatchAddTestersRequest: Schema.Codec<GoogleFirebaseAppdistroV1BatchAddTestersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -442,7 +442,7 @@ export interface GoogleFirebaseAppdistroV1DistributeReleaseRequest {
   groupAliases?: ReadonlyArray<string>;
 }
 
-export const GoogleFirebaseAppdistroV1DistributeReleaseRequest: Schema.Schema<GoogleFirebaseAppdistroV1DistributeReleaseRequest> =
+export const GoogleFirebaseAppdistroV1DistributeReleaseRequest: Schema.Codec<GoogleFirebaseAppdistroV1DistributeReleaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testerEmails: Schema.optional(Schema.Array(Schema.String)),
     groupAliases: Schema.optional(Schema.Array(Schema.String)),
@@ -455,7 +455,7 @@ export interface GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
   emails?: ReadonlyArray<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest> =
+export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest: Schema.Codec<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -467,7 +467,7 @@ export interface GoogleFirebaseAppdistroV1ReleaseNotes {
   text?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ReleaseNotes: Schema.Schema<GoogleFirebaseAppdistroV1ReleaseNotes> =
+export const GoogleFirebaseAppdistroV1ReleaseNotes: Schema.Codec<GoogleFirebaseAppdistroV1ReleaseNotes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1ReleaseNotes" });
@@ -495,7 +495,7 @@ export interface GoogleFirebaseAppdistroV1Release {
   displayVersion?: string;
 }
 
-export const GoogleFirebaseAppdistroV1Release: Schema.Schema<GoogleFirebaseAppdistroV1Release> =
+export const GoogleFirebaseAppdistroV1Release: Schema.Codec<GoogleFirebaseAppdistroV1Release> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1ReleaseNotes),
     updateTime: Schema.optional(Schema.String),
@@ -521,7 +521,7 @@ export interface GoogleFirebaseAppdistroV1UploadReleaseResponse {
   release?: GoogleFirebaseAppdistroV1Release;
 }
 
-export const GoogleFirebaseAppdistroV1UploadReleaseResponse: Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseResponse> =
+export const GoogleFirebaseAppdistroV1UploadReleaseResponse: Schema.Codec<GoogleFirebaseAppdistroV1UploadReleaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     release: Schema.optional(GoogleFirebaseAppdistroV1Release),
@@ -536,7 +536,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -558,7 +558,7 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(GoogleRpcStatus),
     done: Schema.optional(Schema.Boolean),
@@ -576,7 +576,7 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -588,7 +588,7 @@ export interface GoogleFirebaseAppdistroV1BatchAddTestersResponse {
   testers?: ReadonlyArray<GoogleFirebaseAppdistroV1Tester>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchAddTestersResponse: Schema.Schema<GoogleFirebaseAppdistroV1BatchAddTestersResponse> =
+export const GoogleFirebaseAppdistroV1BatchAddTestersResponse: Schema.Codec<GoogleFirebaseAppdistroV1BatchAddTestersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testers: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Tester)),
   }).annotate({
@@ -600,7 +600,7 @@ export interface GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
   names?: ReadonlyArray<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest> =
+export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest: Schema.Codec<GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -614,7 +614,7 @@ export interface GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse: Schema.Schema<GoogleFirebaseAppdistroV1ListFeedbackReportsResponse> =
+export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse: Schema.Codec<GoogleFirebaseAppdistroV1ListFeedbackReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feedbackReports: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1FeedbackReport),
@@ -629,7 +629,7 @@ export interface GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
   emails?: ReadonlyArray<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest> =
+export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest: Schema.Codec<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -645,7 +645,7 @@ export interface GoogleFirebaseAppdistroV1TestCertificate {
   hashSha256?: string;
 }
 
-export const GoogleFirebaseAppdistroV1TestCertificate: Schema.Schema<GoogleFirebaseAppdistroV1TestCertificate> =
+export const GoogleFirebaseAppdistroV1TestCertificate: Schema.Codec<GoogleFirebaseAppdistroV1TestCertificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hashSha1: Schema.optional(Schema.String),
     hashMd5: Schema.optional(Schema.String),
@@ -672,7 +672,7 @@ export interface GoogleFirebaseAppdistroV1AabInfo {
   name?: string;
 }
 
-export const GoogleFirebaseAppdistroV1AabInfo: Schema.Schema<GoogleFirebaseAppdistroV1AabInfo> =
+export const GoogleFirebaseAppdistroV1AabInfo: Schema.Codec<GoogleFirebaseAppdistroV1AabInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationState: Schema.optional(Schema.String),
     testCertificate: Schema.optional(GoogleFirebaseAppdistroV1TestCertificate),
@@ -686,7 +686,7 @@ export interface GoogleFirebaseAppdistroV1ListReleasesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ListReleasesResponse: Schema.Schema<GoogleFirebaseAppdistroV1ListReleasesResponse> =
+export const GoogleFirebaseAppdistroV1ListReleasesResponse: Schema.Codec<GoogleFirebaseAppdistroV1ListReleasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releases: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Release)),
     nextPageToken: Schema.optional(Schema.String),
@@ -694,14 +694,14 @@ export const GoogleFirebaseAppdistroV1ListReleasesResponse: Schema.Schema<Google
 
 export interface GoogleFirebaseAppdistroV1UploadReleaseMetadata {}
 
-export const GoogleFirebaseAppdistroV1UploadReleaseMetadata: Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseMetadata> =
+export const GoogleFirebaseAppdistroV1UploadReleaseMetadata: Schema.Codec<GoogleFirebaseAppdistroV1UploadReleaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1UploadReleaseMetadata",
   });
 
 export interface GoogleFirebaseAppdistroV1DistributeReleaseResponse {}
 
-export const GoogleFirebaseAppdistroV1DistributeReleaseResponse: Schema.Schema<GoogleFirebaseAppdistroV1DistributeReleaseResponse> =
+export const GoogleFirebaseAppdistroV1DistributeReleaseResponse: Schema.Codec<GoogleFirebaseAppdistroV1DistributeReleaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1DistributeReleaseResponse",
   });
@@ -719,7 +719,7 @@ export interface GoogleFirebaseAppdistroV1Group {
   name?: string;
 }
 
-export const GoogleFirebaseAppdistroV1Group: Schema.Schema<GoogleFirebaseAppdistroV1Group> =
+export const GoogleFirebaseAppdistroV1Group: Schema.Codec<GoogleFirebaseAppdistroV1Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inviteLinkCount: Schema.optional(Schema.Number),
     testerCount: Schema.optional(Schema.Number),
@@ -735,7 +735,7 @@ export interface GoogleFirebaseAppdistroV1ListGroupsResponse {
   groups?: ReadonlyArray<GoogleFirebaseAppdistroV1Group>;
 }
 
-export const GoogleFirebaseAppdistroV1ListGroupsResponse: Schema.Schema<GoogleFirebaseAppdistroV1ListGroupsResponse> =
+export const GoogleFirebaseAppdistroV1ListGroupsResponse: Schema.Codec<GoogleFirebaseAppdistroV1ListGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     groups: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Group)),
@@ -746,21 +746,21 @@ export interface GoogleLongrunningWaitOperationRequest {
   timeout?: string;
 }
 
-export const GoogleLongrunningWaitOperationRequest: Schema.Schema<GoogleLongrunningWaitOperationRequest> =
+export const GoogleLongrunningWaitOperationRequest: Schema.Codec<GoogleLongrunningWaitOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeout: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleLongrunningWaitOperationRequest" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
@@ -770,7 +770,7 @@ export interface GoogleFirebaseAppdistroV1UploadReleaseRequest {
   blob?: GdataMedia;
 }
 
-export const GoogleFirebaseAppdistroV1UploadReleaseRequest: Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseRequest> =
+export const GoogleFirebaseAppdistroV1UploadReleaseRequest: Schema.Codec<GoogleFirebaseAppdistroV1UploadReleaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blob: Schema.optional(GdataMedia),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1UploadReleaseRequest" });
@@ -844,7 +844,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/{+app}/releases:upload", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = GoogleLongrunningOperation;
 export const UploadMediaResponse =
@@ -880,7 +880,7 @@ export const GetProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsGroupsRequest>;
 
 export type GetProjectsGroupsResponse = GoogleFirebaseAppdistroV1Group;
 export const GetProjectsGroupsResponse =
@@ -911,7 +911,7 @@ export const DeleteProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsGroupsRequest>;
 
 export type DeleteProjectsGroupsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsGroupsResponse =
@@ -952,7 +952,7 @@ export const BatchJoinProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+group}:batchJoin", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BatchJoinProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<BatchJoinProjectsGroupsRequest>;
 
 export type BatchJoinProjectsGroupsResponse = GoogleProtobufEmpty;
 export const BatchJoinProjectsGroupsResponse =
@@ -994,7 +994,7 @@ export const ListProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/groups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsGroupsRequest>;
 
 export type ListProjectsGroupsResponse =
   GoogleFirebaseAppdistroV1ListGroupsResponse;
@@ -1036,7 +1036,7 @@ export const CreateProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/groups", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsGroupsRequest>;
 
 export type CreateProjectsGroupsResponse = GoogleFirebaseAppdistroV1Group;
 export const CreateProjectsGroupsResponse =
@@ -1078,7 +1078,7 @@ export const PatchProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsGroupsRequest>;
 
 export type PatchProjectsGroupsResponse = GoogleFirebaseAppdistroV1Group;
 export const PatchProjectsGroupsResponse =
@@ -1119,7 +1119,7 @@ export const BatchLeaveProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+group}:batchLeave", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BatchLeaveProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<BatchLeaveProjectsGroupsRequest>;
 
 export type BatchLeaveProjectsGroupsResponse = GoogleProtobufEmpty;
 export const BatchLeaveProjectsGroupsResponse =
@@ -1155,7 +1155,7 @@ export const GetAabInfoProjectsAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAabInfoProjectsAppsRequest>;
+  ) as unknown as Schema.Codec<GetAabInfoProjectsAppsRequest>;
 
 export type GetAabInfoProjectsAppsResponse = GoogleFirebaseAppdistroV1AabInfo;
 export const GetAabInfoProjectsAppsResponse =
@@ -1192,7 +1192,7 @@ export const PatchProjectsAppsReleasesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAppsReleasesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAppsReleasesRequest>;
 
 export type PatchProjectsAppsReleasesResponse =
   GoogleFirebaseAppdistroV1Release;
@@ -1229,7 +1229,7 @@ export const GetProjectsAppsReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsReleasesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsReleasesRequest>;
 
 export type GetProjectsAppsReleasesResponse = GoogleFirebaseAppdistroV1Release;
 export const GetProjectsAppsReleasesResponse =
@@ -1269,7 +1269,7 @@ export const BatchDeleteProjectsAppsReleasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteProjectsAppsReleasesRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteProjectsAppsReleasesRequest>;
 
 export type BatchDeleteProjectsAppsReleasesResponse = GoogleProtobufEmpty;
 export const BatchDeleteProjectsAppsReleasesResponse =
@@ -1317,7 +1317,7 @@ export const ListProjectsAppsReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/releases" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAppsReleasesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAppsReleasesRequest>;
 
 export type ListProjectsAppsReleasesResponse =
   GoogleFirebaseAppdistroV1ListReleasesResponse;
@@ -1361,7 +1361,7 @@ export const DistributeProjectsAppsReleasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:distribute", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DistributeProjectsAppsReleasesRequest>;
+  ) as unknown as Schema.Codec<DistributeProjectsAppsReleasesRequest>;
 
 export type DistributeProjectsAppsReleasesResponse =
   GoogleFirebaseAppdistroV1DistributeReleaseResponse;
@@ -1398,7 +1398,7 @@ export const DeleteProjectsAppsReleasesOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsAppsReleasesOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsAppsReleasesOperationsRequest>;
 
 export type DeleteProjectsAppsReleasesOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsAppsReleasesOperationsResponse =
@@ -1448,7 +1448,7 @@ export const ListProjectsAppsReleasesOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAppsReleasesOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAppsReleasesOperationsRequest>;
 
 export type ListProjectsAppsReleasesOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1487,7 +1487,7 @@ export const GetProjectsAppsReleasesOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsReleasesOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsReleasesOperationsRequest>;
 
 export type GetProjectsAppsReleasesOperationsResponse =
   GoogleLongrunningOperation;
@@ -1527,7 +1527,7 @@ export const CancelProjectsAppsReleasesOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsAppsReleasesOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsAppsReleasesOperationsRequest>;
 
 export type CancelProjectsAppsReleasesOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsAppsReleasesOperationsResponse =
@@ -1568,7 +1568,7 @@ export const WaitProjectsAppsReleasesOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:wait", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<WaitProjectsAppsReleasesOperationsRequest>;
+  ) as unknown as Schema.Codec<WaitProjectsAppsReleasesOperationsRequest>;
 
 export type WaitProjectsAppsReleasesOperationsResponse =
   GoogleLongrunningOperation;
@@ -1605,7 +1605,7 @@ export const GetProjectsAppsReleasesFeedbackReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAppsReleasesFeedbackReportsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAppsReleasesFeedbackReportsRequest>;
 
 export type GetProjectsAppsReleasesFeedbackReportsResponse =
   GoogleFirebaseAppdistroV1FeedbackReport;
@@ -1646,7 +1646,7 @@ export const ListProjectsAppsReleasesFeedbackReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/feedbackReports" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAppsReleasesFeedbackReportsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAppsReleasesFeedbackReportsRequest>;
 
 export type ListProjectsAppsReleasesFeedbackReportsResponse =
   GoogleFirebaseAppdistroV1ListFeedbackReportsResponse;
@@ -1685,7 +1685,7 @@ export const DeleteProjectsAppsReleasesFeedbackReportsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsAppsReleasesFeedbackReportsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsAppsReleasesFeedbackReportsRequest>;
 
 export type DeleteProjectsAppsReleasesFeedbackReportsResponse =
   GoogleProtobufEmpty;
@@ -1731,7 +1731,7 @@ export const BatchAddProjectsTestersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchAddProjectsTestersRequest>;
+  ) as unknown as Schema.Codec<BatchAddProjectsTestersRequest>;
 
 export type BatchAddProjectsTestersResponse =
   GoogleFirebaseAppdistroV1BatchAddTestersResponse;
@@ -1777,7 +1777,7 @@ export const BatchRemoveProjectsTestersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchRemoveProjectsTestersRequest>;
+  ) as unknown as Schema.Codec<BatchRemoveProjectsTestersRequest>;
 
 export type BatchRemoveProjectsTestersResponse =
   GoogleFirebaseAppdistroV1BatchRemoveTestersResponse;
@@ -1823,7 +1823,7 @@ export const ListProjectsTestersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/testers" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTestersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTestersRequest>;
 
 export type ListProjectsTestersResponse =
   GoogleFirebaseAppdistroV1ListTestersResponse;
@@ -1865,7 +1865,7 @@ export const PatchProjectsTestersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTestersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsTestersRequest>;
 
 export type PatchProjectsTestersResponse = GoogleFirebaseAppdistroV1Tester;
 export const PatchProjectsTestersResponse =

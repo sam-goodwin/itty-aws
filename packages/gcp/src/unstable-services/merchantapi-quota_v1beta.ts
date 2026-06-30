@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -54,7 +54,7 @@ export interface ProductChange {
   newValue?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
@@ -87,7 +87,7 @@ export interface ProductStatusChangeMessage {
   resource?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(ProductChange)),
     resourceId: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface MethodDetails {
   path?: string;
 }
 
-export const MethodDetails: Schema.Schema<MethodDetails> =
+export const MethodDetails: Schema.Codec<MethodDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface QuotaGroup {
   quotaMinuteLimit?: string;
 }
 
-export const QuotaGroup: Schema.Schema<QuotaGroup> =
+export const QuotaGroup: Schema.Codec<QuotaGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quotaUsage: Schema.optional(Schema.String),
     quotaLimit: Schema.optional(Schema.String),
@@ -148,7 +148,7 @@ export interface ListQuotaGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListQuotaGroupsResponse: Schema.Schema<ListQuotaGroupsResponse> =
+export const ListQuotaGroupsResponse: Schema.Codec<ListQuotaGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quotaGroups: Schema.optional(Schema.Array(QuotaGroup)),
     nextPageToken: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export const ListAccountsQuotasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "quota/v1beta/{+parent}/quotas" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsQuotasRequest>;
+  ) as unknown as Schema.Codec<ListAccountsQuotasRequest>;
 
 export type ListAccountsQuotasResponse = ListQuotaGroupsResponse;
 export const ListAccountsQuotasResponse =

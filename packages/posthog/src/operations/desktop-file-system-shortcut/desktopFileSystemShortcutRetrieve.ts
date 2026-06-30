@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemShortcutRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const DesktopFileSystemShortcutRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,18 @@ export const DesktopFileSystemShortcutRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/desktop_file_system_shortcut/{id}/",
     }),
-  );
-export type DesktopFileSystemShortcutRetrieveInput =
-  typeof DesktopFileSystemShortcutRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemShortcutRetrieveInput>;
 
 // Output Schema
+export interface DesktopFileSystemShortcutRetrieveOutput {
+  id?: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const DesktopFileSystemShortcutRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -26,9 +37,7 @@ export const DesktopFileSystemShortcutRetrieveOutput =
     href: Schema.optional(Schema.NullOr(Schema.String)),
     order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
-  });
-export type DesktopFileSystemShortcutRetrieveOutput =
-  typeof DesktopFileSystemShortcutRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemShortcutRetrieveOutput>;
 
 // The operation
 /**

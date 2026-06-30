@@ -3,6 +3,40 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TaggersUpdateInput {
+  id: string;
+  project_id: string;
+  name: string;
+  description?: string;
+  enabled?: boolean;
+  tagger_type?: "llm" | "hog";
+  tagger_config:
+    | {
+        prompt: string;
+        tags: { name: string; description?: string }[];
+        min_tags?: number;
+        max_tags?: number | null;
+      }
+    | { source: string; tags?: { name: string; description?: string }[] };
+  conditions?: {
+    id: string;
+    rollout_percentage?: number;
+    properties?: Record<string, unknown>[];
+  }[];
+  model_configuration?: {
+    provider:
+      | "openai"
+      | "anthropic"
+      | "gemini"
+      | "openrouter"
+      | "fireworks"
+      | "azure_openai"
+      | "together_ai";
+    model: string;
+    provider_key_id?: string | null;
+  } | null;
+  deleted?: boolean;
+}
 export const TaggersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -10,7 +44,30 @@ export const TaggersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   enabled: Schema.optional(Schema.Boolean),
   tagger_type: Schema.optional(Schema.Literals(["llm", "hog"])),
-  tagger_config: Schema.Unknown,
+  tagger_config: Schema.Union([
+    Schema.Struct({
+      prompt: Schema.String,
+      tags: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      min_tags: Schema.optional(Schema.Number),
+      max_tags: Schema.optional(Schema.NullOr(Schema.Number)),
+    }),
+    Schema.Struct({
+      source: Schema.String,
+      tags: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ]),
   conditions: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -22,21 +79,116 @@ export const TaggersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  model_configuration: Schema.optional(Schema.Unknown),
+  model_configuration: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        provider: Schema.Literals([
+          "openai",
+          "anthropic",
+          "gemini",
+          "openrouter",
+          "fireworks",
+          "azure_openai",
+          "together_ai",
+        ]),
+        model: Schema.String,
+        provider_key_id: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+  ),
   deleted: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "PUT", path: "/api/projects/{project_id}/taggers/{id}/" }),
-);
-export type TaggersUpdateInput = typeof TaggersUpdateInput.Type;
+) as unknown as Schema.Codec<TaggersUpdateInput>;
 
 // Output Schema
+export interface TaggersUpdateOutput {
+  id: string;
+  name: string;
+  description?: string;
+  enabled?: boolean;
+  tagger_type?: "llm" | "hog";
+  tagger_config:
+    | {
+        prompt: string;
+        tags: { name: string; description?: string }[];
+        min_tags?: number;
+        max_tags?: number | null;
+      }
+    | { source: string; tags?: { name: string; description?: string }[] };
+  conditions?: {
+    id: string;
+    rollout_percentage?: number;
+    properties?: Record<string, unknown>[];
+  }[];
+  model_configuration?: {
+    provider:
+      | "openai"
+      | "anthropic"
+      | "gemini"
+      | "openrouter"
+      | "fireworks"
+      | "azure_openai"
+      | "together_ai";
+    model: string;
+    provider_key_id?: string | null;
+    provider_key_name: string | null;
+  } | null;
+  created_at: string;
+  updated_at: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  deleted?: boolean;
+}
 export const TaggersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   description: Schema.optional(Schema.String),
   enabled: Schema.optional(Schema.Boolean),
   tagger_type: Schema.optional(Schema.Literals(["llm", "hog"])),
-  tagger_config: Schema.Unknown,
+  tagger_config: Schema.Union([
+    Schema.Struct({
+      prompt: Schema.String,
+      tags: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      min_tags: Schema.optional(Schema.Number),
+      max_tags: Schema.optional(Schema.NullOr(Schema.Number)),
+    }),
+    Schema.Struct({
+      source: Schema.String,
+      tags: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ]),
   conditions: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -48,7 +200,24 @@ export const TaggersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  model_configuration: Schema.optional(Schema.Unknown),
+  model_configuration: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        provider: Schema.Literals([
+          "openai",
+          "anthropic",
+          "gemini",
+          "openrouter",
+          "fireworks",
+          "azure_openai",
+          "together_ai",
+        ]),
+        model: Schema.String,
+        provider_key_id: Schema.optional(Schema.NullOr(Schema.String)),
+        provider_key_name: Schema.NullOr(Schema.String),
+      }),
+    ),
+  ),
   created_at: Schema.String,
   updated_at: Schema.String,
   created_by: Schema.Struct({
@@ -62,11 +231,26 @@ export const TaggersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hedgehog_config: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
     ),
-    role_at_organization: Schema.optional(Schema.Unknown),
+    role_at_organization: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals([
+            "engineering",
+            "data",
+            "product",
+            "founder",
+            "leadership",
+            "marketing",
+            "sales",
+            "other",
+          ]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
   }),
   deleted: Schema.optional(Schema.Boolean),
-});
-export type TaggersUpdateOutput = typeof TaggersUpdateOutput.Type;
+}) as unknown as Schema.Codec<TaggersUpdateOutput>;
 
 // The operation
 /**

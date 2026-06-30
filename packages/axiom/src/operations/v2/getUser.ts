@@ -4,12 +4,22 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetUserInput {
+  id: string;
+}
 export const GetUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/users/{id}" }));
-export type GetUserInput = typeof GetUserInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/users/{id}" }),
+) as unknown as Schema.Codec<GetUserInput>;
 
 // Output Schema
+export interface GetUserOutput {
+  email: string;
+  id: string;
+  name: string;
+  role?: { id: string; name: string };
+}
 export const GetUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
@@ -20,8 +30,7 @@ export const GetUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.String,
     }),
   ),
-});
-export type GetUserOutput = typeof GetUserOutput.Type;
+}) as unknown as Schema.Codec<GetUserOutput>;
 
 // The operation
 /**

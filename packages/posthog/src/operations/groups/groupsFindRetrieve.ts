@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsFindRetrieveInput {
+  project_id: string;
+  group_key: string;
+  group_type_index: number;
+  skip_create_notebook?: boolean;
+}
 export const GroupsFindRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,12 +18,12 @@ export const GroupsFindRetrieveInput =
     skip_create_notebook: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/api/projects/{project_id}/groups/find/" }),
-  );
-export type GroupsFindRetrieveInput = typeof GroupsFindRetrieveInput.Type;
+  ) as unknown as Schema.Codec<GroupsFindRetrieveInput>;
 
 // Output Schema
-export const GroupsFindRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsFindRetrieveOutput = typeof GroupsFindRetrieveOutput.Type;
+export type GroupsFindRetrieveOutput = void;
+export const GroupsFindRetrieveOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsFindRetrieveOutput>;
 
 // The operation
 /**

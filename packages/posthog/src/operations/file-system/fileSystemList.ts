@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const FileSystemListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
@@ -11,10 +17,26 @@ export const FileSystemListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   search: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/file_system/" }),
-);
-export type FileSystemListInput = typeof FileSystemListInput.Type;
+) as unknown as Schema.Codec<FileSystemListInput>;
 
 // Output Schema
+export interface FileSystemListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    path?: string;
+    depth?: number | null;
+    type?: string;
+    ref?: string | null;
+    href?: string | null;
+    meta?: unknown;
+    shortcut?: boolean | null;
+    created_at?: string;
+    last_viewed_at?: string | null;
+  }[];
+}
 export const FileSystemListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -35,8 +57,7 @@ export const FileSystemListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type FileSystemListOutput = typeof FileSystemListOutput.Type;
+}) as unknown as Schema.Codec<FileSystemListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFunctionsListInput {
+  project_id: string;
+  created_at?: string;
+  created_by?: number;
+  enabled?: boolean;
+  id?: string;
+  limit?: number;
+  offset?: number;
+  type?: string;
+  updated_at?: string;
+}
 export const HogFunctionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   created_at: Schema.optional(Schema.String),
@@ -16,10 +27,75 @@ export const HogFunctionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updated_at: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/hog_functions/" }),
-);
-export type HogFunctionsListInput = typeof HogFunctionsListInput.Type;
+) as unknown as Schema.Codec<HogFunctionsListInput>;
 
 // Output Schema
+export interface HogFunctionsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    type?: string | null;
+    name?: string | null;
+    description?: string;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    updated_at?: string;
+    enabled?: boolean;
+    hog?: string;
+    filters?: unknown;
+    icon_url?: string | null;
+    template?: {
+      id?: string;
+      name?: string;
+      description?: string | null;
+      code?: string;
+      code_language?: string;
+      inputs_schema?: unknown;
+      type?: string;
+      status?: string;
+      category?: unknown;
+      free?: boolean;
+      icon_url?: string | null;
+      filters?: unknown;
+      masking?: unknown;
+      mapping_templates?:
+        | {
+            name?: string;
+            include_by_default?: boolean | null;
+            use_all_events_by_default?: boolean | null;
+            filters?: unknown;
+            inputs?: unknown;
+            inputs_schema?: unknown;
+          }[]
+        | null;
+    };
+    status?: { state?: 0 | 1 | 2 | 3 | 11 | 12; tokens?: number } | null;
+    execution_order?: number | null;
+    search_match_type?: "exact" | "similar" | null;
+  }[];
+}
 export const HogFunctionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     count: Schema.optional(Schema.Number),
@@ -48,7 +124,23 @@ export const HogFunctionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -92,15 +184,23 @@ export const HogFunctionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               ),
             }),
           ),
-          status: Schema.optional(Schema.Unknown),
+          status: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                state: Schema.optional(Schema.Literals([0, 1, 2, 3, 11, 12])),
+                tokens: Schema.optional(Schema.Number),
+              }),
+            ),
+          ),
           execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
-          search_match_type: Schema.optional(Schema.Unknown),
+          search_match_type: Schema.optional(
+            Schema.NullOr(Schema.Literals(["exact", "similar"])),
+          ),
         }),
       ),
     ),
   },
-);
-export type HogFunctionsListOutput = typeof HogFunctionsListOutput.Type;
+) as unknown as Schema.Codec<HogFunctionsListOutput>;
 
 // The operation
 /**

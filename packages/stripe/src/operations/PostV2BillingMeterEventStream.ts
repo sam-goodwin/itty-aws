@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostV2BillingMeterEventStreamInput {
+  events: {
+    event_name: string;
+    identifier?: string;
+    payload: Record<string, string>;
+    timestamp?: string;
+  }[];
+}
 export const PostV2BillingMeterEventStreamInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     events: Schema.Array(
@@ -13,15 +21,16 @@ export const PostV2BillingMeterEventStreamInput =
         timestamp: Schema.optional(Schema.String),
       }),
     ),
-  }).pipe(T.Http({ method: "POST", path: "/v2/billing/meter_event_stream" }));
-export type PostV2BillingMeterEventStreamInput =
-  typeof PostV2BillingMeterEventStreamInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/billing/meter_event_stream" }),
+  ) as unknown as Schema.Codec<PostV2BillingMeterEventStreamInput>;
 
 // Output Schema
+export interface PostV2BillingMeterEventStreamOutput {}
 export const PostV2BillingMeterEventStreamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type PostV2BillingMeterEventStreamOutput =
-  typeof PostV2BillingMeterEventStreamOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<PostV2BillingMeterEventStreamOutput>;
 
 // The operation
 /**

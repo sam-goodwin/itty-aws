@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface TruncatableString {
   truncatedByteCount?: number;
 }
 
-export const TruncatableString: Schema.Schema<TruncatableString> =
+export const TruncatableString: Schema.Codec<TruncatableString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     truncatedByteCount: Schema.optional(Schema.Number),
@@ -37,7 +37,7 @@ export const TruncatableString: Schema.Schema<TruncatableString> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -51,7 +51,7 @@ export interface AttributeValue {
   intValue?: string;
 }
 
-export const AttributeValue: Schema.Schema<AttributeValue> =
+export const AttributeValue: Schema.Codec<AttributeValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boolValue: Schema.optional(Schema.Boolean),
     stringValue: Schema.optional(TruncatableString),
@@ -65,7 +65,7 @@ export interface Attributes {
   droppedAttributesCount?: number;
 }
 
-export const Attributes: Schema.Schema<Attributes> =
+export const Attributes: Schema.Codec<Attributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeMap: Schema.optional(Schema.Record(Schema.String, AttributeValue)),
     droppedAttributesCount: Schema.optional(Schema.Number),
@@ -86,7 +86,7 @@ export interface Link {
     | (string & {});
 }
 
-export const Link: Schema.Schema<Link> =
+export const Link: Schema.Codec<Link> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     traceId: Schema.optional(Schema.String),
     spanId: Schema.optional(Schema.String),
@@ -101,7 +101,7 @@ export interface Links {
   droppedLinksCount?: number;
 }
 
-export const Links: Schema.Schema<Links> =
+export const Links: Schema.Codec<Links> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     link: Schema.optional(Schema.Array(Link)),
     droppedLinksCount: Schema.optional(Schema.Number),
@@ -114,7 +114,7 @@ export interface Module {
   buildId?: TruncatableString;
 }
 
-export const Module: Schema.Schema<Module> =
+export const Module: Schema.Codec<Module> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     module: Schema.optional(TruncatableString),
     buildId: Schema.optional(TruncatableString),
@@ -137,7 +137,7 @@ export interface StackFrame {
   sourceVersion?: TruncatableString;
 }
 
-export const StackFrame: Schema.Schema<StackFrame> =
+export const StackFrame: Schema.Codec<StackFrame> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalFunctionName: Schema.optional(TruncatableString),
     fileName: Schema.optional(TruncatableString),
@@ -155,7 +155,7 @@ export interface StackFrames {
   droppedFramesCount?: number;
 }
 
-export const StackFrames: Schema.Schema<StackFrames> =
+export const StackFrames: Schema.Codec<StackFrames> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     frame: Schema.optional(Schema.Array(StackFrame)),
     droppedFramesCount: Schema.optional(Schema.Number),
@@ -168,7 +168,7 @@ export interface StackTrace {
   stackFrames?: StackFrames;
 }
 
-export const StackTrace: Schema.Schema<StackTrace> =
+export const StackTrace: Schema.Codec<StackTrace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stackTraceHashId: Schema.optional(Schema.String),
     stackFrames: Schema.optional(StackFrames),
@@ -185,7 +185,7 @@ export interface MessageEvent {
   uncompressedSizeBytes?: string;
 }
 
-export const MessageEvent: Schema.Schema<MessageEvent> =
+export const MessageEvent: Schema.Codec<MessageEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -200,7 +200,7 @@ export interface Annotation {
   attributes?: Attributes;
 }
 
-export const Annotation: Schema.Schema<Annotation> =
+export const Annotation: Schema.Codec<Annotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(TruncatableString),
     attributes: Schema.optional(Attributes),
@@ -215,7 +215,7 @@ export interface TimeEvent {
   annotation?: Annotation;
 }
 
-export const TimeEvent: Schema.Schema<TimeEvent> =
+export const TimeEvent: Schema.Codec<TimeEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageEvent: Schema.optional(MessageEvent),
     time: Schema.optional(Schema.String),
@@ -231,7 +231,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -249,7 +249,7 @@ export interface TimeEvents {
   timeEvent?: ReadonlyArray<TimeEvent>;
 }
 
-export const TimeEvents: Schema.Schema<TimeEvents> =
+export const TimeEvents: Schema.Codec<TimeEvents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     droppedAnnotationsCount: Schema.optional(Schema.Number),
     droppedMessageEventsCount: Schema.optional(Schema.Number),
@@ -294,7 +294,7 @@ export interface Span {
     | (string & {});
 }
 
-export const Span: Schema.Schema<Span> =
+export const Span: Schema.Codec<Span> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     links: Schema.optional(Links),
     sameProcessAsParentSpan: Schema.optional(Schema.Boolean),
@@ -317,7 +317,7 @@ export interface BatchWriteSpansRequest {
   spans?: ReadonlyArray<Span>;
 }
 
-export const BatchWriteSpansRequest: Schema.Schema<BatchWriteSpansRequest> =
+export const BatchWriteSpansRequest: Schema.Codec<BatchWriteSpansRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spans: Schema.optional(Schema.Array(Span)),
   }).annotate({ identifier: "BatchWriteSpansRequest" });
@@ -394,7 +394,7 @@ export const BatchWriteProjectsTracesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchWriteProjectsTracesRequest>;
+  ) as unknown as Schema.Codec<BatchWriteProjectsTracesRequest>;
 
 export type BatchWriteProjectsTracesResponse = Empty;
 export const BatchWriteProjectsTracesResponse =
@@ -433,7 +433,7 @@ export const CreateSpanProjectsTracesSpansRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSpanProjectsTracesSpansRequest>;
+  ) as unknown as Schema.Codec<CreateSpanProjectsTracesSpansRequest>;
 
 export type CreateSpanProjectsTracesSpansResponse = Span;
 export const CreateSpanProjectsTracesSpansResponse =

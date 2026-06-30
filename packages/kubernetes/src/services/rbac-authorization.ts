@@ -4,12 +4,65 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateRbacAuthorizationV1ClusterRoleInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  aggregationRule?: {
+    clusterRoleSelectors?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    }[];
+  };
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const CreateRbacAuthorizationV1ClusterRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -100,11 +153,58 @@ export const CreateRbacAuthorizationV1ClusterRoleInput =
       method: "POST",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterroles",
     }),
-  );
-export type CreateRbacAuthorizationV1ClusterRoleInput =
-  typeof CreateRbacAuthorizationV1ClusterRoleInput.Type;
+  ) as unknown as Schema.Codec<CreateRbacAuthorizationV1ClusterRoleInput>;
 
 // Output Schema
+export interface CreateRbacAuthorizationV1ClusterRoleOutput {
+  aggregationRule?: {
+    clusterRoleSelectors?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    }[];
+  };
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const CreateRbacAuthorizationV1ClusterRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregationRule: Schema.optional(
@@ -186,9 +286,7 @@ export const CreateRbacAuthorizationV1ClusterRoleOutput =
         }),
       ),
     ),
-  });
-export type CreateRbacAuthorizationV1ClusterRoleOutput =
-  typeof CreateRbacAuthorizationV1ClusterRoleOutput.Type;
+  }) as unknown as Schema.Codec<CreateRbacAuthorizationV1ClusterRoleOutput>;
 
 // The operation
 /**
@@ -206,6 +304,53 @@ export const createRbacAuthorizationV1ClusterRole =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateRbacAuthorizationV1ClusterRoleBindingInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const CreateRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -278,11 +423,52 @@ export const CreateRbacAuthorizationV1ClusterRoleBindingInput =
       method: "POST",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings",
     }),
-  );
-export type CreateRbacAuthorizationV1ClusterRoleBindingInput =
-  typeof CreateRbacAuthorizationV1ClusterRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<CreateRbacAuthorizationV1ClusterRoleBindingInput>;
 
 // Output Schema
+export interface CreateRbacAuthorizationV1ClusterRoleBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const CreateRbacAuthorizationV1ClusterRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -346,9 +532,7 @@ export const CreateRbacAuthorizationV1ClusterRoleBindingOutput =
         }),
       ),
     ),
-  });
-export type CreateRbacAuthorizationV1ClusterRoleBindingOutput =
-  typeof CreateRbacAuthorizationV1ClusterRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<CreateRbacAuthorizationV1ClusterRoleBindingOutput>;
 
 // The operation
 /**
@@ -366,6 +550,54 @@ export const createRbacAuthorizationV1ClusterRoleBinding =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateRbacAuthorizationV1NamespacedRoleInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const CreateRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -435,11 +667,52 @@ export const CreateRbacAuthorizationV1NamespacedRoleInput =
       method: "POST",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles",
     }),
-  );
-export type CreateRbacAuthorizationV1NamespacedRoleInput =
-  typeof CreateRbacAuthorizationV1NamespacedRoleInput.Type;
+  ) as unknown as Schema.Codec<CreateRbacAuthorizationV1NamespacedRoleInput>;
 
 // Output Schema
+export interface CreateRbacAuthorizationV1NamespacedRoleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const CreateRbacAuthorizationV1NamespacedRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -499,9 +772,7 @@ export const CreateRbacAuthorizationV1NamespacedRoleOutput =
         }),
       ),
     ),
-  });
-export type CreateRbacAuthorizationV1NamespacedRoleOutput =
-  typeof CreateRbacAuthorizationV1NamespacedRoleOutput.Type;
+  }) as unknown as Schema.Codec<CreateRbacAuthorizationV1NamespacedRoleOutput>;
 
 // The operation
 /**
@@ -520,6 +791,54 @@ export const createRbacAuthorizationV1NamespacedRole =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateRbacAuthorizationV1NamespacedRoleBindingInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const CreateRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -593,11 +912,52 @@ export const CreateRbacAuthorizationV1NamespacedRoleBindingInput =
       method: "POST",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings",
     }),
-  );
-export type CreateRbacAuthorizationV1NamespacedRoleBindingInput =
-  typeof CreateRbacAuthorizationV1NamespacedRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<CreateRbacAuthorizationV1NamespacedRoleBindingInput>;
 
 // Output Schema
+export interface CreateRbacAuthorizationV1NamespacedRoleBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const CreateRbacAuthorizationV1NamespacedRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -661,9 +1021,7 @@ export const CreateRbacAuthorizationV1NamespacedRoleBindingOutput =
         }),
       ),
     ),
-  });
-export type CreateRbacAuthorizationV1NamespacedRoleBindingOutput =
-  typeof CreateRbacAuthorizationV1NamespacedRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<CreateRbacAuthorizationV1NamespacedRoleBindingOutput>;
 
 // The operation
 /**
@@ -682,6 +1040,18 @@ export const createRbacAuthorizationV1NamespacedRoleBinding =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteRbacAuthorizationV1ClusterRoleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteRbacAuthorizationV1ClusterRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -706,11 +1076,32 @@ export const DeleteRbacAuthorizationV1ClusterRoleInput =
       method: "DELETE",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}",
     }),
-  );
-export type DeleteRbacAuthorizationV1ClusterRoleInput =
-  typeof DeleteRbacAuthorizationV1ClusterRoleInput.Type;
+  ) as unknown as Schema.Codec<DeleteRbacAuthorizationV1ClusterRoleInput>;
 
 // Output Schema
+export interface DeleteRbacAuthorizationV1ClusterRoleOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteRbacAuthorizationV1ClusterRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -750,9 +1141,7 @@ export const DeleteRbacAuthorizationV1ClusterRoleOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteRbacAuthorizationV1ClusterRoleOutput =
-  typeof DeleteRbacAuthorizationV1ClusterRoleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRbacAuthorizationV1ClusterRoleOutput>;
 
 // The operation
 /**
@@ -773,6 +1162,18 @@ export const deleteRbacAuthorizationV1ClusterRole =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteRbacAuthorizationV1ClusterRoleBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -797,11 +1198,32 @@ export const DeleteRbacAuthorizationV1ClusterRoleBindingInput =
       method: "DELETE",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}",
     }),
-  );
-export type DeleteRbacAuthorizationV1ClusterRoleBindingInput =
-  typeof DeleteRbacAuthorizationV1ClusterRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteRbacAuthorizationV1ClusterRoleBindingInput>;
 
 // Output Schema
+export interface DeleteRbacAuthorizationV1ClusterRoleBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteRbacAuthorizationV1ClusterRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -841,9 +1263,7 @@ export const DeleteRbacAuthorizationV1ClusterRoleBindingOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteRbacAuthorizationV1ClusterRoleBindingOutput =
-  typeof DeleteRbacAuthorizationV1ClusterRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRbacAuthorizationV1ClusterRoleBindingOutput>;
 
 // The operation
 /**
@@ -864,6 +1284,26 @@ export const deleteRbacAuthorizationV1ClusterRoleBinding =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteRbacAuthorizationV1CollectionClusterRoleInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteRbacAuthorizationV1CollectionClusterRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -896,11 +1336,32 @@ export const DeleteRbacAuthorizationV1CollectionClusterRoleInput =
       method: "DELETE",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterroles",
     }),
-  );
-export type DeleteRbacAuthorizationV1CollectionClusterRoleInput =
-  typeof DeleteRbacAuthorizationV1CollectionClusterRoleInput.Type;
+  ) as unknown as Schema.Codec<DeleteRbacAuthorizationV1CollectionClusterRoleInput>;
 
 // Output Schema
+export interface DeleteRbacAuthorizationV1CollectionClusterRoleOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteRbacAuthorizationV1CollectionClusterRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -940,9 +1401,7 @@ export const DeleteRbacAuthorizationV1CollectionClusterRoleOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteRbacAuthorizationV1CollectionClusterRoleOutput =
-  typeof DeleteRbacAuthorizationV1CollectionClusterRoleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRbacAuthorizationV1CollectionClusterRoleOutput>;
 
 // The operation
 /**
@@ -1011,6 +1470,26 @@ export const deleteRbacAuthorizationV1CollectionClusterRole =
     outputSchema: DeleteRbacAuthorizationV1CollectionClusterRoleOutput,
   }));
 // Input Schema
+export interface DeleteRbacAuthorizationV1CollectionClusterRoleBindingInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteRbacAuthorizationV1CollectionClusterRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1043,11 +1522,32 @@ export const DeleteRbacAuthorizationV1CollectionClusterRoleBindingInput =
       method: "DELETE",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings",
     }),
-  );
-export type DeleteRbacAuthorizationV1CollectionClusterRoleBindingInput =
-  typeof DeleteRbacAuthorizationV1CollectionClusterRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteRbacAuthorizationV1CollectionClusterRoleBindingInput>;
 
 // Output Schema
+export interface DeleteRbacAuthorizationV1CollectionClusterRoleBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteRbacAuthorizationV1CollectionClusterRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1087,9 +1587,7 @@ export const DeleteRbacAuthorizationV1CollectionClusterRoleBindingOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteRbacAuthorizationV1CollectionClusterRoleBindingOutput =
-  typeof DeleteRbacAuthorizationV1CollectionClusterRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRbacAuthorizationV1CollectionClusterRoleBindingOutput>;
 
 // The operation
 /**
@@ -1158,6 +1656,27 @@ export const deleteRbacAuthorizationV1CollectionClusterRoleBinding =
     outputSchema: DeleteRbacAuthorizationV1CollectionClusterRoleBindingOutput,
   }));
 // Input Schema
+export interface DeleteRbacAuthorizationV1CollectionNamespacedRoleInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteRbacAuthorizationV1CollectionNamespacedRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1191,11 +1710,32 @@ export const DeleteRbacAuthorizationV1CollectionNamespacedRoleInput =
       method: "DELETE",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles",
     }),
-  );
-export type DeleteRbacAuthorizationV1CollectionNamespacedRoleInput =
-  typeof DeleteRbacAuthorizationV1CollectionNamespacedRoleInput.Type;
+  ) as unknown as Schema.Codec<DeleteRbacAuthorizationV1CollectionNamespacedRoleInput>;
 
 // Output Schema
+export interface DeleteRbacAuthorizationV1CollectionNamespacedRoleOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteRbacAuthorizationV1CollectionNamespacedRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1235,9 +1775,7 @@ export const DeleteRbacAuthorizationV1CollectionNamespacedRoleOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteRbacAuthorizationV1CollectionNamespacedRoleOutput =
-  typeof DeleteRbacAuthorizationV1CollectionNamespacedRoleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRbacAuthorizationV1CollectionNamespacedRoleOutput>;
 
 // The operation
 /**
@@ -1307,6 +1845,27 @@ export const deleteRbacAuthorizationV1CollectionNamespacedRole =
     outputSchema: DeleteRbacAuthorizationV1CollectionNamespacedRoleOutput,
   }));
 // Input Schema
+export interface DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1340,11 +1899,32 @@ export const DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingInput =
       method: "DELETE",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings",
     }),
-  );
-export type DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingInput =
-  typeof DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingInput>;
 
 // Output Schema
+export interface DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1384,9 +1964,7 @@ export const DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingOutput =
-  typeof DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingOutput>;
 
 // The operation
 /**
@@ -1457,6 +2035,19 @@ export const deleteRbacAuthorizationV1CollectionNamespacedRoleBinding =
       DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingOutput,
   }));
 // Input Schema
+export interface DeleteRbacAuthorizationV1NamespacedRoleInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1482,11 +2073,32 @@ export const DeleteRbacAuthorizationV1NamespacedRoleInput =
       method: "DELETE",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}",
     }),
-  );
-export type DeleteRbacAuthorizationV1NamespacedRoleInput =
-  typeof DeleteRbacAuthorizationV1NamespacedRoleInput.Type;
+  ) as unknown as Schema.Codec<DeleteRbacAuthorizationV1NamespacedRoleInput>;
 
 // Output Schema
+export interface DeleteRbacAuthorizationV1NamespacedRoleOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteRbacAuthorizationV1NamespacedRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1526,9 +2138,7 @@ export const DeleteRbacAuthorizationV1NamespacedRoleOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteRbacAuthorizationV1NamespacedRoleOutput =
-  typeof DeleteRbacAuthorizationV1NamespacedRoleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRbacAuthorizationV1NamespacedRoleOutput>;
 
 // The operation
 /**
@@ -1550,6 +2160,19 @@ export const deleteRbacAuthorizationV1NamespacedRole =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteRbacAuthorizationV1NamespacedRoleBindingInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1575,11 +2198,32 @@ export const DeleteRbacAuthorizationV1NamespacedRoleBindingInput =
       method: "DELETE",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}",
     }),
-  );
-export type DeleteRbacAuthorizationV1NamespacedRoleBindingInput =
-  typeof DeleteRbacAuthorizationV1NamespacedRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteRbacAuthorizationV1NamespacedRoleBindingInput>;
 
 // Output Schema
+export interface DeleteRbacAuthorizationV1NamespacedRoleBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteRbacAuthorizationV1NamespacedRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1619,9 +2263,7 @@ export const DeleteRbacAuthorizationV1NamespacedRoleBindingOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteRbacAuthorizationV1NamespacedRoleBindingOutput =
-  typeof DeleteRbacAuthorizationV1NamespacedRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRbacAuthorizationV1NamespacedRoleBindingOutput>;
 
 // The operation
 /**
@@ -1643,14 +2285,21 @@ export const deleteRbacAuthorizationV1NamespacedRoleBinding =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetRbacAuthorizationAPIGroupInput {}
 export const GetRbacAuthorizationAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/rbac.authorization.k8s.io/" }),
-  );
-export type GetRbacAuthorizationAPIGroupInput =
-  typeof GetRbacAuthorizationAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetRbacAuthorizationAPIGroupInput>;
 
 // Output Schema
+export interface GetRbacAuthorizationAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetRbacAuthorizationAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1676,9 +2325,7 @@ export const GetRbacAuthorizationAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetRbacAuthorizationAPIGroupOutput =
-  typeof GetRbacAuthorizationAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetRbacAuthorizationAPIGroupOutput>;
 
 // The operation
 /**
@@ -1690,14 +2337,30 @@ export const getRbacAuthorizationAPIGroup =
     outputSchema: GetRbacAuthorizationAPIGroupOutput,
   }));
 // Input Schema
+export interface GetRbacAuthorizationV1APIResourcesInput {}
 export const GetRbacAuthorizationV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/rbac.authorization.k8s.io/v1/" }),
-  );
-export type GetRbacAuthorizationV1APIResourcesInput =
-  typeof GetRbacAuthorizationV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetRbacAuthorizationV1APIResourcesInput>;
 
 // Output Schema
+export interface GetRbacAuthorizationV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetRbacAuthorizationV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1717,9 +2380,7 @@ export const GetRbacAuthorizationV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetRbacAuthorizationV1APIResourcesOutput =
-  typeof GetRbacAuthorizationV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetRbacAuthorizationV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1731,6 +2392,20 @@ export const getRbacAuthorizationV1APIResources =
     outputSchema: GetRbacAuthorizationV1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListRbacAuthorizationV1ClusterRoleInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListRbacAuthorizationV1ClusterRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1750,11 +2425,73 @@ export const ListRbacAuthorizationV1ClusterRoleInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterroles",
     }),
-  );
-export type ListRbacAuthorizationV1ClusterRoleInput =
-  typeof ListRbacAuthorizationV1ClusterRoleInput.Type;
+  ) as unknown as Schema.Codec<ListRbacAuthorizationV1ClusterRoleInput>;
 
 // Output Schema
+export interface ListRbacAuthorizationV1ClusterRoleOutput {
+  apiVersion?: string;
+  items: {
+    aggregationRule?: {
+      clusterRoleSelectors?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      }[];
+    };
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    rules?: {
+      apiGroups?: string[];
+      nonResourceURLs?: string[];
+      resourceNames?: string[];
+      resources?: string[];
+      verbs: string[];
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListRbacAuthorizationV1ClusterRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1857,9 +2594,7 @@ export const ListRbacAuthorizationV1ClusterRoleOutput =
         ),
       }),
     ),
-  });
-export type ListRbacAuthorizationV1ClusterRoleOutput =
-  typeof ListRbacAuthorizationV1ClusterRoleOutput.Type;
+  }) as unknown as Schema.Codec<ListRbacAuthorizationV1ClusterRoleOutput>;
 
 // The operation
 /**
@@ -1925,6 +2660,20 @@ export const listRbacAuthorizationV1ClusterRole =
     outputSchema: ListRbacAuthorizationV1ClusterRoleOutput,
   }));
 // Input Schema
+export interface ListRbacAuthorizationV1ClusterRoleBindingInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1944,11 +2693,63 @@ export const ListRbacAuthorizationV1ClusterRoleBindingInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings",
     }),
-  );
-export type ListRbacAuthorizationV1ClusterRoleBindingInput =
-  typeof ListRbacAuthorizationV1ClusterRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<ListRbacAuthorizationV1ClusterRoleBindingInput>;
 
 // Output Schema
+export interface ListRbacAuthorizationV1ClusterRoleBindingOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    roleRef: { apiGroup?: string; kind: string; name: string };
+    subjects?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListRbacAuthorizationV1ClusterRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2033,9 +2834,7 @@ export const ListRbacAuthorizationV1ClusterRoleBindingOutput =
         ),
       }),
     ),
-  });
-export type ListRbacAuthorizationV1ClusterRoleBindingOutput =
-  typeof ListRbacAuthorizationV1ClusterRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<ListRbacAuthorizationV1ClusterRoleBindingOutput>;
 
 // The operation
 /**
@@ -2101,6 +2900,21 @@ export const listRbacAuthorizationV1ClusterRoleBinding =
     outputSchema: ListRbacAuthorizationV1ClusterRoleBindingOutput,
   }));
 // Input Schema
+export interface ListRbacAuthorizationV1NamespacedRoleInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2121,11 +2935,63 @@ export const ListRbacAuthorizationV1NamespacedRoleInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles",
     }),
-  );
-export type ListRbacAuthorizationV1NamespacedRoleInput =
-  typeof ListRbacAuthorizationV1NamespacedRoleInput.Type;
+  ) as unknown as Schema.Codec<ListRbacAuthorizationV1NamespacedRoleInput>;
 
 // Output Schema
+export interface ListRbacAuthorizationV1NamespacedRoleOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    rules?: {
+      apiGroups?: string[];
+      nonResourceURLs?: string[];
+      resourceNames?: string[];
+      resources?: string[];
+      verbs: string[];
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListRbacAuthorizationV1NamespacedRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2206,9 +3072,7 @@ export const ListRbacAuthorizationV1NamespacedRoleOutput =
         ),
       }),
     ),
-  });
-export type ListRbacAuthorizationV1NamespacedRoleOutput =
-  typeof ListRbacAuthorizationV1NamespacedRoleOutput.Type;
+  }) as unknown as Schema.Codec<ListRbacAuthorizationV1NamespacedRoleOutput>;
 
 // The operation
 /**
@@ -2275,6 +3139,21 @@ export const listRbacAuthorizationV1NamespacedRole =
     outputSchema: ListRbacAuthorizationV1NamespacedRoleOutput,
   }));
 // Input Schema
+export interface ListRbacAuthorizationV1NamespacedRoleBindingInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2295,11 +3174,63 @@ export const ListRbacAuthorizationV1NamespacedRoleBindingInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings",
     }),
-  );
-export type ListRbacAuthorizationV1NamespacedRoleBindingInput =
-  typeof ListRbacAuthorizationV1NamespacedRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<ListRbacAuthorizationV1NamespacedRoleBindingInput>;
 
 // Output Schema
+export interface ListRbacAuthorizationV1NamespacedRoleBindingOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    roleRef: { apiGroup?: string; kind: string; name: string };
+    subjects?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListRbacAuthorizationV1NamespacedRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2384,9 +3315,7 @@ export const ListRbacAuthorizationV1NamespacedRoleBindingOutput =
         ),
       }),
     ),
-  });
-export type ListRbacAuthorizationV1NamespacedRoleBindingOutput =
-  typeof ListRbacAuthorizationV1NamespacedRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<ListRbacAuthorizationV1NamespacedRoleBindingOutput>;
 
 // The operation
 /**
@@ -2453,6 +3382,20 @@ export const listRbacAuthorizationV1NamespacedRoleBinding =
     outputSchema: ListRbacAuthorizationV1NamespacedRoleBindingOutput,
   }));
 // Input Schema
+export interface ListRbacAuthorizationV1RoleBindingForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListRbacAuthorizationV1RoleBindingForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2472,11 +3415,63 @@ export const ListRbacAuthorizationV1RoleBindingForAllNamespacesInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/rolebindings",
     }),
-  );
-export type ListRbacAuthorizationV1RoleBindingForAllNamespacesInput =
-  typeof ListRbacAuthorizationV1RoleBindingForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListRbacAuthorizationV1RoleBindingForAllNamespacesInput>;
 
 // Output Schema
+export interface ListRbacAuthorizationV1RoleBindingForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    roleRef: { apiGroup?: string; kind: string; name: string };
+    subjects?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListRbacAuthorizationV1RoleBindingForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2561,9 +3556,7 @@ export const ListRbacAuthorizationV1RoleBindingForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListRbacAuthorizationV1RoleBindingForAllNamespacesOutput =
-  typeof ListRbacAuthorizationV1RoleBindingForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListRbacAuthorizationV1RoleBindingForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2629,6 +3622,20 @@ export const listRbacAuthorizationV1RoleBindingForAllNamespaces =
     outputSchema: ListRbacAuthorizationV1RoleBindingForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListRbacAuthorizationV1RoleForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListRbacAuthorizationV1RoleForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2645,11 +3652,63 @@ export const ListRbacAuthorizationV1RoleForAllNamespacesInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/rbac.authorization.k8s.io/v1/roles" }),
-  );
-export type ListRbacAuthorizationV1RoleForAllNamespacesInput =
-  typeof ListRbacAuthorizationV1RoleForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListRbacAuthorizationV1RoleForAllNamespacesInput>;
 
 // Output Schema
+export interface ListRbacAuthorizationV1RoleForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    rules?: {
+      apiGroups?: string[];
+      nonResourceURLs?: string[];
+      resourceNames?: string[];
+      resources?: string[];
+      verbs: string[];
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListRbacAuthorizationV1RoleForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2730,9 +3789,7 @@ export const ListRbacAuthorizationV1RoleForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListRbacAuthorizationV1RoleForAllNamespacesOutput =
-  typeof ListRbacAuthorizationV1RoleForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListRbacAuthorizationV1RoleForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2798,6 +3855,14 @@ export const listRbacAuthorizationV1RoleForAllNamespaces =
     outputSchema: ListRbacAuthorizationV1RoleForAllNamespacesOutput,
   }));
 // Input Schema
+export interface PatchRbacAuthorizationV1ClusterRoleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchRbacAuthorizationV1ClusterRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2811,11 +3876,58 @@ export const PatchRbacAuthorizationV1ClusterRoleInput =
       method: "PATCH",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}",
     }),
-  );
-export type PatchRbacAuthorizationV1ClusterRoleInput =
-  typeof PatchRbacAuthorizationV1ClusterRoleInput.Type;
+  ) as unknown as Schema.Codec<PatchRbacAuthorizationV1ClusterRoleInput>;
 
 // Output Schema
+export interface PatchRbacAuthorizationV1ClusterRoleOutput {
+  aggregationRule?: {
+    clusterRoleSelectors?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    }[];
+  };
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const PatchRbacAuthorizationV1ClusterRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregationRule: Schema.optional(
@@ -2897,9 +4009,7 @@ export const PatchRbacAuthorizationV1ClusterRoleOutput =
         }),
       ),
     ),
-  });
-export type PatchRbacAuthorizationV1ClusterRoleOutput =
-  typeof PatchRbacAuthorizationV1ClusterRoleOutput.Type;
+  }) as unknown as Schema.Codec<PatchRbacAuthorizationV1ClusterRoleOutput>;
 
 // The operation
 /**
@@ -2919,6 +4029,14 @@ export const patchRbacAuthorizationV1ClusterRole =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchRbacAuthorizationV1ClusterRoleBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2932,11 +4050,52 @@ export const PatchRbacAuthorizationV1ClusterRoleBindingInput =
       method: "PATCH",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}",
     }),
-  );
-export type PatchRbacAuthorizationV1ClusterRoleBindingInput =
-  typeof PatchRbacAuthorizationV1ClusterRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<PatchRbacAuthorizationV1ClusterRoleBindingInput>;
 
 // Output Schema
+export interface PatchRbacAuthorizationV1ClusterRoleBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const PatchRbacAuthorizationV1ClusterRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3000,9 +4159,7 @@ export const PatchRbacAuthorizationV1ClusterRoleBindingOutput =
         }),
       ),
     ),
-  });
-export type PatchRbacAuthorizationV1ClusterRoleBindingOutput =
-  typeof PatchRbacAuthorizationV1ClusterRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<PatchRbacAuthorizationV1ClusterRoleBindingOutput>;
 
 // The operation
 /**
@@ -3022,6 +4179,15 @@ export const patchRbacAuthorizationV1ClusterRoleBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchRbacAuthorizationV1NamespacedRoleInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3036,11 +4202,52 @@ export const PatchRbacAuthorizationV1NamespacedRoleInput =
       method: "PATCH",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}",
     }),
-  );
-export type PatchRbacAuthorizationV1NamespacedRoleInput =
-  typeof PatchRbacAuthorizationV1NamespacedRoleInput.Type;
+  ) as unknown as Schema.Codec<PatchRbacAuthorizationV1NamespacedRoleInput>;
 
 // Output Schema
+export interface PatchRbacAuthorizationV1NamespacedRoleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const PatchRbacAuthorizationV1NamespacedRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3100,9 +4307,7 @@ export const PatchRbacAuthorizationV1NamespacedRoleOutput =
         }),
       ),
     ),
-  });
-export type PatchRbacAuthorizationV1NamespacedRoleOutput =
-  typeof PatchRbacAuthorizationV1NamespacedRoleOutput.Type;
+  }) as unknown as Schema.Codec<PatchRbacAuthorizationV1NamespacedRoleOutput>;
 
 // The operation
 /**
@@ -3123,6 +4328,15 @@ export const patchRbacAuthorizationV1NamespacedRole =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchRbacAuthorizationV1NamespacedRoleBindingInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3137,11 +4351,52 @@ export const PatchRbacAuthorizationV1NamespacedRoleBindingInput =
       method: "PATCH",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}",
     }),
-  );
-export type PatchRbacAuthorizationV1NamespacedRoleBindingInput =
-  typeof PatchRbacAuthorizationV1NamespacedRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<PatchRbacAuthorizationV1NamespacedRoleBindingInput>;
 
 // Output Schema
+export interface PatchRbacAuthorizationV1NamespacedRoleBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const PatchRbacAuthorizationV1NamespacedRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3205,9 +4460,7 @@ export const PatchRbacAuthorizationV1NamespacedRoleBindingOutput =
         }),
       ),
     ),
-  });
-export type PatchRbacAuthorizationV1NamespacedRoleBindingOutput =
-  typeof PatchRbacAuthorizationV1NamespacedRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<PatchRbacAuthorizationV1NamespacedRoleBindingOutput>;
 
 // The operation
 /**
@@ -3228,6 +4481,10 @@ export const patchRbacAuthorizationV1NamespacedRoleBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadRbacAuthorizationV1ClusterRoleInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadRbacAuthorizationV1ClusterRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3237,11 +4494,58 @@ export const ReadRbacAuthorizationV1ClusterRoleInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}",
     }),
-  );
-export type ReadRbacAuthorizationV1ClusterRoleInput =
-  typeof ReadRbacAuthorizationV1ClusterRoleInput.Type;
+  ) as unknown as Schema.Codec<ReadRbacAuthorizationV1ClusterRoleInput>;
 
 // Output Schema
+export interface ReadRbacAuthorizationV1ClusterRoleOutput {
+  aggregationRule?: {
+    clusterRoleSelectors?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    }[];
+  };
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const ReadRbacAuthorizationV1ClusterRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregationRule: Schema.optional(
@@ -3323,9 +4627,7 @@ export const ReadRbacAuthorizationV1ClusterRoleOutput =
         }),
       ),
     ),
-  });
-export type ReadRbacAuthorizationV1ClusterRoleOutput =
-  typeof ReadRbacAuthorizationV1ClusterRoleOutput.Type;
+  }) as unknown as Schema.Codec<ReadRbacAuthorizationV1ClusterRoleOutput>;
 
 // The operation
 /**
@@ -3341,6 +4643,10 @@ export const readRbacAuthorizationV1ClusterRole =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadRbacAuthorizationV1ClusterRoleBindingInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3350,11 +4656,52 @@ export const ReadRbacAuthorizationV1ClusterRoleBindingInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}",
     }),
-  );
-export type ReadRbacAuthorizationV1ClusterRoleBindingInput =
-  typeof ReadRbacAuthorizationV1ClusterRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<ReadRbacAuthorizationV1ClusterRoleBindingInput>;
 
 // Output Schema
+export interface ReadRbacAuthorizationV1ClusterRoleBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const ReadRbacAuthorizationV1ClusterRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3418,9 +4765,7 @@ export const ReadRbacAuthorizationV1ClusterRoleBindingOutput =
         }),
       ),
     ),
-  });
-export type ReadRbacAuthorizationV1ClusterRoleBindingOutput =
-  typeof ReadRbacAuthorizationV1ClusterRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReadRbacAuthorizationV1ClusterRoleBindingOutput>;
 
 // The operation
 /**
@@ -3436,6 +4781,11 @@ export const readRbacAuthorizationV1ClusterRoleBinding =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadRbacAuthorizationV1NamespacedRoleInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3446,11 +4796,52 @@ export const ReadRbacAuthorizationV1NamespacedRoleInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}",
     }),
-  );
-export type ReadRbacAuthorizationV1NamespacedRoleInput =
-  typeof ReadRbacAuthorizationV1NamespacedRoleInput.Type;
+  ) as unknown as Schema.Codec<ReadRbacAuthorizationV1NamespacedRoleInput>;
 
 // Output Schema
+export interface ReadRbacAuthorizationV1NamespacedRoleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const ReadRbacAuthorizationV1NamespacedRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3510,9 +4901,7 @@ export const ReadRbacAuthorizationV1NamespacedRoleOutput =
         }),
       ),
     ),
-  });
-export type ReadRbacAuthorizationV1NamespacedRoleOutput =
-  typeof ReadRbacAuthorizationV1NamespacedRoleOutput.Type;
+  }) as unknown as Schema.Codec<ReadRbacAuthorizationV1NamespacedRoleOutput>;
 
 // The operation
 /**
@@ -3529,6 +4918,11 @@ export const readRbacAuthorizationV1NamespacedRole =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadRbacAuthorizationV1NamespacedRoleBindingInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3539,11 +4933,52 @@ export const ReadRbacAuthorizationV1NamespacedRoleBindingInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}",
     }),
-  );
-export type ReadRbacAuthorizationV1NamespacedRoleBindingInput =
-  typeof ReadRbacAuthorizationV1NamespacedRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<ReadRbacAuthorizationV1NamespacedRoleBindingInput>;
 
 // Output Schema
+export interface ReadRbacAuthorizationV1NamespacedRoleBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const ReadRbacAuthorizationV1NamespacedRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3607,9 +5042,7 @@ export const ReadRbacAuthorizationV1NamespacedRoleBindingOutput =
         }),
       ),
     ),
-  });
-export type ReadRbacAuthorizationV1NamespacedRoleBindingOutput =
-  typeof ReadRbacAuthorizationV1NamespacedRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReadRbacAuthorizationV1NamespacedRoleBindingOutput>;
 
 // The operation
 /**
@@ -3626,6 +5059,60 @@ export const readRbacAuthorizationV1NamespacedRoleBinding =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceRbacAuthorizationV1ClusterRoleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  aggregationRule?: {
+    clusterRoleSelectors?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    }[];
+  };
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const ReplaceRbacAuthorizationV1ClusterRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3717,11 +5204,58 @@ export const ReplaceRbacAuthorizationV1ClusterRoleInput =
       method: "PUT",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}",
     }),
-  );
-export type ReplaceRbacAuthorizationV1ClusterRoleInput =
-  typeof ReplaceRbacAuthorizationV1ClusterRoleInput.Type;
+  ) as unknown as Schema.Codec<ReplaceRbacAuthorizationV1ClusterRoleInput>;
 
 // Output Schema
+export interface ReplaceRbacAuthorizationV1ClusterRoleOutput {
+  aggregationRule?: {
+    clusterRoleSelectors?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    }[];
+  };
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const ReplaceRbacAuthorizationV1ClusterRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregationRule: Schema.optional(
@@ -3803,9 +5337,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleOutput =
         }),
       ),
     ),
-  });
-export type ReplaceRbacAuthorizationV1ClusterRoleOutput =
-  typeof ReplaceRbacAuthorizationV1ClusterRoleOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceRbacAuthorizationV1ClusterRoleOutput>;
 
 // The operation
 /**
@@ -3824,6 +5356,54 @@ export const replaceRbacAuthorizationV1ClusterRole =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceRbacAuthorizationV1ClusterRoleBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const ReplaceRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3897,11 +5477,52 @@ export const ReplaceRbacAuthorizationV1ClusterRoleBindingInput =
       method: "PUT",
       path: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}",
     }),
-  );
-export type ReplaceRbacAuthorizationV1ClusterRoleBindingInput =
-  typeof ReplaceRbacAuthorizationV1ClusterRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<ReplaceRbacAuthorizationV1ClusterRoleBindingInput>;
 
 // Output Schema
+export interface ReplaceRbacAuthorizationV1ClusterRoleBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const ReplaceRbacAuthorizationV1ClusterRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3965,9 +5586,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleBindingOutput =
         }),
       ),
     ),
-  });
-export type ReplaceRbacAuthorizationV1ClusterRoleBindingOutput =
-  typeof ReplaceRbacAuthorizationV1ClusterRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceRbacAuthorizationV1ClusterRoleBindingOutput>;
 
 // The operation
 /**
@@ -3986,6 +5605,55 @@ export const replaceRbacAuthorizationV1ClusterRoleBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceRbacAuthorizationV1NamespacedRoleInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const ReplaceRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4056,11 +5724,52 @@ export const ReplaceRbacAuthorizationV1NamespacedRoleInput =
       method: "PUT",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}",
     }),
-  );
-export type ReplaceRbacAuthorizationV1NamespacedRoleInput =
-  typeof ReplaceRbacAuthorizationV1NamespacedRoleInput.Type;
+  ) as unknown as Schema.Codec<ReplaceRbacAuthorizationV1NamespacedRoleInput>;
 
 // Output Schema
+export interface ReplaceRbacAuthorizationV1NamespacedRoleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  rules?: {
+    apiGroups?: string[];
+    nonResourceURLs?: string[];
+    resourceNames?: string[];
+    resources?: string[];
+    verbs: string[];
+  }[];
+}
 export const ReplaceRbacAuthorizationV1NamespacedRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4120,9 +5829,7 @@ export const ReplaceRbacAuthorizationV1NamespacedRoleOutput =
         }),
       ),
     ),
-  });
-export type ReplaceRbacAuthorizationV1NamespacedRoleOutput =
-  typeof ReplaceRbacAuthorizationV1NamespacedRoleOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceRbacAuthorizationV1NamespacedRoleOutput>;
 
 // The operation
 /**
@@ -4142,6 +5849,55 @@ export const replaceRbacAuthorizationV1NamespacedRole =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceRbacAuthorizationV1NamespacedRoleBindingInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const ReplaceRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4216,11 +5972,52 @@ export const ReplaceRbacAuthorizationV1NamespacedRoleBindingInput =
       method: "PUT",
       path: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}",
     }),
-  );
-export type ReplaceRbacAuthorizationV1NamespacedRoleBindingInput =
-  typeof ReplaceRbacAuthorizationV1NamespacedRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<ReplaceRbacAuthorizationV1NamespacedRoleBindingInput>;
 
 // Output Schema
+export interface ReplaceRbacAuthorizationV1NamespacedRoleBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  roleRef: { apiGroup?: string; kind: string; name: string };
+  subjects?: {
+    apiGroup?: string;
+    kind: string;
+    name: string;
+    namespace?: string;
+  }[];
+}
 export const ReplaceRbacAuthorizationV1NamespacedRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4284,9 +6081,7 @@ export const ReplaceRbacAuthorizationV1NamespacedRoleBindingOutput =
         }),
       ),
     ),
-  });
-export type ReplaceRbacAuthorizationV1NamespacedRoleBindingOutput =
-  typeof ReplaceRbacAuthorizationV1NamespacedRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceRbacAuthorizationV1NamespacedRoleBindingOutput>;
 
 // The operation
 /**
@@ -4306,6 +6101,21 @@ export const replaceRbacAuthorizationV1NamespacedRoleBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1ClusterRoleInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1ClusterRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4326,18 +6136,18 @@ export const WatchRbacAuthorizationV1ClusterRoleInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}",
     }),
-  );
-export type WatchRbacAuthorizationV1ClusterRoleInput =
-  typeof WatchRbacAuthorizationV1ClusterRoleInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1ClusterRoleInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1ClusterRoleOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1ClusterRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1ClusterRoleOutput =
-  typeof WatchRbacAuthorizationV1ClusterRoleOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1ClusterRoleOutput>;
 
 // The operation
 /**
@@ -4404,6 +6214,21 @@ export const watchRbacAuthorizationV1ClusterRole =
     outputSchema: WatchRbacAuthorizationV1ClusterRoleOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1ClusterRoleBindingInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1ClusterRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4424,18 +6249,18 @@ export const WatchRbacAuthorizationV1ClusterRoleBindingInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}",
     }),
-  );
-export type WatchRbacAuthorizationV1ClusterRoleBindingInput =
-  typeof WatchRbacAuthorizationV1ClusterRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1ClusterRoleBindingInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1ClusterRoleBindingOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1ClusterRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1ClusterRoleBindingOutput =
-  typeof WatchRbacAuthorizationV1ClusterRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1ClusterRoleBindingOutput>;
 
 // The operation
 /**
@@ -4502,6 +6327,20 @@ export const watchRbacAuthorizationV1ClusterRoleBinding =
     outputSchema: WatchRbacAuthorizationV1ClusterRoleBindingOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1ClusterRoleBindingListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1ClusterRoleBindingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4521,18 +6360,18 @@ export const WatchRbacAuthorizationV1ClusterRoleBindingListInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings",
     }),
-  );
-export type WatchRbacAuthorizationV1ClusterRoleBindingListInput =
-  typeof WatchRbacAuthorizationV1ClusterRoleBindingListInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1ClusterRoleBindingListInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1ClusterRoleBindingListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1ClusterRoleBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1ClusterRoleBindingListOutput =
-  typeof WatchRbacAuthorizationV1ClusterRoleBindingListOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1ClusterRoleBindingListOutput>;
 
 // The operation
 /**
@@ -4598,6 +6437,20 @@ export const watchRbacAuthorizationV1ClusterRoleBindingList =
     outputSchema: WatchRbacAuthorizationV1ClusterRoleBindingListOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1ClusterRoleListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1ClusterRoleListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4617,18 +6470,18 @@ export const WatchRbacAuthorizationV1ClusterRoleListInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles",
     }),
-  );
-export type WatchRbacAuthorizationV1ClusterRoleListInput =
-  typeof WatchRbacAuthorizationV1ClusterRoleListInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1ClusterRoleListInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1ClusterRoleListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1ClusterRoleListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1ClusterRoleListOutput =
-  typeof WatchRbacAuthorizationV1ClusterRoleListOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1ClusterRoleListOutput>;
 
 // The operation
 /**
@@ -4694,6 +6547,22 @@ export const watchRbacAuthorizationV1ClusterRoleList =
     outputSchema: WatchRbacAuthorizationV1ClusterRoleListOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1NamespacedRoleInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1NamespacedRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4715,18 +6584,18 @@ export const WatchRbacAuthorizationV1NamespacedRoleInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}",
     }),
-  );
-export type WatchRbacAuthorizationV1NamespacedRoleInput =
-  typeof WatchRbacAuthorizationV1NamespacedRoleInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1NamespacedRoleInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1NamespacedRoleOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1NamespacedRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1NamespacedRoleOutput =
-  typeof WatchRbacAuthorizationV1NamespacedRoleOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1NamespacedRoleOutput>;
 
 // The operation
 /**
@@ -4794,6 +6663,22 @@ export const watchRbacAuthorizationV1NamespacedRole =
     outputSchema: WatchRbacAuthorizationV1NamespacedRoleOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1NamespacedRoleBindingInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1NamespacedRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4815,18 +6700,18 @@ export const WatchRbacAuthorizationV1NamespacedRoleBindingInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}",
     }),
-  );
-export type WatchRbacAuthorizationV1NamespacedRoleBindingInput =
-  typeof WatchRbacAuthorizationV1NamespacedRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1NamespacedRoleBindingInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1NamespacedRoleBindingOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1NamespacedRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1NamespacedRoleBindingOutput =
-  typeof WatchRbacAuthorizationV1NamespacedRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1NamespacedRoleBindingOutput>;
 
 // The operation
 /**
@@ -4894,6 +6779,21 @@ export const watchRbacAuthorizationV1NamespacedRoleBinding =
     outputSchema: WatchRbacAuthorizationV1NamespacedRoleBindingOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1NamespacedRoleBindingListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1NamespacedRoleBindingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4914,18 +6814,18 @@ export const WatchRbacAuthorizationV1NamespacedRoleBindingListInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings",
     }),
-  );
-export type WatchRbacAuthorizationV1NamespacedRoleBindingListInput =
-  typeof WatchRbacAuthorizationV1NamespacedRoleBindingListInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1NamespacedRoleBindingListInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1NamespacedRoleBindingListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1NamespacedRoleBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1NamespacedRoleBindingListOutput =
-  typeof WatchRbacAuthorizationV1NamespacedRoleBindingListOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1NamespacedRoleBindingListOutput>;
 
 // The operation
 /**
@@ -4992,6 +6892,21 @@ export const watchRbacAuthorizationV1NamespacedRoleBindingList =
     outputSchema: WatchRbacAuthorizationV1NamespacedRoleBindingListOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1NamespacedRoleListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1NamespacedRoleListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -5012,18 +6927,18 @@ export const WatchRbacAuthorizationV1NamespacedRoleListInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles",
     }),
-  );
-export type WatchRbacAuthorizationV1NamespacedRoleListInput =
-  typeof WatchRbacAuthorizationV1NamespacedRoleListInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1NamespacedRoleListInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1NamespacedRoleListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1NamespacedRoleListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1NamespacedRoleListOutput =
-  typeof WatchRbacAuthorizationV1NamespacedRoleListOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1NamespacedRoleListOutput>;
 
 // The operation
 /**
@@ -5090,6 +7005,20 @@ export const watchRbacAuthorizationV1NamespacedRoleList =
     outputSchema: WatchRbacAuthorizationV1NamespacedRoleListOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1RoleBindingListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1RoleBindingListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -5109,18 +7038,18 @@ export const WatchRbacAuthorizationV1RoleBindingListForAllNamespacesInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings",
     }),
-  );
-export type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesInput =
-  typeof WatchRbacAuthorizationV1RoleBindingListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1RoleBindingListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOutput =
-  typeof WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -5186,6 +7115,20 @@ export const watchRbacAuthorizationV1RoleBindingListForAllNamespaces =
     outputSchema: WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchRbacAuthorizationV1RoleListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchRbacAuthorizationV1RoleListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -5205,18 +7148,18 @@ export const WatchRbacAuthorizationV1RoleListForAllNamespacesInput =
       method: "GET",
       path: "/apis/rbac.authorization.k8s.io/v1/watch/roles",
     }),
-  );
-export type WatchRbacAuthorizationV1RoleListForAllNamespacesInput =
-  typeof WatchRbacAuthorizationV1RoleListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchRbacAuthorizationV1RoleListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchRbacAuthorizationV1RoleListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchRbacAuthorizationV1RoleListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchRbacAuthorizationV1RoleListForAllNamespacesOutput =
-  typeof WatchRbacAuthorizationV1RoleListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchRbacAuthorizationV1RoleListForAllNamespacesOutput>;
 
 // The operation
 /**

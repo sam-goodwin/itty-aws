@@ -1,8 +1,24 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostTerminalReadersReaderCollectPaymentMethodInput {
+  reader: string;
+  collect_config?: {
+    allow_redisplay?: "always" | "limited" | "unspecified";
+    enable_customer_cancellation?: boolean;
+    skip_tipping?: boolean;
+    tipping?: { amount_eligible?: number };
+  };
+  expand?: string[];
+  payment_intent: string;
+}
 export const PostTerminalReadersReaderCollectPaymentMethodInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
@@ -28,11 +44,82 @@ export const PostTerminalReadersReaderCollectPaymentMethodInput =
       path: "/v1/terminal/readers/{reader}/collect_payment_method",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostTerminalReadersReaderCollectPaymentMethodInput =
-  typeof PostTerminalReadersReaderCollectPaymentMethodInput.Type;
+  ) as unknown as Schema.Codec<PostTerminalReadersReaderCollectPaymentMethodInput>;
 
 // Output Schema
+export interface PostTerminalReadersReaderCollectPaymentMethodOutput {
+  action: unknown;
+  device_sw_version: string | null;
+  device_type:
+    | "bbpos_chipper2x"
+    | "bbpos_wisepad3"
+    | "bbpos_wisepos_e"
+    | "mobile_phone_reader"
+    | "simulated_stripe_s700"
+    | "simulated_stripe_s710"
+    | "simulated_verifone_m425"
+    | "simulated_verifone_p630"
+    | "simulated_verifone_ux700"
+    | "simulated_verifone_v660p"
+    | "simulated_wisepos_e"
+    | "stripe_m2"
+    | "stripe_s700"
+    | "stripe_s710"
+    | "verifone_P400"
+    | "verifone_m425"
+    | "verifone_p630"
+    | "verifone_ux700"
+    | "verifone_v660p";
+  id: string;
+  ip_address: string | null;
+  label: string;
+  last_seen_at: number | null;
+  livemode: boolean;
+  location:
+    | string
+    | {
+        address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        address_kana?: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+          town: string | null;
+        };
+        address_kanji?: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+          town: string | null;
+        };
+        configuration_overrides?: string;
+        display_name: string;
+        display_name_kana?: string;
+        display_name_kanji?: string;
+        id: string;
+        livemode: boolean;
+        metadata: Record<string, string>;
+        object: "terminal.location";
+        phone?: string;
+      }
+    | null;
+  metadata: Record<string, string>;
+  object: "terminal.reader";
+  serial_number: string;
+  status: "offline" | "online" | null;
+}
 export const PostTerminalReadersReaderCollectPaymentMethodOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
@@ -63,14 +150,57 @@ export const PostTerminalReadersReaderCollectPaymentMethodOutput =
     label: Schema.String,
     last_seen_at: Schema.NullOr(Schema.Number),
     livemode: Schema.Boolean,
-    location: Schema.Unknown,
+    location: Schema.NullOr(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          address: Schema.Struct({
+            city: Schema.NullOr(Schema.String),
+            country: Schema.NullOr(Schema.String),
+            line1: Schema.NullOr(Schema.String),
+            line2: Schema.NullOr(Schema.String),
+            postal_code: Schema.NullOr(Schema.String),
+            state: Schema.NullOr(Schema.String),
+          }),
+          address_kana: Schema.optional(
+            Schema.Struct({
+              city: Schema.NullOr(Schema.String),
+              country: Schema.NullOr(Schema.String),
+              line1: Schema.NullOr(Schema.String),
+              line2: Schema.NullOr(Schema.String),
+              postal_code: Schema.NullOr(Schema.String),
+              state: Schema.NullOr(Schema.String),
+              town: Schema.NullOr(Schema.String),
+            }),
+          ),
+          address_kanji: Schema.optional(
+            Schema.Struct({
+              city: Schema.NullOr(Schema.String),
+              country: Schema.NullOr(Schema.String),
+              line1: Schema.NullOr(Schema.String),
+              line2: Schema.NullOr(Schema.String),
+              postal_code: Schema.NullOr(Schema.String),
+              state: Schema.NullOr(Schema.String),
+              town: Schema.NullOr(Schema.String),
+            }),
+          ),
+          configuration_overrides: Schema.optional(Schema.String),
+          display_name: Schema.String,
+          display_name_kana: Schema.optional(Schema.String),
+          display_name_kanji: Schema.optional(Schema.String),
+          id: Schema.String,
+          livemode: Schema.Boolean,
+          metadata: Schema.Record(Schema.String, Schema.String),
+          object: Schema.Literals(["terminal.location"]),
+          phone: Schema.optional(Schema.String),
+        }),
+      ]),
+    ),
     metadata: Schema.Record(Schema.String, Schema.String),
     object: Schema.Literals(["terminal.reader"]),
     serial_number: Schema.String,
     status: Schema.NullOr(Schema.Literals(["offline", "online"])),
-  });
-export type PostTerminalReadersReaderCollectPaymentMethodOutput =
-  typeof PostTerminalReadersReaderCollectPaymentMethodOutput.Type;
+  }) as unknown as Schema.Codec<PostTerminalReadersReaderCollectPaymentMethodOutput>;
 
 // The operation
 /**

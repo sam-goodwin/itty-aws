@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RequestLimitsUpgradeInput {
+  userId: string;
+  userIdType: "phone_number";
+  fields?: {
+    ssnLast4?: string;
+    dateOfBirth?: { day?: string; month?: string; year?: string };
+  };
+}
 export const RequestLimitsUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String,
@@ -19,13 +27,14 @@ export const RequestLimitsUpgradeInput =
         ),
       }),
     ),
-  }).pipe(T.Http({ method: "POST", path: "/v2/onramp/limits/upgrade" }));
-export type RequestLimitsUpgradeInput = typeof RequestLimitsUpgradeInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/onramp/limits/upgrade" }),
+  ) as unknown as Schema.Codec<RequestLimitsUpgradeInput>;
 
 // Output Schema
+export type RequestLimitsUpgradeOutput = void;
 export const RequestLimitsUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RequestLimitsUpgradeOutput = typeof RequestLimitsUpgradeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RequestLimitsUpgradeOutput>;
 
 // The operation
 /**

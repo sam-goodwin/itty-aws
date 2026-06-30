@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsRevisionsValidateCreateInput {
+  application_id: string;
+  id: string;
+  project_id: string;
+}
 export const AgentApplicationsRevisionsValidateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,16 @@ export const AgentApplicationsRevisionsValidateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/validate/",
     }),
-  );
-export type AgentApplicationsRevisionsValidateCreateInput =
-  typeof AgentApplicationsRevisionsValidateCreateInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsRevisionsValidateCreateInput>;
 
 // Output Schema
+export interface AgentApplicationsRevisionsValidateCreateOutput {
+  ok: boolean;
+  revision_id: string;
+  revision_state: string;
+  errors: { code: string; message: string; pointer: string }[];
+  resolved_natives: string[];
+}
 export const AgentApplicationsRevisionsValidateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ok: Schema.Boolean,
@@ -31,9 +41,7 @@ export const AgentApplicationsRevisionsValidateCreateOutput =
       }),
     ),
     resolved_natives: Schema.Array(Schema.String),
-  });
-export type AgentApplicationsRevisionsValidateCreateOutput =
-  typeof AgentApplicationsRevisionsValidateCreateOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsRevisionsValidateCreateOutput>;
 
 // The operation
 /**

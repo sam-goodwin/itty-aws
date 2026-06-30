@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,10 +17,77 @@ export const IntegrationsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/",
     }),
-  );
-export type IntegrationsRetrieveInput = typeof IntegrationsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsRetrieveInput>;
 
 // Output Schema
+export interface IntegrationsRetrieveOutput {
+  id?: number;
+  kind?:
+    | "anthropic"
+    | "apns"
+    | "aws-s3"
+    | "azure-blob"
+    | "bing-ads"
+    | "clickup"
+    | "customerio-app"
+    | "customerio-track"
+    | "customerio-webhook"
+    | "databricks"
+    | "email"
+    | "firebase"
+    | "github"
+    | "gitlab"
+    | "google-ads"
+    | "google-analytics"
+    | "google-cloud-service-account"
+    | "google-cloud-storage"
+    | "google-pubsub"
+    | "google-search-console"
+    | "google-sheets"
+    | "hubspot"
+    | "intercom"
+    | "jira"
+    | "linear"
+    | "linkedin-ads"
+    | "meta-ads"
+    | "pinterest-ads"
+    | "postgresql"
+    | "reddit-ads"
+    | "s3-compatible"
+    | "salesforce"
+    | "slack"
+    | "slack-posthog-code"
+    | "snapchat"
+    | "stripe"
+    | "tiktok-ads"
+    | "twilio"
+    | "vercel";
+  config?: unknown;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  errors?: string;
+  display_name?: string;
+}
 export const IntegrationsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -78,14 +149,29 @@ export const IntegrationsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     errors: Schema.optional(Schema.String),
     display_name: Schema.optional(Schema.String),
-  });
-export type IntegrationsRetrieveOutput = typeof IntegrationsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsRetrieveOutput>;
 
 // The operation
 /**

@@ -3,6 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateSpendPermissionInput {
+  address: string;
+  network:
+    | "base"
+    | "base-sepolia"
+    | "ethereum"
+    | "ethereum-sepolia"
+    | "optimism"
+    | "arbitrum"
+    | "avalanche"
+    | "polygon";
+  spender: string;
+  token: string;
+  allowance: string;
+  period: string;
+  start: string;
+  end: string;
+  salt?: string;
+  extraData?: string;
+  paymasterUrl?: string;
+}
 export const CreateSpendPermissionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -30,10 +51,45 @@ export const CreateSpendPermissionInput =
       method: "POST",
       path: "/v2/evm/smart-accounts/{address}/spend-permissions",
     }),
-  );
-export type CreateSpendPermissionInput = typeof CreateSpendPermissionInput.Type;
+  ) as unknown as Schema.Codec<CreateSpendPermissionInput>;
 
 // Output Schema
+export interface CreateSpendPermissionOutput {
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  userOpHash: string;
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  status:
+    | "pending"
+    | "signed"
+    | "broadcast"
+    | "complete"
+    | "dropped"
+    | "failed";
+  transactionHash?: string;
+  receipts?: {
+    revert?: { data: string; message: string };
+    transactionHash?: string;
+    blockHash?: string;
+    blockNumber?: number;
+    gasUsed?: string;
+  }[];
+  expiresAt?: string;
+}
 export const CreateSpendPermissionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals([
@@ -83,9 +139,7 @@ export const CreateSpendPermissionOutput =
       ),
     ),
     expiresAt: Schema.optional(Schema.String),
-  });
-export type CreateSpendPermissionOutput =
-  typeof CreateSpendPermissionOutput.Type;
+  }) as unknown as Schema.Codec<CreateSpendPermissionOutput>;
 
 // The operation
 /**

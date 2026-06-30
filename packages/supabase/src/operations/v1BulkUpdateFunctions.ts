@@ -4,13 +4,33 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1BulkUpdateFunctionsInput {
+  ref: string;
+}
 export const V1BulkUpdateFunctionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/functions" }));
-export type V1BulkUpdateFunctionsInput = typeof V1BulkUpdateFunctionsInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/v1/projects/{ref}/functions" }),
+  ) as unknown as Schema.Codec<V1BulkUpdateFunctionsInput>;
 
 // Output Schema
+export interface V1BulkUpdateFunctionsOutput {
+  functions: {
+    id: string;
+    slug: string;
+    name: string;
+    status: "ACTIVE" | "REMOVED" | "THROTTLED";
+    version: number;
+    created_at: number;
+    updated_at: number;
+    verify_jwt?: boolean;
+    import_map?: boolean;
+    entrypoint_path?: string;
+    import_map_path?: string;
+    ezbr_sha256?: string;
+  }[];
+}
 export const V1BulkUpdateFunctionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functions: Schema.Array(
@@ -29,9 +49,7 @@ export const V1BulkUpdateFunctionsOutput =
         ezbr_sha256: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type V1BulkUpdateFunctionsOutput =
-  typeof V1BulkUpdateFunctionsOutput.Type;
+  }) as unknown as Schema.Codec<V1BulkUpdateFunctionsOutput>;
 
 // The operation
 /**

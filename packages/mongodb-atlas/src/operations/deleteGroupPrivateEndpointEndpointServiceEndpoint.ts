@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupPrivateEndpointEndpointServiceEndpointInput {
+  groupId: string;
+  cloudProvider: "AWS" | "AZURE" | "GCP";
+  endpointId: string;
+  endpointServiceId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupPrivateEndpointEndpointServiceEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const DeleteGroupPrivateEndpointEndpointServiceEndpointInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId}",
     }),
-  );
-export type DeleteGroupPrivateEndpointEndpointServiceEndpointInput =
-  typeof DeleteGroupPrivateEndpointEndpointServiceEndpointInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupPrivateEndpointEndpointServiceEndpointInput>;
 
 // Output Schema
+export type DeleteGroupPrivateEndpointEndpointServiceEndpointOutput = void;
 export const DeleteGroupPrivateEndpointEndpointServiceEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupPrivateEndpointEndpointServiceEndpointOutput =
-  typeof DeleteGroupPrivateEndpointEndpointServiceEndpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupPrivateEndpointEndpointServiceEndpointOutput>;
 
 // The operation
 /**

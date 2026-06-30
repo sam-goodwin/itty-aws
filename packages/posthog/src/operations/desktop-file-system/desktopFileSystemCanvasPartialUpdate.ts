@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemCanvasPartialUpdateInput {
+  id: string;
+  project_id: string;
+  code?: string;
+  prompt?: string;
+  name?: string;
+}
 export const DesktopFileSystemCanvasPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,21 @@ export const DesktopFileSystemCanvasPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/desktop_file_system/{id}/canvas/",
     }),
-  );
-export type DesktopFileSystemCanvasPartialUpdateInput =
-  typeof DesktopFileSystemCanvasPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemCanvasPartialUpdateInput>;
 
 // Output Schema
+export interface DesktopFileSystemCanvasPartialUpdateOutput {
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const DesktopFileSystemCanvasPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -32,9 +49,7 @@ export const DesktopFileSystemCanvasPartialUpdateOutput =
     shortcut: Schema.optional(Schema.NullOr(Schema.Boolean)),
     created_at: Schema.optional(Schema.String),
     last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type DesktopFileSystemCanvasPartialUpdateOutput =
-  typeof DesktopFileSystemCanvasPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemCanvasPartialUpdateOutput>;
 
 // The operation
 /**

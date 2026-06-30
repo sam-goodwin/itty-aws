@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface FieldNotesListInput {
+  project_id: string;
+  field_note_status?: "acknowledged" | "dismissed" | "pending" | "resolved";
+  host?: string;
+  limit?: number;
+  offset?: number;
+}
 export const FieldNotesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   field_note_status: Schema.optional(
@@ -13,10 +20,52 @@ export const FieldNotesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   offset: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/field_notes/" }),
-);
-export type FieldNotesListInput = typeof FieldNotesListInput.Type;
+) as unknown as Schema.Codec<FieldNotesListInput>;
 
 // Output Schema
+export interface FieldNotesListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    comment: string;
+    field_note_status?: "pending" | "acknowledged" | "resolved" | "dismissed";
+    resolution?: string | null;
+    url: string;
+    host: string;
+    pathname?: string | null;
+    selector: string;
+    element_text?: string | null;
+    element_chain?: string | null;
+    element_context?: Record<string, unknown>;
+    viewport?: { width?: number; height?: number } | null;
+    screenshot_url?: string | null;
+    created_at: string;
+    updated_at: string | null;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+  }[];
+}
 export const FieldNotesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -60,12 +109,27 @@ export const FieldNotesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     }),
   ),
-});
-export type FieldNotesListOutput = typeof FieldNotesListOutput.Type;
+}) as unknown as Schema.Codec<FieldNotesListOutput>;
 
 // The operation
 /**

@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsReportArtefactsListInput {
+  project_id: string;
+  report_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const SignalsReportArtefactsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,41 @@ export const SignalsReportArtefactsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/reports/{report_id}/artefacts/",
     }),
-  );
-export type SignalsReportArtefactsListInput =
-  typeof SignalsReportArtefactsListInput.Type;
+  ) as unknown as Schema.Codec<SignalsReportArtefactsListInput>;
 
 // Output Schema
+export interface SignalsReportArtefactsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    type:
+      | "video_segment"
+      | "safety_judgment"
+      | "actionability_judgment"
+      | "priority_judgment"
+      | "signal_finding"
+      | "repo_selection"
+      | "suggested_reviewers"
+      | "dismissal"
+      | "code_reference"
+      | "commit"
+      | "task_run"
+      | "note";
+    content: Record<string, unknown> | unknown[];
+    created_at: string;
+    updated_at: string | null;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+    } | null;
+    task_id: string | null;
+  }[];
+}
 export const SignalsReportArtefactsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -41,16 +77,25 @@ export const SignalsReportArtefactsListOutput =
           "task_run",
           "note",
         ]),
-        content: Schema.Unknown,
+        content: Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Array(Schema.Unknown),
+        ]),
         created_at: Schema.String,
         updated_at: Schema.NullOr(Schema.String),
-        created_by: Schema.Unknown,
+        created_by: Schema.NullOr(
+          Schema.Struct({
+            id: Schema.optional(Schema.Number),
+            uuid: Schema.optional(Schema.String),
+            first_name: Schema.optional(Schema.String),
+            last_name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+          }),
+        ),
         task_id: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type SignalsReportArtefactsListOutput =
-  typeof SignalsReportArtefactsListOutput.Type;
+  }) as unknown as Schema.Codec<SignalsReportArtefactsListOutput>;
 
 // The operation
 /**

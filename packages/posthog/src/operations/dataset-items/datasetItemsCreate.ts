@@ -4,6 +4,42 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DatasetItemsCreateInput {
+  project_id: string;
+  id?: string;
+  dataset?: string;
+  input?: unknown;
+  output?: unknown;
+  metadata?: unknown;
+  ref_trace_id?: string | null;
+  ref_timestamp?: string | null;
+  ref_source_id?: string | null;
+  deleted?: boolean | null;
+  created_at?: string;
+  updated_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetItemsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -31,7 +67,23 @@ export const DatasetItemsCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -41,10 +93,44 @@ export const DatasetItemsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/dataset_items/",
     }),
-  );
-export type DatasetItemsCreateInput = typeof DatasetItemsCreateInput.Type;
+  ) as unknown as Schema.Codec<DatasetItemsCreateInput>;
 
 // Output Schema
+export interface DatasetItemsCreateOutput {
+  id?: string;
+  dataset?: string;
+  input?: unknown;
+  output?: unknown;
+  metadata?: unknown;
+  ref_trace_id?: string | null;
+  ref_timestamp?: string | null;
+  ref_source_id?: string | null;
+  deleted?: boolean | null;
+  created_at?: string;
+  updated_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetItemsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -71,13 +157,28 @@ export const DatasetItemsCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
-export type DatasetItemsCreateOutput = typeof DatasetItemsCreateOutput.Type;
+  }) as unknown as Schema.Codec<DatasetItemsCreateOutput>;
 
 // The operation
 /**

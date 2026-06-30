@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -37,7 +37,7 @@ export interface GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   skippedNotThrottled?: number;
 }
 
-export const GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents: Schema.Schema<GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents> =
+export const GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents: Schema.Codec<GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skippedOptedOut: Schema.optional(Schema.Number),
     skippedUnsupported: Schema.optional(Schema.Number),
@@ -62,7 +62,7 @@ export interface GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   delayedUserStopped?: number;
 }
 
-export const GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents: Schema.Schema<GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents> =
+export const GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents: Schema.Codec<GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delayedDeviceDoze: Schema.optional(Schema.Number),
     delayedMessageThrottled: Schema.optional(Schema.Number),
@@ -78,7 +78,7 @@ export interface GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
   priorityLowered?: number;
 }
 
-export const GoogleFirebaseFcmDataV1beta1MessageInsightPercents: Schema.Schema<GoogleFirebaseFcmDataV1beta1MessageInsightPercents> =
+export const GoogleFirebaseFcmDataV1beta1MessageInsightPercents: Schema.Codec<GoogleFirebaseFcmDataV1beta1MessageInsightPercents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priorityLowered: Schema.optional(Schema.Number),
   }).annotate({
@@ -102,7 +102,7 @@ export interface GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
   collapsed?: number;
 }
 
-export const GoogleFirebaseFcmDataV1beta1MessageOutcomePercents: Schema.Schema<GoogleFirebaseFcmDataV1beta1MessageOutcomePercents> =
+export const GoogleFirebaseFcmDataV1beta1MessageOutcomePercents: Schema.Codec<GoogleFirebaseFcmDataV1beta1MessageOutcomePercents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     droppedDeviceInactive: Schema.optional(Schema.Number),
     droppedTooManyPendingMessages: Schema.optional(Schema.Number),
@@ -130,7 +130,7 @@ export interface GoogleFirebaseFcmDataV1beta1Data {
   countNotificationsAccepted?: string;
 }
 
-export const GoogleFirebaseFcmDataV1beta1Data: Schema.Schema<GoogleFirebaseFcmDataV1beta1Data> =
+export const GoogleFirebaseFcmDataV1beta1Data: Schema.Codec<GoogleFirebaseFcmDataV1beta1Data> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyNotificationInsightPercents: Schema.optional(
       GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents,
@@ -157,7 +157,7 @@ export interface GoogleTypeDate {
   month?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
+export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -175,7 +175,7 @@ export interface GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
   analyticsLabel?: string;
 }
 
-export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData: Schema.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData> =
+export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData: Schema.Codec<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(GoogleFirebaseFcmDataV1beta1Data),
     appId: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse: Schema.Schema<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse> =
+export const GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse: Schema.Codec<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidDeliveryData: Schema.optional(
       Schema.Array(GoogleFirebaseFcmDataV1beta1AndroidDeliveryData),
@@ -250,7 +250,7 @@ export const ListProjectsAndroidAppsDeliveryDataRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/deliveryData" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAndroidAppsDeliveryDataRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAndroidAppsDeliveryDataRequest>;
 
 export type ListProjectsAndroidAppsDeliveryDataResponse =
   GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse;

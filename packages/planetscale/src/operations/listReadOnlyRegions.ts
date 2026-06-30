@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListReadOnlyRegionsInput {
+  organization: string;
+  database: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListReadOnlyRegionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,10 +21,38 @@ export const ListReadOnlyRegionsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/read-only-regions",
     }),
-  );
-export type ListReadOnlyRegionsInput = typeof ListReadOnlyRegionsInput.Type;
+  ) as unknown as Schema.Codec<ListReadOnlyRegionsInput>;
 
 // Output Schema
+export interface ListReadOnlyRegionsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    display_name: string;
+    created_at: string;
+    updated_at: string;
+    ready_at: string | null;
+    ready: boolean;
+    actor: { id: string; display_name: string; avatar_url: string };
+    region: {
+      id: string;
+      provider: string;
+      enabled: boolean;
+      public_ip_addresses: string[];
+      display_name: string;
+      location: string;
+      slug: string;
+      current_default: boolean;
+      mysql_supported: boolean;
+      postgresql_supported: boolean;
+    };
+  }[];
+}
 export const ListReadOnlyRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -54,8 +88,7 @@ export const ListReadOnlyRegionsOutput =
         }),
       }),
     ),
-  });
-export type ListReadOnlyRegionsOutput = typeof ListReadOnlyRegionsOutput.Type;
+  }) as unknown as Schema.Codec<ListReadOnlyRegionsOutput>;
 
 // The operation
 /**

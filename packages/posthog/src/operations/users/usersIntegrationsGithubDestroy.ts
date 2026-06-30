@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsGithubDestroyInput {
+  installation_id: string;
+  uuid: string;
+}
 export const UsersIntegrationsGithubDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installation_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const UsersIntegrationsGithubDestroyInput =
       method: "DELETE",
       path: "/api/users/{uuid}/integrations/github/{installation_id}/",
     }),
-  );
-export type UsersIntegrationsGithubDestroyInput =
-  typeof UsersIntegrationsGithubDestroyInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsGithubDestroyInput>;
 
 // Output Schema
+export type UsersIntegrationsGithubDestroyOutput = void;
 export const UsersIntegrationsGithubDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersIntegrationsGithubDestroyOutput =
-  typeof UsersIntegrationsGithubDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersIntegrationsGithubDestroyOutput>;
 
 // The operation
 /**

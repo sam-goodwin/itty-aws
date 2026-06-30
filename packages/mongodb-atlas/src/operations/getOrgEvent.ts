@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgEventInput {
+  orgId: string;
+  eventId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeRaw?: boolean;
+}
 export const GetOrgEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   eventId: Schema.String.pipe(T.PathParam()),
@@ -15,12 +22,12 @@ export const GetOrgEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/orgs/{orgId}/events/{eventId}",
   }),
-);
-export type GetOrgEventInput = typeof GetOrgEventInput.Type;
+) as unknown as Schema.Codec<GetOrgEventInput>;
 
 // Output Schema
-export const GetOrgEventOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgEventOutput = typeof GetOrgEventOutput.Type;
+export type GetOrgEventOutput = void;
+export const GetOrgEventOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgEventOutput>;
 
 // The operation
 /**

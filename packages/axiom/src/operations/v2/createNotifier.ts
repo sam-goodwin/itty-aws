@@ -3,8 +3,32 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { UnprocessableEntity } from "../../errors.ts";
 import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateNotifierInput {
+  createdAt?: string;
+  createdBy?: string;
+  disabledUntil?: string;
+  name: string;
+  properties: {
+    customWebhook?: {
+      body: string;
+      headers?: Record<string, string>;
+      secretHeaders?: Record<string, string>;
+      url: string;
+    };
+    discord?: { discordChannel?: string; discordToken?: string };
+    discordWebhook?: { discordWebhookUrl?: string };
+    email?: { emails?: string[] };
+    microsoftTeams?: { microsoftTeamsUrl?: string };
+    opsgenie?: { apiKey?: string | Redacted.Redacted<string>; isEU?: boolean };
+    pagerduty?: { routingKey?: string; token?: string };
+    slack?: { slackUrl?: string };
+    webhook?: { url?: string };
+  };
+  updatedAt?: string;
+}
 export const CreateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
@@ -66,10 +90,35 @@ export const CreateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   }),
   updatedAt: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/v2/notifiers" }));
-export type CreateNotifierInput = typeof CreateNotifierInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/notifiers" }),
+) as unknown as Schema.Codec<CreateNotifierInput>;
 
 // Output Schema
+export interface CreateNotifierOutput {
+  createdAt?: string;
+  createdBy?: string;
+  disabledUntil?: string;
+  name: string;
+  properties: {
+    customWebhook?: {
+      body: string;
+      headers?: Record<string, string>;
+      secretHeaders?: Record<string, string>;
+      url: string;
+    };
+    discord?: { discordChannel?: string; discordToken?: string };
+    discordWebhook?: { discordWebhookUrl?: string };
+    email?: { emails?: string[] };
+    microsoftTeams?: { microsoftTeamsUrl?: string };
+    opsgenie?: { apiKey?: Redacted.Redacted<string>; isEU?: boolean };
+    pagerduty?: { routingKey?: string; token?: string };
+    slack?: { slackUrl?: string };
+    webhook?: { url?: string };
+  };
+  updatedAt?: string;
+  id?: string;
+}
 export const CreateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
@@ -132,8 +181,7 @@ export const CreateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
   updatedAt: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
-});
-export type CreateNotifierOutput = typeof CreateNotifierOutput.Type;
+}) as unknown as Schema.Codec<CreateNotifierOutput>;
 
 // The operation
 /**

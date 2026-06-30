@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CommentsCountRetrieveInput {
+  project_id: string;
+}
 export const CommentsCountRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,14 +15,12 @@ export const CommentsCountRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/comments/count/",
     }),
-  );
-export type CommentsCountRetrieveInput = typeof CommentsCountRetrieveInput.Type;
+  ) as unknown as Schema.Codec<CommentsCountRetrieveInput>;
 
 // Output Schema
+export type CommentsCountRetrieveOutput = void;
 export const CommentsCountRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CommentsCountRetrieveOutput =
-  typeof CommentsCountRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommentsCountRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListDeployOperationsInput {
+  number: number;
+  organization: string;
+  database: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListDeployOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     number: Schema.Number.pipe(T.PathParam()),
@@ -16,10 +23,44 @@ export const ListDeployOperationsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/operations",
     }),
-  );
-export type ListDeployOperationsInput = typeof ListDeployOperationsInput.Type;
+  ) as unknown as Schema.Codec<ListDeployOperationsInput>;
 
 // Output Schema
+export interface ListDeployOperationsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    state:
+      | "pending"
+      | "queued"
+      | "in_progress"
+      | "complete"
+      | "cancelled"
+      | "error";
+    keyspace_name: string;
+    table_name: string;
+    operation_name: string;
+    eta_seconds: number | null;
+    progress_percentage: number | null;
+    deploy_error_docs_url: string | null;
+    ddl_statement: string;
+    syntax_highlighted_ddl: string;
+    created_at: string;
+    updated_at: string;
+    throttled_at: string | null;
+    can_drop_data: boolean;
+    table_locked: boolean;
+    table_recently_used: boolean;
+    table_recently_used_at: string | null;
+    removed_foreign_key_names: string[] | null;
+    deploy_errors: string | null;
+  }[];
+}
 export const ListDeployOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -58,8 +99,7 @@ export const ListDeployOperationsOutput =
         deploy_errors: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ListDeployOperationsOutput = typeof ListDeployOperationsOutput.Type;
+  }) as unknown as Schema.Codec<ListDeployOperationsOutput>;
 
 // The operation
 /**

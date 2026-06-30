@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateBranchNeonAuthNewUserInput {
+  project_id: string;
+  branch_id: string;
+  email: string;
+  name?: string;
+}
 export const CreateBranchNeonAuthNewUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,17 +20,16 @@ export const CreateBranchNeonAuthNewUserInput =
       method: "POST",
       path: "/projects/{project_id}/branches/{branch_id}/auth/users",
     }),
-  );
-export type CreateBranchNeonAuthNewUserInput =
-  typeof CreateBranchNeonAuthNewUserInput.Type;
+  ) as unknown as Schema.Codec<CreateBranchNeonAuthNewUserInput>;
 
 // Output Schema
+export interface CreateBranchNeonAuthNewUserOutput {
+  id: string;
+}
 export const CreateBranchNeonAuthNewUserOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type CreateBranchNeonAuthNewUserOutput =
-  typeof CreateBranchNeonAuthNewUserOutput.Type;
+  }) as unknown as Schema.Codec<CreateBranchNeonAuthNewUserOutput>;
 
 // The operation
 /**

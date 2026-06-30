@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgLiveMigrationAvailableProjectsInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListOrgLiveMigrationAvailableProjectsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const ListOrgLiveMigrationAvailableProjectsInput =
       method: "GET",
       path: "/api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects",
     }),
-  );
-export type ListOrgLiveMigrationAvailableProjectsInput =
-  typeof ListOrgLiveMigrationAvailableProjectsInput.Type;
+  ) as unknown as Schema.Codec<ListOrgLiveMigrationAvailableProjectsInput>;
 
 // Output Schema
+export type ListOrgLiveMigrationAvailableProjectsOutput = void;
 export const ListOrgLiveMigrationAvailableProjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgLiveMigrationAvailableProjectsOutput =
-  typeof ListOrgLiveMigrationAvailableProjectsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgLiveMigrationAvailableProjectsOutput>;
 
 // The operation
 /**

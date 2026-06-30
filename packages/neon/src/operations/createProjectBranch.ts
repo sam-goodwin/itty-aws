@@ -2,8 +2,38 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateProjectBranchInput {
+  project_id: string;
+  endpoints?: {
+    type: "read_only" | "read_write";
+    settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    autoscaling_limit_min_cu?: number;
+    autoscaling_limit_max_cu?: number;
+    provisioner?: string;
+    suspend_timeout_seconds?: number;
+  }[];
+  branch?: {
+    parent_id?: string;
+    name?: string;
+    parent_lsn?: string;
+    parent_timestamp?: string;
+    protected?: boolean;
+    archived?: boolean;
+    init_source?: string;
+    expires_at?: string;
+  };
+  annotation_value?: Record<string, string>;
+}
 export const CreateProjectBranchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -51,10 +81,166 @@ export const CreateProjectBranchInput =
     annotation_value: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
-  }).pipe(T.Http({ method: "POST", path: "/projects/{project_id}/branches" }));
-export type CreateProjectBranchInput = typeof CreateProjectBranchInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/projects/{project_id}/branches" }),
+  ) as unknown as Schema.Codec<CreateProjectBranchInput>;
 
 // Output Schema
+export interface CreateProjectBranchOutput {
+  branch: {
+    id: string;
+    project_id: string;
+    parent_id?: string;
+    parent_lsn?: string;
+    parent_timestamp?: string;
+    name: string;
+    current_state: string;
+    pending_state?: string;
+    state_changed_at: string;
+    logical_size?: number;
+    creation_source: string;
+    primary?: boolean;
+    default: boolean;
+    protected: boolean;
+    cpu_used_sec: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    written_data_bytes: number;
+    data_transfer_bytes: number;
+    created_at: string;
+    updated_at: string;
+    ttl_interval_seconds?: number;
+    expires_at?: string;
+    last_reset_at?: string;
+    created_by?: { name?: string; image?: string };
+    init_source?: string;
+    restore_status?: string;
+    restored_from?: string;
+    restored_as?: string;
+    restricted_actions?: { name: string; reason: string }[];
+    recovery?: {
+      deleted_at: string;
+      recoverable_until: string;
+      deletion_method: "user" | "ttl";
+    };
+  };
+  endpoints: {
+    host: string;
+    id: string;
+    name?: string;
+    project_id: string;
+    branch_id: string;
+    autoscaling_limit_min_cu: number;
+    autoscaling_limit_max_cu: number;
+    region_id: string;
+    type: "read_only" | "read_write";
+    current_state: "init" | "active" | "idle";
+    pending_state?: "init" | "active" | "idle";
+    settings: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pooler_enabled: boolean;
+    pooler_mode: "transaction";
+    disabled: boolean;
+    passwordless_access: boolean;
+    last_active?: string;
+    creation_source: string;
+    created_at: string;
+    updated_at: string;
+    started_at?: string;
+    suspended_at?: string;
+    proxy_host: string;
+    suspend_timeout_seconds: number;
+    provisioner: string;
+    compute_release_version?: string;
+  }[];
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+  roles: {
+    branch_id: string;
+    name: string;
+    password?: Redacted.Redacted<string>;
+    protected?: boolean;
+    authentication_method?: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  databases: {
+    id: number;
+    branch_id: string;
+    name: string;
+    owner_name: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  connection_uris?: {
+    connection_uri: Redacted.Redacted<string>;
+    connection_parameters: {
+      database: string;
+      password: Redacted.Redacted<string>;
+      role: string;
+      host: string;
+      pooler_host: string;
+    };
+  }[];
+}
 export const CreateProjectBranchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
@@ -246,8 +432,7 @@ export const CreateProjectBranchOutput =
         }),
       ),
     ),
-  });
-export type CreateProjectBranchOutput = typeof CreateProjectBranchOutput.Type;
+  }) as unknown as Schema.Codec<CreateProjectBranchOutput>;
 
 // The operation
 /**

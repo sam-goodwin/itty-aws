@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateBackupScheduleInput {
+  ref: string;
+  schedule_for: string;
+}
 export const V1UpdateBackupScheduleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,18 +17,18 @@ export const V1UpdateBackupScheduleInput =
       method: "PATCH",
       path: "/v1/projects/{ref}/database/backups/schedule",
     }),
-  );
-export type V1UpdateBackupScheduleInput =
-  typeof V1UpdateBackupScheduleInput.Type;
+  ) as unknown as Schema.Codec<V1UpdateBackupScheduleInput>;
 
 // Output Schema
+export interface V1UpdateBackupScheduleOutput {
+  schedule_for: string;
+  updated_at: string;
+}
 export const V1UpdateBackupScheduleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schedule_for: Schema.String,
     updated_at: Schema.String,
-  });
-export type V1UpdateBackupScheduleOutput =
-  typeof V1UpdateBackupScheduleOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateBackupScheduleOutput>;
 
 // The operation
 /**

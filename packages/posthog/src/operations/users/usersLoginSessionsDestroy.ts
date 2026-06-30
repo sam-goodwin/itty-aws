@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersLoginSessionsDestroyInput {
+  session_id: string;
+  uuid: string;
+}
 export const UsersLoginSessionsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const UsersLoginSessionsDestroyInput =
       method: "DELETE",
       path: "/api/users/{uuid}/login_sessions/{session_id}/",
     }),
-  );
-export type UsersLoginSessionsDestroyInput =
-  typeof UsersLoginSessionsDestroyInput.Type;
+  ) as unknown as Schema.Codec<UsersLoginSessionsDestroyInput>;
 
 // Output Schema
+export type UsersLoginSessionsDestroyOutput = void;
 export const UsersLoginSessionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersLoginSessionsDestroyOutput =
-  typeof UsersLoginSessionsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersLoginSessionsDestroyOutput>;
 
 // The operation
 /**

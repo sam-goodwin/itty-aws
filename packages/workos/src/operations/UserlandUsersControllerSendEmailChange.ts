@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerSendEmailChangeInput {
+  id: string;
+  new_email?: string;
+}
 export const UserlandUsersControllerSendEmailChangeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,31 @@ export const UserlandUsersControllerSendEmailChangeInput =
       method: "POST",
       path: "/user_management/users/{id}/email_change/send",
     }),
-  );
-export type UserlandUsersControllerSendEmailChangeInput =
-  typeof UserlandUsersControllerSendEmailChangeInput.Type;
+  ) as unknown as Schema.Codec<UserlandUsersControllerSendEmailChangeInput>;
 
 // Output Schema
+export interface UserlandUsersControllerSendEmailChangeOutput {
+  object?: string;
+  user?: {
+    object?: string;
+    id?: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    profile_picture_url?: string | null;
+    email?: string;
+    email_verified?: boolean;
+    external_id?: string | null;
+    metadata?: Record<string, string>;
+    last_sign_in_at?: string | null;
+    locale?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  };
+  new_email?: string;
+  expires_at?: string;
+  created_at?: string;
+}
 export const UserlandUsersControllerSendEmailChangeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -42,9 +66,7 @@ export const UserlandUsersControllerSendEmailChangeOutput =
     new_email: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-  });
-export type UserlandUsersControllerSendEmailChangeOutput =
-  typeof UserlandUsersControllerSendEmailChangeOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerSendEmailChangeOutput>;
 
 // The operation
 /**

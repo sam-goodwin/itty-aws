@@ -2,8 +2,17 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AddBranchNeonAuthOauthProviderInput {
+  project_id: string;
+  branch_id: string;
+  id: "google" | "github" | "microsoft" | "vercel";
+  client_id?: string;
+  client_secret?: string | Redacted.Redacted<string>;
+  microsoft_tenant_id?: string;
+}
 export const AddBranchNeonAuthOauthProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,20 +26,22 @@ export const AddBranchNeonAuthOauthProviderInput =
       method: "POST",
       path: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers",
     }),
-  );
-export type AddBranchNeonAuthOauthProviderInput =
-  typeof AddBranchNeonAuthOauthProviderInput.Type;
+  ) as unknown as Schema.Codec<AddBranchNeonAuthOauthProviderInput>;
 
 // Output Schema
+export interface AddBranchNeonAuthOauthProviderOutput {
+  id: "google" | "github" | "microsoft" | "vercel";
+  type: "standard" | "shared";
+  client_id?: string;
+  client_secret?: Redacted.Redacted<string>;
+}
 export const AddBranchNeonAuthOauthProviderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
     type: Schema.Literals(["standard", "shared"]),
     client_id: Schema.optional(Schema.String),
     client_secret: Schema.optional(SensitiveOutputString),
-  });
-export type AddBranchNeonAuthOauthProviderOutput =
-  typeof AddBranchNeonAuthOauthProviderOutput.Type;
+  }) as unknown as Schema.Codec<AddBranchNeonAuthOauthProviderOutput>;
 
 // The operation
 /**

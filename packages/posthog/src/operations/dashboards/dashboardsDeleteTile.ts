@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DashboardsDeleteTileInput {
+  id: number;
+  project_id: string;
+  format?: "json" | "txt";
+  tile_id: number;
+}
 export const DashboardsDeleteTileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -14,13 +20,12 @@ export const DashboardsDeleteTileInput =
       method: "POST",
       path: "/api/projects/{project_id}/dashboards/{id}/delete_tile/",
     }),
-  );
-export type DashboardsDeleteTileInput = typeof DashboardsDeleteTileInput.Type;
+  ) as unknown as Schema.Codec<DashboardsDeleteTileInput>;
 
 // Output Schema
+export type DashboardsDeleteTileOutput = void;
 export const DashboardsDeleteTileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DashboardsDeleteTileOutput = typeof DashboardsDeleteTileOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDeleteTileOutput>;
 
 // The operation
 /**

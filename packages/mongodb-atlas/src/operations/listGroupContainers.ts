@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupContainersInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  providerName: "AWS" | "AZURE" | "GCP";
+}
 export const ListGroupContainersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,13 +27,12 @@ export const ListGroupContainersInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/containers",
     }),
-  );
-export type ListGroupContainersInput = typeof ListGroupContainersInput.Type;
+  ) as unknown as Schema.Codec<ListGroupContainersInput>;
 
 // Output Schema
+export type ListGroupContainersOutput = void;
 export const ListGroupContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupContainersOutput = typeof ListGroupContainersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupContainersOutput>;
 
 // The operation
 /**

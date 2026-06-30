@@ -4,6 +4,79 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ActivityLogListInput {
+  project_id: string;
+  item_id?: string;
+  page?: number;
+  page_size?: number;
+  scope?:
+    | "Cohort"
+    | "FeatureFlag"
+    | "Person"
+    | "Group"
+    | "Insight"
+    | "Plugin"
+    | "PluginConfig"
+    | "HogFunction"
+    | "HogFlow"
+    | "DataManagement"
+    | "EventDefinition"
+    | "PropertyDefinition"
+    | "Notebook"
+    | "Endpoint"
+    | "EndpointVersion"
+    | "Dashboard"
+    | "Replay"
+    | "Experiment"
+    | "ExperimentHoldout"
+    | "ExperimentSavedMetric"
+    | "Survey"
+    | "EarlyAccessFeature"
+    | "SessionRecordingPlaylist"
+    | "Comment"
+    | "Team"
+    | "Project"
+    | "ErrorTrackingIssue"
+    | "DataWarehouseSavedQuery"
+    | "LegalDocument"
+    | "Organization"
+    | "OrganizationDomain"
+    | "OrganizationMembership"
+    | "Role"
+    | "UserGroup"
+    | "BatchExport"
+    | "BatchImport"
+    | "ExportedAsset"
+    | "Integration"
+    | "Annotation"
+    | "Tag"
+    | "TaggedItem"
+    | "Subscription"
+    | "PersonalAPIKey"
+    | "ProjectSecretAPIKey"
+    | "OAuthApplication"
+    | "User"
+    | "Action"
+    | "AlertConfiguration"
+    | "Threshold"
+    | "AlertSubscription"
+    | "ExternalDataSource"
+    | "ExternalDataSchema"
+    | "Evaluation"
+    | "LLMTrace"
+    | "WebAnalyticsFilterPreset"
+    | "CustomerProfileConfig"
+    | "Log"
+    | "LogsAlertConfiguration"
+    | "LogsExclusionRule"
+    | "DashboardWidget"
+    | "ProductTour"
+    | "Ticket"
+    | "InstanceSetting"
+    | "SignalScoutConfig";
+  scopes?: string;
+  user?: string;
+}
 export const ActivityLogListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   item_id: Schema.optional(Schema.String),
@@ -81,10 +154,50 @@ export const ActivityLogListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   user: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/activity_log/" }),
-);
-export type ActivityLogListInput = typeof ActivityLogListInput.Type;
+) as unknown as Schema.Codec<ActivityLogListInput>;
 
 // Output Schema
+export interface ActivityLogListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    user?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    unread?: boolean;
+    team_id?: number | null;
+    organization_id?: string | null;
+    was_impersonated?: boolean | null;
+    is_system?: boolean | null;
+    client?: string | null;
+    ip_address?: string | null;
+    activity?: string;
+    item_id?: string | null;
+    scope?: string;
+    detail?: unknown;
+    created_at?: string;
+  }[];
+}
 export const ActivityLogListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -106,7 +219,23 @@ export const ActivityLogListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -125,8 +254,7 @@ export const ActivityLogListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ActivityLogListOutput = typeof ActivityLogListOutput.Type;
+}) as unknown as Schema.Codec<ActivityLogListOutput>;
 
 // The operation
 /**

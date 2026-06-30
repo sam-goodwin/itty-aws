@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DeleteDatabasePostgresCidrInput {
+  organization: string;
+  database: string;
+  id: string;
+}
 export const DeleteDatabasePostgresCidrInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const DeleteDatabasePostgresCidrInput =
       method: "DELETE",
       path: "/organizations/{organization}/databases/{database}/cidrs/{id}",
     }),
-  );
-export type DeleteDatabasePostgresCidrInput =
-  typeof DeleteDatabasePostgresCidrInput.Type;
+  ) as unknown as Schema.Codec<DeleteDatabasePostgresCidrInput>;
 
 // Output Schema
+export type DeleteDatabasePostgresCidrOutput = void;
 export const DeleteDatabasePostgresCidrOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteDatabasePostgresCidrOutput =
-  typeof DeleteDatabasePostgresCidrOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDatabasePostgresCidrOutput>;
 
 // The operation
 /**

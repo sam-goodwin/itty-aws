@@ -4,6 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupIntegrationInput {
+  integrationType:
+    | "PAGER_DUTY"
+    | "SLACK"
+    | "DATADOG"
+    | "NEW_RELIC"
+    | "OPS_GENIE"
+    | "VICTOR_OPS"
+    | "WEBHOOK"
+    | "HIP_CHAT"
+    | "PROMETHEUS"
+    | "MICROSOFT_TEAMS";
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationType: Schema.Literals([
@@ -26,15 +42,12 @@ export const DeleteGroupIntegrationInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
     }),
-  );
-export type DeleteGroupIntegrationInput =
-  typeof DeleteGroupIntegrationInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupIntegrationInput>;
 
 // Output Schema
+export type DeleteGroupIntegrationOutput = void;
 export const DeleteGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupIntegrationOutput =
-  typeof DeleteGroupIntegrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupIntegrationOutput>;
 
 // The operation
 /**

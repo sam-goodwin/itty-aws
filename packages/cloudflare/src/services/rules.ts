@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service rules
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -41,6 +41,399 @@ export class ListNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListListsResponseResult {
+  /** The unique ID of the list. */
+  id: string;
+  /** The RFC 3339 timestamp of when the list was created. */
+  createdOn: string;
+  /** The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects). */
+  kind: "ip" | "redirect" | "hostname" | "asn" | (string & {});
+  /** The RFC 3339 timestamp of when the list was last modified. */
+  modifiedOn: string;
+  /** An informative name for the list. Use this name in filter and rule expressions. */
+  name: string;
+  /** The number of items in the list. */
+  numItems: number;
+  /** The number of [filters](/api/resources/filters/) referencing the list. */
+  numReferencingFilters: number;
+  /** An informative summary of the list. */
+  description?: string | null;
+}
+const ListListsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    kind: Schema.Union([
+      Schema.Literals(["ip", "redirect", "hostname", "asn"]),
+      Schema.String,
+    ]),
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    numItems: Schema.Number,
+    numReferencingFilters: Schema.Number,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      kind: "kind",
+      modifiedOn: "modified_on",
+      name: "name",
+      numItems: "num_items",
+      numReferencingFilters: "num_referencing_filters",
+      description: "description",
+    }),
+  ),
+) as unknown as Schema.Codec<ListListsResponseResult>;
+
+interface ListsBulkOperationPendingOrRunning {
+  /** The unique operation ID of the asynchronous action. */
+  id: string;
+  /** The current status of the asynchronous operation. */
+  status: "pending" | "running" | (string & {});
+}
+const ListsBulkOperationPendingOrRunning =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      status: Schema.Union([
+        Schema.Literals(["pending", "running"]),
+        Schema.String,
+      ]),
+    }),
+  ) as unknown as Schema.Codec<ListsBulkOperationPendingOrRunning>;
+
+interface ListsBulkOperationCompleted {
+  /** The unique operation ID of the asynchronous action. */
+  id: string;
+  /** The RFC 3339 timestamp of when the operation was completed. */
+  completed: string;
+  /** The current status of the asynchronous operation. */
+  status: "completed";
+}
+const ListsBulkOperationCompleted = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      completed: Schema.String,
+      status: Schema.Literal("completed"),
+    }),
+) as unknown as Schema.Codec<ListsBulkOperationCompleted>;
+
+interface ListsBulkOperationFailed {
+  /** The unique operation ID of the asynchronous action. */
+  id: string;
+  /** The RFC 3339 timestamp of when the operation was completed. */
+  completed: string;
+  /** A message describing the error when the status is `failed`. */
+  error: string;
+  /** The current status of the asynchronous operation. */
+  status: "failed";
+}
+const ListsBulkOperationFailed = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      completed: Schema.String,
+      error: Schema.String,
+      status: Schema.Literal("failed"),
+    }),
+) as unknown as Schema.Codec<ListsBulkOperationFailed>;
+
+interface ListsListItemIPFull {
+  /** Defines the unique ID of the item in the List. */
+  id: string;
+  /** The RFC 3339 timestamp of when the list was created. */
+  createdOn: string;
+  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
+  ip: string;
+  /** The RFC 3339 timestamp of when the list was last modified. */
+  modifiedOn: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string | null;
+}
+const ListsListItemIPFull = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    ip: Schema.String,
+    modifiedOn: Schema.String,
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      ip: "ip",
+      modifiedOn: "modified_on",
+      comment: "comment",
+    }),
+  ),
+) as unknown as Schema.Codec<ListsListItemIPFull>;
+
+interface Hostname {
+  urlHostname: string;
+  /** Only applies to wildcard hostnames (e.g., \ .example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked. */
+  excludeExactHostname?: boolean | null;
+}
+const Hostname = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    urlHostname: Schema.String,
+    excludeExactHostname: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      urlHostname: "url_hostname",
+      excludeExactHostname: "exclude_exact_hostname",
+    }),
+  ),
+) as unknown as Schema.Codec<Hostname>;
+
+interface ListsListItemHostnameFull {
+  /** Defines the unique ID of the item in the List. */
+  id: string;
+  /** The RFC 3339 timestamp of when the list was created. */
+  createdOn: string;
+  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (\ ), and the hyphen (-). */
+  hostname: { urlHostname: string; excludeExactHostname?: boolean | null };
+  /** The RFC 3339 timestamp of when the list was last modified. */
+  modifiedOn: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string | null;
+}
+const ListsListItemHostnameFull = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      hostname: Hostname,
+      modifiedOn: Schema.String,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        hostname: "hostname",
+        modifiedOn: "modified_on",
+        comment: "comment",
+      }),
+    ),
+) as unknown as Schema.Codec<ListsListItemHostnameFull>;
+
+interface Redirect {
+  sourceUrl: string;
+  targetUrl: string;
+  includeSubdomains?: boolean | null;
+  preservePathSuffix?: boolean | null;
+  preserveQueryString?: boolean | null;
+  statusCode?: "301" | "302" | "307" | "308" | (string & {}) | null;
+  subpathMatching?: boolean | null;
+}
+const Redirect = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    sourceUrl: Schema.String,
+    targetUrl: Schema.String,
+    includeSubdomains: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    preservePathSuffix: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    preserveQueryString: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    statusCode: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["301", "302", "307", "308"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    subpathMatching: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      sourceUrl: "source_url",
+      targetUrl: "target_url",
+      includeSubdomains: "include_subdomains",
+      preservePathSuffix: "preserve_path_suffix",
+      preserveQueryString: "preserve_query_string",
+      statusCode: "status_code",
+      subpathMatching: "subpath_matching",
+    }),
+  ),
+) as unknown as Schema.Codec<Redirect>;
+
+interface ListsListItemRedirectFull {
+  /** Defines the unique ID of the item in the List. */
+  id: string;
+  /** The RFC 3339 timestamp of when the list was created. */
+  createdOn: string;
+  /** The RFC 3339 timestamp of when the list was last modified. */
+  modifiedOn: string;
+  /** The definition of the redirect. */
+  redirect: {
+    sourceUrl: string;
+    targetUrl: string;
+    includeSubdomains?: boolean | null;
+    preservePathSuffix?: boolean | null;
+    preserveQueryString?: boolean | null;
+    statusCode?: "301" | "302" | "307" | "308" | (string & {}) | null;
+    subpathMatching?: boolean | null;
+  };
+  /** Defines an informative summary of the list item. */
+  comment?: string | null;
+}
+const ListsListItemRedirectFull = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      modifiedOn: Schema.String,
+      redirect: Redirect,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        redirect: "redirect",
+        comment: "comment",
+      }),
+    ),
+) as unknown as Schema.Codec<ListsListItemRedirectFull>;
+
+interface ListsListItemASNFull {
+  /** Defines the unique ID of the item in the List. */
+  id: string;
+  /** Defines a non-negative 32 bit integer. */
+  asn: number;
+  /** The RFC 3339 timestamp of when the list was created. */
+  createdOn: string;
+  /** The RFC 3339 timestamp of when the list was last modified. */
+  modifiedOn: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string | null;
+}
+const ListsListItemASNFull = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    asn: Schema.Number,
+    createdOn: Schema.String,
+    modifiedOn: Schema.String,
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      asn: "asn",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      comment: "comment",
+    }),
+  ),
+) as unknown as Schema.Codec<ListsListItemASNFull>;
+
+interface ListListItemsResponseResultInfoCursors {
+  after?: string | null;
+}
+const ListListItemsResponseResultInfoCursors =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<ListListItemsResponseResultInfoCursors>;
+
+interface ListListItemsResponseResultInfo {
+  cursors?: { after?: string | null } | null;
+}
+const ListListItemsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cursors: Schema.optional(
+        Schema.Union([ListListItemsResponseResultInfoCursors, Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListListItemsResponseResultInfo>;
+
+interface ListsListItemIPComment {
+  /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
+  ip: string;
+  /** Defines an informative summary of the list item. */
+  comment?: string | null;
+}
+const ListsListItemIPComment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ip: Schema.String,
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ListsListItemIPComment>;
+
+interface ListsListItemRedirectComment {
+  /** The definition of the redirect. */
+  redirect: {
+    sourceUrl: string;
+    targetUrl: string;
+    includeSubdomains?: boolean | null;
+    preservePathSuffix?: boolean | null;
+    preserveQueryString?: boolean | null;
+    statusCode?: "301" | "302" | "307" | "308" | (string & {}) | null;
+    subpathMatching?: boolean | null;
+  };
+  /** Defines an informative summary of the list item. */
+  comment?: string | null;
+}
+const ListsListItemRedirectComment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      redirect: Redirect,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<ListsListItemRedirectComment>;
+
+interface ListsListItemHostnameComment {
+  /** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (\ ), and the hyphen (-). */
+  hostname: { urlHostname: string; excludeExactHostname?: boolean | null };
+  /** Defines an informative summary of the list item. */
+  comment?: string | null;
+}
+const ListsListItemHostnameComment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      hostname: Hostname,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<ListsListItemHostnameComment>;
+
+interface ListsListItemASNComment {
+  /** Defines a non-negative 32 bit integer. */
+  asn: number;
+  /** Defines an informative summary of the list item. */
+  comment?: string | null;
+}
+const ListsListItemASNComment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    asn: Schema.Number,
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ListsListItemASNComment>;
+
+interface Item {
+  /** Defines the unique ID of the item in the List. */
+  id: string;
+}
+const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }),
+) as unknown as Schema.Codec<Item>;
+
+// =============================================================================
 // List
 // =============================================================================
 
@@ -60,7 +453,7 @@ export const GetListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/rules/lists/{listId}",
     }),
   ),
-) as unknown as Schema.Schema<GetListRequest>;
+) as unknown as Schema.Codec<GetListRequest>;
 
 export interface GetListResponse {
   /** The unique ID of the list. */
@@ -108,7 +501,7 @@ export const GetListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       }),
     )
     .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetListResponse>;
+) as unknown as Schema.Codec<GetListResponse>;
 
 export type GetListError = DefaultErrors | ListNotFound | Forbidden;
 
@@ -134,7 +527,7 @@ export const ListListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/rules/lists" }),
   ),
-) as unknown as Schema.Schema<ListListsRequest>;
+) as unknown as Schema.Codec<ListListsRequest>;
 
 export interface ListListsResponse {
   result: {
@@ -152,36 +545,9 @@ export interface ListListsResponse {
 export const ListListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          createdOn: Schema.String,
-          kind: Schema.Union([
-            Schema.Literals(["ip", "redirect", "hostname", "asn"]),
-            Schema.String,
-          ]),
-          modifiedOn: Schema.String,
-          name: Schema.String,
-          numItems: Schema.Number,
-          numReferencingFilters: Schema.Number,
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdOn: "created_on",
-            kind: "kind",
-            modifiedOn: "modified_on",
-            name: "name",
-            numItems: "num_items",
-            numReferencingFilters: "num_referencing_filters",
-            description: "description",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListListsResponseResult),
     }),
-) as unknown as Schema.Schema<ListListsResponse>;
+) as unknown as Schema.Codec<ListListsResponse>;
 
 export type ListListsError = DefaultErrors | Forbidden;
 
@@ -224,7 +590,7 @@ export const CreateListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "POST", path: "/accounts/{account_id}/rules/lists" }),
     ),
-) as unknown as Schema.Schema<CreateListRequest>;
+) as unknown as Schema.Codec<CreateListRequest>;
 
 export interface CreateListResponse {
   /** The unique ID of the list. */
@@ -273,7 +639,7 @@ export const CreateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateListResponse>;
+) as unknown as Schema.Codec<CreateListResponse>;
 
 export type CreateListError = DefaultErrors | ListAlreadyExists | Forbidden;
 
@@ -308,7 +674,7 @@ export const UpdateListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rules/lists/{listId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateListRequest>;
+) as unknown as Schema.Codec<UpdateListRequest>;
 
 export interface UpdateListResponse {
   /** The unique ID of the list. */
@@ -357,7 +723,7 @@ export const UpdateListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateListResponse>;
+) as unknown as Schema.Codec<UpdateListResponse>;
 
 export type UpdateListError = DefaultErrors | ListNotFound | Forbidden;
 
@@ -389,7 +755,7 @@ export const DeleteListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rules/lists/{listId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteListRequest>;
+) as unknown as Schema.Codec<DeleteListRequest>;
 
 export interface DeleteListResponse {
   /** The unique ID of the list. */
@@ -401,7 +767,7 @@ export const DeleteListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteListResponse>;
+) as unknown as Schema.Codec<DeleteListResponse>;
 
 export type DeleteListError = DefaultErrors | ListNotFound | Forbidden;
 
@@ -437,7 +803,7 @@ export const GetListBulkOperationRequest =
         path: "/accounts/{account_id}/rules/lists/bulk_operations/{operationId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetListBulkOperationRequest>;
+  ) as unknown as Schema.Codec<GetListBulkOperationRequest>;
 
 export type GetListBulkOperationResponse =
   | { id: string; status: "pending" | "running" | (string & {}) }
@@ -447,26 +813,11 @@ export type GetListBulkOperationResponse =
 export const GetListBulkOperationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Union([
-      Schema.Struct({
-        id: Schema.String,
-        completed: Schema.String,
-        error: Schema.String,
-        status: Schema.Literal("failed"),
-      }),
-      Schema.Struct({
-        id: Schema.String,
-        completed: Schema.String,
-        status: Schema.Literal("completed"),
-      }),
-      Schema.Struct({
-        id: Schema.String,
-        status: Schema.Union([
-          Schema.Literals(["pending", "running"]),
-          Schema.String,
-        ]),
-      }),
+      ListsBulkOperationFailed,
+      ListsBulkOperationCompleted,
+      ListsBulkOperationPendingOrRunning,
     ]).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetListBulkOperationResponse>;
+  ) as unknown as Schema.Codec<GetListBulkOperationResponse>;
 
 export type GetListBulkOperationError =
   | DefaultErrors
@@ -507,7 +858,7 @@ export const GetListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rules/lists/{listId}/items/{itemId}",
       }),
     ),
-) as unknown as Schema.Schema<GetListItemRequest>;
+) as unknown as Schema.Codec<GetListItemRequest>;
 
 export type GetListItemResponse =
   | {
@@ -550,112 +901,12 @@ export type GetListItemResponse =
 export const GetListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Union([
-      Schema.Struct({
-        id: Schema.String,
-        createdOn: Schema.String,
-        ip: Schema.String,
-        modifiedOn: Schema.String,
-        comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          ip: "ip",
-          modifiedOn: "modified_on",
-          comment: "comment",
-        }),
-      ),
-      Schema.Struct({
-        id: Schema.String,
-        createdOn: Schema.String,
-        hostname: Schema.Struct({
-          urlHostname: Schema.String,
-          excludeExactHostname: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            urlHostname: "url_hostname",
-            excludeExactHostname: "exclude_exact_hostname",
-          }),
-        ),
-        modifiedOn: Schema.String,
-        comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          hostname: "hostname",
-          modifiedOn: "modified_on",
-          comment: "comment",
-        }),
-      ),
-      Schema.Struct({
-        id: Schema.String,
-        createdOn: Schema.String,
-        modifiedOn: Schema.String,
-        redirect: Schema.Struct({
-          sourceUrl: Schema.String,
-          targetUrl: Schema.String,
-          includeSubdomains: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          preservePathSuffix: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          preserveQueryString: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          statusCode: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["301", "302", "307", "308"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          subpathMatching: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            sourceUrl: "source_url",
-            targetUrl: "target_url",
-            includeSubdomains: "include_subdomains",
-            preservePathSuffix: "preserve_path_suffix",
-            preserveQueryString: "preserve_query_string",
-            statusCode: "status_code",
-            subpathMatching: "subpath_matching",
-          }),
-        ),
-        comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          redirect: "redirect",
-          comment: "comment",
-        }),
-      ),
-      Schema.Struct({
-        id: Schema.String,
-        asn: Schema.Number,
-        createdOn: Schema.String,
-        modifiedOn: Schema.String,
-        comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          asn: "asn",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          comment: "comment",
-        }),
-      ),
+      ListsListItemIPFull,
+      ListsListItemHostnameFull,
+      ListsListItemRedirectFull,
+      ListsListItemASNFull,
     ]).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetListItemResponse>;
+) as unknown as Schema.Codec<GetListItemResponse>;
 
 export type GetListItemError = DefaultErrors;
 
@@ -695,7 +946,7 @@ export const ListListItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rules/lists/{listId}/items",
       }),
     ),
-) as unknown as Schema.Schema<ListListItemsRequest>;
+) as unknown as Schema.Codec<ListListItemsRequest>;
 
 export interface ListListItemsResponse {
   result: (
@@ -747,139 +998,17 @@ export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            createdOn: Schema.String,
-            ip: Schema.String,
-            modifiedOn: Schema.String,
-            comment: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdOn: "created_on",
-              ip: "ip",
-              modifiedOn: "modified_on",
-              comment: "comment",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdOn: Schema.String,
-            hostname: Schema.Struct({
-              urlHostname: Schema.String,
-              excludeExactHostname: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                urlHostname: "url_hostname",
-                excludeExactHostname: "exclude_exact_hostname",
-              }),
-            ),
-            modifiedOn: Schema.String,
-            comment: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdOn: "created_on",
-              hostname: "hostname",
-              modifiedOn: "modified_on",
-              comment: "comment",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdOn: Schema.String,
-            modifiedOn: Schema.String,
-            redirect: Schema.Struct({
-              sourceUrl: Schema.String,
-              targetUrl: Schema.String,
-              includeSubdomains: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              preservePathSuffix: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              preserveQueryString: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              statusCode: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["301", "302", "307", "308"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              subpathMatching: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                sourceUrl: "source_url",
-                targetUrl: "target_url",
-                includeSubdomains: "include_subdomains",
-                preservePathSuffix: "preserve_path_suffix",
-                preserveQueryString: "preserve_query_string",
-                statusCode: "status_code",
-                subpathMatching: "subpath_matching",
-              }),
-            ),
-            comment: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdOn: "created_on",
-              modifiedOn: "modified_on",
-              redirect: "redirect",
-              comment: "comment",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            asn: Schema.Number,
-            createdOn: Schema.String,
-            modifiedOn: Schema.String,
-            comment: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              asn: "asn",
-              createdOn: "created_on",
-              modifiedOn: "modified_on",
-              comment: "comment",
-            }),
-          ),
+          ListsListItemIPFull,
+          ListsListItemHostnameFull,
+          ListsListItemRedirectFull,
+          ListsListItemASNFull,
         ]),
       ),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            cursors: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  after: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ListListItemsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListListItemsResponse>;
+) as unknown as Schema.Codec<ListListItemsResponse>;
 
 export type ListListItemsError = DefaultErrors | ListNotFound | Forbidden;
 
@@ -934,53 +1063,10 @@ export const CreateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            ip: Schema.String,
-            comment: Schema.optional(Schema.String),
-          }),
-          Schema.Struct({
-            redirect: Schema.Struct({
-              sourceUrl: Schema.String,
-              targetUrl: Schema.String,
-              includeSubdomains: Schema.optional(Schema.Boolean),
-              preservePathSuffix: Schema.optional(Schema.Boolean),
-              preserveQueryString: Schema.optional(Schema.Boolean),
-              statusCode: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["301", "302", "307", "308"]),
-                  Schema.String,
-                ]),
-              ),
-              subpathMatching: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                sourceUrl: "source_url",
-                targetUrl: "target_url",
-                includeSubdomains: "include_subdomains",
-                preservePathSuffix: "preserve_path_suffix",
-                preserveQueryString: "preserve_query_string",
-                statusCode: "status_code",
-                subpathMatching: "subpath_matching",
-              }),
-            ),
-            comment: Schema.optional(Schema.String),
-          }),
-          Schema.Struct({
-            hostname: Schema.Struct({
-              urlHostname: Schema.String,
-              excludeExactHostname: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                urlHostname: "url_hostname",
-                excludeExactHostname: "exclude_exact_hostname",
-              }),
-            ),
-            comment: Schema.optional(Schema.String),
-          }),
-          Schema.Struct({
-            asn: Schema.Number,
-            comment: Schema.optional(Schema.String),
-          }),
+          ListsListItemIPComment,
+          ListsListItemRedirectComment,
+          ListsListItemHostnameComment,
+          ListsListItemASNComment,
         ]),
       ).pipe(T.HttpBody()),
     }).pipe(
@@ -989,7 +1075,7 @@ export const CreateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rules/lists/{listId}/items",
       }),
     ),
-) as unknown as Schema.Schema<CreateListItemRequest>;
+) as unknown as Schema.Codec<CreateListItemRequest>;
 
 export interface CreateListItemResponse {
   /** The unique operation ID of the asynchronous action. */
@@ -1003,7 +1089,7 @@ export const CreateListItemResponse =
     })
       .pipe(Schema.encodeKeys({ operationId: "operation_id" }))
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateListItemResponse>;
+  ) as unknown as Schema.Codec<CreateListItemResponse>;
 
 export type CreateListItemError = DefaultErrors;
 
@@ -1052,53 +1138,10 @@ export const UpdateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            ip: Schema.String,
-            comment: Schema.optional(Schema.String),
-          }),
-          Schema.Struct({
-            redirect: Schema.Struct({
-              sourceUrl: Schema.String,
-              targetUrl: Schema.String,
-              includeSubdomains: Schema.optional(Schema.Boolean),
-              preservePathSuffix: Schema.optional(Schema.Boolean),
-              preserveQueryString: Schema.optional(Schema.Boolean),
-              statusCode: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["301", "302", "307", "308"]),
-                  Schema.String,
-                ]),
-              ),
-              subpathMatching: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                sourceUrl: "source_url",
-                targetUrl: "target_url",
-                includeSubdomains: "include_subdomains",
-                preservePathSuffix: "preserve_path_suffix",
-                preserveQueryString: "preserve_query_string",
-                statusCode: "status_code",
-                subpathMatching: "subpath_matching",
-              }),
-            ),
-            comment: Schema.optional(Schema.String),
-          }),
-          Schema.Struct({
-            hostname: Schema.Struct({
-              urlHostname: Schema.String,
-              excludeExactHostname: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                urlHostname: "url_hostname",
-                excludeExactHostname: "exclude_exact_hostname",
-              }),
-            ),
-            comment: Schema.optional(Schema.String),
-          }),
-          Schema.Struct({
-            asn: Schema.Number,
-            comment: Schema.optional(Schema.String),
-          }),
+          ListsListItemIPComment,
+          ListsListItemRedirectComment,
+          ListsListItemHostnameComment,
+          ListsListItemASNComment,
         ]),
       ).pipe(T.HttpBody()),
     }).pipe(
@@ -1107,7 +1150,7 @@ export const UpdateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rules/lists/{listId}/items",
       }),
     ),
-) as unknown as Schema.Schema<UpdateListItemRequest>;
+) as unknown as Schema.Codec<UpdateListItemRequest>;
 
 export interface UpdateListItemResponse {
   /** The unique operation ID of the asynchronous action. */
@@ -1121,7 +1164,7 @@ export const UpdateListItemResponse =
     })
       .pipe(Schema.encodeKeys({ operationId: "operation_id" }))
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateListItemResponse>;
+  ) as unknown as Schema.Codec<UpdateListItemResponse>;
 
 export type UpdateListItemError = DefaultErrors | ListNotFound | Forbidden;
 
@@ -1149,20 +1192,14 @@ export const DeleteListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       listId: Schema.String.pipe(T.HttpPath("listId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      items: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-          }),
-        ),
-      ),
+      items: Schema.optional(Schema.Array(Item)),
     }).pipe(
       T.Http({
         method: "DELETE",
         path: "/accounts/{account_id}/rules/lists/{listId}/items",
       }),
     ),
-) as unknown as Schema.Schema<DeleteListItemRequest>;
+) as unknown as Schema.Codec<DeleteListItemRequest>;
 
 export interface DeleteListItemResponse {
   /** The unique operation ID of the asynchronous action. */
@@ -1176,7 +1213,7 @@ export const DeleteListItemResponse =
     })
       .pipe(Schema.encodeKeys({ operationId: "operation_id" }))
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteListItemResponse>;
+  ) as unknown as Schema.Codec<DeleteListItemResponse>;
 
 export type DeleteListItemError = DefaultErrors;
 

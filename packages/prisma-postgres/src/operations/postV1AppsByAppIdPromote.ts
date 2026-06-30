@@ -9,25 +9,31 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface PostV1AppsByAppIdPromoteInput {
+  appId: string;
+  deploymentId?: string;
+  versionId?: string;
+}
 export const PostV1AppsByAppIdPromoteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     deploymentId: Schema.optional(Schema.String),
     versionId: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v1/apps/{appId}/promote" }));
-export type PostV1AppsByAppIdPromoteInput =
-  typeof PostV1AppsByAppIdPromoteInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/apps/{appId}/promote" }),
+  ) as unknown as Schema.Codec<PostV1AppsByAppIdPromoteInput>;
 
 // Output Schema
+export interface PostV1AppsByAppIdPromoteOutput {
+  data: { appEndpointDomain: string; reassignedDomains: number };
+}
 export const PostV1AppsByAppIdPromoteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       appEndpointDomain: Schema.String,
       reassignedDomains: Schema.Number,
     }),
-  });
-export type PostV1AppsByAppIdPromoteOutput =
-  typeof PostV1AppsByAppIdPromoteOutput.Type;
+  }) as unknown as Schema.Codec<PostV1AppsByAppIdPromoteOutput>;
 
 // The operation
 /**

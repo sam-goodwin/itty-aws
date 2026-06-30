@@ -3,6 +3,35 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsIntervieweesCreateInput {
+  project_id: string;
+  topic_id: string;
+  id: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  interviewee_identifier: string;
+  agent_context: string;
+}
 export const UserInterviewTopicsIntervieweesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -19,7 +48,23 @@ export const UserInterviewTopicsIntervieweesCreateInput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     interviewee_identifier: Schema.String,
@@ -29,11 +74,36 @@ export const UserInterviewTopicsIntervieweesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/user_interview_topics/{topic_id}/interviewees/",
     }),
-  );
-export type UserInterviewTopicsIntervieweesCreateInput =
-  typeof UserInterviewTopicsIntervieweesCreateInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsIntervieweesCreateInput>;
 
 // Output Schema
+export interface UserInterviewTopicsIntervieweesCreateOutput {
+  id: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  interviewee_identifier: string;
+  agent_context: string;
+}
 export const UserInterviewTopicsIntervieweesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -48,14 +118,28 @@ export const UserInterviewTopicsIntervieweesCreateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     interviewee_identifier: Schema.String,
     agent_context: Schema.String,
-  });
-export type UserInterviewTopicsIntervieweesCreateOutput =
-  typeof UserInterviewTopicsIntervieweesCreateOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewTopicsIntervieweesCreateOutput>;
 
 // The operation
 /**

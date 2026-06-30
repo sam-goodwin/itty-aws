@@ -18,6 +18,6 @@ describe("getRoleById", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

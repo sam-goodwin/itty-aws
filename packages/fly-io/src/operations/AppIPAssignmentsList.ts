@@ -4,13 +4,26 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AppIPAssignmentsListInput {
+  app_name: string;
+}
 export const AppIPAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/ip_assignments" }));
-export type AppIPAssignmentsListInput = typeof AppIPAssignmentsListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/apps/{app_name}/ip_assignments" }),
+  ) as unknown as Schema.Codec<AppIPAssignmentsListInput>;
 
 // Output Schema
+export interface AppIPAssignmentsListOutput {
+  ips?: {
+    created_at?: string;
+    ip?: string;
+    region?: string;
+    service_name?: string;
+    shared?: boolean;
+  }[];
+}
 export const AppIPAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ips: Schema.optional(
@@ -24,8 +37,7 @@ export const AppIPAssignmentsListOutput =
         }),
       ),
     ),
-  });
-export type AppIPAssignmentsListOutput = typeof AppIPAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<AppIPAssignmentsListOutput>;
 
 // The operation
 /**

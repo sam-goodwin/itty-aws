@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListBranchesInput {
+  organization: string;
+  database: string;
+  q?: string;
+  production?: boolean;
+  safe_migrations?: boolean;
+  order?: "asc" | "desc";
+  page?: number;
+  per_page?: number;
+}
 export const ListBranchesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -18,10 +28,72 @@ export const ListBranchesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches",
   }),
-);
-export type ListBranchesInput = typeof ListBranchesInput.Type;
+) as unknown as Schema.Codec<ListBranchesInput>;
 
 // Output Schema
+export interface ListBranchesOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+    restore_checklist_completed_at: string | null;
+    schema_last_updated_at: string | null;
+    kind: "mysql" | "postgresql";
+    mysql_address?: string;
+    mysql_edge_address?: string;
+    state: "pending" | "sleep_in_progress" | "sleeping" | "awakening" | "ready";
+    direct_vtgate?: boolean;
+    vtgate_size?: string;
+    vtgate_count?: number;
+    cluster_name: string;
+    cluster_iops: number | null;
+    ready: boolean;
+    schema_ready?: boolean;
+    metal: boolean;
+    production: boolean;
+    safe_migrations: boolean;
+    sharded?: boolean;
+    shard_count?: number;
+    keyspace_count?: number;
+    stale_schema: boolean;
+    actor: { id: string; display_name: string; avatar_url: string } | null;
+    restored_from_branch: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    } | null;
+    private_edge_connectivity: boolean;
+    has_replicas: boolean;
+    has_read_only_replicas: boolean;
+    html_url: string;
+    url: string;
+    region: {
+      id: string;
+      provider: string;
+      enabled: boolean;
+      public_ip_addresses: string[];
+      display_name: string;
+      location: string;
+      slug: string;
+      current_default: boolean;
+      mysql_supported: boolean;
+      postgresql_supported: boolean;
+    };
+    parent_branch: string | null;
+    vtgate_options?: Record<string, unknown>;
+    cluster_architecture?: string;
+  }[];
+}
 export const ListBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
@@ -102,8 +174,7 @@ export const ListBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       cluster_architecture: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ListBranchesOutput = typeof ListBranchesOutput.Type;
+}) as unknown as Schema.Codec<ListBranchesOutput>;
 
 // The operation
 /**

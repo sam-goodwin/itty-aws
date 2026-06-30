@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -46,7 +46,7 @@ export interface ApigatewayApi {
   labels?: Record<string, string>;
 }
 
-export const ApigatewayApi: Schema.Schema<ApigatewayApi> =
+export const ApigatewayApi: Schema.Codec<ApigatewayApi> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     managedService: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface ApigatewayStatus {
   message?: string;
 }
 
-export const ApigatewayStatus: Schema.Schema<ApigatewayStatus> =
+export const ApigatewayStatus: Schema.Codec<ApigatewayStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -88,7 +88,7 @@ export interface ApigatewayOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const ApigatewayOperation: Schema.Schema<ApigatewayOperation> =
+export const ApigatewayOperation: Schema.Codec<ApigatewayOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     error: Schema.optional(ApigatewayStatus),
@@ -123,7 +123,7 @@ export interface ApigatewayGateway {
     | (string & {});
 }
 
-export const ApigatewayGateway: Schema.Schema<ApigatewayGateway> =
+export const ApigatewayGateway: Schema.Codec<ApigatewayGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -142,7 +142,7 @@ export interface ApigatewayApiConfigFile {
   path?: string;
 }
 
-export const ApigatewayApiConfigFile: Schema.Schema<ApigatewayApiConfigFile> =
+export const ApigatewayApiConfigFile: Schema.Codec<ApigatewayApiConfigFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contents: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface ApigatewayApiConfigOpenApiDocument {
   document?: ApigatewayApiConfigFile;
 }
 
-export const ApigatewayApiConfigOpenApiDocument: Schema.Schema<ApigatewayApiConfigOpenApiDocument> =
+export const ApigatewayApiConfigOpenApiDocument: Schema.Codec<ApigatewayApiConfigOpenApiDocument> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(ApigatewayApiConfigFile),
   }).annotate({ identifier: "ApigatewayApiConfigOpenApiDocument" });
@@ -163,7 +163,7 @@ export interface ApigatewayBackendConfig {
   googleServiceAccount?: string;
 }
 
-export const ApigatewayBackendConfig: Schema.Schema<ApigatewayBackendConfig> =
+export const ApigatewayBackendConfig: Schema.Codec<ApigatewayBackendConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleServiceAccount: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApigatewayBackendConfig" });
@@ -173,7 +173,7 @@ export interface ApigatewayGatewayConfig {
   backendConfig?: ApigatewayBackendConfig;
 }
 
-export const ApigatewayGatewayConfig: Schema.Schema<ApigatewayGatewayConfig> =
+export const ApigatewayGatewayConfig: Schema.Codec<ApigatewayGatewayConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backendConfig: Schema.optional(ApigatewayBackendConfig),
   }).annotate({ identifier: "ApigatewayGatewayConfig" });
@@ -185,7 +185,7 @@ export interface ApigatewayApiConfigGrpcServiceDefinition {
   source?: ReadonlyArray<ApigatewayApiConfigFile>;
 }
 
-export const ApigatewayApiConfigGrpcServiceDefinition: Schema.Schema<ApigatewayApiConfigGrpcServiceDefinition> =
+export const ApigatewayApiConfigGrpcServiceDefinition: Schema.Codec<ApigatewayApiConfigGrpcServiceDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileDescriptorSet: Schema.optional(ApigatewayApiConfigFile),
     source: Schema.optional(Schema.Array(ApigatewayApiConfigFile)),
@@ -226,7 +226,7 @@ export interface ApigatewayApiConfig {
   labels?: Record<string, string>;
 }
 
-export const ApigatewayApiConfig: Schema.Schema<ApigatewayApiConfig> =
+export const ApigatewayApiConfig: Schema.Codec<ApigatewayApiConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     openapiDocuments: Schema.optional(
       Schema.Array(ApigatewayApiConfigOpenApiDocument),
@@ -257,7 +257,7 @@ export interface ApigatewayListApiConfigsResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const ApigatewayListApiConfigsResponse: Schema.Schema<ApigatewayListApiConfigsResponse> =
+export const ApigatewayListApiConfigsResponse: Schema.Codec<ApigatewayListApiConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiConfigs: Schema.optional(Schema.Array(ApigatewayApiConfig)),
     nextPageToken: Schema.optional(Schema.String),
@@ -266,7 +266,7 @@ export const ApigatewayListApiConfigsResponse: Schema.Schema<ApigatewayListApiCo
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -282,7 +282,7 @@ export interface ApigatewayExpr {
   location?: string;
 }
 
-export const ApigatewayExpr: Schema.Schema<ApigatewayExpr> =
+export const ApigatewayExpr: Schema.Codec<ApigatewayExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -299,7 +299,7 @@ export interface ApigatewayBinding {
   role?: string;
 }
 
-export const ApigatewayBinding: Schema.Schema<ApigatewayBinding> =
+export const ApigatewayBinding: Schema.Codec<ApigatewayBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(ApigatewayExpr),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -313,7 +313,7 @@ export interface ApigatewayOperationMetadataDiagnostic {
   message?: string;
 }
 
-export const ApigatewayOperationMetadataDiagnostic: Schema.Schema<ApigatewayOperationMetadataDiagnostic> =
+export const ApigatewayOperationMetadataDiagnostic: Schema.Codec<ApigatewayOperationMetadataDiagnostic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -328,7 +328,7 @@ export interface ApigatewayListApisResponse {
   nextPageToken?: string;
 }
 
-export const ApigatewayListApisResponse: Schema.Schema<ApigatewayListApisResponse> =
+export const ApigatewayListApisResponse: Schema.Codec<ApigatewayListApisResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apis: Schema.optional(Schema.Array(ApigatewayApi)),
     unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
@@ -348,7 +348,7 @@ export interface ApigatewayLocation {
   labels?: Record<string, string>;
 }
 
-export const ApigatewayLocation: Schema.Schema<ApigatewayLocation> =
+export const ApigatewayLocation: Schema.Codec<ApigatewayLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     displayName: Schema.optional(Schema.String),
@@ -364,7 +364,7 @@ export interface ApigatewayListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ApigatewayListLocationsResponse: Schema.Schema<ApigatewayListLocationsResponse> =
+export const ApigatewayListLocationsResponse: Schema.Codec<ApigatewayListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(ApigatewayLocation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -375,7 +375,7 @@ export interface ApigatewayTestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const ApigatewayTestIamPermissionsResponse: Schema.Schema<ApigatewayTestIamPermissionsResponse> =
+export const ApigatewayTestIamPermissionsResponse: Schema.Codec<ApigatewayTestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ApigatewayTestIamPermissionsResponse" });
@@ -389,7 +389,7 @@ export interface ApigatewayListGatewaysResponse {
   nextPageToken?: string;
 }
 
-export const ApigatewayListGatewaysResponse: Schema.Schema<ApigatewayListGatewaysResponse> =
+export const ApigatewayListGatewaysResponse: Schema.Codec<ApigatewayListGatewaysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
     gateways: Schema.optional(Schema.Array(ApigatewayGateway)),
@@ -408,7 +408,7 @@ export interface ApigatewayAuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const ApigatewayAuditLogConfig: Schema.Schema<ApigatewayAuditLogConfig> =
+export const ApigatewayAuditLogConfig: Schema.Codec<ApigatewayAuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -421,7 +421,7 @@ export interface ApigatewayAuditConfig {
   auditLogConfigs?: ReadonlyArray<ApigatewayAuditLogConfig>;
 }
 
-export const ApigatewayAuditConfig: Schema.Schema<ApigatewayAuditConfig> =
+export const ApigatewayAuditConfig: Schema.Codec<ApigatewayAuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(ApigatewayAuditLogConfig)),
@@ -436,7 +436,7 @@ export interface ApigatewayListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ApigatewayListOperationsResponse: Schema.Schema<ApigatewayListOperationsResponse> =
+export const ApigatewayListOperationsResponse: Schema.Codec<ApigatewayListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(ApigatewayOperation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -445,7 +445,7 @@ export const ApigatewayListOperationsResponse: Schema.Schema<ApigatewayListOpera
 
 export interface ApigatewayCancelOperationRequest {}
 
-export const ApigatewayCancelOperationRequest: Schema.Schema<ApigatewayCancelOperationRequest> =
+export const ApigatewayCancelOperationRequest: Schema.Codec<ApigatewayCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ApigatewayCancelOperationRequest",
   });
@@ -455,7 +455,7 @@ export interface ApigatewayTestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const ApigatewayTestIamPermissionsRequest: Schema.Schema<ApigatewayTestIamPermissionsRequest> =
+export const ApigatewayTestIamPermissionsRequest: Schema.Codec<ApigatewayTestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ApigatewayTestIamPermissionsRequest" });
@@ -471,7 +471,7 @@ export interface ApigatewayPolicy {
   bindings?: ReadonlyArray<ApigatewayBinding>;
 }
 
-export const ApigatewayPolicy: Schema.Schema<ApigatewayPolicy> =
+export const ApigatewayPolicy: Schema.Codec<ApigatewayPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     auditConfigs: Schema.optional(Schema.Array(ApigatewayAuditConfig)),
@@ -486,7 +486,7 @@ export interface ApigatewaySetIamPolicyRequest {
   policy?: ApigatewayPolicy;
 }
 
-export const ApigatewaySetIamPolicyRequest: Schema.Schema<ApigatewaySetIamPolicyRequest> =
+export const ApigatewaySetIamPolicyRequest: Schema.Codec<ApigatewaySetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(ApigatewayPolicy),
@@ -511,7 +511,7 @@ export interface ApigatewayOperationMetadata {
   apiVersion?: string;
 }
 
-export const ApigatewayOperationMetadata: Schema.Schema<ApigatewayOperationMetadata> =
+export const ApigatewayOperationMetadata: Schema.Codec<ApigatewayOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -604,7 +604,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ApigatewayListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -639,7 +639,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = ApigatewayLocation;
 export const GetProjectsLocationsResponse =
@@ -673,7 +673,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -709,7 +709,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -759,7 +759,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   ApigatewayListOperationsResponse;
@@ -798,7 +798,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = ApigatewayOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -838,7 +838,7 @@ export const PatchProjectsLocationsGatewaysRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGatewaysRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsGatewaysRequest>;
 
 export type PatchProjectsLocationsGatewaysResponse = ApigatewayOperation;
 export const PatchProjectsLocationsGatewaysResponse =
@@ -883,7 +883,7 @@ export const TestIamPermissionsProjectsLocationsGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGatewaysRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsGatewaysRequest>;
 
 export type TestIamPermissionsProjectsLocationsGatewaysResponse =
   ApigatewayTestIamPermissionsResponse;
@@ -930,7 +930,7 @@ export const CreateProjectsLocationsGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGatewaysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGatewaysRequest>;
 
 export type CreateProjectsLocationsGatewaysResponse = ApigatewayOperation;
 export const CreateProjectsLocationsGatewaysResponse =
@@ -978,7 +978,7 @@ export const ListProjectsLocationsGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/gateways" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGatewaysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGatewaysRequest>;
 
 export type ListProjectsLocationsGatewaysResponse =
   ApigatewayListGatewaysResponse;
@@ -1017,7 +1017,7 @@ export const GetProjectsLocationsGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGatewaysRequest>;
 
 export type GetProjectsLocationsGatewaysResponse = ApigatewayGateway;
 export const GetProjectsLocationsGatewaysResponse =
@@ -1058,7 +1058,7 @@ export const SetIamPolicyProjectsLocationsGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGatewaysRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsGatewaysRequest>;
 
 export type SetIamPolicyProjectsLocationsGatewaysResponse = ApigatewayPolicy;
 export const SetIamPolicyProjectsLocationsGatewaysResponse =
@@ -1099,7 +1099,7 @@ export const GetIamPolicyProjectsLocationsGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsGatewaysRequest>;
 
 export type GetIamPolicyProjectsLocationsGatewaysResponse = ApigatewayPolicy;
 export const GetIamPolicyProjectsLocationsGatewaysResponse =
@@ -1133,7 +1133,7 @@ export const DeleteProjectsLocationsGatewaysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGatewaysRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGatewaysRequest>;
 
 export type DeleteProjectsLocationsGatewaysResponse = ApigatewayOperation;
 export const DeleteProjectsLocationsGatewaysResponse =
@@ -1175,7 +1175,7 @@ export const PatchProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsApisRequest>;
 
 export type PatchProjectsLocationsApisResponse = ApigatewayOperation;
 export const PatchProjectsLocationsApisResponse =
@@ -1220,7 +1220,7 @@ export const TestIamPermissionsProjectsLocationsApisRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsApisRequest>;
 
 export type TestIamPermissionsProjectsLocationsApisResponse =
   ApigatewayTestIamPermissionsResponse;
@@ -1263,7 +1263,7 @@ export const CreateProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/apis", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsApisRequest>;
 
 export type CreateProjectsLocationsApisResponse = ApigatewayOperation;
 export const CreateProjectsLocationsApisResponse =
@@ -1311,7 +1311,7 @@ export const ListProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/apis" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsApisRequest>;
 
 export type ListProjectsLocationsApisResponse = ApigatewayListApisResponse;
 export const ListProjectsLocationsApisResponse =
@@ -1349,7 +1349,7 @@ export const GetProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsApisRequest>;
 
 export type GetProjectsLocationsApisResponse = ApigatewayApi;
 export const GetProjectsLocationsApisResponse =
@@ -1390,7 +1390,7 @@ export const SetIamPolicyProjectsLocationsApisRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsApisRequest>;
 
 export type SetIamPolicyProjectsLocationsApisResponse = ApigatewayPolicy;
 export const SetIamPolicyProjectsLocationsApisResponse =
@@ -1431,7 +1431,7 @@ export const GetIamPolicyProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsApisRequest>;
 
 export type GetIamPolicyProjectsLocationsApisResponse = ApigatewayPolicy;
 export const GetIamPolicyProjectsLocationsApisResponse =
@@ -1465,7 +1465,7 @@ export const DeleteProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsApisRequest>;
 
 export type DeleteProjectsLocationsApisResponse = ApigatewayOperation;
 export const DeleteProjectsLocationsApisResponse =
@@ -1501,7 +1501,7 @@ export const DeleteProjectsLocationsApisConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsApisConfigsRequest>;
 
 export type DeleteProjectsLocationsApisConfigsResponse = ApigatewayOperation;
 export const DeleteProjectsLocationsApisConfigsResponse =
@@ -1544,7 +1544,7 @@ export const SetIamPolicyProjectsLocationsApisConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApisConfigsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsApisConfigsRequest>;
 
 export type SetIamPolicyProjectsLocationsApisConfigsResponse = ApigatewayPolicy;
 export const SetIamPolicyProjectsLocationsApisConfigsResponse =
@@ -1585,7 +1585,7 @@ export const GetIamPolicyProjectsLocationsApisConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApisConfigsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsApisConfigsRequest>;
 
 export type GetIamPolicyProjectsLocationsApisConfigsResponse = ApigatewayPolicy;
 export const GetIamPolicyProjectsLocationsApisConfigsResponse =
@@ -1631,7 +1631,7 @@ export const ListProjectsLocationsApisConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/configs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsApisConfigsRequest>;
 
 export type ListProjectsLocationsApisConfigsResponse =
   ApigatewayListApiConfigsResponse;
@@ -1673,7 +1673,7 @@ export const GetProjectsLocationsApisConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsApisConfigsRequest>;
 
 export type GetProjectsLocationsApisConfigsResponse = ApigatewayApiConfig;
 export const GetProjectsLocationsApisConfigsResponse =
@@ -1713,7 +1713,7 @@ export const PatchProjectsLocationsApisConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsApisConfigsRequest>;
 
 export type PatchProjectsLocationsApisConfigsResponse = ApigatewayOperation;
 export const PatchProjectsLocationsApisConfigsResponse =
@@ -1758,7 +1758,7 @@ export const TestIamPermissionsProjectsLocationsApisConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApisConfigsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsApisConfigsRequest>;
 
 export type TestIamPermissionsProjectsLocationsApisConfigsResponse =
   ApigatewayTestIamPermissionsResponse;
@@ -1803,7 +1803,7 @@ export const CreateProjectsLocationsApisConfigsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/configs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsApisConfigsRequest>;
 
 export type CreateProjectsLocationsApisConfigsResponse = ApigatewayOperation;
 export const CreateProjectsLocationsApisConfigsResponse =

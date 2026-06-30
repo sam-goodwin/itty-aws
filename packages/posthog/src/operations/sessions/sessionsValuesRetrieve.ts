@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionsValuesRetrieveInput {
+  project_id: string;
+}
 export const SessionsValuesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const SessionsValuesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/sessions/values/",
     }),
-  );
-export type SessionsValuesRetrieveInput =
-  typeof SessionsValuesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SessionsValuesRetrieveInput>;
 
 // Output Schema
+export type SessionsValuesRetrieveOutput = void;
 export const SessionsValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SessionsValuesRetrieveOutput =
-  typeof SessionsValuesRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SessionsValuesRetrieveOutput>;
 
 // The operation
 /**

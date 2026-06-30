@@ -3,14 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface RemindersDestroyInput {
+  id: string;
+}
 export const RemindersDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/api/reminders/{id}/" }));
-export type RemindersDestroyInput = typeof RemindersDestroyInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/api/reminders/{id}/" }),
+) as unknown as Schema.Codec<RemindersDestroyInput>;
 
 // Output Schema
-export const RemindersDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemindersDestroyOutput = typeof RemindersDestroyOutput.Type;
+export type RemindersDestroyOutput = void;
+export const RemindersDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemindersDestroyOutput>;
 
 // The operation
 /**

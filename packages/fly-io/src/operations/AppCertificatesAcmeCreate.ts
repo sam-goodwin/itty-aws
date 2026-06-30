@@ -9,17 +9,58 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AppCertificatesAcmeCreateInput {
+  app_name: string;
+  hostname?: string;
+}
 export const AppCertificatesAcmeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     hostname: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/apps/{app_name}/certificates/acme" }),
-  );
-export type AppCertificatesAcmeCreateInput =
-  typeof AppCertificatesAcmeCreateInput.Type;
+  ) as unknown as Schema.Codec<AppCertificatesAcmeCreateInput>;
 
 // Output Schema
+export interface AppCertificatesAcmeCreateOutput {
+  acme_requested?: boolean;
+  certificates?: {
+    created_at?: string;
+    expires_at?: string;
+    issued?: {
+      certificate_authority?: string;
+      expires_at?: string;
+      type?: "rsa" | "ecdsa";
+    }[];
+    issuer?: string;
+    source?: "custom" | "fly";
+    status?: "active" | "pending_ownership" | "pending_validation";
+  }[];
+  configured?: boolean;
+  dns_provider?: string;
+  dns_requirements?: {
+    a?: string[];
+    aaaa?: string[];
+    acme_challenge?: { name?: string; target?: string };
+    cname?: string;
+    ownership?: { app_value?: string; name?: string; org_value?: string };
+  };
+  hostname?: string;
+  rate_limited_until?: string;
+  status?: string;
+  validation?: {
+    alpn_configured?: boolean;
+    dns_configured?: boolean;
+    http_configured?: boolean;
+    ownership_txt_configured?: boolean;
+  };
+  validation_errors?: {
+    code?: string;
+    message?: string;
+    remediation?: string;
+    timestamp?: string;
+  }[];
+}
 export const AppCertificatesAcmeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
@@ -92,9 +133,7 @@ export const AppCertificatesAcmeCreateOutput =
         }),
       ),
     ),
-  });
-export type AppCertificatesAcmeCreateOutput =
-  typeof AppCertificatesAcmeCreateOutput.Type;
+  }) as unknown as Schema.Codec<AppCertificatesAcmeCreateOutput>;
 
 // The operation
 /**

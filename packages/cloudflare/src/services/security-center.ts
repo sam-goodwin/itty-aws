@@ -5,12 +5,387 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service security-center
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListByInsightInsightAuditLogResponseResult {
+  /** UUIDv7 identifier for the audit log entry, time-ordered. */
+  id?: string | null;
+  /** The timestamp when the change occurred. */
+  changedAt?: string | null;
+  /** The actor that made the change. 'system' for automated changes, or a user identifier. */
+  changedBy?: string | null;
+  /** The value of the field after the change. Null if the field was cleared. */
+  currentValue?: string | null;
+  /** The field that was changed. */
+  fieldChanged?: "status" | "user_classification" | (string & {}) | null;
+  /** The ID of the insight this audit log entry relates to. */
+  issueId?: string | null;
+  /** The value of the field before the change. Null if the field was not previously set. */
+  previousValue?: string | null;
+  /** Optional rationale provided for the change. */
+  rationale?: string | null;
+  /** The zone ID associated with the insight. Only present for zone-level insights. */
+  zoneId?: number | null;
+}
+const ListByInsightInsightAuditLogResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      changedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      changedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      currentValue: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      fieldChanged: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["status", "user_classification"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      issueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      previousValue: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      rationale: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      zoneId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        changedAt: "changed_at",
+        changedBy: "changed_by",
+        currentValue: "current_value",
+        fieldChanged: "field_changed",
+        issueId: "issue_id",
+        previousValue: "previous_value",
+        rationale: "rationale",
+        zoneId: "zone_id",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListByInsightInsightAuditLogResponseResult>;
+
+interface ListByInsightInsightAuditLogResponseResultInfo {
+  count?: number | null;
+  cursor?: string | null;
+  perPage?: number | null;
+}
+const ListByInsightInsightAuditLogResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        cursor: "cursor",
+        perPage: "per_page",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListByInsightInsightAuditLogResponseResultInfo>;
+
+interface Payload {
+  /** Describes the method used to detect insight. */
+  detectionMethod?: string | null;
+  zoneTag?: string | null;
+}
+const Payload = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    detectionMethod: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      detectionMethod: "detection_method",
+      zoneTag: "zone_tag",
+    }),
+  ),
+) as unknown as Schema.Codec<Payload>;
+
+interface Issue {
+  id?: string | null;
+  dismissed?: boolean | null;
+  /** Indicates whether the insight has a large payload that requires fetching via the context endpoint. */
+  hasExtendedContext?: boolean | null;
+  issueClass?: string | null;
+  issueType?:
+    | "compliance_violation"
+    | "email_security"
+    | "exposed_infrastructure"
+    | "insecure_configuration"
+    | "weak_authentication"
+    | "configuration_suggestion"
+    | (string & {})
+    | null;
+  payload?: { detectionMethod?: string | null; zoneTag?: string | null } | null;
+  resolveLink?: string | null;
+  resolveText?: string | null;
+  severity?: "Low" | "Moderate" | "Critical" | (string & {}) | null;
+  since?: string | null;
+  /** The current status of the insight. */
+  status?: "active" | "resolved" | (string & {}) | null;
+  subject?: string | null;
+  timestamp?: string | null;
+  /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
+  userClassification?: "false_positive" | "accept_risk" | "other" | null;
+}
+const Issue = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    dismissed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    hasExtendedContext: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    issueClass: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issueType: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "compliance_violation",
+            "email_security",
+            "exposed_infrastructure",
+            "insecure_configuration",
+            "weak_authentication",
+            "configuration_suggestion",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    payload: Schema.optional(Schema.Union([Payload, Schema.Null])),
+    resolveLink: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    resolveText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    severity: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["Low", "Moderate", "Critical"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    since: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["active", "resolved"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    subject: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    timestamp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    userClassification: Schema.optional(
+      Schema.Union([
+        Schema.Literal("false_positive"),
+        Schema.Literal("accept_risk"),
+        Schema.Literal("other"),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      dismissed: "dismissed",
+      hasExtendedContext: "has_extended_context",
+      issueClass: "issue_class",
+      issueType: "issue_type",
+      payload: "payload",
+      resolveLink: "resolve_link",
+      resolveText: "resolve_text",
+      severity: "severity",
+      since: "since",
+      status: "status",
+      subject: "subject",
+      timestamp: "timestamp",
+      userClassification: "user_classification",
+    }),
+  ),
+) as unknown as Schema.Codec<Issue>;
+
+interface ListInsightsResponseResultItem {
+  /** Indicates the total number of results. */
+  count?: number | null;
+  issues?:
+    | {
+        id?: string | null;
+        dismissed?: boolean | null;
+        hasExtendedContext?: boolean | null;
+        issueClass?: string | null;
+        issueType?:
+          | "compliance_violation"
+          | "email_security"
+          | "exposed_infrastructure"
+          | "insecure_configuration"
+          | "weak_authentication"
+          | "configuration_suggestion"
+          | (string & {})
+          | null;
+        payload?: {
+          detectionMethod?: string | null;
+          zoneTag?: string | null;
+        } | null;
+        resolveLink?: string | null;
+        resolveText?: string | null;
+        severity?: "Low" | "Moderate" | "Critical" | (string & {}) | null;
+        since?: string | null;
+        status?: "active" | "resolved" | (string & {}) | null;
+        subject?: string | null;
+        timestamp?: string | null;
+        userClassification?: "false_positive" | "accept_risk" | "other" | null;
+      }[]
+    | null;
+  /** Specifies the current page within paginated list of results. */
+  page?: number | null;
+  /** Sets the number of results per page of results. */
+  perPage?: number | null;
+}
+const ListInsightsResponseResultItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      issues: Schema.optional(Schema.Union([Schema.Array(Issue), Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        issues: "issues",
+        page: "page",
+        perPage: "per_page",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListInsightsResponseResultItem>;
+
+interface ListInsightsResponseResult {
+  items?:
+    | {
+        count?: number | null;
+        issues?:
+          | {
+              id?: string | null;
+              dismissed?: boolean | null;
+              hasExtendedContext?: boolean | null;
+              issueClass?: string | null;
+              issueType?:
+                | "compliance_violation"
+                | "email_security"
+                | "exposed_infrastructure"
+                | "insecure_configuration"
+                | "weak_authentication"
+                | "configuration_suggestion"
+                | (string & {})
+                | null;
+              payload?: {
+                detectionMethod?: string | null;
+                zoneTag?: string | null;
+              } | null;
+              resolveLink?: string | null;
+              resolveText?: string | null;
+              severity?: "Low" | "Moderate" | "Critical" | (string & {}) | null;
+              since?: string | null;
+              status?: "active" | "resolved" | (string & {}) | null;
+              subject?: string | null;
+              timestamp?: string | null;
+              userClassification?:
+                | "false_positive"
+                | "accept_risk"
+                | "other"
+                | null;
+            }[]
+          | null;
+        page?: number | null;
+        perPage?: number | null;
+      }[]
+    | null;
+}
+const ListInsightsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      items: Schema.optional(
+        Schema.Union([
+          Schema.Array(ListInsightsResponseResultItem),
+          Schema.Null,
+        ]),
+      ),
+    }),
+) as unknown as Schema.Codec<ListInsightsResponseResult>;
+
+interface ListInsightsResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListInsightsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListInsightsResponseResultInfo>;
+
+interface Source {
+  pointer?: string | null;
+}
+const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Source>;
+
+interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: { pointer?: string | null } | null;
+}
+const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.Number,
+    message: Schema.String,
+    documentationUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      code: "code",
+      message: "message",
+      documentationUrl: "documentation_url",
+      source: "source",
+    }),
+  ),
+) as unknown as Schema.Codec<Error2>;
+
+interface ClassGetResponseItem {
+  count?: number | null;
+  value?: string | null;
+}
+const ClassGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ClassGetResponseItem>;
 
 // =============================================================================
 // ByInsightInsightAuditLog
@@ -71,7 +446,7 @@ export const ListByInsightInsightAuditLogForAccountRequest =
         path: "/accounts/{account_id}/security-center/insights/{issueId}/audit-log",
       }),
     ),
-  ) as unknown as Schema.Schema<ListByInsightInsightAuditLogForAccountRequest>;
+  ) as unknown as Schema.Codec<ListByInsightInsightAuditLogForAccountRequest>;
 
 export const ListByInsightInsightAuditLogForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -84,7 +459,7 @@ export const ListByInsightInsightAuditLogForZoneRequest =
         path: "/zones/{zone_id}/security-center/insights/{issueId}/audit-log",
       }),
     ),
-  ) as unknown as Schema.Schema<ListByInsightInsightAuditLogForZoneRequest>;
+  ) as unknown as Schema.Codec<ListByInsightInsightAuditLogForZoneRequest>;
 
 export interface ListByInsightInsightAuditLogResponse {
   result: {
@@ -108,69 +483,15 @@ export interface ListByInsightInsightAuditLogResponse {
 export const ListByInsightInsightAuditLogResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          changedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          changedBy: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          currentValue: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          fieldChanged: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["status", "user_classification"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          issueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          previousValue: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          rationale: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          zoneId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            changedAt: "changed_at",
-            changedBy: "changed_by",
-            currentValue: "current_value",
-            fieldChanged: "field_changed",
-            issueId: "issue_id",
-            previousValue: "previous_value",
-            rationale: "rationale",
-            zoneId: "zone_id",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListByInsightInsightAuditLogResponseResult),
       resultInfo: Schema.optional(
         Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              cursor: "cursor",
-              perPage: "per_page",
-            }),
-          ),
+          ListByInsightInsightAuditLogResponseResultInfo,
           Schema.Null,
         ]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListByInsightInsightAuditLogResponse>;
+  ) as unknown as Schema.Codec<ListByInsightInsightAuditLogResponse>;
 
 export type ListByInsightInsightAuditLogError = DefaultErrors;
 
@@ -348,7 +669,7 @@ export const ListInsightsForAccountRequest =
         path: "/accounts/{account_id}/security-center/insights",
       }),
     ),
-  ) as unknown as Schema.Schema<ListInsightsForAccountRequest>;
+  ) as unknown as Schema.Codec<ListInsightsForAccountRequest>;
 
 export const ListInsightsForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -361,7 +682,7 @@ export const ListInsightsForZoneRequest =
         path: "/zones/{zone_id}/security-center/insights",
       }),
     ),
-  ) as unknown as Schema.Schema<ListInsightsForZoneRequest>;
+  ) as unknown as Schema.Codec<ListInsightsForZoneRequest>;
 
 export interface ListInsightsResponse {
   result: {
@@ -422,170 +743,12 @@ export interface ListInsightsResponse {
 export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Struct({
-        items: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                count: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                issues: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        dismissed: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        hasExtendedContext: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        issueClass: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        issueType: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals([
-                                "compliance_violation",
-                                "email_security",
-                                "exposed_infrastructure",
-                                "insecure_configuration",
-                                "weak_authentication",
-                                "configuration_suggestion",
-                              ]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        payload: Schema.optional(
-                          Schema.Union([
-                            Schema.Struct({
-                              detectionMethod: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                              zoneTag: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                detectionMethod: "detection_method",
-                                zoneTag: "zone_tag",
-                              }),
-                            ),
-                            Schema.Null,
-                          ]),
-                        ),
-                        resolveLink: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        resolveText: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        severity: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["Low", "Moderate", "Critical"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        since: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        status: Schema.optional(
-                          Schema.Union([
-                            Schema.Union([
-                              Schema.Literals(["active", "resolved"]),
-                              Schema.String,
-                            ]),
-                            Schema.Null,
-                          ]),
-                        ),
-                        subject: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        timestamp: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        userClassification: Schema.optional(
-                          Schema.Union([
-                            Schema.Literal("false_positive"),
-                            Schema.Literal("accept_risk"),
-                            Schema.Literal("other"),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          id: "id",
-                          dismissed: "dismissed",
-                          hasExtendedContext: "has_extended_context",
-                          issueClass: "issue_class",
-                          issueType: "issue_type",
-                          payload: "payload",
-                          resolveLink: "resolve_link",
-                          resolveText: "resolve_text",
-                          severity: "severity",
-                          since: "since",
-                          status: "status",
-                          subject: "subject",
-                          timestamp: "timestamp",
-                          userClassification: "user_classification",
-                        }),
-                      ),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                page: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                perPage: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  count: "count",
-                  issues: "issues",
-                  page: "page",
-                  perPage: "per_page",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
+      result: ListInsightsResponseResult,
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListInsightsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListInsightsResponse>;
+) as unknown as Schema.Codec<ListInsightsResponse>;
 
 export type ListInsightsError = DefaultErrors;
 
@@ -657,7 +820,7 @@ export const DismissInsightForAccountRequest =
         path: "/accounts/{account_id}/security-center/insights/{issueId}/dismiss",
       }),
     ),
-  ) as unknown as Schema.Schema<DismissInsightForAccountRequest>;
+  ) as unknown as Schema.Codec<DismissInsightForAccountRequest>;
 
 export const DismissInsightForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -670,7 +833,7 @@ export const DismissInsightForZoneRequest =
         path: "/zones/{zone_id}/security-center/insights/{issueId}/dismiss",
       }),
     ),
-  ) as unknown as Schema.Schema<DismissInsightForZoneRequest>;
+  ) as unknown as Schema.Codec<DismissInsightForZoneRequest>;
 
 export interface DismissInsightResponse {
   errors: {
@@ -692,61 +855,11 @@ export interface DismissInsightResponse {
 export const DismissInsightResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<DismissInsightResponse>;
+  ) as unknown as Schema.Codec<DismissInsightResponse>;
 
 export type DismissInsightError = DefaultErrors;
 
@@ -829,7 +942,7 @@ export const ListInsightAuditLogsForAccountRequest =
         path: "/accounts/{account_id}/security-center/insights/audit-log",
       }),
     ),
-  ) as unknown as Schema.Schema<ListInsightAuditLogsForAccountRequest>;
+  ) as unknown as Schema.Codec<ListInsightAuditLogsForAccountRequest>;
 
 export const ListInsightAuditLogsForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -842,7 +955,7 @@ export const ListInsightAuditLogsForZoneRequest =
         path: "/zones/{zone_id}/security-center/insights/audit-log",
       }),
     ),
-  ) as unknown as Schema.Schema<ListInsightAuditLogsForZoneRequest>;
+  ) as unknown as Schema.Codec<ListInsightAuditLogsForZoneRequest>;
 
 export interface ListInsightAuditLogsResponse {
   result: {
@@ -866,69 +979,15 @@ export interface ListInsightAuditLogsResponse {
 export const ListInsightAuditLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          changedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          changedBy: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          currentValue: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          fieldChanged: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["status", "user_classification"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          issueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          previousValue: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          rationale: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          zoneId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            changedAt: "changed_at",
-            changedBy: "changed_by",
-            currentValue: "current_value",
-            fieldChanged: "field_changed",
-            issueId: "issue_id",
-            previousValue: "previous_value",
-            rationale: "rationale",
-            zoneId: "zone_id",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListByInsightInsightAuditLogResponseResult),
       resultInfo: Schema.optional(
         Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              cursor: "cursor",
-              perPage: "per_page",
-            }),
-          ),
+          ListByInsightInsightAuditLogResponseResultInfo,
           Schema.Null,
         ]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListInsightAuditLogsResponse>;
+  ) as unknown as Schema.Codec<ListInsightAuditLogsResponse>;
 
 export type ListInsightAuditLogsError = DefaultErrors;
 
@@ -1102,7 +1161,7 @@ export const GetInsightClassForAccountRequest =
         path: "/accounts/{account_id}/security-center/insights/class",
       }),
     ),
-  ) as unknown as Schema.Schema<GetInsightClassForAccountRequest>;
+  ) as unknown as Schema.Codec<GetInsightClassForAccountRequest>;
 
 export const GetInsightClassForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -1115,7 +1174,7 @@ export const GetInsightClassForZoneRequest =
         path: "/zones/{zone_id}/security-center/insights/class",
       }),
     ),
-  ) as unknown as Schema.Schema<GetInsightClassForZoneRequest>;
+  ) as unknown as Schema.Codec<GetInsightClassForZoneRequest>;
 
 export type GetInsightClassResponse = {
   count?: number | null;
@@ -1124,13 +1183,8 @@ export type GetInsightClassResponse = {
 
 export const GetInsightClassResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetInsightClassResponse>;
+    Schema.Array(ClassGetResponseItem).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<GetInsightClassResponse>;
 
 export type GetInsightClassError = DefaultErrors;
 
@@ -1202,7 +1256,7 @@ export const PatchInsightClassificationForAccountRequest =
         path: "/accounts/{account_id}/security-center/insights/{issueId}/classification",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchInsightClassificationForAccountRequest>;
+  ) as unknown as Schema.Codec<PatchInsightClassificationForAccountRequest>;
 
 export const PatchInsightClassificationForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -1215,7 +1269,7 @@ export const PatchInsightClassificationForZoneRequest =
         path: "/zones/{zone_id}/security-center/insights/{issueId}/classification",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchInsightClassificationForZoneRequest>;
+  ) as unknown as Schema.Codec<PatchInsightClassificationForZoneRequest>;
 
 export interface PatchInsightClassificationResponse {
   errors: {
@@ -1237,61 +1291,11 @@ export interface PatchInsightClassificationResponse {
 export const PatchInsightClassificationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<PatchInsightClassificationResponse>;
+  ) as unknown as Schema.Codec<PatchInsightClassificationResponse>;
 
 export type PatchInsightClassificationError = DefaultErrors;
 
@@ -1338,14 +1342,14 @@ export const GetInsightContextRequest =
         path: "/accounts/{account_id}/security-center/insights/{issueId}/context",
       }),
     ),
-  ) as unknown as Schema.Schema<GetInsightContextRequest>;
+  ) as unknown as Schema.Codec<GetInsightContextRequest>;
 
 export type GetInsightContextResponse = Record<string, unknown>;
 
 export const GetInsightContextResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetInsightContextResponse>;
+  ) as unknown as Schema.Codec<GetInsightContextResponse>;
 
 export type GetInsightContextError = DefaultErrors;
 
@@ -1494,7 +1498,7 @@ export const GetInsightSeverityForAccountRequest =
         path: "/accounts/{account_id}/security-center/insights/severity",
       }),
     ),
-  ) as unknown as Schema.Schema<GetInsightSeverityForAccountRequest>;
+  ) as unknown as Schema.Codec<GetInsightSeverityForAccountRequest>;
 
 export const GetInsightSeverityForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -1507,7 +1511,7 @@ export const GetInsightSeverityForZoneRequest =
         path: "/zones/{zone_id}/security-center/insights/severity",
       }),
     ),
-  ) as unknown as Schema.Schema<GetInsightSeverityForZoneRequest>;
+  ) as unknown as Schema.Codec<GetInsightSeverityForZoneRequest>;
 
 export type GetInsightSeverityResponse = {
   count?: number | null;
@@ -1516,13 +1520,8 @@ export type GetInsightSeverityResponse = {
 
 export const GetInsightSeverityResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetInsightSeverityResponse>;
+    Schema.Array(ClassGetResponseItem).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<GetInsightSeverityResponse>;
 
 export type GetInsightSeverityError = DefaultErrors;
 
@@ -1682,7 +1681,7 @@ export const GetInsightTypeForAccountRequest =
         path: "/accounts/{account_id}/security-center/insights/type",
       }),
     ),
-  ) as unknown as Schema.Schema<GetInsightTypeForAccountRequest>;
+  ) as unknown as Schema.Codec<GetInsightTypeForAccountRequest>;
 
 export const GetInsightTypeForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -1695,7 +1694,7 @@ export const GetInsightTypeForZoneRequest =
         path: "/zones/{zone_id}/security-center/insights/type",
       }),
     ),
-  ) as unknown as Schema.Schema<GetInsightTypeForZoneRequest>;
+  ) as unknown as Schema.Codec<GetInsightTypeForZoneRequest>;
 
 export type GetInsightTypeResponse = {
   count?: number | null;
@@ -1704,13 +1703,8 @@ export type GetInsightTypeResponse = {
 
 export const GetInsightTypeResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetInsightTypeResponse>;
+    Schema.Array(ClassGetResponseItem).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<GetInsightTypeResponse>;
 
 export type GetInsightTypeError = DefaultErrors;
 

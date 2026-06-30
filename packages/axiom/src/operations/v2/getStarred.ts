@@ -4,12 +4,53 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetStarredInput {
+  id: string;
+}
 export const GetStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/apl-starred-queries/{id}" }));
-export type GetStarredInput = typeof GetStarredInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/apl-starred-queries/{id}" }),
+) as unknown as Schema.Codec<GetStarredInput>;
 
 // Output Schema
+export interface GetStarredOutput {
+  dataset?: string;
+  kind: "apl";
+  metadata: Record<string, string>;
+  name: string;
+  query: {
+    apl: string;
+    cursor?: string;
+    defaultLimit?: number;
+    defaultOrder?: { desc?: boolean; field?: string }[];
+    endTime?: string;
+    includeCursor?: boolean;
+    includeCursorField?: boolean;
+    libraries?: string[];
+    queryOptions?: {
+      disableCache?: boolean;
+      disableStats?: boolean;
+      disableTrace?: boolean;
+      maxDataPoints?: number;
+      maxSeries?: number;
+      noAggregation?: boolean;
+      noFill?: boolean;
+      noInterpolation?: boolean;
+      priority?: "low" | "medium" | "high";
+      resolution?: string;
+      displayNull?: "auto" | "null" | "span" | "zero" | "";
+      overlayCharts?: "true" | "false" | "";
+      shownColumns?: string;
+      timeSeriesVariant?: "area" | "bars" | "line" | "lines" | "";
+      timeSeriesView?: "charts" | "resultsTable" | "charts|resultsTable" | "";
+    };
+    startTime?: string;
+    variables?: unknown;
+  };
+  who: string;
+  id: string;
+}
 export const GetStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataset: Schema.optional(Schema.String),
   kind: Schema.Literals(["apl"]),
@@ -66,8 +107,7 @@ export const GetStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
   who: Schema.String,
   id: Schema.String,
-});
-export type GetStarredOutput = typeof GetStarredOutput.Type;
+}) as unknown as Schema.Codec<GetStarredOutput>;
 
 // The operation
 export const getStarred = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

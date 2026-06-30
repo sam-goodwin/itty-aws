@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -34,7 +34,7 @@ export interface OutputConfig {
   destination?: string;
 }
 
-export const OutputConfig: Schema.Schema<OutputConfig> =
+export const OutputConfig: Schema.Codec<OutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
   }).annotate({ identifier: "OutputConfig" });
@@ -48,7 +48,7 @@ export interface TraceSink {
   writerIdentity?: string;
 }
 
-export const TraceSink: Schema.Schema<TraceSink> =
+export const TraceSink: Schema.Codec<TraceSink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     outputConfig: Schema.optional(OutputConfig),
@@ -62,7 +62,7 @@ export interface ListTraceSinksResponse {
   nextPageToken?: string;
 }
 
-export const ListTraceSinksResponse: Schema.Schema<ListTraceSinksResponse> =
+export const ListTraceSinksResponse: Schema.Codec<ListTraceSinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sinks: Schema.optional(Schema.Array(TraceSink)),
     nextPageToken: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export const ListProjectsTraceSinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+parent}/traceSinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTraceSinksRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTraceSinksRequest>;
 
 export type ListProjectsTraceSinksResponse = ListTraceSinksResponse;
 export const ListProjectsTraceSinksResponse =
@@ -181,7 +181,7 @@ export const CreateProjectsTraceSinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTraceSinksRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTraceSinksRequest>;
 
 export type CreateProjectsTraceSinksResponse = TraceSink;
 export const CreateProjectsTraceSinksResponse =
@@ -223,7 +223,7 @@ export const PatchProjectsTraceSinksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTraceSinksRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsTraceSinksRequest>;
 
 export type PatchProjectsTraceSinksResponse = TraceSink;
 export const PatchProjectsTraceSinksResponse =
@@ -259,7 +259,7 @@ export const DeleteProjectsTraceSinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTraceSinksRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsTraceSinksRequest>;
 
 export type DeleteProjectsTraceSinksResponse = Empty;
 export const DeleteProjectsTraceSinksResponse =
@@ -295,7 +295,7 @@ export const GetProjectsTraceSinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTraceSinksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTraceSinksRequest>;
 
 export type GetProjectsTraceSinksResponse = TraceSink;
 export const GetProjectsTraceSinksResponse =

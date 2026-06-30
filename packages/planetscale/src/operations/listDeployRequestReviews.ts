@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListDeployRequestReviewsInput {
+  organization: string;
+  database: string;
+  number: number;
+  page?: number;
+  per_page?: number;
+}
 export const ListDeployRequestReviewsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,26 @@ export const ListDeployRequestReviewsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/reviews",
     }),
-  );
-export type ListDeployRequestReviewsInput =
-  typeof ListDeployRequestReviewsInput.Type;
+  ) as unknown as Schema.Codec<ListDeployRequestReviewsInput>;
 
 // Output Schema
+export interface ListDeployRequestReviewsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    body: string;
+    html_body: string;
+    state: "commented" | "approved";
+    created_at: string;
+    updated_at: string;
+    actor: { id: string; display_name: string; avatar_url: string };
+  }[];
+}
 export const ListDeployRequestReviewsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -44,9 +66,7 @@ export const ListDeployRequestReviewsOutput =
         }),
       }),
     ),
-  });
-export type ListDeployRequestReviewsOutput =
-  typeof ListDeployRequestReviewsOutput.Type;
+  }) as unknown as Schema.Codec<ListDeployRequestReviewsOutput>;
 
 // The operation
 /**

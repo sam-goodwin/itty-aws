@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsPreviewInviteCreateInput {
+  id: string;
+  project_id: string;
+  interviewee_identifier?: string;
+}
 export const UserInterviewTopicsPreviewInviteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,19 @@ export const UserInterviewTopicsPreviewInviteCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/user_interview_topics/{id}/preview_invite/",
     }),
-  );
-export type UserInterviewTopicsPreviewInviteCreateInput =
-  typeof UserInterviewTopicsPreviewInviteCreateInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsPreviewInviteCreateInput>;
 
 // Output Schema
+export interface UserInterviewTopicsPreviewInviteCreateOutput {
+  interviewee_identifier: string;
+  user_name: string;
+  email: string | null;
+  subject: string;
+  html: string;
+  interview_url: string;
+  emailable: boolean;
+  is_preview_link: boolean;
+}
 export const UserInterviewTopicsPreviewInviteCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interviewee_identifier: Schema.String,
@@ -28,9 +41,7 @@ export const UserInterviewTopicsPreviewInviteCreateOutput =
     interview_url: Schema.String,
     emailable: Schema.Boolean,
     is_preview_link: Schema.Boolean,
-  });
-export type UserInterviewTopicsPreviewInviteCreateOutput =
-  typeof UserInterviewTopicsPreviewInviteCreateOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewTopicsPreviewInviteCreateOutput>;
 
 // The operation
 /**

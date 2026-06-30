@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingRecommendationsRefreshCreateInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingRecommendationsRefreshCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,20 @@ export const ErrorTrackingRecommendationsRefreshCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/recommendations/{id}/refresh/",
     }),
-  );
-export type ErrorTrackingRecommendationsRefreshCreateInput =
-  typeof ErrorTrackingRecommendationsRefreshCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingRecommendationsRefreshCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingRecommendationsRefreshCreateOutput {
+  id?: string;
+  type?: string;
+  meta?: unknown;
+  completed?: boolean;
+  status?: string;
+  computed_at?: string | null;
+  dismissed_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingRecommendationsRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -28,9 +41,7 @@ export const ErrorTrackingRecommendationsRefreshCreateOutput =
     dismissed_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingRecommendationsRefreshCreateOutput =
-  typeof ErrorTrackingRecommendationsRefreshCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingRecommendationsRefreshCreateOutput>;
 
 // The operation
 /**

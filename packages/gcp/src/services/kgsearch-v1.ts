@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface SearchResponse {
   "@context"?: unknown;
 }
 
-export const SearchResponse: Schema.Schema<SearchResponse> =
+export const SearchResponse: Schema.Codec<SearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@type": Schema.optional(Schema.Unknown),
     itemListElement: Schema.optional(Schema.Array(Schema.Unknown)),
@@ -101,7 +101,7 @@ export const SearchEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/entities:search" }),
   svc,
-) as unknown as Schema.Schema<SearchEntitiesRequest>;
+) as unknown as Schema.Codec<SearchEntitiesRequest>;
 
 export type SearchEntitiesResponse = SearchResponse;
 export const SearchEntitiesResponse =

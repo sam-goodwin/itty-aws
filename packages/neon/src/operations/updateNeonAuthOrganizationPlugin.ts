@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateNeonAuthOrganizationPluginInput {
+  project_id: string;
+  branch_id: string;
+  enabled?: boolean;
+  organization_limit?: number;
+  membership_limit?: number;
+  creator_role?: "admin" | "owner";
+  send_invitation_email?: boolean;
+}
 export const UpdateNeonAuthOrganizationPluginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +26,16 @@ export const UpdateNeonAuthOrganizationPluginInput =
       method: "PATCH",
       path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/organization",
     }),
-  );
-export type UpdateNeonAuthOrganizationPluginInput =
-  typeof UpdateNeonAuthOrganizationPluginInput.Type;
+  ) as unknown as Schema.Codec<UpdateNeonAuthOrganizationPluginInput>;
 
 // Output Schema
+export interface UpdateNeonAuthOrganizationPluginOutput {
+  enabled: boolean;
+  organization_limit: number;
+  membership_limit: number;
+  creator_role: "admin" | "owner";
+  send_invitation_email: boolean;
+}
 export const UpdateNeonAuthOrganizationPluginOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
@@ -29,9 +43,7 @@ export const UpdateNeonAuthOrganizationPluginOutput =
     membership_limit: Schema.Number,
     creator_role: Schema.Literals(["admin", "owner"]),
     send_invitation_email: Schema.Boolean,
-  });
-export type UpdateNeonAuthOrganizationPluginOutput =
-  typeof UpdateNeonAuthOrganizationPluginOutput.Type;
+  }) as unknown as Schema.Codec<UpdateNeonAuthOrganizationPluginOutput>;
 
 // The operation
 /**

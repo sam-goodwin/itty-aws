@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface UpsertAnalyticsRuleInput {
+  ruleName: string;
+  name?: string;
+  rule_tag?: string;
+  params?: {
+    destination_collection?: string;
+    limit?: number;
+    capture_search_requests?: boolean;
+    meta_fields?: string[];
+    expand_query?: boolean;
+    counter_field?: string;
+    weight?: number;
+  };
+}
 export const UpsertAnalyticsRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleName: Schema.String.pipe(T.PathParam()),
@@ -20,10 +34,27 @@ export const UpsertAnalyticsRuleInput =
         weight: Schema.optional(Schema.Number),
       }),
     ),
-  }).pipe(T.Http({ method: "PUT", path: "/analytics/rules/{ruleName}" }));
-export type UpsertAnalyticsRuleInput = typeof UpsertAnalyticsRuleInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/analytics/rules/{ruleName}" }),
+  ) as unknown as Schema.Codec<UpsertAnalyticsRuleInput>;
 
 // Output Schema
+export interface UpsertAnalyticsRuleOutput {
+  name: string;
+  type: "popular_queries" | "nohits_queries" | "counter" | "log";
+  collection: string;
+  event_type: string;
+  rule_tag?: string;
+  params?: {
+    destination_collection?: string;
+    limit?: number;
+    capture_search_requests?: boolean;
+    meta_fields?: string[];
+    expand_query?: boolean;
+    counter_field?: string;
+    weight?: number;
+  };
+}
 export const UpsertAnalyticsRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
@@ -47,8 +78,7 @@ export const UpsertAnalyticsRuleOutput =
         weight: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type UpsertAnalyticsRuleOutput = typeof UpsertAnalyticsRuleOutput.Type;
+  }) as unknown as Schema.Codec<UpsertAnalyticsRuleOutput>;
 
 // The operation
 /**

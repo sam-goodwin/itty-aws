@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemInstructionsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const DesktopFileSystemInstructionsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const DesktopFileSystemInstructionsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/desktop_file_system/{id}/instructions/",
     }),
-  );
-export type DesktopFileSystemInstructionsDestroyInput =
-  typeof DesktopFileSystemInstructionsDestroyInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemInstructionsDestroyInput>;
 
 // Output Schema
+export type DesktopFileSystemInstructionsDestroyOutput = void;
 export const DesktopFileSystemInstructionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DesktopFileSystemInstructionsDestroyOutput =
-  typeof DesktopFileSystemInstructionsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemInstructionsDestroyOutput>;
 
 // The operation
 /**

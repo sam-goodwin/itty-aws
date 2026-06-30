@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupStreamProcessorInput {
+  groupId: string;
+  tenantName: string;
+  processorName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupStreamProcessorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const GetGroupStreamProcessorInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}",
     }),
-  );
-export type GetGroupStreamProcessorInput =
-  typeof GetGroupStreamProcessorInput.Type;
+  ) as unknown as Schema.Codec<GetGroupStreamProcessorInput>;
 
 // Output Schema
+export type GetGroupStreamProcessorOutput = void;
 export const GetGroupStreamProcessorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupStreamProcessorOutput =
-  typeof GetGroupStreamProcessorOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamProcessorOutput>;
 
 // The operation
 /**

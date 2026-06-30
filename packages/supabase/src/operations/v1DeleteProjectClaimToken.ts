@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1DeleteProjectClaimTokenInput {
+  ref: string;
+}
 export const V1DeleteProjectClaimTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{ref}/claim-token" }));
-export type V1DeleteProjectClaimTokenInput =
-  typeof V1DeleteProjectClaimTokenInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/v1/projects/{ref}/claim-token" }),
+  ) as unknown as Schema.Codec<V1DeleteProjectClaimTokenInput>;
 
 // Output Schema
+export type V1DeleteProjectClaimTokenOutput = void;
 export const V1DeleteProjectClaimTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DeleteProjectClaimTokenOutput =
-  typeof V1DeleteProjectClaimTokenOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteProjectClaimTokenOutput>;
 
 // The operation
 /**

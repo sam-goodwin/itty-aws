@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AcknowledgeGroupAlertInput {
+  groupId: string;
+  alertId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const AcknowledgeGroupAlertInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,14 +21,12 @@ export const AcknowledgeGroupAlertInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}",
     }),
-  );
-export type AcknowledgeGroupAlertInput = typeof AcknowledgeGroupAlertInput.Type;
+  ) as unknown as Schema.Codec<AcknowledgeGroupAlertInput>;
 
 // Output Schema
+export type AcknowledgeGroupAlertOutput = void;
 export const AcknowledgeGroupAlertOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AcknowledgeGroupAlertOutput =
-  typeof AcknowledgeGroupAlertOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AcknowledgeGroupAlertOutput>;
 
 // The operation
 /**

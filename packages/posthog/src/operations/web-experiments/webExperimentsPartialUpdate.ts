@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WebExperimentsPartialUpdateInput {
+  id: number;
+  project_id: string;
+  name?: string;
+  created_at?: string;
+  feature_flag_key?: string;
+  variants?: unknown;
+}
 export const WebExperimentsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -17,11 +25,16 @@ export const WebExperimentsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/web_experiments/{id}/",
     }),
-  );
-export type WebExperimentsPartialUpdateInput =
-  typeof WebExperimentsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebExperimentsPartialUpdateInput>;
 
 // Output Schema
+export interface WebExperimentsPartialUpdateOutput {
+  id?: number;
+  name?: string;
+  created_at?: string;
+  feature_flag_key?: string;
+  variants?: unknown;
+}
 export const WebExperimentsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -29,9 +42,7 @@ export const WebExperimentsPartialUpdateOutput =
     created_at: Schema.optional(Schema.String),
     feature_flag_key: Schema.optional(Schema.String),
     variants: Schema.optional(Schema.Unknown),
-  });
-export type WebExperimentsPartialUpdateOutput =
-  typeof WebExperimentsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebExperimentsPartialUpdateOutput>;
 
 // The operation
 /**

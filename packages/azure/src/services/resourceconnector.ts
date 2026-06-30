@@ -4,12 +4,65 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AppliancesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    distro?: "AKSEdge";
+    infrastructureConfig?: { provider?: "VMWare" | "HCI" | "SCVMM" };
+    provisioningState?: string;
+    publicKey?: string;
+    status?:
+      | "WaitingForHeartbeat"
+      | "Validating"
+      | "Connecting"
+      | "Connected"
+      | "Running"
+      | "PreparingForUpgrade"
+      | "ETCDSnapshotFailed"
+      | "UpgradePrerequisitesCompleted"
+      | "ValidatingSFSConnectivity"
+      | "ValidatingImageDownload"
+      | "ValidatingImageUpload"
+      | "ValidatingETCDHealth"
+      | "PreUpgrade"
+      | "UpgradingKVAIO"
+      | "WaitingForKVAIO"
+      | "ImagePending"
+      | "ImageProvisioning"
+      | "ImageProvisioned"
+      | "ImageDownloading"
+      | "ImageDownloaded"
+      | "ImageDeprovisioning"
+      | "ImageUnknown"
+      | "UpdatingCloudOperator"
+      | "WaitingForCloudOperator"
+      | "UpdatingCAPI"
+      | "UpdatingCluster"
+      | "PostUpgrade"
+      | "UpgradeComplete"
+      | "UpgradeClusterExtensionFailedToDelete"
+      | "UpgradeFailed"
+      | "Offline"
+      | "None";
+    version?: string;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AppliancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -81,11 +134,22 @@ export const AppliancesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
       apiVersion: "2022-10-27",
     }),
-  );
-export type AppliancesCreateOrUpdateInput =
-  typeof AppliancesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AppliancesCreateOrUpdateInput>;
 
 // Output Schema
+export interface AppliancesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppliancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -105,9 +169,7 @@ export const AppliancesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppliancesCreateOrUpdateOutput =
-  typeof AppliancesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AppliancesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -127,6 +189,11 @@ export const AppliancesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AppliancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const AppliancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -137,12 +204,12 @@ export const AppliancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
     apiVersion: "2022-10-27",
   }),
-);
-export type AppliancesDeleteInput = typeof AppliancesDeleteInput.Type;
+) as unknown as Schema.Codec<AppliancesDeleteInput>;
 
 // Output Schema
-export const AppliancesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppliancesDeleteOutput = typeof AppliancesDeleteOutput.Type;
+export type AppliancesDeleteOutput = void;
+export const AppliancesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppliancesDeleteOutput>;
 
 // The operation
 /**
@@ -160,6 +227,11 @@ export const AppliancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AppliancesDeleteOutput,
 }));
 // Input Schema
+export interface AppliancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const AppliancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -170,10 +242,22 @@ export const AppliancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
     apiVersion: "2022-10-27",
   }),
-);
-export type AppliancesGetInput = typeof AppliancesGetInput.Type;
+) as unknown as Schema.Codec<AppliancesGetInput>;
 
 // Output Schema
+export interface AppliancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppliancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -192,8 +276,7 @@ export const AppliancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AppliancesGetOutput = typeof AppliancesGetOutput.Type;
+}) as unknown as Schema.Codec<AppliancesGetOutput>;
 
 // The operation
 /**
@@ -211,6 +294,9 @@ export const AppliancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AppliancesGetOutput,
 }));
 // Input Schema
+export interface AppliancesGetTelemetryConfigInput {
+  subscriptionId: string;
+}
 export const AppliancesGetTelemetryConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -220,17 +306,16 @@ export const AppliancesGetTelemetryConfigInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/telemetryconfig",
       apiVersion: "2022-10-27",
     }),
-  );
-export type AppliancesGetTelemetryConfigInput =
-  typeof AppliancesGetTelemetryConfigInput.Type;
+  ) as unknown as Schema.Codec<AppliancesGetTelemetryConfigInput>;
 
 // Output Schema
+export interface AppliancesGetTelemetryConfigOutput {
+  telemetryInstrumentationKey?: string;
+}
 export const AppliancesGetTelemetryConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     telemetryInstrumentationKey: Schema.optional(Schema.String),
-  });
-export type AppliancesGetTelemetryConfigOutput =
-  typeof AppliancesGetTelemetryConfigOutput.Type;
+  }) as unknown as Schema.Codec<AppliancesGetTelemetryConfigOutput>;
 
 // The operation
 /**
@@ -245,6 +330,12 @@ export const AppliancesGetTelemetryConfig =
     outputSchema: AppliancesGetTelemetryConfigOutput,
   }));
 // Input Schema
+export interface AppliancesGetUpgradeGraphInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  upgradeGraph: string;
+}
 export const AppliancesGetUpgradeGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -257,11 +348,31 @@ export const AppliancesGetUpgradeGraphInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/upgradeGraphs/{upgradeGraph}",
       apiVersion: "2022-10-27",
     }),
-  );
-export type AppliancesGetUpgradeGraphInput =
-  typeof AppliancesGetUpgradeGraphInput.Type;
+  ) as unknown as Schema.Codec<AppliancesGetUpgradeGraphInput>;
 
 // Output Schema
+export interface AppliancesGetUpgradeGraphOutput {
+  id?: string;
+  name?: string;
+  properties?: {
+    applianceVersion?: string;
+    supportedVersions?: {
+      metadata?: {
+        catalogVersion?: {
+          data?: {
+            audience?: string;
+            catalog?: string;
+            offer?: string;
+            version?: string;
+          };
+          name?: string;
+          namespace?: string;
+        };
+      };
+      version?: string;
+    }[];
+  };
+}
 export const AppliancesGetUpgradeGraphOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -296,9 +407,7 @@ export const AppliancesGetUpgradeGraphOutput =
         ),
       }),
     ),
-  });
-export type AppliancesGetUpgradeGraphOutput =
-  typeof AppliancesGetUpgradeGraphOutput.Type;
+  }) as unknown as Schema.Codec<AppliancesGetUpgradeGraphOutput>;
 
 // The operation
 /**
@@ -319,6 +428,10 @@ export const AppliancesGetUpgradeGraph = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AppliancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AppliancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -329,11 +442,25 @@ export const AppliancesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances",
       apiVersion: "2022-10-27",
     }),
-  );
-export type AppliancesListByResourceGroupInput =
-  typeof AppliancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AppliancesListByResourceGroupInput>;
 
 // Output Schema
+export interface AppliancesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppliancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -368,9 +495,7 @@ export const AppliancesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppliancesListByResourceGroupOutput =
-  typeof AppliancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AppliancesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -388,6 +513,9 @@ export const AppliancesListByResourceGroup =
     outputSchema: AppliancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AppliancesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AppliancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -397,11 +525,25 @@ export const AppliancesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/appliances",
       apiVersion: "2022-10-27",
     }),
-  );
-export type AppliancesListBySubscriptionInput =
-  typeof AppliancesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AppliancesListBySubscriptionInput>;
 
 // Output Schema
+export interface AppliancesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppliancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -436,9 +578,7 @@ export const AppliancesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppliancesListBySubscriptionOutput =
-  typeof AppliancesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AppliancesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -455,6 +595,11 @@ export const AppliancesListBySubscription =
     outputSchema: AppliancesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AppliancesListClusterUserCredentialInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const AppliancesListClusterUserCredentialInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -466,11 +611,21 @@ export const AppliancesListClusterUserCredentialInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/listClusterUserCredential",
       apiVersion: "2022-10-27",
     }),
-  );
-export type AppliancesListClusterUserCredentialInput =
-  typeof AppliancesListClusterUserCredentialInput.Type;
+  ) as unknown as Schema.Codec<AppliancesListClusterUserCredentialInput>;
 
 // Output Schema
+export interface AppliancesListClusterUserCredentialOutput {
+  hybridConnectionConfig?: {
+    expirationTime?: number;
+    hybridConnectionName?: string;
+    relay?: string;
+    token?: string;
+  };
+  kubeconfigs?: {
+    name?: "clusterUser" | "clusterCustomerUser";
+    value?: string;
+  }[];
+}
 export const AppliancesListClusterUserCredentialOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hybridConnectionConfig: Schema.optional(
@@ -491,9 +646,7 @@ export const AppliancesListClusterUserCredentialOutput =
         }),
       ),
     ),
-  });
-export type AppliancesListClusterUserCredentialOutput =
-  typeof AppliancesListClusterUserCredentialOutput.Type;
+  }) as unknown as Schema.Codec<AppliancesListClusterUserCredentialOutput>;
 
 // The operation
 /**
@@ -512,6 +665,12 @@ export const AppliancesListClusterUserCredential =
     outputSchema: AppliancesListClusterUserCredentialOutput,
   }));
 // Input Schema
+export interface AppliancesListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  artifactType?: string;
+}
 export const AppliancesListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -524,10 +683,26 @@ export const AppliancesListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/listkeys",
       apiVersion: "2022-10-27",
     }),
-  );
-export type AppliancesListKeysInput = typeof AppliancesListKeysInput.Type;
+  ) as unknown as Schema.Codec<AppliancesListKeysInput>;
 
 // Output Schema
+export interface AppliancesListKeysOutput {
+  artifactProfiles?: Record<string, { endpoint?: string }>;
+  kubeconfigs?: {
+    name?: "clusterUser" | "clusterCustomerUser";
+    value?: string;
+  }[];
+  sshKeys?: Record<
+    string,
+    {
+      certificate?: string;
+      creationTimeStamp?: number;
+      expirationTimeStamp?: number;
+      privateKey?: Redacted.Redacted<string>;
+      publicKey?: string;
+    }
+  >;
+}
 export const AppliancesListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifactProfiles: Schema.optional(
@@ -560,8 +735,7 @@ export const AppliancesListKeysOutput =
         }),
       ),
     ),
-  });
-export type AppliancesListKeysOutput = typeof AppliancesListKeysOutput.Type;
+  }) as unknown as Schema.Codec<AppliancesListKeysOutput>;
 
 // The operation
 /**
@@ -580,6 +754,7 @@ export const AppliancesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AppliancesListKeysOutput,
 }));
 // Input Schema
+export interface AppliancesListOperationsInput {}
 export const AppliancesListOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -587,11 +762,23 @@ export const AppliancesListOperationsInput =
       path: "/providers/Microsoft.ResourceConnector/operations",
       apiVersion: "2022-10-27",
     }),
-  );
-export type AppliancesListOperationsInput =
-  typeof AppliancesListOperationsInput.Type;
+  ) as unknown as Schema.Codec<AppliancesListOperationsInput>;
 
 // Output Schema
+export interface AppliancesListOperationsOutput {
+  value: {
+    display?: {
+      description?: string;
+      operation?: string;
+      provider?: string;
+      resource?: string;
+    };
+    isDataAction?: boolean;
+    name?: string;
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const AppliancesListOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -610,9 +797,7 @@ export const AppliancesListOperationsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppliancesListOperationsOutput =
-  typeof AppliancesListOperationsOutput.Type;
+  }) as unknown as Schema.Codec<AppliancesListOperationsOutput>;
 
 // The operation
 /**
@@ -627,6 +812,12 @@ export const AppliancesListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AppliancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+}
 export const AppliancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -638,10 +829,22 @@ export const AppliancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
     apiVersion: "2022-10-27",
   }),
-);
-export type AppliancesUpdateInput = typeof AppliancesUpdateInput.Type;
+) as unknown as Schema.Codec<AppliancesUpdateInput>;
 
 // Output Schema
+export interface AppliancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppliancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -662,8 +865,7 @@ export const AppliancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type AppliancesUpdateOutput = typeof AppliancesUpdateOutput.Type;
+) as unknown as Schema.Codec<AppliancesUpdateOutput>;
 
 // The operation
 /**

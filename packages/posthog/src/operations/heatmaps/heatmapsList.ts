@@ -4,6 +4,22 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HeatmapsListInput {
+  project_id: string;
+  aggregation?: "unique_visitors" | "total_count";
+  cohort_ids?: string;
+  date_from?: string;
+  date_to?: string;
+  filter_test_accounts?: string;
+  hide_zero_coordinates?: boolean;
+  limit?: number;
+  offset?: number;
+  type?: string;
+  url_exact?: string;
+  url_pattern?: string;
+  viewport_width_max?: number;
+  viewport_width_min?: number;
+}
 export const HeatmapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   aggregation: Schema.optional(
@@ -23,10 +39,24 @@ export const HeatmapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   viewport_width_min: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/heatmaps/" }),
-);
-export type HeatmapsListInput = typeof HeatmapsListInput.Type;
+) as unknown as Schema.Codec<HeatmapsListInput>;
 
 // Output Schema
+export type HeatmapsListOutput = {
+  results?: {
+    count?: number;
+    pointer_y?: number;
+    pointer_relative_x?: number;
+    pointer_target_fixed?: boolean;
+  }[];
+  fold?: {
+    total_count: number;
+    below_fold_count: number;
+    pct_below_fold: number;
+    median_viewport_height: number | null;
+  } | null;
+  has_more?: boolean;
+}[];
 export const HeatmapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     results: Schema.optional(
@@ -39,11 +69,19 @@ export const HeatmapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
         }),
       ),
     ),
-    fold: Schema.optional(Schema.Unknown),
+    fold: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          total_count: Schema.Number,
+          below_fold_count: Schema.Number,
+          pct_below_fold: Schema.Number,
+          median_viewport_height: Schema.NullOr(Schema.Number),
+        }),
+      ),
+    ),
     has_more: Schema.optional(Schema.Boolean),
   }),
-);
-export type HeatmapsListOutput = typeof HeatmapsListOutput.Type;
+) as unknown as Schema.Codec<HeatmapsListOutput>;
 
 // The operation
 /**

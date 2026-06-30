@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WelcomeCurrentRetrieveInput {
+  organization_id: string;
+}
 export const WelcomeCurrentRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,54 @@ export const WelcomeCurrentRetrieveInput =
       method: "GET",
       path: "/api/organizations/{organization_id}/welcome/current/",
     }),
-  );
-export type WelcomeCurrentRetrieveInput =
-  typeof WelcomeCurrentRetrieveInput.Type;
+  ) as unknown as Schema.Codec<WelcomeCurrentRetrieveInput>;
 
 // Output Schema
+export interface WelcomeCurrentRetrieveOutput {
+  organization_name?: string;
+  inviter?: { name?: string; email?: string } | null;
+  team_members?: {
+    name?: string;
+    email?: string;
+    avatar?: string | null;
+    role?: string;
+    last_active?: "today" | "this_week" | "inactive" | "never";
+  }[];
+  recent_activity?: {
+    type?: string;
+    actor_name?: string;
+    entity_name?: string;
+    entity_url?: string | null;
+    timestamp?: string;
+  }[];
+  popular_dashboards?: {
+    id?: number;
+    name?: string;
+    description?: string;
+    team_id?: number;
+    url?: string;
+  }[];
+  products_in_use?: string[];
+  suggested_next_steps?: {
+    label?: string;
+    href?: string;
+    reason?: string;
+    docs_href?: string;
+    product_key?: string;
+  }[];
+  is_organization_first_user?: boolean;
+}
 export const WelcomeCurrentRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_name: Schema.optional(Schema.String),
-    inviter: Schema.optional(Schema.Unknown),
+    inviter: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     team_members: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -69,9 +111,7 @@ export const WelcomeCurrentRetrieveOutput =
       ),
     ),
     is_organization_first_user: Schema.optional(Schema.Boolean),
-  });
-export type WelcomeCurrentRetrieveOutput =
-  typeof WelcomeCurrentRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<WelcomeCurrentRetrieveOutput>;
 
 // The operation
 /**

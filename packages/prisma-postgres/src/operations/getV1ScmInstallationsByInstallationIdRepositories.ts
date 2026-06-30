@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1ScmInstallationsByInstallationIdRepositoriesInput {
+  installationId: string;
+  cursor?: string;
+  limit?: number;
+}
 export const GetV1ScmInstallationsByInstallationIdRepositoriesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installationId: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,19 @@ export const GetV1ScmInstallationsByInstallationIdRepositoriesInput =
       method: "GET",
       path: "/v1/scm-installations/{installationId}/repositories",
     }),
-  );
-export type GetV1ScmInstallationsByInstallationIdRepositoriesInput =
-  typeof GetV1ScmInstallationsByInstallationIdRepositoriesInput.Type;
+  ) as unknown as Schema.Codec<GetV1ScmInstallationsByInstallationIdRepositoriesInput>;
 
 // Output Schema
+export interface GetV1ScmInstallationsByInstallationIdRepositoriesOutput {
+  data: {
+    id: number;
+    type: string;
+    fullName: string;
+    defaultBranch: string;
+    isPrivate: boolean;
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1ScmInstallationsByInstallationIdRepositoriesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -34,9 +47,7 @@ export const GetV1ScmInstallationsByInstallationIdRepositoriesOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1ScmInstallationsByInstallationIdRepositoriesOutput =
-  typeof GetV1ScmInstallationsByInstallationIdRepositoriesOutput.Type;
+  }) as unknown as Schema.Codec<GetV1ScmInstallationsByInstallationIdRepositoriesOutput>;
 
 // The operation
 /**

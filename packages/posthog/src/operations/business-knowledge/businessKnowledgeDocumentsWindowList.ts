@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeDocumentsWindowListInput {
+  id: string;
+  project_id: string;
+  around_ordinal: number;
+  radius?: number;
+}
 export const BusinessKnowledgeDocumentsWindowListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,17 @@ export const BusinessKnowledgeDocumentsWindowListInput =
       method: "GET",
       path: "/api/projects/{project_id}/business_knowledge/documents/{id}/window/",
     }),
-  );
-export type BusinessKnowledgeDocumentsWindowListInput =
-  typeof BusinessKnowledgeDocumentsWindowListInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeDocumentsWindowListInput>;
 
 // Output Schema
+export type BusinessKnowledgeDocumentsWindowListOutput = {
+  chunk_id: string;
+  ordinal: number;
+  content: string;
+  heading_path: string;
+  source_name: string;
+  document_title: string;
+}[];
 export const BusinessKnowledgeDocumentsWindowListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -29,9 +41,7 @@ export const BusinessKnowledgeDocumentsWindowListOutput =
       source_name: Schema.String,
       document_title: Schema.String,
     }),
-  );
-export type BusinessKnowledgeDocumentsWindowListOutput =
-  typeof BusinessKnowledgeDocumentsWindowListOutput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeDocumentsWindowListOutput>;
 
 // The operation
 /**

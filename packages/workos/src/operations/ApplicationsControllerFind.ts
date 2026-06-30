@@ -4,14 +4,27 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ApplicationsControllerFindInput {
+  id: string;
+}
 export const ApplicationsControllerFindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/connect/applications/{id}" }));
-export type ApplicationsControllerFindInput =
-  typeof ApplicationsControllerFindInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/connect/applications/{id}" }),
+  ) as unknown as Schema.Codec<ApplicationsControllerFindInput>;
 
 // Output Schema
+export interface ApplicationsControllerFindOutput {
+  object: string;
+  id: string;
+  client_id: string;
+  description: string | null;
+  name: string;
+  scopes: string[];
+  created_at: string;
+  updated_at: string;
+}
 export const ApplicationsControllerFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -22,9 +35,7 @@ export const ApplicationsControllerFindOutput =
     scopes: Schema.Array(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type ApplicationsControllerFindOutput =
-  typeof ApplicationsControllerFindOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsControllerFindOutput>;
 
 // The operation
 /**

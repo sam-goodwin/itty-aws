@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
+export const Color: Schema.Codec<Color> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     red: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
@@ -50,7 +50,7 @@ export interface LightSettings {
   color?: Color;
 }
 
-export const LightSettings: Schema.Schema<LightSettings> =
+export const LightSettings: Schema.Codec<LightSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lightOnDuration: Schema.optional(Schema.String),
     lightOffDuration: Schema.optional(Schema.String),
@@ -64,7 +64,7 @@ export interface WebpushFcmOptions {
   link?: string;
 }
 
-export const WebpushFcmOptions: Schema.Schema<WebpushFcmOptions> =
+export const WebpushFcmOptions: Schema.Codec<WebpushFcmOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsLabel: Schema.optional(Schema.String),
     link: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface WebpushConfig {
   fcmOptions?: WebpushFcmOptions;
 }
 
-export const WebpushConfig: Schema.Schema<WebpushConfig> =
+export const WebpushConfig: Schema.Codec<WebpushConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notification: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -163,7 +163,7 @@ export interface AndroidNotification {
     | (string & {});
 }
 
-export const AndroidNotification: Schema.Schema<AndroidNotification> =
+export const AndroidNotification: Schema.Codec<AndroidNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     sticky: Schema.optional(Schema.Boolean),
@@ -203,7 +203,7 @@ export interface Notification {
   body?: string;
 }
 
-export const Notification: Schema.Schema<Notification> =
+export const Notification: Schema.Codec<Notification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -217,7 +217,7 @@ export interface ApnsFcmOptions {
   image?: string;
 }
 
-export const ApnsFcmOptions: Schema.Schema<ApnsFcmOptions> =
+export const ApnsFcmOptions: Schema.Codec<ApnsFcmOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsLabel: Schema.optional(Schema.String),
     image: Schema.optional(Schema.String),
@@ -234,7 +234,7 @@ export interface ApnsConfig {
   liveActivityToken?: string;
 }
 
-export const ApnsConfig: Schema.Schema<ApnsConfig> =
+export const ApnsConfig: Schema.Codec<ApnsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -247,7 +247,7 @@ export interface AndroidFcmOptions {
   analyticsLabel?: string;
 }
 
-export const AndroidFcmOptions: Schema.Schema<AndroidFcmOptions> =
+export const AndroidFcmOptions: Schema.Codec<AndroidFcmOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsLabel: Schema.optional(Schema.String),
   }).annotate({ identifier: "AndroidFcmOptions" });
@@ -275,7 +275,7 @@ export interface AndroidConfig {
   restrictedSatelliteOk?: boolean;
 }
 
-export const AndroidConfig: Schema.Schema<AndroidConfig> =
+export const AndroidConfig: Schema.Codec<AndroidConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bandwidthConstrainedOk: Schema.optional(Schema.Boolean),
     directBootOk: Schema.optional(Schema.Boolean),
@@ -294,7 +294,7 @@ export interface FcmOptions {
   analyticsLabel?: string;
 }
 
-export const FcmOptions: Schema.Schema<FcmOptions> =
+export const FcmOptions: Schema.Codec<FcmOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsLabel: Schema.optional(Schema.String),
   }).annotate({ identifier: "FcmOptions" });
@@ -324,7 +324,7 @@ export interface Message {
   fcmOptions?: FcmOptions;
 }
 
-export const Message: Schema.Schema<Message> =
+export const Message: Schema.Codec<Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -346,7 +346,7 @@ export interface SendMessageRequest {
   message?: Message;
 }
 
-export const SendMessageRequest: Schema.Schema<SendMessageRequest> =
+export const SendMessageRequest: Schema.Codec<SendMessageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     message: Schema.optional(Message),
@@ -424,7 +424,7 @@ export const SendProjectsMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SendProjectsMessagesRequest>;
+  ) as unknown as Schema.Codec<SendProjectsMessagesRequest>;
 
 export type SendProjectsMessagesResponse = Message;
 export const SendProjectsMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;

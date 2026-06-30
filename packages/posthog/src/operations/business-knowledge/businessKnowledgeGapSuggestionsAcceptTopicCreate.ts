@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeGapSuggestionsAcceptTopicCreateInput {
+  project_id: string;
+  normalized_topic: string;
+  resolved_source_id?: string | null;
+}
 export const BusinessKnowledgeGapSuggestionsAcceptTopicCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +18,18 @@ export const BusinessKnowledgeGapSuggestionsAcceptTopicCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/business_knowledge/gap_suggestions/accept_topic/",
     }),
-  );
-export type BusinessKnowledgeGapSuggestionsAcceptTopicCreateInput =
-  typeof BusinessKnowledgeGapSuggestionsAcceptTopicCreateInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeGapSuggestionsAcceptTopicCreateInput>;
 
 // Output Schema
+export interface BusinessKnowledgeGapSuggestionsAcceptTopicCreateOutput {
+  normalized_topic: string;
+  updated: number;
+}
 export const BusinessKnowledgeGapSuggestionsAcceptTopicCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     normalized_topic: Schema.String,
     updated: Schema.Number,
-  });
-export type BusinessKnowledgeGapSuggestionsAcceptTopicCreateOutput =
-  typeof BusinessKnowledgeGapSuggestionsAcceptTopicCreateOutput.Type;
+  }) as unknown as Schema.Codec<BusinessKnowledgeGapSuggestionsAcceptTopicCreateOutput>;
 
 // The operation
 /**

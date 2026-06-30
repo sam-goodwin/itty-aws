@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsReviewQueuesPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+}
 export const LlmAnalyticsReviewQueuesPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,38 @@ export const LlmAnalyticsReviewQueuesPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/llm_analytics/review_queues/{id}/",
     }),
-  );
-export type LlmAnalyticsReviewQueuesPartialUpdateInput =
-  typeof LlmAnalyticsReviewQueuesPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsReviewQueuesPartialUpdateInput>;
 
 // Output Schema
+export interface LlmAnalyticsReviewQueuesPartialUpdateOutput {
+  id?: string;
+  name?: string;
+  pending_item_count?: number;
+  created_at?: string;
+  updated_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const LlmAnalyticsReviewQueuesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -38,14 +70,28 @@ export const LlmAnalyticsReviewQueuesPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
-export type LlmAnalyticsReviewQueuesPartialUpdateOutput =
-  typeof LlmAnalyticsReviewQueuesPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsReviewQueuesPartialUpdateOutput>;
 
 // The operation
 /**

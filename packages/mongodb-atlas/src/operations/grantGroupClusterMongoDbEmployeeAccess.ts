@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface GrantGroupClusterMongoDbEmployeeAccessInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GrantGroupClusterMongoDbEmployeeAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const GrantGroupClusterMongoDbEmployeeAccessInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess",
     }),
-  );
-export type GrantGroupClusterMongoDbEmployeeAccessInput =
-  typeof GrantGroupClusterMongoDbEmployeeAccessInput.Type;
+  ) as unknown as Schema.Codec<GrantGroupClusterMongoDbEmployeeAccessInput>;
 
 // Output Schema
+export type GrantGroupClusterMongoDbEmployeeAccessOutput = void;
 export const GrantGroupClusterMongoDbEmployeeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GrantGroupClusterMongoDbEmployeeAccessOutput =
-  typeof GrantGroupClusterMongoDbEmployeeAccessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GrantGroupClusterMongoDbEmployeeAccessOutput>;
 
 // The operation
 /**

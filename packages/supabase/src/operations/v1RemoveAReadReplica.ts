@@ -4,19 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1RemoveAReadReplicaInput {
+  ref: string;
+  database_identifier: string;
+}
 export const V1RemoveAReadReplicaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     database_identifier: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/v1/projects/{ref}/read-replicas/remove" }),
-  );
-export type V1RemoveAReadReplicaInput = typeof V1RemoveAReadReplicaInput.Type;
+  ) as unknown as Schema.Codec<V1RemoveAReadReplicaInput>;
 
 // Output Schema
+export type V1RemoveAReadReplicaOutput = void;
 export const V1RemoveAReadReplicaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1RemoveAReadReplicaOutput = typeof V1RemoveAReadReplicaOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RemoveAReadReplicaOutput>;
 
 // The operation
 /**

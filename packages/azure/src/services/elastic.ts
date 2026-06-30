@@ -4,12 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AllTrafficFiltersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const AllTrafficFiltersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,10 +27,26 @@ export const AllTrafficFiltersListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listAllTrafficFilters",
       apiVersion: "2025-06-01",
     }),
-  );
-export type AllTrafficFiltersListInput = typeof AllTrafficFiltersListInput.Type;
+  ) as unknown as Schema.Codec<AllTrafficFiltersListInput>;
 
 // Output Schema
+export interface AllTrafficFiltersListOutput {
+  rulesets?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    region?: string;
+    type?: "ip" | "azure_private_endpoint";
+    includeByDefault?: boolean;
+    rules?: {
+      source?: string;
+      description?: string;
+      azureEndpointGuid?: string;
+      azureEndpointName?: string;
+      id?: string;
+    }[];
+  }[];
+}
 export const AllTrafficFiltersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rulesets: Schema.optional(
@@ -52,9 +74,7 @@ export const AllTrafficFiltersListOutput =
         }),
       ),
     ),
-  });
-export type AllTrafficFiltersListOutput =
-  typeof AllTrafficFiltersListOutput.Type;
+  }) as unknown as Schema.Codec<AllTrafficFiltersListOutput>;
 
 // The operation
 /**
@@ -72,6 +92,12 @@ export const AllTrafficFiltersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssociateTrafficFilterAssociateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  rulesetId?: string;
+}
 export const AssociateTrafficFilterAssociateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -84,15 +110,12 @@ export const AssociateTrafficFilterAssociateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/associateTrafficFilter",
       apiVersion: "2025-06-01",
     }),
-  );
-export type AssociateTrafficFilterAssociateInput =
-  typeof AssociateTrafficFilterAssociateInput.Type;
+  ) as unknown as Schema.Codec<AssociateTrafficFilterAssociateInput>;
 
 // Output Schema
+export type AssociateTrafficFilterAssociateOutput = void;
 export const AssociateTrafficFilterAssociateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AssociateTrafficFilterAssociateOutput =
-  typeof AssociateTrafficFilterAssociateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssociateTrafficFilterAssociateOutput>;
 
 // The operation
 /**
@@ -110,6 +133,11 @@ export const AssociateTrafficFilterAssociate =
     outputSchema: AssociateTrafficFilterAssociateOutput,
   }));
 // Input Schema
+export interface BillingInfoGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const BillingInfoGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -120,10 +148,28 @@ export const BillingInfoGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/getBillingInfo",
     apiVersion: "2025-06-01",
   }),
-);
-export type BillingInfoGetInput = typeof BillingInfoGetInput.Type;
+) as unknown as Schema.Codec<BillingInfoGetInput>;
 
 // Output Schema
+export interface BillingInfoGetOutput {
+  marketplaceSaasInfo?: {
+    marketplaceSubscription?: {
+      id?: string;
+      publisherId?: string;
+      offerId?: string;
+    };
+    marketplaceName?: string;
+    marketplaceResourceId?: string;
+    marketplaceStatus?: string;
+    billedAzureSubscriptionId?: string;
+    subscribed?: boolean;
+  };
+  partnerBillingEntity?: {
+    id?: string;
+    name?: string;
+    partnerEntityUri?: string;
+  };
+}
 export const BillingInfoGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   marketplaceSaasInfo: Schema.optional(
     Schema.Struct({
@@ -148,8 +194,7 @@ export const BillingInfoGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       partnerEntityUri: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BillingInfoGetOutput = typeof BillingInfoGetOutput.Type;
+}) as unknown as Schema.Codec<BillingInfoGetOutput>;
 
 // The operation
 /**
@@ -165,6 +210,11 @@ export const BillingInfoGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BillingInfoGetOutput,
 }));
 // Input Schema
+export interface ConnectedPartnerResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const ConnectedPartnerResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -176,11 +226,21 @@ export const ConnectedPartnerResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listConnectedPartnerResources",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ConnectedPartnerResourcesListInput =
-  typeof ConnectedPartnerResourcesListInput.Type;
+  ) as unknown as Schema.Codec<ConnectedPartnerResourcesListInput>;
 
 // Output Schema
+export interface ConnectedPartnerResourcesListOutput {
+  value: {
+    properties?: {
+      partnerDeploymentName?: string;
+      partnerDeploymentUri?: string;
+      azureResourceId?: string;
+      location?: string;
+      type?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectedPartnerResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -197,9 +257,7 @@ export const ConnectedPartnerResourcesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectedPartnerResourcesListOutput =
-  typeof ConnectedPartnerResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedPartnerResourcesListOutput>;
 
 // The operation
 /**
@@ -216,6 +274,13 @@ export const ConnectedPartnerResourcesList =
     outputSchema: ConnectedPartnerResourcesListOutput,
   }));
 // Input Schema
+export interface CreateAndAssociateIPFilterCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  ips?: string;
+  name?: string;
+}
 export const CreateAndAssociateIPFilterCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -229,15 +294,12 @@ export const CreateAndAssociateIPFilterCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createAndAssociateIPFilter",
       apiVersion: "2025-06-01",
     }),
-  );
-export type CreateAndAssociateIPFilterCreateInput =
-  typeof CreateAndAssociateIPFilterCreateInput.Type;
+  ) as unknown as Schema.Codec<CreateAndAssociateIPFilterCreateInput>;
 
 // Output Schema
+export type CreateAndAssociateIPFilterCreateOutput = void;
 export const CreateAndAssociateIPFilterCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateAndAssociateIPFilterCreateOutput =
-  typeof CreateAndAssociateIPFilterCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateAndAssociateIPFilterCreateOutput>;
 
 // The operation
 /**
@@ -256,6 +318,14 @@ export const createAndAssociateIPFilterCreate =
     outputSchema: CreateAndAssociateIPFilterCreateOutput,
   }));
 // Input Schema
+export interface CreateAndAssociatePLFilterCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  name?: string;
+  privateEndpointGuid?: string;
+  privateEndpointName?: string;
+}
 export const CreateAndAssociatePLFilterCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -270,15 +340,12 @@ export const CreateAndAssociatePLFilterCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createAndAssociatePLFilter",
       apiVersion: "2025-06-01",
     }),
-  );
-export type CreateAndAssociatePLFilterCreateInput =
-  typeof CreateAndAssociatePLFilterCreateInput.Type;
+  ) as unknown as Schema.Codec<CreateAndAssociatePLFilterCreateInput>;
 
 // Output Schema
+export type CreateAndAssociatePLFilterCreateOutput = void;
 export const CreateAndAssociatePLFilterCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateAndAssociatePLFilterCreateOutput =
-  typeof CreateAndAssociatePLFilterCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateAndAssociatePLFilterCreateOutput>;
 
 // The operation
 /**
@@ -298,6 +365,11 @@ export const createAndAssociatePLFilterCreate =
     outputSchema: CreateAndAssociatePLFilterCreateOutput,
   }));
 // Input Schema
+export interface DeploymentInfoListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const DeploymentInfoListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -309,10 +381,31 @@ export const DeploymentInfoListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listDeploymentInfo",
       apiVersion: "2025-06-01",
     }),
-  );
-export type DeploymentInfoListInput = typeof DeploymentInfoListInput.Type;
+  ) as unknown as Schema.Codec<DeploymentInfoListInput>;
 
 // Output Schema
+export interface DeploymentInfoListOutput {
+  status?: "Healthy" | "Unhealthy";
+  version?: string;
+  memoryCapacity?: string;
+  diskCapacity?: string;
+  elasticsearchEndPoint?: string;
+  deploymentUrl?: string;
+  marketplaceSaasInfo?: {
+    marketplaceSubscription?: {
+      id?: string;
+      publisherId?: string;
+      offerId?: string;
+    };
+    marketplaceName?: string;
+    marketplaceResourceId?: string;
+    marketplaceStatus?: string;
+    billedAzureSubscriptionId?: string;
+    subscribed?: boolean;
+  };
+  projectType?: string;
+  configurationType?: string;
+}
 export const DeploymentInfoListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Literals(["Healthy", "Unhealthy"])),
@@ -339,8 +432,7 @@ export const DeploymentInfoListOutput =
     ),
     projectType: Schema.optional(Schema.String),
     configurationType: Schema.optional(Schema.String),
-  });
-export type DeploymentInfoListOutput = typeof DeploymentInfoListOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentInfoListOutput>;
 
 // The operation
 /**
@@ -356,6 +448,12 @@ export const DeploymentInfoList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentInfoListOutput,
 }));
 // Input Schema
+export interface DetachAndDeleteTrafficFilterDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  rulesetId?: string;
+}
 export const DetachAndDeleteTrafficFilterDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -368,15 +466,12 @@ export const DetachAndDeleteTrafficFilterDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/detachAndDeleteTrafficFilter",
       apiVersion: "2025-06-01",
     }),
-  );
-export type DetachAndDeleteTrafficFilterDeleteInput =
-  typeof DetachAndDeleteTrafficFilterDeleteInput.Type;
+  ) as unknown as Schema.Codec<DetachAndDeleteTrafficFilterDeleteInput>;
 
 // Output Schema
+export type DetachAndDeleteTrafficFilterDeleteOutput = void;
 export const DetachAndDeleteTrafficFilterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DetachAndDeleteTrafficFilterDeleteOutput =
-  typeof DetachAndDeleteTrafficFilterDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DetachAndDeleteTrafficFilterDeleteOutput>;
 
 // The operation
 /**
@@ -394,6 +489,12 @@ export const DetachAndDeleteTrafficFilterDelete =
     outputSchema: DetachAndDeleteTrafficFilterDeleteOutput,
   }));
 // Input Schema
+export interface DetachTrafficFilterUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  rulesetId?: string;
+}
 export const DetachTrafficFilterUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -406,15 +507,12 @@ export const DetachTrafficFilterUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/detachTrafficFilter",
       apiVersion: "2025-06-01",
     }),
-  );
-export type DetachTrafficFilterUpdateInput =
-  typeof DetachTrafficFilterUpdateInput.Type;
+  ) as unknown as Schema.Codec<DetachTrafficFilterUpdateInput>;
 
 // Output Schema
+export type DetachTrafficFilterUpdateOutput = void;
 export const DetachTrafficFilterUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DetachTrafficFilterUpdateOutput =
-  typeof DetachTrafficFilterUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DetachTrafficFilterUpdateOutput>;
 
 // The operation
 /**
@@ -433,6 +531,10 @@ export const DetachTrafficFilterUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ElasticVersionsListInput {
+  subscriptionId: string;
+  region: string;
+}
 export const ElasticVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -443,10 +545,13 @@ export const ElasticVersionsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/elasticVersions",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ElasticVersionsListInput = typeof ElasticVersionsListInput.Type;
+  ) as unknown as Schema.Codec<ElasticVersionsListInput>;
 
 // Output Schema
+export interface ElasticVersionsListOutput {
+  value: { properties?: { version?: string } }[];
+  nextLink?: string;
+}
 export const ElasticVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -459,8 +564,7 @@ export const ElasticVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ElasticVersionsListOutput = typeof ElasticVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<ElasticVersionsListOutput>;
 
 // The operation
 /**
@@ -475,6 +579,16 @@ export const ElasticVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ElasticVersionsListOutput,
 }));
 // Input Schema
+export interface ExternalUserCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  userName?: string;
+  fullName?: string;
+  password?: string | Redacted.Redacted<string>;
+  emailId?: string;
+  roles?: string[];
+}
 export const ExternalUserCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -491,17 +605,16 @@ export const ExternalUserCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createOrUpdateExternalUser",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ExternalUserCreateOrUpdateInput =
-  typeof ExternalUserCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ExternalUserCreateOrUpdateInput>;
 
 // Output Schema
+export interface ExternalUserCreateOrUpdateOutput {
+  created?: boolean;
+}
 export const ExternalUserCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.Boolean),
-  });
-export type ExternalUserCreateOrUpdateOutput =
-  typeof ExternalUserCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalUserCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -519,6 +632,11 @@ export const ExternalUserCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListAssociatedTrafficFiltersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const ListAssociatedTrafficFiltersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -530,11 +648,26 @@ export const ListAssociatedTrafficFiltersListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listAssociatedTrafficFilters",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ListAssociatedTrafficFiltersListInput =
-  typeof ListAssociatedTrafficFiltersListInput.Type;
+  ) as unknown as Schema.Codec<ListAssociatedTrafficFiltersListInput>;
 
 // Output Schema
+export interface ListAssociatedTrafficFiltersListOutput {
+  rulesets?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    region?: string;
+    type?: "ip" | "azure_private_endpoint";
+    includeByDefault?: boolean;
+    rules?: {
+      source?: string;
+      description?: string;
+      azureEndpointGuid?: string;
+      azureEndpointName?: string;
+      id?: string;
+    }[];
+  }[];
+}
 export const ListAssociatedTrafficFiltersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rulesets: Schema.optional(
@@ -562,9 +695,7 @@ export const ListAssociatedTrafficFiltersListOutput =
         }),
       ),
     ),
-  });
-export type ListAssociatedTrafficFiltersListOutput =
-  typeof ListAssociatedTrafficFiltersListOutput.Type;
+  }) as unknown as Schema.Codec<ListAssociatedTrafficFiltersListOutput>;
 
 // The operation
 /**
@@ -581,6 +712,11 @@ export const listAssociatedTrafficFiltersList =
     outputSchema: ListAssociatedTrafficFiltersListOutput,
   }));
 // Input Schema
+export interface MonitoredResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const MonitoredResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -592,11 +728,17 @@ export const MonitoredResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listMonitoredResources",
       apiVersion: "2025-06-01",
     }),
-  );
-export type MonitoredResourcesListInput =
-  typeof MonitoredResourcesListInput.Type;
+  ) as unknown as Schema.Codec<MonitoredResourcesListInput>;
 
 // Output Schema
+export interface MonitoredResourcesListOutput {
+  value: {
+    id?: string;
+    sendingLogs?: "True" | "False";
+    reasonForLogsStatus?: string;
+  }[];
+  nextLink?: string;
+}
 export const MonitoredResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -607,9 +749,7 @@ export const MonitoredResourcesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MonitoredResourcesListOutput =
-  typeof MonitoredResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<MonitoredResourcesListOutput>;
 
 // The operation
 /**
@@ -627,6 +767,57 @@ export const MonitoredResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MonitoredSubscriptionsCreateorUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  configurationName: string;
+  properties?: {
+    operation?:
+      | "AddBegin"
+      | "AddComplete"
+      | "DeleteBegin"
+      | "DeleteComplete"
+      | "Active";
+    monitoredSubscriptionList?: {
+      subscriptionId: string;
+      status?: "InProgress" | "Active" | "Failed" | "Deleting";
+      error?: string;
+      tagRules?: {
+        provisioningState?:
+          | "Accepted"
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Failed"
+          | "Canceled"
+          | "Deleted"
+          | "NotSpecified";
+        logRules?: {
+          sendAadLogs?: boolean;
+          sendSubscriptionLogs?: boolean;
+          sendActivityLogs?: boolean;
+          filteringTags?: {
+            name?: string;
+            value?: string;
+            action?: "Include" | "Exclude";
+          }[];
+        };
+      };
+    }[];
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+  };
+}
 export const MonitoredSubscriptionsCreateorUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -711,11 +902,22 @@ export const MonitoredSubscriptionsCreateorUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type MonitoredSubscriptionsCreateorUpdateInput =
-  typeof MonitoredSubscriptionsCreateorUpdateInput.Type;
+  ) as unknown as Schema.Codec<MonitoredSubscriptionsCreateorUpdateInput>;
 
 // Output Schema
+export interface MonitoredSubscriptionsCreateorUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitoredSubscriptionsCreateorUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -735,9 +937,7 @@ export const MonitoredSubscriptionsCreateorUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MonitoredSubscriptionsCreateorUpdateOutput =
-  typeof MonitoredSubscriptionsCreateorUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MonitoredSubscriptionsCreateorUpdateOutput>;
 
 // The operation
 /**
@@ -753,6 +953,12 @@ export const MonitoredSubscriptionsCreateorUpdate =
     outputSchema: MonitoredSubscriptionsCreateorUpdateOutput,
   }));
 // Input Schema
+export interface MonitoredSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  configurationName: string;
+}
 export const MonitoredSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -765,15 +971,12 @@ export const MonitoredSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type MonitoredSubscriptionsDeleteInput =
-  typeof MonitoredSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<MonitoredSubscriptionsDeleteInput>;
 
 // Output Schema
+export type MonitoredSubscriptionsDeleteOutput = void;
 export const MonitoredSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MonitoredSubscriptionsDeleteOutput =
-  typeof MonitoredSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitoredSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -791,6 +994,12 @@ export const MonitoredSubscriptionsDelete =
     outputSchema: MonitoredSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface MonitoredSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  configurationName: string;
+}
 export const MonitoredSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -803,11 +1012,22 @@ export const MonitoredSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type MonitoredSubscriptionsGetInput =
-  typeof MonitoredSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<MonitoredSubscriptionsGetInput>;
 
 // Output Schema
+export interface MonitoredSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitoredSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -827,9 +1047,7 @@ export const MonitoredSubscriptionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MonitoredSubscriptionsGetOutput =
-  typeof MonitoredSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<MonitoredSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -848,6 +1066,11 @@ export const MonitoredSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MonitoredSubscriptionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const MonitoredSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -859,11 +1082,25 @@ export const MonitoredSubscriptionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions",
       apiVersion: "2025-06-01",
     }),
-  );
-export type MonitoredSubscriptionsListInput =
-  typeof MonitoredSubscriptionsListInput.Type;
+  ) as unknown as Schema.Codec<MonitoredSubscriptionsListInput>;
 
 // Output Schema
+export interface MonitoredSubscriptionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MonitoredSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -898,9 +1135,7 @@ export const MonitoredSubscriptionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MonitoredSubscriptionsListOutput =
-  typeof MonitoredSubscriptionsListOutput.Type;
+  }) as unknown as Schema.Codec<MonitoredSubscriptionsListOutput>;
 
 // The operation
 /**
@@ -918,6 +1153,57 @@ export const MonitoredSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MonitoredSubscriptionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  configurationName: string;
+  properties?: {
+    operation?:
+      | "AddBegin"
+      | "AddComplete"
+      | "DeleteBegin"
+      | "DeleteComplete"
+      | "Active";
+    monitoredSubscriptionList?: {
+      subscriptionId: string;
+      status?: "InProgress" | "Active" | "Failed" | "Deleting";
+      error?: string;
+      tagRules?: {
+        provisioningState?:
+          | "Accepted"
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Failed"
+          | "Canceled"
+          | "Deleted"
+          | "NotSpecified";
+        logRules?: {
+          sendAadLogs?: boolean;
+          sendSubscriptionLogs?: boolean;
+          sendActivityLogs?: boolean;
+          filteringTags?: {
+            name?: string;
+            value?: string;
+            action?: "Include" | "Exclude";
+          }[];
+        };
+      };
+    }[];
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+  };
+}
 export const MonitoredSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1002,11 +1288,22 @@ export const MonitoredSubscriptionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type MonitoredSubscriptionsUpdateInput =
-  typeof MonitoredSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<MonitoredSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface MonitoredSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitoredSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1026,9 +1323,7 @@ export const MonitoredSubscriptionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MonitoredSubscriptionsUpdateOutput =
-  typeof MonitoredSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MonitoredSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -1044,6 +1339,90 @@ export const MonitoredSubscriptionsUpdate =
     outputSchema: MonitoredSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface MonitorsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+    monitoringStatus?: "Enabled" | "Disabled";
+    elasticProperties?: {
+      elasticCloudUser?: {
+        emailAddress?: string;
+        id?: string;
+        elasticCloudSsoDefaultUrl?: string;
+      };
+      elasticCloudDeployment?: {
+        name?: string;
+        deploymentId?: string;
+        azureSubscriptionId?: string;
+        elasticsearchRegion?: string;
+        elasticsearchServiceUrl?: string;
+        kibanaServiceUrl?: string;
+        kibanaSsoUrl?: string;
+      };
+    };
+    userInfo?: {
+      firstName?: string;
+      lastName?: string;
+      companyName?: string;
+      emailAddress?: string;
+      companyInfo?: {
+        domain?: string;
+        business?: string;
+        employeesNumber?: string;
+        state?: string;
+        country?: string;
+      };
+    };
+    planDetails?: {
+      offerID?: string;
+      publisherID?: string;
+      termID?: string;
+      planID?: string;
+      planName?: string;
+    };
+    version?: string;
+    subscriptionState?: string;
+    saaSAzureSubscriptionStatus?: string;
+    sourceCampaignName?: string;
+    sourceCampaignId?: string;
+    liftrResourceCategory?: "Unknown" | "MonitorLogs";
+    liftrResourcePreference?: number;
+    generateApiKey?: boolean;
+    hostingType?: "Hosted" | "Serverless";
+    projectDetails?: {
+      projectType?:
+        | "Elasticsearch"
+        | "Observability"
+        | "Security"
+        | "NotApplicable";
+      configurationType?:
+        | "GeneralPurpose"
+        | "Vector"
+        | "TimeSeries"
+        | "NotApplicable";
+    };
+  };
+  kind?: string;
+  sku?: { name: string };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1168,10 +1547,22 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
+) as unknown as Schema.Codec<MonitorsCreateInput>;
 
 // Output Schema
+export interface MonitorsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1190,8 +1581,7 @@ export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MonitorsCreateOutput = typeof MonitorsCreateOutput.Type;
+}) as unknown as Schema.Codec<MonitorsCreateOutput>;
 
 // The operation
 /**
@@ -1206,6 +1596,11 @@ export const MonitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsCreateOutput,
 }));
 // Input Schema
+export interface MonitorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1216,12 +1611,12 @@ export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
+) as unknown as Schema.Codec<MonitorsDeleteInput>;
 
 // Output Schema
-export const MonitorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MonitorsDeleteOutput = typeof MonitorsDeleteOutput.Type;
+export type MonitorsDeleteOutput = void;
+export const MonitorsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitorsDeleteOutput>;
 
 // The operation
 /**
@@ -1237,6 +1632,11 @@ export const MonitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsDeleteOutput,
 }));
 // Input Schema
+export interface MonitorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1247,10 +1647,22 @@ export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type MonitorsGetInput = typeof MonitorsGetInput.Type;
+) as unknown as Schema.Codec<MonitorsGetInput>;
 
 // Output Schema
+export interface MonitorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1269,8 +1681,7 @@ export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MonitorsGetOutput = typeof MonitorsGetOutput.Type;
+}) as unknown as Schema.Codec<MonitorsGetOutput>;
 
 // The operation
 /**
@@ -1286,6 +1697,9 @@ export const MonitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsGetOutput,
 }));
 // Input Schema
+export interface MonitorsListInput {
+  subscriptionId: string;
+}
 export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1294,10 +1708,25 @@ export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/monitors",
     apiVersion: "2025-06-01",
   }),
-);
-export type MonitorsListInput = typeof MonitorsListInput.Type;
+) as unknown as Schema.Codec<MonitorsListInput>;
 
 // Output Schema
+export interface MonitorsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1321,8 +1750,7 @@ export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type MonitorsListOutput = typeof MonitorsListOutput.Type;
+}) as unknown as Schema.Codec<MonitorsListOutput>;
 
 // The operation
 /**
@@ -1336,6 +1764,10 @@ export const MonitorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsListOutput,
 }));
 // Input Schema
+export interface MonitorsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const MonitorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1346,11 +1778,25 @@ export const MonitorsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors",
       apiVersion: "2025-06-01",
     }),
-  );
-export type MonitorsListByResourceGroupInput =
-  typeof MonitorsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<MonitorsListByResourceGroupInput>;
 
 // Output Schema
+export interface MonitorsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MonitorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1385,9 +1831,7 @@ export const MonitorsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MonitorsListByResourceGroupOutput =
-  typeof MonitorsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<MonitorsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1404,6 +1848,12 @@ export const MonitorsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MonitorsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  tags?: Record<string, string>;
+}
 export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1415,10 +1865,22 @@ export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
+) as unknown as Schema.Codec<MonitorsUpdateInput>;
 
 // Output Schema
+export interface MonitorsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1437,8 +1899,7 @@ export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MonitorsUpdateOutput = typeof MonitorsUpdateOutput.Type;
+}) as unknown as Schema.Codec<MonitorsUpdateOutput>;
 
 // The operation
 /**
@@ -1453,6 +1914,12 @@ export const MonitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsUpdateOutput,
 }));
 // Input Schema
+export interface MonitorUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  version?: string;
+}
 export const MonitorUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1464,12 +1931,12 @@ export const MonitorUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/upgrade",
     apiVersion: "2025-06-01",
   }),
-);
-export type MonitorUpgradeInput = typeof MonitorUpgradeInput.Type;
+) as unknown as Schema.Codec<MonitorUpgradeInput>;
 
 // Output Schema
-export const MonitorUpgradeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MonitorUpgradeOutput = typeof MonitorUpgradeOutput.Type;
+export type MonitorUpgradeOutput = void;
+export const MonitorUpgradeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitorUpgradeOutput>;
 
 // The operation
 /**
@@ -1485,6 +1952,19 @@ export const MonitorUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorUpgradeOutput,
 }));
 // Input Schema
+export interface OpenAICreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  integrationName: string;
+  properties?: {
+    openAIResourceId?: string;
+    openAIResourceEndpoint?: string;
+    openAIConnectorId?: string;
+    key?: string;
+    lastRefreshAt?: string;
+  };
+}
 export const OpenAICreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1506,10 +1986,22 @@ export const OpenAICreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type OpenAICreateOrUpdateInput = typeof OpenAICreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<OpenAICreateOrUpdateInput>;
 
 // Output Schema
+export interface OpenAICreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OpenAICreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1529,8 +2021,7 @@ export const OpenAICreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OpenAICreateOrUpdateOutput = typeof OpenAICreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OpenAICreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1547,6 +2038,12 @@ export const OpenAICreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OpenAIDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  integrationName: string;
+}
 export const OpenAIDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1558,12 +2055,12 @@ export const OpenAIDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type OpenAIDeleteInput = typeof OpenAIDeleteInput.Type;
+) as unknown as Schema.Codec<OpenAIDeleteInput>;
 
 // Output Schema
-export const OpenAIDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OpenAIDeleteOutput = typeof OpenAIDeleteOutput.Type;
+export type OpenAIDeleteOutput = void;
+export const OpenAIDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OpenAIDeleteOutput>;
 
 // The operation
 /**
@@ -1580,6 +2077,12 @@ export const OpenAIDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OpenAIDeleteOutput,
 }));
 // Input Schema
+export interface OpenAIGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  integrationName: string;
+}
 export const OpenAIGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1591,10 +2094,22 @@ export const OpenAIGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type OpenAIGetInput = typeof OpenAIGetInput.Type;
+) as unknown as Schema.Codec<OpenAIGetInput>;
 
 // Output Schema
+export interface OpenAIGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OpenAIGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1613,8 +2128,7 @@ export const OpenAIGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OpenAIGetOutput = typeof OpenAIGetOutput.Type;
+}) as unknown as Schema.Codec<OpenAIGetOutput>;
 
 // The operation
 /**
@@ -1631,6 +2145,12 @@ export const OpenAIGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OpenAIGetOutput,
 }));
 // Input Schema
+export interface OpenAIGetStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  integrationName: string;
+}
 export const OpenAIGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1642,18 +2162,19 @@ export const OpenAIGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}/getStatus",
     apiVersion: "2025-06-01",
   }),
-);
-export type OpenAIGetStatusInput = typeof OpenAIGetStatusInput.Type;
+) as unknown as Schema.Codec<OpenAIGetStatusInput>;
 
 // Output Schema
+export interface OpenAIGetStatusOutput {
+  properties?: { status?: string };
+}
 export const OpenAIGetStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       status: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OpenAIGetStatusOutput = typeof OpenAIGetStatusOutput.Type;
+}) as unknown as Schema.Codec<OpenAIGetStatusOutput>;
 
 // The operation
 /**
@@ -1670,6 +2191,11 @@ export const OpenAIGetStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OpenAIGetStatusOutput,
 }));
 // Input Schema
+export interface OpenAIListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const OpenAIListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1680,10 +2206,25 @@ export const OpenAIListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations",
     apiVersion: "2025-06-01",
   }),
-);
-export type OpenAIListInput = typeof OpenAIListInput.Type;
+) as unknown as Schema.Codec<OpenAIListInput>;
 
 // Output Schema
+export interface OpenAIListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OpenAIListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1707,8 +2248,7 @@ export const OpenAIListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OpenAIListOutput = typeof OpenAIListOutput.Type;
+}) as unknown as Schema.Codec<OpenAIListOutput>;
 
 // The operation
 /**
@@ -1724,6 +2264,7 @@ export const OpenAIList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OpenAIListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1732,10 +2273,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Elastic/operations",
     apiVersion: "2025-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1753,8 +2307,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1767,6 +2320,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OrganizationsGetApiKeyInput {
+  subscriptionId: string;
+  emailId?: string;
+}
 export const OrganizationsGetApiKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1777,11 +2334,12 @@ export const OrganizationsGetApiKeyInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getOrganizationApiKey",
       apiVersion: "2025-06-01",
     }),
-  );
-export type OrganizationsGetApiKeyInput =
-  typeof OrganizationsGetApiKeyInput.Type;
+  ) as unknown as Schema.Codec<OrganizationsGetApiKeyInput>;
 
 // Output Schema
+export interface OrganizationsGetApiKeyOutput {
+  properties?: { apiKey?: Redacted.Redacted<string> };
+}
 export const OrganizationsGetApiKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1789,9 +2347,7 @@ export const OrganizationsGetApiKeyOutput =
         apiKey: Schema.optional(SensitiveOutputString),
       }),
     ),
-  });
-export type OrganizationsGetApiKeyOutput =
-  typeof OrganizationsGetApiKeyOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsGetApiKeyOutput>;
 
 // The operation
 /**
@@ -1807,6 +2363,9 @@ export const OrganizationsGetApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrganizationsGetElasticToAzureSubscriptionMappingInput {
+  subscriptionId: string;
+}
 export const OrganizationsGetElasticToAzureSubscriptionMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1816,11 +2375,28 @@ export const OrganizationsGetElasticToAzureSubscriptionMappingInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getElasticOrganizationToAzureSubscriptionMapping",
       apiVersion: "2025-06-01",
     }),
-  );
-export type OrganizationsGetElasticToAzureSubscriptionMappingInput =
-  typeof OrganizationsGetElasticToAzureSubscriptionMappingInput.Type;
+  ) as unknown as Schema.Codec<OrganizationsGetElasticToAzureSubscriptionMappingInput>;
 
 // Output Schema
+export interface OrganizationsGetElasticToAzureSubscriptionMappingOutput {
+  properties?: {
+    billedAzureSubscriptionId?: string;
+    marketplaceSaasInfo?: {
+      marketplaceSubscription?: {
+        id?: string;
+        publisherId?: string;
+        offerId?: string;
+      };
+      marketplaceName?: string;
+      marketplaceResourceId?: string;
+      marketplaceStatus?: string;
+      billedAzureSubscriptionId?: string;
+      subscribed?: boolean;
+    };
+    elasticOrganizationId?: string;
+    elasticOrganizationName?: string;
+  };
+}
 export const OrganizationsGetElasticToAzureSubscriptionMappingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1846,9 +2422,7 @@ export const OrganizationsGetElasticToAzureSubscriptionMappingOutput =
         elasticOrganizationName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OrganizationsGetElasticToAzureSubscriptionMappingOutput =
-  typeof OrganizationsGetElasticToAzureSubscriptionMappingOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsGetElasticToAzureSubscriptionMappingOutput>;
 
 // The operation
 /**
@@ -1867,6 +2441,15 @@ export const OrganizationsGetElasticToAzureSubscriptionMapping =
     outputSchema: OrganizationsGetElasticToAzureSubscriptionMappingOutput,
   }));
 // Input Schema
+export interface OrganizationsResubscribeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  planId?: string;
+  term?: string;
+  resourceGroup?: string;
+  organizationId?: string;
+}
 export const OrganizationsResubscribeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1882,11 +2465,22 @@ export const OrganizationsResubscribeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/resubscribe",
       apiVersion: "2025-06-01",
     }),
-  );
-export type OrganizationsResubscribeInput =
-  typeof OrganizationsResubscribeInput.Type;
+  ) as unknown as Schema.Codec<OrganizationsResubscribeInput>;
 
 // Output Schema
+export interface OrganizationsResubscribeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrganizationsResubscribeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1906,9 +2500,7 @@ export const OrganizationsResubscribeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OrganizationsResubscribeOutput =
-  typeof OrganizationsResubscribeOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsResubscribeOutput>;
 
 // The operation
 /**
@@ -1926,6 +2518,34 @@ export const OrganizationsResubscribe = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TagRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  ruleSetName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+    logRules?: {
+      sendAadLogs?: boolean;
+      sendSubscriptionLogs?: boolean;
+      sendActivityLogs?: boolean;
+      filteringTags?: {
+        name?: string;
+        value?: string;
+        action?: "Include" | "Exclude";
+      }[];
+    };
+  };
+}
 export const TagRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1973,11 +2593,22 @@ export const TagRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type TagRulesCreateOrUpdateInput =
-  typeof TagRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TagRulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface TagRulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TagRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1997,9 +2628,7 @@ export const TagRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TagRulesCreateOrUpdateOutput =
-  typeof TagRulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TagRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2016,6 +2645,12 @@ export const TagRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TagRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  ruleSetName: string;
+}
 export const TagRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2027,12 +2662,12 @@ export const TagRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type TagRulesDeleteInput = typeof TagRulesDeleteInput.Type;
+) as unknown as Schema.Codec<TagRulesDeleteInput>;
 
 // Output Schema
-export const TagRulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TagRulesDeleteOutput = typeof TagRulesDeleteOutput.Type;
+export type TagRulesDeleteOutput = void;
+export const TagRulesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TagRulesDeleteOutput>;
 
 // The operation
 /**
@@ -2049,6 +2684,12 @@ export const TagRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TagRulesDeleteOutput,
 }));
 // Input Schema
+export interface TagRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  ruleSetName: string;
+}
 export const TagRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2060,10 +2701,22 @@ export const TagRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type TagRulesGetInput = typeof TagRulesGetInput.Type;
+) as unknown as Schema.Codec<TagRulesGetInput>;
 
 // Output Schema
+export interface TagRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TagRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2082,8 +2735,7 @@ export const TagRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TagRulesGetOutput = typeof TagRulesGetOutput.Type;
+}) as unknown as Schema.Codec<TagRulesGetOutput>;
 
 // The operation
 /**
@@ -2100,6 +2752,11 @@ export const TagRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TagRulesGetOutput,
 }));
 // Input Schema
+export interface TagRulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const TagRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2110,10 +2767,25 @@ export const TagRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules",
     apiVersion: "2025-06-01",
   }),
-);
-export type TagRulesListInput = typeof TagRulesListInput.Type;
+) as unknown as Schema.Codec<TagRulesListInput>;
 
 // Output Schema
+export interface TagRulesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TagRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2137,8 +2809,7 @@ export const TagRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TagRulesListOutput = typeof TagRulesListOutput.Type;
+}) as unknown as Schema.Codec<TagRulesListOutput>;
 
 // The operation
 /**
@@ -2154,6 +2825,12 @@ export const TagRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TagRulesListOutput,
 }));
 // Input Schema
+export interface TrafficFiltersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  rulesetId?: string;
+}
 export const TrafficFiltersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2166,13 +2843,12 @@ export const TrafficFiltersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/deleteTrafficFilter",
       apiVersion: "2025-06-01",
     }),
-  );
-export type TrafficFiltersDeleteInput = typeof TrafficFiltersDeleteInput.Type;
+  ) as unknown as Schema.Codec<TrafficFiltersDeleteInput>;
 
 // Output Schema
+export type TrafficFiltersDeleteOutput = void;
 export const TrafficFiltersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TrafficFiltersDeleteOutput = typeof TrafficFiltersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TrafficFiltersDeleteOutput>;
 
 // The operation
 /**
@@ -2191,6 +2867,11 @@ export const TrafficFiltersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UpgradableVersionsDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const UpgradableVersionsDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2202,18 +2883,18 @@ export const UpgradableVersionsDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listUpgradableVersions",
       apiVersion: "2025-06-01",
     }),
-  );
-export type UpgradableVersionsDetailsInput =
-  typeof UpgradableVersionsDetailsInput.Type;
+  ) as unknown as Schema.Codec<UpgradableVersionsDetailsInput>;
 
 // Output Schema
+export interface UpgradableVersionsDetailsOutput {
+  currentVersion?: string;
+  upgradableVersions?: string[];
+}
 export const UpgradableVersionsDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentVersion: Schema.optional(Schema.String),
     upgradableVersions: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type UpgradableVersionsDetailsOutput =
-  typeof UpgradableVersionsDetailsOutput.Type;
+  }) as unknown as Schema.Codec<UpgradableVersionsDetailsOutput>;
 
 // The operation
 /**
@@ -2231,6 +2912,13 @@ export const UpgradableVersionsDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VMCollectionUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  vmResourceId?: string;
+  operationName?: "Add" | "Delete";
+}
 export const VMCollectionUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2244,12 +2932,12 @@ export const VMCollectionUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmCollectionUpdate",
       apiVersion: "2025-06-01",
     }),
-  );
-export type VMCollectionUpdateInput = typeof VMCollectionUpdateInput.Type;
+  ) as unknown as Schema.Codec<VMCollectionUpdateInput>;
 
 // Output Schema
-export const VMCollectionUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VMCollectionUpdateOutput = typeof VMCollectionUpdateOutput.Type;
+export type VMCollectionUpdateOutput = void;
+export const VMCollectionUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VMCollectionUpdateOutput>;
 
 // The operation
 /**
@@ -2265,6 +2953,11 @@ export const VMCollectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VMCollectionUpdateOutput,
 }));
 // Input Schema
+export interface VMHostListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const VMHostListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2275,10 +2968,13 @@ export const VMHostListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listVMHost",
     apiVersion: "2025-06-01",
   }),
-);
-export type VMHostListInput = typeof VMHostListInput.Type;
+) as unknown as Schema.Codec<VMHostListInput>;
 
 // Output Schema
+export interface VMHostListOutput {
+  value: { vmResourceId?: string }[];
+  nextLink?: string;
+}
 export const VMHostListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2286,8 +2982,7 @@ export const VMHostListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type VMHostListOutput = typeof VMHostListOutput.Type;
+}) as unknown as Schema.Codec<VMHostListOutput>;
 
 // The operation
 /**
@@ -2303,6 +2998,11 @@ export const VMHostList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VMHostListOutput,
 }));
 // Input Schema
+export interface VMIngestionDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const VMIngestionDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2314,16 +3014,18 @@ export const VMIngestionDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmIngestionDetails",
       apiVersion: "2025-06-01",
     }),
-  );
-export type VMIngestionDetailsInput = typeof VMIngestionDetailsInput.Type;
+  ) as unknown as Schema.Codec<VMIngestionDetailsInput>;
 
 // Output Schema
+export interface VMIngestionDetailsOutput {
+  cloudId?: string;
+  ingestionKey?: string;
+}
 export const VMIngestionDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudId: Schema.optional(Schema.String),
     ingestionKey: Schema.optional(Schema.String),
-  });
-export type VMIngestionDetailsOutput = typeof VMIngestionDetailsOutput.Type;
+  }) as unknown as Schema.Codec<VMIngestionDetailsOutput>;
 
 // The operation
 /**

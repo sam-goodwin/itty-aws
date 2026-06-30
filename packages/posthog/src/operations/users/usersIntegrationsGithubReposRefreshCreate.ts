@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsGithubReposRefreshCreateInput {
+  installation_id: string;
+  uuid: string;
+}
 export const UsersIntegrationsGithubReposRefreshCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installation_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,12 @@ export const UsersIntegrationsGithubReposRefreshCreateInput =
       method: "POST",
       path: "/api/users/{uuid}/integrations/github/{installation_id}/repos/refresh/",
     }),
-  );
-export type UsersIntegrationsGithubReposRefreshCreateInput =
-  typeof UsersIntegrationsGithubReposRefreshCreateInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsGithubReposRefreshCreateInput>;
 
 // Output Schema
+export interface UsersIntegrationsGithubReposRefreshCreateOutput {
+  repositories?: { id?: number; name?: string; full_name?: string }[];
+}
 export const UsersIntegrationsGithubReposRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
@@ -28,9 +33,7 @@ export const UsersIntegrationsGithubReposRefreshCreateOutput =
         }),
       ),
     ),
-  });
-export type UsersIntegrationsGithubReposRefreshCreateOutput =
-  typeof UsersIntegrationsGithubReposRefreshCreateOutput.Type;
+  }) as unknown as Schema.Codec<UsersIntegrationsGithubReposRefreshCreateOutput>;
 
 // The operation
 /**

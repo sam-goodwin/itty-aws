@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SubscriptionsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const SubscriptionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,10 +17,69 @@ export const SubscriptionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/subscriptions/{id}/",
     }),
-  );
-export type SubscriptionsRetrieveInput = typeof SubscriptionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionsRetrieveInput>;
 
 // Output Schema
+export interface SubscriptionsRetrieveOutput {
+  id?: number;
+  resource_type?: "insight" | "dashboard" | "ai_prompt";
+  dashboard?: number | null;
+  insight?: number | null;
+  insight_short_id?: string | null;
+  resource_name?: string | null;
+  dashboard_export_insights?: number[];
+  prompt?: string | null;
+  target_type?: "email" | "slack";
+  target_value?: string;
+  frequency?: "daily" | "weekly" | "monthly" | "yearly";
+  interval?: number;
+  byweekday?:
+    | (
+        | "monday"
+        | "tuesday"
+        | "wednesday"
+        | "thursday"
+        | "friday"
+        | "saturday"
+        | "sunday"
+      )[]
+    | null;
+  bysetpos?: number | null;
+  count?: number | null;
+  start_date?: string;
+  until_date?: string | null;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  deleted?: boolean;
+  enabled?: boolean;
+  title?: string | null;
+  summary?: string;
+  next_delivery_date?: string | null;
+  integration_id?: number | null;
+  invite_message?: string | null;
+  summary_enabled?: boolean;
+  summary_prompt_guide?: string;
+}
 export const SubscriptionsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -68,7 +131,23 @@ export const SubscriptionsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -81,9 +160,7 @@ export const SubscriptionsRetrieveOutput =
     invite_message: Schema.optional(Schema.NullOr(Schema.String)),
     summary_enabled: Schema.optional(Schema.Boolean),
     summary_prompt_guide: Schema.optional(Schema.String),
-  });
-export type SubscriptionsRetrieveOutput =
-  typeof SubscriptionsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionsRetrieveOutput>;
 
 // The operation
 /**

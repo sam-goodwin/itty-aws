@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -48,7 +48,7 @@ export interface GooglePrivacyDlpV2ByteContentItem {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2ByteContentItem: Schema.Schema<GooglePrivacyDlpV2ByteContentItem> =
+export const GooglePrivacyDlpV2ByteContentItem: Schema.Codec<GooglePrivacyDlpV2ByteContentItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export interface GooglePrivacyDlpV2ConversationMessage {
   content?: string;
 }
 
-export const GooglePrivacyDlpV2ConversationMessage: Schema.Schema<GooglePrivacyDlpV2ConversationMessage> =
+export const GooglePrivacyDlpV2ConversationMessage: Schema.Codec<GooglePrivacyDlpV2ConversationMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     participantId: Schema.optional(Schema.String),
     messageType: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface GooglePrivacyDlpV2Conversation {
   messages?: ReadonlyArray<GooglePrivacyDlpV2ConversationMessage>;
 }
 
-export const GooglePrivacyDlpV2Conversation: Schema.Schema<GooglePrivacyDlpV2Conversation> =
+export const GooglePrivacyDlpV2Conversation: Schema.Codec<GooglePrivacyDlpV2Conversation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messages: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2ConversationMessage),
@@ -91,7 +91,7 @@ export interface GooglePrivacyDlpV2StringValueBatch {
   values?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2StringValueBatch: Schema.Schema<GooglePrivacyDlpV2StringValueBatch> =
+export const GooglePrivacyDlpV2StringValueBatch: Schema.Codec<GooglePrivacyDlpV2StringValueBatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GooglePrivacyDlpV2StringValueBatch" });
@@ -101,7 +101,7 @@ export interface GooglePrivacyDlpV2BatchContentItem {
   stringValueBatch?: GooglePrivacyDlpV2StringValueBatch;
 }
 
-export const GooglePrivacyDlpV2BatchContentItem: Schema.Schema<GooglePrivacyDlpV2BatchContentItem> =
+export const GooglePrivacyDlpV2BatchContentItem: Schema.Codec<GooglePrivacyDlpV2BatchContentItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValueBatch: Schema.optional(GooglePrivacyDlpV2StringValueBatch),
   }).annotate({ identifier: "GooglePrivacyDlpV2BatchContentItem" });
@@ -111,7 +111,7 @@ export interface GooglePrivacyDlpV2FieldId {
   name?: string;
 }
 
-export const GooglePrivacyDlpV2FieldId: Schema.Schema<GooglePrivacyDlpV2FieldId> =
+export const GooglePrivacyDlpV2FieldId: Schema.Codec<GooglePrivacyDlpV2FieldId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2FieldId" });
@@ -125,7 +125,7 @@ export interface GoogleTypeDate {
   year?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
+export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -143,7 +143,7 @@ export interface GoogleTypeTimeOfDay {
   minutes?: number;
 }
 
-export const GoogleTypeTimeOfDay: Schema.Schema<GoogleTypeTimeOfDay> =
+export const GoogleTypeTimeOfDay: Schema.Codec<GoogleTypeTimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
@@ -179,7 +179,7 @@ export interface GooglePrivacyDlpV2Value {
   timestampValue?: string;
 }
 
-export const GooglePrivacyDlpV2Value: Schema.Schema<GooglePrivacyDlpV2Value> =
+export const GooglePrivacyDlpV2Value: Schema.Codec<GooglePrivacyDlpV2Value> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integerValue: Schema.optional(Schema.String),
     stringValue: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface GooglePrivacyDlpV2Row {
   values?: ReadonlyArray<GooglePrivacyDlpV2Value>;
 }
 
-export const GooglePrivacyDlpV2Row: Schema.Schema<GooglePrivacyDlpV2Row> =
+export const GooglePrivacyDlpV2Row: Schema.Codec<GooglePrivacyDlpV2Row> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
   }).annotate({ identifier: "GooglePrivacyDlpV2Row" });
@@ -208,7 +208,7 @@ export interface GooglePrivacyDlpV2Table {
   rows?: ReadonlyArray<GooglePrivacyDlpV2Row>;
 }
 
-export const GooglePrivacyDlpV2Table: Schema.Schema<GooglePrivacyDlpV2Table> =
+export const GooglePrivacyDlpV2Table: Schema.Codec<GooglePrivacyDlpV2Table> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headers: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
     rows: Schema.optional(Schema.Array(GooglePrivacyDlpV2Row)),
@@ -221,7 +221,7 @@ export interface GooglePrivacyDlpV2KeyValueMetadataProperty {
   value?: string;
 }
 
-export const GooglePrivacyDlpV2KeyValueMetadataProperty: Schema.Schema<GooglePrivacyDlpV2KeyValueMetadataProperty> =
+export const GooglePrivacyDlpV2KeyValueMetadataProperty: Schema.Codec<GooglePrivacyDlpV2KeyValueMetadataProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export interface GooglePrivacyDlpV2SensitivityLabelMetadata {
   guid?: string;
 }
 
-export const GooglePrivacyDlpV2SensitivityLabelMetadata: Schema.Schema<GooglePrivacyDlpV2SensitivityLabelMetadata> =
+export const GooglePrivacyDlpV2SensitivityLabelMetadata: Schema.Codec<GooglePrivacyDlpV2SensitivityLabelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guid: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2SensitivityLabelMetadata" });
@@ -244,7 +244,7 @@ export interface GooglePrivacyDlpV2LabelFieldMetadata {
   value?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2LabelFieldMetadata: Schema.Schema<GooglePrivacyDlpV2LabelFieldMetadata> =
+export const GooglePrivacyDlpV2LabelFieldMetadata: Schema.Codec<GooglePrivacyDlpV2LabelFieldMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     value: Schema.optional(GooglePrivacyDlpV2Value),
@@ -257,7 +257,7 @@ export interface GooglePrivacyDlpV2GoogleDriveLabelMetadata {
   labelFields?: ReadonlyArray<GooglePrivacyDlpV2LabelFieldMetadata>;
 }
 
-export const GooglePrivacyDlpV2GoogleDriveLabelMetadata: Schema.Schema<GooglePrivacyDlpV2GoogleDriveLabelMetadata> =
+export const GooglePrivacyDlpV2GoogleDriveLabelMetadata: Schema.Codec<GooglePrivacyDlpV2GoogleDriveLabelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelId: Schema.optional(Schema.String),
     labelFields: Schema.optional(
@@ -272,7 +272,7 @@ export interface GooglePrivacyDlpV2FileLabel {
   googleDriveLabel?: GooglePrivacyDlpV2GoogleDriveLabelMetadata;
 }
 
-export const GooglePrivacyDlpV2FileLabel: Schema.Schema<GooglePrivacyDlpV2FileLabel> =
+export const GooglePrivacyDlpV2FileLabel: Schema.Codec<GooglePrivacyDlpV2FileLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitivityLabel: Schema.optional(
       GooglePrivacyDlpV2SensitivityLabelMetadata,
@@ -289,7 +289,7 @@ export interface GooglePrivacyDlpV2ContentMetadata {
   fileLabels?: ReadonlyArray<GooglePrivacyDlpV2FileLabel>;
 }
 
-export const GooglePrivacyDlpV2ContentMetadata: Schema.Schema<GooglePrivacyDlpV2ContentMetadata> =
+export const GooglePrivacyDlpV2ContentMetadata: Schema.Codec<GooglePrivacyDlpV2ContentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2KeyValueMetadataProperty),
@@ -312,7 +312,7 @@ export interface GooglePrivacyDlpV2ContentItem {
   contentMetadata?: GooglePrivacyDlpV2ContentMetadata;
 }
 
-export const GooglePrivacyDlpV2ContentItem: Schema.Schema<GooglePrivacyDlpV2ContentItem> =
+export const GooglePrivacyDlpV2ContentItem: Schema.Codec<GooglePrivacyDlpV2ContentItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     byteItem: Schema.optional(GooglePrivacyDlpV2ByteContentItem),
     conversation: Schema.optional(GooglePrivacyDlpV2Conversation),
@@ -327,7 +327,7 @@ export interface GooglePrivacyDlpV2TableOptions {
   identifyingFields?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
 }
 
-export const GooglePrivacyDlpV2TableOptions: Schema.Schema<GooglePrivacyDlpV2TableOptions> =
+export const GooglePrivacyDlpV2TableOptions: Schema.Codec<GooglePrivacyDlpV2TableOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identifyingFields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
   }).annotate({ identifier: "GooglePrivacyDlpV2TableOptions" });
@@ -349,7 +349,7 @@ export interface GooglePrivacyDlpV2Container {
   fullPath?: string;
 }
 
-export const GooglePrivacyDlpV2Container: Schema.Schema<GooglePrivacyDlpV2Container> =
+export const GooglePrivacyDlpV2Container: Schema.Codec<GooglePrivacyDlpV2Container> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     rootPath: Schema.optional(Schema.String),
@@ -373,7 +373,7 @@ export interface GooglePrivacyDlpV2HybridFindingDetails {
   fileOffset?: string;
 }
 
-export const GooglePrivacyDlpV2HybridFindingDetails: Schema.Schema<GooglePrivacyDlpV2HybridFindingDetails> =
+export const GooglePrivacyDlpV2HybridFindingDetails: Schema.Codec<GooglePrivacyDlpV2HybridFindingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowOffset: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -389,7 +389,7 @@ export interface GooglePrivacyDlpV2HybridContentItem {
   findingDetails?: GooglePrivacyDlpV2HybridFindingDetails;
 }
 
-export const GooglePrivacyDlpV2HybridContentItem: Schema.Schema<GooglePrivacyDlpV2HybridContentItem> =
+export const GooglePrivacyDlpV2HybridContentItem: Schema.Codec<GooglePrivacyDlpV2HybridContentItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item: Schema.optional(GooglePrivacyDlpV2ContentItem),
     findingDetails: Schema.optional(GooglePrivacyDlpV2HybridFindingDetails),
@@ -400,7 +400,7 @@ export interface GooglePrivacyDlpV2HybridInspectDlpJobRequest {
   hybridItem?: GooglePrivacyDlpV2HybridContentItem;
 }
 
-export const GooglePrivacyDlpV2HybridInspectDlpJobRequest: Schema.Schema<GooglePrivacyDlpV2HybridInspectDlpJobRequest> =
+export const GooglePrivacyDlpV2HybridInspectDlpJobRequest: Schema.Codec<GooglePrivacyDlpV2HybridInspectDlpJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hybridItem: Schema.optional(GooglePrivacyDlpV2HybridContentItem),
   }).annotate({ identifier: "GooglePrivacyDlpV2HybridInspectDlpJobRequest" });
@@ -410,7 +410,7 @@ export interface GooglePrivacyDlpV2AwsAccount {
   accountId?: string;
 }
 
-export const GooglePrivacyDlpV2AwsAccount: Schema.Schema<GooglePrivacyDlpV2AwsAccount> =
+export const GooglePrivacyDlpV2AwsAccount: Schema.Codec<GooglePrivacyDlpV2AwsAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2AwsAccount" });
@@ -420,7 +420,7 @@ export interface GooglePrivacyDlpV2WordList {
   words?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2WordList: Schema.Schema<GooglePrivacyDlpV2WordList> =
+export const GooglePrivacyDlpV2WordList: Schema.Codec<GooglePrivacyDlpV2WordList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     words: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GooglePrivacyDlpV2WordList" });
@@ -430,7 +430,7 @@ export interface GooglePrivacyDlpV2CloudStoragePath {
   path?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStoragePath: Schema.Schema<GooglePrivacyDlpV2CloudStoragePath> =
+export const GooglePrivacyDlpV2CloudStoragePath: Schema.Codec<GooglePrivacyDlpV2CloudStoragePath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2CloudStoragePath" });
@@ -442,7 +442,7 @@ export interface GooglePrivacyDlpV2Dictionary {
   cloudStoragePath?: GooglePrivacyDlpV2CloudStoragePath;
 }
 
-export const GooglePrivacyDlpV2Dictionary: Schema.Schema<GooglePrivacyDlpV2Dictionary> =
+export const GooglePrivacyDlpV2Dictionary: Schema.Codec<GooglePrivacyDlpV2Dictionary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wordList: Schema.optional(GooglePrivacyDlpV2WordList),
     cloudStoragePath: Schema.optional(GooglePrivacyDlpV2CloudStoragePath),
@@ -453,7 +453,7 @@ export interface GooglePrivacyDlpV2CloudStorageFileSet {
   url?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStorageFileSet: Schema.Schema<GooglePrivacyDlpV2CloudStorageFileSet> =
+export const GooglePrivacyDlpV2CloudStorageFileSet: Schema.Codec<GooglePrivacyDlpV2CloudStorageFileSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2CloudStorageFileSet" });
@@ -467,7 +467,7 @@ export interface GooglePrivacyDlpV2BigQueryTable {
   tableId?: string;
 }
 
-export const GooglePrivacyDlpV2BigQueryTable: Schema.Schema<GooglePrivacyDlpV2BigQueryTable> =
+export const GooglePrivacyDlpV2BigQueryTable: Schema.Codec<GooglePrivacyDlpV2BigQueryTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     datasetId: Schema.optional(Schema.String),
@@ -481,7 +481,7 @@ export interface GooglePrivacyDlpV2BigQueryField {
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2BigQueryField: Schema.Schema<GooglePrivacyDlpV2BigQueryField> =
+export const GooglePrivacyDlpV2BigQueryField: Schema.Codec<GooglePrivacyDlpV2BigQueryField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
@@ -496,7 +496,7 @@ export interface GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   outputPath?: GooglePrivacyDlpV2CloudStoragePath;
 }
 
-export const GooglePrivacyDlpV2LargeCustomDictionaryConfig: Schema.Schema<GooglePrivacyDlpV2LargeCustomDictionaryConfig> =
+export const GooglePrivacyDlpV2LargeCustomDictionaryConfig: Schema.Codec<GooglePrivacyDlpV2LargeCustomDictionaryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudStorageFileSet: Schema.optional(GooglePrivacyDlpV2CloudStorageFileSet),
     bigQueryField: Schema.optional(GooglePrivacyDlpV2BigQueryField),
@@ -510,7 +510,7 @@ export interface GooglePrivacyDlpV2Regex {
   groupIndexes?: ReadonlyArray<number>;
 }
 
-export const GooglePrivacyDlpV2Regex: Schema.Schema<GooglePrivacyDlpV2Regex> =
+export const GooglePrivacyDlpV2Regex: Schema.Codec<GooglePrivacyDlpV2Regex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pattern: Schema.optional(Schema.String),
     groupIndexes: Schema.optional(Schema.Array(Schema.Number)),
@@ -529,7 +529,7 @@ export interface GooglePrivacyDlpV2StoredInfoTypeConfig {
   regex?: GooglePrivacyDlpV2Regex;
 }
 
-export const GooglePrivacyDlpV2StoredInfoTypeConfig: Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeConfig> =
+export const GooglePrivacyDlpV2StoredInfoTypeConfig: Schema.Codec<GooglePrivacyDlpV2StoredInfoTypeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dictionary: Schema.optional(GooglePrivacyDlpV2Dictionary),
     description: Schema.optional(Schema.String),
@@ -549,7 +549,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -571,7 +571,7 @@ export interface GooglePrivacyDlpV2Error {
   timestamps?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2Error: Schema.Schema<GooglePrivacyDlpV2Error> =
+export const GooglePrivacyDlpV2Error: Schema.Codec<GooglePrivacyDlpV2Error> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extraInfo: Schema.optional(Schema.String),
     details: Schema.optional(GoogleRpcStatus),
@@ -583,7 +583,7 @@ export interface GooglePrivacyDlpV2LargeCustomDictionaryStats {
   approxNumPhrases?: string;
 }
 
-export const GooglePrivacyDlpV2LargeCustomDictionaryStats: Schema.Schema<GooglePrivacyDlpV2LargeCustomDictionaryStats> =
+export const GooglePrivacyDlpV2LargeCustomDictionaryStats: Schema.Codec<GooglePrivacyDlpV2LargeCustomDictionaryStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approxNumPhrases: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2LargeCustomDictionaryStats" });
@@ -593,7 +593,7 @@ export interface GooglePrivacyDlpV2StoredInfoTypeStats {
   largeCustomDictionary?: GooglePrivacyDlpV2LargeCustomDictionaryStats;
 }
 
-export const GooglePrivacyDlpV2StoredInfoTypeStats: Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeStats> =
+export const GooglePrivacyDlpV2StoredInfoTypeStats: Schema.Codec<GooglePrivacyDlpV2StoredInfoTypeStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     largeCustomDictionary: Schema.optional(
       GooglePrivacyDlpV2LargeCustomDictionaryStats,
@@ -619,7 +619,7 @@ export interface GooglePrivacyDlpV2StoredInfoTypeVersion {
   createTime?: string;
 }
 
-export const GooglePrivacyDlpV2StoredInfoTypeVersion: Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeVersion> =
+export const GooglePrivacyDlpV2StoredInfoTypeVersion: Schema.Codec<GooglePrivacyDlpV2StoredInfoTypeVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeConfig),
     state: Schema.optional(Schema.String),
@@ -637,7 +637,7 @@ export interface GooglePrivacyDlpV2StoredInfoType {
   pendingVersions?: ReadonlyArray<GooglePrivacyDlpV2StoredInfoTypeVersion>;
 }
 
-export const GooglePrivacyDlpV2StoredInfoType: Schema.Schema<GooglePrivacyDlpV2StoredInfoType> =
+export const GooglePrivacyDlpV2StoredInfoType: Schema.Codec<GooglePrivacyDlpV2StoredInfoType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     currentVersion: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeVersion),
@@ -664,7 +664,7 @@ export interface GooglePrivacyDlpV2Condition {
   value?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2Condition: Schema.Schema<GooglePrivacyDlpV2Condition> =
+export const GooglePrivacyDlpV2Condition: Schema.Codec<GooglePrivacyDlpV2Condition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operator: Schema.optional(Schema.String),
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
@@ -676,7 +676,7 @@ export interface GooglePrivacyDlpV2Conditions {
   conditions?: ReadonlyArray<GooglePrivacyDlpV2Condition>;
 }
 
-export const GooglePrivacyDlpV2Conditions: Schema.Schema<GooglePrivacyDlpV2Conditions> =
+export const GooglePrivacyDlpV2Conditions: Schema.Codec<GooglePrivacyDlpV2Conditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Condition)),
   }).annotate({ identifier: "GooglePrivacyDlpV2Conditions" });
@@ -692,7 +692,7 @@ export interface GooglePrivacyDlpV2SensitivityScore {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2SensitivityScore: Schema.Schema<GooglePrivacyDlpV2SensitivityScore> =
+export const GooglePrivacyDlpV2SensitivityScore: Schema.Codec<GooglePrivacyDlpV2SensitivityScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2SensitivityScore" });
@@ -706,7 +706,7 @@ export interface GooglePrivacyDlpV2InfoType {
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
 }
 
-export const GooglePrivacyDlpV2InfoType: Schema.Schema<GooglePrivacyDlpV2InfoType> =
+export const GooglePrivacyDlpV2InfoType: Schema.Codec<GooglePrivacyDlpV2InfoType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -720,7 +720,7 @@ export interface GooglePrivacyDlpV2Range {
   start?: string;
 }
 
-export const GooglePrivacyDlpV2Range: Schema.Schema<GooglePrivacyDlpV2Range> =
+export const GooglePrivacyDlpV2Range: Schema.Codec<GooglePrivacyDlpV2Range> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.String),
     start: Schema.optional(Schema.String),
@@ -731,7 +731,7 @@ export interface GooglePrivacyDlpV2KeyValueMetadataLabel {
   key?: string;
 }
 
-export const GooglePrivacyDlpV2KeyValueMetadataLabel: Schema.Schema<GooglePrivacyDlpV2KeyValueMetadataLabel> =
+export const GooglePrivacyDlpV2KeyValueMetadataLabel: Schema.Codec<GooglePrivacyDlpV2KeyValueMetadataLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2KeyValueMetadataLabel" });
@@ -741,7 +741,7 @@ export interface GooglePrivacyDlpV2StorageMetadataLabel {
   key?: string;
 }
 
-export const GooglePrivacyDlpV2StorageMetadataLabel: Schema.Schema<GooglePrivacyDlpV2StorageMetadataLabel> =
+export const GooglePrivacyDlpV2StorageMetadataLabel: Schema.Codec<GooglePrivacyDlpV2StorageMetadataLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2StorageMetadataLabel" });
@@ -760,7 +760,7 @@ export interface GooglePrivacyDlpV2MetadataLocation {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2MetadataLocation: Schema.Schema<GooglePrivacyDlpV2MetadataLocation> =
+export const GooglePrivacyDlpV2MetadataLocation: Schema.Codec<GooglePrivacyDlpV2MetadataLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyValueMetadataLabel: Schema.optional(
       GooglePrivacyDlpV2KeyValueMetadataLabel,
@@ -771,7 +771,7 @@ export const GooglePrivacyDlpV2MetadataLocation: Schema.Schema<GooglePrivacyDlpV
 
 export interface GooglePrivacyDlpV2AllMessages {}
 
-export const GooglePrivacyDlpV2AllMessages: Schema.Schema<GooglePrivacyDlpV2AllMessages> =
+export const GooglePrivacyDlpV2AllMessages: Schema.Codec<GooglePrivacyDlpV2AllMessages> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllMessages",
   });
@@ -783,7 +783,7 @@ export interface GooglePrivacyDlpV2ConversationLocation {
   allMessages?: GooglePrivacyDlpV2AllMessages;
 }
 
-export const GooglePrivacyDlpV2ConversationLocation: Schema.Schema<GooglePrivacyDlpV2ConversationLocation> =
+export const GooglePrivacyDlpV2ConversationLocation: Schema.Codec<GooglePrivacyDlpV2ConversationLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageIndex: Schema.optional(Schema.Number),
     allMessages: Schema.optional(GooglePrivacyDlpV2AllMessages),
@@ -794,7 +794,7 @@ export interface GooglePrivacyDlpV2BatchContentLocation {
   itemIndex?: number;
 }
 
-export const GooglePrivacyDlpV2BatchContentLocation: Schema.Schema<GooglePrivacyDlpV2BatchContentLocation> =
+export const GooglePrivacyDlpV2BatchContentLocation: Schema.Codec<GooglePrivacyDlpV2BatchContentLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemIndex: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GooglePrivacyDlpV2BatchContentLocation" });
@@ -804,7 +804,7 @@ export interface GooglePrivacyDlpV2DocumentLocation {
   fileOffset?: string;
 }
 
-export const GooglePrivacyDlpV2DocumentLocation: Schema.Schema<GooglePrivacyDlpV2DocumentLocation> =
+export const GooglePrivacyDlpV2DocumentLocation: Schema.Codec<GooglePrivacyDlpV2DocumentLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileOffset: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2DocumentLocation" });
@@ -816,7 +816,7 @@ export interface GooglePrivacyDlpV2PartitionId {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2PartitionId: Schema.Schema<GooglePrivacyDlpV2PartitionId> =
+export const GooglePrivacyDlpV2PartitionId: Schema.Codec<GooglePrivacyDlpV2PartitionId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaceId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -831,7 +831,7 @@ export interface GooglePrivacyDlpV2PathElement {
   id?: string;
 }
 
-export const GooglePrivacyDlpV2PathElement: Schema.Schema<GooglePrivacyDlpV2PathElement> =
+export const GooglePrivacyDlpV2PathElement: Schema.Codec<GooglePrivacyDlpV2PathElement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -845,7 +845,7 @@ export interface GooglePrivacyDlpV2Key {
   path?: ReadonlyArray<GooglePrivacyDlpV2PathElement>;
 }
 
-export const GooglePrivacyDlpV2Key: Schema.Schema<GooglePrivacyDlpV2Key> =
+export const GooglePrivacyDlpV2Key: Schema.Codec<GooglePrivacyDlpV2Key> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionId: Schema.optional(GooglePrivacyDlpV2PartitionId),
     path: Schema.optional(Schema.Array(GooglePrivacyDlpV2PathElement)),
@@ -856,7 +856,7 @@ export interface GooglePrivacyDlpV2DatastoreKey {
   entityKey?: GooglePrivacyDlpV2Key;
 }
 
-export const GooglePrivacyDlpV2DatastoreKey: Schema.Schema<GooglePrivacyDlpV2DatastoreKey> =
+export const GooglePrivacyDlpV2DatastoreKey: Schema.Codec<GooglePrivacyDlpV2DatastoreKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityKey: Schema.optional(GooglePrivacyDlpV2Key),
   }).annotate({ identifier: "GooglePrivacyDlpV2DatastoreKey" });
@@ -868,7 +868,7 @@ export interface GooglePrivacyDlpV2BigQueryKey {
   rowNumber?: string;
 }
 
-export const GooglePrivacyDlpV2BigQueryKey: Schema.Schema<GooglePrivacyDlpV2BigQueryKey> =
+export const GooglePrivacyDlpV2BigQueryKey: Schema.Codec<GooglePrivacyDlpV2BigQueryKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableReference: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
     rowNumber: Schema.optional(Schema.String),
@@ -883,7 +883,7 @@ export interface GooglePrivacyDlpV2RecordKey {
   idValues?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2RecordKey: Schema.Schema<GooglePrivacyDlpV2RecordKey> =
+export const GooglePrivacyDlpV2RecordKey: Schema.Codec<GooglePrivacyDlpV2RecordKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datastoreKey: Schema.optional(GooglePrivacyDlpV2DatastoreKey),
     bigQueryKey: Schema.optional(GooglePrivacyDlpV2BigQueryKey),
@@ -895,7 +895,7 @@ export interface GooglePrivacyDlpV2TableLocation {
   rowIndex?: string;
 }
 
-export const GooglePrivacyDlpV2TableLocation: Schema.Schema<GooglePrivacyDlpV2TableLocation> =
+export const GooglePrivacyDlpV2TableLocation: Schema.Codec<GooglePrivacyDlpV2TableLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowIndex: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2TableLocation" });
@@ -909,7 +909,7 @@ export interface GooglePrivacyDlpV2RecordLocation {
   tableLocation?: GooglePrivacyDlpV2TableLocation;
 }
 
-export const GooglePrivacyDlpV2RecordLocation: Schema.Schema<GooglePrivacyDlpV2RecordLocation> =
+export const GooglePrivacyDlpV2RecordLocation: Schema.Codec<GooglePrivacyDlpV2RecordLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordKey: Schema.optional(GooglePrivacyDlpV2RecordKey),
     fieldId: Schema.optional(GooglePrivacyDlpV2FieldId),
@@ -927,7 +927,7 @@ export interface GooglePrivacyDlpV2BoundingBox {
   left?: number;
 }
 
-export const GooglePrivacyDlpV2BoundingBox: Schema.Schema<GooglePrivacyDlpV2BoundingBox> =
+export const GooglePrivacyDlpV2BoundingBox: Schema.Codec<GooglePrivacyDlpV2BoundingBox> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     top: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
@@ -940,7 +940,7 @@ export interface GooglePrivacyDlpV2ImageLocation {
   boundingBoxes?: ReadonlyArray<GooglePrivacyDlpV2BoundingBox>;
 }
 
-export const GooglePrivacyDlpV2ImageLocation: Schema.Schema<GooglePrivacyDlpV2ImageLocation> =
+export const GooglePrivacyDlpV2ImageLocation: Schema.Codec<GooglePrivacyDlpV2ImageLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingBoxes: Schema.optional(Schema.Array(GooglePrivacyDlpV2BoundingBox)),
   }).annotate({ identifier: "GooglePrivacyDlpV2ImageLocation" });
@@ -966,7 +966,7 @@ export interface GooglePrivacyDlpV2ContentLocation {
   imageLocation?: GooglePrivacyDlpV2ImageLocation;
 }
 
-export const GooglePrivacyDlpV2ContentLocation: Schema.Schema<GooglePrivacyDlpV2ContentLocation> =
+export const GooglePrivacyDlpV2ContentLocation: Schema.Codec<GooglePrivacyDlpV2ContentLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadataLocation: Schema.optional(GooglePrivacyDlpV2MetadataLocation),
     containerName: Schema.optional(Schema.String),
@@ -994,7 +994,7 @@ export interface GooglePrivacyDlpV2Location {
   byteRange?: GooglePrivacyDlpV2Range;
 }
 
-export const GooglePrivacyDlpV2Location: Schema.Schema<GooglePrivacyDlpV2Location> =
+export const GooglePrivacyDlpV2Location: Schema.Codec<GooglePrivacyDlpV2Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     container: Schema.optional(GooglePrivacyDlpV2Container),
     codepointRange: Schema.optional(GooglePrivacyDlpV2Range),
@@ -1009,7 +1009,7 @@ export interface GooglePrivacyDlpV2TimeZone {
   offsetMinutes?: number;
 }
 
-export const GooglePrivacyDlpV2TimeZone: Schema.Schema<GooglePrivacyDlpV2TimeZone> =
+export const GooglePrivacyDlpV2TimeZone: Schema.Codec<GooglePrivacyDlpV2TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offsetMinutes: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GooglePrivacyDlpV2TimeZone" });
@@ -1034,7 +1034,7 @@ export interface GooglePrivacyDlpV2DateTime {
   time?: GoogleTypeTimeOfDay;
 }
 
-export const GooglePrivacyDlpV2DateTime: Schema.Schema<GooglePrivacyDlpV2DateTime> =
+export const GooglePrivacyDlpV2DateTime: Schema.Codec<GooglePrivacyDlpV2DateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(GoogleTypeDate),
     dayOfWeek: Schema.optional(Schema.String),
@@ -1047,7 +1047,7 @@ export interface GooglePrivacyDlpV2QuoteInfo {
   dateTime?: GooglePrivacyDlpV2DateTime;
 }
 
-export const GooglePrivacyDlpV2QuoteInfo: Schema.Schema<GooglePrivacyDlpV2QuoteInfo> =
+export const GooglePrivacyDlpV2QuoteInfo: Schema.Codec<GooglePrivacyDlpV2QuoteInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dateTime: Schema.optional(GooglePrivacyDlpV2DateTime),
   }).annotate({ identifier: "GooglePrivacyDlpV2QuoteInfo" });
@@ -1088,7 +1088,7 @@ export interface GooglePrivacyDlpV2Finding {
   jobCreateTime?: string;
 }
 
-export const GooglePrivacyDlpV2Finding: Schema.Schema<GooglePrivacyDlpV2Finding> =
+export const GooglePrivacyDlpV2Finding: Schema.Codec<GooglePrivacyDlpV2Finding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findingId: Schema.optional(Schema.String),
     quote: Schema.optional(Schema.String),
@@ -1112,7 +1112,7 @@ export interface GooglePrivacyDlpV2InspectResult {
   findingsTruncated?: boolean;
 }
 
-export const GooglePrivacyDlpV2InspectResult: Schema.Schema<GooglePrivacyDlpV2InspectResult> =
+export const GooglePrivacyDlpV2InspectResult: Schema.Codec<GooglePrivacyDlpV2InspectResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(GooglePrivacyDlpV2Finding)),
     findingsTruncated: Schema.optional(Schema.Boolean),
@@ -1123,7 +1123,7 @@ export interface GooglePrivacyDlpV2InspectContentResponse {
   result?: GooglePrivacyDlpV2InspectResult;
 }
 
-export const GooglePrivacyDlpV2InspectContentResponse: Schema.Schema<GooglePrivacyDlpV2InspectContentResponse> =
+export const GooglePrivacyDlpV2InspectContentResponse: Schema.Codec<GooglePrivacyDlpV2InspectContentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(GooglePrivacyDlpV2InspectResult),
   }).annotate({ identifier: "GooglePrivacyDlpV2InspectContentResponse" });
@@ -1135,7 +1135,7 @@ export interface GooglePrivacyDlpV2QuasiIdField {
   customTag?: string;
 }
 
-export const GooglePrivacyDlpV2QuasiIdField: Schema.Schema<GooglePrivacyDlpV2QuasiIdField> =
+export const GooglePrivacyDlpV2QuasiIdField: Schema.Codec<GooglePrivacyDlpV2QuasiIdField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
     customTag: Schema.optional(Schema.String),
@@ -1143,7 +1143,7 @@ export const GooglePrivacyDlpV2QuasiIdField: Schema.Schema<GooglePrivacyDlpV2Qua
 
 export interface GooglePrivacyDlpV2SecretsDiscoveryTarget {}
 
-export const GooglePrivacyDlpV2SecretsDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2SecretsDiscoveryTarget> =
+export const GooglePrivacyDlpV2SecretsDiscoveryTarget: Schema.Codec<GooglePrivacyDlpV2SecretsDiscoveryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2SecretsDiscoveryTarget",
   });
@@ -1155,7 +1155,7 @@ export interface GooglePrivacyDlpV2KmsWrappedCryptoKey {
   cryptoKeyName?: string;
 }
 
-export const GooglePrivacyDlpV2KmsWrappedCryptoKey: Schema.Schema<GooglePrivacyDlpV2KmsWrappedCryptoKey> =
+export const GooglePrivacyDlpV2KmsWrappedCryptoKey: Schema.Codec<GooglePrivacyDlpV2KmsWrappedCryptoKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wrappedKey: Schema.optional(Schema.String),
     cryptoKeyName: Schema.optional(Schema.String),
@@ -1163,7 +1163,7 @@ export const GooglePrivacyDlpV2KmsWrappedCryptoKey: Schema.Schema<GooglePrivacyD
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -1175,7 +1175,7 @@ export interface GooglePrivacyDlpV2MetadataKeyValueExpression {
   valueRegex?: string;
 }
 
-export const GooglePrivacyDlpV2MetadataKeyValueExpression: Schema.Schema<GooglePrivacyDlpV2MetadataKeyValueExpression> =
+export const GooglePrivacyDlpV2MetadataKeyValueExpression: Schema.Codec<GooglePrivacyDlpV2MetadataKeyValueExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyRegex: Schema.optional(Schema.String),
     valueRegex: Schema.optional(Schema.String),
@@ -1190,7 +1190,7 @@ export interface GooglePrivacyDlpV2CloudStorageRegexFileSet {
   includeRegex?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2CloudStorageRegexFileSet: Schema.Schema<GooglePrivacyDlpV2CloudStorageRegexFileSet> =
+export const GooglePrivacyDlpV2CloudStorageRegexFileSet: Schema.Codec<GooglePrivacyDlpV2CloudStorageRegexFileSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludeRegex: Schema.optional(Schema.Array(Schema.String)),
     bucketName: Schema.optional(Schema.String),
@@ -1204,7 +1204,7 @@ export interface GooglePrivacyDlpV2FileSet {
   regexFileSet?: GooglePrivacyDlpV2CloudStorageRegexFileSet;
 }
 
-export const GooglePrivacyDlpV2FileSet: Schema.Schema<GooglePrivacyDlpV2FileSet> =
+export const GooglePrivacyDlpV2FileSet: Schema.Codec<GooglePrivacyDlpV2FileSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     regexFileSet: Schema.optional(GooglePrivacyDlpV2CloudStorageRegexFileSet),
@@ -1221,7 +1221,7 @@ export interface GooglePrivacyDlpV2BigQueryTableTypes {
   >;
 }
 
-export const GooglePrivacyDlpV2BigQueryTableTypes: Schema.Schema<GooglePrivacyDlpV2BigQueryTableTypes> =
+export const GooglePrivacyDlpV2BigQueryTableTypes: Schema.Codec<GooglePrivacyDlpV2BigQueryTableTypes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryTableTypes" });
@@ -1233,7 +1233,7 @@ export interface GooglePrivacyDlpV2OrConditions {
   minRowCount?: number;
 }
 
-export const GooglePrivacyDlpV2OrConditions: Schema.Schema<GooglePrivacyDlpV2OrConditions> =
+export const GooglePrivacyDlpV2OrConditions: Schema.Codec<GooglePrivacyDlpV2OrConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minAge: Schema.optional(Schema.String),
     minRowCount: Schema.optional(Schema.Number),
@@ -1254,7 +1254,7 @@ export interface GooglePrivacyDlpV2DiscoveryBigQueryConditions {
   orConditions?: GooglePrivacyDlpV2OrConditions;
 }
 
-export const GooglePrivacyDlpV2DiscoveryBigQueryConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryBigQueryConditions> =
+export const GooglePrivacyDlpV2DiscoveryBigQueryConditions: Schema.Codec<GooglePrivacyDlpV2DiscoveryBigQueryConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     typeCollection: Schema.optional(Schema.String),
     createdAfter: Schema.optional(Schema.String),
@@ -1272,7 +1272,7 @@ export interface GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence> =
+export const GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence: Schema.Codec<GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     frequency: Schema.optional(Schema.String),
   }).annotate({
@@ -1295,7 +1295,7 @@ export interface GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DiscoveryTableModifiedCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryTableModifiedCadence> =
+export const GooglePrivacyDlpV2DiscoveryTableModifiedCadence: Schema.Codec<GooglePrivacyDlpV2DiscoveryTableModifiedCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
     frequency: Schema.optional(Schema.String),
@@ -1320,7 +1320,7 @@ export interface GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence: Schema.Schema<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence> =
+export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence: Schema.Codec<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
     frequency: Schema.optional(Schema.String),
@@ -1344,7 +1344,7 @@ export interface GooglePrivacyDlpV2DiscoveryGenerationCadence {
   schemaModifiedCadence?: GooglePrivacyDlpV2DiscoverySchemaModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryGenerationCadence> =
+export const GooglePrivacyDlpV2DiscoveryGenerationCadence: Schema.Codec<GooglePrivacyDlpV2DiscoveryGenerationCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inspectTemplateModifiedCadence: Schema.optional(
       GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
@@ -1360,7 +1360,7 @@ export const GooglePrivacyDlpV2DiscoveryGenerationCadence: Schema.Schema<GoogleP
 
 export interface GooglePrivacyDlpV2Disabled {}
 
-export const GooglePrivacyDlpV2Disabled: Schema.Schema<GooglePrivacyDlpV2Disabled> =
+export const GooglePrivacyDlpV2Disabled: Schema.Codec<GooglePrivacyDlpV2Disabled> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2Disabled",
   });
@@ -1374,7 +1374,7 @@ export interface GooglePrivacyDlpV2TableReference {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2TableReference: Schema.Schema<GooglePrivacyDlpV2TableReference> =
+export const GooglePrivacyDlpV2TableReference: Schema.Codec<GooglePrivacyDlpV2TableReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     tableId: Schema.optional(Schema.String),
@@ -1390,7 +1390,7 @@ export interface GooglePrivacyDlpV2BigQueryRegex {
   datasetIdRegex?: string;
 }
 
-export const GooglePrivacyDlpV2BigQueryRegex: Schema.Schema<GooglePrivacyDlpV2BigQueryRegex> =
+export const GooglePrivacyDlpV2BigQueryRegex: Schema.Codec<GooglePrivacyDlpV2BigQueryRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableIdRegex: Schema.optional(Schema.String),
     projectIdRegex: Schema.optional(Schema.String),
@@ -1402,7 +1402,7 @@ export interface GooglePrivacyDlpV2BigQueryRegexes {
   patterns?: ReadonlyArray<GooglePrivacyDlpV2BigQueryRegex>;
 }
 
-export const GooglePrivacyDlpV2BigQueryRegexes: Schema.Schema<GooglePrivacyDlpV2BigQueryRegexes> =
+export const GooglePrivacyDlpV2BigQueryRegexes: Schema.Codec<GooglePrivacyDlpV2BigQueryRegexes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patterns: Schema.optional(Schema.Array(GooglePrivacyDlpV2BigQueryRegex)),
   }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryRegexes" });
@@ -1412,14 +1412,14 @@ export interface GooglePrivacyDlpV2BigQueryTableCollection {
   includeRegexes?: GooglePrivacyDlpV2BigQueryRegexes;
 }
 
-export const GooglePrivacyDlpV2BigQueryTableCollection: Schema.Schema<GooglePrivacyDlpV2BigQueryTableCollection> =
+export const GooglePrivacyDlpV2BigQueryTableCollection: Schema.Codec<GooglePrivacyDlpV2BigQueryTableCollection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeRegexes: Schema.optional(GooglePrivacyDlpV2BigQueryRegexes),
   }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryTableCollection" });
 
 export interface GooglePrivacyDlpV2AllOtherBigQueryTables {}
 
-export const GooglePrivacyDlpV2AllOtherBigQueryTables: Schema.Schema<GooglePrivacyDlpV2AllOtherBigQueryTables> =
+export const GooglePrivacyDlpV2AllOtherBigQueryTables: Schema.Codec<GooglePrivacyDlpV2AllOtherBigQueryTables> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllOtherBigQueryTables",
   });
@@ -1433,7 +1433,7 @@ export interface GooglePrivacyDlpV2DiscoveryBigQueryFilter {
   otherTables?: GooglePrivacyDlpV2AllOtherBigQueryTables;
 }
 
-export const GooglePrivacyDlpV2DiscoveryBigQueryFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryBigQueryFilter> =
+export const GooglePrivacyDlpV2DiscoveryBigQueryFilter: Schema.Codec<GooglePrivacyDlpV2DiscoveryBigQueryFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableReference: Schema.optional(GooglePrivacyDlpV2TableReference),
     tables: Schema.optional(GooglePrivacyDlpV2BigQueryTableCollection),
@@ -1451,7 +1451,7 @@ export interface GooglePrivacyDlpV2BigQueryDiscoveryTarget {
   filter?: GooglePrivacyDlpV2DiscoveryBigQueryFilter;
 }
 
-export const GooglePrivacyDlpV2BigQueryDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2BigQueryDiscoveryTarget> =
+export const GooglePrivacyDlpV2BigQueryDiscoveryTarget: Schema.Codec<GooglePrivacyDlpV2BigQueryDiscoveryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(GooglePrivacyDlpV2DiscoveryBigQueryConditions),
     cadence: Schema.optional(GooglePrivacyDlpV2DiscoveryGenerationCadence),
@@ -1461,21 +1461,21 @@ export const GooglePrivacyDlpV2BigQueryDiscoveryTarget: Schema.Schema<GooglePriv
 
 export interface GooglePrivacyDlpV2AllInfoTypes {}
 
-export const GooglePrivacyDlpV2AllInfoTypes: Schema.Schema<GooglePrivacyDlpV2AllInfoTypes> =
+export const GooglePrivacyDlpV2AllInfoTypes: Schema.Codec<GooglePrivacyDlpV2AllInfoTypes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllInfoTypes",
   });
 
 export interface GooglePrivacyDlpV2MultiRegionProcessing {}
 
-export const GooglePrivacyDlpV2MultiRegionProcessing: Schema.Schema<GooglePrivacyDlpV2MultiRegionProcessing> =
+export const GooglePrivacyDlpV2MultiRegionProcessing: Schema.Codec<GooglePrivacyDlpV2MultiRegionProcessing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2MultiRegionProcessing",
   });
 
 export interface GooglePrivacyDlpV2GlobalProcessing {}
 
-export const GooglePrivacyDlpV2GlobalProcessing: Schema.Schema<GooglePrivacyDlpV2GlobalProcessing> =
+export const GooglePrivacyDlpV2GlobalProcessing: Schema.Codec<GooglePrivacyDlpV2GlobalProcessing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2GlobalProcessing",
   });
@@ -1487,7 +1487,7 @@ export interface GooglePrivacyDlpV2ImageFallbackLocation {
   globalProcessing?: GooglePrivacyDlpV2GlobalProcessing;
 }
 
-export const GooglePrivacyDlpV2ImageFallbackLocation: Schema.Schema<GooglePrivacyDlpV2ImageFallbackLocation> =
+export const GooglePrivacyDlpV2ImageFallbackLocation: Schema.Codec<GooglePrivacyDlpV2ImageFallbackLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     multiRegionProcessing: Schema.optional(
       GooglePrivacyDlpV2MultiRegionProcessing,
@@ -1502,7 +1502,7 @@ export interface GooglePrivacyDlpV2DocumentFallbackLocation {
   globalProcessing?: GooglePrivacyDlpV2GlobalProcessing;
 }
 
-export const GooglePrivacyDlpV2DocumentFallbackLocation: Schema.Schema<GooglePrivacyDlpV2DocumentFallbackLocation> =
+export const GooglePrivacyDlpV2DocumentFallbackLocation: Schema.Codec<GooglePrivacyDlpV2DocumentFallbackLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     multiRegionProcessing: Schema.optional(
       GooglePrivacyDlpV2MultiRegionProcessing,
@@ -1517,7 +1517,7 @@ export interface GooglePrivacyDlpV2ProcessingLocation {
   documentFallbackLocation?: GooglePrivacyDlpV2DocumentFallbackLocation;
 }
 
-export const GooglePrivacyDlpV2ProcessingLocation: Schema.Schema<GooglePrivacyDlpV2ProcessingLocation> =
+export const GooglePrivacyDlpV2ProcessingLocation: Schema.Codec<GooglePrivacyDlpV2ProcessingLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageFallbackLocation: Schema.optional(
       GooglePrivacyDlpV2ImageFallbackLocation,
@@ -1529,7 +1529,7 @@ export const GooglePrivacyDlpV2ProcessingLocation: Schema.Schema<GooglePrivacyDl
 
 export interface GooglePrivacyDlpV2ActivateJobTriggerRequest {}
 
-export const GooglePrivacyDlpV2ActivateJobTriggerRequest: Schema.Schema<GooglePrivacyDlpV2ActivateJobTriggerRequest> =
+export const GooglePrivacyDlpV2ActivateJobTriggerRequest: Schema.Codec<GooglePrivacyDlpV2ActivateJobTriggerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2ActivateJobTriggerRequest",
   });
@@ -1541,7 +1541,7 @@ export interface GooglePrivacyDlpV2LDiversityConfig {
   quasiIds?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
 }
 
-export const GooglePrivacyDlpV2LDiversityConfig: Schema.Schema<GooglePrivacyDlpV2LDiversityConfig> =
+export const GooglePrivacyDlpV2LDiversityConfig: Schema.Codec<GooglePrivacyDlpV2LDiversityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitiveAttribute: Schema.optional(GooglePrivacyDlpV2FieldId),
     quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
@@ -1554,7 +1554,7 @@ export interface GooglePrivacyDlpV2ProfileStatus {
   timestamp?: string;
 }
 
-export const GooglePrivacyDlpV2ProfileStatus: Schema.Schema<GooglePrivacyDlpV2ProfileStatus> =
+export const GooglePrivacyDlpV2ProfileStatus: Schema.Codec<GooglePrivacyDlpV2ProfileStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(GoogleRpcStatus),
     timestamp: Schema.optional(Schema.String),
@@ -1567,7 +1567,7 @@ export interface GooglePrivacyDlpV2ValueFrequency {
   value?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2ValueFrequency: Schema.Schema<GooglePrivacyDlpV2ValueFrequency> =
+export const GooglePrivacyDlpV2ValueFrequency: Schema.Codec<GooglePrivacyDlpV2ValueFrequency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     value: Schema.optional(GooglePrivacyDlpV2Value),
@@ -1584,7 +1584,7 @@ export interface GooglePrivacyDlpV2LDiversityEquivalenceClass {
   topSensitiveValues?: ReadonlyArray<GooglePrivacyDlpV2ValueFrequency>;
 }
 
-export const GooglePrivacyDlpV2LDiversityEquivalenceClass: Schema.Schema<GooglePrivacyDlpV2LDiversityEquivalenceClass> =
+export const GooglePrivacyDlpV2LDiversityEquivalenceClass: Schema.Codec<GooglePrivacyDlpV2LDiversityEquivalenceClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
     numDistinctSensitiveValues: Schema.optional(Schema.String),
@@ -1607,7 +1607,7 @@ export interface GooglePrivacyDlpV2LDiversityHistogramBucket {
   bucketValues?: ReadonlyArray<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
 }
 
-export const GooglePrivacyDlpV2LDiversityHistogramBucket: Schema.Schema<GooglePrivacyDlpV2LDiversityHistogramBucket> =
+export const GooglePrivacyDlpV2LDiversityHistogramBucket: Schema.Codec<GooglePrivacyDlpV2LDiversityHistogramBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitiveValueFrequencyLowerBound: Schema.optional(Schema.String),
     sensitiveValueFrequencyUpperBound: Schema.optional(Schema.String),
@@ -1623,7 +1623,7 @@ export interface GooglePrivacyDlpV2LDiversityResult {
   sensitiveValueFrequencyHistogramBuckets?: ReadonlyArray<GooglePrivacyDlpV2LDiversityHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2LDiversityResult: Schema.Schema<GooglePrivacyDlpV2LDiversityResult> =
+export const GooglePrivacyDlpV2LDiversityResult: Schema.Codec<GooglePrivacyDlpV2LDiversityResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitiveValueFrequencyHistogramBuckets: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2LDiversityHistogramBucket),
@@ -1635,7 +1635,7 @@ export interface GooglePrivacyDlpV2EntityId {
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2EntityId: Schema.Schema<GooglePrivacyDlpV2EntityId> =
+export const GooglePrivacyDlpV2EntityId: Schema.Codec<GooglePrivacyDlpV2EntityId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
   }).annotate({ identifier: "GooglePrivacyDlpV2EntityId" });
@@ -1647,7 +1647,7 @@ export interface GooglePrivacyDlpV2KAnonymityConfig {
   quasiIds?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
 }
 
-export const GooglePrivacyDlpV2KAnonymityConfig: Schema.Schema<GooglePrivacyDlpV2KAnonymityConfig> =
+export const GooglePrivacyDlpV2KAnonymityConfig: Schema.Codec<GooglePrivacyDlpV2KAnonymityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityId: Schema.optional(GooglePrivacyDlpV2EntityId),
     quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
@@ -1658,7 +1658,7 @@ export interface GooglePrivacyDlpV2CategoricalStatsConfig {
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2CategoricalStatsConfig: Schema.Schema<GooglePrivacyDlpV2CategoricalStatsConfig> =
+export const GooglePrivacyDlpV2CategoricalStatsConfig: Schema.Codec<GooglePrivacyDlpV2CategoricalStatsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
   }).annotate({ identifier: "GooglePrivacyDlpV2CategoricalStatsConfig" });
@@ -1672,7 +1672,7 @@ export interface GooglePrivacyDlpV2AuxiliaryTable {
   relativeFrequency?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2AuxiliaryTable: Schema.Schema<GooglePrivacyDlpV2AuxiliaryTable> =
+export const GooglePrivacyDlpV2AuxiliaryTable: Schema.Codec<GooglePrivacyDlpV2AuxiliaryTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
     quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2QuasiIdField)),
@@ -1690,7 +1690,7 @@ export interface GooglePrivacyDlpV2TaggedField {
   inferred?: GoogleProtobufEmpty;
 }
 
-export const GooglePrivacyDlpV2TaggedField: Schema.Schema<GooglePrivacyDlpV2TaggedField> =
+export const GooglePrivacyDlpV2TaggedField: Schema.Codec<GooglePrivacyDlpV2TaggedField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customTag: Schema.optional(Schema.String),
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
@@ -1707,7 +1707,7 @@ export interface GooglePrivacyDlpV2KMapEstimationConfig {
   regionCode?: string;
 }
 
-export const GooglePrivacyDlpV2KMapEstimationConfig: Schema.Schema<GooglePrivacyDlpV2KMapEstimationConfig> =
+export const GooglePrivacyDlpV2KMapEstimationConfig: Schema.Codec<GooglePrivacyDlpV2KMapEstimationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auxiliaryTables: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2AuxiliaryTable),
@@ -1721,7 +1721,7 @@ export interface GooglePrivacyDlpV2NumericalStatsConfig {
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2NumericalStatsConfig: Schema.Schema<GooglePrivacyDlpV2NumericalStatsConfig> =
+export const GooglePrivacyDlpV2NumericalStatsConfig: Schema.Codec<GooglePrivacyDlpV2NumericalStatsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
   }).annotate({ identifier: "GooglePrivacyDlpV2NumericalStatsConfig" });
@@ -1733,7 +1733,7 @@ export interface GooglePrivacyDlpV2QuasiIdentifierField {
   customTag?: string;
 }
 
-export const GooglePrivacyDlpV2QuasiIdentifierField: Schema.Schema<GooglePrivacyDlpV2QuasiIdentifierField> =
+export const GooglePrivacyDlpV2QuasiIdentifierField: Schema.Codec<GooglePrivacyDlpV2QuasiIdentifierField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
     customTag: Schema.optional(Schema.String),
@@ -1748,7 +1748,7 @@ export interface GooglePrivacyDlpV2StatisticalTable {
   table?: GooglePrivacyDlpV2BigQueryTable;
 }
 
-export const GooglePrivacyDlpV2StatisticalTable: Schema.Schema<GooglePrivacyDlpV2StatisticalTable> =
+export const GooglePrivacyDlpV2StatisticalTable: Schema.Codec<GooglePrivacyDlpV2StatisticalTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quasiIds: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2QuasiIdentifierField),
@@ -1768,7 +1768,7 @@ export interface GooglePrivacyDlpV2QuasiId {
   customTag?: string;
 }
 
-export const GooglePrivacyDlpV2QuasiId: Schema.Schema<GooglePrivacyDlpV2QuasiId> =
+export const GooglePrivacyDlpV2QuasiId: Schema.Codec<GooglePrivacyDlpV2QuasiId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
@@ -1785,7 +1785,7 @@ export interface GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
   regionCode?: string;
 }
 
-export const GooglePrivacyDlpV2DeltaPresenceEstimationConfig: Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationConfig> =
+export const GooglePrivacyDlpV2DeltaPresenceEstimationConfig: Schema.Codec<GooglePrivacyDlpV2DeltaPresenceEstimationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auxiliaryTables: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2StatisticalTable),
@@ -1811,7 +1811,7 @@ export interface GooglePrivacyDlpV2PrivacyMetric {
   deltaPresenceEstimationConfig?: GooglePrivacyDlpV2DeltaPresenceEstimationConfig;
 }
 
-export const GooglePrivacyDlpV2PrivacyMetric: Schema.Schema<GooglePrivacyDlpV2PrivacyMetric> =
+export const GooglePrivacyDlpV2PrivacyMetric: Schema.Codec<GooglePrivacyDlpV2PrivacyMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lDiversityConfig: Schema.optional(GooglePrivacyDlpV2LDiversityConfig),
     kAnonymityConfig: Schema.optional(GooglePrivacyDlpV2KAnonymityConfig),
@@ -1836,7 +1836,7 @@ export interface GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
   estimatedAnonymity?: string;
 }
 
-export const GooglePrivacyDlpV2KMapEstimationQuasiIdValues: Schema.Schema<GooglePrivacyDlpV2KMapEstimationQuasiIdValues> =
+export const GooglePrivacyDlpV2KMapEstimationQuasiIdValues: Schema.Codec<GooglePrivacyDlpV2KMapEstimationQuasiIdValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
     estimatedAnonymity: Schema.optional(Schema.String),
@@ -1855,7 +1855,7 @@ export interface GooglePrivacyDlpV2KMapEstimationHistogramBucket {
   maxAnonymity?: string;
 }
 
-export const GooglePrivacyDlpV2KMapEstimationHistogramBucket: Schema.Schema<GooglePrivacyDlpV2KMapEstimationHistogramBucket> =
+export const GooglePrivacyDlpV2KMapEstimationHistogramBucket: Schema.Codec<GooglePrivacyDlpV2KMapEstimationHistogramBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketSize: Schema.optional(Schema.String),
     bucketValues: Schema.optional(
@@ -1873,7 +1873,7 @@ export interface GooglePrivacyDlpV2KMapEstimationResult {
   kMapEstimationHistogram?: ReadonlyArray<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2KMapEstimationResult: Schema.Schema<GooglePrivacyDlpV2KMapEstimationResult> =
+export const GooglePrivacyDlpV2KMapEstimationResult: Schema.Codec<GooglePrivacyDlpV2KMapEstimationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kMapEstimationHistogram: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2KMapEstimationHistogramBucket),
@@ -1887,7 +1887,7 @@ export interface GooglePrivacyDlpV2KAnonymityEquivalenceClass {
   quasiIdsValues?: ReadonlyArray<GooglePrivacyDlpV2Value>;
 }
 
-export const GooglePrivacyDlpV2KAnonymityEquivalenceClass: Schema.Schema<GooglePrivacyDlpV2KAnonymityEquivalenceClass> =
+export const GooglePrivacyDlpV2KAnonymityEquivalenceClass: Schema.Codec<GooglePrivacyDlpV2KAnonymityEquivalenceClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     equivalenceClassSize: Schema.optional(Schema.String),
     quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
@@ -1906,7 +1906,7 @@ export interface GooglePrivacyDlpV2KAnonymityHistogramBucket {
   bucketValueCount?: string;
 }
 
-export const GooglePrivacyDlpV2KAnonymityHistogramBucket: Schema.Schema<GooglePrivacyDlpV2KAnonymityHistogramBucket> =
+export const GooglePrivacyDlpV2KAnonymityHistogramBucket: Schema.Codec<GooglePrivacyDlpV2KAnonymityHistogramBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     equivalenceClassSizeLowerBound: Schema.optional(Schema.String),
     bucketSize: Schema.optional(Schema.String),
@@ -1922,7 +1922,7 @@ export interface GooglePrivacyDlpV2KAnonymityResult {
   equivalenceClassHistogramBuckets?: ReadonlyArray<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2KAnonymityResult: Schema.Schema<GooglePrivacyDlpV2KAnonymityResult> =
+export const GooglePrivacyDlpV2KAnonymityResult: Schema.Codec<GooglePrivacyDlpV2KAnonymityResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     equivalenceClassHistogramBuckets: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2KAnonymityHistogramBucket),
@@ -1936,7 +1936,7 @@ export interface GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
   estimatedProbability?: number;
 }
 
-export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues: Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues> =
+export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues: Schema.Codec<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
     estimatedProbability: Schema.optional(Schema.Number),
@@ -1957,7 +1957,7 @@ export interface GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
   bucketValueCount?: string;
 }
 
-export const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket: Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket> =
+export const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket: Schema.Codec<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minProbability: Schema.optional(Schema.Number),
     maxProbability: Schema.optional(Schema.Number),
@@ -1975,7 +1975,7 @@ export interface GooglePrivacyDlpV2DeltaPresenceEstimationResult {
   deltaPresenceEstimationHistogram?: ReadonlyArray<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2DeltaPresenceEstimationResult: Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationResult> =
+export const GooglePrivacyDlpV2DeltaPresenceEstimationResult: Schema.Codec<GooglePrivacyDlpV2DeltaPresenceEstimationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deltaPresenceEstimationHistogram: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket),
@@ -1997,7 +1997,7 @@ export interface GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
   bucketValues?: ReadonlyArray<GooglePrivacyDlpV2ValueFrequency>;
 }
 
-export const GooglePrivacyDlpV2CategoricalStatsHistogramBucket: Schema.Schema<GooglePrivacyDlpV2CategoricalStatsHistogramBucket> =
+export const GooglePrivacyDlpV2CategoricalStatsHistogramBucket: Schema.Codec<GooglePrivacyDlpV2CategoricalStatsHistogramBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valueFrequencyLowerBound: Schema.optional(Schema.String),
     bucketValueCount: Schema.optional(Schema.String),
@@ -2015,7 +2015,7 @@ export interface GooglePrivacyDlpV2CategoricalStatsResult {
   valueFrequencyHistogramBuckets?: ReadonlyArray<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2CategoricalStatsResult: Schema.Schema<GooglePrivacyDlpV2CategoricalStatsResult> =
+export const GooglePrivacyDlpV2CategoricalStatsResult: Schema.Codec<GooglePrivacyDlpV2CategoricalStatsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valueFrequencyHistogramBuckets: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2CategoricalStatsHistogramBucket),
@@ -2024,14 +2024,14 @@ export const GooglePrivacyDlpV2CategoricalStatsResult: Schema.Schema<GooglePriva
 
 export interface GooglePrivacyDlpV2PublishSummaryToCscc {}
 
-export const GooglePrivacyDlpV2PublishSummaryToCscc: Schema.Schema<GooglePrivacyDlpV2PublishSummaryToCscc> =
+export const GooglePrivacyDlpV2PublishSummaryToCscc: Schema.Codec<GooglePrivacyDlpV2PublishSummaryToCscc> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishSummaryToCscc",
   });
 
 export interface GooglePrivacyDlpV2PublishFindingsToDataplexCatalog {}
 
-export const GooglePrivacyDlpV2PublishFindingsToDataplexCatalog: Schema.Schema<GooglePrivacyDlpV2PublishFindingsToDataplexCatalog> =
+export const GooglePrivacyDlpV2PublishFindingsToDataplexCatalog: Schema.Codec<GooglePrivacyDlpV2PublishFindingsToDataplexCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishFindingsToDataplexCatalog",
   });
@@ -2052,7 +2052,7 @@ export interface GooglePrivacyDlpV2OutputStorageConfig {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2OutputStorageConfig: Schema.Schema<GooglePrivacyDlpV2OutputStorageConfig> =
+export const GooglePrivacyDlpV2OutputStorageConfig: Schema.Codec<GooglePrivacyDlpV2OutputStorageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
     storagePath: Schema.optional(GooglePrivacyDlpV2CloudStoragePath),
@@ -2064,7 +2064,7 @@ export interface GooglePrivacyDlpV2SaveFindings {
   outputConfig?: GooglePrivacyDlpV2OutputStorageConfig;
 }
 
-export const GooglePrivacyDlpV2SaveFindings: Schema.Schema<GooglePrivacyDlpV2SaveFindings> =
+export const GooglePrivacyDlpV2SaveFindings: Schema.Codec<GooglePrivacyDlpV2SaveFindings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GooglePrivacyDlpV2OutputStorageConfig),
   }).annotate({ identifier: "GooglePrivacyDlpV2SaveFindings" });
@@ -2074,21 +2074,21 @@ export interface GooglePrivacyDlpV2PublishToPubSub {
   topic?: string;
 }
 
-export const GooglePrivacyDlpV2PublishToPubSub: Schema.Schema<GooglePrivacyDlpV2PublishToPubSub> =
+export const GooglePrivacyDlpV2PublishToPubSub: Schema.Codec<GooglePrivacyDlpV2PublishToPubSub> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2PublishToPubSub" });
 
 export interface GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {}
 
-export const GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog: Schema.Schema<GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog> =
+export const GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog: Schema.Codec<GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog",
   });
 
 export interface GooglePrivacyDlpV2JobNotificationEmails {}
 
-export const GooglePrivacyDlpV2JobNotificationEmails: Schema.Schema<GooglePrivacyDlpV2JobNotificationEmails> =
+export const GooglePrivacyDlpV2JobNotificationEmails: Schema.Codec<GooglePrivacyDlpV2JobNotificationEmails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2JobNotificationEmails",
   });
@@ -2098,7 +2098,7 @@ export interface GooglePrivacyDlpV2TransformationDetailsStorageConfig {
   table?: GooglePrivacyDlpV2BigQueryTable;
 }
 
-export const GooglePrivacyDlpV2TransformationDetailsStorageConfig: Schema.Schema<GooglePrivacyDlpV2TransformationDetailsStorageConfig> =
+export const GooglePrivacyDlpV2TransformationDetailsStorageConfig: Schema.Codec<GooglePrivacyDlpV2TransformationDetailsStorageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
   }).annotate({
@@ -2114,7 +2114,7 @@ export interface GooglePrivacyDlpV2TransformationConfig {
   deidentifyTemplate?: string;
 }
 
-export const GooglePrivacyDlpV2TransformationConfig: Schema.Schema<GooglePrivacyDlpV2TransformationConfig> =
+export const GooglePrivacyDlpV2TransformationConfig: Schema.Codec<GooglePrivacyDlpV2TransformationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structuredDeidentifyTemplate: Schema.optional(Schema.String),
     imageRedactTemplate: Schema.optional(Schema.String),
@@ -2145,7 +2145,7 @@ export interface GooglePrivacyDlpV2Deidentify {
   >;
 }
 
-export const GooglePrivacyDlpV2Deidentify: Schema.Schema<GooglePrivacyDlpV2Deidentify> =
+export const GooglePrivacyDlpV2Deidentify: Schema.Codec<GooglePrivacyDlpV2Deidentify> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudStorageOutput: Schema.optional(Schema.String),
     transformationDetailsStorageConfig: Schema.optional(
@@ -2159,7 +2159,7 @@ export const GooglePrivacyDlpV2Deidentify: Schema.Schema<GooglePrivacyDlpV2Deide
 
 export interface GooglePrivacyDlpV2PublishToStackdriver {}
 
-export const GooglePrivacyDlpV2PublishToStackdriver: Schema.Schema<GooglePrivacyDlpV2PublishToStackdriver> =
+export const GooglePrivacyDlpV2PublishToStackdriver: Schema.Codec<GooglePrivacyDlpV2PublishToStackdriver> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishToStackdriver",
   });
@@ -2183,7 +2183,7 @@ export interface GooglePrivacyDlpV2Action {
   publishToStackdriver?: GooglePrivacyDlpV2PublishToStackdriver;
 }
 
-export const GooglePrivacyDlpV2Action: Schema.Schema<GooglePrivacyDlpV2Action> =
+export const GooglePrivacyDlpV2Action: Schema.Codec<GooglePrivacyDlpV2Action> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishSummaryToCscc: Schema.optional(
       GooglePrivacyDlpV2PublishSummaryToCscc,
@@ -2214,7 +2214,7 @@ export interface GooglePrivacyDlpV2RiskAnalysisJobConfig {
   privacyMetric?: GooglePrivacyDlpV2PrivacyMetric;
 }
 
-export const GooglePrivacyDlpV2RiskAnalysisJobConfig: Schema.Schema<GooglePrivacyDlpV2RiskAnalysisJobConfig> =
+export const GooglePrivacyDlpV2RiskAnalysisJobConfig: Schema.Codec<GooglePrivacyDlpV2RiskAnalysisJobConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
     actions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Action)),
@@ -2226,7 +2226,7 @@ export interface GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
   jobConfig?: GooglePrivacyDlpV2RiskAnalysisJobConfig;
 }
 
-export const GooglePrivacyDlpV2RequestedRiskAnalysisOptions: Schema.Schema<GooglePrivacyDlpV2RequestedRiskAnalysisOptions> =
+export const GooglePrivacyDlpV2RequestedRiskAnalysisOptions: Schema.Codec<GooglePrivacyDlpV2RequestedRiskAnalysisOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobConfig: Schema.optional(GooglePrivacyDlpV2RiskAnalysisJobConfig),
   }).annotate({ identifier: "GooglePrivacyDlpV2RequestedRiskAnalysisOptions" });
@@ -2240,7 +2240,7 @@ export interface GooglePrivacyDlpV2NumericalStatsResult {
   minValue?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2NumericalStatsResult: Schema.Schema<GooglePrivacyDlpV2NumericalStatsResult> =
+export const GooglePrivacyDlpV2NumericalStatsResult: Schema.Codec<GooglePrivacyDlpV2NumericalStatsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quantileValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
     maxValue: Schema.optional(GooglePrivacyDlpV2Value),
@@ -2268,7 +2268,7 @@ export interface GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
   numericalStatsResult?: GooglePrivacyDlpV2NumericalStatsResult;
 }
 
-export const GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails: Schema.Schema<GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails> =
+export const GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails: Schema.Codec<GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lDiversityResult: Schema.optional(GooglePrivacyDlpV2LDiversityResult),
     requestedPrivacyMetric: Schema.optional(GooglePrivacyDlpV2PrivacyMetric),
@@ -2296,7 +2296,7 @@ export interface GooglePrivacyDlpV2ReplaceValueConfig {
   newValue?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2ReplaceValueConfig: Schema.Schema<GooglePrivacyDlpV2ReplaceValueConfig> =
+export const GooglePrivacyDlpV2ReplaceValueConfig: Schema.Codec<GooglePrivacyDlpV2ReplaceValueConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newValue: Schema.optional(GooglePrivacyDlpV2Value),
   }).annotate({ identifier: "GooglePrivacyDlpV2ReplaceValueConfig" });
@@ -2315,7 +2315,7 @@ export interface GooglePrivacyDlpV2CharsToIgnore {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2CharsToIgnore: Schema.Schema<GooglePrivacyDlpV2CharsToIgnore> =
+export const GooglePrivacyDlpV2CharsToIgnore: Schema.Codec<GooglePrivacyDlpV2CharsToIgnore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     charactersToSkip: Schema.optional(Schema.String),
     commonCharactersToIgnore: Schema.optional(Schema.String),
@@ -2332,7 +2332,7 @@ export interface GooglePrivacyDlpV2CharacterMaskConfig {
   numberToMask?: number;
 }
 
-export const GooglePrivacyDlpV2CharacterMaskConfig: Schema.Schema<GooglePrivacyDlpV2CharacterMaskConfig> =
+export const GooglePrivacyDlpV2CharacterMaskConfig: Schema.Codec<GooglePrivacyDlpV2CharacterMaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maskingCharacter: Schema.optional(Schema.String),
     reverseOrder: Schema.optional(Schema.Boolean),
@@ -2347,7 +2347,7 @@ export interface GooglePrivacyDlpV2UnwrappedCryptoKey {
   key?: string;
 }
 
-export const GooglePrivacyDlpV2UnwrappedCryptoKey: Schema.Schema<GooglePrivacyDlpV2UnwrappedCryptoKey> =
+export const GooglePrivacyDlpV2UnwrappedCryptoKey: Schema.Codec<GooglePrivacyDlpV2UnwrappedCryptoKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2UnwrappedCryptoKey" });
@@ -2357,7 +2357,7 @@ export interface GooglePrivacyDlpV2TransientCryptoKey {
   name?: string;
 }
 
-export const GooglePrivacyDlpV2TransientCryptoKey: Schema.Schema<GooglePrivacyDlpV2TransientCryptoKey> =
+export const GooglePrivacyDlpV2TransientCryptoKey: Schema.Codec<GooglePrivacyDlpV2TransientCryptoKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2TransientCryptoKey" });
@@ -2371,7 +2371,7 @@ export interface GooglePrivacyDlpV2CryptoKey {
   kmsWrapped?: GooglePrivacyDlpV2KmsWrappedCryptoKey;
 }
 
-export const GooglePrivacyDlpV2CryptoKey: Schema.Schema<GooglePrivacyDlpV2CryptoKey> =
+export const GooglePrivacyDlpV2CryptoKey: Schema.Codec<GooglePrivacyDlpV2CryptoKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unwrapped: Schema.optional(GooglePrivacyDlpV2UnwrappedCryptoKey),
     transient: Schema.optional(GooglePrivacyDlpV2TransientCryptoKey),
@@ -2399,7 +2399,7 @@ export interface GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   radix?: number;
 }
 
-export const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig: Schema.Schema<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig> =
+export const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig: Schema.Codec<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customAlphabet: Schema.optional(Schema.String),
     surrogateInfoType: Schema.optional(GooglePrivacyDlpV2InfoType),
@@ -2418,7 +2418,7 @@ export interface GooglePrivacyDlpV2CryptoDeterministicConfig {
   surrogateInfoType?: GooglePrivacyDlpV2InfoType;
 }
 
-export const GooglePrivacyDlpV2CryptoDeterministicConfig: Schema.Schema<GooglePrivacyDlpV2CryptoDeterministicConfig> =
+export const GooglePrivacyDlpV2CryptoDeterministicConfig: Schema.Codec<GooglePrivacyDlpV2CryptoDeterministicConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
     context: Schema.optional(GooglePrivacyDlpV2FieldId),
@@ -2427,7 +2427,7 @@ export const GooglePrivacyDlpV2CryptoDeterministicConfig: Schema.Schema<GooglePr
 
 export interface GooglePrivacyDlpV2RedactConfig {}
 
-export const GooglePrivacyDlpV2RedactConfig: Schema.Schema<GooglePrivacyDlpV2RedactConfig> =
+export const GooglePrivacyDlpV2RedactConfig: Schema.Codec<GooglePrivacyDlpV2RedactConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2RedactConfig",
   });
@@ -2437,7 +2437,7 @@ export interface GooglePrivacyDlpV2ReplaceDictionaryConfig {
   wordList?: GooglePrivacyDlpV2WordList;
 }
 
-export const GooglePrivacyDlpV2ReplaceDictionaryConfig: Schema.Schema<GooglePrivacyDlpV2ReplaceDictionaryConfig> =
+export const GooglePrivacyDlpV2ReplaceDictionaryConfig: Schema.Codec<GooglePrivacyDlpV2ReplaceDictionaryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wordList: Schema.optional(GooglePrivacyDlpV2WordList),
   }).annotate({ identifier: "GooglePrivacyDlpV2ReplaceDictionaryConfig" });
@@ -2451,7 +2451,7 @@ export interface GooglePrivacyDlpV2FixedSizeBucketingConfig {
   lowerBound?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2FixedSizeBucketingConfig: Schema.Schema<GooglePrivacyDlpV2FixedSizeBucketingConfig> =
+export const GooglePrivacyDlpV2FixedSizeBucketingConfig: Schema.Codec<GooglePrivacyDlpV2FixedSizeBucketingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upperBound: Schema.optional(GooglePrivacyDlpV2Value),
     bucketSize: Schema.optional(Schema.Number),
@@ -2460,7 +2460,7 @@ export const GooglePrivacyDlpV2FixedSizeBucketingConfig: Schema.Schema<GooglePri
 
 export interface GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {}
 
-export const GooglePrivacyDlpV2ReplaceWithInfoTypeConfig: Schema.Schema<GooglePrivacyDlpV2ReplaceWithInfoTypeConfig> =
+export const GooglePrivacyDlpV2ReplaceWithInfoTypeConfig: Schema.Codec<GooglePrivacyDlpV2ReplaceWithInfoTypeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2ReplaceWithInfoTypeConfig",
   });
@@ -2478,7 +2478,7 @@ export interface GooglePrivacyDlpV2TimePartConfig {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2TimePartConfig: Schema.Schema<GooglePrivacyDlpV2TimePartConfig> =
+export const GooglePrivacyDlpV2TimePartConfig: Schema.Codec<GooglePrivacyDlpV2TimePartConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partToExtract: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2TimePartConfig" });
@@ -2494,7 +2494,7 @@ export interface GooglePrivacyDlpV2DateShiftConfig {
   lowerBoundDays?: number;
 }
 
-export const GooglePrivacyDlpV2DateShiftConfig: Schema.Schema<GooglePrivacyDlpV2DateShiftConfig> =
+export const GooglePrivacyDlpV2DateShiftConfig: Schema.Codec<GooglePrivacyDlpV2DateShiftConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     context: Schema.optional(GooglePrivacyDlpV2FieldId),
     cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
@@ -2507,7 +2507,7 @@ export interface GooglePrivacyDlpV2CryptoHashConfig {
   cryptoKey?: GooglePrivacyDlpV2CryptoKey;
 }
 
-export const GooglePrivacyDlpV2CryptoHashConfig: Schema.Schema<GooglePrivacyDlpV2CryptoHashConfig> =
+export const GooglePrivacyDlpV2CryptoHashConfig: Schema.Codec<GooglePrivacyDlpV2CryptoHashConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
   }).annotate({ identifier: "GooglePrivacyDlpV2CryptoHashConfig" });
@@ -2521,7 +2521,7 @@ export interface GooglePrivacyDlpV2Bucket {
   replacementValue?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2Bucket: Schema.Schema<GooglePrivacyDlpV2Bucket> =
+export const GooglePrivacyDlpV2Bucket: Schema.Codec<GooglePrivacyDlpV2Bucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     min: Schema.optional(GooglePrivacyDlpV2Value),
     max: Schema.optional(GooglePrivacyDlpV2Value),
@@ -2533,7 +2533,7 @@ export interface GooglePrivacyDlpV2BucketingConfig {
   buckets?: ReadonlyArray<GooglePrivacyDlpV2Bucket>;
 }
 
-export const GooglePrivacyDlpV2BucketingConfig: Schema.Schema<GooglePrivacyDlpV2BucketingConfig> =
+export const GooglePrivacyDlpV2BucketingConfig: Schema.Codec<GooglePrivacyDlpV2BucketingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buckets: Schema.optional(Schema.Array(GooglePrivacyDlpV2Bucket)),
   }).annotate({ identifier: "GooglePrivacyDlpV2BucketingConfig" });
@@ -2565,7 +2565,7 @@ export interface GooglePrivacyDlpV2PrimitiveTransformation {
   bucketingConfig?: GooglePrivacyDlpV2BucketingConfig;
 }
 
-export const GooglePrivacyDlpV2PrimitiveTransformation: Schema.Schema<GooglePrivacyDlpV2PrimitiveTransformation> =
+export const GooglePrivacyDlpV2PrimitiveTransformation: Schema.Codec<GooglePrivacyDlpV2PrimitiveTransformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replaceConfig: Schema.optional(GooglePrivacyDlpV2ReplaceValueConfig),
     characterMaskConfig: Schema.optional(GooglePrivacyDlpV2CharacterMaskConfig),
@@ -2598,7 +2598,7 @@ export interface GooglePrivacyDlpV2InfoTypeTransformation {
   primitiveTransformation?: GooglePrivacyDlpV2PrimitiveTransformation;
 }
 
-export const GooglePrivacyDlpV2InfoTypeTransformation: Schema.Schema<GooglePrivacyDlpV2InfoTypeTransformation> =
+export const GooglePrivacyDlpV2InfoTypeTransformation: Schema.Codec<GooglePrivacyDlpV2InfoTypeTransformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
     primitiveTransformation: Schema.optional(
@@ -2611,7 +2611,7 @@ export interface GooglePrivacyDlpV2InfoTypeTransformations {
   transformations?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeTransformation>;
 }
 
-export const GooglePrivacyDlpV2InfoTypeTransformations: Schema.Schema<GooglePrivacyDlpV2InfoTypeTransformations> =
+export const GooglePrivacyDlpV2InfoTypeTransformations: Schema.Codec<GooglePrivacyDlpV2InfoTypeTransformations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformations: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2InfoTypeTransformation),
@@ -2625,7 +2625,7 @@ export interface GooglePrivacyDlpV2Expressions {
   conditions?: GooglePrivacyDlpV2Conditions;
 }
 
-export const GooglePrivacyDlpV2Expressions: Schema.Schema<GooglePrivacyDlpV2Expressions> =
+export const GooglePrivacyDlpV2Expressions: Schema.Codec<GooglePrivacyDlpV2Expressions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logicalOperator: Schema.optional(Schema.String),
     conditions: Schema.optional(GooglePrivacyDlpV2Conditions),
@@ -2636,7 +2636,7 @@ export interface GooglePrivacyDlpV2RecordCondition {
   expressions?: GooglePrivacyDlpV2Expressions;
 }
 
-export const GooglePrivacyDlpV2RecordCondition: Schema.Schema<GooglePrivacyDlpV2RecordCondition> =
+export const GooglePrivacyDlpV2RecordCondition: Schema.Codec<GooglePrivacyDlpV2RecordCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expressions: Schema.optional(GooglePrivacyDlpV2Expressions),
   }).annotate({ identifier: "GooglePrivacyDlpV2RecordCondition" });
@@ -2652,7 +2652,7 @@ export interface GooglePrivacyDlpV2FieldTransformation {
   primitiveTransformation?: GooglePrivacyDlpV2PrimitiveTransformation;
 }
 
-export const GooglePrivacyDlpV2FieldTransformation: Schema.Schema<GooglePrivacyDlpV2FieldTransformation> =
+export const GooglePrivacyDlpV2FieldTransformation: Schema.Codec<GooglePrivacyDlpV2FieldTransformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
     condition: Schema.optional(GooglePrivacyDlpV2RecordCondition),
@@ -2669,7 +2669,7 @@ export interface GooglePrivacyDlpV2RecordSuppression {
   condition?: GooglePrivacyDlpV2RecordCondition;
 }
 
-export const GooglePrivacyDlpV2RecordSuppression: Schema.Schema<GooglePrivacyDlpV2RecordSuppression> =
+export const GooglePrivacyDlpV2RecordSuppression: Schema.Codec<GooglePrivacyDlpV2RecordSuppression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(GooglePrivacyDlpV2RecordCondition),
   }).annotate({ identifier: "GooglePrivacyDlpV2RecordSuppression" });
@@ -2681,7 +2681,7 @@ export interface GooglePrivacyDlpV2RecordTransformations {
   recordSuppressions?: ReadonlyArray<GooglePrivacyDlpV2RecordSuppression>;
 }
 
-export const GooglePrivacyDlpV2RecordTransformations: Schema.Schema<GooglePrivacyDlpV2RecordTransformations> =
+export const GooglePrivacyDlpV2RecordTransformations: Schema.Codec<GooglePrivacyDlpV2RecordTransformations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldTransformations: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2FieldTransformation),
@@ -2693,14 +2693,14 @@ export const GooglePrivacyDlpV2RecordTransformations: Schema.Schema<GooglePrivac
 
 export interface GooglePrivacyDlpV2ThrowError {}
 
-export const GooglePrivacyDlpV2ThrowError: Schema.Schema<GooglePrivacyDlpV2ThrowError> =
+export const GooglePrivacyDlpV2ThrowError: Schema.Codec<GooglePrivacyDlpV2ThrowError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2ThrowError",
   });
 
 export interface GooglePrivacyDlpV2LeaveUntransformed {}
 
-export const GooglePrivacyDlpV2LeaveUntransformed: Schema.Schema<GooglePrivacyDlpV2LeaveUntransformed> =
+export const GooglePrivacyDlpV2LeaveUntransformed: Schema.Codec<GooglePrivacyDlpV2LeaveUntransformed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2LeaveUntransformed",
   });
@@ -2712,7 +2712,7 @@ export interface GooglePrivacyDlpV2TransformationErrorHandling {
   leaveUntransformed?: GooglePrivacyDlpV2LeaveUntransformed;
 }
 
-export const GooglePrivacyDlpV2TransformationErrorHandling: Schema.Schema<GooglePrivacyDlpV2TransformationErrorHandling> =
+export const GooglePrivacyDlpV2TransformationErrorHandling: Schema.Codec<GooglePrivacyDlpV2TransformationErrorHandling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     throwError: Schema.optional(GooglePrivacyDlpV2ThrowError),
     leaveUntransformed: Schema.optional(GooglePrivacyDlpV2LeaveUntransformed),
@@ -2727,7 +2727,7 @@ export interface GooglePrivacyDlpV2Color {
   green?: number;
 }
 
-export const GooglePrivacyDlpV2Color: Schema.Schema<GooglePrivacyDlpV2Color> =
+export const GooglePrivacyDlpV2Color: Schema.Codec<GooglePrivacyDlpV2Color> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blue: Schema.optional(Schema.Number),
     red: Schema.optional(Schema.Number),
@@ -2739,14 +2739,14 @@ export interface GooglePrivacyDlpV2SelectedInfoTypes {
   infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
 }
 
-export const GooglePrivacyDlpV2SelectedInfoTypes: Schema.Schema<GooglePrivacyDlpV2SelectedInfoTypes> =
+export const GooglePrivacyDlpV2SelectedInfoTypes: Schema.Codec<GooglePrivacyDlpV2SelectedInfoTypes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
   }).annotate({ identifier: "GooglePrivacyDlpV2SelectedInfoTypes" });
 
 export interface GooglePrivacyDlpV2AllText {}
 
-export const GooglePrivacyDlpV2AllText: Schema.Schema<GooglePrivacyDlpV2AllText> =
+export const GooglePrivacyDlpV2AllText: Schema.Codec<GooglePrivacyDlpV2AllText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllText",
   });
@@ -2762,7 +2762,7 @@ export interface GooglePrivacyDlpV2ImageTransformation {
   allInfoTypes?: GooglePrivacyDlpV2AllInfoTypes;
 }
 
-export const GooglePrivacyDlpV2ImageTransformation: Schema.Schema<GooglePrivacyDlpV2ImageTransformation> =
+export const GooglePrivacyDlpV2ImageTransformation: Schema.Codec<GooglePrivacyDlpV2ImageTransformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redactionColor: Schema.optional(GooglePrivacyDlpV2Color),
     selectedInfoTypes: Schema.optional(GooglePrivacyDlpV2SelectedInfoTypes),
@@ -2775,7 +2775,7 @@ export interface GooglePrivacyDlpV2ImageTransformations {
   transforms?: ReadonlyArray<GooglePrivacyDlpV2ImageTransformation>;
 }
 
-export const GooglePrivacyDlpV2ImageTransformations: Schema.Schema<GooglePrivacyDlpV2ImageTransformations> =
+export const GooglePrivacyDlpV2ImageTransformations: Schema.Codec<GooglePrivacyDlpV2ImageTransformations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transforms: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2ImageTransformation),
@@ -2793,7 +2793,7 @@ export interface GooglePrivacyDlpV2DeidentifyConfig {
   imageTransformations?: GooglePrivacyDlpV2ImageTransformations;
 }
 
-export const GooglePrivacyDlpV2DeidentifyConfig: Schema.Schema<GooglePrivacyDlpV2DeidentifyConfig> =
+export const GooglePrivacyDlpV2DeidentifyConfig: Schema.Codec<GooglePrivacyDlpV2DeidentifyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypeTransformations: Schema.optional(
       GooglePrivacyDlpV2InfoTypeTransformations,
@@ -2824,7 +2824,7 @@ export interface GooglePrivacyDlpV2DeidentifyTemplate {
   description?: string;
 }
 
-export const GooglePrivacyDlpV2DeidentifyTemplate: Schema.Schema<GooglePrivacyDlpV2DeidentifyTemplate> =
+export const GooglePrivacyDlpV2DeidentifyTemplate: Schema.Codec<GooglePrivacyDlpV2DeidentifyTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -2841,7 +2841,7 @@ export interface GooglePrivacyDlpV2Proximity {
   windowAfter?: number;
 }
 
-export const GooglePrivacyDlpV2Proximity: Schema.Schema<GooglePrivacyDlpV2Proximity> =
+export const GooglePrivacyDlpV2Proximity: Schema.Codec<GooglePrivacyDlpV2Proximity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     windowBefore: Schema.optional(Schema.Number),
     windowAfter: Schema.optional(Schema.Number),
@@ -2854,7 +2854,7 @@ export interface GooglePrivacyDlpV2ExcludeByHotword {
   proximity?: GooglePrivacyDlpV2Proximity;
 }
 
-export const GooglePrivacyDlpV2ExcludeByHotword: Schema.Schema<GooglePrivacyDlpV2ExcludeByHotword> =
+export const GooglePrivacyDlpV2ExcludeByHotword: Schema.Codec<GooglePrivacyDlpV2ExcludeByHotword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hotwordRegex: Schema.optional(GooglePrivacyDlpV2Regex),
     proximity: Schema.optional(GooglePrivacyDlpV2Proximity),
@@ -2867,7 +2867,7 @@ export interface GooglePrivacyDlpV2InfoTypeLimit {
   maxFindings?: number;
 }
 
-export const GooglePrivacyDlpV2InfoTypeLimit: Schema.Schema<GooglePrivacyDlpV2InfoTypeLimit> =
+export const GooglePrivacyDlpV2InfoTypeLimit: Schema.Codec<GooglePrivacyDlpV2InfoTypeLimit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     maxFindings: Schema.optional(Schema.Number),
@@ -2888,7 +2888,7 @@ export interface GooglePrivacyDlpV2PubSubCondition {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2PubSubCondition: Schema.Schema<GooglePrivacyDlpV2PubSubCondition> =
+export const GooglePrivacyDlpV2PubSubCondition: Schema.Codec<GooglePrivacyDlpV2PubSubCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minimumRiskScore: Schema.optional(Schema.String),
     minimumSensitivityScore: Schema.optional(Schema.String),
@@ -2905,7 +2905,7 @@ export interface GooglePrivacyDlpV2PubSubExpressions {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2PubSubExpressions: Schema.Schema<GooglePrivacyDlpV2PubSubExpressions> =
+export const GooglePrivacyDlpV2PubSubExpressions: Schema.Codec<GooglePrivacyDlpV2PubSubExpressions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2PubSubCondition),
@@ -2931,7 +2931,7 @@ export interface GooglePrivacyDlpV2DiscoveryCloudSqlConditions {
   >;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudSqlConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlConditions> =
+export const GooglePrivacyDlpV2DiscoveryCloudSqlConditions: Schema.Codec<GooglePrivacyDlpV2DiscoveryCloudSqlConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
     databaseEngines: Schema.optional(Schema.Array(Schema.String)),
@@ -2939,7 +2939,7 @@ export const GooglePrivacyDlpV2DiscoveryCloudSqlConditions: Schema.Schema<Google
 
 export interface GooglePrivacyDlpV2Overlap {}
 
-export const GooglePrivacyDlpV2Overlap: Schema.Schema<GooglePrivacyDlpV2Overlap> =
+export const GooglePrivacyDlpV2Overlap: Schema.Codec<GooglePrivacyDlpV2Overlap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2Overlap",
   });
@@ -2953,7 +2953,7 @@ export interface GooglePrivacyDlpV2FindingLimits {
   maxFindingsPerRequest?: number;
 }
 
-export const GooglePrivacyDlpV2FindingLimits: Schema.Schema<GooglePrivacyDlpV2FindingLimits> =
+export const GooglePrivacyDlpV2FindingLimits: Schema.Codec<GooglePrivacyDlpV2FindingLimits> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxFindingsPerItem: Schema.optional(Schema.Number),
     maxFindingsPerInfoType: Schema.optional(
@@ -2974,7 +2974,7 @@ export interface GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence {
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence> =
+export const GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence: Schema.Codec<GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshFrequency: Schema.optional(Schema.String),
     inspectTemplateModifiedCadence: Schema.optional(
@@ -2991,7 +2991,7 @@ export interface GooglePrivacyDlpV2ListStoredInfoTypesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListStoredInfoTypesResponse: Schema.Schema<GooglePrivacyDlpV2ListStoredInfoTypesResponse> =
+export const GooglePrivacyDlpV2ListStoredInfoTypesResponse: Schema.Codec<GooglePrivacyDlpV2ListStoredInfoTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storedInfoTypes: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2StoredInfoType),
@@ -3016,7 +3016,7 @@ export interface GooglePrivacyDlpV2SchemaModifiedCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2SchemaModifiedCadence: Schema.Schema<GooglePrivacyDlpV2SchemaModifiedCadence> =
+export const GooglePrivacyDlpV2SchemaModifiedCadence: Schema.Codec<GooglePrivacyDlpV2SchemaModifiedCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
     frequency: Schema.optional(Schema.String),
@@ -3036,7 +3036,7 @@ export interface GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence> =
+export const GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence: Schema.Codec<GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaModifiedCadence: Schema.optional(
       GooglePrivacyDlpV2SchemaModifiedCadence,
@@ -3056,7 +3056,7 @@ export interface GooglePrivacyDlpV2AmazonS3Bucket {
   bucketName?: string;
 }
 
-export const GooglePrivacyDlpV2AmazonS3Bucket: Schema.Schema<GooglePrivacyDlpV2AmazonS3Bucket> =
+export const GooglePrivacyDlpV2AmazonS3Bucket: Schema.Codec<GooglePrivacyDlpV2AmazonS3Bucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     awsAccount: Schema.optional(GooglePrivacyDlpV2AwsAccount),
     bucketName: Schema.optional(Schema.String),
@@ -3067,7 +3067,7 @@ export interface GooglePrivacyDlpV2OtherCloudSingleResourceReference {
   amazonS3Bucket?: GooglePrivacyDlpV2AmazonS3Bucket;
 }
 
-export const GooglePrivacyDlpV2OtherCloudSingleResourceReference: Schema.Schema<GooglePrivacyDlpV2OtherCloudSingleResourceReference> =
+export const GooglePrivacyDlpV2OtherCloudSingleResourceReference: Schema.Codec<GooglePrivacyDlpV2OtherCloudSingleResourceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amazonS3Bucket: Schema.optional(GooglePrivacyDlpV2AmazonS3Bucket),
   }).annotate({
@@ -3087,7 +3087,7 @@ export interface GooglePrivacyDlpV2SummaryResult {
   details?: string;
 }
 
-export const GooglePrivacyDlpV2SummaryResult: Schema.Schema<GooglePrivacyDlpV2SummaryResult> =
+export const GooglePrivacyDlpV2SummaryResult: Schema.Codec<GooglePrivacyDlpV2SummaryResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -3111,7 +3111,7 @@ export interface GooglePrivacyDlpV2TransformationSummary {
   transformedBytes?: string;
 }
 
-export const GooglePrivacyDlpV2TransformationSummary: Schema.Schema<GooglePrivacyDlpV2TransformationSummary> =
+export const GooglePrivacyDlpV2TransformationSummary: Schema.Codec<GooglePrivacyDlpV2TransformationSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
@@ -3131,7 +3131,7 @@ export interface GooglePrivacyDlpV2TransformationOverview {
   transformationSummaries?: ReadonlyArray<GooglePrivacyDlpV2TransformationSummary>;
 }
 
-export const GooglePrivacyDlpV2TransformationOverview: Schema.Schema<GooglePrivacyDlpV2TransformationOverview> =
+export const GooglePrivacyDlpV2TransformationOverview: Schema.Codec<GooglePrivacyDlpV2TransformationOverview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformedBytes: Schema.optional(Schema.String),
     transformationSummaries: Schema.optional(
@@ -3150,7 +3150,7 @@ export interface GooglePrivacyDlpV2HybridOptions {
   requiredFindingLabelKeys?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2HybridOptions: Schema.Schema<GooglePrivacyDlpV2HybridOptions> =
+export const GooglePrivacyDlpV2HybridOptions: Schema.Codec<GooglePrivacyDlpV2HybridOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     tableOptions: Schema.optional(GooglePrivacyDlpV2TableOptions),
@@ -3160,7 +3160,7 @@ export const GooglePrivacyDlpV2HybridOptions: Schema.Schema<GooglePrivacyDlpV2Hy
 
 export interface Proto2BridgeMessageSet {}
 
-export const Proto2BridgeMessageSet: Schema.Schema<Proto2BridgeMessageSet> =
+export const Proto2BridgeMessageSet: Schema.Codec<Proto2BridgeMessageSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Proto2BridgeMessageSet",
   });
@@ -3178,7 +3178,7 @@ export interface UtilStatusProto {
   code?: number;
 }
 
-export const UtilStatusProto: Schema.Schema<UtilStatusProto> =
+export const UtilStatusProto: Schema.Codec<UtilStatusProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     messageSet: Schema.optional(Proto2BridgeMessageSet),
@@ -3201,7 +3201,7 @@ export interface GooglePrivacyDlpV2LikelihoodAdjustment {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2LikelihoodAdjustment: Schema.Schema<GooglePrivacyDlpV2LikelihoodAdjustment> =
+export const GooglePrivacyDlpV2LikelihoodAdjustment: Schema.Codec<GooglePrivacyDlpV2LikelihoodAdjustment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relativeLikelihood: Schema.optional(Schema.Number),
     fixedLikelihood: Schema.optional(Schema.String),
@@ -3216,7 +3216,7 @@ export interface GooglePrivacyDlpV2HotwordRule {
   likelihoodAdjustment?: GooglePrivacyDlpV2LikelihoodAdjustment;
 }
 
-export const GooglePrivacyDlpV2HotwordRule: Schema.Schema<GooglePrivacyDlpV2HotwordRule> =
+export const GooglePrivacyDlpV2HotwordRule: Schema.Codec<GooglePrivacyDlpV2HotwordRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proximity: Schema.optional(GooglePrivacyDlpV2Proximity),
     hotwordRegex: Schema.optional(GooglePrivacyDlpV2Regex),
@@ -3230,7 +3230,7 @@ export interface GooglePrivacyDlpV2DetectionRule {
   hotwordRule?: GooglePrivacyDlpV2HotwordRule;
 }
 
-export const GooglePrivacyDlpV2DetectionRule: Schema.Schema<GooglePrivacyDlpV2DetectionRule> =
+export const GooglePrivacyDlpV2DetectionRule: Schema.Codec<GooglePrivacyDlpV2DetectionRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hotwordRule: Schema.optional(GooglePrivacyDlpV2HotwordRule),
   }).annotate({ identifier: "GooglePrivacyDlpV2DetectionRule" });
@@ -3242,7 +3242,7 @@ export interface GooglePrivacyDlpV2StoredType {
   createTime?: string;
 }
 
-export const GooglePrivacyDlpV2StoredType: Schema.Schema<GooglePrivacyDlpV2StoredType> =
+export const GooglePrivacyDlpV2StoredType: Schema.Codec<GooglePrivacyDlpV2StoredType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -3250,7 +3250,7 @@ export const GooglePrivacyDlpV2StoredType: Schema.Schema<GooglePrivacyDlpV2Store
 
 export interface GooglePrivacyDlpV2SurrogateType {}
 
-export const GooglePrivacyDlpV2SurrogateType: Schema.Schema<GooglePrivacyDlpV2SurrogateType> =
+export const GooglePrivacyDlpV2SurrogateType: Schema.Codec<GooglePrivacyDlpV2SurrogateType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2SurrogateType",
   });
@@ -3260,7 +3260,7 @@ export interface GooglePrivacyDlpV2SensitivityLabel {
   guid?: string;
 }
 
-export const GooglePrivacyDlpV2SensitivityLabel: Schema.Schema<GooglePrivacyDlpV2SensitivityLabel> =
+export const GooglePrivacyDlpV2SensitivityLabel: Schema.Codec<GooglePrivacyDlpV2SensitivityLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guid: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2SensitivityLabel" });
@@ -3272,7 +3272,7 @@ export interface GooglePrivacyDlpV2LabelField {
   value?: string;
 }
 
-export const GooglePrivacyDlpV2LabelField: Schema.Schema<GooglePrivacyDlpV2LabelField> =
+export const GooglePrivacyDlpV2LabelField: Schema.Codec<GooglePrivacyDlpV2LabelField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -3285,7 +3285,7 @@ export interface GooglePrivacyDlpV2GoogleDriveLabel {
   labelFieldsToMatch?: ReadonlyArray<GooglePrivacyDlpV2LabelField>;
 }
 
-export const GooglePrivacyDlpV2GoogleDriveLabel: Schema.Schema<GooglePrivacyDlpV2GoogleDriveLabel> =
+export const GooglePrivacyDlpV2GoogleDriveLabel: Schema.Codec<GooglePrivacyDlpV2GoogleDriveLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelId: Schema.optional(Schema.String),
     labelFieldsToMatch: Schema.optional(
@@ -3300,7 +3300,7 @@ export interface GooglePrivacyDlpV2FileLabelInfoType {
   googleDriveLabel?: GooglePrivacyDlpV2GoogleDriveLabel;
 }
 
-export const GooglePrivacyDlpV2FileLabelInfoType: Schema.Schema<GooglePrivacyDlpV2FileLabelInfoType> =
+export const GooglePrivacyDlpV2FileLabelInfoType: Schema.Codec<GooglePrivacyDlpV2FileLabelInfoType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitivityLabel: Schema.optional(GooglePrivacyDlpV2SensitivityLabel),
     googleDriveLabel: Schema.optional(GooglePrivacyDlpV2GoogleDriveLabel),
@@ -3341,7 +3341,7 @@ export interface GooglePrivacyDlpV2CustomInfoType {
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
 }
 
-export const GooglePrivacyDlpV2CustomInfoType: Schema.Schema<GooglePrivacyDlpV2CustomInfoType> =
+export const GooglePrivacyDlpV2CustomInfoType: Schema.Codec<GooglePrivacyDlpV2CustomInfoType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     likelihood: Schema.optional(Schema.String),
@@ -3369,7 +3369,7 @@ export interface GooglePrivacyDlpV2RequestedDeidentifyOptions {
   snapshotImageRedactTemplate?: GooglePrivacyDlpV2DeidentifyTemplate;
 }
 
-export const GooglePrivacyDlpV2RequestedDeidentifyOptions: Schema.Schema<GooglePrivacyDlpV2RequestedDeidentifyOptions> =
+export const GooglePrivacyDlpV2RequestedDeidentifyOptions: Schema.Codec<GooglePrivacyDlpV2RequestedDeidentifyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snapshotDeidentifyTemplate: Schema.optional(
       GooglePrivacyDlpV2DeidentifyTemplate,
@@ -3391,7 +3391,7 @@ export interface GooglePrivacyDlpV2DeidentifyDataSourceStats {
   transformedBytes?: string;
 }
 
-export const GooglePrivacyDlpV2DeidentifyDataSourceStats: Schema.Schema<GooglePrivacyDlpV2DeidentifyDataSourceStats> =
+export const GooglePrivacyDlpV2DeidentifyDataSourceStats: Schema.Codec<GooglePrivacyDlpV2DeidentifyDataSourceStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformationErrorCount: Schema.optional(Schema.String),
     transformationCount: Schema.optional(Schema.String),
@@ -3405,7 +3405,7 @@ export interface GooglePrivacyDlpV2DeidentifyDataSourceDetails {
   deidentifyStats?: GooglePrivacyDlpV2DeidentifyDataSourceStats;
 }
 
-export const GooglePrivacyDlpV2DeidentifyDataSourceDetails: Schema.Schema<GooglePrivacyDlpV2DeidentifyDataSourceDetails> =
+export const GooglePrivacyDlpV2DeidentifyDataSourceDetails: Schema.Codec<GooglePrivacyDlpV2DeidentifyDataSourceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedOptions: Schema.optional(
       GooglePrivacyDlpV2RequestedDeidentifyOptions,
@@ -3420,7 +3420,7 @@ export interface GooglePrivacyDlpV2ActionDetails {
   deidentifyDetails?: GooglePrivacyDlpV2DeidentifyDataSourceDetails;
 }
 
-export const GooglePrivacyDlpV2ActionDetails: Schema.Schema<GooglePrivacyDlpV2ActionDetails> =
+export const GooglePrivacyDlpV2ActionDetails: Schema.Codec<GooglePrivacyDlpV2ActionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deidentifyDetails: Schema.optional(
       GooglePrivacyDlpV2DeidentifyDataSourceDetails,
@@ -3434,7 +3434,7 @@ export interface GooglePrivacyDlpV2InfoTypeStats {
   count?: string;
 }
 
-export const GooglePrivacyDlpV2InfoTypeStats: Schema.Schema<GooglePrivacyDlpV2InfoTypeStats> =
+export const GooglePrivacyDlpV2InfoTypeStats: Schema.Codec<GooglePrivacyDlpV2InfoTypeStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     count: Schema.optional(Schema.String),
@@ -3449,7 +3449,7 @@ export interface GooglePrivacyDlpV2HybridInspectStatistics {
   processedCount?: string;
 }
 
-export const GooglePrivacyDlpV2HybridInspectStatistics: Schema.Schema<GooglePrivacyDlpV2HybridInspectStatistics> =
+export const GooglePrivacyDlpV2HybridInspectStatistics: Schema.Codec<GooglePrivacyDlpV2HybridInspectStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     abortedCount: Schema.optional(Schema.String),
     pendingCount: Schema.optional(Schema.String),
@@ -3469,7 +3469,7 @@ export interface GooglePrivacyDlpV2Result {
   hybridStats?: GooglePrivacyDlpV2HybridInspectStatistics;
 }
 
-export const GooglePrivacyDlpV2Result: Schema.Schema<GooglePrivacyDlpV2Result> =
+export const GooglePrivacyDlpV2Result: Schema.Codec<GooglePrivacyDlpV2Result> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processedBytes: Schema.optional(Schema.String),
     infoTypeStats: Schema.optional(
@@ -3494,7 +3494,7 @@ export interface GooglePrivacyDlpV2InfoTypeLikelihood {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2InfoTypeLikelihood: Schema.Schema<GooglePrivacyDlpV2InfoTypeLikelihood> =
+export const GooglePrivacyDlpV2InfoTypeLikelihood: Schema.Codec<GooglePrivacyDlpV2InfoTypeLikelihood> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     minLikelihood: Schema.optional(Schema.String),
@@ -3522,7 +3522,7 @@ export interface GooglePrivacyDlpV2AdjustByMatchingInfoTypes {
   infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
 }
 
-export const GooglePrivacyDlpV2AdjustByMatchingInfoTypes: Schema.Schema<GooglePrivacyDlpV2AdjustByMatchingInfoTypes> =
+export const GooglePrivacyDlpV2AdjustByMatchingInfoTypes: Schema.Codec<GooglePrivacyDlpV2AdjustByMatchingInfoTypes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minLikelihood: Schema.optional(Schema.String),
     matchingType: Schema.optional(Schema.String),
@@ -3531,14 +3531,14 @@ export const GooglePrivacyDlpV2AdjustByMatchingInfoTypes: Schema.Schema<GooglePr
 
 export interface GooglePrivacyDlpV2Encloses {}
 
-export const GooglePrivacyDlpV2Encloses: Schema.Schema<GooglePrivacyDlpV2Encloses> =
+export const GooglePrivacyDlpV2Encloses: Schema.Codec<GooglePrivacyDlpV2Encloses> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2Encloses",
   });
 
 export interface GooglePrivacyDlpV2FullyInside {}
 
-export const GooglePrivacyDlpV2FullyInside: Schema.Schema<GooglePrivacyDlpV2FullyInside> =
+export const GooglePrivacyDlpV2FullyInside: Schema.Codec<GooglePrivacyDlpV2FullyInside> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2FullyInside",
   });
@@ -3552,7 +3552,7 @@ export interface GooglePrivacyDlpV2ImageContainmentType {
   fullyInside?: GooglePrivacyDlpV2FullyInside;
 }
 
-export const GooglePrivacyDlpV2ImageContainmentType: Schema.Schema<GooglePrivacyDlpV2ImageContainmentType> =
+export const GooglePrivacyDlpV2ImageContainmentType: Schema.Codec<GooglePrivacyDlpV2ImageContainmentType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overlaps: Schema.optional(GooglePrivacyDlpV2Overlap),
     encloses: Schema.optional(GooglePrivacyDlpV2Encloses),
@@ -3575,7 +3575,7 @@ export interface GooglePrivacyDlpV2AdjustByImageFindings {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2AdjustByImageFindings: Schema.Schema<GooglePrivacyDlpV2AdjustByImageFindings> =
+export const GooglePrivacyDlpV2AdjustByImageFindings: Schema.Codec<GooglePrivacyDlpV2AdjustByImageFindings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
     imageContainmentType: Schema.optional(
@@ -3593,7 +3593,7 @@ export interface GooglePrivacyDlpV2AdjustmentRule {
   adjustByImageFindings?: GooglePrivacyDlpV2AdjustByImageFindings;
 }
 
-export const GooglePrivacyDlpV2AdjustmentRule: Schema.Schema<GooglePrivacyDlpV2AdjustmentRule> =
+export const GooglePrivacyDlpV2AdjustmentRule: Schema.Codec<GooglePrivacyDlpV2AdjustmentRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adjustByMatchingInfoTypes: Schema.optional(
       GooglePrivacyDlpV2AdjustByMatchingInfoTypes,
@@ -3611,7 +3611,7 @@ export interface GooglePrivacyDlpV2ExcludeInfoTypes {
   infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
 }
 
-export const GooglePrivacyDlpV2ExcludeInfoTypes: Schema.Schema<GooglePrivacyDlpV2ExcludeInfoTypes> =
+export const GooglePrivacyDlpV2ExcludeInfoTypes: Schema.Codec<GooglePrivacyDlpV2ExcludeInfoTypes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
   }).annotate({ identifier: "GooglePrivacyDlpV2ExcludeInfoTypes" });
@@ -3623,7 +3623,7 @@ export interface GooglePrivacyDlpV2ExcludeByImageFindings {
   imageContainmentType?: GooglePrivacyDlpV2ImageContainmentType;
 }
 
-export const GooglePrivacyDlpV2ExcludeByImageFindings: Schema.Schema<GooglePrivacyDlpV2ExcludeByImageFindings> =
+export const GooglePrivacyDlpV2ExcludeByImageFindings: Schema.Codec<GooglePrivacyDlpV2ExcludeByImageFindings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
     imageContainmentType: Schema.optional(
@@ -3652,7 +3652,7 @@ export interface GooglePrivacyDlpV2ExclusionRule {
   dictionary?: GooglePrivacyDlpV2Dictionary;
 }
 
-export const GooglePrivacyDlpV2ExclusionRule: Schema.Schema<GooglePrivacyDlpV2ExclusionRule> =
+export const GooglePrivacyDlpV2ExclusionRule: Schema.Codec<GooglePrivacyDlpV2ExclusionRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regex: Schema.optional(GooglePrivacyDlpV2Regex),
     excludeByHotword: Schema.optional(GooglePrivacyDlpV2ExcludeByHotword),
@@ -3673,7 +3673,7 @@ export interface GooglePrivacyDlpV2InspectionRule {
   exclusionRule?: GooglePrivacyDlpV2ExclusionRule;
 }
 
-export const GooglePrivacyDlpV2InspectionRule: Schema.Schema<GooglePrivacyDlpV2InspectionRule> =
+export const GooglePrivacyDlpV2InspectionRule: Schema.Codec<GooglePrivacyDlpV2InspectionRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hotwordRule: Schema.optional(GooglePrivacyDlpV2HotwordRule),
     adjustmentRule: Schema.optional(GooglePrivacyDlpV2AdjustmentRule),
@@ -3687,7 +3687,7 @@ export interface GooglePrivacyDlpV2InspectionRuleSet {
   infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
 }
 
-export const GooglePrivacyDlpV2InspectionRuleSet: Schema.Schema<GooglePrivacyDlpV2InspectionRuleSet> =
+export const GooglePrivacyDlpV2InspectionRuleSet: Schema.Codec<GooglePrivacyDlpV2InspectionRuleSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(GooglePrivacyDlpV2InspectionRule)),
     infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
@@ -3723,7 +3723,7 @@ export interface GooglePrivacyDlpV2InspectConfig {
   limits?: GooglePrivacyDlpV2FindingLimits;
 }
 
-export const GooglePrivacyDlpV2InspectConfig: Schema.Schema<GooglePrivacyDlpV2InspectConfig> =
+export const GooglePrivacyDlpV2InspectConfig: Schema.Codec<GooglePrivacyDlpV2InspectConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minLikelihoodPerInfoType: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2InfoTypeLikelihood),
@@ -3757,7 +3757,7 @@ export interface GooglePrivacyDlpV2InspectTemplate {
   allowLimitedAvailabilityInfoTypes?: boolean;
 }
 
-export const GooglePrivacyDlpV2InspectTemplate: Schema.Schema<GooglePrivacyDlpV2InspectTemplate> =
+export const GooglePrivacyDlpV2InspectTemplate: Schema.Codec<GooglePrivacyDlpV2InspectTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3773,7 +3773,7 @@ export interface GooglePrivacyDlpV2KindExpression {
   name?: string;
 }
 
-export const GooglePrivacyDlpV2KindExpression: Schema.Schema<GooglePrivacyDlpV2KindExpression> =
+export const GooglePrivacyDlpV2KindExpression: Schema.Codec<GooglePrivacyDlpV2KindExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2KindExpression" });
@@ -3785,7 +3785,7 @@ export interface GooglePrivacyDlpV2DatastoreOptions {
   partitionId?: GooglePrivacyDlpV2PartitionId;
 }
 
-export const GooglePrivacyDlpV2DatastoreOptions: Schema.Schema<GooglePrivacyDlpV2DatastoreOptions> =
+export const GooglePrivacyDlpV2DatastoreOptions: Schema.Codec<GooglePrivacyDlpV2DatastoreOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(GooglePrivacyDlpV2KindExpression),
     partitionId: Schema.optional(GooglePrivacyDlpV2PartitionId),
@@ -3802,7 +3802,7 @@ export interface GooglePrivacyDlpV2TimespanConfig {
   enableAutoPopulationOfTimespanConfig?: boolean;
 }
 
-export const GooglePrivacyDlpV2TimespanConfig: Schema.Schema<GooglePrivacyDlpV2TimespanConfig> =
+export const GooglePrivacyDlpV2TimespanConfig: Schema.Codec<GooglePrivacyDlpV2TimespanConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -3842,7 +3842,7 @@ export interface GooglePrivacyDlpV2CloudStorageOptions {
   bytesLimitPerFile?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStorageOptions: Schema.Schema<GooglePrivacyDlpV2CloudStorageOptions> =
+export const GooglePrivacyDlpV2CloudStorageOptions: Schema.Codec<GooglePrivacyDlpV2CloudStorageOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileSet: Schema.optional(GooglePrivacyDlpV2FileSet),
     sampleMethod: Schema.optional(Schema.String),
@@ -3873,7 +3873,7 @@ export interface GooglePrivacyDlpV2BigQueryOptions {
   rowsLimit?: string;
 }
 
-export const GooglePrivacyDlpV2BigQueryOptions: Schema.Schema<GooglePrivacyDlpV2BigQueryOptions> =
+export const GooglePrivacyDlpV2BigQueryOptions: Schema.Codec<GooglePrivacyDlpV2BigQueryOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedFields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
     rowsLimitPercent: Schema.optional(Schema.Number),
@@ -3897,7 +3897,7 @@ export interface GooglePrivacyDlpV2StorageConfig {
   hybridOptions?: GooglePrivacyDlpV2HybridOptions;
 }
 
-export const GooglePrivacyDlpV2StorageConfig: Schema.Schema<GooglePrivacyDlpV2StorageConfig> =
+export const GooglePrivacyDlpV2StorageConfig: Schema.Codec<GooglePrivacyDlpV2StorageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datastoreOptions: Schema.optional(GooglePrivacyDlpV2DatastoreOptions),
     timespanConfig: Schema.optional(GooglePrivacyDlpV2TimespanConfig),
@@ -3917,7 +3917,7 @@ export interface GooglePrivacyDlpV2InspectJobConfig {
   inspectTemplateName?: string;
 }
 
-export const GooglePrivacyDlpV2InspectJobConfig: Schema.Schema<GooglePrivacyDlpV2InspectJobConfig> =
+export const GooglePrivacyDlpV2InspectJobConfig: Schema.Codec<GooglePrivacyDlpV2InspectJobConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Action)),
     inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
@@ -3932,7 +3932,7 @@ export interface GooglePrivacyDlpV2RequestedOptions {
   jobConfig?: GooglePrivacyDlpV2InspectJobConfig;
 }
 
-export const GooglePrivacyDlpV2RequestedOptions: Schema.Schema<GooglePrivacyDlpV2RequestedOptions> =
+export const GooglePrivacyDlpV2RequestedOptions: Schema.Codec<GooglePrivacyDlpV2RequestedOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snapshotInspectTemplate: Schema.optional(GooglePrivacyDlpV2InspectTemplate),
     jobConfig: Schema.optional(GooglePrivacyDlpV2InspectJobConfig),
@@ -3945,7 +3945,7 @@ export interface GooglePrivacyDlpV2InspectDataSourceDetails {
   requestedOptions?: GooglePrivacyDlpV2RequestedOptions;
 }
 
-export const GooglePrivacyDlpV2InspectDataSourceDetails: Schema.Schema<GooglePrivacyDlpV2InspectDataSourceDetails> =
+export const GooglePrivacyDlpV2InspectDataSourceDetails: Schema.Codec<GooglePrivacyDlpV2InspectDataSourceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(GooglePrivacyDlpV2Result),
     requestedOptions: Schema.optional(GooglePrivacyDlpV2RequestedOptions),
@@ -3990,7 +3990,7 @@ export interface GooglePrivacyDlpV2DlpJob {
   riskDetails?: GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails;
 }
 
-export const GooglePrivacyDlpV2DlpJob: Schema.Schema<GooglePrivacyDlpV2DlpJob> =
+export const GooglePrivacyDlpV2DlpJob: Schema.Codec<GooglePrivacyDlpV2DlpJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4017,7 +4017,7 @@ export interface GooglePrivacyDlpV2AwsDiscoveryStartingLocation {
   accountId?: string;
 }
 
-export const GooglePrivacyDlpV2AwsDiscoveryStartingLocation: Schema.Schema<GooglePrivacyDlpV2AwsDiscoveryStartingLocation> =
+export const GooglePrivacyDlpV2AwsDiscoveryStartingLocation: Schema.Codec<GooglePrivacyDlpV2AwsDiscoveryStartingLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allAssetInventoryAssets: Schema.optional(Schema.Boolean),
     accountId: Schema.optional(Schema.String),
@@ -4028,7 +4028,7 @@ export interface GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation {
   awsLocation?: GooglePrivacyDlpV2AwsDiscoveryStartingLocation;
 }
 
-export const GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation: Schema.Schema<GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation> =
+export const GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation: Schema.Codec<GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     awsLocation: Schema.optional(
       GooglePrivacyDlpV2AwsDiscoveryStartingLocation,
@@ -4044,7 +4044,7 @@ export interface GooglePrivacyDlpV2ListDlpJobsResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListDlpJobsResponse: Schema.Schema<GooglePrivacyDlpV2ListDlpJobsResponse> =
+export const GooglePrivacyDlpV2ListDlpJobsResponse: Schema.Codec<GooglePrivacyDlpV2ListDlpJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(GooglePrivacyDlpV2DlpJob)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4057,7 +4057,7 @@ export interface GooglePrivacyDlpV2CloudStorageRegex {
   projectIdRegex?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStorageRegex: Schema.Schema<GooglePrivacyDlpV2CloudStorageRegex> =
+export const GooglePrivacyDlpV2CloudStorageRegex: Schema.Codec<GooglePrivacyDlpV2CloudStorageRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketNameRegex: Schema.optional(Schema.String),
     projectIdRegex: Schema.optional(Schema.String),
@@ -4068,7 +4068,7 @@ export interface GooglePrivacyDlpV2FileStoreRegex {
   cloudStorageRegex?: GooglePrivacyDlpV2CloudStorageRegex;
 }
 
-export const GooglePrivacyDlpV2FileStoreRegex: Schema.Schema<GooglePrivacyDlpV2FileStoreRegex> =
+export const GooglePrivacyDlpV2FileStoreRegex: Schema.Codec<GooglePrivacyDlpV2FileStoreRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudStorageRegex: Schema.optional(GooglePrivacyDlpV2CloudStorageRegex),
   }).annotate({ identifier: "GooglePrivacyDlpV2FileStoreRegex" });
@@ -4084,7 +4084,7 @@ export interface GooglePrivacyDlpV2DatabaseResourceReference {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2DatabaseResourceReference: Schema.Schema<GooglePrivacyDlpV2DatabaseResourceReference> =
+export const GooglePrivacyDlpV2DatabaseResourceReference: Schema.Codec<GooglePrivacyDlpV2DatabaseResourceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
     database: Schema.optional(Schema.String),
@@ -4103,7 +4103,7 @@ export interface GooglePrivacyDlpV2DatabaseResourceRegex {
   databaseResourceNameRegex?: string;
 }
 
-export const GooglePrivacyDlpV2DatabaseResourceRegex: Schema.Schema<GooglePrivacyDlpV2DatabaseResourceRegex> =
+export const GooglePrivacyDlpV2DatabaseResourceRegex: Schema.Codec<GooglePrivacyDlpV2DatabaseResourceRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectIdRegex: Schema.optional(Schema.String),
     databaseRegex: Schema.optional(Schema.String),
@@ -4116,7 +4116,7 @@ export interface GooglePrivacyDlpV2DatabaseResourceRegexes {
   patterns?: ReadonlyArray<GooglePrivacyDlpV2DatabaseResourceRegex>;
 }
 
-export const GooglePrivacyDlpV2DatabaseResourceRegexes: Schema.Schema<GooglePrivacyDlpV2DatabaseResourceRegexes> =
+export const GooglePrivacyDlpV2DatabaseResourceRegexes: Schema.Codec<GooglePrivacyDlpV2DatabaseResourceRegexes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patterns: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2DatabaseResourceRegex),
@@ -4128,14 +4128,14 @@ export interface GooglePrivacyDlpV2DatabaseResourceCollection {
   includeRegexes?: GooglePrivacyDlpV2DatabaseResourceRegexes;
 }
 
-export const GooglePrivacyDlpV2DatabaseResourceCollection: Schema.Schema<GooglePrivacyDlpV2DatabaseResourceCollection> =
+export const GooglePrivacyDlpV2DatabaseResourceCollection: Schema.Codec<GooglePrivacyDlpV2DatabaseResourceCollection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeRegexes: Schema.optional(GooglePrivacyDlpV2DatabaseResourceRegexes),
   }).annotate({ identifier: "GooglePrivacyDlpV2DatabaseResourceCollection" });
 
 export interface GooglePrivacyDlpV2AllOtherDatabaseResources {}
 
-export const GooglePrivacyDlpV2AllOtherDatabaseResources: Schema.Schema<GooglePrivacyDlpV2AllOtherDatabaseResources> =
+export const GooglePrivacyDlpV2AllOtherDatabaseResources: Schema.Codec<GooglePrivacyDlpV2AllOtherDatabaseResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllOtherDatabaseResources",
   });
@@ -4149,7 +4149,7 @@ export interface GooglePrivacyDlpV2DiscoveryCloudSqlFilter {
   others?: GooglePrivacyDlpV2AllOtherDatabaseResources;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudSqlFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlFilter> =
+export const GooglePrivacyDlpV2DiscoveryCloudSqlFilter: Schema.Codec<GooglePrivacyDlpV2DiscoveryCloudSqlFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseResourceReference: Schema.optional(
       GooglePrivacyDlpV2DatabaseResourceReference,
@@ -4169,7 +4169,7 @@ export interface GooglePrivacyDlpV2CloudSqlDiscoveryTarget {
   disabled?: GooglePrivacyDlpV2Disabled;
 }
 
-export const GooglePrivacyDlpV2CloudSqlDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2CloudSqlDiscoveryTarget> =
+export const GooglePrivacyDlpV2CloudSqlDiscoveryTarget: Schema.Codec<GooglePrivacyDlpV2CloudSqlDiscoveryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(GooglePrivacyDlpV2DiscoveryCloudSqlConditions),
     filter: Schema.optional(GooglePrivacyDlpV2DiscoveryCloudSqlFilter),
@@ -4203,7 +4203,7 @@ export interface GooglePrivacyDlpV2DiscoveryCloudStorageConditions {
   >;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudStorageConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageConditions> =
+export const GooglePrivacyDlpV2DiscoveryCloudStorageConditions: Schema.Codec<GooglePrivacyDlpV2DiscoveryCloudStorageConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includedObjectAttributes: Schema.optional(Schema.Array(Schema.String)),
     includedBucketAttributes: Schema.optional(Schema.Array(Schema.String)),
@@ -4226,7 +4226,7 @@ export interface GooglePrivacyDlpV2ReidentifyContentRequest {
   reidentifyConfig?: GooglePrivacyDlpV2DeidentifyConfig;
 }
 
-export const GooglePrivacyDlpV2ReidentifyContentRequest: Schema.Schema<GooglePrivacyDlpV2ReidentifyContentRequest> =
+export const GooglePrivacyDlpV2ReidentifyContentRequest: Schema.Codec<GooglePrivacyDlpV2ReidentifyContentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     inspectTemplateName: Schema.optional(Schema.String),
@@ -4241,7 +4241,7 @@ export interface GooglePrivacyDlpV2AwsAccountRegex {
   accountIdRegex?: string;
 }
 
-export const GooglePrivacyDlpV2AwsAccountRegex: Schema.Schema<GooglePrivacyDlpV2AwsAccountRegex> =
+export const GooglePrivacyDlpV2AwsAccountRegex: Schema.Codec<GooglePrivacyDlpV2AwsAccountRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountIdRegex: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2AwsAccountRegex" });
@@ -4253,7 +4253,7 @@ export interface GooglePrivacyDlpV2SecretManagerCredential {
   passwordSecretVersionName?: string;
 }
 
-export const GooglePrivacyDlpV2SecretManagerCredential: Schema.Schema<GooglePrivacyDlpV2SecretManagerCredential> =
+export const GooglePrivacyDlpV2SecretManagerCredential: Schema.Codec<GooglePrivacyDlpV2SecretManagerCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     passwordSecretVersionName: Schema.optional(Schema.String),
@@ -4261,7 +4261,7 @@ export const GooglePrivacyDlpV2SecretManagerCredential: Schema.Schema<GooglePriv
 
 export interface GooglePrivacyDlpV2CloudSqlIamCredential {}
 
-export const GooglePrivacyDlpV2CloudSqlIamCredential: Schema.Schema<GooglePrivacyDlpV2CloudSqlIamCredential> =
+export const GooglePrivacyDlpV2CloudSqlIamCredential: Schema.Codec<GooglePrivacyDlpV2CloudSqlIamCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2CloudSqlIamCredential",
   });
@@ -4283,7 +4283,7 @@ export interface GooglePrivacyDlpV2CloudSqlProperties {
   maxConnections?: number;
 }
 
-export const GooglePrivacyDlpV2CloudSqlProperties: Schema.Schema<GooglePrivacyDlpV2CloudSqlProperties> =
+export const GooglePrivacyDlpV2CloudSqlProperties: Schema.Codec<GooglePrivacyDlpV2CloudSqlProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionName: Schema.optional(Schema.String),
     usernamePassword: Schema.optional(
@@ -4310,7 +4310,7 @@ export interface GooglePrivacyDlpV2Connection {
   cloudSql?: GooglePrivacyDlpV2CloudSqlProperties;
 }
 
-export const GooglePrivacyDlpV2Connection: Schema.Schema<GooglePrivacyDlpV2Connection> =
+export const GooglePrivacyDlpV2Connection: Schema.Codec<GooglePrivacyDlpV2Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -4325,7 +4325,7 @@ export interface GooglePrivacyDlpV2ListConnectionsResponse {
   connections?: ReadonlyArray<GooglePrivacyDlpV2Connection>;
 }
 
-export const GooglePrivacyDlpV2ListConnectionsResponse: Schema.Schema<GooglePrivacyDlpV2ListConnectionsResponse> =
+export const GooglePrivacyDlpV2ListConnectionsResponse: Schema.Codec<GooglePrivacyDlpV2ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     connections: Schema.optional(Schema.Array(GooglePrivacyDlpV2Connection)),
@@ -4351,7 +4351,7 @@ export interface GooglePrivacyDlpV2AmazonS3BucketConditions {
   >;
 }
 
-export const GooglePrivacyDlpV2AmazonS3BucketConditions: Schema.Schema<GooglePrivacyDlpV2AmazonS3BucketConditions> =
+export const GooglePrivacyDlpV2AmazonS3BucketConditions: Schema.Codec<GooglePrivacyDlpV2AmazonS3BucketConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketTypes: Schema.optional(Schema.Array(Schema.String)),
     objectStorageClasses: Schema.optional(Schema.Array(Schema.String)),
@@ -4366,7 +4366,7 @@ export interface GooglePrivacyDlpV2Tag {
   value?: string;
 }
 
-export const GooglePrivacyDlpV2Tag: Schema.Schema<GooglePrivacyDlpV2Tag> =
+export const GooglePrivacyDlpV2Tag: Schema.Codec<GooglePrivacyDlpV2Tag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     namespacedTagValue: Schema.optional(Schema.String),
@@ -4384,7 +4384,7 @@ export interface GooglePrivacyDlpV2DataRiskLevel {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DataRiskLevel: Schema.Schema<GooglePrivacyDlpV2DataRiskLevel> =
+export const GooglePrivacyDlpV2DataRiskLevel: Schema.Codec<GooglePrivacyDlpV2DataRiskLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2DataRiskLevel" });
@@ -4394,7 +4394,7 @@ export interface GooglePrivacyDlpV2FileStoreInfoTypeSummary {
   infoType?: GooglePrivacyDlpV2InfoType;
 }
 
-export const GooglePrivacyDlpV2FileStoreInfoTypeSummary: Schema.Schema<GooglePrivacyDlpV2FileStoreInfoTypeSummary> =
+export const GooglePrivacyDlpV2FileStoreInfoTypeSummary: Schema.Codec<GooglePrivacyDlpV2FileStoreInfoTypeSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
   }).annotate({ identifier: "GooglePrivacyDlpV2FileStoreInfoTypeSummary" });
@@ -4404,7 +4404,7 @@ export interface GooglePrivacyDlpV2FileExtensionInfo {
   fileExtension?: string;
 }
 
-export const GooglePrivacyDlpV2FileExtensionInfo: Schema.Schema<GooglePrivacyDlpV2FileExtensionInfo> =
+export const GooglePrivacyDlpV2FileExtensionInfo: Schema.Codec<GooglePrivacyDlpV2FileExtensionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileExtension: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2FileExtensionInfo" });
@@ -4426,7 +4426,7 @@ export interface GooglePrivacyDlpV2FileClusterType {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2FileClusterType: Schema.Schema<GooglePrivacyDlpV2FileClusterType> =
+export const GooglePrivacyDlpV2FileClusterType: Schema.Codec<GooglePrivacyDlpV2FileClusterType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2FileClusterType" });
@@ -4450,7 +4450,7 @@ export interface GooglePrivacyDlpV2FileClusterSummary {
   dataRiskLevel?: GooglePrivacyDlpV2DataRiskLevel;
 }
 
-export const GooglePrivacyDlpV2FileClusterSummary: Schema.Schema<GooglePrivacyDlpV2FileClusterSummary> =
+export const GooglePrivacyDlpV2FileClusterSummary: Schema.Codec<GooglePrivacyDlpV2FileClusterSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileStoreInfoTypeSummaries: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2FileStoreInfoTypeSummary),
@@ -4470,7 +4470,7 @@ export const GooglePrivacyDlpV2FileClusterSummary: Schema.Schema<GooglePrivacyDl
 
 export interface GooglePrivacyDlpV2PublishToChronicle {}
 
-export const GooglePrivacyDlpV2PublishToChronicle: Schema.Schema<GooglePrivacyDlpV2PublishToChronicle> =
+export const GooglePrivacyDlpV2PublishToChronicle: Schema.Codec<GooglePrivacyDlpV2PublishToChronicle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishToChronicle",
   });
@@ -4480,7 +4480,7 @@ export interface GooglePrivacyDlpV2DataProfilePubSubCondition {
   expressions?: GooglePrivacyDlpV2PubSubExpressions;
 }
 
-export const GooglePrivacyDlpV2DataProfilePubSubCondition: Schema.Schema<GooglePrivacyDlpV2DataProfilePubSubCondition> =
+export const GooglePrivacyDlpV2DataProfilePubSubCondition: Schema.Codec<GooglePrivacyDlpV2DataProfilePubSubCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expressions: Schema.optional(GooglePrivacyDlpV2PubSubExpressions),
   }).annotate({ identifier: "GooglePrivacyDlpV2DataProfilePubSubCondition" });
@@ -4507,7 +4507,7 @@ export interface GooglePrivacyDlpV2PubSubNotification {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2PubSubNotification: Schema.Schema<GooglePrivacyDlpV2PubSubNotification> =
+export const GooglePrivacyDlpV2PubSubNotification: Schema.Codec<GooglePrivacyDlpV2PubSubNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
     topic: Schema.optional(Schema.String),
@@ -4522,7 +4522,7 @@ export interface GooglePrivacyDlpV2PublishToDataplexCatalog {
   lowerDataRiskToLow?: boolean;
 }
 
-export const GooglePrivacyDlpV2PublishToDataplexCatalog: Schema.Schema<GooglePrivacyDlpV2PublishToDataplexCatalog> =
+export const GooglePrivacyDlpV2PublishToDataplexCatalog: Schema.Codec<GooglePrivacyDlpV2PublishToDataplexCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lowerDataRiskToLow: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GooglePrivacyDlpV2PublishToDataplexCatalog" });
@@ -4534,7 +4534,7 @@ export interface GooglePrivacyDlpV2Export {
   profileTable?: GooglePrivacyDlpV2BigQueryTable;
 }
 
-export const GooglePrivacyDlpV2Export: Schema.Schema<GooglePrivacyDlpV2Export> =
+export const GooglePrivacyDlpV2Export: Schema.Codec<GooglePrivacyDlpV2Export> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleFindingsTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
     profileTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
@@ -4545,7 +4545,7 @@ export interface GooglePrivacyDlpV2TagValue {
   namespacedValue?: string;
 }
 
-export const GooglePrivacyDlpV2TagValue: Schema.Schema<GooglePrivacyDlpV2TagValue> =
+export const GooglePrivacyDlpV2TagValue: Schema.Codec<GooglePrivacyDlpV2TagValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespacedValue: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2TagValue" });
@@ -4557,7 +4557,7 @@ export interface GooglePrivacyDlpV2TagCondition {
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
 }
 
-export const GooglePrivacyDlpV2TagCondition: Schema.Schema<GooglePrivacyDlpV2TagCondition> =
+export const GooglePrivacyDlpV2TagCondition: Schema.Codec<GooglePrivacyDlpV2TagCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(GooglePrivacyDlpV2TagValue),
     sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
@@ -4577,7 +4577,7 @@ export interface GooglePrivacyDlpV2TagResources {
   lowerDataRiskToLow?: boolean;
 }
 
-export const GooglePrivacyDlpV2TagResources: Schema.Schema<GooglePrivacyDlpV2TagResources> =
+export const GooglePrivacyDlpV2TagResources: Schema.Codec<GooglePrivacyDlpV2TagResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagConditions: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2TagCondition),
@@ -4588,7 +4588,7 @@ export const GooglePrivacyDlpV2TagResources: Schema.Schema<GooglePrivacyDlpV2Tag
 
 export interface GooglePrivacyDlpV2PublishToSecurityCommandCenter {}
 
-export const GooglePrivacyDlpV2PublishToSecurityCommandCenter: Schema.Schema<GooglePrivacyDlpV2PublishToSecurityCommandCenter> =
+export const GooglePrivacyDlpV2PublishToSecurityCommandCenter: Schema.Codec<GooglePrivacyDlpV2PublishToSecurityCommandCenter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishToSecurityCommandCenter",
   });
@@ -4608,7 +4608,7 @@ export interface GooglePrivacyDlpV2DataProfileAction {
   publishToScc?: GooglePrivacyDlpV2PublishToSecurityCommandCenter;
 }
 
-export const GooglePrivacyDlpV2DataProfileAction: Schema.Schema<GooglePrivacyDlpV2DataProfileAction> =
+export const GooglePrivacyDlpV2DataProfileAction: Schema.Codec<GooglePrivacyDlpV2DataProfileAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishToChronicle: Schema.optional(GooglePrivacyDlpV2PublishToChronicle),
     pubSubNotification: Schema.optional(GooglePrivacyDlpV2PubSubNotification),
@@ -4629,7 +4629,7 @@ export interface GooglePrivacyDlpV2DataProfileLocation {
   organizationId?: string;
 }
 
-export const GooglePrivacyDlpV2DataProfileLocation: Schema.Schema<GooglePrivacyDlpV2DataProfileLocation> =
+export const GooglePrivacyDlpV2DataProfileLocation: Schema.Codec<GooglePrivacyDlpV2DataProfileLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folderId: Schema.optional(Schema.String),
     organizationId: Schema.optional(Schema.String),
@@ -4648,7 +4648,7 @@ export interface GooglePrivacyDlpV2DataProfileJobConfig {
   inspectTemplates?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2DataProfileJobConfig: Schema.Schema<GooglePrivacyDlpV2DataProfileJobConfig> =
+export const GooglePrivacyDlpV2DataProfileJobConfig: Schema.Codec<GooglePrivacyDlpV2DataProfileJobConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     dataProfileActions: Schema.optional(
@@ -4668,7 +4668,7 @@ export interface GooglePrivacyDlpV2DiscoveryStartingLocation {
   organizationId?: string;
 }
 
-export const GooglePrivacyDlpV2DiscoveryStartingLocation: Schema.Schema<GooglePrivacyDlpV2DiscoveryStartingLocation> =
+export const GooglePrivacyDlpV2DiscoveryStartingLocation: Schema.Codec<GooglePrivacyDlpV2DiscoveryStartingLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folderId: Schema.optional(Schema.String),
     organizationId: Schema.optional(Schema.String),
@@ -4681,7 +4681,7 @@ export interface GooglePrivacyDlpV2OrgConfig {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2OrgConfig: Schema.Schema<GooglePrivacyDlpV2OrgConfig> =
+export const GooglePrivacyDlpV2OrgConfig: Schema.Codec<GooglePrivacyDlpV2OrgConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(GooglePrivacyDlpV2DiscoveryStartingLocation),
     projectId: Schema.optional(Schema.String),
@@ -4694,7 +4694,7 @@ export interface GooglePrivacyDlpV2AmazonS3BucketRegex {
   bucketNameRegex?: string;
 }
 
-export const GooglePrivacyDlpV2AmazonS3BucketRegex: Schema.Schema<GooglePrivacyDlpV2AmazonS3BucketRegex> =
+export const GooglePrivacyDlpV2AmazonS3BucketRegex: Schema.Codec<GooglePrivacyDlpV2AmazonS3BucketRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     awsAccountRegex: Schema.optional(GooglePrivacyDlpV2AwsAccountRegex),
     bucketNameRegex: Schema.optional(Schema.String),
@@ -4705,7 +4705,7 @@ export interface GooglePrivacyDlpV2OtherCloudResourceRegex {
   amazonS3BucketRegex?: GooglePrivacyDlpV2AmazonS3BucketRegex;
 }
 
-export const GooglePrivacyDlpV2OtherCloudResourceRegex: Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceRegex> =
+export const GooglePrivacyDlpV2OtherCloudResourceRegex: Schema.Codec<GooglePrivacyDlpV2OtherCloudResourceRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amazonS3BucketRegex: Schema.optional(GooglePrivacyDlpV2AmazonS3BucketRegex),
   }).annotate({ identifier: "GooglePrivacyDlpV2OtherCloudResourceRegex" });
@@ -4715,7 +4715,7 @@ export interface GooglePrivacyDlpV2OtherCloudResourceRegexes {
   patterns?: ReadonlyArray<GooglePrivacyDlpV2OtherCloudResourceRegex>;
 }
 
-export const GooglePrivacyDlpV2OtherCloudResourceRegexes: Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceRegexes> =
+export const GooglePrivacyDlpV2OtherCloudResourceRegexes: Schema.Codec<GooglePrivacyDlpV2OtherCloudResourceRegexes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patterns: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2OtherCloudResourceRegex),
@@ -4727,7 +4727,7 @@ export interface GooglePrivacyDlpV2OtherCloudResourceCollection {
   includeRegexes?: GooglePrivacyDlpV2OtherCloudResourceRegexes;
 }
 
-export const GooglePrivacyDlpV2OtherCloudResourceCollection: Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceCollection> =
+export const GooglePrivacyDlpV2OtherCloudResourceCollection: Schema.Codec<GooglePrivacyDlpV2OtherCloudResourceCollection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeRegexes: Schema.optional(
       GooglePrivacyDlpV2OtherCloudResourceRegexes,
@@ -4736,7 +4736,7 @@ export const GooglePrivacyDlpV2OtherCloudResourceCollection: Schema.Schema<Googl
 
 export interface GooglePrivacyDlpV2AllOtherResources {}
 
-export const GooglePrivacyDlpV2AllOtherResources: Schema.Schema<GooglePrivacyDlpV2AllOtherResources> =
+export const GooglePrivacyDlpV2AllOtherResources: Schema.Codec<GooglePrivacyDlpV2AllOtherResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllOtherResources",
   });
@@ -4750,7 +4750,7 @@ export interface GooglePrivacyDlpV2DiscoveryOtherCloudFilter {
   others?: GooglePrivacyDlpV2AllOtherResources;
 }
 
-export const GooglePrivacyDlpV2DiscoveryOtherCloudFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudFilter> =
+export const GooglePrivacyDlpV2DiscoveryOtherCloudFilter: Schema.Codec<GooglePrivacyDlpV2DiscoveryOtherCloudFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collection: Schema.optional(GooglePrivacyDlpV2OtherCloudResourceCollection),
     singleResource: Schema.optional(
@@ -4764,7 +4764,7 @@ export interface GooglePrivacyDlpV2DataSourceType {
   dataSource?: string;
 }
 
-export const GooglePrivacyDlpV2DataSourceType: Schema.Schema<GooglePrivacyDlpV2DataSourceType> =
+export const GooglePrivacyDlpV2DataSourceType: Schema.Codec<GooglePrivacyDlpV2DataSourceType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2DataSourceType" });
@@ -4781,7 +4781,7 @@ export interface GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence {
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence> =
+export const GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence: Schema.Codec<GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshFrequency: Schema.optional(Schema.String),
     inspectTemplateModifiedCadence: Schema.optional(
@@ -4798,7 +4798,7 @@ export interface GooglePrivacyDlpV2DiscoveryOtherCloudConditions {
   amazonS3BucketConditions?: GooglePrivacyDlpV2AmazonS3BucketConditions;
 }
 
-export const GooglePrivacyDlpV2DiscoveryOtherCloudConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudConditions> =
+export const GooglePrivacyDlpV2DiscoveryOtherCloudConditions: Schema.Codec<GooglePrivacyDlpV2DiscoveryOtherCloudConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minAge: Schema.optional(Schema.String),
     amazonS3BucketConditions: Schema.optional(
@@ -4821,7 +4821,7 @@ export interface GooglePrivacyDlpV2OtherCloudDiscoveryTarget {
   conditions?: GooglePrivacyDlpV2DiscoveryOtherCloudConditions;
 }
 
-export const GooglePrivacyDlpV2OtherCloudDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2OtherCloudDiscoveryTarget> =
+export const GooglePrivacyDlpV2OtherCloudDiscoveryTarget: Schema.Codec<GooglePrivacyDlpV2OtherCloudDiscoveryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
     filter: Schema.optional(GooglePrivacyDlpV2DiscoveryOtherCloudFilter),
@@ -4839,7 +4839,7 @@ export interface GooglePrivacyDlpV2VertexDatasetRegex {
   projectIdRegex?: string;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetRegex: Schema.Schema<GooglePrivacyDlpV2VertexDatasetRegex> =
+export const GooglePrivacyDlpV2VertexDatasetRegex: Schema.Codec<GooglePrivacyDlpV2VertexDatasetRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectIdRegex: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2VertexDatasetRegex" });
@@ -4849,7 +4849,7 @@ export interface GooglePrivacyDlpV2VertexDatasetRegexes {
   patterns?: ReadonlyArray<GooglePrivacyDlpV2VertexDatasetRegex>;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetRegexes: Schema.Schema<GooglePrivacyDlpV2VertexDatasetRegexes> =
+export const GooglePrivacyDlpV2VertexDatasetRegexes: Schema.Codec<GooglePrivacyDlpV2VertexDatasetRegexes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patterns: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2VertexDatasetRegex),
@@ -4861,7 +4861,7 @@ export interface GooglePrivacyDlpV2VertexDatasetCollection {
   vertexDatasetRegexes?: GooglePrivacyDlpV2VertexDatasetRegexes;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetCollection: Schema.Schema<GooglePrivacyDlpV2VertexDatasetCollection> =
+export const GooglePrivacyDlpV2VertexDatasetCollection: Schema.Codec<GooglePrivacyDlpV2VertexDatasetCollection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vertexDatasetRegexes: Schema.optional(
       GooglePrivacyDlpV2VertexDatasetRegexes,
@@ -4873,7 +4873,7 @@ export interface GooglePrivacyDlpV2VertexDatasetResourceReference {
   datasetResourceName?: string;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetResourceReference: Schema.Schema<GooglePrivacyDlpV2VertexDatasetResourceReference> =
+export const GooglePrivacyDlpV2VertexDatasetResourceReference: Schema.Codec<GooglePrivacyDlpV2VertexDatasetResourceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetResourceName: Schema.optional(Schema.String),
   }).annotate({
@@ -4889,7 +4889,7 @@ export interface GooglePrivacyDlpV2DiscoveryVertexDatasetFilter {
   vertexDatasetResourceReference?: GooglePrivacyDlpV2VertexDatasetResourceReference;
 }
 
-export const GooglePrivacyDlpV2DiscoveryVertexDatasetFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetFilter> =
+export const GooglePrivacyDlpV2DiscoveryVertexDatasetFilter: Schema.Codec<GooglePrivacyDlpV2DiscoveryVertexDatasetFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     others: Schema.optional(GooglePrivacyDlpV2AllOtherResources),
     collection: Schema.optional(GooglePrivacyDlpV2VertexDatasetCollection),
@@ -4910,7 +4910,7 @@ export interface GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence {
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence> =
+export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence: Schema.Codec<GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshFrequency: Schema.optional(Schema.String),
     inspectTemplateModifiedCadence: Schema.optional(
@@ -4927,7 +4927,7 @@ export interface GooglePrivacyDlpV2DiscoveryVertexDatasetConditions {
   minAge?: string;
 }
 
-export const GooglePrivacyDlpV2DiscoveryVertexDatasetConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetConditions> =
+export const GooglePrivacyDlpV2DiscoveryVertexDatasetConditions: Schema.Codec<GooglePrivacyDlpV2DiscoveryVertexDatasetConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAfter: Schema.optional(Schema.String),
     minAge: Schema.optional(Schema.String),
@@ -4946,7 +4946,7 @@ export interface GooglePrivacyDlpV2VertexDatasetDiscoveryTarget {
   conditions?: GooglePrivacyDlpV2DiscoveryVertexDatasetConditions;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2VertexDatasetDiscoveryTarget> =
+export const GooglePrivacyDlpV2VertexDatasetDiscoveryTarget: Schema.Codec<GooglePrivacyDlpV2VertexDatasetDiscoveryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(GooglePrivacyDlpV2DiscoveryVertexDatasetFilter),
     generationCadence: Schema.optional(
@@ -4967,7 +4967,7 @@ export interface GooglePrivacyDlpV2DiscoveryFileStoreConditions {
   cloudStorageConditions?: GooglePrivacyDlpV2DiscoveryCloudStorageConditions;
 }
 
-export const GooglePrivacyDlpV2DiscoveryFileStoreConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryFileStoreConditions> =
+export const GooglePrivacyDlpV2DiscoveryFileStoreConditions: Schema.Codec<GooglePrivacyDlpV2DiscoveryFileStoreConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minAge: Schema.optional(Schema.String),
     createdAfter: Schema.optional(Schema.String),
@@ -4983,7 +4983,7 @@ export interface GooglePrivacyDlpV2TagFilter {
   namespacedTagValue?: string;
 }
 
-export const GooglePrivacyDlpV2TagFilter: Schema.Schema<GooglePrivacyDlpV2TagFilter> =
+export const GooglePrivacyDlpV2TagFilter: Schema.Codec<GooglePrivacyDlpV2TagFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespacedTagKey: Schema.optional(Schema.String),
     namespacedTagValue: Schema.optional(Schema.String),
@@ -4994,7 +4994,7 @@ export interface GooglePrivacyDlpV2TagFilters {
   tagFilters?: ReadonlyArray<GooglePrivacyDlpV2TagFilter>;
 }
 
-export const GooglePrivacyDlpV2TagFilters: Schema.Schema<GooglePrivacyDlpV2TagFilters> =
+export const GooglePrivacyDlpV2TagFilters: Schema.Codec<GooglePrivacyDlpV2TagFilters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagFilters: Schema.optional(Schema.Array(GooglePrivacyDlpV2TagFilter)),
   }).annotate({ identifier: "GooglePrivacyDlpV2TagFilters" });
@@ -5004,7 +5004,7 @@ export interface GooglePrivacyDlpV2FileStoreRegexes {
   patterns?: ReadonlyArray<GooglePrivacyDlpV2FileStoreRegex>;
 }
 
-export const GooglePrivacyDlpV2FileStoreRegexes: Schema.Schema<GooglePrivacyDlpV2FileStoreRegexes> =
+export const GooglePrivacyDlpV2FileStoreRegexes: Schema.Codec<GooglePrivacyDlpV2FileStoreRegexes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patterns: Schema.optional(Schema.Array(GooglePrivacyDlpV2FileStoreRegex)),
   }).annotate({ identifier: "GooglePrivacyDlpV2FileStoreRegexes" });
@@ -5016,7 +5016,7 @@ export interface GooglePrivacyDlpV2FileStoreCollection {
   includeRegexes?: GooglePrivacyDlpV2FileStoreRegexes;
 }
 
-export const GooglePrivacyDlpV2FileStoreCollection: Schema.Schema<GooglePrivacyDlpV2FileStoreCollection> =
+export const GooglePrivacyDlpV2FileStoreCollection: Schema.Codec<GooglePrivacyDlpV2FileStoreCollection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeTags: Schema.optional(GooglePrivacyDlpV2TagFilters),
     includeRegexes: Schema.optional(GooglePrivacyDlpV2FileStoreRegexes),
@@ -5029,7 +5029,7 @@ export interface GooglePrivacyDlpV2CloudStorageResourceReference {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStorageResourceReference: Schema.Schema<GooglePrivacyDlpV2CloudStorageResourceReference> =
+export const GooglePrivacyDlpV2CloudStorageResourceReference: Schema.Codec<GooglePrivacyDlpV2CloudStorageResourceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -5046,7 +5046,7 @@ export interface GooglePrivacyDlpV2DiscoveryCloudStorageFilter {
   others?: GooglePrivacyDlpV2AllOtherResources;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudStorageFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageFilter> =
+export const GooglePrivacyDlpV2DiscoveryCloudStorageFilter: Schema.Codec<GooglePrivacyDlpV2DiscoveryCloudStorageFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collection: Schema.optional(GooglePrivacyDlpV2FileStoreCollection),
     cloudStorageResourceReference: Schema.optional(
@@ -5066,7 +5066,7 @@ export interface GooglePrivacyDlpV2CloudStorageDiscoveryTarget {
   disabled?: GooglePrivacyDlpV2Disabled;
 }
 
-export const GooglePrivacyDlpV2CloudStorageDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2CloudStorageDiscoveryTarget> =
+export const GooglePrivacyDlpV2CloudStorageDiscoveryTarget: Schema.Codec<GooglePrivacyDlpV2CloudStorageDiscoveryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(GooglePrivacyDlpV2DiscoveryFileStoreConditions),
     filter: Schema.optional(GooglePrivacyDlpV2DiscoveryCloudStorageFilter),
@@ -5091,7 +5091,7 @@ export interface GooglePrivacyDlpV2DiscoveryTarget {
   cloudStorageTarget?: GooglePrivacyDlpV2CloudStorageDiscoveryTarget;
 }
 
-export const GooglePrivacyDlpV2DiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2DiscoveryTarget> =
+export const GooglePrivacyDlpV2DiscoveryTarget: Schema.Codec<GooglePrivacyDlpV2DiscoveryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secretsTarget: Schema.optional(GooglePrivacyDlpV2SecretsDiscoveryTarget),
     otherCloudTarget: Schema.optional(
@@ -5136,7 +5136,7 @@ export interface GooglePrivacyDlpV2DiscoveryConfig {
   targets?: ReadonlyArray<GooglePrivacyDlpV2DiscoveryTarget>;
 }
 
-export const GooglePrivacyDlpV2DiscoveryConfig: Schema.Schema<GooglePrivacyDlpV2DiscoveryConfig> =
+export const GooglePrivacyDlpV2DiscoveryConfig: Schema.Codec<GooglePrivacyDlpV2DiscoveryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     inspectTemplates: Schema.optional(Schema.Array(Schema.String)),
@@ -5168,7 +5168,7 @@ export interface GooglePrivacyDlpV2DataProfileConfigSnapshot {
   inspectTemplateName?: string;
 }
 
-export const GooglePrivacyDlpV2DataProfileConfigSnapshot: Schema.Schema<GooglePrivacyDlpV2DataProfileConfigSnapshot> =
+export const GooglePrivacyDlpV2DataProfileConfigSnapshot: Schema.Codec<GooglePrivacyDlpV2DataProfileConfigSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataProfileJob: Schema.optional(GooglePrivacyDlpV2DataProfileJobConfig),
     discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
@@ -5182,7 +5182,7 @@ export interface GooglePrivacyDlpV2RelatedResource {
   fullResource?: string;
 }
 
-export const GooglePrivacyDlpV2RelatedResource: Schema.Schema<GooglePrivacyDlpV2RelatedResource> =
+export const GooglePrivacyDlpV2RelatedResource: Schema.Codec<GooglePrivacyDlpV2RelatedResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullResource: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2RelatedResource" });
@@ -5204,7 +5204,7 @@ export interface GooglePrivacyDlpV2Domain {
   >;
 }
 
-export const GooglePrivacyDlpV2Domain: Schema.Schema<GooglePrivacyDlpV2Domain> =
+export const GooglePrivacyDlpV2Domain: Schema.Codec<GooglePrivacyDlpV2Domain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     signals: Schema.optional(Schema.Array(Schema.String)),
@@ -5272,7 +5272,7 @@ export interface GooglePrivacyDlpV2FileStoreDataProfile {
   dataSourceType?: GooglePrivacyDlpV2DataSourceType;
 }
 
-export const GooglePrivacyDlpV2FileStoreDataProfile: Schema.Schema<GooglePrivacyDlpV2FileStoreDataProfile> =
+export const GooglePrivacyDlpV2FileStoreDataProfile: Schema.Codec<GooglePrivacyDlpV2FileStoreDataProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(GooglePrivacyDlpV2Tag)),
     projectDataProfile: Schema.optional(Schema.String),
@@ -5324,7 +5324,7 @@ export interface GooglePrivacyDlpV2OtherInfoTypeSummary {
   excludedFromAnalysis?: boolean;
 }
 
-export const GooglePrivacyDlpV2OtherInfoTypeSummary: Schema.Schema<GooglePrivacyDlpV2OtherInfoTypeSummary> =
+export const GooglePrivacyDlpV2OtherInfoTypeSummary: Schema.Codec<GooglePrivacyDlpV2OtherInfoTypeSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     estimatedPrevalence: Schema.optional(Schema.Number),
@@ -5338,7 +5338,7 @@ export interface GooglePrivacyDlpV2InfoTypeSummary {
   infoType?: GooglePrivacyDlpV2InfoType;
 }
 
-export const GooglePrivacyDlpV2InfoTypeSummary: Schema.Schema<GooglePrivacyDlpV2InfoTypeSummary> =
+export const GooglePrivacyDlpV2InfoTypeSummary: Schema.Codec<GooglePrivacyDlpV2InfoTypeSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedPrevalence: Schema.optional(Schema.Number),
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
@@ -5416,7 +5416,7 @@ export interface GooglePrivacyDlpV2TableDataProfile {
   predictedInfoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeSummary>;
 }
 
-export const GooglePrivacyDlpV2TableDataProfile: Schema.Schema<GooglePrivacyDlpV2TableDataProfile> =
+export const GooglePrivacyDlpV2TableDataProfile: Schema.Codec<GooglePrivacyDlpV2TableDataProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetProjectId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5537,7 +5537,7 @@ export interface GooglePrivacyDlpV2ColumnDataProfile {
   tableFullResource?: string;
 }
 
-export const GooglePrivacyDlpV2ColumnDataProfile: Schema.Schema<GooglePrivacyDlpV2ColumnDataProfile> =
+export const GooglePrivacyDlpV2ColumnDataProfile: Schema.Codec<GooglePrivacyDlpV2ColumnDataProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedUniquenessScore: Schema.optional(Schema.String),
     tableId: Schema.optional(Schema.String),
@@ -5572,7 +5572,7 @@ export interface GooglePrivacyDlpV2DataProfileBigQueryRowSchema {
   columnProfile?: GooglePrivacyDlpV2ColumnDataProfile;
 }
 
-export const GooglePrivacyDlpV2DataProfileBigQueryRowSchema: Schema.Schema<GooglePrivacyDlpV2DataProfileBigQueryRowSchema> =
+export const GooglePrivacyDlpV2DataProfileBigQueryRowSchema: Schema.Codec<GooglePrivacyDlpV2DataProfileBigQueryRowSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileStoreProfile: Schema.optional(GooglePrivacyDlpV2FileStoreDataProfile),
     tableProfile: Schema.optional(GooglePrivacyDlpV2TableDataProfile),
@@ -5590,7 +5590,7 @@ export interface GooglePrivacyDlpV2InspectContentRequest {
   inspectTemplateName?: string;
 }
 
-export const GooglePrivacyDlpV2InspectContentRequest: Schema.Schema<GooglePrivacyDlpV2InspectContentRequest> =
+export const GooglePrivacyDlpV2InspectContentRequest: Schema.Codec<GooglePrivacyDlpV2InspectContentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
     item: Schema.optional(GooglePrivacyDlpV2ContentItem),
@@ -5603,7 +5603,7 @@ export interface GooglePrivacyDlpV2InfoTypes {
   infoTypeNames?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2InfoTypes: Schema.Schema<GooglePrivacyDlpV2InfoTypes> =
+export const GooglePrivacyDlpV2InfoTypes: Schema.Codec<GooglePrivacyDlpV2InfoTypes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypeNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypes" });
@@ -5615,7 +5615,7 @@ export interface GooglePrivacyDlpV2InfoTypeCondition {
   anyInfoType?: GoogleProtobufEmpty;
 }
 
-export const GooglePrivacyDlpV2InfoTypeCondition: Schema.Schema<GooglePrivacyDlpV2InfoTypeCondition> =
+export const GooglePrivacyDlpV2InfoTypeCondition: Schema.Codec<GooglePrivacyDlpV2InfoTypeCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(GooglePrivacyDlpV2InfoTypes),
     anyInfoType: Schema.optional(GoogleProtobufEmpty),
@@ -5626,7 +5626,7 @@ export interface GooglePrivacyDlpV2PolicyCondition {
   infoTypeCondition?: GooglePrivacyDlpV2InfoTypeCondition;
 }
 
-export const GooglePrivacyDlpV2PolicyCondition: Schema.Schema<GooglePrivacyDlpV2PolicyCondition> =
+export const GooglePrivacyDlpV2PolicyCondition: Schema.Codec<GooglePrivacyDlpV2PolicyCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypeCondition: Schema.optional(GooglePrivacyDlpV2InfoTypeCondition),
   }).annotate({ identifier: "GooglePrivacyDlpV2PolicyCondition" });
@@ -5658,7 +5658,7 @@ export interface GooglePrivacyDlpV2TransformationDescription {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2TransformationDescription: Schema.Schema<GooglePrivacyDlpV2TransformationDescription> =
+export const GooglePrivacyDlpV2TransformationDescription: Schema.Codec<GooglePrivacyDlpV2TransformationDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     description: Schema.optional(Schema.String),
@@ -5685,7 +5685,7 @@ export interface GooglePrivacyDlpV2ProjectDataProfile {
   name?: string;
 }
 
-export const GooglePrivacyDlpV2ProjectDataProfile: Schema.Schema<GooglePrivacyDlpV2ProjectDataProfile> =
+export const GooglePrivacyDlpV2ProjectDataProfile: Schema.Codec<GooglePrivacyDlpV2ProjectDataProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
@@ -5704,7 +5704,7 @@ export interface GooglePrivacyDlpV2ListProjectDataProfilesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListProjectDataProfilesResponse: Schema.Schema<GooglePrivacyDlpV2ListProjectDataProfilesResponse> =
+export const GooglePrivacyDlpV2ListProjectDataProfilesResponse: Schema.Codec<GooglePrivacyDlpV2ListProjectDataProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectDataProfiles: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2ProjectDataProfile),
@@ -5725,7 +5725,7 @@ export interface GooglePrivacyDlpV2LocationSupport {
   locations?: ReadonlyArray<string>;
 }
 
-export const GooglePrivacyDlpV2LocationSupport: Schema.Schema<GooglePrivacyDlpV2LocationSupport> =
+export const GooglePrivacyDlpV2LocationSupport: Schema.Codec<GooglePrivacyDlpV2LocationSupport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionalizationScope: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Schema.String)),
@@ -5736,7 +5736,7 @@ export interface GooglePrivacyDlpV2CreateConnectionRequest {
   connection?: GooglePrivacyDlpV2Connection;
 }
 
-export const GooglePrivacyDlpV2CreateConnectionRequest: Schema.Schema<GooglePrivacyDlpV2CreateConnectionRequest> =
+export const GooglePrivacyDlpV2CreateConnectionRequest: Schema.Codec<GooglePrivacyDlpV2CreateConnectionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connection: Schema.optional(GooglePrivacyDlpV2Connection),
   }).annotate({ identifier: "GooglePrivacyDlpV2CreateConnectionRequest" });
@@ -5748,7 +5748,7 @@ export interface GooglePrivacyDlpV2VersionDescription {
   description?: string;
 }
 
-export const GooglePrivacyDlpV2VersionDescription: Schema.Schema<GooglePrivacyDlpV2VersionDescription> =
+export const GooglePrivacyDlpV2VersionDescription: Schema.Codec<GooglePrivacyDlpV2VersionDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -5756,7 +5756,7 @@ export const GooglePrivacyDlpV2VersionDescription: Schema.Schema<GooglePrivacyDl
 
 export interface GooglePrivacyDlpV2Manual {}
 
-export const GooglePrivacyDlpV2Manual: Schema.Schema<GooglePrivacyDlpV2Manual> =
+export const GooglePrivacyDlpV2Manual: Schema.Codec<GooglePrivacyDlpV2Manual> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2Manual",
   });
@@ -5766,7 +5766,7 @@ export interface GooglePrivacyDlpV2Schedule {
   recurrencePeriodDuration?: string;
 }
 
-export const GooglePrivacyDlpV2Schedule: Schema.Schema<GooglePrivacyDlpV2Schedule> =
+export const GooglePrivacyDlpV2Schedule: Schema.Codec<GooglePrivacyDlpV2Schedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recurrencePeriodDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2Schedule" });
@@ -5778,7 +5778,7 @@ export interface GooglePrivacyDlpV2Trigger {
   schedule?: GooglePrivacyDlpV2Schedule;
 }
 
-export const GooglePrivacyDlpV2Trigger: Schema.Schema<GooglePrivacyDlpV2Trigger> =
+export const GooglePrivacyDlpV2Trigger: Schema.Codec<GooglePrivacyDlpV2Trigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manual: Schema.optional(GooglePrivacyDlpV2Manual),
     schedule: Schema.optional(GooglePrivacyDlpV2Schedule),
@@ -5812,7 +5812,7 @@ export interface GooglePrivacyDlpV2JobTrigger {
   triggers?: ReadonlyArray<GooglePrivacyDlpV2Trigger>;
 }
 
-export const GooglePrivacyDlpV2JobTrigger: Schema.Schema<GooglePrivacyDlpV2JobTrigger> =
+export const GooglePrivacyDlpV2JobTrigger: Schema.Codec<GooglePrivacyDlpV2JobTrigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
     lastRunTime: Schema.optional(Schema.String),
@@ -5835,7 +5835,7 @@ export interface GooglePrivacyDlpV2LogToBigQuery {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2LogToBigQuery: Schema.Schema<GooglePrivacyDlpV2LogToBigQuery> =
+export const GooglePrivacyDlpV2LogToBigQuery: Schema.Codec<GooglePrivacyDlpV2LogToBigQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     tableId: Schema.optional(Schema.String),
@@ -5847,7 +5847,7 @@ export interface GooglePrivacyDlpV2LoggingConfig {
   logToBigQuery?: GooglePrivacyDlpV2LogToBigQuery;
 }
 
-export const GooglePrivacyDlpV2LoggingConfig: Schema.Schema<GooglePrivacyDlpV2LoggingConfig> =
+export const GooglePrivacyDlpV2LoggingConfig: Schema.Codec<GooglePrivacyDlpV2LoggingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logToBigQuery: Schema.optional(GooglePrivacyDlpV2LogToBigQuery),
   }).annotate({ identifier: "GooglePrivacyDlpV2LoggingConfig" });
@@ -5861,7 +5861,7 @@ export interface GooglePrivacyDlpV2RedactImageResponse {
   extractedText?: string;
 }
 
-export const GooglePrivacyDlpV2RedactImageResponse: Schema.Schema<GooglePrivacyDlpV2RedactImageResponse> =
+export const GooglePrivacyDlpV2RedactImageResponse: Schema.Codec<GooglePrivacyDlpV2RedactImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redactedImage: Schema.optional(Schema.String),
     inspectResult: Schema.optional(GooglePrivacyDlpV2InspectResult),
@@ -5875,7 +5875,7 @@ export interface GooglePrivacyDlpV2ListTableDataProfilesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListTableDataProfilesResponse: Schema.Schema<GooglePrivacyDlpV2ListTableDataProfilesResponse> =
+export const GooglePrivacyDlpV2ListTableDataProfilesResponse: Schema.Codec<GooglePrivacyDlpV2ListTableDataProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableDataProfiles: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2TableDataProfile),
@@ -5892,7 +5892,7 @@ export interface GooglePrivacyDlpV2ListJobTriggersResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListJobTriggersResponse: Schema.Schema<GooglePrivacyDlpV2ListJobTriggersResponse> =
+export const GooglePrivacyDlpV2ListJobTriggersResponse: Schema.Codec<GooglePrivacyDlpV2ListJobTriggersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobTriggers: Schema.optional(Schema.Array(GooglePrivacyDlpV2JobTrigger)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5976,7 +5976,7 @@ export interface GooglePrivacyDlpV2InfoTypeCategory {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2InfoTypeCategory: Schema.Schema<GooglePrivacyDlpV2InfoTypeCategory> =
+export const GooglePrivacyDlpV2InfoTypeCategory: Schema.Codec<GooglePrivacyDlpV2InfoTypeCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationCategory: Schema.optional(Schema.String),
     industryCategory: Schema.optional(Schema.String),
@@ -5988,7 +5988,7 @@ export interface GooglePrivacyDlpV2DataProfileFindingRecordLocation {
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2DataProfileFindingRecordLocation: Schema.Schema<GooglePrivacyDlpV2DataProfileFindingRecordLocation> =
+export const GooglePrivacyDlpV2DataProfileFindingRecordLocation: Schema.Codec<GooglePrivacyDlpV2DataProfileFindingRecordLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(GooglePrivacyDlpV2FieldId),
   }).annotate({
@@ -6002,7 +6002,7 @@ export interface GooglePrivacyDlpV2DataProfileFindingLocation {
   containerName?: string;
 }
 
-export const GooglePrivacyDlpV2DataProfileFindingLocation: Schema.Schema<GooglePrivacyDlpV2DataProfileFindingLocation> =
+export const GooglePrivacyDlpV2DataProfileFindingLocation: Schema.Codec<GooglePrivacyDlpV2DataProfileFindingLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataProfileFindingRecordLocation: Schema.optional(
       GooglePrivacyDlpV2DataProfileFindingRecordLocation,
@@ -6038,7 +6038,7 @@ export interface GooglePrivacyDlpV2DataProfileFinding {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DataProfileFinding: Schema.Schema<GooglePrivacyDlpV2DataProfileFinding> =
+export const GooglePrivacyDlpV2DataProfileFinding: Schema.Codec<GooglePrivacyDlpV2DataProfileFinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quote: Schema.optional(Schema.String),
     location: Schema.optional(GooglePrivacyDlpV2DataProfileFindingLocation),
@@ -6054,7 +6054,7 @@ export const GooglePrivacyDlpV2DataProfileFinding: Schema.Schema<GooglePrivacyDl
 
 export interface GooglePrivacyDlpV2FinishDlpJobRequest {}
 
-export const GooglePrivacyDlpV2FinishDlpJobRequest: Schema.Schema<GooglePrivacyDlpV2FinishDlpJobRequest> =
+export const GooglePrivacyDlpV2FinishDlpJobRequest: Schema.Codec<GooglePrivacyDlpV2FinishDlpJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2FinishDlpJobRequest",
   });
@@ -6066,7 +6066,7 @@ export interface GooglePrivacyDlpV2UpdateDiscoveryConfigRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateDiscoveryConfigRequest: Schema.Schema<GooglePrivacyDlpV2UpdateDiscoveryConfigRequest> =
+export const GooglePrivacyDlpV2UpdateDiscoveryConfigRequest: Schema.Codec<GooglePrivacyDlpV2UpdateDiscoveryConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
     updateMask: Schema.optional(Schema.String),
@@ -6081,7 +6081,7 @@ export interface GooglePrivacyDlpV2CreateInspectTemplateRequest {
   locationId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateInspectTemplateRequest: Schema.Schema<GooglePrivacyDlpV2CreateInspectTemplateRequest> =
+export const GooglePrivacyDlpV2CreateInspectTemplateRequest: Schema.Codec<GooglePrivacyDlpV2CreateInspectTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inspectTemplate: Schema.optional(GooglePrivacyDlpV2InspectTemplate),
     templateId: Schema.optional(Schema.String),
@@ -6095,7 +6095,7 @@ export interface GooglePrivacyDlpV2UpdateInspectTemplateRequest {
   inspectTemplate?: GooglePrivacyDlpV2InspectTemplate;
 }
 
-export const GooglePrivacyDlpV2UpdateInspectTemplateRequest: Schema.Schema<GooglePrivacyDlpV2UpdateInspectTemplateRequest> =
+export const GooglePrivacyDlpV2UpdateInspectTemplateRequest: Schema.Codec<GooglePrivacyDlpV2UpdateInspectTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     inspectTemplate: Schema.optional(GooglePrivacyDlpV2InspectTemplate),
@@ -6116,7 +6116,7 @@ export interface GooglePrivacyDlpV2DeidentifyContentRequest {
   deidentifyConfig?: GooglePrivacyDlpV2DeidentifyConfig;
 }
 
-export const GooglePrivacyDlpV2DeidentifyContentRequest: Schema.Schema<GooglePrivacyDlpV2DeidentifyContentRequest> =
+export const GooglePrivacyDlpV2DeidentifyContentRequest: Schema.Codec<GooglePrivacyDlpV2DeidentifyContentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
@@ -6135,7 +6135,7 @@ export interface GooglePrivacyDlpV2PolicyAction {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2PolicyAction: Schema.Schema<GooglePrivacyDlpV2PolicyAction> =
+export const GooglePrivacyDlpV2PolicyAction: Schema.Codec<GooglePrivacyDlpV2PolicyAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     returnVerdict: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePrivacyDlpV2PolicyAction" });
@@ -6145,7 +6145,7 @@ export interface GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
   hybridItem?: GooglePrivacyDlpV2HybridContentItem;
 }
 
-export const GooglePrivacyDlpV2HybridInspectJobTriggerRequest: Schema.Schema<GooglePrivacyDlpV2HybridInspectJobTriggerRequest> =
+export const GooglePrivacyDlpV2HybridInspectJobTriggerRequest: Schema.Codec<GooglePrivacyDlpV2HybridInspectJobTriggerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hybridItem: Schema.optional(GooglePrivacyDlpV2HybridContentItem),
   }).annotate({
@@ -6165,7 +6165,7 @@ export interface GooglePrivacyDlpV2PolicyRule {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2PolicyRule: Schema.Schema<GooglePrivacyDlpV2PolicyRule> =
+export const GooglePrivacyDlpV2PolicyRule: Schema.Codec<GooglePrivacyDlpV2PolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2PolicyCondition),
@@ -6203,7 +6203,7 @@ export interface GooglePrivacyDlpV2ContentPolicy {
   errors?: ReadonlyArray<GooglePrivacyDlpV2Error>;
 }
 
-export const GooglePrivacyDlpV2ContentPolicy: Schema.Schema<GooglePrivacyDlpV2ContentPolicy> =
+export const GooglePrivacyDlpV2ContentPolicy: Schema.Codec<GooglePrivacyDlpV2ContentPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6231,7 +6231,7 @@ export interface GooglePrivacyDlpV2CreateContentPolicyRequest {
   contentPolicyId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateContentPolicyRequest: Schema.Schema<GooglePrivacyDlpV2CreateContentPolicyRequest> =
+export const GooglePrivacyDlpV2CreateContentPolicyRequest: Schema.Codec<GooglePrivacyDlpV2CreateContentPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentPolicy: Schema.optional(GooglePrivacyDlpV2ContentPolicy),
     contentPolicyId: Schema.optional(Schema.String),
@@ -6244,7 +6244,7 @@ export interface GooglePrivacyDlpV2ListContentPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListContentPoliciesResponse: Schema.Schema<GooglePrivacyDlpV2ListContentPoliciesResponse> =
+export const GooglePrivacyDlpV2ListContentPoliciesResponse: Schema.Codec<GooglePrivacyDlpV2ListContentPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentPolicies: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2ContentPolicy),
@@ -6254,7 +6254,7 @@ export const GooglePrivacyDlpV2ListContentPoliciesResponse: Schema.Schema<Google
 
 export interface GooglePrivacyDlpV2HybridInspectResponse {}
 
-export const GooglePrivacyDlpV2HybridInspectResponse: Schema.Schema<GooglePrivacyDlpV2HybridInspectResponse> =
+export const GooglePrivacyDlpV2HybridInspectResponse: Schema.Codec<GooglePrivacyDlpV2HybridInspectResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2HybridInspectResponse",
   });
@@ -6268,7 +6268,7 @@ export interface GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
   locationId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateDeidentifyTemplateRequest: Schema.Schema<GooglePrivacyDlpV2CreateDeidentifyTemplateRequest> =
+export const GooglePrivacyDlpV2CreateDeidentifyTemplateRequest: Schema.Codec<GooglePrivacyDlpV2CreateDeidentifyTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deidentifyTemplate: Schema.optional(GooglePrivacyDlpV2DeidentifyTemplate),
     templateId: Schema.optional(Schema.String),
@@ -6284,7 +6284,7 @@ export interface GooglePrivacyDlpV2ListFileStoreDataProfilesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListFileStoreDataProfilesResponse: Schema.Schema<GooglePrivacyDlpV2ListFileStoreDataProfilesResponse> =
+export const GooglePrivacyDlpV2ListFileStoreDataProfilesResponse: Schema.Codec<GooglePrivacyDlpV2ListFileStoreDataProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileStoreDataProfiles: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2FileStoreDataProfile),
@@ -6307,7 +6307,7 @@ export interface GooglePrivacyDlpV2TransformationResultStatus {
   details?: GoogleRpcStatus;
 }
 
-export const GooglePrivacyDlpV2TransformationResultStatus: Schema.Schema<GooglePrivacyDlpV2TransformationResultStatus> =
+export const GooglePrivacyDlpV2TransformationResultStatus: Schema.Codec<GooglePrivacyDlpV2TransformationResultStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultStatusType: Schema.optional(Schema.String),
     details: Schema.optional(GoogleRpcStatus),
@@ -6322,7 +6322,7 @@ export interface GooglePrivacyDlpV2RecordTransformation {
   containerVersion?: string;
 }
 
-export const GooglePrivacyDlpV2RecordTransformation: Schema.Schema<GooglePrivacyDlpV2RecordTransformation> =
+export const GooglePrivacyDlpV2RecordTransformation: Schema.Codec<GooglePrivacyDlpV2RecordTransformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(GooglePrivacyDlpV2FieldId),
     containerTimestamp: Schema.optional(Schema.String),
@@ -6343,7 +6343,7 @@ export interface GooglePrivacyDlpV2TransformationLocation {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2TransformationLocation: Schema.Schema<GooglePrivacyDlpV2TransformationLocation> =
+export const GooglePrivacyDlpV2TransformationLocation: Schema.Codec<GooglePrivacyDlpV2TransformationLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordTransformation: Schema.optional(
       GooglePrivacyDlpV2RecordTransformation,
@@ -6367,7 +6367,7 @@ export interface GooglePrivacyDlpV2TransformationDetails {
   transformationLocation?: GooglePrivacyDlpV2TransformationLocation;
 }
 
-export const GooglePrivacyDlpV2TransformationDetails: Schema.Schema<GooglePrivacyDlpV2TransformationDetails> =
+export const GooglePrivacyDlpV2TransformationDetails: Schema.Codec<GooglePrivacyDlpV2TransformationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerName: Schema.optional(Schema.String),
     transformation: Schema.optional(
@@ -6385,7 +6385,7 @@ export const GooglePrivacyDlpV2TransformationDetails: Schema.Schema<GooglePrivac
 
 export interface GooglePrivacyDlpV2CancelDlpJobRequest {}
 
-export const GooglePrivacyDlpV2CancelDlpJobRequest: Schema.Schema<GooglePrivacyDlpV2CancelDlpJobRequest> =
+export const GooglePrivacyDlpV2CancelDlpJobRequest: Schema.Codec<GooglePrivacyDlpV2CancelDlpJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2CancelDlpJobRequest",
   });
@@ -6397,7 +6397,7 @@ export interface GooglePrivacyDlpV2CreateDiscoveryConfigRequest {
   discoveryConfig?: GooglePrivacyDlpV2DiscoveryConfig;
 }
 
-export const GooglePrivacyDlpV2CreateDiscoveryConfigRequest: Schema.Schema<GooglePrivacyDlpV2CreateDiscoveryConfigRequest> =
+export const GooglePrivacyDlpV2CreateDiscoveryConfigRequest: Schema.Codec<GooglePrivacyDlpV2CreateDiscoveryConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configId: Schema.optional(Schema.String),
     discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
@@ -6408,7 +6408,7 @@ export interface GooglePrivacyDlpV2SaveToGcsFindingsOutput {
   findings?: ReadonlyArray<GooglePrivacyDlpV2Finding>;
 }
 
-export const GooglePrivacyDlpV2SaveToGcsFindingsOutput: Schema.Schema<GooglePrivacyDlpV2SaveToGcsFindingsOutput> =
+export const GooglePrivacyDlpV2SaveToGcsFindingsOutput: Schema.Codec<GooglePrivacyDlpV2SaveToGcsFindingsOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(GooglePrivacyDlpV2Finding)),
   }).annotate({ identifier: "GooglePrivacyDlpV2SaveToGcsFindingsOutput" });
@@ -6420,7 +6420,7 @@ export interface GooglePrivacyDlpV2UpdateContentPolicyRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateContentPolicyRequest: Schema.Schema<GooglePrivacyDlpV2UpdateContentPolicyRequest> =
+export const GooglePrivacyDlpV2UpdateContentPolicyRequest: Schema.Codec<GooglePrivacyDlpV2UpdateContentPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentPolicy: Schema.optional(GooglePrivacyDlpV2ContentPolicy),
     updateMask: Schema.optional(Schema.String),
@@ -6433,7 +6433,7 @@ export interface GooglePrivacyDlpV2UpdateJobTriggerRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateJobTriggerRequest: Schema.Schema<GooglePrivacyDlpV2UpdateJobTriggerRequest> =
+export const GooglePrivacyDlpV2UpdateJobTriggerRequest: Schema.Codec<GooglePrivacyDlpV2UpdateJobTriggerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobTrigger: Schema.optional(GooglePrivacyDlpV2JobTrigger),
     updateMask: Schema.optional(Schema.String),
@@ -6446,7 +6446,7 @@ export interface GooglePrivacyDlpV2ListDiscoveryConfigsResponse {
   discoveryConfigs?: ReadonlyArray<GooglePrivacyDlpV2DiscoveryConfig>;
 }
 
-export const GooglePrivacyDlpV2ListDiscoveryConfigsResponse: Schema.Schema<GooglePrivacyDlpV2ListDiscoveryConfigsResponse> =
+export const GooglePrivacyDlpV2ListDiscoveryConfigsResponse: Schema.Codec<GooglePrivacyDlpV2ListDiscoveryConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     discoveryConfigs: Schema.optional(
@@ -6461,7 +6461,7 @@ export interface GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListDeidentifyTemplatesResponse: Schema.Schema<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> =
+export const GooglePrivacyDlpV2ListDeidentifyTemplatesResponse: Schema.Codec<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deidentifyTemplates: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2DeidentifyTemplate),
@@ -6503,7 +6503,7 @@ export interface GooglePrivacyDlpV2InfoTypeDescription {
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
 }
 
-export const GooglePrivacyDlpV2InfoTypeDescription: Schema.Schema<GooglePrivacyDlpV2InfoTypeDescription> =
+export const GooglePrivacyDlpV2InfoTypeDescription: Schema.Codec<GooglePrivacyDlpV2InfoTypeDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationSupport: Schema.optional(GooglePrivacyDlpV2LocationSupport),
     name: Schema.optional(Schema.String),
@@ -6527,7 +6527,7 @@ export interface GooglePrivacyDlpV2ListInfoTypesResponse {
   infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeDescription>;
 }
 
-export const GooglePrivacyDlpV2ListInfoTypesResponse: Schema.Schema<GooglePrivacyDlpV2ListInfoTypesResponse> =
+export const GooglePrivacyDlpV2ListInfoTypesResponse: Schema.Codec<GooglePrivacyDlpV2ListInfoTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2InfoTypeDescription),
@@ -6541,7 +6541,7 @@ export interface GooglePrivacyDlpV2UpdateConnectionRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateConnectionRequest: Schema.Schema<GooglePrivacyDlpV2UpdateConnectionRequest> =
+export const GooglePrivacyDlpV2UpdateConnectionRequest: Schema.Codec<GooglePrivacyDlpV2UpdateConnectionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connection: Schema.optional(GooglePrivacyDlpV2Connection),
     updateMask: Schema.optional(Schema.String),
@@ -6556,7 +6556,7 @@ export interface GooglePrivacyDlpV2CreateJobTriggerRequest {
   locationId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateJobTriggerRequest: Schema.Schema<GooglePrivacyDlpV2CreateJobTriggerRequest> =
+export const GooglePrivacyDlpV2CreateJobTriggerRequest: Schema.Codec<GooglePrivacyDlpV2CreateJobTriggerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobTrigger: Schema.optional(GooglePrivacyDlpV2JobTrigger),
     triggerId: Schema.optional(Schema.String),
@@ -6572,7 +6572,7 @@ export interface GooglePrivacyDlpV2ImageRedactionConfig {
   redactionColor?: GooglePrivacyDlpV2Color;
 }
 
-export const GooglePrivacyDlpV2ImageRedactionConfig: Schema.Schema<GooglePrivacyDlpV2ImageRedactionConfig> =
+export const GooglePrivacyDlpV2ImageRedactionConfig: Schema.Codec<GooglePrivacyDlpV2ImageRedactionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
     redactAllText: Schema.optional(Schema.Boolean),
@@ -6596,7 +6596,7 @@ export interface GooglePrivacyDlpV2RedactImageRequest {
   locationId?: string;
 }
 
-export const GooglePrivacyDlpV2RedactImageRequest: Schema.Schema<GooglePrivacyDlpV2RedactImageRequest> =
+export const GooglePrivacyDlpV2RedactImageRequest: Schema.Codec<GooglePrivacyDlpV2RedactImageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inspectTemplate: Schema.optional(Schema.String),
     imageRedactionConfigs: Schema.optional(
@@ -6624,7 +6624,7 @@ export interface GooglePrivacyDlpV2DataProfilePubSubMessage {
   fileStoreProfile?: GooglePrivacyDlpV2FileStoreDataProfile;
 }
 
-export const GooglePrivacyDlpV2DataProfilePubSubMessage: Schema.Schema<GooglePrivacyDlpV2DataProfilePubSubMessage> =
+export const GooglePrivacyDlpV2DataProfilePubSubMessage: Schema.Codec<GooglePrivacyDlpV2DataProfilePubSubMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
     profile: Schema.optional(GooglePrivacyDlpV2TableDataProfile),
@@ -6638,7 +6638,7 @@ export interface GooglePrivacyDlpV2ListColumnDataProfilesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListColumnDataProfilesResponse: Schema.Schema<GooglePrivacyDlpV2ListColumnDataProfilesResponse> =
+export const GooglePrivacyDlpV2ListColumnDataProfilesResponse: Schema.Codec<GooglePrivacyDlpV2ListColumnDataProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnDataProfiles: Schema.optional(
       Schema.Array(GooglePrivacyDlpV2ColumnDataProfile),
@@ -6655,7 +6655,7 @@ export interface GooglePrivacyDlpV2ReidentifyContentResponse {
   overview?: GooglePrivacyDlpV2TransformationOverview;
 }
 
-export const GooglePrivacyDlpV2ReidentifyContentResponse: Schema.Schema<GooglePrivacyDlpV2ReidentifyContentResponse> =
+export const GooglePrivacyDlpV2ReidentifyContentResponse: Schema.Codec<GooglePrivacyDlpV2ReidentifyContentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item: Schema.optional(GooglePrivacyDlpV2ContentItem),
     overview: Schema.optional(GooglePrivacyDlpV2TransformationOverview),
@@ -6668,7 +6668,7 @@ export interface GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateStoredInfoTypeRequest: Schema.Schema<GooglePrivacyDlpV2UpdateStoredInfoTypeRequest> =
+export const GooglePrivacyDlpV2UpdateStoredInfoTypeRequest: Schema.Codec<GooglePrivacyDlpV2UpdateStoredInfoTypeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeConfig),
     updateMask: Schema.optional(Schema.String),
@@ -6683,7 +6683,7 @@ export interface GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
   config?: GooglePrivacyDlpV2StoredInfoTypeConfig;
 }
 
-export const GooglePrivacyDlpV2CreateStoredInfoTypeRequest: Schema.Schema<GooglePrivacyDlpV2CreateStoredInfoTypeRequest> =
+export const GooglePrivacyDlpV2CreateStoredInfoTypeRequest: Schema.Codec<GooglePrivacyDlpV2CreateStoredInfoTypeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storedInfoTypeId: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -6697,7 +6697,7 @@ export interface GooglePrivacyDlpV2DeidentifyContentResponse {
   overview?: GooglePrivacyDlpV2TransformationOverview;
 }
 
-export const GooglePrivacyDlpV2DeidentifyContentResponse: Schema.Schema<GooglePrivacyDlpV2DeidentifyContentResponse> =
+export const GooglePrivacyDlpV2DeidentifyContentResponse: Schema.Codec<GooglePrivacyDlpV2DeidentifyContentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item: Schema.optional(GooglePrivacyDlpV2ContentItem),
     overview: Schema.optional(GooglePrivacyDlpV2TransformationOverview),
@@ -6710,7 +6710,7 @@ export interface GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest: Schema.Schema<GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest> =
+export const GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest: Schema.Codec<GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deidentifyTemplate: Schema.optional(GooglePrivacyDlpV2DeidentifyTemplate),
     updateMask: Schema.optional(Schema.String),
@@ -6725,7 +6725,7 @@ export interface GooglePrivacyDlpV2ListInspectTemplatesResponse {
   inspectTemplates?: ReadonlyArray<GooglePrivacyDlpV2InspectTemplate>;
 }
 
-export const GooglePrivacyDlpV2ListInspectTemplatesResponse: Schema.Schema<GooglePrivacyDlpV2ListInspectTemplatesResponse> =
+export const GooglePrivacyDlpV2ListInspectTemplatesResponse: Schema.Codec<GooglePrivacyDlpV2ListInspectTemplatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     inspectTemplates: Schema.optional(
@@ -6744,7 +6744,7 @@ export interface GooglePrivacyDlpV2CreateDlpJobRequest {
   riskJob?: GooglePrivacyDlpV2RiskAnalysisJobConfig;
 }
 
-export const GooglePrivacyDlpV2CreateDlpJobRequest: Schema.Schema<GooglePrivacyDlpV2CreateDlpJobRequest> =
+export const GooglePrivacyDlpV2CreateDlpJobRequest: Schema.Codec<GooglePrivacyDlpV2CreateDlpJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
     inspectJob: Schema.optional(GooglePrivacyDlpV2InspectJobConfig),
@@ -6759,7 +6759,7 @@ export interface GooglePrivacyDlpV2SearchConnectionsResponse {
   connections?: ReadonlyArray<GooglePrivacyDlpV2Connection>;
 }
 
-export const GooglePrivacyDlpV2SearchConnectionsResponse: Schema.Schema<GooglePrivacyDlpV2SearchConnectionsResponse> =
+export const GooglePrivacyDlpV2SearchConnectionsResponse: Schema.Codec<GooglePrivacyDlpV2SearchConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     connections: Schema.optional(Schema.Array(GooglePrivacyDlpV2Connection)),
@@ -6830,7 +6830,7 @@ export const DeleteProjectsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsJobTriggersRequest>;
 
 export type DeleteProjectsJobTriggersResponse = GoogleProtobufEmpty;
 export const DeleteProjectsJobTriggersResponse =
@@ -6871,7 +6871,7 @@ export const PatchProjectsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsJobTriggersRequest>;
 
 export type PatchProjectsJobTriggersResponse = GooglePrivacyDlpV2JobTrigger;
 export const PatchProjectsJobTriggersResponse =
@@ -6912,7 +6912,7 @@ export const CreateProjectsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/jobTriggers", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsJobTriggersRequest>;
 
 export type CreateProjectsJobTriggersResponse = GooglePrivacyDlpV2JobTrigger;
 export const CreateProjectsJobTriggersResponse =
@@ -6948,7 +6948,7 @@ export const GetProjectsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsJobTriggersRequest>;
 
 export type GetProjectsJobTriggersResponse = GooglePrivacyDlpV2JobTrigger;
 export const GetProjectsJobTriggersResponse =
@@ -6984,7 +6984,7 @@ export const ActivateProjectsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:activate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ActivateProjectsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<ActivateProjectsJobTriggersRequest>;
 
 export type ActivateProjectsJobTriggersResponse = GooglePrivacyDlpV2DlpJob;
 export const ActivateProjectsJobTriggersResponse =
@@ -7042,7 +7042,7 @@ export const ListProjectsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/jobTriggers" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsJobTriggersRequest>;
 
 export type ListProjectsJobTriggersResponse =
   GooglePrivacyDlpV2ListJobTriggersResponse;
@@ -7083,7 +7083,7 @@ export const CreateProjectsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/dlpJobs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDlpJobsRequest>;
 
 export type CreateProjectsDlpJobsResponse = GooglePrivacyDlpV2DlpJob;
 export const CreateProjectsDlpJobsResponse =
@@ -7119,7 +7119,7 @@ export const GetProjectsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDlpJobsRequest>;
 
 export type GetProjectsDlpJobsResponse = GooglePrivacyDlpV2DlpJob;
 export const GetProjectsDlpJobsResponse =
@@ -7172,7 +7172,7 @@ export const ListProjectsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/dlpJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDlpJobsRequest>;
 
 export type ListProjectsDlpJobsResponse = GooglePrivacyDlpV2ListDlpJobsResponse;
 export const ListProjectsDlpJobsResponse =
@@ -7207,7 +7207,7 @@ export const DeleteProjectsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsDlpJobsRequest>;
 
 export type DeleteProjectsDlpJobsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsDlpJobsResponse =
@@ -7248,7 +7248,7 @@ export const CancelProjectsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsDlpJobsRequest>;
 
 export type CancelProjectsDlpJobsResponse = GoogleProtobufEmpty;
 export const CancelProjectsDlpJobsResponse =
@@ -7290,7 +7290,7 @@ export const ListProjectsLocationsContentPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/contentPolicies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsContentPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsContentPoliciesRequest>;
 
 export type ListProjectsLocationsContentPoliciesResponse =
   GooglePrivacyDlpV2ListContentPoliciesResponse;
@@ -7329,7 +7329,7 @@ export const GetProjectsLocationsContentPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsContentPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsContentPoliciesRequest>;
 
 export type GetProjectsLocationsContentPoliciesResponse =
   GooglePrivacyDlpV2ContentPolicy;
@@ -7373,7 +7373,7 @@ export const CreateProjectsLocationsContentPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsContentPoliciesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsContentPoliciesRequest>;
 
 export type CreateProjectsLocationsContentPoliciesResponse =
   GooglePrivacyDlpV2ContentPolicy;
@@ -7415,7 +7415,7 @@ export const PatchProjectsLocationsContentPoliciesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsContentPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsContentPoliciesRequest>;
 
 export type PatchProjectsLocationsContentPoliciesResponse =
   GooglePrivacyDlpV2ContentPolicy;
@@ -7452,7 +7452,7 @@ export const DeleteProjectsLocationsContentPoliciesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsContentPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsContentPoliciesRequest>;
 
 export type DeleteProjectsLocationsContentPoliciesResponse =
   GoogleProtobufEmpty;
@@ -7489,7 +7489,7 @@ export const DeleteProjectsLocationsTableDataProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTableDataProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTableDataProfilesRequest>;
 
 export type DeleteProjectsLocationsTableDataProfilesResponse =
   GoogleProtobufEmpty;
@@ -7526,7 +7526,7 @@ export const GetProjectsLocationsTableDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTableDataProfilesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTableDataProfilesRequest>;
 
 export type GetProjectsLocationsTableDataProfilesResponse =
   GooglePrivacyDlpV2TableDataProfile;
@@ -7573,7 +7573,7 @@ export const ListProjectsLocationsTableDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/tableDataProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTableDataProfilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTableDataProfilesRequest>;
 
 export type ListProjectsLocationsTableDataProfilesResponse =
   GooglePrivacyDlpV2ListTableDataProfilesResponse;
@@ -7612,7 +7612,7 @@ export const GetProjectsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDeidentifyTemplatesRequest>;
 
 export type GetProjectsLocationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -7656,7 +7656,7 @@ export const CreateProjectsLocationsDeidentifyTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDeidentifyTemplatesRequest>;
 
 export type CreateProjectsLocationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -7705,7 +7705,7 @@ export const ListProjectsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/deidentifyTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDeidentifyTemplatesRequest>;
 
 export type ListProjectsLocationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse;
@@ -7744,7 +7744,7 @@ export const DeleteProjectsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDeidentifyTemplatesRequest>;
 
 export type DeleteProjectsLocationsDeidentifyTemplatesResponse =
   GoogleProtobufEmpty;
@@ -7786,7 +7786,7 @@ export const PatchProjectsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDeidentifyTemplatesRequest>;
 
 export type PatchProjectsLocationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -7823,7 +7823,7 @@ export const DeleteProjectsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDiscoveryConfigsRequest>;
 
 export type DeleteProjectsLocationsDiscoveryConfigsResponse =
   GoogleProtobufEmpty;
@@ -7865,7 +7865,7 @@ export const PatchProjectsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDiscoveryConfigsRequest>;
 
 export type PatchProjectsLocationsDiscoveryConfigsResponse =
   GooglePrivacyDlpV2DiscoveryConfig;
@@ -7911,7 +7911,7 @@ export const CreateProjectsLocationsDiscoveryConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDiscoveryConfigsRequest>;
 
 export type CreateProjectsLocationsDiscoveryConfigsResponse =
   GooglePrivacyDlpV2DiscoveryConfig;
@@ -7948,7 +7948,7 @@ export const GetProjectsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDiscoveryConfigsRequest>;
 
 export type GetProjectsLocationsDiscoveryConfigsResponse =
   GooglePrivacyDlpV2DiscoveryConfig;
@@ -7992,7 +7992,7 @@ export const ListProjectsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/discoveryConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDiscoveryConfigsRequest>;
 
 export type ListProjectsLocationsDiscoveryConfigsResponse =
   GooglePrivacyDlpV2ListDiscoveryConfigsResponse;
@@ -8043,7 +8043,7 @@ export const ListProjectsLocationsColumnDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/columnDataProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsColumnDataProfilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsColumnDataProfilesRequest>;
 
 export type ListProjectsLocationsColumnDataProfilesResponse =
   GooglePrivacyDlpV2ListColumnDataProfilesResponse;
@@ -8082,7 +8082,7 @@ export const GetProjectsLocationsColumnDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsColumnDataProfilesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsColumnDataProfilesRequest>;
 
 export type GetProjectsLocationsColumnDataProfilesResponse =
   GooglePrivacyDlpV2ColumnDataProfile;
@@ -8128,7 +8128,7 @@ export const ListProjectsLocationsInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/infoTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInfoTypesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInfoTypesRequest>;
 
 export type ListProjectsLocationsInfoTypesResponse =
   GooglePrivacyDlpV2ListInfoTypesResponse;
@@ -8163,7 +8163,7 @@ export const DeleteProjectsLocationsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDlpJobsRequest>;
 
 export type DeleteProjectsLocationsDlpJobsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsDlpJobsResponse =
@@ -8204,7 +8204,7 @@ export const HybridInspectProjectsLocationsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:hybridInspect", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<HybridInspectProjectsLocationsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<HybridInspectProjectsLocationsDlpJobsRequest>;
 
 export type HybridInspectProjectsLocationsDlpJobsResponse =
   GooglePrivacyDlpV2HybridInspectResponse;
@@ -8246,7 +8246,7 @@ export const CancelProjectsLocationsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsDlpJobsRequest>;
 
 export type CancelProjectsLocationsDlpJobsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsDlpJobsResponse =
@@ -8287,7 +8287,7 @@ export const CreateProjectsLocationsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/dlpJobs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDlpJobsRequest>;
 
 export type CreateProjectsLocationsDlpJobsResponse = GooglePrivacyDlpV2DlpJob;
 export const CreateProjectsLocationsDlpJobsResponse =
@@ -8328,7 +8328,7 @@ export const FinishProjectsLocationsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:finish", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<FinishProjectsLocationsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<FinishProjectsLocationsDlpJobsRequest>;
 
 export type FinishProjectsLocationsDlpJobsResponse = GoogleProtobufEmpty;
 export const FinishProjectsLocationsDlpJobsResponse =
@@ -8364,7 +8364,7 @@ export const GetProjectsLocationsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDlpJobsRequest>;
 
 export type GetProjectsLocationsDlpJobsResponse = GooglePrivacyDlpV2DlpJob;
 export const GetProjectsLocationsDlpJobsResponse =
@@ -8420,7 +8420,7 @@ export const ListProjectsLocationsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/dlpJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDlpJobsRequest>;
 
 export type ListProjectsLocationsDlpJobsResponse =
   GooglePrivacyDlpV2ListDlpJobsResponse;
@@ -8464,7 +8464,7 @@ export const PatchProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConnectionsRequest>;
 
 export type PatchProjectsLocationsConnectionsResponse =
   GooglePrivacyDlpV2Connection;
@@ -8501,7 +8501,7 @@ export const DeleteProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionsRequest>;
 
 export type DeleteProjectsLocationsConnectionsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsConnectionsResponse =
@@ -8546,7 +8546,7 @@ export const ListProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRequest>;
 
 export type ListProjectsLocationsConnectionsResponse =
   GooglePrivacyDlpV2ListConnectionsResponse;
@@ -8594,7 +8594,7 @@ export const SearchProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/connections:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsConnectionsRequest>;
 
 export type SearchProjectsLocationsConnectionsResponse =
   GooglePrivacyDlpV2SearchConnectionsResponse;
@@ -8638,7 +8638,7 @@ export const CreateProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/connections", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionsRequest>;
 
 export type CreateProjectsLocationsConnectionsResponse =
   GooglePrivacyDlpV2Connection;
@@ -8675,7 +8675,7 @@ export const GetProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionsRequest>;
 
 export type GetProjectsLocationsConnectionsResponse =
   GooglePrivacyDlpV2Connection;
@@ -8710,7 +8710,7 @@ export const GetProjectsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsJobTriggersRequest>;
 
 export type GetProjectsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2JobTrigger;
@@ -8750,7 +8750,7 @@ export const ActivateProjectsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:activate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ActivateProjectsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<ActivateProjectsLocationsJobTriggersRequest>;
 
 export type ActivateProjectsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2DlpJob;
@@ -8792,7 +8792,7 @@ export const CreateProjectsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/jobTriggers", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsJobTriggersRequest>;
 
 export type CreateProjectsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2JobTrigger;
@@ -8851,7 +8851,7 @@ export const ListProjectsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/jobTriggers" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsJobTriggersRequest>;
 
 export type ListProjectsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2ListJobTriggersResponse;
@@ -8895,7 +8895,7 @@ export const HybridInspectProjectsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:hybridInspect", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<HybridInspectProjectsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<HybridInspectProjectsLocationsJobTriggersRequest>;
 
 export type HybridInspectProjectsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2HybridInspectResponse;
@@ -8932,7 +8932,7 @@ export const DeleteProjectsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsJobTriggersRequest>;
 
 export type DeleteProjectsLocationsJobTriggersResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsJobTriggersResponse =
@@ -8973,7 +8973,7 @@ export const PatchProjectsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsJobTriggersRequest>;
 
 export type PatchProjectsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2JobTrigger;
@@ -9022,7 +9022,7 @@ export const ListProjectsLocationsProjectDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/projectDataProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProjectDataProfilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProjectDataProfilesRequest>;
 
 export type ListProjectsLocationsProjectDataProfilesResponse =
   GooglePrivacyDlpV2ListProjectDataProfilesResponse;
@@ -9061,7 +9061,7 @@ export const GetProjectsLocationsProjectDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProjectDataProfilesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProjectDataProfilesRequest>;
 
 export type GetProjectsLocationsProjectDataProfilesResponse =
   GooglePrivacyDlpV2ProjectDataProfile;
@@ -9108,7 +9108,7 @@ export const ListProjectsLocationsFileStoreDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/fileStoreDataProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsFileStoreDataProfilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsFileStoreDataProfilesRequest>;
 
 export type ListProjectsLocationsFileStoreDataProfilesResponse =
   GooglePrivacyDlpV2ListFileStoreDataProfilesResponse;
@@ -9147,7 +9147,7 @@ export const DeleteProjectsLocationsFileStoreDataProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsFileStoreDataProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsFileStoreDataProfilesRequest>;
 
 export type DeleteProjectsLocationsFileStoreDataProfilesResponse =
   GoogleProtobufEmpty;
@@ -9184,7 +9184,7 @@ export const GetProjectsLocationsFileStoreDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsFileStoreDataProfilesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsFileStoreDataProfilesRequest>;
 
 export type GetProjectsLocationsFileStoreDataProfilesResponse =
   GooglePrivacyDlpV2FileStoreDataProfile;
@@ -9228,7 +9228,7 @@ export const RedactProjectsLocationsImageRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RedactProjectsLocationsImageRequest>;
+  ) as unknown as Schema.Codec<RedactProjectsLocationsImageRequest>;
 
 export type RedactProjectsLocationsImageResponse =
   GooglePrivacyDlpV2RedactImageResponse;
@@ -9274,7 +9274,7 @@ export const DeidentifyProjectsLocationsContentRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeidentifyProjectsLocationsContentRequest>;
+  ) as unknown as Schema.Codec<DeidentifyProjectsLocationsContentRequest>;
 
 export type DeidentifyProjectsLocationsContentResponse =
   GooglePrivacyDlpV2DeidentifyContentResponse;
@@ -9320,7 +9320,7 @@ export const InspectProjectsLocationsContentRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InspectProjectsLocationsContentRequest>;
+  ) as unknown as Schema.Codec<InspectProjectsLocationsContentRequest>;
 
 export type InspectProjectsLocationsContentResponse =
   GooglePrivacyDlpV2InspectContentResponse;
@@ -9366,7 +9366,7 @@ export const ReidentifyProjectsLocationsContentRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReidentifyProjectsLocationsContentRequest>;
+  ) as unknown as Schema.Codec<ReidentifyProjectsLocationsContentRequest>;
 
 export type ReidentifyProjectsLocationsContentResponse =
   GooglePrivacyDlpV2ReidentifyContentResponse;
@@ -9415,7 +9415,7 @@ export const ListProjectsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/storedInfoTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsStoredInfoTypesRequest>;
 
 export type ListProjectsLocationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2ListStoredInfoTypesResponse;
@@ -9454,7 +9454,7 @@ export const GetProjectsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsStoredInfoTypesRequest>;
 
 export type GetProjectsLocationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -9498,7 +9498,7 @@ export const CreateProjectsLocationsStoredInfoTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsStoredInfoTypesRequest>;
 
 export type CreateProjectsLocationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -9540,7 +9540,7 @@ export const PatchProjectsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsStoredInfoTypesRequest>;
 
 export type PatchProjectsLocationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -9577,7 +9577,7 @@ export const DeleteProjectsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsStoredInfoTypesRequest>;
 
 export type DeleteProjectsLocationsStoredInfoTypesResponse =
   GoogleProtobufEmpty;
@@ -9626,7 +9626,7 @@ export const ListProjectsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/inspectTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInspectTemplatesRequest>;
 
 export type ListProjectsLocationsInspectTemplatesResponse =
   GooglePrivacyDlpV2ListInspectTemplatesResponse;
@@ -9665,7 +9665,7 @@ export const GetProjectsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInspectTemplatesRequest>;
 
 export type GetProjectsLocationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -9709,7 +9709,7 @@ export const CreateProjectsLocationsInspectTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsInspectTemplatesRequest>;
 
 export type CreateProjectsLocationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -9751,7 +9751,7 @@ export const PatchProjectsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsInspectTemplatesRequest>;
 
 export type PatchProjectsLocationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -9788,7 +9788,7 @@ export const DeleteProjectsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsInspectTemplatesRequest>;
 
 export type DeleteProjectsLocationsInspectTemplatesResponse =
   GoogleProtobufEmpty;
@@ -9825,7 +9825,7 @@ export const GetProjectsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInspectTemplatesRequest>;
 
 export type GetProjectsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -9869,7 +9869,7 @@ export const CreateProjectsInspectTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInspectTemplatesRequest>;
 
 export type CreateProjectsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -9918,7 +9918,7 @@ export const ListProjectsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/inspectTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInspectTemplatesRequest>;
 
 export type ListProjectsInspectTemplatesResponse =
   GooglePrivacyDlpV2ListInspectTemplatesResponse;
@@ -9957,7 +9957,7 @@ export const DeleteProjectsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInspectTemplatesRequest>;
 
 export type DeleteProjectsInspectTemplatesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsInspectTemplatesResponse =
@@ -9998,7 +9998,7 @@ export const PatchProjectsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsInspectTemplatesRequest>;
 
 export type PatchProjectsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -10040,7 +10040,7 @@ export const PatchProjectsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsDeidentifyTemplatesRequest>;
 
 export type PatchProjectsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -10077,7 +10077,7 @@ export const DeleteProjectsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsDeidentifyTemplatesRequest>;
 
 export type DeleteProjectsDeidentifyTemplatesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsDeidentifyTemplatesResponse =
@@ -10125,7 +10125,7 @@ export const ListProjectsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/deidentifyTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDeidentifyTemplatesRequest>;
 
 export type ListProjectsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse;
@@ -10164,7 +10164,7 @@ export const GetProjectsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDeidentifyTemplatesRequest>;
 
 export type GetProjectsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -10208,7 +10208,7 @@ export const CreateProjectsDeidentifyTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDeidentifyTemplatesRequest>;
 
 export type CreateProjectsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -10254,7 +10254,7 @@ export const InspectProjectsContentRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InspectProjectsContentRequest>;
+  ) as unknown as Schema.Codec<InspectProjectsContentRequest>;
 
 export type InspectProjectsContentResponse =
   GooglePrivacyDlpV2InspectContentResponse;
@@ -10300,7 +10300,7 @@ export const ReidentifyProjectsContentRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReidentifyProjectsContentRequest>;
+  ) as unknown as Schema.Codec<ReidentifyProjectsContentRequest>;
 
 export type ReidentifyProjectsContentResponse =
   GooglePrivacyDlpV2ReidentifyContentResponse;
@@ -10346,7 +10346,7 @@ export const DeidentifyProjectsContentRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeidentifyProjectsContentRequest>;
+  ) as unknown as Schema.Codec<DeidentifyProjectsContentRequest>;
 
 export type DeidentifyProjectsContentResponse =
   GooglePrivacyDlpV2DeidentifyContentResponse;
@@ -10388,7 +10388,7 @@ export const PatchProjectsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsStoredInfoTypesRequest>;
 
 export type PatchProjectsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -10425,7 +10425,7 @@ export const DeleteProjectsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsStoredInfoTypesRequest>;
 
 export type DeleteProjectsStoredInfoTypesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsStoredInfoTypesResponse =
@@ -10473,7 +10473,7 @@ export const ListProjectsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/storedInfoTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsStoredInfoTypesRequest>;
 
 export type ListProjectsStoredInfoTypesResponse =
   GooglePrivacyDlpV2ListStoredInfoTypesResponse;
@@ -10512,7 +10512,7 @@ export const GetProjectsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsStoredInfoTypesRequest>;
 
 export type GetProjectsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -10556,7 +10556,7 @@ export const CreateProjectsStoredInfoTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsStoredInfoTypesRequest>;
 
 export type CreateProjectsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -10602,7 +10602,7 @@ export const RedactProjectsImageRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RedactProjectsImageRequest>;
+  ) as unknown as Schema.Codec<RedactProjectsImageRequest>;
 
 export type RedactProjectsImageResponse = GooglePrivacyDlpV2RedactImageResponse;
 export const RedactProjectsImageResponse =
@@ -10648,7 +10648,7 @@ export const ListInfoTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/infoTypes" }),
   svc,
-) as unknown as Schema.Schema<ListInfoTypesRequest>;
+) as unknown as Schema.Codec<ListInfoTypesRequest>;
 
 export type ListInfoTypesResponse = GooglePrivacyDlpV2ListInfoTypesResponse;
 export const ListInfoTypesResponse =
@@ -10684,7 +10684,7 @@ export const PatchOrganizationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsStoredInfoTypesRequest>;
 
 export type PatchOrganizationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -10721,7 +10721,7 @@ export const DeleteOrganizationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsStoredInfoTypesRequest>;
 
 export type DeleteOrganizationsStoredInfoTypesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsStoredInfoTypesResponse =
@@ -10769,7 +10769,7 @@ export const ListOrganizationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/storedInfoTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsStoredInfoTypesRequest>;
 
 export type ListOrganizationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2ListStoredInfoTypesResponse;
@@ -10817,7 +10817,7 @@ export const CreateOrganizationsStoredInfoTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsStoredInfoTypesRequest>;
 
 export type CreateOrganizationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -10854,7 +10854,7 @@ export const GetOrganizationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsStoredInfoTypesRequest>;
 
 export type GetOrganizationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -10898,7 +10898,7 @@ export const ListOrganizationsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsConnectionsRequest>;
 
 export type ListOrganizationsLocationsConnectionsResponse =
   GooglePrivacyDlpV2ListConnectionsResponse;
@@ -10946,7 +10946,7 @@ export const SearchOrganizationsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/connections:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchOrganizationsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<SearchOrganizationsLocationsConnectionsRequest>;
 
 export type SearchOrganizationsLocationsConnectionsResponse =
   GooglePrivacyDlpV2SearchConnectionsResponse;
@@ -10990,7 +10990,7 @@ export const CreateOrganizationsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/connections", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsConnectionsRequest>;
 
 export type CreateOrganizationsLocationsConnectionsResponse =
   GooglePrivacyDlpV2Connection;
@@ -11027,7 +11027,7 @@ export const GetOrganizationsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsConnectionsRequest>;
 
 export type GetOrganizationsLocationsConnectionsResponse =
   GooglePrivacyDlpV2Connection;
@@ -11067,7 +11067,7 @@ export const PatchOrganizationsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsConnectionsRequest>;
 
 export type PatchOrganizationsLocationsConnectionsResponse =
   GooglePrivacyDlpV2Connection;
@@ -11104,7 +11104,7 @@ export const DeleteOrganizationsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsConnectionsRequest>;
 
 export type DeleteOrganizationsLocationsConnectionsResponse =
   GoogleProtobufEmpty;
@@ -11146,7 +11146,7 @@ export const PatchOrganizationsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsJobTriggersRequest>;
 
 export type PatchOrganizationsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2JobTrigger;
@@ -11183,7 +11183,7 @@ export const DeleteOrganizationsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsJobTriggersRequest>;
 
 export type DeleteOrganizationsLocationsJobTriggersResponse =
   GoogleProtobufEmpty;
@@ -11242,7 +11242,7 @@ export const ListOrganizationsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/jobTriggers" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsJobTriggersRequest>;
 
 export type ListOrganizationsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2ListJobTriggersResponse;
@@ -11286,7 +11286,7 @@ export const CreateOrganizationsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/jobTriggers", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsJobTriggersRequest>;
 
 export type CreateOrganizationsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2JobTrigger;
@@ -11323,7 +11323,7 @@ export const GetOrganizationsLocationsJobTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsJobTriggersRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsJobTriggersRequest>;
 
 export type GetOrganizationsLocationsJobTriggersResponse =
   GooglePrivacyDlpV2JobTrigger;
@@ -11370,7 +11370,7 @@ export const ListOrganizationsLocationsProjectDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/projectDataProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsProjectDataProfilesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsProjectDataProfilesRequest>;
 
 export type ListOrganizationsLocationsProjectDataProfilesResponse =
   GooglePrivacyDlpV2ListProjectDataProfilesResponse;
@@ -11409,7 +11409,7 @@ export const GetOrganizationsLocationsProjectDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsProjectDataProfilesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsProjectDataProfilesRequest>;
 
 export type GetOrganizationsLocationsProjectDataProfilesResponse =
   GooglePrivacyDlpV2ProjectDataProfile;
@@ -11444,7 +11444,7 @@ export const DeleteOrganizationsLocationsFileStoreDataProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsFileStoreDataProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsFileStoreDataProfilesRequest>;
 
 export type DeleteOrganizationsLocationsFileStoreDataProfilesResponse =
   GoogleProtobufEmpty;
@@ -11481,7 +11481,7 @@ export const GetOrganizationsLocationsFileStoreDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsFileStoreDataProfilesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsFileStoreDataProfilesRequest>;
 
 export type GetOrganizationsLocationsFileStoreDataProfilesResponse =
   GooglePrivacyDlpV2FileStoreDataProfile;
@@ -11528,7 +11528,7 @@ export const ListOrganizationsLocationsFileStoreDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/fileStoreDataProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsFileStoreDataProfilesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsFileStoreDataProfilesRequest>;
 
 export type ListOrganizationsLocationsFileStoreDataProfilesResponse =
   GooglePrivacyDlpV2ListFileStoreDataProfilesResponse;
@@ -11579,7 +11579,7 @@ export const ListOrganizationsLocationsColumnDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/columnDataProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsColumnDataProfilesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsColumnDataProfilesRequest>;
 
 export type ListOrganizationsLocationsColumnDataProfilesResponse =
   GooglePrivacyDlpV2ListColumnDataProfilesResponse;
@@ -11618,7 +11618,7 @@ export const GetOrganizationsLocationsColumnDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsColumnDataProfilesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsColumnDataProfilesRequest>;
 
 export type GetOrganizationsLocationsColumnDataProfilesResponse =
   GooglePrivacyDlpV2ColumnDataProfile;
@@ -11665,7 +11665,7 @@ export const ListOrganizationsLocationsTableDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/tableDataProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsTableDataProfilesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsTableDataProfilesRequest>;
 
 export type ListOrganizationsLocationsTableDataProfilesResponse =
   GooglePrivacyDlpV2ListTableDataProfilesResponse;
@@ -11704,7 +11704,7 @@ export const GetOrganizationsLocationsTableDataProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsTableDataProfilesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsTableDataProfilesRequest>;
 
 export type GetOrganizationsLocationsTableDataProfilesResponse =
   GooglePrivacyDlpV2TableDataProfile;
@@ -11739,7 +11739,7 @@ export const DeleteOrganizationsLocationsTableDataProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsTableDataProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsTableDataProfilesRequest>;
 
 export type DeleteOrganizationsLocationsTableDataProfilesResponse =
   GoogleProtobufEmpty;
@@ -11788,7 +11788,7 @@ export const ListOrganizationsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/deidentifyTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsDeidentifyTemplatesRequest>;
 
 export type ListOrganizationsLocationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse;
@@ -11827,7 +11827,7 @@ export const GetOrganizationsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsDeidentifyTemplatesRequest>;
 
 export type GetOrganizationsLocationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -11871,7 +11871,7 @@ export const CreateOrganizationsLocationsDeidentifyTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsDeidentifyTemplatesRequest>;
 
 export type CreateOrganizationsLocationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -11913,7 +11913,7 @@ export const PatchOrganizationsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsDeidentifyTemplatesRequest>;
 
 export type PatchOrganizationsLocationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -11950,7 +11950,7 @@ export const DeleteOrganizationsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsDeidentifyTemplatesRequest>;
 
 export type DeleteOrganizationsLocationsDeidentifyTemplatesResponse =
   GoogleProtobufEmpty;
@@ -11992,7 +11992,7 @@ export const PatchOrganizationsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsDiscoveryConfigsRequest>;
 
 export type PatchOrganizationsLocationsDiscoveryConfigsResponse =
   GooglePrivacyDlpV2DiscoveryConfig;
@@ -12029,7 +12029,7 @@ export const DeleteOrganizationsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsDiscoveryConfigsRequest>;
 
 export type DeleteOrganizationsLocationsDiscoveryConfigsResponse =
   GoogleProtobufEmpty;
@@ -12075,7 +12075,7 @@ export const ListOrganizationsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/discoveryConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsDiscoveryConfigsRequest>;
 
 export type ListOrganizationsLocationsDiscoveryConfigsResponse =
   GooglePrivacyDlpV2ListDiscoveryConfigsResponse;
@@ -12123,7 +12123,7 @@ export const CreateOrganizationsLocationsDiscoveryConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsDiscoveryConfigsRequest>;
 
 export type CreateOrganizationsLocationsDiscoveryConfigsResponse =
   GooglePrivacyDlpV2DiscoveryConfig;
@@ -12160,7 +12160,7 @@ export const GetOrganizationsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsDiscoveryConfigsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsDiscoveryConfigsRequest>;
 
 export type GetOrganizationsLocationsDiscoveryConfigsResponse =
   GooglePrivacyDlpV2DiscoveryConfig;
@@ -12206,7 +12206,7 @@ export const ListOrganizationsLocationsInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/infoTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsInfoTypesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsInfoTypesRequest>;
 
 export type ListOrganizationsLocationsInfoTypesResponse =
   GooglePrivacyDlpV2ListInfoTypesResponse;
@@ -12241,7 +12241,7 @@ export const GetOrganizationsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsStoredInfoTypesRequest>;
 
 export type GetOrganizationsLocationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -12285,7 +12285,7 @@ export const CreateOrganizationsLocationsStoredInfoTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsStoredInfoTypesRequest>;
 
 export type CreateOrganizationsLocationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -12334,7 +12334,7 @@ export const ListOrganizationsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/storedInfoTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsStoredInfoTypesRequest>;
 
 export type ListOrganizationsLocationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2ListStoredInfoTypesResponse;
@@ -12373,7 +12373,7 @@ export const DeleteOrganizationsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsStoredInfoTypesRequest>;
 
 export type DeleteOrganizationsLocationsStoredInfoTypesResponse =
   GoogleProtobufEmpty;
@@ -12415,7 +12415,7 @@ export const PatchOrganizationsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsStoredInfoTypesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsStoredInfoTypesRequest>;
 
 export type PatchOrganizationsLocationsStoredInfoTypesResponse =
   GooglePrivacyDlpV2StoredInfoType;
@@ -12474,7 +12474,7 @@ export const ListOrganizationsLocationsDlpJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/dlpJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsDlpJobsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsDlpJobsRequest>;
 
 export type ListOrganizationsLocationsDlpJobsResponse =
   GooglePrivacyDlpV2ListDlpJobsResponse;
@@ -12513,7 +12513,7 @@ export const GetOrganizationsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsInspectTemplatesRequest>;
 
 export type GetOrganizationsLocationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -12557,7 +12557,7 @@ export const CreateOrganizationsLocationsInspectTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsInspectTemplatesRequest>;
 
 export type CreateOrganizationsLocationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -12606,7 +12606,7 @@ export const ListOrganizationsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/inspectTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsInspectTemplatesRequest>;
 
 export type ListOrganizationsLocationsInspectTemplatesResponse =
   GooglePrivacyDlpV2ListInspectTemplatesResponse;
@@ -12645,7 +12645,7 @@ export const DeleteOrganizationsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsInspectTemplatesRequest>;
 
 export type DeleteOrganizationsLocationsInspectTemplatesResponse =
   GoogleProtobufEmpty;
@@ -12687,7 +12687,7 @@ export const PatchOrganizationsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsInspectTemplatesRequest>;
 
 export type PatchOrganizationsLocationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -12733,7 +12733,7 @@ export const CreateOrganizationsInspectTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsInspectTemplatesRequest>;
 
 export type CreateOrganizationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -12770,7 +12770,7 @@ export const GetOrganizationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsInspectTemplatesRequest>;
 
 export type GetOrganizationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -12817,7 +12817,7 @@ export const ListOrganizationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/inspectTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsInspectTemplatesRequest>;
 
 export type ListOrganizationsInspectTemplatesResponse =
   GooglePrivacyDlpV2ListInspectTemplatesResponse;
@@ -12856,7 +12856,7 @@ export const DeleteOrganizationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsInspectTemplatesRequest>;
 
 export type DeleteOrganizationsInspectTemplatesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsInspectTemplatesResponse =
@@ -12897,7 +12897,7 @@ export const PatchOrganizationsInspectTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsInspectTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsInspectTemplatesRequest>;
 
 export type PatchOrganizationsInspectTemplatesResponse =
   GooglePrivacyDlpV2InspectTemplate;
@@ -12946,7 +12946,7 @@ export const ListOrganizationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/deidentifyTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDeidentifyTemplatesRequest>;
 
 export type ListOrganizationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse;
@@ -12994,7 +12994,7 @@ export const CreateOrganizationsDeidentifyTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsDeidentifyTemplatesRequest>;
 
 export type CreateOrganizationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -13031,7 +13031,7 @@ export const GetOrganizationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDeidentifyTemplatesRequest>;
 
 export type GetOrganizationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -13071,7 +13071,7 @@ export const PatchOrganizationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsDeidentifyTemplatesRequest>;
 
 export type PatchOrganizationsDeidentifyTemplatesResponse =
   GooglePrivacyDlpV2DeidentifyTemplate;
@@ -13108,7 +13108,7 @@ export const DeleteOrganizationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDeidentifyTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDeidentifyTemplatesRequest>;
 
 export type DeleteOrganizationsDeidentifyTemplatesResponse =
   GoogleProtobufEmpty;
@@ -13156,7 +13156,7 @@ export const ListLocationsInfoTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/infoTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListLocationsInfoTypesRequest>;
+  ) as unknown as Schema.Codec<ListLocationsInfoTypesRequest>;
 
 export type ListLocationsInfoTypesResponse =
   GooglePrivacyDlpV2ListInfoTypesResponse;

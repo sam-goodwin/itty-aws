@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterCollStatMeasurementsInput {
+  groupId: string;
+  clusterName: string;
+  clusterView: "PRIMARY" | "SECONDARY" | "INDIVIDUAL_PROCESS";
+  databaseName: string;
+  collectionName: string;
+  envelope?: boolean;
+  metrics?: string;
+  start?: string;
+  end?: string;
+  period?: string;
+}
 export const ListGroupClusterCollStatMeasurementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -25,15 +37,12 @@ export const ListGroupClusterCollStatMeasurementsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements",
     }),
-  );
-export type ListGroupClusterCollStatMeasurementsInput =
-  typeof ListGroupClusterCollStatMeasurementsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterCollStatMeasurementsInput>;
 
 // Output Schema
+export type ListGroupClusterCollStatMeasurementsOutput = void;
 export const ListGroupClusterCollStatMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterCollStatMeasurementsOutput =
-  typeof ListGroupClusterCollStatMeasurementsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterCollStatMeasurementsOutput>;
 
 // The operation
 /**

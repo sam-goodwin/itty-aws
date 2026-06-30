@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DataIntegrationsUserManagementControllerGetUserDataInstallationInput {
+  user_id: string;
+  slug: string;
+  organization_id?: string;
+}
 export const DataIntegrationsUserManagementControllerGetUserDataInstallationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,21 @@ export const DataIntegrationsUserManagementControllerGetUserDataInstallationInpu
       method: "GET",
       path: "/user_management/users/{user_id}/connected_accounts/{slug}",
     }),
-  );
-export type DataIntegrationsUserManagementControllerGetUserDataInstallationInput =
-  typeof DataIntegrationsUserManagementControllerGetUserDataInstallationInput.Type;
+  ) as unknown as Schema.Codec<DataIntegrationsUserManagementControllerGetUserDataInstallationInput>;
 
 // Output Schema
+export interface DataIntegrationsUserManagementControllerGetUserDataInstallationOutput {
+  object?: string;
+  id?: string;
+  user_id?: string | null;
+  organization_id?: string | null;
+  scopes?: string[];
+  auth_method?: "oauth" | "api_key";
+  api_key_last_4?: string | null;
+  state?: "connected" | "needs_reauthorization" | "disconnected";
+  created_at?: string;
+  updated_at?: string;
+}
 export const DataIntegrationsUserManagementControllerGetUserDataInstallationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -33,9 +48,7 @@ export const DataIntegrationsUserManagementControllerGetUserDataInstallationOutp
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type DataIntegrationsUserManagementControllerGetUserDataInstallationOutput =
-  typeof DataIntegrationsUserManagementControllerGetUserDataInstallationOutput.Type;
+  }) as unknown as Schema.Codec<DataIntegrationsUserManagementControllerGetUserDataInstallationOutput>;
 
 // The operation
 /**

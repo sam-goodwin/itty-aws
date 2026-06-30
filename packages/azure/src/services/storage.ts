@@ -4,12 +4,32 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AdvancedPlatformMetricsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  advancedPlatformMetricsRuleType: "ContainerLevelCapacityMetrics";
+  properties?: {
+    ruleType?: "ContainerLevelCapacityMetrics";
+    enabled: boolean;
+    lastModifiedTime?: string;
+    metricsEmitted?: ("ContainerBlobCount" | "ContainerUsedSize")[];
+    ruleConfig: {
+      filterType?:
+        | "AllContainersFilter"
+        | "ContainerPrefixFilter"
+        | "ContainerListFilter";
+      filterValues?: string[];
+    };
+  };
+}
 export const AdvancedPlatformMetricsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -48,11 +68,22 @@ export const AdvancedPlatformMetricsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AdvancedPlatformMetricsCreateOrUpdateInput =
-  typeof AdvancedPlatformMetricsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AdvancedPlatformMetricsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AdvancedPlatformMetricsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AdvancedPlatformMetricsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -72,9 +103,7 @@ export const AdvancedPlatformMetricsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AdvancedPlatformMetricsCreateOrUpdateOutput =
-  typeof AdvancedPlatformMetricsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AdvancedPlatformMetricsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -92,6 +121,12 @@ export const AdvancedPlatformMetricsCreateOrUpdate =
     outputSchema: AdvancedPlatformMetricsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AdvancedPlatformMetricsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  advancedPlatformMetricsRuleType: "ContainerLevelCapacityMetrics";
+}
 export const AdvancedPlatformMetricsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -106,15 +141,12 @@ export const AdvancedPlatformMetricsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AdvancedPlatformMetricsDeleteInput =
-  typeof AdvancedPlatformMetricsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AdvancedPlatformMetricsDeleteInput>;
 
 // Output Schema
+export type AdvancedPlatformMetricsDeleteOutput = void;
 export const AdvancedPlatformMetricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AdvancedPlatformMetricsDeleteOutput =
-  typeof AdvancedPlatformMetricsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AdvancedPlatformMetricsDeleteOutput>;
 
 // The operation
 /**
@@ -132,6 +164,12 @@ export const AdvancedPlatformMetricsDelete =
     outputSchema: AdvancedPlatformMetricsDeleteOutput,
   }));
 // Input Schema
+export interface AdvancedPlatformMetricsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  advancedPlatformMetricsRuleType: "ContainerLevelCapacityMetrics";
+}
 export const AdvancedPlatformMetricsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -146,11 +184,22 @@ export const AdvancedPlatformMetricsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AdvancedPlatformMetricsGetInput =
-  typeof AdvancedPlatformMetricsGetInput.Type;
+  ) as unknown as Schema.Codec<AdvancedPlatformMetricsGetInput>;
 
 // Output Schema
+export interface AdvancedPlatformMetricsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AdvancedPlatformMetricsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -170,9 +219,7 @@ export const AdvancedPlatformMetricsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AdvancedPlatformMetricsGetOutput =
-  typeof AdvancedPlatformMetricsGetOutput.Type;
+  }) as unknown as Schema.Codec<AdvancedPlatformMetricsGetOutput>;
 
 // The operation
 /**
@@ -191,6 +238,11 @@ export const AdvancedPlatformMetricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AdvancedPlatformMetricsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AdvancedPlatformMetricsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -202,11 +254,25 @@ export const AdvancedPlatformMetricsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AdvancedPlatformMetricsListInput =
-  typeof AdvancedPlatformMetricsListInput.Type;
+  ) as unknown as Schema.Codec<AdvancedPlatformMetricsListInput>;
 
 // Output Schema
+export interface AdvancedPlatformMetricsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AdvancedPlatformMetricsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -241,9 +307,7 @@ export const AdvancedPlatformMetricsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AdvancedPlatformMetricsListOutput =
-  typeof AdvancedPlatformMetricsListOutput.Type;
+  }) as unknown as Schema.Codec<AdvancedPlatformMetricsListOutput>;
 
 // The operation
 /**
@@ -261,6 +325,15 @@ export const AdvancedPlatformMetricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BlobContainersClearLegalHoldInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+  hasLegalHold?: boolean;
+  tags: string[];
+  allowProtectedAppendWritesAll?: boolean;
+}
 export const BlobContainersClearLegalHoldInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -276,19 +349,20 @@ export const BlobContainersClearLegalHoldInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersClearLegalHoldInput =
-  typeof BlobContainersClearLegalHoldInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersClearLegalHoldInput>;
 
 // Output Schema
+export interface BlobContainersClearLegalHoldOutput {
+  hasLegalHold?: boolean;
+  tags: string[];
+  allowProtectedAppendWritesAll?: boolean;
+}
 export const BlobContainersClearLegalHoldOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasLegalHold: Schema.optional(Schema.Boolean),
     tags: Schema.Array(Schema.String),
     allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
-  });
-export type BlobContainersClearLegalHoldOutput =
-  typeof BlobContainersClearLegalHoldOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersClearLegalHoldOutput>;
 
 // The operation
 /**
@@ -306,6 +380,69 @@ export const BlobContainersClearLegalHold =
     outputSchema: BlobContainersClearLegalHoldOutput,
   }));
 // Input Schema
+export interface BlobContainersCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+  properties?: {
+    version?: string;
+    deleted?: boolean;
+    deletedTime?: string;
+    remainingRetentionDays?: number;
+    defaultEncryptionScope?: string;
+    denyEncryptionScopeOverride?: boolean;
+    publicAccess?: "Container" | "Blob" | "None";
+    lastModifiedTime?: string;
+    leaseStatus?: "Locked" | "Unlocked";
+    leaseState?: "Available" | "Leased" | "Expired" | "Breaking" | "Broken";
+    leaseDuration?: "Infinite" | "Fixed";
+    metadata?: Record<string, string>;
+    immutabilityPolicy?: {
+      properties?: {
+        immutabilityPeriodSinceCreationInDays?: number;
+        state?: "Locked" | "Unlocked";
+        allowProtectedAppendWrites?: boolean;
+        allowProtectedAppendWritesAll?: boolean;
+      };
+      etag?: string;
+      updateHistory?: {
+        update?: "put" | "lock" | "extend";
+        immutabilityPeriodSinceCreationInDays?: number;
+        timestamp?: string;
+        objectIdentifier?: string;
+        tenantId?: string;
+        upn?: string;
+        allowProtectedAppendWrites?: boolean;
+        allowProtectedAppendWritesAll?: boolean;
+      }[];
+    };
+    legalHold?: {
+      hasLegalHold?: boolean;
+      tags?: {
+        tag?: string;
+        timestamp?: string;
+        objectIdentifier?: string;
+        tenantId?: string;
+        upn?: string;
+      }[];
+      protectedAppendWritesHistory?: {
+        allowProtectedAppendWritesAll?: boolean;
+        timestamp?: string;
+      };
+    };
+    hasLegalHold?: boolean;
+    hasImmutabilityPolicy?: boolean;
+    immutableStorageWithVersioning?: {
+      enabled?: boolean;
+      timeStamp?: string;
+      migrationState?: "InProgress" | "Completed";
+    };
+    enableNfsV3RootSquash?: boolean;
+    enableNfsV3AllSquash?: boolean;
+  };
+  etag?: string;
+}
 export const BlobContainersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -415,10 +552,22 @@ export const BlobContainersCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersCreateInput = typeof BlobContainersCreateInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersCreateInput>;
 
 // Output Schema
+export interface BlobContainersCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobContainersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -438,8 +587,7 @@ export const BlobContainersCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobContainersCreateOutput = typeof BlobContainersCreateOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersCreateOutput>;
 
 // The operation
 /**
@@ -458,6 +606,19 @@ export const BlobContainersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BlobContainersCreateOrUpdateImmutabilityPolicyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+  properties: {
+    immutabilityPeriodSinceCreationInDays?: number;
+    state?: "Locked" | "Unlocked";
+    allowProtectedAppendWrites?: boolean;
+    allowProtectedAppendWritesAll?: boolean;
+  };
+  etag?: string;
+}
 export const BlobContainersCreateOrUpdateImmutabilityPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -477,11 +638,22 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersCreateOrUpdateImmutabilityPolicyInput =
-  typeof BlobContainersCreateOrUpdateImmutabilityPolicyInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersCreateOrUpdateImmutabilityPolicyInput>;
 
 // Output Schema
+export interface BlobContainersCreateOrUpdateImmutabilityPolicyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobContainersCreateOrUpdateImmutabilityPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -501,9 +673,7 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobContainersCreateOrUpdateImmutabilityPolicyOutput =
-  typeof BlobContainersCreateOrUpdateImmutabilityPolicyOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersCreateOrUpdateImmutabilityPolicyOutput>;
 
 // The operation
 /**
@@ -522,6 +692,12 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicy =
     outputSchema: BlobContainersCreateOrUpdateImmutabilityPolicyOutput,
   }));
 // Input Schema
+export interface BlobContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+}
 export const BlobContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -534,13 +710,12 @@ export const BlobContainersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersDeleteInput = typeof BlobContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersDeleteInput>;
 
 // Output Schema
+export type BlobContainersDeleteOutput = void;
 export const BlobContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BlobContainersDeleteOutput = typeof BlobContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobContainersDeleteOutput>;
 
 // The operation
 /**
@@ -559,6 +734,12 @@ export const BlobContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BlobContainersDeleteImmutabilityPolicyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+}
 export const BlobContainersDeleteImmutabilityPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -571,11 +752,22 @@ export const BlobContainersDeleteImmutabilityPolicyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersDeleteImmutabilityPolicyInput =
-  typeof BlobContainersDeleteImmutabilityPolicyInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersDeleteImmutabilityPolicyInput>;
 
 // Output Schema
+export interface BlobContainersDeleteImmutabilityPolicyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobContainersDeleteImmutabilityPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -595,9 +787,7 @@ export const BlobContainersDeleteImmutabilityPolicyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobContainersDeleteImmutabilityPolicyOutput =
-  typeof BlobContainersDeleteImmutabilityPolicyOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersDeleteImmutabilityPolicyOutput>;
 
 // The operation
 /**
@@ -616,6 +806,19 @@ export const BlobContainersDeleteImmutabilityPolicy =
     outputSchema: BlobContainersDeleteImmutabilityPolicyOutput,
   }));
 // Input Schema
+export interface BlobContainersExtendImmutabilityPolicyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+  properties: {
+    immutabilityPeriodSinceCreationInDays?: number;
+    state?: "Locked" | "Unlocked";
+    allowProtectedAppendWrites?: boolean;
+    allowProtectedAppendWritesAll?: boolean;
+  };
+  etag?: string;
+}
 export const BlobContainersExtendImmutabilityPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -635,11 +838,22 @@ export const BlobContainersExtendImmutabilityPolicyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersExtendImmutabilityPolicyInput =
-  typeof BlobContainersExtendImmutabilityPolicyInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersExtendImmutabilityPolicyInput>;
 
 // Output Schema
+export interface BlobContainersExtendImmutabilityPolicyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobContainersExtendImmutabilityPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -659,9 +873,7 @@ export const BlobContainersExtendImmutabilityPolicyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobContainersExtendImmutabilityPolicyOutput =
-  typeof BlobContainersExtendImmutabilityPolicyOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersExtendImmutabilityPolicyOutput>;
 
 // The operation
 /**
@@ -680,6 +892,12 @@ export const BlobContainersExtendImmutabilityPolicy =
     outputSchema: BlobContainersExtendImmutabilityPolicyOutput,
   }));
 // Input Schema
+export interface BlobContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+}
 export const BlobContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -693,10 +911,22 @@ export const BlobContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type BlobContainersGetInput = typeof BlobContainersGetInput.Type;
+) as unknown as Schema.Codec<BlobContainersGetInput>;
 
 // Output Schema
+export interface BlobContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -716,8 +946,7 @@ export const BlobContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobContainersGetOutput = typeof BlobContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersGetOutput>;
 
 // The operation
 /**
@@ -734,6 +963,12 @@ export const BlobContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BlobContainersGetOutput,
 }));
 // Input Schema
+export interface BlobContainersGetImmutabilityPolicyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+}
 export const BlobContainersGetImmutabilityPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -746,11 +981,22 @@ export const BlobContainersGetImmutabilityPolicyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersGetImmutabilityPolicyInput =
-  typeof BlobContainersGetImmutabilityPolicyInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersGetImmutabilityPolicyInput>;
 
 // Output Schema
+export interface BlobContainersGetImmutabilityPolicyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobContainersGetImmutabilityPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -770,9 +1016,7 @@ export const BlobContainersGetImmutabilityPolicyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobContainersGetImmutabilityPolicyOutput =
-  typeof BlobContainersGetImmutabilityPolicyOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersGetImmutabilityPolicyOutput>;
 
 // The operation
 /**
@@ -791,6 +1035,17 @@ export const BlobContainersGetImmutabilityPolicy =
     outputSchema: BlobContainersGetImmutabilityPolicyOutput,
   }));
 // Input Schema
+export interface BlobContainersLeaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+  action: "Acquire" | "Renew" | "Change" | "Release" | "Break";
+  leaseId?: string;
+  breakPeriod?: number;
+  leaseDuration?: number;
+  proposedLeaseId?: string;
+}
 export const BlobContainersLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -808,16 +1063,18 @@ export const BlobContainersLeaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersLeaseInput = typeof BlobContainersLeaseInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersLeaseInput>;
 
 // Output Schema
+export interface BlobContainersLeaseOutput {
+  leaseId?: string;
+  leaseTimeSeconds?: string;
+}
 export const BlobContainersLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     leaseId: Schema.optional(Schema.String),
     leaseTimeSeconds: Schema.optional(Schema.String),
-  });
-export type BlobContainersLeaseOutput = typeof BlobContainersLeaseOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersLeaseOutput>;
 
 // The operation
 /**
@@ -834,6 +1091,14 @@ export const BlobContainersLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BlobContainersLeaseOutput,
 }));
 // Input Schema
+export interface BlobContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $maxpagesize?: string;
+  $filter?: string;
+  $include?: "deleted";
+}
 export const BlobContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -848,10 +1113,25 @@ export const BlobContainersListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersListInput = typeof BlobContainersListInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersListInput>;
 
 // Output Schema
+export interface BlobContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BlobContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -886,8 +1166,7 @@ export const BlobContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BlobContainersListOutput = typeof BlobContainersListOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersListOutput>;
 
 // The operation
 /**
@@ -906,6 +1185,12 @@ export const BlobContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BlobContainersListOutput,
 }));
 // Input Schema
+export interface BlobContainersLockImmutabilityPolicyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+}
 export const BlobContainersLockImmutabilityPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -918,11 +1203,22 @@ export const BlobContainersLockImmutabilityPolicyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersLockImmutabilityPolicyInput =
-  typeof BlobContainersLockImmutabilityPolicyInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersLockImmutabilityPolicyInput>;
 
 // Output Schema
+export interface BlobContainersLockImmutabilityPolicyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobContainersLockImmutabilityPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -942,9 +1238,7 @@ export const BlobContainersLockImmutabilityPolicyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobContainersLockImmutabilityPolicyOutput =
-  typeof BlobContainersLockImmutabilityPolicyOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersLockImmutabilityPolicyOutput>;
 
 // The operation
 /**
@@ -963,6 +1257,12 @@ export const BlobContainersLockImmutabilityPolicy =
     outputSchema: BlobContainersLockImmutabilityPolicyOutput,
   }));
 // Input Schema
+export interface BlobContainersObjectLevelWormInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+}
 export const BlobContainersObjectLevelWormInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -975,15 +1275,12 @@ export const BlobContainersObjectLevelWormInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersObjectLevelWormInput =
-  typeof BlobContainersObjectLevelWormInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersObjectLevelWormInput>;
 
 // Output Schema
+export type BlobContainersObjectLevelWormOutput = void;
 export const BlobContainersObjectLevelWormOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BlobContainersObjectLevelWormOutput =
-  typeof BlobContainersObjectLevelWormOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobContainersObjectLevelWormOutput>;
 
 // The operation
 /**
@@ -1001,6 +1298,15 @@ export const BlobContainersObjectLevelWorm =
     outputSchema: BlobContainersObjectLevelWormOutput,
   }));
 // Input Schema
+export interface BlobContainersSetLegalHoldInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+  hasLegalHold?: boolean;
+  tags: string[];
+  allowProtectedAppendWritesAll?: boolean;
+}
 export const BlobContainersSetLegalHoldInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1016,19 +1322,20 @@ export const BlobContainersSetLegalHoldInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersSetLegalHoldInput =
-  typeof BlobContainersSetLegalHoldInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersSetLegalHoldInput>;
 
 // Output Schema
+export interface BlobContainersSetLegalHoldOutput {
+  hasLegalHold?: boolean;
+  tags: string[];
+  allowProtectedAppendWritesAll?: boolean;
+}
 export const BlobContainersSetLegalHoldOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasLegalHold: Schema.optional(Schema.Boolean),
     tags: Schema.Array(Schema.String),
     allowProtectedAppendWritesAll: Schema.optional(Schema.Boolean),
-  });
-export type BlobContainersSetLegalHoldOutput =
-  typeof BlobContainersSetLegalHoldOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersSetLegalHoldOutput>;
 
 // The operation
 /**
@@ -1047,6 +1354,69 @@ export const BlobContainersSetLegalHold = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BlobContainersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  containerName: string;
+  properties?: {
+    version?: string;
+    deleted?: boolean;
+    deletedTime?: string;
+    remainingRetentionDays?: number;
+    defaultEncryptionScope?: string;
+    denyEncryptionScopeOverride?: boolean;
+    publicAccess?: "Container" | "Blob" | "None";
+    lastModifiedTime?: string;
+    leaseStatus?: "Locked" | "Unlocked";
+    leaseState?: "Available" | "Leased" | "Expired" | "Breaking" | "Broken";
+    leaseDuration?: "Infinite" | "Fixed";
+    metadata?: Record<string, string>;
+    immutabilityPolicy?: {
+      properties?: {
+        immutabilityPeriodSinceCreationInDays?: number;
+        state?: "Locked" | "Unlocked";
+        allowProtectedAppendWrites?: boolean;
+        allowProtectedAppendWritesAll?: boolean;
+      };
+      etag?: string;
+      updateHistory?: {
+        update?: "put" | "lock" | "extend";
+        immutabilityPeriodSinceCreationInDays?: number;
+        timestamp?: string;
+        objectIdentifier?: string;
+        tenantId?: string;
+        upn?: string;
+        allowProtectedAppendWrites?: boolean;
+        allowProtectedAppendWritesAll?: boolean;
+      }[];
+    };
+    legalHold?: {
+      hasLegalHold?: boolean;
+      tags?: {
+        tag?: string;
+        timestamp?: string;
+        objectIdentifier?: string;
+        tenantId?: string;
+        upn?: string;
+      }[];
+      protectedAppendWritesHistory?: {
+        allowProtectedAppendWritesAll?: boolean;
+        timestamp?: string;
+      };
+    };
+    hasLegalHold?: boolean;
+    hasImmutabilityPolicy?: boolean;
+    immutableStorageWithVersioning?: {
+      enabled?: boolean;
+      timeStamp?: string;
+      migrationState?: "InProgress" | "Completed";
+    };
+    enableNfsV3RootSquash?: boolean;
+    enableNfsV3AllSquash?: boolean;
+  };
+  etag?: string;
+}
 export const BlobContainersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1156,10 +1526,22 @@ export const BlobContainersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobContainersUpdateInput = typeof BlobContainersUpdateInput.Type;
+  ) as unknown as Schema.Codec<BlobContainersUpdateInput>;
 
 // Output Schema
+export interface BlobContainersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobContainersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1179,8 +1561,7 @@ export const BlobContainersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobContainersUpdateOutput = typeof BlobContainersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BlobContainersUpdateOutput>;
 
 // The operation
 /**
@@ -1199,6 +1580,40 @@ export const BlobContainersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BlobInventoryPoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  blobInventoryPolicyName: "default";
+  properties?: {
+    lastModifiedTime?: string;
+    policy: {
+      enabled: boolean;
+      destination?: string;
+      type: "Inventory";
+      rules: {
+        enabled: boolean;
+        name: string;
+        destination: string;
+        definition: {
+          filters?: {
+            prefixMatch?: string[];
+            excludePrefix?: string[];
+            blobTypes?: string[];
+            includeBlobVersions?: boolean;
+            includeSnapshots?: boolean;
+            includeDeleted?: boolean;
+            creationTime?: { lastNDays?: number };
+          };
+          format: "Csv" | "Parquet";
+          schedule: "Daily" | "Weekly";
+          objectType: "Blob" | "Container";
+          schemaFields: string[];
+        };
+      }[];
+    };
+  };
+}
 export const BlobInventoryPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1249,11 +1664,22 @@ export const BlobInventoryPoliciesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobInventoryPoliciesCreateOrUpdateInput =
-  typeof BlobInventoryPoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BlobInventoryPoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface BlobInventoryPoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobInventoryPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1273,9 +1699,7 @@ export const BlobInventoryPoliciesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobInventoryPoliciesCreateOrUpdateOutput =
-  typeof BlobInventoryPoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BlobInventoryPoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1293,6 +1717,12 @@ export const BlobInventoryPoliciesCreateOrUpdate =
     outputSchema: BlobInventoryPoliciesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BlobInventoryPoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  blobInventoryPolicyName: "default";
+}
 export const BlobInventoryPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1305,15 +1735,12 @@ export const BlobInventoryPoliciesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobInventoryPoliciesDeleteInput =
-  typeof BlobInventoryPoliciesDeleteInput.Type;
+  ) as unknown as Schema.Codec<BlobInventoryPoliciesDeleteInput>;
 
 // Output Schema
+export type BlobInventoryPoliciesDeleteOutput = void;
 export const BlobInventoryPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BlobInventoryPoliciesDeleteOutput =
-  typeof BlobInventoryPoliciesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BlobInventoryPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -1332,6 +1759,12 @@ export const BlobInventoryPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BlobInventoryPoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  blobInventoryPolicyName: "default";
+}
 export const BlobInventoryPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1344,11 +1777,22 @@ export const BlobInventoryPoliciesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobInventoryPoliciesGetInput =
-  typeof BlobInventoryPoliciesGetInput.Type;
+  ) as unknown as Schema.Codec<BlobInventoryPoliciesGetInput>;
 
 // Output Schema
+export interface BlobInventoryPoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobInventoryPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1368,9 +1812,7 @@ export const BlobInventoryPoliciesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobInventoryPoliciesGetOutput =
-  typeof BlobInventoryPoliciesGetOutput.Type;
+  }) as unknown as Schema.Codec<BlobInventoryPoliciesGetOutput>;
 
 // The operation
 /**
@@ -1389,6 +1831,11 @@ export const BlobInventoryPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BlobInventoryPoliciesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BlobInventoryPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1400,11 +1847,25 @@ export const BlobInventoryPoliciesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobInventoryPoliciesListInput =
-  typeof BlobInventoryPoliciesListInput.Type;
+  ) as unknown as Schema.Codec<BlobInventoryPoliciesListInput>;
 
 // Output Schema
+export interface BlobInventoryPoliciesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BlobInventoryPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1441,9 +1902,7 @@ export const BlobInventoryPoliciesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BlobInventoryPoliciesListOutput =
-  typeof BlobInventoryPoliciesListOutput.Type;
+  }) as unknown as Schema.Codec<BlobInventoryPoliciesListOutput>;
 
 // The operation
 /**
@@ -1461,6 +1920,11 @@ export const BlobInventoryPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BlobServicesGetServicePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BlobServicesGetServicePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1472,11 +1936,22 @@ export const BlobServicesGetServicePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobServicesGetServicePropertiesInput =
-  typeof BlobServicesGetServicePropertiesInput.Type;
+  ) as unknown as Schema.Codec<BlobServicesGetServicePropertiesInput>;
 
 // Output Schema
+export interface BlobServicesGetServicePropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobServicesGetServicePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1496,9 +1971,7 @@ export const BlobServicesGetServicePropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobServicesGetServicePropertiesOutput =
-  typeof BlobServicesGetServicePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<BlobServicesGetServicePropertiesOutput>;
 
 // The operation
 /**
@@ -1515,6 +1988,11 @@ export const BlobServicesGetServiceProperties =
     outputSchema: BlobServicesGetServicePropertiesOutput,
   }));
 // Input Schema
+export interface BlobServicesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BlobServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1525,10 +2003,25 @@ export const BlobServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices",
     apiVersion: "2026-04-01",
   }),
-);
-export type BlobServicesListInput = typeof BlobServicesListInput.Type;
+) as unknown as Schema.Codec<BlobServicesListInput>;
 
 // Output Schema
+export interface BlobServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BlobServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -1566,8 +2059,7 @@ export const BlobServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type BlobServicesListOutput = typeof BlobServicesListOutput.Type;
+) as unknown as Schema.Codec<BlobServicesListOutput>;
 
 // The operation
 /**
@@ -1583,6 +2075,83 @@ export const BlobServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BlobServicesListOutput,
 }));
 // Input Schema
+export interface BlobServicesSetServicePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    cors?: {
+      corsRules?: {
+        allowedOrigins: string[];
+        allowedMethods: (
+          | "DELETE"
+          | "GET"
+          | "HEAD"
+          | "MERGE"
+          | "POST"
+          | "OPTIONS"
+          | "PUT"
+          | "PATCH"
+          | "CONNECT"
+          | "TRACE"
+        )[];
+        maxAgeInSeconds: number;
+        exposedHeaders: string[];
+        allowedHeaders: string[];
+      }[];
+    };
+    defaultServiceVersion?: string;
+    deleteRetentionPolicy?: {
+      enabled?: boolean;
+      days?: number;
+      allowPermanentDelete?: boolean;
+    };
+    staticWebsite?: {
+      enabled: boolean;
+      indexDocument?: string;
+      defaultIndexDocumentPath?: string;
+      errorDocument404Path?: string;
+    };
+    isVersioningEnabled?: boolean;
+    automaticSnapshotPolicyEnabled?: boolean;
+    changeFeed?: { enabled?: boolean; retentionInDays?: number };
+    restorePolicy?: {
+      enabled: boolean;
+      days?: number;
+      lastEnabledTime?: string;
+      minRestoreTime?: string;
+    };
+    containerDeleteRetentionPolicy?: {
+      enabled?: boolean;
+      days?: number;
+      allowPermanentDelete?: boolean;
+    };
+    lastAccessTimeTrackingPolicy?: {
+      enable: boolean;
+      name?: "AccessTimeTracking";
+      trackingGranularityInDays?: number;
+      blobType?: string[];
+    };
+  };
+  sku?: {
+    name:
+      | "Standard_LRS"
+      | "Standard_GRS"
+      | "Standard_RAGRS"
+      | "Standard_ZRS"
+      | "Premium_LRS"
+      | "Premium_ZRS"
+      | "Standard_GZRS"
+      | "Standard_RAGZRS"
+      | "StandardV2_LRS"
+      | "StandardV2_GRS"
+      | "StandardV2_ZRS"
+      | "StandardV2_GZRS"
+      | "PremiumV2_LRS"
+      | "PremiumV2_ZRS";
+    tier?: "Standard" | "Premium";
+  };
+}
 export const BlobServicesSetServicePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1694,11 +2263,22 @@ export const BlobServicesSetServicePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BlobServicesSetServicePropertiesInput =
-  typeof BlobServicesSetServicePropertiesInput.Type;
+  ) as unknown as Schema.Codec<BlobServicesSetServicePropertiesInput>;
 
 // Output Schema
+export interface BlobServicesSetServicePropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BlobServicesSetServicePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1718,9 +2298,7 @@ export const BlobServicesSetServicePropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BlobServicesSetServicePropertiesOutput =
-  typeof BlobServicesSetServicePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<BlobServicesSetServicePropertiesOutput>;
 
 // The operation
 /**
@@ -1737,6 +2315,30 @@ export const BlobServicesSetServiceProperties =
     outputSchema: BlobServicesSetServicePropertiesOutput,
   }));
 // Input Schema
+export interface ConnectorsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectorName: string;
+  properties: {
+    uniqueId?: string;
+    state?: "Active" | "Inactive";
+    creationTime?: string;
+    description?: string;
+    testConnection?: boolean;
+    dataSourceType: "Azure_DataShare";
+    source: { type: "DataShare" };
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Succeeded"
+      | "Deleting"
+      | "Canceled"
+      | "Failed";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConnectorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1771,10 +2373,22 @@ export const ConnectorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type ConnectorsCreateInput = typeof ConnectorsCreateInput.Type;
+) as unknown as Schema.Codec<ConnectorsCreateInput>;
 
 // Output Schema
+export interface ConnectorsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1795,8 +2409,7 @@ export const ConnectorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ConnectorsCreateOutput = typeof ConnectorsCreateOutput.Type;
+) as unknown as Schema.Codec<ConnectorsCreateOutput>;
 
 // The operation
 /**
@@ -1813,6 +2426,12 @@ export const ConnectorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectorsCreateOutput,
 }));
 // Input Schema
+export interface ConnectorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectorName: string;
+}
 export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1824,12 +2443,12 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
+) as unknown as Schema.Codec<ConnectorsDeleteInput>;
 
 // Output Schema
-export const ConnectorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectorsDeleteOutput = typeof ConnectorsDeleteOutput.Type;
+export type ConnectorsDeleteOutput = void;
+export const ConnectorsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -1846,6 +2465,12 @@ export const ConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectorsDeleteOutput,
 }));
 // Input Schema
+export interface ConnectorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectorName: string;
+}
 export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1857,10 +2482,22 @@ export const ConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type ConnectorsGetInput = typeof ConnectorsGetInput.Type;
+) as unknown as Schema.Codec<ConnectorsGetInput>;
 
 // Output Schema
+export interface ConnectorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1879,8 +2516,7 @@ export const ConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ConnectorsGetOutput = typeof ConnectorsGetOutput.Type;
+}) as unknown as Schema.Codec<ConnectorsGetOutput>;
 
 // The operation
 /**
@@ -1897,6 +2533,11 @@ export const ConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectorsGetOutput,
 }));
 // Input Schema
+export interface ConnectorsListByStorageAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const ConnectorsListByStorageAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1908,11 +2549,25 @@ export const ConnectorsListByStorageAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ConnectorsListByStorageAccountInput =
-  typeof ConnectorsListByStorageAccountInput.Type;
+  ) as unknown as Schema.Codec<ConnectorsListByStorageAccountInput>;
 
 // Output Schema
+export interface ConnectorsListByStorageAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectorsListByStorageAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1947,9 +2602,7 @@ export const ConnectorsListByStorageAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectorsListByStorageAccountOutput =
-  typeof ConnectorsListByStorageAccountOutput.Type;
+  }) as unknown as Schema.Codec<ConnectorsListByStorageAccountOutput>;
 
 // The operation
 /**
@@ -1966,6 +2619,13 @@ export const ConnectorsListByStorageAccount =
     outputSchema: ConnectorsListByStorageAccountOutput,
   }));
 // Input Schema
+export interface ConnectorsTestExistingConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectorName: string;
+  uniqueId: string;
+}
 export const ConnectorsTestExistingConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1979,19 +2639,20 @@ export const ConnectorsTestExistingConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}/testExistingConnection",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ConnectorsTestExistingConnectionInput =
-  typeof ConnectorsTestExistingConnectionInput.Type;
+  ) as unknown as Schema.Codec<ConnectorsTestExistingConnectionInput>;
 
 // Output Schema
+export interface ConnectorsTestExistingConnectionOutput {
+  storageConnectorMethodName: string;
+  storageConnectorErrorMessage?: string;
+  storageConnectorRequestId: string;
+}
 export const ConnectorsTestExistingConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageConnectorMethodName: Schema.String,
     storageConnectorErrorMessage: Schema.optional(Schema.String),
     storageConnectorRequestId: Schema.String,
-  });
-export type ConnectorsTestExistingConnectionOutput =
-  typeof ConnectorsTestExistingConnectionOutput.Type;
+  }) as unknown as Schema.Codec<ConnectorsTestExistingConnectionOutput>;
 
 // The operation
 /**
@@ -2012,6 +2673,19 @@ export const ConnectorsTestExistingConnection =
     outputSchema: ConnectorsTestExistingConnectionOutput,
   }));
 // Input Schema
+export interface ConnectorsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectorName: string;
+  properties?: {
+    state?: "Active" | "Inactive";
+    description?: string;
+    testConnection?: boolean;
+    source?: { type: "DataShare" };
+  };
+  tags?: Record<string, string>;
+}
 export const ConnectorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2036,10 +2710,22 @@ export const ConnectorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type ConnectorsUpdateInput = typeof ConnectorsUpdateInput.Type;
+) as unknown as Schema.Codec<ConnectorsUpdateInput>;
 
 // Output Schema
+export interface ConnectorsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2060,8 +2746,7 @@ export const ConnectorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ConnectorsUpdateOutput = typeof ConnectorsUpdateOutput.Type;
+) as unknown as Schema.Codec<ConnectorsUpdateOutput>;
 
 // The operation
 /**
@@ -2078,6 +2763,32 @@ export const ConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectorsUpdateOutput,
 }));
 // Input Schema
+export interface DataSharesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  dataShareName: string;
+  properties: {
+    dataShareIdentifier?: string;
+    description?: string;
+    dataShareUri?: string;
+    accessPolicies: {
+      principalId: string;
+      tenantId: string;
+      permission: "None" | "Read";
+    }[];
+    assets: { assetPath: string; displayName: string }[];
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Succeeded"
+      | "Deleting"
+      | "Canceled"
+      | "Failed";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DataSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2119,10 +2830,22 @@ export const DataSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type DataSharesCreateInput = typeof DataSharesCreateInput.Type;
+) as unknown as Schema.Codec<DataSharesCreateInput>;
 
 // Output Schema
+export interface DataSharesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2143,8 +2866,7 @@ export const DataSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type DataSharesCreateOutput = typeof DataSharesCreateOutput.Type;
+) as unknown as Schema.Codec<DataSharesCreateOutput>;
 
 // The operation
 /**
@@ -2161,6 +2883,12 @@ export const DataSharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataSharesCreateOutput,
 }));
 // Input Schema
+export interface DataSharesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  dataShareName: string;
+}
 export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2172,12 +2900,12 @@ export const DataSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type DataSharesDeleteInput = typeof DataSharesDeleteInput.Type;
+) as unknown as Schema.Codec<DataSharesDeleteInput>;
 
 // Output Schema
-export const DataSharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataSharesDeleteOutput = typeof DataSharesDeleteOutput.Type;
+export type DataSharesDeleteOutput = void;
+export const DataSharesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSharesDeleteOutput>;
 
 // The operation
 /**
@@ -2194,6 +2922,12 @@ export const DataSharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataSharesDeleteOutput,
 }));
 // Input Schema
+export interface DataSharesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  dataShareName: string;
+}
 export const DataSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2205,10 +2939,22 @@ export const DataSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type DataSharesGetInput = typeof DataSharesGetInput.Type;
+) as unknown as Schema.Codec<DataSharesGetInput>;
 
 // Output Schema
+export interface DataSharesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2227,8 +2973,7 @@ export const DataSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DataSharesGetOutput = typeof DataSharesGetOutput.Type;
+}) as unknown as Schema.Codec<DataSharesGetOutput>;
 
 // The operation
 /**
@@ -2245,6 +2990,11 @@ export const DataSharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataSharesGetOutput,
 }));
 // Input Schema
+export interface DataSharesListByStorageAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DataSharesListByStorageAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2256,11 +3006,25 @@ export const DataSharesListByStorageAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares",
       apiVersion: "2026-04-01",
     }),
-  );
-export type DataSharesListByStorageAccountInput =
-  typeof DataSharesListByStorageAccountInput.Type;
+  ) as unknown as Schema.Codec<DataSharesListByStorageAccountInput>;
 
 // Output Schema
+export interface DataSharesListByStorageAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataSharesListByStorageAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2295,9 +3059,7 @@ export const DataSharesListByStorageAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataSharesListByStorageAccountOutput =
-  typeof DataSharesListByStorageAccountOutput.Type;
+  }) as unknown as Schema.Codec<DataSharesListByStorageAccountOutput>;
 
 // The operation
 /**
@@ -2314,6 +3076,22 @@ export const DataSharesListByStorageAccount =
     outputSchema: DataSharesListByStorageAccountOutput,
   }));
 // Input Schema
+export interface DataSharesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  dataShareName: string;
+  properties?: {
+    description?: string;
+    accessPolicies?: {
+      principalId: string;
+      tenantId: string;
+      permission: "None" | "Read";
+    }[];
+    assets?: { assetPath: string; displayName: string }[];
+  };
+  tags?: Record<string, string>;
+}
 export const DataSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2348,10 +3126,22 @@ export const DataSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type DataSharesUpdateInput = typeof DataSharesUpdateInput.Type;
+) as unknown as Schema.Codec<DataSharesUpdateInput>;
 
 // Output Schema
+export interface DataSharesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2372,8 +3162,7 @@ export const DataSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type DataSharesUpdateOutput = typeof DataSharesUpdateOutput.Type;
+) as unknown as Schema.Codec<DataSharesUpdateOutput>;
 
 // The operation
 /**
@@ -2390,6 +3179,11 @@ export const DataSharesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataSharesUpdateOutput,
 }));
 // Input Schema
+export interface DeletedAccountsGetInput {
+  subscriptionId: string;
+  location: string;
+  deletedAccountName: string;
+}
 export const DeletedAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2401,10 +3195,22 @@ export const DeletedAccountsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type DeletedAccountsGetInput = typeof DeletedAccountsGetInput.Type;
+  ) as unknown as Schema.Codec<DeletedAccountsGetInput>;
 
 // Output Schema
+export interface DeletedAccountsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeletedAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2424,8 +3230,7 @@ export const DeletedAccountsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeletedAccountsGetOutput = typeof DeletedAccountsGetOutput.Type;
+  }) as unknown as Schema.Codec<DeletedAccountsGetOutput>;
 
 // The operation
 /**
@@ -2441,6 +3246,9 @@ export const DeletedAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeletedAccountsGetOutput,
 }));
 // Input Schema
+export interface DeletedAccountsListInput {
+  subscriptionId: string;
+}
 export const DeletedAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2450,10 +3258,25 @@ export const DeletedAccountsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts",
       apiVersion: "2026-04-01",
     }),
-  );
-export type DeletedAccountsListInput = typeof DeletedAccountsListInput.Type;
+  ) as unknown as Schema.Codec<DeletedAccountsListInput>;
 
 // Output Schema
+export interface DeletedAccountsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeletedAccountsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2488,8 +3311,7 @@ export const DeletedAccountsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeletedAccountsListOutput = typeof DeletedAccountsListOutput.Type;
+  }) as unknown as Schema.Codec<DeletedAccountsListOutput>;
 
 // The operation
 /**
@@ -2503,6 +3325,12 @@ export const DeletedAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeletedAccountsListOutput,
 }));
 // Input Schema
+export interface EncryptionScopesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  encryptionScopeName: string;
+}
 export const EncryptionScopesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2515,10 +3343,22 @@ export const EncryptionScopesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type EncryptionScopesGetInput = typeof EncryptionScopesGetInput.Type;
+  ) as unknown as Schema.Codec<EncryptionScopesGetInput>;
 
 // Output Schema
+export interface EncryptionScopesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EncryptionScopesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2538,8 +3378,7 @@ export const EncryptionScopesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EncryptionScopesGetOutput = typeof EncryptionScopesGetOutput.Type;
+  }) as unknown as Schema.Codec<EncryptionScopesGetOutput>;
 
 // The operation
 /**
@@ -2556,6 +3395,14 @@ export const EncryptionScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EncryptionScopesGetOutput,
 }));
 // Input Schema
+export interface EncryptionScopesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $maxpagesize?: number;
+  $filter?: string;
+  $include?: "All" | "Enabled" | "Disabled";
+}
 export const EncryptionScopesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2570,10 +3417,25 @@ export const EncryptionScopesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes",
       apiVersion: "2026-04-01",
     }),
-  );
-export type EncryptionScopesListInput = typeof EncryptionScopesListInput.Type;
+  ) as unknown as Schema.Codec<EncryptionScopesListInput>;
 
 // Output Schema
+export interface EncryptionScopesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EncryptionScopesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2608,8 +3470,7 @@ export const EncryptionScopesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EncryptionScopesListOutput = typeof EncryptionScopesListOutput.Type;
+  }) as unknown as Schema.Codec<EncryptionScopesListOutput>;
 
 // The operation
 /**
@@ -2630,6 +3491,24 @@ export const EncryptionScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EncryptionScopesPatchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  encryptionScopeName: string;
+  properties?: {
+    source?: "Microsoft.Storage" | "Microsoft.KeyVault";
+    state?: "Enabled" | "Disabled";
+    creationTime?: string;
+    lastModifiedTime?: string;
+    keyVaultProperties?: {
+      keyUri?: string;
+      currentVersionedKeyIdentifier?: string;
+      lastKeyRotationTimestamp?: string;
+    };
+    requireInfrastructureEncryption?: boolean;
+  };
+}
 export const EncryptionScopesPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2660,10 +3539,22 @@ export const EncryptionScopesPatchInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type EncryptionScopesPatchInput = typeof EncryptionScopesPatchInput.Type;
+  ) as unknown as Schema.Codec<EncryptionScopesPatchInput>;
 
 // Output Schema
+export interface EncryptionScopesPatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EncryptionScopesPatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2683,9 +3574,7 @@ export const EncryptionScopesPatchOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EncryptionScopesPatchOutput =
-  typeof EncryptionScopesPatchOutput.Type;
+  }) as unknown as Schema.Codec<EncryptionScopesPatchOutput>;
 
 // The operation
 /**
@@ -2704,6 +3593,24 @@ export const EncryptionScopesPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EncryptionScopesPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  encryptionScopeName: string;
+  properties?: {
+    source?: "Microsoft.Storage" | "Microsoft.KeyVault";
+    state?: "Enabled" | "Disabled";
+    creationTime?: string;
+    lastModifiedTime?: string;
+    keyVaultProperties?: {
+      keyUri?: string;
+      currentVersionedKeyIdentifier?: string;
+      lastKeyRotationTimestamp?: string;
+    };
+    requireInfrastructureEncryption?: boolean;
+  };
+}
 export const EncryptionScopesPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2734,10 +3641,22 @@ export const EncryptionScopesPutInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type EncryptionScopesPutInput = typeof EncryptionScopesPutInput.Type;
+  ) as unknown as Schema.Codec<EncryptionScopesPutInput>;
 
 // Output Schema
+export interface EncryptionScopesPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EncryptionScopesPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2757,8 +3676,7 @@ export const EncryptionScopesPutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EncryptionScopesPutOutput = typeof EncryptionScopesPutOutput.Type;
+  }) as unknown as Schema.Codec<EncryptionScopesPutOutput>;
 
 // The operation
 /**
@@ -2775,6 +3693,11 @@ export const EncryptionScopesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EncryptionScopesPutOutput,
 }));
 // Input Schema
+export interface FileServicesGetServicePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const FileServicesGetServicePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2786,11 +3709,22 @@ export const FileServicesGetServicePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type FileServicesGetServicePropertiesInput =
-  typeof FileServicesGetServicePropertiesInput.Type;
+  ) as unknown as Schema.Codec<FileServicesGetServicePropertiesInput>;
 
 // Output Schema
+export interface FileServicesGetServicePropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileServicesGetServicePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2810,9 +3744,7 @@ export const FileServicesGetServicePropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FileServicesGetServicePropertiesOutput =
-  typeof FileServicesGetServicePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<FileServicesGetServicePropertiesOutput>;
 
 // The operation
 /**
@@ -2829,6 +3761,11 @@ export const FileServicesGetServiceProperties =
     outputSchema: FileServicesGetServicePropertiesOutput,
   }));
 // Input Schema
+export interface FileServicesGetServiceUsageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const FileServicesGetServiceUsageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2840,11 +3777,22 @@ export const FileServicesGetServiceUsageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type FileServicesGetServiceUsageInput =
-  typeof FileServicesGetServiceUsageInput.Type;
+  ) as unknown as Schema.Codec<FileServicesGetServiceUsageInput>;
 
 // Output Schema
+export interface FileServicesGetServiceUsageOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileServicesGetServiceUsageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2864,9 +3812,7 @@ export const FileServicesGetServiceUsageOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FileServicesGetServiceUsageOutput =
-  typeof FileServicesGetServiceUsageOutput.Type;
+  }) as unknown as Schema.Codec<FileServicesGetServiceUsageOutput>;
 
 // The operation
 /**
@@ -2884,6 +3830,11 @@ export const FileServicesGetServiceUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FileServicesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const FileServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2894,10 +3845,24 @@ export const FileServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices",
     apiVersion: "2026-04-01",
   }),
-);
-export type FileServicesListInput = typeof FileServicesListInput.Type;
+) as unknown as Schema.Codec<FileServicesListInput>;
 
 // Output Schema
+export interface FileServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const FileServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -2934,8 +3899,7 @@ export const FileServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type FileServicesListOutput = typeof FileServicesListOutput.Type;
+) as unknown as Schema.Codec<FileServicesListOutput>;
 
 // The operation
 /**
@@ -2951,6 +3915,12 @@ export const FileServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileServicesListOutput,
 }));
 // Input Schema
+export interface FileServicesListServiceUsagesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $maxpagesize?: number;
+}
 export const FileServicesListServiceUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2963,11 +3933,25 @@ export const FileServicesListServiceUsagesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages",
       apiVersion: "2026-04-01",
     }),
-  );
-export type FileServicesListServiceUsagesInput =
-  typeof FileServicesListServiceUsagesInput.Type;
+  ) as unknown as Schema.Codec<FileServicesListServiceUsagesInput>;
 
 // Output Schema
+export interface FileServicesListServiceUsagesOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FileServicesListServiceUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3002,9 +3986,7 @@ export const FileServicesListServiceUsagesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FileServicesListServiceUsagesOutput =
-  typeof FileServicesListServiceUsagesOutput.Type;
+  }) as unknown as Schema.Codec<FileServicesListServiceUsagesOutput>;
 
 // The operation
 /**
@@ -3022,6 +4004,67 @@ export const FileServicesListServiceUsages =
     outputSchema: FileServicesListServiceUsagesOutput,
   }));
 // Input Schema
+export interface FileServicesSetServicePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    cors?: {
+      corsRules?: {
+        allowedOrigins: string[];
+        allowedMethods: (
+          | "DELETE"
+          | "GET"
+          | "HEAD"
+          | "MERGE"
+          | "POST"
+          | "OPTIONS"
+          | "PUT"
+          | "PATCH"
+          | "CONNECT"
+          | "TRACE"
+        )[];
+        maxAgeInSeconds: number;
+        exposedHeaders: string[];
+        allowedHeaders: string[];
+      }[];
+    };
+    shareDeleteRetentionPolicy?: {
+      enabled?: boolean;
+      days?: number;
+      allowPermanentDelete?: boolean;
+    };
+    protocolSettings?: {
+      smb?: {
+        multichannel?: { enabled?: boolean };
+        versions?: string;
+        authenticationMethods?: string;
+        kerberosTicketEncryption?: string;
+        channelEncryption?: string;
+        encryptionInTransit?: { required?: boolean };
+      };
+      nfs?: { encryptionInTransit?: { required?: boolean } };
+    };
+  };
+  sku?: {
+    name:
+      | "Standard_LRS"
+      | "Standard_GRS"
+      | "Standard_RAGRS"
+      | "Standard_ZRS"
+      | "Premium_LRS"
+      | "Premium_ZRS"
+      | "Standard_GZRS"
+      | "Standard_RAGZRS"
+      | "StandardV2_LRS"
+      | "StandardV2_GRS"
+      | "StandardV2_ZRS"
+      | "StandardV2_GZRS"
+      | "PremiumV2_LRS"
+      | "PremiumV2_ZRS";
+    tier?: "Standard" | "Premium";
+  };
+}
 export const FileServicesSetServicePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3124,11 +4167,22 @@ export const FileServicesSetServicePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type FileServicesSetServicePropertiesInput =
-  typeof FileServicesSetServicePropertiesInput.Type;
+  ) as unknown as Schema.Codec<FileServicesSetServicePropertiesInput>;
 
 // Output Schema
+export interface FileServicesSetServicePropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileServicesSetServicePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3148,9 +4202,7 @@ export const FileServicesSetServicePropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FileServicesSetServicePropertiesOutput =
-  typeof FileServicesSetServicePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<FileServicesSetServicePropertiesOutput>;
 
 // The operation
 /**
@@ -3167,6 +4219,53 @@ export const FileServicesSetServiceProperties =
     outputSchema: FileServicesSetServicePropertiesOutput,
   }));
 // Input Schema
+export interface FileSharesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $expand?: string;
+  properties?: {
+    lastModifiedTime?: string;
+    metadata?: Record<string, string>;
+    shareQuota?: number;
+    provisionedIops?: number;
+    provisionedBandwidthMibps?: number;
+    includedBurstIops?: number;
+    maxBurstCreditsForIops?: number;
+    nextAllowedQuotaDowngradeTime?: string;
+    nextAllowedProvisionedIopsDowngradeTime?: string;
+    nextAllowedProvisionedBandwidthDowngradeTime?: string;
+    enabledProtocols?: "SMB" | "NFS";
+    rootSquash?: "NoRootSquash" | "RootSquash" | "AllSquash";
+    version?: string;
+    deleted?: boolean;
+    deletedTime?: string;
+    remainingRetentionDays?: number;
+    accessTier?: "TransactionOptimized" | "Hot" | "Cool" | "Premium";
+    accessTierChangeTime?: string;
+    accessTierStatus?: string;
+    shareUsageBytes?: number;
+    leaseStatus?: "Locked" | "Unlocked";
+    leaseState?: "Available" | "Leased" | "Expired" | "Breaking" | "Broken";
+    leaseDuration?: "Infinite" | "Fixed";
+    signedIdentifiers?: {
+      id?: string;
+      accessPolicy?: {
+        startTime?: string;
+        expiryTime?: string;
+        permission?: string;
+      };
+    }[];
+    snapshotTime?: string;
+    fileSharePaidBursting?: {
+      paidBurstingEnabled?: boolean;
+      paidBurstingMaxIops?: number;
+      paidBurstingMaxBandwidthMibps?: number;
+    };
+  };
+  etag?: string;
+}
 export const FileSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3243,10 +4342,22 @@ export const FileSharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type FileSharesCreateInput = typeof FileSharesCreateInput.Type;
+) as unknown as Schema.Codec<FileSharesCreateInput>;
 
 // Output Schema
+export interface FileSharesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3267,8 +4378,7 @@ export const FileSharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type FileSharesCreateOutput = typeof FileSharesCreateOutput.Type;
+) as unknown as Schema.Codec<FileSharesCreateOutput>;
 
 // The operation
 /**
@@ -3286,6 +4396,13 @@ export const FileSharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesCreateOutput,
 }));
 // Input Schema
+export interface FileSharesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $include?: string;
+}
 export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3298,12 +4415,12 @@ export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type FileSharesDeleteInput = typeof FileSharesDeleteInput.Type;
+) as unknown as Schema.Codec<FileSharesDeleteInput>;
 
 // Output Schema
-export const FileSharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileSharesDeleteOutput = typeof FileSharesDeleteOutput.Type;
+export type FileSharesDeleteOutput = void;
+export const FileSharesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesDeleteOutput>;
 
 // The operation
 /**
@@ -3322,6 +4439,13 @@ export const FileSharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesDeleteOutput,
 }));
 // Input Schema
+export interface FileSharesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $expand?: string;
+}
 export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3334,10 +4458,22 @@ export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type FileSharesGetInput = typeof FileSharesGetInput.Type;
+) as unknown as Schema.Codec<FileSharesGetInput>;
 
 // Output Schema
+export interface FileSharesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3356,8 +4492,7 @@ export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FileSharesGetOutput = typeof FileSharesGetOutput.Type;
+}) as unknown as Schema.Codec<FileSharesGetOutput>;
 
 // The operation
 /**
@@ -3376,6 +4511,17 @@ export const FileSharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesGetOutput,
 }));
 // Input Schema
+export interface FileSharesLeaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  action: "Acquire" | "Renew" | "Change" | "Release" | "Break";
+  leaseId?: string;
+  breakPeriod?: number;
+  leaseDuration?: number;
+  proposedLeaseId?: string;
+}
 export const FileSharesLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3392,15 +4538,17 @@ export const FileSharesLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/lease",
     apiVersion: "2026-04-01",
   }),
-);
-export type FileSharesLeaseInput = typeof FileSharesLeaseInput.Type;
+) as unknown as Schema.Codec<FileSharesLeaseInput>;
 
 // Output Schema
+export interface FileSharesLeaseOutput {
+  leaseId?: string;
+  leaseTimeSeconds?: string;
+}
 export const FileSharesLeaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   leaseId: Schema.optional(Schema.String),
   leaseTimeSeconds: Schema.optional(Schema.String),
-});
-export type FileSharesLeaseOutput = typeof FileSharesLeaseOutput.Type;
+}) as unknown as Schema.Codec<FileSharesLeaseOutput>;
 
 // The operation
 /**
@@ -3418,6 +4566,14 @@ export const FileSharesLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesLeaseOutput,
 }));
 // Input Schema
+export interface FileSharesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $maxpagesize?: string;
+  $filter?: string;
+  $expand?: string;
+}
 export const FileSharesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3431,10 +4587,25 @@ export const FileSharesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares",
     apiVersion: "2026-04-01",
   }),
-);
-export type FileSharesListInput = typeof FileSharesListInput.Type;
+) as unknown as Schema.Codec<FileSharesListInput>;
 
 // Output Schema
+export interface FileSharesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FileSharesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -3458,8 +4629,7 @@ export const FileSharesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FileSharesListOutput = typeof FileSharesListOutput.Type;
+}) as unknown as Schema.Codec<FileSharesListOutput>;
 
 // The operation
 /**
@@ -3478,6 +4648,14 @@ export const FileSharesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesListOutput,
 }));
 // Input Schema
+export interface FileSharesRestoreInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  deletedShareName: string;
+  deletedShareVersion: string;
+}
 export const FileSharesRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3493,12 +4671,12 @@ export const FileSharesRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore",
     apiVersion: "2026-04-01",
   }),
-);
-export type FileSharesRestoreInput = typeof FileSharesRestoreInput.Type;
+) as unknown as Schema.Codec<FileSharesRestoreInput>;
 
 // Output Schema
-export const FileSharesRestoreOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileSharesRestoreOutput = typeof FileSharesRestoreOutput.Type;
+export type FileSharesRestoreOutput = void;
+export const FileSharesRestoreOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesRestoreOutput>;
 
 // The operation
 /**
@@ -3515,6 +4693,52 @@ export const FileSharesRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesRestoreOutput,
 }));
 // Input Schema
+export interface FileSharesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  properties?: {
+    lastModifiedTime?: string;
+    metadata?: Record<string, string>;
+    shareQuota?: number;
+    provisionedIops?: number;
+    provisionedBandwidthMibps?: number;
+    includedBurstIops?: number;
+    maxBurstCreditsForIops?: number;
+    nextAllowedQuotaDowngradeTime?: string;
+    nextAllowedProvisionedIopsDowngradeTime?: string;
+    nextAllowedProvisionedBandwidthDowngradeTime?: string;
+    enabledProtocols?: "SMB" | "NFS";
+    rootSquash?: "NoRootSquash" | "RootSquash" | "AllSquash";
+    version?: string;
+    deleted?: boolean;
+    deletedTime?: string;
+    remainingRetentionDays?: number;
+    accessTier?: "TransactionOptimized" | "Hot" | "Cool" | "Premium";
+    accessTierChangeTime?: string;
+    accessTierStatus?: string;
+    shareUsageBytes?: number;
+    leaseStatus?: "Locked" | "Unlocked";
+    leaseState?: "Available" | "Leased" | "Expired" | "Breaking" | "Broken";
+    leaseDuration?: "Infinite" | "Fixed";
+    signedIdentifiers?: {
+      id?: string;
+      accessPolicy?: {
+        startTime?: string;
+        expiryTime?: string;
+        permission?: string;
+      };
+    }[];
+    snapshotTime?: string;
+    fileSharePaidBursting?: {
+      paidBurstingEnabled?: boolean;
+      paidBurstingMaxIops?: number;
+      paidBurstingMaxBandwidthMibps?: number;
+    };
+  };
+  etag?: string;
+}
 export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3590,10 +4814,22 @@ export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type FileSharesUpdateInput = typeof FileSharesUpdateInput.Type;
+) as unknown as Schema.Codec<FileSharesUpdateInput>;
 
 // Output Schema
+export interface FileSharesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3614,8 +4850,7 @@ export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type FileSharesUpdateOutput = typeof FileSharesUpdateOutput.Type;
+) as unknown as Schema.Codec<FileSharesUpdateOutput>;
 
 // The operation
 /**
@@ -3632,6 +4867,30 @@ export const FileSharesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesUpdateOutput,
 }));
 // Input Schema
+export interface LocalUsersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  username: string;
+  properties?: {
+    permissionScopes?: {
+      permissions: string;
+      service: string;
+      resourceName: string;
+    }[];
+    homeDirectory?: string;
+    sshAuthorizedKeys?: { description?: string; key?: string }[];
+    sid?: string;
+    hasSharedKey?: boolean;
+    hasSshKey?: boolean;
+    hasSshPassword?: boolean;
+    userId?: number;
+    groupId?: number;
+    allowAclAuthorization?: boolean;
+    extendedGroups?: number[];
+    isNFSv3Enabled?: boolean;
+  };
+}
 export const LocalUsersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3675,11 +4934,22 @@ export const LocalUsersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type LocalUsersCreateOrUpdateInput =
-  typeof LocalUsersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LocalUsersCreateOrUpdateInput>;
 
 // Output Schema
+export interface LocalUsersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LocalUsersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3699,9 +4969,7 @@ export const LocalUsersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LocalUsersCreateOrUpdateOutput =
-  typeof LocalUsersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LocalUsersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3720,6 +4988,12 @@ export const LocalUsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LocalUsersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  username: string;
+}
 export const LocalUsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3731,12 +5005,12 @@ export const LocalUsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
     apiVersion: "2026-04-01",
   }),
-);
-export type LocalUsersDeleteInput = typeof LocalUsersDeleteInput.Type;
+) as unknown as Schema.Codec<LocalUsersDeleteInput>;
 
 // Output Schema
-export const LocalUsersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LocalUsersDeleteOutput = typeof LocalUsersDeleteOutput.Type;
+export type LocalUsersDeleteOutput = void;
+export const LocalUsersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LocalUsersDeleteOutput>;
 
 // The operation
 /**
@@ -3753,6 +5027,12 @@ export const LocalUsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocalUsersDeleteOutput,
 }));
 // Input Schema
+export interface LocalUsersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  username: string;
+}
 export const LocalUsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3764,10 +5044,22 @@ export const LocalUsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
     apiVersion: "2026-04-01",
   }),
-);
-export type LocalUsersGetInput = typeof LocalUsersGetInput.Type;
+) as unknown as Schema.Codec<LocalUsersGetInput>;
 
 // Output Schema
+export interface LocalUsersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LocalUsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3786,8 +5078,7 @@ export const LocalUsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type LocalUsersGetOutput = typeof LocalUsersGetOutput.Type;
+}) as unknown as Schema.Codec<LocalUsersGetOutput>;
 
 // The operation
 /**
@@ -3804,6 +5095,14 @@ export const LocalUsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocalUsersGetOutput,
 }));
 // Input Schema
+export interface LocalUsersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $maxpagesize?: number;
+  $filter?: string;
+  $include?: "nfsv3";
+}
 export const LocalUsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3817,10 +5116,25 @@ export const LocalUsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers",
     apiVersion: "2026-04-01",
   }),
-);
-export type LocalUsersListInput = typeof LocalUsersListInput.Type;
+) as unknown as Schema.Codec<LocalUsersListInput>;
 
 // Output Schema
+export interface LocalUsersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LocalUsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -3844,8 +5158,7 @@ export const LocalUsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type LocalUsersListOutput = typeof LocalUsersListOutput.Type;
+}) as unknown as Schema.Codec<LocalUsersListOutput>;
 
 // The operation
 /**
@@ -3864,6 +5177,12 @@ export const LocalUsersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocalUsersListOutput,
 }));
 // Input Schema
+export interface LocalUsersListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  username: string;
+}
 export const LocalUsersListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3876,10 +5195,13 @@ export const LocalUsersListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/listKeys",
       apiVersion: "2026-04-01",
     }),
-  );
-export type LocalUsersListKeysInput = typeof LocalUsersListKeysInput.Type;
+  ) as unknown as Schema.Codec<LocalUsersListKeysInput>;
 
 // Output Schema
+export interface LocalUsersListKeysOutput {
+  sshAuthorizedKeys?: { description?: string; key?: string }[];
+  sharedKey?: string;
+}
 export const LocalUsersListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sshAuthorizedKeys: Schema.optional(
@@ -3891,8 +5213,7 @@ export const LocalUsersListKeysOutput =
       ),
     ),
     sharedKey: Schema.optional(Schema.String),
-  });
-export type LocalUsersListKeysOutput = typeof LocalUsersListKeysOutput.Type;
+  }) as unknown as Schema.Codec<LocalUsersListKeysOutput>;
 
 // The operation
 /**
@@ -3909,6 +5230,12 @@ export const LocalUsersListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocalUsersListKeysOutput,
 }));
 // Input Schema
+export interface LocalUsersRegeneratePasswordInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  username: string;
+}
 export const LocalUsersRegeneratePasswordInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3921,17 +5248,16 @@ export const LocalUsersRegeneratePasswordInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword",
       apiVersion: "2026-04-01",
     }),
-  );
-export type LocalUsersRegeneratePasswordInput =
-  typeof LocalUsersRegeneratePasswordInput.Type;
+  ) as unknown as Schema.Codec<LocalUsersRegeneratePasswordInput>;
 
 // Output Schema
+export interface LocalUsersRegeneratePasswordOutput {
+  sshPassword?: Redacted.Redacted<string>;
+}
 export const LocalUsersRegeneratePasswordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sshPassword: Schema.optional(SensitiveOutputString),
-  });
-export type LocalUsersRegeneratePasswordOutput =
-  typeof LocalUsersRegeneratePasswordOutput.Type;
+  }) as unknown as Schema.Codec<LocalUsersRegeneratePasswordOutput>;
 
 // The operation
 /**
@@ -3949,6 +5275,108 @@ export const LocalUsersRegeneratePassword =
     outputSchema: LocalUsersRegeneratePasswordOutput,
   }));
 // Input Schema
+export interface ManagementPoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managementPolicyName: "default";
+  properties?: {
+    lastModifiedTime?: string;
+    policy: {
+      rules: {
+        enabled?: boolean;
+        name: string;
+        type: "Lifecycle";
+        definition: {
+          actions: {
+            baseBlob?: {
+              tierToCool?: {
+                daysAfterModificationGreaterThan?: number;
+                daysAfterLastAccessTimeGreaterThan?: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+                daysAfterCreationGreaterThan?: number;
+              };
+              tierToArchive?: {
+                daysAfterModificationGreaterThan?: number;
+                daysAfterLastAccessTimeGreaterThan?: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+                daysAfterCreationGreaterThan?: number;
+              };
+              tierToCold?: {
+                daysAfterModificationGreaterThan?: number;
+                daysAfterLastAccessTimeGreaterThan?: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+                daysAfterCreationGreaterThan?: number;
+              };
+              tierToHot?: {
+                daysAfterModificationGreaterThan?: number;
+                daysAfterLastAccessTimeGreaterThan?: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+                daysAfterCreationGreaterThan?: number;
+              };
+              delete?: {
+                daysAfterModificationGreaterThan?: number;
+                daysAfterLastAccessTimeGreaterThan?: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+                daysAfterCreationGreaterThan?: number;
+              };
+              enableAutoTierToHotFromCool?: boolean;
+            };
+            snapshot?: {
+              tierToCool?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+              tierToArchive?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+              tierToCold?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+              tierToHot?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+              delete?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+            };
+            version?: {
+              tierToCool?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+              tierToArchive?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+              tierToCold?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+              tierToHot?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+              delete?: {
+                daysAfterCreationGreaterThan: number;
+                daysAfterLastTierChangeGreaterThan?: number;
+              };
+            };
+          };
+          filters?: {
+            prefixMatch?: string[];
+            blobTypes: string[];
+            blobIndexMatch?: { name: string; op: string; value: string }[];
+          };
+        };
+      }[];
+    };
+  };
+}
 export const ManagementPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4169,11 +5597,22 @@ export const ManagementPoliciesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ManagementPoliciesCreateOrUpdateInput =
-  typeof ManagementPoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagementPoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ManagementPoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4193,9 +5632,7 @@ export const ManagementPoliciesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementPoliciesCreateOrUpdateOutput =
-  typeof ManagementPoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagementPoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4213,6 +5650,12 @@ export const ManagementPoliciesCreateOrUpdate =
     outputSchema: ManagementPoliciesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ManagementPoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managementPolicyName: "default";
+}
 export const ManagementPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4225,15 +5668,12 @@ export const ManagementPoliciesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ManagementPoliciesDeleteInput =
-  typeof ManagementPoliciesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManagementPoliciesDeleteInput>;
 
 // Output Schema
+export type ManagementPoliciesDeleteOutput = void;
 export const ManagementPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagementPoliciesDeleteOutput =
-  typeof ManagementPoliciesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -4252,6 +5692,12 @@ export const ManagementPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagementPoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managementPolicyName: "default";
+}
 export const ManagementPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4264,10 +5710,22 @@ export const ManagementPoliciesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ManagementPoliciesGetInput = typeof ManagementPoliciesGetInput.Type;
+  ) as unknown as Schema.Codec<ManagementPoliciesGetInput>;
 
 // Output Schema
+export interface ManagementPoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4287,9 +5745,7 @@ export const ManagementPoliciesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementPoliciesGetOutput =
-  typeof ManagementPoliciesGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagementPoliciesGetOutput>;
 
 // The operation
 /**
@@ -4308,6 +5764,12 @@ export const ManagementPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  networkSecurityPerimeterConfigurationName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4322,11 +5784,22 @@ export const NetworkSecurityPerimeterConfigurationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsGetInput =
-  typeof NetworkSecurityPerimeterConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsGetInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkSecurityPerimeterConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4346,9 +5819,7 @@ export const NetworkSecurityPerimeterConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkSecurityPerimeterConfigurationsGetOutput =
-  typeof NetworkSecurityPerimeterConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -4366,6 +5837,11 @@ export const NetworkSecurityPerimeterConfigurationsGet =
     outputSchema: NetworkSecurityPerimeterConfigurationsGetOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4377,11 +5853,25 @@ export const NetworkSecurityPerimeterConfigurationsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsListInput =
-  typeof NetworkSecurityPerimeterConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsListInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterConfigurationsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkSecurityPerimeterConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4416,9 +5906,7 @@ export const NetworkSecurityPerimeterConfigurationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkSecurityPerimeterConfigurationsListOutput =
-  typeof NetworkSecurityPerimeterConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsListOutput>;
 
 // The operation
 /**
@@ -4435,6 +5923,12 @@ export const NetworkSecurityPerimeterConfigurationsList =
     outputSchema: NetworkSecurityPerimeterConfigurationsListOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsReconcileInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  networkSecurityPerimeterConfigurationName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsReconcileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4449,15 +5943,12 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsReconcileInput =
-  typeof NetworkSecurityPerimeterConfigurationsReconcileInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileInput>;
 
 // Output Schema
+export type NetworkSecurityPerimeterConfigurationsReconcileOutput = void;
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  typeof NetworkSecurityPerimeterConfigurationsReconcileOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileOutput>;
 
 // The operation
 /**
@@ -4475,6 +5966,27 @@ export const NetworkSecurityPerimeterConfigurationsReconcile =
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
 // Input Schema
+export interface ObjectReplicationPoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  objectReplicationPolicyId: string;
+  properties?: {
+    policyId?: string;
+    enabledTime?: string;
+    sourceAccount: string;
+    destinationAccount: string;
+    rules?: {
+      ruleId?: string;
+      sourceContainer: string;
+      destinationContainer: string;
+      filters?: { prefixMatch?: string[]; minCreationTime?: string };
+    }[];
+    metrics?: { enabled?: boolean };
+    priorityReplication?: { enabled?: boolean };
+    tagsReplication?: { enabled?: boolean };
+  };
+}
 export const ObjectReplicationPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4525,11 +6037,22 @@ export const ObjectReplicationPoliciesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ObjectReplicationPoliciesCreateOrUpdateInput =
-  typeof ObjectReplicationPoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ObjectReplicationPoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ObjectReplicationPoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ObjectReplicationPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4549,9 +6072,7 @@ export const ObjectReplicationPoliciesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ObjectReplicationPoliciesCreateOrUpdateOutput =
-  typeof ObjectReplicationPoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ObjectReplicationPoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4569,6 +6090,12 @@ export const ObjectReplicationPoliciesCreateOrUpdate =
     outputSchema: ObjectReplicationPoliciesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ObjectReplicationPoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  objectReplicationPolicyId: string;
+}
 export const ObjectReplicationPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4581,15 +6108,12 @@ export const ObjectReplicationPoliciesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ObjectReplicationPoliciesDeleteInput =
-  typeof ObjectReplicationPoliciesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ObjectReplicationPoliciesDeleteInput>;
 
 // Output Schema
+export type ObjectReplicationPoliciesDeleteOutput = void;
 export const ObjectReplicationPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ObjectReplicationPoliciesDeleteOutput =
-  typeof ObjectReplicationPoliciesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ObjectReplicationPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -4607,6 +6131,12 @@ export const ObjectReplicationPoliciesDelete =
     outputSchema: ObjectReplicationPoliciesDeleteOutput,
   }));
 // Input Schema
+export interface ObjectReplicationPoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  objectReplicationPolicyId: string;
+}
 export const ObjectReplicationPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4619,11 +6149,22 @@ export const ObjectReplicationPoliciesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ObjectReplicationPoliciesGetInput =
-  typeof ObjectReplicationPoliciesGetInput.Type;
+  ) as unknown as Schema.Codec<ObjectReplicationPoliciesGetInput>;
 
 // Output Schema
+export interface ObjectReplicationPoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ObjectReplicationPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4643,9 +6184,7 @@ export const ObjectReplicationPoliciesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ObjectReplicationPoliciesGetOutput =
-  typeof ObjectReplicationPoliciesGetOutput.Type;
+  }) as unknown as Schema.Codec<ObjectReplicationPoliciesGetOutput>;
 
 // The operation
 /**
@@ -4663,6 +6202,11 @@ export const ObjectReplicationPoliciesGet =
     outputSchema: ObjectReplicationPoliciesGetOutput,
   }));
 // Input Schema
+export interface ObjectReplicationPoliciesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const ObjectReplicationPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4674,11 +6218,25 @@ export const ObjectReplicationPoliciesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ObjectReplicationPoliciesListInput =
-  typeof ObjectReplicationPoliciesListInput.Type;
+  ) as unknown as Schema.Codec<ObjectReplicationPoliciesListInput>;
 
 // Output Schema
+export interface ObjectReplicationPoliciesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ObjectReplicationPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4715,9 +6273,7 @@ export const ObjectReplicationPoliciesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ObjectReplicationPoliciesListOutput =
-  typeof ObjectReplicationPoliciesListOutput.Type;
+  }) as unknown as Schema.Codec<ObjectReplicationPoliciesListOutput>;
 
 // The operation
 /**
@@ -4734,6 +6290,7 @@ export const ObjectReplicationPoliciesList =
     outputSchema: ObjectReplicationPoliciesListOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -4742,10 +6299,37 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Storage/operations",
     apiVersion: "2026-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          dimensions?: { name?: string; displayName?: string }[];
+          aggregationType?: string;
+          fillGapWithZero?: boolean;
+          category?: string;
+          resourceIdDimensionNameOverride?: string;
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4796,8 +6380,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -4810,6 +6393,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4822,15 +6411,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -4848,6 +6434,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4860,11 +6452,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4884,9 +6487,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -4904,6 +6505,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4915,11 +6521,25 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4956,9 +6576,7 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -4975,6 +6593,21 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5006,11 +6639,22 @@ export const PrivateEndpointConnectionsPutInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PrivateEndpointConnectionsPutInput =
-  typeof PrivateEndpointConnectionsPutInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsPutInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5030,9 +6674,7 @@ export const PrivateEndpointConnectionsPutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsPutOutput =
-  typeof PrivateEndpointConnectionsPutOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsPutOutput>;
 
 // The operation
 /**
@@ -5050,6 +6692,11 @@ export const PrivateEndpointConnectionsPut =
     outputSchema: PrivateEndpointConnectionsPutOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListByStorageAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const PrivateLinkResourcesListByStorageAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5061,11 +6708,24 @@ export const PrivateLinkResourcesListByStorageAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PrivateLinkResourcesListByStorageAccountInput =
-  typeof PrivateLinkResourcesListByStorageAccountInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByStorageAccountInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByStorageAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const PrivateLinkResourcesListByStorageAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5101,9 +6761,7 @@ export const PrivateLinkResourcesListByStorageAccountOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkResourcesListByStorageAccountOutput =
-  typeof PrivateLinkResourcesListByStorageAccountOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByStorageAccountOutput>;
 
 // The operation
 /**
@@ -5120,6 +6778,16 @@ export const PrivateLinkResourcesListByStorageAccount =
     outputSchema: PrivateLinkResourcesListByStorageAccountOutput,
   }));
 // Input Schema
+export interface QueueCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  queueName: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    approximateMessageCount?: number;
+  };
+}
 export const QueueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5137,10 +6805,22 @@ export const QueueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type QueueCreateInput = typeof QueueCreateInput.Type;
+) as unknown as Schema.Codec<QueueCreateInput>;
 
 // Output Schema
+export interface QueueCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5159,8 +6839,7 @@ export const QueueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QueueCreateOutput = typeof QueueCreateOutput.Type;
+}) as unknown as Schema.Codec<QueueCreateOutput>;
 
 // The operation
 /**
@@ -5177,6 +6856,12 @@ export const QueueCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueueCreateOutput,
 }));
 // Input Schema
+export interface QueueDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  queueName: string;
+}
 export const QueueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5188,12 +6873,12 @@ export const QueueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type QueueDeleteInput = typeof QueueDeleteInput.Type;
+) as unknown as Schema.Codec<QueueDeleteInput>;
 
 // Output Schema
-export const QueueDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type QueueDeleteOutput = typeof QueueDeleteOutput.Type;
+export type QueueDeleteOutput = void;
+export const QueueDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<QueueDeleteOutput>;
 
 // The operation
 /**
@@ -5210,6 +6895,12 @@ export const QueueDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueueDeleteOutput,
 }));
 // Input Schema
+export interface QueueGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  queueName: string;
+}
 export const QueueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5221,10 +6912,22 @@ export const QueueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type QueueGetInput = typeof QueueGetInput.Type;
+) as unknown as Schema.Codec<QueueGetInput>;
 
 // Output Schema
+export interface QueueGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5243,8 +6946,7 @@ export const QueueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QueueGetOutput = typeof QueueGetOutput.Type;
+}) as unknown as Schema.Codec<QueueGetOutput>;
 
 // The operation
 /**
@@ -5261,6 +6963,13 @@ export const QueueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueueGetOutput,
 }));
 // Input Schema
+export interface QueueListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $maxpagesize?: string;
+  $filter?: string;
+}
 export const QueueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5273,10 +6982,25 @@ export const QueueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues",
     apiVersion: "2026-04-01",
   }),
-);
-export type QueueListInput = typeof QueueListInput.Type;
+) as unknown as Schema.Codec<QueueListInput>;
 
 // Output Schema
+export interface QueueListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QueueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -5300,8 +7024,7 @@ export const QueueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QueueListOutput = typeof QueueListOutput.Type;
+}) as unknown as Schema.Codec<QueueListOutput>;
 
 // The operation
 /**
@@ -5319,6 +7042,11 @@ export const QueueList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueueListOutput,
 }));
 // Input Schema
+export interface QueueServicesGetServicePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const QueueServicesGetServicePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5330,11 +7058,22 @@ export const QueueServicesGetServicePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type QueueServicesGetServicePropertiesInput =
-  typeof QueueServicesGetServicePropertiesInput.Type;
+  ) as unknown as Schema.Codec<QueueServicesGetServicePropertiesInput>;
 
 // Output Schema
+export interface QueueServicesGetServicePropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueueServicesGetServicePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5354,9 +7093,7 @@ export const QueueServicesGetServicePropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QueueServicesGetServicePropertiesOutput =
-  typeof QueueServicesGetServicePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<QueueServicesGetServicePropertiesOutput>;
 
 // The operation
 /**
@@ -5373,6 +7110,11 @@ export const QueueServicesGetServiceProperties =
     outputSchema: QueueServicesGetServicePropertiesOutput,
   }));
 // Input Schema
+export interface QueueServicesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const QueueServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5385,10 +7127,24 @@ export const QueueServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices",
     apiVersion: "2026-04-01",
   }),
-);
-export type QueueServicesListInput = typeof QueueServicesListInput.Type;
+) as unknown as Schema.Codec<QueueServicesListInput>;
 
 // Output Schema
+export interface QueueServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const QueueServicesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5424,8 +7180,7 @@ export const QueueServicesListOutput =
         }),
       ),
     ),
-  });
-export type QueueServicesListOutput = typeof QueueServicesListOutput.Type;
+  }) as unknown as Schema.Codec<QueueServicesListOutput>;
 
 // The operation
 /**
@@ -5441,6 +7196,33 @@ export const QueueServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueueServicesListOutput,
 }));
 // Input Schema
+export interface QueueServicesSetServicePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    cors?: {
+      corsRules?: {
+        allowedOrigins: string[];
+        allowedMethods: (
+          | "DELETE"
+          | "GET"
+          | "HEAD"
+          | "MERGE"
+          | "POST"
+          | "OPTIONS"
+          | "PUT"
+          | "PATCH"
+          | "CONNECT"
+          | "TRACE"
+        )[];
+        maxAgeInSeconds: number;
+        exposedHeaders: string[];
+        allowedHeaders: string[];
+      }[];
+    };
+  };
+}
 export const QueueServicesSetServicePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5484,11 +7266,22 @@ export const QueueServicesSetServicePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type QueueServicesSetServicePropertiesInput =
-  typeof QueueServicesSetServicePropertiesInput.Type;
+  ) as unknown as Schema.Codec<QueueServicesSetServicePropertiesInput>;
 
 // Output Schema
+export interface QueueServicesSetServicePropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueueServicesSetServicePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5508,9 +7301,7 @@ export const QueueServicesSetServicePropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QueueServicesSetServicePropertiesOutput =
-  typeof QueueServicesSetServicePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<QueueServicesSetServicePropertiesOutput>;
 
 // The operation
 /**
@@ -5527,6 +7318,16 @@ export const QueueServicesSetServiceProperties =
     outputSchema: QueueServicesSetServicePropertiesOutput,
   }));
 // Input Schema
+export interface QueueUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  queueName: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    approximateMessageCount?: number;
+  };
+}
 export const QueueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5544,10 +7345,22 @@ export const QueueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type QueueUpdateInput = typeof QueueUpdateInput.Type;
+) as unknown as Schema.Codec<QueueUpdateInput>;
 
 // Output Schema
+export interface QueueUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5566,8 +7379,7 @@ export const QueueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QueueUpdateOutput = typeof QueueUpdateOutput.Type;
+}) as unknown as Schema.Codec<QueueUpdateOutput>;
 
 // The operation
 /**
@@ -5584,6 +7396,9 @@ export const QueueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueueUpdateOutput,
 }));
 // Input Schema
+export interface SkusListInput {
+  subscriptionId: string;
+}
 export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -5592,10 +7407,45 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus",
     apiVersion: "2026-04-01",
   }),
-);
-export type SkusListInput = typeof SkusListInput.Type;
+) as unknown as Schema.Codec<SkusListInput>;
 
 // Output Schema
+export interface SkusListOutput {
+  value?: {
+    name:
+      | "Standard_LRS"
+      | "Standard_GRS"
+      | "Standard_RAGRS"
+      | "Standard_ZRS"
+      | "Premium_LRS"
+      | "Premium_ZRS"
+      | "Standard_GZRS"
+      | "Standard_RAGZRS"
+      | "StandardV2_LRS"
+      | "StandardV2_GRS"
+      | "StandardV2_ZRS"
+      | "StandardV2_GZRS"
+      | "PremiumV2_LRS"
+      | "PremiumV2_ZRS";
+    tier?: "Standard" | "Premium";
+    resourceType?: string;
+    kind?:
+      | "Storage"
+      | "StorageV2"
+      | "BlobStorage"
+      | "FileStorage"
+      | "BlockBlobStorage";
+    locations?: string[];
+    locationInfo?: { location?: string; zones?: string[] }[];
+    capabilities?: { name?: string; value?: string }[];
+    restrictions?: {
+      type?: string;
+      values?: string[];
+      reasonCode?: "QuotaId" | "NotAvailableForSubscription";
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -5659,8 +7509,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SkusListOutput = typeof SkusListOutput.Type;
+}) as unknown as Schema.Codec<SkusListOutput>;
 
 // The operation
 /**
@@ -5674,6 +7523,11 @@ export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkusListOutput,
 }));
 // Input Schema
+export interface StorageAccountsAbortHierarchicalNamespaceMigrationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const StorageAccountsAbortHierarchicalNamespaceMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5685,15 +7539,12 @@ export const StorageAccountsAbortHierarchicalNamespaceMigrationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsAbortHierarchicalNamespaceMigrationInput =
-  typeof StorageAccountsAbortHierarchicalNamespaceMigrationInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsAbortHierarchicalNamespaceMigrationInput>;
 
 // Output Schema
+export type StorageAccountsAbortHierarchicalNamespaceMigrationOutput = void;
 export const StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAccountsAbortHierarchicalNamespaceMigrationOutput =
-  typeof StorageAccountsAbortHierarchicalNamespaceMigrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsAbortHierarchicalNamespaceMigrationOutput>;
 
 // The operation
 /**
@@ -5710,6 +7561,11 @@ export const StorageAccountsAbortHierarchicalNamespaceMigration =
     outputSchema: StorageAccountsAbortHierarchicalNamespaceMigrationOutput,
   }));
 // Input Schema
+export interface StorageAccountsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+  type: "Microsoft.Storage/storageAccounts";
+}
 export const StorageAccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5721,11 +7577,14 @@ export const StorageAccountsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsCheckNameAvailabilityInput =
-  typeof StorageAccountsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface StorageAccountsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "AccountNameInvalid" | "AlreadyExists";
+  message?: string;
+}
 export const StorageAccountsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
@@ -5733,9 +7592,7 @@ export const StorageAccountsCheckNameAvailabilityOutput =
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
     ),
     message: Schema.optional(Schema.String),
-  });
-export type StorageAccountsCheckNameAvailabilityOutput =
-  typeof StorageAccountsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -5750,6 +7607,177 @@ export const StorageAccountsCheckNameAvailability =
     outputSchema: StorageAccountsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface StorageAccountsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  sku: {
+    name:
+      | "Standard_LRS"
+      | "Standard_GRS"
+      | "Standard_RAGRS"
+      | "Standard_ZRS"
+      | "Premium_LRS"
+      | "Premium_ZRS"
+      | "Standard_GZRS"
+      | "Standard_RAGZRS"
+      | "StandardV2_LRS"
+      | "StandardV2_GRS"
+      | "StandardV2_ZRS"
+      | "StandardV2_GZRS"
+      | "PremiumV2_LRS"
+      | "PremiumV2_ZRS";
+    tier?: "Standard" | "Premium";
+  };
+  kind:
+    | "Storage"
+    | "StorageV2"
+    | "BlobStorage"
+    | "FileStorage"
+    | "BlockBlobStorage";
+  location: string;
+  extendedLocation?: { name?: string; type?: "EdgeZone" };
+  zones?: string[];
+  placement?: { zonePlacementPolicy?: "Any" | "None" };
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    allowedCopyScope?: "PrivateLink" | "AAD" | "All";
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    sasPolicy?: {
+      sasExpirationPeriod: string;
+      expirationAction: "Log" | "Block";
+    };
+    keyPolicy?: { keyExpirationPeriodInDays: number };
+    customDomain?: { name: string; useSubDomainName?: boolean };
+    encryption?: {
+      services?: {
+        blob?: {
+          enabled?: boolean;
+          lastEnabledTime?: string;
+          keyType?: "Service" | "Account";
+        };
+        file?: {
+          enabled?: boolean;
+          lastEnabledTime?: string;
+          keyType?: "Service" | "Account";
+        };
+        table?: {
+          enabled?: boolean;
+          lastEnabledTime?: string;
+          keyType?: "Service" | "Account";
+        };
+        queue?: {
+          enabled?: boolean;
+          lastEnabledTime?: string;
+          keyType?: "Service" | "Account";
+        };
+      };
+      keySource?: "Microsoft.Storage" | "Microsoft.Keyvault";
+      requireInfrastructureEncryption?: boolean;
+      keyvaultproperties?: {
+        keyname?: string;
+        keyversion?: string;
+        keyvaulturi?: string;
+        currentVersionedKeyIdentifier?: string;
+        lastKeyRotationTimestamp?: string;
+        currentVersionedKeyExpirationTimestamp?: string;
+      };
+      identity?: {
+        userAssignedIdentity?: string;
+        federatedIdentityClientId?: string;
+      };
+    };
+    networkAcls?: {
+      bypass?: "None" | "Logging" | "Metrics" | "AzureServices";
+      resourceAccessRules?: { tenantId?: string; resourceId?: string }[];
+      virtualNetworkRules?: {
+        id: string;
+        action?: "Allow";
+        state?:
+          | "Provisioning"
+          | "Deprovisioning"
+          | "Succeeded"
+          | "Failed"
+          | "NetworkSourceDeleted";
+      }[];
+      ipRules?: { value: string; action?: "Allow" }[];
+      ipv6Rules?: { value: string; action?: "Allow" }[];
+      defaultAction: "Allow" | "Deny";
+    };
+    accessTier?: "Hot" | "Cool" | "Premium" | "Cold" | "Smart";
+    azureFilesIdentityBasedAuthentication?: {
+      directoryServiceOptions: "None" | "AADDS" | "AD" | "AADKERB";
+      activeDirectoryProperties?: {
+        domainName?: string;
+        netBiosDomainName?: string;
+        forestName?: string;
+        domainGuid?: string;
+        domainSid?: string;
+        azureStorageSid?: string;
+        samAccountName?: string;
+        accountType?: "User" | "Computer";
+      };
+      defaultSharePermission?:
+        | "None"
+        | "StorageFileDataSmbShareReader"
+        | "StorageFileDataSmbShareContributor"
+        | "StorageFileDataSmbShareElevatedContributor";
+      smbOAuthSettings?: { isSmbOAuthEnabled?: boolean };
+    };
+    supportsHttpsTrafficOnly?: boolean;
+    isSftpEnabled?: boolean;
+    isLocalUserEnabled?: boolean;
+    enableExtendedGroups?: boolean;
+    isHnsEnabled?: boolean;
+    largeFileSharesState?: "Disabled" | "Enabled";
+    routingPreference?: {
+      routingChoice?: "MicrosoftRouting" | "InternetRouting";
+      publishMicrosoftEndpoints?: boolean;
+      publishInternetEndpoints?: boolean;
+    };
+    dualStackEndpointPreference?: { publishIpv6Endpoint?: boolean };
+    allowBlobPublicAccess?: boolean;
+    minimumTlsVersion?: "TLS1_0" | "TLS1_1" | "TLS1_2" | "TLS1_3";
+    allowSharedKeyAccess?: boolean;
+    isNfsV3Enabled?: boolean;
+    allowCrossTenantReplication?: boolean;
+    defaultToOAuthAuthentication?: boolean;
+    immutableStorageWithVersioning?: {
+      enabled?: boolean;
+      immutabilityPolicy?: {
+        immutabilityPeriodSinceCreationInDays?: number;
+        state?: "Unlocked" | "Locked" | "Disabled";
+        allowProtectedAppendWrites?: boolean;
+      };
+    };
+    dnsEndpointType?: "Standard" | "AzureDnsZone";
+    geoPriorityReplicationStatus?: { isBlobEnabled?: boolean };
+    allowSharedKeyAccessForServices?: {
+      blob?: { enabled?: boolean };
+      file?: { enabled?: boolean };
+      table?: { enabled?: boolean };
+      queue?: { enabled?: boolean };
+    };
+    dataCollaborationPolicyProperties?: {
+      allowStorageConnectors?: boolean;
+      allowStorageDataShares?: boolean;
+      allowCrossTenantDataSharing?: boolean;
+    };
+  };
+}
 export const StorageAccountsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6089,10 +8117,22 @@ export const StorageAccountsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsCreateInput = typeof StorageAccountsCreateInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsCreateInput>;
 
 // Output Schema
+export interface StorageAccountsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAccountsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6112,9 +8152,7 @@ export const StorageAccountsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAccountsCreateOutput =
-  typeof StorageAccountsCreateOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsCreateOutput>;
 
 // The operation
 /**
@@ -6132,6 +8170,36 @@ export const StorageAccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageAccountsCustomerInitiatedMigrationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties: {
+    targetSkuName:
+      | "Standard_LRS"
+      | "Standard_GRS"
+      | "Standard_RAGRS"
+      | "Standard_ZRS"
+      | "Premium_LRS"
+      | "Premium_ZRS"
+      | "Standard_GZRS"
+      | "Standard_RAGZRS"
+      | "StandardV2_LRS"
+      | "StandardV2_GRS"
+      | "StandardV2_ZRS"
+      | "StandardV2_GZRS"
+      | "PremiumV2_LRS"
+      | "PremiumV2_ZRS";
+    migrationStatus?:
+      | "Invalid"
+      | "SubmittedForConversion"
+      | "InProgress"
+      | "Complete"
+      | "Failed";
+    migrationFailedReason?: string;
+    migrationFailedDetailedReason?: string;
+  };
+}
 export const StorageAccountsCustomerInitiatedMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6172,15 +8240,12 @@ export const StorageAccountsCustomerInitiatedMigrationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsCustomerInitiatedMigrationInput =
-  typeof StorageAccountsCustomerInitiatedMigrationInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsCustomerInitiatedMigrationInput>;
 
 // Output Schema
+export type StorageAccountsCustomerInitiatedMigrationOutput = void;
 export const StorageAccountsCustomerInitiatedMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAccountsCustomerInitiatedMigrationOutput =
-  typeof StorageAccountsCustomerInitiatedMigrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsCustomerInitiatedMigrationOutput>;
 
 // The operation
 /**
@@ -6197,6 +8262,11 @@ export const StorageAccountsCustomerInitiatedMigration =
     outputSchema: StorageAccountsCustomerInitiatedMigrationOutput,
   }));
 // Input Schema
+export interface StorageAccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const StorageAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6208,14 +8278,12 @@ export const StorageAccountsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsDeleteInput>;
 
 // Output Schema
+export type StorageAccountsDeleteOutput = void;
 export const StorageAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAccountsDeleteOutput =
-  typeof StorageAccountsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -6233,6 +8301,12 @@ export const StorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageAccountsFailoverInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  failoverType?: "Planned";
+}
 export const StorageAccountsFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6245,15 +8319,12 @@ export const StorageAccountsFailoverInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsFailoverInput =
-  typeof StorageAccountsFailoverInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsFailoverInput>;
 
 // Output Schema
+export type StorageAccountsFailoverOutput = void;
 export const StorageAccountsFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAccountsFailoverOutput =
-  typeof StorageAccountsFailoverOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsFailoverOutput>;
 
 // The operation
 /**
@@ -6272,6 +8343,12 @@ export const StorageAccountsFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageAccountsGetCustomerInitiatedMigrationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  migrationName: "default";
+}
 export const StorageAccountsGetCustomerInitiatedMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6284,11 +8361,22 @@ export const StorageAccountsGetCustomerInitiatedMigrationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/accountMigrations/{migrationName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsGetCustomerInitiatedMigrationInput =
-  typeof StorageAccountsGetCustomerInitiatedMigrationInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsGetCustomerInitiatedMigrationInput>;
 
 // Output Schema
+export interface StorageAccountsGetCustomerInitiatedMigrationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAccountsGetCustomerInitiatedMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6308,9 +8396,7 @@ export const StorageAccountsGetCustomerInitiatedMigrationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAccountsGetCustomerInitiatedMigrationOutput =
-  typeof StorageAccountsGetCustomerInitiatedMigrationOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsGetCustomerInitiatedMigrationOutput>;
 
 // The operation
 /**
@@ -6328,6 +8414,12 @@ export const StorageAccountsGetCustomerInitiatedMigration =
     outputSchema: StorageAccountsGetCustomerInitiatedMigrationOutput,
   }));
 // Input Schema
+export interface StorageAccountsGetPropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $expand?: "geoReplicationStats" | "blobRestoreStatus";
+}
 export const StorageAccountsGetPropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6342,11 +8434,22 @@ export const StorageAccountsGetPropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsGetPropertiesInput =
-  typeof StorageAccountsGetPropertiesInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsGetPropertiesInput>;
 
 // Output Schema
+export interface StorageAccountsGetPropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAccountsGetPropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6366,9 +8469,7 @@ export const StorageAccountsGetPropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAccountsGetPropertiesOutput =
-  typeof StorageAccountsGetPropertiesOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsGetPropertiesOutput>;
 
 // The operation
 /**
@@ -6386,6 +8487,12 @@ export const StorageAccountsGetProperties =
     outputSchema: StorageAccountsGetPropertiesOutput,
   }));
 // Input Schema
+export interface StorageAccountsHierarchicalNamespaceMigrationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  requestType: string;
+}
 export const StorageAccountsHierarchicalNamespaceMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6398,15 +8505,12 @@ export const StorageAccountsHierarchicalNamespaceMigrationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsHierarchicalNamespaceMigrationInput =
-  typeof StorageAccountsHierarchicalNamespaceMigrationInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsHierarchicalNamespaceMigrationInput>;
 
 // Output Schema
+export type StorageAccountsHierarchicalNamespaceMigrationOutput = void;
 export const StorageAccountsHierarchicalNamespaceMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAccountsHierarchicalNamespaceMigrationOutput =
-  typeof StorageAccountsHierarchicalNamespaceMigrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsHierarchicalNamespaceMigrationOutput>;
 
 // The operation
 /**
@@ -6424,6 +8528,9 @@ export const StorageAccountsHierarchicalNamespaceMigration =
     outputSchema: StorageAccountsHierarchicalNamespaceMigrationOutput,
   }));
 // Input Schema
+export interface StorageAccountsListInput {
+  subscriptionId: string;
+}
 export const StorageAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6433,10 +8540,25 @@ export const StorageAccountsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsListInput = typeof StorageAccountsListInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsListInput>;
 
 // Output Schema
+export interface StorageAccountsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageAccountsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6471,8 +8593,7 @@ export const StorageAccountsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageAccountsListOutput = typeof StorageAccountsListOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsListOutput>;
 
 // The operation
 /**
@@ -6486,6 +8607,19 @@ export const StorageAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageAccountsListOutput,
 }));
 // Input Schema
+export interface StorageAccountsListAccountSASInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  signedServices: "b" | "q" | "t" | "f";
+  signedResourceTypes: "s" | "c" | "o";
+  signedPermission: "r" | "d" | "w" | "l" | "a" | "c" | "u" | "p";
+  signedIp?: string;
+  signedProtocol?: "https,http" | "https";
+  signedStart?: string;
+  signedExpiry: string;
+  keyToSign?: string;
+}
 export const StorageAccountsListAccountSASInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6505,17 +8639,16 @@ export const StorageAccountsListAccountSASInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listAccountSas",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsListAccountSASInput =
-  typeof StorageAccountsListAccountSASInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsListAccountSASInput>;
 
 // Output Schema
+export interface StorageAccountsListAccountSASOutput {
+  accountSasToken?: string;
+}
 export const StorageAccountsListAccountSASOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountSasToken: Schema.optional(Schema.String),
-  });
-export type StorageAccountsListAccountSASOutput =
-  typeof StorageAccountsListAccountSASOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsListAccountSASOutput>;
 
 // The operation
 /**
@@ -6532,6 +8665,10 @@ export const StorageAccountsListAccountSAS =
     outputSchema: StorageAccountsListAccountSASOutput,
   }));
 // Input Schema
+export interface StorageAccountsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const StorageAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6542,11 +8679,25 @@ export const StorageAccountsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsListByResourceGroupInput =
-  typeof StorageAccountsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsListByResourceGroupInput>;
 
 // Output Schema
+export interface StorageAccountsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageAccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6581,9 +8732,7 @@ export const StorageAccountsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageAccountsListByResourceGroupOutput =
-  typeof StorageAccountsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6599,6 +8748,12 @@ export const StorageAccountsListByResourceGroup =
     outputSchema: StorageAccountsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface StorageAccountsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $expand?: "kerb";
+}
 export const StorageAccountsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6611,11 +8766,17 @@ export const StorageAccountsListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsListKeysInput =
-  typeof StorageAccountsListKeysInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsListKeysInput>;
 
 // Output Schema
+export interface StorageAccountsListKeysOutput {
+  keys?: {
+    keyName?: string;
+    value?: string;
+    permissions?: "Read" | "Full";
+    creationTime?: string;
+  }[];
+}
 export const StorageAccountsListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.optional(
@@ -6628,9 +8789,7 @@ export const StorageAccountsListKeysOutput =
         }),
       ),
     ),
-  });
-export type StorageAccountsListKeysOutput =
-  typeof StorageAccountsListKeysOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsListKeysOutput>;
 
 // The operation
 /**
@@ -6649,6 +8808,29 @@ export const StorageAccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageAccountsListServiceSASInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  canonicalizedResource: string;
+  signedResource?: "b" | "c" | "f" | "s";
+  signedPermission?: "r" | "d" | "w" | "l" | "a" | "c" | "u" | "p";
+  signedIp?: string;
+  signedProtocol?: "https,http" | "https";
+  signedStart?: string;
+  signedExpiry?: string;
+  signedIdentifier?: string;
+  startPk?: string;
+  endPk?: string;
+  startRk?: string;
+  endRk?: string;
+  keyToSign?: string;
+  rscc?: string;
+  rscd?: string;
+  rsce?: string;
+  rscl?: string;
+  rsct?: string;
+}
 export const StorageAccountsListServiceSASInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6680,17 +8862,16 @@ export const StorageAccountsListServiceSASInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listServiceSas",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsListServiceSASInput =
-  typeof StorageAccountsListServiceSASInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsListServiceSASInput>;
 
 // Output Schema
+export interface StorageAccountsListServiceSASOutput {
+  serviceSasToken?: string;
+}
 export const StorageAccountsListServiceSASOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceSasToken: Schema.optional(Schema.String),
-  });
-export type StorageAccountsListServiceSASOutput =
-  typeof StorageAccountsListServiceSASOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsListServiceSASOutput>;
 
 // The operation
 /**
@@ -6707,6 +8888,12 @@ export const StorageAccountsListServiceSAS =
     outputSchema: StorageAccountsListServiceSASOutput,
   }));
 // Input Schema
+export interface StorageAccountsRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyName: string;
+}
 export const StorageAccountsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6719,11 +8906,17 @@ export const StorageAccountsRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsRegenerateKeyInput =
-  typeof StorageAccountsRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsRegenerateKeyInput>;
 
 // Output Schema
+export interface StorageAccountsRegenerateKeyOutput {
+  keys?: {
+    keyName?: string;
+    value?: string;
+    permissions?: "Read" | "Full";
+    creationTime?: string;
+  }[];
+}
 export const StorageAccountsRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.optional(
@@ -6736,9 +8929,7 @@ export const StorageAccountsRegenerateKeyOutput =
         }),
       ),
     ),
-  });
-export type StorageAccountsRegenerateKeyOutput =
-  typeof StorageAccountsRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -6755,6 +8946,13 @@ export const StorageAccountsRegenerateKey =
     outputSchema: StorageAccountsRegenerateKeyOutput,
   }));
 // Input Schema
+export interface StorageAccountsRestoreBlobRangesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  timeToRestore: string;
+  blobRanges: { startRange: string; endRange: string }[];
+}
 export const StorageAccountsRestoreBlobRangesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6773,11 +8971,18 @@ export const StorageAccountsRestoreBlobRangesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsRestoreBlobRangesInput =
-  typeof StorageAccountsRestoreBlobRangesInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsRestoreBlobRangesInput>;
 
 // Output Schema
+export interface StorageAccountsRestoreBlobRangesOutput {
+  status?: "InProgress" | "Complete" | "Failed";
+  failureReason?: string;
+  restoreId?: string;
+  parameters?: {
+    timeToRestore: string;
+    blobRanges: { startRange: string; endRange: string }[];
+  };
+}
 export const StorageAccountsRestoreBlobRangesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(
@@ -6796,9 +9001,7 @@ export const StorageAccountsRestoreBlobRangesOutput =
         ),
       }),
     ),
-  });
-export type StorageAccountsRestoreBlobRangesOutput =
-  typeof StorageAccountsRestoreBlobRangesOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsRestoreBlobRangesOutput>;
 
 // The operation
 /**
@@ -6815,6 +9018,11 @@ export const StorageAccountsRestoreBlobRanges =
     outputSchema: StorageAccountsRestoreBlobRangesOutput,
   }));
 // Input Schema
+export interface StorageAccountsRevokeUserDelegationKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const StorageAccountsRevokeUserDelegationKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6826,15 +9034,12 @@ export const StorageAccountsRevokeUserDelegationKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsRevokeUserDelegationKeysInput =
-  typeof StorageAccountsRevokeUserDelegationKeysInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsRevokeUserDelegationKeysInput>;
 
 // Output Schema
+export type StorageAccountsRevokeUserDelegationKeysOutput = void;
 export const StorageAccountsRevokeUserDelegationKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAccountsRevokeUserDelegationKeysOutput =
-  typeof StorageAccountsRevokeUserDelegationKeysOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsRevokeUserDelegationKeysOutput>;
 
 // The operation
 /**
@@ -6851,6 +9056,173 @@ export const StorageAccountsRevokeUserDelegationKeys =
     outputSchema: StorageAccountsRevokeUserDelegationKeysOutput,
   }));
 // Input Schema
+export interface StorageAccountsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  sku?: {
+    name:
+      | "Standard_LRS"
+      | "Standard_GRS"
+      | "Standard_RAGRS"
+      | "Standard_ZRS"
+      | "Premium_LRS"
+      | "Premium_ZRS"
+      | "Standard_GZRS"
+      | "Standard_RAGZRS"
+      | "StandardV2_LRS"
+      | "StandardV2_GRS"
+      | "StandardV2_ZRS"
+      | "StandardV2_GZRS"
+      | "PremiumV2_LRS"
+      | "PremiumV2_ZRS";
+    tier?: "Standard" | "Premium";
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    customDomain?: { name: string; useSubDomainName?: boolean };
+    encryption?: {
+      services?: {
+        blob?: {
+          enabled?: boolean;
+          lastEnabledTime?: string;
+          keyType?: "Service" | "Account";
+        };
+        file?: {
+          enabled?: boolean;
+          lastEnabledTime?: string;
+          keyType?: "Service" | "Account";
+        };
+        table?: {
+          enabled?: boolean;
+          lastEnabledTime?: string;
+          keyType?: "Service" | "Account";
+        };
+        queue?: {
+          enabled?: boolean;
+          lastEnabledTime?: string;
+          keyType?: "Service" | "Account";
+        };
+      };
+      keySource?: "Microsoft.Storage" | "Microsoft.Keyvault";
+      requireInfrastructureEncryption?: boolean;
+      keyvaultproperties?: {
+        keyname?: string;
+        keyversion?: string;
+        keyvaulturi?: string;
+        currentVersionedKeyIdentifier?: string;
+        lastKeyRotationTimestamp?: string;
+        currentVersionedKeyExpirationTimestamp?: string;
+      };
+      identity?: {
+        userAssignedIdentity?: string;
+        federatedIdentityClientId?: string;
+      };
+    };
+    sasPolicy?: {
+      sasExpirationPeriod: string;
+      expirationAction: "Log" | "Block";
+    };
+    keyPolicy?: { keyExpirationPeriodInDays: number };
+    accessTier?: "Hot" | "Cool" | "Premium" | "Cold" | "Smart";
+    azureFilesIdentityBasedAuthentication?: {
+      directoryServiceOptions: "None" | "AADDS" | "AD" | "AADKERB";
+      activeDirectoryProperties?: {
+        domainName?: string;
+        netBiosDomainName?: string;
+        forestName?: string;
+        domainGuid?: string;
+        domainSid?: string;
+        azureStorageSid?: string;
+        samAccountName?: string;
+        accountType?: "User" | "Computer";
+      };
+      defaultSharePermission?:
+        | "None"
+        | "StorageFileDataSmbShareReader"
+        | "StorageFileDataSmbShareContributor"
+        | "StorageFileDataSmbShareElevatedContributor";
+      smbOAuthSettings?: { isSmbOAuthEnabled?: boolean };
+    };
+    supportsHttpsTrafficOnly?: boolean;
+    isSftpEnabled?: boolean;
+    isLocalUserEnabled?: boolean;
+    enableExtendedGroups?: boolean;
+    networkAcls?: {
+      bypass?: "None" | "Logging" | "Metrics" | "AzureServices";
+      resourceAccessRules?: { tenantId?: string; resourceId?: string }[];
+      virtualNetworkRules?: {
+        id: string;
+        action?: "Allow";
+        state?:
+          | "Provisioning"
+          | "Deprovisioning"
+          | "Succeeded"
+          | "Failed"
+          | "NetworkSourceDeleted";
+      }[];
+      ipRules?: { value: string; action?: "Allow" }[];
+      ipv6Rules?: { value: string; action?: "Allow" }[];
+      defaultAction: "Allow" | "Deny";
+    };
+    largeFileSharesState?: "Disabled" | "Enabled";
+    routingPreference?: {
+      routingChoice?: "MicrosoftRouting" | "InternetRouting";
+      publishMicrosoftEndpoints?: boolean;
+      publishInternetEndpoints?: boolean;
+    };
+    dualStackEndpointPreference?: { publishIpv6Endpoint?: boolean };
+    allowBlobPublicAccess?: boolean;
+    minimumTlsVersion?: "TLS1_0" | "TLS1_1" | "TLS1_2" | "TLS1_3";
+    allowSharedKeyAccess?: boolean;
+    allowCrossTenantReplication?: boolean;
+    defaultToOAuthAuthentication?: boolean;
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    immutableStorageWithVersioning?: {
+      enabled?: boolean;
+      immutabilityPolicy?: {
+        immutabilityPeriodSinceCreationInDays?: number;
+        state?: "Unlocked" | "Locked" | "Disabled";
+        allowProtectedAppendWrites?: boolean;
+      };
+    };
+    allowedCopyScope?: "PrivateLink" | "AAD" | "All";
+    dnsEndpointType?: "Standard" | "AzureDnsZone";
+    geoPriorityReplicationStatus?: { isBlobEnabled?: boolean };
+    allowSharedKeyAccessForServices?: {
+      blob?: { enabled?: boolean };
+      file?: { enabled?: boolean };
+      table?: { enabled?: boolean };
+      queue?: { enabled?: boolean };
+    };
+    dataCollaborationPolicyProperties?: {
+      allowStorageConnectors?: boolean;
+      allowStorageDataShares?: boolean;
+      allowCrossTenantDataSharing?: boolean;
+    };
+  };
+  kind?:
+    | "Storage"
+    | "StorageV2"
+    | "BlobStorage"
+    | "FileStorage"
+    | "BlockBlobStorage";
+  zones?: string[];
+  placement?: { zonePlacementPolicy?: "Any" | "None" };
+}
 export const StorageAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7185,10 +9557,22 @@ export const StorageAccountsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageAccountsUpdateInput = typeof StorageAccountsUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsUpdateInput>;
 
 // Output Schema
+export interface StorageAccountsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAccountsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7208,9 +9592,7 @@ export const StorageAccountsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAccountsUpdateOutput =
-  typeof StorageAccountsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsUpdateOutput>;
 
 // The operation
 /**
@@ -7228,6 +9610,14 @@ export const StorageAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageTaskAssignmentInstancesReportListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  storageTaskAssignmentName: string;
+  $maxpagesize?: number;
+  $filter?: string;
+}
 export const StorageTaskAssignmentInstancesReportListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7242,11 +9632,25 @@ export const StorageTaskAssignmentInstancesReportListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageTaskAssignmentInstancesReportListInput =
-  typeof StorageTaskAssignmentInstancesReportListInput.Type;
+  ) as unknown as Schema.Codec<StorageTaskAssignmentInstancesReportListInput>;
 
 // Output Schema
+export interface StorageTaskAssignmentInstancesReportListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageTaskAssignmentInstancesReportListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7281,9 +9685,7 @@ export const StorageTaskAssignmentInstancesReportListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageTaskAssignmentInstancesReportListOutput =
-  typeof StorageTaskAssignmentInstancesReportListOutput.Type;
+  }) as unknown as Schema.Codec<StorageTaskAssignmentInstancesReportListOutput>;
 
 // The operation
 /**
@@ -7303,6 +9705,56 @@ export const StorageTaskAssignmentInstancesReportList =
     outputSchema: StorageTaskAssignmentInstancesReportListOutput,
   }));
 // Input Schema
+export interface StorageTaskAssignmentsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  storageTaskAssignmentName: string;
+  properties?: {
+    taskId: string;
+    enabled: boolean;
+    description: string;
+    executionContext: {
+      target?: { prefix?: string[]; excludePrefix?: string[] };
+      trigger: {
+        type: "RunOnce" | "OnSchedule" | "MockRun";
+        parameters: {
+          startFrom?: string;
+          interval?: number;
+          intervalUnit?: "Days";
+          endBy?: string;
+          startOn?: string;
+        };
+      };
+    };
+    report: { prefix: string };
+    provisioningState?:
+      | "ValidateSubscriptionQuotaBegin"
+      | "ValidateSubscriptionQuotaEnd"
+      | "Accepted"
+      | "Creating"
+      | "Succeeded"
+      | "Deleting"
+      | "Canceled"
+      | "Failed";
+    runStatus?: {
+      taskAssignmentId?: string;
+      storageAccountId?: string;
+      startTime?: string;
+      finishTime?: string;
+      objectsTargetedCount?: string;
+      objectsOperatedOnCount?: string;
+      objectFailedCount?: string;
+      objectsSucceededCount?: string;
+      runStatusError?: string;
+      runStatusEnum?: "InProgress" | "Finished";
+      summaryReportPath?: string;
+      taskId?: string;
+      taskVersion?: string;
+      runResult?: "Succeeded" | "Failed";
+    };
+  };
+}
 export const StorageTaskAssignmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7377,11 +9829,22 @@ export const StorageTaskAssignmentsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageTaskAssignmentsCreateInput =
-  typeof StorageTaskAssignmentsCreateInput.Type;
+  ) as unknown as Schema.Codec<StorageTaskAssignmentsCreateInput>;
 
 // Output Schema
+export interface StorageTaskAssignmentsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageTaskAssignmentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7401,9 +9864,7 @@ export const StorageTaskAssignmentsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageTaskAssignmentsCreateOutput =
-  typeof StorageTaskAssignmentsCreateOutput.Type;
+  }) as unknown as Schema.Codec<StorageTaskAssignmentsCreateOutput>;
 
 // The operation
 /**
@@ -7421,6 +9882,12 @@ export const StorageTaskAssignmentsCreate =
     outputSchema: StorageTaskAssignmentsCreateOutput,
   }));
 // Input Schema
+export interface StorageTaskAssignmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  storageTaskAssignmentName: string;
+}
 export const StorageTaskAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7433,15 +9900,12 @@ export const StorageTaskAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageTaskAssignmentsDeleteInput =
-  typeof StorageTaskAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageTaskAssignmentsDeleteInput>;
 
 // Output Schema
+export type StorageTaskAssignmentsDeleteOutput = void;
 export const StorageTaskAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageTaskAssignmentsDeleteOutput =
-  typeof StorageTaskAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTaskAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -7459,6 +9923,12 @@ export const StorageTaskAssignmentsDelete =
     outputSchema: StorageTaskAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface StorageTaskAssignmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  storageTaskAssignmentName: string;
+}
 export const StorageTaskAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7471,11 +9941,22 @@ export const StorageTaskAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageTaskAssignmentsGetInput =
-  typeof StorageTaskAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<StorageTaskAssignmentsGetInput>;
 
 // Output Schema
+export interface StorageTaskAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageTaskAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7495,9 +9976,7 @@ export const StorageTaskAssignmentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageTaskAssignmentsGetOutput =
-  typeof StorageTaskAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<StorageTaskAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -7516,6 +9995,13 @@ export const StorageTaskAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageTaskAssignmentsInstancesReportListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $maxpagesize?: number;
+  $filter?: string;
+}
 export const StorageTaskAssignmentsInstancesReportListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7529,11 +10015,25 @@ export const StorageTaskAssignmentsInstancesReportListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageTaskAssignmentsInstancesReportListInput =
-  typeof StorageTaskAssignmentsInstancesReportListInput.Type;
+  ) as unknown as Schema.Codec<StorageTaskAssignmentsInstancesReportListInput>;
 
 // Output Schema
+export interface StorageTaskAssignmentsInstancesReportListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageTaskAssignmentsInstancesReportListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7568,9 +10068,7 @@ export const StorageTaskAssignmentsInstancesReportListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageTaskAssignmentsInstancesReportListOutput =
-  typeof StorageTaskAssignmentsInstancesReportListOutput.Type;
+  }) as unknown as Schema.Codec<StorageTaskAssignmentsInstancesReportListOutput>;
 
 // The operation
 /**
@@ -7589,6 +10087,12 @@ export const StorageTaskAssignmentsInstancesReportList =
     outputSchema: StorageTaskAssignmentsInstancesReportListOutput,
   }));
 // Input Schema
+export interface StorageTaskAssignmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $top?: number;
+}
 export const StorageTaskAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7601,11 +10105,25 @@ export const StorageTaskAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageTaskAssignmentsListInput =
-  typeof StorageTaskAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<StorageTaskAssignmentsListInput>;
 
 // Output Schema
+export interface StorageTaskAssignmentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageTaskAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7640,9 +10158,7 @@ export const StorageTaskAssignmentsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageTaskAssignmentsListOutput =
-  typeof StorageTaskAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<StorageTaskAssignmentsListOutput>;
 
 // The operation
 /**
@@ -7661,6 +10177,12 @@ export const StorageTaskAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageTaskAssignmentsStopAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  storageTaskAssignmentName: string;
+}
 export const StorageTaskAssignmentsStopAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7673,15 +10195,12 @@ export const StorageTaskAssignmentsStopAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/stopAssignment",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageTaskAssignmentsStopAssignmentInput =
-  typeof StorageTaskAssignmentsStopAssignmentInput.Type;
+  ) as unknown as Schema.Codec<StorageTaskAssignmentsStopAssignmentInput>;
 
 // Output Schema
+export type StorageTaskAssignmentsStopAssignmentOutput = void;
 export const StorageTaskAssignmentsStopAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageTaskAssignmentsStopAssignmentOutput =
-  typeof StorageTaskAssignmentsStopAssignmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageTaskAssignmentsStopAssignmentOutput>;
 
 // The operation
 /**
@@ -7699,6 +10218,56 @@ export const StorageTaskAssignmentsStopAssignment =
     outputSchema: StorageTaskAssignmentsStopAssignmentOutput,
   }));
 // Input Schema
+export interface StorageTaskAssignmentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  storageTaskAssignmentName: string;
+  properties?: {
+    taskId?: string;
+    enabled?: boolean;
+    description?: string;
+    executionContext?: {
+      target?: { prefix?: string[]; excludePrefix?: string[] };
+      trigger?: {
+        type?: "RunOnce" | "OnSchedule" | "MockRun";
+        parameters?: {
+          startFrom?: string;
+          interval?: number;
+          intervalUnit?: "Days";
+          endBy?: string;
+          startOn?: string;
+        };
+      };
+    };
+    report?: { prefix?: string };
+    provisioningState?:
+      | "ValidateSubscriptionQuotaBegin"
+      | "ValidateSubscriptionQuotaEnd"
+      | "Accepted"
+      | "Creating"
+      | "Succeeded"
+      | "Deleting"
+      | "Canceled"
+      | "Failed";
+    runStatus?: {
+      taskAssignmentId?: string;
+      storageAccountId?: string;
+      startTime?: string;
+      finishTime?: string;
+      objectsTargetedCount?: string;
+      objectsOperatedOnCount?: string;
+      objectFailedCount?: string;
+      objectsSucceededCount?: string;
+      runStatusError?: string;
+      runStatusEnum?: "InProgress" | "Finished";
+      summaryReportPath?: string;
+      taskId?: string;
+      taskVersion?: string;
+      runResult?: "Succeeded" | "Failed";
+    };
+  };
+}
 export const StorageTaskAssignmentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7783,11 +10352,22 @@ export const StorageTaskAssignmentsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type StorageTaskAssignmentsUpdateInput =
-  typeof StorageTaskAssignmentsUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageTaskAssignmentsUpdateInput>;
 
 // Output Schema
+export interface StorageTaskAssignmentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageTaskAssignmentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7807,9 +10387,7 @@ export const StorageTaskAssignmentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageTaskAssignmentsUpdateOutput =
-  typeof StorageTaskAssignmentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageTaskAssignmentsUpdateOutput>;
 
 // The operation
 /**
@@ -7827,6 +10405,23 @@ export const StorageTaskAssignmentsUpdate =
     outputSchema: StorageTaskAssignmentsUpdateOutput,
   }));
 // Input Schema
+export interface TableCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+  properties?: {
+    tableName?: string;
+    signedIdentifiers?: {
+      id: string;
+      accessPolicy?: {
+        startTime?: string;
+        expiryTime?: string;
+        permission: string;
+      };
+    }[];
+  };
+}
 export const TableCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7857,10 +10452,22 @@ export const TableCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type TableCreateInput = typeof TableCreateInput.Type;
+) as unknown as Schema.Codec<TableCreateInput>;
 
 // Output Schema
+export interface TableCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -7879,8 +10486,7 @@ export const TableCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TableCreateOutput = typeof TableCreateOutput.Type;
+}) as unknown as Schema.Codec<TableCreateOutput>;
 
 // The operation
 /**
@@ -7897,6 +10503,12 @@ export const TableCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TableCreateOutput,
 }));
 // Input Schema
+export interface TableDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+}
 export const TableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7908,12 +10520,12 @@ export const TableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type TableDeleteInput = typeof TableDeleteInput.Type;
+) as unknown as Schema.Codec<TableDeleteInput>;
 
 // Output Schema
-export const TableDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TableDeleteOutput = typeof TableDeleteOutput.Type;
+export type TableDeleteOutput = void;
+export const TableDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TableDeleteOutput>;
 
 // The operation
 /**
@@ -7930,6 +10542,12 @@ export const TableDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TableDeleteOutput,
 }));
 // Input Schema
+export interface TableGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+}
 export const TableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7941,10 +10559,22 @@ export const TableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type TableGetInput = typeof TableGetInput.Type;
+) as unknown as Schema.Codec<TableGetInput>;
 
 // Output Schema
+export interface TableGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -7963,8 +10593,7 @@ export const TableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TableGetOutput = typeof TableGetOutput.Type;
+}) as unknown as Schema.Codec<TableGetOutput>;
 
 // The operation
 /**
@@ -7981,6 +10610,11 @@ export const TableGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TableGetOutput,
 }));
 // Input Schema
+export interface TableListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const TableListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7991,10 +10625,25 @@ export const TableListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables",
     apiVersion: "2026-04-01",
   }),
-);
-export type TableListInput = typeof TableListInput.Type;
+) as unknown as Schema.Codec<TableListInput>;
 
 // Output Schema
+export interface TableListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TableListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -8018,8 +10667,7 @@ export const TableListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TableListOutput = typeof TableListOutput.Type;
+}) as unknown as Schema.Codec<TableListOutput>;
 
 // The operation
 /**
@@ -8035,6 +10683,11 @@ export const TableList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TableListOutput,
 }));
 // Input Schema
+export interface TableServicesGetServicePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const TableServicesGetServicePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8046,11 +10699,22 @@ export const TableServicesGetServicePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type TableServicesGetServicePropertiesInput =
-  typeof TableServicesGetServicePropertiesInput.Type;
+  ) as unknown as Schema.Codec<TableServicesGetServicePropertiesInput>;
 
 // Output Schema
+export interface TableServicesGetServicePropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableServicesGetServicePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8070,9 +10734,7 @@ export const TableServicesGetServicePropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableServicesGetServicePropertiesOutput =
-  typeof TableServicesGetServicePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<TableServicesGetServicePropertiesOutput>;
 
 // The operation
 /**
@@ -8089,6 +10751,11 @@ export const TableServicesGetServiceProperties =
     outputSchema: TableServicesGetServicePropertiesOutput,
   }));
 // Input Schema
+export interface TableServicesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const TableServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8101,10 +10768,24 @@ export const TableServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices",
     apiVersion: "2026-04-01",
   }),
-);
-export type TableServicesListInput = typeof TableServicesListInput.Type;
+) as unknown as Schema.Codec<TableServicesListInput>;
 
 // Output Schema
+export interface TableServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const TableServicesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8140,8 +10821,7 @@ export const TableServicesListOutput =
         }),
       ),
     ),
-  });
-export type TableServicesListOutput = typeof TableServicesListOutput.Type;
+  }) as unknown as Schema.Codec<TableServicesListOutput>;
 
 // The operation
 /**
@@ -8157,6 +10837,33 @@ export const TableServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TableServicesListOutput,
 }));
 // Input Schema
+export interface TableServicesSetServicePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    cors?: {
+      corsRules?: {
+        allowedOrigins: string[];
+        allowedMethods: (
+          | "DELETE"
+          | "GET"
+          | "HEAD"
+          | "MERGE"
+          | "POST"
+          | "OPTIONS"
+          | "PUT"
+          | "PATCH"
+          | "CONNECT"
+          | "TRACE"
+        )[];
+        maxAgeInSeconds: number;
+        exposedHeaders: string[];
+        allowedHeaders: string[];
+      }[];
+    };
+  };
+}
 export const TableServicesSetServicePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8200,11 +10907,22 @@ export const TableServicesSetServicePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
       apiVersion: "2026-04-01",
     }),
-  );
-export type TableServicesSetServicePropertiesInput =
-  typeof TableServicesSetServicePropertiesInput.Type;
+  ) as unknown as Schema.Codec<TableServicesSetServicePropertiesInput>;
 
 // Output Schema
+export interface TableServicesSetServicePropertiesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableServicesSetServicePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8224,9 +10942,7 @@ export const TableServicesSetServicePropertiesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableServicesSetServicePropertiesOutput =
-  typeof TableServicesSetServicePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<TableServicesSetServicePropertiesOutput>;
 
 // The operation
 /**
@@ -8243,6 +10959,23 @@ export const TableServicesSetServiceProperties =
     outputSchema: TableServicesSetServicePropertiesOutput,
   }));
 // Input Schema
+export interface TableUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+  properties?: {
+    tableName?: string;
+    signedIdentifiers?: {
+      id: string;
+      accessPolicy?: {
+        startTime?: string;
+        expiryTime?: string;
+        permission: string;
+      };
+    }[];
+  };
+}
 export const TableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8273,10 +11006,22 @@ export const TableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type TableUpdateInput = typeof TableUpdateInput.Type;
+) as unknown as Schema.Codec<TableUpdateInput>;
 
 // Output Schema
+export interface TableUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8295,8 +11040,7 @@ export const TableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TableUpdateOutput = typeof TableUpdateOutput.Type;
+}) as unknown as Schema.Codec<TableUpdateOutput>;
 
 // The operation
 /**
@@ -8313,6 +11057,10 @@ export const TableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TableUpdateOutput,
 }));
 // Input Schema
+export interface UsagesListByLocationInput {
+  subscriptionId: string;
+  location: string;
+}
 export const UsagesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8323,10 +11071,24 @@ export const UsagesListByLocationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
       apiVersion: "2026-04-01",
     }),
-  );
-export type UsagesListByLocationInput = typeof UsagesListByLocationInput.Type;
+  ) as unknown as Schema.Codec<UsagesListByLocationInput>;
 
 // Output Schema
+export interface UsagesListByLocationOutput {
+  value?: {
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountsPerSecond"
+      | "BytesPerSecond";
+    currentValue?: number;
+    limit?: number;
+    name?: { value?: string; localizedValue?: string };
+  }[];
+  nextLink?: string;
+}
 export const UsagesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8354,8 +11116,7 @@ export const UsagesListByLocationOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
+  }) as unknown as Schema.Codec<UsagesListByLocationOutput>;
 
 // The operation
 /**

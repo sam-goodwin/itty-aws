@@ -3,6 +3,30 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansCountCreateInput {
+  project_id: string;
+  query: {
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    serviceNames?: string[];
+    statusCodes?: number[];
+    filterGroup?: {
+      key: string;
+      type: "span" | "span_attribute" | "span_resource_attribute";
+      operator:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+  };
+}
 export const TracingSpansCountCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -46,18 +70,18 @@ export const TracingSpansCountCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tracing/spans/count/",
     }),
-  );
-export type TracingSpansCountCreateInput =
-  typeof TracingSpansCountCreateInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansCountCreateInput>;
 
 // Output Schema
+export interface TracingSpansCountCreateOutput {
+  count: number;
+  traceCount: number;
+}
 export const TracingSpansCountCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
     traceCount: Schema.Number,
-  });
-export type TracingSpansCountCreateOutput =
-  typeof TracingSpansCountCreateOutput.Type;
+  }) as unknown as Schema.Codec<TracingSpansCountCreateOutput>;
 
 // The operation
 /**

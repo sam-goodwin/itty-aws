@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentMemorySearchInput {
+  application_id: string;
+  project_id: string;
+  limit?: number;
+  prefix?: string;
+  q: string;
+}
 export const AgentMemorySearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     application_id: Schema.String.pipe(T.PathParam()),
@@ -16,10 +23,20 @@ export const AgentMemorySearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "GET",
     path: "/api/projects/{project_id}/agent_applications/{application_id}/memory/search/",
   }),
-);
-export type AgentMemorySearchInput = typeof AgentMemorySearchInput.Type;
+) as unknown as Schema.Codec<AgentMemorySearchInput>;
 
 // Output Schema
+export interface AgentMemorySearchOutput {
+  cue: string;
+  count: number;
+  results: {
+    path: string;
+    description: string;
+    tags: string[];
+    score: number;
+    snippet: string | null;
+  }[];
+}
 export const AgentMemorySearchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cue: Schema.String,
@@ -33,8 +50,7 @@ export const AgentMemorySearchOutput =
         snippet: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AgentMemorySearchOutput = typeof AgentMemorySearchOutput.Type;
+  }) as unknown as Schema.Codec<AgentMemorySearchOutput>;
 
 // The operation
 /**

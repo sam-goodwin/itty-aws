@@ -4,16 +4,36 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListInvoicesInput {
+  organization: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
   per_page: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/organizations/{organization}/invoices" }),
-);
-export type ListInvoicesInput = typeof ListInvoicesInput.Type;
+) as unknown as Schema.Codec<ListInvoicesInput>;
 
 // Output Schema
+export interface ListInvoicesOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    total: string;
+    billing_period_start: string;
+    billing_period_end: string;
+    paid: boolean;
+    overdue: boolean;
+  }[];
+}
 export const ListInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
@@ -31,8 +51,7 @@ export const ListInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       overdue: Schema.Boolean,
     }),
   ),
-});
-export type ListInvoicesOutput = typeof ListInvoicesOutput.Type;
+}) as unknown as Schema.Codec<ListInvoicesOutput>;
 
 // The operation
 /**

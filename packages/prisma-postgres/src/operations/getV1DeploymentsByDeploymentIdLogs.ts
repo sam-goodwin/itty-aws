@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1DeploymentsByDeploymentIdLogsInput {
+  deploymentId: string;
+  tail?: number;
+  from_start?: "true" | "false";
+  cursor?: string;
+}
 export const GetV1DeploymentsByDeploymentIdLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentId: Schema.String.pipe(T.PathParam()),
@@ -12,15 +18,12 @@ export const GetV1DeploymentsByDeploymentIdLogsInput =
     cursor: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/deployments/{deploymentId}/logs" }),
-  );
-export type GetV1DeploymentsByDeploymentIdLogsInput =
-  typeof GetV1DeploymentsByDeploymentIdLogsInput.Type;
+  ) as unknown as Schema.Codec<GetV1DeploymentsByDeploymentIdLogsInput>;
 
 // Output Schema
+export type GetV1DeploymentsByDeploymentIdLogsOutput = void;
 export const GetV1DeploymentsByDeploymentIdLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetV1DeploymentsByDeploymentIdLogsOutput =
-  typeof GetV1DeploymentsByDeploymentIdLogsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetV1DeploymentsByDeploymentIdLogsOutput>;
 
 // The operation
 /**

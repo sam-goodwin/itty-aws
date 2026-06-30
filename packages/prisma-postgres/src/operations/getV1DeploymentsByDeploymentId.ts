@@ -4,14 +4,30 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1DeploymentsByDeploymentIdInput {
+  deploymentId: string;
+}
 export const GetV1DeploymentsByDeploymentIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/deployments/{deploymentId}" }));
-export type GetV1DeploymentsByDeploymentIdInput =
-  typeof GetV1DeploymentsByDeploymentIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/deployments/{deploymentId}" }),
+  ) as unknown as Schema.Codec<GetV1DeploymentsByDeploymentIdInput>;
 
 // Output Schema
+export interface GetV1DeploymentsByDeploymentIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    foundryVersionId: string;
+    status: string;
+    previewDomain: string | null;
+    envVars?: Record<string, string>;
+    portMapping?: { http?: number };
+    createdAt: string;
+  };
+}
 export const GetV1DeploymentsByDeploymentIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -29,9 +45,7 @@ export const GetV1DeploymentsByDeploymentIdOutput =
       ),
       createdAt: Schema.String,
     }),
-  });
-export type GetV1DeploymentsByDeploymentIdOutput =
-  typeof GetV1DeploymentsByDeploymentIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1DeploymentsByDeploymentIdOutput>;
 
 // The operation
 /**

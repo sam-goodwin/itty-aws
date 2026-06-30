@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardTemplatesListInput {
+  project_id: string;
+  is_featured?: boolean;
+  limit?: number;
+  offset?: number;
+  ordering?: "-created_at" | "-template_name" | "created_at" | "template_name";
+  scope?: "feature_flag" | "global" | "organization" | "team";
+}
 export const DashboardTemplatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -26,11 +34,56 @@ export const DashboardTemplatesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/dashboard_templates/",
     }),
-  );
-export type DashboardTemplatesListInput =
-  typeof DashboardTemplatesListInput.Type;
+  ) as unknown as Schema.Codec<DashboardTemplatesListInput>;
 
 // Output Schema
+export interface DashboardTemplatesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    template_name?: string | null;
+    dashboard_description?: string | null;
+    dashboard_filters?: unknown;
+    tags?: string[] | null;
+    tiles?: unknown;
+    variables?: unknown;
+    deleted?: boolean | null;
+    created_at?: string | null;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    image_url?: string | null;
+    team_id?: number | null;
+    scope?: "team" | "organization" | "global" | "feature_flag" | "" | null;
+    availability_contexts?: string[] | null;
+    is_featured?: boolean;
+    non_portable_references?: {
+      actions: number;
+      cohorts: number;
+      warehouse_tables: string[];
+    };
+  }[];
+}
 export const DashboardTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -63,13 +116,41 @@ export const DashboardTemplatesListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
           image_url: Schema.optional(Schema.NullOr(Schema.String)),
           team_id: Schema.optional(Schema.NullOr(Schema.Number)),
-          scope: Schema.optional(Schema.Unknown),
+          scope: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "team",
+                  "organization",
+                  "global",
+                  "feature_flag",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
           availability_contexts: Schema.optional(
             Schema.NullOr(Schema.Array(Schema.String)),
           ),
@@ -84,9 +165,7 @@ export const DashboardTemplatesListOutput =
         }),
       ),
     ),
-  });
-export type DashboardTemplatesListOutput =
-  typeof DashboardTemplatesListOutput.Type;
+  }) as unknown as Schema.Codec<DashboardTemplatesListOutput>;
 
 // The operation
 /**

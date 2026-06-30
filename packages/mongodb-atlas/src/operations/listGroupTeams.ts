@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupTeamsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+}
 export const ListGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -13,12 +21,12 @@ export const ListGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageNum: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/teams" }),
-);
-export type ListGroupTeamsInput = typeof ListGroupTeamsInput.Type;
+) as unknown as Schema.Codec<ListGroupTeamsInput>;
 
 // Output Schema
-export const ListGroupTeamsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupTeamsOutput = typeof ListGroupTeamsOutput.Type;
+export type ListGroupTeamsOutput = void;
+export const ListGroupTeamsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupTeamsOutput>;
 
 // The operation
 /**

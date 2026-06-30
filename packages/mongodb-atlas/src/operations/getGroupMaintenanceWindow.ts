@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupMaintenanceWindowInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupMaintenanceWindowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const GetGroupMaintenanceWindowInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow",
     }),
-  );
-export type GetGroupMaintenanceWindowInput =
-  typeof GetGroupMaintenanceWindowInput.Type;
+  ) as unknown as Schema.Codec<GetGroupMaintenanceWindowInput>;
 
 // Output Schema
+export type GetGroupMaintenanceWindowOutput = void;
 export const GetGroupMaintenanceWindowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupMaintenanceWindowOutput =
-  typeof GetGroupMaintenanceWindowOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupMaintenanceWindowOutput>;
 
 // The operation
 /**

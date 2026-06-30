@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsPropertyValuesRetrieveInput {
+  project_id: string;
+}
 export const GroupsPropertyValuesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const GroupsPropertyValuesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/groups/property_values/",
     }),
-  );
-export type GroupsPropertyValuesRetrieveInput =
-  typeof GroupsPropertyValuesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<GroupsPropertyValuesRetrieveInput>;
 
 // Output Schema
+export type GroupsPropertyValuesRetrieveOutput = void;
 export const GroupsPropertyValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsPropertyValuesRetrieveOutput =
-  typeof GroupsPropertyValuesRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsPropertyValuesRetrieveOutput>;
 
 // The operation
 /**

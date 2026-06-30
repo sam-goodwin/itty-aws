@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DataIntegrationsUserManagementControllerDeleteUserDataInstallationInput {
+  user_id: string;
+  slug: string;
+  organization_id?: string;
+}
 export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,13 @@ export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationI
       method: "DELETE",
       path: "/user_management/users/{user_id}/connected_accounts/{slug}",
     }),
-  );
-export type DataIntegrationsUserManagementControllerDeleteUserDataInstallationInput =
-  typeof DataIntegrationsUserManagementControllerDeleteUserDataInstallationInput.Type;
+  ) as unknown as Schema.Codec<DataIntegrationsUserManagementControllerDeleteUserDataInstallationInput>;
 
 // Output Schema
-export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput =
-  typeof DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput.Type;
+  void;
+export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput>;
 
 // The operation
 /**

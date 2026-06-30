@@ -4,11 +4,43 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AkriConnectorCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriConnectorTemplateName: string;
+  connectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    allocatedDevices?: {
+      deviceInboundEndpointName: string;
+      deviceName: string;
+    }[];
+    status?: {
+      healthState?: {
+        status?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+        lastTransitionTime?: string;
+        lastUpdateTime?: string;
+        message?: string;
+        reasonCode?: string;
+      };
+    };
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const AkriConnectorCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -74,11 +106,22 @@ export const AkriConnectorCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriConnectorCreateOrUpdateInput =
-  typeof AkriConnectorCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AkriConnectorCreateOrUpdateInput>;
 
 // Output Schema
+export interface AkriConnectorCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AkriConnectorCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -98,9 +141,7 @@ export const AkriConnectorCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AkriConnectorCreateOrUpdateOutput =
-  typeof AkriConnectorCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AkriConnectorCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -120,6 +161,13 @@ export const AkriConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AkriConnectorDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriConnectorTemplateName: string;
+  connectorName: string;
+}
 export const AkriConnectorDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -133,13 +181,12 @@ export const AkriConnectorDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriConnectorDeleteInput = typeof AkriConnectorDeleteInput.Type;
+  ) as unknown as Schema.Codec<AkriConnectorDeleteInput>;
 
 // Output Schema
+export type AkriConnectorDeleteOutput = void;
 export const AkriConnectorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AkriConnectorDeleteOutput = typeof AkriConnectorDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriConnectorDeleteOutput>;
 
 // The operation
 /**
@@ -157,6 +204,13 @@ export const AkriConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AkriConnectorDeleteOutput,
 }));
 // Input Schema
+export interface AkriConnectorGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriConnectorTemplateName: string;
+  connectorName: string;
+}
 export const AkriConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -169,10 +223,22 @@ export const AkriConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors/{connectorName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type AkriConnectorGetInput = typeof AkriConnectorGetInput.Type;
+) as unknown as Schema.Codec<AkriConnectorGetInput>;
 
 // Output Schema
+export interface AkriConnectorGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AkriConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -193,8 +259,7 @@ export const AkriConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type AkriConnectorGetOutput = typeof AkriConnectorGetOutput.Type;
+) as unknown as Schema.Codec<AkriConnectorGetOutput>;
 
 // The operation
 /**
@@ -212,6 +277,12 @@ export const AkriConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AkriConnectorGetOutput,
 }));
 // Input Schema
+export interface AkriConnectorListByTemplateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriConnectorTemplateName: string;
+}
 export const AkriConnectorListByTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -224,11 +295,25 @@ export const AkriConnectorListByTemplateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}/connectors",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriConnectorListByTemplateInput =
-  typeof AkriConnectorListByTemplateInput.Type;
+  ) as unknown as Schema.Codec<AkriConnectorListByTemplateInput>;
 
 // Output Schema
+export interface AkriConnectorListByTemplateOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AkriConnectorListByTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -263,9 +348,7 @@ export const AkriConnectorListByTemplateOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AkriConnectorListByTemplateOutput =
-  typeof AkriConnectorListByTemplateOutput.Type;
+  }) as unknown as Schema.Codec<AkriConnectorListByTemplateOutput>;
 
 // The operation
 /**
@@ -284,6 +367,45 @@ export const AkriConnectorListByTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AkriConnectorTemplateCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriConnectorTemplateName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    aioMetadata?: { aioMinVersion?: string; aioMaxVersion?: string };
+    runtimeConfiguration: { runtimeConfigurationType: "ManagedConfiguration" };
+    diagnostics?: { logs: { level?: string } };
+    deviceInboundEndpointTypes: {
+      displayName?: string;
+      endpointType: string;
+      version?: string;
+    }[];
+    mqttConnectionConfiguration?: {
+      authentication?: { method: "ServiceAccountToken" };
+      host?: string;
+      protocol?: "Mqtt";
+      keepAliveSeconds?: number;
+      maxInflightMessages?: number;
+      sessionExpirySeconds?: number;
+      tls?: {
+        mode?: "Enabled" | "Disabled";
+        trustedCaCertificateConfigMapRef?: string;
+      };
+    };
+    connectorMetadataRef?: string;
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const AkriConnectorTemplateCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -366,11 +488,22 @@ export const AkriConnectorTemplateCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriConnectorTemplateCreateOrUpdateInput =
-  typeof AkriConnectorTemplateCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AkriConnectorTemplateCreateOrUpdateInput>;
 
 // Output Schema
+export interface AkriConnectorTemplateCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AkriConnectorTemplateCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -390,9 +523,7 @@ export const AkriConnectorTemplateCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AkriConnectorTemplateCreateOrUpdateOutput =
-  typeof AkriConnectorTemplateCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AkriConnectorTemplateCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -410,6 +541,12 @@ export const AkriConnectorTemplateCreateOrUpdate =
     outputSchema: AkriConnectorTemplateCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AkriConnectorTemplateDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriConnectorTemplateName: string;
+}
 export const AkriConnectorTemplateDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -422,15 +559,12 @@ export const AkriConnectorTemplateDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriConnectorTemplateDeleteInput =
-  typeof AkriConnectorTemplateDeleteInput.Type;
+  ) as unknown as Schema.Codec<AkriConnectorTemplateDeleteInput>;
 
 // Output Schema
+export type AkriConnectorTemplateDeleteOutput = void;
 export const AkriConnectorTemplateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AkriConnectorTemplateDeleteOutput =
-  typeof AkriConnectorTemplateDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriConnectorTemplateDeleteOutput>;
 
 // The operation
 /**
@@ -449,6 +583,12 @@ export const AkriConnectorTemplateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AkriConnectorTemplateGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriConnectorTemplateName: string;
+}
 export const AkriConnectorTemplateGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -461,11 +601,22 @@ export const AkriConnectorTemplateGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriConnectorTemplateGetInput =
-  typeof AkriConnectorTemplateGetInput.Type;
+  ) as unknown as Schema.Codec<AkriConnectorTemplateGetInput>;
 
 // Output Schema
+export interface AkriConnectorTemplateGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AkriConnectorTemplateGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -485,9 +636,7 @@ export const AkriConnectorTemplateGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AkriConnectorTemplateGetOutput =
-  typeof AkriConnectorTemplateGetOutput.Type;
+  }) as unknown as Schema.Codec<AkriConnectorTemplateGetOutput>;
 
 // The operation
 /**
@@ -506,6 +655,11 @@ export const AkriConnectorTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AkriConnectorTemplateListByInstanceResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+}
 export const AkriConnectorTemplateListByInstanceResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -517,11 +671,25 @@ export const AkriConnectorTemplateListByInstanceResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriConnectorTemplateListByInstanceResourceInput =
-  typeof AkriConnectorTemplateListByInstanceResourceInput.Type;
+  ) as unknown as Schema.Codec<AkriConnectorTemplateListByInstanceResourceInput>;
 
 // Output Schema
+export interface AkriConnectorTemplateListByInstanceResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AkriConnectorTemplateListByInstanceResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -556,9 +724,7 @@ export const AkriConnectorTemplateListByInstanceResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AkriConnectorTemplateListByInstanceResourceOutput =
-  typeof AkriConnectorTemplateListByInstanceResourceOutput.Type;
+  }) as unknown as Schema.Codec<AkriConnectorTemplateListByInstanceResourceOutput>;
 
 // The operation
 /**
@@ -575,6 +741,32 @@ export const AkriConnectorTemplateListByInstanceResource =
     outputSchema: AkriConnectorTemplateListByInstanceResourceOutput,
   }));
 // Input Schema
+export interface AkriServiceCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriServiceName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    status?: {
+      healthState?: {
+        status?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+        lastTransitionTime?: string;
+        lastUpdateTime?: string;
+        message?: string;
+        reasonCode?: string;
+      };
+    };
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const AkriServiceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -628,11 +820,22 @@ export const AkriServiceCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriServiceCreateOrUpdateInput =
-  typeof AkriServiceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AkriServiceCreateOrUpdateInput>;
 
 // Output Schema
+export interface AkriServiceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AkriServiceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -652,9 +855,7 @@ export const AkriServiceCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AkriServiceCreateOrUpdateOutput =
-  typeof AkriServiceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AkriServiceCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -673,6 +874,12 @@ export const AkriServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AkriServiceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriServiceName: string;
+}
 export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -686,12 +893,12 @@ export const AkriServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type AkriServiceDeleteInput = typeof AkriServiceDeleteInput.Type;
+) as unknown as Schema.Codec<AkriServiceDeleteInput>;
 
 // Output Schema
-export const AkriServiceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AkriServiceDeleteOutput = typeof AkriServiceDeleteOutput.Type;
+export type AkriServiceDeleteOutput = void;
+export const AkriServiceDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AkriServiceDeleteOutput>;
 
 // The operation
 /**
@@ -708,6 +915,12 @@ export const AkriServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AkriServiceDeleteOutput,
 }));
 // Input Schema
+export interface AkriServiceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  akriServiceName: string;
+}
 export const AkriServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -719,10 +932,22 @@ export const AkriServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices/{akriServiceName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type AkriServiceGetInput = typeof AkriServiceGetInput.Type;
+) as unknown as Schema.Codec<AkriServiceGetInput>;
 
 // Output Schema
+export interface AkriServiceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AkriServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -741,8 +966,7 @@ export const AkriServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AkriServiceGetOutput = typeof AkriServiceGetOutput.Type;
+}) as unknown as Schema.Codec<AkriServiceGetOutput>;
 
 // The operation
 /**
@@ -759,6 +983,11 @@ export const AkriServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AkriServiceGetOutput,
 }));
 // Input Schema
+export interface AkriServiceListByInstanceResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+}
 export const AkriServiceListByInstanceResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -770,11 +999,25 @@ export const AkriServiceListByInstanceResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriServices",
       apiVersion: "2026-07-01",
     }),
-  );
-export type AkriServiceListByInstanceResourceInput =
-  typeof AkriServiceListByInstanceResourceInput.Type;
+  ) as unknown as Schema.Codec<AkriServiceListByInstanceResourceInput>;
 
 // Output Schema
+export interface AkriServiceListByInstanceResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AkriServiceListByInstanceResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -809,9 +1052,7 @@ export const AkriServiceListByInstanceResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AkriServiceListByInstanceResourceOutput =
-  typeof AkriServiceListByInstanceResourceOutput.Type;
+  }) as unknown as Schema.Codec<AkriServiceListByInstanceResourceOutput>;
 
 // The operation
 /**
@@ -828,6 +1069,43 @@ export const AkriServiceListByInstanceResource =
     outputSchema: AkriServiceListByInstanceResourceOutput,
   }));
 // Input Schema
+export interface BrokerAuthenticationCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  authenticationName: string;
+  properties?: {
+    authenticationMethods: {
+      method: "Custom" | "ServiceAccountToken" | "X509";
+      customSettings?: {
+        auth?: { x509: { secretRef: string } };
+        caCertConfigMap?: string;
+        endpoint: string;
+        headers?: Record<string, string>;
+      };
+      serviceAccountTokenSettings?: { audiences: string[] };
+      x509Settings?: {
+        authorizationAttributes?: Record<
+          string,
+          { attributes: Record<string, string>; subject: string }
+        >;
+        trustedClientCaCert?: string;
+        additionalValidation?: "None" | "AzureDeviceRegistry";
+      };
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const BrokerAuthenticationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -908,11 +1186,22 @@ export const BrokerAuthenticationCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerAuthenticationCreateOrUpdateInput =
-  typeof BrokerAuthenticationCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BrokerAuthenticationCreateOrUpdateInput>;
 
 // Output Schema
+export interface BrokerAuthenticationCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BrokerAuthenticationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -932,9 +1221,7 @@ export const BrokerAuthenticationCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BrokerAuthenticationCreateOrUpdateOutput =
-  typeof BrokerAuthenticationCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BrokerAuthenticationCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -953,6 +1240,13 @@ export const BrokerAuthenticationCreateOrUpdate =
     outputSchema: BrokerAuthenticationCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BrokerAuthenticationDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  authenticationName: string;
+}
 export const BrokerAuthenticationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -966,15 +1260,12 @@ export const BrokerAuthenticationDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerAuthenticationDeleteInput =
-  typeof BrokerAuthenticationDeleteInput.Type;
+  ) as unknown as Schema.Codec<BrokerAuthenticationDeleteInput>;
 
 // Output Schema
+export type BrokerAuthenticationDeleteOutput = void;
 export const BrokerAuthenticationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BrokerAuthenticationDeleteOutput =
-  typeof BrokerAuthenticationDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerAuthenticationDeleteOutput>;
 
 // The operation
 /**
@@ -994,6 +1285,13 @@ export const BrokerAuthenticationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BrokerAuthenticationGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  authenticationName: string;
+}
 export const BrokerAuthenticationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1007,11 +1305,22 @@ export const BrokerAuthenticationGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerAuthenticationGetInput =
-  typeof BrokerAuthenticationGetInput.Type;
+  ) as unknown as Schema.Codec<BrokerAuthenticationGetInput>;
 
 // Output Schema
+export interface BrokerAuthenticationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BrokerAuthenticationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1031,9 +1340,7 @@ export const BrokerAuthenticationGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BrokerAuthenticationGetOutput =
-  typeof BrokerAuthenticationGetOutput.Type;
+  }) as unknown as Schema.Codec<BrokerAuthenticationGetOutput>;
 
 // The operation
 /**
@@ -1053,6 +1360,12 @@ export const BrokerAuthenticationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BrokerAuthenticationListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+}
 export const BrokerAuthenticationListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1065,11 +1378,25 @@ export const BrokerAuthenticationListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerAuthenticationListByResourceGroupInput =
-  typeof BrokerAuthenticationListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<BrokerAuthenticationListByResourceGroupInput>;
 
 // Output Schema
+export interface BrokerAuthenticationListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BrokerAuthenticationListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1104,9 +1431,7 @@ export const BrokerAuthenticationListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BrokerAuthenticationListByResourceGroupOutput =
-  typeof BrokerAuthenticationListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<BrokerAuthenticationListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1124,6 +1449,45 @@ export const BrokerAuthenticationListByResourceGroup =
     outputSchema: BrokerAuthenticationListByResourceGroupOutput,
   }));
 // Input Schema
+export interface BrokerAuthorizationCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  authorizationName: string;
+  properties?: {
+    authorizationPolicies: {
+      cache?: "Enabled" | "Disabled";
+      rules?: {
+        brokerResources: {
+          method: "Connect" | "Publish" | "Subscribe";
+          clientIds?: string[];
+          topics?: string[];
+        }[];
+        principals: {
+          attributes?: Record<string, string>[];
+          clientIds?: string[];
+          usernames?: string[];
+        };
+        stateStoreResources?: {
+          keyType: "Pattern" | "String" | "Binary";
+          keys: string[];
+          method: "Read" | "Write" | "ReadWrite";
+        }[];
+      }[];
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const BrokerAuthorizationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1197,11 +1561,22 @@ export const BrokerAuthorizationCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerAuthorizationCreateOrUpdateInput =
-  typeof BrokerAuthorizationCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BrokerAuthorizationCreateOrUpdateInput>;
 
 // Output Schema
+export interface BrokerAuthorizationCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BrokerAuthorizationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1221,9 +1596,7 @@ export const BrokerAuthorizationCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BrokerAuthorizationCreateOrUpdateOutput =
-  typeof BrokerAuthorizationCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BrokerAuthorizationCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1242,6 +1615,13 @@ export const BrokerAuthorizationCreateOrUpdate =
     outputSchema: BrokerAuthorizationCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BrokerAuthorizationDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  authorizationName: string;
+}
 export const BrokerAuthorizationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1255,15 +1635,12 @@ export const BrokerAuthorizationDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerAuthorizationDeleteInput =
-  typeof BrokerAuthorizationDeleteInput.Type;
+  ) as unknown as Schema.Codec<BrokerAuthorizationDeleteInput>;
 
 // Output Schema
+export type BrokerAuthorizationDeleteOutput = void;
 export const BrokerAuthorizationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BrokerAuthorizationDeleteOutput =
-  typeof BrokerAuthorizationDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerAuthorizationDeleteOutput>;
 
 // The operation
 /**
@@ -1283,6 +1660,13 @@ export const BrokerAuthorizationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BrokerAuthorizationGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  authorizationName: string;
+}
 export const BrokerAuthorizationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1296,11 +1680,22 @@ export const BrokerAuthorizationGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerAuthorizationGetInput =
-  typeof BrokerAuthorizationGetInput.Type;
+  ) as unknown as Schema.Codec<BrokerAuthorizationGetInput>;
 
 // Output Schema
+export interface BrokerAuthorizationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BrokerAuthorizationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1320,9 +1715,7 @@ export const BrokerAuthorizationGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BrokerAuthorizationGetOutput =
-  typeof BrokerAuthorizationGetOutput.Type;
+  }) as unknown as Schema.Codec<BrokerAuthorizationGetOutput>;
 
 // The operation
 /**
@@ -1342,6 +1735,12 @@ export const BrokerAuthorizationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BrokerAuthorizationListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+}
 export const BrokerAuthorizationListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1354,11 +1753,25 @@ export const BrokerAuthorizationListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerAuthorizationListByResourceGroupInput =
-  typeof BrokerAuthorizationListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<BrokerAuthorizationListByResourceGroupInput>;
 
 // Output Schema
+export interface BrokerAuthorizationListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BrokerAuthorizationListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1393,9 +1806,7 @@ export const BrokerAuthorizationListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BrokerAuthorizationListByResourceGroupOutput =
-  typeof BrokerAuthorizationListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<BrokerAuthorizationListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1413,6 +1824,179 @@ export const BrokerAuthorizationListByResourceGroup =
     outputSchema: BrokerAuthorizationListByResourceGroupOutput,
   }));
 // Input Schema
+export interface BrokerCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  properties?: {
+    advanced?: {
+      clients?: {
+        maxSessionExpirySeconds?: number;
+        maxMessageExpirySeconds?: number;
+        maxPacketSizeBytes?: number;
+        subscriberQueueLimit?: {
+          length?: number;
+          strategy?: "None" | "DropOldest";
+        };
+        maxReceiveMaximum?: number;
+        maxKeepAliveSeconds?: number;
+      };
+      encryptInternalTraffic?: "Enabled" | "Disabled";
+      internalCerts?: {
+        duration: string;
+        renewBefore: string;
+        privateKey: {
+          algorithm:
+            | "Ec256"
+            | "Ec384"
+            | "Ec521"
+            | "Ed25519"
+            | "Rsa2048"
+            | "Rsa4096"
+            | "Rsa8192";
+          rotationPolicy: "Always" | "Never";
+        };
+      };
+    };
+    cardinality?: {
+      backendChain: {
+        partitions: number;
+        redundancyFactor: number;
+        workers?: number;
+      };
+      frontend: { replicas: number; workers?: number };
+    };
+    diagnostics?: {
+      logs?: { level?: string };
+      metrics?: { prometheusPort?: number };
+      selfCheck?: {
+        mode?: "Enabled" | "Disabled";
+        intervalSeconds?: number;
+        timeoutSeconds?: number;
+      };
+      traces?: {
+        mode?: "Enabled" | "Disabled";
+        cacheSizeMegabytes?: number;
+        selfTracing?: {
+          mode?: "Enabled" | "Disabled";
+          intervalSeconds?: number;
+        };
+        spanChannelCapacity?: number;
+      };
+    };
+    diskBackedMessageBuffer?: {
+      maxSize: string;
+      ephemeralVolumeClaimSpec?: {
+        volumeName?: string;
+        volumeMode?: string;
+        storageClassName?: string;
+        accessModes?: string[];
+        dataSource?: { apiGroup?: string; kind: string; name: string };
+        dataSourceRef?: {
+          apiGroup?: string;
+          kind: string;
+          name: string;
+          namespace?: string;
+        };
+        resources?: {
+          limits?: Record<string, string>;
+          requests?: Record<string, string>;
+          claims?: { name: string }[];
+        };
+        selector?: {
+          matchExpressions?: {
+            key: string;
+            operator: "In" | "NotIn" | "Exists" | "DoesNotExist";
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      };
+      persistentVolumeClaimSpec?: {
+        volumeName?: string;
+        volumeMode?: string;
+        storageClassName?: string;
+        accessModes?: string[];
+        dataSource?: { apiGroup?: string; kind: string; name: string };
+        dataSourceRef?: {
+          apiGroup?: string;
+          kind: string;
+          name: string;
+          namespace?: string;
+        };
+        resources?: {
+          limits?: Record<string, string>;
+          requests?: Record<string, string>;
+          claims?: { name: string }[];
+        };
+        selector?: {
+          matchExpressions?: {
+            key: string;
+            operator: "In" | "NotIn" | "Exists" | "DoesNotExist";
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      };
+    };
+    generateResourceLimits?: { cpu?: "Enabled" | "Disabled" };
+    highPriorityMessagesBackpressureHandling?: "Accept" | "Reject";
+    memoryProfile?: "Tiny" | "Low" | "Medium" | "High";
+    persistence?: {
+      maxSize: string;
+      persistentVolumeClaimSpec?: {
+        volumeName?: string;
+        volumeMode?: string;
+        storageClassName?: string;
+        accessModes?: string[];
+        dataSource?: { apiGroup?: string; kind: string; name: string };
+        dataSourceRef?: {
+          apiGroup?: string;
+          kind: string;
+          name: string;
+          namespace?: string;
+        };
+        resources?: {
+          limits?: Record<string, string>;
+          requests?: Record<string, string>;
+          claims?: { name: string }[];
+        };
+        selector?: {
+          matchExpressions?: {
+            key: string;
+            operator: "In" | "NotIn" | "Exists" | "DoesNotExist";
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      };
+      retain?: { mode: "All" | "None" | "Custom" };
+      stateStore?: { mode: "All" | "None" | "Custom" };
+      subscriberQueue?: { mode: "All" | "None" | "Custom" };
+      encryption?: { mode: "Enabled" | "Disabled" };
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    status?: {
+      healthState?: {
+        status?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+        lastTransitionTime?: string;
+        lastUpdateTime?: string;
+        message?: string;
+        reasonCode?: string;
+      };
+    };
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const BrokerCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1784,10 +2368,22 @@ export const BrokerCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerCreateOrUpdateInput = typeof BrokerCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BrokerCreateOrUpdateInput>;
 
 // Output Schema
+export interface BrokerCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BrokerCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1807,8 +2403,7 @@ export const BrokerCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BrokerCreateOrUpdateOutput = typeof BrokerCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BrokerCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1827,6 +2422,12 @@ export const BrokerCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BrokerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+}
 export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1838,12 +2439,12 @@ export const BrokerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type BrokerDeleteInput = typeof BrokerDeleteInput.Type;
+) as unknown as Schema.Codec<BrokerDeleteInput>;
 
 // Output Schema
-export const BrokerDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BrokerDeleteOutput = typeof BrokerDeleteOutput.Type;
+export type BrokerDeleteOutput = void;
+export const BrokerDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerDeleteOutput>;
 
 // The operation
 /**
@@ -1860,6 +2461,12 @@ export const BrokerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BrokerDeleteOutput,
 }));
 // Input Schema
+export interface BrokerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+}
 export const BrokerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1871,10 +2478,22 @@ export const BrokerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type BrokerGetInput = typeof BrokerGetInput.Type;
+) as unknown as Schema.Codec<BrokerGetInput>;
 
 // Output Schema
+export interface BrokerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BrokerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1893,8 +2512,7 @@ export const BrokerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BrokerGetOutput = typeof BrokerGetOutput.Type;
+}) as unknown as Schema.Codec<BrokerGetOutput>;
 
 // The operation
 /**
@@ -1911,6 +2529,11 @@ export const BrokerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BrokerGetOutput,
 }));
 // Input Schema
+export interface BrokerListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+}
 export const BrokerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1922,11 +2545,25 @@ export const BrokerListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerListByResourceGroupInput =
-  typeof BrokerListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<BrokerListByResourceGroupInput>;
 
 // Output Schema
+export interface BrokerListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BrokerListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1961,9 +2598,7 @@ export const BrokerListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BrokerListByResourceGroupOutput =
-  typeof BrokerListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<BrokerListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1981,6 +2616,60 @@ export const BrokerListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BrokerListenerCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  listenerName: string;
+  properties?: {
+    serviceName?: string;
+    ports: {
+      authenticationRef?: string;
+      authorizationRef?: string;
+      nodePort?: number;
+      port: number;
+      protocol?: "Mqtt" | "WebSockets";
+      tls?: {
+        mode: "Automatic" | "Manual";
+        certManagerCertificateSpec?: {
+          duration?: string;
+          secretName?: string;
+          renewBefore?: string;
+          issuerRef: {
+            group: string;
+            kind: "Issuer" | "ClusterIssuer";
+            name: string;
+          };
+          privateKey?: {
+            algorithm:
+              | "Ec256"
+              | "Ec384"
+              | "Ec521"
+              | "Ed25519"
+              | "Rsa2048"
+              | "Rsa4096"
+              | "Rsa8192";
+            rotationPolicy: "Always" | "Never";
+          };
+          san?: { dns: string[]; ip: string[] };
+        };
+        manual?: { secretRef: string };
+      };
+    }[];
+    serviceType?: "ClusterIp" | "LoadBalancer" | "NodePort";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const BrokerListenerCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2073,11 +2762,22 @@ export const BrokerListenerCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerListenerCreateOrUpdateInput =
-  typeof BrokerListenerCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BrokerListenerCreateOrUpdateInput>;
 
 // Output Schema
+export interface BrokerListenerCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BrokerListenerCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2097,9 +2797,7 @@ export const BrokerListenerCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BrokerListenerCreateOrUpdateOutput =
-  typeof BrokerListenerCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BrokerListenerCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2118,6 +2816,13 @@ export const BrokerListenerCreateOrUpdate =
     outputSchema: BrokerListenerCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BrokerListenerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  listenerName: string;
+}
 export const BrokerListenerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2131,13 +2836,12 @@ export const BrokerListenerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerListenerDeleteInput = typeof BrokerListenerDeleteInput.Type;
+  ) as unknown as Schema.Codec<BrokerListenerDeleteInput>;
 
 // Output Schema
+export type BrokerListenerDeleteOutput = void;
 export const BrokerListenerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BrokerListenerDeleteOutput = typeof BrokerListenerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BrokerListenerDeleteOutput>;
 
 // The operation
 /**
@@ -2157,6 +2861,13 @@ export const BrokerListenerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BrokerListenerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+  listenerName: string;
+}
 export const BrokerListenerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2171,10 +2882,22 @@ export const BrokerListenerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type BrokerListenerGetInput = typeof BrokerListenerGetInput.Type;
+) as unknown as Schema.Codec<BrokerListenerGetInput>;
 
 // Output Schema
+export interface BrokerListenerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BrokerListenerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2194,8 +2917,7 @@ export const BrokerListenerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BrokerListenerGetOutput = typeof BrokerListenerGetOutput.Type;
+  }) as unknown as Schema.Codec<BrokerListenerGetOutput>;
 
 // The operation
 /**
@@ -2213,6 +2935,12 @@ export const BrokerListenerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BrokerListenerGetOutput,
 }));
 // Input Schema
+export interface BrokerListenerListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  brokerName: string;
+}
 export const BrokerListenerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2225,11 +2953,25 @@ export const BrokerListenerListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners",
       apiVersion: "2026-07-01",
     }),
-  );
-export type BrokerListenerListByResourceGroupInput =
-  typeof BrokerListenerListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<BrokerListenerListByResourceGroupInput>;
 
 // Output Schema
+export interface BrokerListenerListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BrokerListenerListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2264,9 +3006,7 @@ export const BrokerListenerListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BrokerListenerListByResourceGroupOutput =
-  typeof BrokerListenerListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<BrokerListenerListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2284,6 +3024,83 @@ export const BrokerListenerListByResourceGroup =
     outputSchema: BrokerListenerListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DataflowCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+  dataflowName: string;
+  properties?: {
+    mode?: "Enabled" | "Disabled";
+    requestDiskPersistence?: "Enabled" | "Disabled";
+    operations: {
+      operationType: "Source" | "Destination" | "BuiltInTransformation";
+      name?: string;
+      sourceSettings?: {
+        endpointRef: string;
+        assetRef?: string;
+        serializationFormat?: "Json";
+        schemaRef?: string;
+        dataSources: string[];
+      };
+      builtInTransformationSettings?: {
+        serializationFormat?: "Delta" | "Json" | "Parquet";
+        schemaRef?: string;
+        datasets?: {
+          key: string;
+          description?: string;
+          schemaRef?: string;
+          inputs: string[];
+          expression?: string;
+        }[];
+        filter?: {
+          type?: "Filter";
+          description?: string;
+          inputs: string[];
+          expression: string;
+        }[];
+        map?: {
+          type?:
+            | "NewProperties"
+            | "Rename"
+            | "Compute"
+            | "PassThrough"
+            | "BuiltInFunction";
+          description?: string;
+          inputs: string[];
+          expression?: string;
+          output: string;
+        }[];
+      };
+      destinationSettings?: {
+        endpointRef: string;
+        dataDestination: string;
+        headers?: {
+          actionType: "AddIfNotPresent" | "Remove" | "AddOrReplace";
+        }[];
+      };
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    status?: {
+      healthState?: {
+        status?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+        lastTransitionTime?: string;
+        lastUpdateTime?: string;
+        message?: string;
+        reasonCode?: string;
+      };
+    };
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const DataflowCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2429,11 +3246,22 @@ export const DataflowCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowCreateOrUpdateInput =
-  typeof DataflowCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataflowCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataflowCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataflowCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2453,9 +3281,7 @@ export const DataflowCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataflowCreateOrUpdateOutput =
-  typeof DataflowCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataflowCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2475,6 +3301,13 @@ export const DataflowCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataflowDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+  dataflowName: string;
+}
 export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2487,12 +3320,12 @@ export const DataflowDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type DataflowDeleteInput = typeof DataflowDeleteInput.Type;
+) as unknown as Schema.Codec<DataflowDeleteInput>;
 
 // Output Schema
-export const DataflowDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataflowDeleteOutput = typeof DataflowDeleteOutput.Type;
+export type DataflowDeleteOutput = void;
+export const DataflowDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowDeleteOutput>;
 
 // The operation
 /**
@@ -2510,6 +3343,166 @@ export const DataflowDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataflowDeleteOutput,
 }));
 // Input Schema
+export interface DataflowEndpointCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowEndpointName: string;
+  properties?: {
+    endpointType:
+      | "DataExplorer"
+      | "DataLakeStorage"
+      | "FabricOneLake"
+      | "Kafka"
+      | "LocalStorage"
+      | "Mqtt"
+      | "OpenTelemetry";
+    hostType?:
+      | "FabricRT"
+      | "EventGrid"
+      | "LocalBroker"
+      | "Eventhub"
+      | "CustomMqtt"
+      | "CustomKafka";
+    dataExplorerSettings?: {
+      authentication: {
+        method: "SystemAssignedManagedIdentity" | "UserAssignedManagedIdentity";
+        systemAssignedManagedIdentitySettings?: { audience?: string };
+        userAssignedManagedIdentitySettings?: {
+          clientId: string;
+          scope?: string;
+          tenantId: string;
+        };
+      };
+      database: string;
+      host: string;
+      batching?: { latencySeconds?: number; maxMessages?: number };
+    };
+    dataLakeStorageSettings?: {
+      authentication: {
+        method:
+          | "SystemAssignedManagedIdentity"
+          | "UserAssignedManagedIdentity"
+          | "AccessToken";
+        accessTokenSettings?: { secretRef: string };
+        systemAssignedManagedIdentitySettings?: { audience?: string };
+        userAssignedManagedIdentitySettings?: {
+          clientId: string;
+          scope?: string;
+          tenantId: string;
+        };
+      };
+      host: string;
+      batching?: { latencySeconds?: number; maxMessages?: number };
+    };
+    fabricOneLakeSettings?: {
+      authentication: {
+        method: "SystemAssignedManagedIdentity" | "UserAssignedManagedIdentity";
+        systemAssignedManagedIdentitySettings?: { audience?: string };
+        userAssignedManagedIdentitySettings?: {
+          clientId: string;
+          scope?: string;
+          tenantId: string;
+        };
+      };
+      names: { lakehouseName: string; workspaceName: string };
+      oneLakePathType: "Files" | "Tables";
+      host: string;
+      batching?: { latencySeconds?: number; maxMessages?: number };
+    };
+    kafkaSettings?: {
+      authentication: {
+        method:
+          | "SystemAssignedManagedIdentity"
+          | "UserAssignedManagedIdentity"
+          | "Sasl"
+          | "X509Certificate"
+          | "Anonymous";
+        systemAssignedManagedIdentitySettings?: { audience?: string };
+        userAssignedManagedIdentitySettings?: {
+          clientId: string;
+          scope?: string;
+          tenantId: string;
+        };
+        saslSettings?: {
+          saslType: "Plain" | "ScramSha256" | "ScramSha512";
+          secretRef: string;
+        };
+        x509CertificateSettings?: { secretRef: string };
+      };
+      consumerGroupId?: string;
+      host: string;
+      batching?: {
+        mode?: "Enabled" | "Disabled";
+        latencyMs?: number;
+        maxBytes?: number;
+        maxMessages?: number;
+      };
+      copyMqttProperties?: "Enabled" | "Disabled";
+      compression?: "None" | "Gzip" | "Snappy" | "Lz4";
+      kafkaAcks?: "Zero" | "One" | "All";
+      partitionStrategy?: "Default" | "Static" | "Topic" | "Property";
+      tls?: {
+        mode?: "Enabled" | "Disabled";
+        trustedCaCertificateConfigMapRef?: string;
+      };
+      cloudEventAttributes?: "Propagate" | "CreateOrRemap";
+    };
+    localStorageSettings?: { persistentVolumeClaimRef: string };
+    mqttSettings?: {
+      authentication: {
+        method:
+          | "SystemAssignedManagedIdentity"
+          | "UserAssignedManagedIdentity"
+          | "ServiceAccountToken"
+          | "X509Certificate"
+          | "Anonymous";
+        systemAssignedManagedIdentitySettings?: { audience?: string };
+        userAssignedManagedIdentitySettings?: {
+          clientId: string;
+          scope?: string;
+          tenantId: string;
+        };
+        serviceAccountTokenSettings?: { audience: string };
+        x509CertificateSettings?: { secretRef: string };
+      };
+      clientIdPrefix?: string;
+      host?: string;
+      protocol?: "Mqtt" | "WebSockets";
+      keepAliveSeconds?: number;
+      retain?: "Keep" | "Never";
+      maxInflightMessages?: number;
+      qos?: number;
+      sessionExpirySeconds?: number;
+      tls?: {
+        mode?: "Enabled" | "Disabled";
+        trustedCaCertificateConfigMapRef?: string;
+      };
+      cloudEventAttributes?: "Propagate" | "CreateOrRemap";
+    };
+    openTelemetrySettings?: {
+      host: string;
+      batching?: { latencySeconds?: number; maxMessages?: number };
+      tls?: {
+        mode?: "Enabled" | "Disabled";
+        trustedCaCertificateConfigMapRef?: string;
+      };
+      authentication: {
+        method: "ServiceAccountToken" | "X509Certificate" | "Anonymous";
+      };
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const DataflowEndpointCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2820,11 +3813,22 @@ export const DataflowEndpointCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowEndpointCreateOrUpdateInput =
-  typeof DataflowEndpointCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataflowEndpointCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataflowEndpointCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataflowEndpointCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2844,9 +3848,7 @@ export const DataflowEndpointCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataflowEndpointCreateOrUpdateOutput =
-  typeof DataflowEndpointCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataflowEndpointCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2864,6 +3866,12 @@ export const DataflowEndpointCreateOrUpdate =
     outputSchema: DataflowEndpointCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DataflowEndpointDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowEndpointName: string;
+}
 export const DataflowEndpointDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2876,15 +3884,12 @@ export const DataflowEndpointDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowEndpointDeleteInput =
-  typeof DataflowEndpointDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataflowEndpointDeleteInput>;
 
 // Output Schema
+export type DataflowEndpointDeleteOutput = void;
 export const DataflowEndpointDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataflowEndpointDeleteOutput =
-  typeof DataflowEndpointDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowEndpointDeleteOutput>;
 
 // The operation
 /**
@@ -2903,6 +3908,12 @@ export const DataflowEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataflowEndpointGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowEndpointName: string;
+}
 export const DataflowEndpointGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2915,10 +3926,22 @@ export const DataflowEndpointGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowEndpointGetInput = typeof DataflowEndpointGetInput.Type;
+  ) as unknown as Schema.Codec<DataflowEndpointGetInput>;
 
 // Output Schema
+export interface DataflowEndpointGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataflowEndpointGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2938,8 +3961,7 @@ export const DataflowEndpointGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataflowEndpointGetOutput = typeof DataflowEndpointGetOutput.Type;
+  }) as unknown as Schema.Codec<DataflowEndpointGetOutput>;
 
 // The operation
 /**
@@ -2956,6 +3978,11 @@ export const DataflowEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataflowEndpointGetOutput,
 }));
 // Input Schema
+export interface DataflowEndpointListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+}
 export const DataflowEndpointListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2967,11 +3994,25 @@ export const DataflowEndpointListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowEndpointListByResourceGroupInput =
-  typeof DataflowEndpointListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DataflowEndpointListByResourceGroupInput>;
 
 // Output Schema
+export interface DataflowEndpointListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataflowEndpointListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3006,9 +4047,7 @@ export const DataflowEndpointListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataflowEndpointListByResourceGroupOutput =
-  typeof DataflowEndpointListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DataflowEndpointListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3025,6 +4064,13 @@ export const DataflowEndpointListByResourceGroup =
     outputSchema: DataflowEndpointListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DataflowGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+  dataflowName: string;
+}
 export const DataflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3037,10 +4083,22 @@ export const DataflowGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type DataflowGetInput = typeof DataflowGetInput.Type;
+) as unknown as Schema.Codec<DataflowGetInput>;
 
 // Output Schema
+export interface DataflowGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataflowGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3059,8 +4117,7 @@ export const DataflowGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DataflowGetOutput = typeof DataflowGetOutput.Type;
+}) as unknown as Schema.Codec<DataflowGetOutput>;
 
 // The operation
 /**
@@ -3078,6 +4135,47 @@ export const DataflowGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataflowGetOutput,
 }));
 // Input Schema
+export interface DataflowGraphCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+  dataflowGraphName: string;
+  properties?: {
+    mode?: "Enabled" | "Disabled";
+    requestDiskPersistence?: "Enabled" | "Disabled";
+    nodes: { name: string; nodeType: "Source" | "Graph" | "Destination" }[];
+    nodeConnections: {
+      from: {
+        name: string;
+        schema?: {
+          serializationFormat?: "Delta" | "Json" | "Parquet" | "Avro";
+          schemaRef?: string;
+        };
+      };
+      to: { name: string };
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    status?: {
+      healthState?: {
+        status?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+        lastTransitionTime?: string;
+        lastUpdateTime?: string;
+        message?: string;
+        reasonCode?: string;
+      };
+    };
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const DataflowGraphCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3163,11 +4261,22 @@ export const DataflowGraphCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowGraphCreateOrUpdateInput =
-  typeof DataflowGraphCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataflowGraphCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataflowGraphCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataflowGraphCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3187,9 +4296,7 @@ export const DataflowGraphCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataflowGraphCreateOrUpdateOutput =
-  typeof DataflowGraphCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataflowGraphCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3209,6 +4316,13 @@ export const DataflowGraphCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataflowGraphDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+  dataflowGraphName: string;
+}
 export const DataflowGraphDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3222,13 +4336,12 @@ export const DataflowGraphDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowGraphDeleteInput = typeof DataflowGraphDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataflowGraphDeleteInput>;
 
 // Output Schema
+export type DataflowGraphDeleteOutput = void;
 export const DataflowGraphDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataflowGraphDeleteOutput = typeof DataflowGraphDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowGraphDeleteOutput>;
 
 // The operation
 /**
@@ -3246,6 +4359,13 @@ export const DataflowGraphDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataflowGraphDeleteOutput,
 }));
 // Input Schema
+export interface DataflowGraphGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+  dataflowGraphName: string;
+}
 export const DataflowGraphGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3258,10 +4378,22 @@ export const DataflowGraphGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type DataflowGraphGetInput = typeof DataflowGraphGetInput.Type;
+) as unknown as Schema.Codec<DataflowGraphGetInput>;
 
 // Output Schema
+export interface DataflowGraphGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataflowGraphGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3282,8 +4414,7 @@ export const DataflowGraphGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type DataflowGraphGetOutput = typeof DataflowGraphGetOutput.Type;
+) as unknown as Schema.Codec<DataflowGraphGetOutput>;
 
 // The operation
 /**
@@ -3301,6 +4432,12 @@ export const DataflowGraphGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataflowGraphGetOutput,
 }));
 // Input Schema
+export interface DataflowGraphListByDataflowProfileInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+}
 export const DataflowGraphListByDataflowProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3313,11 +4450,25 @@ export const DataflowGraphListByDataflowProfileInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowGraphListByDataflowProfileInput =
-  typeof DataflowGraphListByDataflowProfileInput.Type;
+  ) as unknown as Schema.Codec<DataflowGraphListByDataflowProfileInput>;
 
 // Output Schema
+export interface DataflowGraphListByDataflowProfileOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataflowGraphListByDataflowProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3352,9 +4503,7 @@ export const DataflowGraphListByDataflowProfileOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataflowGraphListByDataflowProfileOutput =
-  typeof DataflowGraphListByDataflowProfileOutput.Type;
+  }) as unknown as Schema.Codec<DataflowGraphListByDataflowProfileOutput>;
 
 // The operation
 /**
@@ -3372,6 +4521,12 @@ export const DataflowGraphListByDataflowProfile =
     outputSchema: DataflowGraphListByDataflowProfileOutput,
   }));
 // Input Schema
+export interface DataflowListByProfileResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+}
 export const DataflowListByProfileResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3384,11 +4539,25 @@ export const DataflowListByProfileResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowListByProfileResourceInput =
-  typeof DataflowListByProfileResourceInput.Type;
+  ) as unknown as Schema.Codec<DataflowListByProfileResourceInput>;
 
 // Output Schema
+export interface DataflowListByProfileResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataflowListByProfileResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3423,9 +4592,7 @@ export const DataflowListByProfileResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataflowListByProfileResourceOutput =
-  typeof DataflowListByProfileResourceOutput.Type;
+  }) as unknown as Schema.Codec<DataflowListByProfileResourceOutput>;
 
 // The operation
 /**
@@ -3443,6 +4610,38 @@ export const DataflowListByProfileResource =
     outputSchema: DataflowListByProfileResourceOutput,
   }));
 // Input Schema
+export interface DataflowProfileCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+  properties?: {
+    diagnostics?: {
+      logs?: { level?: string };
+      metrics?: { prometheusPort?: number };
+    };
+    instanceCount?: number;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    status?: {
+      healthState?: {
+        status?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+        lastTransitionTime?: string;
+        lastUpdateTime?: string;
+        message?: string;
+        reasonCode?: string;
+      };
+    };
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const DataflowProfileCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3514,11 +4713,22 @@ export const DataflowProfileCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowProfileCreateOrUpdateInput =
-  typeof DataflowProfileCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataflowProfileCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataflowProfileCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataflowProfileCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3538,9 +4748,7 @@ export const DataflowProfileCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataflowProfileCreateOrUpdateOutput =
-  typeof DataflowProfileCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataflowProfileCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3558,6 +4766,12 @@ export const DataflowProfileCreateOrUpdate =
     outputSchema: DataflowProfileCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DataflowProfileDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+}
 export const DataflowProfileDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3570,14 +4784,12 @@ export const DataflowProfileDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowProfileDeleteInput = typeof DataflowProfileDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataflowProfileDeleteInput>;
 
 // Output Schema
+export type DataflowProfileDeleteOutput = void;
 export const DataflowProfileDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataflowProfileDeleteOutput =
-  typeof DataflowProfileDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataflowProfileDeleteOutput>;
 
 // The operation
 /**
@@ -3596,6 +4808,12 @@ export const DataflowProfileDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataflowProfileGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  dataflowProfileName: string;
+}
 export const DataflowProfileGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3608,10 +4826,22 @@ export const DataflowProfileGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowProfileGetInput = typeof DataflowProfileGetInput.Type;
+  ) as unknown as Schema.Codec<DataflowProfileGetInput>;
 
 // Output Schema
+export interface DataflowProfileGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataflowProfileGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3631,8 +4861,7 @@ export const DataflowProfileGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataflowProfileGetOutput = typeof DataflowProfileGetOutput.Type;
+  }) as unknown as Schema.Codec<DataflowProfileGetOutput>;
 
 // The operation
 /**
@@ -3649,6 +4878,11 @@ export const DataflowProfileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataflowProfileGetOutput,
 }));
 // Input Schema
+export interface DataflowProfileListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+}
 export const DataflowProfileListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3660,11 +4894,25 @@ export const DataflowProfileListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles",
       apiVersion: "2026-07-01",
     }),
-  );
-export type DataflowProfileListByResourceGroupInput =
-  typeof DataflowProfileListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DataflowProfileListByResourceGroupInput>;
 
 // Output Schema
+export interface DataflowProfileListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataflowProfileListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3699,9 +4947,7 @@ export const DataflowProfileListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataflowProfileListByResourceGroupOutput =
-  typeof DataflowProfileListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DataflowProfileListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3718,6 +4964,50 @@ export const DataflowProfileListByResourceGroup =
     outputSchema: DataflowProfileListByResourceGroupOutput,
   }));
 // Input Schema
+export interface InstanceCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  properties?: {
+    description?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    version?: string;
+    schemaRegistryRef: { resourceId: string };
+    defaultSecretProviderClassRef?: { resourceId: string };
+    features?: Record<
+      string,
+      {
+        mode?: "Stable" | "Preview" | "Disabled";
+        settings?: Record<string, "Enabled" | "Disabled">;
+      }
+    >;
+    adrNamespaceRef?: { resourceId: string };
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+  };
+  extendedLocation: { name: string; type: "CustomLocation" };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const InstanceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3805,11 +5095,22 @@ export const InstanceCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type InstanceCreateOrUpdateInput =
-  typeof InstanceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<InstanceCreateOrUpdateInput>;
 
 // Output Schema
+export interface InstanceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstanceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3829,9 +5130,7 @@ export const InstanceCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InstanceCreateOrUpdateOutput =
-  typeof InstanceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InstanceCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3849,6 +5148,11 @@ export const InstanceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstanceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+}
 export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3859,12 +5163,12 @@ export const InstanceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type InstanceDeleteInput = typeof InstanceDeleteInput.Type;
+) as unknown as Schema.Codec<InstanceDeleteInput>;
 
 // Output Schema
-export const InstanceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InstanceDeleteOutput = typeof InstanceDeleteOutput.Type;
+export type InstanceDeleteOutput = void;
+export const InstanceDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InstanceDeleteOutput>;
 
 // The operation
 /**
@@ -3880,6 +5184,11 @@ export const InstanceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstanceDeleteOutput,
 }));
 // Input Schema
+export interface InstanceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+}
 export const InstanceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3890,10 +5199,22 @@ export const InstanceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type InstanceGetInput = typeof InstanceGetInput.Type;
+) as unknown as Schema.Codec<InstanceGetInput>;
 
 // Output Schema
+export interface InstanceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstanceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3912,8 +5233,7 @@ export const InstanceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type InstanceGetOutput = typeof InstanceGetOutput.Type;
+}) as unknown as Schema.Codec<InstanceGetOutput>;
 
 // The operation
 /**
@@ -3929,6 +5249,10 @@ export const InstanceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstanceGetOutput,
 }));
 // Input Schema
+export interface InstanceListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const InstanceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3939,11 +5263,25 @@ export const InstanceListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances",
       apiVersion: "2026-07-01",
     }),
-  );
-export type InstanceListByResourceGroupInput =
-  typeof InstanceListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<InstanceListByResourceGroupInput>;
 
 // Output Schema
+export interface InstanceListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InstanceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3978,9 +5316,7 @@ export const InstanceListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InstanceListByResourceGroupOutput =
-  typeof InstanceListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<InstanceListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3997,6 +5333,9 @@ export const InstanceListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstanceListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const InstanceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4006,11 +5345,25 @@ export const InstanceListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTOperations/instances",
       apiVersion: "2026-07-01",
     }),
-  );
-export type InstanceListBySubscriptionInput =
-  typeof InstanceListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<InstanceListBySubscriptionInput>;
 
 // Output Schema
+export interface InstanceListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InstanceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4045,9 +5398,7 @@ export const InstanceListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InstanceListBySubscriptionOutput =
-  typeof InstanceListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<InstanceListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4063,6 +5414,25 @@ export const InstanceListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstanceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const InstanceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4095,10 +5465,22 @@ export const InstanceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
     apiVersion: "2026-07-01",
   }),
-);
-export type InstanceUpdateInput = typeof InstanceUpdateInput.Type;
+) as unknown as Schema.Codec<InstanceUpdateInput>;
 
 // Output Schema
+export interface InstanceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstanceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4117,8 +5499,7 @@ export const InstanceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type InstanceUpdateOutput = typeof InstanceUpdateOutput.Type;
+}) as unknown as Schema.Codec<InstanceUpdateOutput>;
 
 // The operation
 /**
@@ -4134,6 +5515,7 @@ export const InstanceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstanceUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -4142,10 +5524,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.IoTOperations/operations",
     apiVersion: "2026-07-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4168,8 +5564,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -4182,6 +5577,33 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface RegistryEndpointCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  registryEndpointName: string;
+  properties?: {
+    host: string;
+    authentication: {
+      method:
+        | "SystemAssignedManagedIdentity"
+        | "UserAssignedManagedIdentity"
+        | "Anonymous"
+        | "ArtifactPullSecret";
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    healthState?: "Available" | "Degraded" | "Unavailable" | "Unknown";
+    codeSigningCas?: { type: "Secret" | "ConfigMap" }[];
+  };
+  extendedLocation?: { name: string; type: "CustomLocation" };
+}
 export const RegistryEndpointCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4234,11 +5656,22 @@ export const RegistryEndpointCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type RegistryEndpointCreateOrUpdateInput =
-  typeof RegistryEndpointCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryEndpointCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryEndpointCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryEndpointCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4258,9 +5691,7 @@ export const RegistryEndpointCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryEndpointCreateOrUpdateOutput =
-  typeof RegistryEndpointCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEndpointCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4278,6 +5709,12 @@ export const RegistryEndpointCreateOrUpdate =
     outputSchema: RegistryEndpointCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryEndpointDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  registryEndpointName: string;
+}
 export const RegistryEndpointDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4290,15 +5727,12 @@ export const RegistryEndpointDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type RegistryEndpointDeleteInput =
-  typeof RegistryEndpointDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryEndpointDeleteInput>;
 
 // Output Schema
+export type RegistryEndpointDeleteOutput = void;
 export const RegistryEndpointDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryEndpointDeleteOutput =
-  typeof RegistryEndpointDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryEndpointDeleteOutput>;
 
 // The operation
 /**
@@ -4317,6 +5751,12 @@ export const RegistryEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryEndpointGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+  registryEndpointName: string;
+}
 export const RegistryEndpointGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4329,10 +5769,22 @@ export const RegistryEndpointGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
       apiVersion: "2026-07-01",
     }),
-  );
-export type RegistryEndpointGetInput = typeof RegistryEndpointGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryEndpointGetInput>;
 
 // Output Schema
+export interface RegistryEndpointGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryEndpointGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4352,8 +5804,7 @@ export const RegistryEndpointGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryEndpointGetOutput = typeof RegistryEndpointGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEndpointGetOutput>;
 
 // The operation
 /**
@@ -4370,6 +5821,11 @@ export const RegistryEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistryEndpointGetOutput,
 }));
 // Input Schema
+export interface RegistryEndpointListByInstanceResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instanceName: string;
+}
 export const RegistryEndpointListByInstanceResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4381,11 +5837,25 @@ export const RegistryEndpointListByInstanceResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints",
       apiVersion: "2026-07-01",
     }),
-  );
-export type RegistryEndpointListByInstanceResourceInput =
-  typeof RegistryEndpointListByInstanceResourceInput.Type;
+  ) as unknown as Schema.Codec<RegistryEndpointListByInstanceResourceInput>;
 
 // Output Schema
+export interface RegistryEndpointListByInstanceResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryEndpointListByInstanceResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4420,9 +5890,7 @@ export const RegistryEndpointListByInstanceResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryEndpointListByInstanceResourceOutput =
-  typeof RegistryEndpointListByInstanceResourceOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEndpointListByInstanceResourceOutput>;
 
 // The operation
 /**

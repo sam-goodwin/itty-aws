@@ -4,21 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface ClientApiTokenControllerIssueClientApiTokenInput {
+  organization_id: string;
+  user_id: string;
+}
 export const ClientApiTokenControllerIssueClientApiTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String,
     user_id: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/client/token" }));
-export type ClientApiTokenControllerIssueClientApiTokenInput =
-  typeof ClientApiTokenControllerIssueClientApiTokenInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/client/token" }),
+  ) as unknown as Schema.Codec<ClientApiTokenControllerIssueClientApiTokenInput>;
 
 // Output Schema
+export interface ClientApiTokenControllerIssueClientApiTokenOutput {
+  token: string;
+}
 export const ClientApiTokenControllerIssueClientApiTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.String,
-  });
-export type ClientApiTokenControllerIssueClientApiTokenOutput =
-  typeof ClientApiTokenControllerIssueClientApiTokenOutput.Type;
+  }) as unknown as Schema.Codec<ClientApiTokenControllerIssueClientApiTokenOutput>;
 
 // The operation
 /**

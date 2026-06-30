@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeauthorizeGroupCloudProviderAccessRoleInput {
+  groupId: string;
+  cloudProvider: "AWS" | "AZURE" | "GCP";
+  roleId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeauthorizeGroupCloudProviderAccessRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const DeauthorizeGroupCloudProviderAccessRoleInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}",
     }),
-  );
-export type DeauthorizeGroupCloudProviderAccessRoleInput =
-  typeof DeauthorizeGroupCloudProviderAccessRoleInput.Type;
+  ) as unknown as Schema.Codec<DeauthorizeGroupCloudProviderAccessRoleInput>;
 
 // Output Schema
+export type DeauthorizeGroupCloudProviderAccessRoleOutput = void;
 export const DeauthorizeGroupCloudProviderAccessRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeauthorizeGroupCloudProviderAccessRoleOutput =
-  typeof DeauthorizeGroupCloudProviderAccessRoleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeauthorizeGroupCloudProviderAccessRoleOutput>;
 
 // The operation
 /**

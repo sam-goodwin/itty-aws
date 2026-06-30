@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupClusterCollStatNamespacesInput {
+  groupId: string;
+  clusterName: string;
+  clusterView: "PRIMARY" | "SECONDARY" | "INDIVIDUAL_PROCESS";
+  envelope?: boolean;
+  start?: string;
+  end?: string;
+  period?: string;
+}
 export const GetGroupClusterCollStatNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -22,15 +31,12 @@ export const GetGroupClusterCollStatNamespacesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces",
     }),
-  );
-export type GetGroupClusterCollStatNamespacesInput =
-  typeof GetGroupClusterCollStatNamespacesInput.Type;
+  ) as unknown as Schema.Codec<GetGroupClusterCollStatNamespacesInput>;
 
 // Output Schema
+export type GetGroupClusterCollStatNamespacesOutput = void;
 export const GetGroupClusterCollStatNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterCollStatNamespacesOutput =
-  typeof GetGroupClusterCollStatNamespacesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterCollStatNamespacesOutput>;
 
 // The operation
 /**

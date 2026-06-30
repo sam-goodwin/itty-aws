@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingReleasesHashRetrieveInput {
+  hash_id: string;
+  project_id: string;
+}
 export const ErrorTrackingReleasesHashRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hash_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ErrorTrackingReleasesHashRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/releases/hash/{hash_id}/",
     }),
-  );
-export type ErrorTrackingReleasesHashRetrieveInput =
-  typeof ErrorTrackingReleasesHashRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingReleasesHashRetrieveInput>;
 
 // Output Schema
+export type ErrorTrackingReleasesHashRetrieveOutput = void;
 export const ErrorTrackingReleasesHashRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingReleasesHashRetrieveOutput =
-  typeof ErrorTrackingReleasesHashRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingReleasesHashRetrieveOutput>;
 
 // The operation
 /**

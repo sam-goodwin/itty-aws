@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListRegionsForOrganizationInput {
+  organization: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListRegionsForOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -11,11 +16,29 @@ export const ListRegionsForOrganizationInput =
     per_page: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{organization}/regions" }),
-  );
-export type ListRegionsForOrganizationInput =
-  typeof ListRegionsForOrganizationInput.Type;
+  ) as unknown as Schema.Codec<ListRegionsForOrganizationInput>;
 
 // Output Schema
+export interface ListRegionsForOrganizationOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    provider: string;
+    enabled: boolean;
+    public_ip_addresses: string[];
+    display_name: string;
+    location: string;
+    slug: string;
+    current_default: boolean;
+    mysql_supported: boolean;
+    postgresql_supported: boolean;
+  }[];
+}
 export const ListRegionsForOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -38,9 +61,7 @@ export const ListRegionsForOrganizationOutput =
         postgresql_supported: Schema.Boolean,
       }),
     ),
-  });
-export type ListRegionsForOrganizationOutput =
-  typeof ListRegionsForOrganizationOutput.Type;
+  }) as unknown as Schema.Codec<ListRegionsForOrganizationOutput>;
 
 // The operation
 /**

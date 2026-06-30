@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupEncryptionAtRestInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupEncryptionAtRestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const GetGroupEncryptionAtRestInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest",
     }),
-  );
-export type GetGroupEncryptionAtRestInput =
-  typeof GetGroupEncryptionAtRestInput.Type;
+  ) as unknown as Schema.Codec<GetGroupEncryptionAtRestInput>;
 
 // Output Schema
+export type GetGroupEncryptionAtRestOutput = void;
 export const GetGroupEncryptionAtRestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupEncryptionAtRestOutput =
-  typeof GetGroupEncryptionAtRestOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupEncryptionAtRestOutput>;
 
 // The operation
 /**

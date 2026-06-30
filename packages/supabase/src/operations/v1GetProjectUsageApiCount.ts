@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetProjectUsageApiCountInput {
+  ref: string;
+  interval?: "15min" | "30min" | "1hr" | "3hr" | "1day" | "3day" | "7day";
+}
 export const V1GetProjectUsageApiCountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -15,11 +19,32 @@ export const V1GetProjectUsageApiCountInput =
       method: "GET",
       path: "/v1/projects/{ref}/analytics/endpoints/usage.api-counts",
     }),
-  );
-export type V1GetProjectUsageApiCountInput =
-  typeof V1GetProjectUsageApiCountInput.Type;
+  ) as unknown as Schema.Codec<V1GetProjectUsageApiCountInput>;
 
 // Output Schema
+export interface V1GetProjectUsageApiCountOutput {
+  result?: {
+    timestamp: string;
+    total_auth_requests: number;
+    total_realtime_requests: number;
+    total_rest_requests: number;
+    total_storage_requests: number;
+  }[];
+  error?:
+    | string
+    | {
+        code: number;
+        errors: {
+          domain: string;
+          location: string;
+          locationType: string;
+          message: string;
+          reason: string;
+        }[];
+        message: string;
+        status: string;
+      };
+}
 export const V1GetProjectUsageApiCountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(
@@ -33,10 +58,26 @@ export const V1GetProjectUsageApiCountOutput =
         }),
       ),
     ),
-    error: Schema.optional(Schema.Unknown),
-  });
-export type V1GetProjectUsageApiCountOutput =
-  typeof V1GetProjectUsageApiCountOutput.Type;
+    error: Schema.optional(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          code: Schema.Number,
+          errors: Schema.Array(
+            Schema.Struct({
+              domain: Schema.String,
+              location: Schema.String,
+              locationType: Schema.String,
+              message: Schema.String,
+              reason: Schema.String,
+            }),
+          ),
+          message: Schema.String,
+          status: Schema.String,
+        }),
+      ]),
+    ),
+  }) as unknown as Schema.Codec<V1GetProjectUsageApiCountOutput>;
 
 // The operation
 /**

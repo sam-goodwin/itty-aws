@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface IntegrationsAnthropicManagedAgentsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsAnthropicManagedAgentsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const IntegrationsAnthropicManagedAgentsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/anthropic_managed_agents/",
     }),
-  );
-export type IntegrationsAnthropicManagedAgentsRetrieveInput =
-  typeof IntegrationsAnthropicManagedAgentsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsAnthropicManagedAgentsRetrieveInput>;
 
 // Output Schema
+export type IntegrationsAnthropicManagedAgentsRetrieveOutput = void;
 export const IntegrationsAnthropicManagedAgentsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsAnthropicManagedAgentsRetrieveOutput =
-  typeof IntegrationsAnthropicManagedAgentsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsAnthropicManagedAgentsRetrieveOutput>;
 
 // The operation
 /**

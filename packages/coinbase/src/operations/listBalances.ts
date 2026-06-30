@@ -3,14 +3,32 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListBalancesInput {
+  accountId: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const ListBalancesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v2/accounts/{accountId}/balances" }));
-export type ListBalancesInput = typeof ListBalancesInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/accounts/{accountId}/balances" }),
+) as unknown as Schema.Codec<ListBalancesInput>;
 
 // Output Schema
+export interface ListBalancesOutput {
+  balances: {
+    asset: {
+      symbol: string;
+      type: "fiat" | "crypto";
+      name: string;
+      decimals: number;
+    };
+    amount: Record<string, { available: string; total: string }>;
+  }[];
+  nextPageToken?: string;
+}
 export const ListBalancesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   balances: Schema.Array(
     Schema.Struct({
@@ -30,8 +48,7 @@ export const ListBalancesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextPageToken: Schema.optional(Schema.String),
-});
-export type ListBalancesOutput = typeof ListBalancesOutput.Type;
+}) as unknown as Schema.Codec<ListBalancesOutput>;
 
 // The operation
 /**

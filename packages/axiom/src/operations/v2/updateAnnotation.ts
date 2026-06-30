@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface UpdateAnnotationInput {
+  id: string;
+  datasets?: string[];
+  description?: string;
+  endTime?: string;
+  time?: string;
+  title?: string;
+  type?: string;
+  url?: string;
+}
 export const UpdateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   datasets: Schema.optional(Schema.Array(Schema.String)),
@@ -13,10 +23,21 @@ export const UpdateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   title: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   url: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "PUT", path: "/v2/annotations/{id}" }));
-export type UpdateAnnotationInput = typeof UpdateAnnotationInput.Type;
+}).pipe(
+  T.Http({ method: "PUT", path: "/v2/annotations/{id}" }),
+) as unknown as Schema.Codec<UpdateAnnotationInput>;
 
 // Output Schema
+export interface UpdateAnnotationOutput {
+  datasets: string[];
+  description?: string;
+  endTime?: string | null;
+  id: string;
+  time: string;
+  title?: string;
+  type: string;
+  url?: string;
+}
 export const UpdateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     datasets: Schema.Array(Schema.String),
@@ -28,8 +49,7 @@ export const UpdateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     type: Schema.String,
     url: Schema.optional(Schema.String),
   },
-);
-export type UpdateAnnotationOutput = typeof UpdateAnnotationOutput.Type;
+) as unknown as Schema.Codec<UpdateAnnotationOutput>;
 
 // The operation
 /**

@@ -4,6 +4,21 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSymbolSetsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  order_by?:
+    | "created_at"
+    | "-created_at"
+    | "ref"
+    | "-ref"
+    | "last_used"
+    | "-last_used";
+  ref?: string;
+  search?: string;
+  status?: "all" | "valid" | "invalid";
+}
 export const ErrorTrackingSymbolSetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -27,11 +42,32 @@ export const ErrorTrackingSymbolSetsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/symbol_sets/",
     }),
-  );
-export type ErrorTrackingSymbolSetsListInput =
-  typeof ErrorTrackingSymbolSetsListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSymbolSetsListInput>;
 
 // Output Schema
+export interface ErrorTrackingSymbolSetsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    ref?: string;
+    team_id?: number;
+    created_at?: string;
+    last_used?: string | null;
+    failure_reason?: string | null;
+    has_uploaded_file?: boolean;
+    release?: {
+      id?: string;
+      hash_id?: string;
+      team_id?: number;
+      created_at?: string;
+      metadata?: Record<string, unknown> | null;
+      version?: string;
+      project?: string;
+    } | null;
+  }[];
+}
 export const ErrorTrackingSymbolSetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -47,13 +83,25 @@ export const ErrorTrackingSymbolSetsListOutput =
           last_used: Schema.optional(Schema.NullOr(Schema.String)),
           failure_reason: Schema.optional(Schema.NullOr(Schema.String)),
           has_uploaded_file: Schema.optional(Schema.Boolean),
-          release: Schema.optional(Schema.Unknown),
+          release: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                hash_id: Schema.optional(Schema.String),
+                team_id: Schema.optional(Schema.Number),
+                created_at: Schema.optional(Schema.String),
+                metadata: Schema.optional(
+                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                version: Schema.optional(Schema.String),
+                project: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
         }),
       ),
     ),
-  });
-export type ErrorTrackingSymbolSetsListOutput =
-  typeof ErrorTrackingSymbolSetsListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSymbolSetsListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ElementsPartialUpdateInput {
+  id: number;
+  project_id: string;
+  text?: string | null;
+  tag_name?: string | null;
+  attr_class?: string[] | null;
+  href?: string | null;
+  attr_id?: string | null;
+  nth_child?: number | null;
+  nth_of_type?: number | null;
+  attributes?: unknown;
+  order?: number | null;
+}
 export const ElementsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -22,10 +35,20 @@ export const ElementsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/elements/{id}/",
     }),
-  );
-export type ElementsPartialUpdateInput = typeof ElementsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ElementsPartialUpdateInput>;
 
 // Output Schema
+export interface ElementsPartialUpdateOutput {
+  text?: string | null;
+  tag_name?: string | null;
+  attr_class?: string[] | null;
+  href?: string | null;
+  attr_id?: string | null;
+  nth_child?: number | null;
+  nth_of_type?: number | null;
+  attributes?: unknown;
+  order?: number | null;
+}
 export const ElementsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.NullOr(Schema.String)),
@@ -37,9 +60,7 @@ export const ElementsPartialUpdateOutput =
     nth_of_type: Schema.optional(Schema.NullOr(Schema.Number)),
     attributes: Schema.optional(Schema.Unknown),
     order: Schema.optional(Schema.NullOr(Schema.Number)),
-  });
-export type ElementsPartialUpdateOutput =
-  typeof ElementsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ElementsPartialUpdateOutput>;
 
 // The operation
 /**

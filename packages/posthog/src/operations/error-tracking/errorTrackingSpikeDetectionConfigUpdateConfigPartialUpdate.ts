@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput {
+  project_id: string;
+  snooze_duration_minutes?: number;
+  multiplier?: number;
+  threshold?: number;
+}
 export const ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,19 +20,20 @@ export const ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/error_tracking/spike_detection_config/update_config/",
     }),
-  );
-export type ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput =
-  typeof ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput>;
 
 // Output Schema
+export interface ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput {
+  snooze_duration_minutes?: number;
+  multiplier?: number;
+  threshold?: number;
+}
 export const ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snooze_duration_minutes: Schema.optional(Schema.Number),
     multiplier: Schema.optional(Schema.Number),
     threshold: Schema.optional(Schema.Number),
-  });
-export type ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput =
-  typeof ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput>;
 
 // The operation
 /**

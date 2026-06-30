@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -37,7 +37,7 @@ export interface ContainerAccess {
   >;
 }
 
-export const ContainerAccess: Schema.Schema<ContainerAccess> =
+export const ContainerAccess: Schema.Codec<ContainerAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.Array(Schema.String)),
@@ -64,7 +64,7 @@ export interface Parameter {
   list?: ReadonlyArray<Parameter>;
 }
 
-export const Parameter: Schema.Schema<Parameter> =
+export const Parameter: Schema.Codec<Parameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       map: Schema.optional(Schema.Array(Parameter)),
@@ -73,7 +73,7 @@ export const Parameter: Schema.Schema<Parameter> =
       key: Schema.optional(Schema.String),
       list: Schema.optional(Schema.Array(Parameter)),
     }),
-  ).annotate({ identifier: "Parameter" }) as any as Schema.Schema<Parameter>;
+  ).annotate({ identifier: "Parameter" }) as any as Schema.Codec<Parameter>;
 
 export interface ContainerVersionHeader {
   /** Number of variables in the container version. */
@@ -94,7 +94,7 @@ export interface ContainerVersionHeader {
   deleted?: boolean;
 }
 
-export const ContainerVersionHeader: Schema.Schema<ContainerVersionHeader> =
+export const ContainerVersionHeader: Schema.Codec<ContainerVersionHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numVariables: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -113,7 +113,7 @@ export interface TeardownTag {
   stopTeardownOnFailure?: boolean;
 }
 
-export const TeardownTag: Schema.Schema<TeardownTag> =
+export const TeardownTag: Schema.Codec<TeardownTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagName: Schema.optional(Schema.String),
     stopTeardownOnFailure: Schema.optional(Schema.Boolean),
@@ -126,7 +126,7 @@ export interface SetupTag {
   stopOnSetupFailure?: boolean;
 }
 
-export const SetupTag: Schema.Schema<SetupTag> =
+export const SetupTag: Schema.Codec<SetupTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagName: Schema.optional(Schema.String),
     stopOnSetupFailure: Schema.optional(Schema.Boolean),
@@ -177,8 +177,8 @@ export interface Tag {
   scheduleStartMs?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     blockingTriggerId: Schema.optional(Schema.Array(Schema.String)),
     accountId: Schema.optional(Schema.String),
     containerId: Schema.optional(Schema.String),
@@ -198,7 +198,8 @@ export const Tag: Schema.Schema<Tag> =
     parentFolderId: Schema.optional(Schema.String),
     firingTriggerId: Schema.optional(Schema.Array(Schema.String)),
     scheduleStartMs: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tag" });
+  },
+).annotate({ identifier: "Tag" });
 
 export interface Variable {
   /** The Variable ID uniquely identifies the GTM Variable. */
@@ -229,7 +230,7 @@ export interface Variable {
   containerId?: string;
 }
 
-export const Variable: Schema.Schema<Variable> =
+export const Variable: Schema.Codec<Variable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variableId: Schema.optional(Schema.String),
     parentFolderId: Schema.optional(Schema.String),
@@ -265,7 +266,7 @@ export interface Condition {
   parameter?: ReadonlyArray<Parameter>;
 }
 
-export const Condition: Schema.Schema<Condition> =
+export const Condition: Schema.Codec<Condition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     parameter: Schema.optional(Schema.Array(Parameter)),
@@ -350,7 +351,7 @@ export interface Trigger {
   selector?: Parameter;
 }
 
-export const Trigger: Schema.Schema<Trigger> =
+export const Trigger: Schema.Codec<Trigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     continuousTimeMinMilliseconds: Schema.optional(Parameter),
     intervalSeconds: Schema.optional(Parameter),
@@ -391,7 +392,7 @@ export interface FolderEntities {
   trigger?: ReadonlyArray<Trigger>;
 }
 
-export const FolderEntities: Schema.Schema<FolderEntities> =
+export const FolderEntities: Schema.Codec<FolderEntities> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.Array(Tag)),
     variable: Schema.optional(Schema.Array(Variable)),
@@ -409,7 +410,7 @@ export interface Account {
   name?: string;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     shareData: Schema.optional(Schema.Boolean),
@@ -430,7 +431,7 @@ export interface AccountAccess {
   >;
 }
 
-export const AccountAccess: Schema.Schema<AccountAccess> =
+export const AccountAccess: Schema.Codec<AccountAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AccountAccess" });
@@ -448,7 +449,7 @@ export interface UserAccess {
   accountAccess?: AccountAccess;
 }
 
-export const UserAccess: Schema.Schema<UserAccess> =
+export const UserAccess: Schema.Codec<UserAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissionId: Schema.optional(Schema.String),
     emailAddress: Schema.optional(Schema.String),
@@ -462,7 +463,7 @@ export interface ListAccountUsersResponse {
   userAccess?: ReadonlyArray<UserAccess>;
 }
 
-export const ListAccountUsersResponse: Schema.Schema<ListAccountUsersResponse> =
+export const ListAccountUsersResponse: Schema.Codec<ListAccountUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userAccess: Schema.optional(Schema.Array(UserAccess)),
   }).annotate({ identifier: "ListAccountUsersResponse" });
@@ -472,7 +473,7 @@ export interface ListTriggersResponse {
   triggers?: ReadonlyArray<Trigger>;
 }
 
-export const ListTriggersResponse: Schema.Schema<ListTriggersResponse> =
+export const ListTriggersResponse: Schema.Codec<ListTriggersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggers: Schema.optional(Schema.Array(Trigger)),
   }).annotate({ identifier: "ListTriggersResponse" });
@@ -490,7 +491,7 @@ export interface Folder {
   name?: string;
 }
 
-export const Folder: Schema.Schema<Folder> =
+export const Folder: Schema.Codec<Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     folderId: Schema.optional(Schema.String),
@@ -642,7 +643,7 @@ export interface Container {
   notes?: string;
 }
 
-export const Container: Schema.Schema<Container> =
+export const Container: Schema.Codec<Container> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     timeZoneCountryId: Schema.optional(Schema.String),
@@ -684,7 +685,7 @@ export interface ContainerVersion {
   fingerprint?: string;
 }
 
-export const ContainerVersion: Schema.Schema<ContainerVersion> =
+export const ContainerVersion: Schema.Codec<ContainerVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Boolean),
     tag: Schema.optional(Schema.Array(Tag)),
@@ -707,7 +708,7 @@ export interface PublishContainerVersionResponse {
   compilerError?: boolean;
 }
 
-export const PublishContainerVersionResponse: Schema.Schema<PublishContainerVersionResponse> =
+export const PublishContainerVersionResponse: Schema.Codec<PublishContainerVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerVersion: Schema.optional(ContainerVersion),
     compilerError: Schema.optional(Schema.Boolean),
@@ -722,7 +723,7 @@ export interface CreateContainerVersionRequestVersionOptions {
   name?: string;
 }
 
-export const CreateContainerVersionRequestVersionOptions: Schema.Schema<CreateContainerVersionRequestVersionOptions> =
+export const CreateContainerVersionRequestVersionOptions: Schema.Codec<CreateContainerVersionRequestVersionOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quickPreview: Schema.optional(Schema.Boolean),
     notes: Schema.optional(Schema.String),
@@ -736,7 +737,7 @@ export interface ListContainerVersionsResponse {
   containerVersionHeader?: ReadonlyArray<ContainerVersionHeader>;
 }
 
-export const ListContainerVersionsResponse: Schema.Schema<ListContainerVersionsResponse> =
+export const ListContainerVersionsResponse: Schema.Codec<ListContainerVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerVersion: Schema.optional(Schema.Array(ContainerVersion)),
     containerVersionHeader: Schema.optional(
@@ -751,7 +752,7 @@ export interface CreateContainerVersionResponse {
   compilerError?: boolean;
 }
 
-export const CreateContainerVersionResponse: Schema.Schema<CreateContainerVersionResponse> =
+export const CreateContainerVersionResponse: Schema.Codec<CreateContainerVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerVersion: Schema.optional(ContainerVersion),
     compilerError: Schema.optional(Schema.Boolean),
@@ -762,7 +763,7 @@ export interface ListContainersResponse {
   containers?: ReadonlyArray<Container>;
 }
 
-export const ListContainersResponse: Schema.Schema<ListContainersResponse> =
+export const ListContainersResponse: Schema.Codec<ListContainersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containers: Schema.optional(Schema.Array(Container)),
   }).annotate({ identifier: "ListContainersResponse" });
@@ -772,7 +773,7 @@ export interface ListVariablesResponse {
   variables?: ReadonlyArray<Variable>;
 }
 
-export const ListVariablesResponse: Schema.Schema<ListVariablesResponse> =
+export const ListVariablesResponse: Schema.Codec<ListVariablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variables: Schema.optional(Schema.Array(Variable)),
   }).annotate({ identifier: "ListVariablesResponse" });
@@ -803,7 +804,7 @@ export interface Environment {
   name?: string;
 }
 
-export const Environment: Schema.Schema<Environment> =
+export const Environment: Schema.Codec<Environment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     enableDebug: Schema.optional(Schema.Boolean),
@@ -824,7 +825,7 @@ export interface ListEnvironmentsResponse {
   environments?: ReadonlyArray<Environment>;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
+export const ListEnvironmentsResponse: Schema.Codec<ListEnvironmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environments: Schema.optional(Schema.Array(Environment)),
   }).annotate({ identifier: "ListEnvironmentsResponse" });
@@ -834,7 +835,7 @@ export interface ListTagsResponse {
   tags?: ReadonlyArray<Tag>;
 }
 
-export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
+export const ListTagsResponse: Schema.Codec<ListTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "ListTagsResponse" });
@@ -844,7 +845,7 @@ export interface ListAccountsResponse {
   accounts?: ReadonlyArray<Account>;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
+export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(Account)),
   }).annotate({ identifier: "ListAccountsResponse" });
@@ -854,7 +855,7 @@ export interface ListFoldersResponse {
   folders?: ReadonlyArray<Folder>;
 }
 
-export const ListFoldersResponse: Schema.Schema<ListFoldersResponse> =
+export const ListFoldersResponse: Schema.Codec<ListFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folders: Schema.optional(Schema.Array(Folder)),
   }).annotate({ identifier: "ListFoldersResponse" });
@@ -920,7 +921,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "tagmanager/v1/accounts" }),
   svc,
-) as unknown as Schema.Schema<ListAccountsRequest>;
+) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
@@ -950,7 +951,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "tagmanager/v1/accounts/{accountId}" }),
   svc,
-) as unknown as Schema.Schema<GetAccountsRequest>;
+) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -989,7 +990,7 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateAccountsRequest>;
+) as unknown as Schema.Codec<UpdateAccountsRequest>;
 
 export type UpdateAccountsResponse = Account;
 export const UpdateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -1027,7 +1028,7 @@ export const ListAccountsPermissionsRequest =
       path: "tagmanager/v1/accounts/{accountId}/permissions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsPermissionsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsPermissionsRequest>;
 
 export type ListAccountsPermissionsResponse = ListAccountUsersResponse;
 export const ListAccountsPermissionsResponse =
@@ -1065,7 +1066,7 @@ export const CreateAccountsPermissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsPermissionsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsPermissionsRequest>;
 
 export type CreateAccountsPermissionsResponse = UserAccess;
 export const CreateAccountsPermissionsResponse =
@@ -1107,7 +1108,7 @@ export const GetAccountsPermissionsRequest =
       path: "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsPermissionsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsPermissionsRequest>;
 
 export type GetAccountsPermissionsResponse = UserAccess;
 export const GetAccountsPermissionsResponse =
@@ -1148,7 +1149,7 @@ export const UpdateAccountsPermissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsPermissionsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsPermissionsRequest>;
 
 export type UpdateAccountsPermissionsResponse = UserAccess;
 export const UpdateAccountsPermissionsResponse =
@@ -1190,13 +1191,13 @@ export const DeleteAccountsPermissionsRequest =
       path: "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsPermissionsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsPermissionsRequest>;
 
 export interface DeleteAccountsPermissionsResponse {}
-export const DeleteAccountsPermissionsResponse: Schema.Schema<DeleteAccountsPermissionsResponse> =
+export const DeleteAccountsPermissionsResponse: Schema.Codec<DeleteAccountsPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsPermissionsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsPermissionsResponse>;
 
 export type DeleteAccountsPermissionsError =
   | DefaultErrors
@@ -1234,7 +1235,7 @@ export const GetAccountsContainersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersRequest>;
 
 export type GetAccountsContainersResponse = Container;
 export const GetAccountsContainersResponse =
@@ -1280,7 +1281,7 @@ export const UpdateAccountsContainersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersRequest>;
 
 export type UpdateAccountsContainersResponse = Container;
 export const UpdateAccountsContainersResponse =
@@ -1322,13 +1323,13 @@ export const DeleteAccountsContainersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersRequest>;
 
 export interface DeleteAccountsContainersResponse {}
-export const DeleteAccountsContainersResponse: Schema.Schema<DeleteAccountsContainersResponse> =
+export const DeleteAccountsContainersResponse: Schema.Codec<DeleteAccountsContainersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersResponse>;
 
 export type DeleteAccountsContainersError =
   | DefaultErrors
@@ -1367,7 +1368,7 @@ export const CreateAccountsContainersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersRequest>;
 
 export type CreateAccountsContainersResponse = Container;
 export const CreateAccountsContainersResponse =
@@ -1406,7 +1407,7 @@ export const ListAccountsContainersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersRequest>;
 
 export type ListAccountsContainersResponse = ListContainersResponse;
 export const ListAccountsContainersResponse =
@@ -1443,7 +1444,7 @@ export const ListAccountsContainersFoldersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersFoldersRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersFoldersRequest>;
 
 export type ListAccountsContainersFoldersResponse = ListFoldersResponse;
 export const ListAccountsContainersFoldersResponse =
@@ -1487,7 +1488,7 @@ export const CreateAccountsContainersFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersFoldersRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersFoldersRequest>;
 
 export type CreateAccountsContainersFoldersResponse = Folder;
 export const CreateAccountsContainersFoldersResponse =
@@ -1532,7 +1533,7 @@ export const GetAccountsContainersFoldersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersFoldersRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersFoldersRequest>;
 
 export type GetAccountsContainersFoldersResponse = Folder;
 export const GetAccountsContainersFoldersResponse =
@@ -1584,7 +1585,7 @@ export const UpdateAccountsContainersFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersFoldersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersFoldersRequest>;
 
 export type UpdateAccountsContainersFoldersResponse = Folder;
 export const UpdateAccountsContainersFoldersResponse =
@@ -1629,13 +1630,13 @@ export const DeleteAccountsContainersFoldersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersFoldersRequest>;
 
 export interface DeleteAccountsContainersFoldersResponse {}
-export const DeleteAccountsContainersFoldersResponse: Schema.Schema<DeleteAccountsContainersFoldersResponse> =
+export const DeleteAccountsContainersFoldersResponse: Schema.Codec<DeleteAccountsContainersFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersFoldersResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersFoldersResponse>;
 
 export type DeleteAccountsContainersFoldersError =
   | DefaultErrors
@@ -1676,7 +1677,7 @@ export const ListAccountsContainersFoldersEntitiesRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersFoldersEntitiesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersFoldersEntitiesRequest>;
 
 export type ListAccountsContainersFoldersEntitiesResponse = FolderEntities;
 export const ListAccountsContainersFoldersEntitiesResponse =
@@ -1738,13 +1739,13 @@ export const UpdateAccountsContainersMove_foldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersMove_foldersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersMove_foldersRequest>;
 
 export interface UpdateAccountsContainersMove_foldersResponse {}
-export const UpdateAccountsContainersMove_foldersResponse: Schema.Schema<UpdateAccountsContainersMove_foldersResponse> =
+export const UpdateAccountsContainersMove_foldersResponse: Schema.Codec<UpdateAccountsContainersMove_foldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<UpdateAccountsContainersMove_foldersResponse>;
+  ) as any as Schema.Codec<UpdateAccountsContainersMove_foldersResponse>;
 
 export type UpdateAccountsContainersMove_foldersError =
   | DefaultErrors
@@ -1788,7 +1789,7 @@ export const CreateAccountsContainersVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersVersionsRequest>;
 
 export type CreateAccountsContainersVersionsResponse =
   CreateContainerVersionResponse;
@@ -1835,7 +1836,7 @@ export const UndeleteAccountsContainersVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<UndeleteAccountsContainersVersionsRequest>;
 
 export type UndeleteAccountsContainersVersionsResponse = ContainerVersion;
 export const UndeleteAccountsContainersVersionsResponse =
@@ -1881,7 +1882,7 @@ export const RestoreAccountsContainersVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RestoreAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<RestoreAccountsContainersVersionsRequest>;
 
 export type RestoreAccountsContainersVersionsResponse = ContainerVersion;
 export const RestoreAccountsContainersVersionsResponse =
@@ -1931,7 +1932,7 @@ export const ListAccountsContainersVersionsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersVersionsRequest>;
 
 export type ListAccountsContainersVersionsResponse =
   ListContainerVersionsResponse;
@@ -1975,7 +1976,7 @@ export const GetAccountsContainersVersionsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersVersionsRequest>;
 
 export type GetAccountsContainersVersionsResponse = ContainerVersion;
 export const GetAccountsContainersVersionsResponse =
@@ -2027,7 +2028,7 @@ export const UpdateAccountsContainersVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersVersionsRequest>;
 
 export type UpdateAccountsContainersVersionsResponse = ContainerVersion;
 export const UpdateAccountsContainersVersionsResponse =
@@ -2072,13 +2073,13 @@ export const DeleteAccountsContainersVersionsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersVersionsRequest>;
 
 export interface DeleteAccountsContainersVersionsResponse {}
-export const DeleteAccountsContainersVersionsResponse: Schema.Schema<DeleteAccountsContainersVersionsResponse> =
+export const DeleteAccountsContainersVersionsResponse: Schema.Codec<DeleteAccountsContainersVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersVersionsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersVersionsResponse>;
 
 export type DeleteAccountsContainersVersionsError =
   | DefaultErrors
@@ -2125,7 +2126,7 @@ export const PublishAccountsContainersVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PublishAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<PublishAccountsContainersVersionsRequest>;
 
 export type PublishAccountsContainersVersionsResponse =
   PublishContainerVersionResponse;
@@ -2168,7 +2169,7 @@ export const ListAccountsContainersVariablesRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersVariablesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersVariablesRequest>;
 
 export type ListAccountsContainersVariablesResponse = ListVariablesResponse;
 export const ListAccountsContainersVariablesResponse =
@@ -2212,7 +2213,7 @@ export const CreateAccountsContainersVariablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersVariablesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersVariablesRequest>;
 
 export type CreateAccountsContainersVariablesResponse = Variable;
 export const CreateAccountsContainersVariablesResponse =
@@ -2257,7 +2258,7 @@ export const GetAccountsContainersVariablesRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersVariablesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersVariablesRequest>;
 
 export type GetAccountsContainersVariablesResponse = Variable;
 export const GetAccountsContainersVariablesResponse =
@@ -2309,7 +2310,7 @@ export const UpdateAccountsContainersVariablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersVariablesRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersVariablesRequest>;
 
 export type UpdateAccountsContainersVariablesResponse = Variable;
 export const UpdateAccountsContainersVariablesResponse =
@@ -2354,13 +2355,13 @@ export const DeleteAccountsContainersVariablesRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersVariablesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersVariablesRequest>;
 
 export interface DeleteAccountsContainersVariablesResponse {}
-export const DeleteAccountsContainersVariablesResponse: Schema.Schema<DeleteAccountsContainersVariablesResponse> =
+export const DeleteAccountsContainersVariablesResponse: Schema.Codec<DeleteAccountsContainersVariablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersVariablesResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersVariablesResponse>;
 
 export type DeleteAccountsContainersVariablesError =
   | DefaultErrors
@@ -2401,7 +2402,7 @@ export const GetAccountsContainersTagsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersTagsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersTagsRequest>;
 
 export type GetAccountsContainersTagsResponse = Tag;
 export const GetAccountsContainersTagsResponse =
@@ -2453,7 +2454,7 @@ export const UpdateAccountsContainersTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersTagsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersTagsRequest>;
 
 export type UpdateAccountsContainersTagsResponse = Tag;
 export const UpdateAccountsContainersTagsResponse =
@@ -2498,13 +2499,13 @@ export const DeleteAccountsContainersTagsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersTagsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersTagsRequest>;
 
 export interface DeleteAccountsContainersTagsResponse {}
-export const DeleteAccountsContainersTagsResponse: Schema.Schema<DeleteAccountsContainersTagsResponse> =
+export const DeleteAccountsContainersTagsResponse: Schema.Codec<DeleteAccountsContainersTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersTagsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersTagsResponse>;
 
 export type DeleteAccountsContainersTagsError =
   | DefaultErrors
@@ -2546,7 +2547,7 @@ export const CreateAccountsContainersTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersTagsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersTagsRequest>;
 
 export type CreateAccountsContainersTagsResponse = Tag;
 export const CreateAccountsContainersTagsResponse =
@@ -2588,7 +2589,7 @@ export const ListAccountsContainersTagsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersTagsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersTagsRequest>;
 
 export type ListAccountsContainersTagsResponse = ListTagsResponse;
 export const ListAccountsContainersTagsResponse =
@@ -2635,7 +2636,7 @@ export const UpdateAccountsContainersReauthorize_environmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersReauthorize_environmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersReauthorize_environmentsRequest>;
 
 export type UpdateAccountsContainersReauthorize_environmentsResponse =
   Environment;
@@ -2681,7 +2682,7 @@ export const GetAccountsContainersEnvironmentsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersEnvironmentsRequest>;
 
 export type GetAccountsContainersEnvironmentsResponse = Environment;
 export const GetAccountsContainersEnvironmentsResponse =
@@ -2733,7 +2734,7 @@ export const UpdateAccountsContainersEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersEnvironmentsRequest>;
 
 export type UpdateAccountsContainersEnvironmentsResponse = Environment;
 export const UpdateAccountsContainersEnvironmentsResponse =
@@ -2778,13 +2779,13 @@ export const DeleteAccountsContainersEnvironmentsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersEnvironmentsRequest>;
 
 export interface DeleteAccountsContainersEnvironmentsResponse {}
-export const DeleteAccountsContainersEnvironmentsResponse: Schema.Schema<DeleteAccountsContainersEnvironmentsResponse> =
+export const DeleteAccountsContainersEnvironmentsResponse: Schema.Codec<DeleteAccountsContainersEnvironmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersEnvironmentsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersEnvironmentsResponse>;
 
 export type DeleteAccountsContainersEnvironmentsError =
   | DefaultErrors
@@ -2826,7 +2827,7 @@ export const CreateAccountsContainersEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersEnvironmentsRequest>;
 
 export type CreateAccountsContainersEnvironmentsResponse = Environment;
 export const CreateAccountsContainersEnvironmentsResponse =
@@ -2868,7 +2869,7 @@ export const ListAccountsContainersEnvironmentsRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersEnvironmentsRequest>;
 
 export type ListAccountsContainersEnvironmentsResponse =
   ListEnvironmentsResponse;
@@ -2912,7 +2913,7 @@ export const GetAccountsContainersTriggersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersTriggersRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersTriggersRequest>;
 
 export type GetAccountsContainersTriggersResponse = Trigger;
 export const GetAccountsContainersTriggersResponse =
@@ -2964,7 +2965,7 @@ export const UpdateAccountsContainersTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersTriggersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersTriggersRequest>;
 
 export type UpdateAccountsContainersTriggersResponse = Trigger;
 export const UpdateAccountsContainersTriggersResponse =
@@ -3009,13 +3010,13 @@ export const DeleteAccountsContainersTriggersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersTriggersRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersTriggersRequest>;
 
 export interface DeleteAccountsContainersTriggersResponse {}
-export const DeleteAccountsContainersTriggersResponse: Schema.Schema<DeleteAccountsContainersTriggersResponse> =
+export const DeleteAccountsContainersTriggersResponse: Schema.Codec<DeleteAccountsContainersTriggersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersTriggersResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersTriggersResponse>;
 
 export type DeleteAccountsContainersTriggersError =
   | DefaultErrors
@@ -3057,7 +3058,7 @@ export const CreateAccountsContainersTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersTriggersRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersTriggersRequest>;
 
 export type CreateAccountsContainersTriggersResponse = Trigger;
 export const CreateAccountsContainersTriggersResponse =
@@ -3099,7 +3100,7 @@ export const ListAccountsContainersTriggersRequest =
       path: "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersTriggersRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersTriggersRequest>;
 
 export type ListAccountsContainersTriggersResponse = ListTriggersResponse;
 export const ListAccountsContainersTriggersResponse =

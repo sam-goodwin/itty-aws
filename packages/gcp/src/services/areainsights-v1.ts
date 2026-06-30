@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface TypeFilter {
   excludedPrimaryTypes?: ReadonlyArray<string>;
 }
 
-export const TypeFilter: Schema.Schema<TypeFilter> =
+export const TypeFilter: Schema.Codec<TypeFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedTypes: Schema.optional(Schema.Array(Schema.String)),
     includedTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -46,7 +46,7 @@ export interface PlaceInsight {
   place?: string;
 }
 
-export const PlaceInsight: Schema.Schema<PlaceInsight> =
+export const PlaceInsight: Schema.Codec<PlaceInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     place: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlaceInsight" });
@@ -58,7 +58,7 @@ export interface LatLng {
   latitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const LatLng: Schema.Codec<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longitude: Schema.optional(Schema.Number),
     latitude: Schema.optional(Schema.Number),
@@ -69,7 +69,7 @@ export interface Polygon {
   coordinates?: ReadonlyArray<LatLng>;
 }
 
-export const Polygon: Schema.Schema<Polygon> =
+export const Polygon: Schema.Codec<Polygon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coordinates: Schema.optional(Schema.Array(LatLng)),
   }).annotate({ identifier: "Polygon" });
@@ -79,7 +79,7 @@ export interface CustomArea {
   polygon?: Polygon;
 }
 
-export const CustomArea: Schema.Schema<CustomArea> =
+export const CustomArea: Schema.Codec<CustomArea> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     polygon: Schema.optional(Polygon),
   }).annotate({ identifier: "CustomArea" });
@@ -91,7 +91,7 @@ export interface RatingFilter {
   maxRating?: number;
 }
 
-export const RatingFilter: Schema.Schema<RatingFilter> =
+export const RatingFilter: Schema.Codec<RatingFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minRating: Schema.optional(Schema.Number),
     maxRating: Schema.optional(Schema.Number),
@@ -106,7 +106,7 @@ export interface Circle {
   place?: string;
 }
 
-export const Circle: Schema.Schema<Circle> =
+export const Circle: Schema.Codec<Circle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
     radius: Schema.optional(Schema.Number),
@@ -118,7 +118,7 @@ export interface Region {
   place?: string;
 }
 
-export const Region: Schema.Schema<Region> =
+export const Region: Schema.Codec<Region> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     place: Schema.optional(Schema.String),
   }).annotate({ identifier: "Region" });
@@ -132,7 +132,7 @@ export interface LocationFilter {
   region?: Region;
 }
 
-export const LocationFilter: Schema.Schema<LocationFilter> =
+export const LocationFilter: Schema.Codec<LocationFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     circle: Schema.optional(Circle),
     customArea: Schema.optional(CustomArea),
@@ -166,7 +166,7 @@ export interface Filter {
   locationFilter?: LocationFilter;
 }
 
-export const Filter: Schema.Schema<Filter> =
+export const Filter: Schema.Codec<Filter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ratingFilter: Schema.optional(RatingFilter),
     typeFilter: Schema.optional(TypeFilter),
@@ -184,7 +184,7 @@ export interface ComputeInsightsRequest {
   filter?: Filter;
 }
 
-export const ComputeInsightsRequest: Schema.Schema<ComputeInsightsRequest> =
+export const ComputeInsightsRequest: Schema.Codec<ComputeInsightsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insights: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Filter),
@@ -197,7 +197,7 @@ export interface ComputeInsightsResponse {
   placeInsights?: ReadonlyArray<PlaceInsight>;
 }
 
-export const ComputeInsightsResponse: Schema.Schema<ComputeInsightsResponse> =
+export const ComputeInsightsResponse: Schema.Codec<ComputeInsightsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     placeInsights: Schema.optional(Schema.Array(PlaceInsight)),
@@ -268,7 +268,7 @@ export const ComputeInsightsV1Request =
   }).pipe(
     T.Http({ method: "POST", path: "v1:computeInsights", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ComputeInsightsV1Request>;
+  ) as unknown as Schema.Codec<ComputeInsightsV1Request>;
 
 export type ComputeInsightsV1Response = ComputeInsightsResponse;
 export const ComputeInsightsV1Response =

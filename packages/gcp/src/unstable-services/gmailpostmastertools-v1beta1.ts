@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -36,7 +36,7 @@ export interface Domain {
   name?: string;
 }
 
-export const Domain: Schema.Schema<Domain> =
+export const Domain: Schema.Codec<Domain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface ListDomainsResponse {
   nextPageToken?: string;
 }
 
-export const ListDomainsResponse: Schema.Schema<ListDomainsResponse> =
+export const ListDomainsResponse: Schema.Codec<ListDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Domain)),
     nextPageToken: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface DeliveryError {
   errorRatio?: number;
 }
 
-export const DeliveryError: Schema.Schema<DeliveryError> =
+export const DeliveryError: Schema.Codec<DeliveryError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorType: Schema.optional(Schema.String),
     errorClass: Schema.optional(Schema.String),
@@ -105,7 +105,7 @@ export interface IpReputation {
   ipCount?: string;
 }
 
-export const IpReputation: Schema.Schema<IpReputation> =
+export const IpReputation: Schema.Codec<IpReputation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reputation: Schema.optional(Schema.String),
     numIps: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface FeedbackLoop {
   spamRatio?: number;
 }
 
-export const FeedbackLoop: Schema.Schema<FeedbackLoop> =
+export const FeedbackLoop: Schema.Codec<FeedbackLoop> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     spamRatio: Schema.optional(Schema.Number),
@@ -161,7 +161,7 @@ export interface TrafficStats {
   userReportedSpamRatioUpperBound?: number;
 }
 
-export const TrafficStats: Schema.Schema<TrafficStats> =
+export const TrafficStats: Schema.Codec<TrafficStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deliveryErrors: Schema.optional(Schema.Array(DeliveryError)),
     userReportedSpamRatio: Schema.optional(Schema.Number),
@@ -185,7 +185,7 @@ export interface ListTrafficStatsResponse {
   nextPageToken?: string;
 }
 
-export const ListTrafficStatsResponse: Schema.Schema<ListTrafficStatsResponse> =
+export const ListTrafficStatsResponse: Schema.Codec<ListTrafficStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trafficStats: Schema.optional(Schema.Array(TrafficStats)),
     nextPageToken: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/domains" }),
   svc,
-) as unknown as Schema.Schema<ListDomainsRequest>;
+) as unknown as Schema.Codec<ListDomainsRequest>;
 
 export type ListDomainsResponse_Op = ListDomainsResponse;
 export const ListDomainsResponse_Op =
@@ -269,7 +269,7 @@ export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetDomainsRequest>;
+) as unknown as Schema.Codec<GetDomainsRequest>;
 
 export type GetDomainsResponse = Domain;
 export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
@@ -299,7 +299,7 @@ export const GetDomainsTrafficStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDomainsTrafficStatsRequest>;
+  ) as unknown as Schema.Codec<GetDomainsTrafficStatsRequest>;
 
 export type GetDomainsTrafficStatsResponse = TrafficStats;
 export const GetDomainsTrafficStatsResponse =
@@ -366,7 +366,7 @@ export const ListDomainsTrafficStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/trafficStats" }),
     svc,
-  ) as unknown as Schema.Schema<ListDomainsTrafficStatsRequest>;
+  ) as unknown as Schema.Codec<ListDomainsTrafficStatsRequest>;
 
 export type ListDomainsTrafficStatsResponse = ListTrafficStatsResponse;
 export const ListDomainsTrafficStatsResponse =

@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationOrganizationRolesControllerGetInput {
+  organizationId: string;
+  slug: string;
+}
 export const AuthorizationOrganizationRolesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,21 @@ export const AuthorizationOrganizationRolesControllerGetInput =
       method: "GET",
       path: "/authorization/organizations/{organizationId}/roles/{slug}",
     }),
-  );
-export type AuthorizationOrganizationRolesControllerGetInput =
-  typeof AuthorizationOrganizationRolesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationOrganizationRolesControllerGetInput>;
 
 // Output Schema
+export interface AuthorizationOrganizationRolesControllerGetOutput {
+  slug: string;
+  object: string;
+  id: string;
+  name: string;
+  description: string | null;
+  type: "EnvironmentRole" | "OrganizationRole";
+  resource_type_slug: string;
+  permissions: string[];
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationOrganizationRolesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String,
@@ -30,9 +44,7 @@ export const AuthorizationOrganizationRolesControllerGetOutput =
     permissions: Schema.Array(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationOrganizationRolesControllerGetOutput =
-  typeof AuthorizationOrganizationRolesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationOrganizationRolesControllerGetOutput>;
 
 // The operation
 /**

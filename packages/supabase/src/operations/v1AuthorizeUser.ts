@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1AuthorizeUserInput {
+  client_id: string;
+  response_type: "code" | "token" | "id_token token";
+  redirect_uri: string;
+  scope?: string;
+  state?: string;
+  response_mode?: string;
+  code_challenge?: string;
+  code_challenge_method?: "plain" | "sha256" | "S256";
+  organization_slug?: string;
+  target_flow?: string;
+  resource?: string;
+}
 export const V1AuthorizeUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   client_id: Schema.String,
   response_type: Schema.Literals(["code", "token", "id_token token"]),
@@ -18,12 +31,14 @@ export const V1AuthorizeUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization_slug: Schema.optional(Schema.String),
   target_flow: Schema.optional(Schema.String),
   resource: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v1/oauth/authorize" }));
-export type V1AuthorizeUserInput = typeof V1AuthorizeUserInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/oauth/authorize" }),
+) as unknown as Schema.Codec<V1AuthorizeUserInput>;
 
 // Output Schema
-export const V1AuthorizeUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1AuthorizeUserOutput = typeof V1AuthorizeUserOutput.Type;
+export type V1AuthorizeUserOutput = void;
+export const V1AuthorizeUserOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1AuthorizeUserOutput>;
 
 // The operation
 /**

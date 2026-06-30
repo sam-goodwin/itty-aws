@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsScoutConfigListInput {
+  project_id: string;
+}
 export const SignalsScoutConfigListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,20 @@ export const SignalsScoutConfigListInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/scout/configs/",
     }),
-  );
-export type SignalsScoutConfigListInput =
-  typeof SignalsScoutConfigListInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutConfigListInput>;
 
 // Output Schema
+export type SignalsScoutConfigListOutput = {
+  id: string;
+  skill_name: string;
+  description: string;
+  scout_origin: "canonical" | "custom";
+  enabled?: boolean;
+  emit?: boolean;
+  run_interval_minutes?: number;
+  last_run_at: string | null;
+  created_at: string;
+}[];
 export const SignalsScoutConfigListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -29,9 +41,7 @@ export const SignalsScoutConfigListOutput =
       last_run_at: Schema.NullOr(Schema.String),
       created_at: Schema.String,
     }),
-  );
-export type SignalsScoutConfigListOutput =
-  typeof SignalsScoutConfigListOutput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutConfigListOutput>;
 
 // The operation
 /**

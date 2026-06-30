@@ -1,8 +1,18 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetCustomersCustomerBalanceTransactionsTransactionInput {
+  customer: string;
+  transaction: string;
+  expand?: string;
+}
 export const GetCustomersCustomerBalanceTransactionsTransactionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
@@ -14,11 +24,38 @@ export const GetCustomersCustomerBalanceTransactionsTransactionInput =
       path: "/v1/customers/{customer}/balance_transactions/{transaction}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetCustomersCustomerBalanceTransactionsTransactionInput =
-  typeof GetCustomersCustomerBalanceTransactionsTransactionInput.Type;
+  ) as unknown as Schema.Codec<GetCustomersCustomerBalanceTransactionsTransactionInput>;
 
 // Output Schema
+export interface GetCustomersCustomerBalanceTransactionsTransactionOutput {
+  amount: number;
+  checkout_session: unknown;
+  created: number;
+  credit_note: unknown;
+  currency: string;
+  customer: unknown;
+  customer_account: string | null;
+  description: string | null;
+  ending_balance: number;
+  id: string;
+  invoice: unknown;
+  livemode: boolean;
+  metadata: Record<string, string> | null;
+  object: "customer_balance_transaction";
+  type:
+    | "adjustment"
+    | "applied_to_invoice"
+    | "checkout_session_subscription_payment"
+    | "checkout_session_subscription_payment_canceled"
+    | "credit_note"
+    | "initial"
+    | "invoice_overpaid"
+    | "invoice_too_large"
+    | "invoice_too_small"
+    | "migration"
+    | "unapplied_from_invoice"
+    | "unspent_receiver_credit";
+}
 export const GetCustomersCustomerBalanceTransactionsTransactionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.Number,
@@ -49,9 +86,7 @@ export const GetCustomersCustomerBalanceTransactionsTransactionOutput =
       "unapplied_from_invoice",
       "unspent_receiver_credit",
     ]),
-  });
-export type GetCustomersCustomerBalanceTransactionsTransactionOutput =
-  typeof GetCustomersCustomerBalanceTransactionsTransactionOutput.Type;
+  }) as unknown as Schema.Codec<GetCustomersCustomerBalanceTransactionsTransactionOutput>;
 
 // The operation
 /**

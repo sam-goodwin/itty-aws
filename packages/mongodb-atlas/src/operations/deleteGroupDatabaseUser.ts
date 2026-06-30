@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupDatabaseUserInput {
+  groupId: string;
+  databaseName: string;
+  username: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupDatabaseUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const DeleteGroupDatabaseUserInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
     }),
-  );
-export type DeleteGroupDatabaseUserInput =
-  typeof DeleteGroupDatabaseUserInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupDatabaseUserInput>;
 
 // Output Schema
+export type DeleteGroupDatabaseUserOutput = void;
 export const DeleteGroupDatabaseUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupDatabaseUserOutput =
-  typeof DeleteGroupDatabaseUserOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDatabaseUserOutput>;
 
 // The operation
 /**

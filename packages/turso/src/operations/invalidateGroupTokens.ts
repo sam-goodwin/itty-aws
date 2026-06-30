@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface InvalidateGroupTokensInput {
+  organizationSlug: string;
+  groupName: string;
+}
 export const InvalidateGroupTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -13,14 +17,12 @@ export const InvalidateGroupTokensInput =
       method: "POST",
       path: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/rotate",
     }),
-  );
-export type InvalidateGroupTokensInput = typeof InvalidateGroupTokensInput.Type;
+  ) as unknown as Schema.Codec<InvalidateGroupTokensInput>;
 
 // Output Schema
+export type InvalidateGroupTokensOutput = void;
 export const InvalidateGroupTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InvalidateGroupTokensOutput =
-  typeof InvalidateGroupTokensOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InvalidateGroupTokensOutput>;
 
 // The operation
 /**

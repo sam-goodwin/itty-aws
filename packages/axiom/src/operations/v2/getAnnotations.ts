@@ -3,14 +3,30 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface GetAnnotationsInput {
+  datasets?: string;
+  start?: string;
+  end?: string;
+}
 export const GetAnnotationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasets: Schema.optional(Schema.String),
   start: Schema.optional(Schema.String),
   end: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v2/annotations" }));
-export type GetAnnotationsInput = typeof GetAnnotationsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/annotations" }),
+) as unknown as Schema.Codec<GetAnnotationsInput>;
 
 // Output Schema
+export type GetAnnotationsOutput = {
+  datasets: string[];
+  description?: string;
+  endTime?: string | null;
+  id: string;
+  time: string;
+  title?: string;
+  type: string;
+  url?: string;
+}[];
 export const GetAnnotationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     datasets: Schema.Array(Schema.String),
@@ -22,8 +38,7 @@ export const GetAnnotationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     type: Schema.String,
     url: Schema.optional(Schema.String),
   }),
-);
-export type GetAnnotationsOutput = typeof GetAnnotationsOutput.Type;
+) as unknown as Schema.Codec<GetAnnotationsOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingExternalReferencesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingExternalReferencesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const ErrorTrackingExternalReferencesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/error_tracking/external_references/{id}/",
     }),
-  );
-export type ErrorTrackingExternalReferencesDestroyInput =
-  typeof ErrorTrackingExternalReferencesDestroyInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingExternalReferencesDestroyInput>;
 
 // Output Schema
+export type ErrorTrackingExternalReferencesDestroyOutput = void;
 export const ErrorTrackingExternalReferencesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingExternalReferencesDestroyOutput =
-  typeof ErrorTrackingExternalReferencesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingExternalReferencesDestroyOutput>;
 
 // The operation
 /**

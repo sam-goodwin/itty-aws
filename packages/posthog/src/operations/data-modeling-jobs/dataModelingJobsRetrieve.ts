@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DataModelingJobsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const DataModelingJobsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,21 @@ export const DataModelingJobsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/data_modeling_jobs/{id}/",
     }),
-  );
-export type DataModelingJobsRetrieveInput =
-  typeof DataModelingJobsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DataModelingJobsRetrieveInput>;
 
 // Output Schema
+export interface DataModelingJobsRetrieveOutput {
+  id: string;
+  saved_query_id: string | null;
+  status: "Cancelled" | "Completed" | "Failed" | "Running";
+  rows_materialized: number;
+  error: string | null;
+  created_at: string;
+  last_run_at: string;
+  workflow_id: string | null;
+  workflow_run_id: string | null;
+  rows_expected: number | null;
+}
 export const DataModelingJobsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,9 +43,7 @@ export const DataModelingJobsRetrieveOutput =
     workflow_id: Schema.NullOr(Schema.String),
     workflow_run_id: Schema.NullOr(Schema.String),
     rows_expected: Schema.NullOr(Schema.Number),
-  });
-export type DataModelingJobsRetrieveOutput =
-  typeof DataModelingJobsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DataModelingJobsRetrieveOutput>;
 
 // The operation
 /**

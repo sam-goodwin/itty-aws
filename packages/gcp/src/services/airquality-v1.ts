@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface Interval {
   startTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface HealthRecommendations {
   children?: string;
 }
 
-export const HealthRecommendations: Schema.Schema<HealthRecommendations> =
+export const HealthRecommendations: Schema.Codec<HealthRecommendations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     heartDiseasePopulation: Schema.optional(Schema.String),
     athletes: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface Color {
   blue?: number;
 }
 
-export const Color: Schema.Schema<Color> =
+export const Color: Schema.Codec<Color> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     red: Schema.optional(Schema.Number),
     green: Schema.optional(Schema.Number),
@@ -99,7 +99,7 @@ export interface AirQualityIndex {
   dominantPollutant?: string;
 }
 
-export const AirQualityIndex: Schema.Schema<AirQualityIndex> =
+export const AirQualityIndex: Schema.Codec<AirQualityIndex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aqiDisplay: Schema.optional(Schema.String),
     color: Schema.optional(Color),
@@ -117,7 +117,7 @@ export interface AdditionalInfo {
   sources?: string;
 }
 
-export const AdditionalInfo: Schema.Schema<AdditionalInfo> =
+export const AdditionalInfo: Schema.Codec<AdditionalInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effects: Schema.optional(Schema.String),
     sources: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface Concentration {
     | (string & {});
 }
 
-export const Concentration: Schema.Schema<Concentration> =
+export const Concentration: Schema.Codec<Concentration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     units: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface Pollutant {
   fullName?: string;
 }
 
-export const Pollutant: Schema.Schema<Pollutant> =
+export const Pollutant: Schema.Codec<Pollutant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     additionalInfo: Schema.optional(AdditionalInfo),
@@ -173,7 +173,7 @@ export interface HourInfo {
   pollutants?: ReadonlyArray<Pollutant>;
 }
 
-export const HourInfo: Schema.Schema<HourInfo> =
+export const HourInfo: Schema.Codec<HourInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthRecommendations: Schema.optional(HealthRecommendations),
     dateTime: Schema.optional(Schema.String),
@@ -188,7 +188,7 @@ export interface LatLng {
   latitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const LatLng: Schema.Codec<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longitude: Schema.optional(Schema.Number),
     latitude: Schema.optional(Schema.Number),
@@ -201,7 +201,7 @@ export interface CustomLocalAqi {
   regionCode?: string;
 }
 
-export const CustomLocalAqi: Schema.Schema<CustomLocalAqi> =
+export const CustomLocalAqi: Schema.Codec<CustomLocalAqi> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aqi: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -243,7 +243,7 @@ export interface LookupForecastRequest {
   pageToken?: string;
 }
 
-export const LookupForecastRequest: Schema.Schema<LookupForecastRequest> =
+export const LookupForecastRequest: Schema.Codec<LookupForecastRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extraComputations: Schema.optional(Schema.Array(Schema.String)),
     languageCode: Schema.optional(Schema.String),
@@ -270,7 +270,7 @@ export interface LookupCurrentConditionsResponse {
   indexes?: ReadonlyArray<AirQualityIndex>;
 }
 
-export const LookupCurrentConditionsResponse: Schema.Schema<LookupCurrentConditionsResponse> =
+export const LookupCurrentConditionsResponse: Schema.Codec<LookupCurrentConditionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthRecommendations: Schema.optional(HealthRecommendations),
     regionCode: Schema.optional(Schema.String),
@@ -307,7 +307,7 @@ export interface LookupCurrentConditionsRequest {
   universalAqi?: boolean;
 }
 
-export const LookupCurrentConditionsRequest: Schema.Schema<LookupCurrentConditionsRequest> =
+export const LookupCurrentConditionsRequest: Schema.Codec<LookupCurrentConditionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customLocalAqis: Schema.optional(Schema.Array(CustomLocalAqi)),
     location: Schema.optional(LatLng),
@@ -326,7 +326,7 @@ export interface LookupHistoryResponse {
   nextPageToken?: string;
 }
 
-export const LookupHistoryResponse: Schema.Schema<LookupHistoryResponse> =
+export const LookupHistoryResponse: Schema.Codec<LookupHistoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hoursInfo: Schema.optional(Schema.Array(HourInfo)),
     regionCode: Schema.optional(Schema.String),
@@ -342,7 +342,7 @@ export interface HttpBody {
   extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
+export const HttpBody: Schema.Codec<HttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -362,7 +362,7 @@ export interface HourlyForecast {
   pollutants?: ReadonlyArray<Pollutant>;
 }
 
-export const HourlyForecast: Schema.Schema<HourlyForecast> =
+export const HourlyForecast: Schema.Codec<HourlyForecast> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthRecommendations: Schema.optional(HealthRecommendations),
     dateTime: Schema.optional(Schema.String),
@@ -379,7 +379,7 @@ export interface LookupForecastResponse {
   nextPageToken?: string;
 }
 
-export const LookupForecastResponse: Schema.Schema<LookupForecastResponse> =
+export const LookupForecastResponse: Schema.Codec<LookupForecastResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hourlyForecasts: Schema.optional(Schema.Array(HourlyForecast)),
     regionCode: Schema.optional(Schema.String),
@@ -424,7 +424,7 @@ export interface LookupHistoryRequest {
   period?: Interval;
 }
 
-export const LookupHistoryRequest: Schema.Schema<LookupHistoryRequest> =
+export const LookupHistoryRequest: Schema.Codec<LookupHistoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dateTime: Schema.optional(Schema.String),
     location: Schema.optional(LatLng),
@@ -504,7 +504,7 @@ export const LookupForecastRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/forecast:lookup", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<LookupForecastRequest_Op>;
+  ) as unknown as Schema.Codec<LookupForecastRequest_Op>;
 
 export type LookupForecastResponse_Op = LookupForecastResponse;
 export const LookupForecastResponse_Op =
@@ -562,7 +562,7 @@ export const LookupHeatmapTileMapTypesHeatmapTilesRequest =
       path: "v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}",
     }),
     svc,
-  ) as unknown as Schema.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>;
+  ) as unknown as Schema.Codec<LookupHeatmapTileMapTypesHeatmapTilesRequest>;
 
 export type LookupHeatmapTileMapTypesHeatmapTilesResponse = HttpBody;
 export const LookupHeatmapTileMapTypesHeatmapTilesResponse =
@@ -600,7 +600,7 @@ export const LookupCurrentConditionsRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<LookupCurrentConditionsRequest_Op>;
+  ) as unknown as Schema.Codec<LookupCurrentConditionsRequest_Op>;
 
 export type LookupCurrentConditionsResponse_Op =
   LookupCurrentConditionsResponse;
@@ -637,7 +637,7 @@ export const LookupHistoryRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/history:lookup", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<LookupHistoryRequest_Op>;
+  ) as unknown as Schema.Codec<LookupHistoryRequest_Op>;
 
 export type LookupHistoryResponse_Op = LookupHistoryResponse;
 export const LookupHistoryResponse_Op =

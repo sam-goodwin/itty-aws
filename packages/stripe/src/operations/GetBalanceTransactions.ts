@@ -1,8 +1,24 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetBalanceTransactionsInput {
+  created?: string;
+  currency?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  payout?: string;
+  source?: string;
+  starting_after?: string;
+  type?: string;
+}
 export const GetBalanceTransactionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
@@ -20,11 +36,92 @@ export const GetBalanceTransactionsInput =
       path: "/v1/balance_transactions",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetBalanceTransactionsInput =
-  typeof GetBalanceTransactionsInput.Type;
+  ) as unknown as Schema.Codec<GetBalanceTransactionsInput>;
 
 // Output Schema
+export interface GetBalanceTransactionsOutput {
+  data: {
+    amount: number;
+    available_on: number;
+    balance_type:
+      | "issuing"
+      | "payments"
+      | "refund_and_dispute_prefunding"
+      | "risk_reserved";
+    created: number;
+    currency: string;
+    description: string | null;
+    exchange_rate: number | null;
+    fee: number;
+    fee_details: {
+      amount: number;
+      application: string | null;
+      currency: string;
+      description: string | null;
+      type: string;
+    }[];
+    id: string;
+    net: number;
+    object: "balance_transaction";
+    reporting_category: string;
+    source: string | unknown | null;
+    status: string;
+    type:
+      | "adjustment"
+      | "advance"
+      | "advance_funding"
+      | "anticipation_repayment"
+      | "application_fee"
+      | "application_fee_refund"
+      | "charge"
+      | "climate_order_purchase"
+      | "climate_order_refund"
+      | "connect_collection_transfer"
+      | "contribution"
+      | "fee_credit_funding"
+      | "inbound_transfer"
+      | "inbound_transfer_reversal"
+      | "issuing_authorization_hold"
+      | "issuing_authorization_release"
+      | "issuing_dispute"
+      | "issuing_transaction"
+      | "obligation_outbound"
+      | "obligation_reversal_inbound"
+      | "payment"
+      | "payment_failure_refund"
+      | "payment_network_reserve_hold"
+      | "payment_network_reserve_release"
+      | "payment_refund"
+      | "payment_reversal"
+      | "payment_unreconciled"
+      | "payout"
+      | "payout_cancel"
+      | "payout_failure"
+      | "payout_minimum_balance_hold"
+      | "payout_minimum_balance_release"
+      | "refund"
+      | "refund_failure"
+      | "reserve_hold"
+      | "reserve_release"
+      | "reserve_transaction"
+      | "reserved_funds"
+      | "stripe_balance_payment_debit"
+      | "stripe_balance_payment_debit_reversal"
+      | "stripe_fee"
+      | "stripe_fx_fee"
+      | "tax_fee"
+      | "tax_fund"
+      | "topup"
+      | "topup_reversal"
+      | "transfer"
+      | "transfer_cancel"
+      | "transfer_failure"
+      | "transfer_refund";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetBalanceTransactionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -55,7 +152,7 @@ export const GetBalanceTransactionsOutput =
         net: Schema.Number,
         object: Schema.Literals(["balance_transaction"]),
         reporting_category: Schema.String,
-        source: Schema.Unknown,
+        source: Schema.NullOr(Schema.Union([Schema.String, Schema.Unknown])),
         status: Schema.String,
         type: Schema.Literals([
           "adjustment",
@@ -114,9 +211,7 @@ export const GetBalanceTransactionsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetBalanceTransactionsOutput =
-  typeof GetBalanceTransactionsOutput.Type;
+  }) as unknown as Schema.Codec<GetBalanceTransactionsOutput>;
 
 // The operation
 /**

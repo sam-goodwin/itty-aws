@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RetrieveCurationSetItemInput {
+  curationSetName: string;
+  itemId: string;
+}
 export const RetrieveCurationSetItemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curationSetName: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,29 @@ export const RetrieveCurationSetItemInput =
       method: "GET",
       path: "/curation_sets/{curationSetName}/items/{itemId}",
     }),
-  );
-export type RetrieveCurationSetItemInput =
-  typeof RetrieveCurationSetItemInput.Type;
+  ) as unknown as Schema.Codec<RetrieveCurationSetItemInput>;
 
 // Output Schema
+export interface RetrieveCurationSetItemOutput {
+  rule: {
+    tags?: string[];
+    query?: string;
+    match?: "exact" | "contains";
+    filter_by?: string;
+  };
+  includes?: { id: string; position: number }[];
+  excludes?: { id: string }[];
+  filter_by?: string;
+  remove_matched_tokens?: boolean;
+  metadata?: unknown;
+  sort_by?: string;
+  replace_query?: string;
+  filter_curated_hits?: boolean;
+  effective_from_ts?: number;
+  effective_to_ts?: number;
+  stop_processing?: boolean;
+  id: string;
+}
 export const RetrieveCurationSetItemOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rule: Schema.Struct({
@@ -51,9 +73,7 @@ export const RetrieveCurationSetItemOutput =
     effective_to_ts: Schema.optional(Schema.Number),
     stop_processing: Schema.optional(Schema.Boolean),
     id: Schema.String,
-  });
-export type RetrieveCurationSetItemOutput =
-  typeof RetrieveCurationSetItemOutput.Type;
+  }) as unknown as Schema.Codec<RetrieveCurationSetItemOutput>;
 
 // The operation
 /**

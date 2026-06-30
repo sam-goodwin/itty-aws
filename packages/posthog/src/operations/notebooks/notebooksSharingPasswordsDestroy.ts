@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface NotebooksSharingPasswordsDestroyInput {
+  notebook_id: string;
+  password_id: string;
+  project_id: string;
+}
 export const NotebooksSharingPasswordsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebook_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const NotebooksSharingPasswordsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/notebooks/{notebook_id}/sharing/passwords/{password_id}/",
     }),
-  );
-export type NotebooksSharingPasswordsDestroyInput =
-  typeof NotebooksSharingPasswordsDestroyInput.Type;
+  ) as unknown as Schema.Codec<NotebooksSharingPasswordsDestroyInput>;
 
 // Output Schema
+export type NotebooksSharingPasswordsDestroyOutput = void;
 export const NotebooksSharingPasswordsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebooksSharingPasswordsDestroyOutput =
-  typeof NotebooksSharingPasswordsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksSharingPasswordsDestroyOutput>;
 
 // The operation
 /**

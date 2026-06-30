@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateOrganizationInput {
+  organizationSlug: string;
+  overages?: boolean;
+  require_mfa?: boolean;
+}
 export const UpdateOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -10,10 +15,23 @@ export const UpdateOrganizationInput =
     require_mfa: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "PATCH", path: "/v1/organizations/{organizationSlug}" }),
-  );
-export type UpdateOrganizationInput = typeof UpdateOrganizationInput.Type;
+  ) as unknown as Schema.Codec<UpdateOrganizationInput>;
 
 // Output Schema
+export interface UpdateOrganizationOutput {
+  organization?: {
+    name?: string;
+    slug?: string;
+    type?: "personal" | "team";
+    overages?: boolean;
+    require_mfa?: boolean;
+    blocked_reads?: boolean;
+    blocked_writes?: boolean;
+    plan_id?: string;
+    plan_timeline?: string;
+    platform?: string;
+  };
+}
 export const UpdateOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.optional(
@@ -30,8 +48,7 @@ export const UpdateOrganizationOutput =
         platform: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UpdateOrganizationOutput = typeof UpdateOrganizationOutput.Type;
+  }) as unknown as Schema.Codec<UpdateOrganizationOutput>;
 
 // The operation
 /**

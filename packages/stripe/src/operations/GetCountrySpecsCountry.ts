@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetCountrySpecsCountryInput {
+  country: string;
+  expand?: string;
+}
 export const GetCountrySpecsCountryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     country: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,22 @@ export const GetCountrySpecsCountryInput =
       path: "/v1/country_specs/{country}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetCountrySpecsCountryInput =
-  typeof GetCountrySpecsCountryInput.Type;
+  ) as unknown as Schema.Codec<GetCountrySpecsCountryInput>;
 
 // Output Schema
+export interface GetCountrySpecsCountryOutput {
+  default_currency: string;
+  id: string;
+  object: "country_spec";
+  supported_bank_account_currencies: Record<string, string[]>;
+  supported_payment_currencies: string[];
+  supported_payment_methods: string[];
+  supported_transfer_countries: string[];
+  verification_fields: {
+    company: { additional: string[]; minimum: string[] };
+    individual: { additional: string[]; minimum: string[] };
+  };
+}
 export const GetCountrySpecsCountryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     default_currency: Schema.String,
@@ -40,9 +55,7 @@ export const GetCountrySpecsCountryOutput =
         minimum: Schema.Array(Schema.String),
       }),
     }),
-  });
-export type GetCountrySpecsCountryOutput =
-  typeof GetCountrySpecsCountryOutput.Type;
+  }) as unknown as Schema.Codec<GetCountrySpecsCountryOutput>;
 
 // The operation
 /**

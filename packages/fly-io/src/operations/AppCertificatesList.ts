@@ -4,16 +4,42 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AppCertificatesListInput {
+  app_name: string;
+  filter?: string;
+  cursor?: string;
+  limit?: number;
+}
 export const AppCertificatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     filter: Schema.optional(Schema.String),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/certificates" }));
-export type AppCertificatesListInput = typeof AppCertificatesListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/apps/{app_name}/certificates" }),
+  ) as unknown as Schema.Codec<AppCertificatesListInput>;
 
 // Output Schema
+export interface AppCertificatesListOutput {
+  certificates?: {
+    acme_alpn_configured?: boolean;
+    acme_dns_configured?: boolean;
+    acme_http_configured?: boolean;
+    acme_requested?: boolean;
+    configured?: boolean;
+    created_at?: string;
+    dns_provider?: string;
+    has_custom_certificate?: boolean;
+    has_fly_certificate?: boolean;
+    hostname?: string;
+    ownership_txt_configured?: boolean;
+    status?: string;
+    updated_at?: string;
+  }[];
+  next_cursor?: string;
+  total_count?: number;
+}
 export const AppCertificatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificates: Schema.optional(
@@ -37,8 +63,7 @@ export const AppCertificatesListOutput =
     ),
     next_cursor: Schema.optional(Schema.String),
     total_count: Schema.optional(Schema.Number),
-  });
-export type AppCertificatesListOutput = typeof AppCertificatesListOutput.Type;
+  }) as unknown as Schema.Codec<AppCertificatesListOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingIssuesListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ErrorTrackingIssuesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,31 @@ export const ErrorTrackingIssuesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/issues/",
     }),
-  );
-export type ErrorTrackingIssuesListInput =
-  typeof ErrorTrackingIssuesListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingIssuesListInput>;
 
 // Output Schema
+export interface ErrorTrackingIssuesListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    status: string;
+    name: string | null;
+    description: string | null;
+    first_seen: string | null;
+    assignee: { id: number | string | null; type: string } | null;
+    external_issues: {
+      id?: string;
+      integration?: { id?: number; kind?: string; display_name?: string };
+      integration_id?: number;
+      config?: Record<string, string>;
+      issue?: string;
+      external_url?: string;
+    }[];
+    cohort: { id: number; name: string } | null;
+  }[];
+}
 export const ErrorTrackingIssuesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -30,7 +55,12 @@ export const ErrorTrackingIssuesListOutput =
         name: Schema.NullOr(Schema.String),
         description: Schema.NullOr(Schema.String),
         first_seen: Schema.NullOr(Schema.String),
-        assignee: Schema.Unknown,
+        assignee: Schema.NullOr(
+          Schema.Struct({
+            id: Schema.NullOr(Schema.Union([Schema.Number, Schema.String])),
+            type: Schema.String,
+          }),
+        ),
         external_issues: Schema.Array(
           Schema.Struct({
             id: Schema.optional(Schema.String),
@@ -49,12 +79,15 @@ export const ErrorTrackingIssuesListOutput =
             external_url: Schema.optional(Schema.String),
           }),
         ),
-        cohort: Schema.Unknown,
+        cohort: Schema.NullOr(
+          Schema.Struct({
+            id: Schema.Number,
+            name: Schema.String,
+          }),
+        ),
       }),
     ),
-  });
-export type ErrorTrackingIssuesListOutput =
-  typeof ErrorTrackingIssuesListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingIssuesListOutput>;
 
 // The operation
 /**

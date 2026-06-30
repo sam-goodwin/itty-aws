@@ -3,6 +3,26 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SingleSessionSummariesListInput {
+  project_id: string;
+  created_by?: string;
+  date_from?: string;
+  date_to?: string;
+  distinct_id?: string;
+  has_exceptions?: boolean;
+  has_visual_confirmation?: boolean;
+  limit?: number;
+  offset?: number;
+  order?:
+    | "-created_at"
+    | "-session_duration"
+    | "-session_start_time"
+    | "created_at"
+    | "session_duration"
+    | "session_start_time";
+  outcome?: "failure" | "success" | "unknown";
+  session_ids?: string;
+}
 export const SingleSessionSummariesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -33,11 +53,49 @@ export const SingleSessionSummariesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/single_session_summaries/",
     }),
-  );
-export type SingleSessionSummariesListInput =
-  typeof SingleSessionSummariesListInput.Type;
+  ) as unknown as Schema.Codec<SingleSessionSummariesListInput>;
 
 // Output Schema
+export interface SingleSessionSummariesListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    session_id: string;
+    distinct_id: string | null;
+    session_start_time: string | null;
+    session_duration: number | null;
+    session_outcome: { success?: boolean; description?: string } | null;
+    exception_count: number;
+    has_exceptions: boolean;
+    model_used: string | null;
+    visual_confirmation: boolean;
+    extra_summary_context: { focus_area?: string } | null;
+    created_at: string;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+  }[];
+}
 export const SingleSessionSummariesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -66,12 +124,40 @@ export const SingleSessionSummariesListOutput =
           }),
         ),
         created_at: Schema.String,
-        created_by: Schema.Unknown,
+        created_by: Schema.NullOr(
+          Schema.Struct({
+            id: Schema.optional(Schema.Number),
+            uuid: Schema.optional(Schema.String),
+            distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+            first_name: Schema.optional(Schema.String),
+            last_name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+            hedgehog_config: Schema.optional(
+              Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+            ),
+            role_at_organization: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals([
+                    "engineering",
+                    "data",
+                    "product",
+                    "founder",
+                    "leadership",
+                    "marketing",
+                    "sales",
+                    "other",
+                  ]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
+          }),
+        ),
       }),
     ),
-  });
-export type SingleSessionSummariesListOutput =
-  typeof SingleSessionSummariesListOutput.Type;
+  }) as unknown as Schema.Codec<SingleSessionSummariesListOutput>;
 
 // The operation
 /**

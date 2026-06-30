@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface RouterParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const RouterParams: Schema.Schema<RouterParams> =
+export const RouterParams: Schema.Codec<RouterParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -39,7 +39,7 @@ export interface StoragePoolParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const StoragePoolParams: Schema.Schema<StoragePoolParams> =
+export const StoragePoolParams: Schema.Codec<StoragePoolParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -55,7 +55,7 @@ export interface StoragePoolExapoolProvisionedCapacityGb {
   writeOptimized?: string;
 }
 
-export const StoragePoolExapoolProvisionedCapacityGb: Schema.Schema<StoragePoolExapoolProvisionedCapacityGb> =
+export const StoragePoolExapoolProvisionedCapacityGb: Schema.Codec<StoragePoolExapoolProvisionedCapacityGb> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     capacityOptimized: Schema.optional(Schema.String),
     readOptimized: Schema.optional(Schema.String),
@@ -93,7 +93,7 @@ export interface StoragePoolResourceStatus {
   poolUsedCapacityBytes?: string;
 }
 
-export const StoragePoolResourceStatus: Schema.Schema<StoragePoolResourceStatus> =
+export const StoragePoolResourceStatus: Schema.Codec<StoragePoolResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     poolUserWrittenBytes: Schema.optional(Schema.String),
     maxTotalProvisionedDiskCapacityGb: Schema.optional(Schema.String),
@@ -164,7 +164,7 @@ export interface StoragePool {
   resourceStatus?: StoragePoolResourceStatus;
 }
 
-export const StoragePool: Schema.Schema<StoragePool> =
+export const StoragePool: Schema.Codec<StoragePool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     performanceProvisioningType: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export interface StoragePoolsScopedList {
   };
 }
 
-export const StoragePoolsScopedList: Schema.Schema<StoragePoolsScopedList> =
+export const StoragePoolsScopedList: Schema.Codec<StoragePoolsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storagePools: Schema.optional(Schema.Array(StoragePool)),
     warning: Schema.optional(
@@ -258,7 +258,7 @@ export interface InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToAp
   innerApplianceIpAddress?: string;
 }
 
-export const InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping: Schema.Schema<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping> =
+export const InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping: Schema.Codec<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     innerVlanTags: Schema.optional(Schema.Array(Schema.String)),
     innerApplianceIpAddress: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export interface ForwardingRuleServiceDirectoryRegistration {
   service?: string;
 }
 
-export const ForwardingRuleServiceDirectoryRegistration: Schema.Schema<ForwardingRuleServiceDirectoryRegistration> =
+export const ForwardingRuleServiceDirectoryRegistration: Schema.Codec<ForwardingRuleServiceDirectoryRegistration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceDirectoryRegion: Schema.optional(Schema.String),
     namespace: Schema.optional(Schema.String),
@@ -288,7 +288,7 @@ export interface SslPolicyReference {
   sslPolicy?: string;
 }
 
-export const SslPolicyReference: Schema.Schema<SslPolicyReference> =
+export const SslPolicyReference: Schema.Codec<SslPolicyReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sslPolicy: Schema.optional(Schema.String),
   }).annotate({ identifier: "SslPolicyReference" });
@@ -300,7 +300,7 @@ export interface Int64RangeMatch {
   rangeEnd?: string;
 }
 
-export const Int64RangeMatch: Schema.Schema<Int64RangeMatch> =
+export const Int64RangeMatch: Schema.Codec<Int64RangeMatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rangeStart: Schema.optional(Schema.String),
     rangeEnd: Schema.optional(Schema.String),
@@ -325,7 +325,7 @@ export interface HttpHeaderMatch {
   presentMatch?: boolean;
 }
 
-export const HttpHeaderMatch: Schema.Schema<HttpHeaderMatch> =
+export const HttpHeaderMatch: Schema.Codec<HttpHeaderMatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suffixMatch: Schema.optional(Schema.String),
     headerName: Schema.optional(Schema.String),
@@ -354,7 +354,7 @@ export interface CachePolicyCacheKeyPolicy {
   includeQueryString?: boolean;
 }
 
-export const CachePolicyCacheKeyPolicy: Schema.Schema<CachePolicyCacheKeyPolicy> =
+export const CachePolicyCacheKeyPolicy: Schema.Codec<CachePolicyCacheKeyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedQueryParameters: Schema.optional(Schema.Array(Schema.String)),
     includeHost: Schema.optional(Schema.Boolean),
@@ -389,7 +389,7 @@ export interface InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSla
   explanation?: string;
 }
 
-export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers: Schema.Schema<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers> =
+export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers: Schema.Codec<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metros: Schema.optional(Schema.Array(Schema.String)),
     attachments: Schema.optional(Schema.Array(Schema.String)),
@@ -413,7 +413,7 @@ export interface InterconnectAttachmentGroupConfiguredAvailabilitySLA {
   intendedSlaBlockers?: ReadonlyArray<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers>;
 }
 
-export const InterconnectAttachmentGroupConfiguredAvailabilitySLA: Schema.Schema<InterconnectAttachmentGroupConfiguredAvailabilitySLA> =
+export const InterconnectAttachmentGroupConfiguredAvailabilitySLA: Schema.Codec<InterconnectAttachmentGroupConfiguredAvailabilitySLA> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveSla: Schema.optional(Schema.String),
     intendedSlaBlockers: Schema.optional(
@@ -429,7 +429,7 @@ export interface InterconnectAttachmentGroupConfigured {
   availabilitySla?: InterconnectAttachmentGroupConfiguredAvailabilitySLA;
 }
 
-export const InterconnectAttachmentGroupConfigured: Schema.Schema<InterconnectAttachmentGroupConfigured> =
+export const InterconnectAttachmentGroupConfigured: Schema.Codec<InterconnectAttachmentGroupConfigured> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilitySla: Schema.optional(
       InterconnectAttachmentGroupConfiguredAvailabilitySLA,
@@ -463,7 +463,7 @@ export interface InterconnectAttachmentGroupsOperationalStatusAttachmentStatus {
   adminEnabled?: boolean;
 }
 
-export const InterconnectAttachmentGroupsOperationalStatusAttachmentStatus: Schema.Schema<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus> =
+export const InterconnectAttachmentGroupsOperationalStatusAttachmentStatus: Schema.Codec<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     attachment: Schema.optional(Schema.String),
@@ -482,7 +482,7 @@ export interface InterconnectAttachmentGroupIntent {
     | (string & {});
 }
 
-export const InterconnectAttachmentGroupIntent: Schema.Schema<InterconnectAttachmentGroupIntent> =
+export const InterconnectAttachmentGroupIntent: Schema.Codec<InterconnectAttachmentGroupIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilitySla: Schema.optional(Schema.String),
   }).annotate({ identifier: "InterconnectAttachmentGroupIntent" });
@@ -502,7 +502,7 @@ export interface InterconnectAttachmentGroupsOperationalStatus {
   intent?: InterconnectAttachmentGroupIntent;
 }
 
-export const InterconnectAttachmentGroupsOperationalStatus: Schema.Schema<InterconnectAttachmentGroupsOperationalStatus> =
+export const InterconnectAttachmentGroupsOperationalStatus: Schema.Codec<InterconnectAttachmentGroupsOperationalStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupStatus: Schema.optional(Schema.String),
     operational: Schema.optional(InterconnectAttachmentGroupConfigured),
@@ -520,7 +520,7 @@ export interface InterconnectAttachmentGroupsGetOperationalStatusResponse {
   etag?: string;
 }
 
-export const InterconnectAttachmentGroupsGetOperationalStatusResponse: Schema.Schema<InterconnectAttachmentGroupsGetOperationalStatusResponse> =
+export const InterconnectAttachmentGroupsGetOperationalStatusResponse: Schema.Codec<InterconnectAttachmentGroupsGetOperationalStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(InterconnectAttachmentGroupsOperationalStatus),
     etag: Schema.optional(Schema.String),
@@ -551,7 +551,7 @@ export interface TargetGrpcProxy {
   description?: string;
 }
 
-export const TargetGrpcProxy: Schema.Schema<TargetGrpcProxy> =
+export const TargetGrpcProxy: Schema.Codec<TargetGrpcProxy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     fingerprint: Schema.optional(Schema.String),
@@ -614,7 +614,7 @@ export interface TargetGrpcProxyList {
   };
 }
 
-export const TargetGrpcProxyList: Schema.Schema<TargetGrpcProxyList> =
+export const TargetGrpcProxyList: Schema.Codec<TargetGrpcProxyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -642,7 +642,7 @@ export interface VmExtensionPolicyLabelSelector {
   inclusionLabels?: Record<string, string>;
 }
 
-export const VmExtensionPolicyLabelSelector: Schema.Schema<VmExtensionPolicyLabelSelector> =
+export const VmExtensionPolicyLabelSelector: Schema.Codec<VmExtensionPolicyLabelSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inclusionLabels: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -654,7 +654,7 @@ export interface VmExtensionPolicyInstanceSelector {
   labelSelector?: VmExtensionPolicyLabelSelector;
 }
 
-export const VmExtensionPolicyInstanceSelector: Schema.Schema<VmExtensionPolicyInstanceSelector> =
+export const VmExtensionPolicyInstanceSelector: Schema.Codec<VmExtensionPolicyInstanceSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelSelector: Schema.optional(VmExtensionPolicyLabelSelector),
   }).annotate({ identifier: "VmExtensionPolicyInstanceSelector" });
@@ -664,7 +664,7 @@ export interface SnapshotGroupSourceInfo {
   consistencyGroup?: string;
 }
 
-export const SnapshotGroupSourceInfo: Schema.Schema<SnapshotGroupSourceInfo> =
+export const SnapshotGroupSourceInfo: Schema.Codec<SnapshotGroupSourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consistencyGroupId: Schema.optional(Schema.String),
     consistencyGroup: Schema.optional(Schema.String),
@@ -675,7 +675,7 @@ export interface SnapshotGroupSourceInstantSnapshotGroupInfo {
   instantSnapshotGroupId?: string;
 }
 
-export const SnapshotGroupSourceInstantSnapshotGroupInfo: Schema.Schema<SnapshotGroupSourceInstantSnapshotGroupInfo> =
+export const SnapshotGroupSourceInstantSnapshotGroupInfo: Schema.Codec<SnapshotGroupSourceInstantSnapshotGroupInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instantSnapshotGroup: Schema.optional(Schema.String),
     instantSnapshotGroupId: Schema.optional(Schema.String),
@@ -714,7 +714,7 @@ export interface SnapshotGroup {
   sourceInstantSnapshotGroupInfo?: SnapshotGroupSourceInstantSnapshotGroupInfo;
 }
 
-export const SnapshotGroup: Schema.Schema<SnapshotGroup> =
+export const SnapshotGroup: Schema.Codec<SnapshotGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceInstantSnapshotGroup: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -740,7 +740,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -763,7 +763,7 @@ export interface SetCommonInstanceMetadataOperationMetadataPerLocationOperationI
   error?: Status;
 }
 
-export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo: Schema.Schema<SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo> =
+export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo: Schema.Codec<SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -782,7 +782,7 @@ export interface SetCommonInstanceMetadataOperationMetadata {
   clientOperationId?: string;
 }
 
-export const SetCommonInstanceMetadataOperationMetadata: Schema.Schema<SetCommonInstanceMetadataOperationMetadata> =
+export const SetCommonInstanceMetadataOperationMetadata: Schema.Codec<SetCommonInstanceMetadataOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perLocationOperations: Schema.optional(
       Schema.Record(
@@ -805,7 +805,7 @@ export interface RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus {
     | (string & {});
 }
 
-export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus: Schema.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus> =
+export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus: Schema.Codec<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({
@@ -830,7 +830,7 @@ export interface RolloutWaveDetailsOrchestratedWaveDetails {
   estimatedTotalResourcesCount?: string;
 }
 
-export const RolloutWaveDetailsOrchestratedWaveDetails: Schema.Schema<RolloutWaveDetailsOrchestratedWaveDetails> =
+export const RolloutWaveDetailsOrchestratedWaveDetails: Schema.Codec<RolloutWaveDetailsOrchestratedWaveDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedResourcesCount: Schema.optional(Schema.String),
     estimatedCompletionTime: Schema.optional(Schema.String),
@@ -854,7 +854,7 @@ export interface RolloutWaveDetails {
   waveNumber?: string;
 }
 
-export const RolloutWaveDetails: Schema.Schema<RolloutWaveDetails> =
+export const RolloutWaveDetails: Schema.Codec<RolloutWaveDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orchestratedWaveDetails: Schema.optional(
       RolloutWaveDetailsOrchestratedWaveDetails,
@@ -870,7 +870,7 @@ export interface FirewallLogConfig {
   metadata?: "EXCLUDE_ALL_METADATA" | "INCLUDE_ALL_METADATA" | (string & {});
 }
 
-export const FirewallLogConfig: Schema.Schema<FirewallLogConfig> =
+export const FirewallLogConfig: Schema.Codec<FirewallLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enable: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.String),
@@ -881,7 +881,7 @@ export interface FirewallParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const FirewallParams: Schema.Schema<FirewallParams> =
+export const FirewallParams: Schema.Codec<FirewallParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -939,7 +939,7 @@ export interface Firewall {
   params?: FirewallParams;
 }
 
-export const Firewall: Schema.Schema<Firewall> =
+export const Firewall: Schema.Codec<Firewall> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -985,7 +985,7 @@ export interface GetVersionOperationMetadataSbomInfo {
   currentComponentVersions?: Record<string, string>;
 }
 
-export const GetVersionOperationMetadataSbomInfo: Schema.Schema<GetVersionOperationMetadataSbomInfo> =
+export const GetVersionOperationMetadataSbomInfo: Schema.Codec<GetVersionOperationMetadataSbomInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetComponentVersions: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1002,7 +1002,7 @@ export interface BulkInsertInstanceResourcePerInstanceProperties {
   hostname?: string;
 }
 
-export const BulkInsertInstanceResourcePerInstanceProperties: Schema.Schema<BulkInsertInstanceResourcePerInstanceProperties> =
+export const BulkInsertInstanceResourcePerInstanceProperties: Schema.Codec<BulkInsertInstanceResourcePerInstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     hostname: Schema.optional(Schema.String),
@@ -1019,7 +1019,7 @@ export interface Metadata {
   items?: ReadonlyArray<{ value?: string; key?: string }>;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
+export const Metadata: Schema.Codec<Metadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fingerprint: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1037,7 +1037,7 @@ export interface NetworkPerformanceConfig {
   totalEgressBandwidthTier?: "DEFAULT" | "TIER_1" | (string & {});
 }
 
-export const NetworkPerformanceConfig: Schema.Schema<NetworkPerformanceConfig> =
+export const NetworkPerformanceConfig: Schema.Codec<NetworkPerformanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalEgressBandwidthTier: Schema.optional(Schema.String),
   }).annotate({ identifier: "NetworkPerformanceConfig" });
@@ -1064,7 +1064,7 @@ export interface GuestOsFeature {
     | (string & {});
 }
 
-export const GuestOsFeature: Schema.Schema<GuestOsFeature> =
+export const GuestOsFeature: Schema.Codec<GuestOsFeature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GuestOsFeature" });
@@ -1082,7 +1082,7 @@ export interface CustomerEncryptionKey {
   kmsKeyServiceAccount?: string;
 }
 
-export const CustomerEncryptionKey: Schema.Schema<CustomerEncryptionKey> =
+export const CustomerEncryptionKey: Schema.Codec<CustomerEncryptionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rawKey: Schema.optional(Schema.String),
     rsaEncryptedKey: Schema.optional(Schema.String),
@@ -1145,7 +1145,7 @@ export interface AttachedDiskInitializeParams {
   multiWriter?: boolean;
 }
 
-export const AttachedDiskInitializeParams: Schema.Schema<AttachedDiskInitializeParams> =
+export const AttachedDiskInitializeParams: Schema.Codec<AttachedDiskInitializeParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     diskSizeGb: Schema.optional(Schema.String),
@@ -1180,7 +1180,7 @@ export interface FileContentBuffer {
   fileType?: "BIN" | "UNDEFINED" | "X509" | (string & {});
 }
 
-export const FileContentBuffer: Schema.Schema<FileContentBuffer> =
+export const FileContentBuffer: Schema.Codec<FileContentBuffer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     fileType: Schema.optional(Schema.String),
@@ -1197,7 +1197,7 @@ export interface InitialStateConfig {
   keks?: ReadonlyArray<FileContentBuffer>;
 }
 
-export const InitialStateConfig: Schema.Schema<InitialStateConfig> =
+export const InitialStateConfig: Schema.Codec<InitialStateConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dbxs: Schema.optional(Schema.Array(FileContentBuffer)),
     pk: Schema.optional(FileContentBuffer),
@@ -1250,7 +1250,7 @@ export interface AttachedDisk {
   type?: "PERSISTENT" | "SCRATCH" | (string & {});
 }
 
-export const AttachedDisk: Schema.Schema<AttachedDisk> =
+export const AttachedDisk: Schema.Codec<AttachedDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     savedState: Schema.optional(Schema.String),
     architecture: Schema.optional(Schema.String),
@@ -1280,7 +1280,7 @@ export interface AcceleratorConfig {
   acceleratorType?: string;
 }
 
-export const AcceleratorConfig: Schema.Schema<AcceleratorConfig> =
+export const AcceleratorConfig: Schema.Codec<AcceleratorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorCount: Schema.optional(Schema.Number),
     acceleratorType: Schema.optional(Schema.String),
@@ -1293,7 +1293,7 @@ export interface ServiceAccount {
   scopes?: ReadonlyArray<string>;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
+export const ServiceAccount: Schema.Codec<ServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
@@ -1308,7 +1308,7 @@ export interface ShieldedInstanceConfig {
   enableVtpm?: boolean;
 }
 
-export const ShieldedInstanceConfig: Schema.Schema<ShieldedInstanceConfig> =
+export const ShieldedInstanceConfig: Schema.Codec<ShieldedInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableSecureBoot: Schema.optional(Schema.Boolean),
     enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
@@ -1320,7 +1320,7 @@ export interface DisplayDevice {
   enableDisplay?: boolean;
 }
 
-export const DisplayDevice: Schema.Schema<DisplayDevice> =
+export const DisplayDevice: Schema.Codec<DisplayDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableDisplay: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DisplayDevice" });
@@ -1332,7 +1332,7 @@ export interface Tags {
   fingerprint?: string;
 }
 
-export const Tags: Schema.Schema<Tags> =
+export const Tags: Schema.Codec<Tags> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Schema.String)),
     fingerprint: Schema.optional(Schema.String),
@@ -1347,7 +1347,7 @@ export interface ShieldedVmConfig {
   enableVtpm?: boolean;
 }
 
-export const ShieldedVmConfig: Schema.Schema<ShieldedVmConfig> =
+export const ShieldedVmConfig: Schema.Codec<ShieldedVmConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableSecureBoot: Schema.optional(Schema.Boolean),
     enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
@@ -1371,7 +1371,7 @@ export interface ReservationAffinity {
   key?: string;
 }
 
-export const ReservationAffinity: Schema.Schema<ReservationAffinity> =
+export const ReservationAffinity: Schema.Codec<ReservationAffinity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
     consumeReservationType: Schema.optional(Schema.String),
@@ -1398,7 +1398,7 @@ export interface AdvancedMachineFeatures {
   enableUefiNetworking?: boolean;
 }
 
-export const AdvancedMachineFeatures: Schema.Schema<AdvancedMachineFeatures> =
+export const AdvancedMachineFeatures: Schema.Codec<AdvancedMachineFeatures> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     turboMode: Schema.optional(Schema.String),
     performanceMonitoringUnit: Schema.optional(Schema.String),
@@ -1436,7 +1436,7 @@ export interface AccessConfig {
   securityPolicy?: string;
 }
 
-export const AccessConfig: Schema.Schema<AccessConfig> =
+export const AccessConfig: Schema.Codec<AccessConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     setPublicPtr: Schema.optional(Schema.Boolean),
     networkTier: Schema.optional(Schema.String),
@@ -1457,7 +1457,7 @@ export interface AliasIpRange {
   ipCidrRange?: string;
 }
 
-export const AliasIpRange: Schema.Schema<AliasIpRange> =
+export const AliasIpRange: Schema.Codec<AliasIpRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetworkRangeName: Schema.optional(Schema.String),
     ipCidrRange: Schema.optional(Schema.String),
@@ -1519,7 +1519,7 @@ export interface NetworkInterface {
   ipv6AccessType?: "EXTERNAL" | "INTERNAL" | (string & {});
 }
 
-export const NetworkInterface: Schema.Schema<NetworkInterface> =
+export const NetworkInterface: Schema.Codec<NetworkInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetwork: Schema.optional(Schema.String),
     ipv6AccessConfigs: Schema.optional(Schema.Array(AccessConfig)),
@@ -1553,7 +1553,7 @@ export interface Duration {
   nanos?: number;
 }
 
-export const Duration: Schema.Schema<Duration> =
+export const Duration: Schema.Codec<Duration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seconds: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -1566,7 +1566,7 @@ export interface SchedulingGracefulShutdown {
   enabled?: boolean;
 }
 
-export const SchedulingGracefulShutdown: Schema.Schema<SchedulingGracefulShutdown> =
+export const SchedulingGracefulShutdown: Schema.Codec<SchedulingGracefulShutdown> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDuration: Schema.optional(Duration),
     enabled: Schema.optional(Schema.Boolean),
@@ -1577,7 +1577,7 @@ export interface SchedulingOnInstanceStopAction {
   discardLocalSsd?: boolean;
 }
 
-export const SchedulingOnInstanceStopAction: Schema.Schema<SchedulingOnInstanceStopAction> =
+export const SchedulingOnInstanceStopAction: Schema.Codec<SchedulingOnInstanceStopAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     discardLocalSsd: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SchedulingOnInstanceStopAction" });
@@ -1591,7 +1591,7 @@ export interface SchedulingNodeAffinity {
   values?: ReadonlyArray<string>;
 }
 
-export const SchedulingNodeAffinity: Schema.Schema<SchedulingNodeAffinity> =
+export const SchedulingNodeAffinity: Schema.Codec<SchedulingNodeAffinity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
@@ -1646,7 +1646,7 @@ export interface Scheduling {
   maintenanceInterval?: "AS_NEEDED" | "PERIODIC" | "RECURRENT" | (string & {});
 }
 
-export const Scheduling: Schema.Schema<Scheduling> =
+export const Scheduling: Schema.Codec<Scheduling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningModel: Schema.optional(Schema.String),
     gracefulShutdown: Schema.optional(SchedulingGracefulShutdown),
@@ -1674,7 +1674,7 @@ export interface StructuredEntries {
   entries?: Record<string, unknown>;
 }
 
-export const StructuredEntries: Schema.Schema<StructuredEntries> =
+export const StructuredEntries: Schema.Codec<StructuredEntries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "StructuredEntries" });
@@ -1692,7 +1692,7 @@ export interface ConfidentialInstanceConfig {
     | (string & {});
 }
 
-export const ConfidentialInstanceConfig: Schema.Schema<ConfidentialInstanceConfig> =
+export const ConfidentialInstanceConfig: Schema.Codec<ConfidentialInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableConfidentialCompute: Schema.optional(Schema.Boolean),
     confidentialInstanceType: Schema.optional(Schema.String),
@@ -1703,7 +1703,7 @@ export interface WorkloadIdentityConfig {
   identity?: string;
 }
 
-export const WorkloadIdentityConfig: Schema.Schema<WorkloadIdentityConfig> =
+export const WorkloadIdentityConfig: Schema.Codec<WorkloadIdentityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identityCertificateEnabled: Schema.optional(Schema.Boolean),
     identity: Schema.optional(Schema.String),
@@ -1775,7 +1775,7 @@ export interface InstanceProperties {
   workloadIdentityConfig?: WorkloadIdentityConfig;
 }
 
-export const InstanceProperties: Schema.Schema<InstanceProperties> =
+export const InstanceProperties: Schema.Codec<InstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Metadata),
     networkPerformanceConfig: Schema.optional(NetworkPerformanceConfig),
@@ -1818,7 +1818,7 @@ export interface InstanceFlexibilityPolicyInstanceSelection {
   rank?: string;
 }
 
-export const InstanceFlexibilityPolicyInstanceSelection: Schema.Schema<InstanceFlexibilityPolicyInstanceSelection> =
+export const InstanceFlexibilityPolicyInstanceSelection: Schema.Codec<InstanceFlexibilityPolicyInstanceSelection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disks: Schema.optional(Schema.Array(AttachedDisk)),
     machineTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -1833,7 +1833,7 @@ export interface InstanceFlexibilityPolicy {
   >;
 }
 
-export const InstanceFlexibilityPolicy: Schema.Schema<InstanceFlexibilityPolicy> =
+export const InstanceFlexibilityPolicy: Schema.Codec<InstanceFlexibilityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceSelections: Schema.optional(
       Schema.Record(Schema.String, InstanceFlexibilityPolicyInstanceSelection),
@@ -1845,7 +1845,7 @@ export interface LocationPolicyZoneConfiguration {
   zone?: string;
 }
 
-export const LocationPolicyZoneConfiguration: Schema.Schema<LocationPolicyZoneConfiguration> =
+export const LocationPolicyZoneConfiguration: Schema.Codec<LocationPolicyZoneConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
   }).annotate({ identifier: "LocationPolicyZoneConfiguration" });
@@ -1855,7 +1855,7 @@ export interface LocationPolicyLocationConstraints {
   maxCount?: number;
 }
 
-export const LocationPolicyLocationConstraints: Schema.Schema<LocationPolicyLocationConstraints> =
+export const LocationPolicyLocationConstraints: Schema.Codec<LocationPolicyLocationConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LocationPolicyLocationConstraints" });
@@ -1867,7 +1867,7 @@ export interface LocationPolicyLocation {
   constraints?: LocationPolicyLocationConstraints;
 }
 
-export const LocationPolicyLocation: Schema.Schema<LocationPolicyLocation> =
+export const LocationPolicyLocation: Schema.Codec<LocationPolicyLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preference: Schema.optional(Schema.String),
     constraints: Schema.optional(LocationPolicyLocationConstraints),
@@ -1882,7 +1882,7 @@ export interface LocationPolicy {
   targetShape?: "ANY" | "ANY_SINGLE_ZONE" | "BALANCED" | (string & {});
 }
 
-export const LocationPolicy: Schema.Schema<LocationPolicy> =
+export const LocationPolicy: Schema.Codec<LocationPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zones: Schema.optional(Schema.Array(LocationPolicyZoneConfiguration)),
     locations: Schema.optional(
@@ -1913,7 +1913,7 @@ export interface BulkInsertInstanceResource {
   locationPolicy?: LocationPolicy;
 }
 
-export const BulkInsertInstanceResource: Schema.Schema<BulkInsertInstanceResource> =
+export const BulkInsertInstanceResource: Schema.Codec<BulkInsertInstanceResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perInstanceProperties: Schema.optional(
       Schema.Record(
@@ -1949,7 +1949,7 @@ export interface TCPHealthCheck {
     | (string & {});
 }
 
-export const TCPHealthCheck: Schema.Schema<TCPHealthCheck> =
+export const TCPHealthCheck: Schema.Codec<TCPHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyHeader: Schema.optional(Schema.String),
     request: Schema.optional(Schema.String),
@@ -1966,7 +1966,7 @@ export interface InstanceGroupManagerAutoHealingPolicy {
   healthCheck?: string;
 }
 
-export const InstanceGroupManagerAutoHealingPolicy: Schema.Schema<InstanceGroupManagerAutoHealingPolicy> =
+export const InstanceGroupManagerAutoHealingPolicy: Schema.Codec<InstanceGroupManagerAutoHealingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     initialDelaySec: Schema.optional(Schema.Number),
     healthCheck: Schema.optional(Schema.String),
@@ -1981,7 +1981,7 @@ export interface FlexibleTimeRange {
   startTimeNotEarlierThan?: string;
 }
 
-export const FlexibleTimeRange: Schema.Schema<FlexibleTimeRange> =
+export const FlexibleTimeRange: Schema.Codec<FlexibleTimeRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTimeNotLaterThan: Schema.optional(Schema.String),
     endTimeNotLaterThan: Schema.optional(Schema.String),
@@ -1998,7 +1998,7 @@ export interface WireGroupEndpointInterconnect {
   interconnect?: string;
 }
 
-export const WireGroupEndpointInterconnect: Schema.Schema<WireGroupEndpointInterconnect> =
+export const WireGroupEndpointInterconnect: Schema.Codec<WireGroupEndpointInterconnect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vlanTags: Schema.optional(Schema.Array(Schema.Number)),
     interconnect: Schema.optional(Schema.String),
@@ -2013,7 +2013,7 @@ export interface VpnGatewayStatusTunnel {
   tunnelUrl?: string;
 }
 
-export const VpnGatewayStatusTunnel: Schema.Schema<VpnGatewayStatusTunnel> =
+export const VpnGatewayStatusTunnel: Schema.Codec<VpnGatewayStatusTunnel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localGatewayInterface: Schema.optional(Schema.Number),
     peerGatewayInterface: Schema.optional(Schema.Number),
@@ -2030,7 +2030,7 @@ export interface VpnGatewayStatusHighAvailabilityRequirementState {
   unsatisfiedReason?: "INCOMPLETE_TUNNELS_COVERAGE" | (string & {});
 }
 
-export const VpnGatewayStatusHighAvailabilityRequirementState: Schema.Schema<VpnGatewayStatusHighAvailabilityRequirementState> =
+export const VpnGatewayStatusHighAvailabilityRequirementState: Schema.Codec<VpnGatewayStatusHighAvailabilityRequirementState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     unsatisfiedReason: Schema.optional(Schema.String),
@@ -2049,7 +2049,7 @@ export interface VpnGatewayStatusVpnConnection {
   state?: VpnGatewayStatusHighAvailabilityRequirementState;
 }
 
-export const VpnGatewayStatusVpnConnection: Schema.Schema<VpnGatewayStatusVpnConnection> =
+export const VpnGatewayStatusVpnConnection: Schema.Codec<VpnGatewayStatusVpnConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     peerGcpGateway: Schema.optional(Schema.String),
     peerExternalGateway: Schema.optional(Schema.String),
@@ -2062,7 +2062,7 @@ export interface VpnGatewayStatus {
   vpnConnections?: ReadonlyArray<VpnGatewayStatusVpnConnection>;
 }
 
-export const VpnGatewayStatus: Schema.Schema<VpnGatewayStatus> =
+export const VpnGatewayStatus: Schema.Codec<VpnGatewayStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpnConnections: Schema.optional(
       Schema.Array(VpnGatewayStatusVpnConnection),
@@ -2073,7 +2073,7 @@ export interface VpnGatewaysGetStatusResponse {
   result?: VpnGatewayStatus;
 }
 
-export const VpnGatewaysGetStatusResponse: Schema.Schema<VpnGatewaysGetStatusResponse> =
+export const VpnGatewaysGetStatusResponse: Schema.Codec<VpnGatewaysGetStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(VpnGatewayStatus),
   }).annotate({ identifier: "VpnGatewaysGetStatusResponse" });
@@ -2083,7 +2083,7 @@ export interface RegionDisksRemoveResourcePoliciesRequest {
   resourcePolicies?: ReadonlyArray<string>;
 }
 
-export const RegionDisksRemoveResourcePoliciesRequest: Schema.Schema<RegionDisksRemoveResourcePoliciesRequest> =
+export const RegionDisksRemoveResourcePoliciesRequest: Schema.Codec<RegionDisksRemoveResourcePoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RegionDisksRemoveResourcePoliciesRequest" });
@@ -2097,7 +2097,7 @@ export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigTh
   type?: "HTTP_HEADER_HOST" | "HTTP_PATH" | "UNSPECIFIED_TYPE" | (string & {});
 }
 
-export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig: Schema.Schema<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig> =
+export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig: Schema.Codec<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     enableEachUniqueValue: Schema.optional(Schema.Boolean),
@@ -2121,7 +2121,7 @@ export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigTh
   autoDeployConfidenceThreshold?: number;
 }
 
-export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig: Schema.Schema<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig> =
+export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig: Schema.Codec<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoDeployExpirationSec: Schema.optional(Schema.Number),
     detectionAbsoluteQps: Schema.optional(Schema.Number),
@@ -2150,7 +2150,7 @@ export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
   ruleVisibility?: "PREMIUM" | "STANDARD" | (string & {});
 }
 
-export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig: Schema.Schema<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig> =
+export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig: Schema.Codec<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enable: Schema.optional(Schema.Boolean),
     thresholdConfigs: Schema.optional(
@@ -2170,7 +2170,7 @@ export interface SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
   confidenceThreshold?: number;
 }
 
-export const SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig: Schema.Schema<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig> =
+export const SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig: Schema.Codec<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expirationSec: Schema.optional(Schema.Number),
     loadThreshold: Schema.optional(Schema.Number),
@@ -2186,7 +2186,7 @@ export interface SecurityPolicyAdaptiveProtectionConfig {
   autoDeployConfig?: SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig;
 }
 
-export const SecurityPolicyAdaptiveProtectionConfig: Schema.Schema<SecurityPolicyAdaptiveProtectionConfig> =
+export const SecurityPolicyAdaptiveProtectionConfig: Schema.Codec<SecurityPolicyAdaptiveProtectionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     layer7DdosDefenseConfig: Schema.optional(
       SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig,
@@ -2205,7 +2205,7 @@ export interface ConsistentHashLoadBalancerSettingsHttpCookie {
   ttl?: Duration;
 }
 
-export const ConsistentHashLoadBalancerSettingsHttpCookie: Schema.Schema<ConsistentHashLoadBalancerSettingsHttpCookie> =
+export const ConsistentHashLoadBalancerSettingsHttpCookie: Schema.Codec<ConsistentHashLoadBalancerSettingsHttpCookie> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2221,7 +2221,7 @@ export interface ConsistentHashLoadBalancerSettings {
   httpCookie?: ConsistentHashLoadBalancerSettingsHttpCookie;
 }
 
-export const ConsistentHashLoadBalancerSettings: Schema.Schema<ConsistentHashLoadBalancerSettings> =
+export const ConsistentHashLoadBalancerSettings: Schema.Codec<ConsistentHashLoadBalancerSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpHeaderName: Schema.optional(Schema.String),
     minimumRingSize: Schema.optional(Schema.String),
@@ -2260,7 +2260,7 @@ export interface RegionInstanceGroupManagersApplyUpdatesRequest {
   allInstances?: boolean;
 }
 
-export const RegionInstanceGroupManagersApplyUpdatesRequest: Schema.Schema<RegionInstanceGroupManagersApplyUpdatesRequest> =
+export const RegionInstanceGroupManagersApplyUpdatesRequest: Schema.Codec<RegionInstanceGroupManagersApplyUpdatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedActions: Schema.optional(Schema.Array(Schema.String)),
     instances: Schema.optional(Schema.Array(Schema.String)),
@@ -2274,7 +2274,7 @@ export interface ShareSettingsProjectConfig {
   projectId?: string;
 }
 
-export const ShareSettingsProjectConfig: Schema.Schema<ShareSettingsProjectConfig> =
+export const ShareSettingsProjectConfig: Schema.Codec<ShareSettingsProjectConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ShareSettingsProjectConfig" });
@@ -2284,7 +2284,7 @@ export interface ShareSettingsFolderConfig {
   folderId?: string;
 }
 
-export const ShareSettingsFolderConfig: Schema.Schema<ShareSettingsFolderConfig> =
+export const ShareSettingsFolderConfig: Schema.Codec<ShareSettingsFolderConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folderId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ShareSettingsFolderConfig" });
@@ -2306,7 +2306,7 @@ export interface ShareSettings {
   folderMap?: Record<string, ShareSettingsFolderConfig>;
 }
 
-export const ShareSettings: Schema.Schema<ShareSettings> =
+export const ShareSettings: Schema.Codec<ShareSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.optional(Schema.Array(Schema.String)),
     shareType: Schema.optional(Schema.String),
@@ -2323,7 +2323,7 @@ export interface BackendServiceHAPolicyLeaderNetworkEndpoint {
   instance?: string;
 }
 
-export const BackendServiceHAPolicyLeaderNetworkEndpoint: Schema.Schema<BackendServiceHAPolicyLeaderNetworkEndpoint> =
+export const BackendServiceHAPolicyLeaderNetworkEndpoint: Schema.Codec<BackendServiceHAPolicyLeaderNetworkEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
   }).annotate({ identifier: "BackendServiceHAPolicyLeaderNetworkEndpoint" });
@@ -2335,7 +2335,7 @@ export interface BackendServiceHAPolicyLeader {
   networkEndpoint?: BackendServiceHAPolicyLeaderNetworkEndpoint;
 }
 
-export const BackendServiceHAPolicyLeader: Schema.Schema<BackendServiceHAPolicyLeader> =
+export const BackendServiceHAPolicyLeader: Schema.Codec<BackendServiceHAPolicyLeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backendGroup: Schema.optional(Schema.String),
     networkEndpoint: Schema.optional(
@@ -2350,7 +2350,7 @@ export interface BackendServiceHAPolicy {
   fastIPMove?: "DISABLED" | "GARP_RA" | (string & {});
 }
 
-export const BackendServiceHAPolicy: Schema.Schema<BackendServiceHAPolicy> =
+export const BackendServiceHAPolicy: Schema.Codec<BackendServiceHAPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     leader: Schema.optional(BackendServiceHAPolicyLeader),
     fastIPMove: Schema.optional(Schema.String),
@@ -2363,7 +2363,7 @@ export interface SslCertificateSelfManagedSslCertificate {
   privateKey?: string;
 }
 
-export const SslCertificateSelfManagedSslCertificate: Schema.Schema<SslCertificateSelfManagedSslCertificate> =
+export const SslCertificateSelfManagedSslCertificate: Schema.Codec<SslCertificateSelfManagedSslCertificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificate: Schema.optional(Schema.String),
     privateKey: Schema.optional(Schema.String),
@@ -2395,7 +2395,7 @@ export interface SslCertificateManagedSslCertificate {
   domains?: ReadonlyArray<string>;
 }
 
-export const SslCertificateManagedSslCertificate: Schema.Schema<SslCertificateManagedSslCertificate> =
+export const SslCertificateManagedSslCertificate: Schema.Codec<SslCertificateManagedSslCertificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     domainStatus: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2433,7 +2433,7 @@ export interface SslCertificate {
   name?: string;
 }
 
-export const SslCertificate: Schema.Schema<SslCertificate> =
+export const SslCertificate: Schema.Codec<SslCertificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -2492,7 +2492,7 @@ export interface SslCertificatesScopedList {
   };
 }
 
-export const SslCertificatesScopedList: Schema.Schema<SslCertificatesScopedList> =
+export const SslCertificatesScopedList: Schema.Codec<SslCertificatesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sslCertificates: Schema.optional(Schema.Array(SslCertificate)),
     warning: Schema.optional(
@@ -2522,7 +2522,7 @@ export interface HostPhysicalTopology {
   block?: string;
 }
 
-export const HostPhysicalTopology: Schema.Schema<HostPhysicalTopology> =
+export const HostPhysicalTopology: Schema.Codec<HostPhysicalTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.String),
     host: Schema.optional(Schema.String),
@@ -2542,7 +2542,7 @@ export interface AuditLogConfig {
     | (string & {});
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
@@ -2555,7 +2555,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -2572,7 +2572,7 @@ export interface Expr {
   expression?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -2589,7 +2589,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -2607,7 +2607,7 @@ export interface Policy {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     etag: Schema.optional(Schema.String),
@@ -2624,7 +2624,7 @@ export interface GlobalOrganizationSetPolicyRequest {
   etag?: string;
 }
 
-export const GlobalOrganizationSetPolicyRequest: Schema.Schema<GlobalOrganizationSetPolicyRequest> =
+export const GlobalOrganizationSetPolicyRequest: Schema.Codec<GlobalOrganizationSetPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -2640,7 +2640,7 @@ export interface ScalingScheduleStatus {
   state?: "ACTIVE" | "DISABLED" | "OBSOLETE" | "READY" | (string & {});
 }
 
-export const ScalingScheduleStatus: Schema.Schema<ScalingScheduleStatus> =
+export const ScalingScheduleStatus: Schema.Codec<ScalingScheduleStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextStartTime: Schema.optional(Schema.String),
     lastStartTime: Schema.optional(Schema.String),
@@ -2654,7 +2654,7 @@ export interface InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZ
   attachments?: ReadonlyArray<string>;
 }
 
-export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone: Schema.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone> =
+export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone: Schema.Codec<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
     attachments: Schema.optional(Schema.Array(Schema.String)),
@@ -2669,7 +2669,7 @@ export interface InterconnectAttachmentGroupLogicalStructureRegionMetroFacility 
   facility?: string;
 }
 
-export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacility: Schema.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility> =
+export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacility: Schema.Codec<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zones: Schema.optional(
       Schema.Array(
@@ -2688,7 +2688,7 @@ export interface InterconnectAttachmentGroupLogicalStructureRegionMetro {
   facilities?: ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>;
 }
 
-export const InterconnectAttachmentGroupLogicalStructureRegionMetro: Schema.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetro> =
+export const InterconnectAttachmentGroupLogicalStructureRegionMetro: Schema.Codec<InterconnectAttachmentGroupLogicalStructureRegionMetro> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metro: Schema.optional(Schema.String),
     facilities: Schema.optional(
@@ -2709,7 +2709,7 @@ export interface HttpHeaderOption {
   headerValue?: string;
 }
 
-export const HttpHeaderOption: Schema.Schema<HttpHeaderOption> =
+export const HttpHeaderOption: Schema.Codec<HttpHeaderOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replace: Schema.optional(Schema.Boolean),
     headerName: Schema.optional(Schema.String),
@@ -2727,7 +2727,7 @@ export interface HttpHeaderAction {
   responseHeadersToRemove?: ReadonlyArray<string>;
 }
 
-export const HttpHeaderAction: Schema.Schema<HttpHeaderAction> =
+export const HttpHeaderAction: Schema.Codec<HttpHeaderAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestHeadersToAdd: Schema.optional(Schema.Array(HttpHeaderOption)),
     responseHeadersToAdd: Schema.optional(Schema.Array(HttpHeaderOption)),
@@ -2744,7 +2744,7 @@ export interface WeightedBackendService {
   headerAction?: HttpHeaderAction;
 }
 
-export const WeightedBackendService: Schema.Schema<WeightedBackendService> =
+export const WeightedBackendService: Schema.Codec<WeightedBackendService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     backendService: Schema.optional(Schema.String),
@@ -2770,7 +2770,7 @@ export interface CorsPolicy {
   allowCredentials?: boolean;
 }
 
-export const CorsPolicy: Schema.Schema<CorsPolicy> =
+export const CorsPolicy: Schema.Codec<CorsPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabled: Schema.optional(Schema.Boolean),
     allowOriginRegexes: Schema.optional(Schema.Array(Schema.String)),
@@ -2791,7 +2791,7 @@ export interface HttpRetryPolicy {
   numRetries?: number;
 }
 
-export const HttpRetryPolicy: Schema.Schema<HttpRetryPolicy> =
+export const HttpRetryPolicy: Schema.Codec<HttpRetryPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perTryTimeout: Schema.optional(Duration),
     retryConditions: Schema.optional(Schema.Array(Schema.String)),
@@ -2807,7 +2807,7 @@ export interface ImageOptimizationPolicy {
     | (string & {});
 }
 
-export const ImageOptimizationPolicy: Schema.Schema<ImageOptimizationPolicy> =
+export const ImageOptimizationPolicy: Schema.Codec<ImageOptimizationPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryParameterInterpretation: Schema.optional(Schema.String),
   }).annotate({ identifier: "ImageOptimizationPolicy" });
@@ -2821,7 +2821,7 @@ export interface UrlRewrite {
   pathTemplateRewrite?: string;
 }
 
-export const UrlRewrite: Schema.Schema<UrlRewrite> =
+export const UrlRewrite: Schema.Codec<UrlRewrite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostRewrite: Schema.optional(Schema.String),
     pathPrefixRewrite: Schema.optional(Schema.String),
@@ -2835,7 +2835,7 @@ export interface RequestMirrorPolicy {
   mirrorPercent?: number;
 }
 
-export const RequestMirrorPolicy: Schema.Schema<RequestMirrorPolicy> =
+export const RequestMirrorPolicy: Schema.Codec<RequestMirrorPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backendService: Schema.optional(Schema.String),
     mirrorPercent: Schema.optional(Schema.Number),
@@ -2848,7 +2848,7 @@ export interface HttpFaultDelay {
   fixedDelay?: Duration;
 }
 
-export const HttpFaultDelay: Schema.Schema<HttpFaultDelay> =
+export const HttpFaultDelay: Schema.Codec<HttpFaultDelay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentage: Schema.optional(Schema.Number),
     fixedDelay: Schema.optional(Duration),
@@ -2861,7 +2861,7 @@ export interface HttpFaultAbort {
   percentage?: number;
 }
 
-export const HttpFaultAbort: Schema.Schema<HttpFaultAbort> =
+export const HttpFaultAbort: Schema.Codec<HttpFaultAbort> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpStatus: Schema.optional(Schema.Number),
     percentage: Schema.optional(Schema.Number),
@@ -2874,7 +2874,7 @@ export interface HttpFaultInjection {
   abort?: HttpFaultAbort;
 }
 
-export const HttpFaultInjection: Schema.Schema<HttpFaultInjection> =
+export const HttpFaultInjection: Schema.Codec<HttpFaultInjection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delay: Schema.optional(HttpFaultDelay),
     abort: Schema.optional(HttpFaultAbort),
@@ -2887,7 +2887,7 @@ export interface CachePolicyNegativeCachingPolicy {
   ttl?: Duration;
 }
 
-export const CachePolicyNegativeCachingPolicy: Schema.Schema<CachePolicyNegativeCachingPolicy> =
+export const CachePolicyNegativeCachingPolicy: Schema.Codec<CachePolicyNegativeCachingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     ttl: Schema.optional(Duration),
@@ -2920,7 +2920,7 @@ export interface CachePolicy {
   negativeCachingPolicy?: ReadonlyArray<CachePolicyNegativeCachingPolicy>;
 }
 
-export const CachePolicy: Schema.Schema<CachePolicy> =
+export const CachePolicy: Schema.Codec<CachePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxTtl: Schema.optional(Duration),
     defaultTtl: Schema.optional(Duration),
@@ -2959,7 +2959,7 @@ export interface HttpRouteAction {
   timeout?: Duration;
 }
 
-export const HttpRouteAction: Schema.Schema<HttpRouteAction> =
+export const HttpRouteAction: Schema.Codec<HttpRouteAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxStreamDuration: Schema.optional(Duration),
     weightedBackendServices: Schema.optional(
@@ -2982,7 +2982,7 @@ export interface RouterNatLogConfig {
   enable?: boolean;
 }
 
-export const RouterNatLogConfig: Schema.Schema<RouterNatLogConfig> =
+export const RouterNatLogConfig: Schema.Codec<RouterNatLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     enable: Schema.optional(Schema.Boolean),
@@ -2995,7 +2995,7 @@ export interface PacketMirroringMirroredResourceInfoInstanceInfo {
   canonicalUrl?: string;
 }
 
-export const PacketMirroringMirroredResourceInfoInstanceInfo: Schema.Schema<PacketMirroringMirroredResourceInfoInstanceInfo> =
+export const PacketMirroringMirroredResourceInfoInstanceInfo: Schema.Codec<PacketMirroringMirroredResourceInfoInstanceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     canonicalUrl: Schema.optional(Schema.String),
@@ -3010,7 +3010,7 @@ export interface PacketMirroringMirroredResourceInfoSubnetInfo {
   canonicalUrl?: string;
 }
 
-export const PacketMirroringMirroredResourceInfoSubnetInfo: Schema.Schema<PacketMirroringMirroredResourceInfoSubnetInfo> =
+export const PacketMirroringMirroredResourceInfoSubnetInfo: Schema.Codec<PacketMirroringMirroredResourceInfoSubnetInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     canonicalUrl: Schema.optional(Schema.String),
@@ -3025,7 +3025,7 @@ export interface PacketMirroringMirroredResourceInfo {
   subnetworks?: ReadonlyArray<PacketMirroringMirroredResourceInfoSubnetInfo>;
 }
 
-export const PacketMirroringMirroredResourceInfo: Schema.Schema<PacketMirroringMirroredResourceInfo> =
+export const PacketMirroringMirroredResourceInfo: Schema.Codec<PacketMirroringMirroredResourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(
       Schema.Array(PacketMirroringMirroredResourceInfoInstanceInfo),
@@ -3041,7 +3041,7 @@ export interface ShieldedInstanceIntegrityPolicy {
   updateAutoLearnPolicy?: boolean;
 }
 
-export const ShieldedInstanceIntegrityPolicy: Schema.Schema<ShieldedInstanceIntegrityPolicy> =
+export const ShieldedInstanceIntegrityPolicy: Schema.Codec<ShieldedInstanceIntegrityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateAutoLearnPolicy: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ShieldedInstanceIntegrityPolicy" });
@@ -3051,7 +3051,7 @@ export interface ResourceStatusPhysicalHostTopologyAdditionalAttributes {
   acceleratorTopologyIds?: Record<string, string>;
 }
 
-export const ResourceStatusPhysicalHostTopologyAdditionalAttributes: Schema.Schema<ResourceStatusPhysicalHostTopologyAdditionalAttributes> =
+export const ResourceStatusPhysicalHostTopologyAdditionalAttributes: Schema.Codec<ResourceStatusPhysicalHostTopologyAdditionalAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTopologyIds: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -3073,7 +3073,7 @@ export interface ResourceStatusPhysicalHostTopology {
   additionalAttributes?: ResourceStatusPhysicalHostTopologyAdditionalAttributes;
 }
 
-export const ResourceStatusPhysicalHostTopology: Schema.Schema<ResourceStatusPhysicalHostTopology> =
+export const ResourceStatusPhysicalHostTopology: Schema.Codec<ResourceStatusPhysicalHostTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.String),
     host: Schema.optional(Schema.String),
@@ -3091,7 +3091,7 @@ export interface ResourceStatusScheduling {
   terminationTimestamp?: string;
 }
 
-export const ResourceStatusScheduling: Schema.Schema<ResourceStatusScheduling> =
+export const ResourceStatusScheduling: Schema.Codec<ResourceStatusScheduling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilityDomain: Schema.optional(Schema.Number),
     terminationTimestamp: Schema.optional(Schema.String),
@@ -3108,7 +3108,7 @@ export interface ResourceStatusShutdownDetails {
   maxDuration?: Duration;
 }
 
-export const ResourceStatusShutdownDetails: Schema.Schema<ResourceStatusShutdownDetails> =
+export const ResourceStatusShutdownDetails: Schema.Codec<ResourceStatusShutdownDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestTimestamp: Schema.optional(Schema.String),
     stopState: Schema.optional(Schema.String),
@@ -3137,7 +3137,7 @@ export interface ResourceStatusEffectiveInstanceMetadata {
   gceContainerDeclarationMetadataValue?: boolean;
 }
 
-export const ResourceStatusEffectiveInstanceMetadata: Schema.Schema<ResourceStatusEffectiveInstanceMetadata> =
+export const ResourceStatusEffectiveInstanceMetadata: Schema.Codec<ResourceStatusEffectiveInstanceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableOsconfigMetadataValue: Schema.optional(Schema.Boolean),
     enableGuestAttributesMetadataValue: Schema.optional(Schema.Boolean),
@@ -3192,7 +3192,7 @@ export interface UpcomingMaintenance {
     | (string & {});
 }
 
-export const UpcomingMaintenance: Schema.Schema<UpcomingMaintenance> =
+export const UpcomingMaintenance: Schema.Codec<UpcomingMaintenance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     windowEndTime: Schema.optional(Schema.String),
     canReschedule: Schema.optional(Schema.Boolean),
@@ -3213,7 +3213,7 @@ export interface ResourceStatusReservationConsumptionInfo {
   consumedReservationSubBlock?: string;
 }
 
-export const ResourceStatusReservationConsumptionInfo: Schema.Schema<ResourceStatusReservationConsumptionInfo> =
+export const ResourceStatusReservationConsumptionInfo: Schema.Codec<ResourceStatusReservationConsumptionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumedReservationBlock: Schema.optional(Schema.String),
     consumedReservation: Schema.optional(Schema.String),
@@ -3235,7 +3235,7 @@ export interface ResourceStatus {
   reservationConsumptionInfo?: ResourceStatusReservationConsumptionInfo;
 }
 
-export const ResourceStatus: Schema.Schema<ResourceStatus> =
+export const ResourceStatus: Schema.Codec<ResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     physicalHostTopology: Schema.optional(ResourceStatusPhysicalHostTopology),
     physicalHost: Schema.optional(Schema.String),
@@ -3257,7 +3257,7 @@ export interface InstanceParams {
   requestValidForDuration?: Duration;
 }
 
-export const InstanceParams: Schema.Schema<InstanceParams> =
+export const InstanceParams: Schema.Codec<InstanceParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -3270,7 +3270,7 @@ export interface ShieldedVmIntegrityPolicy {
   updateAutoLearnPolicy?: boolean;
 }
 
-export const ShieldedVmIntegrityPolicy: Schema.Schema<ShieldedVmIntegrityPolicy> =
+export const ShieldedVmIntegrityPolicy: Schema.Codec<ShieldedVmIntegrityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateAutoLearnPolicy: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ShieldedVmIntegrityPolicy" });
@@ -3402,7 +3402,7 @@ export interface Instance {
   confidentialInstanceConfig?: ConfidentialInstanceConfig;
 }
 
-export const Instance: Schema.Schema<Instance> =
+export const Instance: Schema.Codec<Instance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Tags),
     startRestricted: Schema.optional(Schema.Boolean),
@@ -3503,7 +3503,7 @@ export interface InstancesScopedList {
   };
 }
 
-export const InstancesScopedList: Schema.Schema<InstancesScopedList> =
+export const InstancesScopedList: Schema.Codec<InstancesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Instance)),
     warning: Schema.optional(
@@ -3573,7 +3573,7 @@ export interface InstanceAggregatedList {
   selfLink?: string;
 }
 
-export const InstanceAggregatedList: Schema.Schema<InstanceAggregatedList> =
+export const InstanceAggregatedList: Schema.Codec<InstanceAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Record(Schema.String, InstancesScopedList)),
     id: Schema.optional(Schema.String),
@@ -3602,7 +3602,7 @@ export interface StatefulPolicyPreservedStateNetworkIp {
   autoDelete?: "NEVER" | "ON_PERMANENT_INSTANCE_DELETION" | (string & {});
 }
 
-export const StatefulPolicyPreservedStateNetworkIp: Schema.Schema<StatefulPolicyPreservedStateNetworkIp> =
+export const StatefulPolicyPreservedStateNetworkIp: Schema.Codec<StatefulPolicyPreservedStateNetworkIp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoDelete: Schema.optional(Schema.String),
   }).annotate({ identifier: "StatefulPolicyPreservedStateNetworkIp" });
@@ -3612,7 +3612,7 @@ export interface StatefulPolicyPreservedStateDiskDevice {
   autoDelete?: "NEVER" | "ON_PERMANENT_INSTANCE_DELETION" | (string & {});
 }
 
-export const StatefulPolicyPreservedStateDiskDevice: Schema.Schema<StatefulPolicyPreservedStateDiskDevice> =
+export const StatefulPolicyPreservedStateDiskDevice: Schema.Codec<StatefulPolicyPreservedStateDiskDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoDelete: Schema.optional(Schema.String),
   }).annotate({ identifier: "StatefulPolicyPreservedStateDiskDevice" });
@@ -3626,7 +3626,7 @@ export interface StatefulPolicyPreservedState {
   disks?: Record<string, StatefulPolicyPreservedStateDiskDevice>;
 }
 
-export const StatefulPolicyPreservedState: Schema.Schema<StatefulPolicyPreservedState> =
+export const StatefulPolicyPreservedState: Schema.Codec<StatefulPolicyPreservedState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalIPs: Schema.optional(
       Schema.Record(Schema.String, StatefulPolicyPreservedStateNetworkIp),
@@ -3648,7 +3648,7 @@ export interface ZoneSetNestedPolicyRequest {
   etag?: string;
 }
 
-export const ZoneSetNestedPolicyRequest: Schema.Schema<ZoneSetNestedPolicyRequest> =
+export const ZoneSetNestedPolicyRequest: Schema.Codec<ZoneSetNestedPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     policy: Schema.optional(Policy),
@@ -3676,7 +3676,7 @@ export interface HTTP2HealthCheck {
   portName?: string;
 }
 
-export const HTTP2HealthCheck: Schema.Schema<HTTP2HealthCheck> =
+export const HTTP2HealthCheck: Schema.Codec<HTTP2HealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyHeader: Schema.optional(Schema.String),
     host: Schema.optional(Schema.String),
@@ -3694,7 +3694,7 @@ export interface BackendServiceTlsSettingsSubjectAltName {
   uniformResourceIdentifier?: string;
 }
 
-export const BackendServiceTlsSettingsSubjectAltName: Schema.Schema<BackendServiceTlsSettingsSubjectAltName> =
+export const BackendServiceTlsSettingsSubjectAltName: Schema.Codec<BackendServiceTlsSettingsSubjectAltName> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsName: Schema.optional(Schema.String),
     uniformResourceIdentifier: Schema.optional(Schema.String),
@@ -3711,7 +3711,7 @@ export interface BackendServiceTlsSettings {
   subjectAltNames?: ReadonlyArray<BackendServiceTlsSettingsSubjectAltName>;
 }
 
-export const BackendServiceTlsSettings: Schema.Schema<BackendServiceTlsSettings> =
+export const BackendServiceTlsSettings: Schema.Codec<BackendServiceTlsSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identity: Schema.optional(Schema.String),
     authenticationConfig: Schema.optional(Schema.String),
@@ -3783,7 +3783,7 @@ export interface Address {
     | (string & {});
 }
 
-export const Address: Schema.Schema<Address> =
+export const Address: Schema.Codec<Address> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     description: Schema.optional(Schema.String),
@@ -3849,7 +3849,7 @@ export interface AddressesScopedList {
   };
 }
 
-export const AddressesScopedList: Schema.Schema<AddressesScopedList> =
+export const AddressesScopedList: Schema.Codec<AddressesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addresses: Schema.optional(Schema.Array(Address)),
     warning: Schema.optional(
@@ -3883,7 +3883,7 @@ export interface NetworkRoutingConfig {
   bgpInterRegionCost?: "ADD_COST_TO_MED" | "DEFAULT" | (string & {});
 }
 
-export const NetworkRoutingConfig: Schema.Schema<NetworkRoutingConfig> =
+export const NetworkRoutingConfig: Schema.Codec<NetworkRoutingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routingMode: Schema.optional(Schema.String),
     bgpBestPathSelectionMode: Schema.optional(Schema.String),
@@ -3912,7 +3912,7 @@ export interface NetworkPeeringConnectionStatusConsensusState {
     | (string & {});
 }
 
-export const NetworkPeeringConnectionStatusConsensusState: Schema.Schema<NetworkPeeringConnectionStatusConsensusState> =
+export const NetworkPeeringConnectionStatusConsensusState: Schema.Codec<NetworkPeeringConnectionStatusConsensusState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteStatus: Schema.optional(Schema.String),
     updateStatus: Schema.optional(Schema.String),
@@ -3931,7 +3931,7 @@ export interface NetworkPeeringConnectionStatusTrafficConfiguration {
   importCustomRoutesFromPeer?: boolean;
 }
 
-export const NetworkPeeringConnectionStatusTrafficConfiguration: Schema.Schema<NetworkPeeringConnectionStatusTrafficConfiguration> =
+export const NetworkPeeringConnectionStatusTrafficConfiguration: Schema.Codec<NetworkPeeringConnectionStatusTrafficConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportSubnetRoutesWithPublicIpToPeer: Schema.optional(Schema.Boolean),
     exportCustomRoutesToPeer: Schema.optional(Schema.Boolean),
@@ -3951,7 +3951,7 @@ export interface NetworkPeeringConnectionStatus {
   updateStrategy?: "CONSENSUS" | "INDEPENDENT" | "UNSPECIFIED" | (string & {});
 }
 
-export const NetworkPeeringConnectionStatus: Schema.Schema<NetworkPeeringConnectionStatus> =
+export const NetworkPeeringConnectionStatus: Schema.Codec<NetworkPeeringConnectionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consensusState: Schema.optional(
       NetworkPeeringConnectionStatusConsensusState,
@@ -3993,7 +3993,7 @@ export interface NetworkPeering {
   peerMtu?: number;
 }
 
-export const NetworkPeering: Schema.Schema<NetworkPeering> =
+export const NetworkPeering: Schema.Codec<NetworkPeering> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateStrategy: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4016,7 +4016,7 @@ export interface NetworkParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const NetworkParams: Schema.Schema<NetworkParams> =
+export const NetworkParams: Schema.Codec<NetworkParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -4069,7 +4069,7 @@ export interface Network {
   internalIpv6Range?: string;
 }
 
-export const Network: Schema.Schema<Network> =
+export const Network: Schema.Codec<Network> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routingConfig: Schema.optional(NetworkRoutingConfig),
     mtu: Schema.optional(Schema.Number),
@@ -4098,7 +4098,7 @@ export interface VpnGatewayParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const VpnGatewayParams: Schema.Schema<VpnGatewayParams> =
+export const VpnGatewayParams: Schema.Codec<VpnGatewayParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -4116,7 +4116,7 @@ export interface VpnGatewayVpnGatewayInterface {
   ipv6Address?: string;
 }
 
-export const VpnGatewayVpnGatewayInterface: Schema.Schema<VpnGatewayVpnGatewayInterface> =
+export const VpnGatewayVpnGatewayInterface: Schema.Codec<VpnGatewayVpnGatewayInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     interconnectAttachment: Schema.optional(Schema.String),
@@ -4155,7 +4155,7 @@ export interface VpnGateway {
   labelFingerprint?: string;
 }
 
-export const VpnGateway: Schema.Schema<VpnGateway> =
+export const VpnGateway: Schema.Codec<VpnGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     creationTimestamp: Schema.optional(Schema.String),
@@ -4350,7 +4350,7 @@ export interface Quota {
   limit?: number;
 }
 
-export const Quota: Schema.Schema<Quota> =
+export const Quota: Schema.Codec<Quota> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usage: Schema.optional(Schema.Number),
     owner: Schema.optional(Schema.String),
@@ -4365,7 +4365,7 @@ export interface UsageExportLocation {
   bucketName?: string;
 }
 
-export const UsageExportLocation: Schema.Schema<UsageExportLocation> =
+export const UsageExportLocation: Schema.Codec<UsageExportLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportNamePrefix: Schema.optional(Schema.String),
     bucketName: Schema.optional(Schema.String),
@@ -4424,7 +4424,7 @@ export interface Project {
   defaultServiceAccount?: string;
 }
 
-export const Project: Schema.Schema<Project> =
+export const Project: Schema.Codec<Project> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultNetworkTier: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -4474,7 +4474,7 @@ export interface HealthAggregationPolicy {
   minHealthyThreshold?: number;
 }
 
-export const HealthAggregationPolicy: Schema.Schema<HealthAggregationPolicy> =
+export const HealthAggregationPolicy: Schema.Codec<HealthAggregationPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -4539,7 +4539,7 @@ export interface HealthAggregationPolicyList {
   selfLink?: string;
 }
 
-export const HealthAggregationPolicyList: Schema.Schema<HealthAggregationPolicyList> =
+export const HealthAggregationPolicyList: Schema.Codec<HealthAggregationPolicyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(HealthAggregationPolicy)),
     id: Schema.optional(Schema.String),
@@ -4587,7 +4587,7 @@ export interface TargetSslProxy {
   description?: string;
 }
 
-export const TargetSslProxy: Schema.Schema<TargetSslProxy> =
+export const TargetSslProxy: Schema.Codec<TargetSslProxy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -4609,7 +4609,7 @@ export interface CapacityAdviceResponseRecommendationScores {
   estimatedUptime?: string;
 }
 
-export const CapacityAdviceResponseRecommendationScores: Schema.Schema<CapacityAdviceResponseRecommendationScores> =
+export const CapacityAdviceResponseRecommendationScores: Schema.Codec<CapacityAdviceResponseRecommendationScores> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     obtainability: Schema.optional(Schema.Number),
     estimatedUptime: Schema.optional(Schema.String),
@@ -4622,7 +4622,7 @@ export interface UrlMapTestHeader {
   name?: string;
 }
 
-export const UrlMapTestHeader: Schema.Schema<UrlMapTestHeader> =
+export const UrlMapTestHeader: Schema.Codec<UrlMapTestHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4645,7 +4645,7 @@ export interface UrlMapTest {
   expectedOutputUrl?: string;
 }
 
-export const UrlMapTest: Schema.Schema<UrlMapTest> =
+export const UrlMapTest: Schema.Codec<UrlMapTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -4661,7 +4661,7 @@ export interface VpnTunnelParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const VpnTunnelParams: Schema.Schema<VpnTunnelParams> =
+export const VpnTunnelParams: Schema.Codec<VpnTunnelParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -4679,7 +4679,7 @@ export interface DiskResourceStatusAsyncReplicationStatus {
     | (string & {});
 }
 
-export const DiskResourceStatusAsyncReplicationStatus: Schema.Schema<DiskResourceStatusAsyncReplicationStatus> =
+export const DiskResourceStatusAsyncReplicationStatus: Schema.Codec<DiskResourceStatusAsyncReplicationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "DiskResourceStatusAsyncReplicationStatus" });
@@ -4719,7 +4719,7 @@ export interface SavedAttachedDisk {
   autoDelete?: boolean;
 }
 
-export const SavedAttachedDisk: Schema.Schema<SavedAttachedDisk> =
+export const SavedAttachedDisk: Schema.Codec<SavedAttachedDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageBytesStatus: Schema.optional(Schema.String),
     interface: Schema.optional(Schema.String),
@@ -4780,7 +4780,7 @@ export interface SourceInstanceProperties {
   guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
 }
 
-export const SourceInstanceProperties: Schema.Schema<SourceInstanceProperties> =
+export const SourceInstanceProperties: Schema.Codec<SourceInstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletionProtection: Schema.optional(Schema.Boolean),
     minCpuPlatform: Schema.optional(Schema.String),
@@ -4804,7 +4804,7 @@ export interface NetworksRequestRemovePeeringRequest {
   name?: string;
 }
 
-export const NetworksRequestRemovePeeringRequest: Schema.Schema<NetworksRequestRemovePeeringRequest> =
+export const NetworksRequestRemovePeeringRequest: Schema.Codec<NetworksRequestRemovePeeringRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "NetworksRequestRemovePeeringRequest" });
@@ -4820,7 +4820,7 @@ export interface RouterNatRuleAction {
   sourceNatActiveRanges?: ReadonlyArray<string>;
 }
 
-export const RouterNatRuleAction: Schema.Schema<RouterNatRuleAction> =
+export const RouterNatRuleAction: Schema.Codec<RouterNatRuleAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceNatActiveIps: Schema.optional(Schema.Array(Schema.String)),
     sourceNatDrainRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -4869,7 +4869,7 @@ export interface VpnGatewaysScopedList {
   vpnGateways?: ReadonlyArray<VpnGateway>;
 }
 
-export const VpnGatewaysScopedList: Schema.Schema<VpnGatewaysScopedList> =
+export const VpnGatewaysScopedList: Schema.Codec<VpnGatewaysScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -4939,7 +4939,7 @@ export interface VpnGatewayAggregatedList {
   selfLink?: string;
 }
 
-export const VpnGatewayAggregatedList: Schema.Schema<VpnGatewayAggregatedList> =
+export const VpnGatewayAggregatedList: Schema.Codec<VpnGatewayAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Record(Schema.String, VpnGatewaysScopedList)),
@@ -4983,7 +4983,7 @@ export interface SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
   enforceOnKeyName?: string;
 }
 
-export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig: Schema.Schema<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> =
+export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig: Schema.Codec<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforceOnKeyType: Schema.optional(Schema.String),
     enforceOnKeyName: Schema.optional(Schema.String),
@@ -4998,7 +4998,7 @@ export interface SecurityPolicyRuleRateLimitOptionsThreshold {
   count?: number;
 }
 
-export const SecurityPolicyRuleRateLimitOptionsThreshold: Schema.Schema<SecurityPolicyRuleRateLimitOptionsThreshold> =
+export const SecurityPolicyRuleRateLimitOptionsThreshold: Schema.Codec<SecurityPolicyRuleRateLimitOptionsThreshold> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intervalSec: Schema.optional(Schema.Number),
     count: Schema.optional(Schema.Number),
@@ -5011,7 +5011,7 @@ export interface SecurityPolicyRuleRedirectOptions {
   target?: string;
 }
 
-export const SecurityPolicyRuleRedirectOptions: Schema.Schema<SecurityPolicyRuleRedirectOptions> =
+export const SecurityPolicyRuleRedirectOptions: Schema.Codec<SecurityPolicyRuleRedirectOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -5051,7 +5051,7 @@ export interface SecurityPolicyRuleRateLimitOptions {
     | (string & {});
 }
 
-export const SecurityPolicyRuleRateLimitOptions: Schema.Schema<SecurityPolicyRuleRateLimitOptions> =
+export const SecurityPolicyRuleRateLimitOptions: Schema.Codec<SecurityPolicyRuleRateLimitOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforceOnKeyName: Schema.optional(Schema.String),
     enforceOnKeyConfigs: Schema.optional(
@@ -5117,7 +5117,7 @@ export interface NetworkList {
   selfLink?: string;
 }
 
-export const NetworkList: Schema.Schema<NetworkList> =
+export const NetworkList: Schema.Codec<NetworkList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Network)),
     id: Schema.optional(Schema.String),
@@ -5147,7 +5147,7 @@ export interface ManagedInstanceVersion {
   instanceTemplate?: string;
 }
 
-export const ManagedInstanceVersion: Schema.Schema<ManagedInstanceVersion> =
+export const ManagedInstanceVersion: Schema.Codec<ManagedInstanceVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     instanceTemplate: Schema.optional(Schema.String),
@@ -5178,7 +5178,7 @@ export interface InstanceManagedByIgmErrorInstanceActionDetails {
   version?: ManagedInstanceVersion;
 }
 
-export const InstanceManagedByIgmErrorInstanceActionDetails: Schema.Schema<InstanceManagedByIgmErrorInstanceActionDetails> =
+export const InstanceManagedByIgmErrorInstanceActionDetails: Schema.Codec<InstanceManagedByIgmErrorInstanceActionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     instance: Schema.optional(Schema.String),
@@ -5189,7 +5189,7 @@ export interface HealthCheckReference {
   healthCheck?: string;
 }
 
-export const HealthCheckReference: Schema.Schema<HealthCheckReference> =
+export const HealthCheckReference: Schema.Codec<HealthCheckReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthCheck: Schema.optional(Schema.String),
   }).annotate({ identifier: "HealthCheckReference" });
@@ -5199,7 +5199,7 @@ export interface TargetPoolsAddHealthCheckRequest {
   healthChecks?: ReadonlyArray<HealthCheckReference>;
 }
 
-export const TargetPoolsAddHealthCheckRequest: Schema.Schema<TargetPoolsAddHealthCheckRequest> =
+export const TargetPoolsAddHealthCheckRequest: Schema.Codec<TargetPoolsAddHealthCheckRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthChecks: Schema.optional(Schema.Array(HealthCheckReference)),
   }).annotate({ identifier: "TargetPoolsAddHealthCheckRequest" });
@@ -5231,7 +5231,7 @@ export interface TargetHttpProxy {
   fingerprint?: string;
 }
 
-export const TargetHttpProxy: Schema.Schema<TargetHttpProxy> =
+export const TargetHttpProxy: Schema.Codec<TargetHttpProxy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5288,7 +5288,7 @@ export interface TargetHttpProxiesScopedList {
   };
 }
 
-export const TargetHttpProxiesScopedList: Schema.Schema<TargetHttpProxiesScopedList> =
+export const TargetHttpProxiesScopedList: Schema.Codec<TargetHttpProxiesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetHttpProxies: Schema.optional(Schema.Array(TargetHttpProxy)),
     warning: Schema.optional(
@@ -5316,7 +5316,7 @@ export interface HostRule {
   description?: string;
 }
 
-export const HostRule: Schema.Schema<HostRule> =
+export const HostRule: Schema.Codec<HostRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hosts: Schema.optional(Schema.Array(Schema.String)),
     pathMatcher: Schema.optional(Schema.String),
@@ -5344,7 +5344,7 @@ export interface HttpRedirectAction {
   stripQuery?: boolean;
 }
 
-export const HttpRedirectAction: Schema.Schema<HttpRedirectAction> =
+export const HttpRedirectAction: Schema.Codec<HttpRedirectAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prefixRedirect: Schema.optional(Schema.String),
     httpsRedirect: Schema.optional(Schema.Boolean),
@@ -5363,7 +5363,7 @@ export interface CustomErrorResponsePolicyCustomErrorResponseRule {
   overrideResponseCode?: number;
 }
 
-export const CustomErrorResponsePolicyCustomErrorResponseRule: Schema.Schema<CustomErrorResponsePolicyCustomErrorResponseRule> =
+export const CustomErrorResponsePolicyCustomErrorResponseRule: Schema.Codec<CustomErrorResponsePolicyCustomErrorResponseRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchResponseCodes: Schema.optional(Schema.Array(Schema.String)),
     path: Schema.optional(Schema.String),
@@ -5379,7 +5379,7 @@ export interface CustomErrorResponsePolicy {
   errorService?: string;
 }
 
-export const CustomErrorResponsePolicy: Schema.Schema<CustomErrorResponsePolicy> =
+export const CustomErrorResponsePolicy: Schema.Codec<CustomErrorResponsePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorResponseRules: Schema.optional(
       Schema.Array(CustomErrorResponsePolicyCustomErrorResponseRule),
@@ -5400,7 +5400,7 @@ export interface PathRule {
   paths?: ReadonlyArray<string>;
 }
 
-export const PathRule: Schema.Schema<PathRule> =
+export const PathRule: Schema.Codec<PathRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routeAction: Schema.optional(HttpRouteAction),
     customErrorResponsePolicy: Schema.optional(CustomErrorResponsePolicy),
@@ -5418,7 +5418,7 @@ export interface HttpFilterConfig {
   config?: string;
 }
 
-export const HttpFilterConfig: Schema.Schema<HttpFilterConfig> =
+export const HttpFilterConfig: Schema.Codec<HttpFilterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterName: Schema.optional(Schema.String),
     configTypeUrl: Schema.optional(Schema.String),
@@ -5436,7 +5436,7 @@ export interface HttpQueryParameterMatch {
   regexMatch?: string;
 }
 
-export const HttpQueryParameterMatch: Schema.Schema<HttpQueryParameterMatch> =
+export const HttpQueryParameterMatch: Schema.Codec<HttpQueryParameterMatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     presentMatch: Schema.optional(Schema.Boolean),
@@ -5451,7 +5451,7 @@ export interface MetadataFilterLabelMatch {
   value?: string;
 }
 
-export const MetadataFilterLabelMatch: Schema.Schema<MetadataFilterLabelMatch> =
+export const MetadataFilterLabelMatch: Schema.Codec<MetadataFilterLabelMatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -5464,7 +5464,7 @@ export interface MetadataFilter {
   filterLabels?: ReadonlyArray<MetadataFilterLabelMatch>;
 }
 
-export const MetadataFilter: Schema.Schema<MetadataFilter> =
+export const MetadataFilter: Schema.Codec<MetadataFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterMatchCriteria: Schema.optional(Schema.String),
     filterLabels: Schema.optional(Schema.Array(MetadataFilterLabelMatch)),
@@ -5489,7 +5489,7 @@ export interface HttpRouteRuleMatch {
   metadataFilters?: ReadonlyArray<MetadataFilter>;
 }
 
-export const HttpRouteRuleMatch: Schema.Schema<HttpRouteRuleMatch> =
+export const HttpRouteRuleMatch: Schema.Codec<HttpRouteRuleMatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullPathMatch: Schema.optional(Schema.String),
     pathTemplateMatch: Schema.optional(Schema.String),
@@ -5526,7 +5526,7 @@ export interface HttpRouteRule {
   headerAction?: HttpHeaderAction;
 }
 
-export const HttpRouteRule: Schema.Schema<HttpRouteRule> =
+export const HttpRouteRule: Schema.Codec<HttpRouteRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     httpFilterConfigs: Schema.optional(Schema.Array(HttpFilterConfig)),
@@ -5561,7 +5561,7 @@ export interface PathMatcher {
   defaultRouteAction?: HttpRouteAction;
 }
 
-export const PathMatcher: Schema.Schema<PathMatcher> =
+export const PathMatcher: Schema.Codec<PathMatcher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -5583,7 +5583,7 @@ export interface UrlMapQuotaUsage {
   forwardingRules?: number;
 }
 
-export const UrlMapQuotaUsage: Schema.Schema<UrlMapQuotaUsage> =
+export const UrlMapQuotaUsage: Schema.Codec<UrlMapQuotaUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.String),
     forwardingRules: Schema.optional(Schema.Number),
@@ -5594,7 +5594,7 @@ export interface UrlMapStatus {
   quotaUsage?: UrlMapQuotaUsage;
 }
 
-export const UrlMapStatus: Schema.Schema<UrlMapStatus> =
+export const UrlMapStatus: Schema.Codec<UrlMapStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quotaUsage: Schema.optional(UrlMapQuotaUsage),
   }).annotate({ identifier: "UrlMapStatus" });
@@ -5636,7 +5636,7 @@ export interface UrlMap {
   defaultRouteAction?: HttpRouteAction;
 }
 
-export const UrlMap: Schema.Schema<UrlMap> =
+export const UrlMap: Schema.Codec<UrlMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     hostRules: Schema.optional(Schema.Array(HostRule)),
@@ -5664,7 +5664,7 @@ export interface RegionUrlMapsValidateRequest {
   resource?: UrlMap;
 }
 
-export const RegionUrlMapsValidateRequest: Schema.Schema<RegionUrlMapsValidateRequest> =
+export const RegionUrlMapsValidateRequest: Schema.Codec<RegionUrlMapsValidateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(UrlMap),
   }).annotate({ identifier: "RegionUrlMapsValidateRequest" });
@@ -5674,7 +5674,7 @@ export interface RegionDiskUpdateKmsKeyRequest {
   kmsKeyName?: string;
 }
 
-export const RegionDiskUpdateKmsKeyRequest: Schema.Schema<RegionDiskUpdateKmsKeyRequest> =
+export const RegionDiskUpdateKmsKeyRequest: Schema.Codec<RegionDiskUpdateKmsKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegionDiskUpdateKmsKeyRequest" });
@@ -5685,7 +5685,7 @@ export interface InstancesSetLabelsRequest {
   labels?: Record<string, string>;
 }
 
-export const InstancesSetLabelsRequest: Schema.Schema<InstancesSetLabelsRequest> =
+export const InstancesSetLabelsRequest: Schema.Codec<InstancesSetLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelFingerprint: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -5710,7 +5710,7 @@ export interface DiskInstantiationConfig {
   autoDelete?: boolean;
 }
 
-export const DiskInstantiationConfig: Schema.Schema<DiskInstantiationConfig> =
+export const DiskInstantiationConfig: Schema.Codec<DiskInstantiationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceName: Schema.optional(Schema.String),
     customImage: Schema.optional(Schema.String),
@@ -5723,7 +5723,7 @@ export interface SourceInstanceParams {
   diskConfigs?: ReadonlyArray<DiskInstantiationConfig>;
 }
 
-export const SourceInstanceParams: Schema.Schema<SourceInstanceParams> =
+export const SourceInstanceParams: Schema.Codec<SourceInstanceParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskConfigs: Schema.optional(Schema.Array(DiskInstantiationConfig)),
   }).annotate({ identifier: "SourceInstanceParams" });
@@ -5751,7 +5751,7 @@ export interface InstanceTemplate {
   description?: string;
 }
 
-export const InstanceTemplate: Schema.Schema<InstanceTemplate> =
+export const InstanceTemplate: Schema.Codec<InstanceTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     sourceInstanceParams: Schema.optional(SourceInstanceParams),
@@ -5806,7 +5806,7 @@ export interface InstanceTemplatesScopedList {
   };
 }
 
-export const InstanceTemplatesScopedList: Schema.Schema<InstanceTemplatesScopedList> =
+export const InstanceTemplatesScopedList: Schema.Codec<InstanceTemplatesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceTemplates: Schema.optional(Schema.Array(InstanceTemplate)),
     warning: Schema.optional(
@@ -5836,7 +5836,7 @@ export interface NetworkEndpointGroupServerlessDeployment {
   version?: string;
 }
 
-export const NetworkEndpointGroupServerlessDeployment: Schema.Schema<NetworkEndpointGroupServerlessDeployment> =
+export const NetworkEndpointGroupServerlessDeployment: Schema.Codec<NetworkEndpointGroupServerlessDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platform: Schema.optional(Schema.String),
     urlMask: Schema.optional(Schema.String),
@@ -5853,7 +5853,7 @@ export interface NetworkEndpointGroupAppEngine {
   version?: string;
 }
 
-export const NetworkEndpointGroupAppEngine: Schema.Schema<NetworkEndpointGroupAppEngine> =
+export const NetworkEndpointGroupAppEngine: Schema.Codec<NetworkEndpointGroupAppEngine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     urlMask: Schema.optional(Schema.String),
@@ -5878,7 +5878,7 @@ export interface NetworkEndpointGroupPscData {
     | (string & {});
 }
 
-export const NetworkEndpointGroupPscData: Schema.Schema<NetworkEndpointGroupPscData> =
+export const NetworkEndpointGroupPscData: Schema.Codec<NetworkEndpointGroupPscData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     producerPort: Schema.optional(Schema.Number),
     consumerPscAddress: Schema.optional(Schema.String),
@@ -5893,7 +5893,7 @@ export interface NetworkEndpointGroupCloudFunction {
   urlMask?: string;
 }
 
-export const NetworkEndpointGroupCloudFunction: Schema.Schema<NetworkEndpointGroupCloudFunction> =
+export const NetworkEndpointGroupCloudFunction: Schema.Codec<NetworkEndpointGroupCloudFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     function: Schema.optional(Schema.String),
     urlMask: Schema.optional(Schema.String),
@@ -5908,7 +5908,7 @@ export interface NetworkEndpointGroupCloudRun {
   service?: string;
 }
 
-export const NetworkEndpointGroupCloudRun: Schema.Schema<NetworkEndpointGroupCloudRun> =
+export const NetworkEndpointGroupCloudRun: Schema.Codec<NetworkEndpointGroupCloudRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     urlMask: Schema.optional(Schema.String),
@@ -5926,7 +5926,7 @@ export interface NetworkEndpointGroupLbNetworkEndpointGroup {
   zone?: string;
 }
 
-export const NetworkEndpointGroupLbNetworkEndpointGroup: Schema.Schema<NetworkEndpointGroupLbNetworkEndpointGroup> =
+export const NetworkEndpointGroupLbNetworkEndpointGroup: Schema.Codec<NetworkEndpointGroupLbNetworkEndpointGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     subnetwork: Schema.optional(Schema.String),
@@ -5988,7 +5988,7 @@ export interface NetworkEndpointGroup {
   loadBalancer?: NetworkEndpointGroupLbNetworkEndpointGroup;
 }
 
-export const NetworkEndpointGroup: Schema.Schema<NetworkEndpointGroup> =
+export const NetworkEndpointGroup: Schema.Codec<NetworkEndpointGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     size: Schema.optional(Schema.Number),
     serverlessDeployment: Schema.optional(
@@ -6056,7 +6056,7 @@ export interface NetworkEndpointGroupsScopedList {
   };
 }
 
-export const NetworkEndpointGroupsScopedList: Schema.Schema<NetworkEndpointGroupsScopedList> =
+export const NetworkEndpointGroupsScopedList: Schema.Codec<NetworkEndpointGroupsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpointGroups: Schema.optional(Schema.Array(NetworkEndpointGroup)),
     warning: Schema.optional(
@@ -6126,7 +6126,7 @@ export interface NetworkEndpointGroupAggregatedList {
   unreachables?: ReadonlyArray<string>;
 }
 
-export const NetworkEndpointGroupAggregatedList: Schema.Schema<NetworkEndpointGroupAggregatedList> =
+export const NetworkEndpointGroupAggregatedList: Schema.Codec<NetworkEndpointGroupAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -6159,7 +6159,7 @@ export interface InstanceMoveRequest {
   destinationZone?: string;
 }
 
-export const InstanceMoveRequest: Schema.Schema<InstanceMoveRequest> =
+export const InstanceMoveRequest: Schema.Codec<InstanceMoveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetInstance: Schema.optional(Schema.String),
     destinationZone: Schema.optional(Schema.String),
@@ -6174,7 +6174,7 @@ export interface DiskResourceStatus {
   >;
 }
 
-export const DiskResourceStatus: Schema.Schema<DiskResourceStatus> =
+export const DiskResourceStatus: Schema.Codec<DiskResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asyncPrimaryDisk: Schema.optional(DiskResourceStatusAsyncReplicationStatus),
     asyncSecondaryDisks: Schema.optional(
@@ -6187,7 +6187,7 @@ export interface InstancesRemoveResourcePoliciesRequest {
   resourcePolicies?: ReadonlyArray<string>;
 }
 
-export const InstancesRemoveResourcePoliciesRequest: Schema.Schema<InstancesRemoveResourcePoliciesRequest> =
+export const InstancesRemoveResourcePoliciesRequest: Schema.Codec<InstancesRemoveResourcePoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InstancesRemoveResourcePoliciesRequest" });
@@ -6222,7 +6222,7 @@ export interface TargetTcpProxy {
     | (string & {});
 }
 
-export const TargetTcpProxy: Schema.Schema<TargetTcpProxy> =
+export const TargetTcpProxy: Schema.Codec<TargetTcpProxy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -6286,7 +6286,7 @@ export interface TargetTcpProxyList {
   id?: string;
 }
 
-export const TargetTcpProxyList: Schema.Schema<TargetTcpProxyList> =
+export const TargetTcpProxyList: Schema.Codec<TargetTcpProxyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -6314,7 +6314,7 @@ export interface InstantSnapshotGroupParameters {
   sourceInstantSnapshotGroup?: string;
 }
 
-export const InstantSnapshotGroupParameters: Schema.Schema<InstantSnapshotGroupParameters> =
+export const InstantSnapshotGroupParameters: Schema.Codec<InstantSnapshotGroupParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceInstantSnapshotGroup: Schema.optional(Schema.String),
   }).annotate({ identifier: "InstantSnapshotGroupParameters" });
@@ -6328,7 +6328,7 @@ export interface SnapshotGroupParameters {
   replicaZones?: ReadonlyArray<string>;
 }
 
-export const SnapshotGroupParameters: Schema.Schema<SnapshotGroupParameters> =
+export const SnapshotGroupParameters: Schema.Codec<SnapshotGroupParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceSnapshotGroup: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6344,7 +6344,7 @@ export interface BulkInsertDiskResource {
   snapshotGroupParameters?: SnapshotGroupParameters;
 }
 
-export const BulkInsertDiskResource: Schema.Schema<BulkInsertDiskResource> =
+export const BulkInsertDiskResource: Schema.Codec<BulkInsertDiskResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceConsistencyGroupPolicy: Schema.optional(Schema.String),
     instantSnapshotGroupParameters: Schema.optional(
@@ -6358,7 +6358,7 @@ export interface RegionTargetHttpsProxiesSetSslCertificatesRequest {
   sslCertificates?: ReadonlyArray<string>;
 }
 
-export const RegionTargetHttpsProxiesSetSslCertificatesRequest: Schema.Schema<RegionTargetHttpsProxiesSetSslCertificatesRequest> =
+export const RegionTargetHttpsProxiesSetSslCertificatesRequest: Schema.Codec<RegionTargetHttpsProxiesSetSslCertificatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sslCertificates: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -6374,7 +6374,7 @@ export interface HealthSourcesGetHealthResponseSourceInfoBackendInfo {
   endpointCount?: number;
 }
 
-export const HealthSourcesGetHealthResponseSourceInfoBackendInfo: Schema.Schema<HealthSourcesGetHealthResponseSourceInfoBackendInfo> =
+export const HealthSourcesGetHealthResponseSourceInfoBackendInfo: Schema.Codec<HealthSourcesGetHealthResponseSourceInfoBackendInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthyEndpointCount: Schema.optional(Schema.Number),
     group: Schema.optional(Schema.String),
@@ -6392,7 +6392,7 @@ export interface HealthSourcesGetHealthResponseSourceInfo {
   forwardingRule?: string;
 }
 
-export const HealthSourcesGetHealthResponseSourceInfo: Schema.Schema<HealthSourcesGetHealthResponseSourceInfo> =
+export const HealthSourcesGetHealthResponseSourceInfo: Schema.Codec<HealthSourcesGetHealthResponseSourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     backends: Schema.optional(
@@ -6408,7 +6408,7 @@ export interface HelpLink {
   description?: string;
 }
 
-export const HelpLink: Schema.Schema<HelpLink> =
+export const HelpLink: Schema.Codec<HelpLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -6419,7 +6419,7 @@ export interface Help {
   links?: ReadonlyArray<HelpLink>;
 }
 
-export const Help: Schema.Schema<Help> =
+export const Help: Schema.Codec<Help> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     links: Schema.optional(Schema.Array(HelpLink)),
   }).annotate({ identifier: "Help" });
@@ -6433,7 +6433,7 @@ export interface BackendServiceFailoverPolicy {
   dropTrafficIfUnhealthy?: boolean;
 }
 
-export const BackendServiceFailoverPolicy: Schema.Schema<BackendServiceFailoverPolicy> =
+export const BackendServiceFailoverPolicy: Schema.Codec<BackendServiceFailoverPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failoverRatio: Schema.optional(Schema.Number),
     disableConnectionDrainOnFailover: Schema.optional(Schema.Boolean),
@@ -6451,7 +6451,7 @@ export interface BackendServiceIAP {
   oauth2ClientSecret?: string;
 }
 
-export const BackendServiceIAP: Schema.Schema<BackendServiceIAP> =
+export const BackendServiceIAP: Schema.Codec<BackendServiceIAP> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oauth2ClientId: Schema.optional(Schema.String),
     oauth2ClientSecretSha256: Schema.optional(Schema.String),
@@ -6466,7 +6466,7 @@ export interface BackendServiceCdnPolicyNegativeCachingPolicy {
   ttl?: number;
 }
 
-export const BackendServiceCdnPolicyNegativeCachingPolicy: Schema.Schema<BackendServiceCdnPolicyNegativeCachingPolicy> =
+export const BackendServiceCdnPolicyNegativeCachingPolicy: Schema.Codec<BackendServiceCdnPolicyNegativeCachingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     ttl: Schema.optional(Schema.Number),
@@ -6477,7 +6477,7 @@ export interface BackendServiceCdnPolicyBypassCacheOnRequestHeader {
   headerName?: string;
 }
 
-export const BackendServiceCdnPolicyBypassCacheOnRequestHeader: Schema.Schema<BackendServiceCdnPolicyBypassCacheOnRequestHeader> =
+export const BackendServiceCdnPolicyBypassCacheOnRequestHeader: Schema.Codec<BackendServiceCdnPolicyBypassCacheOnRequestHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerName: Schema.optional(Schema.String),
   }).annotate({
@@ -6501,7 +6501,7 @@ export interface CacheKeyPolicy {
   queryStringWhitelist?: ReadonlyArray<string>;
 }
 
-export const CacheKeyPolicy: Schema.Schema<CacheKeyPolicy> =
+export const CacheKeyPolicy: Schema.Codec<CacheKeyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeProtocol: Schema.optional(Schema.Boolean),
     queryStringBlacklist: Schema.optional(Schema.Array(Schema.String)),
@@ -6544,7 +6544,7 @@ export interface BackendServiceCdnPolicy {
     | (string & {});
 }
 
-export const BackendServiceCdnPolicy: Schema.Schema<BackendServiceCdnPolicy> =
+export const BackendServiceCdnPolicy: Schema.Codec<BackendServiceCdnPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serveWhileStale: Schema.optional(Schema.Number),
     signedUrlKeyNames: Schema.optional(Schema.Array(Schema.String)),
@@ -6573,7 +6573,7 @@ export interface BackendCustomMetric {
   dryRun?: boolean;
 }
 
-export const BackendCustomMetric: Schema.Schema<BackendCustomMetric> =
+export const BackendCustomMetric: Schema.Codec<BackendCustomMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxUtilization: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -6585,7 +6585,7 @@ export interface BackendBackendOrchestrationInfo {
   resourceUri?: string;
 }
 
-export const BackendBackendOrchestrationInfo: Schema.Schema<BackendBackendOrchestrationInfo> =
+export const BackendBackendOrchestrationInfo: Schema.Codec<BackendBackendOrchestrationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "BackendBackendOrchestrationInfo" });
@@ -6646,7 +6646,7 @@ export interface Backend {
   maxUtilization?: number;
 }
 
-export const Backend: Schema.Schema<Backend> =
+export const Backend: Schema.Codec<Backend> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxRate: Schema.optional(Schema.Number),
     maxConnections: Schema.optional(Schema.Number),
@@ -6685,7 +6685,7 @@ export interface CircuitBreakers {
   maxRequests?: number;
 }
 
-export const CircuitBreakers: Schema.Schema<CircuitBreakers> =
+export const CircuitBreakers: Schema.Codec<CircuitBreakers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxPendingRequests: Schema.optional(Schema.Number),
     maxRetries: Schema.optional(Schema.Number),
@@ -6720,7 +6720,7 @@ export interface OutlierDetection {
   successRateStdevFactor?: number;
 }
 
-export const OutlierDetection: Schema.Schema<OutlierDetection> =
+export const OutlierDetection: Schema.Codec<OutlierDetection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interval: Schema.optional(Duration),
     enforcingSuccessRate: Schema.optional(Schema.Number),
@@ -6740,7 +6740,7 @@ export interface ConnectionDraining {
   drainingTimeoutSec?: number;
 }
 
-export const ConnectionDraining: Schema.Schema<ConnectionDraining> =
+export const ConnectionDraining: Schema.Codec<ConnectionDraining> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     drainingTimeoutSec: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ConnectionDraining" });
@@ -6750,7 +6750,7 @@ export interface BackendServiceParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const BackendServiceParams: Schema.Schema<BackendServiceParams> =
+export const BackendServiceParams: Schema.Codec<BackendServiceParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -6768,7 +6768,7 @@ export interface BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
   spilloverRatio?: number;
 }
 
-export const BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity: Schema.Schema<BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity> =
+export const BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity: Schema.Codec<BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spillover: Schema.optional(Schema.String),
     spilloverRatio: Schema.optional(Schema.Number),
@@ -6781,7 +6781,7 @@ export interface BackendServiceNetworkPassThroughLbTrafficPolicy {
   zonalAffinity?: BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity;
 }
 
-export const BackendServiceNetworkPassThroughLbTrafficPolicy: Schema.Schema<BackendServiceNetworkPassThroughLbTrafficPolicy> =
+export const BackendServiceNetworkPassThroughLbTrafficPolicy: Schema.Codec<BackendServiceNetworkPassThroughLbTrafficPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zonalAffinity: Schema.optional(
       BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity,
@@ -6797,7 +6797,7 @@ export interface BackendServiceCustomMetric {
   dryRun?: boolean;
 }
 
-export const BackendServiceCustomMetric: Schema.Schema<BackendServiceCustomMetric> =
+export const BackendServiceCustomMetric: Schema.Codec<BackendServiceCustomMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.Boolean),
@@ -6812,7 +6812,7 @@ export interface BackendServiceHttpCookie {
   path?: string;
 }
 
-export const BackendServiceHttpCookie: Schema.Schema<BackendServiceHttpCookie> =
+export const BackendServiceHttpCookie: Schema.Codec<BackendServiceHttpCookie> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     ttl: Schema.optional(Duration),
@@ -6838,7 +6838,7 @@ export interface BackendServiceConnectionTrackingPolicy {
     | (string & {});
 }
 
-export const BackendServiceConnectionTrackingPolicy: Schema.Schema<BackendServiceConnectionTrackingPolicy> =
+export const BackendServiceConnectionTrackingPolicy: Schema.Codec<BackendServiceConnectionTrackingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     idleTimeoutSec: Schema.optional(Schema.Number),
     enableStrongAffinity: Schema.optional(Schema.Boolean),
@@ -6851,7 +6851,7 @@ export interface BackendServiceUsedBy {
   reference?: string;
 }
 
-export const BackendServiceUsedBy: Schema.Schema<BackendServiceUsedBy> =
+export const BackendServiceUsedBy: Schema.Codec<BackendServiceUsedBy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reference: Schema.optional(Schema.String),
   }).annotate({ identifier: "BackendServiceUsedBy" });
@@ -6872,7 +6872,7 @@ export interface BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
     | (string & {});
 }
 
-export const BackendServiceLocalityLoadBalancingPolicyConfigPolicy: Schema.Schema<BackendServiceLocalityLoadBalancingPolicyConfigPolicy> =
+export const BackendServiceLocalityLoadBalancingPolicyConfigPolicy: Schema.Codec<BackendServiceLocalityLoadBalancingPolicyConfigPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -6886,7 +6886,7 @@ export interface BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy {
   name?: string;
 }
 
-export const BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy: Schema.Schema<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy> =
+export const BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy: Schema.Codec<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6899,7 +6899,7 @@ export interface BackendServiceLocalityLoadBalancingPolicyConfig {
   customPolicy?: BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy;
 }
 
-export const BackendServiceLocalityLoadBalancingPolicyConfig: Schema.Schema<BackendServiceLocalityLoadBalancingPolicyConfig> =
+export const BackendServiceLocalityLoadBalancingPolicyConfig: Schema.Codec<BackendServiceLocalityLoadBalancingPolicyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(
       BackendServiceLocalityLoadBalancingPolicyConfigPolicy,
@@ -6917,7 +6917,7 @@ export interface Subsetting {
   policy?: "CONSISTENT_HASH_SUBSETTING" | "NONE" | (string & {});
 }
 
-export const Subsetting: Schema.Schema<Subsetting> =
+export const Subsetting: Schema.Codec<Subsetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subsetSize: Schema.optional(Schema.Number),
     policy: Schema.optional(Schema.String),
@@ -6928,7 +6928,7 @@ export interface BackendServiceDynamicForwardingIpPortSelection {
   enabled?: boolean;
 }
 
-export const BackendServiceDynamicForwardingIpPortSelection: Schema.Schema<BackendServiceDynamicForwardingIpPortSelection> =
+export const BackendServiceDynamicForwardingIpPortSelection: Schema.Codec<BackendServiceDynamicForwardingIpPortSelection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BackendServiceDynamicForwardingIpPortSelection" });
@@ -6940,7 +6940,7 @@ export interface BackendServiceDynamicForwardingForwardProxy {
   proxyMode?: "CLOUD_RUN" | "DIRECT_FORWARDING" | (string & {});
 }
 
-export const BackendServiceDynamicForwardingForwardProxy: Schema.Schema<BackendServiceDynamicForwardingForwardProxy> =
+export const BackendServiceDynamicForwardingForwardProxy: Schema.Codec<BackendServiceDynamicForwardingForwardProxy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     proxyMode: Schema.optional(Schema.String),
@@ -6953,7 +6953,7 @@ export interface BackendServiceDynamicForwarding {
   forwardProxy?: BackendServiceDynamicForwardingForwardProxy;
 }
 
-export const BackendServiceDynamicForwarding: Schema.Schema<BackendServiceDynamicForwarding> =
+export const BackendServiceDynamicForwarding: Schema.Codec<BackendServiceDynamicForwarding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipPortSelection: Schema.optional(
       BackendServiceDynamicForwardingIpPortSelection,
@@ -6972,7 +6972,7 @@ export interface AWSV4Signature {
   accessKeyId?: string;
 }
 
-export const AWSV4Signature: Schema.Schema<AWSV4Signature> =
+export const AWSV4Signature: Schema.Codec<AWSV4Signature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originRegion: Schema.optional(Schema.String),
     accessKey: Schema.optional(Schema.String),
@@ -6991,7 +6991,7 @@ export interface SecuritySettings {
   awsV4Authentication?: AWSV4Signature;
 }
 
-export const SecuritySettings: Schema.Schema<SecuritySettings> =
+export const SecuritySettings: Schema.Codec<SecuritySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientTlsPolicy: Schema.optional(Schema.String),
     authentication: Schema.optional(Schema.String),
@@ -7004,7 +7004,7 @@ export interface BackendServiceOrchestrationInfo {
   resourceUri?: string;
 }
 
-export const BackendServiceOrchestrationInfo: Schema.Schema<BackendServiceOrchestrationInfo> =
+export const BackendServiceOrchestrationInfo: Schema.Codec<BackendServiceOrchestrationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "BackendServiceOrchestrationInfo" });
@@ -7014,7 +7014,7 @@ export interface BackendServiceLogConfigLoggingHttpHeader {
   headerName?: string;
 }
 
-export const BackendServiceLogConfigLoggingHttpHeader: Schema.Schema<BackendServiceLogConfigLoggingHttpHeader> =
+export const BackendServiceLogConfigLoggingHttpHeader: Schema.Codec<BackendServiceLogConfigLoggingHttpHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerName: Schema.optional(Schema.String),
   }).annotate({ identifier: "BackendServiceLogConfigLoggingHttpHeader" });
@@ -7038,7 +7038,7 @@ export interface BackendServiceLogConfig {
   loggingHttpResponseHeaders?: ReadonlyArray<BackendServiceLogConfigLoggingHttpHeader>;
 }
 
-export const BackendServiceLogConfig: Schema.Schema<BackendServiceLogConfig> =
+export const BackendServiceLogConfig: Schema.Codec<BackendServiceLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleRate: Schema.optional(Schema.Number),
     optionalMode: Schema.optional(Schema.String),
@@ -7208,7 +7208,7 @@ export interface BackendService {
   logConfig?: BackendServiceLogConfig;
 }
 
-export const BackendService: Schema.Schema<BackendService> =
+export const BackendService: Schema.Codec<BackendService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     fingerprint: Schema.optional(Schema.String),
@@ -7320,7 +7320,7 @@ export interface BackendServiceListUsable {
   };
 }
 
-export const BackendServiceListUsable: Schema.Schema<BackendServiceListUsable> =
+export const BackendServiceListUsable: Schema.Codec<BackendServiceListUsable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -7350,7 +7350,7 @@ export interface SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
   values?: ReadonlyArray<string>;
 }
 
-export const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch: Schema.Schema<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch> =
+export const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch: Schema.Codec<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
@@ -7390,7 +7390,7 @@ export interface StoragePoolDisk {
   disk?: string;
 }
 
-export const StoragePoolDisk: Schema.Schema<StoragePoolDisk> =
+export const StoragePoolDisk: Schema.Codec<StoragePoolDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -7457,7 +7457,7 @@ export interface StoragePoolListDisks {
   items?: ReadonlyArray<StoragePoolDisk>;
 }
 
-export const StoragePoolListDisks: Schema.Schema<StoragePoolListDisks> =
+export const StoragePoolListDisks: Schema.Codec<StoragePoolListDisks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -7507,7 +7507,7 @@ export interface TargetInstance {
   network?: string;
 }
 
-export const TargetInstance: Schema.Schema<TargetInstance> =
+export const TargetInstance: Schema.Codec<TargetInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     zone: Schema.optional(Schema.String),
@@ -7563,7 +7563,7 @@ export interface TargetInstancesScopedList {
   };
 }
 
-export const TargetInstancesScopedList: Schema.Schema<TargetInstancesScopedList> =
+export const TargetInstancesScopedList: Schema.Codec<TargetInstancesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetInstances: Schema.optional(Schema.Array(TargetInstance)),
     warning: Schema.optional(
@@ -7633,7 +7633,7 @@ export interface TargetInstanceAggregatedList {
   selfLink?: string;
 }
 
-export const TargetInstanceAggregatedList: Schema.Schema<TargetInstanceAggregatedList> =
+export const TargetInstanceAggregatedList: Schema.Codec<TargetInstanceAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -7672,7 +7672,7 @@ export interface SecurityPolicyUserDefinedField {
   size?: number;
 }
 
-export const SecurityPolicyUserDefinedField: Schema.Schema<SecurityPolicyUserDefinedField> =
+export const SecurityPolicyUserDefinedField: Schema.Codec<SecurityPolicyUserDefinedField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     base: Schema.optional(Schema.String),
@@ -7688,7 +7688,7 @@ export interface FutureReservationTimeWindow {
   startTime?: string;
 }
 
-export const FutureReservationTimeWindow: Schema.Schema<FutureReservationTimeWindow> =
+export const FutureReservationTimeWindow: Schema.Codec<FutureReservationTimeWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Duration),
     endTime: Schema.optional(Schema.String),
@@ -7704,7 +7704,7 @@ export interface ReservationAdvancedDeploymentControl {
     | (string & {});
 }
 
-export const ReservationAdvancedDeploymentControl: Schema.Schema<ReservationAdvancedDeploymentControl> =
+export const ReservationAdvancedDeploymentControl: Schema.Codec<ReservationAdvancedDeploymentControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOperationalMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReservationAdvancedDeploymentControl" });
@@ -7725,7 +7725,7 @@ export interface FutureReservationCommitmentInfo {
     | (string & {});
 }
 
-export const FutureReservationCommitmentInfo: Schema.Schema<FutureReservationCommitmentInfo> =
+export const FutureReservationCommitmentInfo: Schema.Codec<FutureReservationCommitmentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commitmentName: Schema.optional(Schema.String),
     commitmentPlan: Schema.optional(Schema.String),
@@ -7739,7 +7739,7 @@ export interface FutureReservationStatusExistingMatchingUsageInfo {
   timestamp?: string;
 }
 
-export const FutureReservationStatusExistingMatchingUsageInfo: Schema.Schema<FutureReservationStatusExistingMatchingUsageInfo> =
+export const FutureReservationStatusExistingMatchingUsageInfo: Schema.Codec<FutureReservationStatusExistingMatchingUsageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
@@ -7754,7 +7754,7 @@ export interface AllocationSpecificSKUAllocationAllocatedInstancePropertiesReser
   diskSizeGb?: string;
 }
 
-export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk: Schema.Schema<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk> =
+export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk: Schema.Codec<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interface: Schema.optional(Schema.String),
     diskSizeGb: Schema.optional(Schema.String),
@@ -7780,7 +7780,7 @@ export interface AllocationSpecificSKUAllocationReservedInstanceProperties {
   guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
 }
 
-export const AllocationSpecificSKUAllocationReservedInstanceProperties: Schema.Schema<AllocationSpecificSKUAllocationReservedInstanceProperties> =
+export const AllocationSpecificSKUAllocationReservedInstanceProperties: Schema.Codec<AllocationSpecificSKUAllocationReservedInstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minCpuPlatform: Schema.optional(Schema.String),
     locationHint: Schema.optional(Schema.String),
@@ -7806,7 +7806,7 @@ export interface FutureReservationSpecificSKUProperties {
   instanceProperties?: AllocationSpecificSKUAllocationReservedInstanceProperties;
 }
 
-export const FutureReservationSpecificSKUProperties: Schema.Schema<FutureReservationSpecificSKUProperties> =
+export const FutureReservationSpecificSKUProperties: Schema.Codec<FutureReservationSpecificSKUProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceInstanceTemplate: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.String),
@@ -7824,7 +7824,7 @@ export interface FutureReservationStatusLastKnownGoodStateFutureReservationSpecs
   shareSettings?: ShareSettings;
 }
 
-export const FutureReservationStatusLastKnownGoodStateFutureReservationSpecs: Schema.Schema<FutureReservationStatusLastKnownGoodStateFutureReservationSpecs> =
+export const FutureReservationStatusLastKnownGoodStateFutureReservationSpecs: Schema.Codec<FutureReservationStatusLastKnownGoodStateFutureReservationSpecs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     specificSkuProperties: Schema.optional(
       FutureReservationSpecificSKUProperties,
@@ -7864,7 +7864,7 @@ export interface FutureReservationStatusLastKnownGoodState {
   futureReservationSpecs?: FutureReservationStatusLastKnownGoodStateFutureReservationSpecs;
 }
 
-export const FutureReservationStatusLastKnownGoodState: Schema.Schema<FutureReservationStatusLastKnownGoodState> =
+export const FutureReservationStatusLastKnownGoodState: Schema.Codec<FutureReservationStatusLastKnownGoodState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     procurementStatus: Schema.optional(Schema.String),
     namePrefix: Schema.optional(Schema.String),
@@ -7883,7 +7883,7 @@ export interface FutureReservationStatusSpecificSKUProperties {
   sourceInstanceTemplateId?: string;
 }
 
-export const FutureReservationStatusSpecificSKUProperties: Schema.Schema<FutureReservationStatusSpecificSKUProperties> =
+export const FutureReservationStatusSpecificSKUProperties: Schema.Codec<FutureReservationStatusSpecificSKUProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceInstanceTemplateId: Schema.optional(Schema.String),
   }).annotate({ identifier: "FutureReservationStatusSpecificSKUProperties" });
@@ -7925,7 +7925,7 @@ export interface FutureReservationStatus {
   specificSkuProperties?: FutureReservationStatusSpecificSKUProperties;
 }
 
-export const FutureReservationStatus: Schema.Schema<FutureReservationStatus> =
+export const FutureReservationStatus: Schema.Codec<FutureReservationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoCreatedReservations: Schema.optional(Schema.Array(Schema.String)),
     lockTime: Schema.optional(Schema.String),
@@ -7948,7 +7948,7 @@ export interface FutureReservationParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const FutureReservationParams: Schema.Schema<FutureReservationParams> =
+export const FutureReservationParams: Schema.Codec<FutureReservationParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -7962,7 +7962,7 @@ export interface AllocationAggregateReservationReservedResourceInfoAccelerator {
   acceleratorType?: string;
 }
 
-export const AllocationAggregateReservationReservedResourceInfoAccelerator: Schema.Schema<AllocationAggregateReservationReservedResourceInfoAccelerator> =
+export const AllocationAggregateReservationReservedResourceInfoAccelerator: Schema.Codec<AllocationAggregateReservationReservedResourceInfoAccelerator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorCount: Schema.optional(Schema.Number),
     acceleratorType: Schema.optional(Schema.String),
@@ -7975,7 +7975,7 @@ export interface AllocationAggregateReservationReservedResourceInfo {
   accelerator?: AllocationAggregateReservationReservedResourceInfoAccelerator;
 }
 
-export const AllocationAggregateReservationReservedResourceInfo: Schema.Schema<AllocationAggregateReservationReservedResourceInfo> =
+export const AllocationAggregateReservationReservedResourceInfo: Schema.Codec<AllocationAggregateReservationReservedResourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accelerator: Schema.optional(
       AllocationAggregateReservationReservedResourceInfoAccelerator,
@@ -8010,7 +8010,7 @@ export interface AllocationAggregateReservation {
     | (string & {});
 }
 
-export const AllocationAggregateReservation: Schema.Schema<AllocationAggregateReservation> =
+export const AllocationAggregateReservation: Schema.Codec<AllocationAggregateReservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inUseHostCount: Schema.optional(Schema.Number),
     reservedResources: Schema.optional(
@@ -8108,7 +8108,7 @@ export interface FutureReservation {
   selfLinkWithId?: string;
 }
 
-export const FutureReservation: Schema.Schema<FutureReservation> =
+export const FutureReservation: Schema.Codec<FutureReservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoCreatedReservationsDeleteTime: Schema.optional(Schema.String),
     timeWindow: Schema.optional(FutureReservationTimeWindow),
@@ -8186,7 +8186,7 @@ export interface FutureReservationsScopedList {
   };
 }
 
-export const FutureReservationsScopedList: Schema.Schema<FutureReservationsScopedList> =
+export const FutureReservationsScopedList: Schema.Codec<FutureReservationsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     futureReservations: Schema.optional(Schema.Array(FutureReservation)),
     warning: Schema.optional(
@@ -8257,7 +8257,7 @@ export interface FutureReservationsAggregatedListResponse {
   };
 }
 
-export const FutureReservationsAggregatedListResponse: Schema.Schema<FutureReservationsAggregatedListResponse> =
+export const FutureReservationsAggregatedListResponse: Schema.Codec<FutureReservationsAggregatedListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -8291,7 +8291,7 @@ export interface NamedPort {
   port?: number;
 }
 
-export const NamedPort: Schema.Schema<NamedPort> =
+export const NamedPort: Schema.Codec<NamedPort> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -8319,7 +8319,7 @@ export interface InstanceWithNamedPorts {
   namedPorts?: ReadonlyArray<NamedPort>;
 }
 
-export const InstanceWithNamedPorts: Schema.Schema<InstanceWithNamedPorts> =
+export const InstanceWithNamedPorts: Schema.Codec<InstanceWithNamedPorts> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     instance: Schema.optional(Schema.String),
@@ -8333,7 +8333,7 @@ export interface PartnerMetadata {
   fingerprint?: string;
 }
 
-export const PartnerMetadata: Schema.Schema<PartnerMetadata> =
+export const PartnerMetadata: Schema.Codec<PartnerMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partnerMetadata: Schema.optional(
       Schema.Record(Schema.String, StructuredEntries),
@@ -8350,7 +8350,7 @@ export interface Compute_Date {
   day?: number;
 }
 
-export const Compute_Date: Schema.Schema<Compute_Date> =
+export const Compute_Date: Schema.Codec<Compute_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -8362,7 +8362,7 @@ export interface InstanceGroupsListInstancesRequest {
   instanceState?: "ALL" | "RUNNING" | (string & {});
 }
 
-export const InstanceGroupsListInstancesRequest: Schema.Schema<InstanceGroupsListInstancesRequest> =
+export const InstanceGroupsListInstancesRequest: Schema.Codec<InstanceGroupsListInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceState: Schema.optional(Schema.String),
   }).annotate({ identifier: "InstanceGroupsListInstancesRequest" });
@@ -8384,7 +8384,7 @@ export interface ExchangedPeeringRoute {
   imported?: boolean;
 }
 
-export const ExchangedPeeringRoute: Schema.Schema<ExchangedPeeringRoute> =
+export const ExchangedPeeringRoute: Schema.Codec<ExchangedPeeringRoute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destRange: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8442,7 +8442,7 @@ export interface ExchangedPeeringRoutesList {
   nextPageToken?: string;
 }
 
-export const ExchangedPeeringRoutesList: Schema.Schema<ExchangedPeeringRoutesList> =
+export const ExchangedPeeringRoutesList: Schema.Codec<ExchangedPeeringRoutesList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -8474,7 +8474,7 @@ export interface ErrorInfo {
   metadatas?: Record<string, string>;
 }
 
-export const ErrorInfo: Schema.Schema<ErrorInfo> =
+export const ErrorInfo: Schema.Codec<ErrorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
@@ -8488,7 +8488,7 @@ export interface LocalizedMessage {
   locale?: string;
 }
 
-export const LocalizedMessage: Schema.Schema<LocalizedMessage> =
+export const LocalizedMessage: Schema.Codec<LocalizedMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -8509,7 +8509,7 @@ export interface QuotaExceededInfo {
   dimensions?: Record<string, string>;
 }
 
-export const QuotaExceededInfo: Schema.Schema<QuotaExceededInfo> =
+export const QuotaExceededInfo: Schema.Codec<QuotaExceededInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limitName: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -8549,7 +8549,7 @@ export interface InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseA
   errorTimestamp?: string;
 }
 
-export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState: Schema.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState> =
+export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState: Schema.Codec<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentState: Schema.optional(Schema.String),
     externalId: Schema.optional(Schema.String),
@@ -8571,7 +8571,7 @@ export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAccel
   }).annotate({
     identifier:
       "InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState",
-  }) as any as Schema.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState>;
+  }) as any as Schema.Codec<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState>;
 
 export interface InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfo {
   /** Topology in the format of: "16x16", "4x4x4", etc. */
@@ -8587,7 +8587,7 @@ export interface InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseA
   instancesHealth?: "ALL_HEALTHY" | "UNHEALTHY_OR_MISSING" | (string & {});
 }
 
-export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfo: Schema.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfo> =
+export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfo: Schema.Codec<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTopology: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -8608,7 +8608,7 @@ export interface PreservedStatePreservedNetworkIpIpAddress {
   literal?: string;
 }
 
-export const PreservedStatePreservedNetworkIpIpAddress: Schema.Schema<PreservedStatePreservedNetworkIpIpAddress> =
+export const PreservedStatePreservedNetworkIpIpAddress: Schema.Codec<PreservedStatePreservedNetworkIpIpAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     literal: Schema.optional(Schema.String),
@@ -8621,7 +8621,7 @@ export interface PreservedStatePreservedNetworkIp {
   ipAddress?: PreservedStatePreservedNetworkIpIpAddress;
 }
 
-export const PreservedStatePreservedNetworkIp: Schema.Schema<PreservedStatePreservedNetworkIp> =
+export const PreservedStatePreservedNetworkIp: Schema.Codec<PreservedStatePreservedNetworkIp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoDelete: Schema.optional(Schema.String),
     ipAddress: Schema.optional(PreservedStatePreservedNetworkIpIpAddress),
@@ -8636,7 +8636,7 @@ export interface PreservedStatePreservedDisk {
   source?: string;
 }
 
-export const PreservedStatePreservedDisk: Schema.Schema<PreservedStatePreservedDisk> =
+export const PreservedStatePreservedDisk: Schema.Codec<PreservedStatePreservedDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
     autoDelete: Schema.optional(Schema.String),
@@ -8654,7 +8654,7 @@ export interface PreservedState {
   internalIPs?: Record<string, PreservedStatePreservedNetworkIp>;
 }
 
-export const PreservedState: Schema.Schema<PreservedState> =
+export const PreservedState: Schema.Codec<PreservedState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalIPs: Schema.optional(
       Schema.Record(Schema.String, PreservedStatePreservedNetworkIp),
@@ -8686,7 +8686,7 @@ export interface PerInstanceConfig {
   fingerprint?: string;
 }
 
-export const PerInstanceConfig: Schema.Schema<PerInstanceConfig> =
+export const PerInstanceConfig: Schema.Codec<PerInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     preservedState: Schema.optional(PreservedState),
@@ -8711,7 +8711,7 @@ export interface InstanceGroupManagerResizeRequestStatusLastAttempt {
   };
 }
 
-export const InstanceGroupManagerResizeRequestStatusLastAttempt: Schema.Schema<InstanceGroupManagerResizeRequestStatusLastAttempt> =
+export const InstanceGroupManagerResizeRequestStatusLastAttempt: Schema.Codec<InstanceGroupManagerResizeRequestStatusLastAttempt> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
@@ -8729,7 +8729,7 @@ export const InstanceGroupManagerResizeRequestStatusLastAttempt: Schema.Schema<I
     ),
   }).annotate({
     identifier: "InstanceGroupManagerResizeRequestStatusLastAttempt",
-  }) as any as Schema.Schema<InstanceGroupManagerResizeRequestStatusLastAttempt>;
+  }) as any as Schema.Codec<InstanceGroupManagerResizeRequestStatusLastAttempt>;
 
 export interface InstanceGroupManagerResizeRequestStatus {
   /** Output only. Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry. */
@@ -8750,7 +8750,7 @@ export interface InstanceGroupManagerResizeRequestStatus {
   lastAttempt?: InstanceGroupManagerResizeRequestStatusLastAttempt;
 }
 
-export const InstanceGroupManagerResizeRequestStatus: Schema.Schema<InstanceGroupManagerResizeRequestStatus> =
+export const InstanceGroupManagerResizeRequestStatus: Schema.Codec<InstanceGroupManagerResizeRequestStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
@@ -8771,7 +8771,7 @@ export const InstanceGroupManagerResizeRequestStatus: Schema.Schema<InstanceGrou
     ),
   }).annotate({
     identifier: "InstanceGroupManagerResizeRequestStatus",
-  }) as any as Schema.Schema<InstanceGroupManagerResizeRequestStatus>;
+  }) as any as Schema.Codec<InstanceGroupManagerResizeRequestStatus>;
 
 export interface InstanceGroupManagerResizeRequest {
   /** The names of instances to be created by this resize request. The number of names specified determines the number of instances to create. The group's target size will be increased by this number. This field cannot be used together with 'resize_by'. */
@@ -8814,7 +8814,7 @@ export interface InstanceGroupManagerResizeRequest {
   selfLinkWithId?: string;
 }
 
-export const InstanceGroupManagerResizeRequest: Schema.Schema<InstanceGroupManagerResizeRequest> =
+export const InstanceGroupManagerResizeRequest: Schema.Codec<InstanceGroupManagerResizeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(PerInstanceConfig)),
     selfLink: Schema.optional(Schema.String),
@@ -8846,7 +8846,7 @@ export interface SecurityPolicyDdosProtectionConfig {
   ddosImpactedBaselineThreshold?: number;
 }
 
-export const SecurityPolicyDdosProtectionConfig: Schema.Schema<SecurityPolicyDdosProtectionConfig> =
+export const SecurityPolicyDdosProtectionConfig: Schema.Codec<SecurityPolicyDdosProtectionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ddosProtection: Schema.optional(Schema.String),
     ddosAdaptiveProtection: Schema.optional(Schema.String),
@@ -8860,7 +8860,7 @@ export interface RolloutPolicy {
   defaultRolloutTime?: string;
 }
 
-export const RolloutPolicy: Schema.Schema<RolloutPolicy> =
+export const RolloutPolicy: Schema.Codec<RolloutPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationRolloutPolicies: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -8883,7 +8883,7 @@ export interface DeprecationStatus {
   deprecated?: string;
 }
 
-export const DeprecationStatus: Schema.Schema<DeprecationStatus> =
+export const DeprecationStatus: Schema.Codec<DeprecationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     replacement: Schema.optional(Schema.String),
@@ -8900,7 +8900,7 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
+export const TimeZone: Schema.Codec<TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -8927,7 +8927,7 @@ export interface DateTime {
   minutes?: number;
 }
 
-export const DateTime: Schema.Schema<DateTime> =
+export const DateTime: Schema.Codec<DateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     hours: Schema.optional(Schema.Number),
@@ -8961,7 +8961,7 @@ export interface PeriodicPartialMaintenanceSchedule {
     | (string & {});
 }
 
-export const PeriodicPartialMaintenanceSchedule: Schema.Schema<PeriodicPartialMaintenanceSchedule> =
+export const PeriodicPartialMaintenanceSchedule: Schema.Codec<PeriodicPartialMaintenanceSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     windowEndTime: Schema.optional(DateTime),
     windowStartTime: Schema.optional(DateTime),
@@ -8975,7 +8975,7 @@ export interface ZoneResourceStatus {
   upcomingMaintenances?: ReadonlyArray<PeriodicPartialMaintenanceSchedule>;
 }
 
-export const ZoneResourceStatus: Schema.Schema<ZoneResourceStatus> =
+export const ZoneResourceStatus: Schema.Codec<ZoneResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upcomingMaintenances: Schema.optional(
       Schema.Array(PeriodicPartialMaintenanceSchedule),
@@ -9008,7 +9008,7 @@ export interface Zone {
   kind?: string;
 }
 
-export const Zone: Schema.Schema<Zone> =
+export const Zone: Schema.Codec<Zone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportsPzs: Schema.optional(Schema.Boolean),
     deprecated: Schema.optional(DeprecationStatus),
@@ -9034,7 +9034,7 @@ export interface ProjectsSetDefaultNetworkTierRequest {
     | (string & {});
 }
 
-export const ProjectsSetDefaultNetworkTierRequest: Schema.Schema<ProjectsSetDefaultNetworkTierRequest> =
+export const ProjectsSetDefaultNetworkTierRequest: Schema.Codec<ProjectsSetDefaultNetworkTierRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkTier: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProjectsSetDefaultNetworkTierRequest" });
@@ -9067,7 +9067,7 @@ export interface AutoscalerStatusDetails {
     | (string & {});
 }
 
-export const AutoscalerStatusDetails: Schema.Schema<AutoscalerStatusDetails> =
+export const AutoscalerStatusDetails: Schema.Codec<AutoscalerStatusDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9078,7 +9078,7 @@ export interface AutoscalingPolicyLoadBalancingUtilization {
   utilizationTarget?: number;
 }
 
-export const AutoscalingPolicyLoadBalancingUtilization: Schema.Schema<AutoscalingPolicyLoadBalancingUtilization> =
+export const AutoscalingPolicyLoadBalancingUtilization: Schema.Codec<AutoscalingPolicyLoadBalancingUtilization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     utilizationTarget: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AutoscalingPolicyLoadBalancingUtilization" });
@@ -9098,7 +9098,7 @@ export interface AutoscalingPolicyScalingSchedule {
   disabled?: boolean;
 }
 
-export const AutoscalingPolicyScalingSchedule: Schema.Schema<AutoscalingPolicyScalingSchedule> =
+export const AutoscalingPolicyScalingSchedule: Schema.Codec<AutoscalingPolicyScalingSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schedule: Schema.optional(Schema.String),
     timeZone: Schema.optional(Schema.String),
@@ -9119,7 +9119,7 @@ export interface AutoscalingPolicyCpuUtilization {
   utilizationTarget?: number;
 }
 
-export const AutoscalingPolicyCpuUtilization: Schema.Schema<AutoscalingPolicyCpuUtilization> =
+export const AutoscalingPolicyCpuUtilization: Schema.Codec<AutoscalingPolicyCpuUtilization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     predictiveMethod: Schema.optional(Schema.String),
     utilizationTarget: Schema.optional(Schema.Number),
@@ -9134,7 +9134,7 @@ export interface FixedOrPercent {
   calculated?: number;
 }
 
-export const FixedOrPercent: Schema.Schema<FixedOrPercent> =
+export const FixedOrPercent: Schema.Codec<FixedOrPercent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fixed: Schema.optional(Schema.Number),
     percent: Schema.optional(Schema.Number),
@@ -9148,7 +9148,7 @@ export interface AutoscalingPolicyScaleInControl {
   timeWindowSec?: number;
 }
 
-export const AutoscalingPolicyScaleInControl: Schema.Schema<AutoscalingPolicyScaleInControl> =
+export const AutoscalingPolicyScaleInControl: Schema.Codec<AutoscalingPolicyScaleInControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxScaledInReplicas: Schema.optional(FixedOrPercent),
     timeWindowSec: Schema.optional(Schema.Number),
@@ -9171,7 +9171,7 @@ export interface AutoscalingPolicyCustomMetricUtilization {
   singleInstanceAssignment?: number;
 }
 
-export const AutoscalingPolicyCustomMetricUtilization: Schema.Schema<AutoscalingPolicyCustomMetricUtilization> =
+export const AutoscalingPolicyCustomMetricUtilization: Schema.Codec<AutoscalingPolicyCustomMetricUtilization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metric: Schema.optional(Schema.String),
     utilizationTargetType: Schema.optional(Schema.String),
@@ -9187,7 +9187,7 @@ export interface AutoscalingPolicyScaleDownControl {
   timeWindowSec?: number;
 }
 
-export const AutoscalingPolicyScaleDownControl: Schema.Schema<AutoscalingPolicyScaleDownControl> =
+export const AutoscalingPolicyScaleDownControl: Schema.Codec<AutoscalingPolicyScaleDownControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxScaledDownReplicas: Schema.optional(FixedOrPercent),
     timeWindowSec: Schema.optional(Schema.Number),
@@ -9216,7 +9216,7 @@ export interface AutoscalingPolicy {
   mode?: "OFF" | "ON" | "ONLY_SCALE_OUT" | "ONLY_UP" | (string & {});
 }
 
-export const AutoscalingPolicy: Schema.Schema<AutoscalingPolicy> =
+export const AutoscalingPolicy: Schema.Codec<AutoscalingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     loadBalancingUtilization: Schema.optional(
       AutoscalingPolicyLoadBalancingUtilization,
@@ -9268,7 +9268,7 @@ export interface Autoscaler {
   target?: string;
 }
 
-export const Autoscaler: Schema.Schema<Autoscaler> =
+export const Autoscaler: Schema.Codec<Autoscaler> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusDetails: Schema.optional(Schema.Array(AutoscalerStatusDetails)),
     description: Schema.optional(Schema.String),
@@ -9329,7 +9329,7 @@ export interface AutoscalersScopedList {
   autoscalers?: ReadonlyArray<Autoscaler>;
 }
 
-export const AutoscalersScopedList: Schema.Schema<AutoscalersScopedList> =
+export const AutoscalersScopedList: Schema.Codec<AutoscalersScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -9399,7 +9399,7 @@ export interface AutoscalerAggregatedList {
   id?: string;
 }
 
-export const AutoscalerAggregatedList: Schema.Schema<AutoscalerAggregatedList> =
+export const AutoscalerAggregatedList: Schema.Codec<AutoscalerAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -9449,7 +9449,7 @@ export interface NetworkAttachmentConnectedEndpoint {
   subnetworkCidrRange?: string;
 }
 
-export const NetworkAttachmentConnectedEndpoint: Schema.Schema<NetworkAttachmentConnectedEndpoint> =
+export const NetworkAttachmentConnectedEndpoint: Schema.Codec<NetworkAttachmentConnectedEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secondaryIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
     serviceClassId: Schema.optional(Schema.String),
@@ -9497,7 +9497,7 @@ export interface NetworkAttachment {
   selfLink?: string;
 }
 
-export const NetworkAttachment: Schema.Schema<NetworkAttachment> =
+export const NetworkAttachment: Schema.Codec<NetworkAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     selfLinkWithId: Schema.optional(Schema.String),
@@ -9566,7 +9566,7 @@ export interface NetworkAttachmentList {
   nextPageToken?: string;
 }
 
-export const NetworkAttachmentList: Schema.Schema<NetworkAttachmentList> =
+export const NetworkAttachmentList: Schema.Codec<NetworkAttachmentList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -9596,7 +9596,7 @@ export interface InterconnectDiagnosticsARPEntry {
   ipAddress?: string;
 }
 
-export const InterconnectDiagnosticsARPEntry: Schema.Schema<InterconnectDiagnosticsARPEntry> =
+export const InterconnectDiagnosticsARPEntry: Schema.Codec<InterconnectDiagnosticsARPEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     macAddress: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
@@ -9652,7 +9652,7 @@ export interface TargetHttpsProxy {
   authorization?: string;
 }
 
-export const TargetHttpsProxy: Schema.Schema<TargetHttpsProxy> =
+export const TargetHttpsProxy: Schema.Codec<TargetHttpsProxy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tlsEarlyData: Schema.optional(Schema.String),
     authorizationPolicy: Schema.optional(Schema.String),
@@ -9688,7 +9688,7 @@ export interface DiskAsyncReplication {
   consistencyGroupPolicyId?: string;
 }
 
-export const DiskAsyncReplication: Schema.Schema<DiskAsyncReplication> =
+export const DiskAsyncReplication: Schema.Codec<DiskAsyncReplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     disk: Schema.optional(Schema.String),
@@ -9713,7 +9713,7 @@ export interface SecurityPolicyAssociation {
   securityPolicyId?: string;
 }
 
-export const SecurityPolicyAssociation: Schema.Schema<SecurityPolicyAssociation> =
+export const SecurityPolicyAssociation: Schema.Codec<SecurityPolicyAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -9729,7 +9729,7 @@ export interface InterconnectRemoteLocationConstraintsSubnetLengthRange {
   max?: number;
 }
 
-export const InterconnectRemoteLocationConstraintsSubnetLengthRange: Schema.Schema<InterconnectRemoteLocationConstraintsSubnetLengthRange> =
+export const InterconnectRemoteLocationConstraintsSubnetLengthRange: Schema.Codec<InterconnectRemoteLocationConstraintsSubnetLengthRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.Number),
     max: Schema.optional(Schema.Number),
@@ -9748,7 +9748,7 @@ export interface GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMeta
     | (string & {});
 }
 
-export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus: Schema.Schema<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus> =
+export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus: Schema.Codec<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({
@@ -9778,7 +9778,7 @@ export interface GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMeta
     | (string & {});
 }
 
-export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata: Schema.Schema<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata> =
+export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata: Schema.Codec<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollout: Schema.optional(Schema.String),
     rolloutPlan: Schema.optional(Schema.String),
@@ -9801,7 +9801,7 @@ export interface GlobalVmExtensionPolicyRolloutOperationRolloutStatus {
   currentRollouts?: ReadonlyArray<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata>;
 }
 
-export const GlobalVmExtensionPolicyRolloutOperationRolloutStatus: Schema.Schema<GlobalVmExtensionPolicyRolloutOperationRolloutStatus> =
+export const GlobalVmExtensionPolicyRolloutOperationRolloutStatus: Schema.Codec<GlobalVmExtensionPolicyRolloutOperationRolloutStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     previousRollout: Schema.optional(
       GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata,
@@ -9830,7 +9830,7 @@ export interface GlobalVmExtensionPolicyRolloutOperationRolloutInput {
   conflictBehavior?: string;
 }
 
-export const GlobalVmExtensionPolicyRolloutOperationRolloutInput: Schema.Schema<GlobalVmExtensionPolicyRolloutOperationRolloutInput> =
+export const GlobalVmExtensionPolicyRolloutOperationRolloutInput: Schema.Codec<GlobalVmExtensionPolicyRolloutOperationRolloutInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     predefinedRolloutPlan: Schema.optional(Schema.String),
@@ -9847,7 +9847,7 @@ export interface GlobalVmExtensionPolicyRolloutOperation {
   rolloutInput?: GlobalVmExtensionPolicyRolloutOperationRolloutInput;
 }
 
-export const GlobalVmExtensionPolicyRolloutOperation: Schema.Schema<GlobalVmExtensionPolicyRolloutOperation> =
+export const GlobalVmExtensionPolicyRolloutOperation: Schema.Codec<GlobalVmExtensionPolicyRolloutOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rolloutStatus: Schema.optional(
       GlobalVmExtensionPolicyRolloutOperationRolloutStatus,
@@ -9864,7 +9864,7 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -9879,7 +9879,7 @@ export interface Money {
   nanos?: number;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     units: Schema.optional(Schema.String),
@@ -9891,7 +9891,7 @@ export interface CapacityHistoryResponsePriceRecord {
   listPrice?: Money;
 }
 
-export const CapacityHistoryResponsePriceRecord: Schema.Schema<CapacityHistoryResponsePriceRecord> =
+export const CapacityHistoryResponsePriceRecord: Schema.Codec<CapacityHistoryResponsePriceRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interval: Schema.optional(Interval),
     listPrice: Schema.optional(Money),
@@ -9926,7 +9926,7 @@ export interface InstanceGroup {
   fingerprint?: string;
 }
 
-export const InstanceGroup: Schema.Schema<InstanceGroup> =
+export const InstanceGroup: Schema.Codec<InstanceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetwork: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -9992,7 +9992,7 @@ export interface InstanceGroupList {
   selfLink?: string;
 }
 
-export const InstanceGroupList: Schema.Schema<InstanceGroupList> =
+export const InstanceGroupList: Schema.Codec<InstanceGroupList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(InstanceGroup)),
@@ -10020,7 +10020,7 @@ export interface InstanceGroupManagersUpdatePerInstanceConfigsReq {
   perInstanceConfigs?: ReadonlyArray<PerInstanceConfig>;
 }
 
-export const InstanceGroupManagersUpdatePerInstanceConfigsReq: Schema.Schema<InstanceGroupManagersUpdatePerInstanceConfigsReq> =
+export const InstanceGroupManagersUpdatePerInstanceConfigsReq: Schema.Codec<InstanceGroupManagersUpdatePerInstanceConfigsReq> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perInstanceConfigs: Schema.optional(Schema.Array(PerInstanceConfig)),
   }).annotate({
@@ -10050,7 +10050,7 @@ export interface GroupMaintenanceInfo {
   instanceMaintenanceOngoingCount?: number;
 }
 
-export const GroupMaintenanceInfo: Schema.Schema<GroupMaintenanceInfo> =
+export const GroupMaintenanceInfo: Schema.Codec<GroupMaintenanceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maintenanceOngoingCount: Schema.optional(Schema.Number),
     upcomingGroupMaintenance: Schema.optional(UpcomingMaintenance),
@@ -10067,7 +10067,7 @@ export interface Uint128 {
   low?: string;
 }
 
-export const Uint128: Schema.Schema<Uint128> =
+export const Uint128: Schema.Codec<Uint128> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     high: Schema.optional(Schema.String),
     low: Schema.optional(Schema.String),
@@ -10078,7 +10078,7 @@ export interface SubnetworkUtilizationDetailsIPV6Utilization {
   totalAllocatedIp?: Uint128;
 }
 
-export const SubnetworkUtilizationDetailsIPV6Utilization: Schema.Schema<SubnetworkUtilizationDetailsIPV6Utilization> =
+export const SubnetworkUtilizationDetailsIPV6Utilization: Schema.Codec<SubnetworkUtilizationDetailsIPV6Utilization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalFreeIp: Schema.optional(Uint128),
     totalAllocatedIp: Schema.optional(Uint128),
@@ -10091,7 +10091,7 @@ export interface SubnetworkUtilizationDetailsIPV4Utilization {
   totalAllocatedIp?: string;
 }
 
-export const SubnetworkUtilizationDetailsIPV4Utilization: Schema.Schema<SubnetworkUtilizationDetailsIPV4Utilization> =
+export const SubnetworkUtilizationDetailsIPV4Utilization: Schema.Codec<SubnetworkUtilizationDetailsIPV4Utilization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalFreeIp: Schema.optional(Schema.String),
     rangeName: Schema.optional(Schema.String),
@@ -10109,7 +10109,7 @@ export interface SubnetworkUtilizationDetails {
   externalIpv6InstanceUtilization?: SubnetworkUtilizationDetailsIPV6Utilization;
 }
 
-export const SubnetworkUtilizationDetails: Schema.Schema<SubnetworkUtilizationDetails> =
+export const SubnetworkUtilizationDetails: Schema.Codec<SubnetworkUtilizationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     internalIpv6Utilization: Schema.optional(
       SubnetworkUtilizationDetailsIPV6Utilization,
@@ -10130,7 +10130,7 @@ export interface SubnetworkParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const SubnetworkParams: Schema.Schema<SubnetworkParams> =
+export const SubnetworkParams: Schema.Codec<SubnetworkParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -10163,7 +10163,7 @@ export interface SubnetworkLogConfig {
   enable?: boolean;
 }
 
-export const SubnetworkLogConfig: Schema.Schema<SubnetworkLogConfig> =
+export const SubnetworkLogConfig: Schema.Codec<SubnetworkLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flowSampling: Schema.optional(Schema.Number),
     filterExpr: Schema.optional(Schema.String),
@@ -10185,7 +10185,7 @@ export interface SubnetworkSecondaryRange {
   ipVersion?: "IPV4" | "IPV6" | "IP_VERSION_UNSPECIFIED" | (string & {});
 }
 
-export const SubnetworkSecondaryRange: Schema.Schema<SubnetworkSecondaryRange> =
+export const SubnetworkSecondaryRange: Schema.Codec<SubnetworkSecondaryRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipCidrRange: Schema.optional(Schema.String),
     reservedInternalRange: Schema.optional(Schema.String),
@@ -10276,7 +10276,7 @@ export interface Subnetwork {
   gatewayAddress?: string;
 }
 
-export const Subnetwork: Schema.Schema<Subnetwork> =
+export const Subnetwork: Schema.Codec<Subnetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     utilizationDetails: Schema.optional(SubnetworkUtilizationDetails),
     region: Schema.optional(Schema.String),
@@ -10358,7 +10358,7 @@ export interface SubnetworksScopedList {
   };
 }
 
-export const SubnetworksScopedList: Schema.Schema<SubnetworksScopedList> =
+export const SubnetworksScopedList: Schema.Codec<SubnetworksScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetworks: Schema.optional(Schema.Array(Subnetwork)),
     warning: Schema.optional(
@@ -10386,7 +10386,7 @@ export interface InterconnectCircuitInfo {
   googleDemarcId?: string;
 }
 
-export const InterconnectCircuitInfo: Schema.Schema<InterconnectCircuitInfo> =
+export const InterconnectCircuitInfo: Schema.Codec<InterconnectCircuitInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerDemarcId: Schema.optional(Schema.String),
     googleCircuitId: Schema.optional(Schema.String),
@@ -10398,7 +10398,7 @@ export interface CapacityHistoryRequestLocationPolicy {
   location?: string;
 }
 
-export const CapacityHistoryRequestLocationPolicy: Schema.Schema<CapacityHistoryRequestLocationPolicy> =
+export const CapacityHistoryRequestLocationPolicy: Schema.Codec<CapacityHistoryRequestLocationPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
   }).annotate({ identifier: "CapacityHistoryRequestLocationPolicy" });
@@ -10416,7 +10416,7 @@ export interface InterconnectDiagnosticsLinkOpticalPower {
   value?: number;
 }
 
-export const InterconnectDiagnosticsLinkOpticalPower: Schema.Schema<InterconnectDiagnosticsLinkOpticalPower> =
+export const InterconnectDiagnosticsLinkOpticalPower: Schema.Codec<InterconnectDiagnosticsLinkOpticalPower> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -10451,7 +10451,7 @@ export interface HealthCheckService {
   healthStatusAggregationStrategy?: "AND" | "NO_AGGREGATION" | (string & {});
 }
 
-export const HealthCheckService: Schema.Schema<HealthCheckService> =
+export const HealthCheckService: Schema.Codec<HealthCheckService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -10517,7 +10517,7 @@ export interface HealthCheckServicesList {
   kind?: string;
 }
 
-export const HealthCheckServicesList: Schema.Schema<HealthCheckServicesList> =
+export const HealthCheckServicesList: Schema.Codec<HealthCheckServicesList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(HealthCheckService)),
@@ -10551,7 +10551,7 @@ export interface BfdStatusPacketCounts {
   numRxSuccessful?: number;
 }
 
-export const BfdStatusPacketCounts: Schema.Schema<BfdStatusPacketCounts> =
+export const BfdStatusPacketCounts: Schema.Codec<BfdStatusPacketCounts> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numRx: Schema.optional(Schema.Number),
     numRxRejected: Schema.optional(Schema.Number),
@@ -10566,7 +10566,7 @@ export interface BgpRouteNetworkLayerReachabilityInformation {
   prefix?: string;
 }
 
-export const BgpRouteNetworkLayerReachabilityInformation: Schema.Schema<BgpRouteNetworkLayerReachabilityInformation> =
+export const BgpRouteNetworkLayerReachabilityInformation: Schema.Codec<BgpRouteNetworkLayerReachabilityInformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pathId: Schema.optional(Schema.Number),
     prefix: Schema.optional(Schema.String),
@@ -10581,7 +10581,7 @@ export interface BgpRouteAsPath {
   asns?: ReadonlyArray<number>;
 }
 
-export const BgpRouteAsPath: Schema.Schema<BgpRouteAsPath> =
+export const BgpRouteAsPath: Schema.Codec<BgpRouteAsPath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asns32: Schema.optional(Schema.Array(Schema.Number)),
     type: Schema.optional(Schema.String),
@@ -10605,7 +10605,7 @@ export interface BgpRoute {
   med?: number;
 }
 
-export const BgpRoute: Schema.Schema<BgpRoute> =
+export const BgpRoute: Schema.Codec<BgpRoute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(BgpRouteNetworkLayerReachabilityInformation),
     origin: Schema.optional(Schema.String),
@@ -10666,7 +10666,7 @@ export interface RoutersListBgpRoutes {
   result?: ReadonlyArray<BgpRoute>;
 }
 
-export const RoutersListBgpRoutes: Schema.Schema<RoutersListBgpRoutes> =
+export const RoutersListBgpRoutes: Schema.Codec<RoutersListBgpRoutes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -10732,7 +10732,7 @@ export interface UrlMapsScopedList {
   };
 }
 
-export const UrlMapsScopedList: Schema.Schema<UrlMapsScopedList> =
+export const UrlMapsScopedList: Schema.Codec<UrlMapsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlMaps: Schema.optional(Schema.Array(UrlMap)),
     warning: Schema.optional(
@@ -10778,7 +10778,7 @@ export interface HealthSource {
   healthAggregationPolicy?: string;
 }
 
-export const HealthSource: Schema.Schema<HealthSource> =
+export const HealthSource: Schema.Codec<HealthSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -10812,7 +10812,7 @@ export interface BulkInsertOperationStatus {
   failedToCreateVmCount?: number;
 }
 
-export const BulkInsertOperationStatus: Schema.Schema<BulkInsertOperationStatus> =
+export const BulkInsertOperationStatus: Schema.Codec<BulkInsertOperationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     targetVmCount: Schema.optional(Schema.Number),
@@ -10826,7 +10826,7 @@ export interface InstancesBulkInsertOperationMetadata {
   perLocationStatus?: Record<string, BulkInsertOperationStatus>;
 }
 
-export const InstancesBulkInsertOperationMetadata: Schema.Schema<InstancesBulkInsertOperationMetadata> =
+export const InstancesBulkInsertOperationMetadata: Schema.Codec<InstancesBulkInsertOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perLocationStatus: Schema.optional(
       Schema.Record(Schema.String, BulkInsertOperationStatus),
@@ -10837,7 +10837,7 @@ export interface GetVersionOperationMetadata {
   inlineSbomInfo?: GetVersionOperationMetadataSbomInfo;
 }
 
-export const GetVersionOperationMetadata: Schema.Schema<GetVersionOperationMetadata> =
+export const GetVersionOperationMetadata: Schema.Codec<GetVersionOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inlineSbomInfo: Schema.optional(GetVersionOperationMetadataSbomInfo),
   }).annotate({ identifier: "GetVersionOperationMetadata" });
@@ -10943,7 +10943,7 @@ export interface Operation {
   };
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationGroupId: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -11004,7 +11004,7 @@ export const Operation: Schema.Schema<Operation> =
         ),
       }),
     ),
-  }).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+  }).annotate({ identifier: "Operation" }) as any as Schema.Codec<Operation>;
 
 export interface InterconnectGroupsCreateMembersInterconnectInput {
   /** An optional description of this resource. Provide this property when you create the resource. */
@@ -11037,7 +11037,7 @@ export interface InterconnectGroupsCreateMembersInterconnectInput {
   interconnectType?: "DEDICATED" | "IT_PRIVATE" | "PARTNER" | (string & {});
 }
 
-export const InterconnectGroupsCreateMembersInterconnectInput: Schema.Schema<InterconnectGroupsCreateMembersInterconnectInput> =
+export const InterconnectGroupsCreateMembersInterconnectInput: Schema.Codec<InterconnectGroupsCreateMembersInterconnectInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -11062,7 +11062,7 @@ export interface InterconnectGroupsCreateMembers {
   interconnects?: ReadonlyArray<InterconnectGroupsCreateMembersInterconnectInput>;
 }
 
-export const InterconnectGroupsCreateMembers: Schema.Schema<InterconnectGroupsCreateMembers> =
+export const InterconnectGroupsCreateMembers: Schema.Codec<InterconnectGroupsCreateMembers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intentMismatchBehavior: Schema.optional(Schema.String),
     templateInterconnect: Schema.optional(
@@ -11078,7 +11078,7 @@ export interface InstanceReference {
   instance?: string;
 }
 
-export const InstanceReference: Schema.Schema<InstanceReference> =
+export const InstanceReference: Schema.Codec<InstanceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
   }).annotate({ identifier: "InstanceReference" });
@@ -11088,7 +11088,7 @@ export interface TargetPoolsAddInstanceRequest {
   instances?: ReadonlyArray<InstanceReference>;
 }
 
-export const TargetPoolsAddInstanceRequest: Schema.Schema<TargetPoolsAddInstanceRequest> =
+export const TargetPoolsAddInstanceRequest: Schema.Codec<TargetPoolsAddInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(InstanceReference)),
   }).annotate({ identifier: "TargetPoolsAddInstanceRequest" });
@@ -11106,7 +11106,7 @@ export interface GRPCTLSHealthCheck {
     | (string & {});
 }
 
-export const GRPCTLSHealthCheck: Schema.Schema<GRPCTLSHealthCheck> =
+export const GRPCTLSHealthCheck: Schema.Codec<GRPCTLSHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     grpcServiceName: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -11134,7 +11134,7 @@ export interface HTTPSHealthCheck {
     | (string & {});
 }
 
-export const HTTPSHealthCheck: Schema.Schema<HTTPSHealthCheck> =
+export const HTTPSHealthCheck: Schema.Codec<HTTPSHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestPath: Schema.optional(Schema.String),
     response: Schema.optional(Schema.String),
@@ -11164,7 +11164,7 @@ export interface SSLHealthCheck {
     | (string & {});
 }
 
-export const SSLHealthCheck: Schema.Schema<SSLHealthCheck> =
+export const SSLHealthCheck: Schema.Codec<SSLHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyHeader: Schema.optional(Schema.String),
     request: Schema.optional(Schema.String),
@@ -11195,7 +11195,7 @@ export interface HTTPHealthCheck {
   response?: string;
 }
 
-export const HTTPHealthCheck: Schema.Schema<HTTPHealthCheck> =
+export const HTTPHealthCheck: Schema.Codec<HTTPHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     portSpecification: Schema.optional(Schema.String),
@@ -11211,7 +11211,7 @@ export interface HealthCheckLogConfig {
   enable?: boolean;
 }
 
-export const HealthCheckLogConfig: Schema.Schema<HealthCheckLogConfig> =
+export const HealthCheckLogConfig: Schema.Codec<HealthCheckLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enable: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "HealthCheckLogConfig" });
@@ -11231,7 +11231,7 @@ export interface GRPCHealthCheck {
     | (string & {});
 }
 
-export const GRPCHealthCheck: Schema.Schema<GRPCHealthCheck> =
+export const GRPCHealthCheck: Schema.Codec<GRPCHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     grpcServiceName: Schema.optional(Schema.String),
     portName: Schema.optional(Schema.String),
@@ -11286,7 +11286,7 @@ export interface HealthCheck {
     | (string & {});
 }
 
-export const HealthCheck: Schema.Schema<HealthCheck> =
+export const HealthCheck: Schema.Codec<HealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     grpcTlsHealthCheck: Schema.optional(GRPCTLSHealthCheck),
     checkIntervalSec: Schema.optional(Schema.Number),
@@ -11352,7 +11352,7 @@ export interface HealthChecksScopedList {
   };
 }
 
-export const HealthChecksScopedList: Schema.Schema<HealthChecksScopedList> =
+export const HealthChecksScopedList: Schema.Codec<HealthChecksScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthChecks: Schema.optional(Schema.Array(HealthCheck)),
     warning: Schema.optional(
@@ -11422,7 +11422,7 @@ export interface HealthChecksAggregatedList {
   };
 }
 
-export const HealthChecksAggregatedList: Schema.Schema<HealthChecksAggregatedList> =
+export const HealthChecksAggregatedList: Schema.Codec<HealthChecksAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -11497,7 +11497,7 @@ export interface AutoscalerList {
   nextPageToken?: string;
 }
 
-export const AutoscalerList: Schema.Schema<AutoscalerList> =
+export const AutoscalerList: Schema.Codec<AutoscalerList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -11527,7 +11527,7 @@ export interface InterconnectGroupPhysicalStructureMetrosFacilitiesZones {
   interconnects?: ReadonlyArray<string>;
 }
 
-export const InterconnectGroupPhysicalStructureMetrosFacilitiesZones: Schema.Schema<InterconnectGroupPhysicalStructureMetrosFacilitiesZones> =
+export const InterconnectGroupPhysicalStructureMetrosFacilitiesZones: Schema.Codec<InterconnectGroupPhysicalStructureMetrosFacilitiesZones> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
     interconnects: Schema.optional(Schema.Array(Schema.String)),
@@ -11541,7 +11541,7 @@ export interface InterconnectGroupPhysicalStructureMetrosFacilities {
   facility?: string;
 }
 
-export const InterconnectGroupPhysicalStructureMetrosFacilities: Schema.Schema<InterconnectGroupPhysicalStructureMetrosFacilities> =
+export const InterconnectGroupPhysicalStructureMetrosFacilities: Schema.Codec<InterconnectGroupPhysicalStructureMetrosFacilities> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zones: Schema.optional(
       Schema.Array(InterconnectGroupPhysicalStructureMetrosFacilitiesZones),
@@ -11557,7 +11557,7 @@ export interface InterconnectGroupPhysicalStructureMetros {
   metro?: string;
 }
 
-export const InterconnectGroupPhysicalStructureMetros: Schema.Schema<InterconnectGroupPhysicalStructureMetros> =
+export const InterconnectGroupPhysicalStructureMetros: Schema.Codec<InterconnectGroupPhysicalStructureMetros> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     facilities: Schema.optional(
       Schema.Array(InterconnectGroupPhysicalStructureMetrosFacilities),
@@ -11570,7 +11570,7 @@ export interface TargetHttpsProxiesSetCertificateMapRequest {
   certificateMap?: string;
 }
 
-export const TargetHttpsProxiesSetCertificateMapRequest: Schema.Schema<TargetHttpsProxiesSetCertificateMapRequest> =
+export const TargetHttpsProxiesSetCertificateMapRequest: Schema.Codec<TargetHttpsProxiesSetCertificateMapRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateMap: Schema.optional(Schema.String),
   }).annotate({ identifier: "TargetHttpsProxiesSetCertificateMapRequest" });
@@ -11580,7 +11580,7 @@ export interface TargetVpnGatewayParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const TargetVpnGatewayParams: Schema.Schema<TargetVpnGatewayParams> =
+export const TargetVpnGatewayParams: Schema.Codec<TargetVpnGatewayParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -11618,7 +11618,7 @@ export interface TargetVpnGateway {
   region?: string;
 }
 
-export const TargetVpnGateway: Schema.Schema<TargetVpnGateway> =
+export const TargetVpnGateway: Schema.Codec<TargetVpnGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -11677,7 +11677,7 @@ export interface TargetVpnGatewaysScopedList {
   };
 }
 
-export const TargetVpnGatewaysScopedList: Schema.Schema<TargetVpnGatewaysScopedList> =
+export const TargetVpnGatewaysScopedList: Schema.Codec<TargetVpnGatewaysScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetVpnGateways: Schema.optional(Schema.Array(TargetVpnGateway)),
     warning: Schema.optional(
@@ -11747,7 +11747,7 @@ export interface TargetVpnGatewayAggregatedList {
   id?: string;
 }
 
-export const TargetVpnGatewayAggregatedList: Schema.Schema<TargetVpnGatewayAggregatedList> =
+export const TargetVpnGatewayAggregatedList: Schema.Codec<TargetVpnGatewayAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -11778,7 +11778,7 @@ export interface ForwardingRuleAttachedExtension {
   reference?: string;
 }
 
-export const ForwardingRuleAttachedExtension: Schema.Schema<ForwardingRuleAttachedExtension> =
+export const ForwardingRuleAttachedExtension: Schema.Codec<ForwardingRuleAttachedExtension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reference: Schema.optional(Schema.String),
   }).annotate({ identifier: "ForwardingRuleAttachedExtension" });
@@ -11906,7 +11906,7 @@ export interface ForwardingRule {
     | (string & {});
 }
 
-export const ForwardingRule: Schema.Schema<ForwardingRule> =
+export const ForwardingRule: Schema.Codec<ForwardingRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fingerprint: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -12008,7 +12008,7 @@ export interface ForwardingRuleList {
   selfLink?: string;
 }
 
-export const ForwardingRuleList: Schema.Schema<ForwardingRuleList> =
+export const ForwardingRuleList: Schema.Codec<ForwardingRuleList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(ForwardingRule)),
@@ -12048,7 +12048,7 @@ export interface NetworkEndpoint {
   clientDestinationPort?: number;
 }
 
-export const NetworkEndpoint: Schema.Schema<NetworkEndpoint> =
+export const NetworkEndpoint: Schema.Codec<NetworkEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
     fqdn: Schema.optional(Schema.String),
@@ -12064,7 +12064,7 @@ export interface NetworkEndpointGroupsAttachEndpointsRequest {
   networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
-export const NetworkEndpointGroupsAttachEndpointsRequest: Schema.Schema<NetworkEndpointGroupsAttachEndpointsRequest> =
+export const NetworkEndpointGroupsAttachEndpointsRequest: Schema.Codec<NetworkEndpointGroupsAttachEndpointsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
   }).annotate({ identifier: "NetworkEndpointGroupsAttachEndpointsRequest" });
@@ -12076,7 +12076,7 @@ export interface NetworkPolicyTrafficClassificationRuleMatcherLayer4Config {
   ports?: ReadonlyArray<string>;
 }
 
-export const NetworkPolicyTrafficClassificationRuleMatcherLayer4Config: Schema.Schema<NetworkPolicyTrafficClassificationRuleMatcherLayer4Config> =
+export const NetworkPolicyTrafficClassificationRuleMatcherLayer4Config: Schema.Codec<NetworkPolicyTrafficClassificationRuleMatcherLayer4Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipProtocol: Schema.optional(Schema.String),
     ports: Schema.optional(Schema.Array(Schema.String)),
@@ -12095,7 +12095,7 @@ export interface ReservationSlotPhysicalTopology {
   host?: string;
 }
 
-export const ReservationSlotPhysicalTopology: Schema.Schema<ReservationSlotPhysicalTopology> =
+export const ReservationSlotPhysicalTopology: Schema.Codec<ReservationSlotPhysicalTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subBlock: Schema.optional(Schema.String),
     block: Schema.optional(Schema.String),
@@ -12112,7 +12112,7 @@ export interface ReservationSlotStatus {
   runningInstances?: ReadonlyArray<string>;
 }
 
-export const ReservationSlotStatus: Schema.Schema<ReservationSlotStatus> =
+export const ReservationSlotStatus: Schema.Codec<ReservationSlotStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     physicalTopology: Schema.optional(ReservationSlotPhysicalTopology),
     rdmaIpAddresses: Schema.optional(Schema.Array(Schema.String)),
@@ -12150,7 +12150,7 @@ export interface ReservationSlot {
     | (string & {});
 }
 
-export const ReservationSlot: Schema.Schema<ReservationSlot> =
+export const ReservationSlot: Schema.Codec<ReservationSlot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     physicalTopology: Schema.optional(ReservationSlotPhysicalTopology),
     creationTimestamp: Schema.optional(Schema.String),
@@ -12170,7 +12170,7 @@ export interface ExternalVpnGatewayParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const ExternalVpnGatewayParams: Schema.Schema<ExternalVpnGatewayParams> =
+export const ExternalVpnGatewayParams: Schema.Codec<ExternalVpnGatewayParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -12186,7 +12186,7 @@ export interface ExternalVpnGatewayInterface {
   ipAddress?: string;
 }
 
-export const ExternalVpnGatewayInterface: Schema.Schema<ExternalVpnGatewayInterface> =
+export const ExternalVpnGatewayInterface: Schema.Codec<ExternalVpnGatewayInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipv6Address: Schema.optional(Schema.String),
     id: Schema.optional(Schema.Number),
@@ -12222,7 +12222,7 @@ export interface ExternalVpnGateway {
     | (string & {});
 }
 
-export const ExternalVpnGateway: Schema.Schema<ExternalVpnGateway> =
+export const ExternalVpnGateway: Schema.Codec<ExternalVpnGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     params: Schema.optional(ExternalVpnGatewayParams),
     id: Schema.optional(Schema.String),
@@ -12287,7 +12287,7 @@ export interface ExternalVpnGatewayList {
   etag?: string;
 }
 
-export const ExternalVpnGatewayList: Schema.Schema<ExternalVpnGatewayList> =
+export const ExternalVpnGatewayList: Schema.Codec<ExternalVpnGatewayList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(ExternalVpnGateway)),
@@ -12318,7 +12318,7 @@ export interface WafExpressionSetExpression {
   sensitivity?: number;
 }
 
-export const WafExpressionSetExpression: Schema.Schema<WafExpressionSetExpression> =
+export const WafExpressionSetExpression: Schema.Codec<WafExpressionSetExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     sensitivity: Schema.optional(Schema.Number),
@@ -12333,7 +12333,7 @@ export interface WafExpressionSet {
   id?: string;
 }
 
-export const WafExpressionSet: Schema.Schema<WafExpressionSet> =
+export const WafExpressionSet: Schema.Codec<WafExpressionSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aliases: Schema.optional(Schema.Array(Schema.String)),
     expressions: Schema.optional(Schema.Array(WafExpressionSetExpression)),
@@ -12345,7 +12345,7 @@ export interface PreconfiguredWafSet {
   expressionSets?: ReadonlyArray<WafExpressionSet>;
 }
 
-export const PreconfiguredWafSet: Schema.Schema<PreconfiguredWafSet> =
+export const PreconfiguredWafSet: Schema.Codec<PreconfiguredWafSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expressionSets: Schema.optional(Schema.Array(WafExpressionSet)),
   }).annotate({ identifier: "PreconfiguredWafSet" });
@@ -12401,7 +12401,7 @@ export interface AddressAggregatedList {
   selfLink?: string;
 }
 
-export const AddressAggregatedList: Schema.Schema<AddressAggregatedList> =
+export const AddressAggregatedList: Schema.Codec<AddressAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Record(Schema.String, AddressesScopedList)),
     id: Schema.optional(Schema.String),
@@ -12430,7 +12430,7 @@ export interface DisksAddResourcePoliciesRequest {
   resourcePolicies?: ReadonlyArray<string>;
 }
 
-export const DisksAddResourcePoliciesRequest: Schema.Schema<DisksAddResourcePoliciesRequest> =
+export const DisksAddResourcePoliciesRequest: Schema.Codec<DisksAddResourcePoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DisksAddResourcePoliciesRequest" });
@@ -12440,7 +12440,7 @@ export interface TargetTcpProxiesSetProxyHeaderRequest {
   proxyHeader?: "NONE" | "PROXY_V1" | (string & {});
 }
 
-export const TargetTcpProxiesSetProxyHeaderRequest: Schema.Schema<TargetTcpProxiesSetProxyHeaderRequest> =
+export const TargetTcpProxiesSetProxyHeaderRequest: Schema.Codec<TargetTcpProxiesSetProxyHeaderRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyHeader: Schema.optional(Schema.String),
   }).annotate({ identifier: "TargetTcpProxiesSetProxyHeaderRequest" });
@@ -12450,7 +12450,7 @@ export interface RegionDisksResizeRequest {
   sizeGb?: string;
 }
 
-export const RegionDisksResizeRequest: Schema.Schema<RegionDisksResizeRequest> =
+export const RegionDisksResizeRequest: Schema.Codec<RegionDisksResizeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeGb: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegionDisksResizeRequest" });
@@ -12462,7 +12462,7 @@ export interface SecurityPolicyRuleMatcherConfigLayer4Config {
   ports?: ReadonlyArray<string>;
 }
 
-export const SecurityPolicyRuleMatcherConfigLayer4Config: Schema.Schema<SecurityPolicyRuleMatcherConfigLayer4Config> =
+export const SecurityPolicyRuleMatcherConfigLayer4Config: Schema.Codec<SecurityPolicyRuleMatcherConfigLayer4Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipProtocol: Schema.optional(Schema.String),
     ports: Schema.optional(Schema.Array(Schema.String)),
@@ -12473,7 +12473,7 @@ export interface TargetPoolsRemoveInstanceRequest {
   instances?: ReadonlyArray<InstanceReference>;
 }
 
-export const TargetPoolsRemoveInstanceRequest: Schema.Schema<TargetPoolsRemoveInstanceRequest> =
+export const TargetPoolsRemoveInstanceRequest: Schema.Codec<TargetPoolsRemoveInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(InstanceReference)),
   }).annotate({ identifier: "TargetPoolsRemoveInstanceRequest" });
@@ -12494,7 +12494,7 @@ export interface InterconnectLocationRegionInfo {
   l2ForwardingEnabled?: boolean;
 }
 
-export const InterconnectLocationRegionInfo: Schema.Schema<InterconnectLocationRegionInfo> =
+export const InterconnectLocationRegionInfo: Schema.Codec<InterconnectLocationRegionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expectedRttMs: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -12507,7 +12507,7 @@ export interface InterconnectLocationCrossSiteInterconnectInfo {
   city?: string;
 }
 
-export const InterconnectLocationCrossSiteInterconnectInfo: Schema.Schema<InterconnectLocationCrossSiteInterconnectInfo> =
+export const InterconnectLocationCrossSiteInterconnectInfo: Schema.Codec<InterconnectLocationCrossSiteInterconnectInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     city: Schema.optional(Schema.String),
   }).annotate({ identifier: "InterconnectLocationCrossSiteInterconnectInfo" });
@@ -12573,7 +12573,7 @@ export interface InterconnectLocation {
   singleRegionProductionCriticalPeerLocations?: ReadonlyArray<string>;
 }
 
-export const InterconnectLocation: Schema.Schema<InterconnectLocation> =
+export const InterconnectLocation: Schema.Codec<InterconnectLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableFeatures: Schema.optional(Schema.Array(Schema.String)),
     supportsPzs: Schema.optional(Schema.Boolean),
@@ -12606,7 +12606,7 @@ export interface RegionInstanceGroupManagersAbandonInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const RegionInstanceGroupManagersAbandonInstancesRequest: Schema.Schema<RegionInstanceGroupManagersAbandonInstancesRequest> =
+export const RegionInstanceGroupManagersAbandonInstancesRequest: Schema.Codec<RegionInstanceGroupManagersAbandonInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -12618,7 +12618,7 @@ export interface InstanceGroupManagersDeletePerInstanceConfigsReq {
   names?: ReadonlyArray<string>;
 }
 
-export const InstanceGroupManagersDeletePerInstanceConfigsReq: Schema.Schema<InstanceGroupManagersDeletePerInstanceConfigsReq> =
+export const InstanceGroupManagersDeletePerInstanceConfigsReq: Schema.Codec<InstanceGroupManagersDeletePerInstanceConfigsReq> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -12630,7 +12630,7 @@ export interface BackendBucketParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const BackendBucketParams: Schema.Schema<BackendBucketParams> =
+export const BackendBucketParams: Schema.Codec<BackendBucketParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -12644,7 +12644,7 @@ export interface BackendBucketCdnPolicyCacheKeyPolicy {
   includeHttpHeaders?: ReadonlyArray<string>;
 }
 
-export const BackendBucketCdnPolicyCacheKeyPolicy: Schema.Schema<BackendBucketCdnPolicyCacheKeyPolicy> =
+export const BackendBucketCdnPolicyCacheKeyPolicy: Schema.Codec<BackendBucketCdnPolicyCacheKeyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryStringWhitelist: Schema.optional(Schema.Array(Schema.String)),
     includeHttpHeaders: Schema.optional(Schema.Array(Schema.String)),
@@ -12657,7 +12657,7 @@ export interface BackendBucketCdnPolicyNegativeCachingPolicy {
   ttl?: number;
 }
 
-export const BackendBucketCdnPolicyNegativeCachingPolicy: Schema.Schema<BackendBucketCdnPolicyNegativeCachingPolicy> =
+export const BackendBucketCdnPolicyNegativeCachingPolicy: Schema.Codec<BackendBucketCdnPolicyNegativeCachingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     ttl: Schema.optional(Schema.Number),
@@ -12668,7 +12668,7 @@ export interface BackendBucketCdnPolicyBypassCacheOnRequestHeader {
   headerName?: string;
 }
 
-export const BackendBucketCdnPolicyBypassCacheOnRequestHeader: Schema.Schema<BackendBucketCdnPolicyBypassCacheOnRequestHeader> =
+export const BackendBucketCdnPolicyBypassCacheOnRequestHeader: Schema.Codec<BackendBucketCdnPolicyBypassCacheOnRequestHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerName: Schema.optional(Schema.String),
   }).annotate({
@@ -12707,7 +12707,7 @@ export interface BackendBucketCdnPolicy {
   serveWhileStale?: number;
 }
 
-export const BackendBucketCdnPolicy: Schema.Schema<BackendBucketCdnPolicy> =
+export const BackendBucketCdnPolicy: Schema.Codec<BackendBucketCdnPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cacheMode: Schema.optional(Schema.String),
     signedUrlCacheMaxAgeSec: Schema.optional(Schema.String),
@@ -12732,7 +12732,7 @@ export interface BackendBucketUsedBy {
   reference?: string;
 }
 
-export const BackendBucketUsedBy: Schema.Schema<BackendBucketUsedBy> =
+export const BackendBucketUsedBy: Schema.Codec<BackendBucketUsedBy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reference: Schema.optional(Schema.String),
   }).annotate({ identifier: "BackendBucketUsedBy" });
@@ -12772,7 +12772,7 @@ export interface BackendBucket {
   name?: string;
 }
 
-export const BackendBucket: Schema.Schema<BackendBucket> =
+export const BackendBucket: Schema.Codec<BackendBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -12833,7 +12833,7 @@ export interface BackendBucketsScopedList {
   };
 }
 
-export const BackendBucketsScopedList: Schema.Schema<BackendBucketsScopedList> =
+export const BackendBucketsScopedList: Schema.Codec<BackendBucketsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backendBuckets: Schema.optional(Schema.Array(BackendBucket)),
     warning: Schema.optional(
@@ -12888,7 +12888,7 @@ export interface PublicDelegatedPrefixPublicDelegatedSubPrefix {
   allocatablePrefixLength?: number;
 }
 
-export const PublicDelegatedPrefixPublicDelegatedSubPrefix: Schema.Schema<PublicDelegatedPrefixPublicDelegatedSubPrefix> =
+export const PublicDelegatedPrefixPublicDelegatedSubPrefix: Schema.Codec<PublicDelegatedPrefixPublicDelegatedSubPrefix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipCidrRange: Schema.optional(Schema.String),
     enableEnhancedIpv4Allocation: Schema.optional(Schema.Boolean),
@@ -12962,7 +12962,7 @@ export interface PublicDelegatedPrefix {
     | (string & {});
 }
 
-export const PublicDelegatedPrefix: Schema.Schema<PublicDelegatedPrefix> =
+export const PublicDelegatedPrefix: Schema.Codec<PublicDelegatedPrefix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicDelegatedSubPrefixs: Schema.optional(
       Schema.Array(PublicDelegatedPrefixPublicDelegatedSubPrefix),
@@ -13036,7 +13036,7 @@ export interface PublicDelegatedPrefixList {
   kind?: string;
 }
 
-export const PublicDelegatedPrefixList: Schema.Schema<PublicDelegatedPrefixList> =
+export const PublicDelegatedPrefixList: Schema.Codec<PublicDelegatedPrefixList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(PublicDelegatedPrefix)),
@@ -13064,7 +13064,7 @@ export interface WireGroupEndpoint {
   interconnects?: Record<string, WireGroupEndpointInterconnect>;
 }
 
-export const WireGroupEndpoint: Schema.Schema<WireGroupEndpoint> =
+export const WireGroupEndpoint: Schema.Codec<WireGroupEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interconnects: Schema.optional(
       Schema.Record(Schema.String, WireGroupEndpointInterconnect),
@@ -13076,7 +13076,7 @@ export interface WireGroupProperties {
   type?: "BOX_AND_CROSS" | "REDUNDANT" | "WIRE" | (string & {});
 }
 
-export const WireGroupProperties: Schema.Schema<WireGroupProperties> =
+export const WireGroupProperties: Schema.Codec<WireGroupProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "WireGroupProperties" });
@@ -13088,7 +13088,7 @@ export interface WireGroupTopologyEndpoint {
   city?: string;
 }
 
-export const WireGroupTopologyEndpoint: Schema.Schema<WireGroupTopologyEndpoint> =
+export const WireGroupTopologyEndpoint: Schema.Codec<WireGroupTopologyEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     city: Schema.optional(Schema.String),
@@ -13099,7 +13099,7 @@ export interface WireGroupTopology {
   endpoints?: ReadonlyArray<WireGroupTopologyEndpoint>;
 }
 
-export const WireGroupTopology: Schema.Schema<WireGroupTopology> =
+export const WireGroupTopology: Schema.Codec<WireGroupTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoints: Schema.optional(Schema.Array(WireGroupTopologyEndpoint)),
   }).annotate({ identifier: "WireGroupTopology" });
@@ -13116,7 +13116,7 @@ export interface WireProperties {
   faultResponse?: "DISABLE_PORT" | "NONE" | (string & {});
 }
 
-export const WireProperties: Schema.Schema<WireProperties> =
+export const WireProperties: Schema.Codec<WireProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bandwidthAllocation: Schema.optional(Schema.String),
     bandwidthUnmetered: Schema.optional(Schema.String),
@@ -13128,7 +13128,7 @@ export interface WireEndpoint {
   interconnect?: string;
 }
 
-export const WireEndpoint: Schema.Schema<WireEndpoint> =
+export const WireEndpoint: Schema.Codec<WireEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vlanTag: Schema.optional(Schema.Number),
     interconnect: Schema.optional(Schema.String),
@@ -13145,7 +13145,7 @@ export interface Wire {
   label?: string;
 }
 
-export const Wire: Schema.Schema<Wire> =
+export const Wire: Schema.Codec<Wire> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wireProperties: Schema.optional(WireProperties),
     adminEnabled: Schema.optional(Schema.Boolean),
@@ -13182,7 +13182,7 @@ export interface WireGroup {
   wires?: ReadonlyArray<Wire>;
 }
 
-export const WireGroup: Schema.Schema<WireGroup> =
+export const WireGroup: Schema.Codec<WireGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     creationTimestamp: Schema.optional(Schema.String),
@@ -13206,7 +13206,7 @@ export interface Screenshot {
   contents?: string;
 }
 
-export const Screenshot: Schema.Schema<Screenshot> =
+export const Screenshot: Schema.Codec<Screenshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     contents: Schema.optional(Schema.String),
@@ -13217,7 +13217,7 @@ export interface DiskSettingsAccessLocationAccessLocationPreference {
   region?: string;
 }
 
-export const DiskSettingsAccessLocationAccessLocationPreference: Schema.Schema<DiskSettingsAccessLocationAccessLocationPreference> =
+export const DiskSettingsAccessLocationAccessLocationPreference: Schema.Codec<DiskSettingsAccessLocationAccessLocationPreference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
   }).annotate({
@@ -13238,7 +13238,7 @@ export interface DiskSettingsAccessLocation {
   >;
 }
 
-export const DiskSettingsAccessLocation: Schema.Schema<DiskSettingsAccessLocation> =
+export const DiskSettingsAccessLocation: Schema.Codec<DiskSettingsAccessLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Schema.String),
     locations: Schema.optional(
@@ -13258,7 +13258,7 @@ export interface GuestAttributesEntry {
   value?: string;
 }
 
-export const GuestAttributesEntry: Schema.Schema<GuestAttributesEntry> =
+export const GuestAttributesEntry: Schema.Codec<GuestAttributesEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -13280,7 +13280,7 @@ export interface FirewallPolicyAssociation {
   attachmentTarget?: string;
 }
 
-export const FirewallPolicyAssociation: Schema.Schema<FirewallPolicyAssociation> =
+export const FirewallPolicyAssociation: Schema.Codec<FirewallPolicyAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priority: Schema.optional(Schema.Number),
     shortName: Schema.optional(Schema.String),
@@ -13297,7 +13297,7 @@ export interface FirewallPolicyRuleMatcherLayer4Config {
   ipProtocol?: string;
 }
 
-export const FirewallPolicyRuleMatcherLayer4Config: Schema.Schema<FirewallPolicyRuleMatcherLayer4Config> =
+export const FirewallPolicyRuleMatcherLayer4Config: Schema.Codec<FirewallPolicyRuleMatcherLayer4Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ports: Schema.optional(Schema.Array(Schema.String)),
     ipProtocol: Schema.optional(Schema.String),
@@ -13310,7 +13310,7 @@ export interface FirewallPolicyRuleSecureTag {
   state?: "EFFECTIVE" | "INEFFECTIVE" | (string & {});
 }
 
-export const FirewallPolicyRuleSecureTag: Schema.Schema<FirewallPolicyRuleSecureTag> =
+export const FirewallPolicyRuleSecureTag: Schema.Codec<FirewallPolicyRuleSecureTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -13393,7 +13393,7 @@ export interface FirewallPolicyRuleMatcher {
   srcIpRanges?: ReadonlyArray<string>;
 }
 
-export const FirewallPolicyRuleMatcher: Schema.Schema<FirewallPolicyRuleMatcher> =
+export const FirewallPolicyRuleMatcher: Schema.Codec<FirewallPolicyRuleMatcher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destFqdns: Schema.optional(Schema.Array(Schema.String)),
     destAddressGroups: Schema.optional(Schema.Array(Schema.String)),
@@ -13455,7 +13455,7 @@ export interface FirewallPolicyRule {
   action?: string;
 }
 
-export const FirewallPolicyRule: Schema.Schema<FirewallPolicyRule> =
+export const FirewallPolicyRule: Schema.Codec<FirewallPolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetServiceAccounts: Schema.optional(Schema.Array(Schema.String)),
     ruleTupleCount: Schema.optional(Schema.Number),
@@ -13522,7 +13522,7 @@ export interface FirewallPolicy {
   ruleTupleCount?: number;
 }
 
-export const FirewallPolicy: Schema.Schema<FirewallPolicy> =
+export const FirewallPolicy: Schema.Codec<FirewallPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -13585,7 +13585,7 @@ export interface FirewallPoliciesScopedList {
   };
 }
 
-export const FirewallPoliciesScopedList: Schema.Schema<FirewallPoliciesScopedList> =
+export const FirewallPoliciesScopedList: Schema.Codec<FirewallPoliciesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallPolicies: Schema.optional(Schema.Array(FirewallPolicy)),
     warning: Schema.optional(
@@ -13655,7 +13655,7 @@ export interface NetworkFirewallPolicyAggregatedList {
   nextPageToken?: string;
 }
 
-export const NetworkFirewallPolicyAggregatedList: Schema.Schema<NetworkFirewallPolicyAggregatedList> =
+export const NetworkFirewallPolicyAggregatedList: Schema.Codec<NetworkFirewallPolicyAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -13706,7 +13706,7 @@ export interface CompositeHealthCheck {
   healthSources?: ReadonlyArray<string>;
 }
 
-export const CompositeHealthCheck: Schema.Schema<CompositeHealthCheck> =
+export const CompositeHealthCheck: Schema.Codec<CompositeHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fingerprint: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -13762,7 +13762,7 @@ export interface CompositeHealthChecksScopedList {
   };
 }
 
-export const CompositeHealthChecksScopedList: Schema.Schema<CompositeHealthChecksScopedList> =
+export const CompositeHealthChecksScopedList: Schema.Codec<CompositeHealthChecksScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compositeHealthChecks: Schema.optional(Schema.Array(CompositeHealthCheck)),
     warning: Schema.optional(
@@ -13832,7 +13832,7 @@ export interface CompositeHealthCheckAggregatedList {
   };
 }
 
-export const CompositeHealthCheckAggregatedList: Schema.Schema<CompositeHealthCheckAggregatedList> =
+export const CompositeHealthCheckAggregatedList: Schema.Codec<CompositeHealthCheckAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -13863,7 +13863,7 @@ export interface NetworkEndpointGroupsDetachEndpointsRequest {
   networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
-export const NetworkEndpointGroupsDetachEndpointsRequest: Schema.Schema<NetworkEndpointGroupsDetachEndpointsRequest> =
+export const NetworkEndpointGroupsDetachEndpointsRequest: Schema.Codec<NetworkEndpointGroupsDetachEndpointsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
   }).annotate({ identifier: "NetworkEndpointGroupsDetachEndpointsRequest" });
@@ -13873,7 +13873,7 @@ export interface ManagedInstanceAllInstancesConfig {
   revision?: string;
 }
 
-export const ManagedInstanceAllInstancesConfig: Schema.Schema<ManagedInstanceAllInstancesConfig> =
+export const ManagedInstanceAllInstancesConfig: Schema.Codec<ManagedInstanceAllInstancesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revision: Schema.optional(Schema.String),
   }).annotate({ identifier: "ManagedInstanceAllInstancesConfig" });
@@ -13927,7 +13927,7 @@ export interface AddressList {
   items?: ReadonlyArray<Address>;
 }
 
-export const AddressList: Schema.Schema<AddressList> =
+export const AddressList: Schema.Codec<AddressList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -13999,7 +13999,7 @@ export interface FirewallList {
   id?: string;
 }
 
-export const FirewallList: Schema.Schema<FirewallList> =
+export const FirewallList: Schema.Codec<FirewallList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -14083,7 +14083,7 @@ export interface Region {
   zones?: ReadonlyArray<string>;
 }
 
-export const Region: Schema.Schema<Region> =
+export const Region: Schema.Codec<Region> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportsPzs: Schema.optional(Schema.Boolean),
     deprecated: Schema.optional(DeprecationStatus),
@@ -14119,7 +14119,7 @@ export interface OrganizationSecurityPoliciesListAssociationsResponse {
   kind?: string;
 }
 
-export const OrganizationSecurityPoliciesListAssociationsResponse: Schema.Schema<OrganizationSecurityPoliciesListAssociationsResponse> =
+export const OrganizationSecurityPoliciesListAssociationsResponse: Schema.Codec<OrganizationSecurityPoliciesListAssociationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     associations: Schema.optional(Schema.Array(SecurityPolicyAssociation)),
     kind: Schema.optional(Schema.String),
@@ -14132,7 +14132,7 @@ export interface InstanceGroupManagersAbandonInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const InstanceGroupManagersAbandonInstancesRequest: Schema.Schema<InstanceGroupManagersAbandonInstancesRequest> =
+export const InstanceGroupManagersAbandonInstancesRequest: Schema.Codec<InstanceGroupManagersAbandonInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InstanceGroupManagersAbandonInstancesRequest" });
@@ -14142,7 +14142,7 @@ export interface SnapshotSettingsAccessLocationAccessLocationPreference {
   region?: string;
 }
 
-export const SnapshotSettingsAccessLocationAccessLocationPreference: Schema.Schema<SnapshotSettingsAccessLocationAccessLocationPreference> =
+export const SnapshotSettingsAccessLocationAccessLocationPreference: Schema.Codec<SnapshotSettingsAccessLocationAccessLocationPreference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
   }).annotate({
@@ -14156,7 +14156,7 @@ export interface InterconnectDiagnosticsMacsecStatus {
   ckn?: string;
 }
 
-export const InterconnectDiagnosticsMacsecStatus: Schema.Schema<InterconnectDiagnosticsMacsecStatus> =
+export const InterconnectDiagnosticsMacsecStatus: Schema.Codec<InterconnectDiagnosticsMacsecStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operational: Schema.optional(Schema.Boolean),
     ckn: Schema.optional(Schema.String),
@@ -14171,7 +14171,7 @@ export interface InterconnectDiagnosticsLinkLACPStatus {
   googleSystemId?: string;
 }
 
-export const InterconnectDiagnosticsLinkLACPStatus: Schema.Schema<InterconnectDiagnosticsLinkLACPStatus> =
+export const InterconnectDiagnosticsLinkLACPStatus: Schema.Codec<InterconnectDiagnosticsLinkLACPStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     neighborSystemId: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -14199,7 +14199,7 @@ export interface InterconnectDiagnosticsLinkStatus {
   transmittingOpticalPower?: InterconnectDiagnosticsLinkOpticalPower;
 }
 
-export const InterconnectDiagnosticsLinkStatus: Schema.Schema<InterconnectDiagnosticsLinkStatus> =
+export const InterconnectDiagnosticsLinkStatus: Schema.Codec<InterconnectDiagnosticsLinkStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleDemarc: Schema.optional(Schema.String),
     macsec: Schema.optional(InterconnectDiagnosticsMacsecStatus),
@@ -14234,7 +14234,7 @@ export interface InterconnectDiagnostics {
     | (string & {});
 }
 
-export const InterconnectDiagnostics: Schema.Schema<InterconnectDiagnostics> =
+export const InterconnectDiagnostics: Schema.Codec<InterconnectDiagnostics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     macAddress: Schema.optional(Schema.String),
     links: Schema.optional(Schema.Array(InterconnectDiagnosticsLinkStatus)),
@@ -14247,7 +14247,7 @@ export interface InterconnectsGetDiagnosticsResponse {
   result?: InterconnectDiagnostics;
 }
 
-export const InterconnectsGetDiagnosticsResponse: Schema.Schema<InterconnectsGetDiagnosticsResponse> =
+export const InterconnectsGetDiagnosticsResponse: Schema.Codec<InterconnectsGetDiagnosticsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(InterconnectDiagnostics),
   }).annotate({ identifier: "InterconnectsGetDiagnosticsResponse" });
@@ -14304,7 +14304,7 @@ export interface WireGroupList {
   etag?: string;
 }
 
-export const WireGroupList: Schema.Schema<WireGroupList> =
+export const WireGroupList: Schema.Codec<WireGroupList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachables: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -14331,7 +14331,7 @@ export const WireGroupList: Schema.Schema<WireGroupList> =
 
 export interface ResourcePolicyDiskConsistencyGroupPolicy {}
 
-export const ResourcePolicyDiskConsistencyGroupPolicy: Schema.Schema<ResourcePolicyDiskConsistencyGroupPolicy> =
+export const ResourcePolicyDiskConsistencyGroupPolicy: Schema.Codec<ResourcePolicyDiskConsistencyGroupPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResourcePolicyDiskConsistencyGroupPolicy",
   });
@@ -14343,7 +14343,7 @@ export interface InterconnectMacsecPreSharedKey {
   startTime?: string;
 }
 
-export const InterconnectMacsecPreSharedKey: Schema.Schema<InterconnectMacsecPreSharedKey> =
+export const InterconnectMacsecPreSharedKey: Schema.Codec<InterconnectMacsecPreSharedKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -14356,7 +14356,7 @@ export interface InterconnectMacsec {
   failOpen?: boolean;
 }
 
-export const InterconnectMacsec: Schema.Schema<InterconnectMacsec> =
+export const InterconnectMacsec: Schema.Codec<InterconnectMacsec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preSharedKeys: Schema.optional(
       Schema.Array(InterconnectMacsecPreSharedKey),
@@ -14369,7 +14369,7 @@ export interface InterconnectParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const InterconnectParams: Schema.Schema<InterconnectParams> =
+export const InterconnectParams: Schema.Codec<InterconnectParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -14406,7 +14406,7 @@ export interface InterconnectOutageNotification {
     | (string & {});
 }
 
-export const InterconnectOutageNotification: Schema.Schema<InterconnectOutageNotification> =
+export const InterconnectOutageNotification: Schema.Codec<InterconnectOutageNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     affectedCircuits: Schema.optional(Schema.Array(Schema.String)),
     startTime: Schema.optional(Schema.String),
@@ -14420,7 +14420,7 @@ export const InterconnectOutageNotification: Schema.Schema<InterconnectOutageNot
 
 export interface InterconnectApplicationAwareInterconnectStrictPriorityPolicy {}
 
-export const InterconnectApplicationAwareInterconnectStrictPriorityPolicy: Schema.Schema<InterconnectApplicationAwareInterconnectStrictPriorityPolicy> =
+export const InterconnectApplicationAwareInterconnectStrictPriorityPolicy: Schema.Codec<InterconnectApplicationAwareInterconnectStrictPriorityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InterconnectApplicationAwareInterconnectStrictPriorityPolicy",
   });
@@ -14432,7 +14432,7 @@ export interface InterconnectApplicationAwareInterconnectBandwidthPercentage {
   trafficClass?: "TC1" | "TC2" | "TC3" | "TC4" | "TC5" | "TC6" | (string & {});
 }
 
-export const InterconnectApplicationAwareInterconnectBandwidthPercentage: Schema.Schema<InterconnectApplicationAwareInterconnectBandwidthPercentage> =
+export const InterconnectApplicationAwareInterconnectBandwidthPercentage: Schema.Codec<InterconnectApplicationAwareInterconnectBandwidthPercentage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentage: Schema.optional(Schema.Number),
     trafficClass: Schema.optional(Schema.String),
@@ -14445,7 +14445,7 @@ export interface InterconnectApplicationAwareInterconnectBandwidthPercentagePoli
   bandwidthPercentages?: ReadonlyArray<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
 }
 
-export const InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy: Schema.Schema<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy> =
+export const InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy: Schema.Codec<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bandwidthPercentages: Schema.optional(
       Schema.Array(InterconnectApplicationAwareInterconnectBandwidthPercentage),
@@ -14464,7 +14464,7 @@ export interface InterconnectApplicationAwareInterconnect {
   bandwidthPercentagePolicy?: InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy;
 }
 
-export const InterconnectApplicationAwareInterconnect: Schema.Schema<InterconnectApplicationAwareInterconnect> =
+export const InterconnectApplicationAwareInterconnect: Schema.Codec<InterconnectApplicationAwareInterconnect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     strictPriorityPolicy: Schema.optional(
       InterconnectApplicationAwareInterconnectStrictPriorityPolicy,
@@ -14563,7 +14563,7 @@ export interface Interconnect {
   subzone?: "SUBZONE_A" | "SUBZONE_B" | (string & {});
 }
 
-export const Interconnect: Schema.Schema<Interconnect> =
+export const Interconnect: Schema.Codec<Interconnect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     aaiEnabled: Schema.optional(Schema.Boolean),
@@ -14657,7 +14657,7 @@ export interface InterconnectList {
   nextPageToken?: string;
 }
 
-export const InterconnectList: Schema.Schema<InterconnectList> =
+export const InterconnectList: Schema.Codec<InterconnectList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -14703,7 +14703,7 @@ export interface InterconnectGroupConfiguredTopologyCapabilityIntendedCapability
   metros?: ReadonlyArray<string>;
 }
 
-export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers: Schema.Schema<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers> =
+export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers: Schema.Codec<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explanation: Schema.optional(Schema.String),
     documentationLink: Schema.optional(Schema.String),
@@ -14722,7 +14722,7 @@ export interface InstantSnapshotParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const InstantSnapshotParams: Schema.Schema<InstantSnapshotParams> =
+export const InstantSnapshotParams: Schema.Codec<InstantSnapshotParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -14734,7 +14734,7 @@ export interface InstantSnapshotResourceStatus {
   storageSizeBytes?: string;
 }
 
-export const InstantSnapshotResourceStatus: Schema.Schema<InstantSnapshotResourceStatus> =
+export const InstantSnapshotResourceStatus: Schema.Codec<InstantSnapshotResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageSizeBytes: Schema.optional(Schema.String),
   }).annotate({ identifier: "InstantSnapshotResourceStatus" });
@@ -14796,7 +14796,7 @@ export interface InstantSnapshot {
     | (string & {});
 }
 
-export const InstantSnapshot: Schema.Schema<InstantSnapshot> =
+export const InstantSnapshot: Schema.Codec<InstantSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     satisfiesPzs: Schema.optional(Schema.Boolean),
@@ -14871,7 +14871,7 @@ export interface HealthCheckList {
   };
 }
 
-export const HealthCheckList: Schema.Schema<HealthCheckList> =
+export const HealthCheckList: Schema.Codec<HealthCheckList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -14907,7 +14907,7 @@ export interface ReservationBlockHealthInfo {
   healthySubBlockCount?: number;
 }
 
-export const ReservationBlockHealthInfo: Schema.Schema<ReservationBlockHealthInfo> =
+export const ReservationBlockHealthInfo: Schema.Codec<ReservationBlockHealthInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     degradedSubBlockCount: Schema.optional(Schema.Number),
     healthStatus: Schema.optional(Schema.String),
@@ -14921,7 +14921,7 @@ export interface ReservationBlockPhysicalTopologyInstancePhysicalHostTopology {
   subBlock?: string;
 }
 
-export const ReservationBlockPhysicalTopologyInstancePhysicalHostTopology: Schema.Schema<ReservationBlockPhysicalTopologyInstancePhysicalHostTopology> =
+export const ReservationBlockPhysicalTopologyInstancePhysicalHostTopology: Schema.Codec<ReservationBlockPhysicalTopologyInstancePhysicalHostTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     subBlock: Schema.optional(Schema.String),
@@ -14938,7 +14938,7 @@ export interface ReservationBlockPhysicalTopologyInstance {
   projectId?: string;
 }
 
-export const ReservationBlockPhysicalTopologyInstance: Schema.Schema<ReservationBlockPhysicalTopologyInstance> =
+export const ReservationBlockPhysicalTopologyInstance: Schema.Codec<ReservationBlockPhysicalTopologyInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceId: Schema.optional(Schema.String),
     physicalHostTopology: Schema.optional(
@@ -14956,7 +14956,7 @@ export interface ReservationBlockPhysicalTopology {
   cluster?: string;
 }
 
-export const ReservationBlockPhysicalTopology: Schema.Schema<ReservationBlockPhysicalTopology> =
+export const ReservationBlockPhysicalTopology: Schema.Codec<ReservationBlockPhysicalTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     block: Schema.optional(Schema.String),
     instances: Schema.optional(
@@ -15000,7 +15000,7 @@ export interface ReservationBlock {
   reservationSubBlockInUseCount?: number;
 }
 
-export const ReservationBlock: Schema.Schema<ReservationBlock> =
+export const ReservationBlock: Schema.Codec<ReservationBlock> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationSubBlockCount: Schema.optional(Schema.Number),
     reservationMaintenance: Schema.optional(GroupMaintenanceInfo),
@@ -15024,7 +15024,7 @@ export interface ReservationBlocksGetResponse {
   resource?: ReservationBlock;
 }
 
-export const ReservationBlocksGetResponse: Schema.Schema<ReservationBlocksGetResponse> =
+export const ReservationBlocksGetResponse: Schema.Codec<ReservationBlocksGetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(ReservationBlock),
   }).annotate({ identifier: "ReservationBlocksGetResponse" });
@@ -15034,7 +15034,7 @@ export interface InterconnectAttachmentPrivateInfo {
   tag8021q?: number;
 }
 
-export const InterconnectAttachmentPrivateInfo: Schema.Schema<InterconnectAttachmentPrivateInfo> =
+export const InterconnectAttachmentPrivateInfo: Schema.Codec<InterconnectAttachmentPrivateInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag8021q: Schema.optional(Schema.Number),
   }).annotate({ identifier: "InterconnectAttachmentPrivateInfo" });
@@ -15044,7 +15044,7 @@ export interface InterconnectAttachmentL2ForwardingGeneveHeader {
   vni?: number;
 }
 
-export const InterconnectAttachmentL2ForwardingGeneveHeader: Schema.Schema<InterconnectAttachmentL2ForwardingGeneveHeader> =
+export const InterconnectAttachmentL2ForwardingGeneveHeader: Schema.Codec<InterconnectAttachmentL2ForwardingGeneveHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vni: Schema.optional(Schema.Number),
   }).annotate({ identifier: "InterconnectAttachmentL2ForwardingGeneveHeader" });
@@ -15058,7 +15058,7 @@ export interface InterconnectAttachmentL2ForwardingApplianceMapping {
   innerVlanToApplianceMappings?: ReadonlyArray<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>;
 }
 
-export const InterconnectAttachmentL2ForwardingApplianceMapping: Schema.Schema<InterconnectAttachmentL2ForwardingApplianceMapping> =
+export const InterconnectAttachmentL2ForwardingApplianceMapping: Schema.Codec<InterconnectAttachmentL2ForwardingApplianceMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applianceIpAddress: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -15087,7 +15087,7 @@ export interface InterconnectAttachmentL2Forwarding {
   tunnelEndpointIpAddress?: string;
 }
 
-export const InterconnectAttachmentL2Forwarding: Schema.Schema<InterconnectAttachmentL2Forwarding> =
+export const InterconnectAttachmentL2Forwarding: Schema.Codec<InterconnectAttachmentL2Forwarding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geneveHeader: Schema.optional(
       InterconnectAttachmentL2ForwardingGeneveHeader,
@@ -15112,7 +15112,7 @@ export interface InterconnectAttachmentPartnerMetadata {
   portalUrl?: string;
 }
 
-export const InterconnectAttachmentPartnerMetadata: Schema.Schema<InterconnectAttachmentPartnerMetadata> =
+export const InterconnectAttachmentPartnerMetadata: Schema.Codec<InterconnectAttachmentPartnerMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partnerName: Schema.optional(Schema.String),
     interconnectName: Schema.optional(Schema.String),
@@ -15124,7 +15124,7 @@ export interface InterconnectAttachmentParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const InterconnectAttachmentParams: Schema.Schema<InterconnectAttachmentParams> =
+export const InterconnectAttachmentParams: Schema.Codec<InterconnectAttachmentParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -15136,7 +15136,7 @@ export interface InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange {
   max?: number;
 }
 
-export const InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange: Schema.Schema<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange> =
+export const InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange: Schema.Codec<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.Number),
     max: Schema.optional(Schema.Number),
@@ -15151,7 +15151,7 @@ export interface InterconnectAttachmentConfigurationConstraints {
   bgpPeerAsnRanges?: ReadonlyArray<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange>;
 }
 
-export const InterconnectAttachmentConfigurationConstraints: Schema.Schema<InterconnectAttachmentConfigurationConstraints> =
+export const InterconnectAttachmentConfigurationConstraints: Schema.Codec<InterconnectAttachmentConfigurationConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bgpMd5: Schema.optional(Schema.String),
     bgpPeerAsnRanges: Schema.optional(
@@ -15290,7 +15290,7 @@ export interface InterconnectAttachment {
   configurationConstraints?: InterconnectAttachmentConfigurationConstraints;
 }
 
-export const InterconnectAttachment: Schema.Schema<InterconnectAttachment> =
+export const InterconnectAttachment: Schema.Codec<InterconnectAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interconnect: Schema.optional(Schema.String),
     candidateSubnets: Schema.optional(Schema.Array(Schema.String)),
@@ -15384,7 +15384,7 @@ export interface InterconnectAttachmentsScopedList {
   };
 }
 
-export const InterconnectAttachmentsScopedList: Schema.Schema<InterconnectAttachmentsScopedList> =
+export const InterconnectAttachmentsScopedList: Schema.Codec<InterconnectAttachmentsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interconnectAttachments: Schema.optional(
       Schema.Array(InterconnectAttachment),
@@ -15456,7 +15456,7 @@ export interface InterconnectAttachmentAggregatedList {
   selfLink?: string;
 }
 
-export const InterconnectAttachmentAggregatedList: Schema.Schema<InterconnectAttachmentAggregatedList> =
+export const InterconnectAttachmentAggregatedList: Schema.Codec<InterconnectAttachmentAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -15487,7 +15487,7 @@ export interface RouteParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const RouteParams: Schema.Schema<RouteParams> =
+export const RouteParams: Schema.Codec<RouteParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -15506,7 +15506,7 @@ export interface RouteAsPath {
   asLists?: ReadonlyArray<number>;
 }
 
-export const RouteAsPath: Schema.Schema<RouteAsPath> =
+export const RouteAsPath: Schema.Codec<RouteAsPath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pathSegmentType: Schema.optional(Schema.String),
     asLists: Schema.optional(Schema.Array(Schema.Number)),
@@ -15603,7 +15603,7 @@ export interface Route {
   selfLink?: string;
 }
 
-export const Route: Schema.Schema<Route> =
+export const Route: Schema.Codec<Route> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     nextHopPeering: Schema.optional(Schema.String),
@@ -15662,7 +15662,7 @@ export interface RouterStatusNatStatusNatRuleStatus {
   drainNatIps?: ReadonlyArray<string>;
 }
 
-export const RouterStatusNatStatusNatRuleStatus: Schema.Schema<RouterStatusNatStatusNatRuleStatus> =
+export const RouterStatusNatStatusNatRuleStatus: Schema.Codec<RouterStatusNatStatusNatRuleStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minExtraIpsNeeded: Schema.optional(Schema.Number),
     numVmEndpointsWithNatMappings: Schema.optional(Schema.Number),
@@ -15692,7 +15692,7 @@ export interface RouterStatusNatStatus {
   minExtraNatIpsNeeded?: number;
 }
 
-export const RouterStatusNatStatus: Schema.Schema<RouterStatusNatStatus> =
+export const RouterStatusNatStatus: Schema.Codec<RouterStatusNatStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userAllocatedNatIpResources: Schema.optional(Schema.Array(Schema.String)),
     drainUserAllocatedNatIps: Schema.optional(Schema.Array(Schema.String)),
@@ -15727,7 +15727,7 @@ export interface PacketIntervals {
   maxMs?: string;
 }
 
-export const PacketIntervals: Schema.Schema<PacketIntervals> =
+export const PacketIntervals: Schema.Codec<PacketIntervals> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -15789,7 +15789,7 @@ export interface BfdPacket {
   controlPlaneIndependent?: boolean;
 }
 
-export const BfdPacket: Schema.Schema<BfdPacket> =
+export const BfdPacket: Schema.Codec<BfdPacket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     minTxIntervalMs: Schema.optional(Schema.Number),
@@ -15853,7 +15853,7 @@ export interface BfdStatus {
   uptimeMs?: string;
 }
 
-export const BfdStatus: Schema.Schema<BfdStatus> =
+export const BfdStatus: Schema.Codec<BfdStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     controlPacketIntervals: Schema.optional(Schema.Array(PacketIntervals)),
     localState: Schema.optional(Schema.String),
@@ -15914,7 +15914,7 @@ export interface RouterStatusBgpPeerStatus {
   routerApplianceInstance?: string;
 }
 
-export const RouterStatusBgpPeerStatus: Schema.Schema<RouterStatusBgpPeerStatus> =
+export const RouterStatusBgpPeerStatus: Schema.Codec<RouterStatusBgpPeerStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     peerIpv6NexthopAddress: Schema.optional(Schema.String),
     uptime: Schema.optional(Schema.String),
@@ -15951,7 +15951,7 @@ export interface RouterStatus {
   nccGateway?: string;
 }
 
-export const RouterStatus: Schema.Schema<RouterStatus> =
+export const RouterStatus: Schema.Codec<RouterStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bestRoutesForRouter: Schema.optional(Schema.Array(Route)),
     natStatus: Schema.optional(Schema.Array(RouterStatusNatStatus)),
@@ -15980,7 +15980,7 @@ export interface MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCh
   };
 }
 
-export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck: Schema.Schema<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck> =
+export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck: Schema.Codec<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     error: Schema.optional(
@@ -16000,7 +16000,7 @@ export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck:
   }).annotate({
     identifier:
       "MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck",
-  }) as any as Schema.Schema<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck>;
+  }) as any as Schema.Codec<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheck>;
 
 export interface MultiMigStatusAcceleratorTopology {
   /** Output only. [Output Only] Topology in the format of: "16x16", "4x4x4", etc. The value is the same as configured in the WorkloadPolicy. */
@@ -16018,7 +16018,7 @@ export interface MultiMigStatusAcceleratorTopology {
     | (string & {});
 }
 
-export const MultiMigStatusAcceleratorTopology: Schema.Schema<MultiMigStatusAcceleratorTopology> =
+export const MultiMigStatusAcceleratorTopology: Schema.Codec<MultiMigStatusAcceleratorTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTopology: Schema.optional(Schema.String),
     acceleratorTopologyStateLastCheck: Schema.optional(
@@ -16034,7 +16034,7 @@ export interface MultiMigStatus {
   appliedAcceleratorTopologies?: ReadonlyArray<MultiMigStatusAcceleratorTopology>;
 }
 
-export const MultiMigStatus: Schema.Schema<MultiMigStatus> =
+export const MultiMigStatus: Schema.Codec<MultiMigStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membersCount: Schema.optional(Schema.Number),
     appliedAcceleratorTopologies: Schema.optional(
@@ -16094,7 +16094,7 @@ export interface FutureReservationsListResponse {
   id?: string;
 }
 
-export const FutureReservationsListResponse: Schema.Schema<FutureReservationsListResponse> =
+export const FutureReservationsListResponse: Schema.Codec<FutureReservationsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -16156,7 +16156,7 @@ export interface StoragePoolType {
   minPoolProvisionedThroughput?: string;
 }
 
-export const StoragePoolType: Schema.Schema<StoragePoolType> =
+export const StoragePoolType: Schema.Codec<StoragePoolType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLinkWithId: Schema.optional(Schema.String),
     creationTimestamp: Schema.optional(Schema.String),
@@ -16218,7 +16218,7 @@ export interface StoragePoolTypesScopedList {
   };
 }
 
-export const StoragePoolTypesScopedList: Schema.Schema<StoragePoolTypesScopedList> =
+export const StoragePoolTypesScopedList: Schema.Codec<StoragePoolTypesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storagePoolTypes: Schema.optional(Schema.Array(StoragePoolType)),
     warning: Schema.optional(
@@ -16286,7 +16286,7 @@ export interface StoragePoolTypeAggregatedList {
   nextPageToken?: string;
 }
 
-export const StoragePoolTypeAggregatedList: Schema.Schema<StoragePoolTypeAggregatedList> =
+export const StoragePoolTypeAggregatedList: Schema.Codec<StoragePoolTypeAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -16350,7 +16350,7 @@ export interface TargetPool {
   name?: string;
 }
 
-export const TargetPool: Schema.Schema<TargetPool> =
+export const TargetPool: Schema.Codec<TargetPool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -16408,7 +16408,7 @@ export interface TargetPoolsScopedList {
   };
 }
 
-export const TargetPoolsScopedList: Schema.Schema<TargetPoolsScopedList> =
+export const TargetPoolsScopedList: Schema.Codec<TargetPoolsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetPools: Schema.optional(Schema.Array(TargetPool)),
     warning: Schema.optional(
@@ -16438,7 +16438,7 @@ export interface ServiceAttachmentConsumerProjectLimit {
   endpointUrl?: string;
 }
 
-export const ServiceAttachmentConsumerProjectLimit: Schema.Schema<ServiceAttachmentConsumerProjectLimit> =
+export const ServiceAttachmentConsumerProjectLimit: Schema.Codec<ServiceAttachmentConsumerProjectLimit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionLimit: Schema.optional(Schema.Number),
     networkUrl: Schema.optional(Schema.String),
@@ -16487,7 +16487,7 @@ export interface OperationsScopedList {
   };
 }
 
-export const OperationsScopedList: Schema.Schema<OperationsScopedList> =
+export const OperationsScopedList: Schema.Codec<OperationsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     warning: Schema.optional(
@@ -16511,7 +16511,7 @@ export interface TestPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestPermissionsResponse: Schema.Schema<TestPermissionsResponse> =
+export const TestPermissionsResponse: Schema.Codec<TestPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestPermissionsResponse" });
@@ -16523,7 +16523,7 @@ export interface SecurityPolicyRuleHttpHeaderActionHttpHeaderOption {
   headerValue?: string;
 }
 
-export const SecurityPolicyRuleHttpHeaderActionHttpHeaderOption: Schema.Schema<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption> =
+export const SecurityPolicyRuleHttpHeaderActionHttpHeaderOption: Schema.Codec<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerName: Schema.optional(Schema.String),
     headerValue: Schema.optional(Schema.String),
@@ -16536,7 +16536,7 @@ export interface SecurityPolicyRuleHttpHeaderAction {
   requestHeadersToAdds?: ReadonlyArray<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>;
 }
 
-export const SecurityPolicyRuleHttpHeaderAction: Schema.Schema<SecurityPolicyRuleHttpHeaderAction> =
+export const SecurityPolicyRuleHttpHeaderAction: Schema.Codec<SecurityPolicyRuleHttpHeaderAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestHeadersToAdds: Schema.optional(
       Schema.Array(SecurityPolicyRuleHttpHeaderActionHttpHeaderOption),
@@ -16556,7 +16556,7 @@ export interface SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
     | (string & {});
 }
 
-export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams: Schema.Schema<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams> =
+export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams: Schema.Codec<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     val: Schema.optional(Schema.String),
     op: Schema.optional(Schema.String),
@@ -16581,7 +16581,7 @@ export interface SecurityPolicyRulePreconfiguredWafConfigExclusion {
   requestUrisToExclude?: ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
 }
 
-export const SecurityPolicyRulePreconfiguredWafConfigExclusion: Schema.Schema<SecurityPolicyRulePreconfiguredWafConfigExclusion> =
+export const SecurityPolicyRulePreconfiguredWafConfigExclusion: Schema.Codec<SecurityPolicyRulePreconfiguredWafConfigExclusion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestCookiesToExclude: Schema.optional(
       Schema.Array(
@@ -16619,7 +16619,7 @@ export interface SecurityPolicyRulePreconfiguredWafConfig {
   exclusions?: ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusion>;
 }
 
-export const SecurityPolicyRulePreconfiguredWafConfig: Schema.Schema<SecurityPolicyRulePreconfiguredWafConfig> =
+export const SecurityPolicyRulePreconfiguredWafConfig: Schema.Codec<SecurityPolicyRulePreconfiguredWafConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exclusions: Schema.optional(
       Schema.Array(SecurityPolicyRulePreconfiguredWafConfigExclusion),
@@ -16633,7 +16633,7 @@ export interface SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
   sessionTokenSiteKeys?: ReadonlyArray<string>;
 }
 
-export const SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions: Schema.Schema<SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions> =
+export const SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions: Schema.Codec<SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionTokenSiteKeys: Schema.optional(Schema.Array(Schema.String)),
     sessionTokenSiteKeys: Schema.optional(Schema.Array(Schema.String)),
@@ -16646,7 +16646,7 @@ export interface SecurityPolicyRuleMatcherExprOptions {
   recaptchaOptions?: SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions;
 }
 
-export const SecurityPolicyRuleMatcherExprOptions: Schema.Schema<SecurityPolicyRuleMatcherExprOptions> =
+export const SecurityPolicyRuleMatcherExprOptions: Schema.Codec<SecurityPolicyRuleMatcherExprOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recaptchaOptions: Schema.optional(
       SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions,
@@ -16662,7 +16662,7 @@ export interface SecurityPolicyRuleMatcherConfig {
   srcIpRanges?: ReadonlyArray<string>;
 }
 
-export const SecurityPolicyRuleMatcherConfig: Schema.Schema<SecurityPolicyRuleMatcherConfig> =
+export const SecurityPolicyRuleMatcherConfig: Schema.Codec<SecurityPolicyRuleMatcherConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     layer4Configs: Schema.optional(
       Schema.Array(SecurityPolicyRuleMatcherConfigLayer4Config),
@@ -16682,7 +16682,7 @@ export interface SecurityPolicyRuleMatcher {
   expr?: Expr;
 }
 
-export const SecurityPolicyRuleMatcher: Schema.Schema<SecurityPolicyRuleMatcher> =
+export const SecurityPolicyRuleMatcher: Schema.Codec<SecurityPolicyRuleMatcher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exprOptions: Schema.optional(SecurityPolicyRuleMatcherExprOptions),
     versionedExpr: Schema.optional(Schema.String),
@@ -16709,7 +16709,7 @@ export interface SecurityPolicyRuleNetworkMatcher {
   destPorts?: ReadonlyArray<string>;
 }
 
-export const SecurityPolicyRuleNetworkMatcher: Schema.Schema<SecurityPolicyRuleNetworkMatcher> =
+export const SecurityPolicyRuleNetworkMatcher: Schema.Codec<SecurityPolicyRuleNetworkMatcher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destIpRanges: Schema.optional(Schema.Array(Schema.String)),
     ipProtocols: Schema.optional(Schema.Array(Schema.String)),
@@ -16760,7 +16760,7 @@ export interface SecurityPolicyRule {
   preview?: boolean;
 }
 
-export const SecurityPolicyRule: Schema.Schema<SecurityPolicyRule> =
+export const SecurityPolicyRule: Schema.Codec<SecurityPolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerAction: Schema.optional(SecurityPolicyRuleHttpHeaderAction),
     redirectOptions: Schema.optional(SecurityPolicyRuleRedirectOptions),
@@ -16790,7 +16790,7 @@ export interface NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy
   rules?: ReadonlyArray<SecurityPolicyRule>;
 }
 
-export const NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy: Schema.Schema<NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy> =
+export const NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy: Schema.Codec<NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     rules: Schema.optional(Schema.Array(SecurityPolicyRule)),
@@ -16816,7 +16816,7 @@ export interface NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
   rules?: ReadonlyArray<FirewallPolicyRule>;
 }
 
-export const NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy: Schema.Schema<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy> =
+export const NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy: Schema.Codec<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -16838,7 +16838,7 @@ export interface NetworksGetEffectiveFirewallsResponse {
   firewallPolicys?: ReadonlyArray<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 }
 
-export const NetworksGetEffectiveFirewallsResponse: Schema.Schema<NetworksGetEffectiveFirewallsResponse> =
+export const NetworksGetEffectiveFirewallsResponse: Schema.Codec<NetworksGetEffectiveFirewallsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewalls: Schema.optional(Schema.Array(Firewall)),
     organizationFirewalls: Schema.optional(
@@ -16860,7 +16860,7 @@ export interface GlobalSetLabelsRequest {
   labels?: Record<string, string>;
 }
 
-export const GlobalSetLabelsRequest: Schema.Schema<GlobalSetLabelsRequest> =
+export const GlobalSetLabelsRequest: Schema.Codec<GlobalSetLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelFingerprint: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -16873,7 +16873,7 @@ export interface LicenseResourceRequirements {
   minGuestCpuCount?: number;
 }
 
-export const LicenseResourceRequirements: Schema.Schema<LicenseResourceRequirements> =
+export const LicenseResourceRequirements: Schema.Codec<LicenseResourceRequirements> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minMemoryMb: Schema.optional(Schema.Number),
     minGuestCpuCount: Schema.optional(Schema.Number),
@@ -16884,7 +16884,7 @@ export interface LicenseParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const LicenseParams: Schema.Schema<LicenseParams> =
+export const LicenseParams: Schema.Codec<LicenseParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -16938,7 +16938,7 @@ export interface License {
   soleTenantOnly?: boolean;
 }
 
-export const License: Schema.Schema<License> =
+export const License: Schema.Codec<License> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceRequirements: Schema.optional(LicenseResourceRequirements),
     minimumRetention: Schema.optional(Duration),
@@ -17011,7 +17011,7 @@ export interface LicensesListResponse {
   selfLink?: string;
 }
 
-export const LicensesListResponse: Schema.Schema<LicensesListResponse> =
+export const LicensesListResponse: Schema.Codec<LicensesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(License)),
     id: Schema.optional(Schema.String),
@@ -17038,7 +17038,7 @@ export interface TargetSslProxiesSetSslCertificatesRequest {
   sslCertificates?: ReadonlyArray<string>;
 }
 
-export const TargetSslProxiesSetSslCertificatesRequest: Schema.Schema<TargetSslProxiesSetSslCertificatesRequest> =
+export const TargetSslProxiesSetSslCertificatesRequest: Schema.Codec<TargetSslProxiesSetSslCertificatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sslCertificates: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TargetSslProxiesSetSslCertificatesRequest" });
@@ -17050,7 +17050,7 @@ export interface RouterAdvertisedIpRange {
   range?: string;
 }
 
-export const RouterAdvertisedIpRange: Schema.Schema<RouterAdvertisedIpRange> =
+export const RouterAdvertisedIpRange: Schema.Codec<RouterAdvertisedIpRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     range: Schema.optional(Schema.String),
@@ -17071,7 +17071,7 @@ export interface RouterBgp {
   advertiseMode?: "CUSTOM" | "DEFAULT" | (string & {});
 }
 
-export const RouterBgp: Schema.Schema<RouterBgp> =
+export const RouterBgp: Schema.Codec<RouterBgp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertisedIpRanges: Schema.optional(Schema.Array(RouterAdvertisedIpRange)),
     identifierRange: Schema.optional(Schema.String),
@@ -17088,7 +17088,7 @@ export interface RegionInstanceGroupManagersSetTargetPoolsRequest {
   fingerprint?: string;
 }
 
-export const RegionInstanceGroupManagersSetTargetPoolsRequest: Schema.Schema<RegionInstanceGroupManagersSetTargetPoolsRequest> =
+export const RegionInstanceGroupManagersSetTargetPoolsRequest: Schema.Codec<RegionInstanceGroupManagersSetTargetPoolsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetPools: Schema.optional(Schema.Array(Schema.String)),
     fingerprint: Schema.optional(Schema.String),
@@ -17101,7 +17101,7 @@ export interface SecurityPolicyRecaptchaOptionsConfig {
   redirectSiteKey?: string;
 }
 
-export const SecurityPolicyRecaptchaOptionsConfig: Schema.Schema<SecurityPolicyRecaptchaOptionsConfig> =
+export const SecurityPolicyRecaptchaOptionsConfig: Schema.Codec<SecurityPolicyRecaptchaOptionsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redirectSiteKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecurityPolicyRecaptchaOptionsConfig" });
@@ -17111,7 +17111,7 @@ export interface SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
   contentTypes?: ReadonlyArray<string>;
 }
 
-export const SecurityPolicyAdvancedOptionsConfigJsonCustomConfig: Schema.Schema<SecurityPolicyAdvancedOptionsConfigJsonCustomConfig> =
+export const SecurityPolicyAdvancedOptionsConfigJsonCustomConfig: Schema.Codec<SecurityPolicyAdvancedOptionsConfigJsonCustomConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -17133,7 +17133,7 @@ export interface SecurityPolicyAdvancedOptionsConfig {
   jsonCustomConfig?: SecurityPolicyAdvancedOptionsConfigJsonCustomConfig;
 }
 
-export const SecurityPolicyAdvancedOptionsConfig: Schema.Schema<SecurityPolicyAdvancedOptionsConfig> =
+export const SecurityPolicyAdvancedOptionsConfig: Schema.Codec<SecurityPolicyAdvancedOptionsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logLevel: Schema.optional(Schema.String),
     userIpRequestHeaders: Schema.optional(Schema.Array(Schema.String)),
@@ -17195,7 +17195,7 @@ export interface SecurityPolicy {
   ddosProtectionConfig?: SecurityPolicyDdosProtectionConfig;
 }
 
-export const SecurityPolicy: Schema.Schema<SecurityPolicy> =
+export const SecurityPolicy: Schema.Codec<SecurityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     shortName: Schema.optional(Schema.String),
@@ -17269,7 +17269,7 @@ export interface SecurityPoliciesScopedList {
   };
 }
 
-export const SecurityPoliciesScopedList: Schema.Schema<SecurityPoliciesScopedList> =
+export const SecurityPoliciesScopedList: Schema.Codec<SecurityPoliciesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityPolicies: Schema.optional(Schema.Array(SecurityPolicy)),
     warning: Schema.optional(
@@ -17340,7 +17340,7 @@ export interface SecurityPoliciesAggregatedList {
   etag?: string;
 }
 
-export const SecurityPoliciesAggregatedList: Schema.Schema<SecurityPoliciesAggregatedList> =
+export const SecurityPoliciesAggregatedList: Schema.Codec<SecurityPoliciesAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachables: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -17374,7 +17374,7 @@ export interface SignedUrlKey {
   keyValue?: string;
 }
 
-export const SignedUrlKey: Schema.Schema<SignedUrlKey> =
+export const SignedUrlKey: Schema.Codec<SignedUrlKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyName: Schema.optional(Schema.String),
     keyValue: Schema.optional(Schema.String),
@@ -17387,7 +17387,7 @@ export interface RegionInstanceGroupManagersResizeAdvancedRequest {
   targetSize?: number;
 }
 
-export const RegionInstanceGroupManagersResizeAdvancedRequest: Schema.Schema<RegionInstanceGroupManagersResizeAdvancedRequest> =
+export const RegionInstanceGroupManagersResizeAdvancedRequest: Schema.Codec<RegionInstanceGroupManagersResizeAdvancedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     noCreationRetries: Schema.optional(Schema.Boolean),
     targetSize: Schema.optional(Schema.Number),
@@ -17400,7 +17400,7 @@ export interface SnapshotParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const SnapshotParams: Schema.Schema<SnapshotParams> =
+export const SnapshotParams: Schema.Codec<SnapshotParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -17502,7 +17502,7 @@ export interface Snapshot {
     | (string & {});
 }
 
-export const Snapshot: Schema.Schema<Snapshot> =
+export const Snapshot: Schema.Codec<Snapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageBytesStatus: Schema.optional(Schema.String),
     satisfiesPzs: Schema.optional(Schema.Boolean),
@@ -17588,7 +17588,7 @@ export interface SnapshotsScopedList {
   };
 }
 
-export const SnapshotsScopedList: Schema.Schema<SnapshotsScopedList> =
+export const SnapshotsScopedList: Schema.Codec<SnapshotsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snapshots: Schema.optional(Schema.Array(Snapshot)),
     warning: Schema.optional(
@@ -17612,7 +17612,7 @@ export interface SnapshotSettingsStorageLocationSettingsStorageLocationPreferenc
   name?: string;
 }
 
-export const SnapshotSettingsStorageLocationSettingsStorageLocationPreference: Schema.Schema<SnapshotSettingsStorageLocationSettingsStorageLocationPreference> =
+export const SnapshotSettingsStorageLocationSettingsStorageLocationPreference: Schema.Codec<SnapshotSettingsStorageLocationSettingsStorageLocationPreference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -17635,7 +17635,7 @@ export interface SnapshotSettingsStorageLocationSettings {
   >;
 }
 
-export const SnapshotSettingsStorageLocationSettings: Schema.Schema<SnapshotSettingsStorageLocationSettings> =
+export const SnapshotSettingsStorageLocationSettings: Schema.Codec<SnapshotSettingsStorageLocationSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Schema.String),
     locations: Schema.optional(
@@ -17660,7 +17660,7 @@ export interface SnapshotSettingsAccessLocation {
     | (string & {});
 }
 
-export const SnapshotSettingsAccessLocation: Schema.Schema<SnapshotSettingsAccessLocation> =
+export const SnapshotSettingsAccessLocation: Schema.Codec<SnapshotSettingsAccessLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(
       Schema.Record(
@@ -17678,7 +17678,7 @@ export interface SnapshotSettings {
   accessLocation?: SnapshotSettingsAccessLocation;
 }
 
-export const SnapshotSettings: Schema.Schema<SnapshotSettings> =
+export const SnapshotSettings: Schema.Codec<SnapshotSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageLocation: Schema.optional(SnapshotSettingsStorageLocationSettings),
     accessLocation: Schema.optional(SnapshotSettingsAccessLocation),
@@ -17695,7 +17695,7 @@ export interface NetworkPolicyTrafficClassificationRuleAction {
   dscpValue?: number;
 }
 
-export const NetworkPolicyTrafficClassificationRuleAction: Schema.Schema<NetworkPolicyTrafficClassificationRuleAction> =
+export const NetworkPolicyTrafficClassificationRuleAction: Schema.Codec<NetworkPolicyTrafficClassificationRuleAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dscpMode: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17752,7 +17752,7 @@ export interface TargetHttpsProxyList {
   items?: ReadonlyArray<TargetHttpsProxy>;
 }
 
-export const TargetHttpsProxyList: Schema.Schema<TargetHttpsProxyList> =
+export const TargetHttpsProxyList: Schema.Codec<TargetHttpsProxyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -17780,7 +17780,7 @@ export interface DiskUpdateKmsKeyRequest {
   kmsKeyName?: string;
 }
 
-export const DiskUpdateKmsKeyRequest: Schema.Schema<DiskUpdateKmsKeyRequest> =
+export const DiskUpdateKmsKeyRequest: Schema.Codec<DiskUpdateKmsKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "DiskUpdateKmsKeyRequest" });
@@ -17807,7 +17807,7 @@ export interface RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffec
   priority?: number;
 }
 
-export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy: Schema.Schema<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy> =
+export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy: Schema.Codec<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     rules: Schema.optional(Schema.Array(FirewallPolicyRule)),
@@ -17827,7 +17827,7 @@ export interface BundledLocalSsds {
   defaultInterface?: string;
 }
 
-export const BundledLocalSsds: Schema.Schema<BundledLocalSsds> =
+export const BundledLocalSsds: Schema.Codec<BundledLocalSsds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionCount: Schema.optional(Schema.Number),
     defaultInterface: Schema.optional(Schema.String),
@@ -17875,7 +17875,7 @@ export interface MachineType {
   name?: string;
 }
 
-export const MachineType: Schema.Schema<MachineType> =
+export const MachineType: Schema.Codec<MachineType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guestCpus: Schema.optional(Schema.Number),
     maximumPersistentDisksSizeGb: Schema.optional(Schema.String),
@@ -17915,7 +17915,7 @@ export interface AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopology
   count?: number;
 }
 
-export const AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState: Schema.Schema<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState> =
+export const AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState: Schema.Codec<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -17931,7 +17931,7 @@ export interface AcceleratorTopologiesInfoAcceleratorTopologyInfo {
   infoPerTopologyStates?: ReadonlyArray<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState>;
 }
 
-export const AcceleratorTopologiesInfoAcceleratorTopologyInfo: Schema.Schema<AcceleratorTopologiesInfoAcceleratorTopologyInfo> =
+export const AcceleratorTopologiesInfoAcceleratorTopologyInfo: Schema.Codec<AcceleratorTopologiesInfoAcceleratorTopologyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTopology: Schema.optional(Schema.String),
     infoPerTopologyStates: Schema.optional(
@@ -17948,7 +17948,7 @@ export interface AcceleratorTopologiesInfo {
   acceleratorTopologyInfos?: ReadonlyArray<AcceleratorTopologiesInfoAcceleratorTopologyInfo>;
 }
 
-export const AcceleratorTopologiesInfo: Schema.Schema<AcceleratorTopologiesInfo> =
+export const AcceleratorTopologiesInfo: Schema.Codec<AcceleratorTopologiesInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTopologyInfos: Schema.optional(
       Schema.Array(AcceleratorTopologiesInfoAcceleratorTopologyInfo),
@@ -17972,7 +17972,7 @@ export interface ReservationSubBlockHealthInfo {
   degradedInfraCount?: number;
 }
 
-export const ReservationSubBlockHealthInfo: Schema.Schema<ReservationSubBlockHealthInfo> =
+export const ReservationSubBlockHealthInfo: Schema.Codec<ReservationSubBlockHealthInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthyHostCount: Schema.optional(Schema.Number),
     healthStatus: Schema.optional(Schema.String),
@@ -17990,7 +17990,7 @@ export interface ReservationSubBlockPhysicalTopology {
   cluster?: string;
 }
 
-export const ReservationSubBlockPhysicalTopology: Schema.Schema<ReservationSubBlockPhysicalTopology> =
+export const ReservationSubBlockPhysicalTopology: Schema.Codec<ReservationSubBlockPhysicalTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     block: Schema.optional(Schema.String),
     subBlock: Schema.optional(Schema.String),
@@ -18030,7 +18030,7 @@ export interface ReservationSubBlock {
   id?: string;
 }
 
-export const ReservationSubBlock: Schema.Schema<ReservationSubBlock> =
+export const ReservationSubBlock: Schema.Codec<ReservationSubBlock> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationSubBlockMaintenance: Schema.optional(GroupMaintenanceInfo),
     acceleratorTopologiesInfo: Schema.optional(AcceleratorTopologiesInfo),
@@ -18053,7 +18053,7 @@ export interface ReservationSubBlocksGetResponse {
   resource?: ReservationSubBlock;
 }
 
-export const ReservationSubBlocksGetResponse: Schema.Schema<ReservationSubBlocksGetResponse> =
+export const ReservationSubBlocksGetResponse: Schema.Codec<ReservationSubBlocksGetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(ReservationSubBlock),
   }).annotate({ identifier: "ReservationSubBlocksGetResponse" });
@@ -18063,7 +18063,7 @@ export interface TargetTcpProxiesSetBackendServiceRequest {
   service?: string;
 }
 
-export const TargetTcpProxiesSetBackendServiceRequest: Schema.Schema<TargetTcpProxiesSetBackendServiceRequest> =
+export const TargetTcpProxiesSetBackendServiceRequest: Schema.Codec<TargetTcpProxiesSetBackendServiceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "TargetTcpProxiesSetBackendServiceRequest" });
@@ -18117,7 +18117,7 @@ export interface ReservationSlotsListResponse {
   };
 }
 
-export const ReservationSlotsListResponse: Schema.Schema<ReservationSlotsListResponse> =
+export const ReservationSlotsListResponse: Schema.Codec<ReservationSlotsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -18145,7 +18145,7 @@ export interface GlobalNetworkEndpointGroupsAttachEndpointsRequest {
   networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
-export const GlobalNetworkEndpointGroupsAttachEndpointsRequest: Schema.Schema<GlobalNetworkEndpointGroupsAttachEndpointsRequest> =
+export const GlobalNetworkEndpointGroupsAttachEndpointsRequest: Schema.Codec<GlobalNetworkEndpointGroupsAttachEndpointsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
   }).annotate({
@@ -18166,7 +18166,7 @@ export interface ServiceAttachmentTunnelingConfig {
     | (string & {});
 }
 
-export const ServiceAttachmentTunnelingConfig: Schema.Schema<ServiceAttachmentTunnelingConfig> =
+export const ServiceAttachmentTunnelingConfig: Schema.Codec<ServiceAttachmentTunnelingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routingMode: Schema.optional(Schema.String),
     encapsulationProfile: Schema.optional(Schema.String),
@@ -18196,7 +18196,7 @@ export interface ServiceAttachmentConnectedEndpoint {
   endpointWithId?: string;
 }
 
-export const ServiceAttachmentConnectedEndpoint: Schema.Schema<ServiceAttachmentConnectedEndpoint> =
+export const ServiceAttachmentConnectedEndpoint: Schema.Codec<ServiceAttachmentConnectedEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoint: Schema.optional(Schema.String),
     natIps: Schema.optional(Schema.Array(Schema.String)),
@@ -18260,7 +18260,7 @@ export interface ServiceAttachment {
   enableProxyProtocol?: boolean;
 }
 
-export const ServiceAttachment: Schema.Schema<ServiceAttachment> =
+export const ServiceAttachment: Schema.Codec<ServiceAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reconcileConnections: Schema.optional(Schema.Boolean),
     natSubnets: Schema.optional(Schema.Array(Schema.String)),
@@ -18340,7 +18340,7 @@ export interface ServiceAttachmentList {
   kind?: string;
 }
 
-export const ServiceAttachmentList: Schema.Schema<ServiceAttachmentList> =
+export const ServiceAttachmentList: Schema.Codec<ServiceAttachmentList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(ServiceAttachment)),
@@ -18367,7 +18367,7 @@ export interface BackendServiceReference {
   backendService?: string;
 }
 
-export const BackendServiceReference: Schema.Schema<BackendServiceReference> =
+export const BackendServiceReference: Schema.Codec<BackendServiceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backendService: Schema.optional(Schema.String),
   }).annotate({ identifier: "BackendServiceReference" });
@@ -18376,7 +18376,7 @@ export interface ForwardingRuleReference {
   forwardingRule?: string;
 }
 
-export const ForwardingRuleReference: Schema.Schema<ForwardingRuleReference> =
+export const ForwardingRuleReference: Schema.Codec<ForwardingRuleReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forwardingRule: Schema.optional(Schema.String),
   }).annotate({ identifier: "ForwardingRuleReference" });
@@ -18385,7 +18385,7 @@ export interface HealthCheckServiceReference {
   healthCheckService?: string;
 }
 
-export const HealthCheckServiceReference: Schema.Schema<HealthCheckServiceReference> =
+export const HealthCheckServiceReference: Schema.Codec<HealthCheckServiceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthCheckService: Schema.optional(Schema.String),
   }).annotate({ identifier: "HealthCheckServiceReference" });
@@ -18415,7 +18415,7 @@ export interface HealthStatusForNetworkEndpoint {
   healthCheckService?: HealthCheckServiceReference;
 }
 
-export const HealthStatusForNetworkEndpoint: Schema.Schema<HealthStatusForNetworkEndpoint> =
+export const HealthStatusForNetworkEndpoint: Schema.Codec<HealthStatusForNetworkEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthCheck: Schema.optional(HealthCheckReference),
     backendService: Schema.optional(BackendServiceReference),
@@ -18432,7 +18432,7 @@ export interface NetworkEndpointWithHealthStatus {
   healths?: ReadonlyArray<HealthStatusForNetworkEndpoint>;
 }
 
-export const NetworkEndpointWithHealthStatus: Schema.Schema<NetworkEndpointWithHealthStatus> =
+export const NetworkEndpointWithHealthStatus: Schema.Codec<NetworkEndpointWithHealthStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpoint: Schema.optional(NetworkEndpoint),
     healths: Schema.optional(Schema.Array(HealthStatusForNetworkEndpoint)),
@@ -18451,7 +18451,7 @@ export interface VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings {
   natIpPortRanges?: ReadonlyArray<string>;
 }
 
-export const VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings: Schema.Schema<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings> =
+export const VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings: Schema.Codec<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleNumber: Schema.optional(Schema.Number),
     drainNatIpPortRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -18479,7 +18479,7 @@ export interface VmEndpointNatMappingsInterfaceNatMappings {
   sourceVirtualIp?: string;
 }
 
-export const VmEndpointNatMappingsInterfaceNatMappings: Schema.Schema<VmEndpointNatMappingsInterfaceNatMappings> =
+export const VmEndpointNatMappingsInterfaceNatMappings: Schema.Codec<VmEndpointNatMappingsInterfaceNatMappings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numTotalNatPorts: Schema.optional(Schema.Number),
     natIpPortRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -18533,7 +18533,7 @@ export interface BackendServicesScopedList {
   };
 }
 
-export const BackendServicesScopedList: Schema.Schema<BackendServicesScopedList> =
+export const BackendServicesScopedList: Schema.Codec<BackendServicesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backendServices: Schema.optional(Schema.Array(BackendService)),
     warning: Schema.optional(
@@ -18559,7 +18559,7 @@ export interface RegionInstanceGroupManagersSuspendInstancesRequest {
   forceSuspend?: boolean;
 }
 
-export const RegionInstanceGroupManagersSuspendInstancesRequest: Schema.Schema<RegionInstanceGroupManagersSuspendInstancesRequest> =
+export const RegionInstanceGroupManagersSuspendInstancesRequest: Schema.Codec<RegionInstanceGroupManagersSuspendInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
     forceSuspend: Schema.optional(Schema.Boolean),
@@ -18574,7 +18574,7 @@ export interface PacketMirroringForwardingRuleInfo {
   canonicalUrl?: string;
 }
 
-export const PacketMirroringForwardingRuleInfo: Schema.Schema<PacketMirroringForwardingRuleInfo> =
+export const PacketMirroringForwardingRuleInfo: Schema.Codec<PacketMirroringForwardingRuleInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     canonicalUrl: Schema.optional(Schema.String),
@@ -18587,7 +18587,7 @@ export interface PacketMirroringNetworkInfo {
   canonicalUrl?: string;
 }
 
-export const PacketMirroringNetworkInfo: Schema.Schema<PacketMirroringNetworkInfo> =
+export const PacketMirroringNetworkInfo: Schema.Codec<PacketMirroringNetworkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     canonicalUrl: Schema.optional(Schema.String),
@@ -18602,7 +18602,7 @@ export interface PacketMirroringFilter {
   IPProtocols?: ReadonlyArray<string>;
 }
 
-export const PacketMirroringFilter: Schema.Schema<PacketMirroringFilter> =
+export const PacketMirroringFilter: Schema.Codec<PacketMirroringFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cidrRanges: Schema.optional(Schema.Array(Schema.String)),
     direction: Schema.optional(Schema.String),
@@ -18638,7 +18638,7 @@ export interface PacketMirroring {
   region?: string;
 }
 
-export const PacketMirroring: Schema.Schema<PacketMirroring> =
+export const PacketMirroring: Schema.Codec<PacketMirroring> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -18696,7 +18696,7 @@ export interface PacketMirroringsScopedList {
   };
 }
 
-export const PacketMirroringsScopedList: Schema.Schema<PacketMirroringsScopedList> =
+export const PacketMirroringsScopedList: Schema.Codec<PacketMirroringsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packetMirrorings: Schema.optional(Schema.Array(PacketMirroring)),
     warning: Schema.optional(
@@ -18766,7 +18766,7 @@ export interface PacketMirroringAggregatedList {
   nextPageToken?: string;
 }
 
-export const PacketMirroringAggregatedList: Schema.Schema<PacketMirroringAggregatedList> =
+export const PacketMirroringAggregatedList: Schema.Codec<PacketMirroringAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -18799,7 +18799,7 @@ export interface InstanceSettingsMetadata {
   kind?: string;
 }
 
-export const InstanceSettingsMetadata: Schema.Schema<InstanceSettingsMetadata> =
+export const InstanceSettingsMetadata: Schema.Codec<InstanceSettingsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     kind: Schema.optional(Schema.String),
@@ -18816,7 +18816,7 @@ export interface InstanceSettings {
   metadata?: InstanceSettingsMetadata;
 }
 
-export const InstanceSettings: Schema.Schema<InstanceSettings> =
+export const InstanceSettings: Schema.Codec<InstanceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     zone: Schema.optional(Schema.String),
@@ -18829,7 +18829,7 @@ export interface GlobalNetworkEndpointGroupsDetachEndpointsRequest {
   networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
-export const GlobalNetworkEndpointGroupsDetachEndpointsRequest: Schema.Schema<GlobalNetworkEndpointGroupsDetachEndpointsRequest> =
+export const GlobalNetworkEndpointGroupsDetachEndpointsRequest: Schema.Codec<GlobalNetworkEndpointGroupsDetachEndpointsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
   }).annotate({
@@ -18841,7 +18841,7 @@ export interface NetworkProfileLocation {
   name?: string;
 }
 
-export const NetworkProfileLocation: Schema.Schema<NetworkProfileLocation> =
+export const NetworkProfileLocation: Schema.Codec<NetworkProfileLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -18854,7 +18854,7 @@ export interface NetworkProfileProfileType {
   networkType?: "RDMA" | "ULL" | "VPC" | (string & {});
 }
 
-export const NetworkProfileProfileType: Schema.Schema<NetworkProfileProfileType> =
+export const NetworkProfileProfileType: Schema.Codec<NetworkProfileProfileType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rdmaSubtype: Schema.optional(Schema.String),
     ullSubtype: Schema.optional(Schema.String),
@@ -18869,7 +18869,7 @@ export interface NetworkProfileNetworkFeaturesPredefinedSubnetworkRange {
   ipv6Range?: string;
 }
 
-export const NetworkProfileNetworkFeaturesPredefinedSubnetworkRange: Schema.Schema<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange> =
+export const NetworkProfileNetworkFeaturesPredefinedSubnetworkRange: Schema.Codec<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namePrefix: Schema.optional(Schema.String),
     ipv6Range: Schema.optional(Schema.String),
@@ -19068,7 +19068,7 @@ export interface NetworkProfileNetworkFeatures {
     | (string & {});
 }
 
-export const NetworkProfileNetworkFeatures: Schema.Schema<NetworkProfileNetworkFeatures> =
+export const NetworkProfileNetworkFeatures: Schema.Codec<NetworkProfileNetworkFeatures> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetworkStackTypes: Schema.optional(Schema.Array(Schema.String)),
     allowMultiNicInSameNetwork: Schema.optional(Schema.String),
@@ -19135,7 +19135,7 @@ export interface NetworkProfile {
   id?: string;
 }
 
-export const NetworkProfile: Schema.Schema<NetworkProfile> =
+export const NetworkProfile: Schema.Codec<NetworkProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLinkWithId: Schema.optional(Schema.String),
     creationTimestamp: Schema.optional(Schema.String),
@@ -19201,7 +19201,7 @@ export interface NetworkProfilesListResponse {
   nextPageToken?: string;
 }
 
-export const NetworkProfilesListResponse: Schema.Schema<NetworkProfilesListResponse> =
+export const NetworkProfilesListResponse: Schema.Codec<NetworkProfilesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -19240,7 +19240,7 @@ export interface RouterNatSubnetworkToNat {
   secondaryIpRangeNames?: ReadonlyArray<string>;
 }
 
-export const RouterNatSubnetworkToNat: Schema.Schema<RouterNatSubnetworkToNat> =
+export const RouterNatSubnetworkToNat: Schema.Codec<RouterNatSubnetworkToNat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceIpRangesToNat: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -19252,7 +19252,7 @@ export interface ReservationsResizeRequest {
   specificSkuCount?: string;
 }
 
-export const ReservationsResizeRequest: Schema.Schema<ReservationsResizeRequest> =
+export const ReservationsResizeRequest: Schema.Codec<ReservationsResizeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     specificSkuCount: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReservationsResizeRequest" });
@@ -19278,7 +19278,7 @@ export interface AcceleratorType {
   maximumCardsPerInstance?: number;
 }
 
-export const AcceleratorType: Schema.Schema<AcceleratorType> =
+export const AcceleratorType: Schema.Codec<AcceleratorType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -19332,7 +19332,7 @@ export interface AcceleratorTypesScopedList {
   };
 }
 
-export const AcceleratorTypesScopedList: Schema.Schema<AcceleratorTypesScopedList> =
+export const AcceleratorTypesScopedList: Schema.Codec<AcceleratorTypesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTypes: Schema.optional(Schema.Array(AcceleratorType)),
     warning: Schema.optional(
@@ -19402,7 +19402,7 @@ export interface AcceleratorTypeAggregatedList {
   selfLink?: string;
 }
 
-export const AcceleratorTypeAggregatedList: Schema.Schema<AcceleratorTypeAggregatedList> =
+export const AcceleratorTypeAggregatedList: Schema.Codec<AcceleratorTypeAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Record(Schema.String, AcceleratorTypesScopedList),
@@ -19433,7 +19433,7 @@ export interface InstantSnapshotGroupSourceInfo {
   consistencyGroup?: string;
 }
 
-export const InstantSnapshotGroupSourceInfo: Schema.Schema<InstantSnapshotGroupSourceInfo> =
+export const InstantSnapshotGroupSourceInfo: Schema.Codec<InstantSnapshotGroupSourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consistencyGroupId: Schema.optional(Schema.String),
     consistencyGroup: Schema.optional(Schema.String),
@@ -19446,7 +19446,7 @@ export interface InstantSnapshotGroupResourceStatus {
   sourceInfo?: InstantSnapshotGroupSourceInfo;
 }
 
-export const InstantSnapshotGroupResourceStatus: Schema.Schema<InstantSnapshotGroupResourceStatus> =
+export const InstantSnapshotGroupResourceStatus: Schema.Codec<InstantSnapshotGroupResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consistencyMembershipResolutionTime: Schema.optional(Schema.String),
     sourceInfo: Schema.optional(InstantSnapshotGroupSourceInfo),
@@ -19484,7 +19484,7 @@ export interface InstantSnapshotGroup {
   region?: string;
 }
 
-export const InstantSnapshotGroup: Schema.Schema<InstantSnapshotGroup> =
+export const InstantSnapshotGroup: Schema.Codec<InstantSnapshotGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLinkWithId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -19552,7 +19552,7 @@ export interface ListInstantSnapshotGroups {
   unreachables?: ReadonlyArray<string>;
 }
 
-export const ListInstantSnapshotGroups: Schema.Schema<ListInstantSnapshotGroups> =
+export const ListInstantSnapshotGroups: Schema.Codec<ListInstantSnapshotGroups> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -19586,7 +19586,7 @@ export interface NatIpInfoNatIpInfoMapping {
   mode?: "AUTO" | "MANUAL" | (string & {});
 }
 
-export const NatIpInfoNatIpInfoMapping: Schema.Schema<NatIpInfoNatIpInfoMapping> =
+export const NatIpInfoNatIpInfoMapping: Schema.Codec<NatIpInfoNatIpInfoMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     natIp: Schema.optional(Schema.String),
     usage: Schema.optional(Schema.String),
@@ -19600,7 +19600,7 @@ export interface NatIpInfo {
   natIpInfoMappings?: ReadonlyArray<NatIpInfoNatIpInfoMapping>;
 }
 
-export const NatIpInfo: Schema.Schema<NatIpInfo> =
+export const NatIpInfo: Schema.Codec<NatIpInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     natName: Schema.optional(Schema.String),
     natIpInfoMappings: Schema.optional(Schema.Array(NatIpInfoNatIpInfoMapping)),
@@ -19611,7 +19611,7 @@ export interface NatIpInfoResponse {
   result?: ReadonlyArray<NatIpInfo>;
 }
 
-export const NatIpInfoResponse: Schema.Schema<NatIpInfoResponse> =
+export const NatIpInfoResponse: Schema.Codec<NatIpInfoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Array(NatIpInfo)),
   }).annotate({ identifier: "NatIpInfoResponse" });
@@ -19629,7 +19629,7 @@ export interface NotificationEndpointGrpcSettings {
   endpoint?: string;
 }
 
-export const NotificationEndpointGrpcSettings: Schema.Schema<NotificationEndpointGrpcSettings> =
+export const NotificationEndpointGrpcSettings: Schema.Codec<NotificationEndpointGrpcSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     payloadName: Schema.optional(Schema.String),
     resendInterval: Schema.optional(Duration),
@@ -19657,7 +19657,7 @@ export interface NotificationEndpoint {
   grpcSettings?: NotificationEndpointGrpcSettings;
 }
 
-export const NotificationEndpoint: Schema.Schema<NotificationEndpoint> =
+export const NotificationEndpoint: Schema.Codec<NotificationEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -19718,7 +19718,7 @@ export interface NotificationEndpointList {
   selfLink?: string;
 }
 
-export const NotificationEndpointList: Schema.Schema<NotificationEndpointList> =
+export const NotificationEndpointList: Schema.Codec<NotificationEndpointList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(NotificationEndpoint)),
@@ -19752,7 +19752,7 @@ export interface ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
     | (string & {});
 }
 
-export const ResourcePolicySnapshotSchedulePolicyRetentionPolicy: Schema.Schema<ResourcePolicySnapshotSchedulePolicyRetentionPolicy> =
+export const ResourcePolicySnapshotSchedulePolicyRetentionPolicy: Schema.Codec<ResourcePolicySnapshotSchedulePolicyRetentionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxRetentionDays: Schema.optional(Schema.Number),
     onSourceDiskDelete: Schema.optional(Schema.String),
@@ -19778,7 +19778,7 @@ export interface ResourcePolicyWeeklyCycleDayOfWeek {
     | (string & {});
 }
 
-export const ResourcePolicyWeeklyCycleDayOfWeek: Schema.Schema<ResourcePolicyWeeklyCycleDayOfWeek> =
+export const ResourcePolicyWeeklyCycleDayOfWeek: Schema.Codec<ResourcePolicyWeeklyCycleDayOfWeek> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -19790,7 +19790,7 @@ export interface ResourcePolicyWeeklyCycle {
   dayOfWeeks?: ReadonlyArray<ResourcePolicyWeeklyCycleDayOfWeek>;
 }
 
-export const ResourcePolicyWeeklyCycle: Schema.Schema<ResourcePolicyWeeklyCycle> =
+export const ResourcePolicyWeeklyCycle: Schema.Codec<ResourcePolicyWeeklyCycle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dayOfWeeks: Schema.optional(
       Schema.Array(ResourcePolicyWeeklyCycleDayOfWeek),
@@ -19806,7 +19806,7 @@ export interface ResourcePolicyHourlyCycle {
   startTime?: string;
 }
 
-export const ResourcePolicyHourlyCycle: Schema.Schema<ResourcePolicyHourlyCycle> =
+export const ResourcePolicyHourlyCycle: Schema.Codec<ResourcePolicyHourlyCycle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     hoursInCycle: Schema.optional(Schema.Number),
@@ -19822,7 +19822,7 @@ export interface ResourcePolicyDailyCycle {
   startTime?: string;
 }
 
-export const ResourcePolicyDailyCycle: Schema.Schema<ResourcePolicyDailyCycle> =
+export const ResourcePolicyDailyCycle: Schema.Codec<ResourcePolicyDailyCycle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     daysInCycle: Schema.optional(Schema.Number),
@@ -19835,7 +19835,7 @@ export interface ResourcePolicySnapshotSchedulePolicySchedule {
   dailySchedule?: ResourcePolicyDailyCycle;
 }
 
-export const ResourcePolicySnapshotSchedulePolicySchedule: Schema.Schema<ResourcePolicySnapshotSchedulePolicySchedule> =
+export const ResourcePolicySnapshotSchedulePolicySchedule: Schema.Codec<ResourcePolicySnapshotSchedulePolicySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weeklySchedule: Schema.optional(ResourcePolicyWeeklyCycle),
     hourlySchedule: Schema.optional(ResourcePolicyHourlyCycle),
@@ -19855,7 +19855,7 @@ export interface ResourcePolicySnapshotSchedulePolicySnapshotProperties {
   storageLocations?: ReadonlyArray<string>;
 }
 
-export const ResourcePolicySnapshotSchedulePolicySnapshotProperties: Schema.Schema<ResourcePolicySnapshotSchedulePolicySnapshotProperties> =
+export const ResourcePolicySnapshotSchedulePolicySnapshotProperties: Schema.Codec<ResourcePolicySnapshotSchedulePolicySnapshotProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     region: Schema.optional(Schema.String),
@@ -19875,7 +19875,7 @@ export interface ResourcePolicySnapshotSchedulePolicy {
   snapshotProperties?: ResourcePolicySnapshotSchedulePolicySnapshotProperties;
 }
 
-export const ResourcePolicySnapshotSchedulePolicy: Schema.Schema<ResourcePolicySnapshotSchedulePolicy> =
+export const ResourcePolicySnapshotSchedulePolicy: Schema.Codec<ResourcePolicySnapshotSchedulePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retentionPolicy: Schema.optional(
       ResourcePolicySnapshotSchedulePolicyRetentionPolicy,
@@ -19891,7 +19891,7 @@ export interface ImageParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const ImageParams: Schema.Schema<ImageParams> =
+export const ImageParams: Schema.Codec<ImageParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -19983,7 +19983,7 @@ export interface Image {
   sourceType?: "RAW" | (string & {});
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     architecture: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -20079,7 +20079,7 @@ export interface ImageList {
   selfLink?: string;
 }
 
-export const ImageList: Schema.Schema<ImageList> =
+export const ImageList: Schema.Codec<ImageList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Image)),
     id: Schema.optional(Schema.String),
@@ -20151,7 +20151,7 @@ export interface TargetInstanceList {
   selfLink?: string;
 }
 
-export const TargetInstanceList: Schema.Schema<TargetInstanceList> =
+export const TargetInstanceList: Schema.Codec<TargetInstanceList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(TargetInstance)),
@@ -20225,7 +20225,7 @@ export interface TargetPoolAggregatedList {
   selfLink?: string;
 }
 
-export const TargetPoolAggregatedList: Schema.Schema<TargetPoolAggregatedList> =
+export const TargetPoolAggregatedList: Schema.Codec<TargetPoolAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Record(Schema.String, TargetPoolsScopedList)),
@@ -20298,7 +20298,7 @@ export interface InstanceTemplateList {
   };
 }
 
-export const InstanceTemplateList: Schema.Schema<InstanceTemplateList> =
+export const InstanceTemplateList: Schema.Codec<InstanceTemplateList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -20328,7 +20328,7 @@ export interface InstanceGroupManagerStatusAllInstancesConfig {
   effective?: boolean;
 }
 
-export const InstanceGroupManagerStatusAllInstancesConfig: Schema.Schema<InstanceGroupManagerStatusAllInstancesConfig> =
+export const InstanceGroupManagerStatusAllInstancesConfig: Schema.Codec<InstanceGroupManagerStatusAllInstancesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentRevision: Schema.optional(Schema.String),
     effective: Schema.optional(Schema.Boolean),
@@ -20350,7 +20350,7 @@ export interface ManagedInstancePropertiesFromFlexibilityPolicy {
   minCpuPlatform?: string;
 }
 
-export const ManagedInstancePropertiesFromFlexibilityPolicy: Schema.Schema<ManagedInstancePropertiesFromFlexibilityPolicy> =
+export const ManagedInstancePropertiesFromFlexibilityPolicy: Schema.Codec<ManagedInstancePropertiesFromFlexibilityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningModel: Schema.optional(Schema.String),
     disks: Schema.optional(Schema.Array(AttachedDisk)),
@@ -20387,7 +20387,7 @@ export interface NodeType {
   id?: string;
 }
 
-export const NodeType: Schema.Schema<NodeType> =
+export const NodeType: Schema.Codec<NodeType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memoryMb: Schema.optional(Schema.Number),
     description: Schema.optional(Schema.String),
@@ -20445,7 +20445,7 @@ export interface NodeTypesScopedList {
   };
 }
 
-export const NodeTypesScopedList: Schema.Schema<NodeTypesScopedList> =
+export const NodeTypesScopedList: Schema.Codec<NodeTypesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeTypes: Schema.optional(Schema.Array(NodeType)),
     warning: Schema.optional(
@@ -20515,7 +20515,7 @@ export interface NodeTypeAggregatedList {
   };
 }
 
-export const NodeTypeAggregatedList: Schema.Schema<NodeTypeAggregatedList> =
+export const NodeTypeAggregatedList: Schema.Codec<NodeTypeAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -20544,7 +20544,7 @@ export interface InstanceGroupManagersResumeInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const InstanceGroupManagersResumeInstancesRequest: Schema.Schema<InstanceGroupManagersResumeInstancesRequest> =
+export const InstanceGroupManagersResumeInstancesRequest: Schema.Codec<InstanceGroupManagersResumeInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InstanceGroupManagersResumeInstancesRequest" });
@@ -20596,7 +20596,7 @@ export interface FirewallPolicyList {
   };
 }
 
-export const FirewallPolicyList: Schema.Schema<FirewallPolicyList> =
+export const FirewallPolicyList: Schema.Codec<FirewallPolicyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -20639,7 +20639,7 @@ export interface TestFailure {
   expectedOutputUrl?: string;
 }
 
-export const TestFailure: Schema.Schema<TestFailure> =
+export const TestFailure: Schema.Codec<TestFailure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actualService: Schema.optional(Schema.String),
     actualRedirectResponseCode: Schema.optional(Schema.Number),
@@ -20663,7 +20663,7 @@ export interface UrlMapValidationResult {
   testFailures?: ReadonlyArray<TestFailure>;
 }
 
-export const UrlMapValidationResult: Schema.Schema<UrlMapValidationResult> =
+export const UrlMapValidationResult: Schema.Codec<UrlMapValidationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testPassed: Schema.optional(Schema.Boolean),
     loadSucceeded: Schema.optional(Schema.Boolean),
@@ -20687,7 +20687,7 @@ export interface CrossSiteNetwork {
   id?: string;
 }
 
-export const CrossSiteNetwork: Schema.Schema<CrossSiteNetwork> =
+export const CrossSiteNetwork: Schema.Codec<CrossSiteNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     creationTimestamp: Schema.optional(Schema.String),
@@ -20746,7 +20746,7 @@ export interface TargetHttpProxyList {
   id?: string;
 }
 
-export const TargetHttpProxyList: Schema.Schema<TargetHttpProxyList> =
+export const TargetHttpProxyList: Schema.Codec<TargetHttpProxyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -20780,7 +20780,7 @@ export interface InterconnectGroupsOperationalStatusInterconnectStatus {
   interconnect?: string;
 }
 
-export const InterconnectGroupsOperationalStatusInterconnectStatus: Schema.Schema<InterconnectGroupsOperationalStatusInterconnectStatus> =
+export const InterconnectGroupsOperationalStatusInterconnectStatus: Schema.Codec<InterconnectGroupsOperationalStatusInterconnectStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isActive: Schema.optional(Schema.String),
     adminEnabled: Schema.optional(Schema.Boolean),
@@ -20797,7 +20797,7 @@ export interface XpnResourceId {
   id?: string;
 }
 
-export const XpnResourceId: Schema.Schema<XpnResourceId> =
+export const XpnResourceId: Schema.Codec<XpnResourceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -20808,7 +20808,7 @@ export interface ProjectsDisableXpnResourceRequest {
   xpnResource?: XpnResourceId;
 }
 
-export const ProjectsDisableXpnResourceRequest: Schema.Schema<ProjectsDisableXpnResourceRequest> =
+export const ProjectsDisableXpnResourceRequest: Schema.Codec<ProjectsDisableXpnResourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     xpnResource: Schema.optional(XpnResourceId),
   }).annotate({ identifier: "ProjectsDisableXpnResourceRequest" });
@@ -20832,7 +20832,7 @@ export interface InstanceGroupManagerStatusBulkInstanceOperationLastProgressChec
   };
 }
 
-export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck: Schema.Schema<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck> =
+export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck: Schema.Codec<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     error: Schema.optional(
@@ -20852,7 +20852,7 @@ export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck: S
   }).annotate({
     identifier:
       "InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck",
-  }) as any as Schema.Schema<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck>;
+  }) as any as Schema.Codec<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck>;
 
 export interface NotificationEndpointsScopedList {
   /** A list of NotificationEndpoints contained in this scope. */
@@ -20895,7 +20895,7 @@ export interface NotificationEndpointsScopedList {
   };
 }
 
-export const NotificationEndpointsScopedList: Schema.Schema<NotificationEndpointsScopedList> =
+export const NotificationEndpointsScopedList: Schema.Codec<NotificationEndpointsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(NotificationEndpoint)),
     warning: Schema.optional(
@@ -20965,7 +20965,7 @@ export interface NotificationEndpointAggregatedList {
   nextPageToken?: string;
 }
 
-export const NotificationEndpointAggregatedList: Schema.Schema<NotificationEndpointAggregatedList> =
+export const NotificationEndpointAggregatedList: Schema.Codec<NotificationEndpointAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -20998,7 +20998,7 @@ export interface GlobalVmExtensionPolicyExtensionPolicy {
   pinnedVersion?: string;
 }
 
-export const GlobalVmExtensionPolicyExtensionPolicy: Schema.Schema<GlobalVmExtensionPolicyExtensionPolicy> =
+export const GlobalVmExtensionPolicyExtensionPolicy: Schema.Codec<GlobalVmExtensionPolicyExtensionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringConfig: Schema.optional(Schema.String),
     pinnedVersion: Schema.optional(Schema.String),
@@ -21009,7 +21009,7 @@ export interface GlobalVmExtensionPolicyLabelSelector {
   inclusionLabels?: Record<string, string>;
 }
 
-export const GlobalVmExtensionPolicyLabelSelector: Schema.Schema<GlobalVmExtensionPolicyLabelSelector> =
+export const GlobalVmExtensionPolicyLabelSelector: Schema.Codec<GlobalVmExtensionPolicyLabelSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inclusionLabels: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -21021,7 +21021,7 @@ export interface GlobalVmExtensionPolicyInstanceSelector {
   labelSelector?: GlobalVmExtensionPolicyLabelSelector;
 }
 
-export const GlobalVmExtensionPolicyInstanceSelector: Schema.Schema<GlobalVmExtensionPolicyInstanceSelector> =
+export const GlobalVmExtensionPolicyInstanceSelector: Schema.Codec<GlobalVmExtensionPolicyInstanceSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelSelector: Schema.optional(GlobalVmExtensionPolicyLabelSelector),
   }).annotate({ identifier: "GlobalVmExtensionPolicyInstanceSelector" });
@@ -21058,7 +21058,7 @@ export interface GlobalVmExtensionPolicy {
   name?: string;
 }
 
-export const GlobalVmExtensionPolicy: Schema.Schema<GlobalVmExtensionPolicy> =
+export const GlobalVmExtensionPolicy: Schema.Codec<GlobalVmExtensionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTimestamp: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -21131,7 +21131,7 @@ export interface GlobalVmExtensionPolicyList {
   selfLink?: string;
 }
 
-export const GlobalVmExtensionPolicyList: Schema.Schema<GlobalVmExtensionPolicyList> =
+export const GlobalVmExtensionPolicyList: Schema.Codec<GlobalVmExtensionPolicyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(GlobalVmExtensionPolicy)),
@@ -21163,7 +21163,7 @@ export interface ShieldedVmIdentityEntry {
   ekPub?: string;
 }
 
-export const ShieldedVmIdentityEntry: Schema.Schema<ShieldedVmIdentityEntry> =
+export const ShieldedVmIdentityEntry: Schema.Codec<ShieldedVmIdentityEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ekCert: Schema.optional(Schema.String),
     ekPub: Schema.optional(Schema.String),
@@ -21174,7 +21174,7 @@ export interface CommitmentResourceStatus {
   customTermEligibilityEndTimestamp?: string;
 }
 
-export const CommitmentResourceStatus: Schema.Schema<CommitmentResourceStatus> =
+export const CommitmentResourceStatus: Schema.Codec<CommitmentResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customTermEligibilityEndTimestamp: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommitmentResourceStatus" });
@@ -21194,7 +21194,7 @@ export interface ResourceCommitment {
     | (string & {});
 }
 
-export const ResourceCommitment: Schema.Schema<ResourceCommitment> =
+export const ResourceCommitment: Schema.Codec<ResourceCommitment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.optional(Schema.String),
     acceleratorType: Schema.optional(Schema.String),
@@ -21210,7 +21210,7 @@ export interface LicenseResourceCommitment {
   amount?: string;
 }
 
-export const LicenseResourceCommitment: Schema.Schema<LicenseResourceCommitment> =
+export const LicenseResourceCommitment: Schema.Codec<LicenseResourceCommitment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     license: Schema.optional(Schema.String),
     coresPerLicense: Schema.optional(Schema.String),
@@ -21224,7 +21224,7 @@ export interface AllocationResourceStatusSpecificSKUAllocation {
   utilizations?: Record<string, string>;
 }
 
-export const AllocationResourceStatusSpecificSKUAllocation: Schema.Schema<AllocationResourceStatusSpecificSKUAllocation> =
+export const AllocationResourceStatusSpecificSKUAllocation: Schema.Codec<AllocationResourceStatusSpecificSKUAllocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceInstanceTemplateId: Schema.optional(Schema.String),
     utilizations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -21243,7 +21243,7 @@ export interface AllocationResourceStatusHealthInfo {
     | (string & {});
 }
 
-export const AllocationResourceStatusHealthInfo: Schema.Schema<AllocationResourceStatusHealthInfo> =
+export const AllocationResourceStatusHealthInfo: Schema.Codec<AllocationResourceStatusHealthInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthyBlockCount: Schema.optional(Schema.Number),
     degradedBlockCount: Schema.optional(Schema.Number),
@@ -21261,7 +21261,7 @@ export interface AllocationResourceStatus {
   reservationMaintenance?: GroupMaintenanceInfo;
 }
 
-export const AllocationResourceStatus: Schema.Schema<AllocationResourceStatus> =
+export const AllocationResourceStatus: Schema.Codec<AllocationResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     specificSkuAllocation: Schema.optional(
       AllocationResourceStatusSpecificSKUAllocation,
@@ -21280,7 +21280,7 @@ export interface AllocationReservationSharingPolicy {
     | (string & {});
 }
 
-export const AllocationReservationSharingPolicy: Schema.Schema<AllocationReservationSharingPolicy> =
+export const AllocationReservationSharingPolicy: Schema.Codec<AllocationReservationSharingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceShareType: Schema.optional(Schema.String),
   }).annotate({ identifier: "AllocationReservationSharingPolicy" });
@@ -21298,7 +21298,7 @@ export interface AllocationSpecificSKUReservation {
   inUseCount?: string;
 }
 
-export const AllocationSpecificSKUReservation: Schema.Schema<AllocationSpecificSKUReservation> =
+export const AllocationSpecificSKUReservation: Schema.Codec<AllocationSpecificSKUReservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assuredCount: Schema.optional(Schema.String),
     instanceProperties: Schema.optional(
@@ -21314,7 +21314,7 @@ export interface ReservationParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const ReservationParams: Schema.Schema<ReservationParams> =
+export const ReservationParams: Schema.Codec<ReservationParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -21410,7 +21410,7 @@ export interface Reservation {
   params?: ReservationParams;
 }
 
-export const Reservation: Schema.Schema<Reservation> =
+export const Reservation: Schema.Codec<Reservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -21454,7 +21454,7 @@ export interface CommitmentParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const CommitmentParams: Schema.Schema<CommitmentParams> =
+export const CommitmentParams: Schema.Codec<CommitmentParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -21558,7 +21558,7 @@ export interface Commitment {
   selfLink?: string;
 }
 
-export const Commitment: Schema.Schema<Commitment> =
+export const Commitment: Schema.Codec<Commitment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTimestamp: Schema.optional(Schema.String),
     endTimestamp: Schema.optional(Schema.String),
@@ -21635,7 +21635,7 @@ export interface CompositeHealthCheckList {
   items?: ReadonlyArray<CompositeHealthCheck>;
 }
 
-export const CompositeHealthCheckList: Schema.Schema<CompositeHealthCheckList> =
+export const CompositeHealthCheckList: Schema.Codec<CompositeHealthCheckList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -21671,7 +21671,7 @@ export interface FutureResourcesRecommendationOtherLocation {
     | (string & {});
 }
 
-export const FutureResourcesRecommendationOtherLocation: Schema.Schema<FutureResourcesRecommendationOtherLocation> =
+export const FutureResourcesRecommendationOtherLocation: Schema.Codec<FutureResourcesRecommendationOtherLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -21693,7 +21693,7 @@ export interface FutureResourcesRecommendation {
   location?: string;
 }
 
-export const FutureResourcesRecommendation: Schema.Schema<FutureResourcesRecommendation> =
+export const FutureResourcesRecommendation: Schema.Codec<FutureResourcesRecommendation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendationType: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -21710,7 +21710,7 @@ export interface CalendarModeRecommendation {
   recommendationsPerSpec?: Record<string, FutureResourcesRecommendation>;
 }
 
-export const CalendarModeRecommendation: Schema.Schema<CalendarModeRecommendation> =
+export const CalendarModeRecommendation: Schema.Codec<CalendarModeRecommendation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendationsPerSpec: Schema.optional(
       Schema.Record(Schema.String, FutureResourcesRecommendation),
@@ -21766,7 +21766,7 @@ export interface SnapshotList {
   nextPageToken?: string;
 }
 
-export const SnapshotList: Schema.Schema<SnapshotList> =
+export const SnapshotList: Schema.Codec<SnapshotList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -21830,7 +21830,7 @@ export interface ServiceAttachmentsScopedList {
   };
 }
 
-export const ServiceAttachmentsScopedList: Schema.Schema<ServiceAttachmentsScopedList> =
+export const ServiceAttachmentsScopedList: Schema.Codec<ServiceAttachmentsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAttachments: Schema.optional(Schema.Array(ServiceAttachment)),
     warning: Schema.optional(
@@ -21854,7 +21854,7 @@ export interface InstanceGroupManagersRecreateInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const InstanceGroupManagersRecreateInstancesRequest: Schema.Schema<InstanceGroupManagersRecreateInstancesRequest> =
+export const InstanceGroupManagersRecreateInstancesRequest: Schema.Codec<InstanceGroupManagersRecreateInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InstanceGroupManagersRecreateInstancesRequest" });
@@ -21866,7 +21866,7 @@ export interface RegionInstanceGroupsSetNamedPortsRequest {
   fingerprint?: string;
 }
 
-export const RegionInstanceGroupsSetNamedPortsRequest: Schema.Schema<RegionInstanceGroupsSetNamedPortsRequest> =
+export const RegionInstanceGroupsSetNamedPortsRequest: Schema.Codec<RegionInstanceGroupsSetNamedPortsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namedPorts: Schema.optional(Schema.Array(NamedPort)),
     fingerprint: Schema.optional(Schema.String),
@@ -21877,7 +21877,7 @@ export interface NodeGroupsDeleteNodesRequest {
   nodes?: ReadonlyArray<string>;
 }
 
-export const NodeGroupsDeleteNodesRequest: Schema.Schema<NodeGroupsDeleteNodesRequest> =
+export const NodeGroupsDeleteNodesRequest: Schema.Codec<NodeGroupsDeleteNodesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "NodeGroupsDeleteNodesRequest" });
@@ -21887,7 +21887,7 @@ export interface FutureResourcesSpecLocationPolicyLocation {
   preference?: "ALLOW" | "DENY" | "PREFERENCE_UNSPECIFIED" | (string & {});
 }
 
-export const FutureResourcesSpecLocationPolicyLocation: Schema.Schema<FutureResourcesSpecLocationPolicyLocation> =
+export const FutureResourcesSpecLocationPolicyLocation: Schema.Codec<FutureResourcesSpecLocationPolicyLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preference: Schema.optional(Schema.String),
   }).annotate({ identifier: "FutureResourcesSpecLocationPolicyLocation" });
@@ -21897,7 +21897,7 @@ export interface FutureResourcesSpecLocationPolicy {
   locations?: Record<string, FutureResourcesSpecLocationPolicyLocation>;
 }
 
-export const FutureResourcesSpecLocationPolicy: Schema.Schema<FutureResourcesSpecLocationPolicy> =
+export const FutureResourcesSpecLocationPolicy: Schema.Codec<FutureResourcesSpecLocationPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(
       Schema.Record(Schema.String, FutureResourcesSpecLocationPolicyLocation),
@@ -21911,7 +21911,7 @@ export interface FutureResourcesSpecLocalSsdPartition {
   diskSizeGb?: string;
 }
 
-export const FutureResourcesSpecLocalSsdPartition: Schema.Schema<FutureResourcesSpecLocalSsdPartition> =
+export const FutureResourcesSpecLocalSsdPartition: Schema.Codec<FutureResourcesSpecLocalSsdPartition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskInterface: Schema.optional(Schema.String),
     diskSizeGb: Schema.optional(Schema.String),
@@ -21926,7 +21926,7 @@ export interface FutureResourcesSpecSpecificSKUResources {
   instanceCount?: string;
 }
 
-export const FutureResourcesSpecSpecificSKUResources: Schema.Schema<FutureResourcesSpecSpecificSKUResources> =
+export const FutureResourcesSpecSpecificSKUResources: Schema.Codec<FutureResourcesSpecSpecificSKUResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localSsdPartitions: Schema.optional(
       Schema.Array(FutureResourcesSpecLocalSsdPartition),
@@ -21953,7 +21953,7 @@ export interface FutureResourcesSpecAggregateResources {
     | (string & {});
 }
 
-export const FutureResourcesSpecAggregateResources: Schema.Schema<FutureResourcesSpecAggregateResources> =
+export const FutureResourcesSpecAggregateResources: Schema.Codec<FutureResourcesSpecAggregateResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadType: Schema.optional(Schema.String),
     acceleratorCount: Schema.optional(Schema.String),
@@ -21965,7 +21965,7 @@ export interface FutureResourcesSpecTargetResources {
   aggregateResources?: FutureResourcesSpecAggregateResources;
 }
 
-export const FutureResourcesSpecTargetResources: Schema.Schema<FutureResourcesSpecTargetResources> =
+export const FutureResourcesSpecTargetResources: Schema.Codec<FutureResourcesSpecTargetResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     specificSkuResources: Schema.optional(
       FutureResourcesSpecSpecificSKUResources,
@@ -21988,7 +21988,7 @@ export interface FutureResourcesSpec {
     | (string & {});
 }
 
-export const FutureResourcesSpec: Schema.Schema<FutureResourcesSpec> =
+export const FutureResourcesSpec: Schema.Codec<FutureResourcesSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeRangeSpec: Schema.optional(FlexibleTimeRange),
     locationPolicy: Schema.optional(FutureResourcesSpecLocationPolicy),
@@ -22037,7 +22037,7 @@ export interface TargetTcpProxiesScopedList {
   };
 }
 
-export const TargetTcpProxiesScopedList: Schema.Schema<TargetTcpProxiesScopedList> =
+export const TargetTcpProxiesScopedList: Schema.Codec<TargetTcpProxiesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetTcpProxies: Schema.optional(Schema.Array(TargetTcpProxy)),
     warning: Schema.optional(
@@ -22063,7 +22063,7 @@ export interface InstanceGroupManagersResizeAdvancedRequest {
   noCreationRetries?: boolean;
 }
 
-export const InstanceGroupManagersResizeAdvancedRequest: Schema.Schema<InstanceGroupManagersResizeAdvancedRequest> =
+export const InstanceGroupManagersResizeAdvancedRequest: Schema.Codec<InstanceGroupManagersResizeAdvancedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSize: Schema.optional(Schema.Number),
     noCreationRetries: Schema.optional(Schema.Boolean),
@@ -22074,7 +22074,7 @@ export interface RegionInstanceGroupManagerUpdateInstanceConfigReq {
   perInstanceConfigs?: ReadonlyArray<PerInstanceConfig>;
 }
 
-export const RegionInstanceGroupManagerUpdateInstanceConfigReq: Schema.Schema<RegionInstanceGroupManagerUpdateInstanceConfigReq> =
+export const RegionInstanceGroupManagerUpdateInstanceConfigReq: Schema.Codec<RegionInstanceGroupManagerUpdateInstanceConfigReq> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perInstanceConfigs: Schema.optional(Schema.Array(PerInstanceConfig)),
   }).annotate({
@@ -22094,7 +22094,7 @@ export interface PublicAdvertisedPrefixPublicDelegatedPrefix {
   project?: string;
 }
 
-export const PublicAdvertisedPrefixPublicDelegatedPrefix: Schema.Schema<PublicAdvertisedPrefixPublicDelegatedPrefix> =
+export const PublicAdvertisedPrefixPublicDelegatedPrefix: Schema.Codec<PublicAdvertisedPrefixPublicDelegatedPrefix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipRange: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -22146,7 +22146,7 @@ export interface PublicAdvertisedPrefix {
   publicDelegatedPrefixs?: ReadonlyArray<PublicAdvertisedPrefixPublicDelegatedPrefix>;
 }
 
-export const PublicAdvertisedPrefix: Schema.Schema<PublicAdvertisedPrefix> =
+export const PublicAdvertisedPrefix: Schema.Codec<PublicAdvertisedPrefix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     dnsVerificationIp: Schema.optional(Schema.String),
@@ -22216,7 +22216,7 @@ export interface PublicAdvertisedPrefixList {
   items?: ReadonlyArray<PublicAdvertisedPrefix>;
 }
 
-export const PublicAdvertisedPrefixList: Schema.Schema<PublicAdvertisedPrefixList> =
+export const PublicAdvertisedPrefixList: Schema.Codec<PublicAdvertisedPrefixList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -22246,7 +22246,7 @@ export interface InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelM
   standardCapacityPercentAboveBase?: number;
 }
 
-export const InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix: Schema.Schema<InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix> =
+export const InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix: Schema.Codec<InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standardCapacityBase: Schema.optional(Schema.Number),
     standardCapacityPercentAboveBase: Schema.optional(Schema.Number),
@@ -22266,7 +22266,7 @@ export interface InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection 
   rank?: number;
 }
 
-export const InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection: Schema.Schema<InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection> =
+export const InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection: Schema.Codec<InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineTypes: Schema.optional(Schema.Array(Schema.String)),
     disks: Schema.optional(Schema.Array(AttachedDisk)),
@@ -22287,7 +22287,7 @@ export interface InstanceGroupManagerInstanceFlexibilityPolicy {
   >;
 }
 
-export const InstanceGroupManagerInstanceFlexibilityPolicy: Schema.Schema<InstanceGroupManagerInstanceFlexibilityPolicy> =
+export const InstanceGroupManagerInstanceFlexibilityPolicy: Schema.Codec<InstanceGroupManagerInstanceFlexibilityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningModelMix: Schema.optional(
       InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix,
@@ -22329,7 +22329,7 @@ export interface InstanceGroupManagerStatusInstanceStatusSummary {
   pending?: number;
 }
 
-export const InstanceGroupManagerStatusInstanceStatusSummary: Schema.Schema<InstanceGroupManagerStatusInstanceStatusSummary> =
+export const InstanceGroupManagerStatusInstanceStatusSummary: Schema.Codec<InstanceGroupManagerStatusInstanceStatusSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     running: Schema.optional(Schema.Number),
     pendingStop: Schema.optional(Schema.Number),
@@ -22355,7 +22355,7 @@ export interface InstanceGroupManagerStatusBulkInstanceOperation {
   lastProgressCheck?: InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck;
 }
 
-export const InstanceGroupManagerStatusBulkInstanceOperation: Schema.Schema<InstanceGroupManagerStatusBulkInstanceOperation> =
+export const InstanceGroupManagerStatusBulkInstanceOperation: Schema.Codec<InstanceGroupManagerStatusBulkInstanceOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inProgress: Schema.optional(Schema.Boolean),
     lastProgressCheck: Schema.optional(
@@ -22384,7 +22384,7 @@ export interface InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopolog
   };
 }
 
-export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails: Schema.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails> =
+export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails: Schema.Codec<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     error: Schema.optional(
@@ -22404,7 +22404,7 @@ export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologySta
   }).annotate({
     identifier:
       "InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails",
-  }) as any as Schema.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails>;
+  }) as any as Schema.Codec<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails>;
 
 export interface InstanceGroupManagerStatusAcceleratorTopology {
   /** Output only. Topology in the format of: "16x16", "4x4x4", etc. The value is the same as configured in the WorkloadPolicy. */
@@ -22422,7 +22422,7 @@ export interface InstanceGroupManagerStatusAcceleratorTopology {
   stateDetails?: InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails;
 }
 
-export const InstanceGroupManagerStatusAcceleratorTopology: Schema.Schema<InstanceGroupManagerStatusAcceleratorTopology> =
+export const InstanceGroupManagerStatusAcceleratorTopology: Schema.Codec<InstanceGroupManagerStatusAcceleratorTopology> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTopology: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -22436,7 +22436,7 @@ export interface InstanceGroupManagerStatusStatefulPerInstanceConfigs {
   allEffective?: boolean;
 }
 
-export const InstanceGroupManagerStatusStatefulPerInstanceConfigs: Schema.Schema<InstanceGroupManagerStatusStatefulPerInstanceConfigs> =
+export const InstanceGroupManagerStatusStatefulPerInstanceConfigs: Schema.Codec<InstanceGroupManagerStatusStatefulPerInstanceConfigs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allEffective: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -22452,7 +22452,7 @@ export interface InstanceGroupManagerStatusStateful {
   perInstanceConfigs?: InstanceGroupManagerStatusStatefulPerInstanceConfigs;
 }
 
-export const InstanceGroupManagerStatusStateful: Schema.Schema<InstanceGroupManagerStatusStateful> =
+export const InstanceGroupManagerStatusStateful: Schema.Codec<InstanceGroupManagerStatusStateful> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasStatefulConfig: Schema.optional(Schema.Boolean),
     isStateful: Schema.optional(Schema.Boolean),
@@ -22466,7 +22466,7 @@ export interface InstanceGroupManagerStatusVersionTarget {
   isReached?: boolean;
 }
 
-export const InstanceGroupManagerStatusVersionTarget: Schema.Schema<InstanceGroupManagerStatusVersionTarget> =
+export const InstanceGroupManagerStatusVersionTarget: Schema.Codec<InstanceGroupManagerStatusVersionTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isReached: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "InstanceGroupManagerStatusVersionTarget" });
@@ -22490,7 +22490,7 @@ export interface InstanceGroupManagerStatus {
   allInstancesConfig?: InstanceGroupManagerStatusAllInstancesConfig;
 }
 
-export const InstanceGroupManagerStatus: Schema.Schema<InstanceGroupManagerStatus> =
+export const InstanceGroupManagerStatus: Schema.Codec<InstanceGroupManagerStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoscaler: Schema.optional(Schema.String),
     currentInstanceStatuses: Schema.optional(
@@ -22514,7 +22514,7 @@ export interface StatefulPolicy {
   preservedState?: StatefulPolicyPreservedState;
 }
 
-export const StatefulPolicy: Schema.Schema<StatefulPolicy> =
+export const StatefulPolicy: Schema.Codec<StatefulPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preservedState: Schema.optional(StatefulPolicyPreservedState),
   }).annotate({ identifier: "StatefulPolicy" });
@@ -22524,7 +22524,7 @@ export interface DistributionPolicyZoneConfiguration {
   zone?: string;
 }
 
-export const DistributionPolicyZoneConfiguration: Schema.Schema<DistributionPolicyZoneConfiguration> =
+export const DistributionPolicyZoneConfiguration: Schema.Codec<DistributionPolicyZoneConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
   }).annotate({ identifier: "DistributionPolicyZoneConfiguration" });
@@ -22536,7 +22536,7 @@ export interface DistributionPolicy {
   targetShape?: "ANY" | "ANY_SINGLE_ZONE" | "BALANCED" | "EVEN" | (string & {});
 }
 
-export const DistributionPolicy: Schema.Schema<DistributionPolicy> =
+export const DistributionPolicy: Schema.Codec<DistributionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zones: Schema.optional(Schema.Array(DistributionPolicyZoneConfiguration)),
     targetShape: Schema.optional(Schema.String),
@@ -22549,7 +22549,7 @@ export interface InstanceGroupManagerStandbyPolicy {
   mode?: "MANUAL" | "SCALE_OUT_POOL" | (string & {});
 }
 
-export const InstanceGroupManagerStandbyPolicy: Schema.Schema<InstanceGroupManagerStandbyPolicy> =
+export const InstanceGroupManagerStandbyPolicy: Schema.Codec<InstanceGroupManagerStandbyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     initialDelaySec: Schema.optional(Schema.Number),
     mode: Schema.optional(Schema.String),
@@ -22562,7 +22562,7 @@ export interface InstancePropertiesPatch {
   labels?: Record<string, string>;
 }
 
-export const InstancePropertiesPatch: Schema.Schema<InstancePropertiesPatch> =
+export const InstancePropertiesPatch: Schema.Codec<InstancePropertiesPatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -22573,7 +22573,7 @@ export interface InstanceGroupManagerAllInstancesConfig {
   properties?: InstancePropertiesPatch;
 }
 
-export const InstanceGroupManagerAllInstancesConfig: Schema.Schema<InstanceGroupManagerAllInstancesConfig> =
+export const InstanceGroupManagerAllInstancesConfig: Schema.Codec<InstanceGroupManagerAllInstancesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(InstancePropertiesPatch),
   }).annotate({ identifier: "InstanceGroupManagerAllInstancesConfig" });
@@ -22587,7 +22587,7 @@ export interface InstanceGroupManagerVersion {
   name?: string;
 }
 
-export const InstanceGroupManagerVersion: Schema.Schema<InstanceGroupManagerVersion> =
+export const InstanceGroupManagerVersion: Schema.Codec<InstanceGroupManagerVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSize: Schema.optional(FixedOrPercent),
     instanceTemplate: Schema.optional(Schema.String),
@@ -22634,7 +22634,7 @@ export interface InstanceGroupManagerUpdatePolicy {
     | (string & {});
 }
 
-export const InstanceGroupManagerUpdatePolicy: Schema.Schema<InstanceGroupManagerUpdatePolicy> =
+export const InstanceGroupManagerUpdatePolicy: Schema.Codec<InstanceGroupManagerUpdatePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     allowedActions: Schema.optional(Schema.Array(Schema.String)),
@@ -22680,7 +22680,7 @@ export interface InstanceGroupManagerActionsSummary {
   restartingInPlace?: number;
 }
 
-export const InstanceGroupManagerActionsSummary: Schema.Schema<InstanceGroupManagerActionsSummary> =
+export const InstanceGroupManagerActionsSummary: Schema.Codec<InstanceGroupManagerActionsSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleting: Schema.optional(Schema.Number),
     starting: Schema.optional(Schema.Number),
@@ -22704,7 +22704,7 @@ export interface InstanceGroupManagerTargetSizePolicy {
   mode?: "BULK" | "INDIVIDUAL" | "UNSPECIFIED_MODE" | (string & {});
 }
 
-export const InstanceGroupManagerTargetSizePolicy: Schema.Schema<InstanceGroupManagerTargetSizePolicy> =
+export const InstanceGroupManagerTargetSizePolicy: Schema.Codec<InstanceGroupManagerTargetSizePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({ identifier: "InstanceGroupManagerTargetSizePolicy" });
@@ -22714,7 +22714,7 @@ export interface InstanceGroupManagerInstanceLifecyclePolicyOnRepair {
   allowChangingZone?: "NO" | "YES" | (string & {});
 }
 
-export const InstanceGroupManagerInstanceLifecyclePolicyOnRepair: Schema.Schema<InstanceGroupManagerInstanceLifecyclePolicyOnRepair> =
+export const InstanceGroupManagerInstanceLifecyclePolicyOnRepair: Schema.Codec<InstanceGroupManagerInstanceLifecyclePolicyOnRepair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowChangingZone: Schema.optional(Schema.String),
   }).annotate({
@@ -22736,7 +22736,7 @@ export interface InstanceGroupManagerInstanceLifecyclePolicy {
   forceUpdateOnRepair?: "NO" | "YES" | (string & {});
 }
 
-export const InstanceGroupManagerInstanceLifecyclePolicy: Schema.Schema<InstanceGroupManagerInstanceLifecyclePolicy> =
+export const InstanceGroupManagerInstanceLifecyclePolicy: Schema.Codec<InstanceGroupManagerInstanceLifecyclePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     onFailedHealthCheck: Schema.optional(Schema.String),
     defaultActionOnFailure: Schema.optional(Schema.String),
@@ -22751,7 +22751,7 @@ export interface InstanceGroupManagerParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const InstanceGroupManagerParams: Schema.Schema<InstanceGroupManagerParams> =
+export const InstanceGroupManagerParams: Schema.Codec<InstanceGroupManagerParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -22763,7 +22763,7 @@ export interface InstanceGroupManagerResourcePolicies {
   workloadPolicy?: string;
 }
 
-export const InstanceGroupManagerResourcePolicies: Schema.Schema<InstanceGroupManagerResourcePolicies> =
+export const InstanceGroupManagerResourcePolicies: Schema.Codec<InstanceGroupManagerResourcePolicies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadPolicy: Schema.optional(Schema.String),
   }).annotate({ identifier: "InstanceGroupManagerResourcePolicies" });
@@ -22845,7 +22845,7 @@ export interface InstanceGroupManager {
   satisfiesPzi?: boolean;
 }
 
-export const InstanceGroupManager: Schema.Schema<InstanceGroupManager> =
+export const InstanceGroupManager: Schema.Codec<InstanceGroupManager> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceFlexibilityPolicy: Schema.optional(
       InstanceGroupManagerInstanceFlexibilityPolicy,
@@ -22897,7 +22897,7 @@ export interface CapacityHistoryResponsePreemptionRecord {
   preemptionRate?: number;
 }
 
-export const CapacityHistoryResponsePreemptionRecord: Schema.Schema<CapacityHistoryResponsePreemptionRecord> =
+export const CapacityHistoryResponsePreemptionRecord: Schema.Codec<CapacityHistoryResponsePreemptionRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interval: Schema.optional(Interval),
     preemptionRate: Schema.optional(Schema.Number),
@@ -22910,7 +22910,7 @@ export interface CapacityHistoryResponse {
   preemptionHistory?: ReadonlyArray<CapacityHistoryResponsePreemptionRecord>;
 }
 
-export const CapacityHistoryResponse: Schema.Schema<CapacityHistoryResponse> =
+export const CapacityHistoryResponse: Schema.Codec<CapacityHistoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priceHistory: Schema.optional(
       Schema.Array(CapacityHistoryResponsePriceRecord),
@@ -22941,7 +22941,7 @@ export interface ResourcePolicyGroupPlacementPolicy {
   tpuTopology?: string;
 }
 
-export const ResourcePolicyGroupPlacementPolicy: Schema.Schema<ResourcePolicyGroupPlacementPolicy> =
+export const ResourcePolicyGroupPlacementPolicy: Schema.Codec<ResourcePolicyGroupPlacementPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmCount: Schema.optional(Schema.Number),
     sliceCount: Schema.optional(Schema.Number),
@@ -22961,7 +22961,7 @@ export interface ServerBinding {
     | (string & {});
 }
 
-export const ServerBinding: Schema.Schema<ServerBinding> =
+export const ServerBinding: Schema.Codec<ServerBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServerBinding" });
@@ -22973,7 +22973,7 @@ export interface ManagedInstanceShutdownDetails {
   requestTimestamp?: string;
 }
 
-export const ManagedInstanceShutdownDetails: Schema.Schema<ManagedInstanceShutdownDetails> =
+export const ManagedInstanceShutdownDetails: Schema.Codec<ManagedInstanceShutdownDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDuration: Schema.optional(Duration),
     requestTimestamp: Schema.optional(Schema.String),
@@ -22986,7 +22986,7 @@ export interface ManagedInstanceScheduling {
   terminationTimestamp?: string;
 }
 
-export const ManagedInstanceScheduling: Schema.Schema<ManagedInstanceScheduling> =
+export const ManagedInstanceScheduling: Schema.Codec<ManagedInstanceScheduling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gracefulShutdownTimestamp: Schema.optional(Schema.String),
     terminationTimestamp: Schema.optional(Schema.String),
@@ -23005,7 +23005,7 @@ export interface ManagedInstanceInstanceHealth {
     | (string & {});
 }
 
-export const ManagedInstanceInstanceHealth: Schema.Schema<ManagedInstanceInstanceHealth> =
+export const ManagedInstanceInstanceHealth: Schema.Codec<ManagedInstanceInstanceHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthCheck: Schema.optional(Schema.String),
     detailedHealthState: Schema.optional(Schema.String),
@@ -23028,7 +23028,7 @@ export interface ManagedInstanceLastAttempt {
   };
 }
 
-export const ManagedInstanceLastAttempt: Schema.Schema<ManagedInstanceLastAttempt> =
+export const ManagedInstanceLastAttempt: Schema.Codec<ManagedInstanceLastAttempt> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(
       Schema.Struct({
@@ -23046,7 +23046,7 @@ export const ManagedInstanceLastAttempt: Schema.Schema<ManagedInstanceLastAttemp
     ),
   }).annotate({
     identifier: "ManagedInstanceLastAttempt",
-  }) as any as Schema.Schema<ManagedInstanceLastAttempt>;
+  }) as any as Schema.Codec<ManagedInstanceLastAttempt>;
 
 export interface ManagedInstance {
   /** Output only. [Output Only] Instance properties selected for this instance resulting from InstanceFlexibilityPolicy. */
@@ -23116,7 +23116,7 @@ export interface ManagedInstance {
   preservedStateFromConfig?: PreservedState;
 }
 
-export const ManagedInstance: Schema.Schema<ManagedInstance> =
+export const ManagedInstance: Schema.Codec<ManagedInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertiesFromFlexibilityPolicy: Schema.optional(
       ManagedInstancePropertiesFromFlexibilityPolicy,
@@ -23146,7 +23146,7 @@ export interface RegionInstanceGroupManagersListInstancesResponse {
   nextPageToken?: string;
 }
 
-export const RegionInstanceGroupManagersListInstancesResponse: Schema.Schema<RegionInstanceGroupManagersListInstancesResponse> =
+export const RegionInstanceGroupManagersListInstancesResponse: Schema.Codec<RegionInstanceGroupManagersListInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedInstances: Schema.optional(Schema.Array(ManagedInstance)),
     nextPageToken: Schema.optional(Schema.String),
@@ -23159,7 +23159,7 @@ export interface DisksResizeRequest {
   sizeGb?: string;
 }
 
-export const DisksResizeRequest: Schema.Schema<DisksResizeRequest> =
+export const DisksResizeRequest: Schema.Codec<DisksResizeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeGb: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisksResizeRequest" });
@@ -23213,7 +23213,7 @@ export interface InstanceTemplateAggregatedList {
   nextPageToken?: string;
 }
 
-export const InstanceTemplateAggregatedList: Schema.Schema<InstanceTemplateAggregatedList> =
+export const InstanceTemplateAggregatedList: Schema.Codec<InstanceTemplateAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -23243,7 +23243,7 @@ export interface CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
   type?: "DISK_TYPE_UNSPECIFIED" | "SCRATCH" | (string & {});
 }
 
-export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk: Schema.Schema<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk> =
+export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk: Schema.Codec<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -23260,7 +23260,7 @@ export interface CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
   disks?: ReadonlyArray<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>;
 }
 
-export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection: Schema.Schema<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection> =
+export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection: Schema.Codec<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineTypes: Schema.optional(Schema.Array(Schema.String)),
     guestAccelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
@@ -23281,7 +23281,7 @@ export interface NetworkPolicyAssociation {
   name?: string;
 }
 
-export const NetworkPolicyAssociation: Schema.Schema<NetworkPolicyAssociation> =
+export const NetworkPolicyAssociation: Schema.Codec<NetworkPolicyAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachmentTarget: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -23296,7 +23296,7 @@ export interface NetworkPolicyTrafficClassificationRuleMatcher {
   destIpRanges?: ReadonlyArray<string>;
 }
 
-export const NetworkPolicyTrafficClassificationRuleMatcher: Schema.Schema<NetworkPolicyTrafficClassificationRuleMatcher> =
+export const NetworkPolicyTrafficClassificationRuleMatcher: Schema.Codec<NetworkPolicyTrafficClassificationRuleMatcher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     layer4Configs: Schema.optional(
       Schema.Array(NetworkPolicyTrafficClassificationRuleMatcherLayer4Config),
@@ -23312,7 +23312,7 @@ export interface NetworkPolicyTrafficClassificationRuleSecureTag {
   state?: "EFFECTIVE" | "INEFFECTIVE" | "STATE_UNSPECIFIED" | (string & {});
 }
 
-export const NetworkPolicyTrafficClassificationRuleSecureTag: Schema.Schema<NetworkPolicyTrafficClassificationRuleSecureTag> =
+export const NetworkPolicyTrafficClassificationRuleSecureTag: Schema.Codec<NetworkPolicyTrafficClassificationRuleSecureTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -23343,7 +23343,7 @@ export interface NetworkPolicyTrafficClassificationRule {
   targetSecureTags?: ReadonlyArray<NetworkPolicyTrafficClassificationRuleSecureTag>;
 }
 
-export const NetworkPolicyTrafficClassificationRule: Schema.Schema<NetworkPolicyTrafficClassificationRule> =
+export const NetworkPolicyTrafficClassificationRule: Schema.Codec<NetworkPolicyTrafficClassificationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     priority: Schema.optional(Schema.Number),
@@ -23384,7 +23384,7 @@ export interface NetworkPolicy {
   selfLinkWithId?: string;
 }
 
-export const NetworkPolicy: Schema.Schema<NetworkPolicy> =
+export const NetworkPolicy: Schema.Codec<NetworkPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -23406,7 +23406,7 @@ export interface InterconnectGroupInterconnect {
   interconnect?: string;
 }
 
-export const InterconnectGroupInterconnect: Schema.Schema<InterconnectGroupInterconnect> =
+export const InterconnectGroupInterconnect: Schema.Codec<InterconnectGroupInterconnect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interconnect: Schema.optional(Schema.String),
   }).annotate({ identifier: "InterconnectGroupInterconnect" });
@@ -23415,7 +23415,7 @@ export interface InterconnectGroupPhysicalStructure {
   metros?: ReadonlyArray<InterconnectGroupPhysicalStructureMetros>;
 }
 
-export const InterconnectGroupPhysicalStructure: Schema.Schema<InterconnectGroupPhysicalStructure> =
+export const InterconnectGroupPhysicalStructure: Schema.Codec<InterconnectGroupPhysicalStructure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metros: Schema.optional(
       Schema.Array(InterconnectGroupPhysicalStructureMetros),
@@ -23431,7 +23431,7 @@ export interface InterconnectGroupIntent {
     | (string & {});
 }
 
-export const InterconnectGroupIntent: Schema.Schema<InterconnectGroupIntent> =
+export const InterconnectGroupIntent: Schema.Codec<InterconnectGroupIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topologyCapability: Schema.optional(Schema.String),
   }).annotate({ identifier: "InterconnectGroupIntent" });
@@ -23446,7 +23446,7 @@ export interface InterconnectGroupConfiguredTopologyCapability {
   intendedCapabilityBlockers?: ReadonlyArray<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>;
 }
 
-export const InterconnectGroupConfiguredTopologyCapability: Schema.Schema<InterconnectGroupConfiguredTopologyCapability> =
+export const InterconnectGroupConfiguredTopologyCapability: Schema.Codec<InterconnectGroupConfiguredTopologyCapability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportedSla: Schema.optional(Schema.String),
     intendedCapabilityBlockers: Schema.optional(
@@ -23460,7 +23460,7 @@ export interface InterconnectGroupConfigured {
   topologyCapability?: InterconnectGroupConfiguredTopologyCapability;
 }
 
-export const InterconnectGroupConfigured: Schema.Schema<InterconnectGroupConfigured> =
+export const InterconnectGroupConfigured: Schema.Codec<InterconnectGroupConfigured> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topologyCapability: Schema.optional(
       InterconnectGroupConfiguredTopologyCapability,
@@ -23489,7 +23489,7 @@ export interface InterconnectGroup {
   configured?: InterconnectGroupConfigured;
 }
 
-export const InterconnectGroup: Schema.Schema<InterconnectGroup> =
+export const InterconnectGroup: Schema.Codec<InterconnectGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -23517,7 +23517,7 @@ export interface PreviewFeatureRolloutOperationRolloutInput {
     | (string & {});
 }
 
-export const PreviewFeatureRolloutOperationRolloutInput: Schema.Schema<PreviewFeatureRolloutOperationRolloutInput> =
+export const PreviewFeatureRolloutOperationRolloutInput: Schema.Codec<PreviewFeatureRolloutOperationRolloutInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     predefinedRolloutPlan: Schema.optional(Schema.String),
@@ -23572,7 +23572,7 @@ export interface StoragePoolTypeList {
   items?: ReadonlyArray<StoragePoolType>;
 }
 
-export const StoragePoolTypeList: Schema.Schema<StoragePoolTypeList> =
+export const StoragePoolTypeList: Schema.Codec<StoragePoolTypeList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -23646,7 +23646,7 @@ export interface UrlMapsAggregatedList {
   };
 }
 
-export const UrlMapsAggregatedList: Schema.Schema<UrlMapsAggregatedList> =
+export const UrlMapsAggregatedList: Schema.Codec<UrlMapsAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -23675,7 +23675,7 @@ export interface RegionInstanceGroupManagersAdoptInstancesRequest {
   instances?: ReadonlyArray<PerInstanceConfig>;
 }
 
-export const RegionInstanceGroupManagersAdoptInstancesRequest: Schema.Schema<RegionInstanceGroupManagersAdoptInstancesRequest> =
+export const RegionInstanceGroupManagersAdoptInstancesRequest: Schema.Codec<RegionInstanceGroupManagersAdoptInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(PerInstanceConfig)),
   }).annotate({
@@ -23687,7 +23687,7 @@ export interface DiskParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const DiskParams: Schema.Schema<DiskParams> =
+export const DiskParams: Schema.Codec<DiskParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceManagerTags: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -23698,7 +23698,7 @@ export interface DiskAsyncReplicationList {
   asyncReplicationDisk?: DiskAsyncReplication;
 }
 
-export const DiskAsyncReplicationList: Schema.Schema<DiskAsyncReplicationList> =
+export const DiskAsyncReplicationList: Schema.Codec<DiskAsyncReplicationList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asyncReplicationDisk: Schema.optional(DiskAsyncReplication),
   }).annotate({ identifier: "DiskAsyncReplicationList" });
@@ -23839,7 +23839,7 @@ export interface Disk {
   id?: string;
 }
 
-export const Disk: Schema.Schema<Disk> =
+export const Disk: Schema.Codec<Disk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskEncryptionKey: Schema.optional(CustomerEncryptionKey),
     satisfiesPzi: Schema.optional(Schema.Boolean),
@@ -23945,7 +23945,7 @@ export interface DisksScopedList {
   };
 }
 
-export const DisksScopedList: Schema.Schema<DisksScopedList> =
+export const DisksScopedList: Schema.Codec<DisksScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disks: Schema.optional(Schema.Array(Disk)),
     warning: Schema.optional(
@@ -24015,7 +24015,7 @@ export interface DiskAggregatedList {
   selfLink?: string;
 }
 
-export const DiskAggregatedList: Schema.Schema<DiskAggregatedList> =
+export const DiskAggregatedList: Schema.Codec<DiskAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Record(Schema.String, DisksScopedList)),
@@ -24046,7 +24046,7 @@ export interface CustomerEncryptionKeyProtectedDisk {
   source?: string;
 }
 
-export const CustomerEncryptionKeyProtectedDisk: Schema.Schema<CustomerEncryptionKeyProtectedDisk> =
+export const CustomerEncryptionKeyProtectedDisk: Schema.Codec<CustomerEncryptionKeyProtectedDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskEncryptionKey: Schema.optional(CustomerEncryptionKey),
     source: Schema.optional(Schema.String),
@@ -24056,7 +24056,7 @@ export interface NetworksUpdatePeeringRequest {
   networkPeering?: NetworkPeering;
 }
 
-export const NetworksUpdatePeeringRequest: Schema.Schema<NetworksUpdatePeeringRequest> =
+export const NetworksUpdatePeeringRequest: Schema.Codec<NetworksUpdatePeeringRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkPeering: Schema.optional(NetworkPeering),
   }).annotate({ identifier: "NetworksUpdatePeeringRequest" });
@@ -24071,7 +24071,7 @@ export interface InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse 
   >;
 }
 
-export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse: Schema.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse> =
+export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse: Schema.Codec<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     multiMig: Schema.optional(Schema.String),
     acceleratorTopologiesInfo: Schema.optional(
@@ -24090,7 +24090,7 @@ export interface InstanceGroupsAddInstancesRequest {
   instances?: ReadonlyArray<InstanceReference>;
 }
 
-export const InstanceGroupsAddInstancesRequest: Schema.Schema<InstanceGroupsAddInstancesRequest> =
+export const InstanceGroupsAddInstancesRequest: Schema.Codec<InstanceGroupsAddInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(InstanceReference)),
   }).annotate({ identifier: "InstanceGroupsAddInstancesRequest" });
@@ -24147,7 +24147,7 @@ export interface ListSnapshotGroups {
   };
 }
 
-export const ListSnapshotGroups: Schema.Schema<ListSnapshotGroups> =
+export const ListSnapshotGroups: Schema.Codec<ListSnapshotGroups> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -24179,7 +24179,7 @@ export interface VmExtensionPolicyExtensionPolicy {
   pinnedVersion?: string;
 }
 
-export const VmExtensionPolicyExtensionPolicy: Schema.Schema<VmExtensionPolicyExtensionPolicy> =
+export const VmExtensionPolicyExtensionPolicy: Schema.Codec<VmExtensionPolicyExtensionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringConfig: Schema.optional(Schema.String),
     pinnedVersion: Schema.optional(Schema.String),
@@ -24226,7 +24226,7 @@ export interface HealthAggregationPoliciesScopedList {
   };
 }
 
-export const HealthAggregationPoliciesScopedList: Schema.Schema<HealthAggregationPoliciesScopedList> =
+export const HealthAggregationPoliciesScopedList: Schema.Codec<HealthAggregationPoliciesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthAggregationPolicies: Schema.optional(
       Schema.Array(HealthAggregationPolicy),
@@ -24298,7 +24298,7 @@ export interface HealthAggregationPolicyAggregatedList {
   selfLink?: string;
 }
 
-export const HealthAggregationPolicyAggregatedList: Schema.Schema<HealthAggregationPolicyAggregatedList> =
+export const HealthAggregationPolicyAggregatedList: Schema.Codec<HealthAggregationPolicyAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Record(Schema.String, HealthAggregationPoliciesScopedList),
@@ -24329,7 +24329,7 @@ export interface PreviewFeatureRolloutOperation {
   rolloutInput?: PreviewFeatureRolloutOperationRolloutInput;
 }
 
-export const PreviewFeatureRolloutOperation: Schema.Schema<PreviewFeatureRolloutOperation> =
+export const PreviewFeatureRolloutOperation: Schema.Codec<PreviewFeatureRolloutOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rolloutInput: Schema.optional(PreviewFeatureRolloutOperationRolloutInput),
   }).annotate({ identifier: "PreviewFeatureRolloutOperation" });
@@ -24339,7 +24339,7 @@ export interface TestPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestPermissionsRequest: Schema.Schema<TestPermissionsRequest> =
+export const TestPermissionsRequest: Schema.Codec<TestPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestPermissionsRequest" });
@@ -24351,7 +24351,7 @@ export interface RouterMd5AuthenticationKey {
   key?: string;
 }
 
-export const RouterMd5AuthenticationKey: Schema.Schema<RouterMd5AuthenticationKey> =
+export const RouterMd5AuthenticationKey: Schema.Codec<RouterMd5AuthenticationKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -24368,7 +24368,7 @@ export interface InstancesReportHostAsFaultyRequestFaultReason {
   description?: string;
 }
 
-export const InstancesReportHostAsFaultyRequestFaultReason: Schema.Schema<InstancesReportHostAsFaultyRequestFaultReason> =
+export const InstancesReportHostAsFaultyRequestFaultReason: Schema.Codec<InstancesReportHostAsFaultyRequestFaultReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     behavior: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -24384,7 +24384,7 @@ export interface InstancesReportHostAsFaultyRequest {
     | (string & {});
 }
 
-export const InstancesReportHostAsFaultyRequest: Schema.Schema<InstancesReportHostAsFaultyRequest> =
+export const InstancesReportHostAsFaultyRequest: Schema.Codec<InstancesReportHostAsFaultyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     faultReasons: Schema.optional(
       Schema.Array(InstancesReportHostAsFaultyRequestFaultReason),
@@ -24396,7 +24396,7 @@ export interface SecurityPolicyReference {
   securityPolicy?: string;
 }
 
-export const SecurityPolicyReference: Schema.Schema<SecurityPolicyReference> =
+export const SecurityPolicyReference: Schema.Codec<SecurityPolicyReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityPolicy: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecurityPolicyReference" });
@@ -24412,7 +24412,7 @@ export interface InterconnectMacsecConfigPreSharedKey {
   cak?: string;
 }
 
-export const InterconnectMacsecConfigPreSharedKey: Schema.Schema<InterconnectMacsecConfigPreSharedKey> =
+export const InterconnectMacsecConfigPreSharedKey: Schema.Codec<InterconnectMacsecConfigPreSharedKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ckn: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -24435,7 +24435,7 @@ export interface InterconnectRemoteLocationConstraints {
     | (string & {});
 }
 
-export const InterconnectRemoteLocationConstraints: Schema.Schema<InterconnectRemoteLocationConstraints> =
+export const InterconnectRemoteLocationConstraints: Schema.Codec<InterconnectRemoteLocationConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetLengthRange: Schema.optional(
       InterconnectRemoteLocationConstraintsSubnetLengthRange,
@@ -24495,7 +24495,7 @@ export interface BackendServiceAggregatedList {
   id?: string;
 }
 
-export const BackendServiceAggregatedList: Schema.Schema<BackendServiceAggregatedList> =
+export const BackendServiceAggregatedList: Schema.Codec<BackendServiceAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -24532,7 +24532,7 @@ export interface RouterBgpPeerBfd {
   minReceiveInterval?: number;
 }
 
-export const RouterBgpPeerBfd: Schema.Schema<RouterBgpPeerBfd> =
+export const RouterBgpPeerBfd: Schema.Codec<RouterBgpPeerBfd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     multiplier: Schema.optional(Schema.Number),
     sessionInitializationMode: Schema.optional(Schema.String),
@@ -24545,7 +24545,7 @@ export interface RouterBgpPeerCustomLearnedIpRange {
   range?: string;
 }
 
-export const RouterBgpPeerCustomLearnedIpRange: Schema.Schema<RouterBgpPeerCustomLearnedIpRange> =
+export const RouterBgpPeerCustomLearnedIpRange: Schema.Codec<RouterBgpPeerCustomLearnedIpRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(Schema.String),
   }).annotate({ identifier: "RouterBgpPeerCustomLearnedIpRange" });
@@ -24601,7 +24601,7 @@ export interface RouterBgpPeer {
   customLearnedIpRanges?: ReadonlyArray<RouterBgpPeerCustomLearnedIpRange>;
 }
 
-export const RouterBgpPeer: Schema.Schema<RouterBgpPeer> =
+export const RouterBgpPeer: Schema.Codec<RouterBgpPeer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
     advertiseMode: Schema.optional(Schema.String),
@@ -24683,7 +24683,7 @@ export interface StoragePoolAggregatedList {
   nextPageToken?: string;
 }
 
-export const StoragePoolAggregatedList: Schema.Schema<StoragePoolAggregatedList> =
+export const StoragePoolAggregatedList: Schema.Codec<StoragePoolAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -24715,7 +24715,7 @@ export interface RegionSnapshotUpdateKmsKeyRequest {
   kmsKeyName?: string;
 }
 
-export const RegionSnapshotUpdateKmsKeyRequest: Schema.Schema<RegionSnapshotUpdateKmsKeyRequest> =
+export const RegionSnapshotUpdateKmsKeyRequest: Schema.Codec<RegionSnapshotUpdateKmsKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegionSnapshotUpdateKmsKeyRequest" });
@@ -24730,7 +24730,7 @@ export interface InstanceGroupManagersConfigureAcceleratorTopologiesRequestAccel
     | (string & {});
 }
 
-export const InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration: Schema.Schema<InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration> =
+export const InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration: Schema.Codec<InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalId: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
@@ -24746,7 +24746,7 @@ export interface HostStatus {
   runningInstances?: ReadonlyArray<string>;
 }
 
-export const HostStatus: Schema.Schema<HostStatus> =
+export const HostStatus: Schema.Codec<HostStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     physicalTopology: Schema.optional(HostPhysicalTopology),
     runningInstances: Schema.optional(Schema.Array(Schema.String)),
@@ -24783,7 +24783,7 @@ export interface Host {
   status?: HostStatus;
 }
 
-export const Host: Schema.Schema<Host> =
+export const Host: Schema.Codec<Host> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -24850,7 +24850,7 @@ export interface HostsListResponse {
   nextPageToken?: string;
 }
 
-export const HostsListResponse: Schema.Schema<HostsListResponse> =
+export const HostsListResponse: Schema.Codec<HostsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -24880,7 +24880,7 @@ export interface InstanceGroupManagersSetInstanceTemplateRequest {
   instanceTemplate?: string;
 }
 
-export const InstanceGroupManagersSetInstanceTemplateRequest: Schema.Schema<InstanceGroupManagersSetInstanceTemplateRequest> =
+export const InstanceGroupManagersSetInstanceTemplateRequest: Schema.Codec<InstanceGroupManagersSetInstanceTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceTemplate: Schema.optional(Schema.String),
   }).annotate({
@@ -24916,7 +24916,7 @@ export interface HttpsHealthCheck {
   name?: string;
 }
 
-export const HttpsHealthCheck: Schema.Schema<HttpsHealthCheck> =
+export const HttpsHealthCheck: Schema.Codec<HttpsHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -24940,7 +24940,7 @@ export interface VpnTunnelPhase1Algorithms {
   dh?: ReadonlyArray<string>;
 }
 
-export const VpnTunnelPhase1Algorithms: Schema.Schema<VpnTunnelPhase1Algorithms> =
+export const VpnTunnelPhase1Algorithms: Schema.Codec<VpnTunnelPhase1Algorithms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryption: Schema.optional(Schema.Array(Schema.String)),
     prf: Schema.optional(Schema.Array(Schema.String)),
@@ -24954,7 +24954,7 @@ export interface VpnTunnelPhase2Algorithms {
   pfs?: ReadonlyArray<string>;
 }
 
-export const VpnTunnelPhase2Algorithms: Schema.Schema<VpnTunnelPhase2Algorithms> =
+export const VpnTunnelPhase2Algorithms: Schema.Codec<VpnTunnelPhase2Algorithms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryption: Schema.optional(Schema.Array(Schema.String)),
     integrity: Schema.optional(Schema.Array(Schema.String)),
@@ -24966,7 +24966,7 @@ export interface VpnTunnelCipherSuite {
   phase2?: VpnTunnelPhase2Algorithms;
 }
 
-export const VpnTunnelCipherSuite: Schema.Schema<VpnTunnelCipherSuite> =
+export const VpnTunnelCipherSuite: Schema.Codec<VpnTunnelCipherSuite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phase1: Schema.optional(VpnTunnelPhase1Algorithms),
     phase2: Schema.optional(VpnTunnelPhase2Algorithms),
@@ -25043,7 +25043,7 @@ export interface VpnTunnel {
   params?: VpnTunnelParams;
 }
 
-export const VpnTunnel: Schema.Schema<VpnTunnel> =
+export const VpnTunnel: Schema.Codec<VpnTunnel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpnGateway: Schema.optional(Schema.String),
     creationTimestamp: Schema.optional(Schema.String),
@@ -25115,7 +25115,7 @@ export interface VpnTunnelsScopedList {
   vpnTunnels?: ReadonlyArray<VpnTunnel>;
 }
 
-export const VpnTunnelsScopedList: Schema.Schema<VpnTunnelsScopedList> =
+export const VpnTunnelsScopedList: Schema.Codec<VpnTunnelsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -25185,7 +25185,7 @@ export interface VpnTunnelAggregatedList {
   nextPageToken?: string;
 }
 
-export const VpnTunnelAggregatedList: Schema.Schema<VpnTunnelAggregatedList> =
+export const VpnTunnelAggregatedList: Schema.Codec<VpnTunnelAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -25230,7 +25230,7 @@ export interface RouterInterface {
   managementType?: "MANAGED_BY_ATTACHMENT" | "MANAGED_BY_USER" | (string & {});
 }
 
-export const RouterInterface: Schema.Schema<RouterInterface> =
+export const RouterInterface: Schema.Codec<RouterInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetwork: Schema.optional(Schema.String),
     linkedInterconnectAttachment: Schema.optional(Schema.String),
@@ -25268,7 +25268,7 @@ export interface DiskType {
   deprecated?: DeprecationStatus;
 }
 
-export const DiskType: Schema.Schema<DiskType> =
+export const DiskType: Schema.Codec<DiskType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     zone: Schema.optional(Schema.String),
@@ -25324,7 +25324,7 @@ export interface DiskTypesScopedList {
   diskTypes?: ReadonlyArray<DiskType>;
 }
 
-export const DiskTypesScopedList: Schema.Schema<DiskTypesScopedList> =
+export const DiskTypesScopedList: Schema.Codec<DiskTypesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -25394,7 +25394,7 @@ export interface DiskTypeAggregatedList {
   nextPageToken?: string;
 }
 
-export const DiskTypeAggregatedList: Schema.Schema<DiskTypeAggregatedList> =
+export const DiskTypeAggregatedList: Schema.Codec<DiskTypeAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -25459,7 +25459,7 @@ export interface InstanceGroupManagersScopedList {
   };
 }
 
-export const InstanceGroupManagersScopedList: Schema.Schema<InstanceGroupManagersScopedList> =
+export const InstanceGroupManagersScopedList: Schema.Codec<InstanceGroupManagersScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceGroupManagers: Schema.optional(Schema.Array(InstanceGroupManager)),
     warning: Schema.optional(
@@ -25529,7 +25529,7 @@ export interface InstanceGroupManagerAggregatedList {
   };
 }
 
-export const InstanceGroupManagerAggregatedList: Schema.Schema<InstanceGroupManagerAggregatedList> =
+export const InstanceGroupManagerAggregatedList: Schema.Codec<InstanceGroupManagerAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -25560,7 +25560,7 @@ export interface DisksStartAsyncReplicationRequest {
   asyncSecondaryDisk?: string;
 }
 
-export const DisksStartAsyncReplicationRequest: Schema.Schema<DisksStartAsyncReplicationRequest> =
+export const DisksStartAsyncReplicationRequest: Schema.Codec<DisksStartAsyncReplicationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asyncSecondaryDisk: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisksStartAsyncReplicationRequest" });
@@ -25570,7 +25570,7 @@ export interface MultiMigMemberStatus {
   instanceGroupManager?: string;
 }
 
-export const MultiMigMemberStatus: Schema.Schema<MultiMigMemberStatus> =
+export const MultiMigMemberStatus: Schema.Codec<MultiMigMemberStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceGroupManager: Schema.optional(Schema.String),
   }).annotate({ identifier: "MultiMigMemberStatus" });
@@ -25582,7 +25582,7 @@ export interface NodeGroupMaintenanceWindow {
   maintenanceDuration?: Duration;
 }
 
-export const NodeGroupMaintenanceWindow: Schema.Schema<NodeGroupMaintenanceWindow> =
+export const NodeGroupMaintenanceWindow: Schema.Codec<NodeGroupMaintenanceWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     maintenanceDuration: Schema.optional(Duration),
@@ -25629,7 +25629,7 @@ export interface ReservationsScopedList {
   };
 }
 
-export const ReservationsScopedList: Schema.Schema<ReservationsScopedList> =
+export const ReservationsScopedList: Schema.Codec<ReservationsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservations: Schema.optional(Schema.Array(Reservation)),
     warning: Schema.optional(
@@ -25699,7 +25699,7 @@ export interface ReservationAggregatedList {
   };
 }
 
-export const ReservationAggregatedList: Schema.Schema<ReservationAggregatedList> =
+export const ReservationAggregatedList: Schema.Codec<ReservationAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -25766,7 +25766,7 @@ export interface TargetHttpsProxiesScopedList {
   };
 }
 
-export const TargetHttpsProxiesScopedList: Schema.Schema<TargetHttpsProxiesScopedList> =
+export const TargetHttpsProxiesScopedList: Schema.Codec<TargetHttpsProxiesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetHttpsProxies: Schema.optional(Schema.Array(TargetHttpsProxy)),
     warning: Schema.optional(
@@ -25796,7 +25796,7 @@ export interface InstanceConsumptionInfo {
   minNodeCpus?: number;
 }
 
-export const InstanceConsumptionInfo: Schema.Schema<InstanceConsumptionInfo> =
+export const InstanceConsumptionInfo: Schema.Codec<InstanceConsumptionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localSsdGb: Schema.optional(Schema.Number),
     guestCpus: Schema.optional(Schema.Number),
@@ -25811,7 +25811,7 @@ export interface InstanceConsumptionData {
   consumptionInfo?: InstanceConsumptionInfo;
 }
 
-export const InstanceConsumptionData: Schema.Schema<InstanceConsumptionData> =
+export const InstanceConsumptionData: Schema.Codec<InstanceConsumptionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
     consumptionInfo: Schema.optional(InstanceConsumptionInfo),
@@ -25826,7 +25826,7 @@ export interface LocalDisk {
   diskCount?: number;
 }
 
-export const LocalDisk: Schema.Schema<LocalDisk> =
+export const LocalDisk: Schema.Codec<LocalDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskSizeGb: Schema.optional(Schema.Number),
     diskType: Schema.optional(Schema.String),
@@ -25873,7 +25873,7 @@ export interface NodeGroupNode {
     | (string & {});
 }
 
-export const NodeGroupNode: Schema.Schema<NodeGroupNode> =
+export const NodeGroupNode: Schema.Codec<NodeGroupNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeType: Schema.optional(Schema.String),
     serverBinding: Schema.optional(ServerBinding),
@@ -25942,7 +25942,7 @@ export interface NodeGroupsListNodes {
   nextPageToken?: string;
 }
 
-export const NodeGroupsListNodes: Schema.Schema<NodeGroupsListNodes> =
+export const NodeGroupsListNodes: Schema.Codec<NodeGroupsListNodes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -25981,7 +25981,7 @@ export interface CapacityAdviceResponseRecommendationShard {
     | (string & {});
 }
 
-export const CapacityAdviceResponseRecommendationShard: Schema.Schema<CapacityAdviceResponseRecommendationShard> =
+export const CapacityAdviceResponseRecommendationShard: Schema.Codec<CapacityAdviceResponseRecommendationShard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineType: Schema.optional(Schema.String),
     instanceCount: Schema.optional(Schema.Number),
@@ -25996,7 +25996,7 @@ export interface CapacityAdviceResponseRecommendation {
   shards?: ReadonlyArray<CapacityAdviceResponseRecommendationShard>;
 }
 
-export const CapacityAdviceResponseRecommendation: Schema.Schema<CapacityAdviceResponseRecommendation> =
+export const CapacityAdviceResponseRecommendation: Schema.Codec<CapacityAdviceResponseRecommendation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scores: Schema.optional(CapacityAdviceResponseRecommendationScores),
     shards: Schema.optional(
@@ -26009,7 +26009,7 @@ export interface CapacityAdviceResponse {
   recommendations?: ReadonlyArray<CapacityAdviceResponseRecommendation>;
 }
 
-export const CapacityAdviceResponse: Schema.Schema<CapacityAdviceResponse> =
+export const CapacityAdviceResponse: Schema.Codec<CapacityAdviceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendations: Schema.optional(
       Schema.Array(CapacityAdviceResponseRecommendation),
@@ -26021,7 +26021,7 @@ export interface CalendarModeAdviceResponse {
   recommendations?: ReadonlyArray<CalendarModeRecommendation>;
 }
 
-export const CalendarModeAdviceResponse: Schema.Schema<CalendarModeAdviceResponse> =
+export const CalendarModeAdviceResponse: Schema.Codec<CalendarModeAdviceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendations: Schema.optional(Schema.Array(CalendarModeRecommendation)),
   }).annotate({ identifier: "CalendarModeAdviceResponse" });
@@ -26053,7 +26053,7 @@ export interface HealthStatus {
   instance?: string;
 }
 
-export const HealthStatus: Schema.Schema<HealthStatus> =
+export const HealthStatus: Schema.Codec<HealthStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weightError: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
@@ -26074,7 +26074,7 @@ export interface TargetPoolInstanceHealth {
   kind?: string;
 }
 
-export const TargetPoolInstanceHealth: Schema.Schema<TargetPoolInstanceHealth> =
+export const TargetPoolInstanceHealth: Schema.Codec<TargetPoolInstanceHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthStatus: Schema.optional(Schema.Array(HealthStatus)),
     kind: Schema.optional(Schema.String),
@@ -26086,7 +26086,7 @@ export interface NodeTemplateNodeTypeFlexibility {
   localSsd?: string;
 }
 
-export const NodeTemplateNodeTypeFlexibility: Schema.Schema<NodeTemplateNodeTypeFlexibility> =
+export const NodeTemplateNodeTypeFlexibility: Schema.Codec<NodeTemplateNodeTypeFlexibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cpus: Schema.optional(Schema.String),
     memory: Schema.optional(Schema.String),
@@ -26103,7 +26103,7 @@ export interface ReservationSubBlocksGetVersionRequest {
   >;
 }
 
-export const ReservationSubBlocksGetVersionRequest: Schema.Schema<ReservationSubBlocksGetVersionRequest> =
+export const ReservationSubBlocksGetVersionRequest: Schema.Codec<ReservationSubBlocksGetVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sbomSelections: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ReservationSubBlocksGetVersionRequest" });
@@ -26117,7 +26117,7 @@ export interface NodeGroupAutoscalingPolicy {
   minNodes?: number;
 }
 
-export const NodeGroupAutoscalingPolicy: Schema.Schema<NodeGroupAutoscalingPolicy> =
+export const NodeGroupAutoscalingPolicy: Schema.Codec<NodeGroupAutoscalingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
     maxNodes: Schema.optional(Schema.Number),
@@ -26163,7 +26163,7 @@ export interface NodeGroup {
   id?: string;
 }
 
-export const NodeGroup: Schema.Schema<NodeGroup> =
+export const NodeGroup: Schema.Codec<NodeGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     autoscalingPolicy: Schema.optional(NodeGroupAutoscalingPolicy),
@@ -26225,7 +26225,7 @@ export interface NodeGroupsScopedList {
   nodeGroups?: ReadonlyArray<NodeGroup>;
 }
 
-export const NodeGroupsScopedList: Schema.Schema<NodeGroupsScopedList> =
+export const NodeGroupsScopedList: Schema.Codec<NodeGroupsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -26248,7 +26248,7 @@ export interface NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter 
   networkEndpoint?: NetworkEndpoint;
 }
 
-export const NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter: Schema.Schema<NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter> =
+export const NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter: Schema.Codec<NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpoint: Schema.optional(NetworkEndpoint),
   }).annotate({
@@ -26263,7 +26263,7 @@ export interface NetworkEndpointGroupsListEndpointsRequest {
   healthStatus?: "SHOW" | "SKIP" | (string & {});
 }
 
-export const NetworkEndpointGroupsListEndpointsRequest: Schema.Schema<NetworkEndpointGroupsListEndpointsRequest> =
+export const NetworkEndpointGroupsListEndpointsRequest: Schema.Codec<NetworkEndpointGroupsListEndpointsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointFilters: Schema.optional(
       Schema.Array(
@@ -26286,7 +26286,7 @@ export interface RolloutPlanWaveOrchestrationOptionsDelay {
   type?: "TYPE_MINIMUM" | "TYPE_OFFSET" | "TYPE_UNSPECIFIED" | (string & {});
 }
 
-export const RolloutPlanWaveOrchestrationOptionsDelay: Schema.Schema<RolloutPlanWaveOrchestrationOptionsDelay> =
+export const RolloutPlanWaveOrchestrationOptionsDelay: Schema.Codec<RolloutPlanWaveOrchestrationOptionsDelay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     delimiter: Schema.optional(Schema.String),
@@ -26302,7 +26302,7 @@ export interface RolloutPlanWaveOrchestrationOptions {
   delays?: ReadonlyArray<RolloutPlanWaveOrchestrationOptionsDelay>;
 }
 
-export const RolloutPlanWaveOrchestrationOptions: Schema.Schema<RolloutPlanWaveOrchestrationOptions> =
+export const RolloutPlanWaveOrchestrationOptions: Schema.Codec<RolloutPlanWaveOrchestrationOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxConcurrentLocations: Schema.optional(Schema.String),
     maxConcurrentResourcesPerLocation: Schema.optional(Schema.String),
@@ -26360,7 +26360,7 @@ export interface VpnTunnelList {
   items?: ReadonlyArray<VpnTunnel>;
 }
 
-export const VpnTunnelList: Schema.Schema<VpnTunnelList> =
+export const VpnTunnelList: Schema.Codec<VpnTunnelList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -26388,7 +26388,7 @@ export interface RegionNetworkEndpointGroupsAttachEndpointsRequest {
   networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
-export const RegionNetworkEndpointGroupsAttachEndpointsRequest: Schema.Schema<RegionNetworkEndpointGroupsAttachEndpointsRequest> =
+export const RegionNetworkEndpointGroupsAttachEndpointsRequest: Schema.Codec<RegionNetworkEndpointGroupsAttachEndpointsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
   }).annotate({
@@ -26400,7 +26400,7 @@ export interface RegionInstanceGroupManagersStartInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const RegionInstanceGroupManagersStartInstancesRequest: Schema.Schema<RegionInstanceGroupManagersStartInstancesRequest> =
+export const RegionInstanceGroupManagersStartInstancesRequest: Schema.Codec<RegionInstanceGroupManagersStartInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -26448,7 +26448,7 @@ export interface HealthSourcesScopedList {
   };
 }
 
-export const HealthSourcesScopedList: Schema.Schema<HealthSourcesScopedList> =
+export const HealthSourcesScopedList: Schema.Codec<HealthSourcesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthSources: Schema.optional(Schema.Array(HealthSource)),
     warning: Schema.optional(
@@ -26498,7 +26498,7 @@ export interface VmExtensionPolicy {
   updateTimestamp?: string;
 }
 
-export const VmExtensionPolicy: Schema.Schema<VmExtensionPolicy> =
+export const VmExtensionPolicy: Schema.Codec<VmExtensionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedByGlobal: Schema.optional(Schema.Boolean),
     creationTimestamp: Schema.optional(Schema.String),
@@ -26561,7 +26561,7 @@ export interface VmExtensionPoliciesScopedList {
   };
 }
 
-export const VmExtensionPoliciesScopedList: Schema.Schema<VmExtensionPoliciesScopedList> =
+export const VmExtensionPoliciesScopedList: Schema.Codec<VmExtensionPoliciesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmExtensionPolicies: Schema.optional(Schema.Array(VmExtensionPolicy)),
     warning: Schema.optional(
@@ -26590,7 +26590,7 @@ export interface CapacityHistoryRequestInstancePropertiesScheduling {
     | (string & {});
 }
 
-export const CapacityHistoryRequestInstancePropertiesScheduling: Schema.Schema<CapacityHistoryRequestInstancePropertiesScheduling> =
+export const CapacityHistoryRequestInstancePropertiesScheduling: Schema.Codec<CapacityHistoryRequestInstancePropertiesScheduling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningModel: Schema.optional(Schema.String),
   }).annotate({
@@ -26604,7 +26604,7 @@ export interface CapacityHistoryRequestInstanceProperties {
   machineType?: string;
 }
 
-export const CapacityHistoryRequestInstanceProperties: Schema.Schema<CapacityHistoryRequestInstanceProperties> =
+export const CapacityHistoryRequestInstanceProperties: Schema.Codec<CapacityHistoryRequestInstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduling: Schema.optional(
       CapacityHistoryRequestInstancePropertiesScheduling,
@@ -26623,7 +26623,7 @@ export interface CapacityHistoryRequest {
   locationPolicy?: CapacityHistoryRequestLocationPolicy;
 }
 
-export const CapacityHistoryRequest: Schema.Schema<CapacityHistoryRequest> =
+export const CapacityHistoryRequest: Schema.Codec<CapacityHistoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceProperties: Schema.optional(
       CapacityHistoryRequestInstanceProperties,
@@ -26638,7 +26638,7 @@ export interface VmEndpointNatMappings {
   interfaceNatMappings?: ReadonlyArray<VmEndpointNatMappingsInterfaceNatMappings>;
 }
 
-export const VmEndpointNatMappings: Schema.Schema<VmEndpointNatMappings> =
+export const VmEndpointNatMappings: Schema.Codec<VmEndpointNatMappings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceName: Schema.optional(Schema.String),
     interfaceNatMappings: Schema.optional(
@@ -26695,7 +26695,7 @@ export interface VmEndpointNatMappingsList {
   selfLink?: string;
 }
 
-export const VmEndpointNatMappingsList: Schema.Schema<VmEndpointNatMappingsList> =
+export const VmEndpointNatMappingsList: Schema.Codec<VmEndpointNatMappingsList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     result: Schema.optional(Schema.Array(VmEndpointNatMappings)),
@@ -26723,7 +26723,7 @@ export interface NodeGroupsAddNodesRequest {
   additionalNodeCount?: number;
 }
 
-export const NodeGroupsAddNodesRequest: Schema.Schema<NodeGroupsAddNodesRequest> =
+export const NodeGroupsAddNodesRequest: Schema.Codec<NodeGroupsAddNodesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalNodeCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "NodeGroupsAddNodesRequest" });
@@ -26733,7 +26733,7 @@ export interface ResourcePolicyInstanceSchedulePolicySchedule {
   schedule?: string;
 }
 
-export const ResourcePolicyInstanceSchedulePolicySchedule: Schema.Schema<ResourcePolicyInstanceSchedulePolicySchedule> =
+export const ResourcePolicyInstanceSchedulePolicySchedule: Schema.Codec<ResourcePolicyInstanceSchedulePolicySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schedule: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResourcePolicyInstanceSchedulePolicySchedule" });
@@ -26751,7 +26751,7 @@ export interface ResourcePolicyInstanceSchedulePolicy {
   startTime?: string;
 }
 
-export const ResourcePolicyInstanceSchedulePolicy: Schema.Schema<ResourcePolicyInstanceSchedulePolicy> =
+export const ResourcePolicyInstanceSchedulePolicy: Schema.Codec<ResourcePolicyInstanceSchedulePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmStopSchedule: Schema.optional(
       ResourcePolicyInstanceSchedulePolicySchedule,
@@ -26771,7 +26771,7 @@ export interface ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
   lastRunStartTime?: string;
 }
 
-export const ResourcePolicyResourceStatusInstanceSchedulePolicyStatus: Schema.Schema<ResourcePolicyResourceStatusInstanceSchedulePolicyStatus> =
+export const ResourcePolicyResourceStatusInstanceSchedulePolicyStatus: Schema.Codec<ResourcePolicyResourceStatusInstanceSchedulePolicyStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextRunStartTime: Schema.optional(Schema.String),
     lastRunStartTime: Schema.optional(Schema.String),
@@ -26784,7 +26784,7 @@ export interface ResourcePolicyResourceStatus {
   instanceSchedulePolicy?: ResourcePolicyResourceStatusInstanceSchedulePolicyStatus;
 }
 
-export const ResourcePolicyResourceStatus: Schema.Schema<ResourcePolicyResourceStatus> =
+export const ResourcePolicyResourceStatus: Schema.Codec<ResourcePolicyResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceSchedulePolicy: Schema.optional(
       ResourcePolicyResourceStatusInstanceSchedulePolicyStatus,
@@ -26802,7 +26802,7 @@ export interface ResourcePolicyWorkloadPolicy {
   maxTopologyDistance?: "BLOCK" | "CLUSTER" | "SUBBLOCK" | (string & {});
 }
 
-export const ResourcePolicyWorkloadPolicy: Schema.Schema<ResourcePolicyWorkloadPolicy> =
+export const ResourcePolicyWorkloadPolicy: Schema.Codec<ResourcePolicyWorkloadPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTopology: Schema.optional(Schema.String),
     acceleratorTopologyMode: Schema.optional(Schema.String),
@@ -26845,7 +26845,7 @@ export interface ResourcePolicy {
     | (string & {});
 }
 
-export const ResourcePolicy: Schema.Schema<ResourcePolicy> =
+export const ResourcePolicy: Schema.Codec<ResourcePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupPlacementPolicy: Schema.optional(ResourcePolicyGroupPlacementPolicy),
     region: Schema.optional(Schema.String),
@@ -26919,7 +26919,7 @@ export interface ResourcePolicyList {
   nextPageToken?: string;
 }
 
-export const ResourcePolicyList: Schema.Schema<ResourcePolicyList> =
+export const ResourcePolicyList: Schema.Codec<ResourcePolicyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -26956,7 +26956,7 @@ export interface NamedSet {
   type?: "NAMED_SET_TYPE_COMMUNITY" | "NAMED_SET_TYPE_PREFIX" | (string & {});
 }
 
-export const NamedSet: Schema.Schema<NamedSet> =
+export const NamedSet: Schema.Codec<NamedSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     elements: Schema.optional(Schema.Array(Expr)),
     name: Schema.optional(Schema.String),
@@ -26971,7 +26971,7 @@ export interface RoutersGetNamedSetResponse {
   etag?: string;
 }
 
-export const RoutersGetNamedSetResponse: Schema.Schema<RoutersGetNamedSetResponse> =
+export const RoutersGetNamedSetResponse: Schema.Codec<RoutersGetNamedSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(NamedSet),
     etag: Schema.optional(Schema.String),
@@ -26986,7 +26986,7 @@ export interface ProjectsSetCloudArmorTierRequest {
     | (string & {});
 }
 
-export const ProjectsSetCloudArmorTierRequest: Schema.Schema<ProjectsSetCloudArmorTierRequest> =
+export const ProjectsSetCloudArmorTierRequest: Schema.Codec<ProjectsSetCloudArmorTierRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudArmorTier: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProjectsSetCloudArmorTierRequest" });
@@ -26996,7 +26996,7 @@ export interface SubnetworksExpandIpCidrRangeRequest {
   ipCidrRange?: string;
 }
 
-export const SubnetworksExpandIpCidrRangeRequest: Schema.Schema<SubnetworksExpandIpCidrRangeRequest> =
+export const SubnetworksExpandIpCidrRangeRequest: Schema.Codec<SubnetworksExpandIpCidrRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipCidrRange: Schema.optional(Schema.String),
   }).annotate({ identifier: "SubnetworksExpandIpCidrRangeRequest" });
@@ -27008,7 +27008,7 @@ export interface InstanceGroupsSetNamedPortsRequest {
   fingerprint?: string;
 }
 
-export const InstanceGroupsSetNamedPortsRequest: Schema.Schema<InstanceGroupsSetNamedPortsRequest> =
+export const InstanceGroupsSetNamedPortsRequest: Schema.Codec<InstanceGroupsSetNamedPortsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namedPorts: Schema.optional(Schema.Array(NamedPort)),
     fingerprint: Schema.optional(Schema.String),
@@ -27021,7 +27021,7 @@ export interface InstanceManagedByIgmErrorManagedInstanceError {
   message?: string;
 }
 
-export const InstanceManagedByIgmErrorManagedInstanceError: Schema.Schema<InstanceManagedByIgmErrorManagedInstanceError> =
+export const InstanceManagedByIgmErrorManagedInstanceError: Schema.Codec<InstanceManagedByIgmErrorManagedInstanceError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -27034,7 +27034,7 @@ export interface UsableSubnetworkSecondaryRange {
   ipCidrRange?: string;
 }
 
-export const UsableSubnetworkSecondaryRange: Schema.Schema<UsableSubnetworkSecondaryRange> =
+export const UsableSubnetworkSecondaryRange: Schema.Codec<UsableSubnetworkSecondaryRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rangeName: Schema.optional(Schema.String),
     ipCidrRange: Schema.optional(Schema.String),
@@ -27072,7 +27072,7 @@ export interface UsableSubnetwork {
   externalIpv6Prefix?: string;
 }
 
-export const UsableSubnetwork: Schema.Schema<UsableSubnetwork> =
+export const UsableSubnetwork: Schema.Codec<UsableSubnetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetwork: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -27129,7 +27129,7 @@ export interface SubnetworksScopedWarning {
   };
 }
 
-export const SubnetworksScopedWarning: Schema.Schema<SubnetworksScopedWarning> =
+export const SubnetworksScopedWarning: Schema.Codec<SubnetworksScopedWarning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopeName: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -27201,7 +27201,7 @@ export interface UsableSubnetworksAggregatedList {
   scopedWarnings?: ReadonlyArray<SubnetworksScopedWarning>;
 }
 
-export const UsableSubnetworksAggregatedList: Schema.Schema<UsableSubnetworksAggregatedList> =
+export const UsableSubnetworksAggregatedList: Schema.Codec<UsableSubnetworksAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -27297,7 +27297,7 @@ export interface SslPolicy {
   customFeatures?: ReadonlyArray<string>;
 }
 
-export const SslPolicy: Schema.Schema<SslPolicy> =
+export const SslPolicy: Schema.Codec<SslPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profile: Schema.optional(Schema.String),
     enabledFeatures: Schema.optional(Schema.Array(Schema.String)),
@@ -27371,7 +27371,7 @@ export interface SslPoliciesScopedList {
   sslPolicies?: ReadonlyArray<SslPolicy>;
 }
 
-export const SslPoliciesScopedList: Schema.Schema<SslPoliciesScopedList> =
+export const SslPoliciesScopedList: Schema.Codec<SslPoliciesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -27395,7 +27395,7 @@ export interface RolloutPlanWaveValidationTimeBasedValidationMetadata {
   waitDuration?: string;
 }
 
-export const RolloutPlanWaveValidationTimeBasedValidationMetadata: Schema.Schema<RolloutPlanWaveValidationTimeBasedValidationMetadata> =
+export const RolloutPlanWaveValidationTimeBasedValidationMetadata: Schema.Codec<RolloutPlanWaveValidationTimeBasedValidationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     waitDuration: Schema.optional(Schema.String),
   }).annotate({
@@ -27409,7 +27409,7 @@ export interface RolloutPlanWaveValidation {
   type?: string;
 }
 
-export const RolloutPlanWaveValidation: Schema.Schema<RolloutPlanWaveValidation> =
+export const RolloutPlanWaveValidation: Schema.Codec<RolloutPlanWaveValidation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeBasedValidationMetadata: Schema.optional(
       RolloutPlanWaveValidationTimeBasedValidationMetadata,
@@ -27426,7 +27426,7 @@ export interface RolloutPlanWaveSelectorResourceHierarchySelector {
   includedProjects?: ReadonlyArray<string>;
 }
 
-export const RolloutPlanWaveSelectorResourceHierarchySelector: Schema.Schema<RolloutPlanWaveSelectorResourceHierarchySelector> =
+export const RolloutPlanWaveSelectorResourceHierarchySelector: Schema.Codec<RolloutPlanWaveSelectorResourceHierarchySelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includedOrganizations: Schema.optional(Schema.Array(Schema.String)),
     includedFolders: Schema.optional(Schema.Array(Schema.String)),
@@ -27440,7 +27440,7 @@ export interface RolloutPlanWaveSelectorLocationSelector {
   includedLocations?: ReadonlyArray<string>;
 }
 
-export const RolloutPlanWaveSelectorLocationSelector: Schema.Schema<RolloutPlanWaveSelectorLocationSelector> =
+export const RolloutPlanWaveSelectorLocationSelector: Schema.Codec<RolloutPlanWaveSelectorLocationSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includedLocations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RolloutPlanWaveSelectorLocationSelector" });
@@ -27452,7 +27452,7 @@ export interface RolloutPlanWaveSelector {
   locationSelector?: RolloutPlanWaveSelectorLocationSelector;
 }
 
-export const RolloutPlanWaveSelector: Schema.Schema<RolloutPlanWaveSelector> =
+export const RolloutPlanWaveSelector: Schema.Codec<RolloutPlanWaveSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceHierarchySelector: Schema.optional(
       RolloutPlanWaveSelectorResourceHierarchySelector,
@@ -27473,7 +27473,7 @@ export interface RolloutPlanWave {
   number?: string;
 }
 
-export const RolloutPlanWave: Schema.Schema<RolloutPlanWave> =
+export const RolloutPlanWave: Schema.Codec<RolloutPlanWave> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validation: Schema.optional(RolloutPlanWaveValidation),
     selectors: Schema.optional(Schema.Array(RolloutPlanWaveSelector)),
@@ -27487,7 +27487,7 @@ export interface NodeGroupsSimulateMaintenanceEventRequest {
   nodes?: ReadonlyArray<string>;
 }
 
-export const NodeGroupsSimulateMaintenanceEventRequest: Schema.Schema<NodeGroupsSimulateMaintenanceEventRequest> =
+export const NodeGroupsSimulateMaintenanceEventRequest: Schema.Codec<NodeGroupsSimulateMaintenanceEventRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "NodeGroupsSimulateMaintenanceEventRequest" });
@@ -27541,7 +27541,7 @@ export interface RouteList {
   selfLink?: string;
 }
 
-export const RouteList: Schema.Schema<RouteList> =
+export const RouteList: Schema.Codec<RouteList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Route)),
     id: Schema.optional(Schema.String),
@@ -27613,7 +27613,7 @@ export interface RegionInstanceGroupManagerList {
   nextPageToken?: string;
 }
 
-export const RegionInstanceGroupManagerList: Schema.Schema<RegionInstanceGroupManagerList> =
+export const RegionInstanceGroupManagerList: Schema.Codec<RegionInstanceGroupManagerList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -27641,7 +27641,7 @@ export interface InstanceGroupManagersStartInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const InstanceGroupManagersStartInstancesRequest: Schema.Schema<InstanceGroupManagersStartInstancesRequest> =
+export const InstanceGroupManagersStartInstancesRequest: Schema.Codec<InstanceGroupManagersStartInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InstanceGroupManagersStartInstancesRequest" });
@@ -27650,7 +27650,7 @@ export interface TargetReference {
   target?: string;
 }
 
-export const TargetReference: Schema.Schema<TargetReference> =
+export const TargetReference: Schema.Codec<TargetReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
   }).annotate({ identifier: "TargetReference" });
@@ -27704,7 +27704,7 @@ export interface InterconnectAttachmentList {
   nextPageToken?: string;
 }
 
-export const InterconnectAttachmentList: Schema.Schema<InterconnectAttachmentList> =
+export const InterconnectAttachmentList: Schema.Codec<InterconnectAttachmentList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -27776,7 +27776,7 @@ export interface MachineTypeList {
   selfLink?: string;
 }
 
-export const MachineTypeList: Schema.Schema<MachineTypeList> =
+export const MachineTypeList: Schema.Codec<MachineTypeList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(MachineType)),
@@ -27806,7 +27806,7 @@ export interface RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse {
   firewallPolicys?: ReadonlyArray<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 }
 
-export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse: Schema.Schema<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse> =
+export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse: Schema.Codec<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewalls: Schema.optional(Schema.Array(Firewall)),
     firewallPolicys: Schema.optional(
@@ -27828,7 +27828,7 @@ export interface ReservationSlotsGetVersionRequest {
   >;
 }
 
-export const ReservationSlotsGetVersionRequest: Schema.Schema<ReservationSlotsGetVersionRequest> =
+export const ReservationSlotsGetVersionRequest: Schema.Codec<ReservationSlotsGetVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sbomSelections: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ReservationSlotsGetVersionRequest" });
@@ -27884,7 +27884,7 @@ export interface OperationAggregatedList {
   };
 }
 
-export const OperationAggregatedList: Schema.Schema<OperationAggregatedList> =
+export const OperationAggregatedList: Schema.Codec<OperationAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -27912,7 +27912,7 @@ export interface InterconnectAttachmentGroupAttachment {
   attachment?: string;
 }
 
-export const InterconnectAttachmentGroupAttachment: Schema.Schema<InterconnectAttachmentGroupAttachment> =
+export const InterconnectAttachmentGroupAttachment: Schema.Codec<InterconnectAttachmentGroupAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachment: Schema.optional(Schema.String),
   }).annotate({ identifier: "InterconnectAttachmentGroupAttachment" });
@@ -27966,7 +27966,7 @@ export interface RegionInstanceGroupList {
   selfLink?: string;
 }
 
-export const RegionInstanceGroupList: Schema.Schema<RegionInstanceGroupList> =
+export const RegionInstanceGroupList: Schema.Codec<RegionInstanceGroupList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(InstanceGroup)),
@@ -27993,7 +27993,7 @@ export interface InterconnectGroupsCreateMembersRequest {
   request?: InterconnectGroupsCreateMembers;
 }
 
-export const InterconnectGroupsCreateMembersRequest: Schema.Schema<InterconnectGroupsCreateMembersRequest> =
+export const InterconnectGroupsCreateMembersRequest: Schema.Codec<InterconnectGroupsCreateMembersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(InterconnectGroupsCreateMembers),
   }).annotate({ identifier: "InterconnectGroupsCreateMembersRequest" });
@@ -28003,7 +28003,7 @@ export interface MultiMigResourcePolicies {
   workloadPolicy?: string;
 }
 
-export const MultiMigResourcePolicies: Schema.Schema<MultiMigResourcePolicies> =
+export const MultiMigResourcePolicies: Schema.Codec<MultiMigResourcePolicies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadPolicy: Schema.optional(Schema.String),
   }).annotate({ identifier: "MultiMigResourcePolicies" });
@@ -28057,7 +28057,7 @@ export interface SslPoliciesList {
   items?: ReadonlyArray<SslPolicy>;
 }
 
-export const SslPoliciesList: Schema.Schema<SslPoliciesList> =
+export const SslPoliciesList: Schema.Codec<SslPoliciesList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -28089,7 +28089,7 @@ export interface BackendServiceGroupHealth {
   kind?: string;
 }
 
-export const BackendServiceGroupHealth: Schema.Schema<BackendServiceGroupHealth> =
+export const BackendServiceGroupHealth: Schema.Codec<BackendServiceGroupHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthStatus: Schema.optional(Schema.Array(HealthStatus)),
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -28113,7 +28113,7 @@ export interface InterconnectGroupsOperationalStatus {
   intent?: InterconnectGroupIntent;
 }
 
-export const InterconnectGroupsOperationalStatus: Schema.Schema<InterconnectGroupsOperationalStatus> =
+export const InterconnectGroupsOperationalStatus: Schema.Codec<InterconnectGroupsOperationalStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupStatus: Schema.optional(Schema.String),
     operational: Schema.optional(InterconnectGroupConfigured),
@@ -28129,7 +28129,7 @@ export interface InterconnectGroupsGetOperationalStatusResponse {
   etag?: string;
 }
 
-export const InterconnectGroupsGetOperationalStatusResponse: Schema.Schema<InterconnectGroupsGetOperationalStatusResponse> =
+export const InterconnectGroupsGetOperationalStatusResponse: Schema.Codec<InterconnectGroupsGetOperationalStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(InterconnectGroupsOperationalStatus),
     etag: Schema.optional(Schema.String),
@@ -28176,7 +28176,7 @@ export interface PublicDelegatedPrefixesScopedList {
   };
 }
 
-export const PublicDelegatedPrefixesScopedList: Schema.Schema<PublicDelegatedPrefixesScopedList> =
+export const PublicDelegatedPrefixesScopedList: Schema.Codec<PublicDelegatedPrefixesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicDelegatedPrefixes: Schema.optional(
       Schema.Array(PublicDelegatedPrefix),
@@ -28249,7 +28249,7 @@ export interface VmExtensionPolicyAggregatedListResponse {
   etag?: string;
 }
 
-export const VmExtensionPolicyAggregatedListResponse: Schema.Schema<VmExtensionPolicyAggregatedListResponse> =
+export const VmExtensionPolicyAggregatedListResponse: Schema.Codec<VmExtensionPolicyAggregatedListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachables: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -28313,7 +28313,7 @@ export interface NodeTemplate {
   nodeType?: string;
 }
 
-export const NodeTemplate: Schema.Schema<NodeTemplate> =
+export const NodeTemplate: Schema.Codec<NodeTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusMessage: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -28376,7 +28376,7 @@ export interface NodeTemplatesScopedList {
   };
 }
 
-export const NodeTemplatesScopedList: Schema.Schema<NodeTemplatesScopedList> =
+export const NodeTemplatesScopedList: Schema.Codec<NodeTemplatesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeTemplates: Schema.optional(Schema.Array(NodeTemplate)),
     warning: Schema.optional(
@@ -28446,7 +28446,7 @@ export interface NodeTemplateAggregatedList {
   nextPageToken?: string;
 }
 
-export const NodeTemplateAggregatedList: Schema.Schema<NodeTemplateAggregatedList> =
+export const NodeTemplateAggregatedList: Schema.Codec<NodeTemplateAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -28477,7 +28477,7 @@ export interface InstancesSetMinCpuPlatformRequest {
   minCpuPlatform?: string;
 }
 
-export const InstancesSetMinCpuPlatformRequest: Schema.Schema<InstancesSetMinCpuPlatformRequest> =
+export const InstancesSetMinCpuPlatformRequest: Schema.Codec<InstancesSetMinCpuPlatformRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minCpuPlatform: Schema.optional(Schema.String),
   }).annotate({ identifier: "InstancesSetMinCpuPlatformRequest" });
@@ -28488,7 +28488,7 @@ export interface InterconnectAttachmentGroupLogicalStructureRegion {
   metros?: ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetro>;
 }
 
-export const InterconnectAttachmentGroupLogicalStructureRegion: Schema.Schema<InterconnectAttachmentGroupLogicalStructureRegion> =
+export const InterconnectAttachmentGroupLogicalStructureRegion: Schema.Codec<InterconnectAttachmentGroupLogicalStructureRegion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     metros: Schema.optional(
@@ -28502,7 +28502,7 @@ export interface InterconnectAttachmentGroupLogicalStructure {
   regions?: ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegion>;
 }
 
-export const InterconnectAttachmentGroupLogicalStructure: Schema.Schema<InterconnectAttachmentGroupLogicalStructure> =
+export const InterconnectAttachmentGroupLogicalStructure: Schema.Codec<InterconnectAttachmentGroupLogicalStructure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(
       Schema.Array(InterconnectAttachmentGroupLogicalStructureRegion),
@@ -28513,7 +28513,7 @@ export interface UrlMapsValidateResponse {
   result?: UrlMapValidationResult;
 }
 
-export const UrlMapsValidateResponse: Schema.Schema<UrlMapsValidateResponse> =
+export const UrlMapsValidateResponse: Schema.Codec<UrlMapsValidateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(UrlMapValidationResult),
   }).annotate({ identifier: "UrlMapsValidateResponse" });
@@ -28527,7 +28527,7 @@ export interface RolloutRolloutEntityOrchestratedEntity {
   orchestrationSource?: string;
 }
 
-export const RolloutRolloutEntityOrchestratedEntity: Schema.Schema<RolloutRolloutEntityOrchestratedEntity> =
+export const RolloutRolloutEntityOrchestratedEntity: Schema.Codec<RolloutRolloutEntityOrchestratedEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orchestrationAction: Schema.optional(Schema.String),
     conflictBehavior: Schema.optional(Schema.String),
@@ -28539,7 +28539,7 @@ export interface RolloutRolloutEntity {
   orchestratedEntity?: RolloutRolloutEntityOrchestratedEntity;
 }
 
-export const RolloutRolloutEntity: Schema.Schema<RolloutRolloutEntity> =
+export const RolloutRolloutEntity: Schema.Codec<RolloutRolloutEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orchestratedEntity: Schema.optional(RolloutRolloutEntityOrchestratedEntity),
   }).annotate({ identifier: "RolloutRolloutEntity" });
@@ -28600,7 +28600,7 @@ export interface Rollout {
   rolloutPlan?: string;
 }
 
-export const Rollout: Schema.Schema<Rollout> =
+export const Rollout: Schema.Codec<Rollout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     waveDetails: Schema.optional(Schema.Array(RolloutWaveDetails)),
     description: Schema.optional(Schema.String),
@@ -28626,7 +28626,7 @@ export interface InterconnectMacsecConfig {
   preSharedKeys?: ReadonlyArray<InterconnectMacsecConfigPreSharedKey>;
 }
 
-export const InterconnectMacsecConfig: Schema.Schema<InterconnectMacsecConfig> =
+export const InterconnectMacsecConfig: Schema.Codec<InterconnectMacsecConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preSharedKeys: Schema.optional(
       Schema.Array(InterconnectMacsecConfigPreSharedKey),
@@ -28639,7 +28639,7 @@ export interface InterconnectsGetMacsecConfigResponse {
   etag?: string;
 }
 
-export const InterconnectsGetMacsecConfigResponse: Schema.Schema<InterconnectsGetMacsecConfigResponse> =
+export const InterconnectsGetMacsecConfigResponse: Schema.Codec<InterconnectsGetMacsecConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(InterconnectMacsecConfig),
     etag: Schema.optional(Schema.String),
@@ -28674,7 +28674,7 @@ export interface HttpHealthCheck {
   name?: string;
 }
 
-export const HttpHealthCheck: Schema.Schema<HttpHealthCheck> =
+export const HttpHealthCheck: Schema.Codec<HttpHealthCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -28702,7 +28702,7 @@ export interface RouterNatRule {
   action?: RouterNatRuleAction;
 }
 
-export const RouterNatRule: Schema.Schema<RouterNatRule> =
+export const RouterNatRule: Schema.Codec<RouterNatRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleNumber: Schema.optional(Schema.Number),
     match: Schema.optional(Schema.String),
@@ -28715,7 +28715,7 @@ export interface RouterNatSubnetworkToNat64 {
   name?: string;
 }
 
-export const RouterNatSubnetworkToNat64: Schema.Schema<RouterNatSubnetworkToNat64> =
+export const RouterNatSubnetworkToNat64: Schema.Codec<RouterNatSubnetworkToNat64> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "RouterNatSubnetworkToNat64" });
@@ -28785,7 +28785,7 @@ export interface RouterNat {
   name?: string;
 }
 
-export const RouterNat: Schema.Schema<RouterNat> =
+export const RouterNat: Schema.Codec<RouterNat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     drainNatIps: Schema.optional(Schema.Array(Schema.String)),
     natIpAllocateOption: Schema.optional(Schema.String),
@@ -28847,7 +28847,7 @@ export interface Router {
   interfaces?: ReadonlyArray<RouterInterface>;
 }
 
-export const Router: Schema.Schema<Router> =
+export const Router: Schema.Codec<Router> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     params: Schema.optional(RouterParams),
     nccGateway: Schema.optional(Schema.String),
@@ -28910,7 +28910,7 @@ export interface RoutersScopedList {
   };
 }
 
-export const RoutersScopedList: Schema.Schema<RoutersScopedList> =
+export const RoutersScopedList: Schema.Codec<RoutersScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routers: Schema.optional(Schema.Array(Router)),
     warning: Schema.optional(
@@ -28980,7 +28980,7 @@ export interface InterconnectGroupsListResponse {
   nextPageToken?: string;
 }
 
-export const InterconnectGroupsListResponse: Schema.Schema<InterconnectGroupsListResponse> =
+export const InterconnectGroupsListResponse: Schema.Codec<InterconnectGroupsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -29054,7 +29054,7 @@ export interface RegionList {
   kind?: string;
 }
 
-export const RegionList: Schema.Schema<RegionList> =
+export const RegionList: Schema.Codec<RegionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Region)),
@@ -29126,7 +29126,7 @@ export interface InterconnectLocationList {
   nextPageToken?: string;
 }
 
-export const InterconnectLocationList: Schema.Schema<InterconnectLocationList> =
+export const InterconnectLocationList: Schema.Codec<InterconnectLocationList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -29198,7 +29198,7 @@ export interface TargetVpnGatewayList {
   kind?: string;
 }
 
-export const TargetVpnGatewayList: Schema.Schema<TargetVpnGatewayList> =
+export const TargetVpnGatewayList: Schema.Codec<TargetVpnGatewayList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(TargetVpnGateway)),
@@ -29273,7 +29273,7 @@ export interface SnapshotAggregatedList {
   };
 }
 
-export const SnapshotAggregatedList: Schema.Schema<SnapshotAggregatedList> =
+export const SnapshotAggregatedList: Schema.Codec<SnapshotAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -29348,7 +29348,7 @@ export interface OrganizationRolloutsListResponse {
   etag?: string;
 }
 
-export const OrganizationRolloutsListResponse: Schema.Schema<OrganizationRolloutsListResponse> =
+export const OrganizationRolloutsListResponse: Schema.Codec<OrganizationRolloutsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachables: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -29423,7 +29423,7 @@ export interface NodeGroupAggregatedList {
   selfLink?: string;
 }
 
-export const NodeGroupAggregatedList: Schema.Schema<NodeGroupAggregatedList> =
+export const NodeGroupAggregatedList: Schema.Codec<NodeGroupAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Record(Schema.String, NodeGroupsScopedList)),
     id: Schema.optional(Schema.String),
@@ -29496,7 +29496,7 @@ export interface ReservationBlocksListResponse {
   };
 }
 
-export const ReservationBlocksListResponse: Schema.Schema<ReservationBlocksListResponse> =
+export const ReservationBlocksListResponse: Schema.Codec<ReservationBlocksListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -29523,7 +29523,7 @@ export interface SubnetworksSetPrivateIpGoogleAccessRequest {
   privateIpGoogleAccess?: boolean;
 }
 
-export const SubnetworksSetPrivateIpGoogleAccessRequest: Schema.Schema<SubnetworksSetPrivateIpGoogleAccessRequest> =
+export const SubnetworksSetPrivateIpGoogleAccessRequest: Schema.Codec<SubnetworksSetPrivateIpGoogleAccessRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateIpGoogleAccess: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SubnetworksSetPrivateIpGoogleAccessRequest" });
@@ -29535,7 +29535,7 @@ export interface PreviewFeatureStatusReleaseStatus {
   updateDate?: Compute_Date;
 }
 
-export const PreviewFeatureStatusReleaseStatus: Schema.Schema<PreviewFeatureStatusReleaseStatus> =
+export const PreviewFeatureStatusReleaseStatus: Schema.Codec<PreviewFeatureStatusReleaseStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stage: Schema.optional(Schema.String),
     updateDate: Schema.optional(Compute_Date),
@@ -29548,7 +29548,7 @@ export interface InstancesSetServiceAccountRequest {
   email?: string;
 }
 
-export const InstancesSetServiceAccountRequest: Schema.Schema<InstancesSetServiceAccountRequest> =
+export const InstancesSetServiceAccountRequest: Schema.Codec<InstancesSetServiceAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Schema.String)),
     email: Schema.optional(Schema.String),
@@ -29579,7 +29579,7 @@ export interface RolloutPlan {
   selfLink?: string;
 }
 
-export const RolloutPlan: Schema.Schema<RolloutPlan> =
+export const RolloutPlan: Schema.Codec<RolloutPlan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     waves: Schema.optional(Schema.Array(RolloutPlanWave)),
     selfLinkWithId: Schema.optional(Schema.String),
@@ -29633,7 +29633,7 @@ export interface ResourcePoliciesScopedList {
   };
 }
 
-export const ResourcePoliciesScopedList: Schema.Schema<ResourcePoliciesScopedList> =
+export const ResourcePoliciesScopedList: Schema.Codec<ResourcePoliciesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(Schema.Array(ResourcePolicy)),
     warning: Schema.optional(
@@ -29669,7 +29669,7 @@ export interface SavedDisk {
     | (string & {});
 }
 
-export const SavedDisk: Schema.Schema<SavedDisk> =
+export const SavedDisk: Schema.Codec<SavedDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageBytesStatus: Schema.optional(Schema.String),
     sourceDisk: Schema.optional(Schema.String),
@@ -29687,7 +29687,7 @@ export interface MachineImageParams {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const MachineImageParams: Schema.Schema<MachineImageParams> =
+export const MachineImageParams: Schema.Codec<MachineImageParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includedDisks: Schema.optional(Schema.Array(Schema.String)),
     excludedDisks: Schema.optional(Schema.Array(Schema.String)),
@@ -29703,7 +29703,7 @@ export interface SourceDiskEncryptionKey {
   diskEncryptionKey?: CustomerEncryptionKey;
 }
 
-export const SourceDiskEncryptionKey: Schema.Schema<SourceDiskEncryptionKey> =
+export const SourceDiskEncryptionKey: Schema.Codec<SourceDiskEncryptionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceDisk: Schema.optional(Schema.String),
     diskEncryptionKey: Schema.optional(CustomerEncryptionKey),
@@ -29760,7 +29760,7 @@ export interface MachineImage {
   id?: string;
 }
 
-export const MachineImage: Schema.Schema<MachineImage> =
+export const MachineImage: Schema.Codec<MachineImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     savedDisks: Schema.optional(Schema.Array(SavedDisk)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -29836,7 +29836,7 @@ export interface MachineImageList {
   selfLink?: string;
 }
 
-export const MachineImageList: Schema.Schema<MachineImageList> =
+export const MachineImageList: Schema.Codec<MachineImageList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(MachineImage)),
     id: Schema.optional(Schema.String),
@@ -29900,7 +29900,7 @@ export interface NetworkAttachmentsScopedList {
   };
 }
 
-export const NetworkAttachmentsScopedList: Schema.Schema<NetworkAttachmentsScopedList> =
+export const NetworkAttachmentsScopedList: Schema.Codec<NetworkAttachmentsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkAttachments: Schema.optional(Schema.Array(NetworkAttachment)),
     warning: Schema.optional(
@@ -29924,7 +29924,7 @@ export interface ProjectsListXpnHostsRequest {
   organization?: string;
 }
 
-export const ProjectsListXpnHostsRequest: Schema.Schema<ProjectsListXpnHostsRequest> =
+export const ProjectsListXpnHostsRequest: Schema.Codec<ProjectsListXpnHostsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProjectsListXpnHostsRequest" });
@@ -29934,7 +29934,7 @@ export interface DisksRemoveResourcePoliciesRequest {
   resourcePolicies?: ReadonlyArray<string>;
 }
 
-export const DisksRemoveResourcePoliciesRequest: Schema.Schema<DisksRemoveResourcePoliciesRequest> =
+export const DisksRemoveResourcePoliciesRequest: Schema.Codec<DisksRemoveResourcePoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DisksRemoveResourcePoliciesRequest" });
@@ -29947,7 +29947,7 @@ export interface CacheInvalidationRule {
   path?: string;
 }
 
-export const CacheInvalidationRule: Schema.Schema<CacheInvalidationRule> =
+export const CacheInvalidationRule: Schema.Codec<CacheInvalidationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     cacheTags: Schema.optional(Schema.Array(Schema.String)),
@@ -29995,7 +29995,7 @@ export interface InstantSnapshotsScopedList {
   };
 }
 
-export const InstantSnapshotsScopedList: Schema.Schema<InstantSnapshotsScopedList> =
+export const InstantSnapshotsScopedList: Schema.Codec<InstantSnapshotsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instantSnapshots: Schema.optional(Schema.Array(InstantSnapshot)),
     warning: Schema.optional(
@@ -30065,7 +30065,7 @@ export interface InstantSnapshotAggregatedList {
   nextPageToken?: string;
 }
 
-export const InstantSnapshotAggregatedList: Schema.Schema<InstantSnapshotAggregatedList> =
+export const InstantSnapshotAggregatedList: Schema.Codec<InstantSnapshotAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -30107,7 +30107,7 @@ export interface InstanceGroupManagersConfigureAcceleratorTopologiesRequest {
   >;
 }
 
-export const InstanceGroupManagersConfigureAcceleratorTopologiesRequest: Schema.Schema<InstanceGroupManagersConfigureAcceleratorTopologiesRequest> =
+export const InstanceGroupManagersConfigureAcceleratorTopologiesRequest: Schema.Codec<InstanceGroupManagersConfigureAcceleratorTopologiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceleratorTopologyActions: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -30171,7 +30171,7 @@ export interface PacketMirroringList {
   selfLink?: string;
 }
 
-export const PacketMirroringList: Schema.Schema<PacketMirroringList> =
+export const PacketMirroringList: Schema.Codec<PacketMirroringList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(PacketMirroring)),
     id: Schema.optional(Schema.String),
@@ -30245,7 +30245,7 @@ export interface ServiceAttachmentAggregatedList {
   selfLink?: string;
 }
 
-export const ServiceAttachmentAggregatedList: Schema.Schema<ServiceAttachmentAggregatedList> =
+export const ServiceAttachmentAggregatedList: Schema.Codec<ServiceAttachmentAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -30276,7 +30276,7 @@ export interface TargetSslProxiesSetProxyHeaderRequest {
   proxyHeader?: "NONE" | "PROXY_V1" | (string & {});
 }
 
-export const TargetSslProxiesSetProxyHeaderRequest: Schema.Schema<TargetSslProxiesSetProxyHeaderRequest> =
+export const TargetSslProxiesSetProxyHeaderRequest: Schema.Codec<TargetSslProxiesSetProxyHeaderRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyHeader: Schema.optional(Schema.String),
   }).annotate({ identifier: "TargetSslProxiesSetProxyHeaderRequest" });
@@ -30330,7 +30330,7 @@ export interface TargetSslProxyList {
   id?: string;
 }
 
-export const TargetSslProxyList: Schema.Schema<TargetSslProxyList> =
+export const TargetSslProxyList: Schema.Codec<TargetSslProxyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -30402,7 +30402,7 @@ export interface InstanceGroupsListInstances {
   nextPageToken?: string;
 }
 
-export const InstanceGroupsListInstances: Schema.Schema<InstanceGroupsListInstances> =
+export const InstanceGroupsListInstances: Schema.Codec<InstanceGroupsListInstances> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -30431,7 +30431,7 @@ export interface RouterStatusResponse {
   result?: RouterStatus;
 }
 
-export const RouterStatusResponse: Schema.Schema<RouterStatusResponse> =
+export const RouterStatusResponse: Schema.Codec<RouterStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     result: Schema.optional(RouterStatus),
@@ -30444,7 +30444,7 @@ export interface ZoneSetLabelsRequest {
   labelFingerprint?: string;
 }
 
-export const ZoneSetLabelsRequest: Schema.Schema<ZoneSetLabelsRequest> =
+export const ZoneSetLabelsRequest: Schema.Codec<ZoneSetLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     labelFingerprint: Schema.optional(Schema.String),
@@ -30470,7 +30470,7 @@ export interface MultiMig {
   kind?: string;
 }
 
-export const MultiMig: Schema.Schema<MultiMig> =
+export const MultiMig: Schema.Codec<MultiMig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -30490,7 +30490,7 @@ export interface GlobalAddressesMoveRequest {
   description?: string;
 }
 
-export const GlobalAddressesMoveRequest: Schema.Schema<GlobalAddressesMoveRequest> =
+export const GlobalAddressesMoveRequest: Schema.Codec<GlobalAddressesMoveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationAddress: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -30501,7 +30501,7 @@ export interface RegionInstanceGroupManagersRecreateRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const RegionInstanceGroupManagersRecreateRequest: Schema.Schema<RegionInstanceGroupManagersRecreateRequest> =
+export const RegionInstanceGroupManagersRecreateRequest: Schema.Codec<RegionInstanceGroupManagersRecreateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RegionInstanceGroupManagersRecreateRequest" });
@@ -30555,7 +30555,7 @@ export interface NodeTemplateList {
   nextPageToken?: string;
 }
 
-export const NodeTemplateList: Schema.Schema<NodeTemplateList> =
+export const NodeTemplateList: Schema.Codec<NodeTemplateList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -30583,7 +30583,7 @@ export interface InstancesStartWithEncryptionKeyRequest {
   disks?: ReadonlyArray<CustomerEncryptionKeyProtectedDisk>;
 }
 
-export const InstancesStartWithEncryptionKeyRequest: Schema.Schema<InstancesStartWithEncryptionKeyRequest> =
+export const InstancesStartWithEncryptionKeyRequest: Schema.Codec<InstancesStartWithEncryptionKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disks: Schema.optional(Schema.Array(CustomerEncryptionKeyProtectedDisk)),
   }).annotate({ identifier: "InstancesStartWithEncryptionKeyRequest" });
@@ -30636,7 +30636,7 @@ export interface NetworkAttachmentAggregatedList {
   nextPageToken?: string;
 }
 
-export const NetworkAttachmentAggregatedList: Schema.Schema<NetworkAttachmentAggregatedList> =
+export const NetworkAttachmentAggregatedList: Schema.Codec<NetworkAttachmentAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -30702,7 +30702,7 @@ export interface InstanceGroupsScopedList {
   };
 }
 
-export const InstanceGroupsScopedList: Schema.Schema<InstanceGroupsScopedList> =
+export const InstanceGroupsScopedList: Schema.Codec<InstanceGroupsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceGroups: Schema.optional(Schema.Array(InstanceGroup)),
     warning: Schema.optional(
@@ -30726,7 +30726,7 @@ export interface RegionDisksStartAsyncReplicationRequest {
   asyncSecondaryDisk?: string;
 }
 
-export const RegionDisksStartAsyncReplicationRequest: Schema.Schema<RegionDisksStartAsyncReplicationRequest> =
+export const RegionDisksStartAsyncReplicationRequest: Schema.Codec<RegionDisksStartAsyncReplicationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asyncSecondaryDisk: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegionDisksStartAsyncReplicationRequest" });
@@ -30739,7 +30739,7 @@ export interface PreviewFeatureStatus {
   description?: string;
 }
 
-export const PreviewFeatureStatus: Schema.Schema<PreviewFeatureStatus> =
+export const PreviewFeatureStatus: Schema.Codec<PreviewFeatureStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releaseStatus: Schema.optional(PreviewFeatureStatusReleaseStatus),
     helpLink: Schema.optional(Schema.String),
@@ -30771,7 +30771,7 @@ export interface PreviewFeature {
   rolloutOperation?: PreviewFeatureRolloutOperation;
 }
 
-export const PreviewFeature: Schema.Schema<PreviewFeature> =
+export const PreviewFeature: Schema.Codec<PreviewFeature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -30793,7 +30793,7 @@ export interface ShieldedVmIdentity {
   encryptionKey?: ShieldedVmIdentityEntry;
 }
 
-export const ShieldedVmIdentity: Schema.Schema<ShieldedVmIdentity> =
+export const ShieldedVmIdentity: Schema.Codec<ShieldedVmIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     signingKey: Schema.optional(ShieldedVmIdentityEntry),
@@ -30849,7 +30849,7 @@ export interface OperationList {
   items?: ReadonlyArray<Operation>;
 }
 
-export const OperationList: Schema.Schema<OperationList> =
+export const OperationList: Schema.Codec<OperationList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -30879,7 +30879,7 @@ export interface InstanceGroupManagersDeleteInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const InstanceGroupManagersDeleteInstancesRequest: Schema.Schema<InstanceGroupManagersDeleteInstancesRequest> =
+export const InstanceGroupManagersDeleteInstancesRequest: Schema.Codec<InstanceGroupManagersDeleteInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skipInstancesOnValidationError: Schema.optional(Schema.Boolean),
     instances: Schema.optional(Schema.Array(Schema.String)),
@@ -30934,7 +30934,7 @@ export interface NetworkEndpointGroupList {
   selfLink?: string;
 }
 
-export const NetworkEndpointGroupList: Schema.Schema<NetworkEndpointGroupList> =
+export const NetworkEndpointGroupList: Schema.Codec<NetworkEndpointGroupList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(NetworkEndpointGroup)),
     id: Schema.optional(Schema.String),
@@ -30966,7 +30966,7 @@ export interface GlobalSetPolicyRequest {
   etag?: string;
 }
 
-export const GlobalSetPolicyRequest: Schema.Schema<GlobalSetPolicyRequest> =
+export const GlobalSetPolicyRequest: Schema.Codec<GlobalSetPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -31022,7 +31022,7 @@ export interface NodeGroupList {
   };
 }
 
-export const NodeGroupList: Schema.Schema<NodeGroupList> =
+export const NodeGroupList: Schema.Codec<NodeGroupList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -31052,7 +31052,7 @@ export interface InstancesSetNameRequest {
   currentName?: string;
 }
 
-export const InstancesSetNameRequest: Schema.Schema<InstancesSetNameRequest> =
+export const InstancesSetNameRequest: Schema.Codec<InstancesSetNameRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     currentName: Schema.optional(Schema.String),
@@ -31081,7 +31081,7 @@ export interface NetworkEdgeSecurityService {
   kind?: string;
 }
 
-export const NetworkEdgeSecurityService: Schema.Schema<NetworkEdgeSecurityService> =
+export const NetworkEdgeSecurityService: Schema.Codec<NetworkEdgeSecurityService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTimestamp: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -31136,7 +31136,7 @@ export interface NetworkEdgeSecurityServicesScopedList {
   networkEdgeSecurityServices?: ReadonlyArray<NetworkEdgeSecurityService>;
 }
 
-export const NetworkEdgeSecurityServicesScopedList: Schema.Schema<NetworkEdgeSecurityServicesScopedList> =
+export const NetworkEdgeSecurityServicesScopedList: Schema.Codec<NetworkEdgeSecurityServicesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -31209,7 +31209,7 @@ export interface NetworkEdgeSecurityServiceAggregatedList {
   selfLink?: string;
 }
 
-export const NetworkEdgeSecurityServiceAggregatedList: Schema.Schema<NetworkEdgeSecurityServiceAggregatedList> =
+export const NetworkEdgeSecurityServiceAggregatedList: Schema.Codec<NetworkEdgeSecurityServiceAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Record(Schema.String, NetworkEdgeSecurityServicesScopedList),
@@ -31249,7 +31249,7 @@ export interface ReservationSubBlocksReportFaultyRequestFaultReason {
   description?: string;
 }
 
-export const ReservationSubBlocksReportFaultyRequestFaultReason: Schema.Schema<ReservationSubBlocksReportFaultyRequestFaultReason> =
+export const ReservationSubBlocksReportFaultyRequestFaultReason: Schema.Codec<ReservationSubBlocksReportFaultyRequestFaultReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     behavior: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -31273,7 +31273,7 @@ export interface ReservationSubBlocksReportFaultyRequest {
     | (string & {});
 }
 
-export const ReservationSubBlocksReportFaultyRequest: Schema.Schema<ReservationSubBlocksReportFaultyRequest> =
+export const ReservationSubBlocksReportFaultyRequest: Schema.Codec<ReservationSubBlocksReportFaultyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disruptionSchedule: Schema.optional(Schema.String),
     faultReasons: Schema.optional(
@@ -31291,7 +31291,7 @@ export interface InstanceManagedByIgmError {
   instanceActionDetails?: InstanceManagedByIgmErrorInstanceActionDetails;
 }
 
-export const InstanceManagedByIgmError: Schema.Schema<InstanceManagedByIgmError> =
+export const InstanceManagedByIgmError: Schema.Codec<InstanceManagedByIgmError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     error: Schema.optional(InstanceManagedByIgmErrorManagedInstanceError),
@@ -31307,7 +31307,7 @@ export interface RegionInstanceGroupManagersListErrorsResponse {
   items?: ReadonlyArray<InstanceManagedByIgmError>;
 }
 
-export const RegionInstanceGroupManagersListErrorsResponse: Schema.Schema<RegionInstanceGroupManagersListErrorsResponse> =
+export const RegionInstanceGroupManagersListErrorsResponse: Schema.Codec<RegionInstanceGroupManagersListErrorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(InstanceManagedByIgmError)),
@@ -31317,7 +31317,7 @@ export interface RegionInstanceGroupManagersSetAutoHealingRequest {
   autoHealingPolicies?: ReadonlyArray<InstanceGroupManagerAutoHealingPolicy>;
 }
 
-export const RegionInstanceGroupManagersSetAutoHealingRequest: Schema.Schema<RegionInstanceGroupManagersSetAutoHealingRequest> =
+export const RegionInstanceGroupManagersSetAutoHealingRequest: Schema.Codec<RegionInstanceGroupManagersSetAutoHealingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoHealingPolicies: Schema.optional(
       Schema.Array(InstanceGroupManagerAutoHealingPolicy),
@@ -31378,7 +31378,7 @@ export interface StoragePoolList {
   selfLink?: string;
 }
 
-export const StoragePoolList: Schema.Schema<StoragePoolList> =
+export const StoragePoolList: Schema.Codec<StoragePoolList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(StoragePool)),
     id: Schema.optional(Schema.String),
@@ -31408,7 +31408,7 @@ export interface CalendarModeAdviceRequest {
   futureResourcesSpecs?: Record<string, FutureResourcesSpec>;
 }
 
-export const CalendarModeAdviceRequest: Schema.Schema<CalendarModeAdviceRequest> =
+export const CalendarModeAdviceRequest: Schema.Codec<CalendarModeAdviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     futureResourcesSpecs: Schema.optional(
       Schema.Record(Schema.String, FutureResourcesSpec),
@@ -31420,7 +31420,7 @@ export interface InterconnectRemoteLocationPermittedConnections {
   interconnectLocation?: string;
 }
 
-export const InterconnectRemoteLocationPermittedConnections: Schema.Schema<InterconnectRemoteLocationPermittedConnections> =
+export const InterconnectRemoteLocationPermittedConnections: Schema.Codec<InterconnectRemoteLocationPermittedConnections> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interconnectLocation: Schema.optional(Schema.String),
   }).annotate({ identifier: "InterconnectRemoteLocationPermittedConnections" });
@@ -31476,7 +31476,7 @@ export interface InterconnectRemoteLocation {
   maxLagSize100Gbps?: number;
 }
 
-export const InterconnectRemoteLocation: Schema.Schema<InterconnectRemoteLocation> =
+export const InterconnectRemoteLocation: Schema.Codec<InterconnectRemoteLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     maxLagSize10Gbps: Schema.optional(Schema.Number),
@@ -31554,7 +31554,7 @@ export interface InterconnectRemoteLocationList {
   nextPageToken?: string;
 }
 
-export const InterconnectRemoteLocationList: Schema.Schema<InterconnectRemoteLocationList> =
+export const InterconnectRemoteLocationList: Schema.Codec<InterconnectRemoteLocationList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -31628,7 +31628,7 @@ export interface InstanceGroupAggregatedList {
   };
 }
 
-export const InstanceGroupAggregatedList: Schema.Schema<InstanceGroupAggregatedList> =
+export const InstanceGroupAggregatedList: Schema.Codec<InstanceGroupAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -31663,7 +31663,7 @@ export interface ZoneSetPolicyRequest {
   etag?: string;
 }
 
-export const ZoneSetPolicyRequest: Schema.Schema<ZoneSetPolicyRequest> =
+export const ZoneSetPolicyRequest: Schema.Codec<ZoneSetPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     policy: Schema.optional(Policy),
@@ -31719,7 +31719,7 @@ export interface InstantSnapshotList {
   nextPageToken?: string;
 }
 
-export const InstantSnapshotList: Schema.Schema<InstantSnapshotList> =
+export const InstantSnapshotList: Schema.Codec<InstantSnapshotList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -31747,7 +31747,7 @@ export interface ProjectView {
   project?: Project;
 }
 
-export const ProjectView: Schema.Schema<ProjectView> =
+export const ProjectView: Schema.Codec<ProjectView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.optional(Project),
   }).annotate({ identifier: "ProjectView" });
@@ -31759,7 +31759,7 @@ export interface LicenseCodeLicenseAlias {
   selfLink?: string;
 }
 
-export const LicenseCodeLicenseAlias: Schema.Schema<LicenseCodeLicenseAlias> =
+export const LicenseCodeLicenseAlias: Schema.Codec<LicenseCodeLicenseAlias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -31812,7 +31812,7 @@ export interface LicenseCode {
   description?: string;
 }
 
-export const LicenseCode: Schema.Schema<LicenseCode> =
+export const LicenseCode: Schema.Codec<LicenseCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     multiTenantOnly: Schema.optional(Schema.Boolean),
     id: Schema.optional(Schema.String),
@@ -31887,7 +31887,7 @@ export interface RegionInstanceGroupManagerResizeRequestsListResponse {
   };
 }
 
-export const RegionInstanceGroupManagerResizeRequestsListResponse: Schema.Schema<RegionInstanceGroupManagerResizeRequestsListResponse> =
+export const RegionInstanceGroupManagerResizeRequestsListResponse: Schema.Codec<RegionInstanceGroupManagerResizeRequestsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -31921,7 +31921,7 @@ export interface RegionInstanceGroupManagersStopInstancesRequest {
   forceStop?: boolean;
 }
 
-export const RegionInstanceGroupManagersStopInstancesRequest: Schema.Schema<RegionInstanceGroupManagersStopInstancesRequest> =
+export const RegionInstanceGroupManagersStopInstancesRequest: Schema.Codec<RegionInstanceGroupManagersStopInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
     forceStop: Schema.optional(Schema.Boolean),
@@ -31934,7 +31934,7 @@ export interface InstancesSetMachineTypeRequest {
   machineType?: string;
 }
 
-export const InstancesSetMachineTypeRequest: Schema.Schema<InstancesSetMachineTypeRequest> =
+export const InstancesSetMachineTypeRequest: Schema.Codec<InstancesSetMachineTypeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineType: Schema.optional(Schema.String),
   }).annotate({ identifier: "InstancesSetMachineTypeRequest" });
@@ -31949,7 +31949,7 @@ export interface CapacityAdviceRequestInstancePropertiesScheduling {
     | (string & {});
 }
 
-export const CapacityAdviceRequestInstancePropertiesScheduling: Schema.Schema<CapacityAdviceRequestInstancePropertiesScheduling> =
+export const CapacityAdviceRequestInstancePropertiesScheduling: Schema.Codec<CapacityAdviceRequestInstancePropertiesScheduling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningModel: Schema.optional(Schema.String),
   }).annotate({
@@ -32005,7 +32005,7 @@ export interface BackendBucketListUsable {
   selfLink?: string;
 }
 
-export const BackendBucketListUsable: Schema.Schema<BackendBucketListUsable> =
+export const BackendBucketListUsable: Schema.Codec<BackendBucketListUsable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(BackendBucket)),
@@ -32069,7 +32069,7 @@ export interface ForwardingRulesScopedList {
   forwardingRules?: ReadonlyArray<ForwardingRule>;
 }
 
-export const ForwardingRulesScopedList: Schema.Schema<ForwardingRulesScopedList> =
+export const ForwardingRulesScopedList: Schema.Codec<ForwardingRulesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -32137,7 +32137,7 @@ export interface HttpHealthCheckList {
   items?: ReadonlyArray<HttpHealthCheck>;
 }
 
-export const HttpHealthCheckList: Schema.Schema<HttpHealthCheckList> =
+export const HttpHealthCheckList: Schema.Codec<HttpHealthCheckList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -32165,7 +32165,7 @@ export interface ResourceGroupReference {
   group?: string;
 }
 
-export const ResourceGroupReference: Schema.Schema<ResourceGroupReference> =
+export const ResourceGroupReference: Schema.Codec<ResourceGroupReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResourceGroupReference" });
@@ -32175,7 +32175,7 @@ export interface DisksStopGroupAsyncReplicationResource {
   resourcePolicy?: string;
 }
 
-export const DisksStopGroupAsyncReplicationResource: Schema.Schema<DisksStopGroupAsyncReplicationResource> =
+export const DisksStopGroupAsyncReplicationResource: Schema.Codec<DisksStopGroupAsyncReplicationResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicy: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisksStopGroupAsyncReplicationResource" });
@@ -32204,7 +32204,7 @@ export interface InterconnectAttachmentGroup {
   intent?: InterconnectAttachmentGroupIntent;
 }
 
-export const InterconnectAttachmentGroup: Schema.Schema<InterconnectAttachmentGroup> =
+export const InterconnectAttachmentGroup: Schema.Codec<InterconnectAttachmentGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachments: Schema.optional(
       Schema.Record(Schema.String, InterconnectAttachmentGroupAttachment),
@@ -32275,7 +32275,7 @@ export interface InterconnectAttachmentGroupsListResponse {
   };
 }
 
-export const InterconnectAttachmentGroupsListResponse: Schema.Schema<InterconnectAttachmentGroupsListResponse> =
+export const InterconnectAttachmentGroupsListResponse: Schema.Codec<InterconnectAttachmentGroupsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -32349,7 +32349,7 @@ export interface ZoneList {
   };
 }
 
-export const ZoneList: Schema.Schema<ZoneList> =
+export const ZoneList: Schema.Codec<ZoneList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -32377,7 +32377,7 @@ export interface TargetSslProxiesSetCertificateMapRequest {
   certificateMap?: string;
 }
 
-export const TargetSslProxiesSetCertificateMapRequest: Schema.Schema<TargetSslProxiesSetCertificateMapRequest> =
+export const TargetSslProxiesSetCertificateMapRequest: Schema.Codec<TargetSslProxiesSetCertificateMapRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateMap: Schema.optional(Schema.String),
   }).annotate({ identifier: "TargetSslProxiesSetCertificateMapRequest" });
@@ -32386,7 +32386,7 @@ export interface GuestAttributesValue {
   items?: ReadonlyArray<GuestAttributesEntry>;
 }
 
-export const GuestAttributesValue: Schema.Schema<GuestAttributesValue> =
+export const GuestAttributesValue: Schema.Codec<GuestAttributesValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GuestAttributesEntry)),
   }).annotate({ identifier: "GuestAttributesValue" });
@@ -32406,7 +32406,7 @@ export interface GuestAttributes {
   selfLink?: string;
 }
 
-export const GuestAttributes: Schema.Schema<GuestAttributes> =
+export const GuestAttributes: Schema.Codec<GuestAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryPath: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -32465,7 +32465,7 @@ export interface RegionAutoscalerList {
   nextPageToken?: string;
 }
 
-export const RegionAutoscalerList: Schema.Schema<RegionAutoscalerList> =
+export const RegionAutoscalerList: Schema.Codec<RegionAutoscalerList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -32492,7 +32492,7 @@ export interface SecurityPoliciesWafConfig {
   wafRules?: PreconfiguredWafSet;
 }
 
-export const SecurityPoliciesWafConfig: Schema.Schema<SecurityPoliciesWafConfig> =
+export const SecurityPoliciesWafConfig: Schema.Codec<SecurityPoliciesWafConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wafRules: Schema.optional(PreconfiguredWafSet),
   }).annotate({ identifier: "SecurityPoliciesWafConfig" });
@@ -32504,7 +32504,7 @@ export interface DiskMoveRequest {
   destinationZone?: string;
 }
 
-export const DiskMoveRequest: Schema.Schema<DiskMoveRequest> =
+export const DiskMoveRequest: Schema.Codec<DiskMoveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetDisk: Schema.optional(Schema.String),
     destinationZone: Schema.optional(Schema.String),
@@ -32515,7 +32515,7 @@ export interface CapacityAdviceRequestDistributionPolicyZoneConfiguration {
   zone?: string;
 }
 
-export const CapacityAdviceRequestDistributionPolicyZoneConfiguration: Schema.Schema<CapacityAdviceRequestDistributionPolicyZoneConfiguration> =
+export const CapacityAdviceRequestDistributionPolicyZoneConfiguration: Schema.Codec<CapacityAdviceRequestDistributionPolicyZoneConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
   }).annotate({
@@ -32534,7 +32534,7 @@ export interface CapacityAdviceRequestDistributionPolicy {
     | (string & {});
 }
 
-export const CapacityAdviceRequestDistributionPolicy: Schema.Schema<CapacityAdviceRequestDistributionPolicy> =
+export const CapacityAdviceRequestDistributionPolicy: Schema.Codec<CapacityAdviceRequestDistributionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zones: Schema.optional(
       Schema.Array(CapacityAdviceRequestDistributionPolicyZoneConfiguration),
@@ -32591,7 +32591,7 @@ export interface XpnHostList {
   id?: string;
 }
 
-export const XpnHostList: Schema.Schema<XpnHostList> =
+export const XpnHostList: Schema.Codec<XpnHostList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -32663,7 +32663,7 @@ export interface ReservationSubBlocksListResponse {
   nextPageToken?: string;
 }
 
-export const ReservationSubBlocksListResponse: Schema.Schema<ReservationSubBlocksListResponse> =
+export const ReservationSubBlocksListResponse: Schema.Codec<ReservationSubBlocksListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -32737,7 +32737,7 @@ export interface PublicDelegatedPrefixAggregatedList {
   };
 }
 
-export const PublicDelegatedPrefixAggregatedList: Schema.Schema<PublicDelegatedPrefixAggregatedList> =
+export const PublicDelegatedPrefixAggregatedList: Schema.Codec<PublicDelegatedPrefixAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -32812,7 +32812,7 @@ export interface DiskList {
   nextPageToken?: string;
 }
 
-export const DiskList: Schema.Schema<DiskList> =
+export const DiskList: Schema.Codec<DiskList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -32888,7 +32888,7 @@ export interface VmExtensionPolicyList {
   unreachables?: ReadonlyArray<string>;
 }
 
-export const VmExtensionPolicyList: Schema.Schema<VmExtensionPolicyList> =
+export const VmExtensionPolicyList: Schema.Codec<VmExtensionPolicyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -32923,7 +32923,7 @@ export interface ReservationsBlocksPerformMaintenanceRequest {
     | (string & {});
 }
 
-export const ReservationsBlocksPerformMaintenanceRequest: Schema.Schema<ReservationsBlocksPerformMaintenanceRequest> =
+export const ReservationsBlocksPerformMaintenanceRequest: Schema.Codec<ReservationsBlocksPerformMaintenanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maintenanceScope: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReservationsBlocksPerformMaintenanceRequest" });
@@ -32933,7 +32933,7 @@ export interface InstancesAddResourcePoliciesRequest {
   resourcePolicies?: ReadonlyArray<string>;
 }
 
-export const InstancesAddResourcePoliciesRequest: Schema.Schema<InstancesAddResourcePoliciesRequest> =
+export const InstancesAddResourcePoliciesRequest: Schema.Codec<InstancesAddResourcePoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InstancesAddResourcePoliciesRequest" });
@@ -32947,7 +32947,7 @@ export interface RegionSetPolicyRequest {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const RegionSetPolicyRequest: Schema.Schema<RegionSetPolicyRequest> =
+export const RegionSetPolicyRequest: Schema.Codec<RegionSetPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     policy: Schema.optional(Policy),
@@ -32963,7 +32963,7 @@ export interface ProjectsGetXpnResources {
   resources?: ReadonlyArray<XpnResourceId>;
 }
 
-export const ProjectsGetXpnResources: Schema.Schema<ProjectsGetXpnResources> =
+export const ProjectsGetXpnResources: Schema.Codec<ProjectsGetXpnResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -33022,7 +33022,7 @@ export interface RoutersListNamedSets {
   selfLink?: string;
 }
 
-export const RoutersListNamedSets: Schema.Schema<RoutersListNamedSets> =
+export const RoutersListNamedSets: Schema.Codec<RoutersListNamedSets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     result: Schema.optional(Schema.Array(NamedSet)),
@@ -33051,7 +33051,7 @@ export interface ImageView {
   image?: Image;
 }
 
-export const ImageView: Schema.Schema<ImageView> =
+export const ImageView: Schema.Codec<ImageView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Image),
   }).annotate({ identifier: "ImageView" });
@@ -33064,7 +33064,7 @@ export interface CapacityAdviceRequestInstanceFlexibilityPolicy {
   >;
 }
 
-export const CapacityAdviceRequestInstanceFlexibilityPolicy: Schema.Schema<CapacityAdviceRequestInstanceFlexibilityPolicy> =
+export const CapacityAdviceRequestInstanceFlexibilityPolicy: Schema.Codec<CapacityAdviceRequestInstanceFlexibilityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceSelections: Schema.optional(
       Schema.Record(
@@ -33083,7 +33083,7 @@ export interface RoutePolicyPolicyTerm {
   priority?: number;
 }
 
-export const RoutePolicyPolicyTerm: Schema.Schema<RoutePolicyPolicyTerm> =
+export const RoutePolicyPolicyTerm: Schema.Codec<RoutePolicyPolicyTerm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     match: Schema.optional(Expr),
     actions: Schema.optional(Schema.Array(Expr)),
@@ -33133,7 +33133,7 @@ export interface RegionInstanceGroupManagersListInstanceConfigsResp {
   };
 }
 
-export const RegionInstanceGroupManagersListInstanceConfigsResp: Schema.Schema<RegionInstanceGroupManagersListInstanceConfigsResp> =
+export const RegionInstanceGroupManagersListInstanceConfigsResp: Schema.Codec<RegionInstanceGroupManagersListInstanceConfigsResp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(PerInstanceConfig)),
@@ -33162,7 +33162,7 @@ export interface InstanceGroupManagersListErrorsResponse {
   nextPageToken?: string;
 }
 
-export const InstanceGroupManagersListErrorsResponse: Schema.Schema<InstanceGroupManagersListErrorsResponse> =
+export const InstanceGroupManagersListErrorsResponse: Schema.Codec<InstanceGroupManagersListErrorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(InstanceManagedByIgmError)),
     nextPageToken: Schema.optional(Schema.String),
@@ -33219,7 +33219,7 @@ export interface ForwardingRuleAggregatedList {
   items?: Record<string, ForwardingRulesScopedList>;
 }
 
-export const ForwardingRuleAggregatedList: Schema.Schema<ForwardingRuleAggregatedList> =
+export const ForwardingRuleAggregatedList: Schema.Codec<ForwardingRuleAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -33269,7 +33269,7 @@ export interface InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
   rules?: ReadonlyArray<FirewallPolicyRule>;
 }
 
-export const InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy: Schema.Schema<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy> =
+export const InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy: Schema.Codec<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shortName: Schema.optional(Schema.String),
     priority: Schema.optional(Schema.Number),
@@ -33331,7 +33331,7 @@ export interface AcceleratorTypeList {
   selfLink?: string;
 }
 
-export const AcceleratorTypeList: Schema.Schema<AcceleratorTypeList> =
+export const AcceleratorTypeList: Schema.Codec<AcceleratorTypeList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(AcceleratorType)),
@@ -33371,7 +33371,7 @@ export interface MultiMigMember {
   region?: string;
 }
 
-export const MultiMigMember: Schema.Schema<MultiMigMember> =
+export const MultiMigMember: Schema.Codec<MultiMigMember> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     creationTimestamp: Schema.optional(Schema.String),
@@ -33431,7 +33431,7 @@ export interface MultiMigMemberList {
   nextPageToken?: string;
 }
 
-export const MultiMigMemberList: Schema.Schema<MultiMigMemberList> =
+export const MultiMigMemberList: Schema.Codec<MultiMigMemberList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -33463,7 +33463,7 @@ export interface ProjectsSetManagedProtectionTierRequest {
     | (string & {});
 }
 
-export const ProjectsSetManagedProtectionTierRequest: Schema.Schema<ProjectsSetManagedProtectionTierRequest> =
+export const ProjectsSetManagedProtectionTierRequest: Schema.Codec<ProjectsSetManagedProtectionTierRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedProtectionTier: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProjectsSetManagedProtectionTierRequest" });
@@ -33517,7 +33517,7 @@ export interface TargetPoolList {
   nextPageToken?: string;
 }
 
-export const TargetPoolList: Schema.Schema<TargetPoolList> =
+export const TargetPoolList: Schema.Codec<TargetPoolList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -33591,7 +33591,7 @@ export interface TargetTcpProxyAggregatedList {
   selfLink?: string;
 }
 
-export const TargetTcpProxyAggregatedList: Schema.Schema<TargetTcpProxyAggregatedList> =
+export const TargetTcpProxyAggregatedList: Schema.Codec<TargetTcpProxyAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Record(Schema.String, TargetTcpProxiesScopedList),
@@ -33622,7 +33622,7 @@ export interface RegionInstanceGroupManagersCreateInstancesRequest {
   instances?: ReadonlyArray<PerInstanceConfig>;
 }
 
-export const RegionInstanceGroupManagersCreateInstancesRequest: Schema.Schema<RegionInstanceGroupManagersCreateInstancesRequest> =
+export const RegionInstanceGroupManagersCreateInstancesRequest: Schema.Codec<RegionInstanceGroupManagersCreateInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(PerInstanceConfig)),
   }).annotate({
@@ -33634,7 +33634,7 @@ export interface NetworksCancelRequestRemovePeeringRequest {
   name?: string;
 }
 
-export const NetworksCancelRequestRemovePeeringRequest: Schema.Schema<NetworksCancelRequestRemovePeeringRequest> =
+export const NetworksCancelRequestRemovePeeringRequest: Schema.Codec<NetworksCancelRequestRemovePeeringRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "NetworksCancelRequestRemovePeeringRequest" });
@@ -33650,7 +33650,7 @@ export interface Reference {
   referrer?: string;
 }
 
-export const Reference: Schema.Schema<Reference> =
+export const Reference: Schema.Codec<Reference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -33707,7 +33707,7 @@ export interface InstanceListReferrers {
   items?: ReadonlyArray<Reference>;
 }
 
-export const InstanceListReferrers: Schema.Schema<InstanceListReferrers> =
+export const InstanceListReferrers: Schema.Codec<InstanceListReferrers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -33780,7 +33780,7 @@ export interface PreviewFeatureList {
   selfLink?: string;
 }
 
-export const PreviewFeatureList: Schema.Schema<PreviewFeatureList> =
+export const PreviewFeatureList: Schema.Codec<PreviewFeatureList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(PreviewFeature)),
     id: Schema.optional(Schema.String),
@@ -33808,7 +33808,7 @@ export interface SecurityPoliciesListPreconfiguredExpressionSetsResponse {
   preconfiguredExpressionSets?: SecurityPoliciesWafConfig;
 }
 
-export const SecurityPoliciesListPreconfiguredExpressionSetsResponse: Schema.Schema<SecurityPoliciesListPreconfiguredExpressionSetsResponse> =
+export const SecurityPoliciesListPreconfiguredExpressionSetsResponse: Schema.Codec<SecurityPoliciesListPreconfiguredExpressionSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preconfiguredExpressionSets: Schema.optional(SecurityPoliciesWafConfig),
   }).annotate({
@@ -33819,7 +33819,7 @@ export interface ReservationSlotsGetResponse {
   resource?: ReservationSlot;
 }
 
-export const ReservationSlotsGetResponse: Schema.Schema<ReservationSlotsGetResponse> =
+export const ReservationSlotsGetResponse: Schema.Codec<ReservationSlotsGetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(ReservationSlot),
   }).annotate({ identifier: "ReservationSlotsGetResponse" });
@@ -33871,7 +33871,7 @@ export interface NetworkPolicyList {
   };
 }
 
-export const NetworkPolicyList: Schema.Schema<NetworkPolicyList> =
+export const NetworkPolicyList: Schema.Codec<NetworkPolicyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -33944,7 +33944,7 @@ export interface RouterAggregatedList {
   selfLink?: string;
 }
 
-export const RouterAggregatedList: Schema.Schema<RouterAggregatedList> =
+export const RouterAggregatedList: Schema.Codec<RouterAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Record(Schema.String, RoutersScopedList)),
@@ -34020,7 +34020,7 @@ export interface SslPoliciesAggregatedList {
   };
 }
 
-export const SslPoliciesAggregatedList: Schema.Schema<SslPoliciesAggregatedList> =
+export const SslPoliciesAggregatedList: Schema.Codec<SslPoliciesAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -34094,7 +34094,7 @@ export interface ReservationList {
   items?: ReadonlyArray<Reservation>;
 }
 
-export const ReservationList: Schema.Schema<ReservationList> =
+export const ReservationList: Schema.Codec<ReservationList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34166,7 +34166,7 @@ export interface InstanceList {
   };
 }
 
-export const InstanceList: Schema.Schema<InstanceList> =
+export const InstanceList: Schema.Codec<InstanceList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -34196,7 +34196,7 @@ export interface CompositeHealthChecksGetHealthResponseHealthSourceHealth {
   healthState?: "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
 }
 
-export const CompositeHealthChecksGetHealthResponseHealthSourceHealth: Schema.Schema<CompositeHealthChecksGetHealthResponseHealthSourceHealth> =
+export const CompositeHealthChecksGetHealthResponseHealthSourceHealth: Schema.Codec<CompositeHealthChecksGetHealthResponseHealthSourceHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     healthState: Schema.optional(Schema.String),
@@ -34213,7 +34213,7 @@ export interface CompositeHealthCheckHealth {
   healthSources?: ReadonlyArray<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
 }
 
-export const CompositeHealthCheckHealth: Schema.Schema<CompositeHealthCheckHealth> =
+export const CompositeHealthCheckHealth: Schema.Codec<CompositeHealthCheckHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthState: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34274,7 +34274,7 @@ export interface ResourcePolicyAggregatedList {
   selfLink?: string;
 }
 
-export const ResourcePolicyAggregatedList: Schema.Schema<ResourcePolicyAggregatedList> =
+export const ResourcePolicyAggregatedList: Schema.Codec<ResourcePolicyAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -34352,7 +34352,7 @@ export interface SubnetworkAggregatedList {
   unreachables?: ReadonlyArray<string>;
 }
 
-export const SubnetworkAggregatedList: Schema.Schema<SubnetworkAggregatedList> =
+export const SubnetworkAggregatedList: Schema.Codec<SubnetworkAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -34425,7 +34425,7 @@ export interface RegionDiskTypeList {
   id?: string;
 }
 
-export const RegionDiskTypeList: Schema.Schema<RegionDiskTypeList> =
+export const RegionDiskTypeList: Schema.Codec<RegionDiskTypeList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -34499,7 +34499,7 @@ export interface SslCertificateAggregatedList {
   selfLink?: string;
 }
 
-export const SslCertificateAggregatedList: Schema.Schema<SslCertificateAggregatedList> =
+export const SslCertificateAggregatedList: Schema.Codec<SslCertificateAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Record(Schema.String, SslCertificatesScopedList),
@@ -34574,7 +34574,7 @@ export interface BackendServiceList {
   selfLink?: string;
 }
 
-export const BackendServiceList: Schema.Schema<BackendServiceList> =
+export const BackendServiceList: Schema.Codec<BackendServiceList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(BackendService)),
@@ -34601,7 +34601,7 @@ export interface UrlMapReference {
   urlMap?: string;
 }
 
-export const UrlMapReference: Schema.Schema<UrlMapReference> =
+export const UrlMapReference: Schema.Codec<UrlMapReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlMap: Schema.optional(Schema.String),
   }).annotate({ identifier: "UrlMapReference" });
@@ -34657,7 +34657,7 @@ export interface TargetHttpProxyAggregatedList {
   selfLink?: string;
 }
 
-export const TargetHttpProxyAggregatedList: Schema.Schema<TargetHttpProxyAggregatedList> =
+export const TargetHttpProxyAggregatedList: Schema.Codec<TargetHttpProxyAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Record(Schema.String, TargetHttpProxiesScopedList),
@@ -34687,7 +34687,7 @@ export interface InstanceGroupManagersSetAutoHealingRequest {
   autoHealingPolicies?: ReadonlyArray<InstanceGroupManagerAutoHealingPolicy>;
 }
 
-export const InstanceGroupManagersSetAutoHealingRequest: Schema.Schema<InstanceGroupManagersSetAutoHealingRequest> =
+export const InstanceGroupManagersSetAutoHealingRequest: Schema.Codec<InstanceGroupManagersSetAutoHealingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoHealingPolicies: Schema.optional(
       Schema.Array(InstanceGroupManagerAutoHealingPolicy),
@@ -34744,7 +34744,7 @@ export interface RolloutPlansListResponse {
   };
 }
 
-export const RolloutPlansListResponse: Schema.Schema<RolloutPlansListResponse> =
+export const RolloutPlansListResponse: Schema.Codec<RolloutPlansListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -34773,7 +34773,7 @@ export interface DiskSettings {
   accessLocation?: DiskSettingsAccessLocation;
 }
 
-export const DiskSettings: Schema.Schema<DiskSettings> =
+export const DiskSettings: Schema.Codec<DiskSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessLocation: Schema.optional(DiskSettingsAccessLocation),
   }).annotate({ identifier: "DiskSettings" });
@@ -34791,7 +34791,7 @@ export interface SerialPortOutput {
   start?: string;
 }
 
-export const SerialPortOutput: Schema.Schema<SerialPortOutput> =
+export const SerialPortOutput: Schema.Codec<SerialPortOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -34807,7 +34807,7 @@ export interface RegionSetLabelsRequest {
   labelFingerprint?: string;
 }
 
-export const RegionSetLabelsRequest: Schema.Schema<RegionSetLabelsRequest> =
+export const RegionSetLabelsRequest: Schema.Codec<RegionSetLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     labelFingerprint: Schema.optional(Schema.String),
@@ -34862,7 +34862,7 @@ export interface BackendBucketList {
   selfLink?: string;
 }
 
-export const BackendBucketList: Schema.Schema<BackendBucketList> =
+export const BackendBucketList: Schema.Codec<BackendBucketList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(BackendBucket)),
     id: Schema.optional(Schema.String),
@@ -34934,7 +34934,7 @@ export interface UrlMapList {
   selfLink?: string;
 }
 
-export const UrlMapList: Schema.Schema<UrlMapList> =
+export const UrlMapList: Schema.Codec<UrlMapList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(UrlMap)),
     id: Schema.optional(Schema.String),
@@ -35006,7 +35006,7 @@ export interface HttpsHealthCheckList {
   selfLink?: string;
 }
 
-export const HttpsHealthCheckList: Schema.Schema<HttpsHealthCheckList> =
+export const HttpsHealthCheckList: Schema.Codec<HttpsHealthCheckList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(HttpsHealthCheck)),
@@ -35078,7 +35078,7 @@ export interface DiskTypeList {
   selfLink?: string;
 }
 
-export const DiskTypeList: Schema.Schema<DiskTypeList> =
+export const DiskTypeList: Schema.Codec<DiskTypeList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(DiskType)),
     id: Schema.optional(Schema.String),
@@ -35110,7 +35110,7 @@ export interface HealthSourceHealth {
   sources?: ReadonlyArray<HealthSourcesGetHealthResponseSourceInfo>;
 }
 
-export const HealthSourceHealth: Schema.Schema<HealthSourceHealth> =
+export const HealthSourceHealth: Schema.Codec<HealthSourceHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthState: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -35126,7 +35126,7 @@ export interface InstancesSetSecurityPolicyRequest {
   networkInterfaces?: ReadonlyArray<string>;
 }
 
-export const InstancesSetSecurityPolicyRequest: Schema.Schema<InstancesSetSecurityPolicyRequest> =
+export const InstancesSetSecurityPolicyRequest: Schema.Codec<InstancesSetSecurityPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityPolicy: Schema.optional(Schema.String),
     networkInterfaces: Schema.optional(Schema.Array(Schema.String)),
@@ -35137,7 +35137,7 @@ export interface TargetHttpsProxiesSetQuicOverrideRequest {
   quicOverride?: "DISABLE" | "ENABLE" | "NONE" | (string & {});
 }
 
-export const TargetHttpsProxiesSetQuicOverrideRequest: Schema.Schema<TargetHttpsProxiesSetQuicOverrideRequest> =
+export const TargetHttpsProxiesSetQuicOverrideRequest: Schema.Codec<TargetHttpsProxiesSetQuicOverrideRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quicOverride: Schema.optional(Schema.String),
   }).annotate({ identifier: "TargetHttpsProxiesSetQuicOverrideRequest" });
@@ -35147,7 +35147,7 @@ export interface RegionInstanceGroupManagersSetTemplateRequest {
   instanceTemplate?: string;
 }
 
-export const RegionInstanceGroupManagersSetTemplateRequest: Schema.Schema<RegionInstanceGroupManagersSetTemplateRequest> =
+export const RegionInstanceGroupManagersSetTemplateRequest: Schema.Codec<RegionInstanceGroupManagersSetTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceTemplate: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegionInstanceGroupManagersSetTemplateRequest" });
@@ -35157,7 +35157,7 @@ export interface ImageFamilyView {
   image?: Image;
 }
 
-export const ImageFamilyView: Schema.Schema<ImageFamilyView> =
+export const ImageFamilyView: Schema.Codec<ImageFamilyView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Image),
   }).annotate({ identifier: "ImageFamilyView" });
@@ -35167,7 +35167,7 @@ export interface RegionInstanceGroupManagerPatchInstanceConfigReq {
   perInstanceConfigs?: ReadonlyArray<PerInstanceConfig>;
 }
 
-export const RegionInstanceGroupManagerPatchInstanceConfigReq: Schema.Schema<RegionInstanceGroupManagerPatchInstanceConfigReq> =
+export const RegionInstanceGroupManagerPatchInstanceConfigReq: Schema.Codec<RegionInstanceGroupManagerPatchInstanceConfigReq> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perInstanceConfigs: Schema.optional(Schema.Array(PerInstanceConfig)),
   }).annotate({
@@ -35217,7 +35217,7 @@ export interface InstanceGroupManagersListPerInstanceConfigsResp {
   nextPageToken?: string;
 }
 
-export const InstanceGroupManagersListPerInstanceConfigsResp: Schema.Schema<InstanceGroupManagersListPerInstanceConfigsResp> =
+export const InstanceGroupManagersListPerInstanceConfigsResp: Schema.Codec<InstanceGroupManagersListPerInstanceConfigsResp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(PerInstanceConfig)),
     warning: Schema.optional(
@@ -35244,7 +35244,7 @@ export interface ProjectsEnableXpnResourceRequest {
   xpnResource?: XpnResourceId;
 }
 
-export const ProjectsEnableXpnResourceRequest: Schema.Schema<ProjectsEnableXpnResourceRequest> =
+export const ProjectsEnableXpnResourceRequest: Schema.Codec<ProjectsEnableXpnResourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     xpnResource: Schema.optional(XpnResourceId),
   }).annotate({ identifier: "ProjectsEnableXpnResourceRequest" });
@@ -35253,7 +35253,7 @@ export interface SslPoliciesListAvailableFeaturesResponse {
   features?: ReadonlyArray<string>;
 }
 
-export const SslPoliciesListAvailableFeaturesResponse: Schema.Schema<SslPoliciesListAvailableFeaturesResponse> =
+export const SslPoliciesListAvailableFeaturesResponse: Schema.Codec<SslPoliciesListAvailableFeaturesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SslPoliciesListAvailableFeaturesResponse" });
@@ -35268,7 +35268,7 @@ export interface ReservationsPerformMaintenanceRequest {
     | (string & {});
 }
 
-export const ReservationsPerformMaintenanceRequest: Schema.Schema<ReservationsPerformMaintenanceRequest> =
+export const ReservationsPerformMaintenanceRequest: Schema.Codec<ReservationsPerformMaintenanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maintenanceScope: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReservationsPerformMaintenanceRequest" });
@@ -35314,7 +35314,7 @@ export interface NetworkPoliciesScopedList {
   };
 }
 
-export const NetworkPoliciesScopedList: Schema.Schema<NetworkPoliciesScopedList> =
+export const NetworkPoliciesScopedList: Schema.Codec<NetworkPoliciesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkPolicies: Schema.optional(Schema.Array(NetworkPolicy)),
     warning: Schema.optional(
@@ -35384,7 +35384,7 @@ export interface NetworkPolicyAggregatedList {
   kind?: string;
 }
 
-export const NetworkPolicyAggregatedList: Schema.Schema<NetworkPolicyAggregatedList> =
+export const NetworkPolicyAggregatedList: Schema.Codec<NetworkPolicyAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachables: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -35459,7 +35459,7 @@ export interface MultiMigsList {
   id?: string;
 }
 
-export const MultiMigsList: Schema.Schema<MultiMigsList> =
+export const MultiMigsList: Schema.Codec<MultiMigsList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -35523,7 +35523,7 @@ export interface MachineTypesScopedList {
   };
 }
 
-export const MachineTypesScopedList: Schema.Schema<MachineTypesScopedList> =
+export const MachineTypesScopedList: Schema.Codec<MachineTypesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineTypes: Schema.optional(Schema.Array(MachineType)),
     warning: Schema.optional(
@@ -35593,7 +35593,7 @@ export interface MachineTypeAggregatedList {
   items?: Record<string, MachineTypesScopedList>;
 }
 
-export const MachineTypeAggregatedList: Schema.Schema<MachineTypeAggregatedList> =
+export const MachineTypeAggregatedList: Schema.Codec<MachineTypeAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -35624,7 +35624,7 @@ export interface InstanceGroupManagersCreateInstancesRequest {
   instances?: ReadonlyArray<PerInstanceConfig>;
 }
 
-export const InstanceGroupManagersCreateInstancesRequest: Schema.Schema<InstanceGroupManagersCreateInstancesRequest> =
+export const InstanceGroupManagersCreateInstancesRequest: Schema.Codec<InstanceGroupManagersCreateInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(PerInstanceConfig)),
   }).annotate({ identifier: "InstanceGroupManagersCreateInstancesRequest" });
@@ -35644,7 +35644,7 @@ export interface RoutePolicy {
   description?: string;
 }
 
-export const RoutePolicy: Schema.Schema<RoutePolicy> =
+export const RoutePolicy: Schema.Codec<RoutePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     terms: Schema.optional(Schema.Array(RoutePolicyPolicyTerm)),
     fingerprint: Schema.optional(Schema.String),
@@ -35657,7 +35657,7 @@ export interface RoutersGetRoutePolicyResponse {
   resource?: RoutePolicy;
 }
 
-export const RoutersGetRoutePolicyResponse: Schema.Schema<RoutersGetRoutePolicyResponse> =
+export const RoutersGetRoutePolicyResponse: Schema.Codec<RoutersGetRoutePolicyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(RoutePolicy),
   }).annotate({ identifier: "RoutersGetRoutePolicyResponse" });
@@ -35713,7 +35713,7 @@ export interface HealthSourceAggregatedList {
   selfLink?: string;
 }
 
-export const HealthSourceAggregatedList: Schema.Schema<HealthSourceAggregatedList> =
+export const HealthSourceAggregatedList: Schema.Codec<HealthSourceAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Record(Schema.String, HealthSourcesScopedList),
@@ -35780,7 +35780,7 @@ export interface CommitmentsScopedList {
   commitments?: ReadonlyArray<Commitment>;
 }
 
-export const CommitmentsScopedList: Schema.Schema<CommitmentsScopedList> =
+export const CommitmentsScopedList: Schema.Codec<CommitmentsScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -35804,7 +35804,7 @@ export interface TargetSslProxiesSetBackendServiceRequest {
   service?: string;
 }
 
-export const TargetSslProxiesSetBackendServiceRequest: Schema.Schema<TargetSslProxiesSetBackendServiceRequest> =
+export const TargetSslProxiesSetBackendServiceRequest: Schema.Codec<TargetSslProxiesSetBackendServiceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "TargetSslProxiesSetBackendServiceRequest" });
@@ -35816,7 +35816,7 @@ export interface FirewallPoliciesListAssociationsResponse {
   associations?: ReadonlyArray<FirewallPolicyAssociation>;
 }
 
-export const FirewallPoliciesListAssociationsResponse: Schema.Schema<FirewallPoliciesListAssociationsResponse> =
+export const FirewallPoliciesListAssociationsResponse: Schema.Codec<FirewallPoliciesListAssociationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     associations: Schema.optional(Schema.Array(FirewallPolicyAssociation)),
@@ -35832,7 +35832,7 @@ export interface HostsGetVersionRequest {
   >;
 }
 
-export const HostsGetVersionRequest: Schema.Schema<HostsGetVersionRequest> =
+export const HostsGetVersionRequest: Schema.Codec<HostsGetVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sbomSelections: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "HostsGetVersionRequest" });
@@ -35842,7 +35842,7 @@ export interface TargetPoolsRemoveHealthCheckRequest {
   healthChecks?: ReadonlyArray<HealthCheckReference>;
 }
 
-export const TargetPoolsRemoveHealthCheckRequest: Schema.Schema<TargetPoolsRemoveHealthCheckRequest> =
+export const TargetPoolsRemoveHealthCheckRequest: Schema.Codec<TargetPoolsRemoveHealthCheckRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthChecks: Schema.optional(Schema.Array(HealthCheckReference)),
   }).annotate({ identifier: "TargetPoolsRemoveHealthCheckRequest" });
@@ -35894,7 +35894,7 @@ export interface NetworkEndpointGroupsListNetworkEndpoints {
   };
 }
 
-export const NetworkEndpointGroupsListNetworkEndpoints: Schema.Schema<NetworkEndpointGroupsListNetworkEndpoints> =
+export const NetworkEndpointGroupsListNetworkEndpoints: Schema.Codec<NetworkEndpointGroupsListNetworkEndpoints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(NetworkEndpointWithHealthStatus)),
@@ -35921,7 +35921,7 @@ export interface CapacityAdviceRequestInstanceProperties {
   scheduling?: CapacityAdviceRequestInstancePropertiesScheduling;
 }
 
-export const CapacityAdviceRequestInstanceProperties: Schema.Schema<CapacityAdviceRequestInstanceProperties> =
+export const CapacityAdviceRequestInstanceProperties: Schema.Codec<CapacityAdviceRequestInstanceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduling: Schema.optional(
       CapacityAdviceRequestInstancePropertiesScheduling,
@@ -35975,7 +35975,7 @@ export interface SecurityPolicyList {
   kind?: string;
 }
 
-export const SecurityPolicyList: Schema.Schema<SecurityPolicyList> =
+export const SecurityPolicyList: Schema.Codec<SecurityPolicyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(SecurityPolicy)),
     id: Schema.optional(Schema.String),
@@ -36048,7 +36048,7 @@ export interface CommitmentAggregatedList {
   unreachables?: ReadonlyArray<string>;
 }
 
-export const CommitmentAggregatedList: Schema.Schema<CommitmentAggregatedList> =
+export const CommitmentAggregatedList: Schema.Codec<CommitmentAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -36084,7 +36084,7 @@ export interface UrlMapsValidateRequest {
   >;
 }
 
-export const UrlMapsValidateRequest: Schema.Schema<UrlMapsValidateRequest> =
+export const UrlMapsValidateRequest: Schema.Codec<UrlMapsValidateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(UrlMap),
     loadBalancingSchemes: Schema.optional(Schema.Array(Schema.String)),
@@ -36097,7 +36097,7 @@ export interface ShieldedInstanceIdentityEntry {
   ekPub?: string;
 }
 
-export const ShieldedInstanceIdentityEntry: Schema.Schema<ShieldedInstanceIdentityEntry> =
+export const ShieldedInstanceIdentityEntry: Schema.Codec<ShieldedInstanceIdentityEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ekCert: Schema.optional(Schema.String),
     ekPub: Schema.optional(Schema.String),
@@ -36116,7 +36116,7 @@ export interface ShieldedInstanceIdentity {
   eccP256SigningKey?: ShieldedInstanceIdentityEntry;
 }
 
-export const ShieldedInstanceIdentity: Schema.Schema<ShieldedInstanceIdentity> =
+export const ShieldedInstanceIdentity: Schema.Codec<ShieldedInstanceIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptionKey: Schema.optional(ShieldedInstanceIdentityEntry),
     signingKey: Schema.optional(ShieldedInstanceIdentityEntry),
@@ -36130,7 +36130,7 @@ export interface RoutersPreviewResponse {
   resource?: Router;
 }
 
-export const RoutersPreviewResponse: Schema.Schema<RoutersPreviewResponse> =
+export const RoutersPreviewResponse: Schema.Codec<RoutersPreviewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Router),
   }).annotate({ identifier: "RoutersPreviewResponse" });
@@ -36142,7 +36142,7 @@ export interface InstanceGroupManagersSuspendInstancesRequest {
   forceSuspend?: boolean;
 }
 
-export const InstanceGroupManagersSuspendInstancesRequest: Schema.Schema<InstanceGroupManagersSuspendInstancesRequest> =
+export const InstanceGroupManagersSuspendInstancesRequest: Schema.Codec<InstanceGroupManagersSuspendInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
     forceSuspend: Schema.optional(Schema.Boolean),
@@ -36180,7 +36180,7 @@ export interface InstanceGroupManagersApplyUpdatesRequest {
   >;
 }
 
-export const InstanceGroupManagersApplyUpdatesRequest: Schema.Schema<InstanceGroupManagersApplyUpdatesRequest> =
+export const InstanceGroupManagersApplyUpdatesRequest: Schema.Codec<InstanceGroupManagersApplyUpdatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mostDisruptiveAllowedAction: Schema.optional(Schema.String),
     allInstances: Schema.optional(Schema.Boolean),
@@ -36194,7 +36194,7 @@ export interface RegionInstanceGroupManagerDeleteInstanceConfigReq {
   names?: ReadonlyArray<string>;
 }
 
-export const RegionInstanceGroupManagerDeleteInstanceConfigReq: Schema.Schema<RegionInstanceGroupManagerDeleteInstanceConfigReq> =
+export const RegionInstanceGroupManagerDeleteInstanceConfigReq: Schema.Codec<RegionInstanceGroupManagerDeleteInstanceConfigReq> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -36242,7 +36242,7 @@ export interface HealthCheckServicesScopedList {
   };
 }
 
-export const HealthCheckServicesScopedList: Schema.Schema<HealthCheckServicesScopedList> =
+export const HealthCheckServicesScopedList: Schema.Codec<HealthCheckServicesScopedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(HealthCheckService)),
     warning: Schema.optional(
@@ -36312,7 +36312,7 @@ export interface HealthCheckServiceAggregatedList {
   selfLink?: string;
 }
 
-export const HealthCheckServiceAggregatedList: Schema.Schema<HealthCheckServiceAggregatedList> =
+export const HealthCheckServiceAggregatedList: Schema.Codec<HealthCheckServiceAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Record(Schema.String, HealthCheckServicesScopedList),
@@ -36345,7 +36345,7 @@ export interface InstanceGroupManagersListManagedInstancesResponse {
   managedInstances?: ReadonlyArray<ManagedInstance>;
 }
 
-export const InstanceGroupManagersListManagedInstancesResponse: Schema.Schema<InstanceGroupManagersListManagedInstancesResponse> =
+export const InstanceGroupManagersListManagedInstancesResponse: Schema.Codec<InstanceGroupManagersListManagedInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     managedInstances: Schema.optional(Schema.Array(ManagedInstance)),
@@ -36403,7 +36403,7 @@ export interface RolloutsListResponse {
   };
 }
 
-export const RolloutsListResponse: Schema.Schema<RolloutsListResponse> =
+export const RolloutsListResponse: Schema.Codec<RolloutsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachables: Schema.optional(Schema.Array(Schema.String)),
@@ -36432,7 +36432,7 @@ export interface RegionCommitmentsUpdateReservationsRequest {
   reservations?: ReadonlyArray<Reservation>;
 }
 
-export const RegionCommitmentsUpdateReservationsRequest: Schema.Schema<RegionCommitmentsUpdateReservationsRequest> =
+export const RegionCommitmentsUpdateReservationsRequest: Schema.Codec<RegionCommitmentsUpdateReservationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservations: Schema.optional(Schema.Array(Reservation)),
   }).annotate({ identifier: "RegionCommitmentsUpdateReservationsRequest" });
@@ -36486,7 +36486,7 @@ export interface SslCertificateList {
   selfLink?: string;
 }
 
-export const SslCertificateList: Schema.Schema<SslCertificateList> =
+export const SslCertificateList: Schema.Codec<SslCertificateList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(SslCertificate)),
     id: Schema.optional(Schema.String),
@@ -36558,7 +36558,7 @@ export interface VpnGatewayList {
   nextPageToken?: string;
 }
 
-export const VpnGatewayList: Schema.Schema<VpnGatewayList> =
+export const VpnGatewayList: Schema.Codec<VpnGatewayList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -36586,7 +36586,7 @@ export interface BackendServicesGetEffectiveSecurityPoliciesResponse {
   securityPolicies?: ReadonlyArray<SecurityPolicy>;
 }
 
-export const BackendServicesGetEffectiveSecurityPoliciesResponse: Schema.Schema<BackendServicesGetEffectiveSecurityPoliciesResponse> =
+export const BackendServicesGetEffectiveSecurityPoliciesResponse: Schema.Codec<BackendServicesGetEffectiveSecurityPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityPolicies: Schema.optional(Schema.Array(SecurityPolicy)),
   }).annotate({
@@ -36600,7 +36600,7 @@ export interface InstanceGroupManagersStopInstancesRequest {
   forceStop?: boolean;
 }
 
-export const InstanceGroupManagersStopInstancesRequest: Schema.Schema<InstanceGroupManagersStopInstancesRequest> =
+export const InstanceGroupManagersStopInstancesRequest: Schema.Codec<InstanceGroupManagersStopInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
     forceStop: Schema.optional(Schema.Boolean),
@@ -36613,7 +36613,7 @@ export interface NodeGroupsPerformMaintenanceRequest {
   startTime?: string;
 }
 
-export const NodeGroupsPerformMaintenanceRequest: Schema.Schema<NodeGroupsPerformMaintenanceRequest> =
+export const NodeGroupsPerformMaintenanceRequest: Schema.Codec<NodeGroupsPerformMaintenanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(Schema.String)),
     startTime: Schema.optional(Schema.String),
@@ -36626,7 +36626,7 @@ export interface RegionInstanceGroupsListInstancesRequest {
   portName?: string;
 }
 
-export const RegionInstanceGroupsListInstancesRequest: Schema.Schema<RegionInstanceGroupsListInstancesRequest> =
+export const RegionInstanceGroupsListInstancesRequest: Schema.Codec<RegionInstanceGroupsListInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceState: Schema.optional(Schema.String),
     portName: Schema.optional(Schema.String),
@@ -36683,7 +36683,7 @@ export interface TargetHttpsProxyAggregatedList {
   unreachables?: ReadonlyArray<string>;
 }
 
-export const TargetHttpsProxyAggregatedList: Schema.Schema<TargetHttpsProxyAggregatedList> =
+export const TargetHttpsProxyAggregatedList: Schema.Codec<TargetHttpsProxyAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -36716,7 +36716,7 @@ export interface InstancesResumeRequest {
   disks?: ReadonlyArray<CustomerEncryptionKeyProtectedDisk>;
 }
 
-export const InstancesResumeRequest: Schema.Schema<InstancesResumeRequest> =
+export const InstancesResumeRequest: Schema.Codec<InstancesResumeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceEncryptionKey: Schema.optional(CustomerEncryptionKey),
     disks: Schema.optional(Schema.Array(CustomerEncryptionKeyProtectedDisk)),
@@ -36733,7 +36733,7 @@ export interface CapacityAdviceRequest {
   size?: number;
 }
 
-export const CapacityAdviceRequest: Schema.Schema<CapacityAdviceRequest> =
+export const CapacityAdviceRequest: Schema.Codec<CapacityAdviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceProperties: Schema.optional(
       CapacityAdviceRequestInstanceProperties,
@@ -36754,7 +36754,7 @@ export interface BulkSetLabelsRequest {
   labels?: Record<string, string>;
 }
 
-export const BulkSetLabelsRequest: Schema.Schema<BulkSetLabelsRequest> =
+export const BulkSetLabelsRequest: Schema.Codec<BulkSetLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelFingerprint: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -36764,7 +36764,7 @@ export interface BulkZoneSetLabelsRequest {
   requests?: ReadonlyArray<BulkSetLabelsRequest>;
 }
 
-export const BulkZoneSetLabelsRequest: Schema.Schema<BulkZoneSetLabelsRequest> =
+export const BulkZoneSetLabelsRequest: Schema.Codec<BulkZoneSetLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(BulkSetLabelsRequest)),
   }).annotate({ identifier: "BulkZoneSetLabelsRequest" });
@@ -36774,7 +36774,7 @@ export interface InstanceGroupsRemoveInstancesRequest {
   instances?: ReadonlyArray<InstanceReference>;
 }
 
-export const InstanceGroupsRemoveInstancesRequest: Schema.Schema<InstanceGroupsRemoveInstancesRequest> =
+export const InstanceGroupsRemoveInstancesRequest: Schema.Codec<InstanceGroupsRemoveInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(InstanceReference)),
   }).annotate({ identifier: "InstanceGroupsRemoveInstancesRequest" });
@@ -36784,7 +36784,7 @@ export interface NetworksRemovePeeringRequest {
   name?: string;
 }
 
-export const NetworksRemovePeeringRequest: Schema.Schema<NetworksRemovePeeringRequest> =
+export const NetworksRemovePeeringRequest: Schema.Codec<NetworksRemovePeeringRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "NetworksRemovePeeringRequest" });
@@ -36838,7 +36838,7 @@ export interface NodeTypeList {
   items?: ReadonlyArray<NodeType>;
 }
 
-export const NodeTypeList: Schema.Schema<NodeTypeList> =
+export const NodeTypeList: Schema.Codec<NodeTypeList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -36866,7 +36866,7 @@ export interface InstanceGroupManagersPatchPerInstanceConfigsReq {
   perInstanceConfigs?: ReadonlyArray<PerInstanceConfig>;
 }
 
-export const InstanceGroupManagersPatchPerInstanceConfigsReq: Schema.Schema<InstanceGroupManagersPatchPerInstanceConfigsReq> =
+export const InstanceGroupManagersPatchPerInstanceConfigsReq: Schema.Codec<InstanceGroupManagersPatchPerInstanceConfigsReq> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perInstanceConfigs: Schema.optional(Schema.Array(PerInstanceConfig)),
   }).annotate({
@@ -36880,7 +36880,7 @@ export interface InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolic
   rules?: ReadonlyArray<SecurityPolicyRule>;
 }
 
-export const InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy: Schema.Schema<InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy> =
+export const InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy: Schema.Codec<InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     rules: Schema.optional(Schema.Array(SecurityPolicyRule)),
@@ -36898,7 +36898,7 @@ export interface InstancesGetEffectiveFirewallsResponse {
   firewallPolicys?: ReadonlyArray<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 }
 
-export const InstancesGetEffectiveFirewallsResponse: Schema.Schema<InstancesGetEffectiveFirewallsResponse> =
+export const InstancesGetEffectiveFirewallsResponse: Schema.Codec<InstancesGetEffectiveFirewallsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewalls: Schema.optional(Schema.Array(Firewall)),
     organizationFirewalls: Schema.optional(
@@ -36962,7 +36962,7 @@ export interface RegionInstanceGroupsListInstances {
   kind?: string;
 }
 
-export const RegionInstanceGroupsListInstances: Schema.Schema<RegionInstanceGroupsListInstances> =
+export const RegionInstanceGroupsListInstances: Schema.Codec<RegionInstanceGroupsListInstances> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(InstanceWithNamedPorts)),
@@ -36990,7 +36990,7 @@ export interface RegionDisksAddResourcePoliciesRequest {
   resourcePolicies?: ReadonlyArray<string>;
 }
 
-export const RegionDisksAddResourcePoliciesRequest: Schema.Schema<RegionDisksAddResourcePoliciesRequest> =
+export const RegionDisksAddResourcePoliciesRequest: Schema.Codec<RegionDisksAddResourcePoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePolicies: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RegionDisksAddResourcePoliciesRequest" });
@@ -37000,7 +37000,7 @@ export interface TargetHttpsProxiesSetSslCertificatesRequest {
   sslCertificates?: ReadonlyArray<string>;
 }
 
-export const TargetHttpsProxiesSetSslCertificatesRequest: Schema.Schema<TargetHttpsProxiesSetSslCertificatesRequest> =
+export const TargetHttpsProxiesSetSslCertificatesRequest: Schema.Codec<TargetHttpsProxiesSetSslCertificatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sslCertificates: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TargetHttpsProxiesSetSslCertificatesRequest" });
@@ -37016,7 +37016,7 @@ export interface NetworksAddPeeringRequest {
   autoCreateRoutes?: boolean;
 }
 
-export const NetworksAddPeeringRequest: Schema.Schema<NetworksAddPeeringRequest> =
+export const NetworksAddPeeringRequest: Schema.Codec<NetworksAddPeeringRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkPeering: Schema.optional(NetworkPeering),
     name: Schema.optional(Schema.String),
@@ -37073,7 +37073,7 @@ export interface BackendBucketAggregatedList {
   kind?: string;
 }
 
-export const BackendBucketAggregatedList: Schema.Schema<BackendBucketAggregatedList> =
+export const BackendBucketAggregatedList: Schema.Codec<BackendBucketAggregatedList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -37103,7 +37103,7 @@ export interface RegionNetworkEndpointGroupsDetachEndpointsRequest {
   networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
-export const RegionNetworkEndpointGroupsDetachEndpointsRequest: Schema.Schema<RegionNetworkEndpointGroupsDetachEndpointsRequest> =
+export const RegionNetworkEndpointGroupsDetachEndpointsRequest: Schema.Codec<RegionNetworkEndpointGroupsDetachEndpointsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
   }).annotate({
@@ -37159,7 +37159,7 @@ export interface RouterList {
   kind?: string;
 }
 
-export const RouterList: Schema.Schema<RouterList> =
+export const RouterList: Schema.Codec<RouterList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Router)),
@@ -37231,7 +37231,7 @@ export interface HealthSourceList {
   selfLink?: string;
 }
 
-export const HealthSourceList: Schema.Schema<HealthSourceList> =
+export const HealthSourceList: Schema.Codec<HealthSourceList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(HealthSource)),
@@ -37306,7 +37306,7 @@ export interface CrossSiteNetworkList {
   nextPageToken?: string;
 }
 
-export const CrossSiteNetworkList: Schema.Schema<CrossSiteNetworkList> =
+export const CrossSiteNetworkList: Schema.Codec<CrossSiteNetworkList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -37338,7 +37338,7 @@ export interface RegionInstanceGroupManagersDeleteInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const RegionInstanceGroupManagersDeleteInstancesRequest: Schema.Schema<RegionInstanceGroupManagersDeleteInstancesRequest> =
+export const RegionInstanceGroupManagersDeleteInstancesRequest: Schema.Codec<RegionInstanceGroupManagersDeleteInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skipInstancesOnValidationError: Schema.optional(Schema.Boolean),
     instances: Schema.optional(Schema.Array(Schema.String)),
@@ -37353,7 +37353,7 @@ export interface RegionAddressesMoveRequest {
   description?: string;
 }
 
-export const RegionAddressesMoveRequest: Schema.Schema<RegionAddressesMoveRequest> =
+export const RegionAddressesMoveRequest: Schema.Codec<RegionAddressesMoveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationAddress: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -37408,7 +37408,7 @@ export interface CommitmentList {
   selfLink?: string;
 }
 
-export const CommitmentList: Schema.Schema<CommitmentList> =
+export const CommitmentList: Schema.Codec<CommitmentList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Commitment)),
     id: Schema.optional(Schema.String),
@@ -37436,7 +37436,7 @@ export interface NodeGroupsSetNodeTemplateRequest {
   nodeTemplate?: string;
 }
 
-export const NodeGroupsSetNodeTemplateRequest: Schema.Schema<NodeGroupsSetNodeTemplateRequest> =
+export const NodeGroupsSetNodeTemplateRequest: Schema.Codec<NodeGroupsSetNodeTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeTemplate: Schema.optional(Schema.String),
   }).annotate({ identifier: "NodeGroupsSetNodeTemplateRequest" });
@@ -37446,7 +37446,7 @@ export interface InstancesSetMachineResourcesRequest {
   guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
 }
 
-export const InstancesSetMachineResourcesRequest: Schema.Schema<InstancesSetMachineResourcesRequest> =
+export const InstancesSetMachineResourcesRequest: Schema.Codec<InstancesSetMachineResourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guestAccelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
   }).annotate({ identifier: "InstancesSetMachineResourcesRequest" });
@@ -37458,7 +37458,7 @@ export interface InstanceGroupManagersSetTargetPoolsRequest {
   fingerprint?: string;
 }
 
-export const InstanceGroupManagersSetTargetPoolsRequest: Schema.Schema<InstanceGroupManagersSetTargetPoolsRequest> =
+export const InstanceGroupManagersSetTargetPoolsRequest: Schema.Codec<InstanceGroupManagersSetTargetPoolsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetPools: Schema.optional(Schema.Array(Schema.String)),
     fingerprint: Schema.optional(Schema.String),
@@ -37469,7 +37469,7 @@ export interface RegionInstanceGroupManagersResumeInstancesRequest {
   instances?: ReadonlyArray<string>;
 }
 
-export const RegionInstanceGroupManagersResumeInstancesRequest: Schema.Schema<RegionInstanceGroupManagersResumeInstancesRequest> =
+export const RegionInstanceGroupManagersResumeInstancesRequest: Schema.Codec<RegionInstanceGroupManagersResumeInstancesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -37525,7 +37525,7 @@ export interface InstanceGroupManagerResizeRequestsListResponse {
   kind?: string;
 }
 
-export const InstanceGroupManagerResizeRequestsListResponse: Schema.Schema<InstanceGroupManagerResizeRequestsListResponse> =
+export const InstanceGroupManagerResizeRequestsListResponse: Schema.Codec<InstanceGroupManagerResizeRequestsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(InstanceGroupManagerResizeRequest)),
@@ -37597,7 +37597,7 @@ export interface SubnetworkList {
   nextPageToken?: string;
 }
 
-export const SubnetworkList: Schema.Schema<SubnetworkList> =
+export const SubnetworkList: Schema.Codec<SubnetworkList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
       Schema.Struct({
@@ -37625,7 +37625,7 @@ export interface SnapshotUpdateKmsKeyRequest {
   kmsKeyName?: string;
 }
 
-export const SnapshotUpdateKmsKeyRequest: Schema.Schema<SnapshotUpdateKmsKeyRequest> =
+export const SnapshotUpdateKmsKeyRequest: Schema.Codec<SnapshotUpdateKmsKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SnapshotUpdateKmsKeyRequest" });
@@ -37679,7 +37679,7 @@ export interface InstanceGroupManagerList {
   nextPageToken?: string;
 }
 
-export const InstanceGroupManagerList: Schema.Schema<InstanceGroupManagerList> =
+export const InstanceGroupManagerList: Schema.Codec<InstanceGroupManagerList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     warning: Schema.optional(
@@ -37754,7 +37754,7 @@ export interface RoutersListRoutePolicies {
   unreachables?: ReadonlyArray<string>;
 }
 
-export const RoutersListRoutePolicies: Schema.Schema<RoutersListRoutePolicies> =
+export const RoutersListRoutePolicies: Schema.Codec<RoutersListRoutePolicies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -37857,7 +37857,7 @@ export const InsertInstantSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<InsertInstantSnapshotsRequest>;
 
 export type InsertInstantSnapshotsResponse = Operation;
 export const InsertInstantSnapshotsResponse =
@@ -37909,7 +37909,7 @@ export const SetLabelsInstantSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<SetLabelsInstantSnapshotsRequest>;
 
 export type SetLabelsInstantSnapshotsResponse = Operation;
 export const SetLabelsInstantSnapshotsResponse =
@@ -37975,7 +37975,7 @@ export const AggregatedListInstantSnapshotsRequest =
       path: "projects/{project}/aggregated/instantSnapshots",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListInstantSnapshotsRequest>;
 
 export type AggregatedListInstantSnapshotsResponse =
   InstantSnapshotAggregatedList;
@@ -38024,7 +38024,7 @@ export const GetInstantSnapshotsRequest =
       path: "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<GetInstantSnapshotsRequest>;
 
 export type GetInstantSnapshotsResponse = InstantSnapshot;
 export const GetInstantSnapshotsResponse =
@@ -38078,7 +38078,7 @@ export const ListInstantSnapshotsRequest =
       path: "projects/{project}/zones/{zone}/instantSnapshots",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<ListInstantSnapshotsRequest>;
 
 export type ListInstantSnapshotsResponse = InstantSnapshotList;
 export const ListInstantSnapshotsResponse =
@@ -38126,7 +38126,7 @@ export const DeleteInstantSnapshotsRequest =
       path: "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<DeleteInstantSnapshotsRequest>;
 
 export type DeleteInstantSnapshotsResponse = Operation;
 export const DeleteInstantSnapshotsResponse =
@@ -38175,7 +38175,7 @@ export const TestIamPermissionsInstantSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInstantSnapshotsRequest>;
 
 export type TestIamPermissionsInstantSnapshotsResponse =
   TestPermissionsResponse;
@@ -38226,7 +38226,7 @@ export const GetIamPolicyInstantSnapshotsRequest =
       path: "projects/{project}/zones/{zone}/instantSnapshots/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyInstantSnapshotsRequest>;
 
 export type GetIamPolicyInstantSnapshotsResponse = Policy;
 export const GetIamPolicyInstantSnapshotsResponse =
@@ -38273,7 +38273,7 @@ export const SetIamPolicyInstantSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyInstantSnapshotsRequest>;
 
 export type SetIamPolicyInstantSnapshotsResponse = Policy;
 export const SetIamPolicyInstantSnapshotsResponse =
@@ -38311,7 +38311,7 @@ export const GetRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/regions/{region}" }),
   svc,
-) as unknown as Schema.Schema<GetRegionsRequest>;
+) as unknown as Schema.Codec<GetRegionsRequest>;
 
 export type GetRegionsResponse = Region;
 export const GetRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Region;
@@ -38357,7 +38357,7 @@ export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/regions" }),
   svc,
-) as unknown as Schema.Schema<ListRegionsRequest>;
+) as unknown as Schema.Codec<ListRegionsRequest>;
 
 export type ListRegionsResponse = RegionList;
 export const ListRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ RegionList;
@@ -38405,7 +38405,7 @@ export const CancelFutureReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelFutureReservationsRequest>;
+  ) as unknown as Schema.Codec<CancelFutureReservationsRequest>;
 
 export type CancelFutureReservationsResponse = Operation;
 export const CancelFutureReservationsResponse =
@@ -38454,7 +38454,7 @@ export const InsertFutureReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertFutureReservationsRequest>;
+  ) as unknown as Schema.Codec<InsertFutureReservationsRequest>;
 
 export type InsertFutureReservationsResponse = Operation;
 export const InsertFutureReservationsResponse =
@@ -38513,7 +38513,7 @@ export const ListFutureReservationsRequest =
       path: "projects/{project}/zones/{zone}/futureReservations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListFutureReservationsRequest>;
+  ) as unknown as Schema.Codec<ListFutureReservationsRequest>;
 
 export type ListFutureReservationsResponse = FutureReservationsListResponse;
 export const ListFutureReservationsResponse =
@@ -38568,7 +38568,7 @@ export const UpdateFutureReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateFutureReservationsRequest>;
+  ) as unknown as Schema.Codec<UpdateFutureReservationsRequest>;
 
 export type UpdateFutureReservationsResponse = Operation;
 export const UpdateFutureReservationsResponse =
@@ -38616,7 +38616,7 @@ export const DeleteFutureReservationsRequest =
       path: "projects/{project}/zones/{zone}/futureReservations/{futureReservation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteFutureReservationsRequest>;
+  ) as unknown as Schema.Codec<DeleteFutureReservationsRequest>;
 
 export type DeleteFutureReservationsResponse = Operation;
 export const DeleteFutureReservationsResponse =
@@ -38682,7 +38682,7 @@ export const AggregatedListFutureReservationsRequest =
       path: "projects/{project}/aggregated/futureReservations",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListFutureReservationsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListFutureReservationsRequest>;
 
 export type AggregatedListFutureReservationsResponse =
   FutureReservationsAggregatedListResponse;
@@ -38731,7 +38731,7 @@ export const GetFutureReservationsRequest =
       path: "projects/{project}/zones/{zone}/futureReservations/{futureReservation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetFutureReservationsRequest>;
+  ) as unknown as Schema.Codec<GetFutureReservationsRequest>;
 
 export type GetFutureReservationsResponse = FutureReservation;
 export const GetFutureReservationsResponse =
@@ -38774,7 +38774,7 @@ export const PatchImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchImagesRequest>;
+) as unknown as Schema.Codec<PatchImagesRequest>;
 
 export type PatchImagesResponse = Operation;
 export const PatchImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -38819,7 +38819,7 @@ export const TestIamPermissionsImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsImagesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsImagesRequest>;
 
 export type TestIamPermissionsImagesResponse = TestPermissionsResponse;
 export const TestIamPermissionsImagesResponse =
@@ -38869,7 +38869,7 @@ export const DeprecateImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<DeprecateImagesRequest>;
+) as unknown as Schema.Codec<DeprecateImagesRequest>;
 
 export type DeprecateImagesResponse = Operation;
 export const DeprecateImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -38915,7 +38915,7 @@ export const GetIamPolicyImagesRequest =
       path: "projects/{project}/global/images/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyImagesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyImagesRequest>;
 
 export type GetIamPolicyImagesResponse = Policy;
 export const GetIamPolicyImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -38955,7 +38955,7 @@ export const SetIamPolicyImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyImagesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyImagesRequest>;
 
 export type SetIamPolicyImagesResponse = Policy;
 export const SetIamPolicyImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -39001,7 +39001,7 @@ export const SetLabelsImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<SetLabelsImagesRequest>;
+) as unknown as Schema.Codec<SetLabelsImagesRequest>;
 
 export type SetLabelsImagesResponse = Operation;
 export const SetLabelsImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -39042,7 +39042,7 @@ export const GetFromFamilyImagesRequest =
       path: "projects/{project}/global/images/family/{family}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetFromFamilyImagesRequest>;
+  ) as unknown as Schema.Codec<GetFromFamilyImagesRequest>;
 
 export type GetFromFamilyImagesResponse = Image;
 export const GetFromFamilyImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Image;
@@ -39084,7 +39084,7 @@ export const InsertImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertImagesRequest>;
+) as unknown as Schema.Codec<InsertImagesRequest>;
 
 export type InsertImagesResponse = Operation;
 export const InsertImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -39127,7 +39127,7 @@ export const DeleteImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/images/{image}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteImagesRequest>;
+) as unknown as Schema.Codec<DeleteImagesRequest>;
 
 export type DeleteImagesResponse = Operation;
 export const DeleteImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -39181,7 +39181,7 @@ export const ListImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/images" }),
   svc,
-) as unknown as Schema.Schema<ListImagesRequest>;
+) as unknown as Schema.Codec<ListImagesRequest>;
 
 export type ListImagesResponse = ImageList;
 export const ListImagesResponse = /*@__PURE__*/ /*#__PURE__*/ ImageList;
@@ -39218,7 +39218,7 @@ export const GetImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/images/{image}" }),
   svc,
-) as unknown as Schema.Schema<GetImagesRequest>;
+) as unknown as Schema.Codec<GetImagesRequest>;
 
 export type GetImagesResponse = Image;
 export const GetImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Image;
@@ -39267,7 +39267,7 @@ export const ListNodeTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/zones/{zone}/nodeTypes" }),
   svc,
-) as unknown as Schema.Schema<ListNodeTypesRequest>;
+) as unknown as Schema.Codec<ListNodeTypesRequest>;
 
 export type ListNodeTypesResponse = NodeTypeList;
 export const ListNodeTypesResponse = /*@__PURE__*/ /*#__PURE__*/ NodeTypeList;
@@ -39310,7 +39310,7 @@ export const GetNodeTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/nodeTypes/{nodeType}",
   }),
   svc,
-) as unknown as Schema.Schema<GetNodeTypesRequest>;
+) as unknown as Schema.Codec<GetNodeTypesRequest>;
 
 export type GetNodeTypesResponse = NodeType;
 export const GetNodeTypesResponse = /*@__PURE__*/ /*#__PURE__*/ NodeType;
@@ -39367,7 +39367,7 @@ export const AggregatedListNodeTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/nodeTypes" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListNodeTypesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListNodeTypesRequest>;
 
 export type AggregatedListNodeTypesResponse = NodeTypeAggregatedList;
 export const AggregatedListNodeTypesResponse =
@@ -39416,7 +39416,7 @@ export const CancelOrganizationRolloutsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelOrganizationRolloutsRequest>;
+  ) as unknown as Schema.Codec<CancelOrganizationRolloutsRequest>;
 
 export type CancelOrganizationRolloutsResponse = Operation;
 export const CancelOrganizationRolloutsResponse =
@@ -39465,7 +39465,7 @@ export const ResumeOrganizationRolloutsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResumeOrganizationRolloutsRequest>;
+  ) as unknown as Schema.Codec<ResumeOrganizationRolloutsRequest>;
 
 export type ResumeOrganizationRolloutsResponse = Operation;
 export const ResumeOrganizationRolloutsResponse =
@@ -39518,7 +39518,7 @@ export const ListOrganizationRolloutsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "{+organization}/global/rollouts" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationRolloutsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationRolloutsRequest>;
 
 export type ListOrganizationRolloutsResponse = OrganizationRolloutsListResponse;
 export const ListOrganizationRolloutsResponse =
@@ -39566,7 +39566,7 @@ export const DeleteOrganizationRolloutsRequest =
       path: "{+organization}/global/rollouts/{rollout}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationRolloutsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationRolloutsRequest>;
 
 export type DeleteOrganizationRolloutsResponse = Operation;
 export const DeleteOrganizationRolloutsResponse =
@@ -39615,7 +39615,7 @@ export const PauseOrganizationRolloutsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PauseOrganizationRolloutsRequest>;
+  ) as unknown as Schema.Codec<PauseOrganizationRolloutsRequest>;
 
 export type PauseOrganizationRolloutsResponse = Operation;
 export const PauseOrganizationRolloutsResponse =
@@ -39657,7 +39657,7 @@ export const GetOrganizationRolloutsRequest =
       path: "{+organization}/global/rollouts/{rollout}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationRolloutsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationRolloutsRequest>;
 
 export type GetOrganizationRolloutsResponse = Rollout;
 export const GetOrganizationRolloutsResponse =
@@ -39703,7 +39703,7 @@ export const AdvanceOrganizationRolloutsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AdvanceOrganizationRolloutsRequest>;
+  ) as unknown as Schema.Codec<AdvanceOrganizationRolloutsRequest>;
 
 export type AdvanceOrganizationRolloutsResponse = Operation;
 export const AdvanceOrganizationRolloutsResponse =
@@ -39759,7 +39759,7 @@ export const ListUsableBackendBucketsRequest =
       path: "projects/{project}/global/backendBuckets/listUsable",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsableBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<ListUsableBackendBucketsRequest>;
 
 export type ListUsableBackendBucketsResponse = BackendBucketListUsable;
 export const ListUsableBackendBucketsResponse =
@@ -39809,7 +39809,7 @@ export const GetIamPolicyBackendBucketsRequest =
       path: "projects/{project}/global/backendBuckets/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyBackendBucketsRequest>;
 
 export type GetIamPolicyBackendBucketsResponse = Policy;
 export const GetIamPolicyBackendBucketsResponse =
@@ -39853,7 +39853,7 @@ export const TestIamPermissionsBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsBackendBucketsRequest>;
 
 export type TestIamPermissionsBackendBucketsResponse = TestPermissionsResponse;
 export const TestIamPermissionsBackendBucketsResponse =
@@ -39906,7 +39906,7 @@ export const ListBackendBucketsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/global/backendBuckets" }),
     svc,
-  ) as unknown as Schema.Schema<ListBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<ListBackendBucketsRequest>;
 
 export type ListBackendBucketsResponse = BackendBucketList;
 export const ListBackendBucketsResponse =
@@ -39955,7 +39955,7 @@ export const UpdateBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<UpdateBackendBucketsRequest>;
 
 export type UpdateBackendBucketsResponse = Operation;
 export const UpdateBackendBucketsResponse =
@@ -40000,7 +40000,7 @@ export const DeleteBackendBucketsRequest =
       path: "projects/{project}/global/backendBuckets/{backendBucket}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<DeleteBackendBucketsRequest>;
 
 export type DeleteBackendBucketsResponse = Operation;
 export const DeleteBackendBucketsResponse =
@@ -40049,7 +40049,7 @@ export const SetEdgeSecurityPolicyBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetEdgeSecurityPolicyBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<SetEdgeSecurityPolicyBackendBucketsRequest>;
 
 export type SetEdgeSecurityPolicyBackendBucketsResponse = Operation;
 export const SetEdgeSecurityPolicyBackendBucketsResponse =
@@ -40098,7 +40098,7 @@ export const AddSignedUrlKeyBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddSignedUrlKeyBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<AddSignedUrlKeyBackendBucketsRequest>;
 
 export type AddSignedUrlKeyBackendBucketsResponse = Operation;
 export const AddSignedUrlKeyBackendBucketsResponse =
@@ -40144,7 +40144,7 @@ export const InsertBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<InsertBackendBucketsRequest>;
 
 export type InsertBackendBucketsResponse = Operation;
 export const InsertBackendBucketsResponse =
@@ -40190,7 +40190,7 @@ export const SetIamPolicyBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyBackendBucketsRequest>;
 
 export type SetIamPolicyBackendBucketsResponse = Policy;
 export const SetIamPolicyBackendBucketsResponse =
@@ -40239,7 +40239,7 @@ export const DeleteSignedUrlKeyBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSignedUrlKeyBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<DeleteSignedUrlKeyBackendBucketsRequest>;
 
 export type DeleteSignedUrlKeyBackendBucketsResponse = Operation;
 export const DeleteSignedUrlKeyBackendBucketsResponse =
@@ -40288,7 +40288,7 @@ export const PatchBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<PatchBackendBucketsRequest>;
 
 export type PatchBackendBucketsResponse = Operation;
 export const PatchBackendBucketsResponse =
@@ -40354,7 +40354,7 @@ export const AggregatedListBackendBucketsRequest =
       path: "projects/{project}/aggregated/backendBuckets",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListBackendBucketsRequest>;
 
 export type AggregatedListBackendBucketsResponse = BackendBucketAggregatedList;
 export const AggregatedListBackendBucketsResponse =
@@ -40399,7 +40399,7 @@ export const GetBackendBucketsRequest =
       path: "projects/{project}/global/backendBuckets/{backendBucket}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<GetBackendBucketsRequest>;
 
 export type GetBackendBucketsResponse = BackendBucket;
 export const GetBackendBucketsResponse =
@@ -40453,7 +40453,7 @@ export const ListRegionCompositeHealthChecksRequest =
       path: "projects/{project}/regions/{region}/compositeHealthChecks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionCompositeHealthChecksRequest>;
+  ) as unknown as Schema.Codec<ListRegionCompositeHealthChecksRequest>;
 
 export type ListRegionCompositeHealthChecksResponse = CompositeHealthCheckList;
 export const ListRegionCompositeHealthChecksResponse =
@@ -40506,7 +40506,7 @@ export const DeleteRegionCompositeHealthChecksRequest =
       path: "projects/{project}/regions/{region}/compositeHealthChecks/{compositeHealthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionCompositeHealthChecksRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionCompositeHealthChecksRequest>;
 
 export type DeleteRegionCompositeHealthChecksResponse = Operation;
 export const DeleteRegionCompositeHealthChecksResponse =
@@ -40553,7 +40553,7 @@ export const GetHealthRegionCompositeHealthChecksRequest =
       path: "projects/{project}/regions/{region}/compositeHealthChecks/{compositeHealthCheck}/getHealth",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetHealthRegionCompositeHealthChecksRequest>;
+  ) as unknown as Schema.Codec<GetHealthRegionCompositeHealthChecksRequest>;
 
 export type GetHealthRegionCompositeHealthChecksResponse =
   CompositeHealthCheckHealth;
@@ -40618,7 +40618,7 @@ export const AggregatedListRegionCompositeHealthChecksRequest =
       path: "projects/{project}/aggregated/compositeHealthChecks",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListRegionCompositeHealthChecksRequest>;
+  ) as unknown as Schema.Codec<AggregatedListRegionCompositeHealthChecksRequest>;
 
 export type AggregatedListRegionCompositeHealthChecksResponse =
   CompositeHealthCheckAggregatedList;
@@ -40669,7 +40669,7 @@ export const GetRegionCompositeHealthChecksRequest =
       path: "projects/{project}/regions/{region}/compositeHealthChecks/{compositeHealthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionCompositeHealthChecksRequest>;
+  ) as unknown as Schema.Codec<GetRegionCompositeHealthChecksRequest>;
 
 export type GetRegionCompositeHealthChecksResponse = CompositeHealthCheck;
 export const GetRegionCompositeHealthChecksResponse =
@@ -40716,7 +40716,7 @@ export const InsertRegionCompositeHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionCompositeHealthChecksRequest>;
+  ) as unknown as Schema.Codec<InsertRegionCompositeHealthChecksRequest>;
 
 export type InsertRegionCompositeHealthChecksResponse = Operation;
 export const InsertRegionCompositeHealthChecksResponse =
@@ -40770,7 +40770,7 @@ export const PatchRegionCompositeHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionCompositeHealthChecksRequest>;
+  ) as unknown as Schema.Codec<PatchRegionCompositeHealthChecksRequest>;
 
 export type PatchRegionCompositeHealthChecksResponse = Operation;
 export const PatchRegionCompositeHealthChecksResponse =
@@ -40819,7 +40819,7 @@ export const TestIamPermissionsRegionCompositeHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionCompositeHealthChecksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionCompositeHealthChecksRequest>;
 
 export type TestIamPermissionsRegionCompositeHealthChecksResponse =
   TestPermissionsResponse;
@@ -40886,7 +40886,7 @@ export const AggregatedListRegionCommitmentsRequest =
       path: "projects/{project}/aggregated/commitments",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListRegionCommitmentsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListRegionCommitmentsRequest>;
 
 export type AggregatedListRegionCommitmentsResponse = CommitmentAggregatedList;
 export const AggregatedListRegionCommitmentsResponse =
@@ -40934,7 +40934,7 @@ export const GetRegionCommitmentsRequest =
       path: "projects/{project}/regions/{region}/commitments/{commitment}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionCommitmentsRequest>;
+  ) as unknown as Schema.Codec<GetRegionCommitmentsRequest>;
 
 export type GetRegionCommitmentsResponse = Commitment;
 export const GetRegionCommitmentsResponse =
@@ -40988,7 +40988,7 @@ export const ListRegionCommitmentsRequest =
       path: "projects/{project}/regions/{region}/commitments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionCommitmentsRequest>;
+  ) as unknown as Schema.Codec<ListRegionCommitmentsRequest>;
 
 export type ListRegionCommitmentsResponse = CommitmentList;
 export const ListRegionCommitmentsResponse =
@@ -41047,7 +41047,7 @@ export const UpdateRegionCommitmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRegionCommitmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateRegionCommitmentsRequest>;
 
 export type UpdateRegionCommitmentsResponse = Operation;
 export const UpdateRegionCommitmentsResponse =
@@ -41096,7 +41096,7 @@ export const InsertRegionCommitmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionCommitmentsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionCommitmentsRequest>;
 
 export type InsertRegionCommitmentsResponse = Operation;
 export const InsertRegionCommitmentsResponse =
@@ -41150,7 +41150,7 @@ export const UpdateReservationsRegionCommitmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateReservationsRegionCommitmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateReservationsRegionCommitmentsRequest>;
 
 export type UpdateReservationsRegionCommitmentsResponse = Operation;
 export const UpdateReservationsRegionCommitmentsResponse =
@@ -41199,7 +41199,7 @@ export const TestIamPermissionsRegionCommitmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionCommitmentsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionCommitmentsRequest>;
 
 export type TestIamPermissionsRegionCommitmentsResponse =
   TestPermissionsResponse;
@@ -41259,7 +41259,7 @@ export const ListRegionInstanceGroupsRequest =
       path: "projects/{project}/regions/{region}/instanceGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<ListRegionInstanceGroupsRequest>;
 
 export type ListRegionInstanceGroupsResponse = RegionInstanceGroupList;
 export const ListRegionInstanceGroupsResponse =
@@ -41307,7 +41307,7 @@ export const GetRegionInstanceGroupsRequest =
       path: "projects/{project}/regions/{region}/instanceGroups/{instanceGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<GetRegionInstanceGroupsRequest>;
 
 export type GetRegionInstanceGroupsResponse = InstanceGroup;
 export const GetRegionInstanceGroupsResponse =
@@ -41370,7 +41370,7 @@ export const ListInstancesRegionInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInstancesRegionInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<ListInstancesRegionInstanceGroupsRequest>;
 
 export type ListInstancesRegionInstanceGroupsResponse =
   RegionInstanceGroupsListInstances;
@@ -41430,7 +41430,7 @@ export const SetNamedPortsRegionInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetNamedPortsRegionInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<SetNamedPortsRegionInstanceGroupsRequest>;
 
 export type SetNamedPortsRegionInstanceGroupsResponse = Operation;
 export const SetNamedPortsRegionInstanceGroupsResponse =
@@ -41479,7 +41479,7 @@ export const TestIamPermissionsRegionInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionInstanceGroupsRequest>;
 
 export type TestIamPermissionsRegionInstanceGroupsResponse =
   TestPermissionsResponse;
@@ -41524,7 +41524,7 @@ export const GetInterconnectRemoteLocationsRequest =
       path: "projects/{project}/global/interconnectRemoteLocations/{interconnectRemoteLocation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInterconnectRemoteLocationsRequest>;
+  ) as unknown as Schema.Codec<GetInterconnectRemoteLocationsRequest>;
 
 export type GetInterconnectRemoteLocationsResponse = InterconnectRemoteLocation;
 export const GetInterconnectRemoteLocationsResponse =
@@ -41578,7 +41578,7 @@ export const ListInterconnectRemoteLocationsRequest =
       path: "projects/{project}/global/interconnectRemoteLocations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInterconnectRemoteLocationsRequest>;
+  ) as unknown as Schema.Codec<ListInterconnectRemoteLocationsRequest>;
 
 export type ListInterconnectRemoteLocationsResponse =
   InterconnectRemoteLocationList;
@@ -41634,7 +41634,7 @@ export const SetUrlMapRegionTargetHttpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetUrlMapRegionTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<SetUrlMapRegionTargetHttpProxiesRequest>;
 
 export type SetUrlMapRegionTargetHttpProxiesResponse = Operation;
 export const SetUrlMapRegionTargetHttpProxiesResponse =
@@ -41683,7 +41683,7 @@ export const InsertRegionTargetHttpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionTargetHttpProxiesRequest>;
 
 export type InsertRegionTargetHttpProxiesResponse = Operation;
 export const InsertRegionTargetHttpProxiesResponse =
@@ -41732,7 +41732,7 @@ export const TestIamPermissionsRegionTargetHttpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionTargetHttpProxiesRequest>;
 
 export type TestIamPermissionsRegionTargetHttpProxiesResponse =
   TestPermissionsResponse;
@@ -41792,7 +41792,7 @@ export const ListRegionTargetHttpProxiesRequest =
       path: "projects/{project}/regions/{region}/targetHttpProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<ListRegionTargetHttpProxiesRequest>;
 
 export type ListRegionTargetHttpProxiesResponse = TargetHttpProxyList;
 export const ListRegionTargetHttpProxiesResponse =
@@ -41843,7 +41843,7 @@ export const DeleteRegionTargetHttpProxiesRequest =
       path: "projects/{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionTargetHttpProxiesRequest>;
 
 export type DeleteRegionTargetHttpProxiesResponse = Operation;
 export const DeleteRegionTargetHttpProxiesResponse =
@@ -41888,7 +41888,7 @@ export const GetRegionTargetHttpProxiesRequest =
       path: "projects/{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<GetRegionTargetHttpProxiesRequest>;
 
 export type GetRegionTargetHttpProxiesResponse = TargetHttpProxy;
 export const GetRegionTargetHttpProxiesResponse =
@@ -41945,7 +41945,7 @@ export const ListRegionDiskTypesRequest =
       path: "projects/{project}/regions/{region}/diskTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionDiskTypesRequest>;
+  ) as unknown as Schema.Codec<ListRegionDiskTypesRequest>;
 
 export type ListRegionDiskTypesResponse = RegionDiskTypeList;
 export const ListRegionDiskTypesResponse =
@@ -41990,7 +41990,7 @@ export const GetRegionDiskTypesRequest =
       path: "projects/{project}/regions/{region}/diskTypes/{diskType}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionDiskTypesRequest>;
+  ) as unknown as Schema.Codec<GetRegionDiskTypesRequest>;
 
 export type GetRegionDiskTypesResponse = DiskType;
 export const GetRegionDiskTypesResponse = /*@__PURE__*/ /*#__PURE__*/ DiskType;
@@ -42033,7 +42033,7 @@ export const InsertStoragePoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<InsertStoragePoolsRequest>;
 
 export type InsertStoragePoolsResponse = Operation;
 export const InsertStoragePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -42091,7 +42091,7 @@ export const ListStoragePoolsRequest =
       path: "projects/{project}/zones/{zone}/storagePools",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<ListStoragePoolsRequest>;
 
 export type ListStoragePoolsResponse = StoragePoolList;
 export const ListStoragePoolsResponse =
@@ -42146,7 +42146,7 @@ export const UpdateStoragePoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<UpdateStoragePoolsRequest>;
 
 export type UpdateStoragePoolsResponse = Operation;
 export const UpdateStoragePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -42193,7 +42193,7 @@ export const DeleteStoragePoolsRequest =
       path: "projects/{project}/zones/{zone}/storagePools/{storagePool}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<DeleteStoragePoolsRequest>;
 
 export type DeleteStoragePoolsResponse = Operation;
 export const DeleteStoragePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -42258,7 +42258,7 @@ export const AggregatedListStoragePoolsRequest =
       path: "projects/{project}/aggregated/storagePools",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListStoragePoolsRequest>;
 
 export type AggregatedListStoragePoolsResponse = StoragePoolAggregatedList;
 export const AggregatedListStoragePoolsResponse =
@@ -42307,7 +42307,7 @@ export const GetStoragePoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/zones/{zone}/storagePools/{storagePool}",
   }),
   svc,
-) as unknown as Schema.Schema<GetStoragePoolsRequest>;
+) as unknown as Schema.Codec<GetStoragePoolsRequest>;
 
 export type GetStoragePoolsResponse = StoragePool;
 export const GetStoragePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ StoragePool;
@@ -42350,7 +42350,7 @@ export const TestIamPermissionsStoragePoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsStoragePoolsRequest>;
 
 export type TestIamPermissionsStoragePoolsResponse = TestPermissionsResponse;
 export const TestIamPermissionsStoragePoolsResponse =
@@ -42412,7 +42412,7 @@ export const ListDisksStoragePoolsRequest =
       path: "projects/{project}/zones/{zone}/storagePools/{storagePool}/listDisks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListDisksStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<ListDisksStoragePoolsRequest>;
 
 export type ListDisksStoragePoolsResponse = StoragePoolListDisks;
 export const ListDisksStoragePoolsResponse =
@@ -42462,7 +42462,7 @@ export const GetIamPolicyStoragePoolsRequest =
       path: "projects/{project}/zones/{zone}/storagePools/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyStoragePoolsRequest>;
 
 export type GetIamPolicyStoragePoolsResponse = Policy;
 export const GetIamPolicyStoragePoolsResponse =
@@ -42509,7 +42509,7 @@ export const SetIamPolicyStoragePoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyStoragePoolsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyStoragePoolsRequest>;
 
 export type SetIamPolicyStoragePoolsResponse = Policy;
 export const SetIamPolicyStoragePoolsResponse =
@@ -42561,7 +42561,7 @@ export const PatchRegionUrlMapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<PatchRegionUrlMapsRequest>;
 
 export type PatchRegionUrlMapsResponse = Operation;
 export const PatchRegionUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -42609,7 +42609,7 @@ export const TestIamPermissionsRegionUrlMapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionUrlMapsRequest>;
 
 export type TestIamPermissionsRegionUrlMapsResponse = TestPermissionsResponse;
 export const TestIamPermissionsRegionUrlMapsResponse =
@@ -42668,7 +42668,7 @@ export const ListRegionUrlMapsRequest =
       path: "projects/{project}/regions/{region}/urlMaps",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<ListRegionUrlMapsRequest>;
 
 export type ListRegionUrlMapsResponse = UrlMapList;
 export const ListRegionUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ UrlMapList;
@@ -42719,7 +42719,7 @@ export const UpdateRegionUrlMapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<UpdateRegionUrlMapsRequest>;
 
 export type UpdateRegionUrlMapsResponse = Operation;
 export const UpdateRegionUrlMapsResponse =
@@ -42767,7 +42767,7 @@ export const DeleteRegionUrlMapsRequest =
       path: "projects/{project}/regions/{region}/urlMaps/{urlMap}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionUrlMapsRequest>;
 
 export type DeleteRegionUrlMapsResponse = Operation;
 export const DeleteRegionUrlMapsResponse =
@@ -42812,7 +42812,7 @@ export const GetRegionUrlMapsRequest =
       path: "projects/{project}/regions/{region}/urlMaps/{urlMap}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<GetRegionUrlMapsRequest>;
 
 export type GetRegionUrlMapsResponse = UrlMap;
 export const GetRegionUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ UrlMap;
@@ -42855,7 +42855,7 @@ export const InsertRegionUrlMapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionUrlMapsRequest>;
 
 export type InsertRegionUrlMapsResponse = Operation;
 export const InsertRegionUrlMapsResponse =
@@ -42904,7 +42904,7 @@ export const ValidateRegionUrlMapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ValidateRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<ValidateRegionUrlMapsRequest>;
 
 export type ValidateRegionUrlMapsResponse = UrlMapsValidateResponse;
 export const ValidateRegionUrlMapsResponse =
@@ -42956,7 +42956,7 @@ export const InvalidateCacheRegionUrlMapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InvalidateCacheRegionUrlMapsRequest>;
+  ) as unknown as Schema.Codec<InvalidateCacheRegionUrlMapsRequest>;
 
 export type InvalidateCacheRegionUrlMapsResponse = Operation;
 export const InvalidateCacheRegionUrlMapsResponse =
@@ -43008,7 +43008,7 @@ export const ListRolloutsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/rollouts" }),
   svc,
-) as unknown as Schema.Schema<ListRolloutsRequest>;
+) as unknown as Schema.Codec<ListRolloutsRequest>;
 
 export type ListRolloutsResponse = RolloutsListResponse;
 export const ListRolloutsResponse =
@@ -43052,7 +43052,7 @@ export const DeleteRolloutsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/rollouts/{rollout}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteRolloutsRequest>;
+) as unknown as Schema.Codec<DeleteRolloutsRequest>;
 
 export type DeleteRolloutsResponse = Operation;
 export const DeleteRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -43099,7 +43099,7 @@ export const PauseRolloutsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PauseRolloutsRequest>;
+) as unknown as Schema.Codec<PauseRolloutsRequest>;
 
 export type PauseRolloutsResponse = Operation;
 export const PauseRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -43139,7 +43139,7 @@ export const GetRolloutsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/rollouts/{rollout}",
   }),
   svc,
-) as unknown as Schema.Schema<GetRolloutsRequest>;
+) as unknown as Schema.Codec<GetRolloutsRequest>;
 
 export type GetRolloutsResponse = Rollout;
 export const GetRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Rollout;
@@ -43185,7 +43185,7 @@ export const AdvanceRolloutsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<AdvanceRolloutsRequest>;
+) as unknown as Schema.Codec<AdvanceRolloutsRequest>;
 
 export type AdvanceRolloutsResponse = Operation;
 export const AdvanceRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -43232,7 +43232,7 @@ export const CancelRolloutsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CancelRolloutsRequest>;
+) as unknown as Schema.Codec<CancelRolloutsRequest>;
 
 export type CancelRolloutsResponse = Operation;
 export const CancelRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -43279,7 +43279,7 @@ export const ResumeRolloutsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ResumeRolloutsRequest>;
+) as unknown as Schema.Codec<ResumeRolloutsRequest>;
 
 export type ResumeRolloutsResponse = Operation;
 export const ResumeRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -43344,7 +43344,7 @@ export const AggregatedListRegionNetworkPoliciesRequest =
       path: "projects/{project}/aggregated/networkPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListRegionNetworkPoliciesRequest>;
 
 export type AggregatedListRegionNetworkPoliciesResponse =
   NetworkPolicyAggregatedList;
@@ -43393,7 +43393,7 @@ export const GetRegionNetworkPoliciesRequest =
       path: "projects/{project}/regions/{region}/networkPolicies/{networkPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRegionNetworkPoliciesRequest>;
 
 export type GetRegionNetworkPoliciesResponse = NetworkPolicy;
 export const GetRegionNetworkPoliciesResponse =
@@ -43439,7 +43439,7 @@ export const GetTrafficClassificationRuleRegionNetworkPoliciesRequest =
       path: "projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/getTrafficClassificationRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTrafficClassificationRuleRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetTrafficClassificationRuleRegionNetworkPoliciesRequest>;
 
 export type GetTrafficClassificationRuleRegionNetworkPoliciesResponse =
   NetworkPolicyTrafficClassificationRule;
@@ -43490,7 +43490,7 @@ export const AddAssociationRegionNetworkPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddAssociationRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddAssociationRegionNetworkPoliciesRequest>;
 
 export type AddAssociationRegionNetworkPoliciesResponse = Operation;
 export const AddAssociationRegionNetworkPoliciesResponse =
@@ -43544,7 +43544,7 @@ export const AddTrafficClassificationRuleRegionNetworkPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddTrafficClassificationRuleRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddTrafficClassificationRuleRegionNetworkPoliciesRequest>;
 
 export type AddTrafficClassificationRuleRegionNetworkPoliciesResponse =
   Operation;
@@ -43597,7 +43597,7 @@ export const PatchRegionNetworkPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionNetworkPoliciesRequest>;
 
 export type PatchRegionNetworkPoliciesResponse = Operation;
 export const PatchRegionNetworkPoliciesResponse =
@@ -43656,7 +43656,7 @@ export const ListRegionNetworkPoliciesRequest =
       path: "projects/{project}/regions/{region}/networkPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListRegionNetworkPoliciesRequest>;
 
 export type ListRegionNetworkPoliciesResponse = NetworkPolicyList;
 export const ListRegionNetworkPoliciesResponse =
@@ -43707,7 +43707,7 @@ export const GetAssociationRegionNetworkPoliciesRequest =
       path: "projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/getAssociation",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAssociationRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetAssociationRegionNetworkPoliciesRequest>;
 
 export type GetAssociationRegionNetworkPoliciesResponse =
   NetworkPolicyAssociation;
@@ -43754,7 +43754,7 @@ export const DeleteRegionNetworkPoliciesRequest =
       path: "projects/{project}/regions/{region}/networkPolicies/{networkPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionNetworkPoliciesRequest>;
 
 export type DeleteRegionNetworkPoliciesResponse = Operation;
 export const DeleteRegionNetworkPoliciesResponse =
@@ -43806,7 +43806,7 @@ export const RemoveAssociationRegionNetworkPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveAssociationRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveAssociationRegionNetworkPoliciesRequest>;
 
 export type RemoveAssociationRegionNetworkPoliciesResponse = Operation;
 export const RemoveAssociationRegionNetworkPoliciesResponse =
@@ -43858,7 +43858,7 @@ export const RemoveTrafficClassificationRuleRegionNetworkPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveTrafficClassificationRuleRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveTrafficClassificationRuleRegionNetworkPoliciesRequest>;
 
 export type RemoveTrafficClassificationRuleRegionNetworkPoliciesResponse =
   Operation;
@@ -43908,7 +43908,7 @@ export const InsertRegionNetworkPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionNetworkPoliciesRequest>;
 
 export type InsertRegionNetworkPoliciesResponse = Operation;
 export const InsertRegionNetworkPoliciesResponse =
@@ -43965,7 +43965,7 @@ export const PatchTrafficClassificationRuleRegionNetworkPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchTrafficClassificationRuleRegionNetworkPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchTrafficClassificationRuleRegionNetworkPoliciesRequest>;
 
 export type PatchTrafficClassificationRuleRegionNetworkPoliciesResponse =
   Operation;
@@ -44020,7 +44020,7 @@ export const InsertRegionInstantSnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionInstantSnapshotGroupsRequest>;
 
 export type InsertRegionInstantSnapshotGroupsResponse = Operation;
 export const InsertRegionInstantSnapshotGroupsResponse =
@@ -44069,7 +44069,7 @@ export const TestIamPermissionsRegionInstantSnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionInstantSnapshotGroupsRequest>;
 
 export type TestIamPermissionsRegionInstantSnapshotGroupsResponse =
   TestPermissionsResponse;
@@ -44120,7 +44120,7 @@ export const DeleteRegionInstantSnapshotGroupsRequest =
       path: "projects/{project}/regions/{region}/instantSnapshotGroups/{instantSnapshotGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionInstantSnapshotGroupsRequest>;
 
 export type DeleteRegionInstantSnapshotGroupsResponse = Operation;
 export const DeleteRegionInstantSnapshotGroupsResponse =
@@ -44179,7 +44179,7 @@ export const ListRegionInstantSnapshotGroupsRequest =
       path: "projects/{project}/regions/{region}/instantSnapshotGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<ListRegionInstantSnapshotGroupsRequest>;
 
 export type ListRegionInstantSnapshotGroupsResponse = ListInstantSnapshotGroups;
 export const ListRegionInstantSnapshotGroupsResponse =
@@ -44229,7 +44229,7 @@ export const GetRegionInstantSnapshotGroupsRequest =
       path: "projects/{project}/regions/{region}/instantSnapshotGroups/{instantSnapshotGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<GetRegionInstantSnapshotGroupsRequest>;
 
 export type GetRegionInstantSnapshotGroupsResponse = InstantSnapshotGroup;
 export const GetRegionInstantSnapshotGroupsResponse =
@@ -44277,7 +44277,7 @@ export const GetIamPolicyRegionInstantSnapshotGroupsRequest =
       path: "projects/{project}/regions/{region}/instantSnapshotGroups/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRegionInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRegionInstantSnapshotGroupsRequest>;
 
 export type GetIamPolicyRegionInstantSnapshotGroupsResponse = Policy;
 export const GetIamPolicyRegionInstantSnapshotGroupsResponse =
@@ -44324,7 +44324,7 @@ export const SetIamPolicyRegionInstantSnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyRegionInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyRegionInstantSnapshotGroupsRequest>;
 
 export type SetIamPolicyRegionInstantSnapshotGroupsResponse = Policy;
 export const SetIamPolicyRegionInstantSnapshotGroupsResponse =
@@ -44366,7 +44366,7 @@ export const GetPreviewFeaturesRequest =
       path: "projects/{project}/global/previewFeatures/{previewFeature}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPreviewFeaturesRequest>;
+  ) as unknown as Schema.Codec<GetPreviewFeaturesRequest>;
 
 export type GetPreviewFeaturesResponse = PreviewFeature;
 export const GetPreviewFeaturesResponse =
@@ -44417,7 +44417,7 @@ export const ListPreviewFeaturesRequest =
       path: "projects/{project}/global/previewFeatures",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPreviewFeaturesRequest>;
+  ) as unknown as Schema.Codec<ListPreviewFeaturesRequest>;
 
 export type ListPreviewFeaturesResponse = PreviewFeatureList;
 export const ListPreviewFeaturesResponse =
@@ -44466,7 +44466,7 @@ export const UpdatePreviewFeaturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePreviewFeaturesRequest>;
+  ) as unknown as Schema.Codec<UpdatePreviewFeaturesRequest>;
 
 export type UpdatePreviewFeaturesResponse = Operation;
 export const UpdatePreviewFeaturesResponse =
@@ -44515,7 +44515,7 @@ export const InsertRegionHealthSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionHealthSourcesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionHealthSourcesRequest>;
 
 export type InsertRegionHealthSourcesResponse = Operation;
 export const InsertRegionHealthSourcesResponse =
@@ -44567,7 +44567,7 @@ export const PatchRegionHealthSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionHealthSourcesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionHealthSourcesRequest>;
 
 export type PatchRegionHealthSourcesResponse = Operation;
 export const PatchRegionHealthSourcesResponse =
@@ -44616,7 +44616,7 @@ export const TestIamPermissionsRegionHealthSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionHealthSourcesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionHealthSourcesRequest>;
 
 export type TestIamPermissionsRegionHealthSourcesResponse =
   TestPermissionsResponse;
@@ -44683,7 +44683,7 @@ export const AggregatedListRegionHealthSourcesRequest =
       path: "projects/{project}/aggregated/healthSources",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListRegionHealthSourcesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListRegionHealthSourcesRequest>;
 
 export type AggregatedListRegionHealthSourcesResponse =
   HealthSourceAggregatedList;
@@ -44732,7 +44732,7 @@ export const GetRegionHealthSourcesRequest =
       path: "projects/{project}/regions/{region}/healthSources/{healthSource}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionHealthSourcesRequest>;
+  ) as unknown as Schema.Codec<GetRegionHealthSourcesRequest>;
 
 export type GetRegionHealthSourcesResponse = HealthSource;
 export const GetRegionHealthSourcesResponse =
@@ -44786,7 +44786,7 @@ export const ListRegionHealthSourcesRequest =
       path: "projects/{project}/regions/{region}/healthSources",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionHealthSourcesRequest>;
+  ) as unknown as Schema.Codec<ListRegionHealthSourcesRequest>;
 
 export type ListRegionHealthSourcesResponse = HealthSourceList;
 export const ListRegionHealthSourcesResponse =
@@ -44834,7 +44834,7 @@ export const DeleteRegionHealthSourcesRequest =
       path: "projects/{project}/regions/{region}/healthSources/{healthSource}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionHealthSourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionHealthSourcesRequest>;
 
 export type DeleteRegionHealthSourcesResponse = Operation;
 export const DeleteRegionHealthSourcesResponse =
@@ -44879,7 +44879,7 @@ export const GetHealthRegionHealthSourcesRequest =
       path: "projects/{project}/regions/{region}/healthSources/{healthSource}/getHealth",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetHealthRegionHealthSourcesRequest>;
+  ) as unknown as Schema.Codec<GetHealthRegionHealthSourcesRequest>;
 
 export type GetHealthRegionHealthSourcesResponse = HealthSourceHealth;
 export const GetHealthRegionHealthSourcesResponse =
@@ -44929,7 +44929,7 @@ export const UpdateNamedSetRoutersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateNamedSetRoutersRequest>;
+  ) as unknown as Schema.Codec<UpdateNamedSetRoutersRequest>;
 
 export type UpdateNamedSetRoutersResponse = Operation;
 export const UpdateNamedSetRoutersResponse =
@@ -44991,7 +44991,7 @@ export const ListRoutePoliciesRoutersRequest =
       path: "projects/{project}/regions/{region}/routers/{router}/listRoutePolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRoutePoliciesRoutersRequest>;
+  ) as unknown as Schema.Codec<ListRoutePoliciesRoutersRequest>;
 
 export type ListRoutePoliciesRoutersResponse = RoutersListRoutePolicies;
 export const ListRoutePoliciesRoutersResponse =
@@ -45056,7 +45056,7 @@ export const AggregatedListRoutersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/routers" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListRoutersRequest>;
+  ) as unknown as Schema.Codec<AggregatedListRoutersRequest>;
 
 export type AggregatedListRoutersResponse = RouterAggregatedList;
 export const AggregatedListRoutersResponse =
@@ -45101,7 +45101,7 @@ export const GetRouterStatusRoutersRequest =
       path: "projects/{project}/regions/{region}/routers/{router}/getRouterStatus",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRouterStatusRoutersRequest>;
+  ) as unknown as Schema.Codec<GetRouterStatusRoutersRequest>;
 
 export type GetRouterStatusRoutersResponse = RouterStatusResponse;
 export const GetRouterStatusRoutersResponse =
@@ -45140,7 +45140,7 @@ export const GetRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/routers/{router}",
   }),
   svc,
-) as unknown as Schema.Schema<GetRoutersRequest>;
+) as unknown as Schema.Codec<GetRoutersRequest>;
 
 export type GetRoutersResponse = Router;
 export const GetRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Router;
@@ -45186,7 +45186,7 @@ export const PatchNamedSetRoutersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchNamedSetRoutersRequest>;
+  ) as unknown as Schema.Codec<PatchNamedSetRoutersRequest>;
 
 export type PatchNamedSetRoutersResponse = Operation;
 export const PatchNamedSetRoutersResponse =
@@ -45237,7 +45237,7 @@ export const PatchRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchRoutersRequest>;
+) as unknown as Schema.Codec<PatchRoutersRequest>;
 
 export type PatchRoutersResponse = Operation;
 export const PatchRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -45284,7 +45284,7 @@ export const GetNatIpInfoRoutersRequest =
       path: "projects/{project}/regions/{region}/routers/{router}/getNatIpInfo",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNatIpInfoRoutersRequest>;
+  ) as unknown as Schema.Codec<GetNatIpInfoRoutersRequest>;
 
 export type GetNatIpInfoRoutersResponse = NatIpInfoResponse;
 export const GetNatIpInfoRoutersResponse =
@@ -45327,7 +45327,7 @@ export const PreviewRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PreviewRoutersRequest>;
+) as unknown as Schema.Codec<PreviewRoutersRequest>;
 
 export type PreviewRoutersResponse = RoutersPreviewResponse;
 export const PreviewRoutersResponse =
@@ -45379,7 +45379,7 @@ export const UpdateRoutePolicyRoutersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRoutePolicyRoutersRequest>;
+  ) as unknown as Schema.Codec<UpdateRoutePolicyRoutersRequest>;
 
 export type UpdateRoutePolicyRoutersResponse = Operation;
 export const UpdateRoutePolicyRoutersResponse =
@@ -45441,7 +45441,7 @@ export const ListNamedSetsRoutersRequest =
       path: "projects/{project}/regions/{region}/routers/{router}/listNamedSets",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNamedSetsRoutersRequest>;
+  ) as unknown as Schema.Codec<ListNamedSetsRoutersRequest>;
 
 export type ListNamedSetsRoutersResponse = RoutersListNamedSets;
 export const ListNamedSetsRoutersResponse =
@@ -45505,7 +45505,7 @@ export const GetNatMappingInfoRoutersRequest =
       path: "projects/{project}/regions/{region}/routers/{router}/getNatMappingInfo",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNatMappingInfoRoutersRequest>;
+  ) as unknown as Schema.Codec<GetNatMappingInfoRoutersRequest>;
 
 export type GetNatMappingInfoRoutersResponse = VmEndpointNatMappingsList;
 export const GetNatMappingInfoRoutersResponse =
@@ -45555,7 +45555,7 @@ export const InsertRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertRoutersRequest>;
+) as unknown as Schema.Codec<InsertRoutersRequest>;
 
 export type InsertRoutersResponse = Operation;
 export const InsertRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -45605,7 +45605,7 @@ export const UpdateRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateRoutersRequest>;
+) as unknown as Schema.Codec<UpdateRoutersRequest>;
 
 export type UpdateRoutersResponse = Operation;
 export const UpdateRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -45662,7 +45662,7 @@ export const ListRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/routers",
   }),
   svc,
-) as unknown as Schema.Schema<ListRoutersRequest>;
+) as unknown as Schema.Codec<ListRoutersRequest>;
 
 export type ListRoutersResponse = RouterList;
 export const ListRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ RouterList;
@@ -45708,7 +45708,7 @@ export const DeleteRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/routers/{router}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteRoutersRequest>;
+) as unknown as Schema.Codec<DeleteRoutersRequest>;
 
 export type DeleteRoutersResponse = Operation;
 export const DeleteRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -45755,7 +45755,7 @@ export const GetNamedSetRoutersRequest =
       path: "projects/{project}/regions/{region}/routers/{router}/getNamedSet",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNamedSetRoutersRequest>;
+  ) as unknown as Schema.Codec<GetNamedSetRoutersRequest>;
 
 export type GetNamedSetRoutersResponse = RoutersGetNamedSetResponse;
 export const GetNamedSetRoutersResponse =
@@ -45802,7 +45802,7 @@ export const DeleteNamedSetRoutersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNamedSetRoutersRequest>;
+  ) as unknown as Schema.Codec<DeleteNamedSetRoutersRequest>;
 
 export type DeleteNamedSetRoutersResponse = Operation;
 export const DeleteNamedSetRoutersResponse =
@@ -45889,7 +45889,7 @@ export const ListBgpRoutesRoutersRequest =
       path: "projects/{project}/regions/{region}/routers/{router}/listBgpRoutes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBgpRoutesRoutersRequest>;
+  ) as unknown as Schema.Codec<ListBgpRoutesRoutersRequest>;
 
 export type ListBgpRoutesRoutersResponse = RoutersListBgpRoutes;
 export const ListBgpRoutesRoutersResponse =
@@ -45940,7 +45940,7 @@ export const PatchRoutePolicyRoutersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRoutePolicyRoutersRequest>;
+  ) as unknown as Schema.Codec<PatchRoutePolicyRoutersRequest>;
 
 export type PatchRoutePolicyRoutersResponse = Operation;
 export const PatchRoutePolicyRoutersResponse =
@@ -45989,7 +45989,7 @@ export const TestIamPermissionsRoutersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRoutersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRoutersRequest>;
 
 export type TestIamPermissionsRoutersResponse = TestPermissionsResponse;
 export const TestIamPermissionsRoutersResponse =
@@ -46041,7 +46041,7 @@ export const DeleteRoutePolicyRoutersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRoutePolicyRoutersRequest>;
+  ) as unknown as Schema.Codec<DeleteRoutePolicyRoutersRequest>;
 
 export type DeleteRoutePolicyRoutersResponse = Operation;
 export const DeleteRoutePolicyRoutersResponse =
@@ -46089,7 +46089,7 @@ export const GetRoutePolicyRoutersRequest =
       path: "projects/{project}/regions/{region}/routers/{router}/getRoutePolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRoutePolicyRoutersRequest>;
+  ) as unknown as Schema.Codec<GetRoutePolicyRoutersRequest>;
 
 export type GetRoutePolicyRoutersResponse = RoutersGetRoutePolicyResponse;
 export const GetRoutePolicyRoutersResponse =
@@ -46132,7 +46132,7 @@ export const PatchUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchUrlMapsRequest>;
+) as unknown as Schema.Codec<PatchUrlMapsRequest>;
 
 export type PatchUrlMapsResponse = Operation;
 export const PatchUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -46177,7 +46177,7 @@ export const TestIamPermissionsUrlMapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsUrlMapsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsUrlMapsRequest>;
 
 export type TestIamPermissionsUrlMapsResponse = TestPermissionsResponse;
 export const TestIamPermissionsUrlMapsResponse =
@@ -46222,7 +46222,7 @@ export const InsertUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertUrlMapsRequest>;
+) as unknown as Schema.Codec<InsertUrlMapsRequest>;
 
 export type InsertUrlMapsResponse = Operation;
 export const InsertUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -46268,7 +46268,7 @@ export const ValidateUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ValidateUrlMapsRequest>;
+) as unknown as Schema.Codec<ValidateUrlMapsRequest>;
 
 export type ValidateUrlMapsResponse = UrlMapsValidateResponse;
 export const ValidateUrlMapsResponse =
@@ -46317,7 +46317,7 @@ export const InvalidateCacheUrlMapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InvalidateCacheUrlMapsRequest>;
+  ) as unknown as Schema.Codec<InvalidateCacheUrlMapsRequest>;
 
 export type InvalidateCacheUrlMapsResponse = Operation;
 export const InvalidateCacheUrlMapsResponse =
@@ -46369,7 +46369,7 @@ export const ListUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/urlMaps" }),
   svc,
-) as unknown as Schema.Schema<ListUrlMapsRequest>;
+) as unknown as Schema.Codec<ListUrlMapsRequest>;
 
 export type ListUrlMapsResponse = UrlMapList;
 export const ListUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ UrlMapList;
@@ -46416,7 +46416,7 @@ export const UpdateUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateUrlMapsRequest>;
+) as unknown as Schema.Codec<UpdateUrlMapsRequest>;
 
 export type UpdateUrlMapsResponse = Operation;
 export const UpdateUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -46459,7 +46459,7 @@ export const DeleteUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/urlMaps/{urlMap}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteUrlMapsRequest>;
+) as unknown as Schema.Codec<DeleteUrlMapsRequest>;
 
 export type DeleteUrlMapsResponse = Operation;
 export const DeleteUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -46521,7 +46521,7 @@ export const AggregatedListUrlMapsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/urlMaps" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListUrlMapsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListUrlMapsRequest>;
 
 export type AggregatedListUrlMapsResponse = UrlMapsAggregatedList;
 export const AggregatedListUrlMapsResponse =
@@ -46559,7 +46559,7 @@ export const GetUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/urlMaps/{urlMap}" }),
   svc,
-) as unknown as Schema.Schema<GetUrlMapsRequest>;
+) as unknown as Schema.Codec<GetUrlMapsRequest>;
 
 export type GetUrlMapsResponse = UrlMap;
 export const GetUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ UrlMap;
@@ -46599,7 +46599,7 @@ export const InsertInterconnectGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertInterconnectGroupsRequest>;
 
 export type InsertInterconnectGroupsResponse = Operation;
 export const InsertInterconnectGroupsResponse =
@@ -46647,7 +46647,7 @@ export const CreateMembersInterconnectGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateMembersInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateMembersInterconnectGroupsRequest>;
 
 export type CreateMembersInterconnectGroupsResponse = Operation;
 export const CreateMembersInterconnectGroupsResponse =
@@ -46689,7 +46689,7 @@ export const GetInterconnectGroupsRequest =
       path: "projects/{project}/global/interconnectGroups/{interconnectGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<GetInterconnectGroupsRequest>;
 
 export type GetInterconnectGroupsResponse = InterconnectGroup;
 export const GetInterconnectGroupsResponse =
@@ -46740,7 +46740,7 @@ export const ListInterconnectGroupsRequest =
       path: "projects/{project}/global/interconnectGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<ListInterconnectGroupsRequest>;
 
 export type ListInterconnectGroupsResponse = InterconnectGroupsListResponse;
 export const ListInterconnectGroupsResponse =
@@ -46785,7 +46785,7 @@ export const DeleteInterconnectGroupsRequest =
       path: "projects/{project}/global/interconnectGroups/{interconnectGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteInterconnectGroupsRequest>;
 
 export type DeleteInterconnectGroupsResponse = Operation;
 export const DeleteInterconnectGroupsResponse =
@@ -46837,7 +46837,7 @@ export const PatchInterconnectGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchInterconnectGroupsRequest>;
 
 export type PatchInterconnectGroupsResponse = Operation;
 export const PatchInterconnectGroupsResponse =
@@ -46883,7 +46883,7 @@ export const TestIamPermissionsInterconnectGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInterconnectGroupsRequest>;
 
 export type TestIamPermissionsInterconnectGroupsResponse =
   TestPermissionsResponse;
@@ -46926,7 +46926,7 @@ export const GetOperationalStatusInterconnectGroupsRequest =
       path: "projects/{project}/global/interconnectGroups/{interconnectGroup}/getOperationalStatus",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOperationalStatusInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<GetOperationalStatusInterconnectGroupsRequest>;
 
 export type GetOperationalStatusInterconnectGroupsResponse =
   InterconnectGroupsGetOperationalStatusResponse;
@@ -46972,7 +46972,7 @@ export const GetIamPolicyInterconnectGroupsRequest =
       path: "projects/{project}/global/interconnectGroups/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyInterconnectGroupsRequest>;
 
 export type GetIamPolicyInterconnectGroupsResponse = Policy;
 export const GetIamPolicyInterconnectGroupsResponse =
@@ -47016,7 +47016,7 @@ export const SetIamPolicyInterconnectGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyInterconnectGroupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyInterconnectGroupsRequest>;
 
 export type SetIamPolicyInterconnectGroupsResponse = Policy;
 export const SetIamPolicyInterconnectGroupsResponse =
@@ -47062,7 +47062,7 @@ export const InsertTargetTcpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<InsertTargetTcpProxiesRequest>;
 
 export type InsertTargetTcpProxiesResponse = Operation;
 export const InsertTargetTcpProxiesResponse =
@@ -47113,7 +47113,7 @@ export const SetBackendServiceTargetTcpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetBackendServiceTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<SetBackendServiceTargetTcpProxiesRequest>;
 
 export type SetBackendServiceTargetTcpProxiesResponse = Operation;
 export const SetBackendServiceTargetTcpProxiesResponse =
@@ -47164,7 +47164,7 @@ export const SetProxyHeaderTargetTcpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetProxyHeaderTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<SetProxyHeaderTargetTcpProxiesRequest>;
 
 export type SetProxyHeaderTargetTcpProxiesResponse = Operation;
 export const SetProxyHeaderTargetTcpProxiesResponse =
@@ -47210,7 +47210,7 @@ export const TestIamPermissionsTargetTcpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTargetTcpProxiesRequest>;
 
 export type TestIamPermissionsTargetTcpProxiesResponse =
   TestPermissionsResponse;
@@ -47277,7 +47277,7 @@ export const AggregatedListTargetTcpProxiesRequest =
       path: "projects/{project}/aggregated/targetTcpProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListTargetTcpProxiesRequest>;
 
 export type AggregatedListTargetTcpProxiesResponse =
   TargetTcpProxyAggregatedList;
@@ -47323,7 +47323,7 @@ export const GetTargetTcpProxiesRequest =
       path: "projects/{project}/global/targetTcpProxies/{targetTcpProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<GetTargetTcpProxiesRequest>;
 
 export type GetTargetTcpProxiesResponse = TargetTcpProxy;
 export const GetTargetTcpProxiesResponse =
@@ -47374,7 +47374,7 @@ export const ListTargetTcpProxiesRequest =
       path: "projects/{project}/global/targetTcpProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<ListTargetTcpProxiesRequest>;
 
 export type ListTargetTcpProxiesResponse = TargetTcpProxyList;
 export const ListTargetTcpProxiesResponse =
@@ -47419,7 +47419,7 @@ export const DeleteTargetTcpProxiesRequest =
       path: "projects/{project}/global/targetTcpProxies/{targetTcpProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<DeleteTargetTcpProxiesRequest>;
 
 export type DeleteTargetTcpProxiesResponse = Operation;
 export const DeleteTargetTcpProxiesResponse =
@@ -47461,7 +47461,7 @@ export const GetGlobalOperationsRequest =
       path: "projects/{project}/global/operations/{operation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGlobalOperationsRequest>;
+  ) as unknown as Schema.Codec<GetGlobalOperationsRequest>;
 
 export type GetGlobalOperationsResponse = Operation;
 export const GetGlobalOperationsResponse =
@@ -47519,7 +47519,7 @@ export const AggregatedListGlobalOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/operations" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListGlobalOperationsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListGlobalOperationsRequest>;
 
 export type AggregatedListGlobalOperationsResponse = OperationAggregatedList;
 export const AggregatedListGlobalOperationsResponse =
@@ -47565,7 +47565,7 @@ export const WaitGlobalOperationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WaitGlobalOperationsRequest>;
+  ) as unknown as Schema.Codec<WaitGlobalOperationsRequest>;
 
 export type WaitGlobalOperationsResponse = Operation;
 export const WaitGlobalOperationsResponse =
@@ -47607,13 +47607,13 @@ export const DeleteGlobalOperationsRequest =
       path: "projects/{project}/global/operations/{operation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGlobalOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteGlobalOperationsRequest>;
 
 export interface DeleteGlobalOperationsResponse {}
-export const DeleteGlobalOperationsResponse: Schema.Schema<DeleteGlobalOperationsResponse> =
+export const DeleteGlobalOperationsResponse: Schema.Codec<DeleteGlobalOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteGlobalOperationsResponse>;
+  ) as any as Schema.Codec<DeleteGlobalOperationsResponse>;
 
 export type DeleteGlobalOperationsError =
   | DefaultErrors
@@ -47662,7 +47662,7 @@ export const ListGlobalOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/global/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListGlobalOperationsRequest>;
+  ) as unknown as Schema.Codec<ListGlobalOperationsRequest>;
 
 export type ListGlobalOperationsResponse = OperationList;
 export const ListGlobalOperationsResponse =
@@ -47712,7 +47712,7 @@ export const DeleteNetworkEndpointGroupsRequest =
       path: "projects/{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteNetworkEndpointGroupsRequest>;
 
 export type DeleteNetworkEndpointGroupsResponse = Operation;
 export const DeleteNetworkEndpointGroupsResponse =
@@ -47768,7 +47768,7 @@ export const AttachNetworkEndpointsNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AttachNetworkEndpointsNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<AttachNetworkEndpointsNetworkEndpointGroupsRequest>;
 
 export type AttachNetworkEndpointsNetworkEndpointGroupsResponse = Operation;
 export const AttachNetworkEndpointsNetworkEndpointGroupsResponse =
@@ -47827,7 +47827,7 @@ export const ListNetworkEndpointGroupsRequest =
       path: "projects/{project}/zones/{zone}/networkEndpointGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<ListNetworkEndpointGroupsRequest>;
 
 export type ListNetworkEndpointGroupsResponse = NetworkEndpointGroupList;
 export const ListNetworkEndpointGroupsResponse =
@@ -47877,7 +47877,7 @@ export const GetNetworkEndpointGroupsRequest =
       path: "projects/{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<GetNetworkEndpointGroupsRequest>;
 
 export type GetNetworkEndpointGroupsResponse = NetworkEndpointGroup;
 export const GetNetworkEndpointGroupsResponse =
@@ -47945,7 +47945,7 @@ export const ListNetworkEndpointsNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNetworkEndpointsNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<ListNetworkEndpointsNetworkEndpointGroupsRequest>;
 
 export type ListNetworkEndpointsNetworkEndpointGroupsResponse =
   NetworkEndpointGroupsListNetworkEndpoints;
@@ -48017,7 +48017,7 @@ export const AggregatedListNetworkEndpointGroupsRequest =
       path: "projects/{project}/aggregated/networkEndpointGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListNetworkEndpointGroupsRequest>;
 
 export type AggregatedListNetworkEndpointGroupsResponse =
   NetworkEndpointGroupAggregatedList;
@@ -48070,7 +48070,7 @@ export const InsertNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertNetworkEndpointGroupsRequest>;
 
 export type InsertNetworkEndpointGroupsResponse = Operation;
 export const InsertNetworkEndpointGroupsResponse =
@@ -48126,7 +48126,7 @@ export const DetachNetworkEndpointsNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DetachNetworkEndpointsNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<DetachNetworkEndpointsNetworkEndpointGroupsRequest>;
 
 export type DetachNetworkEndpointsNetworkEndpointGroupsResponse = Operation;
 export const DetachNetworkEndpointsNetworkEndpointGroupsResponse =
@@ -48175,7 +48175,7 @@ export const TestIamPermissionsNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsNetworkEndpointGroupsRequest>;
 
 export type TestIamPermissionsNetworkEndpointGroupsResponse =
   TestPermissionsResponse;
@@ -48238,7 +48238,7 @@ export const ListRegionMultiMigMembersRequest =
       path: "projects/{project}/regions/{region}/multiMigs/{multiMig}/multiMigMembers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionMultiMigMembersRequest>;
+  ) as unknown as Schema.Codec<ListRegionMultiMigMembersRequest>;
 
 export type ListRegionMultiMigMembersResponse = MultiMigMemberList;
 export const ListRegionMultiMigMembersResponse =
@@ -48289,7 +48289,7 @@ export const GetRegionMultiMigMembersRequest =
       path: "projects/{project}/regions/{region}/multiMigs/{multiMig}/multiMigMembers/{multiMigMember}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionMultiMigMembersRequest>;
+  ) as unknown as Schema.Codec<GetRegionMultiMigMembersRequest>;
 
 export type GetRegionMultiMigMembersResponse = MultiMigMember;
 export const GetRegionMultiMigMembersResponse =
@@ -48336,7 +48336,7 @@ export const InsertTargetVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<InsertTargetVpnGatewaysRequest>;
 
 export type InsertTargetVpnGatewaysResponse = Operation;
 export const InsertTargetVpnGatewaysResponse =
@@ -48385,7 +48385,7 @@ export const TestIamPermissionsTargetVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTargetVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTargetVpnGatewaysRequest>;
 
 export type TestIamPermissionsTargetVpnGatewaysResponse =
   TestPermissionsResponse;
@@ -48438,7 +48438,7 @@ export const SetLabelsTargetVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsTargetVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<SetLabelsTargetVpnGatewaysRequest>;
 
 export type SetLabelsTargetVpnGatewaysResponse = Operation;
 export const SetLabelsTargetVpnGatewaysResponse =
@@ -48504,7 +48504,7 @@ export const AggregatedListTargetVpnGatewaysRequest =
       path: "projects/{project}/aggregated/targetVpnGateways",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListTargetVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<AggregatedListTargetVpnGatewaysRequest>;
 
 export type AggregatedListTargetVpnGatewaysResponse =
   TargetVpnGatewayAggregatedList;
@@ -48553,7 +48553,7 @@ export const GetTargetVpnGatewaysRequest =
       path: "projects/{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetTargetVpnGatewaysRequest>;
 
 export type GetTargetVpnGatewaysResponse = TargetVpnGateway;
 export const GetTargetVpnGatewaysResponse =
@@ -48607,7 +48607,7 @@ export const ListTargetVpnGatewaysRequest =
       path: "projects/{project}/regions/{region}/targetVpnGateways",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<ListTargetVpnGatewaysRequest>;
 
 export type ListTargetVpnGatewaysResponse = TargetVpnGatewayList;
 export const ListTargetVpnGatewaysResponse =
@@ -48655,7 +48655,7 @@ export const DeleteTargetVpnGatewaysRequest =
       path: "projects/{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTargetVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<DeleteTargetVpnGatewaysRequest>;
 
 export type DeleteTargetVpnGatewaysResponse = Operation;
 export const DeleteTargetVpnGatewaysResponse =
@@ -48703,7 +48703,7 @@ export const DeleteZoneVmExtensionPoliciesRequest =
       path: "projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteZoneVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteZoneVmExtensionPoliciesRequest>;
 
 export type DeleteZoneVmExtensionPoliciesResponse = Operation;
 export const DeleteZoneVmExtensionPoliciesResponse =
@@ -48755,7 +48755,7 @@ export const UpdateZoneVmExtensionPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateZoneVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<UpdateZoneVmExtensionPoliciesRequest>;
 
 export type UpdateZoneVmExtensionPoliciesResponse = Operation;
 export const UpdateZoneVmExtensionPoliciesResponse =
@@ -48814,7 +48814,7 @@ export const ListZoneVmExtensionPoliciesRequest =
       path: "projects/{project}/zones/{zone}/vmExtensionPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListZoneVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListZoneVmExtensionPoliciesRequest>;
 
 export type ListZoneVmExtensionPoliciesResponse = VmExtensionPolicyList;
 export const ListZoneVmExtensionPoliciesResponse =
@@ -48862,7 +48862,7 @@ export const GetZoneVmExtensionPoliciesRequest =
       path: "projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetZoneVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetZoneVmExtensionPoliciesRequest>;
 
 export type GetZoneVmExtensionPoliciesResponse = VmExtensionPolicy;
 export const GetZoneVmExtensionPoliciesResponse =
@@ -48909,7 +48909,7 @@ export const InsertZoneVmExtensionPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertZoneVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertZoneVmExtensionPoliciesRequest>;
 
 export type InsertZoneVmExtensionPoliciesResponse = Operation;
 export const InsertZoneVmExtensionPoliciesResponse =
@@ -48959,7 +48959,7 @@ export const GetIamPolicyRegionDisksRequest =
       path: "projects/{project}/regions/{region}/disks/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRegionDisksRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRegionDisksRequest>;
 
 export type GetIamPolicyRegionDisksResponse = Policy;
 export const GetIamPolicyRegionDisksResponse =
@@ -49008,7 +49008,7 @@ export const RemoveResourcePoliciesRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveResourcePoliciesRegionDisksRequest>;
+  ) as unknown as Schema.Codec<RemoveResourcePoliciesRegionDisksRequest>;
 
 export type RemoveResourcePoliciesRegionDisksResponse = Operation;
 export const RemoveResourcePoliciesRegionDisksResponse =
@@ -49057,7 +49057,7 @@ export const TestIamPermissionsRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionDisksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionDisksRequest>;
 
 export type TestIamPermissionsRegionDisksResponse = TestPermissionsResponse;
 export const TestIamPermissionsRegionDisksResponse =
@@ -49105,7 +49105,7 @@ export const DeleteRegionDisksRequest =
       path: "projects/{project}/regions/{region}/disks/{disk}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionDisksRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionDisksRequest>;
 
 export type DeleteRegionDisksResponse = Operation;
 export const DeleteRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -49161,7 +49161,7 @@ export const ListRegionDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "projects/{project}/regions/{region}/disks" }),
   svc,
-) as unknown as Schema.Schema<ListRegionDisksRequest>;
+) as unknown as Schema.Codec<ListRegionDisksRequest>;
 
 export type ListRegionDisksResponse = DiskList;
 export const ListRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ DiskList;
@@ -49219,7 +49219,7 @@ export const UpdateRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRegionDisksRequest>;
+  ) as unknown as Schema.Codec<UpdateRegionDisksRequest>;
 
 export type UpdateRegionDisksResponse = Operation;
 export const UpdateRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -49267,7 +49267,7 @@ export const StopAsyncReplicationRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StopAsyncReplicationRegionDisksRequest>;
+  ) as unknown as Schema.Codec<StopAsyncReplicationRegionDisksRequest>;
 
 export type StopAsyncReplicationRegionDisksResponse = Operation;
 export const StopAsyncReplicationRegionDisksResponse =
@@ -49321,7 +49321,7 @@ export const AddResourcePoliciesRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddResourcePoliciesRegionDisksRequest>;
+  ) as unknown as Schema.Codec<AddResourcePoliciesRegionDisksRequest>;
 
 export type AddResourcePoliciesRegionDisksResponse = Operation;
 export const AddResourcePoliciesRegionDisksResponse =
@@ -49375,7 +49375,7 @@ export const InsertRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionDisksRequest>;
+  ) as unknown as Schema.Codec<InsertRegionDisksRequest>;
 
 export type InsertRegionDisksResponse = Operation;
 export const InsertRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -49426,7 +49426,7 @@ export const CreateSnapshotRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSnapshotRegionDisksRequest>;
+  ) as unknown as Schema.Codec<CreateSnapshotRegionDisksRequest>;
 
 export type CreateSnapshotRegionDisksResponse = Operation;
 export const CreateSnapshotRegionDisksResponse =
@@ -49475,7 +49475,7 @@ export const SetIamPolicyRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyRegionDisksRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyRegionDisksRequest>;
 
 export type SetIamPolicyRegionDisksResponse = Policy;
 export const SetIamPolicyRegionDisksResponse =
@@ -49527,7 +49527,7 @@ export const UpdateKmsKeyRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateKmsKeyRegionDisksRequest>;
+  ) as unknown as Schema.Codec<UpdateKmsKeyRegionDisksRequest>;
 
 export type UpdateKmsKeyRegionDisksResponse = Operation;
 export const UpdateKmsKeyRegionDisksResponse =
@@ -49581,7 +49581,7 @@ export const StartAsyncReplicationRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartAsyncReplicationRegionDisksRequest>;
+  ) as unknown as Schema.Codec<StartAsyncReplicationRegionDisksRequest>;
 
 export type StartAsyncReplicationRegionDisksResponse = Operation;
 export const StartAsyncReplicationRegionDisksResponse =
@@ -49632,7 +49632,7 @@ export const StopGroupAsyncReplicationRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StopGroupAsyncReplicationRegionDisksRequest>;
+  ) as unknown as Schema.Codec<StopGroupAsyncReplicationRegionDisksRequest>;
 
 export type StopGroupAsyncReplicationRegionDisksResponse = Operation;
 export const StopGroupAsyncReplicationRegionDisksResponse =
@@ -49684,7 +49684,7 @@ export const ResizeRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResizeRegionDisksRequest>;
+  ) as unknown as Schema.Codec<ResizeRegionDisksRequest>;
 
 export type ResizeRegionDisksResponse = Operation;
 export const ResizeRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -49732,7 +49732,7 @@ export const BulkInsertRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkInsertRegionDisksRequest>;
+  ) as unknown as Schema.Codec<BulkInsertRegionDisksRequest>;
 
 export type BulkInsertRegionDisksResponse = Operation;
 export const BulkInsertRegionDisksResponse =
@@ -49776,7 +49776,7 @@ export const GetRegionDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/disks/{disk}",
   }),
   svc,
-) as unknown as Schema.Schema<GetRegionDisksRequest>;
+) as unknown as Schema.Codec<GetRegionDisksRequest>;
 
 export type GetRegionDisksResponse = Disk;
 export const GetRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Disk;
@@ -49822,7 +49822,7 @@ export const SetLabelsRegionDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsRegionDisksRequest>;
+  ) as unknown as Schema.Codec<SetLabelsRegionDisksRequest>;
 
 export type SetLabelsRegionDisksResponse = Operation;
 export const SetLabelsRegionDisksResponse =
@@ -49874,7 +49874,7 @@ export const AddHealthCheckTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddHealthCheckTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<AddHealthCheckTargetPoolsRequest>;
 
 export type AddHealthCheckTargetPoolsResponse = Operation;
 export const AddHealthCheckTargetPoolsResponse =
@@ -49923,7 +49923,7 @@ export const GetHealthTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetHealthTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<GetHealthTargetPoolsRequest>;
 
 export type GetHealthTargetPoolsResponse = TargetPoolInstanceHealth;
 export const GetHealthTargetPoolsResponse =
@@ -49977,7 +49977,7 @@ export const RemoveHealthCheckTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveHealthCheckTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<RemoveHealthCheckTargetPoolsRequest>;
 
 export type RemoveHealthCheckTargetPoolsResponse = Operation;
 export const RemoveHealthCheckTargetPoolsResponse =
@@ -50043,7 +50043,7 @@ export const AggregatedListTargetPoolsRequest =
       path: "projects/{project}/aggregated/targetPools",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListTargetPoolsRequest>;
 
 export type AggregatedListTargetPoolsResponse = TargetPoolAggregatedList;
 export const AggregatedListTargetPoolsResponse =
@@ -50098,7 +50098,7 @@ export const SetSecurityPolicyTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSecurityPolicyTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<SetSecurityPolicyTargetPoolsRequest>;
 
 export type SetSecurityPolicyTargetPoolsResponse = Operation;
 export const SetSecurityPolicyTargetPoolsResponse =
@@ -50142,7 +50142,7 @@ export const GetTargetPoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/targetPools/{targetPool}",
   }),
   svc,
-) as unknown as Schema.Schema<GetTargetPoolsRequest>;
+) as unknown as Schema.Codec<GetTargetPoolsRequest>;
 
 export type GetTargetPoolsResponse = TargetPool;
 export const GetTargetPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ TargetPool;
@@ -50185,7 +50185,7 @@ export const TestIamPermissionsTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTargetPoolsRequest>;
 
 export type TestIamPermissionsTargetPoolsResponse = TestPermissionsResponse;
 export const TestIamPermissionsTargetPoolsResponse =
@@ -50242,7 +50242,7 @@ export const SetBackupTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetBackupTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<SetBackupTargetPoolsRequest>;
 
 export type SetBackupTargetPoolsResponse = Operation;
 export const SetBackupTargetPoolsResponse =
@@ -50294,7 +50294,7 @@ export const RemoveInstanceTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveInstanceTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<RemoveInstanceTargetPoolsRequest>;
 
 export type RemoveInstanceTargetPoolsResponse = Operation;
 export const RemoveInstanceTargetPoolsResponse =
@@ -50346,7 +50346,7 @@ export const AddInstanceTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddInstanceTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<AddInstanceTargetPoolsRequest>;
 
 export type AddInstanceTargetPoolsResponse = Operation;
 export const AddInstanceTargetPoolsResponse =
@@ -50395,7 +50395,7 @@ export const InsertTargetPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<InsertTargetPoolsRequest>;
 
 export type InsertTargetPoolsResponse = Operation;
 export const InsertTargetPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -50454,7 +50454,7 @@ export const ListTargetPoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/regions/{region}/targetPools",
   }),
   svc,
-) as unknown as Schema.Schema<ListTargetPoolsRequest>;
+) as unknown as Schema.Codec<ListTargetPoolsRequest>;
 
 export type ListTargetPoolsResponse = TargetPoolList;
 export const ListTargetPoolsResponse =
@@ -50502,7 +50502,7 @@ export const DeleteTargetPoolsRequest =
       path: "projects/{project}/regions/{region}/targetPools/{targetPool}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTargetPoolsRequest>;
+  ) as unknown as Schema.Codec<DeleteTargetPoolsRequest>;
 
 export type DeleteTargetPoolsResponse = Operation;
 export const DeleteTargetPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -50547,7 +50547,7 @@ export const InsertGlobalVmExtensionPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGlobalVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertGlobalVmExtensionPoliciesRequest>;
 
 export type InsertGlobalVmExtensionPoliciesResponse = Operation;
 export const InsertGlobalVmExtensionPoliciesResponse =
@@ -50591,7 +50591,7 @@ export const GetGlobalVmExtensionPoliciesRequest =
       path: "projects/{project}/global/vmExtensionPolicies/{globalVmExtensionPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGlobalVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetGlobalVmExtensionPoliciesRequest>;
 
 export type GetGlobalVmExtensionPoliciesResponse = GlobalVmExtensionPolicy;
 export const GetGlobalVmExtensionPoliciesResponse =
@@ -50655,7 +50655,7 @@ export const AggregatedListGlobalVmExtensionPoliciesRequest =
       path: "projects/{project}/aggregated/vmExtensionPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListGlobalVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListGlobalVmExtensionPoliciesRequest>;
 
 export type AggregatedListGlobalVmExtensionPoliciesResponse =
   VmExtensionPolicyAggregatedListResponse;
@@ -50712,7 +50712,7 @@ export const DeleteGlobalVmExtensionPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGlobalVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteGlobalVmExtensionPoliciesRequest>;
 
 export type DeleteGlobalVmExtensionPoliciesResponse = Operation;
 export const DeleteGlobalVmExtensionPoliciesResponse =
@@ -50763,7 +50763,7 @@ export const UpdateGlobalVmExtensionPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGlobalVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<UpdateGlobalVmExtensionPoliciesRequest>;
 
 export type UpdateGlobalVmExtensionPoliciesResponse = Operation;
 export const UpdateGlobalVmExtensionPoliciesResponse =
@@ -50819,7 +50819,7 @@ export const ListGlobalVmExtensionPoliciesRequest =
       path: "projects/{project}/global/vmExtensionPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGlobalVmExtensionPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListGlobalVmExtensionPoliciesRequest>;
 
 export type ListGlobalVmExtensionPoliciesResponse = GlobalVmExtensionPolicyList;
 export const ListGlobalVmExtensionPoliciesResponse =
@@ -50861,7 +50861,7 @@ export const GetSnapshotSettingsRequest =
       path: "projects/{project}/global/snapshotSettings",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSnapshotSettingsRequest>;
+  ) as unknown as Schema.Codec<GetSnapshotSettingsRequest>;
 
 export type GetSnapshotSettingsResponse = SnapshotSettings;
 export const GetSnapshotSettingsResponse =
@@ -50905,7 +50905,7 @@ export const PatchSnapshotSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchSnapshotSettingsRequest>;
+  ) as unknown as Schema.Codec<PatchSnapshotSettingsRequest>;
 
 export type PatchSnapshotSettingsResponse = Operation;
 export const PatchSnapshotSettingsResponse =
@@ -50949,7 +50949,7 @@ export const GetImageViewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/imageViews/{resourceId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetImageViewsRequest>;
+) as unknown as Schema.Codec<GetImageViewsRequest>;
 
 export type GetImageViewsResponse = ImageView;
 export const GetImageViewsResponse = /*@__PURE__*/ /*#__PURE__*/ ImageView;
@@ -50987,7 +50987,7 @@ export const GetNodeGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/nodeGroups/{nodeGroup}",
   }),
   svc,
-) as unknown as Schema.Schema<GetNodeGroupsRequest>;
+) as unknown as Schema.Codec<GetNodeGroupsRequest>;
 
 export type GetNodeGroupsResponse = NodeGroup;
 export const GetNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ NodeGroup;
@@ -51044,7 +51044,7 @@ export const AggregatedListNodeGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/nodeGroups" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListNodeGroupsRequest>;
 
 export type AggregatedListNodeGroupsResponse = NodeGroupAggregatedList;
 export const AggregatedListNodeGroupsResponse =
@@ -51096,7 +51096,7 @@ export const SetIamPolicyNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyNodeGroupsRequest>;
 
 export type SetIamPolicyNodeGroupsResponse = Policy;
 export const SetIamPolicyNodeGroupsResponse =
@@ -51159,7 +51159,7 @@ export const ListNodesNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<ListNodesNodeGroupsRequest>;
 
 export type ListNodesNodeGroupsResponse = NodeGroupsListNodes;
 export const ListNodesNodeGroupsResponse =
@@ -51217,7 +51217,7 @@ export const PatchNodeGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchNodeGroupsRequest>;
+) as unknown as Schema.Codec<PatchNodeGroupsRequest>;
 
 export type PatchNodeGroupsResponse = Operation;
 export const PatchNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -51270,7 +51270,7 @@ export const SimulateMaintenanceEventNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SimulateMaintenanceEventNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<SimulateMaintenanceEventNodeGroupsRequest>;
 
 export type SimulateMaintenanceEventNodeGroupsResponse = Operation;
 export const SimulateMaintenanceEventNodeGroupsResponse =
@@ -51318,7 +51318,7 @@ export const DeleteNodeGroupsRequest =
       path: "projects/{project}/zones/{zone}/nodeGroups/{nodeGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteNodeGroupsRequest>;
 
 export type DeleteNodeGroupsResponse = Operation;
 export const DeleteNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -51372,7 +51372,7 @@ export const ListNodeGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/zones/{zone}/nodeGroups" }),
   svc,
-) as unknown as Schema.Schema<ListNodeGroupsRequest>;
+) as unknown as Schema.Codec<ListNodeGroupsRequest>;
 
 export type ListNodeGroupsResponse = NodeGroupList;
 export const ListNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ NodeGroupList;
@@ -51423,7 +51423,7 @@ export const InsertNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertNodeGroupsRequest>;
 
 export type InsertNodeGroupsResponse = Operation;
 export const InsertNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -51474,7 +51474,7 @@ export const DeleteNodesNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNodesNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteNodesNodeGroupsRequest>;
 
 export type DeleteNodesNodeGroupsResponse = Operation;
 export const DeleteNodesNodeGroupsResponse =
@@ -51526,7 +51526,7 @@ export const SetNodeTemplateNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetNodeTemplateNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<SetNodeTemplateNodeGroupsRequest>;
 
 export type SetNodeTemplateNodeGroupsResponse = Operation;
 export const SetNodeTemplateNodeGroupsResponse =
@@ -51576,7 +51576,7 @@ export const GetIamPolicyNodeGroupsRequest =
       path: "projects/{project}/zones/{zone}/nodeGroups/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyNodeGroupsRequest>;
 
 export type GetIamPolicyNodeGroupsResponse = Policy;
 export const GetIamPolicyNodeGroupsResponse =
@@ -51625,7 +51625,7 @@ export const PerformMaintenanceNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PerformMaintenanceNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<PerformMaintenanceNodeGroupsRequest>;
 
 export type PerformMaintenanceNodeGroupsResponse = Operation;
 export const PerformMaintenanceNodeGroupsResponse =
@@ -51674,7 +51674,7 @@ export const TestIamPermissionsNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsNodeGroupsRequest>;
 
 export type TestIamPermissionsNodeGroupsResponse = TestPermissionsResponse;
 export const TestIamPermissionsNodeGroupsResponse =
@@ -51726,7 +51726,7 @@ export const AddNodesNodeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddNodesNodeGroupsRequest>;
+  ) as unknown as Schema.Codec<AddNodesNodeGroupsRequest>;
 
 export type AddNodesNodeGroupsResponse = Operation;
 export const AddNodesNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -51766,7 +51766,7 @@ export const GetLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/licenses/{license}",
   }),
   svc,
-) as unknown as Schema.Schema<GetLicensesRequest>;
+) as unknown as Schema.Codec<GetLicensesRequest>;
 
 export type GetLicensesResponse = License;
 export const GetLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ License;
@@ -51807,7 +51807,7 @@ export const GetIamPolicyLicensesRequest =
       path: "projects/{project}/global/licenses/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyLicensesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyLicensesRequest>;
 
 export type GetIamPolicyLicensesResponse = Policy;
 export const GetIamPolicyLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -51847,7 +51847,7 @@ export const SetIamPolicyLicensesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyLicensesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyLicensesRequest>;
 
 export type SetIamPolicyLicensesResponse = Policy;
 export const SetIamPolicyLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -51898,7 +51898,7 @@ export const ListLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/licenses" }),
   svc,
-) as unknown as Schema.Schema<ListLicensesRequest>;
+) as unknown as Schema.Codec<ListLicensesRequest>;
 
 export type ListLicensesResponse = LicensesListResponse;
 export const ListLicensesResponse =
@@ -51949,7 +51949,7 @@ export const UpdateLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateLicensesRequest>;
+) as unknown as Schema.Codec<UpdateLicensesRequest>;
 
 export type UpdateLicensesResponse = Operation;
 export const UpdateLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -51992,7 +51992,7 @@ export const DeleteLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/licenses/{license}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteLicensesRequest>;
+) as unknown as Schema.Codec<DeleteLicensesRequest>;
 
 export type DeleteLicensesResponse = Operation;
 export const DeleteLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -52036,7 +52036,7 @@ export const InsertLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertLicensesRequest>;
+) as unknown as Schema.Codec<InsertLicensesRequest>;
 
 export type InsertLicensesResponse = Operation;
 export const InsertLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -52081,7 +52081,7 @@ export const TestIamPermissionsLicensesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsLicensesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsLicensesRequest>;
 
 export type TestIamPermissionsLicensesResponse = TestPermissionsResponse;
 export const TestIamPermissionsLicensesResponse =
@@ -52129,7 +52129,7 @@ export const DeleteRegionTargetTcpProxiesRequest =
       path: "projects/{project}/regions/{region}/targetTcpProxies/{targetTcpProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionTargetTcpProxiesRequest>;
 
 export type DeleteRegionTargetTcpProxiesResponse = Operation;
 export const DeleteRegionTargetTcpProxiesResponse =
@@ -52188,7 +52188,7 @@ export const ListRegionTargetTcpProxiesRequest =
       path: "projects/{project}/regions/{region}/targetTcpProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<ListRegionTargetTcpProxiesRequest>;
 
 export type ListRegionTargetTcpProxiesResponse = TargetTcpProxyList;
 export const ListRegionTargetTcpProxiesResponse =
@@ -52236,7 +52236,7 @@ export const GetRegionTargetTcpProxiesRequest =
       path: "projects/{project}/regions/{region}/targetTcpProxies/{targetTcpProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<GetRegionTargetTcpProxiesRequest>;
 
 export type GetRegionTargetTcpProxiesResponse = TargetTcpProxy;
 export const GetRegionTargetTcpProxiesResponse =
@@ -52283,7 +52283,7 @@ export const InsertRegionTargetTcpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionTargetTcpProxiesRequest>;
 
 export type InsertRegionTargetTcpProxiesResponse = Operation;
 export const InsertRegionTargetTcpProxiesResponse =
@@ -52332,7 +52332,7 @@ export const TestIamPermissionsRegionTargetTcpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionTargetTcpProxiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionTargetTcpProxiesRequest>;
 
 export type TestIamPermissionsRegionTargetTcpProxiesResponse =
   TestPermissionsResponse;
@@ -52372,7 +52372,7 @@ export const GetOrganizationSecurityPoliciesRequest =
       path: "locations/global/securityPolicies/{securityPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationSecurityPoliciesRequest>;
 
 export type GetOrganizationSecurityPoliciesResponse = SecurityPolicy;
 export const GetOrganizationSecurityPoliciesResponse =
@@ -52422,7 +52422,7 @@ export const PatchRuleOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRuleOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRuleOrganizationSecurityPoliciesRequest>;
 
 export type PatchRuleOrganizationSecurityPoliciesResponse = Operation;
 export const PatchRuleOrganizationSecurityPoliciesResponse =
@@ -52463,7 +52463,7 @@ export const ListAssociationsOrganizationSecurityPoliciesRequest =
       path: "locations/global/securityPolicies/listAssociations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAssociationsOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListAssociationsOrganizationSecurityPoliciesRequest>;
 
 export type ListAssociationsOrganizationSecurityPoliciesResponse =
   OrganizationSecurityPoliciesListAssociationsResponse;
@@ -52508,7 +52508,7 @@ export const AddRuleOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddRuleOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddRuleOrganizationSecurityPoliciesRequest>;
 
 export type AddRuleOrganizationSecurityPoliciesResponse = Operation;
 export const AddRuleOrganizationSecurityPoliciesResponse =
@@ -52556,7 +52556,7 @@ export const CopyRulesOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CopyRulesOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<CopyRulesOrganizationSecurityPoliciesRequest>;
 
 export type CopyRulesOrganizationSecurityPoliciesResponse = Operation;
 export const CopyRulesOrganizationSecurityPoliciesResponse =
@@ -52607,7 +52607,7 @@ export const AddAssociationOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddAssociationOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddAssociationOrganizationSecurityPoliciesRequest>;
 
 export type AddAssociationOrganizationSecurityPoliciesResponse = Operation;
 export const AddAssociationOrganizationSecurityPoliciesResponse =
@@ -52656,7 +52656,7 @@ export const PatchOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationSecurityPoliciesRequest>;
 
 export type PatchOrganizationSecurityPoliciesResponse = Operation;
 export const PatchOrganizationSecurityPoliciesResponse =
@@ -52712,7 +52712,7 @@ export const ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesRequest 
       path: "locations/global/securityPolicies/listPreconfiguredExpressionSets",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesRequest>;
 
 export type ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesResponse =
   SecurityPoliciesListPreconfiguredExpressionSetsResponse;
@@ -52753,7 +52753,7 @@ export const DeleteOrganizationSecurityPoliciesRequest =
       path: "locations/global/securityPolicies/{securityPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationSecurityPoliciesRequest>;
 
 export type DeleteOrganizationSecurityPoliciesResponse = Operation;
 export const DeleteOrganizationSecurityPoliciesResponse =
@@ -52799,7 +52799,7 @@ export const RemoveAssociationOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveAssociationOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveAssociationOrganizationSecurityPoliciesRequest>;
 
 export type RemoveAssociationOrganizationSecurityPoliciesResponse = Operation;
 export const RemoveAssociationOrganizationSecurityPoliciesResponse =
@@ -52852,7 +52852,7 @@ export const ListOrganizationSecurityPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "locations/global/securityPolicies" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationSecurityPoliciesRequest>;
 
 export type ListOrganizationSecurityPoliciesResponse = SecurityPolicyList;
 export const ListOrganizationSecurityPoliciesResponse =
@@ -52897,7 +52897,7 @@ export const GetAssociationOrganizationSecurityPoliciesRequest =
       path: "locations/global/securityPolicies/{securityPolicy}/getAssociation",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAssociationOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetAssociationOrganizationSecurityPoliciesRequest>;
 
 export type GetAssociationOrganizationSecurityPoliciesResponse =
   SecurityPolicyAssociation;
@@ -52942,7 +52942,7 @@ export const InsertOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertOrganizationSecurityPoliciesRequest>;
 
 export type InsertOrganizationSecurityPoliciesResponse = Operation;
 export const InsertOrganizationSecurityPoliciesResponse =
@@ -52988,7 +52988,7 @@ export const RemoveRuleOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveRuleOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveRuleOrganizationSecurityPoliciesRequest>;
 
 export type RemoveRuleOrganizationSecurityPoliciesResponse = Operation;
 export const RemoveRuleOrganizationSecurityPoliciesResponse =
@@ -53034,7 +53034,7 @@ export const MoveOrganizationSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<MoveOrganizationSecurityPoliciesRequest>;
 
 export type MoveOrganizationSecurityPoliciesResponse = Operation;
 export const MoveOrganizationSecurityPoliciesResponse =
@@ -53076,7 +53076,7 @@ export const GetRuleOrganizationSecurityPoliciesRequest =
       path: "locations/global/securityPolicies/{securityPolicy}/getRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRuleOrganizationSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRuleOrganizationSecurityPoliciesRequest>;
 
 export type GetRuleOrganizationSecurityPoliciesResponse = SecurityPolicyRule;
 export const GetRuleOrganizationSecurityPoliciesResponse =
@@ -53119,7 +53119,7 @@ export const InsertRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertRoutesRequest>;
+) as unknown as Schema.Codec<InsertRoutesRequest>;
 
 export type InsertRoutesResponse = Operation;
 export const InsertRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -53164,7 +53164,7 @@ export const TestIamPermissionsRoutesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRoutesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRoutesRequest>;
 
 export type TestIamPermissionsRoutesResponse = TestPermissionsResponse;
 export const TestIamPermissionsRoutesResponse =
@@ -53202,7 +53202,7 @@ export const GetRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/routes/{route}" }),
   svc,
-) as unknown as Schema.Schema<GetRoutesRequest>;
+) as unknown as Schema.Codec<GetRoutesRequest>;
 
 export type GetRoutesResponse = Route;
 export const GetRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Route;
@@ -53248,7 +53248,7 @@ export const ListRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/routes" }),
   svc,
-) as unknown as Schema.Schema<ListRoutesRequest>;
+) as unknown as Schema.Codec<ListRoutesRequest>;
 
 export type ListRoutesResponse = RouteList;
 export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ RouteList;
@@ -53291,7 +53291,7 @@ export const DeleteRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/routes/{route}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteRoutesRequest>;
+) as unknown as Schema.Codec<DeleteRoutesRequest>;
 
 export type DeleteRoutesResponse = Operation;
 export const DeleteRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -53339,7 +53339,7 @@ export const InsertAutoscalersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAutoscalersRequest>;
+  ) as unknown as Schema.Codec<InsertAutoscalersRequest>;
 
 export type InsertAutoscalersResponse = Operation;
 export const InsertAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -53390,7 +53390,7 @@ export const PatchAutoscalersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAutoscalersRequest>;
+  ) as unknown as Schema.Codec<PatchAutoscalersRequest>;
 
 export type PatchAutoscalersResponse = Operation;
 export const PatchAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -53438,7 +53438,7 @@ export const TestIamPermissionsAutoscalersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsAutoscalersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsAutoscalersRequest>;
 
 export type TestIamPermissionsAutoscalersResponse = TestPermissionsResponse;
 export const TestIamPermissionsAutoscalersResponse =
@@ -53504,7 +53504,7 @@ export const AggregatedListAutoscalersRequest =
       path: "projects/{project}/aggregated/autoscalers",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListAutoscalersRequest>;
+  ) as unknown as Schema.Codec<AggregatedListAutoscalersRequest>;
 
 export type AggregatedListAutoscalersResponse = AutoscalerAggregatedList;
 export const AggregatedListAutoscalersResponse =
@@ -53551,7 +53551,7 @@ export const GetAutoscalersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/autoscalers/{autoscaler}",
   }),
   svc,
-) as unknown as Schema.Schema<GetAutoscalersRequest>;
+) as unknown as Schema.Codec<GetAutoscalersRequest>;
 
 export type GetAutoscalersResponse = Autoscaler;
 export const GetAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Autoscaler;
@@ -53605,7 +53605,7 @@ export const ListAutoscalersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/zones/{zone}/autoscalers",
   }),
   svc,
-) as unknown as Schema.Schema<ListAutoscalersRequest>;
+) as unknown as Schema.Codec<ListAutoscalersRequest>;
 
 export type ListAutoscalersResponse = AutoscalerList;
 export const ListAutoscalersResponse =
@@ -53657,7 +53657,7 @@ export const UpdateAutoscalersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAutoscalersRequest>;
+  ) as unknown as Schema.Codec<UpdateAutoscalersRequest>;
 
 export type UpdateAutoscalersResponse = Operation;
 export const UpdateAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -53704,7 +53704,7 @@ export const DeleteAutoscalersRequest =
       path: "projects/{project}/zones/{zone}/autoscalers/{autoscaler}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAutoscalersRequest>;
+  ) as unknown as Schema.Codec<DeleteAutoscalersRequest>;
 
 export type DeleteAutoscalersResponse = Operation;
 export const DeleteAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -53745,7 +53745,7 @@ export const GetHttpsHealthChecksRequest =
       path: "projects/{project}/global/httpsHealthChecks/{httpsHealthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetHttpsHealthChecksRequest>;
+  ) as unknown as Schema.Codec<GetHttpsHealthChecksRequest>;
 
 export type GetHttpsHealthChecksResponse = HttpsHealthCheck;
 export const GetHttpsHealthChecksResponse =
@@ -53796,7 +53796,7 @@ export const ListHttpsHealthChecksRequest =
       path: "projects/{project}/global/httpsHealthChecks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListHttpsHealthChecksRequest>;
+  ) as unknown as Schema.Codec<ListHttpsHealthChecksRequest>;
 
 export type ListHttpsHealthChecksResponse = HttpsHealthCheckList;
 export const ListHttpsHealthChecksResponse =
@@ -53845,7 +53845,7 @@ export const UpdateHttpsHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateHttpsHealthChecksRequest>;
+  ) as unknown as Schema.Codec<UpdateHttpsHealthChecksRequest>;
 
 export type UpdateHttpsHealthChecksResponse = Operation;
 export const UpdateHttpsHealthChecksResponse =
@@ -53890,7 +53890,7 @@ export const DeleteHttpsHealthChecksRequest =
       path: "projects/{project}/global/httpsHealthChecks/{httpsHealthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteHttpsHealthChecksRequest>;
+  ) as unknown as Schema.Codec<DeleteHttpsHealthChecksRequest>;
 
 export type DeleteHttpsHealthChecksResponse = Operation;
 export const DeleteHttpsHealthChecksResponse =
@@ -53936,7 +53936,7 @@ export const InsertHttpsHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertHttpsHealthChecksRequest>;
+  ) as unknown as Schema.Codec<InsertHttpsHealthChecksRequest>;
 
 export type InsertHttpsHealthChecksResponse = Operation;
 export const InsertHttpsHealthChecksResponse =
@@ -53985,7 +53985,7 @@ export const PatchHttpsHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchHttpsHealthChecksRequest>;
+  ) as unknown as Schema.Codec<PatchHttpsHealthChecksRequest>;
 
 export type PatchHttpsHealthChecksResponse = Operation;
 export const PatchHttpsHealthChecksResponse =
@@ -54031,7 +54031,7 @@ export const TestIamPermissionsHttpsHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsHttpsHealthChecksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsHttpsHealthChecksRequest>;
 
 export type TestIamPermissionsHttpsHealthChecksResponse =
   TestPermissionsResponse;
@@ -54082,7 +54082,7 @@ export const DeleteNetworkEdgeSecurityServicesRequest =
       path: "projects/{project}/regions/{region}/networkEdgeSecurityServices/{networkEdgeSecurityService}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNetworkEdgeSecurityServicesRequest>;
+  ) as unknown as Schema.Codec<DeleteNetworkEdgeSecurityServicesRequest>;
 
 export type DeleteNetworkEdgeSecurityServicesResponse = Operation;
 export const DeleteNetworkEdgeSecurityServicesResponse =
@@ -54148,7 +54148,7 @@ export const AggregatedListNetworkEdgeSecurityServicesRequest =
       path: "projects/{project}/aggregated/networkEdgeSecurityServices",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListNetworkEdgeSecurityServicesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListNetworkEdgeSecurityServicesRequest>;
 
 export type AggregatedListNetworkEdgeSecurityServicesResponse =
   NetworkEdgeSecurityServiceAggregatedList;
@@ -54199,7 +54199,7 @@ export const GetNetworkEdgeSecurityServicesRequest =
       path: "projects/{project}/regions/{region}/networkEdgeSecurityServices/{networkEdgeSecurityService}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNetworkEdgeSecurityServicesRequest>;
+  ) as unknown as Schema.Codec<GetNetworkEdgeSecurityServicesRequest>;
 
 export type GetNetworkEdgeSecurityServicesResponse = NetworkEdgeSecurityService;
 export const GetNetworkEdgeSecurityServicesResponse =
@@ -54251,7 +54251,7 @@ export const InsertNetworkEdgeSecurityServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertNetworkEdgeSecurityServicesRequest>;
+  ) as unknown as Schema.Codec<InsertNetworkEdgeSecurityServicesRequest>;
 
 export type InsertNetworkEdgeSecurityServicesResponse = Operation;
 export const InsertNetworkEdgeSecurityServicesResponse =
@@ -54312,7 +54312,7 @@ export const PatchNetworkEdgeSecurityServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchNetworkEdgeSecurityServicesRequest>;
+  ) as unknown as Schema.Codec<PatchNetworkEdgeSecurityServicesRequest>;
 
 export type PatchNetworkEdgeSecurityServicesResponse = Operation;
 export const PatchNetworkEdgeSecurityServicesResponse =
@@ -54357,7 +54357,7 @@ export const GetAcceleratorTypesRequest =
       path: "projects/{project}/zones/{zone}/acceleratorTypes/{acceleratorType}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAcceleratorTypesRequest>;
+  ) as unknown as Schema.Codec<GetAcceleratorTypesRequest>;
 
 export type GetAcceleratorTypesResponse = AcceleratorType;
 export const GetAcceleratorTypesResponse =
@@ -54418,7 +54418,7 @@ export const AggregatedListAcceleratorTypesRequest =
       path: "projects/{project}/aggregated/acceleratorTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListAcceleratorTypesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListAcceleratorTypesRequest>;
 
 export type AggregatedListAcceleratorTypesResponse =
   AcceleratorTypeAggregatedList;
@@ -54481,7 +54481,7 @@ export const ListAcceleratorTypesRequest =
       path: "projects/{project}/zones/{zone}/acceleratorTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAcceleratorTypesRequest>;
+  ) as unknown as Schema.Codec<ListAcceleratorTypesRequest>;
 
 export type ListAcceleratorTypesResponse = AcceleratorTypeList;
 export const ListAcceleratorTypesResponse =
@@ -54530,7 +54530,7 @@ export const InsertInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertInstanceGroupsRequest>;
 
 export type InsertInstanceGroupsResponse = Operation;
 export const InsertInstanceGroupsResponse =
@@ -54596,7 +54596,7 @@ export const AggregatedListInstanceGroupsRequest =
       path: "projects/{project}/aggregated/instanceGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListInstanceGroupsRequest>;
 
 export type AggregatedListInstanceGroupsResponse = InstanceGroupAggregatedList;
 export const AggregatedListInstanceGroupsResponse =
@@ -54653,7 +54653,7 @@ export const SetNamedPortsInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetNamedPortsInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<SetNamedPortsInstanceGroupsRequest>;
 
 export type SetNamedPortsInstanceGroupsResponse = Operation;
 export const SetNamedPortsInstanceGroupsResponse =
@@ -54698,7 +54698,7 @@ export const GetInstanceGroupsRequest =
       path: "projects/{project}/zones/{zone}/instanceGroups/{instanceGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<GetInstanceGroupsRequest>;
 
 export type GetInstanceGroupsResponse = InstanceGroup;
 export const GetInstanceGroupsResponse =
@@ -54752,7 +54752,7 @@ export const ListInstanceGroupsRequest =
       path: "projects/{project}/zones/{zone}/instanceGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<ListInstanceGroupsRequest>;
 
 export type ListInstanceGroupsResponse = InstanceGroupList;
 export const ListInstanceGroupsResponse =
@@ -54806,7 +54806,7 @@ export const RemoveInstancesInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveInstancesInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<RemoveInstancesInstanceGroupsRequest>;
 
 export type RemoveInstancesInstanceGroupsResponse = Operation;
 export const RemoveInstancesInstanceGroupsResponse =
@@ -54854,7 +54854,7 @@ export const DeleteInstanceGroupsRequest =
       path: "projects/{project}/zones/{zone}/instanceGroups/{instanceGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteInstanceGroupsRequest>;
 
 export type DeleteInstanceGroupsResponse = Operation;
 export const DeleteInstanceGroupsResponse =
@@ -54906,7 +54906,7 @@ export const AddInstancesInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddInstancesInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<AddInstancesInstanceGroupsRequest>;
 
 export type AddInstancesInstanceGroupsResponse = Operation;
 export const AddInstancesInstanceGroupsResponse =
@@ -54955,7 +54955,7 @@ export const TestIamPermissionsInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInstanceGroupsRequest>;
 
 export type TestIamPermissionsInstanceGroupsResponse = TestPermissionsResponse;
 export const TestIamPermissionsInstanceGroupsResponse =
@@ -55023,7 +55023,7 @@ export const ListInstancesInstanceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInstancesInstanceGroupsRequest>;
+  ) as unknown as Schema.Codec<ListInstancesInstanceGroupsRequest>;
 
 export type ListInstancesInstanceGroupsResponse = InstanceGroupsListInstances;
 export const ListInstancesInstanceGroupsResponse =
@@ -55070,7 +55070,7 @@ export const GetMachineImagesRequest =
       path: "projects/{project}/global/machineImages/{machineImage}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMachineImagesRequest>;
+  ) as unknown as Schema.Codec<GetMachineImagesRequest>;
 
 export type GetMachineImagesResponse = MachineImage;
 export const GetMachineImagesResponse =
@@ -55112,7 +55112,7 @@ export const GetIamPolicyMachineImagesRequest =
       path: "projects/{project}/global/machineImages/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyMachineImagesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyMachineImagesRequest>;
 
 export type GetIamPolicyMachineImagesResponse = Policy;
 export const GetIamPolicyMachineImagesResponse =
@@ -55156,7 +55156,7 @@ export const SetIamPolicyMachineImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyMachineImagesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyMachineImagesRequest>;
 
 export type SetIamPolicyMachineImagesResponse = Policy;
 export const SetIamPolicyMachineImagesResponse =
@@ -55201,7 +55201,7 @@ export const DeleteMachineImagesRequest =
       path: "projects/{project}/global/machineImages/{machineImage}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMachineImagesRequest>;
+  ) as unknown as Schema.Codec<DeleteMachineImagesRequest>;
 
 export type DeleteMachineImagesResponse = Operation;
 export const DeleteMachineImagesResponse =
@@ -55254,7 +55254,7 @@ export const ListMachineImagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/global/machineImages" }),
     svc,
-  ) as unknown as Schema.Schema<ListMachineImagesRequest>;
+  ) as unknown as Schema.Codec<ListMachineImagesRequest>;
 
 export type ListMachineImagesResponse = MachineImageList;
 export const ListMachineImagesResponse =
@@ -55305,7 +55305,7 @@ export const InsertMachineImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertMachineImagesRequest>;
+  ) as unknown as Schema.Codec<InsertMachineImagesRequest>;
 
 export type InsertMachineImagesResponse = Operation;
 export const InsertMachineImagesResponse =
@@ -55351,7 +55351,7 @@ export const TestIamPermissionsMachineImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsMachineImagesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsMachineImagesRequest>;
 
 export type TestIamPermissionsMachineImagesResponse = TestPermissionsResponse;
 export const TestIamPermissionsMachineImagesResponse =
@@ -55397,7 +55397,7 @@ export const SetLabelsMachineImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsMachineImagesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsMachineImagesRequest>;
 
 export type SetLabelsMachineImagesResponse = Operation;
 export const SetLabelsMachineImagesResponse =
@@ -55444,7 +55444,7 @@ export const InsertFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertFirewallsRequest>;
+) as unknown as Schema.Codec<InsertFirewallsRequest>;
 
 export type InsertFirewallsResponse = Operation;
 export const InsertFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -55491,7 +55491,7 @@ export const PatchFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchFirewallsRequest>;
+) as unknown as Schema.Codec<PatchFirewallsRequest>;
 
 export type PatchFirewallsResponse = Operation;
 export const PatchFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -55536,7 +55536,7 @@ export const TestIamPermissionsFirewallsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsFirewallsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsFirewallsRequest>;
 
 export type TestIamPermissionsFirewallsResponse = TestPermissionsResponse;
 export const TestIamPermissionsFirewallsResponse =
@@ -55577,7 +55577,7 @@ export const GetFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/firewalls/{firewall}",
   }),
   svc,
-) as unknown as Schema.Schema<GetFirewallsRequest>;
+) as unknown as Schema.Codec<GetFirewallsRequest>;
 
 export type GetFirewallsResponse = Firewall;
 export const GetFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Firewall;
@@ -55617,7 +55617,7 @@ export const DeleteFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/global/firewalls/{firewall}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteFirewallsRequest>;
+) as unknown as Schema.Codec<DeleteFirewallsRequest>;
 
 export type DeleteFirewallsResponse = Operation;
 export const DeleteFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -55668,7 +55668,7 @@ export const ListFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/firewalls" }),
   svc,
-) as unknown as Schema.Schema<ListFirewallsRequest>;
+) as unknown as Schema.Codec<ListFirewallsRequest>;
 
 export type ListFirewallsResponse = FirewallList;
 export const ListFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ FirewallList;
@@ -55717,7 +55717,7 @@ export const UpdateFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateFirewallsRequest>;
+) as unknown as Schema.Codec<UpdateFirewallsRequest>;
 
 export type UpdateFirewallsResponse = Operation;
 export const UpdateFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -55770,7 +55770,7 @@ export const InsertInterconnectAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInterconnectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<InsertInterconnectAttachmentsRequest>;
 
 export type InsertInterconnectAttachmentsResponse = Operation;
 export const InsertInterconnectAttachmentsResponse =
@@ -55824,7 +55824,7 @@ export const PatchInterconnectAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInterconnectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<PatchInterconnectAttachmentsRequest>;
 
 export type PatchInterconnectAttachmentsResponse = Operation;
 export const PatchInterconnectAttachmentsResponse =
@@ -55873,7 +55873,7 @@ export const TestIamPermissionsInterconnectAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInterconnectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInterconnectAttachmentsRequest>;
 
 export type TestIamPermissionsInterconnectAttachmentsResponse =
   TestPermissionsResponse;
@@ -55926,7 +55926,7 @@ export const SetLabelsInterconnectAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsInterconnectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<SetLabelsInterconnectAttachmentsRequest>;
 
 export type SetLabelsInterconnectAttachmentsResponse = Operation;
 export const SetLabelsInterconnectAttachmentsResponse =
@@ -55992,7 +55992,7 @@ export const AggregatedListInterconnectAttachmentsRequest =
       path: "projects/{project}/aggregated/interconnectAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListInterconnectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListInterconnectAttachmentsRequest>;
 
 export type AggregatedListInterconnectAttachmentsResponse =
   InterconnectAttachmentAggregatedList;
@@ -56043,7 +56043,7 @@ export const GetInterconnectAttachmentsRequest =
       path: "projects/{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInterconnectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetInterconnectAttachmentsRequest>;
 
 export type GetInterconnectAttachmentsResponse = InterconnectAttachment;
 export const GetInterconnectAttachmentsResponse =
@@ -56100,7 +56100,7 @@ export const ListInterconnectAttachmentsRequest =
       path: "projects/{project}/regions/{region}/interconnectAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInterconnectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListInterconnectAttachmentsRequest>;
 
 export type ListInterconnectAttachmentsResponse = InterconnectAttachmentList;
 export const ListInterconnectAttachmentsResponse =
@@ -56153,7 +56153,7 @@ export const DeleteInterconnectAttachmentsRequest =
       path: "projects/{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInterconnectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteInterconnectAttachmentsRequest>;
 
 export type DeleteInterconnectAttachmentsResponse = Operation;
 export const DeleteInterconnectAttachmentsResponse =
@@ -56200,7 +56200,7 @@ export const GetHostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/{association}/hosts/{host}",
   }),
   svc,
-) as unknown as Schema.Schema<GetHostsRequest>;
+) as unknown as Schema.Codec<GetHostsRequest>;
 
 export type GetHostsResponse = Host;
 export const GetHostsResponse = /*@__PURE__*/ /*#__PURE__*/ Host;
@@ -56250,7 +56250,7 @@ export const GetVersionHostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<GetVersionHostsRequest>;
+) as unknown as Schema.Codec<GetVersionHostsRequest>;
 
 export type GetVersionHostsResponse = Operation;
 export const GetVersionHostsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -56310,7 +56310,7 @@ export const ListHostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/{association}/hosts",
   }),
   svc,
-) as unknown as Schema.Schema<ListHostsRequest>;
+) as unknown as Schema.Codec<ListHostsRequest>;
 
 export type ListHostsResponse = HostsListResponse;
 export const ListHostsResponse = /*@__PURE__*/ /*#__PURE__*/ HostsListResponse;
@@ -56354,7 +56354,7 @@ export const DeleteInterconnectsRequest =
       path: "projects/{project}/global/interconnects/{interconnect}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInterconnectsRequest>;
+  ) as unknown as Schema.Codec<DeleteInterconnectsRequest>;
 
 export type DeleteInterconnectsResponse = Operation;
 export const DeleteInterconnectsResponse =
@@ -56407,7 +56407,7 @@ export const ListInterconnectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/global/interconnects" }),
     svc,
-  ) as unknown as Schema.Schema<ListInterconnectsRequest>;
+  ) as unknown as Schema.Codec<ListInterconnectsRequest>;
 
 export type ListInterconnectsResponse = InterconnectList;
 export const ListInterconnectsResponse =
@@ -56449,7 +56449,7 @@ export const GetInterconnectsRequest =
       path: "projects/{project}/global/interconnects/{interconnect}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInterconnectsRequest>;
+  ) as unknown as Schema.Codec<GetInterconnectsRequest>;
 
 export type GetInterconnectsResponse = Interconnect;
 export const GetInterconnectsResponse =
@@ -56486,7 +56486,7 @@ export const GetMacsecConfigInterconnectsRequest =
       path: "projects/{project}/global/interconnects/{interconnect}/getMacsecConfig",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMacsecConfigInterconnectsRequest>;
+  ) as unknown as Schema.Codec<GetMacsecConfigInterconnectsRequest>;
 
 export type GetMacsecConfigInterconnectsResponse =
   InterconnectsGetMacsecConfigResponse;
@@ -56531,7 +56531,7 @@ export const SetLabelsInterconnectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsInterconnectsRequest>;
+  ) as unknown as Schema.Codec<SetLabelsInterconnectsRequest>;
 
 export type SetLabelsInterconnectsResponse = Operation;
 export const SetLabelsInterconnectsResponse =
@@ -56577,7 +56577,7 @@ export const InsertInterconnectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInterconnectsRequest>;
+  ) as unknown as Schema.Codec<InsertInterconnectsRequest>;
 
 export type InsertInterconnectsResponse = Operation;
 export const InsertInterconnectsResponse =
@@ -56619,7 +56619,7 @@ export const GetDiagnosticsInterconnectsRequest =
       path: "projects/{project}/global/interconnects/{interconnect}/getDiagnostics",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetDiagnosticsInterconnectsRequest>;
+  ) as unknown as Schema.Codec<GetDiagnosticsInterconnectsRequest>;
 
 export type GetDiagnosticsInterconnectsResponse =
   InterconnectsGetDiagnosticsResponse;
@@ -56667,7 +56667,7 @@ export const PatchInterconnectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInterconnectsRequest>;
+  ) as unknown as Schema.Codec<PatchInterconnectsRequest>;
 
 export type PatchInterconnectsResponse = Operation;
 export const PatchInterconnectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -56712,7 +56712,7 @@ export const TestIamPermissionsInterconnectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInterconnectsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInterconnectsRequest>;
 
 export type TestIamPermissionsInterconnectsResponse = TestPermissionsResponse;
 export const TestIamPermissionsInterconnectsResponse =
@@ -56767,7 +56767,7 @@ export const GetVersionReservationSlotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetVersionReservationSlotsRequest>;
+  ) as unknown as Schema.Codec<GetVersionReservationSlotsRequest>;
 
 export type GetVersionReservationSlotsResponse = Operation;
 export const GetVersionReservationSlotsResponse =
@@ -56815,7 +56815,7 @@ export const GetReservationSlotsRequest =
       path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetReservationSlotsRequest>;
+  ) as unknown as Schema.Codec<GetReservationSlotsRequest>;
 
 export type GetReservationSlotsResponse = ReservationSlotsGetResponse;
 export const GetReservationSlotsResponse =
@@ -56872,7 +56872,7 @@ export const ListReservationSlotsRequest =
       path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListReservationSlotsRequest>;
+  ) as unknown as Schema.Codec<ListReservationSlotsRequest>;
 
 export type ListReservationSlotsResponse = ReservationSlotsListResponse;
 export const ListReservationSlotsResponse =
@@ -56927,7 +56927,7 @@ export const UpdateReservationSlotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateReservationSlotsRequest>;
+  ) as unknown as Schema.Codec<UpdateReservationSlotsRequest>;
 
 export type UpdateReservationSlotsResponse = Operation;
 export const UpdateReservationSlotsResponse =
@@ -56976,7 +56976,7 @@ export const BulkInsertRegionInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkInsertRegionInstancesRequest>;
+  ) as unknown as Schema.Codec<BulkInsertRegionInstancesRequest>;
 
 export type BulkInsertRegionInstancesResponse = Operation;
 export const BulkInsertRegionInstancesResponse =
@@ -57021,7 +57021,7 @@ export const DeleteExternalVpnGatewaysRequest =
       path: "projects/{project}/global/externalVpnGateways/{externalVpnGateway}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteExternalVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<DeleteExternalVpnGatewaysRequest>;
 
 export type DeleteExternalVpnGatewaysResponse = Operation;
 export const DeleteExternalVpnGatewaysResponse =
@@ -57077,7 +57077,7 @@ export const ListExternalVpnGatewaysRequest =
       path: "projects/{project}/global/externalVpnGateways",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListExternalVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<ListExternalVpnGatewaysRequest>;
 
 export type ListExternalVpnGatewaysResponse = ExternalVpnGatewayList;
 export const ListExternalVpnGatewaysResponse =
@@ -57119,7 +57119,7 @@ export const GetExternalVpnGatewaysRequest =
       path: "projects/{project}/global/externalVpnGateways/{externalVpnGateway}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetExternalVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetExternalVpnGatewaysRequest>;
 
 export type GetExternalVpnGatewaysResponse = ExternalVpnGateway;
 export const GetExternalVpnGatewaysResponse =
@@ -57160,7 +57160,7 @@ export const SetLabelsExternalVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsExternalVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<SetLabelsExternalVpnGatewaysRequest>;
 
 export type SetLabelsExternalVpnGatewaysResponse = Operation;
 export const SetLabelsExternalVpnGatewaysResponse =
@@ -57206,7 +57206,7 @@ export const InsertExternalVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertExternalVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<InsertExternalVpnGatewaysRequest>;
 
 export type InsertExternalVpnGatewaysResponse = Operation;
 export const InsertExternalVpnGatewaysResponse =
@@ -57252,7 +57252,7 @@ export const TestIamPermissionsExternalVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsExternalVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsExternalVpnGatewaysRequest>;
 
 export type TestIamPermissionsExternalVpnGatewaysResponse =
   TestPermissionsResponse;
@@ -57295,7 +57295,7 @@ export const GetSslCertificatesRequest =
       path: "projects/{project}/global/sslCertificates/{sslCertificate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<GetSslCertificatesRequest>;
 
 export type GetSslCertificatesResponse = SslCertificate;
 export const GetSslCertificatesResponse =
@@ -57356,7 +57356,7 @@ export const AggregatedListSslCertificatesRequest =
       path: "projects/{project}/aggregated/sslCertificates",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListSslCertificatesRequest>;
 
 export type AggregatedListSslCertificatesResponse =
   SslCertificateAggregatedList;
@@ -57405,7 +57405,7 @@ export const DeleteSslCertificatesRequest =
       path: "projects/{project}/global/sslCertificates/{sslCertificate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<DeleteSslCertificatesRequest>;
 
 export type DeleteSslCertificatesResponse = Operation;
 export const DeleteSslCertificatesResponse =
@@ -57461,7 +57461,7 @@ export const ListSslCertificatesRequest =
       path: "projects/{project}/global/sslCertificates",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<ListSslCertificatesRequest>;
 
 export type ListSslCertificatesResponse = SslCertificateList;
 export const ListSslCertificatesResponse =
@@ -57507,7 +57507,7 @@ export const InsertSslCertificatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<InsertSslCertificatesRequest>;
 
 export type InsertSslCertificatesResponse = Operation;
 export const InsertSslCertificatesResponse =
@@ -57553,7 +57553,7 @@ export const TestIamPermissionsSslCertificatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsSslCertificatesRequest>;
 
 export type TestIamPermissionsSslCertificatesResponse = TestPermissionsResponse;
 export const TestIamPermissionsSslCertificatesResponse =
@@ -57604,7 +57604,7 @@ export const InsertCrossSiteNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertCrossSiteNetworksRequest>;
+  ) as unknown as Schema.Codec<InsertCrossSiteNetworksRequest>;
 
 export type InsertCrossSiteNetworksResponse = Operation;
 export const InsertCrossSiteNetworksResponse =
@@ -57661,7 +57661,7 @@ export const PatchCrossSiteNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCrossSiteNetworksRequest>;
+  ) as unknown as Schema.Codec<PatchCrossSiteNetworksRequest>;
 
 export type PatchCrossSiteNetworksResponse = Operation;
 export const PatchCrossSiteNetworksResponse =
@@ -57703,7 +57703,7 @@ export const GetCrossSiteNetworksRequest =
       path: "projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCrossSiteNetworksRequest>;
+  ) as unknown as Schema.Codec<GetCrossSiteNetworksRequest>;
 
 export type GetCrossSiteNetworksResponse = CrossSiteNetwork;
 export const GetCrossSiteNetworksResponse =
@@ -57743,7 +57743,7 @@ export const DeleteCrossSiteNetworksRequest =
       path: "projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCrossSiteNetworksRequest>;
+  ) as unknown as Schema.Codec<DeleteCrossSiteNetworksRequest>;
 
 export type DeleteCrossSiteNetworksResponse = Operation;
 export const DeleteCrossSiteNetworksResponse =
@@ -57799,7 +57799,7 @@ export const ListCrossSiteNetworksRequest =
       path: "projects/{project}/global/crossSiteNetworks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCrossSiteNetworksRequest>;
+  ) as unknown as Schema.Codec<ListCrossSiteNetworksRequest>;
 
 export type ListCrossSiteNetworksResponse = CrossSiteNetworkList;
 export const ListCrossSiteNetworksResponse =
@@ -57855,7 +57855,7 @@ export const ListNetworkProfilesRequest =
       path: "projects/{project}/global/networkProfiles",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNetworkProfilesRequest>;
+  ) as unknown as Schema.Codec<ListNetworkProfilesRequest>;
 
 export type ListNetworkProfilesResponse = NetworkProfilesListResponse;
 export const ListNetworkProfilesResponse =
@@ -57897,7 +57897,7 @@ export const GetNetworkProfilesRequest =
       path: "projects/{project}/global/networkProfiles/{networkProfile}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNetworkProfilesRequest>;
+  ) as unknown as Schema.Codec<GetNetworkProfilesRequest>;
 
 export type GetNetworkProfilesResponse = NetworkProfile;
 export const GetNetworkProfilesResponse =
@@ -57951,7 +57951,7 @@ export const ListRegionOperationsRequest =
       path: "projects/{project}/regions/{region}/operations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionOperationsRequest>;
+  ) as unknown as Schema.Codec<ListRegionOperationsRequest>;
 
 export type ListRegionOperationsResponse = OperationList;
 export const ListRegionOperationsResponse =
@@ -57997,7 +57997,7 @@ export const WaitRegionOperationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WaitRegionOperationsRequest>;
+  ) as unknown as Schema.Codec<WaitRegionOperationsRequest>;
 
 export type WaitRegionOperationsResponse = Operation;
 export const WaitRegionOperationsResponse =
@@ -58042,13 +58042,13 @@ export const DeleteRegionOperationsRequest =
       path: "projects/{project}/regions/{region}/operations/{operation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionOperationsRequest>;
 
 export interface DeleteRegionOperationsResponse {}
-export const DeleteRegionOperationsResponse: Schema.Schema<DeleteRegionOperationsResponse> =
+export const DeleteRegionOperationsResponse: Schema.Codec<DeleteRegionOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteRegionOperationsResponse>;
+  ) as any as Schema.Codec<DeleteRegionOperationsResponse>;
 
 export type DeleteRegionOperationsError =
   | DefaultErrors
@@ -58089,7 +58089,7 @@ export const GetRegionOperationsRequest =
       path: "projects/{project}/regions/{region}/operations/{operation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionOperationsRequest>;
+  ) as unknown as Schema.Codec<GetRegionOperationsRequest>;
 
 export type GetRegionOperationsResponse = Operation;
 export const GetRegionOperationsResponse =
@@ -58146,7 +58146,7 @@ export const AddRuleRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddRuleRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddRuleRegionNetworkFirewallPoliciesRequest>;
 
 export type AddRuleRegionNetworkFirewallPoliciesResponse = Operation;
 export const AddRuleRegionNetworkFirewallPoliciesResponse =
@@ -58208,7 +58208,7 @@ export const AddAssociationRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddAssociationRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddAssociationRegionNetworkFirewallPoliciesRequest>;
 
 export type AddAssociationRegionNetworkFirewallPoliciesResponse = Operation;
 export const AddAssociationRegionNetworkFirewallPoliciesResponse =
@@ -58253,7 +58253,7 @@ export const GetRegionNetworkFirewallPoliciesRequest =
       path: "projects/{project}/regions/{region}/firewallPolicies/{firewallPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRegionNetworkFirewallPoliciesRequest>;
 
 export type GetRegionNetworkFirewallPoliciesResponse = FirewallPolicy;
 export const GetRegionNetworkFirewallPoliciesResponse =
@@ -58306,7 +58306,7 @@ export const PatchRuleRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRuleRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRuleRegionNetworkFirewallPoliciesRequest>;
 
 export type PatchRuleRegionNetworkFirewallPoliciesResponse = Operation;
 export const PatchRuleRegionNetworkFirewallPoliciesResponse =
@@ -58358,7 +58358,7 @@ export const PatchRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionNetworkFirewallPoliciesRequest>;
 
 export type PatchRegionNetworkFirewallPoliciesResponse = Operation;
 export const PatchRegionNetworkFirewallPoliciesResponse =
@@ -58407,7 +58407,7 @@ export const SetIamPolicyRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyRegionNetworkFirewallPoliciesRequest>;
 
 export type SetIamPolicyRegionNetworkFirewallPoliciesResponse = Policy;
 export const SetIamPolicyRegionNetworkFirewallPoliciesResponse =
@@ -58461,7 +58461,7 @@ export const CloneRulesRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CloneRulesRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<CloneRulesRegionNetworkFirewallPoliciesRequest>;
 
 export type CloneRulesRegionNetworkFirewallPoliciesResponse = Operation;
 export const CloneRulesRegionNetworkFirewallPoliciesResponse =
@@ -58510,7 +58510,7 @@ export const InsertRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionNetworkFirewallPoliciesRequest>;
 
 export type InsertRegionNetworkFirewallPoliciesResponse = Operation;
 export const InsertRegionNetworkFirewallPoliciesResponse =
@@ -58555,7 +58555,7 @@ export const GetEffectiveFirewallsRegionNetworkFirewallPoliciesRequest =
       path: "projects/{project}/regions/{region}/firewallPolicies/getEffectiveFirewalls",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEffectiveFirewallsRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetEffectiveFirewallsRegionNetworkFirewallPoliciesRequest>;
 
 export type GetEffectiveFirewallsRegionNetworkFirewallPoliciesResponse =
   RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse;
@@ -58602,7 +58602,7 @@ export const DeleteRegionNetworkFirewallPoliciesRequest =
       path: "projects/{project}/regions/{region}/firewallPolicies/{firewallPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionNetworkFirewallPoliciesRequest>;
 
 export type DeleteRegionNetworkFirewallPoliciesResponse = Operation;
 export const DeleteRegionNetworkFirewallPoliciesResponse =
@@ -58654,7 +58654,7 @@ export const RemoveAssociationRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveAssociationRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveAssociationRegionNetworkFirewallPoliciesRequest>;
 
 export type RemoveAssociationRegionNetworkFirewallPoliciesResponse = Operation;
 export const RemoveAssociationRegionNetworkFirewallPoliciesResponse =
@@ -58713,7 +58713,7 @@ export const ListRegionNetworkFirewallPoliciesRequest =
       path: "projects/{project}/regions/{region}/firewallPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListRegionNetworkFirewallPoliciesRequest>;
 
 export type ListRegionNetworkFirewallPoliciesResponse = FirewallPolicyList;
 export const ListRegionNetworkFirewallPoliciesResponse =
@@ -58764,7 +58764,7 @@ export const GetAssociationRegionNetworkFirewallPoliciesRequest =
       path: "projects/{project}/regions/{region}/firewallPolicies/{firewallPolicy}/getAssociation",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAssociationRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetAssociationRegionNetworkFirewallPoliciesRequest>;
 
 export type GetAssociationRegionNetworkFirewallPoliciesResponse =
   FirewallPolicyAssociation;
@@ -58812,7 +58812,7 @@ export const TestIamPermissionsRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionNetworkFirewallPoliciesRequest>;
 
 export type TestIamPermissionsRegionNetworkFirewallPoliciesResponse =
   TestPermissionsResponse;
@@ -58861,7 +58861,7 @@ export const GetRuleRegionNetworkFirewallPoliciesRequest =
       path: "projects/{project}/regions/{region}/firewallPolicies/{firewallPolicy}/getRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRuleRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRuleRegionNetworkFirewallPoliciesRequest>;
 
 export type GetRuleRegionNetworkFirewallPoliciesResponse = FirewallPolicyRule;
 export const GetRuleRegionNetworkFirewallPoliciesResponse =
@@ -58911,7 +58911,7 @@ export const PatchAssociationRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAssociationRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchAssociationRegionNetworkFirewallPoliciesRequest>;
 
 export type PatchAssociationRegionNetworkFirewallPoliciesResponse = Operation;
 export const PatchAssociationRegionNetworkFirewallPoliciesResponse =
@@ -58963,7 +58963,7 @@ export const RemoveRuleRegionNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveRuleRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveRuleRegionNetworkFirewallPoliciesRequest>;
 
 export type RemoveRuleRegionNetworkFirewallPoliciesResponse = Operation;
 export const RemoveRuleRegionNetworkFirewallPoliciesResponse =
@@ -59013,7 +59013,7 @@ export const GetIamPolicyRegionNetworkFirewallPoliciesRequest =
       path: "projects/{project}/regions/{region}/firewallPolicies/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRegionNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRegionNetworkFirewallPoliciesRequest>;
 
 export type GetIamPolicyRegionNetworkFirewallPoliciesResponse = Policy;
 export const GetIamPolicyRegionNetworkFirewallPoliciesResponse =
@@ -59059,7 +59059,7 @@ export const DeleteRegionAutoscalersRequest =
       path: "projects/{project}/regions/{region}/autoscalers/{autoscaler}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionAutoscalersRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionAutoscalersRequest>;
 
 export type DeleteRegionAutoscalersResponse = Operation;
 export const DeleteRegionAutoscalersResponse =
@@ -59118,7 +59118,7 @@ export const ListRegionAutoscalersRequest =
       path: "projects/{project}/regions/{region}/autoscalers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionAutoscalersRequest>;
+  ) as unknown as Schema.Codec<ListRegionAutoscalersRequest>;
 
 export type ListRegionAutoscalersResponse = RegionAutoscalerList;
 export const ListRegionAutoscalersResponse =
@@ -59170,7 +59170,7 @@ export const UpdateRegionAutoscalersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRegionAutoscalersRequest>;
+  ) as unknown as Schema.Codec<UpdateRegionAutoscalersRequest>;
 
 export type UpdateRegionAutoscalersResponse = Operation;
 export const UpdateRegionAutoscalersResponse =
@@ -59215,7 +59215,7 @@ export const GetRegionAutoscalersRequest =
       path: "projects/{project}/regions/{region}/autoscalers/{autoscaler}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionAutoscalersRequest>;
+  ) as unknown as Schema.Codec<GetRegionAutoscalersRequest>;
 
 export type GetRegionAutoscalersResponse = Autoscaler;
 export const GetRegionAutoscalersResponse =
@@ -59259,7 +59259,7 @@ export const InsertRegionAutoscalersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionAutoscalersRequest>;
+  ) as unknown as Schema.Codec<InsertRegionAutoscalersRequest>;
 
 export type InsertRegionAutoscalersResponse = Operation;
 export const InsertRegionAutoscalersResponse =
@@ -59311,7 +59311,7 @@ export const PatchRegionAutoscalersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionAutoscalersRequest>;
+  ) as unknown as Schema.Codec<PatchRegionAutoscalersRequest>;
 
 export type PatchRegionAutoscalersResponse = Operation;
 export const PatchRegionAutoscalersResponse =
@@ -59360,7 +59360,7 @@ export const TestIamPermissionsRegionAutoscalersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionAutoscalersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionAutoscalersRequest>;
 
 export type TestIamPermissionsRegionAutoscalersResponse =
   TestPermissionsResponse;
@@ -59410,7 +59410,7 @@ export const InsertReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertReservationsRequest>;
+  ) as unknown as Schema.Codec<InsertReservationsRequest>;
 
 export type InsertReservationsResponse = Operation;
 export const InsertReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -59475,7 +59475,7 @@ export const AggregatedListReservationsRequest =
       path: "projects/{project}/aggregated/reservations",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListReservationsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListReservationsRequest>;
 
 export type AggregatedListReservationsResponse = ReservationAggregatedList;
 export const AggregatedListReservationsResponse =
@@ -59524,7 +59524,7 @@ export const GetReservationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/zones/{zone}/reservations/{reservation}",
   }),
   svc,
-) as unknown as Schema.Schema<GetReservationsRequest>;
+) as unknown as Schema.Codec<GetReservationsRequest>;
 
 export type GetReservationsResponse = Reservation;
 export const GetReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Reservation;
@@ -59577,7 +59577,7 @@ export const ListReservationsRequest =
       path: "projects/{project}/zones/{zone}/reservations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListReservationsRequest>;
+  ) as unknown as Schema.Codec<ListReservationsRequest>;
 
 export type ListReservationsResponse = ReservationList;
 export const ListReservationsResponse =
@@ -59629,7 +59629,7 @@ export const ResizeReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResizeReservationsRequest>;
+  ) as unknown as Schema.Codec<ResizeReservationsRequest>;
 
 export type ResizeReservationsResponse = Operation;
 export const ResizeReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -59687,7 +59687,7 @@ export const UpdateReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateReservationsRequest>;
+  ) as unknown as Schema.Codec<UpdateReservationsRequest>;
 
 export type UpdateReservationsResponse = Operation;
 export const UpdateReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -59734,7 +59734,7 @@ export const DeleteReservationsRequest =
       path: "projects/{project}/zones/{zone}/reservations/{reservation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteReservationsRequest>;
+  ) as unknown as Schema.Codec<DeleteReservationsRequest>;
 
 export type DeleteReservationsResponse = Operation;
 export const DeleteReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -59782,7 +59782,7 @@ export const TestIamPermissionsReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsReservationsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsReservationsRequest>;
 
 export type TestIamPermissionsReservationsResponse = TestPermissionsResponse;
 export const TestIamPermissionsReservationsResponse =
@@ -59836,7 +59836,7 @@ export const PerformMaintenanceReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PerformMaintenanceReservationsRequest>;
+  ) as unknown as Schema.Codec<PerformMaintenanceReservationsRequest>;
 
 export type PerformMaintenanceReservationsResponse = Operation;
 export const PerformMaintenanceReservationsResponse =
@@ -59886,7 +59886,7 @@ export const GetIamPolicyReservationsRequest =
       path: "projects/{project}/zones/{zone}/reservations/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyReservationsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyReservationsRequest>;
 
 export type GetIamPolicyReservationsResponse = Policy;
 export const GetIamPolicyReservationsResponse =
@@ -59933,7 +59933,7 @@ export const SetIamPolicyReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyReservationsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyReservationsRequest>;
 
 export type SetIamPolicyReservationsResponse = Policy;
 export const SetIamPolicyReservationsResponse =
@@ -59986,7 +59986,7 @@ export const ListHealthChecksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/global/healthChecks" }),
     svc,
-  ) as unknown as Schema.Schema<ListHealthChecksRequest>;
+  ) as unknown as Schema.Codec<ListHealthChecksRequest>;
 
 export type ListHealthChecksResponse = HealthCheckList;
 export const ListHealthChecksResponse =
@@ -60035,7 +60035,7 @@ export const UpdateHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateHealthChecksRequest>;
+  ) as unknown as Schema.Codec<UpdateHealthChecksRequest>;
 
 export type UpdateHealthChecksResponse = Operation;
 export const UpdateHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -60079,7 +60079,7 @@ export const DeleteHealthChecksRequest =
       path: "projects/{project}/global/healthChecks/{healthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteHealthChecksRequest>;
+  ) as unknown as Schema.Codec<DeleteHealthChecksRequest>;
 
 export type DeleteHealthChecksResponse = Operation;
 export const DeleteHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -60144,7 +60144,7 @@ export const AggregatedListHealthChecksRequest =
       path: "projects/{project}/aggregated/healthChecks",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListHealthChecksRequest>;
+  ) as unknown as Schema.Codec<AggregatedListHealthChecksRequest>;
 
 export type AggregatedListHealthChecksResponse = HealthChecksAggregatedList;
 export const AggregatedListHealthChecksResponse =
@@ -60190,7 +60190,7 @@ export const GetHealthChecksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/global/healthChecks/{healthCheck}",
   }),
   svc,
-) as unknown as Schema.Schema<GetHealthChecksRequest>;
+) as unknown as Schema.Codec<GetHealthChecksRequest>;
 
 export type GetHealthChecksResponse = HealthCheck;
 export const GetHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ HealthCheck;
@@ -60230,7 +60230,7 @@ export const InsertHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertHealthChecksRequest>;
+  ) as unknown as Schema.Codec<InsertHealthChecksRequest>;
 
 export type InsertHealthChecksResponse = Operation;
 export const InsertHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -60278,7 +60278,7 @@ export const PatchHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchHealthChecksRequest>;
+  ) as unknown as Schema.Codec<PatchHealthChecksRequest>;
 
 export type PatchHealthChecksResponse = Operation;
 export const PatchHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -60323,7 +60323,7 @@ export const TestIamPermissionsHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsHealthChecksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsHealthChecksRequest>;
 
 export type TestIamPermissionsHealthChecksResponse = TestPermissionsResponse;
 export const TestIamPermissionsHealthChecksResponse =
@@ -60372,7 +60372,7 @@ export const InsertRegionBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionBackendBucketsRequest>;
 
 export type InsertRegionBackendBucketsResponse = Operation;
 export const InsertRegionBackendBucketsResponse =
@@ -60425,7 +60425,7 @@ export const DeleteRegionBackendBucketsRequest =
       path: "projects/{project}/regions/{region}/backendBuckets/{backendBucket}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionBackendBucketsRequest>;
 
 export type DeleteRegionBackendBucketsResponse = Operation;
 export const DeleteRegionBackendBucketsResponse =
@@ -60484,7 +60484,7 @@ export const ListRegionBackendBucketsRequest =
       path: "projects/{project}/regions/{region}/backendBuckets",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<ListRegionBackendBucketsRequest>;
 
 export type ListRegionBackendBucketsResponse = BackendBucketList;
 export const ListRegionBackendBucketsResponse =
@@ -60532,7 +60532,7 @@ export const GetRegionBackendBucketsRequest =
       path: "projects/{project}/regions/{region}/backendBuckets/{backendBucket}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<GetRegionBackendBucketsRequest>;
 
 export type GetRegionBackendBucketsResponse = BackendBucket;
 export const GetRegionBackendBucketsResponse =
@@ -60579,7 +60579,7 @@ export const PatchRegionBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<PatchRegionBackendBucketsRequest>;
 
 export type PatchRegionBackendBucketsResponse = Operation;
 export const PatchRegionBackendBucketsResponse =
@@ -60628,7 +60628,7 @@ export const TestIamPermissionsRegionBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionBackendBucketsRequest>;
 
 export type TestIamPermissionsRegionBackendBucketsResponse =
   TestPermissionsResponse;
@@ -60688,7 +60688,7 @@ export const ListUsableRegionBackendBucketsRequest =
       path: "projects/{project}/regions/{region}/backendBuckets/listUsable",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsableRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<ListUsableRegionBackendBucketsRequest>;
 
 export type ListUsableRegionBackendBucketsResponse = BackendBucketListUsable;
 export const ListUsableRegionBackendBucketsResponse =
@@ -60741,7 +60741,7 @@ export const GetIamPolicyRegionBackendBucketsRequest =
       path: "projects/{project}/regions/{region}/backendBuckets/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRegionBackendBucketsRequest>;
 
 export type GetIamPolicyRegionBackendBucketsResponse = Policy;
 export const GetIamPolicyRegionBackendBucketsResponse =
@@ -60788,7 +60788,7 @@ export const SetIamPolicyRegionBackendBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyRegionBackendBucketsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyRegionBackendBucketsRequest>;
 
 export type SetIamPolicyRegionBackendBucketsResponse = Policy;
 export const SetIamPolicyRegionBackendBucketsResponse =
@@ -60850,7 +60850,7 @@ export const ListRegionInstanceTemplatesRequest =
       path: "projects/{project}/regions/{region}/instanceTemplates",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListRegionInstanceTemplatesRequest>;
 
 export type ListRegionInstanceTemplatesResponse = InstanceTemplateList;
 export const ListRegionInstanceTemplatesResponse =
@@ -60901,7 +60901,7 @@ export const DeleteRegionInstanceTemplatesRequest =
       path: "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionInstanceTemplatesRequest>;
 
 export type DeleteRegionInstanceTemplatesResponse = Operation;
 export const DeleteRegionInstanceTemplatesResponse =
@@ -60949,7 +60949,7 @@ export const GetRegionInstanceTemplatesRequest =
       path: "projects/{project}/regions/{region}/instanceTemplates/{instanceTemplate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetRegionInstanceTemplatesRequest>;
 
 export type GetRegionInstanceTemplatesResponse = InstanceTemplate;
 export const GetRegionInstanceTemplatesResponse =
@@ -60996,7 +60996,7 @@ export const InsertRegionInstanceTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionInstanceTemplatesRequest>;
 
 export type InsertRegionInstanceTemplatesResponse = Operation;
 export const InsertRegionInstanceTemplatesResponse =
@@ -61052,7 +61052,7 @@ export const ResumeInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResumeInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ResumeInstancesRegionInstanceGroupManagersRequest>;
 
 export type ResumeInstancesRegionInstanceGroupManagersResponse = Operation;
 export const ResumeInstancesRegionInstanceGroupManagersResponse =
@@ -61108,7 +61108,7 @@ export const StartInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<StartInstancesRegionInstanceGroupManagersRequest>;
 
 export type StartInstancesRegionInstanceGroupManagersResponse = Operation;
 export const StartInstancesRegionInstanceGroupManagersResponse =
@@ -61161,7 +61161,7 @@ export const ApplyUpdatesToInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ApplyUpdatesToInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ApplyUpdatesToInstancesRegionInstanceGroupManagersRequest>;
 
 export type ApplyUpdatesToInstancesRegionInstanceGroupManagersResponse =
   Operation;
@@ -61216,7 +61216,7 @@ export const ResizeRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResizeRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ResizeRegionInstanceGroupManagersRequest>;
 
 export type ResizeRegionInstanceGroupManagersResponse = Operation;
 export const ResizeRegionInstanceGroupManagersResponse =
@@ -61277,7 +61277,7 @@ export const StopInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StopInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<StopInstancesRegionInstanceGroupManagersRequest>;
 
 export type StopInstancesRegionInstanceGroupManagersResponse = Operation;
 export const StopInstancesRegionInstanceGroupManagersResponse =
@@ -61338,7 +61338,7 @@ export const DeleteInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<DeleteInstancesRegionInstanceGroupManagersRequest>;
 
 export type DeleteInstancesRegionInstanceGroupManagersResponse = Operation;
 export const DeleteInstancesRegionInstanceGroupManagersResponse =
@@ -61403,7 +61403,7 @@ export const ListPerInstanceConfigsRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPerInstanceConfigsRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ListPerInstanceConfigsRegionInstanceGroupManagersRequest>;
 
 export type ListPerInstanceConfigsRegionInstanceGroupManagersResponse =
   RegionInstanceGroupManagersListInstanceConfigsResp;
@@ -61464,7 +61464,7 @@ export const DeleteRegionInstanceGroupManagersRequest =
       path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionInstanceGroupManagersRequest>;
 
 export type DeleteRegionInstanceGroupManagersResponse = Operation;
 export const DeleteRegionInstanceGroupManagersResponse =
@@ -61520,7 +61520,7 @@ export const UpdatePerInstanceConfigsRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePerInstanceConfigsRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<UpdatePerInstanceConfigsRegionInstanceGroupManagersRequest>;
 
 export type UpdatePerInstanceConfigsRegionInstanceGroupManagersResponse =
   Operation;
@@ -61574,7 +61574,7 @@ export const DeletePerInstanceConfigsRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePerInstanceConfigsRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<DeletePerInstanceConfigsRegionInstanceGroupManagersRequest>;
 
 export type DeletePerInstanceConfigsRegionInstanceGroupManagersResponse =
   Operation;
@@ -61640,7 +61640,7 @@ export const ListManagedInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ListManagedInstancesRegionInstanceGroupManagersRequest>;
 
 export type ListManagedInstancesRegionInstanceGroupManagersResponse =
   RegionInstanceGroupManagersListInstancesResponse;
@@ -61701,7 +61701,7 @@ export const SetTargetPoolsRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetTargetPoolsRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<SetTargetPoolsRegionInstanceGroupManagersRequest>;
 
 export type SetTargetPoolsRegionInstanceGroupManagersResponse = Operation;
 export const SetTargetPoolsRegionInstanceGroupManagersResponse =
@@ -61755,7 +61755,7 @@ export const PatchRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<PatchRegionInstanceGroupManagersRequest>;
 
 export type PatchRegionInstanceGroupManagersResponse = Operation;
 export const PatchRegionInstanceGroupManagersResponse =
@@ -61811,7 +61811,7 @@ export const SuspendInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SuspendInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<SuspendInstancesRegionInstanceGroupManagersRequest>;
 
 export type SuspendInstancesRegionInstanceGroupManagersResponse = Operation;
 export const SuspendInstancesRegionInstanceGroupManagersResponse =
@@ -61872,7 +61872,7 @@ export const RecreateInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RecreateInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<RecreateInstancesRegionInstanceGroupManagersRequest>;
 
 export type RecreateInstancesRegionInstanceGroupManagersResponse = Operation;
 export const RecreateInstancesRegionInstanceGroupManagersResponse =
@@ -61928,7 +61928,7 @@ export const SetAutoHealingPoliciesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetAutoHealingPoliciesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<SetAutoHealingPoliciesRegionInstanceGroupManagersRequest>;
 
 export type SetAutoHealingPoliciesRegionInstanceGroupManagersResponse =
   Operation;
@@ -61985,7 +61985,7 @@ export const ResizeAdvancedRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResizeAdvancedRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ResizeAdvancedRegionInstanceGroupManagersRequest>;
 
 export type ResizeAdvancedRegionInstanceGroupManagersResponse = Operation;
 export const ResizeAdvancedRegionInstanceGroupManagersResponse =
@@ -62041,7 +62041,7 @@ export const AdoptInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AdoptInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<AdoptInstancesRegionInstanceGroupManagersRequest>;
 
 export type AdoptInstancesRegionInstanceGroupManagersResponse = Operation;
 export const AdoptInstancesRegionInstanceGroupManagersResponse =
@@ -62088,7 +62088,7 @@ export const GetRegionInstanceGroupManagersRequest =
       path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<GetRegionInstanceGroupManagersRequest>;
 
 export type GetRegionInstanceGroupManagersResponse = InstanceGroupManager;
 export const GetRegionInstanceGroupManagersResponse =
@@ -62150,7 +62150,7 @@ export const ListErrorsRegionInstanceGroupManagersRequest =
       path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listErrors",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListErrorsRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ListErrorsRegionInstanceGroupManagersRequest>;
 
 export type ListErrorsRegionInstanceGroupManagersResponse =
   RegionInstanceGroupManagersListErrorsResponse;
@@ -62210,7 +62210,7 @@ export const AbandonInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AbandonInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<AbandonInstancesRegionInstanceGroupManagersRequest>;
 
 export type AbandonInstancesRegionInstanceGroupManagersResponse = Operation;
 export const AbandonInstancesRegionInstanceGroupManagersResponse =
@@ -62266,7 +62266,7 @@ export const CreateInstancesRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateInstancesRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<CreateInstancesRegionInstanceGroupManagersRequest>;
 
 export type CreateInstancesRegionInstanceGroupManagersResponse = Operation;
 export const CreateInstancesRegionInstanceGroupManagersResponse =
@@ -62322,7 +62322,7 @@ export const PatchPerInstanceConfigsRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPerInstanceConfigsRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<PatchPerInstanceConfigsRegionInstanceGroupManagersRequest>;
 
 export type PatchPerInstanceConfigsRegionInstanceGroupManagersResponse =
   Operation;
@@ -62372,7 +62372,7 @@ export const TestIamPermissionsRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionInstanceGroupManagersRequest>;
 
 export type TestIamPermissionsRegionInstanceGroupManagersResponse =
   TestPermissionsResponse;
@@ -62432,7 +62432,7 @@ export const ListRegionInstanceGroupManagersRequest =
       path: "projects/{project}/regions/{region}/instanceGroupManagers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ListRegionInstanceGroupManagersRequest>;
 
 export type ListRegionInstanceGroupManagersResponse =
   RegionInstanceGroupManagerList;
@@ -62490,7 +62490,7 @@ export const UpdateRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<UpdateRegionInstanceGroupManagersRequest>;
 
 export type UpdateRegionInstanceGroupManagersResponse = Operation;
 export const UpdateRegionInstanceGroupManagersResponse =
@@ -62546,7 +62546,7 @@ export const SetInstanceTemplateRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetInstanceTemplateRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<SetInstanceTemplateRegionInstanceGroupManagersRequest>;
 
 export type SetInstanceTemplateRegionInstanceGroupManagersResponse = Operation;
 export const SetInstanceTemplateRegionInstanceGroupManagersResponse =
@@ -62595,7 +62595,7 @@ export const InsertRegionInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<InsertRegionInstanceGroupManagersRequest>;
 
 export type InsertRegionInstanceGroupManagersResponse = Operation;
 export const InsertRegionInstanceGroupManagersResponse =
@@ -62641,7 +62641,7 @@ export const InsertTargetGrpcProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetGrpcProxiesRequest>;
+  ) as unknown as Schema.Codec<InsertTargetGrpcProxiesRequest>;
 
 export type InsertTargetGrpcProxiesResponse = Operation;
 export const InsertTargetGrpcProxiesResponse =
@@ -62690,7 +62690,7 @@ export const PatchTargetGrpcProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchTargetGrpcProxiesRequest>;
+  ) as unknown as Schema.Codec<PatchTargetGrpcProxiesRequest>;
 
 export type PatchTargetGrpcProxiesResponse = Operation;
 export const PatchTargetGrpcProxiesResponse =
@@ -62736,7 +62736,7 @@ export const TestIamPermissionsTargetGrpcProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTargetGrpcProxiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTargetGrpcProxiesRequest>;
 
 export type TestIamPermissionsTargetGrpcProxiesResponse =
   TestPermissionsResponse;
@@ -62793,7 +62793,7 @@ export const ListTargetGrpcProxiesRequest =
       path: "projects/{project}/global/targetGrpcProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetGrpcProxiesRequest>;
+  ) as unknown as Schema.Codec<ListTargetGrpcProxiesRequest>;
 
 export type ListTargetGrpcProxiesResponse = TargetGrpcProxyList;
 export const ListTargetGrpcProxiesResponse =
@@ -62838,7 +62838,7 @@ export const DeleteTargetGrpcProxiesRequest =
       path: "projects/{project}/global/targetGrpcProxies/{targetGrpcProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTargetGrpcProxiesRequest>;
+  ) as unknown as Schema.Codec<DeleteTargetGrpcProxiesRequest>;
 
 export type DeleteTargetGrpcProxiesResponse = Operation;
 export const DeleteTargetGrpcProxiesResponse =
@@ -62880,7 +62880,7 @@ export const GetTargetGrpcProxiesRequest =
       path: "projects/{project}/global/targetGrpcProxies/{targetGrpcProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetGrpcProxiesRequest>;
+  ) as unknown as Schema.Codec<GetTargetGrpcProxiesRequest>;
 
 export type GetTargetGrpcProxiesResponse = TargetGrpcProxy;
 export const GetTargetGrpcProxiesResponse =
@@ -62921,7 +62921,7 @@ export const WaitZoneOperationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WaitZoneOperationsRequest>;
+  ) as unknown as Schema.Codec<WaitZoneOperationsRequest>;
 
 export type WaitZoneOperationsResponse = Operation;
 export const WaitZoneOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -62965,13 +62965,13 @@ export const DeleteZoneOperationsRequest =
       path: "projects/{project}/zones/{zone}/operations/{operation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteZoneOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteZoneOperationsRequest>;
 
 export interface DeleteZoneOperationsResponse {}
-export const DeleteZoneOperationsResponse: Schema.Schema<DeleteZoneOperationsResponse> =
+export const DeleteZoneOperationsResponse: Schema.Codec<DeleteZoneOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteZoneOperationsResponse>;
+  ) as any as Schema.Codec<DeleteZoneOperationsResponse>;
 
 export type DeleteZoneOperationsError =
   | DefaultErrors
@@ -63026,7 +63026,7 @@ export const ListZoneOperationsRequest =
       path: "projects/{project}/zones/{zone}/operations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListZoneOperationsRequest>;
+  ) as unknown as Schema.Codec<ListZoneOperationsRequest>;
 
 export type ListZoneOperationsResponse = OperationList;
 export const ListZoneOperationsResponse =
@@ -63071,7 +63071,7 @@ export const GetZoneOperationsRequest =
       path: "projects/{project}/zones/{zone}/operations/{operation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetZoneOperationsRequest>;
+  ) as unknown as Schema.Codec<GetZoneOperationsRequest>;
 
 export type GetZoneOperationsResponse = Operation;
 export const GetZoneOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -63110,7 +63110,7 @@ export const GetRuleNetworkFirewallPoliciesRequest =
       path: "projects/{project}/global/firewallPolicies/{firewallPolicy}/getRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRuleNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRuleNetworkFirewallPoliciesRequest>;
 
 export type GetRuleNetworkFirewallPoliciesResponse = FirewallPolicyRule;
 export const GetRuleNetworkFirewallPoliciesResponse =
@@ -63154,7 +63154,7 @@ export const TestIamPermissionsNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsNetworkFirewallPoliciesRequest>;
 
 export type TestIamPermissionsNetworkFirewallPoliciesResponse =
   TestPermissionsResponse;
@@ -63207,7 +63207,7 @@ export const PatchPacketMirroringRuleNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPacketMirroringRuleNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchPacketMirroringRuleNetworkFirewallPoliciesRequest>;
 
 export type PatchPacketMirroringRuleNetworkFirewallPoliciesResponse = Operation;
 export const PatchPacketMirroringRuleNetworkFirewallPoliciesResponse =
@@ -63256,7 +63256,7 @@ export const RemoveRuleNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveRuleNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveRuleNetworkFirewallPoliciesRequest>;
 
 export type RemoveRuleNetworkFirewallPoliciesResponse = Operation;
 export const RemoveRuleNetworkFirewallPoliciesResponse =
@@ -63303,7 +63303,7 @@ export const GetIamPolicyNetworkFirewallPoliciesRequest =
       path: "projects/{project}/global/firewallPolicies/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyNetworkFirewallPoliciesRequest>;
 
 export type GetIamPolicyNetworkFirewallPoliciesResponse = Policy;
 export const GetIamPolicyNetworkFirewallPoliciesResponse =
@@ -63347,7 +63347,7 @@ export const InsertNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertNetworkFirewallPoliciesRequest>;
 
 export type InsertNetworkFirewallPoliciesResponse = Operation;
 export const InsertNetworkFirewallPoliciesResponse =
@@ -63403,7 +63403,7 @@ export const ListNetworkFirewallPoliciesRequest =
       path: "projects/{project}/global/firewallPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListNetworkFirewallPoliciesRequest>;
 
 export type ListNetworkFirewallPoliciesResponse = FirewallPolicyList;
 export const ListNetworkFirewallPoliciesResponse =
@@ -63451,7 +63451,7 @@ export const GetAssociationNetworkFirewallPoliciesRequest =
       path: "projects/{project}/global/firewallPolicies/{firewallPolicy}/getAssociation",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAssociationNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetAssociationNetworkFirewallPoliciesRequest>;
 
 export type GetAssociationNetworkFirewallPoliciesResponse =
   FirewallPolicyAssociation;
@@ -63495,7 +63495,7 @@ export const DeleteNetworkFirewallPoliciesRequest =
       path: "projects/{project}/global/firewallPolicies/{firewallPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteNetworkFirewallPoliciesRequest>;
 
 export type DeleteNetworkFirewallPoliciesResponse = Operation;
 export const DeleteNetworkFirewallPoliciesResponse =
@@ -63544,7 +63544,7 @@ export const RemovePacketMirroringRuleNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemovePacketMirroringRuleNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemovePacketMirroringRuleNetworkFirewallPoliciesRequest>;
 
 export type RemovePacketMirroringRuleNetworkFirewallPoliciesResponse =
   Operation;
@@ -63594,7 +63594,7 @@ export const RemoveAssociationNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveAssociationNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveAssociationNetworkFirewallPoliciesRequest>;
 
 export type RemoveAssociationNetworkFirewallPoliciesResponse = Operation;
 export const RemoveAssociationNetworkFirewallPoliciesResponse =
@@ -63639,7 +63639,7 @@ export const GetPacketMirroringRuleNetworkFirewallPoliciesRequest =
       path: "projects/{project}/global/firewallPolicies/{firewallPolicy}/getPacketMirroringRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPacketMirroringRuleNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetPacketMirroringRuleNetworkFirewallPoliciesRequest>;
 
 export type GetPacketMirroringRuleNetworkFirewallPoliciesResponse =
   FirewallPolicyRule;
@@ -63697,7 +63697,7 @@ export const AddPacketMirroringRuleNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddPacketMirroringRuleNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddPacketMirroringRuleNetworkFirewallPoliciesRequest>;
 
 export type AddPacketMirroringRuleNetworkFirewallPoliciesResponse = Operation;
 export const AddPacketMirroringRuleNetworkFirewallPoliciesResponse =
@@ -63746,7 +63746,7 @@ export const PatchNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchNetworkFirewallPoliciesRequest>;
 
 export type PatchNetworkFirewallPoliciesResponse = Operation;
 export const PatchNetworkFirewallPoliciesResponse =
@@ -63797,7 +63797,7 @@ export const CloneRulesNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CloneRulesNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<CloneRulesNetworkFirewallPoliciesRequest>;
 
 export type CloneRulesNetworkFirewallPoliciesResponse = Operation;
 export const CloneRulesNetworkFirewallPoliciesResponse =
@@ -63843,7 +63843,7 @@ export const SetIamPolicyNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyNetworkFirewallPoliciesRequest>;
 
 export type SetIamPolicyNetworkFirewallPoliciesResponse = Policy;
 export const SetIamPolicyNetworkFirewallPoliciesResponse =
@@ -63897,7 +63897,7 @@ export const AddAssociationNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddAssociationNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddAssociationNetworkFirewallPoliciesRequest>;
 
 export type AddAssociationNetworkFirewallPoliciesResponse = Operation;
 export const AddAssociationNetworkFirewallPoliciesResponse =
@@ -63956,7 +63956,7 @@ export const AddRuleNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddRuleNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddRuleNetworkFirewallPoliciesRequest>;
 
 export type AddRuleNetworkFirewallPoliciesResponse = Operation;
 export const AddRuleNetworkFirewallPoliciesResponse =
@@ -64008,7 +64008,7 @@ export const PatchRuleNetworkFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRuleNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRuleNetworkFirewallPoliciesRequest>;
 
 export type PatchRuleNetworkFirewallPoliciesResponse = Operation;
 export const PatchRuleNetworkFirewallPoliciesResponse =
@@ -64074,7 +64074,7 @@ export const AggregatedListNetworkFirewallPoliciesRequest =
       path: "projects/{project}/aggregated/firewallPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListNetworkFirewallPoliciesRequest>;
 
 export type AggregatedListNetworkFirewallPoliciesResponse =
   NetworkFirewallPolicyAggregatedList;
@@ -64120,7 +64120,7 @@ export const GetNetworkFirewallPoliciesRequest =
       path: "projects/{project}/global/firewallPolicies/{firewallPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNetworkFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetNetworkFirewallPoliciesRequest>;
 
 export type GetNetworkFirewallPoliciesResponse = FirewallPolicy;
 export const GetNetworkFirewallPoliciesResponse =
@@ -64170,7 +64170,7 @@ export const SetLabelsRegionInstantSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsRegionInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<SetLabelsRegionInstantSnapshotsRequest>;
 
 export type SetLabelsRegionInstantSnapshotsResponse = Operation;
 export const SetLabelsRegionInstantSnapshotsResponse =
@@ -64219,7 +64219,7 @@ export const InsertRegionInstantSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionInstantSnapshotsRequest>;
 
 export type InsertRegionInstantSnapshotsResponse = Operation;
 export const InsertRegionInstantSnapshotsResponse =
@@ -64268,7 +64268,7 @@ export const TestIamPermissionsRegionInstantSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionInstantSnapshotsRequest>;
 
 export type TestIamPermissionsRegionInstantSnapshotsResponse =
   TestPermissionsResponse;
@@ -64317,7 +64317,7 @@ export const DeleteRegionInstantSnapshotsRequest =
       path: "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionInstantSnapshotsRequest>;
 
 export type DeleteRegionInstantSnapshotsResponse = Operation;
 export const DeleteRegionInstantSnapshotsResponse =
@@ -64376,7 +64376,7 @@ export const ListRegionInstantSnapshotsRequest =
       path: "projects/{project}/regions/{region}/instantSnapshots",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<ListRegionInstantSnapshotsRequest>;
 
 export type ListRegionInstantSnapshotsResponse = InstantSnapshotList;
 export const ListRegionInstantSnapshotsResponse =
@@ -64424,7 +64424,7 @@ export const GetRegionInstantSnapshotsRequest =
       path: "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<GetRegionInstantSnapshotsRequest>;
 
 export type GetRegionInstantSnapshotsResponse = InstantSnapshot;
 export const GetRegionInstantSnapshotsResponse =
@@ -64472,7 +64472,7 @@ export const GetIamPolicyRegionInstantSnapshotsRequest =
       path: "projects/{project}/regions/{region}/instantSnapshots/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRegionInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRegionInstantSnapshotsRequest>;
 
 export type GetIamPolicyRegionInstantSnapshotsResponse = Policy;
 export const GetIamPolicyRegionInstantSnapshotsResponse =
@@ -64519,7 +64519,7 @@ export const SetIamPolicyRegionInstantSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyRegionInstantSnapshotsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyRegionInstantSnapshotsRequest>;
 
 export type SetIamPolicyRegionInstantSnapshotsResponse = Policy;
 export const SetIamPolicyRegionInstantSnapshotsResponse =
@@ -64568,7 +64568,7 @@ export const InsertRegionNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionNetworkEndpointGroupsRequest>;
 
 export type InsertRegionNetworkEndpointGroupsResponse = Operation;
 export const InsertRegionNetworkEndpointGroupsResponse =
@@ -64624,7 +64624,7 @@ export const DetachNetworkEndpointsRegionNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DetachNetworkEndpointsRegionNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<DetachNetworkEndpointsRegionNetworkEndpointGroupsRequest>;
 
 export type DetachNetworkEndpointsRegionNetworkEndpointGroupsResponse =
   Operation;
@@ -64672,7 +64672,7 @@ export const GetRegionNetworkEndpointGroupsRequest =
       path: "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<GetRegionNetworkEndpointGroupsRequest>;
 
 export type GetRegionNetworkEndpointGroupsResponse = NetworkEndpointGroup;
 export const GetRegionNetworkEndpointGroupsResponse =
@@ -64735,7 +64735,7 @@ export const ListNetworkEndpointsRegionNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNetworkEndpointsRegionNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<ListNetworkEndpointsRegionNetworkEndpointGroupsRequest>;
 
 export type ListNetworkEndpointsRegionNetworkEndpointGroupsResponse =
   NetworkEndpointGroupsListNetworkEndpoints;
@@ -64791,7 +64791,7 @@ export const DeleteRegionNetworkEndpointGroupsRequest =
       path: "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionNetworkEndpointGroupsRequest>;
 
 export type DeleteRegionNetworkEndpointGroupsResponse = Operation;
 export const DeleteRegionNetworkEndpointGroupsResponse =
@@ -64847,7 +64847,7 @@ export const AttachNetworkEndpointsRegionNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AttachNetworkEndpointsRegionNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<AttachNetworkEndpointsRegionNetworkEndpointGroupsRequest>;
 
 export type AttachNetworkEndpointsRegionNetworkEndpointGroupsResponse =
   Operation;
@@ -64907,7 +64907,7 @@ export const ListRegionNetworkEndpointGroupsRequest =
       path: "projects/{project}/regions/{region}/networkEndpointGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<ListRegionNetworkEndpointGroupsRequest>;
 
 export type ListRegionNetworkEndpointGroupsResponse = NetworkEndpointGroupList;
 export const ListRegionNetworkEndpointGroupsResponse =
@@ -64962,7 +64962,7 @@ export const UpdateKmsKeyRegionSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateKmsKeyRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<UpdateKmsKeyRegionSnapshotsRequest>;
 
 export type UpdateKmsKeyRegionSnapshotsResponse = Operation;
 export const UpdateKmsKeyRegionSnapshotsResponse =
@@ -65011,7 +65011,7 @@ export const TestIamPermissionsRegionSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionSnapshotsRequest>;
 
 export type TestIamPermissionsRegionSnapshotsResponse = TestPermissionsResponse;
 export const TestIamPermissionsRegionSnapshotsResponse =
@@ -65061,7 +65061,7 @@ export const GetIamPolicyRegionSnapshotsRequest =
       path: "projects/{project}/regions/{region}/snapshots/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRegionSnapshotsRequest>;
 
 export type GetIamPolicyRegionSnapshotsResponse = Policy;
 export const GetIamPolicyRegionSnapshotsResponse =
@@ -65108,7 +65108,7 @@ export const SetIamPolicyRegionSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyRegionSnapshotsRequest>;
 
 export type SetIamPolicyRegionSnapshotsResponse = Policy;
 export const SetIamPolicyRegionSnapshotsResponse =
@@ -65160,7 +65160,7 @@ export const SetLabelsRegionSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<SetLabelsRegionSnapshotsRequest>;
 
 export type SetLabelsRegionSnapshotsResponse = Operation;
 export const SetLabelsRegionSnapshotsResponse =
@@ -65209,7 +65209,7 @@ export const InsertRegionSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionSnapshotsRequest>;
 
 export type InsertRegionSnapshotsResponse = Operation;
 export const InsertRegionSnapshotsResponse =
@@ -65257,7 +65257,7 @@ export const DeleteRegionSnapshotsRequest =
       path: "projects/{project}/regions/{region}/snapshots/{snapshot}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionSnapshotsRequest>;
 
 export type DeleteRegionSnapshotsResponse = Operation;
 export const DeleteRegionSnapshotsResponse =
@@ -65316,7 +65316,7 @@ export const ListRegionSnapshotsRequest =
       path: "projects/{project}/regions/{region}/snapshots",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<ListRegionSnapshotsRequest>;
 
 export type ListRegionSnapshotsResponse = SnapshotList;
 export const ListRegionSnapshotsResponse =
@@ -65361,7 +65361,7 @@ export const GetRegionSnapshotsRequest =
       path: "projects/{project}/regions/{region}/snapshots/{snapshot}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionSnapshotsRequest>;
+  ) as unknown as Schema.Codec<GetRegionSnapshotsRequest>;
 
 export type GetRegionSnapshotsResponse = Snapshot;
 export const GetRegionSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Snapshot;
@@ -65398,7 +65398,7 @@ export const GetDiskSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/zones/{zone}/diskSettings",
   }),
   svc,
-) as unknown as Schema.Schema<GetDiskSettingsRequest>;
+) as unknown as Schema.Codec<GetDiskSettingsRequest>;
 
 export type GetDiskSettingsResponse = DiskSettings;
 export const GetDiskSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ DiskSettings;
@@ -65444,7 +65444,7 @@ export const PatchDiskSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchDiskSettingsRequest>;
+  ) as unknown as Schema.Codec<PatchDiskSettingsRequest>;
 
 export type PatchDiskSettingsResponse = Operation;
 export const PatchDiskSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -65502,7 +65502,7 @@ export const ListNodeTemplatesRequest =
       path: "projects/{project}/regions/{region}/nodeTemplates",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNodeTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListNodeTemplatesRequest>;
 
 export type ListNodeTemplatesResponse = NodeTemplateList;
 export const ListNodeTemplatesResponse =
@@ -65550,7 +65550,7 @@ export const DeleteNodeTemplatesRequest =
       path: "projects/{project}/regions/{region}/nodeTemplates/{nodeTemplate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNodeTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteNodeTemplatesRequest>;
 
 export type DeleteNodeTemplatesResponse = Operation;
 export const DeleteNodeTemplatesResponse =
@@ -65616,7 +65616,7 @@ export const AggregatedListNodeTemplatesRequest =
       path: "projects/{project}/aggregated/nodeTemplates",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListNodeTemplatesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListNodeTemplatesRequest>;
 
 export type AggregatedListNodeTemplatesResponse = NodeTemplateAggregatedList;
 export const AggregatedListNodeTemplatesResponse =
@@ -65664,7 +65664,7 @@ export const GetNodeTemplatesRequest =
       path: "projects/{project}/regions/{region}/nodeTemplates/{nodeTemplate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNodeTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetNodeTemplatesRequest>;
 
 export type GetNodeTemplatesResponse = NodeTemplate;
 export const GetNodeTemplatesResponse =
@@ -65709,7 +65709,7 @@ export const GetIamPolicyNodeTemplatesRequest =
       path: "projects/{project}/regions/{region}/nodeTemplates/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyNodeTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyNodeTemplatesRequest>;
 
 export type GetIamPolicyNodeTemplatesResponse = Policy;
 export const GetIamPolicyNodeTemplatesResponse =
@@ -65756,7 +65756,7 @@ export const SetIamPolicyNodeTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyNodeTemplatesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyNodeTemplatesRequest>;
 
 export type SetIamPolicyNodeTemplatesResponse = Policy;
 export const SetIamPolicyNodeTemplatesResponse =
@@ -65805,7 +65805,7 @@ export const InsertNodeTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertNodeTemplatesRequest>;
+  ) as unknown as Schema.Codec<InsertNodeTemplatesRequest>;
 
 export type InsertNodeTemplatesResponse = Operation;
 export const InsertNodeTemplatesResponse =
@@ -65854,7 +65854,7 @@ export const TestIamPermissionsNodeTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsNodeTemplatesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsNodeTemplatesRequest>;
 
 export type TestIamPermissionsNodeTemplatesResponse = TestPermissionsResponse;
 export const TestIamPermissionsNodeTemplatesResponse =
@@ -65903,7 +65903,7 @@ export const InsertRegionSslCertificatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionSslCertificatesRequest>;
 
 export type InsertRegionSslCertificatesResponse = Operation;
 export const InsertRegionSslCertificatesResponse =
@@ -65952,7 +65952,7 @@ export const TestIamPermissionsRegionSslCertificatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionSslCertificatesRequest>;
 
 export type TestIamPermissionsRegionSslCertificatesResponse =
   TestPermissionsResponse;
@@ -65998,7 +65998,7 @@ export const GetRegionSslCertificatesRequest =
       path: "projects/{project}/regions/{region}/sslCertificates/{sslCertificate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<GetRegionSslCertificatesRequest>;
 
 export type GetRegionSslCertificatesResponse = SslCertificate;
 export const GetRegionSslCertificatesResponse =
@@ -66044,7 +66044,7 @@ export const DeleteRegionSslCertificatesRequest =
       path: "projects/{project}/regions/{region}/sslCertificates/{sslCertificate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionSslCertificatesRequest>;
 
 export type DeleteRegionSslCertificatesResponse = Operation;
 export const DeleteRegionSslCertificatesResponse =
@@ -66103,7 +66103,7 @@ export const ListRegionSslCertificatesRequest =
       path: "projects/{project}/regions/{region}/sslCertificates",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionSslCertificatesRequest>;
+  ) as unknown as Schema.Codec<ListRegionSslCertificatesRequest>;
 
 export type ListRegionSslCertificatesResponse = SslCertificateList;
 export const ListRegionSslCertificatesResponse =
@@ -66165,7 +66165,7 @@ export const ListRegionSslPoliciesRequest =
       path: "projects/{project}/regions/{region}/sslPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListRegionSslPoliciesRequest>;
 
 export type ListRegionSslPoliciesResponse = SslPoliciesList;
 export const ListRegionSslPoliciesResponse =
@@ -66213,7 +66213,7 @@ export const DeleteRegionSslPoliciesRequest =
       path: "projects/{project}/regions/{region}/sslPolicies/{sslPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionSslPoliciesRequest>;
 
 export type DeleteRegionSslPoliciesResponse = Operation;
 export const DeleteRegionSslPoliciesResponse =
@@ -66258,7 +66258,7 @@ export const GetRegionSslPoliciesRequest =
       path: "projects/{project}/regions/{region}/sslPolicies/{sslPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRegionSslPoliciesRequest>;
 
 export type GetRegionSslPoliciesResponse = SslPolicy;
 export const GetRegionSslPoliciesResponse =
@@ -66312,7 +66312,7 @@ export const ListAvailableFeaturesRegionSslPoliciesRequest =
       path: "projects/{project}/regions/{region}/sslPolicies/listAvailableFeatures",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAvailableFeaturesRegionSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListAvailableFeaturesRegionSslPoliciesRequest>;
 
 export type ListAvailableFeaturesRegionSslPoliciesResponse =
   SslPoliciesListAvailableFeaturesResponse;
@@ -66360,7 +66360,7 @@ export const InsertRegionSslPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionSslPoliciesRequest>;
 
 export type InsertRegionSslPoliciesResponse = Operation;
 export const InsertRegionSslPoliciesResponse =
@@ -66412,7 +66412,7 @@ export const PatchRegionSslPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionSslPoliciesRequest>;
 
 export type PatchRegionSslPoliciesResponse = Operation;
 export const PatchRegionSslPoliciesResponse =
@@ -66461,7 +66461,7 @@ export const TestIamPermissionsRegionSslPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionSslPoliciesRequest>;
 
 export type TestIamPermissionsRegionSslPoliciesResponse =
   TestPermissionsResponse;
@@ -66513,7 +66513,7 @@ export const GetReservationBlocksRequest =
       path: "projects/{project}/zones/{zone}/reservations/{reservation}/reservationBlocks/{reservationBlock}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetReservationBlocksRequest>;
+  ) as unknown as Schema.Codec<GetReservationBlocksRequest>;
 
 export type GetReservationBlocksResponse = ReservationBlocksGetResponse;
 export const GetReservationBlocksResponse =
@@ -66561,7 +66561,7 @@ export const GetIamPolicyReservationBlocksRequest =
       path: "projects/{project}/zones/{zone}/reservations/{parentResource}/reservationBlocks/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyReservationBlocksRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyReservationBlocksRequest>;
 
 export type GetIamPolicyReservationBlocksResponse = Policy;
 export const GetIamPolicyReservationBlocksResponse =
@@ -66611,7 +66611,7 @@ export const SetIamPolicyReservationBlocksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyReservationBlocksRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyReservationBlocksRequest>;
 
 export type SetIamPolicyReservationBlocksResponse = Policy;
 export const SetIamPolicyReservationBlocksResponse =
@@ -66673,7 +66673,7 @@ export const ListReservationBlocksRequest =
       path: "projects/{project}/zones/{zone}/reservations/{reservation}/reservationBlocks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListReservationBlocksRequest>;
+  ) as unknown as Schema.Codec<ListReservationBlocksRequest>;
 
 export type ListReservationBlocksResponse = ReservationBlocksListResponse;
 export const ListReservationBlocksResponse =
@@ -66725,7 +66725,7 @@ export const TestIamPermissionsReservationBlocksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsReservationBlocksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsReservationBlocksRequest>;
 
 export type TestIamPermissionsReservationBlocksResponse =
   TestPermissionsResponse;
@@ -66783,7 +66783,7 @@ export const PerformMaintenanceReservationBlocksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PerformMaintenanceReservationBlocksRequest>;
+  ) as unknown as Schema.Codec<PerformMaintenanceReservationBlocksRequest>;
 
 export type PerformMaintenanceReservationBlocksResponse = Operation;
 export const PerformMaintenanceReservationBlocksResponse =
@@ -66839,7 +66839,7 @@ export const ResumeInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResumeInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ResumeInstancesInstanceGroupManagersRequest>;
 
 export type ResumeInstancesInstanceGroupManagersResponse = Operation;
 export const ResumeInstancesInstanceGroupManagersResponse =
@@ -66895,7 +66895,7 @@ export const StartInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<StartInstancesInstanceGroupManagersRequest>;
 
 export type StartInstancesInstanceGroupManagersResponse = Operation;
 export const StartInstancesInstanceGroupManagersResponse =
@@ -66948,7 +66948,7 @@ export const ApplyUpdatesToInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ApplyUpdatesToInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ApplyUpdatesToInstancesInstanceGroupManagersRequest>;
 
 export type ApplyUpdatesToInstancesInstanceGroupManagersResponse = Operation;
 export const ApplyUpdatesToInstancesInstanceGroupManagersResponse =
@@ -67004,7 +67004,7 @@ export const ConfigureAcceleratorTopologiesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConfigureAcceleratorTopologiesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ConfigureAcceleratorTopologiesInstanceGroupManagersRequest>;
 
 export type ConfigureAcceleratorTopologiesInstanceGroupManagersResponse =
   Operation;
@@ -67066,7 +67066,7 @@ export const DeleteInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<DeleteInstancesInstanceGroupManagersRequest>;
 
 export type DeleteInstancesInstanceGroupManagersResponse = Operation;
 export const DeleteInstancesInstanceGroupManagersResponse =
@@ -67120,7 +67120,7 @@ export const ResizeInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResizeInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ResizeInstanceGroupManagersRequest>;
 
 export type ResizeInstanceGroupManagersResponse = Operation;
 export const ResizeInstanceGroupManagersResponse =
@@ -67181,7 +67181,7 @@ export const StopInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StopInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<StopInstancesInstanceGroupManagersRequest>;
 
 export type StopInstancesInstanceGroupManagersResponse = Operation;
 export const StopInstancesInstanceGroupManagersResponse =
@@ -67246,7 +67246,7 @@ export const ListPerInstanceConfigsInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPerInstanceConfigsInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ListPerInstanceConfigsInstanceGroupManagersRequest>;
 
 export type ListPerInstanceConfigsInstanceGroupManagersResponse =
   InstanceGroupManagersListPerInstanceConfigsResp;
@@ -67305,7 +67305,7 @@ export const DeletePerInstanceConfigsInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePerInstanceConfigsInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<DeletePerInstanceConfigsInstanceGroupManagersRequest>;
 
 export type DeletePerInstanceConfigsInstanceGroupManagersResponse = Operation;
 export const DeletePerInstanceConfigsInstanceGroupManagersResponse =
@@ -67361,7 +67361,7 @@ export const UpdatePerInstanceConfigsInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePerInstanceConfigsInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<UpdatePerInstanceConfigsInstanceGroupManagersRequest>;
 
 export type UpdatePerInstanceConfigsInstanceGroupManagersResponse = Operation;
 export const UpdatePerInstanceConfigsInstanceGroupManagersResponse =
@@ -67416,7 +67416,7 @@ export const DeleteInstanceGroupManagersRequest =
       path: "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<DeleteInstanceGroupManagersRequest>;
 
 export type DeleteInstanceGroupManagersResponse = Operation;
 export const DeleteInstanceGroupManagersResponse =
@@ -67470,7 +67470,7 @@ export const PatchInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<PatchInstanceGroupManagersRequest>;
 
 export type PatchInstanceGroupManagersResponse = Operation;
 export const PatchInstanceGroupManagersResponse =
@@ -67526,7 +67526,7 @@ export const SuspendInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SuspendInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<SuspendInstancesInstanceGroupManagersRequest>;
 
 export type SuspendInstancesInstanceGroupManagersResponse = Operation;
 export const SuspendInstancesInstanceGroupManagersResponse =
@@ -67587,7 +67587,7 @@ export const RecreateInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RecreateInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<RecreateInstancesInstanceGroupManagersRequest>;
 
 export type RecreateInstancesInstanceGroupManagersResponse = Operation;
 export const RecreateInstancesInstanceGroupManagersResponse =
@@ -67643,7 +67643,7 @@ export const SetAutoHealingPoliciesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetAutoHealingPoliciesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<SetAutoHealingPoliciesInstanceGroupManagersRequest>;
 
 export type SetAutoHealingPoliciesInstanceGroupManagersResponse = Operation;
 export const SetAutoHealingPoliciesInstanceGroupManagersResponse =
@@ -67699,7 +67699,7 @@ export const SetTargetPoolsInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetTargetPoolsInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<SetTargetPoolsInstanceGroupManagersRequest>;
 
 export type SetTargetPoolsInstanceGroupManagersResponse = Operation;
 export const SetTargetPoolsInstanceGroupManagersResponse =
@@ -67764,7 +67764,7 @@ export const ListManagedInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ListManagedInstancesInstanceGroupManagersRequest>;
 
 export type ListManagedInstancesInstanceGroupManagersResponse =
   InstanceGroupManagersListManagedInstancesResponse;
@@ -67835,7 +67835,7 @@ export const AggregatedListInstanceGroupManagersRequest =
       path: "projects/{project}/aggregated/instanceGroupManagers",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<AggregatedListInstanceGroupManagersRequest>;
 
 export type AggregatedListInstanceGroupManagersResponse =
   InstanceGroupManagerAggregatedList;
@@ -67886,7 +67886,7 @@ export const GetInstanceGroupManagersRequest =
       path: "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<GetInstanceGroupManagersRequest>;
 
 export type GetInstanceGroupManagersResponse = InstanceGroupManager;
 export const GetInstanceGroupManagersResponse =
@@ -67940,7 +67940,7 @@ export const ResizeAdvancedInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResizeAdvancedInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ResizeAdvancedInstanceGroupManagersRequest>;
 
 export type ResizeAdvancedInstanceGroupManagersResponse = Operation;
 export const ResizeAdvancedInstanceGroupManagersResponse =
@@ -67996,7 +67996,7 @@ export const PatchPerInstanceConfigsInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPerInstanceConfigsInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<PatchPerInstanceConfigsInstanceGroupManagersRequest>;
 
 export type PatchPerInstanceConfigsInstanceGroupManagersResponse = Operation;
 export const PatchPerInstanceConfigsInstanceGroupManagersResponse =
@@ -68045,7 +68045,7 @@ export const TestIamPermissionsInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInstanceGroupManagersRequest>;
 
 export type TestIamPermissionsInstanceGroupManagersResponse =
   TestPermissionsResponse;
@@ -68102,7 +68102,7 @@ export const CreateInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<CreateInstancesInstanceGroupManagersRequest>;
 
 export type CreateInstancesInstanceGroupManagersResponse = Operation;
 export const CreateInstancesInstanceGroupManagersResponse =
@@ -68166,7 +68166,7 @@ export const ListErrorsInstanceGroupManagersRequest =
       path: "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listErrors",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListErrorsInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ListErrorsInstanceGroupManagersRequest>;
 
 export type ListErrorsInstanceGroupManagersResponse =
   InstanceGroupManagersListErrorsResponse;
@@ -68226,7 +68226,7 @@ export const AbandonInstancesInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AbandonInstancesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<AbandonInstancesInstanceGroupManagersRequest>;
 
 export type AbandonInstancesInstanceGroupManagersResponse = Operation;
 export const AbandonInstancesInstanceGroupManagersResponse =
@@ -68275,7 +68275,7 @@ export const InsertInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<InsertInstanceGroupManagersRequest>;
 
 export type InsertInstanceGroupManagersResponse = Operation;
 export const InsertInstanceGroupManagersResponse =
@@ -68320,7 +68320,7 @@ export const GetAvailableAcceleratorTopologiesInstanceGroupManagersRequest =
       path: "projects/{project}/zones/{zone}/instanceGroupManagers/{resourceId}/getAvailableAcceleratorTopologies",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAvailableAcceleratorTopologiesInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<GetAvailableAcceleratorTopologiesInstanceGroupManagersRequest>;
 
 export type GetAvailableAcceleratorTopologiesInstanceGroupManagersResponse =
   InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse;
@@ -68375,7 +68375,7 @@ export const SetInstanceTemplateInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetInstanceTemplateInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<SetInstanceTemplateInstanceGroupManagersRequest>;
 
 export type SetInstanceTemplateInstanceGroupManagersResponse = Operation;
 export const SetInstanceTemplateInstanceGroupManagersResponse =
@@ -68434,7 +68434,7 @@ export const ListInstanceGroupManagersRequest =
       path: "projects/{project}/zones/{zone}/instanceGroupManagers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<ListInstanceGroupManagersRequest>;
 
 export type ListInstanceGroupManagersResponse = InstanceGroupManagerList;
 export const ListInstanceGroupManagersResponse =
@@ -68491,7 +68491,7 @@ export const UpdateInstanceGroupManagersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateInstanceGroupManagersRequest>;
+  ) as unknown as Schema.Codec<UpdateInstanceGroupManagersRequest>;
 
 export type UpdateInstanceGroupManagersResponse = Operation;
 export const UpdateInstanceGroupManagersResponse =
@@ -68534,7 +68534,7 @@ export const GetProjectViewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/regions/{region}/projectViews",
   }),
   svc,
-) as unknown as Schema.Schema<GetProjectViewsRequest>;
+) as unknown as Schema.Codec<GetProjectViewsRequest>;
 
 export type GetProjectViewsResponse = ProjectView;
 export const GetProjectViewsResponse = /*@__PURE__*/ /*#__PURE__*/ ProjectView;
@@ -68583,7 +68583,7 @@ export const PatchResourcePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchResourcePoliciesRequest>;
 
 export type PatchResourcePoliciesResponse = Operation;
 export const PatchResourcePoliciesResponse =
@@ -68632,7 +68632,7 @@ export const TestIamPermissionsResourcePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsResourcePoliciesRequest>;
 
 export type TestIamPermissionsResourcePoliciesResponse =
   TestPermissionsResponse;
@@ -68683,7 +68683,7 @@ export const GetIamPolicyResourcePoliciesRequest =
       path: "projects/{project}/regions/{region}/resourcePolicies/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyResourcePoliciesRequest>;
 
 export type GetIamPolicyResourcePoliciesResponse = Policy;
 export const GetIamPolicyResourcePoliciesResponse =
@@ -68730,7 +68730,7 @@ export const SetIamPolicyResourcePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyResourcePoliciesRequest>;
 
 export type SetIamPolicyResourcePoliciesResponse = Policy;
 export const SetIamPolicyResourcePoliciesResponse =
@@ -68779,7 +68779,7 @@ export const InsertResourcePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertResourcePoliciesRequest>;
 
 export type InsertResourcePoliciesResponse = Operation;
 export const InsertResourcePoliciesResponse =
@@ -68824,7 +68824,7 @@ export const GetResourcePoliciesRequest =
       path: "projects/{project}/regions/{region}/resourcePolicies/{resourcePolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<GetResourcePoliciesRequest>;
 
 export type GetResourcePoliciesResponse = ResourcePolicy;
 export const GetResourcePoliciesResponse =
@@ -68885,7 +68885,7 @@ export const AggregatedListResourcePoliciesRequest =
       path: "projects/{project}/aggregated/resourcePolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListResourcePoliciesRequest>;
 
 export type AggregatedListResourcePoliciesResponse =
   ResourcePolicyAggregatedList;
@@ -68937,7 +68937,7 @@ export const DeleteResourcePoliciesRequest =
       path: "projects/{project}/regions/{region}/resourcePolicies/{resourcePolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteResourcePoliciesRequest>;
 
 export type DeleteResourcePoliciesResponse = Operation;
 export const DeleteResourcePoliciesResponse =
@@ -68996,7 +68996,7 @@ export const ListResourcePoliciesRequest =
       path: "projects/{project}/regions/{region}/resourcePolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListResourcePoliciesRequest>;
+  ) as unknown as Schema.Codec<ListResourcePoliciesRequest>;
 
 export type ListResourcePoliciesResponse = ResourcePolicyList;
 export const ListResourcePoliciesResponse =
@@ -69041,7 +69041,7 @@ export const DeleteOrganizationRolloutPlansRequest =
       path: "{+organization}/global/rolloutPlans/{rolloutPlan}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationRolloutPlansRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationRolloutPlansRequest>;
 
 export type DeleteOrganizationRolloutPlansResponse = Operation;
 export const DeleteOrganizationRolloutPlansResponse =
@@ -69094,7 +69094,7 @@ export const ListOrganizationRolloutPlansRequest =
   }).pipe(
     T.Http({ method: "GET", path: "{+organization}/global/rolloutPlans" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationRolloutPlansRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationRolloutPlansRequest>;
 
 export type ListOrganizationRolloutPlansResponse = RolloutPlansListResponse;
 export const ListOrganizationRolloutPlansResponse =
@@ -69139,7 +69139,7 @@ export const GetOrganizationRolloutPlansRequest =
       path: "{+organization}/global/rolloutPlans/{rolloutPlan}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationRolloutPlansRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationRolloutPlansRequest>;
 
 export type GetOrganizationRolloutPlansResponse = RolloutPlan;
 export const GetOrganizationRolloutPlansResponse =
@@ -69183,7 +69183,7 @@ export const InsertOrganizationRolloutPlansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertOrganizationRolloutPlansRequest>;
+  ) as unknown as Schema.Codec<InsertOrganizationRolloutPlansRequest>;
 
 export type InsertOrganizationRolloutPlansResponse = Operation;
 export const InsertOrganizationRolloutPlansResponse =
@@ -69232,7 +69232,7 @@ export const InsertTargetInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetInstancesRequest>;
+  ) as unknown as Schema.Codec<InsertTargetInstancesRequest>;
 
 export type InsertTargetInstancesResponse = Operation;
 export const InsertTargetInstancesResponse =
@@ -69281,7 +69281,7 @@ export const TestIamPermissionsTargetInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTargetInstancesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTargetInstancesRequest>;
 
 export type TestIamPermissionsTargetInstancesResponse = TestPermissionsResponse;
 export const TestIamPermissionsTargetInstancesResponse =
@@ -69340,7 +69340,7 @@ export const ListTargetInstancesRequest =
       path: "projects/{project}/zones/{zone}/targetInstances",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetInstancesRequest>;
+  ) as unknown as Schema.Codec<ListTargetInstancesRequest>;
 
 export type ListTargetInstancesResponse = TargetInstanceList;
 export const ListTargetInstancesResponse =
@@ -69388,7 +69388,7 @@ export const DeleteTargetInstancesRequest =
       path: "projects/{project}/zones/{zone}/targetInstances/{targetInstance}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTargetInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteTargetInstancesRequest>;
 
 export type DeleteTargetInstancesResponse = Operation;
 export const DeleteTargetInstancesResponse =
@@ -69454,7 +69454,7 @@ export const AggregatedListTargetInstancesRequest =
       path: "projects/{project}/aggregated/targetInstances",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListTargetInstancesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListTargetInstancesRequest>;
 
 export type AggregatedListTargetInstancesResponse =
   TargetInstanceAggregatedList;
@@ -69510,7 +69510,7 @@ export const SetSecurityPolicyTargetInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSecurityPolicyTargetInstancesRequest>;
+  ) as unknown as Schema.Codec<SetSecurityPolicyTargetInstancesRequest>;
 
 export type SetSecurityPolicyTargetInstancesResponse = Operation;
 export const SetSecurityPolicyTargetInstancesResponse =
@@ -69555,7 +69555,7 @@ export const GetTargetInstancesRequest =
       path: "projects/{project}/zones/{zone}/targetInstances/{targetInstance}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetInstancesRequest>;
+  ) as unknown as Schema.Codec<GetTargetInstancesRequest>;
 
 export type GetTargetInstancesResponse = TargetInstance;
 export const GetTargetInstancesResponse =
@@ -69596,7 +69596,7 @@ export const GetMachineTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/zones/{zone}/machineTypes/{machineType}",
   }),
   svc,
-) as unknown as Schema.Schema<GetMachineTypesRequest>;
+) as unknown as Schema.Codec<GetMachineTypesRequest>;
 
 export type GetMachineTypesResponse = MachineType;
 export const GetMachineTypesResponse = /*@__PURE__*/ /*#__PURE__*/ MachineType;
@@ -69656,7 +69656,7 @@ export const AggregatedListMachineTypesRequest =
       path: "projects/{project}/aggregated/machineTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListMachineTypesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListMachineTypesRequest>;
 
 export type AggregatedListMachineTypesResponse = MachineTypeAggregatedList;
 export const AggregatedListMachineTypesResponse =
@@ -69718,7 +69718,7 @@ export const ListMachineTypesRequest =
       path: "projects/{project}/zones/{zone}/machineTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMachineTypesRequest>;
+  ) as unknown as Schema.Codec<ListMachineTypesRequest>;
 
 export type ListMachineTypesResponse = MachineTypeList;
 export const ListMachineTypesResponse =
@@ -69775,7 +69775,7 @@ export const ListWireGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups",
   }),
   svc,
-) as unknown as Schema.Schema<ListWireGroupsRequest>;
+) as unknown as Schema.Codec<ListWireGroupsRequest>;
 
 export type ListWireGroupsResponse = WireGroupList;
 export const ListWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ WireGroupList;
@@ -69821,7 +69821,7 @@ export const DeleteWireGroupsRequest =
       path: "projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups/{wireGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteWireGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteWireGroupsRequest>;
 
 export type DeleteWireGroupsResponse = Operation;
 export const DeleteWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -69863,7 +69863,7 @@ export const GetWireGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups/{wireGroup}",
   }),
   svc,
-) as unknown as Schema.Schema<GetWireGroupsRequest>;
+) as unknown as Schema.Codec<GetWireGroupsRequest>;
 
 export type GetWireGroupsResponse = WireGroup;
 export const GetWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ WireGroup;
@@ -69910,7 +69910,7 @@ export const InsertWireGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertWireGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertWireGroupsRequest>;
 
 export type InsertWireGroupsResponse = Operation;
 export const InsertWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -69969,7 +69969,7 @@ export const PatchWireGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchWireGroupsRequest>;
+) as unknown as Schema.Codec<PatchWireGroupsRequest>;
 
 export type PatchWireGroupsResponse = Operation;
 export const PatchWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -70017,7 +70017,7 @@ export const RemovePeeringNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemovePeeringNetworksRequest>;
+  ) as unknown as Schema.Codec<RemovePeeringNetworksRequest>;
 
 export type RemovePeeringNetworksResponse = Operation;
 export const RemovePeeringNetworksResponse =
@@ -70068,7 +70068,7 @@ export const RequestRemovePeeringNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RequestRemovePeeringNetworksRequest>;
+  ) as unknown as Schema.Codec<RequestRemovePeeringNetworksRequest>;
 
 export type RequestRemovePeeringNetworksResponse = Operation;
 export const RequestRemovePeeringNetworksResponse =
@@ -70116,7 +70116,7 @@ export const PatchNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchNetworksRequest>;
+) as unknown as Schema.Codec<PatchNetworksRequest>;
 
 export type PatchNetworksResponse = Operation;
 export const PatchNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -70156,7 +70156,7 @@ export const GetNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/networks/{network}",
   }),
   svc,
-) as unknown as Schema.Schema<GetNetworksRequest>;
+) as unknown as Schema.Codec<GetNetworksRequest>;
 
 export type GetNetworksResponse = Network;
 export const GetNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Network;
@@ -70196,7 +70196,7 @@ export const SwitchToCustomModeNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SwitchToCustomModeNetworksRequest>;
+  ) as unknown as Schema.Codec<SwitchToCustomModeNetworksRequest>;
 
 export type SwitchToCustomModeNetworksResponse = Operation;
 export const SwitchToCustomModeNetworksResponse =
@@ -70242,7 +70242,7 @@ export const TestIamPermissionsNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsNetworksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsNetworksRequest>;
 
 export type TestIamPermissionsNetworksResponse = TestPermissionsResponse;
 export const TestIamPermissionsNetworksResponse =
@@ -70284,7 +70284,7 @@ export const GetEffectiveFirewallsNetworksRequest =
       path: "projects/{project}/global/networks/{network}/getEffectiveFirewalls",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEffectiveFirewallsNetworksRequest>;
+  ) as unknown as Schema.Codec<GetEffectiveFirewallsNetworksRequest>;
 
 export type GetEffectiveFirewallsNetworksResponse =
   NetworksGetEffectiveFirewallsResponse;
@@ -70353,7 +70353,7 @@ export const ListPeeringRoutesNetworksRequest =
       path: "projects/{project}/global/networks/{network}/listPeeringRoutes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPeeringRoutesNetworksRequest>;
+  ) as unknown as Schema.Codec<ListPeeringRoutesNetworksRequest>;
 
 export type ListPeeringRoutesNetworksResponse = ExchangedPeeringRoutesList;
 export const ListPeeringRoutesNetworksResponse =
@@ -70408,7 +70408,7 @@ export const ListNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/networks" }),
   svc,
-) as unknown as Schema.Schema<ListNetworksRequest>;
+) as unknown as Schema.Codec<ListNetworksRequest>;
 
 export type ListNetworksResponse = NetworkList;
 export const ListNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ NetworkList;
@@ -70451,7 +70451,7 @@ export const DeleteNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/networks/{network}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteNetworksRequest>;
+) as unknown as Schema.Codec<DeleteNetworksRequest>;
 
 export type DeleteNetworksResponse = Operation;
 export const DeleteNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -70499,7 +70499,7 @@ export const AddPeeringNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddPeeringNetworksRequest>;
+  ) as unknown as Schema.Codec<AddPeeringNetworksRequest>;
 
 export type AddPeeringNetworksResponse = Operation;
 export const AddPeeringNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -70543,7 +70543,7 @@ export const InsertNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertNetworksRequest>;
+) as unknown as Schema.Codec<InsertNetworksRequest>;
 
 export type InsertNetworksResponse = Operation;
 export const InsertNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -70591,7 +70591,7 @@ export const UpdatePeeringNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePeeringNetworksRequest>;
+  ) as unknown as Schema.Codec<UpdatePeeringNetworksRequest>;
 
 export type UpdatePeeringNetworksResponse = Operation;
 export const UpdatePeeringNetworksResponse =
@@ -70642,7 +70642,7 @@ export const CancelRequestRemovePeeringNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelRequestRemovePeeringNetworksRequest>;
+  ) as unknown as Schema.Codec<CancelRequestRemovePeeringNetworksRequest>;
 
 export type CancelRequestRemovePeeringNetworksResponse = Operation;
 export const CancelRequestRemovePeeringNetworksResponse =
@@ -70693,7 +70693,7 @@ export const SetSslCertificatesTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSslCertificatesTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<SetSslCertificatesTargetHttpsProxiesRequest>;
 
 export type SetSslCertificatesTargetHttpsProxiesResponse = Operation;
 export const SetSslCertificatesTargetHttpsProxiesResponse =
@@ -70744,7 +70744,7 @@ export const SetCertificateMapTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetCertificateMapTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<SetCertificateMapTargetHttpsProxiesRequest>;
 
 export type SetCertificateMapTargetHttpsProxiesResponse = Operation;
 export const SetCertificateMapTargetHttpsProxiesResponse =
@@ -70793,7 +70793,7 @@ export const PatchTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<PatchTargetHttpsProxiesRequest>;
 
 export type PatchTargetHttpsProxiesResponse = Operation;
 export const PatchTargetHttpsProxiesResponse =
@@ -70839,7 +70839,7 @@ export const TestIamPermissionsTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTargetHttpsProxiesRequest>;
 
 export type TestIamPermissionsTargetHttpsProxiesResponse =
   TestPermissionsResponse;
@@ -70889,7 +70889,7 @@ export const SetSslPolicyTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSslPolicyTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<SetSslPolicyTargetHttpsProxiesRequest>;
 
 export type SetSslPolicyTargetHttpsProxiesResponse = Operation;
 export const SetSslPolicyTargetHttpsProxiesResponse =
@@ -70931,7 +70931,7 @@ export const GetTargetHttpsProxiesRequest =
       path: "projects/{project}/global/targetHttpsProxies/{targetHttpsProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<GetTargetHttpsProxiesRequest>;
 
 export type GetTargetHttpsProxiesResponse = TargetHttpsProxy;
 export const GetTargetHttpsProxiesResponse =
@@ -70992,7 +70992,7 @@ export const AggregatedListTargetHttpsProxiesRequest =
       path: "projects/{project}/aggregated/targetHttpsProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListTargetHttpsProxiesRequest>;
 
 export type AggregatedListTargetHttpsProxiesResponse =
   TargetHttpsProxyAggregatedList;
@@ -71041,7 +71041,7 @@ export const DeleteTargetHttpsProxiesRequest =
       path: "projects/{project}/global/targetHttpsProxies/{targetHttpsProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<DeleteTargetHttpsProxiesRequest>;
 
 export type DeleteTargetHttpsProxiesResponse = Operation;
 export const DeleteTargetHttpsProxiesResponse =
@@ -71097,7 +71097,7 @@ export const ListTargetHttpsProxiesRequest =
       path: "projects/{project}/global/targetHttpsProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<ListTargetHttpsProxiesRequest>;
 
 export type ListTargetHttpsProxiesResponse = TargetHttpsProxyList;
 export const ListTargetHttpsProxiesResponse =
@@ -71143,7 +71143,7 @@ export const InsertTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<InsertTargetHttpsProxiesRequest>;
 
 export type InsertTargetHttpsProxiesResponse = Operation;
 export const InsertTargetHttpsProxiesResponse =
@@ -71192,7 +71192,7 @@ export const SetUrlMapTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetUrlMapTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<SetUrlMapTargetHttpsProxiesRequest>;
 
 export type SetUrlMapTargetHttpsProxiesResponse = Operation;
 export const SetUrlMapTargetHttpsProxiesResponse =
@@ -71243,7 +71243,7 @@ export const SetQuicOverrideTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetQuicOverrideTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<SetQuicOverrideTargetHttpsProxiesRequest>;
 
 export type SetQuicOverrideTargetHttpsProxiesResponse = Operation;
 export const SetQuicOverrideTargetHttpsProxiesResponse =
@@ -71291,7 +71291,7 @@ export const GetRuleRegionSecurityPoliciesRequest =
       path: "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/getRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRuleRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRuleRegionSecurityPoliciesRequest>;
 
 export type GetRuleRegionSecurityPoliciesResponse = SecurityPolicyRule;
 export const GetRuleRegionSecurityPoliciesResponse =
@@ -71344,7 +71344,7 @@ export const PatchRegionSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionSecurityPoliciesRequest>;
 
 export type PatchRegionSecurityPoliciesResponse = Operation;
 export const PatchRegionSecurityPoliciesResponse =
@@ -71393,7 +71393,7 @@ export const RemoveRuleRegionSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveRuleRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveRuleRegionSecurityPoliciesRequest>;
 
 export type RemoveRuleRegionSecurityPoliciesResponse = Operation;
 export const RemoveRuleRegionSecurityPoliciesResponse =
@@ -71445,7 +71445,7 @@ export const SetLabelsRegionSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsRegionSecurityPoliciesRequest>;
 
 export type SetLabelsRegionSecurityPoliciesResponse = Operation;
 export const SetLabelsRegionSecurityPoliciesResponse =
@@ -71499,7 +71499,7 @@ export const InsertRegionSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionSecurityPoliciesRequest>;
 
 export type InsertRegionSecurityPoliciesResponse = Operation;
 export const InsertRegionSecurityPoliciesResponse =
@@ -71553,7 +71553,7 @@ export const AddRuleRegionSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddRuleRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddRuleRegionSecurityPoliciesRequest>;
 
 export type AddRuleRegionSecurityPoliciesResponse = Operation;
 export const AddRuleRegionSecurityPoliciesResponse =
@@ -71612,7 +71612,7 @@ export const ListRegionSecurityPoliciesRequest =
       path: "projects/{project}/regions/{region}/securityPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListRegionSecurityPoliciesRequest>;
 
 export type ListRegionSecurityPoliciesResponse = SecurityPolicyList;
 export const ListRegionSecurityPoliciesResponse =
@@ -71663,7 +71663,7 @@ export const DeleteRegionSecurityPoliciesRequest =
       path: "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionSecurityPoliciesRequest>;
 
 export type DeleteRegionSecurityPoliciesResponse = Operation;
 export const DeleteRegionSecurityPoliciesResponse =
@@ -71723,7 +71723,7 @@ export const PatchRuleRegionSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRuleRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRuleRegionSecurityPoliciesRequest>;
 
 export type PatchRuleRegionSecurityPoliciesResponse = Operation;
 export const PatchRuleRegionSecurityPoliciesResponse =
@@ -71768,7 +71768,7 @@ export const GetRegionSecurityPoliciesRequest =
       path: "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRegionSecurityPoliciesRequest>;
 
 export type GetRegionSecurityPoliciesResponse = SecurityPolicy;
 export const GetRegionSecurityPoliciesResponse =
@@ -71815,7 +71815,7 @@ export const InsertPacketMirroringsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertPacketMirroringsRequest>;
+  ) as unknown as Schema.Codec<InsertPacketMirroringsRequest>;
 
 export type InsertPacketMirroringsResponse = Operation;
 export const InsertPacketMirroringsResponse =
@@ -71867,7 +71867,7 @@ export const PatchPacketMirroringsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPacketMirroringsRequest>;
+  ) as unknown as Schema.Codec<PatchPacketMirroringsRequest>;
 
 export type PatchPacketMirroringsResponse = Operation;
 export const PatchPacketMirroringsResponse =
@@ -71916,7 +71916,7 @@ export const TestIamPermissionsPacketMirroringsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsPacketMirroringsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsPacketMirroringsRequest>;
 
 export type TestIamPermissionsPacketMirroringsResponse =
   TestPermissionsResponse;
@@ -71976,7 +71976,7 @@ export const ListPacketMirroringsRequest =
       path: "projects/{project}/regions/{region}/packetMirrorings",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPacketMirroringsRequest>;
+  ) as unknown as Schema.Codec<ListPacketMirroringsRequest>;
 
 export type ListPacketMirroringsResponse = PacketMirroringList;
 export const ListPacketMirroringsResponse =
@@ -72024,7 +72024,7 @@ export const DeletePacketMirroringsRequest =
       path: "projects/{project}/regions/{region}/packetMirrorings/{packetMirroring}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePacketMirroringsRequest>;
+  ) as unknown as Schema.Codec<DeletePacketMirroringsRequest>;
 
 export type DeletePacketMirroringsResponse = Operation;
 export const DeletePacketMirroringsResponse =
@@ -72090,7 +72090,7 @@ export const AggregatedListPacketMirroringsRequest =
       path: "projects/{project}/aggregated/packetMirrorings",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListPacketMirroringsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListPacketMirroringsRequest>;
 
 export type AggregatedListPacketMirroringsResponse =
   PacketMirroringAggregatedList;
@@ -72139,7 +72139,7 @@ export const GetPacketMirroringsRequest =
       path: "projects/{project}/regions/{region}/packetMirrorings/{packetMirroring}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPacketMirroringsRequest>;
+  ) as unknown as Schema.Codec<GetPacketMirroringsRequest>;
 
 export type GetPacketMirroringsResponse = PacketMirroring;
 export const GetPacketMirroringsResponse =
@@ -72182,7 +72182,7 @@ export const DeleteRegionTargetHttpsProxiesRequest =
       path: "projects/{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionTargetHttpsProxiesRequest>;
 
 export type DeleteRegionTargetHttpsProxiesResponse = Operation;
 export const DeleteRegionTargetHttpsProxiesResponse =
@@ -72241,7 +72241,7 @@ export const ListRegionTargetHttpsProxiesRequest =
       path: "projects/{project}/regions/{region}/targetHttpsProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<ListRegionTargetHttpsProxiesRequest>;
 
 export type ListRegionTargetHttpsProxiesResponse = TargetHttpsProxyList;
 export const ListRegionTargetHttpsProxiesResponse =
@@ -72289,7 +72289,7 @@ export const GetRegionTargetHttpsProxiesRequest =
       path: "projects/{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<GetRegionTargetHttpsProxiesRequest>;
 
 export type GetRegionTargetHttpsProxiesResponse = TargetHttpsProxy;
 export const GetRegionTargetHttpsProxiesResponse =
@@ -72341,7 +72341,7 @@ export const SetSslCertificatesRegionTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSslCertificatesRegionTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<SetSslCertificatesRegionTargetHttpsProxiesRequest>;
 
 export type SetSslCertificatesRegionTargetHttpsProxiesResponse = Operation;
 export const SetSslCertificatesRegionTargetHttpsProxiesResponse =
@@ -72393,7 +72393,7 @@ export const SetUrlMapRegionTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetUrlMapRegionTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<SetUrlMapRegionTargetHttpsProxiesRequest>;
 
 export type SetUrlMapRegionTargetHttpsProxiesResponse = Operation;
 export const SetUrlMapRegionTargetHttpsProxiesResponse =
@@ -72442,7 +72442,7 @@ export const InsertRegionTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionTargetHttpsProxiesRequest>;
 
 export type InsertRegionTargetHttpsProxiesResponse = Operation;
 export const InsertRegionTargetHttpsProxiesResponse =
@@ -72494,7 +72494,7 @@ export const PatchRegionTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionTargetHttpsProxiesRequest>;
 
 export type PatchRegionTargetHttpsProxiesResponse = Operation;
 export const PatchRegionTargetHttpsProxiesResponse =
@@ -72543,7 +72543,7 @@ export const TestIamPermissionsRegionTargetHttpsProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionTargetHttpsProxiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionTargetHttpsProxiesRequest>;
 
 export type TestIamPermissionsRegionTargetHttpsProxiesResponse =
   TestPermissionsResponse;
@@ -72589,7 +72589,7 @@ export const GetRegionMultiMigsRequest =
       path: "projects/{project}/regions/{region}/multiMigs/{multiMig}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionMultiMigsRequest>;
+  ) as unknown as Schema.Codec<GetRegionMultiMigsRequest>;
 
 export type GetRegionMultiMigsResponse = MultiMig;
 export const GetRegionMultiMigsResponse = /*@__PURE__*/ /*#__PURE__*/ MultiMig;
@@ -72632,7 +72632,7 @@ export const InsertRegionMultiMigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionMultiMigsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionMultiMigsRequest>;
 
 export type InsertRegionMultiMigsResponse = Operation;
 export const InsertRegionMultiMigsResponse =
@@ -72680,7 +72680,7 @@ export const DeleteRegionMultiMigsRequest =
       path: "projects/{project}/regions/{region}/multiMigs/{multiMig}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionMultiMigsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionMultiMigsRequest>;
 
 export type DeleteRegionMultiMigsResponse = Operation;
 export const DeleteRegionMultiMigsResponse =
@@ -72739,7 +72739,7 @@ export const ListRegionMultiMigsRequest =
       path: "projects/{project}/regions/{region}/multiMigs",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionMultiMigsRequest>;
+  ) as unknown as Schema.Codec<ListRegionMultiMigsRequest>;
 
 export type ListRegionMultiMigsResponse = MultiMigsList;
 export const ListRegionMultiMigsResponse =
@@ -72782,7 +72782,7 @@ export const GetLicenseCodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/global/licenseCodes/{licenseCode}",
   }),
   svc,
-) as unknown as Schema.Schema<GetLicenseCodesRequest>;
+) as unknown as Schema.Codec<GetLicenseCodesRequest>;
 
 export type GetLicenseCodesResponse = LicenseCode;
 export const GetLicenseCodesResponse = /*@__PURE__*/ /*#__PURE__*/ LicenseCode;
@@ -72823,7 +72823,7 @@ export const GetIamPolicyLicenseCodesRequest =
       path: "projects/{project}/global/licenseCodes/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyLicenseCodesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyLicenseCodesRequest>;
 
 export type GetIamPolicyLicenseCodesResponse = Policy;
 export const GetIamPolicyLicenseCodesResponse =
@@ -72867,7 +72867,7 @@ export const SetIamPolicyLicenseCodesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyLicenseCodesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyLicenseCodesRequest>;
 
 export type SetIamPolicyLicenseCodesResponse = Policy;
 export const SetIamPolicyLicenseCodesResponse =
@@ -72913,7 +72913,7 @@ export const TestIamPermissionsLicenseCodesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsLicenseCodesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsLicenseCodesRequest>;
 
 export type TestIamPermissionsLicenseCodesResponse = TestPermissionsResponse;
 export const TestIamPermissionsLicenseCodesResponse =
@@ -72965,7 +72965,7 @@ export const SetTargetForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetTargetForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<SetTargetForwardingRulesRequest>;
 
 export type SetTargetForwardingRulesResponse = Operation;
 export const SetTargetForwardingRulesResponse =
@@ -73017,7 +73017,7 @@ export const PatchForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<PatchForwardingRulesRequest>;
 
 export type PatchForwardingRulesResponse = Operation;
 export const PatchForwardingRulesResponse =
@@ -73066,7 +73066,7 @@ export const TestIamPermissionsForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsForwardingRulesRequest>;
 
 export type TestIamPermissionsForwardingRulesResponse = TestPermissionsResponse;
 export const TestIamPermissionsForwardingRulesResponse =
@@ -73125,7 +73125,7 @@ export const ListForwardingRulesRequest =
       path: "projects/{project}/regions/{region}/forwardingRules",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<ListForwardingRulesRequest>;
 
 export type ListForwardingRulesResponse = ForwardingRuleList;
 export const ListForwardingRulesResponse =
@@ -73173,7 +73173,7 @@ export const DeleteForwardingRulesRequest =
       path: "projects/{project}/regions/{region}/forwardingRules/{forwardingRule}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<DeleteForwardingRulesRequest>;
 
 export type DeleteForwardingRulesResponse = Operation;
 export const DeleteForwardingRulesResponse =
@@ -73239,7 +73239,7 @@ export const AggregatedListForwardingRulesRequest =
       path: "projects/{project}/aggregated/forwardingRules",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListForwardingRulesRequest>;
 
 export type AggregatedListForwardingRulesResponse =
   ForwardingRuleAggregatedList;
@@ -73290,7 +73290,7 @@ export const GetForwardingRulesRequest =
       path: "projects/{project}/regions/{region}/forwardingRules/{forwardingRule}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<GetForwardingRulesRequest>;
 
 export type GetForwardingRulesResponse = ForwardingRule;
 export const GetForwardingRulesResponse =
@@ -73337,7 +73337,7 @@ export const SetLabelsForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsForwardingRulesRequest>;
 
 export type SetLabelsForwardingRulesResponse = Operation;
 export const SetLabelsForwardingRulesResponse =
@@ -73386,7 +73386,7 @@ export const InsertForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<InsertForwardingRulesRequest>;
 
 export type InsertForwardingRulesResponse = Operation;
 export const InsertForwardingRulesResponse =
@@ -73432,7 +73432,7 @@ export const InsertGlobalNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGlobalNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertGlobalNetworkEndpointGroupsRequest>;
 
 export type InsertGlobalNetworkEndpointGroupsResponse = Operation;
 export const InsertGlobalNetworkEndpointGroupsResponse =
@@ -73485,7 +73485,7 @@ export const DetachNetworkEndpointsGlobalNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DetachNetworkEndpointsGlobalNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<DetachNetworkEndpointsGlobalNetworkEndpointGroupsRequest>;
 
 export type DetachNetworkEndpointsGlobalNetworkEndpointGroupsResponse =
   Operation;
@@ -73530,7 +73530,7 @@ export const GetGlobalNetworkEndpointGroupsRequest =
       path: "projects/{project}/global/networkEndpointGroups/{networkEndpointGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGlobalNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<GetGlobalNetworkEndpointGroupsRequest>;
 
 export type GetGlobalNetworkEndpointGroupsResponse = NetworkEndpointGroup;
 export const GetGlobalNetworkEndpointGroupsResponse =
@@ -73590,7 +73590,7 @@ export const ListNetworkEndpointsGlobalNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNetworkEndpointsGlobalNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<ListNetworkEndpointsGlobalNetworkEndpointGroupsRequest>;
 
 export type ListNetworkEndpointsGlobalNetworkEndpointGroupsResponse =
   NetworkEndpointGroupsListNetworkEndpoints;
@@ -73652,7 +73652,7 @@ export const ListGlobalNetworkEndpointGroupsRequest =
       path: "projects/{project}/global/networkEndpointGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGlobalNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<ListGlobalNetworkEndpointGroupsRequest>;
 
 export type ListGlobalNetworkEndpointGroupsResponse = NetworkEndpointGroupList;
 export const ListGlobalNetworkEndpointGroupsResponse =
@@ -73702,7 +73702,7 @@ export const DeleteGlobalNetworkEndpointGroupsRequest =
       path: "projects/{project}/global/networkEndpointGroups/{networkEndpointGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGlobalNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteGlobalNetworkEndpointGroupsRequest>;
 
 export type DeleteGlobalNetworkEndpointGroupsResponse = Operation;
 export const DeleteGlobalNetworkEndpointGroupsResponse =
@@ -73755,7 +73755,7 @@ export const AttachNetworkEndpointsGlobalNetworkEndpointGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AttachNetworkEndpointsGlobalNetworkEndpointGroupsRequest>;
+  ) as unknown as Schema.Codec<AttachNetworkEndpointsGlobalNetworkEndpointGroupsRequest>;
 
 export type AttachNetworkEndpointsGlobalNetworkEndpointGroupsResponse =
   Operation;
@@ -73800,7 +73800,7 @@ export const GetVpnGatewaysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/vpnGateways/{vpnGateway}",
   }),
   svc,
-) as unknown as Schema.Schema<GetVpnGatewaysRequest>;
+) as unknown as Schema.Codec<GetVpnGatewaysRequest>;
 
 export type GetVpnGatewaysResponse = VpnGateway;
 export const GetVpnGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ VpnGateway;
@@ -73860,7 +73860,7 @@ export const AggregatedListVpnGatewaysRequest =
       path: "projects/{project}/aggregated/vpnGateways",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<AggregatedListVpnGatewaysRequest>;
 
 export type AggregatedListVpnGatewaysResponse = VpnGatewayAggregatedList;
 export const AggregatedListVpnGatewaysResponse =
@@ -73908,7 +73908,7 @@ export const GetStatusVpnGatewaysRequest =
       path: "projects/{project}/regions/{region}/vpnGateways/{vpnGateway}/getStatus",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetStatusVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetStatusVpnGatewaysRequest>;
 
 export type GetStatusVpnGatewaysResponse = VpnGatewaysGetStatusResponse;
 export const GetStatusVpnGatewaysResponse =
@@ -73951,7 +73951,7 @@ export const DeleteVpnGatewaysRequest =
       path: "projects/{project}/regions/{region}/vpnGateways/{vpnGateway}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<DeleteVpnGatewaysRequest>;
 
 export type DeleteVpnGatewaysResponse = Operation;
 export const DeleteVpnGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -74010,7 +74010,7 @@ export const ListVpnGatewaysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/regions/{region}/vpnGateways",
   }),
   svc,
-) as unknown as Schema.Schema<ListVpnGatewaysRequest>;
+) as unknown as Schema.Codec<ListVpnGatewaysRequest>;
 
 export type ListVpnGatewaysResponse = VpnGatewayList;
 export const ListVpnGatewaysResponse =
@@ -74059,7 +74059,7 @@ export const InsertVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<InsertVpnGatewaysRequest>;
 
 export type InsertVpnGatewaysResponse = Operation;
 export const InsertVpnGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -74107,7 +74107,7 @@ export const TestIamPermissionsVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsVpnGatewaysRequest>;
 
 export type TestIamPermissionsVpnGatewaysResponse = TestPermissionsResponse;
 export const TestIamPermissionsVpnGatewaysResponse =
@@ -74159,7 +74159,7 @@ export const SetLabelsVpnGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsVpnGatewaysRequest>;
+  ) as unknown as Schema.Codec<SetLabelsVpnGatewaysRequest>;
 
 export type SetLabelsVpnGatewaysResponse = Operation;
 export const SetLabelsVpnGatewaysResponse =
@@ -74215,7 +74215,7 @@ export const ListInterconnectLocationsRequest =
       path: "projects/{project}/global/interconnectLocations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInterconnectLocationsRequest>;
+  ) as unknown as Schema.Codec<ListInterconnectLocationsRequest>;
 
 export type ListInterconnectLocationsResponse = InterconnectLocationList;
 export const ListInterconnectLocationsResponse =
@@ -74262,7 +74262,7 @@ export const GetInterconnectLocationsRequest =
       path: "projects/{project}/global/interconnectLocations/{interconnectLocation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInterconnectLocationsRequest>;
+  ) as unknown as Schema.Codec<GetInterconnectLocationsRequest>;
 
 export type GetInterconnectLocationsResponse = InterconnectLocation;
 export const GetInterconnectLocationsResponse =
@@ -74302,7 +74302,7 @@ export const GetTargetHttpProxiesRequest =
       path: "projects/{project}/global/targetHttpProxies/{targetHttpProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<GetTargetHttpProxiesRequest>;
 
 export type GetTargetHttpProxiesResponse = TargetHttpProxy;
 export const GetTargetHttpProxiesResponse =
@@ -74363,7 +74363,7 @@ export const AggregatedListTargetHttpProxiesRequest =
       path: "projects/{project}/aggregated/targetHttpProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListTargetHttpProxiesRequest>;
 
 export type AggregatedListTargetHttpProxiesResponse =
   TargetHttpProxyAggregatedList;
@@ -74412,7 +74412,7 @@ export const DeleteTargetHttpProxiesRequest =
       path: "projects/{project}/global/targetHttpProxies/{targetHttpProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<DeleteTargetHttpProxiesRequest>;
 
 export type DeleteTargetHttpProxiesResponse = Operation;
 export const DeleteTargetHttpProxiesResponse =
@@ -74468,7 +74468,7 @@ export const ListTargetHttpProxiesRequest =
       path: "projects/{project}/global/targetHttpProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<ListTargetHttpProxiesRequest>;
 
 export type ListTargetHttpProxiesResponse = TargetHttpProxyList;
 export const ListTargetHttpProxiesResponse =
@@ -74514,7 +74514,7 @@ export const InsertTargetHttpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<InsertTargetHttpProxiesRequest>;
 
 export type InsertTargetHttpProxiesResponse = Operation;
 export const InsertTargetHttpProxiesResponse =
@@ -74563,7 +74563,7 @@ export const PatchTargetHttpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<PatchTargetHttpProxiesRequest>;
 
 export type PatchTargetHttpProxiesResponse = Operation;
 export const PatchTargetHttpProxiesResponse =
@@ -74609,7 +74609,7 @@ export const TestIamPermissionsTargetHttpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTargetHttpProxiesRequest>;
 
 export type TestIamPermissionsTargetHttpProxiesResponse =
   TestPermissionsResponse;
@@ -74659,7 +74659,7 @@ export const SetUrlMapTargetHttpProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetUrlMapTargetHttpProxiesRequest>;
+  ) as unknown as Schema.Codec<SetUrlMapTargetHttpProxiesRequest>;
 
 export type SetUrlMapTargetHttpProxiesResponse = Operation;
 export const SetUrlMapTargetHttpProxiesResponse =
@@ -74705,7 +74705,7 @@ export const InsertSnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertSnapshotGroupsRequest>;
 
 export type InsertSnapshotGroupsResponse = Operation;
 export const InsertSnapshotGroupsResponse =
@@ -74751,7 +74751,7 @@ export const TestIamPermissionsSnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsSnapshotGroupsRequest>;
 
 export type TestIamPermissionsSnapshotGroupsResponse = TestPermissionsResponse;
 export const TestIamPermissionsSnapshotGroupsResponse =
@@ -74793,7 +74793,7 @@ export const GetSnapshotGroupsRequest =
       path: "projects/{project}/global/snapshotGroups/{snapshotGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<GetSnapshotGroupsRequest>;
 
 export type GetSnapshotGroupsResponse = SnapshotGroup;
 export const GetSnapshotGroupsResponse =
@@ -74835,7 +74835,7 @@ export const GetIamPolicySnapshotGroupsRequest =
       path: "projects/{project}/global/snapshotGroups/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicySnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicySnapshotGroupsRequest>;
 
 export type GetIamPolicySnapshotGroupsResponse = Policy;
 export const GetIamPolicySnapshotGroupsResponse =
@@ -74879,7 +74879,7 @@ export const SetIamPolicySnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicySnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicySnapshotGroupsRequest>;
 
 export type SetIamPolicySnapshotGroupsResponse = Policy;
 export const SetIamPolicySnapshotGroupsResponse =
@@ -74924,7 +74924,7 @@ export const DeleteSnapshotGroupsRequest =
       path: "projects/{project}/global/snapshotGroups/{snapshotGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteSnapshotGroupsRequest>;
 
 export type DeleteSnapshotGroupsResponse = Operation;
 export const DeleteSnapshotGroupsResponse =
@@ -74977,7 +74977,7 @@ export const ListSnapshotGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/global/snapshotGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<ListSnapshotGroupsRequest>;
 
 export type ListSnapshotGroupsResponse = ListSnapshotGroups;
 export const ListSnapshotGroupsResponse =
@@ -75033,7 +75033,7 @@ export const ListBackendServicesRequest =
       path: "projects/{project}/global/backendServices",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBackendServicesRequest>;
+  ) as unknown as Schema.Codec<ListBackendServicesRequest>;
 
 export type ListBackendServicesResponse = BackendServiceList;
 export const ListBackendServicesResponse =
@@ -75082,7 +75082,7 @@ export const UpdateBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateBackendServicesRequest>;
+  ) as unknown as Schema.Codec<UpdateBackendServicesRequest>;
 
 export type UpdateBackendServicesResponse = Operation;
 export const UpdateBackendServicesResponse =
@@ -75127,7 +75127,7 @@ export const DeleteBackendServicesRequest =
       path: "projects/{project}/global/backendServices/{backendService}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteBackendServicesRequest>;
+  ) as unknown as Schema.Codec<DeleteBackendServicesRequest>;
 
 export type DeleteBackendServicesResponse = Operation;
 export const DeleteBackendServicesResponse =
@@ -75176,7 +75176,7 @@ export const SetEdgeSecurityPolicyBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetEdgeSecurityPolicyBackendServicesRequest>;
+  ) as unknown as Schema.Codec<SetEdgeSecurityPolicyBackendServicesRequest>;
 
 export type SetEdgeSecurityPolicyBackendServicesResponse = Operation;
 export const SetEdgeSecurityPolicyBackendServicesResponse =
@@ -75225,7 +75225,7 @@ export const AddSignedUrlKeyBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddSignedUrlKeyBackendServicesRequest>;
+  ) as unknown as Schema.Codec<AddSignedUrlKeyBackendServicesRequest>;
 
 export type AddSignedUrlKeyBackendServicesResponse = Operation;
 export const AddSignedUrlKeyBackendServicesResponse =
@@ -75271,7 +75271,7 @@ export const InsertBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertBackendServicesRequest>;
+  ) as unknown as Schema.Codec<InsertBackendServicesRequest>;
 
 export type InsertBackendServicesResponse = Operation;
 export const InsertBackendServicesResponse =
@@ -75327,7 +75327,7 @@ export const ListUsableBackendServicesRequest =
       path: "projects/{project}/global/backendServices/listUsable",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsableBackendServicesRequest>;
+  ) as unknown as Schema.Codec<ListUsableBackendServicesRequest>;
 
 export type ListUsableBackendServicesResponse = BackendServiceListUsable;
 export const ListUsableBackendServicesResponse =
@@ -75372,7 +75372,7 @@ export const GetEffectiveSecurityPoliciesBackendServicesRequest =
       path: "projects/{project}/global/backendServices/{backendService}/getEffectiveSecurityPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEffectiveSecurityPoliciesBackendServicesRequest>;
+  ) as unknown as Schema.Codec<GetEffectiveSecurityPoliciesBackendServicesRequest>;
 
 export type GetEffectiveSecurityPoliciesBackendServicesResponse =
   BackendServicesGetEffectiveSecurityPoliciesResponse;
@@ -75418,7 +75418,7 @@ export const GetIamPolicyBackendServicesRequest =
       path: "projects/{project}/global/backendServices/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyBackendServicesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyBackendServicesRequest>;
 
 export type GetIamPolicyBackendServicesResponse = Policy;
 export const GetIamPolicyBackendServicesResponse =
@@ -75462,7 +75462,7 @@ export const TestIamPermissionsBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsBackendServicesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsBackendServicesRequest>;
 
 export type TestIamPermissionsBackendServicesResponse = TestPermissionsResponse;
 export const TestIamPermissionsBackendServicesResponse =
@@ -75528,7 +75528,7 @@ export const AggregatedListBackendServicesRequest =
       path: "projects/{project}/aggregated/backendServices",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListBackendServicesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListBackendServicesRequest>;
 
 export type AggregatedListBackendServicesResponse =
   BackendServiceAggregatedList;
@@ -75581,7 +75581,7 @@ export const SetSecurityPolicyBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSecurityPolicyBackendServicesRequest>;
+  ) as unknown as Schema.Codec<SetSecurityPolicyBackendServicesRequest>;
 
 export type SetSecurityPolicyBackendServicesResponse = Operation;
 export const SetSecurityPolicyBackendServicesResponse =
@@ -75623,7 +75623,7 @@ export const GetBackendServicesRequest =
       path: "projects/{project}/global/backendServices/{backendService}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetBackendServicesRequest>;
+  ) as unknown as Schema.Codec<GetBackendServicesRequest>;
 
 export type GetBackendServicesResponse = BackendService;
 export const GetBackendServicesResponse =
@@ -75663,7 +75663,7 @@ export const GetHealthBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetHealthBackendServicesRequest>;
+  ) as unknown as Schema.Codec<GetHealthBackendServicesRequest>;
 
 export type GetHealthBackendServicesResponse = BackendServiceGroupHealth;
 export const GetHealthBackendServicesResponse =
@@ -75709,7 +75709,7 @@ export const SetIamPolicyBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyBackendServicesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyBackendServicesRequest>;
 
 export type SetIamPolicyBackendServicesResponse = Policy;
 export const SetIamPolicyBackendServicesResponse =
@@ -75758,7 +75758,7 @@ export const DeleteSignedUrlKeyBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSignedUrlKeyBackendServicesRequest>;
+  ) as unknown as Schema.Codec<DeleteSignedUrlKeyBackendServicesRequest>;
 
 export type DeleteSignedUrlKeyBackendServicesResponse = Operation;
 export const DeleteSignedUrlKeyBackendServicesResponse =
@@ -75807,7 +75807,7 @@ export const PatchBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchBackendServicesRequest>;
+  ) as unknown as Schema.Codec<PatchBackendServicesRequest>;
 
 export type PatchBackendServicesResponse = Operation;
 export const PatchBackendServicesResponse =
@@ -75863,7 +75863,7 @@ export const ListGlobalPublicDelegatedPrefixesRequest =
       path: "projects/{project}/global/publicDelegatedPrefixes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGlobalPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<ListGlobalPublicDelegatedPrefixesRequest>;
 
 export type ListGlobalPublicDelegatedPrefixesResponse =
   PublicDelegatedPrefixList;
@@ -75914,7 +75914,7 @@ export const DeleteGlobalPublicDelegatedPrefixesRequest =
       path: "projects/{project}/global/publicDelegatedPrefixes/{publicDelegatedPrefix}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGlobalPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<DeleteGlobalPublicDelegatedPrefixesRequest>;
 
 export type DeleteGlobalPublicDelegatedPrefixesResponse = Operation;
 export const DeleteGlobalPublicDelegatedPrefixesResponse =
@@ -75958,7 +75958,7 @@ export const GetGlobalPublicDelegatedPrefixesRequest =
       path: "projects/{project}/global/publicDelegatedPrefixes/{publicDelegatedPrefix}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGlobalPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<GetGlobalPublicDelegatedPrefixesRequest>;
 
 export type GetGlobalPublicDelegatedPrefixesResponse = PublicDelegatedPrefix;
 export const GetGlobalPublicDelegatedPrefixesResponse =
@@ -76002,7 +76002,7 @@ export const InsertGlobalPublicDelegatedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGlobalPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<InsertGlobalPublicDelegatedPrefixesRequest>;
 
 export type InsertGlobalPublicDelegatedPrefixesResponse = Operation;
 export const InsertGlobalPublicDelegatedPrefixesResponse =
@@ -76053,7 +76053,7 @@ export const PatchGlobalPublicDelegatedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchGlobalPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<PatchGlobalPublicDelegatedPrefixesRequest>;
 
 export type PatchGlobalPublicDelegatedPrefixesResponse = Operation;
 export const PatchGlobalPublicDelegatedPrefixesResponse =
@@ -76097,7 +76097,7 @@ export const GetPublicAdvertisedPrefixesRequest =
       path: "projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPublicAdvertisedPrefixesRequest>;
+  ) as unknown as Schema.Codec<GetPublicAdvertisedPrefixesRequest>;
 
 export type GetPublicAdvertisedPrefixesResponse = PublicAdvertisedPrefix;
 export const GetPublicAdvertisedPrefixesResponse =
@@ -76142,7 +76142,7 @@ export const DeletePublicAdvertisedPrefixesRequest =
       path: "projects/{project}/global/publicAdvertisedPrefixes/{publicAdvertisedPrefix}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePublicAdvertisedPrefixesRequest>;
+  ) as unknown as Schema.Codec<DeletePublicAdvertisedPrefixesRequest>;
 
 export type DeletePublicAdvertisedPrefixesResponse = Operation;
 export const DeletePublicAdvertisedPrefixesResponse =
@@ -76198,7 +76198,7 @@ export const ListPublicAdvertisedPrefixesRequest =
       path: "projects/{project}/global/publicAdvertisedPrefixes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPublicAdvertisedPrefixesRequest>;
+  ) as unknown as Schema.Codec<ListPublicAdvertisedPrefixesRequest>;
 
 export type ListPublicAdvertisedPrefixesResponse = PublicAdvertisedPrefixList;
 export const ListPublicAdvertisedPrefixesResponse =
@@ -76249,7 +76249,7 @@ export const WithdrawPublicAdvertisedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WithdrawPublicAdvertisedPrefixesRequest>;
+  ) as unknown as Schema.Codec<WithdrawPublicAdvertisedPrefixesRequest>;
 
 export type WithdrawPublicAdvertisedPrefixesResponse = Operation;
 export const WithdrawPublicAdvertisedPrefixesResponse =
@@ -76295,7 +76295,7 @@ export const InsertPublicAdvertisedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertPublicAdvertisedPrefixesRequest>;
+  ) as unknown as Schema.Codec<InsertPublicAdvertisedPrefixesRequest>;
 
 export type InsertPublicAdvertisedPrefixesResponse = Operation;
 export const InsertPublicAdvertisedPrefixesResponse =
@@ -76346,7 +76346,7 @@ export const PatchPublicAdvertisedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPublicAdvertisedPrefixesRequest>;
+  ) as unknown as Schema.Codec<PatchPublicAdvertisedPrefixesRequest>;
 
 export type PatchPublicAdvertisedPrefixesResponse = Operation;
 export const PatchPublicAdvertisedPrefixesResponse =
@@ -76394,7 +76394,7 @@ export const AnnouncePublicAdvertisedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnnouncePublicAdvertisedPrefixesRequest>;
+  ) as unknown as Schema.Codec<AnnouncePublicAdvertisedPrefixesRequest>;
 
 export type AnnouncePublicAdvertisedPrefixesResponse = Operation;
 export const AnnouncePublicAdvertisedPrefixesResponse =
@@ -76437,7 +76437,7 @@ export const GetRolloutPlansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/global/rolloutPlans/{rolloutPlan}",
   }),
   svc,
-) as unknown as Schema.Schema<GetRolloutPlansRequest>;
+) as unknown as Schema.Codec<GetRolloutPlansRequest>;
 
 export type GetRolloutPlansResponse = RolloutPlan;
 export const GetRolloutPlansResponse = /*@__PURE__*/ /*#__PURE__*/ RolloutPlan;
@@ -76477,7 +76477,7 @@ export const InsertRolloutPlansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRolloutPlansRequest>;
+  ) as unknown as Schema.Codec<InsertRolloutPlansRequest>;
 
 export type InsertRolloutPlansResponse = Operation;
 export const InsertRolloutPlansResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -76521,7 +76521,7 @@ export const DeleteRolloutPlansRequest =
       path: "projects/{project}/global/rolloutPlans/{rolloutPlan}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRolloutPlansRequest>;
+  ) as unknown as Schema.Codec<DeleteRolloutPlansRequest>;
 
 export type DeleteRolloutPlansResponse = Operation;
 export const DeleteRolloutPlansResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -76573,7 +76573,7 @@ export const ListRolloutPlansRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/global/rolloutPlans" }),
     svc,
-  ) as unknown as Schema.Schema<ListRolloutPlansRequest>;
+  ) as unknown as Schema.Codec<ListRolloutPlansRequest>;
 
 export type ListRolloutPlansResponse = RolloutPlansListResponse;
 export const ListRolloutPlansResponse =
@@ -76626,7 +76626,7 @@ export const ListGlobalOrganizationOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "locations/global/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListGlobalOrganizationOperationsRequest>;
+  ) as unknown as Schema.Codec<ListGlobalOrganizationOperationsRequest>;
 
 export type ListGlobalOrganizationOperationsResponse = OperationList;
 export const ListGlobalOrganizationOperationsResponse =
@@ -76671,13 +76671,13 @@ export const DeleteGlobalOrganizationOperationsRequest =
       path: "locations/global/operations/{operation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGlobalOrganizationOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteGlobalOrganizationOperationsRequest>;
 
 export interface DeleteGlobalOrganizationOperationsResponse {}
-export const DeleteGlobalOrganizationOperationsResponse: Schema.Schema<DeleteGlobalOrganizationOperationsResponse> =
+export const DeleteGlobalOrganizationOperationsResponse: Schema.Codec<DeleteGlobalOrganizationOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteGlobalOrganizationOperationsResponse>;
+  ) as any as Schema.Codec<DeleteGlobalOrganizationOperationsResponse>;
 
 export type DeleteGlobalOrganizationOperationsError =
   | DefaultErrors
@@ -76712,7 +76712,7 @@ export const GetGlobalOrganizationOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "locations/global/operations/{operation}" }),
     svc,
-  ) as unknown as Schema.Schema<GetGlobalOrganizationOperationsRequest>;
+  ) as unknown as Schema.Codec<GetGlobalOrganizationOperationsRequest>;
 
 export type GetGlobalOrganizationOperationsResponse = Operation;
 export const GetGlobalOrganizationOperationsResponse =
@@ -76752,7 +76752,7 @@ export const GetRegionDiskSettingsRequest =
       path: "projects/{project}/regions/{region}/diskSettings",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionDiskSettingsRequest>;
+  ) as unknown as Schema.Codec<GetRegionDiskSettingsRequest>;
 
 export type GetRegionDiskSettingsResponse = DiskSettings;
 export const GetRegionDiskSettingsResponse =
@@ -76799,7 +76799,7 @@ export const PatchRegionDiskSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionDiskSettingsRequest>;
+  ) as unknown as Schema.Codec<PatchRegionDiskSettingsRequest>;
 
 export type PatchRegionDiskSettingsResponse = Operation;
 export const PatchRegionDiskSettingsResponse =
@@ -76845,7 +76845,7 @@ export const CapacityAdviceRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CapacityAdviceRequest_Op>;
+  ) as unknown as Schema.Codec<CapacityAdviceRequest_Op>;
 
 export type CapacityAdviceResponse_Op = CapacityAdviceResponse;
 export const CapacityAdviceResponse_Op =
@@ -76891,7 +76891,7 @@ export const CapacityHistoryAdviceRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CapacityHistoryAdviceRequest>;
+  ) as unknown as Schema.Codec<CapacityHistoryAdviceRequest>;
 
 export type CapacityHistoryAdviceResponse = CapacityHistoryResponse;
 export const CapacityHistoryAdviceResponse =
@@ -76937,7 +76937,7 @@ export const CalendarModeAdviceRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CalendarModeAdviceRequest_Op>;
+  ) as unknown as Schema.Codec<CalendarModeAdviceRequest_Op>;
 
 export type CalendarModeAdviceResponse_Op = CalendarModeAdviceResponse;
 export const CalendarModeAdviceResponse_Op =
@@ -76994,7 +76994,7 @@ export const ListRegionZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "projects/{project}/regions/{region}/zones" }),
   svc,
-) as unknown as Schema.Schema<ListRegionZonesRequest>;
+) as unknown as Schema.Codec<ListRegionZonesRequest>;
 
 export type ListRegionZonesResponse = ZoneList;
 export const ListRegionZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ZoneList;
@@ -77057,7 +77057,7 @@ export const ListInstanceGroupManagerResizeRequestsRequest =
       path: "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeRequests",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<ListInstanceGroupManagerResizeRequestsRequest>;
 
 export type ListInstanceGroupManagerResizeRequestsResponse =
   InstanceGroupManagerResizeRequestsListResponse;
@@ -77114,7 +77114,7 @@ export const DeleteInstanceGroupManagerResizeRequestsRequest =
       path: "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<DeleteInstanceGroupManagerResizeRequestsRequest>;
 
 export type DeleteInstanceGroupManagerResizeRequestsResponse = Operation;
 export const DeleteInstanceGroupManagerResizeRequestsResponse =
@@ -77164,7 +77164,7 @@ export const GetInstanceGroupManagerResizeRequestsRequest =
       path: "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<GetInstanceGroupManagerResizeRequestsRequest>;
 
 export type GetInstanceGroupManagerResizeRequestsResponse =
   InstanceGroupManagerResizeRequest;
@@ -77217,7 +77217,7 @@ export const CancelInstanceGroupManagerResizeRequestsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<CancelInstanceGroupManagerResizeRequestsRequest>;
 
 export type CancelInstanceGroupManagerResizeRequestsResponse = Operation;
 export const CancelInstanceGroupManagerResizeRequestsResponse =
@@ -77271,7 +77271,7 @@ export const InsertInstanceGroupManagerResizeRequestsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<InsertInstanceGroupManagerResizeRequestsRequest>;
 
 export type InsertInstanceGroupManagerResizeRequestsResponse = Operation;
 export const InsertInstanceGroupManagerResizeRequestsResponse =
@@ -77317,7 +77317,7 @@ export const SetLabelsGlobalForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsGlobalForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsGlobalForwardingRulesRequest>;
 
 export type SetLabelsGlobalForwardingRulesResponse = Operation;
 export const SetLabelsGlobalForwardingRulesResponse =
@@ -77363,7 +77363,7 @@ export const InsertGlobalForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGlobalForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<InsertGlobalForwardingRulesRequest>;
 
 export type InsertGlobalForwardingRulesResponse = Operation;
 export const InsertGlobalForwardingRulesResponse =
@@ -77412,7 +77412,7 @@ export const PatchGlobalForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchGlobalForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<PatchGlobalForwardingRulesRequest>;
 
 export type PatchGlobalForwardingRulesResponse = Operation;
 export const PatchGlobalForwardingRulesResponse =
@@ -77458,7 +77458,7 @@ export const TestIamPermissionsGlobalForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsGlobalForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsGlobalForwardingRulesRequest>;
 
 export type TestIamPermissionsGlobalForwardingRulesResponse =
   TestPermissionsResponse;
@@ -77504,7 +77504,7 @@ export const DeleteGlobalForwardingRulesRequest =
       path: "projects/{project}/global/forwardingRules/{forwardingRule}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGlobalForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<DeleteGlobalForwardingRulesRequest>;
 
 export type DeleteGlobalForwardingRulesResponse = Operation;
 export const DeleteGlobalForwardingRulesResponse =
@@ -77553,7 +77553,7 @@ export const SetTargetGlobalForwardingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetTargetGlobalForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<SetTargetGlobalForwardingRulesRequest>;
 
 export type SetTargetGlobalForwardingRulesResponse = Operation;
 export const SetTargetGlobalForwardingRulesResponse =
@@ -77609,7 +77609,7 @@ export const ListGlobalForwardingRulesRequest =
       path: "projects/{project}/global/forwardingRules",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGlobalForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<ListGlobalForwardingRulesRequest>;
 
 export type ListGlobalForwardingRulesResponse = ForwardingRuleList;
 export const ListGlobalForwardingRulesResponse =
@@ -77656,7 +77656,7 @@ export const GetGlobalForwardingRulesRequest =
       path: "projects/{project}/global/forwardingRules/{forwardingRule}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGlobalForwardingRulesRequest>;
+  ) as unknown as Schema.Codec<GetGlobalForwardingRulesRequest>;
 
 export type GetGlobalForwardingRulesResponse = ForwardingRule;
 export const GetGlobalForwardingRulesResponse =
@@ -77719,7 +77719,7 @@ export const ListSubnetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/regions/{region}/subnetworks",
   }),
   svc,
-) as unknown as Schema.Schema<ListSubnetworksRequest>;
+) as unknown as Schema.Codec<ListSubnetworksRequest>;
 
 export type ListSubnetworksResponse = SubnetworkList;
 export const ListSubnetworksResponse =
@@ -77767,7 +77767,7 @@ export const DeleteSubnetworksRequest =
       path: "projects/{project}/regions/{region}/subnetworks/{subnetwork}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSubnetworksRequest>;
+  ) as unknown as Schema.Codec<DeleteSubnetworksRequest>;
 
 export type DeleteSubnetworksResponse = Operation;
 export const DeleteSubnetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -77820,7 +77820,7 @@ export const ExpandIpCidrRangeSubnetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExpandIpCidrRangeSubnetworksRequest>;
+  ) as unknown as Schema.Codec<ExpandIpCidrRangeSubnetworksRequest>;
 
 export type ExpandIpCidrRangeSubnetworksResponse = Operation;
 export const ExpandIpCidrRangeSubnetworksResponse =
@@ -77874,7 +77874,7 @@ export const SetPrivateIpGoogleAccessSubnetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetPrivateIpGoogleAccessSubnetworksRequest>;
+  ) as unknown as Schema.Codec<SetPrivateIpGoogleAccessSubnetworksRequest>;
 
 export type SetPrivateIpGoogleAccessSubnetworksResponse = Operation;
 export const SetPrivateIpGoogleAccessSubnetworksResponse =
@@ -77945,7 +77945,7 @@ export const AggregatedListSubnetworksRequest =
       path: "projects/{project}/aggregated/subnetworks",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListSubnetworksRequest>;
+  ) as unknown as Schema.Codec<AggregatedListSubnetworksRequest>;
 
 export type AggregatedListSubnetworksResponse = SubnetworkAggregatedList;
 export const AggregatedListSubnetworksResponse =
@@ -77997,7 +77997,7 @@ export const GetSubnetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/subnetworks/{subnetwork}",
   }),
   svc,
-) as unknown as Schema.Schema<GetSubnetworksRequest>;
+) as unknown as Schema.Codec<GetSubnetworksRequest>;
 
 export type GetSubnetworksResponse = Subnetwork;
 export const GetSubnetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Subnetwork;
@@ -78040,7 +78040,7 @@ export const InsertSubnetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertSubnetworksRequest>;
+  ) as unknown as Schema.Codec<InsertSubnetworksRequest>;
 
 export type InsertSubnetworksResponse = Operation;
 export const InsertSubnetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -78100,7 +78100,7 @@ export const ListUsableSubnetworksRequest =
       path: "projects/{project}/aggregated/subnetworks/listUsable",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsableSubnetworksRequest>;
+  ) as unknown as Schema.Codec<ListUsableSubnetworksRequest>;
 
 export type ListUsableSubnetworksResponse = UsableSubnetworksAggregatedList;
 export const ListUsableSubnetworksResponse =
@@ -78150,7 +78150,7 @@ export const GetIamPolicySubnetworksRequest =
       path: "projects/{project}/regions/{region}/subnetworks/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicySubnetworksRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicySubnetworksRequest>;
 
 export type GetIamPolicySubnetworksResponse = Policy;
 export const GetIamPolicySubnetworksResponse =
@@ -78194,7 +78194,7 @@ export const SetIamPolicySubnetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicySubnetworksRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicySubnetworksRequest>;
 
 export type SetIamPolicySubnetworksResponse = Policy;
 export const SetIamPolicySubnetworksResponse =
@@ -78251,7 +78251,7 @@ export const PatchSubnetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchSubnetworksRequest>;
+  ) as unknown as Schema.Codec<PatchSubnetworksRequest>;
 
 export type PatchSubnetworksResponse = Operation;
 export const PatchSubnetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -78299,7 +78299,7 @@ export const TestIamPermissionsSubnetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsSubnetworksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsSubnetworksRequest>;
 
 export type TestIamPermissionsSubnetworksResponse = TestPermissionsResponse;
 export const TestIamPermissionsSubnetworksResponse =
@@ -78340,7 +78340,7 @@ export const GetSslPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/sslPolicies/{sslPolicy}",
   }),
   svc,
-) as unknown as Schema.Schema<GetSslPoliciesRequest>;
+) as unknown as Schema.Codec<GetSslPoliciesRequest>;
 
 export type GetSslPoliciesResponse = SslPolicy;
 export const GetSslPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SslPolicy;
@@ -78400,7 +78400,7 @@ export const AggregatedListSslPoliciesRequest =
       path: "projects/{project}/aggregated/sslPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListSslPoliciesRequest>;
 
 export type AggregatedListSslPoliciesResponse = SslPoliciesAggregatedList;
 export const AggregatedListSslPoliciesResponse =
@@ -78448,7 +78448,7 @@ export const DeleteSslPoliciesRequest =
       path: "projects/{project}/global/sslPolicies/{sslPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteSslPoliciesRequest>;
 
 export type DeleteSslPoliciesResponse = Operation;
 export const DeleteSslPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -78501,7 +78501,7 @@ export const ListSslPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/sslPolicies" }),
   svc,
-) as unknown as Schema.Schema<ListSslPoliciesRequest>;
+) as unknown as Schema.Codec<ListSslPoliciesRequest>;
 
 export type ListSslPoliciesResponse = SslPoliciesList;
 export const ListSslPoliciesResponse =
@@ -78547,7 +78547,7 @@ export const InsertSslPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertSslPoliciesRequest>;
 
 export type InsertSslPoliciesResponse = Operation;
 export const InsertSslPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -78595,7 +78595,7 @@ export const PatchSslPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchSslPoliciesRequest>;
 
 export type PatchSslPoliciesResponse = Operation;
 export const PatchSslPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -78640,7 +78640,7 @@ export const TestIamPermissionsSslPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsSslPoliciesRequest>;
 
 export type TestIamPermissionsSslPoliciesResponse = TestPermissionsResponse;
 export const TestIamPermissionsSslPoliciesResponse =
@@ -78696,7 +78696,7 @@ export const ListAvailableFeaturesSslPoliciesRequest =
       path: "projects/{project}/global/sslPolicies/listAvailableFeatures",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAvailableFeaturesSslPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListAvailableFeaturesSslPoliciesRequest>;
 
 export type ListAvailableFeaturesSslPoliciesResponse =
   SslPoliciesListAvailableFeaturesResponse;
@@ -78744,7 +78744,7 @@ export const InsertRegionNotificationEndpointsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionNotificationEndpointsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionNotificationEndpointsRequest>;
 
 export type InsertRegionNotificationEndpointsResponse = Operation;
 export const InsertRegionNotificationEndpointsResponse =
@@ -78793,7 +78793,7 @@ export const TestIamPermissionsRegionNotificationEndpointsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionNotificationEndpointsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionNotificationEndpointsRequest>;
 
 export type TestIamPermissionsRegionNotificationEndpointsResponse =
   TestPermissionsResponse;
@@ -78844,7 +78844,7 @@ export const DeleteRegionNotificationEndpointsRequest =
       path: "projects/{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionNotificationEndpointsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionNotificationEndpointsRequest>;
 
 export type DeleteRegionNotificationEndpointsResponse = Operation;
 export const DeleteRegionNotificationEndpointsResponse =
@@ -78903,7 +78903,7 @@ export const ListRegionNotificationEndpointsRequest =
       path: "projects/{project}/regions/{region}/notificationEndpoints",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionNotificationEndpointsRequest>;
+  ) as unknown as Schema.Codec<ListRegionNotificationEndpointsRequest>;
 
 export type ListRegionNotificationEndpointsResponse = NotificationEndpointList;
 export const ListRegionNotificationEndpointsResponse =
@@ -78953,7 +78953,7 @@ export const GetRegionNotificationEndpointsRequest =
       path: "projects/{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionNotificationEndpointsRequest>;
+  ) as unknown as Schema.Codec<GetRegionNotificationEndpointsRequest>;
 
 export type GetRegionNotificationEndpointsResponse = NotificationEndpoint;
 export const GetRegionNotificationEndpointsResponse =
@@ -79017,7 +79017,7 @@ export const AggregatedListRegionNotificationEndpointsRequest =
       path: "projects/{project}/aggregated/notificationEndpoints",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListRegionNotificationEndpointsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListRegionNotificationEndpointsRequest>;
 
 export type AggregatedListRegionNotificationEndpointsResponse =
   NotificationEndpointAggregatedList;
@@ -79068,7 +79068,7 @@ export const GetIamPolicyInterconnectAttachmentGroupsRequest =
       path: "projects/{project}/global/interconnectAttachmentGroups/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyInterconnectAttachmentGroupsRequest>;
 
 export type GetIamPolicyInterconnectAttachmentGroupsResponse = Policy;
 export const GetIamPolicyInterconnectAttachmentGroupsResponse =
@@ -79112,7 +79112,7 @@ export const SetIamPolicyInterconnectAttachmentGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyInterconnectAttachmentGroupsRequest>;
 
 export type SetIamPolicyInterconnectAttachmentGroupsResponse = Policy;
 export const SetIamPolicyInterconnectAttachmentGroupsResponse =
@@ -79156,7 +79156,7 @@ export const GetOperationalStatusInterconnectAttachmentGroupsRequest =
       path: "projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}/getOperationalStatus",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOperationalStatusInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<GetOperationalStatusInterconnectAttachmentGroupsRequest>;
 
 export type GetOperationalStatusInterconnectAttachmentGroupsResponse =
   InterconnectAttachmentGroupsGetOperationalStatusResponse;
@@ -79209,7 +79209,7 @@ export const PatchInterconnectAttachmentGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchInterconnectAttachmentGroupsRequest>;
 
 export type PatchInterconnectAttachmentGroupsResponse = Operation;
 export const PatchInterconnectAttachmentGroupsResponse =
@@ -79255,7 +79255,7 @@ export const TestIamPermissionsInterconnectAttachmentGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInterconnectAttachmentGroupsRequest>;
 
 export type TestIamPermissionsInterconnectAttachmentGroupsResponse =
   TestPermissionsResponse;
@@ -79312,7 +79312,7 @@ export const ListInterconnectAttachmentGroupsRequest =
       path: "projects/{project}/global/interconnectAttachmentGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<ListInterconnectAttachmentGroupsRequest>;
 
 export type ListInterconnectAttachmentGroupsResponse =
   InterconnectAttachmentGroupsListResponse;
@@ -79363,7 +79363,7 @@ export const DeleteInterconnectAttachmentGroupsRequest =
       path: "projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteInterconnectAttachmentGroupsRequest>;
 
 export type DeleteInterconnectAttachmentGroupsResponse = Operation;
 export const DeleteInterconnectAttachmentGroupsResponse =
@@ -79407,7 +79407,7 @@ export const GetInterconnectAttachmentGroupsRequest =
       path: "projects/{project}/global/interconnectAttachmentGroups/{interconnectAttachmentGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<GetInterconnectAttachmentGroupsRequest>;
 
 export type GetInterconnectAttachmentGroupsResponse =
   InterconnectAttachmentGroup;
@@ -79452,7 +79452,7 @@ export const InsertInterconnectAttachmentGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInterconnectAttachmentGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertInterconnectAttachmentGroupsRequest>;
 
 export type InsertInterconnectAttachmentGroupsResponse = Operation;
 export const InsertInterconnectAttachmentGroupsResponse =
@@ -79511,7 +79511,7 @@ export const ListRegionHealthChecksRequest =
       path: "projects/{project}/regions/{region}/healthChecks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionHealthChecksRequest>;
+  ) as unknown as Schema.Codec<ListRegionHealthChecksRequest>;
 
 export type ListRegionHealthChecksResponse = HealthCheckList;
 export const ListRegionHealthChecksResponse =
@@ -79563,7 +79563,7 @@ export const UpdateRegionHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRegionHealthChecksRequest>;
+  ) as unknown as Schema.Codec<UpdateRegionHealthChecksRequest>;
 
 export type UpdateRegionHealthChecksResponse = Operation;
 export const UpdateRegionHealthChecksResponse =
@@ -79611,7 +79611,7 @@ export const DeleteRegionHealthChecksRequest =
       path: "projects/{project}/regions/{region}/healthChecks/{healthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionHealthChecksRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionHealthChecksRequest>;
 
 export type DeleteRegionHealthChecksResponse = Operation;
 export const DeleteRegionHealthChecksResponse =
@@ -79656,7 +79656,7 @@ export const GetRegionHealthChecksRequest =
       path: "projects/{project}/regions/{region}/healthChecks/{healthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionHealthChecksRequest>;
+  ) as unknown as Schema.Codec<GetRegionHealthChecksRequest>;
 
 export type GetRegionHealthChecksResponse = HealthCheck;
 export const GetRegionHealthChecksResponse =
@@ -79700,7 +79700,7 @@ export const InsertRegionHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionHealthChecksRequest>;
+  ) as unknown as Schema.Codec<InsertRegionHealthChecksRequest>;
 
 export type InsertRegionHealthChecksResponse = Operation;
 export const InsertRegionHealthChecksResponse =
@@ -79752,7 +79752,7 @@ export const PatchRegionHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionHealthChecksRequest>;
+  ) as unknown as Schema.Codec<PatchRegionHealthChecksRequest>;
 
 export type PatchRegionHealthChecksResponse = Operation;
 export const PatchRegionHealthChecksResponse =
@@ -79801,7 +79801,7 @@ export const TestIamPermissionsRegionHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionHealthChecksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionHealthChecksRequest>;
 
 export type TestIamPermissionsRegionHealthChecksResponse =
   TestPermissionsResponse;
@@ -79844,7 +79844,7 @@ export const GetRegionSnapshotSettingsRequest =
       path: "projects/{project}/regions/{region}/snapshotSettings",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionSnapshotSettingsRequest>;
+  ) as unknown as Schema.Codec<GetRegionSnapshotSettingsRequest>;
 
 export type GetRegionSnapshotSettingsResponse = SnapshotSettings;
 export const GetRegionSnapshotSettingsResponse =
@@ -79894,7 +79894,7 @@ export const PatchRegionSnapshotSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionSnapshotSettingsRequest>;
+  ) as unknown as Schema.Codec<PatchRegionSnapshotSettingsRequest>;
 
 export type PatchRegionSnapshotSettingsResponse = Operation;
 export const PatchRegionSnapshotSettingsResponse =
@@ -79943,7 +79943,7 @@ export const TestIamPermissionsDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsDisksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsDisksRequest>;
 
 export type TestIamPermissionsDisksResponse = TestPermissionsResponse;
 export const TestIamPermissionsDisksResponse =
@@ -79997,7 +79997,7 @@ export const RemoveResourcePoliciesDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveResourcePoliciesDisksRequest>;
+  ) as unknown as Schema.Codec<RemoveResourcePoliciesDisksRequest>;
 
 export type RemoveResourcePoliciesDisksResponse = Operation;
 export const RemoveResourcePoliciesDisksResponse =
@@ -80047,7 +80047,7 @@ export const GetIamPolicyDisksRequest =
       path: "projects/{project}/zones/{zone}/disks/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyDisksRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyDisksRequest>;
 
 export type GetIamPolicyDisksResponse = Policy;
 export const GetIamPolicyDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -80092,7 +80092,7 @@ export const InsertDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertDisksRequest>;
+) as unknown as Schema.Codec<InsertDisksRequest>;
 
 export type InsertDisksResponse = Operation;
 export const InsertDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -80143,7 +80143,7 @@ export const BulkSetLabelsDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkSetLabelsDisksRequest>;
+  ) as unknown as Schema.Codec<BulkSetLabelsDisksRequest>;
 
 export type BulkSetLabelsDisksResponse = Operation;
 export const BulkSetLabelsDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -80194,7 +80194,7 @@ export const AddResourcePoliciesDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddResourcePoliciesDisksRequest>;
+  ) as unknown as Schema.Codec<AddResourcePoliciesDisksRequest>;
 
 export type AddResourcePoliciesDisksResponse = Operation;
 export const AddResourcePoliciesDisksResponse =
@@ -80243,7 +80243,7 @@ export const StopAsyncReplicationDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StopAsyncReplicationDisksRequest>;
+  ) as unknown as Schema.Codec<StopAsyncReplicationDisksRequest>;
 
 export type StopAsyncReplicationDisksResponse = Operation;
 export const StopAsyncReplicationDisksResponse =
@@ -80298,7 +80298,7 @@ export const ListDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/zones/{zone}/disks" }),
   svc,
-) as unknown as Schema.Schema<ListDisksRequest>;
+) as unknown as Schema.Codec<ListDisksRequest>;
 
 export type ListDisksResponse = DiskList;
 export const ListDisksResponse = /*@__PURE__*/ /*#__PURE__*/ DiskList;
@@ -80355,7 +80355,7 @@ export const UpdateDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateDisksRequest>;
+) as unknown as Schema.Codec<UpdateDisksRequest>;
 
 export type UpdateDisksResponse = Operation;
 export const UpdateDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -80401,7 +80401,7 @@ export const DeleteDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/disks/{disk}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteDisksRequest>;
+) as unknown as Schema.Codec<DeleteDisksRequest>;
 
 export type DeleteDisksResponse = Operation;
 export const DeleteDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -80452,7 +80452,7 @@ export const StartAsyncReplicationDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartAsyncReplicationDisksRequest>;
+  ) as unknown as Schema.Codec<StartAsyncReplicationDisksRequest>;
 
 export type StartAsyncReplicationDisksResponse = Operation;
 export const StartAsyncReplicationDisksResponse =
@@ -80503,7 +80503,7 @@ export const StopGroupAsyncReplicationDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StopGroupAsyncReplicationDisksRequest>;
+  ) as unknown as Schema.Codec<StopGroupAsyncReplicationDisksRequest>;
 
 export type StopGroupAsyncReplicationDisksResponse = Operation;
 export const StopGroupAsyncReplicationDisksResponse =
@@ -80555,7 +80555,7 @@ export const UpdateKmsKeyDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateKmsKeyDisksRequest>;
+  ) as unknown as Schema.Codec<UpdateKmsKeyDisksRequest>;
 
 export type UpdateKmsKeyDisksResponse = Operation;
 export const UpdateKmsKeyDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -80609,7 +80609,7 @@ export const CreateSnapshotDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSnapshotDisksRequest>;
+  ) as unknown as Schema.Codec<CreateSnapshotDisksRequest>;
 
 export type CreateSnapshotDisksResponse = Operation;
 export const CreateSnapshotDisksResponse =
@@ -80658,7 +80658,7 @@ export const SetIamPolicyDisksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyDisksRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyDisksRequest>;
 
 export type SetIamPolicyDisksResponse = Policy;
 export const SetIamPolicyDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -80708,7 +80708,7 @@ export const SetLabelsDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<SetLabelsDisksRequest>;
+) as unknown as Schema.Codec<SetLabelsDisksRequest>;
 
 export type SetLabelsDisksResponse = Operation;
 export const SetLabelsDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -80770,7 +80770,7 @@ export const AggregatedListDisksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/disks" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListDisksRequest>;
+  ) as unknown as Schema.Codec<AggregatedListDisksRequest>;
 
 export type AggregatedListDisksResponse = DiskAggregatedList;
 export const AggregatedListDisksResponse =
@@ -80814,7 +80814,7 @@ export const GetDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/disks/{disk}",
   }),
   svc,
-) as unknown as Schema.Schema<GetDisksRequest>;
+) as unknown as Schema.Codec<GetDisksRequest>;
 
 export type GetDisksResponse = Disk;
 export const GetDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Disk;
@@ -80859,7 +80859,7 @@ export const ResizeDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ResizeDisksRequest>;
+) as unknown as Schema.Codec<ResizeDisksRequest>;
 
 export type ResizeDisksResponse = Operation;
 export const ResizeDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -80908,7 +80908,7 @@ export const BulkInsertDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<BulkInsertDisksRequest>;
+) as unknown as Schema.Codec<BulkInsertDisksRequest>;
 
 export type BulkInsertDisksResponse = Operation;
 export const BulkInsertDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -80957,7 +80957,7 @@ export const GetIamPolicyRegionBackendServicesRequest =
       path: "projects/{project}/regions/{region}/backendServices/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRegionBackendServicesRequest>;
 
 export type GetIamPolicyRegionBackendServicesResponse = Policy;
 export const GetIamPolicyRegionBackendServicesResponse =
@@ -81004,7 +81004,7 @@ export const SetIamPolicyRegionBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyRegionBackendServicesRequest>;
 
 export type SetIamPolicyRegionBackendServicesResponse = Policy;
 export const SetIamPolicyRegionBackendServicesResponse =
@@ -81063,7 +81063,7 @@ export const ListUsableRegionBackendServicesRequest =
       path: "projects/{project}/regions/{region}/backendServices/listUsable",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsableRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<ListUsableRegionBackendServicesRequest>;
 
 export type ListUsableRegionBackendServicesResponse = BackendServiceListUsable;
 export const ListUsableRegionBackendServicesResponse =
@@ -81114,7 +81114,7 @@ export const GetHealthRegionBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetHealthRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<GetHealthRegionBackendServicesRequest>;
 
 export type GetHealthRegionBackendServicesResponse = BackendServiceGroupHealth;
 export const GetHealthRegionBackendServicesResponse =
@@ -81166,7 +81166,7 @@ export const PatchRegionBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionBackendServicesRequest>;
 
 export type PatchRegionBackendServicesResponse = Operation;
 export const PatchRegionBackendServicesResponse =
@@ -81215,7 +81215,7 @@ export const TestIamPermissionsRegionBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionBackendServicesRequest>;
 
 export type TestIamPermissionsRegionBackendServicesResponse =
   TestPermissionsResponse;
@@ -81268,7 +81268,7 @@ export const SetSecurityPolicyRegionBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSecurityPolicyRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<SetSecurityPolicyRegionBackendServicesRequest>;
 
 export type SetSecurityPolicyRegionBackendServicesResponse = Operation;
 export const SetSecurityPolicyRegionBackendServicesResponse =
@@ -81313,7 +81313,7 @@ export const GetRegionBackendServicesRequest =
       path: "projects/{project}/regions/{region}/backendServices/{backendService}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<GetRegionBackendServicesRequest>;
 
 export type GetRegionBackendServicesResponse = BackendService;
 export const GetRegionBackendServicesResponse =
@@ -81370,7 +81370,7 @@ export const ListRegionBackendServicesRequest =
       path: "projects/{project}/regions/{region}/backendServices",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<ListRegionBackendServicesRequest>;
 
 export type ListRegionBackendServicesResponse = BackendServiceList;
 export const ListRegionBackendServicesResponse =
@@ -81425,7 +81425,7 @@ export const UpdateRegionBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<UpdateRegionBackendServicesRequest>;
 
 export type UpdateRegionBackendServicesResponse = Operation;
 export const UpdateRegionBackendServicesResponse =
@@ -81473,7 +81473,7 @@ export const DeleteRegionBackendServicesRequest =
       path: "projects/{project}/regions/{region}/backendServices/{backendService}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionBackendServicesRequest>;
 
 export type DeleteRegionBackendServicesResponse = Operation;
 export const DeleteRegionBackendServicesResponse =
@@ -81522,7 +81522,7 @@ export const InsertRegionBackendServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionBackendServicesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionBackendServicesRequest>;
 
 export type InsertRegionBackendServicesResponse = Operation;
 export const InsertRegionBackendServicesResponse =
@@ -81579,7 +81579,7 @@ export const PatchRuleSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRuleSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRuleSecurityPoliciesRequest>;
 
 export type PatchRuleSecurityPoliciesResponse = Operation;
 export const PatchRuleSecurityPoliciesResponse =
@@ -81645,7 +81645,7 @@ export const AggregatedListSecurityPoliciesRequest =
       path: "projects/{project}/aggregated/securityPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListSecurityPoliciesRequest>;
 
 export type AggregatedListSecurityPoliciesResponse =
   SecurityPoliciesAggregatedList;
@@ -81691,7 +81691,7 @@ export const GetSecurityPoliciesRequest =
       path: "projects/{project}/global/securityPolicies/{securityPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetSecurityPoliciesRequest>;
 
 export type GetSecurityPoliciesResponse = SecurityPolicy;
 export const GetSecurityPoliciesResponse =
@@ -81732,7 +81732,7 @@ export const SetLabelsSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsSecurityPoliciesRequest>;
 
 export type SetLabelsSecurityPoliciesResponse = Operation;
 export const SetLabelsSecurityPoliciesResponse =
@@ -81783,7 +81783,7 @@ export const AddRuleSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddRuleSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddRuleSecurityPoliciesRequest>;
 
 export type AddRuleSecurityPoliciesResponse = Operation;
 export const AddRuleSecurityPoliciesResponse =
@@ -81835,7 +81835,7 @@ export const PatchSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchSecurityPoliciesRequest>;
 
 export type PatchSecurityPoliciesResponse = Operation;
 export const PatchSecurityPoliciesResponse =
@@ -81891,7 +81891,7 @@ export const ListSecurityPoliciesRequest =
       path: "projects/{project}/global/securityPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListSecurityPoliciesRequest>;
 
 export type ListSecurityPoliciesResponse = SecurityPolicyList;
 export const ListSecurityPoliciesResponse =
@@ -81936,7 +81936,7 @@ export const DeleteSecurityPoliciesRequest =
       path: "projects/{project}/global/securityPolicies/{securityPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteSecurityPoliciesRequest>;
 
 export type DeleteSecurityPoliciesResponse = Operation;
 export const DeleteSecurityPoliciesResponse =
@@ -81992,7 +81992,7 @@ export const ListPreconfiguredExpressionSetsSecurityPoliciesRequest =
       path: "projects/{project}/global/securityPolicies/listPreconfiguredExpressionSets",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPreconfiguredExpressionSetsSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListPreconfiguredExpressionSetsSecurityPoliciesRequest>;
 
 export type ListPreconfiguredExpressionSetsSecurityPoliciesResponse =
   SecurityPoliciesListPreconfiguredExpressionSetsResponse;
@@ -82042,7 +82042,7 @@ export const InsertSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertSecurityPoliciesRequest>;
 
 export type InsertSecurityPoliciesResponse = Operation;
 export const InsertSecurityPoliciesResponse =
@@ -82088,7 +82088,7 @@ export const RemoveRuleSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveRuleSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveRuleSecurityPoliciesRequest>;
 
 export type RemoveRuleSecurityPoliciesResponse = Operation;
 export const RemoveRuleSecurityPoliciesResponse =
@@ -82133,7 +82133,7 @@ export const GetRuleSecurityPoliciesRequest =
       path: "projects/{project}/global/securityPolicies/{securityPolicy}/getRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRuleSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRuleSecurityPoliciesRequest>;
 
 export type GetRuleSecurityPoliciesResponse = SecurityPolicyRule;
 export const GetRuleSecurityPoliciesResponse =
@@ -82174,7 +82174,7 @@ export const TestIamPermissionsSecurityPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsSecurityPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsSecurityPoliciesRequest>;
 
 export type TestIamPermissionsSecurityPoliciesResponse =
   TestPermissionsResponse;
@@ -82225,7 +82225,7 @@ export const InsertAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertAddressesRequest>;
+) as unknown as Schema.Codec<InsertAddressesRequest>;
 
 export type InsertAddressesResponse = Operation;
 export const InsertAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -82273,7 +82273,7 @@ export const TestIamPermissionsAddressesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsAddressesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsAddressesRequest>;
 
 export type TestIamPermissionsAddressesResponse = TestPermissionsResponse;
 export const TestIamPermissionsAddressesResponse =
@@ -82325,7 +82325,7 @@ export const SetLabelsAddressesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsAddressesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsAddressesRequest>;
 
 export type SetLabelsAddressesResponse = Operation;
 export const SetLabelsAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -82368,7 +82368,7 @@ export const GetAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/addresses/{address}",
   }),
   svc,
-) as unknown as Schema.Schema<GetAddressesRequest>;
+) as unknown as Schema.Codec<GetAddressesRequest>;
 
 export type GetAddressesResponse = Address;
 export const GetAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Address;
@@ -82425,7 +82425,7 @@ export const AggregatedListAddressesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/addresses" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListAddressesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListAddressesRequest>;
 
 export type AggregatedListAddressesResponse = AddressAggregatedList;
 export const AggregatedListAddressesResponse =
@@ -82476,7 +82476,7 @@ export const MoveAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<MoveAddressesRequest>;
+) as unknown as Schema.Codec<MoveAddressesRequest>;
 
 export type MoveAddressesResponse = Operation;
 export const MoveAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -82524,7 +82524,7 @@ export const DeleteAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/regions/{region}/addresses/{address}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteAddressesRequest>;
+) as unknown as Schema.Codec<DeleteAddressesRequest>;
 
 export type DeleteAddressesResponse = Operation;
 export const DeleteAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -82581,7 +82581,7 @@ export const ListAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/addresses",
   }),
   svc,
-) as unknown as Schema.Schema<ListAddressesRequest>;
+) as unknown as Schema.Codec<ListAddressesRequest>;
 
 export type ListAddressesResponse = AddressList;
 export const ListAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ AddressList;
@@ -82634,7 +82634,7 @@ export const InsertInstantSnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertInstantSnapshotGroupsRequest>;
 
 export type InsertInstantSnapshotGroupsResponse = Operation;
 export const InsertInstantSnapshotGroupsResponse =
@@ -82683,7 +82683,7 @@ export const TestIamPermissionsInstantSnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInstantSnapshotGroupsRequest>;
 
 export type TestIamPermissionsInstantSnapshotGroupsResponse =
   TestPermissionsResponse;
@@ -82731,7 +82731,7 @@ export const GetInstantSnapshotGroupsRequest =
       path: "projects/{project}/zones/{zone}/instantSnapshotGroups/{instantSnapshotGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<GetInstantSnapshotGroupsRequest>;
 
 export type GetInstantSnapshotGroupsResponse = InstantSnapshotGroup;
 export const GetInstantSnapshotGroupsResponse =
@@ -82779,7 +82779,7 @@ export const GetIamPolicyInstantSnapshotGroupsRequest =
       path: "projects/{project}/zones/{zone}/instantSnapshotGroups/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyInstantSnapshotGroupsRequest>;
 
 export type GetIamPolicyInstantSnapshotGroupsResponse = Policy;
 export const GetIamPolicyInstantSnapshotGroupsResponse =
@@ -82826,7 +82826,7 @@ export const SetIamPolicyInstantSnapshotGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyInstantSnapshotGroupsRequest>;
 
 export type SetIamPolicyInstantSnapshotGroupsResponse = Policy;
 export const SetIamPolicyInstantSnapshotGroupsResponse =
@@ -82876,7 +82876,7 @@ export const DeleteInstantSnapshotGroupsRequest =
       path: "projects/{project}/zones/{zone}/instantSnapshotGroups/{instantSnapshotGroup}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteInstantSnapshotGroupsRequest>;
 
 export type DeleteInstantSnapshotGroupsResponse = Operation;
 export const DeleteInstantSnapshotGroupsResponse =
@@ -82935,7 +82935,7 @@ export const ListInstantSnapshotGroupsRequest =
       path: "projects/{project}/zones/{zone}/instantSnapshotGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInstantSnapshotGroupsRequest>;
+  ) as unknown as Schema.Codec<ListInstantSnapshotGroupsRequest>;
 
 export type ListInstantSnapshotGroupsResponse = ListInstantSnapshotGroups;
 export const ListInstantSnapshotGroupsResponse =
@@ -82993,7 +82993,7 @@ export const ListDiskTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/zones/{zone}/diskTypes" }),
   svc,
-) as unknown as Schema.Schema<ListDiskTypesRequest>;
+) as unknown as Schema.Codec<ListDiskTypesRequest>;
 
 export type ListDiskTypesResponse = DiskTypeList;
 export const ListDiskTypesResponse = /*@__PURE__*/ /*#__PURE__*/ DiskTypeList;
@@ -83055,7 +83055,7 @@ export const AggregatedListDiskTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/diskTypes" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListDiskTypesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListDiskTypesRequest>;
 
 export type AggregatedListDiskTypesResponse = DiskTypeAggregatedList;
 export const AggregatedListDiskTypesResponse =
@@ -83099,7 +83099,7 @@ export const GetDiskTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/diskTypes/{diskType}",
   }),
   svc,
-) as unknown as Schema.Schema<GetDiskTypesRequest>;
+) as unknown as Schema.Codec<GetDiskTypesRequest>;
 
 export type GetDiskTypesResponse = DiskType;
 export const GetDiskTypesResponse = /*@__PURE__*/ /*#__PURE__*/ DiskType;
@@ -83140,7 +83140,7 @@ export const GetRegionHealthAggregationPoliciesRequest =
       path: "projects/{project}/regions/{region}/healthAggregationPolicies/{healthAggregationPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionHealthAggregationPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRegionHealthAggregationPoliciesRequest>;
 
 export type GetRegionHealthAggregationPoliciesResponse =
   HealthAggregationPolicy;
@@ -83205,7 +83205,7 @@ export const AggregatedListRegionHealthAggregationPoliciesRequest =
       path: "projects/{project}/aggregated/healthAggregationPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListRegionHealthAggregationPoliciesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListRegionHealthAggregationPoliciesRequest>;
 
 export type AggregatedListRegionHealthAggregationPoliciesResponse =
   HealthAggregationPolicyAggregatedList;
@@ -83259,7 +83259,7 @@ export const DeleteRegionHealthAggregationPoliciesRequest =
       path: "projects/{project}/regions/{region}/healthAggregationPolicies/{healthAggregationPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionHealthAggregationPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionHealthAggregationPoliciesRequest>;
 
 export type DeleteRegionHealthAggregationPoliciesResponse = Operation;
 export const DeleteRegionHealthAggregationPoliciesResponse =
@@ -83318,7 +83318,7 @@ export const ListRegionHealthAggregationPoliciesRequest =
       path: "projects/{project}/regions/{region}/healthAggregationPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionHealthAggregationPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListRegionHealthAggregationPoliciesRequest>;
 
 export type ListRegionHealthAggregationPoliciesResponse =
   HealthAggregationPolicyList;
@@ -83371,7 +83371,7 @@ export const InsertRegionHealthAggregationPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionHealthAggregationPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionHealthAggregationPoliciesRequest>;
 
 export type InsertRegionHealthAggregationPoliciesResponse = Operation;
 export const InsertRegionHealthAggregationPoliciesResponse =
@@ -83425,7 +83425,7 @@ export const PatchRegionHealthAggregationPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionHealthAggregationPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionHealthAggregationPoliciesRequest>;
 
 export type PatchRegionHealthAggregationPoliciesResponse = Operation;
 export const PatchRegionHealthAggregationPoliciesResponse =
@@ -83474,7 +83474,7 @@ export const TestIamPermissionsRegionHealthAggregationPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionHealthAggregationPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionHealthAggregationPoliciesRequest>;
 
 export type TestIamPermissionsRegionHealthAggregationPoliciesResponse =
   TestPermissionsResponse;
@@ -83521,7 +83521,7 @@ export const InsertInstanceTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<InsertInstanceTemplatesRequest>;
 
 export type InsertInstanceTemplatesResponse = Operation;
 export const InsertInstanceTemplatesResponse =
@@ -83567,7 +83567,7 @@ export const TestIamPermissionsInstanceTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInstanceTemplatesRequest>;
 
 export type TestIamPermissionsInstanceTemplatesResponse =
   TestPermissionsResponse;
@@ -83613,7 +83613,7 @@ export const DeleteInstanceTemplatesRequest =
       path: "projects/{project}/global/instanceTemplates/{instanceTemplate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteInstanceTemplatesRequest>;
 
 export type DeleteInstanceTemplatesResponse = Operation;
 export const DeleteInstanceTemplatesResponse =
@@ -83672,7 +83672,7 @@ export const ListInstanceTemplatesRequest =
       path: "projects/{project}/global/instanceTemplates",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListInstanceTemplatesRequest>;
 
 export type ListInstanceTemplatesResponse = InstanceTemplateList;
 export const ListInstanceTemplatesResponse =
@@ -83717,7 +83717,7 @@ export const GetInstanceTemplatesRequest =
       path: "projects/{project}/global/instanceTemplates/{instanceTemplate}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetInstanceTemplatesRequest>;
 
 export type GetInstanceTemplatesResponse = InstanceTemplate;
 export const GetInstanceTemplatesResponse =
@@ -83759,7 +83759,7 @@ export const GetIamPolicyInstanceTemplatesRequest =
       path: "projects/{project}/global/instanceTemplates/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyInstanceTemplatesRequest>;
 
 export type GetIamPolicyInstanceTemplatesResponse = Policy;
 export const GetIamPolicyInstanceTemplatesResponse =
@@ -83803,7 +83803,7 @@ export const SetIamPolicyInstanceTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyInstanceTemplatesRequest>;
 
 export type SetIamPolicyInstanceTemplatesResponse = Policy;
 export const SetIamPolicyInstanceTemplatesResponse =
@@ -83869,7 +83869,7 @@ export const AggregatedListInstanceTemplatesRequest =
       path: "projects/{project}/aggregated/instanceTemplates",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListInstanceTemplatesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListInstanceTemplatesRequest>;
 
 export type AggregatedListInstanceTemplatesResponse =
   InstanceTemplateAggregatedList;
@@ -83919,7 +83919,7 @@ export const InsertHttpHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertHttpHealthChecksRequest>;
+  ) as unknown as Schema.Codec<InsertHttpHealthChecksRequest>;
 
 export type InsertHttpHealthChecksResponse = Operation;
 export const InsertHttpHealthChecksResponse =
@@ -83968,7 +83968,7 @@ export const PatchHttpHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchHttpHealthChecksRequest>;
+  ) as unknown as Schema.Codec<PatchHttpHealthChecksRequest>;
 
 export type PatchHttpHealthChecksResponse = Operation;
 export const PatchHttpHealthChecksResponse =
@@ -84014,7 +84014,7 @@ export const TestIamPermissionsHttpHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsHttpHealthChecksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsHttpHealthChecksRequest>;
 
 export type TestIamPermissionsHttpHealthChecksResponse =
   TestPermissionsResponse;
@@ -84060,7 +84060,7 @@ export const DeleteHttpHealthChecksRequest =
       path: "projects/{project}/global/httpHealthChecks/{httpHealthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteHttpHealthChecksRequest>;
+  ) as unknown as Schema.Codec<DeleteHttpHealthChecksRequest>;
 
 export type DeleteHttpHealthChecksResponse = Operation;
 export const DeleteHttpHealthChecksResponse =
@@ -84116,7 +84116,7 @@ export const ListHttpHealthChecksRequest =
       path: "projects/{project}/global/httpHealthChecks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListHttpHealthChecksRequest>;
+  ) as unknown as Schema.Codec<ListHttpHealthChecksRequest>;
 
 export type ListHttpHealthChecksResponse = HttpHealthCheckList;
 export const ListHttpHealthChecksResponse =
@@ -84165,7 +84165,7 @@ export const UpdateHttpHealthChecksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateHttpHealthChecksRequest>;
+  ) as unknown as Schema.Codec<UpdateHttpHealthChecksRequest>;
 
 export type UpdateHttpHealthChecksResponse = Operation;
 export const UpdateHttpHealthChecksResponse =
@@ -84207,7 +84207,7 @@ export const GetHttpHealthChecksRequest =
       path: "projects/{project}/global/httpHealthChecks/{httpHealthCheck}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetHttpHealthChecksRequest>;
+  ) as unknown as Schema.Codec<GetHttpHealthChecksRequest>;
 
 export type GetHttpHealthChecksResponse = HttpHealthCheck;
 export const GetHttpHealthChecksResponse =
@@ -84254,7 +84254,7 @@ export const TestIamPermissionsReservationSubBlocksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsReservationSubBlocksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsReservationSubBlocksRequest>;
 
 export type TestIamPermissionsReservationSubBlocksResponse =
   TestPermissionsResponse;
@@ -84307,7 +84307,7 @@ export const PerformMaintenanceReservationSubBlocksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PerformMaintenanceReservationSubBlocksRequest>;
+  ) as unknown as Schema.Codec<PerformMaintenanceReservationSubBlocksRequest>;
 
 export type PerformMaintenanceReservationSubBlocksResponse = Operation;
 export const PerformMaintenanceReservationSubBlocksResponse =
@@ -84364,7 +84364,7 @@ export const ReportFaultyReservationSubBlocksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportFaultyReservationSubBlocksRequest>;
+  ) as unknown as Schema.Codec<ReportFaultyReservationSubBlocksRequest>;
 
 export type ReportFaultyReservationSubBlocksResponse = Operation;
 export const ReportFaultyReservationSubBlocksResponse =
@@ -84421,7 +84421,7 @@ export const GetVersionReservationSubBlocksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetVersionReservationSubBlocksRequest>;
+  ) as unknown as Schema.Codec<GetVersionReservationSubBlocksRequest>;
 
 export type GetVersionReservationSubBlocksResponse = Operation;
 export const GetVersionReservationSubBlocksResponse =
@@ -84483,7 +84483,7 @@ export const ListReservationSubBlocksRequest =
       path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListReservationSubBlocksRequest>;
+  ) as unknown as Schema.Codec<ListReservationSubBlocksRequest>;
 
 export type ListReservationSubBlocksResponse = ReservationSubBlocksListResponse;
 export const ListReservationSubBlocksResponse =
@@ -84541,7 +84541,7 @@ export const GetReservationSubBlocksRequest =
       path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetReservationSubBlocksRequest>;
+  ) as unknown as Schema.Codec<GetReservationSubBlocksRequest>;
 
 export type GetReservationSubBlocksResponse = ReservationSubBlocksGetResponse;
 export const GetReservationSubBlocksResponse =
@@ -84589,7 +84589,7 @@ export const GetIamPolicyReservationSubBlocksRequest =
       path: "projects/{project}/zones/{zone}/{+parentResource}/reservationSubBlocks/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyReservationSubBlocksRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyReservationSubBlocksRequest>;
 
 export type GetIamPolicyReservationSubBlocksResponse = Policy;
 export const GetIamPolicyReservationSubBlocksResponse =
@@ -84639,7 +84639,7 @@ export const SetIamPolicyReservationSubBlocksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyReservationSubBlocksRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyReservationSubBlocksRequest>;
 
 export type SetIamPolicyReservationSubBlocksResponse = Policy;
 export const SetIamPolicyReservationSubBlocksResponse =
@@ -84691,7 +84691,7 @@ export const ListZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/zones" }),
   svc,
-) as unknown as Schema.Schema<ListZonesRequest>;
+) as unknown as Schema.Codec<ListZonesRequest>;
 
 export type ListZonesResponse = ZoneList;
 export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ZoneList;
@@ -84728,7 +84728,7 @@ export const GetZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/zones/{zone}" }),
   svc,
-) as unknown as Schema.Schema<GetZonesRequest>;
+) as unknown as Schema.Codec<GetZonesRequest>;
 
 export type GetZonesResponse = Zone;
 export const GetZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Zone;
@@ -84772,7 +84772,7 @@ export const GetIamPolicyServiceAttachmentsRequest =
       path: "projects/{project}/regions/{region}/serviceAttachments/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyServiceAttachmentsRequest>;
 
 export type GetIamPolicyServiceAttachmentsResponse = Policy;
 export const GetIamPolicyServiceAttachmentsResponse =
@@ -84819,7 +84819,7 @@ export const SetIamPolicyServiceAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyServiceAttachmentsRequest>;
 
 export type SetIamPolicyServiceAttachmentsResponse = Policy;
 export const SetIamPolicyServiceAttachmentsResponse =
@@ -84871,7 +84871,7 @@ export const PatchServiceAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<PatchServiceAttachmentsRequest>;
 
 export type PatchServiceAttachmentsResponse = Operation;
 export const PatchServiceAttachmentsResponse =
@@ -84920,7 +84920,7 @@ export const TestIamPermissionsServiceAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsServiceAttachmentsRequest>;
 
 export type TestIamPermissionsServiceAttachmentsResponse =
   TestPermissionsResponse;
@@ -84969,7 +84969,7 @@ export const GetServiceAttachmentsRequest =
       path: "projects/{project}/regions/{region}/serviceAttachments/{serviceAttachment}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetServiceAttachmentsRequest>;
 
 export type GetServiceAttachmentsResponse = ServiceAttachment;
 export const GetServiceAttachmentsResponse =
@@ -85030,7 +85030,7 @@ export const AggregatedListServiceAttachmentsRequest =
       path: "projects/{project}/aggregated/serviceAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListServiceAttachmentsRequest>;
 
 export type AggregatedListServiceAttachmentsResponse =
   ServiceAttachmentAggregatedList;
@@ -85082,7 +85082,7 @@ export const DeleteServiceAttachmentsRequest =
       path: "projects/{project}/regions/{region}/serviceAttachments/{serviceAttachment}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteServiceAttachmentsRequest>;
 
 export type DeleteServiceAttachmentsResponse = Operation;
 export const DeleteServiceAttachmentsResponse =
@@ -85141,7 +85141,7 @@ export const ListServiceAttachmentsRequest =
       path: "projects/{project}/regions/{region}/serviceAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListServiceAttachmentsRequest>;
 
 export type ListServiceAttachmentsResponse = ServiceAttachmentList;
 export const ListServiceAttachmentsResponse =
@@ -85190,7 +85190,7 @@ export const InsertServiceAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertServiceAttachmentsRequest>;
+  ) as unknown as Schema.Codec<InsertServiceAttachmentsRequest>;
 
 export type InsertServiceAttachmentsResponse = Operation;
 export const InsertServiceAttachmentsResponse =
@@ -85249,7 +85249,7 @@ export const ListRegionHealthCheckServicesRequest =
       path: "projects/{project}/regions/{region}/healthCheckServices",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionHealthCheckServicesRequest>;
+  ) as unknown as Schema.Codec<ListRegionHealthCheckServicesRequest>;
 
 export type ListRegionHealthCheckServicesResponse = HealthCheckServicesList;
 export const ListRegionHealthCheckServicesResponse =
@@ -85300,7 +85300,7 @@ export const DeleteRegionHealthCheckServicesRequest =
       path: "projects/{project}/regions/{region}/healthCheckServices/{healthCheckService}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionHealthCheckServicesRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionHealthCheckServicesRequest>;
 
 export type DeleteRegionHealthCheckServicesResponse = Operation;
 export const DeleteRegionHealthCheckServicesResponse =
@@ -85366,7 +85366,7 @@ export const AggregatedListRegionHealthCheckServicesRequest =
       path: "projects/{project}/aggregated/healthCheckServices",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListRegionHealthCheckServicesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListRegionHealthCheckServicesRequest>;
 
 export type AggregatedListRegionHealthCheckServicesResponse =
   HealthCheckServiceAggregatedList;
@@ -85415,7 +85415,7 @@ export const GetRegionHealthCheckServicesRequest =
       path: "projects/{project}/regions/{region}/healthCheckServices/{healthCheckService}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionHealthCheckServicesRequest>;
+  ) as unknown as Schema.Codec<GetRegionHealthCheckServicesRequest>;
 
 export type GetRegionHealthCheckServicesResponse = HealthCheckService;
 export const GetRegionHealthCheckServicesResponse =
@@ -85462,7 +85462,7 @@ export const InsertRegionHealthCheckServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionHealthCheckServicesRequest>;
+  ) as unknown as Schema.Codec<InsertRegionHealthCheckServicesRequest>;
 
 export type InsertRegionHealthCheckServicesResponse = Operation;
 export const InsertRegionHealthCheckServicesResponse =
@@ -85514,7 +85514,7 @@ export const PatchRegionHealthCheckServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRegionHealthCheckServicesRequest>;
+  ) as unknown as Schema.Codec<PatchRegionHealthCheckServicesRequest>;
 
 export type PatchRegionHealthCheckServicesResponse = Operation;
 export const PatchRegionHealthCheckServicesResponse =
@@ -85563,7 +85563,7 @@ export const TestIamPermissionsRegionHealthCheckServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRegionHealthCheckServicesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRegionHealthCheckServicesRequest>;
 
 export type TestIamPermissionsRegionHealthCheckServicesResponse =
   TestPermissionsResponse;
@@ -85615,7 +85615,7 @@ export const AnnouncePublicDelegatedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnnouncePublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<AnnouncePublicDelegatedPrefixesRequest>;
 
 export type AnnouncePublicDelegatedPrefixesResponse = Operation;
 export const AnnouncePublicDelegatedPrefixesResponse =
@@ -85664,7 +85664,7 @@ export const InsertPublicDelegatedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<InsertPublicDelegatedPrefixesRequest>;
 
 export type InsertPublicDelegatedPrefixesResponse = Operation;
 export const InsertPublicDelegatedPrefixesResponse =
@@ -85718,7 +85718,7 @@ export const PatchPublicDelegatedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<PatchPublicDelegatedPrefixesRequest>;
 
 export type PatchPublicDelegatedPrefixesResponse = Operation;
 export const PatchPublicDelegatedPrefixesResponse =
@@ -85777,7 +85777,7 @@ export const ListPublicDelegatedPrefixesRequest =
       path: "projects/{project}/regions/{region}/publicDelegatedPrefixes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<ListPublicDelegatedPrefixesRequest>;
 
 export type ListPublicDelegatedPrefixesResponse = PublicDelegatedPrefixList;
 export const ListPublicDelegatedPrefixesResponse =
@@ -85831,7 +85831,7 @@ export const WithdrawPublicDelegatedPrefixesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WithdrawPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<WithdrawPublicDelegatedPrefixesRequest>;
 
 export type WithdrawPublicDelegatedPrefixesResponse = Operation;
 export const WithdrawPublicDelegatedPrefixesResponse =
@@ -85881,7 +85881,7 @@ export const DeletePublicDelegatedPrefixesRequest =
       path: "projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<DeletePublicDelegatedPrefixesRequest>;
 
 export type DeletePublicDelegatedPrefixesResponse = Operation;
 export const DeletePublicDelegatedPrefixesResponse =
@@ -85947,7 +85947,7 @@ export const AggregatedListPublicDelegatedPrefixesRequest =
       path: "projects/{project}/aggregated/publicDelegatedPrefixes",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListPublicDelegatedPrefixesRequest>;
 
 export type AggregatedListPublicDelegatedPrefixesResponse =
   PublicDelegatedPrefixAggregatedList;
@@ -85998,7 +85998,7 @@ export const GetPublicDelegatedPrefixesRequest =
       path: "projects/{project}/regions/{region}/publicDelegatedPrefixes/{publicDelegatedPrefix}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPublicDelegatedPrefixesRequest>;
+  ) as unknown as Schema.Codec<GetPublicDelegatedPrefixesRequest>;
 
 export type GetPublicDelegatedPrefixesResponse = PublicDelegatedPrefix;
 export const GetPublicDelegatedPrefixesResponse =
@@ -86044,7 +86044,7 @@ export const CloneRulesFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CloneRulesFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<CloneRulesFirewallPoliciesRequest>;
 
 export type CloneRulesFirewallPoliciesResponse = Operation;
 export const CloneRulesFirewallPoliciesResponse =
@@ -86089,7 +86089,7 @@ export const SetIamPolicyFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyFirewallPoliciesRequest>;
 
 export type SetIamPolicyFirewallPoliciesResponse = Policy;
 export const SetIamPolicyFirewallPoliciesResponse =
@@ -86135,7 +86135,7 @@ export const AddPacketMirroringRuleFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddPacketMirroringRuleFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddPacketMirroringRuleFirewallPoliciesRequest>;
 
 export type AddPacketMirroringRuleFirewallPoliciesResponse = Operation;
 export const AddPacketMirroringRuleFirewallPoliciesResponse =
@@ -86181,7 +86181,7 @@ export const PatchFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchFirewallPoliciesRequest>;
 
 export type PatchFirewallPoliciesResponse = Operation;
 export const PatchFirewallPoliciesResponse =
@@ -86230,7 +86230,7 @@ export const PatchRuleFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRuleFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchRuleFirewallPoliciesRequest>;
 
 export type PatchRuleFirewallPoliciesResponse = Operation;
 export const PatchRuleFirewallPoliciesResponse =
@@ -86276,7 +86276,7 @@ export const ListAssociationsFirewallPoliciesRequest =
       path: "locations/global/firewallPolicies/listAssociations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAssociationsFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListAssociationsFirewallPoliciesRequest>;
 
 export type ListAssociationsFirewallPoliciesResponse =
   FirewallPoliciesListAssociationsResponse;
@@ -86314,7 +86314,7 @@ export const GetFirewallPoliciesRequest =
       path: "locations/global/firewallPolicies/{firewallPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetFirewallPoliciesRequest>;
 
 export type GetFirewallPoliciesResponse = FirewallPolicy;
 export const GetFirewallPoliciesResponse =
@@ -86360,7 +86360,7 @@ export const AddAssociationFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddAssociationFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddAssociationFirewallPoliciesRequest>;
 
 export type AddAssociationFirewallPoliciesResponse = Operation;
 export const AddAssociationFirewallPoliciesResponse =
@@ -86406,7 +86406,7 @@ export const AddRuleFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddRuleFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<AddRuleFirewallPoliciesRequest>;
 
 export type AddRuleFirewallPoliciesResponse = Operation;
 export const AddRuleFirewallPoliciesResponse =
@@ -86455,7 +86455,7 @@ export const PatchPacketMirroringRuleFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPacketMirroringRuleFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchPacketMirroringRuleFirewallPoliciesRequest>;
 
 export type PatchPacketMirroringRuleFirewallPoliciesResponse = Operation;
 export const PatchPacketMirroringRuleFirewallPoliciesResponse =
@@ -86501,7 +86501,7 @@ export const RemoveRuleFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveRuleFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveRuleFirewallPoliciesRequest>;
 
 export type RemoveRuleFirewallPoliciesResponse = Operation;
 export const RemoveRuleFirewallPoliciesResponse =
@@ -86545,7 +86545,7 @@ export const GetIamPolicyFirewallPoliciesRequest =
       path: "locations/global/firewallPolicies/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyFirewallPoliciesRequest>;
 
 export type GetIamPolicyFirewallPoliciesResponse = Policy;
 export const GetIamPolicyFirewallPoliciesResponse =
@@ -86589,7 +86589,7 @@ export const MoveFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<MoveFirewallPoliciesRequest>;
 
 export type MoveFirewallPoliciesResponse = Operation;
 export const MoveFirewallPoliciesResponse =
@@ -86631,7 +86631,7 @@ export const GetRuleFirewallPoliciesRequest =
       path: "locations/global/firewallPolicies/{firewallPolicy}/getRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRuleFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRuleFirewallPoliciesRequest>;
 
 export type GetRuleFirewallPoliciesResponse = FirewallPolicyRule;
 export const GetRuleFirewallPoliciesResponse =
@@ -86669,7 +86669,7 @@ export const TestIamPermissionsFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsFirewallPoliciesRequest>;
 
 export type TestIamPermissionsFirewallPoliciesResponse =
   TestPermissionsResponse;
@@ -86712,7 +86712,7 @@ export const DeleteFirewallPoliciesRequest =
       path: "locations/global/firewallPolicies/{firewallPolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteFirewallPoliciesRequest>;
 
 export type DeleteFirewallPoliciesResponse = Operation;
 export const DeleteFirewallPoliciesResponse =
@@ -86758,7 +86758,7 @@ export const RemovePacketMirroringRuleFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemovePacketMirroringRuleFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemovePacketMirroringRuleFirewallPoliciesRequest>;
 
 export type RemovePacketMirroringRuleFirewallPoliciesResponse = Operation;
 export const RemovePacketMirroringRuleFirewallPoliciesResponse =
@@ -86804,7 +86804,7 @@ export const RemoveAssociationFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveAssociationFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<RemoveAssociationFirewallPoliciesRequest>;
 
 export type RemoveAssociationFirewallPoliciesResponse = Operation;
 export const RemoveAssociationFirewallPoliciesResponse =
@@ -86857,7 +86857,7 @@ export const ListFirewallPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "locations/global/firewallPolicies" }),
     svc,
-  ) as unknown as Schema.Schema<ListFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListFirewallPoliciesRequest>;
 
 export type ListFirewallPoliciesResponse = FirewallPolicyList;
 export const ListFirewallPoliciesResponse =
@@ -86899,7 +86899,7 @@ export const GetAssociationFirewallPoliciesRequest =
       path: "locations/global/firewallPolicies/{firewallPolicy}/getAssociation",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAssociationFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetAssociationFirewallPoliciesRequest>;
 
 export type GetAssociationFirewallPoliciesResponse = FirewallPolicyAssociation;
 export const GetAssociationFirewallPoliciesResponse =
@@ -86939,7 +86939,7 @@ export const GetPacketMirroringRuleFirewallPoliciesRequest =
       path: "locations/global/firewallPolicies/{firewallPolicy}/getPacketMirroringRule",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPacketMirroringRuleFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetPacketMirroringRuleFirewallPoliciesRequest>;
 
 export type GetPacketMirroringRuleFirewallPoliciesResponse = FirewallPolicyRule;
 export const GetPacketMirroringRuleFirewallPoliciesResponse =
@@ -86983,7 +86983,7 @@ export const InsertFirewallPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertFirewallPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertFirewallPoliciesRequest>;
 
 export type InsertFirewallPoliciesResponse = Operation;
 export const InsertFirewallPoliciesResponse =
@@ -87028,7 +87028,7 @@ export const GetImageFamilyViewsRequest =
       path: "projects/{project}/zones/{zone}/imageFamilyViews/{family}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetImageFamilyViewsRequest>;
+  ) as unknown as Schema.Codec<GetImageFamilyViewsRequest>;
 
 export type GetImageFamilyViewsResponse = ImageFamilyView;
 export const GetImageFamilyViewsResponse =
@@ -87068,7 +87068,7 @@ export const GetStoragePoolTypesRequest =
       path: "projects/{project}/zones/{zone}/storagePoolTypes/{storagePoolType}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetStoragePoolTypesRequest>;
+  ) as unknown as Schema.Codec<GetStoragePoolTypesRequest>;
 
 export type GetStoragePoolTypesResponse = StoragePoolType;
 export const GetStoragePoolTypesResponse =
@@ -87129,7 +87129,7 @@ export const AggregatedListStoragePoolTypesRequest =
       path: "projects/{project}/aggregated/storagePoolTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListStoragePoolTypesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListStoragePoolTypesRequest>;
 
 export type AggregatedListStoragePoolTypesResponse =
   StoragePoolTypeAggregatedList;
@@ -87192,7 +87192,7 @@ export const ListStoragePoolTypesRequest =
       path: "projects/{project}/zones/{zone}/storagePoolTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListStoragePoolTypesRequest>;
+  ) as unknown as Schema.Codec<ListStoragePoolTypesRequest>;
 
 export type ListStoragePoolTypesResponse = StoragePoolTypeList;
 export const ListStoragePoolTypesResponse =
@@ -87246,7 +87246,7 @@ export const DeleteNetworkInterfaceInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNetworkInterfaceInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteNetworkInterfaceInstancesRequest>;
 
 export type DeleteNetworkInterfaceInstancesResponse = Operation;
 export const DeleteNetworkInterfaceInstancesResponse =
@@ -87298,7 +87298,7 @@ export const SetMinCpuPlatformInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetMinCpuPlatformInstancesRequest>;
+  ) as unknown as Schema.Codec<SetMinCpuPlatformInstancesRequest>;
 
 export type SetMinCpuPlatformInstancesResponse = Operation;
 export const SetMinCpuPlatformInstancesResponse =
@@ -87350,7 +87350,7 @@ export const SetMachineTypeInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetMachineTypeInstancesRequest>;
+  ) as unknown as Schema.Codec<SetMachineTypeInstancesRequest>;
 
 export type SetMachineTypeInstancesResponse = Operation;
 export const SetMachineTypeInstancesResponse =
@@ -87408,7 +87408,7 @@ export const StopInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<StopInstancesRequest>;
+) as unknown as Schema.Codec<StopInstancesRequest>;
 
 export type StopInstancesResponse = Operation;
 export const StopInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -87465,7 +87465,7 @@ export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/zones/{zone}/instances" }),
   svc,
-) as unknown as Schema.Schema<ListInstancesRequest>;
+) as unknown as Schema.Codec<ListInstancesRequest>;
 
 export type ListInstancesResponse = InstanceList;
 export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ InstanceList;
@@ -87542,7 +87542,7 @@ export const UpdateInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateInstancesRequest>;
+) as unknown as Schema.Codec<UpdateInstancesRequest>;
 
 export type UpdateInstancesResponse = Operation;
 export const UpdateInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -87595,7 +87595,7 @@ export const AddResourcePoliciesInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddResourcePoliciesInstancesRequest>;
+  ) as unknown as Schema.Codec<AddResourcePoliciesInstancesRequest>;
 
 export type AddResourcePoliciesInstancesResponse = Operation;
 export const AddResourcePoliciesInstancesResponse =
@@ -87647,7 +87647,7 @@ export const AddNetworkInterfaceInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddNetworkInterfaceInstancesRequest>;
+  ) as unknown as Schema.Codec<AddNetworkInterfaceInstancesRequest>;
 
 export type AddNetworkInterfaceInstancesResponse = Operation;
 export const AddNetworkInterfaceInstancesResponse =
@@ -87700,7 +87700,7 @@ export const GetGuestAttributesInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{instance}/getGuestAttributes",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGuestAttributesInstancesRequest>;
+  ) as unknown as Schema.Codec<GetGuestAttributesInstancesRequest>;
 
 export type GetGuestAttributesInstancesResponse = GuestAttributes;
 export const GetGuestAttributesInstancesResponse =
@@ -87746,7 +87746,7 @@ export const GetPartnerMetadataInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{instance}/getPartnerMetadata",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPartnerMetadataInstancesRequest>;
+  ) as unknown as Schema.Codec<GetPartnerMetadataInstancesRequest>;
 
 export type GetPartnerMetadataInstancesResponse = PartnerMetadata;
 export const GetPartnerMetadataInstancesResponse =
@@ -87797,7 +87797,7 @@ export const ResumeInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ResumeInstancesRequest>;
+) as unknown as Schema.Codec<ResumeInstancesRequest>;
 
 export type ResumeInstancesResponse = Operation;
 export const ResumeInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -87859,7 +87859,7 @@ export const AggregatedListInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/instances" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListInstancesRequest>;
+  ) as unknown as Schema.Codec<AggregatedListInstancesRequest>;
 
 export type AggregatedListInstancesResponse = InstanceAggregatedList;
 export const AggregatedListInstancesResponse =
@@ -87907,7 +87907,7 @@ export const StartInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<StartInstancesRequest>;
+) as unknown as Schema.Codec<StartInstancesRequest>;
 
 export type StartInstancesResponse = Operation;
 export const StartInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -87961,7 +87961,7 @@ export const AddAccessConfigInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddAccessConfigInstancesRequest>;
+  ) as unknown as Schema.Codec<AddAccessConfigInstancesRequest>;
 
 export type AddAccessConfigInstancesResponse = Operation;
 export const AddAccessConfigInstancesResponse =
@@ -88015,7 +88015,7 @@ export const SimulateMaintenanceEventInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SimulateMaintenanceEventInstancesRequest>;
+  ) as unknown as Schema.Codec<SimulateMaintenanceEventInstancesRequest>;
 
 export type SimulateMaintenanceEventInstancesResponse = Operation;
 export const SimulateMaintenanceEventInstancesResponse =
@@ -88061,13 +88061,13 @@ export const SendDiagnosticInterruptInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SendDiagnosticInterruptInstancesRequest>;
+  ) as unknown as Schema.Codec<SendDiagnosticInterruptInstancesRequest>;
 
 export interface SendDiagnosticInterruptInstancesResponse {}
-export const SendDiagnosticInterruptInstancesResponse: Schema.Schema<SendDiagnosticInterruptInstancesResponse> =
+export const SendDiagnosticInterruptInstancesResponse: Schema.Codec<SendDiagnosticInterruptInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<SendDiagnosticInterruptInstancesResponse>;
+  ) as any as Schema.Codec<SendDiagnosticInterruptInstancesResponse>;
 
 export type SendDiagnosticInterruptInstancesError =
   | DefaultErrors
@@ -88115,7 +88115,7 @@ export const UpdateDisplayDeviceInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDisplayDeviceInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateDisplayDeviceInstancesRequest>;
 
 export type UpdateDisplayDeviceInstancesResponse = Operation;
 export const UpdateDisplayDeviceInstancesResponse =
@@ -88167,7 +88167,7 @@ export const UpdateShieldedInstanceConfigInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateShieldedInstanceConfigInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateShieldedInstanceConfigInstancesRequest>;
 
 export type UpdateShieldedInstanceConfigInstancesResponse = Operation;
 export const UpdateShieldedInstanceConfigInstancesResponse =
@@ -88221,7 +88221,7 @@ export const SetMachineResourcesInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetMachineResourcesInstancesRequest>;
+  ) as unknown as Schema.Codec<SetMachineResourcesInstancesRequest>;
 
 export type SetMachineResourcesInstancesResponse = Operation;
 export const SetMachineResourcesInstancesResponse =
@@ -88273,7 +88273,7 @@ export const SetSchedulingInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSchedulingInstancesRequest>;
+  ) as unknown as Schema.Codec<SetSchedulingInstancesRequest>;
 
 export type SetSchedulingInstancesResponse = Operation;
 export const SetSchedulingInstancesResponse =
@@ -88325,7 +88325,7 @@ export const SetTagsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetTagsInstancesRequest>;
+  ) as unknown as Schema.Codec<SetTagsInstancesRequest>;
 
 export type SetTagsInstancesResponse = Operation;
 export const SetTagsInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -88378,7 +88378,7 @@ export const DeleteInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/zones/{zone}/instances/{instance}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteInstancesRequest>;
+) as unknown as Schema.Codec<DeleteInstancesRequest>;
 
 export type DeleteInstancesResponse = Operation;
 export const DeleteInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -88429,7 +88429,7 @@ export const DetachDiskInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DetachDiskInstancesRequest>;
+  ) as unknown as Schema.Codec<DetachDiskInstancesRequest>;
 
 export type DetachDiskInstancesResponse = Operation;
 export const DetachDiskInstancesResponse =
@@ -88477,7 +88477,7 @@ export const GetEffectiveFirewallsInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{instance}/getEffectiveFirewalls",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEffectiveFirewallsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetEffectiveFirewallsInstancesRequest>;
 
 export type GetEffectiveFirewallsInstancesResponse =
   InstancesGetEffectiveFirewallsResponse;
@@ -88521,7 +88521,7 @@ export const GetShieldedVmIdentityInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{instance}/getShieldedVmIdentity",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetShieldedVmIdentityInstancesRequest>;
+  ) as unknown as Schema.Codec<GetShieldedVmIdentityInstancesRequest>;
 
 export type GetShieldedVmIdentityInstancesResponse = ShieldedVmIdentity;
 export const GetShieldedVmIdentityInstancesResponse =
@@ -88568,7 +88568,7 @@ export const PerformMaintenanceInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PerformMaintenanceInstancesRequest>;
+  ) as unknown as Schema.Codec<PerformMaintenanceInstancesRequest>;
 
 export type PerformMaintenanceInstancesResponse = Operation;
 export const PerformMaintenanceInstancesResponse =
@@ -88623,7 +88623,7 @@ export const DeleteAccessConfigInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccessConfigInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccessConfigInstancesRequest>;
 
 export type DeleteAccessConfigInstancesResponse = Operation;
 export const DeleteAccessConfigInstancesResponse =
@@ -88677,7 +88677,7 @@ export const SuspendInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SuspendInstancesRequest>;
+  ) as unknown as Schema.Codec<SuspendInstancesRequest>;
 
 export type SuspendInstancesResponse = Operation;
 export const SuspendInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -88726,7 +88726,7 @@ export const GetIamPolicyInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyInstancesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyInstancesRequest>;
 
 export type GetIamPolicyInstancesResponse = Policy;
 export const GetIamPolicyInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -88772,7 +88772,7 @@ export const SetLabelsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsInstancesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsInstancesRequest>;
 
 export type SetLabelsInstancesResponse = Operation;
 export const SetLabelsInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -88823,7 +88823,7 @@ export const SetSecurityPolicyInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSecurityPolicyInstancesRequest>;
+  ) as unknown as Schema.Codec<SetSecurityPolicyInstancesRequest>;
 
 export type SetSecurityPolicyInstancesResponse = Operation;
 export const SetSecurityPolicyInstancesResponse =
@@ -88875,7 +88875,7 @@ export const SetServiceAccountInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetServiceAccountInstancesRequest>;
+  ) as unknown as Schema.Codec<SetServiceAccountInstancesRequest>;
 
 export type SetServiceAccountInstancesResponse = Operation;
 export const SetServiceAccountInstancesResponse =
@@ -88937,7 +88937,7 @@ export const ListReferrersInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{instance}/referrers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListReferrersInstancesRequest>;
+  ) as unknown as Schema.Codec<ListReferrersInstancesRequest>;
 
 export type ListReferrersInstancesResponse = InstanceListReferrers;
 export const ListReferrersInstancesResponse =
@@ -88982,7 +88982,7 @@ export const GetShieldedInstanceIdentityInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{instance}/getShieldedInstanceIdentity",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetShieldedInstanceIdentityInstancesRequest>;
+  ) as unknown as Schema.Codec<GetShieldedInstanceIdentityInstancesRequest>;
 
 export type GetShieldedInstanceIdentityInstancesResponse =
   ShieldedInstanceIdentity;
@@ -89041,7 +89041,7 @@ export const InsertInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertInstancesRequest>;
+) as unknown as Schema.Codec<InsertInstancesRequest>;
 
 export type InsertInstancesResponse = Operation;
 export const InsertInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -89085,7 +89085,7 @@ export const GetScreenshotInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{instance}/screenshot",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetScreenshotInstancesRequest>;
+  ) as unknown as Schema.Codec<GetScreenshotInstancesRequest>;
 
 export type GetScreenshotInstancesResponse = Screenshot;
 export const GetScreenshotInstancesResponse =
@@ -89132,7 +89132,7 @@ export const SetNameInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetNameInstancesRequest>;
+  ) as unknown as Schema.Codec<SetNameInstancesRequest>;
 
 export type SetNameInstancesResponse = Operation;
 export const SetNameInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -89183,7 +89183,7 @@ export const PatchPartnerMetadataInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPartnerMetadataInstancesRequest>;
+  ) as unknown as Schema.Codec<PatchPartnerMetadataInstancesRequest>;
 
 export type PatchPartnerMetadataInstancesResponse = Operation;
 export const PatchPartnerMetadataInstancesResponse =
@@ -89232,7 +89232,7 @@ export const TestIamPermissionsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsInstancesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsInstancesRequest>;
 
 export type TestIamPermissionsInstancesResponse = TestPermissionsResponse;
 export const TestIamPermissionsInstancesResponse =
@@ -89283,7 +89283,7 @@ export const GetSerialPortOutputInstancesRequest =
       path: "projects/{project}/zones/{zone}/instances/{instance}/serialPort",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSerialPortOutputInstancesRequest>;
+  ) as unknown as Schema.Codec<GetSerialPortOutputInstancesRequest>;
 
 export type GetSerialPortOutputInstancesResponse = SerialPortOutput;
 export const GetSerialPortOutputInstancesResponse =
@@ -89338,7 +89338,7 @@ export const AttachDiskInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AttachDiskInstancesRequest>;
+  ) as unknown as Schema.Codec<AttachDiskInstancesRequest>;
 
 export type AttachDiskInstancesResponse = Operation;
 export const AttachDiskInstancesResponse =
@@ -89390,7 +89390,7 @@ export const SetMetadataInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetMetadataInstancesRequest>;
+  ) as unknown as Schema.Codec<SetMetadataInstancesRequest>;
 
 export type SetMetadataInstancesResponse = Operation;
 export const SetMetadataInstancesResponse =
@@ -89442,7 +89442,7 @@ export const SetShieldedVmIntegrityPolicyInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetShieldedVmIntegrityPolicyInstancesRequest>;
+  ) as unknown as Schema.Codec<SetShieldedVmIntegrityPolicyInstancesRequest>;
 
 export type SetShieldedVmIntegrityPolicyInstancesResponse = Operation;
 export const SetShieldedVmIntegrityPolicyInstancesResponse =
@@ -89497,7 +89497,7 @@ export const UpdateNetworkInterfaceInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateNetworkInterfaceInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateNetworkInterfaceInstancesRequest>;
 
 export type UpdateNetworkInterfaceInstancesResponse = Operation;
 export const UpdateNetworkInterfaceInstancesResponse =
@@ -89552,7 +89552,7 @@ export const UpdateAccessConfigInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccessConfigInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateAccessConfigInstancesRequest>;
 
 export type UpdateAccessConfigInstancesResponse = Operation;
 export const UpdateAccessConfigInstancesResponse =
@@ -89601,7 +89601,7 @@ export const BulkInsertInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkInsertInstancesRequest>;
+  ) as unknown as Schema.Codec<BulkInsertInstancesRequest>;
 
 export type BulkInsertInstancesResponse = Operation;
 export const BulkInsertInstancesResponse =
@@ -89648,7 +89648,7 @@ export const GetInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/zones/{zone}/instances/{instance}",
   }),
   svc,
-) as unknown as Schema.Schema<GetInstancesRequest>;
+) as unknown as Schema.Codec<GetInstancesRequest>;
 
 export type GetInstancesResponse = Instance;
 export const GetInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Instance;
@@ -89691,7 +89691,7 @@ export const SetIamPolicyInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyInstancesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyInstancesRequest>;
 
 export type SetIamPolicyInstancesResponse = Policy;
 export const SetIamPolicyInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -89742,7 +89742,7 @@ export const SetShieldedInstanceIntegrityPolicyInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetShieldedInstanceIntegrityPolicyInstancesRequest>;
+  ) as unknown as Schema.Codec<SetShieldedInstanceIntegrityPolicyInstancesRequest>;
 
 export type SetShieldedInstanceIntegrityPolicyInstancesResponse = Operation;
 export const SetShieldedInstanceIntegrityPolicyInstancesResponse =
@@ -89790,7 +89790,7 @@ export const ResetInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ResetInstancesRequest>;
+) as unknown as Schema.Codec<ResetInstancesRequest>;
 
 export type ResetInstancesResponse = Operation;
 export const ResetInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -89843,7 +89843,7 @@ export const RemoveResourcePoliciesInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveResourcePoliciesInstancesRequest>;
+  ) as unknown as Schema.Codec<RemoveResourcePoliciesInstancesRequest>;
 
 export type RemoveResourcePoliciesInstancesResponse = Operation;
 export const RemoveResourcePoliciesInstancesResponse =
@@ -89897,7 +89897,7 @@ export const ReportHostAsFaultyInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportHostAsFaultyInstancesRequest>;
+  ) as unknown as Schema.Codec<ReportHostAsFaultyInstancesRequest>;
 
 export type ReportHostAsFaultyInstancesResponse = Operation;
 export const ReportHostAsFaultyInstancesResponse =
@@ -89951,7 +89951,7 @@ export const SetDeletionProtectionInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetDeletionProtectionInstancesRequest>;
+  ) as unknown as Schema.Codec<SetDeletionProtectionInstancesRequest>;
 
 export type SetDeletionProtectionInstancesResponse = Operation;
 export const SetDeletionProtectionInstancesResponse =
@@ -90006,7 +90006,7 @@ export const SetDiskAutoDeleteInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetDiskAutoDeleteInstancesRequest>;
+  ) as unknown as Schema.Codec<SetDiskAutoDeleteInstancesRequest>;
 
 export type SetDiskAutoDeleteInstancesResponse = Operation;
 export const SetDiskAutoDeleteInstancesResponse =
@@ -90060,7 +90060,7 @@ export const StartWithEncryptionKeyInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartWithEncryptionKeyInstancesRequest>;
+  ) as unknown as Schema.Codec<StartWithEncryptionKeyInstancesRequest>;
 
 export type StartWithEncryptionKeyInstancesResponse = Operation;
 export const StartWithEncryptionKeyInstancesResponse =
@@ -90112,7 +90112,7 @@ export const UpdateShieldedVmConfigInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateShieldedVmConfigInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateShieldedVmConfigInstancesRequest>;
 
 export type UpdateShieldedVmConfigInstancesResponse = Operation;
 export const UpdateShieldedVmConfigInstancesResponse =
@@ -90164,7 +90164,7 @@ export const PatchNetworkAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<PatchNetworkAttachmentsRequest>;
 
 export type PatchNetworkAttachmentsResponse = Operation;
 export const PatchNetworkAttachmentsResponse =
@@ -90213,7 +90213,7 @@ export const TestIamPermissionsNetworkAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsNetworkAttachmentsRequest>;
 
 export type TestIamPermissionsNetworkAttachmentsResponse =
   TestPermissionsResponse;
@@ -90264,7 +90264,7 @@ export const GetIamPolicyNetworkAttachmentsRequest =
       path: "projects/{project}/regions/{region}/networkAttachments/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyNetworkAttachmentsRequest>;
 
 export type GetIamPolicyNetworkAttachmentsResponse = Policy;
 export const GetIamPolicyNetworkAttachmentsResponse =
@@ -90311,7 +90311,7 @@ export const SetIamPolicyNetworkAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyNetworkAttachmentsRequest>;
 
 export type SetIamPolicyNetworkAttachmentsResponse = Policy;
 export const SetIamPolicyNetworkAttachmentsResponse =
@@ -90360,7 +90360,7 @@ export const InsertNetworkAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<InsertNetworkAttachmentsRequest>;
 
 export type InsertNetworkAttachmentsResponse = Operation;
 export const InsertNetworkAttachmentsResponse =
@@ -90408,7 +90408,7 @@ export const DeleteNetworkAttachmentsRequest =
       path: "projects/{project}/regions/{region}/networkAttachments/{networkAttachment}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteNetworkAttachmentsRequest>;
 
 export type DeleteNetworkAttachmentsResponse = Operation;
 export const DeleteNetworkAttachmentsResponse =
@@ -90467,7 +90467,7 @@ export const ListNetworkAttachmentsRequest =
       path: "projects/{project}/regions/{region}/networkAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListNetworkAttachmentsRequest>;
 
 export type ListNetworkAttachmentsResponse = NetworkAttachmentList;
 export const ListNetworkAttachmentsResponse =
@@ -90512,7 +90512,7 @@ export const GetNetworkAttachmentsRequest =
       path: "projects/{project}/regions/{region}/networkAttachments/{networkAttachment}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetNetworkAttachmentsRequest>;
 
 export type GetNetworkAttachmentsResponse = NetworkAttachment;
 export const GetNetworkAttachmentsResponse =
@@ -90573,7 +90573,7 @@ export const AggregatedListNetworkAttachmentsRequest =
       path: "projects/{project}/aggregated/networkAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListNetworkAttachmentsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListNetworkAttachmentsRequest>;
 
 export type AggregatedListNetworkAttachmentsResponse =
   NetworkAttachmentAggregatedList;
@@ -90629,7 +90629,7 @@ export const SetLabelsVpnTunnelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsVpnTunnelsRequest>;
+  ) as unknown as Schema.Codec<SetLabelsVpnTunnelsRequest>;
 
 export type SetLabelsVpnTunnelsResponse = Operation;
 export const SetLabelsVpnTunnelsResponse =
@@ -90678,7 +90678,7 @@ export const InsertVpnTunnelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertVpnTunnelsRequest>;
+  ) as unknown as Schema.Codec<InsertVpnTunnelsRequest>;
 
 export type InsertVpnTunnelsResponse = Operation;
 export const InsertVpnTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -90726,7 +90726,7 @@ export const TestIamPermissionsVpnTunnelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsVpnTunnelsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsVpnTunnelsRequest>;
 
 export type TestIamPermissionsVpnTunnelsResponse = TestPermissionsResponse;
 export const TestIamPermissionsVpnTunnelsResponse =
@@ -90784,7 +90784,7 @@ export const ListVpnTunnelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/vpnTunnels",
   }),
   svc,
-) as unknown as Schema.Schema<ListVpnTunnelsRequest>;
+) as unknown as Schema.Codec<ListVpnTunnelsRequest>;
 
 export type ListVpnTunnelsResponse = VpnTunnelList;
 export const ListVpnTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ VpnTunnelList;
@@ -90831,7 +90831,7 @@ export const DeleteVpnTunnelsRequest =
       path: "projects/{project}/regions/{region}/vpnTunnels/{vpnTunnel}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteVpnTunnelsRequest>;
+  ) as unknown as Schema.Codec<DeleteVpnTunnelsRequest>;
 
 export type DeleteVpnTunnelsResponse = Operation;
 export const DeleteVpnTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -90893,7 +90893,7 @@ export const AggregatedListVpnTunnelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/vpnTunnels" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListVpnTunnelsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListVpnTunnelsRequest>;
 
 export type AggregatedListVpnTunnelsResponse = VpnTunnelAggregatedList;
 export const AggregatedListVpnTunnelsResponse =
@@ -90940,7 +90940,7 @@ export const GetVpnTunnelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/regions/{region}/vpnTunnels/{vpnTunnel}",
   }),
   svc,
-) as unknown as Schema.Schema<GetVpnTunnelsRequest>;
+) as unknown as Schema.Codec<GetVpnTunnelsRequest>;
 
 export type GetVpnTunnelsResponse = VpnTunnel;
 export const GetVpnTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ VpnTunnel;
@@ -90980,7 +90980,7 @@ export const SetLabelsGlobalAddressesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsGlobalAddressesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsGlobalAddressesRequest>;
 
 export type SetLabelsGlobalAddressesResponse = Operation;
 export const SetLabelsGlobalAddressesResponse =
@@ -91026,7 +91026,7 @@ export const InsertGlobalAddressesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGlobalAddressesRequest>;
+  ) as unknown as Schema.Codec<InsertGlobalAddressesRequest>;
 
 export type InsertGlobalAddressesResponse = Operation;
 export const InsertGlobalAddressesResponse =
@@ -91072,7 +91072,7 @@ export const TestIamPermissionsGlobalAddressesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsGlobalAddressesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsGlobalAddressesRequest>;
 
 export type TestIamPermissionsGlobalAddressesResponse = TestPermissionsResponse;
 export const TestIamPermissionsGlobalAddressesResponse =
@@ -91117,7 +91117,7 @@ export const DeleteGlobalAddressesRequest =
       path: "projects/{project}/global/addresses/{address}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGlobalAddressesRequest>;
+  ) as unknown as Schema.Codec<DeleteGlobalAddressesRequest>;
 
 export type DeleteGlobalAddressesResponse = Operation;
 export const DeleteGlobalAddressesResponse =
@@ -91170,7 +91170,7 @@ export const ListGlobalAddressesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/global/addresses" }),
     svc,
-  ) as unknown as Schema.Schema<ListGlobalAddressesRequest>;
+  ) as unknown as Schema.Codec<ListGlobalAddressesRequest>;
 
 export type ListGlobalAddressesResponse = AddressList;
 export const ListGlobalAddressesResponse =
@@ -91212,7 +91212,7 @@ export const GetGlobalAddressesRequest =
       path: "projects/{project}/global/addresses/{address}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGlobalAddressesRequest>;
+  ) as unknown as Schema.Codec<GetGlobalAddressesRequest>;
 
 export type GetGlobalAddressesResponse = Address;
 export const GetGlobalAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Address;
@@ -91255,7 +91255,7 @@ export const MoveGlobalAddressesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveGlobalAddressesRequest>;
+  ) as unknown as Schema.Codec<MoveGlobalAddressesRequest>;
 
 export type MoveGlobalAddressesResponse = Operation;
 export const MoveGlobalAddressesResponse =
@@ -91306,7 +91306,7 @@ export const SetCertificateMapTargetSslProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetCertificateMapTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<SetCertificateMapTargetSslProxiesRequest>;
 
 export type SetCertificateMapTargetSslProxiesResponse = Operation;
 export const SetCertificateMapTargetSslProxiesResponse =
@@ -91357,7 +91357,7 @@ export const SetSslCertificatesTargetSslProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSslCertificatesTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<SetSslCertificatesTargetSslProxiesRequest>;
 
 export type SetSslCertificatesTargetSslProxiesResponse = Operation;
 export const SetSslCertificatesTargetSslProxiesResponse =
@@ -91406,7 +91406,7 @@ export const SetSslPolicyTargetSslProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSslPolicyTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<SetSslPolicyTargetSslProxiesRequest>;
 
 export type SetSslPolicyTargetSslProxiesResponse = Operation;
 export const SetSslPolicyTargetSslProxiesResponse =
@@ -91457,7 +91457,7 @@ export const SetProxyHeaderTargetSslProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetProxyHeaderTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<SetProxyHeaderTargetSslProxiesRequest>;
 
 export type SetProxyHeaderTargetSslProxiesResponse = Operation;
 export const SetProxyHeaderTargetSslProxiesResponse =
@@ -91503,7 +91503,7 @@ export const TestIamPermissionsTargetSslProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTargetSslProxiesRequest>;
 
 export type TestIamPermissionsTargetSslProxiesResponse =
   TestPermissionsResponse;
@@ -91560,7 +91560,7 @@ export const ListTargetSslProxiesRequest =
       path: "projects/{project}/global/targetSslProxies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<ListTargetSslProxiesRequest>;
 
 export type ListTargetSslProxiesResponse = TargetSslProxyList;
 export const ListTargetSslProxiesResponse =
@@ -91605,7 +91605,7 @@ export const DeleteTargetSslProxiesRequest =
       path: "projects/{project}/global/targetSslProxies/{targetSslProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<DeleteTargetSslProxiesRequest>;
 
 export type DeleteTargetSslProxiesResponse = Operation;
 export const DeleteTargetSslProxiesResponse =
@@ -91647,7 +91647,7 @@ export const GetTargetSslProxiesRequest =
       path: "projects/{project}/global/targetSslProxies/{targetSslProxy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<GetTargetSslProxiesRequest>;
 
 export type GetTargetSslProxiesResponse = TargetSslProxy;
 export const GetTargetSslProxiesResponse =
@@ -91688,7 +91688,7 @@ export const InsertTargetSslProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<InsertTargetSslProxiesRequest>;
 
 export type InsertTargetSslProxiesResponse = Operation;
 export const InsertTargetSslProxiesResponse =
@@ -91739,7 +91739,7 @@ export const SetBackendServiceTargetSslProxiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetBackendServiceTargetSslProxiesRequest>;
+  ) as unknown as Schema.Codec<SetBackendServiceTargetSslProxiesRequest>;
 
 export type SetBackendServiceTargetSslProxiesResponse = Operation;
 export const SetBackendServiceTargetSslProxiesResponse =
@@ -91781,7 +91781,7 @@ export const GetInstanceSettingsRequest =
       path: "projects/{project}/zones/{zone}/instanceSettings",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInstanceSettingsRequest>;
+  ) as unknown as Schema.Codec<GetInstanceSettingsRequest>;
 
 export type GetInstanceSettingsResponse = InstanceSettings;
 export const GetInstanceSettingsResponse =
@@ -91828,7 +91828,7 @@ export const PatchInstanceSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInstanceSettingsRequest>;
+  ) as unknown as Schema.Codec<PatchInstanceSettingsRequest>;
 
 export type PatchInstanceSettingsResponse = Operation;
 export const PatchInstanceSettingsResponse =
@@ -91874,7 +91874,7 @@ export const DeleteSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "projects/{project}/global/snapshots/{snapshot}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteSnapshotsRequest>;
+) as unknown as Schema.Codec<DeleteSnapshotsRequest>;
 
 export type DeleteSnapshotsResponse = Operation;
 export const DeleteSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -91925,7 +91925,7 @@ export const ListSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}/global/snapshots" }),
   svc,
-) as unknown as Schema.Schema<ListSnapshotsRequest>;
+) as unknown as Schema.Codec<ListSnapshotsRequest>;
 
 export type ListSnapshotsResponse = SnapshotList;
 export const ListSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ SnapshotList;
@@ -91965,7 +91965,7 @@ export const GetSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{project}/global/snapshots/{snapshot}",
   }),
   svc,
-) as unknown as Schema.Schema<GetSnapshotsRequest>;
+) as unknown as Schema.Codec<GetSnapshotsRequest>;
 
 export type GetSnapshotsResponse = Snapshot;
 export const GetSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Snapshot;
@@ -92022,7 +92022,7 @@ export const AggregatedListSnapshotsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/aggregated/snapshots" }),
     svc,
-  ) as unknown as Schema.Schema<AggregatedListSnapshotsRequest>;
+  ) as unknown as Schema.Codec<AggregatedListSnapshotsRequest>;
 
 export type AggregatedListSnapshotsResponse = SnapshotAggregatedList;
 export const AggregatedListSnapshotsResponse =
@@ -92068,7 +92068,7 @@ export const SetLabelsSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsSnapshotsRequest>;
+  ) as unknown as Schema.Codec<SetLabelsSnapshotsRequest>;
 
 export type SetLabelsSnapshotsResponse = Operation;
 export const SetLabelsSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -92114,7 +92114,7 @@ export const InsertSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertSnapshotsRequest>;
+) as unknown as Schema.Codec<InsertSnapshotsRequest>;
 
 export type InsertSnapshotsResponse = Operation;
 export const InsertSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -92160,7 +92160,7 @@ export const GetIamPolicySnapshotsRequest =
       path: "projects/{project}/global/snapshots/{resource}/getIamPolicy",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicySnapshotsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicySnapshotsRequest>;
 
 export type GetIamPolicySnapshotsResponse = Policy;
 export const GetIamPolicySnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -92200,7 +92200,7 @@ export const SetIamPolicySnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicySnapshotsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicySnapshotsRequest>;
 
 export type SetIamPolicySnapshotsResponse = Policy;
 export const SetIamPolicySnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -92248,7 +92248,7 @@ export const UpdateKmsKeySnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateKmsKeySnapshotsRequest>;
+  ) as unknown as Schema.Codec<UpdateKmsKeySnapshotsRequest>;
 
 export type UpdateKmsKeySnapshotsResponse = Operation;
 export const UpdateKmsKeySnapshotsResponse =
@@ -92294,7 +92294,7 @@ export const TestIamPermissionsSnapshotsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsSnapshotsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsSnapshotsRequest>;
 
 export type TestIamPermissionsSnapshotsResponse = TestPermissionsResponse;
 export const TestIamPermissionsSnapshotsResponse =
@@ -92358,7 +92358,7 @@ export const ListRegionInstanceGroupManagerResizeRequestsRequest =
       path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRegionInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<ListRegionInstanceGroupManagerResizeRequestsRequest>;
 
 export type ListRegionInstanceGroupManagerResizeRequestsResponse =
   RegionInstanceGroupManagerResizeRequestsListResponse;
@@ -92415,7 +92415,7 @@ export const DeleteRegionInstanceGroupManagerResizeRequestsRequest =
       path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegionInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegionInstanceGroupManagerResizeRequestsRequest>;
 
 export type DeleteRegionInstanceGroupManagerResizeRequestsResponse = Operation;
 export const DeleteRegionInstanceGroupManagerResizeRequestsResponse =
@@ -92465,7 +92465,7 @@ export const GetRegionInstanceGroupManagerResizeRequestsRequest =
       path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRegionInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<GetRegionInstanceGroupManagerResizeRequestsRequest>;
 
 export type GetRegionInstanceGroupManagerResizeRequestsResponse =
   InstanceGroupManagerResizeRequest;
@@ -92518,7 +92518,7 @@ export const CancelRegionInstanceGroupManagerResizeRequestsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelRegionInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<CancelRegionInstanceGroupManagerResizeRequestsRequest>;
 
 export type CancelRegionInstanceGroupManagerResizeRequestsResponse = Operation;
 export const CancelRegionInstanceGroupManagerResizeRequestsResponse =
@@ -92572,7 +92572,7 @@ export const InsertRegionInstanceGroupManagerResizeRequestsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRegionInstanceGroupManagerResizeRequestsRequest>;
+  ) as unknown as Schema.Codec<InsertRegionInstanceGroupManagerResizeRequestsRequest>;
 
 export type InsertRegionInstanceGroupManagerResizeRequestsResponse = Operation;
 export const InsertRegionInstanceGroupManagerResizeRequestsResponse =
@@ -92618,7 +92618,7 @@ export const MoveInstanceProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveInstanceProjectsRequest>;
+  ) as unknown as Schema.Codec<MoveInstanceProjectsRequest>;
 
 export type MoveInstanceProjectsResponse = Operation;
 export const MoveInstanceProjectsResponse =
@@ -92664,7 +92664,7 @@ export const DisableXpnResourceProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DisableXpnResourceProjectsRequest>;
+  ) as unknown as Schema.Codec<DisableXpnResourceProjectsRequest>;
 
 export type DisableXpnResourceProjectsResponse = Operation;
 export const DisableXpnResourceProjectsResponse =
@@ -92707,7 +92707,7 @@ export const EnableXpnHostProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnableXpnHostProjectsRequest>;
+  ) as unknown as Schema.Codec<EnableXpnHostProjectsRequest>;
 
 export type EnableXpnHostProjectsResponse = Operation;
 export const EnableXpnHostProjectsResponse =
@@ -92753,7 +92753,7 @@ export const MoveDiskProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveDiskProjectsRequest>;
+  ) as unknown as Schema.Codec<MoveDiskProjectsRequest>;
 
 export type MoveDiskProjectsResponse = Operation;
 export const MoveDiskProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -92788,7 +92788,7 @@ export const GetXpnHostProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/getXpnHost" }),
     svc,
-  ) as unknown as Schema.Schema<GetXpnHostProjectsRequest>;
+  ) as unknown as Schema.Codec<GetXpnHostProjectsRequest>;
 
 export type GetXpnHostProjectsResponse = Project;
 export const GetXpnHostProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -92835,7 +92835,7 @@ export const GetXpnResourcesProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{project}/getXpnResources" }),
     svc,
-  ) as unknown as Schema.Schema<GetXpnResourcesProjectsRequest>;
+  ) as unknown as Schema.Codec<GetXpnResourcesProjectsRequest>;
 
 export type GetXpnResourcesProjectsResponse = ProjectsGetXpnResources;
 export const GetXpnResourcesProjectsResponse =
@@ -92880,7 +92880,7 @@ export const SetCloudArmorTierProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetCloudArmorTierProjectsRequest>;
+  ) as unknown as Schema.Codec<SetCloudArmorTierProjectsRequest>;
 
 export type SetCloudArmorTierProjectsResponse = Operation;
 export const SetCloudArmorTierProjectsResponse =
@@ -92926,7 +92926,7 @@ export const SetUsageExportBucketProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetUsageExportBucketProjectsRequest>;
+  ) as unknown as Schema.Codec<SetUsageExportBucketProjectsRequest>;
 
 export type SetUsageExportBucketProjectsResponse = Operation;
 export const SetUsageExportBucketProjectsResponse =
@@ -92961,7 +92961,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{project}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
+) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -93001,7 +93001,7 @@ export const EnableXpnResourceProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnableXpnResourceProjectsRequest>;
+  ) as unknown as Schema.Codec<EnableXpnResourceProjectsRequest>;
 
 export type EnableXpnResourceProjectsResponse = Operation;
 export const EnableXpnResourceProjectsResponse =
@@ -93049,7 +93049,7 @@ export const SetDefaultNetworkTierProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetDefaultNetworkTierProjectsRequest>;
+  ) as unknown as Schema.Codec<SetDefaultNetworkTierProjectsRequest>;
 
 export type SetDefaultNetworkTierProjectsResponse = Operation;
 export const SetDefaultNetworkTierProjectsResponse =
@@ -93109,7 +93109,7 @@ export const ListXpnHostsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListXpnHostsProjectsRequest>;
+  ) as unknown as Schema.Codec<ListXpnHostsProjectsRequest>;
 
 export type ListXpnHostsProjectsResponse = XpnHostList;
 export const ListXpnHostsProjectsResponse =
@@ -93162,7 +93162,7 @@ export const SetManagedProtectionTierProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetManagedProtectionTierProjectsRequest>;
+  ) as unknown as Schema.Codec<SetManagedProtectionTierProjectsRequest>;
 
 export type SetManagedProtectionTierProjectsResponse = Operation;
 export const SetManagedProtectionTierProjectsResponse =
@@ -93205,7 +93205,7 @@ export const DisableXpnHostProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DisableXpnHostProjectsRequest>;
+  ) as unknown as Schema.Codec<DisableXpnHostProjectsRequest>;
 
 export type DisableXpnHostProjectsResponse = Operation;
 export const DisableXpnHostProjectsResponse =
@@ -93251,7 +93251,7 @@ export const SetCommonInstanceMetadataProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetCommonInstanceMetadataProjectsRequest>;
+  ) as unknown as Schema.Codec<SetCommonInstanceMetadataProjectsRequest>;
 
 export type SetCommonInstanceMetadataProjectsResponse = Operation;
 export const SetCommonInstanceMetadataProjectsResponse =

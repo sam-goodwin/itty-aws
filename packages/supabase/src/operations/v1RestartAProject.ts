@@ -4,16 +4,21 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1RestartAProjectInput {
+  ref: string;
+}
 export const V1RestartAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
   },
-).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/restart" }));
-export type V1RestartAProjectInput = typeof V1RestartAProjectInput.Type;
+).pipe(
+  T.Http({ method: "POST", path: "/v1/projects/{ref}/restart" }),
+) as unknown as Schema.Codec<V1RestartAProjectInput>;
 
 // Output Schema
-export const V1RestartAProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1RestartAProjectOutput = typeof V1RestartAProjectOutput.Type;
+export type V1RestartAProjectOutput = void;
+export const V1RestartAProjectOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestartAProjectOutput>;
 
 // The operation
 /**

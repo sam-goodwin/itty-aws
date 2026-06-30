@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupPrivateNetworkSettingEndpointIdInput {
+  groupId: string;
+  endpointId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupPrivateNetworkSettingEndpointIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const GetGroupPrivateNetworkSettingEndpointIdInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}",
     }),
-  );
-export type GetGroupPrivateNetworkSettingEndpointIdInput =
-  typeof GetGroupPrivateNetworkSettingEndpointIdInput.Type;
+  ) as unknown as Schema.Codec<GetGroupPrivateNetworkSettingEndpointIdInput>;
 
 // Output Schema
+export type GetGroupPrivateNetworkSettingEndpointIdOutput = void;
 export const GetGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupPrivateNetworkSettingEndpointIdOutput =
-  typeof GetGroupPrivateNetworkSettingEndpointIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupPrivateNetworkSettingEndpointIdOutput>;
 
 // The operation
 /**

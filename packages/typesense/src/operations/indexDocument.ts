@@ -4,18 +4,23 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface IndexDocumentInput {
+  collectionName: string;
+  action?: string;
+  dirty_values?: string;
+}
 export const IndexDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   action: Schema.optional(Schema.String),
   dirty_values: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "POST", path: "/collections/{collectionName}/documents" }),
-);
-export type IndexDocumentInput = typeof IndexDocumentInput.Type;
+) as unknown as Schema.Codec<IndexDocumentInput>;
 
 // Output Schema
-export const IndexDocumentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type IndexDocumentOutput = typeof IndexDocumentOutput.Type;
+export type IndexDocumentOutput = unknown;
+export const IndexDocumentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<IndexDocumentOutput>;
 
 // The operation
 /**

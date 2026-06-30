@@ -3,14 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ImportSolanaAccountInput {
+  encryptedPrivateKey: string;
+  name?: string;
+}
 export const ImportSolanaAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptedPrivateKey: Schema.String,
     name: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v2/solana/accounts/import" }));
-export type ImportSolanaAccountInput = typeof ImportSolanaAccountInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/solana/accounts/import" }),
+  ) as unknown as Schema.Codec<ImportSolanaAccountInput>;
 
 // Output Schema
+export interface ImportSolanaAccountOutput {
+  address: string;
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const ImportSolanaAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String,
@@ -18,8 +30,7 @@ export const ImportSolanaAccountOutput =
     policies: Schema.optional(Schema.Array(Schema.String)),
     createdAt: Schema.optional(Schema.String),
     updatedAt: Schema.optional(Schema.String),
-  });
-export type ImportSolanaAccountOutput = typeof ImportSolanaAccountOutput.Type;
+  }) as unknown as Schema.Codec<ImportSolanaAccountOutput>;
 
 // The operation
 /**

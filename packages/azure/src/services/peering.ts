@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CdnPeeringPrefixesListInput {
+  subscriptionId: string;
+  peeringLocation: string;
+}
 export const CdnPeeringPrefixesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19,11 +23,25 @@ export const CdnPeeringPrefixesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/cdnPeeringPrefixes",
       apiVersion: "2025-05-01",
     }),
-  );
-export type CdnPeeringPrefixesListInput =
-  typeof CdnPeeringPrefixesListInput.Type;
+  ) as unknown as Schema.Codec<CdnPeeringPrefixesListInput>;
 
 // Output Schema
+export interface CdnPeeringPrefixesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CdnPeeringPrefixesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -58,9 +76,7 @@ export const CdnPeeringPrefixesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CdnPeeringPrefixesListOutput =
-  typeof CdnPeeringPrefixesListOutput.Type;
+  }) as unknown as Schema.Codec<CdnPeeringPrefixesListOutput>;
 
 // The operation
 /**
@@ -77,6 +93,11 @@ export const CdnPeeringPrefixesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CheckServiceProviderAvailabilityInput {
+  subscriptionId: string;
+  peeringServiceLocation?: string;
+  peeringServiceProvider?: string;
+}
 export const CheckServiceProviderAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -88,15 +109,17 @@ export const CheckServiceProviderAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/checkServiceProviderAvailability",
       apiVersion: "2025-05-01",
     }),
-  );
-export type CheckServiceProviderAvailabilityInput =
-  typeof CheckServiceProviderAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<CheckServiceProviderAvailabilityInput>;
 
 // Output Schema
-export const CheckServiceProviderAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Available", "Unavailable"]);
 export type CheckServiceProviderAvailabilityOutput =
-  typeof CheckServiceProviderAvailabilityOutput.Type;
+  | "Available"
+  | "Unavailable";
+export const CheckServiceProviderAvailabilityOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Available",
+    "Unavailable",
+  ]) as unknown as Schema.Codec<CheckServiceProviderAvailabilityOutput>;
 
 // The operation
 /**
@@ -111,6 +134,26 @@ export const CheckServiceProviderAvailability =
     outputSchema: CheckServiceProviderAvailabilityOutput,
   }));
 // Input Schema
+export interface ConnectionMonitorTestsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  connectionMonitorTestName: string;
+  properties?: {
+    sourceAgent?: string;
+    destination?: string;
+    destinationPort?: number;
+    testFrequencyInSec?: number;
+    isTestSuccessful?: boolean;
+    path?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+  };
+}
 export const ConnectionMonitorTestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -142,11 +185,22 @@ export const ConnectionMonitorTestsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ConnectionMonitorTestsCreateOrUpdateInput =
-  typeof ConnectionMonitorTestsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConnectionMonitorTestsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConnectionMonitorTestsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionMonitorTestsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -166,9 +220,7 @@ export const ConnectionMonitorTestsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectionMonitorTestsCreateOrUpdateOutput =
-  typeof ConnectionMonitorTestsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionMonitorTestsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -186,6 +238,12 @@ export const ConnectionMonitorTestsCreateOrUpdate =
     outputSchema: ConnectionMonitorTestsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConnectionMonitorTestsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  connectionMonitorTestName: string;
+}
 export const ConnectionMonitorTestsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -198,15 +256,12 @@ export const ConnectionMonitorTestsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ConnectionMonitorTestsDeleteInput =
-  typeof ConnectionMonitorTestsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConnectionMonitorTestsDeleteInput>;
 
 // Output Schema
+export type ConnectionMonitorTestsDeleteOutput = void;
 export const ConnectionMonitorTestsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectionMonitorTestsDeleteOutput =
-  typeof ConnectionMonitorTestsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionMonitorTestsDeleteOutput>;
 
 // The operation
 /**
@@ -224,6 +279,12 @@ export const ConnectionMonitorTestsDelete =
     outputSchema: ConnectionMonitorTestsDeleteOutput,
   }));
 // Input Schema
+export interface ConnectionMonitorTestsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  connectionMonitorTestName: string;
+}
 export const ConnectionMonitorTestsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -236,11 +297,22 @@ export const ConnectionMonitorTestsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ConnectionMonitorTestsGetInput =
-  typeof ConnectionMonitorTestsGetInput.Type;
+  ) as unknown as Schema.Codec<ConnectionMonitorTestsGetInput>;
 
 // Output Schema
+export interface ConnectionMonitorTestsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionMonitorTestsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -260,9 +332,7 @@ export const ConnectionMonitorTestsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectionMonitorTestsGetOutput =
-  typeof ConnectionMonitorTestsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionMonitorTestsGetOutput>;
 
 // The operation
 /**
@@ -281,6 +351,11 @@ export const ConnectionMonitorTestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectionMonitorTestsListByPeeringServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+}
 export const ConnectionMonitorTestsListByPeeringServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -292,11 +367,25 @@ export const ConnectionMonitorTestsListByPeeringServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ConnectionMonitorTestsListByPeeringServiceInput =
-  typeof ConnectionMonitorTestsListByPeeringServiceInput.Type;
+  ) as unknown as Schema.Codec<ConnectionMonitorTestsListByPeeringServiceInput>;
 
 // Output Schema
+export interface ConnectionMonitorTestsListByPeeringServiceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectionMonitorTestsListByPeeringServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -331,9 +420,7 @@ export const ConnectionMonitorTestsListByPeeringServiceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectionMonitorTestsListByPeeringServiceOutput =
-  typeof ConnectionMonitorTestsListByPeeringServiceOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionMonitorTestsListByPeeringServiceOutput>;
 
 // The operation
 /**
@@ -350,6 +437,22 @@ export const ConnectionMonitorTestsListByPeeringService =
     outputSchema: ConnectionMonitorTestsListByPeeringServiceOutput,
   }));
 // Input Schema
+export interface LegacyPeeringsListInput {
+  subscriptionId: string;
+  peeringLocation: string;
+  kind: "Direct" | "Exchange";
+  asn?: number;
+  directPeeringType?:
+    | "Edge"
+    | "Transit"
+    | "Cdn"
+    | "Internal"
+    | "Ix"
+    | "IxRs"
+    | "Voice"
+    | "EdgeZoneForOperators"
+    | "PeerProp";
+}
 export const LegacyPeeringsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -375,10 +478,25 @@ export const LegacyPeeringsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/legacyPeerings",
       apiVersion: "2025-05-01",
     }),
-  );
-export type LegacyPeeringsListInput = typeof LegacyPeeringsListInput.Type;
+  ) as unknown as Schema.Codec<LegacyPeeringsListInput>;
 
 // Output Schema
+export interface LegacyPeeringsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LegacyPeeringsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -413,8 +531,7 @@ export const LegacyPeeringsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LegacyPeeringsListOutput = typeof LegacyPeeringsListOutput.Type;
+  }) as unknown as Schema.Codec<LegacyPeeringsListOutput>;
 
 // The operation
 /**
@@ -432,6 +549,13 @@ export const LegacyPeeringsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LegacyPeeringsListOutput,
 }));
 // Input Schema
+export interface LookingGlassInvokeInput {
+  subscriptionId: string;
+  command: "Traceroute" | "Ping" | "BgpRoute";
+  sourceType: "EdgeSite" | "AzureRegion";
+  sourceLocation: string;
+  destinationIP: string;
+}
 export const LookingGlassInvokeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -445,18 +569,20 @@ export const LookingGlassInvokeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/lookingGlass",
       apiVersion: "2025-05-01",
     }),
-  );
-export type LookingGlassInvokeInput = typeof LookingGlassInvokeInput.Type;
+  ) as unknown as Schema.Codec<LookingGlassInvokeInput>;
 
 // Output Schema
+export interface LookingGlassInvokeOutput {
+  command?: "Traceroute" | "Ping" | "BgpRoute";
+  output?: string;
+}
 export const LookingGlassInvokeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     command: Schema.optional(
       Schema.Literals(["Traceroute", "Ping", "BgpRoute"]),
     ),
     output: Schema.optional(Schema.String),
-  });
-export type LookingGlassInvokeOutput = typeof LookingGlassInvokeOutput.Type;
+  }) as unknown as Schema.Codec<LookingGlassInvokeOutput>;
 
 // The operation
 /**
@@ -474,6 +600,7 @@ export const LookingGlassInvoke = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LookingGlassInvokeOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -482,10 +609,35 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Peering/operations",
     apiVersion: "2025-05-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    isDataAction?: boolean;
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          supportedTimeGrainTypes?: string[];
+          dimensions?: { name?: string; displayName?: string }[];
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -534,8 +686,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -548,6 +699,27 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PeerAsnsCreateOrUpdateInput {
+  subscriptionId: string;
+  peerAsnName: string;
+  properties?: {
+    peerAsn?: number;
+    peerContactDetail?: {
+      role?:
+        | "Noc"
+        | "Policy"
+        | "Technical"
+        | "Service"
+        | "Escalation"
+        | "Other";
+      email?: string;
+      phone?: string;
+    }[];
+    peerName?: string;
+    validationState?: "None" | "Pending" | "Approved" | "Failed";
+    errorMessage?: string;
+  };
+}
 export const PeerAsnsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -586,11 +758,22 @@ export const PeerAsnsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeerAsnsCreateOrUpdateInput =
-  typeof PeerAsnsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PeerAsnsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PeerAsnsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PeerAsnsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -610,9 +793,7 @@ export const PeerAsnsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PeerAsnsCreateOrUpdateOutput =
-  typeof PeerAsnsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PeerAsnsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -629,6 +810,10 @@ export const PeerAsnsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeerAsnsDeleteInput {
+  subscriptionId: string;
+  peerAsnName: string;
+}
 export const PeerAsnsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   peerAsnName: Schema.String.pipe(T.PathParam()),
@@ -638,12 +823,12 @@ export const PeerAsnsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type PeerAsnsDeleteInput = typeof PeerAsnsDeleteInput.Type;
+) as unknown as Schema.Codec<PeerAsnsDeleteInput>;
 
 // Output Schema
-export const PeerAsnsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PeerAsnsDeleteOutput = typeof PeerAsnsDeleteOutput.Type;
+export type PeerAsnsDeleteOutput = void;
+export const PeerAsnsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PeerAsnsDeleteOutput>;
 
 // The operation
 /**
@@ -658,6 +843,10 @@ export const PeerAsnsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PeerAsnsDeleteOutput,
 }));
 // Input Schema
+export interface PeerAsnsGetInput {
+  subscriptionId: string;
+  peerAsnName: string;
+}
 export const PeerAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   peerAsnName: Schema.String.pipe(T.PathParam()),
@@ -667,10 +856,22 @@ export const PeerAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type PeerAsnsGetInput = typeof PeerAsnsGetInput.Type;
+) as unknown as Schema.Codec<PeerAsnsGetInput>;
 
 // Output Schema
+export interface PeerAsnsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PeerAsnsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -689,8 +890,7 @@ export const PeerAsnsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PeerAsnsGetOutput = typeof PeerAsnsGetOutput.Type;
+}) as unknown as Schema.Codec<PeerAsnsGetOutput>;
 
 // The operation
 /**
@@ -705,6 +905,9 @@ export const PeerAsnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PeerAsnsGetOutput,
 }));
 // Input Schema
+export interface PeerAsnsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PeerAsnsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -714,11 +917,25 @@ export const PeerAsnsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeerAsnsListBySubscriptionInput =
-  typeof PeerAsnsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PeerAsnsListBySubscriptionInput>;
 
 // Output Schema
+export interface PeerAsnsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeerAsnsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -753,9 +970,7 @@ export const PeerAsnsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeerAsnsListBySubscriptionOutput =
-  typeof PeerAsnsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PeerAsnsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -771,6 +986,20 @@ export const PeerAsnsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringLocationsListInput {
+  subscriptionId: string;
+  kind: "Direct" | "Exchange";
+  directPeeringType?:
+    | "Edge"
+    | "Transit"
+    | "Cdn"
+    | "Internal"
+    | "Ix"
+    | "IxRs"
+    | "Voice"
+    | "EdgeZoneForOperators"
+    | "PeerProp";
+}
 export const PeeringLocationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -794,10 +1023,25 @@ export const PeeringLocationsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringLocations",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringLocationsListInput = typeof PeeringLocationsListInput.Type;
+  ) as unknown as Schema.Codec<PeeringLocationsListInput>;
 
 // Output Schema
+export interface PeeringLocationsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeeringLocationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -832,8 +1076,7 @@ export const PeeringLocationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeeringLocationsListOutput = typeof PeeringLocationsListOutput.Type;
+  }) as unknown as Schema.Codec<PeeringLocationsListOutput>;
 
 // The operation
 /**
@@ -851,6 +1094,161 @@ export const PeeringLocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  properties?: {
+    direct?: {
+      connections?: {
+        bandwidthInMbps?: number;
+        provisionedBandwidthInMbps?: number;
+        sessionAddressProvider?: "Microsoft" | "Peer";
+        useForPeeringService?: boolean;
+        microsoftTrackingId?: string;
+        peeringDBFacilityId?: number;
+        connectionState?:
+          | "None"
+          | "PendingApproval"
+          | "Approved"
+          | "ProvisioningStarted"
+          | "ProvisioningFailed"
+          | "ProvisioningCompleted"
+          | "Validating"
+          | "Active"
+          | "TypeChangeRequested"
+          | "TypeChangeInProgress"
+          | "ExternalBlocker";
+        bgpSession?: {
+          sessionPrefixV4?: string;
+          sessionPrefixV6?: string;
+          microsoftSessionIPv4Address?: string;
+          microsoftSessionIPv6Address?: string;
+          peerSessionIPv4Address?: string;
+          peerSessionIPv6Address?: string;
+          sessionStateV4?:
+            | "None"
+            | "Idle"
+            | "Connect"
+            | "Active"
+            | "OpenSent"
+            | "OpenConfirm"
+            | "OpenReceived"
+            | "Established"
+            | "PendingAdd"
+            | "PendingUpdate"
+            | "PendingRemove";
+          sessionStateV6?:
+            | "None"
+            | "Idle"
+            | "Connect"
+            | "Active"
+            | "OpenSent"
+            | "OpenConfirm"
+            | "OpenReceived"
+            | "Established"
+            | "PendingAdd"
+            | "PendingUpdate"
+            | "PendingRemove";
+          maxPrefixesAdvertisedV4?: number;
+          maxPrefixesAdvertisedV6?: number;
+          md5AuthenticationKey?: string;
+        };
+        connectionIdentifier?: string;
+        errorMessage?: string;
+      }[];
+      useForPeeringService?: boolean;
+      peerAsn?: { id?: string };
+      directPeeringType?:
+        | "Edge"
+        | "Transit"
+        | "Cdn"
+        | "Internal"
+        | "Ix"
+        | "IxRs"
+        | "Voice"
+        | "EdgeZoneForOperators"
+        | "PeerProp";
+    };
+    exchange?: {
+      connections?: {
+        peeringDBFacilityId?: number;
+        connectionState?:
+          | "None"
+          | "PendingApproval"
+          | "Approved"
+          | "ProvisioningStarted"
+          | "ProvisioningFailed"
+          | "ProvisioningCompleted"
+          | "Validating"
+          | "Active"
+          | "TypeChangeRequested"
+          | "TypeChangeInProgress"
+          | "ExternalBlocker";
+        bgpSession?: {
+          sessionPrefixV4?: string;
+          sessionPrefixV6?: string;
+          microsoftSessionIPv4Address?: string;
+          microsoftSessionIPv6Address?: string;
+          peerSessionIPv4Address?: string;
+          peerSessionIPv6Address?: string;
+          sessionStateV4?:
+            | "None"
+            | "Idle"
+            | "Connect"
+            | "Active"
+            | "OpenSent"
+            | "OpenConfirm"
+            | "OpenReceived"
+            | "Established"
+            | "PendingAdd"
+            | "PendingUpdate"
+            | "PendingRemove";
+          sessionStateV6?:
+            | "None"
+            | "Idle"
+            | "Connect"
+            | "Active"
+            | "OpenSent"
+            | "OpenConfirm"
+            | "OpenReceived"
+            | "Established"
+            | "PendingAdd"
+            | "PendingUpdate"
+            | "PendingRemove";
+          maxPrefixesAdvertisedV4?: number;
+          maxPrefixesAdvertisedV6?: number;
+          md5AuthenticationKey?: string;
+        };
+        connectionIdentifier?: string;
+        errorMessage?: string;
+      }[];
+      peerAsn?: { id?: string };
+    };
+    connectivityProbes?: {
+      endpoint?: string;
+      azureRegion?: string;
+      protocol?: "None" | "ICMP" | "TCP";
+      prefixesToAccesslist?: string[];
+    }[];
+    peeringLocation?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+  };
+  sku: {
+    name?: string;
+    tier?: "Basic" | "Premium";
+    family?: "Direct" | "Exchange";
+    size?: "Free" | "Metered" | "Unlimited";
+  };
+  kind: "Direct" | "Exchange";
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PeeringsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1080,11 +1478,22 @@ export const PeeringsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringsCreateOrUpdateInput =
-  typeof PeeringsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PeeringsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PeeringsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PeeringsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1104,9 +1513,7 @@ export const PeeringsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PeeringsCreateOrUpdateOutput =
-  typeof PeeringsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PeeringsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1124,6 +1531,11 @@ export const PeeringsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+}
 export const PeeringsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1134,12 +1546,12 @@ export const PeeringsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type PeeringsDeleteInput = typeof PeeringsDeleteInput.Type;
+) as unknown as Schema.Codec<PeeringsDeleteInput>;
 
 // Output Schema
-export const PeeringsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PeeringsDeleteOutput = typeof PeeringsDeleteOutput.Type;
+export type PeeringsDeleteOutput = void;
+export const PeeringsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PeeringsDeleteOutput>;
 
 // The operation
 /**
@@ -1155,6 +1567,9 @@ export const PeeringsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PeeringsDeleteOutput,
 }));
 // Input Schema
+export interface PeeringServiceCountriesListInput {
+  subscriptionId: string;
+}
 export const PeeringServiceCountriesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1164,11 +1579,25 @@ export const PeeringServiceCountriesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceCountries",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServiceCountriesListInput =
-  typeof PeeringServiceCountriesListInput.Type;
+  ) as unknown as Schema.Codec<PeeringServiceCountriesListInput>;
 
 // Output Schema
+export interface PeeringServiceCountriesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeeringServiceCountriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1203,9 +1632,7 @@ export const PeeringServiceCountriesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeeringServiceCountriesListOutput =
-  typeof PeeringServiceCountriesListOutput.Type;
+  }) as unknown as Schema.Codec<PeeringServiceCountriesListOutput>;
 
 // The operation
 /**
@@ -1221,6 +1648,10 @@ export const PeeringServiceCountriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringServiceLocationsListInput {
+  subscriptionId: string;
+  country?: string;
+}
 export const PeeringServiceLocationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1231,11 +1662,25 @@ export const PeeringServiceLocationsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceLocations",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServiceLocationsListInput =
-  typeof PeeringServiceLocationsListInput.Type;
+  ) as unknown as Schema.Codec<PeeringServiceLocationsListInput>;
 
 // Output Schema
+export interface PeeringServiceLocationsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeeringServiceLocationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1270,9 +1715,7 @@ export const PeeringServiceLocationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeeringServiceLocationsListOutput =
-  typeof PeeringServiceLocationsListOutput.Type;
+  }) as unknown as Schema.Codec<PeeringServiceLocationsListOutput>;
 
 // The operation
 /**
@@ -1289,6 +1732,9 @@ export const PeeringServiceLocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringServiceProvidersListInput {
+  subscriptionId: string;
+}
 export const PeeringServiceProvidersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1298,11 +1744,25 @@ export const PeeringServiceProvidersListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceProviders",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServiceProvidersListInput =
-  typeof PeeringServiceProvidersListInput.Type;
+  ) as unknown as Schema.Codec<PeeringServiceProvidersListInput>;
 
 // Output Schema
+export interface PeeringServiceProvidersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeeringServiceProvidersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1337,9 +1797,7 @@ export const PeeringServiceProvidersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeeringServiceProvidersListOutput =
-  typeof PeeringServiceProvidersListOutput.Type;
+  }) as unknown as Schema.Codec<PeeringServiceProvidersListOutput>;
 
 // The operation
 /**
@@ -1355,6 +1813,31 @@ export const PeeringServiceProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  properties?: {
+    peeringServiceLocation?: string;
+    peeringServiceProvider?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    providerPrimaryPeeringLocation?: string;
+    providerBackupPeeringLocation?: string;
+    logAnalyticsWorkspaceProperties?: {
+      workspaceID?: string;
+      key?: string;
+      connectedAgents?: string[];
+    };
+  };
+  sku?: { name?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PeeringServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1397,11 +1880,22 @@ export const PeeringServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServicesCreateOrUpdateInput =
-  typeof PeeringServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PeeringServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PeeringServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PeeringServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1421,9 +1915,7 @@ export const PeeringServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PeeringServicesCreateOrUpdateOutput =
-  typeof PeeringServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PeeringServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1440,6 +1932,11 @@ export const PeeringServicesCreateOrUpdate =
     outputSchema: PeeringServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PeeringServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+}
 export const PeeringServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1451,14 +1948,12 @@ export const PeeringServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServicesDeleteInput = typeof PeeringServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<PeeringServicesDeleteInput>;
 
 // Output Schema
+export type PeeringServicesDeleteOutput = void;
 export const PeeringServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PeeringServicesDeleteOutput =
-  typeof PeeringServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PeeringServicesDeleteOutput>;
 
 // The operation
 /**
@@ -1476,6 +1971,11 @@ export const PeeringServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+}
 export const PeeringServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1487,10 +1987,22 @@ export const PeeringServicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServicesGetInput = typeof PeeringServicesGetInput.Type;
+  ) as unknown as Schema.Codec<PeeringServicesGetInput>;
 
 // Output Schema
+export interface PeeringServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PeeringServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1510,8 +2022,7 @@ export const PeeringServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PeeringServicesGetOutput = typeof PeeringServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<PeeringServicesGetOutput>;
 
 // The operation
 /**
@@ -1527,6 +2038,9 @@ export const PeeringServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PeeringServicesGetOutput,
 }));
 // Input Schema
+export interface PeeringServicesInitializeConnectionMonitorInput {
+  subscriptionId: string;
+}
 export const PeeringServicesInitializeConnectionMonitorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1536,15 +2050,12 @@ export const PeeringServicesInitializeConnectionMonitorInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/initializeConnectionMonitor",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServicesInitializeConnectionMonitorInput =
-  typeof PeeringServicesInitializeConnectionMonitorInput.Type;
+  ) as unknown as Schema.Codec<PeeringServicesInitializeConnectionMonitorInput>;
 
 // Output Schema
+export type PeeringServicesInitializeConnectionMonitorOutput = void;
 export const PeeringServicesInitializeConnectionMonitorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PeeringServicesInitializeConnectionMonitorOutput =
-  typeof PeeringServicesInitializeConnectionMonitorOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PeeringServicesInitializeConnectionMonitorOutput>;
 
 // The operation
 /**
@@ -1559,6 +2070,10 @@ export const PeeringServicesInitializeConnectionMonitor =
     outputSchema: PeeringServicesInitializeConnectionMonitorOutput,
   }));
 // Input Schema
+export interface PeeringServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PeeringServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1569,11 +2084,25 @@ export const PeeringServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServicesListByResourceGroupInput =
-  typeof PeeringServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PeeringServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface PeeringServicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeeringServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1608,9 +2137,7 @@ export const PeeringServicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeeringServicesListByResourceGroupOutput =
-  typeof PeeringServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PeeringServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1626,6 +2153,9 @@ export const PeeringServicesListByResourceGroup =
     outputSchema: PeeringServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PeeringServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PeeringServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1635,11 +2165,25 @@ export const PeeringServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServices",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServicesListBySubscriptionInput =
-  typeof PeeringServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PeeringServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface PeeringServicesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeeringServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1674,9 +2218,7 @@ export const PeeringServicesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeeringServicesListBySubscriptionOutput =
-  typeof PeeringServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PeeringServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1691,6 +2233,12 @@ export const PeeringServicesListBySubscription =
     outputSchema: PeeringServicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PeeringServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  tags?: Record<string, string>;
+}
 export const PeeringServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1703,10 +2251,22 @@ export const PeeringServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringServicesUpdateInput = typeof PeeringServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<PeeringServicesUpdateInput>;
 
 // Output Schema
+export interface PeeringServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PeeringServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1726,9 +2286,7 @@ export const PeeringServicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PeeringServicesUpdateOutput =
-  typeof PeeringServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PeeringServicesUpdateOutput>;
 
 // The operation
 /**
@@ -1746,6 +2304,11 @@ export const PeeringServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+}
 export const PeeringsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1756,10 +2319,22 @@ export const PeeringsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type PeeringsGetInput = typeof PeeringsGetInput.Type;
+) as unknown as Schema.Codec<PeeringsGetInput>;
 
 // Output Schema
+export interface PeeringsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PeeringsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1778,8 +2353,7 @@ export const PeeringsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PeeringsGetOutput = typeof PeeringsGetOutput.Type;
+}) as unknown as Schema.Codec<PeeringsGetOutput>;
 
 // The operation
 /**
@@ -1795,6 +2369,10 @@ export const PeeringsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PeeringsGetOutput,
 }));
 // Input Schema
+export interface PeeringsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PeeringsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1805,11 +2383,25 @@ export const PeeringsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringsListByResourceGroupInput =
-  typeof PeeringsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PeeringsListByResourceGroupInput>;
 
 // Output Schema
+export interface PeeringsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeeringsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1844,9 +2436,7 @@ export const PeeringsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeeringsListByResourceGroupOutput =
-  typeof PeeringsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PeeringsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1863,6 +2453,9 @@ export const PeeringsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PeeringsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1872,11 +2465,25 @@ export const PeeringsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerings",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PeeringsListBySubscriptionInput =
-  typeof PeeringsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PeeringsListBySubscriptionInput>;
 
 // Output Schema
+export interface PeeringsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PeeringsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1911,9 +2518,7 @@ export const PeeringsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PeeringsListBySubscriptionOutput =
-  typeof PeeringsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PeeringsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1929,6 +2534,12 @@ export const PeeringsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PeeringsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  tags?: Record<string, string>;
+}
 export const PeeringsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1940,10 +2551,22 @@ export const PeeringsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type PeeringsUpdateInput = typeof PeeringsUpdateInput.Type;
+) as unknown as Schema.Codec<PeeringsUpdateInput>;
 
 // Output Schema
+export interface PeeringsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PeeringsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1962,8 +2585,7 @@ export const PeeringsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PeeringsUpdateOutput = typeof PeeringsUpdateOutput.Type;
+}) as unknown as Schema.Codec<PeeringsUpdateOutput>;
 
 // The operation
 /**
@@ -1979,6 +2601,39 @@ export const PeeringsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PeeringsUpdateOutput,
 }));
 // Input Schema
+export interface PrefixesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  prefixName: string;
+  properties?: {
+    prefix?: string;
+    prefixValidationState?:
+      | "None"
+      | "Invalid"
+      | "Verified"
+      | "Failed"
+      | "Pending"
+      | "Warning"
+      | "Unknown";
+    learnedType?: "None" | "ViaServiceProvider" | "ViaSession";
+    errorMessage?: string;
+    events?: {
+      eventTimestamp?: string;
+      eventType?: string;
+      eventSummary?: string;
+      eventLevel?: string;
+      eventDescription?: string;
+    }[];
+    peeringServicePrefixKey?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+  };
+}
 export const PrefixesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2032,11 +2687,22 @@ export const PrefixesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PrefixesCreateOrUpdateInput =
-  typeof PrefixesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrefixesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrefixesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrefixesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2056,9 +2722,7 @@ export const PrefixesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrefixesCreateOrUpdateOutput =
-  typeof PrefixesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrefixesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2077,6 +2741,12 @@ export const PrefixesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrefixesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  prefixName: string;
+}
 export const PrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2088,12 +2758,12 @@ export const PrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type PrefixesDeleteInput = typeof PrefixesDeleteInput.Type;
+) as unknown as Schema.Codec<PrefixesDeleteInput>;
 
 // Output Schema
-export const PrefixesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrefixesDeleteOutput = typeof PrefixesDeleteOutput.Type;
+export type PrefixesDeleteOutput = void;
+export const PrefixesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrefixesDeleteOutput>;
 
 // The operation
 /**
@@ -2110,6 +2780,13 @@ export const PrefixesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrefixesDeleteOutput,
 }));
 // Input Schema
+export interface PrefixesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  prefixName: string;
+  $expand?: string;
+}
 export const PrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2122,10 +2799,22 @@ export const PrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type PrefixesGetInput = typeof PrefixesGetInput.Type;
+) as unknown as Schema.Codec<PrefixesGetInput>;
 
 // Output Schema
+export interface PrefixesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2144,8 +2833,7 @@ export const PrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PrefixesGetOutput = typeof PrefixesGetOutput.Type;
+}) as unknown as Schema.Codec<PrefixesGetOutput>;
 
 // The operation
 /**
@@ -2163,6 +2851,12 @@ export const PrefixesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrefixesGetOutput,
 }));
 // Input Schema
+export interface PrefixesListByPeeringServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringServiceName: string;
+  $expand?: string;
+}
 export const PrefixesListByPeeringServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2175,11 +2869,25 @@ export const PrefixesListByPeeringServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes",
       apiVersion: "2025-05-01",
     }),
-  );
-export type PrefixesListByPeeringServiceInput =
-  typeof PrefixesListByPeeringServiceInput.Type;
+  ) as unknown as Schema.Codec<PrefixesListByPeeringServiceInput>;
 
 // Output Schema
+export interface PrefixesListByPeeringServiceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrefixesListByPeeringServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2214,9 +2922,7 @@ export const PrefixesListByPeeringServiceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrefixesListByPeeringServiceOutput =
-  typeof PrefixesListByPeeringServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrefixesListByPeeringServiceOutput>;
 
 // The operation
 /**
@@ -2234,6 +2940,16 @@ export const PrefixesListByPeeringService =
     outputSchema: PrefixesListByPeeringServiceOutput,
   }));
 // Input Schema
+export interface ReceivedRoutesListByPeeringInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  prefix?: string;
+  asPath?: string;
+  originAsValidationState?: string;
+  rpkiValidationState?: string;
+  $skipToken?: string;
+}
 export const ReceivedRoutesListByPeeringInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2250,11 +2966,21 @@ export const ReceivedRoutesListByPeeringInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/receivedRoutes",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ReceivedRoutesListByPeeringInput =
-  typeof ReceivedRoutesListByPeeringInput.Type;
+  ) as unknown as Schema.Codec<ReceivedRoutesListByPeeringInput>;
 
 // Output Schema
+export interface ReceivedRoutesListByPeeringOutput {
+  value: {
+    prefix?: string;
+    nextHop?: string;
+    asPath?: string;
+    originAsValidationState?: string;
+    rpkiValidationState?: string;
+    trustAnchor?: string;
+    receivedTimestamp?: string;
+  }[];
+  nextLink?: string;
+}
 export const ReceivedRoutesListByPeeringOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2269,9 +2995,7 @@ export const ReceivedRoutesListByPeeringOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReceivedRoutesListByPeeringOutput =
-  typeof ReceivedRoutesListByPeeringOutput.Type;
+  }) as unknown as Schema.Codec<ReceivedRoutesListByPeeringOutput>;
 
 // The operation
 /**
@@ -2294,6 +3018,22 @@ export const ReceivedRoutesListByPeering = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegisteredAsnsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  registeredAsnName: string;
+  properties?: {
+    asn?: number;
+    peeringServicePrefixKey?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+  };
+}
 export const RegisteredAsnsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2321,11 +3061,22 @@ export const RegisteredAsnsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RegisteredAsnsCreateOrUpdateInput =
-  typeof RegisteredAsnsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegisteredAsnsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegisteredAsnsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegisteredAsnsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2345,9 +3096,7 @@ export const RegisteredAsnsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegisteredAsnsCreateOrUpdateOutput =
-  typeof RegisteredAsnsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegisteredAsnsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2365,6 +3114,12 @@ export const RegisteredAsnsCreateOrUpdate =
     outputSchema: RegisteredAsnsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegisteredAsnsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  registeredAsnName: string;
+}
 export const RegisteredAsnsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2377,13 +3132,12 @@ export const RegisteredAsnsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RegisteredAsnsDeleteInput = typeof RegisteredAsnsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegisteredAsnsDeleteInput>;
 
 // Output Schema
+export type RegisteredAsnsDeleteOutput = void;
 export const RegisteredAsnsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegisteredAsnsDeleteOutput = typeof RegisteredAsnsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegisteredAsnsDeleteOutput>;
 
 // The operation
 /**
@@ -2402,6 +3156,12 @@ export const RegisteredAsnsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegisteredAsnsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  registeredAsnName: string;
+}
 export const RegisteredAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2415,10 +3175,22 @@ export const RegisteredAsnsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type RegisteredAsnsGetInput = typeof RegisteredAsnsGetInput.Type;
+) as unknown as Schema.Codec<RegisteredAsnsGetInput>;
 
 // Output Schema
+export interface RegisteredAsnsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegisteredAsnsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2438,8 +3210,7 @@ export const RegisteredAsnsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegisteredAsnsGetOutput = typeof RegisteredAsnsGetOutput.Type;
+  }) as unknown as Schema.Codec<RegisteredAsnsGetOutput>;
 
 // The operation
 /**
@@ -2456,6 +3227,11 @@ export const RegisteredAsnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegisteredAsnsGetOutput,
 }));
 // Input Schema
+export interface RegisteredAsnsListByPeeringInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+}
 export const RegisteredAsnsListByPeeringInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2467,11 +3243,25 @@ export const RegisteredAsnsListByPeeringInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RegisteredAsnsListByPeeringInput =
-  typeof RegisteredAsnsListByPeeringInput.Type;
+  ) as unknown as Schema.Codec<RegisteredAsnsListByPeeringInput>;
 
 // Output Schema
+export interface RegisteredAsnsListByPeeringOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegisteredAsnsListByPeeringOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2506,9 +3296,7 @@ export const RegisteredAsnsListByPeeringOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegisteredAsnsListByPeeringOutput =
-  typeof RegisteredAsnsListByPeeringOutput.Type;
+  }) as unknown as Schema.Codec<RegisteredAsnsListByPeeringOutput>;
 
 // The operation
 /**
@@ -2526,6 +3314,31 @@ export const RegisteredAsnsListByPeering = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegisteredPrefixesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  registeredPrefixName: string;
+  properties?: {
+    prefix?: string;
+    prefixValidationState?:
+      | "None"
+      | "Invalid"
+      | "Verified"
+      | "Failed"
+      | "Pending"
+      | "Warning"
+      | "Unknown";
+    peeringServicePrefixKey?: string;
+    errorMessage?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+  };
+}
 export const RegisteredPrefixesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2565,11 +3378,22 @@ export const RegisteredPrefixesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RegisteredPrefixesCreateOrUpdateInput =
-  typeof RegisteredPrefixesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegisteredPrefixesCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegisteredPrefixesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegisteredPrefixesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2589,9 +3413,7 @@ export const RegisteredPrefixesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegisteredPrefixesCreateOrUpdateOutput =
-  typeof RegisteredPrefixesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegisteredPrefixesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2609,6 +3431,12 @@ export const RegisteredPrefixesCreateOrUpdate =
     outputSchema: RegisteredPrefixesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegisteredPrefixesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  registeredPrefixName: string;
+}
 export const RegisteredPrefixesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2621,15 +3449,12 @@ export const RegisteredPrefixesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RegisteredPrefixesDeleteInput =
-  typeof RegisteredPrefixesDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegisteredPrefixesDeleteInput>;
 
 // Output Schema
+export type RegisteredPrefixesDeleteOutput = void;
 export const RegisteredPrefixesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegisteredPrefixesDeleteOutput =
-  typeof RegisteredPrefixesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegisteredPrefixesDeleteOutput>;
 
 // The operation
 /**
@@ -2648,6 +3473,12 @@ export const RegisteredPrefixesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegisteredPrefixesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  registeredPrefixName: string;
+}
 export const RegisteredPrefixesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2660,10 +3491,22 @@ export const RegisteredPrefixesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RegisteredPrefixesGetInput = typeof RegisteredPrefixesGetInput.Type;
+  ) as unknown as Schema.Codec<RegisteredPrefixesGetInput>;
 
 // Output Schema
+export interface RegisteredPrefixesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegisteredPrefixesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2683,9 +3526,7 @@ export const RegisteredPrefixesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegisteredPrefixesGetOutput =
-  typeof RegisteredPrefixesGetOutput.Type;
+  }) as unknown as Schema.Codec<RegisteredPrefixesGetOutput>;
 
 // The operation
 /**
@@ -2704,6 +3545,11 @@ export const RegisteredPrefixesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegisteredPrefixesListByPeeringInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+}
 export const RegisteredPrefixesListByPeeringInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2715,11 +3561,25 @@ export const RegisteredPrefixesListByPeeringInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RegisteredPrefixesListByPeeringInput =
-  typeof RegisteredPrefixesListByPeeringInput.Type;
+  ) as unknown as Schema.Codec<RegisteredPrefixesListByPeeringInput>;
 
 // Output Schema
+export interface RegisteredPrefixesListByPeeringOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegisteredPrefixesListByPeeringOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2754,9 +3614,7 @@ export const RegisteredPrefixesListByPeeringOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegisteredPrefixesListByPeeringOutput =
-  typeof RegisteredPrefixesListByPeeringOutput.Type;
+  }) as unknown as Schema.Codec<RegisteredPrefixesListByPeeringOutput>;
 
 // The operation
 /**
@@ -2773,6 +3631,12 @@ export const RegisteredPrefixesListByPeering =
     outputSchema: RegisteredPrefixesListByPeeringOutput,
   }));
 // Input Schema
+export interface RegisteredPrefixesValidateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  registeredPrefixName: string;
+}
 export const RegisteredPrefixesValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2785,11 +3649,22 @@ export const RegisteredPrefixesValidateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}/validate",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RegisteredPrefixesValidateInput =
-  typeof RegisteredPrefixesValidateInput.Type;
+  ) as unknown as Schema.Codec<RegisteredPrefixesValidateInput>;
 
 // Output Schema
+export interface RegisteredPrefixesValidateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegisteredPrefixesValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2809,9 +3684,7 @@ export const RegisteredPrefixesValidateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegisteredPrefixesValidateOutput =
-  typeof RegisteredPrefixesValidateOutput.Type;
+  }) as unknown as Schema.Codec<RegisteredPrefixesValidateOutput>;
 
 // The operation
 /**
@@ -2830,6 +3703,12 @@ export const RegisteredPrefixesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RpUnbilledPrefixesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  peeringName: string;
+  consolidate?: boolean;
+}
 export const RpUnbilledPrefixesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2842,11 +3721,13 @@ export const RpUnbilledPrefixesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/rpUnbilledPrefixes",
       apiVersion: "2025-05-01",
     }),
-  );
-export type RpUnbilledPrefixesListInput =
-  typeof RpUnbilledPrefixesListInput.Type;
+  ) as unknown as Schema.Codec<RpUnbilledPrefixesListInput>;
 
 // Output Schema
+export interface RpUnbilledPrefixesListOutput {
+  value: { prefix?: string; azureRegion?: string; peerAsn?: number }[];
+  nextLink?: string;
+}
 export const RpUnbilledPrefixesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2857,9 +3738,7 @@ export const RpUnbilledPrefixesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RpUnbilledPrefixesListOutput =
-  typeof RpUnbilledPrefixesListOutput.Type;
+  }) as unknown as Schema.Codec<RpUnbilledPrefixesListOutput>;
 
 // The operation
 /**

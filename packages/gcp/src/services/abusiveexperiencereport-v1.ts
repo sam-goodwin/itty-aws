@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -45,7 +45,7 @@ export interface SiteSummaryResponse {
   lastChangeTime?: string;
 }
 
-export const SiteSummaryResponse: Schema.Schema<SiteSummaryResponse> =
+export const SiteSummaryResponse: Schema.Codec<SiteSummaryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforcementTime: Schema.optional(Schema.String),
     reportUrl: Schema.optional(Schema.String),
@@ -61,7 +61,7 @@ export interface ViolatingSitesResponse {
   violatingSites?: ReadonlyArray<SiteSummaryResponse>;
 }
 
-export const ViolatingSitesResponse: Schema.Schema<ViolatingSitesResponse> =
+export const ViolatingSitesResponse: Schema.Codec<ViolatingSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     violatingSites: Schema.optional(Schema.Array(SiteSummaryResponse)),
   }).annotate({ identifier: "ViolatingSitesResponse" });
@@ -107,7 +107,7 @@ export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetSitesRequest>;
+) as unknown as Schema.Codec<GetSitesRequest>;
 
 export type GetSitesResponse = SiteSummaryResponse;
 export const GetSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SiteSummaryResponse;
@@ -132,7 +132,7 @@ export const ListViolatingSitesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v1/violatingSites" }),
     svc,
-  ) as unknown as Schema.Schema<ListViolatingSitesRequest>;
+  ) as unknown as Schema.Codec<ListViolatingSitesRequest>;
 
 export type ListViolatingSitesResponse = ViolatingSitesResponse;
 export const ListViolatingSitesResponse =

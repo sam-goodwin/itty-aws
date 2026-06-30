@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupPrivateEndpointEndpointServiceInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupPrivateEndpointEndpointServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const CreateGroupPrivateEndpointEndpointServiceInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService",
     }),
-  );
-export type CreateGroupPrivateEndpointEndpointServiceInput =
-  typeof CreateGroupPrivateEndpointEndpointServiceInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupPrivateEndpointEndpointServiceInput>;
 
 // Output Schema
+export type CreateGroupPrivateEndpointEndpointServiceOutput = void;
 export const CreateGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupPrivateEndpointEndpointServiceOutput =
-  typeof CreateGroupPrivateEndpointEndpointServiceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupPrivateEndpointEndpointServiceOutput>;
 
 // The operation
 /**

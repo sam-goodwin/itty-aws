@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsModelsInput {
+  project_id: string;
+}
 export const AgentApplicationsModelsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,26 @@ export const AgentApplicationsModelsInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/models/",
     }),
-  );
-export type AgentApplicationsModelsInput =
-  typeof AgentApplicationsModelsInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsModelsInput>;
 
 // Output Schema
+export interface AgentApplicationsModelsOutput {
+  id: string;
+  team_id: number;
+  name: string;
+  slug?: string;
+  description?: string;
+  live_revision: string | null;
+  archived?: boolean;
+  archived_at: string | null;
+  created_by_id: number | null;
+  created_by: { id?: number; first_name?: string; email?: string } | null;
+  created_at: string;
+  updated_at: string;
+  slack_events_url: string | null;
+  slack_interactivity_url: string | null;
+  ingress_base_url: string | null;
+}
 export const AgentApplicationsModelsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -39,9 +57,7 @@ export const AgentApplicationsModelsOutput =
     slack_events_url: Schema.NullOr(Schema.String),
     slack_interactivity_url: Schema.NullOr(Schema.String),
     ingress_base_url: Schema.NullOr(Schema.String),
-  });
-export type AgentApplicationsModelsOutput =
-  typeof AgentApplicationsModelsOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsModelsOutput>;
 
 // The operation
 /**

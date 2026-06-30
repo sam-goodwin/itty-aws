@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MessagingTemplatesRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const MessagingTemplatesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,59 @@ export const MessagingTemplatesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/messaging_templates/{id}/",
     }),
-  );
-export type MessagingTemplatesRetrieveInput =
-  typeof MessagingTemplatesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MessagingTemplatesRetrieveInput>;
 
 // Output Schema
+export interface MessagingTemplatesRetrieveOutput {
+  id: string;
+  name: string;
+  description?: string;
+  created_at: string;
+  updated_at: string;
+  content?: {
+    templating?: "liquid";
+    email?: {
+      subject?: string;
+      text?: string;
+      html?: string;
+      design?: {
+        counters?: unknown;
+        schemaVersion: number;
+        body: {
+          id?: string;
+          rows: unknown[];
+          headers?: unknown[];
+          footers?: unknown[];
+          values?: unknown;
+        };
+      };
+    } | null;
+  };
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  type?: string;
+  message_category?: string | null;
+  deleted?: boolean;
+}
 export const MessagingTemplatesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -27,7 +79,28 @@ export const MessagingTemplatesRetrieveOutput =
     content: Schema.optional(
       Schema.Struct({
         templating: Schema.optional(Schema.Literals(["liquid"])),
-        email: Schema.optional(Schema.Unknown),
+        email: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              subject: Schema.optional(Schema.String),
+              text: Schema.optional(Schema.String),
+              html: Schema.optional(Schema.String),
+              design: Schema.optional(
+                Schema.Struct({
+                  counters: Schema.optional(Schema.Unknown),
+                  schemaVersion: Schema.Number,
+                  body: Schema.Struct({
+                    id: Schema.optional(Schema.String),
+                    rows: Schema.Array(Schema.Unknown),
+                    headers: Schema.optional(Schema.Array(Schema.Unknown)),
+                    footers: Schema.optional(Schema.Array(Schema.Unknown)),
+                    values: Schema.optional(Schema.Unknown),
+                  }),
+                }),
+              ),
+            }),
+          ),
+        ),
       }),
     ),
     created_by: Schema.Struct({
@@ -41,14 +114,28 @@ export const MessagingTemplatesRetrieveOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     type: Schema.optional(Schema.String),
     message_category: Schema.optional(Schema.NullOr(Schema.String)),
     deleted: Schema.optional(Schema.Boolean),
-  });
-export type MessagingTemplatesRetrieveOutput =
-  typeof MessagingTemplatesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MessagingTemplatesRetrieveOutput>;
 
 // The operation
 /**

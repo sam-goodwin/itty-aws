@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupStreamVpcPeeringConnectionInput {
+  groupId: string;
+  id: string;
+  envelope?: boolean;
+}
 export const DeleteGroupStreamVpcPeeringConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const DeleteGroupStreamVpcPeeringConnectionInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}",
     }),
-  );
-export type DeleteGroupStreamVpcPeeringConnectionInput =
-  typeof DeleteGroupStreamVpcPeeringConnectionInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupStreamVpcPeeringConnectionInput>;
 
 // Output Schema
+export type DeleteGroupStreamVpcPeeringConnectionOutput = void;
 export const DeleteGroupStreamVpcPeeringConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupStreamVpcPeeringConnectionOutput =
-  typeof DeleteGroupStreamVpcPeeringConnectionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamVpcPeeringConnectionOutput>;
 
 // The operation
 /**

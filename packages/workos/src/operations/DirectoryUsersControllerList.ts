@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DirectoryUsersControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  directory?: string;
+  group?: string;
+  idp_id?: string;
+  email?: string;
+}
 export const DirectoryUsersControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -14,11 +24,47 @@ export const DirectoryUsersControllerListInput =
     group: Schema.optional(Schema.String),
     idp_id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/directory_users" }));
-export type DirectoryUsersControllerListInput =
-  typeof DirectoryUsersControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/directory_users" }),
+  ) as unknown as Schema.Codec<DirectoryUsersControllerListInput>;
 
 // Output Schema
+export interface DirectoryUsersControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    directory_id?: string;
+    organization_id?: string;
+    idp_id?: string;
+    email?: string | null;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    emails?: { primary?: boolean; type?: string; value?: string | null }[];
+    job_title?: string | null;
+    username?: string | null;
+    state?: "active" | "suspended" | "inactive";
+    raw_attributes?: Record<string, unknown>;
+    custom_attributes?: Record<string, unknown>;
+    role?: { slug?: string };
+    roles?: { slug?: string }[];
+    created_at?: string;
+    updated_at?: string;
+    groups?: {
+      object?: string;
+      id?: string;
+      idp_id?: string;
+      directory_id?: string;
+      organization_id?: string;
+      name?: string;
+      raw_attributes?: Record<string, unknown>;
+      created_at?: string;
+      updated_at?: string;
+    }[];
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const DirectoryUsersControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -94,9 +140,7 @@ export const DirectoryUsersControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type DirectoryUsersControllerListOutput =
-  typeof DirectoryUsersControllerListOutput.Type;
+  }) as unknown as Schema.Codec<DirectoryUsersControllerListOutput>;
 
 // The operation
 /**

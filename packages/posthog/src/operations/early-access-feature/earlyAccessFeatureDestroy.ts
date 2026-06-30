@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EarlyAccessFeatureDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const EarlyAccessFeatureDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const EarlyAccessFeatureDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/early_access_feature/{id}/",
     }),
-  );
-export type EarlyAccessFeatureDestroyInput =
-  typeof EarlyAccessFeatureDestroyInput.Type;
+  ) as unknown as Schema.Codec<EarlyAccessFeatureDestroyInput>;
 
 // Output Schema
+export type EarlyAccessFeatureDestroyOutput = void;
 export const EarlyAccessFeatureDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EarlyAccessFeatureDestroyOutput =
-  typeof EarlyAccessFeatureDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EarlyAccessFeatureDestroyOutput>;
 
 // The operation
 /**

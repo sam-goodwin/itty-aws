@@ -4,14 +4,29 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1ProjectsByIdInput {
+  id: string;
+}
 export const GetV1ProjectsByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String.pipe(T.PathParam()),
   },
-).pipe(T.Http({ method: "GET", path: "/v1/projects/{id}" }));
-export type GetV1ProjectsByIdInput = typeof GetV1ProjectsByIdInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v1/projects/{id}" }),
+) as unknown as Schema.Codec<GetV1ProjectsByIdInput>;
 
 // Output Schema
+export interface GetV1ProjectsByIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+    defaultRegion: string | null;
+    workspace: { id: string; url: string; name: string };
+  };
+}
 export const GetV1ProjectsByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -27,8 +42,7 @@ export const GetV1ProjectsByIdOutput =
         name: Schema.String,
       }),
     }),
-  });
-export type GetV1ProjectsByIdOutput = typeof GetV1ProjectsByIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1ProjectsByIdOutput>;
 
 // The operation
 /**

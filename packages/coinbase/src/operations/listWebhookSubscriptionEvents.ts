@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListWebhookSubscriptionEventsInput {
+  subscriptionId: string;
+  eventId?: string;
+  minCreatedAt?: string;
+  maxCreatedAt?: string;
+  eventTypeNames?: string;
+}
 export const ListWebhookSubscriptionEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,25 @@ export const ListWebhookSubscriptionEventsInput =
       method: "GET",
       path: "/v2/data/webhooks/subscriptions/{subscriptionId}/events",
     }),
-  );
-export type ListWebhookSubscriptionEventsInput =
-  typeof ListWebhookSubscriptionEventsInput.Type;
+  ) as unknown as Schema.Codec<ListWebhookSubscriptionEventsInput>;
 
 // Output Schema
+export interface ListWebhookSubscriptionEventsOutput {
+  events: {
+    eventId: string;
+    eventTypeName: string;
+    status: "pending" | "processing" | "succeeded" | "failed" | "retrying";
+    createdAt: string;
+    succeededAt?: string;
+    retryCount: number;
+    response?: {
+      httpCode?: number;
+      elapsedTimeMs?: number;
+      body?: string;
+      errorName?: string;
+    };
+  }[];
+}
 export const ListWebhookSubscriptionEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     events: Schema.Array(
@@ -46,9 +67,7 @@ export const ListWebhookSubscriptionEventsOutput =
         ),
       }),
     ),
-  });
-export type ListWebhookSubscriptionEventsOutput =
-  typeof ListWebhookSubscriptionEventsOutput.Type;
+  }) as unknown as Schema.Codec<ListWebhookSubscriptionEventsOutput>;
 
 // The operation
 /**

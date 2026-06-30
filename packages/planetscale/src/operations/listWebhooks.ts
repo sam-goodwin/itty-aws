@@ -3,8 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ListWebhooksInput {
+  organization: string;
+  database: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListWebhooksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -15,10 +22,49 @@ export const ListWebhooksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/webhooks",
   }),
-);
-export type ListWebhooksInput = typeof ListWebhooksInput.Type;
+) as unknown as Schema.Codec<ListWebhooksInput>;
 
 // Output Schema
+export interface ListWebhooksOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    url: string;
+    secret: Redacted.Redacted<string>;
+    enabled: boolean;
+    last_sent_result: string | null;
+    last_sent_success: boolean | null;
+    last_sent_at: string | null;
+    created_at: string;
+    updated_at: string;
+    events: (
+      | "branch.ready"
+      | "branch.anomaly"
+      | "branch.out_of_memory"
+      | "branch.primary_promoted"
+      | "branch.schema_recommendation"
+      | "branch.sleeping"
+      | "branch.start_maintenance"
+      | "cluster.storage"
+      | "database.access_request"
+      | "deploy_request.closed"
+      | "deploy_request.errored"
+      | "deploy_request.in_progress"
+      | "deploy_request.opened"
+      | "deploy_request.pending_cutover"
+      | "deploy_request.queued"
+      | "deploy_request.reverted"
+      | "deploy_request.schema_applied"
+      | "keyspace.storage"
+      | "webhook.test"
+    )[];
+  }[];
+}
 export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
@@ -62,8 +108,7 @@ export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type ListWebhooksOutput = typeof ListWebhooksOutput.Type;
+}) as unknown as Schema.Codec<ListWebhooksOutput>;
 
 // The operation
 /**

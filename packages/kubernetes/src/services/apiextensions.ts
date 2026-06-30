@@ -4,12 +4,180 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateApiextensionsV1CustomResourceDefinitionInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const CreateApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -254,11 +422,173 @@ export const CreateApiextensionsV1CustomResourceDefinitionInput =
       method: "POST",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
     }),
-  );
-export type CreateApiextensionsV1CustomResourceDefinitionInput =
-  typeof CreateApiextensionsV1CustomResourceDefinitionInput.Type;
+  ) as unknown as Schema.Codec<CreateApiextensionsV1CustomResourceDefinitionInput>;
 
 // Output Schema
+export interface CreateApiextensionsV1CustomResourceDefinitionOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const CreateApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -494,9 +824,7 @@ export const CreateApiextensionsV1CustomResourceDefinitionOutput =
         storedVersions: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type CreateApiextensionsV1CustomResourceDefinitionOutput =
-  typeof CreateApiextensionsV1CustomResourceDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<CreateApiextensionsV1CustomResourceDefinitionOutput>;
 
 // The operation
 /**
@@ -514,6 +842,26 @@ export const createApiextensionsV1CustomResourceDefinition =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteApiextensionsV1CollectionCustomResourceDefinitionInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteApiextensionsV1CollectionCustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -546,11 +894,32 @@ export const DeleteApiextensionsV1CollectionCustomResourceDefinitionInput =
       method: "DELETE",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
     }),
-  );
-export type DeleteApiextensionsV1CollectionCustomResourceDefinitionInput =
-  typeof DeleteApiextensionsV1CollectionCustomResourceDefinitionInput.Type;
+  ) as unknown as Schema.Codec<DeleteApiextensionsV1CollectionCustomResourceDefinitionInput>;
 
 // Output Schema
+export interface DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -590,9 +959,7 @@ export const DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput =
-  typeof DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput>;
 
 // The operation
 /**
@@ -661,6 +1028,18 @@ export const deleteApiextensionsV1CollectionCustomResourceDefinition =
     outputSchema: DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput,
   }));
 // Input Schema
+export interface DeleteApiextensionsV1CustomResourceDefinitionInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -685,11 +1064,32 @@ export const DeleteApiextensionsV1CustomResourceDefinitionInput =
       method: "DELETE",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
     }),
-  );
-export type DeleteApiextensionsV1CustomResourceDefinitionInput =
-  typeof DeleteApiextensionsV1CustomResourceDefinitionInput.Type;
+  ) as unknown as Schema.Codec<DeleteApiextensionsV1CustomResourceDefinitionInput>;
 
 // Output Schema
+export interface DeleteApiextensionsV1CustomResourceDefinitionOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -729,9 +1129,7 @@ export const DeleteApiextensionsV1CustomResourceDefinitionOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteApiextensionsV1CustomResourceDefinitionOutput =
-  typeof DeleteApiextensionsV1CustomResourceDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<DeleteApiextensionsV1CustomResourceDefinitionOutput>;
 
 // The operation
 /**
@@ -752,14 +1150,21 @@ export const deleteApiextensionsV1CustomResourceDefinition =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetApiextensionsAPIGroupInput {}
 export const GetApiextensionsAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apiextensions.k8s.io/" }),
-  );
-export type GetApiextensionsAPIGroupInput =
-  typeof GetApiextensionsAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetApiextensionsAPIGroupInput>;
 
 // Output Schema
+export interface GetApiextensionsAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetApiextensionsAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -785,9 +1190,7 @@ export const GetApiextensionsAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetApiextensionsAPIGroupOutput =
-  typeof GetApiextensionsAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetApiextensionsAPIGroupOutput>;
 
 // The operation
 /**
@@ -800,14 +1203,30 @@ export const getApiextensionsAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetApiextensionsV1APIResourcesInput {}
 export const GetApiextensionsV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apiextensions.k8s.io/v1/" }),
-  );
-export type GetApiextensionsV1APIResourcesInput =
-  typeof GetApiextensionsV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetApiextensionsV1APIResourcesInput>;
 
 // Output Schema
+export interface GetApiextensionsV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetApiextensionsV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -827,9 +1246,7 @@ export const GetApiextensionsV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetApiextensionsV1APIResourcesOutput =
-  typeof GetApiextensionsV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetApiextensionsV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -841,6 +1258,20 @@ export const getApiextensionsV1APIResources =
     outputSchema: GetApiextensionsV1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListApiextensionsV1CustomResourceDefinitionInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -860,11 +1291,184 @@ export const ListApiextensionsV1CustomResourceDefinitionInput =
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
     }),
-  );
-export type ListApiextensionsV1CustomResourceDefinitionInput =
-  typeof ListApiextensionsV1CustomResourceDefinitionInput.Type;
+  ) as unknown as Schema.Codec<ListApiextensionsV1CustomResourceDefinitionInput>;
 
 // Output Schema
+export interface ListApiextensionsV1CustomResourceDefinitionOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      conversion?: {
+        strategy: string;
+        webhook?: {
+          clientConfig?: {
+            caBundle?: string;
+            service?: {
+              name: string;
+              namespace: string;
+              path?: string;
+              port?: number;
+            };
+            url?: string;
+          };
+          conversionReviewVersions: string[];
+        };
+      };
+      group: string;
+      names: {
+        categories?: string[];
+        kind: string;
+        listKind?: string;
+        plural: string;
+        shortNames?: string[];
+        singular?: string;
+      };
+      preserveUnknownFields?: boolean;
+      scope: string;
+      versions: {
+        additionalPrinterColumns?: {
+          description?: string;
+          format?: string;
+          jsonPath: string;
+          name: string;
+          priority?: number;
+          type: string;
+        }[];
+        deprecated?: boolean;
+        deprecationWarning?: string;
+        name: string;
+        schema?: {
+          openAPIV3Schema?: {
+            $ref?: string;
+            $schema?: string;
+            additionalItems?: unknown;
+            additionalProperties?: unknown;
+            allOf?: unknown[];
+            anyOf?: unknown[];
+            default?: unknown;
+            definitions?: Record<string, unknown>;
+            dependencies?: Record<string, unknown>;
+            description?: string;
+            enum?: unknown[];
+            example?: unknown;
+            exclusiveMaximum?: boolean;
+            exclusiveMinimum?: boolean;
+            externalDocs?: { description?: string; url?: string };
+            format?: string;
+            id?: string;
+            items?: unknown;
+            maxItems?: number;
+            maxLength?: number;
+            maxProperties?: number;
+            maximum?: number;
+            minItems?: number;
+            minLength?: number;
+            minProperties?: number;
+            minimum?: number;
+            multipleOf?: number;
+            not?: unknown;
+            nullable?: boolean;
+            oneOf?: unknown[];
+            pattern?: string;
+            patternProperties?: Record<string, unknown>;
+            properties?: Record<string, unknown>;
+            required?: string[];
+            title?: string;
+            type?: string;
+            uniqueItems?: boolean;
+            "x-kubernetes-embedded-resource"?: boolean;
+            "x-kubernetes-int-or-string"?: boolean;
+            "x-kubernetes-list-map-keys"?: string[];
+            "x-kubernetes-list-type"?: string;
+            "x-kubernetes-map-type"?: string;
+            "x-kubernetes-preserve-unknown-fields"?: boolean;
+            "x-kubernetes-validations"?: {
+              fieldPath?: string;
+              message?: string;
+              messageExpression?: string;
+              optionalOldSelf?: boolean;
+              reason?: string;
+              rule: string;
+            }[];
+          };
+        };
+        selectableFields?: { jsonPath: string }[];
+        served: boolean;
+        storage: boolean;
+        subresources?: {
+          scale?: {
+            labelSelectorPath?: string;
+            specReplicasPath: string;
+            statusReplicasPath: string;
+          };
+          status?: unknown;
+        };
+      }[];
+    };
+    status?: {
+      acceptedNames?: {
+        categories?: string[];
+        kind: string;
+        listKind?: string;
+        plural: string;
+        shortNames?: string[];
+        singular?: string;
+      };
+      conditions?: {
+        lastTransitionTime?: string;
+        message?: string;
+        observedGeneration?: number;
+        reason?: string;
+        status: string;
+        type: string;
+      }[];
+      observedGeneration?: number;
+      storedVersions?: string[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1123,9 +1727,7 @@ export const ListApiextensionsV1CustomResourceDefinitionOutput =
         ),
       }),
     ),
-  });
-export type ListApiextensionsV1CustomResourceDefinitionOutput =
-  typeof ListApiextensionsV1CustomResourceDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<ListApiextensionsV1CustomResourceDefinitionOutput>;
 
 // The operation
 /**
@@ -1191,6 +1793,14 @@ export const listApiextensionsV1CustomResourceDefinition =
     outputSchema: ListApiextensionsV1CustomResourceDefinitionOutput,
   }));
 // Input Schema
+export interface PatchApiextensionsV1CustomResourceDefinitionInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1204,11 +1814,173 @@ export const PatchApiextensionsV1CustomResourceDefinitionInput =
       method: "PATCH",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
     }),
-  );
-export type PatchApiextensionsV1CustomResourceDefinitionInput =
-  typeof PatchApiextensionsV1CustomResourceDefinitionInput.Type;
+  ) as unknown as Schema.Codec<PatchApiextensionsV1CustomResourceDefinitionInput>;
 
 // Output Schema
+export interface PatchApiextensionsV1CustomResourceDefinitionOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const PatchApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1444,9 +2216,7 @@ export const PatchApiextensionsV1CustomResourceDefinitionOutput =
         storedVersions: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type PatchApiextensionsV1CustomResourceDefinitionOutput =
-  typeof PatchApiextensionsV1CustomResourceDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<PatchApiextensionsV1CustomResourceDefinitionOutput>;
 
 // The operation
 /**
@@ -1466,6 +2236,14 @@ export const patchApiextensionsV1CustomResourceDefinition =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchApiextensionsV1CustomResourceDefinitionStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchApiextensionsV1CustomResourceDefinitionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1479,11 +2257,173 @@ export const PatchApiextensionsV1CustomResourceDefinitionStatusInput =
       method: "PATCH",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
     }),
-  );
-export type PatchApiextensionsV1CustomResourceDefinitionStatusInput =
-  typeof PatchApiextensionsV1CustomResourceDefinitionStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchApiextensionsV1CustomResourceDefinitionStatusInput>;
 
 // Output Schema
+export interface PatchApiextensionsV1CustomResourceDefinitionStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1719,9 +2659,7 @@ export const PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
         storedVersions: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
-  typeof PatchApiextensionsV1CustomResourceDefinitionStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchApiextensionsV1CustomResourceDefinitionStatusOutput>;
 
 // The operation
 /**
@@ -1741,6 +2679,10 @@ export const patchApiextensionsV1CustomResourceDefinitionStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadApiextensionsV1CustomResourceDefinitionInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1750,11 +2692,173 @@ export const ReadApiextensionsV1CustomResourceDefinitionInput =
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
     }),
-  );
-export type ReadApiextensionsV1CustomResourceDefinitionInput =
-  typeof ReadApiextensionsV1CustomResourceDefinitionInput.Type;
+  ) as unknown as Schema.Codec<ReadApiextensionsV1CustomResourceDefinitionInput>;
 
 // Output Schema
+export interface ReadApiextensionsV1CustomResourceDefinitionOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const ReadApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1990,9 +3094,7 @@ export const ReadApiextensionsV1CustomResourceDefinitionOutput =
         storedVersions: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type ReadApiextensionsV1CustomResourceDefinitionOutput =
-  typeof ReadApiextensionsV1CustomResourceDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<ReadApiextensionsV1CustomResourceDefinitionOutput>;
 
 // The operation
 /**
@@ -2008,6 +3110,10 @@ export const readApiextensionsV1CustomResourceDefinition =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadApiextensionsV1CustomResourceDefinitionStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadApiextensionsV1CustomResourceDefinitionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2017,11 +3123,173 @@ export const ReadApiextensionsV1CustomResourceDefinitionStatusInput =
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
     }),
-  );
-export type ReadApiextensionsV1CustomResourceDefinitionStatusInput =
-  typeof ReadApiextensionsV1CustomResourceDefinitionStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadApiextensionsV1CustomResourceDefinitionStatusInput>;
 
 // Output Schema
+export interface ReadApiextensionsV1CustomResourceDefinitionStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2257,9 +3525,7 @@ export const ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
         storedVersions: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
-  typeof ReadApiextensionsV1CustomResourceDefinitionStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadApiextensionsV1CustomResourceDefinitionStatusOutput>;
 
 // The operation
 /**
@@ -2275,6 +3541,175 @@ export const readApiextensionsV1CustomResourceDefinitionStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceApiextensionsV1CustomResourceDefinitionInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const ReplaceApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2520,11 +3955,173 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionInput =
       method: "PUT",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}",
     }),
-  );
-export type ReplaceApiextensionsV1CustomResourceDefinitionInput =
-  typeof ReplaceApiextensionsV1CustomResourceDefinitionInput.Type;
+  ) as unknown as Schema.Codec<ReplaceApiextensionsV1CustomResourceDefinitionInput>;
 
 // Output Schema
+export interface ReplaceApiextensionsV1CustomResourceDefinitionOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const ReplaceApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2760,9 +4357,7 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionOutput =
         storedVersions: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type ReplaceApiextensionsV1CustomResourceDefinitionOutput =
-  typeof ReplaceApiextensionsV1CustomResourceDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceApiextensionsV1CustomResourceDefinitionOutput>;
 
 // The operation
 /**
@@ -2781,6 +4376,175 @@ export const replaceApiextensionsV1CustomResourceDefinition =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceApiextensionsV1CustomResourceDefinitionStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const ReplaceApiextensionsV1CustomResourceDefinitionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3026,11 +4790,173 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionStatusInput =
       method: "PUT",
       path: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
     }),
-  );
-export type ReplaceApiextensionsV1CustomResourceDefinitionStatusInput =
-  typeof ReplaceApiextensionsV1CustomResourceDefinitionStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceApiextensionsV1CustomResourceDefinitionStatusInput>;
 
 // Output Schema
+export interface ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    conversion?: {
+      strategy: string;
+      webhook?: {
+        clientConfig?: {
+          caBundle?: string;
+          service?: {
+            name: string;
+            namespace: string;
+            path?: string;
+            port?: number;
+          };
+          url?: string;
+        };
+        conversionReviewVersions: string[];
+      };
+    };
+    group: string;
+    names: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    preserveUnknownFields?: boolean;
+    scope: string;
+    versions: {
+      additionalPrinterColumns?: {
+        description?: string;
+        format?: string;
+        jsonPath: string;
+        name: string;
+        priority?: number;
+        type: string;
+      }[];
+      deprecated?: boolean;
+      deprecationWarning?: string;
+      name: string;
+      schema?: {
+        openAPIV3Schema?: {
+          $ref?: string;
+          $schema?: string;
+          additionalItems?: unknown;
+          additionalProperties?: unknown;
+          allOf?: unknown[];
+          anyOf?: unknown[];
+          default?: unknown;
+          definitions?: Record<string, unknown>;
+          dependencies?: Record<string, unknown>;
+          description?: string;
+          enum?: unknown[];
+          example?: unknown;
+          exclusiveMaximum?: boolean;
+          exclusiveMinimum?: boolean;
+          externalDocs?: { description?: string; url?: string };
+          format?: string;
+          id?: string;
+          items?: unknown;
+          maxItems?: number;
+          maxLength?: number;
+          maxProperties?: number;
+          maximum?: number;
+          minItems?: number;
+          minLength?: number;
+          minProperties?: number;
+          minimum?: number;
+          multipleOf?: number;
+          not?: unknown;
+          nullable?: boolean;
+          oneOf?: unknown[];
+          pattern?: string;
+          patternProperties?: Record<string, unknown>;
+          properties?: Record<string, unknown>;
+          required?: string[];
+          title?: string;
+          type?: string;
+          uniqueItems?: boolean;
+          "x-kubernetes-embedded-resource"?: boolean;
+          "x-kubernetes-int-or-string"?: boolean;
+          "x-kubernetes-list-map-keys"?: string[];
+          "x-kubernetes-list-type"?: string;
+          "x-kubernetes-map-type"?: string;
+          "x-kubernetes-preserve-unknown-fields"?: boolean;
+          "x-kubernetes-validations"?: {
+            fieldPath?: string;
+            message?: string;
+            messageExpression?: string;
+            optionalOldSelf?: boolean;
+            reason?: string;
+            rule: string;
+          }[];
+        };
+      };
+      selectableFields?: { jsonPath: string }[];
+      served: boolean;
+      storage: boolean;
+      subresources?: {
+        scale?: {
+          labelSelectorPath?: string;
+          specReplicasPath: string;
+          statusReplicasPath: string;
+        };
+        status?: unknown;
+      };
+    }[];
+  };
+  status?: {
+    acceptedNames?: {
+      categories?: string[];
+      kind: string;
+      listKind?: string;
+      plural: string;
+      shortNames?: string[];
+      singular?: string;
+    };
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    storedVersions?: string[];
+  };
+}
 export const ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3266,9 +5192,7 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
         storedVersions: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
-  typeof ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput>;
 
 // The operation
 /**
@@ -3287,6 +5211,21 @@ export const replaceApiextensionsV1CustomResourceDefinitionStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchApiextensionsV1CustomResourceDefinitionInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3307,18 +5246,18 @@ export const WatchApiextensionsV1CustomResourceDefinitionInput =
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}",
     }),
-  );
-export type WatchApiextensionsV1CustomResourceDefinitionInput =
-  typeof WatchApiextensionsV1CustomResourceDefinitionInput.Type;
+  ) as unknown as Schema.Codec<WatchApiextensionsV1CustomResourceDefinitionInput>;
 
 // Output Schema
+export interface WatchApiextensionsV1CustomResourceDefinitionOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchApiextensionsV1CustomResourceDefinitionOutput =
-  typeof WatchApiextensionsV1CustomResourceDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<WatchApiextensionsV1CustomResourceDefinitionOutput>;
 
 // The operation
 /**
@@ -3385,6 +5324,20 @@ export const watchApiextensionsV1CustomResourceDefinition =
     outputSchema: WatchApiextensionsV1CustomResourceDefinitionOutput,
   }));
 // Input Schema
+export interface WatchApiextensionsV1CustomResourceDefinitionListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchApiextensionsV1CustomResourceDefinitionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3404,18 +5357,18 @@ export const WatchApiextensionsV1CustomResourceDefinitionListInput =
       method: "GET",
       path: "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions",
     }),
-  );
-export type WatchApiextensionsV1CustomResourceDefinitionListInput =
-  typeof WatchApiextensionsV1CustomResourceDefinitionListInput.Type;
+  ) as unknown as Schema.Codec<WatchApiextensionsV1CustomResourceDefinitionListInput>;
 
 // Output Schema
+export interface WatchApiextensionsV1CustomResourceDefinitionListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchApiextensionsV1CustomResourceDefinitionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchApiextensionsV1CustomResourceDefinitionListOutput =
-  typeof WatchApiextensionsV1CustomResourceDefinitionListOutput.Type;
+  }) as unknown as Schema.Codec<WatchApiextensionsV1CustomResourceDefinitionListOutput>;
 
 // The operation
 /**

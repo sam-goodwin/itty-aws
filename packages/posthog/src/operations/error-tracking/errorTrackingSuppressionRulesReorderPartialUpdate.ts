@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingSuppressionRulesReorderPartialUpdateInput {
+  project_id: string;
+  id?: string;
+  filters?: unknown;
+  order_key?: number;
+  disabled_data?: unknown;
+  sampling_rate?: number;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingSuppressionRulesReorderPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,15 +28,12 @@ export const ErrorTrackingSuppressionRulesReorderPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/error_tracking/suppression_rules/reorder/",
     }),
-  );
-export type ErrorTrackingSuppressionRulesReorderPartialUpdateInput =
-  typeof ErrorTrackingSuppressionRulesReorderPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesReorderPartialUpdateInput>;
 
 // Output Schema
+export type ErrorTrackingSuppressionRulesReorderPartialUpdateOutput = void;
 export const ErrorTrackingSuppressionRulesReorderPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingSuppressionRulesReorderPartialUpdateOutput =
-  typeof ErrorTrackingSuppressionRulesReorderPartialUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSuppressionRulesReorderPartialUpdateOutput>;
 
 // The operation
 /**

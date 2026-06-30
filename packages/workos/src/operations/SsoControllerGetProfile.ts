@@ -4,14 +4,81 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SsoControllerGetProfileInput {}
 export const SsoControllerGetProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/sso/profile" }),
-  );
-export type SsoControllerGetProfileInput =
-  typeof SsoControllerGetProfileInput.Type;
+  ) as unknown as Schema.Codec<SsoControllerGetProfileInput>;
 
 // Output Schema
+export interface SsoControllerGetProfileOutput {
+  object?: string;
+  id?: string;
+  organization_id?: string | null;
+  connection_id?: string;
+  connection_type?:
+    | "Pending"
+    | "ADFSSAML"
+    | "AdpOidc"
+    | "AppleOAuth"
+    | "Auth0Migration"
+    | "Auth0SAML"
+    | "AzureSAML"
+    | "BitbucketOAuth"
+    | "CasSAML"
+    | "ClassLinkSAML"
+    | "CleverOIDC"
+    | "CloudflareSAML"
+    | "CyberArkSAML"
+    | "DiscordOAuth"
+    | "DuoSAML"
+    | "EntraIdOIDC"
+    | "GenericOIDC"
+    | "GenericSAML"
+    | "GitHubOAuth"
+    | "GitLabOAuth"
+    | "GoogleOAuth"
+    | "GoogleOIDC"
+    | "GoogleSAML"
+    | "IntuitOAuth"
+    | "JumpCloudSAML"
+    | "KeycloakSAML"
+    | "LastPassSAML"
+    | "LinkedInOAuth"
+    | "LoginGovOidc"
+    | "MagicLink"
+    | "MicrosoftOAuth"
+    | "MiniOrangeSAML"
+    | "NetIqSAML"
+    | "OktaOIDC"
+    | "OktaSAML"
+    | "OneLoginSAML"
+    | "OracleSAML"
+    | "PingFederateSAML"
+    | "PingOneSAML"
+    | "RipplingSAML"
+    | "SalesforceSAML"
+    | "ShibbolethGenericSAML"
+    | "ShibbolethSAML"
+    | "SimpleSamlPhpSAML"
+    | "SalesforceOAuth"
+    | "SlackOAuth"
+    | "TestIdp"
+    | "VercelMarketplaceOAuth"
+    | "VercelOAuth"
+    | "VMwareSAML"
+    | "XeroOAuth";
+  idp_id?: string;
+  email?: string;
+  first_name?: string | null;
+  last_name?: string | null;
+  name?: string | null;
+  role?: { slug?: string } | null;
+  roles?: { slug?: string }[] | null;
+  groups?: string[];
+  custom_attributes?: Record<string, unknown>;
+  raw_attributes?: Record<string, unknown>;
+}
 export const SsoControllerGetProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -78,8 +145,22 @@ export const SsoControllerGetProfileOutput =
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
     last_name: Schema.optional(Schema.NullOr(Schema.String)),
     name: Schema.optional(Schema.NullOr(Schema.String)),
-    role: Schema.optional(Schema.Unknown),
-    roles: Schema.optional(Schema.Unknown),
+    role: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    roles: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(
+          Schema.Struct({
+            slug: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    ),
     groups: Schema.optional(Schema.Array(Schema.String)),
     custom_attributes: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -87,9 +168,7 @@ export const SsoControllerGetProfileOutput =
     raw_attributes: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
-  });
-export type SsoControllerGetProfileOutput =
-  typeof SsoControllerGetProfileOutput.Type;
+  }) as unknown as Schema.Codec<SsoControllerGetProfileOutput>;
 
 // The operation
 /**

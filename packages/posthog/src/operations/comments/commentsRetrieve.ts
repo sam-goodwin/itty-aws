@@ -4,15 +4,76 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CommentsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const CommentsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/comments/{id}/" }),
-);
-export type CommentsRetrieveInput = typeof CommentsRetrieveInput.Type;
+) as unknown as Schema.Codec<CommentsRetrieveInput>;
 
 // Output Schema
+export interface CommentsRetrieveOutput {
+  id?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  deleted?: boolean | null;
+  mentions?: number[];
+  slug?: string;
+  is_task?: boolean;
+  completed_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  content?: string | null;
+  rich_content?: unknown;
+  version?: number;
+  created_at?: string;
+  item_id?: string | null;
+  item_context?: unknown;
+  scope?: string;
+  completed_at?: string | null;
+  source_comment?: string | null;
+}
 export const CommentsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -29,7 +90,23 @@ export const CommentsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -37,7 +114,39 @@ export const CommentsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     mentions: Schema.optional(Schema.Array(Schema.Number)),
     slug: Schema.optional(Schema.String),
     is_task: Schema.optional(Schema.Boolean),
-    completed_by: Schema.optional(Schema.Unknown),
+    completed_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
+        }),
+      ),
+    ),
     content: Schema.optional(Schema.NullOr(Schema.String)),
     rich_content: Schema.optional(Schema.Unknown),
     version: Schema.optional(Schema.Number),
@@ -48,8 +157,7 @@ export const CommentsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     completed_at: Schema.optional(Schema.NullOr(Schema.String)),
     source_comment: Schema.optional(Schema.NullOr(Schema.String)),
   },
-);
-export type CommentsRetrieveOutput = typeof CommentsRetrieveOutput.Type;
+) as unknown as Schema.Codec<CommentsRetrieveOutput>;
 
 // The operation
 /**

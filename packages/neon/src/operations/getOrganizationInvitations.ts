@@ -3,16 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetOrganizationInvitationsInput {
+  org_id: string;
+}
 export const GetOrganizationInvitationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{org_id}/invitations" }),
-  );
-export type GetOrganizationInvitationsInput =
-  typeof GetOrganizationInvitationsInput.Type;
+  ) as unknown as Schema.Codec<GetOrganizationInvitationsInput>;
 
 // Output Schema
+export interface GetOrganizationInvitationsOutput {
+  invitations: {
+    id: string;
+    email: string;
+    org_id: string;
+    invited_by: string;
+    invited_at: string;
+    role: "admin" | "member" | "editor" | "viewer" | "collaborator";
+  }[];
+}
 export const GetOrganizationInvitationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invitations: Schema.Array(
@@ -31,9 +42,7 @@ export const GetOrganizationInvitationsOutput =
         ]),
       }),
     ),
-  });
-export type GetOrganizationInvitationsOutput =
-  typeof GetOrganizationInvitationsOutput.Type;
+  }) as unknown as Schema.Codec<GetOrganizationInvitationsOutput>;
 
 // The operation
 /**

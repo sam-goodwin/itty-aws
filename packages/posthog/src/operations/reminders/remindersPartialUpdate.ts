@@ -3,6 +3,46 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface RemindersPartialUpdateInput {
+  id: string;
+  organization?: string;
+  team?: number | null;
+  title?: string;
+  message?: string;
+  resource_type?: string | null;
+  resource_id?: string | null;
+  scheduled_at?: string | null;
+  recurrence_interval?: "daily" | "weekly" | "monthly" | "yearly" | "" | null;
+  cron_expression?: string | null;
+  timezone?: string;
+  end_date?: string | null;
+  next_fire_at?: string | null;
+  last_fired_at?: string | null;
+  status?: "active" | "completed" | "errored";
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const RemindersPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,7 +53,14 @@ export const RemindersPartialUpdateInput =
     resource_type: Schema.optional(Schema.NullOr(Schema.String)),
     resource_id: Schema.optional(Schema.NullOr(Schema.String)),
     scheduled_at: Schema.optional(Schema.NullOr(Schema.String)),
-    recurrence_interval: Schema.optional(Schema.Unknown),
+    recurrence_interval: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     cron_expression: Schema.optional(Schema.NullOr(Schema.String)),
     timezone: Schema.optional(Schema.String),
     end_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -34,16 +81,72 @@ export const RemindersPartialUpdateInput =
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "PATCH", path: "/api/reminders/{id}/" }));
-export type RemindersPartialUpdateInput =
-  typeof RemindersPartialUpdateInput.Type;
+  }).pipe(
+    T.Http({ method: "PATCH", path: "/api/reminders/{id}/" }),
+  ) as unknown as Schema.Codec<RemindersPartialUpdateInput>;
 
 // Output Schema
+export interface RemindersPartialUpdateOutput {
+  id: string;
+  organization: string;
+  team?: number | null;
+  title: string;
+  message?: string;
+  resource_type?: string | null;
+  resource_id?: string | null;
+  scheduled_at?: string | null;
+  recurrence_interval?: "daily" | "weekly" | "monthly" | "yearly" | "" | null;
+  cron_expression?: string | null;
+  timezone?: string;
+  end_date?: string | null;
+  next_fire_at: string | null;
+  last_fired_at: string | null;
+  status: "active" | "completed" | "errored";
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  updated_at: string | null;
+}
 export const RemindersPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -54,7 +157,14 @@ export const RemindersPartialUpdateOutput =
     resource_type: Schema.optional(Schema.NullOr(Schema.String)),
     resource_id: Schema.optional(Schema.NullOr(Schema.String)),
     scheduled_at: Schema.optional(Schema.NullOr(Schema.String)),
-    recurrence_interval: Schema.optional(Schema.Unknown),
+    recurrence_interval: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     cron_expression: Schema.optional(Schema.NullOr(Schema.String)),
     timezone: Schema.optional(Schema.String),
     end_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -72,13 +182,27 @@ export const RemindersPartialUpdateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type RemindersPartialUpdateOutput =
-  typeof RemindersPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RemindersPartialUpdateOutput>;
 
 // The operation
 /**

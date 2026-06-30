@@ -3,14 +3,31 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListPoliciesInput {
+  pageSize?: number;
+  pageToken?: string;
+  scope?: "project" | "account";
+}
 export const ListPoliciesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
   scope: Schema.optional(Schema.Literals(["project", "account"])),
-}).pipe(T.Http({ method: "GET", path: "/v2/policy-engine/policies" }));
-export type ListPoliciesInput = typeof ListPoliciesInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/policy-engine/policies" }),
+) as unknown as Schema.Codec<ListPoliciesInput>;
 
 // Output Schema
+export interface ListPoliciesOutput {
+  policies: {
+    id: string;
+    description?: string;
+    scope: "project" | "account";
+    rules: unknown[];
+    createdAt: string;
+    updatedAt: string;
+  }[];
+  nextPageToken?: string;
+}
 export const ListPoliciesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policies: Schema.Array(
     Schema.Struct({
@@ -23,8 +40,7 @@ export const ListPoliciesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextPageToken: Schema.optional(Schema.String),
-});
-export type ListPoliciesOutput = typeof ListPoliciesOutput.Type;
+}) as unknown as Schema.Codec<ListPoliciesOutput>;
 
 // The operation
 /**

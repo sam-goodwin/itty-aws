@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgNonCompliantResourcesInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetOrgNonCompliantResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const GetOrgNonCompliantResourcesInput =
       method: "GET",
       path: "/api/atlas/v2/orgs/{orgId}/nonCompliantResources",
     }),
-  );
-export type GetOrgNonCompliantResourcesInput =
-  typeof GetOrgNonCompliantResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetOrgNonCompliantResourcesInput>;
 
 // Output Schema
+export type GetOrgNonCompliantResourcesOutput = void;
 export const GetOrgNonCompliantResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgNonCompliantResourcesOutput =
-  typeof GetOrgNonCompliantResourcesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgNonCompliantResourcesOutput>;
 
 // The operation
 /**

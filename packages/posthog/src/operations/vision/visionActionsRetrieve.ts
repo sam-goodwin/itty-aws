@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisionActionsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const VisionActionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,60 @@ export const VisionActionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/vision/actions/{id}/",
     }),
-  );
-export type VisionActionsRetrieveInput = typeof VisionActionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VisionActionsRetrieveInput>;
 
 // Output Schema
+export interface VisionActionsRetrieveOutput {
+  id: string;
+  name: string;
+  scanner: string;
+  enabled?: boolean;
+  trigger_type?: "schedule" | "threshold";
+  mode?: "group_summary" | "per_observation";
+  trigger_config?: { rrule?: string; timezone?: string };
+  selection?: {
+    scanner_type?: string;
+    scanner_ids?: string[];
+    verdict?: string;
+    tags?: string[];
+    min_score?: number;
+    max_score?: number;
+    status?: string;
+    window_days?: number;
+  };
+  synthesis_config?: { prompt_guide?: string };
+  delivery_config?: {
+    type: "slack";
+    integration_id: number;
+    channel: string;
+  }[];
+  next_run_at: string | null;
+  last_run_at: string | null;
+  hog_flow_id: string | null;
+  created_at: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  updated_at: string;
+}
 export const VisionActionsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -62,11 +116,39 @@ export const VisionActionsRetrieveOutput =
     last_run_at: Schema.NullOr(Schema.String),
     hog_flow_id: Schema.NullOr(Schema.String),
     created_at: Schema.String,
-    created_by: Schema.Unknown,
+    created_by: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+      }),
+    ),
     updated_at: Schema.String,
-  });
-export type VisionActionsRetrieveOutput =
-  typeof VisionActionsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<VisionActionsRetrieveOutput>;
 
 // The operation
 /**

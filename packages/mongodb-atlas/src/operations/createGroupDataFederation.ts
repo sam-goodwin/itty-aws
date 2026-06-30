@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupDataFederationInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  skipRoleValidation?: boolean;
+}
 export const CreateGroupDataFederationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateGroupDataFederationInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation",
     }),
-  );
-export type CreateGroupDataFederationInput =
-  typeof CreateGroupDataFederationInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupDataFederationInput>;
 
 // Output Schema
+export type CreateGroupDataFederationOutput = void;
 export const CreateGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupDataFederationOutput =
-  typeof CreateGroupDataFederationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupDataFederationOutput>;
 
 // The operation
 /**

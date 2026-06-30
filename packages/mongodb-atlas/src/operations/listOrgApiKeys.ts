@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgApiKeysInput {
+  orgId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListOrgApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -11,12 +19,14 @@ export const ListOrgApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   itemsPerPage: Schema.optional(Schema.Number),
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/apiKeys" }));
-export type ListOrgApiKeysInput = typeof ListOrgApiKeysInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/apiKeys" }),
+) as unknown as Schema.Codec<ListOrgApiKeysInput>;
 
 // Output Schema
-export const ListOrgApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgApiKeysOutput = typeof ListOrgApiKeysOutput.Type;
+export type ListOrgApiKeysOutput = void;
+export const ListOrgApiKeysOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgApiKeysOutput>;
 
 // The operation
 /**

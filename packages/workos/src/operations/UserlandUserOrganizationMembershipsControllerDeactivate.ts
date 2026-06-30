@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserOrganizationMembershipsControllerDeactivateInput {
+  id: string;
+}
 export const UserlandUserOrganizationMembershipsControllerDeactivateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,39 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateInput =
       method: "PUT",
       path: "/user_management/organization_memberships/{id}/deactivate",
     }),
-  );
-export type UserlandUserOrganizationMembershipsControllerDeactivateInput =
-  typeof UserlandUserOrganizationMembershipsControllerDeactivateInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerDeactivateInput>;
 
 // Output Schema
+export interface UserlandUserOrganizationMembershipsControllerDeactivateOutput {
+  object: string;
+  id: string;
+  user_id: string;
+  organization_id: string;
+  status: "active" | "inactive" | "pending";
+  directory_managed: boolean;
+  organization_name?: string;
+  custom_attributes?: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+  role: { slug?: string };
+  roles: { slug?: string }[];
+  user: {
+    object?: string;
+    id?: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    profile_picture_url?: string | null;
+    email?: string;
+    email_verified?: boolean;
+    external_id?: string | null;
+    metadata?: Record<string, string>;
+    last_sign_in_at?: string | null;
+    locale?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  };
+}
 export const UserlandUserOrganizationMembershipsControllerDeactivateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -55,9 +86,7 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateOutput =
       created_at: Schema.optional(Schema.String),
       updated_at: Schema.optional(Schema.String),
     }),
-  });
-export type UserlandUserOrganizationMembershipsControllerDeactivateOutput =
-  typeof UserlandUserOrganizationMembershipsControllerDeactivateOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerDeactivateOutput>;
 
 // The operation
 /**

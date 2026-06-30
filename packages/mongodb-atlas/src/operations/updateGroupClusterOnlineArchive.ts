@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupClusterOnlineArchiveInput {
+  groupId: string;
+  archiveId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupClusterOnlineArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const UpdateGroupClusterOnlineArchiveInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
     }),
-  );
-export type UpdateGroupClusterOnlineArchiveInput =
-  typeof UpdateGroupClusterOnlineArchiveInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupClusterOnlineArchiveInput>;
 
 // Output Schema
+export type UpdateGroupClusterOnlineArchiveOutput = void;
 export const UpdateGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterOnlineArchiveOutput =
-  typeof UpdateGroupClusterOnlineArchiveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterOnlineArchiveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesByExternalIdControllerGetByExternalIdInput {
+  organization_id: string;
+  resource_type_slug: string;
+  external_id: string;
+}
 export const AuthorizationResourcesByExternalIdControllerGetByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,21 @@ export const AuthorizationResourcesByExternalIdControllerGetByExternalIdInput =
       method: "GET",
       path: "/authorization/organizations/{organization_id}/resources/{resource_type_slug}/{external_id}",
     }),
-  );
-export type AuthorizationResourcesByExternalIdControllerGetByExternalIdInput =
-  typeof AuthorizationResourcesByExternalIdControllerGetByExternalIdInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerGetByExternalIdInput>;
 
 // Output Schema
+export interface AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput {
+  object?: string;
+  name?: string;
+  description?: string | null;
+  organization_id?: string;
+  parent_resource_id?: string | null;
+  id?: string;
+  external_id?: string;
+  resource_type_slug?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -31,9 +46,7 @@ export const AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput =
     resource_type_slug: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput =
-  typeof AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput>;
 
 // The operation
 /**

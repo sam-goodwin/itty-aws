@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationMembershipGroupsControllerListGroupsInput {
+  omId: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const OrganizationMembershipGroupsControllerListGroupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     omId: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,22 @@ export const OrganizationMembershipGroupsControllerListGroupsInput =
       method: "GET",
       path: "/user_management/organization_memberships/{omId}/groups",
     }),
-  );
-export type OrganizationMembershipGroupsControllerListGroupsInput =
-  typeof OrganizationMembershipGroupsControllerListGroupsInput.Type;
+  ) as unknown as Schema.Codec<OrganizationMembershipGroupsControllerListGroupsInput>;
 
 // Output Schema
+export interface OrganizationMembershipGroupsControllerListGroupsOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    organization_id?: string;
+    name?: string;
+    description?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const OrganizationMembershipGroupsControllerListGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -43,9 +61,7 @@ export const OrganizationMembershipGroupsControllerListGroupsOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type OrganizationMembershipGroupsControllerListGroupsOutput =
-  typeof OrganizationMembershipGroupsControllerListGroupsOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationMembershipGroupsControllerListGroupsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgGroupsInput {
+  orgId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  name?: string;
+}
 export const GetOrgGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -12,12 +21,14 @@ export const GetOrgGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/groups" }));
-export type GetOrgGroupsInput = typeof GetOrgGroupsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/groups" }),
+) as unknown as Schema.Codec<GetOrgGroupsInput>;
 
 // Output Schema
-export const GetOrgGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgGroupsOutput = typeof GetOrgGroupsOutput.Type;
+export type GetOrgGroupsOutput = void;
+export const GetOrgGroupsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgGroupsOutput>;
 
 // The operation
 /**

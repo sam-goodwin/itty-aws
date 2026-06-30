@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsTestEvaluationCreateInput {
+  id: number;
+  project_id: string;
+  distinct_id?: string;
+  person_id?: string;
+  timestamp?: string | null;
+  groups?: unknown;
+}
 export const FeatureFlagsTestEvaluationCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -17,11 +25,36 @@ export const FeatureFlagsTestEvaluationCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/feature_flags/{id}/test_evaluation/",
     }),
-  );
-export type FeatureFlagsTestEvaluationCreateInput =
-  typeof FeatureFlagsTestEvaluationCreateInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsTestEvaluationCreateInput>;
 
 // Output Schema
+export interface FeatureFlagsTestEvaluationCreateOutput {
+  flag_key: string;
+  result: unknown;
+  reason: string;
+  condition_index: number | null;
+  payload: unknown;
+  person_properties: Record<string, unknown>;
+  evaluation_distinct_id: string | null;
+  conditions: {
+    index: number;
+    matched: boolean;
+    properties_matched?: boolean;
+    explanation: string;
+    rollout_percentage: number;
+    rollout_excluded: boolean;
+    variant: string | null;
+    properties: {
+      key: string;
+      operator: string;
+      value: unknown;
+      type: string;
+      actual_value: unknown;
+      matched: boolean;
+      explanation: string;
+    }[];
+  }[];
+}
 export const FeatureFlagsTestEvaluationCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flag_key: Schema.String,
@@ -53,9 +86,7 @@ export const FeatureFlagsTestEvaluationCreateOutput =
         ),
       }),
     ),
-  });
-export type FeatureFlagsTestEvaluationCreateOutput =
-  typeof FeatureFlagsTestEvaluationCreateOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsTestEvaluationCreateOutput>;
 
 // The operation
 /**

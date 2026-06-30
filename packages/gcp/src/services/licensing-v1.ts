@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -41,7 +41,7 @@ export interface LicenseAssignment {
   productName?: string;
 }
 
-export const LicenseAssignment: Schema.Schema<LicenseAssignment> =
+export const LicenseAssignment: Schema.Codec<LicenseAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etags: Schema.optional(Schema.String),
     selfLink: Schema.optional(Schema.String),
@@ -64,7 +64,7 @@ export interface LicenseAssignmentList {
   etag?: string;
 }
 
-export const LicenseAssignmentList: Schema.Schema<LicenseAssignmentList> =
+export const LicenseAssignmentList: Schema.Codec<LicenseAssignmentList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(LicenseAssignment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export const LicenseAssignmentList: Schema.Schema<LicenseAssignmentList> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -84,7 +84,7 @@ export interface LicenseAssignmentInsert {
   userId?: string;
 }
 
-export const LicenseAssignmentInsert: Schema.Schema<LicenseAssignmentInsert> =
+export const LicenseAssignmentInsert: Schema.Codec<LicenseAssignmentInsert> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
   }).annotate({ identifier: "LicenseAssignmentInsert" });
@@ -164,7 +164,7 @@ export const InsertLicenseAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertLicenseAssignmentsRequest>;
+  ) as unknown as Schema.Codec<InsertLicenseAssignmentsRequest>;
 
 export type InsertLicenseAssignmentsResponse = LicenseAssignment;
 export const InsertLicenseAssignmentsResponse =
@@ -209,7 +209,7 @@ export const GetLicenseAssignmentsRequest =
       path: "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetLicenseAssignmentsRequest>;
+  ) as unknown as Schema.Codec<GetLicenseAssignmentsRequest>;
 
 export type GetLicenseAssignmentsResponse = LicenseAssignment;
 export const GetLicenseAssignmentsResponse =
@@ -255,7 +255,7 @@ export const ListForProductAndSkuLicenseAssignmentsRequest =
       path: "apps/licensing/v1/product/{productId}/sku/{skuId}/users",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListForProductAndSkuLicenseAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListForProductAndSkuLicenseAssignmentsRequest>;
 
 export type ListForProductAndSkuLicenseAssignmentsResponse =
   LicenseAssignmentList;
@@ -304,7 +304,7 @@ export const DeleteLicenseAssignmentsRequest =
       path: "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLicenseAssignmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteLicenseAssignmentsRequest>;
 
 export type DeleteLicenseAssignmentsResponse = Empty;
 export const DeleteLicenseAssignmentsResponse =
@@ -352,7 +352,7 @@ export const ListForProductLicenseAssignmentsRequest =
       path: "apps/licensing/v1/product/{productId}/users",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListForProductLicenseAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListForProductLicenseAssignmentsRequest>;
 
 export type ListForProductLicenseAssignmentsResponse = LicenseAssignmentList;
 export const ListForProductLicenseAssignmentsResponse =
@@ -404,7 +404,7 @@ export const PatchLicenseAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchLicenseAssignmentsRequest>;
+  ) as unknown as Schema.Codec<PatchLicenseAssignmentsRequest>;
 
 export type PatchLicenseAssignmentsResponse = LicenseAssignment;
 export const PatchLicenseAssignmentsResponse =
@@ -453,7 +453,7 @@ export const UpdateLicenseAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateLicenseAssignmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateLicenseAssignmentsRequest>;
 
 export type UpdateLicenseAssignmentsResponse = LicenseAssignment;
 export const UpdateLicenseAssignmentsResponse =

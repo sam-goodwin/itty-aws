@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UploadedMediaCreateInput {
+  project_id: string;
+}
 export const UploadedMediaCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,13 +15,15 @@ export const UploadedMediaCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/uploaded_media/",
     }),
-  );
-export type UploadedMediaCreateInput = typeof UploadedMediaCreateInput.Type;
+  ) as unknown as Schema.Codec<UploadedMediaCreateInput>;
 
 // Output Schema
+export type UploadedMediaCreateOutput = Record<string, unknown>;
 export const UploadedMediaCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type UploadedMediaCreateOutput = typeof UploadedMediaCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<UploadedMediaCreateOutput>;
 
 // The operation
 /**

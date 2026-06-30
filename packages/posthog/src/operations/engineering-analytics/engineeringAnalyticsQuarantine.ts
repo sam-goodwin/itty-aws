@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface EngineeringAnalyticsQuarantineInput {
+  project_id: string;
+  repo?: string;
+  source_id?: string;
+}
 export const EngineeringAnalyticsQuarantineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,30 @@ export const EngineeringAnalyticsQuarantineInput =
       method: "GET",
       path: "/api/projects/{project_id}/engineering_analytics/quarantine/",
     }),
-  );
-export type EngineeringAnalyticsQuarantineInput =
-  typeof EngineeringAnalyticsQuarantineInput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsQuarantineInput>;
 
 // Output Schema
+export interface EngineeringAnalyticsQuarantineOutput {
+  entries: {
+    id: string;
+    runner: string;
+    reason: string;
+    owner: string;
+    issue: string;
+    added: string;
+    expires: string;
+    mode: "run" | "skip";
+    lifecycle: "active" | "expiring_soon" | "in_grace" | "overdue";
+    days_until_expiry: number;
+    selector_kind: "product" | "file" | "directory" | "test";
+  }[];
+  repo: { provider: string; owner: string; name: string } | null;
+  available: boolean;
+  parse_errors: string[];
+  parse_warnings: string[];
+  source_url: string;
+  generated_at: string;
+}
 export const EngineeringAnalyticsQuarantineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.Array(
@@ -46,15 +70,19 @@ export const EngineeringAnalyticsQuarantineOutput =
         ]),
       }),
     ),
-    repo: Schema.Unknown,
+    repo: Schema.NullOr(
+      Schema.Struct({
+        provider: Schema.String,
+        owner: Schema.String,
+        name: Schema.String,
+      }),
+    ),
     available: Schema.Boolean,
     parse_errors: Schema.Array(Schema.String),
     parse_warnings: Schema.Array(Schema.String),
     source_url: Schema.String,
     generated_at: Schema.String,
-  });
-export type EngineeringAnalyticsQuarantineOutput =
-  typeof EngineeringAnalyticsQuarantineOutput.Type;
+  }) as unknown as Schema.Codec<EngineeringAnalyticsQuarantineOutput>;
 
 // The operation
 /**

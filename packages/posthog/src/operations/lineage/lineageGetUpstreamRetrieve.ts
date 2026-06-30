@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LineageGetUpstreamRetrieveInput {
+  project_id: string;
+}
 export const LineageGetUpstreamRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const LineageGetUpstreamRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/lineage/get_upstream/",
     }),
-  );
-export type LineageGetUpstreamRetrieveInput =
-  typeof LineageGetUpstreamRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LineageGetUpstreamRetrieveInput>;
 
 // Output Schema
+export type LineageGetUpstreamRetrieveOutput = void;
 export const LineageGetUpstreamRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LineageGetUpstreamRetrieveOutput =
-  typeof LineageGetUpstreamRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LineageGetUpstreamRetrieveOutput>;
 
 // The operation
 /**

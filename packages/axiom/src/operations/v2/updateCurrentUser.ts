@@ -3,14 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UpdateCurrentUserInput {
+  name: string;
+}
 export const UpdateCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     name: Schema.String,
   },
-).pipe(T.Http({ method: "PUT", path: "/v2/user" }));
-export type UpdateCurrentUserInput = typeof UpdateCurrentUserInput.Type;
+).pipe(
+  T.Http({ method: "PUT", path: "/v2/user" }),
+) as unknown as Schema.Codec<UpdateCurrentUserInput>;
 
 // Output Schema
+export interface UpdateCurrentUserOutput {
+  email: string;
+  id: string;
+  name: string;
+  role?: { id: string; name: string };
+}
 export const UpdateCurrentUserOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.String,
@@ -22,8 +32,7 @@ export const UpdateCurrentUserOutput =
         name: Schema.String,
       }),
     ),
-  });
-export type UpdateCurrentUserOutput = typeof UpdateCurrentUserOutput.Type;
+  }) as unknown as Schema.Codec<UpdateCurrentUserOutput>;
 
 // The operation
 /**

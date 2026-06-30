@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemShortcutDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const FileSystemShortcutDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const FileSystemShortcutDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/file_system_shortcut/{id}/",
     }),
-  );
-export type FileSystemShortcutDestroyInput =
-  typeof FileSystemShortcutDestroyInput.Type;
+  ) as unknown as Schema.Codec<FileSystemShortcutDestroyInput>;
 
 // Output Schema
+export type FileSystemShortcutDestroyOutput = void;
 export const FileSystemShortcutDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileSystemShortcutDestroyOutput =
-  typeof FileSystemShortcutDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSystemShortcutDestroyOutput>;
 
 // The operation
 /**

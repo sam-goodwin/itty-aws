@@ -8,8 +8,15 @@ import {
   UnprocessableEntity,
 } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AppCertificatesCustomCreateInput {
+  app_name: string;
+  fullchain?: string;
+  hostname?: string;
+  private_key?: string | Redacted.Redacted<string>;
+}
 export const AppCertificatesCustomCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -18,11 +25,48 @@ export const AppCertificatesCustomCreateInput =
     private_key: Schema.optional(SensitiveString),
   }).pipe(
     T.Http({ method: "POST", path: "/apps/{app_name}/certificates/custom" }),
-  );
-export type AppCertificatesCustomCreateInput =
-  typeof AppCertificatesCustomCreateInput.Type;
+  ) as unknown as Schema.Codec<AppCertificatesCustomCreateInput>;
 
 // Output Schema
+export interface AppCertificatesCustomCreateOutput {
+  acme_requested?: boolean;
+  certificates?: {
+    created_at?: string;
+    expires_at?: string;
+    issued?: {
+      certificate_authority?: string;
+      expires_at?: string;
+      type?: "rsa" | "ecdsa";
+    }[];
+    issuer?: string;
+    source?: "custom" | "fly";
+    status?: "active" | "pending_ownership" | "pending_validation";
+  }[];
+  configured?: boolean;
+  dns_provider?: string;
+  dns_requirements?: {
+    a?: string[];
+    aaaa?: string[];
+    acme_challenge?: { name?: string; target?: string };
+    cname?: string;
+    ownership?: { app_value?: string; name?: string; org_value?: string };
+  };
+  hostname?: string;
+  rate_limited_until?: string;
+  status?: string;
+  validation?: {
+    alpn_configured?: boolean;
+    dns_configured?: boolean;
+    http_configured?: boolean;
+    ownership_txt_configured?: boolean;
+  };
+  validation_errors?: {
+    code?: string;
+    message?: string;
+    remediation?: string;
+    timestamp?: string;
+  }[];
+}
 export const AppCertificatesCustomCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
@@ -95,9 +139,7 @@ export const AppCertificatesCustomCreateOutput =
         }),
       ),
     ),
-  });
-export type AppCertificatesCustomCreateOutput =
-  typeof AppCertificatesCustomCreateOutput.Type;
+  }) as unknown as Schema.Codec<AppCertificatesCustomCreateOutput>;
 
 // The operation
 /**

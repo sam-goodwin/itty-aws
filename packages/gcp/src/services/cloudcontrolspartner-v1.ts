@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Gcloud {
   gcloudCommands?: ReadonlyArray<string>;
 }
 
-export const Gcloud: Schema.Schema<Gcloud> =
+export const Gcloud: Schema.Codec<Gcloud> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     steps: Schema.optional(Schema.Array(Schema.String)),
     additionalLinks: Schema.optional(Schema.Array(Schema.String)),
@@ -47,7 +47,7 @@ export interface Console {
   additionalLinks?: ReadonlyArray<string>;
 }
 
-export const Console: Schema.Schema<Console> =
+export const Console: Schema.Codec<Console> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consoleUris: Schema.optional(Schema.Array(Schema.String)),
     steps: Schema.optional(Schema.Array(Schema.String)),
@@ -61,7 +61,7 @@ export interface Instructions {
   consoleInstructions?: Console;
 }
 
-export const Instructions: Schema.Schema<Instructions> =
+export const Instructions: Schema.Codec<Instructions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcloudInstructions: Schema.optional(Gcloud),
     consoleInstructions: Schema.optional(Console),
@@ -83,7 +83,7 @@ export interface Remediation {
   instructions?: Instructions;
 }
 
-export const Remediation: Schema.Schema<Remediation> =
+export const Remediation: Schema.Codec<Remediation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remediationType: Schema.optional(Schema.String),
     compliantValues: Schema.optional(Schema.Array(Schema.String)),
@@ -118,7 +118,7 @@ export interface Violation {
     | (string & {});
 }
 
-export const Violation: Schema.Schema<Violation> =
+export const Violation: Schema.Codec<Violation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -141,7 +141,7 @@ export interface ListViolationsResponse {
   nextPageToken?: string;
 }
 
-export const ListViolationsResponse: Schema.Schema<ListViolationsResponse> =
+export const ListViolationsResponse: Schema.Codec<ListViolationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     violations: Schema.optional(Schema.Array(Violation)),
@@ -169,7 +169,7 @@ export interface CustomerOnboardingStep {
     | (string & {});
 }
 
-export const CustomerOnboardingStep: Schema.Schema<CustomerOnboardingStep> =
+export const CustomerOnboardingStep: Schema.Codec<CustomerOnboardingStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     completionTime: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export interface CustomerOnboardingState {
   onboardingSteps?: ReadonlyArray<CustomerOnboardingStep>;
 }
 
-export const CustomerOnboardingState: Schema.Schema<CustomerOnboardingState> =
+export const CustomerOnboardingState: Schema.Codec<CustomerOnboardingState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     onboardingSteps: Schema.optional(Schema.Array(CustomerOnboardingStep)),
   }).annotate({ identifier: "CustomerOnboardingState" });
@@ -200,7 +200,7 @@ export interface Customer {
   name?: string;
 }
 
-export const Customer: Schema.Schema<Customer> =
+export const Customer: Schema.Codec<Customer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     organizationDomain: Schema.optional(Schema.String),
@@ -222,7 +222,7 @@ export interface EkmMetadata {
   ekmEndpointUri?: string;
 }
 
-export const EkmMetadata: Schema.Schema<EkmMetadata> =
+export const EkmMetadata: Schema.Codec<EkmMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ekmSolution: Schema.optional(Schema.String),
     ekmEndpointUri: Schema.optional(Schema.String),
@@ -243,7 +243,7 @@ export interface AccessReason {
   detail?: string;
 }
 
-export const AccessReason: Schema.Schema<AccessReason> =
+export const AccessReason: Schema.Codec<AccessReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     detail: Schema.optional(Schema.String),
@@ -256,11 +256,12 @@ export interface Sku {
   displayName?: string;
 }
 
-export const Sku: Schema.Schema<Sku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Sku: Schema.Codec<Sku> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Sku" });
+  },
+).annotate({ identifier: "Sku" });
 
 export interface Partner {
   /** List of SKUs the partner is offering */
@@ -279,7 +280,7 @@ export interface Partner {
   updateTime?: string;
 }
 
-export const Partner: Schema.Schema<Partner> =
+export const Partner: Schema.Codec<Partner> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skus: Schema.optional(Schema.Array(Sku)),
     ekmSolutions: Schema.optional(Schema.Array(EkmMetadata)),
@@ -311,7 +312,7 @@ export interface WorkloadOnboardingStep {
     | (string & {});
 }
 
-export const WorkloadOnboardingStep: Schema.Schema<WorkloadOnboardingStep> =
+export const WorkloadOnboardingStep: Schema.Codec<WorkloadOnboardingStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     completionTime: Schema.optional(Schema.String),
@@ -324,7 +325,7 @@ export interface WorkloadOnboardingState {
   onboardingSteps?: ReadonlyArray<WorkloadOnboardingStep>;
 }
 
-export const WorkloadOnboardingState: Schema.Schema<WorkloadOnboardingState> =
+export const WorkloadOnboardingState: Schema.Codec<WorkloadOnboardingState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     onboardingSteps: Schema.optional(Schema.Array(WorkloadOnboardingStep)),
   }).annotate({ identifier: "WorkloadOnboardingState" });
@@ -338,7 +339,7 @@ export interface ListCustomersResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListCustomersResponse: Schema.Schema<ListCustomersResponse> =
+export const ListCustomersResponse: Schema.Codec<ListCustomersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customers: Schema.optional(Schema.Array(Customer)),
     nextPageToken: Schema.optional(Schema.String),
@@ -352,7 +353,7 @@ export interface ConnectionError {
   errorMessage?: string;
 }
 
-export const ConnectionError: Schema.Schema<ConnectionError> =
+export const ConnectionError: Schema.Codec<ConnectionError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorDomain: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -373,7 +374,7 @@ export interface EkmConnection {
   connectionError?: ConnectionError;
 }
 
-export const EkmConnection: Schema.Schema<EkmConnection> =
+export const EkmConnection: Schema.Codec<EkmConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionName: Schema.optional(Schema.String),
     connectionState: Schema.optional(Schema.String),
@@ -395,7 +396,7 @@ export interface PartnerPermissions {
   >;
 }
 
-export const PartnerPermissions: Schema.Schema<PartnerPermissions> =
+export const PartnerPermissions: Schema.Codec<PartnerPermissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     partnerPermissions: Schema.optional(Schema.Array(Schema.String)),
@@ -403,7 +404,7 @@ export const PartnerPermissions: Schema.Schema<PartnerPermissions> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -419,7 +420,7 @@ export interface AccessApprovalRequest {
   name?: string;
 }
 
-export const AccessApprovalRequest: Schema.Schema<AccessApprovalRequest> =
+export const AccessApprovalRequest: Schema.Codec<AccessApprovalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedExpirationTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -436,7 +437,7 @@ export interface ListAccessApprovalRequestsResponse {
   accessApprovalRequests?: ReadonlyArray<AccessApprovalRequest>;
 }
 
-export const ListAccessApprovalRequestsResponse: Schema.Schema<ListAccessApprovalRequestsResponse> =
+export const ListAccessApprovalRequestsResponse: Schema.Codec<ListAccessApprovalRequestsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -462,7 +463,7 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -503,7 +504,7 @@ export interface Workload {
   keyManagementProjectId?: string;
 }
 
-export const Workload: Schema.Schema<Workload> =
+export const Workload: Schema.Codec<Workload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isOnboarded: Schema.optional(Schema.Boolean),
     location: Schema.optional(Schema.String),
@@ -525,7 +526,7 @@ export interface ListWorkloadsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListWorkloadsResponse: Schema.Schema<ListWorkloadsResponse> =
+export const ListWorkloadsResponse: Schema.Codec<ListWorkloadsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     workloads: Schema.optional(Schema.Array(Workload)),
@@ -539,7 +540,7 @@ export interface EkmConnections {
   ekmConnections?: ReadonlyArray<EkmConnection>;
 }
 
-export const EkmConnections: Schema.Schema<EkmConnections> =
+export const EkmConnections: Schema.Codec<EkmConnections> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     ekmConnections: Schema.optional(Schema.Array(EkmConnection)),
@@ -610,7 +611,7 @@ export const GetPartnerOrganizationsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPartnerOrganizationsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetPartnerOrganizationsLocationsRequest>;
 
 export type GetPartnerOrganizationsLocationsResponse = Partner;
 export const GetPartnerOrganizationsLocationsResponse =
@@ -644,7 +645,7 @@ export const GetOrganizationsLocationsCustomersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsCustomersRequest>;
 
 export type GetOrganizationsLocationsCustomersResponse = Customer;
 export const GetOrganizationsLocationsCustomersResponse =
@@ -690,7 +691,7 @@ export const ListOrganizationsLocationsCustomersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/customers" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsCustomersRequest>;
 
 export type ListOrganizationsLocationsCustomersResponse = ListCustomersResponse;
 export const ListOrganizationsLocationsCustomersResponse =
@@ -734,7 +735,7 @@ export const CreateOrganizationsLocationsCustomersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/customers", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsCustomersRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsCustomersRequest>;
 
 export type CreateOrganizationsLocationsCustomersResponse = Customer;
 export const CreateOrganizationsLocationsCustomersResponse =
@@ -770,7 +771,7 @@ export const DeleteOrganizationsLocationsCustomersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsCustomersRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsCustomersRequest>;
 
 export type DeleteOrganizationsLocationsCustomersResponse = Empty;
 export const DeleteOrganizationsLocationsCustomersResponse =
@@ -812,7 +813,7 @@ export const PatchOrganizationsLocationsCustomersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsCustomersRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsCustomersRequest>;
 
 export type PatchOrganizationsLocationsCustomersResponse = Customer;
 export const PatchOrganizationsLocationsCustomersResponse =
@@ -860,7 +861,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/workloads" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsCustomersWorkloadsRequest>;
 
 export type ListOrganizationsLocationsCustomersWorkloadsResponse =
   ListWorkloadsResponse;
@@ -899,7 +900,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsCustomersWorkloadsRequest>;
 
 export type GetOrganizationsLocationsCustomersWorkloadsResponse = Workload;
 export const GetOrganizationsLocationsCustomersWorkloadsResponse =
@@ -933,7 +934,7 @@ export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsReques
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>;
+  ) as unknown as Schema.Codec<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>;
 
 export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse =
   PartnerPermissions;
@@ -941,7 +942,9 @@ export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRespon
   /*@__PURE__*/ /*#__PURE__*/ PartnerPermissions;
 
 export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the partner permissions granted for a workload */
 export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
@@ -966,7 +969,7 @@ export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>;
+  ) as unknown as Schema.Codec<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>;
 
 export type GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse =
   EkmConnections;
@@ -1013,7 +1016,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsR
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/accessApprovalRequests" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest>;
 
 export type ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsResponse =
   ListAccessApprovalRequestsResponse;
@@ -1021,7 +1024,9 @@ export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsR
   /*@__PURE__*/ /*#__PURE__*/ ListAccessApprovalRequestsResponse;
 
 export type ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Deprecated: Only returns access approval requests directly associated with an assured workload folder. */
 export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests: API.PaginatedOperationMethod<
@@ -1074,7 +1079,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/violations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
 export type ListOrganizationsLocationsCustomersWorkloadsViolationsResponse =
   ListViolationsResponse;
@@ -1113,7 +1118,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsViolationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
 export type GetOrganizationsLocationsCustomersWorkloadsViolationsResponse =
   Violation;

@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpServerInstallationsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  display_name?: string;
+  description?: string;
+  is_enabled?: boolean;
+}
 export const McpServerInstallationsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,26 @@ export const McpServerInstallationsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/mcp_server_installations/{id}/",
     }),
-  );
-export type McpServerInstallationsPartialUpdateInput =
-  typeof McpServerInstallationsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<McpServerInstallationsPartialUpdateInput>;
 
 // Output Schema
+export interface McpServerInstallationsPartialUpdateOutput {
+  id?: string;
+  template_id?: string | null;
+  name?: string;
+  icon_key?: string;
+  display_name?: string;
+  url?: string;
+  description?: string;
+  auth_type?: "api_key" | "oauth";
+  is_enabled?: boolean;
+  needs_reauth?: boolean;
+  pending_oauth?: boolean;
+  proxy_url?: string;
+  tool_count?: number;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const McpServerInstallationsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -37,9 +59,7 @@ export const McpServerInstallationsPartialUpdateOutput =
     tool_count: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type McpServerInstallationsPartialUpdateOutput =
-  typeof McpServerInstallationsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<McpServerInstallationsPartialUpdateOutput>;
 
 // The operation
 /**

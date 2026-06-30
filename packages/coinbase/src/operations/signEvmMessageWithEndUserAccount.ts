@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignEvmMessageWithEndUserAccountInput {
+  userId: string;
+  projectID?: string;
+  address: string;
+  message: string;
+  walletSecretId?: string;
+}
 export const SignEvmMessageWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -15,17 +22,16 @@ export const SignEvmMessageWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/evm/sign/message",
     }),
-  );
-export type SignEvmMessageWithEndUserAccountInput =
-  typeof SignEvmMessageWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<SignEvmMessageWithEndUserAccountInput>;
 
 // Output Schema
+export interface SignEvmMessageWithEndUserAccountOutput {
+  signature: string;
+}
 export const SignEvmMessageWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signature: Schema.String,
-  });
-export type SignEvmMessageWithEndUserAccountOutput =
-  typeof SignEvmMessageWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<SignEvmMessageWithEndUserAccountOutput>;
 
 // The operation
 /**

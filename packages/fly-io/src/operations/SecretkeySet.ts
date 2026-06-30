@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SecretkeySetInput {
+  app_name: string;
+  secret_name: string;
+  type?: string;
+  value?: number[];
+}
 export const SecretkeySetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
@@ -11,10 +17,18 @@ export const SecretkeySetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(Schema.Array(Schema.Number)),
 }).pipe(
   T.Http({ method: "POST", path: "/apps/{app_name}/secretkeys/{secret_name}" }),
-);
-export type SecretkeySetInput = typeof SecretkeySetInput.Type;
+) as unknown as Schema.Codec<SecretkeySetInput>;
 
 // Output Schema
+export interface SecretkeySetOutput {
+  Version?: number;
+  created_at?: string;
+  name?: string;
+  public_key?: number[];
+  type?: string;
+  updated_at?: string;
+  version?: number;
+}
 export const SecretkeySetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Version: Schema.optional(Schema.Number),
   created_at: Schema.optional(Schema.String),
@@ -23,8 +37,7 @@ export const SecretkeySetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.optional(Schema.String),
   updated_at: Schema.optional(Schema.String),
   version: Schema.optional(Schema.Number),
-});
-export type SecretkeySetOutput = typeof SecretkeySetOutput.Type;
+}) as unknown as Schema.Codec<SecretkeySetOutput>;
 
 // The operation
 /**

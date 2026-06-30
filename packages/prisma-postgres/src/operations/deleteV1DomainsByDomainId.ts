@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteV1DomainsByDomainIdInput {
+  domainId: string;
+}
 export const DeleteV1DomainsByDomainIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domainId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/domains/{domainId}" }));
-export type DeleteV1DomainsByDomainIdInput =
-  typeof DeleteV1DomainsByDomainIdInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/v1/domains/{domainId}" }),
+  ) as unknown as Schema.Codec<DeleteV1DomainsByDomainIdInput>;
 
 // Output Schema
+export type DeleteV1DomainsByDomainIdOutput = void;
 export const DeleteV1DomainsByDomainIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteV1DomainsByDomainIdOutput =
-  typeof DeleteV1DomainsByDomainIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1DomainsByDomainIdOutput>;
 
 // The operation
 /**

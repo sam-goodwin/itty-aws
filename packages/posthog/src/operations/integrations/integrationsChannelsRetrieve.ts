@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsChannelsRetrieveInput {
+  id: number;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const IntegrationsChannelsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -16,11 +23,21 @@ export const IntegrationsChannelsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/channels/",
     }),
-  );
-export type IntegrationsChannelsRetrieveInput =
-  typeof IntegrationsChannelsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsChannelsRetrieveInput>;
 
 // Output Schema
+export interface IntegrationsChannelsRetrieveOutput {
+  channels: {
+    id: string;
+    name: string;
+    is_private: boolean;
+    is_member: boolean;
+    is_ext_shared: boolean;
+    is_private_without_access: boolean;
+  }[];
+  lastRefreshedAt?: string | null;
+  has_more?: boolean;
+}
 export const IntegrationsChannelsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channels: Schema.Array(
@@ -35,9 +52,7 @@ export const IntegrationsChannelsRetrieveOutput =
     ),
     lastRefreshedAt: Schema.optional(Schema.NullOr(Schema.String)),
     has_more: Schema.optional(Schema.Boolean),
-  });
-export type IntegrationsChannelsRetrieveOutput =
-  typeof IntegrationsChannelsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsChannelsRetrieveOutput>;
 
 // The operation
 /**

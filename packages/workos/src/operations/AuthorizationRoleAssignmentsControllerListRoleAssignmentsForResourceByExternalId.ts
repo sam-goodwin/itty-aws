@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdInput {
+  organization_id: string;
+  resource_type_slug: string;
+  external_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  role_slug?: string;
+}
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -19,11 +29,22 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourc
       method: "GET",
       path: "/authorization/organizations/{organization_id}/resources/{resource_type_slug}/{external_id}/role_assignments",
     }),
-  );
-export type AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdInput =
-  typeof AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdInput>;
 
 // Output Schema
+export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    organization_membership_id: string;
+    role: { slug?: string };
+    resource: { id: string; external_id: string; resource_type_slug: string };
+    created_at: string;
+    updated_at: string;
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -48,9 +69,7 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourc
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdOutput =
-  typeof AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdOutput>;
 
 // The operation
 /**

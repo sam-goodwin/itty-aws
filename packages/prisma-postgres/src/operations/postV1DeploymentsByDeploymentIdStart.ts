@@ -4,24 +4,26 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface PostV1DeploymentsByDeploymentIdStartInput {
+  deploymentId: string;
+}
 export const PostV1DeploymentsByDeploymentIdStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/v1/deployments/{deploymentId}/start" }),
-  );
-export type PostV1DeploymentsByDeploymentIdStartInput =
-  typeof PostV1DeploymentsByDeploymentIdStartInput.Type;
+  ) as unknown as Schema.Codec<PostV1DeploymentsByDeploymentIdStartInput>;
 
 // Output Schema
+export interface PostV1DeploymentsByDeploymentIdStartOutput {
+  data: { previewDomain: string };
+}
 export const PostV1DeploymentsByDeploymentIdStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       previewDomain: Schema.String,
     }),
-  });
-export type PostV1DeploymentsByDeploymentIdStartOutput =
-  typeof PostV1DeploymentsByDeploymentIdStartOutput.Type;
+  }) as unknown as Schema.Codec<PostV1DeploymentsByDeploymentIdStartOutput>;
 
 // The operation
 /**

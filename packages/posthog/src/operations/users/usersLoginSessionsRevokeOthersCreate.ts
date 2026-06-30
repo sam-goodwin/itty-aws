@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersLoginSessionsRevokeOthersCreateInput {
+  uuid: string;
+}
 export const UsersLoginSessionsRevokeOthersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
@@ -11,17 +14,16 @@ export const UsersLoginSessionsRevokeOthersCreateInput =
       method: "POST",
       path: "/api/users/{uuid}/login_sessions/revoke_others/",
     }),
-  );
-export type UsersLoginSessionsRevokeOthersCreateInput =
-  typeof UsersLoginSessionsRevokeOthersCreateInput.Type;
+  ) as unknown as Schema.Codec<UsersLoginSessionsRevokeOthersCreateInput>;
 
 // Output Schema
+export interface UsersLoginSessionsRevokeOthersCreateOutput {
+  revoked_count: number;
+}
 export const UsersLoginSessionsRevokeOthersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revoked_count: Schema.Number,
-  });
-export type UsersLoginSessionsRevokeOthersCreateOutput =
-  typeof UsersLoginSessionsRevokeOthersCreateOutput.Type;
+  }) as unknown as Schema.Codec<UsersLoginSessionsRevokeOthersCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetProjectBranchInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetProjectBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,54 @@ export const GetProjectBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/projects/{project_id}/branches/{branch_id}",
   }),
-);
-export type GetProjectBranchInput = typeof GetProjectBranchInput.Type;
+) as unknown as Schema.Codec<GetProjectBranchInput>;
 
 // Output Schema
+export interface GetProjectBranchOutput {
+  branch: {
+    id: string;
+    project_id: string;
+    parent_id?: string;
+    parent_lsn?: string;
+    parent_timestamp?: string;
+    name: string;
+    current_state: string;
+    pending_state?: string;
+    state_changed_at: string;
+    logical_size?: number;
+    creation_source: string;
+    primary?: boolean;
+    default: boolean;
+    protected: boolean;
+    cpu_used_sec: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    written_data_bytes: number;
+    data_transfer_bytes: number;
+    created_at: string;
+    updated_at: string;
+    ttl_interval_seconds?: number;
+    expires_at?: string;
+    last_reset_at?: string;
+    created_by?: { name?: string; image?: string };
+    init_source?: string;
+    restore_status?: string;
+    restored_from?: string;
+    restored_as?: string;
+    restricted_actions?: { name: string; reason: string }[];
+    recovery?: {
+      deleted_at: string;
+      recoverable_until: string;
+      deletion_method: "user" | "ttl";
+    };
+  };
+  annotation: {
+    object: { type: string; id: string };
+    value: Record<string, string>;
+    created_at?: string;
+    updated_at?: string;
+  };
+}
 export const GetProjectBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     branch: Schema.Struct({
@@ -79,8 +127,7 @@ export const GetProjectBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       updated_at: Schema.optional(Schema.String),
     }),
   },
-);
-export type GetProjectBranchOutput = typeof GetProjectBranchOutput.Type;
+) as unknown as Schema.Codec<GetProjectBranchOutput>;
 
 // The operation
 /**

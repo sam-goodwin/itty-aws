@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface B2CTenantsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+  countryCode: string;
+}
 export const B2CTenantsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20,19 +25,20 @@ export const B2CTenantsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureActiveDirectory/checkNameAvailability",
       apiVersion: "2021-04-01",
     }),
-  );
-export type B2CTenantsCheckNameAvailabilityInput =
-  typeof B2CTenantsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<B2CTenantsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface B2CTenantsCheckNameAvailabilityOutput {
+  message?: string;
+  nameAvailable?: boolean;
+  reason?: "AlreadyExists" | "Invalid";
+}
 export const B2CTenantsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["AlreadyExists", "Invalid"])),
-  });
-export type B2CTenantsCheckNameAvailabilityOutput =
-  typeof B2CTenantsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<B2CTenantsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -47,6 +53,17 @@ export const B2CTenantsCheckNameAvailability =
     outputSchema: B2CTenantsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface B2CTenantsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  location: string;
+  properties: {
+    createTenantProperties?: { displayName?: string; countryCode?: string };
+  };
+  sku: { name?: "Standard" | "PremiumP1" | "PremiumP2"; tier?: "A0" };
+  tags?: Record<string, string>;
+}
 export const B2CTenantsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -73,10 +90,32 @@ export const B2CTenantsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
     apiVersion: "2021-04-01",
   }),
-);
-export type B2CTenantsCreateInput = typeof B2CTenantsCreateInput.Type;
+) as unknown as Schema.Codec<B2CTenantsCreateInput>;
 
 // Output Schema
+export interface B2CTenantsCreateOutput {
+  type?: "Microsoft.AzureActiveDirectory/b2cDirectories";
+  sku: { name?: "Standard" | "PremiumP1" | "PremiumP2"; tier?: "A0" };
+  properties?: {
+    billingConfig?: {
+      billingType?: "MAU" | "Auths";
+      effectiveStartDateUtc?: string;
+    };
+    tenantId?: string;
+  };
+  id?: string;
+  name?: string;
+  location: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const B2CTenantsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     type: Schema.optional(
@@ -118,8 +157,7 @@ export const B2CTenantsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type B2CTenantsCreateOutput = typeof B2CTenantsCreateOutput.Type;
+) as unknown as Schema.Codec<B2CTenantsCreateOutput>;
 
 // The operation
 /**
@@ -135,6 +173,11 @@ export const B2CTenantsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: B2CTenantsCreateOutput,
 }));
 // Input Schema
+export interface B2CTenantsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const B2CTenantsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -145,12 +188,12 @@ export const B2CTenantsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
     apiVersion: "2021-04-01",
   }),
-);
-export type B2CTenantsDeleteInput = typeof B2CTenantsDeleteInput.Type;
+) as unknown as Schema.Codec<B2CTenantsDeleteInput>;
 
 // Output Schema
-export const B2CTenantsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type B2CTenantsDeleteOutput = typeof B2CTenantsDeleteOutput.Type;
+export type B2CTenantsDeleteOutput = void;
+export const B2CTenantsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<B2CTenantsDeleteOutput>;
 
 // The operation
 /**
@@ -166,6 +209,11 @@ export const B2CTenantsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: B2CTenantsDeleteOutput,
 }));
 // Input Schema
+export interface B2CTenantsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const B2CTenantsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -176,10 +224,32 @@ export const B2CTenantsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
     apiVersion: "2021-04-01",
   }),
-);
-export type B2CTenantsGetInput = typeof B2CTenantsGetInput.Type;
+) as unknown as Schema.Codec<B2CTenantsGetInput>;
 
 // Output Schema
+export interface B2CTenantsGetOutput {
+  type?: "Microsoft.AzureActiveDirectory/b2cDirectories";
+  sku: { name?: "Standard" | "PremiumP1" | "PremiumP2"; tier?: "A0" };
+  properties?: {
+    billingConfig?: {
+      billingType?: "MAU" | "Auths";
+      effectiveStartDateUtc?: string;
+    };
+    tenantId?: string;
+  };
+  id?: string;
+  name?: string;
+  location: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const B2CTenantsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.optional(
     Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
@@ -219,8 +289,7 @@ export const B2CTenantsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type B2CTenantsGetOutput = typeof B2CTenantsGetOutput.Type;
+}) as unknown as Schema.Codec<B2CTenantsGetOutput>;
 
 // The operation
 /**
@@ -236,6 +305,10 @@ export const B2CTenantsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: B2CTenantsGetOutput,
 }));
 // Input Schema
+export interface B2CTenantsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const B2CTenantsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -246,11 +319,34 @@ export const B2CTenantsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories",
       apiVersion: "2021-04-01",
     }),
-  );
-export type B2CTenantsListByResourceGroupInput =
-  typeof B2CTenantsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<B2CTenantsListByResourceGroupInput>;
 
 // Output Schema
+export interface B2CTenantsListByResourceGroupOutput {
+  value?: {
+    type?: "Microsoft.AzureActiveDirectory/b2cDirectories";
+    sku: { name?: "Standard" | "PremiumP1" | "PremiumP2"; tier?: "A0" };
+    properties?: {
+      billingConfig?: {
+        billingType?: "MAU" | "Auths";
+        effectiveStartDateUtc?: string;
+      };
+      tenantId?: string;
+    };
+    id?: string;
+    name?: string;
+    location: string;
+    tags?: Record<string, string>;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const B2CTenantsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -309,9 +405,7 @@ export const B2CTenantsListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type B2CTenantsListByResourceGroupOutput =
-  typeof B2CTenantsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<B2CTenantsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -327,6 +421,9 @@ export const B2CTenantsListByResourceGroup =
     outputSchema: B2CTenantsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface B2CTenantsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const B2CTenantsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -336,11 +433,34 @@ export const B2CTenantsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureActiveDirectory/b2cDirectories",
       apiVersion: "2021-04-01",
     }),
-  );
-export type B2CTenantsListBySubscriptionInput =
-  typeof B2CTenantsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<B2CTenantsListBySubscriptionInput>;
 
 // Output Schema
+export interface B2CTenantsListBySubscriptionOutput {
+  value?: {
+    type?: "Microsoft.AzureActiveDirectory/b2cDirectories";
+    sku: { name?: "Standard" | "PremiumP1" | "PremiumP2"; tier?: "A0" };
+    properties?: {
+      billingConfig?: {
+        billingType?: "MAU" | "Auths";
+        effectiveStartDateUtc?: string;
+      };
+      tenantId?: string;
+    };
+    id?: string;
+    name?: string;
+    location: string;
+    tags?: Record<string, string>;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const B2CTenantsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -399,9 +519,7 @@ export const B2CTenantsListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type B2CTenantsListBySubscriptionOutput =
-  typeof B2CTenantsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<B2CTenantsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -416,6 +534,20 @@ export const B2CTenantsListBySubscription =
     outputSchema: B2CTenantsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface B2CTenantsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  sku?: { name?: "Standard" | "PremiumP1" | "PremiumP2"; tier?: "A0" };
+  properties?: {
+    billingConfig?: {
+      billingType?: "MAU" | "Auths";
+      effectiveStartDateUtc?: string;
+    };
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+}
 export const B2CTenantsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -446,10 +578,32 @@ export const B2CTenantsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
     apiVersion: "2021-04-01",
   }),
-);
-export type B2CTenantsUpdateInput = typeof B2CTenantsUpdateInput.Type;
+) as unknown as Schema.Codec<B2CTenantsUpdateInput>;
 
 // Output Schema
+export interface B2CTenantsUpdateOutput {
+  type?: "Microsoft.AzureActiveDirectory/b2cDirectories";
+  sku: { name?: "Standard" | "PremiumP1" | "PremiumP2"; tier?: "A0" };
+  properties?: {
+    billingConfig?: {
+      billingType?: "MAU" | "Auths";
+      effectiveStartDateUtc?: string;
+    };
+    tenantId?: string;
+  };
+  id?: string;
+  name?: string;
+  location: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const B2CTenantsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     type: Schema.optional(
@@ -491,8 +645,7 @@ export const B2CTenantsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type B2CTenantsUpdateOutput = typeof B2CTenantsUpdateOutput.Type;
+) as unknown as Schema.Codec<B2CTenantsUpdateOutput>;
 
 // The operation
 /**
@@ -508,6 +661,25 @@ export const B2CTenantsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: B2CTenantsUpdateOutput,
 }));
 // Input Schema
+export interface GuestUsagesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  properties?: { tenantId?: string };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestUsagesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -544,10 +716,25 @@ export const GuestUsagesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
     apiVersion: "2021-04-01",
   }),
-);
-export type GuestUsagesCreateInput = typeof GuestUsagesCreateInput.Type;
+) as unknown as Schema.Codec<GuestUsagesCreateInput>;
 
 // Output Schema
+export interface GuestUsagesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  properties?: { tenantId?: string };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestUsagesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -574,8 +761,7 @@ export const GuestUsagesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GuestUsagesCreateOutput = typeof GuestUsagesCreateOutput.Type;
+  }) as unknown as Schema.Codec<GuestUsagesCreateOutput>;
 
 // The operation
 /**
@@ -593,6 +779,11 @@ export const GuestUsagesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestUsagesCreateOutput,
 }));
 // Input Schema
+export interface GuestUsagesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const GuestUsagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -605,12 +796,12 @@ export const GuestUsagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
     apiVersion: "2021-04-01",
   }),
-);
-export type GuestUsagesDeleteInput = typeof GuestUsagesDeleteInput.Type;
+) as unknown as Schema.Codec<GuestUsagesDeleteInput>;
 
 // Output Schema
-export const GuestUsagesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GuestUsagesDeleteOutput = typeof GuestUsagesDeleteOutput.Type;
+export type GuestUsagesDeleteOutput = void;
+export const GuestUsagesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestUsagesDeleteOutput>;
 
 // The operation
 /**
@@ -628,6 +819,11 @@ export const GuestUsagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestUsagesDeleteOutput,
 }));
 // Input Schema
+export interface GuestUsagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const GuestUsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -638,10 +834,25 @@ export const GuestUsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
     apiVersion: "2021-04-01",
   }),
-);
-export type GuestUsagesGetInput = typeof GuestUsagesGetInput.Type;
+) as unknown as Schema.Codec<GuestUsagesGetInput>;
 
 // Output Schema
+export interface GuestUsagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  properties?: { tenantId?: string };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestUsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -667,8 +878,7 @@ export const GuestUsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GuestUsagesGetOutput = typeof GuestUsagesGetOutput.Type;
+}) as unknown as Schema.Codec<GuestUsagesGetOutput>;
 
 // The operation
 /**
@@ -686,6 +896,10 @@ export const GuestUsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestUsagesGetOutput,
 }));
 // Input Schema
+export interface GuestUsagesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const GuestUsagesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -696,11 +910,27 @@ export const GuestUsagesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages",
       apiVersion: "2021-04-01",
     }),
-  );
-export type GuestUsagesListByResourceGroupInput =
-  typeof GuestUsagesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<GuestUsagesListByResourceGroupInput>;
 
 // Output Schema
+export interface GuestUsagesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    properties?: { tenantId?: string };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const GuestUsagesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -743,9 +973,7 @@ export const GuestUsagesListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type GuestUsagesListByResourceGroupOutput =
-  typeof GuestUsagesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<GuestUsagesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -763,6 +991,9 @@ export const GuestUsagesListByResourceGroup =
     outputSchema: GuestUsagesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface GuestUsagesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const GuestUsagesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -772,11 +1003,27 @@ export const GuestUsagesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureActiveDirectory/guestUsages",
       apiVersion: "2021-04-01",
     }),
-  );
-export type GuestUsagesListBySubscriptionInput =
-  typeof GuestUsagesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<GuestUsagesListBySubscriptionInput>;
 
 // Output Schema
+export interface GuestUsagesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    properties?: { tenantId?: string };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const GuestUsagesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -819,9 +1066,7 @@ export const GuestUsagesListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type GuestUsagesListBySubscriptionOutput =
-  typeof GuestUsagesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<GuestUsagesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -838,6 +1083,12 @@ export const GuestUsagesListBySubscription =
     outputSchema: GuestUsagesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface GuestUsagesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+}
 export const GuestUsagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -851,10 +1102,25 @@ export const GuestUsagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/guestUsages/{resourceName}",
     apiVersion: "2021-04-01",
   }),
-);
-export type GuestUsagesUpdateInput = typeof GuestUsagesUpdateInput.Type;
+) as unknown as Schema.Codec<GuestUsagesUpdateInput>;
 
 // Output Schema
+export interface GuestUsagesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  properties?: { tenantId?: string };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestUsagesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -881,8 +1147,7 @@ export const GuestUsagesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GuestUsagesUpdateOutput = typeof GuestUsagesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GuestUsagesUpdateOutput>;
 
 // The operation
 /**
@@ -900,6 +1165,7 @@ export const GuestUsagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestUsagesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -908,10 +1174,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AzureActiveDirectory/operations",
     apiVersion: "2021-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -931,8 +1210,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

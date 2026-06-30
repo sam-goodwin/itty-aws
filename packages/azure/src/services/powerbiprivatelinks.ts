@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17,10 +18,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.PowerBI/operations",
     apiVersion: "2020-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -43,8 +58,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -57,6 +71,55 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PowerBIResourcesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+  properties?: {
+    tenantId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+        provisioningState?:
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Canceled"
+          | "Failed";
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const PowerBIResourcesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -158,11 +221,55 @@ export const PowerBIResourcesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PowerBIResourcesCreateInput =
-  typeof PowerBIResourcesCreateInput.Type;
+  ) as unknown as Schema.Codec<PowerBIResourcesCreateInput>;
 
 // Output Schema
+export interface PowerBIResourcesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+  properties?: {
+    tenantId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+        provisioningState?:
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Canceled"
+          | "Failed";
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const PowerBIResourcesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -255,9 +362,7 @@ export const PowerBIResourcesCreateOutput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type PowerBIResourcesCreateOutput =
-  typeof PowerBIResourcesCreateOutput.Type;
+  }) as unknown as Schema.Codec<PowerBIResourcesCreateOutput>;
 
 // The operation
 /**
@@ -276,6 +381,11 @@ export const PowerBIResourcesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PowerBIResourcesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+}
 export const PowerBIResourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -287,15 +397,12 @@ export const PowerBIResourcesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PowerBIResourcesDeleteInput =
-  typeof PowerBIResourcesDeleteInput.Type;
+  ) as unknown as Schema.Codec<PowerBIResourcesDeleteInput>;
 
 // Output Schema
+export type PowerBIResourcesDeleteOutput = void;
 export const PowerBIResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PowerBIResourcesDeleteOutput =
-  typeof PowerBIResourcesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PowerBIResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -313,6 +420,11 @@ export const PowerBIResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PowerBIResourcesListByResourceNameInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+}
 export const PowerBIResourcesListByResourceNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -324,11 +436,55 @@ export const PowerBIResourcesListByResourceNameInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PowerBIResourcesListByResourceNameInput =
-  typeof PowerBIResourcesListByResourceNameInput.Type;
+  ) as unknown as Schema.Codec<PowerBIResourcesListByResourceNameInput>;
 
 // Output Schema
+export type PowerBIResourcesListByResourceNameOutput = {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+  properties?: {
+    tenantId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+        provisioningState?:
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Canceled"
+          | "Failed";
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+}[];
 export const PowerBIResourcesListByResourceNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -423,9 +579,7 @@ export const PowerBIResourcesListByResourceNameOutput =
       ),
       tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
-  );
-export type PowerBIResourcesListByResourceNameOutput =
-  typeof PowerBIResourcesListByResourceNameOutput.Type;
+  ) as unknown as Schema.Codec<PowerBIResourcesListByResourceNameOutput>;
 
 // The operation
 /**
@@ -442,6 +596,55 @@ export const PowerBIResourcesListByResourceName =
     outputSchema: PowerBIResourcesListByResourceNameOutput,
   }));
 // Input Schema
+export interface PowerBIResourcesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+  properties?: {
+    tenantId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+        provisioningState?:
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Canceled"
+          | "Failed";
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const PowerBIResourcesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -543,11 +746,55 @@ export const PowerBIResourcesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PowerBIResourcesUpdateInput =
-  typeof PowerBIResourcesUpdateInput.Type;
+  ) as unknown as Schema.Codec<PowerBIResourcesUpdateInput>;
 
 // Output Schema
+export interface PowerBIResourcesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+  properties?: {
+    tenantId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+        provisioningState?:
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Canceled"
+          | "Failed";
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const PowerBIResourcesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -640,9 +887,7 @@ export const PowerBIResourcesUpdateOutput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type PowerBIResourcesUpdateOutput =
-  typeof PowerBIResourcesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PowerBIResourcesUpdateOutput>;
 
 // The operation
 /**
@@ -661,6 +906,38 @@ export const PowerBIResourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateEndpointConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+  privateEndpointName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -723,11 +1000,37 @@ export const PrivateEndpointConnectionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateInput =
-  typeof PrivateEndpointConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -780,9 +1083,7 @@ export const PrivateEndpointConnectionsCreateOutput =
         ),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOutput =
-  typeof PrivateEndpointConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -802,6 +1103,12 @@ export const PrivateEndpointConnectionsCreate =
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+  privateEndpointName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -814,15 +1121,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -842,6 +1146,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+  privateEndpointName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -854,11 +1164,37 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections/{privateEndpointName}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -911,9 +1247,7 @@ export const PrivateEndpointConnectionsGetOutput =
         ),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -933,6 +1267,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+}
 export const PrivateEndpointConnectionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -944,11 +1283,40 @@ export const PrivateEndpointConnectionsListByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateEndpointConnections",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsListByResourceInput =
-  typeof PrivateEndpointConnectionsListByResourceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByResourceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByResourceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    properties?: {
+      privateEndpoint?: { id?: string };
+      privateLinkServiceConnectionState?: {
+        status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+        description?: string;
+        actionsRequired?: string;
+      };
+      provisioningState?:
+        | "Creating"
+        | "Updating"
+        | "Deleting"
+        | "Succeeded"
+        | "Canceled"
+        | "Failed";
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1018,9 +1386,7 @@ export const PrivateEndpointConnectionsListByResourceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByResourceOutput =
-  typeof PrivateEndpointConnectionsListByResourceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByResourceOutput>;
 
 // The operation
 /**
@@ -1039,6 +1405,12 @@ export const PrivateEndpointConnectionsListByResource =
     outputSchema: PrivateEndpointConnectionsListByResourceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1051,11 +1423,19 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  properties?: {
+    groupId?: string;
+    requiredMembers?: string[];
+    requiredZoneNames?: string[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1068,9 +1448,7 @@ export const PrivateLinkResourcesGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -1091,6 +1469,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureResourceName: string;
+}
 export const PrivateLinkResourcesListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1102,11 +1485,22 @@ export const PrivateLinkResourcesListByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI/{azureResourceName}/privateLinkResources",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateLinkResourcesListByResourceInput =
-  typeof PrivateLinkResourcesListByResourceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByResourceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByResourceOutput {
+  value?: {
+    properties?: {
+      groupId?: string;
+      requiredMembers?: string[];
+      requiredZoneNames?: string[];
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1126,9 +1520,7 @@ export const PrivateLinkResourcesListByResourceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByResourceOutput =
-  typeof PrivateLinkResourcesListByResourceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByResourceOutput>;
 
 // The operation
 /**
@@ -1147,6 +1539,10 @@ export const PrivateLinkResourcesListByResource =
     outputSchema: PrivateLinkResourcesListByResourceOutput,
   }));
 // Input Schema
+export interface PrivateLinkServiceResourceOperationResultsGetInput {
+  subscriptionId: string;
+  operationId: string;
+}
 export const PrivateLinkServiceResourceOperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1157,11 +1553,29 @@ export const PrivateLinkServiceResourceOperationResultsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/operationResults/{operationId}",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateLinkServiceResourceOperationResultsGetInput =
-  typeof PrivateLinkServiceResourceOperationResultsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServiceResourceOperationResultsGetInput>;
 
 // Output Schema
+export interface PrivateLinkServiceResourceOperationResultsGetOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const PrivateLinkServiceResourceOperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1202,9 +1616,7 @@ export const PrivateLinkServiceResourceOperationResultsGetOutput =
         ),
       }),
     ),
-  });
-export type PrivateLinkServiceResourceOperationResultsGetOutput =
-  typeof PrivateLinkServiceResourceOperationResultsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServiceResourceOperationResultsGetOutput>;
 
 // The operation
 /**
@@ -1220,6 +1632,9 @@ export const PrivateLinkServiceResourceOperationResultsGet =
     outputSchema: PrivateLinkServiceResourceOperationResultsGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForPowerBIListBySubscriptionIdInput {
+  subscriptionId: string;
+}
 export const PrivateLinkServicesForPowerBIListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1229,11 +1644,55 @@ export const PrivateLinkServicesForPowerBIListBySubscriptionIdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateLinkServicesForPowerBIListBySubscriptionIdInput =
-  typeof PrivateLinkServicesForPowerBIListBySubscriptionIdInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForPowerBIListBySubscriptionIdInput>;
 
 // Output Schema
+export type PrivateLinkServicesForPowerBIListBySubscriptionIdOutput = {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+  properties?: {
+    tenantId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+        provisioningState?:
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Canceled"
+          | "Failed";
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+}[];
 export const PrivateLinkServicesForPowerBIListBySubscriptionIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -1328,9 +1787,7 @@ export const PrivateLinkServicesForPowerBIListBySubscriptionIdOutput =
       ),
       tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
-  );
-export type PrivateLinkServicesForPowerBIListBySubscriptionIdOutput =
-  typeof PrivateLinkServicesForPowerBIListBySubscriptionIdOutput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForPowerBIListBySubscriptionIdOutput>;
 
 // The operation
 /**
@@ -1345,6 +1802,10 @@ export const privateLinkServicesForPowerBIListBySubscriptionId =
     outputSchema: PrivateLinkServicesForPowerBIListBySubscriptionIdOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PrivateLinkServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1355,11 +1816,55 @@ export const PrivateLinkServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI",
       apiVersion: "2020-06-01",
     }),
-  );
-export type PrivateLinkServicesListByResourceGroupInput =
-  typeof PrivateLinkServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesListByResourceGroupInput>;
 
 // Output Schema
+export type PrivateLinkServicesListByResourceGroupOutput = {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+  properties?: {
+    tenantId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+        provisioningState?:
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Succeeded"
+          | "Canceled"
+          | "Failed";
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+}[];
 export const PrivateLinkServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -1454,9 +1959,7 @@ export const PrivateLinkServicesListByResourceGroupOutput =
       ),
       tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
-  );
-export type PrivateLinkServicesListByResourceGroupOutput =
-  typeof PrivateLinkServicesListByResourceGroupOutput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesListByResourceGroupOutput>;
 
 // The operation
 /**

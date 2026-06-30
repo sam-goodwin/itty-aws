@@ -3,6 +3,20 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsReportsStateCreateInput {
+  id: string;
+  project_id: string;
+  state: "suppressed" | "potential";
+  dismissal_reason?:
+    | "already_fixed"
+    | "report_unclear"
+    | "analysis_wrong"
+    | "wontfix_intentional"
+    | "wontfix_irrelevant"
+    | "other";
+  dismissal_note?: string;
+  snooze_for?: number;
+}
 export const SignalsReportsStateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -25,11 +39,38 @@ export const SignalsReportsStateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/reports/{id}/state/",
     }),
-  );
-export type SignalsReportsStateCreateInput =
-  typeof SignalsReportsStateCreateInput.Type;
+  ) as unknown as Schema.Codec<SignalsReportsStateCreateInput>;
 
 // Output Schema
+export interface SignalsReportsStateCreateOutput {
+  id: string;
+  title: string | null;
+  summary: string | null;
+  status:
+    | "potential"
+    | "candidate"
+    | "in_progress"
+    | "pending_input"
+    | "ready"
+    | "resolved"
+    | "failed"
+    | "deleted"
+    | "suppressed";
+  total_weight: number;
+  signal_count: number;
+  signals_at_run: number;
+  created_at: string;
+  updated_at: string;
+  artefact_count: number;
+  priority: string | null;
+  actionability: string | null;
+  already_addressed: boolean | null;
+  dismissal_reason: string | null;
+  dismissal_note: string | null;
+  is_suggested_reviewer: boolean;
+  source_products: string[];
+  implementation_pr_url: string | null;
+}
 export const SignalsReportsStateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -60,9 +101,7 @@ export const SignalsReportsStateCreateOutput =
     is_suggested_reviewer: Schema.Boolean,
     source_products: Schema.Array(Schema.String),
     implementation_pr_url: Schema.NullOr(Schema.String),
-  });
-export type SignalsReportsStateCreateOutput =
-  typeof SignalsReportsStateCreateOutput.Type;
+  }) as unknown as Schema.Codec<SignalsReportsStateCreateOutput>;
 
 // The operation
 /**

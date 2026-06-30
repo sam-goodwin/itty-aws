@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteTerminalConfigurationsConfigurationInput {
+  configuration: string;
+}
 export const DeleteTerminalConfigurationsConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
@@ -12,19 +15,20 @@ export const DeleteTerminalConfigurationsConfigurationInput =
       path: "/v1/terminal/configurations/{configuration}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteTerminalConfigurationsConfigurationInput =
-  typeof DeleteTerminalConfigurationsConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DeleteTerminalConfigurationsConfigurationInput>;
 
 // Output Schema
+export interface DeleteTerminalConfigurationsConfigurationOutput {
+  deleted: true;
+  id: string;
+  object: "terminal.configuration";
+}
 export const DeleteTerminalConfigurationsConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["terminal.configuration"]),
-  });
-export type DeleteTerminalConfigurationsConfigurationOutput =
-  typeof DeleteTerminalConfigurationsConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteTerminalConfigurationsConfigurationOutput>;
 
 // The operation
 /**

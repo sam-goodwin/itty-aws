@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface PinGroupClusterFeatureCompatibilityVersionInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const PinGroupClusterFeatureCompatibilityVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const PinGroupClusterFeatureCompatibilityVersionInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion",
     }),
-  );
-export type PinGroupClusterFeatureCompatibilityVersionInput =
-  typeof PinGroupClusterFeatureCompatibilityVersionInput.Type;
+  ) as unknown as Schema.Codec<PinGroupClusterFeatureCompatibilityVersionInput>;
 
 // Output Schema
+export type PinGroupClusterFeatureCompatibilityVersionOutput = void;
 export const PinGroupClusterFeatureCompatibilityVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PinGroupClusterFeatureCompatibilityVersionOutput =
-  typeof PinGroupClusterFeatureCompatibilityVersionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PinGroupClusterFeatureCompatibilityVersionOutput>;
 
 // The operation
 /**

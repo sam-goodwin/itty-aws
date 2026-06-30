@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteQueryPatternsReportInput {
+  organization: string;
+  database: string;
+  branch: string;
+  id: string;
+}
 export const DeleteQueryPatternsReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteQueryPatternsReportInput =
       method: "DELETE",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns/{id}",
     }),
-  );
-export type DeleteQueryPatternsReportInput =
-  typeof DeleteQueryPatternsReportInput.Type;
+  ) as unknown as Schema.Codec<DeleteQueryPatternsReportInput>;
 
 // Output Schema
+export type DeleteQueryPatternsReportOutput = void;
 export const DeleteQueryPatternsReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteQueryPatternsReportOutput =
-  typeof DeleteQueryPatternsReportOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteQueryPatternsReportOutput>;
 
 // The operation
 /**

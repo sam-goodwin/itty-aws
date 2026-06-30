@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsStreamTokenRetrieveInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+}
 export const TasksRunsStreamTokenRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,18 +19,18 @@ export const TasksRunsStreamTokenRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/stream_token/",
     }),
-  );
-export type TasksRunsStreamTokenRetrieveInput =
-  typeof TasksRunsStreamTokenRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsStreamTokenRetrieveInput>;
 
 // Output Schema
+export interface TasksRunsStreamTokenRetrieveOutput {
+  token: string;
+  stream_base_url: string | null;
+}
 export const TasksRunsStreamTokenRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.String,
     stream_base_url: Schema.NullOr(Schema.String),
-  });
-export type TasksRunsStreamTokenRetrieveOutput =
-  typeof TasksRunsStreamTokenRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsStreamTokenRetrieveOutput>;
 
 // The operation
 /**

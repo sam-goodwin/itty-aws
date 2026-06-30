@@ -4,12 +4,30 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface BgpPeersCreateOrUpdateInput {
+  resourceUri: string;
+  bgpPeerName: string;
+  properties?: {
+    myAsn: number;
+    peerAsn: number;
+    peerAddress: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const BgpPeersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -38,11 +56,22 @@ export const BgpPeersCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type BgpPeersCreateOrUpdateInput =
-  typeof BgpPeersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BgpPeersCreateOrUpdateInput>;
 
 // Output Schema
+export interface BgpPeersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BgpPeersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -62,9 +91,7 @@ export const BgpPeersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BgpPeersCreateOrUpdateOutput =
-  typeof BgpPeersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BgpPeersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -81,6 +108,10 @@ export const BgpPeersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BgpPeersDeleteInput {
+  resourceUri: string;
+  bgpPeerName: string;
+}
 export const BgpPeersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   bgpPeerName: Schema.String.pipe(T.PathParam()),
@@ -90,12 +121,12 @@ export const BgpPeersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type BgpPeersDeleteInput = typeof BgpPeersDeleteInput.Type;
+) as unknown as Schema.Codec<BgpPeersDeleteInput>;
 
 // Output Schema
-export const BgpPeersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BgpPeersDeleteOutput = typeof BgpPeersDeleteOutput.Type;
+export type BgpPeersDeleteOutput = void;
+export const BgpPeersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BgpPeersDeleteOutput>;
 
 // The operation
 /**
@@ -110,6 +141,10 @@ export const BgpPeersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BgpPeersDeleteOutput,
 }));
 // Input Schema
+export interface BgpPeersGetInput {
+  resourceUri: string;
+  bgpPeerName: string;
+}
 export const BgpPeersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   bgpPeerName: Schema.String.pipe(T.PathParam()),
@@ -119,10 +154,22 @@ export const BgpPeersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type BgpPeersGetInput = typeof BgpPeersGetInput.Type;
+) as unknown as Schema.Codec<BgpPeersGetInput>;
 
 // Output Schema
+export interface BgpPeersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BgpPeersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -141,8 +188,7 @@ export const BgpPeersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BgpPeersGetOutput = typeof BgpPeersGetOutput.Type;
+}) as unknown as Schema.Codec<BgpPeersGetOutput>;
 
 // The operation
 /**
@@ -157,6 +203,9 @@ export const BgpPeersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BgpPeersGetOutput,
 }));
 // Input Schema
+export interface BgpPeersListInput {
+  resourceUri: string;
+}
 export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -165,10 +214,25 @@ export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers",
     apiVersion: "2024-03-01",
   }),
-);
-export type BgpPeersListInput = typeof BgpPeersListInput.Type;
+) as unknown as Schema.Codec<BgpPeersListInput>;
 
 // Output Schema
+export interface BgpPeersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BgpPeersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -192,8 +256,7 @@ export const BgpPeersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type BgpPeersListOutput = typeof BgpPeersListOutput.Type;
+}) as unknown as Schema.Codec<BgpPeersListOutput>;
 
 // The operation
 /**
@@ -207,6 +270,24 @@ export const BgpPeersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BgpPeersListOutput,
 }));
 // Input Schema
+export interface LoadBalancersCreateOrUpdateInput {
+  resourceUri: string;
+  loadBalancerName: string;
+  properties?: {
+    addresses: string[];
+    serviceSelector?: Record<string, string>;
+    advertiseMode: "ARP" | "BGP" | "Both";
+    bgpPeers?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const LoadBalancersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -238,11 +319,22 @@ export const LoadBalancersCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type LoadBalancersCreateOrUpdateInput =
-  typeof LoadBalancersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LoadBalancersCreateOrUpdateInput>;
 
 // Output Schema
+export interface LoadBalancersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LoadBalancersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -262,9 +354,7 @@ export const LoadBalancersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LoadBalancersCreateOrUpdateOutput =
-  typeof LoadBalancersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LoadBalancersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -281,6 +371,10 @@ export const LoadBalancersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LoadBalancersDeleteInput {
+  resourceUri: string;
+  loadBalancerName: string;
+}
 export const LoadBalancersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -291,13 +385,12 @@ export const LoadBalancersDeleteInput =
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type LoadBalancersDeleteInput = typeof LoadBalancersDeleteInput.Type;
+  ) as unknown as Schema.Codec<LoadBalancersDeleteInput>;
 
 // Output Schema
+export type LoadBalancersDeleteOutput = void;
 export const LoadBalancersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LoadBalancersDeleteOutput = typeof LoadBalancersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LoadBalancersDeleteOutput>;
 
 // The operation
 /**
@@ -312,6 +405,10 @@ export const LoadBalancersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LoadBalancersDeleteOutput,
 }));
 // Input Schema
+export interface LoadBalancersGetInput {
+  resourceUri: string;
+  loadBalancerName: string;
+}
 export const LoadBalancersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   loadBalancerName: Schema.String.pipe(T.PathParam()),
@@ -321,10 +418,22 @@ export const LoadBalancersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type LoadBalancersGetInput = typeof LoadBalancersGetInput.Type;
+) as unknown as Schema.Codec<LoadBalancersGetInput>;
 
 // Output Schema
+export interface LoadBalancersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LoadBalancersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -345,8 +454,7 @@ export const LoadBalancersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type LoadBalancersGetOutput = typeof LoadBalancersGetOutput.Type;
+) as unknown as Schema.Codec<LoadBalancersGetOutput>;
 
 // The operation
 /**
@@ -361,6 +469,9 @@ export const LoadBalancersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LoadBalancersGetOutput,
 }));
 // Input Schema
+export interface LoadBalancersListInput {
+  resourceUri: string;
+}
 export const LoadBalancersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -371,10 +482,25 @@ export const LoadBalancersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers",
     apiVersion: "2024-03-01",
   }),
-);
-export type LoadBalancersListInput = typeof LoadBalancersListInput.Type;
+) as unknown as Schema.Codec<LoadBalancersListInput>;
 
 // Output Schema
+export interface LoadBalancersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LoadBalancersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -409,8 +535,7 @@ export const LoadBalancersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LoadBalancersListOutput = typeof LoadBalancersListOutput.Type;
+  }) as unknown as Schema.Codec<LoadBalancersListOutput>;
 
 // The operation
 /**
@@ -424,6 +549,7 @@ export const LoadBalancersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LoadBalancersListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -432,10 +558,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.KubernetesRuntime/operations",
     apiVersion: "2024-03-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -458,8 +598,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -472,6 +611,21 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ServicesCreateOrUpdateInput {
+  resourceUri: string;
+  serviceName: string;
+  properties?: {
+    rpObjectId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -498,11 +652,22 @@ export const ServicesCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ServicesCreateOrUpdateInput =
-  typeof ServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -522,9 +687,7 @@ export const ServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServicesCreateOrUpdateOutput =
-  typeof ServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -541,6 +704,10 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesDeleteInput {
+  resourceUri: string;
+  serviceName: string;
+}
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -550,12 +717,12 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+export type ServicesDeleteOutput = void;
+export const ServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -570,6 +737,10 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
+export interface ServicesGetInput {
+  resourceUri: string;
+  serviceName: string;
+}
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
@@ -579,10 +750,22 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ServicesGetInput = typeof ServicesGetInput.Type;
+) as unknown as Schema.Codec<ServicesGetInput>;
 
 // Output Schema
+export interface ServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -601,8 +784,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServicesGetOutput = typeof ServicesGetOutput.Type;
+}) as unknown as Schema.Codec<ServicesGetOutput>;
 
 // The operation
 /**
@@ -617,6 +799,9 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
+export interface ServicesListInput {
+  resourceUri: string;
+}
 export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -625,10 +810,25 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services",
     apiVersion: "2024-03-01",
   }),
-);
-export type ServicesListInput = typeof ServicesListInput.Type;
+) as unknown as Schema.Codec<ServicesListInput>;
 
 // Output Schema
+export interface ServicesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -652,8 +852,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ServicesListOutput = typeof ServicesListOutput.Type;
+}) as unknown as Schema.Codec<ServicesListOutput>;
 
 // The operation
 /**
@@ -667,6 +866,31 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
+export interface StorageClassCreateOrUpdateInput {
+  resourceUri: string;
+  storageClassName: string;
+  properties?: {
+    allowVolumeExpansion?: "Allow" | "Disallow";
+    mountOptions?: string[];
+    provisioner?: string;
+    volumeBindingMode?: "Immediate" | "WaitForFirstConsumer";
+    accessModes?: ("ReadWriteOnce" | "ReadWriteMany")[];
+    dataResilience?: "NotDataResilient" | "DataResilient";
+    failoverSpeed?: "NotAvailable" | "Slow" | "Fast" | "Super";
+    limitations?: string[];
+    performance?: "Undefined" | "Basic" | "Standard" | "Premium" | "Ultra";
+    priority?: number;
+    typeProperties: { type: "Native" | "RWX" | "Blob" | "NFS" | "SMB" };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const StorageClassCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -723,11 +947,22 @@ export const StorageClassCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type StorageClassCreateOrUpdateInput =
-  typeof StorageClassCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageClassCreateOrUpdateInput>;
 
 // Output Schema
+export interface StorageClassCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageClassCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -747,9 +982,7 @@ export const StorageClassCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageClassCreateOrUpdateOutput =
-  typeof StorageClassCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageClassCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -766,6 +999,10 @@ export const StorageClassCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageClassDeleteInput {
+  resourceUri: string;
+  storageClassName: string;
+}
 export const StorageClassDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -776,12 +1013,12 @@ export const StorageClassDeleteInput =
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type StorageClassDeleteInput = typeof StorageClassDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageClassDeleteInput>;
 
 // Output Schema
-export const StorageClassDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageClassDeleteOutput = typeof StorageClassDeleteOutput.Type;
+export type StorageClassDeleteOutput = void;
+export const StorageClassDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageClassDeleteOutput>;
 
 // The operation
 /**
@@ -796,6 +1033,10 @@ export const StorageClassDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageClassDeleteOutput,
 }));
 // Input Schema
+export interface StorageClassGetInput {
+  resourceUri: string;
+  storageClassName: string;
+}
 export const StorageClassGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   storageClassName: Schema.String.pipe(T.PathParam()),
@@ -805,10 +1046,22 @@ export const StorageClassGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type StorageClassGetInput = typeof StorageClassGetInput.Type;
+) as unknown as Schema.Codec<StorageClassGetInput>;
 
 // Output Schema
+export interface StorageClassGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageClassGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -827,8 +1080,7 @@ export const StorageClassGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type StorageClassGetOutput = typeof StorageClassGetOutput.Type;
+}) as unknown as Schema.Codec<StorageClassGetOutput>;
 
 // The operation
 /**
@@ -843,6 +1095,9 @@ export const StorageClassGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageClassGetOutput,
 }));
 // Input Schema
+export interface StorageClassListInput {
+  resourceUri: string;
+}
 export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -851,10 +1106,25 @@ export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses",
     apiVersion: "2024-03-01",
   }),
-);
-export type StorageClassListInput = typeof StorageClassListInput.Type;
+) as unknown as Schema.Codec<StorageClassListInput>;
 
 // Output Schema
+export interface StorageClassListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageClassListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -890,8 +1160,7 @@ export const StorageClassListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type StorageClassListOutput = typeof StorageClassListOutput.Type;
+) as unknown as Schema.Codec<StorageClassListOutput>;
 
 // The operation
 /**
@@ -905,6 +1174,34 @@ export const StorageClassList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageClassListOutput,
 }));
 // Input Schema
+export interface StorageClassUpdateInput {
+  resourceUri: string;
+  storageClassName: string;
+  properties?: {
+    allowVolumeExpansion?: "Allow" | "Disallow";
+    mountOptions?: string[];
+    accessModes?: ("ReadWriteOnce" | "ReadWriteMany")[];
+    dataResilience?: "NotDataResilient" | "DataResilient";
+    failoverSpeed?: "NotAvailable" | "Slow" | "Fast" | "Super";
+    limitations?: string[];
+    performance?: "Undefined" | "Basic" | "Standard" | "Premium" | "Ultra";
+    priority?: number;
+    typeProperties?: {
+      backingStorageClassName?: string;
+      azureStorageAccountName?: string;
+      azureStorageAccountKey?: string;
+      server?: string;
+      share?: string;
+      subDir?: string;
+      mountPermissions?: string;
+      onDelete?: "Delete" | "Retain";
+      source?: string;
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+      domain?: string;
+    };
+  };
+}
 export const StorageClassUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -959,10 +1256,22 @@ export const StorageClassUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type StorageClassUpdateInput = typeof StorageClassUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageClassUpdateInput>;
 
 // Output Schema
+export interface StorageClassUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageClassUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -982,8 +1291,7 @@ export const StorageClassUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageClassUpdateOutput = typeof StorageClassUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageClassUpdateOutput>;
 
 // The operation
 /**

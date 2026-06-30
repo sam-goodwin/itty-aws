@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupCustomDbRoleRoleInput {
+  groupId: string;
+  roleName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupCustomDbRoleRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteGroupCustomDbRoleRoleInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
     }),
-  );
-export type DeleteGroupCustomDbRoleRoleInput =
-  typeof DeleteGroupCustomDbRoleRoleInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupCustomDbRoleRoleInput>;
 
 // Output Schema
+export type DeleteGroupCustomDbRoleRoleOutput = void;
 export const DeleteGroupCustomDbRoleRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupCustomDbRoleRoleOutput =
-  typeof DeleteGroupCustomDbRoleRoleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupCustomDbRoleRoleOutput>;
 
 // The operation
 /**

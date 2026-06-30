@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserInvitesControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  organization_id?: string;
+  email?: string;
+}
 export const UserlandUserInvitesControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -12,11 +20,32 @@ export const UserlandUserInvitesControllerListInput =
     order: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/user_management/invitations" }));
-export type UserlandUserInvitesControllerListInput =
-  typeof UserlandUserInvitesControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/user_management/invitations" }),
+  ) as unknown as Schema.Codec<UserlandUserInvitesControllerListInput>;
 
 // Output Schema
+export interface UserlandUserInvitesControllerListOutput {
+  object: string;
+  data: {
+    object?: string;
+    id?: string;
+    email?: string;
+    state?: "pending" | "accepted" | "expired" | "revoked";
+    accepted_at?: string | null;
+    revoked_at?: string | null;
+    expires_at?: string;
+    organization_id?: string | null;
+    inviter_user_id?: string | null;
+    accepted_user_id?: string | null;
+    role_slug?: string | null;
+    created_at?: string;
+    updated_at?: string;
+    token?: string;
+    accept_invitation_url?: string;
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const UserlandUserInvitesControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -45,9 +74,7 @@ export const UserlandUserInvitesControllerListOutput =
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type UserlandUserInvitesControllerListOutput =
-  typeof UserlandUserInvitesControllerListOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserInvitesControllerListOutput>;
 
 // The operation
 /**

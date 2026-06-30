@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EndpointsListInput {
+  project_id: string;
+  created_by?: number;
+  is_active?: boolean;
+  limit?: number;
+  offset?: number;
+}
 export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   created_by: Schema.optional(Schema.Number),
@@ -12,10 +19,66 @@ export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   offset: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/endpoints/" }),
-);
-export type EndpointsListInput = typeof EndpointsListInput.Type;
+) as unknown as Schema.Codec<EndpointsListInput>;
 
 // Output Schema
+export interface EndpointsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    description?: string | null;
+    query?: unknown;
+    is_active?: boolean;
+    data_freshness_seconds?: number;
+    endpoint_path?: string;
+    url?: string | null;
+    ui_url?: string | null;
+    created_at?: string;
+    updated_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    is_materialized?: boolean;
+    current_version?: number;
+    current_version_id?: string | null;
+    versions_count?: number;
+    derived_from_insight?: string | null;
+    last_executed_at?: string | null;
+    materialization?: {
+      name?: string;
+      status?: string;
+      can_materialize?: boolean;
+      reason?: string | null;
+      last_materialized_at?: string | null;
+      error?: string;
+      saved_query_id?: string | null;
+    };
+    bucket_overrides?: Record<string, unknown> | null;
+    columns?: { name?: string; type?: string }[];
+    tags?: string[];
+  }[];
+}
 export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -47,7 +110,23 @@ export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -83,8 +162,7 @@ export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type EndpointsListOutput = typeof EndpointsListOutput.Type;
+}) as unknown as Schema.Codec<EndpointsListOutput>;
 
 // The operation
 /**

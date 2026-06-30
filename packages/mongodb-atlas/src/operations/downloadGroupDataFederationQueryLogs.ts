@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DownloadGroupDataFederationQueryLogsInput {
+  groupId: string;
+  tenantName: string;
+  endDate?: number;
+  startDate?: number;
+}
 export const DownloadGroupDataFederationQueryLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DownloadGroupDataFederationQueryLogsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz",
     }),
-  );
-export type DownloadGroupDataFederationQueryLogsInput =
-  typeof DownloadGroupDataFederationQueryLogsInput.Type;
+  ) as unknown as Schema.Codec<DownloadGroupDataFederationQueryLogsInput>;
 
 // Output Schema
+export type DownloadGroupDataFederationQueryLogsOutput = void;
 export const DownloadGroupDataFederationQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupDataFederationQueryLogsOutput =
-  typeof DownloadGroupDataFederationQueryLogsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupDataFederationQueryLogsOutput>;
 
 // The operation
 /**

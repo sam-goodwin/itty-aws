@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsIntervieweesBulkCreateInput {
+  project_id: string;
+  topic_id: string;
+  items: { interviewee_identifier: string; agent_context: string }[];
+}
 export const UserInterviewTopicsIntervieweesBulkCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,19 +23,20 @@ export const UserInterviewTopicsIntervieweesBulkCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/user_interview_topics/{topic_id}/interviewees/bulk/",
     }),
-  );
-export type UserInterviewTopicsIntervieweesBulkCreateInput =
-  typeof UserInterviewTopicsIntervieweesBulkCreateInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsIntervieweesBulkCreateInput>;
 
 // Output Schema
+export interface UserInterviewTopicsIntervieweesBulkCreateOutput {
+  inserted_count: number;
+  skipped_count: number;
+  skipped_identifiers: string[];
+}
 export const UserInterviewTopicsIntervieweesBulkCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inserted_count: Schema.Number,
     skipped_count: Schema.Number,
     skipped_identifiers: Schema.Array(Schema.String),
-  });
-export type UserInterviewTopicsIntervieweesBulkCreateOutput =
-  typeof UserInterviewTopicsIntervieweesBulkCreateOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewTopicsIntervieweesBulkCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface CreateAnalyticsEventInput {
+  name: string;
+  event_type: string;
+  data: {
+    user_id?: string;
+    doc_id?: string;
+    doc_ids?: string[];
+    q?: string;
+    analytics_tag?: string;
+  };
+}
 export const CreateAnalyticsEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
@@ -15,15 +26,18 @@ export const CreateAnalyticsEventInput =
       q: Schema.optional(Schema.String),
       analytics_tag: Schema.optional(Schema.String),
     }),
-  }).pipe(T.Http({ method: "POST", path: "/analytics/events" }));
-export type CreateAnalyticsEventInput = typeof CreateAnalyticsEventInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/analytics/events" }),
+  ) as unknown as Schema.Codec<CreateAnalyticsEventInput>;
 
 // Output Schema
+export interface CreateAnalyticsEventOutput {
+  ok: boolean;
+}
 export const CreateAnalyticsEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ok: Schema.Boolean,
-  });
-export type CreateAnalyticsEventOutput = typeof CreateAnalyticsEventOutput.Type;
+  }) as unknown as Schema.Codec<CreateAnalyticsEventOutput>;
 
 // The operation
 /**

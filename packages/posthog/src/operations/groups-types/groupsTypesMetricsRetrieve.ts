@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesMetricsRetrieveInput {
+  group_type_index: number;
+  id: string;
+  project_id: string;
+}
 export const GroupsTypesMetricsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_type_index: Schema.Number.pipe(T.PathParam()),
@@ -14,11 +19,19 @@ export const GroupsTypesMetricsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/groups_types/{group_type_index}/metrics/{id}/",
     }),
-  );
-export type GroupsTypesMetricsRetrieveInput =
-  typeof GroupsTypesMetricsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<GroupsTypesMetricsRetrieveInput>;
 
 // Output Schema
+export interface GroupsTypesMetricsRetrieveOutput {
+  id?: string;
+  name?: string;
+  format?: "numeric" | "currency";
+  interval?: number;
+  display?: "number" | "sparkline";
+  filters?: Record<string, unknown>;
+  math?: "count" | "sum";
+  math_property?: string | null;
+}
 export const GroupsTypesMetricsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -29,9 +42,7 @@ export const GroupsTypesMetricsRetrieveOutput =
     filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     math: Schema.optional(Schema.Literals(["count", "sum"])),
     math_property: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type GroupsTypesMetricsRetrieveOutput =
-  typeof GroupsTypesMetricsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<GroupsTypesMetricsRetrieveOutput>;
 
 // The operation
 /**

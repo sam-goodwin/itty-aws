@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterOnlineArchivesInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupClusterOnlineArchivesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const ListGroupClusterOnlineArchivesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives",
     }),
-  );
-export type ListGroupClusterOnlineArchivesInput =
-  typeof ListGroupClusterOnlineArchivesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterOnlineArchivesInput>;
 
 // Output Schema
+export type ListGroupClusterOnlineArchivesOutput = void;
 export const ListGroupClusterOnlineArchivesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterOnlineArchivesOutput =
-  typeof ListGroupClusterOnlineArchivesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterOnlineArchivesOutput>;
 
 // The operation
 /**

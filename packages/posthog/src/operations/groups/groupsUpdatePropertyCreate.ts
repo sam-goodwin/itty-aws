@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsUpdatePropertyCreateInput {
+  project_id: string;
+  group_key: string;
+  group_type_index: number;
+  group_properties?: unknown;
+  created_at?: string;
+}
 export const GroupsUpdatePropertyCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const GroupsUpdatePropertyCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/groups/update_property/",
     }),
-  );
-export type GroupsUpdatePropertyCreateInput =
-  typeof GroupsUpdatePropertyCreateInput.Type;
+  ) as unknown as Schema.Codec<GroupsUpdatePropertyCreateInput>;
 
 // Output Schema
+export type GroupsUpdatePropertyCreateOutput = void;
 export const GroupsUpdatePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsUpdatePropertyCreateOutput =
-  typeof GroupsUpdatePropertyCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsUpdatePropertyCreateOutput>;
 
 // The operation
 /**

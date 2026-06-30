@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface EventData {
   event?: Record<string, unknown>;
 }
 
-export const EventData: Schema.Schema<EventData> =
+export const EventData: Schema.Codec<EventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export interface Events {
   events?: ReadonlyArray<EventData>;
 }
 
-export const Events: Schema.Schema<Events> =
+export const Events: Schema.Codec<Events> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     componentId: Schema.optional(Schema.String),
     events: Schema.optional(Schema.Array(EventData)),
@@ -58,7 +58,7 @@ export interface HomeEvents {
   events?: ReadonlyArray<Events>;
 }
 
-export const HomeEvents: Schema.Schema<HomeEvents> =
+export const HomeEvents: Schema.Codec<HomeEvents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     events: Schema.optional(Schema.Array(Events)),
@@ -71,7 +71,7 @@ export interface TraitData {
   commitTime?: string;
 }
 
-export const TraitData: Schema.Schema<TraitData> =
+export const TraitData: Schema.Codec<TraitData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trait: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     commitTime: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface ComponentTraitUpdates {
   traitData?: ReadonlyArray<TraitData>;
 }
 
-export const ComponentTraitUpdates: Schema.Schema<ComponentTraitUpdates> =
+export const ComponentTraitUpdates: Schema.Codec<ComponentTraitUpdates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     componentId: Schema.optional(Schema.String),
     traitData: Schema.optional(Schema.Array(TraitData)),
@@ -97,7 +97,7 @@ export interface HomeTraitUpdates {
   deviceId?: string;
 }
 
-export const HomeTraitUpdates: Schema.Schema<HomeTraitUpdates> =
+export const HomeTraitUpdates: Schema.Codec<HomeTraitUpdates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     components: Schema.optional(Schema.Array(ComponentTraitUpdates)),
     deviceId: Schema.optional(Schema.String),
@@ -114,7 +114,7 @@ export interface ReportStateAndNotificationDevice {
   homeTraits?: ReadonlyArray<HomeTraitUpdates>;
 }
 
-export const ReportStateAndNotificationDevice: Schema.Schema<ReportStateAndNotificationDevice> =
+export const ReportStateAndNotificationDevice: Schema.Codec<ReportStateAndNotificationDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notifications: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -129,7 +129,7 @@ export interface StateAndNotificationPayload {
   devices?: ReportStateAndNotificationDevice;
 }
 
-export const StateAndNotificationPayload: Schema.Schema<StateAndNotificationPayload> =
+export const StateAndNotificationPayload: Schema.Codec<StateAndNotificationPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     devices: Schema.optional(ReportStateAndNotificationDevice),
   }).annotate({ identifier: "StateAndNotificationPayload" });
@@ -147,7 +147,7 @@ export interface ReportStateAndNotificationRequest {
   agentUserId?: string;
 }
 
-export const ReportStateAndNotificationRequest: Schema.Schema<ReportStateAndNotificationRequest> =
+export const ReportStateAndNotificationRequest: Schema.Codec<ReportStateAndNotificationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     followUpToken: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export interface ReportStateAndNotificationResponse {
   requestId?: string;
 }
 
-export const ReportStateAndNotificationResponse: Schema.Schema<ReportStateAndNotificationResponse> =
+export const ReportStateAndNotificationResponse: Schema.Codec<ReportStateAndNotificationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportStateAndNotificationResponse" });
@@ -171,7 +171,7 @@ export interface AgentDeviceId {
   id?: string;
 }
 
-export const AgentDeviceId: Schema.Schema<AgentDeviceId> =
+export const AgentDeviceId: Schema.Codec<AgentDeviceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "AgentDeviceId" });
@@ -181,7 +181,7 @@ export interface QueryRequestPayload {
   devices?: ReadonlyArray<AgentDeviceId>;
 }
 
-export const QueryRequestPayload: Schema.Schema<QueryRequestPayload> =
+export const QueryRequestPayload: Schema.Codec<QueryRequestPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(AgentDeviceId)),
   }).annotate({ identifier: "QueryRequestPayload" });
@@ -191,7 +191,7 @@ export interface QueryRequestInput {
   payload?: QueryRequestPayload;
 }
 
-export const QueryRequestInput: Schema.Schema<QueryRequestInput> =
+export const QueryRequestInput: Schema.Codec<QueryRequestInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     payload: Schema.optional(QueryRequestPayload),
   }).annotate({ identifier: "QueryRequestInput" });
@@ -214,7 +214,7 @@ export interface QueryRequest {
   includeDeviceMetadata?: boolean;
 }
 
-export const QueryRequest: Schema.Schema<QueryRequest> =
+export const QueryRequest: Schema.Codec<QueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     agentUserId: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface SyncRequest {
   agentUserId?: string;
 }
 
-export const SyncRequest: Schema.Schema<SyncRequest> =
+export const SyncRequest: Schema.Codec<SyncRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     agentUserId: Schema.optional(Schema.String),
@@ -245,7 +245,7 @@ export interface DeviceNames {
   nicknames?: ReadonlyArray<string>;
 }
 
-export const DeviceNames: Schema.Schema<DeviceNames> =
+export const DeviceNames: Schema.Codec<DeviceNames> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultNames: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -263,7 +263,7 @@ export interface Component {
   traitData?: ReadonlyArray<TraitData>;
 }
 
-export const Component: Schema.Schema<Component> =
+export const Component: Schema.Codec<Component> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       childComponents: Schema.optional(Schema.Array(Component)),
@@ -271,7 +271,7 @@ export const Component: Schema.Schema<Component> =
       id: Schema.optional(Schema.String),
       traitData: Schema.optional(Schema.Array(TraitData)),
     }),
-  ).annotate({ identifier: "Component" }) as any as Schema.Schema<Component>;
+  ).annotate({ identifier: "Component" }) as any as Schema.Codec<Component>;
 
 export interface AgentOtherDeviceId {
   /** Unique third-party device ID. */
@@ -280,7 +280,7 @@ export interface AgentOtherDeviceId {
   agentId?: string;
 }
 
-export const AgentOtherDeviceId: Schema.Schema<AgentOtherDeviceId> =
+export const AgentOtherDeviceId: Schema.Codec<AgentOtherDeviceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     agentId: Schema.optional(Schema.String),
@@ -291,7 +291,7 @@ export interface HomeTraitPayload {
   rootComponent?: Component;
 }
 
-export const HomeTraitPayload: Schema.Schema<HomeTraitPayload> =
+export const HomeTraitPayload: Schema.Codec<HomeTraitPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootComponent: Schema.optional(Component),
   }).annotate({ identifier: "HomeTraitPayload" });
@@ -301,7 +301,7 @@ export interface DeviceMetadata {
   traitCommitTimestamps?: Record<string, string>;
 }
 
-export const DeviceMetadata: Schema.Schema<DeviceMetadata> =
+export const DeviceMetadata: Schema.Codec<DeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     traitCommitTimestamps: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -317,7 +317,7 @@ export interface QueryResponsePayload {
   deviceMetadata?: Record<string, DeviceMetadata>;
 }
 
-export const QueryResponsePayload: Schema.Schema<QueryResponsePayload> =
+export const QueryResponsePayload: Schema.Codec<QueryResponsePayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     homeTraitPayload: Schema.optional(
       Schema.Record(Schema.String, HomeTraitPayload),
@@ -340,7 +340,7 @@ export interface QueryResponse {
   payload?: QueryResponsePayload;
 }
 
-export const QueryResponse: Schema.Schema<QueryResponse> =
+export const QueryResponse: Schema.Codec<QueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     payload: Schema.optional(QueryResponsePayload),
@@ -357,7 +357,7 @@ export interface DeviceInfo {
   model?: string;
 }
 
-export const DeviceInfo: Schema.Schema<DeviceInfo> =
+export const DeviceInfo: Schema.Codec<DeviceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     swVersion: Schema.optional(Schema.String),
     manufacturer: Schema.optional(Schema.String),
@@ -392,7 +392,7 @@ export interface Device {
   willReportState?: boolean;
 }
 
-export const Device: Schema.Schema<Device> =
+export const Device: Schema.Codec<Device> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     otherDeviceIds: Schema.optional(Schema.Array(AgentOtherDeviceId)),
@@ -415,7 +415,7 @@ export interface SyncResponsePayload {
   agentUserId?: string;
 }
 
-export const SyncResponsePayload: Schema.Schema<SyncResponsePayload> =
+export const SyncResponsePayload: Schema.Codec<SyncResponsePayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(Device)),
     agentUserId: Schema.optional(Schema.String),
@@ -428,7 +428,7 @@ export interface SyncResponse {
   payload?: SyncResponsePayload;
 }
 
-export const SyncResponse: Schema.Schema<SyncResponse> =
+export const SyncResponse: Schema.Codec<SyncResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     payload: Schema.optional(SyncResponsePayload),
@@ -436,7 +436,7 @@ export const SyncResponse: Schema.Schema<SyncResponse> =
 
 export interface RequestSyncDevicesResponse {}
 
-export const RequestSyncDevicesResponse: Schema.Schema<RequestSyncDevicesResponse> =
+export const RequestSyncDevicesResponse: Schema.Codec<RequestSyncDevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RequestSyncDevicesResponse",
   });
@@ -448,7 +448,7 @@ export interface RequestSyncDevicesRequest {
   async?: boolean;
 }
 
-export const RequestSyncDevicesRequest: Schema.Schema<RequestSyncDevicesRequest> =
+export const RequestSyncDevicesRequest: Schema.Codec<RequestSyncDevicesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentUserId: Schema.optional(Schema.String),
     async: Schema.optional(Schema.Boolean),
@@ -456,7 +456,7 @@ export const RequestSyncDevicesRequest: Schema.Schema<RequestSyncDevicesRequest>
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -529,7 +529,7 @@ export const DeleteAgentUsersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+agentUserId}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAgentUsersRequest>;
+  ) as unknown as Schema.Codec<DeleteAgentUsersRequest>;
 
 export type DeleteAgentUsersResponse = Empty;
 export const DeleteAgentUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -568,7 +568,7 @@ export const ReportStateAndNotificationDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportStateAndNotificationDevicesRequest>;
+  ) as unknown as Schema.Codec<ReportStateAndNotificationDevicesRequest>;
 
 export type ReportStateAndNotificationDevicesResponse =
   ReportStateAndNotificationResponse;
@@ -604,7 +604,7 @@ export const QueryDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/devices:query", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<QueryDevicesRequest>;
+) as unknown as Schema.Codec<QueryDevicesRequest>;
 
 export type QueryDevicesResponse = QueryResponse;
 export const QueryDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ QueryResponse;
@@ -639,7 +639,7 @@ export const RequestSyncDevicesRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/devices:requestSync", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RequestSyncDevicesRequest_Op>;
+  ) as unknown as Schema.Codec<RequestSyncDevicesRequest_Op>;
 
 export type RequestSyncDevicesResponse_Op = RequestSyncDevicesResponse;
 export const RequestSyncDevicesResponse_Op =
@@ -674,7 +674,7 @@ export const SyncDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/devices:sync", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SyncDevicesRequest>;
+) as unknown as Schema.Codec<SyncDevicesRequest>;
 
 export type SyncDevicesResponse = SyncResponse;
 export const SyncDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ SyncResponse;

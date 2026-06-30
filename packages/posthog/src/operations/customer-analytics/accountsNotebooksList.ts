@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AccountsNotebooksListInput {
+  account_id: string;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  ordering?: "-created_at" | "-created_by" | "created_at" | "created_by";
+  search?: string;
+}
 export const AccountsNotebooksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
@@ -23,10 +31,65 @@ export const AccountsNotebooksListInput =
       method: "GET",
       path: "/api/projects/{project_id}/accounts/{account_id}/notebooks/",
     }),
-  );
-export type AccountsNotebooksListInput = typeof AccountsNotebooksListInput.Type;
+  ) as unknown as Schema.Codec<AccountsNotebooksListInput>;
 
 // Output Schema
+export interface AccountsNotebooksListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    short_id: string;
+    title?: string | null;
+    content?: unknown;
+    text_content?: string | null;
+    created_at: string;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    last_modified_at: string;
+    last_modified_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+  }[];
+}
 export const AccountsNotebooksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -51,7 +114,23 @@ export const AccountsNotebooksListOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
         last_modified_at: Schema.String,
         last_modified_by: Schema.Struct({
@@ -65,13 +144,27 @@ export const AccountsNotebooksListOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       }),
     ),
-  });
-export type AccountsNotebooksListOutput =
-  typeof AccountsNotebooksListOutput.Type;
+  }) as unknown as Schema.Codec<AccountsNotebooksListOutput>;
 
 // The operation
 /**

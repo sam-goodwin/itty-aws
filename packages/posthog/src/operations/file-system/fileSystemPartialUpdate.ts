@@ -4,6 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemPartialUpdateInput {
+  id: string;
+  project_id: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const FileSystemPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -22,11 +35,21 @@ export const FileSystemPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/file_system/{id}/",
     }),
-  );
-export type FileSystemPartialUpdateInput =
-  typeof FileSystemPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<FileSystemPartialUpdateInput>;
 
 // Output Schema
+export interface FileSystemPartialUpdateOutput {
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const FileSystemPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -39,9 +62,7 @@ export const FileSystemPartialUpdateOutput =
     shortcut: Schema.optional(Schema.NullOr(Schema.Boolean)),
     created_at: Schema.optional(Schema.String),
     last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type FileSystemPartialUpdateOutput =
-  typeof FileSystemPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FileSystemPartialUpdateOutput>;
 
 // The operation
 /**

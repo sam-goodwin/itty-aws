@@ -10,6 +10,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupFlexClusterInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupFlexClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -20,15 +25,12 @@ export const CreateGroupFlexClusterInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters",
     }),
-  );
-export type CreateGroupFlexClusterInput =
-  typeof CreateGroupFlexClusterInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupFlexClusterInput>;
 
 // Output Schema
+export type CreateGroupFlexClusterOutput = void;
 export const CreateGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupFlexClusterOutput =
-  typeof CreateGroupFlexClusterOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupFlexClusterOutput>;
 
 // The operation
 /**

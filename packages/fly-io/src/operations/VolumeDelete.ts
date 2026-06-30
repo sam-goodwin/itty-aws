@@ -4,15 +4,41 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface VolumeDeleteInput {
+  app_name: string;
+  volume_id: string;
+}
 export const VolumeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   volume_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/apps/{app_name}/volumes/{volume_id}" }),
-);
-export type VolumeDeleteInput = typeof VolumeDeleteInput.Type;
+) as unknown as Schema.Codec<VolumeDeleteInput>;
 
 // Output Schema
+export interface VolumeDeleteOutput {
+  attached_alloc_id?: string;
+  attached_machine_id?: string;
+  auto_backup_enabled?: boolean;
+  block_size?: number;
+  blocks?: number;
+  blocks_avail?: number;
+  blocks_free?: number;
+  bytes_total?: number;
+  bytes_used?: number;
+  created_at?: string;
+  encrypted?: boolean;
+  fstype?: string;
+  host_status?: "ok" | "unknown" | "unreachable";
+  id?: string;
+  name?: string;
+  region?: string;
+  size_gb?: number;
+  snapshot_retention?: number;
+  state?: string;
+  type?: "local" | "cache";
+  zone?: string;
+}
 export const VolumeDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   attached_alloc_id: Schema.optional(Schema.String),
   attached_machine_id: Schema.optional(Schema.String),
@@ -37,8 +63,7 @@ export const VolumeDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   state: Schema.optional(Schema.String),
   type: Schema.optional(Schema.Literals(["local", "cache"])),
   zone: Schema.optional(Schema.String),
-});
-export type VolumeDeleteOutput = typeof VolumeDeleteOutput.Type;
+}) as unknown as Schema.Codec<VolumeDeleteOutput>;
 
 // The operation
 /**

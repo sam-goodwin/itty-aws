@@ -3,6 +3,32 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansTreeCreateInput {
+  project_id: string;
+  query: {
+    spanName: string;
+    serviceName: string;
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    compareFilter?: { compare?: boolean; compare_to?: string | null };
+    serviceNames?: string[];
+    filterGroup?: {
+      key: string;
+      type: "span" | "span_attribute" | "span_resource_attribute";
+      operator:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+  };
+}
 export const TracingSpansTreeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -53,15 +79,12 @@ export const TracingSpansTreeCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tracing/spans/tree/",
     }),
-  );
-export type TracingSpansTreeCreateInput =
-  typeof TracingSpansTreeCreateInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansTreeCreateInput>;
 
 // Output Schema
+export type TracingSpansTreeCreateOutput = void;
 export const TracingSpansTreeCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TracingSpansTreeCreateOutput =
-  typeof TracingSpansTreeCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansTreeCreateOutput>;
 
 // The operation
 /**

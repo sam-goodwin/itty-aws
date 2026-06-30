@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -57,7 +57,7 @@ export interface AchievementDefinition {
     | (string & {});
 }
 
-export const AchievementDefinition: Schema.Schema<AchievementDefinition> =
+export const AchievementDefinition: Schema.Codec<AchievementDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface AchievementDefinitionsListResponse {
   items?: ReadonlyArray<AchievementDefinition>;
 }
 
-export const AchievementDefinitionsListResponse: Schema.Schema<AchievementDefinitionsListResponse> =
+export const AchievementDefinitionsListResponse: Schema.Codec<AchievementDefinitionsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -100,7 +100,7 @@ export interface AchievementIncrementResponse {
   newlyUnlocked?: boolean;
 }
 
-export const AchievementIncrementResponse: Schema.Schema<AchievementIncrementResponse> =
+export const AchievementIncrementResponse: Schema.Codec<AchievementIncrementResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     currentSteps: Schema.optional(Schema.Number),
@@ -124,7 +124,7 @@ export interface PlayerAchievement {
   experiencePoints?: string;
 }
 
-export const PlayerAchievement: Schema.Schema<PlayerAchievement> =
+export const PlayerAchievement: Schema.Codec<PlayerAchievement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -144,7 +144,7 @@ export interface PlayerAchievementListResponse {
   items?: ReadonlyArray<PlayerAchievement>;
 }
 
-export const PlayerAchievementListResponse: Schema.Schema<PlayerAchievementListResponse> =
+export const PlayerAchievementListResponse: Schema.Codec<PlayerAchievementListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -158,7 +158,7 @@ export interface AchievementRevealResponse {
   currentState?: "REVEALED" | "UNLOCKED" | (string & {});
 }
 
-export const AchievementRevealResponse: Schema.Schema<AchievementRevealResponse> =
+export const AchievementRevealResponse: Schema.Codec<AchievementRevealResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     currentState: Schema.optional(Schema.String),
@@ -173,7 +173,7 @@ export interface AchievementSetStepsAtLeastResponse {
   newlyUnlocked?: boolean;
 }
 
-export const AchievementSetStepsAtLeastResponse: Schema.Schema<AchievementSetStepsAtLeastResponse> =
+export const AchievementSetStepsAtLeastResponse: Schema.Codec<AchievementSetStepsAtLeastResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     currentSteps: Schema.optional(Schema.Number),
@@ -187,7 +187,7 @@ export interface AchievementUnlockResponse {
   newlyUnlocked?: boolean;
 }
 
-export const AchievementUnlockResponse: Schema.Schema<AchievementUnlockResponse> =
+export const AchievementUnlockResponse: Schema.Codec<AchievementUnlockResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     newlyUnlocked: Schema.optional(Schema.Boolean),
@@ -202,7 +202,7 @@ export interface GamesAchievementIncrement {
   requestId?: string;
 }
 
-export const GamesAchievementIncrement: Schema.Schema<GamesAchievementIncrement> =
+export const GamesAchievementIncrement: Schema.Codec<GamesAchievementIncrement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     steps: Schema.optional(Schema.Number),
@@ -216,7 +216,7 @@ export interface GamesAchievementSetStepsAtLeast {
   steps?: number;
 }
 
-export const GamesAchievementSetStepsAtLeast: Schema.Schema<GamesAchievementSetStepsAtLeast> =
+export const GamesAchievementSetStepsAtLeast: Schema.Codec<GamesAchievementSetStepsAtLeast> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     steps: Schema.optional(Schema.Number),
@@ -240,7 +240,7 @@ export interface AchievementUpdateRequest {
   setStepsAtLeastPayload?: GamesAchievementSetStepsAtLeast;
 }
 
-export const AchievementUpdateRequest: Schema.Schema<AchievementUpdateRequest> =
+export const AchievementUpdateRequest: Schema.Codec<AchievementUpdateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     achievementId: Schema.optional(Schema.String),
@@ -256,7 +256,7 @@ export interface AchievementUpdateMultipleRequest {
   updates?: ReadonlyArray<AchievementUpdateRequest>;
 }
 
-export const AchievementUpdateMultipleRequest: Schema.Schema<AchievementUpdateMultipleRequest> =
+export const AchievementUpdateMultipleRequest: Schema.Codec<AchievementUpdateMultipleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     updates: Schema.optional(Schema.Array(AchievementUpdateRequest)),
@@ -277,7 +277,7 @@ export interface AchievementUpdateResponse {
   newlyUnlocked?: boolean;
 }
 
-export const AchievementUpdateResponse: Schema.Schema<AchievementUpdateResponse> =
+export const AchievementUpdateResponse: Schema.Codec<AchievementUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     achievementId: Schema.optional(Schema.String),
@@ -294,7 +294,7 @@ export interface AchievementUpdateMultipleResponse {
   updatedAchievements?: ReadonlyArray<AchievementUpdateResponse>;
 }
 
-export const AchievementUpdateMultipleResponse: Schema.Schema<AchievementUpdateMultipleResponse> =
+export const AchievementUpdateMultipleResponse: Schema.Codec<AchievementUpdateMultipleResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     updatedAchievements: Schema.optional(
@@ -311,7 +311,7 @@ export interface ApplicationCategory {
   kind?: string;
 }
 
-export const ApplicationCategory: Schema.Schema<ApplicationCategory> =
+export const ApplicationCategory: Schema.Codec<ApplicationCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primary: Schema.optional(Schema.String),
     secondary: Schema.optional(Schema.String),
@@ -331,7 +331,7 @@ export interface ImageAsset {
   kind?: string;
 }
 
-export const ImageAsset: Schema.Schema<ImageAsset> =
+export const ImageAsset: Schema.Codec<ImageAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     width: Schema.optional(Schema.Number),
@@ -351,7 +351,7 @@ export interface InstanceAndroidDetails {
   preferred?: boolean;
 }
 
-export const InstanceAndroidDetails: Schema.Schema<InstanceAndroidDetails> =
+export const InstanceAndroidDetails: Schema.Codec<InstanceAndroidDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -376,7 +376,7 @@ export interface InstanceIosDetails {
   preferredForIpad?: boolean;
 }
 
-export const InstanceIosDetails: Schema.Schema<InstanceIosDetails> =
+export const InstanceIosDetails: Schema.Codec<InstanceIosDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     bundleIdentifier: Schema.optional(Schema.String),
@@ -396,7 +396,7 @@ export interface InstanceWebDetails {
   preferred?: boolean;
 }
 
-export const InstanceWebDetails: Schema.Schema<InstanceWebDetails> =
+export const InstanceWebDetails: Schema.Codec<InstanceWebDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     launchUrl: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -424,7 +424,7 @@ export interface Instance {
   kind?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
+export const Instance: Schema.Codec<Instance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platformType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -466,7 +466,7 @@ export interface Application {
   themeColor?: string;
 }
 
-export const Application: Schema.Schema<Application> =
+export const Application: Schema.Codec<Application> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -492,7 +492,7 @@ export interface ApplicationVerifyResponse {
   kind?: string;
 }
 
-export const ApplicationVerifyResponse: Schema.Schema<ApplicationVerifyResponse> =
+export const ApplicationVerifyResponse: Schema.Codec<ApplicationVerifyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     player_id: Schema.optional(Schema.String),
     alternate_player_id: Schema.optional(Schema.String),
@@ -504,7 +504,7 @@ export interface EndPoint {
   url?: string;
 }
 
-export const EndPoint: Schema.Schema<EndPoint> =
+export const EndPoint: Schema.Codec<EndPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "EndPoint" });
@@ -522,7 +522,7 @@ export interface PlayerEvent {
   formattedNumEvents?: string;
 }
 
-export const PlayerEvent: Schema.Schema<PlayerEvent> =
+export const PlayerEvent: Schema.Codec<PlayerEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     definitionId: Schema.optional(Schema.String),
@@ -540,7 +540,7 @@ export interface PlayerEventListResponse {
   items?: ReadonlyArray<PlayerEvent>;
 }
 
-export const PlayerEventListResponse: Schema.Schema<PlayerEventListResponse> =
+export const PlayerEventListResponse: Schema.Codec<PlayerEventListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -554,7 +554,7 @@ export interface EventChild {
   kind?: string;
 }
 
-export const EventChild: Schema.Schema<EventChild> =
+export const EventChild: Schema.Codec<EventChild> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     childId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -579,7 +579,7 @@ export interface EventDefinition {
   kind?: string;
 }
 
-export const EventDefinition: Schema.Schema<EventDefinition> =
+export const EventDefinition: Schema.Codec<EventDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     visibility: Schema.optional(Schema.String),
@@ -600,7 +600,7 @@ export interface EventDefinitionListResponse {
   items?: ReadonlyArray<EventDefinition>;
 }
 
-export const EventDefinitionListResponse: Schema.Schema<EventDefinitionListResponse> =
+export const EventDefinitionListResponse: Schema.Codec<EventDefinitionListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -616,7 +616,7 @@ export interface EventPeriodRange {
   periodEndMillis?: string;
 }
 
-export const EventPeriodRange: Schema.Schema<EventPeriodRange> =
+export const EventPeriodRange: Schema.Codec<EventPeriodRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     periodStartMillis: Schema.optional(Schema.String),
@@ -632,7 +632,7 @@ export interface EventUpdateRequest {
   kind?: string;
 }
 
-export const EventUpdateRequest: Schema.Schema<EventUpdateRequest> =
+export const EventUpdateRequest: Schema.Codec<EventUpdateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     definitionId: Schema.optional(Schema.String),
     updateCount: Schema.optional(Schema.String),
@@ -648,7 +648,7 @@ export interface EventPeriodUpdate {
   kind?: string;
 }
 
-export const EventPeriodUpdate: Schema.Schema<EventPeriodUpdate> =
+export const EventPeriodUpdate: Schema.Codec<EventPeriodUpdate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timePeriod: Schema.optional(EventPeriodRange),
     updates: Schema.optional(Schema.Array(EventUpdateRequest)),
@@ -666,7 +666,7 @@ export interface EventRecordRequest {
   timePeriods?: ReadonlyArray<EventPeriodUpdate>;
 }
 
-export const EventRecordRequest: Schema.Schema<EventRecordRequest> =
+export const EventRecordRequest: Schema.Codec<EventRecordRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
@@ -690,7 +690,7 @@ export interface EventBatchRecordFailure {
   kind?: string;
 }
 
-export const EventBatchRecordFailure: Schema.Schema<EventBatchRecordFailure> =
+export const EventBatchRecordFailure: Schema.Codec<EventBatchRecordFailure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(EventPeriodRange),
     failureCause: Schema.optional(Schema.String),
@@ -706,7 +706,7 @@ export interface EventRecordFailure {
   kind?: string;
 }
 
-export const EventRecordFailure: Schema.Schema<EventRecordFailure> =
+export const EventRecordFailure: Schema.Codec<EventRecordFailure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     failureCause: Schema.optional(Schema.String),
@@ -724,7 +724,7 @@ export interface EventUpdateResponse {
   playerEvents?: ReadonlyArray<PlayerEvent>;
 }
 
-export const EventUpdateResponse: Schema.Schema<EventUpdateResponse> =
+export const EventUpdateResponse: Schema.Codec<EventUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     batchFailures: Schema.optional(Schema.Array(EventBatchRecordFailure)),
@@ -747,7 +747,7 @@ export interface Leaderboard {
   order?: "LARGER_IS_BETTER" | "SMALLER_IS_BETTER" | (string & {});
 }
 
-export const Leaderboard: Schema.Schema<Leaderboard> =
+export const Leaderboard: Schema.Codec<Leaderboard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -766,7 +766,7 @@ export interface LeaderboardListResponse {
   items?: ReadonlyArray<Leaderboard>;
 }
 
-export const LeaderboardListResponse: Schema.Schema<LeaderboardListResponse> =
+export const LeaderboardListResponse: Schema.Codec<LeaderboardListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -784,7 +784,7 @@ export interface PlayerLevel {
   maxExperiencePoints?: string;
 }
 
-export const PlayerLevel: Schema.Schema<PlayerLevel> =
+export const PlayerLevel: Schema.Codec<PlayerLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     level: Schema.optional(Schema.Number),
@@ -801,7 +801,7 @@ export interface MetagameConfig {
   kind?: string;
 }
 
-export const MetagameConfig: Schema.Schema<MetagameConfig> =
+export const MetagameConfig: Schema.Codec<MetagameConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentVersion: Schema.optional(Schema.Number),
     playerLevels: Schema.optional(Schema.Array(PlayerLevel)),
@@ -817,7 +817,7 @@ export interface Category {
   experiencePoints?: string;
 }
 
-export const Category: Schema.Schema<Category> =
+export const Category: Schema.Codec<Category> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
@@ -833,7 +833,7 @@ export interface CategoryListResponse {
   items?: ReadonlyArray<Category>;
 }
 
-export const CategoryListResponse: Schema.Schema<CategoryListResponse> =
+export const CategoryListResponse: Schema.Codec<CategoryListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -852,7 +852,7 @@ export interface ProfileSettings {
     | (string & {});
 }
 
-export const ProfileSettings: Schema.Schema<ProfileSettings> =
+export const ProfileSettings: Schema.Codec<ProfileSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     profileVisible: Schema.optional(Schema.Boolean),
@@ -872,7 +872,7 @@ export interface PlayerExperienceInfo {
   nextLevel?: PlayerLevel;
 }
 
-export const PlayerExperienceInfo: Schema.Schema<PlayerExperienceInfo> =
+export const PlayerExperienceInfo: Schema.Codec<PlayerExperienceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     currentExperiencePoints: Schema.optional(Schema.String),
@@ -910,7 +910,7 @@ export interface Player {
   gamePlayerId?: string;
 }
 
-export const Player: Schema.Schema<Player> =
+export const Player: Schema.Codec<Player> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     playerId: Schema.optional(Schema.String),
@@ -939,7 +939,7 @@ export interface ScopedPlayerIds {
   developerPlayerKey?: string;
 }
 
-export const ScopedPlayerIds: Schema.Schema<ScopedPlayerIds> =
+export const ScopedPlayerIds: Schema.Codec<ScopedPlayerIds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gamePlayerId: Schema.optional(Schema.String),
     developerPlayerKey: Schema.optional(Schema.String),
@@ -952,7 +952,7 @@ export interface ApplicationPlayerId {
   playerId?: string;
 }
 
-export const ApplicationPlayerId: Schema.Schema<ApplicationPlayerId> =
+export const ApplicationPlayerId: Schema.Codec<ApplicationPlayerId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.optional(Schema.String),
     playerId: Schema.optional(Schema.String),
@@ -963,7 +963,7 @@ export interface GetMultipleApplicationPlayerIdsResponse {
   playerIds?: ReadonlyArray<ApplicationPlayerId>;
 }
 
-export const GetMultipleApplicationPlayerIdsResponse: Schema.Schema<GetMultipleApplicationPlayerIdsResponse> =
+export const GetMultipleApplicationPlayerIdsResponse: Schema.Codec<GetMultipleApplicationPlayerIdsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     playerIds: Schema.optional(Schema.Array(ApplicationPlayerId)),
   }).annotate({ identifier: "GetMultipleApplicationPlayerIdsResponse" });
@@ -977,7 +977,7 @@ export interface PlayerListResponse {
   items?: ReadonlyArray<Player>;
 }
 
-export const PlayerListResponse: Schema.Schema<PlayerListResponse> =
+export const PlayerListResponse: Schema.Codec<PlayerListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -993,7 +993,7 @@ export interface RevisionCheckResponse {
   apiVersion?: string;
 }
 
-export const RevisionCheckResponse: Schema.Schema<RevisionCheckResponse> =
+export const RevisionCheckResponse: Schema.Codec<RevisionCheckResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     revisionStatus: Schema.optional(Schema.String),
@@ -1013,7 +1013,7 @@ export interface LeaderboardScoreRank {
   formattedNumScores?: string;
 }
 
-export const LeaderboardScoreRank: Schema.Schema<LeaderboardScoreRank> =
+export const LeaderboardScoreRank: Schema.Codec<LeaderboardScoreRank> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     rank: Schema.optional(Schema.String),
@@ -1045,7 +1045,7 @@ export interface PlayerLeaderboardScore {
   scoreTag?: string;
 }
 
-export const PlayerLeaderboardScore: Schema.Schema<PlayerLeaderboardScore> =
+export const PlayerLeaderboardScore: Schema.Codec<PlayerLeaderboardScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     leaderboard_id: Schema.optional(Schema.String),
@@ -1070,7 +1070,7 @@ export interface PlayerLeaderboardScoreListResponse {
   items?: ReadonlyArray<PlayerLeaderboardScore>;
 }
 
-export const PlayerLeaderboardScoreListResponse: Schema.Schema<PlayerLeaderboardScoreListResponse> =
+export const PlayerLeaderboardScoreListResponse: Schema.Codec<PlayerLeaderboardScoreListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1099,7 +1099,7 @@ export interface LeaderboardEntry {
   scoreTag?: string;
 }
 
-export const LeaderboardEntry: Schema.Schema<LeaderboardEntry> =
+export const LeaderboardEntry: Schema.Codec<LeaderboardEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     player: Schema.optional(Player),
@@ -1127,7 +1127,7 @@ export interface LeaderboardScores {
   items?: ReadonlyArray<LeaderboardEntry>;
 }
 
-export const LeaderboardScores: Schema.Schema<LeaderboardScores> =
+export const LeaderboardScores: Schema.Codec<LeaderboardScores> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1150,7 +1150,7 @@ export interface PlayerScore {
   scoreTag?: string;
 }
 
-export const PlayerScore: Schema.Schema<PlayerScore> =
+export const PlayerScore: Schema.Codec<PlayerScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     timeSpan: Schema.optional(Schema.String),
@@ -1176,7 +1176,7 @@ export interface PlayerScoreResponse {
   scoreTag?: string;
 }
 
-export const PlayerScoreResponse: Schema.Schema<PlayerScoreResponse> =
+export const PlayerScoreResponse: Schema.Codec<PlayerScoreResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     beatenScoreTimeSpans: Schema.optional(Schema.Array(Schema.String)),
@@ -1199,7 +1199,7 @@ export interface ScoreSubmission {
   signature?: string;
 }
 
-export const ScoreSubmission: Schema.Schema<ScoreSubmission> =
+export const ScoreSubmission: Schema.Codec<ScoreSubmission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     leaderboardId: Schema.optional(Schema.String),
@@ -1215,7 +1215,7 @@ export interface PlayerScoreSubmissionList {
   scores?: ReadonlyArray<ScoreSubmission>;
 }
 
-export const PlayerScoreSubmissionList: Schema.Schema<PlayerScoreSubmissionList> =
+export const PlayerScoreSubmissionList: Schema.Codec<PlayerScoreSubmissionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     scores: Schema.optional(Schema.Array(ScoreSubmission)),
@@ -1228,7 +1228,7 @@ export interface PlayerScoreListResponse {
   submittedScores?: ReadonlyArray<PlayerScoreResponse>;
 }
 
-export const PlayerScoreListResponse: Schema.Schema<PlayerScoreListResponse> =
+export const PlayerScoreListResponse: Schema.Codec<PlayerScoreListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     submittedScores: Schema.optional(Schema.Array(PlayerScoreResponse)),
@@ -1247,7 +1247,7 @@ export interface SnapshotImage {
   kind?: string;
 }
 
-export const SnapshotImage: Schema.Schema<SnapshotImage> =
+export const SnapshotImage: Schema.Codec<SnapshotImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
@@ -1281,7 +1281,7 @@ export interface Snapshot {
   progressValue?: string;
 }
 
-export const Snapshot: Schema.Schema<Snapshot> =
+export const Snapshot: Schema.Codec<Snapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     driveId: Schema.optional(Schema.String),
@@ -1305,7 +1305,7 @@ export interface SnapshotListResponse {
   items?: ReadonlyArray<Snapshot>;
 }
 
-export const SnapshotListResponse: Schema.Schema<SnapshotListResponse> =
+export const SnapshotListResponse: Schema.Codec<SnapshotListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -1337,7 +1337,7 @@ export interface StatsResponse {
   kind?: string;
 }
 
-export const StatsResponse: Schema.Schema<StatsResponse> =
+export const StatsResponse: Schema.Codec<StatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     churn_probability: Schema.optional(Schema.Number),
     num_purchases: Schema.optional(Schema.Number),
@@ -1372,7 +1372,7 @@ export interface LinkPersonaRequest {
   ttl?: string;
 }
 
-export const LinkPersonaRequest: Schema.Schema<LinkPersonaRequest> =
+export const LinkPersonaRequest: Schema.Codec<LinkPersonaRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionId: Schema.optional(Schema.String),
     persona: Schema.optional(Schema.String),
@@ -1388,7 +1388,7 @@ export interface LinkPersonaResponse {
   state?: "LINK_CREATED" | "PERSONA_OR_PLAYER_ALREADY_LINKED" | (string & {});
 }
 
-export const LinkPersonaResponse: Schema.Schema<LinkPersonaResponse> =
+export const LinkPersonaResponse: Schema.Codec<LinkPersonaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "LinkPersonaResponse" });
@@ -1402,7 +1402,7 @@ export interface RecallToken {
   expireTime?: string;
 }
 
-export const RecallToken: Schema.Schema<RecallToken> =
+export const RecallToken: Schema.Codec<RecallToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     multiPlayerPersona: Schema.optional(Schema.Boolean),
@@ -1414,7 +1414,7 @@ export interface RetrievePlayerTokensResponse {
   tokens?: ReadonlyArray<RecallToken>;
 }
 
-export const RetrievePlayerTokensResponse: Schema.Schema<RetrievePlayerTokensResponse> =
+export const RetrievePlayerTokensResponse: Schema.Codec<RetrievePlayerTokensResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokens: Schema.optional(Schema.Array(RecallToken)),
   }).annotate({ identifier: "RetrievePlayerTokensResponse" });
@@ -1426,7 +1426,7 @@ export interface GamePlayerToken {
   recallToken?: RecallToken;
 }
 
-export const GamePlayerToken: Schema.Schema<GamePlayerToken> =
+export const GamePlayerToken: Schema.Codec<GamePlayerToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.optional(Schema.String),
     recallToken: Schema.optional(RecallToken),
@@ -1437,7 +1437,7 @@ export interface RetrieveDeveloperGamesLastPlayerTokenResponse {
   gamePlayerToken?: GamePlayerToken;
 }
 
-export const RetrieveDeveloperGamesLastPlayerTokenResponse: Schema.Schema<RetrieveDeveloperGamesLastPlayerTokenResponse> =
+export const RetrieveDeveloperGamesLastPlayerTokenResponse: Schema.Codec<RetrieveDeveloperGamesLastPlayerTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gamePlayerToken: Schema.optional(GamePlayerToken),
   }).annotate({ identifier: "RetrieveDeveloperGamesLastPlayerTokenResponse" });
@@ -1447,7 +1447,7 @@ export interface RetrieveGamesPlayerTokensResponse {
   gamePlayerTokens?: ReadonlyArray<GamePlayerToken>;
 }
 
-export const RetrieveGamesPlayerTokensResponse: Schema.Schema<RetrieveGamesPlayerTokensResponse> =
+export const RetrieveGamesPlayerTokensResponse: Schema.Codec<RetrieveGamesPlayerTokensResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gamePlayerTokens: Schema.optional(Schema.Array(GamePlayerToken)),
   }).annotate({ identifier: "RetrieveGamesPlayerTokensResponse" });
@@ -1461,7 +1461,7 @@ export interface UnlinkPersonaRequest {
   persona?: string;
 }
 
-export const UnlinkPersonaRequest: Schema.Schema<UnlinkPersonaRequest> =
+export const UnlinkPersonaRequest: Schema.Codec<UnlinkPersonaRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionId: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -1473,7 +1473,7 @@ export interface UnlinkPersonaResponse {
   unlinked?: boolean;
 }
 
-export const UnlinkPersonaResponse: Schema.Schema<UnlinkPersonaResponse> =
+export const UnlinkPersonaResponse: Schema.Codec<UnlinkPersonaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unlinked: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "UnlinkPersonaResponse" });
@@ -1483,7 +1483,7 @@ export interface ResetPersonaRequest {
   persona?: string;
 }
 
-export const ResetPersonaRequest: Schema.Schema<ResetPersonaRequest> =
+export const ResetPersonaRequest: Schema.Codec<ResetPersonaRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     persona: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResetPersonaRequest" });
@@ -1493,7 +1493,7 @@ export interface ResetPersonaResponse {
   unlinked?: boolean;
 }
 
-export const ResetPersonaResponse: Schema.Schema<ResetPersonaResponse> =
+export const ResetPersonaResponse: Schema.Codec<ResetPersonaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unlinked: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ResetPersonaResponse" });
@@ -1503,7 +1503,7 @@ export interface PlayGroupingApiToken {
   tokenValue?: string;
 }
 
-export const PlayGroupingApiToken: Schema.Schema<PlayGroupingApiToken> =
+export const PlayGroupingApiToken: Schema.Codec<PlayGroupingApiToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenValue: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlayGroupingApiToken" });
@@ -1513,7 +1513,7 @@ export interface GeneratePlayGroupingApiTokenResponse {
   token?: PlayGroupingApiToken;
 }
 
-export const GeneratePlayGroupingApiTokenResponse: Schema.Schema<GeneratePlayGroupingApiTokenResponse> =
+export const GeneratePlayGroupingApiTokenResponse: Schema.Codec<GeneratePlayGroupingApiTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(PlayGroupingApiToken),
   }).annotate({ identifier: "GeneratePlayGroupingApiTokenResponse" });
@@ -1523,7 +1523,7 @@ export interface GenerateRecallPlayGroupingApiTokenResponse {
   token?: PlayGroupingApiToken;
 }
 
-export const GenerateRecallPlayGroupingApiTokenResponse: Schema.Schema<GenerateRecallPlayGroupingApiTokenResponse> =
+export const GenerateRecallPlayGroupingApiTokenResponse: Schema.Codec<GenerateRecallPlayGroupingApiTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(PlayGroupingApiToken),
   }).annotate({ identifier: "GenerateRecallPlayGroupingApiTokenResponse" });
@@ -1599,7 +1599,7 @@ export const ListAchievementDefinitionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "games/v1/achievements" }),
     svc,
-  ) as unknown as Schema.Schema<ListAchievementDefinitionsRequest>;
+  ) as unknown as Schema.Codec<ListAchievementDefinitionsRequest>;
 
 export type ListAchievementDefinitionsResponse =
   AchievementDefinitionsListResponse;
@@ -1649,7 +1649,7 @@ export const IncrementAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<IncrementAchievementsRequest>;
+  ) as unknown as Schema.Codec<IncrementAchievementsRequest>;
 
 export type IncrementAchievementsResponse = AchievementIncrementResponse;
 export const IncrementAchievementsResponse =
@@ -1697,7 +1697,7 @@ export const ListAchievementsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "games/v1/players/{playerId}/achievements" }),
     svc,
-  ) as unknown as Schema.Schema<ListAchievementsRequest>;
+  ) as unknown as Schema.Codec<ListAchievementsRequest>;
 
 export type ListAchievementsResponse = PlayerAchievementListResponse;
 export const ListAchievementsResponse =
@@ -1737,7 +1737,7 @@ export const RevealAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevealAchievementsRequest>;
+  ) as unknown as Schema.Codec<RevealAchievementsRequest>;
 
 export type RevealAchievementsResponse = AchievementRevealResponse;
 export const RevealAchievementsResponse =
@@ -1780,7 +1780,7 @@ export const SetStepsAtLeastAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetStepsAtLeastAchievementsRequest>;
+  ) as unknown as Schema.Codec<SetStepsAtLeastAchievementsRequest>;
 
 export type SetStepsAtLeastAchievementsResponse =
   AchievementSetStepsAtLeastResponse;
@@ -1821,7 +1821,7 @@ export const UnlockAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnlockAchievementsRequest>;
+  ) as unknown as Schema.Codec<UnlockAchievementsRequest>;
 
 export type UnlockAchievementsResponse = AchievementUnlockResponse;
 export const UnlockAchievementsResponse =
@@ -1861,7 +1861,7 @@ export const UpdateMultipleAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateMultipleAchievementsRequest>;
+  ) as unknown as Schema.Codec<UpdateMultipleAchievementsRequest>;
 
 export type UpdateMultipleAchievementsResponse =
   AchievementUpdateMultipleResponse;
@@ -1907,7 +1907,7 @@ export const GetApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "games/v1/applications/{applicationId}" }),
   svc,
-) as unknown as Schema.Schema<GetApplicationsRequest>;
+) as unknown as Schema.Codec<GetApplicationsRequest>;
 
 export type GetApplicationsResponse = Application;
 export const GetApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ Application;
@@ -1936,13 +1936,13 @@ export const PlayedApplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PlayedApplicationsRequest>;
+  ) as unknown as Schema.Codec<PlayedApplicationsRequest>;
 
 export interface PlayedApplicationsResponse {}
-export const PlayedApplicationsResponse: Schema.Schema<PlayedApplicationsResponse> =
+export const PlayedApplicationsResponse: Schema.Codec<PlayedApplicationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<PlayedApplicationsResponse>;
+  ) as any as Schema.Codec<PlayedApplicationsResponse>;
 
 export type PlayedApplicationsError =
   | DefaultErrors
@@ -1977,7 +1977,7 @@ export const VerifyApplicationsRequest =
       path: "games/v1/applications/{applicationId}/verify",
     }),
     svc,
-  ) as unknown as Schema.Schema<VerifyApplicationsRequest>;
+  ) as unknown as Schema.Codec<VerifyApplicationsRequest>;
 
 export type VerifyApplicationsResponse = ApplicationVerifyResponse;
 export const VerifyApplicationsResponse =
@@ -2019,7 +2019,7 @@ export const GetEndPointApplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEndPointApplicationsRequest>;
+  ) as unknown as Schema.Codec<GetEndPointApplicationsRequest>;
 
 export type GetEndPointApplicationsResponse = EndPoint;
 export const GetEndPointApplicationsResponse =
@@ -2061,7 +2061,7 @@ export const ListByPlayerEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "games/v1/events" }),
     svc,
-  ) as unknown as Schema.Schema<ListByPlayerEventsRequest>;
+  ) as unknown as Schema.Codec<ListByPlayerEventsRequest>;
 
 export type ListByPlayerEventsResponse = PlayerEventListResponse;
 export const ListByPlayerEventsResponse =
@@ -2103,7 +2103,7 @@ export const ListDefinitionsEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "games/v1/eventDefinitions" }),
     svc,
-  ) as unknown as Schema.Schema<ListDefinitionsEventsRequest>;
+  ) as unknown as Schema.Codec<ListDefinitionsEventsRequest>;
 
 export type ListDefinitionsEventsResponse = EventDefinitionListResponse;
 export const ListDefinitionsEventsResponse =
@@ -2141,7 +2141,7 @@ export const RecordEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "games/v1/events", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<RecordEventsRequest>;
+) as unknown as Schema.Codec<RecordEventsRequest>;
 
 export type RecordEventsResponse = EventUpdateResponse;
 export const RecordEventsResponse =
@@ -2181,7 +2181,7 @@ export const GetLeaderboardsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "games/v1/leaderboards/{leaderboardId}" }),
   svc,
-) as unknown as Schema.Schema<GetLeaderboardsRequest>;
+) as unknown as Schema.Codec<GetLeaderboardsRequest>;
 
 export type GetLeaderboardsResponse = Leaderboard;
 export const GetLeaderboardsResponse = /*@__PURE__*/ /*#__PURE__*/ Leaderboard;
@@ -2217,7 +2217,7 @@ export const ListLeaderboardsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "games/v1/leaderboards" }),
     svc,
-  ) as unknown as Schema.Schema<ListLeaderboardsRequest>;
+  ) as unknown as Schema.Codec<ListLeaderboardsRequest>;
 
 export type ListLeaderboardsResponse = LeaderboardListResponse;
 export const ListLeaderboardsResponse =
@@ -2248,7 +2248,7 @@ export const GetMetagameConfigMetagameRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "games/v1/metagameConfig" }),
     svc,
-  ) as unknown as Schema.Schema<GetMetagameConfigMetagameRequest>;
+  ) as unknown as Schema.Codec<GetMetagameConfigMetagameRequest>;
 
 export type GetMetagameConfigMetagameResponse = MetagameConfig;
 export const GetMetagameConfigMetagameResponse =
@@ -2297,7 +2297,7 @@ export const ListCategoriesByPlayerMetagameRequest =
       path: "games/v1/players/{playerId}/categories/{collection}",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCategoriesByPlayerMetagameRequest>;
+  ) as unknown as Schema.Codec<ListCategoriesByPlayerMetagameRequest>;
 
 export type ListCategoriesByPlayerMetagameResponse = CategoryListResponse;
 export const ListCategoriesByPlayerMetagameResponse =
@@ -2343,7 +2343,7 @@ export const GetPlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "games/v1/players/{playerId}" }),
   svc,
-) as unknown as Schema.Schema<GetPlayersRequest>;
+) as unknown as Schema.Codec<GetPlayersRequest>;
 
 export type GetPlayersResponse = Player;
 export const GetPlayersResponse = /*@__PURE__*/ /*#__PURE__*/ Player;
@@ -2368,7 +2368,7 @@ export const GetScopedPlayerIdsPlayersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "games/v1/players/me/scopedIds" }),
     svc,
-  ) as unknown as Schema.Schema<GetScopedPlayerIdsPlayersRequest>;
+  ) as unknown as Schema.Codec<GetScopedPlayerIdsPlayersRequest>;
 
 export type GetScopedPlayerIdsPlayersResponse = ScopedPlayerIds;
 export const GetScopedPlayerIdsPlayersResponse =
@@ -2407,7 +2407,7 @@ export const GetMultipleApplicationPlayerIdsPlayersRequest =
       path: "games/v1/players/me/multipleApplicationPlayerIds",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMultipleApplicationPlayerIdsPlayersRequest>;
+  ) as unknown as Schema.Codec<GetMultipleApplicationPlayerIdsPlayersRequest>;
 
 export type GetMultipleApplicationPlayerIdsPlayersResponse =
   GetMultipleApplicationPlayerIdsResponse;
@@ -2450,7 +2450,7 @@ export const ListPlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "games/v1/players/me/players/{collection}" }),
   svc,
-) as unknown as Schema.Schema<ListPlayersRequest>;
+) as unknown as Schema.Codec<ListPlayersRequest>;
 
 export type ListPlayersResponse = PlayerListResponse;
 export const ListPlayersResponse =
@@ -2485,7 +2485,7 @@ export const CheckRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "games/v1/revisions/check" }),
   svc,
-) as unknown as Schema.Schema<CheckRevisionsRequest>;
+) as unknown as Schema.Codec<CheckRevisionsRequest>;
 
 export type CheckRevisionsResponse = RevisionCheckResponse;
 export const CheckRevisionsResponse =
@@ -2538,7 +2538,7 @@ export const GetScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
   }),
   svc,
-) as unknown as Schema.Schema<GetScoresRequest>;
+) as unknown as Schema.Codec<GetScoresRequest>;
 
 export type GetScoresResponse = PlayerLeaderboardScoreListResponse;
 export const GetScoresResponse =
@@ -2591,7 +2591,7 @@ export const ListScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
   }),
   svc,
-) as unknown as Schema.Schema<ListScoresRequest>;
+) as unknown as Schema.Codec<ListScoresRequest>;
 
 export type ListScoresResponse = LeaderboardScores;
 export const ListScoresResponse = /*@__PURE__*/ /*#__PURE__*/ LeaderboardScores;
@@ -2654,7 +2654,7 @@ export const ListWindowScoresRequest =
       path: "games/v1/leaderboards/{leaderboardId}/window/{collection}",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListWindowScoresRequest>;
+  ) as unknown as Schema.Codec<ListWindowScoresRequest>;
 
 export type ListWindowScoresResponse = LeaderboardScores;
 export const ListWindowScoresResponse =
@@ -2702,7 +2702,7 @@ export const SubmitScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<SubmitScoresRequest>;
+) as unknown as Schema.Codec<SubmitScoresRequest>;
 
 export type SubmitScoresResponse = PlayerScoreResponse;
 export const SubmitScoresResponse =
@@ -2745,7 +2745,7 @@ export const SubmitMultipleScoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SubmitMultipleScoresRequest>;
+  ) as unknown as Schema.Codec<SubmitMultipleScoresRequest>;
 
 export type SubmitMultipleScoresResponse = PlayerScoreListResponse;
 export const SubmitMultipleScoresResponse =
@@ -2783,7 +2783,7 @@ export const GetSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "games/v1/snapshots/{snapshotId}" }),
   svc,
-) as unknown as Schema.Schema<GetSnapshotsRequest>;
+) as unknown as Schema.Codec<GetSnapshotsRequest>;
 
 export type GetSnapshotsResponse = Snapshot;
 export const GetSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Snapshot;
@@ -2821,7 +2821,7 @@ export const ListSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "games/v1/players/{playerId}/snapshots" }),
   svc,
-) as unknown as Schema.Schema<ListSnapshotsRequest>;
+) as unknown as Schema.Codec<ListSnapshotsRequest>;
 
 export type ListSnapshotsResponse = SnapshotListResponse;
 export const ListSnapshotsResponse =
@@ -2853,7 +2853,7 @@ export const GetStatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "games/v1/stats" }),
   svc,
-) as unknown as Schema.Schema<GetStatsRequest>;
+) as unknown as Schema.Codec<GetStatsRequest>;
 
 export type GetStatsResponse = StatsResponse;
 export const GetStatsResponse = /*@__PURE__*/ /*#__PURE__*/ StatsResponse;
@@ -2887,7 +2887,7 @@ export const LinkPersonaRecallRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<LinkPersonaRecallRequest>;
+  ) as unknown as Schema.Codec<LinkPersonaRecallRequest>;
 
 export type LinkPersonaRecallResponse = LinkPersonaResponse;
 export const LinkPersonaRecallResponse =
@@ -2923,7 +2923,7 @@ export const RetrieveTokensRecallRequest =
   }).pipe(
     T.Http({ method: "GET", path: "games/v1/recall/tokens/{sessionId}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveTokensRecallRequest>;
+  ) as unknown as Schema.Codec<RetrieveTokensRecallRequest>;
 
 export type RetrieveTokensRecallResponse = RetrievePlayerTokensResponse;
 export const RetrieveTokensRecallResponse =
@@ -2957,7 +2957,7 @@ export const LastTokenFromAllDeveloperGamesRecallRequest =
       path: "games/v1/recall/developerGamesLastPlayerToken/{sessionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<LastTokenFromAllDeveloperGamesRecallRequest>;
+  ) as unknown as Schema.Codec<LastTokenFromAllDeveloperGamesRecallRequest>;
 
 export type LastTokenFromAllDeveloperGamesRecallResponse =
   RetrieveDeveloperGamesLastPlayerTokenResponse;
@@ -3000,7 +3000,7 @@ export const GamesPlayerTokensRecallRequest =
       path: "games/v1/recall/gamesPlayerTokens/{sessionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GamesPlayerTokensRecallRequest>;
+  ) as unknown as Schema.Codec<GamesPlayerTokensRecallRequest>;
 
 export type GamesPlayerTokensRecallResponse = RetrieveGamesPlayerTokensResponse;
 export const GamesPlayerTokensRecallResponse =
@@ -3035,7 +3035,7 @@ export const UnlinkPersonaRecallRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnlinkPersonaRecallRequest>;
+  ) as unknown as Schema.Codec<UnlinkPersonaRecallRequest>;
 
 export type UnlinkPersonaRecallResponse = UnlinkPersonaResponse;
 export const UnlinkPersonaRecallResponse =
@@ -3075,7 +3075,7 @@ export const ResetPersonaRecallRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetPersonaRecallRequest>;
+  ) as unknown as Schema.Codec<ResetPersonaRecallRequest>;
 
 export type ResetPersonaRecallResponse = ResetPersonaResponse;
 export const ResetPersonaRecallResponse =
@@ -3120,7 +3120,7 @@ export const GeneratePlayGroupingApiTokenAccesstokensRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GeneratePlayGroupingApiTokenAccesstokensRequest>;
+  ) as unknown as Schema.Codec<GeneratePlayGroupingApiTokenAccesstokensRequest>;
 
 export type GeneratePlayGroupingApiTokenAccesstokensResponse =
   GeneratePlayGroupingApiTokenResponse;
@@ -3171,7 +3171,7 @@ export const GenerateRecallPlayGroupingApiTokenAccesstokensRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateRecallPlayGroupingApiTokenAccesstokensRequest>;
+  ) as unknown as Schema.Codec<GenerateRecallPlayGroupingApiTokenAccesstokensRequest>;
 
 export type GenerateRecallPlayGroupingApiTokenAccesstokensResponse =
   GenerateRecallPlayGroupingApiTokenResponse;

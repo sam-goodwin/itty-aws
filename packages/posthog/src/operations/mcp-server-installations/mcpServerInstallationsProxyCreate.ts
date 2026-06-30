@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpServerInstallationsProxyCreateInput {
+  id: string;
+  project_id: string;
+  template_id?: string | null;
+  name?: string;
+  icon_key?: string;
+  display_name?: string;
+  url?: string;
+  description?: string;
+  auth_type?: "api_key" | "oauth";
+  is_enabled?: boolean;
+  needs_reauth?: boolean;
+  pending_oauth?: boolean;
+  proxy_url?: string;
+  tool_count?: number;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const McpServerInstallationsProxyCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -26,15 +44,12 @@ export const McpServerInstallationsProxyCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/mcp_server_installations/{id}/proxy/",
     }),
-  );
-export type McpServerInstallationsProxyCreateInput =
-  typeof McpServerInstallationsProxyCreateInput.Type;
+  ) as unknown as Schema.Codec<McpServerInstallationsProxyCreateInput>;
 
 // Output Schema
+export type McpServerInstallationsProxyCreateOutput = void;
 export const McpServerInstallationsProxyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type McpServerInstallationsProxyCreateOutput =
-  typeof McpServerInstallationsProxyCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<McpServerInstallationsProxyCreateOutput>;
 
 // The operation
 /**

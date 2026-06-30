@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -53,7 +53,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface EndpointInfo {
   websocketsApiEndpoint?: string;
 }
 
-export const EndpointInfo: Schema.Schema<EndpointInfo> =
+export const EndpointInfo: Schema.Codec<EndpointInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jsonRpcApiEndpoint: Schema.optional(Schema.String),
     websocketsApiEndpoint: Schema.optional(Schema.String),
@@ -82,7 +82,7 @@ export interface ConnectionInfo {
   endpointInfo?: EndpointInfo;
 }
 
-export const ConnectionInfo: Schema.Schema<ConnectionInfo> =
+export const ConnectionInfo: Schema.Codec<ConnectionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAttachment: Schema.optional(Schema.String),
     endpointInfo: Schema.optional(EndpointInfo),
@@ -97,7 +97,7 @@ export interface EthereumEndpoints {
   executionClientPrometheusMetricsApiEndpoint?: string;
 }
 
-export const EthereumEndpoints: Schema.Schema<EthereumEndpoints> =
+export const EthereumEndpoints: Schema.Codec<EthereumEndpoints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     beaconApiEndpoint: Schema.optional(Schema.String),
     beaconPrometheusMetricsApiEndpoint: Schema.optional(Schema.String),
@@ -113,7 +113,7 @@ export interface ValidatorConfig {
   managedValidatorClient?: boolean;
 }
 
-export const ValidatorConfig: Schema.Schema<ValidatorConfig> =
+export const ValidatorConfig: Schema.Codec<ValidatorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     beaconFeeRecipient: Schema.optional(Schema.String),
     mevRelayUrls: Schema.optional(Schema.Array(Schema.String)),
@@ -129,7 +129,7 @@ export interface GethDetails {
     | (string & {});
 }
 
-export const GethDetails: Schema.Schema<GethDetails> =
+export const GethDetails: Schema.Codec<GethDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     garbageCollectionMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GethDetails" });
@@ -174,7 +174,7 @@ export interface EthereumDetails {
   apiEnableAdmin?: boolean;
 }
 
-export const EthereumDetails: Schema.Schema<EthereumDetails> =
+export const EthereumDetails: Schema.Codec<EthereumDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeType: Schema.optional(Schema.String),
     apiEnableDebug: Schema.optional(Schema.Boolean),
@@ -218,7 +218,7 @@ export interface BlockchainNode {
   createTime?: string;
 }
 
-export const BlockchainNode: Schema.Schema<BlockchainNode> =
+export const BlockchainNode: Schema.Codec<BlockchainNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     privateServiceConnectEnabled: Schema.optional(Schema.Boolean),
@@ -240,7 +240,7 @@ export interface ListBlockchainNodesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListBlockchainNodesResponse: Schema.Schema<ListBlockchainNodesResponse> =
+export const ListBlockchainNodesResponse: Schema.Codec<ListBlockchainNodesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     blockchainNodes: Schema.optional(Schema.Array(BlockchainNode)),
@@ -260,7 +260,7 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -286,7 +286,7 @@ export interface OperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
@@ -304,7 +304,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -312,7 +312,7 @@ export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -324,7 +324,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -332,7 +332,7 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -416,7 +416,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -451,7 +451,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -485,7 +485,7 @@ export const DeleteProjectsLocationsBlockchainNodesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsBlockchainNodesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsBlockchainNodesRequest>;
 
 export type DeleteProjectsLocationsBlockchainNodesResponse = Operation;
 export const DeleteProjectsLocationsBlockchainNodesResponse =
@@ -533,7 +533,7 @@ export const ListProjectsLocationsBlockchainNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/blockchainNodes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsBlockchainNodesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsBlockchainNodesRequest>;
 
 export type ListProjectsLocationsBlockchainNodesResponse =
   ListBlockchainNodesResponse;
@@ -587,7 +587,7 @@ export const CreateProjectsLocationsBlockchainNodesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsBlockchainNodesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsBlockchainNodesRequest>;
 
 export type CreateProjectsLocationsBlockchainNodesResponse = Operation;
 export const CreateProjectsLocationsBlockchainNodesResponse =
@@ -623,7 +623,7 @@ export const GetProjectsLocationsBlockchainNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsBlockchainNodesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsBlockchainNodesRequest>;
 
 export type GetProjectsLocationsBlockchainNodesResponse = BlockchainNode;
 export const GetProjectsLocationsBlockchainNodesResponse =
@@ -666,7 +666,7 @@ export const PatchProjectsLocationsBlockchainNodesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsBlockchainNodesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsBlockchainNodesRequest>;
 
 export type PatchProjectsLocationsBlockchainNodesResponse = Operation;
 export const PatchProjectsLocationsBlockchainNodesResponse =
@@ -702,7 +702,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -736,7 +736,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -775,7 +775,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -820,7 +820,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =

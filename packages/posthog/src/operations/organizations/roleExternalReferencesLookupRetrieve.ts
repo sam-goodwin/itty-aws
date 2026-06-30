@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface RoleExternalReferencesLookupRetrieveInput {
+  organization_id: string;
+  provider: string;
+  provider_organization_id: string;
+  provider_role_id?: string;
+  provider_role_slug?: string;
+}
 export const RoleExternalReferencesLookupRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -16,17 +23,94 @@ export const RoleExternalReferencesLookupRetrieveInput =
       method: "GET",
       path: "/api/organizations/{organization_id}/role_external_references/lookup/",
     }),
-  );
-export type RoleExternalReferencesLookupRetrieveInput =
-  typeof RoleExternalReferencesLookupRetrieveInput.Type;
+  ) as unknown as Schema.Codec<RoleExternalReferencesLookupRetrieveInput>;
 
 // Output Schema
+export interface RoleExternalReferencesLookupRetrieveOutput {
+  reference?: {
+    id?: string;
+    provider?: string;
+    provider_organization_id?: string;
+    provider_role_id?: string;
+    provider_role_slug?: string | null;
+    provider_role_name?: string;
+    role?: string;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+  } | null;
+}
 export const RoleExternalReferencesLookupRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reference: Schema.optional(Schema.Unknown),
-  });
-export type RoleExternalReferencesLookupRetrieveOutput =
-  typeof RoleExternalReferencesLookupRetrieveOutput.Type;
+    reference: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          provider: Schema.optional(Schema.String),
+          provider_organization_id: Schema.optional(Schema.String),
+          provider_role_id: Schema.optional(Schema.String),
+          provider_role_slug: Schema.optional(Schema.NullOr(Schema.String)),
+          provider_role_name: Schema.optional(Schema.String),
+          role: Schema.optional(Schema.String),
+          created_at: Schema.optional(Schema.String),
+          created_by: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.Number),
+                uuid: Schema.optional(Schema.String),
+                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+                first_name: Schema.optional(Schema.String),
+                last_name: Schema.optional(Schema.String),
+                email: Schema.optional(Schema.String),
+                is_email_verified: Schema.optional(
+                  Schema.NullOr(Schema.Boolean),
+                ),
+                hedgehog_config: Schema.optional(
+                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+  }) as unknown as Schema.Codec<RoleExternalReferencesLookupRetrieveOutput>;
 
 // The operation
 /**

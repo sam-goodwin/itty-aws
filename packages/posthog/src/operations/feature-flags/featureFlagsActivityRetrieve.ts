@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsActivityRetrieveInput {
+  id: number;
+  project_id: string;
+  limit?: number;
+  page?: number;
+}
 export const FeatureFlagsActivityRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -15,11 +21,37 @@ export const FeatureFlagsActivityRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/feature_flags/{id}/activity/",
     }),
-  );
-export type FeatureFlagsActivityRetrieveInput =
-  typeof FeatureFlagsActivityRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsActivityRetrieveInput>;
 
 // Output Schema
+export interface FeatureFlagsActivityRetrieveOutput {
+  results?: {
+    id?: string;
+    user?: unknown | null;
+    activity?: string;
+    scope?: string;
+    item_id?: string;
+    detail?: {
+      id?: string;
+      changes?: {
+        type?: string;
+        action?: string;
+        field?: string;
+        before?: unknown;
+        after?: unknown;
+      }[];
+      merge?: { type?: string; source?: unknown; target?: unknown };
+      trigger?: { job_type?: string; job_id?: string; payload?: unknown };
+      name?: string;
+      short_id?: string;
+      type?: string;
+    };
+    created_at?: string;
+  }[];
+  next?: string | null;
+  previous?: string | null;
+  total_count?: number;
+}
 export const FeatureFlagsActivityRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -70,9 +102,7 @@ export const FeatureFlagsActivityRetrieveOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     total_count: Schema.optional(Schema.Number),
-  });
-export type FeatureFlagsActivityRetrieveOutput =
-  typeof FeatureFlagsActivityRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsActivityRetrieveOutput>;
 
 // The operation
 /**

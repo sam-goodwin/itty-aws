@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsEvaluationReportsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const LlmAnalyticsEvaluationReportsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,34 @@ export const LlmAnalyticsEvaluationReportsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/llm_analytics/evaluation_reports/",
     }),
-  );
-export type LlmAnalyticsEvaluationReportsListInput =
-  typeof LlmAnalyticsEvaluationReportsListInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsEvaluationReportsListInput>;
 
 // Output Schema
+export interface LlmAnalyticsEvaluationReportsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    evaluation?: string;
+    frequency?: "scheduled" | "every_n";
+    rrule?: string;
+    starts_at?: string | null;
+    timezone_name?: string;
+    next_delivery_date?: string | null;
+    delivery_targets?: unknown;
+    max_sample_size?: number;
+    enabled?: boolean;
+    deleted?: boolean;
+    last_delivered_at?: string | null;
+    report_prompt_guidance?: string;
+    trigger_threshold?: number | null;
+    cooldown_minutes?: number;
+    daily_run_cap?: number;
+    created_by?: number | null;
+    created_at?: string;
+  }[];
+}
 export const LlmAnalyticsEvaluationReportsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -47,9 +75,7 @@ export const LlmAnalyticsEvaluationReportsListOutput =
         }),
       ),
     ),
-  });
-export type LlmAnalyticsEvaluationReportsListOutput =
-  typeof LlmAnalyticsEvaluationReportsListOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsEvaluationReportsListOutput>;
 
 // The operation
 /**

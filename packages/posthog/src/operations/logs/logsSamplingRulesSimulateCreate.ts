@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LogsSamplingRulesSimulateCreateInput {
+  id: string;
+  project_id: string;
+}
 export const LogsSamplingRulesSimulateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,18 +16,18 @@ export const LogsSamplingRulesSimulateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/logs/sampling_rules/{id}/simulate/",
     }),
-  );
-export type LogsSamplingRulesSimulateCreateInput =
-  typeof LogsSamplingRulesSimulateCreateInput.Type;
+  ) as unknown as Schema.Codec<LogsSamplingRulesSimulateCreateInput>;
 
 // Output Schema
+export interface LogsSamplingRulesSimulateCreateOutput {
+  estimated_reduction_pct: number;
+  notes: string;
+}
 export const LogsSamplingRulesSimulateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimated_reduction_pct: Schema.Number,
     notes: Schema.String,
-  });
-export type LogsSamplingRulesSimulateCreateOutput =
-  typeof LogsSamplingRulesSimulateCreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsSamplingRulesSimulateCreateOutput>;
 
 // The operation
 /**

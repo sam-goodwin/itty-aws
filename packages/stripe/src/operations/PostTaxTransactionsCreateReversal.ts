@@ -3,6 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostTaxTransactionsCreateReversalInput {
+  expand?: string[];
+  flat_amount?: number;
+  line_items?: {
+    amount: number;
+    amount_tax: number;
+    metadata?: Record<string, string>;
+    original_line_item: string;
+    quantity?: number;
+    reference: string;
+  }[];
+  metadata?: Record<string, string>;
+  mode: "full" | "partial";
+  original_transaction: string;
+  reference: string;
+  shipping_cost?: { amount: number; amount_tax: number };
+}
 export const PostTaxTransactionsCreateReversalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -37,18 +54,256 @@ export const PostTaxTransactionsCreateReversalInput =
       path: "/v1/tax/transactions/create_reversal",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostTaxTransactionsCreateReversalInput =
-  typeof PostTaxTransactionsCreateReversalInput.Type;
+  ) as unknown as Schema.Codec<PostTaxTransactionsCreateReversalInput>;
 
 // Output Schema
+export interface PostTaxTransactionsCreateReversalOutput {
+  created: number;
+  currency: string;
+  customer: string | null;
+  customer_details: {
+    address: {
+      city: string | null;
+      country: string;
+      line1: string | null;
+      line2: string | null;
+      postal_code: string | null;
+      state: string | null;
+    } | null;
+    address_source: "billing" | "shipping" | null;
+    ip_address: string | null;
+    tax_ids: {
+      type:
+        | "ad_nrt"
+        | "ae_trn"
+        | "al_tin"
+        | "am_tin"
+        | "ao_tin"
+        | "ar_cuit"
+        | "au_abn"
+        | "au_arn"
+        | "aw_tin"
+        | "az_tin"
+        | "ba_tin"
+        | "bb_tin"
+        | "bd_bin"
+        | "bf_ifu"
+        | "bg_uic"
+        | "bh_vat"
+        | "bj_ifu"
+        | "bo_tin"
+        | "br_cnpj"
+        | "br_cpf"
+        | "bs_tin"
+        | "by_tin"
+        | "ca_bn"
+        | "ca_gst_hst"
+        | "ca_pst_bc"
+        | "ca_pst_mb"
+        | "ca_pst_sk"
+        | "ca_qst"
+        | "cd_nif"
+        | "ch_uid"
+        | "ch_vat"
+        | "cl_tin"
+        | "cm_niu"
+        | "cn_tin"
+        | "co_nit"
+        | "cr_tin"
+        | "cv_nif"
+        | "de_stn"
+        | "do_rcn"
+        | "ec_ruc"
+        | "eg_tin"
+        | "es_cif"
+        | "et_tin"
+        | "eu_oss_vat"
+        | "eu_vat"
+        | "fo_vat"
+        | "gb_vat"
+        | "ge_vat"
+        | "gi_tin"
+        | "gn_nif"
+        | "hk_br"
+        | "hr_oib"
+        | "hu_tin"
+        | "id_npwp"
+        | "il_vat"
+        | "in_gst"
+        | "is_vat"
+        | "it_cf"
+        | "jp_cn"
+        | "jp_rn"
+        | "jp_trn"
+        | "ke_pin"
+        | "kg_tin"
+        | "kh_tin"
+        | "kr_brn"
+        | "kz_bin"
+        | "la_tin"
+        | "li_uid"
+        | "li_vat"
+        | "lk_vat"
+        | "ma_vat"
+        | "md_vat"
+        | "me_pib"
+        | "mk_vat"
+        | "mr_nif"
+        | "mx_rfc"
+        | "my_frp"
+        | "my_itn"
+        | "my_sst"
+        | "ng_tin"
+        | "no_vat"
+        | "no_voec"
+        | "np_pan"
+        | "nz_gst"
+        | "om_vat"
+        | "pe_ruc"
+        | "ph_tin"
+        | "pl_nip"
+        | "py_ruc"
+        | "ro_tin"
+        | "rs_pib"
+        | "ru_inn"
+        | "ru_kpp"
+        | "sa_vat"
+        | "sg_gst"
+        | "sg_uen"
+        | "si_tin"
+        | "sn_ninea"
+        | "sr_fin"
+        | "sv_nit"
+        | "th_vat"
+        | "tj_tin"
+        | "tr_tin"
+        | "tw_vat"
+        | "tz_vat"
+        | "ua_vat"
+        | "ug_tin"
+        | "unknown"
+        | "us_ein"
+        | "uy_ruc"
+        | "uz_tin"
+        | "uz_vat"
+        | "ve_rif"
+        | "vn_tin"
+        | "za_vat"
+        | "zm_tin"
+        | "zw_tin";
+      value: string;
+    }[];
+    taxability_override: "customer_exempt" | "none" | "reverse_charge";
+  };
+  id: string;
+  line_items?: {
+    data: {
+      amount: number;
+      amount_tax: number;
+      id: string;
+      livemode: boolean;
+      metadata: Record<string, string> | null;
+      object: "tax.transaction_line_item";
+      product: string | null;
+      quantity: number;
+      reference: string;
+      reversal: { original_line_item: string } | null;
+      tax_behavior: "exclusive" | "inclusive";
+      tax_code: string;
+      type: "reversal" | "transaction";
+    }[];
+    has_more: boolean;
+    object: "list";
+    url: string;
+  } | null;
+  livemode: boolean;
+  metadata: Record<string, string> | null;
+  object: "tax.transaction";
+  posted_at: number;
+  reference: string;
+  reversal: { original_transaction: string | null } | null;
+  ship_from_details: {
+    address: {
+      city: string | null;
+      country: string;
+      line1: string | null;
+      line2: string | null;
+      postal_code: string | null;
+      state: string | null;
+    };
+  } | null;
+  shipping_cost: {
+    amount: number;
+    amount_tax: number;
+    shipping_rate?: string;
+    tax_behavior: "exclusive" | "inclusive";
+    tax_breakdown?: {
+      amount: number;
+      jurisdiction: {
+        country: string;
+        display_name: string;
+        level: "city" | "country" | "county" | "district" | "state";
+        state: string | null;
+      };
+      sourcing: "destination" | "origin";
+      tax_rate_details: {
+        display_name: string;
+        percentage_decimal: string;
+        tax_type:
+          | "amusement_tax"
+          | "communications_tax"
+          | "gst"
+          | "hst"
+          | "igst"
+          | "jct"
+          | "lease_tax"
+          | "pst"
+          | "qst"
+          | "retail_delivery_fee"
+          | "rst"
+          | "sales_tax"
+          | "service_tax"
+          | "vat";
+      } | null;
+      taxability_reason:
+        | "customer_exempt"
+        | "not_collecting"
+        | "not_subject_to_tax"
+        | "not_supported"
+        | "portion_product_exempt"
+        | "portion_reduced_rated"
+        | "portion_standard_rated"
+        | "product_exempt"
+        | "product_exempt_holiday"
+        | "proportionally_rated"
+        | "reduced_rated"
+        | "reverse_charge"
+        | "standard_rated"
+        | "taxable_basis_reduced"
+        | "zero_rated";
+      taxable_amount: number;
+    }[];
+    tax_code: string;
+  } | null;
+  tax_date: number;
+  type: "reversal" | "transaction";
+}
 export const PostTaxTransactionsCreateReversalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
     currency: Schema.String,
     customer: Schema.NullOr(Schema.String),
     customer_details: Schema.Struct({
-      address: Schema.Unknown,
+      address: Schema.NullOr(
+        Schema.Struct({
+          city: Schema.NullOr(Schema.String),
+          country: Schema.String,
+          line1: Schema.NullOr(Schema.String),
+          line2: Schema.NullOr(Schema.String),
+          postal_code: Schema.NullOr(Schema.String),
+          state: Schema.NullOr(Schema.String),
+        }),
+      ),
       address_source: Schema.NullOr(Schema.Literals(["billing", "shipping"])),
       ip_address: Schema.NullOr(Schema.String),
       tax_ids: Schema.Array(
@@ -198,7 +453,11 @@ export const PostTaxTransactionsCreateReversalOutput =
               product: Schema.NullOr(Schema.String),
               quantity: Schema.Number,
               reference: Schema.String,
-              reversal: Schema.Unknown,
+              reversal: Schema.NullOr(
+                Schema.Struct({
+                  original_line_item: Schema.String,
+                }),
+              ),
               tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
               tax_code: Schema.String,
               type: Schema.Literals(["reversal", "transaction"]),
@@ -215,14 +474,95 @@ export const PostTaxTransactionsCreateReversalOutput =
     object: Schema.Literals(["tax.transaction"]),
     posted_at: Schema.Number,
     reference: Schema.String,
-    reversal: Schema.Unknown,
-    ship_from_details: Schema.Unknown,
-    shipping_cost: Schema.Unknown,
+    reversal: Schema.NullOr(
+      Schema.Struct({
+        original_transaction: Schema.NullOr(Schema.String),
+      }),
+    ),
+    ship_from_details: Schema.NullOr(
+      Schema.Struct({
+        address: Schema.Struct({
+          city: Schema.NullOr(Schema.String),
+          country: Schema.String,
+          line1: Schema.NullOr(Schema.String),
+          line2: Schema.NullOr(Schema.String),
+          postal_code: Schema.NullOr(Schema.String),
+          state: Schema.NullOr(Schema.String),
+        }),
+      }),
+    ),
+    shipping_cost: Schema.NullOr(
+      Schema.Struct({
+        amount: Schema.Number,
+        amount_tax: Schema.Number,
+        shipping_rate: Schema.optional(Schema.String),
+        tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
+        tax_breakdown: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              amount: Schema.Number,
+              jurisdiction: Schema.Struct({
+                country: Schema.String,
+                display_name: Schema.String,
+                level: Schema.Literals([
+                  "city",
+                  "country",
+                  "county",
+                  "district",
+                  "state",
+                ]),
+                state: Schema.NullOr(Schema.String),
+              }),
+              sourcing: Schema.Literals(["destination", "origin"]),
+              tax_rate_details: Schema.NullOr(
+                Schema.Struct({
+                  display_name: Schema.String,
+                  percentage_decimal: Schema.String,
+                  tax_type: Schema.Literals([
+                    "amusement_tax",
+                    "communications_tax",
+                    "gst",
+                    "hst",
+                    "igst",
+                    "jct",
+                    "lease_tax",
+                    "pst",
+                    "qst",
+                    "retail_delivery_fee",
+                    "rst",
+                    "sales_tax",
+                    "service_tax",
+                    "vat",
+                  ]),
+                }),
+              ),
+              taxability_reason: Schema.Literals([
+                "customer_exempt",
+                "not_collecting",
+                "not_subject_to_tax",
+                "not_supported",
+                "portion_product_exempt",
+                "portion_reduced_rated",
+                "portion_standard_rated",
+                "product_exempt",
+                "product_exempt_holiday",
+                "proportionally_rated",
+                "reduced_rated",
+                "reverse_charge",
+                "standard_rated",
+                "taxable_basis_reduced",
+                "zero_rated",
+              ]),
+              taxable_amount: Schema.Number,
+            }),
+          ),
+        ),
+        tax_code: Schema.String,
+      }),
+    ),
     tax_date: Schema.Number,
     type: Schema.Literals(["reversal", "transaction"]),
-  });
-export type PostTaxTransactionsCreateReversalOutput =
-  typeof PostTaxTransactionsCreateReversalOutput.Type;
+  }) as unknown as Schema.Codec<PostTaxTransactionsCreateReversalOutput>;
 
 // The operation
 /**

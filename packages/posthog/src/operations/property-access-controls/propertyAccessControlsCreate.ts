@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface PropertyAccessControlsCreateInput {
+  project_id: string;
+  property_definition_id: string;
+  access_level: "read_write" | "read" | "none";
+  organization_member?: string | null;
+  role?: string | null;
+}
 export const PropertyAccessControlsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,18 @@ export const PropertyAccessControlsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/property_access_controls/",
     }),
-  );
-export type PropertyAccessControlsCreateInput =
-  typeof PropertyAccessControlsCreateInput.Type;
+  ) as unknown as Schema.Codec<PropertyAccessControlsCreateInput>;
 
 // Output Schema
+export interface PropertyAccessControlsCreateOutput {
+  id: string;
+  access_level: "read_write" | "read" | "none";
+  organization_member: string | null;
+  role: string | null;
+  created_by: number | null;
+  created_at: string;
+  updated_at: string;
+}
 export const PropertyAccessControlsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,9 +43,7 @@ export const PropertyAccessControlsCreateOutput =
     created_by: Schema.NullOr(Schema.Number),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type PropertyAccessControlsCreateOutput =
-  typeof PropertyAccessControlsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PropertyAccessControlsCreateOutput>;
 
 // The operation
 /**

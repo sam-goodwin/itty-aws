@@ -4,6 +4,24 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProxyRecordsCreateInput {
+  organization_id: string;
+  id?: string;
+  domain?: string;
+  target_cname?: string;
+  status?:
+    | "waiting"
+    | "issuing"
+    | "valid"
+    | "warning"
+    | "erroring"
+    | "deleting"
+    | "timed_out";
+  message?: string | null;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: number;
+}
 export const ProxyRecordsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -30,10 +48,26 @@ export const ProxyRecordsCreateInput =
       method: "POST",
       path: "/api/organizations/{organization_id}/proxy_records/",
     }),
-  );
-export type ProxyRecordsCreateInput = typeof ProxyRecordsCreateInput.Type;
+  ) as unknown as Schema.Codec<ProxyRecordsCreateInput>;
 
 // Output Schema
+export interface ProxyRecordsCreateOutput {
+  id?: string;
+  domain?: string;
+  target_cname?: string;
+  status?:
+    | "waiting"
+    | "issuing"
+    | "valid"
+    | "warning"
+    | "erroring"
+    | "deleting"
+    | "timed_out";
+  message?: string | null;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: number;
+}
 export const ProxyRecordsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -54,8 +88,7 @@ export const ProxyRecordsCreateOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.Number),
-  });
-export type ProxyRecordsCreateOutput = typeof ProxyRecordsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ProxyRecordsCreateOutput>;
 
 // The operation
 /**

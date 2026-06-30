@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetProjectLogsInput {
+  ref: string;
+  sql?: string;
+  iso_timestamp_start?: string;
+  iso_timestamp_end?: string;
+}
 export const V1GetProjectLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   sql: Schema.optional(Schema.String),
@@ -14,17 +20,50 @@ export const V1GetProjectLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/v1/projects/{ref}/analytics/endpoints/logs",
   }),
-);
-export type V1GetProjectLogsInput = typeof V1GetProjectLogsInput.Type;
+) as unknown as Schema.Codec<V1GetProjectLogsInput>;
 
 // Output Schema
+export interface V1GetProjectLogsOutput {
+  result?: unknown[];
+  error?:
+    | string
+    | {
+        code: number;
+        errors: {
+          domain: string;
+          location: string;
+          locationType: string;
+          message: string;
+          reason: string;
+        }[];
+        message: string;
+        status: string;
+      };
+}
 export const V1GetProjectLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     result: Schema.optional(Schema.Array(Schema.Unknown)),
-    error: Schema.optional(Schema.Unknown),
+    error: Schema.optional(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          code: Schema.Number,
+          errors: Schema.Array(
+            Schema.Struct({
+              domain: Schema.String,
+              location: Schema.String,
+              locationType: Schema.String,
+              message: Schema.String,
+              reason: Schema.String,
+            }),
+          ),
+          message: Schema.String,
+          status: Schema.String,
+        }),
+      ]),
+    ),
   },
-);
-export type V1GetProjectLogsOutput = typeof V1GetProjectLogsOutput.Type;
+) as unknown as Schema.Codec<V1GetProjectLogsOutput>;
 
 // The operation
 /**

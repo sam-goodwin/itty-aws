@@ -4,11 +4,25 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GraphQueryCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    timeModified?: string;
+    description?: string;
+    query: string;
+    resultKind?: "basic";
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+}
 export const GraphQueryCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -31,11 +45,22 @@ export const GraphQueryCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceGraph/queries/{resourceName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type GraphQueryCreateOrUpdateInput =
-  typeof GraphQueryCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GraphQueryCreateOrUpdateInput>;
 
 // Output Schema
+export interface GraphQueryCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GraphQueryCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -55,9 +80,7 @@ export const GraphQueryCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GraphQueryCreateOrUpdateOutput =
-  typeof GraphQueryCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GraphQueryCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -75,6 +98,11 @@ export const GraphQueryCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GraphQueryDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const GraphQueryDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -85,12 +113,12 @@ export const GraphQueryDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceGraph/queries/{resourceName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type GraphQueryDeleteInput = typeof GraphQueryDeleteInput.Type;
+) as unknown as Schema.Codec<GraphQueryDeleteInput>;
 
 // Output Schema
-export const GraphQueryDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GraphQueryDeleteOutput = typeof GraphQueryDeleteOutput.Type;
+export type GraphQueryDeleteOutput = void;
+export const GraphQueryDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GraphQueryDeleteOutput>;
 
 // The operation
 /**
@@ -106,6 +134,11 @@ export const GraphQueryDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GraphQueryDeleteOutput,
 }));
 // Input Schema
+export interface GraphQueryGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const GraphQueryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -116,10 +149,22 @@ export const GraphQueryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceGraph/queries/{resourceName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type GraphQueryGetInput = typeof GraphQueryGetInput.Type;
+) as unknown as Schema.Codec<GraphQueryGetInput>;
 
 // Output Schema
+export interface GraphQueryGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GraphQueryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -138,8 +183,7 @@ export const GraphQueryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GraphQueryGetOutput = typeof GraphQueryGetOutput.Type;
+}) as unknown as Schema.Codec<GraphQueryGetOutput>;
 
 // The operation
 /**
@@ -155,6 +199,10 @@ export const GraphQueryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GraphQueryGetOutput,
 }));
 // Input Schema
+export interface GraphQueryListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const GraphQueryListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -164,10 +212,25 @@ export const GraphQueryListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceGraph/queries",
     apiVersion: "2024-04-01",
   }),
-);
-export type GraphQueryListInput = typeof GraphQueryListInput.Type;
+) as unknown as Schema.Codec<GraphQueryListInput>;
 
 // Output Schema
+export interface GraphQueryListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GraphQueryListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -191,8 +254,7 @@ export const GraphQueryListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type GraphQueryListOutput = typeof GraphQueryListOutput.Type;
+}) as unknown as Schema.Codec<GraphQueryListOutput>;
 
 // The operation
 /**
@@ -207,6 +269,9 @@ export const GraphQueryList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GraphQueryListOutput,
 }));
 // Input Schema
+export interface GraphQueryListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const GraphQueryListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -216,11 +281,25 @@ export const GraphQueryListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceGraph/queries",
       apiVersion: "2024-04-01",
     }),
-  );
-export type GraphQueryListBySubscriptionInput =
-  typeof GraphQueryListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<GraphQueryListBySubscriptionInput>;
 
 // Output Schema
+export interface GraphQueryListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GraphQueryListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -255,9 +334,7 @@ export const GraphQueryListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GraphQueryListBySubscriptionOutput =
-  typeof GraphQueryListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<GraphQueryListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -272,6 +349,14 @@ export const GraphQueryListBySubscription =
     outputSchema: GraphQueryListBySubscriptionOutput,
   }));
 // Input Schema
+export interface GraphQueryUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  properties?: { description?: string; query?: string };
+}
 export const GraphQueryUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -290,10 +375,22 @@ export const GraphQueryUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceGraph/queries/{resourceName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type GraphQueryUpdateInput = typeof GraphQueryUpdateInput.Type;
+) as unknown as Schema.Codec<GraphQueryUpdateInput>;
 
 // Output Schema
+export interface GraphQueryUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GraphQueryUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -314,8 +411,7 @@ export const GraphQueryUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type GraphQueryUpdateOutput = typeof GraphQueryUpdateOutput.Type;
+) as unknown as Schema.Codec<GraphQueryUpdateOutput>;
 
 // The operation
 /**
@@ -331,6 +427,7 @@ export const GraphQueryUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GraphQueryUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -339,10 +436,22 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ResourceGraph/operations",
     apiVersion: "2024-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -359,8 +468,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -373,6 +481,32 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ResourcesInput {
+  subscriptions?: string[];
+  managementGroups?: string[];
+  query: string;
+  options?: {
+    $skipToken?: string;
+    $top?: number;
+    $skip?: number;
+    resultFormat?: "table" | "objectArray";
+    allowPartialScopes?: boolean;
+    authorizationScopeFilter?:
+      | "AtScopeAndBelow"
+      | "AtScopeAndAbove"
+      | "AtScopeExact"
+      | "AtScopeAboveAndBelow";
+  };
+  facets?: {
+    expression: string;
+    options?: {
+      sortBy?: string;
+      sortOrder?: "asc" | "desc";
+      filter?: string;
+      $top?: number;
+    };
+  }[];
+}
 export const ResourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptions: Schema.optional(Schema.Array(Schema.String)),
   managementGroups: Schema.optional(Schema.Array(Schema.String)),
@@ -415,10 +549,17 @@ export const ResourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ResourceGraph/resources",
     apiVersion: "2024-04-01",
   }),
-);
-export type ResourcesInput = typeof ResourcesInput.Type;
+) as unknown as Schema.Codec<ResourcesInput>;
 
 // Output Schema
+export interface ResourcesOutput {
+  totalRecords: number;
+  count: number;
+  resultTruncated: "true" | "false";
+  $skipToken?: string;
+  data: unknown;
+  facets?: { expression: string; resultType: string }[];
+}
 export const ResourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   totalRecords: Schema.Number,
   count: Schema.Number,
@@ -433,8 +574,7 @@ export const ResourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ResourcesOutput = typeof ResourcesOutput.Type;
+}) as unknown as Schema.Codec<ResourcesOutput>;
 
 // The operation
 /**

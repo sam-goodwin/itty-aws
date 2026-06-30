@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteV1SourceRepositoriesByIdInput {
+  id: string;
+}
 export const DeleteV1SourceRepositoriesByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/source-repositories/{id}" }));
-export type DeleteV1SourceRepositoriesByIdInput =
-  typeof DeleteV1SourceRepositoriesByIdInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/v1/source-repositories/{id}" }),
+  ) as unknown as Schema.Codec<DeleteV1SourceRepositoriesByIdInput>;
 
 // Output Schema
+export type DeleteV1SourceRepositoriesByIdOutput = void;
 export const DeleteV1SourceRepositoriesByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteV1SourceRepositoriesByIdOutput =
-  typeof DeleteV1SourceRepositoriesByIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1SourceRepositoriesByIdOutput>;
 
 // The operation
 /**

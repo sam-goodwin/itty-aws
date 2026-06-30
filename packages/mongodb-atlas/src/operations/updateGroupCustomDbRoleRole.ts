@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupCustomDbRoleRoleInput {
+  groupId: string;
+  roleName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupCustomDbRoleRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const UpdateGroupCustomDbRoleRoleInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
     }),
-  );
-export type UpdateGroupCustomDbRoleRoleInput =
-  typeof UpdateGroupCustomDbRoleRoleInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupCustomDbRoleRoleInput>;
 
 // Output Schema
+export type UpdateGroupCustomDbRoleRoleOutput = void;
 export const UpdateGroupCustomDbRoleRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupCustomDbRoleRoleOutput =
-  typeof UpdateGroupCustomDbRoleRoleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupCustomDbRoleRoleOutput>;
 
 // The operation
 /**

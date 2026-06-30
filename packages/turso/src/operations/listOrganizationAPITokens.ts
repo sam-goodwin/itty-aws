@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListOrganizationAPITokensInput {
+  organizationSlug: string;
+}
 export const ListOrganizationAPITokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,20 @@ export const ListOrganizationAPITokensInput =
       method: "GET",
       path: "/v1/organizations/{organizationSlug}/api-tokens",
     }),
-  );
-export type ListOrganizationAPITokensInput =
-  typeof ListOrganizationAPITokensInput.Type;
+  ) as unknown as Schema.Codec<ListOrganizationAPITokensInput>;
 
 // Output Schema
+export interface ListOrganizationAPITokensOutput {
+  tokens?: {
+    name?: string;
+    id?: string;
+    organization?: string;
+    group?: string;
+    scopes?: string[];
+    owner?: { username?: string; email?: string };
+    created_at?: string;
+  }[];
+}
 export const ListOrganizationAPITokensOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokens: Schema.optional(
@@ -36,9 +48,7 @@ export const ListOrganizationAPITokensOutput =
         }),
       ),
     ),
-  });
-export type ListOrganizationAPITokensOutput =
-  typeof ListOrganizationAPITokensOutput.Type;
+  }) as unknown as Schema.Codec<ListOrganizationAPITokensOutput>;
 
 // The operation
 /**

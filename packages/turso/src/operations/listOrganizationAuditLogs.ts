@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListOrganizationAuditLogsInput {
+  organizationSlug: string;
+  page_size?: number;
+  page?: number;
+}
 export const ListOrganizationAuditLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,49 @@ export const ListOrganizationAuditLogsInput =
       method: "GET",
       path: "/v1/organizations/{organizationSlug}/audit-logs",
     }),
-  );
-export type ListOrganizationAuditLogsInput =
-  typeof ListOrganizationAuditLogsInput.Type;
+  ) as unknown as Schema.Codec<ListOrganizationAuditLogsInput>;
 
 // Output Schema
+export interface ListOrganizationAuditLogsOutput {
+  audit_logs?: {
+    code?:
+      | "user-signup"
+      | "db-create"
+      | "db-delete"
+      | "db-protect"
+      | "db-unprotect"
+      | "db-token-create"
+      | "group-token-create"
+      | "user-token-create"
+      | "instance-create"
+      | "instance-delete"
+      | "org-create"
+      | "org-delete"
+      | "org-member-add"
+      | "org-member-rm"
+      | "org-member-leave"
+      | "org-plan-update"
+      | "org-set-overages"
+      | "group-create"
+      | "group-delete"
+      | "group-unarchive"
+      | "group-protect"
+      | "group-unprotect"
+      | "db-aunrchive"
+      | "user-delete";
+    message?: string;
+    origin?: string;
+    author?: string;
+    created_at?: string;
+    data?: unknown;
+  }[];
+  pagination?: {
+    page?: number;
+    page_size?: number;
+    total_pages?: number;
+    total_rows?: number;
+  };
+}
 export const ListOrganizationAuditLogsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audit_logs: Schema.optional(
@@ -67,9 +110,7 @@ export const ListOrganizationAuditLogsOutput =
         total_rows: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ListOrganizationAuditLogsOutput =
-  typeof ListOrganizationAuditLogsOutput.Type;
+  }) as unknown as Schema.Codec<ListOrganizationAuditLogsOutput>;
 
 // The operation
 /**

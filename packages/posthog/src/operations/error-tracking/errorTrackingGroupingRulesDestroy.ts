@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingGroupingRulesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingGroupingRulesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const ErrorTrackingGroupingRulesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/error_tracking/grouping_rules/{id}/",
     }),
-  );
-export type ErrorTrackingGroupingRulesDestroyInput =
-  typeof ErrorTrackingGroupingRulesDestroyInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingGroupingRulesDestroyInput>;
 
 // Output Schema
+export type ErrorTrackingGroupingRulesDestroyOutput = void;
 export const ErrorTrackingGroupingRulesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingGroupingRulesDestroyOutput =
-  typeof ErrorTrackingGroupingRulesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingGroupingRulesDestroyOutput>;
 
 // The operation
 /**

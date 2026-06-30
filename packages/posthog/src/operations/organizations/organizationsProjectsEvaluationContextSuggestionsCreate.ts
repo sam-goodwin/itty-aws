@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface OrganizationsProjectsEvaluationContextSuggestionsCreateInput {
+  id: number;
+  organization_id: string;
+  context_name: string;
+}
 export const OrganizationsProjectsEvaluationContextSuggestionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,19 +18,20 @@ export const OrganizationsProjectsEvaluationContextSuggestionsCreateInput =
       method: "POST",
       path: "/api/organizations/{organization_id}/projects/{id}/evaluation_context_suggestions/",
     }),
-  );
-export type OrganizationsProjectsEvaluationContextSuggestionsCreateInput =
-  typeof OrganizationsProjectsEvaluationContextSuggestionsCreateInput.Type;
+  ) as unknown as Schema.Codec<OrganizationsProjectsEvaluationContextSuggestionsCreateInput>;
 
 // Output Schema
+export interface OrganizationsProjectsEvaluationContextSuggestionsCreateOutput {
+  success: boolean;
+  name: string;
+  hidden_from_suggestions: boolean;
+}
 export const OrganizationsProjectsEvaluationContextSuggestionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
     name: Schema.String,
     hidden_from_suggestions: Schema.Boolean,
-  });
-export type OrganizationsProjectsEvaluationContextSuggestionsCreateOutput =
-  typeof OrganizationsProjectsEvaluationContextSuggestionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsProjectsEvaluationContextSuggestionsCreateOutput>;
 
 // The operation
 /**

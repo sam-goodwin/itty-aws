@@ -8,16 +8,69 @@ import {
   UnprocessableEntity,
 } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface UserlandSessionsControllerAuthenticate0Input {}
 export const UserlandSessionsControllerAuthenticate0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/user_management/authenticate" }),
-  );
-export type UserlandSessionsControllerAuthenticate0Input =
-  typeof UserlandSessionsControllerAuthenticate0Input.Type;
+  ) as unknown as Schema.Codec<UserlandSessionsControllerAuthenticate0Input>;
 
 // Output Schema
+export interface UserlandSessionsControllerAuthenticate0Output {
+  user?: {
+    object?: string;
+    id?: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    profile_picture_url?: string | null;
+    email?: string;
+    email_verified?: boolean;
+    external_id?: string | null;
+    metadata?: Record<string, string>;
+    last_sign_in_at?: string | null;
+    locale?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  };
+  organization_id?: string;
+  authkit_authorization_code?: string;
+  access_token?: Redacted.Redacted<string>;
+  refresh_token?: Redacted.Redacted<string>;
+  authentication_method?:
+    | "SSO"
+    | "Password"
+    | "Passkey"
+    | "AppleOAuth"
+    | "BitbucketOAuth"
+    | "CrossAppAuth"
+    | "DiscordOAuth"
+    | "ExternalAuth"
+    | "GitHubOAuth"
+    | "GitLabOAuth"
+    | "GoogleOAuth"
+    | "IntuitOAuth"
+    | "LinkedInOAuth"
+    | "MicrosoftOAuth"
+    | "SalesforceOAuth"
+    | "SlackOAuth"
+    | "VercelMarketplaceOAuth"
+    | "VercelOAuth"
+    | "XeroOAuth"
+    | "MagicAuth"
+    | "Impersonation"
+    | "MigratedSession";
+  impersonator?: { email: string; reason: string | null };
+  oauth_tokens?: {
+    provider: string;
+    refresh_token: Redacted.Redacted<string>;
+    access_token: Redacted.Redacted<string>;
+    expires_at: number;
+    scopes: string[];
+  };
+}
 export const UserlandSessionsControllerAuthenticate0Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(
@@ -83,9 +136,7 @@ export const UserlandSessionsControllerAuthenticate0Output =
         scopes: Schema.Array(Schema.String),
       }),
     ),
-  });
-export type UserlandSessionsControllerAuthenticate0Output =
-  typeof UserlandSessionsControllerAuthenticate0Output.Type;
+  }) as unknown as Schema.Codec<UserlandSessionsControllerAuthenticate0Output>;
 
 // The operation
 /**

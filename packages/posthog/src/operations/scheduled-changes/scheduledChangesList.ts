@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ScheduledChangesListInput {
+  project_id: string;
+  limit?: number;
+  model_name?: string;
+  offset?: number;
+  record_id?: string;
+}
 export const ScheduledChangesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,10 +22,53 @@ export const ScheduledChangesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/scheduled_changes/",
     }),
-  );
-export type ScheduledChangesListInput = typeof ScheduledChangesListInput.Type;
+  ) as unknown as Schema.Codec<ScheduledChangesListInput>;
 
 // Output Schema
+export interface ScheduledChangesListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: number;
+    team_id: number;
+    record_id: string;
+    model_name: "FeatureFlag";
+    payload: unknown;
+    scheduled_at: string;
+    executed_at: string | null;
+    failure_reason: string | null;
+    created_at: string;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    updated_at: string;
+    is_recurring?: boolean;
+    recurrence_interval?: "daily" | "weekly" | "monthly" | "yearly" | null;
+    cron_expression?: string | null;
+    last_executed_at: string | null;
+    end_date?: string | null;
+    timezone: string | null;
+  }[];
+}
 export const ScheduledChangesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -46,19 +96,38 @@ export const ScheduledChangesListOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
         updated_at: Schema.String,
         is_recurring: Schema.optional(Schema.Boolean),
-        recurrence_interval: Schema.optional(Schema.Unknown),
+        recurrence_interval: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
+          ),
+        ),
         cron_expression: Schema.optional(Schema.NullOr(Schema.String)),
         last_executed_at: Schema.NullOr(Schema.String),
         end_date: Schema.optional(Schema.NullOr(Schema.String)),
         timezone: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ScheduledChangesListOutput = typeof ScheduledChangesListOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledChangesListOutput>;
 
 // The operation
 /**

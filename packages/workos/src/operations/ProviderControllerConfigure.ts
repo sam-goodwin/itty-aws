@@ -3,14 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ProviderControllerConfigureInput {
+  organizationId: string;
+  slug: string;
+  enabled?: boolean;
+  scopes?: string[] | null;
+  client_id?: string;
+  client_secret?: string | Redacted.Redacted<string>;
+}
 export const ProviderControllerConfigureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
-    scopes: Schema.optional(Schema.Unknown),
+    scopes: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
     client_id: Schema.optional(Schema.String),
     client_secret: Schema.optional(SensitiveString),
   }).pipe(
@@ -18,11 +27,27 @@ export const ProviderControllerConfigureInput =
       method: "PUT",
       path: "/organizations/{organizationId}/data_integration_configurations/{slug}",
     }),
-  );
-export type ProviderControllerConfigureInput =
-  typeof ProviderControllerConfigureInput.Type;
+  ) as unknown as Schema.Codec<ProviderControllerConfigureInput>;
 
 // Output Schema
+export interface ProviderControllerConfigureOutput {
+  object: string;
+  id: string;
+  organization_id: string;
+  slug: string;
+  name: string;
+  enabled: boolean;
+  scopes: string[] | null;
+  created_at: string;
+  updated_at: string;
+  credentials?: {
+    credentials_type: "shared" | "custom" | "organization";
+    has_credentials: boolean;
+    client_id: string | null;
+    client_secret_last_four: string | null;
+    redirect_uri: string;
+  };
+}
 export const ProviderControllerConfigureOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -31,7 +56,7 @@ export const ProviderControllerConfigureOutput =
     slug: Schema.String,
     name: Schema.String,
     enabled: Schema.Boolean,
-    scopes: Schema.Unknown,
+    scopes: Schema.NullOr(Schema.Array(Schema.String)),
     created_at: Schema.String,
     updated_at: Schema.String,
     credentials: Schema.optional(
@@ -43,9 +68,7 @@ export const ProviderControllerConfigureOutput =
         redirect_uri: Schema.String,
       }),
     ),
-  });
-export type ProviderControllerConfigureOutput =
-  typeof ProviderControllerConfigureOutput.Type;
+  }) as unknown as Schema.Codec<ProviderControllerConfigureOutput>;
 
 // The operation
 /**

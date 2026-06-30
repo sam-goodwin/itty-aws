@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupAlertConfigsInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupAlertConfigsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,14 +25,12 @@ export const ListGroupAlertConfigsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs",
     }),
-  );
-export type ListGroupAlertConfigsInput = typeof ListGroupAlertConfigsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupAlertConfigsInput>;
 
 // Output Schema
+export type ListGroupAlertConfigsOutput = void;
 export const ListGroupAlertConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupAlertConfigsOutput =
-  typeof ListGroupAlertConfigsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupAlertConfigsOutput>;
 
 // The operation
 /**

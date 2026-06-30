@@ -3,6 +3,18 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseColumnAnnotationsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  table?: string;
+  column_name?: string;
+  description?: string;
+  description_source?: "canonical" | "ai_generated" | "user_edited";
+  ai_model?: string;
+  is_user_edited?: boolean;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const WarehouseColumnAnnotationsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -22,11 +34,20 @@ export const WarehouseColumnAnnotationsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/warehouse_column_annotations/{id}/",
     }),
-  );
-export type WarehouseColumnAnnotationsPartialUpdateInput =
-  typeof WarehouseColumnAnnotationsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<WarehouseColumnAnnotationsPartialUpdateInput>;
 
 // Output Schema
+export interface WarehouseColumnAnnotationsPartialUpdateOutput {
+  id: string;
+  table: string;
+  column_name?: string;
+  description: string;
+  description_source: "canonical" | "ai_generated" | "user_edited";
+  ai_model: string;
+  is_user_edited: boolean;
+  created_at: string;
+  updated_at: string | null;
+}
 export const WarehouseColumnAnnotationsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -42,9 +63,7 @@ export const WarehouseColumnAnnotationsPartialUpdateOutput =
     is_user_edited: Schema.Boolean,
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type WarehouseColumnAnnotationsPartialUpdateOutput =
-  typeof WarehouseColumnAnnotationsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseColumnAnnotationsPartialUpdateOutput>;
 
 // The operation
 /**

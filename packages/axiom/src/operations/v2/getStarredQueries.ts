@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface GetStarredQueriesInput {
+  limit?: number;
+  offset?: number;
+  dataset?: string;
+  who?: string;
+  qs?: string;
+}
 export const GetStarredQueriesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     limit: Schema.optional(Schema.Number),
@@ -11,10 +18,48 @@ export const GetStarredQueriesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     who: Schema.optional(Schema.String),
     qs: Schema.optional(Schema.String),
   },
-).pipe(T.Http({ method: "GET", path: "/v2/apl-starred-queries" }));
-export type GetStarredQueriesInput = typeof GetStarredQueriesInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v2/apl-starred-queries" }),
+) as unknown as Schema.Codec<GetStarredQueriesInput>;
 
 // Output Schema
+export type GetStarredQueriesOutput = {
+  dataset?: string;
+  kind: "apl";
+  metadata: Record<string, string>;
+  name: string;
+  query: {
+    apl: string;
+    cursor?: string;
+    defaultLimit?: number;
+    defaultOrder?: { desc?: boolean; field?: string }[];
+    endTime?: string;
+    includeCursor?: boolean;
+    includeCursorField?: boolean;
+    libraries?: string[];
+    queryOptions?: {
+      disableCache?: boolean;
+      disableStats?: boolean;
+      disableTrace?: boolean;
+      maxDataPoints?: number;
+      maxSeries?: number;
+      noAggregation?: boolean;
+      noFill?: boolean;
+      noInterpolation?: boolean;
+      priority?: "low" | "medium" | "high";
+      resolution?: string;
+      displayNull?: "auto" | "null" | "span" | "zero" | "";
+      overlayCharts?: "true" | "false" | "";
+      shownColumns?: string;
+      timeSeriesVariant?: "area" | "bars" | "line" | "lines" | "";
+      timeSeriesView?: "charts" | "resultsTable" | "charts|resultsTable" | "";
+    };
+    startTime?: string;
+    variables?: unknown;
+  };
+  who: string;
+  id: string;
+}[];
 export const GetStarredQueriesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     dataset: Schema.optional(Schema.String),
@@ -75,8 +120,7 @@ export const GetStarredQueriesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     who: Schema.String,
     id: Schema.String,
   }),
-);
-export type GetStarredQueriesOutput = typeof GetStarredQueriesOutput.Type;
+) as unknown as Schema.Codec<GetStarredQueriesOutput>;
 
 // The operation
 /**

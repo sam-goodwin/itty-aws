@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateJitAccessInput {
+  ref: string;
+  user_id: string;
+  roles: {
+    role: string;
+    expires_at?: number;
+    allowed_networks?: {
+      allowed_cidrs?: { cidr: string }[];
+      allowed_cidrs_v6?: { cidr: string }[];
+    };
+    branches_only?: boolean;
+  }[];
+}
 export const V1UpdateJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -34,10 +47,23 @@ export const V1UpdateJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/database/jit" }));
-export type V1UpdateJitAccessInput = typeof V1UpdateJitAccessInput.Type;
+).pipe(
+  T.Http({ method: "PUT", path: "/v1/projects/{ref}/database/jit" }),
+) as unknown as Schema.Codec<V1UpdateJitAccessInput>;
 
 // Output Schema
+export interface V1UpdateJitAccessOutput {
+  user_id?: string;
+  user_roles: {
+    role: string;
+    expires_at?: number;
+    allowed_networks?: {
+      allowed_cidrs?: { cidr: string }[];
+      allowed_cidrs_v6?: { cidr: string }[];
+    };
+    branches_only?: boolean;
+  }[];
+}
 export const V1UpdateJitAccessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user_id: Schema.optional(Schema.String),
@@ -66,8 +92,7 @@ export const V1UpdateJitAccessOutput =
         branches_only: Schema.optional(Schema.Boolean),
       }),
     ),
-  });
-export type V1UpdateJitAccessOutput = typeof V1UpdateJitAccessOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateJitAccessOutput>;
 
 // The operation
 /**

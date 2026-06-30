@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service origin-tls-compliance-modes
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -31,7 +31,7 @@ export const GetOriginTlsComplianceModeRequest =
         path: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
       }),
     ),
-  ) as unknown as Schema.Schema<GetOriginTlsComplianceModeRequest>;
+  ) as unknown as Schema.Codec<GetOriginTlsComplianceModeRequest>;
 
 export interface GetOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
@@ -61,7 +61,7 @@ export const GetOriginTlsComplianceModeResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetOriginTlsComplianceModeResponse>;
+  ) as unknown as Schema.Codec<GetOriginTlsComplianceModeResponse>;
 
 export type GetOriginTlsComplianceModeError = DefaultErrors;
 
@@ -94,7 +94,7 @@ export const PutOriginTlsComplianceModeRequest =
         path: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
       }),
     ),
-  ) as unknown as Schema.Schema<PutOriginTlsComplianceModeRequest>;
+  ) as unknown as Schema.Codec<PutOriginTlsComplianceModeRequest>;
 
 export interface PutOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
@@ -124,7 +124,7 @@ export const PutOriginTlsComplianceModeResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutOriginTlsComplianceModeResponse>;
+  ) as unknown as Schema.Codec<PutOriginTlsComplianceModeResponse>;
 
 export type PutOriginTlsComplianceModeError = DefaultErrors;
 
@@ -157,7 +157,7 @@ export const PatchOriginTlsComplianceModeRequest =
         path: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchOriginTlsComplianceModeRequest>;
+  ) as unknown as Schema.Codec<PatchOriginTlsComplianceModeRequest>;
 
 export interface PatchOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
@@ -187,7 +187,7 @@ export const PatchOriginTlsComplianceModeResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchOriginTlsComplianceModeResponse>;
+  ) as unknown as Schema.Codec<PatchOriginTlsComplianceModeResponse>;
 
 export type PatchOriginTlsComplianceModeError = DefaultErrors;
 
@@ -217,7 +217,7 @@ export const DeleteOriginTlsComplianceModeRequest =
         path: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteOriginTlsComplianceModeRequest>;
+  ) as unknown as Schema.Codec<DeleteOriginTlsComplianceModeRequest>;
 
 export interface DeleteOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
@@ -243,7 +243,7 @@ export const DeleteOriginTlsComplianceModeResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteOriginTlsComplianceModeResponse>;
+  ) as unknown as Schema.Codec<DeleteOriginTlsComplianceModeResponse>;
 
 export type DeleteOriginTlsComplianceModeError = DefaultErrors;
 

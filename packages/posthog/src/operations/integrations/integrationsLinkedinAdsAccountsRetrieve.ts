@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsLinkedinAdsAccountsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsLinkedinAdsAccountsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const IntegrationsLinkedinAdsAccountsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/linkedin_ads_accounts/",
     }),
-  );
-export type IntegrationsLinkedinAdsAccountsRetrieveInput =
-  typeof IntegrationsLinkedinAdsAccountsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsLinkedinAdsAccountsRetrieveInput>;
 
 // Output Schema
+export type IntegrationsLinkedinAdsAccountsRetrieveOutput = void;
 export const IntegrationsLinkedinAdsAccountsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsLinkedinAdsAccountsRetrieveOutput =
-  typeof IntegrationsLinkedinAdsAccountsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsLinkedinAdsAccountsRetrieveOutput>;
 
 // The operation
 /**

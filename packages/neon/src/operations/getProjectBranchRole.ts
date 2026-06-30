@@ -3,8 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetProjectBranchRoleInput {
+  project_id: string;
+  branch_id: string;
+  role_name: string;
+}
 export const GetProjectBranchRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,10 +21,20 @@ export const GetProjectBranchRoleInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}",
     }),
-  );
-export type GetProjectBranchRoleInput = typeof GetProjectBranchRoleInput.Type;
+  ) as unknown as Schema.Codec<GetProjectBranchRoleInput>;
 
 // Output Schema
+export interface GetProjectBranchRoleOutput {
+  role: {
+    branch_id: string;
+    name: string;
+    password?: Redacted.Redacted<string>;
+    protected?: boolean;
+    authentication_method?: string;
+    created_at: string;
+    updated_at: string;
+  };
+}
 export const GetProjectBranchRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.Struct({
@@ -30,8 +46,7 @@ export const GetProjectBranchRoleOutput =
       created_at: Schema.String,
       updated_at: Schema.String,
     }),
-  });
-export type GetProjectBranchRoleOutput = typeof GetProjectBranchRoleOutput.Type;
+  }) as unknown as Schema.Codec<GetProjectBranchRoleOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EndpointsMaterializationStatusRetrieveInput {
+  name: string;
+  project_id: string;
+}
 export const EndpointsMaterializationStatusRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,18 @@ export const EndpointsMaterializationStatusRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/endpoints/{name}/materialization_status/",
     }),
-  );
-export type EndpointsMaterializationStatusRetrieveInput =
-  typeof EndpointsMaterializationStatusRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EndpointsMaterializationStatusRetrieveInput>;
 
 // Output Schema
+export interface EndpointsMaterializationStatusRetrieveOutput {
+  name?: string;
+  status?: string;
+  can_materialize?: boolean;
+  reason?: string | null;
+  last_materialized_at?: string | null;
+  error?: string;
+  saved_query_id?: string | null;
+}
 export const EndpointsMaterializationStatusRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -27,9 +38,7 @@ export const EndpointsMaterializationStatusRetrieveOutput =
     last_materialized_at: Schema.optional(Schema.NullOr(Schema.String)),
     error: Schema.optional(Schema.String),
     saved_query_id: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type EndpointsMaterializationStatusRetrieveOutput =
-  typeof EndpointsMaterializationStatusRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsMaterializationStatusRetrieveOutput>;
 
 // The operation
 /**

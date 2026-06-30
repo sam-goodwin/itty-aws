@@ -4,18 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupByNameInput {
+  groupName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupName: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/byName/{groupName}" }),
-);
-export type GetGroupByNameInput = typeof GetGroupByNameInput.Type;
+) as unknown as Schema.Codec<GetGroupByNameInput>;
 
 // Output Schema
-export const GetGroupByNameOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupByNameOutput = typeof GetGroupByNameOutput.Type;
+export type GetGroupByNameOutput = void;
+export const GetGroupByNameOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupByNameOutput>;
 
 // The operation
 /**

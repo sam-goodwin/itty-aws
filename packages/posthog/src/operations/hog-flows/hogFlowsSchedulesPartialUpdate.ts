@@ -4,6 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFlowsSchedulesPartialUpdateInput {
+  id: string;
+  project_id: string;
+  schedule_id: string;
+  rrule?: string;
+  starts_at?: string;
+  timezone?: string;
+  variables?: unknown;
+  status?: "active" | "paused" | "completed";
+  next_run_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const HogFlowsSchedulesPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -22,11 +35,20 @@ export const HogFlowsSchedulesPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/hog_flows/{id}/schedules/{schedule_id}/",
     }),
-  );
-export type HogFlowsSchedulesPartialUpdateInput =
-  typeof HogFlowsSchedulesPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<HogFlowsSchedulesPartialUpdateInput>;
 
 // Output Schema
+export interface HogFlowsSchedulesPartialUpdateOutput {
+  id?: string;
+  rrule?: string;
+  starts_at?: string;
+  timezone?: string;
+  variables?: unknown;
+  status?: "active" | "paused" | "completed";
+  next_run_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const HogFlowsSchedulesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -38,9 +60,7 @@ export const HogFlowsSchedulesPartialUpdateOutput =
     next_run_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type HogFlowsSchedulesPartialUpdateOutput =
-  typeof HogFlowsSchedulesPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HogFlowsSchedulesPartialUpdateOutput>;
 
 // The operation
 /**

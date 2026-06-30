@@ -3,6 +3,76 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface EvaluationsCreateInput {
+  project_id: string;
+  id?: string;
+  name?: string;
+  description?: string;
+  enabled?: boolean;
+  status?: "active" | "paused" | "error";
+  status_reason?:
+    | "trial_limit_reached"
+    | "model_not_allowed"
+    | "provider_key_deleted"
+    | "no_default_model"
+    | "provider_key_invalid"
+    | "provider_key_permission_denied"
+    | "provider_key_quota_exceeded"
+    | "provider_key_rate_limited"
+    | "model_not_found"
+    | "hog_error"
+    | null;
+  status_reason_detail?: string | null;
+  evaluation_type?: "llm_judge" | "hog" | "sentiment";
+  evaluation_config?:
+    | { prompt: string }
+    | { source: string }
+    | { source?: "user_messages" };
+  output_type?: "boolean" | "sentiment";
+  output_config?: { allows_na?: boolean };
+  conditions?: {
+    id: string;
+    rollout_percentage?: number;
+    properties?: Record<string, unknown>[];
+  }[];
+  model_configuration?: {
+    provider?:
+      | "openai"
+      | "anthropic"
+      | "gemini"
+      | "openrouter"
+      | "fireworks"
+      | "azure_openai"
+      | "together_ai";
+    model?: string;
+    provider_key_id?: string | null;
+    provider_key_name?: string | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  deleted?: boolean;
+}
 export const EvaluationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,12 +81,39 @@ export const EvaluationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     description: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     status: Schema.optional(Schema.Literals(["active", "paused", "error"])),
-    status_reason: Schema.optional(Schema.Unknown),
+    status_reason: Schema.optional(
+      Schema.NullOr(
+        Schema.Literals([
+          "trial_limit_reached",
+          "model_not_allowed",
+          "provider_key_deleted",
+          "no_default_model",
+          "provider_key_invalid",
+          "provider_key_permission_denied",
+          "provider_key_quota_exceeded",
+          "provider_key_rate_limited",
+          "model_not_found",
+          "hog_error",
+        ]),
+      ),
+    ),
     status_reason_detail: Schema.optional(Schema.NullOr(Schema.String)),
     evaluation_type: Schema.optional(
       Schema.Literals(["llm_judge", "hog", "sentiment"]),
     ),
-    evaluation_config: Schema.optional(Schema.Unknown),
+    evaluation_config: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          prompt: Schema.String,
+        }),
+        Schema.Struct({
+          source: Schema.String,
+        }),
+        Schema.Struct({
+          source: Schema.optional(Schema.Literals(["user_messages"])),
+        }),
+      ]),
+    ),
     output_type: Schema.optional(Schema.Literals(["boolean", "sentiment"])),
     output_config: Schema.optional(
       Schema.Struct({
@@ -34,7 +131,26 @@ export const EvaluationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     ),
-    model_configuration: Schema.optional(Schema.Unknown),
+    model_configuration: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          provider: Schema.optional(
+            Schema.Literals([
+              "openai",
+              "anthropic",
+              "gemini",
+              "openrouter",
+              "fireworks",
+              "azure_openai",
+              "together_ai",
+            ]),
+          ),
+          model: Schema.optional(Schema.String),
+          provider_key_id: Schema.optional(Schema.NullOr(Schema.String)),
+          provider_key_name: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
+    ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
@@ -50,7 +166,23 @@ export const EvaluationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -58,10 +190,78 @@ export const EvaluationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/evaluations/" }),
-);
-export type EvaluationsCreateInput = typeof EvaluationsCreateInput.Type;
+) as unknown as Schema.Codec<EvaluationsCreateInput>;
 
 // Output Schema
+export interface EvaluationsCreateOutput {
+  id?: string;
+  name?: string;
+  description?: string;
+  enabled?: boolean;
+  status?: "active" | "paused" | "error";
+  status_reason?:
+    | "trial_limit_reached"
+    | "model_not_allowed"
+    | "provider_key_deleted"
+    | "no_default_model"
+    | "provider_key_invalid"
+    | "provider_key_permission_denied"
+    | "provider_key_quota_exceeded"
+    | "provider_key_rate_limited"
+    | "model_not_found"
+    | "hog_error"
+    | null;
+  status_reason_detail?: string | null;
+  evaluation_type?: "llm_judge" | "hog" | "sentiment";
+  evaluation_config?:
+    | { prompt: string }
+    | { source: string }
+    | { source?: "user_messages" };
+  output_type?: "boolean" | "sentiment";
+  output_config?: { allows_na?: boolean };
+  conditions?: {
+    id: string;
+    rollout_percentage?: number;
+    properties?: Record<string, unknown>[];
+  }[];
+  model_configuration?: {
+    provider?:
+      | "openai"
+      | "anthropic"
+      | "gemini"
+      | "openrouter"
+      | "fireworks"
+      | "azure_openai"
+      | "together_ai";
+    model?: string;
+    provider_key_id?: string | null;
+    provider_key_name?: string | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  deleted?: boolean;
+}
 export const EvaluationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -69,12 +269,39 @@ export const EvaluationsCreateOutput =
     description: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     status: Schema.optional(Schema.Literals(["active", "paused", "error"])),
-    status_reason: Schema.optional(Schema.Unknown),
+    status_reason: Schema.optional(
+      Schema.NullOr(
+        Schema.Literals([
+          "trial_limit_reached",
+          "model_not_allowed",
+          "provider_key_deleted",
+          "no_default_model",
+          "provider_key_invalid",
+          "provider_key_permission_denied",
+          "provider_key_quota_exceeded",
+          "provider_key_rate_limited",
+          "model_not_found",
+          "hog_error",
+        ]),
+      ),
+    ),
     status_reason_detail: Schema.optional(Schema.NullOr(Schema.String)),
     evaluation_type: Schema.optional(
       Schema.Literals(["llm_judge", "hog", "sentiment"]),
     ),
-    evaluation_config: Schema.optional(Schema.Unknown),
+    evaluation_config: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          prompt: Schema.String,
+        }),
+        Schema.Struct({
+          source: Schema.String,
+        }),
+        Schema.Struct({
+          source: Schema.optional(Schema.Literals(["user_messages"])),
+        }),
+      ]),
+    ),
     output_type: Schema.optional(Schema.Literals(["boolean", "sentiment"])),
     output_config: Schema.optional(
       Schema.Struct({
@@ -92,7 +319,26 @@ export const EvaluationsCreateOutput =
         }),
       ),
     ),
-    model_configuration: Schema.optional(Schema.Unknown),
+    model_configuration: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          provider: Schema.optional(
+            Schema.Literals([
+              "openai",
+              "anthropic",
+              "gemini",
+              "openrouter",
+              "fireworks",
+              "azure_openai",
+              "together_ai",
+            ]),
+          ),
+          model: Schema.optional(Schema.String),
+          provider_key_id: Schema.optional(Schema.NullOr(Schema.String)),
+          provider_key_name: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
+    ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
@@ -108,13 +354,28 @@ export const EvaluationsCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     deleted: Schema.optional(Schema.Boolean),
-  });
-export type EvaluationsCreateOutput = typeof EvaluationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<EvaluationsCreateOutput>;
 
 // The operation
 /**

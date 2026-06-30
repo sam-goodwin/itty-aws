@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsClusteringJobsUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  analysis_level?: "trace" | "generation" | "evaluation";
+  event_filters?: unknown;
+  enabled?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
 export const LlmAnalyticsClusteringJobsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +30,18 @@ export const LlmAnalyticsClusteringJobsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/llm_analytics/clustering_jobs/{id}/",
     }),
-  );
-export type LlmAnalyticsClusteringJobsUpdateInput =
-  typeof LlmAnalyticsClusteringJobsUpdateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsClusteringJobsUpdateInput>;
 
 // Output Schema
+export interface LlmAnalyticsClusteringJobsUpdateOutput {
+  id?: string;
+  name?: string;
+  analysis_level?: "trace" | "generation" | "evaluation";
+  event_filters?: unknown;
+  enabled?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
 export const LlmAnalyticsClusteringJobsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -36,9 +53,7 @@ export const LlmAnalyticsClusteringJobsUpdateOutput =
     enabled: Schema.optional(Schema.Boolean),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type LlmAnalyticsClusteringJobsUpdateOutput =
-  typeof LlmAnalyticsClusteringJobsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsClusteringJobsUpdateOutput>;
 
 // The operation
 /**

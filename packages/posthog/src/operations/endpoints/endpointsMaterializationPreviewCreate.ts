@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EndpointsMaterializationPreviewCreateInput {
+  name: string;
+  project_id: string;
+  version?: number;
+  bucket_overrides?: Record<string, string> | null;
+}
 export const EndpointsMaterializationPreviewCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -17,15 +23,12 @@ export const EndpointsMaterializationPreviewCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/endpoints/{name}/materialization_preview/",
     }),
-  );
-export type EndpointsMaterializationPreviewCreateInput =
-  typeof EndpointsMaterializationPreviewCreateInput.Type;
+  ) as unknown as Schema.Codec<EndpointsMaterializationPreviewCreateInput>;
 
 // Output Schema
+export type EndpointsMaterializationPreviewCreateOutput = void;
 export const EndpointsMaterializationPreviewCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EndpointsMaterializationPreviewCreateOutput =
-  typeof EndpointsMaterializationPreviewCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsMaterializationPreviewCreateOutput>;
 
 // The operation
 /**

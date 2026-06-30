@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesSetDefaultColumnsUpdateInput {
+  project_id: string;
+  group_type?: string;
+  group_type_index?: number;
+  name_singular?: string | null;
+  name_plural?: string | null;
+  detail_dashboard?: number | null;
+  default_columns?: string[] | null;
+  created_at?: string | null;
+}
 export const GroupsTypesSetDefaultColumnsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,15 +31,12 @@ export const GroupsTypesSetDefaultColumnsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/groups_types/set_default_columns/",
     }),
-  );
-export type GroupsTypesSetDefaultColumnsUpdateInput =
-  typeof GroupsTypesSetDefaultColumnsUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupsTypesSetDefaultColumnsUpdateInput>;
 
 // Output Schema
+export type GroupsTypesSetDefaultColumnsUpdateOutput = void;
 export const GroupsTypesSetDefaultColumnsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsTypesSetDefaultColumnsUpdateOutput =
-  typeof GroupsTypesSetDefaultColumnsUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsTypesSetDefaultColumnsUpdateOutput>;
 
 // The operation
 /**

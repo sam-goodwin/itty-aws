@@ -4,16 +4,21 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SsoControllerLogoutInput {
+  token: string;
+}
 export const SsoControllerLogoutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/sso/logout" }), T.NoFollowRedirect());
-export type SsoControllerLogoutInput = typeof SsoControllerLogoutInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/sso/logout" }),
+    T.NoFollowRedirect(),
+  ) as unknown as Schema.Codec<SsoControllerLogoutInput>;
 
 // Output Schema
+export type SsoControllerLogoutOutput = void;
 export const SsoControllerLogoutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SsoControllerLogoutOutput = typeof SsoControllerLogoutOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SsoControllerLogoutOutput>;
 
 // The operation
 /**

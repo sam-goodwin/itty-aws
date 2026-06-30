@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsDeletePropertyCreateInput {
+  project_id: string;
+  group_key: string;
+  group_type_index: number;
+  group_properties?: unknown;
+  created_at?: string;
+}
 export const GroupsDeletePropertyCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const GroupsDeletePropertyCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/groups/delete_property/",
     }),
-  );
-export type GroupsDeletePropertyCreateInput =
-  typeof GroupsDeletePropertyCreateInput.Type;
+  ) as unknown as Schema.Codec<GroupsDeletePropertyCreateInput>;
 
 // Output Schema
+export type GroupsDeletePropertyCreateOutput = void;
 export const GroupsDeletePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsDeletePropertyCreateOutput =
-  typeof GroupsDeletePropertyCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsDeletePropertyCreateOutput>;
 
 // The operation
 /**

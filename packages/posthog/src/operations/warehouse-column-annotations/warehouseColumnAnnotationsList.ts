@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseColumnAnnotationsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  table_id?: string;
+}
 export const WarehouseColumnAnnotationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,25 @@ export const WarehouseColumnAnnotationsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/warehouse_column_annotations/",
     }),
-  );
-export type WarehouseColumnAnnotationsListInput =
-  typeof WarehouseColumnAnnotationsListInput.Type;
+  ) as unknown as Schema.Codec<WarehouseColumnAnnotationsListInput>;
 
 // Output Schema
+export interface WarehouseColumnAnnotationsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    table: string;
+    column_name?: string;
+    description: string;
+    description_source: "canonical" | "ai_generated" | "user_edited";
+    ai_model: string;
+    is_user_edited: boolean;
+    created_at: string;
+    updated_at: string | null;
+  }[];
+}
 export const WarehouseColumnAnnotationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -41,9 +61,7 @@ export const WarehouseColumnAnnotationsListOutput =
         updated_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type WarehouseColumnAnnotationsListOutput =
-  typeof WarehouseColumnAnnotationsListOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseColumnAnnotationsListOutput>;
 
 // The operation
 /**

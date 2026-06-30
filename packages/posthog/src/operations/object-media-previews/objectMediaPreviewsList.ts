@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ObjectMediaPreviewsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ObjectMediaPreviewsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,25 @@ export const ObjectMediaPreviewsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/object_media_previews/",
     }),
-  );
-export type ObjectMediaPreviewsListInput =
-  typeof ObjectMediaPreviewsListInput.Type;
+  ) as unknown as Schema.Codec<ObjectMediaPreviewsListInput>;
 
 // Output Schema
+export interface ObjectMediaPreviewsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    created_at?: string;
+    updated_at?: string | null;
+    media_url?: string;
+    media_type?: string;
+    metadata?: unknown;
+    uploaded_media_id?: string | null;
+    exported_asset_id?: string | null;
+    event_definition_id?: string | null;
+  }[];
+}
 export const ObjectMediaPreviewsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -39,9 +58,7 @@ export const ObjectMediaPreviewsListOutput =
         }),
       ),
     ),
-  });
-export type ObjectMediaPreviewsListOutput =
-  typeof ObjectMediaPreviewsListOutput.Type;
+  }) as unknown as Schema.Codec<ObjectMediaPreviewsListOutput>;
 
 // The operation
 /**

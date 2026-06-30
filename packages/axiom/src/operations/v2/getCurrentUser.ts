@@ -3,12 +3,20 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface GetCurrentUserInput {}
 export const GetCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v2/user" }));
-export type GetCurrentUserInput = typeof GetCurrentUserInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v2/user" }),
+) as unknown as Schema.Codec<GetCurrentUserInput>;
 
 // Output Schema
+export interface GetCurrentUserOutput {
+  email: string;
+  id: string;
+  name: string;
+  role?: { id: string; name: string };
+}
 export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
@@ -19,8 +27,7 @@ export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.String,
     }),
   ),
-});
-export type GetCurrentUserOutput = typeof GetCurrentUserOutput.Type;
+}) as unknown as Schema.Codec<GetCurrentUserOutput>;
 
 // The operation
 /**

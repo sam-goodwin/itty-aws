@@ -3,14 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetPolicyByIdInput {
+  policyId: string;
+}
 export const GetPolicyByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/policy-engine/policies/{policyId}" }),
-);
-export type GetPolicyByIdInput = typeof GetPolicyByIdInput.Type;
+) as unknown as Schema.Codec<GetPolicyByIdInput>;
 
 // Output Schema
+export interface GetPolicyByIdOutput {
+  id: string;
+  description?: string;
+  scope: "project" | "account";
+  rules: unknown[];
+  createdAt: string;
+  updatedAt: string;
+}
 export const GetPolicyByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   description: Schema.optional(Schema.String),
@@ -18,8 +28,7 @@ export const GetPolicyByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rules: Schema.Array(Schema.Unknown),
   createdAt: Schema.String,
   updatedAt: Schema.String,
-});
-export type GetPolicyByIdOutput = typeof GetPolicyByIdOutput.Type;
+}) as unknown as Schema.Codec<GetPolicyByIdOutput>;
 
 // The operation
 /**

@@ -4,6 +4,38 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionGroupSummariesCreateInput {
+  project_id: string;
+  id?: string;
+  title?: string;
+  session_ids?: string[];
+  summary?: unknown;
+  extra_summary_context?: unknown;
+  run_metadata?: unknown;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const SessionGroupSummariesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -27,7 +59,23 @@ export const SessionGroupSummariesCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -37,11 +85,40 @@ export const SessionGroupSummariesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/session_group_summaries/",
     }),
-  );
-export type SessionGroupSummariesCreateInput =
-  typeof SessionGroupSummariesCreateInput.Type;
+  ) as unknown as Schema.Codec<SessionGroupSummariesCreateInput>;
 
 // Output Schema
+export interface SessionGroupSummariesCreateOutput {
+  id?: string;
+  title?: string;
+  session_ids?: string[];
+  summary?: unknown;
+  extra_summary_context?: unknown;
+  run_metadata?: unknown;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const SessionGroupSummariesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -64,14 +141,28 @@ export const SessionGroupSummariesCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
-export type SessionGroupSummariesCreateOutput =
-  typeof SessionGroupSummariesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SessionGroupSummariesCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,45 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface FieldNotesUpdateInput {
+  id: string;
+  project_id: string;
+  comment: string;
+  field_note_status?: "pending" | "acknowledged" | "resolved" | "dismissed";
+  resolution?: string | null;
+  url: string;
+  host: string;
+  pathname?: string | null;
+  selector: string;
+  element_text?: string | null;
+  element_chain?: string | null;
+  element_context?: Record<string, unknown>;
+  viewport?: { width?: number; height?: number } | null;
+  screenshot_url?: string | null;
+  created_at: string;
+  updated_at: string | null;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+}
 export const FieldNotesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -42,17 +81,70 @@ export const FieldNotesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hedgehog_config: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
     ),
-    role_at_organization: Schema.optional(Schema.Unknown),
+    role_at_organization: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals([
+            "engineering",
+            "data",
+            "product",
+            "founder",
+            "leadership",
+            "marketing",
+            "sales",
+            "other",
+          ]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
   }),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/api/projects/{project_id}/field_notes/{id}/",
   }),
-);
-export type FieldNotesUpdateInput = typeof FieldNotesUpdateInput.Type;
+) as unknown as Schema.Codec<FieldNotesUpdateInput>;
 
 // Output Schema
+export interface FieldNotesUpdateOutput {
+  id: string;
+  comment: string;
+  field_note_status?: "pending" | "acknowledged" | "resolved" | "dismissed";
+  resolution?: string | null;
+  url: string;
+  host: string;
+  pathname?: string | null;
+  selector: string;
+  element_text?: string | null;
+  element_chain?: string | null;
+  element_context?: Record<string, unknown>;
+  viewport?: { width?: number; height?: number } | null;
+  screenshot_url?: string | null;
+  created_at: string;
+  updated_at: string | null;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+}
 export const FieldNotesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
@@ -92,11 +184,26 @@ export const FieldNotesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
   },
-);
-export type FieldNotesUpdateOutput = typeof FieldNotesUpdateOutput.Type;
+) as unknown as Schema.Codec<FieldNotesUpdateOutput>;
 
 // The operation
 /**

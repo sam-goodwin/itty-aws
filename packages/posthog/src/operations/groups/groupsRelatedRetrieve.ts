@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsRelatedRetrieveInput {
+  project_id: string;
+  group_type_index: number;
+  id: string;
+}
 export const GroupsRelatedRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,14 +19,12 @@ export const GroupsRelatedRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/groups/related/",
     }),
-  );
-export type GroupsRelatedRetrieveInput = typeof GroupsRelatedRetrieveInput.Type;
+  ) as unknown as Schema.Codec<GroupsRelatedRetrieveInput>;
 
 // Output Schema
+export type GroupsRelatedRetrieveOutput = void;
 export const GroupsRelatedRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsRelatedRetrieveOutput =
-  typeof GroupsRelatedRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsRelatedRetrieveOutput>;
 
 // The operation
 /**

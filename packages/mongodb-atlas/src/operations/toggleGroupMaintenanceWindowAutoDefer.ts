@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ToggleGroupMaintenanceWindowAutoDeferInput {
+  groupId: string;
+  envelope?: boolean;
+}
 export const ToggleGroupMaintenanceWindowAutoDeferInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ToggleGroupMaintenanceWindowAutoDeferInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer",
     }),
-  );
-export type ToggleGroupMaintenanceWindowAutoDeferInput =
-  typeof ToggleGroupMaintenanceWindowAutoDeferInput.Type;
+  ) as unknown as Schema.Codec<ToggleGroupMaintenanceWindowAutoDeferInput>;
 
 // Output Schema
+export type ToggleGroupMaintenanceWindowAutoDeferOutput = void;
 export const ToggleGroupMaintenanceWindowAutoDeferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ToggleGroupMaintenanceWindowAutoDeferOutput =
-  typeof ToggleGroupMaintenanceWindowAutoDeferOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupMaintenanceWindowAutoDeferOutput>;
 
 // The operation
 /**

@@ -3,14 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostV2BillingMeterEventSessionInput {}
 export const PostV2BillingMeterEventSessionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/v2/billing/meter_event_session" }),
-  );
-export type PostV2BillingMeterEventSessionInput =
-  typeof PostV2BillingMeterEventSessionInput.Type;
+  ) as unknown as Schema.Codec<PostV2BillingMeterEventSessionInput>;
 
 // Output Schema
+export interface PostV2BillingMeterEventSessionOutput {
+  authentication_token: string;
+  created: string;
+  expires_at: string;
+  id: string;
+  livemode: boolean;
+  object: "v2.billing.meter_event_session";
+}
 export const PostV2BillingMeterEventSessionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authentication_token: Schema.String,
@@ -19,9 +26,7 @@ export const PostV2BillingMeterEventSessionOutput =
     id: Schema.String,
     livemode: Schema.Boolean,
     object: Schema.Literals(["v2.billing.meter_event_session"]),
-  });
-export type PostV2BillingMeterEventSessionOutput =
-  typeof PostV2BillingMeterEventSessionOutput.Type;
+  }) as unknown as Schema.Codec<PostV2BillingMeterEventSessionOutput>;
 
 // The operation
 /**

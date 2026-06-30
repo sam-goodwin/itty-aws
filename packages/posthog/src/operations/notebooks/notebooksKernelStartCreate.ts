@@ -4,6 +4,63 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface NotebooksKernelStartCreateInput {
+  project_id: string;
+  short_id: string;
+  id?: string;
+  title?: string | null;
+  content?: unknown;
+  text_content?: string | null;
+  version?: number;
+  deleted?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_modified_at?: string;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  user_access_level?: string | null;
+  parent_resource?: { type: "account"; id: string } | null;
+  _create_in_folder?: string;
+}
 export const NotebooksKernelStartCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -28,7 +85,23 @@ export const NotebooksKernelStartCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -46,7 +119,23 @@ export const NotebooksKernelStartCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -65,15 +154,12 @@ export const NotebooksKernelStartCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/notebooks/{short_id}/kernel/start/",
     }),
-  );
-export type NotebooksKernelStartCreateInput =
-  typeof NotebooksKernelStartCreateInput.Type;
+  ) as unknown as Schema.Codec<NotebooksKernelStartCreateInput>;
 
 // Output Schema
+export type NotebooksKernelStartCreateOutput = void;
 export const NotebooksKernelStartCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebooksKernelStartCreateOutput =
-  typeof NotebooksKernelStartCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksKernelStartCreateOutput>;
 
 // The operation
 /**

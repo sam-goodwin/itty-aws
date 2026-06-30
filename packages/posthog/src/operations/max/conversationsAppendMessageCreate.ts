@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ConversationsAppendMessageCreateInput {
+  conversation: string;
+  project_id: string;
+  content?: string;
+}
 export const ConversationsAppendMessageCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.String.pipe(T.PathParam()),
@@ -13,17 +18,16 @@ export const ConversationsAppendMessageCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/conversations/{conversation}/append_message/",
     }),
-  );
-export type ConversationsAppendMessageCreateInput =
-  typeof ConversationsAppendMessageCreateInput.Type;
+  ) as unknown as Schema.Codec<ConversationsAppendMessageCreateInput>;
 
 // Output Schema
+export interface ConversationsAppendMessageCreateOutput {
+  content?: string;
+}
 export const ConversationsAppendMessageCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
-  });
-export type ConversationsAppendMessageCreateOutput =
-  typeof ConversationsAppendMessageCreateOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsAppendMessageCreateOutput>;
 
 // The operation
 /**

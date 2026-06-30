@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupTokenInput {
+  organizationSlug: string;
+  groupName: string;
+  expiration?: string;
+  authorization?: "full-access" | "read-only";
+  permissions?: { read_attach?: { databases?: string[] } };
+}
 export const CreateGroupTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -23,16 +30,17 @@ export const CreateGroupTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
   }),
-);
-export type CreateGroupTokenInput = typeof CreateGroupTokenInput.Type;
+) as unknown as Schema.Codec<CreateGroupTokenInput>;
 
 // Output Schema
+export interface CreateGroupTokenOutput {
+  jwt?: string;
+}
 export const CreateGroupTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     jwt: Schema.optional(Schema.String),
   },
-);
-export type CreateGroupTokenOutput = typeof CreateGroupTokenOutput.Type;
+) as unknown as Schema.Codec<CreateGroupTokenOutput>;
 
 // The operation
 /**

@@ -4,6 +4,38 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExperimentSavedMetricsUpdateInput {
+  id: number;
+  project_id: string;
+  name?: string;
+  description?: string | null;
+  query?: unknown;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  tags?: unknown[];
+  user_access_level?: string | null;
+}
 export const ExperimentSavedMetricsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -24,7 +56,23 @@ export const ExperimentSavedMetricsUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -37,11 +85,40 @@ export const ExperimentSavedMetricsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/experiment_saved_metrics/{id}/",
     }),
-  );
-export type ExperimentSavedMetricsUpdateInput =
-  typeof ExperimentSavedMetricsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ExperimentSavedMetricsUpdateInput>;
 
 // Output Schema
+export interface ExperimentSavedMetricsUpdateOutput {
+  id?: number;
+  name?: string;
+  description?: string | null;
+  query?: unknown;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  tags?: unknown[];
+  user_access_level?: string | null;
+}
 export const ExperimentSavedMetricsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -61,7 +138,23 @@ export const ExperimentSavedMetricsUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -69,9 +162,7 @@ export const ExperimentSavedMetricsUpdateOutput =
     updated_at: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),
     user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ExperimentSavedMetricsUpdateOutput =
-  typeof ExperimentSavedMetricsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentSavedMetricsUpdateOutput>;
 
 // The operation
 /**

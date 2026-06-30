@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTreasuryTransactionsIdInput {
+  id: string;
+  expand?: string;
+}
 export const GetTreasuryTransactionsIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,130 @@ export const GetTreasuryTransactionsIdInput =
       path: "/v1/treasury/transactions/{id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetTreasuryTransactionsIdInput =
-  typeof GetTreasuryTransactionsIdInput.Type;
+  ) as unknown as Schema.Codec<GetTreasuryTransactionsIdInput>;
 
 // Output Schema
+export interface GetTreasuryTransactionsIdOutput {
+  amount: number;
+  balance_impact: {
+    cash: number;
+    inbound_pending: number;
+    outbound_pending: number;
+  };
+  created: number;
+  currency: string;
+  description: string;
+  entries?: {
+    data: {
+      balance_impact: {
+        cash: number;
+        inbound_pending: number;
+        outbound_pending: number;
+      };
+      created: number;
+      currency: string;
+      effective_at: number;
+      financial_account: string;
+      flow: string | null;
+      flow_details?: unknown;
+      flow_type:
+        | "credit_reversal"
+        | "debit_reversal"
+        | "inbound_transfer"
+        | "issuing_authorization"
+        | "other"
+        | "outbound_payment"
+        | "outbound_transfer"
+        | "received_credit"
+        | "received_debit";
+      id: string;
+      livemode: boolean;
+      object: "treasury.transaction_entry";
+      transaction:
+        | string
+        | {
+            amount: number;
+            balance_impact: {
+              cash: number;
+              inbound_pending: number;
+              outbound_pending: number;
+            };
+            created: number;
+            currency: string;
+            description: string;
+            entries?: {
+              data: unknown[];
+              has_more: boolean;
+              object: "list";
+              url: string;
+            } | null;
+            financial_account: string;
+            flow: string | null;
+            flow_details?: unknown;
+            flow_type:
+              | "credit_reversal"
+              | "debit_reversal"
+              | "inbound_transfer"
+              | "issuing_authorization"
+              | "other"
+              | "outbound_payment"
+              | "outbound_transfer"
+              | "received_credit"
+              | "received_debit";
+            id: string;
+            livemode: boolean;
+            object: "treasury.transaction";
+            status: "open" | "posted" | "void";
+            status_transitions: {
+              posted_at: number | null;
+              void_at: number | null;
+            };
+          };
+      type:
+        | "credit_reversal"
+        | "credit_reversal_posting"
+        | "debit_reversal"
+        | "inbound_transfer"
+        | "inbound_transfer_return"
+        | "issuing_authorization_hold"
+        | "issuing_authorization_release"
+        | "other"
+        | "outbound_payment"
+        | "outbound_payment_cancellation"
+        | "outbound_payment_failure"
+        | "outbound_payment_posting"
+        | "outbound_payment_return"
+        | "outbound_transfer"
+        | "outbound_transfer_cancellation"
+        | "outbound_transfer_failure"
+        | "outbound_transfer_posting"
+        | "outbound_transfer_return"
+        | "received_credit"
+        | "received_debit";
+    }[];
+    has_more: boolean;
+    object: "list";
+    url: string;
+  } | null;
+  financial_account: string;
+  flow: string | null;
+  flow_details?: unknown;
+  flow_type:
+    | "credit_reversal"
+    | "debit_reversal"
+    | "inbound_transfer"
+    | "issuing_authorization"
+    | "other"
+    | "outbound_payment"
+    | "outbound_transfer"
+    | "received_credit"
+    | "received_debit";
+  id: string;
+  livemode: boolean;
+  object: "treasury.transaction";
+  status: "open" | "posted" | "void";
+  status_transitions: { posted_at: number | null; void_at: number | null };
+}
 export const GetTreasuryTransactionsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.Number,
@@ -59,7 +182,52 @@ export const GetTreasuryTransactionsIdOutput =
               id: Schema.String,
               livemode: Schema.Boolean,
               object: Schema.Literals(["treasury.transaction_entry"]),
-              transaction: Schema.Unknown,
+              transaction: Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  amount: Schema.Number,
+                  balance_impact: Schema.Struct({
+                    cash: Schema.Number,
+                    inbound_pending: Schema.Number,
+                    outbound_pending: Schema.Number,
+                  }),
+                  created: Schema.Number,
+                  currency: Schema.String,
+                  description: Schema.String,
+                  entries: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        data: Schema.Array(Schema.Unknown),
+                        has_more: Schema.Boolean,
+                        object: Schema.Literals(["list"]),
+                        url: Schema.String,
+                      }),
+                    ),
+                  ),
+                  financial_account: Schema.String,
+                  flow: Schema.NullOr(Schema.String),
+                  flow_details: Schema.optional(Schema.Unknown),
+                  flow_type: Schema.Literals([
+                    "credit_reversal",
+                    "debit_reversal",
+                    "inbound_transfer",
+                    "issuing_authorization",
+                    "other",
+                    "outbound_payment",
+                    "outbound_transfer",
+                    "received_credit",
+                    "received_debit",
+                  ]),
+                  id: Schema.String,
+                  livemode: Schema.Boolean,
+                  object: Schema.Literals(["treasury.transaction"]),
+                  status: Schema.Literals(["open", "posted", "void"]),
+                  status_transitions: Schema.Struct({
+                    posted_at: Schema.NullOr(Schema.Number),
+                    void_at: Schema.NullOr(Schema.Number),
+                  }),
+                }),
+              ]),
               type: Schema.Literals([
                 "credit_reversal",
                 "credit_reversal_posting",
@@ -112,9 +280,7 @@ export const GetTreasuryTransactionsIdOutput =
       posted_at: Schema.NullOr(Schema.Number),
       void_at: Schema.NullOr(Schema.Number),
     }),
-  });
-export type GetTreasuryTransactionsIdOutput =
-  typeof GetTreasuryTransactionsIdOutput.Type;
+  }) as unknown as Schema.Codec<GetTreasuryTransactionsIdOutput>;
 
 // The operation
 /**

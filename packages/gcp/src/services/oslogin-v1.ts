@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface SignSshPublicKeyResponse {
   signedSshPublicKey?: string;
 }
 
-export const SignSshPublicKeyResponse: Schema.Schema<SignSshPublicKeyResponse> =
+export const SignSshPublicKeyResponse: Schema.Codec<SignSshPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedSshPublicKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignSshPublicKeyResponse" });
@@ -37,7 +37,7 @@ export interface ProvisionPosixAccountRequest {
   regions?: ReadonlyArray<string>;
 }
 
-export const ProvisionPosixAccountRequest: Schema.Schema<ProvisionPosixAccountRequest> =
+export const ProvisionPosixAccountRequest: Schema.Codec<ProvisionPosixAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ProvisionPosixAccountRequest" });
@@ -55,7 +55,7 @@ export interface SignSshPublicKeyRequest {
   sshPublicKey?: string;
 }
 
-export const SignSshPublicKeyRequest: Schema.Schema<SignSshPublicKeyRequest> =
+export const SignSshPublicKeyRequest: Schema.Codec<SignSshPublicKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appEngineInstance: Schema.optional(Schema.String),
     computeInstance: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export interface SshPublicKey {
   key?: string;
 }
 
-export const SshPublicKey: Schema.Schema<SshPublicKey> =
+export const SshPublicKey: Schema.Codec<SshPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     expirationTimeUsec: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface PosixAccount {
   gid?: string;
 }
 
-export const PosixAccount: Schema.Schema<PosixAccount> =
+export const PosixAccount: Schema.Codec<PosixAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -136,7 +136,7 @@ export interface LoginProfile {
   posixAccounts?: ReadonlyArray<PosixAccount>;
 }
 
-export const LoginProfile: Schema.Schema<LoginProfile> =
+export const LoginProfile: Schema.Codec<LoginProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sshPublicKeys: Schema.optional(Schema.Record(Schema.String, SshPublicKey)),
@@ -150,7 +150,7 @@ export interface ImportSshPublicKeyResponse {
   details?: string;
 }
 
-export const ImportSshPublicKeyResponse: Schema.Schema<ImportSshPublicKeyResponse> =
+export const ImportSshPublicKeyResponse: Schema.Codec<ImportSshPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     loginProfile: Schema.optional(LoginProfile),
     details: Schema.optional(Schema.String),
@@ -158,7 +158,7 @@ export const ImportSshPublicKeyResponse: Schema.Schema<ImportSshPublicKeyRespons
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -235,7 +235,7 @@ export const SignSshPublicKeyProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SignSshPublicKeyProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SignSshPublicKeyProjectsLocationsRequest>;
 
 export type SignSshPublicKeyProjectsLocationsResponse =
   SignSshPublicKeyResponse;
@@ -287,7 +287,7 @@ export const ImportSshPublicKeyUsersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportSshPublicKeyUsersRequest>;
+  ) as unknown as Schema.Codec<ImportSshPublicKeyUsersRequest>;
 
 export type ImportSshPublicKeyUsersResponse = ImportSshPublicKeyResponse;
 export const ImportSshPublicKeyUsersResponse =
@@ -329,7 +329,7 @@ export const GetLoginProfileUsersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/loginProfile" }),
     svc,
-  ) as unknown as Schema.Schema<GetLoginProfileUsersRequest>;
+  ) as unknown as Schema.Codec<GetLoginProfileUsersRequest>;
 
 export type GetLoginProfileUsersResponse = LoginProfile;
 export const GetLoginProfileUsersResponse =
@@ -366,7 +366,7 @@ export const PatchUsersSshPublicKeysRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersSshPublicKeysRequest>;
+  ) as unknown as Schema.Codec<PatchUsersSshPublicKeysRequest>;
 
 export type PatchUsersSshPublicKeysResponse = SshPublicKey;
 export const PatchUsersSshPublicKeysResponse =
@@ -402,7 +402,7 @@ export const GetUsersSshPublicKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSshPublicKeysRequest>;
+  ) as unknown as Schema.Codec<GetUsersSshPublicKeysRequest>;
 
 export type GetUsersSshPublicKeysResponse = SshPublicKey;
 export const GetUsersSshPublicKeysResponse =
@@ -440,7 +440,7 @@ export const CreateUsersSshPublicKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSshPublicKeysRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSshPublicKeysRequest>;
 
 export type CreateUsersSshPublicKeysResponse = SshPublicKey;
 export const CreateUsersSshPublicKeysResponse =
@@ -476,7 +476,7 @@ export const DeleteUsersSshPublicKeysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSshPublicKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSshPublicKeysRequest>;
 
 export type DeleteUsersSshPublicKeysResponse = Empty;
 export const DeleteUsersSshPublicKeysResponse =
@@ -512,7 +512,7 @@ export const DeleteUsersProjectsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersProjectsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersProjectsRequest>;
 
 export type DeleteUsersProjectsResponse = Empty;
 export const DeleteUsersProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -550,7 +550,7 @@ export const ProvisionPosixAccountUsersProjectsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionPosixAccountUsersProjectsRequest>;
+  ) as unknown as Schema.Codec<ProvisionPosixAccountUsersProjectsRequest>;
 
 export type ProvisionPosixAccountUsersProjectsResponse = PosixAccount;
 export const ProvisionPosixAccountUsersProjectsResponse =

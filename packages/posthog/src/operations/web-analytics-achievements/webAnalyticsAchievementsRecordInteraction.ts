@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WebAnalyticsAchievementsRecordInteractionInput {
+  project_id: string;
+  interaction_kind: "data" | "recording";
+}
 export const WebAnalyticsAchievementsRecordInteractionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const WebAnalyticsAchievementsRecordInteractionInput =
       method: "POST",
       path: "/api/projects/{project_id}/web_analytics_achievements/record_interaction/",
     }),
-  );
-export type WebAnalyticsAchievementsRecordInteractionInput =
-  typeof WebAnalyticsAchievementsRecordInteractionInput.Type;
+  ) as unknown as Schema.Codec<WebAnalyticsAchievementsRecordInteractionInput>;
 
 // Output Schema
+export interface WebAnalyticsAchievementsRecordInteractionOutput {
+  recorded: boolean;
+}
 export const WebAnalyticsAchievementsRecordInteractionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recorded: Schema.Boolean,
-  });
-export type WebAnalyticsAchievementsRecordInteractionOutput =
-  typeof WebAnalyticsAchievementsRecordInteractionOutput.Type;
+  }) as unknown as Schema.Codec<WebAnalyticsAchievementsRecordInteractionOutput>;
 
 // The operation
 /**

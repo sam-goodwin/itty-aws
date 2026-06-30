@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupDataFederationLimitInput {
+  groupId: string;
+  tenantName: string;
+  limitName:
+    | "bytesProcessed.query"
+    | "bytesProcessed.daily"
+    | "bytesProcessed.weekly"
+    | "bytesProcessed.monthly";
+  envelope?: boolean;
+}
 export const DeleteGroupDataFederationLimitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -20,15 +30,12 @@ export const DeleteGroupDataFederationLimitInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
     }),
-  );
-export type DeleteGroupDataFederationLimitInput =
-  typeof DeleteGroupDataFederationLimitInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupDataFederationLimitInput>;
 
 // Output Schema
+export type DeleteGroupDataFederationLimitOutput = void;
 export const DeleteGroupDataFederationLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupDataFederationLimitOutput =
-  typeof DeleteGroupDataFederationLimitOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDataFederationLimitOutput>;
 
 // The operation
 /**

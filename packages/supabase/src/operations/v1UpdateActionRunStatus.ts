@@ -4,6 +4,66 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateActionRunStatusInput {
+  ref: string;
+  run_id: string;
+  clone?:
+    | "CREATED"
+    | "DEAD"
+    | "EXITED"
+    | "PAUSED"
+    | "REMOVING"
+    | "RESTARTING"
+    | "RUNNING";
+  pull?:
+    | "CREATED"
+    | "DEAD"
+    | "EXITED"
+    | "PAUSED"
+    | "REMOVING"
+    | "RESTARTING"
+    | "RUNNING";
+  health?:
+    | "CREATED"
+    | "DEAD"
+    | "EXITED"
+    | "PAUSED"
+    | "REMOVING"
+    | "RESTARTING"
+    | "RUNNING";
+  configure?:
+    | "CREATED"
+    | "DEAD"
+    | "EXITED"
+    | "PAUSED"
+    | "REMOVING"
+    | "RESTARTING"
+    | "RUNNING";
+  migrate?:
+    | "CREATED"
+    | "DEAD"
+    | "EXITED"
+    | "PAUSED"
+    | "REMOVING"
+    | "RESTARTING"
+    | "RUNNING";
+  seed?:
+    | "CREATED"
+    | "DEAD"
+    | "EXITED"
+    | "PAUSED"
+    | "REMOVING"
+    | "RESTARTING"
+    | "RUNNING";
+  deploy?:
+    | "CREATED"
+    | "DEAD"
+    | "EXITED"
+    | "PAUSED"
+    | "REMOVING"
+    | "RESTARTING"
+    | "RUNNING";
+}
 export const V1UpdateActionRunStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -90,17 +150,16 @@ export const V1UpdateActionRunStatusInput =
       method: "PATCH",
       path: "/v1/projects/{ref}/actions/{run_id}/status",
     }),
-  );
-export type V1UpdateActionRunStatusInput =
-  typeof V1UpdateActionRunStatusInput.Type;
+  ) as unknown as Schema.Codec<V1UpdateActionRunStatusInput>;
 
 // Output Schema
+export interface V1UpdateActionRunStatusOutput {
+  message: "ok";
+}
 export const V1UpdateActionRunStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.Literals(["ok"]),
-  });
-export type V1UpdateActionRunStatusOutput =
-  typeof V1UpdateActionRunStatusOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateActionRunStatusOutput>;
 
 // The operation
 /**

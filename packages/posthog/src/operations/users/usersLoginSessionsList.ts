@@ -3,16 +3,30 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersLoginSessionsListInput {
+  uuid: string;
+  email?: string;
+  is_staff?: boolean;
+}
 export const UsersLoginSessionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     email: Schema.optional(Schema.String),
     is_staff: Schema.optional(Schema.Boolean),
-  }).pipe(T.Http({ method: "GET", path: "/api/users/{uuid}/login_sessions/" }));
-export type UsersLoginSessionsListInput =
-  typeof UsersLoginSessionsListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/api/users/{uuid}/login_sessions/" }),
+  ) as unknown as Schema.Codec<UsersLoginSessionsListInput>;
 
 // Output Schema
+export type UsersLoginSessionsListOutput = {
+  id: string;
+  created_at: string | null;
+  last_activity: string;
+  location: string;
+  device: string;
+  login_method: string;
+  is_current: boolean;
+}[];
 export const UsersLoginSessionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -24,9 +38,7 @@ export const UsersLoginSessionsListOutput =
       login_method: Schema.String,
       is_current: Schema.Boolean,
     }),
-  );
-export type UsersLoginSessionsListOutput =
-  typeof UsersLoginSessionsListOutput.Type;
+  ) as unknown as Schema.Codec<UsersLoginSessionsListOutput>;
 
 // The operation
 /**

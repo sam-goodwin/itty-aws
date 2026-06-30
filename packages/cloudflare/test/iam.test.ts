@@ -69,10 +69,10 @@ const withUserGroup = <A, E, R>(
     const groups = yield* IAM.listPermissionGroups({
       accountId: accountId(),
     });
-    if (groups.result.length === 0) {
+    if (groups.result!.length === 0) {
       throw new Error("No permission groups available for testing");
     }
-    const permGroupId = groups.result[0].id;
+    const permGroupId = groups.result![0].id;
 
     // Create a resource group to use in the policy
     const rg = yield* IAM.createResourceGroup({
@@ -132,10 +132,10 @@ describe("IAM", () => {
 
         expect(result).toBeDefined();
         expect(Array.isArray(result.result)).toBe(true);
-        expect(result.result.length).toBeGreaterThan(0);
+        expect(result.result!.length).toBeGreaterThan(0);
 
         // Verify structure of first item
-        const first = result.result[0];
+        const first = result.result![0];
         expect(first.id).toBeDefined();
         expect(typeof first.id).toBe("string");
       }));
@@ -160,7 +160,7 @@ describe("IAM", () => {
 
         expect(result).toBeDefined();
         expect(Array.isArray(result.result)).toBe(true);
-        expect(result.result.length).toBe(0);
+        expect(result.result!.length).toBe(0);
       }));
 
     test("error - invalid accountId", () =>
@@ -190,15 +190,15 @@ describe("IAM", () => {
         const groups = yield* IAM.listPermissionGroups({
           accountId: accountId(),
         });
-        expect(groups.result.length).toBeGreaterThan(0);
+        expect(groups.result!.length).toBeGreaterThan(0);
 
         const result = yield* IAM.getPermissionGroup({
           accountId: accountId(),
-          permissionGroupId: groups.result[0].id,
+          permissionGroupId: groups.result![0].id,
         });
 
         expect(result).toBeDefined();
-        expect(result.id).toBe(groups.result[0].id);
+        expect(result.id).toBe(groups.result![0].id);
         expect(typeof result.id).toBe("string");
         if (result.name) {
           expect(typeof result.name).toBe("string");
@@ -398,7 +398,7 @@ describe("IAM", () => {
           expect(result).toBeDefined();
           expect(Array.isArray(result.result)).toBe(true);
           // Should find the resource group we just created
-          const found = result.result.find((rg) => rg.id === resourceGroupId);
+          const found = result.result!.find((rg) => rg.id === resourceGroupId);
           expect(found).toBeDefined();
         }),
       ));
@@ -419,7 +419,7 @@ describe("IAM", () => {
           Effect.map((result) => {
             expect(result).toBeDefined();
             expect(Array.isArray(result.result)).toBe(true);
-            expect(result.result.length).toBe(0);
+            expect(result.result!.length).toBe(0);
           }),
         ));
 
@@ -566,8 +566,8 @@ describe("IAM", () => {
         expect(Array.isArray(result.result)).toBe(true);
 
         // Verify structure of items if any exist
-        if (result.result.length > 0) {
-          const first = result.result[0];
+        if (result.result!.length > 0) {
+          const first = result.result![0];
           if (first.id) {
             expect(typeof first.id).toBe("string");
           }
@@ -850,8 +850,8 @@ describe("IAM", () => {
         expect(Array.isArray(result.result)).toBe(true);
 
         // Verify structure of items if any exist
-        if (result.result.length > 0) {
-          const first = result.result[0];
+        if (result.result!.length > 0) {
+          const first = result.result![0];
           expect(first.id).toBeDefined();
           expect(typeof first.id).toBe("string");
           expect(first.name).toBeDefined();
@@ -922,7 +922,7 @@ describe("IAM", () => {
         const groups = yield* IAM.listPermissionGroups({
           accountId: accountId(),
         });
-        const permGroupId = groups.result[0].id;
+        const permGroupId = groups.result![0].id;
 
         const rg = yield* IAM.createResourceGroup({
           accountId: accountId(),
@@ -1036,7 +1036,7 @@ describe("IAM", () => {
           accountId: accountId(),
           name,
         });
-        for (const ug of existing.result) {
+        for (const ug of existing.result!) {
           yield* IAM.deleteUserGroup({
             accountId: accountId(),
             userGroupId: ug.id,
@@ -1171,7 +1171,7 @@ describe("IAM", () => {
         const groups = yield* IAM.listPermissionGroups({
           accountId: accountId(),
         });
-        const permGroupId = groups.result[0].id;
+        const permGroupId = groups.result![0].id;
 
         const rg = yield* IAM.createResourceGroup({
           accountId: accountId(),
@@ -1263,7 +1263,7 @@ describe("IAM", () => {
             Effect.map((result) => {
               // Newly created user group has no members — result is empty
               expect(Array.isArray(result.result)).toBe(true);
-              expect(result.result.length).toBe(0);
+              expect(result.result!.length).toBe(0);
             }),
           ),
       ));
@@ -1304,7 +1304,7 @@ describe("IAM", () => {
       IAM.createUserGroupMember({
         accountId: accountId(),
         userGroupId: "00000000000000000000000000000000",
-        body: [{ id: "00000000000000000000000000000000" }],
+        members: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("NotFound")),
@@ -1314,7 +1314,7 @@ describe("IAM", () => {
       IAM.createUserGroupMember({
         accountId: "invalid-account-id-!@#",
         userGroupId: "00000000000000000000000000000000",
-        body: [{ id: "00000000000000000000000000000000" }],
+        members: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
@@ -1324,7 +1324,7 @@ describe("IAM", () => {
       IAM.createUserGroupMember({
         accountId: accountId(),
         userGroupId: "",
-        body: [{ id: "00000000000000000000000000000000" }],
+        members: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
@@ -1335,7 +1335,7 @@ describe("IAM", () => {
         IAM.createUserGroupMember({
           accountId: accountId(),
           userGroupId,
-          body: [{ id: "not-a-valid-member-id" }],
+          members: [{ id: "not-a-valid-member-id" }],
         }).pipe(
           Effect.flip,
           Effect.map((e) => expect(e._tag).toBe("InvalidMember")),
@@ -1347,13 +1347,11 @@ describe("IAM", () => {
   // updateUserGroupMember
   // --------------------------------------------------------------------------
   describe("updateUserGroupMember", () => {
-    // NOTE: updateUserGroupMember is generated with incorrect GET method (should be PUT).
-    // This causes a CloudflareNetworkError since HTTP clients reject GET with body.
     test("error - not found for non-existent userGroupId", () =>
       IAM.updateUserGroupMember({
         accountId: accountId(),
         userGroupId: "00000000000000000000000000000000",
-        body: [{ id: "00000000000000000000000000000000" }],
+        members: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("NotFound")),
@@ -1363,7 +1361,7 @@ describe("IAM", () => {
       IAM.updateUserGroupMember({
         accountId: "invalid-account-id-!@#",
         userGroupId: "00000000000000000000000000000000",
-        body: [{ id: "00000000000000000000000000000000" }],
+        members: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),

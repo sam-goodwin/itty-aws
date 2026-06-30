@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetDatabaseConfigurationInput {
+  organizationSlug: string;
+  databaseName: string;
+}
 export const GetDatabaseConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,18 @@ export const GetDatabaseConfigurationInput =
       method: "GET",
       path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/configuration",
     }),
-  );
-export type GetDatabaseConfigurationInput =
-  typeof GetDatabaseConfigurationInput.Type;
+  ) as unknown as Schema.Codec<GetDatabaseConfigurationInput>;
 
 // Output Schema
+export interface GetDatabaseConfigurationOutput {
+  size_limit?: string;
+  allow_attach?: boolean;
+  block_reads?: boolean;
+  block_writes?: boolean;
+  delete_protection?: boolean;
+  allowed_ips?: string[];
+  allowed_aws_vpc_ids?: string[];
+}
 export const GetDatabaseConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     size_limit: Schema.optional(Schema.String),
@@ -27,9 +38,7 @@ export const GetDatabaseConfigurationOutput =
     delete_protection: Schema.optional(Schema.Boolean),
     allowed_ips: Schema.optional(Schema.Array(Schema.String)),
     allowed_aws_vpc_ids: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type GetDatabaseConfigurationOutput =
-  typeof GetDatabaseConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<GetDatabaseConfigurationOutput>;
 
 // The operation
 /**

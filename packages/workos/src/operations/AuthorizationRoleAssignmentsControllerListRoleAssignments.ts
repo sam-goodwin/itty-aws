@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsInput {
+  organization_membership_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  resource_id?: string;
+  resource_external_id?: string;
+  resource_type_slug?: string;
+}
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -19,11 +29,22 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsInput =
       method: "GET",
       path: "/authorization/organization_memberships/{organization_membership_id}/role_assignments",
     }),
-  );
-export type AuthorizationRoleAssignmentsControllerListRoleAssignmentsInput =
-  typeof AuthorizationRoleAssignmentsControllerListRoleAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerListRoleAssignmentsInput>;
 
 // Output Schema
+export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    organization_membership_id: string;
+    role: { slug?: string };
+    resource: { id: string; external_id: string; resource_type_slug: string };
+    created_at: string;
+    updated_at: string;
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -48,9 +69,7 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput =
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput =
-  typeof AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput>;
 
 // The operation
 /**

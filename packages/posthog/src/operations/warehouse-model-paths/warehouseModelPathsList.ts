@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseModelPathsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const WarehouseModelPathsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,44 @@ export const WarehouseModelPathsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/warehouse_model_paths/",
     }),
-  );
-export type WarehouseModelPathsListInput =
-  typeof WarehouseModelPathsListInput.Type;
+  ) as unknown as Schema.Codec<WarehouseModelPathsListInput>;
 
 // Output Schema
+export interface WarehouseModelPathsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    path: string[];
+    team: number;
+    table?: string | null;
+    saved_query?: string | null;
+    created_at: string;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    updated_at: string | null;
+  }[];
+}
 export const WarehouseModelPathsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -42,14 +80,28 @@ export const WarehouseModelPathsListOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
         updated_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type WarehouseModelPathsListOutput =
-  typeof WarehouseModelPathsListOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseModelPathsListOutput>;
 
 // The operation
 /**

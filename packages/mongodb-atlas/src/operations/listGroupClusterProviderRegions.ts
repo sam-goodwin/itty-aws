@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterProviderRegionsInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  providers?: string;
+  tier?: string;
+}
 export const ListGroupClusterProviderRegionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -19,15 +29,12 @@ export const ListGroupClusterProviderRegionsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/provider/regions",
     }),
-  );
-export type ListGroupClusterProviderRegionsInput =
-  typeof ListGroupClusterProviderRegionsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterProviderRegionsInput>;
 
 // Output Schema
+export type ListGroupClusterProviderRegionsOutput = void;
 export const ListGroupClusterProviderRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterProviderRegionsOutput =
-  typeof ListGroupClusterProviderRegionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterProviderRegionsOutput>;
 
 // The operation
 /**

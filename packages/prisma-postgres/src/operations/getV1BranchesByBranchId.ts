@@ -4,14 +4,30 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1BranchesByBranchIdInput {
+  branchId: string;
+}
 export const GetV1BranchesByBranchIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branchId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/branches/{branchId}" }));
-export type GetV1BranchesByBranchIdInput =
-  typeof GetV1BranchesByBranchIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/branches/{branchId}" }),
+  ) as unknown as Schema.Codec<GetV1BranchesByBranchIdInput>;
 
 // Output Schema
+export interface GetV1BranchesByBranchIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    gitName: string;
+    isDefault: boolean;
+    role: "production" | "preview";
+    createdAt: string;
+    updatedAt: string;
+    project: { id: string; url: string; name: string };
+  };
+}
 export const GetV1BranchesByBranchIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -29,9 +45,7 @@ export const GetV1BranchesByBranchIdOutput =
         name: Schema.String,
       }),
     }),
-  });
-export type GetV1BranchesByBranchIdOutput =
-  typeof GetV1BranchesByBranchIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1BranchesByBranchIdOutput>;
 
 // The operation
 /**

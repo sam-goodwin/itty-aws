@@ -3,6 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemUndoDeleteCreateInput {
+  project_id: string;
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const DesktopFileSystemUndoDeleteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,15 +34,12 @@ export const DesktopFileSystemUndoDeleteCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/desktop_file_system/undo_delete/",
     }),
-  );
-export type DesktopFileSystemUndoDeleteCreateInput =
-  typeof DesktopFileSystemUndoDeleteCreateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemUndoDeleteCreateInput>;
 
 // Output Schema
+export type DesktopFileSystemUndoDeleteCreateOutput = void;
 export const DesktopFileSystemUndoDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DesktopFileSystemUndoDeleteCreateOutput =
-  typeof DesktopFileSystemUndoDeleteCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemUndoDeleteCreateOutput>;
 
 // The operation
 /**

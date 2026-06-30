@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface RadarStandaloneControllerUpdateRadarListInput {
+  type:
+    | "ip_address"
+    | "domain"
+    | "email"
+    | "device"
+    | "user_agent"
+    | "device_fingerprint"
+    | "country";
+  action: "block" | "allow";
+  entry: string;
+}
 export const RadarStandaloneControllerUpdateRadarListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.Literals([
@@ -17,17 +29,18 @@ export const RadarStandaloneControllerUpdateRadarListInput =
     ]).pipe(T.PathParam()),
     action: Schema.Literals(["block", "allow"]).pipe(T.PathParam()),
     entry: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/radar/lists/{type}/{action}" }));
-export type RadarStandaloneControllerUpdateRadarListInput =
-  typeof RadarStandaloneControllerUpdateRadarListInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/radar/lists/{type}/{action}" }),
+  ) as unknown as Schema.Codec<RadarStandaloneControllerUpdateRadarListInput>;
 
 // Output Schema
+export interface RadarStandaloneControllerUpdateRadarListOutput {
+  message?: string;
+}
 export const RadarStandaloneControllerUpdateRadarListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
-  });
-export type RadarStandaloneControllerUpdateRadarListOutput =
-  typeof RadarStandaloneControllerUpdateRadarListOutput.Type;
+  }) as unknown as Schema.Codec<RadarStandaloneControllerUpdateRadarListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,38 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DatasetsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  description?: string | null;
+  metadata?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+  deleted?: boolean | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -27,7 +59,23 @@ export const DatasetsPartialUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -37,10 +85,40 @@ export const DatasetsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/datasets/{id}/",
     }),
-  );
-export type DatasetsPartialUpdateInput = typeof DatasetsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatasetsPartialUpdateInput>;
 
 // Output Schema
+export interface DatasetsPartialUpdateOutput {
+  id?: string;
+  name?: string;
+  description?: string | null;
+  metadata?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+  deleted?: boolean | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -63,14 +141,28 @@ export const DatasetsPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
-export type DatasetsPartialUpdateOutput =
-  typeof DatasetsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatasetsPartialUpdateOutput>;
 
 // The operation
 /**

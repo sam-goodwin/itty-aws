@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteWebhookEndpointsWebhookEndpointInput {
+  webhook_endpoint: string;
+}
 export const DeleteWebhookEndpointsWebhookEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webhook_endpoint: Schema.String.pipe(T.PathParam()),
@@ -12,19 +15,20 @@ export const DeleteWebhookEndpointsWebhookEndpointInput =
       path: "/v1/webhook_endpoints/{webhook_endpoint}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteWebhookEndpointsWebhookEndpointInput =
-  typeof DeleteWebhookEndpointsWebhookEndpointInput.Type;
+  ) as unknown as Schema.Codec<DeleteWebhookEndpointsWebhookEndpointInput>;
 
 // Output Schema
+export interface DeleteWebhookEndpointsWebhookEndpointOutput {
+  deleted: true;
+  id: string;
+  object: "webhook_endpoint";
+}
 export const DeleteWebhookEndpointsWebhookEndpointOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["webhook_endpoint"]),
-  });
-export type DeleteWebhookEndpointsWebhookEndpointOutput =
-  typeof DeleteWebhookEndpointsWebhookEndpointOutput.Type;
+  }) as unknown as Schema.Codec<DeleteWebhookEndpointsWebhookEndpointOutput>;
 
 // The operation
 /**

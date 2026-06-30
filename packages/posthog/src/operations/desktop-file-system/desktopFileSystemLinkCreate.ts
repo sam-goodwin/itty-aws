@@ -3,6 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemLinkCreateInput {
+  id: string;
+  project_id: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const DesktopFileSystemLinkCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -21,15 +34,12 @@ export const DesktopFileSystemLinkCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/desktop_file_system/{id}/link/",
     }),
-  );
-export type DesktopFileSystemLinkCreateInput =
-  typeof DesktopFileSystemLinkCreateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemLinkCreateInput>;
 
 // Output Schema
+export type DesktopFileSystemLinkCreateOutput = void;
 export const DesktopFileSystemLinkCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DesktopFileSystemLinkCreateOutput =
-  typeof DesktopFileSystemLinkCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemLinkCreateOutput>;
 
 // The operation
 /**

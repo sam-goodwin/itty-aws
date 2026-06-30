@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AcceptProjectTransferRequestInput {
+  project_id: string;
+  request_id: string;
+  org_id?: string;
+}
 export const AcceptProjectTransferRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const AcceptProjectTransferRequestInput =
       method: "PUT",
       path: "/projects/{project_id}/transfer_requests/{request_id}",
     }),
-  );
-export type AcceptProjectTransferRequestInput =
-  typeof AcceptProjectTransferRequestInput.Type;
+  ) as unknown as Schema.Codec<AcceptProjectTransferRequestInput>;
 
 // Output Schema
+export type AcceptProjectTransferRequestOutput = void;
 export const AcceptProjectTransferRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AcceptProjectTransferRequestOutput =
-  typeof AcceptProjectTransferRequestOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AcceptProjectTransferRequestOutput>;
 
 // The operation
 /**

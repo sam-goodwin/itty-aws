@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightVariablesUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  type?: "String" | "Number" | "Boolean" | "List" | "Date";
+  default_value?: unknown;
+  created_by?: number | null;
+  created_at?: string;
+  code_name?: string | null;
+  values?: unknown;
+}
 export const InsightVariablesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -22,11 +33,19 @@ export const InsightVariablesUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/insight_variables/{id}/",
     }),
-  );
-export type InsightVariablesUpdateInput =
-  typeof InsightVariablesUpdateInput.Type;
+  ) as unknown as Schema.Codec<InsightVariablesUpdateInput>;
 
 // Output Schema
+export interface InsightVariablesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: "String" | "Number" | "Boolean" | "List" | "Date";
+  default_value?: unknown;
+  created_by?: number | null;
+  created_at?: string;
+  code_name?: string | null;
+  values?: unknown;
+}
 export const InsightVariablesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -39,9 +58,7 @@ export const InsightVariablesUpdateOutput =
     created_at: Schema.optional(Schema.String),
     code_name: Schema.optional(Schema.NullOr(Schema.String)),
     values: Schema.optional(Schema.Unknown),
-  });
-export type InsightVariablesUpdateOutput =
-  typeof InsightVariablesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InsightVariablesUpdateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupProcessDiskMeasurementsInput {
+  groupId: string;
+  partitionName: string;
+  processId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  m?: string;
+  granularity: string;
+  period?: string;
+  start?: string;
+  end?: string;
+}
 export const GetGroupProcessDiskMeasurementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +33,12 @@ export const GetGroupProcessDiskMeasurementsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements",
     }),
-  );
-export type GetGroupProcessDiskMeasurementsInput =
-  typeof GetGroupProcessDiskMeasurementsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupProcessDiskMeasurementsInput>;
 
 // Output Schema
+export type GetGroupProcessDiskMeasurementsOutput = void;
 export const GetGroupProcessDiskMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupProcessDiskMeasurementsOutput =
-  typeof GetGroupProcessDiskMeasurementsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessDiskMeasurementsOutput>;
 
 // The operation
 /**

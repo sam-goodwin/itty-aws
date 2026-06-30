@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentMemoryCreateFileInput {
+  application_id: string;
+  project_id: string;
+  path: string;
+  description: string;
+  content: string;
+  tags?: string[];
+}
 export const AgentMemoryCreateFileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -16,16 +24,16 @@ export const AgentMemoryCreateFileInput =
       method: "POST",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/memory/files/",
     }),
-  );
-export type AgentMemoryCreateFileInput = typeof AgentMemoryCreateFileInput.Type;
+  ) as unknown as Schema.Codec<AgentMemoryCreateFileInput>;
 
 // Output Schema
+export interface AgentMemoryCreateFileOutput {
+  content: string;
+}
 export const AgentMemoryCreateFileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.String,
-  });
-export type AgentMemoryCreateFileOutput =
-  typeof AgentMemoryCreateFileOutput.Type;
+  }) as unknown as Schema.Codec<AgentMemoryCreateFileOutput>;
 
 // The operation
 /**

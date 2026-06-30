@@ -2,8 +2,12 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetWebhookSubscriptionInput {
+  subscriptionId: string;
+}
 export const GetWebhookSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,45 @@ export const GetWebhookSubscriptionInput =
       method: "GET",
       path: "/v2/data/webhooks/subscriptions/{subscriptionId}",
     }),
-  );
-export type GetWebhookSubscriptionInput =
-  typeof GetWebhookSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<GetWebhookSubscriptionInput>;
 
 // Output Schema
+export interface GetWebhookSubscriptionOutput {
+  createdAt: string;
+  updatedAt?: string;
+  description?: string;
+  eventTypes: (
+    | "onchain.activity.detected"
+    | "wallet.activity.detected"
+    | "wallet.activity.multi"
+    | "wallet.transaction.created"
+    | "wallet.transaction.signed"
+    | "wallet.transaction.broadcast"
+    | "wallet.transaction.replaced"
+    | "wallet.transaction.pending"
+    | "wallet.transaction.confirmed"
+    | "wallet.transaction.failed"
+    | "wallet.delegation.created"
+    | "wallet.delegation.revoked"
+    | "wallet.typed_data.signed"
+    | "wallet.message.signed"
+    | "wallet.hash.signed"
+    | "onramp.transaction.created"
+    | "onramp.transaction.updated"
+    | "onramp.transaction.success"
+    | "onramp.transaction.failed"
+    | "offramp.transaction.created"
+    | "offramp.transaction.updated"
+    | "offramp.transaction.success"
+    | "offramp.transaction.failed"
+  )[];
+  isEnabled: boolean;
+  metadata?: { secret?: Redacted.Redacted<string> };
+  secret: Redacted.Redacted<string>;
+  subscriptionId: string;
+  target: { url: string; headers?: Record<string, string> };
+  labels?: Record<string, string>;
+}
 export const GetWebhookSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAt: Schema.String,
@@ -62,9 +100,7 @@ export const GetWebhookSubscriptionOutput =
       headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type GetWebhookSubscriptionOutput =
-  typeof GetWebhookSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<GetWebhookSubscriptionOutput>;
 
 // The operation
 /**

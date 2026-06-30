@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeferGroupMaintenanceWindowInput {
+  groupId: string;
+  envelope?: boolean;
+}
 export const DeferGroupMaintenanceWindowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const DeferGroupMaintenanceWindowInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer",
     }),
-  );
-export type DeferGroupMaintenanceWindowInput =
-  typeof DeferGroupMaintenanceWindowInput.Type;
+  ) as unknown as Schema.Codec<DeferGroupMaintenanceWindowInput>;
 
 // Output Schema
+export type DeferGroupMaintenanceWindowOutput = void;
 export const DeferGroupMaintenanceWindowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeferGroupMaintenanceWindowOutput =
-  typeof DeferGroupMaintenanceWindowOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeferGroupMaintenanceWindowOutput>;
 
 // The operation
 /**

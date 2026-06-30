@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesMetricsPartialUpdateInput {
+  group_type_index: number;
+  id: string;
+  project_id: string;
+  name?: string;
+  format?: "numeric" | "currency";
+  interval?: number;
+  display?: "number" | "sparkline";
+  filters?: Record<string, unknown>;
+  math?: "count" | "sum";
+  math_property?: string | null;
+}
 export const GroupsTypesMetricsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_type_index: Schema.Number.pipe(T.PathParam()),
@@ -21,11 +33,19 @@ export const GroupsTypesMetricsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/groups_types/{group_type_index}/metrics/{id}/",
     }),
-  );
-export type GroupsTypesMetricsPartialUpdateInput =
-  typeof GroupsTypesMetricsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupsTypesMetricsPartialUpdateInput>;
 
 // Output Schema
+export interface GroupsTypesMetricsPartialUpdateOutput {
+  id?: string;
+  name?: string;
+  format?: "numeric" | "currency";
+  interval?: number;
+  display?: "number" | "sparkline";
+  filters?: Record<string, unknown>;
+  math?: "count" | "sum";
+  math_property?: string | null;
+}
 export const GroupsTypesMetricsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -36,9 +56,7 @@ export const GroupsTypesMetricsPartialUpdateOutput =
     filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     math: Schema.optional(Schema.Literals(["count", "sum"])),
     math_property: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type GroupsTypesMetricsPartialUpdateOutput =
-  typeof GroupsTypesMetricsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupsTypesMetricsPartialUpdateOutput>;
 
 // The operation
 /**

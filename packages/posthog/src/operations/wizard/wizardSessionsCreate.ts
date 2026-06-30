@@ -3,6 +3,21 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WizardSessionsCreateInput {
+  project_id: string;
+  session_id: string;
+  workflow_id: string;
+  skill_id: string;
+  started_at: string;
+  run_phase: "idle" | "running" | "completed" | "error";
+  tasks: {
+    id: string;
+    title: string;
+    status: "pending" | "in_progress" | "completed" | "failed" | "canceled";
+  }[];
+  event_plan?: Record<string, unknown> | null;
+  error?: Record<string, unknown> | null;
+}
 export const WizardSessionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -35,10 +50,27 @@ export const WizardSessionsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/wizard/sessions/",
     }),
-  );
-export type WizardSessionsCreateInput = typeof WizardSessionsCreateInput.Type;
+  ) as unknown as Schema.Codec<WizardSessionsCreateInput>;
 
 // Output Schema
+export interface WizardSessionsCreateOutput {
+  session_id: string;
+  team_id: number;
+  workflow_id: string;
+  skill_id: string;
+  started_at: string;
+  run_phase: "idle" | "running" | "completed" | "error";
+  tasks: {
+    id: string;
+    title: string;
+    status: "pending" | "in_progress" | "completed" | "failed" | "canceled";
+  }[];
+  event_plan: Record<string, unknown> | null;
+  error: Record<string, unknown> | null;
+  created_at: string;
+  updated_at: string;
+  is_stale: boolean;
+}
 export const WizardSessionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session_id: Schema.String,
@@ -65,8 +97,7 @@ export const WizardSessionsCreateOutput =
     created_at: Schema.String,
     updated_at: Schema.String,
     is_stale: Schema.Boolean,
-  });
-export type WizardSessionsCreateOutput = typeof WizardSessionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<WizardSessionsCreateOutput>;
 
 // The operation
 /**

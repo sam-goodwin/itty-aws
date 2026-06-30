@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmSkillsNameExportRetrieveInput {
+  project_id: string;
+  skill_name: string;
+  version?: number;
+}
 export const LlmSkillsNameExportRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const LlmSkillsNameExportRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/llm_skills/name/{skill_name}/export/",
     }),
-  );
-export type LlmSkillsNameExportRetrieveInput =
-  typeof LlmSkillsNameExportRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LlmSkillsNameExportRetrieveInput>;
 
 // Output Schema
+export type LlmSkillsNameExportRetrieveOutput = void;
 export const LlmSkillsNameExportRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LlmSkillsNameExportRetrieveOutput =
-  typeof LlmSkillsNameExportRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LlmSkillsNameExportRetrieveOutput>;
 
 // The operation
 /**

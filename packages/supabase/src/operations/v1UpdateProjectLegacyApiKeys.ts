@@ -4,23 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateProjectLegacyApiKeysInput {
+  ref: string;
+  enabled: boolean;
+}
 export const V1UpdateProjectLegacyApiKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     enabled: Schema.Boolean,
   }).pipe(
     T.Http({ method: "PUT", path: "/v1/projects/{ref}/api-keys/legacy" }),
-  );
-export type V1UpdateProjectLegacyApiKeysInput =
-  typeof V1UpdateProjectLegacyApiKeysInput.Type;
+  ) as unknown as Schema.Codec<V1UpdateProjectLegacyApiKeysInput>;
 
 // Output Schema
+export interface V1UpdateProjectLegacyApiKeysOutput {
+  enabled: boolean;
+}
 export const V1UpdateProjectLegacyApiKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
-  });
-export type V1UpdateProjectLegacyApiKeysOutput =
-  typeof V1UpdateProjectLegacyApiKeysOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateProjectLegacyApiKeysOutput>;
 
 // The operation
 /**

@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SurveysQuestionLabelsInput {
+  project_id: string;
+}
 export const SurveysQuestionLabelsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,10 +14,18 @@ export const SurveysQuestionLabelsInput =
       method: "GET",
       path: "/api/projects/{project_id}/surveys/question_labels/",
     }),
-  );
-export type SurveysQuestionLabelsInput = typeof SurveysQuestionLabelsInput.Type;
+  ) as unknown as Schema.Codec<SurveysQuestionLabelsInput>;
 
 // Output Schema
+export interface SurveysQuestionLabelsOutput {
+  labels: {
+    question_id: string;
+    question_text: string;
+    question_index: number;
+    survey_id: string;
+    survey_name: string;
+  }[];
+}
 export const SurveysQuestionLabelsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.Array(
@@ -26,9 +37,7 @@ export const SurveysQuestionLabelsOutput =
         survey_name: Schema.String,
       }),
     ),
-  });
-export type SurveysQuestionLabelsOutput =
-  typeof SurveysQuestionLabelsOutput.Type;
+  }) as unknown as Schema.Codec<SurveysQuestionLabelsOutput>;
 
 // The operation
 /**

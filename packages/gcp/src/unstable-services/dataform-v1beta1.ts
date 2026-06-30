@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -45,7 +45,7 @@ export interface UncommittedFileChange {
     | (string & {});
 }
 
-export const UncommittedFileChange: Schema.Schema<UncommittedFileChange> =
+export const UncommittedFileChange: Schema.Codec<UncommittedFileChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface FetchFileGitStatusesResponse {
   uncommittedFileChanges?: ReadonlyArray<UncommittedFileChange>;
 }
 
-export const FetchFileGitStatusesResponse: Schema.Schema<FetchFileGitStatusesResponse> =
+export const FetchFileGitStatusesResponse: Schema.Codec<FetchFileGitStatusesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uncommittedFileChanges: Schema.optional(
       Schema.Array(UncommittedFileChange),
@@ -72,7 +72,7 @@ export interface ColumnDescriptor {
   bigqueryPolicyTags?: ReadonlyArray<string>;
 }
 
-export const ColumnDescriptor: Schema.Schema<ColumnDescriptor> =
+export const ColumnDescriptor: Schema.Codec<ColumnDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     path: Schema.optional(Schema.Array(Schema.String)),
@@ -88,7 +88,7 @@ export interface RelationDescriptor {
   bigqueryLabels?: Record<string, string>;
 }
 
-export const RelationDescriptor: Schema.Schema<RelationDescriptor> =
+export const RelationDescriptor: Schema.Codec<RelationDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     columns: Schema.optional(Schema.Array(ColumnDescriptor)),
@@ -108,7 +108,7 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -141,7 +141,7 @@ export interface Policy {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
@@ -150,7 +150,7 @@ export const Policy: Schema.Schema<Policy> =
 
 export interface RemoveDirectoryResponse {}
 
-export const RemoveDirectoryResponse: Schema.Schema<RemoveDirectoryResponse> =
+export const RemoveDirectoryResponse: Schema.Codec<RemoveDirectoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveDirectoryResponse",
   });
@@ -164,7 +164,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -186,7 +186,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -197,7 +197,7 @@ export const Operation: Schema.Schema<Operation> =
 
 export interface MakeDirectoryResponse {}
 
-export const MakeDirectoryResponse: Schema.Schema<MakeDirectoryResponse> =
+export const MakeDirectoryResponse: Schema.Codec<MakeDirectoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MakeDirectoryResponse",
   });
@@ -207,7 +207,7 @@ export interface PrivateResourceMetadata {
   userScoped?: boolean;
 }
 
-export const PrivateResourceMetadata: Schema.Schema<PrivateResourceMetadata> =
+export const PrivateResourceMetadata: Schema.Codec<PrivateResourceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userScoped: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "PrivateResourceMetadata" });
@@ -221,7 +221,7 @@ export interface Target {
   schema?: string;
 }
 
-export const Target: Schema.Schema<Target> =
+export const Target: Schema.Codec<Target> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -239,7 +239,7 @@ export interface Notebook {
   contents?: string;
 }
 
-export const Notebook: Schema.Schema<Notebook> =
+export const Notebook: Schema.Codec<Notebook> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
     disabled: Schema.optional(Schema.Boolean),
@@ -254,7 +254,7 @@ export interface WriteFileRequest {
   path?: string;
 }
 
-export const WriteFileRequest: Schema.Schema<WriteFileRequest> =
+export const WriteFileRequest: Schema.Codec<WriteFileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contents: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -275,7 +275,7 @@ export interface Assertion {
   relationDescriptor?: RelationDescriptor;
 }
 
-export const Assertion: Schema.Schema<Assertion> =
+export const Assertion: Schema.Codec<Assertion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentAction: Schema.optional(Target),
     dependencyTargets: Schema.optional(Schema.Array(Target)),
@@ -298,7 +298,7 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     locationId: Schema.optional(Schema.String),
@@ -314,7 +314,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -327,7 +327,7 @@ export interface NotebookAction {
   jobId?: string;
 }
 
-export const NotebookAction: Schema.Schema<NotebookAction> =
+export const NotebookAction: Schema.Codec<NotebookAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contents: Schema.optional(Schema.String),
     jobId: Schema.optional(Schema.String),
@@ -338,7 +338,7 @@ export interface FileSearchResult {
   path?: string;
 }
 
-export const FileSearchResult: Schema.Schema<FileSearchResult> =
+export const FileSearchResult: Schema.Codec<FileSearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "FileSearchResult" });
@@ -348,7 +348,7 @@ export interface DirectorySearchResult {
   path?: string;
 }
 
-export const DirectorySearchResult: Schema.Schema<DirectorySearchResult> =
+export const DirectorySearchResult: Schema.Codec<DirectorySearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "DirectorySearchResult" });
@@ -360,7 +360,7 @@ export interface SearchResult {
   directory?: DirectorySearchResult;
 }
 
-export const SearchResult: Schema.Schema<SearchResult> =
+export const SearchResult: Schema.Codec<SearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     file: Schema.optional(FileSearchResult),
     directory: Schema.optional(DirectorySearchResult),
@@ -381,7 +381,7 @@ export interface TeamFolder {
   creatorIamPrincipal?: string;
 }
 
-export const TeamFolder: Schema.Schema<TeamFolder> =
+export const TeamFolder: Schema.Codec<TeamFolder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     internalMetadata: Schema.optional(Schema.String),
@@ -398,7 +398,7 @@ export interface FilesystemEntryMetadata {
   sizeBytes?: string;
 }
 
-export const FilesystemEntryMetadata: Schema.Schema<FilesystemEntryMetadata> =
+export const FilesystemEntryMetadata: Schema.Codec<FilesystemEntryMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     sizeBytes: Schema.optional(Schema.String),
@@ -413,7 +413,7 @@ export interface DirectoryEntry {
   metadata?: FilesystemEntryMetadata;
 }
 
-export const DirectoryEntry: Schema.Schema<DirectoryEntry> =
+export const DirectoryEntry: Schema.Codec<DirectoryEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     directory: Schema.optional(Schema.String),
     file: Schema.optional(Schema.String),
@@ -427,7 +427,7 @@ export interface TableUpdateTrigger {
   triggerUpdateTime?: string;
 }
 
-export const TableUpdateTrigger: Schema.Schema<TableUpdateTrigger> =
+export const TableUpdateTrigger: Schema.Codec<TableUpdateTrigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Target),
     triggerUpdateTime: Schema.optional(Schema.String),
@@ -438,7 +438,7 @@ export interface WorkflowTrigger {
   tableUpdateTrigger?: TableUpdateTrigger;
 }
 
-export const WorkflowTrigger: Schema.Schema<WorkflowTrigger> =
+export const WorkflowTrigger: Schema.Codec<WorkflowTrigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableUpdateTrigger: Schema.optional(TableUpdateTrigger),
   }).annotate({ identifier: "WorkflowTrigger" });
@@ -448,7 +448,7 @@ export interface MoveRepositoryRequest {
   destinationContainingFolder?: string;
 }
 
-export const MoveRepositoryRequest: Schema.Schema<MoveRepositoryRequest> =
+export const MoveRepositoryRequest: Schema.Codec<MoveRepositoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationContainingFolder: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveRepositoryRequest" });
@@ -462,7 +462,7 @@ export interface Config {
   internalMetadata?: string;
 }
 
-export const Config: Schema.Schema<Config> =
+export const Config: Schema.Codec<Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     defaultKmsKeyName: Schema.optional(Schema.String),
@@ -488,7 +488,7 @@ export interface Folder {
   internalMetadata?: string;
 }
 
-export const Folder: Schema.Schema<Folder> =
+export const Folder: Schema.Codec<Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creatorIamPrincipal: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -507,7 +507,7 @@ export interface SshAuthenticationConfig {
   hostPublicKey?: string;
 }
 
-export const SshAuthenticationConfig: Schema.Schema<SshAuthenticationConfig> =
+export const SshAuthenticationConfig: Schema.Codec<SshAuthenticationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPrivateKeySecretVersion: Schema.optional(Schema.String),
     hostPublicKey: Schema.optional(Schema.String),
@@ -535,7 +535,7 @@ export interface GitRemoteSettings {
     | (string & {});
 }
 
-export const GitRemoteSettings: Schema.Schema<GitRemoteSettings> =
+export const GitRemoteSettings: Schema.Codec<GitRemoteSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveDefaultBranch: Schema.optional(Schema.String),
     authenticationTokenSecretVersion: Schema.optional(Schema.String),
@@ -555,7 +555,7 @@ export interface WorkspaceCompilationOverrides {
   schemaSuffix?: string;
 }
 
-export const WorkspaceCompilationOverrides: Schema.Schema<WorkspaceCompilationOverrides> =
+export const WorkspaceCompilationOverrides: Schema.Codec<WorkspaceCompilationOverrides> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tablePrefix: Schema.optional(Schema.String),
     defaultDatabase: Schema.optional(Schema.String),
@@ -567,7 +567,7 @@ export interface DataEncryptionState {
   kmsKeyVersionName?: string;
 }
 
-export const DataEncryptionState: Schema.Schema<DataEncryptionState> =
+export const DataEncryptionState: Schema.Codec<DataEncryptionState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyVersionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataEncryptionState" });
@@ -603,7 +603,7 @@ export interface Repository {
   npmrcEnvironmentVariablesSecretVersion?: string;
 }
 
-export const Repository: Schema.Schema<Repository> =
+export const Repository: Schema.Codec<Repository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gitRemoteSettings: Schema.optional(GitRemoteSettings),
     workspaceCompilationOverrides: Schema.optional(
@@ -630,7 +630,7 @@ export interface FolderContentsEntry {
   repository?: Repository;
 }
 
-export const FolderContentsEntry: Schema.Schema<FolderContentsEntry> =
+export const FolderContentsEntry: Schema.Codec<FolderContentsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folder: Schema.optional(Folder),
     repository: Schema.optional(Repository),
@@ -643,7 +643,7 @@ export interface Interval {
   startTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -651,7 +651,7 @@ export const Interval: Schema.Schema<Interval> =
 
 export interface ActionSimpleLoadMode {}
 
-export const ActionSimpleLoadMode: Schema.Schema<ActionSimpleLoadMode> =
+export const ActionSimpleLoadMode: Schema.Codec<ActionSimpleLoadMode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActionSimpleLoadMode",
   });
@@ -661,7 +661,7 @@ export interface ActionIncrementalLoadMode {
   column?: string;
 }
 
-export const ActionIncrementalLoadMode: Schema.Schema<ActionIncrementalLoadMode> =
+export const ActionIncrementalLoadMode: Schema.Codec<ActionIncrementalLoadMode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     column: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActionIncrementalLoadMode" });
@@ -677,7 +677,7 @@ export interface ActionLoadConfig {
   maximum?: ActionIncrementalLoadMode;
 }
 
-export const ActionLoadConfig: Schema.Schema<ActionLoadConfig> =
+export const ActionLoadConfig: Schema.Codec<ActionLoadConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replace: Schema.optional(ActionSimpleLoadMode),
     unique: Schema.optional(ActionIncrementalLoadMode),
@@ -692,7 +692,7 @@ export interface ActionErrorTable {
   target?: Target;
 }
 
-export const ActionErrorTable: Schema.Schema<ActionErrorTable> =
+export const ActionErrorTable: Schema.Codec<ActionErrorTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retentionDays: Schema.optional(Schema.Number),
     target: Schema.optional(Target),
@@ -707,7 +707,7 @@ export interface ActionSqlDefinition {
   errorTable?: ActionErrorTable;
 }
 
-export const ActionSqlDefinition: Schema.Schema<ActionSqlDefinition> =
+export const ActionSqlDefinition: Schema.Codec<ActionSqlDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     loadConfig: Schema.optional(ActionLoadConfig),
@@ -725,7 +725,7 @@ export interface DataPreparationAction {
   jobId?: string;
 }
 
-export const DataPreparationAction: Schema.Schema<DataPreparationAction> =
+export const DataPreparationAction: Schema.Codec<DataPreparationAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentsSql: Schema.optional(ActionSqlDefinition),
     generatedSql: Schema.optional(Schema.String),
@@ -740,7 +740,7 @@ export interface BigQueryAction {
   sqlScript?: string;
 }
 
-export const BigQueryAction: Schema.Schema<BigQueryAction> =
+export const BigQueryAction: Schema.Codec<BigQueryAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
     sqlScript: Schema.optional(Schema.String),
@@ -775,7 +775,7 @@ export interface WorkflowInvocationAction {
   canonicalTarget?: Target;
 }
 
-export const WorkflowInvocationAction: Schema.Schema<WorkflowInvocationAction> =
+export const WorkflowInvocationAction: Schema.Codec<WorkflowInvocationAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invocationTiming: Schema.optional(Interval),
     target: Schema.optional(Target),
@@ -795,7 +795,7 @@ export interface QueryWorkflowInvocationActionsResponse {
   workflowInvocationActions?: ReadonlyArray<WorkflowInvocationAction>;
 }
 
-export const QueryWorkflowInvocationActionsResponse: Schema.Schema<QueryWorkflowInvocationActionsResponse> =
+export const QueryWorkflowInvocationActionsResponse: Schema.Codec<QueryWorkflowInvocationActionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     workflowInvocationActions: Schema.optional(
@@ -808,7 +808,7 @@ export interface RemoveFileRequest {
   path?: string;
 }
 
-export const RemoveFileRequest: Schema.Schema<RemoveFileRequest> =
+export const RemoveFileRequest: Schema.Codec<RemoveFileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveFileRequest" });
@@ -820,7 +820,7 @@ export interface CommitAuthor {
   emailAddress?: string;
 }
 
-export const CommitAuthor: Schema.Schema<CommitAuthor> =
+export const CommitAuthor: Schema.Codec<CommitAuthor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     emailAddress: Schema.optional(Schema.String),
@@ -837,7 +837,7 @@ export interface CommitLogEntry {
   commitMessage?: string;
 }
 
-export const CommitLogEntry: Schema.Schema<CommitLogEntry> =
+export const CommitLogEntry: Schema.Codec<CommitLogEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     author: Schema.optional(CommitAuthor),
     commitTime: Schema.optional(Schema.String),
@@ -852,7 +852,7 @@ export interface FetchRepositoryHistoryResponse {
   nextPageToken?: string;
 }
 
-export const FetchRepositoryHistoryResponse: Schema.Schema<FetchRepositoryHistoryResponse> =
+export const FetchRepositoryHistoryResponse: Schema.Codec<FetchRepositoryHistoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commits: Schema.optional(Schema.Array(CommitLogEntry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -860,14 +860,14 @@ export const FetchRepositoryHistoryResponse: Schema.Schema<FetchRepositoryHistor
 
 export interface WriteFileResponse {}
 
-export const WriteFileResponse: Schema.Schema<WriteFileResponse> =
+export const WriteFileResponse: Schema.Codec<WriteFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WriteFileResponse",
   });
 
 export interface CommitWorkspaceChangesResponse {}
 
-export const CommitWorkspaceChangesResponse: Schema.Schema<CommitWorkspaceChangesResponse> =
+export const CommitWorkspaceChangesResponse: Schema.Codec<CommitWorkspaceChangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CommitWorkspaceChangesResponse",
   });
@@ -881,7 +881,7 @@ export interface PolicyName {
   region?: string;
 }
 
-export const PolicyName: Schema.Schema<PolicyName> =
+export const PolicyName: Schema.Codec<PolicyName> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -895,7 +895,7 @@ export interface FetchGitAheadBehindResponse {
   commitsAhead?: number;
 }
 
-export const FetchGitAheadBehindResponse: Schema.Schema<FetchGitAheadBehindResponse> =
+export const FetchGitAheadBehindResponse: Schema.Codec<FetchGitAheadBehindResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commitsBehind: Schema.optional(Schema.Number),
     commitsAhead: Schema.optional(Schema.Number),
@@ -906,14 +906,14 @@ export interface CommitRepositoryChangesResponse {
   commitSha?: string;
 }
 
-export const CommitRepositoryChangesResponse: Schema.Schema<CommitRepositoryChangesResponse> =
+export const CommitRepositoryChangesResponse: Schema.Codec<CommitRepositoryChangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commitSha: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommitRepositoryChangesResponse" });
 
 export interface CancelWorkflowInvocationRequest {}
 
-export const CancelWorkflowInvocationRequest: Schema.Schema<CancelWorkflowInvocationRequest> =
+export const CancelWorkflowInvocationRequest: Schema.Codec<CancelWorkflowInvocationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelWorkflowInvocationRequest",
   });
@@ -923,14 +923,14 @@ export interface DeleteRepositoryLongRunningRequest {
   force?: boolean;
 }
 
-export const DeleteRepositoryLongRunningRequest: Schema.Schema<DeleteRepositoryLongRunningRequest> =
+export const DeleteRepositoryLongRunningRequest: Schema.Codec<DeleteRepositoryLongRunningRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DeleteRepositoryLongRunningRequest" });
 
 export interface ResetWorkspaceChangesResponse {}
 
-export const ResetWorkspaceChangesResponse: Schema.Schema<ResetWorkspaceChangesResponse> =
+export const ResetWorkspaceChangesResponse: Schema.Codec<ResetWorkspaceChangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetWorkspaceChangesResponse",
   });
@@ -956,7 +956,7 @@ export interface InvocationConfig {
   includedTags?: ReadonlyArray<string>;
 }
 
-export const InvocationConfig: Schema.Schema<InvocationConfig> =
+export const InvocationConfig: Schema.Codec<InvocationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transitiveDependentsIncluded: Schema.optional(Schema.Boolean),
     includedTargets: Schema.optional(Schema.Array(Target)),
@@ -997,7 +997,7 @@ export interface WorkflowInvocation {
   resolvedCompilationResult?: string;
 }
 
-export const WorkflowInvocation: Schema.Schema<WorkflowInvocation> =
+export const WorkflowInvocation: Schema.Codec<WorkflowInvocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workflowConfig: Schema.optional(Schema.String),
     compilationResult: Schema.optional(Schema.String),
@@ -1020,7 +1020,7 @@ export interface ListWorkflowInvocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkflowInvocationsResponse: Schema.Schema<ListWorkflowInvocationsResponse> =
+export const ListWorkflowInvocationsResponse: Schema.Codec<ListWorkflowInvocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workflowInvocations: Schema.optional(Schema.Array(WorkflowInvocation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1034,7 +1034,7 @@ export interface NotebookRuntimeOptions {
   aiPlatformNotebookRuntimeTemplate?: string;
 }
 
-export const NotebookRuntimeOptions: Schema.Schema<NotebookRuntimeOptions> =
+export const NotebookRuntimeOptions: Schema.Codec<NotebookRuntimeOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsOutputBucket: Schema.optional(Schema.String),
     aiPlatformNotebookRuntimeTemplate: Schema.optional(Schema.String),
@@ -1063,7 +1063,7 @@ export interface CodeCompilationConfig {
   databaseSuffix?: string;
 }
 
-export const CodeCompilationConfig: Schema.Schema<CodeCompilationConfig> =
+export const CodeCompilationConfig: Schema.Codec<CodeCompilationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     builtinAssertionNamePrefix: Schema.optional(Schema.String),
     tablePrefix: Schema.optional(Schema.String),
@@ -1088,7 +1088,7 @@ export interface CompilationError {
   stack?: string;
 }
 
-export const CompilationError: Schema.Schema<CompilationError> =
+export const CompilationError: Schema.Codec<CompilationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     actionTarget: Schema.optional(Target),
@@ -1123,7 +1123,7 @@ export interface CompilationResult {
   releaseConfig?: string;
 }
 
-export const CompilationResult: Schema.Schema<CompilationResult> =
+export const CompilationResult: Schema.Codec<CompilationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     dataformCoreVersion: Schema.optional(Schema.String),
@@ -1148,7 +1148,7 @@ export interface ListCompilationResultsResponse {
   nextPageToken?: string;
 }
 
-export const ListCompilationResultsResponse: Schema.Schema<ListCompilationResultsResponse> =
+export const ListCompilationResultsResponse: Schema.Codec<ListCompilationResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     compilationResults: Schema.optional(Schema.Array(CompilationResult)),
@@ -1160,14 +1160,14 @@ export interface DeleteFolderTreeRequest {
   force?: boolean;
 }
 
-export const DeleteFolderTreeRequest: Schema.Schema<DeleteFolderTreeRequest> =
+export const DeleteFolderTreeRequest: Schema.Codec<DeleteFolderTreeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DeleteFolderTreeRequest" });
 
 export interface InstallNpmPackagesRequest {}
 
-export const InstallNpmPackagesRequest: Schema.Schema<InstallNpmPackagesRequest> =
+export const InstallNpmPackagesRequest: Schema.Codec<InstallNpmPackagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InstallNpmPackagesRequest",
   });
@@ -1179,7 +1179,7 @@ export interface TeamFolderContentsEntry {
   repository?: Repository;
 }
 
-export const TeamFolderContentsEntry: Schema.Schema<TeamFolderContentsEntry> =
+export const TeamFolderContentsEntry: Schema.Codec<TeamFolderContentsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folder: Schema.optional(Folder),
     repository: Schema.optional(Repository),
@@ -1192,7 +1192,7 @@ export interface QueryTeamFolderContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryTeamFolderContentsResponse: Schema.Schema<QueryTeamFolderContentsResponse> =
+export const QueryTeamFolderContentsResponse: Schema.Codec<QueryTeamFolderContentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(TeamFolderContentsEntry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1205,7 +1205,7 @@ export interface TriggerEvaluationRecord {
   status?: Status;
 }
 
-export const TriggerEvaluationRecord: Schema.Schema<TriggerEvaluationRecord> =
+export const TriggerEvaluationRecord: Schema.Codec<TriggerEvaluationRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationTime: Schema.optional(Schema.String),
     status: Schema.optional(Status),
@@ -1226,7 +1226,7 @@ export interface WorkflowTriggerConfig {
   recentTriggerEvaluationRecords?: ReadonlyArray<TriggerEvaluationRecord>;
 }
 
-export const WorkflowTriggerConfig: Schema.Schema<WorkflowTriggerConfig> =
+export const WorkflowTriggerConfig: Schema.Codec<WorkflowTriggerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minExecutionDuration: Schema.optional(Schema.String),
     lastSuccessfulEvaluationTime: Schema.optional(Schema.String),
@@ -1247,7 +1247,7 @@ export interface ScheduledExecutionRecord {
   errorStatus?: Status;
 }
 
-export const ScheduledExecutionRecord: Schema.Schema<ScheduledExecutionRecord> =
+export const ScheduledExecutionRecord: Schema.Codec<ScheduledExecutionRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workflowInvocation: Schema.optional(Schema.String),
     executionTime: Schema.optional(Schema.String),
@@ -1279,7 +1279,7 @@ export interface WorkflowConfig {
   updateTime?: string;
 }
 
-export const WorkflowConfig: Schema.Schema<WorkflowConfig> =
+export const WorkflowConfig: Schema.Codec<WorkflowConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releaseConfig: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1305,7 +1305,7 @@ export interface ListWorkflowConfigsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkflowConfigsResponse: Schema.Schema<ListWorkflowConfigsResponse> =
+export const ListWorkflowConfigsResponse: Schema.Codec<ListWorkflowConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     workflowConfigs: Schema.optional(Schema.Array(WorkflowConfig)),
@@ -1317,7 +1317,7 @@ export interface FetchRemoteBranchesResponse {
   branches?: ReadonlyArray<string>;
 }
 
-export const FetchRemoteBranchesResponse: Schema.Schema<FetchRemoteBranchesResponse> =
+export const FetchRemoteBranchesResponse: Schema.Codec<FetchRemoteBranchesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branches: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "FetchRemoteBranchesResponse" });
@@ -1329,7 +1329,7 @@ export interface PullGitCommitsRequest {
   author?: CommitAuthor;
 }
 
-export const PullGitCommitsRequest: Schema.Schema<PullGitCommitsRequest> =
+export const PullGitCommitsRequest: Schema.Codec<PullGitCommitsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remoteBranch: Schema.optional(Schema.String),
     author: Schema.optional(CommitAuthor),
@@ -1340,7 +1340,7 @@ export interface TeamFolderSearchResult {
   teamFolder?: TeamFolder;
 }
 
-export const TeamFolderSearchResult: Schema.Schema<TeamFolderSearchResult> =
+export const TeamFolderSearchResult: Schema.Codec<TeamFolderSearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     teamFolder: Schema.optional(TeamFolder),
   }).annotate({ identifier: "TeamFolderSearchResult" });
@@ -1352,7 +1352,7 @@ export interface SearchTeamFoldersResponse {
   nextPageToken?: string;
 }
 
-export const SearchTeamFoldersResponse: Schema.Schema<SearchTeamFoldersResponse> =
+export const SearchTeamFoldersResponse: Schema.Codec<SearchTeamFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(TeamFolderSearchResult)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1365,7 +1365,7 @@ export interface MoveFileRequest {
   newPath?: string;
 }
 
-export const MoveFileRequest: Schema.Schema<MoveFileRequest> =
+export const MoveFileRequest: Schema.Codec<MoveFileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     newPath: Schema.optional(Schema.String),
@@ -1378,7 +1378,7 @@ export interface CommitMetadata {
   commitMessage?: string;
 }
 
-export const CommitMetadata: Schema.Schema<CommitMetadata> =
+export const CommitMetadata: Schema.Codec<CommitMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     author: Schema.optional(CommitAuthor),
     commitMessage: Schema.optional(Schema.String),
@@ -1389,14 +1389,14 @@ export interface WriteFile {
   contents?: string;
 }
 
-export const WriteFile: Schema.Schema<WriteFile> =
+export const WriteFile: Schema.Codec<WriteFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contents: Schema.optional(Schema.String),
   }).annotate({ identifier: "WriteFile" });
 
 export interface DeleteFile {}
 
-export const DeleteFile: Schema.Schema<DeleteFile> =
+export const DeleteFile: Schema.Codec<DeleteFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteFile",
   });
@@ -1408,7 +1408,7 @@ export interface FileOperation {
   deleteFile?: DeleteFile;
 }
 
-export const FileOperation: Schema.Schema<FileOperation> =
+export const FileOperation: Schema.Codec<FileOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     writeFile: Schema.optional(WriteFile),
     deleteFile: Schema.optional(DeleteFile),
@@ -1423,7 +1423,7 @@ export interface CommitRepositoryChangesRequest {
   fileOperations?: Record<string, FileOperation>;
 }
 
-export const CommitRepositoryChangesRequest: Schema.Schema<CommitRepositoryChangesRequest> =
+export const CommitRepositoryChangesRequest: Schema.Codec<CommitRepositoryChangesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredHeadCommitSha: Schema.optional(Schema.String),
     commitMetadata: Schema.optional(CommitMetadata),
@@ -1437,7 +1437,7 @@ export interface PushGitCommitsRequest {
   remoteBranch?: string;
 }
 
-export const PushGitCommitsRequest: Schema.Schema<PushGitCommitsRequest> =
+export const PushGitCommitsRequest: Schema.Codec<PushGitCommitsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remoteBranch: Schema.optional(Schema.String),
   }).annotate({ identifier: "PushGitCommitsRequest" });
@@ -1457,7 +1457,7 @@ export interface IncrementalTableConfig {
   uniqueKeyParts?: ReadonlyArray<string>;
 }
 
-export const IncrementalTableConfig: Schema.Schema<IncrementalTableConfig> =
+export const IncrementalTableConfig: Schema.Codec<IncrementalTableConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshDisabled: Schema.optional(Schema.Boolean),
     incrementalPreOperations: Schema.optional(Schema.Array(Schema.String)),
@@ -1512,7 +1512,7 @@ export interface Relation {
   disabled?: boolean;
 }
 
-export const Relation: Schema.Schema<Relation> =
+export const Relation: Schema.Codec<Relation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requirePartitionFilter: Schema.optional(Schema.Boolean),
     tags: Schema.optional(Schema.Array(Schema.String)),
@@ -1541,7 +1541,7 @@ export interface Declaration {
   relationDescriptor?: RelationDescriptor;
 }
 
-export const Declaration: Schema.Schema<Declaration> =
+export const Declaration: Schema.Codec<Declaration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relationDescriptor: Schema.optional(RelationDescriptor),
   }).annotate({ identifier: "Declaration" });
@@ -1561,7 +1561,7 @@ export interface Operations {
   hasOutput?: boolean;
 }
 
-export const Operations: Schema.Schema<Operations> =
+export const Operations: Schema.Codec<Operations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
     relationDescriptor: Schema.optional(RelationDescriptor),
@@ -1578,7 +1578,7 @@ export interface ErrorTable {
   target?: Target;
 }
 
-export const ErrorTable: Schema.Schema<ErrorTable> =
+export const ErrorTable: Schema.Codec<ErrorTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retentionDays: Schema.optional(Schema.Number),
     target: Schema.optional(Target),
@@ -1586,7 +1586,7 @@ export const ErrorTable: Schema.Schema<ErrorTable> =
 
 export interface SimpleLoadMode {}
 
-export const SimpleLoadMode: Schema.Schema<SimpleLoadMode> =
+export const SimpleLoadMode: Schema.Codec<SimpleLoadMode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SimpleLoadMode",
   });
@@ -1596,7 +1596,7 @@ export interface IncrementalLoadMode {
   column?: string;
 }
 
-export const IncrementalLoadMode: Schema.Schema<IncrementalLoadMode> =
+export const IncrementalLoadMode: Schema.Codec<IncrementalLoadMode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     column: Schema.optional(Schema.String),
   }).annotate({ identifier: "IncrementalLoadMode" });
@@ -1612,7 +1612,7 @@ export interface LoadConfig {
   unique?: IncrementalLoadMode;
 }
 
-export const LoadConfig: Schema.Schema<LoadConfig> =
+export const LoadConfig: Schema.Codec<LoadConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     append: Schema.optional(SimpleLoadMode),
     maximum: Schema.optional(IncrementalLoadMode),
@@ -1629,7 +1629,7 @@ export interface SqlDefinition {
   load?: LoadConfig;
 }
 
-export const SqlDefinition: Schema.Schema<SqlDefinition> =
+export const SqlDefinition: Schema.Codec<SqlDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     errorTable: Schema.optional(ErrorTable),
@@ -1649,7 +1649,7 @@ export interface DataPreparation {
   disabled?: boolean;
 }
 
-export const DataPreparation: Schema.Schema<DataPreparation> =
+export const DataPreparation: Schema.Codec<DataPreparation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
     contentsYaml: Schema.optional(Schema.String),
@@ -1681,7 +1681,7 @@ export interface CompilationResultAction {
   assertion?: Assertion;
 }
 
-export const CompilationResultAction: Schema.Schema<CompilationResultAction> =
+export const CompilationResultAction: Schema.Codec<CompilationResultAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relation: Schema.optional(Relation),
     declaration: Schema.optional(Declaration),
@@ -1700,7 +1700,7 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -1714,7 +1714,7 @@ export interface ScheduledReleaseRecord {
   compilationResult?: string;
 }
 
-export const ScheduledReleaseRecord: Schema.Schema<ScheduledReleaseRecord> =
+export const ScheduledReleaseRecord: Schema.Codec<ScheduledReleaseRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releaseTime: Schema.optional(Schema.String),
     errorStatus: Schema.optional(Status),
@@ -1742,7 +1742,7 @@ export interface ReleaseConfig {
   recentScheduledReleaseRecords?: ReadonlyArray<ScheduledReleaseRecord>;
 }
 
-export const ReleaseConfig: Schema.Schema<ReleaseConfig> =
+export const ReleaseConfig: Schema.Codec<ReleaseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     codeCompilationConfig: Schema.optional(CodeCompilationConfig),
     cronSchedule: Schema.optional(Schema.String),
@@ -1766,7 +1766,7 @@ export interface ListReleaseConfigsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListReleaseConfigsResponse: Schema.Schema<ListReleaseConfigsResponse> =
+export const ListReleaseConfigsResponse: Schema.Codec<ListReleaseConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     releaseConfigs: Schema.optional(Schema.Array(ReleaseConfig)),
@@ -1778,14 +1778,14 @@ export interface ReadRepositoryFileResponse {
   contents?: string;
 }
 
-export const ReadRepositoryFileResponse: Schema.Schema<ReadRepositoryFileResponse> =
+export const ReadRepositoryFileResponse: Schema.Codec<ReadRepositoryFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contents: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReadRepositoryFileResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1797,7 +1797,7 @@ export interface QueryCompilationResultActionsResponse {
   nextPageToken?: string;
 }
 
-export const QueryCompilationResultActionsResponse: Schema.Schema<QueryCompilationResultActionsResponse> =
+export const QueryCompilationResultActionsResponse: Schema.Codec<QueryCompilationResultActionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compilationResultActions: Schema.optional(
       Schema.Array(CompilationResultAction),
@@ -1812,7 +1812,7 @@ export interface RootContentsEntry {
   repository?: Repository;
 }
 
-export const RootContentsEntry: Schema.Schema<RootContentsEntry> =
+export const RootContentsEntry: Schema.Codec<RootContentsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folder: Schema.optional(Folder),
     repository: Schema.optional(Repository),
@@ -1825,7 +1825,7 @@ export interface QueryUserRootContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryUserRootContentsResponse: Schema.Schema<QueryUserRootContentsResponse> =
+export const QueryUserRootContentsResponse: Schema.Codec<QueryUserRootContentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(RootContentsEntry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1840,7 +1840,7 @@ export interface ListRepositoriesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
+export const ListRepositoriesResponse: Schema.Codec<ListRepositoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     repositories: Schema.optional(Schema.Array(Repository)),
@@ -1852,7 +1852,7 @@ export interface RemoveDirectoryRequest {
   path?: string;
 }
 
-export const RemoveDirectoryRequest: Schema.Schema<RemoveDirectoryRequest> =
+export const RemoveDirectoryRequest: Schema.Codec<RemoveDirectoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveDirectoryRequest" });
@@ -1874,7 +1874,7 @@ export interface OperationMetadata {
   target?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     cancelRequested: Schema.optional(Schema.Boolean),
@@ -1887,7 +1887,7 @@ export const OperationMetadata: Schema.Schema<OperationMetadata> =
 
 export interface PushGitCommitsResponse {}
 
-export const PushGitCommitsResponse: Schema.Schema<PushGitCommitsResponse> =
+export const PushGitCommitsResponse: Schema.Codec<PushGitCommitsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PushGitCommitsResponse",
   });
@@ -1897,7 +1897,7 @@ export interface FetchFileDiffResponse {
   formattedDiff?: string;
 }
 
-export const FetchFileDiffResponse: Schema.Schema<FetchFileDiffResponse> =
+export const FetchFileDiffResponse: Schema.Codec<FetchFileDiffResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formattedDiff: Schema.optional(Schema.String),
   }).annotate({ identifier: "FetchFileDiffResponse" });
@@ -1917,7 +1917,7 @@ export interface Workspace {
   dataEncryptionState?: DataEncryptionState;
 }
 
-export const Workspace: Schema.Schema<Workspace> =
+export const Workspace: Schema.Codec<Workspace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     internalMetadata: Schema.optional(Schema.String),
@@ -1936,7 +1936,7 @@ export interface ListWorkspacesResponse {
   workspaces?: ReadonlyArray<Workspace>;
 }
 
-export const ListWorkspacesResponse: Schema.Schema<ListWorkspacesResponse> =
+export const ListWorkspacesResponse: Schema.Codec<ListWorkspacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1952,7 +1952,7 @@ export interface CommitWorkspaceChangesRequest {
   author?: CommitAuthor;
 }
 
-export const CommitWorkspaceChangesRequest: Schema.Schema<CommitWorkspaceChangesRequest> =
+export const CommitWorkspaceChangesRequest: Schema.Codec<CommitWorkspaceChangesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commitMessage: Schema.optional(Schema.String),
     paths: Schema.optional(Schema.Array(Schema.String)),
@@ -1966,7 +1966,7 @@ export interface QueryDirectoryContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryDirectoryContentsResponse: Schema.Schema<QueryDirectoryContentsResponse> =
+export const QueryDirectoryContentsResponse: Schema.Codec<QueryDirectoryContentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     directoryEntries: Schema.optional(Schema.Array(DirectoryEntry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1979,7 +1979,7 @@ export interface QueryRepositoryDirectoryContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryRepositoryDirectoryContentsResponse: Schema.Schema<QueryRepositoryDirectoryContentsResponse> =
+export const QueryRepositoryDirectoryContentsResponse: Schema.Codec<QueryRepositoryDirectoryContentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     directoryEntries: Schema.optional(Schema.Array(DirectoryEntry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1987,7 +1987,7 @@ export const QueryRepositoryDirectoryContentsResponse: Schema.Schema<QueryReposi
 
 export interface CancelWorkflowInvocationResponse {}
 
-export const CancelWorkflowInvocationResponse: Schema.Schema<CancelWorkflowInvocationResponse> =
+export const CancelWorkflowInvocationResponse: Schema.Codec<CancelWorkflowInvocationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelWorkflowInvocationResponse",
   });
@@ -1997,7 +1997,7 @@ export interface DeleteTeamFolderTreeRequest {
   force?: boolean;
 }
 
-export const DeleteTeamFolderTreeRequest: Schema.Schema<DeleteTeamFolderTreeRequest> =
+export const DeleteTeamFolderTreeRequest: Schema.Codec<DeleteTeamFolderTreeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DeleteTeamFolderTreeRequest" });
@@ -2009,7 +2009,7 @@ export interface SearchFilesResponse {
   nextPageToken?: string;
 }
 
-export const SearchFilesResponse: Schema.Schema<SearchFilesResponse> =
+export const SearchFilesResponse: Schema.Codec<SearchFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchResults: Schema.optional(Schema.Array(SearchResult)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2017,14 +2017,14 @@ export const SearchFilesResponse: Schema.Schema<SearchFilesResponse> =
 
 export interface PullGitCommitsResponse {}
 
-export const PullGitCommitsResponse: Schema.Schema<PullGitCommitsResponse> =
+export const PullGitCommitsResponse: Schema.Codec<PullGitCommitsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PullGitCommitsResponse",
   });
 
 export interface MoveFileResponse {}
 
-export const MoveFileResponse: Schema.Schema<MoveFileResponse> =
+export const MoveFileResponse: Schema.Codec<MoveFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MoveFileResponse",
   });
@@ -2038,7 +2038,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2047,7 +2047,7 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface InstallNpmPackagesResponse {}
 
-export const InstallNpmPackagesResponse: Schema.Schema<InstallNpmPackagesResponse> =
+export const InstallNpmPackagesResponse: Schema.Codec<InstallNpmPackagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InstallNpmPackagesResponse",
   });
@@ -2059,7 +2059,7 @@ export interface MoveDirectoryRequest {
   newPath?: string;
 }
 
-export const MoveDirectoryRequest: Schema.Schema<MoveDirectoryRequest> =
+export const MoveDirectoryRequest: Schema.Codec<MoveDirectoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     newPath: Schema.optional(Schema.String),
@@ -2067,7 +2067,7 @@ export const MoveDirectoryRequest: Schema.Schema<MoveDirectoryRequest> =
 
 export interface MoveDirectoryResponse {}
 
-export const MoveDirectoryResponse: Schema.Schema<MoveDirectoryResponse> =
+export const MoveDirectoryResponse: Schema.Codec<MoveDirectoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MoveDirectoryResponse",
   });
@@ -2079,7 +2079,7 @@ export interface ResetWorkspaceChangesRequest {
   clean?: boolean;
 }
 
-export const ResetWorkspaceChangesRequest: Schema.Schema<ResetWorkspaceChangesRequest> =
+export const ResetWorkspaceChangesRequest: Schema.Codec<ResetWorkspaceChangesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     paths: Schema.optional(Schema.Array(Schema.String)),
     clean: Schema.optional(Schema.Boolean),
@@ -2092,7 +2092,7 @@ export interface IamPolicyOverrideView {
   isActive?: boolean;
 }
 
-export const IamPolicyOverrideView: Schema.Schema<IamPolicyOverrideView> =
+export const IamPolicyOverrideView: Schema.Codec<IamPolicyOverrideView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iamPolicyName: Schema.optional(PolicyName),
     isActive: Schema.optional(Schema.Boolean),
@@ -2100,7 +2100,7 @@ export const IamPolicyOverrideView: Schema.Schema<IamPolicyOverrideView> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -2110,7 +2110,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -2120,7 +2120,7 @@ export interface MakeDirectoryRequest {
   path?: string;
 }
 
-export const MakeDirectoryRequest: Schema.Schema<MakeDirectoryRequest> =
+export const MakeDirectoryRequest: Schema.Codec<MakeDirectoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "MakeDirectoryRequest" });
@@ -2130,7 +2130,7 @@ export interface ReadFileResponse {
   fileContents?: string;
 }
 
-export const ReadFileResponse: Schema.Schema<ReadFileResponse> =
+export const ReadFileResponse: Schema.Codec<ReadFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileContents: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReadFileResponse" });
@@ -2142,7 +2142,7 @@ export interface QueryFolderContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryFolderContentsResponse: Schema.Schema<QueryFolderContentsResponse> =
+export const QueryFolderContentsResponse: Schema.Codec<QueryFolderContentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(FolderContentsEntry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2153,7 +2153,7 @@ export interface MoveFolderRequest {
   destinationContainingFolder?: string;
 }
 
-export const MoveFolderRequest: Schema.Schema<MoveFolderRequest> =
+export const MoveFolderRequest: Schema.Codec<MoveFolderRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationContainingFolder: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveFolderRequest" });
@@ -2169,14 +2169,14 @@ export interface ComputeRepositoryAccessTokenStatusResponse {
     | (string & {});
 }
 
-export const ComputeRepositoryAccessTokenStatusResponse: Schema.Schema<ComputeRepositoryAccessTokenStatusResponse> =
+export const ComputeRepositoryAccessTokenStatusResponse: Schema.Codec<ComputeRepositoryAccessTokenStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComputeRepositoryAccessTokenStatusResponse" });
 
 export interface RemoveFileResponse {}
 
-export const RemoveFileResponse: Schema.Schema<RemoveFileResponse> =
+export const RemoveFileResponse: Schema.Codec<RemoveFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveFileResponse",
   });
@@ -2261,7 +2261,7 @@ export const QueryUserRootContentsProjectsLocationsRequest =
       path: "v1beta1/{+location}:queryUserRootContents",
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryUserRootContentsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<QueryUserRootContentsProjectsLocationsRequest>;
 
 export type QueryUserRootContentsProjectsLocationsResponse =
   QueryUserRootContentsResponse;
@@ -2314,7 +2314,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -2349,7 +2349,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -2380,7 +2380,7 @@ export const GetConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsLocationsRequest>;
 
 export type GetConfigProjectsLocationsResponse = Config;
 export const GetConfigProjectsLocationsResponse =
@@ -2420,7 +2420,7 @@ export const UpdateConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigProjectsLocationsRequest>;
 
 export type UpdateConfigProjectsLocationsResponse = Config;
 export const UpdateConfigProjectsLocationsResponse =
@@ -2466,7 +2466,7 @@ export const CreateProjectsLocationsFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsFoldersRequest>;
 
 export type CreateProjectsLocationsFoldersResponse = Folder;
 export const CreateProjectsLocationsFoldersResponse =
@@ -2514,7 +2514,7 @@ export const QueryFolderContentsProjectsLocationsFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+folder}:queryFolderContents" }),
     svc,
-  ) as unknown as Schema.Schema<QueryFolderContentsProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<QueryFolderContentsProjectsLocationsFoldersRequest>;
 
 export type QueryFolderContentsProjectsLocationsFoldersResponse =
   QueryFolderContentsResponse;
@@ -2560,7 +2560,7 @@ export const SetIamPolicyProjectsLocationsFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsFoldersRequest>;
 
 export type SetIamPolicyProjectsLocationsFoldersResponse = Policy;
 export const SetIamPolicyProjectsLocationsFoldersResponse =
@@ -2603,7 +2603,7 @@ export const DeleteTreeProjectsLocationsFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTreeProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteTreeProjectsLocationsFoldersRequest>;
 
 export type DeleteTreeProjectsLocationsFoldersResponse = Operation;
 export const DeleteTreeProjectsLocationsFoldersResponse =
@@ -2642,7 +2642,7 @@ export const MoveProjectsLocationsFoldersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<MoveProjectsLocationsFoldersRequest>;
 
 export type MoveProjectsLocationsFoldersResponse = Operation;
 export const MoveProjectsLocationsFoldersResponse =
@@ -2685,7 +2685,7 @@ export const TestIamPermissionsProjectsLocationsFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsFoldersRequest>;
 
 export type TestIamPermissionsProjectsLocationsFoldersResponse =
   TestIamPermissionsResponse;
@@ -2722,7 +2722,7 @@ export const GetProjectsLocationsFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsFoldersRequest>;
 
 export type GetProjectsLocationsFoldersResponse = Folder;
 export const GetProjectsLocationsFoldersResponse =
@@ -2762,7 +2762,7 @@ export const PatchProjectsLocationsFoldersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsFoldersRequest>;
 
 export type PatchProjectsLocationsFoldersResponse = Folder;
 export const PatchProjectsLocationsFoldersResponse =
@@ -2803,7 +2803,7 @@ export const GetIamPolicyProjectsLocationsFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsFoldersRequest>;
 
 export type GetIamPolicyProjectsLocationsFoldersResponse = Policy;
 export const GetIamPolicyProjectsLocationsFoldersResponse =
@@ -2837,7 +2837,7 @@ export const DeleteProjectsLocationsFoldersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsFoldersRequest>;
 
 export type DeleteProjectsLocationsFoldersResponse = Empty;
 export const DeleteProjectsLocationsFoldersResponse =
@@ -2873,7 +2873,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -2921,7 +2921,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -2959,7 +2959,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -2998,7 +2998,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -3041,7 +3041,7 @@ export const DeleteTreeProjectsLocationsTeamFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTreeProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteTreeProjectsLocationsTeamFoldersRequest>;
 
 export type DeleteTreeProjectsLocationsTeamFoldersResponse = Operation;
 export const DeleteTreeProjectsLocationsTeamFoldersResponse =
@@ -3084,7 +3084,7 @@ export const SetIamPolicyProjectsLocationsTeamFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsTeamFoldersRequest>;
 
 export type SetIamPolicyProjectsLocationsTeamFoldersResponse = Policy;
 export const SetIamPolicyProjectsLocationsTeamFoldersResponse =
@@ -3132,7 +3132,7 @@ export const CreateProjectsLocationsTeamFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTeamFoldersRequest>;
 
 export type CreateProjectsLocationsTeamFoldersResponse = TeamFolder;
 export const CreateProjectsLocationsTeamFoldersResponse =
@@ -3180,7 +3180,7 @@ export const QueryContentsProjectsLocationsTeamFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+teamFolder}:queryContents" }),
     svc,
-  ) as unknown as Schema.Schema<QueryContentsProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<QueryContentsProjectsLocationsTeamFoldersRequest>;
 
 export type QueryContentsProjectsLocationsTeamFoldersResponse =
   QueryTeamFolderContentsResponse;
@@ -3219,7 +3219,7 @@ export const DeleteProjectsLocationsTeamFoldersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTeamFoldersRequest>;
 
 export type DeleteProjectsLocationsTeamFoldersResponse = Empty;
 export const DeleteProjectsLocationsTeamFoldersResponse =
@@ -3255,7 +3255,7 @@ export const GetProjectsLocationsTeamFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTeamFoldersRequest>;
 
 export type GetProjectsLocationsTeamFoldersResponse = TeamFolder;
 export const GetProjectsLocationsTeamFoldersResponse =
@@ -3295,7 +3295,7 @@ export const PatchProjectsLocationsTeamFoldersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTeamFoldersRequest>;
 
 export type PatchProjectsLocationsTeamFoldersResponse = TeamFolder;
 export const PatchProjectsLocationsTeamFoldersResponse =
@@ -3336,7 +3336,7 @@ export const GetIamPolicyProjectsLocationsTeamFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsTeamFoldersRequest>;
 
 export type GetIamPolicyProjectsLocationsTeamFoldersResponse = Policy;
 export const GetIamPolicyProjectsLocationsTeamFoldersResponse =
@@ -3377,7 +3377,7 @@ export const TestIamPermissionsProjectsLocationsTeamFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsTeamFoldersRequest>;
 
 export type TestIamPermissionsProjectsLocationsTeamFoldersResponse =
   TestIamPermissionsResponse;
@@ -3426,7 +3426,7 @@ export const SearchProjectsLocationsTeamFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+location}/teamFolders:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsTeamFoldersRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsTeamFoldersRequest>;
 
 export type SearchProjectsLocationsTeamFoldersResponse =
   SearchTeamFoldersResponse;
@@ -3477,7 +3477,7 @@ export const CreateProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesRequest>;
 
 export type CreateProjectsLocationsRepositoriesResponse = Repository;
 export const CreateProjectsLocationsRepositoriesResponse =
@@ -3516,7 +3516,7 @@ export const CommitProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:commit", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CommitProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<CommitProjectsLocationsRepositoriesRequest>;
 
 export type CommitProjectsLocationsRepositoriesResponse =
   CommitRepositoryChangesResponse;
@@ -3556,7 +3556,7 @@ export const MoveProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<MoveProjectsLocationsRepositoriesRequest>;
 
 export type MoveProjectsLocationsRepositoriesResponse = Operation;
 export const MoveProjectsLocationsRepositoriesResponse =
@@ -3599,7 +3599,7 @@ export const TestIamPermissionsProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
 
 export type TestIamPermissionsProjectsLocationsRepositoriesResponse =
   TestIamPermissionsResponse;
@@ -3636,7 +3636,7 @@ export const GetProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesRequest>;
 
 export type GetProjectsLocationsRepositoriesResponse = Repository;
 export const GetProjectsLocationsRepositoriesResponse =
@@ -3676,7 +3676,7 @@ export const FetchHistoryProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:fetchHistory" }),
     svc,
-  ) as unknown as Schema.Schema<FetchHistoryProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<FetchHistoryProjectsLocationsRepositoriesRequest>;
 
 export type FetchHistoryProjectsLocationsRepositoriesResponse =
   FetchRepositoryHistoryResponse;
@@ -3715,7 +3715,7 @@ export const FetchRemoteBranchesProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:fetchRemoteBranches" }),
     svc,
-  ) as unknown as Schema.Schema<FetchRemoteBranchesProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<FetchRemoteBranchesProjectsLocationsRepositoriesRequest>;
 
 export type FetchRemoteBranchesProjectsLocationsRepositoriesResponse =
   FetchRemoteBranchesResponse;
@@ -3759,7 +3759,7 @@ export const DeleteLongRunningProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLongRunningProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<DeleteLongRunningProjectsLocationsRepositoriesRequest>;
 
 export type DeleteLongRunningProjectsLocationsRepositoriesResponse = Operation;
 export const DeleteLongRunningProjectsLocationsRepositoriesResponse =
@@ -3801,7 +3801,7 @@ export const ReadFileProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:readFile" }),
     svc,
-  ) as unknown as Schema.Schema<ReadFileProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<ReadFileProjectsLocationsRepositoriesRequest>;
 
 export type ReadFileProjectsLocationsRepositoriesResponse =
   ReadRepositoryFileResponse;
@@ -3839,7 +3839,7 @@ export const DeleteProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesRequest>;
 
 export type DeleteProjectsLocationsRepositoriesResponse = Empty;
 export const DeleteProjectsLocationsRepositoriesResponse =
@@ -3887,7 +3887,7 @@ export const QueryDirectoryContentsProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:queryDirectoryContents" }),
     svc,
-  ) as unknown as Schema.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<QueryDirectoryContentsProjectsLocationsRepositoriesRequest>;
 
 export type QueryDirectoryContentsProjectsLocationsRepositoriesResponse =
   QueryRepositoryDirectoryContentsResponse;
@@ -3926,7 +3926,7 @@ export const ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:computeAccessTokenStatus" }),
     svc,
-  ) as unknown as Schema.Schema<ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest>;
 
 export type ComputeAccessTokenStatusProjectsLocationsRepositoriesResponse =
   ComputeRepositoryAccessTokenStatusResponse;
@@ -3968,7 +3968,7 @@ export const SetIamPolicyProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 export type SetIamPolicyProjectsLocationsRepositoriesResponse = Policy;
 export const SetIamPolicyProjectsLocationsRepositoriesResponse =
@@ -4010,7 +4010,7 @@ export const PatchProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesRequest>;
 
 export type PatchProjectsLocationsRepositoriesResponse = Repository;
 export const PatchProjectsLocationsRepositoriesResponse =
@@ -4051,7 +4051,7 @@ export const GetIamPolicyProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 export type GetIamPolicyProjectsLocationsRepositoriesResponse = Policy;
 export const GetIamPolicyProjectsLocationsRepositoriesResponse =
@@ -4097,7 +4097,7 @@ export const ListProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/repositories" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesRequest>;
 
 export type ListProjectsLocationsRepositoriesResponse =
   ListRepositoriesResponse;
@@ -4141,7 +4141,7 @@ export const FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:fetchGitAheadBehind" }),
     svc,
-  ) as unknown as Schema.Schema<FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesResponse =
   FetchGitAheadBehindResponse;
@@ -4179,7 +4179,7 @@ export const ResetProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:reset", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResetProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<ResetProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type ResetProjectsLocationsRepositoriesWorkspacesResponse =
   ResetWorkspaceChangesResponse;
@@ -4222,7 +4222,7 @@ export const ReadFileProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+workspace}:readFile" }),
     svc,
-  ) as unknown as Schema.Schema<ReadFileProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<ReadFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type ReadFileProjectsLocationsRepositoriesWorkspacesResponse =
   ReadFileResponse;
@@ -4257,7 +4257,7 @@ export const DeleteProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type DeleteProjectsLocationsRepositoriesWorkspacesResponse = Empty;
 export const DeleteProjectsLocationsRepositoriesWorkspacesResponse =
@@ -4312,7 +4312,7 @@ export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesReques
       path: "v1beta1/{+workspace}:queryDirectoryContents",
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesResponse =
   QueryDirectoryContentsResponse;
@@ -4320,7 +4320,9 @@ export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRespon
   /*@__PURE__*/ /*#__PURE__*/ QueryDirectoryContentsResponse;
 
 export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the contents of a given Workspace directory. */
 export const queryDirectoryContentsProjectsLocationsRepositoriesWorkspaces: API.PaginatedOperationMethod<
@@ -4356,7 +4358,7 @@ export const TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type TestIamPermissionsProjectsLocationsRepositoriesWorkspacesResponse =
   TestIamPermissionsResponse;
@@ -4393,7 +4395,7 @@ export const GetProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type GetProjectsLocationsRepositoriesWorkspacesResponse = Workspace;
 export const GetProjectsLocationsRepositoriesWorkspacesResponse =
@@ -4430,7 +4432,7 @@ export const CommitProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:commit", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CommitProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<CommitProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type CommitProjectsLocationsRepositoriesWorkspacesResponse =
   CommitWorkspaceChangesResponse;
@@ -4476,7 +4478,7 @@ export const SearchFilesProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+workspace}:searchFiles" }),
     svc,
-  ) as unknown as Schema.Schema<SearchFilesProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<SearchFilesProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type SearchFilesProjectsLocationsRepositoriesWorkspacesResponse =
   SearchFilesResponse;
@@ -4515,7 +4517,7 @@ export const FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest 
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:fetchFileGitStatuses" }),
     svc,
-  ) as unknown as Schema.Schema<FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesResponse =
   FetchFileGitStatusesResponse;
@@ -4562,7 +4564,7 @@ export const CreateProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type CreateProjectsLocationsRepositoriesWorkspacesResponse = Workspace;
 export const CreateProjectsLocationsRepositoriesWorkspacesResponse =
@@ -4605,7 +4607,7 @@ export const MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type MoveDirectoryProjectsLocationsRepositoriesWorkspacesResponse =
   MoveDirectoryResponse;
@@ -4649,7 +4651,7 @@ export const MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type MakeDirectoryProjectsLocationsRepositoriesWorkspacesResponse =
   MakeDirectoryResponse;
@@ -4693,7 +4695,7 @@ export const RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type RemoveDirectoryProjectsLocationsRepositoriesWorkspacesResponse =
   RemoveDirectoryResponse;
@@ -4737,7 +4739,7 @@ export const InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesResponse =
   InstallNpmPackagesResponse;
@@ -4781,7 +4783,7 @@ export const WriteFileProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WriteFileProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<WriteFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type WriteFileProjectsLocationsRepositoriesWorkspacesResponse =
   WriteFileResponse;
@@ -4823,7 +4825,7 @@ export const GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type GetIamPolicyProjectsLocationsRepositoriesWorkspacesResponse =
   Policy;
@@ -4870,7 +4872,7 @@ export const ListProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/workspaces" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type ListProjectsLocationsRepositoriesWorkspacesResponse =
   ListWorkspacesResponse;
@@ -4912,7 +4914,7 @@ export const PushProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:push", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PushProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<PushProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type PushProjectsLocationsRepositoriesWorkspacesResponse =
   PushGitCommitsResponse;
@@ -4956,7 +4958,7 @@ export const RemoveFileProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<RemoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type RemoveFileProjectsLocationsRepositoriesWorkspacesResponse =
   RemoveFileResponse;
@@ -5000,7 +5002,7 @@ export const MoveFileProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<MoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type MoveFileProjectsLocationsRepositoriesWorkspacesResponse =
   MoveFileResponse;
@@ -5044,7 +5046,7 @@ export const SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type SetIamPolicyProjectsLocationsRepositoriesWorkspacesResponse =
   Policy;
@@ -5084,7 +5086,7 @@ export const PullProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:pull", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PullProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<PullProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type PullProjectsLocationsRepositoriesWorkspacesResponse =
   PullGitCommitsResponse;
@@ -5124,7 +5126,7 @@ export const FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+workspace}:fetchFileDiff" }),
     svc,
-  ) as unknown as Schema.Schema<FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest>;
+  ) as unknown as Schema.Codec<FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type FetchFileDiffProjectsLocationsRepositoriesWorkspacesResponse =
   FetchFileDiffResponse;
@@ -5166,7 +5168,7 @@ export const CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export type CreateProjectsLocationsRepositoriesWorkflowInvocationsResponse =
   WorkflowInvocation;
@@ -5215,7 +5217,7 @@ export const ListProjectsLocationsRepositoriesWorkflowInvocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/workflowInvocations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export type ListProjectsLocationsRepositoriesWorkflowInvocationsResponse =
   ListWorkflowInvocationsResponse;
@@ -5254,7 +5256,7 @@ export const GetProjectsLocationsRepositoriesWorkflowInvocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export type GetProjectsLocationsRepositoriesWorkflowInvocationsResponse =
   WorkflowInvocation;
@@ -5295,7 +5297,7 @@ export const QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:query" }),
     svc,
-  ) as unknown as Schema.Schema<QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+  ) as unknown as Schema.Codec<QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export type QueryProjectsLocationsRepositoriesWorkflowInvocationsResponse =
   QueryWorkflowInvocationActionsResponse;
@@ -5334,7 +5336,7 @@ export const DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export type DeleteProjectsLocationsRepositoriesWorkflowInvocationsResponse =
   Empty;
@@ -5374,7 +5376,7 @@ export const CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export type CancelProjectsLocationsRepositoriesWorkflowInvocationsResponse =
   CancelWorkflowInvocationResponse;
@@ -5411,7 +5413,7 @@ export const GetProjectsLocationsRepositoriesCompilationResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesCompilationResultsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export type GetProjectsLocationsRepositoriesCompilationResultsResponse =
   CompilationResult;
@@ -5455,7 +5457,7 @@ export const QueryProjectsLocationsRepositoriesCompilationResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}:query" }),
     svc,
-  ) as unknown as Schema.Schema<QueryProjectsLocationsRepositoriesCompilationResultsRequest>;
+  ) as unknown as Schema.Codec<QueryProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export type QueryProjectsLocationsRepositoriesCompilationResultsResponse =
   QueryCompilationResultActionsResponse;
@@ -5506,7 +5508,7 @@ export const ListProjectsLocationsRepositoriesCompilationResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/compilationResults" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesCompilationResultsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export type ListProjectsLocationsRepositoriesCompilationResultsResponse =
   ListCompilationResultsResponse;
@@ -5552,7 +5554,7 @@ export const CreateProjectsLocationsRepositoriesCompilationResultsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesCompilationResultsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export type CreateProjectsLocationsRepositoriesCompilationResultsResponse =
   CompilationResult;
@@ -5589,7 +5591,7 @@ export const GetProjectsLocationsRepositoriesWorkflowConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export type GetProjectsLocationsRepositoriesWorkflowConfigsResponse =
   WorkflowConfig;
@@ -5630,7 +5632,7 @@ export const PatchProjectsLocationsRepositoriesWorkflowConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export type PatchProjectsLocationsRepositoriesWorkflowConfigsResponse =
   WorkflowConfig;
@@ -5679,7 +5681,7 @@ export const CreateProjectsLocationsRepositoriesWorkflowConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export type CreateProjectsLocationsRepositoriesWorkflowConfigsResponse =
   WorkflowConfig;
@@ -5722,7 +5724,7 @@ export const ListProjectsLocationsRepositoriesWorkflowConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/workflowConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export type ListProjectsLocationsRepositoriesWorkflowConfigsResponse =
   ListWorkflowConfigsResponse;
@@ -5761,7 +5763,7 @@ export const DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export type DeleteProjectsLocationsRepositoriesWorkflowConfigsResponse = Empty;
 export const DeleteProjectsLocationsRepositoriesWorkflowConfigsResponse =
@@ -5797,7 +5799,7 @@ export const GetProjectsLocationsRepositoriesReleaseConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesReleaseConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export type GetProjectsLocationsRepositoriesReleaseConfigsResponse =
   ReleaseConfig;
@@ -5838,7 +5840,7 @@ export const PatchProjectsLocationsRepositoriesReleaseConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesReleaseConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export type PatchProjectsLocationsRepositoriesReleaseConfigsResponse =
   ReleaseConfig;
@@ -5881,7 +5883,7 @@ export const ListProjectsLocationsRepositoriesReleaseConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/releaseConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesReleaseConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export type ListProjectsLocationsRepositoriesReleaseConfigsResponse =
   ListReleaseConfigsResponse;
@@ -5932,7 +5934,7 @@ export const CreateProjectsLocationsRepositoriesReleaseConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesReleaseConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export type CreateProjectsLocationsRepositoriesReleaseConfigsResponse =
   ReleaseConfig;
@@ -5969,7 +5971,7 @@ export const DeleteProjectsLocationsRepositoriesReleaseConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesReleaseConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export type DeleteProjectsLocationsRepositoriesReleaseConfigsResponse = Empty;
 export const DeleteProjectsLocationsRepositoriesReleaseConfigsResponse =

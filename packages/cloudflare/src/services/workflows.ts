@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service workflows
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -81,6 +81,1167 @@ export class WorkflowNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Error2 {
+  message: string;
+  name: string;
+}
+const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    message: Schema.String,
+    name: Schema.String,
+  }),
+) as unknown as Schema.Codec<Error2>;
+
+interface Rollback {
+  error: { message: string; name: string } | null;
+  outcome: "complete" | "failed" | (string & {});
+}
+const Rollback = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    error: Schema.Union([Error2, Schema.Null]),
+    outcome: Schema.Union([
+      Schema.Literals(["complete", "failed"]),
+      Schema.String,
+    ]),
+  }),
+) as unknown as Schema.Codec<Rollback>;
+
+interface Attempt {
+  end: string | null;
+  error: { message: string; name: string } | null;
+  start: string;
+  success: boolean | null;
+}
+const Attempt = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    end: Schema.Union([Schema.String, Schema.Null]),
+    error: Schema.Union([Error2, Schema.Null]),
+    start: Schema.String,
+    success: Schema.Union([Schema.Boolean, Schema.Null]),
+  }),
+) as unknown as Schema.Codec<Attempt>;
+
+interface Retries {
+  /** Specifies the delay duration. */
+  delay: string | number;
+  limit: number;
+  backoff?: "constant" | "linear" | "exponential" | (string & {}) | null;
+}
+const Retries = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    delay: Schema.Union([Schema.String, Schema.Number]),
+    limit: Schema.Number,
+    backoff: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["constant", "linear", "exponential"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<Retries>;
+
+interface Config {
+  retries: {
+    delay: string | number;
+    limit: number;
+    backoff?: "constant" | "linear" | "exponential" | (string & {}) | null;
+  };
+  /** Specifies the timeout duration. */
+  timeout: unknown;
+  /** When set to 'output', step output is redacted from log and step output responses. */
+  sensitive?: "output" | null;
+}
+const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    retries: Retries,
+    timeout: Schema.Unknown,
+    sensitive: Schema.optional(
+      Schema.Union([Schema.Literal("output"), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<Config>;
+
+interface GetInstanceResponseStep {
+  attempts: {
+    end: string | null;
+    error: { message: string; name: string } | null;
+    start: string;
+    success: boolean | null;
+  }[];
+  config: {
+    retries: {
+      delay: string | number;
+      limit: number;
+      backoff?: "constant" | "linear" | "exponential" | (string & {}) | null;
+    };
+    timeout: unknown;
+    sensitive?: "output" | null;
+  };
+  end: string | null;
+  name: string;
+  output: string | null;
+  start: string;
+  success: boolean | null;
+  type: "step" | "rollback" | (string & {});
+}
+const GetInstanceResponseStep = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    attempts: Schema.Array(Attempt),
+    config: Config,
+    end: Schema.Union([Schema.String, Schema.Null]),
+    name: Schema.String,
+    output: Schema.Union([Schema.String, Schema.Null]),
+    start: Schema.String,
+    success: Schema.Union([Schema.Boolean, Schema.Null]),
+    type: Schema.Union([Schema.Literals(["step", "rollback"]), Schema.String]),
+  }),
+) as unknown as Schema.Codec<GetInstanceResponseStep>;
+
+interface GetInstanceResponseStep1 {
+  end: string;
+  error: { message: string; name: string } | null;
+  finished: boolean;
+  name: string;
+  start: string;
+  type: "sleep";
+}
+const GetInstanceResponseStep1 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      end: Schema.String,
+      error: Schema.Union([Error2, Schema.Null]),
+      finished: Schema.Boolean,
+      name: Schema.String,
+      start: Schema.String,
+      type: Schema.Literal("sleep"),
+    }),
+) as unknown as Schema.Codec<GetInstanceResponseStep1>;
+
+interface Trigger {
+  source: string;
+}
+const Trigger = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    source: Schema.String,
+  }),
+) as unknown as Schema.Codec<Trigger>;
+
+interface GetInstanceResponseStep2 {
+  trigger: { source: string };
+  type: "termination";
+}
+const GetInstanceResponseStep2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      trigger: Trigger,
+      type: Schema.Literal("termination"),
+    }),
+) as unknown as Schema.Codec<GetInstanceResponseStep2>;
+
+interface GetInstanceResponseStep3 {
+  end: string;
+  error: { message: string; name: string } | null;
+  finished: boolean;
+  name: string;
+  start: string;
+  type: "waitForEvent";
+  output?: string | null;
+}
+const GetInstanceResponseStep3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      end: Schema.String,
+      error: Schema.Union([Error2, Schema.Null]),
+      finished: Schema.Boolean,
+      name: Schema.String,
+      start: Schema.String,
+      type: Schema.Literal("waitForEvent"),
+      output: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<GetInstanceResponseStep3>;
+
+interface Trigger2 {
+  source: "unknown" | "api" | "binding" | "event" | "cron" | (string & {});
+}
+const Trigger2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    source: Schema.Union([
+      Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
+      Schema.String,
+    ]),
+  }),
+) as unknown as Schema.Codec<Trigger2>;
+
+interface Schedule {
+  cron: string;
+  scheduledTime: number;
+}
+const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cron: Schema.String,
+    scheduledTime: Schema.Number,
+  }),
+) as unknown as Schema.Codec<Schedule>;
+
+interface ListInstancesResponseResult {
+  id: string;
+  createdOn: string;
+  endedOn: string | null;
+  modifiedOn: string;
+  startedOn: string | null;
+  status:
+    | "queued"
+    | "running"
+    | "paused"
+    | "errored"
+    | "terminated"
+    | "complete"
+    | "waitingForPause"
+    | "waiting"
+    | "rollingBack"
+    | (string & {});
+  versionId: string;
+  workflowId: string;
+  triggerSource?:
+    | "unknown"
+    | "api"
+    | "binding"
+    | "event"
+    | "cron"
+    | (string & {})
+    | null;
+}
+const ListInstancesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      endedOn: Schema.Union([Schema.String, Schema.Null]),
+      modifiedOn: Schema.String,
+      startedOn: Schema.Union([Schema.String, Schema.Null]),
+      status: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "running",
+          "paused",
+          "errored",
+          "terminated",
+          "complete",
+          "waitingForPause",
+          "waiting",
+          "rollingBack",
+        ]),
+        Schema.String,
+      ]),
+      versionId: Schema.String,
+      workflowId: Schema.String,
+      triggerSource: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        endedOn: "ended_on",
+        modifiedOn: "modified_on",
+        startedOn: "started_on",
+        status: "status",
+        versionId: "version_id",
+        workflowId: "workflow_id",
+        triggerSource: "trigger_source",
+      }),
+    ),
+) as unknown as Schema.Codec<ListInstancesResponseResult>;
+
+interface ListInstancesResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListInstancesResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListInstancesResponseResultInfo>;
+
+interface InstanceRetention {
+  /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
+  errorRetention?: number | string | null;
+  /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
+  successRetention?: number | string | null;
+}
+const InstanceRetention = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errorRetention: Schema.optional(
+      Schema.Union([Schema.Union([Schema.Number, Schema.String]), Schema.Null]),
+    ),
+    successRetention: Schema.optional(
+      Schema.Union([Schema.Union([Schema.Number, Schema.String]), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      errorRetention: "error_retention",
+      successRetention: "success_retention",
+    }),
+  ),
+) as unknown as Schema.Codec<InstanceRetention>;
+
+interface Body {
+  instanceId?: string | null;
+  instanceRetention?: {
+    errorRetention?: number | string | null;
+    successRetention?: number | string | null;
+  } | null;
+  params?: unknown | null;
+}
+const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    instanceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    instanceRetention: Schema.optional(
+      Schema.Union([InstanceRetention, Schema.Null]),
+    ),
+    params: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      instanceId: "instance_id",
+      instanceRetention: "instance_retention",
+      params: "params",
+    }),
+  ),
+) as unknown as Schema.Codec<Body>;
+
+interface BulkInstanceResponseResult {
+  id: string;
+  status:
+    | "queued"
+    | "running"
+    | "paused"
+    | "errored"
+    | "terminated"
+    | "complete"
+    | "waitingForPause"
+    | "waiting"
+    | "rollingBack"
+    | (string & {});
+  versionId: string;
+  workflowId: string;
+  triggerSource?:
+    | "unknown"
+    | "api"
+    | "binding"
+    | "event"
+    | "cron"
+    | (string & {})
+    | null;
+}
+const BulkInstanceResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      status: Schema.Union([
+        Schema.Literals([
+          "queued",
+          "running",
+          "paused",
+          "errored",
+          "terminated",
+          "complete",
+          "waitingForPause",
+          "waiting",
+          "rollingBack",
+        ]),
+        Schema.String,
+      ]),
+      versionId: Schema.String,
+      workflowId: Schema.String,
+      triggerSource: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        status: "status",
+        versionId: "version_id",
+        workflowId: "workflow_id",
+        triggerSource: "trigger_source",
+      }),
+    ),
+) as unknown as Schema.Codec<BulkInstanceResponseResult>;
+
+interface From {
+  name: string;
+  count?: number | null;
+  type?: "do" | "sleep" | "waitForEvent" | (string & {}) | null;
+}
+const From = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["do", "sleep", "waitForEvent"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<From>;
+
+interface Limits {
+  steps?: number | null;
+}
+const Limits = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    steps: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Limits>;
+
+interface ListVersionsResponseResult {
+  id: string;
+  className: string;
+  createdOn: string;
+  hasDag: boolean;
+  /** The programming language of the workflow implementation */
+  language: "javascript" | "python" | (string & {});
+  modifiedOn: string;
+  workflowId: string;
+  limits?: { steps?: number | null } | null;
+}
+const ListVersionsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      className: Schema.String,
+      createdOn: Schema.String,
+      hasDag: Schema.Boolean,
+      language: Schema.Union([
+        Schema.Literals(["javascript", "python"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.String,
+      workflowId: Schema.String,
+      limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        className: "class_name",
+        createdOn: "created_on",
+        hasDag: "has_dag",
+        language: "language",
+        modifiedOn: "modified_on",
+        workflowId: "workflow_id",
+        limits: "limits",
+      }),
+    ),
+) as unknown as Schema.Codec<ListVersionsResponseResult>;
+
+interface GraphVersionResponseGraphWorkflowNode {
+  /** Duration as milliseconds (number) or human-readable string. */
+  duration: number | string;
+  name: string;
+  type: "step_sleep";
+  resolves?: number | null;
+  starts?: number | null;
+}
+const GraphVersionResponseGraphWorkflowNode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      duration: Schema.Union([Schema.Number, Schema.String]),
+      name: Schema.String,
+      type: Schema.Literal("step_sleep"),
+      resolves: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      starts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode>;
+
+interface Retries2 {
+  /** Backoff strategy for step retries. */
+  backoff: "constant" | "linear" | "exponential" | (string & {});
+  /** Duration as milliseconds (number) or human-readable string. */
+  delay: number | string;
+  limit: number;
+}
+const Retries2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    backoff: Schema.Union([
+      Schema.Literals(["constant", "linear", "exponential"]),
+      Schema.String,
+    ]),
+    delay: Schema.Union([Schema.Number, Schema.String]),
+    limit: Schema.Number,
+  }),
+) as unknown as Schema.Codec<Retries2>;
+
+interface Config2 {
+  /** Retry policy for a step. */
+  retries: {
+    backoff: "constant" | "linear" | "exponential" | (string & {});
+    delay: number | string;
+    limit: number;
+  };
+  /** Duration as milliseconds (number) or human-readable string. */
+  timeout: number | string;
+}
+const Config2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    retries: Retries2,
+    timeout: Schema.Union([Schema.Number, Schema.String]),
+  }),
+) as unknown as Schema.Codec<Config2>;
+
+interface GraphVersionResponseGraphWorkflowNode1 {
+  /** Configuration for a step (retries and timeout). */
+  config: {
+    retries: {
+      backoff: "constant" | "linear" | "exponential" | (string & {});
+      delay: number | string;
+      limit: number;
+    };
+    timeout: number | string;
+  };
+  name: string;
+  /** Child nodes (recursive). */
+  nodes: unknown[];
+  type: "step_do";
+  resolves?: number | null;
+  starts?: number | null;
+}
+const GraphVersionResponseGraphWorkflowNode1 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      config: Config2,
+      name: Schema.String,
+      nodes: Schema.Array(Schema.Unknown),
+      type: Schema.Literal("step_do"),
+      resolves: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      starts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode1>;
+
+interface Options {
+  eventType: string;
+  /** Duration as milliseconds (number) or human-readable string. */
+  timeout: number | string;
+}
+const Options = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    eventType: Schema.String,
+    timeout: Schema.Union([Schema.Number, Schema.String]),
+  }).pipe(Schema.encodeKeys({ eventType: "event_type", timeout: "timeout" })),
+) as unknown as Schema.Codec<Options>;
+
+interface Type {
+  type: "unknown";
+}
+const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.Literal("unknown"),
+  }),
+) as unknown as Schema.Codec<Type>;
+
+interface GraphVersionResponseGraphWorkflowNode2Payload1 {
+  /** Nested JsonShape fields (recursive structure). */
+  fields: Record<string, unknown>;
+  type: "object";
+}
+const GraphVersionResponseGraphWorkflowNode2Payload1 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      fields: Schema.Record(Schema.String, Schema.Unknown),
+      type: Schema.Literal("object"),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode2Payload1>;
+
+interface GraphVersionResponseGraphWorkflowNode2 {
+  name: string;
+  /** Options for a waitForEvent step. */
+  options: { eventType: string; timeout: number | string } | null;
+  type: "step_wait_for_event";
+  /** Shape descriptor for JSON payloads. */
+  payload?:
+    | { type: "unknown" }
+    | { fields: Record<string, unknown>; type: "object" }
+    | null;
+  resolves?: number | null;
+  starts?: number | null;
+}
+const GraphVersionResponseGraphWorkflowNode2 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      options: Schema.Union([Options, Schema.Null]),
+      type: Schema.Literal("step_wait_for_event"),
+      payload: Schema.optional(
+        Schema.Union([
+          Schema.Union([GraphVersionResponseGraphWorkflowNode2Payload1, Type]),
+          Schema.Null,
+        ]),
+      ),
+      resolves: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      starts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode2>;
+
+interface GraphVersionResponseGraphWorkflowNode3 {
+  name: string;
+  timestamp: string;
+  type: "step_sleep_until";
+  resolves?: number | null;
+  starts?: number | null;
+}
+const GraphVersionResponseGraphWorkflowNode3 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      timestamp: Schema.String,
+      type: Schema.Literal("step_sleep_until"),
+      resolves: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      starts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode3>;
+
+interface GraphVersionResponseGraphWorkflowNode4 {
+  /** Child nodes (recursive). */
+  nodes: unknown[];
+  type: "loop";
+}
+const GraphVersionResponseGraphWorkflowNode4 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      nodes: Schema.Array(Schema.Unknown),
+      type: Schema.Literal("loop"),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode4>;
+
+interface GraphVersionResponseGraphWorkflowNode5 {
+  /** Parallel execution strategy. */
+  kind: "all" | "any" | "all_settled" | "race" | (string & {});
+  /** Child nodes (recursive). */
+  nodes: unknown[];
+  type: "parallel";
+}
+const GraphVersionResponseGraphWorkflowNode5 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.Union([
+        Schema.Literals(["all", "any", "all_settled", "race"]),
+        Schema.String,
+      ]),
+      nodes: Schema.Array(Schema.Unknown),
+      type: Schema.Literal("parallel"),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode5>;
+
+interface CatchBlock {
+  /** Child nodes (recursive). */
+  nodes: unknown[];
+  type: "block";
+}
+const CatchBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    nodes: Schema.Array(Schema.Unknown),
+    type: Schema.Literal("block"),
+  }),
+) as unknown as Schema.Codec<CatchBlock>;
+
+interface GraphVersionResponseGraphWorkflowNode6 {
+  catchBlock: { nodes: unknown[]; type: "block" } | null;
+  finallyBlock: { nodes: unknown[]; type: "block" } | null;
+  tryBlock: { nodes: unknown[]; type: "block" } | null;
+  type: "try";
+}
+const GraphVersionResponseGraphWorkflowNode6 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      catchBlock: Schema.Union([CatchBlock, Schema.Null]),
+      finallyBlock: Schema.Union([CatchBlock, Schema.Null]),
+      tryBlock: Schema.Union([CatchBlock, Schema.Null]),
+      type: Schema.Literal("try"),
+    }).pipe(
+      Schema.encodeKeys({
+        catchBlock: "catch_block",
+        finallyBlock: "finally_block",
+        tryBlock: "try_block",
+        type: "type",
+      }),
+    ),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode6>;
+
+interface Branch {
+  condition: string | null;
+  /** Child nodes (recursive). */
+  nodes: unknown[];
+}
+const Branch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    condition: Schema.Union([Schema.String, Schema.Null]),
+    nodes: Schema.Array(Schema.Unknown),
+  }),
+) as unknown as Schema.Codec<Branch>;
+
+interface GraphVersionResponseGraphWorkflowNode8 {
+  branches: { condition: string | null; nodes: unknown[] }[];
+  type: "if";
+}
+const GraphVersionResponseGraphWorkflowNode8 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      branches: Schema.Array(Branch),
+      type: Schema.Literal("if"),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode8>;
+
+interface GraphVersionResponseGraphWorkflowNode9 {
+  branches: { condition: string | null; nodes: unknown[] }[];
+  discriminant: string;
+  type: "switch";
+}
+const GraphVersionResponseGraphWorkflowNode9 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      branches: Schema.Array(Branch),
+      discriminant: Schema.String,
+      type: Schema.Literal("switch"),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode9>;
+
+interface GraphVersionResponseGraphWorkflowNode10 {
+  className: string;
+  functions: Record<string, unknown>;
+  /** Child nodes (recursive). */
+  nodes: unknown[];
+  type: "start";
+  /** Shape descriptor for JSON payloads. */
+  payload?:
+    | { type: "unknown" }
+    | { fields: Record<string, unknown>; type: "object" }
+    | null;
+}
+const GraphVersionResponseGraphWorkflowNode10 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      className: Schema.String,
+      functions: Schema.Record(Schema.String, Schema.Unknown),
+      nodes: Schema.Array(Schema.Unknown),
+      type: Schema.Literal("start"),
+      payload: Schema.optional(
+        Schema.Union([
+          Schema.Union([GraphVersionResponseGraphWorkflowNode2Payload1, Type]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        className: "class_name",
+        functions: "functions",
+        nodes: "nodes",
+        type: "type",
+        payload: "payload",
+      }),
+    ),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode10>;
+
+interface GraphVersionResponseGraphWorkflowNode11 {
+  name: string;
+  type: "function_call";
+  resolves?: number | null;
+  starts?: number | null;
+}
+const GraphVersionResponseGraphWorkflowNode11 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literal("function_call"),
+      resolves: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      starts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode11>;
+
+interface GraphVersionResponseGraphWorkflowNode12 {
+  name: string;
+  /** Child nodes (recursive). */
+  nodes: unknown[];
+  type: "function_def";
+}
+const GraphVersionResponseGraphWorkflowNode12 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      nodes: Schema.Array(Schema.Unknown),
+      type: Schema.Literal("function_def"),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode12>;
+
+interface GraphVersionResponseGraphWorkflowNode13 {
+  /** Break or return from a loop. */
+  kind: "break" | "return" | (string & {});
+  type: "break";
+}
+const GraphVersionResponseGraphWorkflowNode13 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.Union([Schema.Literals(["break", "return"]), Schema.String]),
+      type: Schema.Literal("break"),
+    }),
+  ) as unknown as Schema.Codec<GraphVersionResponseGraphWorkflowNode13>;
+
+interface Workflow {
+  className: string;
+  functions: Record<string, unknown>;
+  nodes: (
+    | {
+        duration: number | string;
+        name: string;
+        type: "step_sleep";
+        resolves?: number | null;
+        starts?: number | null;
+      }
+    | {
+        config: {
+          retries: {
+            backoff: "constant" | "linear" | "exponential" | (string & {});
+            delay: number | string;
+            limit: number;
+          };
+          timeout: number | string;
+        };
+        name: string;
+        nodes: unknown[];
+        type: "step_do";
+        resolves?: number | null;
+        starts?: number | null;
+      }
+    | {
+        name: string;
+        options: { eventType: string; timeout: number | string } | null;
+        type: "step_wait_for_event";
+        payload?:
+          | { type: "unknown" }
+          | { fields: Record<string, unknown>; type: "object" }
+          | null;
+        resolves?: number | null;
+        starts?: number | null;
+      }
+    | {
+        name: string;
+        timestamp: string;
+        type: "step_sleep_until";
+        resolves?: number | null;
+        starts?: number | null;
+      }
+    | { nodes: unknown[]; type: "loop" }
+    | {
+        kind: "all" | "any" | "all_settled" | "race" | (string & {});
+        nodes: unknown[];
+        type: "parallel";
+      }
+    | {
+        catchBlock: { nodes: unknown[]; type: "block" } | null;
+        finallyBlock: { nodes: unknown[]; type: "block" } | null;
+        tryBlock: { nodes: unknown[]; type: "block" } | null;
+        type: "try";
+      }
+    | { nodes: unknown[]; type: "block" }
+    | { branches: { condition: string | null; nodes: unknown[] }[]; type: "if" }
+    | {
+        branches: { condition: string | null; nodes: unknown[] }[];
+        discriminant: string;
+        type: "switch";
+      }
+    | {
+        className: string;
+        functions: Record<string, unknown>;
+        nodes: unknown[];
+        type: "start";
+        payload?:
+          | { type: "unknown" }
+          | { fields: Record<string, unknown>; type: "object" }
+          | null;
+      }
+    | {
+        name: string;
+        type: "function_call";
+        resolves?: number | null;
+        starts?: number | null;
+      }
+    | { name: string; nodes: unknown[]; type: "function_def" }
+    | { kind: "break" | "return" | (string & {}); type: "break" }
+  )[];
+  /** Shape descriptor for JSON payloads. */
+  payload?:
+    | { type: "unknown" }
+    | { fields: Record<string, unknown>; type: "object" }
+    | null;
+}
+const Workflow = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    className: Schema.String,
+    functions: Schema.Record(Schema.String, Schema.Unknown),
+    nodes: Schema.Array(
+      Schema.Union([
+        GraphVersionResponseGraphWorkflowNode1,
+        GraphVersionResponseGraphWorkflowNode6,
+        GraphVersionResponseGraphWorkflowNode10,
+        GraphVersionResponseGraphWorkflowNode,
+        GraphVersionResponseGraphWorkflowNode2,
+        GraphVersionResponseGraphWorkflowNode3,
+        GraphVersionResponseGraphWorkflowNode5,
+        GraphVersionResponseGraphWorkflowNode9,
+        GraphVersionResponseGraphWorkflowNode12,
+        GraphVersionResponseGraphWorkflowNode4,
+        CatchBlock,
+        GraphVersionResponseGraphWorkflowNode8,
+        GraphVersionResponseGraphWorkflowNode11,
+        GraphVersionResponseGraphWorkflowNode13,
+      ]),
+    ),
+    payload: Schema.optional(
+      Schema.Union([
+        Schema.Union([GraphVersionResponseGraphWorkflowNode2Payload1, Type]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      className: "class_name",
+      functions: "functions",
+      nodes: "nodes",
+      payload: "payload",
+    }),
+  ),
+) as unknown as Schema.Codec<Workflow>;
+
+interface Graph {
+  version: number;
+  /** A parsed workflow entrypoint with its step graph. */
+  workflow: {
+    className: string;
+    functions: Record<string, unknown>;
+    nodes: (
+      | {
+          duration: number | string;
+          name: string;
+          type: "step_sleep";
+          resolves?: number | null;
+          starts?: number | null;
+        }
+      | {
+          config: {
+            retries: {
+              backoff: "constant" | "linear" | "exponential" | (string & {});
+              delay: number | string;
+              limit: number;
+            };
+            timeout: number | string;
+          };
+          name: string;
+          nodes: unknown[];
+          type: "step_do";
+          resolves?: number | null;
+          starts?: number | null;
+        }
+      | {
+          name: string;
+          options: { eventType: string; timeout: number | string } | null;
+          type: "step_wait_for_event";
+          payload?:
+            | { type: "unknown" }
+            | { fields: Record<string, unknown>; type: "object" }
+            | null;
+          resolves?: number | null;
+          starts?: number | null;
+        }
+      | {
+          name: string;
+          timestamp: string;
+          type: "step_sleep_until";
+          resolves?: number | null;
+          starts?: number | null;
+        }
+      | { nodes: unknown[]; type: "loop" }
+      | {
+          kind: "all" | "any" | "all_settled" | "race" | (string & {});
+          nodes: unknown[];
+          type: "parallel";
+        }
+      | {
+          catchBlock: { nodes: unknown[]; type: "block" } | null;
+          finallyBlock: { nodes: unknown[]; type: "block" } | null;
+          tryBlock: { nodes: unknown[]; type: "block" } | null;
+          type: "try";
+        }
+      | { nodes: unknown[]; type: "block" }
+      | {
+          branches: { condition: string | null; nodes: unknown[] }[];
+          type: "if";
+        }
+      | {
+          branches: { condition: string | null; nodes: unknown[] }[];
+          discriminant: string;
+          type: "switch";
+        }
+      | {
+          className: string;
+          functions: Record<string, unknown>;
+          nodes: unknown[];
+          type: "start";
+          payload?:
+            | { type: "unknown" }
+            | { fields: Record<string, unknown>; type: "object" }
+            | null;
+        }
+      | {
+          name: string;
+          type: "function_call";
+          resolves?: number | null;
+          starts?: number | null;
+        }
+      | { name: string; nodes: unknown[]; type: "function_def" }
+      | { kind: "break" | "return" | (string & {}); type: "break" }
+    )[];
+    payload?:
+      | { type: "unknown" }
+      | { fields: Record<string, unknown>; type: "object" }
+      | null;
+  };
+}
+const Graph = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    version: Schema.Number,
+    workflow: Workflow,
+  }),
+) as unknown as Schema.Codec<Graph>;
+
+interface Instances {
+  complete?: number | null;
+  errored?: number | null;
+  paused?: number | null;
+  queued?: number | null;
+  rollingBack?: number | null;
+  running?: number | null;
+  terminated?: number | null;
+  waiting?: number | null;
+  waitingForPause?: number | null;
+}
+const Instances = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    complete: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    errored: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    paused: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    queued: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    rollingBack: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    running: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    terminated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    waiting: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    waitingForPause: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<Instances>;
+
+interface Schedule2 {
+  cron: string;
+  nextInstance: string;
+}
+const Schedule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cron: Schema.String,
+    nextInstance: Schema.String,
+  }).pipe(Schema.encodeKeys({ cron: "cron", nextInstance: "next_instance" })),
+) as unknown as Schema.Codec<Schedule2>;
+
+interface ListWorkflowsResponseResult {
+  id: string;
+  className?: string | null;
+  createdOn: string;
+  instances?: {
+    complete?: number | null;
+    errored?: number | null;
+    paused?: number | null;
+    queued?: number | null;
+    rollingBack?: number | null;
+    running?: number | null;
+    terminated?: number | null;
+    waiting?: number | null;
+    waitingForPause?: number | null;
+  } | null;
+  modifiedOn: string;
+  name: string;
+  scriptName: string;
+  triggeredOn: string | null;
+  schedules?: { cron: string; nextInstance: string }[] | null;
+}
+const ListWorkflowsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      className: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.String,
+      instances: Schema.optional(Schema.Union([Instances, Schema.Null])),
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      scriptName: Schema.String,
+      triggeredOn: Schema.Union([Schema.String, Schema.Null]),
+      schedules: Schema.optional(
+        Schema.Union([Schema.Array(Schedule2), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        className: "class_name",
+        createdOn: "created_on",
+        instances: "instances",
+        modifiedOn: "modified_on",
+        name: "name",
+        scriptName: "script_name",
+        triggeredOn: "triggered_on",
+        schedules: "schedules",
+      }),
+    ),
+) as unknown as Schema.Codec<ListWorkflowsResponseResult>;
+
+interface Schedule3 {
+  cron: string;
+}
+const Schedule3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cron: Schema.String,
+  }),
+) as unknown as Schema.Codec<Schedule3>;
+
+// =============================================================================
 // Instance
 // =============================================================================
 
@@ -92,7 +1253,7 @@ export interface GetInstanceRequest {
   /** Query param: Step ordering: "asc" (default, oldest first) or "desc" (newest first). */
   order?: "asc" | "desc" | (string & {});
   /** Query param: When true, omits step details and returns only metadata with step_count. */
-  simple?: true | false;
+  simple?: boolean;
 }
 
 export const GetInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
@@ -104,16 +1265,14 @@ export const GetInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       order: Schema.optional(
         Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
       ).pipe(T.HttpQuery("order")),
-      simple: Schema.optional(Schema.Literals([true, false])).pipe(
-        T.HttpQuery("simple"),
-      ),
+      simple: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("simple")),
     }).pipe(
       T.Http({
         method: "GET",
         path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}",
       }),
     ),
-) as unknown as Schema.Schema<GetInstanceRequest>;
+) as unknown as Schema.Codec<GetInstanceRequest>;
 
 export interface GetInstanceResponse {
   end: string | null;
@@ -198,32 +1357,11 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       end: Schema.Union([Schema.String, Schema.Null]),
-      error: Schema.Union([
-        Schema.Struct({
-          message: Schema.String,
-          name: Schema.String,
-        }),
-        Schema.Null,
-      ]),
+      error: Schema.Union([Error2, Schema.Null]),
       output: Schema.Union([Schema.String, Schema.Number, Schema.Null]),
       params: Schema.Unknown,
       queued: Schema.String,
-      rollback: Schema.Union([
-        Schema.Struct({
-          error: Schema.Union([
-            Schema.Struct({
-              message: Schema.String,
-              name: Schema.String,
-            }),
-            Schema.Null,
-          ]),
-          outcome: Schema.Union([
-            Schema.Literals(["complete", "failed"]),
-            Schema.String,
-          ]),
-        }),
-        Schema.Null,
-      ]),
+      rollback: Schema.Union([Rollback, Schema.Null]),
       start: Schema.Union([Schema.String, Schema.Null]),
       status: Schema.Union([
         Schema.Literals([
@@ -242,104 +1380,16 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       stepCount: Schema.Number,
       steps: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            attempts: Schema.Array(
-              Schema.Struct({
-                end: Schema.Union([Schema.String, Schema.Null]),
-                error: Schema.Union([
-                  Schema.Struct({
-                    message: Schema.String,
-                    name: Schema.String,
-                  }),
-                  Schema.Null,
-                ]),
-                start: Schema.String,
-                success: Schema.Union([Schema.Boolean, Schema.Null]),
-              }),
-            ),
-            config: Schema.Struct({
-              retries: Schema.Struct({
-                delay: Schema.Union([Schema.String, Schema.Number]),
-                limit: Schema.Number,
-                backoff: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["constant", "linear", "exponential"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-              }),
-              timeout: Schema.Unknown,
-              sensitive: Schema.optional(
-                Schema.Union([Schema.Literal("output"), Schema.Null]),
-              ),
-            }),
-            end: Schema.Union([Schema.String, Schema.Null]),
-            name: Schema.String,
-            output: Schema.Union([Schema.String, Schema.Null]),
-            start: Schema.String,
-            success: Schema.Union([Schema.Boolean, Schema.Null]),
-            type: Schema.Union([
-              Schema.Literals(["step", "rollback"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Struct({
-            end: Schema.String,
-            error: Schema.Union([
-              Schema.Struct({
-                message: Schema.String,
-                name: Schema.String,
-              }),
-              Schema.Null,
-            ]),
-            finished: Schema.Boolean,
-            name: Schema.String,
-            start: Schema.String,
-            type: Schema.Literal("sleep"),
-          }),
-          Schema.Struct({
-            end: Schema.String,
-            error: Schema.Union([
-              Schema.Struct({
-                message: Schema.String,
-                name: Schema.String,
-              }),
-              Schema.Null,
-            ]),
-            finished: Schema.Boolean,
-            name: Schema.String,
-            start: Schema.String,
-            type: Schema.Literal("waitForEvent"),
-            output: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Struct({
-            trigger: Schema.Struct({
-              source: Schema.String,
-            }),
-            type: Schema.Literal("termination"),
-          }),
+          GetInstanceResponseStep,
+          GetInstanceResponseStep1,
+          GetInstanceResponseStep3,
+          GetInstanceResponseStep2,
         ]),
       ),
       success: Schema.Union([Schema.Boolean, Schema.Null]),
-      trigger: Schema.Struct({
-        source: Schema.Union([
-          Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
-          Schema.String,
-        ]),
-      }),
+      trigger: Trigger2,
       versionId: Schema.String,
-      schedule: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            cron: Schema.String,
-            scheduledTime: Schema.Number,
-          }),
-          Schema.Null,
-        ]),
-      ),
+      schedule: Schema.optional(Schema.Union([Schedule, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -360,7 +1410,7 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetInstanceResponse>;
+) as unknown as Schema.Codec<GetInstanceResponse>;
 
 export type GetInstanceError =
   | DefaultErrors
@@ -442,7 +1492,7 @@ export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}/instances",
       }),
     ),
-) as unknown as Schema.Schema<ListInstancesRequest>;
+) as unknown as Schema.Codec<ListInstancesRequest>;
 
 export interface ListInstancesResponse {
   result: {
@@ -484,76 +1534,12 @@ export interface ListInstancesResponse {
 export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          createdOn: Schema.String,
-          endedOn: Schema.Union([Schema.String, Schema.Null]),
-          modifiedOn: Schema.String,
-          startedOn: Schema.Union([Schema.String, Schema.Null]),
-          status: Schema.Union([
-            Schema.Literals([
-              "queued",
-              "running",
-              "paused",
-              "errored",
-              "terminated",
-              "complete",
-              "waitingForPause",
-              "waiting",
-              "rollingBack",
-            ]),
-            Schema.String,
-          ]),
-          versionId: Schema.String,
-          workflowId: Schema.String,
-          triggerSource: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdOn: "created_on",
-            endedOn: "ended_on",
-            modifiedOn: "modified_on",
-            startedOn: "started_on",
-            status: "status",
-            versionId: "version_id",
-            workflowId: "workflow_id",
-            triggerSource: "trigger_source",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListInstancesResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListInstancesResponse>;
+) as unknown as Schema.Codec<ListInstancesResponse>;
 
 export type ListInstancesError =
   | DefaultErrors
@@ -601,21 +1587,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       instanceId: Schema.optional(Schema.String),
-      instanceRetention: Schema.optional(
-        Schema.Struct({
-          errorRetention: Schema.optional(
-            Schema.Union([Schema.Number, Schema.String]),
-          ),
-          successRetention: Schema.optional(
-            Schema.Union([Schema.Number, Schema.String]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            errorRetention: "error_retention",
-            successRetention: "success_retention",
-          }),
-        ),
-      ),
+      instanceRetention: Schema.optional(InstanceRetention),
       params: Schema.optional(Schema.Unknown),
     }).pipe(
       Schema.encodeKeys({
@@ -628,7 +1600,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}/instances",
       }),
     ),
-) as unknown as Schema.Schema<CreateInstanceRequest>;
+) as unknown as Schema.Codec<CreateInstanceRequest>;
 
 export interface CreateInstanceResponse {
   id: string;
@@ -695,7 +1667,7 @@ export const CreateInstanceResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateInstanceResponse>;
+  ) as unknown as Schema.Codec<CreateInstanceResponse>;
 
 export type CreateInstanceError =
   | DefaultErrors
@@ -735,42 +1707,14 @@ export const BulkInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            instanceId: Schema.optional(Schema.String),
-            instanceRetention: Schema.optional(
-              Schema.Struct({
-                errorRetention: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.String]),
-                ),
-                successRetention: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.String]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  errorRetention: "error_retention",
-                  successRetention: "success_retention",
-                }),
-              ),
-            ),
-            params: Schema.optional(Schema.Unknown),
-          }).pipe(
-            Schema.encodeKeys({
-              instanceId: "instance_id",
-              instanceRetention: "instance_retention",
-              params: "params",
-            }),
-          ),
-        ),
-      ).pipe(T.HttpBody()),
+      body: Schema.optional(Schema.Array(Body)).pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/workflows/{workflowName}/instances/batch",
       }),
     ),
-) as unknown as Schema.Schema<BulkInstanceRequest>;
+) as unknown as Schema.Codec<BulkInstanceRequest>;
 
 export interface BulkInstanceResponse {
   result: {
@@ -802,46 +1746,9 @@ export interface BulkInstanceResponse {
 export const BulkInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          status: Schema.Union([
-            Schema.Literals([
-              "queued",
-              "running",
-              "paused",
-              "errored",
-              "terminated",
-              "complete",
-              "waitingForPause",
-              "waiting",
-              "rollingBack",
-            ]),
-            Schema.String,
-          ]),
-          versionId: Schema.String,
-          workflowId: Schema.String,
-          triggerSource: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            status: "status",
-            versionId: "version_id",
-            workflowId: "workflow_id",
-            triggerSource: "trigger_source",
-          }),
-        ),
-      ),
+      result: Schema.Array(BulkInstanceResponseResult),
     }),
-) as unknown as Schema.Schema<BulkInstanceResponse>;
+) as unknown as Schema.Codec<BulkInstanceResponse>;
 
 export type BulkInstanceError =
   | DefaultErrors
@@ -896,7 +1803,7 @@ export const StepInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/step",
       }),
     ),
-) as unknown as Schema.Schema<StepInstanceRequest>;
+) as unknown as Schema.Codec<StepInstanceRequest>;
 
 export interface StepInstanceResponse {
   /** Error details when status='errored'; null otherwise. */
@@ -919,13 +1826,7 @@ export interface StepInstanceResponse {
 export const StepInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      error: Schema.Union([
-        Schema.Struct({
-          message: Schema.String,
-          name: Schema.String,
-        }),
-        Schema.Null,
-      ]),
+      error: Schema.Union([Error2, Schema.Null]),
       status: Schema.Union([
         Schema.Literals([
           "queued",
@@ -942,7 +1843,7 @@ export const StepInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ]),
       output: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<StepInstanceResponse>;
+) as unknown as Schema.Codec<StepInstanceResponse>;
 
 export type StepInstanceError = DefaultErrors;
 
@@ -985,14 +1886,14 @@ export const CreateInstanceEventRequest =
         path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/events/{eventType}",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateInstanceEventRequest>;
+  ) as unknown as Schema.Codec<CreateInstanceEventRequest>;
 
 export type CreateInstanceEventResponse = unknown;
 
 export const CreateInstanceEventResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateInstanceEventResponse>;
+  ) as unknown as Schema.Codec<CreateInstanceEventResponse>;
 
 export type CreateInstanceEventError =
   | DefaultErrors
@@ -1044,25 +1945,14 @@ export const PatchInstanceStatusRequest =
         Schema.String,
       ]),
       rollback: Schema.optional(Schema.Boolean),
-      from: Schema.optional(
-        Schema.Struct({
-          name: Schema.String,
-          count: Schema.optional(Schema.Number),
-          type: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["do", "sleep", "waitForEvent"]),
-              Schema.String,
-            ]),
-          ),
-        }),
-      ),
+      from: Schema.optional(From),
     }).pipe(
       T.Http({
         method: "PATCH",
         path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/status",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchInstanceStatusRequest>;
+  ) as unknown as Schema.Codec<PatchInstanceStatusRequest>;
 
 export interface PatchInstanceStatusResponse {
   status:
@@ -1099,7 +1989,7 @@ export const PatchInstanceStatusResponse =
       ]),
       timestamp: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchInstanceStatusResponse>;
+  ) as unknown as Schema.Codec<PatchInstanceStatusResponse>;
 
 export type PatchInstanceStatusError =
   | DefaultErrors
@@ -1146,7 +2036,7 @@ export const GetVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}/versions/{versionId}",
       }),
     ),
-) as unknown as Schema.Schema<GetVersionRequest>;
+) as unknown as Schema.Codec<GetVersionRequest>;
 
 export interface GetVersionResponse {
   id: string;
@@ -1173,14 +2063,7 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ]),
       modifiedOn: Schema.String,
       workflowId: Schema.String,
-      limits: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            steps: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1195,7 +2078,7 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetVersionResponse>;
+) as unknown as Schema.Codec<GetVersionResponse>;
 
 export type GetVersionError =
   | DefaultErrors
@@ -1235,7 +2118,7 @@ export const ListVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}/versions",
       }),
     ),
-) as unknown as Schema.Schema<ListVersionsRequest>;
+) as unknown as Schema.Codec<ListVersionsRequest>;
 
 export interface ListVersionsResponse {
   result: {
@@ -1259,65 +2142,12 @@ export interface ListVersionsResponse {
 export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          className: Schema.String,
-          createdOn: Schema.String,
-          hasDag: Schema.Boolean,
-          language: Schema.Union([
-            Schema.Literals(["javascript", "python"]),
-            Schema.String,
-          ]),
-          modifiedOn: Schema.String,
-          workflowId: Schema.String,
-          limits: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                steps: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            className: "class_name",
-            createdOn: "created_on",
-            hasDag: "has_dag",
-            language: "language",
-            modifiedOn: "modified_on",
-            workflowId: "workflow_id",
-            limits: "limits",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListVersionsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListVersionsResponse>;
+) as unknown as Schema.Codec<ListVersionsResponse>;
 
 export type ListVersionsError = DefaultErrors | WorkflowNotFound | InvalidRoute;
 
@@ -1357,7 +2187,7 @@ export const GraphVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}/versions/{versionId}/graph",
       }),
     ),
-) as unknown as Schema.Schema<GraphVersionRequest>;
+) as unknown as Schema.Codec<GraphVersionRequest>;
 
 export interface GraphVersionResponse {
   id: string;
@@ -1467,237 +2297,7 @@ export const GraphVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       id: Schema.String,
       className: Schema.String,
       createdOn: Schema.String,
-      graph: Schema.Union([
-        Schema.Struct({
-          version: Schema.Number,
-          workflow: Schema.Struct({
-            className: Schema.String,
-            functions: Schema.Record(Schema.String, Schema.Unknown),
-            nodes: Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  config: Schema.Struct({
-                    retries: Schema.Struct({
-                      backoff: Schema.Union([
-                        Schema.Literals(["constant", "linear", "exponential"]),
-                        Schema.String,
-                      ]),
-                      delay: Schema.Union([Schema.Number, Schema.String]),
-                      limit: Schema.Number,
-                    }),
-                    timeout: Schema.Union([Schema.Number, Schema.String]),
-                  }),
-                  name: Schema.String,
-                  nodes: Schema.Array(Schema.Unknown),
-                  type: Schema.Literal("step_do"),
-                  resolves: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  starts: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }),
-                Schema.Struct({
-                  catchBlock: Schema.Union([
-                    Schema.Struct({
-                      nodes: Schema.Array(Schema.Unknown),
-                      type: Schema.Literal("block"),
-                    }),
-                    Schema.Null,
-                  ]),
-                  finallyBlock: Schema.Union([
-                    Schema.Struct({
-                      nodes: Schema.Array(Schema.Unknown),
-                      type: Schema.Literal("block"),
-                    }),
-                    Schema.Null,
-                  ]),
-                  tryBlock: Schema.Union([
-                    Schema.Struct({
-                      nodes: Schema.Array(Schema.Unknown),
-                      type: Schema.Literal("block"),
-                    }),
-                    Schema.Null,
-                  ]),
-                  type: Schema.Literal("try"),
-                }).pipe(
-                  Schema.encodeKeys({
-                    catchBlock: "catch_block",
-                    finallyBlock: "finally_block",
-                    tryBlock: "try_block",
-                    type: "type",
-                  }),
-                ),
-                Schema.Struct({
-                  className: Schema.String,
-                  functions: Schema.Record(Schema.String, Schema.Unknown),
-                  nodes: Schema.Array(Schema.Unknown),
-                  type: Schema.Literal("start"),
-                  payload: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Struct({
-                          fields: Schema.Record(Schema.String, Schema.Unknown),
-                          type: Schema.Literal("object"),
-                        }),
-                        Schema.Struct({
-                          type: Schema.Literal("unknown"),
-                        }),
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    className: "class_name",
-                    functions: "functions",
-                    nodes: "nodes",
-                    type: "type",
-                    payload: "payload",
-                  }),
-                ),
-                Schema.Struct({
-                  duration: Schema.Union([Schema.Number, Schema.String]),
-                  name: Schema.String,
-                  type: Schema.Literal("step_sleep"),
-                  resolves: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  starts: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  options: Schema.Union([
-                    Schema.Struct({
-                      eventType: Schema.String,
-                      timeout: Schema.Union([Schema.Number, Schema.String]),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        eventType: "event_type",
-                        timeout: "timeout",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                  type: Schema.Literal("step_wait_for_event"),
-                  payload: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Struct({
-                          fields: Schema.Record(Schema.String, Schema.Unknown),
-                          type: Schema.Literal("object"),
-                        }),
-                        Schema.Struct({
-                          type: Schema.Literal("unknown"),
-                        }),
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  resolves: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  starts: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  timestamp: Schema.String,
-                  type: Schema.Literal("step_sleep_until"),
-                  resolves: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  starts: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }),
-                Schema.Struct({
-                  kind: Schema.Union([
-                    Schema.Literals(["all", "any", "all_settled", "race"]),
-                    Schema.String,
-                  ]),
-                  nodes: Schema.Array(Schema.Unknown),
-                  type: Schema.Literal("parallel"),
-                }),
-                Schema.Struct({
-                  branches: Schema.Array(
-                    Schema.Struct({
-                      condition: Schema.Union([Schema.String, Schema.Null]),
-                      nodes: Schema.Array(Schema.Unknown),
-                    }),
-                  ),
-                  discriminant: Schema.String,
-                  type: Schema.Literal("switch"),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  nodes: Schema.Array(Schema.Unknown),
-                  type: Schema.Literal("function_def"),
-                }),
-                Schema.Struct({
-                  nodes: Schema.Array(Schema.Unknown),
-                  type: Schema.Literal("loop"),
-                }),
-                Schema.Struct({
-                  nodes: Schema.Array(Schema.Unknown),
-                  type: Schema.Literal("block"),
-                }),
-                Schema.Struct({
-                  branches: Schema.Array(
-                    Schema.Struct({
-                      condition: Schema.Union([Schema.String, Schema.Null]),
-                      nodes: Schema.Array(Schema.Unknown),
-                    }),
-                  ),
-                  type: Schema.Literal("if"),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literal("function_call"),
-                  resolves: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  starts: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }),
-                Schema.Struct({
-                  kind: Schema.Union([
-                    Schema.Literals(["break", "return"]),
-                    Schema.String,
-                  ]),
-                  type: Schema.Literal("break"),
-                }),
-              ]),
-            ),
-            payload: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Struct({
-                    fields: Schema.Record(Schema.String, Schema.Unknown),
-                    type: Schema.Literal("object"),
-                  }),
-                  Schema.Struct({
-                    type: Schema.Literal("unknown"),
-                  }),
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              className: "class_name",
-              functions: "functions",
-              nodes: "nodes",
-              payload: "payload",
-            }),
-          ),
-        }),
-        Schema.Null,
-      ]),
+      graph: Schema.Union([Graph, Schema.Null]),
       modifiedOn: Schema.String,
       workflowId: Schema.String,
     })
@@ -1712,7 +2312,7 @@ export const GraphVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GraphVersionResponse>;
+) as unknown as Schema.Codec<GraphVersionResponse>;
 
 export type GraphVersionError = DefaultErrors;
 
@@ -1747,7 +2347,7 @@ export const GetWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}",
       }),
     ),
-) as unknown as Schema.Schema<GetWorkflowRequest>;
+) as unknown as Schema.Codec<GetWorkflowRequest>;
 
 export interface GetWorkflowResponse {
   id: string;
@@ -1777,40 +2377,13 @@ export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       id: Schema.String,
       className: Schema.String,
       createdOn: Schema.String,
-      instances: Schema.Struct({
-        complete: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        errored: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        paused: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        queued: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        rollingBack: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        running: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        terminated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        waiting: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        waitingForPause: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-      }),
+      instances: Instances,
       modifiedOn: Schema.String,
       name: Schema.String,
       scriptName: Schema.String,
       triggeredOn: Schema.Union([Schema.String, Schema.Null]),
       schedules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              cron: Schema.String,
-              nextInstance: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                cron: "cron",
-                nextInstance: "next_instance",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Schedule2), Schema.Null]),
       ),
     })
       .pipe(
@@ -1827,7 +2400,7 @@ export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetWorkflowResponse>;
+) as unknown as Schema.Codec<GetWorkflowResponse>;
 
 export type GetWorkflowError = DefaultErrors | WorkflowNotFound | InvalidRoute;
 
@@ -1861,7 +2434,7 @@ export const ListWorkflowsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/workflows" }),
     ),
-) as unknown as Schema.Schema<ListWorkflowsRequest>;
+) as unknown as Schema.Codec<ListWorkflowsRequest>;
 
 export interface ListWorkflowsResponse {
   result: {
@@ -1896,105 +2469,12 @@ export interface ListWorkflowsResponse {
 export const ListWorkflowsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          className: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          createdOn: Schema.String,
-          instances: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                complete: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                errored: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                paused: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                queued: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                rollingBack: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                running: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                terminated: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                waiting: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                waitingForPause: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          modifiedOn: Schema.String,
-          name: Schema.String,
-          scriptName: Schema.String,
-          triggeredOn: Schema.Union([Schema.String, Schema.Null]),
-          schedules: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  cron: Schema.String,
-                  nextInstance: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({
-                    cron: "cron",
-                    nextInstance: "next_instance",
-                  }),
-                ),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            className: "class_name",
-            createdOn: "created_on",
-            instances: "instances",
-            modifiedOn: "modified_on",
-            name: "name",
-            scriptName: "script_name",
-            triggeredOn: "triggered_on",
-            schedules: "schedules",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListWorkflowsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListWorkflowsResponse>;
+) as unknown as Schema.Codec<ListWorkflowsResponse>;
 
 export type ListWorkflowsError = DefaultErrors;
 
@@ -2037,18 +2517,8 @@ export const PutWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       className: Schema.String,
       scriptName: Schema.String,
-      limits: Schema.optional(
-        Schema.Struct({
-          steps: Schema.optional(Schema.Number),
-        }),
-      ),
-      schedules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cron: Schema.String,
-          }),
-        ),
-      ),
+      limits: Schema.optional(Limits),
+      schedules: Schema.optional(Schema.Array(Schedule3)),
     }).pipe(
       Schema.encodeKeys({
         className: "class_name",
@@ -2061,7 +2531,7 @@ export const PutWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}",
       }),
     ),
-) as unknown as Schema.Schema<PutWorkflowRequest>;
+) as unknown as Schema.Codec<PutWorkflowRequest>;
 
 export interface PutWorkflowResponse {
   id: string;
@@ -2107,7 +2577,7 @@ export const PutWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PutWorkflowResponse>;
+) as unknown as Schema.Codec<PutWorkflowResponse>;
 
 export type PutWorkflowError =
   | DefaultErrors
@@ -2141,7 +2611,7 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workflows/{workflowName}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteWorkflowRequest>;
+) as unknown as Schema.Codec<DeleteWorkflowRequest>;
 
 export interface DeleteWorkflowResponse {
   status: "ok";
@@ -2154,7 +2624,7 @@ export const DeleteWorkflowResponse =
       status: Schema.Literal("ok"),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteWorkflowResponse>;
+  ) as unknown as Schema.Codec<DeleteWorkflowResponse>;
 
 export type DeleteWorkflowError =
   | DefaultErrors

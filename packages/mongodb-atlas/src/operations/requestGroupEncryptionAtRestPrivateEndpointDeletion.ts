@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RequestGroupEncryptionAtRestPrivateEndpointDeletionInput {
+  groupId: string;
+  cloudProvider: "AZURE" | "AWS";
+  endpointId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RequestGroupEncryptionAtRestPrivateEndpointDeletionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const RequestGroupEncryptionAtRestPrivateEndpointDeletionInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}",
     }),
-  );
-export type RequestGroupEncryptionAtRestPrivateEndpointDeletionInput =
-  typeof RequestGroupEncryptionAtRestPrivateEndpointDeletionInput.Type;
+  ) as unknown as Schema.Codec<RequestGroupEncryptionAtRestPrivateEndpointDeletionInput>;
 
 // Output Schema
+export type RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput = void;
 export const RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
-  typeof RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput>;
 
 // The operation
 /**

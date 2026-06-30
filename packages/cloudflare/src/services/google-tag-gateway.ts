@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service google-tag-gateway
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -25,6 +25,32 @@ export class Forbidden extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface GetConfigResponse2 {
+  /** Enables or disables Google Tag Gateway for this zone. */
+  enabled: boolean;
+  /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics). */
+  endpoint: string;
+  /** Hides the original client IP address from Google when enabled. */
+  hideOriginalIp: boolean;
+  /** Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX). */
+  measurementId: string;
+  /** Set up the associated Google Tag on the zone automatically when enabled. */
+  setUpTag?: boolean | null;
+}
+const GetConfigResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    endpoint: Schema.String,
+    hideOriginalIp: Schema.Boolean,
+    measurementId: Schema.String,
+    setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<GetConfigResponse2>;
+
+// =============================================================================
 // Config
 // =============================================================================
 
@@ -42,7 +68,7 @@ export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/zones/{zone_id}/settings/google-tag-gateway/config",
     }),
   ),
-) as unknown as Schema.Schema<GetConfigRequest>;
+) as unknown as Schema.Codec<GetConfigRequest>;
 
 export type GetConfigResponse = {
   enabled: boolean;
@@ -54,17 +80,10 @@ export type GetConfigResponse = {
 
 export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
-    Schema.Union([
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        endpoint: Schema.String,
-        hideOriginalIp: Schema.Boolean,
-        measurementId: Schema.String,
-        setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      }),
-      Schema.Null,
-    ]).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetConfigResponse>;
+    Schema.Union([GetConfigResponse2, Schema.Null]).pipe(
+      T.ResponsePath("result"),
+    ),
+) as unknown as Schema.Codec<GetConfigResponse>;
 
 export type GetConfigError = DefaultErrors | Forbidden;
 
@@ -108,7 +127,7 @@ export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/zones/{zone_id}/settings/google-tag-gateway/config",
     }),
   ),
-) as unknown as Schema.Schema<PutConfigRequest>;
+) as unknown as Schema.Codec<PutConfigRequest>;
 
 export interface PutConfigResponse {
   /** Enables or disables Google Tag Gateway for this zone. */
@@ -132,7 +151,7 @@ export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       measurementId: Schema.String,
       setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PutConfigResponse>;
+) as unknown as Schema.Codec<PutConfigResponse>;
 
 export type PutConfigError = DefaultErrors | Forbidden;
 

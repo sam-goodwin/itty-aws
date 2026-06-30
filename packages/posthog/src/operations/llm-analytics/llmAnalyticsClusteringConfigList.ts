@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsClusteringConfigListInput {
+  project_id: string;
+}
 export const LlmAnalyticsClusteringConfigListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,19 +14,20 @@ export const LlmAnalyticsClusteringConfigListInput =
       method: "GET",
       path: "/api/projects/{project_id}/llm_analytics/clustering_config/",
     }),
-  );
-export type LlmAnalyticsClusteringConfigListInput =
-  typeof LlmAnalyticsClusteringConfigListInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsClusteringConfigListInput>;
 
 // Output Schema
+export interface LlmAnalyticsClusteringConfigListOutput {
+  event_filters: Record<string, unknown>[];
+  created_at: string;
+  updated_at: string;
+}
 export const LlmAnalyticsClusteringConfigListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     event_filters: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type LlmAnalyticsClusteringConfigListOutput =
-  typeof LlmAnalyticsClusteringConfigListOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsClusteringConfigListOutput>;
 
 // The operation
 /**

@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsGithubBranchesRetrieveInput {
+  installation_id: string;
+  uuid: string;
+  limit?: number;
+  offset?: number;
+  repo: string;
+  search?: string;
+}
 export const UsersIntegrationsGithubBranchesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installation_id: Schema.String.pipe(T.PathParam()),
@@ -16,19 +24,20 @@ export const UsersIntegrationsGithubBranchesRetrieveInput =
       method: "GET",
       path: "/api/users/{uuid}/integrations/github/{installation_id}/branches/",
     }),
-  );
-export type UsersIntegrationsGithubBranchesRetrieveInput =
-  typeof UsersIntegrationsGithubBranchesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsGithubBranchesRetrieveInput>;
 
 // Output Schema
+export interface UsersIntegrationsGithubBranchesRetrieveOutput {
+  branches?: string[];
+  default_branch?: string | null;
+  has_more?: boolean;
+}
 export const UsersIntegrationsGithubBranchesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branches: Schema.optional(Schema.Array(Schema.String)),
     default_branch: Schema.optional(Schema.NullOr(Schema.String)),
     has_more: Schema.optional(Schema.Boolean),
-  });
-export type UsersIntegrationsGithubBranchesRetrieveOutput =
-  typeof UsersIntegrationsGithubBranchesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<UsersIntegrationsGithubBranchesRetrieveOutput>;
 
 // The operation
 /**

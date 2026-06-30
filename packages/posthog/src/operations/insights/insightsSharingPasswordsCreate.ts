@@ -6,8 +6,25 @@ import {
   SensitiveNullableString,
   SensitiveOutputNullableString,
 } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface InsightsSharingPasswordsCreateInput {
+  insight_id: number;
+  project_id: string;
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: string | Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}
 export const InsightsSharingPasswordsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insight_id: Schema.Number.pipe(T.PathParam()),
@@ -33,11 +50,23 @@ export const InsightsSharingPasswordsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/insights/{insight_id}/sharing/passwords/",
     }),
-  );
-export type InsightsSharingPasswordsCreateInput =
-  typeof InsightsSharingPasswordsCreateInput.Type;
+  ) as unknown as Schema.Codec<InsightsSharingPasswordsCreateInput>;
 
 // Output Schema
+export interface InsightsSharingPasswordsCreateOutput {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}
 export const InsightsSharingPasswordsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
@@ -56,9 +85,7 @@ export const InsightsSharingPasswordsCreateOutput =
         }),
       ),
     ),
-  });
-export type InsightsSharingPasswordsCreateOutput =
-  typeof InsightsSharingPasswordsCreateOutput.Type;
+  }) as unknown as Schema.Codec<InsightsSharingPasswordsCreateOutput>;
 
 // The operation
 /**

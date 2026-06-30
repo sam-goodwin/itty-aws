@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV2CoreAccountsAccountIdPersonsIdInput {
+  account_id: string;
+  id: string;
+}
 export const GetV2CoreAccountsAccountIdPersonsIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,181 @@ export const GetV2CoreAccountsAccountIdPersonsIdInput =
       method: "GET",
       path: "/v2/core/accounts/{account_id}/persons/{id}",
     }),
-  );
-export type GetV2CoreAccountsAccountIdPersonsIdInput =
-  typeof GetV2CoreAccountsAccountIdPersonsIdInput.Type;
+  ) as unknown as Schema.Codec<GetV2CoreAccountsAccountIdPersonsIdInput>;
 
 // Output Schema
+export interface GetV2CoreAccountsAccountIdPersonsIdOutput {
+  account: string;
+  additional_addresses?: {
+    city?: string;
+    country?: string;
+    line1?: string;
+    line2?: string;
+    postal_code?: string;
+    purpose: "registered";
+    state?: string;
+    town?: string;
+  }[];
+  additional_names?: {
+    full_name?: string;
+    given_name?: string;
+    purpose: "alias" | "maiden";
+    surname?: string;
+  }[];
+  additional_terms_of_service?: {
+    account?: { date?: string; ip?: string; user_agent?: string };
+  };
+  address?: {
+    city?: string;
+    country?: string;
+    line1?: string;
+    line2?: string;
+    postal_code?: string;
+    state?: string;
+    town?: string;
+  };
+  created: string;
+  date_of_birth?: { day: number; month: number; year: number };
+  documents?: {
+    company_authorization?: { files: string[]; type: "files" };
+    passport?: { files: string[]; type: "files" };
+    primary_verification?: {
+      front_back: { back?: string; front: string };
+      type: "front_back";
+    };
+    secondary_verification?: {
+      front_back: { back?: string; front: string };
+      type: "front_back";
+    };
+    visa?: { files: string[]; type: "files" };
+  };
+  email?: string;
+  given_name?: string;
+  id: string;
+  id_numbers?: {
+    type:
+      | "ae_eid"
+      | "ao_nif"
+      | "ar_cuil"
+      | "ar_dni"
+      | "at_stn"
+      | "az_tin"
+      | "bd_brc"
+      | "bd_etin"
+      | "bd_nid"
+      | "be_nrn"
+      | "bg_ucn"
+      | "bn_nric"
+      | "br_cpf"
+      | "ca_sin"
+      | "ch_oasi"
+      | "cl_rut"
+      | "cn_pp"
+      | "co_nuip"
+      | "cr_ci"
+      | "cr_cpf"
+      | "cr_dimex"
+      | "cr_nite"
+      | "cy_tic"
+      | "cz_rc"
+      | "de_stn"
+      | "dk_cpr"
+      | "do_cie"
+      | "do_rcn"
+      | "ec_ci"
+      | "ee_ik"
+      | "es_nif"
+      | "fi_hetu"
+      | "fr_nir"
+      | "gb_nino"
+      | "gr_afm"
+      | "gt_nit"
+      | "hk_id"
+      | "hr_oib"
+      | "hu_ad"
+      | "id_nik"
+      | "ie_ppsn"
+      | "is_kt"
+      | "it_cf"
+      | "jp_inc"
+      | "ke_pin"
+      | "kz_iin"
+      | "li_peid"
+      | "lt_ak"
+      | "lu_nif"
+      | "lv_pk"
+      | "mx_rfc"
+      | "my_nric"
+      | "mz_nuit"
+      | "ng_nin"
+      | "nl_bsn"
+      | "no_nin"
+      | "nz_ird"
+      | "pe_dni"
+      | "pk_cnic"
+      | "pk_snic"
+      | "pl_pesel"
+      | "pt_nif"
+      | "ro_cnp"
+      | "sa_tin"
+      | "se_pin"
+      | "sg_fin"
+      | "sg_nric"
+      | "sk_dic"
+      | "th_lc"
+      | "th_pin"
+      | "tr_tin"
+      | "us_itin"
+      | "us_itin_last_4"
+      | "us_ssn"
+      | "us_ssn_last_4"
+      | "uy_dni"
+      | "za_id";
+  }[];
+  legal_gender?: "female" | "male";
+  livemode: boolean;
+  metadata?: Record<string, string>;
+  nationalities?: string[];
+  object: "v2.core.account_person";
+  phone?: string;
+  political_exposure?: "existing" | "none";
+  relationship?: {
+    authorizer?: boolean;
+    director?: boolean;
+    executive?: boolean;
+    legal_guardian?: boolean;
+    owner?: boolean;
+    percent_ownership?: string;
+    representative?: boolean;
+    title?: string;
+  };
+  script_addresses?: {
+    kana?: {
+      city?: string;
+      country?: string;
+      line1?: string;
+      line2?: string;
+      postal_code?: string;
+      state?: string;
+      town?: string;
+    };
+    kanji?: {
+      city?: string;
+      country?: string;
+      line1?: string;
+      line2?: string;
+      postal_code?: string;
+      state?: string;
+      town?: string;
+    };
+  };
+  script_names?: {
+    kana?: { given_name?: string; surname?: string };
+    kanji?: { given_name?: string; surname?: string };
+  };
+  surname?: string;
+  updated: string;
+}
 export const GetV2CoreAccountsAccountIdPersonsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String,
@@ -265,9 +439,7 @@ export const GetV2CoreAccountsAccountIdPersonsIdOutput =
     ),
     surname: Schema.optional(Schema.String),
     updated: Schema.String,
-  });
-export type GetV2CoreAccountsAccountIdPersonsIdOutput =
-  typeof GetV2CoreAccountsAccountIdPersonsIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV2CoreAccountsAccountIdPersonsIdOutput>;
 
 // The operation
 /**

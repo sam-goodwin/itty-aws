@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1InviteExternalJitAccessInput {
+  ref: string;
+  email: string;
+  roles: {
+    role: string;
+    expires_at?: number;
+    allowed_networks?: {
+      allowed_cidrs?: { cidr: string }[];
+      allowed_cidrs_v6?: { cidr: string }[];
+    };
+    branches_only?: boolean;
+  }[];
+}
 export const V1InviteExternalJitAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -35,11 +48,22 @@ export const V1InviteExternalJitAccessInput =
     ),
   }).pipe(
     T.Http({ method: "POST", path: "/v1/projects/{ref}/database/jit/invite" }),
-  );
-export type V1InviteExternalJitAccessInput =
-  typeof V1InviteExternalJitAccessInput.Type;
+  ) as unknown as Schema.Codec<V1InviteExternalJitAccessInput>;
 
 // Output Schema
+export interface V1InviteExternalJitAccessOutput {
+  email: string;
+  invite_id: string;
+  user_roles: {
+    role: string;
+    expires_at?: number;
+    allowed_networks?: {
+      allowed_cidrs?: { cidr: string }[];
+      allowed_cidrs_v6?: { cidr: string }[];
+    };
+    branches_only?: boolean;
+  }[];
+}
 export const V1InviteExternalJitAccessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.String,
@@ -69,9 +93,7 @@ export const V1InviteExternalJitAccessOutput =
         branches_only: Schema.optional(Schema.Boolean),
       }),
     ),
-  });
-export type V1InviteExternalJitAccessOutput =
-  typeof V1InviteExternalJitAccessOutput.Type;
+  }) as unknown as Schema.Codec<V1InviteExternalJitAccessOutput>;
 
 // The operation
 /**

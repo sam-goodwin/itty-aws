@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupDbAccessHistoryProcessInput {
+  groupId: string;
+  hostname: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  authResult?: boolean;
+  end?: number;
+  ipAddress?: string;
+  nLogs?: number;
+  start?: number;
+}
 export const GetGroupDbAccessHistoryProcessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -20,15 +31,12 @@ export const GetGroupDbAccessHistoryProcessInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname}",
     }),
-  );
-export type GetGroupDbAccessHistoryProcessInput =
-  typeof GetGroupDbAccessHistoryProcessInput.Type;
+  ) as unknown as Schema.Codec<GetGroupDbAccessHistoryProcessInput>;
 
 // Output Schema
+export type GetGroupDbAccessHistoryProcessOutput = void;
 export const GetGroupDbAccessHistoryProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupDbAccessHistoryProcessOutput =
-  typeof GetGroupDbAccessHistoryProcessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupDbAccessHistoryProcessOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FlagValueValuesRetrieveInput {
+  project_id: string;
+  key?: string;
+}
 export const FlagValueValuesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,13 @@ export const FlagValueValuesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/flag_value/values/",
     }),
-  );
-export type FlagValueValuesRetrieveInput =
-  typeof FlagValueValuesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FlagValueValuesRetrieveInput>;
 
 // Output Schema
+export interface FlagValueValuesRetrieveOutput {
+  results?: { name?: unknown }[];
+  refreshing?: boolean;
+}
 export const FlagValueValuesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -28,9 +34,7 @@ export const FlagValueValuesRetrieveOutput =
       ),
     ),
     refreshing: Schema.optional(Schema.Boolean),
-  });
-export type FlagValueValuesRetrieveOutput =
-  typeof FlagValueValuesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<FlagValueValuesRetrieveOutput>;
 
 // The operation
 /**

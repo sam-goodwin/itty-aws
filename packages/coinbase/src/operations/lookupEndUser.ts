@@ -3,21 +3,120 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface LookupEndUserInput {
+  email?: string;
+  oauthProvider?: string;
+  oauthSubject?: string;
+  phoneNumber?: string;
+  siweAddress?: string;
+}
 export const LookupEndUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.optional(Schema.String),
   oauthProvider: Schema.optional(Schema.String),
   oauthSubject: Schema.optional(Schema.String),
   phoneNumber: Schema.optional(Schema.String),
   siweAddress: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v2/end-users/lookup" }));
-export type LookupEndUserInput = typeof LookupEndUserInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/end-users/lookup" }),
+) as unknown as Schema.Codec<LookupEndUserInput>;
 
 // Output Schema
+export interface LookupEndUserOutput {
+  endUsers: {
+    userId: string;
+    authenticationMethods: (
+      | { type: "email"; email: string }
+      | { type: "sms"; phoneNumber: string }
+      | { type: "jwt"; kid: string; sub: string }
+      | {
+          type: "google" | "apple" | "x" | "telegram" | "github";
+          sub: string;
+          email?: string;
+          name?: string;
+          username?: string;
+        }
+      | {
+          type: "google" | "apple" | "x" | "telegram" | "github";
+          id: number;
+          firstName?: string;
+          lastName?: string;
+          photoUrl?: string;
+          authDate: number;
+          username?: string;
+        }
+      | { type: "siwe"; address: string }
+    )[];
+    mfaMethods?: {
+      enrollmentPromptedAt?: string;
+      totp?: { enrolledAt: string };
+      sms?: { enrolledAt: string };
+    };
+    evmAccounts: string[];
+    evmAccountObjects: { address: string; createdAt: string }[];
+    evmSmartAccounts: string[];
+    evmSmartAccountObjects: {
+      address: string;
+      ownerAddresses: string[];
+      createdAt: string;
+    }[];
+    solanaAccounts: string[];
+    solanaAccountObjects: { address: string; createdAt: string }[];
+    createdAt: string;
+  }[];
+}
 export const LookupEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endUsers: Schema.Array(
     Schema.Struct({
       userId: Schema.String,
-      authenticationMethods: Schema.Array(Schema.Unknown),
+      authenticationMethods: Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            type: Schema.Literals(["email"]),
+            email: Schema.String,
+          }),
+          Schema.Struct({
+            type: Schema.Literals(["sms"]),
+            phoneNumber: Schema.String,
+          }),
+          Schema.Struct({
+            type: Schema.Literals(["jwt"]),
+            kid: Schema.String,
+            sub: Schema.String,
+          }),
+          Schema.Struct({
+            type: Schema.Literals([
+              "google",
+              "apple",
+              "x",
+              "telegram",
+              "github",
+            ]),
+            sub: Schema.String,
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            username: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            type: Schema.Literals([
+              "google",
+              "apple",
+              "x",
+              "telegram",
+              "github",
+            ]),
+            id: Schema.Number,
+            firstName: Schema.optional(Schema.String),
+            lastName: Schema.optional(Schema.String),
+            photoUrl: Schema.optional(Schema.String),
+            authDate: Schema.Number,
+            username: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            type: Schema.Literals(["siwe"]),
+            address: Schema.String,
+          }),
+        ]),
+      ),
       mfaMethods: Schema.optional(
         Schema.Struct({
           enrollmentPromptedAt: Schema.optional(Schema.String),
@@ -58,8 +157,7 @@ export const LookupEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       createdAt: Schema.String,
     }),
   ),
-});
-export type LookupEndUserOutput = typeof LookupEndUserOutput.Type;
+}) as unknown as Schema.Codec<LookupEndUserOutput>;
 
 // The operation
 /**

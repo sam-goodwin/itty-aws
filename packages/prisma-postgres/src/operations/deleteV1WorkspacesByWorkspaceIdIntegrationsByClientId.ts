@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput {
+  clientId: string;
+  workspaceId: string;
+}
 export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput =
       method: "DELETE",
       path: "/v1/workspaces/{workspaceId}/integrations/{clientId}",
     }),
-  );
-export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput =
-  typeof DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput.Type;
+  ) as unknown as Schema.Codec<DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdInput>;
 
 // Output Schema
+export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput = void;
 export const DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput =
-  typeof DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1WorkspacesByWorkspaceIdIntegrationsByClientIdOutput>;
 
 // The operation
 /**

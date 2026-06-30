@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface AmpUrl {
   originalUrl?: string;
 }
 
-export const AmpUrl: Schema.Schema<AmpUrl> =
+export const AmpUrl: Schema.Codec<AmpUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ampUrl: Schema.optional(Schema.String),
     cdnAmpUrl: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export interface BatchGetAmpUrlsRequest {
   urls?: ReadonlyArray<string>;
 }
 
-export const BatchGetAmpUrlsRequest: Schema.Schema<BatchGetAmpUrlsRequest> =
+export const BatchGetAmpUrlsRequest: Schema.Codec<BatchGetAmpUrlsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lookupStrategy: Schema.optional(Schema.String),
     urls: Schema.optional(Schema.Array(Schema.String)),
@@ -67,7 +67,7 @@ export interface AmpUrlError {
   errorMessage?: string;
 }
 
-export const AmpUrlError: Schema.Schema<AmpUrlError> =
+export const AmpUrlError: Schema.Codec<AmpUrlError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalUrl: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface BatchGetAmpUrlsResponse {
   urlErrors?: ReadonlyArray<AmpUrlError>;
 }
 
-export const BatchGetAmpUrlsResponse: Schema.Schema<BatchGetAmpUrlsResponse> =
+export const BatchGetAmpUrlsResponse: Schema.Codec<BatchGetAmpUrlsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ampUrls: Schema.optional(Schema.Array(AmpUrl)),
     urlErrors: Schema.optional(Schema.Array(AmpUrlError)),
@@ -152,7 +152,7 @@ export const BatchGetAmpUrlsRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/ampUrls:batchGet", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetAmpUrlsRequest_Op>;
+  ) as unknown as Schema.Codec<BatchGetAmpUrlsRequest_Op>;
 
 export type BatchGetAmpUrlsResponse_Op = BatchGetAmpUrlsResponse;
 export const BatchGetAmpUrlsResponse_Op =

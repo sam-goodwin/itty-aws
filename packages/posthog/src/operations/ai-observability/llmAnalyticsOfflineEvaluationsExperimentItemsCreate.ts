@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput {
+  project_id: string;
+  experiment_id: string;
+  date_from?: string | null;
+  date_to?: string | null;
+}
 export const LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,17 +21,16 @@ export const LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_analytics/offline_evaluations/experiment_items/",
     }),
-  );
-export type LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput =
-  typeof LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput {
+  results: unknown[][];
+}
 export const LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(Schema.Array(Schema.Unknown)),
-  });
-export type LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput =
-  typeof LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput>;
 
 // The operation
 /**

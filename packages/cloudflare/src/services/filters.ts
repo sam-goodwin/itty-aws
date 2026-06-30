@@ -5,12 +5,92 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service filters
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListFiltersResponseResult {
+  /** The unique identifier of the filter. */
+  id?: string | null;
+  /** An informative summary of the filter. */
+  description?: string | null;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string | null;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean | null;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string | null;
+}
+const ListFiltersResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<ListFiltersResponseResult>;
+
+interface ListFiltersResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListFiltersResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListFiltersResponseResultInfo>;
+
+interface FirewallFilterParam {
+  /** An informative summary of the filter. */
+  description?: string | null;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string | null;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean | null;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string | null;
+}
+const FirewallFilterParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<FirewallFilterParam>;
+
+interface FilterBulkDeleteResponseItem {
+  /** The unique identifier of the filter. */
+  id?: string | null;
+}
+const FilterBulkDeleteResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<FilterBulkDeleteResponseItem>;
 
 // =============================================================================
 // Filter
@@ -29,7 +109,7 @@ export const GetFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/filters/{filterId}" }),
   ),
-) as unknown as Schema.Schema<GetFilterRequest>;
+) as unknown as Schema.Codec<GetFilterRequest>;
 
 export interface GetFilterResponse {
   /** The unique identifier of the filter. */
@@ -53,7 +133,7 @@ export const GetFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetFilterResponse>;
+) as unknown as Schema.Codec<GetFilterResponse>;
 
 export type GetFilterError = DefaultErrors;
 
@@ -101,7 +181,7 @@ export const ListFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       paused: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("paused")),
       ref: Schema.optional(Schema.String).pipe(T.HttpQuery("ref")),
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/filters" })),
-) as unknown as Schema.Schema<ListFiltersRequest>;
+) as unknown as Schema.Codec<ListFiltersRequest>;
 
 export interface ListFiltersResponse {
   result: {
@@ -122,43 +202,12 @@ export interface ListFiltersResponse {
 export const ListFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          expression: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(ListFiltersResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListFiltersResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListFiltersResponse>;
+) as unknown as Schema.Codec<ListFiltersResponse>;
 
 export type ListFiltersError = DefaultErrors;
 
@@ -196,16 +245,9 @@ export const CreateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Array(
-        Schema.Struct({
-          description: Schema.optional(Schema.String),
-          expression: Schema.optional(Schema.String),
-          paused: Schema.optional(Schema.Boolean),
-          ref: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpBody()),
+      body: Schema.Array(FirewallFilterParam).pipe(T.HttpBody()),
     }).pipe(T.Http({ method: "POST", path: "/zones/{zone_id}/filters" })),
-) as unknown as Schema.Schema<CreateFilterRequest>;
+) as unknown as Schema.Codec<CreateFilterRequest>;
 
 export interface CreateFilterResponse {
   result: {
@@ -220,21 +262,9 @@ export interface CreateFilterResponse {
 export const CreateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          expression: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(ListFiltersResponseResult),
     }),
-) as unknown as Schema.Schema<CreateFilterResponse>;
+) as unknown as Schema.Codec<CreateFilterResponse>;
 
 export type CreateFilterError = DefaultErrors;
 
@@ -279,7 +309,7 @@ export const UpdateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "PUT", path: "/zones/{zone_id}/filters/{filterId}" }),
     ),
-) as unknown as Schema.Schema<UpdateFilterRequest>;
+) as unknown as Schema.Codec<UpdateFilterRequest>;
 
 export interface UpdateFilterResponse {
   /** The unique identifier of the filter. */
@@ -303,7 +333,7 @@ export const UpdateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateFilterResponse>;
+) as unknown as Schema.Codec<UpdateFilterResponse>;
 
 export type UpdateFilterError = DefaultErrors;
 
@@ -332,7 +362,7 @@ export const DeleteFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "DELETE", path: "/zones/{zone_id}/filters/{filterId}" }),
     ),
-) as unknown as Schema.Schema<DeleteFilterRequest>;
+) as unknown as Schema.Codec<DeleteFilterRequest>;
 
 export interface DeleteFilterResponse {
   /** The unique identifier of the filter. */
@@ -344,7 +374,7 @@ export const DeleteFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteFilterResponse>;
+) as unknown as Schema.Codec<DeleteFilterResponse>;
 
 export type DeleteFilterError = DefaultErrors;
 
@@ -372,18 +402,14 @@ export const BulkDeleteFiltersRequest =
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       id: Schema.Array(Schema.String).pipe(T.HttpQuery("id")),
     }).pipe(T.Http({ method: "DELETE", path: "/zones/{zone_id}/filters" })),
-  ) as unknown as Schema.Schema<BulkDeleteFiltersRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteFiltersRequest>;
 
 export type BulkDeleteFiltersResponse = { id?: string | null }[];
 
 export const BulkDeleteFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<BulkDeleteFiltersResponse>;
+    Schema.Array(FilterBulkDeleteResponseItem).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Codec<BulkDeleteFiltersResponse>;
 
 export type BulkDeleteFiltersError = DefaultErrors;
 
@@ -418,16 +444,9 @@ export const BulkPutFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Array(
-        Schema.Struct({
-          description: Schema.optional(Schema.String),
-          expression: Schema.optional(Schema.String),
-          paused: Schema.optional(Schema.Boolean),
-          ref: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpBody()),
+      body: Schema.Array(FirewallFilterParam).pipe(T.HttpBody()),
     }).pipe(T.Http({ method: "PUT", path: "/zones/{zone_id}/filters" })),
-) as unknown as Schema.Schema<BulkPutFiltersRequest>;
+) as unknown as Schema.Codec<BulkPutFiltersRequest>;
 
 export interface BulkPutFiltersResponse {
   result: {
@@ -442,21 +461,9 @@ export interface BulkPutFiltersResponse {
 export const BulkPutFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          expression: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(ListFiltersResponseResult),
     }),
-  ) as unknown as Schema.Schema<BulkPutFiltersResponse>;
+  ) as unknown as Schema.Codec<BulkPutFiltersResponse>;
 
 export type BulkPutFiltersError = DefaultErrors;
 

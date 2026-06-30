@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DashboardsRunWidgetsRetrieveInput {
+  id: number;
+  project_id: string;
+  format?: "json" | "txt";
+  tile_ids: string;
+}
 export const DashboardsRunWidgetsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -14,11 +20,17 @@ export const DashboardsRunWidgetsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/dashboards/{id}/run_widgets/",
     }),
-  );
-export type DashboardsRunWidgetsRetrieveInput =
-  typeof DashboardsRunWidgetsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DashboardsRunWidgetsRetrieveInput>;
 
 // Output Schema
+export interface DashboardsRunWidgetsRetrieveOutput {
+  results: {
+    tile_id: number;
+    widget_type: string | null;
+    result: unknown;
+    error: string | null;
+  }[];
+}
 export const DashboardsRunWidgetsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -29,9 +41,7 @@ export const DashboardsRunWidgetsRetrieveOutput =
         error: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type DashboardsRunWidgetsRetrieveOutput =
-  typeof DashboardsRunWidgetsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DashboardsRunWidgetsRetrieveOutput>;
 
 // The operation
 /**

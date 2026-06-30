@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupCollStatMetricsInput {
+  groupId: string;
+  envelope?: boolean;
+}
 export const ListGroupCollStatMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ListGroupCollStatMetricsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/collStats/metrics",
     }),
-  );
-export type ListGroupCollStatMetricsInput =
-  typeof ListGroupCollStatMetricsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupCollStatMetricsInput>;
 
 // Output Schema
+export type ListGroupCollStatMetricsOutput = void;
 export const ListGroupCollStatMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupCollStatMetricsOutput =
-  typeof ListGroupCollStatMetricsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupCollStatMetricsOutput>;
 
 // The operation
 /**

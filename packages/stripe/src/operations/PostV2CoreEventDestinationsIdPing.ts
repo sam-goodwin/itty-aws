@@ -3,16 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostV2CoreEventDestinationsIdPingInput {
+  id: string;
+}
 export const PostV2CoreEventDestinationsIdPingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/v2/core/event_destinations/{id}/ping" }),
-  );
-export type PostV2CoreEventDestinationsIdPingInput =
-  typeof PostV2CoreEventDestinationsIdPingInput.Type;
+  ) as unknown as Schema.Codec<PostV2CoreEventDestinationsIdPingInput>;
 
 // Output Schema
+export interface PostV2CoreEventDestinationsIdPingOutput {
+  changes?: unknown;
+  context?: string;
+  created: string;
+  id: string;
+  livemode: boolean;
+  object: "v2.core.event";
+  reason?: {
+    request?: { id: string; idempotency_key: string };
+    type: "request";
+  };
+  type: string;
+}
 export const PostV2CoreEventDestinationsIdPingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Unknown),
@@ -33,9 +47,7 @@ export const PostV2CoreEventDestinationsIdPingOutput =
       }),
     ),
     type: Schema.String,
-  });
-export type PostV2CoreEventDestinationsIdPingOutput =
-  typeof PostV2CoreEventDestinationsIdPingOutput.Type;
+  }) as unknown as Schema.Codec<PostV2CoreEventDestinationsIdPingOutput>;
 
 // The operation
 /**

@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTaxTransactionsTransactionLineItemsInput {
+  transaction: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetTaxTransactionsTransactionLineItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transaction: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,29 @@ export const GetTaxTransactionsTransactionLineItemsInput =
       path: "/v1/tax/transactions/{transaction}/line_items",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetTaxTransactionsTransactionLineItemsInput =
-  typeof GetTaxTransactionsTransactionLineItemsInput.Type;
+  ) as unknown as Schema.Codec<GetTaxTransactionsTransactionLineItemsInput>;
 
 // Output Schema
+export interface GetTaxTransactionsTransactionLineItemsOutput {
+  data: {
+    amount: number;
+    amount_tax: number;
+    id: string;
+    livemode: boolean;
+    metadata: Record<string, string> | null;
+    object: "tax.transaction_line_item";
+    product: string | null;
+    quantity: number;
+    reference: string;
+    reversal: { original_line_item: string } | null;
+    tax_behavior: "exclusive" | "inclusive";
+    tax_code: string;
+    type: "reversal" | "transaction";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetTaxTransactionsTransactionLineItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -34,7 +59,11 @@ export const GetTaxTransactionsTransactionLineItemsOutput =
         product: Schema.NullOr(Schema.String),
         quantity: Schema.Number,
         reference: Schema.String,
-        reversal: Schema.Unknown,
+        reversal: Schema.NullOr(
+          Schema.Struct({
+            original_line_item: Schema.String,
+          }),
+        ),
         tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
         tax_code: Schema.String,
         type: Schema.Literals(["reversal", "transaction"]),
@@ -43,9 +72,7 @@ export const GetTaxTransactionsTransactionLineItemsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetTaxTransactionsTransactionLineItemsOutput =
-  typeof GetTaxTransactionsTransactionLineItemsOutput.Type;
+  }) as unknown as Schema.Codec<GetTaxTransactionsTransactionLineItemsOutput>;
 
 // The operation
 /**

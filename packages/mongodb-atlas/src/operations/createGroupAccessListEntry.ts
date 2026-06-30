@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupAccessListEntryInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const CreateGroupAccessListEntryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const CreateGroupAccessListEntryInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/accessList",
     }),
-  );
-export type CreateGroupAccessListEntryInput =
-  typeof CreateGroupAccessListEntryInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupAccessListEntryInput>;
 
 // Output Schema
+export type CreateGroupAccessListEntryOutput = void;
 export const CreateGroupAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupAccessListEntryOutput =
-  typeof CreateGroupAccessListEntryOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupAccessListEntryOutput>;
 
 // The operation
 /**

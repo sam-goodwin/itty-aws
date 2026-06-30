@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgInvoicePendingInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListOrgInvoicePendingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -14,14 +19,12 @@ export const ListOrgInvoicePendingInput =
       method: "GET",
       path: "/api/atlas/v2/orgs/{orgId}/invoices/pending",
     }),
-  );
-export type ListOrgInvoicePendingInput = typeof ListOrgInvoicePendingInput.Type;
+  ) as unknown as Schema.Codec<ListOrgInvoicePendingInput>;
 
 // Output Schema
+export type ListOrgInvoicePendingOutput = void;
 export const ListOrgInvoicePendingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgInvoicePendingOutput =
-  typeof ListOrgInvoicePendingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgInvoicePendingOutput>;
 
 // The operation
 /**

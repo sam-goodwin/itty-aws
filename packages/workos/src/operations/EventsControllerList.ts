@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface EventsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  events?: string;
+  range_start?: string;
+  range_end?: string;
+  organization_id?: string;
+}
 export const EventsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -14,10 +24,23 @@ export const EventsControllerListInput =
     range_start: Schema.optional(Schema.String),
     range_end: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/events" }));
-export type EventsControllerListInput = typeof EventsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/events" }),
+  ) as unknown as Schema.Codec<EventsControllerListInput>;
 
 // Output Schema
+export interface EventsControllerListOutput {
+  object?: string;
+  data?: {
+    object: string;
+    id: string;
+    event: string;
+    data: Record<string, unknown>;
+    created_at: string;
+    context?: Record<string, unknown>;
+  }[];
+  list_metadata?: { after: string | null };
+}
 export const EventsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -40,8 +63,7 @@ export const EventsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type EventsControllerListOutput = typeof EventsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<EventsControllerListOutput>;
 
 // The operation
 /**

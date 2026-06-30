@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LiveDebuggerBreakpointsUpdateInput {
+  id: string;
+  project_id: string;
+  repository?: string | null;
+  filename?: string;
+  line_number?: number;
+  enabled?: boolean;
+  condition?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const LiveDebuggerBreakpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +31,19 @@ export const LiveDebuggerBreakpointsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/live_debugger_breakpoints/{id}/",
     }),
-  );
-export type LiveDebuggerBreakpointsUpdateInput =
-  typeof LiveDebuggerBreakpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<LiveDebuggerBreakpointsUpdateInput>;
 
 // Output Schema
+export interface LiveDebuggerBreakpointsUpdateOutput {
+  id?: string;
+  repository?: string | null;
+  filename?: string;
+  line_number?: number;
+  enabled?: boolean;
+  condition?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const LiveDebuggerBreakpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -35,9 +54,7 @@ export const LiveDebuggerBreakpointsUpdateOutput =
     condition: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type LiveDebuggerBreakpointsUpdateOutput =
-  typeof LiveDebuggerBreakpointsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LiveDebuggerBreakpointsUpdateOutput>;
 
 // The operation
 /**

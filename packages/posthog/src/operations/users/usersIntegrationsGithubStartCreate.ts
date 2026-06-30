@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsGithubStartCreateInput {
+  uuid: string;
+  team_id?: number | null;
+  connect_from?: string;
+}
 export const UsersIntegrationsGithubStartCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
@@ -13,18 +18,18 @@ export const UsersIntegrationsGithubStartCreateInput =
       method: "POST",
       path: "/api/users/{uuid}/integrations/github/start/",
     }),
-  );
-export type UsersIntegrationsGithubStartCreateInput =
-  typeof UsersIntegrationsGithubStartCreateInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsGithubStartCreateInput>;
 
 // Output Schema
+export interface UsersIntegrationsGithubStartCreateOutput {
+  install_url: string;
+  connect_flow: string;
+}
 export const UsersIntegrationsGithubStartCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     install_url: Schema.String,
     connect_flow: Schema.String,
-  });
-export type UsersIntegrationsGithubStartCreateOutput =
-  typeof UsersIntegrationsGithubStartCreateOutput.Type;
+  }) as unknown as Schema.Codec<UsersIntegrationsGithubStartCreateOutput>;
 
 // The operation
 /**

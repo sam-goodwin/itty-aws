@@ -4,6 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupIntegrationInput {
+  integrationType:
+    | "PAGER_DUTY"
+    | "SLACK"
+    | "DATADOG"
+    | "NEW_RELIC"
+    | "OPS_GENIE"
+    | "VICTOR_OPS"
+    | "WEBHOOK"
+    | "HIP_CHAT"
+    | "PROMETHEUS"
+    | "MICROSOFT_TEAMS";
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const CreateGroupIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationType: Schema.Literals([
@@ -29,15 +48,12 @@ export const CreateGroupIntegrationInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
     }),
-  );
-export type CreateGroupIntegrationInput =
-  typeof CreateGroupIntegrationInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupIntegrationInput>;
 
 // Output Schema
+export type CreateGroupIntegrationOutput = void;
 export const CreateGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupIntegrationOutput =
-  typeof CreateGroupIntegrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupIntegrationOutput>;
 
 // The operation
 /**

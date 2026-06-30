@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface RolesListInput {
+  organization_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const RolesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
@@ -13,10 +18,42 @@ export const RolesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/organizations/{organization_id}/roles/",
   }),
-);
-export type RolesListInput = typeof RolesListInput.Type;
+) as unknown as Schema.Codec<RolesListInput>;
 
 // Output Schema
+export interface RolesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    members?: Record<string, unknown>[];
+    is_default?: boolean;
+  }[];
+}
 export const RolesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -40,7 +77,23 @@ export const RolesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -51,8 +104,7 @@ export const RolesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type RolesListOutput = typeof RolesListOutput.Type;
+}) as unknown as Schema.Codec<RolesListOutput>;
 
 // The operation
 /**

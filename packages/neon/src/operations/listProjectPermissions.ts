@@ -4,16 +4,25 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListProjectPermissionsInput {
+  project_id: string;
+}
 export const ListProjectPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/projects/{project_id}/permissions" }),
-  );
-export type ListProjectPermissionsInput =
-  typeof ListProjectPermissionsInput.Type;
+  ) as unknown as Schema.Codec<ListProjectPermissionsInput>;
 
 // Output Schema
+export interface ListProjectPermissionsOutput {
+  project_permissions: {
+    id: string;
+    granted_to_email: string;
+    granted_at: string;
+    revoked_at?: string;
+  }[];
+}
 export const ListProjectPermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_permissions: Schema.Array(
@@ -24,9 +33,7 @@ export const ListProjectPermissionsOutput =
         revoked_at: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ListProjectPermissionsOutput =
-  typeof ListProjectPermissionsOutput.Type;
+  }) as unknown as Schema.Codec<ListProjectPermissionsOutput>;
 
 // The operation
 /**

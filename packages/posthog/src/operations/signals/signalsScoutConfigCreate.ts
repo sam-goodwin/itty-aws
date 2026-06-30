@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsScoutConfigCreateInput {
+  project_id: string;
+  skill_name: string;
+  enabled?: boolean;
+  emit?: boolean;
+  run_interval_minutes?: number;
+}
 export const SignalsScoutConfigCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,20 @@ export const SignalsScoutConfigCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/scout/configs/",
     }),
-  );
-export type SignalsScoutConfigCreateInput =
-  typeof SignalsScoutConfigCreateInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutConfigCreateInput>;
 
 // Output Schema
+export interface SignalsScoutConfigCreateOutput {
+  id: string;
+  skill_name: string;
+  description: string;
+  scout_origin: "canonical" | "custom";
+  enabled?: boolean;
+  emit?: boolean;
+  run_interval_minutes?: number;
+  last_run_at: string | null;
+  created_at: string;
+}
 export const SignalsScoutConfigCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -32,9 +48,7 @@ export const SignalsScoutConfigCreateOutput =
     run_interval_minutes: Schema.optional(Schema.Number),
     last_run_at: Schema.NullOr(Schema.String),
     created_at: Schema.String,
-  });
-export type SignalsScoutConfigCreateOutput =
-  typeof SignalsScoutConfigCreateOutput.Type;
+  }) as unknown as Schema.Codec<SignalsScoutConfigCreateOutput>;
 
 // The operation
 /**

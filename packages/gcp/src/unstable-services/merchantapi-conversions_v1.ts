@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface ConversionType {
   report?: boolean;
 }
 
-export const ConversionType: Schema.Schema<ConversionType> =
+export const ConversionType: Schema.Codec<ConversionType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     report: Schema.optional(Schema.Boolean),
@@ -67,7 +67,7 @@ export interface ProductChange {
   regionCode?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
@@ -100,7 +100,7 @@ export interface ProductStatusChangeMessage {
   account?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     changes: Schema.optional(Schema.Array(ProductChange)),
@@ -131,7 +131,7 @@ export interface AttributionSettings {
     | (string & {});
 }
 
-export const AttributionSettings: Schema.Schema<AttributionSettings> =
+export const AttributionSettings: Schema.Codec<AttributionSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversionType: Schema.optional(Schema.Array(ConversionType)),
     attributionLookbackWindowDays: Schema.optional(Schema.Number),
@@ -149,7 +149,7 @@ export interface MerchantCenterDestination {
   displayName?: string;
 }
 
-export const MerchantCenterDestination: Schema.Schema<MerchantCenterDestination> =
+export const MerchantCenterDestination: Schema.Codec<MerchantCenterDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     destination: Schema.optional(Schema.String),
@@ -166,7 +166,7 @@ export interface GoogleAnalyticsLink {
   property?: string;
 }
 
-export const GoogleAnalyticsLink: Schema.Schema<GoogleAnalyticsLink> =
+export const GoogleAnalyticsLink: Schema.Codec<GoogleAnalyticsLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertyId: Schema.optional(Schema.String),
     attributionSettings: Schema.optional(AttributionSettings),
@@ -197,7 +197,7 @@ export interface ConversionSource {
     | (string & {});
 }
 
-export const ConversionSource: Schema.Schema<ConversionSource> =
+export const ConversionSource: Schema.Codec<ConversionSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     merchantCenterDestination: Schema.optional(MerchantCenterDestination),
     googleAnalyticsLink: Schema.optional(GoogleAnalyticsLink),
@@ -209,7 +209,7 @@ export const ConversionSource: Schema.Schema<ConversionSource> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -221,7 +221,7 @@ export interface ListConversionSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListConversionSourcesResponse: Schema.Schema<ListConversionSourcesResponse> =
+export const ListConversionSourcesResponse: Schema.Codec<ListConversionSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversionSources: Schema.optional(Schema.Array(ConversionSource)),
     nextPageToken: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export const ListConversionSourcesResponse: Schema.Schema<ListConversionSourcesR
 
 export interface UndeleteConversionSourceRequest {}
 
-export const UndeleteConversionSourceRequest: Schema.Schema<UndeleteConversionSourceRequest> =
+export const UndeleteConversionSourceRequest: Schema.Codec<UndeleteConversionSourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteConversionSourceRequest",
   });
@@ -306,7 +306,7 @@ export const UndeleteAccountsConversionSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteAccountsConversionSourcesRequest>;
+  ) as unknown as Schema.Codec<UndeleteAccountsConversionSourcesRequest>;
 
 export type UndeleteAccountsConversionSourcesResponse = ConversionSource;
 export const UndeleteAccountsConversionSourcesResponse =
@@ -356,7 +356,7 @@ export const ListAccountsConversionSourcesRequest =
       path: "conversions/v1/{+parent}/conversionSources",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsConversionSourcesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsConversionSourcesRequest>;
 
 export type ListAccountsConversionSourcesResponse =
   ListConversionSourcesResponse;
@@ -402,7 +402,7 @@ export const CreateAccountsConversionSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsConversionSourcesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsConversionSourcesRequest>;
 
 export type CreateAccountsConversionSourcesResponse = ConversionSource;
 export const CreateAccountsConversionSourcesResponse =
@@ -438,7 +438,7 @@ export const GetAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "conversions/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsConversionSourcesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsConversionSourcesRequest>;
 
 export type GetAccountsConversionSourcesResponse = ConversionSource;
 export const GetAccountsConversionSourcesResponse =
@@ -478,7 +478,7 @@ export const PatchAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "conversions/v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsConversionSourcesRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsConversionSourcesRequest>;
 
 export type PatchAccountsConversionSourcesResponse = ConversionSource;
 export const PatchAccountsConversionSourcesResponse =
@@ -514,7 +514,7 @@ export const DeleteAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "conversions/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsConversionSourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsConversionSourcesRequest>;
 
 export type DeleteAccountsConversionSourcesResponse = Empty;
 export const DeleteAccountsConversionSourcesResponse =

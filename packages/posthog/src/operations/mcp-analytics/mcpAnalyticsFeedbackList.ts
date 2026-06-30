@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpAnalyticsFeedbackListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const McpAnalyticsFeedbackListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,31 @@ export const McpAnalyticsFeedbackListInput =
       method: "GET",
       path: "/api/projects/{project_id}/mcp_analytics/feedback/",
     }),
-  );
-export type McpAnalyticsFeedbackListInput =
-  typeof McpAnalyticsFeedbackListInput.Type;
+  ) as unknown as Schema.Codec<McpAnalyticsFeedbackListInput>;
 
 // Output Schema
+export interface McpAnalyticsFeedbackListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    kind: "feedback" | "missing_capability";
+    goal: string;
+    summary: string;
+    category: string;
+    blocked: boolean | null;
+    attempted_tool: string;
+    mcp_client_name: string;
+    mcp_client_version: string;
+    mcp_protocol_version: string;
+    mcp_transport: string;
+    mcp_session_id: string;
+    mcp_trace_id: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+}
 export const McpAnalyticsFeedbackListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -42,9 +67,7 @@ export const McpAnalyticsFeedbackListOutput =
         updated_at: Schema.String,
       }),
     ),
-  });
-export type McpAnalyticsFeedbackListOutput =
-  typeof McpAnalyticsFeedbackListOutput.Type;
+  }) as unknown as Schema.Codec<McpAnalyticsFeedbackListOutput>;
 
 // The operation
 /**

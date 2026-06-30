@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesUpdateMetadataPartialUpdateInput {
+  project_id: string;
+  group_type?: string;
+  group_type_index?: number;
+  name_singular?: string | null;
+  name_plural?: string | null;
+  detail_dashboard?: number | null;
+  default_columns?: string[] | null;
+  created_at?: string | null;
+}
 export const GroupsTypesUpdateMetadataPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,15 +31,12 @@ export const GroupsTypesUpdateMetadataPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/groups_types/update_metadata/",
     }),
-  );
-export type GroupsTypesUpdateMetadataPartialUpdateInput =
-  typeof GroupsTypesUpdateMetadataPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupsTypesUpdateMetadataPartialUpdateInput>;
 
 // Output Schema
+export type GroupsTypesUpdateMetadataPartialUpdateOutput = void;
 export const GroupsTypesUpdateMetadataPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsTypesUpdateMetadataPartialUpdateOutput =
-  typeof GroupsTypesUpdateMetadataPartialUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsTypesUpdateMetadataPartialUpdateOutput>;
 
 // The operation
 /**

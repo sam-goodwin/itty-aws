@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface OperationMetadata {}
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "OperationMetadata",
   });
@@ -48,7 +48,7 @@ export interface Location {
     | (string & {});
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     features: Schema.optional(Schema.Array(Schema.String)),
@@ -62,7 +62,7 @@ export interface ListAvailableLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListAvailableLocationsResponse: Schema.Schema<ListAvailableLocationsResponse> =
+export const ListAvailableLocationsResponse: Schema.Codec<ListAvailableLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -91,7 +91,7 @@ export interface WebApp {
   webId?: string;
 }
 
-export const WebApp: Schema.Schema<WebApp> =
+export const WebApp: Schema.Codec<WebApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     apiKeyId: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface RemoveAnalyticsRequest {
   analyticsPropertyId?: string;
 }
 
-export const RemoveAnalyticsRequest: Schema.Schema<RemoveAnalyticsRequest> =
+export const RemoveAnalyticsRequest: Schema.Codec<RemoveAnalyticsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsPropertyId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveAnalyticsRequest" });
@@ -140,7 +140,7 @@ export interface IosApp {
   displayName?: string;
 }
 
-export const IosApp: Schema.Schema<IosApp> =
+export const IosApp: Schema.Codec<IosApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -174,7 +174,7 @@ export interface FirebaseAppInfo {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED" | (string & {});
 }
 
-export const FirebaseAppInfo: Schema.Schema<FirebaseAppInfo> =
+export const FirebaseAppInfo: Schema.Codec<FirebaseAppInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platform: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -195,7 +195,7 @@ export interface AnalyticsProperty {
   analyticsAccountId?: string;
 }
 
-export const AnalyticsProperty: Schema.Schema<AnalyticsProperty> =
+export const AnalyticsProperty: Schema.Codec<AnalyticsProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export interface UndeleteAndroidAppRequest {
   etag?: string;
 }
 
-export const UndeleteAndroidAppRequest: Schema.Schema<UndeleteAndroidAppRequest> =
+export const UndeleteAndroidAppRequest: Schema.Codec<UndeleteAndroidAppRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -224,7 +224,7 @@ export interface ProjectInfo {
   locationId?: string;
 }
 
-export const ProjectInfo: Schema.Schema<ProjectInfo> =
+export const ProjectInfo: Schema.Codec<ProjectInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     project: Schema.optional(Schema.String),
@@ -240,7 +240,7 @@ export interface StreamMapping {
   app?: string;
 }
 
-export const StreamMapping: Schema.Schema<StreamMapping> =
+export const StreamMapping: Schema.Codec<StreamMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     streamId: Schema.optional(Schema.String),
     measurementId: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface SearchFirebaseAppsResponse {
   nextPageToken?: string;
 }
 
-export const SearchFirebaseAppsResponse: Schema.Schema<SearchFirebaseAppsResponse> =
+export const SearchFirebaseAppsResponse: Schema.Codec<SearchFirebaseAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(FirebaseAppInfo)),
     nextPageToken: Schema.optional(Schema.String),
@@ -271,7 +271,7 @@ export interface DefaultResources {
   locationId?: string;
 }
 
-export const DefaultResources: Schema.Schema<DefaultResources> =
+export const DefaultResources: Schema.Codec<DefaultResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     realtimeDatabaseInstance: Schema.optional(Schema.String),
     storageBucket: Schema.optional(Schema.String),
@@ -298,7 +298,7 @@ export interface FirebaseProject {
   projectId?: string;
 }
 
-export const FirebaseProject: Schema.Schema<FirebaseProject> =
+export const FirebaseProject: Schema.Codec<FirebaseProject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -317,7 +317,7 @@ export interface ListFirebaseProjectsResponse {
   results?: ReadonlyArray<FirebaseProject>;
 }
 
-export const ListFirebaseProjectsResponse: Schema.Schema<ListFirebaseProjectsResponse> =
+export const ListFirebaseProjectsResponse: Schema.Codec<ListFirebaseProjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(FirebaseProject)),
@@ -330,7 +330,7 @@ export interface ListAvailableProjectsResponse {
   nextPageToken?: string;
 }
 
-export const ListAvailableProjectsResponse: Schema.Schema<ListAvailableProjectsResponse> =
+export const ListAvailableProjectsResponse: Schema.Codec<ListAvailableProjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectInfo: Schema.optional(Schema.Array(ProjectInfo)),
     nextPageToken: Schema.optional(Schema.String),
@@ -343,7 +343,7 @@ export interface AddGoogleAnalyticsRequest {
   analyticsPropertyId?: string;
 }
 
-export const AddGoogleAnalyticsRequest: Schema.Schema<AddGoogleAnalyticsRequest> =
+export const AddGoogleAnalyticsRequest: Schema.Codec<AddGoogleAnalyticsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsAccountId: Schema.optional(Schema.String),
     analyticsPropertyId: Schema.optional(Schema.String),
@@ -374,7 +374,7 @@ export interface AndroidApp {
   sha256Hashes?: ReadonlyArray<string>;
 }
 
-export const AndroidApp: Schema.Schema<AndroidApp> =
+export const AndroidApp: Schema.Codec<AndroidApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     appId: Schema.optional(Schema.String),
@@ -402,7 +402,7 @@ export interface ShaCertificate {
   name?: string;
 }
 
-export const ShaCertificate: Schema.Schema<ShaCertificate> =
+export const ShaCertificate: Schema.Codec<ShaCertificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certType: Schema.optional(Schema.String),
     shaHash: Schema.optional(Schema.String),
@@ -411,7 +411,7 @@ export const ShaCertificate: Schema.Schema<ShaCertificate> =
 
 export interface MessageSet {}
 
-export const MessageSet: Schema.Schema<MessageSet> =
+export const MessageSet: Schema.Codec<MessageSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MessageSet",
   });
@@ -421,7 +421,7 @@ export interface ListShaCertificatesResponse {
   certificates?: ReadonlyArray<ShaCertificate>;
 }
 
-export const ListShaCertificatesResponse: Schema.Schema<ListShaCertificatesResponse> =
+export const ListShaCertificatesResponse: Schema.Codec<ListShaCertificatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificates: Schema.optional(Schema.Array(ShaCertificate)),
   }).annotate({ identifier: "ListShaCertificatesResponse" });
@@ -435,7 +435,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -457,7 +457,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -471,7 +471,7 @@ export interface ProductMetadata {
   warningMessages?: ReadonlyArray<string>;
 }
 
-export const ProductMetadata: Schema.Schema<ProductMetadata> =
+export const ProductMetadata: Schema.Codec<ProductMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warningMessages: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ProductMetadata" });
@@ -483,7 +483,7 @@ export interface AndroidAppConfig {
   configFileContents?: string;
 }
 
-export const AndroidAppConfig: Schema.Schema<AndroidAppConfig> =
+export const AndroidAppConfig: Schema.Codec<AndroidAppConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configFilename: Schema.optional(Schema.String),
     configFileContents: Schema.optional(Schema.String),
@@ -496,7 +496,7 @@ export interface ListIosAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListIosAppsResponse: Schema.Schema<ListIosAppsResponse> =
+export const ListIosAppsResponse: Schema.Codec<ListIosAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(IosApp)),
     nextPageToken: Schema.optional(Schema.String),
@@ -509,7 +509,7 @@ export interface AnalyticsDetails {
   streamMappings?: ReadonlyArray<StreamMapping>;
 }
 
-export const AnalyticsDetails: Schema.Schema<AnalyticsDetails> =
+export const AnalyticsDetails: Schema.Codec<AnalyticsDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsProperty: Schema.optional(AnalyticsProperty),
     streamMappings: Schema.optional(Schema.Array(StreamMapping)),
@@ -520,7 +520,7 @@ export interface FinalizeDefaultLocationRequest {
   locationId?: string;
 }
 
-export const FinalizeDefaultLocationRequest: Schema.Schema<FinalizeDefaultLocationRequest> =
+export const FinalizeDefaultLocationRequest: Schema.Codec<FinalizeDefaultLocationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "FinalizeDefaultLocationRequest" });
@@ -532,7 +532,7 @@ export interface UndeleteIosAppRequest {
   etag?: string;
 }
 
-export const UndeleteIosAppRequest: Schema.Schema<UndeleteIosAppRequest> =
+export const UndeleteIosAppRequest: Schema.Codec<UndeleteIosAppRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -545,7 +545,7 @@ export interface UndeleteWebAppRequest {
   etag?: string;
 }
 
-export const UndeleteWebAppRequest: Schema.Schema<UndeleteWebAppRequest> =
+export const UndeleteWebAppRequest: Schema.Codec<UndeleteWebAppRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -564,7 +564,7 @@ export interface StatusProto {
   space?: string;
 }
 
-export const StatusProto: Schema.Schema<StatusProto> =
+export const StatusProto: Schema.Codec<StatusProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -580,7 +580,7 @@ export interface ListAndroidAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListAndroidAppsResponse: Schema.Schema<ListAndroidAppsResponse> =
+export const ListAndroidAppsResponse: Schema.Codec<ListAndroidAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(AndroidApp)),
     nextPageToken: Schema.optional(Schema.String),
@@ -597,7 +597,7 @@ export interface RemoveAndroidAppRequest {
   allowMissing?: boolean;
 }
 
-export const RemoveAndroidAppRequest: Schema.Schema<RemoveAndroidAppRequest> =
+export const RemoveAndroidAppRequest: Schema.Codec<RemoveAndroidAppRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -616,7 +616,7 @@ export interface RemoveIosAppRequest {
   allowMissing?: boolean;
 }
 
-export const RemoveIosAppRequest: Schema.Schema<RemoveIosAppRequest> =
+export const RemoveIosAppRequest: Schema.Codec<RemoveIosAppRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -631,7 +631,7 @@ export interface IosAppConfig {
   configFilename?: string;
 }
 
-export const IosAppConfig: Schema.Schema<IosAppConfig> =
+export const IosAppConfig: Schema.Codec<IosAppConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configFileContents: Schema.optional(Schema.String),
     configFilename: Schema.optional(Schema.String),
@@ -648,7 +648,7 @@ export interface AdminSdkConfig {
   locationId?: string;
 }
 
-export const AdminSdkConfig: Schema.Schema<AdminSdkConfig> =
+export const AdminSdkConfig: Schema.Codec<AdminSdkConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     databaseURL: Schema.optional(Schema.String),
@@ -663,7 +663,7 @@ export interface ListWebAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListWebAppsResponse: Schema.Schema<ListWebAppsResponse> =
+export const ListWebAppsResponse: Schema.Codec<ListWebAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(WebApp)),
     nextPageToken: Schema.optional(Schema.String),
@@ -680,7 +680,7 @@ export interface RemoveWebAppRequest {
   allowMissing?: boolean;
 }
 
-export const RemoveWebAppRequest: Schema.Schema<RemoveWebAppRequest> =
+export const RemoveWebAppRequest: Schema.Codec<RemoveWebAppRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     immediate: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -717,7 +717,7 @@ export interface WebAppConfig {
   version?: string;
 }
 
-export const WebAppConfig: Schema.Schema<WebAppConfig> =
+export const WebAppConfig: Schema.Codec<WebAppConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     measurementId: Schema.optional(Schema.String),
     databaseURL: Schema.optional(Schema.String),
@@ -739,14 +739,14 @@ export interface AddFirebaseRequest {
   locationId?: string;
 }
 
-export const AddFirebaseRequest: Schema.Schema<AddFirebaseRequest> =
+export const AddFirebaseRequest: Schema.Codec<AddFirebaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddFirebaseRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -816,7 +816,7 @@ export const GetAdminSdkConfigProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAdminSdkConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<GetAdminSdkConfigProjectsRequest>;
 
 export type GetAdminSdkConfigProjectsResponse = AdminSdkConfig;
 export const GetAdminSdkConfigProjectsResponse =
@@ -857,7 +857,7 @@ export const RemoveAnalyticsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveAnalyticsProjectsRequest>;
+  ) as unknown as Schema.Codec<RemoveAnalyticsProjectsRequest>;
 
 export type RemoveAnalyticsProjectsResponse = Empty;
 export const RemoveAnalyticsProjectsResponse =
@@ -892,7 +892,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
+) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = FirebaseProject;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ FirebaseProject;
@@ -922,7 +922,7 @@ export const GetAnalyticsDetailsProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAnalyticsDetailsProjectsRequest>;
+  ) as unknown as Schema.Codec<GetAnalyticsDetailsProjectsRequest>;
 
 export type GetAnalyticsDetailsProjectsResponse = AnalyticsDetails;
 export const GetAnalyticsDetailsProjectsResponse =
@@ -961,7 +961,7 @@ export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/projects" }),
   svc,
-) as unknown as Schema.Schema<ListProjectsRequest>;
+) as unknown as Schema.Codec<ListProjectsRequest>;
 
 export type ListProjectsResponse = ListFirebaseProjectsResponse;
 export const ListProjectsResponse =
@@ -1003,7 +1003,7 @@ export const AddFirebaseProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddFirebaseProjectsRequest>;
+  ) as unknown as Schema.Codec<AddFirebaseProjectsRequest>;
 
 export type AddFirebaseProjectsResponse = Operation;
 export const AddFirebaseProjectsResponse =
@@ -1046,7 +1046,7 @@ export const AddGoogleAnalyticsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddGoogleAnalyticsProjectsRequest>;
+  ) as unknown as Schema.Codec<AddGoogleAnalyticsProjectsRequest>;
 
 export type AddGoogleAnalyticsProjectsResponse = Operation;
 export const AddGoogleAnalyticsProjectsResponse =
@@ -1087,7 +1087,7 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchProjectsRequest>;
+) as unknown as Schema.Codec<PatchProjectsRequest>;
 
 export type PatchProjectsResponse = FirebaseProject;
 export const PatchProjectsResponse =
@@ -1137,7 +1137,7 @@ export const SearchAppsProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}:searchApps" }),
     svc,
-  ) as unknown as Schema.Schema<SearchAppsProjectsRequest>;
+  ) as unknown as Schema.Codec<SearchAppsProjectsRequest>;
 
 export type SearchAppsProjectsResponse = SearchFirebaseAppsResponse;
 export const SearchAppsProjectsResponse =
@@ -1179,7 +1179,7 @@ export const FinalizeProjectsDefaultLocationRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FinalizeProjectsDefaultLocationRequest>;
+  ) as unknown as Schema.Codec<FinalizeProjectsDefaultLocationRequest>;
 
 export type FinalizeProjectsDefaultLocationResponse = Operation;
 export const FinalizeProjectsDefaultLocationResponse =
@@ -1215,7 +1215,7 @@ export const GetProjectsAndroidAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAndroidAppsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAndroidAppsRequest>;
 
 export type GetProjectsAndroidAppsResponse = AndroidApp;
 export const GetProjectsAndroidAppsResponse =
@@ -1257,7 +1257,7 @@ export const ListProjectsAndroidAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/androidApps" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAndroidAppsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAndroidAppsRequest>;
 
 export type ListProjectsAndroidAppsResponse = ListAndroidAppsResponse;
 export const ListProjectsAndroidAppsResponse =
@@ -1295,7 +1295,7 @@ export const RemoveProjectsAndroidAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:remove", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RemoveProjectsAndroidAppsRequest>;
+  ) as unknown as Schema.Codec<RemoveProjectsAndroidAppsRequest>;
 
 export type RemoveProjectsAndroidAppsResponse = Operation;
 export const RemoveProjectsAndroidAppsResponse =
@@ -1338,7 +1338,7 @@ export const CreateProjectsAndroidAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsAndroidAppsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsAndroidAppsRequest>;
 
 export type CreateProjectsAndroidAppsResponse = Operation;
 export const CreateProjectsAndroidAppsResponse =
@@ -1377,7 +1377,7 @@ export const UndeleteProjectsAndroidAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsAndroidAppsRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsAndroidAppsRequest>;
 
 export type UndeleteProjectsAndroidAppsResponse = Operation;
 export const UndeleteProjectsAndroidAppsResponse =
@@ -1419,7 +1419,7 @@ export const PatchProjectsAndroidAppsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAndroidAppsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAndroidAppsRequest>;
 
 export type PatchProjectsAndroidAppsResponse = AndroidApp;
 export const PatchProjectsAndroidAppsResponse =
@@ -1455,7 +1455,7 @@ export const GetConfigProjectsAndroidAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsAndroidAppsRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsAndroidAppsRequest>;
 
 export type GetConfigProjectsAndroidAppsResponse = AndroidAppConfig;
 export const GetConfigProjectsAndroidAppsResponse =
@@ -1489,7 +1489,7 @@ export const DeleteProjectsAndroidAppsShaRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsAndroidAppsShaRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsAndroidAppsShaRequest>;
 
 export type DeleteProjectsAndroidAppsShaResponse = Empty;
 export const DeleteProjectsAndroidAppsShaResponse =
@@ -1525,7 +1525,7 @@ export const ListProjectsAndroidAppsShaRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/sha" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAndroidAppsShaRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAndroidAppsShaRequest>;
 
 export type ListProjectsAndroidAppsShaResponse = ListShaCertificatesResponse;
 export const ListProjectsAndroidAppsShaResponse =
@@ -1562,7 +1562,7 @@ export const CreateProjectsAndroidAppsShaRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+parent}/sha", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsAndroidAppsShaRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsAndroidAppsShaRequest>;
 
 export type CreateProjectsAndroidAppsShaResponse = ShaCertificate;
 export const CreateProjectsAndroidAppsShaResponse =
@@ -1604,7 +1604,7 @@ export const ListProjectsAvailableLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/availableLocations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAvailableLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAvailableLocationsRequest>;
 
 export type ListProjectsAvailableLocationsResponse =
   ListAvailableLocationsResponse;
@@ -1650,7 +1650,7 @@ export const CreateProjectsWebAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsWebAppsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsWebAppsRequest>;
 
 export type CreateProjectsWebAppsResponse = Operation;
 export const CreateProjectsWebAppsResponse =
@@ -1686,7 +1686,7 @@ export const GetProjectsWebAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsWebAppsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsWebAppsRequest>;
 
 export type GetProjectsWebAppsResponse = WebApp;
 export const GetProjectsWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
@@ -1727,7 +1727,7 @@ export const ListProjectsWebAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/webApps" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsWebAppsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsWebAppsRequest>;
 
 export type ListProjectsWebAppsResponse = ListWebAppsResponse;
 export const ListProjectsWebAppsResponse =
@@ -1765,7 +1765,7 @@ export const RemoveProjectsWebAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:remove", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RemoveProjectsWebAppsRequest>;
+  ) as unknown as Schema.Codec<RemoveProjectsWebAppsRequest>;
 
 export type RemoveProjectsWebAppsResponse = Operation;
 export const RemoveProjectsWebAppsResponse =
@@ -1807,7 +1807,7 @@ export const PatchProjectsWebAppsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsWebAppsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsWebAppsRequest>;
 
 export type PatchProjectsWebAppsResponse = WebApp;
 export const PatchProjectsWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
@@ -1842,7 +1842,7 @@ export const GetConfigProjectsWebAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsWebAppsRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsWebAppsRequest>;
 
 export type GetConfigProjectsWebAppsResponse = WebAppConfig;
 export const GetConfigProjectsWebAppsResponse =
@@ -1879,7 +1879,7 @@ export const UndeleteProjectsWebAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsWebAppsRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsWebAppsRequest>;
 
 export type UndeleteProjectsWebAppsResponse = Operation;
 export const UndeleteProjectsWebAppsResponse =
@@ -1918,7 +1918,7 @@ export const UndeleteProjectsIosAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsIosAppsRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsIosAppsRequest>;
 
 export type UndeleteProjectsIosAppsResponse = Operation;
 export const UndeleteProjectsIosAppsResponse =
@@ -1960,7 +1960,7 @@ export const PatchProjectsIosAppsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsIosAppsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsIosAppsRequest>;
 
 export type PatchProjectsIosAppsResponse = IosApp;
 export const PatchProjectsIosAppsResponse = /*@__PURE__*/ /*#__PURE__*/ IosApp;
@@ -1995,7 +1995,7 @@ export const GetConfigProjectsIosAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsIosAppsRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsIosAppsRequest>;
 
 export type GetConfigProjectsIosAppsResponse = IosAppConfig;
 export const GetConfigProjectsIosAppsResponse =
@@ -2040,7 +2040,7 @@ export const ListProjectsIosAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/iosApps" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsIosAppsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsIosAppsRequest>;
 
 export type ListProjectsIosAppsResponse = ListIosAppsResponse;
 export const ListProjectsIosAppsResponse =
@@ -2078,7 +2078,7 @@ export const RemoveProjectsIosAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:remove", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RemoveProjectsIosAppsRequest>;
+  ) as unknown as Schema.Codec<RemoveProjectsIosAppsRequest>;
 
 export type RemoveProjectsIosAppsResponse = Operation;
 export const RemoveProjectsIosAppsResponse =
@@ -2114,7 +2114,7 @@ export const GetProjectsIosAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsIosAppsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsIosAppsRequest>;
 
 export type GetProjectsIosAppsResponse = IosApp;
 export const GetProjectsIosAppsResponse = /*@__PURE__*/ /*#__PURE__*/ IosApp;
@@ -2151,7 +2151,7 @@ export const CreateProjectsIosAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsIosAppsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsIosAppsRequest>;
 
 export type CreateProjectsIosAppsResponse = Operation;
 export const CreateProjectsIosAppsResponse =
@@ -2186,7 +2186,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2219,7 +2219,7 @@ export const ListAvailableProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/availableProjects" }),
     svc,
-  ) as unknown as Schema.Schema<ListAvailableProjectsRequest>;
+  ) as unknown as Schema.Codec<ListAvailableProjectsRequest>;
 
 export type ListAvailableProjectsResponse_Op = ListAvailableProjectsResponse;
 export const ListAvailableProjectsResponse_Op =

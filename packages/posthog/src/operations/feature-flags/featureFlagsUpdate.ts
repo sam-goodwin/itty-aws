@@ -4,6 +4,91 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsUpdateInput {
+  id: number;
+  project_id: string;
+  name?: string;
+  key?: string;
+  filters?: Record<string, unknown>;
+  deleted?: boolean;
+  active?: boolean;
+  archived?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string | null;
+  version?: number;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  ensure_experience_continuity?: boolean | null;
+  experiment_set?: number[];
+  experiment_set_metadata?: { id: number; name: string; is_running: boolean }[];
+  surveys?: Record<string, unknown>;
+  features?: Record<string, unknown>;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
+  can_edit?: boolean;
+  tags?: unknown[];
+  evaluation_contexts?: unknown[];
+  usage_dashboard?: number;
+  analytics_dashboards?: number[];
+  has_enriched_analytics?: boolean | null;
+  user_access_level?: string | null;
+  creation_context?:
+    | "feature_flags"
+    | "experiments"
+    | "surveys"
+    | "early_access_features"
+    | "web_experiments"
+    | "product_tours";
+  is_remote_configuration?: boolean | null;
+  has_encrypted_payloads?: boolean | null;
+  status?: string;
+  evaluation_runtime?: "server" | "client" | "all" | "" | null;
+  bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+  last_called_at?: string | null;
+  _create_in_folder?: string;
+  _should_create_usage_dashboard?: boolean;
+  is_used_in_replay_settings?: boolean;
+}
 export const FeatureFlagsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -27,7 +112,23 @@ export const FeatureFlagsUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -47,7 +148,23 @@ export const FeatureFlagsUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -88,8 +205,22 @@ export const FeatureFlagsUpdateInput =
     is_remote_configuration: Schema.optional(Schema.NullOr(Schema.Boolean)),
     has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
     status: Schema.optional(Schema.String),
-    evaluation_runtime: Schema.optional(Schema.Unknown),
-    bucketing_identifier: Schema.optional(Schema.Unknown),
+    evaluation_runtime: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["server", "client", "all"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
+    bucketing_identifier: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["distinct_id", "device_id"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     last_called_at: Schema.optional(Schema.NullOr(Schema.String)),
     _create_in_folder: Schema.optional(Schema.String),
     _should_create_usage_dashboard: Schema.optional(Schema.Boolean),
@@ -99,10 +230,93 @@ export const FeatureFlagsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/feature_flags/{id}/",
     }),
-  );
-export type FeatureFlagsUpdateInput = typeof FeatureFlagsUpdateInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsUpdateInput>;
 
 // Output Schema
+export interface FeatureFlagsUpdateOutput {
+  id?: number;
+  name?: string;
+  key?: string;
+  filters?: Record<string, unknown>;
+  deleted?: boolean;
+  active?: boolean;
+  archived?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string | null;
+  version?: number;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  ensure_experience_continuity?: boolean | null;
+  experiment_set?: number[];
+  experiment_set_metadata?: { id: number; name: string; is_running: boolean }[];
+  surveys?: Record<string, unknown>;
+  features?: Record<string, unknown>;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
+  can_edit?: boolean;
+  tags?: unknown[];
+  evaluation_contexts?: unknown[];
+  usage_dashboard?: number;
+  analytics_dashboards?: number[];
+  has_enriched_analytics?: boolean | null;
+  user_access_level?: string | null;
+  creation_context?:
+    | "feature_flags"
+    | "experiments"
+    | "surveys"
+    | "early_access_features"
+    | "web_experiments"
+    | "product_tours";
+  is_remote_configuration?: boolean | null;
+  has_encrypted_payloads?: boolean | null;
+  status?: string;
+  evaluation_runtime?: "server" | "client" | "all" | "" | null;
+  bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+  last_called_at?: string | null;
+  _create_in_folder?: string;
+  _should_create_usage_dashboard?: boolean;
+  is_used_in_replay_settings?: boolean;
+}
 export const FeatureFlagsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -125,7 +339,23 @@ export const FeatureFlagsUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -145,7 +375,23 @@ export const FeatureFlagsUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -186,14 +432,27 @@ export const FeatureFlagsUpdateOutput =
     is_remote_configuration: Schema.optional(Schema.NullOr(Schema.Boolean)),
     has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
     status: Schema.optional(Schema.String),
-    evaluation_runtime: Schema.optional(Schema.Unknown),
-    bucketing_identifier: Schema.optional(Schema.Unknown),
+    evaluation_runtime: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["server", "client", "all"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
+    bucketing_identifier: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["distinct_id", "device_id"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     last_called_at: Schema.optional(Schema.NullOr(Schema.String)),
     _create_in_folder: Schema.optional(Schema.String),
     _should_create_usage_dashboard: Schema.optional(Schema.Boolean),
     is_used_in_replay_settings: Schema.optional(Schema.Boolean),
-  });
-export type FeatureFlagsUpdateOutput = typeof FeatureFlagsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsUpdateOutput>;
 
 // The operation
 /**

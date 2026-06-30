@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateNeonAuthPhoneNumberPluginInput {
+  project_id: string;
+  branch_id: string;
+  enabled?: boolean;
+  otp_expires_in?: number;
+}
 export const UpdateNeonAuthPhoneNumberPluginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,18 +20,18 @@ export const UpdateNeonAuthPhoneNumberPluginInput =
       method: "PATCH",
       path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/phone-number",
     }),
-  );
-export type UpdateNeonAuthPhoneNumberPluginInput =
-  typeof UpdateNeonAuthPhoneNumberPluginInput.Type;
+  ) as unknown as Schema.Codec<UpdateNeonAuthPhoneNumberPluginInput>;
 
 // Output Schema
+export interface UpdateNeonAuthPhoneNumberPluginOutput {
+  enabled: boolean;
+  otp_expires_in?: number;
+}
 export const UpdateNeonAuthPhoneNumberPluginOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     otp_expires_in: Schema.optional(Schema.Number),
-  });
-export type UpdateNeonAuthPhoneNumberPluginOutput =
-  typeof UpdateNeonAuthPhoneNumberPluginOutput.Type;
+  }) as unknown as Schema.Codec<UpdateNeonAuthPhoneNumberPluginOutput>;
 
 // The operation
 /**

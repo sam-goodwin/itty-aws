@@ -4,6 +4,23 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsScoutEmitReportInput {
+  project_id: string;
+  run_id: string;
+  title: string;
+  summary: string;
+  evidence: { description: string; source_id: string; weight?: number }[];
+  actionability_explanation: string;
+  actionability:
+    | "immediately_actionable"
+    | "requires_human_input"
+    | "not_actionable";
+  already_addressed?: boolean;
+  repository?: string | null;
+  priority?: "P0" | "P1" | "P2" | "P3" | "P4" | null;
+  priority_explanation?: string | null;
+  suggested_reviewers?: string[];
+}
 export const SignalsScoutEmitReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -25,7 +42,9 @@ export const SignalsScoutEmitReportInput =
     ]),
     already_addressed: Schema.optional(Schema.Boolean),
     repository: Schema.optional(Schema.NullOr(Schema.String)),
-    priority: Schema.optional(Schema.Unknown),
+    priority: Schema.optional(
+      Schema.NullOr(Schema.Literals(["P0", "P1", "P2", "P3", "P4"])),
+    ),
     priority_explanation: Schema.optional(Schema.NullOr(Schema.String)),
     suggested_reviewers: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -33,11 +52,16 @@ export const SignalsScoutEmitReportInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/scout/runs/{run_id}/emit-report/",
     }),
-  );
-export type SignalsScoutEmitReportInput =
-  typeof SignalsScoutEmitReportInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutEmitReportInput>;
 
 // Output Schema
+export interface SignalsScoutEmitReportOutput {
+  report_id: string | null;
+  report_status: string | null;
+  emitted: boolean;
+  skipped_reason: string | null;
+  safety_explanation: string | null;
+}
 export const SignalsScoutEmitReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     report_id: Schema.NullOr(Schema.String),
@@ -45,9 +69,7 @@ export const SignalsScoutEmitReportOutput =
     emitted: Schema.Boolean,
     skipped_reason: Schema.NullOr(Schema.String),
     safety_explanation: Schema.NullOr(Schema.String),
-  });
-export type SignalsScoutEmitReportOutput =
-  typeof SignalsScoutEmitReportOutput.Type;
+  }) as unknown as Schema.Codec<SignalsScoutEmitReportOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmSkillsImportCreateInput {
+  project_id: string;
+  file: string;
+}
 export const LlmSkillsImportCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,51 @@ export const LlmSkillsImportCreateInput =
       path: "/api/projects/{project_id}/llm_skills/import/",
       contentType: "form-urlencoded",
     }),
-  );
-export type LlmSkillsImportCreateInput = typeof LlmSkillsImportCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmSkillsImportCreateInput>;
 
 // Output Schema
+export interface LlmSkillsImportCreateOutput {
+  id?: string;
+  name?: string;
+  description?: string;
+  body?: string;
+  license?: string;
+  compatibility?: string;
+  allowed_tools?: string[];
+  metadata?: Record<string, unknown>;
+  category?: string;
+  files?: { path?: string; content_type?: string }[];
+  outline?: { level?: number; text?: string }[];
+  version?: number;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+}
 export const LlmSkillsImportCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -58,7 +103,23 @@ export const LlmSkillsImportCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -69,9 +130,7 @@ export const LlmSkillsImportCreateOutput =
     latest_version: Schema.optional(Schema.Number),
     version_count: Schema.optional(Schema.Number),
     first_version_created_at: Schema.optional(Schema.String),
-  });
-export type LlmSkillsImportCreateOutput =
-  typeof LlmSkillsImportCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmSkillsImportCreateOutput>;
 
 // The operation
 /**

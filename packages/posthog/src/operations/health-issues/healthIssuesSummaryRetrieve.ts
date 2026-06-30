@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface HealthIssuesSummaryRetrieveInput {
+  project_id: string;
+}
 export const HealthIssuesSummaryRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,19 +14,20 @@ export const HealthIssuesSummaryRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/health_issues/summary/",
     }),
-  );
-export type HealthIssuesSummaryRetrieveInput =
-  typeof HealthIssuesSummaryRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HealthIssuesSummaryRetrieveInput>;
 
 // Output Schema
+export interface HealthIssuesSummaryRetrieveOutput {
+  total: number;
+  by_severity: Record<string, number>;
+  by_kind: Record<string, number>;
+}
 export const HealthIssuesSummaryRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     total: Schema.Number,
     by_severity: Schema.Record(Schema.String, Schema.Number),
     by_kind: Schema.Record(Schema.String, Schema.Number),
-  });
-export type HealthIssuesSummaryRetrieveOutput =
-  typeof HealthIssuesSummaryRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<HealthIssuesSummaryRetrieveOutput>;
 
 // The operation
 /**

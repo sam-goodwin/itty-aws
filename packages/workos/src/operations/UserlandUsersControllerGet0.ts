@@ -4,14 +4,33 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerGet0Input {
+  id: string;
+}
 export const UserlandUsersControllerGet0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/user_management/users/{id}" }));
-export type UserlandUsersControllerGet0Input =
-  typeof UserlandUsersControllerGet0Input.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/user_management/users/{id}" }),
+  ) as unknown as Schema.Codec<UserlandUsersControllerGet0Input>;
 
 // Output Schema
+export interface UserlandUsersControllerGet0Output {
+  object?: string;
+  id?: string;
+  first_name?: string | null;
+  last_name?: string | null;
+  name?: string | null;
+  profile_picture_url?: string | null;
+  email?: string;
+  email_verified?: boolean;
+  external_id?: string | null;
+  metadata?: Record<string, string>;
+  last_sign_in_at?: string | null;
+  locale?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const UserlandUsersControllerGet0Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -28,9 +47,7 @@ export const UserlandUsersControllerGet0Output =
     locale: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type UserlandUsersControllerGet0Output =
-  typeof UserlandUsersControllerGet0Output.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerGet0Output>;
 
 // The operation
 /**

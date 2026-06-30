@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFunctionsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const HogFunctionsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const HogFunctionsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/hog_functions/{id}/",
     }),
-  );
-export type HogFunctionsDestroyInput = typeof HogFunctionsDestroyInput.Type;
+  ) as unknown as Schema.Codec<HogFunctionsDestroyInput>;
 
 // Output Schema
+export type HogFunctionsDestroyOutput = void;
 export const HogFunctionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HogFunctionsDestroyOutput = typeof HogFunctionsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFunctionsDestroyOutput>;
 
 // The operation
 /**

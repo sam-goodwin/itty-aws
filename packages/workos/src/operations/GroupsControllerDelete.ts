@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GroupsControllerDeleteInput {
+  organizationId: string;
+  groupId: string;
+}
 export const GroupsControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const GroupsControllerDeleteInput =
       method: "DELETE",
       path: "/organizations/{organizationId}/groups/{groupId}",
     }),
-  );
-export type GroupsControllerDeleteInput =
-  typeof GroupsControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<GroupsControllerDeleteInput>;
 
 // Output Schema
+export type GroupsControllerDeleteOutput = void;
 export const GroupsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsControllerDeleteOutput =
-  typeof GroupsControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsControllerDeleteOutput>;
 
 // The operation
 /**

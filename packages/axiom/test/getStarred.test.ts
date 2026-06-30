@@ -53,7 +53,7 @@ describe("getStarred", () => {
 
       await runEffect(effect);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -67,6 +67,6 @@ describe("getStarred", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

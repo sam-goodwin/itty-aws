@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput {
+  organizationId: string;
+  slug: string;
+  permissions?: string[];
+}
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,21 @@ export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsInp
       method: "PUT",
       path: "/authorization/organizations/{organizationId}/roles/{slug}/permissions",
     }),
-  );
-export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput =
-  typeof AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput>;
 
 // Output Schema
+export interface AuthorizationOrganizationRolePermissionsControllerSetPermissionsOutput {
+  slug: string;
+  object: string;
+  id: string;
+  name: string;
+  description: string | null;
+  type: "EnvironmentRole" | "OrganizationRole";
+  resource_type_slug: string;
+  permissions: string[];
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String,
@@ -31,9 +46,7 @@ export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsOut
     permissions: Schema.Array(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsOutput =
-  typeof AuthorizationOrganizationRolePermissionsControllerSetPermissionsOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationOrganizationRolePermissionsControllerSetPermissionsOutput>;
 
 // The operation
 /**

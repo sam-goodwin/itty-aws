@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ExternalDataSourcesDraftCustomManifestCreateInput {
+  project_id: string;
+  source_name?: string;
+  docs_url?: string;
+  docs_text?: string;
+}
 export const ExternalDataSourcesDraftCustomManifestCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,16 @@ export const ExternalDataSourcesDraftCustomManifestCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/external_data_sources/draft_custom_manifest/",
     }),
-  );
-export type ExternalDataSourcesDraftCustomManifestCreateInput =
-  typeof ExternalDataSourcesDraftCustomManifestCreateInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSourcesDraftCustomManifestCreateInput>;
 
 // Output Schema
+export interface ExternalDataSourcesDraftCustomManifestCreateOutput {
+  draft_status: "ok" | "invalid" | "model_error";
+  manifest_json: string | null;
+  resource_names: string[];
+  attempts: number;
+  error: string | null;
+}
 export const ExternalDataSourcesDraftCustomManifestCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     draft_status: Schema.Literals(["ok", "invalid", "model_error"]),
@@ -26,9 +37,7 @@ export const ExternalDataSourcesDraftCustomManifestCreateOutput =
     resource_names: Schema.Array(Schema.String),
     attempts: Schema.Number,
     error: Schema.NullOr(Schema.String),
-  });
-export type ExternalDataSourcesDraftCustomManifestCreateOutput =
-  typeof ExternalDataSourcesDraftCustomManifestCreateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalDataSourcesDraftCustomManifestCreateOutput>;
 
 // The operation
 /**

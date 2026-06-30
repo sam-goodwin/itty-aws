@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpAnalyticsSessionsGenerateIntentInput {
+  id: string;
+  project_id: string;
+  date_from?: string;
+}
 export const McpAnalyticsSessionsGenerateIntentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +18,18 @@ export const McpAnalyticsSessionsGenerateIntentInput =
       method: "POST",
       path: "/api/projects/{project_id}/mcp_analytics/sessions/{id}/generate_intent/",
     }),
-  );
-export type McpAnalyticsSessionsGenerateIntentInput =
-  typeof McpAnalyticsSessionsGenerateIntentInput.Type;
+  ) as unknown as Schema.Codec<McpAnalyticsSessionsGenerateIntentInput>;
 
 // Output Schema
+export interface McpAnalyticsSessionsGenerateIntentOutput {
+  session_id: string;
+  intent: string;
+}
 export const McpAnalyticsSessionsGenerateIntentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session_id: Schema.String,
     intent: Schema.String,
-  });
-export type McpAnalyticsSessionsGenerateIntentOutput =
-  typeof McpAnalyticsSessionsGenerateIntentOutput.Type;
+  }) as unknown as Schema.Codec<McpAnalyticsSessionsGenerateIntentOutput>;
 
 // The operation
 /**

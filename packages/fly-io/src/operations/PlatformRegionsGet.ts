@@ -4,13 +4,26 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface PlatformRegionsGetInput {}
 export const PlatformRegionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/platform/regions" }),
-  );
-export type PlatformRegionsGetInput = typeof PlatformRegionsGetInput.Type;
+  ) as unknown as Schema.Codec<PlatformRegionsGetInput>;
 
 // Output Schema
+export interface PlatformRegionsGetOutput {
+  nearest?: string;
+  regions?: {
+    code?: string;
+    deprecated?: boolean;
+    gateway_available?: boolean;
+    geo_region?: string;
+    latitude?: number;
+    longitude?: number;
+    name?: string;
+    requires_paid_plan?: boolean;
+  }[];
+}
 export const PlatformRegionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nearest: Schema.optional(Schema.String),
@@ -28,8 +41,7 @@ export const PlatformRegionsGetOutput =
         }),
       ),
     ),
-  });
-export type PlatformRegionsGetOutput = typeof PlatformRegionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PlatformRegionsGetOutput>;
 
 // The operation
 /**

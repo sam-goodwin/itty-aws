@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingSuppressionRulesListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ErrorTrackingSuppressionRulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,23 @@ export const ErrorTrackingSuppressionRulesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/suppression_rules/",
     }),
-  );
-export type ErrorTrackingSuppressionRulesListInput =
-  typeof ErrorTrackingSuppressionRulesListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesListInput>;
 
 // Output Schema
+export interface ErrorTrackingSuppressionRulesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    filters?: unknown;
+    order_key?: number;
+    disabled_data?: unknown;
+    sampling_rate?: number;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+}
 export const ErrorTrackingSuppressionRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -36,9 +53,7 @@ export const ErrorTrackingSuppressionRulesListOutput =
         }),
       ),
     ),
-  });
-export type ErrorTrackingSuppressionRulesListOutput =
-  typeof ErrorTrackingSuppressionRulesListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesListOutput>;
 
 // The operation
 /**

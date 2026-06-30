@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WarehouseTablesRefreshSchemaCreateInput {
+  id: string;
+  project_id: string;
+}
 export const WarehouseTablesRefreshSchemaCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const WarehouseTablesRefreshSchemaCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/warehouse_tables/{id}/refresh_schema/",
     }),
-  );
-export type WarehouseTablesRefreshSchemaCreateInput =
-  typeof WarehouseTablesRefreshSchemaCreateInput.Type;
+  ) as unknown as Schema.Codec<WarehouseTablesRefreshSchemaCreateInput>;
 
 // Output Schema
+export type WarehouseTablesRefreshSchemaCreateOutput = void;
 export const WarehouseTablesRefreshSchemaCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WarehouseTablesRefreshSchemaCreateOutput =
-  typeof WarehouseTablesRefreshSchemaCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseTablesRefreshSchemaCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1RollbackMigrationsInput {
+  ref: string;
+  gte: string;
+}
 export const V1RollbackMigrationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const V1RollbackMigrationsInput =
       method: "DELETE",
       path: "/v1/projects/{ref}/database/migrations",
     }),
-  );
-export type V1RollbackMigrationsInput = typeof V1RollbackMigrationsInput.Type;
+  ) as unknown as Schema.Codec<V1RollbackMigrationsInput>;
 
 // Output Schema
+export type V1RollbackMigrationsOutput = void;
 export const V1RollbackMigrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1RollbackMigrationsOutput = typeof V1RollbackMigrationsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RollbackMigrationsOutput>;
 
 // The operation
 /**

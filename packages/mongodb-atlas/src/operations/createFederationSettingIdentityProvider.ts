@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateFederationSettingIdentityProviderInput {
+  federationSettingsId: string;
+  envelope?: boolean;
+}
 export const CreateFederationSettingIdentityProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const CreateFederationSettingIdentityProviderInput =
       method: "POST",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders",
     }),
-  );
-export type CreateFederationSettingIdentityProviderInput =
-  typeof CreateFederationSettingIdentityProviderInput.Type;
+  ) as unknown as Schema.Codec<CreateFederationSettingIdentityProviderInput>;
 
 // Output Schema
+export type CreateFederationSettingIdentityProviderOutput = void;
 export const CreateFederationSettingIdentityProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateFederationSettingIdentityProviderOutput =
-  typeof CreateFederationSettingIdentityProviderOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateFederationSettingIdentityProviderOutput>;
 
 // The operation
 /**

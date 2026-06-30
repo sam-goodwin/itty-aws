@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -47,7 +47,7 @@ export interface PostalAddress {
   administrativeArea?: string;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
+export const PostalAddress: Schema.Codec<PostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recipients: Schema.optional(Schema.Array(Schema.String)),
     addressLines: Schema.optional(Schema.Array(Schema.String)),
@@ -71,7 +71,7 @@ export interface OrganizationInfo {
   phoneNumber?: string;
 }
 
-export const OrganizationInfo: Schema.Schema<OrganizationInfo> =
+export const OrganizationInfo: Schema.Codec<OrganizationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registeredDomain: Schema.optional(Schema.String),
     address: Schema.optional(PostalAddress),
@@ -127,7 +127,7 @@ export interface Account {
   organizationInfo?: OrganizationInfo;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
     primaryOwner: Schema.optional(Schema.String),
@@ -160,7 +160,7 @@ export interface Admin {
   name?: string;
 }
 
-export const Admin: Schema.Schema<Admin> =
+export const Admin: Schema.Codec<Admin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
@@ -174,7 +174,7 @@ export interface ListLocationAdminsResponse {
   admins?: ReadonlyArray<Admin>;
 }
 
-export const ListLocationAdminsResponse: Schema.Schema<ListLocationAdminsResponse> =
+export const ListLocationAdminsResponse: Schema.Codec<ListLocationAdminsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     admins: Schema.optional(Schema.Array(Admin)),
   }).annotate({ identifier: "ListLocationAdminsResponse" });
@@ -184,7 +184,7 @@ export interface TransferLocationRequest {
   destinationAccount?: string;
 }
 
-export const TransferLocationRequest: Schema.Schema<TransferLocationRequest> =
+export const TransferLocationRequest: Schema.Codec<TransferLocationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationAccount: Schema.optional(Schema.String),
   }).annotate({ identifier: "TransferLocationRequest" });
@@ -198,7 +198,7 @@ export interface TargetLocation {
   placeId?: string;
 }
 
-export const TargetLocation: Schema.Schema<TargetLocation> =
+export const TargetLocation: Schema.Codec<TargetLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationName: Schema.optional(Schema.String),
     address: Schema.optional(Schema.String),
@@ -228,7 +228,7 @@ export interface Invitation {
   name?: string;
 }
 
-export const Invitation: Schema.Schema<Invitation> =
+export const Invitation: Schema.Codec<Invitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     targetType: Schema.optional(Schema.String),
@@ -239,14 +239,14 @@ export const Invitation: Schema.Schema<Invitation> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface DeclineInvitationRequest {}
 
-export const DeclineInvitationRequest: Schema.Schema<DeclineInvitationRequest> =
+export const DeclineInvitationRequest: Schema.Codec<DeclineInvitationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeclineInvitationRequest",
   });
@@ -256,7 +256,7 @@ export interface ListInvitationsResponse {
   invitations?: ReadonlyArray<Invitation>;
 }
 
-export const ListInvitationsResponse: Schema.Schema<ListInvitationsResponse> =
+export const ListInvitationsResponse: Schema.Codec<ListInvitationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invitations: Schema.optional(Schema.Array(Invitation)),
   }).annotate({ identifier: "ListInvitationsResponse" });
@@ -268,7 +268,7 @@ export interface ListAccountsResponse {
   accounts?: ReadonlyArray<Account>;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
+export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accounts: Schema.optional(Schema.Array(Account)),
@@ -279,14 +279,14 @@ export interface ListAccountAdminsResponse {
   accountAdmins?: ReadonlyArray<Admin>;
 }
 
-export const ListAccountAdminsResponse: Schema.Schema<ListAccountAdminsResponse> =
+export const ListAccountAdminsResponse: Schema.Codec<ListAccountAdminsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountAdmins: Schema.optional(Schema.Array(Admin)),
   }).annotate({ identifier: "ListAccountAdminsResponse" });
 
 export interface AcceptInvitationRequest {}
 
-export const AcceptInvitationRequest: Schema.Schema<AcceptInvitationRequest> =
+export const AcceptInvitationRequest: Schema.Codec<AcceptInvitationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AcceptInvitationRequest",
   });
@@ -355,7 +355,7 @@ export const CreateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/accounts", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateAccountsRequest>;
+) as unknown as Schema.Codec<CreateAccountsRequest>;
 
 export type CreateAccountsResponse = Account;
 export const CreateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -389,7 +389,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetAccountsRequest>;
+) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -429,7 +429,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchAccountsRequest>;
+) as unknown as Schema.Codec<PatchAccountsRequest>;
 
 export type PatchAccountsResponse = Account;
 export const PatchAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -474,7 +474,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/accounts" }),
   svc,
-) as unknown as Schema.Schema<ListAccountsRequest>;
+) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
@@ -512,7 +512,7 @@ export const AcceptAccountsInvitationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:accept", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AcceptAccountsInvitationsRequest>;
+  ) as unknown as Schema.Codec<AcceptAccountsInvitationsRequest>;
 
 export type AcceptAccountsInvitationsResponse = Empty;
 export const AcceptAccountsInvitationsResponse =
@@ -551,7 +551,7 @@ export const DeclineAccountsInvitationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:decline", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeclineAccountsInvitationsRequest>;
+  ) as unknown as Schema.Codec<DeclineAccountsInvitationsRequest>;
 
 export type DeclineAccountsInvitationsResponse = Empty;
 export const DeclineAccountsInvitationsResponse =
@@ -590,7 +590,7 @@ export const ListAccountsInvitationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/invitations" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsInvitationsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsInvitationsRequest>;
 
 export type ListAccountsInvitationsResponse = ListInvitationsResponse;
 export const ListAccountsInvitationsResponse =
@@ -621,7 +621,7 @@ export const ListAccountsAdminsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/admins" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsAdminsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsAdminsRequest>;
 
 export type ListAccountsAdminsResponse = ListAccountAdminsResponse;
 export const ListAccountsAdminsResponse =
@@ -652,7 +652,7 @@ export const DeleteAccountsAdminsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsAdminsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsAdminsRequest>;
 
 export type DeleteAccountsAdminsResponse = Empty;
 export const DeleteAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -693,7 +693,7 @@ export const PatchAccountsAdminsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsAdminsRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsAdminsRequest>;
 
 export type PatchAccountsAdminsResponse = Admin;
 export const PatchAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
@@ -731,7 +731,7 @@ export const CreateAccountsAdminsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/admins", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsAdminsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsAdminsRequest>;
 
 export type CreateAccountsAdminsResponse = Admin;
 export const CreateAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
@@ -769,7 +769,7 @@ export const TransferLocationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:transfer", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TransferLocationsRequest>;
+  ) as unknown as Schema.Codec<TransferLocationsRequest>;
 
 export type TransferLocationsResponse = Empty;
 export const TransferLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -807,7 +807,7 @@ export const CreateLocationsAdminsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/admins", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateLocationsAdminsRequest>;
+  ) as unknown as Schema.Codec<CreateLocationsAdminsRequest>;
 
 export type CreateLocationsAdminsResponse = Admin;
 export const CreateLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
@@ -842,7 +842,7 @@ export const DeleteLocationsAdminsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLocationsAdminsRequest>;
+  ) as unknown as Schema.Codec<DeleteLocationsAdminsRequest>;
 
 export type DeleteLocationsAdminsResponse = Empty;
 export const DeleteLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -883,7 +883,7 @@ export const PatchLocationsAdminsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchLocationsAdminsRequest>;
+  ) as unknown as Schema.Codec<PatchLocationsAdminsRequest>;
 
 export type PatchLocationsAdminsResponse = Admin;
 export const PatchLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
@@ -918,7 +918,7 @@ export const ListLocationsAdminsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/admins" }),
     svc,
-  ) as unknown as Schema.Schema<ListLocationsAdminsRequest>;
+  ) as unknown as Schema.Codec<ListLocationsAdminsRequest>;
 
 export type ListLocationsAdminsResponse = ListLocationAdminsResponse;
 export const ListLocationsAdminsResponse =

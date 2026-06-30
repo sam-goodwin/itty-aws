@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateNeonAuthInput {
+  project_id: string;
+  branch_id: string;
+  auth_provider: "mock" | "stack" | "better_auth";
+  database_name?: string;
+}
 export const CreateNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +19,19 @@ export const CreateNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/projects/{project_id}/branches/{branch_id}/auth",
   }),
-);
-export type CreateNeonAuthInput = typeof CreateNeonAuthInput.Type;
+) as unknown as Schema.Codec<CreateNeonAuthInput>;
 
 // Output Schema
+export interface CreateNeonAuthOutput {
+  auth_provider: "mock" | "stack" | "better_auth";
+  auth_provider_project_id: string;
+  pub_client_key: string;
+  secret_server_key: string;
+  jwks_url: string;
+  schema_name: string;
+  table_name: string;
+  base_url?: string;
+}
 export const CreateNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
   auth_provider_project_id: Schema.String,
@@ -26,8 +41,7 @@ export const CreateNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   schema_name: Schema.String,
   table_name: Schema.String,
   base_url: Schema.optional(Schema.String),
-});
-export type CreateNeonAuthOutput = typeof CreateNeonAuthOutput.Type;
+}) as unknown as Schema.Codec<CreateNeonAuthOutput>;
 
 // The operation
 /**

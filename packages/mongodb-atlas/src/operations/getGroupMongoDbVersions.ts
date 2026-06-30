@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupMongoDbVersionsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  cloudProvider?: "AWS" | "AZURE" | "GCP" | "TENANT";
+  instanceSize?: string;
+  defaultStatus?: "DEFAULT";
+  itemsPerPage?: number;
+  pageNum?: number;
+}
 export const GetGroupMongoDbVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +31,12 @@ export const GetGroupMongoDbVersionsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/mongoDBVersions",
     }),
-  );
-export type GetGroupMongoDbVersionsInput =
-  typeof GetGroupMongoDbVersionsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupMongoDbVersionsInput>;
 
 // Output Schema
+export type GetGroupMongoDbVersionsOutput = void;
 export const GetGroupMongoDbVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupMongoDbVersionsOutput =
-  typeof GetGroupMongoDbVersionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupMongoDbVersionsOutput>;
 
 // The operation
 /**

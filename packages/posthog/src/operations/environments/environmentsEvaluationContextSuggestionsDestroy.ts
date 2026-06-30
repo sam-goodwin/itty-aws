@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface EnvironmentsEvaluationContextSuggestionsDestroyInput {
+  id: number;
+  project_id: string;
+  context_name: string;
+}
 export const EnvironmentsEvaluationContextSuggestionsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,19 +18,20 @@ export const EnvironmentsEvaluationContextSuggestionsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/environments/{id}/evaluation_context_suggestions/",
     }),
-  );
-export type EnvironmentsEvaluationContextSuggestionsDestroyInput =
-  typeof EnvironmentsEvaluationContextSuggestionsDestroyInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsEvaluationContextSuggestionsDestroyInput>;
 
 // Output Schema
+export interface EnvironmentsEvaluationContextSuggestionsDestroyOutput {
+  success: boolean;
+  name: string;
+  hidden_from_suggestions: boolean;
+}
 export const EnvironmentsEvaluationContextSuggestionsDestroyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
     name: Schema.String,
     hidden_from_suggestions: Schema.Boolean,
-  });
-export type EnvironmentsEvaluationContextSuggestionsDestroyOutput =
-  typeof EnvironmentsEvaluationContextSuggestionsDestroyOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentsEvaluationContextSuggestionsDestroyOutput>;
 
 // The operation
 /**

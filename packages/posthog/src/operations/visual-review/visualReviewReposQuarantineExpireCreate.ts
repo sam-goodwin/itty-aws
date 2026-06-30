@@ -4,6 +4,15 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewReposQuarantineExpireCreateInput {
+  id: string;
+  project_id: string;
+  run_type: string;
+  identifier?: string;
+  reason?: string;
+  source_run_id?: string | null;
+  expires_at?: string | null;
+}
 export const VisualReviewReposQuarantineExpireCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const VisualReviewReposQuarantineExpireCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/visual_review/repos/{id}/quarantine/{run_type}/expire/",
     }),
-  );
-export type VisualReviewReposQuarantineExpireCreateInput =
-  typeof VisualReviewReposQuarantineExpireCreateInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposQuarantineExpireCreateInput>;
 
 // Output Schema
+export type VisualReviewReposQuarantineExpireCreateOutput = void;
 export const VisualReviewReposQuarantineExpireCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VisualReviewReposQuarantineExpireCreateOutput =
-  typeof VisualReviewReposQuarantineExpireCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VisualReviewReposQuarantineExpireCreateOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface SchedulingNodeAffinity {
   operator?: "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN" | (string & {});
 }
 
-export const SchedulingNodeAffinity: Schema.Schema<SchedulingNodeAffinity> =
+export const SchedulingNodeAffinity: Schema.Codec<SchedulingNodeAffinity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
     key: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface ComputeScheduling {
   automaticRestart?: boolean;
 }
 
-export const ComputeScheduling: Schema.Schema<ComputeScheduling> =
+export const ComputeScheduling: Schema.Codec<ComputeScheduling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeAffinities: Schema.optional(Schema.Array(SchedulingNodeAffinity)),
     minNodeCpus: Schema.optional(Schema.Number),
@@ -72,7 +72,7 @@ export interface Encryption {
   kmsKey?: string;
 }
 
-export const Encryption: Schema.Schema<Encryption> =
+export const Encryption: Schema.Codec<Encryption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "Encryption" });
@@ -84,7 +84,7 @@ export interface AppliedLicense {
   osLicense?: string;
 }
 
-export const AppliedLicense: Schema.Schema<AppliedLicense> =
+export const AppliedLicense: Schema.Codec<AppliedLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     osLicense: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface AdaptationModifier {
   value?: string;
 }
 
-export const AdaptationModifier: Schema.Schema<AdaptationModifier> =
+export const AdaptationModifier: Schema.Codec<AdaptationModifier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modifier: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface NetworkInterface {
   subnetwork?: string;
 }
 
-export const NetworkInterface: Schema.Schema<NetworkInterface> =
+export const NetworkInterface: Schema.Codec<NetworkInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     networkTier: Schema.optional(Schema.String),
@@ -201,7 +201,7 @@ export interface ComputeEngineTargetDetails {
   enableVtpm?: boolean;
 }
 
-export const ComputeEngineTargetDetails: Schema.Schema<ComputeEngineTargetDetails> =
+export const ComputeEngineTargetDetails: Schema.Codec<ComputeEngineTargetDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computeScheduling: Schema.optional(ComputeScheduling),
     licenseType: Schema.optional(Schema.String),
@@ -239,7 +239,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -250,7 +250,7 @@ export const Status: Schema.Schema<Status> =
 
 export interface InitializingReplicationStep {}
 
-export const InitializingReplicationStep: Schema.Schema<InitializingReplicationStep> =
+export const InitializingReplicationStep: Schema.Codec<InitializingReplicationStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InitializingReplicationStep",
   });
@@ -266,7 +266,7 @@ export interface ReplicatingStep {
   lastThirtyMinutesAverageBytesPerSecond?: string;
 }
 
-export const ReplicatingStep: Schema.Schema<ReplicatingStep> =
+export const ReplicatingStep: Schema.Codec<ReplicatingStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replicatedBytes: Schema.optional(Schema.String),
     totalBytes: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export const ReplicatingStep: Schema.Schema<ReplicatingStep> =
 
 export interface PostProcessingStep {}
 
-export const PostProcessingStep: Schema.Schema<PostProcessingStep> =
+export const PostProcessingStep: Schema.Codec<PostProcessingStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PostProcessingStep",
   });
@@ -294,7 +294,7 @@ export interface CycleStep {
   postProcessing?: PostProcessingStep;
 }
 
-export const CycleStep: Schema.Schema<CycleStep> =
+export const CycleStep: Schema.Codec<CycleStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     initializingReplication: Schema.optional(InitializingReplicationStep),
     startTime: Schema.optional(Schema.String),
@@ -310,7 +310,7 @@ export interface LocalizedMessage {
   message?: string;
 }
 
-export const LocalizedMessage: Schema.Schema<LocalizedMessage> =
+export const LocalizedMessage: Schema.Codec<LocalizedMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -323,7 +323,7 @@ export interface Link {
   description?: string;
 }
 
-export const Link: Schema.Schema<Link> =
+export const Link: Schema.Codec<Link> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -342,7 +342,7 @@ export interface MigrationWarning {
   helpLinks?: ReadonlyArray<Link>;
 }
 
-export const MigrationWarning: Schema.Schema<MigrationWarning> =
+export const MigrationWarning: Schema.Codec<MigrationWarning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     warningMessage: Schema.optional(LocalizedMessage),
@@ -382,7 +382,7 @@ export interface ReplicationCycle {
   progressPercent?: number;
 }
 
-export const ReplicationCycle: Schema.Schema<ReplicationCycle> =
+export const ReplicationCycle: Schema.Codec<ReplicationCycle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -399,21 +399,21 @@ export const ReplicationCycle: Schema.Schema<ReplicationCycle> =
 
 export interface ShuttingDownSourceVMStep {}
 
-export const ShuttingDownSourceVMStep: Schema.Schema<ShuttingDownSourceVMStep> =
+export const ShuttingDownSourceVMStep: Schema.Codec<ShuttingDownSourceVMStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ShuttingDownSourceVMStep",
   });
 
 export interface PreparingVMDisksStep {}
 
-export const PreparingVMDisksStep: Schema.Schema<PreparingVMDisksStep> =
+export const PreparingVMDisksStep: Schema.Codec<PreparingVMDisksStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PreparingVMDisksStep",
   });
 
 export interface InstantiatingMigratedVMStep {}
 
-export const InstantiatingMigratedVMStep: Schema.Schema<InstantiatingMigratedVMStep> =
+export const InstantiatingMigratedVMStep: Schema.Codec<InstantiatingMigratedVMStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InstantiatingMigratedVMStep",
   });
@@ -435,7 +435,7 @@ export interface CutoverStep {
   instantiatingMigratedVm?: InstantiatingMigratedVMStep;
 }
 
-export const CutoverStep: Schema.Schema<CutoverStep> =
+export const CutoverStep: Schema.Codec<CutoverStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     finalSync: Schema.optional(ReplicationCycle),
@@ -498,7 +498,7 @@ export interface TargetVMDetails {
   targetProject?: string;
 }
 
-export const TargetVMDetails: Schema.Schema<TargetVMDetails> =
+export const TargetVMDetails: Schema.Codec<TargetVMDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     licenseType: Schema.optional(Schema.String),
@@ -528,7 +528,7 @@ export interface DisksMigrationVmTargetDetails {
   vmUri?: string;
 }
 
-export const DisksMigrationVmTargetDetails: Schema.Schema<DisksMigrationVmTargetDetails> =
+export const DisksMigrationVmTargetDetails: Schema.Codec<DisksMigrationVmTargetDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisksMigrationVmTargetDetails" });
@@ -540,7 +540,7 @@ export interface PersistentDisk {
   sourceDiskNumber?: number;
 }
 
-export const PersistentDisk: Schema.Schema<PersistentDisk> =
+export const PersistentDisk: Schema.Codec<PersistentDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskUri: Schema.optional(Schema.String),
     sourceDiskNumber: Schema.optional(Schema.Number),
@@ -548,7 +548,7 @@ export const PersistentDisk: Schema.Schema<PersistentDisk> =
 
 export interface DisksMigrationDisksTargetDetails {}
 
-export const DisksMigrationDisksTargetDetails: Schema.Schema<DisksMigrationDisksTargetDetails> =
+export const DisksMigrationDisksTargetDetails: Schema.Codec<DisksMigrationDisksTargetDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisksMigrationDisksTargetDetails",
   });
@@ -562,7 +562,7 @@ export interface ComputeEngineDisksTargetDetails {
   disksTargetDetails?: DisksMigrationDisksTargetDetails;
 }
 
-export const ComputeEngineDisksTargetDetails: Schema.Schema<ComputeEngineDisksTargetDetails> =
+export const ComputeEngineDisksTargetDetails: Schema.Codec<ComputeEngineDisksTargetDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmTargetDetails: Schema.optional(DisksMigrationVmTargetDetails),
     disks: Schema.optional(Schema.Array(PersistentDisk)),
@@ -609,7 +609,7 @@ export interface CutoverJob {
   targetDetails?: TargetVMDetails;
 }
 
-export const CutoverJob: Schema.Schema<CutoverJob> =
+export const CutoverJob: Schema.Codec<CutoverJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computeEngineTargetDetails: Schema.optional(ComputeEngineTargetDetails),
     stateTime: Schema.optional(Schema.String),
@@ -638,7 +638,7 @@ export interface AzureDiskDetails {
   diskId?: string;
 }
 
-export const AzureDiskDetails: Schema.Schema<AzureDiskDetails> =
+export const AzureDiskDetails: Schema.Codec<AzureDiskDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeGb: Schema.optional(Schema.String),
     diskNumber: Schema.optional(Schema.Number),
@@ -650,7 +650,7 @@ export interface MachineImageParametersOverrides {
   machineType?: string;
 }
 
-export const MachineImageParametersOverrides: Schema.Schema<MachineImageParametersOverrides> =
+export const MachineImageParametersOverrides: Schema.Codec<MachineImageParametersOverrides> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineType: Schema.optional(Schema.String),
   }).annotate({ identifier: "MachineImageParametersOverrides" });
@@ -660,7 +660,7 @@ export interface DataDiskImageImport {
   guestOsFeatures?: ReadonlyArray<string>;
 }
 
-export const DataDiskImageImport: Schema.Schema<DataDiskImageImport> =
+export const DataDiskImageImport: Schema.Codec<DataDiskImageImport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guestOsFeatures: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DataDiskImageImport" });
@@ -684,7 +684,7 @@ export interface ImageImportOsAdaptationParameters {
     | (string & {});
 }
 
-export const ImageImportOsAdaptationParameters: Schema.Schema<ImageImportOsAdaptationParameters> =
+export const ImageImportOsAdaptationParameters: Schema.Codec<ImageImportOsAdaptationParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generalize: Schema.optional(Schema.Boolean),
     adaptationModifiers: Schema.optional(Schema.Array(AdaptationModifier)),
@@ -715,7 +715,7 @@ export interface DiskImageTargetDetails {
   osAdaptationParameters?: ImageImportOsAdaptationParameters;
 }
 
-export const DiskImageTargetDetails: Schema.Schema<DiskImageTargetDetails> =
+export const DiskImageTargetDetails: Schema.Codec<DiskImageTargetDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -746,7 +746,7 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
@@ -764,7 +764,7 @@ export interface AwsSecurityGroup {
   name?: string;
 }
 
-export const AwsSecurityGroup: Schema.Schema<AwsSecurityGroup> =
+export const AwsSecurityGroup: Schema.Codec<AwsSecurityGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -827,7 +827,7 @@ export interface AwsVmDetails {
   vpcId?: string;
 }
 
-export const AwsVmDetails: Schema.Schema<AwsVmDetails> =
+export const AwsVmDetails: Schema.Codec<AwsVmDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     committedStorageMb: Schema.optional(Schema.String),
     virtualizationType: Schema.optional(Schema.String),
@@ -885,7 +885,7 @@ export interface VmUtilizationMetrics {
   networkThroughputMax?: string;
 }
 
-export const VmUtilizationMetrics: Schema.Schema<VmUtilizationMetrics> =
+export const VmUtilizationMetrics: Schema.Codec<VmUtilizationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memoryMax: Schema.optional(Schema.Number),
     memoryMaxPercent: Schema.optional(Schema.Number),
@@ -945,7 +945,7 @@ export interface VmwareVmDetails {
   cpuCount?: number;
 }
 
-export const VmwareVmDetails: Schema.Schema<VmwareVmDetails> =
+export const VmwareVmDetails: Schema.Codec<VmwareVmDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     architecture: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -972,7 +972,7 @@ export interface VmUtilizationInfo {
   vmwareVmDetails?: VmwareVmDetails;
 }
 
-export const VmUtilizationInfo: Schema.Schema<VmUtilizationInfo> =
+export const VmUtilizationInfo: Schema.Codec<VmUtilizationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmId: Schema.optional(Schema.String),
     utilization: Schema.optional(VmUtilizationMetrics),
@@ -981,7 +981,7 @@ export const VmUtilizationInfo: Schema.Schema<VmUtilizationInfo> =
 
 export interface SkipOsAdaptation {}
 
-export const SkipOsAdaptation: Schema.Schema<SkipOsAdaptation> =
+export const SkipOsAdaptation: Schema.Codec<SkipOsAdaptation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SkipOsAdaptation",
   });
@@ -993,7 +993,7 @@ export interface ServiceAccount {
   scopes?: ReadonlyArray<string>;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
+export const ServiceAccount: Schema.Codec<ServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
@@ -1008,7 +1008,7 @@ export interface ShieldedInstanceConfig {
   enableVtpm?: boolean;
 }
 
-export const ShieldedInstanceConfig: Schema.Schema<ShieldedInstanceConfig> =
+export const ShieldedInstanceConfig: Schema.Codec<ShieldedInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secureBoot: Schema.optional(Schema.String),
     enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
@@ -1046,7 +1046,7 @@ export interface MachineImageTargetDetails {
   targetProject?: string;
 }
 
-export const MachineImageTargetDetails: Schema.Schema<MachineImageTargetDetails> =
+export const MachineImageTargetDetails: Schema.Codec<MachineImageTargetDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineImageName: Schema.optional(Schema.String),
     skipOsAdaptation: Schema.optional(SkipOsAdaptation),
@@ -1068,28 +1068,28 @@ export const MachineImageTargetDetails: Schema.Schema<MachineImageTargetDetails>
 
 export interface InitializingImageImportStep {}
 
-export const InitializingImageImportStep: Schema.Schema<InitializingImageImportStep> =
+export const InitializingImageImportStep: Schema.Codec<InitializingImageImportStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InitializingImageImportStep",
   });
 
 export interface CreatingImageStep {}
 
-export const CreatingImageStep: Schema.Schema<CreatingImageStep> =
+export const CreatingImageStep: Schema.Codec<CreatingImageStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreatingImageStep",
   });
 
 export interface AdaptingOSStep {}
 
-export const AdaptingOSStep: Schema.Schema<AdaptingOSStep> =
+export const AdaptingOSStep: Schema.Codec<AdaptingOSStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AdaptingOSStep",
   });
 
 export interface LoadingImageSourceFilesStep {}
 
-export const LoadingImageSourceFilesStep: Schema.Schema<LoadingImageSourceFilesStep> =
+export const LoadingImageSourceFilesStep: Schema.Codec<LoadingImageSourceFilesStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LoadingImageSourceFilesStep",
   });
@@ -1109,7 +1109,7 @@ export interface ImageImportStep {
   startTime?: string;
 }
 
-export const ImageImportStep: Schema.Schema<ImageImportStep> =
+export const ImageImportStep: Schema.Codec<ImageImportStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     initializing: Schema.optional(InitializingImageImportStep),
     creatingImage: Schema.optional(CreatingImageStep),
@@ -1152,7 +1152,7 @@ export interface ImageImportJob {
   warnings?: ReadonlyArray<MigrationWarning>;
 }
 
-export const ImageImportJob: Schema.Schema<ImageImportJob> =
+export const ImageImportJob: Schema.Codec<ImageImportJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskImageTargetDetails: Schema.optional(DiskImageTargetDetails),
     machineImageTargetDetails: Schema.optional(MachineImageTargetDetails),
@@ -1176,7 +1176,7 @@ export interface AccessKeyCredentials {
   accessKeyId?: string;
 }
 
-export const AccessKeyCredentials: Schema.Schema<AccessKeyCredentials> =
+export const AccessKeyCredentials: Schema.Codec<AccessKeyCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionToken: Schema.optional(Schema.String),
     secretAccessKey: Schema.optional(Schema.String),
@@ -1190,11 +1190,12 @@ export interface Tag {
   value?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tag" });
+  },
+).annotate({ identifier: "Tag" });
 
 export interface AwsSourceDetails {
   /** AWS Credentials using access key id and secret. */
@@ -1215,7 +1216,7 @@ export interface AwsSourceDetails {
   state?: "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "ACTIVE" | (string & {});
 }
 
-export const AwsSourceDetails: Schema.Schema<AwsSourceDetails> =
+export const AwsSourceDetails: Schema.Codec<AwsSourceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessKeyCreds: Schema.optional(AccessKeyCredentials),
     awsRegion: Schema.optional(Schema.String),
@@ -1240,7 +1241,7 @@ export interface ApplianceVersion {
   releaseNotesUri?: string;
 }
 
-export const ApplianceVersion: Schema.Schema<ApplianceVersion> =
+export const ApplianceVersion: Schema.Codec<ApplianceVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     critical: Schema.optional(Schema.Boolean),
@@ -1261,7 +1262,7 @@ export interface VmCapabilities {
   lastOsCapabilitiesUpdateTime?: string;
 }
 
-export const VmCapabilities: Schema.Schema<VmCapabilities> =
+export const VmCapabilities: Schema.Codec<VmCapabilities> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osCapabilities: Schema.optional(Schema.Array(Schema.String)),
     lastOsCapabilitiesUpdateTime: Schema.optional(Schema.String),
@@ -1276,7 +1277,7 @@ export interface VmwareDiskDetails {
   sizeGb?: string;
 }
 
-export const VmwareDiskDetails: Schema.Schema<VmwareDiskDetails> =
+export const VmwareDiskDetails: Schema.Codec<VmwareDiskDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     diskNumber: Schema.optional(Schema.Number),
@@ -1300,7 +1301,7 @@ export interface VmwareSourceVmDetails {
     | (string & {});
 }
 
-export const VmwareSourceVmDetails: Schema.Schema<VmwareSourceVmDetails> =
+export const VmwareSourceVmDetails: Schema.Codec<VmwareSourceVmDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmCapabilitiesInfo: Schema.optional(VmCapabilities),
     committedStorageBytes: Schema.optional(Schema.String),
@@ -1322,7 +1323,7 @@ export interface VmwareSourceDetails {
   resolvedVcenterHost?: string;
 }
 
-export const VmwareSourceDetails: Schema.Schema<VmwareSourceDetails> =
+export const VmwareSourceDetails: Schema.Codec<VmwareSourceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -1340,7 +1341,7 @@ export interface ClientSecretCredentials {
   tenantId?: string;
 }
 
-export const ClientSecretCredentials: Schema.Schema<ClientSecretCredentials> =
+export const ClientSecretCredentials: Schema.Codec<ClientSecretCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientSecret: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -1364,7 +1365,7 @@ export interface AzureSourceDetails {
   clientSecretCreds?: ClientSecretCredentials;
 }
 
-export const AzureSourceDetails: Schema.Schema<AzureSourceDetails> =
+export const AzureSourceDetails: Schema.Codec<AzureSourceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     resourceGroupId: Schema.optional(Schema.String),
@@ -1400,7 +1401,7 @@ export interface Source {
   encryption?: Encryption;
 }
 
-export const Source: Schema.Schema<Source> =
+export const Source: Schema.Codec<Source> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -1419,7 +1420,7 @@ export interface VmwareVmsDetails {
   details?: ReadonlyArray<VmwareVmDetails>;
 }
 
-export const VmwareVmsDetails: Schema.Schema<VmwareVmsDetails> =
+export const VmwareVmsDetails: Schema.Codec<VmwareVmsDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Array(VmwareVmDetails)),
   }).annotate({ identifier: "VmwareVmsDetails" });
@@ -1442,7 +1443,7 @@ export interface UpgradeStatus {
     | (string & {});
 }
 
-export const UpgradeStatus: Schema.Schema<UpgradeStatus> =
+export const UpgradeStatus: Schema.Codec<UpgradeStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -1458,7 +1459,7 @@ export interface AvailableUpdates {
   inPlaceUpdate?: ApplianceVersion;
 }
 
-export const AvailableUpdates: Schema.Schema<AvailableUpdates> =
+export const AvailableUpdates: Schema.Codec<AvailableUpdates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newDeployableAppliance: Schema.optional(ApplianceVersion),
     inPlaceUpdate: Schema.optional(ApplianceVersion),
@@ -1501,7 +1502,7 @@ export interface DatacenterConnector {
   version?: string;
 }
 
-export const DatacenterConnector: Schema.Schema<DatacenterConnector> =
+export const DatacenterConnector: Schema.Codec<DatacenterConnector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateTime: Schema.optional(Schema.String),
     applianceSoftwareVersion: Schema.optional(Schema.String),
@@ -1528,7 +1529,7 @@ export interface ListDatacenterConnectorsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListDatacenterConnectorsResponse: Schema.Schema<ListDatacenterConnectorsResponse> =
+export const ListDatacenterConnectorsResponse: Schema.Codec<ListDatacenterConnectorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     datacenterConnectors: Schema.optional(Schema.Array(DatacenterConnector)),
@@ -1548,7 +1549,7 @@ export interface CloneStep {
   instantiatingMigratedVm?: InstantiatingMigratedVMStep;
 }
 
-export const CloneStep: Schema.Schema<CloneStep> =
+export const CloneStep: Schema.Codec<CloneStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     adaptingOs: Schema.optional(AdaptingOSStep),
@@ -1591,7 +1592,7 @@ export interface CloneJob {
   computeEngineDisksTargetDetails?: ComputeEngineDisksTargetDetails;
 }
 
-export const CloneJob: Schema.Schema<CloneJob> =
+export const CloneJob: Schema.Codec<CloneJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateTime: Schema.optional(Schema.String),
     computeEngineTargetDetails: Schema.optional(ComputeEngineTargetDetails),
@@ -1621,7 +1622,7 @@ export interface TargetProject {
   name?: string;
 }
 
-export const TargetProject: Schema.Schema<TargetProject> =
+export const TargetProject: Schema.Codec<TargetProject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     project: Schema.optional(Schema.String),
@@ -1639,7 +1640,7 @@ export interface ListTargetProjectsResponse {
   nextPageToken?: string;
 }
 
-export const ListTargetProjectsResponse: Schema.Schema<ListTargetProjectsResponse> =
+export const ListTargetProjectsResponse: Schema.Codec<ListTargetProjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetProjects: Schema.optional(Schema.Array(TargetProject)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1657,7 +1658,7 @@ export interface OSDescription {
   publisher?: string;
 }
 
-export const OSDescription: Schema.Schema<OSDescription> =
+export const OSDescription: Schema.Codec<OSDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offer: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1674,7 +1675,7 @@ export interface OSDisk {
   sizeGb?: number;
 }
 
-export const OSDisk: Schema.Schema<OSDisk> =
+export const OSDisk: Schema.Codec<OSDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1690,7 +1691,7 @@ export interface Disk {
   sizeGb?: number;
 }
 
-export const Disk: Schema.Schema<Disk> =
+export const Disk: Schema.Codec<Disk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lun: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -1741,7 +1742,7 @@ export interface AzureVmDetails {
     | (string & {});
 }
 
-export const AzureVmDetails: Schema.Schema<AzureVmDetails> =
+export const AzureVmDetails: Schema.Codec<AzureVmDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osDescription: Schema.optional(OSDescription),
     vmId: Schema.optional(Schema.String),
@@ -1764,7 +1765,7 @@ export interface AzureVmsDetails {
   details?: ReadonlyArray<AzureVmDetails>;
 }
 
-export const AzureVmsDetails: Schema.Schema<AzureVmsDetails> =
+export const AzureVmsDetails: Schema.Codec<AzureVmsDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Array(AzureVmDetails)),
   }).annotate({ identifier: "AzureVmsDetails" });
@@ -1789,7 +1790,7 @@ export interface AwsSourceDiskDetails {
   sizeGib?: string;
 }
 
-export const AwsSourceDiskDetails: Schema.Schema<AwsSourceDiskDetails> =
+export const AwsSourceDiskDetails: Schema.Codec<AwsSourceDiskDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     volumeId: Schema.optional(Schema.String),
     diskType: Schema.optional(Schema.String),
@@ -1802,7 +1803,7 @@ export interface CutoverForecast {
   estimatedCutoverJobDuration?: string;
 }
 
-export const CutoverForecast: Schema.Schema<CutoverForecast> =
+export const CutoverForecast: Schema.Codec<CutoverForecast> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedCutoverJobDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "CutoverForecast" });
@@ -1812,7 +1813,7 @@ export interface AwsVmsDetails {
   details?: ReadonlyArray<AwsVmDetails>;
 }
 
-export const AwsVmsDetails: Schema.Schema<AwsVmsDetails> =
+export const AwsVmsDetails: Schema.Codec<AwsVmsDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Array(AwsVmDetails)),
   }).annotate({ identifier: "AwsVmsDetails" });
@@ -1830,7 +1831,7 @@ export interface FetchInventoryResponse {
   awsVms?: AwsVmsDetails;
 }
 
-export const FetchInventoryResponse: Schema.Schema<FetchInventoryResponse> =
+export const FetchInventoryResponse: Schema.Codec<FetchInventoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     azureVms: Schema.optional(AzureVmsDetails),
@@ -1841,14 +1842,14 @@ export const FetchInventoryResponse: Schema.Schema<FetchInventoryResponse> =
 
 export interface RunDiskMigrationJobRequest {}
 
-export const RunDiskMigrationJobRequest: Schema.Schema<RunDiskMigrationJobRequest> =
+export const RunDiskMigrationJobRequest: Schema.Codec<RunDiskMigrationJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RunDiskMigrationJobRequest",
   });
 
 export interface PauseMigrationRequest {}
 
-export const PauseMigrationRequest: Schema.Schema<PauseMigrationRequest> =
+export const PauseMigrationRequest: Schema.Codec<PauseMigrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PauseMigrationRequest",
   });
@@ -1862,7 +1863,7 @@ export interface AwsDiskDetails {
   sizeGb?: string;
 }
 
-export const AwsDiskDetails: Schema.Schema<AwsDiskDetails> =
+export const AwsDiskDetails: Schema.Codec<AwsDiskDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskNumber: Schema.optional(Schema.Number),
     volumeId: Schema.optional(Schema.String),
@@ -1886,7 +1887,7 @@ export interface AwsSourceVmDetails {
   committedStorageBytes?: string;
 }
 
-export const AwsSourceVmDetails: Schema.Schema<AwsSourceVmDetails> =
+export const AwsSourceVmDetails: Schema.Codec<AwsSourceVmDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmCapabilitiesInfo: Schema.optional(VmCapabilities),
     firmware: Schema.optional(Schema.String),
@@ -1904,7 +1905,7 @@ export interface ListSourcesResponse {
   sources?: ReadonlyArray<Source>;
 }
 
-export const ListSourcesResponse: Schema.Schema<ListSourcesResponse> =
+export const ListSourcesResponse: Schema.Codec<ListSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1913,7 +1914,7 @@ export const ListSourcesResponse: Schema.Schema<ListSourcesResponse> =
 
 export interface ResumeMigrationRequest {}
 
-export const ResumeMigrationRequest: Schema.Schema<ResumeMigrationRequest> =
+export const ResumeMigrationRequest: Schema.Codec<ResumeMigrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResumeMigrationRequest",
   });
@@ -1927,7 +1928,7 @@ export interface ListCloneJobsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListCloneJobsResponse: Schema.Schema<ListCloneJobsResponse> =
+export const ListCloneJobsResponse: Schema.Codec<ListCloneJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloneJobs: Schema.optional(Schema.Array(CloneJob)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1936,7 +1937,7 @@ export const ListCloneJobsResponse: Schema.Schema<ListCloneJobsResponse> =
 
 export interface DisksMigrationDisksTargetDefaults {}
 
-export const DisksMigrationDisksTargetDefaults: Schema.Schema<DisksMigrationDisksTargetDefaults> =
+export const DisksMigrationDisksTargetDefaults: Schema.Codec<DisksMigrationDisksTargetDefaults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisksMigrationDisksTargetDefaults",
   });
@@ -1946,7 +1947,7 @@ export interface DiskImageDefaults {
   sourceImage?: string;
 }
 
-export const DiskImageDefaults: Schema.Schema<DiskImageDefaults> =
+export const DiskImageDefaults: Schema.Codec<DiskImageDefaults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceImage: Schema.optional(Schema.String),
   }).annotate({ identifier: "DiskImageDefaults" });
@@ -1971,7 +1972,7 @@ export interface BootDiskDefaults {
     | (string & {});
 }
 
-export const BootDiskDefaults: Schema.Schema<BootDiskDefaults> =
+export const BootDiskDefaults: Schema.Codec<BootDiskDefaults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryption: Schema.optional(Encryption),
     deviceName: Schema.optional(Schema.String),
@@ -2015,7 +2016,7 @@ export interface DisksMigrationVmTargetDefaults {
   hostname?: string;
 }
 
-export const DisksMigrationVmTargetDefaults: Schema.Schema<DisksMigrationVmTargetDefaults> =
+export const DisksMigrationVmTargetDefaults: Schema.Codec<DisksMigrationVmTargetDefaults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bootDiskDefaults: Schema.optional(BootDiskDefaults),
     enableVtpm: Schema.optional(Schema.Boolean),
@@ -2040,7 +2041,7 @@ export interface VmAttachmentDetails {
   deviceName?: string;
 }
 
-export const VmAttachmentDetails: Schema.Schema<VmAttachmentDetails> =
+export const VmAttachmentDetails: Schema.Codec<VmAttachmentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "VmAttachmentDetails" });
@@ -2067,7 +2068,7 @@ export interface PersistentDiskDefaults {
   encryption?: Encryption;
 }
 
-export const PersistentDiskDefaults: Schema.Schema<PersistentDiskDefaults> =
+export const PersistentDiskDefaults: Schema.Codec<PersistentDiskDefaults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalLabels: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -2092,7 +2093,7 @@ export interface ComputeEngineDisksTargetDefaults {
   targetProject?: string;
 }
 
-export const ComputeEngineDisksTargetDefaults: Schema.Schema<ComputeEngineDisksTargetDefaults> =
+export const ComputeEngineDisksTargetDefaults: Schema.Codec<ComputeEngineDisksTargetDefaults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disksTargetDefaults: Schema.optional(DisksMigrationDisksTargetDefaults),
     vmTargetDefaults: Schema.optional(DisksMigrationVmTargetDefaults),
@@ -2175,7 +2176,7 @@ export interface ComputeEngineTargetDefaults {
   hostname?: string;
 }
 
-export const ComputeEngineTargetDefaults: Schema.Schema<ComputeEngineTargetDefaults> =
+export const ComputeEngineTargetDefaults: Schema.Codec<ComputeEngineTargetDefaults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmName: Schema.optional(Schema.String),
     targetProject: Schema.optional(Schema.String),
@@ -2210,7 +2211,7 @@ export interface ReplicationSync {
   lastSyncTime?: string;
 }
 
-export const ReplicationSync: Schema.Schema<ReplicationSync> =
+export const ReplicationSync: Schema.Codec<ReplicationSync> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastSyncTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReplicationSync" });
@@ -2232,7 +2233,7 @@ export interface AzureSourceVmDetails {
   vmCapabilitiesInfo?: VmCapabilities;
 }
 
-export const AzureSourceVmDetails: Schema.Schema<AzureSourceVmDetails> =
+export const AzureSourceVmDetails: Schema.Codec<AzureSourceVmDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     committedStorageBytes: Schema.optional(Schema.String),
     firmware: Schema.optional(Schema.String),
@@ -2250,7 +2251,7 @@ export interface Expiration {
   extendable?: boolean;
 }
 
-export const Expiration: Schema.Schema<Expiration> =
+export const Expiration: Schema.Codec<Expiration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     extensionCount: Schema.optional(Schema.Number),
@@ -2264,7 +2265,7 @@ export interface SchedulePolicy {
   skipOsAdaptation?: boolean;
 }
 
-export const SchedulePolicy: Schema.Schema<SchedulePolicy> =
+export const SchedulePolicy: Schema.Codec<SchedulePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     idleDuration: Schema.optional(Schema.String),
     skipOsAdaptation: Schema.optional(Schema.Boolean),
@@ -2340,7 +2341,7 @@ export interface MigratingVm {
   policy?: SchedulePolicy;
 }
 
-export const MigratingVm: Schema.Schema<MigratingVm> =
+export const MigratingVm: Schema.Codec<MigratingVm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computeEngineDisksTargetDefaults: Schema.optional(
       ComputeEngineDisksTargetDefaults,
@@ -2385,7 +2386,7 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -2407,7 +2408,7 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2421,7 +2422,7 @@ export interface AddGroupMigrationRequest {
   migratingVm?: string;
 }
 
-export const AddGroupMigrationRequest: Schema.Schema<AddGroupMigrationRequest> =
+export const AddGroupMigrationRequest: Schema.Codec<AddGroupMigrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     migratingVm: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddGroupMigrationRequest" });
@@ -2444,7 +2445,7 @@ export interface ComputeEngineDisk {
   replicaZones?: ReadonlyArray<string>;
 }
 
-export const ComputeEngineDisk: Schema.Schema<ComputeEngineDisk> =
+export const ComputeEngineDisk: Schema.Codec<ComputeEngineDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
     diskType: Schema.optional(Schema.String),
@@ -2454,14 +2455,14 @@ export const ComputeEngineDisk: Schema.Schema<ComputeEngineDisk> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface ExtendMigrationRequest {}
 
-export const ExtendMigrationRequest: Schema.Schema<ExtendMigrationRequest> =
+export const ExtendMigrationRequest: Schema.Codec<ExtendMigrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExtendMigrationRequest",
   });
@@ -2477,7 +2478,7 @@ export interface DiskMigrationJobTargetDetails {
   labels?: Record<string, string>;
 }
 
-export const DiskMigrationJobTargetDetails: Schema.Schema<DiskMigrationJobTargetDetails> =
+export const DiskMigrationJobTargetDetails: Schema.Codec<DiskMigrationJobTargetDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetProject: Schema.optional(Schema.String),
     encryption: Schema.optional(Encryption),
@@ -2490,14 +2491,14 @@ export interface RemoveGroupMigrationRequest {
   migratingVm?: string;
 }
 
-export const RemoveGroupMigrationRequest: Schema.Schema<RemoveGroupMigrationRequest> =
+export const RemoveGroupMigrationRequest: Schema.Codec<RemoveGroupMigrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     migratingVm: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveGroupMigrationRequest" });
 
 export interface CancelCutoverJobRequest {}
 
-export const CancelCutoverJobRequest: Schema.Schema<CancelCutoverJobRequest> =
+export const CancelCutoverJobRequest: Schema.Codec<CancelCutoverJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelCutoverJobRequest",
   });
@@ -2521,7 +2522,7 @@ export interface Group {
   description?: string;
 }
 
-export const Group: Schema.Schema<Group> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -2540,7 +2541,7 @@ export interface ListGroupsResponse {
   groups?: ReadonlyArray<Group>;
 }
 
-export const ListGroupsResponse: Schema.Schema<ListGroupsResponse> =
+export const ListGroupsResponse: Schema.Codec<ListGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2556,7 +2557,7 @@ export interface ListImageImportJobsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListImageImportJobsResponse: Schema.Schema<ListImageImportJobsResponse> =
+export const ListImageImportJobsResponse: Schema.Codec<ListImageImportJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageImportJobs: Schema.optional(Schema.Array(ImageImportJob)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2565,21 +2566,21 @@ export const ListImageImportJobsResponse: Schema.Schema<ListImageImportJobsRespo
 
 export interface FinalizeMigrationRequest {}
 
-export const FinalizeMigrationRequest: Schema.Schema<FinalizeMigrationRequest> =
+export const FinalizeMigrationRequest: Schema.Codec<FinalizeMigrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FinalizeMigrationRequest",
   });
 
 export interface CancelImageImportJobRequest {}
 
-export const CancelImageImportJobRequest: Schema.Schema<CancelImageImportJobRequest> =
+export const CancelImageImportJobRequest: Schema.Codec<CancelImageImportJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelImageImportJobRequest",
   });
 
 export interface CancelCloneJobRequest {}
 
-export const CancelCloneJobRequest: Schema.Schema<CancelCloneJobRequest> =
+export const CancelCloneJobRequest: Schema.Codec<CancelCloneJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelCloneJobRequest",
   });
@@ -2591,7 +2592,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -2606,7 +2607,7 @@ export interface ListReplicationCyclesResponse {
   replicationCycles?: ReadonlyArray<ReplicationCycle>;
 }
 
-export const ListReplicationCyclesResponse: Schema.Schema<ListReplicationCyclesResponse> =
+export const ListReplicationCyclesResponse: Schema.Codec<ListReplicationCyclesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2622,7 +2623,7 @@ export interface ListMigratingVmsResponse {
   nextPageToken?: string;
 }
 
-export const ListMigratingVmsResponse: Schema.Schema<ListMigratingVmsResponse> =
+export const ListMigratingVmsResponse: Schema.Codec<ListMigratingVmsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     migratingVms: Schema.optional(Schema.Array(MigratingVm)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2634,7 +2635,7 @@ export interface SourceStorageResource {
   awsDiskDetails?: AwsSourceDiskDetails;
 }
 
-export const SourceStorageResource: Schema.Schema<SourceStorageResource> =
+export const SourceStorageResource: Schema.Codec<SourceStorageResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     awsDiskDetails: Schema.optional(AwsSourceDiskDetails),
   }).annotate({ identifier: "SourceStorageResource" });
@@ -2648,7 +2649,7 @@ export interface FetchStorageInventoryResponse {
   nextPageToken?: string;
 }
 
-export const FetchStorageInventoryResponse: Schema.Schema<FetchStorageInventoryResponse> =
+export const FetchStorageInventoryResponse: Schema.Codec<FetchStorageInventoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     resources: Schema.optional(Schema.Array(SourceStorageResource)),
@@ -2657,21 +2658,21 @@ export const FetchStorageInventoryResponse: Schema.Schema<FetchStorageInventoryR
 
 export interface CopyingSourceDiskSnapshotStep {}
 
-export const CopyingSourceDiskSnapshotStep: Schema.Schema<CopyingSourceDiskSnapshotStep> =
+export const CopyingSourceDiskSnapshotStep: Schema.Codec<CopyingSourceDiskSnapshotStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CopyingSourceDiskSnapshotStep",
   });
 
 export interface CreatingSourceDiskSnapshotStep {}
 
-export const CreatingSourceDiskSnapshotStep: Schema.Schema<CreatingSourceDiskSnapshotStep> =
+export const CreatingSourceDiskSnapshotStep: Schema.Codec<CreatingSourceDiskSnapshotStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreatingSourceDiskSnapshotStep",
   });
 
 export interface ProvisioningTargetDiskStep {}
 
-export const ProvisioningTargetDiskStep: Schema.Schema<ProvisioningTargetDiskStep> =
+export const ProvisioningTargetDiskStep: Schema.Codec<ProvisioningTargetDiskStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ProvisioningTargetDiskStep",
   });
@@ -2689,7 +2690,7 @@ export interface DiskMigrationStep {
   provisioningTargetDisk?: ProvisioningTargetDiskStep;
 }
 
-export const DiskMigrationStep: Schema.Schema<DiskMigrationStep> =
+export const DiskMigrationStep: Schema.Codec<DiskMigrationStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     copyingSourceDiskSnapshot: Schema.optional(CopyingSourceDiskSnapshotStep),
     startTime: Schema.optional(Schema.String),
@@ -2700,7 +2701,7 @@ export const DiskMigrationStep: Schema.Schema<DiskMigrationStep> =
 
 export interface CancelDiskMigrationJobRequest {}
 
-export const CancelDiskMigrationJobRequest: Schema.Schema<CancelDiskMigrationJobRequest> =
+export const CancelDiskMigrationJobRequest: Schema.Codec<CancelDiskMigrationJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelDiskMigrationJobRequest",
   });
@@ -2722,7 +2723,7 @@ export interface ImageImport {
   createTime?: string;
 }
 
-export const ImageImport: Schema.Schema<ImageImport> =
+export const ImageImport: Schema.Codec<ImageImport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskImageTargetDefaults: Schema.optional(DiskImageTargetDetails),
     machineImageTargetDefaults: Schema.optional(MachineImageTargetDetails),
@@ -2742,7 +2743,7 @@ export interface ListCutoverJobsResponse {
   cutoverJobs?: ReadonlyArray<CutoverJob>;
 }
 
-export const ListCutoverJobsResponse: Schema.Schema<ListCutoverJobsResponse> =
+export const ListCutoverJobsResponse: Schema.Codec<ListCutoverJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2758,7 +2759,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2767,7 +2768,7 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -2777,7 +2778,7 @@ export interface UpgradeApplianceRequest {
   requestId?: string;
 }
 
-export const UpgradeApplianceRequest: Schema.Schema<UpgradeApplianceRequest> =
+export const UpgradeApplianceRequest: Schema.Codec<UpgradeApplianceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpgradeApplianceRequest" });
@@ -2817,7 +2818,7 @@ export interface UtilizationReport {
   error?: Status;
 }
 
-export const UtilizationReport: Schema.Schema<UtilizationReport> =
+export const UtilizationReport: Schema.Codec<UtilizationReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeFrame: Schema.optional(Schema.String),
     frameEndTime: Schema.optional(Schema.String),
@@ -2841,7 +2842,7 @@ export interface ListImageImportsResponse {
   nextPageToken?: string;
 }
 
-export const ListImageImportsResponse: Schema.Schema<ListImageImportsResponse> =
+export const ListImageImportsResponse: Schema.Codec<ListImageImportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageImports: Schema.optional(Schema.Array(ImageImport)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2875,7 +2876,7 @@ export interface DiskMigrationJob {
   targetDetails?: DiskMigrationJobTargetDetails;
 }
 
-export const DiskMigrationJob: Schema.Schema<DiskMigrationJob> =
+export const DiskMigrationJob: Schema.Codec<DiskMigrationJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     awsSourceDiskDetails: Schema.optional(AwsSourceDiskDetails),
     state: Schema.optional(Schema.String),
@@ -2896,7 +2897,7 @@ export interface ListDiskMigrationJobsResponse {
   diskMigrationJobs?: ReadonlyArray<DiskMigrationJob>;
 }
 
-export const ListDiskMigrationJobsResponse: Schema.Schema<ListDiskMigrationJobsResponse> =
+export const ListDiskMigrationJobsResponse: Schema.Codec<ListDiskMigrationJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2929,7 +2930,7 @@ export interface MigrationError {
     | (string & {});
 }
 
-export const MigrationError: Schema.Schema<MigrationError> =
+export const MigrationError: Schema.Codec<MigrationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(LocalizedMessage),
     helpLinks: Schema.optional(Schema.Array(Link)),
@@ -2940,7 +2941,7 @@ export const MigrationError: Schema.Schema<MigrationError> =
 
 export interface StartMigrationRequest {}
 
-export const StartMigrationRequest: Schema.Schema<StartMigrationRequest> =
+export const StartMigrationRequest: Schema.Codec<StartMigrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StartMigrationRequest",
   });
@@ -2954,7 +2955,7 @@ export interface ListUtilizationReportsResponse {
   utilizationReports?: ReadonlyArray<UtilizationReport>;
 }
 
-export const ListUtilizationReportsResponse: Schema.Schema<ListUtilizationReportsResponse> =
+export const ListUtilizationReportsResponse: Schema.Codec<ListUtilizationReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -3040,7 +3041,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -3075,7 +3076,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -3113,7 +3114,7 @@ export const AddGroupMigrationProjectsLocationsGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddGroupMigrationProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<AddGroupMigrationProjectsLocationsGroupsRequest>;
 
 export type AddGroupMigrationProjectsLocationsGroupsResponse = Operation;
 export const AddGroupMigrationProjectsLocationsGroupsResponse =
@@ -3162,7 +3163,7 @@ export const CreateProjectsLocationsGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGroupsRequest>;
 
 export type CreateProjectsLocationsGroupsResponse = Operation;
 export const CreateProjectsLocationsGroupsResponse =
@@ -3207,7 +3208,7 @@ export const PatchProjectsLocationsGroupsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsGroupsRequest>;
 
 export type PatchProjectsLocationsGroupsResponse = Operation;
 export const PatchProjectsLocationsGroupsResponse =
@@ -3243,7 +3244,7 @@ export const GetProjectsLocationsGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGroupsRequest>;
 
 export type GetProjectsLocationsGroupsResponse = Group;
 export const GetProjectsLocationsGroupsResponse =
@@ -3289,7 +3290,7 @@ export const ListProjectsLocationsGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/groups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGroupsRequest>;
 
 export type ListProjectsLocationsGroupsResponse = ListGroupsResponse;
 export const ListProjectsLocationsGroupsResponse =
@@ -3330,7 +3331,7 @@ export const DeleteProjectsLocationsGroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGroupsRequest>;
 
 export type DeleteProjectsLocationsGroupsResponse = Operation;
 export const DeleteProjectsLocationsGroupsResponse =
@@ -3373,7 +3374,7 @@ export const RemoveGroupMigrationProjectsLocationsGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveGroupMigrationProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<RemoveGroupMigrationProjectsLocationsGroupsRequest>;
 
 export type RemoveGroupMigrationProjectsLocationsGroupsResponse = Operation;
 export const RemoveGroupMigrationProjectsLocationsGroupsResponse =
@@ -3409,7 +3410,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -3446,7 +3447,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -3496,7 +3497,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -3534,7 +3535,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -3582,7 +3583,7 @@ export const ListProjectsLocationsTargetProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/targetProjects" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTargetProjectsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTargetProjectsRequest>;
 
 export type ListProjectsLocationsTargetProjectsResponse =
   ListTargetProjectsResponse;
@@ -3624,7 +3625,7 @@ export const DeleteProjectsLocationsTargetProjectsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTargetProjectsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTargetProjectsRequest>;
 
 export type DeleteProjectsLocationsTargetProjectsResponse = Operation;
 export const DeleteProjectsLocationsTargetProjectsResponse =
@@ -3660,7 +3661,7 @@ export const GetProjectsLocationsTargetProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTargetProjectsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTargetProjectsRequest>;
 
 export type GetProjectsLocationsTargetProjectsResponse = TargetProject;
 export const GetProjectsLocationsTargetProjectsResponse =
@@ -3709,7 +3710,7 @@ export const CreateProjectsLocationsTargetProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTargetProjectsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTargetProjectsRequest>;
 
 export type CreateProjectsLocationsTargetProjectsResponse = Operation;
 export const CreateProjectsLocationsTargetProjectsResponse =
@@ -3754,7 +3755,7 @@ export const PatchProjectsLocationsTargetProjectsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTargetProjectsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTargetProjectsRequest>;
 
 export type PatchProjectsLocationsTargetProjectsResponse = Operation;
 export const PatchProjectsLocationsTargetProjectsResponse =
@@ -3802,7 +3803,7 @@ export const ListProjectsLocationsImageImportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/imageImports" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsImageImportsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsImageImportsRequest>;
 
 export type ListProjectsLocationsImageImportsResponse =
   ListImageImportsResponse;
@@ -3844,7 +3845,7 @@ export const DeleteProjectsLocationsImageImportsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsImageImportsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsImageImportsRequest>;
 
 export type DeleteProjectsLocationsImageImportsResponse = Operation;
 export const DeleteProjectsLocationsImageImportsResponse =
@@ -3895,7 +3896,7 @@ export const CreateProjectsLocationsImageImportsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsImageImportsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsImageImportsRequest>;
 
 export type CreateProjectsLocationsImageImportsResponse = Operation;
 export const CreateProjectsLocationsImageImportsResponse =
@@ -3931,7 +3932,7 @@ export const GetProjectsLocationsImageImportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsImageImportsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsImageImportsRequest>;
 
 export type GetProjectsLocationsImageImportsResponse = ImageImport;
 export const GetProjectsLocationsImageImportsResponse =
@@ -3965,7 +3966,7 @@ export const GetProjectsLocationsImageImportsImageImportJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsImageImportsImageImportJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsImageImportsImageImportJobsRequest>;
 
 export type GetProjectsLocationsImageImportsImageImportJobsResponse =
   ImageImportJob;
@@ -4003,7 +4004,7 @@ export const CancelProjectsLocationsImageImportsImageImportJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsImageImportsImageImportJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsImageImportsImageImportJobsRequest>;
 
 export type CancelProjectsLocationsImageImportsImageImportJobsResponse =
   Operation;
@@ -4052,7 +4053,7 @@ export const ListProjectsLocationsImageImportsImageImportJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/imageImportJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsImageImportsImageImportJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsImageImportsImageImportJobsRequest>;
 
 export type ListProjectsLocationsImageImportsImageImportJobsResponse =
   ListImageImportJobsResponse;
@@ -4105,7 +4106,7 @@ export const FetchStorageInventoryProjectsLocationsSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+source}:fetchStorageInventory" }),
     svc,
-  ) as unknown as Schema.Schema<FetchStorageInventoryProjectsLocationsSourcesRequest>;
+  ) as unknown as Schema.Codec<FetchStorageInventoryProjectsLocationsSourcesRequest>;
 
 export type FetchStorageInventoryProjectsLocationsSourcesResponse =
   FetchStorageInventoryResponse;
@@ -4156,7 +4157,7 @@ export const ListProjectsLocationsSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/sources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSourcesRequest>;
 
 export type ListProjectsLocationsSourcesResponse = ListSourcesResponse;
 export const ListProjectsLocationsSourcesResponse =
@@ -4197,7 +4198,7 @@ export const DeleteProjectsLocationsSourcesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSourcesRequest>;
 
 export type DeleteProjectsLocationsSourcesResponse = Operation;
 export const DeleteProjectsLocationsSourcesResponse =
@@ -4233,7 +4234,7 @@ export const GetProjectsLocationsSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSourcesRequest>;
 
 export type GetProjectsLocationsSourcesResponse = Source;
 export const GetProjectsLocationsSourcesResponse =
@@ -4280,7 +4281,7 @@ export const CreateProjectsLocationsSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSourcesRequest>;
 
 export type CreateProjectsLocationsSourcesResponse = Operation;
 export const CreateProjectsLocationsSourcesResponse =
@@ -4325,7 +4326,7 @@ export const PatchProjectsLocationsSourcesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSourcesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSourcesRequest>;
 
 export type PatchProjectsLocationsSourcesResponse = Operation;
 export const PatchProjectsLocationsSourcesResponse =
@@ -4372,7 +4373,7 @@ export const FetchInventoryProjectsLocationsSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+source}:fetchInventory" }),
     svc,
-  ) as unknown as Schema.Schema<FetchInventoryProjectsLocationsSourcesRequest>;
+  ) as unknown as Schema.Codec<FetchInventoryProjectsLocationsSourcesRequest>;
 
 export type FetchInventoryProjectsLocationsSourcesResponse =
   FetchInventoryResponse;
@@ -4423,7 +4424,7 @@ export const ListProjectsLocationsSourcesDatacenterConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/datacenterConnectors" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export type ListProjectsLocationsSourcesDatacenterConnectorsResponse =
   ListDatacenterConnectorsResponse;
@@ -4465,7 +4466,7 @@ export const DeleteProjectsLocationsSourcesDatacenterConnectorsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export type DeleteProjectsLocationsSourcesDatacenterConnectorsResponse =
   Operation;
@@ -4509,7 +4510,7 @@ export const UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>;
+  ) as unknown as Schema.Codec<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export type UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsResponse =
   Operation;
@@ -4546,7 +4547,7 @@ export const GetProjectsLocationsSourcesDatacenterConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSourcesDatacenterConnectorsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export type GetProjectsLocationsSourcesDatacenterConnectorsResponse =
   DatacenterConnector;
@@ -4596,7 +4597,7 @@ export const CreateProjectsLocationsSourcesDatacenterConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesDatacenterConnectorsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export type CreateProjectsLocationsSourcesDatacenterConnectorsResponse =
   Operation;
@@ -4640,7 +4641,7 @@ export const GetProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type GetProjectsLocationsSourcesMigratingVmsResponse = MigratingVm;
 export const GetProjectsLocationsSourcesMigratingVmsResponse =
@@ -4689,7 +4690,7 @@ export const CreateProjectsLocationsSourcesMigratingVmsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type CreateProjectsLocationsSourcesMigratingVmsResponse = Operation;
 export const CreateProjectsLocationsSourcesMigratingVmsResponse =
@@ -4744,7 +4745,7 @@ export const ListProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/migratingVms" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type ListProjectsLocationsSourcesMigratingVmsResponse =
   ListMigratingVmsResponse;
@@ -4783,7 +4784,7 @@ export const DeleteProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type DeleteProjectsLocationsSourcesMigratingVmsResponse = Operation;
 export const DeleteProjectsLocationsSourcesMigratingVmsResponse =
@@ -4826,7 +4827,7 @@ export const ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type ResumeMigrationProjectsLocationsSourcesMigratingVmsResponse =
   Operation;
@@ -4870,7 +4871,7 @@ export const ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type ExtendMigrationProjectsLocationsSourcesMigratingVmsResponse =
   Operation;
@@ -4914,7 +4915,7 @@ export const FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type FinalizeMigrationProjectsLocationsSourcesMigratingVmsResponse =
   Operation;
@@ -4960,7 +4961,7 @@ export const PatchProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type PatchProjectsLocationsSourcesMigratingVmsResponse = Operation;
 export const PatchProjectsLocationsSourcesMigratingVmsResponse =
@@ -5003,7 +5004,7 @@ export const PauseMigrationProjectsLocationsSourcesMigratingVmsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PauseMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<PauseMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type PauseMigrationProjectsLocationsSourcesMigratingVmsResponse =
   Operation;
@@ -5047,7 +5048,7 @@ export const StartMigrationProjectsLocationsSourcesMigratingVmsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+  ) as unknown as Schema.Codec<StartMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type StartMigrationProjectsLocationsSourcesMigratingVmsResponse =
   Operation;
@@ -5097,7 +5098,7 @@ export const CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 export type CreateProjectsLocationsSourcesMigratingVmsCloneJobsResponse =
   Operation;
@@ -5137,7 +5138,7 @@ export const CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 export type CancelProjectsLocationsSourcesMigratingVmsCloneJobsResponse =
   Operation;
@@ -5174,7 +5175,7 @@ export const GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 export type GetProjectsLocationsSourcesMigratingVmsCloneJobsResponse = CloneJob;
 export const GetProjectsLocationsSourcesMigratingVmsCloneJobsResponse =
@@ -5220,7 +5221,7 @@ export const ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/cloneJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 export type ListProjectsLocationsSourcesMigratingVmsCloneJobsResponse =
   ListCloneJobsResponse;
@@ -5271,7 +5272,7 @@ export const ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/cutoverJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
 export type ListProjectsLocationsSourcesMigratingVmsCutoverJobsResponse =
   ListCutoverJobsResponse;
@@ -5313,7 +5314,7 @@ export const CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
 export type CancelProjectsLocationsSourcesMigratingVmsCutoverJobsResponse =
   Operation;
@@ -5350,7 +5351,7 @@ export const GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
 export type GetProjectsLocationsSourcesMigratingVmsCutoverJobsResponse =
   CutoverJob;
@@ -5400,7 +5401,7 @@ export const CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
 export type CreateProjectsLocationsSourcesMigratingVmsCutoverJobsResponse =
   Operation;
@@ -5437,7 +5438,7 @@ export const GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
 export type GetProjectsLocationsSourcesMigratingVmsReplicationCyclesResponse =
   ReplicationCycle;
@@ -5484,7 +5485,7 @@ export const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/replicationCycles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
 export type ListProjectsLocationsSourcesMigratingVmsReplicationCyclesResponse =
   ListReplicationCyclesResponse;
@@ -5542,7 +5543,7 @@ export const ListProjectsLocationsSourcesUtilizationReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/utilizationReports" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSourcesUtilizationReportsRequest>;
 
 export type ListProjectsLocationsSourcesUtilizationReportsResponse =
   ListUtilizationReportsResponse;
@@ -5584,7 +5585,7 @@ export const DeleteProjectsLocationsSourcesUtilizationReportsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesUtilizationReportsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSourcesUtilizationReportsRequest>;
 
 export type DeleteProjectsLocationsSourcesUtilizationReportsResponse =
   Operation;
@@ -5628,7 +5629,7 @@ export const GetProjectsLocationsSourcesUtilizationReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSourcesUtilizationReportsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSourcesUtilizationReportsRequest>;
 
 export type GetProjectsLocationsSourcesUtilizationReportsResponse =
   UtilizationReport;
@@ -5678,7 +5679,7 @@ export const CreateProjectsLocationsSourcesUtilizationReportsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesUtilizationReportsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSourcesUtilizationReportsRequest>;
 
 export type CreateProjectsLocationsSourcesUtilizationReportsResponse =
   Operation;
@@ -5718,7 +5719,7 @@ export const RunProjectsLocationsSourcesDiskMigrationJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:run", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RunProjectsLocationsSourcesDiskMigrationJobsRequest>;
+  ) as unknown as Schema.Codec<RunProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type RunProjectsLocationsSourcesDiskMigrationJobsResponse = Operation;
 export const RunProjectsLocationsSourcesDiskMigrationJobsResponse =
@@ -5754,7 +5755,7 @@ export const GetProjectsLocationsSourcesDiskMigrationJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSourcesDiskMigrationJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type GetProjectsLocationsSourcesDiskMigrationJobsResponse =
   DiskMigrationJob;
@@ -5792,7 +5793,7 @@ export const CancelProjectsLocationsSourcesDiskMigrationJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type CancelProjectsLocationsSourcesDiskMigrationJobsResponse = Operation;
 export const CancelProjectsLocationsSourcesDiskMigrationJobsResponse =
@@ -5843,7 +5844,7 @@ export const CreateProjectsLocationsSourcesDiskMigrationJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesDiskMigrationJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type CreateProjectsLocationsSourcesDiskMigrationJobsResponse = Operation;
 export const CreateProjectsLocationsSourcesDiskMigrationJobsResponse =
@@ -5888,7 +5889,7 @@ export const PatchProjectsLocationsSourcesDiskMigrationJobsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSourcesDiskMigrationJobsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type PatchProjectsLocationsSourcesDiskMigrationJobsResponse = Operation;
 export const PatchProjectsLocationsSourcesDiskMigrationJobsResponse =
@@ -5936,7 +5937,7 @@ export const ListProjectsLocationsSourcesDiskMigrationJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/diskMigrationJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type ListProjectsLocationsSourcesDiskMigrationJobsResponse =
   ListDiskMigrationJobsResponse;
@@ -5975,7 +5976,7 @@ export const DeleteProjectsLocationsSourcesDiskMigrationJobsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesDiskMigrationJobsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type DeleteProjectsLocationsSourcesDiskMigrationJobsResponse = Operation;
 export const DeleteProjectsLocationsSourcesDiskMigrationJobsResponse =

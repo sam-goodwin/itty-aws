@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -44,7 +44,7 @@ export interface LoadBalancerTarget {
   region?: string;
 }
 
-export const LoadBalancerTarget: Schema.Schema<LoadBalancerTarget> =
+export const LoadBalancerTarget: Schema.Codec<LoadBalancerTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
     port: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface HealthCheckTargets {
   internalLoadBalancer?: ReadonlyArray<LoadBalancerTarget>;
 }
 
-export const HealthCheckTargets: Schema.Schema<HealthCheckTargets> =
+export const HealthCheckTargets: Schema.Codec<HealthCheckTargets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
     internalLoadBalancer: Schema.optional(Schema.Array(LoadBalancerTarget)),
@@ -78,7 +78,7 @@ export interface GeoPolicyItem {
   healthCheckedTargets?: HealthCheckTargets;
 }
 
-export const GeoPolicyItem: Schema.Schema<GeoPolicyItem> =
+export const GeoPolicyItem: Schema.Codec<GeoPolicyItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
@@ -93,7 +93,7 @@ export interface GeoPolicy {
   enableFencing?: boolean;
 }
 
-export const GeoPolicy: Schema.Schema<GeoPolicy> =
+export const GeoPolicy: Schema.Codec<GeoPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item: Schema.optional(Schema.Array(GeoPolicyItem)),
     enableFencing: Schema.optional(Schema.Boolean),
@@ -106,7 +106,7 @@ export interface EmailForwarding {
   alias?: string;
 }
 
-export const EmailForwarding: Schema.Schema<EmailForwarding> =
+export const EmailForwarding: Schema.Codec<EmailForwarding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetEmailAddress: Schema.optional(Schema.String),
     alias: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface DomainForwarding {
   targetUri?: string;
 }
 
-export const DomainForwarding: Schema.Schema<DomainForwarding> =
+export const DomainForwarding: Schema.Codec<DomainForwarding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pemCertificate: Schema.optional(Schema.String),
     pathForwarding: Schema.optional(Schema.Boolean),
@@ -148,7 +148,7 @@ export interface RetrieveGoogleDomainsForwardingConfigResponse {
   domainForwardings?: ReadonlyArray<DomainForwarding>;
 }
 
-export const RetrieveGoogleDomainsForwardingConfigResponse: Schema.Schema<RetrieveGoogleDomainsForwardingConfigResponse> =
+export const RetrieveGoogleDomainsForwardingConfigResponse: Schema.Codec<RetrieveGoogleDomainsForwardingConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailForwardings: Schema.optional(Schema.Array(EmailForwarding)),
     domainForwardings: Schema.optional(Schema.Array(DomainForwarding)),
@@ -163,7 +163,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -181,7 +181,7 @@ export interface Money {
   nanos?: number;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     units: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface RegisterParameters {
   >;
 }
 
-export const RegisterParameters: Schema.Schema<RegisterParameters> =
+export const RegisterParameters: Schema.Codec<RegisterParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yearlyPrice: Schema.optional(Money),
     domainName: Schema.optional(Schema.String),
@@ -249,7 +249,7 @@ export interface PostalAddress {
   sortingCode?: string;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
+export const PostalAddress: Schema.Codec<PostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revision: Schema.optional(Schema.Number),
     addressLines: Schema.optional(Schema.Array(Schema.String)),
@@ -275,7 +275,7 @@ export interface Contact {
   faxNumber?: string;
 }
 
-export const Contact: Schema.Schema<Contact> =
+export const Contact: Schema.Codec<Contact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     postalAddress: Schema.optional(PostalAddress),
@@ -299,7 +299,7 @@ export interface ContactSettings {
   registrantContact?: Contact;
 }
 
-export const ContactSettings: Schema.Schema<ContactSettings> =
+export const ContactSettings: Schema.Codec<ContactSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technicalContact: Schema.optional(Contact),
     privacy: Schema.optional(Schema.String),
@@ -343,7 +343,7 @@ export interface DsRecord {
     | (string & {});
 }
 
-export const DsRecord: Schema.Schema<DsRecord> =
+export const DsRecord: Schema.Codec<DsRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     digest: Schema.optional(Schema.String),
     keyTag: Schema.optional(Schema.Number),
@@ -358,7 +358,7 @@ export interface CustomDns {
   dsRecords?: ReadonlyArray<DsRecord>;
 }
 
-export const CustomDns: Schema.Schema<CustomDns> =
+export const CustomDns: Schema.Codec<CustomDns> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameServers: Schema.optional(Schema.Array(Schema.String)),
     dsRecords: Schema.optional(Schema.Array(DsRecord)),
@@ -373,7 +373,7 @@ export interface GlueRecord {
   ipv6Addresses?: ReadonlyArray<string>;
 }
 
-export const GlueRecord: Schema.Schema<GlueRecord> =
+export const GlueRecord: Schema.Codec<GlueRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
     hostName: Schema.optional(Schema.String),
@@ -393,7 +393,7 @@ export interface GoogleDomainsDns {
     | (string & {});
 }
 
-export const GoogleDomainsDns: Schema.Schema<GoogleDomainsDns> =
+export const GoogleDomainsDns: Schema.Codec<GoogleDomainsDns> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dsRecords: Schema.optional(Schema.Array(DsRecord)),
     nameServers: Schema.optional(Schema.Array(Schema.String)),
@@ -411,7 +411,7 @@ export interface DnsSettings {
   googleDomainsRedirectsDataAvailable?: boolean;
 }
 
-export const DnsSettings: Schema.Schema<DnsSettings> =
+export const DnsSettings: Schema.Codec<DnsSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customDns: Schema.optional(CustomDns),
     glueRecords: Schema.optional(Schema.Array(GlueRecord)),
@@ -448,7 +448,7 @@ export interface ManagementSettings {
     | (string & {});
 }
 
-export const ManagementSettings: Schema.Schema<ManagementSettings> =
+export const ManagementSettings: Schema.Codec<ManagementSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preferredRenewalMethod: Schema.optional(Schema.String),
     renewalMethod: Schema.optional(Schema.String),
@@ -536,7 +536,7 @@ export interface Registration {
   managementSettings?: ManagementSettings;
 }
 
-export const Registration: Schema.Schema<Registration> =
+export const Registration: Schema.Codec<Registration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     registerFailureReason: Schema.optional(Schema.String),
@@ -574,7 +574,7 @@ export interface RegisterDomainRequest {
   validateOnly?: boolean;
 }
 
-export const RegisterDomainRequest: Schema.Schema<RegisterDomainRequest> =
+export const RegisterDomainRequest: Schema.Codec<RegisterDomainRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registration: Schema.optional(Registration),
     yearlyPrice: Schema.optional(Money),
@@ -588,7 +588,7 @@ export interface AuthorizationCode {
   code?: string;
 }
 
-export const AuthorizationCode: Schema.Schema<AuthorizationCode> =
+export const AuthorizationCode: Schema.Codec<AuthorizationCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuthorizationCode" });
@@ -610,7 +610,7 @@ export interface TransferDomainRequest {
   yearlyPrice?: Money;
 }
 
-export const TransferDomainRequest: Schema.Schema<TransferDomainRequest> =
+export const TransferDomainRequest: Schema.Codec<TransferDomainRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactNotices: Schema.optional(Schema.Array(Schema.String)),
     authorizationCode: Schema.optional(AuthorizationCode),
@@ -631,7 +631,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -644,7 +644,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -663,7 +663,7 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -681,7 +681,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -715,7 +715,7 @@ export interface TransferParameters {
   domainName?: string;
 }
 
-export const TransferParameters: Schema.Schema<TransferParameters> =
+export const TransferParameters: Schema.Codec<TransferParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferLockState: Schema.optional(Schema.String),
     supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
@@ -735,7 +735,7 @@ export interface PrimaryBackupPolicy {
   trickleTraffic?: number;
 }
 
-export const PrimaryBackupPolicy: Schema.Schema<PrimaryBackupPolicy> =
+export const PrimaryBackupPolicy: Schema.Codec<PrimaryBackupPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backupGeoTargets: Schema.optional(GeoPolicy),
     primaryTargets: Schema.optional(HealthCheckTargets),
@@ -752,7 +752,7 @@ export interface WrrPolicyItem {
   signatureRrdata?: ReadonlyArray<string>;
 }
 
-export const WrrPolicyItem: Schema.Schema<WrrPolicyItem> =
+export const WrrPolicyItem: Schema.Codec<WrrPolicyItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     rrdata: Schema.optional(Schema.Array(Schema.String)),
@@ -764,7 +764,7 @@ export interface WrrPolicy {
   item?: ReadonlyArray<WrrPolicyItem>;
 }
 
-export const WrrPolicy: Schema.Schema<WrrPolicy> =
+export const WrrPolicy: Schema.Codec<WrrPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item: Schema.optional(Schema.Array(WrrPolicyItem)),
   }).annotate({ identifier: "WrrPolicy" });
@@ -779,7 +779,7 @@ export interface RRSetRoutingPolicy {
   wrr?: WrrPolicy;
 }
 
-export const RRSetRoutingPolicy: Schema.Schema<RRSetRoutingPolicy> =
+export const RRSetRoutingPolicy: Schema.Codec<RRSetRoutingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geoPolicy: Schema.optional(GeoPolicy),
     primaryBackup: Schema.optional(PrimaryBackupPolicy),
@@ -798,7 +798,7 @@ export interface ConfigureManagementSettingsRequest {
   managementSettings?: ManagementSettings;
 }
 
-export const ConfigureManagementSettingsRequest: Schema.Schema<ConfigureManagementSettingsRequest> =
+export const ConfigureManagementSettingsRequest: Schema.Codec<ConfigureManagementSettingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -820,7 +820,7 @@ export interface ResourceRecordSet {
   rrdata?: ReadonlyArray<string>;
 }
 
-export const ResourceRecordSet: Schema.Schema<ResourceRecordSet> =
+export const ResourceRecordSet: Schema.Codec<ResourceRecordSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
@@ -845,7 +845,7 @@ export interface OperationMetadata {
   createTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
@@ -870,7 +870,7 @@ export interface ConfigureContactSettingsRequest {
   >;
 }
 
-export const ConfigureContactSettingsRequest: Schema.Schema<ConfigureContactSettingsRequest> =
+export const ConfigureContactSettingsRequest: Schema.Codec<ConfigureContactSettingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -894,7 +894,7 @@ export interface Domain {
   domainName?: string;
 }
 
-export const Domain: Schema.Schema<Domain> =
+export const Domain: Schema.Codec<Domain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yearlyPrice: Schema.optional(Money),
     resourceState: Schema.optional(Schema.String),
@@ -914,7 +914,7 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -928,7 +928,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -944,7 +944,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -961,7 +961,7 @@ export interface Binding {
   members?: ReadonlyArray<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     role: Schema.optional(Schema.String),
@@ -979,7 +979,7 @@ export interface Policy {
   auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -994,7 +994,7 @@ export interface ListRegistrationsResponse {
   nextPageToken?: string;
 }
 
-export const ListRegistrationsResponse: Schema.Schema<ListRegistrationsResponse> =
+export const ListRegistrationsResponse: Schema.Codec<ListRegistrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registrations: Schema.optional(Schema.Array(Registration)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1007,7 +1007,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1020,7 +1020,7 @@ export interface RetrieveImportableDomainsResponse {
   nextPageToken?: string;
 }
 
-export const RetrieveImportableDomainsResponse: Schema.Schema<RetrieveImportableDomainsResponse> =
+export const RetrieveImportableDomainsResponse: Schema.Codec<RetrieveImportableDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Domain)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1031,7 +1031,7 @@ export interface RetrieveRegisterParametersResponse {
   registerParameters?: RegisterParameters;
 }
 
-export const RetrieveRegisterParametersResponse: Schema.Schema<RetrieveRegisterParametersResponse> =
+export const RetrieveRegisterParametersResponse: Schema.Codec<RetrieveRegisterParametersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registerParameters: Schema.optional(RegisterParameters),
   }).annotate({ identifier: "RetrieveRegisterParametersResponse" });
@@ -1043,7 +1043,7 @@ export interface RenewDomainRequest {
   validateOnly?: boolean;
 }
 
-export const RenewDomainRequest: Schema.Schema<RenewDomainRequest> =
+export const RenewDomainRequest: Schema.Codec<RenewDomainRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yearlyPrice: Schema.optional(Money),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -1056,7 +1056,7 @@ export interface InitiatePushTransferRequest {
   tag?: string;
 }
 
-export const InitiatePushTransferRequest: Schema.Schema<InitiatePushTransferRequest> =
+export const InitiatePushTransferRequest: Schema.Codec<InitiatePushTransferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     tag: Schema.optional(Schema.String),
@@ -1069,7 +1069,7 @@ export interface ImportDomainRequest {
   domainName?: string;
 }
 
-export const ImportDomainRequest: Schema.Schema<ImportDomainRequest> =
+export const ImportDomainRequest: Schema.Codec<ImportDomainRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     domainName: Schema.optional(Schema.String),
@@ -1080,14 +1080,14 @@ export interface RetrieveTransferParametersResponse {
   transferParameters?: TransferParameters;
 }
 
-export const RetrieveTransferParametersResponse: Schema.Schema<RetrieveTransferParametersResponse> =
+export const RetrieveTransferParametersResponse: Schema.Codec<RetrieveTransferParametersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferParameters: Schema.optional(TransferParameters),
   }).annotate({ identifier: "RetrieveTransferParametersResponse" });
 
 export interface ResetAuthorizationCodeRequest {}
 
-export const ResetAuthorizationCodeRequest: Schema.Schema<ResetAuthorizationCodeRequest> =
+export const ResetAuthorizationCodeRequest: Schema.Codec<ResetAuthorizationCodeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetAuthorizationCodeRequest",
   });
@@ -1097,7 +1097,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -1109,7 +1109,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -1120,7 +1120,7 @@ export interface SearchDomainsResponse {
   registerParameters?: ReadonlyArray<RegisterParameters>;
 }
 
-export const SearchDomainsResponse: Schema.Schema<SearchDomainsResponse> =
+export const SearchDomainsResponse: Schema.Codec<SearchDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registerParameters: Schema.optional(Schema.Array(RegisterParameters)),
   }).annotate({ identifier: "SearchDomainsResponse" });
@@ -1134,7 +1134,7 @@ export interface ConfigureDnsSettingsRequest {
   validateOnly?: boolean;
 }
 
-export const ConfigureDnsSettingsRequest: Schema.Schema<ConfigureDnsSettingsRequest> =
+export const ConfigureDnsSettingsRequest: Schema.Codec<ConfigureDnsSettingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsSettings: Schema.optional(DnsSettings),
     updateMask: Schema.optional(Schema.String),
@@ -1143,7 +1143,7 @@ export const ConfigureDnsSettingsRequest: Schema.Schema<ConfigureDnsSettingsRequ
 
 export interface ExportRegistrationRequest {}
 
-export const ExportRegistrationRequest: Schema.Schema<ExportRegistrationRequest> =
+export const ExportRegistrationRequest: Schema.Codec<ExportRegistrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportRegistrationRequest",
   });
@@ -1155,7 +1155,7 @@ export interface RetrieveGoogleDomainsDnsRecordsResponse {
   nextPageToken?: string;
 }
 
-export const RetrieveGoogleDomainsDnsRecordsResponse: Schema.Schema<RetrieveGoogleDomainsDnsRecordsResponse> =
+export const RetrieveGoogleDomainsDnsRecordsResponse: Schema.Codec<RetrieveGoogleDomainsDnsRecordsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rrset: Schema.optional(Schema.Array(ResourceRecordSet)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1240,7 +1240,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1275,7 +1275,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1320,7 +1320,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -1358,7 +1358,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1397,7 +1397,7 @@ export const GetIamPolicyProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsRegistrationsRequest>;
 
 export type GetIamPolicyProjectsLocationsRegistrationsResponse = Policy;
 export const GetIamPolicyProjectsLocationsRegistrationsResponse =
@@ -1431,7 +1431,7 @@ export const DeleteProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRegistrationsRequest>;
 
 export type DeleteProjectsLocationsRegistrationsResponse = Operation;
 export const DeleteProjectsLocationsRegistrationsResponse =
@@ -1474,7 +1474,7 @@ export const SetIamPolicyProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsRegistrationsRequest>;
 
 export type SetIamPolicyProjectsLocationsRegistrationsResponse = Policy;
 export const SetIamPolicyProjectsLocationsRegistrationsResponse =
@@ -1519,7 +1519,7 @@ export const RetrieveImportableDomainsProjectsLocationsRegistrationsRequest =
       path: "v1beta1/{+location}/registrations:retrieveImportableDomains",
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveImportableDomainsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<RetrieveImportableDomainsProjectsLocationsRegistrationsRequest>;
 
 export type RetrieveImportableDomainsProjectsLocationsRegistrationsResponse =
   RetrieveImportableDomainsResponse;
@@ -1565,7 +1565,7 @@ export const ResetAuthorizationCodeProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetAuthorizationCodeProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ResetAuthorizationCodeProjectsLocationsRegistrationsRequest>;
 
 export type ResetAuthorizationCodeProjectsLocationsRegistrationsResponse =
   AuthorizationCode;
@@ -1609,7 +1609,7 @@ export const InitiatePushTransferProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InitiatePushTransferProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<InitiatePushTransferProjectsLocationsRegistrationsRequest>;
 
 export type InitiatePushTransferProjectsLocationsRegistrationsResponse =
   Operation;
@@ -1653,7 +1653,7 @@ export const TestIamPermissionsProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsRegistrationsRequest>;
 
 export type TestIamPermissionsProjectsLocationsRegistrationsResponse =
   TestIamPermissionsResponse;
@@ -1699,7 +1699,7 @@ export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsReques
       path: "v1beta1/{+registration}:retrieveGoogleDomainsDnsRecords",
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
 
 export type RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse =
   RetrieveGoogleDomainsDnsRecordsResponse;
@@ -1707,7 +1707,9 @@ export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRespon
   /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsDnsRecordsResponse;
 
 export type RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the DNS records from the Google Domains DNS zone for domains that use the deprecated `google_domains_dns` in the `Registration`'s `dns_settings`. */
 export const retrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.PaginatedOperationMethod<
@@ -1739,7 +1741,7 @@ export const RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest =
       path: "v1beta1/{+registration}:retrieveAuthorizationCode",
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest>;
 
 export type RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse =
   AuthorizationCode;
@@ -1781,7 +1783,7 @@ export const RenewDomainProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RenewDomainProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<RenewDomainProjectsLocationsRegistrationsRequest>;
 
 export type RenewDomainProjectsLocationsRegistrationsResponse = Operation;
 export const RenewDomainProjectsLocationsRegistrationsResponse =
@@ -1824,7 +1826,7 @@ export const TransferProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TransferProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<TransferProjectsLocationsRegistrationsRequest>;
 
 export type TransferProjectsLocationsRegistrationsResponse = Operation;
 export const TransferProjectsLocationsRegistrationsResponse =
@@ -1866,7 +1868,7 @@ export const RetrieveTransferParametersProjectsLocationsRegistrationsRequest =
       path: "v1beta1/{+location}/registrations:retrieveTransferParameters",
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveTransferParametersProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<RetrieveTransferParametersProjectsLocationsRegistrationsRequest>;
 
 export type RetrieveTransferParametersProjectsLocationsRegistrationsResponse =
   RetrieveTransferParametersResponse;
@@ -1904,7 +1906,7 @@ export const ExportProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:export", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsRegistrationsRequest>;
 
 export type ExportProjectsLocationsRegistrationsResponse = Operation;
 export const ExportProjectsLocationsRegistrationsResponse =
@@ -1949,7 +1951,7 @@ export const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>;
 
 export type ConfigureManagementSettingsProjectsLocationsRegistrationsResponse =
   Operation;
@@ -1993,7 +1995,7 @@ export const ConfigureContactSettingsProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConfigureContactSettingsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ConfigureContactSettingsProjectsLocationsRegistrationsRequest>;
 
 export type ConfigureContactSettingsProjectsLocationsRegistrationsResponse =
   Operation;
@@ -2037,7 +2039,7 @@ export const RegisterProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RegisterProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<RegisterProjectsLocationsRegistrationsRequest>;
 
 export type RegisterProjectsLocationsRegistrationsResponse = Operation;
 export const RegisterProjectsLocationsRegistrationsResponse =
@@ -2080,7 +2082,7 @@ export const ImportProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsRegistrationsRequest>;
 
 export type ImportProjectsLocationsRegistrationsResponse = Operation;
 export const ImportProjectsLocationsRegistrationsResponse =
@@ -2125,7 +2127,7 @@ export const ListProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/registrations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRegistrationsRequest>;
 
 export type ListProjectsLocationsRegistrationsResponse =
   ListRegistrationsResponse;
@@ -2171,7 +2173,7 @@ export const ConfigureDnsSettingsProjectsLocationsRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConfigureDnsSettingsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ConfigureDnsSettingsProjectsLocationsRegistrationsRequest>;
 
 export type ConfigureDnsSettingsProjectsLocationsRegistrationsResponse =
   Operation;
@@ -2219,7 +2221,7 @@ export const PatchProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRegistrationsRequest>;
 
 export type PatchProjectsLocationsRegistrationsResponse = Operation;
 export const PatchProjectsLocationsRegistrationsResponse =
@@ -2261,7 +2263,7 @@ export const RetrieveRegisterParametersProjectsLocationsRegistrationsRequest =
       path: "v1beta1/{+location}/registrations:retrieveRegisterParameters",
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveRegisterParametersProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<RetrieveRegisterParametersProjectsLocationsRegistrationsRequest>;
 
 export type RetrieveRegisterParametersProjectsLocationsRegistrationsResponse =
   RetrieveRegisterParametersResponse;
@@ -2296,7 +2298,7 @@ export const GetProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRegistrationsRequest>;
 
 export type GetProjectsLocationsRegistrationsResponse = Registration;
 export const GetProjectsLocationsRegistrationsResponse =
@@ -2336,7 +2338,7 @@ export const SearchDomainsProjectsLocationsRegistrationsRequest =
       path: "v1beta1/{+location}/registrations:searchDomains",
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<SearchDomainsProjectsLocationsRegistrationsRequest>;
 
 export type SearchDomainsProjectsLocationsRegistrationsResponse =
   SearchDomainsResponse;
@@ -2374,7 +2376,7 @@ export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations
       path: "v1beta1/{+registration}:retrieveGoogleDomainsForwardingConfig",
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>;
+  ) as unknown as Schema.Codec<RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>;
 
 export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse =
   RetrieveGoogleDomainsForwardingConfigResponse;
@@ -2382,7 +2384,9 @@ export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations
   /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsForwardingConfigResponse;
 
 export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the deprecated domain and email forwarding configurations you set up in the deprecated Google Domains UI. The configuration is present only for domains with the `google_domains_redirects_data_available` set to `true` in the `Registration`'s `dns_settings`. A forwarding configuration might not work correctly if required DNS records are not present in the domain's authoritative DNS Zone. */
 export const retrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations: API.OperationMethod<

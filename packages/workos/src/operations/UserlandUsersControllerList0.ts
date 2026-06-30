@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerList0Input {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  organization?: string;
+  organization_id?: string;
+  email?: string;
+}
 export const UserlandUsersControllerList0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -13,11 +22,31 @@ export const UserlandUsersControllerList0Input =
     organization: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/user_management/users" }));
-export type UserlandUsersControllerList0Input =
-  typeof UserlandUsersControllerList0Input.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/user_management/users" }),
+  ) as unknown as Schema.Codec<UserlandUsersControllerList0Input>;
 
 // Output Schema
+export interface UserlandUsersControllerList0Output {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    profile_picture_url?: string | null;
+    email?: string;
+    email_verified?: boolean;
+    external_id?: string | null;
+    metadata?: Record<string, string>;
+    last_sign_in_at?: string | null;
+    locale?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const UserlandUsersControllerList0Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -49,9 +78,7 @@ export const UserlandUsersControllerList0Output =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type UserlandUsersControllerList0Output =
-  typeof UserlandUsersControllerList0Output.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerList0Output>;
 
 // The operation
 /**

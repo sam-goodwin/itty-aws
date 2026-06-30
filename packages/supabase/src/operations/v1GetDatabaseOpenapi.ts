@@ -4,19 +4,22 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetDatabaseOpenapiInput {
+  ref: string;
+  schema?: string;
+}
 export const V1GetDatabaseOpenapiInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     schema: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/database/openapi" }),
-  );
-export type V1GetDatabaseOpenapiInput = typeof V1GetDatabaseOpenapiInput.Type;
+  ) as unknown as Schema.Codec<V1GetDatabaseOpenapiInput>;
 
 // Output Schema
+export type V1GetDatabaseOpenapiOutput = unknown;
 export const V1GetDatabaseOpenapiOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type V1GetDatabaseOpenapiOutput = typeof V1GetDatabaseOpenapiOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<V1GetDatabaseOpenapiOutput>;
 
 // The operation
 /**

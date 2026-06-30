@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DeleteV1DeploymentsByDeploymentIdInput {
+  deploymentId: string;
+}
 export const DeleteV1DeploymentsByDeploymentIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/deployments/{deploymentId}" }));
-export type DeleteV1DeploymentsByDeploymentIdInput =
-  typeof DeleteV1DeploymentsByDeploymentIdInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/v1/deployments/{deploymentId}" }),
+  ) as unknown as Schema.Codec<DeleteV1DeploymentsByDeploymentIdInput>;
 
 // Output Schema
+export type DeleteV1DeploymentsByDeploymentIdOutput = void;
 export const DeleteV1DeploymentsByDeploymentIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteV1DeploymentsByDeploymentIdOutput =
-  typeof DeleteV1DeploymentsByDeploymentIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1DeploymentsByDeploymentIdOutput>;
 
 // The operation
 /**

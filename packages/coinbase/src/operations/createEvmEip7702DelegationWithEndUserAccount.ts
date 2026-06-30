@@ -3,6 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateEvmEip7702DelegationWithEndUserAccountInput {
+  userId: string;
+  projectID?: string;
+  address: string;
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "polygon"
+    | "ethereum"
+    | "ethereum-sepolia";
+  enableSpendPermissions?: boolean;
+  walletSecretId?: string;
+}
 export const CreateEvmEip7702DelegationWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -24,17 +39,16 @@ export const CreateEvmEip7702DelegationWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/evm/eip7702/delegation",
     }),
-  );
-export type CreateEvmEip7702DelegationWithEndUserAccountInput =
-  typeof CreateEvmEip7702DelegationWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<CreateEvmEip7702DelegationWithEndUserAccountInput>;
 
 // Output Schema
+export interface CreateEvmEip7702DelegationWithEndUserAccountOutput {
+  delegationOperationId: string;
+}
 export const CreateEvmEip7702DelegationWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegationOperationId: Schema.String,
-  });
-export type CreateEvmEip7702DelegationWithEndUserAccountOutput =
-  typeof CreateEvmEip7702DelegationWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<CreateEvmEip7702DelegationWithEndUserAccountOutput>;
 
 // The operation
 /**

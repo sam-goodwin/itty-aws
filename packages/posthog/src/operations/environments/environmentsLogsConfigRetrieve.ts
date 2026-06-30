@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface EnvironmentsLogsConfigRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const EnvironmentsLogsConfigRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const EnvironmentsLogsConfigRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/environments/{id}/logs_config/",
     }),
-  );
-export type EnvironmentsLogsConfigRetrieveInput =
-  typeof EnvironmentsLogsConfigRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsLogsConfigRetrieveInput>;
 
 // Output Schema
+export type EnvironmentsLogsConfigRetrieveOutput = void;
 export const EnvironmentsLogsConfigRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentsLogsConfigRetrieveOutput =
-  typeof EnvironmentsLogsConfigRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsLogsConfigRetrieveOutput>;
 
 // The operation
 /**

@@ -4,12 +4,34 @@ import * as T from "../../traits.ts";
 import { Forbidden } from "../../errors.ts";
 
 // Input Schema
+export interface GetDatasetsInput {}
 export const GetDatasetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v2/datasets" }));
-export type GetDatasetsInput = typeof GetDatasetsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v2/datasets" }),
+) as unknown as Schema.Codec<GetDatasetsInput>;
 
 // Output Schema
+export type GetDatasetsOutput = {
+  canWrite?: boolean;
+  created: string;
+  description: string;
+  edgeDeployment?: string;
+  edgeDeploymentUrl?: string;
+  id: string;
+  kind:
+    | "otel:metrics:v1"
+    | "otel:traces:v1"
+    | "otel:logs:v1"
+    | "axiom:events:v1";
+  mapFields?: string[];
+  name: string;
+  retentionDays?: number;
+  sharedByOrg?: string;
+  updatedAt: string;
+  useRetentionPeriod?: boolean;
+  who: string;
+}[];
 export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     canWrite: Schema.optional(Schema.Boolean),
@@ -32,8 +54,7 @@ export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     useRetentionPeriod: Schema.optional(Schema.Boolean),
     who: Schema.String,
   }),
-);
-export type GetDatasetsOutput = typeof GetDatasetsOutput.Type;
+) as unknown as Schema.Codec<GetDatasetsOutput>;
 
 // The operation
 /**

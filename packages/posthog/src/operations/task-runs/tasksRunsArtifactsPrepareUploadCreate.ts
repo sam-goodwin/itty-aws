@@ -4,6 +4,33 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsArtifactsPrepareUploadCreateInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  artifacts?: {
+    name?: string;
+    type?:
+      | "plan"
+      | "context"
+      | "reference"
+      | "output"
+      | "artifact"
+      | "tree_snapshot"
+      | "user_attachment"
+      | "skill_bundle";
+    source?: string;
+    size?: number;
+    content_type?: string;
+    metadata?: {
+      skill_name: string;
+      skill_source: "user" | "repo" | "marketplace" | "codex";
+      content_sha256: string;
+      bundle_format: "zip";
+      schema_version: number;
+    };
+  }[];
+}
 export const TasksRunsArtifactsPrepareUploadCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -50,11 +77,29 @@ export const TasksRunsArtifactsPrepareUploadCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/prepare_upload/",
     }),
-  );
-export type TasksRunsArtifactsPrepareUploadCreateInput =
-  typeof TasksRunsArtifactsPrepareUploadCreateInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsArtifactsPrepareUploadCreateInput>;
 
 // Output Schema
+export interface TasksRunsArtifactsPrepareUploadCreateOutput {
+  artifacts?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    source?: string;
+    size?: number;
+    content_type?: string;
+    metadata?: {
+      skill_name: string;
+      skill_source: "user" | "repo" | "marketplace" | "codex";
+      content_sha256: string;
+      bundle_format: "zip";
+      schema_version: number;
+    };
+    storage_path?: string;
+    expires_in?: number;
+    presigned_post?: { url?: string; fields?: Record<string, string> };
+  }[];
+}
 export const TasksRunsArtifactsPrepareUploadCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifacts: Schema.optional(
@@ -93,9 +138,7 @@ export const TasksRunsArtifactsPrepareUploadCreateOutput =
         }),
       ),
     ),
-  });
-export type TasksRunsArtifactsPrepareUploadCreateOutput =
-  typeof TasksRunsArtifactsPrepareUploadCreateOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsArtifactsPrepareUploadCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  team_id?: number;
+  name?: string;
+  slug?: string;
+  description?: string;
+  live_revision?: string | null;
+  archived?: boolean;
+  archived_at?: string | null;
+  created_by_id?: number | null;
+  created_by?: { id?: number; first_name?: string; email?: string } | null;
+  created_at?: string;
+  updated_at?: string;
+  slack_events_url?: string | null;
+  slack_interactivity_url?: string | null;
+  ingress_base_url?: string | null;
+}
 export const AgentApplicationsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -34,11 +52,26 @@ export const AgentApplicationsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/agent_applications/{id}/",
     }),
-  );
-export type AgentApplicationsPartialUpdateInput =
-  typeof AgentApplicationsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsPartialUpdateInput>;
 
 // Output Schema
+export interface AgentApplicationsPartialUpdateOutput {
+  id: string;
+  team_id: number;
+  name: string;
+  slug?: string;
+  description?: string;
+  live_revision: string | null;
+  archived?: boolean;
+  archived_at: string | null;
+  created_by_id: number | null;
+  created_by: { id?: number; first_name?: string; email?: string } | null;
+  created_at: string;
+  updated_at: string;
+  slack_events_url: string | null;
+  slack_interactivity_url: string | null;
+  ingress_base_url: string | null;
+}
 export const AgentApplicationsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -62,9 +95,7 @@ export const AgentApplicationsPartialUpdateOutput =
     slack_events_url: Schema.NullOr(Schema.String),
     slack_interactivity_url: Schema.NullOr(Schema.String),
     ingress_base_url: Schema.NullOr(Schema.String),
-  });
-export type AgentApplicationsPartialUpdateOutput =
-  typeof AgentApplicationsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsPartialUpdateOutput>;
 
 // The operation
 /**

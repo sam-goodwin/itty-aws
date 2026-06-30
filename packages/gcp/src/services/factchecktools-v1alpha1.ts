@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
   site?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1Publisher: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Publisher> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1Publisher: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1Publisher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     site: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   publisher?: GoogleFactcheckingFactchecktoolsV1alpha1Publisher;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     textualRating: Schema.optional(Schema.String),
@@ -77,7 +77,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   text?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1Claim: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Claim> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1Claim: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1Claim> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     claimant: Schema.optional(Schema.String),
     claimReview: Schema.optional(
@@ -92,7 +92,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSe
   claim?: GoogleFactcheckingFactchecktoolsV1alpha1Claim;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     claim: Schema.optional(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
   }).annotate({
@@ -107,7 +107,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSe
   results?: ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     results: Schema.optional(
@@ -127,7 +127,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchR
   claims?: ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     claims: Schema.optional(
@@ -145,7 +145,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   imageUrl?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     imageUrl: Schema.optional(Schema.String),
@@ -155,7 +155,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor: Schema.S
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -175,7 +175,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   ratingExplanation?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textualRating: Schema.optional(Schema.String),
     ratingValue: Schema.optional(Schema.Number),
@@ -198,7 +198,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   imageUrl?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sameAs: Schema.optional(Schema.String),
@@ -227,7 +227,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   claimAppearances?: ReadonlyArray<string>;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     claimReviewed: Schema.optional(Schema.String),
     claimDate: Schema.optional(Schema.String),
@@ -260,7 +260,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   claimReviewAuthor?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageUrl: Schema.optional(Schema.String),
     claimReviewMarkups: Schema.optional(
@@ -283,7 +283,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPa
   nextPageToken?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse> =
+export const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     claimReviewMarkupPages: Schema.optional(
       Schema.Array(
@@ -382,7 +382,7 @@ export const SearchClaimsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/claims:search" }),
   svc,
-) as unknown as Schema.Schema<SearchClaimsRequest>;
+) as unknown as Schema.Codec<SearchClaimsRequest>;
 
 export type SearchClaimsResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse;
@@ -432,7 +432,7 @@ export const ImageSearchClaimsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/claims:imageSearch" }),
     svc,
-  ) as unknown as Schema.Schema<ImageSearchClaimsRequest>;
+  ) as unknown as Schema.Codec<ImageSearchClaimsRequest>;
 
 export type ImageSearchClaimsResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse;
@@ -469,7 +469,7 @@ export const CreatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1alpha1/pages", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreatePagesRequest>;
+) as unknown as Schema.Codec<CreatePagesRequest>;
 
 export type CreatePagesResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
@@ -505,7 +505,7 @@ export const GetPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetPagesRequest>;
+) as unknown as Schema.Codec<GetPagesRequest>;
 
 export type GetPagesResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
@@ -550,7 +550,7 @@ export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/pages" }),
   svc,
-) as unknown as Schema.Schema<ListPagesRequest>;
+) as unknown as Schema.Codec<ListPagesRequest>;
 
 export type ListPagesResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse;
@@ -590,7 +590,7 @@ export const UpdatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "v1alpha1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdatePagesRequest>;
+) as unknown as Schema.Codec<UpdatePagesRequest>;
 
 export type UpdatePagesResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
@@ -626,7 +626,7 @@ export const DeletePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeletePagesRequest>;
+) as unknown as Schema.Codec<DeletePagesRequest>;
 
 export type DeletePagesResponse = GoogleProtobufEmpty;
 export const DeletePagesResponse =

@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetDocumentInput {
+  collectionName: string;
+  documentId: string;
+}
 export const GetDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   documentId: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,12 @@ export const GetDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/collections/{collectionName}/documents/{documentId}",
   }),
-);
-export type GetDocumentInput = typeof GetDocumentInput.Type;
+) as unknown as Schema.Codec<GetDocumentInput>;
 
 // Output Schema
-export const GetDocumentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type GetDocumentOutput = typeof GetDocumentOutput.Type;
+export type GetDocumentOutput = unknown;
+export const GetDocumentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetDocumentOutput>;
 
 // The operation
 /**

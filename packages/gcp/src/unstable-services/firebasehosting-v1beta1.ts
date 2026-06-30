@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface DnsRecord {
   requiredAction?: "NONE" | "ADD" | "REMOVE" | (string & {});
 }
 
-export const DnsRecord: Schema.Schema<DnsRecord> =
+export const DnsRecord: Schema.Codec<DnsRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domainName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export interface DnsRecordSet {
   domainName?: string;
 }
 
-export const DnsRecordSet: Schema.Schema<DnsRecordSet> =
+export const DnsRecordSet: Schema.Codec<DnsRecordSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     records: Schema.optional(Schema.Array(DnsRecord)),
     checkError: Schema.optional(Status),
@@ -91,7 +91,7 @@ export interface DnsUpdates {
   desired?: ReadonlyArray<DnsRecordSet>;
 }
 
-export const DnsUpdates: Schema.Schema<DnsUpdates> =
+export const DnsUpdates: Schema.Codec<DnsUpdates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     checkTime: Schema.optional(Schema.String),
     discovered: Schema.optional(Schema.Array(DnsRecordSet)),
@@ -111,7 +111,7 @@ export interface HttpUpdate {
   path?: string;
 }
 
-export const HttpUpdate: Schema.Schema<HttpUpdate> =
+export const HttpUpdate: Schema.Codec<HttpUpdate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     desired: Schema.optional(Schema.String),
     discovered: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export interface CertVerification {
   http?: HttpUpdate;
 }
 
-export const CertVerification: Schema.Schema<CertVerification> =
+export const CertVerification: Schema.Codec<CertVerification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dns: Schema.optional(DnsUpdates),
     http: Schema.optional(HttpUpdate),
@@ -162,7 +162,7 @@ export interface Certificate {
   issues?: ReadonlyArray<Status>;
 }
 
-export const Certificate: Schema.Schema<Certificate> =
+export const Certificate: Schema.Codec<Certificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -228,7 +228,7 @@ export interface CustomDomain {
   annotations?: Record<string, string>;
 }
 
-export const CustomDomain: Schema.Schema<CustomDomain> =
+export const CustomDomain: Schema.Codec<CustomDomain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reconciling: Schema.optional(Schema.Boolean),
     redirectTarget: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface CertHttpChallenge {
   token?: string;
 }
 
-export const CertHttpChallenge: Schema.Schema<CertHttpChallenge> =
+export const CertHttpChallenge: Schema.Codec<CertHttpChallenge> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -268,7 +268,7 @@ export interface CertDnsChallenge {
   domainName?: string;
 }
 
-export const CertDnsChallenge: Schema.Schema<CertDnsChallenge> =
+export const CertDnsChallenge: Schema.Codec<CertDnsChallenge> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     domainName: Schema.optional(Schema.String),
@@ -308,7 +308,7 @@ export interface DomainProvisioning {
   dnsFetchTime?: string;
 }
 
-export const DomainProvisioning: Schema.Schema<DomainProvisioning> =
+export const DomainProvisioning: Schema.Codec<DomainProvisioning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certChallengeHttp: Schema.optional(CertHttpChallenge),
     certStatus: Schema.optional(Schema.String),
@@ -327,7 +327,7 @@ export interface DomainRedirect {
   domainName?: string;
 }
 
-export const DomainRedirect: Schema.Schema<DomainRedirect> =
+export const DomainRedirect: Schema.Codec<DomainRedirect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     domainName: Schema.optional(Schema.String),
@@ -354,7 +354,7 @@ export interface Domain {
   domainRedirect?: DomainRedirect;
 }
 
-export const Domain: Schema.Schema<Domain> =
+export const Domain: Schema.Codec<Domain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     site: Schema.optional(Schema.String),
     provisioning: Schema.optional(DomainProvisioning),
@@ -371,7 +371,7 @@ export interface ListDomainsResponse {
   nextPageToken?: string;
 }
 
-export const ListDomainsResponse: Schema.Schema<ListDomainsResponse> =
+export const ListDomainsResponse: Schema.Codec<ListDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Domain)),
     nextPageToken: Schema.optional(Schema.String),
@@ -390,7 +390,7 @@ export interface Site {
   labels?: Record<string, string>;
 }
 
-export const Site: Schema.Schema<Site> =
+export const Site: Schema.Codec<Site> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     defaultUrl: Schema.optional(Schema.String),
@@ -406,7 +406,7 @@ export interface ListSitesResponse {
   sites?: ReadonlyArray<Site>;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
+export const ListSitesResponse: Schema.Codec<ListSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     sites: Schema.optional(Schema.Array(Site)),
@@ -430,7 +430,7 @@ export interface LiveMigrationStep {
   issues?: ReadonlyArray<Status>;
 }
 
-export const LiveMigrationStep: Schema.Schema<LiveMigrationStep> =
+export const LiveMigrationStep: Schema.Codec<LiveMigrationStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     certVerification: Schema.optional(CertVerification),
@@ -476,7 +476,7 @@ export interface CustomDomainMetadata {
     | (string & {});
 }
 
-export const CustomDomainMetadata: Schema.Schema<CustomDomainMetadata> =
+export const CustomDomainMetadata: Schema.Codec<CustomDomainMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certState: Schema.optional(Schema.String),
     liveMigrationSteps: Schema.optional(Schema.Array(LiveMigrationStep)),
@@ -491,7 +491,7 @@ export interface PathFilter {
   regexes?: ReadonlyArray<string>;
 }
 
-export const PathFilter: Schema.Schema<PathFilter> =
+export const PathFilter: Schema.Codec<PathFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regexes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PathFilter" });
@@ -507,7 +507,7 @@ export interface CloneVersionRequest {
   finalize?: boolean;
 }
 
-export const CloneVersionRequest: Schema.Schema<CloneVersionRequest> =
+export const CloneVersionRequest: Schema.Codec<CloneVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     include: Schema.optional(PathFilter),
     exclude: Schema.optional(PathFilter),
@@ -522,7 +522,7 @@ export interface ActingUser {
   imageUrl?: string;
 }
 
-export const ActingUser: Schema.Schema<ActingUser> =
+export const ActingUser: Schema.Codec<ActingUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     imageUrl: Schema.optional(Schema.String),
@@ -537,7 +537,7 @@ export interface Header {
   headers?: Record<string, string>;
 }
 
-export const Header: Schema.Schema<Header> =
+export const Header: Schema.Codec<Header> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regex: Schema.optional(Schema.String),
     glob: Schema.optional(Schema.String),
@@ -555,7 +555,7 @@ export interface Redirect {
   glob?: string;
 }
 
-export const Redirect: Schema.Schema<Redirect> =
+export const Redirect: Schema.Codec<Redirect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.Number),
     location: Schema.optional(Schema.String),
@@ -572,7 +572,7 @@ export interface CloudRunRewrite {
   tag?: string;
 }
 
-export const CloudRunRewrite: Schema.Schema<CloudRunRewrite> =
+export const CloudRunRewrite: Schema.Codec<CloudRunRewrite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     serviceId: Schema.optional(Schema.String),
@@ -596,7 +596,7 @@ export interface Rewrite {
   functionRegion?: string;
 }
 
-export const Rewrite: Schema.Schema<Rewrite> =
+export const Rewrite: Schema.Codec<Rewrite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     regex: Schema.optional(Schema.String),
@@ -612,7 +612,7 @@ export interface I18nConfig {
   root?: string;
 }
 
-export const I18nConfig: Schema.Schema<I18nConfig> =
+export const I18nConfig: Schema.Codec<I18nConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     root: Schema.optional(Schema.String),
   }).annotate({ identifier: "I18nConfig" });
@@ -638,7 +638,7 @@ export interface ServingConfig {
   i18n?: I18nConfig;
 }
 
-export const ServingConfig: Schema.Schema<ServingConfig> =
+export const ServingConfig: Schema.Codec<ServingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trailingSlashBehavior: Schema.optional(Schema.String),
     headers: Schema.optional(Schema.Array(Header)),
@@ -684,7 +684,7 @@ export interface Version {
   versionBytes?: string;
 }
 
-export const Version: Schema.Schema<Version> =
+export const Version: Schema.Codec<Version> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     finalizeTime: Schema.optional(Schema.String),
@@ -720,7 +720,7 @@ export interface Release {
   releaseTime?: string;
 }
 
-export const Release: Schema.Schema<Release> =
+export const Release: Schema.Codec<Release> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releaseUser: Schema.optional(ActingUser),
     name: Schema.optional(Schema.String),
@@ -737,7 +737,7 @@ export interface ListReleasesResponse {
   nextPageToken?: string;
 }
 
-export const ListReleasesResponse: Schema.Schema<ListReleasesResponse> =
+export const ListReleasesResponse: Schema.Codec<ListReleasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releases: Schema.optional(Schema.Array(Release)),
     nextPageToken: Schema.optional(Schema.String),
@@ -752,7 +752,7 @@ export interface VersionFile {
   hash?: string;
 }
 
-export const VersionFile: Schema.Schema<VersionFile> =
+export const VersionFile: Schema.Codec<VersionFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -766,7 +766,7 @@ export interface ListVersionFilesResponse {
   nextPageToken?: string;
 }
 
-export const ListVersionFilesResponse: Schema.Schema<ListVersionFilesResponse> =
+export const ListVersionFilesResponse: Schema.Codec<ListVersionFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Array(VersionFile)),
     nextPageToken: Schema.optional(Schema.String),
@@ -779,7 +779,7 @@ export interface UndeleteCustomDomainRequest {
   etag?: string;
 }
 
-export const UndeleteCustomDomainRequest: Schema.Schema<UndeleteCustomDomainRequest> =
+export const UndeleteCustomDomainRequest: Schema.Codec<UndeleteCustomDomainRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -798,7 +798,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -809,7 +809,7 @@ export const Operation: Schema.Schema<Operation> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -835,7 +835,7 @@ export interface Channel {
   expireTime?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -855,7 +855,7 @@ export interface ListChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
+export const ListChannelsResponse: Schema.Codec<ListChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channels: Schema.optional(Schema.Array(Channel)),
     nextPageToken: Schema.optional(Schema.String),
@@ -868,7 +868,7 @@ export interface ListVersionsResponse {
   versions?: ReadonlyArray<Version>;
 }
 
-export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
+export const ListVersionsResponse: Schema.Codec<ListVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     versions: Schema.optional(Schema.Array(Version)),
@@ -881,7 +881,7 @@ export interface ListCustomDomainsResponse {
   customDomains?: ReadonlyArray<CustomDomain>;
 }
 
-export const ListCustomDomainsResponse: Schema.Schema<ListCustomDomainsResponse> =
+export const ListCustomDomainsResponse: Schema.Codec<ListCustomDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     customDomains: Schema.optional(Schema.Array(CustomDomain)),
@@ -896,7 +896,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -908,7 +908,7 @@ export interface PopulateVersionFilesRequest {
   files?: Record<string, string>;
 }
 
-export const PopulateVersionFilesRequest: Schema.Schema<PopulateVersionFilesRequest> =
+export const PopulateVersionFilesRequest: Schema.Codec<PopulateVersionFilesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "PopulateVersionFilesRequest" });
@@ -920,7 +920,7 @@ export interface SiteConfig {
   cloudLoggingEnabled?: boolean;
 }
 
-export const SiteConfig: Schema.Schema<SiteConfig> =
+export const SiteConfig: Schema.Codec<SiteConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxVersions: Schema.optional(Schema.String),
     cloudLoggingEnabled: Schema.optional(Schema.Boolean),
@@ -933,7 +933,7 @@ export interface PopulateVersionFilesResponse {
   uploadRequiredHashes?: ReadonlyArray<string>;
 }
 
-export const PopulateVersionFilesResponse: Schema.Schema<PopulateVersionFilesResponse> =
+export const PopulateVersionFilesResponse: Schema.Codec<PopulateVersionFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadUrl: Schema.optional(Schema.String),
     uploadRequiredHashes: Schema.optional(Schema.Array(Schema.String)),
@@ -1010,7 +1010,7 @@ export const ListProjectsSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/sites" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesRequest>;
 
 export type ListProjectsSitesResponse = ListSitesResponse;
 export const ListProjectsSitesResponse =
@@ -1051,7 +1051,7 @@ export const UpdateConfigProjectsSitesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigProjectsSitesRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigProjectsSitesRequest>;
 
 export type UpdateConfigProjectsSitesResponse = SiteConfig;
 export const UpdateConfigProjectsSitesResponse =
@@ -1098,7 +1098,7 @@ export const CreateProjectsSitesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+parent}/sites", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsSitesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsSitesRequest>;
 
 export type CreateProjectsSitesResponse = Site;
 export const CreateProjectsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
@@ -1133,7 +1133,7 @@ export const DeleteProjectsSitesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsSitesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsSitesRequest>;
 
 export type DeleteProjectsSitesResponse = Empty;
 export const DeleteProjectsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1168,7 +1168,7 @@ export const GetConfigProjectsSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsSitesRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsSitesRequest>;
 
 export type GetConfigProjectsSitesResponse = SiteConfig;
 export const GetConfigProjectsSitesResponse =
@@ -1205,7 +1205,7 @@ export const PatchProjectsSitesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsSitesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsSitesRequest>;
 
 export type PatchProjectsSitesResponse = Site;
 export const PatchProjectsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
@@ -1240,7 +1240,7 @@ export const GetProjectsSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSitesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSitesRequest>;
 
 export type GetProjectsSitesResponse = Site;
 export const GetProjectsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
@@ -1276,7 +1276,7 @@ export const ListProjectsSitesChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/channels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesChannelsRequest>;
 
 export type ListProjectsSitesChannelsResponse = ListChannelsResponse;
 export const ListProjectsSitesChannelsResponse =
@@ -1324,7 +1324,7 @@ export const CreateProjectsSitesChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsSitesChannelsRequest>;
 
 export type CreateProjectsSitesChannelsResponse = Channel;
 export const CreateProjectsSitesChannelsResponse =
@@ -1360,7 +1360,7 @@ export const DeleteProjectsSitesChannelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsSitesChannelsRequest>;
 
 export type DeleteProjectsSitesChannelsResponse = Empty;
 export const DeleteProjectsSitesChannelsResponse =
@@ -1396,7 +1396,7 @@ export const GetProjectsSitesChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSitesChannelsRequest>;
 
 export type GetProjectsSitesChannelsResponse = Channel;
 export const GetProjectsSitesChannelsResponse =
@@ -1436,7 +1436,7 @@ export const PatchProjectsSitesChannelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsSitesChannelsRequest>;
 
 export type PatchProjectsSitesChannelsResponse = Channel;
 export const PatchProjectsSitesChannelsResponse =
@@ -1478,7 +1478,7 @@ export const ListProjectsSitesChannelsReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/releases" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesChannelsReleasesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesChannelsReleasesRequest>;
 
 export type ListProjectsSitesChannelsReleasesResponse = ListReleasesResponse;
 export const ListProjectsSitesChannelsReleasesResponse =
@@ -1516,7 +1516,7 @@ export const GetProjectsSitesChannelsReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSitesChannelsReleasesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSitesChannelsReleasesRequest>;
 
 export type GetProjectsSitesChannelsReleasesResponse = Release;
 export const GetProjectsSitesChannelsReleasesResponse =
@@ -1562,7 +1562,7 @@ export const CreateProjectsSitesChannelsReleasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsSitesChannelsReleasesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsSitesChannelsReleasesRequest>;
 
 export type CreateProjectsSitesChannelsReleasesResponse = Release;
 export const CreateProjectsSitesChannelsReleasesResponse =
@@ -1605,7 +1605,7 @@ export const CreateProjectsSitesDomainsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsSitesDomainsRequest>;
 
 export type CreateProjectsSitesDomainsResponse = Domain;
 export const CreateProjectsSitesDomainsResponse =
@@ -1641,7 +1641,7 @@ export const DeleteProjectsSitesDomainsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsSitesDomainsRequest>;
 
 export type DeleteProjectsSitesDomainsResponse = Empty;
 export const DeleteProjectsSitesDomainsResponse =
@@ -1680,7 +1680,7 @@ export const UpdateProjectsSitesDomainsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsSitesDomainsRequest>;
 
 export type UpdateProjectsSitesDomainsResponse = Domain;
 export const UpdateProjectsSitesDomainsResponse =
@@ -1722,7 +1722,7 @@ export const ListProjectsSitesDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/domains" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesDomainsRequest>;
 
 export type ListProjectsSitesDomainsResponse = ListDomainsResponse;
 export const ListProjectsSitesDomainsResponse =
@@ -1760,7 +1760,7 @@ export const GetProjectsSitesDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSitesDomainsRequest>;
 
 export type GetProjectsSitesDomainsResponse = Domain;
 export const GetProjectsSitesDomainsResponse =
@@ -1797,7 +1797,7 @@ export const ListProjectsSitesReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/releases" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesReleasesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesReleasesRequest>;
 
 export type ListProjectsSitesReleasesResponse = ListReleasesResponse;
 export const ListProjectsSitesReleasesResponse =
@@ -1835,7 +1835,7 @@ export const GetProjectsSitesReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSitesReleasesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSitesReleasesRequest>;
 
 export type GetProjectsSitesReleasesResponse = Release;
 export const GetProjectsSitesReleasesResponse =
@@ -1881,7 +1881,7 @@ export const CreateProjectsSitesReleasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsSitesReleasesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsSitesReleasesRequest>;
 
 export type CreateProjectsSitesReleasesResponse = Release;
 export const CreateProjectsSitesReleasesResponse =
@@ -1933,7 +1933,7 @@ export const PatchProjectsSitesCustomDomainsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsSitesCustomDomainsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsSitesCustomDomainsRequest>;
 
 export type PatchProjectsSitesCustomDomainsResponse = Operation;
 export const PatchProjectsSitesCustomDomainsResponse =
@@ -1969,7 +1969,7 @@ export const GetProjectsSitesCustomDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSitesCustomDomainsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSitesCustomDomainsRequest>;
 
 export type GetProjectsSitesCustomDomainsResponse = CustomDomain;
 export const GetProjectsSitesCustomDomainsResponse =
@@ -2006,7 +2006,7 @@ export const UndeleteProjectsSitesCustomDomainsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsSitesCustomDomainsRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsSitesCustomDomainsRequest>;
 
 export type UndeleteProjectsSitesCustomDomainsResponse = Operation;
 export const UndeleteProjectsSitesCustomDomainsResponse =
@@ -2059,7 +2059,7 @@ export const CreateProjectsSitesCustomDomainsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsSitesCustomDomainsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsSitesCustomDomainsRequest>;
 
 export type CreateProjectsSitesCustomDomainsResponse = Operation;
 export const CreateProjectsSitesCustomDomainsResponse =
@@ -2108,7 +2108,7 @@ export const DeleteProjectsSitesCustomDomainsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsSitesCustomDomainsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsSitesCustomDomainsRequest>;
 
 export type DeleteProjectsSitesCustomDomainsResponse = Operation;
 export const DeleteProjectsSitesCustomDomainsResponse =
@@ -2155,7 +2155,7 @@ export const ListProjectsSitesCustomDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/customDomains" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesCustomDomainsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesCustomDomainsRequest>;
 
 export type ListProjectsSitesCustomDomainsResponse = ListCustomDomainsResponse;
 export const ListProjectsSitesCustomDomainsResponse =
@@ -2207,7 +2207,7 @@ export const ListProjectsSitesCustomDomainsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesCustomDomainsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesCustomDomainsOperationsRequest>;
 
 export type ListProjectsSitesCustomDomainsOperationsResponse =
   ListOperationsResponse;
@@ -2246,7 +2246,7 @@ export const GetProjectsSitesCustomDomainsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSitesCustomDomainsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSitesCustomDomainsOperationsRequest>;
 
 export type GetProjectsSitesCustomDomainsOperationsResponse = Operation;
 export const GetProjectsSitesCustomDomainsOperationsResponse =
@@ -2293,7 +2293,7 @@ export const CreateProjectsSitesVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsSitesVersionsRequest>;
 
 export type CreateProjectsSitesVersionsResponse = Version;
 export const CreateProjectsSitesVersionsResponse =
@@ -2329,7 +2329,7 @@ export const DeleteProjectsSitesVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsSitesVersionsRequest>;
 
 export type DeleteProjectsSitesVersionsResponse = Empty;
 export const DeleteProjectsSitesVersionsResponse =
@@ -2372,7 +2372,7 @@ export const CloneProjectsSitesVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CloneProjectsSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<CloneProjectsSitesVersionsRequest>;
 
 export type CloneProjectsSitesVersionsResponse = Operation;
 export const CloneProjectsSitesVersionsResponse =
@@ -2415,7 +2415,7 @@ export const PopulateFilesProjectsSitesVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PopulateFilesProjectsSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<PopulateFilesProjectsSitesVersionsRequest>;
 
 export type PopulateFilesProjectsSitesVersionsResponse =
   PopulateVersionFilesResponse;
@@ -2461,7 +2461,7 @@ export const ListProjectsSitesVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesVersionsRequest>;
 
 export type ListProjectsSitesVersionsResponse = ListVersionsResponse;
 export const ListProjectsSitesVersionsResponse =
@@ -2505,7 +2505,7 @@ export const PatchProjectsSitesVersionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsSitesVersionsRequest>;
 
 export type PatchProjectsSitesVersionsResponse = Version;
 export const PatchProjectsSitesVersionsResponse =
@@ -2541,7 +2541,7 @@ export const GetProjectsSitesVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSitesVersionsRequest>;
 
 export type GetProjectsSitesVersionsResponse = Version;
 export const GetProjectsSitesVersionsResponse =
@@ -2584,7 +2584,7 @@ export const ListProjectsSitesVersionsFilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/files" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSitesVersionsFilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSitesVersionsFilesRequest>;
 
 export type ListProjectsSitesVersionsFilesResponse = ListVersionFilesResponse;
 export const ListProjectsSitesVersionsFilesResponse =
@@ -2622,7 +2622,7 @@ export const GetProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =
@@ -2652,7 +2652,7 @@ export const GetConfigSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetConfigSitesRequest>;
+) as unknown as Schema.Codec<GetConfigSitesRequest>;
 
 export type GetConfigSitesResponse = SiteConfig;
 export const GetConfigSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SiteConfig;
@@ -2688,7 +2688,7 @@ export const UpdateConfigSitesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigSitesRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigSitesRequest>;
 
 export type UpdateConfigSitesResponse = SiteConfig;
 export const UpdateConfigSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SiteConfig;
@@ -2729,7 +2729,7 @@ export const PatchSitesVersionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<PatchSitesVersionsRequest>;
 
 export type PatchSitesVersionsResponse = Version;
 export const PatchSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;
@@ -2764,7 +2764,7 @@ export const GetSitesVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<GetSitesVersionsRequest>;
 
 export type GetSitesVersionsResponse = Version;
 export const GetSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;
@@ -2807,7 +2807,7 @@ export const CreateSitesVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateSitesVersionsRequest>;
 
 export type CreateSitesVersionsResponse = Version;
 export const CreateSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;
@@ -2842,7 +2842,7 @@ export const DeleteSitesVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteSitesVersionsRequest>;
 
 export type DeleteSitesVersionsResponse = Empty;
 export const DeleteSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2884,7 +2884,7 @@ export const CloneSitesVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CloneSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<CloneSitesVersionsRequest>;
 
 export type CloneSitesVersionsResponse = Operation;
 export const CloneSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2926,7 +2926,7 @@ export const PopulateFilesSitesVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PopulateFilesSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<PopulateFilesSitesVersionsRequest>;
 
 export type PopulateFilesSitesVersionsResponse = PopulateVersionFilesResponse;
 export const PopulateFilesSitesVersionsResponse =
@@ -2971,7 +2971,7 @@ export const ListSitesVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListSitesVersionsRequest>;
+  ) as unknown as Schema.Codec<ListSitesVersionsRequest>;
 
 export type ListSitesVersionsResponse = ListVersionsResponse;
 export const ListSitesVersionsResponse =
@@ -3015,7 +3015,7 @@ export const ListSitesVersionsFilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/files" }),
     svc,
-  ) as unknown as Schema.Schema<ListSitesVersionsFilesRequest>;
+  ) as unknown as Schema.Codec<ListSitesVersionsFilesRequest>;
 
 export type ListSitesVersionsFilesResponse = ListVersionFilesResponse;
 export const ListSitesVersionsFilesResponse =
@@ -3050,7 +3050,7 @@ export const GetSitesChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<GetSitesChannelsRequest>;
 
 export type GetSitesChannelsResponse = Channel;
 export const GetSitesChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -3086,7 +3086,7 @@ export const PatchSitesChannelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<PatchSitesChannelsRequest>;
 
 export type PatchSitesChannelsResponse = Channel;
 export const PatchSitesChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -3131,7 +3131,7 @@ export const CreateSitesChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<CreateSitesChannelsRequest>;
 
 export type CreateSitesChannelsResponse = Channel;
 export const CreateSitesChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -3166,7 +3166,7 @@ export const DeleteSitesChannelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<DeleteSitesChannelsRequest>;
 
 export type DeleteSitesChannelsResponse = Empty;
 export const DeleteSitesChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3207,7 +3207,7 @@ export const ListSitesChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/channels" }),
     svc,
-  ) as unknown as Schema.Schema<ListSitesChannelsRequest>;
+  ) as unknown as Schema.Codec<ListSitesChannelsRequest>;
 
 export type ListSitesChannelsResponse = ListChannelsResponse;
 export const ListSitesChannelsResponse =
@@ -3242,7 +3242,7 @@ export const GetSitesChannelsReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSitesChannelsReleasesRequest>;
+  ) as unknown as Schema.Codec<GetSitesChannelsReleasesRequest>;
 
 export type GetSitesChannelsReleasesResponse = Release;
 export const GetSitesChannelsReleasesResponse =
@@ -3288,7 +3288,7 @@ export const CreateSitesChannelsReleasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSitesChannelsReleasesRequest>;
+  ) as unknown as Schema.Codec<CreateSitesChannelsReleasesRequest>;
 
 export type CreateSitesChannelsReleasesResponse = Release;
 export const CreateSitesChannelsReleasesResponse =
@@ -3330,7 +3330,7 @@ export const ListSitesChannelsReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/releases" }),
     svc,
-  ) as unknown as Schema.Schema<ListSitesChannelsReleasesRequest>;
+  ) as unknown as Schema.Codec<ListSitesChannelsReleasesRequest>;
 
 export type ListSitesChannelsReleasesResponse = ListReleasesResponse;
 export const ListSitesChannelsReleasesResponse =
@@ -3369,7 +3369,7 @@ export const GetSitesDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetSitesDomainsRequest>;
+) as unknown as Schema.Codec<GetSitesDomainsRequest>;
 
 export type GetSitesDomainsResponse = Domain;
 export const GetSitesDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
@@ -3402,7 +3402,7 @@ export const UpdateSitesDomainsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<UpdateSitesDomainsRequest>;
 
 export type UpdateSitesDomainsResponse = Domain;
 export const UpdateSitesDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
@@ -3444,7 +3444,7 @@ export const CreateSitesDomainsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<CreateSitesDomainsRequest>;
 
 export type CreateSitesDomainsResponse = Domain;
 export const CreateSitesDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
@@ -3479,7 +3479,7 @@ export const DeleteSitesDomainsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<DeleteSitesDomainsRequest>;
 
 export type DeleteSitesDomainsResponse = Empty;
 export const DeleteSitesDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3520,7 +3520,7 @@ export const ListSitesDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/domains" }),
     svc,
-  ) as unknown as Schema.Schema<ListSitesDomainsRequest>;
+  ) as unknown as Schema.Codec<ListSitesDomainsRequest>;
 
 export type ListSitesDomainsResponse = ListDomainsResponse;
 export const ListSitesDomainsResponse =
@@ -3561,7 +3561,7 @@ export const ListSitesReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/releases" }),
     svc,
-  ) as unknown as Schema.Schema<ListSitesReleasesRequest>;
+  ) as unknown as Schema.Codec<ListSitesReleasesRequest>;
 
 export type ListSitesReleasesResponse = ListReleasesResponse;
 export const ListSitesReleasesResponse =
@@ -3596,7 +3596,7 @@ export const GetSitesReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSitesReleasesRequest>;
+  ) as unknown as Schema.Codec<GetSitesReleasesRequest>;
 
 export type GetSitesReleasesResponse = Release;
 export const GetSitesReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Release;
@@ -3638,7 +3638,7 @@ export const CreateSitesReleasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSitesReleasesRequest>;
+  ) as unknown as Schema.Codec<CreateSitesReleasesRequest>;
 
 export type CreateSitesReleasesResponse = Release;
 export const CreateSitesReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Release;

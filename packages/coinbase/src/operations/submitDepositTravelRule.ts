@@ -3,6 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SubmitDepositTravelRuleInput {
+  transferId: string;
+  originator?: {
+    name?: string;
+    address?: {
+      line1?: string;
+      line2?: string;
+      city?: string;
+      state?: string;
+      postCode?: string;
+      countryCode?: string;
+    };
+    walletType?: "custodial" | "self_custody";
+    virtualAssetServiceProvider?: { identifier?: string; name?: string };
+    personalId?: string;
+    dateOfBirth?: { day?: string; month?: string; year?: string };
+  };
+  beneficiary?: { name?: string };
+  isSelf?: boolean;
+}
 export const SubmitDepositTravelRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferId: Schema.String.pipe(T.PathParam()),
@@ -46,19 +66,20 @@ export const SubmitDepositTravelRuleInput =
     isSelf: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "POST", path: "/v2/transfers/{transferId}/travel-rule" }),
-  );
-export type SubmitDepositTravelRuleInput =
-  typeof SubmitDepositTravelRuleInput.Type;
+  ) as unknown as Schema.Codec<SubmitDepositTravelRuleInput>;
 
 // Output Schema
+export interface SubmitDepositTravelRuleOutput {
+  status: "incomplete" | "completed";
+  missingFields?: string[];
+  reason?: string;
+}
 export const SubmitDepositTravelRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.Literals(["incomplete", "completed"]),
     missingFields: Schema.optional(Schema.Array(Schema.String)),
     reason: Schema.optional(Schema.String),
-  });
-export type SubmitDepositTravelRuleOutput =
-  typeof SubmitDepositTravelRuleOutput.Type;
+  }) as unknown as Schema.Codec<SubmitDepositTravelRuleOutput>;
 
 // The operation
 /**

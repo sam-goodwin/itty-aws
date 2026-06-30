@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest {
   receiveTime?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest> =
+export const GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     receiveTime: Schema.optional(Schema.String),
   }).annotate({
@@ -49,7 +49,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTa
   tagValue?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag> =
+export const GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespacedTagValue: Schema.optional(Schema.String),
     inherited: Schema.optional(Schema.Boolean),
@@ -69,7 +69,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer {
   port?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer> =
+export const GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ConditionContextPeer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ip: Schema.optional(Schema.String),
     port: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionContextResource {
   type?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ConditionContextResource: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ConditionContextResource> =
+export const GoogleCloudPolicytroubleshooterIamV3ConditionContextResource: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ConditionContextResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     service: Schema.optional(Schema.String),
@@ -106,7 +106,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionContext {
   resource?: GoogleCloudPolicytroubleshooterIamV3ConditionContextResource;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ConditionContext: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ConditionContext> =
+export const GoogleCloudPolicytroubleshooterIamV3ConditionContext: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ConditionContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest,
@@ -137,7 +137,7 @@ export interface GoogleTypeExpr {
   description?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -158,7 +158,7 @@ export interface GoogleIamV2DenyRule {
   deniedPermissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV2DenyRule: Schema.Schema<GoogleIamV2DenyRule> =
+export const GoogleIamV2DenyRule: Schema.Codec<GoogleIamV2DenyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exceptionPrincipals: Schema.optional(Schema.Array(Schema.String)),
     deniedPrincipals: Schema.optional(Schema.Array(Schema.String)),
@@ -174,7 +174,7 @@ export interface GoogleIamV2PolicyRule {
   description?: string;
 }
 
-export const GoogleIamV2PolicyRule: Schema.Schema<GoogleIamV2PolicyRule> =
+export const GoogleIamV2PolicyRule: Schema.Codec<GoogleIamV2PolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     denyRule: Schema.optional(GoogleIamV2DenyRule),
     description: Schema.optional(Schema.String),
@@ -203,7 +203,7 @@ export interface GoogleIamV2Policy {
   kind?: string;
 }
 
-export const GoogleIamV2Policy: Schema.Schema<GoogleIamV2Policy> =
+export const GoogleIamV2Policy: Schema.Codec<GoogleIamV2Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     displayName: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotate
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching> =
+export const GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissionMatchingState: Schema.optional(Schema.String),
     relevance: Schema.optional(Schema.String),
@@ -258,7 +258,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotate
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching> =
+export const GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membership: Schema.optional(Schema.String),
     relevance: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -296,7 +296,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluat
   errors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState> =
+export const GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     end: Schema.optional(Schema.Number),
@@ -316,7 +316,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionExplanation {
   evaluationStates?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState>;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ConditionExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ConditionExplanation> =
+export const GoogleCloudPolicytroubleshooterIamV3ConditionExplanation: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ConditionExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -378,7 +378,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation {
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation> =
+export const GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     combinedExceptionPermission: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching,
@@ -447,7 +447,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy {
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy> =
+export const GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevance: Schema.optional(Schema.String),
     policy: Schema.optional(GoogleIamV2Policy),
@@ -480,7 +480,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource {
   fullResourceName?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource> =
+export const GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     denyAccessState: Schema.optional(Schema.String),
     explainedPolicies: Schema.optional(
@@ -504,7 +504,7 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -517,7 +517,7 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
@@ -532,7 +532,7 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -550,7 +550,7 @@ export interface GoogleIamV1Policy {
   bindings?: ReadonlyArray<GoogleIamV1Binding>;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
@@ -575,7 +575,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnno
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership> =
+export const GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membership: Schema.optional(Schema.String),
     relevance: Schema.optional(Schema.String),
@@ -627,7 +627,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation {
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation> =
+export const GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowAccessState: Schema.optional(Schema.String),
     condition: Schema.optional(GoogleTypeExpr),
@@ -674,7 +674,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy {
   bindingExplanations?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation>;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy> =
+export const GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevance: Schema.optional(Schema.String),
     policy: Schema.optional(GoogleIamV1Policy),
@@ -700,7 +700,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3AccessTuple {
   permission?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3AccessTuple: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3AccessTuple> =
+export const GoogleCloudPolicytroubleshooterIamV3AccessTuple: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3AccessTuple> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditionContext: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3ConditionContext,
@@ -732,7 +732,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation {
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation> =
+export const GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explainedPolicies: Schema.optional(
       Schema.Array(GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy),
@@ -764,7 +764,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation {
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation> =
+export const GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     denyAccessState: Schema.optional(Schema.String),
     permissionDeniable: Schema.optional(Schema.Boolean),
@@ -793,7 +793,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRespon
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse> =
+export const GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessTuple: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3AccessTuple,
@@ -815,7 +815,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyReques
   accessTuple?: GoogleCloudPolicytroubleshooterIamV3AccessTuple;
 }
 
-export const GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest: Schema.Schema<GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest> =
+export const GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest: Schema.Codec<GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessTuple: Schema.optional(
       GoogleCloudPolicytroubleshooterIamV3AccessTuple,
@@ -893,7 +893,7 @@ export const TroubleshootIamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v3/iam:troubleshoot", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<TroubleshootIamRequest>;
+) as unknown as Schema.Codec<TroubleshootIamRequest>;
 
 export type TroubleshootIamResponse =
   GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse;

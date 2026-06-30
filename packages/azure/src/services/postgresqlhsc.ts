@@ -4,12 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ClustersCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+  type: "Microsoft.DBforPostgreSQL/serverGroupsv2";
+}
 export const ClustersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,20 +27,22 @@ export const ClustersCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ClustersCheckNameAvailabilityInput =
-  typeof ClustersCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ClustersCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ClustersCheckNameAvailabilityOutput {
+  message?: string;
+  nameAvailable?: boolean;
+  name?: string;
+  type?: string;
+}
 export const ClustersCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ClustersCheckNameAvailabilityOutput =
-  typeof ClustersCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ClustersCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -49,6 +57,58 @@ export const ClustersCheckNameAvailability =
     outputSchema: ClustersCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ClustersCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    administratorLogin?: string;
+    administratorLoginPassword?: string | Redacted.Redacted<string>;
+    provisioningState?: string;
+    state?: string;
+    postgresqlVersion?: string;
+    citusVersion?: string;
+    maintenanceWindow?: {
+      customWindow?: string;
+      startHour?: number;
+      startMinute?: number;
+      dayOfWeek?: number;
+    };
+    preferredPrimaryZone?: string;
+    enableShardsOnCoordinator?: boolean;
+    enableHa?: boolean;
+    coordinatorServerEdition?: string;
+    coordinatorStorageQuotaInMb?: number;
+    coordinatorVCores?: number;
+    coordinatorEnablePublicIpAccess?: boolean;
+    nodeServerEdition?: string;
+    nodeCount?: number;
+    nodeStorageQuotaInMb?: number;
+    nodeVCores?: number;
+    nodeEnablePublicIpAccess?: boolean;
+    serverNames?: { name?: string; fullyQualifiedDomainName?: string }[];
+    sourceResourceId?: string;
+    sourceLocation?: string;
+    pointInTimeUTC?: string;
+    readReplicas?: string[];
+    earliestRestoreTime?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -137,10 +197,22 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type ClustersCreateInput = typeof ClustersCreateInput.Type;
+) as unknown as Schema.Codec<ClustersCreateInput>;
 
 // Output Schema
+export interface ClustersCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -159,8 +231,7 @@ export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersCreateOutput = typeof ClustersCreateOutput.Type;
+}) as unknown as Schema.Codec<ClustersCreateOutput>;
 
 // The operation
 /**
@@ -176,6 +247,11 @@ export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersCreateOutput,
 }));
 // Input Schema
+export interface ClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -186,12 +262,12 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
+) as unknown as Schema.Codec<ClustersDeleteInput>;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
+export type ClustersDeleteOutput = void;
+export const ClustersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -207,6 +283,11 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
+export interface ClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -217,10 +298,22 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type ClustersGetInput = typeof ClustersGetInput.Type;
+) as unknown as Schema.Codec<ClustersGetInput>;
 
 // Output Schema
+export interface ClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -239,8 +332,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersGetOutput = typeof ClustersGetOutput.Type;
+}) as unknown as Schema.Codec<ClustersGetOutput>;
 
 // The operation
 /**
@@ -256,6 +348,9 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
+export interface ClustersListInput {
+  subscriptionId: string;
+}
 export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -264,10 +359,25 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2",
     apiVersion: "2022-11-08",
   }),
-);
-export type ClustersListInput = typeof ClustersListInput.Type;
+) as unknown as Schema.Codec<ClustersListInput>;
 
 // Output Schema
+export interface ClustersListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -303,8 +413,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ClustersListOutput = typeof ClustersListOutput.Type;
+}) as unknown as Schema.Codec<ClustersListOutput>;
 
 // The operation
 /**
@@ -318,6 +427,10 @@ export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersListOutput,
 }));
 // Input Schema
+export interface ClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -328,11 +441,25 @@ export const ClustersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ClustersListByResourceGroupInput =
-  typeof ClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface ClustersListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -369,9 +496,7 @@ export const ClustersListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListByResourceGroupOutput =
-  typeof ClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -388,6 +513,11 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersPromoteReadReplicaInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersPromoteReadReplicaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -399,15 +529,12 @@ export const ClustersPromoteReadReplicaInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/promote",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ClustersPromoteReadReplicaInput =
-  typeof ClustersPromoteReadReplicaInput.Type;
+  ) as unknown as Schema.Codec<ClustersPromoteReadReplicaInput>;
 
 // Output Schema
+export type ClustersPromoteReadReplicaOutput = void;
 export const ClustersPromoteReadReplicaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersPromoteReadReplicaOutput =
-  typeof ClustersPromoteReadReplicaOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersPromoteReadReplicaOutput>;
 
 // The operation
 /**
@@ -425,6 +552,11 @@ export const ClustersPromoteReadReplica = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -435,12 +567,12 @@ export const ClustersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/restart",
     apiVersion: "2022-11-08",
   }),
-);
-export type ClustersRestartInput = typeof ClustersRestartInput.Type;
+) as unknown as Schema.Codec<ClustersRestartInput>;
 
 // Output Schema
-export const ClustersRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersRestartOutput = typeof ClustersRestartOutput.Type;
+export type ClustersRestartOutput = void;
+export const ClustersRestartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRestartOutput>;
 
 // The operation
 /**
@@ -456,6 +588,11 @@ export const ClustersRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersRestartOutput,
 }));
 // Input Schema
+export interface ClustersStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -466,12 +603,12 @@ export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/start",
     apiVersion: "2022-11-08",
   }),
-);
-export type ClustersStartInput = typeof ClustersStartInput.Type;
+) as unknown as Schema.Codec<ClustersStartInput>;
 
 // Output Schema
-export const ClustersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersStartOutput = typeof ClustersStartOutput.Type;
+export type ClustersStartOutput = void;
+export const ClustersStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersStartOutput>;
 
 // The operation
 /**
@@ -487,6 +624,11 @@ export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersStartOutput,
 }));
 // Input Schema
+export interface ClustersStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -497,12 +639,12 @@ export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/stop",
     apiVersion: "2022-11-08",
   }),
-);
-export type ClustersStopInput = typeof ClustersStopInput.Type;
+) as unknown as Schema.Codec<ClustersStopInput>;
 
 // Output Schema
-export const ClustersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersStopOutput = typeof ClustersStopOutput.Type;
+export type ClustersStopOutput = void;
+export const ClustersStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersStopOutput>;
 
 // The operation
 /**
@@ -518,6 +660,35 @@ export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersStopOutput,
 }));
 // Input Schema
+export interface ClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    administratorLoginPassword?: string | Redacted.Redacted<string>;
+    postgresqlVersion?: string;
+    citusVersion?: string;
+    enableShardsOnCoordinator?: boolean;
+    enableHa?: boolean;
+    preferredPrimaryZone?: string;
+    coordinatorServerEdition?: string;
+    coordinatorStorageQuotaInMb?: number;
+    coordinatorVCores?: number;
+    coordinatorEnablePublicIpAccess?: boolean;
+    nodeServerEdition?: string;
+    nodeCount?: number;
+    nodeStorageQuotaInMb?: number;
+    nodeVCores?: number;
+    nodeEnablePublicIpAccess?: boolean;
+    maintenanceWindow?: {
+      customWindow?: string;
+      startHour?: number;
+      startMinute?: number;
+      dayOfWeek?: number;
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -556,10 +727,22 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
+) as unknown as Schema.Codec<ClustersUpdateInput>;
 
 // Output Schema
+export interface ClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -578,8 +761,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
+}) as unknown as Schema.Codec<ClustersUpdateOutput>;
 
 // The operation
 /**
@@ -595,6 +777,12 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
+export interface ConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  configurationName: string;
+}
 export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -608,10 +796,22 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations/{configurationName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
+) as unknown as Schema.Codec<ConfigurationsGetInput>;
 
 // Output Schema
+export interface ConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -631,8 +831,7 @@ export const ConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -649,6 +848,12 @@ export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationsGetOutput,
 }));
 // Input Schema
+export interface ConfigurationsGetCoordinatorInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  configurationName: string;
+}
 export const ConfigurationsGetCoordinatorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -661,11 +866,22 @@ export const ConfigurationsGetCoordinatorInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/coordinatorConfigurations/{configurationName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ConfigurationsGetCoordinatorInput =
-  typeof ConfigurationsGetCoordinatorInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsGetCoordinatorInput>;
 
 // Output Schema
+export interface ConfigurationsGetCoordinatorOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsGetCoordinatorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -685,9 +901,7 @@ export const ConfigurationsGetCoordinatorOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsGetCoordinatorOutput =
-  typeof ConfigurationsGetCoordinatorOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsGetCoordinatorOutput>;
 
 // The operation
 /**
@@ -705,6 +919,12 @@ export const ConfigurationsGetCoordinator =
     outputSchema: ConfigurationsGetCoordinatorOutput,
   }));
 // Input Schema
+export interface ConfigurationsGetNodeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  configurationName: string;
+}
 export const ConfigurationsGetNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -717,10 +937,22 @@ export const ConfigurationsGetNodeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ConfigurationsGetNodeInput = typeof ConfigurationsGetNodeInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsGetNodeInput>;
 
 // Output Schema
+export interface ConfigurationsGetNodeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsGetNodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -740,9 +972,7 @@ export const ConfigurationsGetNodeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsGetNodeOutput =
-  typeof ConfigurationsGetNodeOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsGetNodeOutput>;
 
 // The operation
 /**
@@ -761,6 +991,11 @@ export const ConfigurationsGetNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationsListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ConfigurationsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -772,11 +1007,25 @@ export const ConfigurationsListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ConfigurationsListByClusterInput =
-  typeof ConfigurationsListByClusterInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsListByClusterInput>;
 
 // Output Schema
+export interface ConfigurationsListByClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -813,9 +1062,7 @@ export const ConfigurationsListByClusterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationsListByClusterOutput =
-  typeof ConfigurationsListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsListByClusterOutput>;
 
 // The operation
 /**
@@ -833,6 +1080,12 @@ export const ConfigurationsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationsListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  serverName: string;
+}
 export const ConfigurationsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -845,11 +1098,25 @@ export const ConfigurationsListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}/configurations",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ConfigurationsListByServerInput =
-  typeof ConfigurationsListByServerInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsListByServerInput>;
 
 // Output Schema
+export interface ConfigurationsListByServerOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -886,9 +1153,7 @@ export const ConfigurationsListByServerOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationsListByServerOutput =
-  typeof ConfigurationsListByServerOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsListByServerOutput>;
 
 // The operation
 /**
@@ -907,6 +1172,22 @@ export const ConfigurationsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationsUpdateOnCoordinatorInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  configurationName: string;
+  properties?: {
+    value: string;
+    source?: string;
+    description?: string;
+    defaultValue?: string;
+    dataType?: "Boolean" | "Numeric" | "Integer" | "Enumeration";
+    allowedValues?: string;
+    requiresRestart?: boolean;
+    provisioningState?: "Succeeded" | "Canceled" | "InProgress" | "Failed";
+  };
+}
 export const ConfigurationsUpdateOnCoordinatorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -935,11 +1216,22 @@ export const ConfigurationsUpdateOnCoordinatorInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/coordinatorConfigurations/{configurationName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ConfigurationsUpdateOnCoordinatorInput =
-  typeof ConfigurationsUpdateOnCoordinatorInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsUpdateOnCoordinatorInput>;
 
 // Output Schema
+export interface ConfigurationsUpdateOnCoordinatorOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsUpdateOnCoordinatorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -959,9 +1251,7 @@ export const ConfigurationsUpdateOnCoordinatorOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsUpdateOnCoordinatorOutput =
-  typeof ConfigurationsUpdateOnCoordinatorOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsUpdateOnCoordinatorOutput>;
 
 // The operation
 /**
@@ -979,6 +1269,22 @@ export const ConfigurationsUpdateOnCoordinator =
     outputSchema: ConfigurationsUpdateOnCoordinatorOutput,
   }));
 // Input Schema
+export interface ConfigurationsUpdateOnNodeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  configurationName: string;
+  properties?: {
+    value: string;
+    source?: string;
+    description?: string;
+    defaultValue?: string;
+    dataType?: "Boolean" | "Numeric" | "Integer" | "Enumeration";
+    allowedValues?: string;
+    requiresRestart?: boolean;
+    provisioningState?: "Succeeded" | "Canceled" | "InProgress" | "Failed";
+  };
+}
 export const ConfigurationsUpdateOnNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1007,11 +1313,22 @@ export const ConfigurationsUpdateOnNodeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/nodeConfigurations/{configurationName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ConfigurationsUpdateOnNodeInput =
-  typeof ConfigurationsUpdateOnNodeInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsUpdateOnNodeInput>;
 
 // Output Schema
+export interface ConfigurationsUpdateOnNodeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsUpdateOnNodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1031,9 +1348,7 @@ export const ConfigurationsUpdateOnNodeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsUpdateOnNodeOutput =
-  typeof ConfigurationsUpdateOnNodeOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsUpdateOnNodeOutput>;
 
 // The operation
 /**
@@ -1052,6 +1367,17 @@ export const ConfigurationsUpdateOnNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FirewallRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  firewallRuleName: string;
+  properties: {
+    startIpAddress: string;
+    endIpAddress: string;
+    provisioningState?: "Succeeded" | "Canceled" | "InProgress" | "Failed";
+  };
+}
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1071,11 +1397,22 @@ export const FirewallRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type FirewallRulesCreateOrUpdateInput =
-  typeof FirewallRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface FirewallRulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1095,9 +1432,7 @@ export const FirewallRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FirewallRulesCreateOrUpdateOutput =
-  typeof FirewallRulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FirewallRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1116,6 +1451,12 @@ export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FirewallRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  firewallRuleName: string;
+}
 export const FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1128,13 +1469,12 @@ export const FirewallRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesDeleteInput>;
 
 // Output Schema
+export type FirewallRulesDeleteOutput = void;
 export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
 
 // The operation
 /**
@@ -1151,6 +1491,12 @@ export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirewallRulesDeleteOutput,
 }));
 // Input Schema
+export interface FirewallRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  firewallRuleName: string;
+}
 export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1162,10 +1508,22 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
+) as unknown as Schema.Codec<FirewallRulesGetInput>;
 
 // Output Schema
+export interface FirewallRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1186,8 +1544,7 @@ export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
+) as unknown as Schema.Codec<FirewallRulesGetOutput>;
 
 // The operation
 /**
@@ -1204,6 +1561,11 @@ export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirewallRulesGetOutput,
 }));
 // Input Schema
+export interface FirewallRulesListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const FirewallRulesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1215,11 +1577,24 @@ export const FirewallRulesListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules",
       apiVersion: "2022-11-08",
     }),
-  );
-export type FirewallRulesListByClusterInput =
-  typeof FirewallRulesListByClusterInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesListByClusterInput>;
 
 // Output Schema
+export interface FirewallRulesListByClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const FirewallRulesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1255,9 +1630,7 @@ export const FirewallRulesListByClusterOutput =
         }),
       ),
     ),
-  });
-export type FirewallRulesListByClusterOutput =
-  typeof FirewallRulesListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<FirewallRulesListByClusterOutput>;
 
 // The operation
 /**
@@ -1275,6 +1648,7 @@ export const FirewallRulesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1283,10 +1657,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DBforPostgreSQL/operations",
     apiVersion: "2022-11-08",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    isDataAction?: boolean;
+    origin?: "NotSpecified" | "user" | "system";
+    properties?: Record<string, unknown>;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1311,8 +1699,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1325,6 +1712,33 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1374,11 +1788,22 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1398,9 +1823,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1419,6 +1842,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1431,15 +1860,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1457,6 +1883,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1469,11 +1901,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1493,9 +1936,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1513,6 +1954,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const PrivateEndpointConnectionsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1524,11 +1970,24 @@ export const PrivateEndpointConnectionsListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections",
       apiVersion: "2022-11-08",
     }),
-  );
-export type PrivateEndpointConnectionsListByClusterInput =
-  typeof PrivateEndpointConnectionsListByClusterInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByClusterInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const PrivateEndpointConnectionsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1564,9 +2023,7 @@ export const PrivateEndpointConnectionsListByClusterOutput =
         }),
       ),
     ),
-  });
-export type PrivateEndpointConnectionsListByClusterOutput =
-  typeof PrivateEndpointConnectionsListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByClusterOutput>;
 
 // The operation
 /**
@@ -1583,6 +2040,12 @@ export const PrivateEndpointConnectionsListByCluster =
     outputSchema: PrivateEndpointConnectionsListByClusterOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1595,11 +2058,22 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2022-11-08",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1619,9 +2093,7 @@ export const PrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -1640,6 +2112,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const PrivateLinkResourcesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1651,11 +2128,24 @@ export const PrivateLinkResourcesListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateLinkResources",
       apiVersion: "2022-11-08",
     }),
-  );
-export type PrivateLinkResourcesListByClusterInput =
-  typeof PrivateLinkResourcesListByClusterInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByClusterInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const PrivateLinkResourcesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1691,9 +2181,7 @@ export const PrivateLinkResourcesListByClusterOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkResourcesListByClusterOutput =
-  typeof PrivateLinkResourcesListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByClusterOutput>;
 
 // The operation
 /**
@@ -1710,6 +2198,16 @@ export const PrivateLinkResourcesListByCluster =
     outputSchema: PrivateLinkResourcesListByClusterOutput,
   }));
 // Input Schema
+export interface RolesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  roleName: string;
+  properties: {
+    password: string | Redacted.Redacted<string>;
+    provisioningState?: "Succeeded" | "Canceled" | "InProgress" | "Failed";
+  };
+}
 export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1727,10 +2225,22 @@ export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type RolesCreateInput = typeof RolesCreateInput.Type;
+) as unknown as Schema.Codec<RolesCreateInput>;
 
 // Output Schema
+export interface RolesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1749,8 +2259,7 @@ export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RolesCreateOutput = typeof RolesCreateOutput.Type;
+}) as unknown as Schema.Codec<RolesCreateOutput>;
 
 // The operation
 /**
@@ -1767,6 +2276,12 @@ export const RolesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RolesCreateOutput,
 }));
 // Input Schema
+export interface RolesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  roleName: string;
+}
 export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1778,12 +2293,12 @@ export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type RolesDeleteInput = typeof RolesDeleteInput.Type;
+) as unknown as Schema.Codec<RolesDeleteInput>;
 
 // Output Schema
-export const RolesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RolesDeleteOutput = typeof RolesDeleteOutput.Type;
+export type RolesDeleteOutput = void;
+export const RolesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RolesDeleteOutput>;
 
 // The operation
 /**
@@ -1800,6 +2315,12 @@ export const RolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RolesDeleteOutput,
 }));
 // Input Schema
+export interface RolesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  roleName: string;
+}
 export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1811,10 +2332,22 @@ export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type RolesGetInput = typeof RolesGetInput.Type;
+) as unknown as Schema.Codec<RolesGetInput>;
 
 // Output Schema
+export interface RolesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1833,8 +2366,7 @@ export const RolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RolesGetOutput = typeof RolesGetOutput.Type;
+}) as unknown as Schema.Codec<RolesGetOutput>;
 
 // The operation
 /**
@@ -1851,6 +2383,11 @@ export const RolesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RolesGetOutput,
 }));
 // Input Schema
+export interface RolesListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const RolesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1862,10 +2399,24 @@ export const RolesListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles",
       apiVersion: "2022-11-08",
     }),
-  );
-export type RolesListByClusterInput = typeof RolesListByClusterInput.Type;
+  ) as unknown as Schema.Codec<RolesListByClusterInput>;
 
 // Output Schema
+export interface RolesListByClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const RolesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1901,8 +2452,7 @@ export const RolesListByClusterOutput =
         }),
       ),
     ),
-  });
-export type RolesListByClusterOutput = typeof RolesListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<RolesListByClusterOutput>;
 
 // The operation
 /**
@@ -1918,6 +2468,12 @@ export const RolesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RolesListByClusterOutput,
 }));
 // Input Schema
+export interface ServersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  serverName: string;
+}
 export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1929,10 +2485,22 @@ export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}",
     apiVersion: "2022-11-08",
   }),
-);
-export type ServersGetInput = typeof ServersGetInput.Type;
+) as unknown as Schema.Codec<ServersGetInput>;
 
 // Output Schema
+export interface ServersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1951,8 +2519,7 @@ export const ServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServersGetOutput = typeof ServersGetOutput.Type;
+}) as unknown as Schema.Codec<ServersGetOutput>;
 
 // The operation
 /**
@@ -1969,6 +2536,11 @@ export const ServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServersGetOutput,
 }));
 // Input Schema
+export interface ServersListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ServersListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1980,10 +2552,24 @@ export const ServersListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers",
       apiVersion: "2022-11-08",
     }),
-  );
-export type ServersListByClusterInput = typeof ServersListByClusterInput.Type;
+  ) as unknown as Schema.Codec<ServersListByClusterInput>;
 
 // Output Schema
+export interface ServersListByClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ServersListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2019,8 +2605,7 @@ export const ServersListByClusterOutput =
         }),
       ),
     ),
-  });
-export type ServersListByClusterOutput = typeof ServersListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<ServersListByClusterOutput>;
 
 // The operation
 /**

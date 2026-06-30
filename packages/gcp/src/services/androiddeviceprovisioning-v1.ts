@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface DeviceMetadata {
   entries?: Record<string, string>;
 }
 
-export const DeviceMetadata: Schema.Schema<DeviceMetadata> =
+export const DeviceMetadata: Schema.Codec<DeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "DeviceMetadata" });
@@ -57,7 +57,7 @@ export interface DeviceIdentifier {
   meid2?: string;
 }
 
-export const DeviceIdentifier: Schema.Schema<DeviceIdentifier> =
+export const DeviceIdentifier: Schema.Codec<DeviceIdentifier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manufacturer: Schema.optional(Schema.String),
     meid: Schema.optional(Schema.String),
@@ -93,7 +93,7 @@ export interface PartnerClaim {
   simlockProfileId?: string;
 }
 
-export const PartnerClaim: Schema.Schema<PartnerClaim> =
+export const PartnerClaim: Schema.Codec<PartnerClaim> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleWorkspaceCustomerId: Schema.optional(Schema.String),
     preProvisioningToken: Schema.optional(Schema.String),
@@ -114,7 +114,7 @@ export interface FindDevicesByDeviceIdentifierRequest {
   pageToken?: string;
 }
 
-export const FindDevicesByDeviceIdentifierRequest: Schema.Schema<FindDevicesByDeviceIdentifierRequest> =
+export const FindDevicesByDeviceIdentifierRequest: Schema.Codec<FindDevicesByDeviceIdentifierRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceIdentifier: Schema.optional(DeviceIdentifier),
     limit: Schema.optional(Schema.String),
@@ -145,7 +145,7 @@ export interface DeviceClaim {
     | (string & {});
 }
 
-export const DeviceClaim: Schema.Schema<DeviceClaim> =
+export const DeviceClaim: Schema.Codec<DeviceClaim> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ownerCompanyId: Schema.optional(Schema.String),
     googleWorkspaceCustomerId: Schema.optional(Schema.String),
@@ -171,7 +171,7 @@ export interface Device {
   claims?: ReadonlyArray<DeviceClaim>;
 }
 
-export const Device: Schema.Schema<Device> =
+export const Device: Schema.Codec<Device> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.optional(Schema.String),
     deviceId: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export interface FindDevicesByOwnerResponse {
   devices?: ReadonlyArray<Device>;
 }
 
-export const FindDevicesByOwnerResponse: Schema.Schema<FindDevicesByOwnerResponse> =
+export const FindDevicesByOwnerResponse: Schema.Codec<FindDevicesByOwnerResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -222,7 +222,7 @@ export interface Configuration {
   contactPhone?: string;
 }
 
-export const Configuration: Schema.Schema<Configuration> =
+export const Configuration: Schema.Codec<Configuration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dpcResourcePath: Schema.optional(Schema.String),
@@ -242,7 +242,7 @@ export interface CustomerListConfigurationsResponse {
   configurations?: ReadonlyArray<Configuration>;
 }
 
-export const CustomerListConfigurationsResponse: Schema.Schema<CustomerListConfigurationsResponse> =
+export const CustomerListConfigurationsResponse: Schema.Codec<CustomerListConfigurationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurations: Schema.optional(Schema.Array(Configuration)),
   }).annotate({ identifier: "CustomerListConfigurationsResponse" });
@@ -256,7 +256,7 @@ export interface GetDeviceSimLockStateResponse {
     | (string & {});
 }
 
-export const GetDeviceSimLockStateResponse: Schema.Schema<GetDeviceSimLockStateResponse> =
+export const GetDeviceSimLockStateResponse: Schema.Codec<GetDeviceSimLockStateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     simLockState: Schema.optional(Schema.String),
   }).annotate({ identifier: "GetDeviceSimLockStateResponse" });
@@ -266,7 +266,7 @@ export interface ClaimDevicesRequest {
   claims?: ReadonlyArray<PartnerClaim>;
 }
 
-export const ClaimDevicesRequest: Schema.Schema<ClaimDevicesRequest> =
+export const ClaimDevicesRequest: Schema.Codec<ClaimDevicesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     claims: Schema.optional(Schema.Array(PartnerClaim)),
   }).annotate({ identifier: "ClaimDevicesRequest" });
@@ -280,7 +280,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -296,7 +296,7 @@ export interface DeviceReference {
   deviceIdentifier?: DeviceIdentifier;
 }
 
-export const DeviceReference: Schema.Schema<DeviceReference> =
+export const DeviceReference: Schema.Codec<DeviceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     deviceIdentifier: Schema.optional(DeviceIdentifier),
@@ -309,7 +309,7 @@ export interface ClaimDeviceResponse {
   deviceName?: string;
 }
 
-export const ClaimDeviceResponse: Schema.Schema<ClaimDeviceResponse> =
+export const ClaimDeviceResponse: Schema.Codec<ClaimDeviceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     deviceName: Schema.optional(Schema.String),
@@ -332,7 +332,7 @@ export interface PartnerUnclaim {
   vacationModeDays?: number;
 }
 
-export const PartnerUnclaim: Schema.Schema<PartnerUnclaim> =
+export const PartnerUnclaim: Schema.Codec<PartnerUnclaim> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     deviceIdentifier: Schema.optional(DeviceIdentifier),
@@ -346,7 +346,7 @@ export interface UnclaimDevicesRequest {
   unclaims?: ReadonlyArray<PartnerUnclaim>;
 }
 
-export const UnclaimDevicesRequest: Schema.Schema<UnclaimDevicesRequest> =
+export const UnclaimDevicesRequest: Schema.Codec<UnclaimDevicesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unclaims: Schema.optional(Schema.Array(PartnerUnclaim)),
   }).annotate({ identifier: "UnclaimDevicesRequest" });
@@ -374,7 +374,7 @@ export interface PerDeviceStatusInBatch {
   errorMessage?: string;
 }
 
-export const PerDeviceStatusInBatch: Schema.Schema<PerDeviceStatusInBatch> =
+export const PerDeviceStatusInBatch: Schema.Codec<PerDeviceStatusInBatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     deviceId: Schema.optional(Schema.String),
@@ -391,7 +391,7 @@ export interface UpdateMetadataArguments {
   deviceMetadata?: DeviceMetadata;
 }
 
-export const UpdateMetadataArguments: Schema.Schema<UpdateMetadataArguments> =
+export const UpdateMetadataArguments: Schema.Codec<UpdateMetadataArguments> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceIdentifier: Schema.optional(DeviceIdentifier),
     deviceId: Schema.optional(Schema.String),
@@ -409,7 +409,7 @@ export interface OperationPerDevice {
   updateMetadata?: UpdateMetadataArguments;
 }
 
-export const OperationPerDevice: Schema.Schema<OperationPerDevice> =
+export const OperationPerDevice: Schema.Codec<OperationPerDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     claim: Schema.optional(PartnerClaim),
     unclaim: Schema.optional(PartnerUnclaim),
@@ -424,7 +424,7 @@ export interface DevicesLongRunningOperationResponse {
   perDeviceStatus?: ReadonlyArray<OperationPerDevice>;
 }
 
-export const DevicesLongRunningOperationResponse: Schema.Schema<DevicesLongRunningOperationResponse> =
+export const DevicesLongRunningOperationResponse: Schema.Codec<DevicesLongRunningOperationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successCount: Schema.optional(Schema.Number),
     perDeviceStatus: Schema.optional(Schema.Array(OperationPerDevice)),
@@ -435,7 +435,7 @@ export interface CustomerUnclaimDeviceRequest {
   device?: DeviceReference;
 }
 
-export const CustomerUnclaimDeviceRequest: Schema.Schema<CustomerUnclaimDeviceRequest> =
+export const CustomerUnclaimDeviceRequest: Schema.Codec<CustomerUnclaimDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     device: Schema.optional(DeviceReference),
   }).annotate({ identifier: "CustomerUnclaimDeviceRequest" });
@@ -454,7 +454,7 @@ export interface DevicesLongRunningOperationMetadata {
   progress?: number;
 }
 
-export const DevicesLongRunningOperationMetadata: Schema.Schema<DevicesLongRunningOperationMetadata> =
+export const DevicesLongRunningOperationMetadata: Schema.Codec<DevicesLongRunningOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     devicesCount: Schema.optional(Schema.Number),
     processingStatus: Schema.optional(Schema.String),
@@ -468,7 +468,7 @@ export interface GoogleWorkspaceAccount {
   preProvisioningTokens?: ReadonlyArray<string>;
 }
 
-export const GoogleWorkspaceAccount: Schema.Schema<GoogleWorkspaceAccount> =
+export const GoogleWorkspaceAccount: Schema.Codec<GoogleWorkspaceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerId: Schema.optional(Schema.String),
     preProvisioningTokens: Schema.optional(Schema.Array(Schema.String)),
@@ -500,7 +500,7 @@ export interface Company {
   ownerEmails?: ReadonlyArray<string>;
 }
 
-export const Company: Schema.Schema<Company> =
+export const Company: Schema.Codec<Company> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skipWelcomeEmail: Schema.optional(Schema.Boolean),
     adminEmails: Schema.optional(Schema.Array(Schema.String)),
@@ -522,26 +522,27 @@ export interface Dpc {
   name?: string;
 }
 
-export const Dpc: Schema.Schema<Dpc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Dpc: Schema.Codec<Dpc> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     packageName: Schema.optional(Schema.String),
     dpcName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Dpc" });
+  },
+).annotate({ identifier: "Dpc" });
 
 export interface CustomerListDpcsResponse {
   /** The list of DPCs available to the customer that support zero-touch enrollment. */
   dpcs?: ReadonlyArray<Dpc>;
 }
 
-export const CustomerListDpcsResponse: Schema.Schema<CustomerListDpcsResponse> =
+export const CustomerListDpcsResponse: Schema.Codec<CustomerListDpcsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dpcs: Schema.optional(Schema.Array(Dpc)),
   }).annotate({ identifier: "CustomerListDpcsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -563,7 +564,7 @@ export interface UnclaimDeviceRequest {
   vacationModeDays?: number;
 }
 
-export const UnclaimDeviceRequest: Schema.Schema<UnclaimDeviceRequest> =
+export const UnclaimDeviceRequest: Schema.Codec<UnclaimDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     deviceIdentifier: Schema.optional(DeviceIdentifier),
@@ -581,7 +582,7 @@ export interface FindDevicesByDeviceIdentifierResponse {
   devices?: ReadonlyArray<Device>;
 }
 
-export const FindDevicesByDeviceIdentifierResponse: Schema.Schema<FindDevicesByDeviceIdentifierResponse> =
+export const FindDevicesByDeviceIdentifierResponse: Schema.Codec<FindDevicesByDeviceIdentifierResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -593,7 +594,7 @@ export interface CustomerRemoveConfigurationRequest {
   device?: DeviceReference;
 }
 
-export const CustomerRemoveConfigurationRequest: Schema.Schema<CustomerRemoveConfigurationRequest> =
+export const CustomerRemoveConfigurationRequest: Schema.Codec<CustomerRemoveConfigurationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     device: Schema.optional(DeviceReference),
   }).annotate({ identifier: "CustomerRemoveConfigurationRequest" });
@@ -621,7 +622,7 @@ export interface ClaimDeviceRequest {
   simlockProfileId?: string;
 }
 
-export const ClaimDeviceRequest: Schema.Schema<ClaimDeviceRequest> =
+export const ClaimDeviceRequest: Schema.Codec<ClaimDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleWorkspaceCustomerId: Schema.optional(Schema.String),
     preProvisioningToken: Schema.optional(Schema.String),
@@ -638,7 +639,7 @@ export interface UpdateDeviceMetadataInBatchRequest {
   updates?: ReadonlyArray<UpdateMetadataArguments>;
 }
 
-export const UpdateDeviceMetadataInBatchRequest: Schema.Schema<UpdateDeviceMetadataInBatchRequest> =
+export const UpdateDeviceMetadataInBatchRequest: Schema.Codec<UpdateDeviceMetadataInBatchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updates: Schema.optional(Schema.Array(UpdateMetadataArguments)),
   }).annotate({ identifier: "UpdateDeviceMetadataInBatchRequest" });
@@ -650,7 +651,7 @@ export interface CustomerListDevicesResponse {
   nextPageToken?: string;
 }
 
-export const CustomerListDevicesResponse: Schema.Schema<CustomerListDevicesResponse> =
+export const CustomerListDevicesResponse: Schema.Codec<CustomerListDevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(Device)),
     nextPageToken: Schema.optional(Schema.String),
@@ -665,7 +666,7 @@ export interface ListVendorCustomersResponse {
   totalSize?: number;
 }
 
-export const ListVendorCustomersResponse: Schema.Schema<ListVendorCustomersResponse> =
+export const ListVendorCustomersResponse: Schema.Codec<ListVendorCustomersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customers: Schema.optional(Schema.Array(Company)),
     nextPageToken: Schema.optional(Schema.String),
@@ -679,7 +680,7 @@ export interface CustomerApplyConfigurationRequest {
   device?: DeviceReference;
 }
 
-export const CustomerApplyConfigurationRequest: Schema.Schema<CustomerApplyConfigurationRequest> =
+export const CustomerApplyConfigurationRequest: Schema.Codec<CustomerApplyConfigurationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.optional(Schema.String),
     device: Schema.optional(DeviceReference),
@@ -692,7 +693,7 @@ export interface CustomerListCustomersResponse {
   nextPageToken?: string;
 }
 
-export const CustomerListCustomersResponse: Schema.Schema<CustomerListCustomersResponse> =
+export const CustomerListCustomersResponse: Schema.Codec<CustomerListCustomersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customers: Schema.optional(Schema.Array(Company)),
     nextPageToken: Schema.optional(Schema.String),
@@ -703,7 +704,7 @@ export interface UpdateDeviceMetadataRequest {
   deviceMetadata?: DeviceMetadata;
 }
 
-export const UpdateDeviceMetadataRequest: Schema.Schema<UpdateDeviceMetadataRequest> =
+export const UpdateDeviceMetadataRequest: Schema.Codec<UpdateDeviceMetadataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceMetadata: Schema.optional(DeviceMetadata),
   }).annotate({ identifier: "UpdateDeviceMetadataRequest" });
@@ -713,7 +714,7 @@ export interface GetDeviceSimLockStateRequest {
   deviceIdentifier?: DeviceIdentifier;
 }
 
-export const GetDeviceSimLockStateRequest: Schema.Schema<GetDeviceSimLockStateRequest> =
+export const GetDeviceSimLockStateRequest: Schema.Codec<GetDeviceSimLockStateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceIdentifier: Schema.optional(DeviceIdentifier),
   }).annotate({ identifier: "GetDeviceSimLockStateRequest" });
@@ -735,7 +736,7 @@ export interface FindDevicesByOwnerRequest {
   googleWorkspaceCustomerId?: ReadonlyArray<string>;
 }
 
-export const FindDevicesByOwnerRequest: Schema.Schema<FindDevicesByOwnerRequest> =
+export const FindDevicesByOwnerRequest: Schema.Codec<FindDevicesByOwnerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -757,7 +758,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -771,7 +772,7 @@ export interface CreateCustomerRequest {
   customer?: Company;
 }
 
-export const CreateCustomerRequest: Schema.Schema<CreateCustomerRequest> =
+export const CreateCustomerRequest: Schema.Codec<CreateCustomerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Company),
   }).annotate({ identifier: "CreateCustomerRequest" });
@@ -785,7 +786,7 @@ export interface ListCustomersResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomersResponse: Schema.Schema<ListCustomersResponse> =
+export const ListCustomersResponse: Schema.Codec<ListCustomersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     customers: Schema.optional(Schema.Array(Company)),
@@ -801,7 +802,7 @@ export interface ListVendorsResponse {
   nextPageToken?: string;
 }
 
-export const ListVendorsResponse: Schema.Schema<ListVendorsResponse> =
+export const ListVendorsResponse: Schema.Codec<ListVendorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vendors: Schema.optional(Schema.Array(Company)),
     totalSize: Schema.optional(Schema.Number),
@@ -880,7 +881,7 @@ export const ClaimPartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ClaimPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<ClaimPartnersDevicesRequest>;
 
 export type ClaimPartnersDevicesResponse = ClaimDeviceResponse;
 export const ClaimPartnersDevicesResponse =
@@ -923,7 +924,7 @@ export const GetSimLockStatePartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSimLockStatePartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<GetSimLockStatePartnersDevicesRequest>;
 
 export type GetSimLockStatePartnersDevicesResponse =
   GetDeviceSimLockStateResponse;
@@ -967,7 +968,7 @@ export const UnclaimPartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnclaimPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<UnclaimPartnersDevicesRequest>;
 
 export type UnclaimPartnersDevicesResponse = Empty;
 export const UnclaimPartnersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1011,7 +1012,7 @@ export const UpdateMetadataAsyncPartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateMetadataAsyncPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<UpdateMetadataAsyncPartnersDevicesRequest>;
 
 export type UpdateMetadataAsyncPartnersDevicesResponse = Operation;
 export const UpdateMetadataAsyncPartnersDevicesResponse =
@@ -1056,7 +1057,7 @@ export const FindByIdentifierPartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FindByIdentifierPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<FindByIdentifierPartnersDevicesRequest>;
 
 export type FindByIdentifierPartnersDevicesResponse =
   FindDevicesByDeviceIdentifierResponse;
@@ -1100,7 +1101,7 @@ export const ClaimAsyncPartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ClaimAsyncPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<ClaimAsyncPartnersDevicesRequest>;
 
 export type ClaimAsyncPartnersDevicesResponse = Operation;
 export const ClaimAsyncPartnersDevicesResponse =
@@ -1143,7 +1144,7 @@ export const FindByOwnerPartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FindByOwnerPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<FindByOwnerPartnersDevicesRequest>;
 
 export type FindByOwnerPartnersDevicesResponse = FindDevicesByOwnerResponse;
 export const FindByOwnerPartnersDevicesResponse =
@@ -1179,7 +1180,7 @@ export const GetPartnersDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<GetPartnersDevicesRequest>;
 
 export type GetPartnersDevicesResponse = Device;
 export const GetPartnersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
@@ -1219,7 +1220,7 @@ export const MetadataPartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MetadataPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<MetadataPartnersDevicesRequest>;
 
 export type MetadataPartnersDevicesResponse = DeviceMetadata;
 export const MetadataPartnersDevicesResponse =
@@ -1262,7 +1263,7 @@ export const UnclaimAsyncPartnersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnclaimAsyncPartnersDevicesRequest>;
+  ) as unknown as Schema.Codec<UnclaimAsyncPartnersDevicesRequest>;
 
 export type UnclaimAsyncPartnersDevicesResponse = Operation;
 export const UnclaimAsyncPartnersDevicesResponse =
@@ -1304,7 +1305,7 @@ export const ListPartnersVendorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/vendors" }),
     svc,
-  ) as unknown as Schema.Schema<ListPartnersVendorsRequest>;
+  ) as unknown as Schema.Codec<ListPartnersVendorsRequest>;
 
 export type ListPartnersVendorsResponse = ListVendorsResponse;
 export const ListPartnersVendorsResponse =
@@ -1345,7 +1346,7 @@ export const ListPartnersVendorsCustomersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/customers" }),
     svc,
-  ) as unknown as Schema.Schema<ListPartnersVendorsCustomersRequest>;
+  ) as unknown as Schema.Codec<ListPartnersVendorsCustomersRequest>;
 
 export type ListPartnersVendorsCustomersResponse = ListVendorCustomersResponse;
 export const ListPartnersVendorsCustomersResponse =
@@ -1389,7 +1390,7 @@ export const ListPartnersCustomersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/partners/{+partnerId}/customers" }),
     svc,
-  ) as unknown as Schema.Schema<ListPartnersCustomersRequest>;
+  ) as unknown as Schema.Codec<ListPartnersCustomersRequest>;
 
 export type ListPartnersCustomersResponse = ListCustomersResponse;
 export const ListPartnersCustomersResponse =
@@ -1427,7 +1428,7 @@ export const CreatePartnersCustomersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/customers", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePartnersCustomersRequest>;
+  ) as unknown as Schema.Codec<CreatePartnersCustomersRequest>;
 
 export type CreatePartnersCustomersResponse = Company;
 export const CreatePartnersCustomersResponse =
@@ -1462,7 +1463,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1494,7 +1495,7 @@ export const ListCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/customers" }),
   svc,
-) as unknown as Schema.Schema<ListCustomersRequest>;
+) as unknown as Schema.Codec<ListCustomersRequest>;
 
 export type ListCustomersResponse_Op = CustomerListCustomersResponse;
 export const ListCustomersResponse_Op =
@@ -1536,7 +1537,7 @@ export const CreateCustomersConfigurationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersConfigurationsRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersConfigurationsRequest>;
 
 export type CreateCustomersConfigurationsResponse = Configuration;
 export const CreateCustomersConfigurationsResponse =
@@ -1572,7 +1573,7 @@ export const DeleteCustomersConfigurationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCustomersConfigurationsRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomersConfigurationsRequest>;
 
 export type DeleteCustomersConfigurationsResponse = Empty;
 export const DeleteCustomersConfigurationsResponse =
@@ -1608,7 +1609,7 @@ export const ListCustomersConfigurationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/configurations" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersConfigurationsRequest>;
+  ) as unknown as Schema.Codec<ListCustomersConfigurationsRequest>;
 
 export type ListCustomersConfigurationsResponse =
   CustomerListConfigurationsResponse;
@@ -1643,7 +1644,7 @@ export const GetCustomersConfigurationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersConfigurationsRequest>;
+  ) as unknown as Schema.Codec<GetCustomersConfigurationsRequest>;
 
 export type GetCustomersConfigurationsResponse = Configuration;
 export const GetCustomersConfigurationsResponse =
@@ -1683,7 +1684,7 @@ export const PatchCustomersConfigurationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchCustomersConfigurationsRequest>;
+  ) as unknown as Schema.Codec<PatchCustomersConfigurationsRequest>;
 
 export type PatchCustomersConfigurationsResponse = Configuration;
 export const PatchCustomersConfigurationsResponse =
@@ -1719,7 +1720,7 @@ export const GetCustomersDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<GetCustomersDevicesRequest>;
 
 export type GetCustomersDevicesResponse = Device;
 export const GetCustomersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
@@ -1755,7 +1756,7 @@ export const ListCustomersDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<ListCustomersDevicesRequest>;
 
 export type ListCustomersDevicesResponse = CustomerListDevicesResponse;
 export const ListCustomersDevicesResponse =
@@ -1797,7 +1798,7 @@ export const ApplyConfigurationCustomersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ApplyConfigurationCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<ApplyConfigurationCustomersDevicesRequest>;
 
 export type ApplyConfigurationCustomersDevicesResponse = Empty;
 export const ApplyConfigurationCustomersDevicesResponse =
@@ -1842,7 +1843,7 @@ export const RemoveConfigurationCustomersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveConfigurationCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<RemoveConfigurationCustomersDevicesRequest>;
 
 export type RemoveConfigurationCustomersDevicesResponse = Empty;
 export const RemoveConfigurationCustomersDevicesResponse =
@@ -1885,7 +1886,7 @@ export const UnclaimCustomersDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnclaimCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<UnclaimCustomersDevicesRequest>;
 
 export type UnclaimCustomersDevicesResponse = Empty;
 export const UnclaimCustomersDevicesResponse =
@@ -1921,7 +1922,7 @@ export const ListCustomersDpcsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dpcs" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersDpcsRequest>;
+  ) as unknown as Schema.Codec<ListCustomersDpcsRequest>;
 
 export type ListCustomersDpcsResponse = CustomerListDpcsResponse;
 export const ListCustomersDpcsResponse =

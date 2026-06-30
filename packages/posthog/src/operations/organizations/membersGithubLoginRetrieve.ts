@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MembersGithubLoginRetrieveInput {
+  organization_id: string;
+  user__uuid: string;
+}
 export const MembersGithubLoginRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const MembersGithubLoginRetrieveInput =
       method: "GET",
       path: "/api/organizations/{organization_id}/members/{user__uuid}/github_login/",
     }),
-  );
-export type MembersGithubLoginRetrieveInput =
-  typeof MembersGithubLoginRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MembersGithubLoginRetrieveInput>;
 
 // Output Schema
+export interface MembersGithubLoginRetrieveOutput {
+  github_login: string | null;
+}
 export const MembersGithubLoginRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     github_login: Schema.NullOr(Schema.String),
-  });
-export type MembersGithubLoginRetrieveOutput =
-  typeof MembersGithubLoginRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MembersGithubLoginRetrieveOutput>;
 
 // The operation
 /**

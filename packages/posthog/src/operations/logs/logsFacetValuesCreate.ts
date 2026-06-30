@@ -3,11 +3,51 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LogsFacetValuesCreateInput {
+  project_id: string;
+  query: {
+    facetField?: "severity_text" | "service_name" | null;
+    facetResourceAttribute?: string | null;
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    severityLevels?: (
+      | "trace"
+      | "debug"
+      | "info"
+      | "warn"
+      | "error"
+      | "fatal"
+    )[];
+    serviceNames?: string[];
+    searchTerm?: string;
+    facetSearch?: string;
+    filterGroup?: {
+      key?: string;
+      type?: "log" | "log_attribute" | "log_resource_attribute";
+      operator?:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_date_exact"
+        | "is_date_before"
+        | "is_date_after"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+  };
+}
 export const LogsFacetValuesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.Struct({
-      facetField: Schema.optional(Schema.Unknown),
+      facetField: Schema.optional(
+        Schema.NullOr(Schema.Literals(["severity_text", "service_name"])),
+      ),
       facetResourceAttribute: Schema.optional(Schema.NullOr(Schema.String)),
       dateRange: Schema.optional(
         Schema.Struct({
@@ -61,10 +101,12 @@ export const LogsFacetValuesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/logs/facet_values/",
     }),
-  );
-export type LogsFacetValuesCreateInput = typeof LogsFacetValuesCreateInput.Type;
+  ) as unknown as Schema.Codec<LogsFacetValuesCreateInput>;
 
 // Output Schema
+export interface LogsFacetValuesCreateOutput {
+  results: { value: string; count: number }[];
+}
 export const LogsFacetValuesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -73,9 +115,7 @@ export const LogsFacetValuesCreateOutput =
         count: Schema.Number,
       }),
     ),
-  });
-export type LogsFacetValuesCreateOutput =
-  typeof LogsFacetValuesCreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsFacetValuesCreateOutput>;
 
 // The operation
 /**

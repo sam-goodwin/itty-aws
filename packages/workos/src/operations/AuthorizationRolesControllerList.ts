@@ -4,14 +4,28 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRolesControllerListInput {}
 export const AuthorizationRolesControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/authorization/roles" }),
-  );
-export type AuthorizationRolesControllerListInput =
-  typeof AuthorizationRolesControllerListInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationRolesControllerListInput>;
 
 // Output Schema
+export interface AuthorizationRolesControllerListOutput {
+  object?: string;
+  data?: {
+    slug?: string;
+    object?: string;
+    id?: string;
+    name?: string;
+    description?: string | null;
+    type?: "EnvironmentRole" | "OrganizationRole";
+    resource_type_slug?: string;
+    permissions?: string[];
+    created_at?: string;
+    updated_at?: string;
+  }[];
+}
 export const AuthorizationRolesControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -33,9 +47,7 @@ export const AuthorizationRolesControllerListOutput =
         }),
       ),
     ),
-  });
-export type AuthorizationRolesControllerListOutput =
-  typeof AuthorizationRolesControllerListOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationRolesControllerListOutput>;
 
 // The operation
 /**

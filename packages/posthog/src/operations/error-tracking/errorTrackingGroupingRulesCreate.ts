@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingGroupingRulesCreateInput {
+  project_id: string;
+  filters?: { type?: "AND" | "OR"; values?: unknown[] };
+  assignee?: { type?: "user" | "role"; id?: number | string } | null;
+  description?: string | null;
+}
 export const ErrorTrackingGroupingRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,18 +18,34 @@ export const ErrorTrackingGroupingRulesCreateInput =
         values: Schema.optional(Schema.Array(Schema.Unknown)),
       }),
     ),
-    assignee: Schema.optional(Schema.Unknown),
+    assignee: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.optional(Schema.Literals(["user", "role"])),
+          id: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
+        }),
+      ),
+    ),
     description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/grouping_rules/",
     }),
-  );
-export type ErrorTrackingGroupingRulesCreateInput =
-  typeof ErrorTrackingGroupingRulesCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingGroupingRulesCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingGroupingRulesCreateOutput {
+  id?: string;
+  filters?: unknown;
+  assignee?: { type?: "user" | "role"; id?: number | string } | null;
+  description?: string | null;
+  issue?: Record<string, string> | null;
+  order_key?: number;
+  disabled_data?: unknown;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingGroupingRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -32,7 +54,7 @@ export const ErrorTrackingGroupingRulesCreateOutput =
       Schema.NullOr(
         Schema.Struct({
           type: Schema.optional(Schema.Literals(["user", "role"])),
-          id: Schema.optional(Schema.Unknown),
+          id: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
         }),
       ),
     ),
@@ -44,9 +66,7 @@ export const ErrorTrackingGroupingRulesCreateOutput =
     disabled_data: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingGroupingRulesCreateOutput =
-  typeof ErrorTrackingGroupingRulesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingGroupingRulesCreateOutput>;
 
 // The operation
 /**

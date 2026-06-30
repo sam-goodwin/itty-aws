@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PostV1ProjectsByProjectIdBranchesInput {
+  projectId: string;
+  gitName: string;
+  isDefault?: boolean;
+}
 export const PostV1ProjectsByProjectIdBranchesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
@@ -11,11 +16,22 @@ export const PostV1ProjectsByProjectIdBranchesInput =
     isDefault: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "POST", path: "/v1/projects/{projectId}/branches" }),
-  );
-export type PostV1ProjectsByProjectIdBranchesInput =
-  typeof PostV1ProjectsByProjectIdBranchesInput.Type;
+  ) as unknown as Schema.Codec<PostV1ProjectsByProjectIdBranchesInput>;
 
 // Output Schema
+export interface PostV1ProjectsByProjectIdBranchesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    gitName: string;
+    isDefault: boolean;
+    role: "production" | "preview";
+    createdAt: string;
+    updatedAt: string;
+    project: { id: string; url: string; name: string };
+  };
+}
 export const PostV1ProjectsByProjectIdBranchesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -33,9 +49,7 @@ export const PostV1ProjectsByProjectIdBranchesOutput =
         name: Schema.String,
       }),
     }),
-  });
-export type PostV1ProjectsByProjectIdBranchesOutput =
-  typeof PostV1ProjectsByProjectIdBranchesOutput.Type;
+  }) as unknown as Schema.Codec<PostV1ProjectsByProjectIdBranchesOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PropertyDefinitionsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const PropertyDefinitionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,71 @@ export const PropertyDefinitionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/property_definitions/{id}/",
     }),
-  );
-export type PropertyDefinitionsRetrieveInput =
-  typeof PropertyDefinitionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<PropertyDefinitionsRetrieveInput>;
 
 // Output Schema
+export interface PropertyDefinitionsRetrieveOutput {
+  id?: string;
+  name?: string;
+  description?: string | null;
+  tags?: unknown[];
+  is_numerical?: boolean;
+  updated_at?: string;
+  updated_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  is_seen_on_filtered_events?: boolean | null;
+  property_type?:
+    | "DateTime"
+    | "String"
+    | "Numeric"
+    | "Boolean"
+    | "Duration"
+    | ""
+    | null;
+  verified?: boolean;
+  verified_at?: string | null;
+  verified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  hidden?: boolean | null;
+}
 export const PropertyDefinitionsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -39,12 +103,41 @@ export const PropertyDefinitionsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     is_seen_on_filtered_events: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    property_type: Schema.optional(Schema.Unknown),
+    property_type: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals([
+            "DateTime",
+            "String",
+            "Numeric",
+            "Boolean",
+            "Duration",
+          ]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     verified: Schema.optional(Schema.Boolean),
     verified_at: Schema.optional(Schema.NullOr(Schema.String)),
     verified_by: Schema.optional(
@@ -60,14 +153,28 @@ export const PropertyDefinitionsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     hidden: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  });
-export type PropertyDefinitionsRetrieveOutput =
-  typeof PropertyDefinitionsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<PropertyDefinitionsRetrieveOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsTestLinkRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const UserInterviewTopicsTestLinkRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,18 +16,28 @@ export const UserInterviewTopicsTestLinkRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/user_interview_topics/{id}/test_link/",
     }),
-  );
-export type UserInterviewTopicsTestLinkRetrieveInput =
-  typeof UserInterviewTopicsTestLinkRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsTestLinkRetrieveInput>;
 
 // Output Schema
+export interface UserInterviewTopicsTestLinkRetrieveOutput {
+  interview_url: string;
+  latest_test_interview: {
+    completed_at: string;
+    transcript: string;
+    summary: string;
+  } | null;
+}
 export const UserInterviewTopicsTestLinkRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interview_url: Schema.String,
-    latest_test_interview: Schema.Unknown,
-  });
-export type UserInterviewTopicsTestLinkRetrieveOutput =
-  typeof UserInterviewTopicsTestLinkRetrieveOutput.Type;
+    latest_test_interview: Schema.NullOr(
+      Schema.Struct({
+        completed_at: Schema.String,
+        transcript: Schema.String,
+        summary: Schema.String,
+      }),
+    ),
+  }) as unknown as Schema.Codec<UserInterviewTopicsTestLinkRetrieveOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetClimateSuppliersSupplierInput {
+  supplier: string;
+  expand?: string;
+}
 export const GetClimateSuppliersSupplierInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supplier: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,28 @@ export const GetClimateSuppliersSupplierInput =
       path: "/v1/climate/suppliers/{supplier}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetClimateSuppliersSupplierInput =
-  typeof GetClimateSuppliersSupplierInput.Type;
+  ) as unknown as Schema.Codec<GetClimateSuppliersSupplierInput>;
 
 // Output Schema
+export interface GetClimateSuppliersSupplierOutput {
+  id: string;
+  info_url: string;
+  livemode: boolean;
+  locations: {
+    city: string | null;
+    country: string;
+    latitude: number | null;
+    longitude: number | null;
+    region: string | null;
+  }[];
+  name: string;
+  object: "climate.supplier";
+  removal_pathway:
+    | "biomass_carbon_removal_and_storage"
+    | "direct_air_capture"
+    | "enhanced_weathering"
+    | "marine_carbon_removal";
+}
 export const GetClimateSuppliersSupplierOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -40,9 +61,7 @@ export const GetClimateSuppliersSupplierOutput =
       "enhanced_weathering",
       "marine_carbon_removal",
     ]),
-  });
-export type GetClimateSuppliersSupplierOutput =
-  typeof GetClimateSuppliersSupplierOutput.Type;
+  }) as unknown as Schema.Codec<GetClimateSuppliersSupplierOutput>;
 
 // The operation
 /**

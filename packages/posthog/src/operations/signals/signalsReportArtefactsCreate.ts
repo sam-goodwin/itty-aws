@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsReportArtefactsCreateInput {
+  project_id: string;
+  report_id: string;
+  artefact_type: string;
+  content: unknown;
+}
 export const SignalsReportArtefactsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,18 @@ export const SignalsReportArtefactsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/reports/{report_id}/artefacts/",
     }),
-  );
-export type SignalsReportArtefactsCreateInput =
-  typeof SignalsReportArtefactsCreateInput.Type;
+  ) as unknown as Schema.Codec<SignalsReportArtefactsCreateInput>;
 
 // Output Schema
+export interface SignalsReportArtefactsCreateOutput {
+  id: string;
+  report_id: string;
+  type: string;
+  content: unknown;
+  created_at: string;
+  updated_at: string | null;
+  task_id: string | null;
+}
 export const SignalsReportArtefactsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,9 +42,7 @@ export const SignalsReportArtefactsCreateOutput =
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
     task_id: Schema.NullOr(Schema.String),
-  });
-export type SignalsReportArtefactsCreateOutput =
-  typeof SignalsReportArtefactsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SignalsReportArtefactsCreateOutput>;
 
 // The operation
 /**

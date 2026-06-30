@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupSettingsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,13 +19,12 @@ export const UpdateGroupSettingsInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/settings",
     }),
-  );
-export type UpdateGroupSettingsInput = typeof UpdateGroupSettingsInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupSettingsInput>;
 
 // Output Schema
+export type UpdateGroupSettingsOutput = void;
 export const UpdateGroupSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupSettingsOutput = typeof UpdateGroupSettingsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupSettingsOutput>;
 
 // The operation
 /**

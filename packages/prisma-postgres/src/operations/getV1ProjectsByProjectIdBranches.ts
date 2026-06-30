@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1ProjectsByProjectIdBranchesInput {
+  projectId: string;
+  cursor?: string;
+  limit?: number;
+  gitName?: string;
+  gitNameContains?: string;
+}
 export const GetV1ProjectsByProjectIdBranchesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
@@ -11,11 +18,25 @@ export const GetV1ProjectsByProjectIdBranchesInput =
     limit: Schema.optional(Schema.Number),
     gitName: Schema.optional(Schema.String),
     gitNameContains: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v1/projects/{projectId}/branches" }));
-export type GetV1ProjectsByProjectIdBranchesInput =
-  typeof GetV1ProjectsByProjectIdBranchesInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/projects/{projectId}/branches" }),
+  ) as unknown as Schema.Codec<GetV1ProjectsByProjectIdBranchesInput>;
 
 // Output Schema
+export interface GetV1ProjectsByProjectIdBranchesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    gitName: string;
+    isDefault: boolean;
+    role: "production" | "preview";
+    createdAt: string;
+    updatedAt: string;
+    project: { id: string; url: string; name: string };
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1ProjectsByProjectIdBranchesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -39,9 +60,7 @@ export const GetV1ProjectsByProjectIdBranchesOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1ProjectsByProjectIdBranchesOutput =
-  typeof GetV1ProjectsByProjectIdBranchesOutput.Type;
+  }) as unknown as Schema.Codec<GetV1ProjectsByProjectIdBranchesOutput>;
 
 // The operation
 /**

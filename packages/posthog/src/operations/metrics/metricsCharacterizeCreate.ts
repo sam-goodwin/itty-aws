@@ -3,6 +3,33 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MetricsCharacterizeCreateInput {
+  project_id: string;
+  query: {
+    metricName: string;
+    anomalyFrom: string;
+    anomalyTo?: string;
+    baselineFrom?: string;
+    baselineTo?: string;
+    aggregation?:
+      | "sum"
+      | "avg"
+      | "count"
+      | "p95"
+      | "rate"
+      | "increase"
+      | "histogram_quantile"
+      | null;
+    quantile?: number | null;
+    filters?: {
+      key: string;
+      op?: "eq" | "neq" | "regex" | "not_regex";
+      value: string;
+      scope?: "resource" | "attribute" | "auto";
+    }[];
+    candidateKeys?: string[];
+  };
+}
 export const MetricsCharacterizeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,7 +39,19 @@ export const MetricsCharacterizeCreateInput =
       anomalyTo: Schema.optional(Schema.String),
       baselineFrom: Schema.optional(Schema.String),
       baselineTo: Schema.optional(Schema.String),
-      aggregation: Schema.optional(Schema.Unknown),
+      aggregation: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals([
+            "sum",
+            "avg",
+            "count",
+            "p95",
+            "rate",
+            "increase",
+            "histogram_quantile",
+          ]),
+        ),
+      ),
       quantile: Schema.optional(Schema.NullOr(Schema.Number)),
       filters: Schema.optional(
         Schema.Array(
@@ -35,11 +74,38 @@ export const MetricsCharacterizeCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/metrics/characterize/",
     }),
-  );
-export type MetricsCharacterizeCreateInput =
-  typeof MetricsCharacterizeCreateInput.Type;
+  ) as unknown as Schema.Codec<MetricsCharacterizeCreateInput>;
 
 // Output Schema
+export interface MetricsCharacterizeCreateOutput {
+  metric_name: string;
+  aggregation: string;
+  interval: string;
+  baseline_from: string;
+  baseline_to: string;
+  anomaly_from: string;
+  anomaly_to: string;
+  baseline_mean: number;
+  baseline_stddev: number;
+  anomaly_mean: number;
+  anomaly_peak: number;
+  change_ratio: number;
+  direction: "up" | "down" | "flat";
+  onset_time: string | null;
+  top_movers: {
+    key: string;
+    label: string;
+    baseline_value: number;
+    anomaly_value: number;
+    change_ratio: number;
+  }[];
+  series: {
+    labels: Record<string, string>;
+    points: { time: string; value: number }[];
+    metric_name?: string | null;
+    clause?: string | null;
+  };
+}
 export const MetricsCharacterizeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metric_name: Schema.String,
@@ -76,9 +142,7 @@ export const MetricsCharacterizeCreateOutput =
       metric_name: Schema.optional(Schema.NullOr(Schema.String)),
       clause: Schema.optional(Schema.NullOr(Schema.String)),
     }),
-  });
-export type MetricsCharacterizeCreateOutput =
-  typeof MetricsCharacterizeCreateOutput.Type;
+  }) as unknown as Schema.Codec<MetricsCharacterizeCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsScoutRunsRetrieveInput {
+  project_id: string;
+  run_id: string;
+}
 export const SignalsScoutRunsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,28 @@ export const SignalsScoutRunsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/scout/runs/{run_id}/",
     }),
-  );
-export type SignalsScoutRunsRetrieveInput =
-  typeof SignalsScoutRunsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutRunsRetrieveInput>;
 
 // Output Schema
+export interface SignalsScoutRunsRetrieveOutput {
+  run_id: string;
+  skill_name: string;
+  skill_version: number;
+  status: string;
+  created_at: string;
+  started_at: string;
+  completed_at: string | null;
+  task_id?: string | null;
+  task_run_id?: string | null;
+  task_url?: string | null;
+  summary: string;
+  error?: string | null;
+  failure_reason?: string | null;
+  emitted_count: number;
+  emitted_finding_ids: string[];
+  emitted_report_ids: string[];
+  edited_report_ids: string[];
+}
 export const SignalsScoutRunsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     run_id: Schema.String,
@@ -37,9 +58,7 @@ export const SignalsScoutRunsRetrieveOutput =
     emitted_finding_ids: Schema.Array(Schema.String),
     emitted_report_ids: Schema.Array(Schema.String),
     edited_report_ids: Schema.Array(Schema.String),
-  });
-export type SignalsScoutRunsRetrieveOutput =
-  typeof SignalsScoutRunsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SignalsScoutRunsRetrieveOutput>;
 
 // The operation
 /**

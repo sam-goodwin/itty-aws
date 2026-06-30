@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupStreamConnectionFailoverConnectionInput {
+  groupId: string;
+  tenantName: string;
+  connectionName: string;
+  failoverConnectionId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupStreamConnectionFailoverConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const GetGroupStreamConnectionFailoverConnectionInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}",
     }),
-  );
-export type GetGroupStreamConnectionFailoverConnectionInput =
-  typeof GetGroupStreamConnectionFailoverConnectionInput.Type;
+  ) as unknown as Schema.Codec<GetGroupStreamConnectionFailoverConnectionInput>;
 
 // Output Schema
+export type GetGroupStreamConnectionFailoverConnectionOutput = void;
 export const GetGroupStreamConnectionFailoverConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupStreamConnectionFailoverConnectionOutput =
-  typeof GetGroupStreamConnectionFailoverConnectionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamConnectionFailoverConnectionOutput>;
 
 // The operation
 /**

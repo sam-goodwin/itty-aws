@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostEntitlementsFeaturesInput {
+  expand?: string[];
+  lookup_key: string;
+  metadata?: Record<string, string>;
+  name: string;
+}
 export const PostEntitlementsFeaturesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -15,11 +21,18 @@ export const PostEntitlementsFeaturesInput =
       path: "/v1/entitlements/features",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostEntitlementsFeaturesInput =
-  typeof PostEntitlementsFeaturesInput.Type;
+  ) as unknown as Schema.Codec<PostEntitlementsFeaturesInput>;
 
 // Output Schema
+export interface PostEntitlementsFeaturesOutput {
+  active: boolean;
+  id: string;
+  livemode: boolean;
+  lookup_key: string;
+  metadata: Record<string, string>;
+  name: string;
+  object: "entitlements.feature";
+}
 export const PostEntitlementsFeaturesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
@@ -29,9 +42,7 @@ export const PostEntitlementsFeaturesOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     name: Schema.String,
     object: Schema.Literals(["entitlements.feature"]),
-  });
-export type PostEntitlementsFeaturesOutput =
-  typeof PostEntitlementsFeaturesOutput.Type;
+  }) as unknown as Schema.Codec<PostEntitlementsFeaturesOutput>;
 
 // The operation
 /**

@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupStreamConnectionInput {
+  groupId: string;
+  tenantName: string;
+  connectionName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupStreamConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const DeleteGroupStreamConnectionInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
     }),
-  );
-export type DeleteGroupStreamConnectionInput =
-  typeof DeleteGroupStreamConnectionInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupStreamConnectionInput>;
 
 // Output Schema
+export type DeleteGroupStreamConnectionOutput = void;
 export const DeleteGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupStreamConnectionOutput =
-  typeof DeleteGroupStreamConnectionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamConnectionOutput>;
 
 // The operation
 /**

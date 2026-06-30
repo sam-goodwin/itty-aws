@@ -4,6 +4,38 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EarlyAccessFeatureCreateInput {
+  project_id: string;
+  id?: string;
+  name?: string;
+  description?: string;
+  stage?:
+    | "draft"
+    | "concept"
+    | "alpha"
+    | "beta"
+    | "general-availability"
+    | "archived";
+  documentation_url?: string;
+  payload?: unknown;
+  created_at?: string;
+  feature_flag_id?: number;
+  feature_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  _create_in_folder?: string;
+}
 export const EarlyAccessFeatureCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -37,8 +69,22 @@ export const EarlyAccessFeatureCreateInput =
           Schema.NullOr(Schema.Boolean),
         ),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -48,11 +94,40 @@ export const EarlyAccessFeatureCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/early_access_feature/",
     }),
-  );
-export type EarlyAccessFeatureCreateInput =
-  typeof EarlyAccessFeatureCreateInput.Type;
+  ) as unknown as Schema.Codec<EarlyAccessFeatureCreateInput>;
 
 // Output Schema
+export interface EarlyAccessFeatureCreateOutput {
+  id?: string;
+  name?: string;
+  description?: string;
+  stage?:
+    | "draft"
+    | "concept"
+    | "alpha"
+    | "beta"
+    | "general-availability"
+    | "archived";
+  documentation_url?: string;
+  payload?: unknown;
+  created_at?: string;
+  feature_flag_id?: number;
+  feature_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  _create_in_folder?: string;
+}
 export const EarlyAccessFeatureCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -85,15 +160,27 @@ export const EarlyAccessFeatureCreateOutput =
           Schema.NullOr(Schema.Boolean),
         ),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
     _create_in_folder: Schema.optional(Schema.String),
-  });
-export type EarlyAccessFeatureCreateOutput =
-  typeof EarlyAccessFeatureCreateOutput.Type;
+  }) as unknown as Schema.Codec<EarlyAccessFeatureCreateOutput>;
 
 // The operation
 /**

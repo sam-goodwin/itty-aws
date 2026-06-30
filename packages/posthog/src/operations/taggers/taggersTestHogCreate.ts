@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TaggersTestHogCreateInput {
+  project_id: string;
+  source: string;
+  sample_count?: number;
+  tags?: { name: string; description?: string }[];
+}
 export const TaggersTestHogCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,10 +27,21 @@ export const TaggersTestHogCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/taggers/test_hog/",
     }),
-  );
-export type TaggersTestHogCreateInput = typeof TaggersTestHogCreateInput.Type;
+  ) as unknown as Schema.Codec<TaggersTestHogCreateInput>;
 
 // Output Schema
+export interface TaggersTestHogCreateOutput {
+  results: {
+    event_uuid: string;
+    trace_id?: string | null;
+    input_preview: string;
+    output_preview: string;
+    tags: string[];
+    reasoning: string;
+    error?: string | null;
+  }[];
+  message?: string;
+}
 export const TaggersTestHogCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -39,8 +56,7 @@ export const TaggersTestHogCreateOutput =
       }),
     ),
     message: Schema.optional(Schema.String),
-  });
-export type TaggersTestHogCreateOutput = typeof TaggersTestHogCreateOutput.Type;
+  }) as unknown as Schema.Codec<TaggersTestHogCreateOutput>;
 
 // The operation
 /**

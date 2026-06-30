@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsInput {
+  group_id: string;
+  role_slug: string;
+  resource_id?: string;
+  resource_external_id?: string;
+  resource_type_slug?: string;
+}
 export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,13 @@ export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmen
       method: "DELETE",
       path: "/authorization/groups/{group_id}/role_assignments",
     }),
-  );
-export type AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsInput =
-  typeof AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsInput>;
 
 // Output Schema
-export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput =
-  typeof AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput.Type;
+  void;
+export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentsOutput>;
 
 // The operation
 /**

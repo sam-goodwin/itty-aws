@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface IntegrationsGoogleSearchConsoleSitesRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsGoogleSearchConsoleSitesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -12,11 +16,12 @@ export const IntegrationsGoogleSearchConsoleSitesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/google_search_console_sites/",
     }),
-  );
-export type IntegrationsGoogleSearchConsoleSitesRetrieveInput =
-  typeof IntegrationsGoogleSearchConsoleSitesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGoogleSearchConsoleSitesRetrieveInput>;
 
 // Output Schema
+export interface IntegrationsGoogleSearchConsoleSitesRetrieveOutput {
+  sites: { siteUrl: string; permissionLevel: string }[];
+}
 export const IntegrationsGoogleSearchConsoleSitesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sites: Schema.Array(
@@ -25,9 +30,7 @@ export const IntegrationsGoogleSearchConsoleSitesRetrieveOutput =
         permissionLevel: Schema.String,
       }),
     ),
-  });
-export type IntegrationsGoogleSearchConsoleSitesRetrieveOutput =
-  typeof IntegrationsGoogleSearchConsoleSitesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsGoogleSearchConsoleSitesRetrieveOutput>;
 
 // The operation
 /**

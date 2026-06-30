@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseViewLinkListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const WarehouseViewLinkListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,46 @@ export const WarehouseViewLinkListInput =
       method: "GET",
       path: "/api/projects/{project_id}/warehouse_view_link/",
     }),
-  );
-export type WarehouseViewLinkListInput = typeof WarehouseViewLinkListInput.Type;
+  ) as unknown as Schema.Codec<WarehouseViewLinkListInput>;
 
 // Output Schema
+export interface WarehouseViewLinkListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    deleted?: boolean | null;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    created_at: string;
+    source_table_name: string;
+    source_table_key: string;
+    joining_table_name: string;
+    joining_table_key: string;
+    field_name: string;
+    configuration?: unknown;
+  }[];
+}
 export const WarehouseViewLinkListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -38,7 +80,23 @@ export const WarehouseViewLinkListOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
         created_at: Schema.String,
         source_table_name: Schema.String,
@@ -49,9 +107,7 @@ export const WarehouseViewLinkListOutput =
         configuration: Schema.optional(Schema.Unknown),
       }),
     ),
-  });
-export type WarehouseViewLinkListOutput =
-  typeof WarehouseViewLinkListOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseViewLinkListOutput>;
 
 // The operation
 /**

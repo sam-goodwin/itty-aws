@@ -3,6 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateNeonAuthWebhookConfigInput {
+  project_id: string;
+  branch_id: string;
+  enabled: boolean;
+  webhook_url?: string;
+  enabled_events?: (
+    | "user.before_create"
+    | "user.created"
+    | "send.otp"
+    | "send.magic_link"
+    | "organization.invitation.created"
+    | "organization.invitation.accepted"
+    | "phone_number.verified"
+  )[];
+  timeout_seconds?: number;
+}
 export const UpdateNeonAuthWebhookConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -28,11 +44,23 @@ export const UpdateNeonAuthWebhookConfigInput =
       method: "PUT",
       path: "/projects/{project_id}/branches/{branch_id}/auth/webhooks",
     }),
-  );
-export type UpdateNeonAuthWebhookConfigInput =
-  typeof UpdateNeonAuthWebhookConfigInput.Type;
+  ) as unknown as Schema.Codec<UpdateNeonAuthWebhookConfigInput>;
 
 // Output Schema
+export interface UpdateNeonAuthWebhookConfigOutput {
+  enabled: boolean;
+  webhook_url?: string;
+  enabled_events?: (
+    | "user.before_create"
+    | "user.created"
+    | "send.otp"
+    | "send.magic_link"
+    | "organization.invitation.created"
+    | "organization.invitation.accepted"
+    | "phone_number.verified"
+  )[];
+  timeout_seconds?: number;
+}
 export const UpdateNeonAuthWebhookConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
@@ -51,9 +79,7 @@ export const UpdateNeonAuthWebhookConfigOutput =
       ),
     ),
     timeout_seconds: Schema.optional(Schema.Number),
-  });
-export type UpdateNeonAuthWebhookConfigOutput =
-  typeof UpdateNeonAuthWebhookConfigOutput.Type;
+  }) as unknown as Schema.Codec<UpdateNeonAuthWebhookConfigOutput>;
 
 // The operation
 /**

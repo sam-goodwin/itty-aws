@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface OrganizationsProjectsDefaultEvaluationContextsDestroyInput {
+  id: number;
+  organization_id: string;
+}
 export const OrganizationsProjectsDefaultEvaluationContextsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const OrganizationsProjectsDefaultEvaluationContextsDestroyInput =
       method: "DELETE",
       path: "/api/organizations/{organization_id}/projects/{id}/default_evaluation_contexts/",
     }),
-  );
-export type OrganizationsProjectsDefaultEvaluationContextsDestroyInput =
-  typeof OrganizationsProjectsDefaultEvaluationContextsDestroyInput.Type;
+  ) as unknown as Schema.Codec<OrganizationsProjectsDefaultEvaluationContextsDestroyInput>;
 
 // Output Schema
+export type OrganizationsProjectsDefaultEvaluationContextsDestroyOutput = void;
 export const OrganizationsProjectsDefaultEvaluationContextsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrganizationsProjectsDefaultEvaluationContextsDestroyOutput =
-  typeof OrganizationsProjectsDefaultEvaluationContextsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationsProjectsDefaultEvaluationContextsDestroyOutput>;
 
 // The operation
 /**

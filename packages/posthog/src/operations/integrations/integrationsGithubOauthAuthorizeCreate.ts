@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface IntegrationsGithubOauthAuthorizeCreateInput {
+  project_id: string;
+  installation_id?: string;
+  next?: string;
+  connect_from?: "posthog_code";
+}
 export const IntegrationsGithubOauthAuthorizeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,17 +20,16 @@ export const IntegrationsGithubOauthAuthorizeCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/integrations/github/oauth_authorize/",
     }),
-  );
-export type IntegrationsGithubOauthAuthorizeCreateInput =
-  typeof IntegrationsGithubOauthAuthorizeCreateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGithubOauthAuthorizeCreateInput>;
 
 // Output Schema
+export interface IntegrationsGithubOauthAuthorizeCreateOutput {
+  oauth_url: string;
+}
 export const IntegrationsGithubOauthAuthorizeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oauth_url: Schema.String,
-  });
-export type IntegrationsGithubOauthAuthorizeCreateOutput =
-  typeof IntegrationsGithubOauthAuthorizeCreateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsGithubOauthAuthorizeCreateOutput>;
 
 // The operation
 /**

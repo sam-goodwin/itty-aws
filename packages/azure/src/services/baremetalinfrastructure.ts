@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AzureBareMetalInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureBareMetalInstanceName: string;
+}
 export const AzureBareMetalInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20,19 +25,20 @@ export const AzureBareMetalInstancesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/{azureBareMetalInstanceName}",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalInstancesGetInput =
-  typeof AzureBareMetalInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalInstancesGetInput>;
 
 // Output Schema
+export interface AzureBareMetalInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const AzureBareMetalInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalInstancesGetOutput =
-  typeof AzureBareMetalInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalInstancesGetOutput>;
 
 // The operation
 /**
@@ -52,6 +58,10 @@ export const AzureBareMetalInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AzureBareMetalInstancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AzureBareMetalInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -62,11 +72,13 @@ export const AzureBareMetalInstancesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalInstancesListByResourceGroupInput =
-  typeof AzureBareMetalInstancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalInstancesListByResourceGroupInput>;
 
 // Output Schema
+export interface AzureBareMetalInstancesListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const AzureBareMetalInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -79,9 +91,7 @@ export const AzureBareMetalInstancesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalInstancesListByResourceGroupOutput =
-  typeof AzureBareMetalInstancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalInstancesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -99,6 +109,9 @@ export const AzureBareMetalInstancesListByResourceGroup =
     outputSchema: AzureBareMetalInstancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AzureBareMetalInstancesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AzureBareMetalInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -108,11 +121,13 @@ export const AzureBareMetalInstancesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalInstancesListBySubscriptionInput =
-  typeof AzureBareMetalInstancesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalInstancesListBySubscriptionInput>;
 
 // Output Schema
+export interface AzureBareMetalInstancesListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const AzureBareMetalInstancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -125,9 +140,7 @@ export const AzureBareMetalInstancesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalInstancesListBySubscriptionOutput =
-  typeof AzureBareMetalInstancesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalInstancesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -144,6 +157,12 @@ export const AzureBareMetalInstancesListBySubscription =
     outputSchema: AzureBareMetalInstancesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AzureBareMetalInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureBareMetalInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const AzureBareMetalInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -156,19 +175,20 @@ export const AzureBareMetalInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/{azureBareMetalInstanceName}",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalInstancesUpdateInput =
-  typeof AzureBareMetalInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalInstancesUpdateInput>;
 
 // Output Schema
+export interface AzureBareMetalInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const AzureBareMetalInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalInstancesUpdateOutput =
-  typeof AzureBareMetalInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalInstancesUpdateOutput>;
 
 // The operation
 /**
@@ -187,6 +207,44 @@ export const AzureBareMetalInstancesUpdate =
     outputSchema: AzureBareMetalInstancesUpdateOutput,
   }));
 // Input Schema
+export interface AzureBareMetalStorageInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureBareMetalStorageInstanceName: string;
+  properties?: {
+    azureBareMetalStorageInstanceUniqueIdentifier?: string;
+    storageProperties?: {
+      provisioningState?:
+        | "Accepted"
+        | "Creating"
+        | "Updating"
+        | "Failed"
+        | "Succeeded"
+        | "Deleting"
+        | "Canceled"
+        | "Migrating";
+      offeringType?: string;
+      storageType?: string;
+      generation?: string;
+      hardwareType?: string;
+      workloadType?: string;
+      storageBillingProperties?: {
+        billingMode?: string;
+        azureBareMetalStorageInstanceSize?: string;
+      };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AzureBareMetalStorageInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -250,19 +308,20 @@ export const AzureBareMetalStorageInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalStorageInstancesCreateInput =
-  typeof AzureBareMetalStorageInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalStorageInstancesCreateInput>;
 
 // Output Schema
+export interface AzureBareMetalStorageInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const AzureBareMetalStorageInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalStorageInstancesCreateOutput =
-  typeof AzureBareMetalStorageInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalStorageInstancesCreateOutput>;
 
 // The operation
 /**
@@ -279,6 +338,11 @@ export const AzureBareMetalStorageInstancesCreate =
     outputSchema: AzureBareMetalStorageInstancesCreateOutput,
   }));
 // Input Schema
+export interface AzureBareMetalStorageInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureBareMetalStorageInstanceName: string;
+}
 export const AzureBareMetalStorageInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -290,15 +354,12 @@ export const AzureBareMetalStorageInstancesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalStorageInstancesDeleteInput =
-  typeof AzureBareMetalStorageInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalStorageInstancesDeleteInput>;
 
 // Output Schema
+export type AzureBareMetalStorageInstancesDeleteOutput = void;
 export const AzureBareMetalStorageInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AzureBareMetalStorageInstancesDeleteOutput =
-  typeof AzureBareMetalStorageInstancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AzureBareMetalStorageInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -315,6 +376,11 @@ export const AzureBareMetalStorageInstancesDelete =
     outputSchema: AzureBareMetalStorageInstancesDeleteOutput,
   }));
 // Input Schema
+export interface AzureBareMetalStorageInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureBareMetalStorageInstanceName: string;
+}
 export const AzureBareMetalStorageInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -326,19 +392,20 @@ export const AzureBareMetalStorageInstancesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalStorageInstancesGetInput =
-  typeof AzureBareMetalStorageInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalStorageInstancesGetInput>;
 
 // Output Schema
+export interface AzureBareMetalStorageInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const AzureBareMetalStorageInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalStorageInstancesGetOutput =
-  typeof AzureBareMetalStorageInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalStorageInstancesGetOutput>;
 
 // The operation
 /**
@@ -357,6 +424,10 @@ export const AzureBareMetalStorageInstancesGet =
     outputSchema: AzureBareMetalStorageInstancesGetOutput,
   }));
 // Input Schema
+export interface AzureBareMetalStorageInstancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AzureBareMetalStorageInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -367,11 +438,13 @@ export const AzureBareMetalStorageInstancesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalStorageInstancesListByResourceGroupInput =
-  typeof AzureBareMetalStorageInstancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalStorageInstancesListByResourceGroupInput>;
 
 // Output Schema
+export interface AzureBareMetalStorageInstancesListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const AzureBareMetalStorageInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -384,9 +457,7 @@ export const AzureBareMetalStorageInstancesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalStorageInstancesListByResourceGroupOutput =
-  typeof AzureBareMetalStorageInstancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalStorageInstancesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -404,6 +475,9 @@ export const AzureBareMetalStorageInstancesListByResourceGroup =
     outputSchema: AzureBareMetalStorageInstancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AzureBareMetalStorageInstancesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AzureBareMetalStorageInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -413,11 +487,13 @@ export const AzureBareMetalStorageInstancesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalStorageInstancesListBySubscriptionInput =
-  typeof AzureBareMetalStorageInstancesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalStorageInstancesListBySubscriptionInput>;
 
 // Output Schema
+export interface AzureBareMetalStorageInstancesListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const AzureBareMetalStorageInstancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -430,9 +506,7 @@ export const AzureBareMetalStorageInstancesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalStorageInstancesListBySubscriptionOutput =
-  typeof AzureBareMetalStorageInstancesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalStorageInstancesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -449,6 +523,12 @@ export const AzureBareMetalStorageInstancesListBySubscription =
     outputSchema: AzureBareMetalStorageInstancesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AzureBareMetalStorageInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureBareMetalStorageInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const AzureBareMetalStorageInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -461,19 +541,20 @@ export const AzureBareMetalStorageInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
       apiVersion: "2023-04-06",
     }),
-  );
-export type AzureBareMetalStorageInstancesUpdateInput =
-  typeof AzureBareMetalStorageInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<AzureBareMetalStorageInstancesUpdateInput>;
 
 // Output Schema
+export interface AzureBareMetalStorageInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const AzureBareMetalStorageInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AzureBareMetalStorageInstancesUpdateOutput =
-  typeof AzureBareMetalStorageInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AzureBareMetalStorageInstancesUpdateOutput>;
 
 // The operation
 /**
@@ -492,6 +573,7 @@ export const AzureBareMetalStorageInstancesUpdate =
     outputSchema: AzureBareMetalStorageInstancesUpdateOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -500,10 +582,21 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.BareMetalInfrastructure/operations",
     apiVersion: "2023-04-06",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    isDataAction?: boolean;
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -521,8 +614,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface RetrieveSessionSummariesConfigInput {
+  project_id: string;
+}
 export const RetrieveSessionSummariesConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,18 +14,18 @@ export const RetrieveSessionSummariesConfigInput =
       method: "GET",
       path: "/api/projects/{project_id}/session_summaries/config/",
     }),
-  );
-export type RetrieveSessionSummariesConfigInput =
-  typeof RetrieveSessionSummariesConfigInput.Type;
+  ) as unknown as Schema.Codec<RetrieveSessionSummariesConfigInput>;
 
 // Output Schema
+export interface RetrieveSessionSummariesConfigOutput {
+  product_context?: string;
+  custom_tags?: Record<string, string>;
+}
 export const RetrieveSessionSummariesConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     product_context: Schema.optional(Schema.String),
     custom_tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type RetrieveSessionSummariesConfigOutput =
-  typeof RetrieveSessionSummariesConfigOutput.Type;
+  }) as unknown as Schema.Codec<RetrieveSessionSummariesConfigOutput>;
 
 // The operation
 /**

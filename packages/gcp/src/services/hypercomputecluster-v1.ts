@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface CreateNetwork {
   network?: string;
 }
 
-export const CreateNetwork: Schema.Schema<CreateNetwork> =
+export const CreateNetwork: Schema.Codec<CreateNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateNetwork" });
@@ -45,7 +45,7 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -61,7 +61,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface BootDisk {
   type?: string;
 }
 
-export const BootDisk: Schema.Schema<BootDisk> =
+export const BootDisk: Schema.Codec<BootDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeGb: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -89,7 +89,7 @@ export interface ComputeInstanceSlurmNodeSet {
   labels?: Record<string, string>;
 }
 
-export const ComputeInstanceSlurmNodeSet: Schema.Schema<ComputeInstanceSlurmNodeSet> =
+export const ComputeInstanceSlurmNodeSet: Schema.Codec<ComputeInstanceSlurmNodeSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startupScript: Schema.optional(Schema.String),
     bootDisk: Schema.optional(BootDisk),
@@ -103,7 +103,7 @@ export interface NetworkReference {
   subnetwork?: string;
 }
 
-export const NetworkReference: Schema.Schema<NetworkReference> =
+export const NetworkReference: Schema.Codec<NetworkReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     subnetwork: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface ExistingNetworkConfig {
   network?: string;
 }
 
-export const ExistingNetworkConfig: Schema.Schema<ExistingNetworkConfig> =
+export const ExistingNetworkConfig: Schema.Codec<ExistingNetworkConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnetwork: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
@@ -129,7 +129,7 @@ export interface NewNetworkConfig {
   network?: string;
 }
 
-export const NewNetworkConfig: Schema.Schema<NewNetworkConfig> =
+export const NewNetworkConfig: Schema.Codec<NewNetworkConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
@@ -142,7 +142,7 @@ export interface NetworkResourceConfig {
   newNetwork?: NewNetworkConfig;
 }
 
-export const NetworkResourceConfig: Schema.Schema<NetworkResourceConfig> =
+export const NetworkResourceConfig: Schema.Codec<NetworkResourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     existingNetwork: Schema.optional(ExistingNetworkConfig),
     newNetwork: Schema.optional(NewNetworkConfig),
@@ -155,7 +155,7 @@ export interface NetworkResource {
   config?: NetworkResourceConfig;
 }
 
-export const NetworkResource: Schema.Schema<NetworkResource> =
+export const NetworkResource: Schema.Codec<NetworkResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(NetworkReference),
     config: Schema.optional(NetworkResourceConfig),
@@ -163,7 +163,7 @@ export const NetworkResource: Schema.Schema<NetworkResource> =
 
 export interface CheckClusterHealth {}
 
-export const CheckClusterHealth: Schema.Schema<CheckClusterHealth> =
+export const CheckClusterHealth: Schema.Codec<CheckClusterHealth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CheckClusterHealth",
   });
@@ -175,7 +175,7 @@ export interface NewOnDemandInstancesConfig {
   machineType?: string;
 }
 
-export const NewOnDemandInstancesConfig: Schema.Schema<NewOnDemandInstancesConfig> =
+export const NewOnDemandInstancesConfig: Schema.Codec<NewOnDemandInstancesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
     machineType: Schema.optional(Schema.String),
@@ -183,7 +183,7 @@ export const NewOnDemandInstancesConfig: Schema.Schema<NewOnDemandInstancesConfi
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -193,14 +193,14 @@ export interface DeleteNetwork {
   network?: string;
 }
 
-export const DeleteNetwork: Schema.Schema<DeleteNetwork> =
+export const DeleteNetwork: Schema.Codec<DeleteNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteNetwork" });
 
 export interface UpdateLoginNode {}
 
-export const UpdateLoginNode: Schema.Schema<UpdateLoginNode> =
+export const UpdateLoginNode: Schema.Codec<UpdateLoginNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateLoginNode",
   });
@@ -210,7 +210,7 @@ export interface CreateStorageBucket {
   bucket?: string;
 }
 
-export const CreateStorageBucket: Schema.Schema<CreateStorageBucket> =
+export const CreateStorageBucket: Schema.Codec<CreateStorageBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateStorageBucket" });
@@ -220,14 +220,14 @@ export interface CreateLustreInstance {
   lustre?: string;
 }
 
-export const CreateLustreInstance: Schema.Schema<CreateLustreInstance> =
+export const CreateLustreInstance: Schema.Codec<CreateLustreInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lustre: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateLustreInstance" });
 
 export interface CreateOrchestrator {}
 
-export const CreateOrchestrator: Schema.Schema<CreateOrchestrator> =
+export const CreateOrchestrator: Schema.Codec<CreateOrchestrator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateOrchestrator",
   });
@@ -237,7 +237,7 @@ export interface UpdatePartition {
   partitions?: ReadonlyArray<string>;
 }
 
-export const UpdatePartition: Schema.Schema<UpdatePartition> =
+export const UpdatePartition: Schema.Codec<UpdatePartition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "UpdatePartition" });
@@ -247,7 +247,7 @@ export interface DeleteFilestoreInstance {
   filestore?: string;
 }
 
-export const DeleteFilestoreInstance: Schema.Schema<DeleteFilestoreInstance> =
+export const DeleteFilestoreInstance: Schema.Codec<DeleteFilestoreInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filestore: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteFilestoreInstance" });
@@ -257,7 +257,7 @@ export interface UpdateNodeset {
   nodesets?: ReadonlyArray<string>;
 }
 
-export const UpdateNodeset: Schema.Schema<UpdateNodeset> =
+export const UpdateNodeset: Schema.Codec<UpdateNodeset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodesets: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "UpdateNodeset" });
@@ -267,14 +267,14 @@ export interface DeleteStorageBucket {
   bucket?: string;
 }
 
-export const DeleteStorageBucket: Schema.Schema<DeleteStorageBucket> =
+export const DeleteStorageBucket: Schema.Codec<DeleteStorageBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteStorageBucket" });
 
 export interface DeleteLoginNode {}
 
-export const DeleteLoginNode: Schema.Schema<DeleteLoginNode> =
+export const DeleteLoginNode: Schema.Codec<DeleteLoginNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteLoginNode",
   });
@@ -284,14 +284,14 @@ export interface DeleteLustreInstance {
   lustre?: string;
 }
 
-export const DeleteLustreInstance: Schema.Schema<DeleteLustreInstance> =
+export const DeleteLustreInstance: Schema.Codec<DeleteLustreInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lustre: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteLustreInstance" });
 
 export interface DeleteOrchestrator {}
 
-export const DeleteOrchestrator: Schema.Schema<DeleteOrchestrator> =
+export const DeleteOrchestrator: Schema.Codec<DeleteOrchestrator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteOrchestrator",
   });
@@ -301,7 +301,7 @@ export interface CreateFilestoreInstance {
   filestore?: string;
 }
 
-export const CreateFilestoreInstance: Schema.Schema<CreateFilestoreInstance> =
+export const CreateFilestoreInstance: Schema.Codec<CreateFilestoreInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filestore: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateFilestoreInstance" });
@@ -311,14 +311,14 @@ export interface DeleteNodeset {
   nodesets?: ReadonlyArray<string>;
 }
 
-export const DeleteNodeset: Schema.Schema<DeleteNodeset> =
+export const DeleteNodeset: Schema.Codec<DeleteNodeset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodesets: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DeleteNodeset" });
 
 export interface CreatePrivateServiceAccess {}
 
-export const CreatePrivateServiceAccess: Schema.Schema<CreatePrivateServiceAccess> =
+export const CreatePrivateServiceAccess: Schema.Codec<CreatePrivateServiceAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreatePrivateServiceAccess",
   });
@@ -328,7 +328,7 @@ export interface CreatePartition {
   partitions?: ReadonlyArray<string>;
 }
 
-export const CreatePartition: Schema.Schema<CreatePartition> =
+export const CreatePartition: Schema.Codec<CreatePartition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CreatePartition" });
@@ -338,7 +338,7 @@ export interface CreateNodeset {
   nodesets?: ReadonlyArray<string>;
 }
 
-export const CreateNodeset: Schema.Schema<CreateNodeset> =
+export const CreateNodeset: Schema.Codec<CreateNodeset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodesets: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CreateNodeset" });
@@ -348,28 +348,28 @@ export interface DeletePartition {
   partitions?: ReadonlyArray<string>;
 }
 
-export const DeletePartition: Schema.Schema<DeletePartition> =
+export const DeletePartition: Schema.Codec<DeletePartition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DeletePartition" });
 
 export interface UpdateOrchestrator {}
 
-export const UpdateOrchestrator: Schema.Schema<UpdateOrchestrator> =
+export const UpdateOrchestrator: Schema.Codec<UpdateOrchestrator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateOrchestrator",
   });
 
 export interface CreateLoginNode {}
 
-export const CreateLoginNode: Schema.Schema<CreateLoginNode> =
+export const CreateLoginNode: Schema.Codec<CreateLoginNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateLoginNode",
   });
 
 export interface DeletePrivateServiceAccess {}
 
-export const DeletePrivateServiceAccess: Schema.Schema<DeletePrivateServiceAccess> =
+export const DeletePrivateServiceAccess: Schema.Codec<DeletePrivateServiceAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeletePrivateServiceAccess",
   });
@@ -430,7 +430,7 @@ export interface OperationStep {
   deletePrivateServiceAccess?: DeletePrivateServiceAccess;
 }
 
-export const OperationStep: Schema.Schema<OperationStep> =
+export const OperationStep: Schema.Codec<OperationStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createStorageBucket: Schema.optional(CreateStorageBucket),
     createLustreInstance: Schema.optional(CreateLustreInstance),
@@ -463,7 +463,7 @@ export interface LustreReference {
   lustre?: string;
 }
 
-export const LustreReference: Schema.Schema<LustreReference> =
+export const LustreReference: Schema.Codec<LustreReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lustre: Schema.optional(Schema.String),
   }).annotate({ identifier: "LustreReference" });
@@ -473,7 +473,7 @@ export interface BucketReference {
   bucket?: string;
 }
 
-export const BucketReference: Schema.Schema<BucketReference> =
+export const BucketReference: Schema.Codec<BucketReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
   }).annotate({ identifier: "BucketReference" });
@@ -483,7 +483,7 @@ export interface FilestoreReference {
   filestore?: string;
 }
 
-export const FilestoreReference: Schema.Schema<FilestoreReference> =
+export const FilestoreReference: Schema.Codec<FilestoreReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filestore: Schema.optional(Schema.String),
   }).annotate({ identifier: "FilestoreReference" });
@@ -495,7 +495,7 @@ export interface FileShareConfig {
   fileShare?: string;
 }
 
-export const FileShareConfig: Schema.Schema<FileShareConfig> =
+export const FileShareConfig: Schema.Codec<FileShareConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     capacityGb: Schema.optional(Schema.String),
     fileShare: Schema.optional(Schema.String),
@@ -514,7 +514,7 @@ export interface NewFilestoreConfig {
   tier?: "TIER_UNSPECIFIED" | "ZONAL" | "REGIONAL" | (string & {});
 }
 
-export const NewFilestoreConfig: Schema.Schema<NewFilestoreConfig> =
+export const NewFilestoreConfig: Schema.Codec<NewFilestoreConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     filestore: Schema.optional(Schema.String),
@@ -536,7 +536,7 @@ export interface NewLustreConfig {
   capacityGb?: string;
 }
 
-export const NewLustreConfig: Schema.Schema<NewLustreConfig> =
+export const NewLustreConfig: Schema.Codec<NewLustreConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     lustre: Schema.optional(Schema.String),
@@ -550,7 +550,7 @@ export interface ExistingLustreConfig {
   lustre?: string;
 }
 
-export const ExistingLustreConfig: Schema.Schema<ExistingLustreConfig> =
+export const ExistingLustreConfig: Schema.Codec<ExistingLustreConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lustre: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExistingLustreConfig" });
@@ -566,7 +566,7 @@ export interface GcsAutoclassConfig {
     | (string & {});
 }
 
-export const GcsAutoclassConfig: Schema.Schema<GcsAutoclassConfig> =
+export const GcsAutoclassConfig: Schema.Codec<GcsAutoclassConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     terminalStorageClass: Schema.optional(Schema.String),
@@ -577,7 +577,7 @@ export interface GcsHierarchicalNamespaceConfig {
   enabled?: boolean;
 }
 
-export const GcsHierarchicalNamespaceConfig: Schema.Schema<GcsHierarchicalNamespaceConfig> =
+export const GcsHierarchicalNamespaceConfig: Schema.Codec<GcsHierarchicalNamespaceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GcsHierarchicalNamespaceConfig" });
@@ -599,7 +599,7 @@ export interface NewBucketConfig {
   bucket?: string;
 }
 
-export const NewBucketConfig: Schema.Schema<NewBucketConfig> =
+export const NewBucketConfig: Schema.Codec<NewBucketConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoclass: Schema.optional(GcsAutoclassConfig),
     hierarchicalNamespace: Schema.optional(GcsHierarchicalNamespaceConfig),
@@ -612,7 +612,7 @@ export interface ExistingFilestoreConfig {
   filestore?: string;
 }
 
-export const ExistingFilestoreConfig: Schema.Schema<ExistingFilestoreConfig> =
+export const ExistingFilestoreConfig: Schema.Codec<ExistingFilestoreConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filestore: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExistingFilestoreConfig" });
@@ -622,7 +622,7 @@ export interface ExistingBucketConfig {
   bucket?: string;
 }
 
-export const ExistingBucketConfig: Schema.Schema<ExistingBucketConfig> =
+export const ExistingBucketConfig: Schema.Codec<ExistingBucketConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExistingBucketConfig" });
@@ -642,7 +642,7 @@ export interface StorageResourceConfig {
   existingBucket?: ExistingBucketConfig;
 }
 
-export const StorageResourceConfig: Schema.Schema<StorageResourceConfig> =
+export const StorageResourceConfig: Schema.Codec<StorageResourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newFilestore: Schema.optional(NewFilestoreConfig),
     newLustre: Schema.optional(NewLustreConfig),
@@ -663,7 +663,7 @@ export interface StorageResource {
   config?: StorageResourceConfig;
 }
 
-export const StorageResource: Schema.Schema<StorageResource> =
+export const StorageResource: Schema.Codec<StorageResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lustre: Schema.optional(LustreReference),
     bucket: Schema.optional(BucketReference),
@@ -676,7 +676,7 @@ export interface NewReservedInstancesConfig {
   reservation?: string;
 }
 
-export const NewReservedInstancesConfig: Schema.Schema<NewReservedInstancesConfig> =
+export const NewReservedInstancesConfig: Schema.Codec<NewReservedInstancesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservation: Schema.optional(Schema.String),
   }).annotate({ identifier: "NewReservedInstancesConfig" });
@@ -690,7 +690,7 @@ export interface NewFlexStartInstancesConfig {
   machineType?: string;
 }
 
-export const NewFlexStartInstancesConfig: Schema.Schema<NewFlexStartInstancesConfig> =
+export const NewFlexStartInstancesConfig: Schema.Codec<NewFlexStartInstancesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDuration: Schema.optional(Schema.String),
     zone: Schema.optional(Schema.String),
@@ -710,7 +710,7 @@ export interface NewSpotInstancesConfig {
   machineType?: string;
 }
 
-export const NewSpotInstancesConfig: Schema.Schema<NewSpotInstancesConfig> =
+export const NewSpotInstancesConfig: Schema.Codec<NewSpotInstancesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.String),
     terminationAction: Schema.optional(Schema.String),
@@ -728,7 +728,7 @@ export interface ComputeResourceConfig {
   newSpotInstances?: NewSpotInstancesConfig;
 }
 
-export const ComputeResourceConfig: Schema.Schema<ComputeResourceConfig> =
+export const ComputeResourceConfig: Schema.Codec<ComputeResourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newOnDemandInstances: Schema.optional(NewOnDemandInstancesConfig),
     newReservedInstances: Schema.optional(NewReservedInstancesConfig),
@@ -741,7 +741,7 @@ export interface ComputeResource {
   config?: ComputeResourceConfig;
 }
 
-export const ComputeResource: Schema.Schema<ComputeResource> =
+export const ComputeResource: Schema.Codec<ComputeResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(ComputeResourceConfig),
   }).annotate({ identifier: "ComputeResource" });
@@ -753,7 +753,7 @@ export interface SlurmPartition {
   nodeSetIds?: ReadonlyArray<string>;
 }
 
-export const SlurmPartition: Schema.Schema<SlurmPartition> =
+export const SlurmPartition: Schema.Codec<SlurmPartition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     nodeSetIds: Schema.optional(Schema.Array(Schema.String)),
@@ -766,7 +766,7 @@ export interface StorageConfig {
   localMount?: string;
 }
 
-export const StorageConfig: Schema.Schema<StorageConfig> =
+export const StorageConfig: Schema.Codec<StorageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     localMount: Schema.optional(Schema.String),
@@ -787,7 +787,7 @@ export interface SlurmNodeSet {
   computeInstance?: ComputeInstanceSlurmNodeSet;
 }
 
-export const SlurmNodeSet: Schema.Schema<SlurmNodeSet> =
+export const SlurmNodeSet: Schema.Codec<SlurmNodeSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDynamicNodeCount: Schema.optional(Schema.String),
     computeId: Schema.optional(Schema.String),
@@ -802,7 +802,7 @@ export interface ComputeInstance {
   instance?: string;
 }
 
-export const ComputeInstance: Schema.Schema<ComputeInstance> =
+export const ComputeInstance: Schema.Codec<ComputeInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComputeInstance" });
@@ -830,7 +830,7 @@ export interface SlurmLoginNodes {
   instances?: ReadonlyArray<ComputeInstance>;
 }
 
-export const SlurmLoginNodes: Schema.Schema<SlurmLoginNodes> =
+export const SlurmLoginNodes: Schema.Codec<SlurmLoginNodes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     storageConfigs: Schema.optional(Schema.Array(StorageConfig)),
@@ -859,7 +859,7 @@ export interface SlurmOrchestrator {
   loginNodes?: SlurmLoginNodes;
 }
 
-export const SlurmOrchestrator: Schema.Schema<SlurmOrchestrator> =
+export const SlurmOrchestrator: Schema.Codec<SlurmOrchestrator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     epilogBashScripts: Schema.optional(Schema.Array(Schema.String)),
     defaultPartition: Schema.optional(Schema.String),
@@ -874,7 +874,7 @@ export interface Orchestrator {
   slurm?: SlurmOrchestrator;
 }
 
-export const Orchestrator: Schema.Schema<Orchestrator> =
+export const Orchestrator: Schema.Codec<Orchestrator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slurm: Schema.optional(SlurmOrchestrator),
   }).annotate({ identifier: "Orchestrator" });
@@ -902,7 +902,7 @@ export interface Cluster {
   orchestrator?: Orchestrator;
 }
 
-export const Cluster: Schema.Schema<Cluster> =
+export const Cluster: Schema.Codec<Cluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkResources: Schema.optional(
       Schema.Record(Schema.String, NetworkResource),
@@ -931,7 +931,7 @@ export interface ListClustersResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
+export const ListClustersResponse: Schema.Codec<ListClustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusters: Schema.optional(Schema.Array(Cluster)),
     nextPageToken: Schema.optional(Schema.String),
@@ -943,7 +943,7 @@ export interface OperationProgress {
   steps?: ReadonlyArray<OperationStep>;
 }
 
-export const OperationProgress: Schema.Schema<OperationProgress> =
+export const OperationProgress: Schema.Codec<OperationProgress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     steps: Schema.optional(Schema.Array(OperationStep)),
   }).annotate({ identifier: "OperationProgress" });
@@ -965,7 +965,7 @@ export interface OperationMetadata {
   verb?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -978,7 +978,7 @@ export const OperationMetadata: Schema.Schema<OperationMetadata> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -992,7 +992,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1014,7 +1014,7 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1032,7 +1032,7 @@ export interface ListOperationsResponse {
   operations?: ReadonlyArray<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1104,7 +1104,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1149,7 +1149,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1184,7 +1184,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1218,7 +1218,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -1257,7 +1257,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -1307,7 +1307,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -1354,7 +1354,7 @@ export const CreateProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/clusters", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsClustersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsClustersRequest>;
 
 export type CreateProjectsLocationsClustersResponse = Operation;
 export const CreateProjectsLocationsClustersResponse =
@@ -1399,7 +1399,7 @@ export const PatchProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsClustersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsClustersRequest>;
 
 export type PatchProjectsLocationsClustersResponse = Operation;
 export const PatchProjectsLocationsClustersResponse =
@@ -1438,7 +1438,7 @@ export const DeleteProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsClustersRequest>;
 
 export type DeleteProjectsLocationsClustersResponse = Operation;
 export const DeleteProjectsLocationsClustersResponse =
@@ -1486,7 +1486,7 @@ export const ListProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/clusters" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsClustersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsClustersRequest>;
 
 export type ListProjectsLocationsClustersResponse = ListClustersResponse;
 export const ListProjectsLocationsClustersResponse =
@@ -1524,7 +1524,7 @@ export const GetProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsClustersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsClustersRequest>;
 
 export type GetProjectsLocationsClustersResponse = Cluster;
 export const GetProjectsLocationsClustersResponse =

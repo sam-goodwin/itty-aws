@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetDatabaseUsageInput {
+  organizationSlug: string;
+  databaseName: string;
+  from?: string;
+  to?: string;
+}
 export const GetDatabaseUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,29 @@ export const GetDatabaseUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/usage",
   }),
-);
-export type GetDatabaseUsageInput = typeof GetDatabaseUsageInput.Type;
+) as unknown as Schema.Codec<GetDatabaseUsageInput>;
 
 // Output Schema
+export interface GetDatabaseUsageOutput {
+  database?: {
+    uuid?: string;
+    instances?: {
+      uuid?: string;
+      usage?: {
+        rows_read?: number;
+        rows_written?: number;
+        storage_bytes?: number;
+        bytes_synced?: number;
+      };
+    }[];
+    total?: {
+      rows_read?: number;
+      rows_written?: number;
+      storage_bytes?: number;
+      bytes_synced?: number;
+    };
+  };
+}
 export const GetDatabaseUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     database: Schema.optional(
@@ -49,8 +74,7 @@ export const GetDatabaseUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type GetDatabaseUsageOutput = typeof GetDatabaseUsageOutput.Type;
+) as unknown as Schema.Codec<GetDatabaseUsageOutput>;
 
 // The operation
 /**

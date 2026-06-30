@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightsBulkUpdateTagsCreateInput {
+  project_id: string;
+  format?: "csv" | "json";
+  ids?: number[];
+  action?: "add" | "remove" | "set";
+  tags?: string[];
+}
 export const InsightsBulkUpdateTagsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,13 @@ export const InsightsBulkUpdateTagsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/insights/bulk_update_tags/",
     }),
-  );
-export type InsightsBulkUpdateTagsCreateInput =
-  typeof InsightsBulkUpdateTagsCreateInput.Type;
+  ) as unknown as Schema.Codec<InsightsBulkUpdateTagsCreateInput>;
 
 // Output Schema
+export interface InsightsBulkUpdateTagsCreateOutput {
+  updated?: { id?: number; tags?: string[] }[];
+  skipped?: { id?: number; reason?: string }[];
+}
 export const InsightsBulkUpdateTagsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updated: Schema.optional(
@@ -39,9 +48,7 @@ export const InsightsBulkUpdateTagsCreateOutput =
         }),
       ),
     ),
-  });
-export type InsightsBulkUpdateTagsCreateOutput =
-  typeof InsightsBulkUpdateTagsCreateOutput.Type;
+  }) as unknown as Schema.Codec<InsightsBulkUpdateTagsCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomerProfileConfigsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const CustomerProfileConfigsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,17 @@ export const CustomerProfileConfigsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/customer_profile_configs/{id}/",
     }),
-  );
-export type CustomerProfileConfigsRetrieveInput =
-  typeof CustomerProfileConfigsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<CustomerProfileConfigsRetrieveInput>;
 
 // Output Schema
+export interface CustomerProfileConfigsRetrieveOutput {
+  id?: string;
+  scope?: "person" | "group_0" | "group_1" | "group_2" | "group_3" | "group_4";
+  content?: unknown;
+  sidebar?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const CustomerProfileConfigsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -34,9 +44,7 @@ export const CustomerProfileConfigsRetrieveOutput =
     sidebar: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type CustomerProfileConfigsRetrieveOutput =
-  typeof CustomerProfileConfigsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<CustomerProfileConfigsRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ToggleGroupAwsCustomDnsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ToggleGroupAwsCustomDnsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const ToggleGroupAwsCustomDnsInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/awsCustomDNS",
     }),
-  );
-export type ToggleGroupAwsCustomDnsInput =
-  typeof ToggleGroupAwsCustomDnsInput.Type;
+  ) as unknown as Schema.Codec<ToggleGroupAwsCustomDnsInput>;
 
 // Output Schema
+export type ToggleGroupAwsCustomDnsOutput = void;
 export const ToggleGroupAwsCustomDnsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ToggleGroupAwsCustomDnsOutput =
-  typeof ToggleGroupAwsCustomDnsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupAwsCustomDnsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DataColorThemesDestroyInput {
+  id: number;
+  project_id: string;
+}
 export const DataColorThemesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const DataColorThemesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/data_color_themes/{id}/",
     }),
-  );
-export type DataColorThemesDestroyInput =
-  typeof DataColorThemesDestroyInput.Type;
+  ) as unknown as Schema.Codec<DataColorThemesDestroyInput>;
 
 // Output Schema
+export type DataColorThemesDestroyOutput = void;
 export const DataColorThemesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataColorThemesDestroyOutput =
-  typeof DataColorThemesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataColorThemesDestroyOutput>;
 
 // The operation
 /**

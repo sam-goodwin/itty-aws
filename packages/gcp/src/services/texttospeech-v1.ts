@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata {
   progressPercentage?: number;
 }
 
-export const GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata: Schema.Schema<GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata> =
+export const GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata: Schema.Codec<GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface Voice {
   naturalSampleRateHertz?: number;
 }
 
-export const Voice: Schema.Schema<Voice> =
+export const Voice: Schema.Codec<Voice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ssmlGender: Schema.optional(Schema.String),
     languageCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -69,7 +69,7 @@ export interface ListVoicesResponse {
   voices?: ReadonlyArray<Voice>;
 }
 
-export const ListVoicesResponse: Schema.Schema<ListVoicesResponse> =
+export const ListVoicesResponse: Schema.Codec<ListVoicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     voices: Schema.optional(Schema.Array(Voice)),
   }).annotate({ identifier: "ListVoicesResponse" });
@@ -81,7 +81,7 @@ export interface Turn {
   speaker?: string;
 }
 
-export const Turn: Schema.Schema<Turn> =
+export const Turn: Schema.Codec<Turn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     speaker: Schema.optional(Schema.String),
@@ -92,7 +92,7 @@ export interface MultiSpeakerMarkup {
   turns?: ReadonlyArray<Turn>;
 }
 
-export const MultiSpeakerMarkup: Schema.Schema<MultiSpeakerMarkup> =
+export const MultiSpeakerMarkup: Schema.Codec<MultiSpeakerMarkup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     turns: Schema.optional(Schema.Array(Turn)),
   }).annotate({ identifier: "MultiSpeakerMarkup" });
@@ -112,7 +112,7 @@ export interface CustomPronunciationParams {
   pronunciation?: string;
 }
 
-export const CustomPronunciationParams: Schema.Schema<CustomPronunciationParams> =
+export const CustomPronunciationParams: Schema.Codec<CustomPronunciationParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneticEncoding: Schema.optional(Schema.String),
     phrase: Schema.optional(Schema.String),
@@ -124,7 +124,7 @@ export interface CustomPronunciations {
   pronunciations?: ReadonlyArray<CustomPronunciationParams>;
 }
 
-export const CustomPronunciations: Schema.Schema<CustomPronunciations> =
+export const CustomPronunciations: Schema.Codec<CustomPronunciations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pronunciations: Schema.optional(Schema.Array(CustomPronunciationParams)),
   }).annotate({ identifier: "CustomPronunciations" });
@@ -144,7 +144,7 @@ export interface SynthesisInput {
   markup?: string;
 }
 
-export const SynthesisInput: Schema.Schema<SynthesisInput> =
+export const SynthesisInput: Schema.Codec<SynthesisInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     multiSpeakerMarkup: Schema.optional(MultiSpeakerMarkup),
     prompt: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface AudioConfig {
   effectsProfileId?: ReadonlyArray<string>;
 }
 
-export const AudioConfig: Schema.Schema<AudioConfig> =
+export const AudioConfig: Schema.Codec<AudioConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pitch: Schema.optional(Schema.Number),
     speakingRate: Schema.optional(Schema.Number),
@@ -193,7 +193,7 @@ export interface VoiceCloneParams {
   voiceCloningKey?: string;
 }
 
-export const VoiceCloneParams: Schema.Schema<VoiceCloneParams> =
+export const VoiceCloneParams: Schema.Codec<VoiceCloneParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     voiceCloningKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "VoiceCloneParams" });
@@ -205,7 +205,7 @@ export interface MultispeakerPrebuiltVoice {
   speakerId?: string;
 }
 
-export const MultispeakerPrebuiltVoice: Schema.Schema<MultispeakerPrebuiltVoice> =
+export const MultispeakerPrebuiltVoice: Schema.Codec<MultispeakerPrebuiltVoice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speakerAlias: Schema.optional(Schema.String),
     speakerId: Schema.optional(Schema.String),
@@ -216,7 +216,7 @@ export interface MultiSpeakerVoiceConfig {
   speakerVoiceConfigs?: ReadonlyArray<MultispeakerPrebuiltVoice>;
 }
 
-export const MultiSpeakerVoiceConfig: Schema.Schema<MultiSpeakerVoiceConfig> =
+export const MultiSpeakerVoiceConfig: Schema.Codec<MultiSpeakerVoiceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speakerVoiceConfigs: Schema.optional(
       Schema.Array(MultispeakerPrebuiltVoice),
@@ -234,7 +234,7 @@ export interface CustomVoiceParams {
   model?: string;
 }
 
-export const CustomVoiceParams: Schema.Schema<CustomVoiceParams> =
+export const CustomVoiceParams: Schema.Codec<CustomVoiceParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportedUsage: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
@@ -262,7 +262,7 @@ export interface VoiceSelectionParams {
   customVoice?: CustomVoiceParams;
 }
 
-export const VoiceSelectionParams: Schema.Schema<VoiceSelectionParams> =
+export const VoiceSelectionParams: Schema.Codec<VoiceSelectionParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ssmlGender: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export interface SynthesizeLongAudioRequest {
   voice?: VoiceSelectionParams;
 }
 
-export const SynthesizeLongAudioRequest: Schema.Schema<SynthesizeLongAudioRequest> =
+export const SynthesizeLongAudioRequest: Schema.Codec<SynthesizeLongAudioRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(SynthesisInput),
     audioConfig: Schema.optional(AudioConfig),
@@ -297,7 +297,7 @@ export interface SynthesizeSpeechResponse {
   audioContent?: string;
 }
 
-export const SynthesizeSpeechResponse: Schema.Schema<SynthesizeSpeechResponse> =
+export const SynthesizeSpeechResponse: Schema.Codec<SynthesizeSpeechResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioContent: Schema.optional(Schema.String),
   }).annotate({ identifier: "SynthesizeSpeechResponse" });
@@ -322,7 +322,7 @@ export interface SafetySetting {
     | (string & {});
 }
 
-export const SafetySetting: Schema.Schema<SafetySetting> =
+export const SafetySetting: Schema.Codec<SafetySetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     threshold: Schema.optional(Schema.String),
@@ -337,7 +337,7 @@ export interface SynthesizeLongAudioMetadata {
   startTime?: string;
 }
 
-export const SynthesizeLongAudioMetadata: Schema.Schema<SynthesizeLongAudioMetadata> =
+export const SynthesizeLongAudioMetadata: Schema.Codec<SynthesizeLongAudioMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     progressPercentage: Schema.optional(Schema.Number),
@@ -349,7 +349,7 @@ export interface SafetySettings {
   settings?: ReadonlyArray<SafetySetting>;
 }
 
-export const SafetySettings: Schema.Schema<SafetySettings> =
+export const SafetySettings: Schema.Codec<SafetySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     settings: Schema.optional(Schema.Array(SafetySetting)),
   }).annotate({ identifier: "SafetySettings" });
@@ -365,7 +365,7 @@ export interface AdvancedVoiceOptions {
   enableTextnorm?: boolean;
 }
 
-export const AdvancedVoiceOptions: Schema.Schema<AdvancedVoiceOptions> =
+export const AdvancedVoiceOptions: Schema.Codec<AdvancedVoiceOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relaxSafetyFilters: Schema.optional(Schema.Boolean),
     safetySettings: Schema.optional(SafetySettings),
@@ -382,7 +382,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -404,7 +404,7 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -422,7 +422,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -431,7 +431,7 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -447,7 +447,7 @@ export interface SynthesizeSpeechRequest {
   advancedVoiceOptions?: AdvancedVoiceOptions;
 }
 
-export const SynthesizeSpeechRequest: Schema.Schema<SynthesizeSpeechRequest> =
+export const SynthesizeSpeechRequest: Schema.Codec<SynthesizeSpeechRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(SynthesisInput),
     voice: Schema.optional(VoiceSelectionParams),
@@ -457,7 +457,7 @@ export const SynthesizeSpeechRequest: Schema.Schema<SynthesizeSpeechRequest> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -528,7 +528,7 @@ export const ListVoicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/voices" }),
   svc,
-) as unknown as Schema.Schema<ListVoicesRequest>;
+) as unknown as Schema.Codec<ListVoicesRequest>;
 
 export type ListVoicesResponse_Op = ListVoicesResponse;
 export const ListVoicesResponse_Op =
@@ -566,7 +566,7 @@ export const SynthesizeLongAudioProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SynthesizeLongAudioProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SynthesizeLongAudioProjectsLocationsRequest>;
 
 export type SynthesizeLongAudioProjectsLocationsResponse = Operation;
 export const SynthesizeLongAudioProjectsLocationsResponse =
@@ -616,7 +616,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -654,7 +654,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -688,7 +688,7 @@ export const DeleteOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -726,7 +726,7 @@ export const CancelOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -760,7 +760,7 @@ export const SynthesizeTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/text:synthesize", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SynthesizeTextRequest>;
+) as unknown as Schema.Codec<SynthesizeTextRequest>;
 
 export type SynthesizeTextResponse = SynthesizeSpeechResponse;
 export const SynthesizeTextResponse =

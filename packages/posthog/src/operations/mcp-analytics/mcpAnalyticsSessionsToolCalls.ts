@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpAnalyticsSessionsToolCallsInput {
+  id: string;
+  project_id: string;
+  date_from?: string;
+  limit?: number;
+  offset?: number;
+}
 export const McpAnalyticsSessionsToolCallsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,21 @@ export const McpAnalyticsSessionsToolCallsInput =
       method: "GET",
       path: "/api/projects/{project_id}/mcp_analytics/sessions/{id}/tool_calls/",
     }),
-  );
-export type McpAnalyticsSessionsToolCallsInput =
-  typeof McpAnalyticsSessionsToolCallsInput.Type;
+  ) as unknown as Schema.Codec<McpAnalyticsSessionsToolCallsInput>;
 
 // Output Schema
+export interface McpAnalyticsSessionsToolCallsOutput {
+  results: {
+    event_id: string;
+    timestamp: string;
+    tool_name: string;
+    intent: string;
+    is_error: boolean;
+    error_message: string;
+    duration_ms: number | null;
+  }[];
+  has_next: boolean;
+}
 export const McpAnalyticsSessionsToolCallsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -34,9 +51,7 @@ export const McpAnalyticsSessionsToolCallsOutput =
       }),
     ),
     has_next: Schema.Boolean,
-  });
-export type McpAnalyticsSessionsToolCallsOutput =
-  typeof McpAnalyticsSessionsToolCallsOutput.Type;
+  }) as unknown as Schema.Codec<McpAnalyticsSessionsToolCallsOutput>;
 
 // The operation
 /**

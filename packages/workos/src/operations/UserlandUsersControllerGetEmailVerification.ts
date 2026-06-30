@@ -4,16 +4,27 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerGetEmailVerificationInput {
+  id: string;
+}
 export const UserlandUsersControllerGetEmailVerificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/email_verification/{id}" }),
-  );
-export type UserlandUsersControllerGetEmailVerificationInput =
-  typeof UserlandUsersControllerGetEmailVerificationInput.Type;
+  ) as unknown as Schema.Codec<UserlandUsersControllerGetEmailVerificationInput>;
 
 // Output Schema
+export interface UserlandUsersControllerGetEmailVerificationOutput {
+  object?: string;
+  id?: string;
+  user_id?: string;
+  email?: string;
+  expires_at?: string;
+  created_at?: string;
+  updated_at?: string;
+  code?: string;
+}
 export const UserlandUsersControllerGetEmailVerificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -24,9 +35,7 @@ export const UserlandUsersControllerGetEmailVerificationOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
-  });
-export type UserlandUsersControllerGetEmailVerificationOutput =
-  typeof UserlandUsersControllerGetEmailVerificationOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerGetEmailVerificationOutput>;
 
 // The operation
 /**

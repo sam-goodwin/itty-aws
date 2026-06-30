@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface PolicyControllerTemplateLibraryConfig {
     | (string & {});
 }
 
-export const PolicyControllerTemplateLibraryConfig: Schema.Schema<PolicyControllerTemplateLibraryConfig> =
+export const PolicyControllerTemplateLibraryConfig: Schema.Codec<PolicyControllerTemplateLibraryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installation: Schema.optional(Schema.String),
   }).annotate({ identifier: "PolicyControllerTemplateLibraryConfig" });
@@ -43,7 +43,7 @@ export interface ServiceMeshType {
   code?: string;
 }
 
-export const ServiceMeshType: Schema.Schema<ServiceMeshType> =
+export const ServiceMeshType: Schema.Codec<ServiceMeshType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface ServiceMeshAnalysisMessageBase {
   type?: ServiceMeshType;
 }
 
-export const ServiceMeshAnalysisMessageBase: Schema.Schema<ServiceMeshAnalysisMessageBase> =
+export const ServiceMeshAnalysisMessageBase: Schema.Codec<ServiceMeshAnalysisMessageBase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     level: Schema.optional(Schema.String),
     documentationUrl: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export interface ServiceMeshAnalysisMessage {
   args?: Record<string, unknown>;
 }
 
-export const ServiceMeshAnalysisMessage: Schema.Schema<ServiceMeshAnalysisMessage> =
+export const ServiceMeshAnalysisMessage: Schema.Codec<ServiceMeshAnalysisMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePaths: Schema.optional(Schema.Array(Schema.String)),
     messageBase: Schema.optional(ServiceMeshAnalysisMessageBase),
@@ -93,7 +93,7 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -115,7 +115,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(GoogleRpcStatus),
@@ -133,7 +133,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -150,7 +150,7 @@ export interface ConfigManagementPolicyControllerMonitoring {
   >;
 }
 
-export const ConfigManagementPolicyControllerMonitoring: Schema.Schema<ConfigManagementPolicyControllerMonitoring> =
+export const ConfigManagementPolicyControllerMonitoring: Schema.Codec<ConfigManagementPolicyControllerMonitoring> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backends: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ConfigManagementPolicyControllerMonitoring" });
@@ -176,7 +176,7 @@ export interface ConfigManagementPolicyController {
   monitoring?: ConfigManagementPolicyControllerMonitoring;
 }
 
-export const ConfigManagementPolicyController: Schema.Schema<ConfigManagementPolicyController> =
+export const ConfigManagementPolicyController: Schema.Codec<ConfigManagementPolicyController> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logDeniesEnabled: Schema.optional(Schema.Boolean),
     mutationEnabled: Schema.optional(Schema.Boolean),
@@ -194,7 +194,7 @@ export interface ConfigManagementConfigSyncError {
   errorMessage?: string;
 }
 
-export const ConfigManagementConfigSyncError: Schema.Schema<ConfigManagementConfigSyncError> =
+export const ConfigManagementConfigSyncError: Schema.Codec<ConfigManagementConfigSyncError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigManagementConfigSyncError" });
@@ -206,7 +206,7 @@ export interface MeteringState {
   preciseLastMeasuredClusterVcpuCapacity?: number;
 }
 
-export const MeteringState: Schema.Schema<MeteringState> =
+export const MeteringState: Schema.Codec<MeteringState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastMeasurementTime: Schema.optional(Schema.String),
     preciseLastMeasuredClusterVcpuCapacity: Schema.optional(Schema.Number),
@@ -214,7 +214,7 @@ export const MeteringState: Schema.Schema<MeteringState> =
 
 export interface RBACRoleBindingActuationSpec {}
 
-export const RBACRoleBindingActuationSpec: Schema.Schema<RBACRoleBindingActuationSpec> =
+export const RBACRoleBindingActuationSpec: Schema.Codec<RBACRoleBindingActuationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RBACRoleBindingActuationSpec",
   });
@@ -226,7 +226,7 @@ export interface ServiceMeshStatusDetails {
   details?: string;
 }
 
-export const ServiceMeshStatusDetails: Schema.Schema<ServiceMeshStatusDetails> =
+export const ServiceMeshStatusDetails: Schema.Codec<ServiceMeshStatusDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     details: Schema.optional(Schema.String),
@@ -256,7 +256,7 @@ export interface ServiceMeshControlPlaneManagement {
   details?: ReadonlyArray<ServiceMeshStatusDetails>;
 }
 
-export const ServiceMeshControlPlaneManagement: Schema.Schema<ServiceMeshControlPlaneManagement> =
+export const ServiceMeshControlPlaneManagement: Schema.Codec<ServiceMeshControlPlaneManagement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     implementation: Schema.optional(Schema.String),
@@ -280,7 +280,7 @@ export interface ServiceMeshDataPlaneManagement {
     | (string & {});
 }
 
-export const ServiceMeshDataPlaneManagement: Schema.Schema<ServiceMeshDataPlaneManagement> =
+export const ServiceMeshDataPlaneManagement: Schema.Codec<ServiceMeshDataPlaneManagement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Array(ServiceMeshStatusDetails)),
     state: Schema.optional(Schema.String),
@@ -367,7 +367,7 @@ export interface ServiceMeshCondition {
     | (string & {});
 }
 
-export const ServiceMeshCondition: Schema.Schema<ServiceMeshCondition> =
+export const ServiceMeshCondition: Schema.Codec<ServiceMeshCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.String),
     documentationLink: Schema.optional(Schema.String),
@@ -388,7 +388,7 @@ export interface ServiceMeshState {
   conditions?: ReadonlyArray<ServiceMeshCondition>;
 }
 
-export const ServiceMeshState: Schema.Schema<ServiceMeshState> =
+export const ServiceMeshState: Schema.Codec<ServiceMeshState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     controlPlaneManagement: Schema.optional(ServiceMeshControlPlaneManagement),
     configApiVersion: Schema.optional(Schema.String),
@@ -406,7 +406,7 @@ export interface ConfigManagementHierarchyControllerConfig {
   enableHierarchicalResourceQuota?: boolean;
 }
 
-export const ConfigManagementHierarchyControllerConfig: Schema.Schema<ConfigManagementHierarchyControllerConfig> =
+export const ConfigManagementHierarchyControllerConfig: Schema.Codec<ConfigManagementHierarchyControllerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enablePodTreeLabels: Schema.optional(Schema.Boolean),
     enabled: Schema.optional(Schema.Boolean),
@@ -415,7 +415,7 @@ export const ConfigManagementHierarchyControllerConfig: Schema.Schema<ConfigMana
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -431,7 +431,7 @@ export interface CloudBuildSpec {
     | (string & {});
 }
 
-export const CloudBuildSpec: Schema.Schema<CloudBuildSpec> =
+export const CloudBuildSpec: Schema.Codec<CloudBuildSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     securityPolicy: Schema.optional(Schema.String),
@@ -447,7 +447,7 @@ export interface Origin {
     | (string & {});
 }
 
-export const Origin: Schema.Schema<Origin> =
+export const Origin: Schema.Codec<Origin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "Origin" });
@@ -465,7 +465,7 @@ export interface RBACRoleBindingActuationRBACRoleBindingState {
   updateTime?: string;
 }
 
-export const RBACRoleBindingActuationRBACRoleBindingState: Schema.Schema<RBACRoleBindingActuationRBACRoleBindingState> =
+export const RBACRoleBindingActuationRBACRoleBindingState: Schema.Codec<RBACRoleBindingActuationRBACRoleBindingState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -481,7 +481,7 @@ export interface IdentityServiceSimpleBindCredentials {
   dn?: string;
 }
 
-export const IdentityServiceSimpleBindCredentials: Schema.Schema<IdentityServiceSimpleBindCredentials> =
+export const IdentityServiceSimpleBindCredentials: Schema.Codec<IdentityServiceSimpleBindCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password: Schema.optional(Schema.String),
     encryptedPassword: Schema.optional(Schema.String),
@@ -493,7 +493,7 @@ export interface IdentityServiceServiceAccountConfig {
   simpleBindCredentials?: IdentityServiceSimpleBindCredentials;
 }
 
-export const IdentityServiceServiceAccountConfig: Schema.Schema<IdentityServiceServiceAccountConfig> =
+export const IdentityServiceServiceAccountConfig: Schema.Codec<IdentityServiceServiceAccountConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     simpleBindCredentials: Schema.optional(
       IdentityServiceSimpleBindCredentials,
@@ -575,7 +575,7 @@ export interface ConfigManagementConfigSyncDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementConfigSyncDeploymentState: Schema.Schema<ConfigManagementConfigSyncDeploymentState> =
+export const ConfigManagementConfigSyncDeploymentState: Schema.Codec<ConfigManagementConfigSyncDeploymentState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gitSync: Schema.optional(Schema.String),
     monitor: Schema.optional(Schema.String),
@@ -601,7 +601,7 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -615,7 +615,7 @@ export interface PolicyControllerBundleInstallSpec {
   exemptedNamespaces?: ReadonlyArray<string>;
 }
 
-export const PolicyControllerBundleInstallSpec: Schema.Schema<PolicyControllerBundleInstallSpec> =
+export const PolicyControllerBundleInstallSpec: Schema.Codec<PolicyControllerBundleInstallSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedNamespaces: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PolicyControllerBundleInstallSpec" });
@@ -639,7 +639,7 @@ export interface IdentityServiceSamlConfig {
   attributeMapping?: Record<string, string>;
 }
 
-export const IdentityServiceSamlConfig: Schema.Schema<IdentityServiceSamlConfig> =
+export const IdentityServiceSamlConfig: Schema.Codec<IdentityServiceSamlConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPrefix: Schema.optional(Schema.String),
     identityProviderId: Schema.optional(Schema.String),
@@ -684,7 +684,7 @@ export interface IdentityServiceOidcConfig {
   scopes?: string;
 }
 
-export const IdentityServiceOidcConfig: Schema.Schema<IdentityServiceOidcConfig> =
+export const IdentityServiceOidcConfig: Schema.Codec<IdentityServiceOidcConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPrefix: Schema.optional(Schema.String),
     issuerUri: Schema.optional(Schema.String),
@@ -713,7 +713,7 @@ export interface IdentityServiceUserConfig {
   filter?: string;
 }
 
-export const IdentityServiceUserConfig: Schema.Schema<IdentityServiceUserConfig> =
+export const IdentityServiceUserConfig: Schema.Codec<IdentityServiceUserConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     idAttribute: Schema.optional(Schema.String),
     loginAttribute: Schema.optional(Schema.String),
@@ -730,7 +730,7 @@ export interface IdentityServiceGroupConfig {
   filter?: string;
 }
 
-export const IdentityServiceGroupConfig: Schema.Schema<IdentityServiceGroupConfig> =
+export const IdentityServiceGroupConfig: Schema.Codec<IdentityServiceGroupConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     idAttribute: Schema.optional(Schema.String),
     baseDn: Schema.optional(Schema.String),
@@ -746,7 +746,7 @@ export interface IdentityServiceServerConfig {
   certificateAuthorityData?: string;
 }
 
-export const IdentityServiceServerConfig: Schema.Schema<IdentityServiceServerConfig> =
+export const IdentityServiceServerConfig: Schema.Codec<IdentityServiceServerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     connectionType: Schema.optional(Schema.String),
@@ -764,7 +764,7 @@ export interface IdentityServiceLdapConfig {
   serviceAccount?: IdentityServiceServiceAccountConfig;
 }
 
-export const IdentityServiceLdapConfig: Schema.Schema<IdentityServiceLdapConfig> =
+export const IdentityServiceLdapConfig: Schema.Codec<IdentityServiceLdapConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(IdentityServiceUserConfig),
     group: Schema.optional(IdentityServiceGroupConfig),
@@ -789,7 +789,7 @@ export interface IdentityServiceAzureADConfig {
   kubectlRedirectUri?: string;
 }
 
-export const IdentityServiceAzureADConfig: Schema.Schema<IdentityServiceAzureADConfig> =
+export const IdentityServiceAzureADConfig: Schema.Codec<IdentityServiceAzureADConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptedClientSecret: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -805,7 +805,7 @@ export interface IdentityServiceGoogleConfig {
   disable?: boolean;
 }
 
-export const IdentityServiceGoogleConfig: Schema.Schema<IdentityServiceGoogleConfig> =
+export const IdentityServiceGoogleConfig: Schema.Codec<IdentityServiceGoogleConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disable: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "IdentityServiceGoogleConfig" });
@@ -827,7 +827,7 @@ export interface IdentityServiceAuthMethod {
   googleConfig?: IdentityServiceGoogleConfig;
 }
 
-export const IdentityServiceAuthMethod: Schema.Schema<IdentityServiceAuthMethod> =
+export const IdentityServiceAuthMethod: Schema.Codec<IdentityServiceAuthMethod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     samlConfig: Schema.optional(IdentityServiceSamlConfig),
     name: Schema.optional(Schema.String),
@@ -845,7 +845,7 @@ export interface IdentityServiceDiagnosticInterface {
   expirationTime?: string;
 }
 
-export const IdentityServiceDiagnosticInterface: Schema.Schema<IdentityServiceDiagnosticInterface> =
+export const IdentityServiceDiagnosticInterface: Schema.Codec<IdentityServiceDiagnosticInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     expirationTime: Schema.optional(Schema.String),
@@ -858,7 +858,7 @@ export interface IdentityServiceIdentityServiceOptions {
   diagnosticInterface?: IdentityServiceDiagnosticInterface;
 }
 
-export const IdentityServiceIdentityServiceOptions: Schema.Schema<IdentityServiceIdentityServiceOptions> =
+export const IdentityServiceIdentityServiceOptions: Schema.Codec<IdentityServiceIdentityServiceOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionDuration: Schema.optional(Schema.String),
     diagnosticInterface: Schema.optional(IdentityServiceDiagnosticInterface),
@@ -871,7 +871,7 @@ export interface IdentityServiceSpec {
   identityServiceOptions?: IdentityServiceIdentityServiceOptions;
 }
 
-export const IdentityServiceSpec: Schema.Schema<IdentityServiceSpec> =
+export const IdentityServiceSpec: Schema.Codec<IdentityServiceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authMethods: Schema.optional(Schema.Array(IdentityServiceAuthMethod)),
     identityServiceOptions: Schema.optional(
@@ -886,7 +886,7 @@ export interface ConfigManagementPolicyControllerMigration {
   stage?: "STAGE_UNSPECIFIED" | "ACM_MANAGED" | "POCO_MANAGED" | (string & {});
 }
 
-export const ConfigManagementPolicyControllerMigration: Schema.Schema<ConfigManagementPolicyControllerMigration> =
+export const ConfigManagementPolicyControllerMigration: Schema.Codec<ConfigManagementPolicyControllerMigration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     copyTime: Schema.optional(Schema.String),
     stage: Schema.optional(Schema.String),
@@ -911,7 +911,7 @@ export interface ConfigManagementHierarchyControllerDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementHierarchyControllerDeploymentState: Schema.Schema<ConfigManagementHierarchyControllerDeploymentState> =
+export const ConfigManagementHierarchyControllerDeploymentState: Schema.Codec<ConfigManagementHierarchyControllerDeploymentState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hnc: Schema.optional(Schema.String),
     extension: Schema.optional(Schema.String),
@@ -926,7 +926,7 @@ export interface ConfigManagementHierarchyControllerVersion {
   extension?: string;
 }
 
-export const ConfigManagementHierarchyControllerVersion: Schema.Schema<ConfigManagementHierarchyControllerVersion> =
+export const ConfigManagementHierarchyControllerVersion: Schema.Codec<ConfigManagementHierarchyControllerVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hnc: Schema.optional(Schema.String),
     extension: Schema.optional(Schema.String),
@@ -939,7 +939,7 @@ export interface ConfigManagementHierarchyControllerState {
   version?: ConfigManagementHierarchyControllerVersion;
 }
 
-export const ConfigManagementHierarchyControllerState: Schema.Schema<ConfigManagementHierarchyControllerState> =
+export const ConfigManagementHierarchyControllerState: Schema.Codec<ConfigManagementHierarchyControllerState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(ConfigManagementHierarchyControllerDeploymentState),
     version: Schema.optional(ConfigManagementHierarchyControllerVersion),
@@ -972,7 +972,7 @@ export interface ConfigManagementGatekeeperDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementGatekeeperDeploymentState: Schema.Schema<ConfigManagementGatekeeperDeploymentState> =
+export const ConfigManagementGatekeeperDeploymentState: Schema.Codec<ConfigManagementGatekeeperDeploymentState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gatekeeperAudit: Schema.optional(Schema.String),
     gatekeeperMutation: Schema.optional(Schema.String),
@@ -984,7 +984,7 @@ export interface ConfigManagementPolicyControllerVersion {
   version?: string;
 }
 
-export const ConfigManagementPolicyControllerVersion: Schema.Schema<ConfigManagementPolicyControllerVersion> =
+export const ConfigManagementPolicyControllerVersion: Schema.Codec<ConfigManagementPolicyControllerVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigManagementPolicyControllerVersion" });
@@ -998,7 +998,7 @@ export interface ConfigManagementPolicyControllerState {
   version?: ConfigManagementPolicyControllerVersion;
 }
 
-export const ConfigManagementPolicyControllerState: Schema.Schema<ConfigManagementPolicyControllerState> =
+export const ConfigManagementPolicyControllerState: Schema.Codec<ConfigManagementPolicyControllerState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     migration: Schema.optional(ConfigManagementPolicyControllerMigration),
     deploymentState: Schema.optional(ConfigManagementGatekeeperDeploymentState),
@@ -1018,7 +1018,7 @@ export interface ConfigManagementContainerOverride {
   cpuRequest?: string;
 }
 
-export const ConfigManagementContainerOverride: Schema.Schema<ConfigManagementContainerOverride> =
+export const ConfigManagementContainerOverride: Schema.Codec<ConfigManagementContainerOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cpuLimit: Schema.optional(Schema.String),
     memoryLimit: Schema.optional(Schema.String),
@@ -1044,7 +1044,7 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
@@ -1084,7 +1084,7 @@ export interface ServiceMeshSpec {
     | (string & {});
 }
 
-export const ServiceMeshSpec: Schema.Schema<ServiceMeshSpec> =
+export const ServiceMeshSpec: Schema.Codec<ServiceMeshSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     controlPlane: Schema.optional(Schema.String),
     defaultChannel: Schema.optional(Schema.String),
@@ -1097,7 +1097,7 @@ export interface ConfigManagementInstallError {
   errorMessage?: string;
 }
 
-export const ConfigManagementInstallError: Schema.Schema<ConfigManagementInstallError> =
+export const ConfigManagementInstallError: Schema.Codec<ConfigManagementInstallError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigManagementInstallError" });
@@ -1117,7 +1117,7 @@ export interface ConfigManagementOperatorState {
     | (string & {});
 }
 
-export const ConfigManagementOperatorState: Schema.Schema<ConfigManagementOperatorState> =
+export const ConfigManagementOperatorState: Schema.Codec<ConfigManagementOperatorState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Array(ConfigManagementInstallError)),
@@ -1133,7 +1133,7 @@ export interface ConfigManagementGroupVersionKind {
   version?: string;
 }
 
-export const ConfigManagementGroupVersionKind: Schema.Schema<ConfigManagementGroupVersionKind> =
+export const ConfigManagementGroupVersionKind: Schema.Codec<ConfigManagementGroupVersionKind> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1151,7 +1151,7 @@ export interface ConfigManagementErrorResource {
   resourceNamespace?: string;
 }
 
-export const ConfigManagementErrorResource: Schema.Schema<ConfigManagementErrorResource> =
+export const ConfigManagementErrorResource: Schema.Codec<ConfigManagementErrorResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGvk: Schema.optional(ConfigManagementGroupVersionKind),
     sourcePath: Schema.optional(Schema.String),
@@ -1168,7 +1168,7 @@ export interface ConfigManagementSyncError {
   errorMessage?: string;
 }
 
-export const ConfigManagementSyncError: Schema.Schema<ConfigManagementSyncError> =
+export const ConfigManagementSyncError: Schema.Codec<ConfigManagementSyncError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     errorResources: Schema.optional(
@@ -1184,7 +1184,7 @@ export interface PolicyControllerResourceList {
   cpu?: string;
 }
 
-export const PolicyControllerResourceList: Schema.Schema<PolicyControllerResourceList> =
+export const PolicyControllerResourceList: Schema.Codec<PolicyControllerResourceList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memory: Schema.optional(Schema.String),
     cpu: Schema.optional(Schema.String),
@@ -1195,7 +1195,7 @@ export interface ConfigManagementBinauthzConfig {
   enabled?: boolean;
 }
 
-export const ConfigManagementBinauthzConfig: Schema.Schema<ConfigManagementBinauthzConfig> =
+export const ConfigManagementBinauthzConfig: Schema.Codec<ConfigManagementBinauthzConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ConfigManagementBinauthzConfig" });
@@ -1212,7 +1212,7 @@ export interface LifecycleState {
     | (string & {});
 }
 
-export const LifecycleState: Schema.Schema<LifecycleState> =
+export const LifecycleState: Schema.Codec<LifecycleState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "LifecycleState" });
@@ -1243,7 +1243,7 @@ export interface ConfigManagementSyncState {
   lastSync?: string;
 }
 
-export const ConfigManagementSyncState: Schema.Schema<ConfigManagementSyncState> =
+export const ConfigManagementSyncState: Schema.Codec<ConfigManagementSyncState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     importToken: Schema.optional(Schema.String),
     syncToken: Schema.optional(Schema.String),
@@ -1275,7 +1275,7 @@ export interface ConfigManagementConfigSyncVersion {
   importer?: string;
 }
 
-export const ConfigManagementConfigSyncVersion: Schema.Schema<ConfigManagementConfigSyncVersion> =
+export const ConfigManagementConfigSyncVersion: Schema.Codec<ConfigManagementConfigSyncVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reconcilerManager: Schema.optional(Schema.String),
     rootReconciler: Schema.optional(Schema.String),
@@ -1332,7 +1332,7 @@ export interface ConfigManagementConfigSyncState {
   crCount?: number;
 }
 
-export const ConfigManagementConfigSyncState: Schema.Schema<ConfigManagementConfigSyncState> =
+export const ConfigManagementConfigSyncState: Schema.Codec<ConfigManagementConfigSyncState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     rootsyncCrd: Schema.optional(Schema.String),
@@ -1350,7 +1350,7 @@ export interface ConfigManagementBinauthzVersion {
   webhookVersion?: string;
 }
 
-export const ConfigManagementBinauthzVersion: Schema.Schema<ConfigManagementBinauthzVersion> =
+export const ConfigManagementBinauthzVersion: Schema.Codec<ConfigManagementBinauthzVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webhookVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigManagementBinauthzVersion" });
@@ -1368,7 +1368,7 @@ export interface ConfigManagementBinauthzState {
     | (string & {});
 }
 
-export const ConfigManagementBinauthzState: Schema.Schema<ConfigManagementBinauthzState> =
+export const ConfigManagementBinauthzState: Schema.Codec<ConfigManagementBinauthzState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(ConfigManagementBinauthzVersion),
     webhook: Schema.optional(Schema.String),
@@ -1383,7 +1383,7 @@ export interface ConfigManagementDeploymentOverride {
   containers?: ReadonlyArray<ConfigManagementContainerOverride>;
 }
 
-export const ConfigManagementDeploymentOverride: Schema.Schema<ConfigManagementDeploymentOverride> =
+export const ConfigManagementDeploymentOverride: Schema.Codec<ConfigManagementDeploymentOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.optional(Schema.String),
     deploymentNamespace: Schema.optional(Schema.String),
@@ -1405,7 +1405,7 @@ export interface ConfigManagementOciConfig {
   policyDir?: string;
 }
 
-export const ConfigManagementOciConfig: Schema.Schema<ConfigManagementOciConfig> =
+export const ConfigManagementOciConfig: Schema.Codec<ConfigManagementOciConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcpServiceAccountEmail: Schema.optional(Schema.String),
     syncRepo: Schema.optional(Schema.String),
@@ -1433,7 +1433,7 @@ export interface ConfigManagementGitConfig {
   gcpServiceAccountEmail?: string;
 }
 
-export const ConfigManagementGitConfig: Schema.Schema<ConfigManagementGitConfig> =
+export const ConfigManagementGitConfig: Schema.Codec<ConfigManagementGitConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syncBranch: Schema.optional(Schema.String),
     policyDir: Schema.optional(Schema.String),
@@ -1464,7 +1464,7 @@ export interface ConfigManagementConfigSync {
   stopSyncing?: boolean;
 }
 
-export const ConfigManagementConfigSync: Schema.Schema<ConfigManagementConfigSync> =
+export const ConfigManagementConfigSync: Schema.Codec<ConfigManagementConfigSync> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceFormat: Schema.optional(Schema.String),
     deploymentOverrides: Schema.optional(
@@ -1499,7 +1499,7 @@ export interface ConfigManagementSpec {
   binauthz?: ConfigManagementBinauthzConfig;
 }
 
-export const ConfigManagementSpec: Schema.Schema<ConfigManagementSpec> =
+export const ConfigManagementSpec: Schema.Codec<ConfigManagementSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hierarchyController: Schema.optional(
       ConfigManagementHierarchyControllerConfig,
@@ -1531,7 +1531,7 @@ export interface ConfigManagementState {
   hierarchyControllerState?: ConfigManagementHierarchyControllerState;
 }
 
-export const ConfigManagementState: Schema.Schema<ConfigManagementState> =
+export const ConfigManagementState: Schema.Codec<ConfigManagementState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kubernetesApiServerVersion: Schema.optional(Schema.String),
     clusterName: Schema.optional(Schema.String),
@@ -1554,7 +1554,7 @@ export interface ClusterUpgradeGKEUpgrade {
   version?: string;
 }
 
-export const ClusterUpgradeGKEUpgrade: Schema.Schema<ClusterUpgradeGKEUpgrade> =
+export const ClusterUpgradeGKEUpgrade: Schema.Codec<ClusterUpgradeGKEUpgrade> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -1577,7 +1577,7 @@ export interface ClusterUpgradeUpgradeStatus {
   updateTime?: string;
 }
 
-export const ClusterUpgradeUpgradeStatus: Schema.Schema<ClusterUpgradeUpgradeStatus> =
+export const ClusterUpgradeUpgradeStatus: Schema.Codec<ClusterUpgradeUpgradeStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -1591,7 +1591,7 @@ export interface ClusterUpgradeMembershipGKEUpgradeState {
   status?: ClusterUpgradeUpgradeStatus;
 }
 
-export const ClusterUpgradeMembershipGKEUpgradeState: Schema.Schema<ClusterUpgradeMembershipGKEUpgradeState> =
+export const ClusterUpgradeMembershipGKEUpgradeState: Schema.Codec<ClusterUpgradeMembershipGKEUpgradeState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upgrade: Schema.optional(ClusterUpgradeGKEUpgrade),
     status: Schema.optional(ClusterUpgradeUpgradeStatus),
@@ -1604,7 +1604,7 @@ export interface ClusterUpgradeIgnoredMembership {
   ignoredTime?: string;
 }
 
-export const ClusterUpgradeIgnoredMembership: Schema.Schema<ClusterUpgradeIgnoredMembership> =
+export const ClusterUpgradeIgnoredMembership: Schema.Codec<ClusterUpgradeIgnoredMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     ignoredTime: Schema.optional(Schema.String),
@@ -1617,7 +1617,7 @@ export interface ClusterUpgradeState {
   ignored?: ClusterUpgradeIgnoredMembership;
 }
 
-export const ClusterUpgradeState: Schema.Schema<ClusterUpgradeState> =
+export const ClusterUpgradeState: Schema.Codec<ClusterUpgradeState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upgrades: Schema.optional(
       Schema.Array(ClusterUpgradeMembershipGKEUpgradeState),
@@ -1633,7 +1633,7 @@ export interface RBACRoleBindingActuationState {
   >;
 }
 
-export const RBACRoleBindingActuationState: Schema.Schema<RBACRoleBindingActuationState> =
+export const RBACRoleBindingActuationState: Schema.Codec<RBACRoleBindingActuationState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rbacrolebindingStates: Schema.optional(
       Schema.Record(
@@ -1654,7 +1654,7 @@ export interface IdentityServiceState {
   memberConfig?: IdentityServiceSpec;
 }
 
-export const IdentityServiceState: Schema.Schema<IdentityServiceState> =
+export const IdentityServiceState: Schema.Codec<IdentityServiceState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureReason: Schema.optional(Schema.String),
     installedVersion: Schema.optional(Schema.String),
@@ -1669,7 +1669,7 @@ export interface AppDevExperienceStatus {
   code?: "CODE_UNSPECIFIED" | "OK" | "FAILED" | "UNKNOWN" | (string & {});
 }
 
-export const AppDevExperienceStatus: Schema.Schema<AppDevExperienceStatus> =
+export const AppDevExperienceStatus: Schema.Codec<AppDevExperienceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -1680,7 +1680,7 @@ export interface AppDevExperienceState {
   networkingInstallSucceeded?: AppDevExperienceStatus;
 }
 
-export const AppDevExperienceState: Schema.Schema<AppDevExperienceState> =
+export const AppDevExperienceState: Schema.Codec<AppDevExperienceState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkingInstallSucceeded: Schema.optional(AppDevExperienceStatus),
   }).annotate({ identifier: "AppDevExperienceState" });
@@ -1694,7 +1694,7 @@ export interface State {
   updateTime?: string;
 }
 
-export const State: Schema.Schema<State> =
+export const State: Schema.Codec<State> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -1712,7 +1712,7 @@ export interface WorkloadIdentityIdentityProviderStateDetail {
   description?: string;
 }
 
-export const WorkloadIdentityIdentityProviderStateDetail: Schema.Schema<WorkloadIdentityIdentityProviderStateDetail> =
+export const WorkloadIdentityIdentityProviderStateDetail: Schema.Codec<WorkloadIdentityIdentityProviderStateDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1728,7 +1728,7 @@ export interface WorkloadIdentityState {
   >;
 }
 
-export const WorkloadIdentityState: Schema.Schema<WorkloadIdentityState> =
+export const WorkloadIdentityState: Schema.Codec<WorkloadIdentityState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     identityProviderStateDetails: Schema.optional(
@@ -1754,7 +1754,7 @@ export interface PolicyControllerOnClusterState {
   details?: string;
 }
 
-export const PolicyControllerOnClusterState: Schema.Schema<PolicyControllerOnClusterState> =
+export const PolicyControllerOnClusterState: Schema.Codec<PolicyControllerOnClusterState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     details: Schema.optional(Schema.String),
@@ -1769,7 +1769,7 @@ export interface PolicyControllerPolicyContentState {
   referentialSyncConfigState?: PolicyControllerOnClusterState;
 }
 
-export const PolicyControllerPolicyContentState: Schema.Schema<PolicyControllerPolicyContentState> =
+export const PolicyControllerPolicyContentState: Schema.Codec<PolicyControllerPolicyContentState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     templateLibraryState: Schema.optional(PolicyControllerOnClusterState),
     bundleStates: Schema.optional(
@@ -1798,7 +1798,7 @@ export interface PolicyControllerState {
   policyContentState?: PolicyControllerPolicyContentState;
 }
 
-export const PolicyControllerState: Schema.Schema<PolicyControllerState> =
+export const PolicyControllerState: Schema.Codec<PolicyControllerState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     componentStates: Schema.optional(
       Schema.Record(Schema.String, PolicyControllerOnClusterState),
@@ -1830,7 +1830,7 @@ export interface FeatureState {
   policycontroller?: PolicyControllerState;
 }
 
-export const FeatureState: Schema.Schema<FeatureState> =
+export const FeatureState: Schema.Codec<FeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicemesh: Schema.optional(ServiceMeshState),
     configmanagement: Schema.optional(ConfigManagementState),
@@ -1851,7 +1851,7 @@ export interface PolicyControllerPolicyContentSpec {
   templateLibrary?: PolicyControllerTemplateLibraryConfig;
 }
 
-export const PolicyControllerPolicyContentSpec: Schema.Schema<PolicyControllerPolicyContentSpec> =
+export const PolicyControllerPolicyContentSpec: Schema.Codec<PolicyControllerPolicyContentSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bundles: Schema.optional(
       Schema.Record(Schema.String, PolicyControllerBundleInstallSpec),
@@ -1866,7 +1866,7 @@ export interface PolicyControllerResourceRequirements {
   requests?: PolicyControllerResourceList;
 }
 
-export const PolicyControllerResourceRequirements: Schema.Schema<PolicyControllerResourceRequirements> =
+export const PolicyControllerResourceRequirements: Schema.Codec<PolicyControllerResourceRequirements> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limits: Schema.optional(PolicyControllerResourceList),
     requests: Schema.optional(PolicyControllerResourceList),
@@ -1883,7 +1883,7 @@ export interface PolicyControllerToleration {
   key?: string;
 }
 
-export const PolicyControllerToleration: Schema.Schema<PolicyControllerToleration> =
+export const PolicyControllerToleration: Schema.Codec<PolicyControllerToleration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
@@ -1908,7 +1908,7 @@ export interface PolicyControllerPolicyControllerDeploymentConfig {
   podTolerations?: ReadonlyArray<PolicyControllerToleration>;
 }
 
-export const PolicyControllerPolicyControllerDeploymentConfig: Schema.Schema<PolicyControllerPolicyControllerDeploymentConfig> =
+export const PolicyControllerPolicyControllerDeploymentConfig: Schema.Codec<PolicyControllerPolicyControllerDeploymentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     podAntiAffinity: Schema.optional(Schema.Boolean),
     podAffinity: Schema.optional(Schema.String),
@@ -1929,7 +1929,7 @@ export interface PolicyControllerMonitoringConfig {
   >;
 }
 
-export const PolicyControllerMonitoringConfig: Schema.Schema<PolicyControllerMonitoringConfig> =
+export const PolicyControllerMonitoringConfig: Schema.Codec<PolicyControllerMonitoringConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backends: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PolicyControllerMonitoringConfig" });
@@ -1966,7 +1966,7 @@ export interface PolicyControllerHubConfig {
   referentialRulesEnabled?: boolean;
 }
 
-export const PolicyControllerHubConfig: Schema.Schema<PolicyControllerHubConfig> =
+export const PolicyControllerHubConfig: Schema.Codec<PolicyControllerHubConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mutationEnabled: Schema.optional(Schema.Boolean),
     logDeniesEnabled: Schema.optional(Schema.Boolean),
@@ -1992,7 +1992,7 @@ export interface PolicyControllerSpec {
   version?: string;
 }
 
-export const PolicyControllerSpec: Schema.Schema<PolicyControllerSpec> =
+export const PolicyControllerSpec: Schema.Codec<PolicyControllerSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyControllerHubConfig: Schema.optional(PolicyControllerHubConfig),
     version: Schema.optional(Schema.String),
@@ -2007,7 +2007,7 @@ export interface WorkloadCertificateSpec {
     | (string & {});
 }
 
-export const WorkloadCertificateSpec: Schema.Schema<WorkloadCertificateSpec> =
+export const WorkloadCertificateSpec: Schema.Codec<WorkloadCertificateSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateManagement: Schema.optional(Schema.String),
   }).annotate({ identifier: "WorkloadCertificateSpec" });
@@ -2031,7 +2031,7 @@ export interface FeatureSpec {
   cloudbuild?: CloudBuildSpec;
 }
 
-export const FeatureSpec: Schema.Schema<FeatureSpec> =
+export const FeatureSpec: Schema.Codec<FeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configmanagement: Schema.optional(ConfigManagementSpec),
     policycontroller: Schema.optional(PolicyControllerSpec),
@@ -2062,7 +2062,7 @@ export interface MembershipFeature {
   spec?: FeatureSpec;
 }
 
-export const MembershipFeature: Schema.Schema<MembershipFeature> =
+export const MembershipFeature: Schema.Codec<MembershipFeature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     lifecycleState: Schema.optional(LifecycleState),
@@ -2081,7 +2081,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2089,7 +2089,7 @@ export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -2103,7 +2103,7 @@ export interface ListMembershipFeaturesResponse {
   nextPageToken?: string;
 }
 
-export const ListMembershipFeaturesResponse: Schema.Schema<ListMembershipFeaturesResponse> =
+export const ListMembershipFeaturesResponse: Schema.Codec<ListMembershipFeaturesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membershipFeatures: Schema.optional(Schema.Array(MembershipFeature)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2175,7 +2175,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -2220,7 +2220,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -2269,7 +2269,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -2310,7 +2310,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -2346,7 +2346,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -2380,7 +2380,7 @@ export const GetProjectsLocationsMembershipsFeaturesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsFeaturesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsMembershipsFeaturesRequest>;
 
 export type GetProjectsLocationsMembershipsFeaturesResponse = MembershipFeature;
 export const GetProjectsLocationsMembershipsFeaturesResponse =
@@ -2417,7 +2417,7 @@ export const DeleteProjectsLocationsMembershipsFeaturesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsFeaturesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsMembershipsFeaturesRequest>;
 
 export type DeleteProjectsLocationsMembershipsFeaturesResponse = Operation;
 export const DeleteProjectsLocationsMembershipsFeaturesResponse =
@@ -2462,7 +2462,7 @@ export const CreateProjectsLocationsMembershipsFeaturesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/features", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsMembershipsFeaturesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsMembershipsFeaturesRequest>;
 
 export type CreateProjectsLocationsMembershipsFeaturesResponse = Operation;
 export const CreateProjectsLocationsMembershipsFeaturesResponse =
@@ -2510,7 +2510,7 @@ export const ListProjectsLocationsMembershipsFeaturesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/features" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsFeaturesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsMembershipsFeaturesRequest>;
 
 export type ListProjectsLocationsMembershipsFeaturesResponse =
   ListMembershipFeaturesResponse;
@@ -2563,7 +2563,7 @@ export const PatchProjectsLocationsMembershipsFeaturesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsFeaturesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsMembershipsFeaturesRequest>;
 
 export type PatchProjectsLocationsMembershipsFeaturesResponse = Operation;
 export const PatchProjectsLocationsMembershipsFeaturesResponse =

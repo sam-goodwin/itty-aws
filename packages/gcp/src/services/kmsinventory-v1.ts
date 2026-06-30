@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -34,7 +34,7 @@ export interface GoogleCloudKmsInventoryV1Warning {
   displayMessage?: string;
 }
 
-export const GoogleCloudKmsInventoryV1Warning: Schema.Schema<GoogleCloudKmsInventoryV1Warning> =
+export const GoogleCloudKmsInventoryV1Warning: Schema.Codec<GoogleCloudKmsInventoryV1Warning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warningCode: Schema.optional(Schema.String),
     displayMessage: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
   warnings?: ReadonlyArray<GoogleCloudKmsInventoryV1Warning>;
 }
 
-export const GoogleCloudKmsInventoryV1ProtectedResourcesSummary: Schema.Schema<GoogleCloudKmsInventoryV1ProtectedResourcesSummary> =
+export const GoogleCloudKmsInventoryV1ProtectedResourcesSummary: Schema.Codec<GoogleCloudKmsInventoryV1ProtectedResourcesSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceCount: Schema.optional(Schema.String),
     projectCount: Schema.optional(Schema.Number),
@@ -93,7 +93,7 @@ export interface GoogleCloudKmsInventoryV1ProtectedResource {
   cloudProduct?: string;
 }
 
-export const GoogleCloudKmsInventoryV1ProtectedResource: Schema.Schema<GoogleCloudKmsInventoryV1ProtectedResource> =
+export const GoogleCloudKmsInventoryV1ProtectedResource: Schema.Codec<GoogleCloudKmsInventoryV1ProtectedResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface GoogleCloudKmsV1KeyOperationAttestationCertificateChains {
   caviumCerts?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudKmsV1KeyOperationAttestationCertificateChains: Schema.Schema<GoogleCloudKmsV1KeyOperationAttestationCertificateChains> =
+export const GoogleCloudKmsV1KeyOperationAttestationCertificateChains: Schema.Codec<GoogleCloudKmsV1KeyOperationAttestationCertificateChains> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleCardCerts: Schema.optional(Schema.Array(Schema.String)),
     googlePartitionCerts: Schema.optional(Schema.Array(Schema.String)),
@@ -138,7 +138,7 @@ export interface GoogleCloudKmsV1KeyOperationAttestation {
   certChains?: GoogleCloudKmsV1KeyOperationAttestationCertificateChains;
 }
 
-export const GoogleCloudKmsV1KeyOperationAttestation: Schema.Schema<GoogleCloudKmsV1KeyOperationAttestation> =
+export const GoogleCloudKmsV1KeyOperationAttestation: Schema.Codec<GoogleCloudKmsV1KeyOperationAttestation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     format: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -154,7 +154,7 @@ export interface GoogleCloudKmsV1ExternalProtectionLevelOptions {
   ekmConnectionKeyPath?: string;
 }
 
-export const GoogleCloudKmsV1ExternalProtectionLevelOptions: Schema.Schema<GoogleCloudKmsV1ExternalProtectionLevelOptions> =
+export const GoogleCloudKmsV1ExternalProtectionLevelOptions: Schema.Codec<GoogleCloudKmsV1ExternalProtectionLevelOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalKeyUri: Schema.optional(Schema.String),
     ekmConnectionKeyPath: Schema.optional(Schema.String),
@@ -262,7 +262,7 @@ export interface GoogleCloudKmsV1CryptoKeyVersion {
     | (string & {});
 }
 
-export const GoogleCloudKmsV1CryptoKeyVersion: Schema.Schema<GoogleCloudKmsV1CryptoKeyVersion> =
+export const GoogleCloudKmsV1CryptoKeyVersion: Schema.Codec<GoogleCloudKmsV1CryptoKeyVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     importJob: Schema.optional(Schema.String),
     importFailureReason: Schema.optional(Schema.String),
@@ -346,7 +346,7 @@ export interface GoogleCloudKmsV1CryptoKeyVersionTemplate {
     | (string & {});
 }
 
-export const GoogleCloudKmsV1CryptoKeyVersionTemplate: Schema.Schema<GoogleCloudKmsV1CryptoKeyVersionTemplate> =
+export const GoogleCloudKmsV1CryptoKeyVersionTemplate: Schema.Codec<GoogleCloudKmsV1CryptoKeyVersionTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protectionLevel: Schema.optional(Schema.String),
     algorithm: Schema.optional(Schema.String),
@@ -371,7 +371,7 @@ export interface GoogleCloudKmsV1KeyAccessJustificationsPolicy {
   >;
 }
 
-export const GoogleCloudKmsV1KeyAccessJustificationsPolicy: Schema.Schema<GoogleCloudKmsV1KeyAccessJustificationsPolicy> =
+export const GoogleCloudKmsV1KeyAccessJustificationsPolicy: Schema.Codec<GoogleCloudKmsV1KeyAccessJustificationsPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedAccessReasons: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudKmsV1KeyAccessJustificationsPolicy" });
@@ -411,7 +411,7 @@ export interface GoogleCloudKmsV1CryptoKey {
   name?: string;
 }
 
-export const GoogleCloudKmsV1CryptoKey: Schema.Schema<GoogleCloudKmsV1CryptoKey> =
+export const GoogleCloudKmsV1CryptoKey: Schema.Codec<GoogleCloudKmsV1CryptoKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoKeyBackend: Schema.optional(Schema.String),
     importOnly: Schema.optional(Schema.Boolean),
@@ -436,7 +436,7 @@ export interface GoogleCloudKmsInventoryV1ListCryptoKeysResponse {
   cryptoKeys?: ReadonlyArray<GoogleCloudKmsV1CryptoKey>;
 }
 
-export const GoogleCloudKmsInventoryV1ListCryptoKeysResponse: Schema.Schema<GoogleCloudKmsInventoryV1ListCryptoKeysResponse> =
+export const GoogleCloudKmsInventoryV1ListCryptoKeysResponse: Schema.Codec<GoogleCloudKmsInventoryV1ListCryptoKeysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     cryptoKeys: Schema.optional(Schema.Array(GoogleCloudKmsV1CryptoKey)),
@@ -451,7 +451,7 @@ export interface GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
   protectedResources?: ReadonlyArray<GoogleCloudKmsInventoryV1ProtectedResource>;
 }
 
-export const GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse: Schema.Schema<GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse> =
+export const GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse: Schema.Codec<GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     protectedResources: Schema.optional(
@@ -517,7 +517,7 @@ export const SearchProjectsProtectedResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+scope}/protectedResources:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsProtectedResourcesRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsProtectedResourcesRequest>;
 
 export type SearchProjectsProtectedResourcesResponse =
   GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse;
@@ -562,7 +562,7 @@ export const ListProjectsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/cryptoKeys" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsCryptoKeysRequest>;
 
 export type ListProjectsCryptoKeysResponse =
   GoogleCloudKmsInventoryV1ListCryptoKeysResponse;
@@ -606,7 +606,7 @@ export const GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysRequ
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/protectedResourcesSummary" }),
     svc,
-  ) as unknown as Schema.Schema<GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysResponse =
   GoogleCloudKmsInventoryV1ProtectedResourcesSummary;
@@ -614,7 +614,9 @@ export const GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudKmsInventoryV1ProtectedResourcesSummary;
 
 export type GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns aggregate information about the resources protected by the given Cloud KMS CryptoKey. By default, summary of resources within the same Cloud organization as the key will be returned, which requires the KMS organization service account to be configured(refer https://docs.cloud.google.com/kms/docs/view-key-usage#required-roles). If the KMS organization service account is not configured or key's project is not part of an organization, set fallback_scope to `FALLBACK_SCOPE_PROJECT` to retrieve a summary of protected resources within the key's project. */
 export const getProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -654,7 +656,7 @@ export const SearchOrganizationsProtectedResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+scope}/protectedResources:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchOrganizationsProtectedResourcesRequest>;
+  ) as unknown as Schema.Codec<SearchOrganizationsProtectedResourcesRequest>;
 
 export type SearchOrganizationsProtectedResourcesResponse =
   GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse;

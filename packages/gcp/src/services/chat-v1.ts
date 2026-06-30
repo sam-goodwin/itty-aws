@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface SlashCommand {
   commandId?: string;
 }
 
-export const SlashCommand: Schema.Schema<SlashCommand> =
+export const SlashCommand: Schema.Codec<SlashCommand> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commandId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SlashCommand" });
@@ -39,7 +39,7 @@ export interface AttachmentDataRef {
   resourceName?: string;
 }
 
-export const AttachmentDataRef: Schema.Schema<AttachmentDataRef> =
+export const AttachmentDataRef: Schema.Codec<AttachmentDataRef> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachmentUploadToken: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface GoogleAppsCardV1ActionParameter {
   value?: string;
 }
 
-export const GoogleAppsCardV1ActionParameter: Schema.Schema<GoogleAppsCardV1ActionParameter> =
+export const GoogleAppsCardV1ActionParameter: Schema.Codec<GoogleAppsCardV1ActionParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export interface PermissionSetting {
   membersAllowed?: boolean;
 }
 
-export const PermissionSetting: Schema.Schema<PermissionSetting> =
+export const PermissionSetting: Schema.Codec<PermissionSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assistantManagersAllowed: Schema.optional(Schema.Boolean),
     managersAllowed: Schema.optional(Schema.Boolean),
@@ -93,7 +93,7 @@ export interface PermissionSettings {
   manageApps?: PermissionSetting;
 }
 
-export const PermissionSettings: Schema.Schema<PermissionSettings> =
+export const PermissionSettings: Schema.Codec<PermissionSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manageMembersAndGroups: Schema.optional(PermissionSetting),
     postMessages: Schema.optional(PermissionSetting),
@@ -122,7 +122,7 @@ export interface GoogleChatV1Section {
   sortOrder?: number;
 }
 
-export const GoogleChatV1Section: Schema.Schema<GoogleChatV1Section> =
+export const GoogleChatV1Section: Schema.Codec<GoogleChatV1Section> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -137,7 +137,7 @@ export interface ListSectionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSectionsResponse: Schema.Schema<ListSectionsResponse> =
+export const ListSectionsResponse: Schema.Codec<ListSectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sections: Schema.optional(Schema.Array(GoogleChatV1Section)),
     nextPageToken: Schema.optional(Schema.String),
@@ -156,7 +156,7 @@ export interface User {
   displayName?: string;
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -172,7 +172,7 @@ export interface CustomEmojiPayload {
   filename?: string;
 }
 
-export const CustomEmojiPayload: Schema.Schema<CustomEmojiPayload> =
+export const CustomEmojiPayload: Schema.Codec<CustomEmojiPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileContent: Schema.optional(Schema.String),
     filename: Schema.optional(Schema.String),
@@ -191,7 +191,7 @@ export interface CustomEmoji {
   uid?: string;
 }
 
-export const CustomEmoji: Schema.Schema<CustomEmoji> =
+export const CustomEmoji: Schema.Codec<CustomEmoji> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     temporaryImageUri: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface Emoji {
   customEmoji?: CustomEmoji;
 }
 
-export const Emoji: Schema.Schema<Emoji> =
+export const Emoji: Schema.Codec<Emoji> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unicode: Schema.optional(Schema.String),
     customEmoji: Schema.optional(CustomEmoji),
@@ -222,7 +222,7 @@ export interface Reaction {
   emoji?: Emoji;
 }
 
-export const Reaction: Schema.Schema<Reaction> =
+export const Reaction: Schema.Codec<Reaction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     user: Schema.optional(User),
@@ -236,7 +236,7 @@ export interface ListReactionsResponse {
   nextPageToken?: string;
 }
 
-export const ListReactionsResponse: Schema.Schema<ListReactionsResponse> =
+export const ListReactionsResponse: Schema.Codec<ListReactionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reactions: Schema.optional(Schema.Array(Reaction)),
     nextPageToken: Schema.optional(Schema.String),
@@ -247,7 +247,7 @@ export interface SpaceDataSource {
   defaultToCurrentSpace?: boolean;
 }
 
-export const SpaceDataSource: Schema.Schema<SpaceDataSource> =
+export const SpaceDataSource: Schema.Codec<SpaceDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultToCurrentSpace: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SpaceDataSource" });
@@ -257,7 +257,7 @@ export interface ChatClientDataSourceMarkup {
   spaceDataSource?: SpaceDataSource;
 }
 
-export const ChatClientDataSourceMarkup: Schema.Schema<ChatClientDataSourceMarkup> =
+export const ChatClientDataSourceMarkup: Schema.Codec<ChatClientDataSourceMarkup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spaceDataSource: Schema.optional(SpaceDataSource),
   }).annotate({ identifier: "ChatClientDataSourceMarkup" });
@@ -269,7 +269,7 @@ export interface WorkflowDataSourceMarkup {
   type?: "UNKNOWN" | "USER" | "SPACE" | "USER_WITH_FREE_FORM" | (string & {});
 }
 
-export const WorkflowDataSourceMarkup: Schema.Schema<WorkflowDataSourceMarkup> =
+export const WorkflowDataSourceMarkup: Schema.Codec<WorkflowDataSourceMarkup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeVariables: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
@@ -282,7 +282,7 @@ export interface HostAppDataSourceMarkup {
   workflowDataSource?: WorkflowDataSourceMarkup;
 }
 
-export const HostAppDataSourceMarkup: Schema.Schema<HostAppDataSourceMarkup> =
+export const HostAppDataSourceMarkup: Schema.Codec<HostAppDataSourceMarkup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chatDataSource: Schema.optional(ChatClientDataSourceMarkup),
     workflowDataSource: Schema.optional(WorkflowDataSourceMarkup),
@@ -293,7 +293,7 @@ export interface OpenLink {
   url?: string;
 }
 
-export const OpenLink: Schema.Schema<OpenLink> =
+export const OpenLink: Schema.Codec<OpenLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "OpenLink" });
@@ -305,7 +305,7 @@ export interface ActionParameter {
   key?: string;
 }
 
-export const ActionParameter: Schema.Schema<ActionParameter> =
+export const ActionParameter: Schema.Codec<ActionParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -318,7 +318,7 @@ export interface FormAction {
   parameters?: ReadonlyArray<ActionParameter>;
 }
 
-export const FormAction: Schema.Schema<FormAction> =
+export const FormAction: Schema.Codec<FormAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionMethodName: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(ActionParameter)),
@@ -331,7 +331,7 @@ export interface OnClick {
   action?: FormAction;
 }
 
-export const OnClick: Schema.Schema<OnClick> =
+export const OnClick: Schema.Codec<OnClick> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     openLink: Schema.optional(OpenLink),
     action: Schema.optional(FormAction),
@@ -380,7 +380,7 @@ export interface ImageButton {
   name?: string;
 }
 
-export const ImageButton: Schema.Schema<ImageButton> =
+export const ImageButton: Schema.Codec<ImageButton> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     icon: Schema.optional(Schema.String),
     onClick: Schema.optional(OnClick),
@@ -395,7 +395,7 @@ export interface TextButton {
   onClick?: OnClick;
 }
 
-export const TextButton: Schema.Schema<TextButton> =
+export const TextButton: Schema.Codec<TextButton> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     onClick: Schema.optional(OnClick),
@@ -408,7 +408,7 @@ export interface Button {
   textButton?: TextButton;
 }
 
-export const Button: Schema.Schema<Button> =
+export const Button: Schema.Codec<Button> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageButton: Schema.optional(ImageButton),
     textButton: Schema.optional(TextButton),
@@ -465,7 +465,7 @@ export interface KeyValue {
   onClick?: OnClick;
 }
 
-export const KeyValue: Schema.Schema<KeyValue> =
+export const KeyValue: Schema.Codec<KeyValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentMultiline: Schema.optional(Schema.Boolean),
     bottomLabel: Schema.optional(Schema.String),
@@ -486,7 +486,7 @@ export interface Image {
   aspectRatio?: number;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageUrl: Schema.optional(Schema.String),
     onClick: Schema.optional(OnClick),
@@ -497,7 +497,7 @@ export interface TextParagraph {
   text?: string;
 }
 
-export const TextParagraph: Schema.Schema<TextParagraph> =
+export const TextParagraph: Schema.Codec<TextParagraph> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextParagraph" });
@@ -513,7 +513,7 @@ export interface WidgetMarkup {
   textParagraph?: TextParagraph;
 }
 
-export const WidgetMarkup: Schema.Schema<WidgetMarkup> =
+export const WidgetMarkup: Schema.Codec<WidgetMarkup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyValue: Schema.optional(KeyValue),
     buttons: Schema.optional(Schema.Array(Button)),
@@ -528,7 +528,7 @@ export interface Section {
   header?: string;
 }
 
-export const Section: Schema.Schema<Section> =
+export const Section: Schema.Codec<Section> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     widgets: Schema.optional(Schema.Array(WidgetMarkup)),
     header: Schema.optional(Schema.String),
@@ -545,7 +545,7 @@ export interface GoogleAppsCardV1MaterialIcon {
   grade?: number;
 }
 
-export const GoogleAppsCardV1MaterialIcon: Schema.Schema<GoogleAppsCardV1MaterialIcon> =
+export const GoogleAppsCardV1MaterialIcon: Schema.Codec<GoogleAppsCardV1MaterialIcon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -566,7 +566,7 @@ export interface GoogleAppsCardV1Icon {
   altText?: string;
 }
 
-export const GoogleAppsCardV1Icon: Schema.Schema<GoogleAppsCardV1Icon> =
+export const GoogleAppsCardV1Icon: Schema.Codec<GoogleAppsCardV1Icon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iconUrl: Schema.optional(Schema.String),
     knownIcon: Schema.optional(Schema.String),
@@ -586,7 +586,7 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
+export const Color: Schema.Codec<Color> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blue: Schema.optional(Schema.Number),
     green: Schema.optional(Schema.Number),
@@ -617,7 +617,7 @@ export interface GoogleAppsCardV1Button {
   onClick?: GoogleAppsCardV1OnClick;
 }
 
-export const GoogleAppsCardV1Button: Schema.Schema<GoogleAppsCardV1Button> =
+export const GoogleAppsCardV1Button: Schema.Codec<GoogleAppsCardV1Button> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       icon: Schema.optional(GoogleAppsCardV1Icon),
@@ -630,7 +630,7 @@ export const GoogleAppsCardV1Button: Schema.Schema<GoogleAppsCardV1Button> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Button",
-  }) as any as Schema.Schema<GoogleAppsCardV1Button>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Button>;
 
 export interface GoogleAppsCardV1CardFixedFooter {
   /** The primary button of the fixed footer. The button must be a text button with text and color set. */
@@ -639,7 +639,7 @@ export interface GoogleAppsCardV1CardFixedFooter {
   secondaryButton?: GoogleAppsCardV1Button;
 }
 
-export const GoogleAppsCardV1CardFixedFooter: Schema.Schema<GoogleAppsCardV1CardFixedFooter> =
+export const GoogleAppsCardV1CardFixedFooter: Schema.Codec<GoogleAppsCardV1CardFixedFooter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       primaryButton: Schema.optional(GoogleAppsCardV1Button),
@@ -647,7 +647,7 @@ export const GoogleAppsCardV1CardFixedFooter: Schema.Schema<GoogleAppsCardV1Card
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1CardFixedFooter",
-  }) as any as Schema.Schema<GoogleAppsCardV1CardFixedFooter>;
+  }) as any as Schema.Codec<GoogleAppsCardV1CardFixedFooter>;
 
 export interface GoogleAppsCardV1CardHeader {
   /** The shape used to crop the image. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -662,7 +662,7 @@ export interface GoogleAppsCardV1CardHeader {
   subtitle?: string;
 }
 
-export const GoogleAppsCardV1CardHeader: Schema.Schema<GoogleAppsCardV1CardHeader> =
+export const GoogleAppsCardV1CardHeader: Schema.Codec<GoogleAppsCardV1CardHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageType: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -680,7 +680,7 @@ export interface GoogleAppsCardV1BorderStyle {
   strokeColor?: Color;
 }
 
-export const GoogleAppsCardV1BorderStyle: Schema.Schema<GoogleAppsCardV1BorderStyle> =
+export const GoogleAppsCardV1BorderStyle: Schema.Codec<GoogleAppsCardV1BorderStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cornerRadius: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
@@ -700,7 +700,7 @@ export interface GoogleAppsCardV1ImageCropStyle {
     | (string & {});
 }
 
-export const GoogleAppsCardV1ImageCropStyle: Schema.Schema<GoogleAppsCardV1ImageCropStyle> =
+export const GoogleAppsCardV1ImageCropStyle: Schema.Codec<GoogleAppsCardV1ImageCropStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aspectRatio: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
@@ -717,7 +717,7 @@ export interface GoogleAppsCardV1ImageComponent {
   borderStyle?: GoogleAppsCardV1BorderStyle;
 }
 
-export const GoogleAppsCardV1ImageComponent: Schema.Schema<GoogleAppsCardV1ImageComponent> =
+export const GoogleAppsCardV1ImageComponent: Schema.Codec<GoogleAppsCardV1ImageComponent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     altText: Schema.optional(Schema.String),
     imageUri: Schema.optional(Schema.String),
@@ -742,7 +742,7 @@ export interface GoogleAppsCardV1GridItem {
   subtitle?: string;
 }
 
-export const GoogleAppsCardV1GridItem: Schema.Schema<GoogleAppsCardV1GridItem> =
+export const GoogleAppsCardV1GridItem: Schema.Codec<GoogleAppsCardV1GridItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -764,7 +764,7 @@ export interface GoogleAppsCardV1Grid {
   onClick?: GoogleAppsCardV1OnClick;
 }
 
-export const GoogleAppsCardV1Grid: Schema.Schema<GoogleAppsCardV1Grid> =
+export const GoogleAppsCardV1Grid: Schema.Codec<GoogleAppsCardV1Grid> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       borderStyle: Schema.optional(GoogleAppsCardV1BorderStyle),
@@ -775,7 +775,7 @@ export const GoogleAppsCardV1Grid: Schema.Schema<GoogleAppsCardV1Grid> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Grid",
-  }) as any as Schema.Schema<GoogleAppsCardV1Grid>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Grid>;
 
 export interface GoogleAppsCardV1Validation {
   /** Specify the character limit for text input widgets. Note that this is only used for text input and is ignored for other widgets. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -791,7 +791,7 @@ export interface GoogleAppsCardV1Validation {
     | (string & {});
 }
 
-export const GoogleAppsCardV1Validation: Schema.Schema<GoogleAppsCardV1Validation> =
+export const GoogleAppsCardV1Validation: Schema.Codec<GoogleAppsCardV1Validation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     characterLimit: Schema.optional(Schema.Number),
     inputType: Schema.optional(Schema.String),
@@ -814,7 +814,7 @@ export interface GoogleAppsCardV1Action {
   allWidgetsAreRequired?: boolean;
 }
 
-export const GoogleAppsCardV1Action: Schema.Schema<GoogleAppsCardV1Action> =
+export const GoogleAppsCardV1Action: Schema.Codec<GoogleAppsCardV1Action> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     loadIndicator: Schema.optional(Schema.String),
     function: Schema.optional(Schema.String),
@@ -830,7 +830,7 @@ export interface GoogleAppsCardV1SuggestionItem {
   text?: string;
 }
 
-export const GoogleAppsCardV1SuggestionItem: Schema.Schema<GoogleAppsCardV1SuggestionItem> =
+export const GoogleAppsCardV1SuggestionItem: Schema.Codec<GoogleAppsCardV1SuggestionItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1SuggestionItem" });
@@ -840,7 +840,7 @@ export interface GoogleAppsCardV1Suggestions {
   items?: ReadonlyArray<GoogleAppsCardV1SuggestionItem>;
 }
 
-export const GoogleAppsCardV1Suggestions: Schema.Schema<GoogleAppsCardV1Suggestions> =
+export const GoogleAppsCardV1Suggestions: Schema.Codec<GoogleAppsCardV1Suggestions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GoogleAppsCardV1SuggestionItem)),
   }).annotate({ identifier: "GoogleAppsCardV1Suggestions" });
@@ -870,7 +870,7 @@ export interface GoogleAppsCardV1TextInput {
   value?: string;
 }
 
-export const GoogleAppsCardV1TextInput: Schema.Schema<GoogleAppsCardV1TextInput> =
+export const GoogleAppsCardV1TextInput: Schema.Codec<GoogleAppsCardV1TextInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     hostAppDataSource: Schema.optional(HostAppDataSourceMarkup),
@@ -896,7 +896,7 @@ export interface GoogleAppsCardV1ChipList {
   chips?: ReadonlyArray<GoogleAppsCardV1Chip>;
 }
 
-export const GoogleAppsCardV1ChipList: Schema.Schema<GoogleAppsCardV1ChipList> =
+export const GoogleAppsCardV1ChipList: Schema.Codec<GoogleAppsCardV1ChipList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       layout: Schema.optional(Schema.String),
@@ -904,7 +904,7 @@ export const GoogleAppsCardV1ChipList: Schema.Schema<GoogleAppsCardV1ChipList> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1ChipList",
-  }) as any as Schema.Schema<GoogleAppsCardV1ChipList>;
+  }) as any as Schema.Codec<GoogleAppsCardV1ChipList>;
 
 export interface GoogleAppsCardV1TextParagraph {
   /** The text that's shown in the widget. */
@@ -915,7 +915,7 @@ export interface GoogleAppsCardV1TextParagraph {
   textSyntax?: "TEXT_SYNTAX_UNSPECIFIED" | "HTML" | "MARKDOWN" | (string & {});
 }
 
-export const GoogleAppsCardV1TextParagraph: Schema.Schema<GoogleAppsCardV1TextParagraph> =
+export const GoogleAppsCardV1TextParagraph: Schema.Codec<GoogleAppsCardV1TextParagraph> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     maxLines: Schema.optional(Schema.Number),
@@ -935,7 +935,7 @@ export interface GoogleAppsCardV1SwitchControl {
   onChangeAction?: GoogleAppsCardV1Action;
 }
 
-export const GoogleAppsCardV1SwitchControl: Schema.Schema<GoogleAppsCardV1SwitchControl> =
+export const GoogleAppsCardV1SwitchControl: Schema.Codec<GoogleAppsCardV1SwitchControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     controlType: Schema.optional(Schema.String),
@@ -980,7 +980,7 @@ export interface GoogleAppsCardV1DecoratedText {
   contentText?: GoogleAppsCardV1TextParagraph;
 }
 
-export const GoogleAppsCardV1DecoratedText: Schema.Schema<GoogleAppsCardV1DecoratedText> =
+export const GoogleAppsCardV1DecoratedText: Schema.Codec<GoogleAppsCardV1DecoratedText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       topLabel: Schema.optional(Schema.String),
@@ -1000,21 +1000,21 @@ export const GoogleAppsCardV1DecoratedText: Schema.Schema<GoogleAppsCardV1Decora
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1DecoratedText",
-  }) as any as Schema.Schema<GoogleAppsCardV1DecoratedText>;
+  }) as any as Schema.Codec<GoogleAppsCardV1DecoratedText>;
 
 export interface GoogleAppsCardV1ButtonList {
   /** An array of buttons. */
   buttons?: ReadonlyArray<GoogleAppsCardV1Button>;
 }
 
-export const GoogleAppsCardV1ButtonList: Schema.Schema<GoogleAppsCardV1ButtonList> =
+export const GoogleAppsCardV1ButtonList: Schema.Codec<GoogleAppsCardV1ButtonList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       buttons: Schema.optional(Schema.Array(GoogleAppsCardV1Button)),
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1ButtonList",
-  }) as any as Schema.Schema<GoogleAppsCardV1ButtonList>;
+  }) as any as Schema.Codec<GoogleAppsCardV1ButtonList>;
 
 export interface GoogleAppsCardV1Image {
   /** The alternative text of this image that's used for accessibility. */
@@ -1025,7 +1025,7 @@ export interface GoogleAppsCardV1Image {
   onClick?: GoogleAppsCardV1OnClick;
 }
 
-export const GoogleAppsCardV1Image: Schema.Schema<GoogleAppsCardV1Image> =
+export const GoogleAppsCardV1Image: Schema.Codec<GoogleAppsCardV1Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       altText: Schema.optional(Schema.String),
@@ -1034,7 +1034,7 @@ export const GoogleAppsCardV1Image: Schema.Schema<GoogleAppsCardV1Image> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Image",
-  }) as any as Schema.Schema<GoogleAppsCardV1Image>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Image>;
 
 export interface GoogleAppsCardV1NestedWidget {
   /** A text paragraph widget. */
@@ -1045,7 +1045,7 @@ export interface GoogleAppsCardV1NestedWidget {
   image?: GoogleAppsCardV1Image;
 }
 
-export const GoogleAppsCardV1NestedWidget: Schema.Schema<GoogleAppsCardV1NestedWidget> =
+export const GoogleAppsCardV1NestedWidget: Schema.Codec<GoogleAppsCardV1NestedWidget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       textParagraph: Schema.optional(GoogleAppsCardV1TextParagraph),
@@ -1054,7 +1054,7 @@ export const GoogleAppsCardV1NestedWidget: Schema.Schema<GoogleAppsCardV1NestedW
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1NestedWidget",
-  }) as any as Schema.Schema<GoogleAppsCardV1NestedWidget>;
+  }) as any as Schema.Codec<GoogleAppsCardV1NestedWidget>;
 
 export interface GoogleAppsCardV1CarouselCard {
   /** A list of widgets displayed in the carousel card. The widgets are displayed in the order that they are specified. */
@@ -1063,7 +1063,7 @@ export interface GoogleAppsCardV1CarouselCard {
   footerWidgets?: ReadonlyArray<GoogleAppsCardV1NestedWidget>;
 }
 
-export const GoogleAppsCardV1CarouselCard: Schema.Schema<GoogleAppsCardV1CarouselCard> =
+export const GoogleAppsCardV1CarouselCard: Schema.Codec<GoogleAppsCardV1CarouselCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       widgets: Schema.optional(Schema.Array(GoogleAppsCardV1NestedWidget)),
@@ -1073,14 +1073,14 @@ export const GoogleAppsCardV1CarouselCard: Schema.Schema<GoogleAppsCardV1Carouse
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1CarouselCard",
-  }) as any as Schema.Schema<GoogleAppsCardV1CarouselCard>;
+  }) as any as Schema.Codec<GoogleAppsCardV1CarouselCard>;
 
 export interface GoogleAppsCardV1Carousel {
   /** A list of cards included in the carousel. */
   carouselCards?: ReadonlyArray<GoogleAppsCardV1CarouselCard>;
 }
 
-export const GoogleAppsCardV1Carousel: Schema.Schema<GoogleAppsCardV1Carousel> =
+export const GoogleAppsCardV1Carousel: Schema.Codec<GoogleAppsCardV1Carousel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       carouselCards: Schema.optional(
@@ -1089,7 +1089,7 @@ export const GoogleAppsCardV1Carousel: Schema.Schema<GoogleAppsCardV1Carousel> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Carousel",
-  }) as any as Schema.Schema<GoogleAppsCardV1Carousel>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Carousel>;
 
 export interface GoogleAppsCardV1SelectionItem {
   /** For multiselect menus, a text description or label that's displayed below the item's `text` field. */
@@ -1103,7 +1103,7 @@ export interface GoogleAppsCardV1SelectionItem {
   value?: string;
 }
 
-export const GoogleAppsCardV1SelectionItem: Schema.Schema<GoogleAppsCardV1SelectionItem> =
+export const GoogleAppsCardV1SelectionItem: Schema.Codec<GoogleAppsCardV1SelectionItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bottomText: Schema.optional(Schema.String),
     selected: Schema.optional(Schema.Boolean),
@@ -1119,7 +1119,7 @@ export interface GoogleAppsCardV1PlatformDataSource {
   hostAppDataSource?: HostAppDataSourceMarkup;
 }
 
-export const GoogleAppsCardV1PlatformDataSource: Schema.Schema<GoogleAppsCardV1PlatformDataSource> =
+export const GoogleAppsCardV1PlatformDataSource: Schema.Codec<GoogleAppsCardV1PlatformDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commonDataSource: Schema.optional(Schema.String),
     hostAppDataSource: Schema.optional(HostAppDataSourceMarkup),
@@ -1134,7 +1134,7 @@ export interface GoogleAppsCardV1DataSourceConfig {
   minCharactersTrigger?: number;
 }
 
-export const GoogleAppsCardV1DataSourceConfig: Schema.Schema<GoogleAppsCardV1DataSourceConfig> =
+export const GoogleAppsCardV1DataSourceConfig: Schema.Codec<GoogleAppsCardV1DataSourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remoteDataSource: Schema.optional(GoogleAppsCardV1Action),
     platformDataSource: Schema.optional(GoogleAppsCardV1PlatformDataSource),
@@ -1172,7 +1172,7 @@ export interface GoogleAppsCardV1SelectionInput {
   platformDataSource?: GoogleAppsCardV1PlatformDataSource;
 }
 
-export const GoogleAppsCardV1SelectionInput: Schema.Schema<GoogleAppsCardV1SelectionInput> =
+export const GoogleAppsCardV1SelectionInput: Schema.Codec<GoogleAppsCardV1SelectionInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GoogleAppsCardV1SelectionItem)),
     externalDataSource: Schema.optional(GoogleAppsCardV1Action),
@@ -1191,7 +1191,7 @@ export const GoogleAppsCardV1SelectionInput: Schema.Schema<GoogleAppsCardV1Selec
 
 export interface GoogleAppsCardV1Divider {}
 
-export const GoogleAppsCardV1Divider: Schema.Schema<GoogleAppsCardV1Divider> =
+export const GoogleAppsCardV1Divider: Schema.Codec<GoogleAppsCardV1Divider> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCardV1Divider",
   });
@@ -1213,7 +1213,7 @@ export interface GoogleAppsCardV1DateTimePicker {
   timezoneOffsetDate?: number;
 }
 
-export const GoogleAppsCardV1DateTimePicker: Schema.Schema<GoogleAppsCardV1DateTimePicker> =
+export const GoogleAppsCardV1DateTimePicker: Schema.Codec<GoogleAppsCardV1DateTimePicker> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     valueMsEpoch: Schema.optional(Schema.String),
@@ -1243,7 +1243,7 @@ export interface GoogleAppsCardV1Widgets {
   decoratedText?: GoogleAppsCardV1DecoratedText;
 }
 
-export const GoogleAppsCardV1Widgets: Schema.Schema<GoogleAppsCardV1Widgets> =
+export const GoogleAppsCardV1Widgets: Schema.Codec<GoogleAppsCardV1Widgets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       textInput: Schema.optional(GoogleAppsCardV1TextInput),
@@ -1257,7 +1257,7 @@ export const GoogleAppsCardV1Widgets: Schema.Schema<GoogleAppsCardV1Widgets> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Widgets",
-  }) as any as Schema.Schema<GoogleAppsCardV1Widgets>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Widgets>;
 
 export interface GoogleAppsCardV1Column {
   /** Specifies how a column fills the width of the card. */
@@ -1284,7 +1284,7 @@ export interface GoogleAppsCardV1Column {
     | (string & {});
 }
 
-export const GoogleAppsCardV1Column: Schema.Schema<GoogleAppsCardV1Column> =
+export const GoogleAppsCardV1Column: Schema.Codec<GoogleAppsCardV1Column> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       horizontalSizeStyle: Schema.optional(Schema.String),
@@ -1294,28 +1294,28 @@ export const GoogleAppsCardV1Column: Schema.Schema<GoogleAppsCardV1Column> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Column",
-  }) as any as Schema.Schema<GoogleAppsCardV1Column>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Column>;
 
 export interface GoogleAppsCardV1Columns {
   /** An array of columns. You can include up to 2 columns in a card or dialog. */
   columnItems?: ReadonlyArray<GoogleAppsCardV1Column>;
 }
 
-export const GoogleAppsCardV1Columns: Schema.Schema<GoogleAppsCardV1Columns> =
+export const GoogleAppsCardV1Columns: Schema.Codec<GoogleAppsCardV1Columns> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       columnItems: Schema.optional(Schema.Array(GoogleAppsCardV1Column)),
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Columns",
-  }) as any as Schema.Schema<GoogleAppsCardV1Columns>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Columns>;
 
 export interface GoogleAppsCardV1Trigger {
   /** The unique identifier of the ActionRule. */
   actionRuleId?: string;
 }
 
-export const GoogleAppsCardV1Trigger: Schema.Schema<GoogleAppsCardV1Trigger> =
+export const GoogleAppsCardV1Trigger: Schema.Codec<GoogleAppsCardV1Trigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionRuleId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1Trigger" });
@@ -1325,7 +1325,7 @@ export interface GoogleAppsCardV1UpdateVisibilityAction {
   visibility?: "VISIBILITY_UNSPECIFIED" | "VISIBLE" | "HIDDEN" | (string & {});
 }
 
-export const GoogleAppsCardV1UpdateVisibilityAction: Schema.Schema<GoogleAppsCardV1UpdateVisibilityAction> =
+export const GoogleAppsCardV1UpdateVisibilityAction: Schema.Codec<GoogleAppsCardV1UpdateVisibilityAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visibility: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1UpdateVisibilityAction" });
@@ -1335,7 +1335,7 @@ export interface GoogleAppsCardV1CommonWidgetAction {
   updateVisibilityAction?: GoogleAppsCardV1UpdateVisibilityAction;
 }
 
-export const GoogleAppsCardV1CommonWidgetAction: Schema.Schema<GoogleAppsCardV1CommonWidgetAction> =
+export const GoogleAppsCardV1CommonWidgetAction: Schema.Codec<GoogleAppsCardV1CommonWidgetAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateVisibilityAction: Schema.optional(
       GoogleAppsCardV1UpdateVisibilityAction,
@@ -1351,7 +1351,7 @@ export interface GoogleAppsCardV1EventAction {
   commonWidgetAction?: GoogleAppsCardV1CommonWidgetAction;
 }
 
-export const GoogleAppsCardV1EventAction: Schema.Schema<GoogleAppsCardV1EventAction> =
+export const GoogleAppsCardV1EventAction: Schema.Codec<GoogleAppsCardV1EventAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     postEventTriggers: Schema.optional(Schema.Array(GoogleAppsCardV1Trigger)),
     actionRuleId: Schema.optional(Schema.String),
@@ -1398,7 +1398,7 @@ export interface GoogleAppsCardV1Widget {
   image?: GoogleAppsCardV1Image;
 }
 
-export const GoogleAppsCardV1Widget: Schema.Schema<GoogleAppsCardV1Widget> =
+export const GoogleAppsCardV1Widget: Schema.Codec<GoogleAppsCardV1Widget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1420,7 +1420,7 @@ export const GoogleAppsCardV1Widget: Schema.Schema<GoogleAppsCardV1Widget> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Widget",
-  }) as any as Schema.Schema<GoogleAppsCardV1Widget>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Widget>;
 
 export interface GoogleAppsCardV1CollapseControl {
   /** The horizontal alignment of the expand and collapse button. */
@@ -1436,7 +1436,7 @@ export interface GoogleAppsCardV1CollapseControl {
   expandButton?: GoogleAppsCardV1Button;
 }
 
-export const GoogleAppsCardV1CollapseControl: Schema.Schema<GoogleAppsCardV1CollapseControl> =
+export const GoogleAppsCardV1CollapseControl: Schema.Codec<GoogleAppsCardV1CollapseControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       horizontalAlignment: Schema.optional(Schema.String),
@@ -1445,7 +1445,7 @@ export const GoogleAppsCardV1CollapseControl: Schema.Schema<GoogleAppsCardV1Coll
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1CollapseControl",
-  }) as any as Schema.Schema<GoogleAppsCardV1CollapseControl>;
+  }) as any as Schema.Codec<GoogleAppsCardV1CollapseControl>;
 
 export interface GoogleAppsCardV1Section {
   /** All the widgets in the section. Must contain at least one widget. */
@@ -1462,7 +1462,7 @@ export interface GoogleAppsCardV1Section {
   id?: string;
 }
 
-export const GoogleAppsCardV1Section: Schema.Schema<GoogleAppsCardV1Section> =
+export const GoogleAppsCardV1Section: Schema.Codec<GoogleAppsCardV1Section> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       widgets: Schema.optional(Schema.Array(GoogleAppsCardV1Widget)),
@@ -1474,7 +1474,7 @@ export const GoogleAppsCardV1Section: Schema.Schema<GoogleAppsCardV1Section> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Section",
-  }) as any as Schema.Schema<GoogleAppsCardV1Section>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Section>;
 
 export interface GoogleAppsCardV1ExpressionDataCondition {
   /** The type of the condition. */
@@ -1485,7 +1485,7 @@ export interface GoogleAppsCardV1ExpressionDataCondition {
     | (string & {});
 }
 
-export const GoogleAppsCardV1ExpressionDataCondition: Schema.Schema<GoogleAppsCardV1ExpressionDataCondition> =
+export const GoogleAppsCardV1ExpressionDataCondition: Schema.Codec<GoogleAppsCardV1ExpressionDataCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditionType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsCardV1ExpressionDataCondition" });
@@ -1497,7 +1497,7 @@ export interface GoogleAppsCardV1Condition {
   expressionDataCondition?: GoogleAppsCardV1ExpressionDataCondition;
 }
 
-export const GoogleAppsCardV1Condition: Schema.Schema<GoogleAppsCardV1Condition> =
+export const GoogleAppsCardV1Condition: Schema.Codec<GoogleAppsCardV1Condition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionRuleId: Schema.optional(Schema.String),
     expressionDataCondition: Schema.optional(
@@ -1516,7 +1516,7 @@ export interface GoogleAppsCardV1ExpressionData {
   conditions?: ReadonlyArray<GoogleAppsCardV1Condition>;
 }
 
-export const GoogleAppsCardV1ExpressionData: Schema.Schema<GoogleAppsCardV1ExpressionData> =
+export const GoogleAppsCardV1ExpressionData: Schema.Codec<GoogleAppsCardV1ExpressionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     eventActions: Schema.optional(Schema.Array(GoogleAppsCardV1EventAction)),
@@ -1531,7 +1531,7 @@ export interface GoogleAppsCardV1CardAction {
   actionLabel?: string;
 }
 
-export const GoogleAppsCardV1CardAction: Schema.Schema<GoogleAppsCardV1CardAction> =
+export const GoogleAppsCardV1CardAction: Schema.Codec<GoogleAppsCardV1CardAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       onClick: Schema.optional(GoogleAppsCardV1OnClick),
@@ -1539,7 +1539,7 @@ export const GoogleAppsCardV1CardAction: Schema.Schema<GoogleAppsCardV1CardActio
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1CardAction",
-  }) as any as Schema.Schema<GoogleAppsCardV1CardAction>;
+  }) as any as Schema.Codec<GoogleAppsCardV1CardAction>;
 
 export interface GoogleAppsCardV1Card {
   /** The fixed footer shown at the bottom of this card. Setting `fixedFooter` without specifying a `primaryButton` or a `secondaryButton` causes an error. For Chat apps, you can use fixed footers in [dialogs](https://developers.google.com/workspace/chat/dialogs), but not [card messages](https://developers.google.com/workspace/chat/create-messages#create). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -1570,7 +1570,7 @@ export interface GoogleAppsCardV1Card {
   cardActions?: ReadonlyArray<GoogleAppsCardV1CardAction>;
 }
 
-export const GoogleAppsCardV1Card: Schema.Schema<GoogleAppsCardV1Card> =
+export const GoogleAppsCardV1Card: Schema.Codec<GoogleAppsCardV1Card> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fixedFooter: Schema.optional(GoogleAppsCardV1CardFixedFooter),
@@ -1587,7 +1587,7 @@ export const GoogleAppsCardV1Card: Schema.Schema<GoogleAppsCardV1Card> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Card",
-  }) as any as Schema.Schema<GoogleAppsCardV1Card>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Card>;
 
 export interface GoogleAppsCardV1OverflowMenuItem {
   /** Whether the menu option is disabled. Defaults to false. */
@@ -1600,7 +1600,7 @@ export interface GoogleAppsCardV1OverflowMenuItem {
   onClick?: GoogleAppsCardV1OnClick;
 }
 
-export const GoogleAppsCardV1OverflowMenuItem: Schema.Schema<GoogleAppsCardV1OverflowMenuItem> =
+export const GoogleAppsCardV1OverflowMenuItem: Schema.Codec<GoogleAppsCardV1OverflowMenuItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disabled: Schema.optional(Schema.Boolean),
@@ -1610,21 +1610,21 @@ export const GoogleAppsCardV1OverflowMenuItem: Schema.Schema<GoogleAppsCardV1Ove
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1OverflowMenuItem",
-  }) as any as Schema.Schema<GoogleAppsCardV1OverflowMenuItem>;
+  }) as any as Schema.Codec<GoogleAppsCardV1OverflowMenuItem>;
 
 export interface GoogleAppsCardV1OverflowMenu {
   /** Required. The list of menu options. */
   items?: ReadonlyArray<GoogleAppsCardV1OverflowMenuItem>;
 }
 
-export const GoogleAppsCardV1OverflowMenu: Schema.Schema<GoogleAppsCardV1OverflowMenu> =
+export const GoogleAppsCardV1OverflowMenu: Schema.Codec<GoogleAppsCardV1OverflowMenu> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(Schema.Array(GoogleAppsCardV1OverflowMenuItem)),
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1OverflowMenu",
-  }) as any as Schema.Schema<GoogleAppsCardV1OverflowMenu>;
+  }) as any as Schema.Codec<GoogleAppsCardV1OverflowMenu>;
 
 export interface GoogleAppsCardV1OpenLink {
   /** Whether the client forgets about a link after opening it, or observes it until the window closes. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): */
@@ -1635,7 +1635,7 @@ export interface GoogleAppsCardV1OpenLink {
   openAs?: "FULL_SIZE" | "OVERLAY" | (string & {});
 }
 
-export const GoogleAppsCardV1OpenLink: Schema.Schema<GoogleAppsCardV1OpenLink> =
+export const GoogleAppsCardV1OpenLink: Schema.Codec<GoogleAppsCardV1OpenLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     onClose: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -1655,7 +1655,7 @@ export interface GoogleAppsCardV1OnClick {
   openDynamicLinkAction?: GoogleAppsCardV1Action;
 }
 
-export const GoogleAppsCardV1OnClick: Schema.Schema<GoogleAppsCardV1OnClick> =
+export const GoogleAppsCardV1OnClick: Schema.Codec<GoogleAppsCardV1OnClick> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       card: Schema.optional(GoogleAppsCardV1Card),
@@ -1666,7 +1666,7 @@ export const GoogleAppsCardV1OnClick: Schema.Schema<GoogleAppsCardV1OnClick> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1OnClick",
-  }) as any as Schema.Schema<GoogleAppsCardV1OnClick>;
+  }) as any as Schema.Codec<GoogleAppsCardV1OnClick>;
 
 export interface GoogleAppsCardV1Chip {
   /** The text displayed inside the chip. */
@@ -1683,7 +1683,7 @@ export interface GoogleAppsCardV1Chip {
   onClick?: GoogleAppsCardV1OnClick;
 }
 
-export const GoogleAppsCardV1Chip: Schema.Schema<GoogleAppsCardV1Chip> =
+export const GoogleAppsCardV1Chip: Schema.Codec<GoogleAppsCardV1Chip> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       label: Schema.optional(Schema.String),
@@ -1695,14 +1695,14 @@ export const GoogleAppsCardV1Chip: Schema.Schema<GoogleAppsCardV1Chip> =
     }),
   ).annotate({
     identifier: "GoogleAppsCardV1Chip",
-  }) as any as Schema.Schema<GoogleAppsCardV1Chip>;
+  }) as any as Schema.Codec<GoogleAppsCardV1Chip>;
 
 export interface Dialog {
   /** Input only. Body of the dialog, which is rendered in a modal. Google Chat apps don't support the following card entities: `DateTimePicker`, `OnChangeAction`. */
   body?: GoogleAppsCardV1Card;
 }
 
-export const Dialog: Schema.Schema<Dialog> =
+export const Dialog: Schema.Codec<Dialog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     body: Schema.optional(GoogleAppsCardV1Card),
   }).annotate({ identifier: "Dialog" });
@@ -1732,7 +1732,7 @@ export interface ActionStatus {
   userFacingMessage?: string;
 }
 
-export const ActionStatus: Schema.Schema<ActionStatus> =
+export const ActionStatus: Schema.Codec<ActionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.String),
     userFacingMessage: Schema.optional(Schema.String),
@@ -1745,7 +1745,7 @@ export interface DialogAction {
   actionStatus?: ActionStatus;
 }
 
-export const DialogAction: Schema.Schema<DialogAction> =
+export const DialogAction: Schema.Codec<DialogAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialog: Schema.optional(Dialog),
     actionStatus: Schema.optional(ActionStatus),
@@ -1756,7 +1756,7 @@ export interface SelectionItems {
   items?: ReadonlyArray<GoogleAppsCardV1SelectionItem>;
 }
 
-export const SelectionItems: Schema.Schema<SelectionItems> =
+export const SelectionItems: Schema.Codec<SelectionItems> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GoogleAppsCardV1SelectionItem)),
   }).annotate({ identifier: "SelectionItems" });
@@ -1768,7 +1768,7 @@ export interface UpdatedWidget {
   widget?: string;
 }
 
-export const UpdatedWidget: Schema.Schema<UpdatedWidget> =
+export const UpdatedWidget: Schema.Codec<UpdatedWidget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(SelectionItems),
     widget: Schema.optional(Schema.String),
@@ -1793,7 +1793,7 @@ export interface ActionResponse {
   updatedWidget?: UpdatedWidget;
 }
 
-export const ActionResponse: Schema.Schema<ActionResponse> =
+export const ActionResponse: Schema.Codec<ActionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogAction: Schema.optional(DialogAction),
     type: Schema.optional(Schema.String),
@@ -1808,7 +1808,7 @@ export interface Thread {
   threadKey?: string;
 }
 
-export const Thread: Schema.Schema<Thread> =
+export const Thread: Schema.Codec<Thread> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     threadKey: Schema.optional(Schema.String),
@@ -1821,7 +1821,7 @@ export interface UserMentionMetadata {
   user?: User;
 }
 
-export const UserMentionMetadata: Schema.Schema<UserMentionMetadata> =
+export const UserMentionMetadata: Schema.Codec<UserMentionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     user: Schema.optional(User),
@@ -1832,7 +1832,7 @@ export interface CustomEmojiMetadata {
   customEmoji?: CustomEmoji;
 }
 
-export const CustomEmojiMetadata: Schema.Schema<CustomEmojiMetadata> =
+export const CustomEmojiMetadata: Schema.Codec<CustomEmojiMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customEmoji: Schema.optional(CustomEmoji),
   }).annotate({ identifier: "CustomEmojiMetadata" });
@@ -1850,7 +1850,7 @@ export interface SlashCommandMetadata {
   bot?: User;
 }
 
-export const SlashCommandMetadata: Schema.Schema<SlashCommandMetadata> =
+export const SlashCommandMetadata: Schema.Codec<SlashCommandMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commandName: Schema.optional(Schema.String),
     triggersDialog: Schema.optional(Schema.Boolean),
@@ -1864,7 +1864,7 @@ export interface DriveDataRef {
   driveFileId?: string;
 }
 
-export const DriveDataRef: Schema.Schema<DriveDataRef> =
+export const DriveDataRef: Schema.Codec<DriveDataRef> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveFileId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveDataRef" });
@@ -1876,7 +1876,7 @@ export interface DriveLinkData {
   mimeType?: string;
 }
 
-export const DriveLinkData: Schema.Schema<DriveLinkData> =
+export const DriveLinkData: Schema.Codec<DriveLinkData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveDataRef: Schema.optional(DriveDataRef),
     mimeType: Schema.optional(Schema.String),
@@ -1891,7 +1891,7 @@ export interface ChatSpaceLinkData {
   message?: string;
 }
 
-export const ChatSpaceLinkData: Schema.Schema<ChatSpaceLinkData> =
+export const ChatSpaceLinkData: Schema.Codec<ChatSpaceLinkData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
     thread: Schema.optional(Schema.String),
@@ -1905,7 +1905,7 @@ export interface CalendarEventLinkData {
   eventId?: string;
 }
 
-export const CalendarEventLinkData: Schema.Schema<CalendarEventLinkData> =
+export const CalendarEventLinkData: Schema.Codec<CalendarEventLinkData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     calendarId: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
@@ -1925,7 +1925,7 @@ export interface MeetSpaceLinkData {
   type?: "TYPE_UNSPECIFIED" | "MEETING" | "HUDDLE" | (string & {});
 }
 
-export const MeetSpaceLinkData: Schema.Schema<MeetSpaceLinkData> =
+export const MeetSpaceLinkData: Schema.Codec<MeetSpaceLinkData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meetingCode: Schema.optional(Schema.String),
     huddleStatus: Schema.optional(Schema.String),
@@ -1954,7 +1954,7 @@ export interface RichLinkMetadata {
     | (string & {});
 }
 
-export const RichLinkMetadata: Schema.Schema<RichLinkMetadata> =
+export const RichLinkMetadata: Schema.Codec<RichLinkMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     driveLinkData: Schema.optional(DriveLinkData),
@@ -1987,7 +1987,7 @@ export interface Annotation {
   richLinkMetadata?: RichLinkMetadata;
 }
 
-export const Annotation: Schema.Schema<Annotation> =
+export const Annotation: Schema.Codec<Annotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userMention: Schema.optional(UserMentionMetadata),
     customEmojiMetadata: Schema.optional(CustomEmojiMetadata),
@@ -2021,7 +2021,7 @@ export interface Attachment {
   contentName?: string;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
+export const Attachment: Schema.Codec<Attachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveDataRef: Schema.optional(DriveDataRef),
     contentType: Schema.optional(Schema.String),
@@ -2046,7 +2046,7 @@ export interface QuotedMessageSnapshot {
   text?: string;
 }
 
-export const QuotedMessageSnapshot: Schema.Schema<QuotedMessageSnapshot> =
+export const QuotedMessageSnapshot: Schema.Codec<QuotedMessageSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sender: Schema.optional(Schema.String),
     formattedText: Schema.optional(Schema.String),
@@ -2062,7 +2062,7 @@ export interface ForwardedMetadata {
   spaceDisplayName?: string;
 }
 
-export const ForwardedMetadata: Schema.Schema<ForwardedMetadata> =
+export const ForwardedMetadata: Schema.Codec<ForwardedMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
     spaceDisplayName: Schema.optional(Schema.String),
@@ -2081,7 +2081,7 @@ export interface QuotedMessageMetadata {
   quoteType?: "QUOTE_TYPE_UNSPECIFIED" | "REPLY" | "FORWARD" | (string & {});
 }
 
-export const QuotedMessageMetadata: Schema.Schema<QuotedMessageMetadata> =
+export const QuotedMessageMetadata: Schema.Codec<QuotedMessageMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     quotedMessageSnapshot: Schema.optional(QuotedMessageSnapshot),
@@ -2095,7 +2095,7 @@ export interface AttachedGif {
   uri?: string;
 }
 
-export const AttachedGif: Schema.Schema<AttachedGif> =
+export const AttachedGif: Schema.Codec<AttachedGif> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "AttachedGif" });
@@ -2114,7 +2114,7 @@ export interface DeletionMetadata {
     | (string & {});
 }
 
-export const DeletionMetadata: Schema.Schema<DeletionMetadata> =
+export const DeletionMetadata: Schema.Codec<DeletionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletionType: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeletionMetadata" });
@@ -2130,7 +2130,7 @@ export interface CardHeader {
   imageUrl?: string;
 }
 
-export const CardHeader: Schema.Schema<CardHeader> =
+export const CardHeader: Schema.Codec<CardHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subtitle: Schema.optional(Schema.String),
     imageStyle: Schema.optional(Schema.String),
@@ -2145,7 +2145,7 @@ export interface CardAction {
   onClick?: OnClick;
 }
 
-export const CardAction: Schema.Schema<CardAction> =
+export const CardAction: Schema.Codec<CardAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionLabel: Schema.optional(Schema.String),
     onClick: Schema.optional(OnClick),
@@ -2162,7 +2162,7 @@ export interface Card {
   name?: string;
 }
 
-export const Card: Schema.Schema<Card> =
+export const Card: Schema.Codec<Card> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sections: Schema.optional(Schema.Array(Section)),
     header: Schema.optional(CardHeader),
@@ -2175,7 +2175,7 @@ export interface MatchedUrl {
   url?: string;
 }
 
-export const MatchedUrl: Schema.Schema<MatchedUrl> =
+export const MatchedUrl: Schema.Codec<MatchedUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "MatchedUrl" });
@@ -2187,7 +2187,7 @@ export interface EmojiReactionSummary {
   emoji?: Emoji;
 }
 
-export const EmojiReactionSummary: Schema.Schema<EmojiReactionSummary> =
+export const EmojiReactionSummary: Schema.Codec<EmojiReactionSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reactionCount: Schema.optional(Schema.Number),
     emoji: Schema.optional(Emoji),
@@ -2200,7 +2200,7 @@ export interface SpaceDetails {
   guidelines?: string;
 }
 
-export const SpaceDetails: Schema.Schema<SpaceDetails> =
+export const SpaceDetails: Schema.Codec<SpaceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     guidelines: Schema.optional(Schema.String),
@@ -2213,7 +2213,7 @@ export interface MembershipCount {
   joinedGroupCount?: number;
 }
 
-export const MembershipCount: Schema.Schema<MembershipCount> =
+export const MembershipCount: Schema.Codec<MembershipCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     joinedDirectHumanUserCount: Schema.optional(Schema.Number),
     joinedGroupCount: Schema.optional(Schema.Number),
@@ -2230,7 +2230,7 @@ export interface AccessSettings {
   audience?: string;
 }
 
-export const AccessSettings: Schema.Schema<AccessSettings> =
+export const AccessSettings: Schema.Codec<AccessSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessState: Schema.optional(Schema.String),
     audience: Schema.optional(Schema.String),
@@ -2299,7 +2299,7 @@ export interface Space {
   permissionSettings?: PermissionSettings;
 }
 
-export const Space: Schema.Schema<Space> =
+export const Space: Schema.Codec<Space> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adminInstalled: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -2331,7 +2331,7 @@ export interface CardWithId {
   card?: GoogleAppsCardV1Card;
 }
 
-export const CardWithId: Schema.Schema<CardWithId> =
+export const CardWithId: Schema.Codec<CardWithId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cardId: Schema.optional(Schema.String),
     card: Schema.optional(GoogleAppsCardV1Card),
@@ -2342,7 +2342,7 @@ export interface AccessoryWidget {
   buttonList?: GoogleAppsCardV1ButtonList;
 }
 
-export const AccessoryWidget: Schema.Schema<AccessoryWidget> =
+export const AccessoryWidget: Schema.Codec<AccessoryWidget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buttonList: Schema.optional(GoogleAppsCardV1ButtonList),
   }).annotate({ identifier: "AccessoryWidget" });
@@ -2404,7 +2404,7 @@ export interface Message {
   fallbackText?: string;
 }
 
-export const Message: Schema.Schema<Message> =
+export const Message: Schema.Codec<Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     actionResponse: Schema.optional(ActionResponse),
@@ -2440,7 +2440,7 @@ export interface MessageCreatedEventData {
   message?: Message;
 }
 
-export const MessageCreatedEventData: Schema.Schema<MessageCreatedEventData> =
+export const MessageCreatedEventData: Schema.Codec<MessageCreatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "MessageCreatedEventData" });
@@ -2450,7 +2450,7 @@ export interface MessageBatchCreatedEventData {
   messages?: ReadonlyArray<MessageCreatedEventData>;
 }
 
-export const MessageBatchCreatedEventData: Schema.Schema<MessageBatchCreatedEventData> =
+export const MessageBatchCreatedEventData: Schema.Codec<MessageBatchCreatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(MessageCreatedEventData)),
   }).annotate({ identifier: "MessageBatchCreatedEventData" });
@@ -2460,7 +2460,7 @@ export interface ReactionDeletedEventData {
   reaction?: Reaction;
 }
 
-export const ReactionDeletedEventData: Schema.Schema<ReactionDeletedEventData> =
+export const ReactionDeletedEventData: Schema.Codec<ReactionDeletedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reaction: Schema.optional(Reaction),
   }).annotate({ identifier: "ReactionDeletedEventData" });
@@ -2470,7 +2470,7 @@ export interface DateInput {
   msSinceEpoch?: string;
 }
 
-export const DateInput: Schema.Schema<DateInput> =
+export const DateInput: Schema.Codec<DateInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     msSinceEpoch: Schema.optional(Schema.String),
   }).annotate({ identifier: "DateInput" });
@@ -2480,7 +2480,7 @@ export interface ReactionCreatedEventData {
   reaction?: Reaction;
 }
 
-export const ReactionCreatedEventData: Schema.Schema<ReactionCreatedEventData> =
+export const ReactionCreatedEventData: Schema.Codec<ReactionCreatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reaction: Schema.optional(Reaction),
   }).annotate({ identifier: "ReactionCreatedEventData" });
@@ -2490,7 +2490,7 @@ export interface ReactionBatchCreatedEventData {
   reactions?: ReadonlyArray<ReactionCreatedEventData>;
 }
 
-export const ReactionBatchCreatedEventData: Schema.Schema<ReactionBatchCreatedEventData> =
+export const ReactionBatchCreatedEventData: Schema.Codec<ReactionBatchCreatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reactions: Schema.optional(Schema.Array(ReactionCreatedEventData)),
   }).annotate({ identifier: "ReactionBatchCreatedEventData" });
@@ -2504,7 +2504,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2522,7 +2522,7 @@ export interface ChatAppLogEntry {
   deploymentFunction?: string;
 }
 
-export const ChatAppLogEntry: Schema.Schema<ChatAppLogEntry> =
+export const ChatAppLogEntry: Schema.Codec<ChatAppLogEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployment: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -2536,7 +2536,7 @@ export interface ListSpacesResponse {
   nextPageToken?: string;
 }
 
-export const ListSpacesResponse: Schema.Schema<ListSpacesResponse> =
+export const ListSpacesResponse: Schema.Codec<ListSpacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(Space)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2547,7 +2547,7 @@ export interface Group {
   name?: string;
 }
 
-export const Group: Schema.Schema<Group> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Group" });
@@ -2586,7 +2586,7 @@ export interface Membership {
   groupMember?: Group;
 }
 
-export const Membership: Schema.Schema<Membership> =
+export const Membership: Schema.Codec<Membership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     member: Schema.optional(User),
     state: Schema.optional(Schema.String),
@@ -2603,7 +2603,7 @@ export interface MembershipDeletedEventData {
   membership?: Membership;
 }
 
-export const MembershipDeletedEventData: Schema.Schema<MembershipDeletedEventData> =
+export const MembershipDeletedEventData: Schema.Codec<MembershipDeletedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membership: Schema.optional(Membership),
   }).annotate({ identifier: "MembershipDeletedEventData" });
@@ -2613,7 +2613,7 @@ export interface MembershipBatchDeletedEventData {
   memberships?: ReadonlyArray<MembershipDeletedEventData>;
 }
 
-export const MembershipBatchDeletedEventData: Schema.Schema<MembershipBatchDeletedEventData> =
+export const MembershipBatchDeletedEventData: Schema.Codec<MembershipBatchDeletedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(MembershipDeletedEventData)),
   }).annotate({ identifier: "MembershipBatchDeletedEventData" });
@@ -2623,7 +2623,7 @@ export interface StringInputs {
   value?: ReadonlyArray<string>;
 }
 
-export const StringInputs: Schema.Schema<StringInputs> =
+export const StringInputs: Schema.Codec<StringInputs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringInputs" });
@@ -2635,7 +2635,7 @@ export interface TimeInput {
   minutes?: number;
 }
 
-export const TimeInput: Schema.Schema<TimeInput> =
+export const TimeInput: Schema.Codec<TimeInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
@@ -2650,7 +2650,7 @@ export interface DateTimeInput {
   hasTime?: boolean;
 }
 
-export const DateTimeInput: Schema.Schema<DateTimeInput> =
+export const DateTimeInput: Schema.Codec<DateTimeInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasDate: Schema.optional(Schema.Boolean),
     msSinceEpoch: Schema.optional(Schema.String),
@@ -2668,7 +2668,7 @@ export interface Inputs {
   dateTimeInput?: DateTimeInput;
 }
 
-export const Inputs: Schema.Schema<Inputs> =
+export const Inputs: Schema.Codec<Inputs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringInputs: Schema.optional(StringInputs),
     dateInput: Schema.optional(DateInput),
@@ -2683,7 +2683,7 @@ export interface TimeZone {
   offset?: number;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
+export const TimeZone: Schema.Codec<TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     offset: Schema.optional(Schema.Number),
@@ -2718,7 +2718,7 @@ export interface CommonEventObject {
   parameters?: Record<string, string>;
 }
 
-export const CommonEventObject: Schema.Schema<CommonEventObject> =
+export const CommonEventObject: Schema.Codec<CommonEventObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostApp: Schema.optional(Schema.String),
     formInputs: Schema.optional(Schema.Record(Schema.String, Inputs)),
@@ -2736,7 +2736,7 @@ export interface MarkAsDoNotDisturbRequest {
   expireTime?: string;
 }
 
-export const MarkAsDoNotDisturbRequest: Schema.Schema<MarkAsDoNotDisturbRequest> =
+export const MarkAsDoNotDisturbRequest: Schema.Codec<MarkAsDoNotDisturbRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -2747,7 +2747,7 @@ export interface SpaceUpdatedEventData {
   space?: Space;
 }
 
-export const SpaceUpdatedEventData: Schema.Schema<SpaceUpdatedEventData> =
+export const SpaceUpdatedEventData: Schema.Codec<SpaceUpdatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     space: Schema.optional(Space),
   }).annotate({ identifier: "SpaceUpdatedEventData" });
@@ -2761,7 +2761,7 @@ export interface SearchSpacesResponse {
   totalSize?: number;
 }
 
-export const SearchSpacesResponse: Schema.Schema<SearchSpacesResponse> =
+export const SearchSpacesResponse: Schema.Codec<SearchSpacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(Space)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2773,7 +2773,7 @@ export interface DoNotDisturbMetadata {
   expirationTime?: string;
 }
 
-export const DoNotDisturbMetadata: Schema.Schema<DoNotDisturbMetadata> =
+export const DoNotDisturbMetadata: Schema.Codec<DoNotDisturbMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expirationTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "DoNotDisturbMetadata" });
@@ -2785,7 +2785,7 @@ export interface FindGroupChatsResponse {
   nextPageToken?: string;
 }
 
-export const FindGroupChatsResponse: Schema.Schema<FindGroupChatsResponse> =
+export const FindGroupChatsResponse: Schema.Codec<FindGroupChatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(Space)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2796,7 +2796,7 @@ export interface ReactionBatchDeletedEventData {
   reactions?: ReadonlyArray<ReactionDeletedEventData>;
 }
 
-export const ReactionBatchDeletedEventData: Schema.Schema<ReactionBatchDeletedEventData> =
+export const ReactionBatchDeletedEventData: Schema.Codec<ReactionBatchDeletedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reactions: Schema.optional(Schema.Array(ReactionDeletedEventData)),
   }).annotate({ identifier: "ReactionBatchDeletedEventData" });
@@ -2806,7 +2806,7 @@ export interface MembershipUpdatedEventData {
   membership?: Membership;
 }
 
-export const MembershipUpdatedEventData: Schema.Schema<MembershipUpdatedEventData> =
+export const MembershipUpdatedEventData: Schema.Codec<MembershipUpdatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membership: Schema.optional(Membership),
   }).annotate({ identifier: "MembershipUpdatedEventData" });
@@ -2816,7 +2816,7 @@ export interface MessageDeletedEventData {
   message?: Message;
 }
 
-export const MessageDeletedEventData: Schema.Schema<MessageDeletedEventData> =
+export const MessageDeletedEventData: Schema.Codec<MessageDeletedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "MessageDeletedEventData" });
@@ -2826,7 +2826,7 @@ export interface MessageBatchDeletedEventData {
   messages?: ReadonlyArray<MessageDeletedEventData>;
 }
 
-export const MessageBatchDeletedEventData: Schema.Schema<MessageBatchDeletedEventData> =
+export const MessageBatchDeletedEventData: Schema.Codec<MessageBatchDeletedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(MessageDeletedEventData)),
   }).annotate({ identifier: "MessageBatchDeletedEventData" });
@@ -2836,7 +2836,7 @@ export interface MembershipBatchUpdatedEventData {
   memberships?: ReadonlyArray<MembershipUpdatedEventData>;
 }
 
-export const MembershipBatchUpdatedEventData: Schema.Schema<MembershipBatchUpdatedEventData> =
+export const MembershipBatchUpdatedEventData: Schema.Codec<MembershipBatchUpdatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(MembershipUpdatedEventData)),
   }).annotate({ identifier: "MembershipBatchUpdatedEventData" });
@@ -2846,7 +2846,7 @@ export interface MessageUpdatedEventData {
   message?: Message;
 }
 
-export const MessageUpdatedEventData: Schema.Schema<MessageUpdatedEventData> =
+export const MessageUpdatedEventData: Schema.Codec<MessageUpdatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "MessageUpdatedEventData" });
@@ -2856,7 +2856,7 @@ export interface MessageBatchUpdatedEventData {
   messages?: ReadonlyArray<MessageUpdatedEventData>;
 }
 
-export const MessageBatchUpdatedEventData: Schema.Schema<MessageBatchUpdatedEventData> =
+export const MessageBatchUpdatedEventData: Schema.Codec<MessageBatchUpdatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(MessageUpdatedEventData)),
   }).annotate({ identifier: "MessageBatchUpdatedEventData" });
@@ -2866,7 +2866,7 @@ export interface MembershipCreatedEventData {
   membership?: Membership;
 }
 
-export const MembershipCreatedEventData: Schema.Schema<MembershipCreatedEventData> =
+export const MembershipCreatedEventData: Schema.Codec<MembershipCreatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membership: Schema.optional(Membership),
   }).annotate({ identifier: "MembershipCreatedEventData" });
@@ -2876,7 +2876,7 @@ export interface MembershipBatchCreatedEventData {
   memberships?: ReadonlyArray<MembershipCreatedEventData>;
 }
 
-export const MembershipBatchCreatedEventData: Schema.Schema<MembershipBatchCreatedEventData> =
+export const MembershipBatchCreatedEventData: Schema.Codec<MembershipBatchCreatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(MembershipCreatedEventData)),
   }).annotate({ identifier: "MembershipBatchCreatedEventData" });
@@ -2886,7 +2886,7 @@ export interface SpaceBatchUpdatedEventData {
   spaces?: ReadonlyArray<SpaceUpdatedEventData>;
 }
 
-export const SpaceBatchUpdatedEventData: Schema.Schema<SpaceBatchUpdatedEventData> =
+export const SpaceBatchUpdatedEventData: Schema.Codec<SpaceBatchUpdatedEventData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(SpaceUpdatedEventData)),
   }).annotate({ identifier: "SpaceBatchUpdatedEventData" });
@@ -2936,7 +2936,7 @@ export interface SpaceEvent {
   membershipDeletedEventData?: MembershipDeletedEventData;
 }
 
-export const SpaceEvent: Schema.Schema<SpaceEvent> =
+export const SpaceEvent: Schema.Codec<SpaceEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reactionBatchDeletedEventData: Schema.optional(
       ReactionBatchDeletedEventData,
@@ -2990,7 +2990,7 @@ export interface SpaceNotificationSetting {
   name?: string;
 }
 
-export const SpaceNotificationSetting: Schema.Schema<SpaceNotificationSetting> =
+export const SpaceNotificationSetting: Schema.Codec<SpaceNotificationSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     muteSetting: Schema.optional(Schema.String),
     notificationSetting: Schema.optional(Schema.String),
@@ -2999,7 +2999,7 @@ export const SpaceNotificationSetting: Schema.Schema<SpaceNotificationSetting> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -3015,7 +3015,7 @@ export interface AppCommandMetadata {
   appCommandId?: number;
 }
 
-export const AppCommandMetadata: Schema.Schema<AppCommandMetadata> =
+export const AppCommandMetadata: Schema.Codec<AppCommandMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appCommandType: Schema.optional(Schema.String),
     appCommandId: Schema.optional(Schema.Number),
@@ -3065,7 +3065,7 @@ export interface DeprecatedEvent {
   space?: Space;
 }
 
-export const DeprecatedEvent: Schema.Schema<DeprecatedEvent> =
+export const DeprecatedEvent: Schema.Codec<DeprecatedEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appCommandMetadata: Schema.optional(AppCommandMetadata),
     common: Schema.optional(CommonEventObject),
@@ -3088,7 +3088,7 @@ export interface UploadAttachmentResponse {
   attachmentDataRef?: AttachmentDataRef;
 }
 
-export const UploadAttachmentResponse: Schema.Schema<UploadAttachmentResponse> =
+export const UploadAttachmentResponse: Schema.Codec<UploadAttachmentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachmentDataRef: Schema.optional(AttachmentDataRef),
   }).annotate({ identifier: "UploadAttachmentResponse" });
@@ -3098,14 +3098,14 @@ export interface CompleteImportSpaceResponse {
   space?: Space;
 }
 
-export const CompleteImportSpaceResponse: Schema.Schema<CompleteImportSpaceResponse> =
+export const CompleteImportSpaceResponse: Schema.Codec<CompleteImportSpaceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     space: Schema.optional(Space),
   }).annotate({ identifier: "CompleteImportSpaceResponse" });
 
 export interface MarkAsAwayRequest {}
 
-export const MarkAsAwayRequest: Schema.Schema<MarkAsAwayRequest> =
+export const MarkAsAwayRequest: Schema.Codec<MarkAsAwayRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAsAwayRequest",
   });
@@ -3117,7 +3117,7 @@ export interface SectionItem {
   space?: string;
 }
 
-export const SectionItem: Schema.Schema<SectionItem> =
+export const SectionItem: Schema.Codec<SectionItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     space: Schema.optional(Schema.String),
@@ -3130,7 +3130,7 @@ export interface ListSpaceEventsResponse {
   nextPageToken?: string;
 }
 
-export const ListSpaceEventsResponse: Schema.Schema<ListSpaceEventsResponse> =
+export const ListSpaceEventsResponse: Schema.Codec<ListSpaceEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spaceEvents: Schema.optional(Schema.Array(SpaceEvent)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3141,14 +3141,14 @@ export interface MoveSectionItemRequest {
   targetSection?: string;
 }
 
-export const MoveSectionItemRequest: Schema.Schema<MoveSectionItemRequest> =
+export const MoveSectionItemRequest: Schema.Codec<MoveSectionItemRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSection: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveSectionItemRequest" });
 
 export interface CompleteImportSpaceRequest {}
 
-export const CompleteImportSpaceRequest: Schema.Schema<CompleteImportSpaceRequest> =
+export const CompleteImportSpaceRequest: Schema.Codec<CompleteImportSpaceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CompleteImportSpaceRequest",
   });
@@ -3158,7 +3158,7 @@ export interface MoveSectionItemResponse {
   sectionItem?: SectionItem;
 }
 
-export const MoveSectionItemResponse: Schema.Schema<MoveSectionItemResponse> =
+export const MoveSectionItemResponse: Schema.Codec<MoveSectionItemResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sectionItem: Schema.optional(SectionItem),
   }).annotate({ identifier: "MoveSectionItemResponse" });
@@ -3170,7 +3170,7 @@ export interface MarkAsActiveRequest {
   ttl?: string;
 }
 
-export const MarkAsActiveRequest: Schema.Schema<MarkAsActiveRequest> =
+export const MarkAsActiveRequest: Schema.Codec<MarkAsActiveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.String),
@@ -3183,7 +3183,7 @@ export interface ListMembershipsResponse {
   nextPageToken?: string;
 }
 
-export const ListMembershipsResponse: Schema.Schema<ListMembershipsResponse> =
+export const ListMembershipsResponse: Schema.Codec<ListMembershipsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(Membership)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3198,7 +3198,7 @@ export interface SetUpSpaceRequest {
   memberships?: ReadonlyArray<Membership>;
 }
 
-export const SetUpSpaceRequest: Schema.Schema<SetUpSpaceRequest> =
+export const SetUpSpaceRequest: Schema.Codec<SetUpSpaceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     space: Schema.optional(Space),
@@ -3216,7 +3216,7 @@ export interface CustomStatus {
   emoji?: Emoji;
 }
 
-export const CustomStatus: Schema.Schema<CustomStatus> =
+export const CustomStatus: Schema.Codec<CustomStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -3231,7 +3231,7 @@ export interface ListSectionItemsResponse {
   nextPageToken?: string;
 }
 
-export const ListSectionItemsResponse: Schema.Schema<ListSectionItemsResponse> =
+export const ListSectionItemsResponse: Schema.Codec<ListSectionItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sectionItems: Schema.optional(Schema.Array(SectionItem)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3244,7 +3244,7 @@ export interface ThreadReadState {
   lastReadTime?: string;
 }
 
-export const ThreadReadState: Schema.Schema<ThreadReadState> =
+export const ThreadReadState: Schema.Codec<ThreadReadState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     lastReadTime: Schema.optional(Schema.String),
@@ -3257,7 +3257,7 @@ export interface ListCustomEmojisResponse {
   customEmojis?: ReadonlyArray<CustomEmoji>;
 }
 
-export const ListCustomEmojisResponse: Schema.Schema<ListCustomEmojisResponse> =
+export const ListCustomEmojisResponse: Schema.Codec<ListCustomEmojisResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     customEmojis: Schema.optional(Schema.Array(CustomEmoji)),
@@ -3268,7 +3268,7 @@ export interface Media {
   resourceName?: string;
 }
 
-export const Media: Schema.Schema<Media> =
+export const Media: Schema.Codec<Media> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Media" });
@@ -3278,7 +3278,7 @@ export interface UploadAttachmentRequest {
   filename?: string;
 }
 
-export const UploadAttachmentRequest: Schema.Schema<UploadAttachmentRequest> =
+export const UploadAttachmentRequest: Schema.Codec<UploadAttachmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filename: Schema.optional(Schema.String),
   }).annotate({ identifier: "UploadAttachmentRequest" });
@@ -3290,7 +3290,7 @@ export interface ListMessagesResponse {
   nextPageToken?: string;
 }
 
-export const ListMessagesResponse: Schema.Schema<ListMessagesResponse> =
+export const ListMessagesResponse: Schema.Codec<ListMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(Message)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3301,7 +3301,7 @@ export interface PositionSectionResponse {
   section?: GoogleChatV1Section;
 }
 
-export const PositionSectionResponse: Schema.Schema<PositionSectionResponse> =
+export const PositionSectionResponse: Schema.Codec<PositionSectionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     section: Schema.optional(GoogleChatV1Section),
   }).annotate({ identifier: "PositionSectionResponse" });
@@ -3313,7 +3313,7 @@ export interface SpaceReadState {
   lastReadTime?: string;
 }
 
-export const SpaceReadState: Schema.Schema<SpaceReadState> =
+export const SpaceReadState: Schema.Codec<SpaceReadState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     lastReadTime: Schema.optional(Schema.String),
@@ -3336,7 +3336,7 @@ export interface Availability {
   customStatus?: CustomStatus;
 }
 
-export const Availability: Schema.Schema<Availability> =
+export const Availability: Schema.Codec<Availability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3351,7 +3351,7 @@ export interface PositionSectionRequest {
   relativePosition?: "POSITION_UNSPECIFIED" | "START" | "END" | (string & {});
 }
 
-export const PositionSectionRequest: Schema.Schema<PositionSectionRequest> =
+export const PositionSectionRequest: Schema.Codec<PositionSectionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sortOrder: Schema.optional(Schema.Number),
     relativePosition: Schema.optional(Schema.String),
@@ -3421,7 +3421,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/media/{+resourceName}" }),
   svc,
-) as unknown as Schema.Schema<DownloadMediaRequest>;
+) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Media;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
@@ -3457,7 +3457,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = UploadAttachmentResponse;
 export const UploadMediaResponse =
@@ -3497,7 +3497,7 @@ export const DeleteSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteSpacesRequest>;
+) as unknown as Schema.Codec<DeleteSpacesRequest>;
 
 export type DeleteSpacesResponse = Empty;
 export const DeleteSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3531,7 +3531,7 @@ export const SetupSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/spaces:setup", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SetupSpacesRequest>;
+) as unknown as Schema.Codec<SetupSpacesRequest>;
 
 export type SetupSpacesResponse = Space;
 export const SetupSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
@@ -3570,7 +3570,7 @@ export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetSpacesRequest>;
+) as unknown as Schema.Codec<GetSpacesRequest>;
 
 export type GetSpacesResponse = Space;
 export const GetSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
@@ -3610,7 +3610,7 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchSpacesRequest>;
+) as unknown as Schema.Codec<PatchSpacesRequest>;
 
 export type PatchSpacesResponse = Space;
 export const PatchSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
@@ -3652,7 +3652,7 @@ export const CompleteImportSpacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CompleteImportSpacesRequest>;
+  ) as unknown as Schema.Codec<CompleteImportSpacesRequest>;
 
 export type CompleteImportSpacesResponse = CompleteImportSpaceResponse;
 export const CompleteImportSpacesResponse =
@@ -3693,7 +3693,7 @@ export const ListSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/spaces" }),
   svc,
-) as unknown as Schema.Schema<ListSpacesRequest>;
+) as unknown as Schema.Codec<ListSpacesRequest>;
 
 export type ListSpacesResponse_Op = ListSpacesResponse;
 export const ListSpacesResponse_Op =
@@ -3741,7 +3741,7 @@ export const SearchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/spaces:search" }),
   svc,
-) as unknown as Schema.Schema<SearchSpacesRequest>;
+) as unknown as Schema.Codec<SearchSpacesRequest>;
 
 export type SearchSpacesResponse_Op = SearchSpacesResponse;
 export const SearchSpacesResponse_Op =
@@ -3791,7 +3791,7 @@ export const FindGroupChatsSpacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/spaces:findGroupChats" }),
     svc,
-  ) as unknown as Schema.Schema<FindGroupChatsSpacesRequest>;
+  ) as unknown as Schema.Codec<FindGroupChatsSpacesRequest>;
 
 export type FindGroupChatsSpacesResponse = FindGroupChatsResponse;
 export const FindGroupChatsSpacesResponse =
@@ -3826,7 +3826,7 @@ export const FindDirectMessageSpacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/spaces:findDirectMessage" }),
     svc,
-  ) as unknown as Schema.Schema<FindDirectMessageSpacesRequest>;
+  ) as unknown as Schema.Codec<FindDirectMessageSpacesRequest>;
 
 export type FindDirectMessageSpacesResponse = Space;
 export const FindDirectMessageSpacesResponse =
@@ -3859,7 +3859,7 @@ export const CreateSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/spaces", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateSpacesRequest>;
+) as unknown as Schema.Codec<CreateSpacesRequest>;
 
 export type CreateSpacesResponse = Space;
 export const CreateSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
@@ -3899,7 +3899,7 @@ export const GetSpacesMembersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSpacesMembersRequest>;
+  ) as unknown as Schema.Codec<GetSpacesMembersRequest>;
 
 export type GetSpacesMembersResponse = Membership;
 export const GetSpacesMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Membership;
@@ -3937,7 +3937,7 @@ export const CreateSpacesMembersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/members", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSpacesMembersRequest>;
+  ) as unknown as Schema.Codec<CreateSpacesMembersRequest>;
 
 export type CreateSpacesMembersResponse = Membership;
 export const CreateSpacesMembersResponse =
@@ -3984,7 +3984,7 @@ export const PatchSpacesMembersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchSpacesMembersRequest>;
+  ) as unknown as Schema.Codec<PatchSpacesMembersRequest>;
 
 export type PatchSpacesMembersResponse = Membership;
 export const PatchSpacesMembersResponse =
@@ -4025,7 +4025,7 @@ export const DeleteSpacesMembersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSpacesMembersRequest>;
+  ) as unknown as Schema.Codec<DeleteSpacesMembersRequest>;
 
 export type DeleteSpacesMembersResponse = Membership;
 export const DeleteSpacesMembersResponse =
@@ -4083,7 +4083,7 @@ export const ListSpacesMembersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/members" }),
     svc,
-  ) as unknown as Schema.Schema<ListSpacesMembersRequest>;
+  ) as unknown as Schema.Codec<ListSpacesMembersRequest>;
 
 export type ListSpacesMembersResponse = ListMembershipsResponse;
 export const ListSpacesMembersResponse =
@@ -4118,7 +4118,7 @@ export const GetSpacesSpaceEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSpacesSpaceEventsRequest>;
+  ) as unknown as Schema.Codec<GetSpacesSpaceEventsRequest>;
 
 export type GetSpacesSpaceEventsResponse = SpaceEvent;
 export const GetSpacesSpaceEventsResponse =
@@ -4158,7 +4158,7 @@ export const ListSpacesSpaceEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/spaceEvents" }),
     svc,
-  ) as unknown as Schema.Schema<ListSpacesSpaceEventsRequest>;
+  ) as unknown as Schema.Codec<ListSpacesSpaceEventsRequest>;
 
 export type ListSpacesSpaceEventsResponse = ListSpaceEventsResponse;
 export const ListSpacesSpaceEventsResponse =
@@ -4204,7 +4204,7 @@ export const UpdateSpacesMessagesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSpacesMessagesRequest>;
+  ) as unknown as Schema.Codec<UpdateSpacesMessagesRequest>;
 
 export type UpdateSpacesMessagesResponse = Message;
 export const UpdateSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4242,7 +4242,7 @@ export const DeleteSpacesMessagesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSpacesMessagesRequest>;
+  ) as unknown as Schema.Codec<DeleteSpacesMessagesRequest>;
 
 export type DeleteSpacesMessagesResponse = Empty;
 export const DeleteSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -4294,7 +4294,7 @@ export const ListSpacesMessagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/messages" }),
     svc,
-  ) as unknown as Schema.Schema<ListSpacesMessagesRequest>;
+  ) as unknown as Schema.Codec<ListSpacesMessagesRequest>;
 
 export type ListSpacesMessagesResponse = ListMessagesResponse;
 export const ListSpacesMessagesResponse =
@@ -4359,7 +4359,7 @@ export const CreateSpacesMessagesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/messages", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSpacesMessagesRequest>;
+  ) as unknown as Schema.Codec<CreateSpacesMessagesRequest>;
 
 export type CreateSpacesMessagesResponse = Message;
 export const CreateSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4394,7 +4394,7 @@ export const GetSpacesMessagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSpacesMessagesRequest>;
+  ) as unknown as Schema.Codec<GetSpacesMessagesRequest>;
 
 export type GetSpacesMessagesResponse = Message;
 export const GetSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4435,7 +4435,7 @@ export const PatchSpacesMessagesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchSpacesMessagesRequest>;
+  ) as unknown as Schema.Codec<PatchSpacesMessagesRequest>;
 
 export type PatchSpacesMessagesResponse = Message;
 export const PatchSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4470,7 +4470,7 @@ export const GetSpacesMessagesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSpacesMessagesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetSpacesMessagesAttachmentsRequest>;
 
 export type GetSpacesMessagesAttachmentsResponse = Attachment;
 export const GetSpacesMessagesAttachmentsResponse =
@@ -4513,7 +4513,7 @@ export const ListSpacesMessagesReactionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/reactions" }),
     svc,
-  ) as unknown as Schema.Schema<ListSpacesMessagesReactionsRequest>;
+  ) as unknown as Schema.Codec<ListSpacesMessagesReactionsRequest>;
 
 export type ListSpacesMessagesReactionsResponse = ListReactionsResponse;
 export const ListSpacesMessagesReactionsResponse =
@@ -4554,7 +4554,7 @@ export const CreateSpacesMessagesReactionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/reactions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSpacesMessagesReactionsRequest>;
+  ) as unknown as Schema.Codec<CreateSpacesMessagesReactionsRequest>;
 
 export type CreateSpacesMessagesReactionsResponse = Reaction;
 export const CreateSpacesMessagesReactionsResponse =
@@ -4590,7 +4590,7 @@ export const DeleteSpacesMessagesReactionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSpacesMessagesReactionsRequest>;
+  ) as unknown as Schema.Codec<DeleteSpacesMessagesReactionsRequest>;
 
 export type DeleteSpacesMessagesReactionsResponse = Empty;
 export const DeleteSpacesMessagesReactionsResponse =
@@ -4626,7 +4626,7 @@ export const CreateCustomEmojisRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/customEmojis", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomEmojisRequest>;
+  ) as unknown as Schema.Codec<CreateCustomEmojisRequest>;
 
 export type CreateCustomEmojisResponse = CustomEmoji;
 export const CreateCustomEmojisResponse =
@@ -4663,7 +4663,7 @@ export const GetCustomEmojisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetCustomEmojisRequest>;
+) as unknown as Schema.Codec<GetCustomEmojisRequest>;
 
 export type GetCustomEmojisResponse = CustomEmoji;
 export const GetCustomEmojisResponse = /*@__PURE__*/ /*#__PURE__*/ CustomEmoji;
@@ -4693,7 +4693,7 @@ export const DeleteCustomEmojisRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCustomEmojisRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomEmojisRequest>;
 
 export type DeleteCustomEmojisResponse = Empty;
 export const DeleteCustomEmojisResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -4734,7 +4734,7 @@ export const ListCustomEmojisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/customEmojis" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomEmojisRequest>;
+  ) as unknown as Schema.Codec<ListCustomEmojisRequest>;
 
 export type ListCustomEmojisResponse_Op = ListCustomEmojisResponse;
 export const ListCustomEmojisResponse_Op =
@@ -4769,7 +4769,7 @@ export const GetSpaceReadStateUsersSpacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSpaceReadStateUsersSpacesRequest>;
+  ) as unknown as Schema.Codec<GetSpaceReadStateUsersSpacesRequest>;
 
 export type GetSpaceReadStateUsersSpacesResponse = SpaceReadState;
 export const GetSpaceReadStateUsersSpacesResponse =
@@ -4809,7 +4809,7 @@ export const UpdateSpaceReadStateUsersSpacesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSpaceReadStateUsersSpacesRequest>;
+  ) as unknown as Schema.Codec<UpdateSpaceReadStateUsersSpacesRequest>;
 
 export type UpdateSpaceReadStateUsersSpacesResponse = SpaceReadState;
 export const UpdateSpaceReadStateUsersSpacesResponse =
@@ -4845,7 +4845,7 @@ export const GetThreadReadStateUsersSpacesThreadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetThreadReadStateUsersSpacesThreadsRequest>;
+  ) as unknown as Schema.Codec<GetThreadReadStateUsersSpacesThreadsRequest>;
 
 export type GetThreadReadStateUsersSpacesThreadsResponse = ThreadReadState;
 export const GetThreadReadStateUsersSpacesThreadsResponse =
@@ -4879,7 +4879,7 @@ export const GetUsersSpacesSpaceNotificationSettingRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSpacesSpaceNotificationSettingRequest>;
+  ) as unknown as Schema.Codec<GetUsersSpacesSpaceNotificationSettingRequest>;
 
 export type GetUsersSpacesSpaceNotificationSettingResponse =
   SpaceNotificationSetting;
@@ -4920,7 +4920,7 @@ export const PatchUsersSpacesSpaceNotificationSettingRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersSpacesSpaceNotificationSettingRequest>;
+  ) as unknown as Schema.Codec<PatchUsersSpacesSpaceNotificationSettingRequest>;
 
 export type PatchUsersSpacesSpaceNotificationSettingResponse =
   SpaceNotificationSetting;
@@ -4960,7 +4960,7 @@ export const MarkAsActiveUsersAvailabilityRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:markAsActive", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MarkAsActiveUsersAvailabilityRequest>;
+  ) as unknown as Schema.Codec<MarkAsActiveUsersAvailabilityRequest>;
 
 export type MarkAsActiveUsersAvailabilityResponse = Availability;
 export const MarkAsActiveUsersAvailabilityResponse =
@@ -5003,7 +5003,7 @@ export const MarkAsDoNotDisturbUsersAvailabilityRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkAsDoNotDisturbUsersAvailabilityRequest>;
+  ) as unknown as Schema.Codec<MarkAsDoNotDisturbUsersAvailabilityRequest>;
 
 export type MarkAsDoNotDisturbUsersAvailabilityResponse = Availability;
 export const MarkAsDoNotDisturbUsersAvailabilityResponse =
@@ -5042,7 +5042,7 @@ export const MarkAsAwayUsersAvailabilityRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:markAsAway", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MarkAsAwayUsersAvailabilityRequest>;
+  ) as unknown as Schema.Codec<MarkAsAwayUsersAvailabilityRequest>;
 
 export type MarkAsAwayUsersAvailabilityResponse = Availability;
 export const MarkAsAwayUsersAvailabilityResponse =
@@ -5084,7 +5084,7 @@ export const UpdateAvailabilityUsersAvailabilityRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAvailabilityUsersAvailabilityRequest>;
+  ) as unknown as Schema.Codec<UpdateAvailabilityUsersAvailabilityRequest>;
 
 export type UpdateAvailabilityUsersAvailabilityResponse = Availability;
 export const UpdateAvailabilityUsersAvailabilityResponse =
@@ -5120,7 +5120,7 @@ export const GetAvailabilityUsersAvailabilityRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAvailabilityUsersAvailabilityRequest>;
+  ) as unknown as Schema.Codec<GetAvailabilityUsersAvailabilityRequest>;
 
 export type GetAvailabilityUsersAvailabilityResponse = Availability;
 export const GetAvailabilityUsersAvailabilityResponse =
@@ -5157,7 +5157,7 @@ export const CreateUsersSectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/sections", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSectionsRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSectionsRequest>;
 
 export type CreateUsersSectionsResponse = GoogleChatV1Section;
 export const CreateUsersSectionsResponse =
@@ -5199,7 +5199,7 @@ export const PatchUsersSectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersSectionsRequest>;
+  ) as unknown as Schema.Codec<PatchUsersSectionsRequest>;
 
 export type PatchUsersSectionsResponse = GoogleChatV1Section;
 export const PatchUsersSectionsResponse =
@@ -5238,7 +5238,7 @@ export const PositionUsersSectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:position", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PositionUsersSectionsRequest>;
+  ) as unknown as Schema.Codec<PositionUsersSectionsRequest>;
 
 export type PositionUsersSectionsResponse = PositionSectionResponse;
 export const PositionUsersSectionsResponse =
@@ -5280,7 +5280,7 @@ export const ListUsersSectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/sections" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSectionsRequest>;
+  ) as unknown as Schema.Codec<ListUsersSectionsRequest>;
 
 export type ListUsersSectionsResponse = ListSectionsResponse;
 export const ListUsersSectionsResponse =
@@ -5315,7 +5315,7 @@ export const DeleteUsersSectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSectionsRequest>;
 
 export type DeleteUsersSectionsResponse = Empty;
 export const DeleteUsersSectionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -5359,7 +5359,7 @@ export const ListUsersSectionsItemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/items" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSectionsItemsRequest>;
+  ) as unknown as Schema.Codec<ListUsersSectionsItemsRequest>;
 
 export type ListUsersSectionsItemsResponse = ListSectionItemsResponse;
 export const ListUsersSectionsItemsResponse =
@@ -5397,7 +5397,7 @@ export const MoveUsersSectionsItemsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveUsersSectionsItemsRequest>;
+  ) as unknown as Schema.Codec<MoveUsersSectionsItemsRequest>;
 
 export type MoveUsersSectionsItemsResponse = MoveSectionItemResponse;
 export const MoveUsersSectionsItemsResponse =

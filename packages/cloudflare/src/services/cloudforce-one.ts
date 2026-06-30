@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service cloudforce-one
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -24,6 +24,490 @@ export class ScanConfigNotFound extends T.applyErrorMatchers(
   }),
   [{ status: 404 }],
 ) {}
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListRequestsResponseResult {
+  /** UUID. */
+  id: string;
+  /** Request creation time. */
+  created: string;
+  priority: "routine" | "high" | "urgent" | (string & {});
+  /** Requested information from request. */
+  request: string;
+  /** Brief description of the request. */
+  summary: string;
+  /** The CISA defined Traffic Light Protocol (TLP). */
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red" | (string & {});
+  /** Request last updated time. */
+  updated: string;
+  /** Request completion time. */
+  completed?: string | null;
+  /** Tokens for the request messages. */
+  messageTokens?: number | null;
+  /** Readable Request ID. */
+  readableId?: string | null;
+  /** Request Status. */
+  status?:
+    | "open"
+    | "accepted"
+    | "reported"
+    | "approved"
+    | "completed"
+    | "declined"
+    | (string & {})
+    | null;
+  /** Tokens for the request. */
+  tokens?: number | null;
+}
+const ListRequestsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      created: Schema.String,
+      priority: Schema.Union([
+        Schema.Literals(["routine", "high", "urgent"]),
+        Schema.String,
+      ]),
+      request: Schema.String,
+      summary: Schema.String,
+      tlp: Schema.Union([
+        Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+        Schema.String,
+      ]),
+      updated: Schema.String,
+      completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      messageTokens: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "open",
+              "accepted",
+              "reported",
+              "approved",
+              "completed",
+              "declined",
+            ]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        created: "created",
+        priority: "priority",
+        request: "request",
+        summary: "summary",
+        tlp: "tlp",
+        updated: "updated",
+        completed: "completed",
+        messageTokens: "message_tokens",
+        readableId: "readable_id",
+        status: "status",
+        tokens: "tokens",
+      }),
+    ),
+) as unknown as Schema.Codec<ListRequestsResponseResult>;
+
+interface Source {
+  pointer?: string | null;
+}
+const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Source>;
+
+interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: { pointer?: string | null } | null;
+}
+const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.Number,
+    message: Schema.String,
+    documentationUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      code: "code",
+      message: "message",
+      documentationUrl: "documentation_url",
+      source: "source",
+    }),
+  ),
+) as unknown as Schema.Codec<Error2>;
+
+interface GetRequestAssetResponseResult {
+  /** Asset ID. */
+  id: number;
+  /** Asset name. */
+  name: string;
+  /** Defines the asset creation time. */
+  created?: string | null;
+  /** Asset description. */
+  description?: string | null;
+  /** Asset file type. */
+  fileType?: string | null;
+}
+const GetRequestAssetResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Number,
+      name: Schema.String,
+      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      fileType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        created: "created",
+        description: "description",
+        fileType: "file_type",
+      }),
+    ),
+  ) as unknown as Schema.Codec<GetRequestAssetResponseResult>;
+
+interface ListScanConfigsResponseResult {
+  /** Defines the Config ID. */
+  id: string;
+  accountId: string;
+  /** Defines the number of days between each scan (0 = One-off scan). */
+  frequency: number;
+  /** Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000. */
+  ips: string[];
+  /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
+  ports: string[];
+}
+const ListScanConfigsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      accountId: Schema.String,
+      frequency: Schema.Number,
+      ips: Schema.Array(Schema.String),
+      ports: Schema.Array(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        accountId: "account_id",
+        frequency: "frequency",
+        ips: "ips",
+        ports: "ports",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListScanConfigsResponseResult>;
+
+interface ScanResult {
+  number?: number | null;
+  proto?: string | null;
+  status?: string | null;
+}
+const ScanResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    proto: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ScanResult>;
+
+interface ThreatEventListResponseItem {
+  attacker: string;
+  attackerCountry: string;
+  attackerCountryAlpha3: string;
+  category: string;
+  datasetId: string;
+  date: string;
+  event: string;
+  hasChildren: boolean;
+  indicator: string;
+  indicatorType: string;
+  indicatorTypeId: number;
+  killChain: number;
+  mitreAttack: string[];
+  mitreCapec: string[];
+  numReferenced: number;
+  numReferences: number;
+  rawId: string;
+  referenced: string[];
+  referencedIds: number[];
+  references: string[];
+  referencesIds: number[];
+  tags: string[];
+  targetCountry: string;
+  targetCountryAlpha3: string;
+  targetIndustry: string;
+  tlp: string;
+  uuid: string;
+  insight?: string | null;
+  releasabilityId?: string | null;
+}
+const ThreatEventListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      attacker: Schema.String,
+      attackerCountry: Schema.String,
+      attackerCountryAlpha3: Schema.String,
+      category: Schema.String,
+      datasetId: Schema.String,
+      date: Schema.String,
+      event: Schema.String,
+      hasChildren: Schema.Boolean,
+      indicator: Schema.String,
+      indicatorType: Schema.String,
+      indicatorTypeId: Schema.Number,
+      killChain: Schema.Number,
+      mitreAttack: Schema.Array(Schema.String),
+      mitreCapec: Schema.Array(Schema.String),
+      numReferenced: Schema.Number,
+      numReferences: Schema.Number,
+      rawId: Schema.String,
+      referenced: Schema.Array(Schema.String),
+      referencedIds: Schema.Array(Schema.Number),
+      references: Schema.Array(Schema.String),
+      referencesIds: Schema.Array(Schema.Number),
+      tags: Schema.Array(Schema.String),
+      targetCountry: Schema.String,
+      targetCountryAlpha3: Schema.String,
+      targetIndustry: Schema.String,
+      tlp: Schema.String,
+      uuid: Schema.String,
+      insight: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      releasabilityId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }),
+) as unknown as Schema.Codec<ThreatEventListResponseItem>;
+
+interface Raw {
+  data: Record<string, unknown> | null;
+  source?: string | null;
+  tlp?: string | null;
+}
+const Raw = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.Union([
+      Schema.Record(Schema.String, Schema.Unknown),
+      Schema.Null,
+    ]),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tlp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Raw>;
+
+interface Indicator {
+  /** The type of indicator (e.g., DOMAIN, IP, JA3, HASH) */
+  indicatorType: string;
+  /** The indicator value (e.g., domain name, IP address, hash) */
+  value: string;
+}
+const Indicator = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    indicatorType: Schema.String,
+    value: Schema.String,
+  }),
+) as unknown as Schema.Codec<Indicator>;
+
+interface Raw2 {
+  data?: Record<string, unknown> | null;
+  source?: string | null;
+  tlp?: string | null;
+}
+const Raw2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tlp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Raw2>;
+
+interface Data {
+  category: string;
+  date: string;
+  event: string;
+  raw: {
+    data: Record<string, unknown> | null;
+    source?: string | null;
+    tlp?: string | null;
+  };
+  tlp: string;
+  accountId?: number | null;
+  attacker?: string | null;
+  attackerCountry?: string | null;
+  datasetId?: string | null;
+  indicator?: string | null;
+  /** Array of indicators for this event. Supports multiple indicators per event for complex scenarios. */
+  indicators?: { indicatorType: string; value: string }[] | null;
+  indicatorType?: string | null;
+  insight?: string | null;
+  tags?: string[] | null;
+  targetCountry?: string | null;
+  targetIndustry?: string | null;
+}
+const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    category: Schema.String,
+    date: Schema.String,
+    event: Schema.String,
+    raw: Raw,
+    tlp: Schema.String,
+    accountId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    attacker: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    attackerCountry: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    datasetId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    indicator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    indicators: Schema.optional(
+      Schema.Union([Schema.Array(Indicator), Schema.Null]),
+    ),
+    indicatorType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    insight: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    targetCountry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    targetIndustry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Data>;
+
+interface CreatedEvent {
+  /** Original index in the input data array */
+  eventIndex: number;
+  /** Dataset ID of the shard where the event was created */
+  shardId: string;
+  /** UUID of the created event */
+  uuid: string;
+}
+const CreatedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    eventIndex: Schema.Number,
+    shardId: Schema.String,
+    uuid: Schema.String,
+  }),
+) as unknown as Schema.Codec<CreatedEvent>;
+
+interface Error3 {
+  /** Error message */
+  error: string;
+  /** Index of the event that caused the error */
+  eventIndex: number;
+}
+const Error3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    error: Schema.String,
+    eventIndex: Schema.Number,
+  }),
+) as unknown as Schema.Codec<Error3>;
+
+interface Items {
+  type: string;
+}
+const Items = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.String,
+  }),
+) as unknown as Schema.Codec<Items>;
+
+interface CategoryListResponseItem {
+  killChain: number;
+  name: string;
+  uuid: string;
+  mitreAttack?: string[] | null;
+  mitreCapec?: string[] | null;
+  shortname?: string | null;
+}
+const CategoryListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      killChain: Schema.Number,
+      name: Schema.String,
+      uuid: Schema.String,
+      mitreAttack: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      mitreCapec: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<CategoryListResponseItem>;
+
+interface Result {
+  alpha2: string;
+  alpha3: string;
+  name: string;
+}
+const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    alpha2: Schema.String,
+    alpha3: Schema.String,
+    name: Schema.String,
+  }),
+) as unknown as Schema.Codec<Result>;
+
+interface CountryListResponseItem {
+  result: { alpha2: string; alpha3: string; name: string }[];
+  success: string;
+}
+const CountryListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Result),
+    success: Schema.String,
+  }),
+) as unknown as Schema.Codec<CountryListResponseItem>;
+
+interface DatasetListResponseItem {
+  isPublic: boolean;
+  name: string;
+  uuid: string;
+  deletedAt?: string | null;
+}
+const DatasetListResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    isPublic: Schema.Boolean,
+    name: Schema.String,
+    uuid: Schema.String,
+    deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<DatasetListResponseItem>;
+
+interface Alias {
+  value: string;
+  confidence?: number | null;
+  tlp?: "red" | "amber" | "green" | "white" | null;
+}
+const Alias = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    value: Schema.String,
+    confidence: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    tlp: Schema.optional(
+      Schema.Union([
+        Schema.Literal("red"),
+        Schema.Literal("amber"),
+        Schema.Literal("green"),
+        Schema.Literal("white"),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<Alias>;
 
 // =============================================================================
 // BinaryStorage
@@ -46,14 +530,14 @@ export const GetBinaryStorageRequest =
         path: "/accounts/{account_id}/cloudforce-one/binary/{hash}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetBinaryStorageRequest>;
+  ) as unknown as Schema.Codec<GetBinaryStorageRequest>;
 
 export type GetBinaryStorageResponse = unknown;
 
 export const GetBinaryStorageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
-  ) as unknown as Schema.Schema<GetBinaryStorageResponse>;
+  ) as unknown as Schema.Codec<GetBinaryStorageResponse>;
 
 export type GetBinaryStorageError = DefaultErrors;
 
@@ -87,7 +571,7 @@ export const CreateBinaryStorageRequest =
         contentType: "multipart",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateBinaryStorageRequest>;
+  ) as unknown as Schema.Codec<CreateBinaryStorageRequest>;
 
 export interface CreateBinaryStorageResponse {
   contentType: string;
@@ -111,7 +595,7 @@ export const CreateBinaryStorageResponse =
         sha256: "sha256",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateBinaryStorageResponse>;
+  ) as unknown as Schema.Codec<CreateBinaryStorageResponse>;
 
 export type CreateBinaryStorageError = DefaultErrors;
 
@@ -147,7 +631,7 @@ export const GetRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
       }),
     ),
-) as unknown as Schema.Schema<GetRequestRequest>;
+) as unknown as Schema.Codec<GetRequestRequest>;
 
 export interface GetRequestResponse {
   /** UUID. */
@@ -237,7 +721,7 @@ export const GetRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetRequestResponse>;
+) as unknown as Schema.Codec<GetRequestResponse>;
 
 export type GetRequestError = DefaultErrors;
 
@@ -330,7 +814,7 @@ export const ListRequestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/requests",
       }),
     ),
-) as unknown as Schema.Schema<ListRequestsRequest>;
+) as unknown as Schema.Codec<ListRequestsRequest>;
 
 export interface ListRequestsResponse {
   result: {
@@ -360,66 +844,9 @@ export interface ListRequestsResponse {
 export const ListRequestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          created: Schema.String,
-          priority: Schema.Union([
-            Schema.Literals(["routine", "high", "urgent"]),
-            Schema.String,
-          ]),
-          request: Schema.String,
-          summary: Schema.String,
-          tlp: Schema.Union([
-            Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
-            Schema.String,
-          ]),
-          updated: Schema.String,
-          completed: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          messageTokens: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          readableId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "open",
-                  "accepted",
-                  "reported",
-                  "approved",
-                  "completed",
-                  "declined",
-                ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            created: "created",
-            priority: "priority",
-            request: "request",
-            summary: "summary",
-            tlp: "tlp",
-            updated: "updated",
-            completed: "completed",
-            messageTokens: "message_tokens",
-            readableId: "readable_id",
-            status: "status",
-            tokens: "tokens",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListRequestsResponseResult),
     }),
-) as unknown as Schema.Schema<ListRequestsResponse>;
+) as unknown as Schema.Codec<ListRequestsResponse>;
 
 export type ListRequestsError = DefaultErrors;
 
@@ -480,7 +907,7 @@ export const CreateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/requests/new",
       }),
     ),
-) as unknown as Schema.Schema<CreateRequestRequest>;
+) as unknown as Schema.Codec<CreateRequestRequest>;
 
 export interface CreateRequestResponse {
   /** UUID. */
@@ -570,7 +997,7 @@ export const CreateRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateRequestResponse>;
+) as unknown as Schema.Codec<CreateRequestResponse>;
 
 export type CreateRequestError = DefaultErrors;
 
@@ -629,7 +1056,7 @@ export const UpdateRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateRequestRequest>;
+) as unknown as Schema.Codec<UpdateRequestRequest>;
 
 export interface UpdateRequestResponse {
   /** UUID. */
@@ -719,7 +1146,7 @@ export const UpdateRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateRequestResponse>;
+) as unknown as Schema.Codec<UpdateRequestResponse>;
 
 export type UpdateRequestError = DefaultErrors;
 
@@ -751,7 +1178,7 @@ export const DeleteRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteRequestRequest>;
+) as unknown as Schema.Codec<DeleteRequestRequest>;
 
 export interface DeleteRequestResponse {
   errors: {
@@ -773,61 +1200,11 @@ export interface DeleteRequestResponse {
 export const DeleteRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-) as unknown as Schema.Schema<DeleteRequestResponse>;
+) as unknown as Schema.Codec<DeleteRequestResponse>;
 
 export type DeleteRequestError = DefaultErrors;
 
@@ -857,7 +1234,7 @@ export const ConstantsRequestRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/constants",
       }),
     ),
-  ) as unknown as Schema.Schema<ConstantsRequestRequest>;
+  ) as unknown as Schema.Codec<ConstantsRequestRequest>;
 
 export interface ConstantsRequestResponse {
   priority?: ("routine" | "high" | "urgent" | (string & {}))[] | null;
@@ -927,7 +1304,7 @@ export const ConstantsRequestResponse =
         ]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ConstantsRequestResponse>;
+  ) as unknown as Schema.Codec<ConstantsRequestResponse>;
 
 export type ConstantsRequestError = DefaultErrors;
 
@@ -957,7 +1334,7 @@ export const QuotaRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/requests/quota",
       }),
     ),
-) as unknown as Schema.Schema<QuotaRequestRequest>;
+) as unknown as Schema.Codec<QuotaRequestRequest>;
 
 export interface QuotaRequestResponse {
   /** Anniversary date is when annual quota limit is refreshed. */
@@ -991,7 +1368,7 @@ export const QuotaRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<QuotaRequestResponse>;
+) as unknown as Schema.Codec<QuotaRequestResponse>;
 
 export type QuotaRequestError = DefaultErrors;
 
@@ -1021,7 +1398,7 @@ export const TypesRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/requests/types",
       }),
     ),
-) as unknown as Schema.Schema<TypesRequestRequest>;
+) as unknown as Schema.Codec<TypesRequestRequest>;
 
 export interface TypesRequestResponse {
   result: string[];
@@ -1032,7 +1409,7 @@ export const TypesRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
-) as unknown as Schema.Schema<TypesRequestResponse>;
+) as unknown as Schema.Codec<TypesRequestResponse>;
 
 export type TypesRequestError = DefaultErrors;
 
@@ -1074,7 +1451,7 @@ export const GetRequestAssetRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}/asset/{assetId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetRequestAssetRequest>;
+  ) as unknown as Schema.Codec<GetRequestAssetRequest>;
 
 export interface GetRequestAssetResponse {
   result: {
@@ -1089,27 +1466,9 @@ export interface GetRequestAssetResponse {
 export const GetRequestAssetResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.Number,
-          name: Schema.String,
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          fileType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            name: "name",
-            created: "created",
-            description: "description",
-            fileType: "file_type",
-          }),
-        ),
-      ),
+      result: Schema.Array(GetRequestAssetResponseResult),
     }),
-  ) as unknown as Schema.Schema<GetRequestAssetResponse>;
+  ) as unknown as Schema.Codec<GetRequestAssetResponse>;
 
 export type GetRequestAssetError = DefaultErrors;
 
@@ -1152,7 +1511,7 @@ export const CreateRequestAssetRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}/asset",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateRequestAssetRequest>;
+  ) as unknown as Schema.Codec<CreateRequestAssetRequest>;
 
 export interface CreateRequestAssetResponse {
   result: {
@@ -1167,27 +1526,9 @@ export interface CreateRequestAssetResponse {
 export const CreateRequestAssetResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.Number,
-          name: Schema.String,
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          fileType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            name: "name",
-            created: "created",
-            description: "description",
-            fileType: "file_type",
-          }),
-        ),
-      ),
+      result: Schema.Array(GetRequestAssetResponseResult),
     }),
-  ) as unknown as Schema.Schema<CreateRequestAssetResponse>;
+  ) as unknown as Schema.Codec<CreateRequestAssetResponse>;
 
 export type CreateRequestAssetError = DefaultErrors;
 
@@ -1228,7 +1569,7 @@ export const UpdateRequestAssetRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}/asset/{assetId}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateRequestAssetRequest>;
+  ) as unknown as Schema.Codec<UpdateRequestAssetRequest>;
 
 export interface UpdateRequestAssetResponse {
   /** Asset ID. */
@@ -1262,7 +1603,7 @@ export const UpdateRequestAssetResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateRequestAssetResponse>;
+  ) as unknown as Schema.Codec<UpdateRequestAssetResponse>;
 
 export type UpdateRequestAssetError = DefaultErrors;
 
@@ -1296,7 +1637,7 @@ export const DeleteRequestAssetRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}/asset/{assetId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteRequestAssetRequest>;
+  ) as unknown as Schema.Codec<DeleteRequestAssetRequest>;
 
 export interface DeleteRequestAssetResponse {
   errors: {
@@ -1318,61 +1659,11 @@ export interface DeleteRequestAssetResponse {
 export const DeleteRequestAssetResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<DeleteRequestAssetResponse>;
+  ) as unknown as Schema.Codec<DeleteRequestAssetResponse>;
 
 export type DeleteRequestAssetError = DefaultErrors;
 
@@ -1436,7 +1727,7 @@ export const GetRequestMessageRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}/message",
       }),
     ),
-  ) as unknown as Schema.Schema<GetRequestMessageRequest>;
+  ) as unknown as Schema.Codec<GetRequestMessageRequest>;
 
 export interface GetRequestMessageResponse {
   result: {
@@ -1450,34 +1741,9 @@ export interface GetRequestMessageResponse {
 export const GetRequestMessageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      result: Schema.Array(Error2),
     }),
-  ) as unknown as Schema.Schema<GetRequestMessageResponse>;
+  ) as unknown as Schema.Codec<GetRequestMessageResponse>;
 
 export type GetRequestMessageError = DefaultErrors;
 
@@ -1516,7 +1782,7 @@ export const CreateRequestMessageRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}/message/new",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateRequestMessageRequest>;
+  ) as unknown as Schema.Codec<CreateRequestMessageRequest>;
 
 export interface CreateRequestMessageResponse {
   code: number;
@@ -1533,16 +1799,7 @@ export const CreateRequestMessageResponse =
       documentationUrl: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      source: Schema.optional(Schema.Union([Source, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1553,7 +1810,7 @@ export const CreateRequestMessageResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateRequestMessageResponse>;
+  ) as unknown as Schema.Codec<CreateRequestMessageResponse>;
 
 export type CreateRequestMessageError = DefaultErrors;
 
@@ -1590,7 +1847,7 @@ export const UpdateRequestMessageRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}/message/{messageId}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateRequestMessageRequest>;
+  ) as unknown as Schema.Codec<UpdateRequestMessageRequest>;
 
 export interface UpdateRequestMessageResponse {
   code: number;
@@ -1607,16 +1864,7 @@ export const UpdateRequestMessageResponse =
       documentationUrl: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      source: Schema.optional(Schema.Union([Source, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1627,7 +1875,7 @@ export const UpdateRequestMessageResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateRequestMessageResponse>;
+  ) as unknown as Schema.Codec<UpdateRequestMessageResponse>;
 
 export type UpdateRequestMessageError = DefaultErrors;
 
@@ -1661,7 +1909,7 @@ export const DeleteRequestMessageRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/{requestId}/message/{messageId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteRequestMessageRequest>;
+  ) as unknown as Schema.Codec<DeleteRequestMessageRequest>;
 
 export interface DeleteRequestMessageResponse {
   errors: {
@@ -1683,61 +1931,11 @@ export interface DeleteRequestMessageResponse {
 export const DeleteRequestMessageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<DeleteRequestMessageResponse>;
+  ) as unknown as Schema.Codec<DeleteRequestMessageResponse>;
 
 export type DeleteRequestMessageError = DefaultErrors;
 
@@ -1773,7 +1971,7 @@ export const GetRequestPriorityRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/priority/{priorityId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetRequestPriorityRequest>;
+  ) as unknown as Schema.Codec<GetRequestPriorityRequest>;
 
 export interface GetRequestPriorityResponse {
   /** UUID. */
@@ -1863,7 +2061,7 @@ export const GetRequestPriorityResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetRequestPriorityResponse>;
+  ) as unknown as Schema.Codec<GetRequestPriorityResponse>;
 
 export type GetRequestPriorityError = DefaultErrors;
 
@@ -1908,7 +2106,7 @@ export const CreateRequestPriorityRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/priority/new",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateRequestPriorityRequest>;
+  ) as unknown as Schema.Codec<CreateRequestPriorityRequest>;
 
 export interface CreateRequestPriorityResponse {
   /** UUID. */
@@ -1941,7 +2139,7 @@ export const CreateRequestPriorityResponse =
       ]),
       updated: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateRequestPriorityResponse>;
+  ) as unknown as Schema.Codec<CreateRequestPriorityResponse>;
 
 export type CreateRequestPriorityError = DefaultErrors;
 
@@ -1988,7 +2186,7 @@ export const UpdateRequestPriorityRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/priority/{priorityId}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateRequestPriorityRequest>;
+  ) as unknown as Schema.Codec<UpdateRequestPriorityRequest>;
 
 export interface UpdateRequestPriorityResponse {
   /** UUID. */
@@ -2078,7 +2276,7 @@ export const UpdateRequestPriorityResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateRequestPriorityResponse>;
+  ) as unknown as Schema.Codec<UpdateRequestPriorityResponse>;
 
 export type UpdateRequestPriorityError = DefaultErrors;
 
@@ -2110,7 +2308,7 @@ export const DeleteRequestPriorityRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/priority/{priorityId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteRequestPriorityRequest>;
+  ) as unknown as Schema.Codec<DeleteRequestPriorityRequest>;
 
 export interface DeleteRequestPriorityResponse {
   errors: {
@@ -2132,61 +2330,11 @@ export interface DeleteRequestPriorityResponse {
 export const DeleteRequestPriorityResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<DeleteRequestPriorityResponse>;
+  ) as unknown as Schema.Codec<DeleteRequestPriorityResponse>;
 
 export type DeleteRequestPriorityError = DefaultErrors;
 
@@ -2216,7 +2364,7 @@ export const QuotaRequestPriorityRequest =
         path: "/accounts/{account_id}/cloudforce-one/requests/priority/quota",
       }),
     ),
-  ) as unknown as Schema.Schema<QuotaRequestPriorityRequest>;
+  ) as unknown as Schema.Codec<QuotaRequestPriorityRequest>;
 
 export interface QuotaRequestPriorityResponse {
   /** Anniversary date is when annual quota limit is refreshed. */
@@ -2250,7 +2398,7 @@ export const QuotaRequestPriorityResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<QuotaRequestPriorityResponse>;
+  ) as unknown as Schema.Codec<QuotaRequestPriorityResponse>;
 
 export type QuotaRequestPriorityError = DefaultErrors;
 
@@ -2284,7 +2432,7 @@ export const ListScanConfigsRequest =
         path: "/accounts/{account_id}/cloudforce-one/scans/config",
       }),
     ),
-  ) as unknown as Schema.Schema<ListScanConfigsRequest>;
+  ) as unknown as Schema.Codec<ListScanConfigsRequest>;
 
 export interface ListScanConfigsResponse {
   result: {
@@ -2299,25 +2447,9 @@ export interface ListScanConfigsResponse {
 export const ListScanConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          accountId: Schema.String,
-          frequency: Schema.Number,
-          ips: Schema.Array(Schema.String),
-          ports: Schema.Array(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            accountId: "account_id",
-            frequency: "frequency",
-            ips: "ips",
-            ports: "ports",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListScanConfigsResponseResult),
     }),
-  ) as unknown as Schema.Schema<ListScanConfigsResponse>;
+  ) as unknown as Schema.Codec<ListScanConfigsResponse>;
 
 export type ListScanConfigsError = DefaultErrors;
 
@@ -2360,7 +2492,7 @@ export const CreateScanConfigRequest =
         path: "/accounts/{account_id}/cloudforce-one/scans/config",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateScanConfigRequest>;
+  ) as unknown as Schema.Codec<CreateScanConfigRequest>;
 
 export interface CreateScanConfigResponse {
   /** Defines the Config ID. */
@@ -2393,7 +2525,7 @@ export const CreateScanConfigResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateScanConfigResponse>;
+  ) as unknown as Schema.Codec<CreateScanConfigResponse>;
 
 export type CreateScanConfigError = DefaultErrors;
 
@@ -2434,7 +2566,7 @@ export const PatchScanConfigRequest =
         path: "/accounts/{account_id}/cloudforce-one/scans/config/{configId}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchScanConfigRequest>;
+  ) as unknown as Schema.Codec<PatchScanConfigRequest>;
 
 export interface PatchScanConfigResponse {
   /** Defines the Config ID. */
@@ -2467,7 +2599,7 @@ export const PatchScanConfigResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchScanConfigResponse>;
+  ) as unknown as Schema.Codec<PatchScanConfigResponse>;
 
 export type PatchScanConfigError = DefaultErrors | ScanConfigNotFound;
 
@@ -2499,14 +2631,14 @@ export const DeleteScanConfigRequest =
         path: "/accounts/{account_id}/cloudforce-one/scans/config/{configId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteScanConfigRequest>;
+  ) as unknown as Schema.Codec<DeleteScanConfigRequest>;
 
 export type DeleteScanConfigResponse = unknown;
 
 export const DeleteScanConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteScanConfigResponse>;
+  ) as unknown as Schema.Codec<DeleteScanConfigResponse>;
 
 export type DeleteScanConfigError = DefaultErrors | ScanConfigNotFound;
 
@@ -2542,7 +2674,7 @@ export const GetScanResultRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/scans/results/{configId}",
       }),
     ),
-) as unknown as Schema.Schema<GetScanResultRequest>;
+) as unknown as Schema.Codec<GetScanResultRequest>;
 
 export interface GetScanResultResponse {
   "1.1.1.1": {
@@ -2555,15 +2687,9 @@ export interface GetScanResultResponse {
 export const GetScanResultResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      "1.1.1.1": Schema.Array(
-        Schema.Struct({
-          number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          proto: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      "1.1.1.1": Schema.Array(ScanResult),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetScanResultResponse>;
+) as unknown as Schema.Codec<GetScanResultResponse>;
 
 export type GetScanResultError = DefaultErrors;
 
@@ -2599,7 +2725,7 @@ export const GetThreatEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/events/{eventId}",
       }),
     ),
-) as unknown as Schema.Schema<GetThreatEventRequest>;
+) as unknown as Schema.Codec<GetThreatEventRequest>;
 
 export interface GetThreatEventResponse {
   attacker: string;
@@ -2668,7 +2794,7 @@ export const GetThreatEventResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
     }),
-  ) as unknown as Schema.Schema<GetThreatEventResponse>;
+  ) as unknown as Schema.Codec<GetThreatEventResponse>;
 
 export type GetThreatEventError = DefaultErrors;
 
@@ -2785,7 +2911,7 @@ export const ListThreatEventsRequest =
         path: "/accounts/{account_id}/cloudforce-one/events",
       }),
     ),
-  ) as unknown as Schema.Schema<ListThreatEventsRequest>;
+  ) as unknown as Schema.Codec<ListThreatEventsRequest>;
 
 export type ListThreatEventsResponse = {
   attacker: string;
@@ -2821,42 +2947,8 @@ export type ListThreatEventsResponse = {
 
 export const ListThreatEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        attacker: Schema.String,
-        attackerCountry: Schema.String,
-        attackerCountryAlpha3: Schema.String,
-        category: Schema.String,
-        datasetId: Schema.String,
-        date: Schema.String,
-        event: Schema.String,
-        hasChildren: Schema.Boolean,
-        indicator: Schema.String,
-        indicatorType: Schema.String,
-        indicatorTypeId: Schema.Number,
-        killChain: Schema.Number,
-        mitreAttack: Schema.Array(Schema.String),
-        mitreCapec: Schema.Array(Schema.String),
-        numReferenced: Schema.Number,
-        numReferences: Schema.Number,
-        rawId: Schema.String,
-        referenced: Schema.Array(Schema.String),
-        referencedIds: Schema.Array(Schema.Number),
-        references: Schema.Array(Schema.String),
-        referencesIds: Schema.Array(Schema.Number),
-        tags: Schema.Array(Schema.String),
-        targetCountry: Schema.String,
-        targetCountryAlpha3: Schema.String,
-        targetIndustry: Schema.String,
-        tlp: Schema.String,
-        uuid: Schema.String,
-        insight: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        releasabilityId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }),
-    ),
-  ) as unknown as Schema.Schema<ListThreatEventsResponse>;
+    Schema.Array(ThreatEventListResponseItem),
+  ) as unknown as Schema.Codec<ListThreatEventsResponse>;
 
 export type ListThreatEventsError = DefaultErrors;
 
@@ -2912,27 +3004,13 @@ export const CreateThreatEventRequest =
       category: Schema.String,
       date: Schema.String,
       event: Schema.String,
-      raw: Schema.Struct({
-        data: Schema.Union([
-          Schema.Record(Schema.String, Schema.Unknown),
-          Schema.Null,
-        ]),
-        source: Schema.optional(Schema.String),
-        tlp: Schema.optional(Schema.String),
-      }),
+      raw: Raw,
       tlp: Schema.String,
       attacker: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       attackerCountry: Schema.optional(Schema.String),
       datasetId: Schema.optional(Schema.String),
       indicator: Schema.optional(Schema.String),
-      indicators: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            indicatorType: Schema.String,
-            value: Schema.String,
-          }),
-        ),
-      ),
+      indicators: Schema.optional(Schema.Array(Indicator)),
       indicatorType: Schema.optional(Schema.String),
       insight: Schema.optional(Schema.String),
       tags: Schema.optional(Schema.Array(Schema.String)),
@@ -2944,7 +3022,7 @@ export const CreateThreatEventRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/create",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateThreatEventRequest>;
+  ) as unknown as Schema.Codec<CreateThreatEventRequest>;
 
 export interface CreateThreatEventResponse {
   attacker: string;
@@ -3013,7 +3091,7 @@ export const CreateThreatEventResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
     }),
-  ) as unknown as Schema.Schema<CreateThreatEventResponse>;
+  ) as unknown as Schema.Codec<CreateThreatEventResponse>;
 
 export type CreateThreatEventError = DefaultErrors;
 
@@ -3081,18 +3159,7 @@ export const PatchThreatEventRequest =
       indicator: Schema.optional(Schema.String),
       indicatorType: Schema.optional(Schema.String),
       insight: Schema.optional(Schema.String),
-      raw: Schema.optional(
-        Schema.Struct({
-          data: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-          source: Schema.optional(Schema.String),
-          tlp: Schema.optional(Schema.String),
-        }),
-      ),
+      raw: Schema.optional(Raw2),
       targetCountry: Schema.optional(Schema.String),
       targetIndustry: Schema.optional(Schema.String),
       tlp: Schema.optional(Schema.String),
@@ -3102,7 +3169,7 @@ export const PatchThreatEventRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/{eventId}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchThreatEventRequest>;
+  ) as unknown as Schema.Codec<PatchThreatEventRequest>;
 
 export interface PatchThreatEventResponse {
   attacker: string;
@@ -3171,7 +3238,7 @@ export const PatchThreatEventResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
     }),
-  ) as unknown as Schema.Schema<PatchThreatEventResponse>;
+  ) as unknown as Schema.Codec<PatchThreatEventResponse>;
 
 export type PatchThreatEventError = DefaultErrors;
 
@@ -3222,40 +3289,7 @@ export const BulkCreateThreatEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      data: Schema.Array(
-        Schema.Struct({
-          category: Schema.String,
-          date: Schema.String,
-          event: Schema.String,
-          raw: Schema.Struct({
-            data: Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-            source: Schema.optional(Schema.String),
-            tlp: Schema.optional(Schema.String),
-          }),
-          tlp: Schema.String,
-          accountId: Schema.optional(Schema.Number),
-          attacker: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          attackerCountry: Schema.optional(Schema.String),
-          datasetId: Schema.optional(Schema.String),
-          indicator: Schema.optional(Schema.String),
-          indicators: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                indicatorType: Schema.String,
-                value: Schema.String,
-              }),
-            ),
-          ),
-          indicatorType: Schema.optional(Schema.String),
-          insight: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-          targetCountry: Schema.optional(Schema.String),
-          targetIndustry: Schema.optional(Schema.String),
-        }),
-      ),
+      data: Schema.Array(Data),
       datasetId: Schema.String,
       includeCreatedEvents: Schema.optional(Schema.Boolean),
     }).pipe(
@@ -3264,7 +3298,7 @@ export const BulkCreateThreatEventsRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/create/bulk",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkCreateThreatEventsRequest>;
+  ) as unknown as Schema.Codec<BulkCreateThreatEventsRequest>;
 
 export interface BulkCreateThreatEventsResponse {
   /** Number of events created */
@@ -3296,30 +3330,13 @@ export const BulkCreateThreatEventsResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
       createdEvents: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              eventIndex: Schema.Number,
-              shardId: Schema.String,
-              uuid: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(CreatedEvent), Schema.Null]),
       ),
       errors: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              error: Schema.String,
-              eventIndex: Schema.Number,
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Error3), Schema.Null]),
       ),
     }),
-  ) as unknown as Schema.Schema<BulkCreateThreatEventsResponse>;
+  ) as unknown as Schema.Codec<BulkCreateThreatEventsResponse>;
 
 export type BulkCreateThreatEventsError = DefaultErrors;
 
@@ -3358,7 +3375,7 @@ export const ListThreatEventAttackersRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/attackers",
       }),
     ),
-  ) as unknown as Schema.Schema<ListThreatEventAttackersRequest>;
+  ) as unknown as Schema.Codec<ListThreatEventAttackersRequest>;
 
 export interface ListThreatEventAttackersResponse {
   items: { type: string };
@@ -3368,12 +3385,10 @@ export interface ListThreatEventAttackersResponse {
 export const ListThreatEventAttackersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      items: Schema.Struct({
-        type: Schema.String,
-      }),
+      items: Items,
       type: Schema.String,
     }),
-  ) as unknown as Schema.Schema<ListThreatEventAttackersResponse>;
+  ) as unknown as Schema.Codec<ListThreatEventAttackersResponse>;
 
 export type ListThreatEventAttackersError = DefaultErrors;
 
@@ -3409,7 +3424,7 @@ export const GetThreatEventCategoryRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/categories/{categoryId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetThreatEventCategoryRequest>;
+  ) as unknown as Schema.Codec<GetThreatEventCategoryRequest>;
 
 export interface GetThreatEventCategoryResponse {
   killChain: number;
@@ -3434,7 +3449,7 @@ export const GetThreatEventCategoryResponse =
       ),
       shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-  ) as unknown as Schema.Schema<GetThreatEventCategoryResponse>;
+  ) as unknown as Schema.Codec<GetThreatEventCategoryResponse>;
 
 export type GetThreatEventCategoryError = DefaultErrors;
 
@@ -3469,7 +3484,7 @@ export const ListThreatEventCategoriesRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/categories",
       }),
     ),
-  ) as unknown as Schema.Schema<ListThreatEventCategoriesRequest>;
+  ) as unknown as Schema.Codec<ListThreatEventCategoriesRequest>;
 
 export type ListThreatEventCategoriesResponse = {
   killChain: number;
@@ -3482,21 +3497,8 @@ export type ListThreatEventCategoriesResponse = {
 
 export const ListThreatEventCategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        killChain: Schema.Number,
-        name: Schema.String,
-        uuid: Schema.String,
-        mitreAttack: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        mitreCapec: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
-  ) as unknown as Schema.Schema<ListThreatEventCategoriesResponse>;
+    Schema.Array(CategoryListResponseItem),
+  ) as unknown as Schema.Codec<ListThreatEventCategoriesResponse>;
 
 export type ListThreatEventCategoriesError = DefaultErrors;
 
@@ -3541,7 +3543,7 @@ export const CreateThreatEventCategoryRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/categories/create",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateThreatEventCategoryRequest>;
+  ) as unknown as Schema.Codec<CreateThreatEventCategoryRequest>;
 
 export interface CreateThreatEventCategoryResponse {
   killChain: number;
@@ -3566,7 +3568,7 @@ export const CreateThreatEventCategoryResponse =
       ),
       shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-  ) as unknown as Schema.Schema<CreateThreatEventCategoryResponse>;
+  ) as unknown as Schema.Codec<CreateThreatEventCategoryResponse>;
 
 export type CreateThreatEventCategoryError = DefaultErrors;
 
@@ -3613,7 +3615,7 @@ export const PatchThreatEventCategoryRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/categories/{categoryId}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchThreatEventCategoryRequest>;
+  ) as unknown as Schema.Codec<PatchThreatEventCategoryRequest>;
 
 export interface PatchThreatEventCategoryResponse {
   killChain: number;
@@ -3638,7 +3640,7 @@ export const PatchThreatEventCategoryResponse =
       ),
       shortname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-  ) as unknown as Schema.Schema<PatchThreatEventCategoryResponse>;
+  ) as unknown as Schema.Codec<PatchThreatEventCategoryResponse>;
 
 export type PatchThreatEventCategoryError = DefaultErrors;
 
@@ -3670,7 +3672,7 @@ export const DeleteThreatEventCategoryRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/categories/{categoryId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteThreatEventCategoryRequest>;
+  ) as unknown as Schema.Codec<DeleteThreatEventCategoryRequest>;
 
 export interface DeleteThreatEventCategoryResponse {
   uuid: string;
@@ -3681,7 +3683,7 @@ export const DeleteThreatEventCategoryResponse =
     Schema.Struct({
       uuid: Schema.String,
     }),
-  ) as unknown as Schema.Schema<DeleteThreatEventCategoryResponse>;
+  ) as unknown as Schema.Codec<DeleteThreatEventCategoryResponse>;
 
 export type DeleteThreatEventCategoryError = DefaultErrors;
 
@@ -3715,7 +3717,7 @@ export const ListThreatEventCountriesRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/countries",
       }),
     ),
-  ) as unknown as Schema.Schema<ListThreatEventCountriesRequest>;
+  ) as unknown as Schema.Codec<ListThreatEventCountriesRequest>;
 
 export type ListThreatEventCountriesResponse = {
   result: { alpha2: string; alpha3: string; name: string }[];
@@ -3724,19 +3726,8 @@ export type ListThreatEventCountriesResponse = {
 
 export const ListThreatEventCountriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        result: Schema.Array(
-          Schema.Struct({
-            alpha2: Schema.String,
-            alpha3: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        success: Schema.String,
-      }),
-    ),
-  ) as unknown as Schema.Schema<ListThreatEventCountriesResponse>;
+    Schema.Array(CountryListResponseItem),
+  ) as unknown as Schema.Codec<ListThreatEventCountriesResponse>;
 
 export type ListThreatEventCountriesError = DefaultErrors;
 
@@ -3772,7 +3763,7 @@ export const GetThreatEventDatasetRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/dataset/{datasetId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetThreatEventDatasetRequest>;
+  ) as unknown as Schema.Codec<GetThreatEventDatasetRequest>;
 
 export interface GetThreatEventDatasetResponse {
   isPublic: boolean;
@@ -3789,7 +3780,7 @@ export const GetThreatEventDatasetResponse =
       uuid: Schema.String,
       deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-  ) as unknown as Schema.Schema<GetThreatEventDatasetResponse>;
+  ) as unknown as Schema.Codec<GetThreatEventDatasetResponse>;
 
 export type GetThreatEventDatasetError = DefaultErrors;
 
@@ -3824,7 +3815,7 @@ export const ListThreatEventDatasetsRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/dataset",
       }),
     ),
-  ) as unknown as Schema.Schema<ListThreatEventDatasetsRequest>;
+  ) as unknown as Schema.Codec<ListThreatEventDatasetsRequest>;
 
 export type ListThreatEventDatasetsResponse = {
   isPublic: boolean;
@@ -3835,15 +3826,8 @@ export type ListThreatEventDatasetsResponse = {
 
 export const ListThreatEventDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Array(
-      Schema.Struct({
-        isPublic: Schema.Boolean,
-        name: Schema.String,
-        uuid: Schema.String,
-        deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
-  ) as unknown as Schema.Schema<ListThreatEventDatasetsResponse>;
+    Schema.Array(DatasetListResponseItem),
+  ) as unknown as Schema.Codec<ListThreatEventDatasetsResponse>;
 
 export type ListThreatEventDatasetsError = DefaultErrors;
 
@@ -3879,7 +3863,7 @@ export const CreateThreatEventDatasetRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/dataset/create",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateThreatEventDatasetRequest>;
+  ) as unknown as Schema.Codec<CreateThreatEventDatasetRequest>;
 
 export interface CreateThreatEventDatasetResponse {
   isPublic: boolean;
@@ -3896,7 +3880,7 @@ export const CreateThreatEventDatasetResponse =
       uuid: Schema.String,
       deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-  ) as unknown as Schema.Schema<CreateThreatEventDatasetResponse>;
+  ) as unknown as Schema.Codec<CreateThreatEventDatasetResponse>;
 
 export type CreateThreatEventDatasetError = DefaultErrors;
 
@@ -3934,7 +3918,7 @@ export const PatchThreatEventDatasetRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/dataset/{datasetId}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchThreatEventDatasetRequest>;
+  ) as unknown as Schema.Codec<PatchThreatEventDatasetRequest>;
 
 export interface PatchThreatEventDatasetResponse {
   isPublic: boolean;
@@ -3951,7 +3935,7 @@ export const PatchThreatEventDatasetResponse =
       uuid: Schema.String,
       deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-  ) as unknown as Schema.Schema<PatchThreatEventDatasetResponse>;
+  ) as unknown as Schema.Codec<PatchThreatEventDatasetResponse>;
 
 export type PatchThreatEventDatasetError = DefaultErrors;
 
@@ -3985,7 +3969,7 @@ export const RawThreatEventDatasetRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/raw/{datasetId}/{eventId}",
       }),
     ),
-  ) as unknown as Schema.Schema<RawThreatEventDatasetRequest>;
+  ) as unknown as Schema.Codec<RawThreatEventDatasetRequest>;
 
 export interface RawThreatEventDatasetResponse {
   id: number;
@@ -4006,7 +3990,7 @@ export const RawThreatEventDatasetResponse =
       source: Schema.String,
       tlp: Schema.String,
     }),
-  ) as unknown as Schema.Schema<RawThreatEventDatasetResponse>;
+  ) as unknown as Schema.Codec<RawThreatEventDatasetResponse>;
 
 export type RawThreatEventDatasetError = DefaultErrors;
 
@@ -4045,7 +4029,7 @@ export const CreateThreatEventEventTagRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/event_tag/{eventId}/create",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateThreatEventEventTagRequest>;
+  ) as unknown as Schema.Codec<CreateThreatEventEventTagRequest>;
 
 export interface CreateThreatEventEventTagResponse {
   success: boolean;
@@ -4056,7 +4040,7 @@ export const CreateThreatEventEventTagResponse =
     Schema.Struct({
       success: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateThreatEventEventTagResponse>;
+  ) as unknown as Schema.Codec<CreateThreatEventEventTagResponse>;
 
 export type CreateThreatEventEventTagError = DefaultErrors;
 
@@ -4088,7 +4072,7 @@ export const DeleteThreatEventEventTagRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/event_tag/{eventId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteThreatEventEventTagRequest>;
+  ) as unknown as Schema.Codec<DeleteThreatEventEventTagRequest>;
 
 export interface DeleteThreatEventEventTagResponse {
   success: boolean;
@@ -4099,7 +4083,7 @@ export const DeleteThreatEventEventTagResponse =
     Schema.Struct({
       success: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteThreatEventEventTagResponse>;
+  ) as unknown as Schema.Codec<DeleteThreatEventEventTagResponse>;
 
 export type DeleteThreatEventEventTagError = DefaultErrors;
 
@@ -4133,7 +4117,7 @@ export const ListThreatEventIndicatorTypesRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/indicatorTypes",
       }),
     ),
-  ) as unknown as Schema.Schema<ListThreatEventIndicatorTypesRequest>;
+  ) as unknown as Schema.Codec<ListThreatEventIndicatorTypesRequest>;
 
 export interface ListThreatEventIndicatorTypesResponse {
   items: { type: string };
@@ -4143,12 +4127,10 @@ export interface ListThreatEventIndicatorTypesResponse {
 export const ListThreatEventIndicatorTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      items: Schema.Struct({
-        type: Schema.String,
-      }),
+      items: Items,
       type: Schema.String,
     }),
-  ) as unknown as Schema.Schema<ListThreatEventIndicatorTypesResponse>;
+  ) as unknown as Schema.Codec<ListThreatEventIndicatorTypesResponse>;
 
 export type ListThreatEventIndicatorTypesError = DefaultErrors;
 
@@ -4186,7 +4168,7 @@ export const GetThreatEventRawRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/{eventId}/raw/{rawId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetThreatEventRawRequest>;
+  ) as unknown as Schema.Codec<GetThreatEventRawRequest>;
 
 export interface GetThreatEventRawResponse {
   id: string;
@@ -4207,7 +4189,7 @@ export const GetThreatEventRawResponse =
       source: Schema.String,
       tlp: Schema.String,
     }),
-  ) as unknown as Schema.Schema<GetThreatEventRawResponse>;
+  ) as unknown as Schema.Codec<GetThreatEventRawResponse>;
 
 export type GetThreatEventRawError = DefaultErrors;
 
@@ -4250,7 +4232,7 @@ export const PatchThreatEventRawRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/{eventId}/raw/{rawId}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchThreatEventRawRequest>;
+  ) as unknown as Schema.Codec<PatchThreatEventRawRequest>;
 
 export interface PatchThreatEventRawResponse {
   id: string;
@@ -4263,7 +4245,7 @@ export const PatchThreatEventRawResponse =
       id: Schema.String,
       data: Schema.Unknown,
     }),
-  ) as unknown as Schema.Schema<PatchThreatEventRawResponse>;
+  ) as unknown as Schema.Codec<PatchThreatEventRawResponse>;
 
 export type PatchThreatEventRawError = DefaultErrors;
 
@@ -4299,7 +4281,7 @@ export const DeleteThreatEventRelateRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/relate/{eventId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteThreatEventRelateRequest>;
+  ) as unknown as Schema.Codec<DeleteThreatEventRelateRequest>;
 
 export interface DeleteThreatEventRelateResponse {
   success: boolean;
@@ -4310,7 +4292,7 @@ export const DeleteThreatEventRelateResponse =
     Schema.Struct({
       success: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteThreatEventRelateResponse>;
+  ) as unknown as Schema.Codec<DeleteThreatEventRelateResponse>;
 
 export type DeleteThreatEventRelateError = DefaultErrors;
 
@@ -4389,25 +4371,7 @@ export const CreateThreatEventTagRequest =
       value: Schema.String,
       activeDuration: Schema.optional(Schema.String),
       actorCategory: Schema.optional(Schema.String),
-      aliases: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            value: Schema.String,
-            confidence: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            tlp: Schema.optional(
-              Schema.Union([
-                Schema.Literal("red"),
-                Schema.Literal("amber"),
-                Schema.Literal("green"),
-                Schema.Literal("white"),
-                Schema.Null,
-              ]),
-            ),
-          }),
-        ),
-      ),
+      aliases: Schema.optional(Schema.Array(Alias)),
       aliasGroupNames: Schema.optional(Schema.Array(Schema.String)),
       aliasGroupNamesInternal: Schema.optional(Schema.Array(Schema.String)),
       analyticPriority: Schema.optional(Schema.Number),
@@ -4417,25 +4381,7 @@ export const CreateThreatEventTagRequest =
       categoryUuid: Schema.optional(Schema.String),
       dateOfDiscovery: Schema.optional(Schema.String),
       externalReferenceLinks: Schema.optional(Schema.Array(Schema.String)),
-      internalAliases: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            value: Schema.String,
-            confidence: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            tlp: Schema.optional(
-              Schema.Union([
-                Schema.Literal("red"),
-                Schema.Literal("amber"),
-                Schema.Literal("green"),
-                Schema.Literal("white"),
-                Schema.Null,
-              ]),
-            ),
-          }),
-        ),
-      ),
+      internalAliases: Schema.optional(Schema.Array(Alias)),
       internalDescription: Schema.optional(Schema.String),
       motive: Schema.optional(Schema.String),
       opsecLevel: Schema.optional(Schema.String),
@@ -4448,7 +4394,7 @@ export const CreateThreatEventTagRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/tags/create",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateThreatEventTagRequest>;
+  ) as unknown as Schema.Codec<CreateThreatEventTagRequest>;
 
 export interface CreateThreatEventTagResponse {
   uuid: string;
@@ -4502,26 +4448,7 @@ export const CreateThreatEventTagResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
       aliases: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              value: Schema.String,
-              confidence: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              tlp: Schema.optional(
-                Schema.Union([
-                  Schema.Literal("red"),
-                  Schema.Literal("amber"),
-                  Schema.Literal("green"),
-                  Schema.Literal("white"),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Alias), Schema.Null]),
       ),
       aliasGroupNames: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -4550,26 +4477,7 @@ export const CreateThreatEventTagResponse =
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
       internalAliases: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              value: Schema.String,
-              confidence: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              tlp: Schema.optional(
-                Schema.Union([
-                  Schema.Literal("red"),
-                  Schema.Literal("amber"),
-                  Schema.Literal("green"),
-                  Schema.Literal("white"),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Alias), Schema.Null]),
       ),
       internalDescription: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -4587,7 +4495,7 @@ export const CreateThreatEventTagResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
     }),
-  ) as unknown as Schema.Schema<CreateThreatEventTagResponse>;
+  ) as unknown as Schema.Codec<CreateThreatEventTagResponse>;
 
 export type CreateThreatEventTagError = DefaultErrors;
 
@@ -4626,7 +4534,7 @@ export const ListThreatEventTargetIndustriesRequest =
         path: "/accounts/{account_id}/cloudforce-one/events/targetIndustries",
       }),
     ),
-  ) as unknown as Schema.Schema<ListThreatEventTargetIndustriesRequest>;
+  ) as unknown as Schema.Codec<ListThreatEventTargetIndustriesRequest>;
 
 export interface ListThreatEventTargetIndustriesResponse {
   items: { type: string };
@@ -4636,12 +4544,10 @@ export interface ListThreatEventTargetIndustriesResponse {
 export const ListThreatEventTargetIndustriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      items: Schema.Struct({
-        type: Schema.String,
-      }),
+      items: Items,
       type: Schema.String,
     }),
-  ) as unknown as Schema.Schema<ListThreatEventTargetIndustriesResponse>;
+  ) as unknown as Schema.Codec<ListThreatEventTargetIndustriesResponse>;
 
 export type ListThreatEventTargetIndustriesError = DefaultErrors;
 

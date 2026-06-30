@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface TransferProjectsFromOrgToOrgInput {
+  source_org_id: string;
+  destination_org_id: string;
+  project_ids: string[];
+}
 export const TransferProjectsFromOrgToOrgInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source_org_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,14 @@ export const TransferProjectsFromOrgToOrgInput =
       method: "POST",
       path: "/organizations/{source_org_id}/projects/transfer",
     }),
-  );
-export type TransferProjectsFromOrgToOrgInput =
-  typeof TransferProjectsFromOrgToOrgInput.Type;
+  ) as unknown as Schema.Codec<TransferProjectsFromOrgToOrgInput>;
 
 // Output Schema
+export interface TransferProjectsFromOrgToOrgOutput {}
 export const TransferProjectsFromOrgToOrgOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type TransferProjectsFromOrgToOrgOutput =
-  typeof TransferProjectsFromOrgToOrgOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<TransferProjectsFromOrgToOrgOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOauthApplicationsInput {
+  organization: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListOauthApplicationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,34 @@ export const ListOauthApplicationsInput =
       method: "GET",
       path: "/organizations/{organization}/oauth-applications",
     }),
-  );
-export type ListOauthApplicationsInput = typeof ListOauthApplicationsInput.Type;
+  ) as unknown as Schema.Codec<ListOauthApplicationsInput>;
 
 // Output Schema
+export interface ListOauthApplicationsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    name: string;
+    redirect_uri: string;
+    domain: string;
+    created_at: string;
+    updated_at: string;
+    scopes: string;
+    avatar: string;
+    client_id: string;
+    tokens: number;
+    dcr: boolean;
+    single_org_authorization: boolean;
+    requires_org_scope: boolean;
+    scopes_by_resource: Record<string, unknown>;
+    all_scopes_by_resource: Record<string, unknown>;
+  }[];
+}
 export const ListOauthApplicationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -45,9 +74,7 @@ export const ListOauthApplicationsOutput =
         all_scopes_by_resource: Schema.Record(Schema.String, Schema.Unknown),
       }),
     ),
-  });
-export type ListOauthApplicationsOutput =
-  typeof ListOauthApplicationsOutput.Type;
+  }) as unknown as Schema.Codec<ListOauthApplicationsOutput>;
 
 // The operation
 /**

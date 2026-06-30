@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RemoveGroupApiKeyInput {
+  groupId: string;
+  apiUserId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,12 +22,12 @@ export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
   }),
-);
-export type RemoveGroupApiKeyInput = typeof RemoveGroupApiKeyInput.Type;
+) as unknown as Schema.Codec<RemoveGroupApiKeyInput>;
 
 // Output Schema
-export const RemoveGroupApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemoveGroupApiKeyOutput = typeof RemoveGroupApiKeyOutput.Type;
+export type RemoveGroupApiKeyOutput = void;
+export const RemoveGroupApiKeyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupApiKeyOutput>;
 
 // The operation
 /**

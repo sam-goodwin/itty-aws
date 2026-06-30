@@ -4,11 +4,43 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface LoadTestsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  loadTestName: string;
+  properties?: {
+    description?: string;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Deleted";
+    dataPlaneURI?: string;
+    encryption?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        resourceId?: string | null;
+      };
+      keyUrl?: string;
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const LoadTestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -65,11 +97,22 @@ export const LoadTestsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
       apiVersion: "2022-12-01",
     }),
-  );
-export type LoadTestsCreateOrUpdateInput =
-  typeof LoadTestsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LoadTestsCreateOrUpdateInput>;
 
 // Output Schema
+export interface LoadTestsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LoadTestsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -89,9 +132,7 @@ export const LoadTestsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LoadTestsCreateOrUpdateOutput =
-  typeof LoadTestsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LoadTestsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -109,6 +150,11 @@ export const LoadTestsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LoadTestsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  loadTestName: string;
+}
 export const LoadTestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -119,12 +165,12 @@ export const LoadTestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
     apiVersion: "2022-12-01",
   }),
-);
-export type LoadTestsDeleteInput = typeof LoadTestsDeleteInput.Type;
+) as unknown as Schema.Codec<LoadTestsDeleteInput>;
 
 // Output Schema
-export const LoadTestsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LoadTestsDeleteOutput = typeof LoadTestsDeleteOutput.Type;
+export type LoadTestsDeleteOutput = void;
+export const LoadTestsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LoadTestsDeleteOutput>;
 
 // The operation
 /**
@@ -140,6 +186,11 @@ export const LoadTestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LoadTestsDeleteOutput,
 }));
 // Input Schema
+export interface LoadTestsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  loadTestName: string;
+}
 export const LoadTestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -150,10 +201,22 @@ export const LoadTestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
     apiVersion: "2022-12-01",
   }),
-);
-export type LoadTestsGetInput = typeof LoadTestsGetInput.Type;
+) as unknown as Schema.Codec<LoadTestsGetInput>;
 
 // Output Schema
+export interface LoadTestsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LoadTestsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -172,8 +235,7 @@ export const LoadTestsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type LoadTestsGetOutput = typeof LoadTestsGetOutput.Type;
+}) as unknown as Schema.Codec<LoadTestsGetOutput>;
 
 // The operation
 /**
@@ -189,6 +251,10 @@ export const LoadTestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LoadTestsGetOutput,
 }));
 // Input Schema
+export interface LoadTestsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const LoadTestsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -199,11 +265,25 @@ export const LoadTestsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests",
       apiVersion: "2022-12-01",
     }),
-  );
-export type LoadTestsListByResourceGroupInput =
-  typeof LoadTestsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<LoadTestsListByResourceGroupInput>;
 
 // Output Schema
+export interface LoadTestsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LoadTestsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -238,9 +318,7 @@ export const LoadTestsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LoadTestsListByResourceGroupOutput =
-  typeof LoadTestsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<LoadTestsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -256,6 +334,9 @@ export const LoadTestsListByResourceGroup =
     outputSchema: LoadTestsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface LoadTestsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const LoadTestsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -265,11 +346,25 @@ export const LoadTestsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/loadTests",
       apiVersion: "2022-12-01",
     }),
-  );
-export type LoadTestsListBySubscriptionInput =
-  typeof LoadTestsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<LoadTestsListBySubscriptionInput>;
 
 // Output Schema
+export interface LoadTestsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LoadTestsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -304,9 +399,7 @@ export const LoadTestsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LoadTestsListBySubscriptionOutput =
-  typeof LoadTestsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<LoadTestsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -322,6 +415,11 @@ export const LoadTestsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LoadTestsListOutboundNetworkDependenciesEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  loadTestName: string;
+}
 export const LoadTestsListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -333,11 +431,20 @@ export const LoadTestsListOutboundNetworkDependenciesEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}/outboundNetworkDependenciesEndpoints",
       apiVersion: "2022-12-01",
     }),
-  );
-export type LoadTestsListOutboundNetworkDependenciesEndpointsInput =
-  typeof LoadTestsListOutboundNetworkDependenciesEndpointsInput.Type;
+  ) as unknown as Schema.Codec<LoadTestsListOutboundNetworkDependenciesEndpointsInput>;
 
 // Output Schema
+export interface LoadTestsListOutboundNetworkDependenciesEndpointsOutput {
+  value: {
+    category?: string;
+    endpoints?: {
+      domainName: string;
+      description?: string;
+      endpointDetails?: { port?: number }[];
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const LoadTestsListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -361,9 +468,7 @@ export const LoadTestsListOutboundNetworkDependenciesEndpointsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LoadTestsListOutboundNetworkDependenciesEndpointsOutput =
-  typeof LoadTestsListOutboundNetworkDependenciesEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<LoadTestsListOutboundNetworkDependenciesEndpointsOutput>;
 
 // The operation
 /**
@@ -380,6 +485,35 @@ export const LoadTestsListOutboundNetworkDependenciesEndpoints =
     outputSchema: LoadTestsListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
+export interface LoadTestsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  loadTestName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    description?: string;
+    encryption?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        resourceId?: string | null;
+      };
+      keyUrl?: string;
+    };
+  };
+}
 export const LoadTestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -430,10 +564,22 @@ export const LoadTestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
     apiVersion: "2022-12-01",
   }),
-);
-export type LoadTestsUpdateInput = typeof LoadTestsUpdateInput.Type;
+) as unknown as Schema.Codec<LoadTestsUpdateInput>;
 
 // Output Schema
+export interface LoadTestsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LoadTestsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -452,8 +598,7 @@ export const LoadTestsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type LoadTestsUpdateOutput = typeof LoadTestsUpdateOutput.Type;
+}) as unknown as Schema.Codec<LoadTestsUpdateOutput>;
 
 // The operation
 /**
@@ -469,6 +614,7 @@ export const LoadTestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LoadTestsUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -477,10 +623,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.LoadTestService/operations",
     apiVersion: "2025-09-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -503,8 +663,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -517,6 +676,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PlaywrightQuotasGetInput {
+  subscriptionId: string;
+  location: string;
+  playwrightQuotaName: "ExecutionMinutes";
+}
 export const PlaywrightQuotasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -530,10 +694,22 @@ export const PlaywrightQuotasGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/playwrightQuotas/{playwrightQuotaName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightQuotasGetInput = typeof PlaywrightQuotasGetInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightQuotasGetInput>;
 
 // Output Schema
+export interface PlaywrightQuotasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PlaywrightQuotasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -553,8 +729,7 @@ export const PlaywrightQuotasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PlaywrightQuotasGetOutput = typeof PlaywrightQuotasGetOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightQuotasGetOutput>;
 
 // The operation
 /**
@@ -570,6 +745,10 @@ export const PlaywrightQuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PlaywrightQuotasGetOutput,
 }));
 // Input Schema
+export interface PlaywrightQuotasListBySubscriptionInput {
+  subscriptionId: string;
+  location: string;
+}
 export const PlaywrightQuotasListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -580,11 +759,25 @@ export const PlaywrightQuotasListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/playwrightQuotas",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightQuotasListBySubscriptionInput =
-  typeof PlaywrightQuotasListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightQuotasListBySubscriptionInput>;
 
 // Output Schema
+export interface PlaywrightQuotasListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PlaywrightQuotasListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -619,9 +812,7 @@ export const PlaywrightQuotasListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PlaywrightQuotasListBySubscriptionOutput =
-  typeof PlaywrightQuotasListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightQuotasListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -637,6 +828,12 @@ export const PlaywrightQuotasListBySubscription =
     outputSchema: PlaywrightQuotasListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PlaywrightWorkspaceQuotasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  playwrightWorkspaceName: string;
+  quotaName: "ExecutionMinutes";
+}
 export const PlaywrightWorkspaceQuotasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -649,11 +846,22 @@ export const PlaywrightWorkspaceQuotasGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}/quotas/{quotaName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspaceQuotasGetInput =
-  typeof PlaywrightWorkspaceQuotasGetInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspaceQuotasGetInput>;
 
 // Output Schema
+export interface PlaywrightWorkspaceQuotasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PlaywrightWorkspaceQuotasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -673,9 +881,7 @@ export const PlaywrightWorkspaceQuotasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PlaywrightWorkspaceQuotasGetOutput =
-  typeof PlaywrightWorkspaceQuotasGetOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightWorkspaceQuotasGetOutput>;
 
 // The operation
 /**
@@ -693,6 +899,11 @@ export const PlaywrightWorkspaceQuotasGet =
     outputSchema: PlaywrightWorkspaceQuotasGetOutput,
   }));
 // Input Schema
+export interface PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  playwrightWorkspaceName: string;
+}
 export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -704,11 +915,25 @@ export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}/quotas",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput =
-  typeof PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceInput>;
 
 // Output Schema
+export interface PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -743,9 +968,7 @@ export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput =
-  typeof PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput>;
 
 // The operation
 /**
@@ -762,6 +985,11 @@ export const PlaywrightWorkspaceQuotasListByPlaywrightWorkspace =
     outputSchema: PlaywrightWorkspaceQuotasListByPlaywrightWorkspaceOutput,
   }));
 // Input Schema
+export interface PlaywrightWorkspacesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+}
 export const PlaywrightWorkspacesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -773,19 +1001,20 @@ export const PlaywrightWorkspacesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/checkNameAvailability",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspacesCheckNameAvailabilityInput =
-  typeof PlaywrightWorkspacesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspacesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface PlaywrightWorkspacesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const PlaywrightWorkspacesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type PlaywrightWorkspacesCheckNameAvailabilityOutput =
-  typeof PlaywrightWorkspacesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightWorkspacesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -802,6 +1031,26 @@ export const PlaywrightWorkspacesCheckNameAvailability =
     outputSchema: PlaywrightWorkspacesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface PlaywrightWorkspacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  playwrightWorkspaceName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Accepted";
+    dataplaneUri?: string;
+    regionalAffinity?: "Enabled" | "Disabled";
+    localAuth?: "Enabled" | "Disabled";
+    workspaceId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PlaywrightWorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -835,11 +1084,22 @@ export const PlaywrightWorkspacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspacesCreateOrUpdateInput =
-  typeof PlaywrightWorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PlaywrightWorkspacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PlaywrightWorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -859,9 +1119,7 @@ export const PlaywrightWorkspacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PlaywrightWorkspacesCreateOrUpdateOutput =
-  typeof PlaywrightWorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightWorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -878,6 +1136,11 @@ export const PlaywrightWorkspacesCreateOrUpdate =
     outputSchema: PlaywrightWorkspacesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PlaywrightWorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  playwrightWorkspaceName: string;
+}
 export const PlaywrightWorkspacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -889,15 +1152,12 @@ export const PlaywrightWorkspacesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspacesDeleteInput =
-  typeof PlaywrightWorkspacesDeleteInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspacesDeleteInput>;
 
 // Output Schema
+export type PlaywrightWorkspacesDeleteOutput = void;
 export const PlaywrightWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PlaywrightWorkspacesDeleteOutput =
-  typeof PlaywrightWorkspacesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PlaywrightWorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -915,6 +1175,11 @@ export const PlaywrightWorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PlaywrightWorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  playwrightWorkspaceName: string;
+}
 export const PlaywrightWorkspacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -926,11 +1191,22 @@ export const PlaywrightWorkspacesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspacesGetInput =
-  typeof PlaywrightWorkspacesGetInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspacesGetInput>;
 
 // Output Schema
+export interface PlaywrightWorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PlaywrightWorkspacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -950,9 +1226,7 @@ export const PlaywrightWorkspacesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PlaywrightWorkspacesGetOutput =
-  typeof PlaywrightWorkspacesGetOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightWorkspacesGetOutput>;
 
 // The operation
 /**
@@ -970,6 +1244,10 @@ export const PlaywrightWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PlaywrightWorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PlaywrightWorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -980,11 +1258,25 @@ export const PlaywrightWorkspacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspacesListByResourceGroupInput =
-  typeof PlaywrightWorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface PlaywrightWorkspacesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PlaywrightWorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1019,9 +1311,7 @@ export const PlaywrightWorkspacesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PlaywrightWorkspacesListByResourceGroupOutput =
-  typeof PlaywrightWorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightWorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1037,6 +1327,9 @@ export const PlaywrightWorkspacesListByResourceGroup =
     outputSchema: PlaywrightWorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PlaywrightWorkspacesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PlaywrightWorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1046,11 +1339,25 @@ export const PlaywrightWorkspacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/playwrightWorkspaces",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspacesListBySubscriptionInput =
-  typeof PlaywrightWorkspacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspacesListBySubscriptionInput>;
 
 // Output Schema
+export interface PlaywrightWorkspacesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PlaywrightWorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1085,9 +1392,7 @@ export const PlaywrightWorkspacesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PlaywrightWorkspacesListBySubscriptionOutput =
-  typeof PlaywrightWorkspacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightWorkspacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1102,6 +1407,16 @@ export const PlaywrightWorkspacesListBySubscription =
     outputSchema: PlaywrightWorkspacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PlaywrightWorkspacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  playwrightWorkspaceName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    regionalAffinity?: "Enabled" | "Disabled";
+    localAuth?: "Enabled" | "Disabled";
+  };
+}
 export const PlaywrightWorkspacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1122,11 +1437,22 @@ export const PlaywrightWorkspacesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PlaywrightWorkspacesUpdateInput =
-  typeof PlaywrightWorkspacesUpdateInput.Type;
+  ) as unknown as Schema.Codec<PlaywrightWorkspacesUpdateInput>;
 
 // Output Schema
+export interface PlaywrightWorkspacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PlaywrightWorkspacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1146,9 +1472,7 @@ export const PlaywrightWorkspacesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PlaywrightWorkspacesUpdateOutput =
-  typeof PlaywrightWorkspacesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PlaywrightWorkspacesUpdateOutput>;
 
 // The operation
 /**
@@ -1166,6 +1490,17 @@ export const PlaywrightWorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QuotasCheckAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  quotaBucketName: string;
+  properties?: {
+    currentUsage?: number;
+    currentQuota?: number;
+    newQuota?: number;
+    dimensions?: { subscriptionId?: string; location?: string };
+  };
+}
 export const QuotasCheckAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1190,11 +1525,23 @@ export const QuotasCheckAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas/{quotaBucketName}/checkAvailability",
       apiVersion: "2022-12-01",
     }),
-  );
-export type QuotasCheckAvailabilityInput =
-  typeof QuotasCheckAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<QuotasCheckAvailabilityInput>;
 
 // Output Schema
+export interface QuotasCheckAvailabilityOutput {
+  id: string;
+  type: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  name?: string;
+  properties?: { isAvailable?: boolean; availabilityStatus?: string };
+}
 export const QuotasCheckAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -1220,9 +1567,7 @@ export const QuotasCheckAvailabilityOutput =
         availabilityStatus: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QuotasCheckAvailabilityOutput =
-  typeof QuotasCheckAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<QuotasCheckAvailabilityOutput>;
 
 // The operation
 /**
@@ -1240,6 +1585,11 @@ export const QuotasCheckAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QuotasGetInput {
+  subscriptionId: string;
+  location: string;
+  quotaBucketName: string;
+}
 export const QuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -1250,10 +1600,22 @@ export const QuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas/{quotaBucketName}",
     apiVersion: "2022-12-01",
   }),
-);
-export type QuotasGetInput = typeof QuotasGetInput.Type;
+) as unknown as Schema.Codec<QuotasGetInput>;
 
 // Output Schema
+export interface QuotasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1272,8 +1634,7 @@ export const QuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QuotasGetOutput = typeof QuotasGetOutput.Type;
+}) as unknown as Schema.Codec<QuotasGetOutput>;
 
 // The operation
 /**
@@ -1289,6 +1650,10 @@ export const QuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotasGetOutput,
 }));
 // Input Schema
+export interface QuotasListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const QuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -1298,10 +1663,25 @@ export const QuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas",
     apiVersion: "2022-12-01",
   }),
-);
-export type QuotasListInput = typeof QuotasListInput.Type;
+) as unknown as Schema.Codec<QuotasListInput>;
 
 // Output Schema
+export interface QuotasListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1325,8 +1705,7 @@ export const QuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QuotasListOutput = typeof QuotasListOutput.Type;
+}) as unknown as Schema.Codec<QuotasListOutput>;
 
 // The operation
 /**

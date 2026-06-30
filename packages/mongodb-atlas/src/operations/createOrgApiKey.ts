@@ -4,16 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateOrgApiKeyInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/apiKeys" }));
-export type CreateOrgApiKeyInput = typeof CreateOrgApiKeyInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/apiKeys" }),
+) as unknown as Schema.Codec<CreateOrgApiKeyInput>;
 
 // Output Schema
-export const CreateOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateOrgApiKeyOutput = typeof CreateOrgApiKeyOutput.Type;
+export type CreateOrgApiKeyOutput = void;
+export const CreateOrgApiKeyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgApiKeyOutput>;
 
 // The operation
 /**

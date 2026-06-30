@@ -4,12 +4,66 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -87,11 +141,58 @@ export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
       method: "POST",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
     }),
-  );
-export type CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  typeof CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -159,9 +260,7 @@ export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  typeof CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -180,6 +279,235 @@ export const createAutoscalingV1NamespacedHorizontalPodAutoscaler =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -554,11 +882,233 @@ export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
       method: "POST",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
     }),
-  );
-export type CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  typeof CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -923,9 +1473,7 @@ export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  typeof CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -944,6 +1492,27 @@ export const createAutoscalingV2NamespacedHorizontalPodAutoscaler =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -977,11 +1546,32 @@ export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput
       method: "DELETE",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
     }),
-  );
-export type DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput =
-  typeof DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1021,9 +1611,7 @@ export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutpu
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutput =
-  typeof DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -1095,6 +1683,19 @@ export const deleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscaler =
       DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutput,
   }));
 // Input Schema
+export interface DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1120,11 +1721,32 @@ export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
       method: "DELETE",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  typeof DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1164,9 +1786,7 @@ export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  typeof DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -1188,6 +1808,27 @@ export const deleteAutoscalingV1NamespacedHorizontalPodAutoscaler =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1221,11 +1862,32 @@ export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput
       method: "DELETE",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
     }),
-  );
-export type DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput =
-  typeof DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1265,9 +1927,7 @@ export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutpu
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutput =
-  typeof DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -1339,6 +1999,19 @@ export const deleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscaler =
       DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutput,
   }));
 // Input Schema
+export interface DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1364,11 +2037,32 @@ export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
       method: "DELETE",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  typeof DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1408,9 +2102,7 @@ export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  typeof DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -1432,14 +2124,21 @@ export const deleteAutoscalingV2NamespacedHorizontalPodAutoscaler =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetAutoscalingAPIGroupInput {}
 export const GetAutoscalingAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/autoscaling/" }),
-  );
-export type GetAutoscalingAPIGroupInput =
-  typeof GetAutoscalingAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetAutoscalingAPIGroupInput>;
 
 // Output Schema
+export interface GetAutoscalingAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetAutoscalingAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1465,9 +2164,7 @@ export const GetAutoscalingAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetAutoscalingAPIGroupOutput =
-  typeof GetAutoscalingAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetAutoscalingAPIGroupOutput>;
 
 // The operation
 /**
@@ -1480,14 +2177,30 @@ export const getAutoscalingAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetAutoscalingV1APIResourcesInput {}
 export const GetAutoscalingV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/autoscaling/v1/" }),
-  );
-export type GetAutoscalingV1APIResourcesInput =
-  typeof GetAutoscalingV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetAutoscalingV1APIResourcesInput>;
 
 // Output Schema
+export interface GetAutoscalingV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetAutoscalingV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1507,9 +2220,7 @@ export const GetAutoscalingV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetAutoscalingV1APIResourcesOutput =
-  typeof GetAutoscalingV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetAutoscalingV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1521,14 +2232,30 @@ export const getAutoscalingV1APIResources =
     outputSchema: GetAutoscalingV1APIResourcesOutput,
   }));
 // Input Schema
+export interface GetAutoscalingV2APIResourcesInput {}
 export const GetAutoscalingV2APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/autoscaling/v2/" }),
-  );
-export type GetAutoscalingV2APIResourcesInput =
-  typeof GetAutoscalingV2APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetAutoscalingV2APIResourcesInput>;
 
 // Output Schema
+export interface GetAutoscalingV2APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetAutoscalingV2APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1548,9 +2275,7 @@ export const GetAutoscalingV2APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetAutoscalingV2APIResourcesOutput =
-  typeof GetAutoscalingV2APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetAutoscalingV2APIResourcesOutput>;
 
 // The operation
 /**
@@ -1562,6 +2287,20 @@ export const getAutoscalingV2APIResources =
     outputSchema: GetAutoscalingV2APIResourcesOutput,
   }));
 // Input Schema
+export interface ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1581,11 +2320,69 @@ export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput =
       method: "GET",
       path: "/apis/autoscaling/v1/horizontalpodautoscalers",
     }),
-  );
-export type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput =
-  typeof ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesInput>;
 
 // Output Schema
+export interface ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      maxReplicas: number;
+      minReplicas?: number;
+      scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+      targetCPUUtilizationPercentage?: number;
+    };
+    status?: {
+      currentCPUUtilizationPercentage?: number;
+      currentReplicas: number;
+      desiredReplicas: number;
+      lastScaleTime?: string;
+      observedGeneration?: number;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1674,9 +2471,7 @@ export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput =
-  typeof ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -1743,6 +2538,21 @@ export const listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces =
       ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1763,11 +2573,69 @@ export const ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
       method: "GET",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
     }),
-  );
-export type ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  typeof ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<ListAutoscalingV1NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      maxReplicas: number;
+      minReplicas?: number;
+      scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+      targetCPUUtilizationPercentage?: number;
+    };
+    status?: {
+      currentCPUUtilizationPercentage?: number;
+      currentReplicas: number;
+      desiredReplicas: number;
+      lastScaleTime?: string;
+      observedGeneration?: number;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1856,9 +2724,7 @@ export const ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
         ),
       }),
     ),
-  });
-export type ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  typeof ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -1925,6 +2791,20 @@ export const listAutoscalingV1NamespacedHorizontalPodAutoscaler =
     outputSchema: ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
   }));
 // Input Schema
+export interface ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1944,11 +2824,244 @@ export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput =
       method: "GET",
       path: "/apis/autoscaling/v2/horizontalpodautoscalers",
     }),
-  );
-export type ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput =
-  typeof ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesInput>;
 
 // Output Schema
+export interface ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      behavior?: {
+        scaleDown?: {
+          policies?: { periodSeconds: number; type: string; value: number }[];
+          selectPolicy?: string;
+          stabilizationWindowSeconds?: number;
+          tolerance?: string;
+        };
+        scaleUp?: {
+          policies?: { periodSeconds: number; type: string; value: number }[];
+          selectPolicy?: string;
+          stabilizationWindowSeconds?: number;
+          tolerance?: string;
+        };
+      };
+      maxReplicas: number;
+      metrics?: {
+        containerResource?: {
+          container: string;
+          name: string;
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        external?: {
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        object?: {
+          describedObject: { apiVersion?: string; kind: string; name: string };
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        pods?: {
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        resource?: {
+          name: string;
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        type: string;
+      }[];
+      minReplicas?: number;
+      scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime?: string;
+        message?: string;
+        observedGeneration?: number;
+        reason?: string;
+        status: string;
+        type: string;
+      }[];
+      currentMetrics?: {
+        containerResource?: {
+          container: string;
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          name: string;
+        };
+        external?: {
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+        };
+        object?: {
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          describedObject: { apiVersion?: string; kind: string; name: string };
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+        };
+        pods?: {
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+        };
+        resource?: {
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          name: string;
+        };
+        type: string;
+      }[];
+      currentReplicas?: number;
+      desiredReplicas: number;
+      lastScaleTime?: string;
+      observedGeneration?: number;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2334,9 +3447,7 @@ export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput =
-  typeof ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2403,6 +3514,21 @@ export const listAutoscalingV2HorizontalPodAutoscalerForAllNamespaces =
       ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2423,11 +3549,244 @@ export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
       method: "GET",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
     }),
-  );
-export type ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  typeof ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<ListAutoscalingV2NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      behavior?: {
+        scaleDown?: {
+          policies?: { periodSeconds: number; type: string; value: number }[];
+          selectPolicy?: string;
+          stabilizationWindowSeconds?: number;
+          tolerance?: string;
+        };
+        scaleUp?: {
+          policies?: { periodSeconds: number; type: string; value: number }[];
+          selectPolicy?: string;
+          stabilizationWindowSeconds?: number;
+          tolerance?: string;
+        };
+      };
+      maxReplicas: number;
+      metrics?: {
+        containerResource?: {
+          container: string;
+          name: string;
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        external?: {
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        object?: {
+          describedObject: { apiVersion?: string; kind: string; name: string };
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        pods?: {
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        resource?: {
+          name: string;
+          target: {
+            averageUtilization?: number;
+            averageValue?: string;
+            type: string;
+            value?: string;
+          };
+        };
+        type: string;
+      }[];
+      minReplicas?: number;
+      scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime?: string;
+        message?: string;
+        observedGeneration?: number;
+        reason?: string;
+        status: string;
+        type: string;
+      }[];
+      currentMetrics?: {
+        containerResource?: {
+          container: string;
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          name: string;
+        };
+        external?: {
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+        };
+        object?: {
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          describedObject: { apiVersion?: string; kind: string; name: string };
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+        };
+        pods?: {
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          metric: {
+            name: string;
+            selector?: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchLabels?: Record<string, string>;
+            };
+          };
+        };
+        resource?: {
+          current: {
+            averageUtilization?: number;
+            averageValue?: string;
+            value?: string;
+          };
+          name: string;
+        };
+        type: string;
+      }[];
+      currentReplicas?: number;
+      desiredReplicas: number;
+      lastScaleTime?: string;
+      observedGeneration?: number;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2813,9 +4172,7 @@ export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
         ),
       }),
     ),
-  });
-export type ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  typeof ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -2882,6 +4239,15 @@ export const listAutoscalingV2NamespacedHorizontalPodAutoscaler =
     outputSchema: ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
   }));
 // Input Schema
+export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2896,11 +4262,58 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
       method: "PATCH",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  typeof PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2968,9 +4381,7 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  typeof PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -2991,6 +4402,15 @@ export const patchAutoscalingV1NamespacedHorizontalPodAutoscaler =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3005,11 +4425,58 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
       method: "PATCH",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status",
     }),
-  );
-export type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
-  typeof PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput>;
 
 // Output Schema
+export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3077,9 +4544,7 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
-  typeof PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput>;
 
 // The operation
 /**
@@ -3101,6 +4566,15 @@ export const patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3115,11 +4589,233 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
       method: "PATCH",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  typeof PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3484,9 +5180,7 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  typeof PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -3507,6 +5201,15 @@ export const patchAutoscalingV2NamespacedHorizontalPodAutoscaler =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3521,11 +5224,233 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
       method: "PATCH",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status",
     }),
-  );
-export type PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
-  typeof PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput>;
 
 // Output Schema
+export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3890,9 +5815,7 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
-  typeof PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput>;
 
 // The operation
 /**
@@ -3914,6 +5837,11 @@ export const patchAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3924,11 +5852,58 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
       method: "GET",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  typeof ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3996,9 +5971,7 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  typeof ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -4015,6 +5988,11 @@ export const readAutoscalingV1NamespacedHorizontalPodAutoscaler =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4025,11 +6003,58 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
       method: "GET",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status",
     }),
-  );
-export type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
-  typeof ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput>;
 
 // Output Schema
+export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4097,9 +6122,7 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
-  typeof ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput>;
 
 // The operation
 /**
@@ -4117,6 +6140,11 @@ export const readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4127,11 +6155,233 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
       method: "GET",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  typeof ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4496,9 +6746,7 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  typeof ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -4515,6 +6763,11 @@ export const readAutoscalingV2NamespacedHorizontalPodAutoscaler =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4525,11 +6778,233 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
       method: "GET",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status",
     }),
-  );
-export type ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
-  typeof ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput>;
 
 // Output Schema
+export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4894,9 +7369,7 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
-  typeof ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput>;
 
 // The operation
 /**
@@ -4914,6 +7387,61 @@ export const readAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4992,11 +7520,58 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
       method: "PUT",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  typeof ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5064,9 +7639,7 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  typeof ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -5086,6 +7659,61 @@ export const replaceAutoscalingV1NamespacedHorizontalPodAutoscaler =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5164,11 +7792,58 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
       method: "PUT",
       path: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status",
     }),
-  );
-export type ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
-  typeof ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput>;
 
 // Output Schema
+export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxReplicas: number;
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+    targetCPUUtilizationPercentage?: number;
+  };
+  status?: {
+    currentCPUUtilizationPercentage?: number;
+    currentReplicas: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5236,9 +7911,7 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
-  typeof ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput>;
 
 // The operation
 /**
@@ -5260,6 +7933,236 @@ export const replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5635,11 +8538,233 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
       method: "PUT",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  typeof ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6004,9 +9129,7 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  typeof ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -6026,6 +9149,236 @@ export const replaceAutoscalingV2NamespacedHorizontalPodAutoscaler =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6401,11 +9754,233 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
       method: "PUT",
       path: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status",
     }),
-  );
-export type ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
-  typeof ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput>;
 
 // Output Schema
+export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    behavior?: {
+      scaleDown?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+      scaleUp?: {
+        policies?: { periodSeconds: number; type: string; value: number }[];
+        selectPolicy?: string;
+        stabilizationWindowSeconds?: number;
+        tolerance?: string;
+      };
+    };
+    maxReplicas: number;
+    metrics?: {
+      containerResource?: {
+        container: string;
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      external?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      object?: {
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      pods?: {
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      resource?: {
+        name: string;
+        target: {
+          averageUtilization?: number;
+          averageValue?: string;
+          type: string;
+          value?: string;
+        };
+      };
+      type: string;
+    }[];
+    minReplicas?: number;
+    scaleTargetRef: { apiVersion?: string; kind: string; name: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      observedGeneration?: number;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+    currentMetrics?: {
+      containerResource?: {
+        container: string;
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      external?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      object?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        describedObject: { apiVersion?: string; kind: string; name: string };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      pods?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        metric: {
+          name: string;
+          selector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        };
+      };
+      resource?: {
+        current: {
+          averageUtilization?: number;
+          averageValue?: string;
+          value?: string;
+        };
+        name: string;
+      };
+      type: string;
+    }[];
+    currentReplicas?: number;
+    desiredReplicas: number;
+    lastScaleTime?: string;
+    observedGeneration?: number;
+  };
+}
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6770,9 +10345,7 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
-  typeof ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput>;
 
 // The operation
 /**
@@ -6794,6 +10367,20 @@ export const replaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -6813,18 +10400,18 @@ export const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput 
       method: "GET",
       path: "/apis/autoscaling/v1/watch/horizontalpodautoscalers",
     }),
-  );
-export type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput =
-  typeof WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput =
-  typeof WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -6892,6 +10479,22 @@ export const watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces =
       WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6913,18 +10516,18 @@ export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
       method: "GET",
       path: "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
-  typeof WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
-  typeof WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -6992,6 +10595,21 @@ export const watchAutoscalingV1NamespacedHorizontalPodAutoscaler =
     outputSchema: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
   }));
 // Input Schema
+export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -7012,18 +10630,18 @@ export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput =
       method: "GET",
       path: "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers",
     }),
-  );
-export type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput =
-  typeof WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput.Type;
+  ) as unknown as Schema.Codec<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput>;
 
 // Output Schema
+export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput =
-  typeof WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput>;
 
 // The operation
 /**
@@ -7090,6 +10708,20 @@ export const watchAutoscalingV1NamespacedHorizontalPodAutoscalerList =
     outputSchema: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput,
   }));
 // Input Schema
+export interface WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -7109,18 +10741,18 @@ export const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput 
       method: "GET",
       path: "/apis/autoscaling/v2/watch/horizontalpodautoscalers",
     }),
-  );
-export type WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput =
-  typeof WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput =
-  typeof WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -7188,6 +10820,22 @@ export const watchAutoscalingV2HorizontalPodAutoscalerListForAllNamespaces =
       WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7209,18 +10857,18 @@ export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
       method: "GET",
       path: "/apis/autoscaling/v2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}",
     }),
-  );
-export type WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
-  typeof WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput.Type;
+  ) as unknown as Schema.Codec<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput>;
 
 // Output Schema
+export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
-  typeof WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput.Type;
+  }) as unknown as Schema.Codec<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput>;
 
 // The operation
 /**
@@ -7288,6 +10936,21 @@ export const watchAutoscalingV2NamespacedHorizontalPodAutoscaler =
     outputSchema: WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
   }));
 // Input Schema
+export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -7308,18 +10971,18 @@ export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput =
       method: "GET",
       path: "/apis/autoscaling/v2/watch/namespaces/{namespace}/horizontalpodautoscalers",
     }),
-  );
-export type WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput =
-  typeof WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput.Type;
+  ) as unknown as Schema.Codec<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput>;
 
 // Output Schema
+export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput =
-  typeof WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput>;
 
 // The operation
 /**

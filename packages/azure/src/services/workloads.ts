@@ -4,11 +4,50 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface MonitorsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Failed"
+      | "Succeeded"
+      | "Deleting"
+      | "Migrating";
+    errors?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      innerError?: { innerError?: unknown };
+    };
+    appLocation?: string;
+    routingPreference?: "Default" | "RouteAll";
+    zoneRedundancyPreference?: string;
+    managedResourceGroupConfiguration?: { name?: string };
+    logAnalyticsWorkspaceArmId?: string;
+    monitorSubnet?: string;
+    msiArmId?: string;
+    storageAccountArmId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -79,10 +118,22 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
     apiVersion: "2023-04-01",
   }),
-);
-export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
+) as unknown as Schema.Codec<MonitorsCreateInput>;
 
 // Output Schema
+export interface MonitorsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -101,8 +152,7 @@ export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MonitorsCreateOutput = typeof MonitorsCreateOutput.Type;
+}) as unknown as Schema.Codec<MonitorsCreateOutput>;
 
 // The operation
 /**
@@ -120,6 +170,11 @@ export const monitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsCreateOutput,
 }));
 // Input Schema
+export interface MonitorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -130,10 +185,40 @@ export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
     apiVersion: "2023-04-01",
   }),
-);
-export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
+) as unknown as Schema.Codec<MonitorsDeleteInput>;
 
 // Output Schema
+export interface MonitorsDeleteOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const MonitorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -186,8 +271,7 @@ export const MonitorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type MonitorsDeleteOutput = typeof MonitorsDeleteOutput.Type;
+}) as unknown as Schema.Codec<MonitorsDeleteOutput>;
 
 // The operation
 /**
@@ -205,6 +289,11 @@ export const monitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsDeleteOutput,
 }));
 // Input Schema
+export interface MonitorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -215,10 +304,22 @@ export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
     apiVersion: "2023-04-01",
   }),
-);
-export type MonitorsGetInput = typeof MonitorsGetInput.Type;
+) as unknown as Schema.Codec<MonitorsGetInput>;
 
 // Output Schema
+export interface MonitorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -237,8 +338,7 @@ export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MonitorsGetOutput = typeof MonitorsGetOutput.Type;
+}) as unknown as Schema.Codec<MonitorsGetOutput>;
 
 // The operation
 /**
@@ -256,6 +356,9 @@ export const monitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsGetOutput,
 }));
 // Input Schema
+export interface MonitorsListInput {
+  subscriptionId: string;
+}
 export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -264,10 +367,25 @@ export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/monitors",
     apiVersion: "2023-04-01",
   }),
-);
-export type MonitorsListInput = typeof MonitorsListInput.Type;
+) as unknown as Schema.Codec<MonitorsListInput>;
 
 // Output Schema
+export interface MonitorsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -303,8 +421,7 @@ export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type MonitorsListOutput = typeof MonitorsListOutput.Type;
+}) as unknown as Schema.Codec<MonitorsListOutput>;
 
 // The operation
 /**
@@ -320,6 +437,10 @@ export const monitorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsListOutput,
 }));
 // Input Schema
+export interface MonitorsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const MonitorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -330,11 +451,25 @@ export const MonitorsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors",
       apiVersion: "2023-04-01",
     }),
-  );
-export type MonitorsListByResourceGroupInput =
-  typeof MonitorsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<MonitorsListByResourceGroupInput>;
 
 // Output Schema
+export interface MonitorsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MonitorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -371,9 +506,7 @@ export const MonitorsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MonitorsListByResourceGroupOutput =
-  typeof MonitorsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<MonitorsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -392,6 +525,19 @@ export const monitorsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MonitorsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+}
 export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -419,10 +565,22 @@ export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
     apiVersion: "2023-04-01",
   }),
-);
-export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
+) as unknown as Schema.Codec<MonitorsUpdateInput>;
 
 // Output Schema
+export interface MonitorsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -441,8 +599,7 @@ export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MonitorsUpdateOutput = typeof MonitorsUpdateOutput.Type;
+}) as unknown as Schema.Codec<MonitorsUpdateOutput>;
 
 // The operation
 /**
@@ -460,6 +617,7 @@ export const monitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitorsUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -468,10 +626,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Workloads/operations",
     apiVersion: "2023-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -494,8 +666,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -508,6 +679,37 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProviderInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  providerInstanceName: string;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Failed"
+      | "Succeeded"
+      | "Deleting"
+      | "Migrating";
+    errors?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      innerError?: { innerError?: unknown };
+    };
+    providerSettings?: { providerType: string };
+  };
+}
 export const ProviderInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -569,11 +771,22 @@ export const ProviderInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ProviderInstancesCreateInput =
-  typeof ProviderInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<ProviderInstancesCreateInput>;
 
 // Output Schema
+export interface ProviderInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProviderInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -593,9 +806,7 @@ export const ProviderInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProviderInstancesCreateOutput =
-  typeof ProviderInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ProviderInstancesCreateOutput>;
 
 // The operation
 /**
@@ -616,6 +827,12 @@ export const ProviderInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  providerInstanceName: string;
+}
 export const ProviderInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -628,11 +845,40 @@ export const ProviderInstancesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ProviderInstancesDeleteInput =
-  typeof ProviderInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProviderInstancesDeleteInput>;
 
 // Output Schema
+export interface ProviderInstancesDeleteOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const ProviderInstancesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -686,9 +932,7 @@ export const ProviderInstancesDeleteOutput =
         ),
       }),
     ),
-  });
-export type ProviderInstancesDeleteOutput =
-  typeof ProviderInstancesDeleteOutput.Type;
+  }) as unknown as Schema.Codec<ProviderInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -709,6 +953,12 @@ export const ProviderInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  providerInstanceName: string;
+}
 export const ProviderInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -721,10 +971,22 @@ export const ProviderInstancesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ProviderInstancesGetInput = typeof ProviderInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<ProviderInstancesGetInput>;
 
 // Output Schema
+export interface ProviderInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProviderInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -744,8 +1006,7 @@ export const ProviderInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProviderInstancesGetOutput = typeof ProviderInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<ProviderInstancesGetOutput>;
 
 // The operation
 /**
@@ -766,6 +1027,11 @@ export const ProviderInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderInstancesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const ProviderInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -777,10 +1043,25 @@ export const ProviderInstancesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ProviderInstancesListInput = typeof ProviderInstancesListInput.Type;
+  ) as unknown as Schema.Codec<ProviderInstancesListInput>;
 
 // Output Schema
+export interface ProviderInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProviderInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -817,9 +1098,7 @@ export const ProviderInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProviderInstancesListOutput =
-  typeof ProviderInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<ProviderInstancesListOutput>;
 
 // The operation
 /**
@@ -839,6 +1118,49 @@ export const ProviderInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPApplicationServerInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  applicationInstanceName: string;
+  properties?: {
+    instanceNo?: string;
+    subnet?: string;
+    hostname?: string;
+    kernelVersion?: string;
+    kernelPatch?: string;
+    ipAddress?: string;
+    gatewayPort?: number | null;
+    icmHttpPort?: number | null;
+    icmHttpsPort?: number | null;
+    loadBalancerDetails?: { id?: string };
+    vmDetails?: {
+      type?: "Active" | "Standby" | "Unknown";
+      virtualMachineId?: string;
+      storageDetails?: { id?: string }[];
+    }[];
+    status?:
+      | "Starting"
+      | "Running"
+      | "Stopping"
+      | "Offline"
+      | "PartiallyRunning"
+      | "Unavailable"
+      | "SoftShutdown";
+    health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Creating"
+      | "Failed"
+      | "Deleting";
+    errors?: {
+      properties?: { code?: string; message?: string; details?: unknown[] };
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SAPApplicationServerInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -922,11 +1244,22 @@ export const SAPApplicationServerInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPApplicationServerInstancesCreateInput =
-  typeof SAPApplicationServerInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<SAPApplicationServerInstancesCreateInput>;
 
 // Output Schema
+export interface SAPApplicationServerInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPApplicationServerInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -946,9 +1279,7 @@ export const SAPApplicationServerInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPApplicationServerInstancesCreateOutput =
-  typeof SAPApplicationServerInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SAPApplicationServerInstancesCreateOutput>;
 
 // The operation
 /**
@@ -966,6 +1297,12 @@ export const SAPApplicationServerInstancesCreate =
     outputSchema: SAPApplicationServerInstancesCreateOutput,
   }));
 // Input Schema
+export interface SAPApplicationServerInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  applicationInstanceName: string;
+}
 export const SAPApplicationServerInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -978,11 +1315,40 @@ export const SAPApplicationServerInstancesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPApplicationServerInstancesDeleteInput =
-  typeof SAPApplicationServerInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SAPApplicationServerInstancesDeleteInput>;
 
 // Output Schema
+export interface SAPApplicationServerInstancesDeleteOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPApplicationServerInstancesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1036,9 +1402,7 @@ export const SAPApplicationServerInstancesDeleteOutput =
         ),
       }),
     ),
-  });
-export type SAPApplicationServerInstancesDeleteOutput =
-  typeof SAPApplicationServerInstancesDeleteOutput.Type;
+  }) as unknown as Schema.Codec<SAPApplicationServerInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -1056,6 +1420,12 @@ export const SAPApplicationServerInstancesDelete =
     outputSchema: SAPApplicationServerInstancesDeleteOutput,
   }));
 // Input Schema
+export interface SAPApplicationServerInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  applicationInstanceName: string;
+}
 export const SAPApplicationServerInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1068,11 +1438,22 @@ export const SAPApplicationServerInstancesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPApplicationServerInstancesGetInput =
-  typeof SAPApplicationServerInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<SAPApplicationServerInstancesGetInput>;
 
 // Output Schema
+export interface SAPApplicationServerInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPApplicationServerInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1092,9 +1473,7 @@ export const SAPApplicationServerInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPApplicationServerInstancesGetOutput =
-  typeof SAPApplicationServerInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<SAPApplicationServerInstancesGetOutput>;
 
 // The operation
 /**
@@ -1112,6 +1491,11 @@ export const SAPApplicationServerInstancesGet =
     outputSchema: SAPApplicationServerInstancesGetOutput,
   }));
 // Input Schema
+export interface SAPApplicationServerInstancesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+}
 export const SAPApplicationServerInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1123,11 +1507,25 @@ export const SAPApplicationServerInstancesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPApplicationServerInstancesListInput =
-  typeof SAPApplicationServerInstancesListInput.Type;
+  ) as unknown as Schema.Codec<SAPApplicationServerInstancesListInput>;
 
 // Output Schema
+export interface SAPApplicationServerInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SAPApplicationServerInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1164,9 +1562,7 @@ export const SAPApplicationServerInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SAPApplicationServerInstancesListOutput =
-  typeof SAPApplicationServerInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<SAPApplicationServerInstancesListOutput>;
 
 // The operation
 /**
@@ -1183,6 +1579,13 @@ export const SAPApplicationServerInstancesList =
     outputSchema: SAPApplicationServerInstancesListOutput,
   }));
 // Input Schema
+export interface SapApplicationServerInstancesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  applicationInstanceName: string;
+  startVm?: boolean;
+}
 export const SapApplicationServerInstancesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1196,11 +1599,42 @@ export const SapApplicationServerInstancesStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/start",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapApplicationServerInstancesStartInput =
-  typeof SapApplicationServerInstancesStartInput.Type;
+  ) as unknown as Schema.Codec<SapApplicationServerInstancesStartInput>;
 
 // Output Schema
+export interface SapApplicationServerInstancesStartOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SapApplicationServerInstancesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1256,9 +1690,7 @@ export const SapApplicationServerInstancesStartOutput =
         ),
       }),
     ),
-  });
-export type SapApplicationServerInstancesStartOutput =
-  typeof SapApplicationServerInstancesStartOutput.Type;
+  }) as unknown as Schema.Codec<SapApplicationServerInstancesStartOutput>;
 
 // The operation
 /**
@@ -1276,6 +1708,12 @@ export const SapApplicationServerInstancesStart =
     outputSchema: SapApplicationServerInstancesStartOutput,
   }));
 // Input Schema
+export interface SAPApplicationServerInstancesStartInstanceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  applicationInstanceName: string;
+}
 export const SAPApplicationServerInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1288,11 +1726,40 @@ export const SAPApplicationServerInstancesStartInstanceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/start",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPApplicationServerInstancesStartInstanceInput =
-  typeof SAPApplicationServerInstancesStartInstanceInput.Type;
+  ) as unknown as Schema.Codec<SAPApplicationServerInstancesStartInstanceInput>;
 
 // Output Schema
+export interface SAPApplicationServerInstancesStartInstanceOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPApplicationServerInstancesStartInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1346,9 +1813,7 @@ export const SAPApplicationServerInstancesStartInstanceOutput =
         ),
       }),
     ),
-  });
-export type SAPApplicationServerInstancesStartInstanceOutput =
-  typeof SAPApplicationServerInstancesStartInstanceOutput.Type;
+  }) as unknown as Schema.Codec<SAPApplicationServerInstancesStartInstanceOutput>;
 
 // The operation
 /**
@@ -1366,6 +1831,14 @@ export const SAPApplicationServerInstancesStartInstance =
     outputSchema: SAPApplicationServerInstancesStartInstanceOutput,
   }));
 // Input Schema
+export interface SapApplicationServerInstancesStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  applicationInstanceName: string;
+  softStopTimeoutSeconds?: number;
+  deallocateVm?: boolean;
+}
 export const SapApplicationServerInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1380,11 +1853,42 @@ export const SapApplicationServerInstancesStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/stop",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapApplicationServerInstancesStopInput =
-  typeof SapApplicationServerInstancesStopInput.Type;
+  ) as unknown as Schema.Codec<SapApplicationServerInstancesStopInput>;
 
 // Output Schema
+export interface SapApplicationServerInstancesStopOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SapApplicationServerInstancesStopOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1440,9 +1944,7 @@ export const SapApplicationServerInstancesStopOutput =
         ),
       }),
     ),
-  });
-export type SapApplicationServerInstancesStopOutput =
-  typeof SapApplicationServerInstancesStopOutput.Type;
+  }) as unknown as Schema.Codec<SapApplicationServerInstancesStopOutput>;
 
 // The operation
 /**
@@ -1460,6 +1962,13 @@ export const SapApplicationServerInstancesStop =
     outputSchema: SapApplicationServerInstancesStopOutput,
   }));
 // Input Schema
+export interface SAPApplicationServerInstancesStopInstanceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  applicationInstanceName: string;
+  softStopTimeoutSeconds?: number;
+}
 export const SAPApplicationServerInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1473,11 +1982,40 @@ export const SAPApplicationServerInstancesStopInstanceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/stop",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPApplicationServerInstancesStopInstanceInput =
-  typeof SAPApplicationServerInstancesStopInstanceInput.Type;
+  ) as unknown as Schema.Codec<SAPApplicationServerInstancesStopInstanceInput>;
 
 // Output Schema
+export interface SAPApplicationServerInstancesStopInstanceOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPApplicationServerInstancesStopInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1531,9 +2069,7 @@ export const SAPApplicationServerInstancesStopInstanceOutput =
         ),
       }),
     ),
-  });
-export type SAPApplicationServerInstancesStopInstanceOutput =
-  typeof SAPApplicationServerInstancesStopInstanceOutput.Type;
+  }) as unknown as Schema.Codec<SAPApplicationServerInstancesStopInstanceOutput>;
 
 // The operation
 /**
@@ -1551,6 +2087,13 @@ export const SAPApplicationServerInstancesStopInstance =
     outputSchema: SAPApplicationServerInstancesStopInstanceOutput,
   }));
 // Input Schema
+export interface SAPApplicationServerInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  applicationInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const SAPApplicationServerInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1564,11 +2107,22 @@ export const SAPApplicationServerInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPApplicationServerInstancesUpdateInput =
-  typeof SAPApplicationServerInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SAPApplicationServerInstancesUpdateInput>;
 
 // Output Schema
+export interface SAPApplicationServerInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPApplicationServerInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1588,9 +2142,7 @@ export const SAPApplicationServerInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPApplicationServerInstancesUpdateOutput =
-  typeof SAPApplicationServerInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SAPApplicationServerInstancesUpdateOutput>;
 
 // The operation
 /**
@@ -1608,6 +2160,13 @@ export const SAPApplicationServerInstancesUpdate =
     outputSchema: SAPApplicationServerInstancesUpdateOutput,
   }));
 // Input Schema
+export interface SAPAvailabilityZoneDetailsInput {
+  subscriptionId: string;
+  location: string;
+  appLocation: string;
+  sapProduct: "ECC" | "S4HANA" | "Other";
+  databaseType: "HANA" | "DB2";
+}
 export const SAPAvailabilityZoneDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1621,11 +2180,12 @@ export const SAPAvailabilityZoneDetailsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getAvailabilityZoneDetails",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPAvailabilityZoneDetailsInput =
-  typeof SAPAvailabilityZoneDetailsInput.Type;
+  ) as unknown as Schema.Codec<SAPAvailabilityZoneDetailsInput>;
 
 // Output Schema
+export interface SAPAvailabilityZoneDetailsOutput {
+  availabilityZonePairs?: { zoneA?: number; zoneB?: number }[];
+}
 export const SAPAvailabilityZoneDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilityZonePairs: Schema.optional(
@@ -1636,9 +2196,7 @@ export const SAPAvailabilityZoneDetailsOutput =
         }),
       ),
     ),
-  });
-export type SAPAvailabilityZoneDetailsOutput =
-  typeof SAPAvailabilityZoneDetailsOutput.Type;
+  }) as unknown as Schema.Codec<SAPAvailabilityZoneDetailsOutput>;
 
 // The operation
 /**
@@ -1655,6 +2213,79 @@ export const SAPAvailabilityZoneDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPCentralInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+  properties?: {
+    instanceNo?: string;
+    subnet?: string;
+    messageServerProperties?: {
+      msPort?: number | null;
+      internalMsPort?: number | null;
+      httpPort?: number | null;
+      httpsPort?: number | null;
+      hostname?: string;
+      ipAddress?: string;
+      health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    };
+    enqueueServerProperties?: {
+      hostname?: string;
+      ipAddress?: string;
+      port?: number | null;
+      health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    };
+    gatewayServerProperties?: {
+      port?: number | null;
+      health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    };
+    enqueueReplicationServerProperties?: {
+      ersVersion?: "EnqueueReplicator1" | "EnqueueReplicator2";
+      instanceNo?: string;
+      hostname?: string;
+      kernelVersion?: string;
+      kernelPatch?: string;
+      ipAddress?: string;
+      health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    };
+    kernelVersion?: string | null;
+    kernelPatch?: string | null;
+    loadBalancerDetails?: { id?: string };
+    vmDetails?: {
+      type?:
+        | "Primary"
+        | "Secondary"
+        | "Unknown"
+        | "ASCS"
+        | "ERSInactive"
+        | "ERS"
+        | "Standby";
+      virtualMachineId?: string;
+      storageDetails?: { id?: string }[];
+    }[];
+    status?:
+      | "Starting"
+      | "Running"
+      | "Stopping"
+      | "Offline"
+      | "PartiallyRunning"
+      | "Unavailable"
+      | "SoftShutdown";
+    health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Creating"
+      | "Failed"
+      | "Deleting";
+    errors?: {
+      properties?: { code?: string; message?: string; details?: unknown[] };
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SAPCentralInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1787,11 +2418,22 @@ export const SAPCentralInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPCentralInstancesCreateInput =
-  typeof SAPCentralInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<SAPCentralInstancesCreateInput>;
 
 // Output Schema
+export interface SAPCentralInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPCentralInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1811,9 +2453,7 @@ export const SAPCentralInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPCentralInstancesCreateOutput =
-  typeof SAPCentralInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SAPCentralInstancesCreateOutput>;
 
 // The operation
 /**
@@ -1832,6 +2472,12 @@ export const SAPCentralInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPCentralInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+}
 export const SAPCentralInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1844,11 +2490,40 @@ export const SAPCentralInstancesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPCentralInstancesDeleteInput =
-  typeof SAPCentralInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SAPCentralInstancesDeleteInput>;
 
 // Output Schema
+export interface SAPCentralInstancesDeleteOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPCentralInstancesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1902,9 +2577,7 @@ export const SAPCentralInstancesDeleteOutput =
         ),
       }),
     ),
-  });
-export type SAPCentralInstancesDeleteOutput =
-  typeof SAPCentralInstancesDeleteOutput.Type;
+  }) as unknown as Schema.Codec<SAPCentralInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -1923,6 +2596,12 @@ export const SAPCentralInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPCentralInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+}
 export const SAPCentralInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1935,11 +2614,22 @@ export const SAPCentralInstancesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPCentralInstancesGetInput =
-  typeof SAPCentralInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<SAPCentralInstancesGetInput>;
 
 // Output Schema
+export interface SAPCentralInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPCentralInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1959,9 +2649,7 @@ export const SAPCentralInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPCentralInstancesGetOutput =
-  typeof SAPCentralInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<SAPCentralInstancesGetOutput>;
 
 // The operation
 /**
@@ -1980,6 +2668,11 @@ export const SAPCentralInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPCentralInstancesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+}
 export const SAPCentralInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1991,11 +2684,25 @@ export const SAPCentralInstancesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPCentralInstancesListInput =
-  typeof SAPCentralInstancesListInput.Type;
+  ) as unknown as Schema.Codec<SAPCentralInstancesListInput>;
 
 // Output Schema
+export interface SAPCentralInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SAPCentralInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2032,9 +2739,7 @@ export const SAPCentralInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SAPCentralInstancesListOutput =
-  typeof SAPCentralInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<SAPCentralInstancesListOutput>;
 
 // The operation
 /**
@@ -2052,6 +2757,12 @@ export const SAPCentralInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPCentralInstancesStartInstanceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+}
 export const SAPCentralInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2064,11 +2775,40 @@ export const SAPCentralInstancesStartInstanceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/start",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPCentralInstancesStartInstanceInput =
-  typeof SAPCentralInstancesStartInstanceInput.Type;
+  ) as unknown as Schema.Codec<SAPCentralInstancesStartInstanceInput>;
 
 // Output Schema
+export interface SAPCentralInstancesStartInstanceOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPCentralInstancesStartInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2122,9 +2862,7 @@ export const SAPCentralInstancesStartInstanceOutput =
         ),
       }),
     ),
-  });
-export type SAPCentralInstancesStartInstanceOutput =
-  typeof SAPCentralInstancesStartInstanceOutput.Type;
+  }) as unknown as Schema.Codec<SAPCentralInstancesStartInstanceOutput>;
 
 // The operation
 /**
@@ -2142,6 +2880,13 @@ export const SAPCentralInstancesStartInstance =
     outputSchema: SAPCentralInstancesStartInstanceOutput,
   }));
 // Input Schema
+export interface SAPCentralInstancesStopInstanceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+  softStopTimeoutSeconds?: number;
+}
 export const SAPCentralInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2155,11 +2900,40 @@ export const SAPCentralInstancesStopInstanceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/stop",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPCentralInstancesStopInstanceInput =
-  typeof SAPCentralInstancesStopInstanceInput.Type;
+  ) as unknown as Schema.Codec<SAPCentralInstancesStopInstanceInput>;
 
 // Output Schema
+export interface SAPCentralInstancesStopInstanceOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPCentralInstancesStopInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2213,9 +2987,7 @@ export const SAPCentralInstancesStopInstanceOutput =
         ),
       }),
     ),
-  });
-export type SAPCentralInstancesStopInstanceOutput =
-  typeof SAPCentralInstancesStopInstanceOutput.Type;
+  }) as unknown as Schema.Codec<SAPCentralInstancesStopInstanceOutput>;
 
 // The operation
 /**
@@ -2233,6 +3005,13 @@ export const SAPCentralInstancesStopInstance =
     outputSchema: SAPCentralInstancesStopInstanceOutput,
   }));
 // Input Schema
+export interface SAPCentralInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const SAPCentralInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2246,11 +3025,22 @@ export const SAPCentralInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPCentralInstancesUpdateInput =
-  typeof SAPCentralInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SAPCentralInstancesUpdateInput>;
 
 // Output Schema
+export interface SAPCentralInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPCentralInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2270,9 +3060,7 @@ export const SAPCentralInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPCentralInstancesUpdateOutput =
-  typeof SAPCentralInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SAPCentralInstancesUpdateOutput>;
 
 // The operation
 /**
@@ -2291,6 +3079,80 @@ export const SAPCentralInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SapCentralServerInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+  properties?: {
+    instanceNo?: string;
+    subnet?: string;
+    messageServerProperties?: {
+      msPort?: number;
+      internalMsPort?: number;
+      httpPort?: number;
+      httpsPort?: number;
+      hostname?: string;
+      ipAddress?: string;
+      health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    };
+    enqueueServerProperties?: {
+      hostname?: string;
+      ipAddress?: string;
+      port?: number;
+      health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    };
+    gatewayServerProperties?: {
+      port?: number;
+      health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    };
+    enqueueReplicationServerProperties?: {
+      ersVersion?: "EnqueueReplicator1" | "EnqueueReplicator2";
+      instanceNo?: string;
+      hostname?: string;
+      kernelVersion?: string;
+      kernelPatch?: string;
+      ipAddress?: string;
+      health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    };
+    kernelVersion?: string;
+    kernelPatch?: string;
+    loadBalancerDetails?: { id?: string };
+    vmDetails?: {
+      type?:
+        | "Primary"
+        | "Secondary"
+        | "Unknown"
+        | "ASCS"
+        | "ERSInactive"
+        | "ERS"
+        | "Standby";
+      virtualMachineId?: string;
+      storageDetails?: { id?: string }[];
+    }[];
+    status?:
+      | "Starting"
+      | "Running"
+      | "Stopping"
+      | "Offline"
+      | "PartiallyRunning"
+      | "Unavailable"
+      | "SoftShutdown";
+    health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Creating"
+      | "Failed"
+      | "Deleting"
+      | "Canceled";
+    errors?: {
+      properties?: { code?: string; message?: string; details?: unknown[] };
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SapCentralServerInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2424,11 +3286,22 @@ export const SapCentralServerInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapCentralServerInstancesCreateInput =
-  typeof SapCentralServerInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<SapCentralServerInstancesCreateInput>;
 
 // Output Schema
+export interface SapCentralServerInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SapCentralServerInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2448,9 +3321,7 @@ export const SapCentralServerInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SapCentralServerInstancesCreateOutput =
-  typeof SapCentralServerInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SapCentralServerInstancesCreateOutput>;
 
 // The operation
 /**
@@ -2468,6 +3339,12 @@ export const SapCentralServerInstancesCreate =
     outputSchema: SapCentralServerInstancesCreateOutput,
   }));
 // Input Schema
+export interface SapCentralServerInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+}
 export const SapCentralServerInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2480,15 +3357,12 @@ export const SapCentralServerInstancesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapCentralServerInstancesDeleteInput =
-  typeof SapCentralServerInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SapCentralServerInstancesDeleteInput>;
 
 // Output Schema
+export type SapCentralServerInstancesDeleteOutput = void;
 export const SapCentralServerInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SapCentralServerInstancesDeleteOutput =
-  typeof SapCentralServerInstancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SapCentralServerInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -2506,6 +3380,12 @@ export const SapCentralServerInstancesDelete =
     outputSchema: SapCentralServerInstancesDeleteOutput,
   }));
 // Input Schema
+export interface SapCentralServerInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+}
 export const SapCentralServerInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2518,11 +3398,22 @@ export const SapCentralServerInstancesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapCentralServerInstancesGetInput =
-  typeof SapCentralServerInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<SapCentralServerInstancesGetInput>;
 
 // Output Schema
+export interface SapCentralServerInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SapCentralServerInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2542,9 +3433,7 @@ export const SapCentralServerInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SapCentralServerInstancesGetOutput =
-  typeof SapCentralServerInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<SapCentralServerInstancesGetOutput>;
 
 // The operation
 /**
@@ -2562,6 +3451,11 @@ export const SapCentralServerInstancesGet =
     outputSchema: SapCentralServerInstancesGetOutput,
   }));
 // Input Schema
+export interface SapCentralServerInstancesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+}
 export const SapCentralServerInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2573,11 +3467,25 @@ export const SapCentralServerInstancesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapCentralServerInstancesListInput =
-  typeof SapCentralServerInstancesListInput.Type;
+  ) as unknown as Schema.Codec<SapCentralServerInstancesListInput>;
 
 // Output Schema
+export interface SapCentralServerInstancesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SapCentralServerInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2612,9 +3520,7 @@ export const SapCentralServerInstancesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SapCentralServerInstancesListOutput =
-  typeof SapCentralServerInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<SapCentralServerInstancesListOutput>;
 
 // The operation
 /**
@@ -2631,6 +3537,13 @@ export const SapCentralServerInstancesList =
     outputSchema: SapCentralServerInstancesListOutput,
   }));
 // Input Schema
+export interface SapCentralServerInstancesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+  startVm?: boolean;
+}
 export const SapCentralServerInstancesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2644,11 +3557,42 @@ export const SapCentralServerInstancesStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/start",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapCentralServerInstancesStartInput =
-  typeof SapCentralServerInstancesStartInput.Type;
+  ) as unknown as Schema.Codec<SapCentralServerInstancesStartInput>;
 
 // Output Schema
+export interface SapCentralServerInstancesStartOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SapCentralServerInstancesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2704,9 +3648,7 @@ export const SapCentralServerInstancesStartOutput =
         ),
       }),
     ),
-  });
-export type SapCentralServerInstancesStartOutput =
-  typeof SapCentralServerInstancesStartOutput.Type;
+  }) as unknown as Schema.Codec<SapCentralServerInstancesStartOutput>;
 
 // The operation
 /**
@@ -2724,6 +3666,14 @@ export const SapCentralServerInstancesStart =
     outputSchema: SapCentralServerInstancesStartOutput,
   }));
 // Input Schema
+export interface SapCentralServerInstancesStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+  softStopTimeoutSeconds?: number;
+  deallocateVm?: boolean;
+}
 export const SapCentralServerInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2738,11 +3688,42 @@ export const SapCentralServerInstancesStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/stop",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapCentralServerInstancesStopInput =
-  typeof SapCentralServerInstancesStopInput.Type;
+  ) as unknown as Schema.Codec<SapCentralServerInstancesStopInput>;
 
 // Output Schema
+export interface SapCentralServerInstancesStopOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SapCentralServerInstancesStopOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2798,9 +3779,7 @@ export const SapCentralServerInstancesStopOutput =
         ),
       }),
     ),
-  });
-export type SapCentralServerInstancesStopOutput =
-  typeof SapCentralServerInstancesStopOutput.Type;
+  }) as unknown as Schema.Codec<SapCentralServerInstancesStopOutput>;
 
 // The operation
 /**
@@ -2818,6 +3797,13 @@ export const SapCentralServerInstancesStop =
     outputSchema: SapCentralServerInstancesStopOutput,
   }));
 // Input Schema
+export interface SapCentralServerInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  centralInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const SapCentralServerInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2831,11 +3817,22 @@ export const SapCentralServerInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapCentralServerInstancesUpdateInput =
-  typeof SapCentralServerInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SapCentralServerInstancesUpdateInput>;
 
 // Output Schema
+export interface SapCentralServerInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SapCentralServerInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2855,9 +3852,7 @@ export const SapCentralServerInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SapCentralServerInstancesUpdateOutput =
-  typeof SapCentralServerInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SapCentralServerInstancesUpdateOutput>;
 
 // The operation
 /**
@@ -2875,6 +3870,50 @@ export const SapCentralServerInstancesUpdate =
     outputSchema: SapCentralServerInstancesUpdateOutput,
   }));
 // Input Schema
+export interface SAPDatabaseInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  databaseInstanceName: string;
+  properties?: {
+    subnet?: string;
+    databaseSid?: string;
+    databaseType?: string;
+    ipAddress?: string;
+    loadBalancerDetails?: { id?: string };
+    vmDetails?: {
+      virtualMachineId?: string;
+      status?:
+        | "Starting"
+        | "Running"
+        | "Stopping"
+        | "Offline"
+        | "PartiallyRunning"
+        | "Unavailable"
+        | "SoftShutdown";
+      storageDetails?: { id?: string }[];
+    }[];
+    status?:
+      | "Starting"
+      | "Running"
+      | "Stopping"
+      | "Offline"
+      | "PartiallyRunning"
+      | "Unavailable"
+      | "SoftShutdown";
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Creating"
+      | "Failed"
+      | "Deleting";
+    errors?: {
+      properties?: { code?: string; message?: string; details?: unknown[] };
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SAPDatabaseInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2958,11 +3997,22 @@ export const SAPDatabaseInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPDatabaseInstancesCreateInput =
-  typeof SAPDatabaseInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<SAPDatabaseInstancesCreateInput>;
 
 // Output Schema
+export interface SAPDatabaseInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPDatabaseInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2982,9 +4032,7 @@ export const SAPDatabaseInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPDatabaseInstancesCreateOutput =
-  typeof SAPDatabaseInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SAPDatabaseInstancesCreateOutput>;
 
 // The operation
 /**
@@ -3003,6 +4051,12 @@ export const SAPDatabaseInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPDatabaseInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  databaseInstanceName: string;
+}
 export const SAPDatabaseInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3015,11 +4069,40 @@ export const SAPDatabaseInstancesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPDatabaseInstancesDeleteInput =
-  typeof SAPDatabaseInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SAPDatabaseInstancesDeleteInput>;
 
 // Output Schema
+export interface SAPDatabaseInstancesDeleteOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPDatabaseInstancesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3073,9 +4156,7 @@ export const SAPDatabaseInstancesDeleteOutput =
         ),
       }),
     ),
-  });
-export type SAPDatabaseInstancesDeleteOutput =
-  typeof SAPDatabaseInstancesDeleteOutput.Type;
+  }) as unknown as Schema.Codec<SAPDatabaseInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -3094,6 +4175,12 @@ export const SAPDatabaseInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPDatabaseInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  databaseInstanceName: string;
+}
 export const SAPDatabaseInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3106,11 +4193,22 @@ export const SAPDatabaseInstancesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPDatabaseInstancesGetInput =
-  typeof SAPDatabaseInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<SAPDatabaseInstancesGetInput>;
 
 // Output Schema
+export interface SAPDatabaseInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPDatabaseInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3130,9 +4228,7 @@ export const SAPDatabaseInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPDatabaseInstancesGetOutput =
-  typeof SAPDatabaseInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<SAPDatabaseInstancesGetOutput>;
 
 // The operation
 /**
@@ -3151,6 +4247,11 @@ export const SAPDatabaseInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPDatabaseInstancesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+}
 export const SAPDatabaseInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3162,11 +4263,25 @@ export const SAPDatabaseInstancesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPDatabaseInstancesListInput =
-  typeof SAPDatabaseInstancesListInput.Type;
+  ) as unknown as Schema.Codec<SAPDatabaseInstancesListInput>;
 
 // Output Schema
+export interface SAPDatabaseInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SAPDatabaseInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3203,9 +4318,7 @@ export const SAPDatabaseInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SAPDatabaseInstancesListOutput =
-  typeof SAPDatabaseInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<SAPDatabaseInstancesListOutput>;
 
 // The operation
 /**
@@ -3223,6 +4336,13 @@ export const SAPDatabaseInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SapDatabaseInstancesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  databaseInstanceName: string;
+  startVm?: boolean;
+}
 export const SapDatabaseInstancesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3236,11 +4356,42 @@ export const SapDatabaseInstancesStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapDatabaseInstancesStartInput =
-  typeof SapDatabaseInstancesStartInput.Type;
+  ) as unknown as Schema.Codec<SapDatabaseInstancesStartInput>;
 
 // Output Schema
+export interface SapDatabaseInstancesStartOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SapDatabaseInstancesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3296,9 +4447,7 @@ export const SapDatabaseInstancesStartOutput =
         ),
       }),
     ),
-  });
-export type SapDatabaseInstancesStartOutput =
-  typeof SapDatabaseInstancesStartOutput.Type;
+  }) as unknown as Schema.Codec<SapDatabaseInstancesStartOutput>;
 
 // The operation
 /**
@@ -3317,6 +4466,12 @@ export const SapDatabaseInstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPDatabaseInstancesStartInstanceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  databaseInstanceName: string;
+}
 export const SAPDatabaseInstancesStartInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3329,11 +4484,40 @@ export const SAPDatabaseInstancesStartInstanceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPDatabaseInstancesStartInstanceInput =
-  typeof SAPDatabaseInstancesStartInstanceInput.Type;
+  ) as unknown as Schema.Codec<SAPDatabaseInstancesStartInstanceInput>;
 
 // Output Schema
+export interface SAPDatabaseInstancesStartInstanceOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPDatabaseInstancesStartInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3387,9 +4571,7 @@ export const SAPDatabaseInstancesStartInstanceOutput =
         ),
       }),
     ),
-  });
-export type SAPDatabaseInstancesStartInstanceOutput =
-  typeof SAPDatabaseInstancesStartInstanceOutput.Type;
+  }) as unknown as Schema.Codec<SAPDatabaseInstancesStartInstanceOutput>;
 
 // The operation
 /**
@@ -3407,6 +4589,14 @@ export const SAPDatabaseInstancesStartInstance =
     outputSchema: SAPDatabaseInstancesStartInstanceOutput,
   }));
 // Input Schema
+export interface SapDatabaseInstancesStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  databaseInstanceName: string;
+  softStopTimeoutSeconds?: number;
+  deallocateVm?: boolean;
+}
 export const SapDatabaseInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3421,11 +4611,42 @@ export const SapDatabaseInstancesStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/stop",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapDatabaseInstancesStopInput =
-  typeof SapDatabaseInstancesStopInput.Type;
+  ) as unknown as Schema.Codec<SapDatabaseInstancesStopInput>;
 
 // Output Schema
+export interface SapDatabaseInstancesStopOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SapDatabaseInstancesStopOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3481,9 +4702,7 @@ export const SapDatabaseInstancesStopOutput =
         ),
       }),
     ),
-  });
-export type SapDatabaseInstancesStopOutput =
-  typeof SapDatabaseInstancesStopOutput.Type;
+  }) as unknown as Schema.Codec<SapDatabaseInstancesStopOutput>;
 
 // The operation
 /**
@@ -3502,6 +4721,13 @@ export const SapDatabaseInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPDatabaseInstancesStopInstanceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  databaseInstanceName: string;
+  softStopTimeoutSeconds?: number;
+}
 export const SAPDatabaseInstancesStopInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3515,11 +4741,40 @@ export const SAPDatabaseInstancesStopInstanceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/stop",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPDatabaseInstancesStopInstanceInput =
-  typeof SAPDatabaseInstancesStopInstanceInput.Type;
+  ) as unknown as Schema.Codec<SAPDatabaseInstancesStopInstanceInput>;
 
 // Output Schema
+export interface SAPDatabaseInstancesStopInstanceOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPDatabaseInstancesStopInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3573,9 +4828,7 @@ export const SAPDatabaseInstancesStopInstanceOutput =
         ),
       }),
     ),
-  });
-export type SAPDatabaseInstancesStopInstanceOutput =
-  typeof SAPDatabaseInstancesStopInstanceOutput.Type;
+  }) as unknown as Schema.Codec<SAPDatabaseInstancesStopInstanceOutput>;
 
 // The operation
 /**
@@ -3593,6 +4846,13 @@ export const SAPDatabaseInstancesStopInstance =
     outputSchema: SAPDatabaseInstancesStopInstanceOutput,
   }));
 // Input Schema
+export interface SAPDatabaseInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  databaseInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const SAPDatabaseInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3606,11 +4866,22 @@ export const SAPDatabaseInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPDatabaseInstancesUpdateInput =
-  typeof SAPDatabaseInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SAPDatabaseInstancesUpdateInput>;
 
 // Output Schema
+export interface SAPDatabaseInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPDatabaseInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3630,9 +4901,7 @@ export const SAPDatabaseInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPDatabaseInstancesUpdateOutput =
-  typeof SAPDatabaseInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SAPDatabaseInstancesUpdateOutput>;
 
 // The operation
 /**
@@ -3651,6 +4920,16 @@ export const SAPDatabaseInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPDiskConfigurationsInput {
+  subscriptionId: string;
+  location: string;
+  appLocation: string;
+  environment: "NonProd" | "Prod";
+  sapProduct: "ECC" | "S4HANA" | "Other";
+  databaseType: "HANA" | "DB2";
+  deploymentType: "SingleServer" | "ThreeTier";
+  dbVmSku: string;
+}
 export const SAPDiskConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3667,10 +4946,48 @@ export const SAPDiskConfigurationsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getDiskConfigurations",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPDiskConfigurationsInput = typeof SAPDiskConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<SAPDiskConfigurationsInput>;
 
 // Output Schema
+export interface SAPDiskConfigurationsOutput {
+  volumeConfigurations?: Record<
+    string,
+    {
+      recommendedConfiguration?: {
+        count?: number;
+        sizeGB?: number;
+        sku?: {
+          name?:
+            | "Standard_LRS"
+            | "Premium_LRS"
+            | "StandardSSD_LRS"
+            | "UltraSSD_LRS"
+            | "Premium_ZRS"
+            | "StandardSSD_ZRS"
+            | "PremiumV2_LRS";
+        };
+      };
+      supportedConfigurations?: {
+        sku?: {
+          name?:
+            | "Standard_LRS"
+            | "Premium_LRS"
+            | "StandardSSD_LRS"
+            | "UltraSSD_LRS"
+            | "Premium_ZRS"
+            | "StandardSSD_ZRS"
+            | "PremiumV2_LRS";
+        };
+        sizeGB?: number;
+        minimumSupportedDiskCount?: number;
+        maximumSupportedDiskCount?: number;
+        iopsReadWrite?: number;
+        mbpsReadWrite?: number;
+        diskTier?: string;
+      }[];
+    }
+  >;
+}
 export const SAPDiskConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     volumeConfigurations: Schema.optional(
@@ -3728,9 +5045,7 @@ export const SAPDiskConfigurationsOutput =
         }),
       ),
     ),
-  });
-export type SAPDiskConfigurationsOutput =
-  typeof SAPDiskConfigurationsOutput.Type;
+  }) as unknown as Schema.Codec<SAPDiskConfigurationsOutput>;
 
 // The operation
 /**
@@ -3747,6 +5062,29 @@ export const SAPDiskConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SapLandscapeMonitorCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Created"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+    grouping?: {
+      landscape?: { name?: string; topSid?: string[] }[];
+      sapApplication?: { name?: string; topSid?: string[] }[];
+    };
+    topMetricsThresholds?: {
+      name?: string;
+      green?: number;
+      yellow?: number;
+      red?: number;
+    }[];
+  };
+}
 export const SapLandscapeMonitorCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3801,11 +5139,22 @@ export const SapLandscapeMonitorCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SapLandscapeMonitorCreateInput =
-  typeof SapLandscapeMonitorCreateInput.Type;
+  ) as unknown as Schema.Codec<SapLandscapeMonitorCreateInput>;
 
 // Output Schema
+export interface SapLandscapeMonitorCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SapLandscapeMonitorCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3825,9 +5174,7 @@ export const SapLandscapeMonitorCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SapLandscapeMonitorCreateOutput =
-  typeof SapLandscapeMonitorCreateOutput.Type;
+  }) as unknown as Schema.Codec<SapLandscapeMonitorCreateOutput>;
 
 // The operation
 /**
@@ -3847,6 +5194,11 @@ export const SapLandscapeMonitorCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SapLandscapeMonitorDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const SapLandscapeMonitorDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3858,15 +5210,12 @@ export const SapLandscapeMonitorDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SapLandscapeMonitorDeleteInput =
-  typeof SapLandscapeMonitorDeleteInput.Type;
+  ) as unknown as Schema.Codec<SapLandscapeMonitorDeleteInput>;
 
 // Output Schema
+export type SapLandscapeMonitorDeleteOutput = void;
 export const SapLandscapeMonitorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SapLandscapeMonitorDeleteOutput =
-  typeof SapLandscapeMonitorDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SapLandscapeMonitorDeleteOutput>;
 
 // The operation
 /**
@@ -3886,6 +5235,11 @@ export const SapLandscapeMonitorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SapLandscapeMonitorGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const SapLandscapeMonitorGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3897,11 +5251,22 @@ export const SapLandscapeMonitorGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SapLandscapeMonitorGetInput =
-  typeof SapLandscapeMonitorGetInput.Type;
+  ) as unknown as Schema.Codec<SapLandscapeMonitorGetInput>;
 
 // Output Schema
+export interface SapLandscapeMonitorGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SapLandscapeMonitorGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3921,9 +5286,7 @@ export const SapLandscapeMonitorGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SapLandscapeMonitorGetOutput =
-  typeof SapLandscapeMonitorGetOutput.Type;
+  }) as unknown as Schema.Codec<SapLandscapeMonitorGetOutput>;
 
 // The operation
 /**
@@ -3943,6 +5306,11 @@ export const SapLandscapeMonitorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SapLandscapeMonitorListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+}
 export const SapLandscapeMonitorListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3954,11 +5322,25 @@ export const SapLandscapeMonitorListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SapLandscapeMonitorListInput =
-  typeof SapLandscapeMonitorListInput.Type;
+  ) as unknown as Schema.Codec<SapLandscapeMonitorListInput>;
 
 // Output Schema
+export interface SapLandscapeMonitorListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SapLandscapeMonitorListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3995,9 +5377,7 @@ export const SapLandscapeMonitorListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SapLandscapeMonitorListOutput =
-  typeof SapLandscapeMonitorListOutput.Type;
+  }) as unknown as Schema.Codec<SapLandscapeMonitorListOutput>;
 
 // The operation
 /**
@@ -4017,6 +5397,29 @@ export const SapLandscapeMonitorList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SapLandscapeMonitorUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  monitorName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Created"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+    grouping?: {
+      landscape?: { name?: string; topSid?: string[] }[];
+      sapApplication?: { name?: string; topSid?: string[] }[];
+    };
+    topMetricsThresholds?: {
+      name?: string;
+      green?: number;
+      yellow?: number;
+      red?: number;
+    }[];
+  };
+}
 export const SapLandscapeMonitorUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4071,11 +5474,22 @@ export const SapLandscapeMonitorUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SapLandscapeMonitorUpdateInput =
-  typeof SapLandscapeMonitorUpdateInput.Type;
+  ) as unknown as Schema.Codec<SapLandscapeMonitorUpdateInput>;
 
 // Output Schema
+export interface SapLandscapeMonitorUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SapLandscapeMonitorUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4095,9 +5509,7 @@ export const SapLandscapeMonitorUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SapLandscapeMonitorUpdateOutput =
-  typeof SapLandscapeMonitorUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SapLandscapeMonitorUpdateOutput>;
 
 // The operation
 /**
@@ -4117,6 +5529,19 @@ export const SapLandscapeMonitorUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPSizingRecommendationsInput {
+  subscriptionId: string;
+  location: string;
+  appLocation: string;
+  environment: "NonProd" | "Prod";
+  sapProduct: "ECC" | "S4HANA" | "Other";
+  deploymentType: "SingleServer" | "ThreeTier";
+  saps: number;
+  dbMemory: number;
+  databaseType: "HANA" | "DB2";
+  dbScaleMethod?: "ScaleUp";
+  highAvailabilityType?: "AvailabilitySet" | "AvailabilityZone";
+}
 export const SAPSizingRecommendationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4138,17 +5563,16 @@ export const SAPSizingRecommendationsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSizingRecommendations",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPSizingRecommendationsInput =
-  typeof SAPSizingRecommendationsInput.Type;
+  ) as unknown as Schema.Codec<SAPSizingRecommendationsInput>;
 
 // Output Schema
+export interface SAPSizingRecommendationsOutput {
+  deploymentType: "SingleServer" | "ThreeTier";
+}
 export const SAPSizingRecommendationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
-  });
-export type SAPSizingRecommendationsOutput =
-  typeof SAPSizingRecommendationsOutput.Type;
+  }) as unknown as Schema.Codec<SAPSizingRecommendationsOutput>;
 
 // The operation
 /**
@@ -4165,6 +5589,16 @@ export const SAPSizingRecommendations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPSupportedSkuInput {
+  subscriptionId: string;
+  location: string;
+  appLocation: string;
+  environment: "NonProd" | "Prod";
+  sapProduct: "ECC" | "S4HANA" | "Other";
+  deploymentType: "SingleServer" | "ThreeTier";
+  databaseType: "HANA" | "DB2";
+  highAvailabilityType?: "AvailabilitySet" | "AvailabilityZone";
+}
 export const SAPSupportedSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -4182,10 +5616,16 @@ export const SAPSupportedSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSapSupportedSku",
     apiVersion: "2023-04-01",
   }),
-);
-export type SAPSupportedSkuInput = typeof SAPSupportedSkuInput.Type;
+) as unknown as Schema.Codec<SAPSupportedSkuInput>;
 
 // Output Schema
+export interface SAPSupportedSkuOutput {
+  supportedSkus?: {
+    vmSku?: string;
+    isAppServerCertified?: boolean;
+    isDatabaseCertified?: boolean;
+  }[];
+}
 export const SAPSupportedSkuOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   supportedSkus: Schema.optional(
     Schema.Array(
@@ -4196,8 +5636,7 @@ export const SAPSupportedSkuOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type SAPSupportedSkuOutput = typeof SAPSupportedSkuOutput.Type;
+}) as unknown as Schema.Codec<SAPSupportedSkuOutput>;
 
 // The operation
 /**
@@ -4212,6 +5651,59 @@ export const SAPSupportedSku = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SAPSupportedSkuOutput,
 }));
 // Input Schema
+export interface SAPVirtualInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  properties: {
+    environment: "NonProd" | "Prod";
+    sapProduct: "ECC" | "S4HANA" | "Other";
+    configuration: {
+      configurationType: "Deployment" | "Discovery" | "DeploymentWithOSConfig";
+    };
+    managedResourceGroupConfiguration?: { name?: string };
+    status?:
+      | "Starting"
+      | "Running"
+      | "Stopping"
+      | "Offline"
+      | "PartiallyRunning"
+      | "Unavailable"
+      | "SoftShutdown";
+    health?: "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
+    state?:
+      | "InfrastructureDeploymentPending"
+      | "InfrastructureDeploymentInProgress"
+      | "InfrastructureDeploymentFailed"
+      | "SoftwareInstallationPending"
+      | "SoftwareInstallationInProgress"
+      | "SoftwareInstallationFailed"
+      | "SoftwareDetectionInProgress"
+      | "SoftwareDetectionFailed"
+      | "DiscoveryPending"
+      | "DiscoveryInProgress"
+      | "DiscoveryFailed"
+      | "RegistrationComplete";
+    provisioningState?:
+      | "Succeeded"
+      | "Updating"
+      | "Creating"
+      | "Failed"
+      | "Deleting";
+    errors?: {
+      properties?: { code?: string; message?: string; details?: unknown[] };
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SAPVirtualInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4307,11 +5799,22 @@ export const SAPVirtualInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPVirtualInstancesCreateInput =
-  typeof SAPVirtualInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<SAPVirtualInstancesCreateInput>;
 
 // Output Schema
+export interface SAPVirtualInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPVirtualInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4331,9 +5834,7 @@ export const SAPVirtualInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPVirtualInstancesCreateOutput =
-  typeof SAPVirtualInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SAPVirtualInstancesCreateOutput>;
 
 // The operation
 /**
@@ -4351,6 +5852,11 @@ export const SAPVirtualInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPVirtualInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+}
 export const SAPVirtualInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4362,11 +5868,40 @@ export const SAPVirtualInstancesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPVirtualInstancesDeleteInput =
-  typeof SAPVirtualInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SAPVirtualInstancesDeleteInput>;
 
 // Output Schema
+export interface SAPVirtualInstancesDeleteOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPVirtualInstancesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4420,9 +5955,7 @@ export const SAPVirtualInstancesDeleteOutput =
         ),
       }),
     ),
-  });
-export type SAPVirtualInstancesDeleteOutput =
-  typeof SAPVirtualInstancesDeleteOutput.Type;
+  }) as unknown as Schema.Codec<SAPVirtualInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -4440,6 +5973,11 @@ export const SAPVirtualInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPVirtualInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+}
 export const SAPVirtualInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4451,11 +5989,22 @@ export const SAPVirtualInstancesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPVirtualInstancesGetInput =
-  typeof SAPVirtualInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<SAPVirtualInstancesGetInput>;
 
 // Output Schema
+export interface SAPVirtualInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPVirtualInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4475,9 +6024,7 @@ export const SAPVirtualInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPVirtualInstancesGetOutput =
-  typeof SAPVirtualInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<SAPVirtualInstancesGetOutput>;
 
 // The operation
 /**
@@ -4495,6 +6042,13 @@ export const SAPVirtualInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SapVirtualInstancesInvokeAvailabilityZoneDetailsInput {
+  subscriptionId: string;
+  location: string;
+  appLocation: string;
+  sapProduct: "ECC" | "S4HANA" | "Other";
+  databaseType: "HANA" | "DB2";
+}
 export const SapVirtualInstancesInvokeAvailabilityZoneDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4508,11 +6062,12 @@ export const SapVirtualInstancesInvokeAvailabilityZoneDetailsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getAvailabilityZoneDetails",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapVirtualInstancesInvokeAvailabilityZoneDetailsInput =
-  typeof SapVirtualInstancesInvokeAvailabilityZoneDetailsInput.Type;
+  ) as unknown as Schema.Codec<SapVirtualInstancesInvokeAvailabilityZoneDetailsInput>;
 
 // Output Schema
+export interface SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput {
+  availabilityZonePairs?: { zoneA?: number; zoneB?: number }[];
+}
 export const SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilityZonePairs: Schema.optional(
@@ -4523,9 +6078,7 @@ export const SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput =
         }),
       ),
     ),
-  });
-export type SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput =
-  typeof SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput.Type;
+  }) as unknown as Schema.Codec<SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput>;
 
 // The operation
 /**
@@ -4541,6 +6094,16 @@ export const SapVirtualInstancesInvokeAvailabilityZoneDetails =
     outputSchema: SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput,
   }));
 // Input Schema
+export interface SapVirtualInstancesInvokeDiskConfigurationsInput {
+  subscriptionId: string;
+  location: string;
+  appLocation: string;
+  environment: "NonProd" | "Prod";
+  sapProduct: "ECC" | "S4HANA" | "Other";
+  databaseType: "HANA" | "DB2";
+  deploymentType: "SingleServer" | "ThreeTier";
+  dbVmSku: string;
+}
 export const SapVirtualInstancesInvokeDiskConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4557,11 +6120,48 @@ export const SapVirtualInstancesInvokeDiskConfigurationsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getDiskConfigurations",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapVirtualInstancesInvokeDiskConfigurationsInput =
-  typeof SapVirtualInstancesInvokeDiskConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<SapVirtualInstancesInvokeDiskConfigurationsInput>;
 
 // Output Schema
+export interface SapVirtualInstancesInvokeDiskConfigurationsOutput {
+  volumeConfigurations?: Record<
+    string,
+    {
+      recommendedConfiguration?: {
+        count?: number;
+        sizeGB?: number;
+        sku?: {
+          name?:
+            | "Standard_LRS"
+            | "Premium_LRS"
+            | "StandardSSD_LRS"
+            | "UltraSSD_LRS"
+            | "Premium_ZRS"
+            | "StandardSSD_ZRS"
+            | "PremiumV2_LRS";
+        };
+      };
+      supportedConfigurations?: {
+        sku?: {
+          name?:
+            | "Standard_LRS"
+            | "Premium_LRS"
+            | "StandardSSD_LRS"
+            | "UltraSSD_LRS"
+            | "Premium_ZRS"
+            | "StandardSSD_ZRS"
+            | "PremiumV2_LRS";
+        };
+        sizeGB?: number;
+        minimumSupportedDiskCount?: number;
+        maximumSupportedDiskCount?: number;
+        iopsReadWrite?: number;
+        mbpsReadWrite?: number;
+        diskTier?: string;
+      }[];
+    }
+  >;
+}
 export const SapVirtualInstancesInvokeDiskConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     volumeConfigurations: Schema.optional(
@@ -4619,9 +6219,7 @@ export const SapVirtualInstancesInvokeDiskConfigurationsOutput =
         }),
       ),
     ),
-  });
-export type SapVirtualInstancesInvokeDiskConfigurationsOutput =
-  typeof SapVirtualInstancesInvokeDiskConfigurationsOutput.Type;
+  }) as unknown as Schema.Codec<SapVirtualInstancesInvokeDiskConfigurationsOutput>;
 
 // The operation
 /**
@@ -4637,6 +6235,16 @@ export const SapVirtualInstancesInvokeDiskConfigurations =
     outputSchema: SapVirtualInstancesInvokeDiskConfigurationsOutput,
   }));
 // Input Schema
+export interface SapVirtualInstancesInvokeSapSupportedSkuInput {
+  subscriptionId: string;
+  location: string;
+  appLocation: string;
+  environment: "NonProd" | "Prod";
+  sapProduct: "ECC" | "S4HANA" | "Other";
+  deploymentType: "SingleServer" | "ThreeTier";
+  databaseType: "HANA" | "DB2";
+  highAvailabilityType?: "AvailabilitySet" | "AvailabilityZone";
+}
 export const SapVirtualInstancesInvokeSapSupportedSkuInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4655,11 +6263,16 @@ export const SapVirtualInstancesInvokeSapSupportedSkuInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSapSupportedSku",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapVirtualInstancesInvokeSapSupportedSkuInput =
-  typeof SapVirtualInstancesInvokeSapSupportedSkuInput.Type;
+  ) as unknown as Schema.Codec<SapVirtualInstancesInvokeSapSupportedSkuInput>;
 
 // Output Schema
+export interface SapVirtualInstancesInvokeSapSupportedSkuOutput {
+  supportedSkus?: {
+    vmSku?: string;
+    isAppServerCertified?: boolean;
+    isDatabaseCertified?: boolean;
+  }[];
+}
 export const SapVirtualInstancesInvokeSapSupportedSkuOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportedSkus: Schema.optional(
@@ -4671,9 +6284,7 @@ export const SapVirtualInstancesInvokeSapSupportedSkuOutput =
         }),
       ),
     ),
-  });
-export type SapVirtualInstancesInvokeSapSupportedSkuOutput =
-  typeof SapVirtualInstancesInvokeSapSupportedSkuOutput.Type;
+  }) as unknown as Schema.Codec<SapVirtualInstancesInvokeSapSupportedSkuOutput>;
 
 // The operation
 /**
@@ -4689,6 +6300,19 @@ export const SapVirtualInstancesInvokeSapSupportedSku =
     outputSchema: SapVirtualInstancesInvokeSapSupportedSkuOutput,
   }));
 // Input Schema
+export interface SapVirtualInstancesInvokeSizingRecommendationsInput {
+  subscriptionId: string;
+  location: string;
+  appLocation: string;
+  environment: "NonProd" | "Prod";
+  sapProduct: "ECC" | "S4HANA" | "Other";
+  deploymentType: "SingleServer" | "ThreeTier";
+  saps: number;
+  dbMemory: number;
+  databaseType: "HANA" | "DB2";
+  dbScaleMethod?: "ScaleUp";
+  highAvailabilityType?: "AvailabilitySet" | "AvailabilityZone";
+}
 export const SapVirtualInstancesInvokeSizingRecommendationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4710,17 +6334,16 @@ export const SapVirtualInstancesInvokeSizingRecommendationsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSizingRecommendations",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SapVirtualInstancesInvokeSizingRecommendationsInput =
-  typeof SapVirtualInstancesInvokeSizingRecommendationsInput.Type;
+  ) as unknown as Schema.Codec<SapVirtualInstancesInvokeSizingRecommendationsInput>;
 
 // Output Schema
+export interface SapVirtualInstancesInvokeSizingRecommendationsOutput {
+  deploymentType: "SingleServer" | "ThreeTier";
+}
 export const SapVirtualInstancesInvokeSizingRecommendationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
-  });
-export type SapVirtualInstancesInvokeSizingRecommendationsOutput =
-  typeof SapVirtualInstancesInvokeSizingRecommendationsOutput.Type;
+  }) as unknown as Schema.Codec<SapVirtualInstancesInvokeSizingRecommendationsOutput>;
 
 // The operation
 /**
@@ -4736,6 +6359,10 @@ export const SapVirtualInstancesInvokeSizingRecommendations =
     outputSchema: SapVirtualInstancesInvokeSizingRecommendationsOutput,
   }));
 // Input Schema
+export interface SAPVirtualInstancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SAPVirtualInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4746,11 +6373,25 @@ export const SAPVirtualInstancesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPVirtualInstancesListByResourceGroupInput =
-  typeof SAPVirtualInstancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SAPVirtualInstancesListByResourceGroupInput>;
 
 // Output Schema
+export interface SAPVirtualInstancesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SAPVirtualInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4787,9 +6428,7 @@ export const SAPVirtualInstancesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SAPVirtualInstancesListByResourceGroupOutput =
-  typeof SAPVirtualInstancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SAPVirtualInstancesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4805,6 +6444,9 @@ export const SAPVirtualInstancesListByResourceGroup =
     outputSchema: SAPVirtualInstancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SAPVirtualInstancesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SAPVirtualInstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4814,11 +6456,25 @@ export const SAPVirtualInstancesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/sapVirtualInstances",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPVirtualInstancesListBySubscriptionInput =
-  typeof SAPVirtualInstancesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SAPVirtualInstancesListBySubscriptionInput>;
 
 // Output Schema
+export interface SAPVirtualInstancesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SAPVirtualInstancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4855,9 +6511,7 @@ export const SAPVirtualInstancesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SAPVirtualInstancesListBySubscriptionOutput =
-  typeof SAPVirtualInstancesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SAPVirtualInstancesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4872,6 +6526,11 @@ export const SAPVirtualInstancesListBySubscription =
     outputSchema: SAPVirtualInstancesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SAPVirtualInstancesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+}
 export const SAPVirtualInstancesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4883,11 +6542,40 @@ export const SAPVirtualInstancesStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/start",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPVirtualInstancesStartInput =
-  typeof SAPVirtualInstancesStartInput.Type;
+  ) as unknown as Schema.Codec<SAPVirtualInstancesStartInput>;
 
 // Output Schema
+export interface SAPVirtualInstancesStartOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPVirtualInstancesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4941,9 +6629,7 @@ export const SAPVirtualInstancesStartOutput =
         ),
       }),
     ),
-  });
-export type SAPVirtualInstancesStartOutput =
-  typeof SAPVirtualInstancesStartOutput.Type;
+  }) as unknown as Schema.Codec<SAPVirtualInstancesStartOutput>;
 
 // The operation
 /**
@@ -4961,6 +6647,12 @@ export const SAPVirtualInstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPVirtualInstancesStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  softStopTimeoutSeconds?: number;
+}
 export const SAPVirtualInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4973,11 +6665,40 @@ export const SAPVirtualInstancesStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/stop",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPVirtualInstancesStopInput =
-  typeof SAPVirtualInstancesStopInput.Type;
+  ) as unknown as Schema.Codec<SAPVirtualInstancesStopInput>;
 
 // Output Schema
+export interface SAPVirtualInstancesStopOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SAPVirtualInstancesStopOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5031,9 +6752,7 @@ export const SAPVirtualInstancesStopOutput =
         ),
       }),
     ),
-  });
-export type SAPVirtualInstancesStopOutput =
-  typeof SAPVirtualInstancesStopOutput.Type;
+  }) as unknown as Schema.Codec<SAPVirtualInstancesStopOutput>;
 
 // The operation
 /**
@@ -5051,6 +6770,19 @@ export const SAPVirtualInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SAPVirtualInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sapVirtualInstanceName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+}
 export const SAPVirtualInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5079,11 +6811,22 @@ export const SAPVirtualInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type SAPVirtualInstancesUpdateInput =
-  typeof SAPVirtualInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SAPVirtualInstancesUpdateInput>;
 
 // Output Schema
+export interface SAPVirtualInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SAPVirtualInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5103,9 +6846,7 @@ export const SAPVirtualInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SAPVirtualInstancesUpdateOutput =
-  typeof SAPVirtualInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SAPVirtualInstancesUpdateOutput>;
 
 // The operation
 /**

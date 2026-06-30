@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -37,7 +37,7 @@ export interface AccessReason {
   detail?: string;
 }
 
-export const AccessReason: Schema.Schema<AccessReason> =
+export const AccessReason: Schema.Codec<AccessReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     detail: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface AccessLocations {
   principalPhysicalLocationCountry?: string;
 }
 
-export const AccessLocations: Schema.Schema<AccessLocations> =
+export const AccessLocations: Schema.Codec<AccessLocations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     principalOfficeCountry: Schema.optional(Schema.String),
     principalPhysicalLocationCountry: Schema.optional(Schema.String),
@@ -117,7 +117,7 @@ export interface SignatureInfo {
   signature?: string;
 }
 
-export const SignatureInfo: Schema.Schema<SignatureInfo> =
+export const SignatureInfo: Schema.Codec<SignatureInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googlePublicKeyPem: Schema.optional(Schema.String),
     customerKmsKeyVersion: Schema.optional(Schema.String),
@@ -141,7 +141,7 @@ export interface ApproveDecision {
   autoApproved?: boolean;
 }
 
-export const ApproveDecision: Schema.Schema<ApproveDecision> =
+export const ApproveDecision: Schema.Codec<ApproveDecision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signatureInfo: Schema.optional(SignatureInfo),
     invalidateTime: Schema.optional(Schema.String),
@@ -162,14 +162,14 @@ export interface CustomerApprovalApprovalPolicy {
     | (string & {});
 }
 
-export const CustomerApprovalApprovalPolicy: Schema.Schema<CustomerApprovalApprovalPolicy> =
+export const CustomerApprovalApprovalPolicy: Schema.Codec<CustomerApprovalApprovalPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     justificationBasedApprovalPolicy: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerApprovalApprovalPolicy" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -179,21 +179,21 @@ export interface AugmentedInfo {
   command?: string;
 }
 
-export const AugmentedInfo: Schema.Schema<AugmentedInfo> =
+export const AugmentedInfo: Schema.Codec<AugmentedInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     command: Schema.optional(Schema.String),
   }).annotate({ identifier: "AugmentedInfo" });
 
 export interface DismissApprovalRequestMessage {}
 
-export const DismissApprovalRequestMessage: Schema.Schema<DismissApprovalRequestMessage> =
+export const DismissApprovalRequestMessage: Schema.Codec<DismissApprovalRequestMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DismissApprovalRequestMessage",
   });
 
 export interface InvalidateApprovalRequestMessage {}
 
-export const InvalidateApprovalRequestMessage: Schema.Schema<InvalidateApprovalRequestMessage> =
+export const InvalidateApprovalRequestMessage: Schema.Codec<InvalidateApprovalRequestMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InvalidateApprovalRequestMessage",
   });
@@ -203,7 +203,7 @@ export interface ResourceProperties {
   excludesDescendants?: boolean;
 }
 
-export const ResourceProperties: Schema.Schema<ResourceProperties> =
+export const ResourceProperties: Schema.Codec<ResourceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludesDescendants: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ResourceProperties" });
@@ -215,7 +215,7 @@ export interface DismissDecision {
   dismissTime?: string;
 }
 
-export const DismissDecision: Schema.Schema<DismissDecision> =
+export const DismissDecision: Schema.Codec<DismissDecision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     implicit: Schema.optional(Schema.Boolean),
     dismissTime: Schema.optional(Schema.String),
@@ -246,7 +246,7 @@ export interface ApprovalRequest {
   approve?: ApproveDecision;
 }
 
-export const ApprovalRequest: Schema.Schema<ApprovalRequest> =
+export const ApprovalRequest: Schema.Codec<ApprovalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedReason: Schema.optional(AccessReason),
     requestedDuration: Schema.optional(Schema.String),
@@ -268,7 +268,7 @@ export interface ListApprovalRequestsResponse {
   nextPageToken?: string;
 }
 
-export const ListApprovalRequestsResponse: Schema.Schema<ListApprovalRequestsResponse> =
+export const ListApprovalRequestsResponse: Schema.Codec<ListApprovalRequestsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approvalRequests: Schema.optional(Schema.Array(ApprovalRequest)),
     nextPageToken: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export interface EnrolledService {
     | (string & {});
 }
 
-export const EnrolledService: Schema.Schema<EnrolledService> =
+export const EnrolledService: Schema.Codec<EnrolledService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudProduct: Schema.optional(Schema.String),
     enrollmentLevel: Schema.optional(Schema.String),
@@ -328,7 +328,7 @@ export interface AccessApprovalSettings {
   approvalPolicy?: CustomerApprovalApprovalPolicy;
 }
 
-export const AccessApprovalSettings: Schema.Schema<AccessApprovalSettings> =
+export const AccessApprovalSettings: Schema.Codec<AccessApprovalSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ancestorHasActiveKeyVersion: Schema.optional(Schema.Boolean),
     effectiveApprovalPolicy: Schema.optional(CustomerApprovalApprovalPolicy),
@@ -352,7 +352,7 @@ export interface ApproveApprovalRequestMessage {
   expireTime?: string;
 }
 
-export const ApproveApprovalRequestMessage: Schema.Schema<ApproveApprovalRequestMessage> =
+export const ApproveApprovalRequestMessage: Schema.Codec<ApproveApprovalRequestMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApproveApprovalRequestMessage" });
@@ -364,7 +364,7 @@ export interface AccessApprovalServiceAccount {
   accountEmail?: string;
 }
 
-export const AccessApprovalServiceAccount: Schema.Schema<AccessApprovalServiceAccount> =
+export const AccessApprovalServiceAccount: Schema.Codec<AccessApprovalServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     accountEmail: Schema.optional(Schema.String),
@@ -435,7 +435,7 @@ export const DeleteAccessApprovalSettingsFoldersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccessApprovalSettingsFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteAccessApprovalSettingsFoldersRequest>;
 
 export type DeleteAccessApprovalSettingsFoldersResponse = Empty;
 export const DeleteAccessApprovalSettingsFoldersResponse =
@@ -471,7 +471,7 @@ export const GetServiceAccountFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetServiceAccountFoldersRequest>;
+  ) as unknown as Schema.Codec<GetServiceAccountFoldersRequest>;
 
 export type GetServiceAccountFoldersResponse = AccessApprovalServiceAccount;
 export const GetServiceAccountFoldersResponse =
@@ -505,7 +505,7 @@ export const GetAccessApprovalSettingsFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccessApprovalSettingsFoldersRequest>;
+  ) as unknown as Schema.Codec<GetAccessApprovalSettingsFoldersRequest>;
 
 export type GetAccessApprovalSettingsFoldersResponse = AccessApprovalSettings;
 export const GetAccessApprovalSettingsFoldersResponse =
@@ -545,7 +545,7 @@ export const UpdateAccessApprovalSettingsFoldersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccessApprovalSettingsFoldersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccessApprovalSettingsFoldersRequest>;
 
 export type UpdateAccessApprovalSettingsFoldersResponse =
   AccessApprovalSettings;
@@ -582,7 +582,7 @@ export const GetFoldersApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<GetFoldersApprovalRequestsRequest>;
 
 export type GetFoldersApprovalRequestsResponse = ApprovalRequest;
 export const GetFoldersApprovalRequestsResponse =
@@ -619,7 +619,7 @@ export const DismissFoldersApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:dismiss", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DismissFoldersApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<DismissFoldersApprovalRequestsRequest>;
 
 export type DismissFoldersApprovalRequestsResponse = ApprovalRequest;
 export const DismissFoldersApprovalRequestsResponse =
@@ -664,7 +664,7 @@ export const ListFoldersApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/approvalRequests" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<ListFoldersApprovalRequestsRequest>;
 
 export type ListFoldersApprovalRequestsResponse = ListApprovalRequestsResponse;
 export const ListFoldersApprovalRequestsResponse =
@@ -705,7 +705,7 @@ export const ApproveFoldersApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApproveFoldersApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<ApproveFoldersApprovalRequestsRequest>;
 
 export type ApproveFoldersApprovalRequestsResponse = ApprovalRequest;
 export const ApproveFoldersApprovalRequestsResponse =
@@ -744,7 +744,7 @@ export const InvalidateFoldersApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:invalidate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InvalidateFoldersApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<InvalidateFoldersApprovalRequestsRequest>;
 
 export type InvalidateFoldersApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateFoldersApprovalRequestsResponse =
@@ -780,7 +780,7 @@ export const GetAccessApprovalSettingsOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccessApprovalSettingsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetAccessApprovalSettingsOrganizationsRequest>;
 
 export type GetAccessApprovalSettingsOrganizationsResponse =
   AccessApprovalSettings;
@@ -821,7 +821,7 @@ export const UpdateAccessApprovalSettingsOrganizationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccessApprovalSettingsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccessApprovalSettingsOrganizationsRequest>;
 
 export type UpdateAccessApprovalSettingsOrganizationsResponse =
   AccessApprovalSettings;
@@ -858,7 +858,7 @@ export const DeleteAccessApprovalSettingsOrganizationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccessApprovalSettingsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccessApprovalSettingsOrganizationsRequest>;
 
 export type DeleteAccessApprovalSettingsOrganizationsResponse = Empty;
 export const DeleteAccessApprovalSettingsOrganizationsResponse =
@@ -894,7 +894,7 @@ export const GetServiceAccountOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetServiceAccountOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetServiceAccountOrganizationsRequest>;
 
 export type GetServiceAccountOrganizationsResponse =
   AccessApprovalServiceAccount;
@@ -932,7 +932,7 @@ export const DismissOrganizationsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:dismiss", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DismissOrganizationsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<DismissOrganizationsApprovalRequestsRequest>;
 
 export type DismissOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const DismissOrganizationsApprovalRequestsResponse =
@@ -968,7 +968,7 @@ export const GetOrganizationsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApprovalRequestsRequest>;
 
 export type GetOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const GetOrganizationsApprovalRequestsResponse =
@@ -1011,7 +1011,7 @@ export const ListOrganizationsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/approvalRequests" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApprovalRequestsRequest>;
 
 export type ListOrganizationsApprovalRequestsResponse =
   ListApprovalRequestsResponse;
@@ -1053,7 +1053,7 @@ export const ApproveOrganizationsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApproveOrganizationsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<ApproveOrganizationsApprovalRequestsRequest>;
 
 export type ApproveOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const ApproveOrganizationsApprovalRequestsResponse =
@@ -1092,7 +1092,7 @@ export const InvalidateOrganizationsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:invalidate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InvalidateOrganizationsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<InvalidateOrganizationsApprovalRequestsRequest>;
 
 export type InvalidateOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateOrganizationsApprovalRequestsResponse =
@@ -1128,7 +1128,7 @@ export const GetServiceAccountProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetServiceAccountProjectsRequest>;
+  ) as unknown as Schema.Codec<GetServiceAccountProjectsRequest>;
 
 export type GetServiceAccountProjectsResponse = AccessApprovalServiceAccount;
 export const GetServiceAccountProjectsResponse =
@@ -1162,7 +1162,7 @@ export const DeleteAccessApprovalSettingsProjectsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccessApprovalSettingsProjectsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccessApprovalSettingsProjectsRequest>;
 
 export type DeleteAccessApprovalSettingsProjectsResponse = Empty;
 export const DeleteAccessApprovalSettingsProjectsResponse =
@@ -1204,7 +1204,7 @@ export const UpdateAccessApprovalSettingsProjectsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccessApprovalSettingsProjectsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccessApprovalSettingsProjectsRequest>;
 
 export type UpdateAccessApprovalSettingsProjectsResponse =
   AccessApprovalSettings;
@@ -1241,7 +1241,7 @@ export const GetAccessApprovalSettingsProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccessApprovalSettingsProjectsRequest>;
+  ) as unknown as Schema.Codec<GetAccessApprovalSettingsProjectsRequest>;
 
 export type GetAccessApprovalSettingsProjectsResponse = AccessApprovalSettings;
 export const GetAccessApprovalSettingsProjectsResponse =
@@ -1278,7 +1278,7 @@ export const DismissProjectsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:dismiss", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DismissProjectsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<DismissProjectsApprovalRequestsRequest>;
 
 export type DismissProjectsApprovalRequestsResponse = ApprovalRequest;
 export const DismissProjectsApprovalRequestsResponse =
@@ -1314,7 +1314,7 @@ export const GetProjectsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsApprovalRequestsRequest>;
 
 export type GetProjectsApprovalRequestsResponse = ApprovalRequest;
 export const GetProjectsApprovalRequestsResponse =
@@ -1357,7 +1357,7 @@ export const ListProjectsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/approvalRequests" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsApprovalRequestsRequest>;
 
 export type ListProjectsApprovalRequestsResponse = ListApprovalRequestsResponse;
 export const ListProjectsApprovalRequestsResponse =
@@ -1398,7 +1398,7 @@ export const ApproveProjectsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApproveProjectsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<ApproveProjectsApprovalRequestsRequest>;
 
 export type ApproveProjectsApprovalRequestsResponse = ApprovalRequest;
 export const ApproveProjectsApprovalRequestsResponse =
@@ -1437,7 +1437,7 @@ export const InvalidateProjectsApprovalRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:invalidate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InvalidateProjectsApprovalRequestsRequest>;
+  ) as unknown as Schema.Codec<InvalidateProjectsApprovalRequestsRequest>;
 
 export type InvalidateProjectsApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateProjectsApprovalRequestsResponse =

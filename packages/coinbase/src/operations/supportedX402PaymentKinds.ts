@@ -3,14 +3,35 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SupportedX402PaymentKindsInput {}
 export const SupportedX402PaymentKindsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/v2/x402/supported" }),
-  );
-export type SupportedX402PaymentKindsInput =
-  typeof SupportedX402PaymentKindsInput.Type;
+  ) as unknown as Schema.Codec<SupportedX402PaymentKindsInput>;
 
 // Output Schema
+export interface SupportedX402PaymentKindsOutput {
+  kinds: {
+    x402Version: 1 | 2;
+    scheme: "exact" | "upto" | "batch-settlement";
+    network:
+      | "base-sepolia"
+      | "base"
+      | "solana-devnet"
+      | "solana"
+      | "eip155:8453"
+      | "eip155:84532"
+      | "eip155:137"
+      | "eip155:42161"
+      | "eip155:480"
+      | "eip155:4801"
+      | "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+      | "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1";
+    extra?: Record<string, unknown>;
+  }[];
+  extensions: string[];
+  signers: Record<string, string[]>;
+}
 export const SupportedX402PaymentKindsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kinds: Schema.Array(
@@ -36,9 +57,7 @@ export const SupportedX402PaymentKindsOutput =
     ),
     extensions: Schema.Array(Schema.String),
     signers: Schema.Record(Schema.String, Schema.Array(Schema.String)),
-  });
-export type SupportedX402PaymentKindsOutput =
-  typeof SupportedX402PaymentKindsOutput.Type;
+  }) as unknown as Schema.Codec<SupportedX402PaymentKindsOutput>;
 
 // The operation
 /**

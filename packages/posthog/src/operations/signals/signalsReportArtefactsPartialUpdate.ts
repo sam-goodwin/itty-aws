@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsReportArtefactsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  report_id: string;
+  content?: unknown;
+}
 export const SignalsReportArtefactsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,18 @@ export const SignalsReportArtefactsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/signals/reports/{report_id}/artefacts/{id}/",
     }),
-  );
-export type SignalsReportArtefactsPartialUpdateInput =
-  typeof SignalsReportArtefactsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalsReportArtefactsPartialUpdateInput>;
 
 // Output Schema
+export interface SignalsReportArtefactsPartialUpdateOutput {
+  id: string;
+  report_id: string;
+  type: string;
+  content: unknown;
+  created_at: string;
+  updated_at: string | null;
+  task_id: string | null;
+}
 export const SignalsReportArtefactsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,9 +42,7 @@ export const SignalsReportArtefactsPartialUpdateOutput =
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
     task_id: Schema.NullOr(Schema.String),
-  });
-export type SignalsReportArtefactsPartialUpdateOutput =
-  typeof SignalsReportArtefactsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalsReportArtefactsPartialUpdateOutput>;
 
 // The operation
 /**

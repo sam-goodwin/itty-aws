@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupAlertsInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  status?: "OPEN" | "TRACKING" | "CLOSED";
+}
 export const ListGroupAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -14,12 +23,12 @@ export const ListGroupAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.Literals(["OPEN", "TRACKING", "CLOSED"])),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/alerts" }),
-);
-export type ListGroupAlertsInput = typeof ListGroupAlertsInput.Type;
+) as unknown as Schema.Codec<ListGroupAlertsInput>;
 
 // Output Schema
-export const ListGroupAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupAlertsOutput = typeof ListGroupAlertsOutput.Type;
+export type ListGroupAlertsOutput = void;
+export const ListGroupAlertsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupAlertsOutput>;
 
 // The operation
 /**

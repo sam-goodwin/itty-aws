@@ -4,17 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1UndoInput {
+  ref: string;
+  name: string;
+}
 export const V1UndoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
 }).pipe(
   T.Http({ method: "POST", path: "/v1/projects/{ref}/database/backups/undo" }),
-);
-export type V1UndoInput = typeof V1UndoInput.Type;
+) as unknown as Schema.Codec<V1UndoInput>;
 
 // Output Schema
-export const V1UndoOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1UndoOutput = typeof V1UndoOutput.Type;
+export type V1UndoOutput = void;
+export const V1UndoOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UndoOutput>;
 
 // The operation
 /**

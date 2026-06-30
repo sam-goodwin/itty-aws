@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface DataMaskingPolicy {
   routine?: string;
 }
 
-export const DataMaskingPolicy: Schema.Schema<DataMaskingPolicy> =
+export const DataMaskingPolicy: Schema.Codec<DataMaskingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     predefinedExpression: Schema.optional(Schema.String),
     routine: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface DataPolicy {
   dataPolicyId?: string;
 }
 
-export const DataPolicy: Schema.Schema<DataPolicy> =
+export const DataPolicy: Schema.Codec<DataPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataPolicyType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface ListDataPoliciesResponse {
   dataPolicies?: ReadonlyArray<DataPolicy>;
 }
 
-export const ListDataPoliciesResponse: Schema.Schema<ListDataPoliciesResponse> =
+export const ListDataPoliciesResponse: Schema.Codec<ListDataPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dataPolicies: Schema.optional(Schema.Array(DataPolicy)),
@@ -115,7 +115,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -126,7 +126,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -138,7 +138,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -149,7 +149,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -163,7 +163,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -175,7 +175,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -191,7 +191,7 @@ export interface Policy {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
@@ -204,7 +204,7 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
@@ -214,14 +214,14 @@ export interface RenameDataPolicyRequest {
   newDataPolicyId?: string;
 }
 
-export const RenameDataPolicyRequest: Schema.Schema<RenameDataPolicyRequest> =
+export const RenameDataPolicyRequest: Schema.Codec<RenameDataPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newDataPolicyId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RenameDataPolicyRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -233,7 +233,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -311,7 +311,7 @@ export const SetIamPolicyProjectsLocationsDataPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataPoliciesRequest>;
 
 export type SetIamPolicyProjectsLocationsDataPoliciesResponse = Policy;
 export const SetIamPolicyProjectsLocationsDataPoliciesResponse =
@@ -354,7 +354,7 @@ export const CreateProjectsLocationsDataPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataPoliciesRequest>;
 
 export type CreateProjectsLocationsDataPoliciesResponse = DataPolicy;
 export const CreateProjectsLocationsDataPoliciesResponse =
@@ -390,7 +390,7 @@ export const GetProjectsLocationsDataPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataPoliciesRequest>;
 
 export type GetProjectsLocationsDataPoliciesResponse = DataPolicy;
 export const GetProjectsLocationsDataPoliciesResponse =
@@ -427,7 +427,7 @@ export const RenameProjectsLocationsDataPoliciesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:rename", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RenameProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<RenameProjectsLocationsDataPoliciesRequest>;
 
 export type RenameProjectsLocationsDataPoliciesResponse = DataPolicy;
 export const RenameProjectsLocationsDataPoliciesResponse =
@@ -472,7 +472,7 @@ export const ListProjectsLocationsDataPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataPolicies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataPoliciesRequest>;
 
 export type ListProjectsLocationsDataPoliciesResponse =
   ListDataPoliciesResponse;
@@ -518,7 +518,7 @@ export const TestIamPermissionsProjectsLocationsDataPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataPoliciesRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataPoliciesResponse =
   TestIamPermissionsResponse;
@@ -562,7 +562,7 @@ export const GetIamPolicyProjectsLocationsDataPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataPoliciesRequest>;
 
 export type GetIamPolicyProjectsLocationsDataPoliciesResponse = Policy;
 export const GetIamPolicyProjectsLocationsDataPoliciesResponse =
@@ -609,7 +609,7 @@ export const PatchProjectsLocationsDataPoliciesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataPoliciesRequest>;
 
 export type PatchProjectsLocationsDataPoliciesResponse = DataPolicy;
 export const PatchProjectsLocationsDataPoliciesResponse =
@@ -648,7 +648,7 @@ export const DeleteProjectsLocationsDataPoliciesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataPoliciesRequest>;
 
 export type DeleteProjectsLocationsDataPoliciesResponse = Empty;
 export const DeleteProjectsLocationsDataPoliciesResponse =

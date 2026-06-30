@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsSlackStartCreateInput {
+  uuid: string;
+  team_id?: number | null;
+  slack_team_id?: string | null;
+}
 export const UsersIntegrationsSlackStartCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
@@ -13,17 +18,16 @@ export const UsersIntegrationsSlackStartCreateInput =
       method: "POST",
       path: "/api/users/{uuid}/integrations/slack/start/",
     }),
-  );
-export type UsersIntegrationsSlackStartCreateInput =
-  typeof UsersIntegrationsSlackStartCreateInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsSlackStartCreateInput>;
 
 // Output Schema
+export interface UsersIntegrationsSlackStartCreateOutput {
+  install_url: string;
+}
 export const UsersIntegrationsSlackStartCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     install_url: Schema.String,
-  });
-export type UsersIntegrationsSlackStartCreateOutput =
-  typeof UsersIntegrationsSlackStartCreateOutput.Type;
+  }) as unknown as Schema.Codec<UsersIntegrationsSlackStartCreateOutput>;
 
 // The operation
 /**

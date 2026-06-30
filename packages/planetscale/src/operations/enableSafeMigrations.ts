@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface EnableSafeMigrationsInput {
+  organization: string;
+  database: string;
+  branch: string;
+}
 export const EnableSafeMigrationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,64 @@ export const EnableSafeMigrationsInput =
       method: "POST",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/safe-migrations",
     }),
-  );
-export type EnableSafeMigrationsInput = typeof EnableSafeMigrationsInput.Type;
+  ) as unknown as Schema.Codec<EnableSafeMigrationsInput>;
 
 // Output Schema
+export interface EnableSafeMigrationsOutput {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+  restore_checklist_completed_at: string | null;
+  schema_last_updated_at: string | null;
+  kind: "mysql" | "postgresql";
+  mysql_address?: string;
+  mysql_edge_address?: string;
+  state: "pending" | "sleep_in_progress" | "sleeping" | "awakening" | "ready";
+  direct_vtgate?: boolean;
+  vtgate_size?: string;
+  vtgate_count?: number;
+  cluster_name: string;
+  cluster_iops: number | null;
+  ready: boolean;
+  schema_ready?: boolean;
+  metal: boolean;
+  production: boolean;
+  safe_migrations: boolean;
+  sharded?: boolean;
+  shard_count?: number;
+  keyspace_count?: number;
+  stale_schema: boolean;
+  actor: { id: string; display_name: string; avatar_url: string } | null;
+  restored_from_branch: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  } | null;
+  private_edge_connectivity: boolean;
+  has_replicas: boolean;
+  has_read_only_replicas: boolean;
+  html_url: string;
+  url: string;
+  region: {
+    id: string;
+    provider: string;
+    enabled: boolean;
+    public_ip_addresses: string[];
+    display_name: string;
+    location: string;
+    slug: string;
+    current_default: boolean;
+    mysql_supported: boolean;
+    postgresql_supported: boolean;
+  };
+  parent_branch: string | null;
+  vtgate_options?: Record<string, unknown>;
+  cluster_architecture?: string;
+}
 export const EnableSafeMigrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -89,8 +148,7 @@ export const EnableSafeMigrationsOutput =
       Schema.Record(Schema.String, Schema.Unknown),
     ),
     cluster_architecture: Schema.optional(Schema.String),
-  });
-export type EnableSafeMigrationsOutput = typeof EnableSafeMigrationsOutput.Type;
+  }) as unknown as Schema.Codec<EnableSafeMigrationsOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UpdateSessionSummariesConfigInput {
+  project_id: string;
+  product_context?: string;
+  custom_tags?: Record<string, string>;
+}
 export const UpdateSessionSummariesConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +18,18 @@ export const UpdateSessionSummariesConfigInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/session_summaries/config/",
     }),
-  );
-export type UpdateSessionSummariesConfigInput =
-  typeof UpdateSessionSummariesConfigInput.Type;
+  ) as unknown as Schema.Codec<UpdateSessionSummariesConfigInput>;
 
 // Output Schema
+export interface UpdateSessionSummariesConfigOutput {
+  product_context?: string;
+  custom_tags?: Record<string, string>;
+}
 export const UpdateSessionSummariesConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     product_context: Schema.optional(Schema.String),
     custom_tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type UpdateSessionSummariesConfigOutput =
-  typeof UpdateSessionSummariesConfigOutput.Type;
+  }) as unknown as Schema.Codec<UpdateSessionSummariesConfigOutput>;
 
 // The operation
 /**

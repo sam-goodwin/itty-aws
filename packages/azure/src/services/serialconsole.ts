@@ -4,12 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface DisableConsoleInput {
+  subscriptionId: string;
+  default: string;
+}
 export const DisableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
@@ -19,18 +24,19 @@ export const DisableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}/disableConsole",
     apiVersion: "2024-07-01",
   }),
-);
-export type DisableConsoleInput = typeof DisableConsoleInput.Type;
+) as unknown as Schema.Codec<DisableConsoleInput>;
 
 // Output Schema
+export interface DisableConsoleOutput {
+  properties?: { disabled?: boolean };
+}
 export const DisableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       disabled: Schema.optional(Schema.Boolean),
     }),
   ),
-});
-export type DisableConsoleOutput = typeof DisableConsoleOutput.Type;
+}) as unknown as Schema.Codec<DisableConsoleOutput>;
 
 // The operation
 /**
@@ -47,6 +53,10 @@ export const DisableConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisableConsoleOutput,
 }));
 // Input Schema
+export interface EnableConsoleInput {
+  subscriptionId: string;
+  default: string;
+}
 export const EnableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
@@ -56,18 +66,19 @@ export const EnableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}/enableConsole",
     apiVersion: "2024-07-01",
   }),
-);
-export type EnableConsoleInput = typeof EnableConsoleInput.Type;
+) as unknown as Schema.Codec<EnableConsoleInput>;
 
 // Output Schema
+export interface EnableConsoleOutput {
+  properties?: { disabled?: boolean };
+}
 export const EnableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       disabled: Schema.optional(Schema.Boolean),
     }),
   ),
-});
-export type EnableConsoleOutput = typeof EnableConsoleOutput.Type;
+}) as unknown as Schema.Codec<EnableConsoleOutput>;
 
 // The operation
 /**
@@ -84,6 +95,10 @@ export const EnableConsole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnableConsoleOutput,
 }));
 // Input Schema
+export interface GetConsoleStatusInput {
+  subscriptionId: string;
+  default: string;
+}
 export const GetConsoleStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
@@ -93,10 +108,12 @@ export const GetConsoleStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/consoleServices/{default}",
     apiVersion: "2024-07-01",
   }),
-);
-export type GetConsoleStatusInput = typeof GetConsoleStatusInput.Type;
+) as unknown as Schema.Codec<GetConsoleStatusInput>;
 
 // Output Schema
+export interface GetConsoleStatusOutput {
+  properties?: { disabled?: boolean };
+}
 export const GetConsoleStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     properties: Schema.optional(
@@ -105,8 +122,7 @@ export const GetConsoleStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type GetConsoleStatusOutput = typeof GetConsoleStatusOutput.Type;
+) as unknown as Schema.Codec<GetConsoleStatusOutput>;
 
 // The operation
 /**
@@ -123,6 +139,7 @@ export const GetConsoleStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetConsoleStatusOutput,
 }));
 // Input Schema
+export interface ListOperationsInput {}
 export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -131,10 +148,21 @@ export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.SerialConsole/operations",
     apiVersion: "2024-07-01",
   }),
-);
-export type ListOperationsInput = typeof ListOperationsInput.Type;
+) as unknown as Schema.Codec<ListOperationsInput>;
 
 // Output Schema
+export interface ListOperationsOutput {
+  value?: {
+    name?: string;
+    isDataAction?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+}
 export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -152,8 +180,7 @@ export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ListOperationsOutput = typeof ListOperationsOutput.Type;
+}) as unknown as Schema.Codec<ListOperationsOutput>;
 
 // The operation
 /**
@@ -166,6 +193,14 @@ export const ListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ListOperationsOutput,
 }));
 // Input Schema
+export interface SerialPortsConnectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourceType: string;
+  parentResource: string;
+  serialPort: string;
+}
 export const SerialPortsConnectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -180,15 +215,16 @@ export const SerialPortsConnectInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}/connect",
       apiVersion: "2024-07-01",
     }),
-  );
-export type SerialPortsConnectInput = typeof SerialPortsConnectInput.Type;
+  ) as unknown as Schema.Codec<SerialPortsConnectInput>;
 
 // Output Schema
+export interface SerialPortsConnectOutput {
+  connectionString?: Redacted.Redacted<string>;
+}
 export const SerialPortsConnectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionString: Schema.optional(SensitiveOutputString),
-  });
-export type SerialPortsConnectOutput = typeof SerialPortsConnectOutput.Type;
+  }) as unknown as Schema.Codec<SerialPortsConnectOutput>;
 
 // The operation
 /**
@@ -207,6 +243,18 @@ export const SerialPortsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SerialPortsConnectOutput,
 }));
 // Input Schema
+export interface SerialPortsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourceType: string;
+  parentResource: string;
+  serialPort: string;
+  properties?: {
+    state?: "enabled" | "disabled";
+    connectionState?: "active" | "inactive";
+  };
+}
 export const SerialPortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -230,10 +278,22 @@ export const SerialPortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}",
     apiVersion: "2024-07-01",
   }),
-);
-export type SerialPortsCreateInput = typeof SerialPortsCreateInput.Type;
+) as unknown as Schema.Codec<SerialPortsCreateInput>;
 
 // Output Schema
+export interface SerialPortsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SerialPortsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -253,8 +313,7 @@ export const SerialPortsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SerialPortsCreateOutput = typeof SerialPortsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SerialPortsCreateOutput>;
 
 // The operation
 /**
@@ -273,6 +332,14 @@ export const SerialPortsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SerialPortsCreateOutput,
 }));
 // Input Schema
+export interface SerialPortsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourceType: string;
+  parentResource: string;
+  serialPort: string;
+}
 export const SerialPortsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -286,10 +353,22 @@ export const SerialPortsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}",
     apiVersion: "2024-07-01",
   }),
-);
-export type SerialPortsGetInput = typeof SerialPortsGetInput.Type;
+) as unknown as Schema.Codec<SerialPortsGetInput>;
 
 // Output Schema
+export interface SerialPortsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SerialPortsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -308,8 +387,7 @@ export const SerialPortsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SerialPortsGetOutput = typeof SerialPortsGetOutput.Type;
+}) as unknown as Schema.Codec<SerialPortsGetOutput>;
 
 // The operation
 /**
@@ -328,6 +406,13 @@ export const SerialPortsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SerialPortsGetOutput,
 }));
 // Input Schema
+export interface SerialPortsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourceType: string;
+  parentResource: string;
+}
 export const SerialPortsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -340,10 +425,24 @@ export const SerialPortsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts",
     apiVersion: "2024-07-01",
   }),
-);
-export type SerialPortsListInput = typeof SerialPortsListInput.Type;
+) as unknown as Schema.Codec<SerialPortsListInput>;
 
 // Output Schema
+export interface SerialPortsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const SerialPortsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -378,8 +477,7 @@ export const SerialPortsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type SerialPortsListOutput = typeof SerialPortsListOutput.Type;
+}) as unknown as Schema.Codec<SerialPortsListOutput>;
 
 // The operation
 /**
@@ -397,6 +495,9 @@ export const SerialPortsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SerialPortsListOutput,
 }));
 // Input Schema
+export interface SerialPortsListBySubscriptionsInput {
+  subscriptionId: string;
+}
 export const SerialPortsListBySubscriptionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -406,11 +507,24 @@ export const SerialPortsListBySubscriptionsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SerialConsole/serialPorts",
       apiVersion: "2024-07-01",
     }),
-  );
-export type SerialPortsListBySubscriptionsInput =
-  typeof SerialPortsListBySubscriptionsInput.Type;
+  ) as unknown as Schema.Codec<SerialPortsListBySubscriptionsInput>;
 
 // Output Schema
+export interface SerialPortsListBySubscriptionsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const SerialPortsListBySubscriptionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -446,9 +560,7 @@ export const SerialPortsListBySubscriptionsOutput =
         }),
       ),
     ),
-  });
-export type SerialPortsListBySubscriptionsOutput =
-  typeof SerialPortsListBySubscriptionsOutput.Type;
+  }) as unknown as Schema.Codec<SerialPortsListBySubscriptionsOutput>;
 
 // The operation
 /**

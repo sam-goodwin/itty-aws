@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupClusterGlobalWriteManagedNamespacesInput {
+  clusterName: string;
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  db?: string;
+  collection?: string;
+}
 export const DeleteGroupClusterGlobalWriteManagedNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const DeleteGroupClusterGlobalWriteManagedNamespacesInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
     }),
-  );
-export type DeleteGroupClusterGlobalWriteManagedNamespacesInput =
-  typeof DeleteGroupClusterGlobalWriteManagedNamespacesInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteManagedNamespacesInput>;
 
 // Output Schema
+export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput = void;
 export const DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
-  typeof DeleteGroupClusterGlobalWriteManagedNamespacesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteManagedNamespacesOutput>;
 
 // The operation
 /**

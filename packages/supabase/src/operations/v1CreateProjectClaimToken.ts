@@ -4,14 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1CreateProjectClaimTokenInput {
+  ref: string;
+}
 export const V1CreateProjectClaimTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/claim-token" }));
-export type V1CreateProjectClaimTokenInput =
-  typeof V1CreateProjectClaimTokenInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/projects/{ref}/claim-token" }),
+  ) as unknown as Schema.Codec<V1CreateProjectClaimTokenInput>;
 
 // Output Schema
+export interface V1CreateProjectClaimTokenOutput {
+  token: string;
+  token_alias: string;
+  expires_at: string;
+  created_at: string;
+  created_by: string;
+}
 export const V1CreateProjectClaimTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.String,
@@ -19,9 +29,7 @@ export const V1CreateProjectClaimTokenOutput =
     expires_at: Schema.String,
     created_at: Schema.String,
     created_by: Schema.String,
-  });
-export type V1CreateProjectClaimTokenOutput =
-  typeof V1CreateProjectClaimTokenOutput.Type;
+  }) as unknown as Schema.Codec<V1CreateProjectClaimTokenOutput>;
 
 // The operation
 /**

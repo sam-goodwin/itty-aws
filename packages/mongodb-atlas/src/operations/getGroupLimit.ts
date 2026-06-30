@@ -4,6 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupLimitInput {
+  limitName:
+    | "atlas.project.security.databaseAccess.users"
+    | "atlas.project.deployment.clusters"
+    | "atlas.project.deployment.serverlessMTMs"
+    | "atlas.project.security.databaseAccess.customRoles"
+    | "atlas.project.security.networkAccess.entries"
+    | "atlas.project.security.networkAccess.crossRegionEntries"
+    | "atlas.project.deployment.nodesPerPrivateLinkRegion"
+    | "dataFederation.bytesProcessed.query"
+    | "dataFederation.bytesProcessed.daily"
+    | "dataFederation.bytesProcessed.weekly"
+    | "dataFederation.bytesProcessed.monthly"
+    | "atlas.project.deployment.privateServiceConnectionsPerRegionGroup"
+    | "atlas.project.deployment.privateServiceConnectionsSubnetMask";
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   limitName: Schema.Literals([
     "atlas.project.security.databaseAccess.users",
@@ -28,12 +47,12 @@ export const GetGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/groups/{groupId}/limits/{limitName}",
   }),
-);
-export type GetGroupLimitInput = typeof GetGroupLimitInput.Type;
+) as unknown as Schema.Codec<GetGroupLimitInput>;
 
 // Output Schema
-export const GetGroupLimitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupLimitOutput = typeof GetGroupLimitOutput.Type;
+export type GetGroupLimitOutput = void;
+export const GetGroupLimitOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupLimitOutput>;
 
 // The operation
 /**

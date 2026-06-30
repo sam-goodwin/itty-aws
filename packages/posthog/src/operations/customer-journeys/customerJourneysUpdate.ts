@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomerJourneysUpdateInput {
+  id: string;
+  project_id: string;
+  insight?: number;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  created_by?: number | null;
+  updated_at?: string | null;
+}
 export const CustomerJourneysUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +28,18 @@ export const CustomerJourneysUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/customer_journeys/{id}/",
     }),
-  );
-export type CustomerJourneysUpdateInput =
-  typeof CustomerJourneysUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomerJourneysUpdateInput>;
 
 // Output Schema
+export interface CustomerJourneysUpdateOutput {
+  id?: string;
+  insight?: number;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  created_by?: number | null;
+  updated_at?: string | null;
+}
 export const CustomerJourneysUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -32,9 +49,7 @@ export const CustomerJourneysUpdateOutput =
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.NullOr(Schema.Number)),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type CustomerJourneysUpdateOutput =
-  typeof CustomerJourneysUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomerJourneysUpdateOutput>;
 
 // The operation
 /**

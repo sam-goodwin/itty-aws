@@ -4,6 +4,38 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DatasetsUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  description?: string | null;
+  metadata?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+  deleted?: boolean | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -26,17 +58,63 @@ export const DatasetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
   team: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "PUT", path: "/api/projects/{project_id}/datasets/{id}/" }),
-);
-export type DatasetsUpdateInput = typeof DatasetsUpdateInput.Type;
+) as unknown as Schema.Codec<DatasetsUpdateInput>;
 
 // Output Schema
+export interface DatasetsUpdateOutput {
+  id?: string;
+  name?: string;
+  description?: string | null;
+  metadata?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+  deleted?: boolean | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -58,13 +136,28 @@ export const DatasetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
   team: Schema.optional(Schema.Number),
-});
-export type DatasetsUpdateOutput = typeof DatasetsUpdateOutput.Type;
+}) as unknown as Schema.Codec<DatasetsUpdateOutput>;
 
 // The operation
 /**

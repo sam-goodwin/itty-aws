@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingIssuesCohortUpdateInput {
+  id: string;
+  project_id: string;
+  status: string;
+  name: string | null;
+  description: string | null;
+  first_seen: string | null;
+  assignee: { id: number | string | null; type: string } | null;
+  external_issues: {
+    id?: string;
+    integration?: { id?: number; kind?: string; display_name?: string };
+    integration_id?: number;
+    config?: Record<string, string>;
+    issue?: string;
+    external_url?: string;
+  }[];
+  cohort: { id: number; name: string } | null;
+}
 export const ErrorTrackingIssuesCohortUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,7 +29,12 @@ export const ErrorTrackingIssuesCohortUpdateInput =
     name: Schema.NullOr(Schema.String),
     description: Schema.NullOr(Schema.String),
     first_seen: Schema.NullOr(Schema.String),
-    assignee: Schema.Unknown,
+    assignee: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.NullOr(Schema.Union([Schema.Number, Schema.String])),
+        type: Schema.String,
+      }),
+    ),
     external_issues: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -28,21 +51,23 @@ export const ErrorTrackingIssuesCohortUpdateInput =
         external_url: Schema.optional(Schema.String),
       }),
     ),
-    cohort: Schema.Unknown,
+    cohort: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.Number,
+        name: Schema.String,
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/api/projects/{project_id}/error_tracking/issues/{id}/cohort/",
     }),
-  );
-export type ErrorTrackingIssuesCohortUpdateInput =
-  typeof ErrorTrackingIssuesCohortUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingIssuesCohortUpdateInput>;
 
 // Output Schema
+export type ErrorTrackingIssuesCohortUpdateOutput = void;
 export const ErrorTrackingIssuesCohortUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingIssuesCohortUpdateOutput =
-  typeof ErrorTrackingIssuesCohortUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesCohortUpdateOutput>;
 
 // The operation
 /**

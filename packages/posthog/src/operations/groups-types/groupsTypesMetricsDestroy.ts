@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesMetricsDestroyInput {
+  group_type_index: number;
+  id: string;
+  project_id: string;
+}
 export const GroupsTypesMetricsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_type_index: Schema.Number.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const GroupsTypesMetricsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/groups_types/{group_type_index}/metrics/{id}/",
     }),
-  );
-export type GroupsTypesMetricsDestroyInput =
-  typeof GroupsTypesMetricsDestroyInput.Type;
+  ) as unknown as Schema.Codec<GroupsTypesMetricsDestroyInput>;
 
 // Output Schema
+export type GroupsTypesMetricsDestroyOutput = void;
 export const GroupsTypesMetricsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsTypesMetricsDestroyOutput =
-  typeof GroupsTypesMetricsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsTypesMetricsDestroyOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightVariablesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const InsightVariablesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const InsightVariablesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/insight_variables/{id}/",
     }),
-  );
-export type InsightVariablesDestroyInput =
-  typeof InsightVariablesDestroyInput.Type;
+  ) as unknown as Schema.Codec<InsightVariablesDestroyInput>;
 
 // Output Schema
+export type InsightVariablesDestroyOutput = void;
 export const InsightVariablesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InsightVariablesDestroyOutput =
-  typeof InsightVariablesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightVariablesDestroyOutput>;
 
 // The operation
 /**

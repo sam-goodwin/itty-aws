@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface IntroductoryPriceOfferPhase {}
 
-export const IntroductoryPriceOfferPhase: Schema.Schema<IntroductoryPriceOfferPhase> =
+export const IntroductoryPriceOfferPhase: Schema.Codec<IntroductoryPriceOfferPhase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "IntroductoryPriceOfferPhase",
   });
@@ -38,7 +38,7 @@ export interface Money {
   units?: string;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -54,7 +54,7 @@ export interface ExternalAccountIdentifiers {
   obfuscatedExternalAccountId?: string;
 }
 
-export const ExternalAccountIdentifiers: Schema.Schema<ExternalAccountIdentifiers> =
+export const ExternalAccountIdentifiers: Schema.Codec<ExternalAccountIdentifiers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalAccountId: Schema.optional(Schema.String),
     obfuscatedExternalProfileId: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface OutOfAppPurchaseContext {
   expiredPurchaseToken?: string;
 }
 
-export const OutOfAppPurchaseContext: Schema.Schema<OutOfAppPurchaseContext> =
+export const OutOfAppPurchaseContext: Schema.Codec<OutOfAppPurchaseContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expiredExternalAccountIdentifiers: Schema.optional(
       ExternalAccountIdentifiers,
@@ -81,7 +81,7 @@ export interface RemoteInAppUpdate {
   isRemoteInAppUpdateRequested?: boolean;
 }
 
-export const RemoteInAppUpdate: Schema.Schema<RemoteInAppUpdate> =
+export const RemoteInAppUpdate: Schema.Codec<RemoteInAppUpdate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isRemoteInAppUpdateRequested: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "RemoteInAppUpdate" });
@@ -91,7 +91,7 @@ export interface AndroidSdks {
   sdkLevels?: ReadonlyArray<string>;
 }
 
-export const AndroidSdks: Schema.Schema<AndroidSdks> =
+export const AndroidSdks: Schema.Codec<AndroidSdks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sdkLevels: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AndroidSdks" });
@@ -101,7 +101,7 @@ export interface Regions {
   regionCode?: ReadonlyArray<string>;
 }
 
-export const Regions: Schema.Schema<Regions> =
+export const Regions: Schema.Codec<Regions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Regions" });
@@ -111,7 +111,7 @@ export interface AllUsers {
   isAllUsersRequested?: boolean;
 }
 
-export const AllUsers: Schema.Schema<AllUsers> =
+export const AllUsers: Schema.Codec<AllUsers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isAllUsersRequested: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AllUsers" });
@@ -125,7 +125,7 @@ export interface TargetingUpdate {
   allUsers?: AllUsers;
 }
 
-export const TargetingUpdate: Schema.Schema<TargetingUpdate> =
+export const TargetingUpdate: Schema.Codec<TargetingUpdate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidSdks: Schema.optional(AndroidSdks),
     regions: Schema.optional(Regions),
@@ -137,7 +137,7 @@ export interface OtherRegionsSubscriptionOfferConfig {
   otherRegionsNewSubscriberAvailability?: boolean;
 }
 
-export const OtherRegionsSubscriptionOfferConfig: Schema.Schema<OtherRegionsSubscriptionOfferConfig> =
+export const OtherRegionsSubscriptionOfferConfig: Schema.Codec<OtherRegionsSubscriptionOfferConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     otherRegionsNewSubscriberAvailability: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "OtherRegionsSubscriptionOfferConfig" });
@@ -147,14 +147,14 @@ export interface OfferTag {
   tag?: string;
 }
 
-export const OfferTag: Schema.Schema<OfferTag> =
+export const OfferTag: Schema.Codec<OfferTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
   }).annotate({ identifier: "OfferTag" });
 
 export interface RegionalSubscriptionOfferPhaseFreePriceOverride {}
 
-export const RegionalSubscriptionOfferPhaseFreePriceOverride: Schema.Schema<RegionalSubscriptionOfferPhaseFreePriceOverride> =
+export const RegionalSubscriptionOfferPhaseFreePriceOverride: Schema.Codec<RegionalSubscriptionOfferPhaseFreePriceOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RegionalSubscriptionOfferPhaseFreePriceOverride",
   });
@@ -172,7 +172,7 @@ export interface RegionalSubscriptionOfferPhaseConfig {
   relativeDiscount?: number;
 }
 
-export const RegionalSubscriptionOfferPhaseConfig: Schema.Schema<RegionalSubscriptionOfferPhaseConfig> =
+export const RegionalSubscriptionOfferPhaseConfig: Schema.Codec<RegionalSubscriptionOfferPhaseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     free: Schema.optional(RegionalSubscriptionOfferPhaseFreePriceOverride),
     regionCode: Schema.optional(Schema.String),
@@ -188,7 +188,7 @@ export interface OtherRegionsSubscriptionOfferPhasePrices {
   eurPrice?: Money;
 }
 
-export const OtherRegionsSubscriptionOfferPhasePrices: Schema.Schema<OtherRegionsSubscriptionOfferPhasePrices> =
+export const OtherRegionsSubscriptionOfferPhasePrices: Schema.Codec<OtherRegionsSubscriptionOfferPhasePrices> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usdPrice: Schema.optional(Money),
     eurPrice: Schema.optional(Money),
@@ -196,7 +196,7 @@ export const OtherRegionsSubscriptionOfferPhasePrices: Schema.Schema<OtherRegion
 
 export interface OtherRegionsSubscriptionOfferPhaseFreePriceOverride {}
 
-export const OtherRegionsSubscriptionOfferPhaseFreePriceOverride: Schema.Schema<OtherRegionsSubscriptionOfferPhaseFreePriceOverride> =
+export const OtherRegionsSubscriptionOfferPhaseFreePriceOverride: Schema.Codec<OtherRegionsSubscriptionOfferPhaseFreePriceOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "OtherRegionsSubscriptionOfferPhaseFreePriceOverride",
   });
@@ -212,7 +212,7 @@ export interface OtherRegionsSubscriptionOfferPhaseConfig {
   otherRegionsPrices?: OtherRegionsSubscriptionOfferPhasePrices;
 }
 
-export const OtherRegionsSubscriptionOfferPhaseConfig: Schema.Schema<OtherRegionsSubscriptionOfferPhaseConfig> =
+export const OtherRegionsSubscriptionOfferPhaseConfig: Schema.Codec<OtherRegionsSubscriptionOfferPhaseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relativeDiscount: Schema.optional(Schema.Number),
     absoluteDiscounts: Schema.optional(
@@ -235,7 +235,7 @@ export interface SubscriptionOfferPhase {
   otherRegionsConfig?: OtherRegionsSubscriptionOfferPhaseConfig;
 }
 
-export const SubscriptionOfferPhase: Schema.Schema<SubscriptionOfferPhase> =
+export const SubscriptionOfferPhase: Schema.Codec<SubscriptionOfferPhase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recurrenceCount: Schema.optional(Schema.Number),
     duration: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface RegionalSubscriptionOfferConfig {
   newSubscriberAvailability?: boolean;
 }
 
-export const RegionalSubscriptionOfferConfig: Schema.Schema<RegionalSubscriptionOfferConfig> =
+export const RegionalSubscriptionOfferConfig: Schema.Codec<RegionalSubscriptionOfferConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     newSubscriberAvailability: Schema.optional(Schema.Boolean),
@@ -262,14 +262,14 @@ export const RegionalSubscriptionOfferConfig: Schema.Schema<RegionalSubscription
 
 export interface TargetingRuleScopeThisSubscription {}
 
-export const TargetingRuleScopeThisSubscription: Schema.Schema<TargetingRuleScopeThisSubscription> =
+export const TargetingRuleScopeThisSubscription: Schema.Codec<TargetingRuleScopeThisSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TargetingRuleScopeThisSubscription",
   });
 
 export interface TargetingRuleScopeAnySubscriptionInApp {}
 
-export const TargetingRuleScopeAnySubscriptionInApp: Schema.Schema<TargetingRuleScopeAnySubscriptionInApp> =
+export const TargetingRuleScopeAnySubscriptionInApp: Schema.Codec<TargetingRuleScopeAnySubscriptionInApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TargetingRuleScopeAnySubscriptionInApp",
   });
@@ -283,7 +283,7 @@ export interface TargetingRuleScope {
   anySubscriptionInApp?: TargetingRuleScopeAnySubscriptionInApp;
 }
 
-export const TargetingRuleScope: Schema.Schema<TargetingRuleScope> =
+export const TargetingRuleScope: Schema.Codec<TargetingRuleScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     specificSubscriptionInApp: Schema.optional(Schema.String),
     thisSubscription: Schema.optional(TargetingRuleScopeThisSubscription),
@@ -297,7 +297,7 @@ export interface AcquisitionTargetingRule {
   scope?: TargetingRuleScope;
 }
 
-export const AcquisitionTargetingRule: Schema.Schema<AcquisitionTargetingRule> =
+export const AcquisitionTargetingRule: Schema.Codec<AcquisitionTargetingRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(TargetingRuleScope),
   }).annotate({ identifier: "AcquisitionTargetingRule" });
@@ -311,7 +311,7 @@ export interface UpgradeTargetingRule {
   billingPeriodDuration?: string;
 }
 
-export const UpgradeTargetingRule: Schema.Schema<UpgradeTargetingRule> =
+export const UpgradeTargetingRule: Schema.Codec<UpgradeTargetingRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oncePerUser: Schema.optional(Schema.Boolean),
     scope: Schema.optional(TargetingRuleScope),
@@ -325,7 +325,7 @@ export interface SubscriptionOfferTargeting {
   upgradeRule?: UpgradeTargetingRule;
 }
 
-export const SubscriptionOfferTargeting: Schema.Schema<SubscriptionOfferTargeting> =
+export const SubscriptionOfferTargeting: Schema.Codec<SubscriptionOfferTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acquisitionRule: Schema.optional(AcquisitionTargetingRule),
     upgradeRule: Schema.optional(UpgradeTargetingRule),
@@ -354,7 +354,7 @@ export interface SubscriptionOffer {
   targeting?: SubscriptionOfferTargeting;
 }
 
-export const SubscriptionOffer: Schema.Schema<SubscriptionOffer> =
+export const SubscriptionOffer: Schema.Codec<SubscriptionOffer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -374,14 +374,14 @@ export interface BatchGetSubscriptionOffersResponse {
   subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
 }
 
-export const BatchGetSubscriptionOffersResponse: Schema.Schema<BatchGetSubscriptionOffersResponse> =
+export const BatchGetSubscriptionOffersResponse: Schema.Codec<BatchGetSubscriptionOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
   }).annotate({ identifier: "BatchGetSubscriptionOffersResponse" });
 
 export interface PaidAppDetails {}
 
-export const PaidAppDetails: Schema.Schema<PaidAppDetails> =
+export const PaidAppDetails: Schema.Codec<PaidAppDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PaidAppDetails",
   });
@@ -403,7 +403,7 @@ export interface TextureCompressionFormat {
     | (string & {});
 }
 
-export const TextureCompressionFormat: Schema.Schema<TextureCompressionFormat> =
+export const TextureCompressionFormat: Schema.Codec<TextureCompressionFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alias: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextureCompressionFormat" });
@@ -415,7 +415,7 @@ export interface TextureCompressionFormatTargeting {
   alternatives?: ReadonlyArray<TextureCompressionFormat>;
 }
 
-export const TextureCompressionFormatTargeting: Schema.Schema<TextureCompressionFormatTargeting> =
+export const TextureCompressionFormatTargeting: Schema.Codec<TextureCompressionFormatTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(TextureCompressionFormat)),
     alternatives: Schema.optional(Schema.Array(TextureCompressionFormat)),
@@ -426,7 +426,7 @@ export interface SdkVersion {
   min?: number;
 }
 
-export const SdkVersion: Schema.Schema<SdkVersion> =
+export const SdkVersion: Schema.Codec<SdkVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SdkVersion" });
@@ -438,7 +438,7 @@ export interface SdkVersionTargeting {
   value?: ReadonlyArray<SdkVersion>;
 }
 
-export const SdkVersionTargeting: Schema.Schema<SdkVersionTargeting> =
+export const SdkVersionTargeting: Schema.Codec<SdkVersionTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alternatives: Schema.optional(Schema.Array(SdkVersion)),
     value: Schema.optional(Schema.Array(SdkVersion)),
@@ -457,10 +457,11 @@ export interface Abi {
     | (string & {});
 }
 
-export const Abi: Schema.Schema<Abi> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Abi: Schema.Codec<Abi> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     alias: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Abi" });
+  },
+).annotate({ identifier: "Abi" });
 
 export interface AbiTargeting {
   /** Value of an abi. */
@@ -469,7 +470,7 @@ export interface AbiTargeting {
   alternatives?: ReadonlyArray<Abi>;
 }
 
-export const AbiTargeting: Schema.Schema<AbiTargeting> =
+export const AbiTargeting: Schema.Codec<AbiTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Abi)),
     alternatives: Schema.optional(Schema.Array(Abi)),
@@ -492,7 +493,7 @@ export interface ScreenDensity {
   densityDpi?: number;
 }
 
-export const ScreenDensity: Schema.Schema<ScreenDensity> =
+export const ScreenDensity: Schema.Codec<ScreenDensity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     densityAlias: Schema.optional(Schema.String),
     densityDpi: Schema.optional(Schema.Number),
@@ -505,7 +506,7 @@ export interface ScreenDensityTargeting {
   alternatives?: ReadonlyArray<ScreenDensity>;
 }
 
-export const ScreenDensityTargeting: Schema.Schema<ScreenDensityTargeting> =
+export const ScreenDensityTargeting: Schema.Codec<ScreenDensityTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(ScreenDensity)),
     alternatives: Schema.optional(Schema.Array(ScreenDensity)),
@@ -516,7 +517,7 @@ export interface MultiAbi {
   abi?: ReadonlyArray<Abi>;
 }
 
-export const MultiAbi: Schema.Schema<MultiAbi> =
+export const MultiAbi: Schema.Codec<MultiAbi> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     abi: Schema.optional(Schema.Array(Abi)),
   }).annotate({ identifier: "MultiAbi" });
@@ -528,7 +529,7 @@ export interface MultiAbiTargeting {
   alternatives?: ReadonlyArray<MultiAbi>;
 }
 
-export const MultiAbiTargeting: Schema.Schema<MultiAbiTargeting> =
+export const MultiAbiTargeting: Schema.Codec<MultiAbiTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(MultiAbi)),
     alternatives: Schema.optional(Schema.Array(MultiAbi)),
@@ -547,7 +548,7 @@ export interface VariantTargeting {
   multiAbiTargeting?: MultiAbiTargeting;
 }
 
-export const VariantTargeting: Schema.Schema<VariantTargeting> =
+export const VariantTargeting: Schema.Codec<VariantTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textureCompressionFormatTargeting: Schema.optional(
       TextureCompressionFormatTargeting,
@@ -565,7 +566,7 @@ export interface UserCountriesTargeting {
   exclude?: boolean;
 }
 
-export const UserCountriesTargeting: Schema.Schema<UserCountriesTargeting> =
+export const UserCountriesTargeting: Schema.Codec<UserCountriesTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countryCodes: Schema.optional(Schema.Array(Schema.String)),
     exclude: Schema.optional(Schema.Boolean),
@@ -578,7 +579,7 @@ export interface DeviceFeature {
   featureName?: string;
 }
 
-export const DeviceFeature: Schema.Schema<DeviceFeature> =
+export const DeviceFeature: Schema.Codec<DeviceFeature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     featureVersion: Schema.optional(Schema.Number),
     featureName: Schema.optional(Schema.String),
@@ -589,7 +590,7 @@ export interface DeviceFeatureTargeting {
   requiredFeature?: DeviceFeature;
 }
 
-export const DeviceFeatureTargeting: Schema.Schema<DeviceFeatureTargeting> =
+export const DeviceFeatureTargeting: Schema.Codec<DeviceFeatureTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredFeature: Schema.optional(DeviceFeature),
   }).annotate({ identifier: "DeviceFeatureTargeting" });
@@ -603,7 +604,7 @@ export interface ModuleTargeting {
   deviceFeatureTargeting?: ReadonlyArray<DeviceFeatureTargeting>;
 }
 
-export const ModuleTargeting: Schema.Schema<ModuleTargeting> =
+export const ModuleTargeting: Schema.Codec<ModuleTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userCountriesTargeting: Schema.optional(UserCountriesTargeting),
     sdkVersionTargeting: Schema.optional(SdkVersionTargeting),
@@ -630,7 +631,7 @@ export interface ModuleMetadata {
   moduleType?: "UNKNOWN_MODULE_TYPE" | "FEATURE_MODULE" | (string & {});
 }
 
-export const ModuleMetadata: Schema.Schema<ModuleMetadata> =
+export const ModuleMetadata: Schema.Codec<ModuleMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deliveryType: Schema.optional(Schema.String),
     targeting: Schema.optional(ModuleTargeting),
@@ -646,7 +647,7 @@ export interface LanguageTargeting {
   value?: ReadonlyArray<string>;
 }
 
-export const LanguageTargeting: Schema.Schema<LanguageTargeting> =
+export const LanguageTargeting: Schema.Codec<LanguageTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alternatives: Schema.optional(Schema.Array(Schema.String)),
     value: Schema.optional(Schema.Array(Schema.String)),
@@ -667,7 +668,7 @@ export interface ApkTargeting {
   languageTargeting?: LanguageTargeting;
 }
 
-export const ApkTargeting: Schema.Schema<ApkTargeting> =
+export const ApkTargeting: Schema.Codec<ApkTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     screenDensityTargeting: Schema.optional(ScreenDensityTargeting),
     multiAbiTargeting: Schema.optional(MultiAbiTargeting),
@@ -686,7 +687,7 @@ export interface SplitApkMetadata {
   splitId?: string;
 }
 
-export const SplitApkMetadata: Schema.Schema<SplitApkMetadata> =
+export const SplitApkMetadata: Schema.Codec<SplitApkMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isMasterSplit: Schema.optional(Schema.Boolean),
     splitId: Schema.optional(Schema.String),
@@ -697,7 +698,7 @@ export interface StandaloneApkMetadata {
   fusedModuleName?: ReadonlyArray<string>;
 }
 
-export const StandaloneApkMetadata: Schema.Schema<StandaloneApkMetadata> =
+export const StandaloneApkMetadata: Schema.Codec<StandaloneApkMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fusedModuleName: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StandaloneApkMetadata" });
@@ -717,7 +718,7 @@ export interface ApkDescription {
   standaloneApkMetadata?: StandaloneApkMetadata;
 }
 
-export const ApkDescription: Schema.Schema<ApkDescription> =
+export const ApkDescription: Schema.Codec<ApkDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targeting: Schema.optional(ApkTargeting),
     splitApkMetadata: Schema.optional(SplitApkMetadata),
@@ -734,7 +735,7 @@ export interface ApkSet {
   apkDescription?: ReadonlyArray<ApkDescription>;
 }
 
-export const ApkSet: Schema.Schema<ApkSet> =
+export const ApkSet: Schema.Codec<ApkSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     moduleMetadata: Schema.optional(ModuleMetadata),
     apkDescription: Schema.optional(Schema.Array(ApkDescription)),
@@ -749,7 +750,7 @@ export interface SplitApkVariant {
   variantNumber?: number;
 }
 
-export const SplitApkVariant: Schema.Schema<SplitApkVariant> =
+export const SplitApkVariant: Schema.Codec<SplitApkVariant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targeting: Schema.optional(VariantTargeting),
     apkSet: Schema.optional(Schema.Array(ApkSet)),
@@ -763,7 +764,7 @@ export interface Timestamp {
   nanos?: number;
 }
 
-export const Timestamp: Schema.Schema<Timestamp> =
+export const Timestamp: Schema.Codec<Timestamp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seconds: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -776,7 +777,7 @@ export interface DeveloperComment {
   text?: string;
 }
 
-export const DeveloperComment: Schema.Schema<DeveloperComment> =
+export const DeveloperComment: Schema.Codec<DeveloperComment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastModified: Schema.optional(Timestamp),
     text: Schema.optional(Schema.String),
@@ -793,7 +794,7 @@ export interface AppDetails {
   defaultLanguage?: string;
 }
 
-export const AppDetails: Schema.Schema<AppDetails> =
+export const AppDetails: Schema.Codec<AppDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactWebsite: Schema.optional(Schema.String),
     contactEmail: Schema.optional(Schema.String),
@@ -808,7 +809,7 @@ export interface SystemOnChip {
   manufacturer?: string;
 }
 
-export const SystemOnChip: Schema.Schema<SystemOnChip> =
+export const SystemOnChip: Schema.Codec<SystemOnChip> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String),
     manufacturer: Schema.optional(Schema.String),
@@ -816,7 +817,7 @@ export const SystemOnChip: Schema.Schema<SystemOnChip> =
 
 export interface CancelSubscriptionPurchaseResponse {}
 
-export const CancelSubscriptionPurchaseResponse: Schema.Schema<CancelSubscriptionPurchaseResponse> =
+export const CancelSubscriptionPurchaseResponse: Schema.Codec<CancelSubscriptionPurchaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelSubscriptionPurchaseResponse",
   });
@@ -830,7 +831,7 @@ export interface RegionalBasePlanConfig {
   price?: Money;
 }
 
-export const RegionalBasePlanConfig: Schema.Schema<RegionalBasePlanConfig> =
+export const RegionalBasePlanConfig: Schema.Codec<RegionalBasePlanConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newSubscriberAvailability: Schema.optional(Schema.Boolean),
     regionCode: Schema.optional(Schema.String),
@@ -846,7 +847,7 @@ export interface OtherRegionsBasePlanConfig {
   eurPrice?: Money;
 }
 
-export const OtherRegionsBasePlanConfig: Schema.Schema<OtherRegionsBasePlanConfig> =
+export const OtherRegionsBasePlanConfig: Schema.Codec<OtherRegionsBasePlanConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newSubscriberAvailability: Schema.optional(Schema.Boolean),
     usdPrice: Schema.optional(Money),
@@ -882,7 +883,7 @@ export interface InstallmentsBasePlanType {
     | (string & {});
 }
 
-export const InstallmentsBasePlanType: Schema.Schema<InstallmentsBasePlanType> =
+export const InstallmentsBasePlanType: Schema.Codec<InstallmentsBasePlanType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prorationMode: Schema.optional(Schema.String),
     accountHoldDuration: Schema.optional(Schema.String),
@@ -918,7 +919,7 @@ export interface AutoRenewingBasePlanType {
   gracePeriodDuration?: string;
 }
 
-export const AutoRenewingBasePlanType: Schema.Schema<AutoRenewingBasePlanType> =
+export const AutoRenewingBasePlanType: Schema.Codec<AutoRenewingBasePlanType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prorationMode: Schema.optional(Schema.String),
     billingPeriodDuration: Schema.optional(Schema.String),
@@ -940,7 +941,7 @@ export interface PrepaidBasePlanType {
     | (string & {});
 }
 
-export const PrepaidBasePlanType: Schema.Schema<PrepaidBasePlanType> =
+export const PrepaidBasePlanType: Schema.Codec<PrepaidBasePlanType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingPeriodDuration: Schema.optional(Schema.String),
     timeExtension: Schema.optional(Schema.String),
@@ -965,7 +966,7 @@ export interface BasePlan {
   prepaidBasePlanType?: PrepaidBasePlanType;
 }
 
-export const BasePlan: Schema.Schema<BasePlan> =
+export const BasePlan: Schema.Codec<BasePlan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     regionalConfigs: Schema.optional(Schema.Array(RegionalBasePlanConfig)),
@@ -984,7 +985,7 @@ export interface ExpansionFile {
   referencesVersion?: number;
 }
 
-export const ExpansionFile: Schema.Schema<ExpansionFile> =
+export const ExpansionFile: Schema.Codec<ExpansionFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileSize: Schema.optional(Schema.String),
     referencesVersion: Schema.optional(Schema.Number),
@@ -995,7 +996,7 @@ export interface ExpansionFilesUploadResponse {
   expansionFile?: ExpansionFile;
 }
 
-export const ExpansionFilesUploadResponse: Schema.Schema<ExpansionFilesUploadResponse> =
+export const ExpansionFilesUploadResponse: Schema.Codec<ExpansionFilesUploadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expansionFile: Schema.optional(ExpansionFile),
   }).annotate({ identifier: "ExpansionFilesUploadResponse" });
@@ -1033,7 +1034,7 @@ export interface ProductPurchase {
   purchaseTimeMillis?: string;
 }
 
-export const ProductPurchase: Schema.Schema<ProductPurchase> =
+export const ProductPurchase: Schema.Codec<ProductPurchase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     consumptionState: Schema.optional(Schema.Number),
@@ -1054,7 +1055,7 @@ export const ProductPurchase: Schema.Schema<ProductPurchase> =
 
 export interface AddTargetingResponse {}
 
-export const AddTargetingResponse: Schema.Schema<AddTargetingResponse> =
+export const AddTargetingResponse: Schema.Codec<AddTargetingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddTargetingResponse",
   });
@@ -1066,7 +1067,7 @@ export interface Price {
   currency?: string;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priceMicros: Schema.optional(Schema.String),
     currency: Schema.optional(Schema.String),
@@ -1079,7 +1080,7 @@ export interface PartialRefund {
   refundPreTaxAmount?: Price;
 }
 
-export const PartialRefund: Schema.Schema<PartialRefund> =
+export const PartialRefund: Schema.Codec<PartialRefund> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refundId: Schema.optional(Schema.String),
     refundPreTaxAmount: Schema.optional(Price),
@@ -1087,7 +1088,7 @@ export const PartialRefund: Schema.Schema<PartialRefund> =
 
 export interface FullRefund {}
 
-export const FullRefund: Schema.Schema<FullRefund> =
+export const FullRefund: Schema.Codec<FullRefund> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FullRefund",
   });
@@ -1101,7 +1102,7 @@ export interface RefundExternalTransactionRequest {
   fullRefund?: FullRefund;
 }
 
-export const RefundExternalTransactionRequest: Schema.Schema<RefundExternalTransactionRequest> =
+export const RefundExternalTransactionRequest: Schema.Codec<RefundExternalTransactionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partialRefund: Schema.optional(PartialRefund),
     refundTime: Schema.optional(Schema.String),
@@ -1123,7 +1124,7 @@ export interface OneTimeProductPreOrderOffer {
   releaseTime?: string;
 }
 
-export const OneTimeProductPreOrderOffer: Schema.Schema<OneTimeProductPreOrderOffer> =
+export const OneTimeProductPreOrderOffer: Schema.Codec<OneTimeProductPreOrderOffer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     priceChangeBehavior: Schema.optional(Schema.String),
@@ -1133,7 +1134,7 @@ export const OneTimeProductPreOrderOffer: Schema.Schema<OneTimeProductPreOrderOf
 
 export interface OneTimeProductOfferNoPriceOverrideOptions {}
 
-export const OneTimeProductOfferNoPriceOverrideOptions: Schema.Schema<OneTimeProductOfferNoPriceOverrideOptions> =
+export const OneTimeProductOfferNoPriceOverrideOptions: Schema.Codec<OneTimeProductOfferNoPriceOverrideOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "OneTimeProductOfferNoPriceOverrideOptions",
   });
@@ -1155,7 +1156,7 @@ export interface OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
   absoluteDiscount?: Money;
 }
 
-export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig: Schema.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfig> =
+export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig: Schema.Codec<OneTimeProductOfferRegionalPricingAndAvailabilityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     availability: Schema.optional(Schema.String),
@@ -1171,7 +1172,7 @@ export interface RegionsVersion {
   version?: string;
 }
 
-export const RegionsVersion: Schema.Schema<RegionsVersion> =
+export const RegionsVersion: Schema.Codec<RegionsVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegionsVersion" });
@@ -1185,7 +1186,7 @@ export interface OneTimeProductDiscountedOffer {
   redemptionLimit?: string;
 }
 
-export const OneTimeProductDiscountedOffer: Schema.Schema<OneTimeProductDiscountedOffer> =
+export const OneTimeProductDiscountedOffer: Schema.Codec<OneTimeProductDiscountedOffer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1221,7 +1222,7 @@ export interface OneTimeProductOffer {
   purchaseOptionId?: string;
 }
 
-export const OneTimeProductOffer: Schema.Schema<OneTimeProductOffer> =
+export const OneTimeProductOffer: Schema.Codec<OneTimeProductOffer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1242,7 +1243,7 @@ export interface BatchUpdateOneTimeProductOffersResponse {
   oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
 }
 
-export const BatchUpdateOneTimeProductOffersResponse: Schema.Schema<BatchUpdateOneTimeProductOffersResponse> =
+export const BatchUpdateOneTimeProductOffersResponse: Schema.Codec<BatchUpdateOneTimeProductOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
   }).annotate({ identifier: "BatchUpdateOneTimeProductOffersResponse" });
@@ -1252,7 +1253,7 @@ export interface AppVersionList {
   versionCodes?: ReadonlyArray<string>;
 }
 
-export const AppVersionList: Schema.Schema<AppVersionList> =
+export const AppVersionList: Schema.Codec<AppVersionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionCodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AppVersionList" });
@@ -1264,7 +1265,7 @@ export interface AppVersionRange {
   versionCodeEnd?: string;
 }
 
-export const AppVersionRange: Schema.Schema<AppVersionRange> =
+export const AppVersionRange: Schema.Codec<AppVersionRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionCodeStart: Schema.optional(Schema.String),
     versionCodeEnd: Schema.optional(Schema.String),
@@ -1283,7 +1284,7 @@ export interface Targeting {
   versionRange?: AppVersionRange;
 }
 
-export const Targeting: Schema.Schema<Targeting> =
+export const Targeting: Schema.Codec<Targeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Regions),
     allUsers: Schema.optional(AllUsers),
@@ -1301,7 +1302,7 @@ export interface RemoteInAppUpdateDataPerBundle {
   versionCode?: string;
 }
 
-export const RemoteInAppUpdateDataPerBundle: Schema.Schema<RemoteInAppUpdateDataPerBundle> =
+export const RemoteInAppUpdateDataPerBundle: Schema.Codec<RemoteInAppUpdateDataPerBundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalDeviceCount: Schema.optional(Schema.String),
     recoveredDeviceCount: Schema.optional(Schema.String),
@@ -1313,7 +1314,7 @@ export interface RemoteInAppUpdateData {
   remoteAppUpdateDataPerBundle?: ReadonlyArray<RemoteInAppUpdateDataPerBundle>;
 }
 
-export const RemoteInAppUpdateData: Schema.Schema<RemoteInAppUpdateData> =
+export const RemoteInAppUpdateData: Schema.Codec<RemoteInAppUpdateData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remoteAppUpdateDataPerBundle: Schema.optional(
       Schema.Array(RemoteInAppUpdateDataPerBundle),
@@ -1346,7 +1347,7 @@ export interface AppRecoveryAction {
   deployTime?: string;
 }
 
-export const AppRecoveryAction: Schema.Schema<AppRecoveryAction> =
+export const AppRecoveryAction: Schema.Codec<AppRecoveryAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appRecoveryId: Schema.optional(Schema.String),
     targeting: Schema.optional(Targeting),
@@ -1363,7 +1364,7 @@ export interface ListAppRecoveriesResponse {
   recoveryActions?: ReadonlyArray<AppRecoveryAction>;
 }
 
-export const ListAppRecoveriesResponse: Schema.Schema<ListAppRecoveriesResponse> =
+export const ListAppRecoveriesResponse: Schema.Codec<ListAppRecoveriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recoveryActions: Schema.optional(Schema.Array(AppRecoveryAction)),
   }).annotate({ identifier: "ListAppRecoveriesResponse" });
@@ -1373,7 +1374,7 @@ export interface TrackTargetedCountry {
   countryCode?: string;
 }
 
-export const TrackTargetedCountry: Schema.Schema<TrackTargetedCountry> =
+export const TrackTargetedCountry: Schema.Codec<TrackTargetedCountry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countryCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "TrackTargetedCountry" });
@@ -1387,7 +1388,7 @@ export interface TrackCountryAvailability {
   restOfWorld?: boolean;
 }
 
-export const TrackCountryAvailability: Schema.Schema<TrackCountryAvailability> =
+export const TrackCountryAvailability: Schema.Codec<TrackCountryAvailability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syncWithProduction: Schema.optional(Schema.Boolean),
     countries: Schema.optional(Schema.Array(TrackTargetedCountry)),
@@ -1407,7 +1408,7 @@ export interface Listing {
   fullDescription?: string;
 }
 
-export const Listing: Schema.Schema<Listing> =
+export const Listing: Schema.Codec<Listing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shortDescription: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
@@ -1435,7 +1436,7 @@ export interface ExternalOfferDetails {
   installedAppPackage?: string;
 }
 
-export const ExternalOfferDetails: Schema.Schema<ExternalOfferDetails> =
+export const ExternalOfferDetails: Schema.Codec<ExternalOfferDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkType: Schema.optional(Schema.String),
     installedAppCategory: Schema.optional(Schema.String),
@@ -1450,7 +1451,7 @@ export interface ListSubscriptionOffersResponse {
   subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
 }
 
-export const ListSubscriptionOffersResponse: Schema.Schema<ListSubscriptionOffersResponse> =
+export const ListSubscriptionOffersResponse: Schema.Codec<ListSubscriptionOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
@@ -1473,7 +1474,7 @@ export interface ActivateSubscriptionOfferRequest {
     | (string & {});
 }
 
-export const ActivateSubscriptionOfferRequest: Schema.Schema<ActivateSubscriptionOfferRequest> =
+export const ActivateSubscriptionOfferRequest: Schema.Codec<ActivateSubscriptionOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     offerId: Schema.optional(Schema.String),
@@ -1499,7 +1500,7 @@ export interface DeactivateSubscriptionOfferRequest {
     | (string & {});
 }
 
-export const DeactivateSubscriptionOfferRequest: Schema.Schema<DeactivateSubscriptionOfferRequest> =
+export const DeactivateSubscriptionOfferRequest: Schema.Codec<DeactivateSubscriptionOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     offerId: Schema.optional(Schema.String),
@@ -1515,7 +1516,7 @@ export interface UpdateSubscriptionOfferStateRequest {
   deactivateSubscriptionOfferRequest?: DeactivateSubscriptionOfferRequest;
 }
 
-export const UpdateSubscriptionOfferStateRequest: Schema.Schema<UpdateSubscriptionOfferStateRequest> =
+export const UpdateSubscriptionOfferStateRequest: Schema.Codec<UpdateSubscriptionOfferStateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activateSubscriptionOfferRequest: Schema.optional(
       ActivateSubscriptionOfferRequest,
@@ -1527,21 +1528,21 @@ export const UpdateSubscriptionOfferStateRequest: Schema.Schema<UpdateSubscripti
 
 export interface DeployAppRecoveryRequest {}
 
-export const DeployAppRecoveryRequest: Schema.Schema<DeployAppRecoveryRequest> =
+export const DeployAppRecoveryRequest: Schema.Codec<DeployAppRecoveryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeployAppRecoveryRequest",
   });
 
 export interface PreorderDetails {}
 
-export const PreorderDetails: Schema.Schema<PreorderDetails> =
+export const PreorderDetails: Schema.Codec<PreorderDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PreorderDetails",
   });
 
 export interface RentalDetails {}
 
-export const RentalDetails: Schema.Schema<RentalDetails> =
+export const RentalDetails: Schema.Codec<RentalDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RentalDetails",
   });
@@ -1559,7 +1560,7 @@ export interface OneTimePurchaseDetails {
   rentalDetails?: RentalDetails;
 }
 
-export const OneTimePurchaseDetails: Schema.Schema<OneTimePurchaseDetails> =
+export const OneTimePurchaseDetails: Schema.Codec<OneTimePurchaseDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offerId: Schema.optional(Schema.String),
     preorderDetails: Schema.optional(PreorderDetails),
@@ -1578,28 +1579,28 @@ export interface ProrationPeriodDetails {
     | (string & {});
 }
 
-export const ProrationPeriodDetails: Schema.Schema<ProrationPeriodDetails> =
+export const ProrationPeriodDetails: Schema.Codec<ProrationPeriodDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalOfferPhase: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProrationPeriodDetails" });
 
 export interface FreeTrialDetails {}
 
-export const FreeTrialDetails: Schema.Schema<FreeTrialDetails> =
+export const FreeTrialDetails: Schema.Codec<FreeTrialDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FreeTrialDetails",
   });
 
 export interface IntroductoryPriceDetails {}
 
-export const IntroductoryPriceDetails: Schema.Schema<IntroductoryPriceDetails> =
+export const IntroductoryPriceDetails: Schema.Codec<IntroductoryPriceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "IntroductoryPriceDetails",
   });
 
 export interface BaseDetails {}
 
-export const BaseDetails: Schema.Schema<BaseDetails> =
+export const BaseDetails: Schema.Codec<BaseDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "BaseDetails",
   });
@@ -1615,7 +1616,7 @@ export interface OfferPhaseDetails {
   baseDetails?: BaseDetails;
 }
 
-export const OfferPhaseDetails: Schema.Schema<OfferPhaseDetails> =
+export const OfferPhaseDetails: Schema.Codec<OfferPhaseDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prorationPeriodDetails: Schema.optional(ProrationPeriodDetails),
     freeTrialDetails: Schema.optional(FreeTrialDetails),
@@ -1643,7 +1644,7 @@ export interface SubscriptionDetails {
   basePlanId?: string;
 }
 
-export const SubscriptionDetails: Schema.Schema<SubscriptionDetails> =
+export const SubscriptionDetails: Schema.Codec<SubscriptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offerId: Schema.optional(Schema.String),
     offerPhase: Schema.optional(Schema.String),
@@ -1672,7 +1673,7 @@ export interface LineItem {
   listingPrice?: Money;
 }
 
-export const LineItem: Schema.Schema<LineItem> =
+export const LineItem: Schema.Codec<LineItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tax: Schema.optional(Money),
     paidAppDetails: Schema.optional(PaidAppDetails),
@@ -1696,7 +1697,7 @@ export interface AssetModuleMetadata {
     | (string & {});
 }
 
-export const AssetModuleMetadata: Schema.Schema<AssetModuleMetadata> =
+export const AssetModuleMetadata: Schema.Codec<AssetModuleMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     deliveryType: Schema.optional(Schema.String),
@@ -1709,7 +1710,7 @@ export interface AssetSliceSet {
   apkDescription?: ReadonlyArray<ApkDescription>;
 }
 
-export const AssetSliceSet: Schema.Schema<AssetSliceSet> =
+export const AssetSliceSet: Schema.Codec<AssetSliceSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assetModuleMetadata: Schema.optional(AssetModuleMetadata),
     apkDescription: Schema.optional(Schema.Array(ApkDescription)),
@@ -1724,7 +1725,7 @@ export interface TargetingInfo {
   assetSliceSet?: ReadonlyArray<AssetSliceSet>;
 }
 
-export const TargetingInfo: Schema.Schema<TargetingInfo> =
+export const TargetingInfo: Schema.Codec<TargetingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variant: Schema.optional(Schema.Array(SplitApkVariant)),
     packageName: Schema.optional(Schema.String),
@@ -1744,7 +1745,7 @@ export interface RegionalProductAgeRatingInfo {
     | (string & {});
 }
 
-export const RegionalProductAgeRatingInfo: Schema.Schema<RegionalProductAgeRatingInfo> =
+export const RegionalProductAgeRatingInfo: Schema.Codec<RegionalProductAgeRatingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     productAgeRatingTier: Schema.optional(Schema.String),
@@ -1774,7 +1775,7 @@ export interface RegionalTaxRateInfo {
     | (string & {});
 }
 
-export const RegionalTaxRateInfo: Schema.Schema<RegionalTaxRateInfo> =
+export const RegionalTaxRateInfo: Schema.Codec<RegionalTaxRateInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taxTier: Schema.optional(Schema.String),
     eligibleForStreamingServiceTaxRate: Schema.optional(Schema.Boolean),
@@ -1798,7 +1799,7 @@ export interface SubscriptionTaxAndComplianceSettings {
   isTokenizedDigitalAsset?: boolean;
 }
 
-export const SubscriptionTaxAndComplianceSettings: Schema.Schema<SubscriptionTaxAndComplianceSettings> =
+export const SubscriptionTaxAndComplianceSettings: Schema.Codec<SubscriptionTaxAndComplianceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionalProductAgeRatingInfos: Schema.optional(
       Schema.Array(RegionalProductAgeRatingInfo),
@@ -1816,7 +1817,7 @@ export interface RestrictedPaymentCountries {
   regionCodes?: ReadonlyArray<string>;
 }
 
-export const RestrictedPaymentCountries: Schema.Schema<RestrictedPaymentCountries> =
+export const RestrictedPaymentCountries: Schema.Codec<RestrictedPaymentCountries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RestrictedPaymentCountries" });
@@ -1832,7 +1833,7 @@ export interface SubscriptionListing {
   benefits?: ReadonlyArray<string>;
 }
 
-export const SubscriptionListing: Schema.Schema<SubscriptionListing> =
+export const SubscriptionListing: Schema.Codec<SubscriptionListing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1857,7 +1858,7 @@ export interface Subscription {
   basePlans?: ReadonlyArray<BasePlan>;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
+export const Subscription: Schema.Codec<Subscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     archived: Schema.optional(Schema.Boolean),
     taxAndComplianceSettings: Schema.optional(
@@ -1877,7 +1878,7 @@ export interface ItemExpiryTimeDetails {
   expiryTime?: string;
 }
 
-export const ItemExpiryTimeDetails: Schema.Schema<ItemExpiryTimeDetails> =
+export const ItemExpiryTimeDetails: Schema.Codec<ItemExpiryTimeDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     expiryTime: Schema.optional(Schema.String),
@@ -1888,7 +1889,7 @@ export interface DeferSubscriptionPurchaseResponse {
   itemExpiryTimeDetails?: ReadonlyArray<ItemExpiryTimeDetails>;
 }
 
-export const DeferSubscriptionPurchaseResponse: Schema.Schema<DeferSubscriptionPurchaseResponse> =
+export const DeferSubscriptionPurchaseResponse: Schema.Codec<DeferSubscriptionPurchaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemExpiryTimeDetails: Schema.optional(Schema.Array(ItemExpiryTimeDetails)),
   }).annotate({ identifier: "DeferSubscriptionPurchaseResponse" });
@@ -1900,7 +1901,7 @@ export interface UsesPermission {
   maxSdkVersion?: number;
 }
 
-export const UsesPermission: Schema.Schema<UsesPermission> =
+export const UsesPermission: Schema.Codec<UsesPermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     maxSdkVersion: Schema.optional(Schema.Number),
@@ -1913,7 +1914,7 @@ export interface ApkBinary {
   sha1?: string;
 }
 
-export const ApkBinary: Schema.Schema<ApkBinary> =
+export const ApkBinary: Schema.Codec<ApkBinary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha256: Schema.optional(Schema.String),
     sha1: Schema.optional(Schema.String),
@@ -1926,11 +1927,12 @@ export interface Apk {
   binary?: ApkBinary;
 }
 
-export const Apk: Schema.Schema<Apk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Apk: Schema.Codec<Apk> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     versionCode: Schema.optional(Schema.Number),
     binary: Schema.optional(ApkBinary),
-  }).annotate({ identifier: "Apk" });
+  },
+).annotate({ identifier: "Apk" });
 
 export interface LocalizedText {
   /** The text in the given language. */
@@ -1939,7 +1941,7 @@ export interface LocalizedText {
   language?: string;
 }
 
-export const LocalizedText: Schema.Schema<LocalizedText> =
+export const LocalizedText: Schema.Codec<LocalizedText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
@@ -1954,7 +1956,7 @@ export interface ExternalSubscription {
     | (string & {});
 }
 
-export const ExternalSubscription: Schema.Schema<ExternalSubscription> =
+export const ExternalSubscription: Schema.Codec<ExternalSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionType: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExternalSubscription" });
@@ -1973,7 +1975,7 @@ export interface CancelSurveyResult {
   reasonUserInput?: string;
 }
 
-export const CancelSurveyResult: Schema.Schema<CancelSurveyResult> =
+export const CancelSurveyResult: Schema.Codec<CancelSurveyResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     reasonUserInput: Schema.optional(Schema.String),
@@ -2004,7 +2006,7 @@ export interface DeviceMetadata {
   ramMb?: number;
 }
 
-export const DeviceMetadata: Schema.Schema<DeviceMetadata> =
+export const DeviceMetadata: Schema.Codec<DeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cpuModel: Schema.optional(Schema.String),
     screenDensityDpi: Schema.optional(Schema.Number),
@@ -2046,7 +2048,7 @@ export interface UserComment {
   device?: string;
 }
 
-export const UserComment: Schema.Schema<UserComment> =
+export const UserComment: Schema.Codec<UserComment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thumbsUpCount: Schema.optional(Schema.Number),
     thumbsDownCount: Schema.optional(Schema.Number),
@@ -2069,7 +2071,7 @@ export interface Comment {
   developerComment?: DeveloperComment;
 }
 
-export const Comment: Schema.Schema<Comment> =
+export const Comment: Schema.Codec<Comment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userComment: Schema.optional(UserComment),
     developerComment: Schema.optional(DeveloperComment),
@@ -2084,7 +2086,7 @@ export interface Review {
   comments?: ReadonlyArray<Comment>;
 }
 
-export const Review: Schema.Schema<Review> =
+export const Review: Schema.Codec<Review> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorName: Schema.optional(Schema.String),
     reviewId: Schema.optional(Schema.String),
@@ -2097,7 +2099,7 @@ export interface TokenPagination {
   nextPageToken?: string;
 }
 
-export const TokenPagination: Schema.Schema<TokenPagination> =
+export const TokenPagination: Schema.Codec<TokenPagination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     previousPageToken: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -2112,7 +2114,7 @@ export interface PageInfo {
   resultPerPage?: number;
 }
 
-export const PageInfo: Schema.Schema<PageInfo> =
+export const PageInfo: Schema.Codec<PageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     totalResults: Schema.optional(Schema.Number),
@@ -2128,7 +2130,7 @@ export interface ReviewsListResponse {
   pageInfo?: PageInfo;
 }
 
-export const ReviewsListResponse: Schema.Schema<ReviewsListResponse> =
+export const ReviewsListResponse: Schema.Codec<ReviewsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reviews: Schema.optional(Schema.Array(Review)),
     tokenPagination: Schema.optional(TokenPagination),
@@ -2142,7 +2144,7 @@ export interface SubscriptionCancelSurveyResult {
   userInputCancelReason?: string;
 }
 
-export const SubscriptionCancelSurveyResult: Schema.Schema<SubscriptionCancelSurveyResult> =
+export const SubscriptionCancelSurveyResult: Schema.Codec<SubscriptionCancelSurveyResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cancelSurveyReason: Schema.optional(Schema.Number),
     userInputCancelReason: Schema.optional(Schema.String),
@@ -2153,14 +2155,14 @@ export interface BatchUpdateBasePlanStatesResponse {
   subscriptions?: ReadonlyArray<Subscription>;
 }
 
-export const BatchUpdateBasePlanStatesResponse: Schema.Schema<BatchUpdateBasePlanStatesResponse> =
+export const BatchUpdateBasePlanStatesResponse: Schema.Codec<BatchUpdateBasePlanStatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
   }).annotate({ identifier: "BatchUpdateBasePlanStatesResponse" });
 
 export interface RentOfferDetails {}
 
-export const RentOfferDetails: Schema.Schema<RentOfferDetails> =
+export const RentOfferDetails: Schema.Codec<RentOfferDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RentOfferDetails",
   });
@@ -2170,7 +2172,7 @@ export interface PreorderOfferDetails {
   preorderReleaseTime?: string;
 }
 
-export const PreorderOfferDetails: Schema.Schema<PreorderOfferDetails> =
+export const PreorderOfferDetails: Schema.Codec<PreorderOfferDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preorderReleaseTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "PreorderOfferDetails" });
@@ -2200,7 +2202,7 @@ export interface ProductOfferDetails {
   preorderOfferDetails?: PreorderOfferDetails;
 }
 
-export const ProductOfferDetails: Schema.Schema<ProductOfferDetails> =
+export const ProductOfferDetails: Schema.Codec<ProductOfferDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refundableQuantity: Schema.optional(Schema.Number),
     offerTags: Schema.optional(Schema.Array(Schema.String)),
@@ -2215,7 +2217,7 @@ export const ProductOfferDetails: Schema.Schema<ProductOfferDetails> =
 
 export interface RevocationContextProratedRefund {}
 
-export const RevocationContextProratedRefund: Schema.Schema<RevocationContextProratedRefund> =
+export const RevocationContextProratedRefund: Schema.Codec<RevocationContextProratedRefund> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RevocationContextProratedRefund",
   });
@@ -2237,7 +2239,7 @@ export interface Image {
   url?: string;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     sha256: Schema.optional(Schema.String),
@@ -2251,7 +2253,7 @@ export interface ImagesDeleteAllResponse {
   deleted?: ReadonlyArray<Image>;
 }
 
-export const ImagesDeleteAllResponse: Schema.Schema<ImagesDeleteAllResponse> =
+export const ImagesDeleteAllResponse: Schema.Codec<ImagesDeleteAllResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Array(Image)),
   }).annotate({ identifier: "ImagesDeleteAllResponse" });
@@ -2275,7 +2277,7 @@ export interface VoidedPurchase {
   voidedTimeMillis?: string;
 }
 
-export const VoidedPurchase: Schema.Schema<VoidedPurchase> =
+export const VoidedPurchase: Schema.Codec<VoidedPurchase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     purchaseToken: Schema.optional(Schema.String),
@@ -2295,7 +2297,7 @@ export interface VoidedPurchasesListResponse {
   voidedPurchases?: ReadonlyArray<VoidedPurchase>;
 }
 
-export const VoidedPurchasesListResponse: Schema.Schema<VoidedPurchasesListResponse> =
+export const VoidedPurchasesListResponse: Schema.Codec<VoidedPurchasesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenPagination: Schema.optional(TokenPagination),
     pageInfo: Schema.optional(PageInfo),
@@ -2307,7 +2309,7 @@ export interface ImagesUploadResponse {
   image?: Image;
 }
 
-export const ImagesUploadResponse: Schema.Schema<ImagesUploadResponse> =
+export const ImagesUploadResponse: Schema.Codec<ImagesUploadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Image),
   }).annotate({ identifier: "ImagesUploadResponse" });
@@ -2321,7 +2323,7 @@ export interface InternalAppSharingArtifact {
   sha256?: string;
 }
 
-export const InternalAppSharingArtifact: Schema.Schema<InternalAppSharingArtifact> =
+export const InternalAppSharingArtifact: Schema.Codec<InternalAppSharingArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadUrl: Schema.optional(Schema.String),
     certificateFingerprint: Schema.optional(Schema.String),
@@ -2335,7 +2337,7 @@ export interface CountryTargeting {
   includeRestOfWorld?: boolean;
 }
 
-export const CountryTargeting: Schema.Schema<CountryTargeting> =
+export const CountryTargeting: Schema.Codec<CountryTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countries: Schema.optional(Schema.Array(Schema.String)),
     includeRestOfWorld: Schema.optional(Schema.Boolean),
@@ -2364,7 +2366,7 @@ export interface TrackRelease {
   countryTargeting?: CountryTargeting;
 }
 
-export const TrackRelease: Schema.Schema<TrackRelease> =
+export const TrackRelease: Schema.Codec<TrackRelease> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releaseNotes: Schema.optional(Schema.Array(LocalizedText)),
     inAppUpdatePriority: Schema.optional(Schema.Number),
@@ -2382,7 +2384,7 @@ export interface Track {
   releases?: ReadonlyArray<TrackRelease>;
 }
 
-export const Track: Schema.Schema<Track> =
+export const Track: Schema.Codec<Track> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     track: Schema.optional(Schema.String),
     releases: Schema.optional(Schema.Array(TrackRelease)),
@@ -2395,7 +2397,7 @@ export interface TracksListResponse {
   kind?: string;
 }
 
-export const TracksListResponse: Schema.Schema<TracksListResponse> =
+export const TracksListResponse: Schema.Codec<TracksListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tracks: Schema.optional(Schema.Array(Track)),
     kind: Schema.optional(Schema.String),
@@ -2418,7 +2420,7 @@ export interface UpdateOneTimeProductOfferRequest {
     | (string & {});
 }
 
-export const UpdateOneTimeProductOfferRequest: Schema.Schema<UpdateOneTimeProductOfferRequest> =
+export const UpdateOneTimeProductOfferRequest: Schema.Codec<UpdateOneTimeProductOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionsVersion: Schema.optional(RegionsVersion),
     allowMissing: Schema.optional(Schema.Boolean),
@@ -2432,7 +2434,7 @@ export interface BatchUpdateOneTimeProductOffersRequest {
   requests?: ReadonlyArray<UpdateOneTimeProductOfferRequest>;
 }
 
-export const BatchUpdateOneTimeProductOffersRequest: Schema.Schema<BatchUpdateOneTimeProductOffersRequest> =
+export const BatchUpdateOneTimeProductOffersRequest: Schema.Codec<BatchUpdateOneTimeProductOffersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(UpdateOneTimeProductOfferRequest)),
   }).annotate({ identifier: "BatchUpdateOneTimeProductOffersRequest" });
@@ -2444,7 +2446,7 @@ export interface CreateDraftAppRecoveryRequest {
   targeting?: Targeting;
 }
 
-export const CreateDraftAppRecoveryRequest: Schema.Schema<CreateDraftAppRecoveryRequest> =
+export const CreateDraftAppRecoveryRequest: Schema.Codec<CreateDraftAppRecoveryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remoteInAppUpdate: Schema.optional(RemoteInAppUpdate),
     targeting: Schema.optional(Targeting),
@@ -2459,7 +2461,7 @@ export interface ConvertedRegionPrice {
   taxAmount?: Money;
 }
 
-export const ConvertedRegionPrice: Schema.Schema<ConvertedRegionPrice> =
+export const ConvertedRegionPrice: Schema.Codec<ConvertedRegionPrice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     price: Schema.optional(Money),
     regionCode: Schema.optional(Schema.String),
@@ -2473,7 +2475,7 @@ export interface ConvertedOtherRegionsPrice {
   usdPrice?: Money;
 }
 
-export const ConvertedOtherRegionsPrice: Schema.Schema<ConvertedOtherRegionsPrice> =
+export const ConvertedOtherRegionsPrice: Schema.Codec<ConvertedOtherRegionsPrice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eurPrice: Schema.optional(Money),
     usdPrice: Schema.optional(Money),
@@ -2488,7 +2490,7 @@ export interface ConvertRegionPricesResponse {
   regionVersion?: RegionsVersion;
 }
 
-export const ConvertRegionPricesResponse: Schema.Schema<ConvertRegionPricesResponse> =
+export const ConvertRegionPricesResponse: Schema.Codec<ConvertRegionPricesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     convertedRegionPrices: Schema.optional(
       Schema.Record(Schema.String, ConvertedRegionPrice),
@@ -2506,7 +2508,7 @@ export interface SystemApkOptions {
   uncompressedNativeLibraries?: boolean;
 }
 
-export const SystemApkOptions: Schema.Schema<SystemApkOptions> =
+export const SystemApkOptions: Schema.Codec<SystemApkOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uncompressedDexFiles: Schema.optional(Schema.Boolean),
     rotated: Schema.optional(Schema.Boolean),
@@ -2522,7 +2524,7 @@ export interface DeviceSpec {
   supportedLocales?: ReadonlyArray<string>;
 }
 
-export const DeviceSpec: Schema.Schema<DeviceSpec> =
+export const DeviceSpec: Schema.Codec<DeviceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     screenDensity: Schema.optional(Schema.Number),
     supportedAbis: Schema.optional(Schema.Array(Schema.String)),
@@ -2538,7 +2540,7 @@ export interface Variant {
   variantId?: number;
 }
 
-export const Variant: Schema.Schema<Variant> =
+export const Variant: Schema.Codec<Variant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(SystemApkOptions),
     deviceSpec: Schema.optional(DeviceSpec),
@@ -2550,7 +2552,7 @@ export interface SystemApksListResponse {
   variants?: ReadonlyArray<Variant>;
 }
 
-export const SystemApksListResponse: Schema.Schema<SystemApksListResponse> =
+export const SystemApksListResponse: Schema.Codec<SystemApksListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variants: Schema.optional(Schema.Array(Variant)),
   }).annotate({ identifier: "SystemApksListResponse" });
@@ -2560,7 +2562,7 @@ export interface ArtifactSummary {
   versionCode?: number;
 }
 
-export const ArtifactSummary: Schema.Schema<ArtifactSummary> =
+export const ArtifactSummary: Schema.Codec<ArtifactSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionCode: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ArtifactSummary" });
@@ -2572,7 +2574,7 @@ export interface DeviceTier {
   level?: number;
 }
 
-export const DeviceTier: Schema.Schema<DeviceTier> =
+export const DeviceTier: Schema.Codec<DeviceTier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceGroupNames: Schema.optional(Schema.Array(Schema.String)),
     level: Schema.optional(Schema.Number),
@@ -2604,7 +2606,7 @@ export interface RegionalTaxConfig {
   regionCode?: string;
 }
 
-export const RegionalTaxConfig: Schema.Schema<RegionalTaxConfig> =
+export const RegionalTaxConfig: Schema.Codec<RegionalTaxConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taxTier: Schema.optional(Schema.String),
     eligibleForStreamingServiceTaxRate: Schema.optional(Schema.Boolean),
@@ -2619,7 +2621,7 @@ export interface OneTimeProductRentPurchaseOption {
   rentalPeriod?: string;
 }
 
-export const OneTimeProductRentPurchaseOption: Schema.Schema<OneTimeProductRentPurchaseOption> =
+export const OneTimeProductRentPurchaseOption: Schema.Codec<OneTimeProductRentPurchaseOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expirationPeriod: Schema.optional(Schema.String),
     rentalPeriod: Schema.optional(Schema.String),
@@ -2638,7 +2640,7 @@ export interface OneTimeProductPurchaseOptionNewRegionsConfig {
   usdPrice?: Money;
 }
 
-export const OneTimeProductPurchaseOptionNewRegionsConfig: Schema.Schema<OneTimeProductPurchaseOptionNewRegionsConfig> =
+export const OneTimeProductPurchaseOptionNewRegionsConfig: Schema.Codec<OneTimeProductPurchaseOptionNewRegionsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eurPrice: Schema.optional(Money),
     availability: Schema.optional(Schema.String),
@@ -2660,7 +2662,7 @@ export interface OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfi
     | (string & {});
 }
 
-export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig: Schema.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig> =
+export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig: Schema.Codec<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     price: Schema.optional(Money),
@@ -2679,7 +2681,7 @@ export interface PurchaseOptionTaxAndComplianceSettings {
     | (string & {});
 }
 
-export const PurchaseOptionTaxAndComplianceSettings: Schema.Schema<PurchaseOptionTaxAndComplianceSettings> =
+export const PurchaseOptionTaxAndComplianceSettings: Schema.Codec<PurchaseOptionTaxAndComplianceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     withdrawalRightType: Schema.optional(Schema.String),
   }).annotate({ identifier: "PurchaseOptionTaxAndComplianceSettings" });
@@ -2691,7 +2693,7 @@ export interface OneTimeProductBuyPurchaseOption {
   multiQuantityEnabled?: boolean;
 }
 
-export const OneTimeProductBuyPurchaseOption: Schema.Schema<OneTimeProductBuyPurchaseOption> =
+export const OneTimeProductBuyPurchaseOption: Schema.Codec<OneTimeProductBuyPurchaseOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     legacyCompatible: Schema.optional(Schema.Boolean),
     multiQuantityEnabled: Schema.optional(Schema.Boolean),
@@ -2722,7 +2724,7 @@ export interface OneTimeProductPurchaseOption {
   offerTags?: ReadonlyArray<OfferTag>;
 }
 
-export const OneTimeProductPurchaseOption: Schema.Schema<OneTimeProductPurchaseOption> =
+export const OneTimeProductPurchaseOption: Schema.Codec<OneTimeProductPurchaseOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purchaseOptionId: Schema.optional(Schema.String),
     rentOption: Schema.optional(OneTimeProductRentPurchaseOption),
@@ -2744,14 +2746,14 @@ export const OneTimeProductPurchaseOption: Schema.Schema<OneTimeProductPurchaseO
 
 export interface CancelAppRecoveryResponse {}
 
-export const CancelAppRecoveryResponse: Schema.Schema<CancelAppRecoveryResponse> =
+export const CancelAppRecoveryResponse: Schema.Codec<CancelAppRecoveryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelAppRecoveryResponse",
   });
 
 export interface RevocationContextFullRefund {}
 
-export const RevocationContextFullRefund: Schema.Schema<RevocationContextFullRefund> =
+export const RevocationContextFullRefund: Schema.Codec<RevocationContextFullRefund> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RevocationContextFullRefund",
   });
@@ -2761,7 +2763,7 @@ export interface RevocationContextItemBasedRefund {
   productId?: string;
 }
 
-export const RevocationContextItemBasedRefund: Schema.Schema<RevocationContextItemBasedRefund> =
+export const RevocationContextItemBasedRefund: Schema.Codec<RevocationContextItemBasedRefund> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RevocationContextItemBasedRefund" });
@@ -2775,7 +2777,7 @@ export interface RevocationContext {
   proratedRefund?: RevocationContextProratedRefund;
 }
 
-export const RevocationContext: Schema.Schema<RevocationContext> =
+export const RevocationContext: Schema.Codec<RevocationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullRefund: Schema.optional(RevocationContextFullRefund),
     itemBasedRefund: Schema.optional(RevocationContextItemBasedRefund),
@@ -2789,7 +2791,7 @@ export interface ExternalAccountIds {
   obfuscatedProfileId?: string;
 }
 
-export const ExternalAccountIds: Schema.Schema<ExternalAccountIds> =
+export const ExternalAccountIds: Schema.Codec<ExternalAccountIds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     obfuscatedAccountId: Schema.optional(Schema.String),
     obfuscatedProfileId: Schema.optional(Schema.String),
@@ -2800,14 +2802,14 @@ export interface PausedStateContext {
   autoResumeTime?: string;
 }
 
-export const PausedStateContext: Schema.Schema<PausedStateContext> =
+export const PausedStateContext: Schema.Codec<PausedStateContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoResumeTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "PausedStateContext" });
 
 export interface PendingCancellation {}
 
-export const PendingCancellation: Schema.Schema<PendingCancellation> =
+export const PendingCancellation: Schema.Codec<PendingCancellation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PendingCancellation",
   });
@@ -2829,7 +2831,7 @@ export interface DeleteOneTimeProductOfferRequest {
     | (string & {});
 }
 
-export const DeleteOneTimeProductOfferRequest: Schema.Schema<DeleteOneTimeProductOfferRequest> =
+export const DeleteOneTimeProductOfferRequest: Schema.Codec<DeleteOneTimeProductOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offerId: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -2843,7 +2845,7 @@ export interface CancellationEvent {
   eventTime?: string;
 }
 
-export const CancellationEvent: Schema.Schema<CancellationEvent> =
+export const CancellationEvent: Schema.Codec<CancellationEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "CancellationEvent" });
@@ -2855,7 +2857,7 @@ export interface RefundDetails {
   total?: Money;
 }
 
-export const RefundDetails: Schema.Schema<RefundDetails> =
+export const RefundDetails: Schema.Codec<RefundDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tax: Schema.optional(Money),
     total: Schema.optional(Money),
@@ -2874,7 +2876,7 @@ export interface RefundEvent {
   refundDetails?: RefundDetails;
 }
 
-export const RefundEvent: Schema.Schema<RefundEvent> =
+export const RefundEvent: Schema.Codec<RefundEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refundReason: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -2896,7 +2898,7 @@ export interface PartialRefundEvent {
   processTime?: string;
 }
 
-export const PartialRefundEvent: Schema.Schema<PartialRefundEvent> =
+export const PartialRefundEvent: Schema.Codec<PartialRefundEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     refundDetails: Schema.optional(RefundDetails),
@@ -2909,7 +2911,7 @@ export interface ProcessedEvent {
   eventTime?: string;
 }
 
-export const ProcessedEvent: Schema.Schema<ProcessedEvent> =
+export const ProcessedEvent: Schema.Codec<ProcessedEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProcessedEvent" });
@@ -2925,7 +2927,7 @@ export interface OrderHistory {
   processedEvent?: ProcessedEvent;
 }
 
-export const OrderHistory: Schema.Schema<OrderHistory> =
+export const OrderHistory: Schema.Codec<OrderHistory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cancellationEvent: Schema.optional(CancellationEvent),
     refundEvent: Schema.optional(RefundEvent),
@@ -2940,7 +2942,7 @@ export interface ProductLineItem {
   productId?: string;
 }
 
-export const ProductLineItem: Schema.Schema<ProductLineItem> =
+export const ProductLineItem: Schema.Codec<ProductLineItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productOfferDetails: Schema.optional(ProductOfferDetails),
     productId: Schema.optional(Schema.String),
@@ -2959,7 +2961,7 @@ export interface InappproductsDeleteRequest {
   sku?: string;
 }
 
-export const InappproductsDeleteRequest: Schema.Schema<InappproductsDeleteRequest> =
+export const InappproductsDeleteRequest: Schema.Codec<InappproductsDeleteRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latencyTolerance: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -2983,7 +2985,7 @@ export interface DeletePurchaseOptionRequest {
   packageName?: string;
 }
 
-export const DeletePurchaseOptionRequest: Schema.Schema<DeletePurchaseOptionRequest> =
+export const DeletePurchaseOptionRequest: Schema.Codec<DeletePurchaseOptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     purchaseOptionId: Schema.optional(Schema.String),
@@ -3009,7 +3011,7 @@ export interface UpdateSubscriptionRequest {
   updateMask?: string;
 }
 
-export const UpdateSubscriptionRequest: Schema.Schema<UpdateSubscriptionRequest> =
+export const UpdateSubscriptionRequest: Schema.Codec<UpdateSubscriptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Subscription),
     latencyTolerance: Schema.optional(Schema.String),
@@ -3023,7 +3025,7 @@ export interface BatchUpdateSubscriptionsRequest {
   requests?: ReadonlyArray<UpdateSubscriptionRequest>;
 }
 
-export const BatchUpdateSubscriptionsRequest: Schema.Schema<BatchUpdateSubscriptionsRequest> =
+export const BatchUpdateSubscriptionsRequest: Schema.Codec<BatchUpdateSubscriptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(UpdateSubscriptionRequest)),
   }).annotate({ identifier: "BatchUpdateSubscriptionsRequest" });
@@ -3035,7 +3037,7 @@ export interface UserInitiatedCancellation {
   cancelSurveyResult?: CancelSurveyResult;
 }
 
-export const UserInitiatedCancellation: Schema.Schema<UserInitiatedCancellation> =
+export const UserInitiatedCancellation: Schema.Codec<UserInitiatedCancellation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cancelTime: Schema.optional(Schema.String),
     cancelSurveyResult: Schema.optional(CancelSurveyResult),
@@ -3043,21 +3045,21 @@ export const UserInitiatedCancellation: Schema.Schema<UserInitiatedCancellation>
 
 export interface SystemInitiatedCancellation {}
 
-export const SystemInitiatedCancellation: Schema.Schema<SystemInitiatedCancellation> =
+export const SystemInitiatedCancellation: Schema.Codec<SystemInitiatedCancellation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SystemInitiatedCancellation",
   });
 
 export interface DeveloperInitiatedCancellation {}
 
-export const DeveloperInitiatedCancellation: Schema.Schema<DeveloperInitiatedCancellation> =
+export const DeveloperInitiatedCancellation: Schema.Codec<DeveloperInitiatedCancellation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeveloperInitiatedCancellation",
   });
 
 export interface ReplacementCancellation {}
 
-export const ReplacementCancellation: Schema.Schema<ReplacementCancellation> =
+export const ReplacementCancellation: Schema.Codec<ReplacementCancellation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReplacementCancellation",
   });
@@ -3073,7 +3075,7 @@ export interface CanceledStateContext {
   replacementCancellation?: ReplacementCancellation;
 }
 
-export const CanceledStateContext: Schema.Schema<CanceledStateContext> =
+export const CanceledStateContext: Schema.Codec<CanceledStateContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userInitiatedCancellation: Schema.optional(UserInitiatedCancellation),
     systemInitiatedCancellation: Schema.optional(SystemInitiatedCancellation),
@@ -3090,7 +3092,7 @@ export interface SubscriptionPurchasesAcknowledgeRequest {
   externalAccountIds?: ExternalAccountIds;
 }
 
-export const SubscriptionPurchasesAcknowledgeRequest: Schema.Schema<SubscriptionPurchasesAcknowledgeRequest> =
+export const SubscriptionPurchasesAcknowledgeRequest: Schema.Codec<SubscriptionPurchasesAcknowledgeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerPayload: Schema.optional(Schema.String),
     externalAccountIds: Schema.optional(ExternalAccountIds),
@@ -3105,7 +3107,7 @@ export interface InAppProductListing {
   description?: string;
 }
 
-export const InAppProductListing: Schema.Schema<InAppProductListing> =
+export const InAppProductListing: Schema.Codec<InAppProductListing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     benefits: Schema.optional(Schema.Array(Schema.String)),
     title: Schema.optional(Schema.String),
@@ -3129,7 +3131,7 @@ export interface ManagedProductTaxAndComplianceSettings {
   isTokenizedDigitalAsset?: boolean;
 }
 
-export const ManagedProductTaxAndComplianceSettings: Schema.Schema<ManagedProductTaxAndComplianceSettings> =
+export const ManagedProductTaxAndComplianceSettings: Schema.Codec<ManagedProductTaxAndComplianceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionalProductAgeRatingInfos: Schema.optional(
       Schema.Array(RegionalProductAgeRatingInfo),
@@ -3175,7 +3177,7 @@ export interface InAppProduct {
   prices?: Record<string, Price>;
 }
 
-export const InAppProduct: Schema.Schema<InAppProduct> =
+export const InAppProduct: Schema.Codec<InAppProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     subscriptionTaxesAndComplianceSettings: Schema.optional(
@@ -3217,7 +3219,7 @@ export interface InappproductsUpdateRequest {
   allowMissing?: boolean;
 }
 
-export const InappproductsUpdateRequest: Schema.Schema<InappproductsUpdateRequest> =
+export const InappproductsUpdateRequest: Schema.Codec<InappproductsUpdateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inappproduct: Schema.optional(InAppProduct),
     autoConvertMissingPrices: Schema.optional(Schema.Boolean),
@@ -3232,7 +3234,7 @@ export interface InappproductsBatchUpdateRequest {
   requests?: ReadonlyArray<InappproductsUpdateRequest>;
 }
 
-export const InappproductsBatchUpdateRequest: Schema.Schema<InappproductsBatchUpdateRequest> =
+export const InappproductsBatchUpdateRequest: Schema.Codec<InappproductsBatchUpdateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(InappproductsUpdateRequest)),
   }).annotate({ identifier: "InappproductsBatchUpdateRequest" });
@@ -3244,7 +3246,7 @@ export interface ReviewReplyResult {
   lastEdited?: Timestamp;
 }
 
-export const ReviewReplyResult: Schema.Schema<ReviewReplyResult> =
+export const ReviewReplyResult: Schema.Codec<ReviewReplyResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replyText: Schema.optional(Schema.String),
     lastEdited: Schema.optional(Timestamp),
@@ -3255,7 +3257,7 @@ export interface BatchUpdateSubscriptionsResponse {
   subscriptions?: ReadonlyArray<Subscription>;
 }
 
-export const BatchUpdateSubscriptionsResponse: Schema.Schema<BatchUpdateSubscriptionsResponse> =
+export const BatchUpdateSubscriptionsResponse: Schema.Codec<BatchUpdateSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
   }).annotate({ identifier: "BatchUpdateSubscriptionsResponse" });
@@ -3269,7 +3271,7 @@ export interface DeferralContext {
   deferDuration?: string;
 }
 
-export const DeferralContext: Schema.Schema<DeferralContext> =
+export const DeferralContext: Schema.Codec<DeferralContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -3278,7 +3280,7 @@ export const DeferralContext: Schema.Schema<DeferralContext> =
 
 export interface OneTimeCode {}
 
-export const OneTimeCode: Schema.Schema<OneTimeCode> =
+export const OneTimeCode: Schema.Codec<OneTimeCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "OneTimeCode",
   });
@@ -3292,7 +3294,7 @@ export interface CancellationContext {
     | (string & {});
 }
 
-export const CancellationContext: Schema.Schema<CancellationContext> =
+export const CancellationContext: Schema.Codec<CancellationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cancellationType: Schema.optional(Schema.String),
   }).annotate({ identifier: "CancellationContext" });
@@ -3302,7 +3304,7 @@ export interface CancelSubscriptionPurchaseRequest {
   cancellationContext?: CancellationContext;
 }
 
-export const CancelSubscriptionPurchaseRequest: Schema.Schema<CancelSubscriptionPurchaseRequest> =
+export const CancelSubscriptionPurchaseRequest: Schema.Codec<CancelSubscriptionPurchaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cancellationContext: Schema.optional(CancellationContext),
   }).annotate({ identifier: "CancelSubscriptionPurchaseRequest" });
@@ -3312,7 +3314,7 @@ export interface OrderDetails {
   taxInclusive?: boolean;
 }
 
-export const OrderDetails: Schema.Schema<OrderDetails> =
+export const OrderDetails: Schema.Codec<OrderDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taxInclusive: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "OrderDetails" });
@@ -3326,7 +3328,7 @@ export interface BuyerAddress {
   buyerPostcode?: string;
 }
 
-export const BuyerAddress: Schema.Schema<BuyerAddress> =
+export const BuyerAddress: Schema.Codec<BuyerAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buyerState: Schema.optional(Schema.String),
     buyerCountry: Schema.optional(Schema.String),
@@ -3344,7 +3346,7 @@ export interface PointsDetails {
   pointsOfferId?: string;
 }
 
-export const PointsDetails: Schema.Schema<PointsDetails> =
+export const PointsDetails: Schema.Codec<PointsDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pointsDiscountRateMicros: Schema.optional(Schema.String),
     pointsCouponValue: Schema.optional(Money),
@@ -3398,7 +3400,7 @@ export interface Order {
   total?: Money;
 }
 
-export const Order: Schema.Schema<Order> =
+export const Order: Schema.Codec<Order> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orderDetails: Schema.optional(OrderDetails),
     lineItems: Schema.optional(Schema.Array(LineItem)),
@@ -3421,7 +3423,7 @@ export interface BatchGetOrdersResponse {
   orders?: ReadonlyArray<Order>;
 }
 
-export const BatchGetOrdersResponse: Schema.Schema<BatchGetOrdersResponse> =
+export const BatchGetOrdersResponse: Schema.Codec<BatchGetOrdersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orders: Schema.optional(Schema.Array(Order)),
   }).annotate({ identifier: "BatchGetOrdersResponse" });
@@ -3441,7 +3443,7 @@ export interface ActivatePurchaseOptionRequest {
   packageName?: string;
 }
 
-export const ActivatePurchaseOptionRequest: Schema.Schema<ActivatePurchaseOptionRequest> =
+export const ActivatePurchaseOptionRequest: Schema.Codec<ActivatePurchaseOptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     purchaseOptionId: Schema.optional(Schema.String),
@@ -3466,7 +3468,7 @@ export interface DeactivateOneTimeProductOfferRequest {
   offerId?: string;
 }
 
-export const DeactivateOneTimeProductOfferRequest: Schema.Schema<DeactivateOneTimeProductOfferRequest> =
+export const DeactivateOneTimeProductOfferRequest: Schema.Codec<DeactivateOneTimeProductOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     purchaseOptionId: Schema.optional(Schema.String),
@@ -3492,7 +3494,7 @@ export interface ActivateOneTimeProductOfferRequest {
   offerId?: string;
 }
 
-export const ActivateOneTimeProductOfferRequest: Schema.Schema<ActivateOneTimeProductOfferRequest> =
+export const ActivateOneTimeProductOfferRequest: Schema.Codec<ActivateOneTimeProductOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     purchaseOptionId: Schema.optional(Schema.String),
@@ -3518,7 +3520,7 @@ export interface CancelOneTimeProductOfferRequest {
   packageName?: string;
 }
 
-export const CancelOneTimeProductOfferRequest: Schema.Schema<CancelOneTimeProductOfferRequest> =
+export const CancelOneTimeProductOfferRequest: Schema.Codec<CancelOneTimeProductOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     purchaseOptionId: Schema.optional(Schema.String),
@@ -3536,7 +3538,7 @@ export interface UpdateOneTimeProductOfferStateRequest {
   cancelOneTimeProductOfferRequest?: CancelOneTimeProductOfferRequest;
 }
 
-export const UpdateOneTimeProductOfferStateRequest: Schema.Schema<UpdateOneTimeProductOfferStateRequest> =
+export const UpdateOneTimeProductOfferStateRequest: Schema.Codec<UpdateOneTimeProductOfferStateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deactivateOneTimeProductOfferRequest: Schema.optional(
       DeactivateOneTimeProductOfferRequest,
@@ -3554,7 +3556,7 @@ export interface BatchUpdateOneTimeProductOfferStatesRequest {
   requests?: ReadonlyArray<UpdateOneTimeProductOfferStateRequest>;
 }
 
-export const BatchUpdateOneTimeProductOfferStatesRequest: Schema.Schema<BatchUpdateOneTimeProductOfferStatesRequest> =
+export const BatchUpdateOneTimeProductOfferStatesRequest: Schema.Codec<BatchUpdateOneTimeProductOfferStatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(UpdateOneTimeProductOfferStateRequest),
@@ -3568,7 +3570,7 @@ export interface SubscriptionPriceChange {
   state?: number;
 }
 
-export const SubscriptionPriceChange: Schema.Schema<SubscriptionPriceChange> =
+export const SubscriptionPriceChange: Schema.Codec<SubscriptionPriceChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newPrice: Schema.optional(Price),
     state: Schema.optional(Schema.Number),
@@ -3583,7 +3585,7 @@ export interface OneTimeProductListing {
   description?: string;
 }
 
-export const OneTimeProductListing: Schema.Schema<OneTimeProductListing> =
+export const OneTimeProductListing: Schema.Codec<OneTimeProductListing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -3601,7 +3603,7 @@ export interface OneTimeProductTaxAndComplianceSettings {
   isTokenizedDigitalAsset?: boolean;
 }
 
-export const OneTimeProductTaxAndComplianceSettings: Schema.Schema<OneTimeProductTaxAndComplianceSettings> =
+export const OneTimeProductTaxAndComplianceSettings: Schema.Codec<OneTimeProductTaxAndComplianceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionalTaxConfigs: Schema.optional(Schema.Array(RegionalTaxConfig)),
     productTaxCategoryCode: Schema.optional(Schema.String),
@@ -3630,7 +3632,7 @@ export interface OneTimeProduct {
   regionsVersion?: RegionsVersion;
 }
 
-export const OneTimeProduct: Schema.Schema<OneTimeProduct> =
+export const OneTimeProduct: Schema.Codec<OneTimeProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     listings: Schema.optional(Schema.Array(OneTimeProductListing)),
@@ -3653,7 +3655,7 @@ export interface ListOneTimeProductsResponse {
   oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
 }
 
-export const ListOneTimeProductsResponse: Schema.Schema<ListOneTimeProductsResponse> =
+export const ListOneTimeProductsResponse: Schema.Codec<ListOneTimeProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
@@ -3674,7 +3676,7 @@ export interface DeactivateBasePlanRequest {
   packageName?: string;
 }
 
-export const DeactivateBasePlanRequest: Schema.Schema<DeactivateBasePlanRequest> =
+export const DeactivateBasePlanRequest: Schema.Codec<DeactivateBasePlanRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     latencyTolerance: Schema.optional(Schema.String),
@@ -3684,7 +3686,7 @@ export const DeactivateBasePlanRequest: Schema.Schema<DeactivateBasePlanRequest>
 
 export interface CancelAppRecoveryRequest {}
 
-export const CancelAppRecoveryRequest: Schema.Schema<CancelAppRecoveryRequest> =
+export const CancelAppRecoveryRequest: Schema.Codec<CancelAppRecoveryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelAppRecoveryRequest",
   });
@@ -3694,7 +3696,7 @@ export interface InappproductsBatchDeleteRequest {
   requests?: ReadonlyArray<InappproductsDeleteRequest>;
 }
 
-export const InappproductsBatchDeleteRequest: Schema.Schema<InappproductsBatchDeleteRequest> =
+export const InappproductsBatchDeleteRequest: Schema.Codec<InappproductsBatchDeleteRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(InappproductsDeleteRequest)),
   }).annotate({ identifier: "InappproductsBatchDeleteRequest" });
@@ -3710,7 +3712,7 @@ export interface GeneratedSplitApk {
   moduleName?: string;
 }
 
-export const GeneratedSplitApk: Schema.Schema<GeneratedSplitApk> =
+export const GeneratedSplitApk: Schema.Codec<GeneratedSplitApk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     splitId: Schema.optional(Schema.String),
     downloadId: Schema.optional(Schema.String),
@@ -3725,7 +3727,7 @@ export interface DeviceId {
   buildDevice?: string;
 }
 
-export const DeviceId: Schema.Schema<DeviceId> =
+export const DeviceId: Schema.Codec<DeviceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buildBrand: Schema.optional(Schema.String),
     buildDevice: Schema.optional(Schema.String),
@@ -3736,7 +3738,7 @@ export interface ImagesListResponse {
   images?: ReadonlyArray<Image>;
 }
 
-export const ImagesListResponse: Schema.Schema<ImagesListResponse> =
+export const ImagesListResponse: Schema.Codec<ImagesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     images: Schema.optional(Schema.Array(Image)),
   }).annotate({ identifier: "ImagesListResponse" });
@@ -3746,7 +3748,7 @@ export interface BatchUpdatePurchaseOptionStatesResponse {
   oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
 }
 
-export const BatchUpdatePurchaseOptionStatesResponse: Schema.Schema<BatchUpdatePurchaseOptionStatesResponse> =
+export const BatchUpdatePurchaseOptionStatesResponse: Schema.Codec<BatchUpdatePurchaseOptionStatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
   }).annotate({ identifier: "BatchUpdatePurchaseOptionStatesResponse" });
@@ -3756,7 +3758,7 @@ export interface BatchDeletePurchaseOptionsRequest {
   requests?: ReadonlyArray<DeletePurchaseOptionRequest>;
 }
 
-export const BatchDeletePurchaseOptionsRequest: Schema.Schema<BatchDeletePurchaseOptionsRequest> =
+export const BatchDeletePurchaseOptionsRequest: Schema.Codec<BatchDeletePurchaseOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(DeletePurchaseOptionRequest)),
   }).annotate({ identifier: "BatchDeletePurchaseOptionsRequest" });
@@ -3771,7 +3773,7 @@ export interface PurchaseStateContext {
     | (string & {});
 }
 
-export const PurchaseStateContext: Schema.Schema<PurchaseStateContext> =
+export const PurchaseStateContext: Schema.Codec<PurchaseStateContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purchaseState: Schema.optional(Schema.String),
   }).annotate({ identifier: "PurchaseStateContext" });
@@ -3781,7 +3783,7 @@ export interface TestPurchaseContext {
   fopType?: "FOP_TYPE_UNSPECIFIED" | "TEST" | (string & {});
 }
 
-export const TestPurchaseContext: Schema.Schema<TestPurchaseContext> =
+export const TestPurchaseContext: Schema.Codec<TestPurchaseContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fopType: Schema.optional(Schema.String),
   }).annotate({ identifier: "TestPurchaseContext" });
@@ -3813,7 +3815,7 @@ export interface ProductPurchaseV2 {
   obfuscatedExternalAccountId?: string;
 }
 
-export const ProductPurchaseV2: Schema.Schema<ProductPurchaseV2> =
+export const ProductPurchaseV2: Schema.Codec<ProductPurchaseV2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purchaseStateContext: Schema.optional(PurchaseStateContext),
     obfuscatedExternalProfileId: Schema.optional(Schema.String),
@@ -3844,7 +3846,7 @@ export interface UpdateOneTimeProductRequest {
   allowMissing?: boolean;
 }
 
-export const UpdateOneTimeProductRequest: Schema.Schema<UpdateOneTimeProductRequest> =
+export const UpdateOneTimeProductRequest: Schema.Codec<UpdateOneTimeProductRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latencyTolerance: Schema.optional(Schema.String),
     regionsVersion: Schema.optional(RegionsVersion),
@@ -3855,14 +3857,14 @@ export const UpdateOneTimeProductRequest: Schema.Schema<UpdateOneTimeProductRequ
 
 export interface OtherRecurringProduct {}
 
-export const OtherRecurringProduct: Schema.Schema<OtherRecurringProduct> =
+export const OtherRecurringProduct: Schema.Codec<OtherRecurringProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "OtherRecurringProduct",
   });
 
 export interface ExternalTransactionTestPurchase {}
 
-export const ExternalTransactionTestPurchase: Schema.Schema<ExternalTransactionTestPurchase> =
+export const ExternalTransactionTestPurchase: Schema.Codec<ExternalTransactionTestPurchase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExternalTransactionTestPurchase",
   });
@@ -3882,7 +3884,7 @@ export interface ActivateBasePlanRequest {
     | (string & {});
 }
 
-export const ActivateBasePlanRequest: Schema.Schema<ActivateBasePlanRequest> =
+export const ActivateBasePlanRequest: Schema.Codec<ActivateBasePlanRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     basePlanId: Schema.optional(Schema.String),
@@ -3897,7 +3899,7 @@ export interface UpdateBasePlanStateRequest {
   deactivateBasePlanRequest?: DeactivateBasePlanRequest;
 }
 
-export const UpdateBasePlanStateRequest: Schema.Schema<UpdateBasePlanStateRequest> =
+export const UpdateBasePlanStateRequest: Schema.Codec<UpdateBasePlanStateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activateBasePlanRequest: Schema.optional(ActivateBasePlanRequest),
     deactivateBasePlanRequest: Schema.optional(DeactivateBasePlanRequest),
@@ -3929,7 +3931,7 @@ export interface Grant {
   packageName?: string;
 }
 
-export const Grant: Schema.Schema<Grant> =
+export const Grant: Schema.Codec<Grant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appLevelPermissions: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -3982,7 +3984,7 @@ export interface User {
   grants?: ReadonlyArray<Grant>;
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerAccountPermissions: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -4000,7 +4002,7 @@ export interface ListUsersResponse {
   nextPageToken?: string;
 }
 
-export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
+export const ListUsersResponse: Schema.Codec<ListUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     users: Schema.optional(Schema.Array(User)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4011,7 +4013,7 @@ export interface DeviceTierSet {
   deviceTiers?: ReadonlyArray<DeviceTier>;
 }
 
-export const DeviceTierSet: Schema.Schema<DeviceTierSet> =
+export const DeviceTierSet: Schema.Codec<DeviceTierSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceTiers: Schema.optional(Schema.Array(DeviceTier)),
   }).annotate({ identifier: "DeviceTierSet" });
@@ -4023,7 +4025,7 @@ export interface DeviceRam {
   maxBytes?: string;
 }
 
-export const DeviceRam: Schema.Schema<DeviceRam> =
+export const DeviceRam: Schema.Codec<DeviceRam> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minBytes: Schema.optional(Schema.String),
     maxBytes: Schema.optional(Schema.String),
@@ -4034,7 +4036,7 @@ export interface SystemFeature {
   name?: string;
 }
 
-export const SystemFeature: Schema.Schema<SystemFeature> =
+export const SystemFeature: Schema.Codec<SystemFeature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "SystemFeature" });
@@ -4054,7 +4056,7 @@ export interface DeviceSelector {
   systemOnChips?: ReadonlyArray<SystemOnChip>;
 }
 
-export const DeviceSelector: Schema.Schema<DeviceSelector> =
+export const DeviceSelector: Schema.Codec<DeviceSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceRam: Schema.optional(DeviceRam),
     forbiddenSystemFeatures: Schema.optional(Schema.Array(SystemFeature)),
@@ -4071,7 +4073,7 @@ export interface DeviceGroup {
   deviceSelectors?: ReadonlyArray<DeviceSelector>;
 }
 
-export const DeviceGroup: Schema.Schema<DeviceGroup> =
+export const DeviceGroup: Schema.Codec<DeviceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     deviceSelectors: Schema.optional(Schema.Array(DeviceSelector)),
@@ -4084,7 +4086,7 @@ export interface UserCountrySet {
   countryCodes?: ReadonlyArray<string>;
 }
 
-export const UserCountrySet: Schema.Schema<UserCountrySet> =
+export const UserCountrySet: Schema.Codec<UserCountrySet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     countryCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -4101,7 +4103,7 @@ export interface DeviceTierConfig {
   userCountrySets?: ReadonlyArray<UserCountrySet>;
 }
 
-export const DeviceTierConfig: Schema.Schema<DeviceTierConfig> =
+export const DeviceTierConfig: Schema.Codec<DeviceTierConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceTierSet: Schema.optional(DeviceTierSet),
     deviceGroups: Schema.optional(Schema.Array(DeviceGroup)),
@@ -4116,7 +4118,7 @@ export interface ListDeviceTierConfigsResponse {
   deviceTierConfigs?: ReadonlyArray<DeviceTierConfig>;
 }
 
-export const ListDeviceTierConfigsResponse: Schema.Schema<ListDeviceTierConfigsResponse> =
+export const ListDeviceTierConfigsResponse: Schema.Codec<ListDeviceTierConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     deviceTierConfigs: Schema.optional(Schema.Array(DeviceTierConfig)),
@@ -4140,7 +4142,7 @@ export interface GeneratedRecoveryApk {
   moduleName?: string;
 }
 
-export const GeneratedRecoveryApk: Schema.Schema<GeneratedRecoveryApk> =
+export const GeneratedRecoveryApk: Schema.Codec<GeneratedRecoveryApk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadId: Schema.optional(Schema.String),
     recoveryStatus: Schema.optional(Schema.String),
@@ -4155,7 +4157,7 @@ export interface GeneratedStandaloneApk {
   variantId?: number;
 }
 
-export const GeneratedStandaloneApk: Schema.Schema<GeneratedStandaloneApk> =
+export const GeneratedStandaloneApk: Schema.Codec<GeneratedStandaloneApk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadId: Schema.optional(Schema.String),
     variantId: Schema.optional(Schema.Number),
@@ -4172,7 +4174,7 @@ export interface GeneratedAssetPackSlice {
   moduleName?: string;
 }
 
-export const GeneratedAssetPackSlice: Schema.Schema<GeneratedAssetPackSlice> =
+export const GeneratedAssetPackSlice: Schema.Codec<GeneratedAssetPackSlice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadId: Schema.optional(Schema.String),
     sliceId: Schema.optional(Schema.String),
@@ -4185,7 +4187,7 @@ export interface GeneratedUniversalApk {
   downloadId?: string;
 }
 
-export const GeneratedUniversalApk: Schema.Schema<GeneratedUniversalApk> =
+export const GeneratedUniversalApk: Schema.Codec<GeneratedUniversalApk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GeneratedUniversalApk" });
@@ -4211,7 +4213,7 @@ export interface GeneratedApksPerSigningKey {
   unprotectedGeneratedStandaloneApks?: ReadonlyArray<GeneratedStandaloneApk>;
 }
 
-export const GeneratedApksPerSigningKey: Schema.Schema<GeneratedApksPerSigningKey> =
+export const GeneratedApksPerSigningKey: Schema.Codec<GeneratedApksPerSigningKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generatedRecoveryModules: Schema.optional(
       Schema.Array(GeneratedRecoveryApk),
@@ -4243,7 +4245,7 @@ export interface Bundle {
   sha1?: string;
 }
 
-export const Bundle: Schema.Schema<Bundle> =
+export const Bundle: Schema.Codec<Bundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionCode: Schema.optional(Schema.Number),
     sha256: Schema.optional(Schema.String),
@@ -4264,7 +4266,7 @@ export interface TrackConfig {
     | (string & {});
 }
 
-export const TrackConfig: Schema.Schema<TrackConfig> =
+export const TrackConfig: Schema.Codec<TrackConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     track: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4280,7 +4282,7 @@ export interface DeobfuscationFile {
     | (string & {});
 }
 
-export const DeobfuscationFile: Schema.Schema<DeobfuscationFile> =
+export const DeobfuscationFile: Schema.Codec<DeobfuscationFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     symbolType: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeobfuscationFile" });
@@ -4290,14 +4292,14 @@ export interface DeobfuscationFilesUploadResponse {
   deobfuscationFile?: DeobfuscationFile;
 }
 
-export const DeobfuscationFilesUploadResponse: Schema.Schema<DeobfuscationFilesUploadResponse> =
+export const DeobfuscationFilesUploadResponse: Schema.Codec<DeobfuscationFilesUploadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deobfuscationFile: Schema.optional(DeobfuscationFile),
   }).annotate({ identifier: "DeobfuscationFilesUploadResponse" });
 
 export interface DeferredItemRemoval {}
 
-export const DeferredItemRemoval: Schema.Schema<DeferredItemRemoval> =
+export const DeferredItemRemoval: Schema.Codec<DeferredItemRemoval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeferredItemRemoval",
   });
@@ -4307,7 +4309,7 @@ export interface DeferSubscriptionPurchaseRequest {
   deferralContext?: DeferralContext;
 }
 
-export const DeferSubscriptionPurchaseRequest: Schema.Schema<DeferSubscriptionPurchaseRequest> =
+export const DeferSubscriptionPurchaseRequest: Schema.Codec<DeferSubscriptionPurchaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deferralContext: Schema.optional(DeferralContext),
   }).annotate({ identifier: "DeferSubscriptionPurchaseRequest" });
@@ -4317,7 +4319,7 @@ export interface SubscriptionPurchasesDeferResponse {
   newExpiryTimeMillis?: string;
 }
 
-export const SubscriptionPurchasesDeferResponse: Schema.Schema<SubscriptionPurchasesDeferResponse> =
+export const SubscriptionPurchasesDeferResponse: Schema.Codec<SubscriptionPurchasesDeferResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newExpiryTimeMillis: Schema.optional(Schema.String),
   }).annotate({ identifier: "SubscriptionPurchasesDeferResponse" });
@@ -4329,7 +4331,7 @@ export interface SubscriptionDeferralInfo {
   desiredExpiryTimeMillis?: string;
 }
 
-export const SubscriptionDeferralInfo: Schema.Schema<SubscriptionDeferralInfo> =
+export const SubscriptionDeferralInfo: Schema.Codec<SubscriptionDeferralInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expectedExpiryTimeMillis: Schema.optional(Schema.String),
     desiredExpiryTimeMillis: Schema.optional(Schema.String),
@@ -4340,7 +4342,7 @@ export interface SubscriptionPurchasesDeferRequest {
   deferralInfo?: SubscriptionDeferralInfo;
 }
 
-export const SubscriptionPurchasesDeferRequest: Schema.Schema<SubscriptionPurchasesDeferRequest> =
+export const SubscriptionPurchasesDeferRequest: Schema.Codec<SubscriptionPurchasesDeferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deferralInfo: Schema.optional(SubscriptionDeferralInfo),
   }).annotate({ identifier: "SubscriptionPurchasesDeferRequest" });
@@ -4350,7 +4352,7 @@ export interface DeferredItemReplacement {
   productId?: string;
 }
 
-export const DeferredItemReplacement: Schema.Schema<DeferredItemReplacement> =
+export const DeferredItemReplacement: Schema.Codec<DeferredItemReplacement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeferredItemReplacement" });
@@ -4360,7 +4362,7 @@ export interface VanityCode {
   promotionCode?: string;
 }
 
-export const VanityCode: Schema.Schema<VanityCode> =
+export const VanityCode: Schema.Codec<VanityCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     promotionCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "VanityCode" });
@@ -4372,7 +4374,7 @@ export interface SignupPromotion {
   vanityCode?: VanityCode;
 }
 
-export const SignupPromotion: Schema.Schema<SignupPromotion> =
+export const SignupPromotion: Schema.Codec<SignupPromotion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeCode: Schema.optional(OneTimeCode),
     vanityCode: Schema.optional(VanityCode),
@@ -4385,7 +4387,7 @@ export interface AppEdit {
   expiryTimeSeconds?: string;
 }
 
-export const AppEdit: Schema.Schema<AppEdit> =
+export const AppEdit: Schema.Codec<AppEdit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     expiryTimeSeconds: Schema.optional(Schema.String),
@@ -4396,7 +4398,7 @@ export interface BatchGetOneTimeProductsResponse {
   oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
 }
 
-export const BatchGetOneTimeProductsResponse: Schema.Schema<BatchGetOneTimeProductsResponse> =
+export const BatchGetOneTimeProductsResponse: Schema.Codec<BatchGetOneTimeProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
   }).annotate({ identifier: "BatchGetOneTimeProductsResponse" });
@@ -4412,7 +4414,7 @@ export interface InstallmentPlan {
   remainingCommittedPaymentsCount?: number;
 }
 
-export const InstallmentPlan: Schema.Schema<InstallmentPlan> =
+export const InstallmentPlan: Schema.Codec<InstallmentPlan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subsequentCommittedPaymentsCount: Schema.optional(Schema.Number),
     pendingCancellation: Schema.optional(PendingCancellation),
@@ -4433,7 +4435,7 @@ export interface DeleteOneTimeProductRequest {
   packageName?: string;
 }
 
-export const DeleteOneTimeProductRequest: Schema.Schema<DeleteOneTimeProductRequest> =
+export const DeleteOneTimeProductRequest: Schema.Codec<DeleteOneTimeProductRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     latencyTolerance: Schema.optional(Schema.String),
@@ -4447,7 +4449,7 @@ export interface ListOneTimeProductOffersResponse {
   nextPageToken?: string;
 }
 
-export const ListOneTimeProductOffersResponse: Schema.Schema<ListOneTimeProductOffersResponse> =
+export const ListOneTimeProductOffersResponse: Schema.Codec<ListOneTimeProductOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4458,7 +4460,7 @@ export interface BatchGetOneTimeProductOffersResponse {
   oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
 }
 
-export const BatchGetOneTimeProductOffersResponse: Schema.Schema<BatchGetOneTimeProductOffersResponse> =
+export const BatchGetOneTimeProductOffersResponse: Schema.Codec<BatchGetOneTimeProductOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
   }).annotate({ identifier: "BatchGetOneTimeProductOffersResponse" });
@@ -4468,7 +4470,7 @@ export interface ReviewsReplyRequest {
   replyText?: string;
 }
 
-export const ReviewsReplyRequest: Schema.Schema<ReviewsReplyRequest> =
+export const ReviewsReplyRequest: Schema.Codec<ReviewsReplyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replyText: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReviewsReplyRequest" });
@@ -4484,7 +4486,7 @@ export interface InappproductsListResponse {
   kind?: string;
 }
 
-export const InappproductsListResponse: Schema.Schema<InappproductsListResponse> =
+export const InappproductsListResponse: Schema.Codec<InappproductsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageInfo: Schema.optional(PageInfo),
     inappproduct: Schema.optional(Schema.Array(InAppProduct)),
@@ -4497,7 +4499,7 @@ export interface BatchUpdateBasePlanStatesRequest {
   requests?: ReadonlyArray<UpdateBasePlanStateRequest>;
 }
 
-export const BatchUpdateBasePlanStatesRequest: Schema.Schema<BatchUpdateBasePlanStatesRequest> =
+export const BatchUpdateBasePlanStatesRequest: Schema.Codec<BatchUpdateBasePlanStatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(UpdateBasePlanStateRequest)),
   }).annotate({ identifier: "BatchUpdateBasePlanStatesRequest" });
@@ -4513,7 +4515,7 @@ export interface GetSubscriptionOfferRequest {
   packageName?: string;
 }
 
-export const GetSubscriptionOfferRequest: Schema.Schema<GetSubscriptionOfferRequest> =
+export const GetSubscriptionOfferRequest: Schema.Codec<GetSubscriptionOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     offerId: Schema.optional(Schema.String),
@@ -4526,7 +4528,7 @@ export interface BatchGetSubscriptionOffersRequest {
   requests?: ReadonlyArray<GetSubscriptionOfferRequest>;
 }
 
-export const BatchGetSubscriptionOffersRequest: Schema.Schema<BatchGetSubscriptionOffersRequest> =
+export const BatchGetSubscriptionOffersRequest: Schema.Codec<BatchGetSubscriptionOffersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(GetSubscriptionOfferRequest)),
   }).annotate({ identifier: "BatchGetSubscriptionOffersRequest" });
@@ -4536,7 +4538,7 @@ export interface PrepaidPlan {
   allowExtendAfterTime?: string;
 }
 
-export const PrepaidPlan: Schema.Schema<PrepaidPlan> =
+export const PrepaidPlan: Schema.Codec<PrepaidPlan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowExtendAfterTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "PrepaidPlan" });
@@ -4550,7 +4552,7 @@ export interface OfferDetails {
   offerId?: string;
 }
 
-export const OfferDetails: Schema.Schema<OfferDetails> =
+export const OfferDetails: Schema.Codec<OfferDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     basePlanId: Schema.optional(Schema.String),
     offerTags: Schema.optional(Schema.Array(Schema.String)),
@@ -4567,21 +4569,21 @@ export interface ProrationPeriodOfferPhase {
     | (string & {});
 }
 
-export const ProrationPeriodOfferPhase: Schema.Schema<ProrationPeriodOfferPhase> =
+export const ProrationPeriodOfferPhase: Schema.Codec<ProrationPeriodOfferPhase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalOfferPhaseType: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProrationPeriodOfferPhase" });
 
 export interface FreeTrialOfferPhase {}
 
-export const FreeTrialOfferPhase: Schema.Schema<FreeTrialOfferPhase> =
+export const FreeTrialOfferPhase: Schema.Codec<FreeTrialOfferPhase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FreeTrialOfferPhase",
   });
 
 export interface BasePriceOfferPhase {}
 
-export const BasePriceOfferPhase: Schema.Schema<BasePriceOfferPhase> =
+export const BasePriceOfferPhase: Schema.Codec<BasePriceOfferPhase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "BasePriceOfferPhase",
   });
@@ -4597,7 +4599,7 @@ export interface OfferPhase {
   basePrice?: BasePriceOfferPhase;
 }
 
-export const OfferPhase: Schema.Schema<OfferPhase> =
+export const OfferPhase: Schema.Codec<OfferPhase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prorationPeriod: Schema.optional(ProrationPeriodOfferPhase),
     introductoryPrice: Schema.optional(IntroductoryPriceOfferPhase),
@@ -4619,7 +4621,7 @@ export interface PriceStepUpConsentDetails {
   newPrice?: Money;
 }
 
-export const PriceStepUpConsentDetails: Schema.Schema<PriceStepUpConsentDetails> =
+export const PriceStepUpConsentDetails: Schema.Codec<PriceStepUpConsentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     consentDeadlineTime: Schema.optional(Schema.String),
@@ -4648,7 +4650,7 @@ export interface SubscriptionItemPriceChangeDetails {
     | (string & {});
 }
 
-export const SubscriptionItemPriceChangeDetails: Schema.Schema<SubscriptionItemPriceChangeDetails> =
+export const SubscriptionItemPriceChangeDetails: Schema.Codec<SubscriptionItemPriceChangeDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priceChangeState: Schema.optional(Schema.String),
     newPrice: Schema.optional(Money),
@@ -4669,7 +4671,7 @@ export interface AutoRenewingPlan {
   priceChangeDetails?: SubscriptionItemPriceChangeDetails;
 }
 
-export const AutoRenewingPlan: Schema.Schema<AutoRenewingPlan> =
+export const AutoRenewingPlan: Schema.Codec<AutoRenewingPlan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recurringPrice: Schema.optional(Money),
     autoRenewEnabled: Schema.optional(Schema.Boolean),
@@ -4697,7 +4699,7 @@ export interface ItemReplacement {
   basePlanId?: string;
 }
 
-export const ItemReplacement: Schema.Schema<ItemReplacement> =
+export const ItemReplacement: Schema.Codec<ItemReplacement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     offerId: Schema.optional(Schema.String),
@@ -4730,7 +4732,7 @@ export interface SubscriptionPurchaseLineItem {
   itemReplacement?: ItemReplacement;
 }
 
-export const SubscriptionPurchaseLineItem: Schema.Schema<SubscriptionPurchaseLineItem> =
+export const SubscriptionPurchaseLineItem: Schema.Codec<SubscriptionPurchaseLineItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prepaidPlan: Schema.optional(PrepaidPlan),
     offerDetails: Schema.optional(OfferDetails),
@@ -4747,7 +4749,7 @@ export const SubscriptionPurchaseLineItem: Schema.Schema<SubscriptionPurchaseLin
 
 export interface ArchiveSubscriptionRequest {}
 
-export const ArchiveSubscriptionRequest: Schema.Schema<ArchiveSubscriptionRequest> =
+export const ArchiveSubscriptionRequest: Schema.Codec<ArchiveSubscriptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ArchiveSubscriptionRequest",
   });
@@ -4757,7 +4759,7 @@ export interface ReviewsReplyResponse {
   result?: ReviewReplyResult;
 }
 
-export const ReviewsReplyResponse: Schema.Schema<ReviewsReplyResponse> =
+export const ReviewsReplyResponse: Schema.Codec<ReviewsReplyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(ReviewReplyResult),
   }).annotate({ identifier: "ReviewsReplyResponse" });
@@ -4773,7 +4775,7 @@ export interface GetOneTimeProductOfferRequest {
   packageName?: string;
 }
 
-export const GetOneTimeProductOfferRequest: Schema.Schema<GetOneTimeProductOfferRequest> =
+export const GetOneTimeProductOfferRequest: Schema.Codec<GetOneTimeProductOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     purchaseOptionId: Schema.optional(Schema.String),
@@ -4786,7 +4788,7 @@ export interface BatchGetOneTimeProductOffersRequest {
   requests?: ReadonlyArray<GetOneTimeProductOfferRequest>;
 }
 
-export const BatchGetOneTimeProductOffersRequest: Schema.Schema<BatchGetOneTimeProductOffersRequest> =
+export const BatchGetOneTimeProductOffersRequest: Schema.Codec<BatchGetOneTimeProductOffersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(GetOneTimeProductOfferRequest)),
   }).annotate({ identifier: "BatchGetOneTimeProductOffersRequest" });
@@ -4804,7 +4806,7 @@ export interface RegionalPriceMigrationConfig {
     | (string & {});
 }
 
-export const RegionalPriceMigrationConfig: Schema.Schema<RegionalPriceMigrationConfig> =
+export const RegionalPriceMigrationConfig: Schema.Codec<RegionalPriceMigrationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     oldestAllowedPriceVersionTime: Schema.optional(Schema.String),
@@ -4830,7 +4832,7 @@ export interface MigrateBasePlanPricesRequest {
   regionsVersion?: RegionsVersion;
 }
 
-export const MigrateBasePlanPricesRequest: Schema.Schema<MigrateBasePlanPricesRequest> =
+export const MigrateBasePlanPricesRequest: Schema.Codec<MigrateBasePlanPricesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     regionalPriceMigrations: Schema.optional(
@@ -4847,7 +4849,7 @@ export interface OneTimeExternalTransaction {
   externalTransactionToken?: string;
 }
 
-export const OneTimeExternalTransaction: Schema.Schema<OneTimeExternalTransaction> =
+export const OneTimeExternalTransaction: Schema.Codec<OneTimeExternalTransaction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalTransactionToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "OneTimeExternalTransaction" });
@@ -4863,7 +4865,7 @@ export interface IntroductoryPriceInfo {
   introductoryPricePeriod?: string;
 }
 
-export const IntroductoryPriceInfo: Schema.Schema<IntroductoryPriceInfo> =
+export const IntroductoryPriceInfo: Schema.Codec<IntroductoryPriceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     introductoryPriceCurrencyCode: Schema.optional(Schema.String),
     introductoryPriceCycles: Schema.optional(Schema.Number),
@@ -4876,7 +4878,7 @@ export interface SafetyLabelsUpdateRequest {
   safetyLabels?: string;
 }
 
-export const SafetyLabelsUpdateRequest: Schema.Schema<SafetyLabelsUpdateRequest> =
+export const SafetyLabelsUpdateRequest: Schema.Codec<SafetyLabelsUpdateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     safetyLabels: Schema.optional(Schema.String),
   }).annotate({ identifier: "SafetyLabelsUpdateRequest" });
@@ -4886,7 +4888,7 @@ export interface Testers {
   googleGroups?: ReadonlyArray<string>;
 }
 
-export const Testers: Schema.Schema<Testers> =
+export const Testers: Schema.Codec<Testers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleGroups: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Testers" });
@@ -4924,7 +4926,7 @@ export interface ExternallyHostedApk {
   externallyHostedUrl?: string;
 }
 
-export const ExternallyHostedApk: Schema.Schema<ExternallyHostedApk> =
+export const ExternallyHostedApk: Schema.Codec<ExternallyHostedApk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minimumSdk: Schema.optional(Schema.Number),
     nativeCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -4948,14 +4950,14 @@ export interface ApksAddExternallyHostedResponse {
   externallyHostedApk?: ExternallyHostedApk;
 }
 
-export const ApksAddExternallyHostedResponse: Schema.Schema<ApksAddExternallyHostedResponse> =
+export const ApksAddExternallyHostedResponse: Schema.Codec<ApksAddExternallyHostedResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externallyHostedApk: Schema.optional(ExternallyHostedApk),
   }).annotate({ identifier: "ApksAddExternallyHostedResponse" });
 
 export interface MigrateBasePlanPricesResponse {}
 
-export const MigrateBasePlanPricesResponse: Schema.Schema<MigrateBasePlanPricesResponse> =
+export const MigrateBasePlanPricesResponse: Schema.Codec<MigrateBasePlanPricesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MigrateBasePlanPricesResponse",
   });
@@ -4965,7 +4967,7 @@ export interface BatchDeleteOneTimeProductOffersRequest {
   requests?: ReadonlyArray<DeleteOneTimeProductOfferRequest>;
 }
 
-export const BatchDeleteOneTimeProductOffersRequest: Schema.Schema<BatchDeleteOneTimeProductOffersRequest> =
+export const BatchDeleteOneTimeProductOffersRequest: Schema.Codec<BatchDeleteOneTimeProductOffersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(DeleteOneTimeProductOfferRequest)),
   }).annotate({ identifier: "BatchDeleteOneTimeProductOffersRequest" });
@@ -4975,7 +4977,7 @@ export interface BatchUpdateSubscriptionOffersResponse {
   subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
 }
 
-export const BatchUpdateSubscriptionOffersResponse: Schema.Schema<BatchUpdateSubscriptionOffersResponse> =
+export const BatchUpdateSubscriptionOffersResponse: Schema.Codec<BatchUpdateSubscriptionOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
   }).annotate({ identifier: "BatchUpdateSubscriptionOffersResponse" });
@@ -4985,7 +4987,7 @@ export interface BatchUpdateOneTimeProductsResponse {
   oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
 }
 
-export const BatchUpdateOneTimeProductsResponse: Schema.Schema<BatchUpdateOneTimeProductsResponse> =
+export const BatchUpdateOneTimeProductsResponse: Schema.Codec<BatchUpdateOneTimeProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeProducts: Schema.optional(Schema.Array(OneTimeProduct)),
   }).annotate({ identifier: "BatchUpdateOneTimeProductsResponse" });
@@ -4997,7 +4999,7 @@ export interface ExternalTransactionAddress {
   administrativeArea?: string;
 }
 
-export const ExternalTransactionAddress: Schema.Schema<ExternalTransactionAddress> =
+export const ExternalTransactionAddress: Schema.Codec<ExternalTransactionAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     administrativeArea: Schema.optional(Schema.String),
@@ -5005,7 +5007,7 @@ export const ExternalTransactionAddress: Schema.Schema<ExternalTransactionAddres
 
 export interface SafetyLabelsUpdateResponse {}
 
-export const SafetyLabelsUpdateResponse: Schema.Schema<SafetyLabelsUpdateResponse> =
+export const SafetyLabelsUpdateResponse: Schema.Codec<SafetyLabelsUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SafetyLabelsUpdateResponse",
   });
@@ -5015,7 +5017,7 @@ export interface AddTargetingRequest {
   targetingUpdate?: TargetingUpdate;
 }
 
-export const AddTargetingRequest: Schema.Schema<AddTargetingRequest> =
+export const AddTargetingRequest: Schema.Codec<AddTargetingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingUpdate: Schema.optional(TargetingUpdate),
   }).annotate({ identifier: "AddTargetingRequest" });
@@ -5027,7 +5029,7 @@ export interface ApksListResponse {
   apks?: ReadonlyArray<Apk>;
 }
 
-export const ApksListResponse: Schema.Schema<ApksListResponse> =
+export const ApksListResponse: Schema.Codec<ApksListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     apks: Schema.optional(Schema.Array(Apk)),
@@ -5048,7 +5050,7 @@ export interface DeactivatePurchaseOptionRequest {
   packageName?: string;
 }
 
-export const DeactivatePurchaseOptionRequest: Schema.Schema<DeactivatePurchaseOptionRequest> =
+export const DeactivatePurchaseOptionRequest: Schema.Codec<DeactivatePurchaseOptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     purchaseOptionId: Schema.optional(Schema.String),
@@ -5063,7 +5065,7 @@ export interface UpdatePurchaseOptionStateRequest {
   deactivatePurchaseOptionRequest?: DeactivatePurchaseOptionRequest;
 }
 
-export const UpdatePurchaseOptionStateRequest: Schema.Schema<UpdatePurchaseOptionStateRequest> =
+export const UpdatePurchaseOptionStateRequest: Schema.Codec<UpdatePurchaseOptionStateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activatePurchaseOptionRequest: Schema.optional(
       ActivatePurchaseOptionRequest,
@@ -5075,14 +5077,14 @@ export const UpdatePurchaseOptionStateRequest: Schema.Schema<UpdatePurchaseOptio
 
 export interface TestPurchase {}
 
-export const TestPurchase: Schema.Schema<TestPurchase> =
+export const TestPurchase: Schema.Codec<TestPurchase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TestPurchase",
   });
 
 export interface RevokeSubscriptionPurchaseResponse {}
 
-export const RevokeSubscriptionPurchaseResponse: Schema.Schema<RevokeSubscriptionPurchaseResponse> =
+export const RevokeSubscriptionPurchaseResponse: Schema.Codec<RevokeSubscriptionPurchaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RevokeSubscriptionPurchaseResponse",
   });
@@ -5092,7 +5094,7 @@ export interface RenewalDeclinedContext {
   pendingOrderId?: string;
 }
 
-export const RenewalDeclinedContext: Schema.Schema<RenewalDeclinedContext> =
+export const RenewalDeclinedContext: Schema.Codec<RenewalDeclinedContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pendingOrderId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RenewalDeclinedContext" });
@@ -5102,7 +5104,7 @@ export interface OnHoldStateContext {
   renewalDeclined?: RenewalDeclinedContext;
 }
 
-export const OnHoldStateContext: Schema.Schema<OnHoldStateContext> =
+export const OnHoldStateContext: Schema.Codec<OnHoldStateContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     renewalDeclined: Schema.optional(RenewalDeclinedContext),
   }).annotate({ identifier: "OnHoldStateContext" });
@@ -5112,7 +5114,7 @@ export interface ProductPurchasesAcknowledgeRequest {
   developerPayload?: string;
 }
 
-export const ProductPurchasesAcknowledgeRequest: Schema.Schema<ProductPurchasesAcknowledgeRequest> =
+export const ProductPurchasesAcknowledgeRequest: Schema.Codec<ProductPurchasesAcknowledgeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerPayload: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductPurchasesAcknowledgeRequest" });
@@ -5122,7 +5124,7 @@ export interface InappproductsBatchUpdateResponse {
   inappproducts?: ReadonlyArray<InAppProduct>;
 }
 
-export const InappproductsBatchUpdateResponse: Schema.Schema<InappproductsBatchUpdateResponse> =
+export const InappproductsBatchUpdateResponse: Schema.Codec<InappproductsBatchUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inappproducts: Schema.optional(Schema.Array(InAppProduct)),
   }).annotate({ identifier: "InappproductsBatchUpdateResponse" });
@@ -5134,7 +5136,7 @@ export interface BundlesListResponse {
   bundles?: ReadonlyArray<Bundle>;
 }
 
-export const BundlesListResponse: Schema.Schema<BundlesListResponse> =
+export const BundlesListResponse: Schema.Codec<BundlesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     bundles: Schema.optional(Schema.Array(Bundle)),
@@ -5145,7 +5147,7 @@ export interface BatchUpdatePurchaseOptionStatesRequest {
   requests?: ReadonlyArray<UpdatePurchaseOptionStateRequest>;
 }
 
-export const BatchUpdatePurchaseOptionStatesRequest: Schema.Schema<BatchUpdatePurchaseOptionStatesRequest> =
+export const BatchUpdatePurchaseOptionStatesRequest: Schema.Codec<BatchUpdatePurchaseOptionStatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(UpdatePurchaseOptionStateRequest)),
   }).annotate({ identifier: "BatchUpdatePurchaseOptionStatesRequest" });
@@ -5169,7 +5171,7 @@ export interface ReleaseSummary {
   activeArtifacts?: ReadonlyArray<ArtifactSummary>;
 }
 
-export const ReleaseSummary: Schema.Schema<ReleaseSummary> =
+export const ReleaseSummary: Schema.Codec<ReleaseSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releaseLifecycleState: Schema.optional(Schema.String),
     track: Schema.optional(Schema.String),
@@ -5182,7 +5184,7 @@ export interface BatchUpdateSubscriptionOfferStatesResponse {
   subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
 }
 
-export const BatchUpdateSubscriptionOfferStatesResponse: Schema.Schema<BatchUpdateSubscriptionOfferStatesResponse> =
+export const BatchUpdateSubscriptionOfferStatesResponse: Schema.Codec<BatchUpdateSubscriptionOfferStatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionOffers: Schema.optional(Schema.Array(SubscriptionOffer)),
   }).annotate({ identifier: "BatchUpdateSubscriptionOfferStatesResponse" });
@@ -5192,7 +5194,7 @@ export interface ListReleaseSummariesResponse {
   releases?: ReadonlyArray<ReleaseSummary>;
 }
 
-export const ListReleaseSummariesResponse: Schema.Schema<ListReleaseSummariesResponse> =
+export const ListReleaseSummariesResponse: Schema.Codec<ListReleaseSummariesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     releases: Schema.optional(Schema.Array(ReleaseSummary)),
   }).annotate({ identifier: "ListReleaseSummariesResponse" });
@@ -5214,7 +5216,7 @@ export interface RecurringExternalTransaction {
   externalSubscription?: ExternalSubscription;
 }
 
-export const RecurringExternalTransaction: Schema.Schema<RecurringExternalTransaction> =
+export const RecurringExternalTransaction: Schema.Codec<RecurringExternalTransaction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     initialExternalTransactionId: Schema.optional(Schema.String),
     externalTransactionToken: Schema.optional(Schema.String),
@@ -5260,7 +5262,7 @@ export interface ExternalTransaction {
     | (string & {});
 }
 
-export const ExternalTransaction: Schema.Schema<ExternalTransaction> =
+export const ExternalTransaction: Schema.Codec<ExternalTransaction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionProgramCode: Schema.optional(Schema.Number),
     createTime: Schema.optional(Schema.String),
@@ -5284,7 +5286,7 @@ export interface GeneratedApksListResponse {
   generatedApks?: ReadonlyArray<GeneratedApksPerSigningKey>;
 }
 
-export const GeneratedApksListResponse: Schema.Schema<GeneratedApksListResponse> =
+export const GeneratedApksListResponse: Schema.Codec<GeneratedApksListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generatedApks: Schema.optional(Schema.Array(GeneratedApksPerSigningKey)),
   }).annotate({ identifier: "GeneratedApksListResponse" });
@@ -5350,7 +5352,7 @@ export interface SubscriptionPurchase {
   givenName?: string;
 }
 
-export const SubscriptionPurchase: Schema.Schema<SubscriptionPurchase> =
+export const SubscriptionPurchase: Schema.Codec<SubscriptionPurchase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     introductoryPriceInfo: Schema.optional(IntroductoryPriceInfo),
     expiryTimeMillis: Schema.optional(Schema.String),
@@ -5388,7 +5390,7 @@ export interface RevokeSubscriptionPurchaseRequest {
   revocationContext?: RevocationContext;
 }
 
-export const RevokeSubscriptionPurchaseRequest: Schema.Schema<RevokeSubscriptionPurchaseRequest> =
+export const RevokeSubscriptionPurchaseRequest: Schema.Codec<RevokeSubscriptionPurchaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revocationContext: Schema.optional(RevocationContext),
   }).annotate({ identifier: "RevokeSubscriptionPurchaseRequest" });
@@ -5398,7 +5400,7 @@ export interface BatchUpdateSubscriptionOfferStatesRequest {
   requests?: ReadonlyArray<UpdateSubscriptionOfferStateRequest>;
 }
 
-export const BatchUpdateSubscriptionOfferStatesRequest: Schema.Schema<BatchUpdateSubscriptionOfferStatesRequest> =
+export const BatchUpdateSubscriptionOfferStatesRequest: Schema.Codec<BatchUpdateSubscriptionOfferStatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(UpdateSubscriptionOfferStateRequest),
@@ -5418,7 +5420,7 @@ export interface SubscribeWithGoogleInfo {
   familyName?: string;
 }
 
-export const SubscribeWithGoogleInfo: Schema.Schema<SubscribeWithGoogleInfo> =
+export const SubscribeWithGoogleInfo: Schema.Codec<SubscribeWithGoogleInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profileId: Schema.optional(Schema.String),
     profileName: Schema.optional(Schema.String),
@@ -5432,7 +5434,7 @@ export interface InGracePeriodStateContext {
   renewalDeclined?: RenewalDeclinedContext;
 }
 
-export const InGracePeriodStateContext: Schema.Schema<InGracePeriodStateContext> =
+export const InGracePeriodStateContext: Schema.Codec<InGracePeriodStateContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     renewalDeclined: Schema.optional(RenewalDeclinedContext),
   }).annotate({ identifier: "InGracePeriodStateContext" });
@@ -5488,7 +5490,7 @@ export interface SubscriptionPurchaseV2 {
   outOfAppPurchaseContext?: OutOfAppPurchaseContext;
 }
 
-export const SubscriptionPurchaseV2: Schema.Schema<SubscriptionPurchaseV2> =
+export const SubscriptionPurchaseV2: Schema.Codec<SubscriptionPurchaseV2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acknowledgementState: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5526,7 +5528,7 @@ export interface UpdateSubscriptionOfferRequest {
   subscriptionOffer?: SubscriptionOffer;
 }
 
-export const UpdateSubscriptionOfferRequest: Schema.Schema<UpdateSubscriptionOfferRequest> =
+export const UpdateSubscriptionOfferRequest: Schema.Codec<UpdateSubscriptionOfferRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionsVersion: Schema.optional(RegionsVersion),
     updateMask: Schema.optional(Schema.String),
@@ -5537,7 +5539,7 @@ export const UpdateSubscriptionOfferRequest: Schema.Schema<UpdateSubscriptionOff
 
 export interface DeployAppRecoveryResponse {}
 
-export const DeployAppRecoveryResponse: Schema.Schema<DeployAppRecoveryResponse> =
+export const DeployAppRecoveryResponse: Schema.Codec<DeployAppRecoveryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeployAppRecoveryResponse",
   });
@@ -5547,7 +5549,7 @@ export interface BatchUpdateOneTimeProductsRequest {
   requests?: ReadonlyArray<UpdateOneTimeProductRequest>;
 }
 
-export const BatchUpdateOneTimeProductsRequest: Schema.Schema<BatchUpdateOneTimeProductsRequest> =
+export const BatchUpdateOneTimeProductsRequest: Schema.Codec<BatchUpdateOneTimeProductsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(UpdateOneTimeProductRequest)),
   }).annotate({ identifier: "BatchUpdateOneTimeProductsRequest" });
@@ -5557,7 +5559,7 @@ export interface ApksAddExternallyHostedRequest {
   externallyHostedApk?: ExternallyHostedApk;
 }
 
-export const ApksAddExternallyHostedRequest: Schema.Schema<ApksAddExternallyHostedRequest> =
+export const ApksAddExternallyHostedRequest: Schema.Codec<ApksAddExternallyHostedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externallyHostedApk: Schema.optional(ExternallyHostedApk),
   }).annotate({ identifier: "ApksAddExternallyHostedRequest" });
@@ -5569,7 +5571,7 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
+export const ListSubscriptionsResponse: Schema.Codec<ListSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5580,7 +5582,7 @@ export interface BatchUpdateSubscriptionOffersRequest {
   requests?: ReadonlyArray<UpdateSubscriptionOfferRequest>;
 }
 
-export const BatchUpdateSubscriptionOffersRequest: Schema.Schema<BatchUpdateSubscriptionOffersRequest> =
+export const BatchUpdateSubscriptionOffersRequest: Schema.Codec<BatchUpdateSubscriptionOffersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(UpdateSubscriptionOfferRequest)),
   }).annotate({ identifier: "BatchUpdateSubscriptionOffersRequest" });
@@ -5590,7 +5592,7 @@ export interface InappproductsBatchGetResponse {
   inappproduct?: ReadonlyArray<InAppProduct>;
 }
 
-export const InappproductsBatchGetResponse: Schema.Schema<InappproductsBatchGetResponse> =
+export const InappproductsBatchGetResponse: Schema.Codec<InappproductsBatchGetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inappproduct: Schema.optional(Schema.Array(InAppProduct)),
   }).annotate({ identifier: "InappproductsBatchGetResponse" });
@@ -5602,7 +5604,7 @@ export interface ListingsListResponse {
   listings?: ReadonlyArray<Listing>;
 }
 
-export const ListingsListResponse: Schema.Schema<ListingsListResponse> =
+export const ListingsListResponse: Schema.Codec<ListingsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     listings: Schema.optional(Schema.Array(Listing)),
@@ -5613,7 +5615,7 @@ export interface BatchDeleteOneTimeProductsRequest {
   requests?: ReadonlyArray<DeleteOneTimeProductRequest>;
 }
 
-export const BatchDeleteOneTimeProductsRequest: Schema.Schema<BatchDeleteOneTimeProductsRequest> =
+export const BatchDeleteOneTimeProductsRequest: Schema.Codec<BatchDeleteOneTimeProductsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(DeleteOneTimeProductRequest)),
   }).annotate({ identifier: "BatchDeleteOneTimeProductsRequest" });
@@ -5623,7 +5625,7 @@ export interface BatchMigrateBasePlanPricesRequest {
   requests?: ReadonlyArray<MigrateBasePlanPricesRequest>;
 }
 
-export const BatchMigrateBasePlanPricesRequest: Schema.Schema<BatchMigrateBasePlanPricesRequest> =
+export const BatchMigrateBasePlanPricesRequest: Schema.Codec<BatchMigrateBasePlanPricesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(MigrateBasePlanPricesRequest)),
   }).annotate({ identifier: "BatchMigrateBasePlanPricesRequest" });
@@ -5635,7 +5637,7 @@ export interface ConvertRegionPricesRequest {
   price?: Money;
 }
 
-export const ConvertRegionPricesRequest: Schema.Schema<ConvertRegionPricesRequest> =
+export const ConvertRegionPricesRequest: Schema.Codec<ConvertRegionPricesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productTaxCategoryCode: Schema.optional(Schema.String),
     price: Schema.optional(Money),
@@ -5646,7 +5648,7 @@ export interface BatchMigrateBasePlanPricesResponse {
   responses?: ReadonlyArray<MigrateBasePlanPricesResponse>;
 }
 
-export const BatchMigrateBasePlanPricesResponse: Schema.Schema<BatchMigrateBasePlanPricesResponse> =
+export const BatchMigrateBasePlanPricesResponse: Schema.Codec<BatchMigrateBasePlanPricesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(MigrateBasePlanPricesResponse)),
   }).annotate({ identifier: "BatchMigrateBasePlanPricesResponse" });
@@ -5656,7 +5658,7 @@ export interface BatchGetSubscriptionsResponse {
   subscriptions?: ReadonlyArray<Subscription>;
 }
 
-export const BatchGetSubscriptionsResponse: Schema.Schema<BatchGetSubscriptionsResponse> =
+export const BatchGetSubscriptionsResponse: Schema.Codec<BatchGetSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
   }).annotate({ identifier: "BatchGetSubscriptionsResponse" });
@@ -5666,7 +5668,7 @@ export interface BatchUpdateOneTimeProductOfferStatesResponse {
   oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
 }
 
-export const BatchUpdateOneTimeProductOfferStatesResponse: Schema.Schema<BatchUpdateOneTimeProductOfferStatesResponse> =
+export const BatchUpdateOneTimeProductOfferStatesResponse: Schema.Codec<BatchUpdateOneTimeProductOfferStatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneTimeProductOffers: Schema.optional(Schema.Array(OneTimeProductOffer)),
   }).annotate({ identifier: "BatchUpdateOneTimeProductOfferStatesResponse" });
@@ -5756,7 +5758,7 @@ export const CommitEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CommitEditsRequest>;
+) as unknown as Schema.Codec<CommitEditsRequest>;
 
 export type CommitEditsResponse = AppEdit;
 export const CommitEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
@@ -5796,7 +5798,7 @@ export const GetEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidpublisher/v3/applications/{packageName}/edits/{editId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetEditsRequest>;
+) as unknown as Schema.Codec<GetEditsRequest>;
 
 export type GetEditsResponse = AppEdit;
 export const GetEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
@@ -5832,7 +5834,7 @@ export const InsertEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertEditsRequest>;
+) as unknown as Schema.Codec<InsertEditsRequest>;
 
 export type InsertEditsResponse = AppEdit;
 export const InsertEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
@@ -5872,13 +5874,13 @@ export const DeleteEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidpublisher/v3/applications/{packageName}/edits/{editId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteEditsRequest>;
+) as unknown as Schema.Codec<DeleteEditsRequest>;
 
 export interface DeleteEditsResponse {}
-export const DeleteEditsResponse: Schema.Schema<DeleteEditsResponse> =
+export const DeleteEditsResponse: Schema.Codec<DeleteEditsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteEditsResponse>;
+  ) as any as Schema.Codec<DeleteEditsResponse>;
 
 export type DeleteEditsError =
   | DefaultErrors
@@ -5916,7 +5918,7 @@ export const ValidateEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ValidateEditsRequest>;
+) as unknown as Schema.Codec<ValidateEditsRequest>;
 
 export type ValidateEditsResponse = AppEdit;
 export const ValidateEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
@@ -5961,7 +5963,7 @@ export const AddexternallyhostedEditsApksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddexternallyhostedEditsApksRequest>;
+  ) as unknown as Schema.Codec<AddexternallyhostedEditsApksRequest>;
 
 export type AddexternallyhostedEditsApksResponse =
   ApksAddExternallyHostedResponse;
@@ -6006,7 +6008,7 @@ export const UploadEditsApksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UploadEditsApksRequest>;
+) as unknown as Schema.Codec<UploadEditsApksRequest>;
 
 export type UploadEditsApksResponse = Apk;
 export const UploadEditsApksResponse = /*@__PURE__*/ /*#__PURE__*/ Apk;
@@ -6046,7 +6048,7 @@ export const ListEditsApksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
   }),
   svc,
-) as unknown as Schema.Schema<ListEditsApksRequest>;
+) as unknown as Schema.Codec<ListEditsApksRequest>;
 
 export type ListEditsApksResponse = ApksListResponse;
 export const ListEditsApksResponse =
@@ -6083,7 +6085,7 @@ export const ListEditsBundlesRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListEditsBundlesRequest>;
+  ) as unknown as Schema.Codec<ListEditsBundlesRequest>;
 
 export type ListEditsBundlesResponse = BundlesListResponse;
 export const ListEditsBundlesResponse =
@@ -6131,7 +6133,7 @@ export const UploadEditsBundlesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadEditsBundlesRequest>;
+  ) as unknown as Schema.Codec<UploadEditsBundlesRequest>;
 
 export type UploadEditsBundlesResponse = Bundle;
 export const UploadEditsBundlesResponse = /*@__PURE__*/ /*#__PURE__*/ Bundle;
@@ -6179,7 +6181,7 @@ export const PatchEditsTestersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchEditsTestersRequest>;
+  ) as unknown as Schema.Codec<PatchEditsTestersRequest>;
 
 export type PatchEditsTestersResponse = Testers;
 export const PatchEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
@@ -6224,7 +6226,7 @@ export const GetEditsTestersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
   }),
   svc,
-) as unknown as Schema.Schema<GetEditsTestersRequest>;
+) as unknown as Schema.Codec<GetEditsTestersRequest>;
 
 export type GetEditsTestersResponse = Testers;
 export const GetEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
@@ -6267,7 +6269,7 @@ export const UpdateEditsTestersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEditsTestersRequest>;
+  ) as unknown as Schema.Codec<UpdateEditsTestersRequest>;
 
 export type UpdateEditsTestersResponse = Testers;
 export const UpdateEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
@@ -6318,7 +6320,7 @@ export const GetEditsExpansionfilesRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEditsExpansionfilesRequest>;
+  ) as unknown as Schema.Codec<GetEditsExpansionfilesRequest>;
 
 export type GetEditsExpansionfilesResponse = ExpansionFile;
 export const GetEditsExpansionfilesResponse =
@@ -6369,7 +6371,7 @@ export const UpdateEditsExpansionfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEditsExpansionfilesRequest>;
+  ) as unknown as Schema.Codec<UpdateEditsExpansionfilesRequest>;
 
 export type UpdateEditsExpansionfilesResponse = ExpansionFile;
 export const UpdateEditsExpansionfilesResponse =
@@ -6422,7 +6424,7 @@ export const UploadEditsExpansionfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadEditsExpansionfilesRequest>;
+  ) as unknown as Schema.Codec<UploadEditsExpansionfilesRequest>;
 
 export type UploadEditsExpansionfilesResponse = ExpansionFilesUploadResponse;
 export const UploadEditsExpansionfilesResponse =
@@ -6478,7 +6480,7 @@ export const PatchEditsExpansionfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchEditsExpansionfilesRequest>;
+  ) as unknown as Schema.Codec<PatchEditsExpansionfilesRequest>;
 
 export type PatchEditsExpansionfilesResponse = ExpansionFile;
 export const PatchEditsExpansionfilesResponse =
@@ -6521,7 +6523,7 @@ export const GetEditsDetailsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
   }),
   svc,
-) as unknown as Schema.Schema<GetEditsDetailsRequest>;
+) as unknown as Schema.Codec<GetEditsDetailsRequest>;
 
 export type GetEditsDetailsResponse = AppDetails;
 export const GetEditsDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ AppDetails;
@@ -6561,7 +6563,7 @@ export const UpdateEditsDetailsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEditsDetailsRequest>;
+  ) as unknown as Schema.Codec<UpdateEditsDetailsRequest>;
 
 export type UpdateEditsDetailsResponse = AppDetails;
 export const UpdateEditsDetailsResponse =
@@ -6607,7 +6609,7 @@ export const PatchEditsDetailsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchEditsDetailsRequest>;
+  ) as unknown as Schema.Codec<PatchEditsDetailsRequest>;
 
 export type PatchEditsDetailsResponse = AppDetails;
 export const PatchEditsDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ AppDetails;
@@ -6649,7 +6651,7 @@ export const ListEditsTracksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
   }),
   svc,
-) as unknown as Schema.Schema<ListEditsTracksRequest>;
+) as unknown as Schema.Codec<ListEditsTracksRequest>;
 
 export type ListEditsTracksResponse = TracksListResponse;
 export const ListEditsTracksResponse =
@@ -6690,7 +6692,7 @@ export const CreateEditsTracksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateEditsTracksRequest>;
+  ) as unknown as Schema.Codec<CreateEditsTracksRequest>;
 
 export type CreateEditsTracksResponse = Track;
 export const CreateEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
@@ -6738,7 +6740,7 @@ export const PatchEditsTracksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchEditsTracksRequest>;
+  ) as unknown as Schema.Codec<PatchEditsTracksRequest>;
 
 export type PatchEditsTracksResponse = Track;
 export const PatchEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
@@ -6781,7 +6783,7 @@ export const GetEditsTracksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
   }),
   svc,
-) as unknown as Schema.Schema<GetEditsTracksRequest>;
+) as unknown as Schema.Codec<GetEditsTracksRequest>;
 
 export type GetEditsTracksResponse = Track;
 export const GetEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
@@ -6824,7 +6826,7 @@ export const UpdateEditsTracksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEditsTracksRequest>;
+  ) as unknown as Schema.Codec<UpdateEditsTracksRequest>;
 
 export type UpdateEditsTracksResponse = Track;
 export const UpdateEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
@@ -6868,7 +6870,7 @@ export const GetEditsCountryavailabilityRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/countryAvailability/{track}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEditsCountryavailabilityRequest>;
+  ) as unknown as Schema.Codec<GetEditsCountryavailabilityRequest>;
 
 export type GetEditsCountryavailabilityResponse = TrackCountryAvailability;
 export const GetEditsCountryavailabilityResponse =
@@ -6921,7 +6923,7 @@ export const UploadEditsDeobfuscationfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadEditsDeobfuscationfilesRequest>;
+  ) as unknown as Schema.Codec<UploadEditsDeobfuscationfilesRequest>;
 
 export type UploadEditsDeobfuscationfilesResponse =
   DeobfuscationFilesUploadResponse;
@@ -6981,7 +6983,7 @@ export const ListEditsImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
   }),
   svc,
-) as unknown as Schema.Schema<ListEditsImagesRequest>;
+) as unknown as Schema.Codec<ListEditsImagesRequest>;
 
 export type ListEditsImagesResponse = ImagesListResponse;
 export const ListEditsImagesResponse =
@@ -7034,7 +7036,7 @@ export const DeleteallEditsImagesRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteallEditsImagesRequest>;
+  ) as unknown as Schema.Codec<DeleteallEditsImagesRequest>;
 
 export type DeleteallEditsImagesResponse = ImagesDeleteAllResponse;
 export const DeleteallEditsImagesResponse =
@@ -7102,7 +7104,7 @@ export const UploadEditsImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadEditsImagesRequest>;
+  ) as unknown as Schema.Codec<UploadEditsImagesRequest>;
 
 export type UploadEditsImagesResponse = ImagesUploadResponse;
 export const UploadEditsImagesResponse =
@@ -7163,13 +7165,13 @@ export const DeleteEditsImagesRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteEditsImagesRequest>;
+  ) as unknown as Schema.Codec<DeleteEditsImagesRequest>;
 
 export interface DeleteEditsImagesResponse {}
-export const DeleteEditsImagesResponse: Schema.Schema<DeleteEditsImagesResponse> =
+export const DeleteEditsImagesResponse: Schema.Codec<DeleteEditsImagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteEditsImagesResponse>;
+  ) as any as Schema.Codec<DeleteEditsImagesResponse>;
 
 export type DeleteEditsImagesError =
   | DefaultErrors
@@ -7210,13 +7212,13 @@ export const DeleteEditsListingsRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteEditsListingsRequest>;
+  ) as unknown as Schema.Codec<DeleteEditsListingsRequest>;
 
 export interface DeleteEditsListingsResponse {}
-export const DeleteEditsListingsResponse: Schema.Schema<DeleteEditsListingsResponse> =
+export const DeleteEditsListingsResponse: Schema.Codec<DeleteEditsListingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteEditsListingsResponse>;
+  ) as any as Schema.Codec<DeleteEditsListingsResponse>;
 
 export type DeleteEditsListingsError =
   | DefaultErrors
@@ -7254,7 +7256,7 @@ export const ListEditsListingsRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListEditsListingsRequest>;
+  ) as unknown as Schema.Codec<ListEditsListingsRequest>;
 
 export type ListEditsListingsResponse = ListingsListResponse;
 export const ListEditsListingsResponse =
@@ -7291,13 +7293,13 @@ export const DeleteallEditsListingsRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteallEditsListingsRequest>;
+  ) as unknown as Schema.Codec<DeleteallEditsListingsRequest>;
 
 export interface DeleteallEditsListingsResponse {}
-export const DeleteallEditsListingsResponse: Schema.Schema<DeleteallEditsListingsResponse> =
+export const DeleteallEditsListingsResponse: Schema.Codec<DeleteallEditsListingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteallEditsListingsResponse>;
+  ) as any as Schema.Codec<DeleteallEditsListingsResponse>;
 
 export type DeleteallEditsListingsError =
   | DefaultErrors
@@ -7342,7 +7344,7 @@ export const PatchEditsListingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchEditsListingsRequest>;
+  ) as unknown as Schema.Codec<PatchEditsListingsRequest>;
 
 export type PatchEditsListingsResponse = Listing;
 export const PatchEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
@@ -7390,7 +7392,7 @@ export const UpdateEditsListingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEditsListingsRequest>;
+  ) as unknown as Schema.Codec<UpdateEditsListingsRequest>;
 
 export type UpdateEditsListingsResponse = Listing;
 export const UpdateEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
@@ -7434,7 +7436,7 @@ export const GetEditsListingsRequest =
       path: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEditsListingsRequest>;
+  ) as unknown as Schema.Codec<GetEditsListingsRequest>;
 
 export type GetEditsListingsResponse = Listing;
 export const GetEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
@@ -7473,7 +7475,7 @@ export const ListApprecoveryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "androidpublisher/v3/applications/{packageName}/appRecoveries",
   }),
   svc,
-) as unknown as Schema.Schema<ListApprecoveryRequest>;
+) as unknown as Schema.Codec<ListApprecoveryRequest>;
 
 export type ListApprecoveryResponse = ListAppRecoveriesResponse;
 export const ListApprecoveryResponse =
@@ -7514,7 +7516,7 @@ export const AddTargetingApprecoveryRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddTargetingApprecoveryRequest>;
+  ) as unknown as Schema.Codec<AddTargetingApprecoveryRequest>;
 
 export type AddTargetingApprecoveryResponse = AddTargetingResponse;
 export const AddTargetingApprecoveryResponse =
@@ -7557,7 +7559,7 @@ export const CreateApprecoveryRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateApprecoveryRequest>;
+  ) as unknown as Schema.Codec<CreateApprecoveryRequest>;
 
 export type CreateApprecoveryResponse = AppRecoveryAction;
 export const CreateApprecoveryResponse =
@@ -7603,7 +7605,7 @@ export const DeployApprecoveryRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeployApprecoveryRequest>;
+  ) as unknown as Schema.Codec<DeployApprecoveryRequest>;
 
 export type DeployApprecoveryResponse = DeployAppRecoveryResponse;
 export const DeployApprecoveryResponse =
@@ -7649,7 +7651,7 @@ export const CancelApprecoveryRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelApprecoveryRequest>;
+  ) as unknown as Schema.Codec<CancelApprecoveryRequest>;
 
 export type CancelApprecoveryResponse = CancelAppRecoveryResponse;
 export const CancelApprecoveryResponse =
@@ -7692,7 +7694,7 @@ export const DataSafetyApplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DataSafetyApplicationsRequest>;
+  ) as unknown as Schema.Codec<DataSafetyApplicationsRequest>;
 
 export type DataSafetyApplicationsResponse = SafetyLabelsUpdateResponse;
 export const DataSafetyApplicationsResponse =
@@ -7734,7 +7736,7 @@ export const GetApplicationsDeviceTierConfigsRequest =
       path: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs/{deviceTierConfigId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetApplicationsDeviceTierConfigsRequest>;
+  ) as unknown as Schema.Codec<GetApplicationsDeviceTierConfigsRequest>;
 
 export type GetApplicationsDeviceTierConfigsResponse = DeviceTierConfig;
 export const GetApplicationsDeviceTierConfigsResponse =
@@ -7777,7 +7779,7 @@ export const ListApplicationsDeviceTierConfigsRequest =
       path: "androidpublisher/v3/applications/{packageName}/deviceTierConfigs",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListApplicationsDeviceTierConfigsRequest>;
+  ) as unknown as Schema.Codec<ListApplicationsDeviceTierConfigsRequest>;
 
 export type ListApplicationsDeviceTierConfigsResponse =
   ListDeviceTierConfigsResponse;
@@ -7828,7 +7830,7 @@ export const CreateApplicationsDeviceTierConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateApplicationsDeviceTierConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateApplicationsDeviceTierConfigsRequest>;
 
 export type CreateApplicationsDeviceTierConfigsResponse = DeviceTierConfig;
 export const CreateApplicationsDeviceTierConfigsResponse =
@@ -7864,7 +7866,7 @@ export const ListApplicationsTracksReleasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "androidpublisher/v3/{+parent}/releases" }),
     svc,
-  ) as unknown as Schema.Schema<ListApplicationsTracksReleasesRequest>;
+  ) as unknown as Schema.Codec<ListApplicationsTracksReleasesRequest>;
 
 export type ListApplicationsTracksReleasesResponse =
   ListReleaseSummariesResponse;
@@ -7905,7 +7907,7 @@ export const ListSystemapksVariantsRequest =
       path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListSystemapksVariantsRequest>;
+  ) as unknown as Schema.Codec<ListSystemapksVariantsRequest>;
 
 export type ListSystemapksVariantsResponse = SystemApksListResponse;
 export const ListSystemapksVariantsResponse =
@@ -7945,7 +7947,7 @@ export const GetSystemapksVariantsRequest =
       path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSystemapksVariantsRequest>;
+  ) as unknown as Schema.Codec<GetSystemapksVariantsRequest>;
 
 export type GetSystemapksVariantsResponse = Variant;
 export const GetSystemapksVariantsResponse =
@@ -7985,13 +7987,13 @@ export const DownloadSystemapksVariantsRequest =
       path: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
     }),
     svc,
-  ) as unknown as Schema.Schema<DownloadSystemapksVariantsRequest>;
+  ) as unknown as Schema.Codec<DownloadSystemapksVariantsRequest>;
 
 export interface DownloadSystemapksVariantsResponse {}
-export const DownloadSystemapksVariantsResponse: Schema.Schema<DownloadSystemapksVariantsResponse> =
+export const DownloadSystemapksVariantsResponse: Schema.Codec<DownloadSystemapksVariantsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DownloadSystemapksVariantsResponse>;
+  ) as any as Schema.Codec<DownloadSystemapksVariantsResponse>;
 
 export type DownloadSystemapksVariantsError =
   | DefaultErrors
@@ -8031,7 +8033,7 @@ export const CreateSystemapksVariantsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSystemapksVariantsRequest>;
+  ) as unknown as Schema.Codec<CreateSystemapksVariantsRequest>;
 
 export type CreateSystemapksVariantsResponse = Variant;
 export const CreateSystemapksVariantsResponse =
@@ -8074,7 +8076,7 @@ export const ConvertRegionPricesMonetizationRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConvertRegionPricesMonetizationRequest>;
+  ) as unknown as Schema.Codec<ConvertRegionPricesMonetizationRequest>;
 
 export type ConvertRegionPricesMonetizationResponse =
   ConvertRegionPricesResponse;
@@ -8117,7 +8119,7 @@ export const GetMonetizationOnetimeproductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMonetizationOnetimeproductsRequest>;
+  ) as unknown as Schema.Codec<GetMonetizationOnetimeproductsRequest>;
 
 export type GetMonetizationOnetimeproductsResponse = OneTimeProduct;
 export const GetMonetizationOnetimeproductsResponse =
@@ -8158,7 +8160,7 @@ export const BatchUpdateMonetizationOnetimeproductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateMonetizationOnetimeproductsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateMonetizationOnetimeproductsRequest>;
 
 export type BatchUpdateMonetizationOnetimeproductsResponse =
   BatchUpdateOneTimeProductsResponse;
@@ -8227,7 +8229,7 @@ export const PatchMonetizationOnetimeproductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchMonetizationOnetimeproductsRequest>;
+  ) as unknown as Schema.Codec<PatchMonetizationOnetimeproductsRequest>;
 
 export type PatchMonetizationOnetimeproductsResponse = OneTimeProduct;
 export const PatchMonetizationOnetimeproductsResponse =
@@ -8270,13 +8272,13 @@ export const BatchDeleteMonetizationOnetimeproductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteMonetizationOnetimeproductsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteMonetizationOnetimeproductsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsResponse {}
-export const BatchDeleteMonetizationOnetimeproductsResponse: Schema.Schema<BatchDeleteMonetizationOnetimeproductsResponse> =
+export const BatchDeleteMonetizationOnetimeproductsResponse: Schema.Codec<BatchDeleteMonetizationOnetimeproductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
+  ) as any as Schema.Codec<BatchDeleteMonetizationOnetimeproductsResponse>;
 
 export type BatchDeleteMonetizationOnetimeproductsError =
   | DefaultErrors
@@ -8316,7 +8318,7 @@ export const BatchGetMonetizationOnetimeproductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetMonetizationOnetimeproductsRequest>;
+  ) as unknown as Schema.Codec<BatchGetMonetizationOnetimeproductsRequest>;
 
 export type BatchGetMonetizationOnetimeproductsResponse =
   BatchGetOneTimeProductsResponse;
@@ -8360,7 +8362,7 @@ export const ListMonetizationOnetimeproductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMonetizationOnetimeproductsRequest>;
+  ) as unknown as Schema.Codec<ListMonetizationOnetimeproductsRequest>;
 
 export type ListMonetizationOnetimeproductsResponse =
   ListOneTimeProductsResponse;
@@ -8414,13 +8416,13 @@ export const DeleteMonetizationOnetimeproductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMonetizationOnetimeproductsRequest>;
+  ) as unknown as Schema.Codec<DeleteMonetizationOnetimeproductsRequest>;
 
 export interface DeleteMonetizationOnetimeproductsResponse {}
-export const DeleteMonetizationOnetimeproductsResponse: Schema.Schema<DeleteMonetizationOnetimeproductsResponse> =
+export const DeleteMonetizationOnetimeproductsResponse: Schema.Codec<DeleteMonetizationOnetimeproductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteMonetizationOnetimeproductsResponse>;
+  ) as any as Schema.Codec<DeleteMonetizationOnetimeproductsResponse>;
 
 export type DeleteMonetizationOnetimeproductsError =
   | DefaultErrors
@@ -8464,7 +8466,7 @@ export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest>;
 
 export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsResponse =
   BatchUpdatePurchaseOptionStatesResponse;
@@ -8511,13 +8513,13 @@ export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse {}
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse: Schema.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse> =
+export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse: Schema.Codec<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse>;
+  ) as any as Schema.Codec<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse>;
 
 export type BatchDeleteMonetizationOnetimeproductsPurchaseOptionsError =
   | DefaultErrors
@@ -8564,7 +8566,7 @@ export const ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
       path: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+  ) as unknown as Schema.Codec<ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   ListOneTimeProductOffersResponse;
@@ -8618,7 +8620,7 @@ export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+  ) as unknown as Schema.Codec<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   BatchGetOneTimeProductOffersResponse;
@@ -8670,7 +8672,7 @@ export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRe
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   BatchUpdateOneTimeProductOfferStatesResponse;
@@ -8678,7 +8680,11 @@ export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRe
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateOneTimeProductOfferStatesResponse;
 
 export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a batch of one-time product offer states. */
 export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
@@ -8723,7 +8729,7 @@ export const DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+  ) as unknown as Schema.Codec<DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   OneTimeProductOffer;
@@ -8775,7 +8781,7 @@ export const BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   BatchUpdateOneTimeProductOffersResponse;
@@ -8828,7 +8834,7 @@ export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+  ) as unknown as Schema.Codec<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   OneTimeProductOffer;
@@ -8883,7 +8889,7 @@ export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+  ) as unknown as Schema.Codec<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   OneTimeProductOffer;
@@ -8935,13 +8941,13 @@ export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse {}
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse: Schema.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse> =
+export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse: Schema.Codec<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>;
+  ) as any as Schema.Codec<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>;
 
 export type BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersError =
   | DefaultErrors
@@ -9005,7 +9011,7 @@ export const PatchMonetizationSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<PatchMonetizationSubscriptionsRequest>;
 
 export type PatchMonetizationSubscriptionsResponse = Subscription;
 export const PatchMonetizationSubscriptionsResponse =
@@ -9047,7 +9053,7 @@ export const GetMonetizationSubscriptionsRequest =
       path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetMonetizationSubscriptionsRequest>;
 
 export type GetMonetizationSubscriptionsResponse = Subscription;
 export const GetMonetizationSubscriptionsResponse =
@@ -9088,7 +9094,7 @@ export const BatchUpdateMonetizationSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateMonetizationSubscriptionsRequest>;
 
 export type BatchUpdateMonetizationSubscriptionsResponse =
   BatchUpdateSubscriptionsResponse;
@@ -9135,7 +9141,7 @@ export const ArchiveMonetizationSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ArchiveMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ArchiveMonetizationSubscriptionsRequest>;
 
 export type ArchiveMonetizationSubscriptionsResponse = Subscription;
 export const ArchiveMonetizationSubscriptionsResponse =
@@ -9177,13 +9183,13 @@ export const DeleteMonetizationSubscriptionsRequest =
       path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteMonetizationSubscriptionsRequest>;
 
 export interface DeleteMonetizationSubscriptionsResponse {}
-export const DeleteMonetizationSubscriptionsResponse: Schema.Schema<DeleteMonetizationSubscriptionsResponse> =
+export const DeleteMonetizationSubscriptionsResponse: Schema.Codec<DeleteMonetizationSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteMonetizationSubscriptionsResponse>;
+  ) as any as Schema.Codec<DeleteMonetizationSubscriptionsResponse>;
 
 export type DeleteMonetizationSubscriptionsError =
   | DefaultErrors
@@ -9230,7 +9236,7 @@ export const CreateMonetizationSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateMonetizationSubscriptionsRequest>;
 
 export type CreateMonetizationSubscriptionsResponse = Subscription;
 export const CreateMonetizationSubscriptionsResponse =
@@ -9274,7 +9280,7 @@ export const BatchGetMonetizationSubscriptionsRequest =
       path: "androidpublisher/v3/applications/{packageName}/subscriptions:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<BatchGetMonetizationSubscriptionsRequest>;
 
 export type BatchGetMonetizationSubscriptionsResponse =
   BatchGetSubscriptionsResponse;
@@ -9323,7 +9329,7 @@ export const ListMonetizationSubscriptionsRequest =
       path: "androidpublisher/v3/applications/{packageName}/subscriptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMonetizationSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListMonetizationSubscriptionsRequest>;
 
 export type ListMonetizationSubscriptionsResponse = ListSubscriptionsResponse;
 export const ListMonetizationSubscriptionsResponse =
@@ -9371,7 +9377,7 @@ export const BatchMigratePricesMonetizationSubscriptionsBasePlansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchMigratePricesMonetizationSubscriptionsBasePlansRequest>;
+  ) as unknown as Schema.Codec<BatchMigratePricesMonetizationSubscriptionsBasePlansRequest>;
 
 export type BatchMigratePricesMonetizationSubscriptionsBasePlansResponse =
   BatchMigrateBasePlanPricesResponse;
@@ -9417,13 +9423,13 @@ export const DeleteMonetizationSubscriptionsBasePlansRequest =
       path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansRequest>;
+  ) as unknown as Schema.Codec<DeleteMonetizationSubscriptionsBasePlansRequest>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansResponse: Schema.Schema<DeleteMonetizationSubscriptionsBasePlansResponse> =
+export const DeleteMonetizationSubscriptionsBasePlansResponse: Schema.Codec<DeleteMonetizationSubscriptionsBasePlansResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>;
+  ) as any as Schema.Codec<DeleteMonetizationSubscriptionsBasePlansResponse>;
 
 export type DeleteMonetizationSubscriptionsBasePlansError =
   | DefaultErrors
@@ -9468,7 +9474,7 @@ export const MigratePricesMonetizationSubscriptionsBasePlansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MigratePricesMonetizationSubscriptionsBasePlansRequest>;
+  ) as unknown as Schema.Codec<MigratePricesMonetizationSubscriptionsBasePlansRequest>;
 
 export type MigratePricesMonetizationSubscriptionsBasePlansResponse =
   MigrateBasePlanPricesResponse;
@@ -9518,7 +9524,7 @@ export const DeactivateMonetizationSubscriptionsBasePlansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeactivateMonetizationSubscriptionsBasePlansRequest>;
+  ) as unknown as Schema.Codec<DeactivateMonetizationSubscriptionsBasePlansRequest>;
 
 export type DeactivateMonetizationSubscriptionsBasePlansResponse = Subscription;
 export const DeactivateMonetizationSubscriptionsBasePlansResponse =
@@ -9564,7 +9570,7 @@ export const BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest>;
 
 export type BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse =
   BatchUpdateBasePlanStatesResponse;
@@ -9614,7 +9620,7 @@ export const ActivateMonetizationSubscriptionsBasePlansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ActivateMonetizationSubscriptionsBasePlansRequest>;
+  ) as unknown as Schema.Codec<ActivateMonetizationSubscriptionsBasePlansRequest>;
 
 export type ActivateMonetizationSubscriptionsBasePlansResponse = Subscription;
 export const ActivateMonetizationSubscriptionsBasePlansResponse =
@@ -9671,7 +9677,7 @@ export const CreateMonetizationSubscriptionsBasePlansOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<CreateMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type CreateMonetizationSubscriptionsBasePlansOffersResponse =
   SubscriptionOffer;
@@ -9721,7 +9727,7 @@ export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type BatchGetMonetizationSubscriptionsBasePlansOffersResponse =
   BatchGetSubscriptionOffersResponse;
@@ -9773,7 +9779,7 @@ export const ListMonetizationSubscriptionsBasePlansOffersRequest =
       path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<ListMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type ListMonetizationSubscriptionsBasePlansOffersResponse =
   ListSubscriptionOffersResponse;
@@ -9830,7 +9836,7 @@ export const DeactivateMonetizationSubscriptionsBasePlansOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeactivateMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<DeactivateMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type DeactivateMonetizationSubscriptionsBasePlansOffersResponse =
   SubscriptionOffer;
@@ -9905,7 +9911,7 @@ export const PatchMonetizationSubscriptionsBasePlansOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<PatchMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type PatchMonetizationSubscriptionsBasePlansOffersResponse =
   SubscriptionOffer;
@@ -9958,7 +9964,7 @@ export const ActivateMonetizationSubscriptionsBasePlansOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ActivateMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<ActivateMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type ActivateMonetizationSubscriptionsBasePlansOffersResponse =
   SubscriptionOffer;
@@ -10010,7 +10016,7 @@ export const BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersResponse =
   BatchUpdateSubscriptionOfferStatesResponse;
@@ -10059,13 +10065,13 @@ export const DeleteMonetizationSubscriptionsBasePlansOffersRequest =
       path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<DeleteMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansOffersResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansOffersResponse: Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse> =
+export const DeleteMonetizationSubscriptionsBasePlansOffersResponse: Schema.Codec<DeleteMonetizationSubscriptionsBasePlansOffersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
+  ) as any as Schema.Codec<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
 
 export type DeleteMonetizationSubscriptionsBasePlansOffersError =
   | DefaultErrors
@@ -10109,7 +10115,7 @@ export const GetMonetizationSubscriptionsBasePlansOffersRequest =
       path: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<GetMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type GetMonetizationSubscriptionsBasePlansOffersResponse =
   SubscriptionOffer;
@@ -10159,7 +10165,7 @@ export const BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type BatchUpdateMonetizationSubscriptionsBasePlansOffersResponse =
   BatchUpdateSubscriptionOffersResponse;
@@ -10201,7 +10207,7 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "androidpublisher/v3/{+parent}/users" }),
   svc,
-) as unknown as Schema.Schema<ListUsersRequest>;
+) as unknown as Schema.Codec<ListUsersRequest>;
 
 export type ListUsersResponse_Op = ListUsersResponse;
 export const ListUsersResponse_Op =
@@ -10242,7 +10248,7 @@ export const CreateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CreateUsersRequest>;
+) as unknown as Schema.Codec<CreateUsersRequest>;
 
 export type CreateUsersResponse = User;
 export const CreateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -10276,13 +10282,13 @@ export const DeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "androidpublisher/v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteUsersRequest>;
+) as unknown as Schema.Codec<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
-export const DeleteUsersResponse: Schema.Schema<DeleteUsersResponse> =
+export const DeleteUsersResponse: Schema.Codec<DeleteUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersResponse>;
+  ) as any as Schema.Codec<DeleteUsersResponse>;
 
 export type DeleteUsersError =
   | DefaultErrors
@@ -10323,7 +10329,7 @@ export const PatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchUsersRequest>;
+) as unknown as Schema.Codec<PatchUsersRequest>;
 
 export type PatchUsersResponse = User;
 export const PatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -10367,7 +10373,7 @@ export const ReplyReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ReplyReviewsRequest>;
+) as unknown as Schema.Codec<ReplyReviewsRequest>;
 
 export type ReplyReviewsResponse = ReviewsReplyResponse;
 export const ReplyReviewsResponse =
@@ -10413,7 +10419,7 @@ export const GetReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetReviewsRequest>;
+) as unknown as Schema.Codec<GetReviewsRequest>;
 
 export type GetReviewsResponse = Review;
 export const GetReviewsResponse = /*@__PURE__*/ /*#__PURE__*/ Review;
@@ -10459,7 +10465,7 @@ export const ListReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidpublisher/v3/applications/{packageName}/reviews",
   }),
   svc,
-) as unknown as Schema.Schema<ListReviewsRequest>;
+) as unknown as Schema.Codec<ListReviewsRequest>;
 
 export type ListReviewsResponse = ReviewsListResponse;
 export const ListReviewsResponse =
@@ -10500,13 +10506,13 @@ export const RefundPurchasesSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RefundPurchasesSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<RefundPurchasesSubscriptionsRequest>;
 
 export interface RefundPurchasesSubscriptionsResponse {}
-export const RefundPurchasesSubscriptionsResponse: Schema.Schema<RefundPurchasesSubscriptionsResponse> =
+export const RefundPurchasesSubscriptionsResponse: Schema.Codec<RefundPurchasesSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<RefundPurchasesSubscriptionsResponse>;
+  ) as any as Schema.Codec<RefundPurchasesSubscriptionsResponse>;
 
 export type RefundPurchasesSubscriptionsError =
   | DefaultErrors
@@ -10547,7 +10553,7 @@ export const GetPurchasesSubscriptionsRequest =
       path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPurchasesSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetPurchasesSubscriptionsRequest>;
 
 export type GetPurchasesSubscriptionsResponse = SubscriptionPurchase;
 export const GetPurchasesSubscriptionsResponse =
@@ -10591,13 +10597,13 @@ export const CancelPurchasesSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelPurchasesSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CancelPurchasesSubscriptionsRequest>;
 
 export interface CancelPurchasesSubscriptionsResponse {}
-export const CancelPurchasesSubscriptionsResponse: Schema.Schema<CancelPurchasesSubscriptionsResponse> =
+export const CancelPurchasesSubscriptionsResponse: Schema.Codec<CancelPurchasesSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<CancelPurchasesSubscriptionsResponse>;
+  ) as any as Schema.Codec<CancelPurchasesSubscriptionsResponse>;
 
 export type CancelPurchasesSubscriptionsError =
   | DefaultErrors
@@ -10642,7 +10648,7 @@ export const DeferPurchasesSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeferPurchasesSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeferPurchasesSubscriptionsRequest>;
 
 export type DeferPurchasesSubscriptionsResponse =
   SubscriptionPurchasesDeferResponse;
@@ -10694,13 +10700,13 @@ export const AcknowledgePurchasesSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcknowledgePurchasesSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<AcknowledgePurchasesSubscriptionsRequest>;
 
 export interface AcknowledgePurchasesSubscriptionsResponse {}
-export const AcknowledgePurchasesSubscriptionsResponse: Schema.Schema<AcknowledgePurchasesSubscriptionsResponse> =
+export const AcknowledgePurchasesSubscriptionsResponse: Schema.Codec<AcknowledgePurchasesSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<AcknowledgePurchasesSubscriptionsResponse>;
+  ) as any as Schema.Codec<AcknowledgePurchasesSubscriptionsResponse>;
 
 export type AcknowledgePurchasesSubscriptionsError =
   | DefaultErrors
@@ -10742,13 +10748,13 @@ export const RevokePurchasesSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevokePurchasesSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<RevokePurchasesSubscriptionsRequest>;
 
 export interface RevokePurchasesSubscriptionsResponse {}
-export const RevokePurchasesSubscriptionsResponse: Schema.Schema<RevokePurchasesSubscriptionsResponse> =
+export const RevokePurchasesSubscriptionsResponse: Schema.Codec<RevokePurchasesSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<RevokePurchasesSubscriptionsResponse>;
+  ) as any as Schema.Codec<RevokePurchasesSubscriptionsResponse>;
 
 export type RevokePurchasesSubscriptionsError =
   | DefaultErrors
@@ -10806,7 +10812,7 @@ export const ListPurchasesVoidedpurchasesRequest =
       path: "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPurchasesVoidedpurchasesRequest>;
+  ) as unknown as Schema.Codec<ListPurchasesVoidedpurchasesRequest>;
 
 export type ListPurchasesVoidedpurchasesResponse = VoidedPurchasesListResponse;
 export const ListPurchasesVoidedpurchasesResponse =
@@ -10846,7 +10852,7 @@ export const Getproductpurchasev2PurchasesProductsv2Request =
       path: "androidpublisher/v3/applications/{packageName}/purchases/productsv2/tokens/{token}",
     }),
     svc,
-  ) as unknown as Schema.Schema<Getproductpurchasev2PurchasesProductsv2Request>;
+  ) as unknown as Schema.Codec<Getproductpurchasev2PurchasesProductsv2Request>;
 
 export type Getproductpurchasev2PurchasesProductsv2Response = ProductPurchaseV2;
 export const Getproductpurchasev2PurchasesProductsv2Response =
@@ -10895,13 +10901,13 @@ export const AcknowledgePurchasesProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcknowledgePurchasesProductsRequest>;
+  ) as unknown as Schema.Codec<AcknowledgePurchasesProductsRequest>;
 
 export interface AcknowledgePurchasesProductsResponse {}
-export const AcknowledgePurchasesProductsResponse: Schema.Schema<AcknowledgePurchasesProductsResponse> =
+export const AcknowledgePurchasesProductsResponse: Schema.Codec<AcknowledgePurchasesProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<AcknowledgePurchasesProductsResponse>;
+  ) as any as Schema.Codec<AcknowledgePurchasesProductsResponse>;
 
 export type AcknowledgePurchasesProductsError =
   | DefaultErrors
@@ -10942,7 +10948,7 @@ export const GetPurchasesProductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPurchasesProductsRequest>;
+  ) as unknown as Schema.Codec<GetPurchasesProductsRequest>;
 
 export type GetPurchasesProductsResponse = ProductPurchase;
 export const GetPurchasesProductsResponse =
@@ -10983,13 +10989,13 @@ export const ConsumePurchasesProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConsumePurchasesProductsRequest>;
+  ) as unknown as Schema.Codec<ConsumePurchasesProductsRequest>;
 
 export interface ConsumePurchasesProductsResponse {}
-export const ConsumePurchasesProductsResponse: Schema.Schema<ConsumePurchasesProductsResponse> =
+export const ConsumePurchasesProductsResponse: Schema.Codec<ConsumePurchasesProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ConsumePurchasesProductsResponse>;
+  ) as any as Schema.Codec<ConsumePurchasesProductsResponse>;
 
 export type ConsumePurchasesProductsError =
   | DefaultErrors
@@ -11027,7 +11033,7 @@ export const GetPurchasesSubscriptionsv2Request =
       path: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPurchasesSubscriptionsv2Request>;
+  ) as unknown as Schema.Codec<GetPurchasesSubscriptionsv2Request>;
 
 export type GetPurchasesSubscriptionsv2Response = SubscriptionPurchaseV2;
 export const GetPurchasesSubscriptionsv2Response =
@@ -11071,7 +11077,7 @@ export const CancelPurchasesSubscriptionsv2Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelPurchasesSubscriptionsv2Request>;
+  ) as unknown as Schema.Codec<CancelPurchasesSubscriptionsv2Request>;
 
 export type CancelPurchasesSubscriptionsv2Response =
   CancelSubscriptionPurchaseResponse;
@@ -11118,7 +11124,7 @@ export const DeferPurchasesSubscriptionsv2Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeferPurchasesSubscriptionsv2Request>;
+  ) as unknown as Schema.Codec<DeferPurchasesSubscriptionsv2Request>;
 
 export type DeferPurchasesSubscriptionsv2Response =
   DeferSubscriptionPurchaseResponse;
@@ -11165,7 +11171,7 @@ export const RevokePurchasesSubscriptionsv2Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevokePurchasesSubscriptionsv2Request>;
+  ) as unknown as Schema.Codec<RevokePurchasesSubscriptionsv2Request>;
 
 export type RevokePurchasesSubscriptionsv2Response =
   RevokeSubscriptionPurchaseResponse;
@@ -11208,7 +11214,7 @@ export const ListGeneratedapksRequest =
       path: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGeneratedapksRequest>;
+  ) as unknown as Schema.Codec<ListGeneratedapksRequest>;
 
 export type ListGeneratedapksResponse = GeneratedApksListResponse;
 export const ListGeneratedapksResponse =
@@ -11248,13 +11254,13 @@ export const DownloadGeneratedapksRequest =
       path: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}/downloads/{downloadId}:download",
     }),
     svc,
-  ) as unknown as Schema.Schema<DownloadGeneratedapksRequest>;
+  ) as unknown as Schema.Codec<DownloadGeneratedapksRequest>;
 
 export interface DownloadGeneratedapksResponse {}
-export const DownloadGeneratedapksResponse: Schema.Schema<DownloadGeneratedapksResponse> =
+export const DownloadGeneratedapksResponse: Schema.Codec<DownloadGeneratedapksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DownloadGeneratedapksResponse>;
+  ) as any as Schema.Codec<DownloadGeneratedapksResponse>;
 
 export type DownloadGeneratedapksError = DefaultErrors | NotFound | Forbidden;
 
@@ -11290,7 +11296,7 @@ export const PatchGrantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchGrantsRequest>;
+) as unknown as Schema.Codec<PatchGrantsRequest>;
 
 export type PatchGrantsResponse = Grant;
 export const PatchGrantsResponse = /*@__PURE__*/ /*#__PURE__*/ Grant;
@@ -11324,13 +11330,13 @@ export const DeleteGrantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "androidpublisher/v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteGrantsRequest>;
+) as unknown as Schema.Codec<DeleteGrantsRequest>;
 
 export interface DeleteGrantsResponse {}
-export const DeleteGrantsResponse: Schema.Schema<DeleteGrantsResponse> =
+export const DeleteGrantsResponse: Schema.Codec<DeleteGrantsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteGrantsResponse>;
+  ) as any as Schema.Codec<DeleteGrantsResponse>;
 
 export type DeleteGrantsError =
   | DefaultErrors
@@ -11368,7 +11374,7 @@ export const CreateGrantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CreateGrantsRequest>;
+) as unknown as Schema.Codec<CreateGrantsRequest>;
 
 export type CreateGrantsResponse = Grant;
 export const CreateGrantsResponse = /*@__PURE__*/ /*#__PURE__*/ Grant;
@@ -11415,7 +11421,7 @@ export const InsertInappproductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertInappproductsRequest>;
+  ) as unknown as Schema.Codec<InsertInappproductsRequest>;
 
 export type InsertInappproductsResponse = InAppProduct;
 export const InsertInappproductsResponse =
@@ -11457,7 +11463,7 @@ export const BatchGetInappproductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/inappproducts:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetInappproductsRequest>;
+  ) as unknown as Schema.Codec<BatchGetInappproductsRequest>;
 
 export type BatchGetInappproductsResponse = InappproductsBatchGetResponse;
 export const BatchGetInappproductsResponse =
@@ -11500,7 +11506,7 @@ export const ListInappproductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/inappproducts",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInappproductsRequest>;
+  ) as unknown as Schema.Codec<ListInappproductsRequest>;
 
 export type ListInappproductsResponse = InappproductsListResponse;
 export const ListInappproductsResponse =
@@ -11555,7 +11561,7 @@ export const PatchInappproductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInappproductsRequest>;
+  ) as unknown as Schema.Codec<PatchInappproductsRequest>;
 
 export type PatchInappproductsResponse = InAppProduct;
 export const PatchInappproductsResponse =
@@ -11606,13 +11612,13 @@ export const DeleteInappproductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInappproductsRequest>;
+  ) as unknown as Schema.Codec<DeleteInappproductsRequest>;
 
 export interface DeleteInappproductsResponse {}
-export const DeleteInappproductsResponse: Schema.Schema<DeleteInappproductsResponse> =
+export const DeleteInappproductsResponse: Schema.Codec<DeleteInappproductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteInappproductsResponse>;
+  ) as any as Schema.Codec<DeleteInappproductsResponse>;
 
 export type DeleteInappproductsError =
   | DefaultErrors
@@ -11651,13 +11657,13 @@ export const BatchDeleteInappproductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteInappproductsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteInappproductsRequest>;
 
 export interface BatchDeleteInappproductsResponse {}
-export const BatchDeleteInappproductsResponse: Schema.Schema<BatchDeleteInappproductsResponse> =
+export const BatchDeleteInappproductsResponse: Schema.Codec<BatchDeleteInappproductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<BatchDeleteInappproductsResponse>;
+  ) as any as Schema.Codec<BatchDeleteInappproductsResponse>;
 
 export type BatchDeleteInappproductsError =
   | DefaultErrors
@@ -11695,7 +11701,7 @@ export const GetInappproductsRequest =
       path: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInappproductsRequest>;
+  ) as unknown as Schema.Codec<GetInappproductsRequest>;
 
 export type GetInappproductsResponse = InAppProduct;
 export const GetInappproductsResponse =
@@ -11755,7 +11761,7 @@ export const UpdateInappproductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateInappproductsRequest>;
+  ) as unknown as Schema.Codec<UpdateInappproductsRequest>;
 
 export type UpdateInappproductsResponse = InAppProduct;
 export const UpdateInappproductsResponse =
@@ -11798,7 +11804,7 @@ export const BatchUpdateInappproductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateInappproductsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateInappproductsRequest>;
 
 export type BatchUpdateInappproductsResponse = InappproductsBatchUpdateResponse;
 export const BatchUpdateInappproductsResponse =
@@ -11841,7 +11847,7 @@ export const RefundexternaltransactionExternaltransactionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RefundexternaltransactionExternaltransactionsRequest>;
+  ) as unknown as Schema.Codec<RefundexternaltransactionExternaltransactionsRequest>;
 
 export type RefundexternaltransactionExternaltransactionsResponse =
   ExternalTransaction;
@@ -11878,7 +11884,7 @@ export const GetexternaltransactionExternaltransactionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "androidpublisher/v3/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetexternaltransactionExternaltransactionsRequest>;
+  ) as unknown as Schema.Codec<GetexternaltransactionExternaltransactionsRequest>;
 
 export type GetexternaltransactionExternaltransactionsResponse =
   ExternalTransaction;
@@ -11925,7 +11931,7 @@ export const CreateexternaltransactionExternaltransactionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateexternaltransactionExternaltransactionsRequest>;
+  ) as unknown as Schema.Codec<CreateexternaltransactionExternaltransactionsRequest>;
 
 export type CreateexternaltransactionExternaltransactionsResponse =
   ExternalTransaction;
@@ -11966,7 +11972,7 @@ export const UploadapkInternalappsharingartifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadapkInternalappsharingartifactsRequest>;
+  ) as unknown as Schema.Codec<UploadapkInternalappsharingartifactsRequest>;
 
 export type UploadapkInternalappsharingartifactsResponse =
   InternalAppSharingArtifact;
@@ -12007,7 +12013,7 @@ export const UploadbundleInternalappsharingartifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadbundleInternalappsharingartifactsRequest>;
+  ) as unknown as Schema.Codec<UploadbundleInternalappsharingartifactsRequest>;
 
 export type UploadbundleInternalappsharingartifactsResponse =
   InternalAppSharingArtifact;
@@ -12051,7 +12057,7 @@ export const BatchgetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidpublisher/v3/applications/{packageName}/orders:batchGet",
   }),
   svc,
-) as unknown as Schema.Schema<BatchgetOrdersRequest>;
+) as unknown as Schema.Codec<BatchgetOrdersRequest>;
 
 export type BatchgetOrdersResponse = BatchGetOrdersResponse;
 export const BatchgetOrdersResponse =
@@ -12087,7 +12093,7 @@ export const GetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidpublisher/v3/applications/{packageName}/orders/{orderId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetOrdersRequest>;
+) as unknown as Schema.Codec<GetOrdersRequest>;
 
 export type GetOrdersResponse = Order;
 export const GetOrdersResponse = /*@__PURE__*/ /*#__PURE__*/ Order;
@@ -12126,13 +12132,13 @@ export const RefundOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<RefundOrdersRequest>;
+) as unknown as Schema.Codec<RefundOrdersRequest>;
 
 export interface RefundOrdersResponse {}
-export const RefundOrdersResponse: Schema.Schema<RefundOrdersResponse> =
+export const RefundOrdersResponse: Schema.Codec<RefundOrdersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<RefundOrdersResponse>;
+  ) as any as Schema.Codec<RefundOrdersResponse>;
 
 export type RefundOrdersError =
   | DefaultErrors

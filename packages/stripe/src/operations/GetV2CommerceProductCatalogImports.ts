@@ -3,6 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV2CommerceProductCatalogImportsInput {
+  created?: string;
+  created_gt?: string;
+  created_gte?: string;
+  created_lt?: string;
+  created_lte?: string;
+  feed_type?: "inventory" | "pricing" | "product" | "promotion";
+  limit?: number;
+  status?:
+    | "awaiting_upload"
+    | "failed"
+    | "processing"
+    | "succeeded"
+    | "succeeded_with_errors";
+}
 export const GetV2CommerceProductCatalogImportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
@@ -25,11 +40,53 @@ export const GetV2CommerceProductCatalogImportsInput =
     ),
   }).pipe(
     T.Http({ method: "GET", path: "/v2/commerce/product_catalog/imports" }),
-  );
-export type GetV2CommerceProductCatalogImportsInput =
-  typeof GetV2CommerceProductCatalogImportsInput.Type;
+  ) as unknown as Schema.Codec<GetV2CommerceProductCatalogImportsInput>;
 
 // Output Schema
+export interface GetV2CommerceProductCatalogImportsOutput {
+  data: {
+    created: string;
+    feed_type: "inventory" | "pricing" | "product" | "promotion";
+    id: string;
+    livemode: boolean;
+    metadata: Record<string, string>;
+    mode: "replace" | "upsert";
+    object: "v2.commerce.product_catalog_import";
+    status:
+      | "awaiting_upload"
+      | "failed"
+      | "processing"
+      | "succeeded"
+      | "succeeded_with_errors";
+    status_details?: {
+      awaiting_upload?: { upload_url: { expires_at: string; url: string } };
+      failed?: {
+        code: "file_not_found" | "internal_error" | "invalid_file";
+        failure_message: string;
+        type: "cannot_proceed" | "transient_failure";
+      };
+      processing?: { error_count: string; success_count: string };
+      succeeded?: { success_count: string };
+      succeeded_with_errors?: {
+        error_count: string;
+        error_file: {
+          content_type: string;
+          download_url: { expires_at: string; url: string };
+          size: string;
+        };
+        samples: {
+          error_message: string;
+          field: string;
+          id: string;
+          row: string;
+        }[];
+        success_count: string;
+      };
+    };
+  }[];
+  next_page_url: string | null;
+  previous_page_url: string | null;
+}
 export const GetV2CommerceProductCatalogImportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -113,9 +170,7 @@ export const GetV2CommerceProductCatalogImportsOutput =
     ),
     next_page_url: Schema.NullOr(Schema.String),
     previous_page_url: Schema.NullOr(Schema.String),
-  });
-export type GetV2CommerceProductCatalogImportsOutput =
-  typeof GetV2CommerceProductCatalogImportsOutput.Type;
+  }) as unknown as Schema.Codec<GetV2CommerceProductCatalogImportsOutput>;
 
 // The operation
 /**

@@ -3,6 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostTreasuryFinancialAccountsFinancialAccountFeaturesInput {
+  financial_account: string;
+  card_issuing?: { requested: boolean };
+  deposit_insurance?: { requested: boolean };
+  expand?: string[];
+  financial_addresses?: { aba?: { requested: boolean } };
+  inbound_transfers?: { ach?: { requested: boolean } };
+  intra_stripe_flows?: { requested: boolean };
+  outbound_payments?: {
+    ach?: { requested: boolean };
+    us_domestic_wire?: { requested: boolean };
+  };
+  outbound_transfers?: {
+    ach?: { requested: boolean };
+    us_domestic_wire?: { requested: boolean };
+  };
+}
 export const PostTreasuryFinancialAccountsFinancialAccountFeaturesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     financial_account: Schema.String.pipe(T.PathParam()),
@@ -74,11 +91,218 @@ export const PostTreasuryFinancialAccountsFinancialAccountFeaturesInput =
       path: "/v1/treasury/financial_accounts/{financial_account}/features",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostTreasuryFinancialAccountsFinancialAccountFeaturesInput =
-  typeof PostTreasuryFinancialAccountsFinancialAccountFeaturesInput.Type;
+  ) as unknown as Schema.Codec<PostTreasuryFinancialAccountsFinancialAccountFeaturesInput>;
 
 // Output Schema
+export interface PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput {
+  card_issuing?: {
+    requested: boolean;
+    status: "active" | "pending" | "restricted";
+    status_details: {
+      code:
+        | "activating"
+        | "capability_not_requested"
+        | "financial_account_closed"
+        | "rejected_other"
+        | "rejected_unsupported_business"
+        | "requirements_past_due"
+        | "requirements_pending_verification"
+        | "restricted_by_platform"
+        | "restricted_other";
+      resolution:
+        | "contact_stripe"
+        | "provide_information"
+        | "remove_restriction"
+        | null;
+      restriction?: "inbound_flows" | "outbound_flows";
+    }[];
+  };
+  deposit_insurance?: {
+    requested: boolean;
+    status: "active" | "pending" | "restricted";
+    status_details: {
+      code:
+        | "activating"
+        | "capability_not_requested"
+        | "financial_account_closed"
+        | "rejected_other"
+        | "rejected_unsupported_business"
+        | "requirements_past_due"
+        | "requirements_pending_verification"
+        | "restricted_by_platform"
+        | "restricted_other";
+      resolution:
+        | "contact_stripe"
+        | "provide_information"
+        | "remove_restriction"
+        | null;
+      restriction?: "inbound_flows" | "outbound_flows";
+    }[];
+  };
+  financial_addresses?: {
+    aba?: {
+      requested: boolean;
+      status: "active" | "pending" | "restricted";
+      status_details: {
+        code:
+          | "activating"
+          | "capability_not_requested"
+          | "financial_account_closed"
+          | "rejected_other"
+          | "rejected_unsupported_business"
+          | "requirements_past_due"
+          | "requirements_pending_verification"
+          | "restricted_by_platform"
+          | "restricted_other";
+        resolution:
+          | "contact_stripe"
+          | "provide_information"
+          | "remove_restriction"
+          | null;
+        restriction?: "inbound_flows" | "outbound_flows";
+      }[];
+    };
+  };
+  inbound_transfers?: {
+    ach?: {
+      requested: boolean;
+      status: "active" | "pending" | "restricted";
+      status_details: {
+        code:
+          | "activating"
+          | "capability_not_requested"
+          | "financial_account_closed"
+          | "rejected_other"
+          | "rejected_unsupported_business"
+          | "requirements_past_due"
+          | "requirements_pending_verification"
+          | "restricted_by_platform"
+          | "restricted_other";
+        resolution:
+          | "contact_stripe"
+          | "provide_information"
+          | "remove_restriction"
+          | null;
+        restriction?: "inbound_flows" | "outbound_flows";
+      }[];
+    };
+  };
+  intra_stripe_flows?: {
+    requested: boolean;
+    status: "active" | "pending" | "restricted";
+    status_details: {
+      code:
+        | "activating"
+        | "capability_not_requested"
+        | "financial_account_closed"
+        | "rejected_other"
+        | "rejected_unsupported_business"
+        | "requirements_past_due"
+        | "requirements_pending_verification"
+        | "restricted_by_platform"
+        | "restricted_other";
+      resolution:
+        | "contact_stripe"
+        | "provide_information"
+        | "remove_restriction"
+        | null;
+      restriction?: "inbound_flows" | "outbound_flows";
+    }[];
+  };
+  object: "treasury.financial_account_features";
+  outbound_payments?: {
+    ach?: {
+      requested: boolean;
+      status: "active" | "pending" | "restricted";
+      status_details: {
+        code:
+          | "activating"
+          | "capability_not_requested"
+          | "financial_account_closed"
+          | "rejected_other"
+          | "rejected_unsupported_business"
+          | "requirements_past_due"
+          | "requirements_pending_verification"
+          | "restricted_by_platform"
+          | "restricted_other";
+        resolution:
+          | "contact_stripe"
+          | "provide_information"
+          | "remove_restriction"
+          | null;
+        restriction?: "inbound_flows" | "outbound_flows";
+      }[];
+    };
+    us_domestic_wire?: {
+      requested: boolean;
+      status: "active" | "pending" | "restricted";
+      status_details: {
+        code:
+          | "activating"
+          | "capability_not_requested"
+          | "financial_account_closed"
+          | "rejected_other"
+          | "rejected_unsupported_business"
+          | "requirements_past_due"
+          | "requirements_pending_verification"
+          | "restricted_by_platform"
+          | "restricted_other";
+        resolution:
+          | "contact_stripe"
+          | "provide_information"
+          | "remove_restriction"
+          | null;
+        restriction?: "inbound_flows" | "outbound_flows";
+      }[];
+    };
+  };
+  outbound_transfers?: {
+    ach?: {
+      requested: boolean;
+      status: "active" | "pending" | "restricted";
+      status_details: {
+        code:
+          | "activating"
+          | "capability_not_requested"
+          | "financial_account_closed"
+          | "rejected_other"
+          | "rejected_unsupported_business"
+          | "requirements_past_due"
+          | "requirements_pending_verification"
+          | "restricted_by_platform"
+          | "restricted_other";
+        resolution:
+          | "contact_stripe"
+          | "provide_information"
+          | "remove_restriction"
+          | null;
+        restriction?: "inbound_flows" | "outbound_flows";
+      }[];
+    };
+    us_domestic_wire?: {
+      requested: boolean;
+      status: "active" | "pending" | "restricted";
+      status_details: {
+        code:
+          | "activating"
+          | "capability_not_requested"
+          | "financial_account_closed"
+          | "rejected_other"
+          | "rejected_unsupported_business"
+          | "requirements_past_due"
+          | "requirements_pending_verification"
+          | "restricted_by_platform"
+          | "restricted_other";
+        resolution:
+          | "contact_stripe"
+          | "provide_information"
+          | "remove_restriction"
+          | null;
+        restriction?: "inbound_flows" | "outbound_flows";
+      }[];
+    };
+  };
+}
 export const PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     card_issuing: Schema.optional(
@@ -377,9 +601,7 @@ export const PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput =
         ),
       }),
     ),
-  });
-export type PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput =
-  typeof PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput.Type;
+  }) as unknown as Schema.Codec<PostTreasuryFinancialAccountsFinancialAccountFeaturesOutput>;
 
 // The operation
 /**

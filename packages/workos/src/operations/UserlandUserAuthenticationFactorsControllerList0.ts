@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserAuthenticationFactorsControllerList0Input {
+  userlandUserId: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const UserlandUserAuthenticationFactorsControllerList0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userlandUserId: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,23 @@ export const UserlandUserAuthenticationFactorsControllerList0Input =
       method: "GET",
       path: "/user_management/users/{userlandUserId}/auth_factors",
     }),
-  );
-export type UserlandUserAuthenticationFactorsControllerList0Input =
-  typeof UserlandUserAuthenticationFactorsControllerList0Input.Type;
+  ) as unknown as Schema.Codec<UserlandUserAuthenticationFactorsControllerList0Input>;
 
 // Output Schema
+export interface UserlandUserAuthenticationFactorsControllerList0Output {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    type?: "generic_otp" | "sms" | "totp" | "webauthn";
+    user_id?: string;
+    sms?: { phone_number: string };
+    totp?: { issuer: string; user: string };
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const UserlandUserAuthenticationFactorsControllerList0Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -55,9 +74,7 @@ export const UserlandUserAuthenticationFactorsControllerList0Output =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type UserlandUserAuthenticationFactorsControllerList0Output =
-  typeof UserlandUserAuthenticationFactorsControllerList0Output.Type;
+  }) as unknown as Schema.Codec<UserlandUserAuthenticationFactorsControllerList0Output>;
 
 // The operation
 /**

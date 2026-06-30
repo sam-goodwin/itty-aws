@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteTerminalLocationsLocationInput {
+  location: string;
+}
 export const DeleteTerminalLocationsLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -12,19 +15,20 @@ export const DeleteTerminalLocationsLocationInput =
       path: "/v1/terminal/locations/{location}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteTerminalLocationsLocationInput =
-  typeof DeleteTerminalLocationsLocationInput.Type;
+  ) as unknown as Schema.Codec<DeleteTerminalLocationsLocationInput>;
 
 // Output Schema
+export interface DeleteTerminalLocationsLocationOutput {
+  deleted: true;
+  id: string;
+  object: "terminal.location";
+}
 export const DeleteTerminalLocationsLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["terminal.location"]),
-  });
-export type DeleteTerminalLocationsLocationOutput =
-  typeof DeleteTerminalLocationsLocationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteTerminalLocationsLocationOutput>;
 
 // The operation
 /**

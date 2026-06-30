@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface ToggleGroupPrivateEndpointRegionalModeInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ToggleGroupPrivateEndpointRegionalModeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const ToggleGroupPrivateEndpointRegionalModeInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode",
     }),
-  );
-export type ToggleGroupPrivateEndpointRegionalModeInput =
-  typeof ToggleGroupPrivateEndpointRegionalModeInput.Type;
+  ) as unknown as Schema.Codec<ToggleGroupPrivateEndpointRegionalModeInput>;
 
 // Output Schema
+export type ToggleGroupPrivateEndpointRegionalModeOutput = void;
 export const ToggleGroupPrivateEndpointRegionalModeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ToggleGroupPrivateEndpointRegionalModeOutput =
-  typeof ToggleGroupPrivateEndpointRegionalModeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupPrivateEndpointRegionalModeOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface RunMobileFriendlyTestRequest {
   requestScreenshot?: boolean;
 }
 
-export const RunMobileFriendlyTestRequest: Schema.Schema<RunMobileFriendlyTestRequest> =
+export const RunMobileFriendlyTestRequest: Schema.Codec<RunMobileFriendlyTestRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     requestScreenshot: Schema.optional(Schema.Boolean),
@@ -44,7 +44,7 @@ export interface InspectUrlIndexRequest {
   siteUrl?: string;
 }
 
-export const InspectUrlIndexRequest: Schema.Schema<InspectUrlIndexRequest> =
+export const InspectUrlIndexRequest: Schema.Codec<InspectUrlIndexRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inspectionUrl: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface RichResultsIssue {
   severity?: "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR" | (string & {});
 }
 
-export const RichResultsIssue: Schema.Schema<RichResultsIssue> =
+export const RichResultsIssue: Schema.Codec<RichResultsIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueMessage: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface Item {
   issues?: ReadonlyArray<RichResultsIssue>;
 }
 
-export const Item: Schema.Schema<Item> =
+export const Item: Schema.Codec<Item> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     issues: Schema.optional(Schema.Array(RichResultsIssue)),
@@ -84,7 +84,7 @@ export interface DetectedItems {
   items?: ReadonlyArray<Item>;
 }
 
-export const DetectedItems: Schema.Schema<DetectedItems> =
+export const DetectedItems: Schema.Codec<DetectedItems> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     richResultType: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Item)),
@@ -109,7 +109,7 @@ export interface ApiDimensionFilter {
     | (string & {});
 }
 
-export const ApiDimensionFilter: Schema.Schema<ApiDimensionFilter> =
+export const ApiDimensionFilter: Schema.Codec<ApiDimensionFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
@@ -121,7 +121,7 @@ export interface ApiDimensionFilterGroup {
   filters?: ReadonlyArray<ApiDimensionFilter>;
 }
 
-export const ApiDimensionFilterGroup: Schema.Schema<ApiDimensionFilterGroup> =
+export const ApiDimensionFilterGroup: Schema.Codec<ApiDimensionFilterGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupType: Schema.optional(Schema.String),
     filters: Schema.optional(Schema.Array(ApiDimensionFilter)),
@@ -183,7 +183,7 @@ export interface SearchAnalyticsQueryRequest {
   endDate?: string;
 }
 
-export const SearchAnalyticsQueryRequest: Schema.Schema<SearchAnalyticsQueryRequest> =
+export const SearchAnalyticsQueryRequest: Schema.Codec<SearchAnalyticsQueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startRow: Schema.optional(Schema.Number),
     startDate: Schema.optional(Schema.String),
@@ -218,7 +218,7 @@ export interface WmxSitemapContent {
     | (string & {});
 }
 
-export const WmxSitemapContent: Schema.Schema<WmxSitemapContent> =
+export const WmxSitemapContent: Schema.Codec<WmxSitemapContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     submitted: Schema.optional(Schema.String),
     indexed: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface WmxSitemap {
   path?: string;
 }
 
-export const WmxSitemap: Schema.Schema<WmxSitemap> =
+export const WmxSitemap: Schema.Codec<WmxSitemap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isSitemapsIndex: Schema.optional(Schema.Boolean),
     warnings: Schema.optional(Schema.String),
@@ -274,7 +274,7 @@ export interface AmpIssue {
   issueMessage?: string;
 }
 
-export const AmpIssue: Schema.Schema<AmpIssue> =
+export const AmpIssue: Schema.Codec<AmpIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     issueMessage: Schema.optional(Schema.String),
@@ -285,7 +285,7 @@ export interface BlockedResource {
   url?: string;
 }
 
-export const BlockedResource: Schema.Schema<BlockedResource> =
+export const BlockedResource: Schema.Codec<BlockedResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "BlockedResource" });
@@ -295,7 +295,7 @@ export interface ResourceIssue {
   blockedResource?: BlockedResource;
 }
 
-export const ResourceIssue: Schema.Schema<ResourceIssue> =
+export const ResourceIssue: Schema.Codec<ResourceIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blockedResource: Schema.optional(BlockedResource),
   }).annotate({ identifier: "ResourceIssue" });
@@ -308,7 +308,7 @@ export interface ApiDataRow {
   impressions?: number;
 }
 
-export const ApiDataRow: Schema.Schema<ApiDataRow> =
+export const ApiDataRow: Schema.Codec<ApiDataRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(Schema.Number),
     ctr: Schema.optional(Schema.Number),
@@ -324,7 +324,7 @@ export interface Image {
   data?: string;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -337,7 +337,7 @@ export interface Metadata {
   firstIncompleteHour?: string;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
+export const Metadata: Schema.Codec<Metadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstIncompleteDate: Schema.optional(Schema.String),
     firstIncompleteHour: Schema.optional(Schema.String),
@@ -357,7 +357,7 @@ export interface SearchAnalyticsQueryResponse {
     | (string & {});
 }
 
-export const SearchAnalyticsQueryResponse: Schema.Schema<SearchAnalyticsQueryResponse> =
+export const SearchAnalyticsQueryResponse: Schema.Codec<SearchAnalyticsQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rows: Schema.optional(Schema.Array(ApiDataRow)),
     metadata: Schema.optional(Metadata),
@@ -417,7 +417,7 @@ export interface AmpInspectionResult {
   ampUrl?: string;
 }
 
-export const AmpInspectionResult: Schema.Schema<AmpInspectionResult> =
+export const AmpInspectionResult: Schema.Codec<AmpInspectionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     robotsTxtState: Schema.optional(Schema.String),
     indexingState: Schema.optional(Schema.String),
@@ -446,7 +446,7 @@ export interface MobileUsabilityIssue {
   message?: string;
 }
 
-export const MobileUsabilityIssue: Schema.Schema<MobileUsabilityIssue> =
+export const MobileUsabilityIssue: Schema.Codec<MobileUsabilityIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     issueType: Schema.optional(Schema.String),
@@ -466,7 +466,7 @@ export interface WmxSite {
     | (string & {});
 }
 
-export const WmxSite: Schema.Schema<WmxSite> =
+export const WmxSite: Schema.Codec<WmxSite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     siteUrl: Schema.optional(Schema.String),
     permissionLevel: Schema.optional(Schema.String),
@@ -477,7 +477,7 @@ export interface SitesListResponse {
   siteEntry?: ReadonlyArray<WmxSite>;
 }
 
-export const SitesListResponse: Schema.Schema<SitesListResponse> =
+export const SitesListResponse: Schema.Codec<SitesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     siteEntry: Schema.optional(Schema.Array(WmxSite)),
   }).annotate({ identifier: "SitesListResponse" });
@@ -495,7 +495,7 @@ export interface RichResultsInspectionResult {
   detectedItems?: ReadonlyArray<DetectedItems>;
 }
 
-export const RichResultsInspectionResult: Schema.Schema<RichResultsInspectionResult> =
+export const RichResultsInspectionResult: Schema.Codec<RichResultsInspectionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verdict: Schema.optional(Schema.String),
     detectedItems: Schema.optional(Schema.Array(DetectedItems)),
@@ -559,7 +559,7 @@ export interface IndexStatusInspectionResult {
   lastCrawlTime?: string;
 }
 
-export const IndexStatusInspectionResult: Schema.Schema<IndexStatusInspectionResult> =
+export const IndexStatusInspectionResult: Schema.Codec<IndexStatusInspectionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageFetchState: Schema.optional(Schema.String),
     indexingState: Schema.optional(Schema.String),
@@ -587,7 +587,7 @@ export interface MobileUsabilityInspectionResult {
   issues?: ReadonlyArray<MobileUsabilityIssue>;
 }
 
-export const MobileUsabilityInspectionResult: Schema.Schema<MobileUsabilityInspectionResult> =
+export const MobileUsabilityInspectionResult: Schema.Codec<MobileUsabilityInspectionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verdict: Schema.optional(Schema.String),
     issues: Schema.optional(Schema.Array(MobileUsabilityIssue)),
@@ -606,7 +606,7 @@ export interface UrlInspectionResult {
   mobileUsabilityResult?: MobileUsabilityInspectionResult;
 }
 
-export const UrlInspectionResult: Schema.Schema<UrlInspectionResult> =
+export const UrlInspectionResult: Schema.Codec<UrlInspectionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     richResultsResult: Schema.optional(RichResultsInspectionResult),
     ampResult: Schema.optional(AmpInspectionResult),
@@ -620,7 +620,7 @@ export interface SitemapsListResponse {
   sitemap?: ReadonlyArray<WmxSitemap>;
 }
 
-export const SitemapsListResponse: Schema.Schema<SitemapsListResponse> =
+export const SitemapsListResponse: Schema.Codec<SitemapsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sitemap: Schema.optional(Schema.Array(WmxSitemap)),
   }).annotate({ identifier: "SitemapsListResponse" });
@@ -638,7 +638,7 @@ export interface MobileFriendlyIssue {
     | (string & {});
 }
 
-export const MobileFriendlyIssue: Schema.Schema<MobileFriendlyIssue> =
+export const MobileFriendlyIssue: Schema.Codec<MobileFriendlyIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rule: Schema.optional(Schema.String),
   }).annotate({ identifier: "MobileFriendlyIssue" });
@@ -655,7 +655,7 @@ export interface TestStatus {
   details?: string;
 }
 
-export const TestStatus: Schema.Schema<TestStatus> =
+export const TestStatus: Schema.Codec<TestStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     details: Schema.optional(Schema.String),
@@ -678,7 +678,7 @@ export interface RunMobileFriendlyTestResponse {
   testStatus?: TestStatus;
 }
 
-export const RunMobileFriendlyTestResponse: Schema.Schema<RunMobileFriendlyTestResponse> =
+export const RunMobileFriendlyTestResponse: Schema.Codec<RunMobileFriendlyTestResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceIssues: Schema.optional(Schema.Array(ResourceIssue)),
     mobileFriendliness: Schema.optional(Schema.String),
@@ -692,7 +692,7 @@ export interface InspectUrlIndexResponse {
   inspectionResult?: UrlInspectionResult;
 }
 
-export const InspectUrlIndexResponse: Schema.Schema<InspectUrlIndexResponse> =
+export const InspectUrlIndexResponse: Schema.Codec<InspectUrlIndexResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inspectionResult: Schema.optional(UrlInspectionResult),
   }).annotate({ identifier: "InspectUrlIndexResponse" });
@@ -767,13 +767,13 @@ export const DeleteSitemapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteSitemapsRequest>;
+) as unknown as Schema.Codec<DeleteSitemapsRequest>;
 
 export interface DeleteSitemapsResponse {}
-export const DeleteSitemapsResponse: Schema.Schema<DeleteSitemapsResponse> =
+export const DeleteSitemapsResponse: Schema.Codec<DeleteSitemapsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteSitemapsResponse>;
+  ) as any as Schema.Codec<DeleteSitemapsResponse>;
 
 export type DeleteSitemapsError =
   | DefaultErrors
@@ -809,7 +809,7 @@ export const ListSitemapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "webmasters/v3/sites/{siteUrl}/sitemaps" }),
   svc,
-) as unknown as Schema.Schema<ListSitemapsRequest>;
+) as unknown as Schema.Codec<ListSitemapsRequest>;
 
 export type ListSitemapsResponse = SitemapsListResponse;
 export const ListSitemapsResponse =
@@ -846,13 +846,13 @@ export const SubmitSitemapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<SubmitSitemapsRequest>;
+) as unknown as Schema.Codec<SubmitSitemapsRequest>;
 
 export interface SubmitSitemapsResponse {}
-export const SubmitSitemapsResponse: Schema.Schema<SubmitSitemapsResponse> =
+export const SubmitSitemapsResponse: Schema.Codec<SubmitSitemapsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<SubmitSitemapsResponse>;
+  ) as any as Schema.Codec<SubmitSitemapsResponse>;
 
 export type SubmitSitemapsError =
   | DefaultErrors
@@ -889,7 +889,7 @@ export const GetSitemapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
   }),
   svc,
-) as unknown as Schema.Schema<GetSitemapsRequest>;
+) as unknown as Schema.Codec<GetSitemapsRequest>;
 
 export type GetSitemapsResponse = WmxSitemap;
 export const GetSitemapsResponse = /*@__PURE__*/ /*#__PURE__*/ WmxSitemap;
@@ -918,13 +918,13 @@ export const DeleteSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "webmasters/v3/sites/{siteUrl}" }),
   svc,
-) as unknown as Schema.Schema<DeleteSitesRequest>;
+) as unknown as Schema.Codec<DeleteSitesRequest>;
 
 export interface DeleteSitesResponse {}
-export const DeleteSitesResponse: Schema.Schema<DeleteSitesResponse> =
+export const DeleteSitesResponse: Schema.Codec<DeleteSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteSitesResponse>;
+  ) as any as Schema.Codec<DeleteSitesResponse>;
 
 export type DeleteSitesError =
   | DefaultErrors
@@ -952,7 +952,7 @@ export const ListSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "webmasters/v3/sites" }),
   svc,
-) as unknown as Schema.Schema<ListSitesRequest>;
+) as unknown as Schema.Codec<ListSitesRequest>;
 
 export type ListSitesResponse = SitesListResponse;
 export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SitesListResponse;
@@ -981,7 +981,7 @@ export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "webmasters/v3/sites/{siteUrl}" }),
   svc,
-) as unknown as Schema.Schema<GetSitesRequest>;
+) as unknown as Schema.Codec<GetSitesRequest>;
 
 export type GetSitesResponse = WmxSite;
 export const GetSitesResponse = /*@__PURE__*/ /*#__PURE__*/ WmxSite;
@@ -1014,13 +1014,13 @@ export const AddSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<AddSitesRequest>;
+) as unknown as Schema.Codec<AddSitesRequest>;
 
 export interface AddSitesResponse {}
-export const AddSitesResponse: Schema.Schema<AddSitesResponse> =
+export const AddSitesResponse: Schema.Codec<AddSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<AddSitesResponse>;
+  ) as any as Schema.Codec<AddSitesResponse>;
 
 export type AddSitesError =
   | DefaultErrors
@@ -1059,7 +1059,7 @@ export const QuerySearchanalyticsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QuerySearchanalyticsRequest>;
+  ) as unknown as Schema.Codec<QuerySearchanalyticsRequest>;
 
 export type QuerySearchanalyticsResponse = SearchAnalyticsQueryResponse;
 export const QuerySearchanalyticsResponse =
@@ -1099,7 +1099,7 @@ export const InspectUrlInspectionIndexRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InspectUrlInspectionIndexRequest>;
+  ) as unknown as Schema.Codec<InspectUrlInspectionIndexRequest>;
 
 export type InspectUrlInspectionIndexResponse = InspectUrlIndexResponse;
 export const InspectUrlInspectionIndexResponse =
@@ -1139,7 +1139,7 @@ export const RunUrlTestingToolsMobileFriendlyTestRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunUrlTestingToolsMobileFriendlyTestRequest>;
+  ) as unknown as Schema.Codec<RunUrlTestingToolsMobileFriendlyTestRequest>;
 
 export type RunUrlTestingToolsMobileFriendlyTestResponse =
   RunMobileFriendlyTestResponse;

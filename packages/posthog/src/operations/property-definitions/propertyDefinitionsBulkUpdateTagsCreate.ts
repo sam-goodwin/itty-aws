@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PropertyDefinitionsBulkUpdateTagsCreateInput {
+  project_id: string;
+  ids?: number[];
+  action?: "add" | "remove" | "set";
+  tags?: string[];
+}
 export const PropertyDefinitionsBulkUpdateTagsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,13 @@ export const PropertyDefinitionsBulkUpdateTagsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/property_definitions/bulk_update_tags/",
     }),
-  );
-export type PropertyDefinitionsBulkUpdateTagsCreateInput =
-  typeof PropertyDefinitionsBulkUpdateTagsCreateInput.Type;
+  ) as unknown as Schema.Codec<PropertyDefinitionsBulkUpdateTagsCreateInput>;
 
 // Output Schema
+export interface PropertyDefinitionsBulkUpdateTagsCreateOutput {
+  updated?: { id?: number; tags?: string[] }[];
+  skipped?: { id?: number; reason?: string }[];
+}
 export const PropertyDefinitionsBulkUpdateTagsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updated: Schema.optional(
@@ -38,9 +46,7 @@ export const PropertyDefinitionsBulkUpdateTagsCreateOutput =
         }),
       ),
     ),
-  });
-export type PropertyDefinitionsBulkUpdateTagsCreateOutput =
-  typeof PropertyDefinitionsBulkUpdateTagsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PropertyDefinitionsBulkUpdateTagsCreateOutput>;
 
 // The operation
 /**

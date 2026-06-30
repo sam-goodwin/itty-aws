@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LiveDebuggerBreakpointsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const LiveDebuggerBreakpointsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const LiveDebuggerBreakpointsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/live_debugger_breakpoints/{id}/",
     }),
-  );
-export type LiveDebuggerBreakpointsDestroyInput =
-  typeof LiveDebuggerBreakpointsDestroyInput.Type;
+  ) as unknown as Schema.Codec<LiveDebuggerBreakpointsDestroyInput>;
 
 // Output Schema
+export type LiveDebuggerBreakpointsDestroyOutput = void;
 export const LiveDebuggerBreakpointsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LiveDebuggerBreakpointsDestroyOutput =
-  typeof LiveDebuggerBreakpointsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LiveDebuggerBreakpointsDestroyOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface AchievementResetResponse {
   currentState?: string;
 }
 
-export const AchievementResetResponse: Schema.Schema<AchievementResetResponse> =
+export const AchievementResetResponse: Schema.Codec<AchievementResetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     definitionId: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface AchievementResetAllResponse {
   results?: ReadonlyArray<AchievementResetResponse>;
 }
 
-export const AchievementResetAllResponse: Schema.Schema<AchievementResetAllResponse> =
+export const AchievementResetAllResponse: Schema.Codec<AchievementResetAllResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(AchievementResetResponse)),
@@ -61,7 +61,7 @@ export interface AchievementResetMultipleForAllRequest {
   achievement_ids?: ReadonlyArray<string>;
 }
 
-export const AchievementResetMultipleForAllRequest: Schema.Schema<AchievementResetMultipleForAllRequest> =
+export const AchievementResetMultipleForAllRequest: Schema.Codec<AchievementResetMultipleForAllRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     achievement_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -74,7 +74,7 @@ export interface EventsResetMultipleForAllRequest {
   event_ids?: ReadonlyArray<string>;
 }
 
-export const EventsResetMultipleForAllRequest: Schema.Schema<EventsResetMultipleForAllRequest> =
+export const EventsResetMultipleForAllRequest: Schema.Codec<EventsResetMultipleForAllRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     event_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -86,7 +86,7 @@ export interface ProfileSettings {
   profileVisible?: boolean;
 }
 
-export const ProfileSettings: Schema.Schema<ProfileSettings> =
+export const ProfileSettings: Schema.Codec<ProfileSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     profileVisible: Schema.optional(Schema.Boolean),
@@ -101,7 +101,7 @@ export interface GamesPlayerLevelResource {
   maxExperiencePoints?: string;
 }
 
-export const GamesPlayerLevelResource: Schema.Schema<GamesPlayerLevelResource> =
+export const GamesPlayerLevelResource: Schema.Codec<GamesPlayerLevelResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     level: Schema.optional(Schema.Number),
     minExperiencePoints: Schema.optional(Schema.String),
@@ -119,7 +119,7 @@ export interface GamesPlayerExperienceInfoResource {
   nextLevel?: GamesPlayerLevelResource;
 }
 
-export const GamesPlayerExperienceInfoResource: Schema.Schema<GamesPlayerExperienceInfoResource> =
+export const GamesPlayerExperienceInfoResource: Schema.Codec<GamesPlayerExperienceInfoResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentExperiencePoints: Schema.optional(Schema.String),
     lastLevelUpTimestampMillis: Schema.optional(Schema.String),
@@ -152,7 +152,7 @@ export interface Player {
   originalPlayerId?: string;
 }
 
-export const Player: Schema.Schema<Player> =
+export const Player: Schema.Codec<Player> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     playerId: Schema.optional(Schema.String),
@@ -181,7 +181,7 @@ export interface HiddenPlayer {
   hiddenTimeMillis?: string;
 }
 
-export const HiddenPlayer: Schema.Schema<HiddenPlayer> =
+export const HiddenPlayer: Schema.Codec<HiddenPlayer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     player: Schema.optional(Player),
@@ -197,7 +197,7 @@ export interface HiddenPlayerList {
   nextPageToken?: string;
 }
 
-export const HiddenPlayerList: Schema.Schema<HiddenPlayerList> =
+export const HiddenPlayerList: Schema.Codec<HiddenPlayerList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(HiddenPlayer)),
@@ -213,7 +213,7 @@ export interface PlayerScoreResetResponse {
   resetScoreTimeSpans?: ReadonlyArray<string>;
 }
 
-export const PlayerScoreResetResponse: Schema.Schema<PlayerScoreResetResponse> =
+export const PlayerScoreResetResponse: Schema.Codec<PlayerScoreResetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     definitionId: Schema.optional(Schema.String),
@@ -227,7 +227,7 @@ export interface PlayerScoreResetAllResponse {
   results?: ReadonlyArray<PlayerScoreResetResponse>;
 }
 
-export const PlayerScoreResetAllResponse: Schema.Schema<PlayerScoreResetAllResponse> =
+export const PlayerScoreResetAllResponse: Schema.Codec<PlayerScoreResetAllResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(PlayerScoreResetResponse)),
@@ -240,7 +240,7 @@ export interface ScoresResetMultipleForAllRequest {
   leaderboard_ids?: ReadonlyArray<string>;
 }
 
-export const ScoresResetMultipleForAllRequest: Schema.Schema<ScoresResetMultipleForAllRequest> =
+export const ScoresResetMultipleForAllRequest: Schema.Codec<ScoresResetMultipleForAllRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     leaderboard_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -315,7 +315,7 @@ export const ResetAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetAchievementsRequest>;
+  ) as unknown as Schema.Codec<ResetAchievementsRequest>;
 
 export type ResetAchievementsResponse = AchievementResetResponse;
 export const ResetAchievementsResponse =
@@ -350,7 +350,7 @@ export const ResetAllAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetAllAchievementsRequest>;
+  ) as unknown as Schema.Codec<ResetAllAchievementsRequest>;
 
 export type ResetAllAchievementsResponse = AchievementResetAllResponse;
 export const ResetAllAchievementsResponse =
@@ -385,13 +385,13 @@ export const ResetAllForAllPlayersAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetAllForAllPlayersAchievementsRequest>;
+  ) as unknown as Schema.Codec<ResetAllForAllPlayersAchievementsRequest>;
 
 export interface ResetAllForAllPlayersAchievementsResponse {}
-export const ResetAllForAllPlayersAchievementsResponse: Schema.Schema<ResetAllForAllPlayersAchievementsResponse> =
+export const ResetAllForAllPlayersAchievementsResponse: Schema.Codec<ResetAllForAllPlayersAchievementsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetAllForAllPlayersAchievementsResponse>;
+  ) as any as Schema.Codec<ResetAllForAllPlayersAchievementsResponse>;
 
 export type ResetAllForAllPlayersAchievementsError =
   | DefaultErrors
@@ -427,13 +427,13 @@ export const ResetForAllPlayersAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetForAllPlayersAchievementsRequest>;
+  ) as unknown as Schema.Codec<ResetForAllPlayersAchievementsRequest>;
 
 export interface ResetForAllPlayersAchievementsResponse {}
-export const ResetForAllPlayersAchievementsResponse: Schema.Schema<ResetForAllPlayersAchievementsResponse> =
+export const ResetForAllPlayersAchievementsResponse: Schema.Codec<ResetForAllPlayersAchievementsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetForAllPlayersAchievementsResponse>;
+  ) as any as Schema.Codec<ResetForAllPlayersAchievementsResponse>;
 
 export type ResetForAllPlayersAchievementsError =
   | DefaultErrors
@@ -471,13 +471,13 @@ export const ResetMultipleForAllPlayersAchievementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetMultipleForAllPlayersAchievementsRequest>;
+  ) as unknown as Schema.Codec<ResetMultipleForAllPlayersAchievementsRequest>;
 
 export interface ResetMultipleForAllPlayersAchievementsResponse {}
-export const ResetMultipleForAllPlayersAchievementsResponse: Schema.Schema<ResetMultipleForAllPlayersAchievementsResponse> =
+export const ResetMultipleForAllPlayersAchievementsResponse: Schema.Codec<ResetMultipleForAllPlayersAchievementsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetMultipleForAllPlayersAchievementsResponse>;
+  ) as any as Schema.Codec<ResetMultipleForAllPlayersAchievementsResponse>;
 
 export type ResetMultipleForAllPlayersAchievementsError =
   | DefaultErrors
@@ -512,13 +512,13 @@ export const ResetEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ResetEventsRequest>;
+) as unknown as Schema.Codec<ResetEventsRequest>;
 
 export interface ResetEventsResponse {}
-export const ResetEventsResponse: Schema.Schema<ResetEventsResponse> =
+export const ResetEventsResponse: Schema.Codec<ResetEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetEventsResponse>;
+  ) as any as Schema.Codec<ResetEventsResponse>;
 
 export type ResetEventsError =
   | DefaultErrors
@@ -550,13 +550,13 @@ export const ResetAllEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ResetAllEventsRequest>;
+) as unknown as Schema.Codec<ResetAllEventsRequest>;
 
 export interface ResetAllEventsResponse {}
-export const ResetAllEventsResponse: Schema.Schema<ResetAllEventsResponse> =
+export const ResetAllEventsResponse: Schema.Codec<ResetAllEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetAllEventsResponse>;
+  ) as any as Schema.Codec<ResetAllEventsResponse>;
 
 export type ResetAllEventsError =
   | DefaultErrors
@@ -587,13 +587,13 @@ export const ResetAllForAllPlayersEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetAllForAllPlayersEventsRequest>;
+  ) as unknown as Schema.Codec<ResetAllForAllPlayersEventsRequest>;
 
 export interface ResetAllForAllPlayersEventsResponse {}
-export const ResetAllForAllPlayersEventsResponse: Schema.Schema<ResetAllForAllPlayersEventsResponse> =
+export const ResetAllForAllPlayersEventsResponse: Schema.Codec<ResetAllForAllPlayersEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetAllForAllPlayersEventsResponse>;
+  ) as any as Schema.Codec<ResetAllForAllPlayersEventsResponse>;
 
 export type ResetAllForAllPlayersEventsError =
   | DefaultErrors
@@ -629,13 +629,13 @@ export const ResetForAllPlayersEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetForAllPlayersEventsRequest>;
+  ) as unknown as Schema.Codec<ResetForAllPlayersEventsRequest>;
 
 export interface ResetForAllPlayersEventsResponse {}
-export const ResetForAllPlayersEventsResponse: Schema.Schema<ResetForAllPlayersEventsResponse> =
+export const ResetForAllPlayersEventsResponse: Schema.Codec<ResetForAllPlayersEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetForAllPlayersEventsResponse>;
+  ) as any as Schema.Codec<ResetForAllPlayersEventsResponse>;
 
 export type ResetForAllPlayersEventsError =
   | DefaultErrors
@@ -671,13 +671,13 @@ export const ResetMultipleForAllPlayersEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetMultipleForAllPlayersEventsRequest>;
+  ) as unknown as Schema.Codec<ResetMultipleForAllPlayersEventsRequest>;
 
 export interface ResetMultipleForAllPlayersEventsResponse {}
-export const ResetMultipleForAllPlayersEventsResponse: Schema.Schema<ResetMultipleForAllPlayersEventsResponse> =
+export const ResetMultipleForAllPlayersEventsResponse: Schema.Codec<ResetMultipleForAllPlayersEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetMultipleForAllPlayersEventsResponse>;
+  ) as any as Schema.Codec<ResetMultipleForAllPlayersEventsResponse>;
 
 export type ResetMultipleForAllPlayersEventsError =
   | DefaultErrors
@@ -715,13 +715,13 @@ export const HidePlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<HidePlayersRequest>;
+) as unknown as Schema.Codec<HidePlayersRequest>;
 
 export interface HidePlayersResponse {}
-export const HidePlayersResponse: Schema.Schema<HidePlayersResponse> =
+export const HidePlayersResponse: Schema.Codec<HidePlayersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<HidePlayersResponse>;
+  ) as any as Schema.Codec<HidePlayersResponse>;
 
 export type HidePlayersError =
   | DefaultErrors
@@ -758,13 +758,13 @@ export const UnhidePlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
   }),
   svc,
-) as unknown as Schema.Schema<UnhidePlayersRequest>;
+) as unknown as Schema.Codec<UnhidePlayersRequest>;
 
 export interface UnhidePlayersResponse {}
-export const UnhidePlayersResponse: Schema.Schema<UnhidePlayersResponse> =
+export const UnhidePlayersResponse: Schema.Codec<UnhidePlayersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<UnhidePlayersResponse>;
+  ) as any as Schema.Codec<UnhidePlayersResponse>;
 
 export type UnhidePlayersError =
   | DefaultErrors
@@ -805,7 +805,7 @@ export const ListHiddenApplicationsRequest =
       path: "games/v1management/applications/{applicationId}/players/hidden",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListHiddenApplicationsRequest>;
+  ) as unknown as Schema.Codec<ListHiddenApplicationsRequest>;
 
 export type ListHiddenApplicationsResponse = HiddenPlayerList;
 export const ListHiddenApplicationsResponse =
@@ -844,7 +844,7 @@ export const ResetScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ResetScoresRequest>;
+) as unknown as Schema.Codec<ResetScoresRequest>;
 
 export type ResetScoresResponse = PlayerScoreResetResponse;
 export const ResetScoresResponse =
@@ -880,7 +880,7 @@ export const ResetAllScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ResetAllScoresRequest>;
+) as unknown as Schema.Codec<ResetAllScoresRequest>;
 
 export type ResetAllScoresResponse = PlayerScoreResetAllResponse;
 export const ResetAllScoresResponse =
@@ -915,13 +915,13 @@ export const ResetAllForAllPlayersScoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetAllForAllPlayersScoresRequest>;
+  ) as unknown as Schema.Codec<ResetAllForAllPlayersScoresRequest>;
 
 export interface ResetAllForAllPlayersScoresResponse {}
-export const ResetAllForAllPlayersScoresResponse: Schema.Schema<ResetAllForAllPlayersScoresResponse> =
+export const ResetAllForAllPlayersScoresResponse: Schema.Codec<ResetAllForAllPlayersScoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetAllForAllPlayersScoresResponse>;
+  ) as any as Schema.Codec<ResetAllForAllPlayersScoresResponse>;
 
 export type ResetAllForAllPlayersScoresError =
   | DefaultErrors
@@ -957,13 +957,13 @@ export const ResetForAllPlayersScoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetForAllPlayersScoresRequest>;
+  ) as unknown as Schema.Codec<ResetForAllPlayersScoresRequest>;
 
 export interface ResetForAllPlayersScoresResponse {}
-export const ResetForAllPlayersScoresResponse: Schema.Schema<ResetForAllPlayersScoresResponse> =
+export const ResetForAllPlayersScoresResponse: Schema.Codec<ResetForAllPlayersScoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetForAllPlayersScoresResponse>;
+  ) as any as Schema.Codec<ResetForAllPlayersScoresResponse>;
 
 export type ResetForAllPlayersScoresError =
   | DefaultErrors
@@ -999,13 +999,13 @@ export const ResetMultipleForAllPlayersScoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetMultipleForAllPlayersScoresRequest>;
+  ) as unknown as Schema.Codec<ResetMultipleForAllPlayersScoresRequest>;
 
 export interface ResetMultipleForAllPlayersScoresResponse {}
-export const ResetMultipleForAllPlayersScoresResponse: Schema.Schema<ResetMultipleForAllPlayersScoresResponse> =
+export const ResetMultipleForAllPlayersScoresResponse: Schema.Codec<ResetMultipleForAllPlayersScoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ResetMultipleForAllPlayersScoresResponse>;
+  ) as any as Schema.Codec<ResetMultipleForAllPlayersScoresResponse>;
 
 export type ResetMultipleForAllPlayersScoresError =
   | DefaultErrors

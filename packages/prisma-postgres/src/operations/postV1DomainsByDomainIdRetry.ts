@@ -4,14 +4,47 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface PostV1DomainsByDomainIdRetryInput {
+  domainId: string;
+}
 export const PostV1DomainsByDomainIdRetryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domainId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "POST", path: "/v1/domains/{domainId}/retry" }));
-export type PostV1DomainsByDomainIdRetryInput =
-  typeof PostV1DomainsByDomainIdRetryInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/domains/{domainId}/retry" }),
+  ) as unknown as Schema.Codec<PostV1DomainsByDomainIdRetryInput>;
 
 // Output Schema
+export interface PostV1DomainsByDomainIdRetryOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    hostname: string;
+    appId: string;
+    computeServiceId: string;
+    status:
+      | "pending_dns"
+      | "verifying"
+      | "verified_routing_blocked"
+      | "provisioning_tls"
+      | "active"
+      | "failed"
+      | "removing";
+    foundryStatus: string;
+    failureReason: string | null;
+    failureCategory: "dns" | "acme" | "storage" | "unknown" | null | null;
+    certExpiresAt: string | null;
+    createdAt: string;
+    updatedAt: string;
+    dnsRecords: {
+      type: string;
+      name: string;
+      value: string;
+      ttl: number | null;
+    }[];
+  };
+}
 export const PostV1DomainsByDomainIdRetryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -47,9 +80,7 @@ export const PostV1DomainsByDomainIdRetryOutput =
         }),
       ),
     }),
-  });
-export type PostV1DomainsByDomainIdRetryOutput =
-  typeof PostV1DomainsByDomainIdRetryOutput.Type;
+  }) as unknown as Schema.Codec<PostV1DomainsByDomainIdRetryOutput>;
 
 // The operation
 /**

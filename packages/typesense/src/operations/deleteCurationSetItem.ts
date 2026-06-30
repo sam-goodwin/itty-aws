@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteCurationSetItemInput {
+  curationSetName: string;
+  itemId: string;
+}
 export const DeleteCurationSetItemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curationSetName: Schema.String.pipe(T.PathParam()),
@@ -13,16 +17,16 @@ export const DeleteCurationSetItemInput =
       method: "DELETE",
       path: "/curation_sets/{curationSetName}/items/{itemId}",
     }),
-  );
-export type DeleteCurationSetItemInput = typeof DeleteCurationSetItemInput.Type;
+  ) as unknown as Schema.Codec<DeleteCurationSetItemInput>;
 
 // Output Schema
+export interface DeleteCurationSetItemOutput {
+  id: string;
+}
 export const DeleteCurationSetItemOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type DeleteCurationSetItemOutput =
-  typeof DeleteCurationSetItemOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCurationSetItemOutput>;
 
 // The operation
 /**

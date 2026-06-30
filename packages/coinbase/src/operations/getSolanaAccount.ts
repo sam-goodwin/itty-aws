@@ -3,12 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetSolanaAccountInput {
+  address: string;
+}
 export const GetSolanaAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/solana/accounts/{address}" }));
-export type GetSolanaAccountInput = typeof GetSolanaAccountInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/solana/accounts/{address}" }),
+) as unknown as Schema.Codec<GetSolanaAccountInput>;
 
 // Output Schema
+export interface GetSolanaAccountOutput {
+  address: string;
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const GetSolanaAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     address: Schema.String,
@@ -17,8 +28,7 @@ export const GetSolanaAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     createdAt: Schema.optional(Schema.String),
     updatedAt: Schema.optional(Schema.String),
   },
-);
-export type GetSolanaAccountOutput = typeof GetSolanaAccountOutput.Type;
+) as unknown as Schema.Codec<GetSolanaAccountOutput>;
 
 // The operation
 /**

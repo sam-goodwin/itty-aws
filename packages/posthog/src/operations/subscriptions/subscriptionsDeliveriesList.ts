@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SubscriptionsDeliveriesListInput {
+  project_id: string;
+  subscription_id: number;
+  cursor?: string;
+  status?: "completed" | "failed" | "skipped" | "starting";
+}
 export const SubscriptionsDeliveriesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +22,32 @@ export const SubscriptionsDeliveriesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/subscriptions/{subscription_id}/deliveries/",
     }),
-  );
-export type SubscriptionsDeliveriesListInput =
-  typeof SubscriptionsDeliveriesListInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionsDeliveriesListInput>;
 
 // Output Schema
+export interface SubscriptionsDeliveriesListOutput {
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    subscription?: number;
+    temporal_workflow_id?: string;
+    idempotency_key?: string;
+    trigger_type?: string;
+    scheduled_at?: string | null;
+    target_type?: string;
+    target_value?: string;
+    exported_asset_ids?: number[];
+    content_snapshot?: unknown;
+    recipient_results?: unknown;
+    status?: "starting" | "completed" | "failed" | "skipped";
+    error?: unknown;
+    created_at?: string;
+    last_updated_at?: string;
+    finished_at?: string | null;
+    change_summary?: string | null;
+  }[];
+}
 export const SubscriptionsDeliveriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -50,9 +77,7 @@ export const SubscriptionsDeliveriesListOutput =
         }),
       ),
     ),
-  });
-export type SubscriptionsDeliveriesListOutput =
-  typeof SubscriptionsDeliveriesListOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionsDeliveriesListOutput>;
 
 // The operation
 /**

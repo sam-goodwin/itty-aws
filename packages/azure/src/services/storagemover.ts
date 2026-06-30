@@ -4,11 +4,44 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AgentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  agentName: string;
+  properties: {
+    description?: string;
+    agentVersion?: string;
+    arcResourceId: string;
+    arcVmUuid: string;
+    agentStatus?:
+      | "Registering"
+      | "Offline"
+      | "Online"
+      | "Executing"
+      | "RequiresAttention"
+      | "Unregistering";
+    lastStatusUpdate?: string;
+    localIPAddress?: string;
+    memoryInMB?: number;
+    numberOfCores?: number;
+    uptimeInSeconds?: number;
+    timeZone?: string;
+    uploadLimitSchedule?: {
+      weeklyRecurrences?: {
+        startTime: { hour: number; minute?: 0 | 30 };
+        endTime: { hour: number; minute?: 0 | 30 };
+      }[];
+    };
+    errorDetails?: { code?: string; message?: string };
+    provisioningState?: "Succeeded" | "Canceled" | "Failed" | "Deleting";
+  };
+}
 export const AgentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -70,10 +103,22 @@ export const AgentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type AgentsCreateOrUpdateInput = typeof AgentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AgentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AgentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -93,8 +138,7 @@ export const AgentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AgentsCreateOrUpdateOutput = typeof AgentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AgentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -113,6 +157,12 @@ export const AgentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  agentName: string;
+}
 export const AgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -124,12 +174,12 @@ export const AgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type AgentsDeleteInput = typeof AgentsDeleteInput.Type;
+) as unknown as Schema.Codec<AgentsDeleteInput>;
 
 // Output Schema
-export const AgentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentsDeleteOutput = typeof AgentsDeleteOutput.Type;
+export type AgentsDeleteOutput = void;
+export const AgentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentsDeleteOutput>;
 
 // The operation
 /**
@@ -146,6 +196,12 @@ export const AgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentsDeleteOutput,
 }));
 // Input Schema
+export interface AgentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  agentName: string;
+}
 export const AgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -157,10 +213,22 @@ export const AgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type AgentsGetInput = typeof AgentsGetInput.Type;
+) as unknown as Schema.Codec<AgentsGetInput>;
 
 // Output Schema
+export interface AgentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -179,8 +247,7 @@ export const AgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AgentsGetOutput = typeof AgentsGetOutput.Type;
+}) as unknown as Schema.Codec<AgentsGetOutput>;
 
 // The operation
 /**
@@ -197,6 +264,11 @@ export const AgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentsGetOutput,
 }));
 // Input Schema
+export interface AgentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+}
 export const AgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -207,10 +279,25 @@ export const AgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents",
     apiVersion: "2025-12-01",
   }),
-);
-export type AgentsListInput = typeof AgentsListInput.Type;
+) as unknown as Schema.Codec<AgentsListInput>;
 
 // Output Schema
+export interface AgentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AgentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -234,8 +321,7 @@ export const AgentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type AgentsListOutput = typeof AgentsListOutput.Type;
+}) as unknown as Schema.Codec<AgentsListOutput>;
 
 // The operation
 /**
@@ -251,6 +337,21 @@ export const AgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentsListOutput,
 }));
 // Input Schema
+export interface AgentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  agentName: string;
+  properties?: {
+    description?: string;
+    uploadLimitSchedule?: {
+      weeklyRecurrences?: {
+        startTime: { hour: number; minute?: 0 | 30 };
+        endTime: { hour: number; minute?: 0 | 30 };
+      }[];
+    };
+  };
+}
 export const AgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -285,10 +386,22 @@ export const AgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type AgentsUpdateInput = typeof AgentsUpdateInput.Type;
+) as unknown as Schema.Codec<AgentsUpdateInput>;
 
 // Output Schema
+export interface AgentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -307,8 +420,7 @@ export const AgentsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AgentsUpdateOutput = typeof AgentsUpdateOutput.Type;
+}) as unknown as Schema.Codec<AgentsUpdateOutput>;
 
 // The operation
 /**
@@ -325,6 +437,26 @@ export const AgentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentsUpdateOutput,
 }));
 // Input Schema
+export interface ConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  connectionName: string;
+  properties: {
+    description?: string;
+    connectionStatus?:
+      | "Approved"
+      | "Rejected"
+      | "Disconnected"
+      | "Pending"
+      | "Stale";
+    privateLinkServiceId: string;
+    privateEndpointName?: string;
+    privateEndpointResourceId?: string;
+    jobList?: string[];
+    provisioningState?: "Succeeded" | "Canceled" | "Failed" | "Deleting";
+  };
+}
 export const ConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -356,11 +488,22 @@ export const ConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type ConnectionsCreateOrUpdateInput =
-  typeof ConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -380,9 +523,7 @@ export const ConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectionsCreateOrUpdateOutput =
-  typeof ConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -401,6 +542,12 @@ export const ConnectionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  connectionName: string;
+}
 export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -414,12 +561,12 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
+) as unknown as Schema.Codec<ConnectionsDeleteInput>;
 
 // Output Schema
-export const ConnectionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectionsDeleteOutput = typeof ConnectionsDeleteOutput.Type;
+export type ConnectionsDeleteOutput = void;
+export const ConnectionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -437,6 +584,12 @@ export const ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsDeleteOutput,
 }));
 // Input Schema
+export interface ConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  connectionName: string;
+}
 export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -448,10 +601,22 @@ export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type ConnectionsGetInput = typeof ConnectionsGetInput.Type;
+) as unknown as Schema.Codec<ConnectionsGetInput>;
 
 // Output Schema
+export interface ConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -470,8 +635,7 @@ export const ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ConnectionsGetOutput = typeof ConnectionsGetOutput.Type;
+}) as unknown as Schema.Codec<ConnectionsGetOutput>;
 
 // The operation
 /**
@@ -488,6 +652,11 @@ export const ConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsGetOutput,
 }));
 // Input Schema
+export interface ConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+}
 export const ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -498,10 +667,25 @@ export const ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections",
     apiVersion: "2025-12-01",
   }),
-);
-export type ConnectionsListInput = typeof ConnectionsListInput.Type;
+) as unknown as Schema.Codec<ConnectionsListInput>;
 
 // Output Schema
+export interface ConnectionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -525,8 +709,7 @@ export const ConnectionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ConnectionsListOutput = typeof ConnectionsListOutput.Type;
+}) as unknown as Schema.Codec<ConnectionsListOutput>;
 
 // The operation
 /**
@@ -542,6 +725,38 @@ export const ConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsListOutput,
 }));
 // Input Schema
+export interface EndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  endpointName: string;
+  properties: {
+    endpointType:
+      | "AzureStorageBlobContainer"
+      | "NfsMount"
+      | "AzureStorageSmbFileShare"
+      | "SmbMount"
+      | "AzureMultiCloudConnector"
+      | "AzureStorageNfsFileShare"
+      | "S3WithHMAC";
+    description?: string;
+    endpointKind?: "Source" | "Target";
+    provisioningState?: "Succeeded" | "Canceled" | "Failed" | "Deleting";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+}
 export const EndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -593,11 +808,22 @@ export const EndpointsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type EndpointsCreateOrUpdateInput =
-  typeof EndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface EndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -617,9 +843,7 @@ export const EndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EndpointsCreateOrUpdateOutput =
-  typeof EndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -638,6 +862,12 @@ export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  endpointName: string;
+}
 export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -649,12 +879,12 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
+) as unknown as Schema.Codec<EndpointsDeleteInput>;
 
 // Output Schema
-export const EndpointsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EndpointsDeleteOutput = typeof EndpointsDeleteOutput.Type;
+export type EndpointsDeleteOutput = void;
+export const EndpointsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -671,6 +901,12 @@ export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsDeleteOutput,
 }));
 // Input Schema
+export interface EndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  endpointName: string;
+}
 export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -682,10 +918,22 @@ export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type EndpointsGetInput = typeof EndpointsGetInput.Type;
+) as unknown as Schema.Codec<EndpointsGetInput>;
 
 // Output Schema
+export interface EndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -704,8 +952,7 @@ export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EndpointsGetOutput = typeof EndpointsGetOutput.Type;
+}) as unknown as Schema.Codec<EndpointsGetOutput>;
 
 // The operation
 /**
@@ -722,6 +969,11 @@ export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsGetOutput,
 }));
 // Input Schema
+export interface EndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+}
 export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -732,10 +984,25 @@ export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints",
     apiVersion: "2025-12-01",
   }),
-);
-export type EndpointsListInput = typeof EndpointsListInput.Type;
+) as unknown as Schema.Codec<EndpointsListInput>;
 
 // Output Schema
+export interface EndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -759,8 +1026,7 @@ export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type EndpointsListOutput = typeof EndpointsListOutput.Type;
+}) as unknown as Schema.Codec<EndpointsListOutput>;
 
 // The operation
 /**
@@ -776,6 +1042,36 @@ export const EndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsListOutput,
 }));
 // Input Schema
+export interface EndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  endpointName: string;
+  properties?: {
+    endpointType:
+      | "AzureStorageBlobContainer"
+      | "NfsMount"
+      | "AzureStorageSmbFileShare"
+      | "SmbMount"
+      | "AzureMultiCloudConnector"
+      | "AzureStorageNfsFileShare"
+      | "S3WithHMAC";
+    description?: string;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+}
 export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -824,10 +1120,22 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
+) as unknown as Schema.Codec<EndpointsUpdateInput>;
 
 // Output Schema
+export interface EndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -846,8 +1154,7 @@ export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EndpointsUpdateOutput = typeof EndpointsUpdateOutput.Type;
+}) as unknown as Schema.Codec<EndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -864,6 +1171,71 @@ export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsUpdateOutput,
 }));
 // Input Schema
+export interface JobDefinitionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  jobDefinitionName: string;
+  properties: {
+    description?: string;
+    jobType?: "OnPremToCloud" | "CloudToCloud";
+    copyMode: "Additive" | "Mirror";
+    sourceName: string;
+    sourceResourceId?: string;
+    sourceSubpath?: string;
+    targetName: string;
+    targetResourceId?: string;
+    targetSubpath?: string;
+    latestJobRunName?: string;
+    latestJobRunResourceId?: string;
+    latestJobRunStatus?:
+      | "Queued"
+      | "Started"
+      | "Running"
+      | "CancelRequested"
+      | "Canceling"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "PausedByBandwidthManagement";
+    agentName?: string;
+    agentResourceId?: string;
+    sourceTargetMap?: {
+      value?: {
+        sourceEndpoint: {
+          properties?: {
+            name?: string;
+            sourceEndpointResourceId?: string;
+            awsS3BucketId?: string;
+          };
+        };
+        targetEndpoint: {
+          properties?: {
+            name?: string;
+            targetEndpointResourceId?: string;
+            azureStorageAccountResourceId?: string;
+            azureStorageBlobContainerName?: string;
+          };
+        };
+      }[];
+    };
+    provisioningState?: "Succeeded" | "Canceled" | "Failed" | "Deleting";
+    connections?: string[];
+    schedule?: {
+      frequency?: "Monthly" | "Weekly" | "Daily" | "Onetime" | "None";
+      isActive?: boolean;
+      executionTime?: { hour?: number; minute?: 0 | 30 };
+      startDate?: string;
+      daysOfWeek?: string[];
+      daysOfMonth?: number[];
+      cronExpression?: string;
+      endDate?: string;
+    };
+    dataIntegrityValidation?: "SaveVerifyFileMD5" | "SaveFileMD5" | "None";
+    preservePermissions?: boolean;
+  };
+}
 export const JobDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -967,11 +1339,22 @@ export const JobDefinitionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type JobDefinitionsCreateOrUpdateInput =
-  typeof JobDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<JobDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface JobDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -991,9 +1374,7 @@ export const JobDefinitionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type JobDefinitionsCreateOrUpdateOutput =
-  typeof JobDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<JobDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1012,6 +1393,13 @@ export const JobDefinitionsCreateOrUpdate =
     outputSchema: JobDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface JobDefinitionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  jobDefinitionName: string;
+}
 export const JobDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1025,13 +1413,12 @@ export const JobDefinitionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type JobDefinitionsDeleteInput = typeof JobDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<JobDefinitionsDeleteInput>;
 
 // Output Schema
+export type JobDefinitionsDeleteOutput = void;
 export const JobDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobDefinitionsDeleteOutput = typeof JobDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -1051,6 +1438,13 @@ export const JobDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobDefinitionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  jobDefinitionName: string;
+}
 export const JobDefinitionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1065,10 +1459,22 @@ export const JobDefinitionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type JobDefinitionsGetInput = typeof JobDefinitionsGetInput.Type;
+) as unknown as Schema.Codec<JobDefinitionsGetInput>;
 
 // Output Schema
+export interface JobDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1088,8 +1494,7 @@ export const JobDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type JobDefinitionsGetOutput = typeof JobDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<JobDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -1107,6 +1512,12 @@ export const JobDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobDefinitionsGetOutput,
 }));
 // Input Schema
+export interface JobDefinitionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+}
 export const JobDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1119,10 +1530,25 @@ export const JobDefinitionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions",
       apiVersion: "2025-12-01",
     }),
-  );
-export type JobDefinitionsListInput = typeof JobDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<JobDefinitionsListInput>;
 
 // Output Schema
+export interface JobDefinitionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1157,8 +1583,7 @@ export const JobDefinitionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JobDefinitionsListOutput = typeof JobDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<JobDefinitionsListOutput>;
 
 // The operation
 /**
@@ -1175,6 +1600,13 @@ export const JobDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobDefinitionsListOutput,
 }));
 // Input Schema
+export interface JobDefinitionsStartJobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  jobDefinitionName: string;
+}
 export const JobDefinitionsStartJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1188,17 +1620,16 @@ export const JobDefinitionsStartJobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/startJob",
       apiVersion: "2025-12-01",
     }),
-  );
-export type JobDefinitionsStartJobInput =
-  typeof JobDefinitionsStartJobInput.Type;
+  ) as unknown as Schema.Codec<JobDefinitionsStartJobInput>;
 
 // Output Schema
+export interface JobDefinitionsStartJobOutput {
+  jobRunResourceId?: string;
+}
 export const JobDefinitionsStartJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobRunResourceId: Schema.optional(Schema.String),
-  });
-export type JobDefinitionsStartJobOutput =
-  typeof JobDefinitionsStartJobOutput.Type;
+  }) as unknown as Schema.Codec<JobDefinitionsStartJobOutput>;
 
 // The operation
 /**
@@ -1218,6 +1649,13 @@ export const JobDefinitionsStartJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobDefinitionsStopJobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  jobDefinitionName: string;
+}
 export const JobDefinitionsStopJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1231,16 +1669,16 @@ export const JobDefinitionsStopJobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob",
       apiVersion: "2025-12-01",
     }),
-  );
-export type JobDefinitionsStopJobInput = typeof JobDefinitionsStopJobInput.Type;
+  ) as unknown as Schema.Codec<JobDefinitionsStopJobInput>;
 
 // Output Schema
+export interface JobDefinitionsStopJobOutput {
+  jobRunResourceId?: string;
+}
 export const JobDefinitionsStopJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobRunResourceId: Schema.optional(Schema.String),
-  });
-export type JobDefinitionsStopJobOutput =
-  typeof JobDefinitionsStopJobOutput.Type;
+  }) as unknown as Schema.Codec<JobDefinitionsStopJobOutput>;
 
 // The operation
 /**
@@ -1260,6 +1698,30 @@ export const JobDefinitionsStopJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobDefinitionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  jobDefinitionName: string;
+  properties?: {
+    description?: string;
+    copyMode?: "Additive" | "Mirror";
+    agentName?: string;
+    connections?: string[];
+    dataIntegrityValidation?: "SaveVerifyFileMD5" | "SaveFileMD5" | "None";
+    schedule?: {
+      frequency?: "Monthly" | "Weekly" | "Daily" | "Onetime" | "None";
+      isActive?: boolean;
+      executionTime?: { hour?: number; minute?: 0 | 30 };
+      startDate?: string;
+      daysOfWeek?: string[];
+      daysOfMonth?: number[];
+      cronExpression?: string;
+      endDate?: string;
+    };
+  };
+}
 export const JobDefinitionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1309,10 +1771,22 @@ export const JobDefinitionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type JobDefinitionsUpdateInput = typeof JobDefinitionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<JobDefinitionsUpdateInput>;
 
 // Output Schema
+export interface JobDefinitionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobDefinitionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1332,8 +1806,7 @@ export const JobDefinitionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type JobDefinitionsUpdateOutput = typeof JobDefinitionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<JobDefinitionsUpdateOutput>;
 
 // The operation
 /**
@@ -1353,6 +1826,14 @@ export const JobDefinitionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobRunsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  jobDefinitionName: string;
+  jobRunName: string;
+}
 export const JobRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1366,10 +1847,22 @@ export const JobRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns/{jobRunName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type JobRunsGetInput = typeof JobRunsGetInput.Type;
+) as unknown as Schema.Codec<JobRunsGetInput>;
 
 // Output Schema
+export interface JobRunsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1388,8 +1881,7 @@ export const JobRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobRunsGetOutput = typeof JobRunsGetOutput.Type;
+}) as unknown as Schema.Codec<JobRunsGetOutput>;
 
 // The operation
 /**
@@ -1408,6 +1900,13 @@ export const JobRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobRunsGetOutput,
 }));
 // Input Schema
+export interface JobRunsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  jobDefinitionName: string;
+}
 export const JobRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1420,10 +1919,25 @@ export const JobRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns",
     apiVersion: "2025-12-01",
   }),
-);
-export type JobRunsListInput = typeof JobRunsListInput.Type;
+) as unknown as Schema.Codec<JobRunsListInput>;
 
 // Output Schema
+export interface JobRunsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1447,8 +1961,7 @@ export const JobRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type JobRunsListOutput = typeof JobRunsListOutput.Type;
+}) as unknown as Schema.Codec<JobRunsListOutput>;
 
 // The operation
 /**
@@ -1466,6 +1979,7 @@ export const JobRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobRunsListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1474,10 +1988,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.StorageMover/operations",
     apiVersion: "2025-12-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1500,8 +2028,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1514,6 +2041,16 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProjectsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  properties?: {
+    description?: string;
+    provisioningState?: "Succeeded" | "Canceled" | "Failed" | "Deleting";
+  };
+}
 export const ProjectsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1534,11 +2071,22 @@ export const ProjectsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type ProjectsCreateOrUpdateInput =
-  typeof ProjectsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProjectsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1558,9 +2106,7 @@ export const ProjectsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectsCreateOrUpdateOutput =
-  typeof ProjectsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1579,6 +2125,12 @@ export const ProjectsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+}
 export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1590,12 +2142,12 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
+) as unknown as Schema.Codec<ProjectsDeleteInput>;
 
 // Output Schema
-export const ProjectsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
+export type ProjectsDeleteOutput = void;
+export const ProjectsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectsDeleteOutput>;
 
 // The operation
 /**
@@ -1612,6 +2164,12 @@ export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsDeleteOutput,
 }));
 // Input Schema
+export interface ProjectsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+}
 export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1623,10 +2181,22 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type ProjectsGetInput = typeof ProjectsGetInput.Type;
+) as unknown as Schema.Codec<ProjectsGetInput>;
 
 // Output Schema
+export interface ProjectsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1645,8 +2215,7 @@ export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsGetOutput = typeof ProjectsGetOutput.Type;
+}) as unknown as Schema.Codec<ProjectsGetOutput>;
 
 // The operation
 /**
@@ -1663,6 +2232,11 @@ export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsGetOutput,
 }));
 // Input Schema
+export interface ProjectsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+}
 export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1673,10 +2247,25 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects",
     apiVersion: "2025-12-01",
   }),
-);
-export type ProjectsListInput = typeof ProjectsListInput.Type;
+) as unknown as Schema.Codec<ProjectsListInput>;
 
 // Output Schema
+export interface ProjectsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1700,8 +2289,7 @@ export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ProjectsListOutput = typeof ProjectsListOutput.Type;
+}) as unknown as Schema.Codec<ProjectsListOutput>;
 
 // The operation
 /**
@@ -1717,6 +2305,13 @@ export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsListOutput,
 }));
 // Input Schema
+export interface ProjectsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  projectName: string;
+  properties?: { description?: string };
+}
 export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1733,10 +2328,22 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
+) as unknown as Schema.Codec<ProjectsUpdateInput>;
 
 // Output Schema
+export interface ProjectsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1755,8 +2362,7 @@ export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsUpdateOutput = typeof ProjectsUpdateOutput.Type;
+}) as unknown as Schema.Codec<ProjectsUpdateOutput>;
 
 // The operation
 /**
@@ -1773,6 +2379,17 @@ export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsUpdateOutput,
 }));
 // Input Schema
+export interface StorageMoversCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  properties?: {
+    description?: string;
+    provisioningState?: "Succeeded" | "Canceled" | "Failed" | "Deleting";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const StorageMoversCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1794,11 +2411,22 @@ export const StorageMoversCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type StorageMoversCreateOrUpdateInput =
-  typeof StorageMoversCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageMoversCreateOrUpdateInput>;
 
 // Output Schema
+export interface StorageMoversCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageMoversCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1818,9 +2446,7 @@ export const StorageMoversCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageMoversCreateOrUpdateOutput =
-  typeof StorageMoversCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageMoversCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1838,6 +2464,11 @@ export const StorageMoversCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageMoversDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+}
 export const StorageMoversDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1849,13 +2480,12 @@ export const StorageMoversDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type StorageMoversDeleteInput = typeof StorageMoversDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageMoversDeleteInput>;
 
 // Output Schema
+export type StorageMoversDeleteOutput = void;
 export const StorageMoversDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageMoversDeleteOutput = typeof StorageMoversDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageMoversDeleteOutput>;
 
 // The operation
 /**
@@ -1871,6 +2501,11 @@ export const StorageMoversDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageMoversDeleteOutput,
 }));
 // Input Schema
+export interface StorageMoversGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+}
 export const StorageMoversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1881,10 +2516,22 @@ export const StorageMoversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
     apiVersion: "2025-12-01",
   }),
-);
-export type StorageMoversGetInput = typeof StorageMoversGetInput.Type;
+) as unknown as Schema.Codec<StorageMoversGetInput>;
 
 // Output Schema
+export interface StorageMoversGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageMoversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1905,8 +2552,7 @@ export const StorageMoversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type StorageMoversGetOutput = typeof StorageMoversGetOutput.Type;
+) as unknown as Schema.Codec<StorageMoversGetOutput>;
 
 // The operation
 /**
@@ -1922,6 +2568,10 @@ export const StorageMoversGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageMoversGetOutput,
 }));
 // Input Schema
+export interface StorageMoversListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const StorageMoversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1933,10 +2583,25 @@ export const StorageMoversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers",
     apiVersion: "2025-12-01",
   }),
-);
-export type StorageMoversListInput = typeof StorageMoversListInput.Type;
+) as unknown as Schema.Codec<StorageMoversListInput>;
 
 // Output Schema
+export interface StorageMoversListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageMoversListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1971,8 +2636,7 @@ export const StorageMoversListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageMoversListOutput = typeof StorageMoversListOutput.Type;
+  }) as unknown as Schema.Codec<StorageMoversListOutput>;
 
 // The operation
 /**
@@ -1987,6 +2651,9 @@ export const StorageMoversList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageMoversListOutput,
 }));
 // Input Schema
+export interface StorageMoversListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const StorageMoversListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1996,11 +2663,25 @@ export const StorageMoversListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageMover/storageMovers",
       apiVersion: "2025-12-01",
     }),
-  );
-export type StorageMoversListBySubscriptionInput =
-  typeof StorageMoversListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<StorageMoversListBySubscriptionInput>;
 
 // Output Schema
+export interface StorageMoversListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageMoversListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2035,9 +2716,7 @@ export const StorageMoversListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageMoversListBySubscriptionOutput =
-  typeof StorageMoversListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<StorageMoversListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2052,6 +2731,13 @@ export const StorageMoversListBySubscription =
     outputSchema: StorageMoversListBySubscriptionOutput,
   }));
 // Input Schema
+export interface StorageMoversUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageMoverName: string;
+  properties?: { description?: string };
+  tags?: Record<string, string>;
+}
 export const StorageMoversUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2069,10 +2755,22 @@ export const StorageMoversUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
       apiVersion: "2025-12-01",
     }),
-  );
-export type StorageMoversUpdateInput = typeof StorageMoversUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageMoversUpdateInput>;
 
 // Output Schema
+export interface StorageMoversUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageMoversUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2092,8 +2790,7 @@ export const StorageMoversUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageMoversUpdateOutput = typeof StorageMoversUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageMoversUpdateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsIntervieweesRetrieveInput {
+  id: string;
+  project_id: string;
+  topic_id: string;
+}
 export const UserInterviewTopicsIntervieweesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,36 @@ export const UserInterviewTopicsIntervieweesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/user_interview_topics/{topic_id}/interviewees/{id}/",
     }),
-  );
-export type UserInterviewTopicsIntervieweesRetrieveInput =
-  typeof UserInterviewTopicsIntervieweesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsIntervieweesRetrieveInput>;
 
 // Output Schema
+export interface UserInterviewTopicsIntervieweesRetrieveOutput {
+  id: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  interviewee_identifier: string;
+  agent_context: string;
+}
 export const UserInterviewTopicsIntervieweesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -32,14 +62,28 @@ export const UserInterviewTopicsIntervieweesRetrieveOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     interviewee_identifier: Schema.String,
     agent_context: Schema.String,
-  });
-export type UserInterviewTopicsIntervieweesRetrieveOutput =
-  typeof UserInterviewTopicsIntervieweesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewTopicsIntervieweesRetrieveOutput>;
 
 // The operation
 /**

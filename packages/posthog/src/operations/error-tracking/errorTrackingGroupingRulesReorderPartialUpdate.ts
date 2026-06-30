@@ -3,6 +3,18 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingGroupingRulesReorderPartialUpdateInput {
+  project_id: string;
+  id?: string;
+  filters?: unknown;
+  assignee?: { type?: "user" | "role"; id?: number | string } | null;
+  description?: string | null;
+  issue?: Record<string, string> | null;
+  order_key?: number;
+  disabled_data?: unknown;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingGroupingRulesReorderPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,7 +24,7 @@ export const ErrorTrackingGroupingRulesReorderPartialUpdateInput =
       Schema.NullOr(
         Schema.Struct({
           type: Schema.optional(Schema.Literals(["user", "role"])),
-          id: Schema.optional(Schema.Unknown),
+          id: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
         }),
       ),
     ),
@@ -29,15 +41,12 @@ export const ErrorTrackingGroupingRulesReorderPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/error_tracking/grouping_rules/reorder/",
     }),
-  );
-export type ErrorTrackingGroupingRulesReorderPartialUpdateInput =
-  typeof ErrorTrackingGroupingRulesReorderPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingGroupingRulesReorderPartialUpdateInput>;
 
 // Output Schema
+export type ErrorTrackingGroupingRulesReorderPartialUpdateOutput = void;
 export const ErrorTrackingGroupingRulesReorderPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingGroupingRulesReorderPartialUpdateOutput =
-  typeof ErrorTrackingGroupingRulesReorderPartialUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingGroupingRulesReorderPartialUpdateOutput>;
 
 // The operation
 /**

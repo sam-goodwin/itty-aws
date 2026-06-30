@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteApplePayDomainsDomainInput {
+  domain: string;
+}
 export const DeleteApplePayDomainsDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.String.pipe(T.PathParam()),
@@ -12,19 +15,20 @@ export const DeleteApplePayDomainsDomainInput =
       path: "/v1/apple_pay/domains/{domain}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteApplePayDomainsDomainInput =
-  typeof DeleteApplePayDomainsDomainInput.Type;
+  ) as unknown as Schema.Codec<DeleteApplePayDomainsDomainInput>;
 
 // Output Schema
+export interface DeleteApplePayDomainsDomainOutput {
+  deleted: true;
+  id: string;
+  object: "apple_pay_domain";
+}
 export const DeleteApplePayDomainsDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["apple_pay_domain"]),
-  });
-export type DeleteApplePayDomainsDomainOutput =
-  typeof DeleteApplePayDomainsDomainOutput.Type;
+  }) as unknown as Schema.Codec<DeleteApplePayDomainsDomainOutput>;
 
 // The operation
 /**

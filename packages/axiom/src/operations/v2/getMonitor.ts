@@ -4,12 +4,50 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetMonitorInput {
+  id: string;
+}
 export const GetMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/monitors/{id}" }));
-export type GetMonitorInput = typeof GetMonitorInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/monitors/{id}" }),
+) as unknown as Schema.Codec<GetMonitorInput>;
 
 // Output Schema
+export interface GetMonitorOutput {
+  alertOnNoData?: boolean;
+  aplQuery?: string;
+  columnName?: string;
+  compareDays?: number;
+  createdAt?: string;
+  createdBy?: string;
+  description?: string;
+  disabled?: boolean;
+  disabledUntil?: string | null;
+  intervalMinutes?: number;
+  mplQuery?: string;
+  name: string;
+  notifierIds?: string[];
+  notifyByGroup?: boolean;
+  notifyEveryRun?: boolean;
+  operator?:
+    | "Below"
+    | "BelowOrEqual"
+    | "Above"
+    | "AboveOrEqual"
+    | "AboveOrBelow";
+  rangeMinutes?: number;
+  resolvable?: boolean;
+  secondDelay?: number;
+  skipResolved?: boolean;
+  threshold?: number;
+  tolerance?: number;
+  triggerAfterNPositiveResults?: number;
+  triggerFromNRuns?: number;
+  type: "Threshold" | "MatchEvent" | "AnomalyDetection";
+  updatedAt?: string;
+  id: string;
+}
 export const GetMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
@@ -46,8 +84,7 @@ export const GetMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.Literals(["Threshold", "MatchEvent", "AnomalyDetection"]),
   updatedAt: Schema.optional(Schema.String),
   id: Schema.String,
-});
-export type GetMonitorOutput = typeof GetMonitorOutput.Type;
+}) as unknown as Schema.Codec<GetMonitorOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface TimeZone {
   id?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
+export const TimeZone: Schema.Codec<TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface DateTime {
   hours?: number;
 }
 
-export const DateTime: Schema.Schema<DateTime> =
+export const DateTime: Schema.Codec<DateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
@@ -76,7 +76,7 @@ export interface Price {
   currencyCode?: string;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface ShippingInfo {
   trackingId?: string;
 }
 
-export const ShippingInfo: Schema.Schema<ShippingInfo> =
+export const ShippingInfo: Schema.Codec<ShippingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     carrier: Schema.optional(Schema.String),
     earliestDeliveryPromiseTime: Schema.optional(DateTime),
@@ -145,7 +145,7 @@ export interface LineItemDetails {
   productId?: string;
 }
 
-export const LineItemDetails: Schema.Schema<LineItemDetails> =
+export const LineItemDetails: Schema.Codec<LineItemDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gtins: Schema.optional(Schema.Array(Schema.String)),
     productTitle: Schema.optional(Schema.String),
@@ -166,7 +166,7 @@ export interface ShipmentLineItemMapping {
   shipmentId?: string;
 }
 
-export const ShipmentLineItemMapping: Schema.Schema<ShipmentLineItemMapping> =
+export const ShipmentLineItemMapping: Schema.Codec<ShipmentLineItemMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineItemId: Schema.optional(Schema.String),
     quantity: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface OrderTrackingSignal {
   merchantId?: string;
 }
 
-export const OrderTrackingSignal: Schema.Schema<OrderTrackingSignal> =
+export const OrderTrackingSignal: Schema.Codec<OrderTrackingSignal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orderCreatedTime: Schema.optional(DateTime),
     customerShippingFee: Schema.optional(Price),
@@ -244,7 +244,7 @@ export interface ProductChange {
   regionCode?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
@@ -277,7 +277,7 @@ export interface ProductStatusChangeMessage {
   eventTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managingAccount: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
@@ -367,7 +367,7 @@ export const CreateAccountsOrderTrackingSignalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsOrderTrackingSignalsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsOrderTrackingSignalsRequest>;
 
 export type CreateAccountsOrderTrackingSignalsResponse = OrderTrackingSignal;
 export const CreateAccountsOrderTrackingSignalsResponse =

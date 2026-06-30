@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -45,7 +45,7 @@ export interface TimePartitioning {
   expirationMs?: string;
 }
 
-export const TimePartitioning: Schema.Schema<TimePartitioning> =
+export const TimePartitioning: Schema.Codec<TimePartitioning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     expirationMs: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface PubsubDestination {
   pubsubTopic?: string;
 }
 
-export const PubsubDestination: Schema.Schema<PubsubDestination> =
+export const PubsubDestination: Schema.Codec<PubsubDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubTopic: Schema.optional(Schema.String),
   }).annotate({ identifier: "PubsubDestination" });
@@ -66,7 +66,7 @@ export interface DicomNotificationConfig {
   pubsubTopic?: string;
 }
 
-export const DicomNotificationConfig: Schema.Schema<DicomNotificationConfig> =
+export const DicomNotificationConfig: Schema.Codec<DicomNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubTopic: Schema.optional(Schema.String),
   }).annotate({ identifier: "DicomNotificationConfig" });
@@ -78,7 +78,7 @@ export interface NotificationConfig {
   pubsubTopic?: string;
 }
 
-export const NotificationConfig: Schema.Schema<NotificationConfig> =
+export const NotificationConfig: Schema.Codec<NotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sendForBulkImport: Schema.optional(Schema.Boolean),
     pubsubTopic: Schema.optional(Schema.String),
@@ -86,14 +86,14 @@ export const NotificationConfig: Schema.Schema<NotificationConfig> =
 
 export interface SchemaJSON {}
 
-export const SchemaJSON: Schema.Schema<SchemaJSON> =
+export const SchemaJSON: Schema.Codec<SchemaJSON> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SchemaJSON",
   });
 
 export interface SchemaFlattened {}
 
-export const SchemaFlattened: Schema.Schema<SchemaFlattened> =
+export const SchemaFlattened: Schema.Codec<SchemaFlattened> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SchemaFlattened",
   });
@@ -118,7 +118,7 @@ export interface GoogleCloudHealthcareV1DicomBigQueryDestination {
   schemaFlattened?: SchemaFlattened;
 }
 
-export const GoogleCloudHealthcareV1DicomBigQueryDestination: Schema.Schema<GoogleCloudHealthcareV1DicomBigQueryDestination> =
+export const GoogleCloudHealthcareV1DicomBigQueryDestination: Schema.Codec<GoogleCloudHealthcareV1DicomBigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     schemaJson: Schema.optional(SchemaJSON),
@@ -135,7 +135,7 @@ export interface GoogleCloudHealthcareV1DicomStreamConfig {
   bigqueryDestination?: GoogleCloudHealthcareV1DicomBigQueryDestination;
 }
 
-export const GoogleCloudHealthcareV1DicomStreamConfig: Schema.Schema<GoogleCloudHealthcareV1DicomStreamConfig> =
+export const GoogleCloudHealthcareV1DicomStreamConfig: Schema.Codec<GoogleCloudHealthcareV1DicomStreamConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryDestination: Schema.optional(
       GoogleCloudHealthcareV1DicomBigQueryDestination,
@@ -155,7 +155,7 @@ export interface DicomStore {
   streamConfigs?: ReadonlyArray<GoogleCloudHealthcareV1DicomStreamConfig>;
 }
 
-export const DicomStore: Schema.Schema<DicomStore> =
+export const DicomStore: Schema.Codec<DicomStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     notificationConfigs: Schema.optional(Schema.Array(DicomNotificationConfig)),
@@ -179,7 +179,7 @@ export interface ProgressCounter {
   secondaryFailure?: string;
 }
 
-export const ProgressCounter: Schema.Schema<ProgressCounter> =
+export const ProgressCounter: Schema.Codec<ProgressCounter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pending: Schema.optional(Schema.String),
     secondarySuccess: Schema.optional(Schema.String),
@@ -198,7 +198,7 @@ export interface AccessDeterminationLogConfig {
     | (string & {});
 }
 
-export const AccessDeterminationLogConfig: Schema.Schema<AccessDeterminationLogConfig> =
+export const AccessDeterminationLogConfig: Schema.Codec<AccessDeterminationLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logLevel: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccessDeterminationLogConfig" });
@@ -220,7 +220,7 @@ export interface AnalyzeEntitiesRequest {
   >;
 }
 
-export const AnalyzeEntitiesRequest: Schema.Schema<AnalyzeEntitiesRequest> =
+export const AnalyzeEntitiesRequest: Schema.Codec<AnalyzeEntitiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alternativeOutputFormat: Schema.optional(Schema.String),
     documentContent: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export interface GoogleCloudHealthcareV1ConsentGcsDestination {
   uriPrefix?: string;
 }
 
-export const GoogleCloudHealthcareV1ConsentGcsDestination: Schema.Schema<GoogleCloudHealthcareV1ConsentGcsDestination> =
+export const GoogleCloudHealthcareV1ConsentGcsDestination: Schema.Codec<GoogleCloudHealthcareV1ConsentGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uriPrefix: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudHealthcareV1ConsentGcsDestination" });
@@ -242,14 +242,14 @@ export interface Resources {
   resources?: ReadonlyArray<string>;
 }
 
-export const Resources: Schema.Schema<Resources> =
+export const Resources: Schema.Codec<Resources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Resources" });
 
 export interface ImportResourcesResponse {}
 
-export const ImportResourcesResponse: Schema.Schema<ImportResourcesResponse> =
+export const ImportResourcesResponse: Schema.Codec<ImportResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportResourcesResponse",
   });
@@ -265,7 +265,7 @@ export interface BlobStorageSettings {
     | (string & {});
 }
 
-export const BlobStorageSettings: Schema.Schema<BlobStorageSettings> =
+export const BlobStorageSettings: Schema.Codec<BlobStorageSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobStorageClass: Schema.optional(Schema.String),
   }).annotate({ identifier: "BlobStorageSettings" });
@@ -275,7 +275,7 @@ export interface DicomFilterConfig {
   resourcePathsGcsUri?: string;
 }
 
-export const DicomFilterConfig: Schema.Schema<DicomFilterConfig> =
+export const DicomFilterConfig: Schema.Codec<DicomFilterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePathsGcsUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "DicomFilterConfig" });
@@ -287,7 +287,7 @@ export interface SetBlobStorageSettingsRequest {
   filterConfig?: DicomFilterConfig;
 }
 
-export const SetBlobStorageSettingsRequest: Schema.Schema<SetBlobStorageSettingsRequest> =
+export const SetBlobStorageSettingsRequest: Schema.Codec<SetBlobStorageSettingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobStorageSettings: Schema.optional(BlobStorageSettings),
     filterConfig: Schema.optional(DicomFilterConfig),
@@ -305,7 +305,7 @@ export interface FieldMetadata {
     | (string & {});
 }
 
-export const FieldMetadata: Schema.Schema<FieldMetadata> =
+export const FieldMetadata: Schema.Codec<FieldMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     paths: Schema.optional(Schema.Array(Schema.String)),
     action: Schema.optional(Schema.String),
@@ -318,7 +318,7 @@ export interface FhirConfig {
   defaultKeepExtensions?: boolean;
 }
 
-export const FhirConfig: Schema.Schema<FhirConfig> =
+export const FhirConfig: Schema.Codec<FhirConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldMetadataList: Schema.optional(Schema.Array(FieldMetadata)),
     defaultKeepExtensions: Schema.optional(Schema.Boolean),
@@ -333,7 +333,7 @@ export interface SchemaSegment {
   maxOccurs?: number;
 }
 
-export const SchemaSegment: Schema.Schema<SchemaSegment> =
+export const SchemaSegment: Schema.Codec<SchemaSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     minOccurs: Schema.optional(Schema.Number),
@@ -345,7 +345,7 @@ export interface GroupOrSegment {
   group?: SchemaGroup;
 }
 
-export const GroupOrSegment: Schema.Schema<GroupOrSegment> =
+export const GroupOrSegment: Schema.Codec<GroupOrSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       segment: Schema.optional(SchemaSegment),
@@ -353,7 +353,7 @@ export const GroupOrSegment: Schema.Schema<GroupOrSegment> =
     }),
   ).annotate({
     identifier: "GroupOrSegment",
-  }) as any as Schema.Schema<GroupOrSegment>;
+  }) as any as Schema.Codec<GroupOrSegment>;
 
 export interface SchemaGroup {
   /** The name of this group. For example, "ORDER_DETAIL". */
@@ -368,7 +368,7 @@ export interface SchemaGroup {
   members?: ReadonlyArray<GroupOrSegment>;
 }
 
-export const SchemaGroup: Schema.Schema<SchemaGroup> =
+export const SchemaGroup: Schema.Codec<SchemaGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -377,9 +377,7 @@ export const SchemaGroup: Schema.Schema<SchemaGroup> =
       maxOccurs: Schema.optional(Schema.Number),
       members: Schema.optional(Schema.Array(GroupOrSegment)),
     }),
-  ).annotate({
-    identifier: "SchemaGroup",
-  }) as any as Schema.Schema<SchemaGroup>;
+  ).annotate({ identifier: "SchemaGroup" }) as any as Schema.Codec<SchemaGroup>;
 
 export interface ConsentStore {
   /** Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents. */
@@ -392,7 +390,7 @@ export interface ConsentStore {
   enableConsentCreateOnUpdate?: boolean;
 }
 
-export const ConsentStore: Schema.Schema<ConsentStore> =
+export const ConsentStore: Schema.Codec<ConsentStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultConsentTtl: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -407,7 +405,7 @@ export interface ListConsentStoresResponse {
   nextPageToken?: string;
 }
 
-export const ListConsentStoresResponse: Schema.Schema<ListConsentStoresResponse> =
+export const ListConsentStoresResponse: Schema.Codec<ListConsentStoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentStores: Schema.optional(Schema.Array(ConsentStore)),
     nextPageToken: Schema.optional(Schema.String),
@@ -415,7 +413,7 @@ export const ListConsentStoresResponse: Schema.Schema<ListConsentStoresResponse>
 
 export interface ReplaceWithInfoTypeConfig {}
 
-export const ReplaceWithInfoTypeConfig: Schema.Schema<ReplaceWithInfoTypeConfig> =
+export const ReplaceWithInfoTypeConfig: Schema.Codec<ReplaceWithInfoTypeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReplaceWithInfoTypeConfig",
   });
@@ -425,7 +423,7 @@ export interface BulkExportGcsDestination {
   uriPrefix?: string;
 }
 
-export const BulkExportGcsDestination: Schema.Schema<BulkExportGcsDestination> =
+export const BulkExportGcsDestination: Schema.Codec<BulkExportGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uriPrefix: Schema.optional(Schema.String),
   }).annotate({ identifier: "BulkExportGcsDestination" });
@@ -437,7 +435,7 @@ export interface VersionSource {
   value?: string;
 }
 
-export const VersionSource: Schema.Schema<VersionSource> =
+export const VersionSource: Schema.Codec<VersionSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mshField: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -450,7 +448,7 @@ export interface Hl7SchemaConfig {
   messageSchemaConfigs?: Record<string, SchemaGroup>;
 }
 
-export const Hl7SchemaConfig: Schema.Schema<Hl7SchemaConfig> =
+export const Hl7SchemaConfig: Schema.Codec<Hl7SchemaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Array(VersionSource)),
     messageSchemaConfigs: Schema.optional(
@@ -471,7 +469,7 @@ export interface Field {
   table?: string;
 }
 
-export const Field: Schema.Schema<Field> =
+export const Field: Schema.Codec<Field> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     minOccurs: Schema.optional(Schema.Number),
@@ -494,7 +492,7 @@ export interface Type {
   name?: string;
 }
 
-export const Type: Schema.Schema<Type> =
+export const Type: Schema.Codec<Type> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primitive: Schema.optional(Schema.String),
     fields: Schema.optional(Schema.Array(Field)),
@@ -508,7 +506,7 @@ export interface Hl7TypesConfig {
   type?: ReadonlyArray<Type>;
 }
 
-export const Hl7TypesConfig: Schema.Schema<Hl7TypesConfig> =
+export const Hl7TypesConfig: Schema.Codec<Hl7TypesConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Array(VersionSource)),
     type: Schema.optional(Schema.Array(Type)),
@@ -536,7 +534,7 @@ export interface SchemaPackage {
   ignoreMinOccurs?: boolean;
 }
 
-export const SchemaPackage: Schema.Schema<SchemaPackage> =
+export const SchemaPackage: Schema.Codec<SchemaPackage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemas: Schema.optional(Schema.Array(Hl7SchemaConfig)),
     unexpectedSegmentHandling: Schema.optional(Schema.String),
@@ -552,7 +550,7 @@ export interface PatientId {
   type?: string;
 }
 
-export const PatientId: Schema.Schema<PatientId> =
+export const PatientId: Schema.Codec<PatientId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -565,7 +563,7 @@ export interface SchematizedData {
   error?: string;
 }
 
-export const SchematizedData: Schema.Schema<SchematizedData> =
+export const SchematizedData: Schema.Codec<SchematizedData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     error: Schema.optional(Schema.String),
@@ -580,7 +578,7 @@ export interface Segment {
   fields?: Record<string, string>;
 }
 
-export const Segment: Schema.Schema<Segment> =
+export const Segment: Schema.Codec<Segment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     segmentId: Schema.optional(Schema.String),
     setId: Schema.optional(Schema.String),
@@ -591,7 +589,7 @@ export interface ParsedData {
   segments?: ReadonlyArray<Segment>;
 }
 
-export const ParsedData: Schema.Schema<ParsedData> =
+export const ParsedData: Schema.Codec<ParsedData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     segments: Schema.optional(Schema.Array(Segment)),
   }).annotate({ identifier: "ParsedData" });
@@ -619,7 +617,7 @@ export interface Message {
   sendFacility?: string;
 }
 
-export const Message: Schema.Schema<Message> =
+export const Message: Schema.Codec<Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -640,7 +638,7 @@ export interface ListMessagesResponse {
   nextPageToken?: string;
 }
 
-export const ListMessagesResponse: Schema.Schema<ListMessagesResponse> =
+export const ListMessagesResponse: Schema.Codec<ListMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hl7V2Messages: Schema.optional(Schema.Array(Message)),
     nextPageToken: Schema.optional(Schema.String),
@@ -653,7 +651,7 @@ export interface RollbackFhirResourceFilteringFields {
   metadataFilter?: string;
 }
 
-export const RollbackFhirResourceFilteringFields: Schema.Schema<RollbackFhirResourceFilteringFields> =
+export const RollbackFhirResourceFilteringFields: Schema.Codec<RollbackFhirResourceFilteringFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationIds: Schema.optional(Schema.Array(Schema.String)),
     metadataFilter: Schema.optional(Schema.String),
@@ -684,7 +682,7 @@ export interface RollbackFhirResourcesRequest {
   inputGcsObject?: string;
 }
 
-export const RollbackFhirResourcesRequest: Schema.Schema<RollbackFhirResourcesRequest> =
+export const RollbackFhirResourcesRequest: Schema.Codec<RollbackFhirResourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludeRollbacks: Schema.optional(Schema.Boolean),
     filteringFields: Schema.optional(RollbackFhirResourceFilteringFields),
@@ -703,7 +701,7 @@ export interface Image {
   gcsUri?: string;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rawBytes: Schema.optional(Schema.String),
     gcsUri: Schema.optional(Schema.String),
@@ -720,7 +718,7 @@ export interface Signature {
   metadata?: Record<string, string>;
 }
 
-export const Signature: Schema.Schema<Signature> =
+export const Signature: Schema.Codec<Signature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Image),
     signatureTime: Schema.optional(Schema.String),
@@ -747,7 +745,7 @@ export interface ConsentArtifact {
   witnessSignature?: Signature;
 }
 
-export const ConsentArtifact: Schema.Schema<ConsentArtifact> =
+export const ConsentArtifact: Schema.Codec<ConsentArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userSignature: Schema.optional(Signature),
     guardianSignature: Schema.optional(Signature),
@@ -766,7 +764,7 @@ export interface ListConsentArtifactsResponse {
   nextPageToken?: string;
 }
 
-export const ListConsentArtifactsResponse: Schema.Schema<ListConsentArtifactsResponse> =
+export const ListConsentArtifactsResponse: Schema.Codec<ListConsentArtifactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentArtifacts: Schema.optional(Schema.Array(ConsentArtifact)),
     nextPageToken: Schema.optional(Schema.String),
@@ -777,7 +775,7 @@ export interface FhirFilter {
   resources?: Resources;
 }
 
-export const FhirFilter: Schema.Schema<FhirFilter> =
+export const FhirFilter: Schema.Codec<FhirFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Resources),
   }).annotate({ identifier: "FhirFilter" });
@@ -787,7 +785,7 @@ export interface TagFilterList {
   tags?: ReadonlyArray<string>;
 }
 
-export const TagFilterList: Schema.Schema<TagFilterList> =
+export const TagFilterList: Schema.Codec<TagFilterList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TagFilterList" });
@@ -809,7 +807,7 @@ export interface DicomConfig {
   removeList?: TagFilterList;
 }
 
-export const DicomConfig: Schema.Schema<DicomConfig> =
+export const DicomConfig: Schema.Codec<DicomConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterProfile: Schema.optional(Schema.String),
     keepList: Schema.optional(TagFilterList),
@@ -819,7 +817,7 @@ export const DicomConfig: Schema.Schema<DicomConfig> =
 
 export interface RedactConfig {}
 
-export const RedactConfig: Schema.Schema<RedactConfig> =
+export const RedactConfig: Schema.Codec<RedactConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RedactConfig",
   });
@@ -831,7 +829,7 @@ export interface KmsWrappedCryptoKey {
   cryptoKey?: string;
 }
 
-export const KmsWrappedCryptoKey: Schema.Schema<KmsWrappedCryptoKey> =
+export const KmsWrappedCryptoKey: Schema.Codec<KmsWrappedCryptoKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wrappedKey: Schema.optional(Schema.String),
     cryptoKey: Schema.optional(Schema.String),
@@ -844,7 +842,7 @@ export interface CryptoHashConfig {
   kmsWrapped?: KmsWrappedCryptoKey;
 }
 
-export const CryptoHashConfig: Schema.Schema<CryptoHashConfig> =
+export const CryptoHashConfig: Schema.Codec<CryptoHashConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoKey: Schema.optional(Schema.String),
     kmsWrapped: Schema.optional(KmsWrappedCryptoKey),
@@ -857,7 +855,7 @@ export interface DateShiftConfig {
   kmsWrapped?: KmsWrappedCryptoKey;
 }
 
-export const DateShiftConfig: Schema.Schema<DateShiftConfig> =
+export const DateShiftConfig: Schema.Codec<DateShiftConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoKey: Schema.optional(Schema.String),
     kmsWrapped: Schema.optional(KmsWrappedCryptoKey),
@@ -868,7 +866,7 @@ export interface CharacterMaskConfig {
   maskingCharacter?: string;
 }
 
-export const CharacterMaskConfig: Schema.Schema<CharacterMaskConfig> =
+export const CharacterMaskConfig: Schema.Codec<CharacterMaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maskingCharacter: Schema.optional(Schema.String),
   }).annotate({ identifier: "CharacterMaskConfig" });
@@ -888,7 +886,7 @@ export interface InfoTypeTransformation {
   characterMaskConfig?: CharacterMaskConfig;
 }
 
-export const InfoTypeTransformation: Schema.Schema<InfoTypeTransformation> =
+export const InfoTypeTransformation: Schema.Codec<InfoTypeTransformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infoTypes: Schema.optional(Schema.Array(Schema.String)),
     redactConfig: Schema.optional(RedactConfig),
@@ -907,7 +905,7 @@ export interface TextConfig {
   excludeInfoTypes?: ReadonlyArray<string>;
 }
 
-export const TextConfig: Schema.Schema<TextConfig> =
+export const TextConfig: Schema.Codec<TextConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformations: Schema.optional(Schema.Array(InfoTypeTransformation)),
     additionalTransformations: Schema.optional(
@@ -926,7 +924,7 @@ export interface ImageConfig {
     | (string & {});
 }
 
-export const ImageConfig: Schema.Schema<ImageConfig> =
+export const ImageConfig: Schema.Codec<ImageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textRedactionMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "ImageConfig" });
@@ -944,7 +942,7 @@ export interface DeidentifyConfig {
   useRegionalDataProcessing?: boolean;
 }
 
-export const DeidentifyConfig: Schema.Schema<DeidentifyConfig> =
+export const DeidentifyConfig: Schema.Codec<DeidentifyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fhir: Schema.optional(FhirConfig),
     dicom: Schema.optional(DicomConfig),
@@ -962,7 +960,7 @@ export interface DeidentifyDatasetRequest {
   config?: DeidentifyConfig;
 }
 
-export const DeidentifyDatasetRequest: Schema.Schema<DeidentifyDatasetRequest> =
+export const DeidentifyDatasetRequest: Schema.Codec<DeidentifyDatasetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationDataset: Schema.optional(Schema.String),
     gcsConfigUri: Schema.optional(Schema.String),
@@ -980,7 +978,7 @@ export interface FhirStoreMetric {
   versionedStorageSizeBytes?: string;
 }
 
-export const FhirStoreMetric: Schema.Schema<FhirStoreMetric> =
+export const FhirStoreMetric: Schema.Codec<FhirStoreMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -995,7 +993,7 @@ export interface GoogleCloudHealthcareV1DicomGcsDestination {
   mimeType?: string;
 }
 
-export const GoogleCloudHealthcareV1DicomGcsDestination: Schema.Schema<GoogleCloudHealthcareV1DicomGcsDestination> =
+export const GoogleCloudHealthcareV1DicomGcsDestination: Schema.Codec<GoogleCloudHealthcareV1DicomGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uriPrefix: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -1006,7 +1004,7 @@ export interface IngestMessageRequest {
   message?: Message;
 }
 
-export const IngestMessageRequest: Schema.Schema<IngestMessageRequest> =
+export const IngestMessageRequest: Schema.Codec<IngestMessageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "IngestMessageRequest" });
@@ -1016,7 +1014,7 @@ export interface RollbackHL7MessagesFilteringFields {
   operationIds?: ReadonlyArray<string>;
 }
 
-export const RollbackHL7MessagesFilteringFields: Schema.Schema<RollbackHL7MessagesFilteringFields> =
+export const RollbackHL7MessagesFilteringFields: Schema.Codec<RollbackHL7MessagesFilteringFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RollbackHL7MessagesFilteringFields" });
@@ -1044,7 +1042,7 @@ export interface RollbackHl7V2MessagesRequest {
   inputGcsObject?: string;
 }
 
-export const RollbackHl7V2MessagesRequest: Schema.Schema<RollbackHl7V2MessagesRequest> =
+export const RollbackHl7V2MessagesRequest: Schema.Codec<RollbackHl7V2MessagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollbackTime: Schema.optional(Schema.String),
     resultGcsBucket: Schema.optional(Schema.String),
@@ -1064,7 +1062,7 @@ export interface EntityMentionRelationship {
   objectId?: string;
 }
 
-export const EntityMentionRelationship: Schema.Schema<EntityMentionRelationship> =
+export const EntityMentionRelationship: Schema.Codec<EntityMentionRelationship> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subjectId: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -1076,7 +1074,7 @@ export interface GcsSource {
   uri?: string;
 }
 
-export const GcsSource: Schema.Schema<GcsSource> =
+export const GcsSource: Schema.Codec<GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsSource" });
@@ -1090,7 +1088,7 @@ export interface ConsentAccessorScope {
   environment?: string;
 }
 
-export const ConsentAccessorScope: Schema.Schema<ConsentAccessorScope> =
+export const ConsentAccessorScope: Schema.Codec<ConsentAccessorScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purpose: Schema.optional(Schema.String),
     actor: Schema.optional(Schema.String),
@@ -1123,7 +1121,7 @@ export interface ExplainDataAccessConsentInfo {
     | (string & {});
 }
 
-export const ExplainDataAccessConsentInfo: Schema.Schema<ExplainDataAccessConsentInfo> =
+export const ExplainDataAccessConsentInfo: Schema.Codec<ExplainDataAccessConsentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentResource: Schema.optional(Schema.String),
     cascadeOrigins: Schema.optional(Schema.Array(Schema.String)),
@@ -1149,7 +1147,7 @@ export interface ExplainDataAccessConsentScope {
     | (string & {});
 }
 
-export const ExplainDataAccessConsentScope: Schema.Schema<ExplainDataAccessConsentScope> =
+export const ExplainDataAccessConsentScope: Schema.Codec<ExplainDataAccessConsentScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enforcingConsents: Schema.optional(
@@ -1161,7 +1159,7 @@ export const ExplainDataAccessConsentScope: Schema.Schema<ExplainDataAccessConse
     }),
   ).annotate({
     identifier: "ExplainDataAccessConsentScope",
-  }) as any as Schema.Schema<ExplainDataAccessConsentScope>;
+  }) as any as Schema.Codec<ExplainDataAccessConsentScope>;
 
 export interface SeriesMetrics {
   /** Total blob storage bytes for all instances in the series. */
@@ -1174,7 +1172,7 @@ export interface SeriesMetrics {
   series?: string;
 }
 
-export const SeriesMetrics: Schema.Schema<SeriesMetrics> =
+export const SeriesMetrics: Schema.Codec<SeriesMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobStorageSizeBytes: Schema.optional(Schema.String),
     structuredStorageSizeBytes: Schema.optional(Schema.String),
@@ -1187,7 +1185,7 @@ export interface RollbackHl7V2MessagesResponse {
   hl7v2Store?: string;
 }
 
-export const RollbackHl7V2MessagesResponse: Schema.Schema<RollbackHl7V2MessagesResponse> =
+export const RollbackHl7V2MessagesResponse: Schema.Codec<RollbackHl7V2MessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hl7v2Store: Schema.optional(Schema.String),
   }).annotate({ identifier: "RollbackHl7V2MessagesResponse" });
@@ -1201,7 +1199,7 @@ export interface ApplyAdminConsentsResponse {
   affectedResources?: string;
 }
 
-export const ApplyAdminConsentsResponse: Schema.Schema<ApplyAdminConsentsResponse> =
+export const ApplyAdminConsentsResponse: Schema.Codec<ApplyAdminConsentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentApplySuccess: Schema.optional(Schema.String),
     failedResources: Schema.optional(Schema.String),
@@ -1215,7 +1213,7 @@ export interface IngestMessageResponse {
   hl7Ack?: string;
 }
 
-export const IngestMessageResponse: Schema.Schema<IngestMessageResponse> =
+export const IngestMessageResponse: Schema.Codec<IngestMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
     hl7Ack: Schema.optional(Schema.String),
@@ -1230,7 +1228,7 @@ export interface FhirNotificationConfig {
   sendPreviousResourceOnDelete?: boolean;
 }
 
-export const FhirNotificationConfig: Schema.Schema<FhirNotificationConfig> =
+export const FhirNotificationConfig: Schema.Codec<FhirNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubTopic: Schema.optional(Schema.String),
     sendFullResource: Schema.optional(Schema.Boolean),
@@ -1250,7 +1248,7 @@ export interface StudyMetrics {
   instanceCount?: string;
 }
 
-export const StudyMetrics: Schema.Schema<StudyMetrics> =
+export const StudyMetrics: Schema.Codec<StudyMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seriesCount: Schema.optional(Schema.String),
     study: Schema.optional(Schema.String),
@@ -1266,7 +1264,7 @@ export interface ListDicomStoresResponse {
   dicomStores?: ReadonlyArray<DicomStore>;
 }
 
-export const ListDicomStoresResponse: Schema.Schema<ListDicomStoresResponse> =
+export const ListDicomStoresResponse: Schema.Codec<ListDicomStoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dicomStores: Schema.optional(Schema.Array(DicomStore)),
@@ -1274,7 +1272,7 @@ export const ListDicomStoresResponse: Schema.Schema<ListDicomStoresResponse> =
 
 export interface GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary {}
 
-export const GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary: Schema.Schema<GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary> =
+export const GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary: Schema.Codec<GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary",
   });
@@ -1284,7 +1282,7 @@ export interface GoogleCloudHealthcareV1FhirGcsSource {
   uri?: string;
 }
 
-export const GoogleCloudHealthcareV1FhirGcsSource: Schema.Schema<GoogleCloudHealthcareV1FhirGcsSource> =
+export const GoogleCloudHealthcareV1FhirGcsSource: Schema.Codec<GoogleCloudHealthcareV1FhirGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudHealthcareV1FhirGcsSource" });
@@ -1302,7 +1300,7 @@ export interface ImportResourcesRequest {
   gcsSource?: GoogleCloudHealthcareV1FhirGcsSource;
 }
 
-export const ImportResourcesRequest: Schema.Schema<ImportResourcesRequest> =
+export const ImportResourcesRequest: Schema.Codec<ImportResourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentStructure: Schema.optional(Schema.String),
     gcsSource: Schema.optional(GoogleCloudHealthcareV1FhirGcsSource),
@@ -1319,7 +1317,7 @@ export interface DeidentifyDicomStoreRequest {
   gcsConfigUri?: string;
 }
 
-export const DeidentifyDicomStoreRequest: Schema.Schema<DeidentifyDicomStoreRequest> =
+export const DeidentifyDicomStoreRequest: Schema.Codec<DeidentifyDicomStoreRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterConfig: Schema.optional(DicomFilterConfig),
     destinationStore: Schema.optional(Schema.String),
@@ -1334,7 +1332,7 @@ export interface DeidentifiedStoreDestination {
   store?: string;
 }
 
-export const DeidentifiedStoreDestination: Schema.Schema<DeidentifiedStoreDestination> =
+export const DeidentifiedStoreDestination: Schema.Codec<DeidentifiedStoreDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(DeidentifyConfig),
     store: Schema.optional(Schema.String),
@@ -1353,7 +1351,7 @@ export interface SchemaConfig {
   lastUpdatedPartitionConfig?: TimePartitioning;
 }
 
-export const SchemaConfig: Schema.Schema<SchemaConfig> =
+export const SchemaConfig: Schema.Codec<SchemaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recursiveStructureDepth: Schema.optional(Schema.String),
     schemaType: Schema.optional(Schema.String),
@@ -1376,7 +1374,7 @@ export interface GoogleCloudHealthcareV1FhirBigQueryDestination {
   force?: boolean;
 }
 
-export const GoogleCloudHealthcareV1FhirBigQueryDestination: Schema.Schema<GoogleCloudHealthcareV1FhirBigQueryDestination> =
+export const GoogleCloudHealthcareV1FhirBigQueryDestination: Schema.Codec<GoogleCloudHealthcareV1FhirBigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     writeDisposition: Schema.optional(Schema.String),
     datasetUri: Schema.optional(Schema.String),
@@ -1393,7 +1391,7 @@ export interface StreamConfig {
   bigqueryDestination?: GoogleCloudHealthcareV1FhirBigQueryDestination;
 }
 
-export const StreamConfig: Schema.Schema<StreamConfig> =
+export const StreamConfig: Schema.Codec<StreamConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceTypes: Schema.optional(Schema.Array(Schema.String)),
     deidentifiedStoreDestination: Schema.optional(DeidentifiedStoreDestination),
@@ -1411,7 +1409,7 @@ export interface ConsentHeaderHandling {
     | (string & {});
 }
 
-export const ConsentHeaderHandling: Schema.Schema<ConsentHeaderHandling> =
+export const ConsentHeaderHandling: Schema.Codec<ConsentHeaderHandling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profile: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConsentHeaderHandling" });
@@ -1429,7 +1427,7 @@ export interface ConsentConfig {
   enforcedAdminConsents?: ReadonlyArray<string>;
 }
 
-export const ConsentConfig: Schema.Schema<ConsentConfig> =
+export const ConsentConfig: Schema.Codec<ConsentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     accessDeterminationLogConfig: Schema.optional(AccessDeterminationLogConfig),
@@ -1453,7 +1451,7 @@ export interface ValidationConfig {
   enabledImplementationGuides?: ReadonlyArray<string>;
 }
 
-export const ValidationConfig: Schema.Schema<ValidationConfig> =
+export const ValidationConfig: Schema.Codec<ValidationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableRequiredFieldValidation: Schema.optional(Schema.Boolean),
     enableFhirpathProfileValidation: Schema.optional(Schema.Boolean),
@@ -1504,7 +1502,7 @@ export interface FhirStore {
   validationConfig?: ValidationConfig;
 }
 
-export const FhirStore: Schema.Schema<FhirStore> =
+export const FhirStore: Schema.Codec<FhirStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableResourceVersioning: Schema.optional(Schema.Boolean),
     notificationConfig: Schema.optional(NotificationConfig),
@@ -1529,7 +1527,7 @@ export interface ListFhirStoresResponse {
   nextPageToken?: string;
 }
 
-export const ListFhirStoresResponse: Schema.Schema<ListFhirStoresResponse> =
+export const ListFhirStoresResponse: Schema.Codec<ListFhirStoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fhirStores: Schema.optional(Schema.Array(FhirStore)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1542,7 +1540,7 @@ export interface Attribute {
   values?: ReadonlyArray<string>;
 }
 
-export const Attribute: Schema.Schema<Attribute> =
+export const Attribute: Schema.Codec<Attribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeDefinitionId: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
@@ -1563,7 +1561,7 @@ export interface UserDataMapping {
   archiveTime?: string;
 }
 
-export const UserDataMapping: Schema.Schema<UserDataMapping> =
+export const UserDataMapping: Schema.Codec<UserDataMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     archived: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -1580,7 +1578,7 @@ export interface ListUserDataMappingsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserDataMappingsResponse: Schema.Schema<ListUserDataMappingsResponse> =
+export const ListUserDataMappingsResponse: Schema.Codec<ListUserDataMappingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userDataMappings: Schema.optional(Schema.Array(UserDataMapping)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1591,7 +1589,7 @@ export interface CreateMessageRequest {
   message?: Message;
 }
 
-export const CreateMessageRequest: Schema.Schema<CreateMessageRequest> =
+export const CreateMessageRequest: Schema.Codec<CreateMessageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "CreateMessageRequest" });
@@ -1605,7 +1603,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1621,7 +1619,7 @@ export interface ConsentErrors {
   error?: Status;
 }
 
-export const ConsentErrors: Schema.Schema<ConsentErrors> =
+export const ConsentErrors: Schema.Codec<ConsentErrors> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -1632,14 +1630,14 @@ export interface ImportMessagesRequest {
   gcsSource?: GcsSource;
 }
 
-export const ImportMessagesRequest: Schema.Schema<ImportMessagesRequest> =
+export const ImportMessagesRequest: Schema.Codec<ImportMessagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GcsSource),
   }).annotate({ identifier: "ImportMessagesRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1649,7 +1647,7 @@ export interface AdminConsents {
   names?: ReadonlyArray<string>;
 }
 
-export const AdminConsents: Schema.Schema<AdminConsents> =
+export const AdminConsents: Schema.Codec<AdminConsents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AdminConsents" });
@@ -1661,7 +1659,7 @@ export interface ExplainDataAccessResponse {
   warning?: string;
 }
 
-export const ExplainDataAccessResponse: Schema.Schema<ExplainDataAccessResponse> =
+export const ExplainDataAccessResponse: Schema.Codec<ExplainDataAccessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentScopes: Schema.optional(Schema.Array(ExplainDataAccessConsentScope)),
     warning: Schema.optional(Schema.String),
@@ -1681,7 +1679,7 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiMethodName: Schema.optional(Schema.String),
     cancelRequested: Schema.optional(Schema.Boolean),
@@ -1710,7 +1708,7 @@ export interface GcsDestination {
   uriPrefix?: string;
 }
 
-export const GcsDestination: Schema.Schema<GcsDestination> =
+export const GcsDestination: Schema.Codec<GcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageView: Schema.optional(Schema.String),
     contentStructure: Schema.optional(Schema.String),
@@ -1730,7 +1728,7 @@ export interface ExportMessagesRequest {
   startTime?: string;
 }
 
-export const ExportMessagesRequest: Schema.Schema<ExportMessagesRequest> =
+export const ExportMessagesRequest: Schema.Codec<ExportMessagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     pubsubDestination: Schema.optional(PubsubDestination),
@@ -1748,7 +1746,7 @@ export interface Hl7V2StoreMetric {
   structuredStorageSizeBytes?: string;
 }
 
-export const Hl7V2StoreMetric: Schema.Schema<Hl7V2StoreMetric> =
+export const Hl7V2StoreMetric: Schema.Codec<Hl7V2StoreMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageType: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -1760,7 +1758,7 @@ export interface LinkedEntity {
   entityId?: string;
 }
 
-export const LinkedEntity: Schema.Schema<LinkedEntity> =
+export const LinkedEntity: Schema.Codec<LinkedEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
   }).annotate({ identifier: "LinkedEntity" });
@@ -1772,7 +1770,7 @@ export interface FhirStoreMetrics {
   metrics?: ReadonlyArray<FhirStoreMetric>;
 }
 
-export const FhirStoreMetrics: Schema.Schema<FhirStoreMetrics> =
+export const FhirStoreMetrics: Schema.Codec<FhirStoreMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metrics: Schema.optional(Schema.Array(FhirStoreMetric)),
@@ -1780,14 +1778,14 @@ export const FhirStoreMetrics: Schema.Schema<FhirStoreMetrics> =
 
 export interface ExportResourcesResponse {}
 
-export const ExportResourcesResponse: Schema.Schema<ExportResourcesResponse> =
+export const ExportResourcesResponse: Schema.Codec<ExportResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportResourcesResponse",
   });
 
 export interface ExportMessagesResponse {}
 
-export const ExportMessagesResponse: Schema.Schema<ExportMessagesResponse> =
+export const ExportMessagesResponse: Schema.Codec<ExportMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportMessagesResponse",
   });
@@ -1805,7 +1803,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1823,7 +1821,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -1841,7 +1839,7 @@ export interface ConsentEvaluation {
     | (string & {});
 }
 
-export const ConsentEvaluation: Schema.Schema<ConsentEvaluation> =
+export const ConsentEvaluation: Schema.Codec<ConsentEvaluation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationResult: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConsentEvaluation" });
@@ -1855,7 +1853,7 @@ export interface Result {
   consented?: boolean;
 }
 
-export const Result: Schema.Schema<Result> =
+export const Result: Schema.Codec<Result> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataId: Schema.optional(Schema.String),
     consentDetails: Schema.optional(
@@ -1871,7 +1869,7 @@ export interface EvaluateUserConsentsResponse {
   nextPageToken?: string;
 }
 
-export const EvaluateUserConsentsResponse: Schema.Schema<EvaluateUserConsentsResponse> =
+export const EvaluateUserConsentsResponse: Schema.Codec<EvaluateUserConsentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(Result)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1886,7 +1884,7 @@ export interface QueryAccessibleDataRequest {
   resourceAttributes?: Record<string, string>;
 }
 
-export const QueryAccessibleDataRequest: Schema.Schema<QueryAccessibleDataRequest> =
+export const QueryAccessibleDataRequest: Schema.Codec<QueryAccessibleDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(
       GoogleCloudHealthcareV1ConsentGcsDestination,
@@ -1912,7 +1910,7 @@ export interface DeidentifyFhirStoreRequest {
   config?: DeidentifyConfig;
 }
 
-export const DeidentifyFhirStoreRequest: Schema.Schema<DeidentifyFhirStoreRequest> =
+export const DeidentifyFhirStoreRequest: Schema.Codec<DeidentifyFhirStoreRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsConfigUri: Schema.optional(Schema.String),
     resourceFilter: Schema.optional(FhirFilter),
@@ -1926,7 +1924,7 @@ export interface GoogleCloudHealthcareV1DicomGcsSource {
   uri?: string;
 }
 
-export const GoogleCloudHealthcareV1DicomGcsSource: Schema.Schema<GoogleCloudHealthcareV1DicomGcsSource> =
+export const GoogleCloudHealthcareV1DicomGcsSource: Schema.Codec<GoogleCloudHealthcareV1DicomGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudHealthcareV1DicomGcsSource" });
@@ -1938,7 +1936,7 @@ export interface ImportDicomDataRequest {
   blobStorageSettings?: BlobStorageSettings;
 }
 
-export const ImportDicomDataRequest: Schema.Schema<ImportDicomDataRequest> =
+export const ImportDicomDataRequest: Schema.Codec<ImportDicomDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GoogleCloudHealthcareV1DicomGcsSource),
     blobStorageSettings: Schema.optional(BlobStorageSettings),
@@ -1955,7 +1953,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1978,7 +1976,7 @@ export interface AttributeDefinition {
   dataMappingDefaultValue?: string;
 }
 
-export const AttributeDefinition: Schema.Schema<AttributeDefinition> =
+export const AttributeDefinition: Schema.Codec<AttributeDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1995,7 +1993,7 @@ export interface ListAttributeDefinitionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAttributeDefinitionsResponse: Schema.Schema<ListAttributeDefinitionsResponse> =
+export const ListAttributeDefinitionsResponse: Schema.Codec<ListAttributeDefinitionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeDefinitions: Schema.optional(Schema.Array(AttributeDefinition)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2014,7 +2012,7 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -2030,7 +2028,7 @@ export interface ExportDicomDataRequest {
   bigqueryDestination?: GoogleCloudHealthcareV1DicomBigQueryDestination;
 }
 
-export const ExportDicomDataRequest: Schema.Schema<ExportDicomDataRequest> =
+export const ExportDicomDataRequest: Schema.Codec<ExportDicomDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GoogleCloudHealthcareV1DicomGcsDestination),
     bigqueryDestination: Schema.optional(
@@ -2043,7 +2041,7 @@ export interface RejectConsentRequest {
   consentArtifact?: string;
 }
 
-export const RejectConsentRequest: Schema.Schema<RejectConsentRequest> =
+export const RejectConsentRequest: Schema.Codec<RejectConsentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentArtifact: Schema.optional(Schema.String),
   }).annotate({ identifier: "RejectConsentRequest" });
@@ -2060,7 +2058,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -2073,7 +2071,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -2088,7 +2086,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -2106,7 +2104,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -2123,7 +2121,7 @@ export interface HttpBody {
   extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
+export const HttpBody: Schema.Codec<HttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     contentType: Schema.optional(Schema.String),
@@ -2141,7 +2139,7 @@ export interface ActivateConsentRequest {
   expireTime?: string;
 }
 
-export const ActivateConsentRequest: Schema.Schema<ActivateConsentRequest> =
+export const ActivateConsentRequest: Schema.Codec<ActivateConsentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentArtifact: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.String),
@@ -2150,7 +2148,7 @@ export const ActivateConsentRequest: Schema.Schema<ActivateConsentRequest> =
 
 export interface ImportDicomDataResponse {}
 
-export const ImportDicomDataResponse: Schema.Schema<ImportDicomDataResponse> =
+export const ImportDicomDataResponse: Schema.Codec<ImportDicomDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportDicomDataResponse",
   });
@@ -2162,7 +2160,7 @@ export interface ApplyAdminConsentsErrorDetail {
   consentErrors?: ReadonlyArray<ConsentErrors>;
 }
 
-export const ApplyAdminConsentsErrorDetail: Schema.Schema<ApplyAdminConsentsErrorDetail> =
+export const ApplyAdminConsentsErrorDetail: Schema.Codec<ApplyAdminConsentsErrorDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     existingOperationId: Schema.optional(Schema.String),
     consentErrors: Schema.optional(Schema.Array(ConsentErrors)),
@@ -2173,7 +2171,7 @@ export interface EncryptionSpec {
   kmsKeyName?: string;
 }
 
-export const EncryptionSpec: Schema.Schema<EncryptionSpec> =
+export const EncryptionSpec: Schema.Codec<EncryptionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EncryptionSpec" });
@@ -2183,7 +2181,7 @@ export interface GoogleCloudHealthcareV1FhirGcsDestination {
   uriPrefix?: string;
 }
 
-export const GoogleCloudHealthcareV1FhirGcsDestination: Schema.Schema<GoogleCloudHealthcareV1FhirGcsDestination> =
+export const GoogleCloudHealthcareV1FhirGcsDestination: Schema.Codec<GoogleCloudHealthcareV1FhirGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uriPrefix: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudHealthcareV1FhirGcsDestination" });
@@ -2199,7 +2197,7 @@ export interface ExportResourcesRequest {
   _since?: string;
 }
 
-export const ExportResourcesRequest: Schema.Schema<ExportResourcesRequest> =
+export const ExportResourcesRequest: Schema.Codec<ExportResourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryDestination: Schema.optional(
       GoogleCloudHealthcareV1FhirBigQueryDestination,
@@ -2216,7 +2214,7 @@ export interface GoogleCloudHealthcareV1ConsentPolicy {
   authorizationRule?: Expr;
 }
 
-export const GoogleCloudHealthcareV1ConsentPolicy: Schema.Schema<GoogleCloudHealthcareV1ConsentPolicy> =
+export const GoogleCloudHealthcareV1ConsentPolicy: Schema.Codec<GoogleCloudHealthcareV1ConsentPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceAttributes: Schema.optional(Schema.Array(Attribute)),
     authorizationRule: Schema.optional(Expr),
@@ -2252,7 +2250,7 @@ export interface Consent {
     | (string & {});
 }
 
-export const Consent: Schema.Schema<Consent> =
+export const Consent: Schema.Codec<Consent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     userId: Schema.optional(Schema.String),
@@ -2273,7 +2271,7 @@ export interface StructuredStorageInfo {
   sizeBytes?: string;
 }
 
-export const StructuredStorageInfo: Schema.Schema<StructuredStorageInfo> =
+export const StructuredStorageInfo: Schema.Codec<StructuredStorageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeBytes: Schema.optional(Schema.String),
   }).annotate({ identifier: "StructuredStorageInfo" });
@@ -2293,7 +2291,7 @@ export interface BlobStorageInfo {
   storageClassUpdateTime?: string;
 }
 
-export const BlobStorageInfo: Schema.Schema<BlobStorageInfo> =
+export const BlobStorageInfo: Schema.Codec<BlobStorageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeBytes: Schema.optional(Schema.String),
     storageClass: Schema.optional(Schema.String),
@@ -2309,7 +2307,7 @@ export interface StorageInfo {
   blobStorageInfo?: BlobStorageInfo;
 }
 
-export const StorageInfo: Schema.Schema<StorageInfo> =
+export const StorageInfo: Schema.Codec<StorageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referencedResource: Schema.optional(Schema.String),
     structuredStorageInfo: Schema.optional(StructuredStorageInfo),
@@ -2323,7 +2321,7 @@ export interface TextSpan {
   beginOffset?: number;
 }
 
-export const TextSpan: Schema.Schema<TextSpan> =
+export const TextSpan: Schema.Codec<TextSpan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     beginOffset: Schema.optional(Schema.Number),
@@ -2336,7 +2334,7 @@ export interface Feature {
   confidence?: number;
 }
 
-export const Feature: Schema.Schema<Feature> =
+export const Feature: Schema.Codec<Feature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -2361,7 +2359,7 @@ export interface EntityMention {
   subject?: Feature;
 }
 
-export const EntityMention: Schema.Schema<EntityMention> =
+export const EntityMention: Schema.Codec<EntityMention> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mentionId: Schema.optional(Schema.String),
     text: Schema.optional(TextSpan),
@@ -2382,7 +2380,7 @@ export interface Entity {
   entityId?: string;
 }
 
-export const Entity: Schema.Schema<Entity> =
+export const Entity: Schema.Codec<Entity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preferredTerm: Schema.optional(Schema.String),
     vocabularyCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -2400,7 +2398,7 @@ export interface AnalyzeEntitiesResponse {
   relationships?: ReadonlyArray<EntityMentionRelationship>;
 }
 
-export const AnalyzeEntitiesResponse: Schema.Schema<AnalyzeEntitiesResponse> =
+export const AnalyzeEntitiesResponse: Schema.Codec<AnalyzeEntitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityMentions: Schema.optional(Schema.Array(EntityMention)),
     fhirBundle: Schema.optional(Schema.String),
@@ -2410,7 +2408,7 @@ export const AnalyzeEntitiesResponse: Schema.Schema<AnalyzeEntitiesResponse> =
 
 export interface ArchiveUserDataMappingResponse {}
 
-export const ArchiveUserDataMappingResponse: Schema.Schema<ArchiveUserDataMappingResponse> =
+export const ArchiveUserDataMappingResponse: Schema.Codec<ArchiveUserDataMappingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ArchiveUserDataMappingResponse",
   });
@@ -2422,7 +2420,7 @@ export interface Hl7V2NotificationConfig {
   filter?: string;
 }
 
-export const Hl7V2NotificationConfig: Schema.Schema<Hl7V2NotificationConfig> =
+export const Hl7V2NotificationConfig: Schema.Codec<Hl7V2NotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubTopic: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -2439,7 +2437,7 @@ export interface ParserConfig {
   segmentTerminator?: string;
 }
 
-export const ParserConfig: Schema.Schema<ParserConfig> =
+export const ParserConfig: Schema.Codec<ParserConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowNullHeader: Schema.optional(Schema.Boolean),
     version: Schema.optional(Schema.String),
@@ -2460,7 +2458,7 @@ export interface Hl7V2Store {
   labels?: Record<string, string>;
 }
 
-export const Hl7V2Store: Schema.Schema<Hl7V2Store> =
+export const Hl7V2Store: Schema.Codec<Hl7V2Store> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notificationConfigs: Schema.optional(Schema.Array(Hl7V2NotificationConfig)),
     name: Schema.optional(Schema.String),
@@ -2476,7 +2474,7 @@ export interface ListHl7V2StoresResponse {
   hl7V2Stores?: ReadonlyArray<Hl7V2Store>;
 }
 
-export const ListHl7V2StoresResponse: Schema.Schema<ListHl7V2StoresResponse> =
+export const ListHl7V2StoresResponse: Schema.Codec<ListHl7V2StoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     hl7V2Stores: Schema.optional(Schema.Array(Hl7V2Store)),
@@ -2489,7 +2487,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -2502,7 +2500,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2513,7 +2511,7 @@ export interface PatientScope {
   patientIds?: ReadonlyArray<string>;
 }
 
-export const PatientScope: Schema.Schema<PatientScope> =
+export const PatientScope: Schema.Codec<PatientScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patientIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PatientScope" });
@@ -2525,7 +2523,7 @@ export interface Hl7V2StoreMetrics {
   name?: string;
 }
 
-export const Hl7V2StoreMetrics: Schema.Schema<Hl7V2StoreMetrics> =
+export const Hl7V2StoreMetrics: Schema.Codec<Hl7V2StoreMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Hl7V2StoreMetric)),
     name: Schema.optional(Schema.String),
@@ -2533,7 +2531,7 @@ export const Hl7V2StoreMetrics: Schema.Schema<Hl7V2StoreMetrics> =
 
 export interface SetBlobStorageSettingsResponse {}
 
-export const SetBlobStorageSettingsResponse: Schema.Schema<SetBlobStorageSettingsResponse> =
+export const SetBlobStorageSettingsResponse: Schema.Codec<SetBlobStorageSettingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetBlobStorageSettingsResponse",
   });
@@ -2543,7 +2541,7 @@ export interface ConsentList {
   consents?: ReadonlyArray<string>;
 }
 
-export const ConsentList: Schema.Schema<ConsentList> =
+export const ConsentList: Schema.Codec<ConsentList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consents: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ConsentList" });
@@ -2553,14 +2551,14 @@ export interface RevokeConsentRequest {
   consentArtifact?: string;
 }
 
-export const RevokeConsentRequest: Schema.Schema<RevokeConsentRequest> =
+export const RevokeConsentRequest: Schema.Codec<RevokeConsentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentArtifact: Schema.optional(Schema.String),
   }).annotate({ identifier: "RevokeConsentRequest" });
 
 export interface ArchiveUserDataMappingRequest {}
 
-export const ArchiveUserDataMappingRequest: Schema.Schema<ArchiveUserDataMappingRequest> =
+export const ArchiveUserDataMappingRequest: Schema.Codec<ArchiveUserDataMappingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ArchiveUserDataMappingRequest",
   });
@@ -2572,7 +2570,7 @@ export interface TimeRange {
   end?: string;
 }
 
-export const TimeRange: Schema.Schema<TimeRange> =
+export const TimeRange: Schema.Codec<TimeRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
@@ -2587,7 +2585,7 @@ export interface ApplyConsentsRequest {
   timeRange?: TimeRange;
 }
 
-export const ApplyConsentsRequest: Schema.Schema<ApplyConsentsRequest> =
+export const ApplyConsentsRequest: Schema.Codec<ApplyConsentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     patientScope: Schema.optional(PatientScope),
@@ -2611,7 +2609,7 @@ export interface EvaluateUserConsentsRequest {
   pageToken?: string;
 }
 
-export const EvaluateUserConsentsRequest: Schema.Schema<EvaluateUserConsentsRequest> =
+export const EvaluateUserConsentsRequest: Schema.Codec<EvaluateUserConsentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentList: Schema.optional(ConsentList),
     userId: Schema.optional(Schema.String),
@@ -2637,7 +2635,7 @@ export interface CheckDataAccessRequest {
   dataId?: string;
 }
 
-export const CheckDataAccessRequest: Schema.Schema<CheckDataAccessRequest> =
+export const CheckDataAccessRequest: Schema.Codec<CheckDataAccessRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responseView: Schema.optional(Schema.String),
     requestAttributes: Schema.optional(
@@ -2660,7 +2658,7 @@ export interface Dataset {
   encryptionSpec?: EncryptionSpec;
 }
 
-export const Dataset: Schema.Schema<Dataset> =
+export const Dataset: Schema.Codec<Dataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     satisfiesPzi: Schema.optional(Schema.Boolean),
     timeZone: Schema.optional(Schema.String),
@@ -2676,7 +2674,7 @@ export interface ListDatasetsResponse {
   datasets?: ReadonlyArray<Dataset>;
 }
 
-export const ListDatasetsResponse: Schema.Schema<ListDatasetsResponse> =
+export const ListDatasetsResponse: Schema.Codec<ListDatasetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     datasets: Schema.optional(Schema.Array(Dataset)),
@@ -2687,7 +2685,7 @@ export interface RollbackFhirResourcesResponse {
   fhirStore?: string;
 }
 
-export const RollbackFhirResourcesResponse: Schema.Schema<RollbackFhirResourcesResponse> =
+export const RollbackFhirResourcesResponse: Schema.Codec<RollbackFhirResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fhirStore: Schema.optional(Schema.String),
   }).annotate({ identifier: "RollbackFhirResourcesResponse" });
@@ -2703,7 +2701,7 @@ export interface ApplyConsentsResponse {
   consentApplySuccess?: string;
 }
 
-export const ApplyConsentsResponse: Schema.Schema<ApplyConsentsResponse> =
+export const ApplyConsentsResponse: Schema.Codec<ApplyConsentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentApplyFailure: Schema.optional(Schema.String),
     affectedResources: Schema.optional(Schema.String),
@@ -2713,7 +2711,7 @@ export const ApplyConsentsResponse: Schema.Schema<ApplyConsentsResponse> =
 
 export interface ExportDicomDataResponse {}
 
-export const ExportDicomDataResponse: Schema.Schema<ExportDicomDataResponse> =
+export const ExportDicomDataResponse: Schema.Codec<ExportDicomDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportDicomDataResponse",
   });
@@ -2723,14 +2721,14 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface DeidentifySummary {}
 
-export const DeidentifySummary: Schema.Schema<DeidentifySummary> =
+export const DeidentifySummary: Schema.Codec<DeidentifySummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeidentifySummary",
   });
@@ -2740,7 +2738,7 @@ export interface QueryAccessibleDataResponse {
   gcsUris?: ReadonlyArray<string>;
 }
 
-export const QueryAccessibleDataResponse: Schema.Schema<QueryAccessibleDataResponse> =
+export const QueryAccessibleDataResponse: Schema.Codec<QueryAccessibleDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsUris: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "QueryAccessibleDataResponse" });
@@ -2752,7 +2750,7 @@ export interface ListConsentsResponse {
   consents?: ReadonlyArray<Consent>;
 }
 
-export const ListConsentsResponse: Schema.Schema<ListConsentsResponse> =
+export const ListConsentsResponse: Schema.Codec<ListConsentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     consents: Schema.optional(Schema.Array(Consent)),
@@ -2760,14 +2758,14 @@ export const ListConsentsResponse: Schema.Schema<ListConsentsResponse> =
 
 export interface ImportMessagesResponse {}
 
-export const ImportMessagesResponse: Schema.Schema<ImportMessagesResponse> =
+export const ImportMessagesResponse: Schema.Codec<ImportMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportMessagesResponse",
   });
 
 export interface GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary {}
 
-export const GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary: Schema.Schema<GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary> =
+export const GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary: Schema.Codec<GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary",
   });
@@ -2779,7 +2777,7 @@ export interface ListConsentRevisionsResponse {
   consents?: ReadonlyArray<Consent>;
 }
 
-export const ListConsentRevisionsResponse: Schema.Schema<ListConsentRevisionsResponse> =
+export const ListConsentRevisionsResponse: Schema.Codec<ListConsentRevisionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     consents: Schema.optional(Schema.Array(Consent)),
@@ -2792,7 +2790,7 @@ export interface CheckDataAccessResponse {
   consentDetails?: Record<string, ConsentEvaluation>;
 }
 
-export const CheckDataAccessResponse: Schema.Schema<CheckDataAccessResponse> =
+export const CheckDataAccessResponse: Schema.Codec<CheckDataAccessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consented: Schema.optional(Schema.Boolean),
     consentDetails: Schema.optional(
@@ -2807,7 +2805,7 @@ export interface ApplyAdminConsentsRequest {
   validateOnly?: boolean;
 }
 
-export const ApplyAdminConsentsRequest: Schema.Schema<ApplyAdminConsentsRequest> =
+export const ApplyAdminConsentsRequest: Schema.Codec<ApplyAdminConsentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newConsentsList: Schema.optional(AdminConsents),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -2828,7 +2826,7 @@ export interface DicomStoreMetrics {
   structuredStorageSizeBytes?: string;
 }
 
-export const DicomStoreMetrics: Schema.Schema<DicomStoreMetrics> =
+export const DicomStoreMetrics: Schema.Codec<DicomStoreMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studyCount: Schema.optional(Schema.String),
     seriesCount: Schema.optional(Schema.String),
@@ -2856,7 +2854,7 @@ export interface BulkDeleteResourcesRequest {
   gcsDestination?: GoogleCloudHealthcareV1FhirGcsDestination;
 }
 
-export const BulkDeleteResourcesRequest: Schema.Schema<BulkDeleteResourcesRequest> =
+export const BulkDeleteResourcesRequest: Schema.Codec<BulkDeleteResourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     until: Schema.optional(Schema.String),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -2867,7 +2865,7 @@ export const BulkDeleteResourcesRequest: Schema.Schema<BulkDeleteResourcesReques
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -2951,7 +2949,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -2986,7 +2984,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -3024,7 +3022,7 @@ export const AnalyzeEntitiesProjectsLocationsServicesNlpRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnalyzeEntitiesProjectsLocationsServicesNlpRequest>;
+  ) as unknown as Schema.Codec<AnalyzeEntitiesProjectsLocationsServicesNlpRequest>;
 
 export type AnalyzeEntitiesProjectsLocationsServicesNlpResponse =
   AnalyzeEntitiesResponse;
@@ -3067,7 +3065,7 @@ export const PatchProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsRequest>;
 
 export type PatchProjectsLocationsDatasetsResponse = Dataset;
 export const PatchProjectsLocationsDatasetsResponse =
@@ -3109,7 +3107,7 @@ export const ListProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/datasets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsRequest>;
 
 export type ListProjectsLocationsDatasetsResponse = ListDatasetsResponse;
 export const ListProjectsLocationsDatasetsResponse =
@@ -3147,7 +3145,7 @@ export const GetProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsRequest>;
 
 export type GetProjectsLocationsDatasetsResponse = Dataset;
 export const GetProjectsLocationsDatasetsResponse =
@@ -3188,7 +3186,7 @@ export const SetIamPolicyProjectsLocationsDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDatasetsRequest>;
 
 export type SetIamPolicyProjectsLocationsDatasetsResponse = Policy;
 export const SetIamPolicyProjectsLocationsDatasetsResponse =
@@ -3231,7 +3229,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDatasetsRequest>;
 
 export type TestIamPermissionsProjectsLocationsDatasetsResponse =
   TestIamPermissionsResponse;
@@ -3274,7 +3272,7 @@ export const CreateProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/datasets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsRequest>;
 
 export type CreateProjectsLocationsDatasetsResponse = Operation;
 export const CreateProjectsLocationsDatasetsResponse =
@@ -3315,7 +3313,7 @@ export const GetIamPolicyProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDatasetsRequest>;
 
 export type GetIamPolicyProjectsLocationsDatasetsResponse = Policy;
 export const GetIamPolicyProjectsLocationsDatasetsResponse =
@@ -3349,7 +3347,7 @@ export const DeleteProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsRequest>;
 
 export type DeleteProjectsLocationsDatasetsResponse = Empty;
 export const DeleteProjectsLocationsDatasetsResponse =
@@ -3392,7 +3390,7 @@ export const DeidentifyProjectsLocationsDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeidentifyProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<DeidentifyProjectsLocationsDatasetsRequest>;
 
 export type DeidentifyProjectsLocationsDatasetsResponse = Operation;
 export const DeidentifyProjectsLocationsDatasetsResponse =
@@ -3435,7 +3433,7 @@ export const DeidentifyProjectsLocationsDatasetsDicomStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeidentifyProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<DeidentifyProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type DeidentifyProjectsLocationsDatasetsDicomStoresResponse = Operation;
 export const DeidentifyProjectsLocationsDatasetsDicomStoresResponse =
@@ -3471,7 +3469,7 @@ export const GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getDICOMStoreMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresResponse =
   DicomStoreMetrics;
@@ -3516,7 +3514,7 @@ export const StoreInstancesProjectsLocationsDatasetsDicomStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StoreInstancesProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<StoreInstancesProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type StoreInstancesProjectsLocationsDatasetsDicomStoresResponse =
   HttpBody;
@@ -3560,7 +3558,7 @@ export const SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type SetIamPolicyProjectsLocationsDatasetsDicomStoresResponse = Policy;
 export const SetIamPolicyProjectsLocationsDatasetsDicomStoresResponse =
@@ -3604,7 +3602,7 @@ export const CreateProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/dicomStores", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type CreateProjectsLocationsDatasetsDicomStoresResponse = DicomStore;
 export const CreateProjectsLocationsDatasetsDicomStoresResponse =
@@ -3643,7 +3641,7 @@ export const ImportProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:import", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type ImportProjectsLocationsDatasetsDicomStoresResponse = Operation;
 export const ImportProjectsLocationsDatasetsDicomStoresResponse =
@@ -3685,7 +3683,7 @@ export const PatchProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type PatchProjectsLocationsDatasetsDicomStoresResponse = DicomStore;
 export const PatchProjectsLocationsDatasetsDicomStoresResponse =
@@ -3721,7 +3719,7 @@ export const GetProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type GetProjectsLocationsDatasetsDicomStoresResponse = DicomStore;
 export const GetProjectsLocationsDatasetsDicomStoresResponse =
@@ -3758,7 +3756,7 @@ export const ExportProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:export", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type ExportProjectsLocationsDatasetsDicomStoresResponse = Operation;
 export const ExportProjectsLocationsDatasetsDicomStoresResponse =
@@ -3801,7 +3799,7 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresResponse =
   Operation;
@@ -3841,7 +3839,7 @@ export const SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type SearchForSeriesProjectsLocationsDatasetsDicomStoresResponse =
   HttpBody;
@@ -3879,7 +3877,7 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresResponse =
   HttpBody;
@@ -3919,7 +3917,7 @@ export const GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type GetIamPolicyProjectsLocationsDatasetsDicomStoresResponse = Policy;
 export const GetIamPolicyProjectsLocationsDatasetsDicomStoresResponse =
@@ -3953,7 +3951,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresResponse = Empty;
 export const DeleteProjectsLocationsDatasetsDicomStoresResponse =
@@ -3992,7 +3990,7 @@ export const SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type SearchForStudiesProjectsLocationsDatasetsDicomStoresResponse =
   HttpBody;
@@ -4034,7 +4032,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type TestIamPermissionsProjectsLocationsDatasetsDicomStoresResponse =
   TestIamPermissionsResponse;
@@ -4080,7 +4078,7 @@ export const ListProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomStores" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsDicomStoresRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type ListProjectsLocationsDatasetsDicomStoresResponse =
   ListDicomStoresResponse;
@@ -4126,7 +4124,7 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebS
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest>;
+  ) as unknown as Schema.Codec<SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest>;
 
 export type SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesResponse =
   Operation;
@@ -4134,7 +4132,11 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebS
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** SetBlobStorageSettings sets the blob storage settings of the specified resources. */
 export const setBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudies: API.OperationMethod<
@@ -4161,7 +4163,7 @@ export const GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesR
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+study}:getStudyMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest>;
+  ) as unknown as Schema.Codec<GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest>;
 
 export type GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesResponse =
   StudyMetrics;
@@ -4169,7 +4171,9 @@ export const GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesR
   /*@__PURE__*/ /*#__PURE__*/ StudyMetrics;
 
 export type GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetStudyMetrics returns metrics for a study. */
 export const getStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies: API.OperationMethod<
@@ -4196,7 +4200,7 @@ export const GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+series}:getSeriesMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesRequest>;
+  ) as unknown as Schema.Codec<GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesRequest>;
 
 export type GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResponse =
   SeriesMetrics;
@@ -4204,7 +4208,9 @@ export const GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies
   /*@__PURE__*/ /*#__PURE__*/ SeriesMetrics;
 
 export type GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetSeriesMetrics returns metrics for a series. */
 export const getSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeries: API.OperationMethod<
@@ -4231,7 +4237,7 @@ export const GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSe
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getStorageInfo" }),
     svc,
-  ) as unknown as Schema.Schema<GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest>;
+  ) as unknown as Schema.Codec<GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest>;
 
 export type GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesResponse =
   StorageInfo;
@@ -4239,7 +4245,9 @@ export const GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSe
   /*@__PURE__*/ /*#__PURE__*/ StorageInfo;
 
 export type GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetStorageInfo returns the storage info of the specified resource. */
 export const getStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstances: API.OperationMethod<
@@ -4276,7 +4284,7 @@ export const StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+  ) as unknown as Schema.Codec<StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 export type StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesResponse =
   HttpBody;
@@ -4316,7 +4324,7 @@ export const RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+  ) as unknown as Schema.Codec<RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 export type RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesResponse =
   HttpBody;
@@ -4354,7 +4362,7 @@ export const SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+  ) as unknown as Schema.Codec<SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 export type SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesResponse =
   HttpBody;
@@ -4392,7 +4400,7 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesReques
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+  ) as unknown as Schema.Codec<SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesResponse =
   HttpBody;
@@ -4400,7 +4408,9 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRespon
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** SearchForInstances returns a list of matching instances. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForInstances, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForInstances, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudies: API.OperationMethod<
@@ -4428,7 +4438,7 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest 
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+  ) as unknown as Schema.Codec<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesResponse =
   HttpBody;
@@ -4465,7 +4475,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresStudiesResponse =
   Operation;
@@ -4505,7 +4515,7 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRe
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
+  ) as unknown as Schema.Codec<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse =
   HttpBody;
@@ -4513,7 +4523,9 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRe
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveSeriesMetadata returns instance associated with the given study and series, presented as metadata. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveSeriesMetadata, see [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveSeriesMetadata, see [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata). */
 export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -4543,7 +4555,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse =
   Operation;
@@ -4583,7 +4595,7 @@ export const RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequ
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
+  ) as unknown as Schema.Codec<RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
 export type RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse =
   HttpBody;
@@ -4591,7 +4603,9 @@ export const RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesResp
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveSeries returns all instances within the given study and series. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveSeries, see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveSeries, see [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom). */
 export const retrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -4620,7 +4634,7 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
+  ) as unknown as Schema.Codec<SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse =
   HttpBody;
@@ -4628,7 +4642,9 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** SearchForInstances returns a list of matching instances. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForInstances, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForInstances, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -4658,7 +4674,7 @@ export const RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
+  ) as unknown as Schema.Codec<RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
 
 export type RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResponse =
   HttpBody;
@@ -4666,7 +4682,9 @@ export const RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveInstance returns instance associated with the given study, series, and SOP Instance UID. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveInstance, see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) and [DICOM instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveInstance, see [Retrieve an instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance). */
 export const retrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -4699,7 +4717,7 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
+  ) as unknown as Schema.Codec<RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
 
 export type RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResponse =
   HttpBody;
@@ -4707,7 +4725,9 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveRenderedInstance returns instance associated with the given study, series, and SOP Instance UID in an acceptable Rendered Media Type. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveRenderedInstance, see [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveRenderedInstance, see [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer). */
 export const retrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -4737,7 +4757,7 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
+  ) as unknown as Schema.Codec<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResponse =
   HttpBody;
@@ -4745,7 +4765,9 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveInstanceMetadata returns instance associated with the given study, series, and SOP Instance UID presented as metadata. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveInstanceMetadata, see [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveInstanceMetadata, see [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata). */
 export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -4775,7 +4797,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesReq
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResponse =
   Empty;
@@ -4783,7 +4805,11 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DeleteInstance deletes an instance associated with the given study, series, and SOP Instance UID. Delete requests are equivalent to the GET requests specified in the Retrieve transaction. Study and series search results can take a few seconds to be updated after an instance is deleted using DeleteInstance. For samples that show how to call DeleteInstance, see [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom). */
 export const deleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -4816,7 +4842,7 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest>;
+  ) as unknown as Schema.Codec<RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest>;
 
 export type RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResponse =
   HttpBody;
@@ -4824,7 +4850,9 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveRenderedFrames returns instances associated with the given study, series, SOP Instance UID and frame numbers in an acceptable Rendered Media Type. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveRenderedFrames, see [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveRenderedFrames, see [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer). */
 export const retrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFrames: API.OperationMethod<
@@ -4854,7 +4882,7 @@ export const RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInst
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest>;
+  ) as unknown as Schema.Codec<RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest>;
 
 export type RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResponse =
   HttpBody;
@@ -4862,7 +4890,9 @@ export const RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInst
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveFrames returns instances associated with the given study, series, SOP Instance UID and frame numbers. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}. For details on the implementation of RetrieveFrames, see [DICOM frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveFrames, see [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom). */
 export const retrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFrames: API.OperationMethod<
@@ -4892,7 +4922,7 @@ export const RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dicomWeb/{+dicomWebPath}" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest>;
+  ) as unknown as Schema.Codec<RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest>;
 
 export type RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataResponse =
   HttpBody;
@@ -4900,7 +4930,9 @@ export const RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns uncompressed, unencoded bytes representing the referenced bulkdata tag from an instance. See [Retrieve Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveBulkdata, see [Bulkdata resources](https://cloud.google.com/healthcare/docs/dicom#bulkdata-resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveBulkdata, see [Retrieve bulkdata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-bulkdata). */
 export const retrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdata: API.OperationMethod<
@@ -4932,7 +4964,7 @@ export const GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type GetIamPolicyProjectsLocationsDatasetsHl7V2StoresResponse = Policy;
 export const GetIamPolicyProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -4966,7 +4998,7 @@ export const DeleteProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type DeleteProjectsLocationsDatasetsHl7V2StoresResponse = Empty;
 export const DeleteProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -5002,7 +5034,7 @@ export const GetProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type GetProjectsLocationsDatasetsHl7V2StoresResponse = Hl7V2Store;
 export const GetProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -5045,7 +5077,7 @@ export const ListProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/hl7V2Stores" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type ListProjectsLocationsDatasetsHl7V2StoresResponse =
   ListHl7V2StoresResponse;
@@ -5087,7 +5119,7 @@ export const ExportProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:export", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type ExportProjectsLocationsDatasetsHl7V2StoresResponse = Operation;
 export const ExportProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -5129,7 +5161,7 @@ export const PatchProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type PatchProjectsLocationsDatasetsHl7V2StoresResponse = Hl7V2Store;
 export const PatchProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -5168,7 +5200,7 @@ export const RollbackProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:rollback", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RollbackProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<RollbackProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type RollbackProjectsLocationsDatasetsHl7V2StoresResponse = Operation;
 export const RollbackProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -5211,7 +5243,7 @@ export const SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type SetIamPolicyProjectsLocationsDatasetsHl7V2StoresResponse = Policy;
 export const SetIamPolicyProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -5254,7 +5286,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresResponse =
   TestIamPermissionsResponse;
@@ -5299,7 +5331,7 @@ export const CreateProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/hl7V2Stores", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type CreateProjectsLocationsDatasetsHl7V2StoresResponse = Hl7V2Store;
 export const CreateProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -5335,7 +5367,7 @@ export const GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getHL7v2StoreMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresResponse =
   Hl7V2StoreMetrics;
@@ -5373,7 +5405,7 @@ export const ImportProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:import", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsDatasetsHl7V2StoresRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type ImportProjectsLocationsDatasetsHl7V2StoresResponse = Operation;
 export const ImportProjectsLocationsDatasetsHl7V2StoresResponse =
@@ -5415,7 +5447,7 @@ export const PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
 export type PatchProjectsLocationsDatasetsHl7V2StoresMessagesResponse = Message;
 export const PatchProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
@@ -5461,7 +5493,7 @@ export const GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
 export type GetProjectsLocationsDatasetsHl7V2StoresMessagesResponse = Message;
 export const GetProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
@@ -5517,7 +5549,7 @@ export const ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/messages" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
 export type ListProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   ListMessagesResponse;
@@ -5556,7 +5588,7 @@ export const DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
 export type DeleteProjectsLocationsDatasetsHl7V2StoresMessagesResponse = Empty;
 export const DeleteProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
@@ -5599,7 +5631,7 @@ export const IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
+  ) as unknown as Schema.Codec<IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
 export type IngestProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   IngestMessageResponse;
@@ -5639,7 +5671,7 @@ export const CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/messages", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
 export type CreateProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   Message;
@@ -5681,7 +5713,7 @@ export const GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type GetIamPolicyProjectsLocationsDatasetsConsentStoresResponse = Policy;
 export const GetIamPolicyProjectsLocationsDatasetsConsentStoresResponse =
@@ -5715,7 +5747,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresResponse = Empty;
 export const DeleteProjectsLocationsDatasetsConsentStoresResponse =
@@ -5758,7 +5790,7 @@ export const EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresResponse =
   EvaluateUserConsentsResponse;
@@ -5801,7 +5833,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type PatchProjectsLocationsDatasetsConsentStoresResponse = ConsentStore;
 export const PatchProjectsLocationsDatasetsConsentStoresResponse =
@@ -5844,7 +5876,7 @@ export const QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type QueryAccessibleDataProjectsLocationsDatasetsConsentStoresResponse =
   Operation;
@@ -5881,7 +5913,7 @@ export const GetProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type GetProjectsLocationsDatasetsConsentStoresResponse = ConsentStore;
 export const GetProjectsLocationsDatasetsConsentStoresResponse =
@@ -5924,7 +5956,7 @@ export const ListProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/consentStores" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type ListProjectsLocationsDatasetsConsentStoresResponse =
   ListConsentStoresResponse;
@@ -5970,7 +6002,7 @@ export const CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type CheckDataAccessProjectsLocationsDatasetsConsentStoresResponse =
   CheckDataAccessResponse;
@@ -6014,7 +6046,7 @@ export const SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type SetIamPolicyProjectsLocationsDatasetsConsentStoresResponse = Policy;
 export const SetIamPolicyProjectsLocationsDatasetsConsentStoresResponse =
@@ -6057,7 +6089,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type TestIamPermissionsProjectsLocationsDatasetsConsentStoresResponse =
   TestIamPermissionsResponse;
@@ -6106,7 +6138,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsConsentStoresRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type CreateProjectsLocationsDatasetsConsentStoresResponse = ConsentStore;
 export const CreateProjectsLocationsDatasetsConsentStoresResponse =
@@ -6154,7 +6186,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReq
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
 export type CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse =
   AttributeDefinition;
@@ -6162,7 +6194,11 @@ export const CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRes
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Attribute definition in the parent consent store. */
 export const createProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -6195,7 +6231,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequ
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
 export type PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse =
   AttributeDefinition;
@@ -6203,7 +6239,11 @@ export const PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResp
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Attribute definition. */
 export const patchProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -6229,7 +6269,7 @@ export const GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReques
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
 export type GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse =
   AttributeDefinition;
@@ -6237,7 +6277,9 @@ export const GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRespon
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified Attribute definition. */
 export const getProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -6271,7 +6313,7 @@ export const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReque
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributeDefinitions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
 export type ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse =
   ListAttributeDefinitionsResponse;
@@ -6279,7 +6321,9 @@ export const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRespo
   /*@__PURE__*/ /*#__PURE__*/ ListAttributeDefinitionsResponse;
 
 export type ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the Attribute definitions in the specified consent store. */
 export const listProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.PaginatedOperationMethod<
@@ -6309,7 +6353,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReq
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse =
   Empty;
@@ -6317,7 +6361,11 @@ export const DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Attribute definition. Fails if the Attribute definition is referenced by any User data mapping, or the latest revision of any Consent. */
 export const deleteProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -6351,7 +6399,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
 export type CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse =
   ConsentArtifact;
@@ -6388,7 +6436,7 @@ export const GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
 export type GetProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse =
   ConsentArtifact;
@@ -6432,7 +6480,7 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/consentArtifacts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
 export type ListProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse =
   ListConsentArtifactsResponse;
@@ -6471,7 +6519,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse =
   Empty;
@@ -6515,7 +6563,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export type CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse =
   UserDataMapping;
@@ -6552,7 +6600,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse =
   Empty;
@@ -6589,7 +6637,7 @@ export const GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export type GetProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse =
   UserDataMapping;
@@ -6633,7 +6681,7 @@ export const ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/userDataMappings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export type ListProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse =
   ListUserDataMappingsResponse;
@@ -6678,7 +6726,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest 
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export type PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse =
   UserDataMapping;
@@ -6718,7 +6766,7 @@ export const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsReques
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:archive", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+  ) as unknown as Schema.Codec<ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export type ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse =
   ArchiveUserDataMappingResponse;
@@ -6726,7 +6774,11 @@ export const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRespon
   /*@__PURE__*/ /*#__PURE__*/ ArchiveUserDataMappingResponse;
 
 export type ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Archives the specified User data mapping. */
 export const archiveProjectsLocationsDatasetsConsentStoresUserDataMappings: API.OperationMethod<
@@ -6751,7 +6803,7 @@ export const GetProjectsLocationsDatasetsConsentStoresConsentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type GetProjectsLocationsDatasetsConsentStoresConsentsResponse = Consent;
 export const GetProjectsLocationsDatasetsConsentStoresConsentsResponse =
@@ -6794,7 +6846,7 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/consents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type ListProjectsLocationsDatasetsConsentStoresConsentsResponse =
   ListConsentsResponse;
@@ -6842,7 +6894,7 @@ export const ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest 
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
     svc,
-  ) as unknown as Schema.Schema<ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsResponse =
   ListConsentRevisionsResponse;
@@ -6887,7 +6939,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresConsentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type PatchProjectsLocationsDatasetsConsentStoresConsentsResponse =
   Consent;
@@ -6927,7 +6979,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresConsentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/consents", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type CreateProjectsLocationsDatasetsConsentStoresConsentsResponse =
   Consent;
@@ -6967,7 +7019,7 @@ export const RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:revoke", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type RevokeProjectsLocationsDatasetsConsentStoresConsentsResponse =
   Consent;
@@ -7007,7 +7059,7 @@ export const RejectProjectsLocationsDatasetsConsentStoresConsentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reject", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RejectProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<RejectProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type RejectProjectsLocationsDatasetsConsentStoresConsentsResponse =
   Consent;
@@ -7044,7 +7096,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresConsentsResponse =
   Empty;
@@ -7081,7 +7133,7 @@ export const DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}:deleteRevision" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsResponse =
   Empty;
@@ -7121,7 +7173,7 @@ export const ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:activate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+  ) as unknown as Schema.Codec<ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type ActivateProjectsLocationsDatasetsConsentStoresConsentsResponse =
   Consent;
@@ -7172,7 +7224,7 @@ export const ListProjectsLocationsDatasetsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsOperationsRequest>;
 
 export type ListProjectsLocationsDatasetsOperationsResponse =
   ListOperationsResponse;
@@ -7211,7 +7263,7 @@ export const GetProjectsLocationsDatasetsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsOperationsRequest>;
 
 export type GetProjectsLocationsDatasetsOperationsResponse = Operation;
 export const GetProjectsLocationsDatasetsOperationsResponse =
@@ -7248,7 +7300,7 @@ export const CancelProjectsLocationsDatasetsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsDatasetsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsDatasetsOperationsRequest>;
 
 export type CancelProjectsLocationsDatasetsOperationsResponse = Empty;
 export const CancelProjectsLocationsDatasetsOperationsResponse =
@@ -7291,7 +7343,7 @@ export const SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
 
 export type SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesResponse =
   Policy;
@@ -7335,7 +7387,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequ
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
 
 export type TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesResponse =
   TestIamPermissionsResponse;
@@ -7343,7 +7395,11 @@ export const TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesResp
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsDatasetsDataMapperWorkspaces: API.OperationMethod<
@@ -7374,7 +7430,7 @@ export const GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
 
 export type GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesResponse =
   Policy;
@@ -7412,7 +7468,7 @@ export const ExportProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:export", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type ExportProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const ExportProjectsLocationsDatasetsFhirStoresResponse =
@@ -7448,7 +7504,7 @@ export const GetProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type GetProjectsLocationsDatasetsFhirStoresResponse = FhirStore;
 export const GetProjectsLocationsDatasetsFhirStoresResponse =
@@ -7488,7 +7544,7 @@ export const PatchProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type PatchProjectsLocationsDatasetsFhirStoresResponse = FhirStore;
 export const PatchProjectsLocationsDatasetsFhirStoresResponse =
@@ -7527,7 +7583,7 @@ export const ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:applyConsents", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type ApplyConsentsProjectsLocationsDatasetsFhirStoresResponse =
   Operation;
@@ -7567,7 +7623,7 @@ export const ImportProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:import", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type ImportProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const ImportProjectsLocationsDatasetsFhirStoresResponse =
@@ -7606,7 +7662,7 @@ export const ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:explainDataAccess" }),
     svc,
-  ) as unknown as Schema.Schema<ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type ExplainDataAccessProjectsLocationsDatasetsFhirStoresResponse =
   ExplainDataAccessResponse;
@@ -7648,7 +7704,7 @@ export const SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type SetIamPolicyProjectsLocationsDatasetsFhirStoresResponse = Policy;
 export const SetIamPolicyProjectsLocationsDatasetsFhirStoresResponse =
@@ -7692,7 +7748,7 @@ export const CreateProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/fhirStores", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type CreateProjectsLocationsDatasetsFhirStoresResponse = FhirStore;
 export const CreateProjectsLocationsDatasetsFhirStoresResponse =
@@ -7731,7 +7787,7 @@ export const BulkDeleteProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:bulkDelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BulkDeleteProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type BulkDeleteProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const BulkDeleteProjectsLocationsDatasetsFhirStoresResponse =
@@ -7774,7 +7830,7 @@ export const DeidentifyProjectsLocationsDatasetsFhirStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeidentifyProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<DeidentifyProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type DeidentifyProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const DeidentifyProjectsLocationsDatasetsFhirStoresResponse =
@@ -7819,7 +7875,7 @@ export const ListProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/fhirStores" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type ListProjectsLocationsDatasetsFhirStoresResponse =
   ListFhirStoresResponse;
@@ -7861,7 +7917,7 @@ export const RollbackProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:rollback", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RollbackProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<RollbackProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type RollbackProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const RollbackProjectsLocationsDatasetsFhirStoresResponse =
@@ -7904,7 +7960,7 @@ export const ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresResponse =
   Operation;
@@ -7948,7 +8004,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type TestIamPermissionsProjectsLocationsDatasetsFhirStoresResponse =
   TestIamPermissionsResponse;
@@ -7990,7 +8046,7 @@ export const GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type GetIamPolicyProjectsLocationsDatasetsFhirStoresResponse = Policy;
 export const GetIamPolicyProjectsLocationsDatasetsFhirStoresResponse =
@@ -8024,7 +8080,7 @@ export const DeleteProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type DeleteProjectsLocationsDatasetsFhirStoresResponse = Empty;
 export const DeleteProjectsLocationsDatasetsFhirStoresResponse =
@@ -8076,7 +8132,7 @@ export const Bulk_export_groupProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/$export" }),
     svc,
-  ) as unknown as Schema.Schema<Bulk_export_groupProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<Bulk_export_groupProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type Bulk_export_groupProjectsLocationsDatasetsFhirStoresResponse =
   HttpBody;
@@ -8111,7 +8167,7 @@ export const GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getFHIRStoreMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest>;
+  ) as unknown as Schema.Codec<GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresResponse =
   FhirStoreMetrics;
@@ -8149,7 +8205,7 @@ export const ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+parent}/fhir/{+type}" }),
     svc,
-  ) as unknown as Schema.Schema<ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirResponse =
   Empty;
@@ -8189,7 +8245,7 @@ export const Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/fhir/Binary", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Binary_createProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8229,7 +8285,7 @@ export const UpdateProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type UpdateProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const UpdateProjectsLocationsDatasetsFhirStoresFhirResponse =
@@ -8268,7 +8324,7 @@ export const PatchProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type PatchProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const PatchProjectsLocationsDatasetsFhirStoresFhirResponse =
@@ -8304,7 +8360,7 @@ export const Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Binary_readProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8339,7 +8395,7 @@ export const CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/fhir/metadata" }),
     svc,
-  ) as unknown as Schema.Schema<CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type CapabilitiesProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8382,7 +8438,7 @@ export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStor
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/$consent-enforcement-status" }),
     svc,
-  ) as unknown as Schema.Schema<Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8390,7 +8446,9 @@ export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStor
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the consent enforcement status of all consent resources for a patient. On success, the response body contains a JSON-encoded representation of a bundle of `Parameters` (http://hl7.org/fhir/parameters.html) FHIR resources, containing the current enforcement status for each consent resource of the patient. Does not support DSTU2. */
 export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8427,7 +8485,7 @@ export const CreateProjectsLocationsDatasetsFhirStoresFhirRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type CreateProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const CreateProjectsLocationsDatasetsFhirStoresFhirResponse =
@@ -8476,7 +8534,7 @@ export const Resource_validateProjectsLocationsDatasetsFhirStoresFhirRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Resource_validateProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Resource_validateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Resource_validateProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8513,7 +8571,7 @@ export const Resource_purgeProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/$purge" }),
     svc,
-  ) as unknown as Schema.Schema<Resource_purgeProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Resource_purgeProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Resource_purgeProjectsLocationsDatasetsFhirStoresFhirResponse =
   Empty;
@@ -8550,7 +8608,7 @@ export const Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Binary_vreadProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8597,7 +8655,7 @@ export const SearchProjectsLocationsDatasetsFhirStoresFhirRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type SearchProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const SearchProjectsLocationsDatasetsFhirStoresFhirResponse =
@@ -8643,7 +8701,7 @@ export const Search_typeProjectsLocationsDatasetsFhirStoresFhirRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Search_typeProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Search_typeProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Search_typeProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8680,7 +8738,7 @@ export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRe
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/$consent-enforcement-status" }),
     svc,
-  ) as unknown as Schema.Schema<Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8688,7 +8746,9 @@ export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRe
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the consent enforcement status of a single consent resource. On success, the response body contains a JSON-encoded representation of a `Parameters` (http://hl7.org/fhir/parameters.html) FHIR resource, containing the current enforcement status. Does not support DSTU2. */
 export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8715,7 +8775,7 @@ export const ReadProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ReadProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<ReadProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type ReadProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const ReadProjectsLocationsDatasetsFhirStoresFhirResponse =
@@ -8749,7 +8809,7 @@ export const VreadProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<VreadProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<VreadProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type VreadProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const VreadProjectsLocationsDatasetsFhirStoresFhirResponse =
@@ -8803,7 +8863,7 @@ export const Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/$everything" }),
     svc,
-  ) as unknown as Schema.Schema<Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Patient_everythingProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8848,7 +8908,7 @@ export const ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8888,7 +8948,7 @@ export const Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Binary_updateProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -8925,7 +8985,7 @@ export const DeleteProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type DeleteProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const DeleteProjectsLocationsDatasetsFhirStoresFhirResponse =
@@ -8972,7 +9032,7 @@ export const Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/fhir/$export" }),
     svc,
-  ) as unknown as Schema.Schema<Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type Bulk_exportProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -9013,7 +9073,7 @@ export const ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+parent}/fhir/{+type}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -9053,7 +9113,7 @@ export const ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/fhir", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirResponse =
   HttpBody;
@@ -9104,7 +9164,7 @@ export const HistoryProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/_history" }),
     svc,
-  ) as unknown as Schema.Schema<HistoryProjectsLocationsDatasetsFhirStoresFhirRequest>;
+  ) as unknown as Schema.Codec<HistoryProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export type HistoryProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const HistoryProjectsLocationsDatasetsFhirStoresFhirResponse =
@@ -9138,7 +9198,7 @@ export const Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperati
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest>;
 
 export type Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsResponse =
   HttpBody;
@@ -9146,7 +9206,9 @@ export const Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperati
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the status of operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data status request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-status-request). Operations can have one of these states: * in-progress: response status code is `202` and `X-Progress` header is set to `in progress`. * complete: response status code is `200` and the body is a JSON-encoded operation response as defined by the spec. For a bulk export, this response is defined in https://build.fhir.org/ig/HL7/bulk-data/export.html#response---complete-status. * error: response status code is `5XX`, and the body is a JSON-encoded `OperationOutcome` resource describing the reason for the error. */
 export const get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<
@@ -9173,7 +9235,7 @@ export const Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsR
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest>;
 
 export type Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsResponse =
   HttpBody;
@@ -9181,7 +9243,11 @@ export const Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsR
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data delete request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-delete-request). Returns success if the operation was successfully cancelled. If the operation is complete, or has already been cancelled, returns an error response. */
 export const delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<

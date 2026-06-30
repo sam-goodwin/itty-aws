@@ -4,11 +4,20 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ActionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleId: string;
+  actionId: string;
+  properties?: { logicAppResourceId: string };
+  etag?: string;
+}
 export const ActionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -28,10 +37,22 @@ export const ActionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions/{actionId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ActionsCreateOrUpdateInput = typeof ActionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ActionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ActionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ActionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -51,9 +72,7 @@ export const ActionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ActionsCreateOrUpdateOutput =
-  typeof ActionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ActionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -73,6 +92,13 @@ export const ActionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ActionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleId: string;
+  actionId: string;
+}
 export const ActionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -85,12 +111,12 @@ export const ActionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions/{actionId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type ActionsDeleteInput = typeof ActionsDeleteInput.Type;
+) as unknown as Schema.Codec<ActionsDeleteInput>;
 
 // Output Schema
-export const ActionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ActionsDeleteOutput = typeof ActionsDeleteOutput.Type;
+export type ActionsDeleteOutput = void;
+export const ActionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ActionsDeleteOutput>;
 
 // The operation
 /**
@@ -108,6 +134,13 @@ export const ActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ActionsDeleteOutput,
 }));
 // Input Schema
+export interface ActionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleId: string;
+  actionId: string;
+}
 export const ActionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -120,10 +153,22 @@ export const ActionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions/{actionId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type ActionsGetInput = typeof ActionsGetInput.Type;
+) as unknown as Schema.Codec<ActionsGetInput>;
 
 // Output Schema
+export interface ActionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ActionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -142,8 +187,7 @@ export const ActionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ActionsGetOutput = typeof ActionsGetOutput.Type;
+}) as unknown as Schema.Codec<ActionsGetOutput>;
 
 // The operation
 /**
@@ -161,6 +205,12 @@ export const ActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ActionsGetOutput,
 }));
 // Input Schema
+export interface ActionsListByAlertRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleId: string;
+}
 export const ActionsListByAlertRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -173,11 +223,25 @@ export const ActionsListByAlertRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ActionsListByAlertRuleInput =
-  typeof ActionsListByAlertRuleInput.Type;
+  ) as unknown as Schema.Codec<ActionsListByAlertRuleInput>;
 
 // Output Schema
+export interface ActionsListByAlertRuleOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ActionsListByAlertRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -212,9 +276,7 @@ export const ActionsListByAlertRuleOutput =
         ),
       }),
     ),
-  });
-export type ActionsListByAlertRuleOutput =
-  typeof ActionsListByAlertRuleOutput.Type;
+  }) as unknown as Schema.Codec<ActionsListByAlertRuleOutput>;
 
 // The operation
 /**
@@ -233,6 +295,14 @@ export const ActionsListByAlertRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AlertRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleId: string;
+  kind: "Scheduled" | "MicrosoftSecurityIncidentCreation" | "Fusion";
+  etag?: string;
+}
 export const AlertRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -251,11 +321,22 @@ export const AlertRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type AlertRulesCreateOrUpdateInput =
-  typeof AlertRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AlertRulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface AlertRulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AlertRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -275,9 +356,7 @@ export const AlertRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AlertRulesCreateOrUpdateOutput =
-  typeof AlertRulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AlertRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -296,6 +375,12 @@ export const AlertRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AlertRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleId: string;
+}
 export const AlertRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -307,12 +392,12 @@ export const AlertRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type AlertRulesDeleteInput = typeof AlertRulesDeleteInput.Type;
+) as unknown as Schema.Codec<AlertRulesDeleteInput>;
 
 // Output Schema
-export const AlertRulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AlertRulesDeleteOutput = typeof AlertRulesDeleteOutput.Type;
+export type AlertRulesDeleteOutput = void;
+export const AlertRulesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertRulesDeleteOutput>;
 
 // The operation
 /**
@@ -329,6 +414,12 @@ export const AlertRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AlertRulesDeleteOutput,
 }));
 // Input Schema
+export interface AlertRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleId: string;
+}
 export const AlertRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -340,10 +431,22 @@ export const AlertRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type AlertRulesGetInput = typeof AlertRulesGetInput.Type;
+) as unknown as Schema.Codec<AlertRulesGetInput>;
 
 // Output Schema
+export interface AlertRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AlertRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -362,8 +465,7 @@ export const AlertRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AlertRulesGetOutput = typeof AlertRulesGetOutput.Type;
+}) as unknown as Schema.Codec<AlertRulesGetOutput>;
 
 // The operation
 /**
@@ -380,6 +482,11 @@ export const AlertRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AlertRulesGetOutput,
 }));
 // Input Schema
+export interface AlertRulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const AlertRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -390,10 +497,25 @@ export const AlertRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules",
     apiVersion: "2025-09-01",
   }),
-);
-export type AlertRulesListInput = typeof AlertRulesListInput.Type;
+) as unknown as Schema.Codec<AlertRulesListInput>;
 
 // Output Schema
+export interface AlertRulesListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AlertRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
@@ -417,8 +539,7 @@ export const AlertRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type AlertRulesListOutput = typeof AlertRulesListOutput.Type;
+}) as unknown as Schema.Codec<AlertRulesListOutput>;
 
 // The operation
 /**
@@ -434,6 +555,12 @@ export const AlertRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AlertRulesListOutput,
 }));
 // Input Schema
+export interface AlertRuleTemplatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  alertRuleTemplateId: string;
+}
 export const AlertRuleTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -446,10 +573,22 @@ export const AlertRuleTemplatesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates/{alertRuleTemplateId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type AlertRuleTemplatesGetInput = typeof AlertRuleTemplatesGetInput.Type;
+  ) as unknown as Schema.Codec<AlertRuleTemplatesGetInput>;
 
 // Output Schema
+export interface AlertRuleTemplatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AlertRuleTemplatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -469,9 +608,7 @@ export const AlertRuleTemplatesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AlertRuleTemplatesGetOutput =
-  typeof AlertRuleTemplatesGetOutput.Type;
+  }) as unknown as Schema.Codec<AlertRuleTemplatesGetOutput>;
 
 // The operation
 /**
@@ -490,6 +627,11 @@ export const AlertRuleTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AlertRuleTemplatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const AlertRuleTemplatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -501,11 +643,25 @@ export const AlertRuleTemplatesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates",
       apiVersion: "2025-09-01",
     }),
-  );
-export type AlertRuleTemplatesListInput =
-  typeof AlertRuleTemplatesListInput.Type;
+  ) as unknown as Schema.Codec<AlertRuleTemplatesListInput>;
 
 // Output Schema
+export interface AlertRuleTemplatesListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AlertRuleTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -540,9 +696,7 @@ export const AlertRuleTemplatesListOutput =
         ),
       }),
     ),
-  });
-export type AlertRuleTemplatesListOutput =
-  typeof AlertRuleTemplatesListOutput.Type;
+  }) as unknown as Schema.Codec<AlertRuleTemplatesListOutput>;
 
 // The operation
 /**
@@ -560,6 +714,49 @@ export const AlertRuleTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AutomationRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  automationRuleId: string;
+  properties: {
+    displayName: string;
+    order: number;
+    triggeringLogic: {
+      isEnabled: boolean;
+      expirationTimeUtc?: string;
+      triggersOn: "Incidents" | "Alerts";
+      triggersWhen: "Created" | "Updated";
+      conditions?: {
+        conditionType:
+          | "Property"
+          | "PropertyArray"
+          | "PropertyChanged"
+          | "PropertyArrayChanged"
+          | "Boolean";
+      }[];
+    };
+    actions: {
+      order: number;
+      actionType: "ModifyProperties" | "RunPlaybook" | "AddIncidentTask";
+    }[];
+    lastModifiedTimeUtc?: string;
+    createdTimeUtc?: string;
+    lastModifiedBy?: {
+      email?: string;
+      name?: string;
+      objectId?: string;
+      userPrincipalName?: string;
+    };
+    createdBy?: {
+      email?: string;
+      name?: string;
+      objectId?: string;
+      userPrincipalName?: string;
+    };
+  };
+  etag?: string;
+}
 export const AutomationRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -624,11 +821,22 @@ export const AutomationRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type AutomationRulesCreateOrUpdateInput =
-  typeof AutomationRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AutomationRulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface AutomationRulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AutomationRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -648,9 +856,7 @@ export const AutomationRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AutomationRulesCreateOrUpdateOutput =
-  typeof AutomationRulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AutomationRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -668,6 +874,12 @@ export const AutomationRulesCreateOrUpdate =
     outputSchema: AutomationRulesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AutomationRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  automationRuleId: string;
+}
 export const AutomationRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -680,14 +892,12 @@ export const AutomationRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type AutomationRulesDeleteInput = typeof AutomationRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<AutomationRulesDeleteInput>;
 
 // Output Schema
+export type AutomationRulesDeleteOutput = unknown;
 export const AutomationRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type AutomationRulesDeleteOutput =
-  typeof AutomationRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<AutomationRulesDeleteOutput>;
 
 // The operation
 /**
@@ -706,6 +916,12 @@ export const AutomationRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AutomationRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  automationRuleId: string;
+}
 export const AutomationRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -718,10 +934,22 @@ export const AutomationRulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type AutomationRulesGetInput = typeof AutomationRulesGetInput.Type;
+  ) as unknown as Schema.Codec<AutomationRulesGetInput>;
 
 // Output Schema
+export interface AutomationRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AutomationRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -741,8 +969,7 @@ export const AutomationRulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AutomationRulesGetOutput = typeof AutomationRulesGetOutput.Type;
+  }) as unknown as Schema.Codec<AutomationRulesGetOutput>;
 
 // The operation
 /**
@@ -759,6 +986,11 @@ export const AutomationRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AutomationRulesGetOutput,
 }));
 // Input Schema
+export interface AutomationRulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const AutomationRulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -770,10 +1002,25 @@ export const AutomationRulesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules",
       apiVersion: "2025-09-01",
     }),
-  );
-export type AutomationRulesListInput = typeof AutomationRulesListInput.Type;
+  ) as unknown as Schema.Codec<AutomationRulesListInput>;
 
 // Output Schema
+export interface AutomationRulesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AutomationRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -810,8 +1057,7 @@ export const AutomationRulesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AutomationRulesListOutput = typeof AutomationRulesListOutput.Type;
+  }) as unknown as Schema.Codec<AutomationRulesListOutput>;
 
 // The operation
 /**
@@ -827,6 +1073,33 @@ export const AutomationRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AutomationRulesListOutput,
 }));
 // Input Schema
+export interface BookmarksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  bookmarkId: string;
+  properties?: {
+    created?: string;
+    createdBy?: { email?: string; name?: string; objectId?: string | null };
+    displayName: string;
+    labels?: string[];
+    notes?: string;
+    query: string;
+    queryResult?: string;
+    updated?: string;
+    updatedBy?: { email?: string; name?: string; objectId?: string | null };
+    eventTime?: string;
+    queryStartTime?: string;
+    queryEndTime?: string;
+    incidentInfo?: {
+      incidentId?: string;
+      severity?: "High" | "Medium" | "Low" | "Informational";
+      title?: string;
+      relationName?: string;
+    };
+  };
+  etag?: string;
+}
 export const BookmarksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -878,11 +1151,22 @@ export const BookmarksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type BookmarksCreateOrUpdateInput =
-  typeof BookmarksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BookmarksCreateOrUpdateInput>;
 
 // Output Schema
+export interface BookmarksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BookmarksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -902,9 +1186,7 @@ export const BookmarksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BookmarksCreateOrUpdateOutput =
-  typeof BookmarksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BookmarksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -923,6 +1205,12 @@ export const BookmarksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BookmarksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  bookmarkId: string;
+}
 export const BookmarksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -934,12 +1222,12 @@ export const BookmarksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type BookmarksDeleteInput = typeof BookmarksDeleteInput.Type;
+) as unknown as Schema.Codec<BookmarksDeleteInput>;
 
 // Output Schema
-export const BookmarksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BookmarksDeleteOutput = typeof BookmarksDeleteOutput.Type;
+export type BookmarksDeleteOutput = void;
+export const BookmarksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BookmarksDeleteOutput>;
 
 // The operation
 /**
@@ -956,6 +1244,12 @@ export const BookmarksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BookmarksDeleteOutput,
 }));
 // Input Schema
+export interface BookmarksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  bookmarkId: string;
+}
 export const BookmarksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -967,10 +1261,22 @@ export const BookmarksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type BookmarksGetInput = typeof BookmarksGetInput.Type;
+) as unknown as Schema.Codec<BookmarksGetInput>;
 
 // Output Schema
+export interface BookmarksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BookmarksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -989,8 +1295,7 @@ export const BookmarksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BookmarksGetOutput = typeof BookmarksGetOutput.Type;
+}) as unknown as Schema.Codec<BookmarksGetOutput>;
 
 // The operation
 /**
@@ -1007,6 +1312,11 @@ export const BookmarksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BookmarksGetOutput,
 }));
 // Input Schema
+export interface BookmarksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const BookmarksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1017,10 +1327,25 @@ export const BookmarksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks",
     apiVersion: "2025-09-01",
   }),
-);
-export type BookmarksListInput = typeof BookmarksListInput.Type;
+) as unknown as Schema.Codec<BookmarksListInput>;
 
 // Output Schema
+export interface BookmarksListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const BookmarksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
@@ -1044,8 +1369,7 @@ export const BookmarksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type BookmarksListOutput = typeof BookmarksListOutput.Type;
+}) as unknown as Schema.Codec<BookmarksListOutput>;
 
 // The operation
 /**
@@ -1061,6 +1385,54 @@ export const BookmarksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BookmarksListOutput,
 }));
 // Input Schema
+export interface ContentPackageInstallInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  packageId: string;
+  properties?: {
+    contentId?: string;
+    contentProductId?: string;
+    contentKind?: "Solution" | "Standalone";
+    contentSchemaVersion?: string;
+    isNew?: "true" | "false";
+    isPreview?: "true" | "false";
+    isFeatured?: "true" | "false";
+    isDeprecated?: "true" | "false";
+    version?: string;
+    displayName?: string;
+    description?: string;
+    publisherDisplayName?: string;
+    source?: {
+      kind: "LocalWorkspace" | "Community" | "Solution" | "SourceRepository";
+      name?: string;
+      sourceId?: string;
+    };
+    author?: { name?: string; email?: string; link?: string };
+    support?: {
+      tier: "Microsoft" | "Partner" | "Community";
+      name?: string;
+      email?: string;
+      link?: string;
+    };
+    dependencies?: {
+      contentId?: string;
+      kind?: string;
+      version?: string;
+      name?: string;
+      operator?: "AND" | "OR";
+      criteria?: unknown[];
+    };
+    providers?: string[];
+    firstPublishDate?: string;
+    lastPublishDate?: string;
+    categories?: { domains?: string[]; verticals?: string[] };
+    threatAnalysisTactics?: string[];
+    threatAnalysisTechniques?: string[];
+    icon?: string;
+  };
+  etag?: string;
+}
 export const ContentPackageInstallInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1141,10 +1513,22 @@ export const ContentPackageInstallInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ContentPackageInstallInput = typeof ContentPackageInstallInput.Type;
+  ) as unknown as Schema.Codec<ContentPackageInstallInput>;
 
 // Output Schema
+export interface ContentPackageInstallOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContentPackageInstallOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1164,9 +1548,7 @@ export const ContentPackageInstallOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContentPackageInstallOutput =
-  typeof ContentPackageInstallOutput.Type;
+  }) as unknown as Schema.Codec<ContentPackageInstallOutput>;
 
 // The operation
 /**
@@ -1185,6 +1567,12 @@ export const ContentPackageInstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContentPackagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  packageId: string;
+}
 export const ContentPackagesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1197,10 +1585,22 @@ export const ContentPackagesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ContentPackagesGetInput = typeof ContentPackagesGetInput.Type;
+  ) as unknown as Schema.Codec<ContentPackagesGetInput>;
 
 // Output Schema
+export interface ContentPackagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContentPackagesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1220,8 +1620,7 @@ export const ContentPackagesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContentPackagesGetOutput = typeof ContentPackagesGetOutput.Type;
+  }) as unknown as Schema.Codec<ContentPackagesGetOutput>;
 
 // The operation
 /**
@@ -1238,6 +1637,18 @@ export const ContentPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContentPackagesGetOutput,
 }));
 // Input Schema
+export interface ContentPackagesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $filter?: string;
+  $orderby?: string;
+  $search?: string;
+  $count?: boolean;
+  $top?: number;
+  $skip?: number;
+  $skipToken?: string;
+}
 export const ContentPackagesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1256,10 +1667,25 @@ export const ContentPackagesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ContentPackagesListInput = typeof ContentPackagesListInput.Type;
+  ) as unknown as Schema.Codec<ContentPackagesListInput>;
 
 // Output Schema
+export interface ContentPackagesListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ContentPackagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1294,8 +1720,7 @@ export const ContentPackagesListOutput =
         ),
       }),
     ),
-  });
-export type ContentPackagesListOutput = typeof ContentPackagesListOutput.Type;
+  }) as unknown as Schema.Codec<ContentPackagesListOutput>;
 
 // The operation
 /**
@@ -1318,6 +1743,12 @@ export const ContentPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContentPackagesListOutput,
 }));
 // Input Schema
+export interface ContentPackageUninstallInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  packageId: string;
+}
 export const ContentPackageUninstallInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1330,15 +1761,12 @@ export const ContentPackageUninstallInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ContentPackageUninstallInput =
-  typeof ContentPackageUninstallInput.Type;
+  ) as unknown as Schema.Codec<ContentPackageUninstallInput>;
 
 // Output Schema
+export type ContentPackageUninstallOutput = void;
 export const ContentPackageUninstallOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContentPackageUninstallOutput =
-  typeof ContentPackageUninstallOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContentPackageUninstallOutput>;
 
 // The operation
 /**
@@ -1357,6 +1785,12 @@ export const ContentPackageUninstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContentTemplateDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  templateId: string;
+}
 export const ContentTemplateDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1369,14 +1803,12 @@ export const ContentTemplateDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ContentTemplateDeleteInput = typeof ContentTemplateDeleteInput.Type;
+  ) as unknown as Schema.Codec<ContentTemplateDeleteInput>;
 
 // Output Schema
+export type ContentTemplateDeleteOutput = void;
 export const ContentTemplateDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContentTemplateDeleteOutput =
-  typeof ContentTemplateDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContentTemplateDeleteOutput>;
 
 // The operation
 /**
@@ -1395,6 +1827,12 @@ export const ContentTemplateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContentTemplateGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  templateId: string;
+}
 export const ContentTemplateGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1407,10 +1845,22 @@ export const ContentTemplateGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ContentTemplateGetInput = typeof ContentTemplateGetInput.Type;
+  ) as unknown as Schema.Codec<ContentTemplateGetInput>;
 
 // Output Schema
+export interface ContentTemplateGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContentTemplateGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1430,8 +1880,7 @@ export const ContentTemplateGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContentTemplateGetOutput = typeof ContentTemplateGetOutput.Type;
+  }) as unknown as Schema.Codec<ContentTemplateGetOutput>;
 
 // The operation
 /**
@@ -1451,6 +1900,58 @@ export const ContentTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContentTemplateGetOutput,
 }));
 // Input Schema
+export interface ContentTemplateInstallInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  templateId: string;
+  properties?: {
+    contentId?: string;
+    contentProductId?: string;
+    packageVersion?: string;
+    version?: string;
+    displayName?: string;
+    contentKind?: string;
+    source?: {
+      kind: "LocalWorkspace" | "Community" | "Solution" | "SourceRepository";
+      name?: string;
+      sourceId?: string;
+    };
+    author?: { name?: string; email?: string; link?: string };
+    support?: {
+      tier: "Microsoft" | "Partner" | "Community";
+      name?: string;
+      email?: string;
+      link?: string;
+    };
+    dependencies?: {
+      contentId?: string;
+      kind?: string;
+      version?: string;
+      name?: string;
+      operator?: "AND" | "OR";
+      criteria?: unknown[];
+    };
+    categories?: { domains?: string[]; verticals?: string[] };
+    providers?: string[];
+    firstPublishDate?: string;
+    lastPublishDate?: string;
+    customVersion?: string;
+    contentSchemaVersion?: string;
+    icon?: string;
+    threatAnalysisTactics?: string[];
+    threatAnalysisTechniques?: string[];
+    previewImages?: string[];
+    previewImagesDark?: string[];
+    packageId?: string;
+    packageKind?: "Solution" | "Standalone";
+    packageName?: string;
+    isDeprecated?: "true" | "false";
+    mainTemplate?: unknown;
+    dependantTemplates?: unknown[];
+  };
+  etag?: string;
+}
 export const ContentTemplateInstallInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1535,11 +2036,22 @@ export const ContentTemplateInstallInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates/{templateId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ContentTemplateInstallInput =
-  typeof ContentTemplateInstallInput.Type;
+  ) as unknown as Schema.Codec<ContentTemplateInstallInput>;
 
 // Output Schema
+export interface ContentTemplateInstallOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContentTemplateInstallOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1559,9 +2071,7 @@ export const ContentTemplateInstallOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContentTemplateInstallOutput =
-  typeof ContentTemplateInstallOutput.Type;
+  }) as unknown as Schema.Codec<ContentTemplateInstallOutput>;
 
 // The operation
 /**
@@ -1580,6 +2090,19 @@ export const ContentTemplateInstall = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContentTemplatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $filter?: string;
+  $orderby?: string;
+  $expand?: string;
+  $search?: string;
+  $count?: boolean;
+  $top?: number;
+  $skip?: number;
+  $skipToken?: string;
+}
 export const ContentTemplatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1599,10 +2122,25 @@ export const ContentTemplatesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ContentTemplatesListInput = typeof ContentTemplatesListInput.Type;
+  ) as unknown as Schema.Codec<ContentTemplatesListInput>;
 
 // Output Schema
+export interface ContentTemplatesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ContentTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1637,8 +2175,7 @@ export const ContentTemplatesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContentTemplatesListOutput = typeof ContentTemplatesListOutput.Type;
+  }) as unknown as Schema.Codec<ContentTemplatesListOutput>;
 
 // The operation
 /**
@@ -1667,6 +2204,14 @@ export const ContentTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataConnectorDefinitionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataConnectorDefinitionName: string;
+  kind: "Customizable";
+  etag?: string;
+}
 export const DataConnectorDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1681,11 +2226,22 @@ export const DataConnectorDefinitionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type DataConnectorDefinitionsCreateOrUpdateInput =
-  typeof DataConnectorDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataConnectorDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataConnectorDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataConnectorDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1705,9 +2261,7 @@ export const DataConnectorDefinitionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataConnectorDefinitionsCreateOrUpdateOutput =
-  typeof DataConnectorDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectorDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1725,6 +2279,12 @@ export const DataConnectorDefinitionsCreateOrUpdate =
     outputSchema: DataConnectorDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DataConnectorDefinitionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataConnectorDefinitionName: string;
+}
 export const DataConnectorDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1737,15 +2297,12 @@ export const DataConnectorDefinitionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type DataConnectorDefinitionsDeleteInput =
-  typeof DataConnectorDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataConnectorDefinitionsDeleteInput>;
 
 // Output Schema
+export type DataConnectorDefinitionsDeleteOutput = void;
 export const DataConnectorDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataConnectorDefinitionsDeleteOutput =
-  typeof DataConnectorDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectorDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -1763,6 +2320,12 @@ export const DataConnectorDefinitionsDelete =
     outputSchema: DataConnectorDefinitionsDeleteOutput,
   }));
 // Input Schema
+export interface DataConnectorDefinitionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataConnectorDefinitionName: string;
+}
 export const DataConnectorDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1775,11 +2338,22 @@ export const DataConnectorDefinitionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type DataConnectorDefinitionsGetInput =
-  typeof DataConnectorDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<DataConnectorDefinitionsGetInput>;
 
 // Output Schema
+export interface DataConnectorDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataConnectorDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1799,9 +2373,7 @@ export const DataConnectorDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataConnectorDefinitionsGetOutput =
-  typeof DataConnectorDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectorDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -1820,6 +2392,11 @@ export const DataConnectorDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataConnectorDefinitionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const DataConnectorDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1831,11 +2408,25 @@ export const DataConnectorDefinitionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions",
       apiVersion: "2025-09-01",
     }),
-  );
-export type DataConnectorDefinitionsListInput =
-  typeof DataConnectorDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<DataConnectorDefinitionsListInput>;
 
 // Output Schema
+export interface DataConnectorDefinitionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataConnectorDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1872,9 +2463,7 @@ export const DataConnectorDefinitionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataConnectorDefinitionsListOutput =
-  typeof DataConnectorDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectorDefinitionsListOutput>;
 
 // The operation
 /**
@@ -1891,6 +2480,25 @@ export const DataConnectorDefinitionsList =
     outputSchema: DataConnectorDefinitionsListOutput,
   }));
 // Input Schema
+export interface DataConnectorsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataConnectorId: string;
+  kind:
+    | "AzureActiveDirectory"
+    | "AzureSecurityCenter"
+    | "MicrosoftCloudAppSecurity"
+    | "ThreatIntelligence"
+    | "MicrosoftThreatIntelligence"
+    | "PremiumMicrosoftDefenderForThreatIntelligence"
+    | "Office365"
+    | "AmazonWebServicesCloudTrail"
+    | "AzureAdvancedThreatProtection"
+    | "MicrosoftDefenderAdvancedThreatProtection"
+    | "RestApiPoller";
+  etag?: string;
+}
 export const DataConnectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1917,11 +2525,22 @@ export const DataConnectorsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type DataConnectorsCreateOrUpdateInput =
-  typeof DataConnectorsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataConnectorsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataConnectorsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataConnectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1941,9 +2560,7 @@ export const DataConnectorsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataConnectorsCreateOrUpdateOutput =
-  typeof DataConnectorsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectorsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1961,6 +2578,12 @@ export const DataConnectorsCreateOrUpdate =
     outputSchema: DataConnectorsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DataConnectorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataConnectorId: string;
+}
 export const DataConnectorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1973,13 +2596,12 @@ export const DataConnectorsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type DataConnectorsDeleteInput = typeof DataConnectorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataConnectorsDeleteInput>;
 
 // Output Schema
+export type DataConnectorsDeleteOutput = void;
 export const DataConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataConnectorsDeleteOutput = typeof DataConnectorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -1998,6 +2620,12 @@ export const DataConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataConnectorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataConnectorId: string;
+}
 export const DataConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2011,10 +2639,22 @@ export const DataConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type DataConnectorsGetInput = typeof DataConnectorsGetInput.Type;
+) as unknown as Schema.Codec<DataConnectorsGetInput>;
 
 // Output Schema
+export interface DataConnectorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataConnectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2034,8 +2674,7 @@ export const DataConnectorsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataConnectorsGetOutput = typeof DataConnectorsGetOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectorsGetOutput>;
 
 // The operation
 /**
@@ -2052,6 +2691,11 @@ export const DataConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataConnectorsGetOutput,
 }));
 // Input Schema
+export interface DataConnectorsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const DataConnectorsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2063,10 +2707,25 @@ export const DataConnectorsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors",
       apiVersion: "2025-09-01",
     }),
-  );
-export type DataConnectorsListInput = typeof DataConnectorsListInput.Type;
+  ) as unknown as Schema.Codec<DataConnectorsListInput>;
 
 // Output Schema
+export interface DataConnectorsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const DataConnectorsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2101,8 +2760,7 @@ export const DataConnectorsListOutput =
         ),
       }),
     ),
-  });
-export type DataConnectorsListOutput = typeof DataConnectorsListOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectorsListOutput>;
 
 // The operation
 /**
@@ -2118,6 +2776,15 @@ export const DataConnectorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataConnectorsListOutput,
 }));
 // Input Schema
+export interface EntitiesRunPlaybookInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  entityIdentifier: string;
+  incidentArmId?: string;
+  tenantId?: string;
+  logicAppsResourceId: string;
+}
 export const EntitiesRunPlaybookInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2133,13 +2800,12 @@ export const EntitiesRunPlaybookInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityIdentifier}/runPlaybook",
       apiVersion: "2025-09-01",
     }),
-  );
-export type EntitiesRunPlaybookInput = typeof EntitiesRunPlaybookInput.Type;
+  ) as unknown as Schema.Codec<EntitiesRunPlaybookInput>;
 
 // Output Schema
+export type EntitiesRunPlaybookOutput = void;
 export const EntitiesRunPlaybookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EntitiesRunPlaybookOutput = typeof EntitiesRunPlaybookOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EntitiesRunPlaybookOutput>;
 
 // The operation
 /**
@@ -2156,6 +2822,25 @@ export const EntitiesRunPlaybook = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EntitiesRunPlaybookOutput,
 }));
 // Input Schema
+export interface IncidentCommentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  incidentCommentId: string;
+  properties?: {
+    createdTimeUtc?: string;
+    lastModifiedTimeUtc?: string;
+    message: string;
+    author?: {
+      email?: string;
+      name?: string;
+      objectId?: string;
+      userPrincipalName?: string;
+    };
+  };
+  etag?: string;
+}
 export const IncidentCommentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2185,11 +2870,22 @@ export const IncidentCommentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentCommentsCreateOrUpdateInput =
-  typeof IncidentCommentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IncidentCommentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface IncidentCommentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IncidentCommentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2209,9 +2905,7 @@ export const IncidentCommentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IncidentCommentsCreateOrUpdateOutput =
-  typeof IncidentCommentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IncidentCommentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2230,6 +2924,13 @@ export const IncidentCommentsCreateOrUpdate =
     outputSchema: IncidentCommentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface IncidentCommentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  incidentCommentId: string;
+}
 export const IncidentCommentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2243,15 +2944,12 @@ export const IncidentCommentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentCommentsDeleteInput =
-  typeof IncidentCommentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<IncidentCommentsDeleteInput>;
 
 // Output Schema
+export type IncidentCommentsDeleteOutput = void;
 export const IncidentCommentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IncidentCommentsDeleteOutput =
-  typeof IncidentCommentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentCommentsDeleteOutput>;
 
 // The operation
 /**
@@ -2271,6 +2969,13 @@ export const IncidentCommentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentCommentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  incidentCommentId: string;
+}
 export const IncidentCommentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2284,10 +2989,22 @@ export const IncidentCommentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentCommentsGetInput = typeof IncidentCommentsGetInput.Type;
+  ) as unknown as Schema.Codec<IncidentCommentsGetInput>;
 
 // Output Schema
+export interface IncidentCommentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IncidentCommentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2307,8 +3024,7 @@ export const IncidentCommentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IncidentCommentsGetOutput = typeof IncidentCommentsGetOutput.Type;
+  }) as unknown as Schema.Codec<IncidentCommentsGetOutput>;
 
 // The operation
 /**
@@ -2326,6 +3042,16 @@ export const IncidentCommentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IncidentCommentsGetOutput,
 }));
 // Input Schema
+export interface IncidentCommentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  $filter?: string;
+  $orderby?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const IncidentCommentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2342,10 +3068,25 @@ export const IncidentCommentsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentCommentsListInput = typeof IncidentCommentsListInput.Type;
+  ) as unknown as Schema.Codec<IncidentCommentsListInput>;
 
 // Output Schema
+export interface IncidentCommentsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const IncidentCommentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2380,8 +3121,7 @@ export const IncidentCommentsListOutput =
         ),
       }),
     ),
-  });
-export type IncidentCommentsListOutput = typeof IncidentCommentsListOutput.Type;
+  }) as unknown as Schema.Codec<IncidentCommentsListOutput>;
 
 // The operation
 /**
@@ -2404,6 +3144,20 @@ export const IncidentCommentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentRelationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  relationName: string;
+  properties?: {
+    relatedResourceId: string;
+    relatedResourceName?: string;
+    relatedResourceType?: string;
+    relatedResourceKind?: string;
+  };
+  etag?: string;
+}
 export const IncidentRelationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2426,11 +3180,22 @@ export const IncidentRelationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentRelationsCreateOrUpdateInput =
-  typeof IncidentRelationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IncidentRelationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface IncidentRelationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IncidentRelationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2450,9 +3215,7 @@ export const IncidentRelationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IncidentRelationsCreateOrUpdateOutput =
-  typeof IncidentRelationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IncidentRelationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2471,6 +3234,13 @@ export const IncidentRelationsCreateOrUpdate =
     outputSchema: IncidentRelationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface IncidentRelationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  relationName: string;
+}
 export const IncidentRelationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2484,15 +3254,12 @@ export const IncidentRelationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentRelationsDeleteInput =
-  typeof IncidentRelationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<IncidentRelationsDeleteInput>;
 
 // Output Schema
+export type IncidentRelationsDeleteOutput = void;
 export const IncidentRelationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IncidentRelationsDeleteOutput =
-  typeof IncidentRelationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentRelationsDeleteOutput>;
 
 // The operation
 /**
@@ -2512,6 +3279,13 @@ export const IncidentRelationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentRelationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  relationName: string;
+}
 export const IncidentRelationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2525,10 +3299,22 @@ export const IncidentRelationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentRelationsGetInput = typeof IncidentRelationsGetInput.Type;
+  ) as unknown as Schema.Codec<IncidentRelationsGetInput>;
 
 // Output Schema
+export interface IncidentRelationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IncidentRelationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2548,8 +3334,7 @@ export const IncidentRelationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IncidentRelationsGetOutput = typeof IncidentRelationsGetOutput.Type;
+  }) as unknown as Schema.Codec<IncidentRelationsGetOutput>;
 
 // The operation
 /**
@@ -2569,6 +3354,16 @@ export const IncidentRelationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentRelationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  $filter?: string;
+  $orderby?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const IncidentRelationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2585,10 +3380,25 @@ export const IncidentRelationsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentRelationsListInput = typeof IncidentRelationsListInput.Type;
+  ) as unknown as Schema.Codec<IncidentRelationsListInput>;
 
 // Output Schema
+export interface IncidentRelationsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const IncidentRelationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2623,9 +3433,7 @@ export const IncidentRelationsListOutput =
         ),
       }),
     ),
-  });
-export type IncidentRelationsListOutput =
-  typeof IncidentRelationsListOutput.Type;
+  }) as unknown as Schema.Codec<IncidentRelationsListOutput>;
 
 // The operation
 /**
@@ -2648,6 +3456,73 @@ export const IncidentRelationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  properties?: {
+    additionalData?: {
+      alertsCount?: number;
+      bookmarksCount?: number;
+      commentsCount?: number;
+      alertProductNames?: string[];
+      tactics?: (
+        | "Reconnaissance"
+        | "ResourceDevelopment"
+        | "InitialAccess"
+        | "Execution"
+        | "Persistence"
+        | "PrivilegeEscalation"
+        | "DefenseEvasion"
+        | "CredentialAccess"
+        | "Discovery"
+        | "LateralMovement"
+        | "Collection"
+        | "Exfiltration"
+        | "CommandAndControl"
+        | "Impact"
+        | "PreAttack"
+        | "ImpairProcessControl"
+        | "InhibitResponseFunction"
+      )[];
+      providerIncidentUrl?: string;
+    };
+    classification?:
+      | "Undetermined"
+      | "TruePositive"
+      | "BenignPositive"
+      | "FalsePositive";
+    classificationComment?: string;
+    classificationReason?:
+      | "SuspiciousActivity"
+      | "SuspiciousButExpected"
+      | "IncorrectAlertLogic"
+      | "InaccurateData";
+    createdTimeUtc?: string;
+    description?: string;
+    firstActivityTimeUtc?: string;
+    incidentUrl?: string;
+    providerName?: string;
+    providerIncidentId?: string;
+    incidentNumber?: number;
+    labels?: { labelName: string; labelType?: "User" | "AutoAssigned" }[];
+    lastActivityTimeUtc?: string;
+    lastModifiedTimeUtc?: string;
+    owner?: {
+      email?: string;
+      assignedTo?: string;
+      objectId?: string;
+      userPrincipalName?: string;
+      ownerType?: "Unknown" | "User" | "Group";
+    };
+    relatedAnalyticRuleIds?: string[];
+    severity: "High" | "Medium" | "Low" | "Informational";
+    status: "New" | "Active" | "Closed";
+    title: string;
+  };
+  etag?: string;
+}
 export const IncidentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2748,11 +3623,22 @@ export const IncidentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentsCreateOrUpdateInput =
-  typeof IncidentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IncidentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface IncidentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IncidentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2772,9 +3658,7 @@ export const IncidentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IncidentsCreateOrUpdateOutput =
-  typeof IncidentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IncidentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2793,6 +3677,12 @@ export const IncidentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+}
 export const IncidentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2804,12 +3694,12 @@ export const IncidentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type IncidentsDeleteInput = typeof IncidentsDeleteInput.Type;
+) as unknown as Schema.Codec<IncidentsDeleteInput>;
 
 // Output Schema
-export const IncidentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IncidentsDeleteOutput = typeof IncidentsDeleteOutput.Type;
+export type IncidentsDeleteOutput = void;
+export const IncidentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentsDeleteOutput>;
 
 // The operation
 /**
@@ -2826,6 +3716,12 @@ export const IncidentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IncidentsDeleteOutput,
 }));
 // Input Schema
+export interface IncidentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+}
 export const IncidentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2837,10 +3733,22 @@ export const IncidentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type IncidentsGetInput = typeof IncidentsGetInput.Type;
+) as unknown as Schema.Codec<IncidentsGetInput>;
 
 // Output Schema
+export interface IncidentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IncidentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2859,8 +3767,7 @@ export const IncidentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type IncidentsGetOutput = typeof IncidentsGetOutput.Type;
+}) as unknown as Schema.Codec<IncidentsGetOutput>;
 
 // The operation
 /**
@@ -2877,6 +3784,15 @@ export const IncidentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IncidentsGetOutput,
 }));
 // Input Schema
+export interface IncidentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $filter?: string;
+  $orderby?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const IncidentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2891,10 +3807,25 @@ export const IncidentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents",
     apiVersion: "2025-09-01",
   }),
-);
-export type IncidentsListInput = typeof IncidentsListInput.Type;
+) as unknown as Schema.Codec<IncidentsListInput>;
 
 // Output Schema
+export interface IncidentsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const IncidentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
@@ -2918,8 +3849,7 @@ export const IncidentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type IncidentsListOutput = typeof IncidentsListOutput.Type;
+}) as unknown as Schema.Codec<IncidentsListOutput>;
 
 // The operation
 /**
@@ -2939,6 +3869,12 @@ export const IncidentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IncidentsListOutput,
 }));
 // Input Schema
+export interface IncidentsListAlertsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+}
 export const IncidentsListAlertsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2951,10 +3887,24 @@ export const IncidentsListAlertsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/alerts",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentsListAlertsInput = typeof IncidentsListAlertsInput.Type;
+  ) as unknown as Schema.Codec<IncidentsListAlertsInput>;
 
 // Output Schema
+export interface IncidentsListAlertsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const IncidentsListAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2988,8 +3938,7 @@ export const IncidentsListAlertsOutput =
         ),
       }),
     ),
-  });
-export type IncidentsListAlertsOutput = typeof IncidentsListAlertsOutput.Type;
+  }) as unknown as Schema.Codec<IncidentsListAlertsOutput>;
 
 // The operation
 /**
@@ -3006,6 +3955,12 @@ export const IncidentsListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IncidentsListAlertsOutput,
 }));
 // Input Schema
+export interface IncidentsListBookmarksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+}
 export const IncidentsListBookmarksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3018,11 +3973,24 @@ export const IncidentsListBookmarksInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/bookmarks",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentsListBookmarksInput =
-  typeof IncidentsListBookmarksInput.Type;
+  ) as unknown as Schema.Codec<IncidentsListBookmarksInput>;
 
 // Output Schema
+export interface IncidentsListBookmarksOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const IncidentsListBookmarksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3056,9 +4024,7 @@ export const IncidentsListBookmarksOutput =
         ),
       }),
     ),
-  });
-export type IncidentsListBookmarksOutput =
-  typeof IncidentsListBookmarksOutput.Type;
+  }) as unknown as Schema.Codec<IncidentsListBookmarksOutput>;
 
 // The operation
 /**
@@ -3077,6 +4043,12 @@ export const IncidentsListBookmarks = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentsListEntitiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+}
 export const IncidentsListEntitiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3089,10 +4061,49 @@ export const IncidentsListEntitiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/entities",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentsListEntitiesInput = typeof IncidentsListEntitiesInput.Type;
+  ) as unknown as Schema.Codec<IncidentsListEntitiesInput>;
 
 // Output Schema
+export interface IncidentsListEntitiesOutput {
+  entities?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  metaData?: {
+    count: number;
+    entityKind:
+      | "Account"
+      | "Host"
+      | "File"
+      | "AzureResource"
+      | "CloudApplication"
+      | "DnsResolution"
+      | "FileHash"
+      | "Ip"
+      | "Malware"
+      | "Process"
+      | "RegistryKey"
+      | "RegistryValue"
+      | "SecurityGroup"
+      | "Url"
+      | "IoTDevice"
+      | "SecurityAlert"
+      | "Bookmark"
+      | "Mailbox"
+      | "MailCluster"
+      | "MailMessage"
+      | "SubmissionMail";
+  }[];
+}
 export const IncidentsListEntitiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entities: Schema.optional(
@@ -3158,9 +4169,7 @@ export const IncidentsListEntitiesOutput =
         }),
       ),
     ),
-  });
-export type IncidentsListEntitiesOutput =
-  typeof IncidentsListEntitiesOutput.Type;
+  }) as unknown as Schema.Codec<IncidentsListEntitiesOutput>;
 
 // The operation
 /**
@@ -3179,6 +4188,14 @@ export const IncidentsListEntities = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentsRunPlaybookInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentIdentifier: string;
+  tenantId?: string;
+  logicAppsResourceId: string;
+}
 export const IncidentsRunPlaybookInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3193,13 +4210,12 @@ export const IncidentsRunPlaybookInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentIdentifier}/runPlaybook",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentsRunPlaybookInput = typeof IncidentsRunPlaybookInput.Type;
+  ) as unknown as Schema.Codec<IncidentsRunPlaybookInput>;
 
 // Output Schema
+export type IncidentsRunPlaybookOutput = void;
 export const IncidentsRunPlaybookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IncidentsRunPlaybookOutput = typeof IncidentsRunPlaybookOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentsRunPlaybookOutput>;
 
 // The operation
 /**
@@ -3218,6 +4234,33 @@ export const IncidentsRunPlaybook = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentTasksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  incidentTaskId: string;
+  properties: {
+    title: string;
+    description?: string;
+    status: "New" | "Completed";
+    createdTimeUtc?: string;
+    lastModifiedTimeUtc?: string;
+    createdBy?: {
+      email?: string;
+      name?: string;
+      objectId?: string;
+      userPrincipalName?: string;
+    };
+    lastModifiedBy?: {
+      email?: string;
+      name?: string;
+      objectId?: string;
+      userPrincipalName?: string;
+    };
+  };
+  etag?: string;
+}
 export const IncidentTasksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3255,11 +4298,22 @@ export const IncidentTasksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks/{incidentTaskId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentTasksCreateOrUpdateInput =
-  typeof IncidentTasksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IncidentTasksCreateOrUpdateInput>;
 
 // Output Schema
+export interface IncidentTasksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IncidentTasksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3279,9 +4333,7 @@ export const IncidentTasksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IncidentTasksCreateOrUpdateOutput =
-  typeof IncidentTasksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IncidentTasksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3301,6 +4353,13 @@ export const IncidentTasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IncidentTasksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  incidentTaskId: string;
+}
 export const IncidentTasksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3314,13 +4373,12 @@ export const IncidentTasksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks/{incidentTaskId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type IncidentTasksDeleteInput = typeof IncidentTasksDeleteInput.Type;
+  ) as unknown as Schema.Codec<IncidentTasksDeleteInput>;
 
 // Output Schema
+export type IncidentTasksDeleteOutput = void;
 export const IncidentTasksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IncidentTasksDeleteOutput = typeof IncidentTasksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IncidentTasksDeleteOutput>;
 
 // The operation
 /**
@@ -3338,6 +4396,13 @@ export const IncidentTasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IncidentTasksDeleteOutput,
 }));
 // Input Schema
+export interface IncidentTasksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+  incidentTaskId: string;
+}
 export const IncidentTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3350,10 +4415,22 @@ export const IncidentTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks/{incidentTaskId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type IncidentTasksGetInput = typeof IncidentTasksGetInput.Type;
+) as unknown as Schema.Codec<IncidentTasksGetInput>;
 
 // Output Schema
+export interface IncidentTasksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IncidentTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3374,8 +4451,7 @@ export const IncidentTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type IncidentTasksGetOutput = typeof IncidentTasksGetOutput.Type;
+) as unknown as Schema.Codec<IncidentTasksGetOutput>;
 
 // The operation
 /**
@@ -3393,6 +4469,12 @@ export const IncidentTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IncidentTasksGetOutput,
 }));
 // Input Schema
+export interface IncidentTasksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  incidentId: string;
+}
 export const IncidentTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3406,10 +4488,25 @@ export const IncidentTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks",
     apiVersion: "2025-09-01",
   }),
-);
-export type IncidentTasksListInput = typeof IncidentTasksListInput.Type;
+) as unknown as Schema.Codec<IncidentTasksListInput>;
 
 // Output Schema
+export interface IncidentTasksListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IncidentTasksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3446,8 +4543,7 @@ export const IncidentTasksListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IncidentTasksListOutput = typeof IncidentTasksListOutput.Type;
+  }) as unknown as Schema.Codec<IncidentTasksListOutput>;
 
 // The operation
 /**
@@ -3464,6 +4560,57 @@ export const IncidentTasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IncidentTasksListOutput,
 }));
 // Input Schema
+export interface MetadataCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  metadataName: string;
+  properties?: {
+    contentId?: string;
+    parentId: string;
+    version?: string;
+    kind: string;
+    source?: {
+      kind: "LocalWorkspace" | "Community" | "Solution" | "SourceRepository";
+      name?: string;
+      sourceId?: string;
+    };
+    author?: { name?: string; email?: string; link?: string };
+    support?: {
+      tier: "Microsoft" | "Partner" | "Community";
+      name?: string;
+      email?: string;
+      link?: string;
+    };
+    dependencies?: {
+      contentId?: string;
+      kind?: string;
+      version?: string;
+      name?: string;
+      operator?: "AND" | "OR";
+      criteria?: {
+        contentId?: string;
+        kind?: string;
+        version?: string;
+        name?: string;
+        operator?: "AND" | "OR";
+        criteria?: unknown[];
+      }[];
+    };
+    categories?: { domains?: string[]; verticals?: string[] };
+    providers?: string[];
+    firstPublishDate?: string;
+    lastPublishDate?: string;
+    customVersion?: string;
+    contentSchemaVersion?: string;
+    icon?: string;
+    threatAnalysisTactics?: string[];
+    threatAnalysisTechniques?: string[];
+    previewImages?: string[];
+    previewImagesDark?: string[];
+  };
+  etag?: string;
+}
 export const MetadataCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3548,10 +4695,22 @@ export const MetadataCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata/{metadataName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type MetadataCreateInput = typeof MetadataCreateInput.Type;
+) as unknown as Schema.Codec<MetadataCreateInput>;
 
 // Output Schema
+export interface MetadataCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetadataCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3570,8 +4729,7 @@ export const MetadataCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MetadataCreateOutput = typeof MetadataCreateOutput.Type;
+}) as unknown as Schema.Codec<MetadataCreateOutput>;
 
 // The operation
 /**
@@ -3588,6 +4746,12 @@ export const MetadataCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataCreateOutput,
 }));
 // Input Schema
+export interface MetadataDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  metadataName: string;
+}
 export const MetadataDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3599,12 +4763,12 @@ export const MetadataDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata/{metadataName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type MetadataDeleteInput = typeof MetadataDeleteInput.Type;
+) as unknown as Schema.Codec<MetadataDeleteInput>;
 
 // Output Schema
-export const MetadataDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MetadataDeleteOutput = typeof MetadataDeleteOutput.Type;
+export type MetadataDeleteOutput = void;
+export const MetadataDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MetadataDeleteOutput>;
 
 // The operation
 /**
@@ -3621,6 +4785,12 @@ export const MetadataDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataDeleteOutput,
 }));
 // Input Schema
+export interface MetadataGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  metadataName: string;
+}
 export const MetadataGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3632,10 +4802,22 @@ export const MetadataGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata/{metadataName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type MetadataGetInput = typeof MetadataGetInput.Type;
+) as unknown as Schema.Codec<MetadataGetInput>;
 
 // Output Schema
+export interface MetadataGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetadataGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3654,8 +4836,7 @@ export const MetadataGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MetadataGetOutput = typeof MetadataGetOutput.Type;
+}) as unknown as Schema.Codec<MetadataGetOutput>;
 
 // The operation
 /**
@@ -3672,6 +4853,15 @@ export const MetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataGetOutput,
 }));
 // Input Schema
+export interface MetadataListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $filter?: string;
+  $orderby?: string;
+  $top?: number;
+  $skip?: number;
+}
 export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3686,10 +4876,25 @@ export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata",
     apiVersion: "2025-09-01",
   }),
-);
-export type MetadataListInput = typeof MetadataListInput.Type;
+) as unknown as Schema.Codec<MetadataListInput>;
 
 // Output Schema
+export interface MetadataListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -3713,8 +4918,7 @@ export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type MetadataListOutput = typeof MetadataListOutput.Type;
+}) as unknown as Schema.Codec<MetadataListOutput>;
 
 // The operation
 /**
@@ -3734,6 +4938,57 @@ export const MetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataListOutput,
 }));
 // Input Schema
+export interface MetadataUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  metadataName: string;
+  properties?: {
+    contentId?: string;
+    parentId?: string;
+    version?: string;
+    kind?: string;
+    source?: {
+      kind: "LocalWorkspace" | "Community" | "Solution" | "SourceRepository";
+      name?: string;
+      sourceId?: string;
+    };
+    author?: { name?: string; email?: string; link?: string };
+    support?: {
+      tier: "Microsoft" | "Partner" | "Community";
+      name?: string;
+      email?: string;
+      link?: string;
+    };
+    dependencies?: {
+      contentId?: string;
+      kind?: string;
+      version?: string;
+      name?: string;
+      operator?: "AND" | "OR";
+      criteria?: {
+        contentId?: string;
+        kind?: string;
+        version?: string;
+        name?: string;
+        operator?: "AND" | "OR";
+        criteria?: unknown[];
+      }[];
+    };
+    categories?: { domains?: string[]; verticals?: string[] };
+    providers?: string[];
+    firstPublishDate?: string;
+    lastPublishDate?: string;
+    customVersion?: string;
+    contentSchemaVersion?: string;
+    icon?: string;
+    threatAnalysisTactics?: string[];
+    threatAnalysisTechniques?: string[];
+    previewImages?: string[];
+    previewImagesDark?: string[];
+  };
+  etag?: string;
+}
 export const MetadataUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3818,10 +5073,22 @@ export const MetadataUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata/{metadataName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type MetadataUpdateInput = typeof MetadataUpdateInput.Type;
+) as unknown as Schema.Codec<MetadataUpdateInput>;
 
 // Output Schema
+export interface MetadataUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetadataUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3840,8 +5107,7 @@ export const MetadataUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MetadataUpdateOutput = typeof MetadataUpdateOutput.Type;
+}) as unknown as Schema.Codec<MetadataUpdateOutput>;
 
 // The operation
 /**
@@ -3858,6 +5124,7 @@ export const MetadataUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -3866,10 +5133,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.SecurityInsights/operations",
     apiVersion: "2025-09-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  nextLink?: string;
+  value: {
+    display?: {
+      description?: string;
+      operation?: string;
+      provider?: string;
+      resource?: string;
+    };
+    name?: string;
+    origin?: string;
+    isDataAction?: boolean;
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
@@ -3887,8 +5167,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       isDataAction: Schema.optional(Schema.Boolean),
     }),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -3901,6 +5180,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProductPackageGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  packageId: string;
+}
 export const ProductPackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3914,10 +5199,22 @@ export const ProductPackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductPackages/{packageId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type ProductPackageGetInput = typeof ProductPackageGetInput.Type;
+) as unknown as Schema.Codec<ProductPackageGetInput>;
 
 // Output Schema
+export interface ProductPackageGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProductPackageGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3937,8 +5234,7 @@ export const ProductPackageGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProductPackageGetOutput = typeof ProductPackageGetOutput.Type;
+  }) as unknown as Schema.Codec<ProductPackageGetOutput>;
 
 // The operation
 /**
@@ -3955,6 +5251,16 @@ export const ProductPackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProductPackageGetOutput,
 }));
 // Input Schema
+export interface ProductPackagesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $filter?: string;
+  $orderby?: string;
+  $top?: number;
+  $skipToken?: string;
+  $search?: string;
+}
 export const ProductPackagesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3971,10 +5277,25 @@ export const ProductPackagesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductPackages",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ProductPackagesListInput = typeof ProductPackagesListInput.Type;
+  ) as unknown as Schema.Codec<ProductPackagesListInput>;
 
 // Output Schema
+export interface ProductPackagesListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ProductPackagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4009,8 +5330,7 @@ export const ProductPackagesListOutput =
         ),
       }),
     ),
-  });
-export type ProductPackagesListOutput = typeof ProductPackagesListOutput.Type;
+  }) as unknown as Schema.Codec<ProductPackagesListOutput>;
 
 // The operation
 /**
@@ -4034,6 +5354,12 @@ export const ProductPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProductPackagesListOutput,
 }));
 // Input Schema
+export interface ProductTemplateGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  templateId: string;
+}
 export const ProductTemplateGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4046,10 +5372,22 @@ export const ProductTemplateGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentproducttemplates/{templateId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ProductTemplateGetInput = typeof ProductTemplateGetInput.Type;
+  ) as unknown as Schema.Codec<ProductTemplateGetInput>;
 
 // Output Schema
+export interface ProductTemplateGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProductTemplateGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4069,8 +5407,7 @@ export const ProductTemplateGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProductTemplateGetOutput = typeof ProductTemplateGetOutput.Type;
+  }) as unknown as Schema.Codec<ProductTemplateGetOutput>;
 
 // The operation
 /**
@@ -4087,6 +5424,18 @@ export const ProductTemplateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProductTemplateGetOutput,
 }));
 // Input Schema
+export interface ProductTemplatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $filter?: string;
+  $orderby?: string;
+  $search?: string;
+  $count?: boolean;
+  $top?: number;
+  $skip?: number;
+  $skipToken?: string;
+}
 export const ProductTemplatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4105,10 +5454,25 @@ export const ProductTemplatesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductTemplates",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ProductTemplatesListInput = typeof ProductTemplatesListInput.Type;
+  ) as unknown as Schema.Codec<ProductTemplatesListInput>;
 
 // Output Schema
+export interface ProductTemplatesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProductTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4143,8 +5507,7 @@ export const ProductTemplatesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductTemplatesListOutput = typeof ProductTemplatesListOutput.Type;
+  }) as unknown as Schema.Codec<ProductTemplatesListOutput>;
 
 // The operation
 /**
@@ -4169,6 +5532,14 @@ export const ProductTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SecurityMLAnalyticsSettingsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  settingsResourceName: string;
+  kind: "Anomaly";
+  etag?: string;
+}
 export const SecurityMLAnalyticsSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4183,11 +5554,22 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings/{settingsResourceName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SecurityMLAnalyticsSettingsCreateOrUpdateInput =
-  typeof SecurityMLAnalyticsSettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SecurityMLAnalyticsSettingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SecurityMLAnalyticsSettingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecurityMLAnalyticsSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4207,9 +5589,7 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecurityMLAnalyticsSettingsCreateOrUpdateOutput =
-  typeof SecurityMLAnalyticsSettingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SecurityMLAnalyticsSettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4227,6 +5607,12 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdate =
     outputSchema: SecurityMLAnalyticsSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SecurityMLAnalyticsSettingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  settingsResourceName: string;
+}
 export const SecurityMLAnalyticsSettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4239,15 +5625,12 @@ export const SecurityMLAnalyticsSettingsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings/{settingsResourceName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SecurityMLAnalyticsSettingsDeleteInput =
-  typeof SecurityMLAnalyticsSettingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SecurityMLAnalyticsSettingsDeleteInput>;
 
 // Output Schema
+export type SecurityMLAnalyticsSettingsDeleteOutput = void;
 export const SecurityMLAnalyticsSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SecurityMLAnalyticsSettingsDeleteOutput =
-  typeof SecurityMLAnalyticsSettingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecurityMLAnalyticsSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -4265,6 +5648,12 @@ export const SecurityMLAnalyticsSettingsDelete =
     outputSchema: SecurityMLAnalyticsSettingsDeleteOutput,
   }));
 // Input Schema
+export interface SecurityMLAnalyticsSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  settingsResourceName: string;
+}
 export const SecurityMLAnalyticsSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4277,11 +5666,22 @@ export const SecurityMLAnalyticsSettingsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings/{settingsResourceName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SecurityMLAnalyticsSettingsGetInput =
-  typeof SecurityMLAnalyticsSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<SecurityMLAnalyticsSettingsGetInput>;
 
 // Output Schema
+export interface SecurityMLAnalyticsSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecurityMLAnalyticsSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4301,9 +5701,7 @@ export const SecurityMLAnalyticsSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecurityMLAnalyticsSettingsGetOutput =
-  typeof SecurityMLAnalyticsSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<SecurityMLAnalyticsSettingsGetOutput>;
 
 // The operation
 /**
@@ -4321,6 +5719,11 @@ export const SecurityMLAnalyticsSettingsGet =
     outputSchema: SecurityMLAnalyticsSettingsGetOutput,
   }));
 // Input Schema
+export interface SecurityMLAnalyticsSettingsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const SecurityMLAnalyticsSettingsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4332,11 +5735,25 @@ export const SecurityMLAnalyticsSettingsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SecurityMLAnalyticsSettingsListInput =
-  typeof SecurityMLAnalyticsSettingsListInput.Type;
+  ) as unknown as Schema.Codec<SecurityMLAnalyticsSettingsListInput>;
 
 // Output Schema
+export interface SecurityMLAnalyticsSettingsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const SecurityMLAnalyticsSettingsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4371,9 +5788,7 @@ export const SecurityMLAnalyticsSettingsListOutput =
         ),
       }),
     ),
-  });
-export type SecurityMLAnalyticsSettingsListOutput =
-  typeof SecurityMLAnalyticsSettingsListOutput.Type;
+  }) as unknown as Schema.Codec<SecurityMLAnalyticsSettingsListOutput>;
 
 // The operation
 /**
@@ -4390,6 +5805,14 @@ export const SecurityMLAnalyticsSettingsList =
     outputSchema: SecurityMLAnalyticsSettingsListOutput,
   }));
 // Input Schema
+export interface SentinelOnboardingStatesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  sentinelOnboardingStateName: string;
+  properties?: { customerManagedKey?: boolean };
+  etag?: string;
+}
 export const SentinelOnboardingStatesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4408,11 +5831,22 @@ export const SentinelOnboardingStatesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SentinelOnboardingStatesCreateInput =
-  typeof SentinelOnboardingStatesCreateInput.Type;
+  ) as unknown as Schema.Codec<SentinelOnboardingStatesCreateInput>;
 
 // Output Schema
+export interface SentinelOnboardingStatesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SentinelOnboardingStatesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4432,9 +5866,7 @@ export const SentinelOnboardingStatesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SentinelOnboardingStatesCreateOutput =
-  typeof SentinelOnboardingStatesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SentinelOnboardingStatesCreateOutput>;
 
 // The operation
 /**
@@ -4452,6 +5884,12 @@ export const SentinelOnboardingStatesCreate =
     outputSchema: SentinelOnboardingStatesCreateOutput,
   }));
 // Input Schema
+export interface SentinelOnboardingStatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  sentinelOnboardingStateName: string;
+}
 export const SentinelOnboardingStatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4464,15 +5902,12 @@ export const SentinelOnboardingStatesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SentinelOnboardingStatesDeleteInput =
-  typeof SentinelOnboardingStatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SentinelOnboardingStatesDeleteInput>;
 
 // Output Schema
+export type SentinelOnboardingStatesDeleteOutput = void;
 export const SentinelOnboardingStatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SentinelOnboardingStatesDeleteOutput =
-  typeof SentinelOnboardingStatesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SentinelOnboardingStatesDeleteOutput>;
 
 // The operation
 /**
@@ -4490,6 +5925,12 @@ export const SentinelOnboardingStatesDelete =
     outputSchema: SentinelOnboardingStatesDeleteOutput,
   }));
 // Input Schema
+export interface SentinelOnboardingStatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  sentinelOnboardingStateName: string;
+}
 export const SentinelOnboardingStatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4502,11 +5943,22 @@ export const SentinelOnboardingStatesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SentinelOnboardingStatesGetInput =
-  typeof SentinelOnboardingStatesGetInput.Type;
+  ) as unknown as Schema.Codec<SentinelOnboardingStatesGetInput>;
 
 // Output Schema
+export interface SentinelOnboardingStatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SentinelOnboardingStatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4526,9 +5978,7 @@ export const SentinelOnboardingStatesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SentinelOnboardingStatesGetOutput =
-  typeof SentinelOnboardingStatesGetOutput.Type;
+  }) as unknown as Schema.Codec<SentinelOnboardingStatesGetOutput>;
 
 // The operation
 /**
@@ -4547,6 +5997,11 @@ export const SentinelOnboardingStatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SentinelOnboardingStatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const SentinelOnboardingStatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4558,11 +6013,24 @@ export const SentinelOnboardingStatesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SentinelOnboardingStatesListInput =
-  typeof SentinelOnboardingStatesListInput.Type;
+  ) as unknown as Schema.Codec<SentinelOnboardingStatesListInput>;
 
 // Output Schema
+export interface SentinelOnboardingStatesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const SentinelOnboardingStatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4596,9 +6064,7 @@ export const SentinelOnboardingStatesListOutput =
         ),
       }),
     ),
-  });
-export type SentinelOnboardingStatesListOutput =
-  typeof SentinelOnboardingStatesListOutput.Type;
+  }) as unknown as Schema.Codec<SentinelOnboardingStatesListOutput>;
 
 // The operation
 /**
@@ -4615,6 +6081,21 @@ export const SentinelOnboardingStatesList =
     outputSchema: SentinelOnboardingStatesListOutput,
   }));
 // Input Schema
+export interface SourceControlListRepositoriesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  properties: {
+    repositoryAccess: {
+      kind: "OAuth" | "PAT" | "App";
+      code?: string;
+      state?: string;
+      clientId?: string;
+      token?: string;
+      installationId?: string;
+    };
+  };
+}
 export const SourceControlListRepositoriesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4636,11 +6117,18 @@ export const SourceControlListRepositoriesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/listRepositories",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SourceControlListRepositoriesInput =
-  typeof SourceControlListRepositoriesInput.Type;
+  ) as unknown as Schema.Codec<SourceControlListRepositoriesInput>;
 
 // Output Schema
+export interface SourceControlListRepositoriesOutput {
+  nextLink?: string;
+  value: {
+    url?: string;
+    fullName?: string;
+    installationId?: number;
+    branches?: string[];
+  }[];
+}
 export const SourceControlListRepositoriesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4652,9 +6140,7 @@ export const SourceControlListRepositoriesOutput =
         branches: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type SourceControlListRepositoriesOutput =
-  typeof SourceControlListRepositoriesOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlListRepositoriesOutput>;
 
 // The operation
 /**
@@ -4671,6 +6157,80 @@ export const SourceControlListRepositories =
     outputSchema: SourceControlListRepositoriesOutput,
   }));
 // Input Schema
+export interface SourceControlsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  sourceControlId: string;
+  properties: {
+    id?: string;
+    version?: "V1" | "V2";
+    displayName: string;
+    description?: string;
+    repoType: "Github" | "AzureDevOps";
+    contentTypes: (
+      | "AnalyticsRule"
+      | "AutomationRule"
+      | "HuntingQuery"
+      | "Parser"
+      | "Playbook"
+      | "Workbook"
+    )[];
+    repository: {
+      url: string;
+      branch: string;
+      displayUrl?: string;
+      deploymentLogsUrl?: string;
+    };
+    servicePrincipal?: {
+      id?: string;
+      tenantId?: string;
+      appId?: string;
+      credentialsExpireOn?: string;
+    };
+    workloadIdentityFederation?: {
+      id?: string;
+      tenantId?: string;
+      appId?: string;
+      subject?: string;
+      issuer?: string;
+    };
+    repositoryAccess?: {
+      kind: "OAuth" | "PAT" | "App";
+      code?: string;
+      state?: string;
+      clientId?: string;
+      token?: string;
+      installationId?: string;
+    };
+    repositoryResourceInfo?: {
+      webhook?: {
+        webhookId?: string;
+        webhookUrl?: string;
+        webhookSecretUpdateTime?: string;
+        rotateWebhookSecret?: boolean;
+      };
+      gitHubResourceInfo?: { appInstallationId?: string };
+      azureDevOpsResourceInfo?: {
+        pipelineId?: string;
+        serviceConnectionId?: string;
+      };
+    };
+    lastDeploymentInfo?: {
+      deploymentFetchStatus?: "Success" | "Unauthorized" | "NotFound";
+      deployment?: {
+        deploymentId?: string;
+        deploymentState?: "In_Progress" | "Completed" | "Queued" | "Canceling";
+        deploymentResult?: "Success" | "Canceled" | "Failed";
+        deploymentTime?: string;
+        deploymentLogsUrl?: string;
+      };
+      message?: string;
+    };
+    pullRequest?: { url?: string; state?: "Open" | "Closed" };
+  };
+  etag?: string;
+}
 export const SourceControlsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4789,10 +6349,22 @@ export const SourceControlsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SourceControlsCreateInput = typeof SourceControlsCreateInput.Type;
+  ) as unknown as Schema.Codec<SourceControlsCreateInput>;
 
 // Output Schema
+export interface SourceControlsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SourceControlsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4812,8 +6384,7 @@ export const SourceControlsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SourceControlsCreateOutput = typeof SourceControlsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlsCreateOutput>;
 
 // The operation
 /**
@@ -4832,6 +6403,22 @@ export const SourceControlsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SourceControlsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  sourceControlId: string;
+  properties: {
+    repositoryAccess: {
+      kind: "OAuth" | "PAT" | "App";
+      code?: string;
+      state?: string;
+      clientId?: string;
+      token?: string;
+      installationId?: string;
+    };
+  };
+}
 export const SourceControlsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4854,10 +6441,21 @@ export const SourceControlsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}/delete",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SourceControlsDeleteInput = typeof SourceControlsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SourceControlsDeleteInput>;
 
 // Output Schema
+export interface SourceControlsDeleteOutput {
+  warning?: {
+    code?:
+      | "SourceControlWarning_DeleteServicePrincipal"
+      | "SourceControlWarning_DeletePipelineFromAzureDevOps"
+      | "SourceControlWarning_DeleteWorkflowAndSecretFromGitHub"
+      | "SourceControlWarning_DeleteRoleAssignment"
+      | "SourceControl_DeletedWithWarnings";
+    message?: string;
+    details?: unknown[];
+  };
+}
 export const SourceControlsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warning: Schema.optional(
@@ -4875,8 +6473,7 @@ export const SourceControlsDeleteOutput =
         details: Schema.optional(Schema.Array(Schema.Unknown)),
       }),
     ),
-  });
-export type SourceControlsDeleteOutput = typeof SourceControlsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlsDeleteOutput>;
 
 // The operation
 /**
@@ -4895,6 +6492,12 @@ export const SourceControlsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SourceControlsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  sourceControlId: string;
+}
 export const SourceControlsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4908,10 +6511,22 @@ export const SourceControlsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type SourceControlsGetInput = typeof SourceControlsGetInput.Type;
+) as unknown as Schema.Codec<SourceControlsGetInput>;
 
 // Output Schema
+export interface SourceControlsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SourceControlsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4931,8 +6546,7 @@ export const SourceControlsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SourceControlsGetOutput = typeof SourceControlsGetOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlsGetOutput>;
 
 // The operation
 /**
@@ -4949,6 +6563,11 @@ export const SourceControlsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SourceControlsGetOutput,
 }));
 // Input Schema
+export interface SourceControlsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const SourceControlsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4960,10 +6579,25 @@ export const SourceControlsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols",
       apiVersion: "2025-09-01",
     }),
-  );
-export type SourceControlsListInput = typeof SourceControlsListInput.Type;
+  ) as unknown as Schema.Codec<SourceControlsListInput>;
 
 // Output Schema
+export interface SourceControlsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const SourceControlsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4998,8 +6632,7 @@ export const SourceControlsListOutput =
         ),
       }),
     ),
-  });
-export type SourceControlsListOutput = typeof SourceControlsListOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlsListOutput>;
 
 // The operation
 /**
@@ -5015,6 +6648,13 @@ export const SourceControlsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SourceControlsListOutput,
 }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorAppendTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  threatIntelligenceTags?: string[];
+}
 export const ThreatIntelligenceIndicatorAppendTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5028,15 +6668,12 @@ export const ThreatIntelligenceIndicatorAppendTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}/appendTags",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorAppendTagsInput =
-  typeof ThreatIntelligenceIndicatorAppendTagsInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorAppendTagsInput>;
 
 // Output Schema
+export type ThreatIntelligenceIndicatorAppendTagsOutput = void;
 export const ThreatIntelligenceIndicatorAppendTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ThreatIntelligenceIndicatorAppendTagsOutput =
-  typeof ThreatIntelligenceIndicatorAppendTagsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ThreatIntelligenceIndicatorAppendTagsOutput>;
 
 // The operation
 /**
@@ -5054,6 +6691,17 @@ export const ThreatIntelligenceIndicatorAppendTags =
     outputSchema: ThreatIntelligenceIndicatorAppendTagsOutput,
   }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties?: {
+    additionalData?: Record<string, unknown>;
+    friendlyName?: string;
+  };
+  kind: "indicator";
+}
 export const ThreatIntelligenceIndicatorCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5075,11 +6723,22 @@ export const ThreatIntelligenceIndicatorCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorCreateInput =
-  typeof ThreatIntelligenceIndicatorCreateInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorCreateInput>;
 
 // Output Schema
+export interface ThreatIntelligenceIndicatorCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ThreatIntelligenceIndicatorCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5099,9 +6758,7 @@ export const ThreatIntelligenceIndicatorCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ThreatIntelligenceIndicatorCreateOutput =
-  typeof ThreatIntelligenceIndicatorCreateOutput.Type;
+  }) as unknown as Schema.Codec<ThreatIntelligenceIndicatorCreateOutput>;
 
 // The operation
 /**
@@ -5119,6 +6776,16 @@ export const ThreatIntelligenceIndicatorCreate =
     outputSchema: ThreatIntelligenceIndicatorCreateOutput,
   }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorCreateIndicatorInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  properties?: {
+    additionalData?: Record<string, unknown>;
+    friendlyName?: string;
+  };
+  kind: "indicator";
+}
 export const ThreatIntelligenceIndicatorCreateIndicatorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5139,11 +6806,22 @@ export const ThreatIntelligenceIndicatorCreateIndicatorInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/createIndicator",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorCreateIndicatorInput =
-  typeof ThreatIntelligenceIndicatorCreateIndicatorInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorCreateIndicatorInput>;
 
 // Output Schema
+export interface ThreatIntelligenceIndicatorCreateIndicatorOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ThreatIntelligenceIndicatorCreateIndicatorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5163,9 +6841,7 @@ export const ThreatIntelligenceIndicatorCreateIndicatorOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ThreatIntelligenceIndicatorCreateIndicatorOutput =
-  typeof ThreatIntelligenceIndicatorCreateIndicatorOutput.Type;
+  }) as unknown as Schema.Codec<ThreatIntelligenceIndicatorCreateIndicatorOutput>;
 
 // The operation
 /**
@@ -5182,6 +6858,12 @@ export const ThreatIntelligenceIndicatorCreateIndicator =
     outputSchema: ThreatIntelligenceIndicatorCreateIndicatorOutput,
   }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ThreatIntelligenceIndicatorDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5194,15 +6876,12 @@ export const ThreatIntelligenceIndicatorDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorDeleteInput =
-  typeof ThreatIntelligenceIndicatorDeleteInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorDeleteInput>;
 
 // Output Schema
+export type ThreatIntelligenceIndicatorDeleteOutput = void;
 export const ThreatIntelligenceIndicatorDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ThreatIntelligenceIndicatorDeleteOutput =
-  typeof ThreatIntelligenceIndicatorDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ThreatIntelligenceIndicatorDeleteOutput>;
 
 // The operation
 /**
@@ -5220,6 +6899,12 @@ export const ThreatIntelligenceIndicatorDelete =
     outputSchema: ThreatIntelligenceIndicatorDeleteOutput,
   }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ThreatIntelligenceIndicatorGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5232,11 +6917,22 @@ export const ThreatIntelligenceIndicatorGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorGetInput =
-  typeof ThreatIntelligenceIndicatorGetInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorGetInput>;
 
 // Output Schema
+export interface ThreatIntelligenceIndicatorGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ThreatIntelligenceIndicatorGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5256,9 +6952,7 @@ export const ThreatIntelligenceIndicatorGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ThreatIntelligenceIndicatorGetOutput =
-  typeof ThreatIntelligenceIndicatorGetOutput.Type;
+  }) as unknown as Schema.Codec<ThreatIntelligenceIndicatorGetOutput>;
 
 // The operation
 /**
@@ -5276,6 +6970,11 @@ export const ThreatIntelligenceIndicatorGet =
     outputSchema: ThreatIntelligenceIndicatorGetOutput,
   }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorMetricsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const ThreatIntelligenceIndicatorMetricsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5287,11 +6986,19 @@ export const ThreatIntelligenceIndicatorMetricsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/metrics",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorMetricsListInput =
-  typeof ThreatIntelligenceIndicatorMetricsListInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorMetricsListInput>;
 
 // Output Schema
+export interface ThreatIntelligenceIndicatorMetricsListOutput {
+  value: {
+    properties?: {
+      lastUpdatedTimeUtc?: string;
+      threatTypeMetrics?: { metricName?: string; metricValue?: number }[];
+      patternTypeMetrics?: { metricName?: string; metricValue?: number }[];
+      sourceMetrics?: { metricName?: string; metricValue?: number }[];
+    };
+  }[];
+}
 export const ThreatIntelligenceIndicatorMetricsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5327,9 +7034,7 @@ export const ThreatIntelligenceIndicatorMetricsListOutput =
         ),
       }),
     ),
-  });
-export type ThreatIntelligenceIndicatorMetricsListOutput =
-  typeof ThreatIntelligenceIndicatorMetricsListOutput.Type;
+  }) as unknown as Schema.Codec<ThreatIntelligenceIndicatorMetricsListOutput>;
 
 // The operation
 /**
@@ -5346,6 +7051,27 @@ export const ThreatIntelligenceIndicatorMetricsList =
     outputSchema: ThreatIntelligenceIndicatorMetricsListOutput,
   }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorQueryIndicatorsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  pageSize?: number;
+  minConfidence?: number;
+  maxConfidence?: number;
+  minValidUntil?: string;
+  maxValidUntil?: string;
+  includeDisabled?: boolean;
+  sortBy?: {
+    itemKey?: string;
+    sortOrder?: "unsorted" | "ascending" | "descending";
+  }[];
+  sources?: string[];
+  patternTypes?: string[];
+  threatTypes?: string[];
+  ids?: string[];
+  keywords?: string[];
+  skipToken?: string;
+}
 export const ThreatIntelligenceIndicatorQueryIndicatorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5379,11 +7105,25 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/queryIndicators",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorQueryIndicatorsInput =
-  typeof ThreatIntelligenceIndicatorQueryIndicatorsInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorQueryIndicatorsInput>;
 
 // Output Schema
+export interface ThreatIntelligenceIndicatorQueryIndicatorsOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ThreatIntelligenceIndicatorQueryIndicatorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -5418,9 +7158,7 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsOutput =
         ),
       }),
     ),
-  });
-export type ThreatIntelligenceIndicatorQueryIndicatorsOutput =
-  typeof ThreatIntelligenceIndicatorQueryIndicatorsOutput.Type;
+  }) as unknown as Schema.Codec<ThreatIntelligenceIndicatorQueryIndicatorsOutput>;
 
 // The operation
 /**
@@ -5437,6 +7175,17 @@ export const ThreatIntelligenceIndicatorQueryIndicators =
     outputSchema: ThreatIntelligenceIndicatorQueryIndicatorsOutput,
   }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorReplaceTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties?: {
+    additionalData?: Record<string, unknown>;
+    friendlyName?: string;
+  };
+  kind: "indicator";
+}
 export const ThreatIntelligenceIndicatorReplaceTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5458,11 +7207,22 @@ export const ThreatIntelligenceIndicatorReplaceTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}/replaceTags",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorReplaceTagsInput =
-  typeof ThreatIntelligenceIndicatorReplaceTagsInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorReplaceTagsInput>;
 
 // Output Schema
+export interface ThreatIntelligenceIndicatorReplaceTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ThreatIntelligenceIndicatorReplaceTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5482,9 +7242,7 @@ export const ThreatIntelligenceIndicatorReplaceTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ThreatIntelligenceIndicatorReplaceTagsOutput =
-  typeof ThreatIntelligenceIndicatorReplaceTagsOutput.Type;
+  }) as unknown as Schema.Codec<ThreatIntelligenceIndicatorReplaceTagsOutput>;
 
 // The operation
 /**
@@ -5502,6 +7260,15 @@ export const ThreatIntelligenceIndicatorReplaceTags =
     outputSchema: ThreatIntelligenceIndicatorReplaceTagsOutput,
   }));
 // Input Schema
+export interface ThreatIntelligenceIndicatorsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $filter?: string;
+  $top?: number;
+  $skipToken?: string;
+  $orderby?: string;
+}
 export const ThreatIntelligenceIndicatorsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5517,11 +7284,25 @@ export const ThreatIntelligenceIndicatorsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ThreatIntelligenceIndicatorsListInput =
-  typeof ThreatIntelligenceIndicatorsListInput.Type;
+  ) as unknown as Schema.Codec<ThreatIntelligenceIndicatorsListInput>;
 
 // Output Schema
+export interface ThreatIntelligenceIndicatorsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ThreatIntelligenceIndicatorsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -5556,9 +7337,7 @@ export const ThreatIntelligenceIndicatorsListOutput =
         ),
       }),
     ),
-  });
-export type ThreatIntelligenceIndicatorsListOutput =
-  typeof ThreatIntelligenceIndicatorsListOutput.Type;
+  }) as unknown as Schema.Codec<ThreatIntelligenceIndicatorsListOutput>;
 
 // The operation
 /**
@@ -5579,6 +7358,26 @@ export const ThreatIntelligenceIndicatorsList =
     outputSchema: ThreatIntelligenceIndicatorsListOutput,
   }));
 // Input Schema
+export interface WatchlistItemsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  watchlistAlias: string;
+  watchlistItemId: string;
+  properties?: {
+    watchlistItemType?: string;
+    watchlistItemId?: string;
+    tenantId?: string;
+    isDeleted?: boolean;
+    created?: string;
+    updated?: string;
+    createdBy?: { email?: string; name?: string; objectId?: string | null };
+    updatedBy?: { email?: string; name?: string; objectId?: string | null };
+    itemsKeyValue: unknown;
+    entityMapping?: unknown;
+  };
+  etag?: string;
+}
 export const WatchlistItemsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5619,11 +7418,22 @@ export const WatchlistItemsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type WatchlistItemsCreateOrUpdateInput =
-  typeof WatchlistItemsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WatchlistItemsCreateOrUpdateInput>;
 
 // Output Schema
+export interface WatchlistItemsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchlistItemsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5643,9 +7453,7 @@ export const WatchlistItemsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WatchlistItemsCreateOrUpdateOutput =
-  typeof WatchlistItemsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WatchlistItemsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5664,6 +7472,13 @@ export const WatchlistItemsCreateOrUpdate =
     outputSchema: WatchlistItemsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface WatchlistItemsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  watchlistAlias: string;
+  watchlistItemId: string;
+}
 export const WatchlistItemsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5677,13 +7492,12 @@ export const WatchlistItemsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type WatchlistItemsDeleteInput = typeof WatchlistItemsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WatchlistItemsDeleteInput>;
 
 // Output Schema
+export type WatchlistItemsDeleteOutput = void;
 export const WatchlistItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WatchlistItemsDeleteOutput = typeof WatchlistItemsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchlistItemsDeleteOutput>;
 
 // The operation
 /**
@@ -5703,6 +7517,13 @@ export const WatchlistItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchlistItemsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  watchlistAlias: string;
+  watchlistItemId: string;
+}
 export const WatchlistItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5717,10 +7538,22 @@ export const WatchlistItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}",
     apiVersion: "2025-09-01",
   }),
-);
-export type WatchlistItemsGetInput = typeof WatchlistItemsGetInput.Type;
+) as unknown as Schema.Codec<WatchlistItemsGetInput>;
 
 // Output Schema
+export interface WatchlistItemsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchlistItemsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5740,8 +7573,7 @@ export const WatchlistItemsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WatchlistItemsGetOutput = typeof WatchlistItemsGetOutput.Type;
+  }) as unknown as Schema.Codec<WatchlistItemsGetOutput>;
 
 // The operation
 /**
@@ -5759,6 +7591,13 @@ export const WatchlistItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatchlistItemsGetOutput,
 }));
 // Input Schema
+export interface WatchlistItemsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  watchlistAlias: string;
+  $skipToken?: string;
+}
 export const WatchlistItemsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5772,10 +7611,25 @@ export const WatchlistItemsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems",
       apiVersion: "2025-09-01",
     }),
-  );
-export type WatchlistItemsListInput = typeof WatchlistItemsListInput.Type;
+  ) as unknown as Schema.Codec<WatchlistItemsListInput>;
 
 // Output Schema
+export interface WatchlistItemsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const WatchlistItemsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -5810,8 +7664,7 @@ export const WatchlistItemsListOutput =
         ),
       }),
     ),
-  });
-export type WatchlistItemsListOutput = typeof WatchlistItemsListOutput.Type;
+  }) as unknown as Schema.Codec<WatchlistItemsListOutput>;
 
 // The operation
 /**
@@ -5829,6 +7682,44 @@ export const WatchlistItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatchlistItemsListOutput,
 }));
 // Input Schema
+export interface WatchlistsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  watchlistAlias: string;
+  properties?: {
+    watchlistId?: string;
+    displayName: string;
+    provider: string;
+    source?: string;
+    sourceType?: "Local" | "AzureStorage";
+    created?: string;
+    updated?: string;
+    createdBy?: { email?: string; name?: string; objectId?: string | null };
+    updatedBy?: { email?: string; name?: string; objectId?: string | null };
+    description?: string;
+    watchlistType?: string;
+    watchlistAlias?: string;
+    isDeleted?: boolean;
+    labels?: string[];
+    defaultDuration?: string;
+    tenantId?: string;
+    numberOfLinesToSkip?: number;
+    rawContent?: string;
+    itemsSearchKey: string;
+    contentType?: string;
+    uploadStatus?: string;
+    provisioningState?:
+      | "New"
+      | "InProgress"
+      | "Uploading"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  etag?: string;
+}
 export const WatchlistsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5890,11 +7781,22 @@ export const WatchlistsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type WatchlistsCreateOrUpdateInput =
-  typeof WatchlistsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WatchlistsCreateOrUpdateInput>;
 
 // Output Schema
+export interface WatchlistsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchlistsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5914,9 +7816,7 @@ export const WatchlistsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WatchlistsCreateOrUpdateOutput =
-  typeof WatchlistsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WatchlistsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5935,6 +7835,12 @@ export const WatchlistsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchlistsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  watchlistAlias: string;
+}
 export const WatchlistsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5946,12 +7852,12 @@ export const WatchlistsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}",
     apiVersion: "2025-09-01",
   }),
-);
-export type WatchlistsDeleteInput = typeof WatchlistsDeleteInput.Type;
+) as unknown as Schema.Codec<WatchlistsDeleteInput>;
 
 // Output Schema
-export const WatchlistsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WatchlistsDeleteOutput = typeof WatchlistsDeleteOutput.Type;
+export type WatchlistsDeleteOutput = void;
+export const WatchlistsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchlistsDeleteOutput>;
 
 // The operation
 /**
@@ -5968,6 +7874,12 @@ export const WatchlistsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatchlistsDeleteOutput,
 }));
 // Input Schema
+export interface WatchlistsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  watchlistAlias: string;
+}
 export const WatchlistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5979,10 +7891,22 @@ export const WatchlistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}",
     apiVersion: "2025-09-01",
   }),
-);
-export type WatchlistsGetInput = typeof WatchlistsGetInput.Type;
+) as unknown as Schema.Codec<WatchlistsGetInput>;
 
 // Output Schema
+export interface WatchlistsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchlistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6001,8 +7925,7 @@ export const WatchlistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WatchlistsGetOutput = typeof WatchlistsGetOutput.Type;
+}) as unknown as Schema.Codec<WatchlistsGetOutput>;
 
 // The operation
 /**
@@ -6019,6 +7942,12 @@ export const WatchlistsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatchlistsGetOutput,
 }));
 // Input Schema
+export interface WatchlistsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skipToken?: string;
+}
 export const WatchlistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6030,10 +7959,25 @@ export const WatchlistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists",
     apiVersion: "2025-09-01",
   }),
-);
-export type WatchlistsListInput = typeof WatchlistsListInput.Type;
+) as unknown as Schema.Codec<WatchlistsListInput>;
 
 // Output Schema
+export interface WatchlistsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const WatchlistsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
@@ -6057,8 +8001,7 @@ export const WatchlistsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type WatchlistsListOutput = typeof WatchlistsListOutput.Type;
+}) as unknown as Schema.Codec<WatchlistsListOutput>;
 
 // The operation
 /**

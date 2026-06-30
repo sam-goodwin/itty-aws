@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetQueryPatternsReportStatusInput {
+  organization: string;
+  database: string;
+  branch: string;
+  id: string;
+}
 export const GetQueryPatternsReportStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,18 @@ export const GetQueryPatternsReportStatusInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns/{id}",
     }),
-  );
-export type GetQueryPatternsReportStatusInput =
-  typeof GetQueryPatternsReportStatusInput.Type;
+  ) as unknown as Schema.Codec<GetQueryPatternsReportStatusInput>;
 
 // Output Schema
+export interface GetQueryPatternsReportStatusOutput {
+  id: string;
+  state: "pending" | "completed" | "failed";
+  created_at: string;
+  finished_at: string | null;
+  url: string;
+  download_url: string;
+  actor: { id: string; display_name: string; avatar_url: string };
+}
 export const GetQueryPatternsReportStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -33,9 +46,7 @@ export const GetQueryPatternsReportStatusOutput =
       display_name: Schema.String,
       avatar_url: Schema.String,
     }),
-  });
-export type GetQueryPatternsReportStatusOutput =
-  typeof GetQueryPatternsReportStatusOutput.Type;
+  }) as unknown as Schema.Codec<GetQueryPatternsReportStatusOutput>;
 
 // The operation
 /**

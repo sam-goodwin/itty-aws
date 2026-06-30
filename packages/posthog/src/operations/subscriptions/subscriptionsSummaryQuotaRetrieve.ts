@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SubscriptionsSummaryQuotaRetrieveInput {
+  project_id: string;
+}
 export const SubscriptionsSummaryQuotaRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,19 +14,20 @@ export const SubscriptionsSummaryQuotaRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/subscriptions/summary_quota/",
     }),
-  );
-export type SubscriptionsSummaryQuotaRetrieveInput =
-  typeof SubscriptionsSummaryQuotaRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionsSummaryQuotaRetrieveInput>;
 
 // Output Schema
+export interface SubscriptionsSummaryQuotaRetrieveOutput {
+  active_count: number;
+  limit: number | null;
+  at_limit: boolean;
+}
 export const SubscriptionsSummaryQuotaRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active_count: Schema.Number,
     limit: Schema.NullOr(Schema.Number),
     at_limit: Schema.Boolean,
-  });
-export type SubscriptionsSummaryQuotaRetrieveOutput =
-  typeof SubscriptionsSummaryQuotaRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionsSummaryQuotaRetrieveOutput>;
 
 // The operation
 /**

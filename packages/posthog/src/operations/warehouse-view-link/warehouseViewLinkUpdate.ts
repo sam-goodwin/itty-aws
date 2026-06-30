@@ -3,6 +3,39 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseViewLinkUpdateInput {
+  id: string;
+  project_id: string;
+  deleted?: boolean | null;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  source_table_name: string;
+  source_table_key: string;
+  joining_table_name: string;
+  joining_table_key: string;
+  field_name: string;
+  configuration?: unknown;
+}
 export const WarehouseViewLinkUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,7 +52,23 @@ export const WarehouseViewLinkUpdateInput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     source_table_name: Schema.String,
@@ -33,11 +82,41 @@ export const WarehouseViewLinkUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/warehouse_view_link/{id}/",
     }),
-  );
-export type WarehouseViewLinkUpdateInput =
-  typeof WarehouseViewLinkUpdateInput.Type;
+  ) as unknown as Schema.Codec<WarehouseViewLinkUpdateInput>;
 
 // Output Schema
+export interface WarehouseViewLinkUpdateOutput {
+  id: string;
+  deleted?: boolean | null;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  source_table_name: string;
+  source_table_key: string;
+  joining_table_name: string;
+  joining_table_key: string;
+  field_name: string;
+  configuration?: unknown;
+}
 export const WarehouseViewLinkUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -53,7 +132,23 @@ export const WarehouseViewLinkUpdateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     source_table_name: Schema.String,
@@ -62,9 +157,7 @@ export const WarehouseViewLinkUpdateOutput =
     joining_table_key: Schema.String,
     field_name: Schema.String,
     configuration: Schema.optional(Schema.Unknown),
-  });
-export type WarehouseViewLinkUpdateOutput =
-  typeof WarehouseViewLinkUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseViewLinkUpdateOutput>;
 
 // The operation
 /**

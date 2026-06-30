@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomPropertyDefinitionsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const CustomPropertyDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,31 @@ export const CustomPropertyDefinitionsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/custom_property_definitions/",
     }),
-  );
-export type CustomPropertyDefinitionsListInput =
-  typeof CustomPropertyDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<CustomPropertyDefinitionsListInput>;
 
 // Output Schema
+export interface CustomPropertyDefinitionsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    name: string;
+    description?: string | null;
+    display_type:
+      | "text"
+      | "number"
+      | "currency"
+      | "percent"
+      | "date"
+      | "datetime"
+      | "boolean";
+    is_big_number?: boolean;
+    created_at: string;
+    created_by: number | null;
+    updated_at: string | null;
+  }[];
+}
 export const CustomPropertyDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -43,9 +68,7 @@ export const CustomPropertyDefinitionsListOutput =
         updated_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type CustomPropertyDefinitionsListOutput =
-  typeof CustomPropertyDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<CustomPropertyDefinitionsListOutput>;
 
 // The operation
 /**

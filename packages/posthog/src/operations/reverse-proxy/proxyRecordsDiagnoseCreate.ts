@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ProxyRecordsDiagnoseCreateInput {
+  id: string;
+  organization_id: string;
+}
 export const ProxyRecordsDiagnoseCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,28 @@ export const ProxyRecordsDiagnoseCreateInput =
       method: "POST",
       path: "/api/organizations/{organization_id}/proxy_records/{id}/diagnose/",
     }),
-  );
-export type ProxyRecordsDiagnoseCreateInput =
-  typeof ProxyRecordsDiagnoseCreateInput.Type;
+  ) as unknown as Schema.Codec<ProxyRecordsDiagnoseCreateInput>;
 
 // Output Schema
+export interface ProxyRecordsDiagnoseCreateOutput {
+  ran_at: string;
+  summary: {
+    status: "healthy" | "warn" | "fail";
+    primary_issue: string | null;
+    next_action: string | null;
+  };
+  checks: {
+    id: string;
+    name: string;
+    status: "passed" | "warned" | "failed" | "skipped";
+    detail: string;
+    remediation?: {
+      type: "dns" | "config" | "wait" | "retry";
+      summary: string;
+      records: { name: string; type: string; value: string }[];
+    } | null;
+  }[];
+}
 export const ProxyRecordsDiagnoseCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ran_at: Schema.String,
@@ -31,12 +52,24 @@ export const ProxyRecordsDiagnoseCreateOutput =
         name: Schema.String,
         status: Schema.Literals(["passed", "warned", "failed", "skipped"]),
         detail: Schema.String,
-        remediation: Schema.optional(Schema.Unknown),
+        remediation: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              type: Schema.Literals(["dns", "config", "wait", "retry"]),
+              summary: Schema.String,
+              records: Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+            }),
+          ),
+        ),
       }),
     ),
-  });
-export type ProxyRecordsDiagnoseCreateOutput =
-  typeof ProxyRecordsDiagnoseCreateOutput.Type;
+  }) as unknown as Schema.Codec<ProxyRecordsDiagnoseCreateOutput>;
 
 // The operation
 /**

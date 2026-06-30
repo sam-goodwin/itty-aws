@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupUserSecurityLdapVerifyInput {
+  groupId: string;
+  requestId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupUserSecurityLdapVerifyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const GetGroupUserSecurityLdapVerifyInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}",
     }),
-  );
-export type GetGroupUserSecurityLdapVerifyInput =
-  typeof GetGroupUserSecurityLdapVerifyInput.Type;
+  ) as unknown as Schema.Codec<GetGroupUserSecurityLdapVerifyInput>;
 
 // Output Schema
+export type GetGroupUserSecurityLdapVerifyOutput = void;
 export const GetGroupUserSecurityLdapVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupUserSecurityLdapVerifyOutput =
-  typeof GetGroupUserSecurityLdapVerifyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupUserSecurityLdapVerifyOutput>;
 
 // The operation
 /**

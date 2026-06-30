@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput {
+  group_id: string;
+  role_assignments: {
+    role_slug: string;
+    resource_id?: string;
+    resource_external_id?: string;
+    resource_type_slug?: string;
+  }[];
+}
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +29,22 @@ export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignme
       method: "PUT",
       path: "/authorization/groups/{group_id}/role_assignments",
     }),
-  );
-export type AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput =
-  typeof AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput>;
 
 // Output Schema
+export interface AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    group_id: string;
+    role: { slug?: string };
+    resource: { id: string; external_id: string; resource_type_slug: string };
+    created_at: string;
+    updated_at: string;
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -49,9 +69,7 @@ export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignme
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsOutput =
-  typeof AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserOrganizationMembershipsControllerCreateInput {
+  user_id: string;
+  organization_id: string;
+}
 export const UserlandUserOrganizationMembershipsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user_id: Schema.String,
@@ -13,11 +17,39 @@ export const UserlandUserOrganizationMembershipsControllerCreateInput =
       method: "POST",
       path: "/user_management/organization_memberships",
     }),
-  );
-export type UserlandUserOrganizationMembershipsControllerCreateInput =
-  typeof UserlandUserOrganizationMembershipsControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerCreateInput>;
 
 // Output Schema
+export interface UserlandUserOrganizationMembershipsControllerCreateOutput {
+  object: string;
+  id: string;
+  user_id: string;
+  organization_id: string;
+  status: "active" | "inactive" | "pending";
+  directory_managed: boolean;
+  organization_name?: string;
+  custom_attributes?: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+  role: { slug?: string };
+  roles: { slug?: string }[];
+  user: {
+    object?: string;
+    id?: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    profile_picture_url?: string | null;
+    email?: string;
+    email_verified?: boolean;
+    external_id?: string | null;
+    metadata?: Record<string, string>;
+    last_sign_in_at?: string | null;
+    locale?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  };
+}
 export const UserlandUserOrganizationMembershipsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -56,9 +88,7 @@ export const UserlandUserOrganizationMembershipsControllerCreateOutput =
       created_at: Schema.optional(Schema.String),
       updated_at: Schema.optional(Schema.String),
     }),
-  });
-export type UserlandUserOrganizationMembershipsControllerCreateOutput =
-  typeof UserlandUserOrganizationMembershipsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerCreateOutput>;
 
 // The operation
 /**

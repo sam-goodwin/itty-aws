@@ -3,14 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateEvmAccountInput {
+  address: string;
+  name?: string;
+  accountPolicy?: string;
+}
 export const UpdateEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
   accountPolicy: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "PUT", path: "/v2/evm/accounts/{address}" }));
-export type UpdateEvmAccountInput = typeof UpdateEvmAccountInput.Type;
+}).pipe(
+  T.Http({ method: "PUT", path: "/v2/evm/accounts/{address}" }),
+) as unknown as Schema.Codec<UpdateEvmAccountInput>;
 
 // Output Schema
+export interface UpdateEvmAccountOutput {
+  address: string;
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const UpdateEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     address: Schema.String,
@@ -19,8 +32,7 @@ export const UpdateEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     createdAt: Schema.optional(Schema.String),
     updatedAt: Schema.optional(Schema.String),
   },
-);
-export type UpdateEvmAccountOutput = typeof UpdateEvmAccountOutput.Type;
+) as unknown as Schema.Codec<UpdateEvmAccountOutput>;
 
 // The operation
 /**

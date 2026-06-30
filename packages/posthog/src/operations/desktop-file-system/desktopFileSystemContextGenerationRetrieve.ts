@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemContextGenerationRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const DesktopFileSystemContextGenerationRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const DesktopFileSystemContextGenerationRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/desktop_file_system/{id}/context_generation/",
     }),
-  );
-export type DesktopFileSystemContextGenerationRetrieveInput =
-  typeof DesktopFileSystemContextGenerationRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemContextGenerationRetrieveInput>;
 
 // Output Schema
+export interface DesktopFileSystemContextGenerationRetrieveOutput {
+  task_id: string | null;
+}
 export const DesktopFileSystemContextGenerationRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     task_id: Schema.NullOr(Schema.String),
-  });
-export type DesktopFileSystemContextGenerationRetrieveOutput =
-  typeof DesktopFileSystemContextGenerationRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemContextGenerationRetrieveOutput>;
 
 // The operation
 /**

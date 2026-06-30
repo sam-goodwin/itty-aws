@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierar
   categories?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy: Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> =
+export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy: Schema.Codec<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categories: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -44,7 +44,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -66,7 +66,7 @@ export interface GoogleLongrunningOperation {
   name?: string;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(GoogleRpcStatus),
     done: Schema.optional(Schema.Boolean),
@@ -84,7 +84,7 @@ export interface GoogleLongrunningListOperationsResponse {
   operations?: ReadonlyArray<GoogleLongrunningOperation>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -100,7 +100,7 @@ export interface GoogleCloudRecommendationengineV1beta1Image {
   width?: number;
 }
 
-export const GoogleCloudRecommendationengineV1beta1Image: Schema.Schema<GoogleCloudRecommendationengineV1beta1Image> =
+export const GoogleCloudRecommendationengineV1beta1Image: Schema.Codec<GoogleCloudRecommendationengineV1beta1Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     height: Schema.optional(Schema.Number),
     uri: Schema.optional(Schema.String),
@@ -114,7 +114,7 @@ export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPr
   originalPrice?: number;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice> =
+export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice: Schema.Codec<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayPrice: Schema.optional(Schema.Number),
     originalPrice: Schema.optional(Schema.Number),
@@ -130,7 +130,7 @@ export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRa
   min?: number;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange> =
+export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange: Schema.Codec<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     max: Schema.optional(Schema.Number),
     min: Schema.optional(Schema.Number),
@@ -164,7 +164,7 @@ export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   availableQuantity?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductCatalogItem: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItem> =
+export const GoogleCloudRecommendationengineV1beta1ProductCatalogItem: Schema.Codec<GoogleCloudRecommendationengineV1beta1ProductCatalogItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     costs: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
     stockState: Schema.optional(Schema.String),
@@ -189,7 +189,7 @@ export interface GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
   value?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1FeatureMapStringList: Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMapStringList> =
+export const GoogleCloudRecommendationengineV1beta1FeatureMapStringList: Schema.Codec<GoogleCloudRecommendationengineV1beta1FeatureMapStringList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -201,7 +201,7 @@ export interface GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
   value?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1FeatureMapFloatList: Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMapFloatList> =
+export const GoogleCloudRecommendationengineV1beta1FeatureMapFloatList: Schema.Codec<GoogleCloudRecommendationengineV1beta1FeatureMapFloatList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({
@@ -221,7 +221,7 @@ export interface GoogleCloudRecommendationengineV1beta1FeatureMap {
   >;
 }
 
-export const GoogleCloudRecommendationengineV1beta1FeatureMap: Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMap> =
+export const GoogleCloudRecommendationengineV1beta1FeatureMap: Schema.Codec<GoogleCloudRecommendationengineV1beta1FeatureMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoricalFeatures: Schema.optional(
       Schema.Record(
@@ -260,7 +260,7 @@ export interface GoogleCloudRecommendationengineV1beta1CatalogItem {
   itemAttributes?: GoogleCloudRecommendationengineV1beta1FeatureMap;
 }
 
-export const GoogleCloudRecommendationengineV1beta1CatalogItem: Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem> =
+export const GoogleCloudRecommendationengineV1beta1CatalogItem: Schema.Codec<GoogleCloudRecommendationengineV1beta1CatalogItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoryHierarchies: Schema.optional(
       Schema.Array(
@@ -288,7 +288,7 @@ export interface GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
   gcsPrefix?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportErrorsConfig: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportErrorsConfig> =
+export const GoogleCloudRecommendationengineV1beta1ImportErrorsConfig: Schema.Codec<GoogleCloudRecommendationengineV1beta1ImportErrorsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsPrefix: Schema.optional(Schema.String),
   }).annotate({
@@ -300,7 +300,7 @@ export interface GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistrat
   apiKey?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration: Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration> =
+export const GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration: Schema.Codec<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiKey: Schema.optional(Schema.String),
   }).annotate({
@@ -315,7 +315,7 @@ export interface GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegis
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse> =
+export const GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     predictionApiKeyRegistrations: Schema.optional(
       Schema.Array(
@@ -343,7 +343,7 @@ export interface GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
     | (string & {});
 }
 
-export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig: Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig> =
+export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig: Schema.Codec<GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventItemLevel: Schema.optional(Schema.String),
     predictItemLevel: Schema.optional(Schema.String),
@@ -362,7 +362,7 @@ export interface GoogleCloudRecommendationengineV1beta1Catalog {
   catalogItemLevelConfig?: GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig;
 }
 
-export const GoogleCloudRecommendationengineV1beta1Catalog: Schema.Schema<GoogleCloudRecommendationengineV1beta1Catalog> =
+export const GoogleCloudRecommendationengineV1beta1Catalog: Schema.Codec<GoogleCloudRecommendationengineV1beta1Catalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -397,7 +397,7 @@ export interface GoogleCloudRecommendationengineV1beta1ProductDetail {
   availableQuantity?: number;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductDetail: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductDetail> =
+export const GoogleCloudRecommendationengineV1beta1ProductDetail: Schema.Codec<GoogleCloudRecommendationengineV1beta1ProductDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayPrice: Schema.optional(Schema.Number),
     stockState: Schema.optional(Schema.String),
@@ -415,7 +415,7 @@ export const GoogleCloudRecommendationengineV1beta1ProductDetail: Schema.Schema<
 
 export interface GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata {}
 
-export const GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata: Schema.Schema<GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata> =
+export const GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata: Schema.Codec<GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata",
   });
@@ -435,7 +435,7 @@ export interface GoogleCloudRecommendationengineV1beta1ImportMetadata {
   failureCount?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportMetadata: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportMetadata> =
+export const GoogleCloudRecommendationengineV1beta1ImportMetadata: Schema.Codec<GoogleCloudRecommendationengineV1beta1ImportMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
@@ -460,7 +460,7 @@ export interface GoogleCloudRecommendationengineV1beta1UserInfo {
   userAgent?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1UserInfo: Schema.Schema<GoogleCloudRecommendationengineV1beta1UserInfo> =
+export const GoogleCloudRecommendationengineV1beta1UserInfo: Schema.Codec<GoogleCloudRecommendationengineV1beta1UserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -484,7 +484,7 @@ export interface GoogleCloudRecommendationengineV1beta1EventDetail {
   referrerUri?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1EventDetail: Schema.Schema<GoogleCloudRecommendationengineV1beta1EventDetail> =
+export const GoogleCloudRecommendationengineV1beta1EventDetail: Schema.Codec<GoogleCloudRecommendationengineV1beta1EventDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageViewId: Schema.optional(Schema.String),
     eventAttributes: Schema.optional(
@@ -511,7 +511,7 @@ export interface GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   revenue?: number;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PurchaseTransaction: Schema.Schema<GoogleCloudRecommendationengineV1beta1PurchaseTransaction> =
+export const GoogleCloudRecommendationengineV1beta1PurchaseTransaction: Schema.Codec<GoogleCloudRecommendationengineV1beta1PurchaseTransaction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taxes: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
     currencyCode: Schema.optional(Schema.String),
@@ -537,7 +537,7 @@ export interface GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   listId?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductEventDetail: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductEventDetail> =
+export const GoogleCloudRecommendationengineV1beta1ProductEventDetail: Schema.Codec<GoogleCloudRecommendationengineV1beta1ProductEventDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productDetails: Schema.optional(
       Schema.Array(GoogleCloudRecommendationengineV1beta1ProductDetail),
@@ -577,7 +577,7 @@ export interface GoogleCloudRecommendationengineV1beta1UserEvent {
   eventTime?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1UserEvent: Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEvent> =
+export const GoogleCloudRecommendationengineV1beta1UserEvent: Schema.Codec<GoogleCloudRecommendationengineV1beta1UserEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventSource: Schema.optional(Schema.String),
     userInfo: Schema.optional(GoogleCloudRecommendationengineV1beta1UserInfo),
@@ -598,7 +598,7 @@ export interface GoogleCloudRecommendationengineV1beta1UserEventInlineSource {
   userEvents?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1UserEvent>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1UserEventInlineSource: Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEventInlineSource> =
+export const GoogleCloudRecommendationengineV1beta1UserEventInlineSource: Schema.Codec<GoogleCloudRecommendationengineV1beta1UserEventInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userEvents: Schema.optional(
       Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
@@ -612,7 +612,7 @@ export interface GoogleCloudRecommendationengineV1beta1CatalogInlineSource {
   catalogItems?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItem>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1CatalogInlineSource: Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogInlineSource> =
+export const GoogleCloudRecommendationengineV1beta1CatalogInlineSource: Schema.Codec<GoogleCloudRecommendationengineV1beta1CatalogInlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     catalogItems: Schema.optional(
       Schema.Array(GoogleCloudRecommendationengineV1beta1CatalogItem),
@@ -628,7 +628,7 @@ export interface GoogleCloudRecommendationengineV1beta1GcsSource {
   jsonSchema?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1GcsSource: Schema.Schema<GoogleCloudRecommendationengineV1beta1GcsSource> =
+export const GoogleCloudRecommendationengineV1beta1GcsSource: Schema.Codec<GoogleCloudRecommendationengineV1beta1GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputUris: Schema.optional(Schema.Array(Schema.String)),
     jsonSchema: Schema.optional(Schema.String),
@@ -649,7 +649,7 @@ export interface GoogleCloudRecommendationengineV1beta1BigQuerySource {
   dataSchema?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1BigQuerySource: Schema.Schema<GoogleCloudRecommendationengineV1beta1BigQuerySource> =
+export const GoogleCloudRecommendationengineV1beta1BigQuerySource: Schema.Codec<GoogleCloudRecommendationengineV1beta1BigQuerySource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String),
     gcsStagingDir: Schema.optional(Schema.String),
@@ -671,7 +671,7 @@ export interface GoogleCloudRecommendationengineV1beta1InputConfig {
   bigQuerySource?: GoogleCloudRecommendationengineV1beta1BigQuerySource;
 }
 
-export const GoogleCloudRecommendationengineV1beta1InputConfig: Schema.Schema<GoogleCloudRecommendationengineV1beta1InputConfig> =
+export const GoogleCloudRecommendationengineV1beta1InputConfig: Schema.Codec<GoogleCloudRecommendationengineV1beta1InputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userEventInlineSource: Schema.optional(
       GoogleCloudRecommendationengineV1beta1UserEventInlineSource,
@@ -696,7 +696,7 @@ export interface GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
   inputConfig?: GoogleCloudRecommendationengineV1beta1InputConfig;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest> =
+export const GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest: Schema.Codec<GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     errorsConfig: Schema.optional(
@@ -711,7 +711,7 @@ export const GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest: Sche
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -725,7 +725,7 @@ export interface GoogleApiHttpBody {
   contentType?: string;
 }
 
-export const GoogleApiHttpBody: Schema.Schema<GoogleApiHttpBody> =
+export const GoogleApiHttpBody: Schema.Codec<GoogleApiHttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     extensions: Schema.optional(
@@ -741,7 +741,7 @@ export interface GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRespons
   errorsConfig?: GoogleCloudRecommendationengineV1beta1ImportErrorsConfig;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse> =
+export const GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorsConfig: Schema.optional(
@@ -769,7 +769,7 @@ export interface GoogleCloudRecommendationengineV1beta1PredictRequest {
   dryRun?: boolean;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PredictRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictRequest> =
+export const GoogleCloudRecommendationengineV1beta1PredictRequest: Schema.Codec<GoogleCloudRecommendationengineV1beta1PredictRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -787,7 +787,7 @@ export interface GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse {
   rejoinedUserEventsCount?: string;
 }
 
-export const GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse: Schema.Schema<GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse> =
+export const GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse: Schema.Codec<GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rejoinedUserEventsCount: Schema.optional(Schema.String),
   }).annotate({
@@ -801,7 +801,7 @@ export interface GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ListUserEventsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ListUserEventsResponse> =
+export const GoogleCloudRecommendationengineV1beta1ListUserEventsResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1ListUserEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userEvents: Schema.optional(
       Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
@@ -818,7 +818,7 @@ export interface GoogleCloudRecommendationengineV1beta1PredictResponsePrediction
   id?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult: Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult> =
+export const GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult: Schema.Codec<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemMetadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     id: Schema.optional(Schema.String),
@@ -842,7 +842,7 @@ export interface GoogleCloudRecommendationengineV1beta1PredictResponse {
   recommendationToken?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PredictResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictResponse> =
+export const GoogleCloudRecommendationengineV1beta1PredictResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1PredictResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
@@ -865,7 +865,7 @@ export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
   purgedEventsCount?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse> =
+export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userEventsSample: Schema.optional(
       Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
@@ -882,7 +882,7 @@ export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata: Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata> =
+export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata: Schema.Codec<GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -895,7 +895,7 @@ export interface GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyReg
   predictionApiKeyRegistration?: GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration;
 }
 
-export const GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest> =
+export const GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest: Schema.Codec<GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     predictionApiKeyRegistration: Schema.optional(
       GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration,
@@ -907,7 +907,7 @@ export const GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistr
 
 export interface GoogleCloudRecommendationengineV1alphaTuningResponse {}
 
-export const GoogleCloudRecommendationengineV1alphaTuningResponse: Schema.Schema<GoogleCloudRecommendationengineV1alphaTuningResponse> =
+export const GoogleCloudRecommendationengineV1alphaTuningResponse: Schema.Codec<GoogleCloudRecommendationengineV1alphaTuningResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecommendationengineV1alphaTuningResponse",
   });
@@ -919,7 +919,7 @@ export interface GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse 
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse> =
+export const GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     catalogItems: Schema.optional(
       Schema.Array(GoogleCloudRecommendationengineV1beta1CatalogItem),
@@ -937,7 +937,7 @@ export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
   filter?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest> =
+export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest: Schema.Codec<GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
@@ -952,7 +952,7 @@ export interface GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ListCatalogsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ListCatalogsResponse> =
+export const GoogleCloudRecommendationengineV1beta1ListCatalogsResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1ListCatalogsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     catalogs: Schema.optional(
       Schema.Array(GoogleCloudRecommendationengineV1beta1Catalog),
@@ -969,7 +969,7 @@ export interface GoogleCloudRecommendationengineV1beta1UserEventImportSummary {
   unjoinedEventsCount?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1UserEventImportSummary: Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEventImportSummary> =
+export const GoogleCloudRecommendationengineV1beta1UserEventImportSummary: Schema.Codec<GoogleCloudRecommendationengineV1beta1UserEventImportSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     joinedEventsCount: Schema.optional(Schema.String),
     unjoinedEventsCount: Schema.optional(Schema.String),
@@ -986,7 +986,7 @@ export interface GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse 
   importSummary?: GoogleCloudRecommendationengineV1beta1UserEventImportSummary;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse> =
+export const GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
     errorsConfig: Schema.optional(
@@ -1005,7 +1005,7 @@ export interface GoogleCloudRecommendationengineV1alphaTuningMetadata {
   recommendationModel?: string;
 }
 
-export const GoogleCloudRecommendationengineV1alphaTuningMetadata: Schema.Schema<GoogleCloudRecommendationengineV1alphaTuningMetadata> =
+export const GoogleCloudRecommendationengineV1alphaTuningMetadata: Schema.Codec<GoogleCloudRecommendationengineV1alphaTuningMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendationModel: Schema.optional(Schema.String),
   }).annotate({
@@ -1023,7 +1023,7 @@ export interface GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest
   errorsConfig?: GoogleCloudRecommendationengineV1beta1ImportErrorsConfig;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest> =
+export const GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest: Schema.Codec<GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputConfig: Schema.optional(
       GoogleCloudRecommendationengineV1beta1InputConfig,
@@ -1043,7 +1043,7 @@ export interface GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse 
   rejoinedUserEventsCount?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse> =
+export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse: Schema.Codec<GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rejoinedUserEventsCount: Schema.optional(Schema.String),
   }).annotate({
@@ -1060,7 +1060,7 @@ export interface GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
     | (string & {});
 }
 
-export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest> =
+export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest: Schema.Codec<GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userEventRejoinScope: Schema.optional(Schema.String),
   }).annotate({
@@ -1069,7 +1069,7 @@ export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest: Sche
 
 export interface GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata {}
 
-export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata: Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata> =
+export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata: Schema.Codec<GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata",
@@ -1148,7 +1148,7 @@ export const PatchProjectsLocationsCatalogsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCatalogsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCatalogsRequest>;
 
 export type PatchProjectsLocationsCatalogsResponse =
   GoogleCloudRecommendationengineV1beta1Catalog;
@@ -1191,7 +1191,7 @@ export const ListProjectsLocationsCatalogsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/catalogs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCatalogsRequest>;
 
 export type ListProjectsLocationsCatalogsResponse =
   GoogleCloudRecommendationengineV1beta1ListCatalogsResponse;
@@ -1239,7 +1239,7 @@ export const ImportProjectsLocationsCatalogsCatalogItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsCatalogsCatalogItemsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsCatalogsCatalogItemsRequest>;
 
 export type ImportProjectsLocationsCatalogsCatalogItemsResponse =
   GoogleLongrunningOperation;
@@ -1276,7 +1276,7 @@ export const GetProjectsLocationsCatalogsCatalogItemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCatalogsCatalogItemsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCatalogsCatalogItemsRequest>;
 
 export type GetProjectsLocationsCatalogsCatalogItemsResponse =
   GoogleCloudRecommendationengineV1beta1CatalogItem;
@@ -1319,7 +1319,7 @@ export const PatchProjectsLocationsCatalogsCatalogItemsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCatalogsCatalogItemsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCatalogsCatalogItemsRequest>;
 
 export type PatchProjectsLocationsCatalogsCatalogItemsResponse =
   GoogleCloudRecommendationengineV1beta1CatalogItem;
@@ -1365,7 +1365,7 @@ export const ListProjectsLocationsCatalogsCatalogItemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/catalogItems" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsCatalogItemsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCatalogsCatalogItemsRequest>;
 
 export type ListProjectsLocationsCatalogsCatalogItemsResponse =
   GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse;
@@ -1413,7 +1413,7 @@ export const CreateProjectsLocationsCatalogsCatalogItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCatalogsCatalogItemsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCatalogsCatalogItemsRequest>;
 
 export type CreateProjectsLocationsCatalogsCatalogItemsResponse =
   GoogleCloudRecommendationengineV1beta1CatalogItem;
@@ -1450,7 +1450,7 @@ export const DeleteProjectsLocationsCatalogsCatalogItemsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCatalogsCatalogItemsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCatalogsCatalogItemsRequest>;
 
 export type DeleteProjectsLocationsCatalogsCatalogItemsResponse =
   GoogleProtobufEmpty;
@@ -1487,7 +1487,7 @@ export const GetProjectsLocationsCatalogsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCatalogsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCatalogsOperationsRequest>;
 
 export type GetProjectsLocationsCatalogsOperationsResponse =
   GoogleLongrunningOperation;
@@ -1536,7 +1536,7 @@ export const ListProjectsLocationsCatalogsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCatalogsOperationsRequest>;
 
 export type ListProjectsLocationsCatalogsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1575,7 +1575,7 @@ export const GetProjectsLocationsCatalogsEventStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCatalogsEventStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCatalogsEventStoresOperationsRequest>;
 
 export type GetProjectsLocationsCatalogsEventStoresOperationsResponse =
   GoogleLongrunningOperation;
@@ -1624,7 +1624,7 @@ export const ListProjectsLocationsCatalogsEventStoresOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsEventStoresOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCatalogsEventStoresOperationsRequest>;
 
 export type ListProjectsLocationsCatalogsEventStoresOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1672,7 +1672,7 @@ export const ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
       path: "v1beta1/{+parent}/predictionApiKeyRegistrations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
 
 export type ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResponse =
   GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse;
@@ -1680,7 +1680,9 @@ export const ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse;
 
 export type ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the registered apiKeys for use with predict method. */
 export const listProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.PaginatedOperationMethod<
@@ -1720,7 +1722,7 @@ export const CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
 
 export type CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResponse =
   GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration;
@@ -1728,7 +1730,11 @@ export const CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration;
 
 export type CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Register an API key for use with predict method. */
 export const createProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.OperationMethod<
@@ -1755,7 +1761,7 @@ export const DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
 
 export type DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResponse =
   GoogleProtobufEmpty;
@@ -1763,7 +1769,11 @@ export const DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unregister an apiKey from using for predict method. */
 export const deleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.OperationMethod<
@@ -1794,7 +1804,7 @@ export const PredictProjectsLocationsCatalogsEventStoresPlacementsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:predict", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PredictProjectsLocationsCatalogsEventStoresPlacementsRequest>;
+  ) as unknown as Schema.Codec<PredictProjectsLocationsCatalogsEventStoresPlacementsRequest>;
 
 export type PredictProjectsLocationsCatalogsEventStoresPlacementsResponse =
   GoogleCloudRecommendationengineV1beta1PredictResponse;
@@ -1840,7 +1850,7 @@ export const ListProjectsLocationsCatalogsEventStoresUserEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/userEvents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsEventStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
 export type ListProjectsLocationsCatalogsEventStoresUserEventsResponse =
   GoogleCloudRecommendationengineV1beta1ListUserEventsResponse;
@@ -1888,7 +1898,7 @@ export const WriteProjectsLocationsCatalogsEventStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WriteProjectsLocationsCatalogsEventStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<WriteProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
 export type WriteProjectsLocationsCatalogsEventStoresUserEventsResponse =
   GoogleCloudRecommendationengineV1beta1UserEvent;
@@ -1934,7 +1944,7 @@ export const CollectProjectsLocationsCatalogsEventStoresUserEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/userEvents:collect" }),
     svc,
-  ) as unknown as Schema.Schema<CollectProjectsLocationsCatalogsEventStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<CollectProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
 export type CollectProjectsLocationsCatalogsEventStoresUserEventsResponse =
   GoogleApiHttpBody;
@@ -1978,7 +1988,7 @@ export const PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
 export type PurgeProjectsLocationsCatalogsEventStoresUserEventsResponse =
   GoogleLongrunningOperation;
@@ -2024,7 +2034,7 @@ export const ImportProjectsLocationsCatalogsEventStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsCatalogsEventStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
 export type ImportProjectsLocationsCatalogsEventStoresUserEventsResponse =
   GoogleLongrunningOperation;
@@ -2070,7 +2080,7 @@ export const RejoinProjectsLocationsCatalogsEventStoresUserEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RejoinProjectsLocationsCatalogsEventStoresUserEventsRequest>;
+  ) as unknown as Schema.Codec<RejoinProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
 export type RejoinProjectsLocationsCatalogsEventStoresUserEventsResponse =
   GoogleLongrunningOperation;

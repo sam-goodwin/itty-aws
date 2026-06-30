@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentMemoryTreeInput {
+  application_id: string;
+  project_id: string;
+}
 export const AgentMemoryTreeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   application_id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -11,14 +15,15 @@ export const AgentMemoryTreeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/projects/{project_id}/agent_applications/{application_id}/memory/tree/",
   }),
-);
-export type AgentMemoryTreeInput = typeof AgentMemoryTreeInput.Type;
+) as unknown as Schema.Codec<AgentMemoryTreeInput>;
 
 // Output Schema
+export interface AgentMemoryTreeOutput {
+  root: Record<string, unknown>;
+}
 export const AgentMemoryTreeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   root: Schema.Record(Schema.String, Schema.Unknown),
-});
-export type AgentMemoryTreeOutput = typeof AgentMemoryTreeOutput.Type;
+}) as unknown as Schema.Codec<AgentMemoryTreeOutput>;
 
 // The operation
 /**

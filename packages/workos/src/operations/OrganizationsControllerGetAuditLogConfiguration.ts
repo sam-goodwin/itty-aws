@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationsControllerGetAuditLogConfigurationInput {
+  id: string;
+}
 export const OrganizationsControllerGetAuditLogConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,28 @@ export const OrganizationsControllerGetAuditLogConfigurationInput =
       method: "GET",
       path: "/organizations/{id}/audit_log_configuration",
     }),
-  );
-export type OrganizationsControllerGetAuditLogConfigurationInput =
-  typeof OrganizationsControllerGetAuditLogConfigurationInput.Type;
+  ) as unknown as Schema.Codec<OrganizationsControllerGetAuditLogConfigurationInput>;
 
 // Output Schema
+export interface OrganizationsControllerGetAuditLogConfigurationOutput {
+  organization_id?: string;
+  retention_period_in_days?: number;
+  state?: "active" | "inactive" | "disabled";
+  log_stream?: {
+    id: string;
+    type:
+      | "AzureSentinel"
+      | "Datadog"
+      | "GenericHttps"
+      | "GoogleCloudStorage"
+      | "S3"
+      | "Snowflake"
+      | "Splunk";
+    state: "active" | "inactive" | "error" | "invalid";
+    last_synced_at: string | null;
+    created_at: string;
+  };
+}
 export const OrganizationsControllerGetAuditLogConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
@@ -39,9 +59,7 @@ export const OrganizationsControllerGetAuditLogConfigurationOutput =
         created_at: Schema.String,
       }),
     ),
-  });
-export type OrganizationsControllerGetAuditLogConfigurationOutput =
-  typeof OrganizationsControllerGetAuditLogConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsControllerGetAuditLogConfigurationOutput>;
 
 // The operation
 /**

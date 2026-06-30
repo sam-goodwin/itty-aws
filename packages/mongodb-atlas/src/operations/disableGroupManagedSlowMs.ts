@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DisableGroupManagedSlowMsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DisableGroupManagedSlowMsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const DisableGroupManagedSlowMsInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/managedSlowMs/disable",
     }),
-  );
-export type DisableGroupManagedSlowMsInput =
-  typeof DisableGroupManagedSlowMsInput.Type;
+  ) as unknown as Schema.Codec<DisableGroupManagedSlowMsInput>;
 
 // Output Schema
+export type DisableGroupManagedSlowMsOutput = void;
 export const DisableGroupManagedSlowMsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisableGroupManagedSlowMsOutput =
-  typeof DisableGroupManagedSlowMsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisableGroupManagedSlowMsOutput>;
 
 // The operation
 /**

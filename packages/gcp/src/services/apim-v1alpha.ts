@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface HttpOperationHeader {
     | (string & {});
 }
 
-export const HttpOperationHeader: Schema.Schema<HttpOperationHeader> =
+export const HttpOperationHeader: Schema.Codec<HttpOperationHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface HttpOperationHttpResponse {
   responseCodes?: Record<string, string>;
 }
 
-export const HttpOperationHttpResponse: Schema.Schema<HttpOperationHttpResponse> =
+export const HttpOperationHttpResponse: Schema.Codec<HttpOperationHttpResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headers: Schema.optional(Schema.Record(Schema.String, HttpOperationHeader)),
     responseCodes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -81,7 +81,7 @@ export interface HttpOperationHttpRequest {
   headers?: Record<string, HttpOperationHeader>;
 }
 
-export const HttpOperationHttpRequest: Schema.Schema<HttpOperationHttpRequest> =
+export const HttpOperationHttpRequest: Schema.Codec<HttpOperationHttpRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headers: Schema.optional(Schema.Record(Schema.String, HttpOperationHeader)),
   }).annotate({ identifier: "HttpOperationHttpRequest" });
@@ -93,7 +93,7 @@ export interface TagAction {
   tag?: string;
 }
 
-export const TagAction: Schema.Schema<TagAction> =
+export const TagAction: Schema.Codec<TagAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.String),
@@ -106,7 +106,7 @@ export interface GclbObservationSourcePscNetworkConfig {
   subnetwork?: string;
 }
 
-export const GclbObservationSourcePscNetworkConfig: Schema.Schema<GclbObservationSourcePscNetworkConfig> =
+export const GclbObservationSourcePscNetworkConfig: Schema.Codec<GclbObservationSourcePscNetworkConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     subnetwork: Schema.optional(Schema.String),
@@ -119,7 +119,7 @@ export interface ListApiObservationTagsResponse {
   apiObservationTags?: ReadonlyArray<string>;
 }
 
-export const ListApiObservationTagsResponse: Schema.Schema<ListApiObservationTagsResponse> =
+export const ListApiObservationTagsResponse: Schema.Codec<ListApiObservationTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     apiObservationTags: Schema.optional(Schema.Array(Schema.String)),
@@ -130,7 +130,7 @@ export interface GclbObservationSource {
   pscNetworkConfigs?: ReadonlyArray<GclbObservationSourcePscNetworkConfig>;
 }
 
-export const GclbObservationSource: Schema.Schema<GclbObservationSource> =
+export const GclbObservationSource: Schema.Codec<GclbObservationSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pscNetworkConfigs: Schema.optional(
       Schema.Array(GclbObservationSourcePscNetworkConfig),
@@ -151,7 +151,7 @@ export interface HttpOperationPathParam {
     | (string & {});
 }
 
-export const HttpOperationPathParam: Schema.Schema<HttpOperationPathParam> =
+export const HttpOperationPathParam: Schema.Codec<HttpOperationPathParam> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(Schema.Number),
     dataType: Schema.optional(Schema.String),
@@ -173,7 +173,7 @@ export interface HttpOperationQueryParam {
     | (string & {});
 }
 
-export const HttpOperationQueryParam: Schema.Schema<HttpOperationQueryParam> =
+export const HttpOperationQueryParam: Schema.Codec<HttpOperationQueryParam> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -206,7 +206,7 @@ export interface HttpOperation {
   request?: HttpOperationHttpRequest;
 }
 
-export const HttpOperation: Schema.Schema<HttpOperation> =
+export const HttpOperation: Schema.Codec<HttpOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pathParams: Schema.optional(Schema.Array(HttpOperationPathParam)),
     queryParams: Schema.optional(
@@ -231,7 +231,7 @@ export interface ApiOperation {
   count?: string;
 }
 
-export const ApiOperation: Schema.Schema<ApiOperation> =
+export const ApiOperation: Schema.Codec<ApiOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstSeenTime: Schema.optional(Schema.String),
     lastSeenTime: Schema.optional(Schema.String),
@@ -257,7 +257,7 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -291,7 +291,7 @@ export interface ApiObservation {
   tags?: ReadonlyArray<string>;
 }
 
-export const ApiObservation: Schema.Schema<ApiObservation> =
+export const ApiObservation: Schema.Codec<ApiObservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     style: Schema.optional(Schema.String),
     apiOperationCount: Schema.optional(Schema.String),
@@ -310,14 +310,14 @@ export interface BatchEditTagsApiObservationsResponse {
   apiObservations?: ReadonlyArray<ApiObservation>;
 }
 
-export const BatchEditTagsApiObservationsResponse: Schema.Schema<BatchEditTagsApiObservationsResponse> =
+export const BatchEditTagsApiObservationsResponse: Schema.Codec<BatchEditTagsApiObservationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiObservations: Schema.optional(Schema.Array(ApiObservation)),
   }).annotate({ identifier: "BatchEditTagsApiObservationsResponse" });
 
 export interface DisableObservationJobRequest {}
 
-export const DisableObservationJobRequest: Schema.Schema<DisableObservationJobRequest> =
+export const DisableObservationJobRequest: Schema.Codec<DisableObservationJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableObservationJobRequest",
   });
@@ -329,7 +329,7 @@ export interface ListApiOperationsResponse {
   apiOperations?: ReadonlyArray<ApiOperation>;
 }
 
-export const ListApiOperationsResponse: Schema.Schema<ListApiOperationsResponse> =
+export const ListApiOperationsResponse: Schema.Codec<ListApiOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     apiOperations: Schema.optional(Schema.Array(ApiOperation)),
@@ -348,7 +348,7 @@ export interface Entitlement {
   billingProjectNumber?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
+export const Entitlement: Schema.Codec<Entitlement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     apiObservationEntitled: Schema.optional(Schema.Boolean),
@@ -379,7 +379,7 @@ export interface ObservationJob {
     | (string & {});
 }
 
-export const ObservationJob: Schema.Schema<ObservationJob> =
+export const ObservationJob: Schema.Codec<ObservationJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -397,7 +397,7 @@ export interface ListObservationJobsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListObservationJobsResponse: Schema.Schema<ListObservationJobsResponse> =
+export const ListObservationJobsResponse: Schema.Codec<ListObservationJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     observationJobs: Schema.optional(Schema.Array(ObservationJob)),
@@ -417,7 +417,7 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -445,7 +445,7 @@ export interface ObservationSource {
     | (string & {});
 }
 
-export const ObservationSource: Schema.Schema<ObservationSource> =
+export const ObservationSource: Schema.Codec<ObservationSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -463,7 +463,7 @@ export interface ListObservationSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListObservationSourcesResponse: Schema.Schema<ListObservationSourcesResponse> =
+export const ListObservationSourcesResponse: Schema.Codec<ListObservationSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     observationSources: Schema.optional(Schema.Array(ObservationSource)),
@@ -477,7 +477,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -496,7 +496,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -507,14 +507,14 @@ export const Operation: Schema.Schema<Operation> =
 
 export interface EnableObservationJobRequest {}
 
-export const EnableObservationJobRequest: Schema.Schema<EnableObservationJobRequest> =
+export const EnableObservationJobRequest: Schema.Codec<EnableObservationJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableObservationJobRequest",
   });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -528,7 +528,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -542,7 +542,7 @@ export interface EditTagsApiObservationsRequest {
   apiObservationId?: string;
 }
 
-export const EditTagsApiObservationsRequest: Schema.Schema<EditTagsApiObservationsRequest> =
+export const EditTagsApiObservationsRequest: Schema.Codec<EditTagsApiObservationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagActions: Schema.optional(Schema.Array(TagAction)),
     apiObservationId: Schema.optional(Schema.String),
@@ -553,14 +553,14 @@ export interface BatchEditTagsApiObservationsRequest {
   requests?: ReadonlyArray<EditTagsApiObservationsRequest>;
 }
 
-export const BatchEditTagsApiObservationsRequest: Schema.Schema<BatchEditTagsApiObservationsRequest> =
+export const BatchEditTagsApiObservationsRequest: Schema.Codec<BatchEditTagsApiObservationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(EditTagsApiObservationsRequest)),
   }).annotate({ identifier: "BatchEditTagsApiObservationsRequest" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -572,7 +572,7 @@ export interface ListApiObservationsResponse {
   apiObservations?: ReadonlyArray<ApiObservation>;
 }
 
-export const ListApiObservationsResponse: Schema.Schema<ListApiObservationsResponse> =
+export const ListApiObservationsResponse: Schema.Codec<ListApiObservationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     apiObservations: Schema.optional(Schema.Array(ApiObservation)),
@@ -649,7 +649,7 @@ export const ListApiObservationTagsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}:listApiObservationTags" }),
     svc,
-  ) as unknown as Schema.Schema<ListApiObservationTagsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListApiObservationTagsProjectsLocationsRequest>;
 
 export type ListApiObservationTagsProjectsLocationsResponse =
   ListApiObservationTagsResponse;
@@ -688,7 +688,7 @@ export const GetEntitlementProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEntitlementProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetEntitlementProjectsLocationsRequest>;
 
 export type GetEntitlementProjectsLocationsResponse = Entitlement;
 export const GetEntitlementProjectsLocationsResponse =
@@ -736,7 +736,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -771,7 +771,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -816,7 +816,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -854,7 +854,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -891,7 +891,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -927,7 +927,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -963,7 +963,7 @@ export const GetProjectsLocationsObservationSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsObservationSourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsObservationSourcesRequest>;
 
 export type GetProjectsLocationsObservationSourcesResponse = ObservationSource;
 export const GetProjectsLocationsObservationSourcesResponse =
@@ -1003,7 +1003,7 @@ export const ListProjectsLocationsObservationSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/observationSources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsObservationSourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsObservationSourcesRequest>;
 
 export type ListProjectsLocationsObservationSourcesResponse =
   ListObservationSourcesResponse;
@@ -1057,7 +1057,7 @@ export const CreateProjectsLocationsObservationSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsObservationSourcesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsObservationSourcesRequest>;
 
 export type CreateProjectsLocationsObservationSourcesResponse = Operation;
 export const CreateProjectsLocationsObservationSourcesResponse =
@@ -1093,7 +1093,7 @@ export const DeleteProjectsLocationsObservationSourcesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsObservationSourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsObservationSourcesRequest>;
 
 export type DeleteProjectsLocationsObservationSourcesResponse = Operation;
 export const DeleteProjectsLocationsObservationSourcesResponse =
@@ -1132,7 +1132,7 @@ export const EnableProjectsLocationsObservationJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:enable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EnableProjectsLocationsObservationJobsRequest>;
+  ) as unknown as Schema.Codec<EnableProjectsLocationsObservationJobsRequest>;
 
 export type EnableProjectsLocationsObservationJobsResponse = Operation;
 export const EnableProjectsLocationsObservationJobsResponse =
@@ -1174,7 +1174,7 @@ export const ListProjectsLocationsObservationJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/observationJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsObservationJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsObservationJobsRequest>;
 
 export type ListProjectsLocationsObservationJobsResponse =
   ListObservationJobsResponse;
@@ -1228,7 +1228,7 @@ export const CreateProjectsLocationsObservationJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsObservationJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsObservationJobsRequest>;
 
 export type CreateProjectsLocationsObservationJobsResponse = Operation;
 export const CreateProjectsLocationsObservationJobsResponse =
@@ -1264,7 +1264,7 @@ export const DeleteProjectsLocationsObservationJobsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsObservationJobsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsObservationJobsRequest>;
 
 export type DeleteProjectsLocationsObservationJobsResponse = Operation;
 export const DeleteProjectsLocationsObservationJobsResponse =
@@ -1303,7 +1303,7 @@ export const DisableProjectsLocationsObservationJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:disable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DisableProjectsLocationsObservationJobsRequest>;
+  ) as unknown as Schema.Codec<DisableProjectsLocationsObservationJobsRequest>;
 
 export type DisableProjectsLocationsObservationJobsResponse = Operation;
 export const DisableProjectsLocationsObservationJobsResponse =
@@ -1339,7 +1339,7 @@ export const GetProjectsLocationsObservationJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsObservationJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsObservationJobsRequest>;
 
 export type GetProjectsLocationsObservationJobsResponse = ObservationJob;
 export const GetProjectsLocationsObservationJobsResponse =
@@ -1373,7 +1373,7 @@ export const GetProjectsLocationsObservationJobsApiObservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsObservationJobsApiObservationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsObservationJobsApiObservationsRequest>;
 
 export type GetProjectsLocationsObservationJobsApiObservationsResponse =
   ApiObservation;
@@ -1414,7 +1414,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/apiObservations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsObservationJobsApiObservationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsObservationJobsApiObservationsRequest>;
 
 export type ListProjectsLocationsObservationJobsApiObservationsResponse =
   ListApiObservationsResponse;
@@ -1462,7 +1462,7 @@ export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>;
+  ) as unknown as Schema.Codec<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>;
 
 export type BatchEditTagsProjectsLocationsObservationJobsApiObservationsResponse =
   BatchEditTagsApiObservationsResponse;
@@ -1499,7 +1499,7 @@ export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequ
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
 export type GetProjectsLocationsObservationJobsApiObservationsApiOperationsResponse =
   ApiOperation;
@@ -1507,7 +1507,9 @@ export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsResp
   /*@__PURE__*/ /*#__PURE__*/ ApiOperation;
 
 export type GetProjectsLocationsObservationJobsApiObservationsApiOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetApiOperation retrieves a single ApiOperation by name. */
 export const getProjectsLocationsObservationJobsApiObservationsApiOperations: API.OperationMethod<
@@ -1539,7 +1541,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsReq
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/apiOperations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
 export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsResponse =
   ListApiOperationsResponse;
@@ -1547,7 +1549,9 @@ export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ ListApiOperationsResponse;
 
 export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListApiOperations gets all ApiOperations for a given project and location and ObservationJob and ApiObservation. */
 export const listProjectsLocationsObservationJobsApiObservationsApiOperations: API.PaginatedOperationMethod<

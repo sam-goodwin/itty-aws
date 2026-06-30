@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface AddOrgUserRoleInput {
+  orgId: string;
+  userId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const AddOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const AddOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/api/atlas/v2/orgs/{orgId}/users/{userId}:addRole",
   }),
-);
-export type AddOrgUserRoleInput = typeof AddOrgUserRoleInput.Type;
+) as unknown as Schema.Codec<AddOrgUserRoleInput>;
 
 // Output Schema
-export const AddOrgUserRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddOrgUserRoleOutput = typeof AddOrgUserRoleOutput.Type;
+export type AddOrgUserRoleOutput = void;
+export const AddOrgUserRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddOrgUserRoleOutput>;
 
 // The operation
 /**

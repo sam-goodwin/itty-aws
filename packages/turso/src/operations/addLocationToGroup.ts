@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AddLocationToGroupInput {
+  organizationSlug: string;
+  groupName: string;
+  location: string;
+}
 export const AddLocationToGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,19 @@ export const AddLocationToGroupInput =
       method: "POST",
       path: "/v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}",
     }),
-  );
-export type AddLocationToGroupInput = typeof AddLocationToGroupInput.Type;
+  ) as unknown as Schema.Codec<AddLocationToGroupInput>;
 
 // Output Schema
+export interface AddLocationToGroupOutput {
+  group?: {
+    name?: string;
+    version?: string;
+    uuid?: string;
+    locations?: string[];
+    primary?: string;
+    delete_protection?: boolean;
+  };
+}
 export const AddLocationToGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group: Schema.optional(
@@ -30,8 +44,7 @@ export const AddLocationToGroupOutput =
         delete_protection: Schema.optional(Schema.Boolean),
       }),
     ),
-  });
-export type AddLocationToGroupOutput = typeof AddLocationToGroupOutput.Type;
+  }) as unknown as Schema.Codec<AddLocationToGroupOutput>;
 
 // The operation
 /**

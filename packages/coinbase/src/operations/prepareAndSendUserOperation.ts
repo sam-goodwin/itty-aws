@@ -3,6 +3,28 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PrepareAndSendUserOperationInput {
+  address: string;
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  paymasterUrl?: string;
+  paymasterContext?: Record<string, unknown>;
+}
 export const PrepareAndSendUserOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -35,11 +57,45 @@ export const PrepareAndSendUserOperationInput =
       method: "POST",
       path: "/v2/evm/smart-accounts/{address}/user-operations/prepare-and-send",
     }),
-  );
-export type PrepareAndSendUserOperationInput =
-  typeof PrepareAndSendUserOperationInput.Type;
+  ) as unknown as Schema.Codec<PrepareAndSendUserOperationInput>;
 
 // Output Schema
+export interface PrepareAndSendUserOperationOutput {
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  userOpHash: string;
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  status:
+    | "pending"
+    | "signed"
+    | "broadcast"
+    | "complete"
+    | "dropped"
+    | "failed";
+  transactionHash?: string;
+  receipts?: {
+    revert?: { data: string; message: string };
+    transactionHash?: string;
+    blockHash?: string;
+    blockNumber?: number;
+    gasUsed?: string;
+  }[];
+  expiresAt?: string;
+}
 export const PrepareAndSendUserOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals([
@@ -89,9 +145,7 @@ export const PrepareAndSendUserOperationOutput =
       ),
     ),
     expiresAt: Schema.optional(Schema.String),
-  });
-export type PrepareAndSendUserOperationOutput =
-  typeof PrepareAndSendUserOperationOutput.Type;
+  }) as unknown as Schema.Codec<PrepareAndSendUserOperationOutput>;
 
 // The operation
 /**

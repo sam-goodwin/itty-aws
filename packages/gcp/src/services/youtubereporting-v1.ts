@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -39,7 +39,7 @@ export interface GdataContentTypeInfo {
   fromUrlPath?: string;
 }
 
-export const GdataContentTypeInfo: Schema.Schema<GdataContentTypeInfo> =
+export const GdataContentTypeInfo: Schema.Codec<GdataContentTypeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fromBytes: Schema.optional(Schema.String),
     fusionIdDetectionMetadata: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface GdataObjectId {
   generation?: string;
 }
 
-export const GdataObjectId: Schema.Schema<GdataObjectId> =
+export const GdataObjectId: Schema.Codec<GdataObjectId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectName: Schema.optional(Schema.String),
     bucketName: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface GdataBlobstore2Info {
   blobId?: string;
 }
 
-export const GdataBlobstore2Info: Schema.Schema<GdataBlobstore2Info> =
+export const GdataBlobstore2Info: Schema.Codec<GdataBlobstore2Info> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readToken: Schema.optional(Schema.String),
     uploadMetadataContainer: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface GdataCompositeMedia {
   cosmoBinaryReference?: string;
 }
 
-export const GdataCompositeMedia: Schema.Schema<GdataCompositeMedia> =
+export const GdataCompositeMedia: Schema.Codec<GdataCompositeMedia> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     crc32cHash: Schema.optional(Schema.Number),
     sha1Hash: Schema.optional(Schema.String),
@@ -149,7 +149,7 @@ export interface GdataDiffUploadRequest {
   checksumsInfo?: GdataCompositeMedia;
 }
 
-export const GdataDiffUploadRequest: Schema.Schema<GdataDiffUploadRequest> =
+export const GdataDiffUploadRequest: Schema.Codec<GdataDiffUploadRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectInfo: Schema.optional(GdataCompositeMedia),
@@ -163,7 +163,7 @@ export interface GdataDiffVersionResponse {
   objectSizeBytes?: string;
 }
 
-export const GdataDiffVersionResponse: Schema.Schema<GdataDiffVersionResponse> =
+export const GdataDiffVersionResponse: Schema.Codec<GdataDiffVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectSizeBytes: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export interface GdataDownloadParameters {
   ignoreRange?: boolean;
 }
 
-export const GdataDownloadParameters: Schema.Schema<GdataDownloadParameters> =
+export const GdataDownloadParameters: Schema.Codec<GdataDownloadParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowGzipCompression: Schema.optional(Schema.Boolean),
     ignoreRange: Schema.optional(Schema.Boolean),
@@ -195,7 +195,7 @@ export interface GdataDiffChecksumsResponse {
   objectLocation?: GdataCompositeMedia;
 }
 
-export const GdataDiffChecksumsResponse: Schema.Schema<GdataDiffChecksumsResponse> =
+export const GdataDiffChecksumsResponse: Schema.Codec<GdataDiffChecksumsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     checksumsLocation: Schema.optional(GdataCompositeMedia),
     objectSizeBytes: Schema.optional(Schema.String),
@@ -211,7 +211,7 @@ export interface GdataDiffUploadResponse {
   originalObject?: GdataCompositeMedia;
 }
 
-export const GdataDiffUploadResponse: Schema.Schema<GdataDiffUploadResponse> =
+export const GdataDiffUploadResponse: Schema.Codec<GdataDiffUploadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     originalObject: Schema.optional(GdataCompositeMedia),
@@ -222,7 +222,7 @@ export interface GdataDiffDownloadResponse {
   objectLocation?: GdataCompositeMedia;
 }
 
-export const GdataDiffDownloadResponse: Schema.Schema<GdataDiffDownloadResponse> =
+export const GdataDiffDownloadResponse: Schema.Codec<GdataDiffDownloadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectLocation: Schema.optional(GdataCompositeMedia),
   }).annotate({ identifier: "GdataDiffDownloadResponse" });
@@ -306,7 +306,7 @@ export interface GdataMedia {
   md5Hash?: string;
 }
 
-export const GdataMedia: Schema.Schema<GdataMedia> =
+export const GdataMedia: Schema.Codec<GdataMedia> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     length: Schema.optional(Schema.String),
     filename: Schema.optional(Schema.String),
@@ -356,15 +356,16 @@ export interface Job {
   id?: string;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Job: Schema.Codec<Job> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     expireTime: Schema.optional(Schema.String),
     reportTypeId: Schema.optional(Schema.String),
     systemManaged: Schema.optional(Schema.Boolean),
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Job" });
+  },
+).annotate({ identifier: "Job" });
 
 export interface ListJobsResponse {
   /** The list of jobs. */
@@ -373,7 +374,7 @@ export interface ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListJobsResponse: Schema.Schema<ListJobsResponse> =
+export const ListJobsResponse: Schema.Codec<ListJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(Job)),
     nextPageToken: Schema.optional(Schema.String),
@@ -396,7 +397,7 @@ export interface Report {
   downloadUrl?: string;
 }
 
-export const Report: Schema.Schema<Report> =
+export const Report: Schema.Codec<Report> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     jobExpireTime: Schema.optional(Schema.String),
@@ -418,7 +419,7 @@ export interface ReportType {
   name?: string;
 }
 
-export const ReportType: Schema.Schema<ReportType> =
+export const ReportType: Schema.Codec<ReportType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     systemManaged: Schema.optional(Schema.Boolean),
@@ -433,7 +434,7 @@ export interface ListReportTypesResponse {
   nextPageToken?: string;
 }
 
-export const ListReportTypesResponse: Schema.Schema<ListReportTypesResponse> =
+export const ListReportTypesResponse: Schema.Codec<ListReportTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportTypes: Schema.optional(Schema.Array(ReportType)),
     nextPageToken: Schema.optional(Schema.String),
@@ -441,7 +442,7 @@ export const ListReportTypesResponse: Schema.Schema<ListReportTypesResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -453,7 +454,7 @@ export interface ListReportsResponse {
   nextPageToken?: string;
 }
 
-export const ListReportsResponse: Schema.Schema<ListReportsResponse> =
+export const ListReportsResponse: Schema.Codec<ListReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(Report)),
     nextPageToken: Schema.optional(Schema.String),
@@ -528,7 +529,7 @@ export const DeleteJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/jobs/{jobId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteJobsRequest>;
+) as unknown as Schema.Codec<DeleteJobsRequest>;
 
 export type DeleteJobsResponse = Empty;
 export const DeleteJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -567,7 +568,7 @@ export const GetJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/jobs/{jobId}" }),
   svc,
-) as unknown as Schema.Schema<GetJobsRequest>;
+) as unknown as Schema.Codec<GetJobsRequest>;
 
 export type GetJobsResponse = Job;
 export const GetJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
@@ -601,7 +602,7 @@ export const CreateJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/jobs", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateJobsRequest>;
+) as unknown as Schema.Codec<CreateJobsRequest>;
 
 export type CreateJobsResponse = Job;
 export const CreateJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
@@ -648,7 +649,7 @@ export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/jobs" }),
   svc,
-) as unknown as Schema.Schema<ListJobsRequest>;
+) as unknown as Schema.Codec<ListJobsRequest>;
 
 export type ListJobsResponse_Op = ListJobsResponse;
 export const ListJobsResponse_Op = /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
@@ -709,7 +710,7 @@ export const ListJobsReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/jobs/{jobId}/reports" }),
   svc,
-) as unknown as Schema.Schema<ListJobsReportsRequest>;
+) as unknown as Schema.Codec<ListJobsReportsRequest>;
 
 export type ListJobsReportsResponse = ListReportsResponse;
 export const ListJobsReportsResponse =
@@ -751,7 +752,7 @@ export const GetJobsReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/jobs/{jobId}/reports/{reportId}" }),
   svc,
-) as unknown as Schema.Schema<GetJobsReportsRequest>;
+) as unknown as Schema.Codec<GetJobsReportsRequest>;
 
 export type GetJobsReportsResponse = Report;
 export const GetJobsReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
@@ -780,7 +781,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/media/{+resourceName}" }),
   svc,
-) as unknown as Schema.Schema<DownloadMediaRequest>;
+) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = GdataMedia;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ GdataMedia;
@@ -824,7 +825,7 @@ export const ListReportTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/reportTypes" }),
   svc,
-) as unknown as Schema.Schema<ListReportTypesRequest>;
+) as unknown as Schema.Codec<ListReportTypesRequest>;
 
 export type ListReportTypesResponse_Op = ListReportTypesResponse;
 export const ListReportTypesResponse_Op =

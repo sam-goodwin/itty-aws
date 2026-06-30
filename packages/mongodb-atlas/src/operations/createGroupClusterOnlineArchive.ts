@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupClusterOnlineArchiveInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupClusterOnlineArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateGroupClusterOnlineArchiveInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives",
     }),
-  );
-export type CreateGroupClusterOnlineArchiveInput =
-  typeof CreateGroupClusterOnlineArchiveInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupClusterOnlineArchiveInput>;
 
 // Output Schema
+export type CreateGroupClusterOnlineArchiveOutput = void;
 export const CreateGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupClusterOnlineArchiveOutput =
-  typeof CreateGroupClusterOnlineArchiveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterOnlineArchiveOutput>;
 
 // The operation
 /**

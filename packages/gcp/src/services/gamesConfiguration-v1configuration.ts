@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface LocalizedString {
   value?: string;
 }
 
-export const LocalizedString: Schema.Schema<LocalizedString> =
+export const LocalizedString: Schema.Codec<LocalizedString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export interface LocalizedStringBundle {
   translations?: ReadonlyArray<LocalizedString>;
 }
 
-export const LocalizedStringBundle: Schema.Schema<LocalizedStringBundle> =
+export const LocalizedStringBundle: Schema.Codec<LocalizedStringBundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     translations: Schema.optional(Schema.Array(LocalizedString)),
@@ -66,7 +66,7 @@ export interface AchievementConfigurationDetail {
   sortRank?: number;
 }
 
-export const AchievementConfigurationDetail: Schema.Schema<AchievementConfigurationDetail> =
+export const AchievementConfigurationDetail: Schema.Codec<AchievementConfigurationDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(LocalizedStringBundle),
@@ -103,7 +103,7 @@ export interface AchievementConfiguration {
   published?: AchievementConfigurationDetail;
 }
 
-export const AchievementConfiguration: Schema.Schema<AchievementConfiguration> =
+export const AchievementConfiguration: Schema.Codec<AchievementConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -124,7 +124,7 @@ export interface AchievementConfigurationListResponse {
   nextPageToken?: string;
 }
 
-export const AchievementConfigurationListResponse: Schema.Schema<AchievementConfigurationListResponse> =
+export const AchievementConfigurationListResponse: Schema.Codec<AchievementConfigurationListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(AchievementConfiguration)),
@@ -146,7 +146,7 @@ export interface GamesNumberAffixConfiguration {
   other?: LocalizedStringBundle;
 }
 
-export const GamesNumberAffixConfiguration: Schema.Schema<GamesNumberAffixConfiguration> =
+export const GamesNumberAffixConfiguration: Schema.Codec<GamesNumberAffixConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zero: Schema.optional(LocalizedStringBundle),
     one: Schema.optional(LocalizedStringBundle),
@@ -172,7 +172,7 @@ export interface GamesNumberFormatConfiguration {
   currencyCode?: string;
 }
 
-export const GamesNumberFormatConfiguration: Schema.Schema<GamesNumberFormatConfiguration> =
+export const GamesNumberFormatConfiguration: Schema.Codec<GamesNumberFormatConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numberFormatType: Schema.optional(Schema.String),
     suffix: Schema.optional(GamesNumberAffixConfiguration),
@@ -193,7 +193,7 @@ export interface LeaderboardConfigurationDetail {
   scoreFormat?: GamesNumberFormatConfiguration;
 }
 
-export const LeaderboardConfigurationDetail: Schema.Schema<LeaderboardConfigurationDetail> =
+export const LeaderboardConfigurationDetail: Schema.Codec<LeaderboardConfigurationDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(LocalizedStringBundle),
@@ -224,7 +224,7 @@ export interface LeaderboardConfiguration {
   published?: LeaderboardConfigurationDetail;
 }
 
-export const LeaderboardConfiguration: Schema.Schema<LeaderboardConfiguration> =
+export const LeaderboardConfiguration: Schema.Codec<LeaderboardConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -245,7 +245,7 @@ export interface LeaderboardConfigurationListResponse {
   nextPageToken?: string;
 }
 
-export const LeaderboardConfigurationListResponse: Schema.Schema<LeaderboardConfigurationListResponse> =
+export const LeaderboardConfigurationListResponse: Schema.Codec<LeaderboardConfigurationListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(LeaderboardConfiguration)),
@@ -320,13 +320,13 @@ export const DeleteAchievementConfigurationsRequest =
       path: "games/v1configuration/achievements/{achievementId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAchievementConfigurationsRequest>;
+  ) as unknown as Schema.Codec<DeleteAchievementConfigurationsRequest>;
 
 export interface DeleteAchievementConfigurationsResponse {}
-export const DeleteAchievementConfigurationsResponse: Schema.Schema<DeleteAchievementConfigurationsResponse> =
+export const DeleteAchievementConfigurationsResponse: Schema.Codec<DeleteAchievementConfigurationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAchievementConfigurationsResponse>;
+  ) as any as Schema.Codec<DeleteAchievementConfigurationsResponse>;
 
 export type DeleteAchievementConfigurationsError =
   | DefaultErrors
@@ -361,7 +361,7 @@ export const GetAchievementConfigurationsRequest =
       path: "games/v1configuration/achievements/{achievementId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAchievementConfigurationsRequest>;
+  ) as unknown as Schema.Codec<GetAchievementConfigurationsRequest>;
 
 export type GetAchievementConfigurationsResponse = AchievementConfiguration;
 export const GetAchievementConfigurationsResponse =
@@ -402,7 +402,7 @@ export const InsertAchievementConfigurationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAchievementConfigurationsRequest>;
+  ) as unknown as Schema.Codec<InsertAchievementConfigurationsRequest>;
 
 export type InsertAchievementConfigurationsResponse = AchievementConfiguration;
 export const InsertAchievementConfigurationsResponse =
@@ -447,7 +447,7 @@ export const ListAchievementConfigurationsRequest =
       path: "games/v1configuration/applications/{applicationId}/achievements",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAchievementConfigurationsRequest>;
+  ) as unknown as Schema.Codec<ListAchievementConfigurationsRequest>;
 
 export type ListAchievementConfigurationsResponse =
   AchievementConfigurationListResponse;
@@ -494,7 +494,7 @@ export const UpdateAchievementConfigurationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAchievementConfigurationsRequest>;
+  ) as unknown as Schema.Codec<UpdateAchievementConfigurationsRequest>;
 
 export type UpdateAchievementConfigurationsResponse = AchievementConfiguration;
 export const UpdateAchievementConfigurationsResponse =
@@ -533,13 +533,13 @@ export const DeleteLeaderboardConfigurationsRequest =
       path: "games/v1configuration/leaderboards/{leaderboardId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLeaderboardConfigurationsRequest>;
+  ) as unknown as Schema.Codec<DeleteLeaderboardConfigurationsRequest>;
 
 export interface DeleteLeaderboardConfigurationsResponse {}
-export const DeleteLeaderboardConfigurationsResponse: Schema.Schema<DeleteLeaderboardConfigurationsResponse> =
+export const DeleteLeaderboardConfigurationsResponse: Schema.Codec<DeleteLeaderboardConfigurationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteLeaderboardConfigurationsResponse>;
+  ) as any as Schema.Codec<DeleteLeaderboardConfigurationsResponse>;
 
 export type DeleteLeaderboardConfigurationsError =
   | DefaultErrors
@@ -574,7 +574,7 @@ export const GetLeaderboardConfigurationsRequest =
       path: "games/v1configuration/leaderboards/{leaderboardId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetLeaderboardConfigurationsRequest>;
+  ) as unknown as Schema.Codec<GetLeaderboardConfigurationsRequest>;
 
 export type GetLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const GetLeaderboardConfigurationsResponse =
@@ -615,7 +615,7 @@ export const InsertLeaderboardConfigurationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertLeaderboardConfigurationsRequest>;
+  ) as unknown as Schema.Codec<InsertLeaderboardConfigurationsRequest>;
 
 export type InsertLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const InsertLeaderboardConfigurationsResponse =
@@ -660,7 +660,7 @@ export const ListLeaderboardConfigurationsRequest =
       path: "games/v1configuration/applications/{applicationId}/leaderboards",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListLeaderboardConfigurationsRequest>;
+  ) as unknown as Schema.Codec<ListLeaderboardConfigurationsRequest>;
 
 export type ListLeaderboardConfigurationsResponse =
   LeaderboardConfigurationListResponse;
@@ -707,7 +707,7 @@ export const UpdateLeaderboardConfigurationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateLeaderboardConfigurationsRequest>;
+  ) as unknown as Schema.Codec<UpdateLeaderboardConfigurationsRequest>;
 
 export type UpdateLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const UpdateLeaderboardConfigurationsResponse =

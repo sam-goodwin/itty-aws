@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExperimentsMetricsRecalculationRetrieveInput {
+  id: number;
+  project_id: string;
+  recalculation_id: string;
+}
 export const ExperimentsMetricsRecalculationRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -14,11 +19,39 @@ export const ExperimentsMetricsRecalculationRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/{recalculation_id}/",
     }),
-  );
-export type ExperimentsMetricsRecalculationRetrieveInput =
-  typeof ExperimentsMetricsRecalculationRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsMetricsRecalculationRetrieveInput>;
 
 // Output Schema
+export interface ExperimentsMetricsRecalculationRetrieveOutput {
+  id: string;
+  experiment_id: number;
+  status: "pending" | "in_progress" | "completed" | "failed";
+  total_metrics: number;
+  completed_metrics: number;
+  failed_metrics: number;
+  metric_errors: unknown;
+  trigger:
+    | "manual"
+    | "cold_run"
+    | "stale_refresh"
+    | "auto_refresh"
+    | "config_change"
+    | "experiment_launch"
+    | "experiment_stop"
+    | "experiment_update";
+  created_at: string;
+  started_at: string | null;
+  completed_at: string | null;
+  query_to: string | null;
+  is_existing: boolean;
+  result_source: "recalculation" | "timeseries_fallback";
+  results: {
+    metric_uuid: string;
+    status: "pending" | "completed" | "failed";
+    result: unknown;
+    error_message: string | null;
+  }[];
+}
 export const ExperimentsMetricsRecalculationRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -52,9 +85,7 @@ export const ExperimentsMetricsRecalculationRetrieveOutput =
         error_message: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ExperimentsMetricsRecalculationRetrieveOutput =
-  typeof ExperimentsMetricsRecalculationRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsMetricsRecalculationRetrieveOutput>;
 
 // The operation
 /**

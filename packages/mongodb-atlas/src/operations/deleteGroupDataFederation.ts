@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupDataFederationInput {
+  groupId: string;
+  tenantName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupDataFederationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteGroupDataFederationInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}",
     }),
-  );
-export type DeleteGroupDataFederationInput =
-  typeof DeleteGroupDataFederationInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupDataFederationInput>;
 
 // Output Schema
+export type DeleteGroupDataFederationOutput = void;
 export const DeleteGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupDataFederationOutput =
-  typeof DeleteGroupDataFederationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDataFederationOutput>;
 
 // The operation
 /**

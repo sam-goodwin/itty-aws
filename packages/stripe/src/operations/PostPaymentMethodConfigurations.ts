@@ -3,6 +3,87 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostPaymentMethodConfigurationsInput {
+  acss_debit?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  affirm?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  afterpay_clearpay?: {
+    display_preference?: { preference?: "none" | "off" | "on" };
+  };
+  alipay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  alma?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  amazon_pay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  apple_pay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  apple_pay_later?: {
+    display_preference?: { preference?: "none" | "off" | "on" };
+  };
+  au_becs_debit?: {
+    display_preference?: { preference?: "none" | "off" | "on" };
+  };
+  bacs_debit?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  bancontact?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  billie?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  bizum?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  blik?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  boleto?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  card?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  cartes_bancaires?: {
+    display_preference?: { preference?: "none" | "off" | "on" };
+  };
+  cashapp?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  crypto?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  customer_balance?: {
+    display_preference?: { preference?: "none" | "off" | "on" };
+  };
+  eps?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  expand?: string[];
+  fpx?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  fr_meal_voucher_conecs?: {
+    display_preference?: { preference?: "none" | "off" | "on" };
+  };
+  giropay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  google_pay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  grabpay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  ideal?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  jcb?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  kakao_pay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  klarna?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  konbini?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  kr_card?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  link?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  mb_way?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  mobilepay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  multibanco?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  name?: string;
+  naver_pay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  nz_bank_account?: {
+    display_preference?: { preference?: "none" | "off" | "on" };
+  };
+  oxxo?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  p24?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  parent?: string;
+  pay_by_bank?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  payco?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  paynow?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  paypal?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  payto?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  pix?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  promptpay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  revolut_pay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  samsung_pay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  satispay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  scalapay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  sepa_debit?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  sofort?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  sunbit?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  swish?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  twint?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  upi?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  us_bank_account?: {
+    display_preference?: { preference?: "none" | "off" | "on" };
+  };
+  wechat_pay?: { display_preference?: { preference?: "none" | "off" | "on" } };
+  zip?: { display_preference?: { preference?: "none" | "off" | "on" } };
+}
 export const PostPaymentMethodConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
@@ -554,11 +635,483 @@ export const PostPaymentMethodConfigurationsInput =
       path: "/v1/payment_method_configurations",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostPaymentMethodConfigurationsInput =
-  typeof PostPaymentMethodConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<PostPaymentMethodConfigurationsInput>;
 
 // Output Schema
+export interface PostPaymentMethodConfigurationsOutput {
+  acss_debit?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  active: boolean;
+  affirm?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  afterpay_clearpay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  alipay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  alma?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  amazon_pay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  apple_pay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  application: string | null;
+  au_becs_debit?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  bacs_debit?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  bancontact?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  billie?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  bizum?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  blik?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  boleto?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  card?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  cartes_bancaires?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  cashapp?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  crypto?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  customer_balance?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  eps?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  fpx?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  giropay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  google_pay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  grabpay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  id: string;
+  ideal?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  is_default: boolean;
+  jcb?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  kakao_pay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  klarna?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  konbini?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  kr_card?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  link?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  livemode: boolean;
+  mb_way?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  mobilepay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  multibanco?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  name: string;
+  naver_pay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  nz_bank_account?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  object: "payment_method_configuration";
+  oxxo?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  p24?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  parent: string | null;
+  pay_by_bank?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  payco?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  paynow?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  paypal?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  payto?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  pix?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  promptpay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  revolut_pay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  samsung_pay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  satispay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  scalapay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  sepa_debit?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  sofort?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  sunbit?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  swish?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  twint?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  upi?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  us_bank_account?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  wechat_pay?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+  zip?: {
+    available: boolean;
+    display_preference: {
+      overridable: boolean | null;
+      preference: "none" | "off" | "on";
+      value: "off" | "on";
+    };
+  };
+}
 export const PostPaymentMethodConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
@@ -1149,9 +1702,7 @@ export const PostPaymentMethodConfigurationsOutput =
         }),
       }),
     ),
-  });
-export type PostPaymentMethodConfigurationsOutput =
-  typeof PostPaymentMethodConfigurationsOutput.Type;
+  }) as unknown as Schema.Codec<PostPaymentMethodConfigurationsOutput>;
 
 // The operation
 /**

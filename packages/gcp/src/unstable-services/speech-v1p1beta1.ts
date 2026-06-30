@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface TranscriptOutputConfig {
   gcsUri?: string;
 }
 
-export const TranscriptOutputConfig: Schema.Schema<TranscriptOutputConfig> =
+export const TranscriptOutputConfig: Schema.Codec<TranscriptOutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "TranscriptOutputConfig" });
@@ -47,7 +47,7 @@ export interface WordInfo {
   speakerTag?: number;
 }
 
-export const WordInfo: Schema.Schema<WordInfo> =
+export const WordInfo: Schema.Codec<WordInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     word: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface SpeechRecognitionAlternative {
   confidence?: number;
 }
 
-export const SpeechRecognitionAlternative: Schema.Schema<SpeechRecognitionAlternative> =
+export const SpeechRecognitionAlternative: Schema.Codec<SpeechRecognitionAlternative> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transcript: Schema.optional(Schema.String),
     words: Schema.optional(Schema.Array(WordInfo)),
@@ -84,7 +84,7 @@ export interface SpeechRecognitionResult {
   languageCode?: string;
 }
 
-export const SpeechRecognitionResult: Schema.Schema<SpeechRecognitionResult> =
+export const SpeechRecognitionResult: Schema.Codec<SpeechRecognitionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alternatives: Schema.optional(Schema.Array(SpeechRecognitionAlternative)),
     resultEndTime: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export interface SpeechAdaptationInfo {
   timeoutMessage?: string;
 }
 
-export const SpeechAdaptationInfo: Schema.Schema<SpeechAdaptationInfo> =
+export const SpeechAdaptationInfo: Schema.Codec<SpeechAdaptationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adaptationTimeout: Schema.optional(Schema.Boolean),
     timeoutMessage: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface RecognitionMetadata {
   originalMimeType?: string;
 }
 
-export const RecognitionMetadata: Schema.Schema<RecognitionMetadata> =
+export const RecognitionMetadata: Schema.Codec<RecognitionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalMediaType: Schema.optional(Schema.String),
     recordingDeviceName: Schema.optional(Schema.String),
@@ -173,7 +173,7 @@ export interface RecognitionAudio {
   uri?: string;
 }
 
-export const RecognitionAudio: Schema.Schema<RecognitionAudio> =
+export const RecognitionAudio: Schema.Codec<RecognitionAudio> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -186,7 +186,7 @@ export interface SpeechContext {
   boost?: number;
 }
 
-export const SpeechContext: Schema.Schema<SpeechContext> =
+export const SpeechContext: Schema.Codec<SpeechContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phrases: Schema.optional(Schema.Array(Schema.String)),
     boost: Schema.optional(Schema.Number),
@@ -203,7 +203,7 @@ export interface SpeakerDiarizationConfig {
   speakerTag?: number;
 }
 
-export const SpeakerDiarizationConfig: Schema.Schema<SpeakerDiarizationConfig> =
+export const SpeakerDiarizationConfig: Schema.Codec<SpeakerDiarizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableSpeakerDiarization: Schema.optional(Schema.Boolean),
     minSpeakerCount: Schema.optional(Schema.Number),
@@ -220,7 +220,7 @@ export interface Entry {
   caseSensitive?: boolean;
 }
 
-export const Entry: Schema.Schema<Entry> =
+export const Entry: Schema.Codec<Entry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     search: Schema.optional(Schema.String),
     replace: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export interface TranscriptNormalization {
   entries?: ReadonlyArray<Entry>;
 }
 
-export const TranscriptNormalization: Schema.Schema<TranscriptNormalization> =
+export const TranscriptNormalization: Schema.Codec<TranscriptNormalization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(Entry)),
   }).annotate({ identifier: "TranscriptNormalization" });
@@ -242,7 +242,7 @@ export interface ABNFGrammar {
   abnfStrings?: ReadonlyArray<string>;
 }
 
-export const ABNFGrammar: Schema.Schema<ABNFGrammar> =
+export const ABNFGrammar: Schema.Codec<ABNFGrammar> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     abnfStrings: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ABNFGrammar" });
@@ -254,7 +254,7 @@ export interface Phrase {
   value?: string;
 }
 
-export const Phrase: Schema.Schema<Phrase> =
+export const Phrase: Schema.Codec<Phrase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boost: Schema.optional(Schema.Number),
     value: Schema.optional(Schema.String),
@@ -289,7 +289,7 @@ export interface PhraseSet {
   phrases?: ReadonlyArray<Phrase>;
 }
 
-export const PhraseSet: Schema.Schema<PhraseSet> =
+export const PhraseSet: Schema.Codec<PhraseSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boost: Schema.optional(Schema.Number),
     kmsKeyName: Schema.optional(Schema.String),
@@ -311,7 +311,7 @@ export interface ClassItem {
   value?: string;
 }
 
-export const ClassItem: Schema.Schema<ClassItem> =
+export const ClassItem: Schema.Codec<ClassItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClassItem" });
@@ -345,7 +345,7 @@ export interface CustomClass {
   expireTime?: string;
 }
 
-export const CustomClass: Schema.Schema<CustomClass> =
+export const CustomClass: Schema.Codec<CustomClass> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -373,7 +373,7 @@ export interface SpeechAdaptation {
   customClasses?: ReadonlyArray<CustomClass>;
 }
 
-export const SpeechAdaptation: Schema.Schema<SpeechAdaptation> =
+export const SpeechAdaptation: Schema.Codec<SpeechAdaptation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phraseSetReferences: Schema.optional(Schema.Array(Schema.String)),
     abnfGrammar: Schema.optional(ABNFGrammar),
@@ -440,7 +440,7 @@ export interface RecognitionConfig {
   metadata?: RecognitionMetadata;
 }
 
-export const RecognitionConfig: Schema.Schema<RecognitionConfig> =
+export const RecognitionConfig: Schema.Codec<RecognitionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speechContexts: Schema.optional(Schema.Array(SpeechContext)),
     audioChannelCount: Schema.optional(Schema.Number),
@@ -475,7 +475,7 @@ export interface LongRunningRecognizeRequest {
   config?: RecognitionConfig;
 }
 
-export const LongRunningRecognizeRequest: Schema.Schema<LongRunningRecognizeRequest> =
+export const LongRunningRecognizeRequest: Schema.Codec<LongRunningRecognizeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audio: Schema.optional(RecognitionAudio),
     outputConfig: Schema.optional(TranscriptOutputConfig),
@@ -491,7 +491,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -513,7 +513,7 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -531,7 +531,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -553,7 +553,7 @@ export interface LongRunningRecognizeResponse {
   requestId?: string;
 }
 
-export const LongRunningRecognizeResponse: Schema.Schema<LongRunningRecognizeResponse> =
+export const LongRunningRecognizeResponse: Schema.Codec<LongRunningRecognizeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalBilledTime: Schema.optional(Schema.String),
     outputConfig: Schema.optional(TranscriptOutputConfig),
@@ -570,7 +570,7 @@ export interface ListCustomClassesResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomClassesResponse: Schema.Schema<ListCustomClassesResponse> =
+export const ListCustomClassesResponse: Schema.Codec<ListCustomClassesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customClasses: Schema.optional(Schema.Array(CustomClass)),
     nextPageToken: Schema.optional(Schema.String),
@@ -589,7 +589,7 @@ export interface LongRunningRecognizeMetadata {
   uri?: string;
 }
 
-export const LongRunningRecognizeMetadata: Schema.Schema<LongRunningRecognizeMetadata> =
+export const LongRunningRecognizeMetadata: Schema.Codec<LongRunningRecognizeMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     progressPercent: Schema.optional(Schema.Number),
     startTime: Schema.optional(Schema.String),
@@ -605,7 +605,7 @@ export interface RecognizeRequest {
   audio?: RecognitionAudio;
 }
 
-export const RecognizeRequest: Schema.Schema<RecognizeRequest> =
+export const RecognizeRequest: Schema.Codec<RecognizeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(RecognitionConfig),
     audio: Schema.optional(RecognitionAudio),
@@ -618,7 +618,7 @@ export interface ListPhraseSetResponse {
   phraseSets?: ReadonlyArray<PhraseSet>;
 }
 
-export const ListPhraseSetResponse: Schema.Schema<ListPhraseSetResponse> =
+export const ListPhraseSetResponse: Schema.Codec<ListPhraseSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     phraseSets: Schema.optional(Schema.Array(PhraseSet)),
@@ -631,7 +631,7 @@ export interface CreatePhraseSetRequest {
   phraseSet?: PhraseSet;
 }
 
-export const CreatePhraseSetRequest: Schema.Schema<CreatePhraseSetRequest> =
+export const CreatePhraseSetRequest: Schema.Codec<CreatePhraseSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phraseSetId: Schema.optional(Schema.String),
     phraseSet: Schema.optional(PhraseSet),
@@ -639,7 +639,7 @@ export const CreatePhraseSetRequest: Schema.Schema<CreatePhraseSetRequest> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -651,7 +651,7 @@ export interface CreateCustomClassRequest {
   customClassId?: string;
 }
 
-export const CreateCustomClassRequest: Schema.Schema<CreateCustomClassRequest> =
+export const CreateCustomClassRequest: Schema.Codec<CreateCustomClassRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customClass: Schema.optional(CustomClass),
     customClassId: Schema.optional(Schema.String),
@@ -670,7 +670,7 @@ export interface RecognizeResponse {
   results?: ReadonlyArray<SpeechRecognitionResult>;
 }
 
-export const RecognizeResponse: Schema.Schema<RecognizeResponse> =
+export const RecognizeResponse: Schema.Codec<RecognizeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usingLegacyModels: Schema.optional(Schema.Boolean),
     requestId: Schema.optional(Schema.String),
@@ -757,7 +757,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1p1beta1/operations" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
@@ -791,7 +791,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1p1beta1/operations/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -828,7 +828,7 @@ export const CreateProjectsLocationsPhraseSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsPhraseSetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsPhraseSetsRequest>;
 
 export type CreateProjectsLocationsPhraseSetsResponse = PhraseSet;
 export const CreateProjectsLocationsPhraseSetsResponse =
@@ -864,7 +864,7 @@ export const GetProjectsLocationsPhraseSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1p1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsPhraseSetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsPhraseSetsRequest>;
 
 export type GetProjectsLocationsPhraseSetsResponse = PhraseSet;
 export const GetProjectsLocationsPhraseSetsResponse =
@@ -904,7 +904,7 @@ export const ListProjectsLocationsPhraseSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1p1beta1/{+parent}/phraseSets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsPhraseSetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsPhraseSetsRequest>;
 
 export type ListProjectsLocationsPhraseSetsResponse = ListPhraseSetResponse;
 export const ListProjectsLocationsPhraseSetsResponse =
@@ -948,7 +948,7 @@ export const PatchProjectsLocationsPhraseSetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1p1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsPhraseSetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsPhraseSetsRequest>;
 
 export type PatchProjectsLocationsPhraseSetsResponse = PhraseSet;
 export const PatchProjectsLocationsPhraseSetsResponse =
@@ -984,7 +984,7 @@ export const DeleteProjectsLocationsPhraseSetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1p1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsPhraseSetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsPhraseSetsRequest>;
 
 export type DeleteProjectsLocationsPhraseSetsResponse = Empty;
 export const DeleteProjectsLocationsPhraseSetsResponse =
@@ -1020,7 +1020,7 @@ export const DeleteProjectsLocationsCustomClassesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1p1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCustomClassesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCustomClassesRequest>;
 
 export type DeleteProjectsLocationsCustomClassesResponse = Empty;
 export const DeleteProjectsLocationsCustomClassesResponse =
@@ -1056,7 +1056,7 @@ export const GetProjectsLocationsCustomClassesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1p1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCustomClassesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCustomClassesRequest>;
 
 export type GetProjectsLocationsCustomClassesResponse = CustomClass;
 export const GetProjectsLocationsCustomClassesResponse =
@@ -1096,7 +1096,7 @@ export const ListProjectsLocationsCustomClassesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1p1beta1/{+parent}/customClasses" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCustomClassesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCustomClassesRequest>;
 
 export type ListProjectsLocationsCustomClassesResponse =
   ListCustomClassesResponse;
@@ -1141,7 +1141,7 @@ export const PatchProjectsLocationsCustomClassesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1p1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCustomClassesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCustomClassesRequest>;
 
 export type PatchProjectsLocationsCustomClassesResponse = CustomClass;
 export const PatchProjectsLocationsCustomClassesResponse =
@@ -1184,7 +1184,7 @@ export const CreateProjectsLocationsCustomClassesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCustomClassesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCustomClassesRequest>;
 
 export type CreateProjectsLocationsCustomClassesResponse = CustomClass;
 export const CreateProjectsLocationsCustomClassesResponse =
@@ -1221,7 +1221,7 @@ export const RecognizeSpeechRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1p1beta1/speech:recognize", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<RecognizeSpeechRequest>;
+) as unknown as Schema.Codec<RecognizeSpeechRequest>;
 
 export type RecognizeSpeechResponse = RecognizeResponse;
 export const RecognizeSpeechResponse =
@@ -1261,7 +1261,7 @@ export const LongrunningrecognizeSpeechRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<LongrunningrecognizeSpeechRequest>;
+  ) as unknown as Schema.Codec<LongrunningrecognizeSpeechRequest>;
 
 export type LongrunningrecognizeSpeechResponse = Operation;
 export const LongrunningrecognizeSpeechResponse =

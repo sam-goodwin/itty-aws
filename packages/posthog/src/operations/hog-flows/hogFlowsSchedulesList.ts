@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFlowsSchedulesListInput {
+  id: string;
+  project_id: string;
+}
 export const HogFlowsSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,20 @@ export const HogFlowsSchedulesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_flows/{id}/schedules/",
     }),
-  );
-export type HogFlowsSchedulesListInput = typeof HogFlowsSchedulesListInput.Type;
+  ) as unknown as Schema.Codec<HogFlowsSchedulesListInput>;
 
 // Output Schema
+export type HogFlowsSchedulesListOutput = {
+  id?: string;
+  rrule?: string;
+  starts_at?: string;
+  timezone?: string;
+  variables?: unknown;
+  status?: "active" | "paused" | "completed";
+  next_run_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}[];
 export const HogFlowsSchedulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -32,9 +46,7 @@ export const HogFlowsSchedulesListOutput =
       created_at: Schema.optional(Schema.String),
       updated_at: Schema.optional(Schema.String),
     }),
-  );
-export type HogFlowsSchedulesListOutput =
-  typeof HogFlowsSchedulesListOutput.Type;
+  ) as unknown as Schema.Codec<HogFlowsSchedulesListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupDataFederationLimitsInput {
+  groupId: string;
+  tenantName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListGroupDataFederationLimitsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const ListGroupDataFederationLimitsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits",
     }),
-  );
-export type ListGroupDataFederationLimitsInput =
-  typeof ListGroupDataFederationLimitsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupDataFederationLimitsInput>;
 
 // Output Schema
+export type ListGroupDataFederationLimitsOutput = void;
 export const ListGroupDataFederationLimitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupDataFederationLimitsOutput =
-  typeof ListGroupDataFederationLimitsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDataFederationLimitsOutput>;
 
 // The operation
 /**

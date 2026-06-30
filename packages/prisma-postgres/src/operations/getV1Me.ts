@@ -3,12 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV1MeInput {}
 export const GetV1MeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v1/me" }),
-);
-export type GetV1MeInput = typeof GetV1MeInput.Type;
+) as unknown as Schema.Codec<GetV1MeInput>;
 
 // Output Schema
+export interface GetV1MeOutput {
+  data: {
+    user: { id: string; email: string; name: string | null } | null;
+    workspace: { id: string; name: string } | null;
+    credential: {
+      type: "oauth" | "service_token" | "management_token";
+      id: string | null;
+      name: string | null;
+    };
+  };
+}
 export const GetV1MeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Struct({
     user: Schema.NullOr(
@@ -30,8 +41,7 @@ export const GetV1MeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.NullOr(Schema.String),
     }),
   }),
-});
-export type GetV1MeOutput = typeof GetV1MeOutput.Type;
+}) as unknown as Schema.Codec<GetV1MeOutput>;
 
 // The operation
 /**

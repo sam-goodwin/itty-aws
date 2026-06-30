@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerEmailVerification0Input {
+  id: string;
+  code?: string;
+}
 export const UserlandUsersControllerEmailVerification0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,27 @@ export const UserlandUsersControllerEmailVerification0Input =
       method: "POST",
       path: "/user_management/users/{id}/email_verification/confirm",
     }),
-  );
-export type UserlandUsersControllerEmailVerification0Input =
-  typeof UserlandUsersControllerEmailVerification0Input.Type;
+  ) as unknown as Schema.Codec<UserlandUsersControllerEmailVerification0Input>;
 
 // Output Schema
+export interface UserlandUsersControllerEmailVerification0Output {
+  user?: {
+    object?: string;
+    id?: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    profile_picture_url?: string | null;
+    email?: string;
+    email_verified?: boolean;
+    external_id?: string | null;
+    metadata?: Record<string, string>;
+    last_sign_in_at?: string | null;
+    locale?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  };
+}
 export const UserlandUsersControllerEmailVerification0Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(
@@ -38,9 +58,7 @@ export const UserlandUsersControllerEmailVerification0Output =
         updated_at: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UserlandUsersControllerEmailVerification0Output =
-  typeof UserlandUsersControllerEmailVerification0Output.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerEmailVerification0Output>;
 
 // The operation
 /**

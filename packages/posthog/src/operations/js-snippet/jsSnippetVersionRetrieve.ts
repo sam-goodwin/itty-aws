@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface JsSnippetVersionRetrieveInput {
+  project_id: string;
+}
 export const JsSnippetVersionRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,15 @@ export const JsSnippetVersionRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/js-snippet/version/",
     }),
-  );
-export type JsSnippetVersionRetrieveInput =
-  typeof JsSnippetVersionRetrieveInput.Type;
+  ) as unknown as Schema.Codec<JsSnippetVersionRetrieveInput>;
 
 // Output Schema
+export type JsSnippetVersionRetrieveOutput = Record<string, unknown>;
 export const JsSnippetVersionRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type JsSnippetVersionRetrieveOutput =
-  typeof JsSnippetVersionRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<JsSnippetVersionRetrieveOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -24,14 +24,14 @@ const svc = T.Service({
 
 export interface ReenableDatabaseInstanceRequest {}
 
-export const ReenableDatabaseInstanceRequest: Schema.Schema<ReenableDatabaseInstanceRequest> =
+export const ReenableDatabaseInstanceRequest: Schema.Codec<ReenableDatabaseInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReenableDatabaseInstanceRequest",
   });
 
 export interface UndeleteDatabaseInstanceRequest {}
 
-export const UndeleteDatabaseInstanceRequest: Schema.Schema<UndeleteDatabaseInstanceRequest> =
+export const UndeleteDatabaseInstanceRequest: Schema.Codec<UndeleteDatabaseInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteDatabaseInstanceRequest",
   });
@@ -58,7 +58,7 @@ export interface DatabaseInstance {
   databaseUrl?: string;
 }
 
-export const DatabaseInstance: Schema.Schema<DatabaseInstance> =
+export const DatabaseInstance: Schema.Codec<DatabaseInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface ListDatabaseInstancesResponse {
   instances?: ReadonlyArray<DatabaseInstance>;
 }
 
-export const ListDatabaseInstancesResponse: Schema.Schema<ListDatabaseInstancesResponse> =
+export const ListDatabaseInstancesResponse: Schema.Codec<ListDatabaseInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     instances: Schema.optional(Schema.Array(DatabaseInstance)),
@@ -82,7 +82,7 @@ export const ListDatabaseInstancesResponse: Schema.Schema<ListDatabaseInstancesR
 
 export interface DisableDatabaseInstanceRequest {}
 
-export const DisableDatabaseInstanceRequest: Schema.Schema<DisableDatabaseInstanceRequest> =
+export const DisableDatabaseInstanceRequest: Schema.Codec<DisableDatabaseInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableDatabaseInstanceRequest",
   });
@@ -163,7 +163,7 @@ export const ListProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/instances" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInstancesRequest>;
 
 export type ListProjectsLocationsInstancesResponse =
   ListDatabaseInstancesResponse;
@@ -202,7 +202,7 @@ export const GetProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInstancesRequest>;
 
 export type GetProjectsLocationsInstancesResponse = DatabaseInstance;
 export const GetProjectsLocationsInstancesResponse =
@@ -236,7 +236,7 @@ export const DeleteProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsInstancesRequest>;
 
 export type DeleteProjectsLocationsInstancesResponse = DatabaseInstance;
 export const DeleteProjectsLocationsInstancesResponse =
@@ -287,7 +287,7 @@ export const CreateProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsInstancesRequest>;
 
 export type CreateProjectsLocationsInstancesResponse = DatabaseInstance;
 export const CreateProjectsLocationsInstancesResponse =
@@ -326,7 +326,7 @@ export const DisableProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:disable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DisableProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<DisableProjectsLocationsInstancesRequest>;
 
 export type DisableProjectsLocationsInstancesResponse = DatabaseInstance;
 export const DisableProjectsLocationsInstancesResponse =
@@ -365,7 +365,7 @@ export const ReenableProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:reenable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReenableProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<ReenableProjectsLocationsInstancesRequest>;
 
 export type ReenableProjectsLocationsInstancesResponse = DatabaseInstance;
 export const ReenableProjectsLocationsInstancesResponse =
@@ -404,7 +404,7 @@ export const UndeleteProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsLocationsInstancesRequest>;
 
 export type UndeleteProjectsLocationsInstancesResponse = DatabaseInstance;
 export const UndeleteProjectsLocationsInstancesResponse =

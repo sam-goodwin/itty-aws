@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetDatabaseInstanceInput {
+  organizationSlug: string;
+  databaseName: string;
+  instanceName: string;
+}
 export const GetDatabaseInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,18 @@ export const GetDatabaseInstanceInput =
       method: "GET",
       path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName}",
     }),
-  );
-export type GetDatabaseInstanceInput = typeof GetDatabaseInstanceInput.Type;
+  ) as unknown as Schema.Codec<GetDatabaseInstanceInput>;
 
 // Output Schema
+export interface GetDatabaseInstanceOutput {
+  instance?: {
+    uuid?: string;
+    name?: string;
+    type?: "primary" | "replica";
+    region?: string;
+    hostname?: string;
+  };
+}
 export const GetDatabaseInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(
@@ -29,8 +42,7 @@ export const GetDatabaseInstanceOutput =
         hostname: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetDatabaseInstanceOutput = typeof GetDatabaseInstanceOutput.Type;
+  }) as unknown as Schema.Codec<GetDatabaseInstanceOutput>;
 
 // The operation
 /**

@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CloudHsmClusterBackupStatusGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  jobId: string;
+}
 export const CloudHsmClusterBackupStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,11 +27,31 @@ export const CloudHsmClusterBackupStatusGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/backupOperationStatus/{jobId}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClusterBackupStatusGetInput =
-  typeof CloudHsmClusterBackupStatusGetInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClusterBackupStatusGetInput>;
 
 // Output Schema
+export interface CloudHsmClusterBackupStatusGetOutput {
+  properties?: {
+    status?: "InProgress" | "Succeeded" | "Failed" | "Cancelled";
+    statusDetails?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    startTime?: string;
+    endTime?: string | null;
+    jobId?: string;
+  };
+}
 export const CloudHsmClusterBackupStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -72,9 +98,7 @@ export const CloudHsmClusterBackupStatusGetOutput =
         jobId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClusterBackupStatusGetOutput =
-  typeof CloudHsmClusterBackupStatusGetOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClusterBackupStatusGetOutput>;
 
 // The operation
 /**
@@ -92,6 +116,30 @@ export const CloudHsmClusterBackupStatusGet =
     outputSchema: CloudHsmClusterBackupStatusGetOutput,
   }));
 // Input Schema
+export interface CloudHsmClusterPrivateEndpointConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  peConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Creating"
+      | "Deleting"
+      | "Failed"
+      | "Updating"
+      | "InternalError"
+      | "Canceled";
+    groupIds?: string[];
+  };
+  etag?: string;
+}
 export const CloudHsmClusterPrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -133,11 +181,22 @@ export const CloudHsmClusterPrivateEndpointConnectionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClusterPrivateEndpointConnectionsCreateInput =
-  typeof CloudHsmClusterPrivateEndpointConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClusterPrivateEndpointConnectionsCreateInput>;
 
 // Output Schema
+export interface CloudHsmClusterPrivateEndpointConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudHsmClusterPrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -157,9 +216,7 @@ export const CloudHsmClusterPrivateEndpointConnectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClusterPrivateEndpointConnectionsCreateOutput =
-  typeof CloudHsmClusterPrivateEndpointConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClusterPrivateEndpointConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -177,6 +234,12 @@ export const CloudHsmClusterPrivateEndpointConnectionsCreate =
     outputSchema: CloudHsmClusterPrivateEndpointConnectionsCreateOutput,
   }));
 // Input Schema
+export interface CloudHsmClusterPrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  peConnectionName: string;
+}
 export const CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -189,15 +252,12 @@ export const CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
-  typeof CloudHsmClusterPrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClusterPrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type CloudHsmClusterPrivateEndpointConnectionsDeleteOutput = void;
 export const CloudHsmClusterPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CloudHsmClusterPrivateEndpointConnectionsDeleteOutput =
-  typeof CloudHsmClusterPrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudHsmClusterPrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -215,6 +275,12 @@ export const CloudHsmClusterPrivateEndpointConnectionsDelete =
     outputSchema: CloudHsmClusterPrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface CloudHsmClusterPrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  peConnectionName: string;
+}
 export const CloudHsmClusterPrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -227,11 +293,22 @@ export const CloudHsmClusterPrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClusterPrivateEndpointConnectionsGetInput =
-  typeof CloudHsmClusterPrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClusterPrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface CloudHsmClusterPrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudHsmClusterPrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -251,9 +328,7 @@ export const CloudHsmClusterPrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClusterPrivateEndpointConnectionsGetOutput =
-  typeof CloudHsmClusterPrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClusterPrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -271,6 +346,11 @@ export const CloudHsmClusterPrivateEndpointConnectionsGet =
     outputSchema: CloudHsmClusterPrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+}
 export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -282,11 +362,25 @@ export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateLinkResources",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput =
-  typeof CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput>;
 
 // Output Schema
+export interface CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -323,9 +417,7 @@ export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput =
-  typeof CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput>;
 
 // The operation
 /**
@@ -343,6 +435,12 @@ export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmCluster =
       CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput,
   }));
 // Input Schema
+export interface CloudHsmClusterRestoreStatusGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  jobId: string;
+}
 export const CloudHsmClusterRestoreStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -355,11 +453,31 @@ export const CloudHsmClusterRestoreStatusGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restoreOperationStatus/{jobId}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClusterRestoreStatusGetInput =
-  typeof CloudHsmClusterRestoreStatusGetInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClusterRestoreStatusGetInput>;
 
 // Output Schema
+export interface CloudHsmClusterRestoreStatusGetOutput {
+  properties?: {
+    status?: "InProgress" | "Succeeded" | "Failed" | "Cancelled";
+    statusDetails?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    startTime?: string;
+    endTime?: string | null;
+    jobId?: string;
+  };
+}
 export const CloudHsmClusterRestoreStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -406,9 +524,7 @@ export const CloudHsmClusterRestoreStatusGetOutput =
         jobId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClusterRestoreStatusGetOutput =
-  typeof CloudHsmClusterRestoreStatusGetOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClusterRestoreStatusGetOutput>;
 
 // The operation
 /**
@@ -426,6 +542,13 @@ export const CloudHsmClusterRestoreStatusGet =
     outputSchema: CloudHsmClusterRestoreStatusGetOutput,
   }));
 // Input Schema
+export interface CloudHsmClustersBackupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  azureStorageBlobContainerUri: string;
+  token?: string;
+}
 export const CloudHsmClustersBackupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -439,11 +562,31 @@ export const CloudHsmClustersBackupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/backup",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersBackupInput =
-  typeof CloudHsmClustersBackupInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersBackupInput>;
 
 // Output Schema
+export interface CloudHsmClustersBackupOutput {
+  properties?: {
+    status?: "InProgress" | "Succeeded" | "Failed" | "Cancelled";
+    statusDetails?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    startTime?: string;
+    endTime?: string | null;
+    jobId?: string;
+  };
+}
 export const CloudHsmClustersBackupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -490,9 +633,7 @@ export const CloudHsmClustersBackupOutput =
         jobId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClustersBackupOutput =
-  typeof CloudHsmClustersBackupOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersBackupOutput>;
 
 // The operation
 /**
@@ -510,6 +651,67 @@ export const CloudHsmClustersBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudHsmClustersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  properties?: {
+    activationState?:
+      | "NotDefined"
+      | "NotActivated"
+      | "Active"
+      | "Failed"
+      | "Unknown";
+    autoGeneratedDomainNameLabelScope?:
+      | "TenantReuse"
+      | "SubscriptionReuse"
+      | "ResourceGroupReuse"
+      | "NoReuse";
+    hsms?: { fqdn?: string; state?: string; stateMessage?: string }[];
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    provisioningState?:
+      | "Provisioning"
+      | "Succeeded"
+      | "Updating"
+      | "Failed"
+      | "Deleting"
+      | "Canceled";
+    publicNetworkAccess?: "Disabled";
+    statusMessage?: string;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  sku?: {
+    family: "B";
+    name: "Standard_B1" | "Standard B10";
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const CloudHsmClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -626,11 +828,22 @@ export const CloudHsmClustersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersCreateOrUpdateInput =
-  typeof CloudHsmClustersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersCreateOrUpdateInput>;
 
 // Output Schema
+export interface CloudHsmClustersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudHsmClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -650,9 +863,7 @@ export const CloudHsmClustersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClustersCreateOrUpdateOutput =
-  typeof CloudHsmClustersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -669,6 +880,11 @@ export const CloudHsmClustersCreateOrUpdate =
     outputSchema: CloudHsmClustersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CloudHsmClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+}
 export const CloudHsmClustersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -680,15 +896,12 @@ export const CloudHsmClustersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersDeleteInput =
-  typeof CloudHsmClustersDeleteInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersDeleteInput>;
 
 // Output Schema
+export type CloudHsmClustersDeleteOutput = void;
 export const CloudHsmClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CloudHsmClustersDeleteOutput =
-  typeof CloudHsmClustersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudHsmClustersDeleteOutput>;
 
 // The operation
 /**
@@ -706,6 +919,11 @@ export const CloudHsmClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudHsmClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+}
 export const CloudHsmClustersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -717,10 +935,22 @@ export const CloudHsmClustersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersGetInput = typeof CloudHsmClustersGetInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersGetInput>;
 
 // Output Schema
+export interface CloudHsmClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudHsmClustersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -740,8 +970,7 @@ export const CloudHsmClustersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClustersGetOutput = typeof CloudHsmClustersGetOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersGetOutput>;
 
 // The operation
 /**
@@ -757,6 +986,11 @@ export const CloudHsmClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CloudHsmClustersGetOutput,
 }));
 // Input Schema
+export interface CloudHsmClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skiptoken?: string;
+}
 export const CloudHsmClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -768,11 +1002,25 @@ export const CloudHsmClustersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersListByResourceGroupInput =
-  typeof CloudHsmClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface CloudHsmClustersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CloudHsmClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -807,9 +1055,7 @@ export const CloudHsmClustersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CloudHsmClustersListByResourceGroupOutput =
-  typeof CloudHsmClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -826,6 +1072,10 @@ export const CloudHsmClustersListByResourceGroup =
     outputSchema: CloudHsmClustersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface CloudHsmClustersListBySubscriptionInput {
+  subscriptionId: string;
+  $skiptoken?: string;
+}
 export const CloudHsmClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -836,11 +1086,25 @@ export const CloudHsmClustersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersListBySubscriptionInput =
-  typeof CloudHsmClustersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersListBySubscriptionInput>;
 
 // Output Schema
+export interface CloudHsmClustersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CloudHsmClustersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -875,9 +1139,7 @@ export const CloudHsmClustersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CloudHsmClustersListBySubscriptionOutput =
-  typeof CloudHsmClustersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -893,6 +1155,14 @@ export const CloudHsmClustersListBySubscription =
     outputSchema: CloudHsmClustersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface CloudHsmClustersRestoreInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  backupId: string;
+  azureStorageBlobContainerUri: string;
+  token?: string;
+}
 export const CloudHsmClustersRestoreInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -907,11 +1177,31 @@ export const CloudHsmClustersRestoreInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restore",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersRestoreInput =
-  typeof CloudHsmClustersRestoreInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersRestoreInput>;
 
 // Output Schema
+export interface CloudHsmClustersRestoreOutput {
+  properties?: {
+    status?: "InProgress" | "Succeeded" | "Failed" | "Cancelled";
+    statusDetails?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    startTime?: string;
+    endTime?: string | null;
+    jobId?: string;
+  };
+}
 export const CloudHsmClustersRestoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -958,9 +1248,7 @@ export const CloudHsmClustersRestoreOutput =
         jobId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClustersRestoreOutput =
-  typeof CloudHsmClustersRestoreOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersRestoreOutput>;
 
 // The operation
 /**
@@ -978,6 +1266,25 @@ export const CloudHsmClustersRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudHsmClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const CloudHsmClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1011,11 +1318,22 @@ export const CloudHsmClustersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersUpdateInput =
-  typeof CloudHsmClustersUpdateInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersUpdateInput>;
 
 // Output Schema
+export interface CloudHsmClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudHsmClustersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1035,9 +1353,7 @@ export const CloudHsmClustersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClustersUpdateOutput =
-  typeof CloudHsmClustersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersUpdateOutput>;
 
 // The operation
 /**
@@ -1055,6 +1371,13 @@ export const CloudHsmClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudHsmClustersValidateBackupPropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  azureStorageBlobContainerUri: string;
+  token?: string;
+}
 export const CloudHsmClustersValidateBackupPropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1068,11 +1391,31 @@ export const CloudHsmClustersValidateBackupPropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/validateBackupProperties",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersValidateBackupPropertiesInput =
-  typeof CloudHsmClustersValidateBackupPropertiesInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersValidateBackupPropertiesInput>;
 
 // Output Schema
+export interface CloudHsmClustersValidateBackupPropertiesOutput {
+  properties?: {
+    status?: "InProgress" | "Succeeded" | "Failed" | "Cancelled";
+    statusDetails?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    startTime?: string;
+    endTime?: string | null;
+    jobId?: string;
+  };
+}
 export const CloudHsmClustersValidateBackupPropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1119,9 +1462,7 @@ export const CloudHsmClustersValidateBackupPropertiesOutput =
         jobId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClustersValidateBackupPropertiesOutput =
-  typeof CloudHsmClustersValidateBackupPropertiesOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersValidateBackupPropertiesOutput>;
 
 // The operation
 /**
@@ -1138,6 +1479,14 @@ export const CloudHsmClustersValidateBackupProperties =
     outputSchema: CloudHsmClustersValidateBackupPropertiesOutput,
   }));
 // Input Schema
+export interface CloudHsmClustersValidateRestorePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+  backupId: string;
+  azureStorageBlobContainerUri: string;
+  token?: string;
+}
 export const CloudHsmClustersValidateRestorePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1152,11 +1501,31 @@ export const CloudHsmClustersValidateRestorePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/validateRestoreProperties",
       apiVersion: "2025-03-31",
     }),
-  );
-export type CloudHsmClustersValidateRestorePropertiesInput =
-  typeof CloudHsmClustersValidateRestorePropertiesInput.Type;
+  ) as unknown as Schema.Codec<CloudHsmClustersValidateRestorePropertiesInput>;
 
 // Output Schema
+export interface CloudHsmClustersValidateRestorePropertiesOutput {
+  properties?: {
+    status?: "InProgress" | "Succeeded" | "Failed" | "Cancelled";
+    statusDetails?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    startTime?: string;
+    endTime?: string | null;
+    jobId?: string;
+  };
+}
 export const CloudHsmClustersValidateRestorePropertiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1203,9 +1572,7 @@ export const CloudHsmClustersValidateRestorePropertiesOutput =
         jobId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudHsmClustersValidateRestorePropertiesOutput =
-  typeof CloudHsmClustersValidateRestorePropertiesOutput.Type;
+  }) as unknown as Schema.Codec<CloudHsmClustersValidateRestorePropertiesOutput>;
 
 // The operation
 /**
@@ -1222,6 +1589,44 @@ export const CloudHsmClustersValidateRestoreProperties =
     outputSchema: CloudHsmClustersValidateRestorePropertiesOutput,
   }));
 // Input Schema
+export interface DedicatedHsmCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  properties: {
+    networkProfile?: {
+      subnet?: { resourceId?: string };
+      networkInterfaces?: { resourceId?: string; privateIpAddress?: string }[];
+    };
+    managementNetworkProfile?: {
+      subnet?: { resourceId?: string };
+      networkInterfaces?: { resourceId?: string; privateIpAddress?: string }[];
+    };
+    stampId?: string;
+    statusMessage?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Provisioning"
+      | "Allocating"
+      | "Connecting"
+      | "Failed"
+      | "CheckingQuota"
+      | "Deleting";
+  };
+  sku: {
+    name?:
+      | "SafeNet Luna Network HSM A790"
+      | "payShield10K_LMK1_CPS60"
+      | "payShield10K_LMK1_CPS250"
+      | "payShield10K_LMK1_CPS2500"
+      | "payShield10K_LMK2_CPS60"
+      | "payShield10K_LMK2_CPS250"
+      | "payShield10K_LMK2_CPS2500";
+  };
+  zones?: string[];
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DedicatedHsmCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1298,11 +1703,22 @@ export const DedicatedHsmCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type DedicatedHsmCreateOrUpdateInput =
-  typeof DedicatedHsmCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DedicatedHsmCreateOrUpdateInput>;
 
 // Output Schema
+export interface DedicatedHsmCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DedicatedHsmCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1322,9 +1738,7 @@ export const DedicatedHsmCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DedicatedHsmCreateOrUpdateOutput =
-  typeof DedicatedHsmCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedHsmCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1342,6 +1756,11 @@ export const DedicatedHsmCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DedicatedHsmDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const DedicatedHsmDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1353,12 +1772,12 @@ export const DedicatedHsmDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type DedicatedHsmDeleteInput = typeof DedicatedHsmDeleteInput.Type;
+  ) as unknown as Schema.Codec<DedicatedHsmDeleteInput>;
 
 // Output Schema
-export const DedicatedHsmDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DedicatedHsmDeleteOutput = typeof DedicatedHsmDeleteOutput.Type;
+export type DedicatedHsmDeleteOutput = void;
+export const DedicatedHsmDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DedicatedHsmDeleteOutput>;
 
 // The operation
 /**
@@ -1374,6 +1793,11 @@ export const DedicatedHsmDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHsmDeleteOutput,
 }));
 // Input Schema
+export interface DedicatedHsmGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const DedicatedHsmGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1384,10 +1808,22 @@ export const DedicatedHsmGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
     apiVersion: "2025-03-31",
   }),
-);
-export type DedicatedHsmGetInput = typeof DedicatedHsmGetInput.Type;
+) as unknown as Schema.Codec<DedicatedHsmGetInput>;
 
 // Output Schema
+export interface DedicatedHsmGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DedicatedHsmGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1406,8 +1842,7 @@ export const DedicatedHsmGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DedicatedHsmGetOutput = typeof DedicatedHsmGetOutput.Type;
+}) as unknown as Schema.Codec<DedicatedHsmGetOutput>;
 
 // The operation
 /**
@@ -1423,6 +1858,11 @@ export const DedicatedHsmGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHsmGetOutput,
 }));
 // Input Schema
+export interface DedicatedHsmListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const DedicatedHsmListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1434,11 +1874,25 @@ export const DedicatedHsmListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs",
       apiVersion: "2025-03-31",
     }),
-  );
-export type DedicatedHsmListByResourceGroupInput =
-  typeof DedicatedHsmListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DedicatedHsmListByResourceGroupInput>;
 
 // Output Schema
+export interface DedicatedHsmListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DedicatedHsmListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1473,9 +1927,7 @@ export const DedicatedHsmListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DedicatedHsmListByResourceGroupOutput =
-  typeof DedicatedHsmListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedHsmListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1492,6 +1944,10 @@ export const DedicatedHsmListByResourceGroup =
     outputSchema: DedicatedHsmListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DedicatedHsmListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const DedicatedHsmListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1502,11 +1958,25 @@ export const DedicatedHsmListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs",
       apiVersion: "2025-03-31",
     }),
-  );
-export type DedicatedHsmListBySubscriptionInput =
-  typeof DedicatedHsmListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DedicatedHsmListBySubscriptionInput>;
 
 // Output Schema
+export interface DedicatedHsmListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DedicatedHsmListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1541,9 +2011,7 @@ export const DedicatedHsmListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DedicatedHsmListBySubscriptionOutput =
-  typeof DedicatedHsmListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedHsmListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1559,6 +2027,11 @@ export const DedicatedHsmListBySubscription =
     outputSchema: DedicatedHsmListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DedicatedHsmListOutboundNetworkDependenciesEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const DedicatedHsmListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1570,11 +2043,24 @@ export const DedicatedHsmListOutboundNetworkDependenciesEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}/outboundNetworkDependenciesEndpoints",
       apiVersion: "2025-03-31",
     }),
-  );
-export type DedicatedHsmListOutboundNetworkDependenciesEndpointsInput =
-  typeof DedicatedHsmListOutboundNetworkDependenciesEndpointsInput.Type;
+  ) as unknown as Schema.Codec<DedicatedHsmListOutboundNetworkDependenciesEndpointsInput>;
 
 // Output Schema
+export interface DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput {
+  value: {
+    category?: string;
+    endpoints?: {
+      domainName?: string;
+      endpointDetails?: {
+        ipAddress?: string;
+        port?: number;
+        protocol?: string;
+        description?: string;
+      }[];
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1600,9 +2086,7 @@ export const DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput =
-  typeof DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput>;
 
 // The operation
 /**
@@ -1619,6 +2103,12 @@ export const DedicatedHsmListOutboundNetworkDependenciesEndpoints =
     outputSchema: DedicatedHsmListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
+export interface DedicatedHsmUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const DedicatedHsmUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1631,10 +2121,22 @@ export const DedicatedHsmUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
       apiVersion: "2025-03-31",
     }),
-  );
-export type DedicatedHsmUpdateInput = typeof DedicatedHsmUpdateInput.Type;
+  ) as unknown as Schema.Codec<DedicatedHsmUpdateInput>;
 
 // Output Schema
+export interface DedicatedHsmUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DedicatedHsmUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1654,8 +2156,7 @@ export const DedicatedHsmUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DedicatedHsmUpdateOutput = typeof DedicatedHsmUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedHsmUpdateOutput>;
 
 // The operation
 /**
@@ -1671,6 +2172,7 @@ export const DedicatedHsmUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DedicatedHsmUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1679,10 +2181,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.HardwareSecurityModules/operations",
     apiVersion: "2025-03-31",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1705,8 +2221,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1719,6 +2234,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByCloudHsmClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudHsmClusterName: string;
+}
 export const PrivateEndpointConnectionsListByCloudHsmClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1730,11 +2250,25 @@ export const PrivateEndpointConnectionsListByCloudHsmClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections",
       apiVersion: "2025-03-31",
     }),
-  );
-export type PrivateEndpointConnectionsListByCloudHsmClusterInput =
-  typeof PrivateEndpointConnectionsListByCloudHsmClusterInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByCloudHsmClusterInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByCloudHsmClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByCloudHsmClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1769,9 +2303,7 @@ export const PrivateEndpointConnectionsListByCloudHsmClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByCloudHsmClusterOutput =
-  typeof PrivateEndpointConnectionsListByCloudHsmClusterOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByCloudHsmClusterOutput>;
 
 // The operation
 /**

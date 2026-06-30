@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeGapSuggestionsDismissTopicCreateInput {
+  project_id: string;
+  normalized_topic: string;
+  resolved_source_id?: string | null;
+}
 export const BusinessKnowledgeGapSuggestionsDismissTopicCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +18,18 @@ export const BusinessKnowledgeGapSuggestionsDismissTopicCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/business_knowledge/gap_suggestions/dismiss_topic/",
     }),
-  );
-export type BusinessKnowledgeGapSuggestionsDismissTopicCreateInput =
-  typeof BusinessKnowledgeGapSuggestionsDismissTopicCreateInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeGapSuggestionsDismissTopicCreateInput>;
 
 // Output Schema
+export interface BusinessKnowledgeGapSuggestionsDismissTopicCreateOutput {
+  normalized_topic: string;
+  updated: number;
+}
 export const BusinessKnowledgeGapSuggestionsDismissTopicCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     normalized_topic: Schema.String,
     updated: Schema.Number,
-  });
-export type BusinessKnowledgeGapSuggestionsDismissTopicCreateOutput =
-  typeof BusinessKnowledgeGapSuggestionsDismissTopicCreateOutput.Type;
+  }) as unknown as Schema.Codec<BusinessKnowledgeGapSuggestionsDismissTopicCreateOutput>;
 
 // The operation
 /**

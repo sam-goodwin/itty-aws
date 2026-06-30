@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupClusterProcessArgsInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupClusterProcessArgsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const UpdateGroupClusterProcessArgsInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs",
     }),
-  );
-export type UpdateGroupClusterProcessArgsInput =
-  typeof UpdateGroupClusterProcessArgsInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupClusterProcessArgsInput>;
 
 // Output Schema
+export type UpdateGroupClusterProcessArgsOutput = void;
 export const UpdateGroupClusterProcessArgsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterProcessArgsOutput =
-  typeof UpdateGroupClusterProcessArgsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterProcessArgsOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface ItemError {
   error_detail?: string;
 }
 
-export const ItemError: Schema.Schema<ItemError> =
+export const ItemError: Schema.Codec<ItemError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error_code: Schema.optional(Schema.String),
     error_detail: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface Item {
   kind?: string;
 }
 
-export const Item: Schema.Schema<Item> =
+export const Item: Schema.Codec<Item> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     crxVersion: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface PublishRequest {
   reviewExemption?: boolean;
 }
 
-export const PublishRequest: Schema.Schema<PublishRequest> =
+export const PublishRequest: Schema.Codec<PublishRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployPercentage: Schema.optional(Schema.Number),
     target: Schema.optional(Schema.String),
@@ -87,7 +87,7 @@ export interface Item2 {
   kind?: string;
 }
 
-export const Item2: Schema.Schema<Item2> =
+export const Item2: Schema.Codec<Item2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item_id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.Array(Schema.String)),
@@ -166,7 +166,7 @@ export const UpdateItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateItemsRequest>;
+) as unknown as Schema.Codec<UpdateItemsRequest>;
 
 export type UpdateItemsResponse = Item;
 export const UpdateItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
@@ -203,7 +203,7 @@ export const GetItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "chromewebstore/v1.1/items/{itemId}" }),
   svc,
-) as unknown as Schema.Schema<GetItemsRequest>;
+) as unknown as Schema.Codec<GetItemsRequest>;
 
 export type GetItemsResponse = Item;
 export const GetItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
@@ -234,7 +234,7 @@ export const InsertItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "chromewebstore/v1.1/items", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertItemsRequest>;
+) as unknown as Schema.Codec<InsertItemsRequest>;
 
 export type InsertItemsResponse = Item;
 export const InsertItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
@@ -290,7 +290,7 @@ export const PublishItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PublishItemsRequest>;
+) as unknown as Schema.Codec<PublishItemsRequest>;
 
 export type PublishItemsResponse = Item2;
 export const PublishItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item2;

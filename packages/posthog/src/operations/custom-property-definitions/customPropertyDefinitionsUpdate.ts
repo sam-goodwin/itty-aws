@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomPropertyDefinitionsUpdateInput {
+  id: string;
+  project_id: string;
+  name: string;
+  description?: string | null;
+  display_type:
+    | "text"
+    | "number"
+    | "currency"
+    | "percent"
+    | "date"
+    | "datetime"
+    | "boolean";
+  is_big_number?: boolean;
+  created_at: string;
+  created_by: number | null;
+  updated_at: string | null;
+}
 export const CustomPropertyDefinitionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -27,11 +45,26 @@ export const CustomPropertyDefinitionsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/custom_property_definitions/{id}/",
     }),
-  );
-export type CustomPropertyDefinitionsUpdateInput =
-  typeof CustomPropertyDefinitionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomPropertyDefinitionsUpdateInput>;
 
 // Output Schema
+export interface CustomPropertyDefinitionsUpdateOutput {
+  id: string;
+  name: string;
+  description?: string | null;
+  display_type:
+    | "text"
+    | "number"
+    | "currency"
+    | "percent"
+    | "date"
+    | "datetime"
+    | "boolean";
+  is_big_number?: boolean;
+  created_at: string;
+  created_by: number | null;
+  updated_at: string | null;
+}
 export const CustomPropertyDefinitionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -50,9 +83,7 @@ export const CustomPropertyDefinitionsUpdateOutput =
     created_at: Schema.String,
     created_by: Schema.NullOr(Schema.Number),
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type CustomPropertyDefinitionsUpdateOutput =
-  typeof CustomPropertyDefinitionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomPropertyDefinitionsUpdateOutput>;
 
 // The operation
 /**

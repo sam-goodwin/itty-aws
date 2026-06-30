@@ -4,6 +4,21 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EventsListInput {
+  project_id: string;
+  after?: string;
+  before?: string;
+  distinct_id?: number;
+  event?: string;
+  format?: "csv" | "json";
+  include_person?: boolean;
+  limit?: number;
+  offset?: number;
+  person_id?: number;
+  properties?: string;
+  select?: string;
+  where?: string;
+}
 export const EventsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   after: Schema.optional(Schema.String),
@@ -18,10 +33,35 @@ export const EventsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(Schema.String),
   select: Schema.optional(Schema.String),
   where: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/projects/{project_id}/events/" }));
-export type EventsListInput = typeof EventsListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/events/" }),
+) as unknown as Schema.Codec<EventsListInput>;
 
 // Output Schema
+export interface EventsListOutput {
+  next?: string | null;
+  results?: {
+    id?: string;
+    distinct_id?: string;
+    properties?: Record<string, unknown>;
+    event?: string;
+    timestamp?: string;
+    person?: Record<string, unknown> | null;
+    elements?: {
+      event?: string;
+      text?: string | null;
+      tag_name?: string | null;
+      attr_class?: string[] | null;
+      href?: string | null;
+      attr_id?: string | null;
+      nth_child?: number | null;
+      nth_of_type?: number | null;
+      attributes?: unknown;
+      order?: number | null;
+    }[];
+    elements_chain?: string;
+  }[];
+}
 export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
@@ -59,8 +99,7 @@ export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type EventsListOutput = typeof EventsListOutput.Type;
+}) as unknown as Schema.Codec<EventsListOutput>;
 
 // The operation
 /**

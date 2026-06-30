@@ -4,6 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupIntegrationInput {
+  groupId: string;
+  integrationType:
+    | "PAGER_DUTY"
+    | "SLACK"
+    | "DATADOG"
+    | "NEW_RELIC"
+    | "OPS_GENIE"
+    | "VICTOR_OPS"
+    | "WEBHOOK"
+    | "HIP_CHAT"
+    | "PROMETHEUS"
+    | "MICROSOFT_TEAMS";
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -26,13 +42,12 @@ export const GetGroupIntegrationInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
     }),
-  );
-export type GetGroupIntegrationInput = typeof GetGroupIntegrationInput.Type;
+  ) as unknown as Schema.Codec<GetGroupIntegrationInput>;
 
 // Output Schema
+export type GetGroupIntegrationOutput = void;
 export const GetGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupIntegrationOutput = typeof GetGroupIntegrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupIntegrationOutput>;
 
 // The operation
 /**

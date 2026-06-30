@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupPrivateNetworkSettingEndpointIdInput {
+  groupId: string;
+  endpointId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupPrivateNetworkSettingEndpointIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteGroupPrivateNetworkSettingEndpointIdInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}",
     }),
-  );
-export type DeleteGroupPrivateNetworkSettingEndpointIdInput =
-  typeof DeleteGroupPrivateNetworkSettingEndpointIdInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupPrivateNetworkSettingEndpointIdInput>;
 
 // Output Schema
+export type DeleteGroupPrivateNetworkSettingEndpointIdOutput = void;
 export const DeleteGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupPrivateNetworkSettingEndpointIdOutput =
-  typeof DeleteGroupPrivateNetworkSettingEndpointIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupPrivateNetworkSettingEndpointIdOutput>;
 
 // The operation
 /**

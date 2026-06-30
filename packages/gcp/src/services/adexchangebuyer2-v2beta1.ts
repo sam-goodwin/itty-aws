@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface FirstPartyMobileApplicationTargeting {
   excludedAppIds?: ReadonlyArray<string>;
 }
 
-export const FirstPartyMobileApplicationTargeting: Schema.Schema<FirstPartyMobileApplicationTargeting> =
+export const FirstPartyMobileApplicationTargeting: Schema.Codec<FirstPartyMobileApplicationTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetedAppIds: Schema.optional(Schema.Array(Schema.String)),
     excludedAppIds: Schema.optional(Schema.Array(Schema.String)),
@@ -40,7 +40,7 @@ export interface MobileApplicationTargeting {
   firstPartyTargeting?: FirstPartyMobileApplicationTargeting;
 }
 
-export const MobileApplicationTargeting: Schema.Schema<MobileApplicationTargeting> =
+export const MobileApplicationTargeting: Schema.Codec<MobileApplicationTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstPartyTargeting: Schema.optional(FirstPartyMobileApplicationTargeting),
   }).annotate({ identifier: "MobileApplicationTargeting" });
@@ -54,7 +54,7 @@ export interface Image {
   height?: number;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     width: Schema.optional(Schema.Number),
@@ -90,7 +90,7 @@ export interface NativeContent {
   logo?: Image;
 }
 
-export const NativeContent: Schema.Schema<NativeContent> =
+export const NativeContent: Schema.Codec<NativeContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserName: Schema.optional(Schema.String),
     priceDisplayText: Schema.optional(Schema.String),
@@ -114,7 +114,7 @@ export interface CriteriaTargeting {
   excludedCriteriaIds?: ReadonlyArray<string>;
 }
 
-export const CriteriaTargeting: Schema.Schema<CriteriaTargeting> =
+export const CriteriaTargeting: Schema.Codec<CriteriaTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
     excludedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
@@ -127,7 +127,7 @@ export interface OperatingSystemTargeting {
   operatingSystemCriteria?: CriteriaTargeting;
 }
 
-export const OperatingSystemTargeting: Schema.Schema<OperatingSystemTargeting> =
+export const OperatingSystemTargeting: Schema.Codec<OperatingSystemTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatingSystemVersionCriteria: Schema.optional(CriteriaTargeting),
     operatingSystemCriteria: Schema.optional(CriteriaTargeting),
@@ -142,7 +142,7 @@ export interface TechnologyTargeting {
   deviceCapabilityTargeting?: CriteriaTargeting;
 }
 
-export const TechnologyTargeting: Schema.Schema<TechnologyTargeting> =
+export const TechnologyTargeting: Schema.Codec<TechnologyTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatingSystemTargeting: Schema.optional(OperatingSystemTargeting),
     deviceCategoryTargeting: Schema.optional(CriteriaTargeting),
@@ -164,7 +164,7 @@ export interface AdSize {
     | (string & {});
 }
 
-export const AdSize: Schema.Schema<AdSize> =
+export const AdSize: Schema.Codec<AdSize> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.String),
     height: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface InventorySizeTargeting {
   excludedInventorySizes?: ReadonlyArray<AdSize>;
 }
 
-export const InventorySizeTargeting: Schema.Schema<InventorySizeTargeting> =
+export const InventorySizeTargeting: Schema.Codec<InventorySizeTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetedInventorySizes: Schema.optional(Schema.Array(AdSize)),
     excludedInventorySizes: Schema.optional(Schema.Array(AdSize)),
@@ -191,7 +191,7 @@ export interface UrlTargeting {
   excludedUrls?: ReadonlyArray<string>;
 }
 
-export const UrlTargeting: Schema.Schema<UrlTargeting> =
+export const UrlTargeting: Schema.Codec<UrlTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetedUrls: Schema.optional(Schema.Array(Schema.String)),
     excludedUrls: Schema.optional(Schema.Array(Schema.String)),
@@ -204,7 +204,7 @@ export interface PlacementTargeting {
   mobileApplicationTargeting?: MobileApplicationTargeting;
 }
 
-export const PlacementTargeting: Schema.Schema<PlacementTargeting> =
+export const PlacementTargeting: Schema.Codec<PlacementTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlTargeting: Schema.optional(UrlTargeting),
     mobileApplicationTargeting: Schema.optional(MobileApplicationTargeting),
@@ -229,7 +229,7 @@ export interface VideoTargeting {
   >;
 }
 
-export const VideoTargeting: Schema.Schema<VideoTargeting> =
+export const VideoTargeting: Schema.Codec<VideoTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetedPositionTypes: Schema.optional(Schema.Array(Schema.String)),
     excludedPositionTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -248,7 +248,7 @@ export interface MarketplaceTargeting {
   videoTargeting?: VideoTargeting;
 }
 
-export const MarketplaceTargeting: Schema.Schema<MarketplaceTargeting> =
+export const MarketplaceTargeting: Schema.Codec<MarketplaceTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geoTargeting: Schema.optional(CriteriaTargeting),
     technologyTargeting: Schema.optional(TechnologyTargeting),
@@ -264,7 +264,7 @@ export interface TimeInterval {
   endTime?: string;
 }
 
-export const TimeInterval: Schema.Schema<TimeInterval> =
+export const TimeInterval: Schema.Codec<TimeInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -277,7 +277,7 @@ export interface RowDimensions {
   publisherIdentifier?: string;
 }
 
-export const RowDimensions: Schema.Schema<RowDimensions> =
+export const RowDimensions: Schema.Codec<RowDimensions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeInterval: Schema.optional(TimeInterval),
     publisherIdentifier: Schema.optional(Schema.String),
@@ -290,7 +290,7 @@ export interface MetricValue {
   value?: string;
 }
 
-export const MetricValue: Schema.Schema<MetricValue> =
+export const MetricValue: Schema.Codec<MetricValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variance: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -305,7 +305,7 @@ export interface CalloutStatusRow {
   impressionCount?: MetricValue;
 }
 
-export const CalloutStatusRow: Schema.Schema<CalloutStatusRow> =
+export const CalloutStatusRow: Schema.Codec<CalloutStatusRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowDimensions: Schema.optional(RowDimensions),
     calloutStatusId: Schema.optional(Schema.Number),
@@ -319,7 +319,7 @@ export interface RelativeDateRange {
   durationDays?: number;
 }
 
-export const RelativeDateRange: Schema.Schema<RelativeDateRange> =
+export const RelativeDateRange: Schema.Codec<RelativeDateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offsetDays: Schema.optional(Schema.Number),
     durationDays: Schema.optional(Schema.Number),
@@ -334,7 +334,7 @@ export interface FilteredBidCreativeRow {
   rowDimensions?: RowDimensions;
 }
 
-export const FilteredBidCreativeRow: Schema.Schema<FilteredBidCreativeRow> =
+export const FilteredBidCreativeRow: Schema.Codec<FilteredBidCreativeRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeId: Schema.optional(Schema.String),
     bidCount: Schema.optional(MetricValue),
@@ -360,7 +360,7 @@ export interface BidMetricsRow {
   viewableImpressions?: MetricValue;
 }
 
-export const BidMetricsRow: Schema.Schema<BidMetricsRow> =
+export const BidMetricsRow: Schema.Codec<BidMetricsRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowDimensions: Schema.optional(RowDimensions),
     impressionsWon: Schema.optional(MetricValue),
@@ -387,7 +387,7 @@ export interface ImpressionMetricsRow {
   responsesWithBids?: MetricValue;
 }
 
-export const ImpressionMetricsRow: Schema.Schema<ImpressionMetricsRow> =
+export const ImpressionMetricsRow: Schema.Codec<ImpressionMetricsRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inventoryMatches: Schema.optional(MetricValue),
     rowDimensions: Schema.optional(RowDimensions),
@@ -404,7 +404,7 @@ export interface ListBidResponseErrorsResponse {
   nextPageToken?: string;
 }
 
-export const ListBidResponseErrorsResponse: Schema.Schema<ListBidResponseErrorsResponse> =
+export const ListBidResponseErrorsResponse: Schema.Codec<ListBidResponseErrorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     calloutStatusRows: Schema.optional(Schema.Array(CalloutStatusRow)),
     nextPageToken: Schema.optional(Schema.String),
@@ -424,7 +424,7 @@ export interface BidResponseWithoutBidsStatusRow {
     | (string & {});
 }
 
-export const BidResponseWithoutBidsStatusRow: Schema.Schema<BidResponseWithoutBidsStatusRow> =
+export const BidResponseWithoutBidsStatusRow: Schema.Codec<BidResponseWithoutBidsStatusRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowDimensions: Schema.optional(RowDimensions),
     impressionCount: Schema.optional(MetricValue),
@@ -438,7 +438,7 @@ export interface AdTechnologyProviders {
   detectedProviderIds?: ReadonlyArray<string>;
 }
 
-export const AdTechnologyProviders: Schema.Schema<AdTechnologyProviders> =
+export const AdTechnologyProviders: Schema.Codec<AdTechnologyProviders> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasUnidentifiedProvider: Schema.optional(Schema.Boolean),
     detectedProviderIds: Schema.optional(Schema.Array(Schema.String)),
@@ -451,7 +451,7 @@ export interface CreativeSpecification {
   creativeCompanionSizes?: ReadonlyArray<AdSize>;
 }
 
-export const CreativeSpecification: Schema.Schema<CreativeSpecification> =
+export const CreativeSpecification: Schema.Codec<CreativeSpecification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeSize: Schema.optional(AdSize),
     creativeCompanionSizes: Schema.optional(Schema.Array(AdSize)),
@@ -474,7 +474,7 @@ export interface CreativeRestrictions {
     | (string & {});
 }
 
-export const CreativeRestrictions: Schema.Schema<CreativeRestrictions> =
+export const CreativeRestrictions: Schema.Codec<CreativeRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeSpecifications: Schema.optional(
       Schema.Array(CreativeSpecification),
@@ -490,7 +490,7 @@ export interface ContactInformation {
   email?: string;
 }
 
-export const ContactInformation: Schema.Schema<ContactInformation> =
+export const ContactInformation: Schema.Codec<ContactInformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -501,7 +501,7 @@ export interface PrivateData {
   referenceId?: string;
 }
 
-export const PrivateData: Schema.Schema<PrivateData> =
+export const PrivateData: Schema.Codec<PrivateData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "PrivateData" });
@@ -513,7 +513,7 @@ export interface Size {
   height?: number;
 }
 
-export const Size: Schema.Schema<Size> =
+export const Size: Schema.Codec<Size> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
@@ -551,7 +551,7 @@ export interface CreativeSize {
     | (string & {});
 }
 
-export const CreativeSize: Schema.Schema<CreativeSize> =
+export const CreativeSize: Schema.Codec<CreativeSize> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skippableAdType: Schema.optional(Schema.String),
     size: Schema.optional(Size),
@@ -572,7 +572,7 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minutes: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
@@ -598,7 +598,7 @@ export interface DayPart {
   endTime?: TimeOfDay;
 }
 
-export const DayPart: Schema.Schema<DayPart> =
+export const DayPart: Schema.Codec<DayPart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dayOfWeek: Schema.optional(Schema.String),
     startTime: Schema.optional(TimeOfDay),
@@ -616,7 +616,7 @@ export interface DayPartTargeting {
   dayParts?: ReadonlyArray<DayPart>;
 }
 
-export const DayPartTargeting: Schema.Schema<DayPartTargeting> =
+export const DayPartTargeting: Schema.Codec<DayPartTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeZoneType: Schema.optional(Schema.String),
     dayParts: Schema.optional(Schema.Array(DayPart)),
@@ -633,7 +633,7 @@ export interface TargetingValue {
   dayPartTargetingValue?: DayPartTargeting;
 }
 
-export const TargetingValue: Schema.Schema<TargetingValue> =
+export const TargetingValue: Schema.Codec<TargetingValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValue: Schema.optional(Schema.String),
     longValue: Schema.optional(Schema.String),
@@ -650,7 +650,7 @@ export interface TargetingCriteria {
   inclusions?: ReadonlyArray<TargetingValue>;
 }
 
-export const TargetingCriteria: Schema.Schema<TargetingCriteria> =
+export const TargetingCriteria: Schema.Codec<TargetingCriteria> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     exclusions: Schema.optional(Schema.Array(TargetingValue)),
@@ -666,7 +666,7 @@ export interface Money {
   currencyCode?: string;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -684,7 +684,7 @@ export interface Price {
   amount?: Money;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pricingType: Schema.optional(Schema.String),
     amount: Schema.optional(Money),
@@ -695,7 +695,7 @@ export interface Buyer {
   accountId?: string;
 }
 
-export const Buyer: Schema.Schema<Buyer> =
+export const Buyer: Schema.Codec<Buyer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
   }).annotate({ identifier: "Buyer" });
@@ -709,7 +709,7 @@ export interface PricePerBuyer {
   buyer?: Buyer;
 }
 
-export const PricePerBuyer: Schema.Schema<PricePerBuyer> =
+export const PricePerBuyer: Schema.Codec<PricePerBuyer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserIds: Schema.optional(Schema.Array(Schema.String)),
     price: Schema.optional(Price),
@@ -721,7 +721,7 @@ export interface NonGuaranteedFixedPriceTerms {
   fixedPrices?: ReadonlyArray<PricePerBuyer>;
 }
 
-export const NonGuaranteedFixedPriceTerms: Schema.Schema<NonGuaranteedFixedPriceTerms> =
+export const NonGuaranteedFixedPriceTerms: Schema.Codec<NonGuaranteedFixedPriceTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fixedPrices: Schema.optional(Schema.Array(PricePerBuyer)),
   }).annotate({ identifier: "NonGuaranteedFixedPriceTerms" });
@@ -733,7 +733,7 @@ export interface NonGuaranteedAuctionTerms {
   autoOptimizePrivateAuction?: boolean;
 }
 
-export const NonGuaranteedAuctionTerms: Schema.Schema<NonGuaranteedAuctionTerms> =
+export const NonGuaranteedAuctionTerms: Schema.Codec<NonGuaranteedAuctionTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservePricesPerBuyer: Schema.optional(Schema.Array(PricePerBuyer)),
     autoOptimizePrivateAuction: Schema.optional(Schema.Boolean),
@@ -760,7 +760,7 @@ export interface GuaranteedFixedPriceTerms {
   impressionCap?: string;
 }
 
-export const GuaranteedFixedPriceTerms: Schema.Schema<GuaranteedFixedPriceTerms> =
+export const GuaranteedFixedPriceTerms: Schema.Codec<GuaranteedFixedPriceTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationType: Schema.optional(Schema.String),
     guaranteedLooks: Schema.optional(Schema.String),
@@ -794,7 +794,7 @@ export interface DealTerms {
   guaranteedFixedPriceTerms?: GuaranteedFixedPriceTerms;
 }
 
-export const DealTerms: Schema.Schema<DealTerms> =
+export const DealTerms: Schema.Codec<DealTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nonGuaranteedFixedPriceTerms: Schema.optional(NonGuaranteedFixedPriceTerms),
     description: Schema.optional(Schema.String),
@@ -823,7 +823,7 @@ export interface DealPauseStatus {
   hasSellerPaused?: boolean;
 }
 
-export const DealPauseStatus: Schema.Schema<DealPauseStatus> =
+export const DealPauseStatus: Schema.Codec<DealPauseStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buyerPauseReason: Schema.optional(Schema.String),
     firstPausedBy: Schema.optional(Schema.String),
@@ -837,7 +837,7 @@ export interface DealServingMetadata {
   dealPauseStatus?: DealPauseStatus;
 }
 
-export const DealServingMetadata: Schema.Schema<DealServingMetadata> =
+export const DealServingMetadata: Schema.Codec<DealServingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dealPauseStatus: Schema.optional(DealPauseStatus),
   }).annotate({ identifier: "DealServingMetadata" });
@@ -861,7 +861,7 @@ export interface FrequencyCap {
   maxImpressions?: number;
 }
 
-export const FrequencyCap: Schema.Schema<FrequencyCap> =
+export const FrequencyCap: Schema.Codec<FrequencyCap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeUnitType: Schema.optional(Schema.String),
     numTimeUnits: Schema.optional(Schema.Number),
@@ -886,7 +886,7 @@ export interface DeliveryControl {
   frequencyCaps?: ReadonlyArray<FrequencyCap>;
 }
 
-export const DeliveryControl: Schema.Schema<DeliveryControl> =
+export const DeliveryControl: Schema.Codec<DeliveryControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeBlockingLevel: Schema.optional(Schema.String),
     deliveryRateType: Schema.optional(Schema.String),
@@ -964,7 +964,7 @@ export interface Deal {
   deliveryControl?: DeliveryControl;
 }
 
-export const Deal: Schema.Schema<Deal> =
+export const Deal: Schema.Codec<Deal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createProductId: Schema.optional(Schema.String),
     createProductRevision: Schema.optional(Schema.String),
@@ -1025,7 +1025,7 @@ export interface Client {
   status?: "CLIENT_STATUS_UNSPECIFIED" | "DISABLED" | "ACTIVE" | (string & {});
 }
 
-export const Client: Schema.Schema<Client> =
+export const Client: Schema.Codec<Client> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -1045,7 +1045,7 @@ export interface ListClientsResponse {
   nextPageToken?: string;
 }
 
-export const ListClientsResponse: Schema.Schema<ListClientsResponse> =
+export const ListClientsResponse: Schema.Codec<ListClientsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clients: Schema.optional(Schema.Array(Client)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1056,7 +1056,7 @@ export interface SecurityContext {
   securities?: ReadonlyArray<"INSECURE" | "SSL" | (string & {})>;
 }
 
-export const SecurityContext: Schema.Schema<SecurityContext> =
+export const SecurityContext: Schema.Codec<SecurityContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securities: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SecurityContext" });
@@ -1068,7 +1068,7 @@ export interface ListBidResponsesWithoutBidsResponse {
   nextPageToken?: string;
 }
 
-export const ListBidResponsesWithoutBidsResponse: Schema.Schema<ListBidResponsesWithoutBidsResponse> =
+export const ListBidResponsesWithoutBidsResponse: Schema.Codec<ListBidResponsesWithoutBidsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bidResponseWithoutBidsStatusRows: Schema.optional(
       Schema.Array(BidResponseWithoutBidsStatusRow),
@@ -1085,7 +1085,7 @@ export interface CreativeDealAssociation {
   creativeId?: string;
 }
 
-export const CreativeDealAssociation: Schema.Schema<CreativeDealAssociation> =
+export const CreativeDealAssociation: Schema.Codec<CreativeDealAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dealsId: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -1097,7 +1097,7 @@ export interface RemoveDealAssociationRequest {
   association?: CreativeDealAssociation;
 }
 
-export const RemoveDealAssociationRequest: Schema.Schema<RemoveDealAssociationRequest> =
+export const RemoveDealAssociationRequest: Schema.Codec<RemoveDealAssociationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     association: Schema.optional(CreativeDealAssociation),
   }).annotate({ identifier: "RemoveDealAssociationRequest" });
@@ -1111,7 +1111,7 @@ export interface Adexchangebuyer2_Date {
   day?: number;
 }
 
-export const Adexchangebuyer2_Date: Schema.Schema<Adexchangebuyer2_Date> =
+export const Adexchangebuyer2_Date: Schema.Codec<Adexchangebuyer2_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -1125,7 +1125,7 @@ export interface AbsoluteDateRange {
   endDate?: Adexchangebuyer2_Date;
 }
 
-export const AbsoluteDateRange: Schema.Schema<AbsoluteDateRange> =
+export const AbsoluteDateRange: Schema.Codec<AbsoluteDateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Adexchangebuyer2_Date),
     endDate: Schema.optional(Adexchangebuyer2_Date),
@@ -1136,7 +1136,7 @@ export interface RealtimeTimeRange {
   startTimestamp?: string;
 }
 
-export const RealtimeTimeRange: Schema.Schema<RealtimeTimeRange> =
+export const RealtimeTimeRange: Schema.Codec<RealtimeTimeRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTimestamp: Schema.optional(Schema.String),
   }).annotate({ identifier: "RealtimeTimeRange" });
@@ -1193,7 +1193,7 @@ export interface FilterSet {
   publisherIdentifiers?: ReadonlyArray<string>;
 }
 
-export const FilterSet: Schema.Schema<FilterSet> =
+export const FilterSet: Schema.Codec<FilterSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platforms: Schema.optional(Schema.Array(Schema.String)),
     timeSeriesGranularity: Schema.optional(Schema.String),
@@ -1218,7 +1218,7 @@ export interface ListFilterSetsResponse {
   nextPageToken?: string;
 }
 
-export const ListFilterSetsResponse: Schema.Schema<ListFilterSetsResponse> =
+export const ListFilterSetsResponse: Schema.Codec<ListFilterSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterSets: Schema.optional(Schema.Array(FilterSet)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1240,7 +1240,7 @@ export interface NonBillableWinningBidStatusRow {
     | (string & {});
 }
 
-export const NonBillableWinningBidStatusRow: Schema.Schema<NonBillableWinningBidStatusRow> =
+export const NonBillableWinningBidStatusRow: Schema.Codec<NonBillableWinningBidStatusRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bidCount: Schema.optional(MetricValue),
     rowDimensions: Schema.optional(RowDimensions),
@@ -1254,7 +1254,7 @@ export interface ListNonBillableWinningBidsResponse {
   nextPageToken?: string;
 }
 
-export const ListNonBillableWinningBidsResponse: Schema.Schema<ListNonBillableWinningBidsResponse> =
+export const ListNonBillableWinningBidsResponse: Schema.Codec<ListNonBillableWinningBidsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nonBillableWinningBidStatusRows: Schema.optional(
       Schema.Array(NonBillableWinningBidStatusRow),
@@ -1269,7 +1269,7 @@ export interface VideoContent {
   videoUrl?: string;
 }
 
-export const VideoContent: Schema.Schema<VideoContent> =
+export const VideoContent: Schema.Codec<VideoContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoVastXml: Schema.optional(Schema.String),
     videoUrl: Schema.optional(Schema.String),
@@ -1280,7 +1280,7 @@ export interface PlatformContext {
   platforms?: ReadonlyArray<"DESKTOP" | "ANDROID" | "IOS" | (string & {})>;
 }
 
-export const PlatformContext: Schema.Schema<PlatformContext> =
+export const PlatformContext: Schema.Codec<PlatformContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platforms: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PlatformContext" });
@@ -1290,7 +1290,7 @@ export interface AuctionContext {
   auctionTypes?: ReadonlyArray<"OPEN_AUCTION" | "DIRECT_DEALS" | (string & {})>;
 }
 
-export const AuctionContext: Schema.Schema<AuctionContext> =
+export const AuctionContext: Schema.Codec<AuctionContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auctionTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AuctionContext" });
@@ -1300,7 +1300,7 @@ export interface AppContext {
   appTypes?: ReadonlyArray<"NATIVE" | "WEB" | (string & {})>;
 }
 
-export const AppContext: Schema.Schema<AppContext> =
+export const AppContext: Schema.Codec<AppContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AppContext" });
@@ -1310,7 +1310,7 @@ export interface LocationContext {
   geoCriteriaIds?: ReadonlyArray<number>;
 }
 
-export const LocationContext: Schema.Schema<LocationContext> =
+export const LocationContext: Schema.Codec<LocationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geoCriteriaIds: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "LocationContext" });
@@ -1330,7 +1330,7 @@ export interface ServingContext {
   securityType?: SecurityContext;
 }
 
-export const ServingContext: Schema.Schema<ServingContext> =
+export const ServingContext: Schema.Codec<ServingContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platform: Schema.optional(PlatformContext),
     auctionType: Schema.optional(AuctionContext),
@@ -1450,7 +1450,7 @@ export interface Disapproval {
   details?: ReadonlyArray<string>;
 }
 
-export const Disapproval: Schema.Schema<Disapproval> =
+export const Disapproval: Schema.Codec<Disapproval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     details: Schema.optional(Schema.Array(Schema.String)),
@@ -1471,7 +1471,7 @@ export interface ServingRestriction {
   disapproval?: Disapproval;
 }
 
-export const ServingRestriction: Schema.Schema<ServingRestriction> =
+export const ServingRestriction: Schema.Codec<ServingRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     contexts: Schema.optional(Schema.Array(ServingContext)),
@@ -1488,7 +1488,7 @@ export interface HtmlContent {
   height?: number;
 }
 
-export const HtmlContent: Schema.Schema<HtmlContent> =
+export const HtmlContent: Schema.Codec<HtmlContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(Schema.String),
     width: Schema.optional(Schema.Number),
@@ -1517,7 +1517,7 @@ export interface Correction {
   contexts?: ReadonlyArray<ServingContext>;
 }
 
-export const Correction: Schema.Schema<Correction> =
+export const Correction: Schema.Codec<Correction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     details: Schema.optional(Schema.Array(Schema.String)),
@@ -1638,7 +1638,7 @@ export interface Creative {
   adChoicesDestinationUrl?: string;
 }
 
-export const Creative: Schema.Schema<Creative> =
+export const Creative: Schema.Codec<Creative> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dealsStatus: Schema.optional(Schema.String),
     video: Schema.optional(VideoContent),
@@ -1675,7 +1675,7 @@ export interface ListCreativesResponse {
   creatives?: ReadonlyArray<Creative>;
 }
 
-export const ListCreativesResponse: Schema.Schema<ListCreativesResponse> =
+export const ListCreativesResponse: Schema.Codec<ListCreativesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     creatives: Schema.optional(Schema.Array(Creative)),
@@ -1705,7 +1705,7 @@ export interface PublisherProfileMobileApplication {
     | (string & {});
 }
 
-export const PublisherProfileMobileApplication: Schema.Schema<PublisherProfileMobileApplication> =
+export const PublisherProfileMobileApplication: Schema.Codec<PublisherProfileMobileApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     externalAppId: Schema.optional(Schema.String),
@@ -1719,7 +1719,7 @@ export interface Seller {
   subAccountId?: string;
 }
 
-export const Seller: Schema.Schema<Seller> =
+export const Seller: Schema.Codec<Seller> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     subAccountId: Schema.optional(Schema.String),
@@ -1762,7 +1762,7 @@ export interface PublisherProfile {
   publisherProfileId?: string;
 }
 
-export const PublisherProfile: Schema.Schema<PublisherProfile> =
+export const PublisherProfile: Schema.Codec<PublisherProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audienceDescription: Schema.optional(Schema.String),
     mobileApps: Schema.optional(
@@ -1790,7 +1790,7 @@ export interface ResumeProposalDealsRequest {
   externalDealIds?: ReadonlyArray<string>;
 }
 
-export const ResumeProposalDealsRequest: Schema.Schema<ResumeProposalDealsRequest> =
+export const ResumeProposalDealsRequest: Schema.Codec<ResumeProposalDealsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalDealIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ResumeProposalDealsRequest" });
@@ -1802,7 +1802,7 @@ export interface ListPublisherProfilesResponse {
   publisherProfiles?: ReadonlyArray<PublisherProfile>;
 }
 
-export const ListPublisherProfilesResponse: Schema.Schema<ListPublisherProfilesResponse> =
+export const ListPublisherProfilesResponse: Schema.Codec<ListPublisherProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     publisherProfiles: Schema.optional(Schema.Array(PublisherProfile)),
@@ -1819,7 +1819,7 @@ export interface FilteredBidDetailRow {
   rowDimensions?: RowDimensions;
 }
 
-export const FilteredBidDetailRow: Schema.Schema<FilteredBidDetailRow> =
+export const FilteredBidDetailRow: Schema.Codec<FilteredBidDetailRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detailId: Schema.optional(Schema.Number),
     bidCount: Schema.optional(MetricValue),
@@ -1847,7 +1847,7 @@ export interface ListCreativeStatusBreakdownByDetailResponse {
   filteredBidDetailRows?: ReadonlyArray<FilteredBidDetailRow>;
 }
 
-export const ListCreativeStatusBreakdownByDetailResponse: Schema.Schema<ListCreativeStatusBreakdownByDetailResponse> =
+export const ListCreativeStatusBreakdownByDetailResponse: Schema.Codec<ListCreativeStatusBreakdownByDetailResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     detailType: Schema.optional(Schema.String),
@@ -1859,7 +1859,7 @@ export interface PauseProposalRequest {
   reason?: string;
 }
 
-export const PauseProposalRequest: Schema.Schema<PauseProposalRequest> =
+export const PauseProposalRequest: Schema.Codec<PauseProposalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "PauseProposalRequest" });
@@ -1881,7 +1881,7 @@ export interface Note {
   createTime?: string;
 }
 
-export const Note: Schema.Schema<Note> =
+export const Note: Schema.Codec<Note> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     noteId: Schema.optional(Schema.String),
     creatorRole: Schema.optional(Schema.String),
@@ -1946,7 +1946,7 @@ export interface Proposal {
   isSetupComplete?: boolean;
 }
 
-export const Proposal: Schema.Schema<Proposal> =
+export const Proposal: Schema.Codec<Proposal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isRenegotiating: Schema.optional(Schema.Boolean),
     updateTime: Schema.optional(Schema.String),
@@ -1971,7 +1971,7 @@ export const Proposal: Schema.Schema<Proposal> =
 
 export interface ResumeProposalRequest {}
 
-export const ResumeProposalRequest: Schema.Schema<ResumeProposalRequest> =
+export const ResumeProposalRequest: Schema.Codec<ResumeProposalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResumeProposalRequest",
   });
@@ -1983,7 +1983,7 @@ export interface ListImpressionMetricsResponse {
   nextPageToken?: string;
 }
 
-export const ListImpressionMetricsResponse: Schema.Schema<ListImpressionMetricsResponse> =
+export const ListImpressionMetricsResponse: Schema.Codec<ListImpressionMetricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     impressionMetricsRows: Schema.optional(Schema.Array(ImpressionMetricsRow)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2028,7 +2028,7 @@ export interface Product {
   productRevision?: string;
 }
 
-export const Product: Schema.Schema<Product> =
+export const Product: Schema.Codec<Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seller: Schema.optional(Seller),
     targetingCriterion: Schema.optional(Schema.Array(TargetingCriteria)),
@@ -2054,7 +2054,7 @@ export interface ListProductsResponse {
   products?: ReadonlyArray<Product>;
 }
 
-export const ListProductsResponse: Schema.Schema<ListProductsResponse> =
+export const ListProductsResponse: Schema.Codec<ListProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     products: Schema.optional(Schema.Array(Product)),
@@ -2069,7 +2069,7 @@ export interface CreativeStatusRow {
   rowDimensions?: RowDimensions;
 }
 
-export const CreativeStatusRow: Schema.Schema<CreativeStatusRow> =
+export const CreativeStatusRow: Schema.Codec<CreativeStatusRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bidCount: Schema.optional(MetricValue),
     creativeStatusId: Schema.optional(Schema.Number),
@@ -2083,7 +2083,7 @@ export interface ListLosingBidsResponse {
   nextPageToken?: string;
 }
 
-export const ListLosingBidsResponse: Schema.Schema<ListLosingBidsResponse> =
+export const ListLosingBidsResponse: Schema.Codec<ListLosingBidsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeStatusRows: Schema.optional(Schema.Array(CreativeStatusRow)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2091,7 +2091,7 @@ export const ListLosingBidsResponse: Schema.Schema<ListLosingBidsResponse> =
 
 export interface StopWatchingCreativeRequest {}
 
-export const StopWatchingCreativeRequest: Schema.Schema<StopWatchingCreativeRequest> =
+export const StopWatchingCreativeRequest: Schema.Codec<StopWatchingCreativeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopWatchingCreativeRequest",
   });
@@ -2112,7 +2112,7 @@ export interface ClientUser {
   clientAccountId?: string;
 }
 
-export const ClientUser: Schema.Schema<ClientUser> =
+export const ClientUser: Schema.Codec<ClientUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -2127,7 +2127,7 @@ export interface ListFilteredBidsResponse {
   nextPageToken?: string;
 }
 
-export const ListFilteredBidsResponse: Schema.Schema<ListFilteredBidsResponse> =
+export const ListFilteredBidsResponse: Schema.Codec<ListFilteredBidsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeStatusRows: Schema.optional(Schema.Array(CreativeStatusRow)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2138,7 +2138,7 @@ export interface AddDealAssociationRequest {
   association?: CreativeDealAssociation;
 }
 
-export const AddDealAssociationRequest: Schema.Schema<AddDealAssociationRequest> =
+export const AddDealAssociationRequest: Schema.Codec<AddDealAssociationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     association: Schema.optional(CreativeDealAssociation),
   }).annotate({ identifier: "AddDealAssociationRequest" });
@@ -2150,7 +2150,7 @@ export interface ListCreativeStatusBreakdownByCreativeResponse {
   filteredBidCreativeRows?: ReadonlyArray<FilteredBidCreativeRow>;
 }
 
-export const ListCreativeStatusBreakdownByCreativeResponse: Schema.Schema<ListCreativeStatusBreakdownByCreativeResponse> =
+export const ListCreativeStatusBreakdownByCreativeResponse: Schema.Codec<ListCreativeStatusBreakdownByCreativeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     filteredBidCreativeRows: Schema.optional(
@@ -2163,14 +2163,14 @@ export interface CompleteSetupRequest {
   externalDealIds?: ReadonlyArray<string>;
 }
 
-export const CompleteSetupRequest: Schema.Schema<CompleteSetupRequest> =
+export const CompleteSetupRequest: Schema.Codec<CompleteSetupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalDealIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CompleteSetupRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -2182,7 +2182,7 @@ export interface ListBidMetricsResponse {
   nextPageToken?: string;
 }
 
-export const ListBidMetricsResponse: Schema.Schema<ListBidMetricsResponse> =
+export const ListBidMetricsResponse: Schema.Codec<ListBidMetricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bidMetricsRows: Schema.optional(Schema.Array(BidMetricsRow)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2197,7 +2197,7 @@ export interface ClientUserInvitation {
   clientAccountId?: string;
 }
 
-export const ClientUserInvitation: Schema.Schema<ClientUserInvitation> =
+export const ClientUserInvitation: Schema.Codec<ClientUserInvitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     invitationId: Schema.optional(Schema.String),
@@ -2211,7 +2211,7 @@ export interface ListClientUserInvitationsResponse {
   nextPageToken?: string;
 }
 
-export const ListClientUserInvitationsResponse: Schema.Schema<ListClientUserInvitationsResponse> =
+export const ListClientUserInvitationsResponse: Schema.Codec<ListClientUserInvitationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invitations: Schema.optional(Schema.Array(ClientUserInvitation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2219,7 +2219,7 @@ export const ListClientUserInvitationsResponse: Schema.Schema<ListClientUserInvi
 
 export interface CancelNegotiationRequest {}
 
-export const CancelNegotiationRequest: Schema.Schema<CancelNegotiationRequest> =
+export const CancelNegotiationRequest: Schema.Codec<CancelNegotiationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelNegotiationRequest",
   });
@@ -2231,7 +2231,7 @@ export interface ListDealAssociationsResponse {
   nextPageToken?: string;
 }
 
-export const ListDealAssociationsResponse: Schema.Schema<ListDealAssociationsResponse> =
+export const ListDealAssociationsResponse: Schema.Codec<ListDealAssociationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     associations: Schema.optional(Schema.Array(CreativeDealAssociation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2242,7 +2242,7 @@ export interface WatchCreativeRequest {
   topic?: string;
 }
 
-export const WatchCreativeRequest: Schema.Schema<WatchCreativeRequest> =
+export const WatchCreativeRequest: Schema.Codec<WatchCreativeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
   }).annotate({ identifier: "WatchCreativeRequest" });
@@ -2252,7 +2252,7 @@ export interface AddNoteRequest {
   note?: Note;
 }
 
-export const AddNoteRequest: Schema.Schema<AddNoteRequest> =
+export const AddNoteRequest: Schema.Codec<AddNoteRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     note: Schema.optional(Note),
   }).annotate({ identifier: "AddNoteRequest" });
@@ -2264,7 +2264,7 @@ export interface ListFilteredBidRequestsResponse {
   calloutStatusRows?: ReadonlyArray<CalloutStatusRow>;
 }
 
-export const ListFilteredBidRequestsResponse: Schema.Schema<ListFilteredBidRequestsResponse> =
+export const ListFilteredBidRequestsResponse: Schema.Codec<ListFilteredBidRequestsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     calloutStatusRows: Schema.optional(Schema.Array(CalloutStatusRow)),
@@ -2277,7 +2277,7 @@ export interface ListProposalsResponse {
   nextPageToken?: string;
 }
 
-export const ListProposalsResponse: Schema.Schema<ListProposalsResponse> =
+export const ListProposalsResponse: Schema.Codec<ListProposalsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proposals: Schema.optional(Schema.Array(Proposal)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2288,7 +2288,7 @@ export interface AcceptProposalRequest {
   proposalRevision?: string;
 }
 
-export const AcceptProposalRequest: Schema.Schema<AcceptProposalRequest> =
+export const AcceptProposalRequest: Schema.Codec<AcceptProposalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proposalRevision: Schema.optional(Schema.String),
   }).annotate({ identifier: "AcceptProposalRequest" });
@@ -2300,7 +2300,7 @@ export interface ListClientUsersResponse {
   nextPageToken?: string;
 }
 
-export const ListClientUsersResponse: Schema.Schema<ListClientUsersResponse> =
+export const ListClientUsersResponse: Schema.Codec<ListClientUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     users: Schema.optional(Schema.Array(ClientUser)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2313,7 +2313,7 @@ export interface PauseProposalDealsRequest {
   externalDealIds?: ReadonlyArray<string>;
 }
 
-export const PauseProposalDealsRequest: Schema.Schema<PauseProposalDealsRequest> =
+export const PauseProposalDealsRequest: Schema.Codec<PauseProposalDealsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     externalDealIds: Schema.optional(Schema.Array(Schema.String)),
@@ -2384,7 +2384,7 @@ export const GetBiddersAccountsFilterSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBiddersAccountsFilterSetsRequest>;
+  ) as unknown as Schema.Codec<GetBiddersAccountsFilterSetsRequest>;
 
 export type GetBiddersAccountsFilterSetsResponse = FilterSet;
 export const GetBiddersAccountsFilterSetsResponse =
@@ -2424,7 +2424,7 @@ export const ListBiddersAccountsFilterSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+ownerName}/filterSets" }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsRequest>;
 
 export type ListBiddersAccountsFilterSetsResponse = ListFilterSetsResponse;
 export const ListBiddersAccountsFilterSetsResponse =
@@ -2462,7 +2462,7 @@ export const DeleteBiddersAccountsFilterSetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteBiddersAccountsFilterSetsRequest>;
+  ) as unknown as Schema.Codec<DeleteBiddersAccountsFilterSetsRequest>;
 
 export type DeleteBiddersAccountsFilterSetsResponse = Empty;
 export const DeleteBiddersAccountsFilterSetsResponse =
@@ -2510,7 +2510,7 @@ export const CreateBiddersAccountsFilterSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateBiddersAccountsFilterSetsRequest>;
+  ) as unknown as Schema.Codec<CreateBiddersAccountsFilterSetsRequest>;
 
 export type CreateBiddersAccountsFilterSetsResponse = FilterSet;
 export const CreateBiddersAccountsFilterSetsResponse =
@@ -2555,7 +2555,7 @@ export const ListBiddersAccountsFilterSetsImpressionMetricsRequest =
       path: "v2beta1/{+filterSetName}/impressionMetrics",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsImpressionMetricsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsImpressionMetricsRequest>;
 
 export type ListBiddersAccountsFilterSetsImpressionMetricsResponse =
   ListImpressionMetricsResponse;
@@ -2600,7 +2600,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/filteredBids" }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsFilteredBidsRequest>;
 
 export type ListBiddersAccountsFilterSetsFilteredBidsResponse =
   ListFilteredBidsResponse;
@@ -2651,7 +2651,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest =
       path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest>;
 
 export type ListBiddersAccountsFilterSetsFilteredBidsDetailsResponse =
   ListCreativeStatusBreakdownByDetailResponse;
@@ -2702,7 +2702,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest =
       path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest>;
 
 export type ListBiddersAccountsFilterSetsFilteredBidsCreativesResponse =
   ListCreativeStatusBreakdownByCreativeResponse;
@@ -2750,7 +2750,7 @@ export const ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest =
       path: "v2beta1/{+filterSetName}/nonBillableWinningBids",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest>;
 
 export type ListBiddersAccountsFilterSetsNonBillableWinningBidsResponse =
   ListNonBillableWinningBidsResponse;
@@ -2795,7 +2795,7 @@ export const ListBiddersAccountsFilterSetsLosingBidsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/losingBids" }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsLosingBidsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsLosingBidsRequest>;
 
 export type ListBiddersAccountsFilterSetsLosingBidsResponse =
   ListLosingBidsResponse;
@@ -2843,7 +2843,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidRequestsRequest =
       path: "v2beta1/{+filterSetName}/filteredBidRequests",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidRequestsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsFilteredBidRequestsRequest>;
 
 export type ListBiddersAccountsFilterSetsFilteredBidRequestsResponse =
   ListFilteredBidRequestsResponse;
@@ -2891,7 +2891,7 @@ export const ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest =
       path: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest>;
 
 export type ListBiddersAccountsFilterSetsBidResponsesWithoutBidsResponse =
   ListBidResponsesWithoutBidsResponse;
@@ -2939,7 +2939,7 @@ export const ListBiddersAccountsFilterSetsBidResponseErrorsRequest =
       path: "v2beta1/{+filterSetName}/bidResponseErrors",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidResponseErrorsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsBidResponseErrorsRequest>;
 
 export type ListBiddersAccountsFilterSetsBidResponseErrorsResponse =
   ListBidResponseErrorsResponse;
@@ -2984,7 +2984,7 @@ export const ListBiddersAccountsFilterSetsBidMetricsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/bidMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidMetricsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersAccountsFilterSetsBidMetricsRequest>;
 
 export type ListBiddersAccountsFilterSetsBidMetricsResponse =
   ListBidMetricsResponse;
@@ -3035,7 +3035,7 @@ export const CreateBiddersFilterSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateBiddersFilterSetsRequest>;
+  ) as unknown as Schema.Codec<CreateBiddersFilterSetsRequest>;
 
 export type CreateBiddersFilterSetsResponse = FilterSet;
 export const CreateBiddersFilterSetsResponse =
@@ -3077,7 +3077,7 @@ export const ListBiddersFilterSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+ownerName}/filterSets" }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsRequest>;
 
 export type ListBiddersFilterSetsResponse = ListFilterSetsResponse;
 export const ListBiddersFilterSetsResponse =
@@ -3112,7 +3112,7 @@ export const DeleteBiddersFilterSetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteBiddersFilterSetsRequest>;
+  ) as unknown as Schema.Codec<DeleteBiddersFilterSetsRequest>;
 
 export type DeleteBiddersFilterSetsResponse = Empty;
 export const DeleteBiddersFilterSetsResponse =
@@ -3148,7 +3148,7 @@ export const GetBiddersFilterSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBiddersFilterSetsRequest>;
+  ) as unknown as Schema.Codec<GetBiddersFilterSetsRequest>;
 
 export type GetBiddersFilterSetsResponse = FilterSet;
 export const GetBiddersFilterSetsResponse =
@@ -3185,7 +3185,7 @@ export const ListBiddersFilterSetsFilteredBidsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/filteredBids" }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsFilteredBidsRequest>;
 
 export type ListBiddersFilterSetsFilteredBidsResponse =
   ListFilteredBidsResponse;
@@ -3236,7 +3236,7 @@ export const ListBiddersFilterSetsFilteredBidsDetailsRequest =
       path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsDetailsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsFilteredBidsDetailsRequest>;
 
 export type ListBiddersFilterSetsFilteredBidsDetailsResponse =
   ListCreativeStatusBreakdownByDetailResponse;
@@ -3287,7 +3287,7 @@ export const ListBiddersFilterSetsFilteredBidsCreativesRequest =
       path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsCreativesRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsFilteredBidsCreativesRequest>;
 
 export type ListBiddersFilterSetsFilteredBidsCreativesResponse =
   ListCreativeStatusBreakdownByCreativeResponse;
@@ -3335,7 +3335,7 @@ export const ListBiddersFilterSetsNonBillableWinningBidsRequest =
       path: "v2beta1/{+filterSetName}/nonBillableWinningBids",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsNonBillableWinningBidsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsNonBillableWinningBidsRequest>;
 
 export type ListBiddersFilterSetsNonBillableWinningBidsResponse =
   ListNonBillableWinningBidsResponse;
@@ -3383,7 +3383,7 @@ export const ListBiddersFilterSetsImpressionMetricsRequest =
       path: "v2beta1/{+filterSetName}/impressionMetrics",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsImpressionMetricsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsImpressionMetricsRequest>;
 
 export type ListBiddersFilterSetsImpressionMetricsResponse =
   ListImpressionMetricsResponse;
@@ -3428,7 +3428,7 @@ export const ListBiddersFilterSetsBidMetricsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/bidMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsBidMetricsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsBidMetricsRequest>;
 
 export type ListBiddersFilterSetsBidMetricsResponse = ListBidMetricsResponse;
 export const ListBiddersFilterSetsBidMetricsResponse =
@@ -3475,7 +3475,7 @@ export const ListBiddersFilterSetsBidResponseErrorsRequest =
       path: "v2beta1/{+filterSetName}/bidResponseErrors",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsBidResponseErrorsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsBidResponseErrorsRequest>;
 
 export type ListBiddersFilterSetsBidResponseErrorsResponse =
   ListBidResponseErrorsResponse;
@@ -3523,7 +3523,7 @@ export const ListBiddersFilterSetsFilteredBidRequestsRequest =
       path: "v2beta1/{+filterSetName}/filteredBidRequests",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidRequestsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsFilteredBidRequestsRequest>;
 
 export type ListBiddersFilterSetsFilteredBidRequestsResponse =
   ListFilteredBidRequestsResponse;
@@ -3571,7 +3571,7 @@ export const ListBiddersFilterSetsBidResponsesWithoutBidsRequest =
       path: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsBidResponsesWithoutBidsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsBidResponsesWithoutBidsRequest>;
 
 export type ListBiddersFilterSetsBidResponsesWithoutBidsResponse =
   ListBidResponsesWithoutBidsResponse;
@@ -3616,7 +3616,7 @@ export const ListBiddersFilterSetsLosingBidsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/losingBids" }),
     svc,
-  ) as unknown as Schema.Schema<ListBiddersFilterSetsLosingBidsRequest>;
+  ) as unknown as Schema.Codec<ListBiddersFilterSetsLosingBidsRequest>;
 
 export type ListBiddersFilterSetsLosingBidsResponse = ListLosingBidsResponse;
 export const ListBiddersFilterSetsLosingBidsResponse =
@@ -3654,7 +3654,7 @@ export const GetBuyersFilterSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBuyersFilterSetsRequest>;
+  ) as unknown as Schema.Codec<GetBuyersFilterSetsRequest>;
 
 export type GetBuyersFilterSetsResponse = FilterSet;
 export const GetBuyersFilterSetsResponse =
@@ -3697,7 +3697,7 @@ export const CreateBuyersFilterSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateBuyersFilterSetsRequest>;
+  ) as unknown as Schema.Codec<CreateBuyersFilterSetsRequest>;
 
 export type CreateBuyersFilterSetsResponse = FilterSet;
 export const CreateBuyersFilterSetsResponse =
@@ -3739,7 +3739,7 @@ export const ListBuyersFilterSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+ownerName}/filterSets" }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsRequest>;
 
 export type ListBuyersFilterSetsResponse = ListFilterSetsResponse;
 export const ListBuyersFilterSetsResponse =
@@ -3774,7 +3774,7 @@ export const DeleteBuyersFilterSetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteBuyersFilterSetsRequest>;
+  ) as unknown as Schema.Codec<DeleteBuyersFilterSetsRequest>;
 
 export type DeleteBuyersFilterSetsResponse = Empty;
 export const DeleteBuyersFilterSetsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3818,7 +3818,7 @@ export const ListBuyersFilterSetsImpressionMetricsRequest =
       path: "v2beta1/{+filterSetName}/impressionMetrics",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsImpressionMetricsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsImpressionMetricsRequest>;
 
 export type ListBuyersFilterSetsImpressionMetricsResponse =
   ListImpressionMetricsResponse;
@@ -3863,7 +3863,7 @@ export const ListBuyersFilterSetsFilteredBidsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/filteredBids" }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsFilteredBidsRequest>;
 
 export type ListBuyersFilterSetsFilteredBidsResponse = ListFilteredBidsResponse;
 export const ListBuyersFilterSetsFilteredBidsResponse =
@@ -3913,7 +3913,7 @@ export const ListBuyersFilterSetsFilteredBidsDetailsRequest =
       path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsDetailsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsFilteredBidsDetailsRequest>;
 
 export type ListBuyersFilterSetsFilteredBidsDetailsResponse =
   ListCreativeStatusBreakdownByDetailResponse;
@@ -3964,7 +3964,7 @@ export const ListBuyersFilterSetsFilteredBidsCreativesRequest =
       path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsCreativesRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsFilteredBidsCreativesRequest>;
 
 export type ListBuyersFilterSetsFilteredBidsCreativesResponse =
   ListCreativeStatusBreakdownByCreativeResponse;
@@ -4012,7 +4012,7 @@ export const ListBuyersFilterSetsNonBillableWinningBidsRequest =
       path: "v2beta1/{+filterSetName}/nonBillableWinningBids",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsNonBillableWinningBidsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsNonBillableWinningBidsRequest>;
 
 export type ListBuyersFilterSetsNonBillableWinningBidsResponse =
   ListNonBillableWinningBidsResponse;
@@ -4060,7 +4060,7 @@ export const ListBuyersFilterSetsBidResponseErrorsRequest =
       path: "v2beta1/{+filterSetName}/bidResponseErrors",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsBidResponseErrorsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsBidResponseErrorsRequest>;
 
 export type ListBuyersFilterSetsBidResponseErrorsResponse =
   ListBidResponseErrorsResponse;
@@ -4105,7 +4105,7 @@ export const ListBuyersFilterSetsBidMetricsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/bidMetrics" }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsBidMetricsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsBidMetricsRequest>;
 
 export type ListBuyersFilterSetsBidMetricsResponse = ListBidMetricsResponse;
 export const ListBuyersFilterSetsBidMetricsResponse =
@@ -4149,7 +4149,7 @@ export const ListBuyersFilterSetsLosingBidsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/losingBids" }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsLosingBidsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsLosingBidsRequest>;
 
 export type ListBuyersFilterSetsLosingBidsResponse = ListLosingBidsResponse;
 export const ListBuyersFilterSetsLosingBidsResponse =
@@ -4196,7 +4196,7 @@ export const ListBuyersFilterSetsFilteredBidRequestsRequest =
       path: "v2beta1/{+filterSetName}/filteredBidRequests",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidRequestsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsFilteredBidRequestsRequest>;
 
 export type ListBuyersFilterSetsFilteredBidRequestsResponse =
   ListFilteredBidRequestsResponse;
@@ -4244,7 +4244,7 @@ export const ListBuyersFilterSetsBidResponsesWithoutBidsRequest =
       path: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBuyersFilterSetsBidResponsesWithoutBidsRequest>;
+  ) as unknown as Schema.Codec<ListBuyersFilterSetsBidResponsesWithoutBidsRequest>;
 
 export type ListBuyersFilterSetsBidResponsesWithoutBidsResponse =
   ListBidResponsesWithoutBidsResponse;
@@ -4289,7 +4289,7 @@ export const GetAccountsProductsRequest =
       path: "v2beta1/accounts/{accountId}/products/{productId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsProductsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsProductsRequest>;
 
 export type GetAccountsProductsResponse = Product;
 export const GetAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
@@ -4328,7 +4328,7 @@ export const ListAccountsProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/accounts/{accountId}/products" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsProductsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsProductsRequest>;
 
 export type ListAccountsProductsResponse = ListProductsResponse;
 export const ListAccountsProductsResponse =
@@ -4372,7 +4372,7 @@ export const ListAccountsPublisherProfilesRequest =
       path: "v2beta1/accounts/{accountId}/publisherProfiles",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsPublisherProfilesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsPublisherProfilesRequest>;
 
 export type ListAccountsPublisherProfilesResponse =
   ListPublisherProfilesResponse;
@@ -4417,7 +4417,7 @@ export const GetAccountsPublisherProfilesRequest =
       path: "v2beta1/accounts/{accountId}/publisherProfiles/{publisherProfileId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsPublisherProfilesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsPublisherProfilesRequest>;
 
 export type GetAccountsPublisherProfilesResponse = PublisherProfile;
 export const GetAccountsPublisherProfilesResponse =
@@ -4461,7 +4461,7 @@ export const PauseAccountsFinalizedProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PauseAccountsFinalizedProposalsRequest>;
+  ) as unknown as Schema.Codec<PauseAccountsFinalizedProposalsRequest>;
 
 export type PauseAccountsFinalizedProposalsResponse = Proposal;
 export const PauseAccountsFinalizedProposalsResponse =
@@ -4518,7 +4518,7 @@ export const ListAccountsFinalizedProposalsRequest =
       path: "v2beta1/accounts/{accountId}/finalizedProposals",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsFinalizedProposalsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsFinalizedProposalsRequest>;
 
 export type ListAccountsFinalizedProposalsResponse = ListProposalsResponse;
 export const ListAccountsFinalizedProposalsResponse =
@@ -4566,7 +4566,7 @@ export const ResumeAccountsFinalizedProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResumeAccountsFinalizedProposalsRequest>;
+  ) as unknown as Schema.Codec<ResumeAccountsFinalizedProposalsRequest>;
 
 export type ResumeAccountsFinalizedProposalsResponse = Proposal;
 export const ResumeAccountsFinalizedProposalsResponse =
@@ -4613,7 +4613,7 @@ export const ListAccountsClientsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/accounts/{accountId}/clients" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsClientsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsClientsRequest>;
 
 export type ListAccountsClientsResponse = ListClientsResponse;
 export const ListAccountsClientsResponse =
@@ -4655,7 +4655,7 @@ export const CreateAccountsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsClientsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsClientsRequest>;
 
 export type CreateAccountsClientsResponse = Client;
 export const CreateAccountsClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
@@ -4696,7 +4696,7 @@ export const GetAccountsClientsRequest =
       path: "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsClientsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsClientsRequest>;
 
 export type GetAccountsClientsResponse = Client;
 export const GetAccountsClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
@@ -4736,7 +4736,7 @@ export const UpdateAccountsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsClientsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsClientsRequest>;
 
 export type UpdateAccountsClientsResponse = Client;
 export const UpdateAccountsClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
@@ -4784,7 +4784,7 @@ export const UpdateAccountsClientsUsersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsClientsUsersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsClientsUsersRequest>;
 
 export type UpdateAccountsClientsUsersResponse = ClientUser;
 export const UpdateAccountsClientsUsersResponse =
@@ -4829,7 +4829,7 @@ export const GetAccountsClientsUsersRequest =
       path: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsClientsUsersRequest>;
+  ) as unknown as Schema.Codec<GetAccountsClientsUsersRequest>;
 
 export type GetAccountsClientsUsersResponse = ClientUser;
 export const GetAccountsClientsUsersResponse =
@@ -4872,7 +4872,7 @@ export const ListAccountsClientsUsersRequest =
       path: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsClientsUsersRequest>;
+  ) as unknown as Schema.Codec<ListAccountsClientsUsersRequest>;
 
 export type ListAccountsClientsUsersResponse = ListClientUsersResponse;
 export const ListAccountsClientsUsersResponse =
@@ -4919,7 +4919,7 @@ export const GetAccountsClientsInvitationsRequest =
       path: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsClientsInvitationsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsClientsInvitationsRequest>;
 
 export type GetAccountsClientsInvitationsResponse = ClientUserInvitation;
 export const GetAccountsClientsInvitationsResponse =
@@ -4963,7 +4963,7 @@ export const CreateAccountsClientsInvitationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsClientsInvitationsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsClientsInvitationsRequest>;
 
 export type CreateAccountsClientsInvitationsResponse = ClientUserInvitation;
 export const CreateAccountsClientsInvitationsResponse =
@@ -5011,7 +5011,7 @@ export const ListAccountsClientsInvitationsRequest =
       path: "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsClientsInvitationsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsClientsInvitationsRequest>;
 
 export type ListAccountsClientsInvitationsResponse =
   ListClientUserInvitationsResponse;
@@ -5060,7 +5060,7 @@ export const PauseAccountsProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PauseAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<PauseAccountsProposalsRequest>;
 
 export type PauseAccountsProposalsResponse = Proposal;
 export const PauseAccountsProposalsResponse =
@@ -5102,7 +5102,7 @@ export const GetAccountsProposalsRequest =
       path: "v2beta1/accounts/{accountId}/proposals/{proposalId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsProposalsRequest>;
 
 export type GetAccountsProposalsResponse = Proposal;
 export const GetAccountsProposalsResponse =
@@ -5140,7 +5140,7 @@ export const CreateAccountsProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsProposalsRequest>;
 
 export type CreateAccountsProposalsResponse = Proposal;
 export const CreateAccountsProposalsResponse =
@@ -5194,7 +5194,7 @@ export const ListAccountsProposalsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/accounts/{accountId}/proposals" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsProposalsRequest>;
 
 export type ListAccountsProposalsResponse = ListProposalsResponse;
 export const ListAccountsProposalsResponse =
@@ -5239,7 +5239,7 @@ export const UpdateAccountsProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsProposalsRequest>;
 
 export type UpdateAccountsProposalsResponse = Proposal;
 export const UpdateAccountsProposalsResponse =
@@ -5285,7 +5285,7 @@ export const ResumeAccountsProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResumeAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<ResumeAccountsProposalsRequest>;
 
 export type ResumeAccountsProposalsResponse = Proposal;
 export const ResumeAccountsProposalsResponse =
@@ -5331,7 +5331,7 @@ export const AddNoteAccountsProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddNoteAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<AddNoteAccountsProposalsRequest>;
 
 export type AddNoteAccountsProposalsResponse = Note;
 export const AddNoteAccountsProposalsResponse =
@@ -5377,7 +5377,7 @@ export const AcceptAccountsProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcceptAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<AcceptAccountsProposalsRequest>;
 
 export type AcceptAccountsProposalsResponse = Proposal;
 export const AcceptAccountsProposalsResponse =
@@ -5423,7 +5423,7 @@ export const CancelNegotiationAccountsProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelNegotiationAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<CancelNegotiationAccountsProposalsRequest>;
 
 export type CancelNegotiationAccountsProposalsResponse = Proposal;
 export const CancelNegotiationAccountsProposalsResponse =
@@ -5469,7 +5469,7 @@ export const CompleteSetupAccountsProposalsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CompleteSetupAccountsProposalsRequest>;
+  ) as unknown as Schema.Codec<CompleteSetupAccountsProposalsRequest>;
 
 export type CompleteSetupAccountsProposalsResponse = Proposal;
 export const CompleteSetupAccountsProposalsResponse =
@@ -5514,7 +5514,7 @@ export const ListAccountsCreativesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/accounts/{accountId}/creatives" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsCreativesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsCreativesRequest>;
 
 export type ListAccountsCreativesResponse = ListCreativesResponse;
 export const ListAccountsCreativesResponse =
@@ -5559,7 +5559,7 @@ export const WatchAccountsCreativesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WatchAccountsCreativesRequest>;
+  ) as unknown as Schema.Codec<WatchAccountsCreativesRequest>;
 
 export type WatchAccountsCreativesResponse = Empty;
 export const WatchAccountsCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -5604,7 +5604,7 @@ export const UpdateAccountsCreativesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsCreativesRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsCreativesRequest>;
 
 export type UpdateAccountsCreativesResponse = Creative;
 export const UpdateAccountsCreativesResponse =
@@ -5646,7 +5646,7 @@ export const GetAccountsCreativesRequest =
       path: "v2beta1/accounts/{accountId}/creatives/{creativeId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsCreativesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsCreativesRequest>;
 
 export type GetAccountsCreativesResponse = Creative;
 export const GetAccountsCreativesResponse =
@@ -5687,7 +5687,7 @@ export const StopWatchingAccountsCreativesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StopWatchingAccountsCreativesRequest>;
+  ) as unknown as Schema.Codec<StopWatchingAccountsCreativesRequest>;
 
 export type StopWatchingAccountsCreativesResponse = Empty;
 export const StopWatchingAccountsCreativesResponse =
@@ -5738,7 +5738,7 @@ export const CreateAccountsCreativesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsCreativesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsCreativesRequest>;
 
 export type CreateAccountsCreativesResponse = Creative;
 export const CreateAccountsCreativesResponse =
@@ -5784,7 +5784,7 @@ export const AddAccountsCreativesDealAssociationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddAccountsCreativesDealAssociationsRequest>;
+  ) as unknown as Schema.Codec<AddAccountsCreativesDealAssociationsRequest>;
 
 export type AddAccountsCreativesDealAssociationsResponse = Empty;
 export const AddAccountsCreativesDealAssociationsResponse =
@@ -5835,7 +5835,7 @@ export const ListAccountsCreativesDealAssociationsRequest =
       path: "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsCreativesDealAssociationsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsCreativesDealAssociationsRequest>;
 
 export type ListAccountsCreativesDealAssociationsResponse =
   ListDealAssociationsResponse;
@@ -5884,7 +5884,7 @@ export const RemoveAccountsCreativesDealAssociationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveAccountsCreativesDealAssociationsRequest>;
+  ) as unknown as Schema.Codec<RemoveAccountsCreativesDealAssociationsRequest>;
 
 export type RemoveAccountsCreativesDealAssociationsResponse = Empty;
 export const RemoveAccountsCreativesDealAssociationsResponse =

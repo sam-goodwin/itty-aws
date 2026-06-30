@@ -4,16 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupInput {
+  envelope?: boolean;
+  pretty?: boolean;
+  projectOwnerId?: string;
+}
 export const CreateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
   projectOwnerId: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups" }));
-export type CreateGroupInput = typeof CreateGroupInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/groups" }),
+) as unknown as Schema.Codec<CreateGroupInput>;
 
 // Output Schema
-export const CreateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupOutput = typeof CreateGroupOutput.Type;
+export type CreateGroupOutput = void;
+export const CreateGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupOutput>;
 
 // The operation
 /**

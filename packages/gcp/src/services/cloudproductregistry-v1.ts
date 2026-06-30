@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface ProductSuite {
   replaced?: boolean;
 }
 
-export const ProductSuite: Schema.Schema<ProductSuite> =
+export const ProductSuite: Schema.Codec<ProductSuite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replacement: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -63,7 +63,7 @@ export interface LogicalProductVariant {
   replacement?: string;
 }
 
-export const LogicalProductVariant: Schema.Schema<LogicalProductVariant> =
+export const LogicalProductVariant: Schema.Codec<LogicalProductVariant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     lifecycleState: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface ListLogicalProductVariantsResponse {
   nextPageToken?: string;
 }
 
-export const ListLogicalProductVariantsResponse: Schema.Schema<ListLogicalProductVariantsResponse> =
+export const ListLogicalProductVariantsResponse: Schema.Codec<ListLogicalProductVariantsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logicalProductVariants: Schema.optional(
       Schema.Array(LogicalProductVariant),
@@ -110,7 +110,7 @@ export interface LogicalProduct {
   variants?: ReadonlyArray<string>;
 }
 
-export const LogicalProduct: Schema.Schema<LogicalProduct> =
+export const LogicalProduct: Schema.Codec<LogicalProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     productSuite: Schema.optional(Schema.String),
@@ -130,7 +130,7 @@ export interface LookupEntityResponse {
   productSuite?: ProductSuite;
 }
 
-export const LookupEntityResponse: Schema.Schema<LookupEntityResponse> =
+export const LookupEntityResponse: Schema.Codec<LookupEntityResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logicalProduct: Schema.optional(LogicalProduct),
     logicalProductVariant: Schema.optional(LogicalProductVariant),
@@ -144,7 +144,7 @@ export interface ListLogicalProductsResponse {
   nextPageToken?: string;
 }
 
-export const ListLogicalProductsResponse: Schema.Schema<ListLogicalProductsResponse> =
+export const ListLogicalProductsResponse: Schema.Codec<ListLogicalProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logicalProducts: Schema.optional(Schema.Array(LogicalProduct)),
     nextPageToken: Schema.optional(Schema.String),
@@ -157,7 +157,7 @@ export interface ListProductSuitesResponse {
   productSuites?: ReadonlyArray<ProductSuite>;
 }
 
-export const ListProductSuitesResponse: Schema.Schema<ListProductSuitesResponse> =
+export const ListProductSuitesResponse: Schema.Codec<ListProductSuitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     productSuites: Schema.optional(Schema.Array(ProductSuite)),
@@ -211,7 +211,7 @@ export const ListLogicalProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/logicalProducts" }),
     svc,
-  ) as unknown as Schema.Schema<ListLogicalProductsRequest>;
+  ) as unknown as Schema.Codec<ListLogicalProductsRequest>;
 
 export type ListLogicalProductsResponse_Op = ListLogicalProductsResponse;
 export const ListLogicalProductsResponse_Op =
@@ -246,7 +246,7 @@ export const GetLogicalProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetLogicalProductsRequest>;
+  ) as unknown as Schema.Codec<GetLogicalProductsRequest>;
 
 export type GetLogicalProductsResponse = LogicalProduct;
 export const GetLogicalProductsResponse =
@@ -277,7 +277,7 @@ export const LookupEntityLogicalProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+lookupUri}:lookupEntity" }),
     svc,
-  ) as unknown as Schema.Schema<LookupEntityLogicalProductsRequest>;
+  ) as unknown as Schema.Codec<LookupEntityLogicalProductsRequest>;
 
 export type LookupEntityLogicalProductsResponse = LookupEntityResponse;
 export const LookupEntityLogicalProductsResponse =
@@ -317,7 +317,7 @@ export const ListLogicalProductsVariantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/variants" }),
     svc,
-  ) as unknown as Schema.Schema<ListLogicalProductsVariantsRequest>;
+  ) as unknown as Schema.Codec<ListLogicalProductsVariantsRequest>;
 
 export type ListLogicalProductsVariantsResponse =
   ListLogicalProductVariantsResponse;
@@ -356,7 +356,7 @@ export const GetLogicalProductsVariantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetLogicalProductsVariantsRequest>;
+  ) as unknown as Schema.Codec<GetLogicalProductsVariantsRequest>;
 
 export type GetLogicalProductsVariantsResponse = LogicalProductVariant;
 export const GetLogicalProductsVariantsResponse =
@@ -390,7 +390,7 @@ export const LookupEntityLogicalProductsVariantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+lookupUri}:lookupEntity" }),
     svc,
-  ) as unknown as Schema.Schema<LookupEntityLogicalProductsVariantsRequest>;
+  ) as unknown as Schema.Codec<LookupEntityLogicalProductsVariantsRequest>;
 
 export type LookupEntityLogicalProductsVariantsResponse = LookupEntityResponse;
 export const LookupEntityLogicalProductsVariantsResponse =
@@ -427,7 +427,7 @@ export const ListProductSuitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/productSuites" }),
     svc,
-  ) as unknown as Schema.Schema<ListProductSuitesRequest>;
+  ) as unknown as Schema.Codec<ListProductSuitesRequest>;
 
 export type ListProductSuitesResponse_Op = ListProductSuitesResponse;
 export const ListProductSuitesResponse_Op =
@@ -462,7 +462,7 @@ export const GetProductSuitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProductSuitesRequest>;
+  ) as unknown as Schema.Codec<GetProductSuitesRequest>;
 
 export type GetProductSuitesResponse = ProductSuite;
 export const GetProductSuitesResponse =
@@ -493,7 +493,7 @@ export const LookupEntityProductSuitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+lookupUri}:lookupEntity" }),
     svc,
-  ) as unknown as Schema.Schema<LookupEntityProductSuitesRequest>;
+  ) as unknown as Schema.Codec<LookupEntityProductSuitesRequest>;
 
 export type LookupEntityProductSuitesResponse = LookupEntityResponse;
 export const LookupEntityProductSuitesResponse =

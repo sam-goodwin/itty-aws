@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupProcessPerformanceAdvisorNamespacesInput {
+  groupId: string;
+  processId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  duration?: number;
+  since?: number;
+}
 export const ListGroupProcessPerformanceAdvisorNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const ListGroupProcessPerformanceAdvisorNamespacesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces",
     }),
-  );
-export type ListGroupProcessPerformanceAdvisorNamespacesInput =
-  typeof ListGroupProcessPerformanceAdvisorNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorNamespacesInput>;
 
 // Output Schema
+export type ListGroupProcessPerformanceAdvisorNamespacesOutput = void;
 export const ListGroupProcessPerformanceAdvisorNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessPerformanceAdvisorNamespacesOutput =
-  typeof ListGroupProcessPerformanceAdvisorNamespacesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorNamespacesOutput>;
 
 // The operation
 /**

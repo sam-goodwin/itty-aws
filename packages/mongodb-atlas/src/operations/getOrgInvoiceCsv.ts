@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgInvoiceCsvInput {
+  orgId: string;
+  invoiceId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetOrgInvoiceCsvInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   invoiceId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const GetOrgInvoiceCsvInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv",
   }),
-);
-export type GetOrgInvoiceCsvInput = typeof GetOrgInvoiceCsvInput.Type;
+) as unknown as Schema.Codec<GetOrgInvoiceCsvInput>;
 
 // Output Schema
-export const GetOrgInvoiceCsvOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgInvoiceCsvOutput = typeof GetOrgInvoiceCsvOutput.Type;
+export type GetOrgInvoiceCsvOutput = void;
+export const GetOrgInvoiceCsvOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgInvoiceCsvOutput>;
 
 // The operation
 /**

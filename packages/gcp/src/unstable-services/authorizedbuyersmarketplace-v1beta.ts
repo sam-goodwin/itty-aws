@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface MediaPlanner {
   ancestorNames?: ReadonlyArray<string>;
 }
 
-export const MediaPlanner: Schema.Schema<MediaPlanner> =
+export const MediaPlanner: Schema.Codec<MediaPlanner> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface StringTargetingDimension {
   values?: ReadonlyArray<string>;
 }
 
-export const StringTargetingDimension: Schema.Schema<StringTargetingDimension> =
+export const StringTargetingDimension: Schema.Codec<StringTargetingDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selectionType: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
@@ -73,7 +73,7 @@ export interface AdSize {
   width?: string;
 }
 
-export const AdSize: Schema.Schema<AdSize> =
+export const AdSize: Schema.Codec<AdSize> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     height: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export interface VideoPlcmtTargeting {
   >;
 }
 
-export const VideoPlcmtTargeting: Schema.Schema<VideoPlcmtTargeting> =
+export const VideoPlcmtTargeting: Schema.Codec<VideoPlcmtTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selectionType: Schema.optional(Schema.String),
     videoPlcmtTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -111,7 +111,7 @@ export interface VideoPlayerSizeTargeting {
   minimumWidth?: string;
 }
 
-export const VideoPlayerSizeTargeting: Schema.Schema<VideoPlayerSizeTargeting> =
+export const VideoPlayerSizeTargeting: Schema.Codec<VideoPlayerSizeTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minimumHeight: Schema.optional(Schema.String),
     minimumWidth: Schema.optional(Schema.String),
@@ -169,7 +169,7 @@ export interface PackageVideoTargeting {
     | (string & {});
 }
 
-export const PackageVideoTargeting: Schema.Schema<PackageVideoTargeting> =
+export const PackageVideoTargeting: Schema.Codec<PackageVideoTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minimumPredictedCompletionRatePercentage: Schema.optional(Schema.String),
     includedPositionTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -190,7 +190,7 @@ export interface PackagePlacementTargeting {
   includedMobileAppCategoryTargeting?: ReadonlyArray<string>;
 }
 
-export const PackagePlacementTargeting: Schema.Schema<PackagePlacementTargeting> =
+export const PackagePlacementTargeting: Schema.Codec<PackagePlacementTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uriTargeting: Schema.optional(StringTargetingDimension),
     mobileAppTargeting: Schema.optional(StringTargetingDimension),
@@ -206,7 +206,7 @@ export interface CriteriaTargeting {
   targetedCriteriaIds?: ReadonlyArray<string>;
 }
 
-export const CriteriaTargeting: Schema.Schema<CriteriaTargeting> =
+export const CriteriaTargeting: Schema.Codec<CriteriaTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
     targetedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
@@ -219,7 +219,7 @@ export interface TaxonomyTargeting {
   excludedTaxonomyIds?: ReadonlyArray<string>;
 }
 
-export const TaxonomyTargeting: Schema.Schema<TaxonomyTargeting> =
+export const TaxonomyTargeting: Schema.Codec<TaxonomyTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetedTaxonomyIds: Schema.optional(Schema.Array(Schema.String)),
     excludedTaxonomyIds: Schema.optional(Schema.Array(Schema.String)),
@@ -234,7 +234,7 @@ export interface PackagePublisherProvidedSignalsTargeting {
   videoAndAudioSignalsTargeting?: StringTargetingDimension;
 }
 
-export const PackagePublisherProvidedSignalsTargeting: Schema.Schema<PackagePublisherProvidedSignalsTargeting> =
+export const PackagePublisherProvidedSignalsTargeting: Schema.Codec<PackagePublisherProvidedSignalsTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentTargeting: Schema.optional(TaxonomyTargeting),
     audienceTargeting: Schema.optional(TaxonomyTargeting),
@@ -328,7 +328,7 @@ export interface PackageTargeting {
   publisherProvidedSignalsTargeting?: PackagePublisherProvidedSignalsTargeting;
 }
 
-export const PackageTargeting: Schema.Schema<PackageTargeting> =
+export const PackageTargeting: Schema.Codec<PackageTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includedRewardedType: Schema.optional(Schema.String),
     includedDataSegments: Schema.optional(Schema.Array(Schema.String)),
@@ -367,7 +367,7 @@ export interface Money {
   nanos?: number;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -379,7 +379,7 @@ export interface AccessControlSettings {
   allowlistedMediaPlanners?: ReadonlyArray<string>;
 }
 
-export const AccessControlSettings: Schema.Schema<AccessControlSettings> =
+export const AccessControlSettings: Schema.Codec<AccessControlSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowlistedMediaPlanners: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AccessControlSettings" });
@@ -407,7 +407,7 @@ export interface CuratedPackage {
   floorPriceCpm?: Money;
 }
 
-export const CuratedPackage: Schema.Schema<CuratedPackage> =
+export const CuratedPackage: Schema.Codec<CuratedPackage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -428,7 +428,7 @@ export interface ListCuratedPackagesResponse {
   nextPageToken?: string;
 }
 
-export const ListCuratedPackagesResponse: Schema.Schema<ListCuratedPackagesResponse> =
+export const ListCuratedPackagesResponse: Schema.Codec<ListCuratedPackagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curatedPackages: Schema.optional(Schema.Array(CuratedPackage)),
     nextPageToken: Schema.optional(Schema.String),
@@ -441,7 +441,7 @@ export interface ListMediaPlannersResponse {
   nextPageToken?: string;
 }
 
-export const ListMediaPlannersResponse: Schema.Schema<ListMediaPlannersResponse> =
+export const ListMediaPlannersResponse: Schema.Codec<ListMediaPlannersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mediaPlanners: Schema.optional(Schema.Array(MediaPlanner)),
     nextPageToken: Schema.optional(Schema.String),
@@ -460,7 +460,7 @@ export interface DataSegment {
   cpmFee?: Money;
 }
 
-export const DataSegment: Schema.Schema<DataSegment> =
+export const DataSegment: Schema.Codec<DataSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -471,28 +471,28 @@ export const DataSegment: Schema.Schema<DataSegment> =
 
 export interface DeactivateDataSegmentRequest {}
 
-export const DeactivateDataSegmentRequest: Schema.Schema<DeactivateDataSegmentRequest> =
+export const DeactivateDataSegmentRequest: Schema.Codec<DeactivateDataSegmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeactivateDataSegmentRequest",
   });
 
 export interface ActivateCuratedPackageRequest {}
 
-export const ActivateCuratedPackageRequest: Schema.Schema<ActivateCuratedPackageRequest> =
+export const ActivateCuratedPackageRequest: Schema.Codec<ActivateCuratedPackageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActivateCuratedPackageRequest",
   });
 
 export interface DeactivateCuratedPackageRequest {}
 
-export const DeactivateCuratedPackageRequest: Schema.Schema<DeactivateCuratedPackageRequest> =
+export const DeactivateCuratedPackageRequest: Schema.Codec<DeactivateCuratedPackageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeactivateCuratedPackageRequest",
   });
 
 export interface ActivateDataSegmentRequest {}
 
-export const ActivateDataSegmentRequest: Schema.Schema<ActivateDataSegmentRequest> =
+export const ActivateDataSegmentRequest: Schema.Codec<ActivateDataSegmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActivateDataSegmentRequest",
   });
@@ -504,7 +504,7 @@ export interface ListDataSegmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListDataSegmentsResponse: Schema.Schema<ListDataSegmentsResponse> =
+export const ListDataSegmentsResponse: Schema.Codec<ListDataSegmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSegments: Schema.optional(Schema.Array(DataSegment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -582,7 +582,7 @@ export const DeactivateCuratorsCuratedPackagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeactivateCuratorsCuratedPackagesRequest>;
+  ) as unknown as Schema.Codec<DeactivateCuratorsCuratedPackagesRequest>;
 
 export type DeactivateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const DeactivateCuratorsCuratedPackagesResponse =
@@ -627,7 +627,7 @@ export const ListCuratorsCuratedPackagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/curatedPackages" }),
     svc,
-  ) as unknown as Schema.Schema<ListCuratorsCuratedPackagesRequest>;
+  ) as unknown as Schema.Codec<ListCuratorsCuratedPackagesRequest>;
 
 export type ListCuratorsCuratedPackagesResponse = ListCuratedPackagesResponse;
 export const ListCuratorsCuratedPackagesResponse =
@@ -672,7 +672,7 @@ export const CreateCuratorsCuratedPackagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCuratorsCuratedPackagesRequest>;
+  ) as unknown as Schema.Codec<CreateCuratorsCuratedPackagesRequest>;
 
 export type CreateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const CreateCuratorsCuratedPackagesResponse =
@@ -708,7 +708,7 @@ export const GetCuratorsCuratedPackagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCuratorsCuratedPackagesRequest>;
+  ) as unknown as Schema.Codec<GetCuratorsCuratedPackagesRequest>;
 
 export type GetCuratorsCuratedPackagesResponse = CuratedPackage;
 export const GetCuratorsCuratedPackagesResponse =
@@ -745,7 +745,7 @@ export const ActivateCuratorsCuratedPackagesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:activate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ActivateCuratorsCuratedPackagesRequest>;
+  ) as unknown as Schema.Codec<ActivateCuratorsCuratedPackagesRequest>;
 
 export type ActivateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const ActivateCuratorsCuratedPackagesResponse =
@@ -787,7 +787,7 @@ export const PatchCuratorsCuratedPackagesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchCuratorsCuratedPackagesRequest>;
+  ) as unknown as Schema.Codec<PatchCuratorsCuratedPackagesRequest>;
 
 export type PatchCuratorsCuratedPackagesResponse = CuratedPackage;
 export const PatchCuratorsCuratedPackagesResponse =
@@ -823,7 +823,7 @@ export const GetCuratorsDataSegmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCuratorsDataSegmentsRequest>;
+  ) as unknown as Schema.Codec<GetCuratorsDataSegmentsRequest>;
 
 export type GetCuratorsDataSegmentsResponse = DataSegment;
 export const GetCuratorsDataSegmentsResponse =
@@ -857,7 +857,7 @@ export const ActivateCuratorsDataSegmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:activate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ActivateCuratorsDataSegmentsRequest>;
+  ) as unknown as Schema.Codec<ActivateCuratorsDataSegmentsRequest>;
 
 export type ActivateCuratorsDataSegmentsResponse = DataSegment;
 export const ActivateCuratorsDataSegmentsResponse =
@@ -900,7 +900,7 @@ export const CreateCuratorsDataSegmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCuratorsDataSegmentsRequest>;
+  ) as unknown as Schema.Codec<CreateCuratorsDataSegmentsRequest>;
 
 export type CreateCuratorsDataSegmentsResponse = DataSegment;
 export const CreateCuratorsDataSegmentsResponse =
@@ -942,7 +942,7 @@ export const ListCuratorsDataSegmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/dataSegments" }),
     svc,
-  ) as unknown as Schema.Schema<ListCuratorsDataSegmentsRequest>;
+  ) as unknown as Schema.Codec<ListCuratorsDataSegmentsRequest>;
 
 export type ListCuratorsDataSegmentsResponse = ListDataSegmentsResponse;
 export const ListCuratorsDataSegmentsResponse =
@@ -987,7 +987,7 @@ export const DeactivateCuratorsDataSegmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeactivateCuratorsDataSegmentsRequest>;
+  ) as unknown as Schema.Codec<DeactivateCuratorsDataSegmentsRequest>;
 
 export type DeactivateCuratorsDataSegmentsResponse = DataSegment;
 export const DeactivateCuratorsDataSegmentsResponse =
@@ -1029,7 +1029,7 @@ export const PatchCuratorsDataSegmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchCuratorsDataSegmentsRequest>;
+  ) as unknown as Schema.Codec<PatchCuratorsDataSegmentsRequest>;
 
 export type PatchCuratorsDataSegmentsResponse = DataSegment;
 export const PatchCuratorsDataSegmentsResponse =
@@ -1071,7 +1071,7 @@ export const ListMediaPlannersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/mediaPlanners" }),
     svc,
-  ) as unknown as Schema.Schema<ListMediaPlannersRequest>;
+  ) as unknown as Schema.Codec<ListMediaPlannersRequest>;
 
 export type ListMediaPlannersResponse_Op = ListMediaPlannersResponse;
 export const ListMediaPlannersResponse_Op =

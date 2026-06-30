@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DatasetItemsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const DatasetItemsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,44 @@ export const DatasetItemsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/dataset_items/{id}/",
     }),
-  );
-export type DatasetItemsRetrieveInput = typeof DatasetItemsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DatasetItemsRetrieveInput>;
 
 // Output Schema
+export interface DatasetItemsRetrieveOutput {
+  id?: string;
+  dataset?: string;
+  input?: unknown;
+  output?: unknown;
+  metadata?: unknown;
+  ref_trace_id?: string | null;
+  ref_timestamp?: string | null;
+  ref_source_id?: string | null;
+  deleted?: boolean | null;
+  created_at?: string;
+  updated_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetItemsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -43,13 +81,28 @@ export const DatasetItemsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
-export type DatasetItemsRetrieveOutput = typeof DatasetItemsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DatasetItemsRetrieveOutput>;
 
 // The operation
 /**

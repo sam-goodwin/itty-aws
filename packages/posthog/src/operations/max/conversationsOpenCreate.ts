@@ -4,6 +4,33 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsOpenCreateInput {
+  conversation: string;
+  project_id: string;
+  content?: string | null;
+  trace_id?: string;
+  attached_context?: {
+    type:
+      | "action"
+      | "dashboard"
+      | "error_tracking_issue"
+      | "evaluation"
+      | "event"
+      | "insight"
+      | "notebook"
+      | "text";
+    id?: unknown;
+    name?: string;
+    value?: string;
+  }[];
+  initial_permission_mode?:
+    | "default"
+    | "acceptEdits"
+    | "plan"
+    | "bypassPermissions"
+    | "auto";
+  task_id?: string;
+}
 export const ConversationsOpenCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.String.pipe(T.PathParam()),
@@ -44,11 +71,16 @@ export const ConversationsOpenCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/conversations/{conversation}/open/",
     }),
-  );
-export type ConversationsOpenCreateInput =
-  typeof ConversationsOpenCreateInput.Type;
+  ) as unknown as Schema.Codec<ConversationsOpenCreateInput>;
 
 // Output Schema
+export interface ConversationsOpenCreateOutput {
+  task_id: string;
+  run_id: string;
+  trace_id: string | null;
+  run_status: string;
+  just_created_run: boolean;
+}
 export const ConversationsOpenCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     task_id: Schema.String,
@@ -56,9 +88,7 @@ export const ConversationsOpenCreateOutput =
     trace_id: Schema.NullOr(Schema.String),
     run_status: Schema.String,
     just_created_run: Schema.Boolean,
-  });
-export type ConversationsOpenCreateOutput =
-  typeof ConversationsOpenCreateOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsOpenCreateOutput>;
 
 // The operation
 /**

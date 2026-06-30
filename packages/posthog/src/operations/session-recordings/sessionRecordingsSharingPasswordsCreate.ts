@@ -6,8 +6,25 @@ import {
   SensitiveNullableString,
   SensitiveOutputNullableString,
 } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface SessionRecordingsSharingPasswordsCreateInput {
+  project_id: string;
+  recording_id: string;
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: string | Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}
 export const SessionRecordingsSharingPasswordsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -33,11 +50,23 @@ export const SessionRecordingsSharingPasswordsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/session_recordings/{recording_id}/sharing/passwords/",
     }),
-  );
-export type SessionRecordingsSharingPasswordsCreateInput =
-  typeof SessionRecordingsSharingPasswordsCreateInput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingsSharingPasswordsCreateInput>;
 
 // Output Schema
+export interface SessionRecordingsSharingPasswordsCreateOutput {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}
 export const SessionRecordingsSharingPasswordsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
@@ -56,9 +85,7 @@ export const SessionRecordingsSharingPasswordsCreateOutput =
         }),
       ),
     ),
-  });
-export type SessionRecordingsSharingPasswordsCreateOutput =
-  typeof SessionRecordingsSharingPasswordsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SessionRecordingsSharingPasswordsCreateOutput>;
 
 // The operation
 /**

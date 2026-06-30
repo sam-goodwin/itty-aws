@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewsListInput {
+  project_id: string;
+  classifications?: string;
+  limit?: number;
+  offset?: number;
+  topic?: string;
+}
 export const UserInterviewsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,10 +22,46 @@ export const UserInterviewsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/user_interviews/",
     }),
-  );
-export type UserInterviewsListInput = typeof UserInterviewsListInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewsListInput>;
 
 // Output Schema
+export interface UserInterviewsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string;
+    interviewee_emails?: string[];
+    interviewee_identifier?: string;
+    topic?: string | null;
+    transcript?: string;
+    summary?: string;
+    classifications?: ("abandoned" | "off-topic")[];
+    audio?: string;
+  }[];
+}
 export const UserInterviewsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -43,7 +86,23 @@ export const UserInterviewsListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -60,8 +119,7 @@ export const UserInterviewsListOutput =
         }),
       ),
     ),
-  });
-export type UserInterviewsListOutput = typeof UserInterviewsListOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewsListOutput>;
 
 // The operation
 /**

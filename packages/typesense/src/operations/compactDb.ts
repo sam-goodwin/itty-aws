@@ -3,16 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CompactDbInput {}
 export const CompactDbInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "POST", path: "/operations/db/compact" }));
-export type CompactDbInput = typeof CompactDbInput.Type;
+).pipe(
+  T.Http({ method: "POST", path: "/operations/db/compact" }),
+) as unknown as Schema.Codec<CompactDbInput>;
 
 // Output Schema
+export interface CompactDbOutput {
+  success: boolean;
+}
 export const CompactDbOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.Boolean,
-});
-export type CompactDbOutput = typeof CompactDbOutput.Type;
+}) as unknown as Schema.Codec<CompactDbOutput>;
 
 // The operation
 /**

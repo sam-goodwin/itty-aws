@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsRetrieveInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+}
 export const TasksRunsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String.pipe(T.PathParam()),
@@ -15,10 +20,45 @@ export const TasksRunsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "GET",
     path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/",
   }),
-);
-export type TasksRunsRetrieveInput = typeof TasksRunsRetrieveInput.Type;
+) as unknown as Schema.Codec<TasksRunsRetrieveInput>;
 
 // Output Schema
+export interface TasksRunsRetrieveOutput {
+  id: string;
+  task: string;
+  stage: string | null;
+  branch: string | null;
+  status: string;
+  environment: string;
+  runtime_adapter?: "claude" | "codex" | null;
+  provider?: "anthropic" | "openai" | null;
+  model?: string | null;
+  reasoning_effort?: "low" | "medium" | "high" | "xhigh" | "max" | null;
+  log_url?: string | null;
+  error_message: string | null;
+  output: Record<string, unknown> | null;
+  state: Record<string, unknown>;
+  artifacts: {
+    id?: string;
+    name?: string;
+    type?: string;
+    source?: string;
+    size?: number;
+    content_type?: string;
+    metadata?: {
+      skill_name: string;
+      skill_source: "user" | "repo" | "marketplace" | "codex";
+      content_sha256: string;
+      bundle_format: "zip";
+      schema_version: number;
+    };
+    storage_path?: string;
+    uploaded_at?: string;
+  }[];
+  created_at?: string | null;
+  updated_at?: string | null;
+  completed_at?: string | null;
+}
 export const TasksRunsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -27,10 +67,16 @@ export const TasksRunsRetrieveOutput =
     branch: Schema.NullOr(Schema.String),
     status: Schema.String,
     environment: Schema.String,
-    runtime_adapter: Schema.optional(Schema.Unknown),
-    provider: Schema.optional(Schema.Unknown),
+    runtime_adapter: Schema.optional(
+      Schema.NullOr(Schema.Literals(["claude", "codex"])),
+    ),
+    provider: Schema.optional(
+      Schema.NullOr(Schema.Literals(["anthropic", "openai"])),
+    ),
     model: Schema.optional(Schema.NullOr(Schema.String)),
-    reasoning_effort: Schema.optional(Schema.Unknown),
+    reasoning_effort: Schema.optional(
+      Schema.NullOr(Schema.Literals(["low", "medium", "high", "xhigh", "max"])),
+    ),
     log_url: Schema.optional(Schema.NullOr(Schema.String)),
     error_message: Schema.NullOr(Schema.String),
     output: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
@@ -64,8 +110,7 @@ export const TasksRunsRetrieveOutput =
     created_at: Schema.optional(Schema.NullOr(Schema.String)),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
     completed_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type TasksRunsRetrieveOutput = typeof TasksRunsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsRetrieveOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface EnterpriseAccount {
   accountEmail?: string;
 }
 
-export const EnterpriseAccount: Schema.Schema<EnterpriseAccount> =
+export const EnterpriseAccount: Schema.Codec<EnterpriseAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseAccount" });
@@ -37,7 +37,7 @@ export interface AdministratorWebTokenSpecManagedConfigurations {
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecManagedConfigurations: Schema.Schema<AdministratorWebTokenSpecManagedConfigurations> =
+export const AdministratorWebTokenSpecManagedConfigurations: Schema.Codec<AdministratorWebTokenSpecManagedConfigurations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AdministratorWebTokenSpecManagedConfigurations" });
@@ -49,7 +49,7 @@ export interface ProductPermission {
   permissionId?: string;
 }
 
-export const ProductPermission: Schema.Schema<ProductPermission> =
+export const ProductPermission: Schema.Codec<ProductPermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     permissionId: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface LocalizedText {
   locale?: string;
 }
 
-export const LocalizedText: Schema.Schema<LocalizedText> =
+export const LocalizedText: Schema.Codec<LocalizedText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -77,7 +77,7 @@ export interface StorePage {
   link?: ReadonlyArray<string>;
 }
 
-export const StorePage: Schema.Schema<StorePage> =
+export const StorePage: Schema.Codec<StorePage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.Array(LocalizedText)),
     id: Schema.optional(Schema.String),
@@ -89,7 +89,7 @@ export interface StoreLayoutPagesListResponse {
   page?: ReadonlyArray<StorePage>;
 }
 
-export const StoreLayoutPagesListResponse: Schema.Schema<StoreLayoutPagesListResponse> =
+export const StoreLayoutPagesListResponse: Schema.Codec<StoreLayoutPagesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     page: Schema.optional(Schema.Array(StorePage)),
   }).annotate({ identifier: "StoreLayoutPagesListResponse" });
@@ -105,7 +105,7 @@ export interface NewDeviceEvent {
   userId?: string;
 }
 
-export const NewDeviceEvent: Schema.Schema<NewDeviceEvent> =
+export const NewDeviceEvent: Schema.Codec<NewDeviceEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dpcPackageName: Schema.optional(Schema.String),
     deviceId: Schema.optional(Schema.String),
@@ -130,7 +130,7 @@ export interface KeyedAppState {
   message?: string;
 }
 
-export const KeyedAppState: Schema.Schema<KeyedAppState> =
+export const KeyedAppState: Schema.Codec<KeyedAppState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateTimestampMillis: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -146,7 +146,7 @@ export interface AppState {
   packageName?: string;
 }
 
-export const AppState: Schema.Schema<AppState> =
+export const AppState: Schema.Codec<AppState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyedAppState: Schema.optional(Schema.Array(KeyedAppState)),
     packageName: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export interface DeviceReport {
   appState?: ReadonlyArray<AppState>;
 }
 
-export const DeviceReport: Schema.Schema<DeviceReport> =
+export const DeviceReport: Schema.Codec<DeviceReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastUpdatedTimestampMillis: Schema.optional(Schema.String),
     appState: Schema.optional(Schema.Array(AppState)),
@@ -174,7 +174,7 @@ export interface DeviceReportUpdateEvent {
   userId?: string;
 }
 
-export const DeviceReportUpdateEvent: Schema.Schema<DeviceReportUpdateEvent> =
+export const DeviceReportUpdateEvent: Schema.Codec<DeviceReportUpdateEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     report: Schema.optional(DeviceReport),
@@ -192,7 +192,7 @@ export interface StoreCluster {
   orderInPage?: string;
 }
 
-export const StoreCluster: Schema.Schema<StoreCluster> =
+export const StoreCluster: Schema.Codec<StoreCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export interface SignupInfo {
   url?: string;
 }
 
-export const SignupInfo: Schema.Schema<SignupInfo> =
+export const SignupInfo: Schema.Codec<SignupInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     completionToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -231,7 +231,7 @@ export interface GoogleAuthenticationSettings {
     | (string & {});
 }
 
-export const GoogleAuthenticationSettings: Schema.Schema<GoogleAuthenticationSettings> =
+export const GoogleAuthenticationSettings: Schema.Codec<GoogleAuthenticationSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleAuthenticationRequired: Schema.optional(Schema.String),
     dedicatedDevicesAllowed: Schema.optional(Schema.String),
@@ -244,7 +244,7 @@ export interface VariableSet {
   placeholder?: string;
 }
 
-export const VariableSet: Schema.Schema<VariableSet> =
+export const VariableSet: Schema.Codec<VariableSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userValue: Schema.optional(Schema.String),
     placeholder: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface Administrator {
   email?: string;
 }
 
-export const Administrator: Schema.Schema<Administrator> =
+export const Administrator: Schema.Codec<Administrator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "Administrator" });
@@ -281,7 +281,7 @@ export interface AutoInstallConstraint {
     | (string & {});
 }
 
-export const AutoInstallConstraint: Schema.Schema<AutoInstallConstraint> =
+export const AutoInstallConstraint: Schema.Codec<AutoInstallConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkTypeConstraint: Schema.optional(Schema.String),
     deviceIdleStateConstraint: Schema.optional(Schema.String),
@@ -304,7 +304,7 @@ export interface AutoInstallPolicy {
   minimumVersionCode?: number;
 }
 
-export const AutoInstallPolicy: Schema.Schema<AutoInstallPolicy> =
+export const AutoInstallPolicy: Schema.Codec<AutoInstallPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoInstallMode: Schema.optional(Schema.String),
     autoInstallPriority: Schema.optional(Schema.Number),
@@ -317,7 +317,7 @@ export interface EnterpriseAuthenticationAppLinkConfig {
   uri?: string;
 }
 
-export const EnterpriseAuthenticationAppLinkConfig: Schema.Schema<EnterpriseAuthenticationAppLinkConfig> =
+export const EnterpriseAuthenticationAppLinkConfig: Schema.Codec<EnterpriseAuthenticationAppLinkConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseAuthenticationAppLinkConfig" });
@@ -329,7 +329,7 @@ export interface ConfigurationVariables {
   variableSet?: ReadonlyArray<VariableSet>;
 }
 
-export const ConfigurationVariables: Schema.Schema<ConfigurationVariables> =
+export const ConfigurationVariables: Schema.Codec<ConfigurationVariables> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mcmId: Schema.optional(Schema.String),
     variableSet: Schema.optional(Schema.Array(VariableSet)),
@@ -340,14 +340,14 @@ export interface ManagedPropertyBundle {
   managedProperty?: ReadonlyArray<ManagedProperty>;
 }
 
-export const ManagedPropertyBundle: Schema.Schema<ManagedPropertyBundle> =
+export const ManagedPropertyBundle: Schema.Codec<ManagedPropertyBundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       managedProperty: Schema.optional(Schema.Array(ManagedProperty)),
     }),
   ).annotate({
     identifier: "ManagedPropertyBundle",
-  }) as any as Schema.Schema<ManagedPropertyBundle>;
+  }) as any as Schema.Codec<ManagedPropertyBundle>;
 
 export interface ManagedProperty {
   /** The boolean value - this will only be present if type of the property is bool. */
@@ -366,7 +366,7 @@ export interface ManagedProperty {
   valueInteger?: number;
 }
 
-export const ManagedProperty: Schema.Schema<ManagedProperty> =
+export const ManagedProperty: Schema.Codec<ManagedProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       valueBool: Schema.optional(Schema.Boolean),
@@ -379,7 +379,7 @@ export const ManagedProperty: Schema.Schema<ManagedProperty> =
     }),
   ).annotate({
     identifier: "ManagedProperty",
-  }) as any as Schema.Schema<ManagedProperty>;
+  }) as any as Schema.Codec<ManagedProperty>;
 
 export interface ManagedConfiguration {
   /** Deprecated. */
@@ -392,7 +392,7 @@ export interface ManagedConfiguration {
   managedProperty?: ReadonlyArray<ManagedProperty>;
 }
 
-export const ManagedConfiguration: Schema.Schema<ManagedConfiguration> =
+export const ManagedConfiguration: Schema.Codec<ManagedConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
@@ -424,7 +424,7 @@ export interface ProductPolicy {
     | (string & {});
 }
 
-export const ProductPolicy: Schema.Schema<ProductPolicy> =
+export const ProductPolicy: Schema.Codec<ProductPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trackIds: Schema.optional(Schema.Array(Schema.String)),
     autoInstallPolicy: Schema.optional(AutoInstallPolicy),
@@ -448,7 +448,7 @@ export interface ServiceAccountKey {
   data?: string;
 }
 
-export const ServiceAccountKey: Schema.Schema<ServiceAccountKey> =
+export const ServiceAccountKey: Schema.Codec<ServiceAccountKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -461,7 +461,7 @@ export interface ManagedConfigurationsForUserListResponse {
   managedConfigurationForUser?: ReadonlyArray<ManagedConfiguration>;
 }
 
-export const ManagedConfigurationsForUserListResponse: Schema.Schema<ManagedConfigurationsForUserListResponse> =
+export const ManagedConfigurationsForUserListResponse: Schema.Codec<ManagedConfigurationsForUserListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedConfigurationForUser: Schema.optional(
       Schema.Array(ManagedConfiguration),
@@ -477,7 +477,7 @@ export interface PageInfo {
   resultPerPage?: number;
 }
 
-export const PageInfo: Schema.Schema<PageInfo> =
+export const PageInfo: Schema.Codec<PageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     totalResults: Schema.optional(Schema.Number),
@@ -490,7 +490,7 @@ export interface TokenPagination {
   previousPageToken?: string;
 }
 
-export const TokenPagination: Schema.Schema<TokenPagination> =
+export const TokenPagination: Schema.Codec<TokenPagination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     previousPageToken: Schema.optional(Schema.String),
@@ -518,7 +518,7 @@ export interface AppRestrictionsSchemaRestrictionRestrictionValue {
   valueBool?: boolean;
 }
 
-export const AppRestrictionsSchemaRestrictionRestrictionValue: Schema.Schema<AppRestrictionsSchemaRestrictionRestrictionValue> =
+export const AppRestrictionsSchemaRestrictionRestrictionValue: Schema.Codec<AppRestrictionsSchemaRestrictionRestrictionValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valueInteger: Schema.optional(Schema.Number),
     valueString: Schema.optional(Schema.String),
@@ -557,7 +557,7 @@ export interface AppRestrictionsSchemaRestriction {
   defaultValue?: AppRestrictionsSchemaRestrictionRestrictionValue;
 }
 
-export const AppRestrictionsSchemaRestriction: Schema.Schema<AppRestrictionsSchemaRestriction> =
+export const AppRestrictionsSchemaRestriction: Schema.Codec<AppRestrictionsSchemaRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       title: Schema.optional(Schema.String),
@@ -575,7 +575,7 @@ export const AppRestrictionsSchemaRestriction: Schema.Schema<AppRestrictionsSche
     }),
   ).annotate({
     identifier: "AppRestrictionsSchemaRestriction",
-  }) as any as Schema.Schema<AppRestrictionsSchemaRestriction>;
+  }) as any as Schema.Codec<AppRestrictionsSchemaRestriction>;
 
 export interface AppRestrictionsSchema {
   /** Deprecated. */
@@ -584,7 +584,7 @@ export interface AppRestrictionsSchema {
   restrictions?: ReadonlyArray<AppRestrictionsSchemaRestriction>;
 }
 
-export const AppRestrictionsSchema: Schema.Schema<AppRestrictionsSchema> =
+export const AppRestrictionsSchema: Schema.Codec<AppRestrictionsSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     restrictions: Schema.optional(
@@ -612,7 +612,7 @@ export interface AppVersion {
   trackId?: ReadonlyArray<string>;
 }
 
-export const AppVersion: Schema.Schema<AppVersion> =
+export const AppVersion: Schema.Codec<AppVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSdkVersion: Schema.optional(Schema.Number),
     versionString: Schema.optional(Schema.String),
@@ -629,7 +629,7 @@ export interface TrackInfo {
   trackAlias?: string;
 }
 
-export const TrackInfo: Schema.Schema<TrackInfo> =
+export const TrackInfo: Schema.Codec<TrackInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trackId: Schema.optional(Schema.String),
     trackAlias: Schema.optional(Schema.String),
@@ -642,7 +642,7 @@ export interface ProductSigningCertificate {
   certificateHashSha1?: string;
 }
 
-export const ProductSigningCertificate: Schema.Schema<ProductSigningCertificate> =
+export const ProductSigningCertificate: Schema.Codec<ProductSigningCertificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateHashSha256: Schema.optional(Schema.String),
     certificateHashSha1: Schema.optional(Schema.String),
@@ -720,7 +720,7 @@ export interface Product {
   availableCountries?: ReadonlyArray<string>;
 }
 
-export const Product: Schema.Schema<Product> =
+export const Product: Schema.Codec<Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableTracks: Schema.optional(Schema.Array(Schema.String)),
     workDetailsUrl: Schema.optional(Schema.String),
@@ -759,7 +759,7 @@ export interface ProductsListResponse {
   product?: ReadonlyArray<Product>;
 }
 
-export const ProductsListResponse: Schema.Schema<ProductsListResponse> =
+export const ProductsListResponse: Schema.Codec<ProductsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageInfo: Schema.optional(PageInfo),
     tokenPagination: Schema.optional(TokenPagination),
@@ -775,7 +775,7 @@ export interface ManagedConfigurationsSettings {
   lastUpdatedTimestampMillis?: string;
 }
 
-export const ManagedConfigurationsSettings: Schema.Schema<ManagedConfigurationsSettings> =
+export const ManagedConfigurationsSettings: Schema.Codec<ManagedConfigurationsSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mcmId: Schema.optional(Schema.String),
@@ -787,7 +787,7 @@ export interface DeviceState {
   accountState?: "enabled" | "disabled" | (string & {});
 }
 
-export const DeviceState: Schema.Schema<DeviceState> =
+export const DeviceState: Schema.Codec<DeviceState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountState: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeviceState" });
@@ -805,7 +805,7 @@ export interface InstallFailureEvent {
   failureDetails?: string;
 }
 
-export const InstallFailureEvent: Schema.Schema<InstallFailureEvent> =
+export const InstallFailureEvent: Schema.Codec<InstallFailureEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureReason: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
@@ -823,7 +823,7 @@ export interface Install {
   versionCode?: number;
 }
 
-export const Install: Schema.Schema<Install> =
+export const Install: Schema.Codec<Install> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installState: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
@@ -855,7 +855,7 @@ export interface Enterprise {
     | (string & {});
 }
 
-export const Enterprise: Schema.Schema<Enterprise> =
+export const Enterprise: Schema.Codec<Enterprise> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -877,7 +877,7 @@ export interface EnrollmentTokenGoogleAuthenticationOptions {
   requiredAccountEmail?: string;
 }
 
-export const EnrollmentTokenGoogleAuthenticationOptions: Schema.Schema<EnrollmentTokenGoogleAuthenticationOptions> =
+export const EnrollmentTokenGoogleAuthenticationOptions: Schema.Codec<EnrollmentTokenGoogleAuthenticationOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authenticationRequirement: Schema.optional(Schema.String),
     requiredAccountEmail: Schema.optional(Schema.String),
@@ -888,7 +888,7 @@ export interface AdministratorWebTokenSpecZeroTouch {
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecZeroTouch: Schema.Schema<AdministratorWebTokenSpecZeroTouch> =
+export const AdministratorWebTokenSpecZeroTouch: Schema.Codec<AdministratorWebTokenSpecZeroTouch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AdministratorWebTokenSpecZeroTouch" });
@@ -900,7 +900,7 @@ export interface Entitlement {
   productId?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
+export const Entitlement: Schema.Codec<Entitlement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
@@ -918,7 +918,7 @@ export interface ProductAvailabilityChangeEvent {
     | (string & {});
 }
 
-export const ProductAvailabilityChangeEvent: Schema.Schema<ProductAvailabilityChangeEvent> =
+export const ProductAvailabilityChangeEvent: Schema.Codec<ProductAvailabilityChangeEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     availabilityStatus: Schema.optional(Schema.String),
@@ -933,7 +933,7 @@ export interface NewPermissionsEvent {
   approvedPermissions?: ReadonlyArray<string>;
 }
 
-export const NewPermissionsEvent: Schema.Schema<NewPermissionsEvent> =
+export const NewPermissionsEvent: Schema.Codec<NewPermissionsEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     requestedPermissions: Schema.optional(Schema.Array(Schema.String)),
@@ -945,7 +945,7 @@ export interface AppUpdateEvent {
   productId?: string;
 }
 
-export const AppUpdateEvent: Schema.Schema<AppUpdateEvent> =
+export const AppUpdateEvent: Schema.Codec<AppUpdateEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AppUpdateEvent" });
@@ -957,7 +957,7 @@ export interface ProductApprovalEvent {
   approved?: "unknown" | "approved" | "unapproved" | (string & {});
 }
 
-export const ProductApprovalEvent: Schema.Schema<ProductApprovalEvent> =
+export const ProductApprovalEvent: Schema.Codec<ProductApprovalEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     approved: Schema.optional(Schema.String),
@@ -971,7 +971,7 @@ export interface EnterpriseUpgradeEvent {
     | (string & {});
 }
 
-export const EnterpriseUpgradeEvent: Schema.Schema<EnterpriseUpgradeEvent> =
+export const EnterpriseUpgradeEvent: Schema.Codec<EnterpriseUpgradeEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upgradeState: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseUpgradeEvent" });
@@ -981,7 +981,7 @@ export interface AppRestrictionsSchemaChangeEvent {
   productId?: string;
 }
 
-export const AppRestrictionsSchemaChangeEvent: Schema.Schema<AppRestrictionsSchemaChangeEvent> =
+export const AppRestrictionsSchemaChangeEvent: Schema.Codec<AppRestrictionsSchemaChangeEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AppRestrictionsSchemaChangeEvent" });
@@ -1025,7 +1025,7 @@ export interface Notification {
   appRestrictionsSchemaChangeEvent?: AppRestrictionsSchemaChangeEvent;
 }
 
-export const Notification: Schema.Schema<Notification> =
+export const Notification: Schema.Codec<Notification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notificationType: Schema.optional(Schema.String),
     productAvailabilityChangeEvent: Schema.optional(
@@ -1052,7 +1052,7 @@ export interface NotificationSet {
   notificationSetId?: string;
 }
 
-export const NotificationSet: Schema.Schema<NotificationSet> =
+export const NotificationSet: Schema.Codec<NotificationSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notification: Schema.optional(Schema.Array(Notification)),
     notificationSetId: Schema.optional(Schema.String),
@@ -1065,7 +1065,7 @@ export interface MaintenanceWindow {
   durationMs?: string;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
+export const MaintenanceWindow: Schema.Codec<MaintenanceWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTimeAfterMidnightMs: Schema.optional(Schema.String),
     durationMs: Schema.optional(Schema.String),
@@ -1100,7 +1100,7 @@ export interface Policy {
   policyId?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productAvailabilityPolicy: Schema.optional(Schema.String),
     maintenanceWindow: Schema.optional(MaintenanceWindow),
@@ -1117,7 +1117,7 @@ export interface ServiceAccount {
   key?: ServiceAccountKey;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
+export const ServiceAccount: Schema.Codec<ServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     key: Schema.optional(ServiceAccountKey),
@@ -1128,7 +1128,7 @@ export interface AdministratorWebToken {
   token?: string;
 }
 
-export const AdministratorWebToken: Schema.Schema<AdministratorWebToken> =
+export const AdministratorWebToken: Schema.Codec<AdministratorWebToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdministratorWebToken" });
@@ -1138,7 +1138,7 @@ export interface ProductsGenerateApprovalUrlResponse {
   url?: string;
 }
 
-export const ProductsGenerateApprovalUrlResponse: Schema.Schema<ProductsGenerateApprovalUrlResponse> =
+export const ProductsGenerateApprovalUrlResponse: Schema.Codec<ProductsGenerateApprovalUrlResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductsGenerateApprovalUrlResponse" });
@@ -1148,7 +1148,7 @@ export interface WebAppIcon {
   imageData?: string;
 }
 
-export const WebAppIcon: Schema.Schema<WebAppIcon> =
+export const WebAppIcon: Schema.Codec<WebAppIcon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageData: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebAppIcon" });
@@ -1175,7 +1175,7 @@ export interface WebApp {
   icons?: ReadonlyArray<WebAppIcon>;
 }
 
-export const WebApp: Schema.Schema<WebApp> =
+export const WebApp: Schema.Codec<WebApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     startUrl: Schema.optional(Schema.String),
@@ -1191,7 +1191,7 @@ export interface ManagedConfigurationsForDeviceListResponse {
   managedConfigurationForDevice?: ReadonlyArray<ManagedConfiguration>;
 }
 
-export const ManagedConfigurationsForDeviceListResponse: Schema.Schema<ManagedConfigurationsForDeviceListResponse> =
+export const ManagedConfigurationsForDeviceListResponse: Schema.Codec<ManagedConfigurationsForDeviceListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedConfigurationForDevice: Schema.optional(
       Schema.Array(ManagedConfiguration),
@@ -1228,7 +1228,7 @@ export interface Device {
   device?: string;
 }
 
-export const Device: Schema.Schema<Device> =
+export const Device: Schema.Codec<Device> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maker: Schema.optional(Schema.String),
     product: Schema.optional(Schema.String),
@@ -1248,7 +1248,7 @@ export interface InstallsListResponse {
   install?: ReadonlyArray<Install>;
 }
 
-export const InstallsListResponse: Schema.Schema<InstallsListResponse> =
+export const InstallsListResponse: Schema.Codec<InstallsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     install: Schema.optional(Schema.Array(Install)),
   }).annotate({ identifier: "InstallsListResponse" });
@@ -1260,7 +1260,7 @@ export interface EnterprisesSendTestPushNotificationResponse {
   topicName?: string;
 }
 
-export const EnterprisesSendTestPushNotificationResponse: Schema.Schema<EnterprisesSendTestPushNotificationResponse> =
+export const EnterprisesSendTestPushNotificationResponse: Schema.Codec<EnterprisesSendTestPushNotificationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageId: Schema.optional(Schema.String),
     topicName: Schema.optional(Schema.String),
@@ -1271,7 +1271,7 @@ export interface EntitlementsListResponse {
   entitlement?: ReadonlyArray<Entitlement>;
 }
 
-export const EntitlementsListResponse: Schema.Schema<EntitlementsListResponse> =
+export const EntitlementsListResponse: Schema.Codec<EntitlementsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entitlement: Schema.optional(Schema.Array(Entitlement)),
   }).annotate({ identifier: "EntitlementsListResponse" });
@@ -1285,7 +1285,7 @@ export interface Permission {
   description?: string;
 }
 
-export const Permission: Schema.Schema<Permission> =
+export const Permission: Schema.Codec<Permission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissionId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1297,7 +1297,7 @@ export interface DevicesListResponse {
   device?: ReadonlyArray<Device>;
 }
 
-export const DevicesListResponse: Schema.Schema<DevicesListResponse> =
+export const DevicesListResponse: Schema.Codec<DevicesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     device: Schema.optional(Schema.Array(Device)),
   }).annotate({ identifier: "DevicesListResponse" });
@@ -1307,7 +1307,7 @@ export interface WebAppsListResponse {
   webApp?: ReadonlyArray<WebApp>;
 }
 
-export const WebAppsListResponse: Schema.Schema<WebAppsListResponse> =
+export const WebAppsListResponse: Schema.Codec<WebAppsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webApp: Schema.optional(Schema.Array(WebApp)),
   }).annotate({ identifier: "WebAppsListResponse" });
@@ -1319,7 +1319,7 @@ export interface StoreLayout {
   homepageId?: string;
 }
 
-export const StoreLayout: Schema.Schema<StoreLayout> =
+export const StoreLayout: Schema.Codec<StoreLayout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storeLayoutType: Schema.optional(Schema.String),
     homepageId: Schema.optional(Schema.String),
@@ -1330,7 +1330,7 @@ export interface ServiceAccountKeysListResponse {
   serviceAccountKey?: ReadonlyArray<ServiceAccountKey>;
 }
 
-export const ServiceAccountKeysListResponse: Schema.Schema<ServiceAccountKeysListResponse> =
+export const ServiceAccountKeysListResponse: Schema.Codec<ServiceAccountKeysListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccountKey: Schema.optional(Schema.Array(ServiceAccountKey)),
   }).annotate({ identifier: "ServiceAccountKeysListResponse" });
@@ -1350,7 +1350,7 @@ export interface User {
   managementType?: "googleManaged" | "emmManaged" | (string & {});
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryEmail: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1367,7 +1367,7 @@ export interface AdministratorWebTokenSpecPlaySearch {
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecPlaySearch: Schema.Schema<AdministratorWebTokenSpecPlaySearch> =
+export const AdministratorWebTokenSpecPlaySearch: Schema.Codec<AdministratorWebTokenSpecPlaySearch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approveApps: Schema.optional(Schema.Boolean),
     enabled: Schema.optional(Schema.Boolean),
@@ -1378,7 +1378,7 @@ export interface EnterprisesListResponse {
   enterprise?: ReadonlyArray<Enterprise>;
 }
 
-export const EnterprisesListResponse: Schema.Schema<EnterprisesListResponse> =
+export const EnterprisesListResponse: Schema.Codec<EnterprisesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enterprise: Schema.optional(Schema.Array(Enterprise)),
   }).annotate({ identifier: "EnterprisesListResponse" });
@@ -1388,7 +1388,7 @@ export interface GenerateEnterpriseUpgradeUrlResponse {
   url?: string;
 }
 
-export const GenerateEnterpriseUpgradeUrlResponse: Schema.Schema<GenerateEnterpriseUpgradeUrlResponse> =
+export const GenerateEnterpriseUpgradeUrlResponse: Schema.Codec<GenerateEnterpriseUpgradeUrlResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateEnterpriseUpgradeUrlResponse" });
@@ -1398,7 +1398,7 @@ export interface AdministratorWebTokenSpecWebApps {
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecWebApps: Schema.Schema<AdministratorWebTokenSpecWebApps> =
+export const AdministratorWebTokenSpecWebApps: Schema.Codec<AdministratorWebTokenSpecWebApps> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AdministratorWebTokenSpecWebApps" });
@@ -1408,7 +1408,7 @@ export interface AuthenticationToken {
   token?: string;
 }
 
-export const AuthenticationToken: Schema.Schema<AuthenticationToken> =
+export const AuthenticationToken: Schema.Codec<AuthenticationToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuthenticationToken" });
@@ -1428,7 +1428,7 @@ export interface EnrollmentToken {
   googleAuthenticationOptions?: EnrollmentTokenGoogleAuthenticationOptions;
 }
 
-export const EnrollmentToken: Schema.Schema<EnrollmentToken> =
+export const EnrollmentToken: Schema.Codec<EnrollmentToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     enrollmentTokenType: Schema.optional(Schema.String),
@@ -1457,7 +1457,7 @@ export interface GroupLicense {
   approval?: "approved" | "unapproved" | (string & {});
 }
 
-export const GroupLicense: Schema.Schema<GroupLicense> =
+export const GroupLicense: Schema.Codec<GroupLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.String),
     numPurchased: Schema.optional(Schema.Number),
@@ -1472,7 +1472,7 @@ export interface GroupLicensesListResponse {
   groupLicense?: ReadonlyArray<GroupLicense>;
 }
 
-export const GroupLicensesListResponse: Schema.Schema<GroupLicensesListResponse> =
+export const GroupLicensesListResponse: Schema.Codec<GroupLicensesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupLicense: Schema.optional(Schema.Array(GroupLicense)),
   }).annotate({ identifier: "GroupLicensesListResponse" });
@@ -1484,7 +1484,7 @@ export interface ProductPermissions {
   permission?: ReadonlyArray<ProductPermission>;
 }
 
-export const ProductPermissions: Schema.Schema<ProductPermissions> =
+export const ProductPermissions: Schema.Codec<ProductPermissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.Array(ProductPermission)),
@@ -1495,7 +1495,7 @@ export interface AdministratorWebTokenSpecPrivateApps {
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecPrivateApps: Schema.Schema<AdministratorWebTokenSpecPrivateApps> =
+export const AdministratorWebTokenSpecPrivateApps: Schema.Codec<AdministratorWebTokenSpecPrivateApps> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AdministratorWebTokenSpecPrivateApps" });
@@ -1505,7 +1505,7 @@ export interface AdministratorWebTokenSpecStoreBuilder {
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecStoreBuilder: Schema.Schema<AdministratorWebTokenSpecStoreBuilder> =
+export const AdministratorWebTokenSpecStoreBuilder: Schema.Codec<AdministratorWebTokenSpecStoreBuilder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AdministratorWebTokenSpecStoreBuilder" });
@@ -1531,7 +1531,7 @@ export interface AdministratorWebTokenSpec {
   zeroTouch?: AdministratorWebTokenSpecZeroTouch;
 }
 
-export const AdministratorWebTokenSpec: Schema.Schema<AdministratorWebTokenSpec> =
+export const AdministratorWebTokenSpec: Schema.Codec<AdministratorWebTokenSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.Array(Schema.String)),
     privateApps: Schema.optional(AdministratorWebTokenSpecPrivateApps),
@@ -1550,7 +1550,7 @@ export interface ApprovalUrlInfo {
   approvalUrl?: string;
 }
 
-export const ApprovalUrlInfo: Schema.Schema<ApprovalUrlInfo> =
+export const ApprovalUrlInfo: Schema.Codec<ApprovalUrlInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approvalUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApprovalUrlInfo" });
@@ -1560,7 +1560,7 @@ export interface StoreLayoutClustersListResponse {
   cluster?: ReadonlyArray<StoreCluster>;
 }
 
-export const StoreLayoutClustersListResponse: Schema.Schema<StoreLayoutClustersListResponse> =
+export const StoreLayoutClustersListResponse: Schema.Codec<StoreLayoutClustersListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.Array(StoreCluster)),
   }).annotate({ identifier: "StoreLayoutClustersListResponse" });
@@ -1576,7 +1576,7 @@ export interface ProductVisibility {
   trackIds?: ReadonlyArray<string>;
 }
 
-export const ProductVisibility: Schema.Schema<ProductVisibility> =
+export const ProductVisibility: Schema.Codec<ProductVisibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productId: Schema.optional(Schema.String),
     tracks: Schema.optional(Schema.Array(Schema.String)),
@@ -1588,7 +1588,7 @@ export interface GroupLicenseUsersListResponse {
   user?: ReadonlyArray<User>;
 }
 
-export const GroupLicenseUsersListResponse: Schema.Schema<GroupLicenseUsersListResponse> =
+export const GroupLicenseUsersListResponse: Schema.Codec<GroupLicenseUsersListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(Schema.Array(User)),
   }).annotate({ identifier: "GroupLicenseUsersListResponse" });
@@ -1598,7 +1598,7 @@ export interface UsersListResponse {
   user?: ReadonlyArray<User>;
 }
 
-export const UsersListResponse: Schema.Schema<UsersListResponse> =
+export const UsersListResponse: Schema.Codec<UsersListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(Schema.Array(User)),
   }).annotate({ identifier: "UsersListResponse" });
@@ -1617,7 +1617,7 @@ export interface ProductSet {
     | (string & {});
 }
 
-export const ProductSet: Schema.Schema<ProductSet> =
+export const ProductSet: Schema.Codec<ProductSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productVisibility: Schema.optional(Schema.Array(ProductVisibility)),
     productId: Schema.optional(Schema.Array(Schema.String)),
@@ -1634,7 +1634,7 @@ export interface ProductsApproveRequest {
     | (string & {});
 }
 
-export const ProductsApproveRequest: Schema.Schema<ProductsApproveRequest> =
+export const ProductsApproveRequest: Schema.Codec<ProductsApproveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approvalUrlInfo: Schema.optional(ApprovalUrlInfo),
     approvedPermissions: Schema.optional(Schema.String),
@@ -1645,7 +1645,7 @@ export interface ManagedConfigurationsSettingsListResponse {
   managedConfigurationsSettings?: ReadonlyArray<ManagedConfigurationsSettings>;
 }
 
-export const ManagedConfigurationsSettingsListResponse: Schema.Schema<ManagedConfigurationsSettingsListResponse> =
+export const ManagedConfigurationsSettingsListResponse: Schema.Codec<ManagedConfigurationsSettingsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedConfigurationsSettings: Schema.optional(
       Schema.Array(ManagedConfigurationsSettings),
@@ -1735,7 +1735,7 @@ export const UpdateManagedconfigurationsfordeviceRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateManagedconfigurationsfordeviceRequest>;
+  ) as unknown as Schema.Codec<UpdateManagedconfigurationsfordeviceRequest>;
 
 export type UpdateManagedconfigurationsfordeviceResponse = ManagedConfiguration;
 export const UpdateManagedconfigurationsfordeviceResponse =
@@ -1780,7 +1780,7 @@ export const ListManagedconfigurationsfordeviceRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedconfigurationsfordeviceRequest>;
+  ) as unknown as Schema.Codec<ListManagedconfigurationsfordeviceRequest>;
 
 export type ListManagedconfigurationsfordeviceResponse =
   ManagedConfigurationsForDeviceListResponse;
@@ -1829,7 +1829,7 @@ export const GetManagedconfigurationsfordeviceRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetManagedconfigurationsfordeviceRequest>;
+  ) as unknown as Schema.Codec<GetManagedconfigurationsfordeviceRequest>;
 
 export type GetManagedconfigurationsfordeviceResponse = ManagedConfiguration;
 export const GetManagedconfigurationsfordeviceResponse =
@@ -1877,13 +1877,13 @@ export const DeleteManagedconfigurationsfordeviceRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteManagedconfigurationsfordeviceRequest>;
+  ) as unknown as Schema.Codec<DeleteManagedconfigurationsfordeviceRequest>;
 
 export interface DeleteManagedconfigurationsfordeviceResponse {}
-export const DeleteManagedconfigurationsfordeviceResponse: Schema.Schema<DeleteManagedconfigurationsfordeviceResponse> =
+export const DeleteManagedconfigurationsfordeviceResponse: Schema.Codec<DeleteManagedconfigurationsfordeviceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteManagedconfigurationsfordeviceResponse>;
+  ) as any as Schema.Codec<DeleteManagedconfigurationsfordeviceResponse>;
 
 export type DeleteManagedconfigurationsfordeviceError =
   | DefaultErrors
@@ -1920,7 +1920,7 @@ export const ListDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices",
   }),
   svc,
-) as unknown as Schema.Schema<ListDevicesRequest>;
+) as unknown as Schema.Codec<ListDevicesRequest>;
 
 export type ListDevicesResponse = DevicesListResponse;
 export const ListDevicesResponse =
@@ -1959,7 +1959,7 @@ export const GetDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetDevicesRequest>;
+) as unknown as Schema.Codec<GetDevicesRequest>;
 
 export type GetDevicesResponse = Device;
 export const GetDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
@@ -2004,7 +2004,7 @@ export const UpdateDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateDevicesRequest>;
+) as unknown as Schema.Codec<UpdateDevicesRequest>;
 
 export type UpdateDevicesResponse = Device;
 export const UpdateDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
@@ -2049,7 +2049,7 @@ export const GetStateDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
   }),
   svc,
-) as unknown as Schema.Schema<GetStateDevicesRequest>;
+) as unknown as Schema.Codec<GetStateDevicesRequest>;
 
 export type GetStateDevicesResponse = DeviceState;
 export const GetStateDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ DeviceState;
@@ -2093,7 +2093,7 @@ export const SetStateDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<SetStateDevicesRequest>;
+) as unknown as Schema.Codec<SetStateDevicesRequest>;
 
 export type SetStateDevicesResponse = DeviceState;
 export const SetStateDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ DeviceState;
@@ -2138,13 +2138,13 @@ export const ForceReportUploadDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ForceReportUploadDevicesRequest>;
+  ) as unknown as Schema.Codec<ForceReportUploadDevicesRequest>;
 
 export interface ForceReportUploadDevicesResponse {}
-export const ForceReportUploadDevicesResponse: Schema.Schema<ForceReportUploadDevicesResponse> =
+export const ForceReportUploadDevicesResponse: Schema.Codec<ForceReportUploadDevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ForceReportUploadDevicesResponse>;
+  ) as any as Schema.Codec<ForceReportUploadDevicesResponse>;
 
 export type ForceReportUploadDevicesError =
   | DefaultErrors
@@ -2187,13 +2187,13 @@ export const ApproveProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ApproveProductsRequest>;
+) as unknown as Schema.Codec<ApproveProductsRequest>;
 
 export interface ApproveProductsResponse {}
-export const ApproveProductsResponse: Schema.Schema<ApproveProductsResponse> =
+export const ApproveProductsResponse: Schema.Codec<ApproveProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ApproveProductsResponse>;
+  ) as any as Schema.Codec<ApproveProductsResponse>;
 
 export type ApproveProductsError =
   | DefaultErrors
@@ -2233,7 +2233,7 @@ export const GetProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetProductsRequest>;
+) as unknown as Schema.Codec<GetProductsRequest>;
 
 export type GetProductsResponse = Product;
 export const GetProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
@@ -2280,7 +2280,7 @@ export const ListProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/products",
   }),
   svc,
-) as unknown as Schema.Schema<ListProductsRequest>;
+) as unknown as Schema.Codec<ListProductsRequest>;
 
 export type ListProductsResponse = ProductsListResponse;
 export const ListProductsResponse =
@@ -2318,13 +2318,13 @@ export const UnapproveProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnapproveProductsRequest>;
+  ) as unknown as Schema.Codec<UnapproveProductsRequest>;
 
 export interface UnapproveProductsResponse {}
-export const UnapproveProductsResponse: Schema.Schema<UnapproveProductsResponse> =
+export const UnapproveProductsResponse: Schema.Codec<UnapproveProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<UnapproveProductsResponse>;
+  ) as any as Schema.Codec<UnapproveProductsResponse>;
 
 export type UnapproveProductsError =
   | DefaultErrors
@@ -2365,7 +2365,7 @@ export const GetAppRestrictionsSchemaProductsRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAppRestrictionsSchemaProductsRequest>;
+  ) as unknown as Schema.Codec<GetAppRestrictionsSchemaProductsRequest>;
 
 export type GetAppRestrictionsSchemaProductsResponse = AppRestrictionsSchema;
 export const GetAppRestrictionsSchemaProductsResponse =
@@ -2405,7 +2405,7 @@ export const GetPermissionsProductsRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/permissions",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPermissionsProductsRequest>;
+  ) as unknown as Schema.Codec<GetPermissionsProductsRequest>;
 
 export type GetPermissionsProductsResponse = ProductPermissions;
 export const GetPermissionsProductsResponse =
@@ -2448,7 +2448,7 @@ export const GenerateApprovalUrlProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateApprovalUrlProductsRequest>;
+  ) as unknown as Schema.Codec<GenerateApprovalUrlProductsRequest>;
 
 export type GenerateApprovalUrlProductsResponse =
   ProductsGenerateApprovalUrlResponse;
@@ -2491,7 +2491,7 @@ export const GetServiceAccountEnterprisesRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccount",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetServiceAccountEnterprisesRequest>;
+  ) as unknown as Schema.Codec<GetServiceAccountEnterprisesRequest>;
 
 export type GetServiceAccountEnterprisesResponse = ServiceAccount;
 export const GetServiceAccountEnterprisesResponse =
@@ -2536,7 +2536,7 @@ export const CompleteSignupEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CompleteSignupEnterprisesRequest>;
+  ) as unknown as Schema.Codec<CompleteSignupEnterprisesRequest>;
 
 export type CompleteSignupEnterprisesResponse = Enterprise;
 export const CompleteSignupEnterprisesResponse =
@@ -2579,7 +2579,7 @@ export const EnrollEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnrollEnterprisesRequest>;
+  ) as unknown as Schema.Codec<EnrollEnterprisesRequest>;
 
 export type EnrollEnterprisesResponse = Enterprise;
 export const EnrollEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
@@ -2626,7 +2626,7 @@ export const GenerateEnterpriseUpgradeUrlEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateEnterpriseUpgradeUrlEnterprisesRequest>;
+  ) as unknown as Schema.Codec<GenerateEnterpriseUpgradeUrlEnterprisesRequest>;
 
 export type GenerateEnterpriseUpgradeUrlEnterprisesResponse =
   GenerateEnterpriseUpgradeUrlResponse;
@@ -2667,7 +2667,7 @@ export const SendTestPushNotificationEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SendTestPushNotificationEnterprisesRequest>;
+  ) as unknown as Schema.Codec<SendTestPushNotificationEnterprisesRequest>;
 
 export type SendTestPushNotificationEnterprisesResponse =
   EnterprisesSendTestPushNotificationResponse;
@@ -2708,13 +2708,13 @@ export const UnenrollEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnenrollEnterprisesRequest>;
+  ) as unknown as Schema.Codec<UnenrollEnterprisesRequest>;
 
 export interface UnenrollEnterprisesResponse {}
-export const UnenrollEnterprisesResponse: Schema.Schema<UnenrollEnterprisesResponse> =
+export const UnenrollEnterprisesResponse: Schema.Codec<UnenrollEnterprisesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<UnenrollEnterprisesResponse>;
+  ) as any as Schema.Codec<UnenrollEnterprisesResponse>;
 
 export type UnenrollEnterprisesError =
   | DefaultErrors
@@ -2753,7 +2753,7 @@ export const SetAccountEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetAccountEnterprisesRequest>;
+  ) as unknown as Schema.Codec<SetAccountEnterprisesRequest>;
 
 export type SetAccountEnterprisesResponse = EnterpriseAccount;
 export const SetAccountEnterprisesResponse =
@@ -2791,7 +2791,7 @@ export const GetEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetEnterprisesRequest>;
+) as unknown as Schema.Codec<GetEnterprisesRequest>;
 
 export type GetEnterprisesResponse = Enterprise;
 export const GetEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
@@ -2835,7 +2835,7 @@ export const GenerateSignupUrlEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateSignupUrlEnterprisesRequest>;
+  ) as unknown as Schema.Codec<GenerateSignupUrlEnterprisesRequest>;
 
 export type GenerateSignupUrlEnterprisesResponse = SignupInfo;
 export const GenerateSignupUrlEnterprisesResponse =
@@ -2872,7 +2872,7 @@ export const ListEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "androidenterprise/v1/enterprises" }),
   svc,
-) as unknown as Schema.Schema<ListEnterprisesRequest>;
+) as unknown as Schema.Codec<ListEnterprisesRequest>;
 
 export type ListEnterprisesResponse = EnterprisesListResponse;
 export const ListEnterprisesResponse =
@@ -2909,7 +2909,7 @@ export const PullNotificationSetEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PullNotificationSetEnterprisesRequest>;
+  ) as unknown as Schema.Codec<PullNotificationSetEnterprisesRequest>;
 
 export type PullNotificationSetEnterprisesResponse = NotificationSet;
 export const PullNotificationSetEnterprisesResponse =
@@ -2952,7 +2952,7 @@ export const CreateWebTokenEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateWebTokenEnterprisesRequest>;
+  ) as unknown as Schema.Codec<CreateWebTokenEnterprisesRequest>;
 
 export type CreateWebTokenEnterprisesResponse = AdministratorWebToken;
 export const CreateWebTokenEnterprisesResponse =
@@ -2994,13 +2994,13 @@ export const AcknowledgeNotificationSetEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcknowledgeNotificationSetEnterprisesRequest>;
+  ) as unknown as Schema.Codec<AcknowledgeNotificationSetEnterprisesRequest>;
 
 export interface AcknowledgeNotificationSetEnterprisesResponse {}
-export const AcknowledgeNotificationSetEnterprisesResponse: Schema.Schema<AcknowledgeNotificationSetEnterprisesResponse> =
+export const AcknowledgeNotificationSetEnterprisesResponse: Schema.Codec<AcknowledgeNotificationSetEnterprisesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<AcknowledgeNotificationSetEnterprisesResponse>;
+  ) as any as Schema.Codec<AcknowledgeNotificationSetEnterprisesResponse>;
 
 export type AcknowledgeNotificationSetEnterprisesError =
   | DefaultErrors
@@ -3035,7 +3035,7 @@ export const GetStoreLayoutEnterprisesRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetStoreLayoutEnterprisesRequest>;
+  ) as unknown as Schema.Codec<GetStoreLayoutEnterprisesRequest>;
 
 export type GetStoreLayoutEnterprisesResponse = StoreLayout;
 export const GetStoreLayoutEnterprisesResponse =
@@ -3076,7 +3076,7 @@ export const SetStoreLayoutEnterprisesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetStoreLayoutEnterprisesRequest>;
+  ) as unknown as Schema.Codec<SetStoreLayoutEnterprisesRequest>;
 
 export type SetStoreLayoutEnterprisesResponse = StoreLayout;
 export const SetStoreLayoutEnterprisesResponse =
@@ -3115,7 +3115,7 @@ export const ListGrouplicensesRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGrouplicensesRequest>;
+  ) as unknown as Schema.Codec<ListGrouplicensesRequest>;
 
 export type ListGrouplicensesResponse = GroupLicensesListResponse;
 export const ListGrouplicensesResponse =
@@ -3152,7 +3152,7 @@ export const GetGrouplicensesRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGrouplicensesRequest>;
+  ) as unknown as Schema.Codec<GetGrouplicensesRequest>;
 
 export type GetGrouplicensesResponse = GroupLicense;
 export const GetGrouplicensesResponse =
@@ -3198,7 +3198,7 @@ export const UpdateInstallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateInstallsRequest>;
+) as unknown as Schema.Codec<UpdateInstallsRequest>;
 
 export type UpdateInstallsResponse = Install;
 export const UpdateInstallsResponse = /*@__PURE__*/ /*#__PURE__*/ Install;
@@ -3241,7 +3241,7 @@ export const ListInstallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs",
   }),
   svc,
-) as unknown as Schema.Schema<ListInstallsRequest>;
+) as unknown as Schema.Codec<ListInstallsRequest>;
 
 export type ListInstallsResponse = InstallsListResponse;
 export const ListInstallsResponse =
@@ -3283,7 +3283,7 @@ export const GetInstallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetInstallsRequest>;
+) as unknown as Schema.Codec<GetInstallsRequest>;
 
 export type GetInstallsResponse = Install;
 export const GetInstallsResponse = /*@__PURE__*/ /*#__PURE__*/ Install;
@@ -3324,13 +3324,13 @@ export const DeleteInstallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteInstallsRequest>;
+) as unknown as Schema.Codec<DeleteInstallsRequest>;
 
 export interface DeleteInstallsResponse {}
-export const DeleteInstallsResponse: Schema.Schema<DeleteInstallsResponse> =
+export const DeleteInstallsResponse: Schema.Codec<DeleteInstallsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteInstallsResponse>;
+  ) as any as Schema.Codec<DeleteInstallsResponse>;
 
 export type DeleteInstallsError =
   | DefaultErrors
@@ -3368,7 +3368,7 @@ export const ListGrouplicenseusersRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGrouplicenseusersRequest>;
+  ) as unknown as Schema.Codec<ListGrouplicenseusersRequest>;
 
 export type ListGrouplicenseusersResponse = GroupLicenseUsersListResponse;
 export const ListGrouplicenseusersResponse =
@@ -3405,7 +3405,7 @@ export const ListManagedconfigurationssettingsRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedconfigurationssettingsRequest>;
+  ) as unknown as Schema.Codec<ListManagedconfigurationssettingsRequest>;
 
 export type ListManagedconfigurationssettingsResponse =
   ManagedConfigurationsSettingsListResponse;
@@ -3456,7 +3456,7 @@ export const UpdateEntitlementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEntitlementsRequest>;
+  ) as unknown as Schema.Codec<UpdateEntitlementsRequest>;
 
 export type UpdateEntitlementsResponse = Entitlement;
 export const UpdateEntitlementsResponse =
@@ -3498,7 +3498,7 @@ export const ListEntitlementsRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListEntitlementsRequest>;
+  ) as unknown as Schema.Codec<ListEntitlementsRequest>;
 
 export type ListEntitlementsResponse = EntitlementsListResponse;
 export const ListEntitlementsResponse =
@@ -3539,7 +3539,7 @@ export const GetEntitlementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetEntitlementsRequest>;
+) as unknown as Schema.Codec<GetEntitlementsRequest>;
 
 export type GetEntitlementsResponse = Entitlement;
 export const GetEntitlementsResponse = /*@__PURE__*/ /*#__PURE__*/ Entitlement;
@@ -3578,13 +3578,13 @@ export const DeleteEntitlementsRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteEntitlementsRequest>;
+  ) as unknown as Schema.Codec<DeleteEntitlementsRequest>;
 
 export interface DeleteEntitlementsResponse {}
-export const DeleteEntitlementsResponse: Schema.Schema<DeleteEntitlementsResponse> =
+export const DeleteEntitlementsResponse: Schema.Codec<DeleteEntitlementsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteEntitlementsResponse>;
+  ) as any as Schema.Codec<DeleteEntitlementsResponse>;
 
 export type DeleteEntitlementsError =
   | DefaultErrors
@@ -3631,7 +3631,7 @@ export const UpdateManagedconfigurationsforuserRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateManagedconfigurationsforuserRequest>;
+  ) as unknown as Schema.Codec<UpdateManagedconfigurationsforuserRequest>;
 
 export type UpdateManagedconfigurationsforuserResponse = ManagedConfiguration;
 export const UpdateManagedconfigurationsforuserResponse =
@@ -3673,7 +3673,7 @@ export const ListManagedconfigurationsforuserRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedconfigurationsforuserRequest>;
+  ) as unknown as Schema.Codec<ListManagedconfigurationsforuserRequest>;
 
 export type ListManagedconfigurationsforuserResponse =
   ManagedConfigurationsForUserListResponse;
@@ -3719,7 +3719,7 @@ export const GetManagedconfigurationsforuserRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetManagedconfigurationsforuserRequest>;
+  ) as unknown as Schema.Codec<GetManagedconfigurationsforuserRequest>;
 
 export type GetManagedconfigurationsforuserResponse = ManagedConfiguration;
 export const GetManagedconfigurationsforuserResponse =
@@ -3764,13 +3764,13 @@ export const DeleteManagedconfigurationsforuserRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteManagedconfigurationsforuserRequest>;
+  ) as unknown as Schema.Codec<DeleteManagedconfigurationsforuserRequest>;
 
 export interface DeleteManagedconfigurationsforuserResponse {}
-export const DeleteManagedconfigurationsforuserResponse: Schema.Schema<DeleteManagedconfigurationsforuserResponse> =
+export const DeleteManagedconfigurationsforuserResponse: Schema.Codec<DeleteManagedconfigurationsforuserResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteManagedconfigurationsforuserResponse>;
+  ) as any as Schema.Codec<DeleteManagedconfigurationsforuserResponse>;
 
 export type DeleteManagedconfigurationsforuserError =
   | DefaultErrors
@@ -3808,7 +3808,7 @@ export const GetAvailableProductSetUsersRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAvailableProductSetUsersRequest>;
+  ) as unknown as Schema.Codec<GetAvailableProductSetUsersRequest>;
 
 export type GetAvailableProductSetUsersResponse = ProductSet;
 export const GetAvailableProductSetUsersResponse =
@@ -3848,13 +3848,13 @@ export const RevokeDeviceAccessUsersRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/deviceAccess",
     }),
     svc,
-  ) as unknown as Schema.Schema<RevokeDeviceAccessUsersRequest>;
+  ) as unknown as Schema.Codec<RevokeDeviceAccessUsersRequest>;
 
 export interface RevokeDeviceAccessUsersResponse {}
-export const RevokeDeviceAccessUsersResponse: Schema.Schema<RevokeDeviceAccessUsersResponse> =
+export const RevokeDeviceAccessUsersResponse: Schema.Codec<RevokeDeviceAccessUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<RevokeDeviceAccessUsersResponse>;
+  ) as any as Schema.Codec<RevokeDeviceAccessUsersResponse>;
 
 export type RevokeDeviceAccessUsersError =
   | DefaultErrors
@@ -3891,7 +3891,7 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users",
   }),
   svc,
-) as unknown as Schema.Schema<ListUsersRequest>;
+) as unknown as Schema.Codec<ListUsersRequest>;
 
 export type ListUsersResponse = UsersListResponse;
 export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ UsersListResponse;
@@ -3926,13 +3926,13 @@ export const DeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteUsersRequest>;
+) as unknown as Schema.Codec<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
-export const DeleteUsersResponse: Schema.Schema<DeleteUsersResponse> =
+export const DeleteUsersResponse: Schema.Codec<DeleteUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersResponse>;
+  ) as any as Schema.Codec<DeleteUsersResponse>;
 
 export type DeleteUsersError =
   | DefaultErrors
@@ -3971,7 +3971,7 @@ export const GenerateAuthenticationTokenUsersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateAuthenticationTokenUsersRequest>;
+  ) as unknown as Schema.Codec<GenerateAuthenticationTokenUsersRequest>;
 
 export type GenerateAuthenticationTokenUsersResponse = AuthenticationToken;
 export const GenerateAuthenticationTokenUsersResponse =
@@ -4013,7 +4013,7 @@ export const InsertUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertUsersRequest>;
+) as unknown as Schema.Codec<InsertUsersRequest>;
 
 export type InsertUsersResponse = User;
 export const InsertUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -4057,7 +4057,7 @@ export const UpdateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateUsersRequest>;
+) as unknown as Schema.Codec<UpdateUsersRequest>;
 
 export type UpdateUsersResponse = User;
 export const UpdateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -4102,7 +4102,7 @@ export const SetAvailableProductSetUsersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetAvailableProductSetUsersRequest>;
+  ) as unknown as Schema.Codec<SetAvailableProductSetUsersRequest>;
 
 export type SetAvailableProductSetUsersResponse = ProductSet;
 export const SetAvailableProductSetUsersResponse =
@@ -4143,7 +4143,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetUsersRequest>;
+) as unknown as Schema.Codec<GetUsersRequest>;
 
 export type GetUsersResponse = User;
 export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -4180,7 +4180,7 @@ export const InsertStorelayoutpagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertStorelayoutpagesRequest>;
+  ) as unknown as Schema.Codec<InsertStorelayoutpagesRequest>;
 
 export type InsertStorelayoutpagesResponse = StorePage;
 export const InsertStorelayoutpagesResponse =
@@ -4219,7 +4219,7 @@ export const ListStorelayoutpagesRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListStorelayoutpagesRequest>;
+  ) as unknown as Schema.Codec<ListStorelayoutpagesRequest>;
 
 export type ListStorelayoutpagesResponse = StoreLayoutPagesListResponse;
 export const ListStorelayoutpagesResponse =
@@ -4256,7 +4256,7 @@ export const GetStorelayoutpagesRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetStorelayoutpagesRequest>;
+  ) as unknown as Schema.Codec<GetStorelayoutpagesRequest>;
 
 export type GetStorelayoutpagesResponse = StorePage;
 export const GetStorelayoutpagesResponse =
@@ -4293,13 +4293,13 @@ export const DeleteStorelayoutpagesRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteStorelayoutpagesRequest>;
+  ) as unknown as Schema.Codec<DeleteStorelayoutpagesRequest>;
 
 export interface DeleteStorelayoutpagesResponse {}
-export const DeleteStorelayoutpagesResponse: Schema.Schema<DeleteStorelayoutpagesResponse> =
+export const DeleteStorelayoutpagesResponse: Schema.Codec<DeleteStorelayoutpagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteStorelayoutpagesResponse>;
+  ) as any as Schema.Codec<DeleteStorelayoutpagesResponse>;
 
 export type DeleteStorelayoutpagesError =
   | DefaultErrors
@@ -4341,7 +4341,7 @@ export const UpdateStorelayoutpagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateStorelayoutpagesRequest>;
+  ) as unknown as Schema.Codec<UpdateStorelayoutpagesRequest>;
 
 export type UpdateStorelayoutpagesResponse = StorePage;
 export const UpdateStorelayoutpagesResponse =
@@ -4382,7 +4382,7 @@ export const GetWebappsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetWebappsRequest>;
+) as unknown as Schema.Codec<GetWebappsRequest>;
 
 export type GetWebappsResponse = WebApp;
 export const GetWebappsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
@@ -4414,7 +4414,7 @@ export const ListWebappsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/webApps",
   }),
   svc,
-) as unknown as Schema.Schema<ListWebappsRequest>;
+) as unknown as Schema.Codec<ListWebappsRequest>;
 
 export type ListWebappsResponse = WebAppsListResponse;
 export const ListWebappsResponse =
@@ -4450,13 +4450,13 @@ export const DeleteWebappsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteWebappsRequest>;
+) as unknown as Schema.Codec<DeleteWebappsRequest>;
 
 export interface DeleteWebappsResponse {}
-export const DeleteWebappsResponse: Schema.Schema<DeleteWebappsResponse> =
+export const DeleteWebappsResponse: Schema.Codec<DeleteWebappsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteWebappsResponse>;
+  ) as any as Schema.Codec<DeleteWebappsResponse>;
 
 export type DeleteWebappsError =
   | DefaultErrors
@@ -4497,7 +4497,7 @@ export const UpdateWebappsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateWebappsRequest>;
+) as unknown as Schema.Codec<UpdateWebappsRequest>;
 
 export type UpdateWebappsResponse = WebApp;
 export const UpdateWebappsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
@@ -4538,7 +4538,7 @@ export const InsertWebappsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertWebappsRequest>;
+) as unknown as Schema.Codec<InsertWebappsRequest>;
 
 export type InsertWebappsResponse = WebApp;
 export const InsertWebappsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
@@ -4583,7 +4583,7 @@ export const InsertStorelayoutclustersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertStorelayoutclustersRequest>;
+  ) as unknown as Schema.Codec<InsertStorelayoutclustersRequest>;
 
 export type InsertStorelayoutclustersResponse = StoreCluster;
 export const InsertStorelayoutclustersResponse =
@@ -4625,7 +4625,7 @@ export const ListStorelayoutclustersRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListStorelayoutclustersRequest>;
+  ) as unknown as Schema.Codec<ListStorelayoutclustersRequest>;
 
 export type ListStorelayoutclustersResponse = StoreLayoutClustersListResponse;
 export const ListStorelayoutclustersResponse =
@@ -4665,7 +4665,7 @@ export const GetStorelayoutclustersRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetStorelayoutclustersRequest>;
+  ) as unknown as Schema.Codec<GetStorelayoutclustersRequest>;
 
 export type GetStorelayoutclustersResponse = StoreCluster;
 export const GetStorelayoutclustersResponse =
@@ -4705,13 +4705,13 @@ export const DeleteStorelayoutclustersRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteStorelayoutclustersRequest>;
+  ) as unknown as Schema.Codec<DeleteStorelayoutclustersRequest>;
 
 export interface DeleteStorelayoutclustersResponse {}
-export const DeleteStorelayoutclustersResponse: Schema.Schema<DeleteStorelayoutclustersResponse> =
+export const DeleteStorelayoutclustersResponse: Schema.Codec<DeleteStorelayoutclustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteStorelayoutclustersResponse>;
+  ) as any as Schema.Codec<DeleteStorelayoutclustersResponse>;
 
 export type DeleteStorelayoutclustersError =
   | DefaultErrors
@@ -4756,7 +4756,7 @@ export const UpdateStorelayoutclustersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateStorelayoutclustersRequest>;
+  ) as unknown as Schema.Codec<UpdateStorelayoutclustersRequest>;
 
 export type UpdateStorelayoutclustersResponse = StoreCluster;
 export const UpdateStorelayoutclustersResponse =
@@ -4799,7 +4799,7 @@ export const InsertServiceaccountkeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertServiceaccountkeysRequest>;
+  ) as unknown as Schema.Codec<InsertServiceaccountkeysRequest>;
 
 export type InsertServiceaccountkeysResponse = ServiceAccountKey;
 export const InsertServiceaccountkeysResponse =
@@ -4838,7 +4838,7 @@ export const ListServiceaccountkeysRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListServiceaccountkeysRequest>;
+  ) as unknown as Schema.Codec<ListServiceaccountkeysRequest>;
 
 export type ListServiceaccountkeysResponse = ServiceAccountKeysListResponse;
 export const ListServiceaccountkeysResponse =
@@ -4875,13 +4875,13 @@ export const DeleteServiceaccountkeysRequest =
       path: "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys/{keyId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteServiceaccountkeysRequest>;
+  ) as unknown as Schema.Codec<DeleteServiceaccountkeysRequest>;
 
 export interface DeleteServiceaccountkeysResponse {}
-export const DeleteServiceaccountkeysResponse: Schema.Schema<DeleteServiceaccountkeysResponse> =
+export const DeleteServiceaccountkeysResponse: Schema.Codec<DeleteServiceaccountkeysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteServiceaccountkeysResponse>;
+  ) as any as Schema.Codec<DeleteServiceaccountkeysResponse>;
 
 export type DeleteServiceaccountkeysError =
   | DefaultErrors
@@ -4918,7 +4918,7 @@ export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "androidenterprise/v1/permissions/{permissionId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetPermissionsRequest>;
+) as unknown as Schema.Codec<GetPermissionsRequest>;
 
 export type GetPermissionsResponse = Permission;
 export const GetPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
@@ -4955,7 +4955,7 @@ export const CreateEnrollmentTokensRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateEnrollmentTokensRequest>;
+  ) as unknown as Schema.Codec<CreateEnrollmentTokensRequest>;
 
 export type CreateEnrollmentTokensResponse = EnrollmentToken;
 export const CreateEnrollmentTokensResponse =

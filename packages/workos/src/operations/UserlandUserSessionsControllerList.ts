@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserSessionsControllerListInput {
+  id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const UserlandUserSessionsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +20,38 @@ export const UserlandUserSessionsControllerListInput =
     order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/users/{id}/sessions" }),
-  );
-export type UserlandUserSessionsControllerListInput =
-  typeof UserlandUserSessionsControllerListInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserSessionsControllerListInput>;
 
 // Output Schema
+export interface UserlandUserSessionsControllerListOutput {
+  object?: string;
+  list_metadata?: { before: string | null; after: string | null };
+  data?: {
+    object: string;
+    id: string;
+    impersonator?: { email: string; reason: string | null };
+    ip_address: string | null;
+    organization_id?: string;
+    user_agent: string | null;
+    user_id: string;
+    auth_method:
+      | "cross_app_auth"
+      | "external_auth"
+      | "impersonation"
+      | "magic_code"
+      | "migrated_session"
+      | "oauth"
+      | "passkey"
+      | "password"
+      | "sso"
+      | "unknown";
+    status: "active" | "expired" | "revoked";
+    expires_at: string;
+    ended_at: string | null;
+    created_at: string;
+    updated_at: string;
+  }[];
+}
 export const UserlandUserSessionsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -62,9 +96,7 @@ export const UserlandUserSessionsControllerListOutput =
         }),
       ),
     ),
-  });
-export type UserlandUserSessionsControllerListOutput =
-  typeof UserlandUserSessionsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserSessionsControllerListOutput>;
 
 // The operation
 /**

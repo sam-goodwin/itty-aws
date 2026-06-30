@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsPropertiesTimelineRetrieveInput {
+  id: number;
+  project_id: string;
+  format?: "csv" | "json";
+}
 export const PersonsPropertiesTimelineRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const PersonsPropertiesTimelineRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/persons/{id}/properties_timeline/",
     }),
-  );
-export type PersonsPropertiesTimelineRetrieveInput =
-  typeof PersonsPropertiesTimelineRetrieveInput.Type;
+  ) as unknown as Schema.Codec<PersonsPropertiesTimelineRetrieveInput>;
 
 // Output Schema
+export type PersonsPropertiesTimelineRetrieveOutput = void;
 export const PersonsPropertiesTimelineRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PersonsPropertiesTimelineRetrieveOutput =
-  typeof PersonsPropertiesTimelineRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsPropertiesTimelineRetrieveOutput>;
 
 // The operation
 /**

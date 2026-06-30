@@ -4,20 +4,20 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UsersHedgehogConfigRetrieveInput {
+  uuid: string;
+}
 export const UsersHedgehogConfigRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/api/users/{uuid}/hedgehog_config/" }),
-  );
-export type UsersHedgehogConfigRetrieveInput =
-  typeof UsersHedgehogConfigRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UsersHedgehogConfigRetrieveInput>;
 
 // Output Schema
+export type UsersHedgehogConfigRetrieveOutput = void;
 export const UsersHedgehogConfigRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersHedgehogConfigRetrieveOutput =
-  typeof UsersHedgehogConfigRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersHedgehogConfigRetrieveOutput>;
 
 // The operation
 export const usersHedgehogConfigRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(

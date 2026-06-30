@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service d1
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -89,6 +89,338 @@ export class UnknownError extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListDatabasesResponseResult {
+  /** Specifies the timestamp the resource was created as an ISO8601 string. */
+  createdAt?: string | null;
+  /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
+  jurisdiction?: "eu" | "fedramp" | null;
+  /** D1 database name. */
+  name?: string | null;
+  /** D1 database identifier (UUID). */
+  uuid?: string | null;
+  version?: string | null;
+}
+const ListDatabasesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      jurisdiction: Schema.optional(
+        Schema.Union([
+          Schema.Literal("eu"),
+          Schema.Literal("fedramp"),
+          Schema.Null,
+        ]),
+      ),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        jurisdiction: "jurisdiction",
+        name: "name",
+        uuid: "uuid",
+        version: "version",
+      }),
+    ),
+) as unknown as Schema.Codec<ListDatabasesResponseResult>;
+
+interface ListDatabasesResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListDatabasesResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListDatabasesResponseResultInfo>;
+
+interface ReadReplication {
+  /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
+  mode: "auto" | "disabled" | (string & {});
+}
+const ReadReplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    mode: Schema.Union([Schema.Literals(["auto", "disabled"]), Schema.String]),
+  }),
+) as unknown as Schema.Codec<ReadReplication>;
+
+interface DumpOptions {
+  /** Export only the table definitions, not their contents */
+  noData?: boolean | null;
+  /** Export only each table's contents, not its definition */
+  noSchema?: boolean | null;
+  /** Filter the export to just one or more tables. Passing an empty array is the same as not passing anything and means: export all tables. */
+  tables?: string[] | null;
+}
+const DumpOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    noData: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    noSchema: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    tables: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      noData: "no_data",
+      noSchema: "no_schema",
+      tables: "tables",
+    }),
+  ),
+) as unknown as Schema.Codec<DumpOptions>;
+
+interface Result {
+  /** The generated SQL filename. */
+  filename?: string | null;
+  /** The URL to download the exported SQL. Available for one hour. */
+  signedUrl?: string | null;
+}
+const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    signedUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(Schema.encodeKeys({ filename: "filename", signedUrl: "signed_url" })),
+) as unknown as Schema.Codec<Result>;
+
+interface Timings {
+  /** The duration of the SQL query execution inside the database. Does not include any network communication. */
+  sqlDurationMs?: number | null;
+}
+const Timings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    sqlDurationMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(Schema.encodeKeys({ sqlDurationMs: "sql_duration_ms" })),
+) as unknown as Schema.Codec<Timings>;
+
+interface Meta {
+  /** Denotes if the database has been altered in some way, like deleting rows. */
+  changedDb?: boolean | null;
+  /** Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`. */
+  changes?: number | null;
+  /** The duration of the SQL query execution inside the database. Does not include any network communication. */
+  duration?: number | null;
+  /** The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this. */
+  lastRowId?: number | null;
+  /** Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned). */
+  rowsRead?: number | null;
+  /** Number of rows written during the SQL query execution, including indices. */
+  rowsWritten?: number | null;
+  /** The three letters airport code of the colo that handled the query. */
+  servedByColo?: string | null;
+  /** Denotes if the query has been handled by the database primary instance. */
+  servedByPrimary?: boolean | null;
+  /** Region location hint of the database instance that handled the query. */
+  servedByRegion?:
+    | "WNAM"
+    | "ENAM"
+    | "WEUR"
+    | "EEUR"
+    | "APAC"
+    | "OC"
+    | (string & {})
+    | null;
+  /** Size of the database after the query committed, in bytes. */
+  sizeAfter?: number | null;
+  /** Various durations for the query. */
+  timings?: { sqlDurationMs?: number | null } | null;
+}
+const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    changedDb: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    changes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    lastRowId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    rowsRead: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    rowsWritten: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    servedByColo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    servedByPrimary: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    servedByRegion: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["WNAM", "ENAM", "WEUR", "EEUR", "APAC", "OC"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    sizeAfter: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    timings: Schema.optional(Schema.Union([Timings, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      changedDb: "changed_db",
+      changes: "changes",
+      duration: "duration",
+      lastRowId: "last_row_id",
+      rowsRead: "rows_read",
+      rowsWritten: "rows_written",
+      servedByColo: "served_by_colo",
+      servedByPrimary: "served_by_primary",
+      servedByRegion: "served_by_region",
+      sizeAfter: "size_after",
+      timings: "timings",
+    }),
+  ),
+) as unknown as Schema.Codec<Meta>;
+
+interface Result2 {
+  /** The time-travel bookmark if you need restore your D1 to directly after the import succeeded. */
+  finalBookmark?: string | null;
+  meta?: {
+    changedDb?: boolean | null;
+    changes?: number | null;
+    duration?: number | null;
+    lastRowId?: number | null;
+    rowsRead?: number | null;
+    rowsWritten?: number | null;
+    servedByColo?: string | null;
+    servedByPrimary?: boolean | null;
+    servedByRegion?:
+      | "WNAM"
+      | "ENAM"
+      | "WEUR"
+      | "EEUR"
+      | "APAC"
+      | "OC"
+      | (string & {})
+      | null;
+    sizeAfter?: number | null;
+    timings?: { sqlDurationMs?: number | null } | null;
+  } | null;
+  /** The total number of queries that were executed during the import. */
+  numQueries?: number | null;
+}
+const Result2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    finalBookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
+    numQueries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      finalBookmark: "final_bookmark",
+      meta: "meta",
+      numQueries: "num_queries",
+    }),
+  ),
+) as unknown as Schema.Codec<Result2>;
+
+interface Batch {
+  /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
+  sql: string;
+  params?: string[] | null;
+}
+const Batch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    sql: Schema.String,
+    params: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<Batch>;
+
+interface QueryDatabaseResponseResult {
+  meta?: {
+    changedDb?: boolean | null;
+    changes?: number | null;
+    duration?: number | null;
+    lastRowId?: number | null;
+    rowsRead?: number | null;
+    rowsWritten?: number | null;
+    servedByColo?: string | null;
+    servedByPrimary?: boolean | null;
+    servedByRegion?:
+      | "WNAM"
+      | "ENAM"
+      | "WEUR"
+      | "EEUR"
+      | "APAC"
+      | "OC"
+      | (string & {})
+      | null;
+    sizeAfter?: number | null;
+    timings?: { sqlDurationMs?: number | null } | null;
+  } | null;
+  results?: unknown[] | null;
+  success?: boolean | null;
+}
+const QueryDatabaseResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
+      results: Schema.optional(
+        Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      ),
+      success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<QueryDatabaseResponseResult>;
+
+interface Results {
+  columns?: string[] | null;
+  rows?: unknown[][] | null;
+}
+const Results = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    columns: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    rows: Schema.optional(
+      Schema.Union([Schema.Array(Schema.Array(Schema.Unknown)), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<Results>;
+
+interface RawDatabaseResponseResult {
+  meta?: {
+    changedDb?: boolean | null;
+    changes?: number | null;
+    duration?: number | null;
+    lastRowId?: number | null;
+    rowsRead?: number | null;
+    rowsWritten?: number | null;
+    servedByColo?: string | null;
+    servedByPrimary?: boolean | null;
+    servedByRegion?:
+      | "WNAM"
+      | "ENAM"
+      | "WEUR"
+      | "EEUR"
+      | "APAC"
+      | "OC"
+      | (string & {})
+      | null;
+    sizeAfter?: number | null;
+    timings?: { sqlDurationMs?: number | null } | null;
+  } | null;
+  results?: { columns?: string[] | null; rows?: unknown[][] | null } | null;
+  success?: boolean | null;
+}
+const RawDatabaseResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
+      results: Schema.optional(Schema.Union([Results, Schema.Null])),
+      success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<RawDatabaseResponseResult>;
+
+// =============================================================================
 // BookmarkDatabaseTimeTravel
 // =============================================================================
 
@@ -112,7 +444,7 @@ export const GetBookmarkDatabaseTimeTravelRequest =
         path: "/accounts/{account_id}/d1/database/{databaseId}/time_travel/bookmark",
       }),
     ),
-  ) as unknown as Schema.Schema<GetBookmarkDatabaseTimeTravelRequest>;
+  ) as unknown as Schema.Codec<GetBookmarkDatabaseTimeTravelRequest>;
 
 export interface GetBookmarkDatabaseTimeTravelResponse {
   /** A bookmark representing a specific state of the database at a specific point in time. */
@@ -124,7 +456,7 @@ export const GetBookmarkDatabaseTimeTravelResponse =
     Schema.Struct({
       bookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetBookmarkDatabaseTimeTravelResponse>;
+  ) as unknown as Schema.Codec<GetBookmarkDatabaseTimeTravelResponse>;
 
 export type GetBookmarkDatabaseTimeTravelError =
   | DefaultErrors
@@ -172,7 +504,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/d1/database" }),
     ),
-) as unknown as Schema.Schema<ListDatabasesRequest>;
+) as unknown as Schema.Codec<ListDatabasesRequest>;
 
 export interface ListDatabasesResponse {
   result: {
@@ -193,55 +525,12 @@ export interface ListDatabasesResponse {
 export const ListDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          createdAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          jurisdiction: Schema.optional(
-            Schema.Union([
-              Schema.Literal("eu"),
-              Schema.Literal("fedramp"),
-              Schema.Null,
-            ]),
-          ),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            createdAt: "created_at",
-            jurisdiction: "jurisdiction",
-            name: "name",
-            uuid: "uuid",
-            version: "version",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListDatabasesResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListDatabasesResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListDatabasesResponse>;
+) as unknown as Schema.Codec<ListDatabasesResponse>;
 
 export type ListDatabasesError = DefaultErrors;
 
@@ -315,7 +604,7 @@ export const GetDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/d1/database/{databaseId}",
       }),
     ),
-) as unknown as Schema.Schema<GetDatabaseRequest>;
+) as unknown as Schema.Codec<GetDatabaseRequest>;
 
 export interface GetDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
@@ -349,15 +638,7 @@ export const GetDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       readReplication: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            mode: Schema.Union([
-              Schema.Literals(["auto", "disabled"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ReadReplication, Schema.Null]),
       ),
       uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -375,7 +656,7 @@ export const GetDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetDatabaseResponse>;
+) as unknown as Schema.Codec<GetDatabaseResponse>;
 
 export type GetDatabaseError =
   | DefaultErrors
@@ -428,14 +709,7 @@ export const CreateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
           Schema.String,
         ]),
       ),
-      readReplication: Schema.optional(
-        Schema.Struct({
-          mode: Schema.Union([
-            Schema.Literals(["auto", "disabled"]),
-            Schema.String,
-          ]),
-        }),
-      ),
+      readReplication: Schema.optional(ReadReplication),
     }).pipe(
       Schema.encodeKeys({
         name: "name",
@@ -445,7 +719,7 @@ export const CreateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       }),
       T.Http({ method: "POST", path: "/accounts/{account_id}/d1/database" }),
     ),
-) as unknown as Schema.Schema<CreateDatabaseRequest>;
+) as unknown as Schema.Codec<CreateDatabaseRequest>;
 
 export interface CreateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
@@ -479,15 +753,7 @@ export const CreateDatabaseResponse =
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       readReplication: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            mode: Schema.Union([
-              Schema.Literals(["auto", "disabled"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ReadReplication, Schema.Null]),
       ),
       uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -505,7 +771,7 @@ export const CreateDatabaseResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateDatabaseResponse>;
+  ) as unknown as Schema.Codec<CreateDatabaseResponse>;
 
 export type CreateDatabaseError =
   | DefaultErrors
@@ -537,12 +803,7 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      readReplication: Schema.Struct({
-        mode: Schema.Union([
-          Schema.Literals(["auto", "disabled"]),
-          Schema.String,
-        ]),
-      }),
+      readReplication: ReadReplication,
     }).pipe(
       Schema.encodeKeys({ readReplication: "read_replication" }),
       T.Http({
@@ -550,7 +811,7 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/d1/database/{databaseId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateDatabaseRequest>;
+) as unknown as Schema.Codec<UpdateDatabaseRequest>;
 
 export interface UpdateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
@@ -584,15 +845,7 @@ export const UpdateDatabaseResponse =
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       readReplication: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            mode: Schema.Union([
-              Schema.Literals(["auto", "disabled"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ReadReplication, Schema.Null]),
       ),
       uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -610,7 +863,7 @@ export const UpdateDatabaseResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateDatabaseResponse>;
+  ) as unknown as Schema.Codec<UpdateDatabaseResponse>;
 
 export type UpdateDatabaseError =
   | DefaultErrors
@@ -642,14 +895,7 @@ export const PatchDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      readReplication: Schema.optional(
-        Schema.Struct({
-          mode: Schema.Union([
-            Schema.Literals(["auto", "disabled"]),
-            Schema.String,
-          ]),
-        }),
-      ),
+      readReplication: Schema.optional(ReadReplication),
     }).pipe(
       Schema.encodeKeys({ readReplication: "read_replication" }),
       T.Http({
@@ -657,7 +903,7 @@ export const PatchDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/d1/database/{databaseId}",
       }),
     ),
-) as unknown as Schema.Schema<PatchDatabaseRequest>;
+) as unknown as Schema.Codec<PatchDatabaseRequest>;
 
 export interface PatchDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
@@ -691,15 +937,7 @@ export const PatchDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       readReplication: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            mode: Schema.Union([
-              Schema.Literals(["auto", "disabled"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ReadReplication, Schema.Null]),
       ),
       uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -717,7 +955,7 @@ export const PatchDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PatchDatabaseResponse>;
+) as unknown as Schema.Codec<PatchDatabaseResponse>;
 
 export type PatchDatabaseError =
   | DefaultErrors
@@ -753,14 +991,14 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/d1/database/{databaseId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteDatabaseRequest>;
+) as unknown as Schema.Codec<DeleteDatabaseRequest>;
 
 export type DeleteDatabaseResponse = unknown;
 
 export const DeleteDatabaseResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteDatabaseResponse>;
+  ) as unknown as Schema.Codec<DeleteDatabaseResponse>;
 
 export type DeleteDatabaseError =
   | DefaultErrors
@@ -798,19 +1036,7 @@ export const ExportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       outputFormat: Schema.Literal("polling"),
       currentBookmark: Schema.optional(Schema.String),
-      dumpOptions: Schema.optional(
-        Schema.Struct({
-          noData: Schema.optional(Schema.Boolean),
-          noSchema: Schema.optional(Schema.Boolean),
-          tables: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            noData: "no_data",
-            noSchema: "no_schema",
-            tables: "tables",
-          }),
-        ),
-      ),
+      dumpOptions: Schema.optional(DumpOptions),
     }).pipe(
       Schema.encodeKeys({
         outputFormat: "output_format",
@@ -822,7 +1048,7 @@ export const ExportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/d1/database/{databaseId}/export",
       }),
     ),
-) as unknown as Schema.Schema<ExportDatabaseRequest>;
+) as unknown as Schema.Codec<ExportDatabaseRequest>;
 
 export interface ExportDatabaseResponse {
   /** The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task. */
@@ -846,24 +1072,7 @@ export const ExportDatabaseResponse =
       messages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      result: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            filename: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            signedUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              filename: "filename",
-              signedUrl: "signed_url",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      result: Schema.optional(Schema.Union([Result, Schema.Null])),
       status: Schema.optional(
         Schema.Union([
           Schema.Union([
@@ -890,7 +1099,7 @@ export const ExportDatabaseResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ExportDatabaseResponse>;
+  ) as unknown as Schema.Codec<ExportDatabaseResponse>;
 
 export type ExportDatabaseError =
   | DefaultErrors
@@ -947,7 +1156,7 @@ export const ImportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/d1/database/{databaseId}/import",
       }),
     ),
-) as unknown as Schema.Schema<ImportDatabaseRequest>;
+) as unknown as Schema.Codec<ImportDatabaseRequest>;
 
 export interface ImportDatabaseResponse {
   /** The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import. Only returned if an import process is currently running or recently finished. */
@@ -1000,101 +1209,7 @@ export const ImportDatabaseResponse =
       messages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      result: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            finalBookmark: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            meta: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  changedDb: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  changes: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  duration: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  lastRowId: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  rowsRead: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  rowsWritten: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  servedByColo: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  servedByPrimary: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  servedByRegion: Schema.optional(
-                    Schema.Union([
-                      Schema.Union([
-                        Schema.Literals([
-                          "WNAM",
-                          "ENAM",
-                          "WEUR",
-                          "EEUR",
-                          "APAC",
-                          "OC",
-                        ]),
-                        Schema.String,
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  sizeAfter: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  timings: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        sqlDurationMs: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ sqlDurationMs: "sql_duration_ms" }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    changedDb: "changed_db",
-                    changes: "changes",
-                    duration: "duration",
-                    lastRowId: "last_row_id",
-                    rowsRead: "rows_read",
-                    rowsWritten: "rows_written",
-                    servedByColo: "served_by_colo",
-                    servedByPrimary: "served_by_primary",
-                    servedByRegion: "served_by_region",
-                    sizeAfter: "size_after",
-                    timings: "timings",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            numQueries: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              finalBookmark: "final_bookmark",
-              meta: "meta",
-              numQueries: "num_queries",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      result: Schema.optional(Schema.Union([Result2, Schema.Null])),
       status: Schema.optional(
         Schema.Union([
           Schema.Union([Schema.Literals(["complete", "error"]), Schema.String]),
@@ -1121,7 +1236,7 @@ export const ImportDatabaseResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ImportDatabaseResponse>;
+  ) as unknown as Schema.Codec<ImportDatabaseResponse>;
 
 export type ImportDatabaseError = DefaultErrors | InvalidObjectIdentifier;
 
@@ -1155,21 +1270,14 @@ export const QueryDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       sql: Schema.optional(Schema.String),
       params: Schema.optional(Schema.Array(Schema.String)),
-      batch: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            sql: Schema.String,
-            params: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      ),
+      batch: Schema.optional(Schema.Array(Batch)),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/d1/database/{databaseId}/query",
       }),
     ),
-) as unknown as Schema.Schema<QueryDatabaseRequest>;
+) as unknown as Schema.Codec<QueryDatabaseRequest>;
 
 export interface QueryDatabaseResponse {
   result: {
@@ -1202,92 +1310,9 @@ export interface QueryDatabaseResponse {
 export const QueryDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          meta: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                changedDb: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                changes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                duration: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                lastRowId: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                rowsRead: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                rowsWritten: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                servedByColo: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                servedByPrimary: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                servedByRegion: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals([
-                        "WNAM",
-                        "ENAM",
-                        "WEUR",
-                        "EEUR",
-                        "APAC",
-                        "OC",
-                      ]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                sizeAfter: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                timings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      sqlDurationMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({ sqlDurationMs: "sql_duration_ms" }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  changedDb: "changed_db",
-                  changes: "changes",
-                  duration: "duration",
-                  lastRowId: "last_row_id",
-                  rowsRead: "rows_read",
-                  rowsWritten: "rows_written",
-                  servedByColo: "served_by_colo",
-                  servedByPrimary: "served_by_primary",
-                  servedByRegion: "served_by_region",
-                  sizeAfter: "size_after",
-                  timings: "timings",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          results: Schema.optional(
-            Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
-          ),
-          success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(QueryDatabaseResponseResult),
     }),
-) as unknown as Schema.Schema<QueryDatabaseResponse>;
+) as unknown as Schema.Codec<QueryDatabaseResponse>;
 
 export type QueryDatabaseError = DefaultErrors;
 
@@ -1325,21 +1350,14 @@ export const RawDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       sql: Schema.optional(Schema.String),
       params: Schema.optional(Schema.Array(Schema.String)),
-      batch: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            sql: Schema.String,
-            params: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      ),
+      batch: Schema.optional(Schema.Array(Batch)),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/d1/database/{databaseId}/raw",
       }),
     ),
-) as unknown as Schema.Schema<RawDatabaseRequest>;
+) as unknown as Schema.Codec<RawDatabaseRequest>;
 
 export interface RawDatabaseResponse {
   result: {
@@ -1372,105 +1390,9 @@ export interface RawDatabaseResponse {
 export const RawDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          meta: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                changedDb: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                changes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                duration: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                lastRowId: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                rowsRead: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                rowsWritten: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                servedByColo: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                servedByPrimary: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                servedByRegion: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals([
-                        "WNAM",
-                        "ENAM",
-                        "WEUR",
-                        "EEUR",
-                        "APAC",
-                        "OC",
-                      ]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                sizeAfter: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                timings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      sqlDurationMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({ sqlDurationMs: "sql_duration_ms" }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  changedDb: "changed_db",
-                  changes: "changes",
-                  duration: "duration",
-                  lastRowId: "last_row_id",
-                  rowsRead: "rows_read",
-                  rowsWritten: "rows_written",
-                  servedByColo: "served_by_colo",
-                  servedByPrimary: "served_by_primary",
-                  servedByRegion: "served_by_region",
-                  sizeAfter: "size_after",
-                  timings: "timings",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          results: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                columns: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                rows: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(Schema.Array(Schema.Unknown)),
-                    Schema.Null,
-                  ]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(RawDatabaseResponseResult),
     }),
-) as unknown as Schema.Schema<RawDatabaseResponse>;
+) as unknown as Schema.Codec<RawDatabaseResponse>;
 
 export type RawDatabaseError = DefaultErrors;
 
@@ -1516,7 +1438,7 @@ export const RestoreDatabaseTimeTravelRequest =
         path: "/accounts/{account_id}/d1/database/{databaseId}/time_travel/restore",
       }),
     ),
-  ) as unknown as Schema.Schema<RestoreDatabaseTimeTravelRequest>;
+  ) as unknown as Schema.Codec<RestoreDatabaseTimeTravelRequest>;
 
 export interface RestoreDatabaseTimeTravelResponse {
   /** The new bookmark representing the state of the database after the restore operation. */
@@ -1544,7 +1466,7 @@ export const RestoreDatabaseTimeTravelResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<RestoreDatabaseTimeTravelResponse>;
+  ) as unknown as Schema.Codec<RestoreDatabaseTimeTravelResponse>;
 
 export type RestoreDatabaseTimeTravelError =
   | DefaultErrors

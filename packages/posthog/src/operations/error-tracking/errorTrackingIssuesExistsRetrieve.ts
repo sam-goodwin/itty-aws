@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingIssuesExistsRetrieveInput {
+  project_id: string;
+}
 export const ErrorTrackingIssuesExistsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const ErrorTrackingIssuesExistsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/issues/exists/",
     }),
-  );
-export type ErrorTrackingIssuesExistsRetrieveInput =
-  typeof ErrorTrackingIssuesExistsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingIssuesExistsRetrieveInput>;
 
 // Output Schema
+export type ErrorTrackingIssuesExistsRetrieveOutput = void;
 export const ErrorTrackingIssuesExistsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingIssuesExistsRetrieveOutput =
-  typeof ErrorTrackingIssuesExistsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesExistsRetrieveOutput>;
 
 // The operation
 /**

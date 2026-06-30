@@ -4,11 +4,86 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ManufacturingDataServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mdsResourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    version?: string;
+    enableCopilot?: boolean;
+    enableDiagnosticSettings?: boolean;
+    aadApplicationId: string;
+    aksAdminGroupId?: string;
+    serviceUrl?: string;
+    aksProfile?: { id?: string };
+    storageProfile?: { id?: string };
+    databaseProfile?: { cosmosId?: string };
+    adxProfile?: { id?: string; uri?: string; dataIngestionUri?: string };
+    redisProfile?: { id?: string };
+    monitoringProfile?: { id?: string };
+    eventHubProfile?: { adxInstanceId?: string; hostName?: string };
+    functionAppProfile?: { id?: string };
+    openAIProfile?: {
+      id?: string;
+      gptModelName?: string;
+      gptModelVersion?: string;
+      gptModelCapacity?: number;
+      gptModelSkuName?: string;
+      embeddingModelName?: string;
+      embeddingModelVersion?: string;
+      embeddingModelSkuName?: string;
+      embeddingModelCapacity?: number;
+    };
+    managedResourceGroupConfiguration?: { name: string; location: string };
+    managedOnBehalfOfConfiguration?: { moboBrokerResources: { id: string }[] };
+    cmkProfile?: { keyUri: string };
+    fabricProfile?: { keyUri: string; oneLakeUri: string; oneLakePath: string };
+    userManagedOpenAIProfile?: {
+      id: string;
+      gptModelDeploymentName: string;
+      embeddingModelDeploymentName: string;
+      embeddingModelType?: string;
+    };
+    denyAssignmentExclusions?: { id: string; type: string }[];
+    resourceState?: "Active" | "Inactive";
+    redundancyState?: "Zonal" | "None";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ManufacturingDataServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -176,11 +251,22 @@ export const ManufacturingDataServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
       apiVersion: "2025-03-01",
     }),
-  );
-export type ManufacturingDataServicesCreateOrUpdateInput =
-  typeof ManufacturingDataServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManufacturingDataServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ManufacturingDataServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManufacturingDataServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -200,9 +286,7 @@ export const ManufacturingDataServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManufacturingDataServicesCreateOrUpdateOutput =
-  typeof ManufacturingDataServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManufacturingDataServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -219,6 +303,11 @@ export const ManufacturingDataServicesCreateOrUpdate =
     outputSchema: ManufacturingDataServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ManufacturingDataServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mdsResourceName: string;
+}
 export const ManufacturingDataServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -230,15 +319,12 @@ export const ManufacturingDataServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
       apiVersion: "2025-03-01",
     }),
-  );
-export type ManufacturingDataServicesDeleteInput =
-  typeof ManufacturingDataServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManufacturingDataServicesDeleteInput>;
 
 // Output Schema
+export type ManufacturingDataServicesDeleteOutput = void;
 export const ManufacturingDataServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManufacturingDataServicesDeleteOutput =
-  typeof ManufacturingDataServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManufacturingDataServicesDeleteOutput>;
 
 // The operation
 /**
@@ -255,6 +341,11 @@ export const ManufacturingDataServicesDelete =
     outputSchema: ManufacturingDataServicesDeleteOutput,
   }));
 // Input Schema
+export interface ManufacturingDataServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mdsResourceName: string;
+}
 export const ManufacturingDataServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -266,11 +357,22 @@ export const ManufacturingDataServicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
       apiVersion: "2025-03-01",
     }),
-  );
-export type ManufacturingDataServicesGetInput =
-  typeof ManufacturingDataServicesGetInput.Type;
+  ) as unknown as Schema.Codec<ManufacturingDataServicesGetInput>;
 
 // Output Schema
+export interface ManufacturingDataServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManufacturingDataServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -290,9 +392,7 @@ export const ManufacturingDataServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManufacturingDataServicesGetOutput =
-  typeof ManufacturingDataServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<ManufacturingDataServicesGetOutput>;
 
 // The operation
 /**
@@ -309,6 +409,11 @@ export const ManufacturingDataServicesGet =
     outputSchema: ManufacturingDataServicesGetOutput,
   }));
 // Input Schema
+export interface ManufacturingDataServicesListAvailableVersionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mdsResourceName: string;
+}
 export const ManufacturingDataServicesListAvailableVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -320,11 +425,17 @@ export const ManufacturingDataServicesListAvailableVersionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}/listAvailableVersions",
       apiVersion: "2025-03-01",
     }),
-  );
-export type ManufacturingDataServicesListAvailableVersionsInput =
-  typeof ManufacturingDataServicesListAvailableVersionsInput.Type;
+  ) as unknown as Schema.Codec<ManufacturingDataServicesListAvailableVersionsInput>;
 
 // Output Schema
+export interface ManufacturingDataServicesListAvailableVersionsOutput {
+  versions: {
+    version: string;
+    isLatest: boolean;
+    isPreview: boolean;
+    isDeprecated: boolean;
+  }[];
+}
 export const ManufacturingDataServicesListAvailableVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versions: Schema.Array(
@@ -335,9 +446,7 @@ export const ManufacturingDataServicesListAvailableVersionsOutput =
         isDeprecated: Schema.Boolean,
       }),
     ),
-  });
-export type ManufacturingDataServicesListAvailableVersionsOutput =
-  typeof ManufacturingDataServicesListAvailableVersionsOutput.Type;
+  }) as unknown as Schema.Codec<ManufacturingDataServicesListAvailableVersionsOutput>;
 
 // The operation
 /**
@@ -354,6 +463,10 @@ export const ManufacturingDataServicesListAvailableVersions =
     outputSchema: ManufacturingDataServicesListAvailableVersionsOutput,
   }));
 // Input Schema
+export interface ManufacturingDataServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ManufacturingDataServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -364,11 +477,25 @@ export const ManufacturingDataServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices",
       apiVersion: "2025-03-01",
     }),
-  );
-export type ManufacturingDataServicesListByResourceGroupInput =
-  typeof ManufacturingDataServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ManufacturingDataServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface ManufacturingDataServicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManufacturingDataServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -403,9 +530,7 @@ export const ManufacturingDataServicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManufacturingDataServicesListByResourceGroupOutput =
-  typeof ManufacturingDataServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ManufacturingDataServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -421,6 +546,9 @@ export const ManufacturingDataServicesListByResourceGroup =
     outputSchema: ManufacturingDataServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ManufacturingDataServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ManufacturingDataServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -430,11 +558,25 @@ export const ManufacturingDataServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices",
       apiVersion: "2025-03-01",
     }),
-  );
-export type ManufacturingDataServicesListBySubscriptionInput =
-  typeof ManufacturingDataServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ManufacturingDataServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface ManufacturingDataServicesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManufacturingDataServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -469,9 +611,7 @@ export const ManufacturingDataServicesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManufacturingDataServicesListBySubscriptionOutput =
-  typeof ManufacturingDataServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ManufacturingDataServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -486,6 +626,58 @@ export const ManufacturingDataServicesListBySubscription =
     outputSchema: ManufacturingDataServicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ManufacturingDataServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mdsResourceName: string;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  sku?: {
+    name?: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    version?: string;
+    enableCopilot?: boolean;
+    enableDiagnosticSettings?: boolean;
+    openAIProfile?: {
+      id?: string;
+      gptModelName?: string;
+      gptModelVersion?: string;
+      gptModelCapacity?: number;
+      gptModelSkuName?: string;
+      embeddingModelName?: string;
+      embeddingModelVersion?: string;
+      embeddingModelSkuName?: string;
+      embeddingModelCapacity?: number;
+    };
+    fabricProfile?: {
+      keyUri?: string;
+      oneLakeUri?: string;
+      oneLakePath?: string;
+    };
+    userManagedOpenAIProfile?: {
+      id?: string;
+      gptModelDeploymentName?: string;
+      embeddingModelDeploymentName?: string;
+    };
+    denyAssignmentExclusions?: { id: string; type: string }[];
+    resourceState?: "Active" | "Inactive";
+  };
+}
 export const ManufacturingDataServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -573,11 +765,22 @@ export const ManufacturingDataServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
       apiVersion: "2025-03-01",
     }),
-  );
-export type ManufacturingDataServicesUpdateInput =
-  typeof ManufacturingDataServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManufacturingDataServicesUpdateInput>;
 
 // Output Schema
+export interface ManufacturingDataServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManufacturingDataServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -597,9 +800,7 @@ export const ManufacturingDataServicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManufacturingDataServicesUpdateOutput =
-  typeof ManufacturingDataServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManufacturingDataServicesUpdateOutput>;
 
 // The operation
 /**
@@ -616,6 +817,7 @@ export const ManufacturingDataServicesUpdate =
     outputSchema: ManufacturingDataServicesUpdateOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -624,10 +826,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ManufacturingPlatform/operations",
     apiVersion: "2025-03-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -650,8 +866,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

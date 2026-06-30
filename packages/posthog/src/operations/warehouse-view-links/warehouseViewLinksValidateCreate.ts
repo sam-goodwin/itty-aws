@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseViewLinksValidateCreateInput {
+  project_id: string;
+  joining_table_name: string;
+  joining_table_key: string;
+  source_table_name: string;
+  source_table_key: string;
+}
 export const WarehouseViewLinksValidateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,15 +22,12 @@ export const WarehouseViewLinksValidateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/warehouse_view_links/validate/",
     }),
-  );
-export type WarehouseViewLinksValidateCreateInput =
-  typeof WarehouseViewLinksValidateCreateInput.Type;
+  ) as unknown as Schema.Codec<WarehouseViewLinksValidateCreateInput>;
 
 // Output Schema
+export type WarehouseViewLinksValidateCreateOutput = void;
 export const WarehouseViewLinksValidateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WarehouseViewLinksValidateCreateOutput =
-  typeof WarehouseViewLinksValidateCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseViewLinksValidateCreateOutput>;
 
 // The operation
 /**

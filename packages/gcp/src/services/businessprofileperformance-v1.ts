@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Businessprofileperformance_Date {
   day?: number;
 }
 
-export const Businessprofileperformance_Date: Schema.Schema<Businessprofileperformance_Date> =
+export const Businessprofileperformance_Date: Schema.Codec<Businessprofileperformance_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -45,7 +45,7 @@ export interface DatedValue {
   value?: string;
 }
 
-export const DatedValue: Schema.Schema<DatedValue> =
+export const DatedValue: Schema.Codec<DatedValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Businessprofileperformance_Date),
     value: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface TimeSeries {
   datedValues?: ReadonlyArray<DatedValue>;
 }
 
-export const TimeSeries: Schema.Schema<TimeSeries> =
+export const TimeSeries: Schema.Codec<TimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datedValues: Schema.optional(Schema.Array(DatedValue)),
   }).annotate({ identifier: "TimeSeries" });
@@ -66,7 +66,7 @@ export interface GetDailyMetricsTimeSeriesResponse {
   timeSeries?: TimeSeries;
 }
 
-export const GetDailyMetricsTimeSeriesResponse: Schema.Schema<GetDailyMetricsTimeSeriesResponse> =
+export const GetDailyMetricsTimeSeriesResponse: Schema.Codec<GetDailyMetricsTimeSeriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeSeries: Schema.optional(TimeSeries),
   }).annotate({ identifier: "GetDailyMetricsTimeSeriesResponse" });
@@ -82,7 +82,7 @@ export interface TimeOfDay {
   seconds?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     nanos: Schema.optional(Schema.Number),
@@ -106,7 +106,7 @@ export interface DailySubEntityType {
     | (string & {});
 }
 
-export const DailySubEntityType: Schema.Schema<DailySubEntityType> =
+export const DailySubEntityType: Schema.Codec<DailySubEntityType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeOfDay: Schema.optional(TimeOfDay),
     dayOfWeek: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface DailyMetricTimeSeries {
     | (string & {});
 }
 
-export const DailyMetricTimeSeries: Schema.Schema<DailyMetricTimeSeries> =
+export const DailyMetricTimeSeries: Schema.Codec<DailyMetricTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeSeries: Schema.optional(TimeSeries),
     dailySubEntityType: Schema.optional(DailySubEntityType),
@@ -146,7 +146,7 @@ export interface MultiDailyMetricTimeSeries {
   dailyMetricTimeSeries?: ReadonlyArray<DailyMetricTimeSeries>;
 }
 
-export const MultiDailyMetricTimeSeries: Schema.Schema<MultiDailyMetricTimeSeries> =
+export const MultiDailyMetricTimeSeries: Schema.Codec<MultiDailyMetricTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dailyMetricTimeSeries: Schema.optional(Schema.Array(DailyMetricTimeSeries)),
   }).annotate({ identifier: "MultiDailyMetricTimeSeries" });
@@ -158,7 +158,7 @@ export interface InsightsValue {
   value?: string;
 }
 
-export const InsightsValue: Schema.Schema<InsightsValue> =
+export const InsightsValue: Schema.Codec<InsightsValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threshold: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -171,7 +171,7 @@ export interface SearchKeywordCount {
   insightsValue?: InsightsValue;
 }
 
-export const SearchKeywordCount: Schema.Schema<SearchKeywordCount> =
+export const SearchKeywordCount: Schema.Codec<SearchKeywordCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchKeyword: Schema.optional(Schema.String),
     insightsValue: Schema.optional(InsightsValue),
@@ -182,7 +182,7 @@ export interface FetchMultiDailyMetricsTimeSeriesResponse {
   multiDailyMetricTimeSeries?: ReadonlyArray<MultiDailyMetricTimeSeries>;
 }
 
-export const FetchMultiDailyMetricsTimeSeriesResponse: Schema.Schema<FetchMultiDailyMetricsTimeSeriesResponse> =
+export const FetchMultiDailyMetricsTimeSeriesResponse: Schema.Codec<FetchMultiDailyMetricsTimeSeriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     multiDailyMetricTimeSeries: Schema.optional(
       Schema.Array(MultiDailyMetricTimeSeries),
@@ -196,7 +196,7 @@ export interface ListSearchKeywordImpressionsMonthlyResponse {
   searchKeywordsCounts?: ReadonlyArray<SearchKeywordCount>;
 }
 
-export const ListSearchKeywordImpressionsMonthlyResponse: Schema.Schema<ListSearchKeywordImpressionsMonthlyResponse> =
+export const ListSearchKeywordImpressionsMonthlyResponse: Schema.Codec<ListSearchKeywordImpressionsMonthlyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     searchKeywordsCounts: Schema.optional(Schema.Array(SearchKeywordCount)),
@@ -326,7 +326,7 @@ export const GetDailyMetricsTimeSeriesLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getDailyMetricsTimeSeries" }),
     svc,
-  ) as unknown as Schema.Schema<GetDailyMetricsTimeSeriesLocationsRequest>;
+  ) as unknown as Schema.Codec<GetDailyMetricsTimeSeriesLocationsRequest>;
 
 export type GetDailyMetricsTimeSeriesLocationsResponse =
   GetDailyMetricsTimeSeriesResponse;
@@ -412,7 +412,7 @@ export const FetchMultiDailyMetricsTimeSeriesLocationsRequest =
       path: "v1/{+location}:fetchMultiDailyMetricsTimeSeries",
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchMultiDailyMetricsTimeSeriesLocationsRequest>;
+  ) as unknown as Schema.Codec<FetchMultiDailyMetricsTimeSeriesLocationsRequest>;
 
 export type FetchMultiDailyMetricsTimeSeriesLocationsResponse =
   FetchMultiDailyMetricsTimeSeriesResponse;
@@ -486,7 +486,7 @@ export const ListLocationsSearchkeywordsImpressionsMonthlyRequest =
       path: "v1/{+parent}/searchkeywords/impressions/monthly",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListLocationsSearchkeywordsImpressionsMonthlyRequest>;
+  ) as unknown as Schema.Codec<ListLocationsSearchkeywordsImpressionsMonthlyRequest>;
 
 export type ListLocationsSearchkeywordsImpressionsMonthlyResponse =
   ListSearchKeywordImpressionsMonthlyResponse;

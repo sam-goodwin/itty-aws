@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisionScannersDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const VisionScannersDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,14 +16,12 @@ export const VisionScannersDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/vision/scanners/{id}/",
     }),
-  );
-export type VisionScannersDestroyInput = typeof VisionScannersDestroyInput.Type;
+  ) as unknown as Schema.Codec<VisionScannersDestroyInput>;
 
 // Output Schema
+export type VisionScannersDestroyOutput = void;
 export const VisionScannersDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VisionScannersDestroyOutput =
-  typeof VisionScannersDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VisionScannersDestroyOutput>;
 
 // The operation
 /**

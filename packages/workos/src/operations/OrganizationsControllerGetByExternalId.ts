@@ -4,16 +4,45 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationsControllerGetByExternalIdInput {
+  external_id: string;
+}
 export const OrganizationsControllerGetByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     external_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/external_id/{external_id}" }),
-  );
-export type OrganizationsControllerGetByExternalIdInput =
-  typeof OrganizationsControllerGetByExternalIdInput.Type;
+  ) as unknown as Schema.Codec<OrganizationsControllerGetByExternalIdInput>;
 
 // Output Schema
+export interface OrganizationsControllerGetByExternalIdOutput {
+  object?: string;
+  id?: string;
+  name?: string;
+  domains?: {
+    object: string;
+    id: string;
+    organization_id: string;
+    domain: string;
+    state?:
+      | "failed"
+      | "legacy_verified"
+      | "pending"
+      | "unverified"
+      | "verified";
+    verification_prefix?: string;
+    verification_token?: string;
+    verification_strategy?: "dns" | "manual";
+    created_at: string;
+    updated_at: string;
+  }[];
+  metadata?: Record<string, string>;
+  external_id?: string | null;
+  stripe_customer_id?: string;
+  created_at?: string;
+  updated_at?: string;
+  allow_profiles_outside_organization?: boolean;
+}
 export const OrganizationsControllerGetByExternalIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -51,9 +80,7 @@ export const OrganizationsControllerGetByExternalIdOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
-  });
-export type OrganizationsControllerGetByExternalIdOutput =
-  typeof OrganizationsControllerGetByExternalIdOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsControllerGetByExternalIdOutput>;
 
 // The operation
 /**

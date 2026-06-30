@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListDatabasesInput {
+  organizationSlug: string;
+  group?: string;
+  schema?: string;
+  parent?: string;
+}
 export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   group: Schema.optional(Schema.String),
@@ -13,10 +19,23 @@ export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/v1/organizations/{organizationSlug}/databases",
   }),
-);
-export type ListDatabasesInput = typeof ListDatabasesInput.Type;
+) as unknown as Schema.Codec<ListDatabasesInput>;
 
 // Output Schema
+export interface ListDatabasesOutput {
+  databases?: {
+    Name?: string;
+    DbId?: string;
+    Hostname?: string;
+    block_reads?: boolean;
+    block_writes?: boolean;
+    regions?: string[];
+    primaryRegion?: string;
+    group?: string;
+    delete_protection?: boolean;
+    parent?: { id?: string; name?: string; branched_at?: string } | null;
+  }[];
+}
 export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databases: Schema.optional(
     Schema.Array(
@@ -42,8 +61,7 @@ export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ListDatabasesOutput = typeof ListDatabasesOutput.Type;
+}) as unknown as Schema.Codec<ListDatabasesOutput>;
 
 // The operation
 /**

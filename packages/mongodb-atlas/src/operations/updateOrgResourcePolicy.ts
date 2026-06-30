@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateOrgResourcePolicyInput {
+  orgId: string;
+  resourcePolicyId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateOrgResourcePolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const UpdateOrgResourcePolicyInput =
       method: "PATCH",
       path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}",
     }),
-  );
-export type UpdateOrgResourcePolicyInput =
-  typeof UpdateOrgResourcePolicyInput.Type;
+  ) as unknown as Schema.Codec<UpdateOrgResourcePolicyInput>;
 
 // Output Schema
+export type UpdateOrgResourcePolicyOutput = void;
 export const UpdateOrgResourcePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateOrgResourcePolicyOutput =
-  typeof UpdateOrgResourcePolicyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateOrgResourcePolicyOutput>;
 
 // The operation
 /**

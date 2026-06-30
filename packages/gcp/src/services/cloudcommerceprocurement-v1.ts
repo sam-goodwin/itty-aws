@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface ApproveEntitlementRequest {
   properties?: Record<string, string>;
 }
 
-export const ApproveEntitlementRequest: Schema.Schema<ApproveEntitlementRequest> =
+export const ApproveEntitlementRequest: Schema.Codec<ApproveEntitlementRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entitlementMigrated: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -40,14 +40,14 @@ export interface RejectEntitlementRequest {
   reason?: string;
 }
 
-export const RejectEntitlementRequest: Schema.Schema<RejectEntitlementRequest> =
+export const RejectEntitlementRequest: Schema.Codec<RejectEntitlementRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "RejectEntitlementRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -61,7 +61,7 @@ export interface ApproveAccountRequest {
   reason?: string;
 }
 
-export const ApproveAccountRequest: Schema.Schema<ApproveAccountRequest> =
+export const ApproveAccountRequest: Schema.Codec<ApproveAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approvalName: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -73,7 +73,7 @@ export interface Consumer {
   project?: string;
 }
 
-export const Consumer: Schema.Schema<Consumer> =
+export const Consumer: Schema.Codec<Consumer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.optional(Schema.String),
   }).annotate({ identifier: "Consumer" });
@@ -142,7 +142,7 @@ export interface Entitlement {
   plan?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
+export const Entitlement: Schema.Codec<Entitlement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usageReportingId: Schema.optional(Schema.String),
     messageToUser: Schema.optional(Schema.String),
@@ -181,7 +181,7 @@ export interface ListEntitlementsResponse {
   entitlements?: ReadonlyArray<Entitlement>;
 }
 
-export const ListEntitlementsResponse: Schema.Schema<ListEntitlementsResponse> =
+export const ListEntitlementsResponse: Schema.Codec<ListEntitlementsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     entitlements: Schema.optional(Schema.Array(Entitlement)),
@@ -194,7 +194,7 @@ export interface RejectEntitlementPlanChangeRequest {
   pendingPlanName?: string;
 }
 
-export const RejectEntitlementPlanChangeRequest: Schema.Schema<RejectEntitlementPlanChangeRequest> =
+export const RejectEntitlementPlanChangeRequest: Schema.Codec<RejectEntitlementPlanChangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     pendingPlanName: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface RejectAccountRequest {
   reason?: string;
 }
 
-export const RejectAccountRequest: Schema.Schema<RejectAccountRequest> =
+export const RejectAccountRequest: Schema.Codec<RejectAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approvalName: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export interface Approval {
   reason?: string;
 }
 
-export const Approval: Schema.Schema<Approval> =
+export const Approval: Schema.Codec<Approval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -260,7 +260,7 @@ export interface Account {
   provider?: string;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputProperties: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -281,7 +281,7 @@ export interface ListAccountsResponse {
   accounts?: ReadonlyArray<Account>;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
+export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accounts: Schema.optional(Schema.Array(Account)),
@@ -292,14 +292,14 @@ export interface ApproveEntitlementPlanChangeRequest {
   pendingPlanName?: string;
 }
 
-export const ApproveEntitlementPlanChangeRequest: Schema.Schema<ApproveEntitlementPlanChangeRequest> =
+export const ApproveEntitlementPlanChangeRequest: Schema.Codec<ApproveEntitlementPlanChangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pendingPlanName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApproveEntitlementPlanChangeRequest" });
 
 export interface ResetAccountRequest {}
 
-export const ResetAccountRequest: Schema.Schema<ResetAccountRequest> =
+export const ResetAccountRequest: Schema.Codec<ResetAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetAccountRequest",
   });
@@ -309,7 +309,7 @@ export interface SuspendEntitlementRequest {
   reason?: string;
 }
 
-export const SuspendEntitlementRequest: Schema.Schema<SuspendEntitlementRequest> =
+export const SuspendEntitlementRequest: Schema.Codec<SuspendEntitlementRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "SuspendEntitlementRequest" });
@@ -382,7 +382,7 @@ export const RejectProvidersAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reject", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RejectProvidersAccountsRequest>;
+  ) as unknown as Schema.Codec<RejectProvidersAccountsRequest>;
 
 export type RejectProvidersAccountsResponse = Empty;
 export const RejectProvidersAccountsResponse =
@@ -425,7 +425,7 @@ export const GetProvidersAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProvidersAccountsRequest>;
+  ) as unknown as Schema.Codec<GetProvidersAccountsRequest>;
 
 export type GetProvidersAccountsResponse = Account;
 export const GetProvidersAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -461,7 +461,7 @@ export const ListProvidersAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/accounts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProvidersAccountsRequest>;
+  ) as unknown as Schema.Codec<ListProvidersAccountsRequest>;
 
 export type ListProvidersAccountsResponse = ListAccountsResponse;
 export const ListProvidersAccountsResponse =
@@ -499,7 +499,7 @@ export const ApproveProvidersAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApproveProvidersAccountsRequest>;
+  ) as unknown as Schema.Codec<ApproveProvidersAccountsRequest>;
 
 export type ApproveProvidersAccountsResponse = Empty;
 export const ApproveProvidersAccountsResponse =
@@ -538,7 +538,7 @@ export const ResetProvidersAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reset", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResetProvidersAccountsRequest>;
+  ) as unknown as Schema.Codec<ResetProvidersAccountsRequest>;
 
 export type ResetProvidersAccountsResponse = Empty;
 export const ResetProvidersAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -573,7 +573,7 @@ export const GetProvidersEntitlementsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProvidersEntitlementsRequest>;
+  ) as unknown as Schema.Codec<GetProvidersEntitlementsRequest>;
 
 export type GetProvidersEntitlementsResponse = Entitlement;
 export const GetProvidersEntitlementsResponse =
@@ -613,7 +613,7 @@ export const PatchProvidersEntitlementsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProvidersEntitlementsRequest>;
+  ) as unknown as Schema.Codec<PatchProvidersEntitlementsRequest>;
 
 export type PatchProvidersEntitlementsResponse = Entitlement;
 export const PatchProvidersEntitlementsResponse =
@@ -658,7 +658,7 @@ export const ListProvidersEntitlementsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entitlements" }),
     svc,
-  ) as unknown as Schema.Schema<ListProvidersEntitlementsRequest>;
+  ) as unknown as Schema.Codec<ListProvidersEntitlementsRequest>;
 
 export type ListProvidersEntitlementsResponse = ListEntitlementsResponse;
 export const ListProvidersEntitlementsResponse =
@@ -705,7 +705,7 @@ export const RejectPlanChangeProvidersEntitlementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RejectPlanChangeProvidersEntitlementsRequest>;
+  ) as unknown as Schema.Codec<RejectPlanChangeProvidersEntitlementsRequest>;
 
 export type RejectPlanChangeProvidersEntitlementsResponse = Empty;
 export const RejectPlanChangeProvidersEntitlementsResponse =
@@ -744,7 +744,7 @@ export const ApproveProvidersEntitlementsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApproveProvidersEntitlementsRequest>;
+  ) as unknown as Schema.Codec<ApproveProvidersEntitlementsRequest>;
 
 export type ApproveProvidersEntitlementsResponse = Empty;
 export const ApproveProvidersEntitlementsResponse =
@@ -783,7 +783,7 @@ export const SuspendProvidersEntitlementsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:suspend", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SuspendProvidersEntitlementsRequest>;
+  ) as unknown as Schema.Codec<SuspendProvidersEntitlementsRequest>;
 
 export type SuspendProvidersEntitlementsResponse = Empty;
 export const SuspendProvidersEntitlementsResponse =
@@ -822,7 +822,7 @@ export const RejectProvidersEntitlementsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reject", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RejectProvidersEntitlementsRequest>;
+  ) as unknown as Schema.Codec<RejectProvidersEntitlementsRequest>;
 
 export type RejectProvidersEntitlementsResponse = Empty;
 export const RejectProvidersEntitlementsResponse =
@@ -867,7 +867,7 @@ export const ApprovePlanChangeProvidersEntitlementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ApprovePlanChangeProvidersEntitlementsRequest>;
+  ) as unknown as Schema.Codec<ApprovePlanChangeProvidersEntitlementsRequest>;
 
 export type ApprovePlanChangeProvidersEntitlementsResponse = Empty;
 export const ApprovePlanChangeProvidersEntitlementsResponse =

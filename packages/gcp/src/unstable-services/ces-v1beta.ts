@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -39,7 +39,7 @@ export interface LfA2aV1Part {
   mediaType?: string;
 }
 
-export const LfA2aV1Part: Schema.Schema<LfA2aV1Part> =
+export const LfA2aV1Part: Schema.Codec<LfA2aV1Part> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     raw: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export interface LfA2aV1Artifact {
   description?: string;
 }
 
-export const LfA2aV1Artifact: Schema.Schema<LfA2aV1Artifact> =
+export const LfA2aV1Artifact: Schema.Codec<LfA2aV1Artifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parts: Schema.optional(Schema.Array(LfA2aV1Part)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -94,7 +94,7 @@ export interface LfA2aV1Message {
   role?: "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT" | (string & {});
 }
 
-export const LfA2aV1Message: Schema.Schema<LfA2aV1Message> =
+export const LfA2aV1Message: Schema.Codec<LfA2aV1Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contextId: Schema.optional(Schema.String),
     taskId: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface LfA2aV1TaskStatus {
     | (string & {});
 }
 
-export const LfA2aV1TaskStatus: Schema.Schema<LfA2aV1TaskStatus> =
+export const LfA2aV1TaskStatus: Schema.Codec<LfA2aV1TaskStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(LfA2aV1Message),
     timestamp: Schema.optional(Schema.String),
@@ -147,7 +147,7 @@ export interface LfA2aV1Task {
   history?: ReadonlyArray<LfA2aV1Message>;
 }
 
-export const LfA2aV1Task: Schema.Schema<LfA2aV1Task> =
+export const LfA2aV1Task: Schema.Codec<LfA2aV1Task> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -170,7 +170,7 @@ export interface ApiKeyConfig {
   keyName?: string;
 }
 
-export const ApiKeyConfig: Schema.Schema<ApiKeyConfig> =
+export const ApiKeyConfig: Schema.Codec<ApiKeyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestLocation: Schema.optional(Schema.String),
     apiKeySecretVersion: Schema.optional(Schema.String),
@@ -184,7 +184,7 @@ export interface WebSearchQuery {
   uri?: string;
 }
 
-export const WebSearchQuery: Schema.Schema<WebSearchQuery> =
+export const WebSearchQuery: Schema.Codec<WebSearchQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -197,7 +197,7 @@ export interface GoogleSearchSuggestions {
   htmls?: ReadonlyArray<string>;
 }
 
-export const GoogleSearchSuggestions: Schema.Schema<GoogleSearchSuggestions> =
+export const GoogleSearchSuggestions: Schema.Codec<GoogleSearchSuggestions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webSearchQueries: Schema.optional(Schema.Array(WebSearchQuery)),
     htmls: Schema.optional(Schema.Array(Schema.String)),
@@ -212,7 +212,7 @@ export interface RedactionConfig {
   deidentifyTemplate?: string;
 }
 
-export const RedactionConfig: Schema.Schema<RedactionConfig> =
+export const RedactionConfig: Schema.Codec<RedactionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableRedaction: Schema.optional(Schema.Boolean),
     inspectTemplate: Schema.optional(Schema.String),
@@ -226,7 +226,7 @@ export interface AudioRecordingConfig {
   gcsPathPrefix?: string;
 }
 
-export const AudioRecordingConfig: Schema.Schema<AudioRecordingConfig> =
+export const AudioRecordingConfig: Schema.Codec<AudioRecordingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsBucket: Schema.optional(Schema.String),
     gcsPathPrefix: Schema.optional(Schema.String),
@@ -237,7 +237,7 @@ export interface CloudLoggingSettings {
   enableCloudLogging?: boolean;
 }
 
-export const CloudLoggingSettings: Schema.Schema<CloudLoggingSettings> =
+export const CloudLoggingSettings: Schema.Codec<CloudLoggingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableCloudLogging: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CloudLoggingSettings" });
@@ -247,7 +247,7 @@ export interface MetricAnalysisSettings {
   llmMetricsOptedOut?: boolean;
 }
 
-export const MetricAnalysisSettings: Schema.Schema<MetricAnalysisSettings> =
+export const MetricAnalysisSettings: Schema.Codec<MetricAnalysisSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     llmMetricsOptedOut: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "MetricAnalysisSettings" });
@@ -261,7 +261,7 @@ export interface BigQueryExportSettings {
   dataset?: string;
 }
 
-export const BigQueryExportSettings: Schema.Schema<BigQueryExportSettings> =
+export const BigQueryExportSettings: Schema.Codec<BigQueryExportSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     project: Schema.optional(Schema.String),
@@ -275,7 +275,7 @@ export interface ConversationLoggingSettings {
   retentionWindow?: string;
 }
 
-export const ConversationLoggingSettings: Schema.Schema<ConversationLoggingSettings> =
+export const ConversationLoggingSettings: Schema.Codec<ConversationLoggingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableConversationLogging: Schema.optional(Schema.Boolean),
     retentionWindow: Schema.optional(Schema.String),
@@ -300,7 +300,7 @@ export interface LoggingSettings {
   conversationLoggingSettings?: ConversationLoggingSettings;
 }
 
-export const LoggingSettings: Schema.Schema<LoggingSettings> =
+export const LoggingSettings: Schema.Codec<LoggingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redactionConfig: Schema.optional(RedactionConfig),
     audioRecordingConfig: Schema.optional(AudioRecordingConfig),
@@ -319,7 +319,7 @@ export interface GoogleSearchToolPromptConfig {
   textPrompt?: string;
 }
 
-export const GoogleSearchToolPromptConfig: Schema.Schema<GoogleSearchToolPromptConfig> =
+export const GoogleSearchToolPromptConfig: Schema.Codec<GoogleSearchToolPromptConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     voicePrompt: Schema.optional(Schema.String),
     textPrompt: Schema.optional(Schema.String),
@@ -340,7 +340,7 @@ export interface GoogleSearchTool {
   promptConfig?: GoogleSearchToolPromptConfig;
 }
 
-export const GoogleSearchTool: Schema.Schema<GoogleSearchTool> =
+export const GoogleSearchTool: Schema.Codec<GoogleSearchTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     preferredDomains: Schema.optional(Schema.Array(Schema.String)),
@@ -363,7 +363,7 @@ export interface EvaluationResultToolCallLatency {
   displayName?: string;
 }
 
-export const EvaluationResultToolCallLatency: Schema.Schema<EvaluationResultToolCallLatency> =
+export const EvaluationResultToolCallLatency: Schema.Codec<EvaluationResultToolCallLatency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tool: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -379,7 +379,7 @@ export interface ToolsetTool {
   toolset?: string;
 }
 
-export const ToolsetTool: Schema.Schema<ToolsetTool> =
+export const ToolsetTool: Schema.Codec<ToolsetTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolId: Schema.optional(Schema.String),
     toolset: Schema.optional(Schema.String),
@@ -398,7 +398,7 @@ export interface MockedToolCall {
   mockResponse?: Record<string, unknown>;
 }
 
-export const MockedToolCall: Schema.Schema<MockedToolCall> =
+export const MockedToolCall: Schema.Codec<MockedToolCall> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolId: Schema.optional(Schema.String),
     tool: Schema.optional(Schema.String),
@@ -416,7 +416,7 @@ export interface ErrorHandlingSettingsFallbackResponseConfig {
   maxFallbackAttempts?: number;
 }
 
-export const ErrorHandlingSettingsFallbackResponseConfig: Schema.Schema<ErrorHandlingSettingsFallbackResponseConfig> =
+export const ErrorHandlingSettingsFallbackResponseConfig: Schema.Codec<ErrorHandlingSettingsFallbackResponseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customFallbackMessages: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -443,7 +443,7 @@ export interface EvaluationErrorInfo {
   sessionId?: string;
 }
 
-export const EvaluationErrorInfo: Schema.Schema<EvaluationErrorInfo> =
+export const EvaluationErrorInfo: Schema.Codec<EvaluationErrorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorType: Schema.optional(Schema.String),
     userFacingErrorMessage: Schema.optional(Schema.String),
@@ -460,7 +460,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -476,7 +476,7 @@ export interface PersonaRunConfig {
   taskCount?: number;
 }
 
-export const PersonaRunConfig: Schema.Schema<PersonaRunConfig> =
+export const PersonaRunConfig: Schema.Codec<PersonaRunConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     persona: Schema.optional(Schema.String),
     taskCount: Schema.optional(Schema.Number),
@@ -495,7 +495,7 @@ export interface EvaluationRunProgress {
   passedCount?: number;
 }
 
-export const EvaluationRunProgress: Schema.Schema<EvaluationRunProgress> =
+export const EvaluationRunProgress: Schema.Codec<EvaluationRunProgress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedCount: Schema.optional(Schema.Number),
     completedCount: Schema.optional(Schema.Number),
@@ -518,7 +518,7 @@ export interface InputAudioConfig {
   sampleRateHertz?: number;
 }
 
-export const InputAudioConfig: Schema.Schema<InputAudioConfig> =
+export const InputAudioConfig: Schema.Codec<InputAudioConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioEncoding: Schema.optional(Schema.String),
     noiseSuppressionLevel: Schema.optional(Schema.String),
@@ -537,7 +537,7 @@ export interface OutputAudioConfig {
   sampleRateHertz?: number;
 }
 
-export const OutputAudioConfig: Schema.Schema<OutputAudioConfig> =
+export const OutputAudioConfig: Schema.Codec<OutputAudioConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioEncoding: Schema.optional(Schema.String),
     sampleRateHertz: Schema.optional(Schema.Number),
@@ -562,7 +562,7 @@ export interface EvaluationConfig {
     | (string & {});
 }
 
-export const EvaluationConfig: Schema.Schema<EvaluationConfig> =
+export const EvaluationConfig: Schema.Codec<EvaluationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputAudioConfig: Schema.optional(InputAudioConfig),
     toolCallBehaviour: Schema.optional(Schema.String),
@@ -581,7 +581,7 @@ export interface LatencyReportLatencyMetrics {
   p99Latency?: string;
 }
 
-export const LatencyReportLatencyMetrics: Schema.Schema<LatencyReportLatencyMetrics> =
+export const LatencyReportLatencyMetrics: Schema.Codec<LatencyReportLatencyMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     p90Latency: Schema.optional(Schema.String),
     callCount: Schema.optional(Schema.Number),
@@ -598,7 +598,7 @@ export interface LatencyReportGuardrailLatency {
   guardrailDisplayName?: string;
 }
 
-export const LatencyReportGuardrailLatency: Schema.Schema<LatencyReportGuardrailLatency> =
+export const LatencyReportGuardrailLatency: Schema.Codec<LatencyReportGuardrailLatency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latencyMetrics: Schema.optional(LatencyReportLatencyMetrics),
     guardrail: Schema.optional(Schema.String),
@@ -612,7 +612,7 @@ export interface LatencyReportLlmCallLatency {
   latencyMetrics?: LatencyReportLatencyMetrics;
 }
 
-export const LatencyReportLlmCallLatency: Schema.Schema<LatencyReportLlmCallLatency> =
+export const LatencyReportLlmCallLatency: Schema.Codec<LatencyReportLlmCallLatency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String),
     latencyMetrics: Schema.optional(LatencyReportLatencyMetrics),
@@ -629,7 +629,7 @@ export interface LatencyReportToolLatency {
   latencyMetrics?: LatencyReportLatencyMetrics;
 }
 
-export const LatencyReportToolLatency: Schema.Schema<LatencyReportToolLatency> =
+export const LatencyReportToolLatency: Schema.Codec<LatencyReportToolLatency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolDisplayName: Schema.optional(Schema.String),
     toolsetTool: Schema.optional(ToolsetTool),
@@ -644,7 +644,7 @@ export interface LatencyReportCallbackLatency {
   stage?: string;
 }
 
-export const LatencyReportCallbackLatency: Schema.Schema<LatencyReportCallbackLatency> =
+export const LatencyReportCallbackLatency: Schema.Codec<LatencyReportCallbackLatency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latencyMetrics: Schema.optional(LatencyReportLatencyMetrics),
     stage: Schema.optional(Schema.String),
@@ -663,7 +663,7 @@ export interface LatencyReport {
   callbackLatencies?: ReadonlyArray<LatencyReportCallbackLatency>;
 }
 
-export const LatencyReport: Schema.Schema<LatencyReport> =
+export const LatencyReport: Schema.Codec<LatencyReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guardrailLatencies: Schema.optional(
       Schema.Array(LatencyReportGuardrailLatency),
@@ -687,7 +687,7 @@ export interface EvaluationRunEvaluationRunSummary {
   errorCount?: number;
 }
 
-export const EvaluationRunEvaluationRunSummary: Schema.Schema<EvaluationRunEvaluationRunSummary> =
+export const EvaluationRunEvaluationRunSummary: Schema.Codec<EvaluationRunEvaluationRunSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passedCount: Schema.optional(Schema.Number),
     failedCount: Schema.optional(Schema.Number),
@@ -716,7 +716,7 @@ export interface OptimizationConfig {
   lossReport?: Record<string, unknown>;
 }
 
-export const OptimizationConfig: Schema.Schema<OptimizationConfig> =
+export const OptimizationConfig: Schema.Codec<OptimizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportSummary: Schema.optional(Schema.String),
     shouldSuggestFix: Schema.optional(Schema.Boolean),
@@ -794,7 +794,7 @@ export interface EvaluationRun {
     | (string & {});
 }
 
-export const EvaluationRun: Schema.Schema<EvaluationRun> =
+export const EvaluationRun: Schema.Codec<EvaluationRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorInfo: Schema.optional(EvaluationErrorInfo),
     error: Schema.optional(Status),
@@ -834,7 +834,7 @@ export interface EndUserAuthConfigOauth2JwtBearerConfig {
   issuer?: string;
 }
 
-export const EndUserAuthConfigOauth2JwtBearerConfig: Schema.Schema<EndUserAuthConfigOauth2JwtBearerConfig> =
+export const EndUserAuthConfigOauth2JwtBearerConfig: Schema.Codec<EndUserAuthConfigOauth2JwtBearerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subject: Schema.optional(Schema.String),
     clientKey: Schema.optional(Schema.String),
@@ -852,7 +852,7 @@ export interface AgentInterface {
   tenant?: string;
 }
 
-export const AgentInterface: Schema.Schema<AgentInterface> =
+export const AgentInterface: Schema.Codec<AgentInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     protocolBinding: Schema.optional(Schema.String),
@@ -867,7 +867,7 @@ export interface LfA2aV1AuthenticationInfo {
   credentials?: string;
 }
 
-export const LfA2aV1AuthenticationInfo: Schema.Schema<LfA2aV1AuthenticationInfo> =
+export const LfA2aV1AuthenticationInfo: Schema.Codec<LfA2aV1AuthenticationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheme: Schema.optional(Schema.String),
     credentials: Schema.optional(Schema.String),
@@ -888,7 +888,7 @@ export interface LfA2aV1TaskPushNotificationConfig {
   id?: string;
 }
 
-export const LfA2aV1TaskPushNotificationConfig: Schema.Schema<LfA2aV1TaskPushNotificationConfig> =
+export const LfA2aV1TaskPushNotificationConfig: Schema.Codec<LfA2aV1TaskPushNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -907,7 +907,7 @@ export interface AggregatedMetricsToolMetrics {
   failCount?: number;
 }
 
-export const AggregatedMetricsToolMetrics: Schema.Schema<AggregatedMetricsToolMetrics> =
+export const AggregatedMetricsToolMetrics: Schema.Codec<AggregatedMetricsToolMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passCount: Schema.optional(Schema.Number),
     tool: Schema.optional(Schema.String),
@@ -921,7 +921,7 @@ export interface AggregatedMetricsToolCallLatencyMetrics {
   tool?: string;
 }
 
-export const AggregatedMetricsToolCallLatencyMetrics: Schema.Schema<AggregatedMetricsToolCallLatencyMetrics> =
+export const AggregatedMetricsToolCallLatencyMetrics: Schema.Codec<AggregatedMetricsToolCallLatencyMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     averageLatency: Schema.optional(Schema.String),
     tool: Schema.optional(Schema.String),
@@ -932,7 +932,7 @@ export interface AggregatedMetricsHallucinationMetrics {
   score?: number;
 }
 
-export const AggregatedMetricsHallucinationMetrics: Schema.Schema<AggregatedMetricsHallucinationMetrics> =
+export const AggregatedMetricsHallucinationMetrics: Schema.Codec<AggregatedMetricsHallucinationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AggregatedMetricsHallucinationMetrics" });
@@ -942,7 +942,7 @@ export interface AggregatedMetricsTurnLatencyMetrics {
   averageLatency?: string;
 }
 
-export const AggregatedMetricsTurnLatencyMetrics: Schema.Schema<AggregatedMetricsTurnLatencyMetrics> =
+export const AggregatedMetricsTurnLatencyMetrics: Schema.Codec<AggregatedMetricsTurnLatencyMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     averageLatency: Schema.optional(Schema.String),
   }).annotate({ identifier: "AggregatedMetricsTurnLatencyMetrics" });
@@ -952,7 +952,7 @@ export interface AggregatedMetricsSemanticSimilarityMetrics {
   score?: number;
 }
 
-export const AggregatedMetricsSemanticSimilarityMetrics: Schema.Schema<AggregatedMetricsSemanticSimilarityMetrics> =
+export const AggregatedMetricsSemanticSimilarityMetrics: Schema.Codec<AggregatedMetricsSemanticSimilarityMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AggregatedMetricsSemanticSimilarityMetrics" });
@@ -972,7 +972,7 @@ export interface AggregatedMetricsMetricsByTurn {
   semanticSimilarityMetrics?: ReadonlyArray<AggregatedMetricsSemanticSimilarityMetrics>;
 }
 
-export const AggregatedMetricsMetricsByTurn: Schema.Schema<AggregatedMetricsMetricsByTurn> =
+export const AggregatedMetricsMetricsByTurn: Schema.Codec<AggregatedMetricsMetricsByTurn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolMetrics: Schema.optional(Schema.Array(AggregatedMetricsToolMetrics)),
     toolCallLatencyMetrics: Schema.optional(
@@ -1011,7 +1011,7 @@ export interface AggregatedMetricsMetricsByAppVersion {
   turnLatencyMetrics?: ReadonlyArray<AggregatedMetricsTurnLatencyMetrics>;
 }
 
-export const AggregatedMetricsMetricsByAppVersion: Schema.Schema<AggregatedMetricsMetricsByAppVersion> =
+export const AggregatedMetricsMetricsByAppVersion: Schema.Codec<AggregatedMetricsMetricsByAppVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passCount: Schema.optional(Schema.Number),
     failCount: Schema.optional(Schema.Number),
@@ -1039,7 +1039,7 @@ export interface AggregatedMetrics {
   metricsByAppVersion?: ReadonlyArray<AggregatedMetricsMetricsByAppVersion>;
 }
 
-export const AggregatedMetrics: Schema.Schema<AggregatedMetrics> =
+export const AggregatedMetrics: Schema.Codec<AggregatedMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricsByAppVersion: Schema.optional(
       Schema.Array(AggregatedMetricsMetricsByAppVersion),
@@ -1067,7 +1067,7 @@ export interface EvaluationDataset {
   lastUpdatedBy?: string;
 }
 
-export const EvaluationDataset: Schema.Schema<EvaluationDataset> =
+export const EvaluationDataset: Schema.Codec<EvaluationDataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1129,7 +1129,7 @@ export interface Ces_Schema {
   minimum?: number;
 }
 
-export const Ces_Schema: Schema.Schema<Ces_Schema> =
+export const Ces_Schema: Schema.Codec<Ces_Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       uniqueItems: Schema.optional(Schema.Boolean),
@@ -1152,7 +1152,7 @@ export const Ces_Schema: Schema.Schema<Ces_Schema> =
       additionalProperties: Schema.optional(Ces_Schema),
       minimum: Schema.optional(Schema.Number),
     }),
-  ).annotate({ identifier: "Ces_Schema" }) as any as Schema.Schema<Ces_Schema>;
+  ).annotate({ identifier: "Ces_Schema" }) as any as Schema.Codec<Ces_Schema>;
 
 export interface TlsConfigCaCert {
   /** Required. The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, CES will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command: ``` openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'") ``` */
@@ -1161,7 +1161,7 @@ export interface TlsConfigCaCert {
   displayName?: string;
 }
 
-export const TlsConfigCaCert: Schema.Schema<TlsConfigCaCert> =
+export const TlsConfigCaCert: Schema.Codec<TlsConfigCaCert> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cert: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1172,14 +1172,14 @@ export interface TlsConfig {
   caCerts?: ReadonlyArray<TlsConfigCaCert>;
 }
 
-export const TlsConfig: Schema.Schema<TlsConfig> =
+export const TlsConfig: Schema.Codec<TlsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     caCerts: Schema.optional(Schema.Array(TlsConfigCaCert)),
   }).annotate({ identifier: "TlsConfig" });
 
 export interface ServiceAgentIdTokenAuthConfig {}
 
-export const ServiceAgentIdTokenAuthConfig: Schema.Schema<ServiceAgentIdTokenAuthConfig> =
+export const ServiceAgentIdTokenAuthConfig: Schema.Codec<ServiceAgentIdTokenAuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ServiceAgentIdTokenAuthConfig",
   });
@@ -1189,7 +1189,7 @@ export interface BearerTokenConfig {
   token?: string;
 }
 
-export const BearerTokenConfig: Schema.Schema<BearerTokenConfig> =
+export const BearerTokenConfig: Schema.Codec<BearerTokenConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }).annotate({ identifier: "BearerTokenConfig" });
@@ -1210,7 +1210,7 @@ export interface OAuthConfig {
     | (string & {});
 }
 
-export const OAuthConfig: Schema.Schema<OAuthConfig> =
+export const OAuthConfig: Schema.Codec<OAuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Schema.String)),
     clientSecretVersion: Schema.optional(Schema.String),
@@ -1226,7 +1226,7 @@ export interface ServiceAccountAuthConfig {
   scopes?: ReadonlyArray<string>;
 }
 
-export const ServiceAccountAuthConfig: Schema.Schema<ServiceAccountAuthConfig> =
+export const ServiceAccountAuthConfig: Schema.Codec<ServiceAccountAuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
@@ -1245,7 +1245,7 @@ export interface ApiAuthentication {
   serviceAccountAuthConfig?: ServiceAccountAuthConfig;
 }
 
-export const ApiAuthentication: Schema.Schema<ApiAuthentication> =
+export const ApiAuthentication: Schema.Codec<ApiAuthentication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiKeyConfig: Schema.optional(ApiKeyConfig),
     serviceAgentIdTokenAuthConfig: Schema.optional(
@@ -1261,7 +1261,7 @@ export interface ServiceDirectoryConfig {
   service?: string;
 }
 
-export const ServiceDirectoryConfig: Schema.Schema<ServiceDirectoryConfig> =
+export const ServiceDirectoryConfig: Schema.Codec<ServiceDirectoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceDirectoryConfig" });
@@ -1291,7 +1291,7 @@ export interface McpTool {
   nameOverride?: string;
 }
 
-export const McpTool: Schema.Schema<McpTool> =
+export const McpTool: Schema.Codec<McpTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputSchema: Schema.optional(Ces_Schema),
     state: Schema.optional(Schema.String),
@@ -1319,7 +1319,7 @@ export interface ToolResponse {
   id?: string;
 }
 
-export const ToolResponse: Schema.Schema<ToolResponse> =
+export const ToolResponse: Schema.Codec<ToolResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     displayName: Schema.optional(Schema.String),
@@ -1337,7 +1337,7 @@ export interface EvaluationResultGoldenExpectationOutcomeToolInvocationResult {
   outcome?: "OUTCOME_UNSPECIFIED" | "PASS" | "FAIL" | "SKIPPED" | (string & {});
 }
 
-export const EvaluationResultGoldenExpectationOutcomeToolInvocationResult: Schema.Schema<EvaluationResultGoldenExpectationOutcomeToolInvocationResult> =
+export const EvaluationResultGoldenExpectationOutcomeToolInvocationResult: Schema.Codec<EvaluationResultGoldenExpectationOutcomeToolInvocationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explanation: Schema.optional(Schema.String),
     parameterCorrectnessScore: Schema.optional(Schema.Number),
@@ -1353,7 +1353,7 @@ export interface Image {
   data?: string;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -1366,7 +1366,7 @@ export interface Blob {
   mimeType?: string;
 }
 
-export const Blob: Schema.Schema<Blob> =
+export const Blob: Schema.Codec<Blob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -1379,7 +1379,7 @@ export interface AgentTransfer {
   displayName?: string;
 }
 
-export const AgentTransfer: Schema.Schema<AgentTransfer> =
+export const AgentTransfer: Schema.Codec<AgentTransfer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetAgent: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1398,7 +1398,7 @@ export interface ToolCall {
   displayName?: string;
 }
 
-export const ToolCall: Schema.Schema<ToolCall> =
+export const ToolCall: Schema.Codec<ToolCall> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tool: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1430,7 +1430,7 @@ export interface Chunk {
   toolCall?: ToolCall;
 }
 
-export const Chunk: Schema.Schema<Chunk> =
+export const Chunk: Schema.Codec<Chunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1457,7 +1457,7 @@ export interface Message {
   eventTime?: string;
 }
 
-export const Message: Schema.Schema<Message> =
+export const Message: Schema.Codec<Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     chunks: Schema.optional(Schema.Array(Chunk)),
@@ -1469,7 +1469,7 @@ export interface EvaluationMetricsConfigHallucinationMetricsConfig {
   enableHallucinationMetrics?: boolean;
 }
 
-export const EvaluationMetricsConfigHallucinationMetricsConfig: Schema.Schema<EvaluationMetricsConfigHallucinationMetricsConfig> =
+export const EvaluationMetricsConfigHallucinationMetricsConfig: Schema.Codec<EvaluationMetricsConfigHallucinationMetricsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableHallucinationMetrics: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -1481,7 +1481,7 @@ export interface EvaluationMetricsConfigSemanticSimilarityMetricsConfig {
   enableSemanticSimilarityMetrics?: boolean;
 }
 
-export const EvaluationMetricsConfigSemanticSimilarityMetricsConfig: Schema.Schema<EvaluationMetricsConfigSemanticSimilarityMetricsConfig> =
+export const EvaluationMetricsConfigSemanticSimilarityMetricsConfig: Schema.Codec<EvaluationMetricsConfigSemanticSimilarityMetricsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableSemanticSimilarityMetrics: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -1493,7 +1493,7 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExp
   toolInvocationParameterCorrectnessThreshold?: number;
 }
 
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds: Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds> =
+export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds: Schema.Codec<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolInvocationParameterCorrectnessThreshold: Schema.optional(Schema.Number),
   }).annotate({
@@ -1526,7 +1526,7 @@ export interface EvaluationGoldenExpectation {
   toolResponse?: ToolResponse;
 }
 
-export const EvaluationGoldenExpectation: Schema.Schema<EvaluationGoldenExpectation> =
+export const EvaluationGoldenExpectation: Schema.Codec<EvaluationGoldenExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updatedVariables: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -1560,7 +1560,7 @@ export interface EvaluationResultSemanticSimilarityResult {
   label?: string;
 }
 
-export const EvaluationResultSemanticSimilarityResult: Schema.Schema<EvaluationResultSemanticSimilarityResult> =
+export const EvaluationResultSemanticSimilarityResult: Schema.Codec<EvaluationResultSemanticSimilarityResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explanation: Schema.optional(Schema.String),
     outcome: Schema.optional(Schema.String),
@@ -1589,7 +1589,7 @@ export interface EvaluationResultGoldenExpectationOutcome {
   semanticSimilarityResult?: EvaluationResultSemanticSimilarityResult;
 }
 
-export const EvaluationResultGoldenExpectationOutcome: Schema.Schema<EvaluationResultGoldenExpectationOutcome> =
+export const EvaluationResultGoldenExpectationOutcome: Schema.Codec<EvaluationResultGoldenExpectationOutcome> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     observedToolResponse: Schema.optional(ToolResponse),
     outcome: Schema.optional(Schema.String),
@@ -1619,7 +1619,7 @@ export interface LfA2aV1SendMessageConfiguration {
   returnImmediately?: boolean;
 }
 
-export const LfA2aV1SendMessageConfiguration: Schema.Schema<LfA2aV1SendMessageConfiguration> =
+export const LfA2aV1SendMessageConfiguration: Schema.Codec<LfA2aV1SendMessageConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     historyLength: Schema.optional(Schema.Number),
     acceptedOutputModes: Schema.optional(Schema.Array(Schema.String)),
@@ -1640,7 +1640,7 @@ export interface ExecuteToolResponse {
   variables?: Record<string, unknown>;
 }
 
-export const ExecuteToolResponse: Schema.Schema<ExecuteToolResponse> =
+export const ExecuteToolResponse: Schema.Codec<ExecuteToolResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolsetTool: Schema.optional(ToolsetTool),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1653,7 +1653,7 @@ export interface ToolCalls {
   toolCalls?: ReadonlyArray<ToolCall>;
 }
 
-export const ToolCalls: Schema.Schema<ToolCalls> =
+export const ToolCalls: Schema.Codec<ToolCalls> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolCalls: Schema.optional(Schema.Array(ToolCall)),
   }).annotate({ identifier: "ToolCalls" });
@@ -1667,7 +1667,7 @@ export interface DataStoreConnectorConfig {
   collection?: string;
 }
 
-export const DataStoreConnectorConfig: Schema.Schema<DataStoreConnectorConfig> =
+export const DataStoreConnectorConfig: Schema.Codec<DataStoreConnectorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.String),
     collectionDisplayName: Schema.optional(Schema.String),
@@ -1699,7 +1699,7 @@ export interface DataStore {
   createTime?: string;
 }
 
-export const DataStore: Schema.Schema<DataStore> =
+export const DataStore: Schema.Codec<DataStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentProcessingMode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1716,7 +1716,7 @@ export interface DataStoreToolDataStoreSource {
   filter?: string;
 }
 
-export const DataStoreToolDataStoreSource: Schema.Schema<DataStoreToolDataStoreSource> =
+export const DataStoreToolDataStoreSource: Schema.Codec<DataStoreToolDataStoreSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.optional(DataStore),
     filter: Schema.optional(Schema.String),
@@ -1731,7 +1731,7 @@ export interface DataStoreToolEngineSource {
   engine?: string;
 }
 
-export const DataStoreToolEngineSource: Schema.Schema<DataStoreToolEngineSource> =
+export const DataStoreToolEngineSource: Schema.Codec<DataStoreToolEngineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStoreSources: Schema.optional(
       Schema.Array(DataStoreToolDataStoreSource),
@@ -1747,7 +1747,7 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControl
   boostAmount?: number;
 }
 
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
+export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Codec<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeValue: Schema.optional(Schema.String),
     boostAmount: Schema.optional(Schema.Number),
@@ -1774,7 +1774,7 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
     | (string & {});
 }
 
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec: Schema.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec> =
+export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec: Schema.Codec<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interpolationType: Schema.optional(Schema.String),
     fieldName: Schema.optional(Schema.String),
@@ -1797,7 +1797,7 @@ export interface DataStoreToolBoostSpecConditionBoostSpec {
   boost?: number;
 }
 
-export const DataStoreToolBoostSpecConditionBoostSpec: Schema.Schema<DataStoreToolBoostSpecConditionBoostSpec> =
+export const DataStoreToolBoostSpecConditionBoostSpec: Schema.Codec<DataStoreToolBoostSpecConditionBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boostControlSpec: Schema.optional(
       DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec,
@@ -1811,7 +1811,7 @@ export interface DataStoreToolBoostSpec {
   conditionBoostSpecs?: ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpec>;
 }
 
-export const DataStoreToolBoostSpec: Schema.Schema<DataStoreToolBoostSpec> =
+export const DataStoreToolBoostSpec: Schema.Codec<DataStoreToolBoostSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditionBoostSpecs: Schema.optional(
       Schema.Array(DataStoreToolBoostSpecConditionBoostSpec),
@@ -1825,7 +1825,7 @@ export interface DataStoreToolBoostSpecs {
   spec?: ReadonlyArray<DataStoreToolBoostSpec>;
 }
 
-export const DataStoreToolBoostSpecs: Schema.Schema<DataStoreToolBoostSpecs> =
+export const DataStoreToolBoostSpecs: Schema.Codec<DataStoreToolBoostSpecs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStores: Schema.optional(Schema.Array(Schema.String)),
     spec: Schema.optional(Schema.Array(DataStoreToolBoostSpec)),
@@ -1838,7 +1838,7 @@ export interface ModelSettings {
   model?: string;
 }
 
-export const ModelSettings: Schema.Schema<ModelSettings> =
+export const ModelSettings: Schema.Codec<ModelSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     temperature: Schema.optional(Schema.Number),
     model: Schema.optional(Schema.String),
@@ -1853,7 +1853,7 @@ export interface DataStoreToolSummarizationConfig {
   disabled?: boolean;
 }
 
-export const DataStoreToolSummarizationConfig: Schema.Schema<DataStoreToolSummarizationConfig> =
+export const DataStoreToolSummarizationConfig: Schema.Codec<DataStoreToolSummarizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prompt: Schema.optional(Schema.String),
     modelSettings: Schema.optional(ModelSettings),
@@ -1869,7 +1869,7 @@ export interface DataStoreToolRewriterConfig {
   disabled?: boolean;
 }
 
-export const DataStoreToolRewriterConfig: Schema.Schema<DataStoreToolRewriterConfig> =
+export const DataStoreToolRewriterConfig: Schema.Codec<DataStoreToolRewriterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prompt: Schema.optional(Schema.String),
     modelSettings: Schema.optional(ModelSettings),
@@ -1883,7 +1883,7 @@ export interface DataStoreToolGroundingConfig {
   disabled?: boolean;
 }
 
-export const DataStoreToolGroundingConfig: Schema.Schema<DataStoreToolGroundingConfig> =
+export const DataStoreToolGroundingConfig: Schema.Codec<DataStoreToolGroundingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groundingLevel: Schema.optional(Schema.Number),
     disabled: Schema.optional(Schema.Boolean),
@@ -1900,7 +1900,7 @@ export interface DataStoreToolModalityConfig {
   modalityType?: "MODALITY_TYPE_UNSPECIFIED" | "TEXT" | "AUDIO" | (string & {});
 }
 
-export const DataStoreToolModalityConfig: Schema.Schema<DataStoreToolModalityConfig> =
+export const DataStoreToolModalityConfig: Schema.Codec<DataStoreToolModalityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summarizationConfig: Schema.optional(DataStoreToolSummarizationConfig),
     rewriterConfig: Schema.optional(DataStoreToolRewriterConfig),
@@ -1929,7 +1929,7 @@ export interface DataStoreTool {
   modalityConfigs?: ReadonlyArray<DataStoreToolModalityConfig>;
 }
 
-export const DataStoreTool: Schema.Schema<DataStoreTool> =
+export const DataStoreTool: Schema.Codec<DataStoreTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     engineSource: Schema.optional(DataStoreToolEngineSource),
@@ -1954,7 +1954,7 @@ export interface WidgetToolTextResponseConfig {
   staticText?: string;
 }
 
-export const WidgetToolTextResponseConfig: Schema.Schema<WidgetToolTextResponseConfig> =
+export const WidgetToolTextResponseConfig: Schema.Codec<WidgetToolTextResponseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     textResponseInstruction: Schema.optional(Schema.String),
@@ -1972,7 +1972,7 @@ export interface PythonFunction {
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
 
-export const PythonFunction: Schema.Schema<PythonFunction> =
+export const PythonFunction: Schema.Codec<PythonFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pythonCode: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1993,7 +1993,7 @@ export interface WidgetToolDataMapping {
   fieldMappings?: Record<string, string>;
 }
 
-export const WidgetToolDataMapping: Schema.Schema<WidgetToolDataMapping> =
+export const WidgetToolDataMapping: Schema.Codec<WidgetToolDataMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pythonFunction: Schema.optional(PythonFunction),
     pythonScript: Schema.optional(Schema.String),
@@ -2033,7 +2033,7 @@ export interface WidgetTool {
   uiConfig?: Record<string, unknown>;
 }
 
-export const WidgetTool: Schema.Schema<WidgetTool> =
+export const WidgetTool: Schema.Codec<WidgetTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2049,7 +2049,7 @@ export interface EndUserAuthConfigOauth2AuthCodeConfig {
   oauthToken?: string;
 }
 
-export const EndUserAuthConfigOauth2AuthCodeConfig: Schema.Schema<EndUserAuthConfigOauth2AuthCodeConfig> =
+export const EndUserAuthConfigOauth2AuthCodeConfig: Schema.Codec<EndUserAuthConfigOauth2AuthCodeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oauthToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "EndUserAuthConfigOauth2AuthCodeConfig" });
@@ -2061,7 +2061,7 @@ export interface EndUserAuthConfig {
   oauth2JwtBearerConfig?: EndUserAuthConfigOauth2JwtBearerConfig;
 }
 
-export const EndUserAuthConfig: Schema.Schema<EndUserAuthConfig> =
+export const EndUserAuthConfig: Schema.Codec<EndUserAuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oauth2AuthCodeConfig: Schema.optional(
       EndUserAuthConfigOauth2AuthCodeConfig,
@@ -2085,7 +2085,7 @@ export interface ActionEntityOperation {
     | (string & {});
 }
 
-export const ActionEntityOperation: Schema.Schema<ActionEntityOperation> =
+export const ActionEntityOperation: Schema.Codec<ActionEntityOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     operation: Schema.optional(Schema.String),
@@ -2102,7 +2102,7 @@ export interface Action {
   connectionActionId?: string;
 }
 
-export const Action: Schema.Schema<Action> =
+export const Action: Schema.Codec<Action> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityOperation: Schema.optional(ActionEntityOperation),
     inputFields: Schema.optional(Schema.Array(Schema.String)),
@@ -2123,7 +2123,7 @@ export interface ConnectorTool {
   action?: Action;
 }
 
-export const ConnectorTool: Schema.Schema<ConnectorTool> =
+export const ConnectorTool: Schema.Codec<ConnectorTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -2147,7 +2147,7 @@ export interface FileSearchTool {
     | (string & {});
 }
 
-export const FileSearchTool: Schema.Schema<FileSearchTool> =
+export const FileSearchTool: Schema.Codec<FileSearchTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -2166,7 +2166,7 @@ export interface AgentTool {
   name?: string;
 }
 
-export const AgentTool: Schema.Schema<AgentTool> =
+export const AgentTool: Schema.Codec<AgentTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     rootAgent: Schema.optional(Schema.String),
@@ -2185,7 +2185,7 @@ export interface ClientFunction {
   description?: string;
 }
 
-export const ClientFunction: Schema.Schema<ClientFunction> =
+export const ClientFunction: Schema.Codec<ClientFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     response: Schema.optional(Ces_Schema),
@@ -2198,7 +2198,7 @@ export interface CodeBlock {
   pythonCode?: string;
 }
 
-export const CodeBlock: Schema.Schema<CodeBlock> =
+export const CodeBlock: Schema.Codec<CodeBlock> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pythonCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "CodeBlock" });
@@ -2210,7 +2210,7 @@ export interface ToolFakeConfig {
   enableFakeMode?: boolean;
 }
 
-export const ToolFakeConfig: Schema.Schema<ToolFakeConfig> =
+export const ToolFakeConfig: Schema.Codec<ToolFakeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     codeBlock: Schema.optional(CodeBlock),
     enableFakeMode: Schema.optional(Schema.Boolean),
@@ -2223,7 +2223,7 @@ export interface SystemTool {
   description?: string;
 }
 
-export const SystemTool: Schema.Schema<SystemTool> =
+export const SystemTool: Schema.Codec<SystemTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -2246,7 +2246,7 @@ export interface AgentSkill {
   outputModes?: ReadonlyArray<string>;
 }
 
-export const AgentSkill: Schema.Schema<AgentSkill> =
+export const AgentSkill: Schema.Codec<AgentSkill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     examples: Schema.optional(Schema.Array(Schema.String)),
@@ -2270,7 +2270,7 @@ export interface AgentCard {
   name?: string;
 }
 
-export const AgentCard: Schema.Schema<AgentCard> =
+export const AgentCard: Schema.Codec<AgentCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skills: Schema.optional(Schema.Array(AgentSkill)),
     description: Schema.optional(Schema.String),
@@ -2288,7 +2288,7 @@ export interface RemoteAgentTool {
   description?: string;
 }
 
-export const RemoteAgentTool: Schema.Schema<RemoteAgentTool> =
+export const RemoteAgentTool: Schema.Codec<RemoteAgentTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentCard: Schema.optional(AgentCard),
     name: Schema.optional(Schema.String),
@@ -2314,7 +2314,7 @@ export interface OpenApiTool {
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
 
-export const OpenApiTool: Schema.Schema<OpenApiTool> =
+export const OpenApiTool: Schema.Codec<OpenApiTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     openApiSchema: Schema.optional(Schema.String),
     tlsConfig: Schema.optional(TlsConfig),
@@ -2375,7 +2375,7 @@ export interface Tool {
   mcpTool?: McpTool;
 }
 
-export const Tool: Schema.Schema<Tool> =
+export const Tool: Schema.Codec<Tool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStoreTool: Schema.optional(DataStoreTool),
     updateTime: Schema.optional(Schema.String),
@@ -2405,7 +2405,7 @@ export interface EvaluationMetricsConfigUserGoalMetMetricsConfig {
   enableUserGoalMetMetrics?: boolean;
 }
 
-export const EvaluationMetricsConfigUserGoalMetMetricsConfig: Schema.Schema<EvaluationMetricsConfigUserGoalMetMetricsConfig> =
+export const EvaluationMetricsConfigUserGoalMetMetricsConfig: Schema.Codec<EvaluationMetricsConfigUserGoalMetMetricsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableUserGoalMetMetrics: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -2417,7 +2417,7 @@ export interface EvaluationMetricsConfigExpectationsMetMetricsConfig {
   enableExpectationsMetMetrics?: boolean;
 }
 
-export const EvaluationMetricsConfigExpectationsMetMetricsConfig: Schema.Schema<EvaluationMetricsConfigExpectationsMetMetricsConfig> =
+export const EvaluationMetricsConfigExpectationsMetMetricsConfig: Schema.Codec<EvaluationMetricsConfigExpectationsMetMetricsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableExpectationsMetMetrics: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -2431,7 +2431,7 @@ export interface EvaluationMetricsConfigScenarioMetricsConfig {
   expectationsMetMetricsConfig?: EvaluationMetricsConfigExpectationsMetMetricsConfig;
 }
 
-export const EvaluationMetricsConfigScenarioMetricsConfig: Schema.Schema<EvaluationMetricsConfigScenarioMetricsConfig> =
+export const EvaluationMetricsConfigScenarioMetricsConfig: Schema.Codec<EvaluationMetricsConfigScenarioMetricsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userGoalMetMetricsConfig: Schema.optional(
       EvaluationMetricsConfigUserGoalMetMetricsConfig,
@@ -2446,7 +2446,7 @@ export interface EvaluationMetricsConfigToolCorrectnessMetricsConfig {
   enableToolCorrectnessMetrics?: boolean;
 }
 
-export const EvaluationMetricsConfigToolCorrectnessMetricsConfig: Schema.Schema<EvaluationMetricsConfigToolCorrectnessMetricsConfig> =
+export const EvaluationMetricsConfigToolCorrectnessMetricsConfig: Schema.Codec<EvaluationMetricsConfigToolCorrectnessMetricsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableToolCorrectnessMetrics: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -2462,7 +2462,7 @@ export interface EvaluationMetricsConfigGoldenMetricsConfig {
   semanticSimilarityMetricsConfig?: EvaluationMetricsConfigSemanticSimilarityMetricsConfig;
 }
 
-export const EvaluationMetricsConfigGoldenMetricsConfig: Schema.Schema<EvaluationMetricsConfigGoldenMetricsConfig> =
+export const EvaluationMetricsConfigGoldenMetricsConfig: Schema.Codec<EvaluationMetricsConfigGoldenMetricsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolCorrectnessMetricsConfig: Schema.optional(
       EvaluationMetricsConfigToolCorrectnessMetricsConfig,
@@ -2482,7 +2482,7 @@ export interface EvaluationMetricsConfig {
   goldenMetricsConfig?: EvaluationMetricsConfigGoldenMetricsConfig;
 }
 
-export const EvaluationMetricsConfig: Schema.Schema<EvaluationMetricsConfig> =
+export const EvaluationMetricsConfig: Schema.Codec<EvaluationMetricsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scenarioMetricsConfig: Schema.optional(
       EvaluationMetricsConfigScenarioMetricsConfig,
@@ -2521,7 +2521,7 @@ export interface EvaluationSettings {
     | (string & {});
 }
 
-export const EvaluationSettings: Schema.Schema<EvaluationSettings> =
+export const EvaluationSettings: Schema.Codec<EvaluationSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goldenRunMethod: Schema.optional(Schema.String),
     scenarioConversationInitiator: Schema.optional(Schema.String),
@@ -2537,7 +2537,7 @@ export interface SynthesizeSpeechConfig {
   speakingRate?: number;
 }
 
-export const SynthesizeSpeechConfig: Schema.Schema<SynthesizeSpeechConfig> =
+export const SynthesizeSpeechConfig: Schema.Codec<SynthesizeSpeechConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     voice: Schema.optional(Schema.String),
     speakingRate: Schema.optional(Schema.Number),
@@ -2559,7 +2559,7 @@ export interface AmbientSoundConfig {
   volumeGainDb?: number;
 }
 
-export const AmbientSoundConfig: Schema.Schema<AmbientSoundConfig> =
+export const AmbientSoundConfig: Schema.Codec<AmbientSoundConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prebuiltAmbientNoise: Schema.optional(Schema.String),
     gcsUri: Schema.optional(Schema.String),
@@ -2574,7 +2574,7 @@ export interface BargeInConfig {
   bargeInAwareness?: boolean;
 }
 
-export const BargeInConfig: Schema.Schema<BargeInConfig> =
+export const BargeInConfig: Schema.Codec<BargeInConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableBargeIn: Schema.optional(Schema.Boolean),
     bargeInAwareness: Schema.optional(Schema.Boolean),
@@ -2591,7 +2591,7 @@ export interface AudioProcessingConfig {
   inactivityTimeout?: string;
 }
 
-export const AudioProcessingConfig: Schema.Schema<AudioProcessingConfig> =
+export const AudioProcessingConfig: Schema.Codec<AudioProcessingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ambientSoundConfig: Schema.optional(AmbientSoundConfig),
     synthesizeSpeechConfigs: Schema.optional(
@@ -2616,7 +2616,7 @@ export interface EvaluationPersonaSpeechConfig {
     | (string & {});
 }
 
-export const EvaluationPersonaSpeechConfig: Schema.Schema<EvaluationPersonaSpeechConfig> =
+export const EvaluationPersonaSpeechConfig: Schema.Codec<EvaluationPersonaSpeechConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speakingRate: Schema.optional(Schema.Number),
     voiceId: Schema.optional(Schema.String),
@@ -2641,7 +2641,7 @@ export interface GuardrailContentFilter {
     | (string & {});
 }
 
-export const GuardrailContentFilter: Schema.Schema<GuardrailContentFilter> =
+export const GuardrailContentFilter: Schema.Codec<GuardrailContentFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disregardDiacritics: Schema.optional(Schema.Boolean),
     bannedContentsInAgentResponse: Schema.optional(Schema.Array(Schema.String)),
@@ -2659,7 +2659,7 @@ export interface EvaluationResultHallucinationResult {
   label?: string;
 }
 
-export const EvaluationResultHallucinationResult: Schema.Schema<EvaluationResultHallucinationResult> =
+export const EvaluationResultHallucinationResult: Schema.Codec<EvaluationResultHallucinationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explanation: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -2673,7 +2673,7 @@ export interface EvaluationResultOverallToolInvocationResult {
   outcome?: "OUTCOME_UNSPECIFIED" | "PASS" | "FAIL" | "SKIPPED" | (string & {});
 }
 
-export const EvaluationResultOverallToolInvocationResult: Schema.Schema<EvaluationResultOverallToolInvocationResult> =
+export const EvaluationResultOverallToolInvocationResult: Schema.Codec<EvaluationResultOverallToolInvocationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolInvocationScore: Schema.optional(Schema.Number),
     outcome: Schema.optional(Schema.String),
@@ -2706,7 +2706,7 @@ export interface EvaluationResultSpanLatency {
   displayName?: string;
 }
 
-export const EvaluationResultSpanLatency: Schema.Schema<EvaluationResultSpanLatency> =
+export const EvaluationResultSpanLatency: Schema.Codec<EvaluationResultSpanLatency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2744,7 +2744,7 @@ export interface EvaluationResultGoldenResultTurnReplayResult {
   spanLatencies?: ReadonlyArray<EvaluationResultSpanLatency>;
 }
 
-export const EvaluationResultGoldenResultTurnReplayResult: Schema.Schema<EvaluationResultGoldenResultTurnReplayResult> =
+export const EvaluationResultGoldenResultTurnReplayResult: Schema.Codec<EvaluationResultGoldenResultTurnReplayResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolInvocationScore: Schema.optional(Schema.Number),
     conversation: Schema.optional(Schema.String),
@@ -2774,7 +2774,7 @@ export interface ListToolsResponse {
   nextPageToken?: string;
 }
 
-export const ListToolsResponse: Schema.Schema<ListToolsResponse> =
+export const ListToolsResponse: Schema.Codec<ListToolsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tools: Schema.optional(Schema.Array(Tool)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2785,7 +2785,7 @@ export interface Event {
   event?: string;
 }
 
-export const Event: Schema.Schema<Event> =
+export const Event: Schema.Codec<Event> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
   }).annotate({ identifier: "Event" });
@@ -2795,7 +2795,7 @@ export interface ToolResponses {
   toolResponses?: ReadonlyArray<ToolResponse>;
 }
 
-export const ToolResponses: Schema.Schema<ToolResponses> =
+export const ToolResponses: Schema.Codec<ToolResponses> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolResponses: Schema.optional(Schema.Array(ToolResponse)),
   }).annotate({ identifier: "ToolResponses" });
@@ -2821,7 +2821,7 @@ export interface SessionInput {
   toolResponses?: ToolResponses;
 }
 
-export const SessionInput: Schema.Schema<SessionInput> =
+export const SessionInput: Schema.Codec<SessionInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Image),
     willContinue: Schema.optional(Schema.Boolean),
@@ -2843,7 +2843,7 @@ export interface EvaluationStep {
   agentTransfer?: AgentTransfer;
 }
 
-export const EvaluationStep: Schema.Schema<EvaluationStep> =
+export const EvaluationStep: Schema.Codec<EvaluationStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userInput: Schema.optional(SessionInput),
     expectation: Schema.optional(EvaluationGoldenExpectation),
@@ -2863,7 +2863,7 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTur
   semanticSimilaritySuccessThreshold?: number;
 }
 
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds: Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds> =
+export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds: Schema.Codec<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overallToolInvocationCorrectnessThreshold: Schema.optional(Schema.Number),
     semanticSimilarityChannel: Schema.optional(Schema.String),
@@ -2882,7 +2882,7 @@ export interface EvaluationMetricsThresholdsToolMatchingSettings {
     | (string & {});
 }
 
-export const EvaluationMetricsThresholdsToolMatchingSettings: Schema.Schema<EvaluationMetricsThresholdsToolMatchingSettings> =
+export const EvaluationMetricsThresholdsToolMatchingSettings: Schema.Codec<EvaluationMetricsThresholdsToolMatchingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extraToolCallBehavior: Schema.optional(Schema.String),
   }).annotate({
@@ -2898,7 +2898,7 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
   expectationLevelMetricsThresholds?: EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds;
 }
 
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds: Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds> =
+export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds: Schema.Codec<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     turnLevelMetricsThresholds: Schema.optional(
       EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds,
@@ -2936,7 +2936,7 @@ export interface EvaluationMetricsThresholds {
     | (string & {});
 }
 
-export const EvaluationMetricsThresholds: Schema.Schema<EvaluationMetricsThresholds> =
+export const EvaluationMetricsThresholds: Schema.Codec<EvaluationMetricsThresholds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goldenEvaluationMetricsThresholds: Schema.optional(
       EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds,
@@ -2955,7 +2955,7 @@ export interface EvaluationResultScenarioRubricOutcome {
   score?: number;
 }
 
-export const EvaluationResultScenarioRubricOutcome: Schema.Schema<EvaluationResultScenarioRubricOutcome> =
+export const EvaluationResultScenarioRubricOutcome: Schema.Codec<EvaluationResultScenarioRubricOutcome> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scoreExplanation: Schema.optional(Schema.String),
     rubric: Schema.optional(Schema.String),
@@ -2969,7 +2969,7 @@ export interface EvaluationResultScenarioExpectationOutcomeObservedToolCall {
   toolResponse?: ToolResponse;
 }
 
-export const EvaluationResultScenarioExpectationOutcomeObservedToolCall: Schema.Schema<EvaluationResultScenarioExpectationOutcomeObservedToolCall> =
+export const EvaluationResultScenarioExpectationOutcomeObservedToolCall: Schema.Codec<EvaluationResultScenarioExpectationOutcomeObservedToolCall> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolCall: Schema.optional(ToolCall),
     toolResponse: Schema.optional(ToolResponse),
@@ -2984,7 +2984,7 @@ export interface EvaluationScenarioExpectationToolExpectation {
   mockToolResponse?: ToolResponse;
 }
 
-export const EvaluationScenarioExpectationToolExpectation: Schema.Schema<EvaluationScenarioExpectationToolExpectation> =
+export const EvaluationScenarioExpectationToolExpectation: Schema.Codec<EvaluationScenarioExpectationToolExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expectedToolCall: Schema.optional(ToolCall),
     mockToolResponse: Schema.optional(ToolResponse),
@@ -2997,7 +2997,7 @@ export interface EvaluationScenarioExpectation {
   agentResponse?: Message;
 }
 
-export const EvaluationScenarioExpectation: Schema.Schema<EvaluationScenarioExpectation> =
+export const EvaluationScenarioExpectation: Schema.Codec<EvaluationScenarioExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolExpectation: Schema.optional(
       EvaluationScenarioExpectationToolExpectation,
@@ -3016,7 +3016,7 @@ export interface EvaluationResultScenarioExpectationOutcome {
   expectation?: EvaluationScenarioExpectation;
 }
 
-export const EvaluationResultScenarioExpectationOutcome: Schema.Schema<EvaluationResultScenarioExpectationOutcome> =
+export const EvaluationResultScenarioExpectationOutcome: Schema.Codec<EvaluationResultScenarioExpectationOutcome> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     observedAgentResponse: Schema.optional(Message),
     observedToolCall: Schema.optional(
@@ -3035,7 +3035,7 @@ export interface EvaluationResultTaskCompletionResult {
   explanation?: string;
 }
 
-export const EvaluationResultTaskCompletionResult: Schema.Schema<EvaluationResultTaskCompletionResult> =
+export const EvaluationResultTaskCompletionResult: Schema.Codec<EvaluationResultTaskCompletionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     label: Schema.optional(Schema.String),
@@ -3051,7 +3051,7 @@ export interface EvaluationResultUserGoalSatisfactionResult {
   explanation?: string;
 }
 
-export const EvaluationResultUserGoalSatisfactionResult: Schema.Schema<EvaluationResultUserGoalSatisfactionResult> =
+export const EvaluationResultUserGoalSatisfactionResult: Schema.Codec<EvaluationResultUserGoalSatisfactionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     label: Schema.optional(Schema.String),
@@ -3069,7 +3069,7 @@ export interface EvaluationResultEvaluationExpectationResult {
   explanation?: string;
 }
 
-export const EvaluationResultEvaluationExpectationResult: Schema.Schema<EvaluationResultEvaluationExpectationResult> =
+export const EvaluationResultEvaluationExpectationResult: Schema.Codec<EvaluationResultEvaluationExpectationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prompt: Schema.optional(Schema.String),
     outcome: Schema.optional(Schema.String),
@@ -3084,7 +3084,7 @@ export interface EvaluationScenarioUserFact {
   name?: string;
 }
 
-export const EvaluationScenarioUserFact: Schema.Schema<EvaluationScenarioUserFact> =
+export const EvaluationScenarioUserFact: Schema.Codec<EvaluationScenarioUserFact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3119,7 +3119,7 @@ export interface EvaluationResultScenarioResult {
   toolCallLatencies?: ReadonlyArray<EvaluationResultToolCallLatency>;
 }
 
-export const EvaluationResultScenarioResult: Schema.Schema<EvaluationResultScenarioResult> =
+export const EvaluationResultScenarioResult: Schema.Codec<EvaluationResultScenarioResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rubricOutcomes: Schema.optional(
       Schema.Array(EvaluationResultScenarioRubricOutcome),
@@ -3161,7 +3161,7 @@ export interface EvaluationPersona {
   personality?: string;
 }
 
-export const EvaluationPersona: Schema.Schema<EvaluationPersona> =
+export const EvaluationPersona: Schema.Codec<EvaluationPersona> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3177,7 +3177,7 @@ export interface EvaluationResultGoldenResult {
   evaluationExpectationResults?: ReadonlyArray<EvaluationResultEvaluationExpectationResult>;
 }
 
-export const EvaluationResultGoldenResult: Schema.Schema<EvaluationResultGoldenResult> =
+export const EvaluationResultGoldenResult: Schema.Codec<EvaluationResultGoldenResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     turnReplayResults: Schema.optional(
       Schema.Array(EvaluationResultGoldenResultTurnReplayResult),
@@ -3242,7 +3242,7 @@ export interface EvaluationResult {
   goldenResult?: EvaluationResultGoldenResult;
 }
 
-export const EvaluationResult: Schema.Schema<EvaluationResult> =
+export const EvaluationResult: Schema.Codec<EvaluationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changelogCreateTime: Schema.optional(Schema.String),
     goldenRunMethod: Schema.optional(Schema.String),
@@ -3295,7 +3295,7 @@ export interface EvaluationScenario {
   variableOverrides?: Record<string, unknown>;
 }
 
-export const EvaluationScenario: Schema.Schema<EvaluationScenario> =
+export const EvaluationScenario: Schema.Codec<EvaluationScenario> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxTurns: Schema.optional(Schema.Number),
     rubrics: Schema.optional(Schema.Array(Schema.String)),
@@ -3327,7 +3327,7 @@ export interface Span {
   childSpans?: ReadonlyArray<Span>;
 }
 
-export const Span: Schema.Schema<Span> =
+export const Span: Schema.Codec<Span> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       attributes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -3337,7 +3337,7 @@ export const Span: Schema.Schema<Span> =
       duration: Schema.optional(Schema.String),
       childSpans: Schema.optional(Schema.Array(Span)),
     }),
-  ).annotate({ identifier: "Span" }) as any as Schema.Schema<Span>;
+  ).annotate({ identifier: "Span" }) as any as Schema.Codec<Span>;
 
 export interface EvaluationGoldenTurn {
   /** Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate. */
@@ -3354,7 +3354,7 @@ export interface EvaluationGoldenTurn {
     | (string & {});
 }
 
-export const EvaluationGoldenTurn: Schema.Schema<EvaluationGoldenTurn> =
+export const EvaluationGoldenTurn: Schema.Codec<EvaluationGoldenTurn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootSpan: Schema.optional(Span),
     steps: Schema.optional(Schema.Array(EvaluationStep)),
@@ -3371,7 +3371,7 @@ export interface EvaluationGolden {
   turns?: ReadonlyArray<EvaluationGoldenTurn>;
 }
 
-export const EvaluationGolden: Schema.Schema<EvaluationGolden> =
+export const EvaluationGolden: Schema.Codec<EvaluationGolden> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationExpectations: Schema.optional(Schema.Array(Schema.String)),
     turns: Schema.optional(Schema.Array(EvaluationGoldenTurn)),
@@ -3418,7 +3418,7 @@ export interface Evaluation {
   invalid?: boolean;
 }
 
-export const Evaluation: Schema.Schema<Evaluation> =
+export const Evaluation: Schema.Codec<Evaluation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
     description: Schema.optional(Schema.String),
@@ -3448,7 +3448,7 @@ export interface GenerateAppResourceResponseEvaluations {
   evaluations?: ReadonlyArray<Evaluation>;
 }
 
-export const GenerateAppResourceResponseEvaluations: Schema.Schema<GenerateAppResourceResponseEvaluations> =
+export const GenerateAppResourceResponseEvaluations: Schema.Codec<GenerateAppResourceResponseEvaluations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluations: Schema.optional(Schema.Array(Evaluation)),
   }).annotate({ identifier: "GenerateAppResourceResponseEvaluations" });
@@ -3466,7 +3466,7 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3482,7 +3482,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3503,7 +3503,7 @@ export interface ScheduledEvaluationRunSchedulingConfig {
   startTime?: string;
 }
 
-export const ScheduledEvaluationRunSchedulingConfig: Schema.Schema<ScheduledEvaluationRunSchedulingConfig> =
+export const ScheduledEvaluationRunSchedulingConfig: Schema.Codec<ScheduledEvaluationRunSchedulingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     frequency: Schema.optional(Schema.String),
     daysOfWeek: Schema.optional(Schema.Array(Schema.Number)),
@@ -3541,7 +3541,7 @@ export interface RunEvaluationRequest {
   evaluationDataset?: string;
 }
 
-export const RunEvaluationRequest: Schema.Schema<RunEvaluationRequest> =
+export const RunEvaluationRequest: Schema.Codec<RunEvaluationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     appVersion: Schema.optional(Schema.String),
@@ -3588,7 +3588,7 @@ export interface ScheduledEvaluationRun {
   active?: boolean;
 }
 
-export const ScheduledEvaluationRun: Schema.Schema<ScheduledEvaluationRun> =
+export const ScheduledEvaluationRun: Schema.Codec<ScheduledEvaluationRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalExecutions: Schema.optional(Schema.Number),
     lastUpdatedBy: Schema.optional(Schema.String),
@@ -3617,7 +3617,7 @@ export interface RetrieveToolSchemaResponse {
   inputSchema?: Ces_Schema;
 }
 
-export const RetrieveToolSchemaResponse: Schema.Schema<RetrieveToolSchemaResponse> =
+export const RetrieveToolSchemaResponse: Schema.Codec<RetrieveToolSchemaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolsetTool: Schema.optional(ToolsetTool),
     outputSchema: Schema.optional(Ces_Schema),
@@ -3632,7 +3632,7 @@ export interface ExportAppResponse {
   appUri?: string;
 }
 
-export const ExportAppResponse: Schema.Schema<ExportAppResponse> =
+export const ExportAppResponse: Schema.Codec<ExportAppResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appContent: Schema.optional(Schema.String),
     appUri: Schema.optional(Schema.String),
@@ -3645,7 +3645,7 @@ export interface TestPersonaVoiceRequest {
   personaId?: string;
 }
 
-export const TestPersonaVoiceRequest: Schema.Schema<TestPersonaVoiceRequest> =
+export const TestPersonaVoiceRequest: Schema.Codec<TestPersonaVoiceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     personaId: Schema.optional(Schema.String),
@@ -3658,7 +3658,7 @@ export interface ExportOptions {
   gcsUri?: string;
 }
 
-export const ExportOptions: Schema.Schema<ExportOptions> =
+export const ExportOptions: Schema.Codec<ExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
     gcsUri: Schema.optional(Schema.String),
@@ -3671,7 +3671,7 @@ export interface SessionOutputDiagnosticInfo {
   messages?: ReadonlyArray<Message>;
 }
 
-export const SessionOutputDiagnosticInfo: Schema.Schema<SessionOutputDiagnosticInfo> =
+export const SessionOutputDiagnosticInfo: Schema.Codec<SessionOutputDiagnosticInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootSpan: Schema.optional(Span),
     messages: Schema.optional(Schema.Array(Message)),
@@ -3682,7 +3682,7 @@ export interface EndSession {
   metadata?: Record<string, unknown>;
 }
 
-export const EndSession: Schema.Schema<EndSession> =
+export const EndSession: Schema.Codec<EndSession> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "EndSession" });
@@ -3696,7 +3696,7 @@ export interface CitationsCitedChunk {
   uri?: string;
 }
 
-export const CitationsCitedChunk: Schema.Schema<CitationsCitedChunk> =
+export const CitationsCitedChunk: Schema.Codec<CitationsCitedChunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -3708,7 +3708,7 @@ export interface Citations {
   citedChunks?: ReadonlyArray<CitationsCitedChunk>;
 }
 
-export const Citations: Schema.Schema<Citations> =
+export const Citations: Schema.Codec<Citations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     citedChunks: Schema.optional(Schema.Array(CitationsCitedChunk)),
   }).annotate({ identifier: "Citations" });
@@ -3736,7 +3736,7 @@ export interface SessionOutput {
   payload?: Record<string, unknown>;
 }
 
-export const SessionOutput: Schema.Schema<SessionOutput> =
+export const SessionOutput: Schema.Codec<SessionOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     turnCompleted: Schema.optional(Schema.Boolean),
     turnIndex: Schema.optional(Schema.Number),
@@ -3755,7 +3755,7 @@ export interface RunSessionResponse {
   outputs?: ReadonlyArray<SessionOutput>;
 }
 
-export const RunSessionResponse: Schema.Schema<RunSessionResponse> =
+export const RunSessionResponse: Schema.Codec<RunSessionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputs: Schema.optional(Schema.Array(SessionOutput)),
   }).annotate({ identifier: "RunSessionResponse" });
@@ -3771,7 +3771,7 @@ export interface ChannelProfileWebWidgetConfigSecuritySettings {
   enableRecaptcha?: boolean;
 }
 
-export const ChannelProfileWebWidgetConfigSecuritySettings: Schema.Schema<ChannelProfileWebWidgetConfigSecuritySettings> =
+export const ChannelProfileWebWidgetConfigSecuritySettings: Schema.Codec<ChannelProfileWebWidgetConfigSecuritySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enablePublicAccess: Schema.optional(Schema.Boolean),
     enableOriginCheck: Schema.optional(Schema.Boolean),
@@ -3784,7 +3784,7 @@ export interface BatchDeleteConversationsRequest {
   conversations?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteConversationsRequest: Schema.Schema<BatchDeleteConversationsRequest> =
+export const BatchDeleteConversationsRequest: Schema.Codec<BatchDeleteConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeleteConversationsRequest" });
@@ -3810,7 +3810,7 @@ export interface Example {
   invalid?: boolean;
 }
 
-export const Example: Schema.Schema<Example> =
+export const Example: Schema.Codec<Example> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -3830,7 +3830,7 @@ export interface ListExamplesResponse {
   nextPageToken?: string;
 }
 
-export const ListExamplesResponse: Schema.Schema<ListExamplesResponse> =
+export const ListExamplesResponse: Schema.Codec<ListExamplesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     examples: Schema.optional(Schema.Array(Example)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3838,7 +3838,7 @@ export const ListExamplesResponse: Schema.Schema<ListExamplesResponse> =
 
 export interface AgentLlmAgent {}
 
-export const AgentLlmAgent: Schema.Schema<AgentLlmAgent> =
+export const AgentLlmAgent: Schema.Codec<AgentLlmAgent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AgentLlmAgent",
   });
@@ -3848,7 +3848,7 @@ export interface GenerateAppResourceResponseTools {
   tools?: ReadonlyArray<Tool>;
 }
 
-export const GenerateAppResourceResponseTools: Schema.Schema<GenerateAppResourceResponseTools> =
+export const GenerateAppResourceResponseTools: Schema.Codec<GenerateAppResourceResponseTools> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tools: Schema.optional(Schema.Array(Tool)),
   }).annotate({ identifier: "GenerateAppResourceResponseTools" });
@@ -3860,7 +3860,7 @@ export interface AgentAgentToolset {
   toolIds?: ReadonlyArray<string>;
 }
 
-export const AgentAgentToolset: Schema.Schema<AgentAgentToolset> =
+export const AgentAgentToolset: Schema.Codec<AgentAgentToolset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolset: Schema.optional(Schema.String),
     toolIds: Schema.optional(Schema.Array(Schema.String)),
@@ -3871,7 +3871,7 @@ export interface PythonCodeCondition {
   pythonCode?: string;
 }
 
-export const PythonCodeCondition: Schema.Schema<PythonCodeCondition> =
+export const PythonCodeCondition: Schema.Codec<PythonCodeCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pythonCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "PythonCodeCondition" });
@@ -3881,7 +3881,7 @@ export interface ExpressionCondition {
   expression?: string;
 }
 
-export const ExpressionCondition: Schema.Schema<ExpressionCondition> =
+export const ExpressionCondition: Schema.Codec<ExpressionCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExpressionCondition" });
@@ -3893,7 +3893,7 @@ export interface TransferRuleDeterministicTransfer {
   expressionCondition?: ExpressionCondition;
 }
 
-export const TransferRuleDeterministicTransfer: Schema.Schema<TransferRuleDeterministicTransfer> =
+export const TransferRuleDeterministicTransfer: Schema.Codec<TransferRuleDeterministicTransfer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pythonCodeCondition: Schema.optional(PythonCodeCondition),
     expressionCondition: Schema.optional(ExpressionCondition),
@@ -3904,7 +3904,7 @@ export interface TransferRuleDisablePlannerTransfer {
   expressionCondition?: ExpressionCondition;
 }
 
-export const TransferRuleDisablePlannerTransfer: Schema.Schema<TransferRuleDisablePlannerTransfer> =
+export const TransferRuleDisablePlannerTransfer: Schema.Codec<TransferRuleDisablePlannerTransfer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expressionCondition: Schema.optional(ExpressionCondition),
   }).annotate({ identifier: "TransferRuleDisablePlannerTransfer" });
@@ -3924,7 +3924,7 @@ export interface TransferRule {
   childAgent?: string;
 }
 
-export const TransferRule: Schema.Schema<TransferRule> =
+export const TransferRule: Schema.Codec<TransferRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deterministicTransfer: Schema.optional(TransferRuleDeterministicTransfer),
     direction: Schema.optional(Schema.String),
@@ -3943,7 +3943,7 @@ export interface Callback {
   proactiveExecutionEnabled?: boolean;
 }
 
-export const Callback: Schema.Schema<Callback> =
+export const Callback: Schema.Codec<Callback> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pythonCode: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -3968,7 +3968,7 @@ export interface AgentRemoteDialogflowAgent {
   environmentId?: string;
 }
 
-export const AgentRemoteDialogflowAgent: Schema.Schema<AgentRemoteDialogflowAgent> =
+export const AgentRemoteDialogflowAgent: Schema.Codec<AgentRemoteDialogflowAgent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     respectResponseInterruptionSettings: Schema.optional(Schema.Boolean),
     agent: Schema.optional(Schema.String),
@@ -4032,7 +4032,7 @@ export interface Agent {
   modelSettings?: ModelSettings;
 }
 
-export const Agent: Schema.Schema<Agent> =
+export const Agent: Schema.Codec<Agent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     toolsets: Schema.optional(Schema.Array(AgentAgentToolset)),
@@ -4068,7 +4068,7 @@ export interface McpToolDefinition {
   outputSchema?: Ces_Schema;
 }
 
-export const McpToolDefinition: Schema.Schema<McpToolDefinition> =
+export const McpToolDefinition: Schema.Codec<McpToolDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputSchema: Schema.optional(Ces_Schema),
     description: Schema.optional(Schema.String),
@@ -4086,7 +4086,7 @@ export interface McpToolOverride {
   descriptionOverride?: string;
 }
 
-export const McpToolOverride: Schema.Schema<McpToolOverride> =
+export const McpToolOverride: Schema.Codec<McpToolOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tool: Schema.optional(Schema.String),
     nameOverride: Schema.optional(Schema.String),
@@ -4109,7 +4109,7 @@ export interface McpToolset {
   tlsConfig?: TlsConfig;
 }
 
-export const McpToolset: Schema.Schema<McpToolset> =
+export const McpToolset: Schema.Codec<McpToolset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
     toolOverrides: Schema.optional(Schema.Array(McpToolOverride)),
@@ -4128,7 +4128,7 @@ export interface ConnectorToolset {
   authConfig?: EndUserAuthConfig;
 }
 
-export const ConnectorToolset: Schema.Schema<ConnectorToolset> =
+export const ConnectorToolset: Schema.Codec<ConnectorToolset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connection: Schema.optional(Schema.String),
     connectorActions: Schema.optional(Schema.Array(Action)),
@@ -4150,7 +4150,7 @@ export interface OpenApiToolset {
   apiAuthentication?: ApiAuthentication;
 }
 
-export const OpenApiToolset: Schema.Schema<OpenApiToolset> =
+export const OpenApiToolset: Schema.Codec<OpenApiToolset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
     url: Schema.optional(Schema.String),
@@ -4189,7 +4189,7 @@ export interface Toolset {
   createTime?: string;
 }
 
-export const Toolset: Schema.Schema<Toolset> =
+export const Toolset: Schema.Codec<Toolset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     toolFakeConfig: Schema.optional(ToolFakeConfig),
@@ -4213,7 +4213,7 @@ export interface QualityReportIssue {
   proposedSolution?: string;
 }
 
-export const QualityReportIssue: Schema.Schema<QualityReportIssue> =
+export const QualityReportIssue: Schema.Codec<QualityReportIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     occurrenceCount: Schema.optional(Schema.Number),
     description: Schema.optional(Schema.String),
@@ -4227,7 +4227,7 @@ export interface QualityReportAgentIssues {
   issues?: ReadonlyArray<QualityReportIssue>;
 }
 
-export const QualityReportAgentIssues: Schema.Schema<QualityReportAgentIssues> =
+export const QualityReportAgentIssues: Schema.Codec<QualityReportAgentIssues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agent: Schema.optional(Schema.String),
     issues: Schema.optional(Schema.Array(QualityReportIssue)),
@@ -4242,7 +4242,7 @@ export interface QualityReport {
   issues?: ReadonlyArray<QualityReportAgentIssues>;
 }
 
-export const QualityReport: Schema.Schema<QualityReport> =
+export const QualityReport: Schema.Codec<QualityReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationRuns: Schema.optional(Schema.Array(Schema.String)),
     generalIssues: Schema.optional(Schema.Array(QualityReportIssue)),
@@ -4254,7 +4254,7 @@ export interface GenerateAppResourceResponseGenerateResultInfo {
   explanation?: string;
 }
 
-export const GenerateAppResourceResponseGenerateResultInfo: Schema.Schema<GenerateAppResourceResponseGenerateResultInfo> =
+export const GenerateAppResourceResponseGenerateResultInfo: Schema.Codec<GenerateAppResourceResponseGenerateResultInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explanation: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateAppResourceResponseGenerateResultInfo" });
@@ -4264,7 +4264,7 @@ export interface VpcScSettings {
   allowedOrigins?: ReadonlyArray<string>;
 }
 
-export const VpcScSettings: Schema.Schema<VpcScSettings> =
+export const VpcScSettings: Schema.Codec<VpcScSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "VpcScSettings" });
@@ -4278,7 +4278,7 @@ export interface AppVariableDeclaration {
   schema?: Ces_Schema;
 }
 
-export const AppVariableDeclaration: Schema.Schema<AppVariableDeclaration> =
+export const AppVariableDeclaration: Schema.Codec<AppVariableDeclaration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4290,7 +4290,7 @@ export interface ErrorHandlingSettingsEndSessionConfig {
   escalateSession?: boolean;
 }
 
-export const ErrorHandlingSettingsEndSessionConfig: Schema.Schema<ErrorHandlingSettingsEndSessionConfig> =
+export const ErrorHandlingSettingsEndSessionConfig: Schema.Codec<ErrorHandlingSettingsEndSessionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     escalateSession: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ErrorHandlingSettingsEndSessionConfig" });
@@ -4309,7 +4309,7 @@ export interface ErrorHandlingSettings {
   fallbackResponseConfig?: ErrorHandlingSettingsFallbackResponseConfig;
 }
 
-export const ErrorHandlingSettings: Schema.Schema<ErrorHandlingSettings> =
+export const ErrorHandlingSettings: Schema.Codec<ErrorHandlingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorHandlingStrategy: Schema.optional(Schema.String),
     endSessionConfig: Schema.optional(ErrorHandlingSettingsEndSessionConfig),
@@ -4335,7 +4335,7 @@ export interface ChannelProfileWebWidgetConfig {
   webWidgetTitle?: string;
 }
 
-export const ChannelProfileWebWidgetConfig: Schema.Schema<ChannelProfileWebWidgetConfig> =
+export const ChannelProfileWebWidgetConfig: Schema.Codec<ChannelProfileWebWidgetConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     theme: Schema.optional(Schema.String),
     securitySettings: Schema.optional(
@@ -4350,7 +4350,7 @@ export interface ChannelProfilePersonaProperty {
   persona?: "UNKNOWN" | "CONCISE" | "CHATTY" | (string & {});
 }
 
-export const ChannelProfilePersonaProperty: Schema.Schema<ChannelProfilePersonaProperty> =
+export const ChannelProfilePersonaProperty: Schema.Codec<ChannelProfilePersonaProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     persona: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChannelProfilePersonaProperty" });
@@ -4381,7 +4381,7 @@ export interface ChannelProfile {
   noiseSuppressionLevel?: string;
 }
 
-export const ChannelProfile: Schema.Schema<ChannelProfile> =
+export const ChannelProfile: Schema.Codec<ChannelProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableBargeInControl: Schema.optional(Schema.Boolean),
     channelType: Schema.optional(Schema.String),
@@ -4397,7 +4397,7 @@ export interface TimeZoneSettings {
   timeZone?: string;
 }
 
-export const TimeZoneSettings: Schema.Schema<TimeZoneSettings> =
+export const TimeZoneSettings: Schema.Codec<TimeZoneSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(Schema.String),
   }).annotate({ identifier: "TimeZoneSettings" });
@@ -4413,7 +4413,7 @@ export interface LanguageSettings {
   enableMultilingualSupport?: boolean;
 }
 
-export const LanguageSettings: Schema.Schema<LanguageSettings> =
+export const LanguageSettings: Schema.Codec<LanguageSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fallbackAction: Schema.optional(Schema.String),
     supportedLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -4432,7 +4432,7 @@ export interface DataStoreSettingsEngine {
     | (string & {});
 }
 
-export const DataStoreSettingsEngine: Schema.Schema<DataStoreSettingsEngine> =
+export const DataStoreSettingsEngine: Schema.Codec<DataStoreSettingsEngine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4443,7 +4443,7 @@ export interface DataStoreSettings {
   engines?: ReadonlyArray<DataStoreSettingsEngine>;
 }
 
-export const DataStoreSettings: Schema.Schema<DataStoreSettings> =
+export const DataStoreSettings: Schema.Codec<DataStoreSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     engines: Schema.optional(Schema.Array(DataStoreSettingsEngine)),
   }).annotate({ identifier: "DataStoreSettings" });
@@ -4457,7 +4457,7 @@ export interface ClientCertificateSettings {
   tlsCertificate?: string;
 }
 
-export const ClientCertificateSettings: Schema.Schema<ClientCertificateSettings> =
+export const ClientCertificateSettings: Schema.Codec<ClientCertificateSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateKey: Schema.optional(Schema.String),
     passphrase: Schema.optional(Schema.String),
@@ -4531,8 +4531,8 @@ export interface App {
   metadata?: Record<string, string>;
 }
 
-export const App: Schema.Schema<App> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const App: Schema.Codec<App> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     name: Schema.optional(Schema.String),
     vpcScSettings: Schema.optional(VpcScSettings),
     displayName: Schema.optional(Schema.String),
@@ -4565,14 +4565,15 @@ export const App: Schema.Schema<App> =
     clientCertificateSettings: Schema.optional(ClientCertificateSettings),
     rootAgent: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "App" });
+  },
+).annotate({ identifier: "App" });
 
 export interface GuardrailLlmPromptSecurityDefaultSecuritySettings {
   /** Output only. The default prompt template used by the system. This field is for display purposes to show the user what prompt the system uses by default. It is OUTPUT_ONLY. */
   defaultPromptTemplate?: string;
 }
 
-export const GuardrailLlmPromptSecurityDefaultSecuritySettings: Schema.Schema<GuardrailLlmPromptSecurityDefaultSecuritySettings> =
+export const GuardrailLlmPromptSecurityDefaultSecuritySettings: Schema.Codec<GuardrailLlmPromptSecurityDefaultSecuritySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultPromptTemplate: Schema.optional(Schema.String),
   }).annotate({
@@ -4599,7 +4600,7 @@ export interface GuardrailLlmPolicy {
   allowShortUtterance?: boolean;
 }
 
-export const GuardrailLlmPolicy: Schema.Schema<GuardrailLlmPolicy> =
+export const GuardrailLlmPolicy: Schema.Codec<GuardrailLlmPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelSettings: Schema.optional(ModelSettings),
     maxConversationMessages: Schema.optional(Schema.Number),
@@ -4618,7 +4619,7 @@ export interface GuardrailLlmPromptSecurity {
   failOpen?: boolean;
 }
 
-export const GuardrailLlmPromptSecurity: Schema.Schema<GuardrailLlmPromptSecurity> =
+export const GuardrailLlmPromptSecurity: Schema.Codec<GuardrailLlmPromptSecurity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultSettings: Schema.optional(
       GuardrailLlmPromptSecurityDefaultSecuritySettings,
@@ -4634,7 +4635,7 @@ export interface TriggerActionResponse {
   disabled?: boolean;
 }
 
-export const TriggerActionResponse: Schema.Schema<TriggerActionResponse> =
+export const TriggerActionResponse: Schema.Codec<TriggerActionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     disabled: Schema.optional(Schema.Boolean),
@@ -4645,7 +4646,7 @@ export interface TriggerActionRespondImmediately {
   responses?: ReadonlyArray<TriggerActionResponse>;
 }
 
-export const TriggerActionRespondImmediately: Schema.Schema<TriggerActionRespondImmediately> =
+export const TriggerActionRespondImmediately: Schema.Codec<TriggerActionRespondImmediately> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(TriggerActionResponse)),
   }).annotate({ identifier: "TriggerActionRespondImmediately" });
@@ -4655,7 +4656,7 @@ export interface TriggerActionTransferAgent {
   agent?: string;
 }
 
-export const TriggerActionTransferAgent: Schema.Schema<TriggerActionTransferAgent> =
+export const TriggerActionTransferAgent: Schema.Codec<TriggerActionTransferAgent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agent: Schema.optional(Schema.String),
   }).annotate({ identifier: "TriggerActionTransferAgent" });
@@ -4665,7 +4666,7 @@ export interface TriggerActionGenerativeAnswer {
   prompt?: string;
 }
 
-export const TriggerActionGenerativeAnswer: Schema.Schema<TriggerActionGenerativeAnswer> =
+export const TriggerActionGenerativeAnswer: Schema.Codec<TriggerActionGenerativeAnswer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prompt: Schema.optional(Schema.String),
   }).annotate({ identifier: "TriggerActionGenerativeAnswer" });
@@ -4679,7 +4680,7 @@ export interface TriggerAction {
   generativeAnswer?: TriggerActionGenerativeAnswer;
 }
 
-export const TriggerAction: Schema.Schema<TriggerAction> =
+export const TriggerAction: Schema.Codec<TriggerAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     respondImmediately: Schema.optional(TriggerActionRespondImmediately),
     transferAgent: Schema.optional(TriggerActionTransferAgent),
@@ -4706,7 +4707,7 @@ export interface GuardrailModelSafetySafetySetting {
     | (string & {});
 }
 
-export const GuardrailModelSafetySafetySetting: Schema.Schema<GuardrailModelSafetySafetySetting> =
+export const GuardrailModelSafetySafetySetting: Schema.Codec<GuardrailModelSafetySafetySetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     threshold: Schema.optional(Schema.String),
@@ -4717,7 +4718,7 @@ export interface GuardrailModelSafety {
   safetySettings?: ReadonlyArray<GuardrailModelSafetySafetySetting>;
 }
 
-export const GuardrailModelSafety: Schema.Schema<GuardrailModelSafety> =
+export const GuardrailModelSafety: Schema.Codec<GuardrailModelSafety> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     safetySettings: Schema.optional(
       Schema.Array(GuardrailModelSafetySafetySetting),
@@ -4735,7 +4736,7 @@ export interface GuardrailCodeCallback {
   afterAgentCallback?: Callback;
 }
 
-export const GuardrailCodeCallback: Schema.Schema<GuardrailCodeCallback> =
+export const GuardrailCodeCallback: Schema.Codec<GuardrailCodeCallback> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     beforeModelCallback: Schema.optional(Callback),
     beforeAgentCallback: Schema.optional(Callback),
@@ -4772,7 +4773,7 @@ export interface Guardrail {
   enabled?: boolean;
 }
 
-export const Guardrail: Schema.Schema<Guardrail> =
+export const Guardrail: Schema.Codec<Guardrail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     llmPromptSecurity: Schema.optional(GuardrailLlmPromptSecurity),
@@ -4804,7 +4805,7 @@ export interface AppSnapshot {
   toolsets?: ReadonlyArray<Toolset>;
 }
 
-export const AppSnapshot: Schema.Schema<AppSnapshot> =
+export const AppSnapshot: Schema.Codec<AppSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app: Schema.optional(App),
     agents: Schema.optional(Schema.Array(Agent)),
@@ -4821,7 +4822,7 @@ export interface GenerateAppResourceResponseAppResources {
   evaluations?: ReadonlyArray<Evaluation>;
 }
 
-export const GenerateAppResourceResponseAppResources: Schema.Schema<GenerateAppResourceResponseAppResources> =
+export const GenerateAppResourceResponseAppResources: Schema.Codec<GenerateAppResourceResponseAppResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appSnapshot: Schema.optional(AppSnapshot),
     evaluations: Schema.optional(Schema.Array(Evaluation)),
@@ -4846,7 +4847,7 @@ export interface GenerateAppResourceResponse {
   appSnapshot?: AppSnapshot;
 }
 
-export const GenerateAppResourceResponse: Schema.Schema<GenerateAppResourceResponse> =
+export const GenerateAppResourceResponse: Schema.Codec<GenerateAppResourceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tools: Schema.optional(GenerateAppResourceResponseTools),
     agent: Schema.optional(Agent),
@@ -4862,7 +4863,7 @@ export const GenerateAppResourceResponse: Schema.Schema<GenerateAppResourceRespo
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -4874,7 +4875,7 @@ export interface ListEvaluationResultsResponse {
   nextPageToken?: string;
 }
 
-export const ListEvaluationResultsResponse: Schema.Schema<ListEvaluationResultsResponse> =
+export const ListEvaluationResultsResponse: Schema.Codec<ListEvaluationResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationResults: Schema.optional(Schema.Array(EvaluationResult)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4882,7 +4883,7 @@ export const ListEvaluationResultsResponse: Schema.Schema<ListEvaluationResultsR
 
 export interface GenerateAppResourceRequestEvaluationPersonasGenerationConfig {}
 
-export const GenerateAppResourceRequestEvaluationPersonasGenerationConfig: Schema.Schema<GenerateAppResourceRequestEvaluationPersonasGenerationConfig> =
+export const GenerateAppResourceRequestEvaluationPersonasGenerationConfig: Schema.Codec<GenerateAppResourceRequestEvaluationPersonasGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GenerateAppResourceRequestEvaluationPersonasGenerationConfig",
   });
@@ -4896,7 +4897,7 @@ export interface GenerateChatTokenRequest {
   deployment?: string;
 }
 
-export const GenerateChatTokenRequest: Schema.Schema<GenerateChatTokenRequest> =
+export const GenerateChatTokenRequest: Schema.Codec<GenerateChatTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recaptchaToken: Schema.optional(Schema.String),
     liveHandoffEnabled: Schema.optional(Schema.Boolean),
@@ -4908,7 +4909,7 @@ export interface TestPersonaVoiceResponse {
   audio?: string;
 }
 
-export const TestPersonaVoiceResponse: Schema.Schema<TestPersonaVoiceResponse> =
+export const TestPersonaVoiceResponse: Schema.Codec<TestPersonaVoiceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audio: Schema.optional(Schema.String),
   }).annotate({ identifier: "TestPersonaVoiceResponse" });
@@ -4918,7 +4919,7 @@ export interface EvaluationExpectationLlmCriteria {
   prompt?: string;
 }
 
-export const EvaluationExpectationLlmCriteria: Schema.Schema<EvaluationExpectationLlmCriteria> =
+export const EvaluationExpectationLlmCriteria: Schema.Codec<EvaluationExpectationLlmCriteria> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prompt: Schema.optional(Schema.String),
   }).annotate({ identifier: "EvaluationExpectationLlmCriteria" });
@@ -4940,7 +4941,7 @@ export interface EvaluationExpectation {
   createTime?: string;
 }
 
-export const EvaluationExpectation: Schema.Schema<EvaluationExpectation> =
+export const EvaluationExpectation: Schema.Codec<EvaluationExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -4958,7 +4959,7 @@ export interface ListEvaluationExpectationsResponse {
   nextPageToken?: string;
 }
 
-export const ListEvaluationExpectationsResponse: Schema.Schema<ListEvaluationExpectationsResponse> =
+export const ListEvaluationExpectationsResponse: Schema.Codec<ListEvaluationExpectationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationExpectations: Schema.optional(
       Schema.Array(EvaluationExpectation),
@@ -4975,7 +4976,7 @@ export interface ExportEvaluationsResponse {
   evaluationsContent?: string;
 }
 
-export const ExportEvaluationsResponse: Schema.Schema<ExportEvaluationsResponse> =
+export const ExportEvaluationsResponse: Schema.Codec<ExportEvaluationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationsUri: Schema.optional(Schema.String),
     failedEvaluations: Schema.optional(
@@ -4993,7 +4994,7 @@ export interface ExportAppRequest {
   appVersion?: string;
 }
 
-export const ExportAppRequest: Schema.Schema<ExportAppRequest> =
+export const ExportAppRequest: Schema.Codec<ExportAppRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsUri: Schema.optional(Schema.String),
     exportFormat: Schema.optional(Schema.String),
@@ -5009,7 +5010,7 @@ export interface FileContextFileBytes {
   mimeType?: string;
 }
 
-export const FileContextFileBytes: Schema.Schema<FileContextFileBytes> =
+export const FileContextFileBytes: Schema.Codec<FileContextFileBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -5025,7 +5026,7 @@ export interface ExperimentConfigVersionReleaseTrafficAllocation {
   id?: string;
 }
 
-export const ExperimentConfigVersionReleaseTrafficAllocation: Schema.Schema<ExperimentConfigVersionReleaseTrafficAllocation> =
+export const ExperimentConfigVersionReleaseTrafficAllocation: Schema.Codec<ExperimentConfigVersionReleaseTrafficAllocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trafficPercentage: Schema.optional(Schema.Number),
     appVersion: Schema.optional(Schema.String),
@@ -5047,7 +5048,7 @@ export interface ExperimentConfigVersionRelease {
   trafficAllocations?: ReadonlyArray<ExperimentConfigVersionReleaseTrafficAllocation>;
 }
 
-export const ExperimentConfigVersionRelease: Schema.Schema<ExperimentConfigVersionRelease> =
+export const ExperimentConfigVersionRelease: Schema.Codec<ExperimentConfigVersionRelease> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     trafficAllocations: Schema.optional(
@@ -5060,7 +5061,7 @@ export interface ExperimentConfig {
   versionRelease?: ExperimentConfigVersionRelease;
 }
 
-export const ExperimentConfig: Schema.Schema<ExperimentConfig> =
+export const ExperimentConfig: Schema.Codec<ExperimentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionRelease: Schema.optional(ExperimentConfigVersionRelease),
   }).annotate({ identifier: "ExperimentConfig" });
@@ -5076,7 +5077,7 @@ export interface MockConfig {
     | (string & {});
 }
 
-export const MockConfig: Schema.Schema<MockConfig> =
+export const MockConfig: Schema.Codec<MockConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mockedToolCalls: Schema.optional(Schema.Array(MockedToolCall)),
     unmatchedToolCallBehavior: Schema.optional(Schema.String),
@@ -5097,7 +5098,7 @@ export interface ExecuteToolRequest {
   toolsetTool?: ToolsetTool;
 }
 
-export const ExecuteToolRequest: Schema.Schema<ExecuteToolRequest> =
+export const ExecuteToolRequest: Schema.Codec<ExecuteToolRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     context: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -5116,7 +5117,7 @@ export interface ListAppsResponse {
   apps?: ReadonlyArray<App>;
 }
 
-export const ListAppsResponse: Schema.Schema<ListAppsResponse> =
+export const ListAppsResponse: Schema.Codec<ListAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -5132,7 +5133,7 @@ export interface UploadEvaluationAudioResponse {
   duration?: string;
 }
 
-export const UploadEvaluationAudioResponse: Schema.Schema<UploadEvaluationAudioResponse> =
+export const UploadEvaluationAudioResponse: Schema.Codec<UploadEvaluationAudioResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioGcsUri: Schema.optional(Schema.String),
     transcript: Schema.optional(Schema.String),
@@ -5148,7 +5149,7 @@ export interface SessionConfigRemoteDialogflowQueryParameters {
   endUserMetadata?: Record<string, unknown>;
 }
 
-export const SessionConfigRemoteDialogflowQueryParameters: Schema.Schema<SessionConfigRemoteDialogflowQueryParameters> =
+export const SessionConfigRemoteDialogflowQueryParameters: Schema.Codec<SessionConfigRemoteDialogflowQueryParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webhookHeaders: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -5170,7 +5171,7 @@ export interface EndpointControlPolicy {
     | (string & {});
 }
 
-export const EndpointControlPolicy: Schema.Schema<EndpointControlPolicy> =
+export const EndpointControlPolicy: Schema.Codec<EndpointControlPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
     enforcementScope: Schema.optional(Schema.String),
@@ -5189,7 +5190,7 @@ export interface SecuritySettings {
   etag?: string;
 }
 
-export const SecuritySettings: Schema.Schema<SecuritySettings> =
+export const SecuritySettings: Schema.Codec<SecuritySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     endpointControlPolicy: Schema.optional(EndpointControlPolicy),
@@ -5203,7 +5204,7 @@ export interface FileContext {
   fileBytes?: FileContextFileBytes;
 }
 
-export const FileContext: Schema.Schema<FileContext> =
+export const FileContext: Schema.Codec<FileContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileBytes: Schema.optional(FileContextFileBytes),
   }).annotate({ identifier: "FileContext" });
@@ -5227,7 +5228,7 @@ export interface Deployment {
   updateTime?: string;
 }
 
-export const Deployment: Schema.Schema<Deployment> =
+export const Deployment: Schema.Codec<Deployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -5260,7 +5261,7 @@ export interface SessionConfig {
   deployment?: string;
 }
 
-export const SessionConfig: Schema.Schema<SessionConfig> =
+export const SessionConfig: Schema.Codec<SessionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     historicalContexts: Schema.optional(Schema.Array(Message)),
     entryAgent: Schema.optional(Schema.String),
@@ -5282,7 +5283,7 @@ export interface RunSessionRequest {
   config?: SessionConfig;
 }
 
-export const RunSessionRequest: Schema.Schema<RunSessionRequest> =
+export const RunSessionRequest: Schema.Codec<RunSessionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputs: Schema.optional(Schema.Array(SessionInput)),
     config: Schema.optional(SessionConfig),
@@ -5293,7 +5294,7 @@ export interface RetrieveToolsResponse {
   tools?: ReadonlyArray<Tool>;
 }
 
-export const RetrieveToolsResponse: Schema.Schema<RetrieveToolsResponse> =
+export const RetrieveToolsResponse: Schema.Codec<RetrieveToolsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tools: Schema.optional(Schema.Array(Tool)),
   }).annotate({ identifier: "RetrieveToolsResponse" });
@@ -5303,7 +5304,7 @@ export interface ImportEvaluationsRequestConversationList {
   conversations?: ReadonlyArray<string>;
 }
 
-export const ImportEvaluationsRequestConversationList: Schema.Schema<ImportEvaluationsRequestConversationList> =
+export const ImportEvaluationsRequestConversationList: Schema.Codec<ImportEvaluationsRequestConversationList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ImportEvaluationsRequestConversationList" });
@@ -5315,7 +5316,7 @@ export interface ListDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListDeploymentsResponse: Schema.Schema<ListDeploymentsResponse> =
+export const ListDeploymentsResponse: Schema.Codec<ListDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(Deployment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5331,7 +5332,7 @@ export interface ImportEvaluationsRequestImportOptions {
     | (string & {});
 }
 
-export const ImportEvaluationsRequestImportOptions: Schema.Schema<ImportEvaluationsRequestImportOptions> =
+export const ImportEvaluationsRequestImportOptions: Schema.Codec<ImportEvaluationsRequestImportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conflictResolutionStrategy: Schema.optional(Schema.String),
   }).annotate({ identifier: "ImportEvaluationsRequestImportOptions" });
@@ -5341,7 +5342,7 @@ export interface GenerateAppResourceRequestQualityReportGenerationConfig {
   evaluationRun?: string;
 }
 
-export const GenerateAppResourceRequestQualityReportGenerationConfig: Schema.Schema<GenerateAppResourceRequestQualityReportGenerationConfig> =
+export const GenerateAppResourceRequestQualityReportGenerationConfig: Schema.Codec<GenerateAppResourceRequestQualityReportGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationRun: Schema.optional(Schema.String),
   }).annotate({
@@ -5355,7 +5356,7 @@ export interface ListAgentsResponse {
   agents?: ReadonlyArray<Agent>;
 }
 
-export const ListAgentsResponse: Schema.Schema<ListAgentsResponse> =
+export const ListAgentsResponse: Schema.Codec<ListAgentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     agents: Schema.optional(Schema.Array(Agent)),
@@ -5388,7 +5389,7 @@ export interface Changelog {
   action?: string;
 }
 
-export const Changelog: Schema.Schema<Changelog> =
+export const Changelog: Schema.Codec<Changelog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     newResource: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -5415,7 +5416,7 @@ export interface ExportEvaluationResultsRequest {
   exportOptions?: ExportOptions;
 }
 
-export const ExportEvaluationResultsRequest: Schema.Schema<ExportEvaluationResultsRequest> =
+export const ExportEvaluationResultsRequest: Schema.Codec<ExportEvaluationResultsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
     exportOptions: Schema.optional(ExportOptions),
@@ -5428,7 +5429,7 @@ export interface ListEvaluationRunsResponse {
   nextPageToken?: string;
 }
 
-export const ListEvaluationRunsResponse: Schema.Schema<ListEvaluationRunsResponse> =
+export const ListEvaluationRunsResponse: Schema.Codec<ListEvaluationRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationRuns: Schema.optional(Schema.Array(EvaluationRun)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5447,7 +5448,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -5465,7 +5466,7 @@ export interface ListOperationsResponse {
   operations?: ReadonlyArray<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -5479,7 +5480,7 @@ export interface ListToolsetsResponse {
   toolsets?: ReadonlyArray<Toolset>;
 }
 
-export const ListToolsetsResponse: Schema.Schema<ListToolsetsResponse> =
+export const ListToolsetsResponse: Schema.Codec<ListToolsetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     toolsets: Schema.optional(Schema.Array(Toolset)),
@@ -5492,7 +5493,7 @@ export interface ImportAppResponse {
   warnings?: ReadonlyArray<string>;
 }
 
-export const ImportAppResponse: Schema.Schema<ImportAppResponse> =
+export const ImportAppResponse: Schema.Codec<ImportAppResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     warnings: Schema.optional(Schema.Array(Schema.String)),
@@ -5505,7 +5506,7 @@ export interface ListEvaluationsResponse {
   nextPageToken?: string;
 }
 
-export const ListEvaluationsResponse: Schema.Schema<ListEvaluationsResponse> =
+export const ListEvaluationsResponse: Schema.Codec<ListEvaluationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluations: Schema.optional(Schema.Array(Evaluation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5522,7 +5523,7 @@ export interface GenerateEvaluationRequest {
     | (string & {});
 }
 
-export const GenerateEvaluationRequest: Schema.Schema<GenerateEvaluationRequest> =
+export const GenerateEvaluationRequest: Schema.Codec<GenerateEvaluationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateEvaluationRequest" });
@@ -5534,7 +5535,7 @@ export interface RetrieveToolSchemaRequest {
   tool?: string;
 }
 
-export const RetrieveToolSchemaRequest: Schema.Schema<RetrieveToolSchemaRequest> =
+export const RetrieveToolSchemaRequest: Schema.Codec<RetrieveToolSchemaRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolsetTool: Schema.optional(ToolsetTool),
     tool: Schema.optional(Schema.String),
@@ -5545,7 +5546,7 @@ export interface GenerateAppResourceRequestEvaluationGenerationConfig {
   datasetId?: string;
 }
 
-export const GenerateAppResourceRequestEvaluationGenerationConfig: Schema.Schema<GenerateAppResourceRequestEvaluationGenerationConfig> =
+export const GenerateAppResourceRequestEvaluationGenerationConfig: Schema.Codec<GenerateAppResourceRequestEvaluationGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
   }).annotate({
@@ -5569,7 +5570,7 @@ export interface AppVersion {
   etag?: string;
 }
 
-export const AppVersion: Schema.Schema<AppVersion> =
+export const AppVersion: Schema.Codec<AppVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creator: Schema.optional(Schema.String),
     snapshot: Schema.optional(AppSnapshot),
@@ -5591,7 +5592,7 @@ export interface GenerateAppResourceRequestRefineInstructions {
   instructions?: string;
 }
 
-export const GenerateAppResourceRequestRefineInstructions: Schema.Schema<GenerateAppResourceRequestRefineInstructions> =
+export const GenerateAppResourceRequestRefineInstructions: Schema.Codec<GenerateAppResourceRequestRefineInstructions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldMask: Schema.optional(Schema.String),
     startIndex: Schema.optional(Schema.String),
@@ -5612,7 +5613,7 @@ export interface GenerateAppResourceRequestAppGenerationConfig {
   fileContexts?: ReadonlyArray<FileContext>;
 }
 
-export const GenerateAppResourceRequestAppGenerationConfig: Schema.Schema<GenerateAppResourceRequestAppGenerationConfig> =
+export const GenerateAppResourceRequestAppGenerationConfig: Schema.Codec<GenerateAppResourceRequestAppGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generateEvaluations: Schema.optional(Schema.Boolean),
     context: Schema.optional(Schema.String),
@@ -5623,7 +5624,7 @@ export const GenerateAppResourceRequestAppGenerationConfig: Schema.Schema<Genera
 
 export interface RestoreAppVersionRequest {}
 
-export const RestoreAppVersionRequest: Schema.Schema<RestoreAppVersionRequest> =
+export const RestoreAppVersionRequest: Schema.Codec<RestoreAppVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestoreAppVersionRequest",
   });
@@ -5635,7 +5636,7 @@ export interface ListGuardrailsResponse {
   guardrails?: ReadonlyArray<Guardrail>;
 }
 
-export const ListGuardrailsResponse: Schema.Schema<ListGuardrailsResponse> =
+export const ListGuardrailsResponse: Schema.Codec<ListGuardrailsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     guardrails: Schema.optional(Schema.Array(Guardrail)),
@@ -5648,7 +5649,7 @@ export interface UploadEvaluationAudioRequest {
   previousAudioGcsUri?: string;
 }
 
-export const UploadEvaluationAudioRequest: Schema.Schema<UploadEvaluationAudioRequest> =
+export const UploadEvaluationAudioRequest: Schema.Codec<UploadEvaluationAudioRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioContent: Schema.optional(Schema.String),
     previousAudioGcsUri: Schema.optional(Schema.String),
@@ -5656,7 +5657,7 @@ export const UploadEvaluationAudioRequest: Schema.Schema<UploadEvaluationAudioRe
 
 export interface GenerateEvaluationOperationMetadata {}
 
-export const GenerateEvaluationOperationMetadata: Schema.Schema<GenerateEvaluationOperationMetadata> =
+export const GenerateEvaluationOperationMetadata: Schema.Codec<GenerateEvaluationOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GenerateEvaluationOperationMetadata",
   });
@@ -5668,7 +5669,7 @@ export interface ConversationTurn {
   messages?: ReadonlyArray<Message>;
 }
 
-export const ConversationTurn: Schema.Schema<ConversationTurn> =
+export const ConversationTurn: Schema.Codec<ConversationTurn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootSpan: Schema.optional(Span),
     messages: Schema.optional(Schema.Array(Message)),
@@ -5724,7 +5725,7 @@ export interface Conversation {
   turns?: ReadonlyArray<ConversationTurn>;
 }
 
-export const Conversation: Schema.Schema<Conversation> =
+export const Conversation: Schema.Codec<Conversation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryAgent: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
@@ -5748,7 +5749,7 @@ export interface RetrieveToolsRequest {
   toolIds?: ReadonlyArray<string>;
 }
 
-export const RetrieveToolsRequest: Schema.Schema<RetrieveToolsRequest> =
+export const RetrieveToolsRequest: Schema.Codec<RetrieveToolsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bypassPersistenceConfig: Schema.optional(Schema.Boolean),
     toolIds: Schema.optional(Schema.Array(Schema.String)),
@@ -5756,7 +5757,7 @@ export const RetrieveToolsRequest: Schema.Schema<RetrieveToolsRequest> =
 
 export interface DeleteEvaluationRunOperationMetadata {}
 
-export const DeleteEvaluationRunOperationMetadata: Schema.Schema<DeleteEvaluationRunOperationMetadata> =
+export const DeleteEvaluationRunOperationMetadata: Schema.Codec<DeleteEvaluationRunOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteEvaluationRunOperationMetadata",
   });
@@ -5768,7 +5769,7 @@ export interface ListChangelogsResponse {
   nextPageToken?: string;
 }
 
-export const ListChangelogsResponse: Schema.Schema<ListChangelogsResponse> =
+export const ListChangelogsResponse: Schema.Codec<ListChangelogsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changelogs: Schema.optional(Schema.Array(Changelog)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5785,7 +5786,7 @@ export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGen
   responseJson?: string;
 }
 
-export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig: Schema.Schema<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig> =
+export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig: Schema.Codec<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -5803,7 +5804,7 @@ export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGen
   operationGenerationConfigs?: ReadonlyArray<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig>;
 }
 
-export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig: Schema.Schema<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig> =
+export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig: Schema.Codec<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     operationGenerationConfigs: Schema.optional(
@@ -5825,7 +5826,7 @@ export interface GenerateAppResourceRequestToolGenerationConfig {
   openApiToolsetGenerationConfig?: GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig;
 }
 
-export const GenerateAppResourceRequestToolGenerationConfig: Schema.Schema<GenerateAppResourceRequestToolGenerationConfig> =
+export const GenerateAppResourceRequestToolGenerationConfig: Schema.Codec<GenerateAppResourceRequestToolGenerationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     context: Schema.optional(Schema.String),
     fileContexts: Schema.optional(Schema.Array(FileContext)),
@@ -5843,7 +5844,7 @@ export interface BatchDeleteConversationsResponse {
   errorMessages?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteConversationsResponse: Schema.Schema<BatchDeleteConversationsResponse> =
+export const BatchDeleteConversationsResponse: Schema.Codec<BatchDeleteConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletedConversations: Schema.optional(Schema.Array(Schema.String)),
     failedConversations: Schema.optional(Schema.Array(Schema.String)),
@@ -5855,7 +5856,7 @@ export interface GenerateAppResourceRequestHillClimbingFixConfig {
   qualityReport?: QualityReport;
 }
 
-export const GenerateAppResourceRequestHillClimbingFixConfig: Schema.Schema<GenerateAppResourceRequestHillClimbingFixConfig> =
+export const GenerateAppResourceRequestHillClimbingFixConfig: Schema.Codec<GenerateAppResourceRequestHillClimbingFixConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qualityReport: Schema.optional(QualityReport),
   }).annotate({
@@ -5869,7 +5870,7 @@ export interface GenerateChatTokenResponse {
   expireTime?: string;
 }
 
-export const GenerateChatTokenResponse: Schema.Schema<GenerateChatTokenResponse> =
+export const GenerateChatTokenResponse: Schema.Codec<GenerateChatTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chatToken: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -5886,7 +5887,7 @@ export interface ExportEvaluationsRequest {
   includeEvaluationResults?: boolean;
 }
 
-export const ExportEvaluationsRequest: Schema.Schema<ExportEvaluationsRequest> =
+export const ExportEvaluationsRequest: Schema.Codec<ExportEvaluationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
     exportOptions: Schema.optional(ExportOptions),
@@ -5901,7 +5902,7 @@ export interface ListScheduledEvaluationRunsResponse {
   nextPageToken?: string;
 }
 
-export const ListScheduledEvaluationRunsResponse: Schema.Schema<ListScheduledEvaluationRunsResponse> =
+export const ListScheduledEvaluationRunsResponse: Schema.Codec<ListScheduledEvaluationRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduledEvaluationRuns: Schema.optional(
       Schema.Array(ScheduledEvaluationRun),
@@ -5916,7 +5917,7 @@ export interface ExportEvaluationRunsRequest {
   exportOptions?: ExportOptions;
 }
 
-export const ExportEvaluationRunsRequest: Schema.Schema<ExportEvaluationRunsRequest> =
+export const ExportEvaluationRunsRequest: Schema.Codec<ExportEvaluationRunsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
     exportOptions: Schema.optional(ExportOptions),
@@ -5929,7 +5930,7 @@ export interface ExportEvaluationRunsResponse {
   evaluationRunsUri?: string;
 }
 
-export const ExportEvaluationRunsResponse: Schema.Schema<ExportEvaluationRunsResponse> =
+export const ExportEvaluationRunsResponse: Schema.Codec<ExportEvaluationRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationRunsContent: Schema.optional(Schema.String),
     evaluationRunsUri: Schema.optional(Schema.String),
@@ -5944,7 +5945,7 @@ export interface ImportEvaluationsOperationMetadata {
   endTime?: string;
 }
 
-export const ImportEvaluationsOperationMetadata: Schema.Schema<ImportEvaluationsOperationMetadata> =
+export const ImportEvaluationsOperationMetadata: Schema.Codec<ImportEvaluationsOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
@@ -5962,7 +5963,7 @@ export interface ImportEvaluationsRequest {
   importOptions?: ImportEvaluationsRequestImportOptions;
 }
 
-export const ImportEvaluationsRequest: Schema.Schema<ImportEvaluationsRequest> =
+export const ImportEvaluationsRequest: Schema.Codec<ImportEvaluationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationList: Schema.optional(ImportEvaluationsRequestConversationList),
     gcsUri: Schema.optional(Schema.String),
@@ -5977,7 +5978,7 @@ export interface ListAppVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAppVersionsResponse: Schema.Schema<ListAppVersionsResponse> =
+export const ListAppVersionsResponse: Schema.Codec<ListAppVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appVersions: Schema.optional(Schema.Array(AppVersion)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5990,7 +5991,7 @@ export interface LfA2aV1SendMessageResponse {
   message?: LfA2aV1Message;
 }
 
-export const LfA2aV1SendMessageResponse: Schema.Schema<LfA2aV1SendMessageResponse> =
+export const LfA2aV1SendMessageResponse: Schema.Codec<LfA2aV1SendMessageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     task: Schema.optional(LfA2aV1Task),
     message: Schema.optional(LfA2aV1Message),
@@ -6003,7 +6004,7 @@ export interface ListConversationsResponse {
   nextPageToken?: string;
 }
 
-export const ListConversationsResponse: Schema.Schema<ListConversationsResponse> =
+export const ListConversationsResponse: Schema.Codec<ListConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversations: Schema.optional(Schema.Array(Conversation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6032,7 +6033,7 @@ export interface GenerateAppResourceRequest {
   evaluationPersonasGenerationConfig?: GenerateAppResourceRequestEvaluationPersonasGenerationConfig;
 }
 
-export const GenerateAppResourceRequest: Schema.Schema<GenerateAppResourceRequest> =
+export const GenerateAppResourceRequest: Schema.Codec<GenerateAppResourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agent: Schema.optional(Agent),
     tool: Schema.optional(Tool),
@@ -6062,7 +6063,7 @@ export const GenerateAppResourceRequest: Schema.Schema<GenerateAppResourceReques
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -6078,7 +6079,7 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
@@ -6095,7 +6096,7 @@ export interface LfA2aV1SendMessageRequest {
   configuration?: LfA2aV1SendMessageConfiguration;
 }
 
-export const LfA2aV1SendMessageRequest: Schema.Schema<LfA2aV1SendMessageRequest> =
+export const LfA2aV1SendMessageRequest: Schema.Codec<LfA2aV1SendMessageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(LfA2aV1Message),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -6109,7 +6110,7 @@ export interface ListEvaluationDatasetsResponse {
   nextPageToken?: string;
 }
 
-export const ListEvaluationDatasetsResponse: Schema.Schema<ListEvaluationDatasetsResponse> =
+export const ListEvaluationDatasetsResponse: Schema.Codec<ListEvaluationDatasetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationDatasets: Schema.optional(Schema.Array(EvaluationDataset)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6132,7 +6133,7 @@ export interface ImportEvaluationsResponse {
   errorMessages?: ReadonlyArray<string>;
 }
 
-export const ImportEvaluationsResponse: Schema.Schema<ImportEvaluationsResponse> =
+export const ImportEvaluationsResponse: Schema.Codec<ImportEvaluationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationResultImportFailureCount: Schema.optional(Schema.Number),
     evaluationRunImportFailureCount: Schema.optional(Schema.Number),
@@ -6152,7 +6153,7 @@ export interface ImportAppRequestImportOptions {
     | (string & {});
 }
 
-export const ImportAppRequestImportOptions: Schema.Schema<ImportAppRequestImportOptions> =
+export const ImportAppRequestImportOptions: Schema.Codec<ImportAppRequestImportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conflictResolutionStrategy: Schema.optional(Schema.String),
   }).annotate({ identifier: "ImportAppRequestImportOptions" });
@@ -6172,7 +6173,7 @@ export interface ImportAppRequest {
   appContent?: string;
 }
 
-export const ImportAppRequest: Schema.Schema<ImportAppRequest> =
+export const ImportAppRequest: Schema.Codec<ImportAppRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsUri: Schema.optional(Schema.String),
     ignoreAppLock: Schema.optional(Schema.Boolean),
@@ -6189,7 +6190,7 @@ export interface ExportEvaluationResultsResponse {
   evaluationResultsContent?: string;
 }
 
-export const ExportEvaluationResultsResponse: Schema.Schema<ExportEvaluationResultsResponse> =
+export const ExportEvaluationResultsResponse: Schema.Codec<ExportEvaluationResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationResultsUri: Schema.optional(Schema.String),
     evaluationResultsContent: Schema.optional(Schema.String),
@@ -6266,7 +6267,7 @@ export const UpdateSecuritySettingsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSecuritySettingsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateSecuritySettingsProjectsLocationsRequest>;
 
 export type UpdateSecuritySettingsProjectsLocationsResponse = SecuritySettings;
 export const UpdateSecuritySettingsProjectsLocationsResponse =
@@ -6302,7 +6303,7 @@ export const GetSecuritySettingsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSecuritySettingsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetSecuritySettingsProjectsLocationsRequest>;
 
 export type GetSecuritySettingsProjectsLocationsResponse = SecuritySettings;
 export const GetSecuritySettingsProjectsLocationsResponse =
@@ -6350,7 +6351,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -6385,7 +6386,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -6419,7 +6420,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -6455,7 +6456,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -6489,7 +6490,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -6539,7 +6540,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -6577,7 +6578,7 @@ export const GetProjectsLocationsAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsRequest>;
 
 export type GetProjectsLocationsAppsResponse = App;
 export const GetProjectsLocationsAppsResponse = /*@__PURE__*/ /*#__PURE__*/ App;
@@ -6617,7 +6618,7 @@ export const ImportEvaluationsProjectsLocationsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportEvaluationsProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<ImportEvaluationsProjectsLocationsAppsRequest>;
 
 export type ImportEvaluationsProjectsLocationsAppsResponse = Operation;
 export const ImportEvaluationsProjectsLocationsAppsResponse =
@@ -6660,7 +6661,7 @@ export const RetrieveToolSchemaProjectsLocationsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveToolSchemaProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<RetrieveToolSchemaProjectsLocationsAppsRequest>;
 
 export type RetrieveToolSchemaProjectsLocationsAppsResponse =
   RetrieveToolSchemaResponse;
@@ -6704,7 +6705,7 @@ export const ImportAppProjectsLocationsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportAppProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<ImportAppProjectsLocationsAppsRequest>;
 
 export type ImportAppProjectsLocationsAppsResponse = Operation;
 export const ImportAppProjectsLocationsAppsResponse =
@@ -6746,7 +6747,7 @@ export const PatchProjectsLocationsAppsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsRequest>;
 
 export type PatchProjectsLocationsAppsResponse = App;
 export const PatchProjectsLocationsAppsResponse =
@@ -6788,7 +6789,7 @@ export const CreateProjectsLocationsAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/apps", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsRequest>;
 
 export type CreateProjectsLocationsAppsResponse = Operation;
 export const CreateProjectsLocationsAppsResponse =
@@ -6831,7 +6832,7 @@ export const TestPersonaVoiceProjectsLocationsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestPersonaVoiceProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<TestPersonaVoiceProjectsLocationsAppsRequest>;
 
 export type TestPersonaVoiceProjectsLocationsAppsResponse =
   TestPersonaVoiceResponse;
@@ -6875,7 +6876,7 @@ export const GenerateAppResourceProjectsLocationsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateAppResourceProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<GenerateAppResourceProjectsLocationsAppsRequest>;
 
 export type GenerateAppResourceProjectsLocationsAppsResponse = Operation;
 export const GenerateAppResourceProjectsLocationsAppsResponse =
@@ -6914,7 +6915,7 @@ export const ExportAppProjectsLocationsAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:exportApp", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExportAppProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<ExportAppProjectsLocationsAppsRequest>;
 
 export type ExportAppProjectsLocationsAppsResponse = Operation;
 export const ExportAppProjectsLocationsAppsResponse =
@@ -6957,7 +6958,7 @@ export const ExecuteToolProjectsLocationsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteToolProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<ExecuteToolProjectsLocationsAppsRequest>;
 
 export type ExecuteToolProjectsLocationsAppsResponse = ExecuteToolResponse;
 export const ExecuteToolProjectsLocationsAppsResponse =
@@ -7000,7 +7001,7 @@ export const RunEvaluationProjectsLocationsAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunEvaluationProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<RunEvaluationProjectsLocationsAppsRequest>;
 
 export type RunEvaluationProjectsLocationsAppsResponse = Operation;
 export const RunEvaluationProjectsLocationsAppsResponse =
@@ -7039,7 +7040,7 @@ export const DeleteProjectsLocationsAppsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsRequest>;
 
 export type DeleteProjectsLocationsAppsResponse = Operation;
 export const DeleteProjectsLocationsAppsResponse =
@@ -7087,7 +7088,7 @@ export const ListProjectsLocationsAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/apps" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsRequest>;
 
 export type ListProjectsLocationsAppsResponse = ListAppsResponse;
 export const ListProjectsLocationsAppsResponse =
@@ -7125,7 +7126,7 @@ export const GetProjectsLocationsAppsEvaluationRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsEvaluationRunsRequest>;
 
 export type GetProjectsLocationsAppsEvaluationRunsResponse = EvaluationRun;
 export const GetProjectsLocationsAppsEvaluationRunsResponse =
@@ -7171,7 +7172,7 @@ export const ListProjectsLocationsAppsEvaluationRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/evaluationRuns" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsEvaluationRunsRequest>;
 
 export type ListProjectsLocationsAppsEvaluationRunsResponse =
   ListEvaluationRunsResponse;
@@ -7217,7 +7218,7 @@ export const ExportProjectsLocationsAppsEvaluationRunsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsAppsEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsAppsEvaluationRunsRequest>;
 
 export type ExportProjectsLocationsAppsEvaluationRunsResponse = Operation;
 export const ExportProjectsLocationsAppsEvaluationRunsResponse =
@@ -7253,7 +7254,7 @@ export const DeleteProjectsLocationsAppsEvaluationRunsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsEvaluationRunsRequest>;
 
 export type DeleteProjectsLocationsAppsEvaluationRunsResponse = Operation;
 export const DeleteProjectsLocationsAppsEvaluationRunsResponse =
@@ -7289,7 +7290,7 @@ export const GetProjectsLocationsAppsToolsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsToolsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsToolsRequest>;
 
 export type GetProjectsLocationsAppsToolsResponse = Tool;
 export const GetProjectsLocationsAppsToolsResponse =
@@ -7329,7 +7330,7 @@ export const PatchProjectsLocationsAppsToolsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsToolsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsToolsRequest>;
 
 export type PatchProjectsLocationsAppsToolsResponse = Tool;
 export const PatchProjectsLocationsAppsToolsResponse =
@@ -7371,7 +7372,7 @@ export const CreateProjectsLocationsAppsToolsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/tools", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsToolsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsToolsRequest>;
 
 export type CreateProjectsLocationsAppsToolsResponse = Tool;
 export const CreateProjectsLocationsAppsToolsResponse =
@@ -7419,7 +7420,7 @@ export const ListProjectsLocationsAppsToolsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/tools" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsToolsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsToolsRequest>;
 
 export type ListProjectsLocationsAppsToolsResponse = ListToolsResponse;
 export const ListProjectsLocationsAppsToolsResponse =
@@ -7463,7 +7464,7 @@ export const DeleteProjectsLocationsAppsToolsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsToolsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsToolsRequest>;
 
 export type DeleteProjectsLocationsAppsToolsResponse = Empty;
 export const DeleteProjectsLocationsAppsToolsResponse =
@@ -7502,7 +7503,7 @@ export const DeleteProjectsLocationsAppsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsDeploymentsRequest>;
 
 export type DeleteProjectsLocationsAppsDeploymentsResponse = Empty;
 export const DeleteProjectsLocationsAppsDeploymentsResponse =
@@ -7547,7 +7548,7 @@ export const ListProjectsLocationsAppsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsDeploymentsRequest>;
 
 export type ListProjectsLocationsAppsDeploymentsResponse =
   ListDeploymentsResponse;
@@ -7598,7 +7599,7 @@ export const CreateProjectsLocationsAppsDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsDeploymentsRequest>;
 
 export type CreateProjectsLocationsAppsDeploymentsResponse = Deployment;
 export const CreateProjectsLocationsAppsDeploymentsResponse =
@@ -7640,7 +7641,7 @@ export const PatchProjectsLocationsAppsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsDeploymentsRequest>;
 
 export type PatchProjectsLocationsAppsDeploymentsResponse = Deployment;
 export const PatchProjectsLocationsAppsDeploymentsResponse =
@@ -7676,7 +7677,7 @@ export const GetProjectsLocationsAppsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsDeploymentsRequest>;
 
 export type GetProjectsLocationsAppsDeploymentsResponse = Deployment;
 export const GetProjectsLocationsAppsDeploymentsResponse =
@@ -7713,7 +7714,7 @@ export const DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest>;
 
 export type DeleteProjectsLocationsAppsScheduledEvaluationRunsResponse = Empty;
 export const DeleteProjectsLocationsAppsScheduledEvaluationRunsResponse =
@@ -7761,7 +7762,7 @@ export const ListProjectsLocationsAppsScheduledEvaluationRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/scheduledEvaluationRuns" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsScheduledEvaluationRunsRequest>;
 
 export type ListProjectsLocationsAppsScheduledEvaluationRunsResponse =
   ListScheduledEvaluationRunsResponse;
@@ -7812,7 +7813,7 @@ export const CreateProjectsLocationsAppsScheduledEvaluationRunsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsScheduledEvaluationRunsRequest>;
 
 export type CreateProjectsLocationsAppsScheduledEvaluationRunsResponse =
   ScheduledEvaluationRun;
@@ -7855,7 +7856,7 @@ export const PatchProjectsLocationsAppsScheduledEvaluationRunsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsScheduledEvaluationRunsRequest>;
 
 export type PatchProjectsLocationsAppsScheduledEvaluationRunsResponse =
   ScheduledEvaluationRun;
@@ -7892,7 +7893,7 @@ export const GetProjectsLocationsAppsScheduledEvaluationRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsScheduledEvaluationRunsRequest>;
 
 export type GetProjectsLocationsAppsScheduledEvaluationRunsResponse =
   ScheduledEvaluationRun;
@@ -7939,7 +7940,7 @@ export const ListProjectsLocationsAppsChangelogsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/changelogs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsChangelogsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsChangelogsRequest>;
 
 export type ListProjectsLocationsAppsChangelogsResponse =
   ListChangelogsResponse;
@@ -7978,7 +7979,7 @@ export const GetProjectsLocationsAppsChangelogsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsChangelogsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsChangelogsRequest>;
 
 export type GetProjectsLocationsAppsChangelogsResponse = Changelog;
 export const GetProjectsLocationsAppsChangelogsResponse =
@@ -8021,7 +8022,7 @@ export const DeleteProjectsLocationsAppsConversationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsConversationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsConversationsRequest>;
 
 export type DeleteProjectsLocationsAppsConversationsResponse = Empty;
 export const DeleteProjectsLocationsAppsConversationsResponse =
@@ -8064,7 +8065,7 @@ export const BatchDeleteProjectsLocationsAppsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteProjectsLocationsAppsConversationsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteProjectsLocationsAppsConversationsRequest>;
 
 export type BatchDeleteProjectsLocationsAppsConversationsResponse = Operation;
 export const BatchDeleteProjectsLocationsAppsConversationsResponse =
@@ -8129,7 +8130,7 @@ export const ListProjectsLocationsAppsConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/conversations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsConversationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsConversationsRequest>;
 
 export type ListProjectsLocationsAppsConversationsResponse =
   ListConversationsResponse;
@@ -8177,7 +8178,7 @@ export const GetProjectsLocationsAppsConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsConversationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsConversationsRequest>;
 
 export type GetProjectsLocationsAppsConversationsResponse = Conversation;
 export const GetProjectsLocationsAppsConversationsResponse =
@@ -8218,7 +8219,7 @@ export const GenerateEvaluationProjectsLocationsAppsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateEvaluationProjectsLocationsAppsConversationsRequest>;
+  ) as unknown as Schema.Codec<GenerateEvaluationProjectsLocationsAppsConversationsRequest>;
 
 export type GenerateEvaluationProjectsLocationsAppsConversationsResponse =
   Operation;
@@ -8267,7 +8268,7 @@ export const CreateProjectsLocationsAppsEvaluationDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsEvaluationDatasetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsEvaluationDatasetsRequest>;
 
 export type CreateProjectsLocationsAppsEvaluationDatasetsResponse =
   EvaluationDataset;
@@ -8304,7 +8305,7 @@ export const GetProjectsLocationsAppsEvaluationDatasetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsEvaluationDatasetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsEvaluationDatasetsRequest>;
 
 export type GetProjectsLocationsAppsEvaluationDatasetsResponse =
   EvaluationDataset;
@@ -8345,7 +8346,7 @@ export const PatchProjectsLocationsAppsEvaluationDatasetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsEvaluationDatasetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsEvaluationDatasetsRequest>;
 
 export type PatchProjectsLocationsAppsEvaluationDatasetsResponse =
   EvaluationDataset;
@@ -8394,7 +8395,7 @@ export const ListProjectsLocationsAppsEvaluationDatasetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/evaluationDatasets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsEvaluationDatasetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsEvaluationDatasetsRequest>;
 
 export type ListProjectsLocationsAppsEvaluationDatasetsResponse =
   ListEvaluationDatasetsResponse;
@@ -8436,7 +8437,7 @@ export const DeleteProjectsLocationsAppsEvaluationDatasetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsEvaluationDatasetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsEvaluationDatasetsRequest>;
 
 export type DeleteProjectsLocationsAppsEvaluationDatasetsResponse = Empty;
 export const DeleteProjectsLocationsAppsEvaluationDatasetsResponse =
@@ -8478,7 +8479,7 @@ export const DeleteProjectsLocationsAppsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsEvaluationsRequest>;
 
 export type DeleteProjectsLocationsAppsEvaluationsResponse = Empty;
 export const DeleteProjectsLocationsAppsEvaluationsResponse =
@@ -8541,7 +8542,7 @@ export const ListProjectsLocationsAppsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/evaluations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsEvaluationsRequest>;
 
 export type ListProjectsLocationsAppsEvaluationsResponse =
   ListEvaluationsResponse;
@@ -8592,7 +8593,7 @@ export const CreateProjectsLocationsAppsEvaluationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsEvaluationsRequest>;
 
 export type CreateProjectsLocationsAppsEvaluationsResponse = Evaluation;
 export const CreateProjectsLocationsAppsEvaluationsResponse =
@@ -8635,7 +8636,7 @@ export const ExportProjectsLocationsAppsEvaluationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsAppsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsAppsEvaluationsRequest>;
 
 export type ExportProjectsLocationsAppsEvaluationsResponse = Operation;
 export const ExportProjectsLocationsAppsEvaluationsResponse =
@@ -8678,7 +8679,7 @@ export const UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest>;
 
 export type UploadEvaluationAudioProjectsLocationsAppsEvaluationsResponse =
   UploadEvaluationAudioResponse;
@@ -8721,7 +8722,7 @@ export const PatchProjectsLocationsAppsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsEvaluationsRequest>;
 
 export type PatchProjectsLocationsAppsEvaluationsResponse = Evaluation;
 export const PatchProjectsLocationsAppsEvaluationsResponse =
@@ -8757,7 +8758,7 @@ export const GetProjectsLocationsAppsEvaluationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsEvaluationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsEvaluationsRequest>;
 
 export type GetProjectsLocationsAppsEvaluationsResponse = Evaluation;
 export const GetProjectsLocationsAppsEvaluationsResponse =
@@ -8803,7 +8804,7 @@ export const ListProjectsLocationsAppsEvaluationsResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/results" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsEvaluationsResultsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsEvaluationsResultsRequest>;
 
 export type ListProjectsLocationsAppsEvaluationsResultsResponse =
   ListEvaluationResultsResponse;
@@ -8849,7 +8850,7 @@ export const ExportProjectsLocationsAppsEvaluationsResultsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsAppsEvaluationsResultsRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsAppsEvaluationsResultsRequest>;
 
 export type ExportProjectsLocationsAppsEvaluationsResultsResponse = Operation;
 export const ExportProjectsLocationsAppsEvaluationsResultsResponse =
@@ -8885,7 +8886,7 @@ export const DeleteProjectsLocationsAppsEvaluationsResultsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsEvaluationsResultsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsEvaluationsResultsRequest>;
 
 export type DeleteProjectsLocationsAppsEvaluationsResultsResponse = Empty;
 export const DeleteProjectsLocationsAppsEvaluationsResultsResponse =
@@ -8921,7 +8922,7 @@ export const GetProjectsLocationsAppsEvaluationsResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsEvaluationsResultsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsEvaluationsResultsRequest>;
 
 export type GetProjectsLocationsAppsEvaluationsResultsResponse =
   EvaluationResult;
@@ -8963,7 +8964,7 @@ export const GenerateChatTokenProjectsLocationsAppsSessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateChatTokenProjectsLocationsAppsSessionsRequest>;
+  ) as unknown as Schema.Codec<GenerateChatTokenProjectsLocationsAppsSessionsRequest>;
 
 export type GenerateChatTokenProjectsLocationsAppsSessionsResponse =
   GenerateChatTokenResponse;
@@ -9007,7 +9008,7 @@ export const RunSessionProjectsLocationsAppsSessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunSessionProjectsLocationsAppsSessionsRequest>;
+  ) as unknown as Schema.Codec<RunSessionProjectsLocationsAppsSessionsRequest>;
 
 export type RunSessionProjectsLocationsAppsSessionsResponse =
   RunSessionResponse;
@@ -9051,7 +9052,7 @@ export const StreamRunSessionProjectsLocationsAppsSessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StreamRunSessionProjectsLocationsAppsSessionsRequest>;
+  ) as unknown as Schema.Codec<StreamRunSessionProjectsLocationsAppsSessionsRequest>;
 
 export type StreamRunSessionProjectsLocationsAppsSessionsResponse =
   RunSessionResponse;
@@ -9098,7 +9099,7 @@ export const CreateProjectsLocationsAppsToolsetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsToolsetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsToolsetsRequest>;
 
 export type CreateProjectsLocationsAppsToolsetsResponse = Toolset;
 export const CreateProjectsLocationsAppsToolsetsResponse =
@@ -9134,7 +9135,7 @@ export const GetProjectsLocationsAppsToolsetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsToolsetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsToolsetsRequest>;
 
 export type GetProjectsLocationsAppsToolsetsResponse = Toolset;
 export const GetProjectsLocationsAppsToolsetsResponse =
@@ -9174,7 +9175,7 @@ export const PatchProjectsLocationsAppsToolsetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsToolsetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsToolsetsRequest>;
 
 export type PatchProjectsLocationsAppsToolsetsResponse = Toolset;
 export const PatchProjectsLocationsAppsToolsetsResponse =
@@ -9222,7 +9223,7 @@ export const ListProjectsLocationsAppsToolsetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/toolsets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsToolsetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsToolsetsRequest>;
 
 export type ListProjectsLocationsAppsToolsetsResponse = ListToolsetsResponse;
 export const ListProjectsLocationsAppsToolsetsResponse =
@@ -9266,7 +9267,7 @@ export const DeleteProjectsLocationsAppsToolsetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsToolsetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsToolsetsRequest>;
 
 export type DeleteProjectsLocationsAppsToolsetsResponse = Empty;
 export const DeleteProjectsLocationsAppsToolsetsResponse =
@@ -9309,7 +9310,7 @@ export const RetrieveToolsProjectsLocationsAppsToolsetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveToolsProjectsLocationsAppsToolsetsRequest>;
+  ) as unknown as Schema.Codec<RetrieveToolsProjectsLocationsAppsToolsetsRequest>;
 
 export type RetrieveToolsProjectsLocationsAppsToolsetsResponse =
   RetrieveToolsResponse;
@@ -9353,7 +9354,7 @@ export const SendProjectsLocationsAppsMessageRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SendProjectsLocationsAppsMessageRequest>;
+  ) as unknown as Schema.Codec<SendProjectsLocationsAppsMessageRequest>;
 
 export type SendProjectsLocationsAppsMessageResponse =
   LfA2aV1SendMessageResponse;
@@ -9402,7 +9403,7 @@ export const CreateProjectsLocationsAppsGuardrailsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsGuardrailsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsGuardrailsRequest>;
 
 export type CreateProjectsLocationsAppsGuardrailsResponse = Guardrail;
 export const CreateProjectsLocationsAppsGuardrailsResponse =
@@ -9438,7 +9439,7 @@ export const GetProjectsLocationsAppsGuardrailsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsGuardrailsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsGuardrailsRequest>;
 
 export type GetProjectsLocationsAppsGuardrailsResponse = Guardrail;
 export const GetProjectsLocationsAppsGuardrailsResponse =
@@ -9478,7 +9479,7 @@ export const PatchProjectsLocationsAppsGuardrailsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsGuardrailsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsGuardrailsRequest>;
 
 export type PatchProjectsLocationsAppsGuardrailsResponse = Guardrail;
 export const PatchProjectsLocationsAppsGuardrailsResponse =
@@ -9526,7 +9527,7 @@ export const ListProjectsLocationsAppsGuardrailsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/guardrails" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsGuardrailsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsGuardrailsRequest>;
 
 export type ListProjectsLocationsAppsGuardrailsResponse =
   ListGuardrailsResponse;
@@ -9571,7 +9572,7 @@ export const DeleteProjectsLocationsAppsGuardrailsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsGuardrailsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsGuardrailsRequest>;
 
 export type DeleteProjectsLocationsAppsGuardrailsResponse = Empty;
 export const DeleteProjectsLocationsAppsGuardrailsResponse =
@@ -9610,7 +9611,7 @@ export const DeleteProjectsLocationsAppsEvaluationExpectationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsEvaluationExpectationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsEvaluationExpectationsRequest>;
 
 export type DeleteProjectsLocationsAppsEvaluationExpectationsResponse = Empty;
 export const DeleteProjectsLocationsAppsEvaluationExpectationsResponse =
@@ -9658,7 +9659,7 @@ export const ListProjectsLocationsAppsEvaluationExpectationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/evaluationExpectations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsEvaluationExpectationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsEvaluationExpectationsRequest>;
 
 export type ListProjectsLocationsAppsEvaluationExpectationsResponse =
   ListEvaluationExpectationsResponse;
@@ -9703,7 +9704,7 @@ export const PatchProjectsLocationsAppsEvaluationExpectationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsEvaluationExpectationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsEvaluationExpectationsRequest>;
 
 export type PatchProjectsLocationsAppsEvaluationExpectationsResponse =
   EvaluationExpectation;
@@ -9740,7 +9741,7 @@ export const GetProjectsLocationsAppsEvaluationExpectationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsEvaluationExpectationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsEvaluationExpectationsRequest>;
 
 export type GetProjectsLocationsAppsEvaluationExpectationsResponse =
   EvaluationExpectation;
@@ -9787,7 +9788,7 @@ export const CreateProjectsLocationsAppsEvaluationExpectationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsEvaluationExpectationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsEvaluationExpectationsRequest>;
 
 export type CreateProjectsLocationsAppsEvaluationExpectationsResponse =
   EvaluationExpectation;
@@ -9834,7 +9835,7 @@ export const CreateProjectsLocationsAppsExamplesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsExamplesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsExamplesRequest>;
 
 export type CreateProjectsLocationsAppsExamplesResponse = Example;
 export const CreateProjectsLocationsAppsExamplesResponse =
@@ -9876,7 +9877,7 @@ export const PatchProjectsLocationsAppsExamplesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsExamplesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsExamplesRequest>;
 
 export type PatchProjectsLocationsAppsExamplesResponse = Example;
 export const PatchProjectsLocationsAppsExamplesResponse =
@@ -9912,7 +9913,7 @@ export const GetProjectsLocationsAppsExamplesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsExamplesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsExamplesRequest>;
 
 export type GetProjectsLocationsAppsExamplesResponse = Example;
 export const GetProjectsLocationsAppsExamplesResponse =
@@ -9949,7 +9950,7 @@ export const DeleteProjectsLocationsAppsExamplesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsExamplesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsExamplesRequest>;
 
 export type DeleteProjectsLocationsAppsExamplesResponse = Empty;
 export const DeleteProjectsLocationsAppsExamplesResponse =
@@ -9997,7 +9998,7 @@ export const ListProjectsLocationsAppsExamplesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/examples" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsExamplesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsExamplesRequest>;
 
 export type ListProjectsLocationsAppsExamplesResponse = ListExamplesResponse;
 export const ListProjectsLocationsAppsExamplesResponse =
@@ -10038,7 +10039,7 @@ export const DeleteProjectsLocationsAppsVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsVersionsRequest>;
 
 export type DeleteProjectsLocationsAppsVersionsResponse = Empty;
 export const DeleteProjectsLocationsAppsVersionsResponse =
@@ -10086,7 +10087,7 @@ export const ListProjectsLocationsAppsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsVersionsRequest>;
 
 export type ListProjectsLocationsAppsVersionsResponse = ListAppVersionsResponse;
 export const ListProjectsLocationsAppsVersionsResponse =
@@ -10124,7 +10125,7 @@ export const GetProjectsLocationsAppsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsVersionsRequest>;
 
 export type GetProjectsLocationsAppsVersionsResponse = AppVersion;
 export const GetProjectsLocationsAppsVersionsResponse =
@@ -10161,7 +10162,7 @@ export const RestoreProjectsLocationsAppsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:restore", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RestoreProjectsLocationsAppsVersionsRequest>;
+  ) as unknown as Schema.Codec<RestoreProjectsLocationsAppsVersionsRequest>;
 
 export type RestoreProjectsLocationsAppsVersionsResponse = Operation;
 export const RestoreProjectsLocationsAppsVersionsResponse =
@@ -10209,7 +10210,7 @@ export const CreateProjectsLocationsAppsVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsVersionsRequest>;
 
 export type CreateProjectsLocationsAppsVersionsResponse = AppVersion;
 export const CreateProjectsLocationsAppsVersionsResponse =
@@ -10251,7 +10252,7 @@ export const CreateProjectsLocationsAppsAgentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/agents", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsAgentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsAgentsRequest>;
 
 export type CreateProjectsLocationsAppsAgentsResponse = Agent;
 export const CreateProjectsLocationsAppsAgentsResponse =
@@ -10293,7 +10294,7 @@ export const PatchProjectsLocationsAppsAgentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppsAgentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppsAgentsRequest>;
 
 export type PatchProjectsLocationsAppsAgentsResponse = Agent;
 export const PatchProjectsLocationsAppsAgentsResponse =
@@ -10329,7 +10330,7 @@ export const GetProjectsLocationsAppsAgentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppsAgentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppsAgentsRequest>;
 
 export type GetProjectsLocationsAppsAgentsResponse = Agent;
 export const GetProjectsLocationsAppsAgentsResponse =
@@ -10369,7 +10370,7 @@ export const DeleteProjectsLocationsAppsAgentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsAgentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppsAgentsRequest>;
 
 export type DeleteProjectsLocationsAppsAgentsResponse = Empty;
 export const DeleteProjectsLocationsAppsAgentsResponse =
@@ -10417,7 +10418,7 @@ export const ListProjectsLocationsAppsAgentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/agents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppsAgentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppsAgentsRequest>;
 
 export type ListProjectsLocationsAppsAgentsResponse = ListAgentsResponse;
 export const ListProjectsLocationsAppsAgentsResponse =

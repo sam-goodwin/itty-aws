@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface IntegrationsGithubTeamsRetrieveInput {
+  id: number;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const IntegrationsGithubTeamsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -15,11 +22,13 @@ export const IntegrationsGithubTeamsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/github_teams/",
     }),
-  );
-export type IntegrationsGithubTeamsRetrieveInput =
-  typeof IntegrationsGithubTeamsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGithubTeamsRetrieveInput>;
 
 // Output Schema
+export interface IntegrationsGithubTeamsRetrieveOutput {
+  teams: { id: number; slug: string; name: string }[];
+  has_more: boolean;
+}
 export const IntegrationsGithubTeamsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     teams: Schema.Array(
@@ -30,9 +39,7 @@ export const IntegrationsGithubTeamsRetrieveOutput =
       }),
     ),
     has_more: Schema.Boolean,
-  });
-export type IntegrationsGithubTeamsRetrieveOutput =
-  typeof IntegrationsGithubTeamsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsGithubTeamsRetrieveOutput>;
 
 // The operation
 /**

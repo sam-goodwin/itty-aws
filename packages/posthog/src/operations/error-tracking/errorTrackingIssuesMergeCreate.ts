@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingIssuesMergeCreateInput {
+  id: string;
+  project_id: string;
+  ids?: string[];
+}
 export const ErrorTrackingIssuesMergeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,17 +18,16 @@ export const ErrorTrackingIssuesMergeCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/issues/{id}/merge/",
     }),
-  );
-export type ErrorTrackingIssuesMergeCreateInput =
-  typeof ErrorTrackingIssuesMergeCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingIssuesMergeCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingIssuesMergeCreateOutput {
+  success?: boolean;
+}
 export const ErrorTrackingIssuesMergeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
-  });
-export type ErrorTrackingIssuesMergeCreateOutput =
-  typeof ErrorTrackingIssuesMergeCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingIssuesMergeCreateOutput>;
 
 // The operation
 /**

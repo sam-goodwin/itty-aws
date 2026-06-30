@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeGapSuggestionsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  ticket_id?: string;
+}
 export const BusinessKnowledgeGapSuggestionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,25 @@ export const BusinessKnowledgeGapSuggestionsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/business_knowledge/gap_suggestions/",
     }),
-  );
-export type BusinessKnowledgeGapSuggestionsListInput =
-  typeof BusinessKnowledgeGapSuggestionsListInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeGapSuggestionsListInput>;
 
 // Output Schema
+export interface BusinessKnowledgeGapSuggestionsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    ticket_id: string;
+    topic: string;
+    normalized_topic: string;
+    ticket_type: string;
+    outcome: string;
+    status: string;
+    resolved_source_id: string | null;
+    created_at: string;
+  }[];
+}
 export const BusinessKnowledgeGapSuggestionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -37,9 +57,7 @@ export const BusinessKnowledgeGapSuggestionsListOutput =
         created_at: Schema.String,
       }),
     ),
-  });
-export type BusinessKnowledgeGapSuggestionsListOutput =
-  typeof BusinessKnowledgeGapSuggestionsListOutput.Type;
+  }) as unknown as Schema.Codec<BusinessKnowledgeGapSuggestionsListOutput>;
 
 // The operation
 /**

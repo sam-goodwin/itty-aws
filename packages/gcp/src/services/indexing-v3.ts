@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface UrlNotification {
   url?: string;
 }
 
-export const UrlNotification: Schema.Schema<UrlNotification> =
+export const UrlNotification: Schema.Codec<UrlNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notifyTime: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface UrlNotificationMetadata {
   latestRemove?: UrlNotification;
 }
 
-export const UrlNotificationMetadata: Schema.Schema<UrlNotificationMetadata> =
+export const UrlNotificationMetadata: Schema.Codec<UrlNotificationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latestUpdate: Schema.optional(UrlNotification),
     url: Schema.optional(Schema.String),
@@ -63,7 +63,7 @@ export interface PublishUrlNotificationResponse {
   urlNotificationMetadata?: UrlNotificationMetadata;
 }
 
-export const PublishUrlNotificationResponse: Schema.Schema<PublishUrlNotificationResponse> =
+export const PublishUrlNotificationResponse: Schema.Codec<PublishUrlNotificationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlNotificationMetadata: Schema.optional(UrlNotificationMetadata),
   }).annotate({ identifier: "PublishUrlNotificationResponse" });
@@ -137,7 +137,7 @@ export const PublishUrlNotificationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PublishUrlNotificationsRequest>;
+  ) as unknown as Schema.Codec<PublishUrlNotificationsRequest>;
 
 export type PublishUrlNotificationsResponse = PublishUrlNotificationResponse;
 export const PublishUrlNotificationsResponse =
@@ -173,7 +173,7 @@ export const GetMetadataUrlNotificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/urlNotifications/metadata" }),
     svc,
-  ) as unknown as Schema.Schema<GetMetadataUrlNotificationsRequest>;
+  ) as unknown as Schema.Codec<GetMetadataUrlNotificationsRequest>;
 
 export type GetMetadataUrlNotificationsResponse = UrlNotificationMetadata;
 export const GetMetadataUrlNotificationsResponse =

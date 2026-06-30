@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetApplePayDomainsDomainInput {
+  domain: string;
+  expand?: string;
+}
 export const GetApplePayDomainsDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,16 @@ export const GetApplePayDomainsDomainInput =
       path: "/v1/apple_pay/domains/{domain}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetApplePayDomainsDomainInput =
-  typeof GetApplePayDomainsDomainInput.Type;
+  ) as unknown as Schema.Codec<GetApplePayDomainsDomainInput>;
 
 // Output Schema
+export interface GetApplePayDomainsDomainOutput {
+  created: number;
+  domain_name: string;
+  id: string;
+  livemode: boolean;
+  object: "apple_pay_domain";
+}
 export const GetApplePayDomainsDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -25,9 +34,7 @@ export const GetApplePayDomainsDomainOutput =
     id: Schema.String,
     livemode: Schema.Boolean,
     object: Schema.Literals(["apple_pay_domain"]),
-  });
-export type GetApplePayDomainsDomainOutput =
-  typeof GetApplePayDomainsDomainOutput.Type;
+  }) as unknown as Schema.Codec<GetApplePayDomainsDomainOutput>;
 
 // The operation
 /**

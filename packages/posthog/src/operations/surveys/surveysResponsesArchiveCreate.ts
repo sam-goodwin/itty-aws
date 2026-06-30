@@ -4,6 +4,107 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SurveysResponsesArchiveCreateInput {
+  id: string;
+  project_id: string;
+  response_uuid: string;
+  name?: string;
+  description?: string;
+  type?: "popover" | "widget" | "external_survey" | "api";
+  schedule?: string | null;
+  linked_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  linked_flag_id?: number | null;
+  linked_insight_id?: number | null;
+  targeting_flag_id?: number;
+  targeting_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  internal_targeting_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  targeting_flag_filters?: unknown;
+  remove_targeting_flag?: boolean | null;
+  questions?: unknown;
+  conditions?: unknown;
+  appearance?: unknown;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  start_date?: string | null;
+  end_date?: string | null;
+  archived?: boolean;
+  responses_limit?: number | null;
+  iteration_count?: number | null;
+  iteration_frequency_days?: number | null;
+  iteration_start_dates?: (string | null)[] | null;
+  current_iteration?: number | null;
+  current_iteration_start_date?: string | null;
+  response_sampling_start_date?: string | null;
+  response_sampling_interval_type?: "day" | "week" | "month" | "" | null;
+  response_sampling_interval?: number | null;
+  response_sampling_limit?: number | null;
+  response_sampling_daily_limits?: unknown;
+  enable_partial_responses?: boolean | null;
+  enable_iframe_embedding?: boolean | null;
+  base_language?: string;
+  translations?: unknown;
+  _create_in_folder?: string;
+  form_content?: unknown;
+}
 export const SurveysResponsesArchiveCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -28,8 +129,22 @@ export const SurveysResponsesArchiveCreateInput =
           Schema.NullOr(Schema.Boolean),
         ),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -49,8 +164,22 @@ export const SurveysResponsesArchiveCreateInput =
           Schema.NullOr(Schema.Boolean),
         ),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -67,8 +196,22 @@ export const SurveysResponsesArchiveCreateInput =
           Schema.NullOr(Schema.Boolean),
         ),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -91,7 +234,23 @@ export const SurveysResponsesArchiveCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -107,7 +266,14 @@ export const SurveysResponsesArchiveCreateInput =
     current_iteration: Schema.optional(Schema.NullOr(Schema.Number)),
     current_iteration_start_date: Schema.optional(Schema.NullOr(Schema.String)),
     response_sampling_start_date: Schema.optional(Schema.NullOr(Schema.String)),
-    response_sampling_interval_type: Schema.optional(Schema.Unknown),
+    response_sampling_interval_type: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["day", "week", "month"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     response_sampling_interval: Schema.optional(Schema.NullOr(Schema.Number)),
     response_sampling_limit: Schema.optional(Schema.NullOr(Schema.Number)),
     response_sampling_daily_limits: Schema.optional(Schema.Unknown),
@@ -122,15 +288,12 @@ export const SurveysResponsesArchiveCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/surveys/{id}/responses/{response_uuid}/archive/",
     }),
-  );
-export type SurveysResponsesArchiveCreateInput =
-  typeof SurveysResponsesArchiveCreateInput.Type;
+  ) as unknown as Schema.Codec<SurveysResponsesArchiveCreateInput>;
 
 // Output Schema
+export type SurveysResponsesArchiveCreateOutput = void;
 export const SurveysResponsesArchiveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SurveysResponsesArchiveCreateOutput =
-  typeof SurveysResponsesArchiveCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysResponsesArchiveCreateOutput>;
 
 // The operation
 /**

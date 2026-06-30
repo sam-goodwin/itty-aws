@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentFleetLiveSessionsInput {
+  project_id: string;
+  limit?: number;
+}
 export const AgentFleetLiveSessionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,46 @@ export const AgentFleetLiveSessionsInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_fleet/live_sessions/",
     }),
-  );
-export type AgentFleetLiveSessionsInput =
-  typeof AgentFleetLiveSessionsInput.Type;
+  ) as unknown as Schema.Codec<AgentFleetLiveSessionsInput>;
 
 // Output Schema
+export interface AgentFleetLiveSessionsOutput {
+  results: {
+    usage_total: {
+      tokens_in: number;
+      tokens_out: number;
+      cache_read: number;
+      cache_write: number;
+      cost_input: number;
+      cost_output: number;
+      cost_cache_read: number;
+      cost_cache_write: number;
+      cost_total: number;
+    };
+    principal: {
+      kind: "anonymous" | "service" | "internal" | "shared_secret" | "slack";
+      id?: string;
+      team_id?: number;
+    } | null;
+    id: string;
+    application_id: string;
+    revision_id: string;
+    team_id: number;
+    state:
+      | "queued"
+      | "running"
+      | "completed"
+      | "closed"
+      | "cancelled"
+      | "failed";
+    external_key: string | null;
+    trigger_metadata?: Record<string, unknown> | null;
+    turns: number;
+    preview: string | null;
+    created_at: string;
+    updated_at: string;
+  }[];
+}
 export const AgentFleetLiveSessionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -32,7 +71,19 @@ export const AgentFleetLiveSessionsOutput =
           cost_cache_write: Schema.Number,
           cost_total: Schema.Number,
         }),
-        principal: Schema.Unknown,
+        principal: Schema.NullOr(
+          Schema.Struct({
+            kind: Schema.Literals([
+              "anonymous",
+              "service",
+              "internal",
+              "shared_secret",
+              "slack",
+            ]),
+            id: Schema.optional(Schema.String),
+            team_id: Schema.optional(Schema.Number),
+          }),
+        ),
         id: Schema.String,
         application_id: Schema.String,
         revision_id: Schema.String,
@@ -55,9 +106,7 @@ export const AgentFleetLiveSessionsOutput =
         updated_at: Schema.String,
       }),
     ),
-  });
-export type AgentFleetLiveSessionsOutput =
-  typeof AgentFleetLiveSessionsOutput.Type;
+  }) as unknown as Schema.Codec<AgentFleetLiveSessionsOutput>;
 
 // The operation
 /**

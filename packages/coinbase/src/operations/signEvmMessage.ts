@@ -3,19 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignEvmMessageInput {
+  address: string;
+  message: string;
+}
 export const SignEvmMessageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
   message: Schema.String,
 }).pipe(
   T.Http({ method: "POST", path: "/v2/evm/accounts/{address}/sign/message" }),
-);
-export type SignEvmMessageInput = typeof SignEvmMessageInput.Type;
+) as unknown as Schema.Codec<SignEvmMessageInput>;
 
 // Output Schema
+export interface SignEvmMessageOutput {
+  signature: string;
+}
 export const SignEvmMessageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   signature: Schema.String,
-});
-export type SignEvmMessageOutput = typeof SignEvmMessageOutput.Type;
+}) as unknown as Schema.Codec<SignEvmMessageOutput>;
 
 // The operation
 /**

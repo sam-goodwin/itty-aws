@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AzureLargeInstanceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureLargeInstanceName: string;
+}
 export const AzureLargeInstanceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20,10 +25,22 @@ export const AzureLargeInstanceGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeInstanceGetInput = typeof AzureLargeInstanceGetInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeInstanceGetInput>;
 
 // Output Schema
+export interface AzureLargeInstanceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureLargeInstanceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -43,9 +60,7 @@ export const AzureLargeInstanceGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureLargeInstanceGetOutput =
-  typeof AzureLargeInstanceGetOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeInstanceGetOutput>;
 
 // The operation
 /**
@@ -64,6 +79,10 @@ export const AzureLargeInstanceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AzureLargeInstanceListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AzureLargeInstanceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -74,11 +93,25 @@ export const AzureLargeInstanceListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeInstanceListByResourceGroupInput =
-  typeof AzureLargeInstanceListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeInstanceListByResourceGroupInput>;
 
 // Output Schema
+export interface AzureLargeInstanceListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AzureLargeInstanceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -113,9 +146,7 @@ export const AzureLargeInstanceListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureLargeInstanceListByResourceGroupOutput =
-  typeof AzureLargeInstanceListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeInstanceListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -132,6 +163,9 @@ export const AzureLargeInstanceListByResourceGroup =
     outputSchema: AzureLargeInstanceListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AzureLargeInstanceListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AzureLargeInstanceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -141,11 +175,25 @@ export const AzureLargeInstanceListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureLargeInstance/azureLargeInstances",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeInstanceListBySubscriptionInput =
-  typeof AzureLargeInstanceListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeInstanceListBySubscriptionInput>;
 
 // Output Schema
+export interface AzureLargeInstanceListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AzureLargeInstanceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -180,9 +228,7 @@ export const AzureLargeInstanceListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureLargeInstanceListBySubscriptionOutput =
-  typeof AzureLargeInstanceListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeInstanceListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -198,6 +244,12 @@ export const AzureLargeInstanceListBySubscription =
     outputSchema: AzureLargeInstanceListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AzureLargeInstanceRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureLargeInstanceName: string;
+  forceState?: "active" | "inactive";
+}
 export const AzureLargeInstanceRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -210,11 +262,42 @@ export const AzureLargeInstanceRestartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/restart",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeInstanceRestartInput =
-  typeof AzureLargeInstanceRestartInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeInstanceRestartInput>;
 
 // Output Schema
+export interface AzureLargeInstanceRestartOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const AzureLargeInstanceRestartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -270,9 +353,7 @@ export const AzureLargeInstanceRestartOutput =
         ),
       }),
     ),
-  });
-export type AzureLargeInstanceRestartOutput =
-  typeof AzureLargeInstanceRestartOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeInstanceRestartOutput>;
 
 // The operation
 /**
@@ -290,6 +371,11 @@ export const AzureLargeInstanceRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AzureLargeInstanceShutdownInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureLargeInstanceName: string;
+}
 export const AzureLargeInstanceShutdownInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -301,11 +387,42 @@ export const AzureLargeInstanceShutdownInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/shutdown",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeInstanceShutdownInput =
-  typeof AzureLargeInstanceShutdownInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeInstanceShutdownInput>;
 
 // Output Schema
+export interface AzureLargeInstanceShutdownOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const AzureLargeInstanceShutdownOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -361,9 +478,7 @@ export const AzureLargeInstanceShutdownOutput =
         ),
       }),
     ),
-  });
-export type AzureLargeInstanceShutdownOutput =
-  typeof AzureLargeInstanceShutdownOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeInstanceShutdownOutput>;
 
 // The operation
 /**
@@ -381,6 +496,11 @@ export const AzureLargeInstanceShutdown = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AzureLargeInstanceStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureLargeInstanceName: string;
+}
 export const AzureLargeInstanceStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -392,11 +512,42 @@ export const AzureLargeInstanceStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}/start",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeInstanceStartInput =
-  typeof AzureLargeInstanceStartInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeInstanceStartInput>;
 
 // Output Schema
+export interface AzureLargeInstanceStartOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const AzureLargeInstanceStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -452,9 +603,7 @@ export const AzureLargeInstanceStartOutput =
         ),
       }),
     ),
-  });
-export type AzureLargeInstanceStartOutput =
-  typeof AzureLargeInstanceStartOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeInstanceStartOutput>;
 
 // The operation
 /**
@@ -472,6 +621,12 @@ export const AzureLargeInstanceStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AzureLargeInstanceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureLargeInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const AzureLargeInstanceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -484,11 +639,22 @@ export const AzureLargeInstanceUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeInstanceUpdateInput =
-  typeof AzureLargeInstanceUpdateInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeInstanceUpdateInput>;
 
 // Output Schema
+export interface AzureLargeInstanceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureLargeInstanceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -508,9 +674,7 @@ export const AzureLargeInstanceUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureLargeInstanceUpdateOutput =
-  typeof AzureLargeInstanceUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeInstanceUpdateOutput>;
 
 // The operation
 /**
@@ -529,6 +693,11 @@ export const AzureLargeInstanceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AzureLargeStorageInstanceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureLargeStorageInstanceName: string;
+}
 export const AzureLargeStorageInstanceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -540,11 +709,22 @@ export const AzureLargeStorageInstanceGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeStorageInstanceGetInput =
-  typeof AzureLargeStorageInstanceGetInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeStorageInstanceGetInput>;
 
 // Output Schema
+export interface AzureLargeStorageInstanceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureLargeStorageInstanceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -564,9 +744,7 @@ export const AzureLargeStorageInstanceGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureLargeStorageInstanceGetOutput =
-  typeof AzureLargeStorageInstanceGetOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeStorageInstanceGetOutput>;
 
 // The operation
 /**
@@ -584,6 +762,10 @@ export const AzureLargeStorageInstanceGet =
     outputSchema: AzureLargeStorageInstanceGetOutput,
   }));
 // Input Schema
+export interface AzureLargeStorageInstanceListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AzureLargeStorageInstanceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -594,11 +776,25 @@ export const AzureLargeStorageInstanceListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeStorageInstanceListByResourceGroupInput =
-  typeof AzureLargeStorageInstanceListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeStorageInstanceListByResourceGroupInput>;
 
 // Output Schema
+export interface AzureLargeStorageInstanceListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AzureLargeStorageInstanceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -633,9 +829,7 @@ export const AzureLargeStorageInstanceListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureLargeStorageInstanceListByResourceGroupOutput =
-  typeof AzureLargeStorageInstanceListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeStorageInstanceListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -653,6 +847,9 @@ export const AzureLargeStorageInstanceListByResourceGroup =
     outputSchema: AzureLargeStorageInstanceListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AzureLargeStorageInstanceListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AzureLargeStorageInstanceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -662,11 +859,25 @@ export const AzureLargeStorageInstanceListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeStorageInstanceListBySubscriptionInput =
-  typeof AzureLargeStorageInstanceListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeStorageInstanceListBySubscriptionInput>;
 
 // Output Schema
+export interface AzureLargeStorageInstanceListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AzureLargeStorageInstanceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -701,9 +912,7 @@ export const AzureLargeStorageInstanceListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureLargeStorageInstanceListBySubscriptionOutput =
-  typeof AzureLargeStorageInstanceListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeStorageInstanceListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -719,6 +928,12 @@ export const AzureLargeStorageInstanceListBySubscription =
     outputSchema: AzureLargeStorageInstanceListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AzureLargeStorageInstanceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureLargeStorageInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const AzureLargeStorageInstanceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -731,11 +946,22 @@ export const AzureLargeStorageInstanceUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
       apiVersion: "2024-04-10",
     }),
-  );
-export type AzureLargeStorageInstanceUpdateInput =
-  typeof AzureLargeStorageInstanceUpdateInput.Type;
+  ) as unknown as Schema.Codec<AzureLargeStorageInstanceUpdateInput>;
 
 // Output Schema
+export interface AzureLargeStorageInstanceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureLargeStorageInstanceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -755,9 +981,7 @@ export const AzureLargeStorageInstanceUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureLargeStorageInstanceUpdateOutput =
-  typeof AzureLargeStorageInstanceUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AzureLargeStorageInstanceUpdateOutput>;
 
 // The operation
 /**
@@ -775,6 +999,7 @@ export const AzureLargeStorageInstanceUpdate =
     outputSchema: AzureLargeStorageInstanceUpdateOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -783,10 +1008,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AzureLargeInstance/operations",
     apiVersion: "2024-04-10",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -809,8 +1048,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

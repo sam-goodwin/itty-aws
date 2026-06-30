@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsReportArtefactsDiffInput {
+  id: string;
+  project_id: string;
+  report_id: string;
+}
 export const SignalsReportArtefactsDiffInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,18 +19,18 @@ export const SignalsReportArtefactsDiffInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/reports/{report_id}/artefacts/{id}/diff/",
     }),
-  );
-export type SignalsReportArtefactsDiffInput =
-  typeof SignalsReportArtefactsDiffInput.Type;
+  ) as unknown as Schema.Codec<SignalsReportArtefactsDiffInput>;
 
 // Output Schema
+export interface SignalsReportArtefactsDiffOutput {
+  diff: string;
+  truncated: boolean;
+}
 export const SignalsReportArtefactsDiffOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diff: Schema.String,
     truncated: Schema.Boolean,
-  });
-export type SignalsReportArtefactsDiffOutput =
-  typeof SignalsReportArtefactsDiffOutput.Type;
+  }) as unknown as Schema.Codec<SignalsReportArtefactsDiffOutput>;
 
 // The operation
 /**

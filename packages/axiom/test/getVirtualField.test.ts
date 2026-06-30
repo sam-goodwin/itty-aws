@@ -28,7 +28,7 @@ describe("getVirtualField", () => {
           name: fieldName,
           description: "getVirtualField happy path",
           expression: "1 + 1",
-        } as unknown as Record<string, never>);
+        });
         createdId = created.id;
 
         const fetched = yield* getVirtualField({ id: created.id });
@@ -52,7 +52,7 @@ describe("getVirtualField", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -64,6 +64,6 @@ describe("getVirtualField", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

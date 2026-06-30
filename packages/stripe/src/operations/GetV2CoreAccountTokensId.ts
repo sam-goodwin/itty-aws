@@ -3,14 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV2CoreAccountTokensIdInput {
+  id: string;
+}
 export const GetV2CoreAccountTokensIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v2/core/account_tokens/{id}" }));
-export type GetV2CoreAccountTokensIdInput =
-  typeof GetV2CoreAccountTokensIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v2/core/account_tokens/{id}" }),
+  ) as unknown as Schema.Codec<GetV2CoreAccountTokensIdInput>;
 
 // Output Schema
+export interface GetV2CoreAccountTokensIdOutput {
+  created: string;
+  expires_at: string;
+  id: string;
+  livemode: boolean;
+  object: "v2.core.account_token";
+  used: boolean;
+}
 export const GetV2CoreAccountTokensIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.String,
@@ -19,9 +30,7 @@ export const GetV2CoreAccountTokensIdOutput =
     livemode: Schema.Boolean,
     object: Schema.Literals(["v2.core.account_token"]),
     used: Schema.Boolean,
-  });
-export type GetV2CoreAccountTokensIdOutput =
-  typeof GetV2CoreAccountTokensIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV2CoreAccountTokensIdOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupLogIntegrationInput {
+  groupId: string;
+  id: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupLogIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const GetGroupLogIntegrationInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
     }),
-  );
-export type GetGroupLogIntegrationInput =
-  typeof GetGroupLogIntegrationInput.Type;
+  ) as unknown as Schema.Codec<GetGroupLogIntegrationInput>;
 
 // Output Schema
+export type GetGroupLogIntegrationOutput = void;
 export const GetGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupLogIntegrationOutput =
-  typeof GetGroupLogIntegrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupLogIntegrationOutput>;
 
 // The operation
 /**

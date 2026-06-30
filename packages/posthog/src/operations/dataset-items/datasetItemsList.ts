@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DatasetItemsListInput {
+  project_id: string;
+  dataset?: string;
+  limit?: number;
+  offset?: number;
+}
 export const DatasetItemsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   dataset: Schema.optional(Schema.String),
@@ -11,10 +17,49 @@ export const DatasetItemsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   offset: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/dataset_items/" }),
-);
-export type DatasetItemsListInput = typeof DatasetItemsListInput.Type;
+) as unknown as Schema.Codec<DatasetItemsListInput>;
 
 // Output Schema
+export interface DatasetItemsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    dataset?: string;
+    input?: unknown;
+    output?: unknown;
+    metadata?: unknown;
+    ref_trace_id?: string | null;
+    ref_timestamp?: string | null;
+    ref_source_id?: string | null;
+    deleted?: boolean | null;
+    created_at?: string;
+    updated_at?: string | null;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    team?: number;
+  }[];
+}
 export const DatasetItemsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     count: Schema.optional(Schema.Number),
@@ -49,7 +94,23 @@ export const DatasetItemsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -58,8 +119,7 @@ export const DatasetItemsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type DatasetItemsListOutput = typeof DatasetItemsListOutput.Type;
+) as unknown as Schema.Codec<DatasetItemsListOutput>;
 
 // The operation
 /**

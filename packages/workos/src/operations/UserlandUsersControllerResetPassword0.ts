@@ -8,19 +8,40 @@ import {
   UnprocessableEntity,
 } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface UserlandUsersControllerResetPassword0Input {
+  token?: string;
+  new_password?: string | Redacted.Redacted<string>;
+}
 export const UserlandUsersControllerResetPassword0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     new_password: Schema.optional(SensitiveString),
   }).pipe(
     T.Http({ method: "POST", path: "/user_management/password_reset/confirm" }),
-  );
-export type UserlandUsersControllerResetPassword0Input =
-  typeof UserlandUsersControllerResetPassword0Input.Type;
+  ) as unknown as Schema.Codec<UserlandUsersControllerResetPassword0Input>;
 
 // Output Schema
+export interface UserlandUsersControllerResetPassword0Output {
+  user?: {
+    object?: string;
+    id?: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    profile_picture_url?: string | null;
+    email?: string;
+    email_verified?: boolean;
+    external_id?: string | null;
+    metadata?: Record<string, string>;
+    last_sign_in_at?: string | null;
+    locale?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  };
+}
 export const UserlandUsersControllerResetPassword0Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(
@@ -41,9 +62,7 @@ export const UserlandUsersControllerResetPassword0Output =
         updated_at: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UserlandUsersControllerResetPassword0Output =
-  typeof UserlandUsersControllerResetPassword0Output.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerResetPassword0Output>;
 
 // The operation
 /**

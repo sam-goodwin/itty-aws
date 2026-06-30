@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationControllerListEffectivePermissionsByExternalIdInput {
+  organization_membership_id: string;
+  resource_type_slug: string;
+  external_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const AuthorizationControllerListEffectivePermissionsByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +27,24 @@ export const AuthorizationControllerListEffectivePermissionsByExternalIdInput =
       method: "GET",
       path: "/authorization/organization_memberships/{organization_membership_id}/resources/{resource_type_slug}/{external_id}/permissions",
     }),
-  );
-export type AuthorizationControllerListEffectivePermissionsByExternalIdInput =
-  typeof AuthorizationControllerListEffectivePermissionsByExternalIdInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationControllerListEffectivePermissionsByExternalIdInput>;
 
 // Output Schema
+export interface AuthorizationControllerListEffectivePermissionsByExternalIdOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    slug?: string;
+    name?: string;
+    description?: string | null;
+    system?: boolean;
+    resource_type_slug?: string;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const AuthorizationControllerListEffectivePermissionsByExternalIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -47,9 +69,7 @@ export const AuthorizationControllerListEffectivePermissionsByExternalIdOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AuthorizationControllerListEffectivePermissionsByExternalIdOutput =
-  typeof AuthorizationControllerListEffectivePermissionsByExternalIdOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationControllerListEffectivePermissionsByExternalIdOutput>;
 
 // The operation
 /**

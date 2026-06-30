@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupActivityFeedInput {
+  groupId: string;
+  pretty?: boolean;
+  eventType?: string;
+  maxDate?: string;
+  minDate?: string;
+  clusterName?: string;
+}
 export const GetGroupActivityFeedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,13 +25,12 @@ export const GetGroupActivityFeedInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/activityFeed",
     }),
-  );
-export type GetGroupActivityFeedInput = typeof GetGroupActivityFeedInput.Type;
+  ) as unknown as Schema.Codec<GetGroupActivityFeedInput>;
 
 // Output Schema
+export type GetGroupActivityFeedOutput = void;
 export const GetGroupActivityFeedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupActivityFeedOutput = typeof GetGroupActivityFeedOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupActivityFeedOutput>;
 
 // The operation
 /**

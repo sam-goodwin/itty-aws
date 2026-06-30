@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetClimateSuppliersInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetClimateSuppliersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
@@ -15,10 +21,33 @@ export const GetClimateSuppliersInput =
       path: "/v1/climate/suppliers",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetClimateSuppliersInput = typeof GetClimateSuppliersInput.Type;
+  ) as unknown as Schema.Codec<GetClimateSuppliersInput>;
 
 // Output Schema
+export interface GetClimateSuppliersOutput {
+  data: {
+    id: string;
+    info_url: string;
+    livemode: boolean;
+    locations: {
+      city: string | null;
+      country: string;
+      latitude: number | null;
+      longitude: number | null;
+      region: string | null;
+    }[];
+    name: string;
+    object: "climate.supplier";
+    removal_pathway:
+      | "biomass_carbon_removal_and_storage"
+      | "direct_air_capture"
+      | "enhanced_weathering"
+      | "marine_carbon_removal";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetClimateSuppliersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -48,8 +77,7 @@ export const GetClimateSuppliersOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetClimateSuppliersOutput = typeof GetClimateSuppliersOutput.Type;
+  }) as unknown as Schema.Codec<GetClimateSuppliersOutput>;
 
 // The operation
 /**

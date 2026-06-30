@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListControlPlaneIpAddressesInput {
+  envelope?: boolean;
+}
 export const ListControlPlaneIpAddressesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     envelope: Schema.optional(Schema.Boolean),
@@ -11,15 +14,12 @@ export const ListControlPlaneIpAddressesInput =
       method: "GET",
       path: "/api/atlas/v2/unauth/controlPlaneIPAddresses",
     }),
-  );
-export type ListControlPlaneIpAddressesInput =
-  typeof ListControlPlaneIpAddressesInput.Type;
+  ) as unknown as Schema.Codec<ListControlPlaneIpAddressesInput>;
 
 // Output Schema
+export type ListControlPlaneIpAddressesOutput = void;
 export const ListControlPlaneIpAddressesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListControlPlaneIpAddressesOutput =
-  typeof ListControlPlaneIpAddressesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListControlPlaneIpAddressesOutput>;
 
 // The operation
 /**

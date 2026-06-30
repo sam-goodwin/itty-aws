@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeDocumentsSearchListInput {
+  project_id: string;
+  limit?: number;
+  query: string;
+  rerank?: boolean;
+}
 export const BusinessKnowledgeDocumentsSearchListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,20 @@ export const BusinessKnowledgeDocumentsSearchListInput =
       method: "GET",
       path: "/api/projects/{project_id}/business_knowledge/documents/search/",
     }),
-  );
-export type BusinessKnowledgeDocumentsSearchListInput =
-  typeof BusinessKnowledgeDocumentsSearchListInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeDocumentsSearchListInput>;
 
 // Output Schema
+export type BusinessKnowledgeDocumentsSearchListOutput = {
+  chunk_id: string;
+  document_id: string;
+  ordinal: number;
+  source_id: string;
+  source_name: string;
+  source_type: string;
+  document_title: string;
+  heading_path: string;
+  content: string;
+}[];
 export const BusinessKnowledgeDocumentsSearchListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -32,9 +47,7 @@ export const BusinessKnowledgeDocumentsSearchListOutput =
       heading_path: Schema.String,
       content: Schema.String,
     }),
-  );
-export type BusinessKnowledgeDocumentsSearchListOutput =
-  typeof BusinessKnowledgeDocumentsSearchListOutput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeDocumentsSearchListOutput>;
 
 // The operation
 /**

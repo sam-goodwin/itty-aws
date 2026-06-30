@@ -4,12 +4,30 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1AppsByAppIdInput {
+  appId: string;
+}
 export const GetV1AppsByAppIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   appId: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v1/apps/{appId}" }));
-export type GetV1AppsByAppIdInput = typeof GetV1AppsByAppIdInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/apps/{appId}" }),
+) as unknown as Schema.Codec<GetV1AppsByAppIdInput>;
 
 // Output Schema
+export interface GetV1AppsByAppIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    region: { id: string; name: string };
+    projectId: string;
+    branchId: string | null;
+    latestDeploymentId: string | null;
+    appEndpointDomain: string;
+    createdAt: string;
+  };
+}
 export const GetV1AppsByAppIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     data: Schema.Struct({
@@ -28,8 +46,7 @@ export const GetV1AppsByAppIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       createdAt: Schema.String,
     }),
   },
-);
-export type GetV1AppsByAppIdOutput = typeof GetV1AppsByAppIdOutput.Type;
+) as unknown as Schema.Codec<GetV1AppsByAppIdOutput>;
 
 // The operation
 /**

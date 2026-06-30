@@ -3,16 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface TakeSnapshotInput {
+  snapshot_path: string;
+}
 export const TakeSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   snapshot_path: Schema.String,
-}).pipe(T.Http({ method: "POST", path: "/operations/snapshot" }));
-export type TakeSnapshotInput = typeof TakeSnapshotInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/operations/snapshot" }),
+) as unknown as Schema.Codec<TakeSnapshotInput>;
 
 // Output Schema
+export interface TakeSnapshotOutput {
+  success: boolean;
+}
 export const TakeSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.Boolean,
-});
-export type TakeSnapshotOutput = typeof TakeSnapshotOutput.Type;
+}) as unknown as Schema.Codec<TakeSnapshotOutput>;
 
 // The operation
 /**

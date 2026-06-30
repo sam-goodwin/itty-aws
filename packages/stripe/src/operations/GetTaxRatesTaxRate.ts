@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTaxRatesTaxRateInput {
+  tax_rate: string;
+  expand?: string;
+}
 export const GetTaxRatesTaxRateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tax_rate: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,51 @@ export const GetTaxRatesTaxRateInput =
       path: "/v1/tax_rates/{tax_rate}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetTaxRatesTaxRateInput = typeof GetTaxRatesTaxRateInput.Type;
+  ) as unknown as Schema.Codec<GetTaxRatesTaxRateInput>;
 
 // Output Schema
+export interface GetTaxRatesTaxRateOutput {
+  active: boolean;
+  country: string | null;
+  created: number;
+  description: string | null;
+  display_name: string;
+  effective_percentage: number | null;
+  flat_amount: { amount: number; currency: string } | null;
+  id: string;
+  inclusive: boolean;
+  jurisdiction: string | null;
+  jurisdiction_level:
+    | "city"
+    | "country"
+    | "county"
+    | "district"
+    | "multiple"
+    | "state"
+    | null;
+  livemode: boolean;
+  metadata: Record<string, string> | null;
+  object: "tax_rate";
+  percentage: number;
+  rate_type: "flat_amount" | "percentage" | null;
+  state: string | null;
+  tax_type:
+    | "amusement_tax"
+    | "communications_tax"
+    | "gst"
+    | "hst"
+    | "igst"
+    | "jct"
+    | "lease_tax"
+    | "pst"
+    | "qst"
+    | "retail_delivery_fee"
+    | "rst"
+    | "sales_tax"
+    | "service_tax"
+    | "vat"
+    | null;
+}
 export const GetTaxRatesTaxRateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
@@ -25,7 +70,12 @@ export const GetTaxRatesTaxRateOutput =
     description: Schema.NullOr(Schema.String),
     display_name: Schema.String,
     effective_percentage: Schema.NullOr(Schema.Number),
-    flat_amount: Schema.Unknown,
+    flat_amount: Schema.NullOr(
+      Schema.Struct({
+        amount: Schema.Number,
+        currency: Schema.String,
+      }),
+    ),
     id: Schema.String,
     inclusive: Schema.Boolean,
     jurisdiction: Schema.NullOr(Schema.String),
@@ -63,8 +113,7 @@ export const GetTaxRatesTaxRateOutput =
         "vat",
       ]),
     ),
-  });
-export type GetTaxRatesTaxRateOutput = typeof GetTaxRatesTaxRateOutput.Type;
+  }) as unknown as Schema.Codec<GetTaxRatesTaxRateOutput>;
 
 // The operation
 /**

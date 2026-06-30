@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsPreviewTokenMintInput {
+  id: string;
+  project_id: string;
+  revision_id: string;
+}
 export const AgentApplicationsPreviewTokenMintInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,17 @@ export const AgentApplicationsPreviewTokenMintInput =
       method: "POST",
       path: "/api/projects/{project_id}/agent_applications/{id}/preview-token/",
     }),
-  );
-export type AgentApplicationsPreviewTokenMintInput =
-  typeof AgentApplicationsPreviewTokenMintInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsPreviewTokenMintInput>;
 
 // Output Schema
+export interface AgentApplicationsPreviewTokenMintOutput {
+  token: string;
+  expires_in: number;
+  ingress_slug: string;
+  endpoints: unknown;
+  auth: unknown;
+  preview_proxy: unknown;
+}
 export const AgentApplicationsPreviewTokenMintOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.String,
@@ -26,9 +37,7 @@ export const AgentApplicationsPreviewTokenMintOutput =
     endpoints: Schema.Unknown,
     auth: Schema.Unknown,
     preview_proxy: Schema.Unknown,
-  });
-export type AgentApplicationsPreviewTokenMintOutput =
-  typeof AgentApplicationsPreviewTokenMintOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsPreviewTokenMintOutput>;
 
 // The operation
 /**

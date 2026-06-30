@@ -3,9 +3,122 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateTransferInput {
+  source:
+    | { accountId: string; asset: string }
+    | { paymentMethodId: string; asset: string };
+  target:
+    | { accountId: string; asset: string }
+    | { paymentMethodId: string; asset: string }
+    | {
+        address: string;
+        network:
+          | "base"
+          | "ethereum"
+          | "solana"
+          | "aptos"
+          | "arbitrum"
+          | "arbitrum-sepolia"
+          | "optimism"
+          | "polygon"
+          | "world"
+          | "world-sepolia";
+        destinationTag?: string;
+        asset: string;
+      }
+    | { email: string; asset: string };
+  amount: string;
+  asset: string;
+  amountType?: "target" | "source";
+  validateOnly?: boolean;
+  execute: boolean;
+  metadata?: Record<string, string>;
+  travelRule?: {
+    isSelf?: boolean;
+    isIntermediary?: boolean;
+    originator?: {
+      financialInstitution?: string;
+      name?: string;
+      address?: {
+        line1?: string;
+        line2?: string;
+        city?: string;
+        state?: string;
+        postCode?: string;
+        countryCode?: string;
+      };
+      virtualAssetServiceProvider?: {
+        name?: string;
+        address?: {
+          line1?: string;
+          line2?: string;
+          city?: string;
+          state?: string;
+          postCode?: string;
+          countryCode?: string;
+        };
+        identifier?: string;
+      };
+      personalId?: string;
+      dateOfBirth?: { day?: string; month?: string; year?: string };
+    };
+    beneficiary?: {
+      financialInstitution?: string;
+      name?: string;
+      address?: {
+        line1?: string;
+        line2?: string;
+        city?: string;
+        state?: string;
+        postCode?: string;
+        countryCode?: string;
+      };
+      walletType?: "custodial" | "self_custody";
+    };
+  };
+}
 export const CreateTransferInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  source: Schema.Unknown,
-  target: Schema.Unknown,
+  source: Schema.Union([
+    Schema.Struct({
+      accountId: Schema.String,
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      paymentMethodId: Schema.String,
+      asset: Schema.String,
+    }),
+  ]),
+  target: Schema.Union([
+    Schema.Struct({
+      accountId: Schema.String,
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      paymentMethodId: Schema.String,
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      address: Schema.String,
+      network: Schema.Literals([
+        "base",
+        "ethereum",
+        "solana",
+        "aptos",
+        "arbitrum",
+        "arbitrum-sepolia",
+        "optimism",
+        "polygon",
+        "world",
+        "world-sepolia",
+      ]),
+      destinationTag: Schema.optional(Schema.String),
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      email: Schema.String,
+      asset: Schema.String,
+    }),
+  ]),
   amount: Schema.String,
   asset: Schema.String,
   amountType: Schema.optional(Schema.Literals(["target", "source"])),
@@ -77,17 +190,172 @@ export const CreateTransferInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-}).pipe(T.Http({ method: "POST", path: "/v2/transfers" }));
-export type CreateTransferInput = typeof CreateTransferInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/transfers" }),
+) as unknown as Schema.Codec<CreateTransferInput>;
 
 // Output Schema
+export interface CreateTransferOutput {
+  transferId?: string;
+  status?: "quoted" | "processing" | "completed" | "failed";
+  source:
+    | { accountId: string; asset: string }
+    | { paymentMethodId: string; asset: string }
+    | {
+        address: string;
+        network:
+          | "base"
+          | "ethereum"
+          | "solana"
+          | "aptos"
+          | "arbitrum"
+          | "arbitrum-sepolia"
+          | "optimism"
+          | "polygon"
+          | "world"
+          | "world-sepolia";
+        destinationTag?: string;
+        asset: string;
+      }
+    | { bankName: string; accountLast4: string; currency: string };
+  target:
+    | { accountId: string; asset: string }
+    | { paymentMethodId: string; asset: string }
+    | {
+        address: string;
+        network:
+          | "base"
+          | "ethereum"
+          | "solana"
+          | "aptos"
+          | "arbitrum"
+          | "arbitrum-sepolia"
+          | "optimism"
+          | "polygon"
+          | "world"
+          | "world-sepolia";
+        destinationTag?: string;
+        asset: string;
+      }
+    | { email: string; asset: string };
+  sourceAmount?: string;
+  sourceAsset?: string;
+  targetAmount?: string;
+  targetAsset?: string;
+  exchangeRate?: { sourceAsset: string; targetAsset: string; rate: string };
+  fees?: {
+    type: "bank" | "conversion" | "network" | "other";
+    amount: string;
+    asset: string;
+  }[];
+  estimate?: {
+    exchangeRate?: { sourceAsset: string; targetAsset: string; rate: string };
+    targetAmount?: string;
+    targetAsset?: string;
+    fees?: {
+      type: "bank" | "conversion" | "network" | "other";
+      amount: string;
+      asset: string;
+    }[];
+    estimatedAt: string;
+  };
+  completedAt?: string;
+  failureReason?: string;
+  expiresAt?: string;
+  executedAt?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  metadata?: Record<string, string>;
+  details?: {
+    depositDestination?: { id: string };
+    onchainTransactions?: {
+      transactionHash: string;
+      network:
+        | "base"
+        | "ethereum"
+        | "solana"
+        | "aptos"
+        | "arbitrum"
+        | "arbitrum-sepolia"
+        | "optimism"
+        | "polygon"
+        | "world"
+        | "world-sepolia";
+    }[];
+    travelRule?: {
+      status?: "incomplete" | "completed";
+      statusMessage?: string;
+    };
+  };
+}
 export const CreateTransferOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   transferId: Schema.optional(Schema.String),
   status: Schema.optional(
     Schema.Literals(["quoted", "processing", "completed", "failed"]),
   ),
-  source: Schema.Unknown,
-  target: Schema.Unknown,
+  source: Schema.Union([
+    Schema.Struct({
+      accountId: Schema.String,
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      paymentMethodId: Schema.String,
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      address: Schema.String,
+      network: Schema.Literals([
+        "base",
+        "ethereum",
+        "solana",
+        "aptos",
+        "arbitrum",
+        "arbitrum-sepolia",
+        "optimism",
+        "polygon",
+        "world",
+        "world-sepolia",
+      ]),
+      destinationTag: Schema.optional(Schema.String),
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      bankName: Schema.String,
+      accountLast4: Schema.String,
+      currency: Schema.String,
+    }),
+  ]),
+  target: Schema.Union([
+    Schema.Struct({
+      accountId: Schema.String,
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      paymentMethodId: Schema.String,
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      address: Schema.String,
+      network: Schema.Literals([
+        "base",
+        "ethereum",
+        "solana",
+        "aptos",
+        "arbitrum",
+        "arbitrum-sepolia",
+        "optimism",
+        "polygon",
+        "world",
+        "world-sepolia",
+      ]),
+      destinationTag: Schema.optional(Schema.String),
+      asset: Schema.String,
+    }),
+    Schema.Struct({
+      email: Schema.String,
+      asset: Schema.String,
+    }),
+  ]),
   sourceAmount: Schema.optional(Schema.String),
   sourceAsset: Schema.optional(Schema.String),
   targetAmount: Schema.optional(Schema.String),
@@ -172,8 +440,7 @@ export const CreateTransferOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type CreateTransferOutput = typeof CreateTransferOutput.Type;
+}) as unknown as Schema.Codec<CreateTransferOutput>;
 
 // The operation
 /**

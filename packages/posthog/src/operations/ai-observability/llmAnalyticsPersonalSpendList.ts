@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsPersonalSpendListInput {
+  date_from?: string;
+  date_to?: string;
+  limit?: number;
+  product: string;
+  refresh?: boolean;
+}
 export const LlmAnalyticsPersonalSpendListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date_from: Schema.optional(Schema.String),
@@ -11,11 +18,55 @@ export const LlmAnalyticsPersonalSpendListInput =
     limit: Schema.optional(Schema.Number),
     product: Schema.String,
     refresh: Schema.optional(Schema.Boolean),
-  }).pipe(T.Http({ method: "GET", path: "/api/llm_analytics/@me/spend/" }));
-export type LlmAnalyticsPersonalSpendListInput =
-  typeof LlmAnalyticsPersonalSpendListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/api/llm_analytics/@me/spend/" }),
+  ) as unknown as Schema.Codec<LlmAnalyticsPersonalSpendListInput>;
 
 // Output Schema
+export type LlmAnalyticsPersonalSpendListOutput = {
+  summary: {
+    date_from: string;
+    date_to: string;
+    product: string;
+    total_cost_usd: number;
+    event_count: number;
+    scoped_cost_usd: number;
+    scoped_event_count: number;
+  };
+  by_product: {
+    items: { product: string | null; event_count: number; cost_usd: number }[];
+    truncated: boolean;
+  };
+  by_tool: {
+    items: {
+      tool: string | null;
+      generation_count: number;
+      cost_usd: number;
+      share_of_scoped: number;
+      avg_input_tokens: number;
+    }[];
+    truncated: boolean;
+  };
+  by_model: {
+    items: {
+      model: string | null;
+      generation_count: number;
+      cost_usd: number;
+      input_tokens: number;
+      output_tokens: number;
+    }[];
+    truncated: boolean;
+  };
+  top_traces: {
+    items: {
+      trace_id: string | null;
+      generation_count: number;
+      cost_usd: number;
+      started_at: string | null;
+    }[];
+    truncated: boolean;
+  };
+}[];
 export const LlmAnalyticsPersonalSpendListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -74,9 +125,7 @@ export const LlmAnalyticsPersonalSpendListOutput =
         truncated: Schema.Boolean,
       }),
     }),
-  );
-export type LlmAnalyticsPersonalSpendListOutput =
-  typeof LlmAnalyticsPersonalSpendListOutput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsPersonalSpendListOutput>;
 
 // The operation
 /**

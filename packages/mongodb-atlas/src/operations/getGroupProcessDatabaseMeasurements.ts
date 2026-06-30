@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupProcessDatabaseMeasurementsInput {
+  groupId: string;
+  databaseName: string;
+  processId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  m?: string;
+  granularity: string;
+  period?: string;
+  start?: string;
+  end?: string;
+}
 export const GetGroupProcessDatabaseMeasurementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +33,12 @@ export const GetGroupProcessDatabaseMeasurementsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements",
     }),
-  );
-export type GetGroupProcessDatabaseMeasurementsInput =
-  typeof GetGroupProcessDatabaseMeasurementsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupProcessDatabaseMeasurementsInput>;
 
 // Output Schema
+export type GetGroupProcessDatabaseMeasurementsOutput = void;
 export const GetGroupProcessDatabaseMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupProcessDatabaseMeasurementsOutput =
-  typeof GetGroupProcessDatabaseMeasurementsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessDatabaseMeasurementsOutput>;
 
 // The operation
 /**

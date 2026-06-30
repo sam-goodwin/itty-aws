@@ -4,18 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupAuditLogInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupAuditLogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/auditLog" }),
-);
-export type GetGroupAuditLogInput = typeof GetGroupAuditLogInput.Type;
+) as unknown as Schema.Codec<GetGroupAuditLogInput>;
 
 // Output Schema
-export const GetGroupAuditLogOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupAuditLogOutput = typeof GetGroupAuditLogOutput.Type;
+export type GetGroupAuditLogOutput = void;
+export const GetGroupAuditLogOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAuditLogOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsRevisionsDestroyInput {
+  application_id: string;
+  id: string;
+  project_id: string;
+}
 export const AgentApplicationsRevisionsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const AgentApplicationsRevisionsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/",
     }),
-  );
-export type AgentApplicationsRevisionsDestroyInput =
-  typeof AgentApplicationsRevisionsDestroyInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsRevisionsDestroyInput>;
 
 // Output Schema
+export type AgentApplicationsRevisionsDestroyOutput = void;
 export const AgentApplicationsRevisionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentApplicationsRevisionsDestroyOutput =
-  typeof AgentApplicationsRevisionsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsRevisionsDestroyOutput>;
 
 // The operation
 /**

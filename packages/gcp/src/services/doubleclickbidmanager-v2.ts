@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface Options {
   includeOnlyTargetedUserLists?: boolean;
 }
 
-export const Options: Schema.Schema<Options> =
+export const Options: Schema.Codec<Options> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeOnlyTargetedUserLists: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Options" });
@@ -41,7 +41,7 @@ export interface Doubleclickbidmanager_Date {
   month?: number;
 }
 
-export const Doubleclickbidmanager_Date: Schema.Schema<Doubleclickbidmanager_Date> =
+export const Doubleclickbidmanager_Date: Schema.Codec<Doubleclickbidmanager_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -68,7 +68,7 @@ export interface QuerySchedule {
   nextRunTimezoneCode?: string;
 }
 
-export const QuerySchedule: Schema.Schema<QuerySchedule> =
+export const QuerySchedule: Schema.Codec<QuerySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Doubleclickbidmanager_Date),
     startDate: Schema.optional(Doubleclickbidmanager_Date),
@@ -91,7 +91,7 @@ export interface ReportStatus {
   format?: "FORMAT_UNSPECIFIED" | "CSV" | "XLSX" | (string & {});
 }
 
-export const ReportStatus: Schema.Schema<ReportStatus> =
+export const ReportStatus: Schema.Codec<ReportStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export interface ReportMetadata {
   status?: ReportStatus;
 }
 
-export const ReportMetadata: Schema.Schema<ReportMetadata> =
+export const ReportMetadata: Schema.Codec<ReportMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportDataEndDate: Schema.optional(Doubleclickbidmanager_Date),
     reportDataStartDate: Schema.optional(Doubleclickbidmanager_Date),
@@ -146,7 +146,7 @@ export interface DataRange {
   customStartDate?: Doubleclickbidmanager_Date;
 }
 
-export const DataRange: Schema.Schema<DataRange> =
+export const DataRange: Schema.Codec<DataRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customEndDate: Schema.optional(Doubleclickbidmanager_Date),
     range: Schema.optional(Schema.String),
@@ -166,7 +166,7 @@ export interface QueryMetadata {
   shareEmailAddress?: ReadonlyArray<string>;
 }
 
-export const QueryMetadata: Schema.Schema<QueryMetadata> =
+export const QueryMetadata: Schema.Codec<QueryMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     dataRange: Schema.optional(DataRange),
@@ -182,7 +182,7 @@ export interface FilterPair {
   value?: string;
 }
 
-export const FilterPair: Schema.Schema<FilterPair> =
+export const FilterPair: Schema.Codec<FilterPair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -214,7 +214,7 @@ export interface Parameters {
     | (string & {});
 }
 
-export const Parameters: Schema.Schema<Parameters> =
+export const Parameters: Schema.Codec<Parameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     groupBys: Schema.optional(Schema.Array(Schema.String)),
@@ -230,7 +230,7 @@ export interface ReportKey {
   reportId?: string;
 }
 
-export const ReportKey: Schema.Schema<ReportKey> =
+export const ReportKey: Schema.Codec<ReportKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryId: Schema.optional(Schema.String),
     reportId: Schema.optional(Schema.String),
@@ -245,7 +245,7 @@ export interface Report {
   key?: ReportKey;
 }
 
-export const Report: Schema.Schema<Report> =
+export const Report: Schema.Codec<Report> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(ReportMetadata),
     params: Schema.optional(Parameters),
@@ -259,7 +259,7 @@ export interface ListReportsResponse {
   nextPageToken?: string;
 }
 
-export const ListReportsResponse: Schema.Schema<ListReportsResponse> =
+export const ListReportsResponse: Schema.Codec<ListReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(Report)),
     nextPageToken: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export interface Query {
   queryId?: string;
 }
 
-export const Query: Schema.Schema<Query> =
+export const Query: Schema.Codec<Query> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(QueryMetadata),
     params: Schema.optional(Parameters),
@@ -291,7 +291,7 @@ export interface ListQueriesResponse {
   nextPageToken?: string;
 }
 
-export const ListQueriesResponse: Schema.Schema<ListQueriesResponse> =
+export const ListQueriesResponse: Schema.Codec<ListQueriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queries: Schema.optional(Schema.Array(Query)),
     nextPageToken: Schema.optional(Schema.String),
@@ -302,7 +302,7 @@ export interface RunQueryRequest {
   dataRange?: DataRange;
 }
 
-export const RunQueryRequest: Schema.Schema<RunQueryRequest> =
+export const RunQueryRequest: Schema.Codec<RunQueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataRange: Schema.optional(DataRange),
   }).annotate({ identifier: "RunQueryRequest" });
@@ -371,13 +371,13 @@ export const DeleteQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "queries/{queryId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteQueriesRequest>;
+) as unknown as Schema.Codec<DeleteQueriesRequest>;
 
 export interface DeleteQueriesResponse {}
-export const DeleteQueriesResponse: Schema.Schema<DeleteQueriesResponse> =
+export const DeleteQueriesResponse: Schema.Codec<DeleteQueriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteQueriesResponse>;
+  ) as any as Schema.Codec<DeleteQueriesResponse>;
 
 export type DeleteQueriesError =
   | DefaultErrors
@@ -414,7 +414,7 @@ export const ListQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "queries" }),
   svc,
-) as unknown as Schema.Schema<ListQueriesRequest>;
+) as unknown as Schema.Codec<ListQueriesRequest>;
 
 export type ListQueriesResponse_Op = ListQueriesResponse;
 export const ListQueriesResponse_Op =
@@ -448,7 +448,7 @@ export const CreateQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "queries", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateQueriesRequest>;
+) as unknown as Schema.Codec<CreateQueriesRequest>;
 
 export type CreateQueriesResponse = Query;
 export const CreateQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Query;
@@ -482,7 +482,7 @@ export const GetQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "queries/{queryId}" }),
   svc,
-) as unknown as Schema.Schema<GetQueriesRequest>;
+) as unknown as Schema.Codec<GetQueriesRequest>;
 
 export type GetQueriesResponse = Query;
 export const GetQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Query;
@@ -517,7 +517,7 @@ export const RunQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "queries/{queryId}:run", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<RunQueriesRequest>;
+) as unknown as Schema.Codec<RunQueriesRequest>;
 
 export type RunQueriesResponse = Report;
 export const RunQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
@@ -561,7 +561,7 @@ export const ListQueriesReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "queries/{queryId}/reports" }),
     svc,
-  ) as unknown as Schema.Schema<ListQueriesReportsRequest>;
+  ) as unknown as Schema.Codec<ListQueriesReportsRequest>;
 
 export type ListQueriesReportsResponse = ListReportsResponse;
 export const ListQueriesReportsResponse =
@@ -599,7 +599,7 @@ export const GetQueriesReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "queries/{queryId}/reports/{reportId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetQueriesReportsRequest>;
+  ) as unknown as Schema.Codec<GetQueriesReportsRequest>;
 
 export type GetQueriesReportsResponse = Report;
 export const GetQueriesReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;

@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerUpdate0Input {
+  id: string;
+  email?: string;
+  first_name?: string;
+  last_name?: string;
+  name?: string;
+  email_verified?: boolean;
+  metadata?: Record<string, string> | null;
+  external_id?: string | null;
+  locale?: string | null;
+}
 export const UserlandUsersControllerUpdate0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +28,27 @@ export const UserlandUsersControllerUpdate0Input =
     ),
     external_id: Schema.optional(Schema.NullOr(Schema.String)),
     locale: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "PUT", path: "/user_management/users/{id}" }));
-export type UserlandUsersControllerUpdate0Input =
-  typeof UserlandUsersControllerUpdate0Input.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/user_management/users/{id}" }),
+  ) as unknown as Schema.Codec<UserlandUsersControllerUpdate0Input>;
 
 // Output Schema
+export interface UserlandUsersControllerUpdate0Output {
+  object?: string;
+  id?: string;
+  first_name?: string | null;
+  last_name?: string | null;
+  name?: string | null;
+  profile_picture_url?: string | null;
+  email?: string;
+  email_verified?: boolean;
+  external_id?: string | null;
+  metadata?: Record<string, string>;
+  last_sign_in_at?: string | null;
+  locale?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const UserlandUsersControllerUpdate0Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -38,9 +65,7 @@ export const UserlandUsersControllerUpdate0Output =
     locale: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type UserlandUsersControllerUpdate0Output =
-  typeof UserlandUsersControllerUpdate0Output.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerUpdate0Output>;
 
 // The operation
 /**

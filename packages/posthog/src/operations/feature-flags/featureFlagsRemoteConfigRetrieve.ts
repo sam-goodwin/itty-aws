@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsRemoteConfigRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const FeatureFlagsRemoteConfigRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const FeatureFlagsRemoteConfigRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/feature_flags/{id}/remote_config/",
     }),
-  );
-export type FeatureFlagsRemoteConfigRetrieveInput =
-  typeof FeatureFlagsRemoteConfigRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsRemoteConfigRetrieveInput>;
 
 // Output Schema
+export type FeatureFlagsRemoteConfigRetrieveOutput = void;
 export const FeatureFlagsRemoteConfigRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FeatureFlagsRemoteConfigRetrieveOutput =
-  typeof FeatureFlagsRemoteConfigRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsRemoteConfigRetrieveOutput>;
 
 // The operation
 /**

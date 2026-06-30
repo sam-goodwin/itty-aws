@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupUsersInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  flattenTeams?: boolean;
+  includeOrgUsers?: boolean;
+  orgMembershipStatus?: string;
+  orgMembershipStatuses?: string;
+  username?: string;
+}
 export const ListGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -18,12 +31,12 @@ export const ListGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   username: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/users" }),
-);
-export type ListGroupUsersInput = typeof ListGroupUsersInput.Type;
+) as unknown as Schema.Codec<ListGroupUsersInput>;
 
 // Output Schema
-export const ListGroupUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupUsersOutput = typeof ListGroupUsersOutput.Type;
+export type ListGroupUsersOutput = void;
+export const ListGroupUsersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupUsersOutput>;
 
 // The operation
 /**

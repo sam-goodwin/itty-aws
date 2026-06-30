@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service origin-post-quantum-encryption
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -59,7 +59,7 @@ export const GetOriginPostQuantumEncryptionRequest =
         path: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
       }),
     ),
-  ) as unknown as Schema.Schema<GetOriginPostQuantumEncryptionRequest>;
+  ) as unknown as Schema.Codec<GetOriginPostQuantumEncryptionRequest>;
 
 export interface GetOriginPostQuantumEncryptionResponse {
   /** The identifier of the caching setting. */
@@ -92,7 +92,7 @@ export const GetOriginPostQuantumEncryptionResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetOriginPostQuantumEncryptionResponse>;
+  ) as unknown as Schema.Codec<GetOriginPostQuantumEncryptionResponse>;
 
 export type GetOriginPostQuantumEncryptionError =
   | DefaultErrors
@@ -131,7 +131,7 @@ export const PutOriginPostQuantumEncryptionRequest =
         path: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
       }),
     ),
-  ) as unknown as Schema.Schema<PutOriginPostQuantumEncryptionRequest>;
+  ) as unknown as Schema.Codec<PutOriginPostQuantumEncryptionRequest>;
 
 export interface PutOriginPostQuantumEncryptionResponse {
   /** The identifier of the caching setting. */
@@ -164,7 +164,7 @@ export const PutOriginPostQuantumEncryptionResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutOriginPostQuantumEncryptionResponse>;
+  ) as unknown as Schema.Codec<PutOriginPostQuantumEncryptionResponse>;
 
 export type PutOriginPostQuantumEncryptionError =
   | DefaultErrors

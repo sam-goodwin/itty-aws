@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface ResellernotifyGetwatchdetailsResponse {
   serviceAccountEmailAddresses?: ReadonlyArray<string>;
 }
 
-export const ResellernotifyGetwatchdetailsResponse: Schema.Schema<ResellernotifyGetwatchdetailsResponse> =
+export const ResellernotifyGetwatchdetailsResponse: Schema.Codec<ResellernotifyGetwatchdetailsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topicName: Schema.optional(Schema.String),
     serviceAccountEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
@@ -58,7 +58,7 @@ export interface Address {
   addressLine1?: string;
 }
 
-export const Address: Schema.Schema<Address> =
+export const Address: Schema.Codec<Address> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countryCode: Schema.optional(Schema.String),
     addressLine3: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface Seats {
   licensedNumberOfSeats?: number;
 }
 
-export const Seats: Schema.Schema<Seats> =
+export const Seats: Schema.Codec<Seats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     numberOfSeats: Schema.optional(Schema.Number),
@@ -104,7 +104,7 @@ export interface ChangePlanRequest {
   kind?: string;
 }
 
-export const ChangePlanRequest: Schema.Schema<ChangePlanRequest> =
+export const ChangePlanRequest: Schema.Codec<ChangePlanRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     planName: Schema.optional(Schema.String),
     seats: Schema.optional(Seats),
@@ -118,7 +118,7 @@ export interface PrimaryAdmin {
   primaryEmail?: string;
 }
 
-export const PrimaryAdmin: Schema.Schema<PrimaryAdmin> =
+export const PrimaryAdmin: Schema.Codec<PrimaryAdmin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "PrimaryAdmin" });
@@ -130,7 +130,7 @@ export interface RenewalSettings {
   kind?: string;
 }
 
-export const RenewalSettings: Schema.Schema<RenewalSettings> =
+export const RenewalSettings: Schema.Codec<RenewalSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     renewalType: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -183,7 +183,7 @@ export interface Subscription {
   subscriptionId?: string;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
+export const Subscription: Schema.Codec<Subscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trialSettings: Schema.optional(
       Schema.Struct({
@@ -232,7 +232,7 @@ export interface ResellernotifyResource {
   topicName?: string;
 }
 
-export const ResellernotifyResource: Schema.Schema<ResellernotifyResource> =
+export const ResellernotifyResource: Schema.Codec<ResellernotifyResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topicName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResellernotifyResource" });
@@ -260,7 +260,7 @@ export interface Customer {
   resourceUiUrl?: string;
 }
 
-export const Customer: Schema.Schema<Customer> =
+export const Customer: Schema.Codec<Customer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     postalAddress: Schema.optional(Address),
     alternateEmail: Schema.optional(Schema.String),
@@ -283,7 +283,7 @@ export interface Subscriptions {
   subscriptions?: ReadonlyArray<Subscription>;
 }
 
-export const Subscriptions: Schema.Schema<Subscriptions> =
+export const Subscriptions: Schema.Codec<Subscriptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -354,7 +354,7 @@ export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "apps/reseller/v1/customers/{customerId}" }),
   svc,
-) as unknown as Schema.Schema<GetCustomersRequest>;
+) as unknown as Schema.Codec<GetCustomersRequest>;
 
 export type GetCustomersResponse = Customer;
 export const GetCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -390,7 +390,7 @@ export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchCustomersRequest>;
+) as unknown as Schema.Codec<PatchCustomersRequest>;
 
 export type PatchCustomersResponse = Customer;
 export const PatchCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -431,7 +431,7 @@ export const InsertCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "apps/reseller/v1/customers", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertCustomersRequest>;
+) as unknown as Schema.Codec<InsertCustomersRequest>;
 
 export type InsertCustomersResponse = Customer;
 export const InsertCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -474,7 +474,7 @@ export const UpdateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateCustomersRequest>;
+) as unknown as Schema.Codec<UpdateCustomersRequest>;
 
 export type UpdateCustomersResponse = Customer;
 export const UpdateCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -507,7 +507,7 @@ export const GetwatchdetailsResellernotifyRequest =
       path: "apps/reseller/v1/resellernotify/getwatchdetails",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetwatchdetailsResellernotifyRequest>;
+  ) as unknown as Schema.Codec<GetwatchdetailsResellernotifyRequest>;
 
 export type GetwatchdetailsResellernotifyResponse =
   ResellernotifyGetwatchdetailsResponse;
@@ -548,7 +548,7 @@ export const UnregisterResellernotifyRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnregisterResellernotifyRequest>;
+  ) as unknown as Schema.Codec<UnregisterResellernotifyRequest>;
 
 export type UnregisterResellernotifyResponse = ResellernotifyResource;
 export const UnregisterResellernotifyResponse =
@@ -590,7 +590,7 @@ export const RegisterResellernotifyRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RegisterResellernotifyRequest>;
+  ) as unknown as Schema.Codec<RegisterResellernotifyRequest>;
 
 export type RegisterResellernotifyResponse = ResellernotifyResource;
 export const RegisterResellernotifyResponse =
@@ -633,7 +633,7 @@ export const ActivateSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ActivateSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ActivateSubscriptionsRequest>;
 
 export type ActivateSubscriptionsResponse = Subscription;
 export const ActivateSubscriptionsResponse =
@@ -682,13 +682,13 @@ export const DeleteSubscriptionsRequest =
       path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteSubscriptionsRequest>;
 
 export interface DeleteSubscriptionsResponse {}
-export const DeleteSubscriptionsResponse: Schema.Schema<DeleteSubscriptionsResponse> =
+export const DeleteSubscriptionsResponse: Schema.Codec<DeleteSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteSubscriptionsResponse>;
+  ) as any as Schema.Codec<DeleteSubscriptionsResponse>;
 
 export type DeleteSubscriptionsError =
   | DefaultErrors
@@ -726,7 +726,7 @@ export const GetSubscriptionsRequest =
       path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetSubscriptionsRequest>;
 
 export type GetSubscriptionsResponse = Subscription;
 export const GetSubscriptionsResponse =
@@ -777,7 +777,7 @@ export const InsertSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<InsertSubscriptionsRequest>;
 
 export type InsertSubscriptionsResponse = Subscription;
 export const InsertSubscriptionsResponse =
@@ -820,7 +820,7 @@ export const StartPaidServiceSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartPaidServiceSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<StartPaidServiceSubscriptionsRequest>;
 
 export type StartPaidServiceSubscriptionsResponse = Subscription;
 export const StartPaidServiceSubscriptionsResponse =
@@ -863,7 +863,7 @@ export const SuspendSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SuspendSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<SuspendSubscriptionsRequest>;
 
 export type SuspendSubscriptionsResponse = Subscription;
 export const SuspendSubscriptionsResponse =
@@ -909,7 +909,7 @@ export const ChangePlanSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ChangePlanSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ChangePlanSubscriptionsRequest>;
 
 export type ChangePlanSubscriptionsResponse = Subscription;
 export const ChangePlanSubscriptionsResponse =
@@ -955,7 +955,7 @@ export const ChangeSeatsSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ChangeSeatsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ChangeSeatsSubscriptionsRequest>;
 
 export type ChangeSeatsSubscriptionsResponse = Subscription;
 export const ChangeSeatsSubscriptionsResponse =
@@ -1001,7 +1001,7 @@ export const ChangeRenewalSettingsSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ChangeRenewalSettingsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ChangeRenewalSettingsSubscriptionsRequest>;
 
 export type ChangeRenewalSettingsSubscriptionsResponse = Subscription;
 export const ChangeRenewalSettingsSubscriptionsResponse =
@@ -1053,7 +1053,7 @@ export const ListSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "apps/reseller/v1/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListSubscriptionsRequest>;
 
 export type ListSubscriptionsResponse = Subscriptions;
 export const ListSubscriptionsResponse =

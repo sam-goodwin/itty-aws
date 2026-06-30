@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupCloudProviderAccessInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListGroupCloudProviderAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const ListGroupCloudProviderAccessInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess",
     }),
-  );
-export type ListGroupCloudProviderAccessInput =
-  typeof ListGroupCloudProviderAccessInput.Type;
+  ) as unknown as Schema.Codec<ListGroupCloudProviderAccessInput>;
 
 // Output Schema
+export type ListGroupCloudProviderAccessOutput = void;
 export const ListGroupCloudProviderAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupCloudProviderAccessOutput =
-  typeof ListGroupCloudProviderAccessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupCloudProviderAccessOutput>;
 
 // The operation
 /**

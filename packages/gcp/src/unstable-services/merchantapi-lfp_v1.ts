@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface LfpStoreState {
     | (string & {});
 }
 
-export const LfpStoreState: Schema.Schema<LfpStoreState> =
+export const LfpStoreState: Schema.Codec<LfpStoreState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchingStateHint: Schema.optional(Schema.String),
     storeCode: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -107,7 +107,7 @@ export interface ProductStatusChangeMessage {
   eventTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     managingAccount: Schema.optional(Schema.String),
@@ -157,7 +157,7 @@ export interface CountrySettings {
   localInventoryAdsEnabled?: boolean;
 }
 
-export const CountrySettings: Schema.Schema<CountrySettings> =
+export const CountrySettings: Schema.Codec<CountrySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freeLocalListingsEnabled: Schema.optional(Schema.Boolean),
     pickupServingVerificationState: Schema.optional(Schema.String),
@@ -179,7 +179,7 @@ export interface InventoryStats {
   submittedProducts?: string;
 }
 
-export const InventoryStats: Schema.Schema<InventoryStats> =
+export const InventoryStats: Schema.Codec<InventoryStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     submittedInStockEntries: Schema.optional(Schema.String),
     unsubmittedEntries: Schema.optional(Schema.String),
@@ -200,7 +200,7 @@ export interface LfpMerchantState {
   storeStates?: ReadonlyArray<LfpStoreState>;
 }
 
-export const LfpMerchantState: Schema.Schema<LfpMerchantState> =
+export const LfpMerchantState: Schema.Codec<LfpMerchantState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkedGbps: Schema.optional(Schema.String),
     countrySettings: Schema.optional(Schema.Array(CountrySettings)),
@@ -238,7 +238,7 @@ export interface LfpStore {
   phoneNumber?: string;
 }
 
-export const LfpStore: Schema.Schema<LfpStore> =
+export const LfpStore: Schema.Codec<LfpStore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storeCode: Schema.optional(Schema.String),
     storeName: Schema.optional(Schema.String),
@@ -260,7 +260,7 @@ export interface Price {
   amountMicros?: string;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     amountMicros: Schema.optional(Schema.String),
@@ -297,7 +297,7 @@ export interface LfpInventory {
   availability?: string;
 }
 
-export const LfpInventory: Schema.Schema<LfpInventory> =
+export const LfpInventory: Schema.Codec<LfpInventory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storeCode: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -317,7 +317,7 @@ export const LfpInventory: Schema.Schema<LfpInventory> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -349,7 +349,7 @@ export interface LfpSale {
   saleTime?: string;
 }
 
-export const LfpSale: Schema.Schema<LfpSale> =
+export const LfpSale: Schema.Codec<LfpSale> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gtin: Schema.optional(Schema.String),
     storeCode: Schema.optional(Schema.String),
@@ -372,7 +372,7 @@ export interface ListLfpStoresResponse {
   nextPageToken?: string;
 }
 
-export const ListLfpStoresResponse: Schema.Schema<ListLfpStoresResponse> =
+export const ListLfpStoresResponse: Schema.Codec<ListLfpStoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lfpStores: Schema.optional(Schema.Array(LfpStore)),
     nextPageToken: Schema.optional(Schema.String),
@@ -450,7 +450,7 @@ export const InsertAccountsLfpInventoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsLfpInventoriesRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsLfpInventoriesRequest>;
 
 export type InsertAccountsLfpInventoriesResponse = LfpInventory;
 export const InsertAccountsLfpInventoriesResponse =
@@ -486,7 +486,7 @@ export const GetAccountsLfpMerchantStatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "lfp/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsLfpMerchantStatesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsLfpMerchantStatesRequest>;
 
 export type GetAccountsLfpMerchantStatesResponse = LfpMerchantState;
 export const GetAccountsLfpMerchantStatesResponse =
@@ -520,7 +520,7 @@ export const GetAccountsLfpStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "lfp/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsLfpStoresRequest>;
+  ) as unknown as Schema.Codec<GetAccountsLfpStoresRequest>;
 
 export type GetAccountsLfpStoresResponse = LfpStore;
 export const GetAccountsLfpStoresResponse =
@@ -558,7 +558,7 @@ export const InsertAccountsLfpStoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsLfpStoresRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsLfpStoresRequest>;
 
 export type InsertAccountsLfpStoresResponse = LfpStore;
 export const InsertAccountsLfpStoresResponse =
@@ -605,7 +605,7 @@ export const ListAccountsLfpStoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "lfp/v1/{+parent}/lfpStores" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsLfpStoresRequest>;
+  ) as unknown as Schema.Codec<ListAccountsLfpStoresRequest>;
 
 export type ListAccountsLfpStoresResponse = ListLfpStoresResponse;
 export const ListAccountsLfpStoresResponse =
@@ -640,7 +640,7 @@ export const DeleteAccountsLfpStoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "lfp/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsLfpStoresRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsLfpStoresRequest>;
 
 export type DeleteAccountsLfpStoresResponse = Empty;
 export const DeleteAccountsLfpStoresResponse =
@@ -683,7 +683,7 @@ export const InsertAccountsLfpSalesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsLfpSalesRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsLfpSalesRequest>;
 
 export type InsertAccountsLfpSalesResponse = LfpSale;
 export const InsertAccountsLfpSalesResponse =

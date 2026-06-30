@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetConsumptionHistoryPerProjectV2Input {
+  cursor?: string;
+  limit?: number;
+  project_ids?: string;
+  from: string;
+  to: string;
+  granularity: string;
+  org_id: string;
+  metrics: string;
+}
 export const GetConsumptionHistoryPerProjectV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
@@ -14,11 +24,28 @@ export const GetConsumptionHistoryPerProjectV2Input =
     granularity: Schema.String,
     org_id: Schema.String,
     metrics: Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/consumption_history/v2/projects" }));
-export type GetConsumptionHistoryPerProjectV2Input =
-  typeof GetConsumptionHistoryPerProjectV2Input.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/consumption_history/v2/projects" }),
+  ) as unknown as Schema.Codec<GetConsumptionHistoryPerProjectV2Input>;
 
 // Output Schema
+export interface GetConsumptionHistoryPerProjectV2Output {
+  projects: {
+    project_id: string;
+    periods: {
+      period_id: string;
+      period_plan: string;
+      period_start: string;
+      period_end?: string;
+      consumption: {
+        timeframe_start?: string;
+        timeframe_end?: string;
+        metrics?: { metric_name: string; value: number }[];
+      }[];
+    }[];
+  }[];
+  pagination?: { cursor: string };
+}
 export const GetConsumptionHistoryPerProjectV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.Array(
@@ -53,9 +80,7 @@ export const GetConsumptionHistoryPerProjectV2Output =
         cursor: Schema.String,
       }),
     ),
-  });
-export type GetConsumptionHistoryPerProjectV2Output =
-  typeof GetConsumptionHistoryPerProjectV2Output.Type;
+  }) as unknown as Schema.Codec<GetConsumptionHistoryPerProjectV2Output>;
 
 // The operation
 /**

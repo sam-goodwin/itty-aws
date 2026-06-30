@@ -4,6 +4,20 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EndpointsCreateInput {
+  project_id: string;
+  name?: string | null;
+  query?: unknown;
+  description?: string | null;
+  data_freshness_seconds?: number | null;
+  is_active?: boolean | null;
+  is_materialized?: boolean | null;
+  derived_from_insight?: string | null;
+  version?: number | null;
+  bucket_overrides?: Record<string, unknown> | null;
+  deleted?: boolean | null;
+  tags?: string[] | null;
+}
 export const EndpointsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -21,10 +35,61 @@ export const EndpointsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/endpoints/" }),
-);
-export type EndpointsCreateInput = typeof EndpointsCreateInput.Type;
+) as unknown as Schema.Codec<EndpointsCreateInput>;
 
 // Output Schema
+export interface EndpointsCreateOutput {
+  id?: string;
+  name?: string;
+  description?: string | null;
+  query?: unknown;
+  is_active?: boolean;
+  data_freshness_seconds?: number;
+  endpoint_path?: string;
+  url?: string | null;
+  ui_url?: string | null;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  is_materialized?: boolean;
+  current_version?: number;
+  current_version_id?: string | null;
+  versions_count?: number;
+  derived_from_insight?: string | null;
+  last_executed_at?: string | null;
+  materialization?: {
+    name?: string;
+    status?: string;
+    can_materialize?: boolean;
+    reason?: string | null;
+    last_materialized_at?: string | null;
+    error?: string;
+    saved_query_id?: string | null;
+  };
+  bucket_overrides?: Record<string, unknown> | null;
+  columns?: { name?: string; type?: string }[];
+  tags?: string[];
+}
 export const EndpointsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -50,7 +115,23 @@ export const EndpointsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -83,8 +164,7 @@ export const EndpointsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   tags: Schema.optional(Schema.Array(Schema.String)),
-});
-export type EndpointsCreateOutput = typeof EndpointsCreateOutput.Type;
+}) as unknown as Schema.Codec<EndpointsCreateOutput>;
 
 // The operation
 /**

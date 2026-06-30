@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface GoogleIdentityStsV1betaAccessBoundaryRule {
   availablePermissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIdentityStsV1betaAccessBoundaryRule: Schema.Schema<GoogleIdentityStsV1betaAccessBoundaryRule> =
+export const GoogleIdentityStsV1betaAccessBoundaryRule: Schema.Codec<GoogleIdentityStsV1betaAccessBoundaryRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableResource: Schema.optional(Schema.String),
     availabilityCondition: Schema.optional(GoogleTypeExpr),
@@ -62,7 +62,7 @@ export interface GoogleIdentityStsV1betaAccessBoundary {
   accessBoundaryRules?: ReadonlyArray<GoogleIdentityStsV1betaAccessBoundaryRule>;
 }
 
-export const GoogleIdentityStsV1betaAccessBoundary: Schema.Schema<GoogleIdentityStsV1betaAccessBoundary> =
+export const GoogleIdentityStsV1betaAccessBoundary: Schema.Codec<GoogleIdentityStsV1betaAccessBoundary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessBoundaryRules: Schema.optional(
       Schema.Array(GoogleIdentityStsV1betaAccessBoundaryRule),
@@ -76,7 +76,7 @@ export interface GoogleIdentityStsV1betaOptions {
   userProject?: string;
 }
 
-export const GoogleIdentityStsV1betaOptions: Schema.Schema<GoogleIdentityStsV1betaOptions> =
+export const GoogleIdentityStsV1betaOptions: Schema.Codec<GoogleIdentityStsV1betaOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessBoundary: Schema.optional(GoogleIdentityStsV1betaAccessBoundary),
     userProject: Schema.optional(Schema.String),
@@ -91,7 +91,7 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface GoogleIdentityStsV1ExchangeTokenResponse {
   access_token?: string;
 }
 
-export const GoogleIdentityStsV1ExchangeTokenResponse: Schema.Schema<GoogleIdentityStsV1ExchangeTokenResponse> =
+export const GoogleIdentityStsV1ExchangeTokenResponse: Schema.Codec<GoogleIdentityStsV1ExchangeTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token_type: Schema.optional(Schema.String),
     expires_in: Schema.optional(Schema.Number),
@@ -129,7 +129,7 @@ export interface GoogleIdentityStsV1AccessBoundaryRule {
   availabilityCondition?: GoogleTypeExpr;
 }
 
-export const GoogleIdentityStsV1AccessBoundaryRule: Schema.Schema<GoogleIdentityStsV1AccessBoundaryRule> =
+export const GoogleIdentityStsV1AccessBoundaryRule: Schema.Codec<GoogleIdentityStsV1AccessBoundaryRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availablePermissions: Schema.optional(Schema.Array(Schema.String)),
     availableResource: Schema.optional(Schema.String),
@@ -141,7 +141,7 @@ export interface GoogleIdentityStsV1AccessBoundary {
   accessBoundaryRules?: ReadonlyArray<GoogleIdentityStsV1AccessBoundaryRule>;
 }
 
-export const GoogleIdentityStsV1AccessBoundary: Schema.Schema<GoogleIdentityStsV1AccessBoundary> =
+export const GoogleIdentityStsV1AccessBoundary: Schema.Codec<GoogleIdentityStsV1AccessBoundary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessBoundaryRules: Schema.optional(
       Schema.Array(GoogleIdentityStsV1AccessBoundaryRule),
@@ -157,7 +157,7 @@ export interface GoogleIdentityStsV1Options {
   bindCertFingerprint?: string;
 }
 
-export const GoogleIdentityStsV1Options: Schema.Schema<GoogleIdentityStsV1Options> =
+export const GoogleIdentityStsV1Options: Schema.Codec<GoogleIdentityStsV1Options> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessBoundary: Schema.optional(GoogleIdentityStsV1AccessBoundary),
     userProject: Schema.optional(Schema.String),
@@ -177,7 +177,7 @@ export interface GoogleIdentityStsV1Jwk {
   e?: string;
 }
 
-export const GoogleIdentityStsV1Jwk: Schema.Schema<GoogleIdentityStsV1Jwk> =
+export const GoogleIdentityStsV1Jwk: Schema.Codec<GoogleIdentityStsV1Jwk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kid: Schema.optional(Schema.String),
     n: Schema.optional(Schema.String),
@@ -191,7 +191,7 @@ export interface GoogleIdentityStsV1Jwks {
   keys?: ReadonlyArray<GoogleIdentityStsV1Jwk>;
 }
 
-export const GoogleIdentityStsV1Jwks: Schema.Schema<GoogleIdentityStsV1Jwks> =
+export const GoogleIdentityStsV1Jwks: Schema.Codec<GoogleIdentityStsV1Jwks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.optional(Schema.Array(GoogleIdentityStsV1Jwk)),
   }).annotate({ identifier: "GoogleIdentityStsV1Jwks" });
@@ -213,7 +213,7 @@ export interface GoogleIdentityStsV1OpenIdProviderConfig {
   issuer?: string;
 }
 
-export const GoogleIdentityStsV1OpenIdProviderConfig: Schema.Schema<GoogleIdentityStsV1OpenIdProviderConfig> =
+export const GoogleIdentityStsV1OpenIdProviderConfig: Schema.Codec<GoogleIdentityStsV1OpenIdProviderConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorization_endpoint: Schema.optional(Schema.String),
     subject_types_supported: Schema.optional(Schema.Array(Schema.String)),
@@ -243,7 +243,7 @@ export interface GoogleIdentityStsV1ExchangeTokenRequest {
   subjectToken?: string;
 }
 
-export const GoogleIdentityStsV1ExchangeTokenRequest: Schema.Schema<GoogleIdentityStsV1ExchangeTokenRequest> =
+export const GoogleIdentityStsV1ExchangeTokenRequest: Schema.Codec<GoogleIdentityStsV1ExchangeTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     grantType: Schema.optional(Schema.String),
     requestedTokenType: Schema.optional(Schema.String),
@@ -320,7 +320,7 @@ export const TokenV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/token", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<TokenV1Request>;
+) as unknown as Schema.Codec<TokenV1Request>;
 
 export type TokenV1Response = GoogleIdentityStsV1ExchangeTokenResponse;
 export const TokenV1Response =
@@ -356,7 +356,7 @@ export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/openid/jwks" }),
     svc,
-  ) as unknown as Schema.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>;
+  ) as unknown as Schema.Codec<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>;
 
 export type GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse =
   GoogleIdentityStsV1Jwks;
@@ -394,7 +394,7 @@ export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
       path: "v1/{+name}/.well-known/openid-configuration",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+  ) as unknown as Schema.Codec<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>;
 
 export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownResponse =
   GoogleIdentityStsV1OpenIdProviderConfig;
@@ -402,7 +402,9 @@ export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
   /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
 
 export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. */
 export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<
@@ -429,7 +431,7 @@ export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/openid/jwks" }),
     svc,
-  ) as unknown as Schema.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>;
+  ) as unknown as Schema.Codec<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>;
 
 export type GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse =
   GoogleIdentityStsV1Jwks;
@@ -467,7 +469,7 @@ export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
       path: "v1/{+name}/.well-known/openid-configuration",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+  ) as unknown as Schema.Codec<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
 
 export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownResponse =
   GoogleIdentityStsV1OpenIdProviderConfig;
@@ -475,7 +477,9 @@ export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
   /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
 
 export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. */
 export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<

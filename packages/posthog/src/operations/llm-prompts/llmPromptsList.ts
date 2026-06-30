@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmPromptsListInput {
+  project_id: string;
+  content?: "full" | "preview" | "none";
+  created_by_id?: number;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const LlmPromptsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   content: Schema.optional(Schema.Literals(["full", "preview", "none"])),
@@ -12,10 +20,51 @@ export const LlmPromptsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   search: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/llm_prompts/" }),
-);
-export type LlmPromptsListInput = typeof LlmPromptsListInput.Type;
+) as unknown as Schema.Codec<LlmPromptsListInput>;
 
 // Output Schema
+export interface LlmPromptsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    prompt?: unknown;
+    version?: number;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string;
+    updated_at?: string;
+    deleted?: boolean;
+    is_latest?: boolean;
+    latest_version?: number;
+    version_count?: number;
+    first_version_created_at?: string;
+    outline?: { level?: number; text?: string }[];
+    prompt_preview?: string;
+    prompt_size_bytes?: number;
+  }[];
+}
 export const LlmPromptsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -40,7 +89,23 @@ export const LlmPromptsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -64,8 +129,7 @@ export const LlmPromptsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type LlmPromptsListOutput = typeof LlmPromptsListOutput.Type;
+}) as unknown as Schema.Codec<LlmPromptsListOutput>;
 
 // The operation
 /**

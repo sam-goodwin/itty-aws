@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateOrganizationMemberInput {
+  org_id: string;
+  member_id: string;
+  role: "admin" | "member" | "editor" | "viewer" | "collaborator";
+}
 export const UpdateOrganizationMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -19,11 +24,16 @@ export const UpdateOrganizationMemberInput =
       method: "PATCH",
       path: "/organizations/{org_id}/members/{member_id}",
     }),
-  );
-export type UpdateOrganizationMemberInput =
-  typeof UpdateOrganizationMemberInput.Type;
+  ) as unknown as Schema.Codec<UpdateOrganizationMemberInput>;
 
 // Output Schema
+export interface UpdateOrganizationMemberOutput {
+  id: string;
+  user_id: string;
+  org_id: string;
+  role: "admin" | "member" | "editor" | "viewer" | "collaborator";
+  joined_at?: string;
+}
 export const UpdateOrganizationMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -37,9 +47,7 @@ export const UpdateOrganizationMemberOutput =
       "collaborator",
     ]),
     joined_at: Schema.optional(Schema.String),
-  });
-export type UpdateOrganizationMemberOutput =
-  typeof UpdateOrganizationMemberOutput.Type;
+  }) as unknown as Schema.Codec<UpdateOrganizationMemberOutput>;
 
 // The operation
 /**

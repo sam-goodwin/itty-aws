@@ -4,16 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}" }));
-export type DeleteGroupInput = typeof DeleteGroupInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}" }),
+) as unknown as Schema.Codec<DeleteGroupInput>;
 
 // Output Schema
-export const DeleteGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupOutput = typeof DeleteGroupOutput.Type;
+export type DeleteGroupOutput = void;
+export const DeleteGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupOutput>;
 
 // The operation
 /**

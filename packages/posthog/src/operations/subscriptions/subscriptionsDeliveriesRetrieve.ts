@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SubscriptionsDeliveriesRetrieveInput {
+  id: string;
+  project_id: string;
+  subscription_id: number;
+}
 export const SubscriptionsDeliveriesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,28 @@ export const SubscriptionsDeliveriesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/subscriptions/{subscription_id}/deliveries/{id}/",
     }),
-  );
-export type SubscriptionsDeliveriesRetrieveInput =
-  typeof SubscriptionsDeliveriesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionsDeliveriesRetrieveInput>;
 
 // Output Schema
+export interface SubscriptionsDeliveriesRetrieveOutput {
+  id?: string;
+  subscription?: number;
+  temporal_workflow_id?: string;
+  idempotency_key?: string;
+  trigger_type?: string;
+  scheduled_at?: string | null;
+  target_type?: string;
+  target_value?: string;
+  exported_asset_ids?: number[];
+  content_snapshot?: unknown;
+  recipient_results?: unknown;
+  status?: "starting" | "completed" | "failed" | "skipped";
+  error?: unknown;
+  created_at?: string;
+  last_updated_at?: string;
+  finished_at?: string | null;
+  change_summary?: string | null;
+}
 export const SubscriptionsDeliveriesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -39,9 +61,7 @@ export const SubscriptionsDeliveriesRetrieveOutput =
     last_updated_at: Schema.optional(Schema.String),
     finished_at: Schema.optional(Schema.NullOr(Schema.String)),
     change_summary: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type SubscriptionsDeliveriesRetrieveOutput =
-  typeof SubscriptionsDeliveriesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionsDeliveriesRetrieveOutput>;
 
 // The operation
 /**

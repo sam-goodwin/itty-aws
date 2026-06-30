@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizedApplicationsControllerListInput {
+  user_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const AuthorizedApplicationsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,29 @@ export const AuthorizedApplicationsControllerListInput =
       method: "GET",
       path: "/user_management/users/{user_id}/authorized_applications",
     }),
-  );
-export type AuthorizedApplicationsControllerListInput =
-  typeof AuthorizedApplicationsControllerListInput.Type;
+  ) as unknown as Schema.Codec<AuthorizedApplicationsControllerListInput>;
 
 // Output Schema
+export interface AuthorizedApplicationsControllerListOutput {
+  object?: string;
+  data?: {
+    object: string;
+    id: string;
+    granted_scopes: string[];
+    oauth_resource?: string;
+    application: {
+      object: string;
+      id: string;
+      client_id: string;
+      description: string | null;
+      name: string;
+      scopes: string[];
+      created_at: string;
+      updated_at: string;
+    };
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const AuthorizedApplicationsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -50,9 +75,7 @@ export const AuthorizedApplicationsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AuthorizedApplicationsControllerListOutput =
-  typeof AuthorizedApplicationsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizedApplicationsControllerListOutput>;
 
 // The operation
 /**

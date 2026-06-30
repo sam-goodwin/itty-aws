@@ -10,6 +10,12 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupFlexClusterInput {
+  groupId: string;
+  name: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupFlexClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +27,12 @@ export const UpdateGroupFlexClusterInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}",
     }),
-  );
-export type UpdateGroupFlexClusterInput =
-  typeof UpdateGroupFlexClusterInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupFlexClusterInput>;
 
 // Output Schema
+export type UpdateGroupFlexClusterOutput = void;
 export const UpdateGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupFlexClusterOutput =
-  typeof UpdateGroupFlexClusterOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupFlexClusterOutput>;
 
 // The operation
 /**

@@ -3,8 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetProjectBranchRolePasswordInput {
+  project_id: string;
+  branch_id: string;
+  role_name: string;
+}
 export const GetProjectBranchRolePasswordInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,17 +21,16 @@ export const GetProjectBranchRolePasswordInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}/reveal_password",
     }),
-  );
-export type GetProjectBranchRolePasswordInput =
-  typeof GetProjectBranchRolePasswordInput.Type;
+  ) as unknown as Schema.Codec<GetProjectBranchRolePasswordInput>;
 
 // Output Schema
+export interface GetProjectBranchRolePasswordOutput {
+  password: Redacted.Redacted<string>;
+}
 export const GetProjectBranchRolePasswordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password: SensitiveOutputString,
-  });
-export type GetProjectBranchRolePasswordOutput =
-  typeof GetProjectBranchRolePasswordOutput.Type;
+  }) as unknown as Schema.Codec<GetProjectBranchRolePasswordOutput>;
 
 // The operation
 /**

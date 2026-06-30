@@ -686,7 +686,7 @@ function main() {
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";`;
 
@@ -695,6 +695,9 @@ import * as T from "../traits.ts";`;
     }
     if (sensitive.size > 0) {
       imports += `\nimport { ${[...sensitive].sort().join(", ")} } from "../sensitive.ts";`;
+      // Explicit Input/Output type aliases reference `Redacted.Redacted<...>`
+      // for sensitive fields; the merged service header must import it.
+      imports += `\nimport * as Redacted from "effect/Redacted";`;
     }
 
     // Sort operations alphabetically for deterministic output

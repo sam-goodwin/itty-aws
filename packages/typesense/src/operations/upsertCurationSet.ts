@@ -4,6 +4,30 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface UpsertCurationSetInput {
+  curationSetName: string;
+  items: {
+    rule: {
+      tags?: string[];
+      query?: string;
+      match?: "exact" | "contains";
+      filter_by?: string;
+    };
+    includes?: { id: string; position: number }[];
+    excludes?: { id: string }[];
+    filter_by?: string;
+    remove_matched_tokens?: boolean;
+    metadata?: unknown;
+    sort_by?: string;
+    replace_query?: string;
+    filter_curated_hits?: boolean;
+    effective_from_ts?: number;
+    effective_to_ts?: number;
+    stop_processing?: boolean;
+    id?: string;
+  }[];
+  description?: string;
+}
 export const UpsertCurationSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     curationSetName: Schema.String.pipe(T.PathParam()),
@@ -44,10 +68,35 @@ export const UpsertCurationSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     description: Schema.optional(Schema.String),
   },
-).pipe(T.Http({ method: "PUT", path: "/curation_sets/{curationSetName}" }));
-export type UpsertCurationSetInput = typeof UpsertCurationSetInput.Type;
+).pipe(
+  T.Http({ method: "PUT", path: "/curation_sets/{curationSetName}" }),
+) as unknown as Schema.Codec<UpsertCurationSetInput>;
 
 // Output Schema
+export interface UpsertCurationSetOutput {
+  items: {
+    rule: {
+      tags?: string[];
+      query?: string;
+      match?: "exact" | "contains";
+      filter_by?: string;
+    };
+    includes?: { id: string; position: number }[];
+    excludes?: { id: string }[];
+    filter_by?: string;
+    remove_matched_tokens?: boolean;
+    metadata?: unknown;
+    sort_by?: string;
+    replace_query?: string;
+    filter_curated_hits?: boolean;
+    effective_from_ts?: number;
+    effective_to_ts?: number;
+    stop_processing?: boolean;
+    id?: string;
+  }[];
+  description?: string;
+  name: string;
+}
 export const UpsertCurationSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.Array(
@@ -87,8 +136,7 @@ export const UpsertCurationSetOutput =
     ),
     description: Schema.optional(Schema.String),
     name: Schema.String,
-  });
-export type UpsertCurationSetOutput = typeof UpsertCurationSetOutput.Type;
+  }) as unknown as Schema.Codec<UpsertCurationSetOutput>;
 
 // The operation
 /**

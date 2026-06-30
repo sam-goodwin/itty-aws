@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProxyRecordsDestroyInput {
+  id: string;
+  organization_id: string;
+}
 export const ProxyRecordsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const ProxyRecordsDestroyInput =
       method: "DELETE",
       path: "/api/organizations/{organization_id}/proxy_records/{id}/",
     }),
-  );
-export type ProxyRecordsDestroyInput = typeof ProxyRecordsDestroyInput.Type;
+  ) as unknown as Schema.Codec<ProxyRecordsDestroyInput>;
 
 // Output Schema
+export type ProxyRecordsDestroyOutput = void;
 export const ProxyRecordsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProxyRecordsDestroyOutput = typeof ProxyRecordsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProxyRecordsDestroyOutput>;
 
 // The operation
 /**

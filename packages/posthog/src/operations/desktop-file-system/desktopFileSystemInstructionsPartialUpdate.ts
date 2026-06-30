@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemInstructionsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  content?: string;
+  base_version?: number;
+}
 export const DesktopFileSystemInstructionsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,38 @@ export const DesktopFileSystemInstructionsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/desktop_file_system/{id}/instructions/",
     }),
-  );
-export type DesktopFileSystemInstructionsPartialUpdateInput =
-  typeof DesktopFileSystemInstructionsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemInstructionsPartialUpdateInput>;
 
 // Output Schema
+export interface DesktopFileSystemInstructionsPartialUpdateOutput {
+  id: string;
+  content: string;
+  version: number;
+  is_latest: boolean;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  updated_at: string;
+}
 export const DesktopFileSystemInstructionsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -36,13 +69,27 @@ export const DesktopFileSystemInstructionsPartialUpdateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type DesktopFileSystemInstructionsPartialUpdateOutput =
-  typeof DesktopFileSystemInstructionsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemInstructionsPartialUpdateOutput>;
 
 // The operation
 /**

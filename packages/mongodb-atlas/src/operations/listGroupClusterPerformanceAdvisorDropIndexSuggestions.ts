@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput {
+  groupId: string;
+  clusterName: string;
+}
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions",
     }),
-  );
-export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
-  typeof ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput>;
 
 // Output Schema
+export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput = void;
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
-  typeof ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput>;
 
 // The operation
 /**

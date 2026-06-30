@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupClusterGlobalWriteManagedNamespaceInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupClusterGlobalWriteManagedNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateGroupClusterGlobalWriteManagedNamespaceInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
     }),
-  );
-export type CreateGroupClusterGlobalWriteManagedNamespaceInput =
-  typeof CreateGroupClusterGlobalWriteManagedNamespaceInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupClusterGlobalWriteManagedNamespaceInput>;
 
 // Output Schema
+export type CreateGroupClusterGlobalWriteManagedNamespaceOutput = void;
 export const CreateGroupClusterGlobalWriteManagedNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupClusterGlobalWriteManagedNamespaceOutput =
-  typeof CreateGroupClusterGlobalWriteManagedNamespaceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterGlobalWriteManagedNamespaceOutput>;
 
 // The operation
 /**

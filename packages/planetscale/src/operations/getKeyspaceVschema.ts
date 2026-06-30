@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetKeyspaceVschemaInput {
+  organization: string;
+  database: string;
+  branch: string;
+  keyspace: string;
+}
 export const GetKeyspaceVschemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,16 @@ export const GetKeyspaceVschemaInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/vschema",
     }),
-  );
-export type GetKeyspaceVschemaInput = typeof GetKeyspaceVschemaInput.Type;
+  ) as unknown as Schema.Codec<GetKeyspaceVschemaInput>;
 
 // Output Schema
+export interface GetKeyspaceVschemaOutput {
+  raw: string;
+}
 export const GetKeyspaceVschemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     raw: Schema.String,
-  });
-export type GetKeyspaceVschemaOutput = typeof GetKeyspaceVschemaOutput.Type;
+  }) as unknown as Schema.Codec<GetKeyspaceVschemaOutput>;
 
 // The operation
 /**

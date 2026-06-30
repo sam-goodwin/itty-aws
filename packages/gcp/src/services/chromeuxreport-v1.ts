@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Chromeuxreport_Date {
   day?: number;
 }
 
-export const Chromeuxreport_Date: Schema.Schema<Chromeuxreport_Date> =
+export const Chromeuxreport_Date: Schema.Codec<Chromeuxreport_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -45,7 +45,7 @@ export interface CollectionPeriod {
   lastDate?: Chromeuxreport_Date;
 }
 
-export const CollectionPeriod: Schema.Schema<CollectionPeriod> =
+export const CollectionPeriod: Schema.Codec<CollectionPeriod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstDate: Schema.optional(Chromeuxreport_Date),
     lastDate: Schema.optional(Chromeuxreport_Date),
@@ -56,7 +56,7 @@ export interface TimeseriesPercentiles {
   p75s?: ReadonlyArray<unknown>;
 }
 
-export const TimeseriesPercentiles: Schema.Schema<TimeseriesPercentiles> =
+export const TimeseriesPercentiles: Schema.Codec<TimeseriesPercentiles> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     p75s: Schema.optional(Schema.Array(Schema.Unknown)),
   }).annotate({ identifier: "TimeseriesPercentiles" });
@@ -66,7 +66,7 @@ export interface FractionTimeseries {
   fractions?: ReadonlyArray<number>;
 }
 
-export const FractionTimeseries: Schema.Schema<FractionTimeseries> =
+export const FractionTimeseries: Schema.Codec<FractionTimeseries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fractions: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "FractionTimeseries" });
@@ -80,7 +80,7 @@ export interface TimeseriesBin {
   start?: unknown;
 }
 
-export const TimeseriesBin: Schema.Schema<TimeseriesBin> =
+export const TimeseriesBin: Schema.Codec<TimeseriesBin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.Unknown),
     densities: Schema.optional(Schema.Array(Schema.Number)),
@@ -96,7 +96,7 @@ export interface MetricTimeseries {
   histogramTimeseries?: ReadonlyArray<TimeseriesBin>;
 }
 
-export const MetricTimeseries: Schema.Schema<MetricTimeseries> =
+export const MetricTimeseries: Schema.Codec<MetricTimeseries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentilesTimeseries: Schema.optional(TimeseriesPercentiles),
     fractionTimeseries: Schema.optional(
@@ -119,7 +119,7 @@ export interface HistoryKey {
   url?: string;
 }
 
-export const HistoryKey: Schema.Schema<HistoryKey> =
+export const HistoryKey: Schema.Codec<HistoryKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     origin: Schema.optional(Schema.String),
     formFactor: Schema.optional(Schema.String),
@@ -135,7 +135,7 @@ export interface HistoryRecord {
   key?: HistoryKey;
 }
 
-export const HistoryRecord: Schema.Schema<HistoryRecord> =
+export const HistoryRecord: Schema.Codec<HistoryRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collectionPeriods: Schema.optional(Schema.Array(CollectionPeriod)),
     metrics: Schema.optional(Schema.Record(Schema.String, MetricTimeseries)),
@@ -149,7 +149,7 @@ export interface UrlNormalization {
   originalUrl?: string;
 }
 
-export const UrlNormalization: Schema.Schema<UrlNormalization> =
+export const UrlNormalization: Schema.Codec<UrlNormalization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     normalizedUrl: Schema.optional(Schema.String),
     originalUrl: Schema.optional(Schema.String),
@@ -162,7 +162,7 @@ export interface QueryHistoryResponse {
   urlNormalizationDetails?: UrlNormalization;
 }
 
-export const QueryHistoryResponse: Schema.Schema<QueryHistoryResponse> =
+export const QueryHistoryResponse: Schema.Codec<QueryHistoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     record: Schema.optional(HistoryRecord),
     urlNormalizationDetails: Schema.optional(UrlNormalization),
@@ -177,19 +177,20 @@ export interface Bin {
   end?: unknown;
 }
 
-export const Bin: Schema.Schema<Bin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Bin: Schema.Codec<Bin> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     start: Schema.optional(Schema.Unknown),
     density: Schema.optional(Schema.Unknown),
     end: Schema.optional(Schema.Unknown),
-  }).annotate({ identifier: "Bin" });
+  },
+).annotate({ identifier: "Bin" });
 
 export interface Percentiles {
   /** 75% of users experienced the given metric at or below this value. */
   p75?: unknown;
 }
 
-export const Percentiles: Schema.Schema<Percentiles> =
+export const Percentiles: Schema.Codec<Percentiles> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     p75: Schema.optional(Schema.Unknown),
   }).annotate({ identifier: "Percentiles" });
@@ -210,13 +211,14 @@ export interface Key {
   effectiveConnectionType?: string;
 }
 
-export const Key: Schema.Schema<Key> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Key: Schema.Codec<Key> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     origin: Schema.optional(Schema.String),
     formFactor: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
     effectiveConnectionType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Key" });
+  },
+).annotate({ identifier: "Key" });
 
 export interface Metric {
   /** For enum metrics, provides fractions which add up to approximately 1.0. */
@@ -227,7 +229,7 @@ export interface Metric {
   histogram?: ReadonlyArray<Bin>;
 }
 
-export const Metric: Schema.Schema<Metric> =
+export const Metric: Schema.Codec<Metric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fractions: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
     percentiles: Schema.optional(Percentiles),
@@ -243,7 +245,7 @@ export interface Chromeuxreport_Record {
   collectionPeriod?: CollectionPeriod;
 }
 
-export const Chromeuxreport_Record: Schema.Schema<Chromeuxreport_Record> =
+export const Chromeuxreport_Record: Schema.Codec<Chromeuxreport_Record> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Key),
     metrics: Schema.optional(Schema.Record(Schema.String, Metric)),
@@ -268,7 +270,7 @@ export interface QueryHistoryRequest {
   url?: string;
 }
 
-export const QueryHistoryRequest: Schema.Schema<QueryHistoryRequest> =
+export const QueryHistoryRequest: Schema.Codec<QueryHistoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     origin: Schema.optional(Schema.String),
     formFactor: Schema.optional(Schema.String),
@@ -284,7 +286,7 @@ export interface QueryResponse {
   record?: Chromeuxreport_Record;
 }
 
-export const QueryResponse: Schema.Schema<QueryResponse> =
+export const QueryResponse: Schema.Codec<QueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlNormalizationDetails: Schema.optional(UrlNormalization),
     record: Schema.optional(Chromeuxreport_Record),
@@ -308,7 +310,7 @@ export interface QueryRequest {
   metrics?: ReadonlyArray<string>;
 }
 
-export const QueryRequest: Schema.Schema<QueryRequest> =
+export const QueryRequest: Schema.Codec<QueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     origin: Schema.optional(Schema.String),
@@ -386,7 +388,7 @@ export const QueryHistoryRecordRecordsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryHistoryRecordRecordsRequest>;
+  ) as unknown as Schema.Codec<QueryHistoryRecordRecordsRequest>;
 
 export type QueryHistoryRecordRecordsResponse = QueryHistoryResponse;
 export const QueryHistoryRecordRecordsResponse =
@@ -422,7 +424,7 @@ export const QueryRecordRecordsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/records:queryRecord", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryRecordRecordsRequest>;
+  ) as unknown as Schema.Codec<QueryRecordRecordsRequest>;
 
 export type QueryRecordRecordsResponse = QueryResponse;
 export const QueryRecordRecordsResponse =

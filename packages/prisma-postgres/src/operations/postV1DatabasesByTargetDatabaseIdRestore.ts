@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PostV1DatabasesByTargetDatabaseIdRestoreInput {
+  targetDatabaseId: string;
+  source: { type: string; databaseId: string; backupId: string };
+}
 export const PostV1DatabasesByTargetDatabaseIdRestoreInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetDatabaseId: Schema.String.pipe(T.PathParam()),
@@ -17,11 +21,40 @@ export const PostV1DatabasesByTargetDatabaseIdRestoreInput =
       method: "POST",
       path: "/v1/databases/{targetDatabaseId}/restore",
     }),
-  );
-export type PostV1DatabasesByTargetDatabaseIdRestoreInput =
-  typeof PostV1DatabasesByTargetDatabaseIdRestoreInput.Type;
+  ) as unknown as Schema.Codec<PostV1DatabasesByTargetDatabaseIdRestoreInput>;
 
 // Output Schema
+export interface PostV1DatabasesByTargetDatabaseIdRestoreOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    status: "failure" | "provisioning" | "ready" | "recovering";
+    createdAt: string;
+    isDefault: boolean;
+    defaultConnectionId: string | null;
+    connections: {
+      id: string;
+      type: string;
+      url: string;
+      name: string;
+      createdAt: string;
+      kind: "postgres" | "accelerate";
+      endpoints: {
+        direct?: { host: string; port: number };
+        pooled?: { host: string; port: number };
+        accelerate?: { host: string; port: number };
+      };
+      directConnection?: { host: string; pass: string; user: string } | null;
+      database: { id: string; url: string; name: string };
+    }[];
+    project: { id: string; url: string; name: string };
+    region: { id: string; name: string } | null;
+    source: { type: string; databaseId: string; backupId: string };
+    branchId: string | null;
+  };
+}
 export const PostV1DatabasesByTargetDatabaseIdRestoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -100,9 +133,7 @@ export const PostV1DatabasesByTargetDatabaseIdRestoreOutput =
       }),
       branchId: Schema.NullOr(Schema.String),
     }),
-  });
-export type PostV1DatabasesByTargetDatabaseIdRestoreOutput =
-  typeof PostV1DatabasesByTargetDatabaseIdRestoreOutput.Type;
+  }) as unknown as Schema.Codec<PostV1DatabasesByTargetDatabaseIdRestoreOutput>;
 
 // The operation
 /**

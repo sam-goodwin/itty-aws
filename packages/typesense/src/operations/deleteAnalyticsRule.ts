@@ -4,13 +4,33 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteAnalyticsRuleInput {
+  ruleName: string;
+}
 export const DeleteAnalyticsRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleName: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/analytics/rules/{ruleName}" }));
-export type DeleteAnalyticsRuleInput = typeof DeleteAnalyticsRuleInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/analytics/rules/{ruleName}" }),
+  ) as unknown as Schema.Codec<DeleteAnalyticsRuleInput>;
 
 // Output Schema
+export interface DeleteAnalyticsRuleOutput {
+  name: string;
+  type: "popular_queries" | "nohits_queries" | "counter" | "log";
+  collection: string;
+  event_type: string;
+  rule_tag?: string;
+  params?: {
+    destination_collection?: string;
+    limit?: number;
+    capture_search_requests?: boolean;
+    meta_fields?: string[];
+    expand_query?: boolean;
+    counter_field?: string;
+    weight?: number;
+  };
+}
 export const DeleteAnalyticsRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
@@ -34,8 +54,7 @@ export const DeleteAnalyticsRuleOutput =
         weight: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type DeleteAnalyticsRuleOutput = typeof DeleteAnalyticsRuleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAnalyticsRuleOutput>;
 
 // The operation
 /**

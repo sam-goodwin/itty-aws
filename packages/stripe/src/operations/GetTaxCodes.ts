@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTaxCodesInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetTaxCodesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -14,10 +20,15 @@ export const GetTaxCodesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/tax_codes",
     contentType: "form-urlencoded",
   }),
-);
-export type GetTaxCodesInput = typeof GetTaxCodesInput.Type;
+) as unknown as Schema.Codec<GetTaxCodesInput>;
 
 // Output Schema
+export interface GetTaxCodesOutput {
+  data: { description: string; id: string; name: string; object: "tax_code" }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetTaxCodesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -30,8 +41,7 @@ export const GetTaxCodesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,
-});
-export type GetTaxCodesOutput = typeof GetTaxCodesOutput.Type;
+}) as unknown as Schema.Codec<GetTaxCodesOutput>;
 
 // The operation
 /**

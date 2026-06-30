@@ -4,6 +4,25 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface AdvancedActivityLogsListInput {
+  project_id: string;
+  activities?: string;
+  clients?: string;
+  detail_filters?: string;
+  end_date?: string;
+  hogql_filter?: string;
+  ip_addresses?: string;
+  is_system?: string;
+  item_ids?: string;
+  page?: number;
+  page_size?: number;
+  scopes?: string;
+  search_text?: string;
+  start_date?: string;
+  team_ids?: string;
+  users?: string;
+  was_impersonated?: string;
+}
 export const AdvancedActivityLogsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -28,11 +47,50 @@ export const AdvancedActivityLogsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/advanced_activity_logs/",
     }),
-  );
-export type AdvancedActivityLogsListInput =
-  typeof AdvancedActivityLogsListInput.Type;
+  ) as unknown as Schema.Codec<AdvancedActivityLogsListInput>;
 
 // Output Schema
+export interface AdvancedActivityLogsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    user?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    unread?: boolean;
+    team_id?: number | null;
+    organization_id?: string | null;
+    was_impersonated?: boolean | null;
+    is_system?: boolean | null;
+    client?: string | null;
+    ip_address?: string | null;
+    activity?: string;
+    item_id?: string | null;
+    scope?: string;
+    detail?: unknown;
+    created_at?: string;
+  }[];
+}
 export const AdvancedActivityLogsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -57,7 +115,23 @@ export const AdvancedActivityLogsListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -76,9 +150,7 @@ export const AdvancedActivityLogsListOutput =
         }),
       ),
     ),
-  });
-export type AdvancedActivityLogsListOutput =
-  typeof AdvancedActivityLogsListOutput.Type;
+  }) as unknown as Schema.Codec<AdvancedActivityLogsListOutput>;
 
 // The operation
 /**

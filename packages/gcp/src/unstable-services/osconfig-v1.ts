@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface GcsObject {
   generationNumber?: string;
 }
 
-export const GcsObject: Schema.Schema<GcsObject> =
+export const GcsObject: Schema.Codec<GcsObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     object: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export interface OSPolicyInventoryFilter {
   osVersion?: string;
 }
 
-export const OSPolicyInventoryFilter: Schema.Schema<OSPolicyInventoryFilter> =
+export const OSPolicyInventoryFilter: Schema.Codec<OSPolicyInventoryFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osShortName: Schema.optional(Schema.String),
     osVersion: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface OSPolicyResourceRepositoryResourceYumRepository {
   gpgKeys?: ReadonlyArray<string>;
 }
 
-export const OSPolicyResourceRepositoryResourceYumRepository: Schema.Schema<OSPolicyResourceRepositoryResourceYumRepository> =
+export const OSPolicyResourceRepositoryResourceYumRepository: Schema.Codec<OSPolicyResourceRepositoryResourceYumRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface OSPolicyResourceRepositoryResourceZypperRepository {
   baseUrl?: string;
 }
 
-export const OSPolicyResourceRepositoryResourceZypperRepository: Schema.Schema<OSPolicyResourceRepositoryResourceZypperRepository> =
+export const OSPolicyResourceRepositoryResourceZypperRepository: Schema.Codec<OSPolicyResourceRepositoryResourceZypperRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gpgKeys: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
@@ -100,7 +100,7 @@ export interface OSPolicyResourceRepositoryResourceGooRepository {
   url?: string;
 }
 
-export const OSPolicyResourceRepositoryResourceGooRepository: Schema.Schema<OSPolicyResourceRepositoryResourceGooRepository> =
+export const OSPolicyResourceRepositoryResourceGooRepository: Schema.Codec<OSPolicyResourceRepositoryResourceGooRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -121,7 +121,7 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   gpgKey?: string;
 }
 
-export const OSPolicyResourceRepositoryResourceAptRepository: Schema.Schema<OSPolicyResourceRepositoryResourceAptRepository> =
+export const OSPolicyResourceRepositoryResourceAptRepository: Schema.Codec<OSPolicyResourceRepositoryResourceAptRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     distribution: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -143,7 +143,7 @@ export interface OSPolicyResourceRepositoryResource {
   apt?: OSPolicyResourceRepositoryResourceAptRepository;
 }
 
-export const OSPolicyResourceRepositoryResource: Schema.Schema<OSPolicyResourceRepositoryResource> =
+export const OSPolicyResourceRepositoryResource: Schema.Codec<OSPolicyResourceRepositoryResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yum: Schema.optional(OSPolicyResourceRepositoryResourceYumRepository),
     zypper: Schema.optional(OSPolicyResourceRepositoryResourceZypperRepository),
@@ -158,7 +158,7 @@ export interface OSPolicyResourceFileRemote {
   sha256Checksum?: string;
 }
 
-export const OSPolicyResourceFileRemote: Schema.Schema<OSPolicyResourceFileRemote> =
+export const OSPolicyResourceFileRemote: Schema.Codec<OSPolicyResourceFileRemote> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     sha256Checksum: Schema.optional(Schema.String),
@@ -173,7 +173,7 @@ export interface OSPolicyResourceFileGcs {
   generation?: string;
 }
 
-export const OSPolicyResourceFileGcs: Schema.Schema<OSPolicyResourceFileGcs> =
+export const OSPolicyResourceFileGcs: Schema.Codec<OSPolicyResourceFileGcs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     object: Schema.optional(Schema.String),
@@ -191,7 +191,7 @@ export interface OSPolicyResourceFile {
   localPath?: string;
 }
 
-export const OSPolicyResourceFile: Schema.Schema<OSPolicyResourceFile> =
+export const OSPolicyResourceFile: Schema.Codec<OSPolicyResourceFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remote: Schema.optional(OSPolicyResourceFileRemote),
     gcs: Schema.optional(OSPolicyResourceFileGcs),
@@ -217,7 +217,7 @@ export interface OSPolicyResourceExecResourceExec {
   outputFilePath?: string;
 }
 
-export const OSPolicyResourceExecResourceExec: Schema.Schema<OSPolicyResourceExecResourceExec> =
+export const OSPolicyResourceExecResourceExec: Schema.Codec<OSPolicyResourceExecResourceExec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     file: Schema.optional(OSPolicyResourceFile),
     script: Schema.optional(Schema.String),
@@ -233,7 +233,7 @@ export interface OSPolicyResourceExecResource {
   enforce?: OSPolicyResourceExecResourceExec;
 }
 
-export const OSPolicyResourceExecResource: Schema.Schema<OSPolicyResourceExecResource> =
+export const OSPolicyResourceExecResource: Schema.Codec<OSPolicyResourceExecResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validate: Schema.optional(OSPolicyResourceExecResourceExec),
     enforce: Schema.optional(OSPolicyResourceExecResourceExec),
@@ -257,7 +257,7 @@ export interface OSPolicyResourceFileResource {
   file?: OSPolicyResourceFile;
 }
 
-export const OSPolicyResourceFileResource: Schema.Schema<OSPolicyResourceFileResource> =
+export const OSPolicyResourceFileResource: Schema.Codec<OSPolicyResourceFileResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.String),
@@ -271,7 +271,7 @@ export interface OSPolicyResourcePackageResourceYUM {
   name?: string;
 }
 
-export const OSPolicyResourcePackageResourceYUM: Schema.Schema<OSPolicyResourcePackageResourceYUM> =
+export const OSPolicyResourcePackageResourceYUM: Schema.Codec<OSPolicyResourcePackageResourceYUM> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceYUM" });
@@ -281,7 +281,7 @@ export interface OSPolicyResourcePackageResourceZypper {
   name?: string;
 }
 
-export const OSPolicyResourcePackageResourceZypper: Schema.Schema<OSPolicyResourcePackageResourceZypper> =
+export const OSPolicyResourcePackageResourceZypper: Schema.Codec<OSPolicyResourcePackageResourceZypper> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceZypper" });
@@ -293,7 +293,7 @@ export interface OSPolicyResourcePackageResourceRPM {
   pullDeps?: boolean;
 }
 
-export const OSPolicyResourcePackageResourceRPM: Schema.Schema<OSPolicyResourcePackageResourceRPM> =
+export const OSPolicyResourcePackageResourceRPM: Schema.Codec<OSPolicyResourcePackageResourceRPM> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     pullDeps: Schema.optional(Schema.Boolean),
@@ -304,7 +304,7 @@ export interface OSPolicyResourcePackageResourceGooGet {
   name?: string;
 }
 
-export const OSPolicyResourcePackageResourceGooGet: Schema.Schema<OSPolicyResourcePackageResourceGooGet> =
+export const OSPolicyResourcePackageResourceGooGet: Schema.Codec<OSPolicyResourcePackageResourceGooGet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceGooGet" });
@@ -316,7 +316,7 @@ export interface OSPolicyResourcePackageResourceMSI {
   properties?: ReadonlyArray<string>;
 }
 
-export const OSPolicyResourcePackageResourceMSI: Schema.Schema<OSPolicyResourcePackageResourceMSI> =
+export const OSPolicyResourcePackageResourceMSI: Schema.Codec<OSPolicyResourcePackageResourceMSI> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     properties: Schema.optional(Schema.Array(Schema.String)),
@@ -327,7 +327,7 @@ export interface OSPolicyResourcePackageResourceAPT {
   name?: string;
 }
 
-export const OSPolicyResourcePackageResourceAPT: Schema.Schema<OSPolicyResourcePackageResourceAPT> =
+export const OSPolicyResourcePackageResourceAPT: Schema.Codec<OSPolicyResourcePackageResourceAPT> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OSPolicyResourcePackageResourceAPT" });
@@ -339,7 +339,7 @@ export interface OSPolicyResourcePackageResourceDeb {
   pullDeps?: boolean;
 }
 
-export const OSPolicyResourcePackageResourceDeb: Schema.Schema<OSPolicyResourcePackageResourceDeb> =
+export const OSPolicyResourcePackageResourceDeb: Schema.Codec<OSPolicyResourcePackageResourceDeb> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(OSPolicyResourceFile),
     pullDeps: Schema.optional(Schema.Boolean),
@@ -368,7 +368,7 @@ export interface OSPolicyResourcePackageResource {
   deb?: OSPolicyResourcePackageResourceDeb;
 }
 
-export const OSPolicyResourcePackageResource: Schema.Schema<OSPolicyResourcePackageResource> =
+export const OSPolicyResourcePackageResource: Schema.Codec<OSPolicyResourcePackageResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yum: Schema.optional(OSPolicyResourcePackageResourceYUM),
     zypper: Schema.optional(OSPolicyResourcePackageResourceZypper),
@@ -393,7 +393,7 @@ export interface OSPolicyResource {
   pkg?: OSPolicyResourcePackageResource;
 }
 
-export const OSPolicyResource: Schema.Schema<OSPolicyResource> =
+export const OSPolicyResource: Schema.Codec<OSPolicyResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     repository: Schema.optional(OSPolicyResourceRepositoryResource),
@@ -409,7 +409,7 @@ export interface OSPolicyResourceGroup {
   resources?: ReadonlyArray<OSPolicyResource>;
 }
 
-export const OSPolicyResourceGroup: Schema.Schema<OSPolicyResourceGroup> =
+export const OSPolicyResourceGroup: Schema.Codec<OSPolicyResourceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inventoryFilters: Schema.optional(Schema.Array(OSPolicyInventoryFilter)),
     resources: Schema.optional(Schema.Array(OSPolicyResource)),
@@ -428,7 +428,7 @@ export interface OSPolicy {
   allowNoResourceGroupMatch?: boolean;
 }
 
-export const OSPolicy: Schema.Schema<OSPolicy> =
+export const OSPolicy: Schema.Codec<OSPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroups: Schema.optional(Schema.Array(OSPolicyResourceGroup)),
     id: Schema.optional(Schema.String),
@@ -444,7 +444,7 @@ export interface FixedOrPercent {
   percent?: number;
 }
 
-export const FixedOrPercent: Schema.Schema<FixedOrPercent> =
+export const FixedOrPercent: Schema.Codec<FixedOrPercent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fixed: Schema.optional(Schema.Number),
     percent: Schema.optional(Schema.Number),
@@ -457,7 +457,7 @@ export interface OSPolicyAssignmentRollout {
   minWaitDuration?: string;
 }
 
-export const OSPolicyAssignmentRollout: Schema.Schema<OSPolicyAssignmentRollout> =
+export const OSPolicyAssignmentRollout: Schema.Codec<OSPolicyAssignmentRollout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disruptionBudget: Schema.optional(FixedOrPercent),
     minWaitDuration: Schema.optional(Schema.String),
@@ -468,7 +468,7 @@ export interface OSPolicyAssignmentLabelSet {
   labels?: Record<string, string>;
 }
 
-export const OSPolicyAssignmentLabelSet: Schema.Schema<OSPolicyAssignmentLabelSet> =
+export const OSPolicyAssignmentLabelSet: Schema.Codec<OSPolicyAssignmentLabelSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "OSPolicyAssignmentLabelSet" });
@@ -480,7 +480,7 @@ export interface OSPolicyAssignmentInstanceFilterInventory {
   osVersion?: string;
 }
 
-export const OSPolicyAssignmentInstanceFilterInventory: Schema.Schema<OSPolicyAssignmentInstanceFilterInventory> =
+export const OSPolicyAssignmentInstanceFilterInventory: Schema.Codec<OSPolicyAssignmentInstanceFilterInventory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osShortName: Schema.optional(Schema.String),
     osVersion: Schema.optional(Schema.String),
@@ -497,7 +497,7 @@ export interface OSPolicyAssignmentInstanceFilter {
   all?: boolean;
 }
 
-export const OSPolicyAssignmentInstanceFilter: Schema.Schema<OSPolicyAssignmentInstanceFilter> =
+export const OSPolicyAssignmentInstanceFilter: Schema.Codec<OSPolicyAssignmentInstanceFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exclusionLabels: Schema.optional(Schema.Array(OSPolicyAssignmentLabelSet)),
     inventories: Schema.optional(
@@ -542,7 +542,7 @@ export interface OSPolicyAssignment {
     | (string & {});
 }
 
-export const OSPolicyAssignment: Schema.Schema<OSPolicyAssignment> =
+export const OSPolicyAssignment: Schema.Codec<OSPolicyAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     revisionId: Schema.optional(Schema.String),
@@ -570,7 +570,7 @@ export interface PatchRollout {
   disruptionBudget?: FixedOrPercent;
 }
 
-export const PatchRollout: Schema.Schema<PatchRollout> =
+export const PatchRollout: Schema.Codec<PatchRollout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
     disruptionBudget: Schema.optional(FixedOrPercent),
@@ -639,7 +639,7 @@ export interface CVSSv3 {
     | (string & {});
 }
 
-export const CVSSv3: Schema.Schema<CVSSv3> =
+export const CVSSv3: Schema.Codec<CVSSv3> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilityImpact: Schema.optional(Schema.String),
     confidentialityImpact: Schema.optional(Schema.String),
@@ -661,7 +661,7 @@ export interface VulnerabilityReportVulnerabilityDetailsReference {
   source?: string;
 }
 
-export const VulnerabilityReportVulnerabilityDetailsReference: Schema.Schema<VulnerabilityReportVulnerabilityDetailsReference> =
+export const VulnerabilityReportVulnerabilityDetailsReference: Schema.Codec<VulnerabilityReportVulnerabilityDetailsReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
@@ -684,7 +684,7 @@ export interface VulnerabilityReportVulnerabilityDetails {
   severity?: string;
 }
 
-export const VulnerabilityReportVulnerabilityDetails: Schema.Schema<VulnerabilityReportVulnerabilityDetails> =
+export const VulnerabilityReportVulnerabilityDetails: Schema.Codec<VulnerabilityReportVulnerabilityDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cvssV3: Schema.optional(CVSSv3),
     cve: Schema.optional(Schema.String),
@@ -707,7 +707,7 @@ export interface VulnerabilityReportVulnerabilityItem {
   availableInventoryItemId?: string;
 }
 
-export const VulnerabilityReportVulnerabilityItem: Schema.Schema<VulnerabilityReportVulnerabilityItem> =
+export const VulnerabilityReportVulnerabilityItem: Schema.Codec<VulnerabilityReportVulnerabilityItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installedInventoryItemId: Schema.optional(Schema.String),
     fixedCpeUri: Schema.optional(Schema.String),
@@ -730,7 +730,7 @@ export interface VulnerabilityReportVulnerability {
   updateTime?: string;
 }
 
-export const VulnerabilityReportVulnerability: Schema.Schema<VulnerabilityReportVulnerability> =
+export const VulnerabilityReportVulnerability: Schema.Codec<VulnerabilityReportVulnerability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(VulnerabilityReportVulnerabilityDetails),
     availableInventoryItemIds: Schema.optional(Schema.Array(Schema.String)),
@@ -759,7 +759,7 @@ export interface VulnerabilityReport {
   name?: string;
 }
 
-export const VulnerabilityReport: Schema.Schema<VulnerabilityReport> =
+export const VulnerabilityReport: Schema.Codec<VulnerabilityReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vulnerabilities: Schema.optional(
       Schema.Array(VulnerabilityReportVulnerability),
@@ -780,7 +780,7 @@ export interface InventoryWindowsQuickFixEngineeringPackage {
   caption?: string;
 }
 
-export const InventoryWindowsQuickFixEngineeringPackage: Schema.Schema<InventoryWindowsQuickFixEngineeringPackage> =
+export const InventoryWindowsQuickFixEngineeringPackage: Schema.Codec<InventoryWindowsQuickFixEngineeringPackage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     hotFixId: Schema.optional(Schema.String),
@@ -790,7 +790,7 @@ export const InventoryWindowsQuickFixEngineeringPackage: Schema.Schema<Inventory
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -804,7 +804,7 @@ export interface InventoryVersionedPackage {
   architecture?: string;
 }
 
-export const InventoryVersionedPackage: Schema.Schema<InventoryVersionedPackage> =
+export const InventoryVersionedPackage: Schema.Codec<InventoryVersionedPackage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -822,7 +822,7 @@ export interface InventoryZypperPatch {
   severity?: string;
 }
 
-export const InventoryZypperPatch: Schema.Schema<InventoryZypperPatch> =
+export const InventoryZypperPatch: Schema.Codec<InventoryZypperPatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
@@ -839,7 +839,7 @@ export interface Osconfig_Date {
   day?: number;
 }
 
-export const Osconfig_Date: Schema.Schema<Osconfig_Date> =
+export const Osconfig_Date: Schema.Codec<Osconfig_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -859,7 +859,7 @@ export interface InventoryWindowsApplication {
   installDate?: Osconfig_Date;
 }
 
-export const InventoryWindowsApplication: Schema.Schema<InventoryWindowsApplication> =
+export const InventoryWindowsApplication: Schema.Codec<InventoryWindowsApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     helpLink: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -875,7 +875,7 @@ export interface InventoryWindowsUpdatePackageWindowsUpdateCategory {
   name?: string;
 }
 
-export const InventoryWindowsUpdatePackageWindowsUpdateCategory: Schema.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategory> =
+export const InventoryWindowsUpdatePackageWindowsUpdateCategory: Schema.Codec<InventoryWindowsUpdatePackageWindowsUpdateCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -904,7 +904,7 @@ export interface InventoryWindowsUpdatePackage {
   updateId?: string;
 }
 
-export const InventoryWindowsUpdatePackage: Schema.Schema<InventoryWindowsUpdatePackage> =
+export const InventoryWindowsUpdatePackage: Schema.Codec<InventoryWindowsUpdatePackage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categories: Schema.optional(
       Schema.Array(InventoryWindowsUpdatePackageWindowsUpdateCategory),
@@ -940,7 +940,7 @@ export interface InventorySoftwarePackage {
   qfePackage?: InventoryWindowsQuickFixEngineeringPackage;
 }
 
-export const InventorySoftwarePackage: Schema.Schema<InventorySoftwarePackage> =
+export const InventorySoftwarePackage: Schema.Codec<InventorySoftwarePackage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aptPackage: Schema.optional(InventoryVersionedPackage),
     zypperPackage: Schema.optional(InventoryVersionedPackage),
@@ -974,7 +974,7 @@ export interface InventoryItem {
   availablePackage?: InventorySoftwarePackage;
 }
 
-export const InventoryItem: Schema.Schema<InventoryItem> =
+export const InventoryItem: Schema.Codec<InventoryItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     installedPackage: Schema.optional(InventorySoftwarePackage),
@@ -987,7 +987,7 @@ export const InventoryItem: Schema.Schema<InventoryItem> =
 
 export interface GooSettings {}
 
-export const GooSettings: Schema.Schema<GooSettings> =
+export const GooSettings: Schema.Codec<GooSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooSettings",
   });
@@ -1007,7 +1007,7 @@ export interface ZypperSettings {
   categories?: ReadonlyArray<string>;
 }
 
-export const ZypperSettings: Schema.Schema<ZypperSettings> =
+export const ZypperSettings: Schema.Codec<ZypperSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     withOptional: Schema.optional(Schema.Boolean),
     severities: Schema.optional(Schema.Array(Schema.String)),
@@ -1033,7 +1033,7 @@ export interface ExecStepConfig {
     | (string & {});
 }
 
-export const ExecStepConfig: Schema.Schema<ExecStepConfig> =
+export const ExecStepConfig: Schema.Codec<ExecStepConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localPath: Schema.optional(Schema.String),
     gcsObject: Schema.optional(GcsObject),
@@ -1048,7 +1048,7 @@ export interface ExecStep {
   linuxExecStepConfig?: ExecStepConfig;
 }
 
-export const ExecStep: Schema.Schema<ExecStep> =
+export const ExecStep: Schema.Codec<ExecStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     windowsExecStepConfig: Schema.optional(ExecStepConfig),
     linuxExecStepConfig: Schema.optional(ExecStepConfig),
@@ -1065,7 +1065,7 @@ export interface YumSettings {
   excludes?: ReadonlyArray<string>;
 }
 
-export const YumSettings: Schema.Schema<YumSettings> =
+export const YumSettings: Schema.Codec<YumSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     security: Schema.optional(Schema.Boolean),
     minimal: Schema.optional(Schema.Boolean),
@@ -1094,7 +1094,7 @@ export interface WindowsUpdateSettings {
   exclusivePatches?: ReadonlyArray<string>;
 }
 
-export const WindowsUpdateSettings: Schema.Schema<WindowsUpdateSettings> =
+export const WindowsUpdateSettings: Schema.Codec<WindowsUpdateSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     classifications: Schema.optional(Schema.Array(Schema.String)),
     excludes: Schema.optional(Schema.Array(Schema.String)),
@@ -1110,7 +1110,7 @@ export interface AptSettings {
   exclusivePackages?: ReadonlyArray<string>;
 }
 
-export const AptSettings: Schema.Schema<AptSettings> =
+export const AptSettings: Schema.Codec<AptSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     excludes: Schema.optional(Schema.Array(Schema.String)),
@@ -1145,7 +1145,7 @@ export interface PatchConfig {
   postStep?: ExecStep;
 }
 
-export const PatchConfig: Schema.Schema<PatchConfig> =
+export const PatchConfig: Schema.Codec<PatchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rebootConfig: Schema.optional(Schema.String),
     goo: Schema.optional(GooSettings),
@@ -1194,7 +1194,7 @@ export interface PatchJobInstanceDetailsSummary {
   skippedInstanceCount?: string;
 }
 
-export const PatchJobInstanceDetailsSummary: Schema.Schema<PatchJobInstanceDetailsSummary> =
+export const PatchJobInstanceDetailsSummary: Schema.Codec<PatchJobInstanceDetailsSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rebootingInstanceCount: Schema.optional(Schema.String),
     inactiveInstanceCount: Schema.optional(Schema.String),
@@ -1219,7 +1219,7 @@ export interface PatchInstanceFilterGroupLabel {
   labels?: Record<string, string>;
 }
 
-export const PatchInstanceFilterGroupLabel: Schema.Schema<PatchInstanceFilterGroupLabel> =
+export const PatchInstanceFilterGroupLabel: Schema.Codec<PatchInstanceFilterGroupLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "PatchInstanceFilterGroupLabel" });
@@ -1237,7 +1237,7 @@ export interface PatchInstanceFilter {
   zones?: ReadonlyArray<string>;
 }
 
-export const PatchInstanceFilter: Schema.Schema<PatchInstanceFilter> =
+export const PatchInstanceFilter: Schema.Codec<PatchInstanceFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     all: Schema.optional(Schema.Boolean),
     instances: Schema.optional(Schema.Array(Schema.String)),
@@ -1289,7 +1289,7 @@ export interface PatchJob {
   duration?: string;
 }
 
-export const PatchJob: Schema.Schema<PatchJob> =
+export const PatchJob: Schema.Codec<PatchJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentComplete: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -1319,7 +1319,7 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
@@ -1345,7 +1345,7 @@ export interface WeekDayOfMonth {
     | (string & {});
 }
 
-export const WeekDayOfMonth: Schema.Schema<WeekDayOfMonth> =
+export const WeekDayOfMonth: Schema.Codec<WeekDayOfMonth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weekOrdinal: Schema.optional(Schema.Number),
     dayOffset: Schema.optional(Schema.Number),
@@ -1359,7 +1359,7 @@ export interface MonthlySchedule {
   weekDayOfMonth?: WeekDayOfMonth;
 }
 
-export const MonthlySchedule: Schema.Schema<MonthlySchedule> =
+export const MonthlySchedule: Schema.Codec<MonthlySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monthDay: Schema.optional(Schema.Number),
     weekDayOfMonth: Schema.optional(WeekDayOfMonth),
@@ -1372,7 +1372,7 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
+export const TimeZone: Schema.Codec<TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -1392,7 +1392,7 @@ export interface WeeklySchedule {
     | (string & {});
 }
 
-export const WeeklySchedule: Schema.Schema<WeeklySchedule> =
+export const WeeklySchedule: Schema.Codec<WeeklySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dayOfWeek: Schema.optional(Schema.String),
   }).annotate({ identifier: "WeeklySchedule" });
@@ -1423,7 +1423,7 @@ export interface RecurringSchedule {
   nextExecuteTime?: string;
 }
 
-export const RecurringSchedule: Schema.Schema<RecurringSchedule> =
+export const RecurringSchedule: Schema.Codec<RecurringSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeOfDay: Schema.optional(TimeOfDay),
     lastExecuteTime: Schema.optional(Schema.String),
@@ -1441,7 +1441,7 @@ export interface OneTimeSchedule {
   executeTime?: string;
 }
 
-export const OneTimeSchedule: Schema.Schema<OneTimeSchedule> =
+export const OneTimeSchedule: Schema.Codec<OneTimeSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executeTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "OneTimeSchedule" });
@@ -1473,7 +1473,7 @@ export interface PatchDeployment {
   oneTimeSchedule?: OneTimeSchedule;
 }
 
-export const PatchDeployment: Schema.Schema<PatchDeployment> =
+export const PatchDeployment: Schema.Codec<PatchDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollout: Schema.optional(PatchRollout),
     createTime: Schema.optional(Schema.String),
@@ -1508,7 +1508,7 @@ export interface InventoryOsInfo {
   kernelRelease?: string;
 }
 
-export const InventoryOsInfo: Schema.Schema<InventoryOsInfo> =
+export const InventoryOsInfo: Schema.Codec<InventoryOsInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osconfigAgentVersion: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -1533,7 +1533,7 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
     | (string & {});
 }
 
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep: Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep> =
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep: Schema.Codec<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1559,7 +1559,7 @@ export interface GoogleCloudOsconfigV2beta__OperationMetadata {
   statusMessage?: string;
 }
 
-export const GoogleCloudOsconfigV2beta__OperationMetadata: Schema.Schema<GoogleCloudOsconfigV2beta__OperationMetadata> =
+export const GoogleCloudOsconfigV2beta__OperationMetadata: Schema.Codec<GoogleCloudOsconfigV2beta__OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -1572,7 +1572,7 @@ export const GoogleCloudOsconfigV2beta__OperationMetadata: Schema.Schema<GoogleC
 
 export interface MessageSet {}
 
-export const MessageSet: Schema.Schema<MessageSet> =
+export const MessageSet: Schema.Codec<MessageSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MessageSet",
   });
@@ -1594,7 +1594,7 @@ export interface ExecutePatchJobRequest {
   rollout?: PatchRollout;
 }
 
-export const ExecutePatchJobRequest: Schema.Schema<ExecutePatchJobRequest> =
+export const ExecutePatchJobRequest: Schema.Codec<ExecutePatchJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
@@ -1629,7 +1629,7 @@ export interface GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata {
   rolloutStartTime?: string;
 }
 
-export const GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata: Schema.Schema<GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata> =
+export const GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata: Schema.Codec<GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rolloutState: Schema.optional(Schema.String),
     rolloutUpdateTime: Schema.optional(Schema.String),
@@ -1649,7 +1649,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1671,7 +1671,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1691,7 +1691,7 @@ export interface ProjectFeatureSettings {
     | (string & {});
 }
 
-export const ProjectFeatureSettings: Schema.Schema<ProjectFeatureSettings> =
+export const ProjectFeatureSettings: Schema.Codec<ProjectFeatureSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     patchAndConfigFeatureSet: Schema.optional(Schema.String),
@@ -1708,7 +1708,7 @@ export interface Inventory {
   osInfo?: InventoryOsInfo;
 }
 
-export const Inventory: Schema.Schema<Inventory> =
+export const Inventory: Schema.Codec<Inventory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1723,7 +1723,7 @@ export interface ListInventoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListInventoriesResponse: Schema.Schema<ListInventoriesResponse> =
+export const ListInventoriesResponse: Schema.Codec<ListInventoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inventories: Schema.optional(Schema.Array(Inventory)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1736,7 +1736,7 @@ export interface ListOSPolicyAssignmentRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListOSPolicyAssignmentRevisionsResponse: Schema.Schema<ListOSPolicyAssignmentRevisionsResponse> =
+export const ListOSPolicyAssignmentRevisionsResponse: Schema.Codec<ListOSPolicyAssignmentRevisionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osPolicyAssignments: Schema.optional(Schema.Array(OSPolicyAssignment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1744,7 +1744,7 @@ export const ListOSPolicyAssignmentRevisionsResponse: Schema.Schema<ListOSPolicy
 
 export interface ResumePatchDeploymentRequest {}
 
-export const ResumePatchDeploymentRequest: Schema.Schema<ResumePatchDeploymentRequest> =
+export const ResumePatchDeploymentRequest: Schema.Codec<ResumePatchDeploymentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResumePatchDeploymentRequest",
   });
@@ -1756,7 +1756,7 @@ export interface ListOSPolicyAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListOSPolicyAssignmentsResponse: Schema.Schema<ListOSPolicyAssignmentsResponse> =
+export const ListOSPolicyAssignmentsResponse: Schema.Codec<ListOSPolicyAssignmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osPolicyAssignments: Schema.optional(Schema.Array(OSPolicyAssignment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1764,7 +1764,7 @@ export const ListOSPolicyAssignmentsResponse: Schema.Schema<ListOSPolicyAssignme
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -1800,7 +1800,7 @@ export interface PatchJobInstanceDetails {
   failureReason?: string;
 }
 
-export const PatchJobInstanceDetails: Schema.Schema<PatchJobInstanceDetails> =
+export const PatchJobInstanceDetails: Schema.Codec<PatchJobInstanceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1814,7 +1814,7 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
   enforcementOutput?: string;
 }
 
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput: Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput> =
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput: Schema.Codec<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforcementOutput: Schema.optional(Schema.String),
   }).annotate({
@@ -1835,7 +1835,7 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
   execResourceOutput?: OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput;
 }
 
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance: Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance> =
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance: Schema.Codec<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osPolicyResourceId: Schema.optional(Schema.String),
     complianceState: Schema.optional(Schema.String),
@@ -1864,7 +1864,7 @@ export interface OSPolicyAssignmentReportOSPolicyCompliance {
   complianceState?: "UNKNOWN" | "COMPLIANT" | "NON_COMPLIANT" | (string & {});
 }
 
-export const OSPolicyAssignmentReportOSPolicyCompliance: Schema.Schema<OSPolicyAssignmentReportOSPolicyCompliance> =
+export const OSPolicyAssignmentReportOSPolicyCompliance: Schema.Codec<OSPolicyAssignmentReportOSPolicyCompliance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     complianceStateReason: Schema.optional(Schema.String),
     osPolicyResourceCompliances: Schema.optional(
@@ -1893,7 +1893,7 @@ export interface GoogleCloudOsconfigV2__OperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const GoogleCloudOsconfigV2__OperationMetadata: Schema.Schema<GoogleCloudOsconfigV2__OperationMetadata> =
+export const GoogleCloudOsconfigV2__OperationMetadata: Schema.Codec<GoogleCloudOsconfigV2__OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
@@ -1911,7 +1911,7 @@ export interface ListPatchJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListPatchJobsResponse: Schema.Schema<ListPatchJobsResponse> =
+export const ListPatchJobsResponse: Schema.Codec<ListPatchJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patchJobs: Schema.optional(Schema.Array(PatchJob)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1941,7 +1941,7 @@ export interface OSPolicyAssignmentOperationMetadata {
   rolloutStartTime?: string;
 }
 
-export const OSPolicyAssignmentOperationMetadata: Schema.Schema<OSPolicyAssignmentOperationMetadata> =
+export const OSPolicyAssignmentOperationMetadata: Schema.Codec<OSPolicyAssignmentOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rolloutState: Schema.optional(Schema.String),
     rolloutUpdateTime: Schema.optional(Schema.String),
@@ -1952,7 +1952,7 @@ export const OSPolicyAssignmentOperationMetadata: Schema.Schema<OSPolicyAssignme
 
 export interface CancelPatchJobRequest {}
 
-export const CancelPatchJobRequest: Schema.Schema<CancelPatchJobRequest> =
+export const CancelPatchJobRequest: Schema.Codec<CancelPatchJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelPatchJobRequest",
   });
@@ -1964,7 +1964,7 @@ export interface ListPatchJobInstanceDetailsResponse {
   nextPageToken?: string;
 }
 
-export const ListPatchJobInstanceDetailsResponse: Schema.Schema<ListPatchJobInstanceDetailsResponse> =
+export const ListPatchJobInstanceDetailsResponse: Schema.Codec<ListPatchJobInstanceDetailsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patchJobInstanceDetails: Schema.optional(
       Schema.Array(PatchJobInstanceDetails),
@@ -1974,7 +1974,7 @@ export const ListPatchJobInstanceDetailsResponse: Schema.Schema<ListPatchJobInst
 
 export interface PausePatchDeploymentRequest {}
 
-export const PausePatchDeploymentRequest: Schema.Schema<PausePatchDeploymentRequest> =
+export const PausePatchDeploymentRequest: Schema.Codec<PausePatchDeploymentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PausePatchDeploymentRequest",
   });
@@ -1986,7 +1986,7 @@ export interface ListPatchDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListPatchDeploymentsResponse: Schema.Schema<ListPatchDeploymentsResponse> =
+export const ListPatchDeploymentsResponse: Schema.Codec<ListPatchDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     patchDeployments: Schema.optional(Schema.Array(PatchDeployment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2007,7 +2007,7 @@ export interface OSPolicyAssignmentReport {
   updateTime?: string;
 }
 
-export const OSPolicyAssignmentReport: Schema.Schema<OSPolicyAssignmentReport> =
+export const OSPolicyAssignmentReport: Schema.Codec<OSPolicyAssignmentReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastRunId: Schema.optional(Schema.String),
     osPolicyAssignment: Schema.optional(Schema.String),
@@ -2026,7 +2026,7 @@ export interface ListOSPolicyAssignmentReportsResponse {
   nextPageToken?: string;
 }
 
-export const ListOSPolicyAssignmentReportsResponse: Schema.Schema<ListOSPolicyAssignmentReportsResponse> =
+export const ListOSPolicyAssignmentReportsResponse: Schema.Codec<ListOSPolicyAssignmentReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     osPolicyAssignmentReports: Schema.optional(
       Schema.Array(OSPolicyAssignmentReport),
@@ -2041,7 +2041,7 @@ export interface ListVulnerabilityReportsResponse {
   vulnerabilityReports?: ReadonlyArray<VulnerabilityReport>;
 }
 
-export const ListVulnerabilityReportsResponse: Schema.Schema<ListVulnerabilityReportsResponse> =
+export const ListVulnerabilityReportsResponse: Schema.Codec<ListVulnerabilityReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     vulnerabilityReports: Schema.optional(Schema.Array(VulnerabilityReport)),
@@ -2060,7 +2060,7 @@ export interface StatusProto {
   canonicalCode?: number;
 }
 
-export const StatusProto: Schema.Schema<StatusProto> =
+export const StatusProto: Schema.Codec<StatusProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     space: Schema.optional(Schema.String),
@@ -2146,7 +2146,7 @@ export const CreateProjectsPatchDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsPatchDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsPatchDeploymentsRequest>;
 
 export type CreateProjectsPatchDeploymentsResponse = PatchDeployment;
 export const CreateProjectsPatchDeploymentsResponse =
@@ -2185,7 +2185,7 @@ export const PauseProjectsPatchDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:pause", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PauseProjectsPatchDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PauseProjectsPatchDeploymentsRequest>;
 
 export type PauseProjectsPatchDeploymentsResponse = PatchDeployment;
 export const PauseProjectsPatchDeploymentsResponse =
@@ -2221,7 +2221,7 @@ export const DeleteProjectsPatchDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsPatchDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsPatchDeploymentsRequest>;
 
 export type DeleteProjectsPatchDeploymentsResponse = Empty;
 export const DeleteProjectsPatchDeploymentsResponse =
@@ -2257,7 +2257,7 @@ export const GetProjectsPatchDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsPatchDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsPatchDeploymentsRequest>;
 
 export type GetProjectsPatchDeploymentsResponse = PatchDeployment;
 export const GetProjectsPatchDeploymentsResponse =
@@ -2297,7 +2297,7 @@ export const ListProjectsPatchDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/patchDeployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsPatchDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsPatchDeploymentsRequest>;
 
 export type ListProjectsPatchDeploymentsResponse = ListPatchDeploymentsResponse;
 export const ListProjectsPatchDeploymentsResponse =
@@ -2341,7 +2341,7 @@ export const PatchProjectsPatchDeploymentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsPatchDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsPatchDeploymentsRequest>;
 
 export type PatchProjectsPatchDeploymentsResponse = PatchDeployment;
 export const PatchProjectsPatchDeploymentsResponse =
@@ -2380,7 +2380,7 @@ export const ResumeProjectsPatchDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:resume", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResumeProjectsPatchDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ResumeProjectsPatchDeploymentsRequest>;
 
 export type ResumeProjectsPatchDeploymentsResponse = PatchDeployment;
 export const ResumeProjectsPatchDeploymentsResponse =
@@ -2416,7 +2416,7 @@ export const GetProjectFeatureSettingsProjectsLocationsGlobalRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectFeatureSettingsProjectsLocationsGlobalRequest>;
+  ) as unknown as Schema.Codec<GetProjectFeatureSettingsProjectsLocationsGlobalRequest>;
 
 export type GetProjectFeatureSettingsProjectsLocationsGlobalResponse =
   ProjectFeatureSettings;
@@ -2457,7 +2457,7 @@ export const UpdateProjectFeatureSettingsProjectsLocationsGlobalRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectFeatureSettingsProjectsLocationsGlobalRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectFeatureSettingsProjectsLocationsGlobalRequest>;
 
 export type UpdateProjectFeatureSettingsProjectsLocationsGlobalResponse =
   ProjectFeatureSettings;
@@ -2508,7 +2508,7 @@ export const PatchProjectsLocationsOsPolicyAssignmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsOsPolicyAssignmentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export type PatchProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const PatchProjectsLocationsOsPolicyAssignmentsResponse =
@@ -2544,7 +2544,7 @@ export const GetProjectsLocationsOsPolicyAssignmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOsPolicyAssignmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export type GetProjectsLocationsOsPolicyAssignmentsResponse =
   OSPolicyAssignment;
@@ -2585,7 +2585,7 @@ export const ListProjectsLocationsOsPolicyAssignmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/osPolicyAssignments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOsPolicyAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export type ListProjectsLocationsOsPolicyAssignmentsResponse =
   ListOSPolicyAssignmentsResponse;
@@ -2627,7 +2627,7 @@ export const DeleteProjectsLocationsOsPolicyAssignmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOsPolicyAssignmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export type DeleteProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const DeleteProjectsLocationsOsPolicyAssignmentsResponse =
@@ -2669,7 +2669,7 @@ export const ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
     svc,
-  ) as unknown as Schema.Schema<ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export type ListRevisionsProjectsLocationsOsPolicyAssignmentsResponse =
   ListOSPolicyAssignmentRevisionsResponse;
@@ -2723,7 +2723,7 @@ export const CreateProjectsLocationsOsPolicyAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsOsPolicyAssignmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsOsPolicyAssignmentsRequest>;
 
 export type CreateProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const CreateProjectsLocationsOsPolicyAssignmentsResponse =
@@ -2759,7 +2759,7 @@ export const GetProjectsLocationsOsPolicyAssignmentsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
 
 export type GetProjectsLocationsOsPolicyAssignmentsOperationsResponse =
   Operation;
@@ -2797,7 +2797,7 @@ export const CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
 
 export type CancelProjectsLocationsOsPolicyAssignmentsOperationsResponse =
   Empty;
@@ -2837,7 +2837,7 @@ export const GetProjectsLocationsInstancesInventoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesInventoriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInstancesInventoriesRequest>;
 
 export type GetProjectsLocationsInstancesInventoriesResponse = Inventory;
 export const GetProjectsLocationsInstancesInventoriesResponse =
@@ -2883,7 +2883,7 @@ export const ListProjectsLocationsInstancesInventoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/inventories" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesInventoriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInstancesInventoriesRequest>;
 
 export type ListProjectsLocationsInstancesInventoriesResponse =
   ListInventoriesResponse;
@@ -2922,7 +2922,7 @@ export const GetProjectsLocationsInstancesVulnerabilityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesVulnerabilityReportsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInstancesVulnerabilityReportsRequest>;
 
 export type GetProjectsLocationsInstancesVulnerabilityReportsResponse =
   VulnerabilityReport;
@@ -2966,7 +2966,7 @@ export const ListProjectsLocationsInstancesVulnerabilityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/vulnerabilityReports" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesVulnerabilityReportsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInstancesVulnerabilityReportsRequest>;
 
 export type ListProjectsLocationsInstancesVulnerabilityReportsResponse =
   ListVulnerabilityReportsResponse;
@@ -3005,7 +3005,7 @@ export const GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
 
 export type GetProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse =
   OSPolicyAssignmentReport;
@@ -3049,7 +3049,7 @@ export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/reports" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
 
 export type ListProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse =
   ListOSPolicyAssignmentReportsResponse;
@@ -3091,7 +3091,7 @@ export const CancelProjectsPatchJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsPatchJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsPatchJobsRequest>;
 
 export type CancelProjectsPatchJobsResponse = PatchJob;
 export const CancelProjectsPatchJobsResponse =
@@ -3127,7 +3127,7 @@ export const GetProjectsPatchJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsPatchJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsPatchJobsRequest>;
 
 export type GetProjectsPatchJobsResponse = PatchJob;
 export const GetProjectsPatchJobsResponse =
@@ -3167,7 +3167,7 @@ export const ListProjectsPatchJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/patchJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsPatchJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsPatchJobsRequest>;
 
 export type ListProjectsPatchJobsResponse = ListPatchJobsResponse;
 export const ListProjectsPatchJobsResponse =
@@ -3209,7 +3209,7 @@ export const ExecuteProjectsPatchJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteProjectsPatchJobsRequest>;
+  ) as unknown as Schema.Codec<ExecuteProjectsPatchJobsRequest>;
 
 export type ExecuteProjectsPatchJobsResponse = PatchJob;
 export const ExecuteProjectsPatchJobsResponse =
@@ -3254,7 +3254,7 @@ export const ListProjectsPatchJobsInstanceDetailsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/instanceDetails" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsPatchJobsInstanceDetailsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsPatchJobsInstanceDetailsRequest>;
 
 export type ListProjectsPatchJobsInstanceDetailsResponse =
   ListPatchJobInstanceDetailsResponse;

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemShortcutReorderCreateInput {
+  project_id: string;
+  ordered_ids: string[];
+}
 export const DesktopFileSystemShortcutReorderCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,23 @@ export const DesktopFileSystemShortcutReorderCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/desktop_file_system_shortcut/reorder/",
     }),
-  );
-export type DesktopFileSystemShortcutReorderCreateInput =
-  typeof DesktopFileSystemShortcutReorderCreateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemShortcutReorderCreateInput>;
 
 // Output Schema
+export interface DesktopFileSystemShortcutReorderCreateOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    path?: string;
+    type?: string;
+    ref?: string | null;
+    href?: string | null;
+    order?: number;
+    created_at?: string;
+  }[];
+}
 export const DesktopFileSystemShortcutReorderCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -35,9 +51,7 @@ export const DesktopFileSystemShortcutReorderCreateOutput =
         }),
       ),
     ),
-  });
-export type DesktopFileSystemShortcutReorderCreateOutput =
-  typeof DesktopFileSystemShortcutReorderCreateOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemShortcutReorderCreateOutput>;
 
 // The operation
 /**

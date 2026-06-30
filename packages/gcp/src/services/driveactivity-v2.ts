@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface Administrator {}
 
-export const Administrator: Schema.Schema<Administrator> =
+export const Administrator: Schema.Codec<Administrator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Administrator",
   });
@@ -36,7 +36,7 @@ export interface KnownUser {
   isCurrentUser?: boolean;
 }
 
-export const KnownUser: Schema.Schema<KnownUser> =
+export const KnownUser: Schema.Codec<KnownUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     personName: Schema.optional(Schema.String),
     isCurrentUser: Schema.optional(Schema.Boolean),
@@ -44,14 +44,14 @@ export const KnownUser: Schema.Schema<KnownUser> =
 
 export interface DeletedUser {}
 
-export const DeletedUser: Schema.Schema<DeletedUser> =
+export const DeletedUser: Schema.Codec<DeletedUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeletedUser",
   });
 
 export interface UnknownUser {}
 
-export const UnknownUser: Schema.Schema<UnknownUser> =
+export const UnknownUser: Schema.Codec<UnknownUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UnknownUser",
   });
@@ -65,7 +65,7 @@ export interface User {
   unknownUser?: UnknownUser;
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     knownUser: Schema.optional(KnownUser),
     deletedUser: Schema.optional(DeletedUser),
@@ -88,7 +88,7 @@ export interface Assignment {
   assignedUser?: User;
 }
 
-export const Assignment: Schema.Schema<Assignment> =
+export const Assignment: Schema.Codec<Assignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subtype: Schema.optional(Schema.String),
     assignedUser: Schema.optional(User),
@@ -101,7 +101,7 @@ export interface TimeRange {
   endTime?: string;
 }
 
-export const TimeRange: Schema.Schema<TimeRange> =
+export const TimeRange: Schema.Codec<TimeRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export interface RestrictionChange {
     | (string & {});
 }
 
-export const RestrictionChange: Schema.Schema<RestrictionChange> =
+export const RestrictionChange: Schema.Codec<RestrictionChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feature: Schema.optional(Schema.String),
     newRestriction: Schema.optional(Schema.String),
@@ -135,14 +135,14 @@ export const RestrictionChange: Schema.Schema<RestrictionChange> =
 
 export interface NoConsolidation {}
 
-export const NoConsolidation: Schema.Schema<NoConsolidation> =
+export const NoConsolidation: Schema.Codec<NoConsolidation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "NoConsolidation",
   });
 
 export interface Legacy {}
 
-export const Legacy: Schema.Schema<Legacy> =
+export const Legacy: Schema.Codec<Legacy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Legacy",
   });
@@ -154,7 +154,7 @@ export interface ConsolidationStrategy {
   legacy?: Legacy;
 }
 
-export const ConsolidationStrategy: Schema.Schema<ConsolidationStrategy> =
+export const ConsolidationStrategy: Schema.Codec<ConsolidationStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     none: Schema.optional(NoConsolidation),
     legacy: Schema.optional(Legacy),
@@ -175,7 +175,7 @@ export interface QueryDriveActivityRequest {
   itemName?: string;
 }
 
-export const QueryDriveActivityRequest: Schema.Schema<QueryDriveActivityRequest> =
+export const QueryDriveActivityRequest: Schema.Codec<QueryDriveActivityRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
@@ -187,7 +187,7 @@ export const QueryDriveActivityRequest: Schema.Schema<QueryDriveActivityRequest>
 
 export interface Edit {}
 
-export const Edit: Schema.Schema<Edit> =
+export const Edit: Schema.Codec<Edit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Edit",
   });
@@ -199,7 +199,7 @@ export interface DriveReference {
   name?: string;
 }
 
-export const DriveReference: Schema.Schema<DriveReference> =
+export const DriveReference: Schema.Codec<DriveReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -212,7 +212,7 @@ export interface TeamDriveReference {
   name?: string;
 }
 
-export const TeamDriveReference: Schema.Schema<TeamDriveReference> =
+export const TeamDriveReference: Schema.Codec<TeamDriveReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -225,7 +225,7 @@ export interface Domain {
   name?: string;
 }
 
-export const Domain: Schema.Schema<Domain> =
+export const Domain: Schema.Codec<Domain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     legacyId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -242,7 +242,7 @@ export interface Owner {
   domain?: Domain;
 }
 
-export const Owner: Schema.Schema<Owner> =
+export const Owner: Schema.Codec<Owner> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     drive: Schema.optional(DriveReference),
     user: Schema.optional(User),
@@ -252,7 +252,7 @@ export const Owner: Schema.Schema<Owner> =
 
 export interface File {}
 
-export const File: Schema.Schema<File> =
+export const File: Schema.Codec<File> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "File",
   });
@@ -267,14 +267,14 @@ export interface Folder {
     | (string & {});
 }
 
-export const Folder: Schema.Schema<Folder> =
+export const Folder: Schema.Codec<Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "Folder" });
 
 export interface DriveFile {}
 
-export const DriveFile: Schema.Schema<DriveFile> =
+export const DriveFile: Schema.Codec<DriveFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DriveFile",
   });
@@ -289,7 +289,7 @@ export interface DriveFolder {
     | (string & {});
 }
 
-export const DriveFolder: Schema.Schema<DriveFolder> =
+export const DriveFolder: Schema.Codec<DriveFolder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveFolder" });
@@ -313,7 +313,7 @@ export interface DriveItem {
   driveFolder?: DriveFolder;
 }
 
-export const DriveItem: Schema.Schema<DriveItem> =
+export const DriveItem: Schema.Codec<DriveItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -334,7 +334,7 @@ export interface Drive {
   name?: string;
 }
 
-export const Drive: Schema.Schema<Drive> =
+export const Drive: Schema.Codec<Drive> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     root: Schema.optional(DriveItem),
@@ -346,7 +346,7 @@ export interface Restore {
   type?: "TYPE_UNSPECIFIED" | "UNTRASH" | (string & {});
 }
 
-export const Restore: Schema.Schema<Restore> =
+export const Restore: Schema.Codec<Restore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "Restore" });
@@ -358,7 +358,7 @@ export interface Selection {
   displayName?: string;
 }
 
-export const Selection: Schema.Schema<Selection> =
+export const Selection: Schema.Codec<Selection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -369,14 +369,14 @@ export interface SelectionList {
   values?: ReadonlyArray<Selection>;
 }
 
-export const SelectionList: Schema.Schema<SelectionList> =
+export const SelectionList: Schema.Codec<SelectionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Selection)),
   }).annotate({ identifier: "SelectionList" });
 
 export interface AnonymousUser {}
 
-export const AnonymousUser: Schema.Schema<AnonymousUser> =
+export const AnonymousUser: Schema.Codec<AnonymousUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AnonymousUser",
   });
@@ -392,7 +392,7 @@ export interface FileComment {
   linkToDiscussion?: string;
 }
 
-export const FileComment: Schema.Schema<FileComment> =
+export const FileComment: Schema.Codec<FileComment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(DriveItem),
     legacyDiscussionId: Schema.optional(Schema.String),
@@ -405,7 +405,7 @@ export interface SingleUser {
   value?: string;
 }
 
-export const SingleUser: Schema.Schema<SingleUser> =
+export const SingleUser: Schema.Codec<SingleUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "SingleUser" });
@@ -415,7 +415,7 @@ export interface UserList {
   values?: ReadonlyArray<SingleUser>;
 }
 
-export const UserList: Schema.Schema<UserList> =
+export const UserList: Schema.Codec<UserList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(SingleUser)),
   }).annotate({ identifier: "UserList" });
@@ -429,7 +429,7 @@ export interface TeamDrive {
   name?: string;
 }
 
-export const TeamDrive: Schema.Schema<TeamDrive> =
+export const TeamDrive: Schema.Codec<TeamDrive> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     root: Schema.optional(DriveItem),
@@ -447,7 +447,7 @@ export interface Target {
   teamDrive?: TeamDrive;
 }
 
-export const Target: Schema.Schema<Target> =
+export const Target: Schema.Codec<Target> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     drive: Schema.optional(Drive),
     driveItem: Schema.optional(DriveItem),
@@ -460,7 +460,7 @@ export interface Impersonation {
   impersonatedUser?: User;
 }
 
-export const Impersonation: Schema.Schema<Impersonation> =
+export const Impersonation: Schema.Codec<Impersonation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     impersonatedUser: Schema.optional(User),
   }).annotate({ identifier: "Impersonation" });
@@ -474,7 +474,7 @@ export interface SystemEvent {
     | (string & {});
 }
 
-export const SystemEvent: Schema.Schema<SystemEvent> =
+export const SystemEvent: Schema.Codec<SystemEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "SystemEvent" });
@@ -492,7 +492,7 @@ export interface Actor {
   system?: SystemEvent;
 }
 
-export const Actor: Schema.Schema<Actor> =
+export const Actor: Schema.Codec<Actor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     anonymous: Schema.optional(AnonymousUser),
     impersonation: Schema.optional(Impersonation),
@@ -514,7 +514,7 @@ export interface Post {
     | (string & {});
 }
 
-export const Post: Schema.Schema<Post> =
+export const Post: Schema.Codec<Post> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subtype: Schema.optional(Schema.String),
   }).annotate({ identifier: "Post" });
@@ -534,7 +534,7 @@ export interface Suggestion {
     | (string & {});
 }
 
-export const Suggestion: Schema.Schema<Suggestion> =
+export const Suggestion: Schema.Codec<Suggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subtype: Schema.optional(Schema.String),
   }).annotate({ identifier: "Suggestion" });
@@ -550,7 +550,7 @@ export interface Comment {
   mentionedUsers?: ReadonlyArray<User>;
 }
 
-export const Comment: Schema.Schema<Comment> =
+export const Comment: Schema.Codec<Comment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignment: Schema.optional(Assignment),
     post: Schema.optional(Post),
@@ -565,7 +565,7 @@ export interface Rename {
   newTitle?: string;
 }
 
-export const Rename: Schema.Schema<Rename> =
+export const Rename: Schema.Codec<Rename> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldTitle: Schema.optional(Schema.String),
     newTitle: Schema.optional(Schema.String),
@@ -576,14 +576,14 @@ export interface DataLeakPreventionChange {
   type?: "TYPE_UNSPECIFIED" | "FLAGGED" | "CLEARED" | (string & {});
 }
 
-export const DataLeakPreventionChange: Schema.Schema<DataLeakPreventionChange> =
+export const DataLeakPreventionChange: Schema.Codec<DataLeakPreventionChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataLeakPreventionChange" });
 
 export interface Upload {}
 
-export const Upload: Schema.Schema<Upload> =
+export const Upload: Schema.Codec<Upload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Upload",
   });
@@ -603,7 +603,7 @@ export interface DriveItemReference {
   title?: string;
 }
 
-export const DriveItemReference: Schema.Schema<DriveItemReference> =
+export const DriveItemReference: Schema.Codec<DriveItemReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveFolder: Schema.optional(DriveFolder),
     name: Schema.optional(Schema.String),
@@ -622,7 +622,7 @@ export interface TargetReference {
   teamDrive?: TeamDriveReference;
 }
 
-export const TargetReference: Schema.Schema<TargetReference> =
+export const TargetReference: Schema.Codec<TargetReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     drive: Schema.optional(DriveReference),
     driveItem: Schema.optional(DriveItemReference),
@@ -634,15 +634,16 @@ export interface Copy {
   originalObject?: TargetReference;
 }
 
-export const Copy: Schema.Schema<Copy> =
+export const Copy: Schema.Codec<Copy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalObject: Schema.optional(TargetReference),
   }).annotate({ identifier: "Copy" });
 
 export interface New {}
 
-export const New: Schema.Schema<New> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({ identifier: "New" });
+export const New: Schema.Codec<New> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "New" });
 
 export interface Create {
   /** If present, indicates the object originated externally and was uploaded to Drive. */
@@ -653,7 +654,7 @@ export interface Create {
   new?: New;
 }
 
-export const Create: Schema.Schema<Create> =
+export const Create: Schema.Codec<Create> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upload: Schema.optional(Upload),
     copy: Schema.optional(Copy),
@@ -665,7 +666,7 @@ export interface SettingsChange {
   restrictionChanges?: ReadonlyArray<RestrictionChange>;
 }
 
-export const SettingsChange: Schema.Schema<SettingsChange> =
+export const SettingsChange: Schema.Codec<SettingsChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restrictionChanges: Schema.optional(Schema.Array(RestrictionChange)),
   }).annotate({ identifier: "SettingsChange" });
@@ -675,7 +676,7 @@ export interface Driveactivity_Date {
   value?: string;
 }
 
-export const Driveactivity_Date: Schema.Schema<Driveactivity_Date> =
+export const Driveactivity_Date: Schema.Codec<Driveactivity_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Driveactivity_Date" });
@@ -685,7 +686,7 @@ export interface Integer {
   value?: string;
 }
 
-export const Integer: Schema.Schema<Integer> =
+export const Integer: Schema.Codec<Integer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Integer" });
@@ -695,7 +696,7 @@ export interface Text {
   value?: string;
 }
 
-export const Text: Schema.Schema<Text> =
+export const Text: Schema.Codec<Text> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Text" });
@@ -705,7 +706,7 @@ export interface TextList {
   values?: ReadonlyArray<Text>;
 }
 
-export const TextList: Schema.Schema<TextList> =
+export const TextList: Schema.Codec<TextList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Text)),
   }).annotate({ identifier: "TextList" });
@@ -729,7 +730,7 @@ export interface FieldValue {
   userList?: UserList;
 }
 
-export const FieldValue: Schema.Schema<FieldValue> =
+export const FieldValue: Schema.Codec<FieldValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Driveactivity_Date),
     integer: Schema.optional(Integer),
@@ -752,7 +753,7 @@ export interface FieldValueChange {
   newValue?: FieldValue;
 }
 
-export const FieldValueChange: Schema.Schema<FieldValueChange> =
+export const FieldValueChange: Schema.Codec<FieldValueChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     oldValue: Schema.optional(FieldValue),
@@ -778,7 +779,7 @@ export interface AppliedLabelChangeDetail {
   fieldChanges?: ReadonlyArray<FieldValueChange>;
 }
 
-export const AppliedLabelChangeDetail: Schema.Schema<AppliedLabelChangeDetail> =
+export const AppliedLabelChangeDetail: Schema.Codec<AppliedLabelChangeDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
     label: Schema.optional(Schema.String),
@@ -791,7 +792,7 @@ export interface AppliedLabelChange {
   changes?: ReadonlyArray<AppliedLabelChangeDetail>;
 }
 
-export const AppliedLabelChange: Schema.Schema<AppliedLabelChange> =
+export const AppliedLabelChange: Schema.Codec<AppliedLabelChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(AppliedLabelChangeDetail)),
   }).annotate({ identifier: "AppliedLabelChange" });
@@ -803,7 +804,7 @@ export interface Move {
   addedParents?: ReadonlyArray<TargetReference>;
 }
 
-export const Move: Schema.Schema<Move> =
+export const Move: Schema.Codec<Move> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     removedParents: Schema.optional(Schema.Array(TargetReference)),
     addedParents: Schema.optional(Schema.Array(TargetReference)),
@@ -814,7 +815,7 @@ export interface ApplicationReference {
   type?: "UNSPECIFIED_REFERENCE_TYPE" | "LINK" | "DISCUSS" | (string & {});
 }
 
-export const ApplicationReference: Schema.Schema<ApplicationReference> =
+export const ApplicationReference: Schema.Codec<ApplicationReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApplicationReference" });
@@ -826,7 +827,7 @@ export interface Group {
   email?: string;
 }
 
-export const Group: Schema.Schema<Group> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -834,7 +835,7 @@ export const Group: Schema.Schema<Group> =
 
 export interface Anyone {}
 
-export const Anyone: Schema.Schema<Anyone> =
+export const Anyone: Schema.Codec<Anyone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Anyone",
   });
@@ -863,7 +864,7 @@ export interface Permission {
   anyone?: Anyone;
 }
 
-export const Permission: Schema.Schema<Permission> =
+export const Permission: Schema.Codec<Permission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     user: Schema.optional(User),
@@ -880,7 +881,7 @@ export interface PermissionChange {
   removedPermissions?: ReadonlyArray<Permission>;
 }
 
-export const PermissionChange: Schema.Schema<PermissionChange> =
+export const PermissionChange: Schema.Codec<PermissionChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addedPermissions: Schema.optional(Schema.Array(Permission)),
     removedPermissions: Schema.optional(Schema.Array(Permission)),
@@ -891,7 +892,7 @@ export interface Delete {
   type?: "TYPE_UNSPECIFIED" | "TRASH" | "PERMANENT_DELETE" | (string & {});
 }
 
-export const Delete: Schema.Schema<Delete> =
+export const Delete: Schema.Codec<Delete> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "Delete" });
@@ -923,7 +924,7 @@ export interface ActionDetail {
   delete?: Delete;
 }
 
-export const ActionDetail: Schema.Schema<ActionDetail> =
+export const ActionDetail: Schema.Codec<ActionDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restore: Schema.optional(Restore),
     comment: Schema.optional(Comment),
@@ -952,7 +953,7 @@ export interface Action {
   target?: Target;
 }
 
-export const Action: Schema.Schema<Action> =
+export const Action: Schema.Codec<Action> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actor: Schema.optional(Actor),
     timestamp: Schema.optional(Schema.String),
@@ -976,7 +977,7 @@ export interface DriveActivity {
   primaryActionDetail?: ActionDetail;
 }
 
-export const DriveActivity: Schema.Schema<DriveActivity> =
+export const DriveActivity: Schema.Codec<DriveActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targets: Schema.optional(Schema.Array(Target)),
     timeRange: Schema.optional(TimeRange),
@@ -993,7 +994,7 @@ export interface QueryDriveActivityResponse {
   nextPageToken?: string;
 }
 
-export const QueryDriveActivityResponse: Schema.Schema<QueryDriveActivityResponse> =
+export const QueryDriveActivityResponse: Schema.Codec<QueryDriveActivityResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activities: Schema.optional(Schema.Array(DriveActivity)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1063,7 +1064,7 @@ export const QueryActivityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/activity:query", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<QueryActivityRequest>;
+) as unknown as Schema.Codec<QueryActivityRequest>;
 
 export type QueryActivityResponse = QueryDriveActivityResponse;
 export const QueryActivityResponse =

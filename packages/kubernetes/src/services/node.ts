@@ -4,12 +4,64 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateNodeV1RuntimeClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  handler: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  overhead?: { podFixed?: Record<string, string> };
+  scheduling?: {
+    nodeSelector?: Record<string, string>;
+    tolerations?: {
+      effect?: string;
+      key?: string;
+      operator?: string;
+      tolerationSeconds?: number;
+      value?: string;
+    }[];
+  };
+}
 export const CreateNodeV1RuntimeClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -88,11 +140,57 @@ export const CreateNodeV1RuntimeClassInput =
     ),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/node.k8s.io/v1/runtimeclasses" }),
-  );
-export type CreateNodeV1RuntimeClassInput =
-  typeof CreateNodeV1RuntimeClassInput.Type;
+  ) as unknown as Schema.Codec<CreateNodeV1RuntimeClassInput>;
 
 // Output Schema
+export interface CreateNodeV1RuntimeClassOutput {
+  apiVersion?: string;
+  handler: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  overhead?: { podFixed?: Record<string, string> };
+  scheduling?: {
+    nodeSelector?: Record<string, string>;
+    tolerations?: {
+      effect?: string;
+      key?: string;
+      operator?: string;
+      tolerationSeconds?: number;
+      value?: string;
+    }[];
+  };
+}
 export const CreateNodeV1RuntimeClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -165,9 +263,7 @@ export const CreateNodeV1RuntimeClassOutput =
         ),
       }),
     ),
-  });
-export type CreateNodeV1RuntimeClassOutput =
-  typeof CreateNodeV1RuntimeClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateNodeV1RuntimeClassOutput>;
 
 // The operation
 /**
@@ -186,6 +282,26 @@ export const createNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeleteNodeV1CollectionRuntimeClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNodeV1CollectionRuntimeClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -215,11 +331,32 @@ export const DeleteNodeV1CollectionRuntimeClassInput =
     ),
   }).pipe(
     T.Http({ method: "DELETE", path: "/apis/node.k8s.io/v1/runtimeclasses" }),
-  );
-export type DeleteNodeV1CollectionRuntimeClassInput =
-  typeof DeleteNodeV1CollectionRuntimeClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteNodeV1CollectionRuntimeClassInput>;
 
 // Output Schema
+export interface DeleteNodeV1CollectionRuntimeClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNodeV1CollectionRuntimeClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -259,9 +396,7 @@ export const DeleteNodeV1CollectionRuntimeClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNodeV1CollectionRuntimeClassOutput =
-  typeof DeleteNodeV1CollectionRuntimeClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNodeV1CollectionRuntimeClassOutput>;
 
 // The operation
 /**
@@ -330,6 +465,18 @@ export const deleteNodeV1CollectionRuntimeClass =
     outputSchema: DeleteNodeV1CollectionRuntimeClassOutput,
   }));
 // Input Schema
+export interface DeleteNodeV1RuntimeClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNodeV1RuntimeClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -354,11 +501,32 @@ export const DeleteNodeV1RuntimeClassInput =
       method: "DELETE",
       path: "/apis/node.k8s.io/v1/runtimeclasses/{name}",
     }),
-  );
-export type DeleteNodeV1RuntimeClassInput =
-  typeof DeleteNodeV1RuntimeClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteNodeV1RuntimeClassInput>;
 
 // Output Schema
+export interface DeleteNodeV1RuntimeClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNodeV1RuntimeClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -398,9 +566,7 @@ export const DeleteNodeV1RuntimeClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNodeV1RuntimeClassOutput =
-  typeof DeleteNodeV1RuntimeClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNodeV1RuntimeClassOutput>;
 
 // The operation
 /**
@@ -422,12 +588,22 @@ export const deleteNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetNodeAPIGroupInput {}
 export const GetNodeAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/apis/node.k8s.io/" }));
-export type GetNodeAPIGroupInput = typeof GetNodeAPIGroupInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/apis/node.k8s.io/" }),
+) as unknown as Schema.Codec<GetNodeAPIGroupInput>;
 
 // Output Schema
+export interface GetNodeAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetNodeAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.String),
@@ -452,8 +628,7 @@ export const GetNodeAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       version: Schema.String,
     }),
   ),
-});
-export type GetNodeAPIGroupOutput = typeof GetNodeAPIGroupOutput.Type;
+}) as unknown as Schema.Codec<GetNodeAPIGroupOutput>;
 
 // The operation
 /**
@@ -464,13 +639,30 @@ export const getNodeAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetNodeAPIGroupOutput,
 }));
 // Input Schema
+export interface GetNodeV1APIResourcesInput {}
 export const GetNodeV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/node.k8s.io/v1/" }),
-  );
-export type GetNodeV1APIResourcesInput = typeof GetNodeV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetNodeV1APIResourcesInput>;
 
 // Output Schema
+export interface GetNodeV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetNodeV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -490,9 +682,7 @@ export const GetNodeV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetNodeV1APIResourcesOutput =
-  typeof GetNodeV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetNodeV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -505,6 +695,20 @@ export const getNodeV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListNodeV1RuntimeClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListNodeV1RuntimeClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -521,11 +725,68 @@ export const ListNodeV1RuntimeClassInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/node.k8s.io/v1/runtimeclasses" }),
-  );
-export type ListNodeV1RuntimeClassInput =
-  typeof ListNodeV1RuntimeClassInput.Type;
+  ) as unknown as Schema.Codec<ListNodeV1RuntimeClassInput>;
 
 // Output Schema
+export interface ListNodeV1RuntimeClassOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    handler: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    overhead?: { podFixed?: Record<string, string> };
+    scheduling?: {
+      nodeSelector?: Record<string, string>;
+      tolerations?: {
+        effect?: string;
+        key?: string;
+        operator?: string;
+        tolerationSeconds?: number;
+        value?: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListNodeV1RuntimeClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -621,9 +882,7 @@ export const ListNodeV1RuntimeClassOutput =
         ),
       }),
     ),
-  });
-export type ListNodeV1RuntimeClassOutput =
-  typeof ListNodeV1RuntimeClassOutput.Type;
+  }) as unknown as Schema.Codec<ListNodeV1RuntimeClassOutput>;
 
 // The operation
 /**
@@ -690,6 +949,14 @@ export const listNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PatchNodeV1RuntimeClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchNodeV1RuntimeClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -703,11 +970,57 @@ export const PatchNodeV1RuntimeClassInput =
       method: "PATCH",
       path: "/apis/node.k8s.io/v1/runtimeclasses/{name}",
     }),
-  );
-export type PatchNodeV1RuntimeClassInput =
-  typeof PatchNodeV1RuntimeClassInput.Type;
+  ) as unknown as Schema.Codec<PatchNodeV1RuntimeClassInput>;
 
 // Output Schema
+export interface PatchNodeV1RuntimeClassOutput {
+  apiVersion?: string;
+  handler: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  overhead?: { podFixed?: Record<string, string> };
+  scheduling?: {
+    nodeSelector?: Record<string, string>;
+    tolerations?: {
+      effect?: string;
+      key?: string;
+      operator?: string;
+      tolerationSeconds?: number;
+      value?: string;
+    }[];
+  };
+}
 export const PatchNodeV1RuntimeClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -780,9 +1093,7 @@ export const PatchNodeV1RuntimeClassOutput =
         ),
       }),
     ),
-  });
-export type PatchNodeV1RuntimeClassOutput =
-  typeof PatchNodeV1RuntimeClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchNodeV1RuntimeClassOutput>;
 
 // The operation
 /**
@@ -803,6 +1114,10 @@ export const patchNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReadNodeV1RuntimeClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadNodeV1RuntimeClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -812,11 +1127,57 @@ export const ReadNodeV1RuntimeClassInput =
       method: "GET",
       path: "/apis/node.k8s.io/v1/runtimeclasses/{name}",
     }),
-  );
-export type ReadNodeV1RuntimeClassInput =
-  typeof ReadNodeV1RuntimeClassInput.Type;
+  ) as unknown as Schema.Codec<ReadNodeV1RuntimeClassInput>;
 
 // Output Schema
+export interface ReadNodeV1RuntimeClassOutput {
+  apiVersion?: string;
+  handler: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  overhead?: { podFixed?: Record<string, string> };
+  scheduling?: {
+    nodeSelector?: Record<string, string>;
+    tolerations?: {
+      effect?: string;
+      key?: string;
+      operator?: string;
+      tolerationSeconds?: number;
+      value?: string;
+    }[];
+  };
+}
 export const ReadNodeV1RuntimeClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -889,9 +1250,7 @@ export const ReadNodeV1RuntimeClassOutput =
         ),
       }),
     ),
-  });
-export type ReadNodeV1RuntimeClassOutput =
-  typeof ReadNodeV1RuntimeClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadNodeV1RuntimeClassOutput>;
 
 // The operation
 /**
@@ -908,6 +1267,59 @@ export const readNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReplaceNodeV1RuntimeClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  handler: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  overhead?: { podFixed?: Record<string, string> };
+  scheduling?: {
+    nodeSelector?: Record<string, string>;
+    tolerations?: {
+      effect?: string;
+      key?: string;
+      operator?: string;
+      tolerationSeconds?: number;
+      value?: string;
+    }[];
+  };
+}
 export const ReplaceNodeV1RuntimeClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -990,11 +1402,57 @@ export const ReplaceNodeV1RuntimeClassInput =
       method: "PUT",
       path: "/apis/node.k8s.io/v1/runtimeclasses/{name}",
     }),
-  );
-export type ReplaceNodeV1RuntimeClassInput =
-  typeof ReplaceNodeV1RuntimeClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceNodeV1RuntimeClassInput>;
 
 // Output Schema
+export interface ReplaceNodeV1RuntimeClassOutput {
+  apiVersion?: string;
+  handler: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  overhead?: { podFixed?: Record<string, string> };
+  scheduling?: {
+    nodeSelector?: Record<string, string>;
+    tolerations?: {
+      effect?: string;
+      key?: string;
+      operator?: string;
+      tolerationSeconds?: number;
+      value?: string;
+    }[];
+  };
+}
 export const ReplaceNodeV1RuntimeClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1067,9 +1525,7 @@ export const ReplaceNodeV1RuntimeClassOutput =
         ),
       }),
     ),
-  });
-export type ReplaceNodeV1RuntimeClassOutput =
-  typeof ReplaceNodeV1RuntimeClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceNodeV1RuntimeClassOutput>;
 
 // The operation
 /**
@@ -1089,6 +1545,21 @@ export const replaceNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchNodeV1RuntimeClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNodeV1RuntimeClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1109,18 +1580,18 @@ export const WatchNodeV1RuntimeClassInput =
       method: "GET",
       path: "/apis/node.k8s.io/v1/watch/runtimeclasses/{name}",
     }),
-  );
-export type WatchNodeV1RuntimeClassInput =
-  typeof WatchNodeV1RuntimeClassInput.Type;
+  ) as unknown as Schema.Codec<WatchNodeV1RuntimeClassInput>;
 
 // Output Schema
+export interface WatchNodeV1RuntimeClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNodeV1RuntimeClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNodeV1RuntimeClassOutput =
-  typeof WatchNodeV1RuntimeClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchNodeV1RuntimeClassOutput>;
 
 // The operation
 /**
@@ -1188,6 +1659,20 @@ export const watchNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchNodeV1RuntimeClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNodeV1RuntimeClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1207,18 +1692,18 @@ export const WatchNodeV1RuntimeClassListInput =
       method: "GET",
       path: "/apis/node.k8s.io/v1/watch/runtimeclasses",
     }),
-  );
-export type WatchNodeV1RuntimeClassListInput =
-  typeof WatchNodeV1RuntimeClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchNodeV1RuntimeClassListInput>;
 
 // Output Schema
+export interface WatchNodeV1RuntimeClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNodeV1RuntimeClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNodeV1RuntimeClassListOutput =
-  typeof WatchNodeV1RuntimeClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchNodeV1RuntimeClassListOutput>;
 
 // The operation
 /**

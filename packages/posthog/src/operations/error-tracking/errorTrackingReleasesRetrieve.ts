@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingReleasesRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingReleasesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,18 @@ export const ErrorTrackingReleasesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/releases/{id}/",
     }),
-  );
-export type ErrorTrackingReleasesRetrieveInput =
-  typeof ErrorTrackingReleasesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingReleasesRetrieveInput>;
 
 // Output Schema
+export interface ErrorTrackingReleasesRetrieveOutput {
+  id?: string;
+  hash_id?: string;
+  team_id?: number;
+  created_at?: string;
+  metadata?: Record<string, unknown> | null;
+  version?: string;
+  project?: string;
+}
 export const ErrorTrackingReleasesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -29,9 +40,7 @@ export const ErrorTrackingReleasesRetrieveOutput =
     ),
     version: Schema.optional(Schema.String),
     project: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingReleasesRetrieveOutput =
-  typeof ErrorTrackingReleasesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingReleasesRetrieveOutput>;
 
 // The operation
 /**

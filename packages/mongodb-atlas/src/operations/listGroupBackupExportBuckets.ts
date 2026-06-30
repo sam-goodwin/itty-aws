@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupBackupExportBucketsInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupBackupExportBucketsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const ListGroupBackupExportBucketsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets",
     }),
-  );
-export type ListGroupBackupExportBucketsInput =
-  typeof ListGroupBackupExportBucketsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupBackupExportBucketsInput>;
 
 // Output Schema
+export type ListGroupBackupExportBucketsOutput = void;
 export const ListGroupBackupExportBucketsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupBackupExportBucketsOutput =
-  typeof ListGroupBackupExportBucketsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupBackupExportBucketsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListAuditLogsInput {
+  organization: string;
+  starting_after?: string;
+  ending_before?: string;
+  limit?: number;
+}
 export const ListAuditLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   starting_after: Schema.optional(Schema.String),
@@ -11,10 +17,35 @@ export const ListAuditLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   limit: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/organizations/{organization}/audit-log" }),
-);
-export type ListAuditLogsInput = typeof ListAuditLogsInput.Type;
+) as unknown as Schema.Codec<ListAuditLogsInput>;
 
 // Output Schema
+export interface ListAuditLogsOutput {
+  type: string;
+  has_next: boolean;
+  has_prev: boolean;
+  cursor_start: string | null;
+  cursor_end: string | null;
+  data: {
+    id: string;
+    actor_id: string | null;
+    actor_type: string | null;
+    auditable_id: string | null;
+    auditable_type: string | null;
+    target_id: string | null;
+    target_type: string | null;
+    location: string | null;
+    target_display_name: string | null;
+    audit_action: string;
+    action: string;
+    actor_display_name: string;
+    auditable_display_name: string;
+    remote_ip: string | null;
+    created_at: string;
+    updated_at: string;
+    metadata: Record<string, unknown> | null;
+  }[];
+}
 export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
   has_next: Schema.Boolean,
@@ -42,8 +73,7 @@ export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
     }),
   ),
-});
-export type ListAuditLogsOutput = typeof ListAuditLogsOutput.Type;
+}) as unknown as Schema.Codec<ListAuditLogsOutput>;
 
 // The operation
 /**

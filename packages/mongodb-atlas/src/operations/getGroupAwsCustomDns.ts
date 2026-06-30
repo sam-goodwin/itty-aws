@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupAwsCustomDnsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupAwsCustomDnsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,13 +19,12 @@ export const GetGroupAwsCustomDnsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/awsCustomDNS",
     }),
-  );
-export type GetGroupAwsCustomDnsInput = typeof GetGroupAwsCustomDnsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupAwsCustomDnsInput>;
 
 // Output Schema
+export type GetGroupAwsCustomDnsOutput = void;
 export const GetGroupAwsCustomDnsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupAwsCustomDnsOutput = typeof GetGroupAwsCustomDnsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAwsCustomDnsOutput>;
 
 // The operation
 /**

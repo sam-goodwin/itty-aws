@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsFunnelCreateInput {
+  project_id: string;
+  format?: "csv" | "json";
+  id?: number;
+  name?: string;
+  distinct_ids?: string[];
+  properties?: unknown;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+}
 export const PersonsFunnelCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -20,13 +31,12 @@ export const PersonsFunnelCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/persons/funnel/",
     }),
-  );
-export type PersonsFunnelCreateInput = typeof PersonsFunnelCreateInput.Type;
+  ) as unknown as Schema.Codec<PersonsFunnelCreateInput>;
 
 // Output Schema
+export type PersonsFunnelCreateOutput = void;
 export const PersonsFunnelCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PersonsFunnelCreateOutput = typeof PersonsFunnelCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsFunnelCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignSolanaTransactionInput {
+  address: string;
+  transaction: string;
+}
 export const SignSolanaTransactionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -12,16 +16,16 @@ export const SignSolanaTransactionInput =
       method: "POST",
       path: "/v2/solana/accounts/{address}/sign/transaction",
     }),
-  );
-export type SignSolanaTransactionInput = typeof SignSolanaTransactionInput.Type;
+  ) as unknown as Schema.Codec<SignSolanaTransactionInput>;
 
 // Output Schema
+export interface SignSolanaTransactionOutput {
+  signedTransaction: string;
+}
 export const SignSolanaTransactionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedTransaction: Schema.String,
-  });
-export type SignSolanaTransactionOutput =
-  typeof SignSolanaTransactionOutput.Type;
+  }) as unknown as Schema.Codec<SignSolanaTransactionOutput>;
 
 // The operation
 /**

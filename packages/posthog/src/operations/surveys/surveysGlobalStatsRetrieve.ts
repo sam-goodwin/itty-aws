@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SurveysGlobalStatsRetrieveInput {
+  project_id: string;
+  date_from?: string;
+  date_to?: string;
+}
 export const SurveysGlobalStatsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,18 +19,18 @@ export const SurveysGlobalStatsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/surveys/stats/",
     }),
-  );
-export type SurveysGlobalStatsRetrieveInput =
-  typeof SurveysGlobalStatsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SurveysGlobalStatsRetrieveInput>;
 
 // Output Schema
+export interface SurveysGlobalStatsRetrieveOutput {
+  stats?: Record<string, unknown>;
+  rates?: Record<string, unknown>;
+}
 export const SurveysGlobalStatsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stats: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     rates: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  });
-export type SurveysGlobalStatsRetrieveOutput =
-  typeof SurveysGlobalStatsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SurveysGlobalStatsRetrieveOutput>;
 
 // The operation
 /**

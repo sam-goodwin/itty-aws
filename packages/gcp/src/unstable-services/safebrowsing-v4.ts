@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -39,7 +39,7 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUp
   region?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints: Schema.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints> =
+export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints: Schema.Codec<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDatabaseEntries: Schema.optional(Schema.Number),
     maxUpdateEntries: Schema.optional(Schema.Number),
@@ -102,7 +102,7 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUp
     | (string & {});
 }
 
-export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest: Schema.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest> =
+export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest: Schema.Codec<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platformType: Schema.optional(Schema.String),
     constraints: Schema.optional(
@@ -125,7 +125,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatEntry {
   url?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatEntry: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatEntry> =
+export const GoogleSecuritySafebrowsingV4ThreatEntry: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     digest: Schema.optional(Schema.String),
     hash: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
   value?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry> =
+export const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -152,7 +152,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
   entries?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatEntryMetadata: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatEntryMetadata> =
+export const GoogleSecuritySafebrowsingV4ThreatEntryMetadata: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatEntryMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(
       Schema.Array(
@@ -215,7 +215,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatMatch {
   cacheDuration?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatMatch: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatMatch> =
+export const GoogleSecuritySafebrowsingV4ThreatMatch: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatMatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threat: Schema.optional(GoogleSecuritySafebrowsingV4ThreatEntry),
     threatType: Schema.optional(Schema.String),
@@ -236,7 +236,7 @@ export interface GoogleSecuritySafebrowsingV4FindFullHashesResponse {
   minimumWaitDuration?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4FindFullHashesResponse: Schema.Schema<GoogleSecuritySafebrowsingV4FindFullHashesResponse> =
+export const GoogleSecuritySafebrowsingV4FindFullHashesResponse: Schema.Codec<GoogleSecuritySafebrowsingV4FindFullHashesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negativeCacheDuration: Schema.optional(Schema.String),
     matches: Schema.optional(
@@ -254,7 +254,7 @@ export interface GoogleSecuritySafebrowsingV4RawHashes {
   prefixSize?: number;
 }
 
-export const GoogleSecuritySafebrowsingV4RawHashes: Schema.Schema<GoogleSecuritySafebrowsingV4RawHashes> =
+export const GoogleSecuritySafebrowsingV4RawHashes: Schema.Codec<GoogleSecuritySafebrowsingV4RawHashes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rawHashes: Schema.optional(Schema.String),
     prefixSize: Schema.optional(Schema.Number),
@@ -265,7 +265,7 @@ export interface GoogleSecuritySafebrowsingV4RawIndices {
   indices?: ReadonlyArray<number>;
 }
 
-export const GoogleSecuritySafebrowsingV4RawIndices: Schema.Schema<GoogleSecuritySafebrowsingV4RawIndices> =
+export const GoogleSecuritySafebrowsingV4RawIndices: Schema.Codec<GoogleSecuritySafebrowsingV4RawIndices> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indices: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "GoogleSecuritySafebrowsingV4RawIndices" });
@@ -281,7 +281,7 @@ export interface GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
   encodedData?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4RiceDeltaEncoding: Schema.Schema<GoogleSecuritySafebrowsingV4RiceDeltaEncoding> =
+export const GoogleSecuritySafebrowsingV4RiceDeltaEncoding: Schema.Codec<GoogleSecuritySafebrowsingV4RiceDeltaEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstValue: Schema.optional(Schema.String),
     numEntries: Schema.optional(Schema.Number),
@@ -306,7 +306,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatEntrySet {
   riceHashes?: GoogleSecuritySafebrowsingV4RiceDeltaEncoding;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatEntrySet: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatEntrySet> =
+export const GoogleSecuritySafebrowsingV4ThreatEntrySet: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatEntrySet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rawHashes: Schema.optional(GoogleSecuritySafebrowsingV4RawHashes),
     rawIndices: Schema.optional(GoogleSecuritySafebrowsingV4RawIndices),
@@ -320,7 +320,7 @@ export interface GoogleSecuritySafebrowsingV4Checksum {
   sha256?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4Checksum: Schema.Schema<GoogleSecuritySafebrowsingV4Checksum> =
+export const GoogleSecuritySafebrowsingV4Checksum: Schema.Codec<GoogleSecuritySafebrowsingV4Checksum> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha256: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleSecuritySafebrowsingV4Checksum" });
@@ -385,7 +385,7 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListU
   checksum?: GoogleSecuritySafebrowsingV4Checksum;
 }
 
-export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse: Schema.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse> =
+export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse: Schema.Codec<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platformType: Schema.optional(Schema.String),
     newClientState: Schema.optional(Schema.String),
@@ -411,7 +411,7 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
   minimumWaitDuration?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse: Schema.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse> =
+export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse: Schema.Codec<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     listUpdateResponses: Schema.optional(
       Schema.Array(
@@ -430,7 +430,7 @@ export interface GoogleSecuritySafebrowsingV4ClientInfo {
   clientId?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4ClientInfo: Schema.Schema<GoogleSecuritySafebrowsingV4ClientInfo> =
+export const GoogleSecuritySafebrowsingV4ClientInfo: Schema.Codec<GoogleSecuritySafebrowsingV4ClientInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientVersion: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -487,7 +487,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatInfo {
   threatEntries?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntry>;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatInfo: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatInfo> =
+export const GoogleSecuritySafebrowsingV4ThreatInfo: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threatTypes: Schema.optional(Schema.Array(Schema.String)),
     platformTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -504,7 +504,7 @@ export interface GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
   threatInfo?: GoogleSecuritySafebrowsingV4ThreatInfo;
 }
 
-export const GoogleSecuritySafebrowsingV4FindThreatMatchesRequest: Schema.Schema<GoogleSecuritySafebrowsingV4FindThreatMatchesRequest> =
+export const GoogleSecuritySafebrowsingV4FindThreatMatchesRequest: Schema.Codec<GoogleSecuritySafebrowsingV4FindThreatMatchesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client: Schema.optional(GoogleSecuritySafebrowsingV4ClientInfo),
     threatInfo: Schema.optional(GoogleSecuritySafebrowsingV4ThreatInfo),
@@ -558,7 +558,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatListDescriptor {
     | (string & {});
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatListDescriptor: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatListDescriptor> =
+export const GoogleSecuritySafebrowsingV4ThreatListDescriptor: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatListDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threatType: Schema.optional(Schema.String),
     threatEntryType: Schema.optional(Schema.String),
@@ -572,7 +572,7 @@ export interface GoogleSecuritySafebrowsingV4ListThreatListsResponse {
   threatLists?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
 }
 
-export const GoogleSecuritySafebrowsingV4ListThreatListsResponse: Schema.Schema<GoogleSecuritySafebrowsingV4ListThreatListsResponse> =
+export const GoogleSecuritySafebrowsingV4ListThreatListsResponse: Schema.Codec<GoogleSecuritySafebrowsingV4ListThreatListsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threatLists: Schema.optional(
       Schema.Array(GoogleSecuritySafebrowsingV4ThreatListDescriptor),
@@ -588,7 +588,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
   userId?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatHitUserInfo: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatHitUserInfo> =
+export const GoogleSecuritySafebrowsingV4ThreatHitUserInfo: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatHitUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -611,7 +611,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
   referrer?: string;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatHitThreatSource: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatHitThreatSource> =
+export const GoogleSecuritySafebrowsingV4ThreatHitThreatSource: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatHitThreatSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     remoteIp: Schema.optional(Schema.String),
@@ -665,7 +665,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatHit {
   clientInfo?: GoogleSecuritySafebrowsingV4ClientInfo;
 }
 
-export const GoogleSecuritySafebrowsingV4ThreatHit: Schema.Schema<GoogleSecuritySafebrowsingV4ThreatHit> =
+export const GoogleSecuritySafebrowsingV4ThreatHit: Schema.Codec<GoogleSecuritySafebrowsingV4ThreatHit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entry: Schema.optional(GoogleSecuritySafebrowsingV4ThreatEntry),
     threatType: Schema.optional(Schema.String),
@@ -679,7 +679,7 @@ export const GoogleSecuritySafebrowsingV4ThreatHit: Schema.Schema<GoogleSecurity
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -691,7 +691,7 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
   listUpdateRequests?: ReadonlyArray<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
 }
 
-export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest: Schema.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest> =
+export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest: Schema.Codec<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client: Schema.optional(GoogleSecuritySafebrowsingV4ClientInfo),
     listUpdateRequests: Schema.optional(
@@ -714,7 +714,7 @@ export interface GoogleSecuritySafebrowsingV4FindFullHashesRequest {
   clientStates?: ReadonlyArray<string>;
 }
 
-export const GoogleSecuritySafebrowsingV4FindFullHashesRequest: Schema.Schema<GoogleSecuritySafebrowsingV4FindFullHashesRequest> =
+export const GoogleSecuritySafebrowsingV4FindFullHashesRequest: Schema.Codec<GoogleSecuritySafebrowsingV4FindFullHashesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threatInfo: Schema.optional(GoogleSecuritySafebrowsingV4ThreatInfo),
     apiClient: Schema.optional(GoogleSecuritySafebrowsingV4ClientInfo),
@@ -729,7 +729,7 @@ export interface GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
   matches?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatMatch>;
 }
 
-export const GoogleSecuritySafebrowsingV4FindThreatMatchesResponse: Schema.Schema<GoogleSecuritySafebrowsingV4FindThreatMatchesResponse> =
+export const GoogleSecuritySafebrowsingV4FindThreatMatchesResponse: Schema.Codec<GoogleSecuritySafebrowsingV4FindThreatMatchesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matches: Schema.optional(
       Schema.Array(GoogleSecuritySafebrowsingV4ThreatMatch),
@@ -805,7 +805,7 @@ export const FindThreatMatchesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/threatMatches:find", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<FindThreatMatchesRequest>;
+  ) as unknown as Schema.Codec<FindThreatMatchesRequest>;
 
 export type FindThreatMatchesResponse =
   GoogleSecuritySafebrowsingV4FindThreatMatchesResponse;
@@ -844,7 +844,7 @@ export const CreateThreatHitsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/threatHits", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateThreatHitsRequest>;
+  ) as unknown as Schema.Codec<CreateThreatHitsRequest>;
 
 export type CreateThreatHitsResponse = GoogleProtobufEmpty;
 export const CreateThreatHitsResponse =
@@ -886,7 +886,7 @@ export const FetchThreatListUpdatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchThreatListUpdatesRequest>;
+  ) as unknown as Schema.Codec<FetchThreatListUpdatesRequest>;
 
 export type FetchThreatListUpdatesResponse =
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse;
@@ -924,7 +924,7 @@ export const FindFullHashesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v4/fullHashes:find", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<FindFullHashesRequest>;
+) as unknown as Schema.Codec<FindFullHashesRequest>;
 
 export type FindFullHashesResponse =
   GoogleSecuritySafebrowsingV4FindFullHashesResponse;
@@ -957,7 +957,7 @@ export const ListThreatListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v4/threatLists" }),
   svc,
-) as unknown as Schema.Schema<ListThreatListsRequest>;
+) as unknown as Schema.Codec<ListThreatListsRequest>;
 
 export type ListThreatListsResponse =
   GoogleSecuritySafebrowsingV4ListThreatListsResponse;
@@ -997,7 +997,7 @@ export const GetEncodedUpdatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/encodedUpdates/{encodedRequest}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEncodedUpdatesRequest>;
+  ) as unknown as Schema.Codec<GetEncodedUpdatesRequest>;
 
 export type GetEncodedUpdatesResponse =
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse;
@@ -1036,7 +1036,7 @@ export const GetEncodedFullHashesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/encodedFullHashes/{encodedRequest}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEncodedFullHashesRequest>;
+  ) as unknown as Schema.Codec<GetEncodedFullHashesRequest>;
 
 export type GetEncodedFullHashesResponse =
   GoogleSecuritySafebrowsingV4FindFullHashesResponse;

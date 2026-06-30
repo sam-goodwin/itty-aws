@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetBranchSchemaInput {
+  organization: string;
+  database: string;
+  branch: string;
+  keyspace?: string;
+  namespace?: string;
+}
 export const GetBranchSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -15,10 +22,12 @@ export const GetBranchSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/schema",
   }),
-);
-export type GetBranchSchemaInput = typeof GetBranchSchemaInput.Type;
+) as unknown as Schema.Codec<GetBranchSchemaInput>;
 
 // Output Schema
+export interface GetBranchSchemaOutput {
+  data: { name: string; html: string; raw: string }[];
+}
 export const GetBranchSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -27,8 +36,7 @@ export const GetBranchSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       raw: Schema.String,
     }),
   ),
-});
-export type GetBranchSchemaOutput = typeof GetBranchSchemaOutput.Type;
+}) as unknown as Schema.Codec<GetBranchSchemaOutput>;
 
 // The operation
 /**

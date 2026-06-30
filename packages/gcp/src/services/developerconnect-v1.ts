@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -39,7 +39,7 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface GoogleCloudRun {
   serviceUri?: string;
 }
 
-export const GoogleCloudRun: Schema.Schema<GoogleCloudRun> =
+export const GoogleCloudRun: Schema.Codec<GoogleCloudRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudRun" });
@@ -69,7 +69,7 @@ export interface AppHubWorkload {
   criticality?: string;
 }
 
-export const AppHubWorkload: Schema.Schema<AppHubWorkload> =
+export const AppHubWorkload: Schema.Codec<AppHubWorkload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     workload: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface AppHubService {
   criticality?: string;
 }
 
-export const AppHubService: Schema.Schema<AppHubService> =
+export const AppHubService: Schema.Codec<AppHubService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     apphubService: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export interface GKEWorkload {
   deployment?: string;
 }
 
-export const GKEWorkload: Schema.Schema<GKEWorkload> =
+export const GKEWorkload: Schema.Codec<GKEWorkload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.String),
     deployment: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface RuntimeConfig {
   gkeWorkload?: GKEWorkload;
 }
 
-export const RuntimeConfig: Schema.Schema<RuntimeConfig> =
+export const RuntimeConfig: Schema.Codec<RuntimeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -153,7 +153,7 @@ export interface Projects {
   projectIds?: ReadonlyArray<string>;
 }
 
-export const Projects: Schema.Schema<Projects> =
+export const Projects: Schema.Codec<Projects> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Projects" });
@@ -163,7 +163,7 @@ export interface GoogleArtifactAnalysis {
   projectId?: string;
 }
 
-export const GoogleArtifactAnalysis: Schema.Schema<GoogleArtifactAnalysis> =
+export const GoogleArtifactAnalysis: Schema.Codec<GoogleArtifactAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleArtifactAnalysis" });
@@ -175,7 +175,7 @@ export interface GoogleArtifactRegistry {
   projectId?: string;
 }
 
-export const GoogleArtifactRegistry: Schema.Schema<GoogleArtifactRegistry> =
+export const GoogleArtifactRegistry: Schema.Codec<GoogleArtifactRegistry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifactRegistryPackage: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export interface ArtifactConfig {
   uri?: string;
 }
 
-export const ArtifactConfig: Schema.Schema<ArtifactConfig> =
+export const ArtifactConfig: Schema.Codec<ArtifactConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleArtifactAnalysis: Schema.optional(GoogleArtifactAnalysis),
     googleArtifactRegistry: Schema.optional(GoogleArtifactRegistry),
@@ -229,7 +229,7 @@ export interface InsightsConfig {
     | (string & {});
 }
 
-export const InsightsConfig: Schema.Schema<InsightsConfig> =
+export const InsightsConfig: Schema.Codec<InsightsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     appHubApplication: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface ListInsightsConfigsResponse {
   insightsConfigs?: ReadonlyArray<InsightsConfig>;
 }
 
-export const ListInsightsConfigsResponse: Schema.Schema<ListInsightsConfigsResponse> =
+export const ListInsightsConfigsResponse: Schema.Codec<ListInsightsConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -270,7 +270,7 @@ export interface HttpBody {
   contentType?: string;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
+export const HttpBody: Schema.Codec<HttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     extensions: Schema.optional(
@@ -284,7 +284,7 @@ export interface ProcessBitbucketCloudWebhookRequest {
   body?: HttpBody;
 }
 
-export const ProcessBitbucketCloudWebhookRequest: Schema.Schema<ProcessBitbucketCloudWebhookRequest> =
+export const ProcessBitbucketCloudWebhookRequest: Schema.Codec<ProcessBitbucketCloudWebhookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     body: Schema.optional(HttpBody),
   }).annotate({ identifier: "ProcessBitbucketCloudWebhookRequest" });
@@ -298,7 +298,7 @@ export interface UserRepository {
   cloneUri?: string;
 }
 
-export const UserRepository: Schema.Schema<UserRepository> =
+export const UserRepository: Schema.Codec<UserRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gitProxyUri: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -312,7 +312,7 @@ export interface FetchUserRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const FetchUserRepositoriesResponse: Schema.Schema<FetchUserRepositoriesResponse> =
+export const FetchUserRepositoriesResponse: Schema.Codec<FetchUserRepositoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userRepos: Schema.optional(Schema.Array(UserRepository)),
     nextPageToken: Schema.optional(Schema.String),
@@ -323,7 +323,7 @@ export interface ServiceDirectoryConfig {
   service?: string;
 }
 
-export const ServiceDirectoryConfig: Schema.Schema<ServiceDirectoryConfig> =
+export const ServiceDirectoryConfig: Schema.Codec<ServiceDirectoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceDirectoryConfig" });
@@ -353,7 +353,7 @@ export interface GitHubEnterpriseConfig {
   hostUri?: string;
 }
 
-export const GitHubEnterpriseConfig: Schema.Schema<GitHubEnterpriseConfig> =
+export const GitHubEnterpriseConfig: Schema.Codec<GitHubEnterpriseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appSlug: Schema.optional(Schema.String),
     appInstallationId: Schema.optional(Schema.String),
@@ -385,7 +385,7 @@ export interface ProviderOAuthConfig {
   scopes?: ReadonlyArray<string>;
 }
 
-export const ProviderOAuthConfig: Schema.Schema<ProviderOAuthConfig> =
+export const ProviderOAuthConfig: Schema.Codec<ProviderOAuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemProviderId: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
@@ -410,7 +410,7 @@ export interface ArtifactDeployment {
   artifactAlias?: string;
 }
 
-export const ArtifactDeployment: Schema.Schema<ArtifactDeployment> =
+export const ArtifactDeployment: Schema.Codec<ArtifactDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     containerStatusSummary: Schema.optional(Schema.String),
@@ -447,7 +447,7 @@ export interface DeploymentEvent {
   runtimeDeploymentUri?: string;
 }
 
-export const DeploymentEvent: Schema.Schema<DeploymentEvent> =
+export const DeploymentEvent: Schema.Codec<DeploymentEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     artifactDeployments: Schema.optional(Schema.Array(ArtifactDeployment)),
@@ -469,7 +469,7 @@ export interface FetchReadTokenResponse {
   token?: string;
 }
 
-export const FetchReadTokenResponse: Schema.Schema<FetchReadTokenResponse> =
+export const FetchReadTokenResponse: Schema.Codec<FetchReadTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gitUsername: Schema.optional(Schema.String),
     expirationTime: Schema.optional(Schema.String),
@@ -483,7 +483,7 @@ export interface UserCredential {
   username?: string;
 }
 
-export const UserCredential: Schema.Schema<UserCredential> =
+export const UserCredential: Schema.Codec<UserCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userTokenSecretVersion: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
@@ -506,7 +506,7 @@ export interface BitbucketDataCenterConfig {
   serverVersion?: string;
 }
 
-export const BitbucketDataCenterConfig: Schema.Schema<BitbucketDataCenterConfig> =
+export const BitbucketDataCenterConfig: Schema.Codec<BitbucketDataCenterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webhookSecretSecretVersion: Schema.optional(Schema.String),
     readAuthorizerCredential: Schema.optional(UserCredential),
@@ -524,7 +524,7 @@ export interface ProxyConfig {
   enabled?: boolean;
 }
 
-export const ProxyConfig: Schema.Schema<ProxyConfig> =
+export const ProxyConfig: Schema.Codec<ProxyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpProxyBaseUri: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -539,7 +539,7 @@ export interface GitLabConfig {
   readAuthorizerCredential?: UserCredential;
 }
 
-export const GitLabConfig: Schema.Schema<GitLabConfig> =
+export const GitLabConfig: Schema.Codec<GitLabConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizerCredential: Schema.optional(UserCredential),
     webhookSecretSecretVersion: Schema.optional(Schema.String),
@@ -553,7 +553,7 @@ export interface GitProxyConfig {
   enabled?: boolean;
 }
 
-export const GitProxyConfig: Schema.Schema<GitProxyConfig> =
+export const GitProxyConfig: Schema.Codec<GitProxyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpProxyBaseUri: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -566,7 +566,7 @@ export interface ExchangeError {
   code?: string;
 }
 
-export const ExchangeError: Schema.Schema<ExchangeError> =
+export const ExchangeError: Schema.Codec<ExchangeError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -577,7 +577,7 @@ export interface ProcessGitHubEnterpriseWebhookRequest {
   body?: HttpBody;
 }
 
-export const ProcessGitHubEnterpriseWebhookRequest: Schema.Schema<ProcessGitHubEnterpriseWebhookRequest> =
+export const ProcessGitHubEnterpriseWebhookRequest: Schema.Codec<ProcessGitHubEnterpriseWebhookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     body: Schema.optional(HttpBody),
   }).annotate({ identifier: "ProcessGitHubEnterpriseWebhookRequest" });
@@ -593,7 +593,7 @@ export interface BitbucketCloudConfig {
   workspace?: string;
 }
 
-export const BitbucketCloudConfig: Schema.Schema<BitbucketCloudConfig> =
+export const BitbucketCloudConfig: Schema.Codec<BitbucketCloudConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizerCredential: Schema.optional(UserCredential),
     webhookSecretSecretVersion: Schema.optional(Schema.String),
@@ -606,7 +606,7 @@ export interface CryptoKeyConfig {
   keyReference?: string;
 }
 
-export const CryptoKeyConfig: Schema.Schema<CryptoKeyConfig> =
+export const CryptoKeyConfig: Schema.Codec<CryptoKeyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyReference: Schema.optional(Schema.String),
   }).annotate({ identifier: "CryptoKeyConfig" });
@@ -618,7 +618,7 @@ export interface ListDeploymentEventsResponse {
   nextPageToken?: string;
 }
 
-export const ListDeploymentEventsResponse: Schema.Schema<ListDeploymentEventsResponse> =
+export const ListDeploymentEventsResponse: Schema.Codec<ListDeploymentEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentEvents: Schema.optional(Schema.Array(DeploymentEvent)),
     nextPageToken: Schema.optional(Schema.String),
@@ -651,7 +651,7 @@ export interface GitRepositoryLink {
   annotations?: Record<string, string>;
 }
 
-export const GitRepositoryLink: Schema.Schema<GitRepositoryLink> =
+export const GitRepositoryLink: Schema.Codec<GitRepositoryLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uid: Schema.optional(Schema.String),
     cloneUri: Schema.optional(Schema.String),
@@ -676,7 +676,7 @@ export interface ListGitRepositoryLinksResponse {
   gitRepositoryLinks?: ReadonlyArray<GitRepositoryLink>;
 }
 
-export const ListGitRepositoryLinksResponse: Schema.Schema<ListGitRepositoryLinksResponse> =
+export const ListGitRepositoryLinksResponse: Schema.Codec<ListGitRepositoryLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -696,7 +696,7 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -712,7 +712,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -729,7 +729,7 @@ export interface User {
   createTime?: string;
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     lastTokenRequestTime: Schema.optional(Schema.String),
@@ -746,7 +746,7 @@ export interface ListUsersResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
+export const ListUsersResponse: Schema.Codec<ListUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     users: Schema.optional(Schema.Array(User)),
     nextPageToken: Schema.optional(Schema.String),
@@ -783,7 +783,7 @@ export interface CustomOAuthConfig {
   scopes?: ReadonlyArray<string>;
 }
 
-export const CustomOAuthConfig: Schema.Schema<CustomOAuthConfig> =
+export const CustomOAuthConfig: Schema.Codec<CustomOAuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientSecret: Schema.optional(Schema.String),
     serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
@@ -823,7 +823,7 @@ export interface AccountConnector {
   uid?: string;
 }
 
-export const AccountConnector: Schema.Schema<AccountConnector> =
+export const AccountConnector: Schema.Codec<AccountConnector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -847,7 +847,7 @@ export interface ListAccountConnectorsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListAccountConnectorsResponse: Schema.Schema<ListAccountConnectorsResponse> =
+export const ListAccountConnectorsResponse: Schema.Codec<ListAccountConnectorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountConnectors: Schema.optional(Schema.Array(AccountConnector)),
     nextPageToken: Schema.optional(Schema.String),
@@ -856,7 +856,7 @@ export const ListAccountConnectorsResponse: Schema.Schema<ListAccountConnectorsR
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -870,7 +870,7 @@ export interface FetchReadWriteTokenResponse {
   token?: string;
 }
 
-export const FetchReadWriteTokenResponse: Schema.Schema<FetchReadWriteTokenResponse> =
+export const FetchReadWriteTokenResponse: Schema.Codec<FetchReadWriteTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gitUsername: Schema.optional(Schema.String),
     expirationTime: Schema.optional(Schema.String),
@@ -879,7 +879,7 @@ export const FetchReadWriteTokenResponse: Schema.Schema<FetchReadWriteTokenRespo
 
 export interface FetchAccessTokenRequest {}
 
-export const FetchAccessTokenRequest: Schema.Schema<FetchAccessTokenRequest> =
+export const FetchAccessTokenRequest: Schema.Codec<FetchAccessTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchAccessTokenRequest",
   });
@@ -899,7 +899,7 @@ export interface InstallationState {
   actionUri?: string;
 }
 
-export const InstallationState: Schema.Schema<InstallationState> =
+export const InstallationState: Schema.Codec<InstallationState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     stage: Schema.optional(Schema.String),
@@ -911,7 +911,7 @@ export interface BearerTokenAuthentication {
   tokenSecretVersion?: string;
 }
 
-export const BearerTokenAuthentication: Schema.Schema<BearerTokenAuthentication> =
+export const BearerTokenAuthentication: Schema.Codec<BearerTokenAuthentication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenSecretVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "BearerTokenAuthentication" });
@@ -923,7 +923,7 @@ export interface BasicAuthentication {
   username?: string;
 }
 
-export const BasicAuthentication: Schema.Schema<BasicAuthentication> =
+export const BasicAuthentication: Schema.Codec<BasicAuthentication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passwordSecretVersion: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
@@ -942,7 +942,7 @@ export interface GenericHTTPEndpointConfig {
   sslCaCertificate?: string;
 }
 
-export const GenericHTTPEndpointConfig: Schema.Schema<GenericHTTPEndpointConfig> =
+export const GenericHTTPEndpointConfig: Schema.Codec<GenericHTTPEndpointConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostUri: Schema.optional(Schema.String),
     serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
@@ -968,7 +968,7 @@ export interface GitLabEnterpriseConfig {
   hostUri?: string;
 }
 
-export const GitLabEnterpriseConfig: Schema.Schema<GitLabEnterpriseConfig> =
+export const GitLabEnterpriseConfig: Schema.Codec<GitLabEnterpriseConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sslCaCertificate: Schema.optional(Schema.String),
     serverVersion: Schema.optional(Schema.String),
@@ -986,7 +986,7 @@ export interface FetchGitRefsResponse {
   nextPageToken?: string;
 }
 
-export const FetchGitRefsResponse: Schema.Schema<FetchGitRefsResponse> =
+export const FetchGitRefsResponse: Schema.Codec<FetchGitRefsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refNames: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -997,7 +997,7 @@ export interface ProcessGitLabEnterpriseWebhookRequest {
   body?: HttpBody;
 }
 
-export const ProcessGitLabEnterpriseWebhookRequest: Schema.Schema<ProcessGitLabEnterpriseWebhookRequest> =
+export const ProcessGitLabEnterpriseWebhookRequest: Schema.Codec<ProcessGitLabEnterpriseWebhookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     body: Schema.optional(HttpBody),
   }).annotate({ identifier: "ProcessGitLabEnterpriseWebhookRequest" });
@@ -1009,7 +1009,7 @@ export interface OAuthCredential {
   oauthTokenSecretVersion?: string;
 }
 
-export const OAuthCredential: Schema.Schema<OAuthCredential> =
+export const OAuthCredential: Schema.Codec<OAuthCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     oauthTokenSecretVersion: Schema.optional(Schema.String),
@@ -1032,7 +1032,7 @@ export interface GitHubConfig {
     | (string & {});
 }
 
-export const GitHubConfig: Schema.Schema<GitHubConfig> =
+export const GitHubConfig: Schema.Codec<GitHubConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installationUri: Schema.optional(Schema.String),
     authorizerCredential: Schema.optional(OAuthCredential),
@@ -1042,7 +1042,7 @@ export const GitHubConfig: Schema.Schema<GitHubConfig> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -1052,7 +1052,7 @@ export interface ProcessGitLabWebhookRequest {
   body?: HttpBody;
 }
 
-export const ProcessGitLabWebhookRequest: Schema.Schema<ProcessGitLabWebhookRequest> =
+export const ProcessGitLabWebhookRequest: Schema.Codec<ProcessGitLabWebhookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     body: Schema.optional(HttpBody),
   }).annotate({ identifier: "ProcessGitLabWebhookRequest" });
@@ -1062,7 +1062,7 @@ export interface SecureSourceManagerInstanceConfig {
   instance?: string;
 }
 
-export const SecureSourceManagerInstanceConfig: Schema.Schema<SecureSourceManagerInstanceConfig> =
+export const SecureSourceManagerInstanceConfig: Schema.Codec<SecureSourceManagerInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecureSourceManagerInstanceConfig" });
@@ -1076,7 +1076,7 @@ export interface Installation {
   id?: string;
 }
 
-export const Installation: Schema.Schema<Installation> =
+export const Installation: Schema.Codec<Installation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1128,7 +1128,7 @@ export interface Connection {
   githubEnterpriseConfig?: GitHubEnterpriseConfig;
 }
 
-export const Connection: Schema.Schema<Connection> =
+export const Connection: Schema.Codec<Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabled: Schema.optional(Schema.Boolean),
     reconciling: Schema.optional(Schema.Boolean),
@@ -1164,7 +1164,7 @@ export interface ListConnectionsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
+export const ListConnectionsResponse: Schema.Codec<ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connections: Schema.optional(Schema.Array(Connection)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1176,7 +1176,7 @@ export interface LinkableGitRepository {
   cloneUri?: string;
 }
 
-export const LinkableGitRepository: Schema.Schema<LinkableGitRepository> =
+export const LinkableGitRepository: Schema.Codec<LinkableGitRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloneUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "LinkableGitRepository" });
@@ -1186,7 +1186,7 @@ export interface FetchGitHubInstallationsResponse {
   installations?: ReadonlyArray<Installation>;
 }
 
-export const FetchGitHubInstallationsResponse: Schema.Schema<FetchGitHubInstallationsResponse> =
+export const FetchGitHubInstallationsResponse: Schema.Codec<FetchGitHubInstallationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installations: Schema.optional(Schema.Array(Installation)),
   }).annotate({ identifier: "FetchGitHubInstallationsResponse" });
@@ -1204,7 +1204,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Status),
@@ -1218,14 +1218,14 @@ export interface FinishOAuthResponse {
   exchangeError?: ExchangeError;
 }
 
-export const FinishOAuthResponse: Schema.Schema<FinishOAuthResponse> =
+export const FinishOAuthResponse: Schema.Codec<FinishOAuthResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exchangeError: Schema.optional(ExchangeError),
   }).annotate({ identifier: "FinishOAuthResponse" });
 
 export interface FetchReadWriteTokenRequest {}
 
-export const FetchReadWriteTokenRequest: Schema.Schema<FetchReadWriteTokenRequest> =
+export const FetchReadWriteTokenRequest: Schema.Codec<FetchReadWriteTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchReadWriteTokenRequest",
   });
@@ -1257,7 +1257,7 @@ export interface StartOAuthResponse {
   scopes?: ReadonlyArray<string>;
 }
 
-export const StartOAuthResponse: Schema.Schema<StartOAuthResponse> =
+export const StartOAuthResponse: Schema.Codec<StartOAuthResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authUri: Schema.optional(Schema.String),
     systemProviderId: Schema.optional(Schema.String),
@@ -1277,7 +1277,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1291,7 +1291,7 @@ export interface FetchLinkableGitRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const FetchLinkableGitRepositoriesResponse: Schema.Schema<FetchLinkableGitRepositoriesResponse> =
+export const FetchLinkableGitRepositoriesResponse: Schema.Codec<FetchLinkableGitRepositoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkableGitRepositories: Schema.optional(
       Schema.Array(LinkableGitRepository),
@@ -1301,7 +1301,7 @@ export const FetchLinkableGitRepositoriesResponse: Schema.Schema<FetchLinkableGi
 
 export interface FetchReadTokenRequest {}
 
-export const FetchReadTokenRequest: Schema.Schema<FetchReadTokenRequest> =
+export const FetchReadTokenRequest: Schema.Codec<FetchReadTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchReadTokenRequest",
   });
@@ -1317,7 +1317,7 @@ export interface FetchAccessTokenResponse {
   expirationTime?: string;
 }
 
-export const FetchAccessTokenResponse: Schema.Schema<FetchAccessTokenResponse> =
+export const FetchAccessTokenResponse: Schema.Codec<FetchAccessTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Schema.String)),
     exchangeError: Schema.optional(ExchangeError),
@@ -1330,7 +1330,7 @@ export interface ProcessBitbucketDataCenterWebhookRequest {
   body?: HttpBody;
 }
 
-export const ProcessBitbucketDataCenterWebhookRequest: Schema.Schema<ProcessBitbucketDataCenterWebhookRequest> =
+export const ProcessBitbucketDataCenterWebhookRequest: Schema.Codec<ProcessBitbucketDataCenterWebhookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     body: Schema.optional(HttpBody),
   }).annotate({ identifier: "ProcessBitbucketDataCenterWebhookRequest" });
@@ -1414,7 +1414,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1449,7 +1449,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1492,7 +1492,7 @@ export const FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest =
       path: "v1/{+accountConnector}:fetchUserRepositories",
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest>;
 
 export type FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
   FetchUserRepositoriesResponse;
@@ -1551,7 +1551,7 @@ export const CreateProjectsLocationsAccountConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAccountConnectorsRequest>;
 
 export type CreateProjectsLocationsAccountConnectorsResponse = Operation;
 export const CreateProjectsLocationsAccountConnectorsResponse =
@@ -1606,7 +1606,7 @@ export const PatchProjectsLocationsAccountConnectorsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAccountConnectorsRequest>;
 
 export type PatchProjectsLocationsAccountConnectorsResponse = Operation;
 export const PatchProjectsLocationsAccountConnectorsResponse =
@@ -1642,7 +1642,7 @@ export const GetProjectsLocationsAccountConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAccountConnectorsRequest>;
 
 export type GetProjectsLocationsAccountConnectorsResponse = AccountConnector;
 export const GetProjectsLocationsAccountConnectorsResponse =
@@ -1688,7 +1688,7 @@ export const ListProjectsLocationsAccountConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/accountConnectors" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAccountConnectorsRequest>;
 
 export type ListProjectsLocationsAccountConnectorsResponse =
   ListAccountConnectorsResponse;
@@ -1741,7 +1741,7 @@ export const DeleteProjectsLocationsAccountConnectorsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAccountConnectorsRequest>;
 
 export type DeleteProjectsLocationsAccountConnectorsResponse = Operation;
 export const DeleteProjectsLocationsAccountConnectorsResponse =
@@ -1777,7 +1777,7 @@ export const FetchSelfProjectsLocationsAccountConnectorsUsersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/users:fetchSelf" }),
     svc,
-  ) as unknown as Schema.Schema<FetchSelfProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<FetchSelfProjectsLocationsAccountConnectorsUsersRequest>;
 
 export type FetchSelfProjectsLocationsAccountConnectorsUsersResponse = User;
 export const FetchSelfProjectsLocationsAccountConnectorsUsersResponse =
@@ -1814,7 +1814,7 @@ export const StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest =
       path: "v1/{+accountConnector}/users:startOAuthFlow",
     }),
     svc,
-  ) as unknown as Schema.Schema<StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
 
 export type StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
   StartOAuthResponse;
@@ -1861,7 +1861,7 @@ export const ListProjectsLocationsAccountConnectorsUsersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/users" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAccountConnectorsUsersRequest>;
 
 export type ListProjectsLocationsAccountConnectorsUsersResponse =
   ListUsersResponse;
@@ -1911,7 +1911,7 @@ export const DeleteProjectsLocationsAccountConnectorsUsersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAccountConnectorsUsersRequest>;
 
 export type DeleteProjectsLocationsAccountConnectorsUsersResponse = Operation;
 export const DeleteProjectsLocationsAccountConnectorsUsersResponse =
@@ -1954,7 +1954,7 @@ export const FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest>;
 
 export type FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse =
   FetchAccessTokenResponse;
@@ -1991,7 +1991,7 @@ export const DeleteSelfProjectsLocationsAccountConnectorsUsersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/users:deleteSelf" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSelfProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<DeleteSelfProjectsLocationsAccountConnectorsUsersRequest>;
 
 export type DeleteSelfProjectsLocationsAccountConnectorsUsersResponse =
   Operation;
@@ -2056,7 +2056,7 @@ export const FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest =
       path: "v1/{+accountConnector}/users:finishOAuthFlow",
     }),
     svc,
-  ) as unknown as Schema.Schema<FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
 
 export type FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
   FinishOAuthResponse;
@@ -2091,7 +2091,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -2139,7 +2139,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -2177,7 +2177,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -2216,7 +2216,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -2268,7 +2268,7 @@ export const CreateProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/connections", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionsRequest>;
 
 export type CreateProjectsLocationsConnectionsResponse = Operation;
 export const CreateProjectsLocationsConnectionsResponse =
@@ -2323,7 +2323,7 @@ export const PatchProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConnectionsRequest>;
 
 export type PatchProjectsLocationsConnectionsResponse = Operation;
 export const PatchProjectsLocationsConnectionsResponse =
@@ -2362,7 +2362,7 @@ export const FetchGitHubInstallationsProjectsLocationsConnectionsRequest =
       path: "v1/{+connection}:fetchGitHubInstallations",
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchGitHubInstallationsProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<FetchGitHubInstallationsProjectsLocationsConnectionsRequest>;
 
 export type FetchGitHubInstallationsProjectsLocationsConnectionsResponse =
   FetchGitHubInstallationsResponse;
@@ -2406,7 +2406,7 @@ export const FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest =
       path: "v1/{+connection}:fetchLinkableGitRepositories",
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest>;
 
 export type FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse =
   FetchLinkableGitRepositoriesResponse;
@@ -2445,7 +2445,7 @@ export const GetProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionsRequest>;
 
 export type GetProjectsLocationsConnectionsResponse = Connection;
 export const GetProjectsLocationsConnectionsResponse =
@@ -2491,7 +2491,7 @@ export const ListProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRequest>;
 
 export type ListProjectsLocationsConnectionsResponse = ListConnectionsResponse;
 export const ListProjectsLocationsConnectionsResponse =
@@ -2540,7 +2540,7 @@ export const DeleteProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionsRequest>;
 
 export type DeleteProjectsLocationsConnectionsResponse = Operation;
 export const DeleteProjectsLocationsConnectionsResponse =
@@ -2585,7 +2585,7 @@ export const ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest>;
 
 export type ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsResponse =
   Empty;
@@ -2633,7 +2633,7 @@ export const DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type DeleteProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Operation;
@@ -2679,7 +2679,7 @@ export const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitReposito
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Empty;
@@ -2687,7 +2687,11 @@ export const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitReposito
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud instances for notifying events. */
 export const processBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
@@ -2723,7 +2727,7 @@ export const ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRep
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Empty;
@@ -2731,7 +2735,11 @@ export const ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRep
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ProcessBitbucketDataCenterWebhook is called by the external Bitbucket Data Center instances for notifying events. */
 export const processBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
@@ -2778,7 +2786,7 @@ export const CreateProjectsLocationsConnectionsGitRepositoryLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type CreateProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Operation;
@@ -2822,7 +2830,7 @@ export const FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRe
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksResponse =
   FetchReadWriteTokenResponse;
@@ -2830,7 +2838,11 @@ export const FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRe
   /*@__PURE__*/ /*#__PURE__*/ FetchReadWriteTokenResponse;
 
 export type FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Fetches read/write token of a given gitRepositoryLink. */
 export const fetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
@@ -2869,7 +2881,7 @@ export const ListProjectsLocationsConnectionsGitRepositoryLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/gitRepositoryLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type ListProjectsLocationsConnectionsGitRepositoryLinksResponse =
   ListGitRepositoryLinksResponse;
@@ -2917,7 +2929,7 @@ export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+gitRepositoryLink}:fetchGitRefs" }),
     svc,
-  ) as unknown as Schema.Schema<FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse =
   FetchGitRefsResponse;
@@ -2965,7 +2977,7 @@ export const ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitReposi
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Empty;
@@ -2973,7 +2985,11 @@ export const ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitReposi
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise instances for notifying events. */
 export const processGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
@@ -3000,7 +3016,7 @@ export const GetProjectsLocationsConnectionsGitRepositoryLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type GetProjectsLocationsConnectionsGitRepositoryLinksResponse =
   GitRepositoryLink;
@@ -3042,7 +3058,7 @@ export const FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse =
   FetchReadTokenResponse;
@@ -3086,7 +3102,7 @@ export const ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksR
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Empty;
@@ -3094,7 +3110,11 @@ export const ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksR
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ProcessGitLabWebhook is called by the GitLab.com for notifying events. */
 export const processGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
@@ -3133,7 +3153,7 @@ export const ListProjectsLocationsInsightsConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/insightsConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInsightsConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInsightsConfigsRequest>;
 
 export type ListProjectsLocationsInsightsConfigsResponse =
   ListInsightsConfigsResponse;
@@ -3183,7 +3203,7 @@ export const DeleteProjectsLocationsInsightsConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInsightsConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsInsightsConfigsRequest>;
 
 export type DeleteProjectsLocationsInsightsConfigsResponse = Operation;
 export const DeleteProjectsLocationsInsightsConfigsResponse =
@@ -3219,7 +3239,7 @@ export const GetProjectsLocationsInsightsConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInsightsConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInsightsConfigsRequest>;
 
 export type GetProjectsLocationsInsightsConfigsResponse = InsightsConfig;
 export const GetProjectsLocationsInsightsConfigsResponse =
@@ -3269,7 +3289,7 @@ export const PatchProjectsLocationsInsightsConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsInsightsConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsInsightsConfigsRequest>;
 
 export type PatchProjectsLocationsInsightsConfigsResponse = Operation;
 export const PatchProjectsLocationsInsightsConfigsResponse =
@@ -3322,7 +3342,7 @@ export const CreateProjectsLocationsInsightsConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsInsightsConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsInsightsConfigsRequest>;
 
 export type CreateProjectsLocationsInsightsConfigsResponse = Operation;
 export const CreateProjectsLocationsInsightsConfigsResponse =
@@ -3358,7 +3378,7 @@ export const GetProjectsLocationsInsightsConfigsDeploymentEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
 
 export type GetProjectsLocationsInsightsConfigsDeploymentEventsResponse =
   DeploymentEvent;
@@ -3405,7 +3425,7 @@ export const ListProjectsLocationsInsightsConfigsDeploymentEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deploymentEvents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
 
 export type ListProjectsLocationsInsightsConfigsDeploymentEventsResponse =
   ListDeploymentEventsResponse;

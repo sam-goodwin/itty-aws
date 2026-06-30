@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface EmailVerificationData {
   isUserNameEditable?: boolean;
 }
 
-export const EmailVerificationData: Schema.Schema<EmailVerificationData> =
+export const EmailVerificationData: Schema.Codec<EmailVerificationData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     user: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export const EmailVerificationData: Schema.Schema<EmailVerificationData> =
 
 export interface WaitForVoiceOfMerchant {}
 
-export const WaitForVoiceOfMerchant: Schema.Schema<WaitForVoiceOfMerchant> =
+export const WaitForVoiceOfMerchant: Schema.Codec<WaitForVoiceOfMerchant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WaitForVoiceOfMerchant",
   });
@@ -70,7 +70,7 @@ export interface PostalAddress {
   sublocality?: string;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
+export const PostalAddress: Schema.Codec<PostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locality: Schema.optional(Schema.String),
     addressLines: Schema.optional(Schema.Array(Schema.String)),
@@ -90,7 +90,7 @@ export interface ServiceBusinessContext {
   address?: PostalAddress;
 }
 
-export const ServiceBusinessContext: Schema.Schema<ServiceBusinessContext> =
+export const ServiceBusinessContext: Schema.Codec<ServiceBusinessContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(PostalAddress),
   }).annotate({ identifier: "ServiceBusinessContext" });
@@ -100,7 +100,7 @@ export interface VerificationToken {
   tokenString?: string;
 }
 
-export const VerificationToken: Schema.Schema<VerificationToken> =
+export const VerificationToken: Schema.Codec<VerificationToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenString: Schema.optional(Schema.String),
   }).annotate({ identifier: "VerificationToken" });
@@ -131,7 +131,7 @@ export interface Verification {
     | (string & {});
 }
 
-export const Verification: Schema.Schema<Verification> =
+export const Verification: Schema.Codec<Verification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     announcement: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -145,7 +145,7 @@ export interface CompleteVerificationRequest {
   pin?: string;
 }
 
-export const CompleteVerificationRequest: Schema.Schema<CompleteVerificationRequest> =
+export const CompleteVerificationRequest: Schema.Codec<CompleteVerificationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pin: Schema.optional(Schema.String),
   }).annotate({ identifier: "CompleteVerificationRequest" });
@@ -157,7 +157,7 @@ export interface GenerateInstantVerificationTokenResponse {
   result?: "RESULT_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | (string & {});
 }
 
-export const GenerateInstantVerificationTokenResponse: Schema.Schema<GenerateInstantVerificationTokenResponse> =
+export const GenerateInstantVerificationTokenResponse: Schema.Codec<GenerateInstantVerificationTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instantVerificationToken: Schema.optional(Schema.String),
     result: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export const GenerateInstantVerificationTokenResponse: Schema.Schema<GenerateIns
 
 export interface ResolveOwnershipConflict {}
 
-export const ResolveOwnershipConflict: Schema.Schema<ResolveOwnershipConflict> =
+export const ResolveOwnershipConflict: Schema.Codec<ResolveOwnershipConflict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResolveOwnershipConflict",
   });
@@ -177,7 +177,7 @@ export interface ListVerificationsResponse {
   verifications?: ReadonlyArray<Verification>;
 }
 
-export const ListVerificationsResponse: Schema.Schema<ListVerificationsResponse> =
+export const ListVerificationsResponse: Schema.Codec<ListVerificationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     verifications: Schema.optional(Schema.Array(Verification)),
@@ -188,7 +188,7 @@ export interface Verify {
   hasPendingVerification?: boolean;
 }
 
-export const Verify: Schema.Schema<Verify> =
+export const Verify: Schema.Codec<Verify> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasPendingVerification: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Verify" });
@@ -202,7 +202,7 @@ export interface ComplyWithGuidelines {
     | (string & {});
 }
 
-export const ComplyWithGuidelines: Schema.Schema<ComplyWithGuidelines> =
+export const ComplyWithGuidelines: Schema.Codec<ComplyWithGuidelines> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendationReason: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComplyWithGuidelines" });
@@ -222,7 +222,7 @@ export interface VoiceOfMerchantState {
   waitForVoiceOfMerchant?: WaitForVoiceOfMerchant;
 }
 
-export const VoiceOfMerchantState: Schema.Schema<VoiceOfMerchantState> =
+export const VoiceOfMerchantState: Schema.Codec<VoiceOfMerchantState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verify: Schema.optional(Verify),
     complyWithGuidelines: Schema.optional(ComplyWithGuidelines),
@@ -241,7 +241,7 @@ export interface AddressVerificationData {
   business?: string;
 }
 
-export const AddressVerificationData: Schema.Schema<AddressVerificationData> =
+export const AddressVerificationData: Schema.Codec<AddressVerificationData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expectedDeliveryDaysRegion: Schema.optional(Schema.Number),
     address: Schema.optional(PostalAddress),
@@ -253,7 +253,7 @@ export interface VerifyLocationResponse {
   verification?: Verification;
 }
 
-export const VerifyLocationResponse: Schema.Schema<VerifyLocationResponse> =
+export const VerifyLocationResponse: Schema.Codec<VerifyLocationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verification: Schema.optional(Verification),
   }).annotate({ identifier: "VerifyLocationResponse" });
@@ -263,7 +263,7 @@ export interface CompleteVerificationResponse {
   verification?: Verification;
 }
 
-export const CompleteVerificationResponse: Schema.Schema<CompleteVerificationResponse> =
+export const CompleteVerificationResponse: Schema.Codec<CompleteVerificationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verification: Schema.optional(Verification),
   }).annotate({ identifier: "CompleteVerificationResponse" });
@@ -275,7 +275,7 @@ export interface FetchVerificationOptionsRequest {
   context?: ServiceBusinessContext;
 }
 
-export const FetchVerificationOptionsRequest: Schema.Schema<FetchVerificationOptionsRequest> =
+export const FetchVerificationOptionsRequest: Schema.Codec<FetchVerificationOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     context: Schema.optional(ServiceBusinessContext),
@@ -286,7 +286,7 @@ export interface GenerateInstantVerificationTokenRequest {
   locationId?: string;
 }
 
-export const GenerateInstantVerificationTokenRequest: Schema.Schema<GenerateInstantVerificationTokenRequest> =
+export const GenerateInstantVerificationTokenRequest: Schema.Codec<GenerateInstantVerificationTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateInstantVerificationTokenRequest" });
@@ -312,7 +312,7 @@ export interface VerificationOption {
   phoneNumber?: string;
 }
 
-export const VerificationOption: Schema.Schema<VerificationOption> =
+export const VerificationOption: Schema.Codec<VerificationOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     announcement: Schema.optional(Schema.String),
     verificationMethod: Schema.optional(Schema.String),
@@ -326,7 +326,7 @@ export interface FetchVerificationOptionsResponse {
   options?: ReadonlyArray<VerificationOption>;
 }
 
-export const FetchVerificationOptionsResponse: Schema.Schema<FetchVerificationOptionsResponse> =
+export const FetchVerificationOptionsResponse: Schema.Codec<FetchVerificationOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(Schema.Array(VerificationOption)),
   }).annotate({ identifier: "FetchVerificationOptionsResponse" });
@@ -358,7 +358,7 @@ export interface VerifyLocationRequest {
   phoneNumber?: string;
 }
 
-export const VerifyLocationRequest: Schema.Schema<VerifyLocationRequest> =
+export const VerifyLocationRequest: Schema.Codec<VerifyLocationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trustedPartnerToken: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -442,7 +442,7 @@ export const FetchVerificationOptionsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchVerificationOptionsLocationsRequest>;
+  ) as unknown as Schema.Codec<FetchVerificationOptionsLocationsRequest>;
 
 export type FetchVerificationOptionsLocationsResponse =
   FetchVerificationOptionsResponse;
@@ -479,7 +479,7 @@ export const GetVoiceOfMerchantStateLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/VoiceOfMerchantState" }),
     svc,
-  ) as unknown as Schema.Schema<GetVoiceOfMerchantStateLocationsRequest>;
+  ) as unknown as Schema.Codec<GetVoiceOfMerchantStateLocationsRequest>;
 
 export type GetVoiceOfMerchantStateLocationsResponse = VoiceOfMerchantState;
 export const GetVoiceOfMerchantStateLocationsResponse =
@@ -517,7 +517,7 @@ export const VerifyLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1/{+name}:verify", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<VerifyLocationsRequest>;
+) as unknown as Schema.Codec<VerifyLocationsRequest>;
 
 export type VerifyLocationsResponse = VerifyLocationResponse;
 export const VerifyLocationsResponse =
@@ -559,7 +559,7 @@ export const ListLocationsVerificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/verifications" }),
     svc,
-  ) as unknown as Schema.Schema<ListLocationsVerificationsRequest>;
+  ) as unknown as Schema.Codec<ListLocationsVerificationsRequest>;
 
 export type ListLocationsVerificationsResponse = ListVerificationsResponse;
 export const ListLocationsVerificationsResponse =
@@ -600,7 +600,7 @@ export const CompleteLocationsVerificationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:complete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CompleteLocationsVerificationsRequest>;
+  ) as unknown as Schema.Codec<CompleteLocationsVerificationsRequest>;
 
 export type CompleteLocationsVerificationsResponse =
   CompleteVerificationResponse;
@@ -643,7 +643,7 @@ export const GenerateVerificationTokensRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateVerificationTokensRequest>;
+  ) as unknown as Schema.Codec<GenerateVerificationTokensRequest>;
 
 export type GenerateVerificationTokensResponse =
   GenerateInstantVerificationTokenResponse;

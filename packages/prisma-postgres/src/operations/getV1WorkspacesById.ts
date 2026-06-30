@@ -4,13 +4,26 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1WorkspacesByIdInput {
+  id: string;
+}
 export const GetV1WorkspacesByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/workspaces/{id}" }));
-export type GetV1WorkspacesByIdInput = typeof GetV1WorkspacesByIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/workspaces/{id}" }),
+  ) as unknown as Schema.Codec<GetV1WorkspacesByIdInput>;
 
 // Output Schema
+export interface GetV1WorkspacesByIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+  };
+}
 export const GetV1WorkspacesByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -20,8 +33,7 @@ export const GetV1WorkspacesByIdOutput =
       name: Schema.String,
       createdAt: Schema.String,
     }),
-  });
-export type GetV1WorkspacesByIdOutput = typeof GetV1WorkspacesByIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1WorkspacesByIdOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupClusterGlobalWriteCustomZoneMappingInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
     }),
-  );
-export type DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
-  typeof DeleteGroupClusterGlobalWriteCustomZoneMappingInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteCustomZoneMappingInput>;
 
 // Output Schema
+export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput = void;
 export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  typeof DeleteGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteCustomZoneMappingOutput>;
 
 // The operation
 /**

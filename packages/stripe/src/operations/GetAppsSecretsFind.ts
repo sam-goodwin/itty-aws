@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetAppsSecretsFindInput {
+  expand?: string;
+  name: string;
+  scope: string;
+}
 export const GetAppsSecretsFindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
@@ -14,10 +19,20 @@ export const GetAppsSecretsFindInput =
       path: "/v1/apps/secrets/find",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetAppsSecretsFindInput = typeof GetAppsSecretsFindInput.Type;
+  ) as unknown as Schema.Codec<GetAppsSecretsFindInput>;
 
 // Output Schema
+export interface GetAppsSecretsFindOutput {
+  created: number;
+  deleted?: boolean;
+  expires_at: number | null;
+  id: string;
+  livemode: boolean;
+  name: string;
+  object: "apps.secret";
+  payload?: string | null;
+  scope: { type: "account" | "user"; user?: string };
+}
 export const GetAppsSecretsFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -32,8 +47,7 @@ export const GetAppsSecretsFindOutput =
       type: Schema.Literals(["account", "user"]),
       user: Schema.optional(Schema.String),
     }),
-  });
-export type GetAppsSecretsFindOutput = typeof GetAppsSecretsFindOutput.Type;
+  }) as unknown as Schema.Codec<GetAppsSecretsFindOutput>;
 
 // The operation
 /**

@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1ShutdownRealtimeInput {
+  ref: string;
+}
 export const V1ShutdownRealtimeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,12 +15,12 @@ export const V1ShutdownRealtimeInput =
       method: "POST",
       path: "/v1/projects/{ref}/config/realtime/shutdown",
     }),
-  );
-export type V1ShutdownRealtimeInput = typeof V1ShutdownRealtimeInput.Type;
+  ) as unknown as Schema.Codec<V1ShutdownRealtimeInput>;
 
 // Output Schema
-export const V1ShutdownRealtimeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1ShutdownRealtimeOutput = typeof V1ShutdownRealtimeOutput.Type;
+export type V1ShutdownRealtimeOutput = void;
+export const V1ShutdownRealtimeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ShutdownRealtimeOutput>;
 
 // The operation
 /**

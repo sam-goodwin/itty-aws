@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -34,7 +34,7 @@ export interface ScanRunWarningTrace {
     | (string & {});
 }
 
-export const ScanRunWarningTrace: Schema.Schema<ScanRunWarningTrace> =
+export const ScanRunWarningTrace: Schema.Codec<ScanRunWarningTrace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "ScanRunWarningTrace" });
@@ -90,7 +90,7 @@ export interface ScanConfigError {
     | (string & {});
 }
 
-export const ScanConfigError: Schema.Schema<ScanConfigError> =
+export const ScanConfigError: Schema.Codec<ScanConfigError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -114,7 +114,7 @@ export interface ScanRunErrorTrace {
   mostCommonHttpErrorCode?: number;
 }
 
-export const ScanRunErrorTrace: Schema.Schema<ScanRunErrorTrace> =
+export const ScanRunErrorTrace: Schema.Codec<ScanRunErrorTrace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     scanConfigError: Schema.optional(ScanConfigError),
@@ -156,7 +156,7 @@ export interface ScanRun {
   startTime?: string;
 }
 
-export const ScanRun: Schema.Schema<ScanRun> =
+export const ScanRun: Schema.Codec<ScanRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlsTestedCount: Schema.optional(Schema.String),
     warningTraces: Schema.optional(Schema.Array(ScanRunWarningTrace)),
@@ -178,7 +178,7 @@ export interface Schedule {
   intervalDurationDays?: number;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
+export const Schedule: Schema.Codec<Schedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduleTime: Schema.optional(Schema.String),
     intervalDurationDays: Schema.optional(Schema.Number),
@@ -191,7 +191,7 @@ export interface GoogleAccount {
   password?: string;
 }
 
-export const GoogleAccount: Schema.Schema<GoogleAccount> =
+export const GoogleAccount: Schema.Codec<GoogleAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export interface IapTestServiceAccountInfo {
   targetAudienceClientId?: string;
 }
 
-export const IapTestServiceAccountInfo: Schema.Schema<IapTestServiceAccountInfo> =
+export const IapTestServiceAccountInfo: Schema.Codec<IapTestServiceAccountInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetAudienceClientId: Schema.optional(Schema.String),
   }).annotate({ identifier: "IapTestServiceAccountInfo" });
@@ -212,7 +212,7 @@ export interface IapCredential {
   iapTestServiceAccountInfo?: IapTestServiceAccountInfo;
 }
 
-export const IapCredential: Schema.Schema<IapCredential> =
+export const IapCredential: Schema.Codec<IapCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iapTestServiceAccountInfo: Schema.optional(IapTestServiceAccountInfo),
   }).annotate({ identifier: "IapCredential" });
@@ -226,7 +226,7 @@ export interface CustomAccount {
   loginUrl?: string;
 }
 
-export const CustomAccount: Schema.Schema<CustomAccount> =
+export const CustomAccount: Schema.Codec<CustomAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
@@ -242,7 +242,7 @@ export interface Authentication {
   customAccount?: CustomAccount;
 }
 
-export const Authentication: Schema.Schema<Authentication> =
+export const Authentication: Schema.Codec<Authentication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleAccount: Schema.optional(GoogleAccount),
     iapCredential: Schema.optional(IapCredential),
@@ -297,7 +297,7 @@ export interface ScanConfig {
   managedScan?: boolean;
 }
 
-export const ScanConfig: Schema.Schema<ScanConfig> =
+export const ScanConfig: Schema.Codec<ScanConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportToSecurityCommandCenter: Schema.optional(Schema.String),
     latestRun: Schema.optional(ScanRun),
@@ -323,7 +323,7 @@ export interface ListScanConfigsResponse {
   nextPageToken?: string;
 }
 
-export const ListScanConfigsResponse: Schema.Schema<ListScanConfigsResponse> =
+export const ListScanConfigsResponse: Schema.Codec<ListScanConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scanConfigs: Schema.optional(Schema.Array(ScanConfig)),
     nextPageToken: Schema.optional(Schema.String),
@@ -331,14 +331,14 @@ export const ListScanConfigsResponse: Schema.Schema<ListScanConfigsResponse> =
 
 export interface StartScanRunRequest {}
 
-export const StartScanRunRequest: Schema.Schema<StartScanRunRequest> =
+export const StartScanRunRequest: Schema.Codec<StartScanRunRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StartScanRunRequest",
   });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -350,7 +350,7 @@ export interface ListScanRunsResponse {
   nextPageToken?: string;
 }
 
-export const ListScanRunsResponse: Schema.Schema<ListScanRunsResponse> =
+export const ListScanRunsResponse: Schema.Codec<ListScanRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scanRuns: Schema.optional(Schema.Array(ScanRun)),
     nextPageToken: Schema.optional(Schema.String),
@@ -365,7 +365,7 @@ export interface OutdatedLibrary {
   learnMoreUrls?: ReadonlyArray<string>;
 }
 
-export const OutdatedLibrary: Schema.Schema<OutdatedLibrary> =
+export const OutdatedLibrary: Schema.Codec<OutdatedLibrary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     libraryName: Schema.optional(Schema.String),
@@ -379,7 +379,7 @@ export interface Form {
   fields?: ReadonlyArray<string>;
 }
 
-export const Form: Schema.Schema<Form> =
+export const Form: Schema.Codec<Form> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionUri: Schema.optional(Schema.String),
     fields: Schema.optional(Schema.Array(Schema.String)),
@@ -395,11 +395,12 @@ export interface Xxe {
   payloadValue?: string;
 }
 
-export const Xxe: Schema.Schema<Xxe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Xxe: Schema.Codec<Xxe> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     payloadLocation: Schema.optional(Schema.String),
     payloadValue: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Xxe" });
+  },
+).annotate({ identifier: "Xxe" });
 
 export interface CrawledUrl {
   /** Output only. The http method of the request that was used to visit the URL, in uppercase. */
@@ -410,7 +411,7 @@ export interface CrawledUrl {
   url?: string;
 }
 
-export const CrawledUrl: Schema.Schema<CrawledUrl> =
+export const CrawledUrl: Schema.Codec<CrawledUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpMethod: Schema.optional(Schema.String),
     body: Schema.optional(Schema.String),
@@ -424,7 +425,7 @@ export interface Header {
   value?: string;
 }
 
-export const Header: Schema.Schema<Header> =
+export const Header: Schema.Codec<Header> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -437,7 +438,7 @@ export interface VulnerableHeaders {
   missingHeaders?: ReadonlyArray<Header>;
 }
 
-export const VulnerableHeaders: Schema.Schema<VulnerableHeaders> =
+export const VulnerableHeaders: Schema.Codec<VulnerableHeaders> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headers: Schema.optional(Schema.Array(Header)),
     missingHeaders: Schema.optional(Schema.Array(Header)),
@@ -448,7 +449,7 @@ export interface VulnerableParameters {
   parameterNames?: ReadonlyArray<string>;
 }
 
-export const VulnerableParameters: Schema.Schema<VulnerableParameters> =
+export const VulnerableParameters: Schema.Codec<VulnerableParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameterNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "VulnerableParameters" });
@@ -460,7 +461,7 @@ export interface ViolatingResource {
   resourceUrl?: string;
 }
 
-export const ViolatingResource: Schema.Schema<ViolatingResource> =
+export const ViolatingResource: Schema.Codec<ViolatingResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     resourceUrl: Schema.optional(Schema.String),
@@ -494,13 +495,14 @@ export interface Xss {
     | (string & {});
 }
 
-export const Xss: Schema.Schema<Xss> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Xss: Schema.Codec<Xss> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     stackTraces: Schema.optional(Schema.Array(Schema.String)),
     storedXssSeedingUrl: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
     attackVector: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Xss" });
+  },
+).annotate({ identifier: "Xss" });
 
 export interface Finding {
   /** Output only. An addon containing information about vulnerable or missing HTTP headers. */
@@ -547,7 +549,7 @@ export interface Finding {
   httpMethod?: string;
 }
 
-export const Finding: Schema.Schema<Finding> =
+export const Finding: Schema.Codec<Finding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vulnerableHeaders: Schema.optional(VulnerableHeaders),
     body: Schema.optional(Schema.String),
@@ -571,7 +573,7 @@ export const Finding: Schema.Schema<Finding> =
 
 export interface StopScanRunRequest {}
 
-export const StopScanRunRequest: Schema.Schema<StopScanRunRequest> =
+export const StopScanRunRequest: Schema.Codec<StopScanRunRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopScanRunRequest",
   });
@@ -583,7 +585,7 @@ export interface FindingTypeStats {
   findingCount?: number;
 }
 
-export const FindingTypeStats: Schema.Schema<FindingTypeStats> =
+export const FindingTypeStats: Schema.Codec<FindingTypeStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findingType: Schema.optional(Schema.String),
     findingCount: Schema.optional(Schema.Number),
@@ -596,7 +598,7 @@ export interface ListCrawledUrlsResponse {
   nextPageToken?: string;
 }
 
-export const ListCrawledUrlsResponse: Schema.Schema<ListCrawledUrlsResponse> =
+export const ListCrawledUrlsResponse: Schema.Codec<ListCrawledUrlsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     crawledUrls: Schema.optional(Schema.Array(CrawledUrl)),
     nextPageToken: Schema.optional(Schema.String),
@@ -609,7 +611,7 @@ export interface ListFindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListFindingsResponse: Schema.Schema<ListFindingsResponse> =
+export const ListFindingsResponse: Schema.Codec<ListFindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(Finding)),
     nextPageToken: Schema.optional(Schema.String),
@@ -620,7 +622,7 @@ export interface ListFindingTypeStatsResponse {
   findingTypeStats?: ReadonlyArray<FindingTypeStats>;
 }
 
-export const ListFindingTypeStatsResponse: Schema.Schema<ListFindingTypeStatsResponse> =
+export const ListFindingTypeStatsResponse: Schema.Codec<ListFindingTypeStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findingTypeStats: Schema.optional(Schema.Array(FindingTypeStats)),
   }).annotate({ identifier: "ListFindingTypeStatsResponse" });
@@ -693,7 +695,7 @@ export const StartProjectsScanConfigsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StartProjectsScanConfigsRequest>;
+  ) as unknown as Schema.Codec<StartProjectsScanConfigsRequest>;
 
 export type StartProjectsScanConfigsResponse = ScanRun;
 export const StartProjectsScanConfigsResponse =
@@ -735,7 +737,7 @@ export const ListProjectsScanConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/scanConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsScanConfigsRequest>;
 
 export type ListProjectsScanConfigsResponse = ListScanConfigsResponse;
 export const ListProjectsScanConfigsResponse =
@@ -770,7 +772,7 @@ export const DeleteProjectsScanConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsScanConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsScanConfigsRequest>;
 
 export type DeleteProjectsScanConfigsResponse = Empty;
 export const DeleteProjectsScanConfigsResponse =
@@ -812,7 +814,7 @@ export const PatchProjectsScanConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsScanConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsScanConfigsRequest>;
 
 export type PatchProjectsScanConfigsResponse = ScanConfig;
 export const PatchProjectsScanConfigsResponse =
@@ -851,7 +853,7 @@ export const CreateProjectsScanConfigsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/scanConfigs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsScanConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsScanConfigsRequest>;
 
 export type CreateProjectsScanConfigsResponse = ScanConfig;
 export const CreateProjectsScanConfigsResponse =
@@ -887,7 +889,7 @@ export const GetProjectsScanConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsScanConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsScanConfigsRequest>;
 
 export type GetProjectsScanConfigsResponse = ScanConfig;
 export const GetProjectsScanConfigsResponse =
@@ -918,7 +920,7 @@ export const GetProjectsScanConfigsScanRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsScanConfigsScanRunsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsScanConfigsScanRunsRequest>;
 
 export type GetProjectsScanConfigsScanRunsResponse = ScanRun;
 export const GetProjectsScanConfigsScanRunsResponse =
@@ -958,7 +960,7 @@ export const ListProjectsScanConfigsScanRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/scanRuns" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsScanConfigsScanRunsRequest>;
 
 export type ListProjectsScanConfigsScanRunsResponse = ListScanRunsResponse;
 export const ListProjectsScanConfigsScanRunsResponse =
@@ -999,7 +1001,7 @@ export const StopProjectsScanConfigsScanRunsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StopProjectsScanConfigsScanRunsRequest>;
+  ) as unknown as Schema.Codec<StopProjectsScanConfigsScanRunsRequest>;
 
 export type StopProjectsScanConfigsScanRunsResponse = ScanRun;
 export const StopProjectsScanConfigsScanRunsResponse =
@@ -1041,7 +1043,7 @@ export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/crawledUrls" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>;
 
 export type ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
   ListCrawledUrlsResponse;
@@ -1080,7 +1082,7 @@ export const GetProjectsScanConfigsScanRunsFindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsScanConfigsScanRunsFindingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsScanConfigsScanRunsFindingsRequest>;
 
 export type GetProjectsScanConfigsScanRunsFindingsResponse = Finding;
 export const GetProjectsScanConfigsScanRunsFindingsResponse =
@@ -1123,7 +1125,7 @@ export const ListProjectsScanConfigsScanRunsFindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/findings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsScanConfigsScanRunsFindingsRequest>;
 
 export type ListProjectsScanConfigsScanRunsFindingsResponse =
   ListFindingsResponse;
@@ -1162,7 +1164,7 @@ export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/findingTypeStats" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>;
 
 export type ListProjectsScanConfigsScanRunsFindingTypeStatsResponse =
   ListFindingTypeStatsResponse;

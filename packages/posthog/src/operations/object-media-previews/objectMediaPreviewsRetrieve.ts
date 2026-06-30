@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ObjectMediaPreviewsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ObjectMediaPreviewsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,20 @@ export const ObjectMediaPreviewsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/object_media_previews/{id}/",
     }),
-  );
-export type ObjectMediaPreviewsRetrieveInput =
-  typeof ObjectMediaPreviewsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ObjectMediaPreviewsRetrieveInput>;
 
 // Output Schema
+export interface ObjectMediaPreviewsRetrieveOutput {
+  id?: string;
+  created_at?: string;
+  updated_at?: string | null;
+  media_url?: string;
+  media_type?: string;
+  metadata?: unknown;
+  uploaded_media_id?: string | null;
+  exported_asset_id?: string | null;
+  event_definition_id?: string | null;
+}
 export const ObjectMediaPreviewsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -29,9 +42,7 @@ export const ObjectMediaPreviewsRetrieveOutput =
     uploaded_media_id: Schema.optional(Schema.NullOr(Schema.String)),
     exported_asset_id: Schema.optional(Schema.NullOr(Schema.String)),
     event_definition_id: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ObjectMediaPreviewsRetrieveOutput =
-  typeof ObjectMediaPreviewsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ObjectMediaPreviewsRetrieveOutput>;
 
 // The operation
 /**

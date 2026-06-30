@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LegalDocumentsRetrieveInput {
+  id: string;
+  organization_id: string;
+}
 export const LegalDocumentsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,18 @@ export const LegalDocumentsRetrieveInput =
       method: "GET",
       path: "/api/organizations/{organization_id}/legal_documents/{id}/",
     }),
-  );
-export type LegalDocumentsRetrieveInput =
-  typeof LegalDocumentsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LegalDocumentsRetrieveInput>;
 
 // Output Schema
+export interface LegalDocumentsRetrieveOutput {
+  id?: string;
+  document_type?: string;
+  company_name?: string;
+  representative_email?: string;
+  status?: string;
+  created_by?: { first_name?: string; email?: string } | null;
+  created_at?: string;
+}
 export const LegalDocumentsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -25,11 +36,16 @@ export const LegalDocumentsRetrieveOutput =
     company_name: Schema.optional(Schema.String),
     representative_email: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-    created_by: Schema.optional(Schema.Unknown),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          first_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     created_at: Schema.optional(Schema.String),
-  });
-export type LegalDocumentsRetrieveOutput =
-  typeof LegalDocumentsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LegalDocumentsRetrieveOutput>;
 
 // The operation
 /**

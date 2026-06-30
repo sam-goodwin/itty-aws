@@ -4,11 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ArtifactsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  imageName: string;
+  artifactName: string;
+}
 export const ArtifactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -21,10 +28,22 @@ export const ArtifactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts/{artifactName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type ArtifactsGetInput = typeof ArtifactsGetInput.Type;
+) as unknown as Schema.Codec<ArtifactsGetInput>;
 
 // Output Schema
+export interface ArtifactsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -43,8 +62,7 @@ export const ArtifactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ArtifactsGetOutput = typeof ArtifactsGetOutput.Type;
+}) as unknown as Schema.Codec<ArtifactsGetOutput>;
 
 // The operation
 /**
@@ -62,6 +80,12 @@ export const ArtifactsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArtifactsGetOutput,
 }));
 // Input Schema
+export interface ArtifactsListByParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  imageName: string;
+}
 export const ArtifactsListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -74,10 +98,25 @@ export const ArtifactsListByParentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts",
       apiVersion: "2026-03-15",
     }),
-  );
-export type ArtifactsListByParentInput = typeof ArtifactsListByParentInput.Type;
+  ) as unknown as Schema.Codec<ArtifactsListByParentInput>;
 
 // Output Schema
+export interface ArtifactsListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ArtifactsListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -112,9 +151,7 @@ export const ArtifactsListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ArtifactsListByParentOutput =
-  typeof ArtifactsListByParentOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactsListByParentOutput>;
 
 // The operation
 /**
@@ -133,6 +170,13 @@ export const ArtifactsListByParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArtifactsListDownloadUriInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  imageName: string;
+  artifactName: string;
+}
 export const ArtifactsListDownloadUriInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -146,11 +190,18 @@ export const ArtifactsListDownloadUriInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts/{artifactName}/listDownloadUri",
       apiVersion: "2026-03-15",
     }),
-  );
-export type ArtifactsListDownloadUriInput =
-  typeof ArtifactsListDownloadUriInput.Type;
+  ) as unknown as Schema.Codec<ArtifactsListDownloadUriInput>;
 
 // Output Schema
+export interface ArtifactsListDownloadUriOutput {
+  provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  artifactOrder: number;
+  title: string;
+  description: string;
+  size?: number;
+  downloadLink: string;
+  linkExpiry: string;
+}
 export const ArtifactsListDownloadUriOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningState: Schema.optional(
@@ -162,9 +213,7 @@ export const ArtifactsListDownloadUriOutput =
     size: Schema.optional(Schema.Number),
     downloadLink: Schema.String,
     linkExpiry: Schema.String,
-  });
-export type ArtifactsListDownloadUriOutput =
-  typeof ArtifactsListDownloadUriOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactsListDownloadUriOutput>;
 
 // The operation
 /**
@@ -184,6 +233,26 @@ export const ArtifactsListDownloadUri = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigTemplateMetadatasCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateMetadataName: string;
+  properties?: {
+    contextId?: string;
+    linkedHierarchies?: { hierarchyIds?: string[]; level?: string }[];
+    unLinkedHierarchies?: { hierarchyIds?: string[]; level?: string }[];
+    templateUniqueIdentifier?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+}
 export const ConfigTemplateMetadatasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -229,11 +298,22 @@ export const ConfigTemplateMetadatasCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateMetadatasCreateOrUpdateInput =
-  typeof ConfigTemplateMetadatasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateMetadatasCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigTemplateMetadatasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplateMetadatasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -253,9 +333,7 @@ export const ConfigTemplateMetadatasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplateMetadatasCreateOrUpdateOutput =
-  typeof ConfigTemplateMetadatasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateMetadatasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -273,6 +351,12 @@ export const ConfigTemplateMetadatasCreateOrUpdate =
     outputSchema: ConfigTemplateMetadatasCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigTemplateMetadatasDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateMetadataName: string;
+}
 export const ConfigTemplateMetadatasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -285,15 +369,12 @@ export const ConfigTemplateMetadatasDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateMetadatasDeleteInput =
-  typeof ConfigTemplateMetadatasDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateMetadatasDeleteInput>;
 
 // Output Schema
+export type ConfigTemplateMetadatasDeleteOutput = void;
 export const ConfigTemplateMetadatasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigTemplateMetadatasDeleteOutput =
-  typeof ConfigTemplateMetadatasDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigTemplateMetadatasDeleteOutput>;
 
 // The operation
 /**
@@ -311,6 +392,12 @@ export const ConfigTemplateMetadatasDelete =
     outputSchema: ConfigTemplateMetadatasDeleteOutput,
   }));
 // Input Schema
+export interface ConfigTemplateMetadatasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateMetadataName: string;
+}
 export const ConfigTemplateMetadatasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -323,11 +410,22 @@ export const ConfigTemplateMetadatasGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateMetadatasGetInput =
-  typeof ConfigTemplateMetadatasGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateMetadatasGetInput>;
 
 // Output Schema
+export interface ConfigTemplateMetadatasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplateMetadatasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -347,9 +445,7 @@ export const ConfigTemplateMetadatasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplateMetadatasGetOutput =
-  typeof ConfigTemplateMetadatasGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateMetadatasGetOutput>;
 
 // The operation
 /**
@@ -368,6 +464,11 @@ export const ConfigTemplateMetadatasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigTemplateMetadatasListByConfigTemplateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+}
 export const ConfigTemplateMetadatasListByConfigTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -379,11 +480,25 @@ export const ConfigTemplateMetadatasListByConfigTemplateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateMetadatasListByConfigTemplateInput =
-  typeof ConfigTemplateMetadatasListByConfigTemplateInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateMetadatasListByConfigTemplateInput>;
 
 // Output Schema
+export interface ConfigTemplateMetadatasListByConfigTemplateOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigTemplateMetadatasListByConfigTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -418,9 +533,7 @@ export const ConfigTemplateMetadatasListByConfigTemplateOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigTemplateMetadatasListByConfigTemplateOutput =
-  typeof ConfigTemplateMetadatasListByConfigTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateMetadatasListByConfigTemplateOutput>;
 
 // The operation
 /**
@@ -437,6 +550,17 @@ export const ConfigTemplateMetadatasListByConfigTemplate =
     outputSchema: ConfigTemplateMetadatasListByConfigTemplateOutput,
   }));
 // Input Schema
+export interface ConfigTemplateMetadatasUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateMetadataName: string;
+  properties?: {
+    contextId?: string;
+    linkedHierarchies?: { hierarchyIds?: string[]; level?: string }[];
+    unLinkedHierarchies?: { hierarchyIds?: string[]; level?: string }[];
+  };
+}
 export const ConfigTemplateMetadatasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -470,11 +594,22 @@ export const ConfigTemplateMetadatasUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateMetadatasUpdateInput =
-  typeof ConfigTemplateMetadatasUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateMetadatasUpdateInput>;
 
 // Output Schema
+export interface ConfigTemplateMetadatasUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplateMetadatasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -494,9 +629,7 @@ export const ConfigTemplateMetadatasUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplateMetadatasUpdateOutput =
-  typeof ConfigTemplateMetadatasUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateMetadatasUpdateOutput>;
 
 // The operation
 /**
@@ -514,6 +647,13 @@ export const ConfigTemplateMetadatasUpdate =
     outputSchema: ConfigTemplateMetadatasUpdateOutput,
   }));
 // Input Schema
+export interface ConfigTemplateSchemasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateVersionName: string;
+  configTemplateSchemaName: string;
+}
 export const ConfigTemplateSchemasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -527,11 +667,22 @@ export const ConfigTemplateSchemasGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}/configTemplateSchemas/{configTemplateSchemaName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateSchemasGetInput =
-  typeof ConfigTemplateSchemasGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateSchemasGetInput>;
 
 // Output Schema
+export interface ConfigTemplateSchemasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplateSchemasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -551,9 +702,7 @@ export const ConfigTemplateSchemasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplateSchemasGetOutput =
-  typeof ConfigTemplateSchemasGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateSchemasGetOutput>;
 
 // The operation
 /**
@@ -573,6 +722,12 @@ export const ConfigTemplateSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigTemplateSchemasListByConfigTemplateVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateVersionName: string;
+}
 export const ConfigTemplateSchemasListByConfigTemplateVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -585,11 +740,25 @@ export const ConfigTemplateSchemasListByConfigTemplateVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}/configTemplateSchemas",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateSchemasListByConfigTemplateVersionInput =
-  typeof ConfigTemplateSchemasListByConfigTemplateVersionInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateSchemasListByConfigTemplateVersionInput>;
 
 // Output Schema
+export interface ConfigTemplateSchemasListByConfigTemplateVersionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigTemplateSchemasListByConfigTemplateVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -624,9 +793,7 @@ export const ConfigTemplateSchemasListByConfigTemplateVersionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigTemplateSchemasListByConfigTemplateVersionOutput =
-  typeof ConfigTemplateSchemasListByConfigTemplateVersionOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateSchemasListByConfigTemplateVersionOutput>;
 
 // The operation
 /**
@@ -644,6 +811,26 @@ export const ConfigTemplateSchemasListByConfigTemplateVersion =
     outputSchema: ConfigTemplateSchemasListByConfigTemplateVersionOutput,
   }));
 // Input Schema
+export interface ConfigTemplatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  properties?: {
+    uniqueIdentifier?: string;
+    description: string;
+    latestVersion?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConfigTemplatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -675,11 +862,22 @@ export const ConfigTemplatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesCreateOrUpdateInput =
-  typeof ConfigTemplatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigTemplatesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -699,9 +897,7 @@ export const ConfigTemplatesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplatesCreateOrUpdateOutput =
-  typeof ConfigTemplatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplatesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -718,6 +914,26 @@ export const ConfigTemplatesCreateOrUpdate =
     outputSchema: ConfigTemplatesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigTemplatesCreateVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  updateType?: "Major" | "Minor" | "Patch";
+  version?: string;
+  configTemplateVersion: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  };
+}
 export const ConfigTemplatesCreateVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -750,11 +966,22 @@ export const ConfigTemplatesCreateVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/createVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesCreateVersionInput =
-  typeof ConfigTemplatesCreateVersionInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesCreateVersionInput>;
 
 // Output Schema
+export interface ConfigTemplatesCreateVersionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplatesCreateVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -774,9 +1001,7 @@ export const ConfigTemplatesCreateVersionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplatesCreateVersionOutput =
-  typeof ConfigTemplatesCreateVersionOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplatesCreateVersionOutput>;
 
 // The operation
 /**
@@ -793,6 +1018,11 @@ export const ConfigTemplatesCreateVersion =
     outputSchema: ConfigTemplatesCreateVersionOutput,
   }));
 // Input Schema
+export interface ConfigTemplatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+}
 export const ConfigTemplatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -804,14 +1034,12 @@ export const ConfigTemplatesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesDeleteInput = typeof ConfigTemplatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesDeleteInput>;
 
 // Output Schema
+export type ConfigTemplatesDeleteOutput = void;
 export const ConfigTemplatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigTemplatesDeleteOutput =
-  typeof ConfigTemplatesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigTemplatesDeleteOutput>;
 
 // The operation
 /**
@@ -829,6 +1057,11 @@ export const ConfigTemplatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigTemplatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+}
 export const ConfigTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -840,10 +1073,22 @@ export const ConfigTemplatesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesGetInput = typeof ConfigTemplatesGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesGetInput>;
 
 // Output Schema
+export interface ConfigTemplatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -863,8 +1108,7 @@ export const ConfigTemplatesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplatesGetOutput = typeof ConfigTemplatesGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplatesGetOutput>;
 
 // The operation
 /**
@@ -880,6 +1124,14 @@ export const ConfigTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigTemplatesGetOutput,
 }));
 // Input Schema
+export interface ConfigTemplatesLinkToHierarchiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  contextId: string;
+  hierarchyIds?: string[];
+  level?: string;
+}
 export const ConfigTemplatesLinkToHierarchiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -894,15 +1146,12 @@ export const ConfigTemplatesLinkToHierarchiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/linkToHierarchies",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesLinkToHierarchiesInput =
-  typeof ConfigTemplatesLinkToHierarchiesInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesLinkToHierarchiesInput>;
 
 // Output Schema
+export type ConfigTemplatesLinkToHierarchiesOutput = void;
 export const ConfigTemplatesLinkToHierarchiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigTemplatesLinkToHierarchiesOutput =
-  typeof ConfigTemplatesLinkToHierarchiesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigTemplatesLinkToHierarchiesOutput>;
 
 // The operation
 /**
@@ -919,6 +1168,10 @@ export const ConfigTemplatesLinkToHierarchies =
     outputSchema: ConfigTemplatesLinkToHierarchiesOutput,
   }));
 // Input Schema
+export interface ConfigTemplatesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConfigTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -929,11 +1182,25 @@ export const ConfigTemplatesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesListByResourceGroupInput =
-  typeof ConfigTemplatesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesListByResourceGroupInput>;
 
 // Output Schema
+export interface ConfigTemplatesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigTemplatesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -968,9 +1235,7 @@ export const ConfigTemplatesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigTemplatesListByResourceGroupOutput =
-  typeof ConfigTemplatesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplatesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -986,6 +1251,9 @@ export const ConfigTemplatesListByResourceGroup =
     outputSchema: ConfigTemplatesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ConfigTemplatesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ConfigTemplatesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -995,11 +1263,25 @@ export const ConfigTemplatesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configTemplates",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesListBySubscriptionInput =
-  typeof ConfigTemplatesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesListBySubscriptionInput>;
 
 // Output Schema
+export interface ConfigTemplatesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigTemplatesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1034,9 +1316,7 @@ export const ConfigTemplatesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigTemplatesListBySubscriptionOutput =
-  typeof ConfigTemplatesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplatesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1051,6 +1331,12 @@ export const ConfigTemplatesListBySubscription =
     outputSchema: ConfigTemplatesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ConfigTemplatesRemoveVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  version: string;
+}
 export const ConfigTemplatesRemoveVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1063,17 +1349,16 @@ export const ConfigTemplatesRemoveVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/removeVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesRemoveVersionInput =
-  typeof ConfigTemplatesRemoveVersionInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesRemoveVersionInput>;
 
 // Output Schema
+export interface ConfigTemplatesRemoveVersionOutput {
+  status: string;
+}
 export const ConfigTemplatesRemoveVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.String,
-  });
-export type ConfigTemplatesRemoveVersionOutput =
-  typeof ConfigTemplatesRemoveVersionOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplatesRemoveVersionOutput>;
 
 // The operation
 /**
@@ -1090,6 +1375,14 @@ export const ConfigTemplatesRemoveVersion =
     outputSchema: ConfigTemplatesRemoveVersionOutput,
   }));
 // Input Schema
+export interface ConfigTemplatesUnLinkFromHierarchiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  contextId: string;
+  hierarchyIds?: string[];
+  level?: string;
+}
 export const ConfigTemplatesUnLinkFromHierarchiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1104,15 +1397,12 @@ export const ConfigTemplatesUnLinkFromHierarchiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/unLinkFromHierarchies",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesUnLinkFromHierarchiesInput =
-  typeof ConfigTemplatesUnLinkFromHierarchiesInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesUnLinkFromHierarchiesInput>;
 
 // Output Schema
+export type ConfigTemplatesUnLinkFromHierarchiesOutput = void;
 export const ConfigTemplatesUnLinkFromHierarchiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigTemplatesUnLinkFromHierarchiesOutput =
-  typeof ConfigTemplatesUnLinkFromHierarchiesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigTemplatesUnLinkFromHierarchiesOutput>;
 
 // The operation
 /**
@@ -1129,6 +1419,13 @@ export const ConfigTemplatesUnLinkFromHierarchies =
     outputSchema: ConfigTemplatesUnLinkFromHierarchiesOutput,
   }));
 // Input Schema
+export interface ConfigTemplatesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  tags?: Record<string, string>;
+  properties?: { description?: string };
+}
 export const ConfigTemplatesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1146,10 +1443,22 @@ export const ConfigTemplatesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplatesUpdateInput = typeof ConfigTemplatesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplatesUpdateInput>;
 
 // Output Schema
+export interface ConfigTemplatesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplatesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1169,9 +1478,7 @@ export const ConfigTemplatesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplatesUpdateOutput =
-  typeof ConfigTemplatesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplatesUpdateOutput>;
 
 // The operation
 /**
@@ -1189,6 +1496,23 @@ export const ConfigTemplatesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigTemplateVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateVersionName: string;
+  properties?: {
+    configurations: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+}
 export const ConfigTemplateVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1217,11 +1541,22 @@ export const ConfigTemplateVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateVersionsCreateOrUpdateInput =
-  typeof ConfigTemplateVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigTemplateVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplateVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1241,9 +1576,7 @@ export const ConfigTemplateVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplateVersionsCreateOrUpdateOutput =
-  typeof ConfigTemplateVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1261,6 +1594,12 @@ export const ConfigTemplateVersionsCreateOrUpdate =
     outputSchema: ConfigTemplateVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigTemplateVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateVersionName: string;
+}
 export const ConfigTemplateVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1273,15 +1612,12 @@ export const ConfigTemplateVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateVersionsDeleteInput =
-  typeof ConfigTemplateVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateVersionsDeleteInput>;
 
 // Output Schema
+export type ConfigTemplateVersionsDeleteOutput = void;
 export const ConfigTemplateVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigTemplateVersionsDeleteOutput =
-  typeof ConfigTemplateVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigTemplateVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -1299,6 +1635,12 @@ export const ConfigTemplateVersionsDelete =
     outputSchema: ConfigTemplateVersionsDeleteOutput,
   }));
 // Input Schema
+export interface ConfigTemplateVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateVersionName: string;
+}
 export const ConfigTemplateVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1311,11 +1653,22 @@ export const ConfigTemplateVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateVersionsGetInput =
-  typeof ConfigTemplateVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateVersionsGetInput>;
 
 // Output Schema
+export interface ConfigTemplateVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplateVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1335,9 +1688,7 @@ export const ConfigTemplateVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplateVersionsGetOutput =
-  typeof ConfigTemplateVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateVersionsGetOutput>;
 
 // The operation
 /**
@@ -1356,6 +1707,11 @@ export const ConfigTemplateVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigTemplateVersionsListByConfigTemplateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+}
 export const ConfigTemplateVersionsListByConfigTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1367,11 +1723,25 @@ export const ConfigTemplateVersionsListByConfigTemplateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateVersionsListByConfigTemplateInput =
-  typeof ConfigTemplateVersionsListByConfigTemplateInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateVersionsListByConfigTemplateInput>;
 
 // Output Schema
+export interface ConfigTemplateVersionsListByConfigTemplateOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigTemplateVersionsListByConfigTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1406,9 +1776,7 @@ export const ConfigTemplateVersionsListByConfigTemplateOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigTemplateVersionsListByConfigTemplateOutput =
-  typeof ConfigTemplateVersionsListByConfigTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateVersionsListByConfigTemplateOutput>;
 
 // The operation
 /**
@@ -1425,6 +1793,13 @@ export const ConfigTemplateVersionsListByConfigTemplate =
     outputSchema: ConfigTemplateVersionsListByConfigTemplateOutput,
   }));
 // Input Schema
+export interface ConfigTemplateVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configTemplateName: string;
+  configTemplateVersionName: string;
+  properties?: { configurations?: string };
+}
 export const ConfigTemplateVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1442,11 +1817,22 @@ export const ConfigTemplateVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ConfigTemplateVersionsUpdateInput =
-  typeof ConfigTemplateVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigTemplateVersionsUpdateInput>;
 
 // Output Schema
+export interface ConfigTemplateVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigTemplateVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1466,9 +1852,7 @@ export const ConfigTemplateVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigTemplateVersionsUpdateOutput =
-  typeof ConfigTemplateVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigTemplateVersionsUpdateOutput>;
 
 // The operation
 /**
@@ -1486,6 +1870,14 @@ export const ConfigTemplateVersionsUpdate =
     outputSchema: ConfigTemplateVersionsUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationReferencesCreateOrUpdateInput {
+  resourceUri: string;
+  configurationReferenceName: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    configurationResourceId?: string;
+  };
+}
 export const ConfigurationReferencesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -1504,11 +1896,22 @@ export const ConfigurationReferencesCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationReferencesCreateOrUpdateInput =
-  typeof ConfigurationReferencesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationReferencesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationReferencesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationReferencesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1528,9 +1931,7 @@ export const ConfigurationReferencesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationReferencesCreateOrUpdateOutput =
-  typeof ConfigurationReferencesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationReferencesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1546,6 +1947,10 @@ export const ConfigurationReferencesCreateOrUpdate =
     outputSchema: ConfigurationReferencesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationReferencesDeleteInput {
+  resourceUri: string;
+  configurationReferenceName: string;
+}
 export const ConfigurationReferencesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -1556,15 +1961,12 @@ export const ConfigurationReferencesDeleteInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationReferencesDeleteInput =
-  typeof ConfigurationReferencesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationReferencesDeleteInput>;
 
 // Output Schema
+export type ConfigurationReferencesDeleteOutput = void;
 export const ConfigurationReferencesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationReferencesDeleteOutput =
-  typeof ConfigurationReferencesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationReferencesDeleteOutput>;
 
 // The operation
 /**
@@ -1580,6 +1982,10 @@ export const ConfigurationReferencesDelete =
     outputSchema: ConfigurationReferencesDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationReferencesGetInput {
+  resourceUri: string;
+  configurationReferenceName: string;
+}
 export const ConfigurationReferencesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -1590,11 +1996,22 @@ export const ConfigurationReferencesGetInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationReferencesGetInput =
-  typeof ConfigurationReferencesGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationReferencesGetInput>;
 
 // Output Schema
+export interface ConfigurationReferencesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationReferencesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1614,9 +2031,7 @@ export const ConfigurationReferencesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationReferencesGetOutput =
-  typeof ConfigurationReferencesGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationReferencesGetOutput>;
 
 // The operation
 /**
@@ -1633,6 +2048,9 @@ export const ConfigurationReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationReferencesListInput {
+  resourceUri: string;
+}
 export const ConfigurationReferencesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -1642,11 +2060,25 @@ export const ConfigurationReferencesListInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationReferencesListInput =
-  typeof ConfigurationReferencesListInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationReferencesListInput>;
 
 // Output Schema
+export interface ConfigurationReferencesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationReferencesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1681,9 +2113,7 @@ export const ConfigurationReferencesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationReferencesListOutput =
-  typeof ConfigurationReferencesListOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationReferencesListOutput>;
 
 // The operation
 /**
@@ -1699,6 +2129,14 @@ export const ConfigurationReferencesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationReferencesUpdateInput {
+  resourceUri: string;
+  configurationReferenceName: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    configurationResourceId?: string;
+  };
+}
 export const ConfigurationReferencesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -1717,11 +2155,22 @@ export const ConfigurationReferencesUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationReferencesUpdateInput =
-  typeof ConfigurationReferencesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationReferencesUpdateInput>;
 
 // Output Schema
+export interface ConfigurationReferencesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationReferencesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1741,9 +2190,7 @@ export const ConfigurationReferencesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationReferencesUpdateOutput =
-  typeof ConfigurationReferencesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationReferencesUpdateOutput>;
 
 // The operation
 /**
@@ -1759,6 +2206,14 @@ export const ConfigurationReferencesUpdate =
     outputSchema: ConfigurationReferencesUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  properties?: { provisioningState?: "Succeeded" | "Failed" | "Canceled" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1779,11 +2234,22 @@ export const ConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationsCreateOrUpdateInput =
-  typeof ConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1803,9 +2269,7 @@ export const ConfigurationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsCreateOrUpdateOutput =
-  typeof ConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1822,6 +2286,11 @@ export const ConfigurationsCreateOrUpdate =
     outputSchema: ConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+}
 export const ConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1833,13 +2302,12 @@ export const ConfigurationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationsDeleteInput = typeof ConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsDeleteInput>;
 
 // Output Schema
+export type ConfigurationsDeleteOutput = void;
 export const ConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationsDeleteOutput = typeof ConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -1857,6 +2325,11 @@ export const ConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+}
 export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1869,10 +2342,22 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
+) as unknown as Schema.Codec<ConfigurationsGetInput>;
 
 // Output Schema
+export interface ConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1892,8 +2377,7 @@ export const ConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -1909,6 +2393,10 @@ export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationsGetOutput,
 }));
 // Input Schema
+export interface ConfigurationsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConfigurationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1919,11 +2407,25 @@ export const ConfigurationsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationsListByResourceGroupInput =
-  typeof ConfigurationsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsListByResourceGroupInput>;
 
 // Output Schema
+export interface ConfigurationsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1958,9 +2460,7 @@ export const ConfigurationsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationsListByResourceGroupOutput =
-  typeof ConfigurationsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1976,6 +2476,9 @@ export const ConfigurationsListByResourceGroup =
     outputSchema: ConfigurationsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ConfigurationsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ConfigurationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1985,11 +2488,25 @@ export const ConfigurationsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configurations",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationsListBySubscriptionInput =
-  typeof ConfigurationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsListBySubscriptionInput>;
 
 // Output Schema
+export interface ConfigurationsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2024,9 +2541,7 @@ export const ConfigurationsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationsListBySubscriptionOutput =
-  typeof ConfigurationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2041,6 +2556,13 @@ export const ConfigurationsListBySubscription =
     outputSchema: ConfigurationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ConfigurationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  properties?: { provisioningState?: "Succeeded" | "Failed" | "Canceled" };
+  tags?: Record<string, string>;
+}
 export const ConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2060,10 +2582,22 @@ export const ConfigurationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsUpdateInput>;
 
 // Output Schema
+export interface ConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2083,8 +2617,7 @@ export const ConfigurationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsUpdateOutput = typeof ConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsUpdateOutput>;
 
 // The operation
 /**
@@ -2102,6 +2635,29 @@ export const ConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContextsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  properties?: {
+    uniqueIdentifier?: string;
+    capabilities: {
+      name: string;
+      description: string;
+      state?: "active" | "inactive";
+    }[];
+    hierarchies: { name: string; description: string }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ContextsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2143,11 +2699,22 @@ export const ContextsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ContextsCreateOrUpdateInput =
-  typeof ContextsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ContextsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ContextsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContextsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2167,9 +2734,7 @@ export const ContextsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContextsCreateOrUpdateOutput =
-  typeof ContextsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ContextsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2187,6 +2752,11 @@ export const ContextsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContextsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+}
 export const ContextsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2197,12 +2767,12 @@ export const ContextsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type ContextsDeleteInput = typeof ContextsDeleteInput.Type;
+) as unknown as Schema.Codec<ContextsDeleteInput>;
 
 // Output Schema
-export const ContextsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContextsDeleteOutput = typeof ContextsDeleteOutput.Type;
+export type ContextsDeleteOutput = void;
+export const ContextsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContextsDeleteOutput>;
 
 // The operation
 /**
@@ -2218,6 +2788,11 @@ export const ContextsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContextsDeleteOutput,
 }));
 // Input Schema
+export interface ContextsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+}
 export const ContextsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2228,10 +2803,22 @@ export const ContextsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type ContextsGetInput = typeof ContextsGetInput.Type;
+) as unknown as Schema.Codec<ContextsGetInput>;
 
 // Output Schema
+export interface ContextsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContextsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2250,8 +2837,7 @@ export const ContextsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ContextsGetOutput = typeof ContextsGetOutput.Type;
+}) as unknown as Schema.Codec<ContextsGetOutput>;
 
 // The operation
 /**
@@ -2267,6 +2853,10 @@ export const ContextsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContextsGetOutput,
 }));
 // Input Schema
+export interface ContextsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ContextsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2277,11 +2867,25 @@ export const ContextsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ContextsListByResourceGroupInput =
-  typeof ContextsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ContextsListByResourceGroupInput>;
 
 // Output Schema
+export interface ContextsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ContextsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2316,9 +2920,7 @@ export const ContextsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContextsListByResourceGroupOutput =
-  typeof ContextsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ContextsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2335,6 +2937,9 @@ export const ContextsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContextsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ContextsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2344,11 +2949,25 @@ export const ContextsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/contexts",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ContextsListBySubscriptionInput =
-  typeof ContextsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ContextsListBySubscriptionInput>;
 
 // Output Schema
+export interface ContextsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ContextsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2383,9 +3002,7 @@ export const ContextsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContextsListBySubscriptionOutput =
-  typeof ContextsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ContextsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2401,6 +3018,20 @@ export const ContextsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContextsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    capabilities?: {
+      name: string;
+      description: string;
+      state?: "active" | "inactive";
+    }[];
+    hierarchies?: { name: string; description: string }[];
+  };
+}
 export const ContextsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2433,10 +3064,22 @@ export const ContextsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type ContextsUpdateInput = typeof ContextsUpdateInput.Type;
+) as unknown as Schema.Codec<ContextsUpdateInput>;
 
 // Output Schema
+export interface ContextsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContextsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2455,8 +3098,7 @@ export const ContextsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ContextsUpdateOutput = typeof ContextsUpdateOutput.Type;
+}) as unknown as Schema.Codec<ContextsUpdateOutput>;
 
 // The operation
 /**
@@ -2472,6 +3114,24 @@ export const ContextsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContextsUpdateOutput,
 }));
 // Input Schema
+export interface DiagnosticsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diagnosticName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  eTag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DiagnosticsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2506,11 +3166,22 @@ export const DiagnosticsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DiagnosticsCreateOrUpdateInput =
-  typeof DiagnosticsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DiagnosticsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DiagnosticsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2530,9 +3201,7 @@ export const DiagnosticsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiagnosticsCreateOrUpdateOutput =
-  typeof DiagnosticsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2550,6 +3219,11 @@ export const DiagnosticsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiagnosticsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diagnosticName: string;
+}
 export const DiagnosticsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2562,12 +3236,12 @@ export const DiagnosticsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type DiagnosticsDeleteInput = typeof DiagnosticsDeleteInput.Type;
+) as unknown as Schema.Codec<DiagnosticsDeleteInput>;
 
 // Output Schema
-export const DiagnosticsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiagnosticsDeleteOutput = typeof DiagnosticsDeleteOutput.Type;
+export type DiagnosticsDeleteOutput = void;
+export const DiagnosticsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiagnosticsDeleteOutput>;
 
 // The operation
 /**
@@ -2583,6 +3257,11 @@ export const DiagnosticsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiagnosticsDeleteOutput,
 }));
 // Input Schema
+export interface DiagnosticsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diagnosticName: string;
+}
 export const DiagnosticsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2593,10 +3272,22 @@ export const DiagnosticsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type DiagnosticsGetInput = typeof DiagnosticsGetInput.Type;
+) as unknown as Schema.Codec<DiagnosticsGetInput>;
 
 // Output Schema
+export interface DiagnosticsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2615,8 +3306,7 @@ export const DiagnosticsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DiagnosticsGetOutput = typeof DiagnosticsGetOutput.Type;
+}) as unknown as Schema.Codec<DiagnosticsGetOutput>;
 
 // The operation
 /**
@@ -2632,6 +3322,10 @@ export const DiagnosticsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiagnosticsGetOutput,
 }));
 // Input Schema
+export interface DiagnosticsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DiagnosticsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2642,11 +3336,25 @@ export const DiagnosticsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DiagnosticsListByResourceGroupInput =
-  typeof DiagnosticsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DiagnosticsListByResourceGroupInput>;
 
 // Output Schema
+export interface DiagnosticsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiagnosticsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2681,9 +3389,7 @@ export const DiagnosticsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiagnosticsListByResourceGroupOutput =
-  typeof DiagnosticsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2699,6 +3405,9 @@ export const DiagnosticsListByResourceGroup =
     outputSchema: DiagnosticsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DiagnosticsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DiagnosticsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2708,11 +3417,25 @@ export const DiagnosticsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/diagnostics",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DiagnosticsListBySubscriptionInput =
-  typeof DiagnosticsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DiagnosticsListBySubscriptionInput>;
 
 // Output Schema
+export interface DiagnosticsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiagnosticsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2747,9 +3470,7 @@ export const DiagnosticsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiagnosticsListBySubscriptionOutput =
-  typeof DiagnosticsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2764,6 +3485,21 @@ export const DiagnosticsListBySubscription =
     outputSchema: DiagnosticsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DiagnosticsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diagnosticName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  tags?: Record<string, string>;
+}
 export const DiagnosticsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2791,10 +3527,22 @@ export const DiagnosticsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type DiagnosticsUpdateInput = typeof DiagnosticsUpdateInput.Type;
+) as unknown as Schema.Codec<DiagnosticsUpdateInput>;
 
 // Output Schema
+export interface DiagnosticsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2814,8 +3562,7 @@ export const DiagnosticsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiagnosticsUpdateOutput = typeof DiagnosticsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticsUpdateOutput>;
 
 // The operation
 /**
@@ -2831,6 +3578,42 @@ export const DiagnosticsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiagnosticsUpdateOutput,
 }));
 // Input Schema
+export interface DisconnectedOperationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    stampId: string;
+    billingModel: "Capacity";
+    connectionIntent: "Connected" | "Disconnected";
+    connectionStatus?: "Connected" | "Disconnected";
+    registrationStatus?: "Registered" | "Unregistered";
+    deviceVersion?: string;
+    billingConfiguration?: {
+      autoRenew: "Enabled" | "Disabled";
+      billingStatus: "Enabled" | "Disabled" | "Stopped";
+      current: {
+        cores: number;
+        pricingModel: "Trial" | "Annual";
+        startDate?: string;
+        endDate?: string;
+      };
+      upcoming?: {
+        cores: number;
+        pricingModel: "Trial" | "Annual";
+        startDate?: string;
+        endDate?: string;
+      };
+    };
+    benefitPlans?: {
+      azureHybridWindowsServerBenefit?: "Enabled" | "Disabled";
+      windowsServerVmCount?: number;
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DisconnectedOperationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2889,11 +3672,22 @@ export const DisconnectedOperationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DisconnectedOperationsCreateOrUpdateInput =
-  typeof DisconnectedOperationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DisconnectedOperationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DisconnectedOperationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisconnectedOperationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2913,9 +3707,7 @@ export const DisconnectedOperationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DisconnectedOperationsCreateOrUpdateOutput =
-  typeof DisconnectedOperationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DisconnectedOperationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2932,6 +3724,11 @@ export const DisconnectedOperationsCreateOrUpdate =
     outputSchema: DisconnectedOperationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DisconnectedOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const DisconnectedOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2943,15 +3740,12 @@ export const DisconnectedOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DisconnectedOperationsDeleteInput =
-  typeof DisconnectedOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DisconnectedOperationsDeleteInput>;
 
 // Output Schema
+export type DisconnectedOperationsDeleteOutput = void;
 export const DisconnectedOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisconnectedOperationsDeleteOutput =
-  typeof DisconnectedOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisconnectedOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -2968,6 +3762,11 @@ export const DisconnectedOperationsDelete =
     outputSchema: DisconnectedOperationsDeleteOutput,
   }));
 // Input Schema
+export interface DisconnectedOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const DisconnectedOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2979,11 +3778,22 @@ export const DisconnectedOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DisconnectedOperationsGetInput =
-  typeof DisconnectedOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<DisconnectedOperationsGetInput>;
 
 // Output Schema
+export interface DisconnectedOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisconnectedOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3003,9 +3813,7 @@ export const DisconnectedOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DisconnectedOperationsGetOutput =
-  typeof DisconnectedOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<DisconnectedOperationsGetOutput>;
 
 // The operation
 /**
@@ -3023,6 +3831,10 @@ export const DisconnectedOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DisconnectedOperationsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DisconnectedOperationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3033,11 +3845,25 @@ export const DisconnectedOperationsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DisconnectedOperationsListByResourceGroupInput =
-  typeof DisconnectedOperationsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DisconnectedOperationsListByResourceGroupInput>;
 
 // Output Schema
+export interface DisconnectedOperationsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DisconnectedOperationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3072,9 +3898,7 @@ export const DisconnectedOperationsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DisconnectedOperationsListByResourceGroupOutput =
-  typeof DisconnectedOperationsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DisconnectedOperationsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3090,6 +3914,9 @@ export const DisconnectedOperationsListByResourceGroup =
     outputSchema: DisconnectedOperationsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DisconnectedOperationsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DisconnectedOperationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3099,11 +3926,25 @@ export const DisconnectedOperationsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/disconnectedOperations",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DisconnectedOperationsListBySubscriptionInput =
-  typeof DisconnectedOperationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DisconnectedOperationsListBySubscriptionInput>;
 
 // Output Schema
+export interface DisconnectedOperationsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DisconnectedOperationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3138,9 +3979,7 @@ export const DisconnectedOperationsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DisconnectedOperationsListBySubscriptionOutput =
-  typeof DisconnectedOperationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DisconnectedOperationsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3155,6 +3994,11 @@ export const DisconnectedOperationsListBySubscription =
     outputSchema: DisconnectedOperationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DisconnectedOperationsListDeploymentManifestInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const DisconnectedOperationsListDeploymentManifestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3166,11 +4010,38 @@ export const DisconnectedOperationsListDeploymentManifestInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/listDeploymentManifest",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DisconnectedOperationsListDeploymentManifestInput =
-  typeof DisconnectedOperationsListDeploymentManifestInput.Type;
+  ) as unknown as Schema.Codec<DisconnectedOperationsListDeploymentManifestInput>;
 
 // Output Schema
+export interface DisconnectedOperationsListDeploymentManifestOutput {
+  resourceId: string;
+  resourceName: string;
+  stampId: string;
+  location: string;
+  billingModel: "Capacity";
+  connectionIntent: "Connected" | "Disconnected";
+  cloud?: string;
+  billingConfiguration?: {
+    autoRenew: "Enabled" | "Disabled";
+    billingStatus: "Enabled" | "Disabled" | "Stopped";
+    current: {
+      cores: number;
+      pricingModel: "Trial" | "Annual";
+      startDate?: string;
+      endDate?: string;
+    };
+    upcoming?: {
+      cores: number;
+      pricingModel: "Trial" | "Annual";
+      startDate?: string;
+      endDate?: string;
+    };
+  };
+  benefitPlans?: {
+    azureHybridWindowsServerBenefit?: "Enabled" | "Disabled";
+    windowsServerVmCount?: number;
+  };
+}
 export const DisconnectedOperationsListDeploymentManifestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String,
@@ -3208,9 +4079,7 @@ export const DisconnectedOperationsListDeploymentManifestOutput =
         windowsServerVmCount: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type DisconnectedOperationsListDeploymentManifestOutput =
-  typeof DisconnectedOperationsListDeploymentManifestOutput.Type;
+  }) as unknown as Schema.Codec<DisconnectedOperationsListDeploymentManifestOutput>;
 
 // The operation
 /**
@@ -3227,6 +4096,26 @@ export const DisconnectedOperationsListDeploymentManifest =
     outputSchema: DisconnectedOperationsListDeploymentManifestOutput,
   }));
 // Input Schema
+export interface DisconnectedOperationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  tags?: Record<string, string>;
+  properties?: {
+    connectionIntent?: "Connected" | "Disconnected";
+    registrationStatus?: "Registered" | "Unregistered";
+    deviceVersion?: string;
+    billingConfiguration?: {
+      autoRenew?: "Enabled" | "Disabled";
+      current?: { cores?: number; pricingModel?: "Trial" | "Annual" };
+      upcoming?: { cores?: number; pricingModel?: "Trial" | "Annual" };
+    };
+    benefitPlans?: {
+      azureHybridWindowsServerBenefit?: "Enabled" | "Disabled";
+      windowsServerVmCount?: number;
+    };
+  };
+}
 export const DisconnectedOperationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3281,11 +4170,22 @@ export const DisconnectedOperationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DisconnectedOperationsUpdateInput =
-  typeof DisconnectedOperationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DisconnectedOperationsUpdateInput>;
 
 // Output Schema
+export interface DisconnectedOperationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisconnectedOperationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3305,9 +4205,7 @@ export const DisconnectedOperationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DisconnectedOperationsUpdateOutput =
-  typeof DisconnectedOperationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DisconnectedOperationsUpdateOutput>;
 
 // The operation
 /**
@@ -3324,6 +4222,25 @@ export const DisconnectedOperationsUpdate =
     outputSchema: DisconnectedOperationsUpdateOutput,
   }));
 // Input Schema
+export interface DynamicConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+  properties?: {
+    currentVersion: string;
+    displayName?: string;
+    dynamicConfigurationType?: "Shared" | "Hierarchy";
+    dynamicConfigurationModel?: "Application" | "Common";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+}
 export const DynamicConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3358,11 +4275,22 @@ export const DynamicConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationsCreateOrUpdateInput =
-  typeof DynamicConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DynamicConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3382,9 +4310,7 @@ export const DynamicConfigurationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicConfigurationsCreateOrUpdateOutput =
-  typeof DynamicConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DynamicConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3402,6 +4328,12 @@ export const DynamicConfigurationsCreateOrUpdate =
     outputSchema: DynamicConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DynamicConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+}
 export const DynamicConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3414,15 +4346,12 @@ export const DynamicConfigurationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationsDeleteInput =
-  typeof DynamicConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationsDeleteInput>;
 
 // Output Schema
+export type DynamicConfigurationsDeleteOutput = void;
 export const DynamicConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DynamicConfigurationsDeleteOutput =
-  typeof DynamicConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DynamicConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -3441,6 +4370,12 @@ export const DynamicConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DynamicConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+}
 export const DynamicConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3453,11 +4388,22 @@ export const DynamicConfigurationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationsGetInput =
-  typeof DynamicConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationsGetInput>;
 
 // Output Schema
+export interface DynamicConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3477,9 +4423,7 @@ export const DynamicConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicConfigurationsGetOutput =
-  typeof DynamicConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<DynamicConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -3498,6 +4442,11 @@ export const DynamicConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DynamicConfigurationsListByConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+}
 export const DynamicConfigurationsListByConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3509,11 +4458,25 @@ export const DynamicConfigurationsListByConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationsListByConfigurationInput =
-  typeof DynamicConfigurationsListByConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationsListByConfigurationInput>;
 
 // Output Schema
+export interface DynamicConfigurationsListByConfigurationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DynamicConfigurationsListByConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3548,9 +4511,7 @@ export const DynamicConfigurationsListByConfigurationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DynamicConfigurationsListByConfigurationOutput =
-  typeof DynamicConfigurationsListByConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DynamicConfigurationsListByConfigurationOutput>;
 
 // The operation
 /**
@@ -3567,6 +4528,13 @@ export const DynamicConfigurationsListByConfiguration =
     outputSchema: DynamicConfigurationsListByConfigurationOutput,
   }));
 // Input Schema
+export interface DynamicConfigurationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+  properties?: { currentVersion?: string };
+}
 export const DynamicConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3584,11 +4552,22 @@ export const DynamicConfigurationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationsUpdateInput =
-  typeof DynamicConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationsUpdateInput>;
 
 // Output Schema
+export interface DynamicConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3608,9 +4587,7 @@ export const DynamicConfigurationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicConfigurationsUpdateOutput =
-  typeof DynamicConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DynamicConfigurationsUpdateOutput>;
 
 // The operation
 /**
@@ -3629,6 +4606,27 @@ export const DynamicConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DynamicConfigurationVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+  dynamicConfigurationVersionName: string;
+  properties?: {
+    values: string;
+    schemaId?: string;
+    dynamicSchemaVersionId?: string;
+    displayState?: string;
+    state?: "ConfigurationCompleted" | "ConfigurationPending";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+}
 export const DynamicConfigurationVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3663,11 +4661,22 @@ export const DynamicConfigurationVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationVersionsCreateOrUpdateInput =
-  typeof DynamicConfigurationVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DynamicConfigurationVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicConfigurationVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3687,9 +4696,7 @@ export const DynamicConfigurationVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicConfigurationVersionsCreateOrUpdateOutput =
-  typeof DynamicConfigurationVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DynamicConfigurationVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3708,6 +4715,13 @@ export const DynamicConfigurationVersionsCreateOrUpdate =
     outputSchema: DynamicConfigurationVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DynamicConfigurationVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+  dynamicConfigurationVersionName: string;
+}
 export const DynamicConfigurationVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3721,15 +4735,12 @@ export const DynamicConfigurationVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationVersionsDeleteInput =
-  typeof DynamicConfigurationVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationVersionsDeleteInput>;
 
 // Output Schema
+export type DynamicConfigurationVersionsDeleteOutput = void;
 export const DynamicConfigurationVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DynamicConfigurationVersionsDeleteOutput =
-  typeof DynamicConfigurationVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DynamicConfigurationVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -3748,6 +4759,13 @@ export const DynamicConfigurationVersionsDelete =
     outputSchema: DynamicConfigurationVersionsDeleteOutput,
   }));
 // Input Schema
+export interface DynamicConfigurationVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+  dynamicConfigurationVersionName: string;
+}
 export const DynamicConfigurationVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3761,11 +4779,22 @@ export const DynamicConfigurationVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationVersionsGetInput =
-  typeof DynamicConfigurationVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationVersionsGetInput>;
 
 // Output Schema
+export interface DynamicConfigurationVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicConfigurationVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3785,9 +4814,7 @@ export const DynamicConfigurationVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicConfigurationVersionsGetOutput =
-  typeof DynamicConfigurationVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<DynamicConfigurationVersionsGetOutput>;
 
 // The operation
 /**
@@ -3806,6 +4833,12 @@ export const DynamicConfigurationVersionsGet =
     outputSchema: DynamicConfigurationVersionsGetOutput,
   }));
 // Input Schema
+export interface DynamicConfigurationVersionsListByDynamicConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+}
 export const DynamicConfigurationVersionsListByDynamicConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3818,11 +4851,25 @@ export const DynamicConfigurationVersionsListByDynamicConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationVersionsListByDynamicConfigurationInput =
-  typeof DynamicConfigurationVersionsListByDynamicConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationVersionsListByDynamicConfigurationInput>;
 
 // Output Schema
+export interface DynamicConfigurationVersionsListByDynamicConfigurationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DynamicConfigurationVersionsListByDynamicConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3857,9 +4904,7 @@ export const DynamicConfigurationVersionsListByDynamicConfigurationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DynamicConfigurationVersionsListByDynamicConfigurationOutput =
-  typeof DynamicConfigurationVersionsListByDynamicConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DynamicConfigurationVersionsListByDynamicConfigurationOutput>;
 
 // The operation
 /**
@@ -3877,6 +4922,14 @@ export const DynamicConfigurationVersionsListByDynamicConfiguration =
     outputSchema: DynamicConfigurationVersionsListByDynamicConfigurationOutput,
   }));
 // Input Schema
+export interface DynamicConfigurationVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationName: string;
+  dynamicConfigurationName: string;
+  dynamicConfigurationVersionName: string;
+  properties?: { values?: string };
+}
 export const DynamicConfigurationVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3895,11 +4948,22 @@ export const DynamicConfigurationVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DynamicConfigurationVersionsUpdateInput =
-  typeof DynamicConfigurationVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DynamicConfigurationVersionsUpdateInput>;
 
 // Output Schema
+export interface DynamicConfigurationVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicConfigurationVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3919,9 +4983,7 @@ export const DynamicConfigurationVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicConfigurationVersionsUpdateOutput =
-  typeof DynamicConfigurationVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DynamicConfigurationVersionsUpdateOutput>;
 
 // The operation
 /**
@@ -3940,6 +5002,25 @@ export const DynamicConfigurationVersionsUpdate =
     outputSchema: DynamicConfigurationVersionsUpdateOutput,
   }));
 // Input Schema
+export interface DynamicSchemasCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+  properties?: {
+    displayName?: string;
+    configurationType?: "Shared" | "Hierarchy";
+    configurationModel?: "Application" | "Common";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+}
 export const DynamicSchemasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3974,11 +5055,22 @@ export const DynamicSchemasCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemasCreateOrUpdateInput =
-  typeof DynamicSchemasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemasCreateOrUpdateInput>;
 
 // Output Schema
+export interface DynamicSchemasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicSchemasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3998,9 +5090,7 @@ export const DynamicSchemasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicSchemasCreateOrUpdateOutput =
-  typeof DynamicSchemasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DynamicSchemasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4018,6 +5108,12 @@ export const DynamicSchemasCreateOrUpdate =
     outputSchema: DynamicSchemasCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DynamicSchemasDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+}
 export const DynamicSchemasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4030,13 +5126,12 @@ export const DynamicSchemasDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemasDeleteInput = typeof DynamicSchemasDeleteInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemasDeleteInput>;
 
 // Output Schema
+export type DynamicSchemasDeleteOutput = void;
 export const DynamicSchemasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DynamicSchemasDeleteOutput = typeof DynamicSchemasDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DynamicSchemasDeleteOutput>;
 
 // The operation
 /**
@@ -4055,6 +5150,12 @@ export const DynamicSchemasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DynamicSchemasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+}
 export const DynamicSchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4068,10 +5169,22 @@ export const DynamicSchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type DynamicSchemasGetInput = typeof DynamicSchemasGetInput.Type;
+) as unknown as Schema.Codec<DynamicSchemasGetInput>;
 
 // Output Schema
+export interface DynamicSchemasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicSchemasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4091,8 +5204,7 @@ export const DynamicSchemasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicSchemasGetOutput = typeof DynamicSchemasGetOutput.Type;
+  }) as unknown as Schema.Codec<DynamicSchemasGetOutput>;
 
 // The operation
 /**
@@ -4109,6 +5221,11 @@ export const DynamicSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DynamicSchemasGetOutput,
 }));
 // Input Schema
+export interface DynamicSchemasListBySchemaInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+}
 export const DynamicSchemasListBySchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4120,11 +5237,25 @@ export const DynamicSchemasListBySchemaInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemasListBySchemaInput =
-  typeof DynamicSchemasListBySchemaInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemasListBySchemaInput>;
 
 // Output Schema
+export interface DynamicSchemasListBySchemaOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DynamicSchemasListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4159,9 +5290,7 @@ export const DynamicSchemasListBySchemaOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DynamicSchemasListBySchemaOutput =
-  typeof DynamicSchemasListBySchemaOutput.Type;
+  }) as unknown as Schema.Codec<DynamicSchemasListBySchemaOutput>;
 
 // The operation
 /**
@@ -4179,6 +5308,24 @@ export const DynamicSchemasListBySchema = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DynamicSchemasUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+  properties?: {
+    displayName?: string;
+    configurationType?: "Shared" | "Hierarchy";
+    configurationModel?: "Application" | "Common";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+}
 export const DynamicSchemasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4212,10 +5359,22 @@ export const DynamicSchemasUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemasUpdateInput = typeof DynamicSchemasUpdateInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemasUpdateInput>;
 
 // Output Schema
+export interface DynamicSchemasUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicSchemasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4235,8 +5394,7 @@ export const DynamicSchemasUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicSchemasUpdateOutput = typeof DynamicSchemasUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DynamicSchemasUpdateOutput>;
 
 // The operation
 /**
@@ -4255,6 +5413,24 @@ export const DynamicSchemasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DynamicSchemaVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+  dynamicSchemaVersionName: string;
+  properties?: {
+    value: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+}
 export const DynamicSchemaVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4284,11 +5460,22 @@ export const DynamicSchemaVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemaVersionsCreateOrUpdateInput =
-  typeof DynamicSchemaVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemaVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DynamicSchemaVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicSchemaVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4308,9 +5495,7 @@ export const DynamicSchemaVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicSchemaVersionsCreateOrUpdateOutput =
-  typeof DynamicSchemaVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DynamicSchemaVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4329,6 +5514,13 @@ export const DynamicSchemaVersionsCreateOrUpdate =
     outputSchema: DynamicSchemaVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DynamicSchemaVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+  dynamicSchemaVersionName: string;
+}
 export const DynamicSchemaVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4342,15 +5534,12 @@ export const DynamicSchemaVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemaVersionsDeleteInput =
-  typeof DynamicSchemaVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemaVersionsDeleteInput>;
 
 // Output Schema
+export type DynamicSchemaVersionsDeleteOutput = void;
 export const DynamicSchemaVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DynamicSchemaVersionsDeleteOutput =
-  typeof DynamicSchemaVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DynamicSchemaVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -4370,6 +5559,13 @@ export const DynamicSchemaVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DynamicSchemaVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+  dynamicSchemaVersionName: string;
+}
 export const DynamicSchemaVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4383,11 +5579,22 @@ export const DynamicSchemaVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemaVersionsGetInput =
-  typeof DynamicSchemaVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemaVersionsGetInput>;
 
 // Output Schema
+export interface DynamicSchemaVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicSchemaVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4407,9 +5614,7 @@ export const DynamicSchemaVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicSchemaVersionsGetOutput =
-  typeof DynamicSchemaVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<DynamicSchemaVersionsGetOutput>;
 
 // The operation
 /**
@@ -4429,6 +5634,12 @@ export const DynamicSchemaVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DynamicSchemaVersionsListByDynamicSchemaInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+}
 export const DynamicSchemaVersionsListByDynamicSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4441,11 +5652,25 @@ export const DynamicSchemaVersionsListByDynamicSchemaInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemaVersionsListByDynamicSchemaInput =
-  typeof DynamicSchemaVersionsListByDynamicSchemaInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemaVersionsListByDynamicSchemaInput>;
 
 // Output Schema
+export interface DynamicSchemaVersionsListByDynamicSchemaOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DynamicSchemaVersionsListByDynamicSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4480,9 +5705,7 @@ export const DynamicSchemaVersionsListByDynamicSchemaOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DynamicSchemaVersionsListByDynamicSchemaOutput =
-  typeof DynamicSchemaVersionsListByDynamicSchemaOutput.Type;
+  }) as unknown as Schema.Codec<DynamicSchemaVersionsListByDynamicSchemaOutput>;
 
 // The operation
 /**
@@ -4500,6 +5723,14 @@ export const DynamicSchemaVersionsListByDynamicSchema =
     outputSchema: DynamicSchemaVersionsListByDynamicSchemaOutput,
   }));
 // Input Schema
+export interface DynamicSchemaVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  dynamicSchemaName: string;
+  dynamicSchemaVersionName: string;
+  properties?: { value?: string };
+}
 export const DynamicSchemaVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4518,11 +5749,22 @@ export const DynamicSchemaVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type DynamicSchemaVersionsUpdateInput =
-  typeof DynamicSchemaVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DynamicSchemaVersionsUpdateInput>;
 
 // Output Schema
+export interface DynamicSchemaVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DynamicSchemaVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4542,9 +5784,7 @@ export const DynamicSchemaVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DynamicSchemaVersionsUpdateOutput =
-  typeof DynamicSchemaVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DynamicSchemaVersionsUpdateOutput>;
 
 // The operation
 /**
@@ -4564,6 +5804,42 @@ export const DynamicSchemaVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExecutionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+  executionName: string;
+  properties?: {
+    workflowVersionId: string;
+    specification?: Record<string, unknown>;
+    status?: {
+      updateTime?: string;
+      status?: number;
+      statusMessage?: string;
+      stageHistory?: {
+        status?: number;
+        statusMessage?: string;
+        stage?: string;
+        nextstage?: string;
+        errorMessage?: string;
+        isActive?: "active" | "inactive";
+        inputs?: Record<string, unknown>;
+        outputs?: Record<string, unknown>;
+      }[];
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  eTag?: string;
+}
 export const ExecutionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4630,11 +5906,22 @@ export const ExecutionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ExecutionsCreateOrUpdateInput =
-  typeof ExecutionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ExecutionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ExecutionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExecutionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4654,9 +5941,7 @@ export const ExecutionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExecutionsCreateOrUpdateOutput =
-  typeof ExecutionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExecutionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4677,6 +5962,14 @@ export const ExecutionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExecutionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+  executionName: string;
+}
 export const ExecutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4690,12 +5983,12 @@ export const ExecutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type ExecutionsDeleteInput = typeof ExecutionsDeleteInput.Type;
+) as unknown as Schema.Codec<ExecutionsDeleteInput>;
 
 // Output Schema
-export const ExecutionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExecutionsDeleteOutput = typeof ExecutionsDeleteOutput.Type;
+export type ExecutionsDeleteOutput = void;
+export const ExecutionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExecutionsDeleteOutput>;
 
 // The operation
 /**
@@ -4714,6 +6007,14 @@ export const ExecutionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExecutionsDeleteOutput,
 }));
 // Input Schema
+export interface ExecutionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+  executionName: string;
+}
 export const ExecutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4727,10 +6028,22 @@ export const ExecutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type ExecutionsGetInput = typeof ExecutionsGetInput.Type;
+) as unknown as Schema.Codec<ExecutionsGetInput>;
 
 // Output Schema
+export interface ExecutionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExecutionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4749,8 +6062,7 @@ export const ExecutionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ExecutionsGetOutput = typeof ExecutionsGetOutput.Type;
+}) as unknown as Schema.Codec<ExecutionsGetOutput>;
 
 // The operation
 /**
@@ -4769,6 +6081,13 @@ export const ExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExecutionsGetOutput,
 }));
 // Input Schema
+export interface ExecutionsListByWorkflowVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+}
 export const ExecutionsListByWorkflowVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4782,11 +6101,25 @@ export const ExecutionsListByWorkflowVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ExecutionsListByWorkflowVersionInput =
-  typeof ExecutionsListByWorkflowVersionInput.Type;
+  ) as unknown as Schema.Codec<ExecutionsListByWorkflowVersionInput>;
 
 // Output Schema
+export interface ExecutionsListByWorkflowVersionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ExecutionsListByWorkflowVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4821,9 +6154,7 @@ export const ExecutionsListByWorkflowVersionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExecutionsListByWorkflowVersionOutput =
-  typeof ExecutionsListByWorkflowVersionOutput.Type;
+  }) as unknown as Schema.Codec<ExecutionsListByWorkflowVersionOutput>;
 
 // The operation
 /**
@@ -4842,6 +6173,18 @@ export const ExecutionsListByWorkflowVersion =
     outputSchema: ExecutionsListByWorkflowVersionOutput,
   }));
 // Input Schema
+export interface ExecutionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+  executionName: string;
+  properties?: {
+    workflowVersionId?: string;
+    specification?: Record<string, unknown>;
+  };
+}
 export const ExecutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4863,10 +6206,22 @@ export const ExecutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type ExecutionsUpdateInput = typeof ExecutionsUpdateInput.Type;
+) as unknown as Schema.Codec<ExecutionsUpdateInput>;
 
 // Output Schema
+export interface ExecutionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExecutionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -4887,8 +6242,7 @@ export const ExecutionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ExecutionsUpdateOutput = typeof ExecutionsUpdateOutput.Type;
+) as unknown as Schema.Codec<ExecutionsUpdateOutput>;
 
 // The operation
 /**
@@ -4907,6 +6261,24 @@ export const ExecutionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExecutionsUpdateOutput,
 }));
 // Input Schema
+export interface HardwareSettingsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  hardwareSettingName: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    totalCores: number;
+    diskSpaceInGb: number;
+    memoryInGb: number;
+    oem: string;
+    hardwareSku: string;
+    nodes: number;
+    versionAtRegistration: string;
+    solutionBuilderExtension: string;
+    deviceId: string;
+  };
+}
 export const HardwareSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4935,11 +6307,22 @@ export const HardwareSettingsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type HardwareSettingsCreateOrUpdateInput =
-  typeof HardwareSettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<HardwareSettingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface HardwareSettingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HardwareSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4959,9 +6342,7 @@ export const HardwareSettingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HardwareSettingsCreateOrUpdateOutput =
-  typeof HardwareSettingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HardwareSettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4979,6 +6360,12 @@ export const HardwareSettingsCreateOrUpdate =
     outputSchema: HardwareSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface HardwareSettingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  hardwareSettingName: string;
+}
 export const HardwareSettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4991,15 +6378,12 @@ export const HardwareSettingsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type HardwareSettingsDeleteInput =
-  typeof HardwareSettingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<HardwareSettingsDeleteInput>;
 
 // Output Schema
+export type HardwareSettingsDeleteOutput = void;
 export const HardwareSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HardwareSettingsDeleteOutput =
-  typeof HardwareSettingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HardwareSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -5018,6 +6402,12 @@ export const HardwareSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HardwareSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  hardwareSettingName: string;
+}
 export const HardwareSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5030,10 +6420,22 @@ export const HardwareSettingsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type HardwareSettingsGetInput = typeof HardwareSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<HardwareSettingsGetInput>;
 
 // Output Schema
+export interface HardwareSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HardwareSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5053,8 +6455,7 @@ export const HardwareSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HardwareSettingsGetOutput = typeof HardwareSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<HardwareSettingsGetOutput>;
 
 // The operation
 /**
@@ -5071,6 +6472,11 @@ export const HardwareSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: HardwareSettingsGetOutput,
 }));
 // Input Schema
+export interface HardwareSettingsListByParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const HardwareSettingsListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5082,11 +6488,25 @@ export const HardwareSettingsListByParentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings",
       apiVersion: "2026-03-15",
     }),
-  );
-export type HardwareSettingsListByParentInput =
-  typeof HardwareSettingsListByParentInput.Type;
+  ) as unknown as Schema.Codec<HardwareSettingsListByParentInput>;
 
 // Output Schema
+export interface HardwareSettingsListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HardwareSettingsListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5121,9 +6541,7 @@ export const HardwareSettingsListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HardwareSettingsListByParentOutput =
-  typeof HardwareSettingsListByParentOutput.Type;
+  }) as unknown as Schema.Codec<HardwareSettingsListByParentOutput>;
 
 // The operation
 /**
@@ -5140,6 +6558,10 @@ export const HardwareSettingsListByParent =
     outputSchema: HardwareSettingsListByParentOutput,
   }));
 // Input Schema
+export interface HierarchyConfigurationMetadatasGetInput {
+  resourceUri: string;
+  hierarchyConfigurationMetadataName: string;
+}
 export const HierarchyConfigurationMetadatasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -5150,11 +6572,22 @@ export const HierarchyConfigurationMetadatasGetInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type HierarchyConfigurationMetadatasGetInput =
-  typeof HierarchyConfigurationMetadatasGetInput.Type;
+  ) as unknown as Schema.Codec<HierarchyConfigurationMetadatasGetInput>;
 
 // Output Schema
+export interface HierarchyConfigurationMetadatasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HierarchyConfigurationMetadatasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5174,9 +6607,7 @@ export const HierarchyConfigurationMetadatasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HierarchyConfigurationMetadatasGetOutput =
-  typeof HierarchyConfigurationMetadatasGetOutput.Type;
+  }) as unknown as Schema.Codec<HierarchyConfigurationMetadatasGetOutput>;
 
 // The operation
 /**
@@ -5192,6 +6623,9 @@ export const HierarchyConfigurationMetadatasGet =
     outputSchema: HierarchyConfigurationMetadatasGetOutput,
   }));
 // Input Schema
+export interface HierarchyConfigurationMetadatasListByParentInput {
+  resourceUri: string;
+}
 export const HierarchyConfigurationMetadatasListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -5201,11 +6635,25 @@ export const HierarchyConfigurationMetadatasListByParentInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas",
       apiVersion: "2026-03-01",
     }),
-  );
-export type HierarchyConfigurationMetadatasListByParentInput =
-  typeof HierarchyConfigurationMetadatasListByParentInput.Type;
+  ) as unknown as Schema.Codec<HierarchyConfigurationMetadatasListByParentInput>;
 
 // Output Schema
+export interface HierarchyConfigurationMetadatasListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HierarchyConfigurationMetadatasListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5240,9 +6688,7 @@ export const HierarchyConfigurationMetadatasListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HierarchyConfigurationMetadatasListByParentOutput =
-  typeof HierarchyConfigurationMetadatasListByParentOutput.Type;
+  }) as unknown as Schema.Codec<HierarchyConfigurationMetadatasListByParentOutput>;
 
 // The operation
 /**
@@ -5257,6 +6703,11 @@ export const HierarchyConfigurationMetadatasListByParent =
     outputSchema: HierarchyConfigurationMetadatasListByParentOutput,
   }));
 // Input Schema
+export interface HierarchyConfigurationMetadataVersionsGetInput {
+  resourceUri: string;
+  hierarchyConfigurationMetadataName: string;
+  hierarchyConfigurationMetadataVersionName: string;
+}
 export const HierarchyConfigurationMetadataVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -5270,11 +6721,22 @@ export const HierarchyConfigurationMetadataVersionsGetInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}/versions/{hierarchyConfigurationMetadataVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type HierarchyConfigurationMetadataVersionsGetInput =
-  typeof HierarchyConfigurationMetadataVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<HierarchyConfigurationMetadataVersionsGetInput>;
 
 // Output Schema
+export interface HierarchyConfigurationMetadataVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HierarchyConfigurationMetadataVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5294,9 +6756,7 @@ export const HierarchyConfigurationMetadataVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HierarchyConfigurationMetadataVersionsGetOutput =
-  typeof HierarchyConfigurationMetadataVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<HierarchyConfigurationMetadataVersionsGetOutput>;
 
 // The operation
 /**
@@ -5313,6 +6773,10 @@ export const HierarchyConfigurationMetadataVersionsGet =
     outputSchema: HierarchyConfigurationMetadataVersionsGetOutput,
   }));
 // Input Schema
+export interface HierarchyConfigurationMetadataVersionsListByParentInput {
+  resourceUri: string;
+  hierarchyConfigurationMetadataName: string;
+}
 export const HierarchyConfigurationMetadataVersionsListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -5323,11 +6787,25 @@ export const HierarchyConfigurationMetadataVersionsListByParentInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}/versions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type HierarchyConfigurationMetadataVersionsListByParentInput =
-  typeof HierarchyConfigurationMetadataVersionsListByParentInput.Type;
+  ) as unknown as Schema.Codec<HierarchyConfigurationMetadataVersionsListByParentInput>;
 
 // Output Schema
+export interface HierarchyConfigurationMetadataVersionsListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HierarchyConfigurationMetadataVersionsListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5362,9 +6840,7 @@ export const HierarchyConfigurationMetadataVersionsListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HierarchyConfigurationMetadataVersionsListByParentOutput =
-  typeof HierarchyConfigurationMetadataVersionsListByParentOutput.Type;
+  }) as unknown as Schema.Codec<HierarchyConfigurationMetadataVersionsListByParentOutput>;
 
 // The operation
 /**
@@ -5380,6 +6856,12 @@ export const HierarchyConfigurationMetadataVersionsListByParent =
     outputSchema: HierarchyConfigurationMetadataVersionsListByParentOutput,
   }));
 // Input Schema
+export interface ImagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  imageName: string;
+}
 export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5391,10 +6873,22 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type ImagesGetInput = typeof ImagesGetInput.Type;
+) as unknown as Schema.Codec<ImagesGetInput>;
 
 // Output Schema
+export interface ImagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5413,8 +6907,7 @@ export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ImagesGetOutput = typeof ImagesGetOutput.Type;
+}) as unknown as Schema.Codec<ImagesGetOutput>;
 
 // The operation
 /**
@@ -5431,6 +6924,14 @@ export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesGetOutput,
 }));
 // Input Schema
+export interface ImagesListByDisconnectedOperationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+}
 export const ImagesListByDisconnectedOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5445,11 +6946,25 @@ export const ImagesListByDisconnectedOperationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images",
       apiVersion: "2026-03-15",
     }),
-  );
-export type ImagesListByDisconnectedOperationInput =
-  typeof ImagesListByDisconnectedOperationInput.Type;
+  ) as unknown as Schema.Codec<ImagesListByDisconnectedOperationInput>;
 
 // Output Schema
+export interface ImagesListByDisconnectedOperationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImagesListByDisconnectedOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5484,9 +6999,7 @@ export const ImagesListByDisconnectedOperationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImagesListByDisconnectedOperationOutput =
-  typeof ImagesListByDisconnectedOperationOutput.Type;
+  }) as unknown as Schema.Codec<ImagesListByDisconnectedOperationOutput>;
 
 // The operation
 /**
@@ -5506,6 +7019,12 @@ export const ImagesListByDisconnectedOperation =
     outputSchema: ImagesListByDisconnectedOperationOutput,
   }));
 // Input Schema
+export interface ImagesListDownloadUriInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  imageName: string;
+}
 export const ImagesListDownloadUriInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5518,10 +7037,28 @@ export const ImagesListDownloadUriInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/listDownloadUri",
       apiVersion: "2026-03-15",
     }),
-  );
-export type ImagesListDownloadUriInput = typeof ImagesListDownloadUriInput.Type;
+  ) as unknown as Schema.Codec<ImagesListDownloadUriInput>;
 
 // Output Schema
+export interface ImagesListDownloadUriOutput {
+  provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  releaseVersion: string;
+  releaseDisplayName: string;
+  releaseNotes: string;
+  releaseDate: string;
+  releaseType: "Install" | "Update";
+  compatibleVersions?: string[];
+  updateProperties?: {
+    systemReboot: "Required" | "NotRequired";
+    securityUpdates: string;
+    osVersion: string;
+    agentVersion: string;
+    featureUpdates: string;
+  };
+  transactionId: string;
+  downloadLink: string;
+  linkExpiry: string;
+}
 export const ImagesListDownloadUriOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provisioningState: Schema.optional(
@@ -5545,9 +7082,7 @@ export const ImagesListDownloadUriOutput =
     transactionId: Schema.String,
     downloadLink: Schema.String,
     linkExpiry: Schema.String,
-  });
-export type ImagesListDownloadUriOutput =
-  typeof ImagesListDownloadUriOutput.Type;
+  }) as unknown as Schema.Codec<ImagesListDownloadUriOutput>;
 
 // The operation
 /**
@@ -5566,6 +7101,14 @@ export const ImagesListDownloadUri = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstanceHistoriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  instanceName: string;
+  instanceHistoryName: string;
+}
 export const InstanceHistoriesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5580,10 +7123,22 @@ export const InstanceHistoriesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}/histories/{instanceHistoryName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type InstanceHistoriesGetInput = typeof InstanceHistoriesGetInput.Type;
+  ) as unknown as Schema.Codec<InstanceHistoriesGetInput>;
 
 // Output Schema
+export interface InstanceHistoriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstanceHistoriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5603,8 +7158,7 @@ export const InstanceHistoriesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InstanceHistoriesGetOutput = typeof InstanceHistoriesGetOutput.Type;
+  }) as unknown as Schema.Codec<InstanceHistoriesGetOutput>;
 
 // The operation
 /**
@@ -5625,6 +7179,13 @@ export const InstanceHistoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstanceHistoriesListByInstanceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  instanceName: string;
+}
 export const InstanceHistoriesListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5638,11 +7199,25 @@ export const InstanceHistoriesListByInstanceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}/histories",
       apiVersion: "2026-03-01",
     }),
-  );
-export type InstanceHistoriesListByInstanceInput =
-  typeof InstanceHistoriesListByInstanceInput.Type;
+  ) as unknown as Schema.Codec<InstanceHistoriesListByInstanceInput>;
 
 // Output Schema
+export interface InstanceHistoriesListByInstanceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InstanceHistoriesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5677,9 +7252,7 @@ export const InstanceHistoriesListByInstanceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InstanceHistoriesListByInstanceOutput =
-  typeof InstanceHistoriesListByInstanceOutput.Type;
+  }) as unknown as Schema.Codec<InstanceHistoriesListByInstanceOutput>;
 
 // The operation
 /**
@@ -5698,6 +7271,44 @@ export const InstanceHistoriesListByInstance =
     outputSchema: InstanceHistoriesListByInstanceOutput,
   }));
 // Input Schema
+export interface InstancesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  instanceName: string;
+  properties?: {
+    solutionVersionId: string;
+    targetId: string;
+    activeState?: "active" | "inactive";
+    reconciliationPolicy?: { state: "inactive" | "active"; interval: string };
+    solutionScope?: string;
+    status?: {
+      lastModified?: string;
+      deployed?: number;
+      expectedRunningJobId?: number;
+      runningJobId?: number;
+      status?: string;
+      statusDetails?: string;
+      generation?: number;
+      targetStatuses?: {
+        name?: string;
+        status?: string;
+        componentStatuses?: { name?: string; status?: string }[];
+      }[];
+    };
+    deploymentTimestampEpoch?: number;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  eTag?: string;
+}
 export const InstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5770,11 +7381,22 @@ export const InstancesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type InstancesCreateOrUpdateInput =
-  typeof InstancesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<InstancesCreateOrUpdateInput>;
 
 // Output Schema
+export interface InstancesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5794,9 +7416,7 @@ export const InstancesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InstancesCreateOrUpdateOutput =
-  typeof InstancesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InstancesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5816,6 +7436,13 @@ export const InstancesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  instanceName: string;
+}
 export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5828,12 +7455,12 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
+) as unknown as Schema.Codec<InstancesDeleteInput>;
 
 // Output Schema
-export const InstancesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InstancesDeleteOutput = typeof InstancesDeleteOutput.Type;
+export type InstancesDeleteOutput = void;
+export const InstancesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InstancesDeleteOutput>;
 
 // The operation
 /**
@@ -5851,6 +7478,13 @@ export const InstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstancesDeleteOutput,
 }));
 // Input Schema
+export interface InstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  instanceName: string;
+}
 export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5863,10 +7497,22 @@ export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type InstancesGetInput = typeof InstancesGetInput.Type;
+) as unknown as Schema.Codec<InstancesGetInput>;
 
 // Output Schema
+export interface InstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5885,8 +7531,7 @@ export const InstancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type InstancesGetOutput = typeof InstancesGetOutput.Type;
+}) as unknown as Schema.Codec<InstancesGetOutput>;
 
 // The operation
 /**
@@ -5904,6 +7549,12 @@ export const InstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstancesGetOutput,
 }));
 // Input Schema
+export interface InstancesListBySolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+}
 export const InstancesListBySolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5916,11 +7567,25 @@ export const InstancesListBySolutionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances",
       apiVersion: "2026-03-01",
     }),
-  );
-export type InstancesListBySolutionInput =
-  typeof InstancesListBySolutionInput.Type;
+  ) as unknown as Schema.Codec<InstancesListBySolutionInput>;
 
 // Output Schema
+export interface InstancesListBySolutionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InstancesListBySolutionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5955,9 +7620,7 @@ export const InstancesListBySolutionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InstancesListBySolutionOutput =
-  typeof InstancesListBySolutionOutput.Type;
+  }) as unknown as Schema.Codec<InstancesListBySolutionOutput>;
 
 // The operation
 /**
@@ -5976,6 +7639,20 @@ export const InstancesListBySolution = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  instanceName: string;
+  properties?: {
+    solutionVersionId?: string;
+    targetId?: string;
+    activeState?: "active" | "inactive";
+    reconciliationPolicy?: { state?: "inactive" | "active"; interval?: string };
+    solutionScope?: string;
+  };
+}
 export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6002,10 +7679,22 @@ export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type InstancesUpdateInput = typeof InstancesUpdateInput.Type;
+) as unknown as Schema.Codec<InstancesUpdateInput>;
 
 // Output Schema
+export interface InstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6024,8 +7713,7 @@ export const InstancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type InstancesUpdateOutput = typeof InstancesUpdateOutput.Type;
+}) as unknown as Schema.Codec<InstancesUpdateOutput>;
 
 // The operation
 /**
@@ -6043,6 +7731,10 @@ export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstancesUpdateOutput,
 }));
 // Input Schema
+export interface JobsGetInput {
+  resourceUri: string;
+  jobName: string;
+}
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -6052,10 +7744,22 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.Edge/jobs/{jobName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type JobsGetInput = typeof JobsGetInput.Type;
+) as unknown as Schema.Codec<JobsGetInput>;
 
 // Output Schema
+export interface JobsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6074,8 +7778,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsGetOutput = typeof JobsGetOutput.Type;
+}) as unknown as Schema.Codec<JobsGetOutput>;
 
 // The operation
 /**
@@ -6090,6 +7793,9 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsGetOutput,
 }));
 // Input Schema
+export interface JobsListByTargetInput {
+  resourceUri: string;
+}
 export const JobsListByTargetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -6098,10 +7804,25 @@ export const JobsListByTargetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.Edge/jobs",
     apiVersion: "2026-03-01",
   }),
-);
-export type JobsListByTargetInput = typeof JobsListByTargetInput.Type;
+) as unknown as Schema.Codec<JobsListByTargetInput>;
 
 // Output Schema
+export interface JobsListByTargetOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobsListByTargetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -6137,8 +7858,7 @@ export const JobsListByTargetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type JobsListByTargetOutput = typeof JobsListByTargetOutput.Type;
+) as unknown as Schema.Codec<JobsListByTargetOutput>;
 
 // The operation
 /**
@@ -6152,6 +7872,7 @@ export const JobsListByTarget = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsListByTargetOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -6160,10 +7881,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Edge/operations",
     apiVersion: "2025-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -6186,8 +7921,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -6200,6 +7934,21 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SchemaReferencesCreateOrUpdateInput {
+  resourceUri: string;
+  schemaReferenceName: string;
+  properties?: {
+    schemaId: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+}
 export const SchemaReferencesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -6226,11 +7975,22 @@ export const SchemaReferencesCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaReferencesCreateOrUpdateInput =
-  typeof SchemaReferencesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchemaReferencesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SchemaReferencesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaReferencesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6250,9 +8010,7 @@ export const SchemaReferencesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaReferencesCreateOrUpdateOutput =
-  typeof SchemaReferencesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchemaReferencesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6268,6 +8026,10 @@ export const SchemaReferencesCreateOrUpdate =
     outputSchema: SchemaReferencesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SchemaReferencesDeleteInput {
+  resourceUri: string;
+  schemaReferenceName: string;
+}
 export const SchemaReferencesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -6278,15 +8040,12 @@ export const SchemaReferencesDeleteInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaReferencesDeleteInput =
-  typeof SchemaReferencesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SchemaReferencesDeleteInput>;
 
 // Output Schema
+export type SchemaReferencesDeleteOutput = void;
 export const SchemaReferencesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchemaReferencesDeleteOutput =
-  typeof SchemaReferencesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchemaReferencesDeleteOutput>;
 
 // The operation
 /**
@@ -6303,6 +8062,10 @@ export const SchemaReferencesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemaReferencesGetInput {
+  resourceUri: string;
+  schemaReferenceName: string;
+}
 export const SchemaReferencesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -6313,10 +8076,22 @@ export const SchemaReferencesGetInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaReferencesGetInput = typeof SchemaReferencesGetInput.Type;
+  ) as unknown as Schema.Codec<SchemaReferencesGetInput>;
 
 // Output Schema
+export interface SchemaReferencesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaReferencesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6336,8 +8111,7 @@ export const SchemaReferencesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaReferencesGetOutput = typeof SchemaReferencesGetOutput.Type;
+  }) as unknown as Schema.Codec<SchemaReferencesGetOutput>;
 
 // The operation
 /**
@@ -6352,6 +8126,9 @@ export const SchemaReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemaReferencesGetOutput,
 }));
 // Input Schema
+export interface SchemaReferencesListByResourceGroupInput {
+  resourceUri: string;
+}
 export const SchemaReferencesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -6361,11 +8138,25 @@ export const SchemaReferencesListByResourceGroupInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaReferencesListByResourceGroupInput =
-  typeof SchemaReferencesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SchemaReferencesListByResourceGroupInput>;
 
 // Output Schema
+export interface SchemaReferencesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchemaReferencesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6400,9 +8191,7 @@ export const SchemaReferencesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchemaReferencesListByResourceGroupOutput =
-  typeof SchemaReferencesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SchemaReferencesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6417,6 +8206,11 @@ export const SchemaReferencesListByResourceGroup =
     outputSchema: SchemaReferencesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SchemaReferencesUpdateInput {
+  resourceUri: string;
+  schemaReferenceName: string;
+  properties?: { schemaId?: string };
+}
 export const SchemaReferencesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -6432,11 +8226,22 @@ export const SchemaReferencesUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaReferencesUpdateInput =
-  typeof SchemaReferencesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchemaReferencesUpdateInput>;
 
 // Output Schema
+export interface SchemaReferencesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaReferencesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6456,9 +8261,7 @@ export const SchemaReferencesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaReferencesUpdateOutput =
-  typeof SchemaReferencesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchemaReferencesUpdateOutput>;
 
 // The operation
 /**
@@ -6475,6 +8278,24 @@ export const SchemaReferencesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemasCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  properties?: {
+    currentVersion?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SchemasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6504,10 +8325,22 @@ export const SchemasCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemasCreateOrUpdateInput = typeof SchemasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchemasCreateOrUpdateInput>;
 
 // Output Schema
+export interface SchemasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6527,9 +8360,7 @@ export const SchemasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemasCreateOrUpdateOutput =
-  typeof SchemasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchemasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6547,6 +8378,26 @@ export const SchemasCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemasCreateVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  updateType?: "Major" | "Minor" | "Patch";
+  version?: string;
+  schemaVersion: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  };
+}
 export const SchemasCreateVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6579,10 +8430,22 @@ export const SchemasCreateVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/createVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemasCreateVersionInput = typeof SchemasCreateVersionInput.Type;
+  ) as unknown as Schema.Codec<SchemasCreateVersionInput>;
 
 // Output Schema
+export interface SchemasCreateVersionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemasCreateVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6602,8 +8465,7 @@ export const SchemasCreateVersionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemasCreateVersionOutput = typeof SchemasCreateVersionOutput.Type;
+  }) as unknown as Schema.Codec<SchemasCreateVersionOutput>;
 
 // The operation
 /**
@@ -6621,6 +8483,11 @@ export const SchemasCreateVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemasDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+}
 export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6631,12 +8498,12 @@ export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type SchemasDeleteInput = typeof SchemasDeleteInput.Type;
+) as unknown as Schema.Codec<SchemasDeleteInput>;
 
 // Output Schema
-export const SchemasDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchemasDeleteOutput = typeof SchemasDeleteOutput.Type;
+export type SchemasDeleteOutput = void;
+export const SchemasDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchemasDeleteOutput>;
 
 // The operation
 /**
@@ -6652,6 +8519,11 @@ export const SchemasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemasDeleteOutput,
 }));
 // Input Schema
+export interface SchemasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+}
 export const SchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6662,10 +8534,22 @@ export const SchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type SchemasGetInput = typeof SchemasGetInput.Type;
+) as unknown as Schema.Codec<SchemasGetInput>;
 
 // Output Schema
+export interface SchemasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6684,8 +8568,7 @@ export const SchemasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchemasGetOutput = typeof SchemasGetOutput.Type;
+}) as unknown as Schema.Codec<SchemasGetOutput>;
 
 // The operation
 /**
@@ -6701,6 +8584,10 @@ export const SchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemasGetOutput,
 }));
 // Input Schema
+export interface SchemasListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SchemasListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6711,11 +8598,25 @@ export const SchemasListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemasListByResourceGroupInput =
-  typeof SchemasListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SchemasListByResourceGroupInput>;
 
 // Output Schema
+export interface SchemasListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchemasListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6750,9 +8651,7 @@ export const SchemasListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchemasListByResourceGroupOutput =
-  typeof SchemasListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SchemasListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6769,6 +8668,9 @@ export const SchemasListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemasListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SchemasListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6778,11 +8680,25 @@ export const SchemasListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/schemas",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemasListBySubscriptionInput =
-  typeof SchemasListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SchemasListBySubscriptionInput>;
 
 // Output Schema
+export interface SchemasListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchemasListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6817,9 +8733,7 @@ export const SchemasListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchemasListBySubscriptionOutput =
-  typeof SchemasListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SchemasListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6835,6 +8749,12 @@ export const SchemasListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemasRemoveVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  version: string;
+}
 export const SchemasRemoveVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6847,15 +8767,16 @@ export const SchemasRemoveVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/removeVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemasRemoveVersionInput = typeof SchemasRemoveVersionInput.Type;
+  ) as unknown as Schema.Codec<SchemasRemoveVersionInput>;
 
 // Output Schema
+export interface SchemasRemoveVersionOutput {
+  status: string;
+}
 export const SchemasRemoveVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.String,
-  });
-export type SchemasRemoveVersionOutput = typeof SchemasRemoveVersionOutput.Type;
+  }) as unknown as Schema.Codec<SchemasRemoveVersionOutput>;
 
 // The operation
 /**
@@ -6873,6 +8794,22 @@ export const SchemasRemoveVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemasUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  properties?: {
+    currentVersion?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  tags?: Record<string, string>;
+}
 export const SchemasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6899,10 +8836,22 @@ export const SchemasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type SchemasUpdateInput = typeof SchemasUpdateInput.Type;
+) as unknown as Schema.Codec<SchemasUpdateInput>;
 
 // Output Schema
+export interface SchemasUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemasUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6921,8 +8870,7 @@ export const SchemasUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchemasUpdateOutput = typeof SchemasUpdateOutput.Type;
+}) as unknown as Schema.Codec<SchemasUpdateOutput>;
 
 // The operation
 /**
@@ -6938,6 +8886,23 @@ export const SchemasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemasUpdateOutput,
 }));
 // Input Schema
+export interface SchemaVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  schemaVersionName: string;
+  properties?: {
+    value: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+}
 export const SchemaVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6966,11 +8931,22 @@ export const SchemaVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaVersionsCreateOrUpdateInput =
-  typeof SchemaVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchemaVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SchemaVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6990,9 +8966,7 @@ export const SchemaVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaVersionsCreateOrUpdateOutput =
-  typeof SchemaVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchemaVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7010,6 +8984,12 @@ export const SchemaVersionsCreateOrUpdate =
     outputSchema: SchemaVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SchemaVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  schemaVersionName: string;
+}
 export const SchemaVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7022,13 +9002,12 @@ export const SchemaVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaVersionsDeleteInput = typeof SchemaVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SchemaVersionsDeleteInput>;
 
 // Output Schema
+export type SchemaVersionsDeleteOutput = void;
 export const SchemaVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchemaVersionsDeleteOutput = typeof SchemaVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchemaVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -7047,6 +9026,12 @@ export const SchemaVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemaVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  schemaVersionName: string;
+}
 export const SchemaVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7060,10 +9045,22 @@ export const SchemaVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type SchemaVersionsGetInput = typeof SchemaVersionsGetInput.Type;
+) as unknown as Schema.Codec<SchemaVersionsGetInput>;
 
 // Output Schema
+export interface SchemaVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7083,8 +9080,7 @@ export const SchemaVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaVersionsGetOutput = typeof SchemaVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<SchemaVersionsGetOutput>;
 
 // The operation
 /**
@@ -7101,6 +9097,11 @@ export const SchemaVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemaVersionsGetOutput,
 }));
 // Input Schema
+export interface SchemaVersionsListBySchemaInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+}
 export const SchemaVersionsListBySchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7112,11 +9113,25 @@ export const SchemaVersionsListBySchemaInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaVersionsListBySchemaInput =
-  typeof SchemaVersionsListBySchemaInput.Type;
+  ) as unknown as Schema.Codec<SchemaVersionsListBySchemaInput>;
 
 // Output Schema
+export interface SchemaVersionsListBySchemaOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchemaVersionsListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7151,9 +9166,7 @@ export const SchemaVersionsListBySchemaOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchemaVersionsListBySchemaOutput =
-  typeof SchemaVersionsListBySchemaOutput.Type;
+  }) as unknown as Schema.Codec<SchemaVersionsListBySchemaOutput>;
 
 // The operation
 /**
@@ -7171,6 +9184,13 @@ export const SchemaVersionsListBySchema = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemaVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaName: string;
+  schemaVersionName: string;
+  properties?: { value?: string };
+}
 export const SchemaVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7188,10 +9208,22 @@ export const SchemaVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SchemaVersionsUpdateInput = typeof SchemaVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchemaVersionsUpdateInput>;
 
 // Output Schema
+export interface SchemaVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7211,8 +9243,7 @@ export const SchemaVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaVersionsUpdateOutput = typeof SchemaVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchemaVersionsUpdateOutput>;
 
 // The operation
 /**
@@ -7231,6 +9262,22 @@ export const SchemaVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SiteReferencesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  siteReferenceName: string;
+  properties?: {
+    siteId: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+}
 export const SiteReferencesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7258,11 +9305,22 @@ export const SiteReferencesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SiteReferencesCreateOrUpdateInput =
-  typeof SiteReferencesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SiteReferencesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SiteReferencesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SiteReferencesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7282,9 +9340,7 @@ export const SiteReferencesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SiteReferencesCreateOrUpdateOutput =
-  typeof SiteReferencesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SiteReferencesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7302,6 +9358,12 @@ export const SiteReferencesCreateOrUpdate =
     outputSchema: SiteReferencesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SiteReferencesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  siteReferenceName: string;
+}
 export const SiteReferencesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7314,13 +9376,12 @@ export const SiteReferencesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SiteReferencesDeleteInput = typeof SiteReferencesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SiteReferencesDeleteInput>;
 
 // Output Schema
+export type SiteReferencesDeleteOutput = void;
 export const SiteReferencesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SiteReferencesDeleteOutput = typeof SiteReferencesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SiteReferencesDeleteOutput>;
 
 // The operation
 /**
@@ -7339,6 +9400,12 @@ export const SiteReferencesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SiteReferencesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  siteReferenceName: string;
+}
 export const SiteReferencesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7352,10 +9419,22 @@ export const SiteReferencesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type SiteReferencesGetInput = typeof SiteReferencesGetInput.Type;
+) as unknown as Schema.Codec<SiteReferencesGetInput>;
 
 // Output Schema
+export interface SiteReferencesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SiteReferencesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7375,8 +9454,7 @@ export const SiteReferencesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SiteReferencesGetOutput = typeof SiteReferencesGetOutput.Type;
+  }) as unknown as Schema.Codec<SiteReferencesGetOutput>;
 
 // The operation
 /**
@@ -7393,6 +9471,11 @@ export const SiteReferencesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SiteReferencesGetOutput,
 }));
 // Input Schema
+export interface SiteReferencesListByContextInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+}
 export const SiteReferencesListByContextInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7404,11 +9487,25 @@ export const SiteReferencesListByContextInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SiteReferencesListByContextInput =
-  typeof SiteReferencesListByContextInput.Type;
+  ) as unknown as Schema.Codec<SiteReferencesListByContextInput>;
 
 // Output Schema
+export interface SiteReferencesListByContextOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SiteReferencesListByContextOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7443,9 +9540,7 @@ export const SiteReferencesListByContextOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SiteReferencesListByContextOutput =
-  typeof SiteReferencesListByContextOutput.Type;
+  }) as unknown as Schema.Codec<SiteReferencesListByContextOutput>;
 
 // The operation
 /**
@@ -7463,6 +9558,13 @@ export const SiteReferencesListByContext = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SiteReferencesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  siteReferenceName: string;
+  properties?: { siteId?: string };
+}
 export const SiteReferencesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7480,10 +9582,22 @@ export const SiteReferencesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SiteReferencesUpdateInput = typeof SiteReferencesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SiteReferencesUpdateInput>;
 
 // Output Schema
+export interface SiteReferencesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SiteReferencesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7503,8 +9617,7 @@ export const SiteReferencesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SiteReferencesUpdateOutput = typeof SiteReferencesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SiteReferencesUpdateOutput>;
 
 // The operation
 /**
@@ -7523,6 +9636,24 @@ export const SiteReferencesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesByServiceGroupCreateOrUpdateInput {
+  servicegroupName: string;
+  siteName: string;
+  properties?: {
+    displayName?: string;
+    description?: string;
+    siteAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country?: string;
+      postalCode?: string;
+    };
+    labels?: Record<string, string>;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+}
 export const SitesByServiceGroupCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
@@ -7553,11 +9684,22 @@ export const SitesByServiceGroupCreateOrUpdateInput =
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesByServiceGroupCreateOrUpdateInput =
-  typeof SitesByServiceGroupCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SitesByServiceGroupCreateOrUpdateInput>;
 
 // Output Schema
+export interface SitesByServiceGroupCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesByServiceGroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7577,9 +9719,7 @@ export const SitesByServiceGroupCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesByServiceGroupCreateOrUpdateOutput =
-  typeof SitesByServiceGroupCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SitesByServiceGroupCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7595,6 +9735,10 @@ export const SitesByServiceGroupCreateOrUpdate =
     outputSchema: SitesByServiceGroupCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SitesByServiceGroupDeleteInput {
+  servicegroupName: string;
+  siteName: string;
+}
 export const SitesByServiceGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
@@ -7605,15 +9749,12 @@ export const SitesByServiceGroupDeleteInput =
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesByServiceGroupDeleteInput =
-  typeof SitesByServiceGroupDeleteInput.Type;
+  ) as unknown as Schema.Codec<SitesByServiceGroupDeleteInput>;
 
 // Output Schema
+export type SitesByServiceGroupDeleteOutput = void;
 export const SitesByServiceGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SitesByServiceGroupDeleteOutput =
-  typeof SitesByServiceGroupDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesByServiceGroupDeleteOutput>;
 
 // The operation
 /**
@@ -7630,6 +9771,10 @@ export const SitesByServiceGroupDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesByServiceGroupGetInput {
+  servicegroupName: string;
+  siteName: string;
+}
 export const SitesByServiceGroupGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
@@ -7640,11 +9785,22 @@ export const SitesByServiceGroupGetInput =
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesByServiceGroupGetInput =
-  typeof SitesByServiceGroupGetInput.Type;
+  ) as unknown as Schema.Codec<SitesByServiceGroupGetInput>;
 
 // Output Schema
+export interface SitesByServiceGroupGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesByServiceGroupGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7664,9 +9820,7 @@ export const SitesByServiceGroupGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesByServiceGroupGetOutput =
-  typeof SitesByServiceGroupGetOutput.Type;
+  }) as unknown as Schema.Codec<SitesByServiceGroupGetOutput>;
 
 // The operation
 /**
@@ -7683,6 +9837,9 @@ export const SitesByServiceGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesByServiceGroupListByServiceGroupInput {
+  servicegroupName: string;
+}
 export const SitesByServiceGroupListByServiceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
@@ -7692,11 +9849,25 @@ export const SitesByServiceGroupListByServiceGroupInput =
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesByServiceGroupListByServiceGroupInput =
-  typeof SitesByServiceGroupListByServiceGroupInput.Type;
+  ) as unknown as Schema.Codec<SitesByServiceGroupListByServiceGroupInput>;
 
 // Output Schema
+export interface SitesByServiceGroupListByServiceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SitesByServiceGroupListByServiceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7731,9 +9902,7 @@ export const SitesByServiceGroupListByServiceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesByServiceGroupListByServiceGroupOutput =
-  typeof SitesByServiceGroupListByServiceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SitesByServiceGroupListByServiceGroupOutput>;
 
 // The operation
 /**
@@ -7748,6 +9917,23 @@ export const SitesByServiceGroupListByServiceGroup =
     outputSchema: SitesByServiceGroupListByServiceGroupOutput,
   }));
 // Input Schema
+export interface SitesByServiceGroupUpdateInput {
+  servicegroupName: string;
+  siteName: string;
+  properties?: {
+    displayName?: string;
+    description?: string;
+    siteAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country?: string;
+      postalCode?: string;
+    };
+    labels?: Record<string, string>;
+  };
+}
 export const SitesByServiceGroupUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicegroupName: Schema.String.pipe(T.PathParam()),
@@ -7775,11 +9961,22 @@ export const SitesByServiceGroupUpdateInput =
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesByServiceGroupUpdateInput =
-  typeof SitesByServiceGroupUpdateInput.Type;
+  ) as unknown as Schema.Codec<SitesByServiceGroupUpdateInput>;
 
 // Output Schema
+export interface SitesByServiceGroupUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesByServiceGroupUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7799,9 +9996,7 @@ export const SitesByServiceGroupUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesByServiceGroupUpdateOutput =
-  typeof SitesByServiceGroupUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SitesByServiceGroupUpdateOutput>;
 
 // The operation
 /**
@@ -7818,6 +10013,24 @@ export const SitesByServiceGroupUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesBySubscriptionCreateOrUpdateInput {
+  subscriptionId: string;
+  siteName: string;
+  properties?: {
+    displayName?: string;
+    description?: string;
+    siteAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country?: string;
+      postalCode?: string;
+    };
+    labels?: Record<string, string>;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+}
 export const SitesBySubscriptionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7848,11 +10061,22 @@ export const SitesBySubscriptionCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesBySubscriptionCreateOrUpdateInput =
-  typeof SitesBySubscriptionCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SitesBySubscriptionCreateOrUpdateInput>;
 
 // Output Schema
+export interface SitesBySubscriptionCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesBySubscriptionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7872,9 +10096,7 @@ export const SitesBySubscriptionCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesBySubscriptionCreateOrUpdateOutput =
-  typeof SitesBySubscriptionCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SitesBySubscriptionCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7890,6 +10112,10 @@ export const SitesBySubscriptionCreateOrUpdate =
     outputSchema: SitesBySubscriptionCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SitesBySubscriptionDeleteInput {
+  subscriptionId: string;
+  siteName: string;
+}
 export const SitesBySubscriptionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7900,15 +10126,12 @@ export const SitesBySubscriptionDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesBySubscriptionDeleteInput =
-  typeof SitesBySubscriptionDeleteInput.Type;
+  ) as unknown as Schema.Codec<SitesBySubscriptionDeleteInput>;
 
 // Output Schema
+export type SitesBySubscriptionDeleteOutput = void;
 export const SitesBySubscriptionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SitesBySubscriptionDeleteOutput =
-  typeof SitesBySubscriptionDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesBySubscriptionDeleteOutput>;
 
 // The operation
 /**
@@ -7925,6 +10148,10 @@ export const SitesBySubscriptionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesBySubscriptionGetInput {
+  subscriptionId: string;
+  siteName: string;
+}
 export const SitesBySubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7935,11 +10162,22 @@ export const SitesBySubscriptionGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesBySubscriptionGetInput =
-  typeof SitesBySubscriptionGetInput.Type;
+  ) as unknown as Schema.Codec<SitesBySubscriptionGetInput>;
 
 // Output Schema
+export interface SitesBySubscriptionGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesBySubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7959,9 +10197,7 @@ export const SitesBySubscriptionGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesBySubscriptionGetOutput =
-  typeof SitesBySubscriptionGetOutput.Type;
+  }) as unknown as Schema.Codec<SitesBySubscriptionGetOutput>;
 
 // The operation
 /**
@@ -7978,6 +10214,9 @@ export const SitesBySubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesBySubscriptionListInput {
+  subscriptionId: string;
+}
 export const SitesBySubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7987,11 +10226,25 @@ export const SitesBySubscriptionListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesBySubscriptionListInput =
-  typeof SitesBySubscriptionListInput.Type;
+  ) as unknown as Schema.Codec<SitesBySubscriptionListInput>;
 
 // Output Schema
+export interface SitesBySubscriptionListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SitesBySubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8026,9 +10279,7 @@ export const SitesBySubscriptionListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesBySubscriptionListOutput =
-  typeof SitesBySubscriptionListOutput.Type;
+  }) as unknown as Schema.Codec<SitesBySubscriptionListOutput>;
 
 // The operation
 /**
@@ -8044,6 +10295,23 @@ export const SitesBySubscriptionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesBySubscriptionUpdateInput {
+  subscriptionId: string;
+  siteName: string;
+  properties?: {
+    displayName?: string;
+    description?: string;
+    siteAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country?: string;
+      postalCode?: string;
+    };
+    labels?: Record<string, string>;
+  };
+}
 export const SitesBySubscriptionUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8071,11 +10339,22 @@ export const SitesBySubscriptionUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesBySubscriptionUpdateInput =
-  typeof SitesBySubscriptionUpdateInput.Type;
+  ) as unknown as Schema.Codec<SitesBySubscriptionUpdateInput>;
 
 // Output Schema
+export interface SitesBySubscriptionUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesBySubscriptionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8095,9 +10374,7 @@ export const SitesBySubscriptionUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesBySubscriptionUpdateOutput =
-  typeof SitesBySubscriptionUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SitesBySubscriptionUpdateOutput>;
 
 // The operation
 /**
@@ -8114,6 +10391,25 @@ export const SitesBySubscriptionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    displayName?: string;
+    description?: string;
+    siteAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country?: string;
+      postalCode?: string;
+    };
+    labels?: Record<string, string>;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+}
 export const SitesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8145,10 +10441,22 @@ export const SitesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesCreateOrUpdateInput = typeof SitesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SitesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SitesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8168,8 +10476,7 @@ export const SitesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesCreateOrUpdateOutput = typeof SitesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SitesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8185,6 +10492,11 @@ export const SitesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface SitesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8195,12 +10507,12 @@ export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type SitesDeleteInput = typeof SitesDeleteInput.Type;
+) as unknown as Schema.Codec<SitesDeleteInput>;
 
 // Output Schema
-export const SitesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SitesDeleteOutput = typeof SitesDeleteOutput.Type;
+export type SitesDeleteOutput = void;
+export const SitesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesDeleteOutput>;
 
 // The operation
 /**
@@ -8216,6 +10528,11 @@ export const SitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesDeleteOutput,
 }));
 // Input Schema
+export interface SitesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8226,10 +10543,22 @@ export const SitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type SitesGetInput = typeof SitesGetInput.Type;
+) as unknown as Schema.Codec<SitesGetInput>;
 
 // Output Schema
+export interface SitesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8248,8 +10577,7 @@ export const SitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SitesGetOutput = typeof SitesGetOutput.Type;
+}) as unknown as Schema.Codec<SitesGetOutput>;
 
 // The operation
 /**
@@ -8265,6 +10593,10 @@ export const SitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesGetOutput,
 }));
 // Input Schema
+export interface SitesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SitesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8275,11 +10607,25 @@ export const SitesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites",
       apiVersion: "2025-06-01",
     }),
-  );
-export type SitesListByResourceGroupInput =
-  typeof SitesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SitesListByResourceGroupInput>;
 
 // Output Schema
+export interface SitesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SitesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8314,9 +10660,7 @@ export const SitesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesListByResourceGroupOutput =
-  typeof SitesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SitesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -8333,6 +10677,24 @@ export const SitesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    displayName?: string;
+    description?: string;
+    siteAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country?: string;
+      postalCode?: string;
+    };
+    labels?: Record<string, string>;
+  };
+}
 export const SitesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8360,10 +10722,22 @@ export const SitesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type SitesUpdateInput = typeof SitesUpdateInput.Type;
+) as unknown as Schema.Codec<SitesUpdateInput>;
 
 // Output Schema
+export interface SitesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8382,8 +10756,7 @@ export const SitesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SitesUpdateOutput = typeof SitesUpdateOutput.Type;
+}) as unknown as Schema.Codec<SitesUpdateOutput>;
 
 // The operation
 /**
@@ -8399,6 +10772,10 @@ export const SitesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesUpdateOutput,
 }));
 // Input Schema
+export interface SolutionMetadatasGetInput {
+  resourceUri: string;
+  solutionMetadataName: string;
+}
 export const SolutionMetadatasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -8409,10 +10786,22 @@ export const SolutionMetadatasGetInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionMetadatasGetInput = typeof SolutionMetadatasGetInput.Type;
+  ) as unknown as Schema.Codec<SolutionMetadatasGetInput>;
 
 // Output Schema
+export interface SolutionMetadatasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionMetadatasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8432,8 +10821,7 @@ export const SolutionMetadatasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionMetadatasGetOutput = typeof SolutionMetadatasGetOutput.Type;
+  }) as unknown as Schema.Codec<SolutionMetadatasGetOutput>;
 
 // The operation
 /**
@@ -8450,6 +10838,9 @@ export const SolutionMetadatasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionMetadatasListByParentInput {
+  resourceUri: string;
+}
 export const SolutionMetadatasListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -8459,11 +10850,25 @@ export const SolutionMetadatasListByParentInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/solutionMetadatas",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionMetadatasListByParentInput =
-  typeof SolutionMetadatasListByParentInput.Type;
+  ) as unknown as Schema.Codec<SolutionMetadatasListByParentInput>;
 
 // Output Schema
+export interface SolutionMetadatasListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionMetadatasListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8498,9 +10903,7 @@ export const SolutionMetadatasListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionMetadatasListByParentOutput =
-  typeof SolutionMetadatasListByParentOutput.Type;
+  }) as unknown as Schema.Codec<SolutionMetadatasListByParentOutput>;
 
 // The operation
 /**
@@ -8515,6 +10918,11 @@ export const SolutionMetadatasListByParent =
     outputSchema: SolutionMetadatasListByParentOutput,
   }));
 // Input Schema
+export interface SolutionMetadataVersionsGetInput {
+  resourceUri: string;
+  solutionMetadataName: string;
+  solutionMetadataVersionName: string;
+}
 export const SolutionMetadataVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -8526,11 +10934,22 @@ export const SolutionMetadataVersionsGetInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}/versions/{solutionMetadataVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionMetadataVersionsGetInput =
-  typeof SolutionMetadataVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<SolutionMetadataVersionsGetInput>;
 
 // Output Schema
+export interface SolutionMetadataVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionMetadataVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8550,9 +10969,7 @@ export const SolutionMetadataVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionMetadataVersionsGetOutput =
-  typeof SolutionMetadataVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<SolutionMetadataVersionsGetOutput>;
 
 // The operation
 /**
@@ -8570,6 +10987,10 @@ export const SolutionMetadataVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionMetadataVersionsListByParentInput {
+  resourceUri: string;
+  solutionMetadataName: string;
+}
 export const SolutionMetadataVersionsListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -8580,11 +11001,25 @@ export const SolutionMetadataVersionsListByParentInput =
       path: "/{resourceUri}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}/versions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionMetadataVersionsListByParentInput =
-  typeof SolutionMetadataVersionsListByParentInput.Type;
+  ) as unknown as Schema.Codec<SolutionMetadataVersionsListByParentInput>;
 
 // Output Schema
+export interface SolutionMetadataVersionsListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionMetadataVersionsListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8619,9 +11054,7 @@ export const SolutionMetadataVersionsListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionMetadataVersionsListByParentOutput =
-  typeof SolutionMetadataVersionsListByParentOutput.Type;
+  }) as unknown as Schema.Codec<SolutionMetadataVersionsListByParentOutput>;
 
 // The operation
 /**
@@ -8637,6 +11070,13 @@ export const SolutionMetadataVersionsListByParent =
     outputSchema: SolutionMetadataVersionsListByParentOutput,
   }));
 // Input Schema
+export interface SolutionSchemasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+  solutionSchemaName: string;
+}
 export const SolutionSchemasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8650,10 +11090,22 @@ export const SolutionSchemasGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/solutionSchemas/{solutionSchemaName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionSchemasGetInput = typeof SolutionSchemasGetInput.Type;
+  ) as unknown as Schema.Codec<SolutionSchemasGetInput>;
 
 // Output Schema
+export interface SolutionSchemasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionSchemasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8673,8 +11125,7 @@ export const SolutionSchemasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionSchemasGetOutput = typeof SolutionSchemasGetOutput.Type;
+  }) as unknown as Schema.Codec<SolutionSchemasGetOutput>;
 
 // The operation
 /**
@@ -8692,6 +11143,12 @@ export const SolutionSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SolutionSchemasGetOutput,
 }));
 // Input Schema
+export interface SolutionSchemasListBySolutionTemplateVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+}
 export const SolutionSchemasListBySolutionTemplateVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8704,11 +11161,25 @@ export const SolutionSchemasListBySolutionTemplateVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/solutionSchemas",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionSchemasListBySolutionTemplateVersionInput =
-  typeof SolutionSchemasListBySolutionTemplateVersionInput.Type;
+  ) as unknown as Schema.Codec<SolutionSchemasListBySolutionTemplateVersionInput>;
 
 // Output Schema
+export interface SolutionSchemasListBySolutionTemplateVersionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionSchemasListBySolutionTemplateVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8743,9 +11214,7 @@ export const SolutionSchemasListBySolutionTemplateVersionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionSchemasListBySolutionTemplateVersionOutput =
-  typeof SolutionSchemasListBySolutionTemplateVersionOutput.Type;
+  }) as unknown as Schema.Codec<SolutionSchemasListBySolutionTemplateVersionOutput>;
 
 // The operation
 /**
@@ -8763,6 +11232,30 @@ export const SolutionSchemasListBySolutionTemplateVersion =
     outputSchema: SolutionSchemasListBySolutionTemplateVersionOutput,
   }));
 // Input Schema
+export interface SolutionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  properties?: {
+    solutionTemplateId?: string;
+    displayName?: string;
+    availableSolutionTemplateVersions?: {
+      solutionTemplateVersion: string;
+      latestConfigRevision: string;
+      isConfigured: boolean;
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  eTag?: string;
+}
 export const SolutionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8807,11 +11300,22 @@ export const SolutionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionsCreateOrUpdateInput =
-  typeof SolutionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SolutionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8831,9 +11335,7 @@ export const SolutionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionsCreateOrUpdateOutput =
-  typeof SolutionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8852,6 +11354,12 @@ export const SolutionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+}
 export const SolutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8863,12 +11371,12 @@ export const SolutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type SolutionsDeleteInput = typeof SolutionsDeleteInput.Type;
+) as unknown as Schema.Codec<SolutionsDeleteInput>;
 
 // Output Schema
-export const SolutionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionsDeleteOutput = typeof SolutionsDeleteOutput.Type;
+export type SolutionsDeleteOutput = void;
+export const SolutionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionsDeleteOutput>;
 
 // The operation
 /**
@@ -8885,6 +11393,12 @@ export const SolutionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SolutionsDeleteOutput,
 }));
 // Input Schema
+export interface SolutionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+}
 export const SolutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8896,10 +11410,22 @@ export const SolutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type SolutionsGetInput = typeof SolutionsGetInput.Type;
+) as unknown as Schema.Codec<SolutionsGetInput>;
 
 // Output Schema
+export interface SolutionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8918,8 +11444,7 @@ export const SolutionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SolutionsGetOutput = typeof SolutionsGetOutput.Type;
+}) as unknown as Schema.Codec<SolutionsGetOutput>;
 
 // The operation
 /**
@@ -8936,6 +11461,11 @@ export const SolutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SolutionsGetOutput,
 }));
 // Input Schema
+export interface SolutionsListByTargetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+}
 export const SolutionsListByTargetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8947,10 +11477,25 @@ export const SolutionsListByTargetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionsListByTargetInput = typeof SolutionsListByTargetInput.Type;
+  ) as unknown as Schema.Codec<SolutionsListByTargetInput>;
 
 // Output Schema
+export interface SolutionsListByTargetOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionsListByTargetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8985,9 +11530,7 @@ export const SolutionsListByTargetOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionsListByTargetOutput =
-  typeof SolutionsListByTargetOutput.Type;
+  }) as unknown as Schema.Codec<SolutionsListByTargetOutput>;
 
 // The operation
 /**
@@ -9005,6 +11548,28 @@ export const SolutionsListByTarget = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  properties?: {
+    solutionTemplateId?: string;
+    displayName?: string;
+    availableSolutionTemplateVersions?: {
+      solutionTemplateVersion: string;
+      latestConfigRevision: string;
+      isConfigured: boolean;
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+}
 export const SolutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9041,10 +11606,22 @@ export const SolutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type SolutionsUpdateInput = typeof SolutionsUpdateInput.Type;
+) as unknown as Schema.Codec<SolutionsUpdateInput>;
 
 // Output Schema
+export interface SolutionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -9063,8 +11640,7 @@ export const SolutionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SolutionsUpdateOutput = typeof SolutionsUpdateOutput.Type;
+}) as unknown as Schema.Codec<SolutionsUpdateOutput>;
 
 // The operation
 /**
@@ -9081,6 +11657,29 @@ export const SolutionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SolutionsUpdateOutput,
 }));
 // Input Schema
+export interface SolutionTemplatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  properties?: {
+    uniqueIdentifier?: string;
+    description: string;
+    capabilities: string[];
+    latestVersion?: string;
+    state?: "active" | "inactive";
+    enableExternalValidation?: boolean;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SolutionTemplatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9115,11 +11714,22 @@ export const SolutionTemplatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplatesCreateOrUpdateInput =
-  typeof SolutionTemplatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SolutionTemplatesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionTemplatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9139,9 +11749,7 @@ export const SolutionTemplatesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionTemplatesCreateOrUpdateOutput =
-  typeof SolutionTemplatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplatesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9158,6 +11766,26 @@ export const SolutionTemplatesCreateOrUpdate =
     outputSchema: SolutionTemplatesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SolutionTemplatesCreateVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  updateType?: "Major" | "Minor" | "Patch";
+  version?: string;
+  solutionTemplateVersion: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  };
+}
 export const SolutionTemplatesCreateVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9190,11 +11818,22 @@ export const SolutionTemplatesCreateVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/createVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplatesCreateVersionInput =
-  typeof SolutionTemplatesCreateVersionInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplatesCreateVersionInput>;
 
 // Output Schema
+export interface SolutionTemplatesCreateVersionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionTemplatesCreateVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9214,9 +11853,7 @@ export const SolutionTemplatesCreateVersionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionTemplatesCreateVersionOutput =
-  typeof SolutionTemplatesCreateVersionOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplatesCreateVersionOutput>;
 
 // The operation
 /**
@@ -9233,6 +11870,11 @@ export const SolutionTemplatesCreateVersion =
     outputSchema: SolutionTemplatesCreateVersionOutput,
   }));
 // Input Schema
+export interface SolutionTemplatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+}
 export const SolutionTemplatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9244,15 +11886,12 @@ export const SolutionTemplatesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplatesDeleteInput =
-  typeof SolutionTemplatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplatesDeleteInput>;
 
 // Output Schema
+export type SolutionTemplatesDeleteOutput = void;
 export const SolutionTemplatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionTemplatesDeleteOutput =
-  typeof SolutionTemplatesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionTemplatesDeleteOutput>;
 
 // The operation
 /**
@@ -9270,6 +11909,11 @@ export const SolutionTemplatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionTemplatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+}
 export const SolutionTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9281,10 +11925,22 @@ export const SolutionTemplatesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplatesGetInput = typeof SolutionTemplatesGetInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplatesGetInput>;
 
 // Output Schema
+export interface SolutionTemplatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionTemplatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9304,8 +11960,7 @@ export const SolutionTemplatesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionTemplatesGetOutput = typeof SolutionTemplatesGetOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplatesGetOutput>;
 
 // The operation
 /**
@@ -9323,6 +11978,10 @@ export const SolutionTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionTemplatesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SolutionTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9333,11 +11992,25 @@ export const SolutionTemplatesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplatesListByResourceGroupInput =
-  typeof SolutionTemplatesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplatesListByResourceGroupInput>;
 
 // Output Schema
+export interface SolutionTemplatesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionTemplatesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9372,9 +12045,7 @@ export const SolutionTemplatesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionTemplatesListByResourceGroupOutput =
-  typeof SolutionTemplatesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplatesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -9390,6 +12061,9 @@ export const SolutionTemplatesListByResourceGroup =
     outputSchema: SolutionTemplatesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SolutionTemplatesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SolutionTemplatesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9399,11 +12073,25 @@ export const SolutionTemplatesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/solutionTemplates",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplatesListBySubscriptionInput =
-  typeof SolutionTemplatesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplatesListBySubscriptionInput>;
 
 // Output Schema
+export interface SolutionTemplatesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionTemplatesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9438,9 +12126,7 @@ export const SolutionTemplatesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionTemplatesListBySubscriptionOutput =
-  typeof SolutionTemplatesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplatesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -9455,6 +12141,12 @@ export const SolutionTemplatesListBySubscription =
     outputSchema: SolutionTemplatesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SolutionTemplatesRemoveVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  version: string;
+}
 export const SolutionTemplatesRemoveVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9467,15 +12159,12 @@ export const SolutionTemplatesRemoveVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/removeVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplatesRemoveVersionInput =
-  typeof SolutionTemplatesRemoveVersionInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplatesRemoveVersionInput>;
 
 // Output Schema
+export type SolutionTemplatesRemoveVersionOutput = void;
 export const SolutionTemplatesRemoveVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionTemplatesRemoveVersionOutput =
-  typeof SolutionTemplatesRemoveVersionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionTemplatesRemoveVersionOutput>;
 
 // The operation
 /**
@@ -9492,6 +12181,18 @@ export const SolutionTemplatesRemoveVersion =
     outputSchema: SolutionTemplatesRemoveVersionOutput,
   }));
 // Input Schema
+export interface SolutionTemplatesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    description?: string;
+    capabilities?: string[];
+    state?: "active" | "inactive";
+    enableExternalValidation?: boolean;
+  };
+}
 export const SolutionTemplatesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9512,11 +12213,22 @@ export const SolutionTemplatesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplatesUpdateInput =
-  typeof SolutionTemplatesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplatesUpdateInput>;
 
 // Output Schema
+export interface SolutionTemplatesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionTemplatesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9536,9 +12248,7 @@ export const SolutionTemplatesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionTemplatesUpdateOutput =
-  typeof SolutionTemplatesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplatesUpdateOutput>;
 
 // The operation
 /**
@@ -9556,6 +12266,13 @@ export const SolutionTemplatesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionTemplateVersionsBulkDeploySolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+  targets: { solutionVersionId: string }[];
+}
 export const SolutionTemplateVersionsBulkDeploySolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9573,15 +12290,12 @@ export const SolutionTemplateVersionsBulkDeploySolutionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkDeploySolution",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplateVersionsBulkDeploySolutionInput =
-  typeof SolutionTemplateVersionsBulkDeploySolutionInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplateVersionsBulkDeploySolutionInput>;
 
 // Output Schema
+export type SolutionTemplateVersionsBulkDeploySolutionOutput = void;
 export const SolutionTemplateVersionsBulkDeploySolutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionTemplateVersionsBulkDeploySolutionOutput =
-  typeof SolutionTemplateVersionsBulkDeploySolutionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionTemplateVersionsBulkDeploySolutionOutput>;
 
 // The operation
 /**
@@ -9599,6 +12313,36 @@ export const SolutionTemplateVersionsBulkDeploySolution =
     outputSchema: SolutionTemplateVersionsBulkDeploySolutionOutput,
   }));
 // Input Schema
+export interface SolutionTemplateVersionsBulkPublishSolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+  targets: {
+    targetId: string;
+    solutionDependencies?: {
+      solutionVersionId?: string;
+      solutionTemplateId?: string;
+      solutionTemplateVersion?: string;
+      solutionInstanceName?: string;
+      targetId?: string;
+      dependencies?: unknown[];
+    }[];
+    solutionInstanceName?: string;
+    solutionVersionId?: string;
+    solutionConfiguration?: string;
+  }[];
+  solutionInstanceName?: string;
+  solutionDependencies?: {
+    solutionVersionId?: string;
+    solutionTemplateId?: string;
+    solutionTemplateVersion?: string;
+    solutionInstanceName?: string;
+    targetId?: string;
+    dependencies?: unknown[];
+  }[];
+  solutionConfiguration?: string;
+}
 export const SolutionTemplateVersionsBulkPublishSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9645,15 +12389,12 @@ export const SolutionTemplateVersionsBulkPublishSolutionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkPublishSolution",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplateVersionsBulkPublishSolutionInput =
-  typeof SolutionTemplateVersionsBulkPublishSolutionInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplateVersionsBulkPublishSolutionInput>;
 
 // Output Schema
+export type SolutionTemplateVersionsBulkPublishSolutionOutput = void;
 export const SolutionTemplateVersionsBulkPublishSolutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionTemplateVersionsBulkPublishSolutionOutput =
-  typeof SolutionTemplateVersionsBulkPublishSolutionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionTemplateVersionsBulkPublishSolutionOutput>;
 
 // The operation
 /**
@@ -9671,6 +12412,35 @@ export const SolutionTemplateVersionsBulkPublishSolution =
     outputSchema: SolutionTemplateVersionsBulkPublishSolutionOutput,
   }));
 // Input Schema
+export interface SolutionTemplateVersionsBulkReviewSolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+  targets: {
+    targetId: string;
+    solutionDependencies?: {
+      solutionVersionId?: string;
+      solutionTemplateId?: string;
+      solutionTemplateVersion?: string;
+      solutionInstanceName?: string;
+      targetId?: string;
+      dependencies?: unknown[];
+    }[];
+    solutionInstanceName?: string;
+    solutionConfiguration?: string;
+  }[];
+  solutionInstanceName?: string;
+  solutionDependencies?: {
+    solutionVersionId?: string;
+    solutionTemplateId?: string;
+    solutionTemplateVersion?: string;
+    solutionInstanceName?: string;
+    targetId?: string;
+    dependencies?: unknown[];
+  }[];
+  solutionConfiguration?: string;
+}
 export const SolutionTemplateVersionsBulkReviewSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9716,15 +12486,12 @@ export const SolutionTemplateVersionsBulkReviewSolutionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkReviewSolution",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplateVersionsBulkReviewSolutionInput =
-  typeof SolutionTemplateVersionsBulkReviewSolutionInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplateVersionsBulkReviewSolutionInput>;
 
 // Output Schema
+export type SolutionTemplateVersionsBulkReviewSolutionOutput = void;
 export const SolutionTemplateVersionsBulkReviewSolutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionTemplateVersionsBulkReviewSolutionOutput =
-  typeof SolutionTemplateVersionsBulkReviewSolutionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionTemplateVersionsBulkReviewSolutionOutput>;
 
 // The operation
 /**
@@ -9742,6 +12509,30 @@ export const SolutionTemplateVersionsBulkReviewSolution =
     outputSchema: SolutionTemplateVersionsBulkReviewSolutionOutput,
   }));
 // Input Schema
+export interface SolutionTemplateVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+  properties?: {
+    configurations: string;
+    specification: Record<string, unknown>;
+    orchestratorType?: "TO";
+    internalState?:
+      | "PendingValidation"
+      | "Validated"
+      | "ValidatedWithSchema"
+      | "ValidatedWithoutSchema";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+}
 export const SolutionTemplateVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9780,11 +12571,22 @@ export const SolutionTemplateVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplateVersionsCreateOrUpdateInput =
-  typeof SolutionTemplateVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplateVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SolutionTemplateVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionTemplateVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9804,9 +12606,7 @@ export const SolutionTemplateVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionTemplateVersionsCreateOrUpdateOutput =
-  typeof SolutionTemplateVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplateVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9824,6 +12624,12 @@ export const SolutionTemplateVersionsCreateOrUpdate =
     outputSchema: SolutionTemplateVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SolutionTemplateVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+}
 export const SolutionTemplateVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9836,15 +12642,12 @@ export const SolutionTemplateVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplateVersionsDeleteInput =
-  typeof SolutionTemplateVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplateVersionsDeleteInput>;
 
 // Output Schema
+export type SolutionTemplateVersionsDeleteOutput = void;
 export const SolutionTemplateVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionTemplateVersionsDeleteOutput =
-  typeof SolutionTemplateVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionTemplateVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -9862,6 +12665,12 @@ export const SolutionTemplateVersionsDelete =
     outputSchema: SolutionTemplateVersionsDeleteOutput,
   }));
 // Input Schema
+export interface SolutionTemplateVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+}
 export const SolutionTemplateVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9874,11 +12683,22 @@ export const SolutionTemplateVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplateVersionsGetInput =
-  typeof SolutionTemplateVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplateVersionsGetInput>;
 
 // Output Schema
+export interface SolutionTemplateVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionTemplateVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9898,9 +12718,7 @@ export const SolutionTemplateVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionTemplateVersionsGetOutput =
-  typeof SolutionTemplateVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplateVersionsGetOutput>;
 
 // The operation
 /**
@@ -9919,6 +12737,11 @@ export const SolutionTemplateVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionTemplateVersionsListBySolutionTemplateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+}
 export const SolutionTemplateVersionsListBySolutionTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9930,11 +12753,25 @@ export const SolutionTemplateVersionsListBySolutionTemplateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplateVersionsListBySolutionTemplateInput =
-  typeof SolutionTemplateVersionsListBySolutionTemplateInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplateVersionsListBySolutionTemplateInput>;
 
 // Output Schema
+export interface SolutionTemplateVersionsListBySolutionTemplateOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionTemplateVersionsListBySolutionTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9969,9 +12806,7 @@ export const SolutionTemplateVersionsListBySolutionTemplateOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionTemplateVersionsListBySolutionTemplateOutput =
-  typeof SolutionTemplateVersionsListBySolutionTemplateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplateVersionsListBySolutionTemplateOutput>;
 
 // The operation
 /**
@@ -9988,6 +12823,17 @@ export const SolutionTemplateVersionsListBySolutionTemplate =
     outputSchema: SolutionTemplateVersionsListBySolutionTemplateOutput,
   }));
 // Input Schema
+export interface SolutionTemplateVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionTemplateName: string;
+  solutionTemplateVersionName: string;
+  properties?: {
+    configurations?: string;
+    specification?: Record<string, unknown>;
+    orchestratorType?: "TO";
+  };
+}
 export const SolutionTemplateVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10009,11 +12855,22 @@ export const SolutionTemplateVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionTemplateVersionsUpdateInput =
-  typeof SolutionTemplateVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionTemplateVersionsUpdateInput>;
 
 // Output Schema
+export interface SolutionTemplateVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionTemplateVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10033,9 +12890,7 @@ export const SolutionTemplateVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionTemplateVersionsUpdateOutput =
-  typeof SolutionTemplateVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTemplateVersionsUpdateOutput>;
 
 // The operation
 /**
@@ -10053,6 +12908,104 @@ export const SolutionTemplateVersionsUpdate =
     outputSchema: SolutionTemplateVersionsUpdateOutput,
   }));
 // Input Schema
+export interface SolutionVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  solutionVersionName: string;
+  properties?: {
+    solutionTemplateVersionId?: string;
+    revision?: number;
+    targetDisplayName?: string;
+    configuration?: string;
+    targetLevelConfiguration?: string;
+    specification: Record<string, unknown>;
+    reviewId?: string;
+    externalValidationId?: string;
+    state?:
+      | "InReview"
+      | "UpgradeInReview"
+      | "ReadyToDeploy"
+      | "ReadyToUpgrade"
+      | "Deploying"
+      | "Deployed"
+      | "Failed"
+      | "Undeployed"
+      | "PendingExternalValidation"
+      | "ExternalValidationFailed"
+      | "Staging"
+      | "NotApplicable";
+    currentStage?: {
+      displayState: string;
+      stage:
+        | "Configuration"
+        | "Publish"
+        | "Deployment"
+        | "Uninstallation"
+        | "ExternalValidation"
+        | "Staging"
+        | "Unstaging";
+      status: "Pending" | "InProgress" | "Completed" | "Failed" | "None";
+      startTime?: string;
+      endTime?: string;
+      childStages?: unknown[];
+    };
+    stages?: {
+      displayState: string;
+      stage:
+        | "Configuration"
+        | "Publish"
+        | "Deployment"
+        | "Uninstallation"
+        | "ExternalValidation"
+        | "Staging"
+        | "Unstaging";
+      status: "Pending" | "InProgress" | "Completed" | "Failed" | "None";
+      startTime?: string;
+      endTime?: string;
+      childStages?: unknown[];
+    }[];
+    solutionInstanceName?: string;
+    solutionDependencies?: {
+      solutionVersionId: string;
+      solutionInstanceName?: string;
+      solutionTemplateVersionId: string;
+      targetId: string;
+      dependencies?: unknown[];
+    }[];
+    errorDetails?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    latestActionTrackingUri?: string;
+    latestActionTriggeredBy?: string;
+    actionType?:
+      | "deploy"
+      | "publish"
+      | "staging"
+      | "externalValidation"
+      | "uninstall";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  eTag?: string;
+}
 export const SolutionVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10217,11 +13170,22 @@ export const SolutionVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionVersionsCreateOrUpdateInput =
-  typeof SolutionVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SolutionVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10241,9 +13205,7 @@ export const SolutionVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionVersionsCreateOrUpdateOutput =
-  typeof SolutionVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10262,6 +13224,13 @@ export const SolutionVersionsCreateOrUpdate =
     outputSchema: SolutionVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SolutionVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  solutionVersionName: string;
+}
 export const SolutionVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10275,15 +13244,12 @@ export const SolutionVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionVersionsDeleteInput =
-  typeof SolutionVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SolutionVersionsDeleteInput>;
 
 // Output Schema
+export type SolutionVersionsDeleteOutput = void;
 export const SolutionVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionVersionsDeleteOutput =
-  typeof SolutionVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -10303,6 +13269,13 @@ export const SolutionVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  solutionVersionName: string;
+}
 export const SolutionVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10316,10 +13289,22 @@ export const SolutionVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionVersionsGetInput = typeof SolutionVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<SolutionVersionsGetInput>;
 
 // Output Schema
+export interface SolutionVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10339,8 +13324,7 @@ export const SolutionVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionVersionsGetOutput = typeof SolutionVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<SolutionVersionsGetOutput>;
 
 // The operation
 /**
@@ -10358,6 +13342,12 @@ export const SolutionVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SolutionVersionsGetOutput,
 }));
 // Input Schema
+export interface SolutionVersionsListBySolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+}
 export const SolutionVersionsListBySolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10370,11 +13360,25 @@ export const SolutionVersionsListBySolutionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionVersionsListBySolutionInput =
-  typeof SolutionVersionsListBySolutionInput.Type;
+  ) as unknown as Schema.Codec<SolutionVersionsListBySolutionInput>;
 
 // Output Schema
+export interface SolutionVersionsListBySolutionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionVersionsListBySolutionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10409,9 +13413,7 @@ export const SolutionVersionsListBySolutionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionVersionsListBySolutionOutput =
-  typeof SolutionVersionsListBySolutionOutput.Type;
+  }) as unknown as Schema.Codec<SolutionVersionsListBySolutionOutput>;
 
 // The operation
 /**
@@ -10429,6 +13431,14 @@ export const SolutionVersionsListBySolution =
     outputSchema: SolutionVersionsListBySolutionOutput,
   }));
 // Input Schema
+export interface SolutionVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionName: string;
+  solutionVersionName: string;
+  properties?: { specification?: Record<string, unknown> };
+}
 export const SolutionVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10449,11 +13459,22 @@ export const SolutionVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type SolutionVersionsUpdateInput =
-  typeof SolutionVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionVersionsUpdateInput>;
 
 // Output Schema
+export interface SolutionVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10473,9 +13494,7 @@ export const SolutionVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionVersionsUpdateOutput =
-  typeof SolutionVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionVersionsUpdateOutput>;
 
 // The operation
 /**
@@ -10495,6 +13514,46 @@ export const SolutionVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  properties?: {
+    description: string;
+    displayName: string;
+    contextId: string;
+    targetSpecification: Record<string, unknown>;
+    capabilities: string[];
+    hierarchyLevel: string;
+    status?: {
+      lastModified?: string;
+      deployed?: number;
+      expectedRunningJobId?: number;
+      runningJobId?: number;
+      status?: string;
+      statusDetails?: string;
+      generation?: number;
+      targetStatuses?: {
+        name?: string;
+        status?: string;
+        componentStatuses?: { name?: string; status?: string }[];
+      }[];
+    };
+    solutionScope?: string;
+    state?: "active" | "inactive";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  eTag?: string;
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const TargetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10564,10 +13623,22 @@ export const TargetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TargetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TargetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10587,9 +13658,7 @@ export const TargetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TargetsCreateOrUpdateOutput =
-  typeof TargetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TargetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10607,6 +13676,12 @@ export const TargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  forceDelete?: boolean;
+}
 export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10618,12 +13693,12 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
+) as unknown as Schema.Codec<TargetsDeleteInput>;
 
 // Output Schema
-export const TargetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TargetsDeleteOutput = typeof TargetsDeleteOutput.Type;
+export type TargetsDeleteOutput = void;
+export const TargetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsDeleteOutput>;
 
 // The operation
 /**
@@ -10640,6 +13715,11 @@ export const TargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetsDeleteOutput,
 }));
 // Input Schema
+export interface TargetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+}
 export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10650,10 +13730,22 @@ export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type TargetsGetInput = typeof TargetsGetInput.Type;
+) as unknown as Schema.Codec<TargetsGetInput>;
 
 // Output Schema
+export interface TargetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -10672,8 +13764,7 @@ export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TargetsGetOutput = typeof TargetsGetOutput.Type;
+}) as unknown as Schema.Codec<TargetsGetOutput>;
 
 // The operation
 /**
@@ -10689,6 +13780,12 @@ export const TargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetsGetOutput,
 }));
 // Input Schema
+export interface TargetsInstallSolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionVersionId: string;
+}
 export const TargetsInstallSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10701,15 +13798,12 @@ export const TargetsInstallSolutionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/installSolution",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsInstallSolutionInput =
-  typeof TargetsInstallSolutionInput.Type;
+  ) as unknown as Schema.Codec<TargetsInstallSolutionInput>;
 
 // Output Schema
+export type TargetsInstallSolutionOutput = void;
 export const TargetsInstallSolutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TargetsInstallSolutionOutput =
-  typeof TargetsInstallSolutionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsInstallSolutionOutput>;
 
 // The operation
 /**
@@ -10727,6 +13821,10 @@ export const TargetsInstallSolution = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const TargetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10737,11 +13835,25 @@ export const TargetsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsListByResourceGroupInput =
-  typeof TargetsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<TargetsListByResourceGroupInput>;
 
 // Output Schema
+export interface TargetsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TargetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10776,9 +13888,7 @@ export const TargetsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TargetsListByResourceGroupOutput =
-  typeof TargetsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<TargetsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -10795,6 +13905,9 @@ export const TargetsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const TargetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10804,11 +13917,25 @@ export const TargetsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/targets",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsListBySubscriptionInput =
-  typeof TargetsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<TargetsListBySubscriptionInput>;
 
 // Output Schema
+export interface TargetsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TargetsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10843,9 +13970,7 @@ export const TargetsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TargetsListBySubscriptionOutput =
-  typeof TargetsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<TargetsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -10861,6 +13986,12 @@ export const TargetsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsPublishSolutionVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionVersionId: string;
+}
 export const TargetsPublishSolutionVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10873,11 +14004,22 @@ export const TargetsPublishSolutionVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/publishSolutionVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsPublishSolutionVersionInput =
-  typeof TargetsPublishSolutionVersionInput.Type;
+  ) as unknown as Schema.Codec<TargetsPublishSolutionVersionInput>;
 
 // Output Schema
+export interface TargetsPublishSolutionVersionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsPublishSolutionVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10897,9 +14039,7 @@ export const TargetsPublishSolutionVersionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TargetsPublishSolutionVersionOutput =
-  typeof TargetsPublishSolutionVersionOutput.Type;
+  }) as unknown as Schema.Codec<TargetsPublishSolutionVersionOutput>;
 
 // The operation
 /**
@@ -10916,6 +14056,13 @@ export const TargetsPublishSolutionVersion =
     outputSchema: TargetsPublishSolutionVersionOutput,
   }));
 // Input Schema
+export interface TargetsRemoveRevisionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionTemplateId: string;
+  solutionVersion: string;
+}
 export const TargetsRemoveRevisionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10929,14 +14076,12 @@ export const TargetsRemoveRevisionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/removeRevision",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsRemoveRevisionInput = typeof TargetsRemoveRevisionInput.Type;
+  ) as unknown as Schema.Codec<TargetsRemoveRevisionInput>;
 
 // Output Schema
+export type TargetsRemoveRevisionOutput = void;
 export const TargetsRemoveRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TargetsRemoveRevisionOutput =
-  typeof TargetsRemoveRevisionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsRemoveRevisionOutput>;
 
 // The operation
 /**
@@ -10954,6 +14099,21 @@ export const TargetsRemoveRevision = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsResolveConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionTemplateVersionId: string;
+  solutionInstanceName?: string;
+  solutionDependencies?: {
+    solutionVersionId?: string;
+    solutionTemplateId?: string;
+    solutionTemplateVersion?: string;
+    solutionInstanceName?: string;
+    targetId?: string;
+    dependencies?: unknown[];
+  }[];
+}
 export const TargetsResolveConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10979,17 +14139,16 @@ export const TargetsResolveConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/resolveConfiguration",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsResolveConfigurationInput =
-  typeof TargetsResolveConfigurationInput.Type;
+  ) as unknown as Schema.Codec<TargetsResolveConfigurationInput>;
 
 // Output Schema
+export interface TargetsResolveConfigurationOutput {
+  configuration: string;
+}
 export const TargetsResolveConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.String,
-  });
-export type TargetsResolveConfigurationOutput =
-  typeof TargetsResolveConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<TargetsResolveConfigurationOutput>;
 
 // The operation
 /**
@@ -11007,6 +14166,21 @@ export const TargetsResolveConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsReviewSolutionVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionTemplateVersionId: string;
+  solutionInstanceName?: string;
+  solutionDependencies?: {
+    solutionVersionId?: string;
+    solutionTemplateId?: string;
+    solutionTemplateVersion?: string;
+    solutionInstanceName?: string;
+    targetId?: string;
+    dependencies?: unknown[];
+  }[];
+}
 export const TargetsReviewSolutionVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11032,11 +14206,22 @@ export const TargetsReviewSolutionVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/reviewSolutionVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsReviewSolutionVersionInput =
-  typeof TargetsReviewSolutionVersionInput.Type;
+  ) as unknown as Schema.Codec<TargetsReviewSolutionVersionInput>;
 
 // Output Schema
+export interface TargetsReviewSolutionVersionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsReviewSolutionVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11056,9 +14241,7 @@ export const TargetsReviewSolutionVersionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TargetsReviewSolutionVersionOutput =
-  typeof TargetsReviewSolutionVersionOutput.Type;
+  }) as unknown as Schema.Codec<TargetsReviewSolutionVersionOutput>;
 
 // The operation
 /**
@@ -11075,6 +14258,13 @@ export const TargetsReviewSolutionVersion =
     outputSchema: TargetsReviewSolutionVersionOutput,
   }));
 // Input Schema
+export interface TargetsUninstallSolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionTemplateId: string;
+  solutionInstanceName?: string;
+}
 export const TargetsUninstallSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11088,15 +14278,12 @@ export const TargetsUninstallSolutionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/uninstallSolution",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsUninstallSolutionInput =
-  typeof TargetsUninstallSolutionInput.Type;
+  ) as unknown as Schema.Codec<TargetsUninstallSolutionInput>;
 
 // Output Schema
+export type TargetsUninstallSolutionOutput = void;
 export const TargetsUninstallSolutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TargetsUninstallSolutionOutput =
-  typeof TargetsUninstallSolutionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsUninstallSolutionOutput>;
 
 // The operation
 /**
@@ -11114,6 +14301,12 @@ export const TargetsUninstallSolution = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsUnstageSolutionVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionVersionId: string;
+}
 export const TargetsUnstageSolutionVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11126,11 +14319,22 @@ export const TargetsUnstageSolutionVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/unstageSolutionVersion",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsUnstageSolutionVersionInput =
-  typeof TargetsUnstageSolutionVersionInput.Type;
+  ) as unknown as Schema.Codec<TargetsUnstageSolutionVersionInput>;
 
 // Output Schema
+export interface TargetsUnstageSolutionVersionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsUnstageSolutionVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11150,9 +14354,7 @@ export const TargetsUnstageSolutionVersionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TargetsUnstageSolutionVersionOutput =
-  typeof TargetsUnstageSolutionVersionOutput.Type;
+  }) as unknown as Schema.Codec<TargetsUnstageSolutionVersionOutput>;
 
 // The operation
 /**
@@ -11169,6 +14371,22 @@ export const TargetsUnstageSolutionVersion =
     outputSchema: TargetsUnstageSolutionVersionOutput,
   }));
 // Input Schema
+export interface TargetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    description?: string;
+    displayName?: string;
+    contextId?: string;
+    targetSpecification?: Record<string, unknown>;
+    capabilities?: string[];
+    hierarchyLevel?: string;
+    solutionScope?: string;
+    state?: "active" | "inactive";
+  };
+}
 export const TargetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -11194,10 +14412,22 @@ export const TargetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type TargetsUpdateInput = typeof TargetsUpdateInput.Type;
+) as unknown as Schema.Codec<TargetsUpdateInput>;
 
 // Output Schema
+export interface TargetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -11216,8 +14446,7 @@ export const TargetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TargetsUpdateOutput = typeof TargetsUpdateOutput.Type;
+}) as unknown as Schema.Codec<TargetsUpdateOutput>;
 
 // The operation
 /**
@@ -11233,6 +14462,27 @@ export const TargetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetsUpdateOutput,
 }));
 // Input Schema
+export interface TargetsUpdateExternalValidationStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  targetName: string;
+  solutionVersionId: string;
+  errorDetails?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  externalValidationId: string;
+  validationStatus: "Valid" | "Invalid";
+}
 export const TargetsUpdateExternalValidationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11280,11 +14530,22 @@ export const TargetsUpdateExternalValidationStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/updateExternalValidationStatus",
       apiVersion: "2026-03-01",
     }),
-  );
-export type TargetsUpdateExternalValidationStatusInput =
-  typeof TargetsUpdateExternalValidationStatusInput.Type;
+  ) as unknown as Schema.Codec<TargetsUpdateExternalValidationStatusInput>;
 
 // Output Schema
+export interface TargetsUpdateExternalValidationStatusOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsUpdateExternalValidationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11304,9 +14565,7 @@ export const TargetsUpdateExternalValidationStatusOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TargetsUpdateExternalValidationStatusOutput =
-  typeof TargetsUpdateExternalValidationStatusOutput.Type;
+  }) as unknown as Schema.Codec<TargetsUpdateExternalValidationStatusOutput>;
 
 // The operation
 /**
@@ -11323,6 +14582,24 @@ export const TargetsUpdateExternalValidationStatus =
     outputSchema: TargetsUpdateExternalValidationStatusOutput,
   }));
 // Input Schema
+export interface WorkflowsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  properties?: {
+    workflowTemplateId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  eTag?: string;
+}
 export const WorkflowsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11357,11 +14634,22 @@ export const WorkflowsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type WorkflowsCreateOrUpdateInput =
-  typeof WorkflowsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkflowsCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkflowsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkflowsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11381,9 +14669,7 @@ export const WorkflowsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkflowsCreateOrUpdateOutput =
-  typeof WorkflowsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkflowsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -11402,6 +14688,12 @@ export const WorkflowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkflowsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+}
 export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -11413,12 +14705,12 @@ export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type WorkflowsDeleteInput = typeof WorkflowsDeleteInput.Type;
+) as unknown as Schema.Codec<WorkflowsDeleteInput>;
 
 // Output Schema
-export const WorkflowsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkflowsDeleteOutput = typeof WorkflowsDeleteOutput.Type;
+export type WorkflowsDeleteOutput = void;
+export const WorkflowsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowsDeleteOutput>;
 
 // The operation
 /**
@@ -11435,6 +14727,12 @@ export const WorkflowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkflowsDeleteOutput,
 }));
 // Input Schema
+export interface WorkflowsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+}
 export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -11446,10 +14744,22 @@ export const WorkflowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type WorkflowsGetInput = typeof WorkflowsGetInput.Type;
+) as unknown as Schema.Codec<WorkflowsGetInput>;
 
 // Output Schema
+export interface WorkflowsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkflowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -11468,8 +14778,7 @@ export const WorkflowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkflowsGetOutput = typeof WorkflowsGetOutput.Type;
+}) as unknown as Schema.Codec<WorkflowsGetOutput>;
 
 // The operation
 /**
@@ -11486,6 +14795,11 @@ export const WorkflowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkflowsGetOutput,
 }));
 // Input Schema
+export interface WorkflowsListByContextInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+}
 export const WorkflowsListByContextInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11497,11 +14811,25 @@ export const WorkflowsListByContextInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows",
       apiVersion: "2026-03-01",
     }),
-  );
-export type WorkflowsListByContextInput =
-  typeof WorkflowsListByContextInput.Type;
+  ) as unknown as Schema.Codec<WorkflowsListByContextInput>;
 
 // Output Schema
+export interface WorkflowsListByContextOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkflowsListByContextOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11536,9 +14864,7 @@ export const WorkflowsListByContextOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkflowsListByContextOutput =
-  typeof WorkflowsListByContextOutput.Type;
+  }) as unknown as Schema.Codec<WorkflowsListByContextOutput>;
 
 // The operation
 /**
@@ -11556,6 +14882,22 @@ export const WorkflowsListByContext = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkflowsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  properties?: {
+    workflowTemplateId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+}
 export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -11582,10 +14924,22 @@ export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
     apiVersion: "2026-03-01",
   }),
-);
-export type WorkflowsUpdateInput = typeof WorkflowsUpdateInput.Type;
+) as unknown as Schema.Codec<WorkflowsUpdateInput>;
 
 // Output Schema
+export interface WorkflowsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkflowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -11604,8 +14958,7 @@ export const WorkflowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkflowsUpdateOutput = typeof WorkflowsUpdateOutput.Type;
+}) as unknown as Schema.Codec<WorkflowsUpdateOutput>;
 
 // The operation
 /**
@@ -11622,6 +14975,57 @@ export const WorkflowsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkflowsUpdateOutput,
 }));
 // Input Schema
+export interface WorkflowVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+  properties?: {
+    revision?: number;
+    configuration?: string;
+    stageSpec: {
+      name: string;
+      specification?: Record<string, unknown>;
+      tasks?: {
+        name: string;
+        targetId?: string;
+        specification: Record<string, unknown>;
+      }[];
+      taskOption?: {
+        concurrency?: number;
+        errorAction?: {
+          mode?: "stopOnAnyFailure" | "stopOnNFailures" | "silentlyContinue";
+          maxToleratedFailures?: number;
+        };
+      };
+    }[];
+    reviewId?: string;
+    state?:
+      | "InReview"
+      | "UpgradeInReview"
+      | "ReadyToDeploy"
+      | "ReadyToUpgrade"
+      | "Deploying"
+      | "Deployed"
+      | "Failed"
+      | "Undeployed"
+      | "PendingExternalValidation"
+      | "ExternalValidationFailed"
+      | "Staging"
+      | "NotApplicable";
+    specification?: Record<string, unknown>;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Initialized"
+      | "InProgress"
+      | "Deleting";
+  };
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  eTag?: string;
+}
 export const WorkflowVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11712,11 +15116,22 @@ export const WorkflowVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type WorkflowVersionsCreateOrUpdateInput =
-  typeof WorkflowVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkflowVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkflowVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkflowVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11736,9 +15151,7 @@ export const WorkflowVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkflowVersionsCreateOrUpdateOutput =
-  typeof WorkflowVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkflowVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -11757,6 +15170,13 @@ export const WorkflowVersionsCreateOrUpdate =
     outputSchema: WorkflowVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface WorkflowVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+}
 export const WorkflowVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11770,15 +15190,12 @@ export const WorkflowVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type WorkflowVersionsDeleteInput =
-  typeof WorkflowVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WorkflowVersionsDeleteInput>;
 
 // Output Schema
+export type WorkflowVersionsDeleteOutput = void;
 export const WorkflowVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkflowVersionsDeleteOutput =
-  typeof WorkflowVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkflowVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -11798,6 +15215,13 @@ export const WorkflowVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkflowVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+}
 export const WorkflowVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11811,10 +15235,22 @@ export const WorkflowVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<WorkflowVersionsGetInput>;
 
 // Output Schema
+export interface WorkflowVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkflowVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11834,8 +15270,7 @@ export const WorkflowVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkflowVersionsGetOutput = typeof WorkflowVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<WorkflowVersionsGetOutput>;
 
 // The operation
 /**
@@ -11853,6 +15288,12 @@ export const WorkflowVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkflowVersionsGetOutput,
 }));
 // Input Schema
+export interface WorkflowVersionsListByWorkflowInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+}
 export const WorkflowVersionsListByWorkflowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11865,11 +15306,25 @@ export const WorkflowVersionsListByWorkflowInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions",
       apiVersion: "2026-03-01",
     }),
-  );
-export type WorkflowVersionsListByWorkflowInput =
-  typeof WorkflowVersionsListByWorkflowInput.Type;
+  ) as unknown as Schema.Codec<WorkflowVersionsListByWorkflowInput>;
 
 // Output Schema
+export interface WorkflowVersionsListByWorkflowOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkflowVersionsListByWorkflowOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11904,9 +15359,7 @@ export const WorkflowVersionsListByWorkflowOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkflowVersionsListByWorkflowOutput =
-  typeof WorkflowVersionsListByWorkflowOutput.Type;
+  }) as unknown as Schema.Codec<WorkflowVersionsListByWorkflowOutput>;
 
 // The operation
 /**
@@ -11924,6 +15377,32 @@ export const WorkflowVersionsListByWorkflow =
     outputSchema: WorkflowVersionsListByWorkflowOutput,
   }));
 // Input Schema
+export interface WorkflowVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  contextName: string;
+  workflowName: string;
+  versionName: string;
+  properties?: {
+    stageSpec?: {
+      name: string;
+      specification?: Record<string, unknown>;
+      tasks?: {
+        name: string;
+        targetId?: string;
+        specification: Record<string, unknown>;
+      }[];
+      taskOption?: {
+        concurrency?: number;
+        errorAction?: {
+          mode?: "stopOnAnyFailure" | "stopOnNFailures" | "silentlyContinue";
+          maxToleratedFailures?: number;
+        };
+      };
+    }[];
+    specification?: Record<string, unknown>;
+  };
+}
 export const WorkflowVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11980,11 +15459,22 @@ export const WorkflowVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type WorkflowVersionsUpdateInput =
-  typeof WorkflowVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkflowVersionsUpdateInput>;
 
 // Output Schema
+export interface WorkflowVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkflowVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12004,9 +15494,7 @@ export const WorkflowVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkflowVersionsUpdateOutput =
-  typeof WorkflowVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkflowVersionsUpdateOutput>;
 
 // The operation
 /**

@@ -4,12 +4,67 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CassandraClustersCreateUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    restoreFromBackupId?: string;
+    delegatedManagementSubnetId?: string;
+    cassandraVersion?: string;
+    clusterNameOverride?: string;
+    authenticationMethod?: "None" | "Cassandra" | "Ldap";
+    initialCassandraAdminPassword?: string | Redacted.Redacted<string>;
+    prometheusEndpoint?: { ipAddress?: string };
+    repairEnabled?: boolean;
+    autoReplicate?: "None" | "SystemKeyspaces" | "AllKeyspaces";
+    clientCertificates?: { pem?: string }[];
+    externalGossipCertificates?: { pem?: string }[];
+    gossipCertificates?: { pem?: string }[];
+    externalSeedNodes?: { ipAddress?: string }[];
+    seedNodes?: { ipAddress?: string }[];
+    externalDataCenters?: string[];
+    hoursBetweenBackups?: number;
+    deallocated?: boolean;
+    cassandraAuditLoggingEnabled?: boolean;
+    provisionError?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      additionalErrorInfo?: string;
+    };
+    extensions?: string[];
+    backupSchedules?: {
+      scheduleName?: string;
+      cronExpression?: string;
+      retentionInHours?: number;
+    }[];
+    scheduledEventStrategy?: "Ignore" | "StopAny" | "StopByRack";
+    azureConnectionMethod?: "None" | "VPN";
+    privateLinkResourceId?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const CassandraClustersCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -125,11 +180,22 @@ export const CassandraClustersCreateUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersCreateUpdateInput =
-  typeof CassandraClustersCreateUpdateInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersCreateUpdateInput>;
 
 // Output Schema
+export interface CassandraClustersCreateUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraClustersCreateUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -149,9 +215,7 @@ export const CassandraClustersCreateUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraClustersCreateUpdateOutput =
-  typeof CassandraClustersCreateUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CassandraClustersCreateUpdateOutput>;
 
 // The operation
 /**
@@ -168,6 +232,11 @@ export const CassandraClustersCreateUpdate =
     outputSchema: CassandraClustersCreateUpdateOutput,
   }));
 // Input Schema
+export interface CassandraClustersDeallocateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const CassandraClustersDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -179,15 +248,12 @@ export const CassandraClustersDeallocateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/deallocate",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersDeallocateInput =
-  typeof CassandraClustersDeallocateInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersDeallocateInput>;
 
 // Output Schema
+export type CassandraClustersDeallocateOutput = void;
 export const CassandraClustersDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraClustersDeallocateOutput =
-  typeof CassandraClustersDeallocateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersDeallocateOutput>;
 
 // The operation
 /**
@@ -206,6 +272,11 @@ export const CassandraClustersDeallocate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const CassandraClustersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -217,15 +288,12 @@ export const CassandraClustersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersDeleteInput =
-  typeof CassandraClustersDeleteInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersDeleteInput>;
 
 // Output Schema
+export type CassandraClustersDeleteOutput = void;
 export const CassandraClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraClustersDeleteOutput =
-  typeof CassandraClustersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersDeleteOutput>;
 
 // The operation
 /**
@@ -243,6 +311,11 @@ export const CassandraClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const CassandraClustersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -254,10 +327,22 @@ export const CassandraClustersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersGetInput = typeof CassandraClustersGetInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersGetInput>;
 
 // Output Schema
+export interface CassandraClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraClustersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -277,8 +362,7 @@ export const CassandraClustersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraClustersGetOutput = typeof CassandraClustersGetOutput.Type;
+  }) as unknown as Schema.Codec<CassandraClustersGetOutput>;
 
 // The operation
 /**
@@ -296,6 +380,16 @@ export const CassandraClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraClustersInvokeCommandInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  command: string;
+  arguments?: Record<string, string>;
+  host: string;
+  "cassandra-stop-start"?: boolean;
+  readwrite?: boolean;
+}
 export const CassandraClustersInvokeCommandInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -312,15 +406,12 @@ export const CassandraClustersInvokeCommandInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/invokeCommand",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersInvokeCommandInput =
-  typeof CassandraClustersInvokeCommandInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersInvokeCommandInput>;
 
 // Output Schema
+export type CassandraClustersInvokeCommandOutput = void;
 export const CassandraClustersInvokeCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraClustersInvokeCommandOutput =
-  typeof CassandraClustersInvokeCommandOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersInvokeCommandOutput>;
 
 // The operation
 /**
@@ -337,6 +428,10 @@ export const CassandraClustersInvokeCommand =
     outputSchema: CassandraClustersInvokeCommandOutput,
   }));
 // Input Schema
+export interface CassandraClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const CassandraClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -347,11 +442,25 @@ export const CassandraClustersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersListByResourceGroupInput =
-  typeof CassandraClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface CassandraClustersListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CassandraClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -388,9 +497,7 @@ export const CassandraClustersListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CassandraClustersListByResourceGroupOutput =
-  typeof CassandraClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CassandraClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -406,6 +513,9 @@ export const CassandraClustersListByResourceGroup =
     outputSchema: CassandraClustersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface CassandraClustersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const CassandraClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -415,11 +525,25 @@ export const CassandraClustersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/cassandraClusters",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersListBySubscriptionInput =
-  typeof CassandraClustersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersListBySubscriptionInput>;
 
 // Output Schema
+export interface CassandraClustersListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CassandraClustersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -456,9 +580,7 @@ export const CassandraClustersListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CassandraClustersListBySubscriptionOutput =
-  typeof CassandraClustersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CassandraClustersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -473,6 +595,11 @@ export const CassandraClustersListBySubscription =
     outputSchema: CassandraClustersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface CassandraClustersStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const CassandraClustersStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -484,15 +611,12 @@ export const CassandraClustersStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/start",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersStartInput =
-  typeof CassandraClustersStartInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersStartInput>;
 
 // Output Schema
+export type CassandraClustersStartOutput = void;
 export const CassandraClustersStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraClustersStartOutput =
-  typeof CassandraClustersStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraClustersStartOutput>;
 
 // The operation
 /**
@@ -510,6 +634,11 @@ export const CassandraClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraClustersStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const CassandraClustersStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -521,11 +650,60 @@ export const CassandraClustersStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/status",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersStatusInput =
-  typeof CassandraClustersStatusInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersStatusInput>;
 
 // Output Schema
+export interface CassandraClustersStatusOutput {
+  eTag?: string;
+  reaperStatus?: {
+    healthy?: boolean;
+    repairRunIds?: Record<string, string>;
+    repairSchedules?: Record<string, string>;
+  };
+  connectionErrors?: {
+    connectionState?:
+      | "Unknown"
+      | "OK"
+      | "OperatorToDataCenterNetworkError"
+      | "DatacenterToDatacenterNetworkError"
+      | "InternalOperatorToDataCenterCertificateError"
+      | "InternalError";
+    iPFrom?: string;
+    iPTo?: string;
+    port?: number;
+    exception?: string;
+  }[];
+  errors?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    additionalErrorInfo?: string;
+  }[];
+  dataCenters?: {
+    name?: string;
+    seedNodes?: string[];
+    nodes?: {
+      address?: string;
+      state?: "Normal" | "Leaving" | "Joining" | "Moving" | "Stopped";
+      status?: string;
+      cassandraProcessStatus?: string;
+      load?: string;
+      tokens?: string[];
+      size?: number;
+      hostID?: string;
+      rack?: string;
+      timestamp?: string;
+      diskUsedKB?: number;
+      diskFreeKB?: number;
+      memoryUsedKB?: number;
+      memoryBuffersAndCachedKB?: number;
+      memoryFreeKB?: number;
+      memoryTotalKB?: number;
+      cpuUsage?: number;
+      isLatestModel?: boolean;
+    }[];
+  }[];
+}
 export const CassandraClustersStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eTag: Schema.optional(Schema.String),
@@ -610,9 +788,7 @@ export const CassandraClustersStatusOutput =
         }),
       ),
     ),
-  });
-export type CassandraClustersStatusOutput =
-  typeof CassandraClustersStatusOutput.Type;
+  }) as unknown as Schema.Codec<CassandraClustersStatusOutput>;
 
 // The operation
 /**
@@ -630,6 +806,60 @@ export const CassandraClustersStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    restoreFromBackupId?: string;
+    delegatedManagementSubnetId?: string;
+    cassandraVersion?: string;
+    clusterNameOverride?: string;
+    authenticationMethod?: "None" | "Cassandra" | "Ldap";
+    initialCassandraAdminPassword?: string | Redacted.Redacted<string>;
+    prometheusEndpoint?: { ipAddress?: string };
+    repairEnabled?: boolean;
+    autoReplicate?: "None" | "SystemKeyspaces" | "AllKeyspaces";
+    clientCertificates?: { pem?: string }[];
+    externalGossipCertificates?: { pem?: string }[];
+    gossipCertificates?: { pem?: string }[];
+    externalSeedNodes?: { ipAddress?: string }[];
+    seedNodes?: { ipAddress?: string }[];
+    externalDataCenters?: string[];
+    hoursBetweenBackups?: number;
+    deallocated?: boolean;
+    cassandraAuditLoggingEnabled?: boolean;
+    provisionError?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      additionalErrorInfo?: string;
+    };
+    extensions?: string[];
+    backupSchedules?: {
+      scheduleName?: string;
+      cronExpression?: string;
+      retentionInHours?: number;
+    }[];
+    scheduledEventStrategy?: "Ignore" | "StopAny" | "StopByRack";
+    azureConnectionMethod?: "None" | "VPN";
+    privateLinkResourceId?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const CassandraClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -745,11 +975,22 @@ export const CassandraClustersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraClustersUpdateInput =
-  typeof CassandraClustersUpdateInput.Type;
+  ) as unknown as Schema.Codec<CassandraClustersUpdateInput>;
 
 // Output Schema
+export interface CassandraClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraClustersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -769,9 +1010,7 @@ export const CassandraClustersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraClustersUpdateOutput =
-  typeof CassandraClustersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CassandraClustersUpdateOutput>;
 
 // The operation
 /**
@@ -789,6 +1028,50 @@ export const CassandraClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraDataCentersCreateUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  dataCenterName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    dataCenterLocation?: string;
+    delegatedSubnetId?: string;
+    nodeCount?: number;
+    seedNodes?: { ipAddress?: string }[];
+    base64EncodedCassandraYamlFragment?: string;
+    managedDiskCustomerKeyUri?: string;
+    backupStorageCustomerKeyUri?: string;
+    sku?: string;
+    diskSku?: string;
+    diskCapacity?: number;
+    availabilityZone?: boolean;
+    authenticationMethodLdapProperties?: {
+      serverHostname?: string;
+      serverPort?: number;
+      serviceUserDistinguishedName?: string;
+      serviceUserPassword?: string | Redacted.Redacted<string>;
+      searchBaseDistinguishedName?: string;
+      searchFilterTemplate?: string;
+      serverCertificates?: { pem?: string }[];
+      connectionTimeoutInMs?: number;
+    };
+    deallocated?: boolean;
+    provisionError?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      additionalErrorInfo?: string;
+    };
+    privateEndpointIpAddress?: string;
+  };
+}
 export const CassandraDataCentersCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -860,11 +1143,22 @@ export const CassandraDataCentersCreateUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraDataCentersCreateUpdateInput =
-  typeof CassandraDataCentersCreateUpdateInput.Type;
+  ) as unknown as Schema.Codec<CassandraDataCentersCreateUpdateInput>;
 
 // Output Schema
+export interface CassandraDataCentersCreateUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraDataCentersCreateUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -884,9 +1178,7 @@ export const CassandraDataCentersCreateUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraDataCentersCreateUpdateOutput =
-  typeof CassandraDataCentersCreateUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CassandraDataCentersCreateUpdateOutput>;
 
 // The operation
 /**
@@ -904,6 +1196,12 @@ export const CassandraDataCentersCreateUpdate =
     outputSchema: CassandraDataCentersCreateUpdateOutput,
   }));
 // Input Schema
+export interface CassandraDataCentersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  dataCenterName: string;
+}
 export const CassandraDataCentersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -916,15 +1214,12 @@ export const CassandraDataCentersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraDataCentersDeleteInput =
-  typeof CassandraDataCentersDeleteInput.Type;
+  ) as unknown as Schema.Codec<CassandraDataCentersDeleteInput>;
 
 // Output Schema
+export type CassandraDataCentersDeleteOutput = void;
 export const CassandraDataCentersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraDataCentersDeleteOutput =
-  typeof CassandraDataCentersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraDataCentersDeleteOutput>;
 
 // The operation
 /**
@@ -943,6 +1238,12 @@ export const CassandraDataCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraDataCentersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  dataCenterName: string;
+}
 export const CassandraDataCentersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -955,11 +1256,22 @@ export const CassandraDataCentersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraDataCentersGetInput =
-  typeof CassandraDataCentersGetInput.Type;
+  ) as unknown as Schema.Codec<CassandraDataCentersGetInput>;
 
 // Output Schema
+export interface CassandraDataCentersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraDataCentersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -979,9 +1291,7 @@ export const CassandraDataCentersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraDataCentersGetOutput =
-  typeof CassandraDataCentersGetOutput.Type;
+  }) as unknown as Schema.Codec<CassandraDataCentersGetOutput>;
 
 // The operation
 /**
@@ -1000,6 +1310,11 @@ export const CassandraDataCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraDataCentersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const CassandraDataCentersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1011,11 +1326,25 @@ export const CassandraDataCentersListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraDataCentersListInput =
-  typeof CassandraDataCentersListInput.Type;
+  ) as unknown as Schema.Codec<CassandraDataCentersListInput>;
 
 // Output Schema
+export interface CassandraDataCentersListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CassandraDataCentersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1052,9 +1381,7 @@ export const CassandraDataCentersListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CassandraDataCentersListOutput =
-  typeof CassandraDataCentersListOutput.Type;
+  }) as unknown as Schema.Codec<CassandraDataCentersListOutput>;
 
 // The operation
 /**
@@ -1072,6 +1399,50 @@ export const CassandraDataCentersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraDataCentersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  dataCenterName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    dataCenterLocation?: string;
+    delegatedSubnetId?: string;
+    nodeCount?: number;
+    seedNodes?: { ipAddress?: string }[];
+    base64EncodedCassandraYamlFragment?: string;
+    managedDiskCustomerKeyUri?: string;
+    backupStorageCustomerKeyUri?: string;
+    sku?: string;
+    diskSku?: string;
+    diskCapacity?: number;
+    availabilityZone?: boolean;
+    authenticationMethodLdapProperties?: {
+      serverHostname?: string;
+      serverPort?: number;
+      serviceUserDistinguishedName?: string;
+      serviceUserPassword?: string | Redacted.Redacted<string>;
+      searchBaseDistinguishedName?: string;
+      searchFilterTemplate?: string;
+      serverCertificates?: { pem?: string }[];
+      connectionTimeoutInMs?: number;
+    };
+    deallocated?: boolean;
+    provisionError?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      additionalErrorInfo?: string;
+    };
+    privateEndpointIpAddress?: string;
+  };
+}
 export const CassandraDataCentersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1143,11 +1514,22 @@ export const CassandraDataCentersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraDataCentersUpdateInput =
-  typeof CassandraDataCentersUpdateInput.Type;
+  ) as unknown as Schema.Codec<CassandraDataCentersUpdateInput>;
 
 // Output Schema
+export interface CassandraDataCentersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraDataCentersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1167,9 +1549,7 @@ export const CassandraDataCentersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraDataCentersUpdateOutput =
-  typeof CassandraDataCentersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CassandraDataCentersUpdateOutput>;
 
 // The operation
 /**
@@ -1188,6 +1568,37 @@ export const CassandraDataCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CassandraResourcesCreateUpdateCassandraKeyspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  properties: {
+    resource: { id: string };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const CassandraResourcesCreateUpdateCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1243,11 +1654,22 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesCreateUpdateCassandraKeyspaceInput =
-  typeof CassandraResourcesCreateUpdateCassandraKeyspaceInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesCreateUpdateCassandraKeyspaceInput>;
 
 // Output Schema
+export interface CassandraResourcesCreateUpdateCassandraKeyspaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1267,9 +1689,7 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesCreateUpdateCassandraKeyspaceOutput =
-  typeof CassandraResourcesCreateUpdateCassandraKeyspaceOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesCreateUpdateCassandraKeyspaceOutput>;
 
 // The operation
 /**
@@ -1287,6 +1707,18 @@ export const CassandraResourcesCreateUpdateCassandraKeyspace =
     outputSchema: CassandraResourcesCreateUpdateCassandraKeyspaceOutput,
   }));
 // Input Schema
+export interface CassandraResourcesCreateUpdateCassandraRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+  properties?: {
+    roleDefinitionId?: string;
+    scope?: string;
+    principalId?: string;
+    provisioningState?: string;
+  };
+}
 export const CassandraResourcesCreateUpdateCassandraRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1307,11 +1739,22 @@ export const CassandraResourcesCreateUpdateCassandraRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesCreateUpdateCassandraRoleAssignmentInput =
-  typeof CassandraResourcesCreateUpdateCassandraRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesCreateUpdateCassandraRoleAssignmentInput>;
 
 // Output Schema
+export interface CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1331,9 +1774,7 @@ export const CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput =
-  typeof CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -1351,6 +1792,23 @@ export const CassandraResourcesCreateUpdateCassandraRoleAssignment =
     outputSchema: CassandraResourcesCreateUpdateCassandraRoleAssignmentOutput,
   }));
 // Input Schema
+export interface CassandraResourcesCreateUpdateCassandraRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+  properties?: {
+    id?: string;
+    roleName?: string;
+    type?: "BuiltInRole" | "CustomRole";
+    assignableScopes?: string[];
+    permissions?: {
+      id?: string;
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+  };
+}
 export const CassandraResourcesCreateUpdateCassandraRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1380,11 +1838,22 @@ export const CassandraResourcesCreateUpdateCassandraRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesCreateUpdateCassandraRoleDefinitionInput =
-  typeof CassandraResourcesCreateUpdateCassandraRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesCreateUpdateCassandraRoleDefinitionInput>;
 
 // Output Schema
+export interface CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1404,9 +1873,7 @@ export const CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput =
-  typeof CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -1424,6 +1891,47 @@ export const CassandraResourcesCreateUpdateCassandraRoleDefinition =
     outputSchema: CassandraResourcesCreateUpdateCassandraRoleDefinitionOutput,
   }));
 // Input Schema
+export interface CassandraResourcesCreateUpdateCassandraTableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  tableName: string;
+  properties: {
+    resource: {
+      id: string;
+      defaultTtl?: number;
+      schema?: {
+        columns?: { name?: string; type?: string }[];
+        partitionKeys?: { name?: string }[];
+        clusterKeys?: { name?: string; orderBy?: string }[];
+      };
+      analyticalStorageTtl?: number;
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const CassandraResourcesCreateUpdateCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1509,11 +2017,22 @@ export const CassandraResourcesCreateUpdateCassandraTableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesCreateUpdateCassandraTableInput =
-  typeof CassandraResourcesCreateUpdateCassandraTableInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesCreateUpdateCassandraTableInput>;
 
 // Output Schema
+export interface CassandraResourcesCreateUpdateCassandraTableOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesCreateUpdateCassandraTableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1533,9 +2052,7 @@ export const CassandraResourcesCreateUpdateCassandraTableOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesCreateUpdateCassandraTableOutput =
-  typeof CassandraResourcesCreateUpdateCassandraTableOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesCreateUpdateCassandraTableOutput>;
 
 // The operation
 /**
@@ -1554,6 +2071,12 @@ export const CassandraResourcesCreateUpdateCassandraTable =
     outputSchema: CassandraResourcesCreateUpdateCassandraTableOutput,
   }));
 // Input Schema
+export interface CassandraResourcesDeleteCassandraKeyspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+}
 export const CassandraResourcesDeleteCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1566,15 +2089,12 @@ export const CassandraResourcesDeleteCassandraKeyspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesDeleteCassandraKeyspaceInput =
-  typeof CassandraResourcesDeleteCassandraKeyspaceInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesDeleteCassandraKeyspaceInput>;
 
 // Output Schema
+export type CassandraResourcesDeleteCassandraKeyspaceOutput = void;
 export const CassandraResourcesDeleteCassandraKeyspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraResourcesDeleteCassandraKeyspaceOutput =
-  typeof CassandraResourcesDeleteCassandraKeyspaceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraKeyspaceOutput>;
 
 // The operation
 /**
@@ -1592,6 +2112,12 @@ export const CassandraResourcesDeleteCassandraKeyspace =
     outputSchema: CassandraResourcesDeleteCassandraKeyspaceOutput,
   }));
 // Input Schema
+export interface CassandraResourcesDeleteCassandraRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const CassandraResourcesDeleteCassandraRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1604,15 +2130,12 @@ export const CassandraResourcesDeleteCassandraRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesDeleteCassandraRoleAssignmentInput =
-  typeof CassandraResourcesDeleteCassandraRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesDeleteCassandraRoleAssignmentInput>;
 
 // Output Schema
+export type CassandraResourcesDeleteCassandraRoleAssignmentOutput = void;
 export const CassandraResourcesDeleteCassandraRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraResourcesDeleteCassandraRoleAssignmentOutput =
-  typeof CassandraResourcesDeleteCassandraRoleAssignmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -1630,6 +2153,12 @@ export const CassandraResourcesDeleteCassandraRoleAssignment =
     outputSchema: CassandraResourcesDeleteCassandraRoleAssignmentOutput,
   }));
 // Input Schema
+export interface CassandraResourcesDeleteCassandraRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const CassandraResourcesDeleteCassandraRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1642,15 +2171,12 @@ export const CassandraResourcesDeleteCassandraRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesDeleteCassandraRoleDefinitionInput =
-  typeof CassandraResourcesDeleteCassandraRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesDeleteCassandraRoleDefinitionInput>;
 
 // Output Schema
+export type CassandraResourcesDeleteCassandraRoleDefinitionOutput = void;
 export const CassandraResourcesDeleteCassandraRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraResourcesDeleteCassandraRoleDefinitionOutput =
-  typeof CassandraResourcesDeleteCassandraRoleDefinitionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -1668,6 +2194,13 @@ export const CassandraResourcesDeleteCassandraRoleDefinition =
     outputSchema: CassandraResourcesDeleteCassandraRoleDefinitionOutput,
   }));
 // Input Schema
+export interface CassandraResourcesDeleteCassandraTableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  tableName: string;
+}
 export const CassandraResourcesDeleteCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1681,15 +2214,12 @@ export const CassandraResourcesDeleteCassandraTableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesDeleteCassandraTableInput =
-  typeof CassandraResourcesDeleteCassandraTableInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesDeleteCassandraTableInput>;
 
 // Output Schema
+export type CassandraResourcesDeleteCassandraTableOutput = void;
 export const CassandraResourcesDeleteCassandraTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CassandraResourcesDeleteCassandraTableOutput =
-  typeof CassandraResourcesDeleteCassandraTableOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CassandraResourcesDeleteCassandraTableOutput>;
 
 // The operation
 /**
@@ -1708,6 +2238,12 @@ export const CassandraResourcesDeleteCassandraTable =
     outputSchema: CassandraResourcesDeleteCassandraTableOutput,
   }));
 // Input Schema
+export interface CassandraResourcesGetCassandraKeyspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+}
 export const CassandraResourcesGetCassandraKeyspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1720,11 +2256,22 @@ export const CassandraResourcesGetCassandraKeyspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesGetCassandraKeyspaceInput =
-  typeof CassandraResourcesGetCassandraKeyspaceInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesGetCassandraKeyspaceInput>;
 
 // Output Schema
+export interface CassandraResourcesGetCassandraKeyspaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesGetCassandraKeyspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1744,9 +2291,7 @@ export const CassandraResourcesGetCassandraKeyspaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesGetCassandraKeyspaceOutput =
-  typeof CassandraResourcesGetCassandraKeyspaceOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesGetCassandraKeyspaceOutput>;
 
 // The operation
 /**
@@ -1764,6 +2309,12 @@ export const CassandraResourcesGetCassandraKeyspace =
     outputSchema: CassandraResourcesGetCassandraKeyspaceOutput,
   }));
 // Input Schema
+export interface CassandraResourcesGetCassandraKeyspaceThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+}
 export const CassandraResourcesGetCassandraKeyspaceThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1776,11 +2327,22 @@ export const CassandraResourcesGetCassandraKeyspaceThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesGetCassandraKeyspaceThroughputInput =
-  typeof CassandraResourcesGetCassandraKeyspaceThroughputInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesGetCassandraKeyspaceThroughputInput>;
 
 // Output Schema
+export interface CassandraResourcesGetCassandraKeyspaceThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesGetCassandraKeyspaceThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1800,9 +2362,7 @@ export const CassandraResourcesGetCassandraKeyspaceThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesGetCassandraKeyspaceThroughputOutput =
-  typeof CassandraResourcesGetCassandraKeyspaceThroughputOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesGetCassandraKeyspaceThroughputOutput>;
 
 // The operation
 /**
@@ -1820,6 +2380,12 @@ export const CassandraResourcesGetCassandraKeyspaceThroughput =
     outputSchema: CassandraResourcesGetCassandraKeyspaceThroughputOutput,
   }));
 // Input Schema
+export interface CassandraResourcesGetCassandraRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const CassandraResourcesGetCassandraRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1832,11 +2398,22 @@ export const CassandraResourcesGetCassandraRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesGetCassandraRoleAssignmentInput =
-  typeof CassandraResourcesGetCassandraRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesGetCassandraRoleAssignmentInput>;
 
 // Output Schema
+export interface CassandraResourcesGetCassandraRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesGetCassandraRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1856,9 +2433,7 @@ export const CassandraResourcesGetCassandraRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesGetCassandraRoleAssignmentOutput =
-  typeof CassandraResourcesGetCassandraRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesGetCassandraRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -1876,6 +2451,12 @@ export const CassandraResourcesGetCassandraRoleAssignment =
     outputSchema: CassandraResourcesGetCassandraRoleAssignmentOutput,
   }));
 // Input Schema
+export interface CassandraResourcesGetCassandraRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const CassandraResourcesGetCassandraRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1888,11 +2469,22 @@ export const CassandraResourcesGetCassandraRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesGetCassandraRoleDefinitionInput =
-  typeof CassandraResourcesGetCassandraRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesGetCassandraRoleDefinitionInput>;
 
 // Output Schema
+export interface CassandraResourcesGetCassandraRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesGetCassandraRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1912,9 +2504,7 @@ export const CassandraResourcesGetCassandraRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesGetCassandraRoleDefinitionOutput =
-  typeof CassandraResourcesGetCassandraRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesGetCassandraRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -1932,6 +2522,13 @@ export const CassandraResourcesGetCassandraRoleDefinition =
     outputSchema: CassandraResourcesGetCassandraRoleDefinitionOutput,
   }));
 // Input Schema
+export interface CassandraResourcesGetCassandraTableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  tableName: string;
+}
 export const CassandraResourcesGetCassandraTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1945,11 +2542,22 @@ export const CassandraResourcesGetCassandraTableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesGetCassandraTableInput =
-  typeof CassandraResourcesGetCassandraTableInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesGetCassandraTableInput>;
 
 // Output Schema
+export interface CassandraResourcesGetCassandraTableOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesGetCassandraTableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1969,9 +2577,7 @@ export const CassandraResourcesGetCassandraTableOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesGetCassandraTableOutput =
-  typeof CassandraResourcesGetCassandraTableOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesGetCassandraTableOutput>;
 
 // The operation
 /**
@@ -1990,6 +2596,13 @@ export const CassandraResourcesGetCassandraTable =
     outputSchema: CassandraResourcesGetCassandraTableOutput,
   }));
 // Input Schema
+export interface CassandraResourcesGetCassandraTableThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  tableName: string;
+}
 export const CassandraResourcesGetCassandraTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2003,11 +2616,22 @@ export const CassandraResourcesGetCassandraTableThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesGetCassandraTableThroughputInput =
-  typeof CassandraResourcesGetCassandraTableThroughputInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesGetCassandraTableThroughputInput>;
 
 // Output Schema
+export interface CassandraResourcesGetCassandraTableThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesGetCassandraTableThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2027,9 +2651,7 @@ export const CassandraResourcesGetCassandraTableThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesGetCassandraTableThroughputOutput =
-  typeof CassandraResourcesGetCassandraTableThroughputOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesGetCassandraTableThroughputOutput>;
 
 // The operation
 /**
@@ -2048,6 +2670,11 @@ export const CassandraResourcesGetCassandraTableThroughput =
     outputSchema: CassandraResourcesGetCassandraTableThroughputOutput,
   }));
 // Input Schema
+export interface CassandraResourcesListCassandraKeyspacesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const CassandraResourcesListCassandraKeyspacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2059,11 +2686,25 @@ export const CassandraResourcesListCassandraKeyspacesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesListCassandraKeyspacesInput =
-  typeof CassandraResourcesListCassandraKeyspacesInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesListCassandraKeyspacesInput>;
 
 // Output Schema
+export interface CassandraResourcesListCassandraKeyspacesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CassandraResourcesListCassandraKeyspacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2100,9 +2741,7 @@ export const CassandraResourcesListCassandraKeyspacesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CassandraResourcesListCassandraKeyspacesOutput =
-  typeof CassandraResourcesListCassandraKeyspacesOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesListCassandraKeyspacesOutput>;
 
 // The operation
 /**
@@ -2119,6 +2758,11 @@ export const CassandraResourcesListCassandraKeyspaces =
     outputSchema: CassandraResourcesListCassandraKeyspacesOutput,
   }));
 // Input Schema
+export interface CassandraResourcesListCassandraRoleAssignmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const CassandraResourcesListCassandraRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2130,11 +2774,25 @@ export const CassandraResourcesListCassandraRoleAssignmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesListCassandraRoleAssignmentsInput =
-  typeof CassandraResourcesListCassandraRoleAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesListCassandraRoleAssignmentsInput>;
 
 // Output Schema
+export interface CassandraResourcesListCassandraRoleAssignmentsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CassandraResourcesListCassandraRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2169,9 +2827,7 @@ export const CassandraResourcesListCassandraRoleAssignmentsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CassandraResourcesListCassandraRoleAssignmentsOutput =
-  typeof CassandraResourcesListCassandraRoleAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesListCassandraRoleAssignmentsOutput>;
 
 // The operation
 /**
@@ -2188,6 +2844,11 @@ export const CassandraResourcesListCassandraRoleAssignments =
     outputSchema: CassandraResourcesListCassandraRoleAssignmentsOutput,
   }));
 // Input Schema
+export interface CassandraResourcesListCassandraRoleDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const CassandraResourcesListCassandraRoleDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2199,11 +2860,25 @@ export const CassandraResourcesListCassandraRoleDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesListCassandraRoleDefinitionsInput =
-  typeof CassandraResourcesListCassandraRoleDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesListCassandraRoleDefinitionsInput>;
 
 // Output Schema
+export interface CassandraResourcesListCassandraRoleDefinitionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CassandraResourcesListCassandraRoleDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2238,9 +2913,7 @@ export const CassandraResourcesListCassandraRoleDefinitionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CassandraResourcesListCassandraRoleDefinitionsOutput =
-  typeof CassandraResourcesListCassandraRoleDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesListCassandraRoleDefinitionsOutput>;
 
 // The operation
 /**
@@ -2257,6 +2930,12 @@ export const CassandraResourcesListCassandraRoleDefinitions =
     outputSchema: CassandraResourcesListCassandraRoleDefinitionsOutput,
   }));
 // Input Schema
+export interface CassandraResourcesListCassandraTablesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+}
 export const CassandraResourcesListCassandraTablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2269,11 +2948,25 @@ export const CassandraResourcesListCassandraTablesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesListCassandraTablesInput =
-  typeof CassandraResourcesListCassandraTablesInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesListCassandraTablesInput>;
 
 // Output Schema
+export interface CassandraResourcesListCassandraTablesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CassandraResourcesListCassandraTablesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2310,9 +3003,7 @@ export const CassandraResourcesListCassandraTablesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CassandraResourcesListCassandraTablesOutput =
-  typeof CassandraResourcesListCassandraTablesOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesListCassandraTablesOutput>;
 
 // The operation
 /**
@@ -2330,6 +3021,12 @@ export const CassandraResourcesListCassandraTables =
     outputSchema: CassandraResourcesListCassandraTablesOutput,
   }));
 // Input Schema
+export interface CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+}
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2342,11 +3039,22 @@ export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
-  typeof CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput>;
 
 // Output Schema
+export interface CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2366,9 +3074,7 @@ export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput =
-  typeof CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput>;
 
 // The operation
 /**
@@ -2386,6 +3092,12 @@ export const CassandraResourcesMigrateCassandraKeyspaceToAutoscale =
     outputSchema: CassandraResourcesMigrateCassandraKeyspaceToAutoscaleOutput,
   }));
 // Input Schema
+export interface CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+}
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2398,11 +3110,22 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
-  typeof CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput>;
 
 // Output Schema
+export interface CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2422,9 +3145,7 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput 
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput =
-  typeof CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput>;
 
 // The operation
 /**
@@ -2444,6 +3165,13 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughput =
       CassandraResourcesMigrateCassandraKeyspaceToManualThroughputOutput,
   }));
 // Input Schema
+export interface CassandraResourcesMigrateCassandraTableToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  tableName: string;
+}
 export const CassandraResourcesMigrateCassandraTableToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2457,11 +3185,22 @@ export const CassandraResourcesMigrateCassandraTableToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesMigrateCassandraTableToAutoscaleInput =
-  typeof CassandraResourcesMigrateCassandraTableToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesMigrateCassandraTableToAutoscaleInput>;
 
 // Output Schema
+export interface CassandraResourcesMigrateCassandraTableToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2481,9 +3220,7 @@ export const CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesMigrateCassandraTableToAutoscaleOutput =
-  typeof CassandraResourcesMigrateCassandraTableToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesMigrateCassandraTableToAutoscaleOutput>;
 
 // The operation
 /**
@@ -2502,6 +3239,13 @@ export const CassandraResourcesMigrateCassandraTableToAutoscale =
     outputSchema: CassandraResourcesMigrateCassandraTableToAutoscaleOutput,
   }));
 // Input Schema
+export interface CassandraResourcesMigrateCassandraTableToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  tableName: string;
+}
 export const CassandraResourcesMigrateCassandraTableToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2515,11 +3259,22 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesMigrateCassandraTableToManualThroughputInput =
-  typeof CassandraResourcesMigrateCassandraTableToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesMigrateCassandraTableToManualThroughputInput>;
 
 // Output Schema
+export interface CassandraResourcesMigrateCassandraTableToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2539,9 +3294,7 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesMigrateCassandraTableToManualThroughputOutput =
-  typeof CassandraResourcesMigrateCassandraTableToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesMigrateCassandraTableToManualThroughputOutput>;
 
 // The operation
 /**
@@ -2561,6 +3314,46 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughput =
       CassandraResourcesMigrateCassandraTableToManualThroughputOutput,
   }));
 // Input Schema
+export interface CassandraResourcesUpdateCassandraKeyspaceThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2626,11 +3419,22 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
-  typeof CassandraResourcesUpdateCassandraKeyspaceThroughputInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesUpdateCassandraKeyspaceThroughputInput>;
 
 // Output Schema
+export interface CassandraResourcesUpdateCassandraKeyspaceThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2650,9 +3454,7 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesUpdateCassandraKeyspaceThroughputOutput =
-  typeof CassandraResourcesUpdateCassandraKeyspaceThroughputOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesUpdateCassandraKeyspaceThroughputOutput>;
 
 // The operation
 /**
@@ -2670,6 +3472,47 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughput =
     outputSchema: CassandraResourcesUpdateCassandraKeyspaceThroughputOutput,
   }));
 // Input Schema
+export interface CassandraResourcesUpdateCassandraTableThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyspaceName: string;
+  tableName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const CassandraResourcesUpdateCassandraTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2736,11 +3579,22 @@ export const CassandraResourcesUpdateCassandraTableThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CassandraResourcesUpdateCassandraTableThroughputInput =
-  typeof CassandraResourcesUpdateCassandraTableThroughputInput.Type;
+  ) as unknown as Schema.Codec<CassandraResourcesUpdateCassandraTableThroughputInput>;
 
 // Output Schema
+export interface CassandraResourcesUpdateCassandraTableThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CassandraResourcesUpdateCassandraTableThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2760,9 +3614,7 @@ export const CassandraResourcesUpdateCassandraTableThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CassandraResourcesUpdateCassandraTableThroughputOutput =
-  typeof CassandraResourcesUpdateCassandraTableThroughputOutput.Type;
+  }) as unknown as Schema.Codec<CassandraResourcesUpdateCassandraTableThroughputOutput>;
 
 // The operation
 /**
@@ -2781,6 +3633,13 @@ export const CassandraResourcesUpdateCassandraTableThroughput =
     outputSchema: CassandraResourcesUpdateCassandraTableThroughputOutput,
   }));
 // Input Schema
+export interface CollectionListMetricDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+  collectionRid: string;
+}
 export const CollectionListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2794,11 +3653,32 @@ export const CollectionListMetricDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CollectionListMetricDefinitionsInput =
-  typeof CollectionListMetricDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<CollectionListMetricDefinitionsInput>;
 
 // Output Schema
+export interface CollectionListMetricDefinitionsOutput {
+  value?: {
+    metricAvailabilities?: { timeGrain?: string; retention?: string }[];
+    primaryAggregationType?:
+      | "None"
+      | "Average"
+      | "Total"
+      | "Minimum"
+      | "Maximum"
+      | "Last";
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    resourceUri?: string;
+    name?: { value?: string; localizedValue?: string };
+  }[];
+  nextLink?: string;
+}
 export const CollectionListMetricDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2844,9 +3724,7 @@ export const CollectionListMetricDefinitionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CollectionListMetricDefinitionsOutput =
-  typeof CollectionListMetricDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<CollectionListMetricDefinitionsOutput>;
 
 // The operation
 /**
@@ -2865,6 +3743,14 @@ export const CollectionListMetricDefinitions =
     outputSchema: CollectionListMetricDefinitionsOutput,
   }));
 // Input Schema
+export interface CollectionListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+  collectionRid: string;
+  $filter: string;
+}
 export const CollectionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2879,10 +3765,34 @@ export const CollectionListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CollectionListMetricsInput = typeof CollectionListMetricsInput.Type;
+  ) as unknown as Schema.Codec<CollectionListMetricsInput>;
 
 // Output Schema
+export interface CollectionListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const CollectionListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2924,9 +3834,7 @@ export const CollectionListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CollectionListMetricsOutput =
-  typeof CollectionListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<CollectionListMetricsOutput>;
 
 // The operation
 /**
@@ -2947,6 +3855,14 @@ export const CollectionListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CollectionListUsagesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+  collectionRid: string;
+  $filter?: string;
+}
 export const CollectionListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2961,10 +3877,26 @@ export const CollectionListUsagesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CollectionListUsagesInput = typeof CollectionListUsagesInput.Type;
+  ) as unknown as Schema.Codec<CollectionListUsagesInput>;
 
 // Output Schema
+export interface CollectionListUsagesOutput {
+  value?: {
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    quotaPeriod?: string;
+    limit?: number;
+    currentValue?: number;
+  }[];
+  nextLink?: string;
+}
 export const CollectionListUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2994,8 +3926,7 @@ export const CollectionListUsagesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CollectionListUsagesOutput = typeof CollectionListUsagesOutput.Type;
+  }) as unknown as Schema.Codec<CollectionListUsagesOutput>;
 
 // The operation
 /**
@@ -3016,6 +3947,14 @@ export const CollectionListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CollectionPartitionListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+  collectionRid: string;
+  $filter: string;
+}
 export const CollectionPartitionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3030,11 +3969,34 @@ export const CollectionPartitionListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CollectionPartitionListMetricsInput =
-  typeof CollectionPartitionListMetricsInput.Type;
+  ) as unknown as Schema.Codec<CollectionPartitionListMetricsInput>;
 
 // Output Schema
+export interface CollectionPartitionListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const CollectionPartitionListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3076,9 +4038,7 @@ export const CollectionPartitionListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CollectionPartitionListMetricsOutput =
-  typeof CollectionPartitionListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<CollectionPartitionListMetricsOutput>;
 
 // The operation
 /**
@@ -3098,6 +4058,14 @@ export const CollectionPartitionListMetrics =
     outputSchema: CollectionPartitionListMetricsOutput,
   }));
 // Input Schema
+export interface CollectionPartitionListUsagesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+  collectionRid: string;
+  $filter?: string;
+}
 export const CollectionPartitionListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3112,11 +4080,26 @@ export const CollectionPartitionListUsagesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CollectionPartitionListUsagesInput =
-  typeof CollectionPartitionListUsagesInput.Type;
+  ) as unknown as Schema.Codec<CollectionPartitionListUsagesInput>;
 
 // Output Schema
+export interface CollectionPartitionListUsagesOutput {
+  value?: {
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    quotaPeriod?: string;
+    limit?: number;
+    currentValue?: number;
+  }[];
+  nextLink?: string;
+}
 export const CollectionPartitionListUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3146,9 +4129,7 @@ export const CollectionPartitionListUsagesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CollectionPartitionListUsagesOutput =
-  typeof CollectionPartitionListUsagesOutput.Type;
+  }) as unknown as Schema.Codec<CollectionPartitionListUsagesOutput>;
 
 // The operation
 /**
@@ -3168,6 +4149,15 @@ export const CollectionPartitionListUsages =
     outputSchema: CollectionPartitionListUsagesOutput,
   }));
 // Input Schema
+export interface CollectionPartitionRegionListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  region: string;
+  databaseRid: string;
+  collectionRid: string;
+  $filter: string;
+}
 export const CollectionPartitionRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3183,11 +4173,34 @@ export const CollectionPartitionRegionListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CollectionPartitionRegionListMetricsInput =
-  typeof CollectionPartitionRegionListMetricsInput.Type;
+  ) as unknown as Schema.Codec<CollectionPartitionRegionListMetricsInput>;
 
 // Output Schema
+export interface CollectionPartitionRegionListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const CollectionPartitionRegionListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3229,9 +4242,7 @@ export const CollectionPartitionRegionListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CollectionPartitionRegionListMetricsOutput =
-  typeof CollectionPartitionRegionListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<CollectionPartitionRegionListMetricsOutput>;
 
 // The operation
 /**
@@ -3252,6 +4263,15 @@ export const CollectionPartitionRegionListMetrics =
     outputSchema: CollectionPartitionRegionListMetricsOutput,
   }));
 // Input Schema
+export interface CollectionRegionListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  region: string;
+  databaseRid: string;
+  collectionRid: string;
+  $filter: string;
+}
 export const CollectionRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3267,11 +4287,34 @@ export const CollectionRegionListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type CollectionRegionListMetricsInput =
-  typeof CollectionRegionListMetricsInput.Type;
+  ) as unknown as Schema.Codec<CollectionRegionListMetricsInput>;
 
 // Output Schema
+export interface CollectionRegionListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const CollectionRegionListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3313,9 +4356,7 @@ export const CollectionRegionListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CollectionRegionListMetricsOutput =
-  typeof CollectionRegionListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<CollectionRegionListMetricsOutput>;
 
 // The operation
 /**
@@ -3337,6 +4378,13 @@ export const CollectionRegionListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseAccountRegionListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  region: string;
+  $filter: string;
+}
 export const DatabaseAccountRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3350,11 +4398,34 @@ export const DatabaseAccountRegionListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountRegionListMetricsInput =
-  typeof DatabaseAccountRegionListMetricsInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountRegionListMetricsInput>;
 
 // Output Schema
+export interface DatabaseAccountRegionListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const DatabaseAccountRegionListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3396,9 +4467,7 @@ export const DatabaseAccountRegionListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountRegionListMetricsOutput =
-  typeof DatabaseAccountRegionListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountRegionListMetricsOutput>;
 
 // The operation
 /**
@@ -3417,6 +4486,113 @@ export const DatabaseAccountRegionListMetrics =
     outputSchema: DatabaseAccountRegionListMetricsOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  kind?: "GlobalDocumentDB" | "MongoDB" | "Parse";
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties: {
+    consistencyPolicy?: {
+      defaultConsistencyLevel:
+        | "Eventual"
+        | "Session"
+        | "BoundedStaleness"
+        | "Strong"
+        | "ConsistentPrefix";
+      maxStalenessPrefix?: number;
+      maxIntervalInSeconds?: number;
+    };
+    locations: {
+      id?: string;
+      locationName?: string;
+      documentEndpoint?: string;
+      provisioningState?: string;
+      failoverPriority?: number;
+      isZoneRedundant?: boolean;
+    }[];
+    databaseAccountOfferType: "Standard";
+    ipRules?: { ipAddressOrRange?: string }[];
+    isVirtualNetworkFilterEnabled?: boolean;
+    enableAutomaticFailover?: boolean;
+    capabilities?: { name?: string }[];
+    virtualNetworkRules?: {
+      id?: string;
+      ignoreMissingVNetServiceEndpoint?: boolean;
+    }[];
+    enableMultipleWriteLocations?: boolean;
+    enableCassandraConnector?: boolean;
+    connectorOffer?: "Small";
+    disableKeyBasedMetadataWriteAccess?: boolean;
+    keyVaultKeyUri?: string;
+    defaultIdentity?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    enableFreeTier?: boolean;
+    apiProperties?: {
+      serverVersion?: "3.2" | "3.6" | "4.0" | "4.2" | "5.0" | "6.0" | "7.0";
+    };
+    enableAnalyticalStorage?: boolean;
+    analyticalStorageConfiguration?: {
+      schemaType?: "WellDefined" | "FullFidelity";
+    };
+    createMode?: "Default" | "Restore";
+    backupPolicy?: {
+      type: "Periodic" | "Continuous";
+      migrationState?: {
+        status?: "Invalid" | "InProgress" | "Completed" | "Failed";
+        targetType?: "Periodic" | "Continuous";
+        startTime?: string;
+      };
+    };
+    cors?: {
+      allowedOrigins: string;
+      allowedMethods?: string;
+      allowedHeaders?: string;
+      exposedHeaders?: string;
+      maxAgeInSeconds?: number;
+    }[];
+    networkAclBypass?: "None" | "AzureServices";
+    networkAclBypassResourceIds?: string[];
+    disableLocalAuth?: boolean;
+    restoreParameters?: {
+      restoreSource?: string;
+      restoreTimestampInUtc?: string;
+      restoreWithTtlDisabled?: boolean;
+    };
+    capacity?: { totalThroughputLimit?: number };
+    keysMetadata?: {
+      primaryMasterKey?: { generationTime?: string };
+      secondaryMasterKey?: { generationTime?: string };
+      primaryReadonlyMasterKey?: { generationTime?: string };
+      secondaryReadonlyMasterKey?: { generationTime?: string };
+    };
+    enablePartitionMerge?: boolean;
+    enableBurstCapacity?: boolean;
+    minimalTlsVersion?: "Tls" | "Tls11" | "Tls12";
+    customerManagedKeyStatus?: string;
+    enablePriorityBasedExecution?: boolean;
+    defaultPriorityLevel?: "High" | "Low";
+    enablePerRegionPerPartitionAutoscale?: boolean;
+    enforceHierarchicalPartitionKeyIdLastLevel?: boolean;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DatabaseAccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3620,11 +4796,22 @@ export const DatabaseAccountsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsCreateOrUpdateInput =
-  typeof DatabaseAccountsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DatabaseAccountsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseAccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3644,9 +4831,7 @@ export const DatabaseAccountsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseAccountsCreateOrUpdateOutput =
-  typeof DatabaseAccountsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3663,6 +4848,11 @@ export const DatabaseAccountsCreateOrUpdate =
     outputSchema: DatabaseAccountsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DatabaseAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3674,15 +4864,12 @@ export const DatabaseAccountsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsDeleteInput =
-  typeof DatabaseAccountsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsDeleteInput>;
 
 // Output Schema
+export type DatabaseAccountsDeleteOutput = void;
 export const DatabaseAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseAccountsDeleteOutput =
-  typeof DatabaseAccountsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -3700,6 +4887,16 @@ export const DatabaseAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseAccountsFailoverPriorityChangeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  failoverPolicies: {
+    id?: string;
+    locationName?: string;
+    failoverPriority?: number;
+  }[];
+}
 export const DatabaseAccountsFailoverPriorityChangeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3718,15 +4915,12 @@ export const DatabaseAccountsFailoverPriorityChangeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/failoverPriorityChange",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsFailoverPriorityChangeInput =
-  typeof DatabaseAccountsFailoverPriorityChangeInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsFailoverPriorityChangeInput>;
 
 // Output Schema
+export type DatabaseAccountsFailoverPriorityChangeOutput = void;
 export const DatabaseAccountsFailoverPriorityChangeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseAccountsFailoverPriorityChangeOutput =
-  typeof DatabaseAccountsFailoverPriorityChangeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsFailoverPriorityChangeOutput>;
 
 // The operation
 /**
@@ -3743,6 +4937,11 @@ export const DatabaseAccountsFailoverPriorityChange =
     outputSchema: DatabaseAccountsFailoverPriorityChangeOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DatabaseAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3754,10 +4953,22 @@ export const DatabaseAccountsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsGetInput = typeof DatabaseAccountsGetInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsGetInput>;
 
 // Output Schema
+export interface DatabaseAccountsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3777,8 +4988,7 @@ export const DatabaseAccountsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseAccountsGetOutput = typeof DatabaseAccountsGetOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsGetOutput>;
 
 // The operation
 /**
@@ -3794,6 +5004,11 @@ export const DatabaseAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabaseAccountsGetOutput,
 }));
 // Input Schema
+export interface DatabaseAccountsGetReadOnlyKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DatabaseAccountsGetReadOnlyKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3805,18 +5020,18 @@ export const DatabaseAccountsGetReadOnlyKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsGetReadOnlyKeysInput =
-  typeof DatabaseAccountsGetReadOnlyKeysInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsGetReadOnlyKeysInput>;
 
 // Output Schema
+export interface DatabaseAccountsGetReadOnlyKeysOutput {
+  primaryReadonlyMasterKey?: string;
+  secondaryReadonlyMasterKey?: string;
+}
 export const DatabaseAccountsGetReadOnlyKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryReadonlyMasterKey: Schema.optional(Schema.String),
     secondaryReadonlyMasterKey: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountsGetReadOnlyKeysOutput =
-  typeof DatabaseAccountsGetReadOnlyKeysOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsGetReadOnlyKeysOutput>;
 
 // The operation
 /**
@@ -3833,6 +5048,9 @@ export const DatabaseAccountsGetReadOnlyKeys =
     outputSchema: DatabaseAccountsGetReadOnlyKeysOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsListInput {
+  subscriptionId: string;
+}
 export const DatabaseAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3842,10 +5060,25 @@ export const DatabaseAccountsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsListInput = typeof DatabaseAccountsListInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsListInput>;
 
 // Output Schema
+export interface DatabaseAccountsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabaseAccountsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3882,8 +5115,7 @@ export const DatabaseAccountsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountsListOutput = typeof DatabaseAccountsListOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsListOutput>;
 
 // The operation
 /**
@@ -3899,6 +5131,10 @@ export const DatabaseAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseAccountsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DatabaseAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3909,11 +5145,25 @@ export const DatabaseAccountsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsListByResourceGroupInput =
-  typeof DatabaseAccountsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsListByResourceGroupInput>;
 
 // Output Schema
+export interface DatabaseAccountsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabaseAccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3950,9 +5200,7 @@ export const DatabaseAccountsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountsListByResourceGroupOutput =
-  typeof DatabaseAccountsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3968,6 +5216,11 @@ export const DatabaseAccountsListByResourceGroup =
     outputSchema: DatabaseAccountsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsListConnectionStringsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DatabaseAccountsListConnectionStringsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3979,11 +5232,26 @@ export const DatabaseAccountsListConnectionStringsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listConnectionStrings",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsListConnectionStringsInput =
-  typeof DatabaseAccountsListConnectionStringsInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsListConnectionStringsInput>;
 
 // Output Schema
+export interface DatabaseAccountsListConnectionStringsOutput {
+  connectionStrings?: {
+    connectionString?: Redacted.Redacted<string>;
+    description?: string;
+    keyKind?: "Primary" | "Secondary" | "PrimaryReadonly" | "SecondaryReadonly";
+    type?:
+      | "Sql"
+      | "Table"
+      | "MongoDB"
+      | "Cassandra"
+      | "CassandraConnectorMetadata"
+      | "Gremlin"
+      | "SqlDedicatedGateway"
+      | "GremlinV2"
+      | "Undefined";
+  }[];
+}
 export const DatabaseAccountsListConnectionStringsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionStrings: Schema.optional(
@@ -4015,9 +5283,7 @@ export const DatabaseAccountsListConnectionStringsOutput =
         }),
       ),
     ),
-  });
-export type DatabaseAccountsListConnectionStringsOutput =
-  typeof DatabaseAccountsListConnectionStringsOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsListConnectionStringsOutput>;
 
 // The operation
 /**
@@ -4034,6 +5300,11 @@ export const DatabaseAccountsListConnectionStrings =
     outputSchema: DatabaseAccountsListConnectionStringsOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DatabaseAccountsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4045,18 +5316,18 @@ export const DatabaseAccountsListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsListKeysInput =
-  typeof DatabaseAccountsListKeysInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsListKeysInput>;
 
 // Output Schema
+export interface DatabaseAccountsListKeysOutput {
+  primaryReadonlyMasterKey?: string;
+  secondaryReadonlyMasterKey?: string;
+}
 export const DatabaseAccountsListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryReadonlyMasterKey: Schema.optional(Schema.String),
     secondaryReadonlyMasterKey: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountsListKeysOutput =
-  typeof DatabaseAccountsListKeysOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsListKeysOutput>;
 
 // The operation
 /**
@@ -4074,6 +5345,11 @@ export const DatabaseAccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseAccountsListMetricDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DatabaseAccountsListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4085,11 +5361,32 @@ export const DatabaseAccountsListMetricDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metricDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsListMetricDefinitionsInput =
-  typeof DatabaseAccountsListMetricDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsListMetricDefinitionsInput>;
 
 // Output Schema
+export interface DatabaseAccountsListMetricDefinitionsOutput {
+  value?: {
+    metricAvailabilities?: { timeGrain?: string; retention?: string }[];
+    primaryAggregationType?:
+      | "None"
+      | "Average"
+      | "Total"
+      | "Minimum"
+      | "Maximum"
+      | "Last";
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    resourceUri?: string;
+    name?: { value?: string; localizedValue?: string };
+  }[];
+  nextLink?: string;
+}
 export const DatabaseAccountsListMetricDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4135,9 +5432,7 @@ export const DatabaseAccountsListMetricDefinitionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountsListMetricDefinitionsOutput =
-  typeof DatabaseAccountsListMetricDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsListMetricDefinitionsOutput>;
 
 // The operation
 /**
@@ -4154,6 +5449,12 @@ export const DatabaseAccountsListMetricDefinitions =
     outputSchema: DatabaseAccountsListMetricDefinitionsOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $filter: string;
+}
 export const DatabaseAccountsListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4166,11 +5467,34 @@ export const DatabaseAccountsListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsListMetricsInput =
-  typeof DatabaseAccountsListMetricsInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsListMetricsInput>;
 
 // Output Schema
+export interface DatabaseAccountsListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const DatabaseAccountsListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4212,9 +5536,7 @@ export const DatabaseAccountsListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountsListMetricsOutput =
-  typeof DatabaseAccountsListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsListMetricsOutput>;
 
 // The operation
 /**
@@ -4233,6 +5555,11 @@ export const DatabaseAccountsListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseAccountsListReadOnlyKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DatabaseAccountsListReadOnlyKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4244,18 +5571,18 @@ export const DatabaseAccountsListReadOnlyKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsListReadOnlyKeysInput =
-  typeof DatabaseAccountsListReadOnlyKeysInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsListReadOnlyKeysInput>;
 
 // Output Schema
+export interface DatabaseAccountsListReadOnlyKeysOutput {
+  primaryReadonlyMasterKey?: string;
+  secondaryReadonlyMasterKey?: string;
+}
 export const DatabaseAccountsListReadOnlyKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryReadonlyMasterKey: Schema.optional(Schema.String),
     secondaryReadonlyMasterKey: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountsListReadOnlyKeysOutput =
-  typeof DatabaseAccountsListReadOnlyKeysOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsListReadOnlyKeysOutput>;
 
 // The operation
 /**
@@ -4272,6 +5599,12 @@ export const DatabaseAccountsListReadOnlyKeys =
     outputSchema: DatabaseAccountsListReadOnlyKeysOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsListUsagesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $filter?: string;
+}
 export const DatabaseAccountsListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4284,11 +5617,26 @@ export const DatabaseAccountsListUsagesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/usages",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsListUsagesInput =
-  typeof DatabaseAccountsListUsagesInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsListUsagesInput>;
 
 // Output Schema
+export interface DatabaseAccountsListUsagesOutput {
+  value?: {
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    quotaPeriod?: string;
+    limit?: number;
+    currentValue?: number;
+  }[];
+  nextLink?: string;
+}
 export const DatabaseAccountsListUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4318,9 +5666,7 @@ export const DatabaseAccountsListUsagesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseAccountsListUsagesOutput =
-  typeof DatabaseAccountsListUsagesOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsListUsagesOutput>;
 
 // The operation
 /**
@@ -4339,6 +5685,12 @@ export const DatabaseAccountsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseAccountsOfflineRegionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  region: string;
+}
 export const DatabaseAccountsOfflineRegionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4351,15 +5703,12 @@ export const DatabaseAccountsOfflineRegionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/offlineRegion",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsOfflineRegionInput =
-  typeof DatabaseAccountsOfflineRegionInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsOfflineRegionInput>;
 
 // Output Schema
+export type DatabaseAccountsOfflineRegionOutput = void;
 export const DatabaseAccountsOfflineRegionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseAccountsOfflineRegionOutput =
-  typeof DatabaseAccountsOfflineRegionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsOfflineRegionOutput>;
 
 // The operation
 /**
@@ -4376,6 +5725,12 @@ export const DatabaseAccountsOfflineRegion =
     outputSchema: DatabaseAccountsOfflineRegionOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsOnlineRegionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  region: string;
+}
 export const DatabaseAccountsOnlineRegionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4388,15 +5743,12 @@ export const DatabaseAccountsOnlineRegionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/onlineRegion",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsOnlineRegionInput =
-  typeof DatabaseAccountsOnlineRegionInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsOnlineRegionInput>;
 
 // Output Schema
+export type DatabaseAccountsOnlineRegionOutput = void;
 export const DatabaseAccountsOnlineRegionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseAccountsOnlineRegionOutput =
-  typeof DatabaseAccountsOnlineRegionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsOnlineRegionOutput>;
 
 // The operation
 /**
@@ -4413,6 +5765,12 @@ export const DatabaseAccountsOnlineRegion =
     outputSchema: DatabaseAccountsOnlineRegionOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyKind: "primary" | "secondary" | "primaryReadonly" | "secondaryReadonly";
+}
 export const DatabaseAccountsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4430,15 +5788,12 @@ export const DatabaseAccountsRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/regenerateKey",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsRegenerateKeyInput =
-  typeof DatabaseAccountsRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsRegenerateKeyInput>;
 
 // Output Schema
+export type DatabaseAccountsRegenerateKeyOutput = void;
 export const DatabaseAccountsRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabaseAccountsRegenerateKeyOutput =
-  typeof DatabaseAccountsRegenerateKeyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabaseAccountsRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -4455,6 +5810,102 @@ export const DatabaseAccountsRegenerateKey =
     outputSchema: DatabaseAccountsRegenerateKeyOutput,
   }));
 // Input Schema
+export interface DatabaseAccountsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tags?: Record<string, string>;
+  location?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    consistencyPolicy?: {
+      defaultConsistencyLevel:
+        | "Eventual"
+        | "Session"
+        | "BoundedStaleness"
+        | "Strong"
+        | "ConsistentPrefix";
+      maxStalenessPrefix?: number;
+      maxIntervalInSeconds?: number;
+    };
+    locations?: {
+      id?: string;
+      locationName?: string;
+      documentEndpoint?: string;
+      provisioningState?: string;
+      failoverPriority?: number;
+      isZoneRedundant?: boolean;
+    }[];
+    ipRules?: { ipAddressOrRange?: string }[];
+    isVirtualNetworkFilterEnabled?: boolean;
+    enableAutomaticFailover?: boolean;
+    capabilities?: { name?: string }[];
+    virtualNetworkRules?: {
+      id?: string;
+      ignoreMissingVNetServiceEndpoint?: boolean;
+    }[];
+    enableMultipleWriteLocations?: boolean;
+    enableCassandraConnector?: boolean;
+    connectorOffer?: "Small";
+    disableKeyBasedMetadataWriteAccess?: boolean;
+    keyVaultKeyUri?: string;
+    defaultIdentity?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    enableFreeTier?: boolean;
+    apiProperties?: {
+      serverVersion?: "3.2" | "3.6" | "4.0" | "4.2" | "5.0" | "6.0" | "7.0";
+    };
+    enableAnalyticalStorage?: boolean;
+    analyticalStorageConfiguration?: {
+      schemaType?: "WellDefined" | "FullFidelity";
+    };
+    backupPolicy?: {
+      type: "Periodic" | "Continuous";
+      migrationState?: {
+        status?: "Invalid" | "InProgress" | "Completed" | "Failed";
+        targetType?: "Periodic" | "Continuous";
+        startTime?: string;
+      };
+    };
+    cors?: {
+      allowedOrigins: string;
+      allowedMethods?: string;
+      allowedHeaders?: string;
+      exposedHeaders?: string;
+      maxAgeInSeconds?: number;
+    }[];
+    networkAclBypass?: "None" | "AzureServices";
+    networkAclBypassResourceIds?: string[];
+    disableLocalAuth?: boolean;
+    capacity?: { totalThroughputLimit?: number };
+    keysMetadata?: {
+      primaryMasterKey?: { generationTime?: string };
+      secondaryMasterKey?: { generationTime?: string };
+      primaryReadonlyMasterKey?: { generationTime?: string };
+      secondaryReadonlyMasterKey?: { generationTime?: string };
+    };
+    enablePartitionMerge?: boolean;
+    enableBurstCapacity?: boolean;
+    minimalTlsVersion?: "Tls" | "Tls11" | "Tls12";
+    customerManagedKeyStatus?: string;
+    enablePriorityBasedExecution?: boolean;
+    defaultPriorityLevel?: "High" | "Low";
+    enablePerRegionPerPartitionAutoscale?: boolean;
+    enforceHierarchicalPartitionKeyIdLastLevel?: boolean;
+  };
+}
 export const DatabaseAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4657,11 +6108,22 @@ export const DatabaseAccountsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseAccountsUpdateInput =
-  typeof DatabaseAccountsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatabaseAccountsUpdateInput>;
 
 // Output Schema
+export interface DatabaseAccountsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabaseAccountsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4681,9 +6143,7 @@ export const DatabaseAccountsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseAccountsUpdateOutput =
-  typeof DatabaseAccountsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseAccountsUpdateOutput>;
 
 // The operation
 /**
@@ -4701,6 +6161,12 @@ export const DatabaseAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabaseListMetricDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+}
 export const DatabaseListMetricDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4713,11 +6179,32 @@ export const DatabaseListMetricDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseListMetricDefinitionsInput =
-  typeof DatabaseListMetricDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<DatabaseListMetricDefinitionsInput>;
 
 // Output Schema
+export interface DatabaseListMetricDefinitionsOutput {
+  value?: {
+    metricAvailabilities?: { timeGrain?: string; retention?: string }[];
+    primaryAggregationType?:
+      | "None"
+      | "Average"
+      | "Total"
+      | "Minimum"
+      | "Maximum"
+      | "Last";
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    resourceUri?: string;
+    name?: { value?: string; localizedValue?: string };
+  }[];
+  nextLink?: string;
+}
 export const DatabaseListMetricDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4763,9 +6250,7 @@ export const DatabaseListMetricDefinitionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseListMetricDefinitionsOutput =
-  typeof DatabaseListMetricDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseListMetricDefinitionsOutput>;
 
 // The operation
 /**
@@ -4783,6 +6268,13 @@ export const DatabaseListMetricDefinitions =
     outputSchema: DatabaseListMetricDefinitionsOutput,
   }));
 // Input Schema
+export interface DatabaseListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+  $filter: string;
+}
 export const DatabaseListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4796,10 +6288,34 @@ export const DatabaseListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseListMetricsInput = typeof DatabaseListMetricsInput.Type;
+  ) as unknown as Schema.Codec<DatabaseListMetricsInput>;
 
 // Output Schema
+export interface DatabaseListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const DatabaseListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4841,8 +6357,7 @@ export const DatabaseListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseListMetricsOutput = typeof DatabaseListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseListMetricsOutput>;
 
 // The operation
 /**
@@ -4860,6 +6375,13 @@ export const DatabaseListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabaseListMetricsOutput,
 }));
 // Input Schema
+export interface DatabaseListUsagesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+  $filter?: string;
+}
 export const DatabaseListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4873,10 +6395,26 @@ export const DatabaseListUsagesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/usages",
       apiVersion: "2026-03-15",
     }),
-  );
-export type DatabaseListUsagesInput = typeof DatabaseListUsagesInput.Type;
+  ) as unknown as Schema.Codec<DatabaseListUsagesInput>;
 
 // Output Schema
+export interface DatabaseListUsagesOutput {
+  value?: {
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    quotaPeriod?: string;
+    limit?: number;
+    currentValue?: number;
+  }[];
+  nextLink?: string;
+}
 export const DatabaseListUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4906,8 +6444,7 @@ export const DatabaseListUsagesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseListUsagesOutput = typeof DatabaseListUsagesOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseListUsagesOutput>;
 
 // The operation
 /**
@@ -4925,6 +6462,26 @@ export const DatabaseListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabaseListUsagesOutput,
 }));
 // Input Schema
+export interface FleetCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  properties?: {
+    provisioningState?:
+      | "Uninitialized"
+      | "Initializing"
+      | "InternallyReady"
+      | "Online"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Updating"
+      | "Creating";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const FleetCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4955,10 +6512,22 @@ export const FleetCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetCreateInput = typeof FleetCreateInput.Type;
+) as unknown as Schema.Codec<FleetCreateInput>;
 
 // Output Schema
+export interface FleetCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4977,8 +6546,7 @@ export const FleetCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FleetCreateOutput = typeof FleetCreateOutput.Type;
+}) as unknown as Schema.Codec<FleetCreateOutput>;
 
 // The operation
 /**
@@ -4994,6 +6562,11 @@ export const FleetCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetCreateOutput,
 }));
 // Input Schema
+export interface FleetDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+}
 export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5004,12 +6577,12 @@ export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetDeleteInput = typeof FleetDeleteInput.Type;
+) as unknown as Schema.Codec<FleetDeleteInput>;
 
 // Output Schema
-export const FleetDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FleetDeleteOutput = typeof FleetDeleteOutput.Type;
+export type FleetDeleteOutput = void;
+export const FleetDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetDeleteOutput>;
 
 // The operation
 /**
@@ -5025,6 +6598,11 @@ export const FleetDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetDeleteOutput,
 }));
 // Input Schema
+export interface FleetGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+}
 export const FleetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5035,10 +6613,22 @@ export const FleetGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetGetInput = typeof FleetGetInput.Type;
+) as unknown as Schema.Codec<FleetGetInput>;
 
 // Output Schema
+export interface FleetGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5057,8 +6647,7 @@ export const FleetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FleetGetOutput = typeof FleetGetOutput.Type;
+}) as unknown as Schema.Codec<FleetGetOutput>;
 
 // The operation
 /**
@@ -5074,6 +6663,9 @@ export const FleetGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetGetOutput,
 }));
 // Input Schema
+export interface FleetListInput {
+  subscriptionId: string;
+}
 export const FleetListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -5082,10 +6674,25 @@ export const FleetListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/fleets",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetListInput = typeof FleetListInput.Type;
+) as unknown as Schema.Codec<FleetListInput>;
 
 // Output Schema
+export interface FleetListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FleetListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -5109,8 +6716,7 @@ export const FleetListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FleetListOutput = typeof FleetListOutput.Type;
+}) as unknown as Schema.Codec<FleetListOutput>;
 
 // The operation
 /**
@@ -5124,6 +6730,10 @@ export const FleetList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetListOutput,
 }));
 // Input Schema
+export interface FleetListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const FleetListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5134,11 +6744,25 @@ export const FleetListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets",
       apiVersion: "2026-03-15",
     }),
-  );
-export type FleetListByResourceGroupInput =
-  typeof FleetListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<FleetListByResourceGroupInput>;
 
 // Output Schema
+export interface FleetListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FleetListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5173,9 +6797,7 @@ export const FleetListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FleetListByResourceGroupOutput =
-  typeof FleetListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<FleetListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5192,6 +6814,30 @@ export const FleetListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FleetspaceAccountCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  fleetspaceName: string;
+  fleetspaceAccountName: string;
+  properties?: {
+    provisioningState?:
+      | "Uninitialized"
+      | "Initializing"
+      | "InternallyReady"
+      | "Online"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Updating"
+      | "Creating";
+    globalDatabaseAccountProperties?: {
+      resourceId?: string;
+      armLocation?: string;
+    };
+  };
+}
 export const FleetspaceAccountCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5229,11 +6875,22 @@ export const FleetspaceAccountCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type FleetspaceAccountCreateInput =
-  typeof FleetspaceAccountCreateInput.Type;
+  ) as unknown as Schema.Codec<FleetspaceAccountCreateInput>;
 
 // Output Schema
+export interface FleetspaceAccountCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetspaceAccountCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5253,9 +6910,7 @@ export const FleetspaceAccountCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FleetspaceAccountCreateOutput =
-  typeof FleetspaceAccountCreateOutput.Type;
+  }) as unknown as Schema.Codec<FleetspaceAccountCreateOutput>;
 
 // The operation
 /**
@@ -5275,6 +6930,13 @@ export const FleetspaceAccountCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FleetspaceAccountDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  fleetspaceName: string;
+  fleetspaceAccountName: string;
+}
 export const FleetspaceAccountDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5288,15 +6950,12 @@ export const FleetspaceAccountDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type FleetspaceAccountDeleteInput =
-  typeof FleetspaceAccountDeleteInput.Type;
+  ) as unknown as Schema.Codec<FleetspaceAccountDeleteInput>;
 
 // Output Schema
+export type FleetspaceAccountDeleteOutput = void;
 export const FleetspaceAccountDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FleetspaceAccountDeleteOutput =
-  typeof FleetspaceAccountDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetspaceAccountDeleteOutput>;
 
 // The operation
 /**
@@ -5316,6 +6975,13 @@ export const FleetspaceAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FleetspaceAccountGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  fleetspaceName: string;
+  fleetspaceAccountName: string;
+}
 export const FleetspaceAccountGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5329,10 +6995,22 @@ export const FleetspaceAccountGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type FleetspaceAccountGetInput = typeof FleetspaceAccountGetInput.Type;
+  ) as unknown as Schema.Codec<FleetspaceAccountGetInput>;
 
 // Output Schema
+export interface FleetspaceAccountGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetspaceAccountGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5352,8 +7030,7 @@ export const FleetspaceAccountGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FleetspaceAccountGetOutput = typeof FleetspaceAccountGetOutput.Type;
+  }) as unknown as Schema.Codec<FleetspaceAccountGetOutput>;
 
 // The operation
 /**
@@ -5373,6 +7050,12 @@ export const FleetspaceAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FleetspaceAccountListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  fleetspaceName: string;
+}
 export const FleetspaceAccountListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5385,10 +7068,25 @@ export const FleetspaceAccountListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts",
       apiVersion: "2026-03-15",
     }),
-  );
-export type FleetspaceAccountListInput = typeof FleetspaceAccountListInput.Type;
+  ) as unknown as Schema.Codec<FleetspaceAccountListInput>;
 
 // Output Schema
+export interface FleetspaceAccountListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FleetspaceAccountListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5423,9 +7121,7 @@ export const FleetspaceAccountListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FleetspaceAccountListOutput =
-  typeof FleetspaceAccountListOutput.Type;
+  }) as unknown as Schema.Codec<FleetspaceAccountListOutput>;
 
 // The operation
 /**
@@ -5444,6 +7140,34 @@ export const FleetspaceAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FleetspaceCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  fleetspaceName: string;
+  properties?: {
+    provisioningState?:
+      | "Uninitialized"
+      | "Initializing"
+      | "InternallyReady"
+      | "Online"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Updating"
+      | "Creating";
+    fleetspaceApiKind?: "NoSQL";
+    serviceTier?: "GeneralPurpose" | "BusinessCritical";
+    dataRegions?: string[];
+    throughputPoolConfiguration?: {
+      minThroughput?: number;
+      maxThroughput?: number;
+      dedicatedRUs?: number;
+      maxConsumableRUs?: number;
+    };
+  };
+}
 export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5486,10 +7210,22 @@ export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetspaceCreateInput = typeof FleetspaceCreateInput.Type;
+) as unknown as Schema.Codec<FleetspaceCreateInput>;
 
 // Output Schema
+export interface FleetspaceCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetspaceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -5510,8 +7246,7 @@ export const FleetspaceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type FleetspaceCreateOutput = typeof FleetspaceCreateOutput.Type;
+) as unknown as Schema.Codec<FleetspaceCreateOutput>;
 
 // The operation
 /**
@@ -5528,6 +7263,12 @@ export const FleetspaceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetspaceCreateOutput,
 }));
 // Input Schema
+export interface FleetspaceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  fleetspaceName: string;
+}
 export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5539,12 +7280,12 @@ export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetspaceDeleteInput = typeof FleetspaceDeleteInput.Type;
+) as unknown as Schema.Codec<FleetspaceDeleteInput>;
 
 // Output Schema
-export const FleetspaceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FleetspaceDeleteOutput = typeof FleetspaceDeleteOutput.Type;
+export type FleetspaceDeleteOutput = void;
+export const FleetspaceDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetspaceDeleteOutput>;
 
 // The operation
 /**
@@ -5561,6 +7302,12 @@ export const FleetspaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetspaceDeleteOutput,
 }));
 // Input Schema
+export interface FleetspaceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  fleetspaceName: string;
+}
 export const FleetspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5572,10 +7319,22 @@ export const FleetspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetspaceGetInput = typeof FleetspaceGetInput.Type;
+) as unknown as Schema.Codec<FleetspaceGetInput>;
 
 // Output Schema
+export interface FleetspaceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5594,8 +7353,7 @@ export const FleetspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FleetspaceGetOutput = typeof FleetspaceGetOutput.Type;
+}) as unknown as Schema.Codec<FleetspaceGetOutput>;
 
 // The operation
 /**
@@ -5612,6 +7370,11 @@ export const FleetspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetspaceGetOutput,
 }));
 // Input Schema
+export interface FleetspaceListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+}
 export const FleetspaceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5622,10 +7385,25 @@ export const FleetspaceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetspaceListInput = typeof FleetspaceListInput.Type;
+) as unknown as Schema.Codec<FleetspaceListInput>;
 
 // Output Schema
+export interface FleetspaceListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FleetspaceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -5649,8 +7427,7 @@ export const FleetspaceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FleetspaceListOutput = typeof FleetspaceListOutput.Type;
+}) as unknown as Schema.Codec<FleetspaceListOutput>;
 
 // The operation
 /**
@@ -5666,6 +7443,34 @@ export const FleetspaceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetspaceListOutput,
 }));
 // Input Schema
+export interface FleetspaceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  fleetspaceName: string;
+  properties?: {
+    provisioningState?:
+      | "Uninitialized"
+      | "Initializing"
+      | "InternallyReady"
+      | "Online"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Updating"
+      | "Creating";
+    fleetspaceApiKind?: "NoSQL";
+    serviceTier?: "GeneralPurpose" | "BusinessCritical";
+    dataRegions?: string[];
+    throughputPoolConfiguration?: {
+      minThroughput?: number;
+      maxThroughput?: number;
+      dedicatedRUs?: number;
+      maxConsumableRUs?: number;
+    };
+  };
+}
 export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5708,10 +7513,22 @@ export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetspaceUpdateInput = typeof FleetspaceUpdateInput.Type;
+) as unknown as Schema.Codec<FleetspaceUpdateInput>;
 
 // Output Schema
+export interface FleetspaceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -5732,8 +7549,7 @@ export const FleetspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type FleetspaceUpdateOutput = typeof FleetspaceUpdateOutput.Type;
+) as unknown as Schema.Codec<FleetspaceUpdateOutput>;
 
 // The operation
 /**
@@ -5750,6 +7566,24 @@ export const FleetspaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetspaceUpdateOutput,
 }));
 // Input Schema
+export interface FleetUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  properties?: {
+    provisioningState?:
+      | "Uninitialized"
+      | "Initializing"
+      | "InternallyReady"
+      | "Online"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Updating"
+      | "Creating";
+  };
+}
 export const FleetUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5778,10 +7612,22 @@ export const FleetUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type FleetUpdateInput = typeof FleetUpdateInput.Type;
+) as unknown as Schema.Codec<FleetUpdateInput>;
 
 // Output Schema
+export interface FleetUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5800,8 +7646,7 @@ export const FleetUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FleetUpdateOutput = typeof FleetUpdateOutput.Type;
+}) as unknown as Schema.Codec<FleetUpdateOutput>;
 
 // The operation
 /**
@@ -5817,6 +7662,45 @@ export const FleetUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetUpdateOutput,
 }));
 // Input Schema
+export interface GremlinResourcesCreateUpdateGremlinDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  properties: {
+    resource: {
+      id: string;
+      restoreParameters?: {
+        restoreSource?: string;
+        restoreTimestampInUtc?: string;
+        restoreWithTtlDisabled?: boolean;
+      };
+      createMode?: "Default" | "Restore";
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const GremlinResourcesCreateUpdateGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5880,11 +7764,22 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesCreateUpdateGremlinDatabaseInput =
-  typeof GremlinResourcesCreateUpdateGremlinDatabaseInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesCreateUpdateGremlinDatabaseInput>;
 
 // Output Schema
+export interface GremlinResourcesCreateUpdateGremlinDatabaseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesCreateUpdateGremlinDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5904,9 +7799,7 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesCreateUpdateGremlinDatabaseOutput =
-  typeof GremlinResourcesCreateUpdateGremlinDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesCreateUpdateGremlinDatabaseOutput>;
 
 // The operation
 /**
@@ -5924,6 +7817,95 @@ export const GremlinResourcesCreateUpdateGremlinDatabase =
     outputSchema: GremlinResourcesCreateUpdateGremlinDatabaseOutput,
   }));
 // Input Schema
+export interface GremlinResourcesCreateUpdateGremlinGraphInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  graphName: string;
+  properties: {
+    resource: {
+      id: string;
+      indexingPolicy?: {
+        automatic?: boolean;
+        indexingMode?: "consistent" | "lazy" | "none";
+        includedPaths?: {
+          path?: string;
+          indexes?: {
+            dataType?:
+              | "String"
+              | "Number"
+              | "Point"
+              | "Polygon"
+              | "LineString"
+              | "MultiPolygon";
+            precision?: number;
+            kind?: "Hash" | "Range" | "Spatial";
+          }[];
+        }[];
+        excludedPaths?: { path?: string }[];
+        compositeIndexes?: {
+          path?: string;
+          order?: "ascending" | "descending";
+        }[][];
+        spatialIndexes?: {
+          path?: string;
+          types?: ("Point" | "LineString" | "Polygon" | "MultiPolygon")[];
+        }[];
+        vectorIndexes?: {
+          path: string;
+          type: "flat" | "diskANN" | "quantizedFlat";
+          quantizationByteSize?: number;
+          indexingSearchListSize?: number;
+          vectorIndexShardKey?: string[];
+        }[];
+        fullTextIndexes?: { path: string }[];
+      };
+      partitionKey?: {
+        paths?: string[];
+        kind?: "Hash" | "Range" | "MultiHash";
+        version?: number;
+        systemKey?: boolean;
+      };
+      defaultTtl?: number;
+      uniqueKeyPolicy?: { uniqueKeys?: { paths?: string[] }[] };
+      conflictResolutionPolicy?: {
+        mode?: "LastWriterWins" | "Custom";
+        conflictResolutionPath?: string;
+        conflictResolutionProcedure?: string;
+      };
+      analyticalStorageTtl?: number;
+      restoreParameters?: {
+        restoreSource?: string;
+        restoreTimestampInUtc?: string;
+        restoreWithTtlDisabled?: boolean;
+      };
+      createMode?: "Default" | "Restore";
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const GremlinResourcesCreateUpdateGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6111,11 +8093,22 @@ export const GremlinResourcesCreateUpdateGremlinGraphInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesCreateUpdateGremlinGraphInput =
-  typeof GremlinResourcesCreateUpdateGremlinGraphInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesCreateUpdateGremlinGraphInput>;
 
 // Output Schema
+export interface GremlinResourcesCreateUpdateGremlinGraphOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesCreateUpdateGremlinGraphOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6135,9 +8128,7 @@ export const GremlinResourcesCreateUpdateGremlinGraphOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesCreateUpdateGremlinGraphOutput =
-  typeof GremlinResourcesCreateUpdateGremlinGraphOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesCreateUpdateGremlinGraphOutput>;
 
 // The operation
 /**
@@ -6156,6 +8147,18 @@ export const GremlinResourcesCreateUpdateGremlinGraph =
     outputSchema: GremlinResourcesCreateUpdateGremlinGraphOutput,
   }));
 // Input Schema
+export interface GremlinResourcesCreateUpdateGremlinRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+  properties?: {
+    roleDefinitionId?: string;
+    scope?: string;
+    principalId?: string;
+    provisioningState?: string;
+  };
+}
 export const GremlinResourcesCreateUpdateGremlinRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6176,11 +8179,22 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesCreateUpdateGremlinRoleAssignmentInput =
-  typeof GremlinResourcesCreateUpdateGremlinRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesCreateUpdateGremlinRoleAssignmentInput>;
 
 // Output Schema
+export interface GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6200,9 +8214,7 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput =
-  typeof GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -6220,6 +8232,23 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignment =
     outputSchema: GremlinResourcesCreateUpdateGremlinRoleAssignmentOutput,
   }));
 // Input Schema
+export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+  properties?: {
+    id?: string;
+    roleName?: string;
+    type?: "BuiltInRole" | "CustomRole";
+    assignableScopes?: string[];
+    permissions?: {
+      id?: string;
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+  };
+}
 export const GremlinResourcesCreateUpdateGremlinRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6249,11 +8278,22 @@ export const GremlinResourcesCreateUpdateGremlinRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesCreateUpdateGremlinRoleDefinitionInput =
-  typeof GremlinResourcesCreateUpdateGremlinRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesCreateUpdateGremlinRoleDefinitionInput>;
 
 // Output Schema
+export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6273,9 +8313,7 @@ export const GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput =
-  typeof GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -6293,6 +8331,12 @@ export const GremlinResourcesCreateUpdateGremlinRoleDefinition =
     outputSchema: GremlinResourcesCreateUpdateGremlinRoleDefinitionOutput,
   }));
 // Input Schema
+export interface GremlinResourcesDeleteGremlinDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const GremlinResourcesDeleteGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6305,15 +8349,12 @@ export const GremlinResourcesDeleteGremlinDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesDeleteGremlinDatabaseInput =
-  typeof GremlinResourcesDeleteGremlinDatabaseInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesDeleteGremlinDatabaseInput>;
 
 // Output Schema
+export type GremlinResourcesDeleteGremlinDatabaseOutput = void;
 export const GremlinResourcesDeleteGremlinDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GremlinResourcesDeleteGremlinDatabaseOutput =
-  typeof GremlinResourcesDeleteGremlinDatabaseOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinDatabaseOutput>;
 
 // The operation
 /**
@@ -6331,6 +8372,13 @@ export const GremlinResourcesDeleteGremlinDatabase =
     outputSchema: GremlinResourcesDeleteGremlinDatabaseOutput,
   }));
 // Input Schema
+export interface GremlinResourcesDeleteGremlinGraphInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  graphName: string;
+}
 export const GremlinResourcesDeleteGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6344,15 +8392,12 @@ export const GremlinResourcesDeleteGremlinGraphInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesDeleteGremlinGraphInput =
-  typeof GremlinResourcesDeleteGremlinGraphInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesDeleteGremlinGraphInput>;
 
 // Output Schema
+export type GremlinResourcesDeleteGremlinGraphOutput = void;
 export const GremlinResourcesDeleteGremlinGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GremlinResourcesDeleteGremlinGraphOutput =
-  typeof GremlinResourcesDeleteGremlinGraphOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinGraphOutput>;
 
 // The operation
 /**
@@ -6371,6 +8416,12 @@ export const GremlinResourcesDeleteGremlinGraph =
     outputSchema: GremlinResourcesDeleteGremlinGraphOutput,
   }));
 // Input Schema
+export interface GremlinResourcesDeleteGremlinRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const GremlinResourcesDeleteGremlinRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6383,15 +8434,12 @@ export const GremlinResourcesDeleteGremlinRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesDeleteGremlinRoleAssignmentInput =
-  typeof GremlinResourcesDeleteGremlinRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesDeleteGremlinRoleAssignmentInput>;
 
 // Output Schema
+export type GremlinResourcesDeleteGremlinRoleAssignmentOutput = void;
 export const GremlinResourcesDeleteGremlinRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GremlinResourcesDeleteGremlinRoleAssignmentOutput =
-  typeof GremlinResourcesDeleteGremlinRoleAssignmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -6409,6 +8457,12 @@ export const GremlinResourcesDeleteGremlinRoleAssignment =
     outputSchema: GremlinResourcesDeleteGremlinRoleAssignmentOutput,
   }));
 // Input Schema
+export interface GremlinResourcesDeleteGremlinRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const GremlinResourcesDeleteGremlinRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6421,15 +8475,12 @@ export const GremlinResourcesDeleteGremlinRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesDeleteGremlinRoleDefinitionInput =
-  typeof GremlinResourcesDeleteGremlinRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesDeleteGremlinRoleDefinitionInput>;
 
 // Output Schema
+export type GremlinResourcesDeleteGremlinRoleDefinitionOutput = void;
 export const GremlinResourcesDeleteGremlinRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GremlinResourcesDeleteGremlinRoleDefinitionOutput =
-  typeof GremlinResourcesDeleteGremlinRoleDefinitionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GremlinResourcesDeleteGremlinRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -6447,6 +8498,12 @@ export const GremlinResourcesDeleteGremlinRoleDefinition =
     outputSchema: GremlinResourcesDeleteGremlinRoleDefinitionOutput,
   }));
 // Input Schema
+export interface GremlinResourcesGetGremlinDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const GremlinResourcesGetGremlinDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6459,11 +8516,22 @@ export const GremlinResourcesGetGremlinDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesGetGremlinDatabaseInput =
-  typeof GremlinResourcesGetGremlinDatabaseInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesGetGremlinDatabaseInput>;
 
 // Output Schema
+export interface GremlinResourcesGetGremlinDatabaseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesGetGremlinDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6483,9 +8551,7 @@ export const GremlinResourcesGetGremlinDatabaseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesGetGremlinDatabaseOutput =
-  typeof GremlinResourcesGetGremlinDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesGetGremlinDatabaseOutput>;
 
 // The operation
 /**
@@ -6503,6 +8569,12 @@ export const GremlinResourcesGetGremlinDatabase =
     outputSchema: GremlinResourcesGetGremlinDatabaseOutput,
   }));
 // Input Schema
+export interface GremlinResourcesGetGremlinDatabaseThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const GremlinResourcesGetGremlinDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6515,11 +8587,22 @@ export const GremlinResourcesGetGremlinDatabaseThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesGetGremlinDatabaseThroughputInput =
-  typeof GremlinResourcesGetGremlinDatabaseThroughputInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesGetGremlinDatabaseThroughputInput>;
 
 // Output Schema
+export interface GremlinResourcesGetGremlinDatabaseThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesGetGremlinDatabaseThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6539,9 +8622,7 @@ export const GremlinResourcesGetGremlinDatabaseThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesGetGremlinDatabaseThroughputOutput =
-  typeof GremlinResourcesGetGremlinDatabaseThroughputOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesGetGremlinDatabaseThroughputOutput>;
 
 // The operation
 /**
@@ -6559,6 +8640,13 @@ export const GremlinResourcesGetGremlinDatabaseThroughput =
     outputSchema: GremlinResourcesGetGremlinDatabaseThroughputOutput,
   }));
 // Input Schema
+export interface GremlinResourcesGetGremlinGraphInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  graphName: string;
+}
 export const GremlinResourcesGetGremlinGraphInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6572,11 +8660,22 @@ export const GremlinResourcesGetGremlinGraphInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesGetGremlinGraphInput =
-  typeof GremlinResourcesGetGremlinGraphInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesGetGremlinGraphInput>;
 
 // Output Schema
+export interface GremlinResourcesGetGremlinGraphOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesGetGremlinGraphOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6596,9 +8695,7 @@ export const GremlinResourcesGetGremlinGraphOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesGetGremlinGraphOutput =
-  typeof GremlinResourcesGetGremlinGraphOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesGetGremlinGraphOutput>;
 
 // The operation
 /**
@@ -6617,6 +8714,13 @@ export const GremlinResourcesGetGremlinGraph =
     outputSchema: GremlinResourcesGetGremlinGraphOutput,
   }));
 // Input Schema
+export interface GremlinResourcesGetGremlinGraphThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  graphName: string;
+}
 export const GremlinResourcesGetGremlinGraphThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6630,11 +8734,22 @@ export const GremlinResourcesGetGremlinGraphThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesGetGremlinGraphThroughputInput =
-  typeof GremlinResourcesGetGremlinGraphThroughputInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesGetGremlinGraphThroughputInput>;
 
 // Output Schema
+export interface GremlinResourcesGetGremlinGraphThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesGetGremlinGraphThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6654,9 +8769,7 @@ export const GremlinResourcesGetGremlinGraphThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesGetGremlinGraphThroughputOutput =
-  typeof GremlinResourcesGetGremlinGraphThroughputOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesGetGremlinGraphThroughputOutput>;
 
 // The operation
 /**
@@ -6675,6 +8788,12 @@ export const GremlinResourcesGetGremlinGraphThroughput =
     outputSchema: GremlinResourcesGetGremlinGraphThroughputOutput,
   }));
 // Input Schema
+export interface GremlinResourcesGetGremlinRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const GremlinResourcesGetGremlinRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6687,11 +8806,22 @@ export const GremlinResourcesGetGremlinRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesGetGremlinRoleAssignmentInput =
-  typeof GremlinResourcesGetGremlinRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesGetGremlinRoleAssignmentInput>;
 
 // Output Schema
+export interface GremlinResourcesGetGremlinRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesGetGremlinRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6711,9 +8841,7 @@ export const GremlinResourcesGetGremlinRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesGetGremlinRoleAssignmentOutput =
-  typeof GremlinResourcesGetGremlinRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesGetGremlinRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -6731,6 +8859,12 @@ export const GremlinResourcesGetGremlinRoleAssignment =
     outputSchema: GremlinResourcesGetGremlinRoleAssignmentOutput,
   }));
 // Input Schema
+export interface GremlinResourcesGetGremlinRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const GremlinResourcesGetGremlinRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6743,11 +8877,22 @@ export const GremlinResourcesGetGremlinRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesGetGremlinRoleDefinitionInput =
-  typeof GremlinResourcesGetGremlinRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesGetGremlinRoleDefinitionInput>;
 
 // Output Schema
+export interface GremlinResourcesGetGremlinRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesGetGremlinRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6767,9 +8912,7 @@ export const GremlinResourcesGetGremlinRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesGetGremlinRoleDefinitionOutput =
-  typeof GremlinResourcesGetGremlinRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesGetGremlinRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -6787,6 +8930,11 @@ export const GremlinResourcesGetGremlinRoleDefinition =
     outputSchema: GremlinResourcesGetGremlinRoleDefinitionOutput,
   }));
 // Input Schema
+export interface GremlinResourcesListGremlinDatabasesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const GremlinResourcesListGremlinDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6798,11 +8946,25 @@ export const GremlinResourcesListGremlinDatabasesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesListGremlinDatabasesInput =
-  typeof GremlinResourcesListGremlinDatabasesInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesListGremlinDatabasesInput>;
 
 // Output Schema
+export interface GremlinResourcesListGremlinDatabasesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GremlinResourcesListGremlinDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6839,9 +9001,7 @@ export const GremlinResourcesListGremlinDatabasesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GremlinResourcesListGremlinDatabasesOutput =
-  typeof GremlinResourcesListGremlinDatabasesOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesListGremlinDatabasesOutput>;
 
 // The operation
 /**
@@ -6858,6 +9018,12 @@ export const GremlinResourcesListGremlinDatabases =
     outputSchema: GremlinResourcesListGremlinDatabasesOutput,
   }));
 // Input Schema
+export interface GremlinResourcesListGremlinGraphsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const GremlinResourcesListGremlinGraphsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6870,11 +9036,25 @@ export const GremlinResourcesListGremlinGraphsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesListGremlinGraphsInput =
-  typeof GremlinResourcesListGremlinGraphsInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesListGremlinGraphsInput>;
 
 // Output Schema
+export interface GremlinResourcesListGremlinGraphsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GremlinResourcesListGremlinGraphsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6911,9 +9091,7 @@ export const GremlinResourcesListGremlinGraphsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GremlinResourcesListGremlinGraphsOutput =
-  typeof GremlinResourcesListGremlinGraphsOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesListGremlinGraphsOutput>;
 
 // The operation
 /**
@@ -6931,6 +9109,11 @@ export const GremlinResourcesListGremlinGraphs =
     outputSchema: GremlinResourcesListGremlinGraphsOutput,
   }));
 // Input Schema
+export interface GremlinResourcesListGremlinRoleAssignmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const GremlinResourcesListGremlinRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6942,11 +9125,25 @@ export const GremlinResourcesListGremlinRoleAssignmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesListGremlinRoleAssignmentsInput =
-  typeof GremlinResourcesListGremlinRoleAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesListGremlinRoleAssignmentsInput>;
 
 // Output Schema
+export interface GremlinResourcesListGremlinRoleAssignmentsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GremlinResourcesListGremlinRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6981,9 +9178,7 @@ export const GremlinResourcesListGremlinRoleAssignmentsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GremlinResourcesListGremlinRoleAssignmentsOutput =
-  typeof GremlinResourcesListGremlinRoleAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesListGremlinRoleAssignmentsOutput>;
 
 // The operation
 /**
@@ -7000,6 +9195,11 @@ export const GremlinResourcesListGremlinRoleAssignments =
     outputSchema: GremlinResourcesListGremlinRoleAssignmentsOutput,
   }));
 // Input Schema
+export interface GremlinResourcesListGremlinRoleDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const GremlinResourcesListGremlinRoleDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7011,11 +9211,25 @@ export const GremlinResourcesListGremlinRoleDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesListGremlinRoleDefinitionsInput =
-  typeof GremlinResourcesListGremlinRoleDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesListGremlinRoleDefinitionsInput>;
 
 // Output Schema
+export interface GremlinResourcesListGremlinRoleDefinitionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GremlinResourcesListGremlinRoleDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7050,9 +9264,7 @@ export const GremlinResourcesListGremlinRoleDefinitionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GremlinResourcesListGremlinRoleDefinitionsOutput =
-  typeof GremlinResourcesListGremlinRoleDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesListGremlinRoleDefinitionsOutput>;
 
 // The operation
 /**
@@ -7069,6 +9281,12 @@ export const GremlinResourcesListGremlinRoleDefinitions =
     outputSchema: GremlinResourcesListGremlinRoleDefinitionsOutput,
   }));
 // Input Schema
+export interface GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7081,11 +9299,22 @@ export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
-  typeof GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput>;
 
 // Output Schema
+export interface GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7105,9 +9334,7 @@ export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput =
-  typeof GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput>;
 
 // The operation
 /**
@@ -7125,6 +9352,12 @@ export const GremlinResourcesMigrateGremlinDatabaseToAutoscale =
     outputSchema: GremlinResourcesMigrateGremlinDatabaseToAutoscaleOutput,
   }));
 // Input Schema
+export interface GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7137,11 +9370,22 @@ export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
-  typeof GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput>;
 
 // Output Schema
+export interface GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7161,9 +9405,7 @@ export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput =
-  typeof GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput>;
 
 // The operation
 /**
@@ -7182,6 +9424,13 @@ export const GremlinResourcesMigrateGremlinDatabaseToManualThroughput =
       GremlinResourcesMigrateGremlinDatabaseToManualThroughputOutput,
   }));
 // Input Schema
+export interface GremlinResourcesMigrateGremlinGraphToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  graphName: string;
+}
 export const GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7195,11 +9444,22 @@ export const GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
-  typeof GremlinResourcesMigrateGremlinGraphToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesMigrateGremlinGraphToAutoscaleInput>;
 
 // Output Schema
+export interface GremlinResourcesMigrateGremlinGraphToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7219,9 +9479,7 @@ export const GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesMigrateGremlinGraphToAutoscaleOutput =
-  typeof GremlinResourcesMigrateGremlinGraphToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesMigrateGremlinGraphToAutoscaleOutput>;
 
 // The operation
 /**
@@ -7240,6 +9498,13 @@ export const GremlinResourcesMigrateGremlinGraphToAutoscale =
     outputSchema: GremlinResourcesMigrateGremlinGraphToAutoscaleOutput,
   }));
 // Input Schema
+export interface GremlinResourcesMigrateGremlinGraphToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  graphName: string;
+}
 export const GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7253,11 +9518,22 @@ export const GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
-  typeof GremlinResourcesMigrateGremlinGraphToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesMigrateGremlinGraphToManualThroughputInput>;
 
 // Output Schema
+export interface GremlinResourcesMigrateGremlinGraphToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7277,9 +9553,7 @@ export const GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesMigrateGremlinGraphToManualThroughputOutput =
-  typeof GremlinResourcesMigrateGremlinGraphToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesMigrateGremlinGraphToManualThroughputOutput>;
 
 // The operation
 /**
@@ -7298,6 +9572,14 @@ export const GremlinResourcesMigrateGremlinGraphToManualThroughput =
     outputSchema: GremlinResourcesMigrateGremlinGraphToManualThroughputOutput,
   }));
 // Input Schema
+export interface GremlinResourcesRetrieveContinuousBackupInformationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  graphName: string;
+  location?: string;
+}
 export const GremlinResourcesRetrieveContinuousBackupInformationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7312,11 +9594,12 @@ export const GremlinResourcesRetrieveContinuousBackupInformationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/retrieveContinuousBackupInformation",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesRetrieveContinuousBackupInformationInput =
-  typeof GremlinResourcesRetrieveContinuousBackupInformationInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesRetrieveContinuousBackupInformationInput>;
 
 // Output Schema
+export interface GremlinResourcesRetrieveContinuousBackupInformationOutput {
+  continuousBackupInformation?: { latestRestorableTimestamp?: string };
+}
 export const GremlinResourcesRetrieveContinuousBackupInformationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
@@ -7324,9 +9607,7 @@ export const GremlinResourcesRetrieveContinuousBackupInformationOutput =
         latestRestorableTimestamp: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesRetrieveContinuousBackupInformationOutput =
-  typeof GremlinResourcesRetrieveContinuousBackupInformationOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesRetrieveContinuousBackupInformationOutput>;
 
 // The operation
 /**
@@ -7345,6 +9626,46 @@ export const GremlinResourcesRetrieveContinuousBackupInformation =
     outputSchema: GremlinResourcesRetrieveContinuousBackupInformationOutput,
   }));
 // Input Schema
+export interface GremlinResourcesUpdateGremlinDatabaseThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const GremlinResourcesUpdateGremlinDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7410,11 +9731,22 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesUpdateGremlinDatabaseThroughputInput =
-  typeof GremlinResourcesUpdateGremlinDatabaseThroughputInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesUpdateGremlinDatabaseThroughputInput>;
 
 // Output Schema
+export interface GremlinResourcesUpdateGremlinDatabaseThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7434,9 +9766,7 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesUpdateGremlinDatabaseThroughputOutput =
-  typeof GremlinResourcesUpdateGremlinDatabaseThroughputOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesUpdateGremlinDatabaseThroughputOutput>;
 
 // The operation
 /**
@@ -7454,6 +9784,47 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughput =
     outputSchema: GremlinResourcesUpdateGremlinDatabaseThroughputOutput,
   }));
 // Input Schema
+export interface GremlinResourcesUpdateGremlinGraphThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  graphName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const GremlinResourcesUpdateGremlinGraphThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7520,11 +9891,22 @@ export const GremlinResourcesUpdateGremlinGraphThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type GremlinResourcesUpdateGremlinGraphThroughputInput =
-  typeof GremlinResourcesUpdateGremlinGraphThroughputInput.Type;
+  ) as unknown as Schema.Codec<GremlinResourcesUpdateGremlinGraphThroughputInput>;
 
 // Output Schema
+export interface GremlinResourcesUpdateGremlinGraphThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GremlinResourcesUpdateGremlinGraphThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7544,9 +9926,7 @@ export const GremlinResourcesUpdateGremlinGraphThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GremlinResourcesUpdateGremlinGraphThroughputOutput =
-  typeof GremlinResourcesUpdateGremlinGraphThroughputOutput.Type;
+  }) as unknown as Schema.Codec<GremlinResourcesUpdateGremlinGraphThroughputOutput>;
 
 // The operation
 /**
@@ -7565,6 +9945,10 @@ export const GremlinResourcesUpdateGremlinGraphThroughput =
     outputSchema: GremlinResourcesUpdateGremlinGraphThroughputOutput,
   }));
 // Input Schema
+export interface LocationsGetInput {
+  subscriptionId: string;
+  location: string;
+}
 export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -7574,10 +9958,22 @@ export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}",
     apiVersion: "2026-03-15",
   }),
-);
-export type LocationsGetInput = typeof LocationsGetInput.Type;
+) as unknown as Schema.Codec<LocationsGetInput>;
 
 // Output Schema
+export interface LocationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -7596,8 +9992,7 @@ export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type LocationsGetOutput = typeof LocationsGetOutput.Type;
+}) as unknown as Schema.Codec<LocationsGetOutput>;
 
 // The operation
 /**
@@ -7612,6 +10007,9 @@ export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocationsGetOutput,
 }));
 // Input Schema
+export interface LocationsListInput {
+  subscriptionId: string;
+}
 export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -7620,10 +10018,25 @@ export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations",
     apiVersion: "2026-03-15",
   }),
-);
-export type LocationsListInput = typeof LocationsListInput.Type;
+) as unknown as Schema.Codec<LocationsListInput>;
 
 // Output Schema
+export interface LocationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -7659,8 +10072,7 @@ export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type LocationsListOutput = typeof LocationsListOutput.Type;
+}) as unknown as Schema.Codec<LocationsListOutput>;
 
 // The operation
 /**
@@ -7674,6 +10086,52 @@ export const LocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocationsListOutput,
 }));
 // Input Schema
+export interface MongoDBResourcesCreateUpdateMongoDBCollectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  collectionName: string;
+  properties: {
+    resource: {
+      id: string;
+      shardKey?: Record<string, string>;
+      indexes?: {
+        key?: { keys?: string[] };
+        options?: { expireAfterSeconds?: number; unique?: boolean };
+      }[];
+      analyticalStorageTtl?: number;
+      restoreParameters?: {
+        restoreSource?: string;
+        restoreTimestampInUtc?: string;
+        restoreWithTtlDisabled?: boolean;
+      };
+      createMode?: "Default" | "Restore";
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const MongoDBResourcesCreateUpdateMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7757,11 +10215,22 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesCreateUpdateMongoDBCollectionInput =
-  typeof MongoDBResourcesCreateUpdateMongoDBCollectionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesCreateUpdateMongoDBCollectionInput>;
 
 // Output Schema
+export interface MongoDBResourcesCreateUpdateMongoDBCollectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7781,9 +10250,7 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesCreateUpdateMongoDBCollectionOutput =
-  typeof MongoDBResourcesCreateUpdateMongoDBCollectionOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesCreateUpdateMongoDBCollectionOutput>;
 
 // The operation
 /**
@@ -7802,6 +10269,45 @@ export const MongoDBResourcesCreateUpdateMongoDBCollection =
     outputSchema: MongoDBResourcesCreateUpdateMongoDBCollectionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesCreateUpdateMongoDBDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  properties: {
+    resource: {
+      id: string;
+      restoreParameters?: {
+        restoreSource?: string;
+        restoreTimestampInUtc?: string;
+        restoreWithTtlDisabled?: boolean;
+      };
+      createMode?: "Default" | "Restore";
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7865,11 +10371,22 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
-  typeof MongoDBResourcesCreateUpdateMongoDBDatabaseInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesCreateUpdateMongoDBDatabaseInput>;
 
 // Output Schema
+export interface MongoDBResourcesCreateUpdateMongoDBDatabaseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7889,9 +10406,7 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesCreateUpdateMongoDBDatabaseOutput =
-  typeof MongoDBResourcesCreateUpdateMongoDBDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesCreateUpdateMongoDBDatabaseOutput>;
 
 // The operation
 /**
@@ -7909,6 +10424,22 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabase =
     outputSchema: MongoDBResourcesCreateUpdateMongoDBDatabaseOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  mongoRoleDefinitionId: string;
+  properties?: {
+    roleName?: string;
+    type?: "BuiltInRole" | "CustomRole";
+    databaseName?: string;
+    privileges?: {
+      resource?: { db?: string; collection?: string };
+      actions?: string[];
+    }[];
+    roles?: { db?: string; role?: string }[];
+  };
+}
 export const MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7949,11 +10480,22 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
-  typeof MongoDBResourcesCreateUpdateMongoRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesCreateUpdateMongoRoleDefinitionInput>;
 
 // Output Schema
+export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7973,9 +10515,7 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput =
-  typeof MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -7993,6 +10533,20 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinition =
     outputSchema: MongoDBResourcesCreateUpdateMongoRoleDefinitionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesCreateUpdateMongoUserDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  mongoUserDefinitionId: string;
+  properties?: {
+    userName?: string;
+    password?: string | Redacted.Redacted<string>;
+    databaseName?: string;
+    customData?: string;
+    roles?: { db?: string; role?: string }[];
+    mechanisms?: string;
+  };
+}
 export const MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8022,11 +10576,22 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
-  typeof MongoDBResourcesCreateUpdateMongoUserDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesCreateUpdateMongoUserDefinitionInput>;
 
 // Output Schema
+export interface MongoDBResourcesCreateUpdateMongoUserDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8046,9 +10611,7 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesCreateUpdateMongoUserDefinitionOutput =
-  typeof MongoDBResourcesCreateUpdateMongoUserDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesCreateUpdateMongoUserDefinitionOutput>;
 
 // The operation
 /**
@@ -8066,6 +10629,13 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinition =
     outputSchema: MongoDBResourcesCreateUpdateMongoUserDefinitionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesDeleteMongoDBCollectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  collectionName: string;
+}
 export const MongoDBResourcesDeleteMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8079,15 +10649,12 @@ export const MongoDBResourcesDeleteMongoDBCollectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesDeleteMongoDBCollectionInput =
-  typeof MongoDBResourcesDeleteMongoDBCollectionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesDeleteMongoDBCollectionInput>;
 
 // Output Schema
+export type MongoDBResourcesDeleteMongoDBCollectionOutput = void;
 export const MongoDBResourcesDeleteMongoDBCollectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MongoDBResourcesDeleteMongoDBCollectionOutput =
-  typeof MongoDBResourcesDeleteMongoDBCollectionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoDBCollectionOutput>;
 
 // The operation
 /**
@@ -8106,6 +10673,12 @@ export const MongoDBResourcesDeleteMongoDBCollection =
     outputSchema: MongoDBResourcesDeleteMongoDBCollectionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesDeleteMongoDBDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const MongoDBResourcesDeleteMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8118,15 +10691,12 @@ export const MongoDBResourcesDeleteMongoDBDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesDeleteMongoDBDatabaseInput =
-  typeof MongoDBResourcesDeleteMongoDBDatabaseInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesDeleteMongoDBDatabaseInput>;
 
 // Output Schema
+export type MongoDBResourcesDeleteMongoDBDatabaseOutput = void;
 export const MongoDBResourcesDeleteMongoDBDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MongoDBResourcesDeleteMongoDBDatabaseOutput =
-  typeof MongoDBResourcesDeleteMongoDBDatabaseOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoDBDatabaseOutput>;
 
 // The operation
 /**
@@ -8144,6 +10714,12 @@ export const MongoDBResourcesDeleteMongoDBDatabase =
     outputSchema: MongoDBResourcesDeleteMongoDBDatabaseOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesDeleteMongoRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  mongoRoleDefinitionId: string;
+}
 export const MongoDBResourcesDeleteMongoRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8156,15 +10732,12 @@ export const MongoDBResourcesDeleteMongoRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesDeleteMongoRoleDefinitionInput =
-  typeof MongoDBResourcesDeleteMongoRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesDeleteMongoRoleDefinitionInput>;
 
 // Output Schema
+export type MongoDBResourcesDeleteMongoRoleDefinitionOutput = void;
 export const MongoDBResourcesDeleteMongoRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MongoDBResourcesDeleteMongoRoleDefinitionOutput =
-  typeof MongoDBResourcesDeleteMongoRoleDefinitionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -8182,6 +10755,12 @@ export const MongoDBResourcesDeleteMongoRoleDefinition =
     outputSchema: MongoDBResourcesDeleteMongoRoleDefinitionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesDeleteMongoUserDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  mongoUserDefinitionId: string;
+}
 export const MongoDBResourcesDeleteMongoUserDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8194,15 +10773,12 @@ export const MongoDBResourcesDeleteMongoUserDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesDeleteMongoUserDefinitionInput =
-  typeof MongoDBResourcesDeleteMongoUserDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesDeleteMongoUserDefinitionInput>;
 
 // Output Schema
+export type MongoDBResourcesDeleteMongoUserDefinitionOutput = void;
 export const MongoDBResourcesDeleteMongoUserDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MongoDBResourcesDeleteMongoUserDefinitionOutput =
-  typeof MongoDBResourcesDeleteMongoUserDefinitionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoDBResourcesDeleteMongoUserDefinitionOutput>;
 
 // The operation
 /**
@@ -8220,6 +10796,13 @@ export const MongoDBResourcesDeleteMongoUserDefinition =
     outputSchema: MongoDBResourcesDeleteMongoUserDefinitionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesGetMongoDBCollectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  collectionName: string;
+}
 export const MongoDBResourcesGetMongoDBCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8233,11 +10816,22 @@ export const MongoDBResourcesGetMongoDBCollectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesGetMongoDBCollectionInput =
-  typeof MongoDBResourcesGetMongoDBCollectionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesGetMongoDBCollectionInput>;
 
 // Output Schema
+export interface MongoDBResourcesGetMongoDBCollectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesGetMongoDBCollectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8257,9 +10851,7 @@ export const MongoDBResourcesGetMongoDBCollectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesGetMongoDBCollectionOutput =
-  typeof MongoDBResourcesGetMongoDBCollectionOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesGetMongoDBCollectionOutput>;
 
 // The operation
 /**
@@ -8278,6 +10870,13 @@ export const MongoDBResourcesGetMongoDBCollection =
     outputSchema: MongoDBResourcesGetMongoDBCollectionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesGetMongoDBCollectionThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  collectionName: string;
+}
 export const MongoDBResourcesGetMongoDBCollectionThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8291,11 +10890,22 @@ export const MongoDBResourcesGetMongoDBCollectionThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesGetMongoDBCollectionThroughputInput =
-  typeof MongoDBResourcesGetMongoDBCollectionThroughputInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesGetMongoDBCollectionThroughputInput>;
 
 // Output Schema
+export interface MongoDBResourcesGetMongoDBCollectionThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesGetMongoDBCollectionThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8315,9 +10925,7 @@ export const MongoDBResourcesGetMongoDBCollectionThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesGetMongoDBCollectionThroughputOutput =
-  typeof MongoDBResourcesGetMongoDBCollectionThroughputOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesGetMongoDBCollectionThroughputOutput>;
 
 // The operation
 /**
@@ -8336,6 +10944,12 @@ export const MongoDBResourcesGetMongoDBCollectionThroughput =
     outputSchema: MongoDBResourcesGetMongoDBCollectionThroughputOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesGetMongoDBDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const MongoDBResourcesGetMongoDBDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8348,11 +10962,22 @@ export const MongoDBResourcesGetMongoDBDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesGetMongoDBDatabaseInput =
-  typeof MongoDBResourcesGetMongoDBDatabaseInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesGetMongoDBDatabaseInput>;
 
 // Output Schema
+export interface MongoDBResourcesGetMongoDBDatabaseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesGetMongoDBDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8372,9 +10997,7 @@ export const MongoDBResourcesGetMongoDBDatabaseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesGetMongoDBDatabaseOutput =
-  typeof MongoDBResourcesGetMongoDBDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesGetMongoDBDatabaseOutput>;
 
 // The operation
 /**
@@ -8392,6 +11015,12 @@ export const MongoDBResourcesGetMongoDBDatabase =
     outputSchema: MongoDBResourcesGetMongoDBDatabaseOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesGetMongoDBDatabaseThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const MongoDBResourcesGetMongoDBDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8404,11 +11033,22 @@ export const MongoDBResourcesGetMongoDBDatabaseThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesGetMongoDBDatabaseThroughputInput =
-  typeof MongoDBResourcesGetMongoDBDatabaseThroughputInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesGetMongoDBDatabaseThroughputInput>;
 
 // Output Schema
+export interface MongoDBResourcesGetMongoDBDatabaseThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8428,9 +11068,7 @@ export const MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesGetMongoDBDatabaseThroughputOutput =
-  typeof MongoDBResourcesGetMongoDBDatabaseThroughputOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesGetMongoDBDatabaseThroughputOutput>;
 
 // The operation
 /**
@@ -8448,6 +11086,12 @@ export const MongoDBResourcesGetMongoDBDatabaseThroughput =
     outputSchema: MongoDBResourcesGetMongoDBDatabaseThroughputOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesGetMongoRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  mongoRoleDefinitionId: string;
+}
 export const MongoDBResourcesGetMongoRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8460,11 +11104,22 @@ export const MongoDBResourcesGetMongoRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesGetMongoRoleDefinitionInput =
-  typeof MongoDBResourcesGetMongoRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesGetMongoRoleDefinitionInput>;
 
 // Output Schema
+export interface MongoDBResourcesGetMongoRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesGetMongoRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8484,9 +11139,7 @@ export const MongoDBResourcesGetMongoRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesGetMongoRoleDefinitionOutput =
-  typeof MongoDBResourcesGetMongoRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesGetMongoRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -8504,6 +11157,12 @@ export const MongoDBResourcesGetMongoRoleDefinition =
     outputSchema: MongoDBResourcesGetMongoRoleDefinitionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesGetMongoUserDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  mongoUserDefinitionId: string;
+}
 export const MongoDBResourcesGetMongoUserDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8516,11 +11175,22 @@ export const MongoDBResourcesGetMongoUserDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesGetMongoUserDefinitionInput =
-  typeof MongoDBResourcesGetMongoUserDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesGetMongoUserDefinitionInput>;
 
 // Output Schema
+export interface MongoDBResourcesGetMongoUserDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesGetMongoUserDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8540,9 +11210,7 @@ export const MongoDBResourcesGetMongoUserDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesGetMongoUserDefinitionOutput =
-  typeof MongoDBResourcesGetMongoUserDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesGetMongoUserDefinitionOutput>;
 
 // The operation
 /**
@@ -8560,6 +11228,12 @@ export const MongoDBResourcesGetMongoUserDefinition =
     outputSchema: MongoDBResourcesGetMongoUserDefinitionOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesListMongoDBCollectionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const MongoDBResourcesListMongoDBCollectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8572,11 +11246,25 @@ export const MongoDBResourcesListMongoDBCollectionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesListMongoDBCollectionsInput =
-  typeof MongoDBResourcesListMongoDBCollectionsInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesListMongoDBCollectionsInput>;
 
 // Output Schema
+export interface MongoDBResourcesListMongoDBCollectionsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MongoDBResourcesListMongoDBCollectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8613,9 +11301,7 @@ export const MongoDBResourcesListMongoDBCollectionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MongoDBResourcesListMongoDBCollectionsOutput =
-  typeof MongoDBResourcesListMongoDBCollectionsOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesListMongoDBCollectionsOutput>;
 
 // The operation
 /**
@@ -8633,6 +11319,11 @@ export const MongoDBResourcesListMongoDBCollections =
     outputSchema: MongoDBResourcesListMongoDBCollectionsOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesListMongoDBDatabasesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const MongoDBResourcesListMongoDBDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8644,11 +11335,25 @@ export const MongoDBResourcesListMongoDBDatabasesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesListMongoDBDatabasesInput =
-  typeof MongoDBResourcesListMongoDBDatabasesInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesListMongoDBDatabasesInput>;
 
 // Output Schema
+export interface MongoDBResourcesListMongoDBDatabasesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MongoDBResourcesListMongoDBDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8685,9 +11390,7 @@ export const MongoDBResourcesListMongoDBDatabasesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MongoDBResourcesListMongoDBDatabasesOutput =
-  typeof MongoDBResourcesListMongoDBDatabasesOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesListMongoDBDatabasesOutput>;
 
 // The operation
 /**
@@ -8704,6 +11407,11 @@ export const MongoDBResourcesListMongoDBDatabases =
     outputSchema: MongoDBResourcesListMongoDBDatabasesOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesListMongoRoleDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const MongoDBResourcesListMongoRoleDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8715,11 +11423,25 @@ export const MongoDBResourcesListMongoRoleDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesListMongoRoleDefinitionsInput =
-  typeof MongoDBResourcesListMongoRoleDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesListMongoRoleDefinitionsInput>;
 
 // Output Schema
+export interface MongoDBResourcesListMongoRoleDefinitionsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MongoDBResourcesListMongoRoleDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8756,9 +11478,7 @@ export const MongoDBResourcesListMongoRoleDefinitionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MongoDBResourcesListMongoRoleDefinitionsOutput =
-  typeof MongoDBResourcesListMongoRoleDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesListMongoRoleDefinitionsOutput>;
 
 // The operation
 /**
@@ -8775,6 +11495,11 @@ export const MongoDBResourcesListMongoRoleDefinitions =
     outputSchema: MongoDBResourcesListMongoRoleDefinitionsOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesListMongoUserDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const MongoDBResourcesListMongoUserDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8786,11 +11511,25 @@ export const MongoDBResourcesListMongoUserDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesListMongoUserDefinitionsInput =
-  typeof MongoDBResourcesListMongoUserDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesListMongoUserDefinitionsInput>;
 
 // Output Schema
+export interface MongoDBResourcesListMongoUserDefinitionsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MongoDBResourcesListMongoUserDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8827,9 +11566,7 @@ export const MongoDBResourcesListMongoUserDefinitionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MongoDBResourcesListMongoUserDefinitionsOutput =
-  typeof MongoDBResourcesListMongoUserDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesListMongoUserDefinitionsOutput>;
 
 // The operation
 /**
@@ -8846,6 +11583,13 @@ export const MongoDBResourcesListMongoUserDefinitions =
     outputSchema: MongoDBResourcesListMongoUserDefinitionsOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  collectionName: string;
+}
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8859,11 +11603,22 @@ export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
-  typeof MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput>;
 
 // Output Schema
+export interface MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8883,9 +11638,7 @@ export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput =
-  typeof MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput>;
 
 // The operation
 /**
@@ -8904,6 +11657,13 @@ export const MongoDBResourcesMigrateMongoDBCollectionToAutoscale =
     outputSchema: MongoDBResourcesMigrateMongoDBCollectionToAutoscaleOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  collectionName: string;
+}
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8917,11 +11677,22 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
-  typeof MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput>;
 
 // Output Schema
+export interface MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8941,9 +11712,7 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput =
-  typeof MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput>;
 
 // The operation
 /**
@@ -8964,6 +11733,12 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughput =
       MongoDBResourcesMigrateMongoDBCollectionToManualThroughputOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8976,11 +11751,22 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
-  typeof MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput>;
 
 // Output Schema
+export interface MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9000,9 +11786,7 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput =
-  typeof MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput>;
 
 // The operation
 /**
@@ -9020,6 +11804,12 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscale =
     outputSchema: MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9032,11 +11822,22 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
-  typeof MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput>;
 
 // Output Schema
+export interface MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9056,9 +11857,7 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput =
-  typeof MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput>;
 
 // The operation
 /**
@@ -9077,6 +11876,14 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughput =
       MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesRetrieveContinuousBackupInformationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  collectionName: string;
+  location?: string;
+}
 export const MongoDBResourcesRetrieveContinuousBackupInformationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9091,11 +11898,12 @@ export const MongoDBResourcesRetrieveContinuousBackupInformationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/retrieveContinuousBackupInformation",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesRetrieveContinuousBackupInformationInput =
-  typeof MongoDBResourcesRetrieveContinuousBackupInformationInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesRetrieveContinuousBackupInformationInput>;
 
 // Output Schema
+export interface MongoDBResourcesRetrieveContinuousBackupInformationOutput {
+  continuousBackupInformation?: { latestRestorableTimestamp?: string };
+}
 export const MongoDBResourcesRetrieveContinuousBackupInformationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
@@ -9103,9 +11911,7 @@ export const MongoDBResourcesRetrieveContinuousBackupInformationOutput =
         latestRestorableTimestamp: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesRetrieveContinuousBackupInformationOutput =
-  typeof MongoDBResourcesRetrieveContinuousBackupInformationOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesRetrieveContinuousBackupInformationOutput>;
 
 // The operation
 /**
@@ -9124,6 +11930,47 @@ export const MongoDBResourcesRetrieveContinuousBackupInformation =
     outputSchema: MongoDBResourcesRetrieveContinuousBackupInformationOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesUpdateMongoDBCollectionThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  collectionName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9190,11 +12037,22 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
-  typeof MongoDBResourcesUpdateMongoDBCollectionThroughputInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesUpdateMongoDBCollectionThroughputInput>;
 
 // Output Schema
+export interface MongoDBResourcesUpdateMongoDBCollectionThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9214,9 +12072,7 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesUpdateMongoDBCollectionThroughputOutput =
-  typeof MongoDBResourcesUpdateMongoDBCollectionThroughputOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesUpdateMongoDBCollectionThroughputOutput>;
 
 // The operation
 /**
@@ -9235,6 +12091,46 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughput =
     outputSchema: MongoDBResourcesUpdateMongoDBCollectionThroughputOutput,
   }));
 // Input Schema
+export interface MongoDBResourcesUpdateMongoDBDatabaseThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9300,11 +12196,22 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
-  typeof MongoDBResourcesUpdateMongoDBDatabaseThroughputInput.Type;
+  ) as unknown as Schema.Codec<MongoDBResourcesUpdateMongoDBDatabaseThroughputInput>;
 
 // Output Schema
+export interface MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9324,9 +12231,7 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput =
-  typeof MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput.Type;
+  }) as unknown as Schema.Codec<MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput>;
 
 // The operation
 /**
@@ -9344,6 +12249,18 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughput =
     outputSchema: MongoDBResourcesUpdateMongoDBDatabaseThroughputOutput,
   }));
 // Input Schema
+export interface MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+  properties?: {
+    roleDefinitionId?: string;
+    scope?: string;
+    principalId?: string;
+    provisioningState?: string;
+  };
+}
 export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9364,11 +12281,22 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput =
-  typeof MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<MongoMIResourcesCreateUpdateMongoMIRoleAssignmentInput>;
 
 // Output Schema
+export interface MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9388,9 +12316,7 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput =
-  typeof MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -9408,6 +12334,23 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignment =
     outputSchema: MongoMIResourcesCreateUpdateMongoMIRoleAssignmentOutput,
   }));
 // Input Schema
+export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+  properties?: {
+    id?: string;
+    roleName?: string;
+    type?: "BuiltInRole" | "CustomRole";
+    assignableScopes?: string[];
+    permissions?: {
+      id?: string;
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+  };
+}
 export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9437,11 +12380,22 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput =
-  typeof MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoMIResourcesCreateUpdateMongoMIRoleDefinitionInput>;
 
 // Output Schema
+export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9461,9 +12415,7 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput =
-  typeof MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -9481,6 +12433,12 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleDefinition =
     outputSchema: MongoMIResourcesCreateUpdateMongoMIRoleDefinitionOutput,
   }));
 // Input Schema
+export interface MongoMIResourcesDeleteMongoMIRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const MongoMIResourcesDeleteMongoMIRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9493,15 +12451,12 @@ export const MongoMIResourcesDeleteMongoMIRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoMIResourcesDeleteMongoMIRoleAssignmentInput =
-  typeof MongoMIResourcesDeleteMongoMIRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<MongoMIResourcesDeleteMongoMIRoleAssignmentInput>;
 
 // Output Schema
+export type MongoMIResourcesDeleteMongoMIRoleAssignmentOutput = void;
 export const MongoMIResourcesDeleteMongoMIRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MongoMIResourcesDeleteMongoMIRoleAssignmentOutput =
-  typeof MongoMIResourcesDeleteMongoMIRoleAssignmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoMIResourcesDeleteMongoMIRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -9519,6 +12474,12 @@ export const MongoMIResourcesDeleteMongoMIRoleAssignment =
     outputSchema: MongoMIResourcesDeleteMongoMIRoleAssignmentOutput,
   }));
 // Input Schema
+export interface MongoMIResourcesDeleteMongoMIRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const MongoMIResourcesDeleteMongoMIRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9531,15 +12492,12 @@ export const MongoMIResourcesDeleteMongoMIRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoMIResourcesDeleteMongoMIRoleDefinitionInput =
-  typeof MongoMIResourcesDeleteMongoMIRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoMIResourcesDeleteMongoMIRoleDefinitionInput>;
 
 // Output Schema
+export type MongoMIResourcesDeleteMongoMIRoleDefinitionOutput = void;
 export const MongoMIResourcesDeleteMongoMIRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MongoMIResourcesDeleteMongoMIRoleDefinitionOutput =
-  typeof MongoMIResourcesDeleteMongoMIRoleDefinitionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoMIResourcesDeleteMongoMIRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -9557,6 +12515,12 @@ export const MongoMIResourcesDeleteMongoMIRoleDefinition =
     outputSchema: MongoMIResourcesDeleteMongoMIRoleDefinitionOutput,
   }));
 // Input Schema
+export interface MongoMIResourcesGetMongoMIRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const MongoMIResourcesGetMongoMIRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9569,11 +12533,22 @@ export const MongoMIResourcesGetMongoMIRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoMIResourcesGetMongoMIRoleAssignmentInput =
-  typeof MongoMIResourcesGetMongoMIRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<MongoMIResourcesGetMongoMIRoleAssignmentInput>;
 
 // Output Schema
+export interface MongoMIResourcesGetMongoMIRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoMIResourcesGetMongoMIRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9593,9 +12568,7 @@ export const MongoMIResourcesGetMongoMIRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoMIResourcesGetMongoMIRoleAssignmentOutput =
-  typeof MongoMIResourcesGetMongoMIRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<MongoMIResourcesGetMongoMIRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -9613,6 +12586,12 @@ export const MongoMIResourcesGetMongoMIRoleAssignment =
     outputSchema: MongoMIResourcesGetMongoMIRoleAssignmentOutput,
   }));
 // Input Schema
+export interface MongoMIResourcesGetMongoMIRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const MongoMIResourcesGetMongoMIRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9625,11 +12604,22 @@ export const MongoMIResourcesGetMongoMIRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoMIResourcesGetMongoMIRoleDefinitionInput =
-  typeof MongoMIResourcesGetMongoMIRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<MongoMIResourcesGetMongoMIRoleDefinitionInput>;
 
 // Output Schema
+export interface MongoMIResourcesGetMongoMIRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoMIResourcesGetMongoMIRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9649,9 +12639,7 @@ export const MongoMIResourcesGetMongoMIRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoMIResourcesGetMongoMIRoleDefinitionOutput =
-  typeof MongoMIResourcesGetMongoMIRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<MongoMIResourcesGetMongoMIRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -9669,6 +12657,11 @@ export const MongoMIResourcesGetMongoMIRoleDefinition =
     outputSchema: MongoMIResourcesGetMongoMIRoleDefinitionOutput,
   }));
 // Input Schema
+export interface MongoMIResourcesListMongoMIRoleAssignmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const MongoMIResourcesListMongoMIRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9680,11 +12673,25 @@ export const MongoMIResourcesListMongoMIRoleAssignmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoMIResourcesListMongoMIRoleAssignmentsInput =
-  typeof MongoMIResourcesListMongoMIRoleAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<MongoMIResourcesListMongoMIRoleAssignmentsInput>;
 
 // Output Schema
+export interface MongoMIResourcesListMongoMIRoleAssignmentsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MongoMIResourcesListMongoMIRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9719,9 +12726,7 @@ export const MongoMIResourcesListMongoMIRoleAssignmentsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MongoMIResourcesListMongoMIRoleAssignmentsOutput =
-  typeof MongoMIResourcesListMongoMIRoleAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<MongoMIResourcesListMongoMIRoleAssignmentsOutput>;
 
 // The operation
 /**
@@ -9738,6 +12743,11 @@ export const MongoMIResourcesListMongoMIRoleAssignments =
     outputSchema: MongoMIResourcesListMongoMIRoleAssignmentsOutput,
   }));
 // Input Schema
+export interface MongoMIResourcesListMongoMIRoleDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const MongoMIResourcesListMongoMIRoleDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9749,11 +12759,25 @@ export const MongoMIResourcesListMongoMIRoleDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type MongoMIResourcesListMongoMIRoleDefinitionsInput =
-  typeof MongoMIResourcesListMongoMIRoleDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<MongoMIResourcesListMongoMIRoleDefinitionsInput>;
 
 // Output Schema
+export interface MongoMIResourcesListMongoMIRoleDefinitionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MongoMIResourcesListMongoMIRoleDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9788,9 +12812,7 @@ export const MongoMIResourcesListMongoMIRoleDefinitionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MongoMIResourcesListMongoMIRoleDefinitionsOutput =
-  typeof MongoMIResourcesListMongoMIRoleDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<MongoMIResourcesListMongoMIRoleDefinitionsOutput>;
 
 // The operation
 /**
@@ -9807,6 +12829,15 @@ export const MongoMIResourcesListMongoMIRoleDefinitions =
     outputSchema: MongoMIResourcesListMongoMIRoleDefinitionsOutput,
   }));
 // Input Schema
+export interface NotebookWorkspacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  notebookWorkspaceName: "default";
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NotebookWorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9822,11 +12853,22 @@ export const NotebookWorkspacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type NotebookWorkspacesCreateOrUpdateInput =
-  typeof NotebookWorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NotebookWorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface NotebookWorkspacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotebookWorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9846,9 +12888,7 @@ export const NotebookWorkspacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotebookWorkspacesCreateOrUpdateOutput =
-  typeof NotebookWorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NotebookWorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9866,6 +12906,12 @@ export const NotebookWorkspacesCreateOrUpdate =
     outputSchema: NotebookWorkspacesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NotebookWorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  notebookWorkspaceName: "default";
+}
 export const NotebookWorkspacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9878,15 +12924,12 @@ export const NotebookWorkspacesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type NotebookWorkspacesDeleteInput =
-  typeof NotebookWorkspacesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NotebookWorkspacesDeleteInput>;
 
 // Output Schema
+export type NotebookWorkspacesDeleteOutput = void;
 export const NotebookWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebookWorkspacesDeleteOutput =
-  typeof NotebookWorkspacesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -9905,6 +12948,12 @@ export const NotebookWorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotebookWorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  notebookWorkspaceName: "default";
+}
 export const NotebookWorkspacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9917,10 +12966,22 @@ export const NotebookWorkspacesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type NotebookWorkspacesGetInput = typeof NotebookWorkspacesGetInput.Type;
+  ) as unknown as Schema.Codec<NotebookWorkspacesGetInput>;
 
 // Output Schema
+export interface NotebookWorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotebookWorkspacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9940,9 +13001,7 @@ export const NotebookWorkspacesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotebookWorkspacesGetOutput =
-  typeof NotebookWorkspacesGetOutput.Type;
+  }) as unknown as Schema.Codec<NotebookWorkspacesGetOutput>;
 
 // The operation
 /**
@@ -9961,6 +13020,11 @@ export const NotebookWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotebookWorkspacesListByDatabaseAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const NotebookWorkspacesListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9972,11 +13036,25 @@ export const NotebookWorkspacesListByDatabaseAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces",
       apiVersion: "2026-03-15",
     }),
-  );
-export type NotebookWorkspacesListByDatabaseAccountInput =
-  typeof NotebookWorkspacesListByDatabaseAccountInput.Type;
+  ) as unknown as Schema.Codec<NotebookWorkspacesListByDatabaseAccountInput>;
 
 // Output Schema
+export interface NotebookWorkspacesListByDatabaseAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NotebookWorkspacesListByDatabaseAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10013,9 +13091,7 @@ export const NotebookWorkspacesListByDatabaseAccountOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NotebookWorkspacesListByDatabaseAccountOutput =
-  typeof NotebookWorkspacesListByDatabaseAccountOutput.Type;
+  }) as unknown as Schema.Codec<NotebookWorkspacesListByDatabaseAccountOutput>;
 
 // The operation
 /**
@@ -10032,6 +13108,12 @@ export const NotebookWorkspacesListByDatabaseAccount =
     outputSchema: NotebookWorkspacesListByDatabaseAccountOutput,
   }));
 // Input Schema
+export interface NotebookWorkspacesListConnectionInfoInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  notebookWorkspaceName: "default";
+}
 export const NotebookWorkspacesListConnectionInfoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10044,18 +13126,18 @@ export const NotebookWorkspacesListConnectionInfoInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/listConnectionInfo",
       apiVersion: "2026-03-15",
     }),
-  );
-export type NotebookWorkspacesListConnectionInfoInput =
-  typeof NotebookWorkspacesListConnectionInfoInput.Type;
+  ) as unknown as Schema.Codec<NotebookWorkspacesListConnectionInfoInput>;
 
 // Output Schema
+export interface NotebookWorkspacesListConnectionInfoOutput {
+  authToken?: string;
+  notebookServerEndpoint?: string;
+}
 export const NotebookWorkspacesListConnectionInfoOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authToken: Schema.optional(Schema.String),
     notebookServerEndpoint: Schema.optional(Schema.String),
-  });
-export type NotebookWorkspacesListConnectionInfoOutput =
-  typeof NotebookWorkspacesListConnectionInfoOutput.Type;
+  }) as unknown as Schema.Codec<NotebookWorkspacesListConnectionInfoOutput>;
 
 // The operation
 /**
@@ -10073,6 +13155,12 @@ export const NotebookWorkspacesListConnectionInfo =
     outputSchema: NotebookWorkspacesListConnectionInfoOutput,
   }));
 // Input Schema
+export interface NotebookWorkspacesRegenerateAuthTokenInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  notebookWorkspaceName: "default";
+}
 export const NotebookWorkspacesRegenerateAuthTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10085,15 +13173,12 @@ export const NotebookWorkspacesRegenerateAuthTokenInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/regenerateAuthToken",
       apiVersion: "2026-03-15",
     }),
-  );
-export type NotebookWorkspacesRegenerateAuthTokenInput =
-  typeof NotebookWorkspacesRegenerateAuthTokenInput.Type;
+  ) as unknown as Schema.Codec<NotebookWorkspacesRegenerateAuthTokenInput>;
 
 // Output Schema
+export type NotebookWorkspacesRegenerateAuthTokenOutput = void;
 export const NotebookWorkspacesRegenerateAuthTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebookWorkspacesRegenerateAuthTokenOutput =
-  typeof NotebookWorkspacesRegenerateAuthTokenOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesRegenerateAuthTokenOutput>;
 
 // The operation
 /**
@@ -10111,6 +13196,12 @@ export const NotebookWorkspacesRegenerateAuthToken =
     outputSchema: NotebookWorkspacesRegenerateAuthTokenOutput,
   }));
 // Input Schema
+export interface NotebookWorkspacesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  notebookWorkspaceName: "default";
+}
 export const NotebookWorkspacesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10123,15 +13214,12 @@ export const NotebookWorkspacesStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/start",
       apiVersion: "2026-03-15",
     }),
-  );
-export type NotebookWorkspacesStartInput =
-  typeof NotebookWorkspacesStartInput.Type;
+  ) as unknown as Schema.Codec<NotebookWorkspacesStartInput>;
 
 // Output Schema
+export type NotebookWorkspacesStartOutput = void;
 export const NotebookWorkspacesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebookWorkspacesStartOutput =
-  typeof NotebookWorkspacesStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebookWorkspacesStartOutput>;
 
 // The operation
 /**
@@ -10150,6 +13238,7 @@ export const NotebookWorkspacesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -10158,10 +13247,21 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DocumentDB/operations",
     apiVersion: "2026-03-15",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      Provider?: string;
+      Resource?: string;
+      Operation?: string;
+      Description?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -10177,8 +13277,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -10191,6 +13290,15 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PartitionKeyRangeIdListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseRid: string;
+  collectionRid: string;
+  partitionKeyRangeId: string;
+  $filter: string;
+}
 export const PartitionKeyRangeIdListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10206,11 +13314,34 @@ export const PartitionKeyRangeIdListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PartitionKeyRangeIdListMetricsInput =
-  typeof PartitionKeyRangeIdListMetricsInput.Type;
+  ) as unknown as Schema.Codec<PartitionKeyRangeIdListMetricsInput>;
 
 // Output Schema
+export interface PartitionKeyRangeIdListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const PartitionKeyRangeIdListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10252,9 +13383,7 @@ export const PartitionKeyRangeIdListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartitionKeyRangeIdListMetricsOutput =
-  typeof PartitionKeyRangeIdListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<PartitionKeyRangeIdListMetricsOutput>;
 
 // The operation
 /**
@@ -10275,6 +13404,16 @@ export const PartitionKeyRangeIdListMetrics =
     outputSchema: PartitionKeyRangeIdListMetricsOutput,
   }));
 // Input Schema
+export interface PartitionKeyRangeIdRegionListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  region: string;
+  databaseRid: string;
+  collectionRid: string;
+  partitionKeyRangeId: string;
+  $filter: string;
+}
 export const PartitionKeyRangeIdRegionListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10291,11 +13430,34 @@ export const PartitionKeyRangeIdRegionListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PartitionKeyRangeIdRegionListMetricsInput =
-  typeof PartitionKeyRangeIdRegionListMetricsInput.Type;
+  ) as unknown as Schema.Codec<PartitionKeyRangeIdRegionListMetricsInput>;
 
 // Output Schema
+export interface PartitionKeyRangeIdRegionListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const PartitionKeyRangeIdRegionListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10337,9 +13499,7 @@ export const PartitionKeyRangeIdRegionListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartitionKeyRangeIdRegionListMetricsOutput =
-  typeof PartitionKeyRangeIdRegionListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<PartitionKeyRangeIdRegionListMetricsOutput>;
 
 // The operation
 /**
@@ -10361,6 +13521,12 @@ export const PartitionKeyRangeIdRegionListMetrics =
     outputSchema: PartitionKeyRangeIdRegionListMetricsOutput,
   }));
 // Input Schema
+export interface PercentileListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $filter: string;
+}
 export const PercentileListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10373,10 +13539,34 @@ export const PercentileListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/percentile/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PercentileListMetricsInput = typeof PercentileListMetricsInput.Type;
+  ) as unknown as Schema.Codec<PercentileListMetricsInput>;
 
 // Output Schema
+export interface PercentileListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const PercentileListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10418,9 +13608,7 @@ export const PercentileListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PercentileListMetricsOutput =
-  typeof PercentileListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<PercentileListMetricsOutput>;
 
 // The operation
 /**
@@ -10439,6 +13627,14 @@ export const PercentileListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PercentileSourceTargetListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  sourceRegion: string;
+  targetRegion: string;
+  $filter: string;
+}
 export const PercentileSourceTargetListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10453,11 +13649,34 @@ export const PercentileSourceTargetListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sourceRegion/{sourceRegion}/targetRegion/{targetRegion}/percentile/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PercentileSourceTargetListMetricsInput =
-  typeof PercentileSourceTargetListMetricsInput.Type;
+  ) as unknown as Schema.Codec<PercentileSourceTargetListMetricsInput>;
 
 // Output Schema
+export interface PercentileSourceTargetListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const PercentileSourceTargetListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10499,9 +13718,7 @@ export const PercentileSourceTargetListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PercentileSourceTargetListMetricsOutput =
-  typeof PercentileSourceTargetListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<PercentileSourceTargetListMetricsOutput>;
 
 // The operation
 /**
@@ -10521,6 +13738,13 @@ export const PercentileSourceTargetListMetrics =
     outputSchema: PercentileSourceTargetListMetricsOutput,
   }));
 // Input Schema
+export interface PercentileTargetListMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  targetRegion: string;
+  $filter: string;
+}
 export const PercentileTargetListMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10534,11 +13758,34 @@ export const PercentileTargetListMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/targetRegion/{targetRegion}/percentile/metrics",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PercentileTargetListMetricsInput =
-  typeof PercentileTargetListMetricsInput.Type;
+  ) as unknown as Schema.Codec<PercentileTargetListMetricsInput>;
 
 // Output Schema
+export interface PercentileTargetListMetricsOutput {
+  value?: {
+    startTime?: string;
+    endTime?: string;
+    timeGrain?: string;
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    metricValues?: {
+      _count?: number;
+      average?: number;
+      maximum?: number;
+      minimum?: number;
+      timestamp?: string;
+      total?: number;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const PercentileTargetListMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10580,9 +13827,7 @@ export const PercentileTargetListMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PercentileTargetListMetricsOutput =
-  typeof PercentileTargetListMetricsOutput.Type;
+  }) as unknown as Schema.Codec<PercentileTargetListMetricsOutput>;
 
 // The operation
 /**
@@ -10602,6 +13847,22 @@ export const PercentileTargetListMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: string;
+      description?: string;
+      actionsRequired?: string;
+    };
+    groupId?: string;
+    provisioningState?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10632,11 +13893,22 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10656,9 +13928,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10676,6 +13946,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10688,15 +13964,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -10714,6 +13987,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10726,11 +14005,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10750,9 +14040,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -10770,6 +14058,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByDatabaseAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const PrivateEndpointConnectionsListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10781,11 +14074,25 @@ export const PrivateEndpointConnectionsListByDatabaseAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PrivateEndpointConnectionsListByDatabaseAccountInput =
-  typeof PrivateEndpointConnectionsListByDatabaseAccountInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByDatabaseAccountInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByDatabaseAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByDatabaseAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10822,9 +14129,7 @@ export const PrivateEndpointConnectionsListByDatabaseAccountOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByDatabaseAccountOutput =
-  typeof PrivateEndpointConnectionsListByDatabaseAccountOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByDatabaseAccountOutput>;
 
 // The operation
 /**
@@ -10841,6 +14146,12 @@ export const PrivateEndpointConnectionsListByDatabaseAccount =
     outputSchema: PrivateEndpointConnectionsListByDatabaseAccountOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10853,11 +14164,22 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources/{groupName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10877,9 +14199,7 @@ export const PrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -10898,6 +14218,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListByDatabaseAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const PrivateLinkResourcesListByDatabaseAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10909,11 +14234,25 @@ export const PrivateLinkResourcesListByDatabaseAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources",
       apiVersion: "2026-03-15",
     }),
-  );
-export type PrivateLinkResourcesListByDatabaseAccountInput =
-  typeof PrivateLinkResourcesListByDatabaseAccountInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByDatabaseAccountInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByDatabaseAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByDatabaseAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10950,9 +14289,7 @@ export const PrivateLinkResourcesListByDatabaseAccountOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByDatabaseAccountOutput =
-  typeof PrivateLinkResourcesListByDatabaseAccountOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByDatabaseAccountOutput>;
 
 // The operation
 /**
@@ -10969,6 +14306,11 @@ export const PrivateLinkResourcesListByDatabaseAccount =
     outputSchema: PrivateLinkResourcesListByDatabaseAccountOutput,
   }));
 // Input Schema
+export interface RestorableDatabaseAccountsGetByLocationInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+}
 export const RestorableDatabaseAccountsGetByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10980,11 +14322,22 @@ export const RestorableDatabaseAccountsGetByLocationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableDatabaseAccountsGetByLocationInput =
-  typeof RestorableDatabaseAccountsGetByLocationInput.Type;
+  ) as unknown as Schema.Codec<RestorableDatabaseAccountsGetByLocationInput>;
 
 // Output Schema
+export interface RestorableDatabaseAccountsGetByLocationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RestorableDatabaseAccountsGetByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11004,9 +14357,7 @@ export const RestorableDatabaseAccountsGetByLocationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RestorableDatabaseAccountsGetByLocationOutput =
-  typeof RestorableDatabaseAccountsGetByLocationOutput.Type;
+  }) as unknown as Schema.Codec<RestorableDatabaseAccountsGetByLocationOutput>;
 
 // The operation
 /**
@@ -11023,6 +14374,9 @@ export const RestorableDatabaseAccountsGetByLocation =
     outputSchema: RestorableDatabaseAccountsGetByLocationOutput,
   }));
 // Input Schema
+export interface RestorableDatabaseAccountsListInput {
+  subscriptionId: string;
+}
 export const RestorableDatabaseAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11032,11 +14386,25 @@ export const RestorableDatabaseAccountsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableDatabaseAccountsListInput =
-  typeof RestorableDatabaseAccountsListInput.Type;
+  ) as unknown as Schema.Codec<RestorableDatabaseAccountsListInput>;
 
 // Output Schema
+export interface RestorableDatabaseAccountsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RestorableDatabaseAccountsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11073,9 +14441,7 @@ export const RestorableDatabaseAccountsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableDatabaseAccountsListOutput =
-  typeof RestorableDatabaseAccountsListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableDatabaseAccountsListOutput>;
 
 // The operation
 /**
@@ -11090,6 +14456,10 @@ export const RestorableDatabaseAccountsList =
     outputSchema: RestorableDatabaseAccountsListOutput,
   }));
 // Input Schema
+export interface RestorableDatabaseAccountsListByLocationInput {
+  subscriptionId: string;
+  location: string;
+}
 export const RestorableDatabaseAccountsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11100,11 +14470,25 @@ export const RestorableDatabaseAccountsListByLocationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableDatabaseAccountsListByLocationInput =
-  typeof RestorableDatabaseAccountsListByLocationInput.Type;
+  ) as unknown as Schema.Codec<RestorableDatabaseAccountsListByLocationInput>;
 
 // Output Schema
+export interface RestorableDatabaseAccountsListByLocationOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RestorableDatabaseAccountsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11141,9 +14525,7 @@ export const RestorableDatabaseAccountsListByLocationOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableDatabaseAccountsListByLocationOutput =
-  typeof RestorableDatabaseAccountsListByLocationOutput.Type;
+  }) as unknown as Schema.Codec<RestorableDatabaseAccountsListByLocationOutput>;
 
 // The operation
 /**
@@ -11159,6 +14541,11 @@ export const RestorableDatabaseAccountsListByLocation =
     outputSchema: RestorableDatabaseAccountsListByLocationOutput,
   }));
 // Input Schema
+export interface RestorableGremlinDatabasesListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+}
 export const RestorableGremlinDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11170,11 +14557,33 @@ export const RestorableGremlinDatabasesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinDatabases",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableGremlinDatabasesListInput =
-  typeof RestorableGremlinDatabasesListInput.Type;
+  ) as unknown as Schema.Codec<RestorableGremlinDatabasesListInput>;
 
 // Output Schema
+export interface RestorableGremlinDatabasesListOutput {
+  value?: {
+    properties?: {
+      resource?: {
+        _rid?: string;
+        operationType?:
+          | "Create"
+          | "Replace"
+          | "Delete"
+          | "Recreate"
+          | "SystemOperation";
+        canUndelete?: string;
+        canUndeleteReason?: string;
+        eventTimestamp?: string;
+        ownerId?: string;
+        ownerResourceId?: string;
+      };
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const RestorableGremlinDatabasesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11210,9 +14619,7 @@ export const RestorableGremlinDatabasesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableGremlinDatabasesListOutput =
-  typeof RestorableGremlinDatabasesListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableGremlinDatabasesListOutput>;
 
 // The operation
 /**
@@ -11229,6 +14636,14 @@ export const RestorableGremlinDatabasesList =
     outputSchema: RestorableGremlinDatabasesListOutput,
   }));
 // Input Schema
+export interface RestorableGremlinGraphsListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+  restorableGremlinDatabaseRid?: string;
+  startTime?: string;
+  endTime?: string;
+}
 export const RestorableGremlinGraphsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11243,11 +14658,33 @@ export const RestorableGremlinGraphsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGraphs",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableGremlinGraphsListInput =
-  typeof RestorableGremlinGraphsListInput.Type;
+  ) as unknown as Schema.Codec<RestorableGremlinGraphsListInput>;
 
 // Output Schema
+export interface RestorableGremlinGraphsListOutput {
+  value?: {
+    properties?: {
+      resource?: {
+        _rid?: string;
+        operationType?:
+          | "Create"
+          | "Replace"
+          | "Delete"
+          | "Recreate"
+          | "SystemOperation";
+        canUndelete?: string;
+        canUndeleteReason?: string;
+        eventTimestamp?: string;
+        ownerId?: string;
+        ownerResourceId?: string;
+      };
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const RestorableGremlinGraphsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11283,9 +14720,7 @@ export const RestorableGremlinGraphsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableGremlinGraphsListOutput =
-  typeof RestorableGremlinGraphsListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableGremlinGraphsListOutput>;
 
 // The operation
 /**
@@ -11306,6 +14741,13 @@ export const RestorableGremlinGraphsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RestorableGremlinResourcesListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+  restoreLocation?: string;
+  restoreTimestampInUtc?: string;
+}
 export const RestorableGremlinResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11319,11 +14761,19 @@ export const RestorableGremlinResourcesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinResources",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableGremlinResourcesListInput =
-  typeof RestorableGremlinResourcesListInput.Type;
+  ) as unknown as Schema.Codec<RestorableGremlinResourcesListInput>;
 
 // Output Schema
+export interface RestorableGremlinResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    databaseName?: string;
+    graphNames?: string[];
+  }[];
+  nextLink?: string;
+}
 export const RestorableGremlinResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11338,9 +14788,7 @@ export const RestorableGremlinResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableGremlinResourcesListOutput =
-  typeof RestorableGremlinResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableGremlinResourcesListOutput>;
 
 // The operation
 /**
@@ -11359,6 +14807,14 @@ export const RestorableGremlinResourcesList =
     outputSchema: RestorableGremlinResourcesListOutput,
   }));
 // Input Schema
+export interface RestorableMongodbCollectionsListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+  restorableMongodbDatabaseRid?: string;
+  startTime?: string;
+  endTime?: string;
+}
 export const RestorableMongodbCollectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11373,11 +14829,33 @@ export const RestorableMongodbCollectionsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbCollections",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableMongodbCollectionsListInput =
-  typeof RestorableMongodbCollectionsListInput.Type;
+  ) as unknown as Schema.Codec<RestorableMongodbCollectionsListInput>;
 
 // Output Schema
+export interface RestorableMongodbCollectionsListOutput {
+  value?: {
+    properties?: {
+      resource?: {
+        _rid?: string;
+        operationType?:
+          | "Create"
+          | "Replace"
+          | "Delete"
+          | "Recreate"
+          | "SystemOperation";
+        canUndelete?: string;
+        canUndeleteReason?: string;
+        eventTimestamp?: string;
+        ownerId?: string;
+        ownerResourceId?: string;
+      };
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const RestorableMongodbCollectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11413,9 +14891,7 @@ export const RestorableMongodbCollectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableMongodbCollectionsListOutput =
-  typeof RestorableMongodbCollectionsListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableMongodbCollectionsListOutput>;
 
 // The operation
 /**
@@ -11435,6 +14911,11 @@ export const RestorableMongodbCollectionsList =
     outputSchema: RestorableMongodbCollectionsListOutput,
   }));
 // Input Schema
+export interface RestorableMongodbDatabasesListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+}
 export const RestorableMongodbDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11446,11 +14927,33 @@ export const RestorableMongodbDatabasesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbDatabases",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableMongodbDatabasesListInput =
-  typeof RestorableMongodbDatabasesListInput.Type;
+  ) as unknown as Schema.Codec<RestorableMongodbDatabasesListInput>;
 
 // Output Schema
+export interface RestorableMongodbDatabasesListOutput {
+  value?: {
+    properties?: {
+      resource?: {
+        _rid?: string;
+        operationType?:
+          | "Create"
+          | "Replace"
+          | "Delete"
+          | "Recreate"
+          | "SystemOperation";
+        canUndelete?: string;
+        canUndeleteReason?: string;
+        eventTimestamp?: string;
+        ownerId?: string;
+        ownerResourceId?: string;
+      };
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const RestorableMongodbDatabasesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11486,9 +14989,7 @@ export const RestorableMongodbDatabasesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableMongodbDatabasesListOutput =
-  typeof RestorableMongodbDatabasesListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableMongodbDatabasesListOutput>;
 
 // The operation
 /**
@@ -11505,6 +15006,13 @@ export const RestorableMongodbDatabasesList =
     outputSchema: RestorableMongodbDatabasesListOutput,
   }));
 // Input Schema
+export interface RestorableMongodbResourcesListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+  restoreLocation?: string;
+  restoreTimestampInUtc?: string;
+}
 export const RestorableMongodbResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11518,11 +15026,19 @@ export const RestorableMongodbResourcesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbResources",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableMongodbResourcesListInput =
-  typeof RestorableMongodbResourcesListInput.Type;
+  ) as unknown as Schema.Codec<RestorableMongodbResourcesListInput>;
 
 // Output Schema
+export interface RestorableMongodbResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    databaseName?: string;
+    collectionNames?: string[];
+  }[];
+  nextLink?: string;
+}
 export const RestorableMongodbResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11537,9 +15053,7 @@ export const RestorableMongodbResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableMongodbResourcesListOutput =
-  typeof RestorableMongodbResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableMongodbResourcesListOutput>;
 
 // The operation
 /**
@@ -11558,6 +15072,14 @@ export const RestorableMongodbResourcesList =
     outputSchema: RestorableMongodbResourcesListOutput,
   }));
 // Input Schema
+export interface RestorableSqlContainersListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+  restorableSqlDatabaseRid?: string;
+  startTime?: string;
+  endTime?: string;
+}
 export const RestorableSqlContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11572,11 +15094,113 @@ export const RestorableSqlContainersListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlContainers",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableSqlContainersListInput =
-  typeof RestorableSqlContainersListInput.Type;
+  ) as unknown as Schema.Codec<RestorableSqlContainersListInput>;
 
 // Output Schema
+export interface RestorableSqlContainersListOutput {
+  value?: {
+    properties?: {
+      resource?: {
+        _rid?: string;
+        operationType?:
+          | "Create"
+          | "Replace"
+          | "Delete"
+          | "Recreate"
+          | "SystemOperation";
+        canUndelete?: string;
+        canUndeleteReason?: string;
+        eventTimestamp?: string;
+        ownerId?: string;
+        ownerResourceId?: string;
+        container?: {
+          id: string;
+          indexingPolicy?: {
+            automatic?: boolean;
+            indexingMode?: "consistent" | "lazy" | "none";
+            includedPaths?: {
+              path?: string;
+              indexes?: {
+                dataType?:
+                  | "String"
+                  | "Number"
+                  | "Point"
+                  | "Polygon"
+                  | "LineString"
+                  | "MultiPolygon";
+                precision?: number;
+                kind?: "Hash" | "Range" | "Spatial";
+              }[];
+            }[];
+            excludedPaths?: { path?: string }[];
+            compositeIndexes?: {
+              path?: string;
+              order?: "ascending" | "descending";
+            }[][];
+            spatialIndexes?: {
+              path?: string;
+              types?: ("Point" | "LineString" | "Polygon" | "MultiPolygon")[];
+            }[];
+            vectorIndexes?: {
+              path: string;
+              type: "flat" | "diskANN" | "quantizedFlat";
+              quantizationByteSize?: number;
+              indexingSearchListSize?: number;
+              vectorIndexShardKey?: string[];
+            }[];
+            fullTextIndexes?: { path: string }[];
+          };
+          partitionKey?: {
+            paths?: string[];
+            kind?: "Hash" | "Range" | "MultiHash";
+            version?: number;
+            systemKey?: boolean;
+          };
+          defaultTtl?: number;
+          uniqueKeyPolicy?: { uniqueKeys?: { paths?: string[] }[] };
+          conflictResolutionPolicy?: {
+            mode?: "LastWriterWins" | "Custom";
+            conflictResolutionPath?: string;
+            conflictResolutionProcedure?: string;
+          };
+          clientEncryptionPolicy?: {
+            includedPaths: {
+              path: string;
+              clientEncryptionKeyId: string;
+              encryptionType: string;
+              encryptionAlgorithm: string;
+            }[];
+            policyFormatVersion: number;
+          };
+          analyticalStorageTtl?: number;
+          restoreParameters?: {
+            restoreSource?: string;
+            restoreTimestampInUtc?: string;
+            restoreWithTtlDisabled?: boolean;
+          };
+          createMode?: "Default" | "Restore";
+          computedProperties?: { name?: string; query?: string }[];
+          vectorEmbeddingPolicy?: {
+            vectorEmbeddings?: {
+              path: string;
+              dataType: "float32" | "uint8" | "int8" | "float16";
+              distanceFunction: "euclidean" | "cosine" | "dotproduct";
+              dimensions: number;
+            }[];
+          };
+          fullTextPolicy?: {
+            defaultLanguage?: string;
+            fullTextPaths?: { path: string; language?: string }[];
+          };
+        };
+      };
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const RestorableSqlContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11830,9 +15454,7 @@ export const RestorableSqlContainersListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableSqlContainersListOutput =
-  typeof RestorableSqlContainersListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableSqlContainersListOutput>;
 
 // The operation
 /**
@@ -11853,6 +15475,11 @@ export const RestorableSqlContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RestorableSqlDatabasesListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+}
 export const RestorableSqlDatabasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11864,11 +15491,42 @@ export const RestorableSqlDatabasesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlDatabases",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableSqlDatabasesListInput =
-  typeof RestorableSqlDatabasesListInput.Type;
+  ) as unknown as Schema.Codec<RestorableSqlDatabasesListInput>;
 
 // Output Schema
+export interface RestorableSqlDatabasesListOutput {
+  value?: {
+    properties?: {
+      resource?: {
+        _rid?: string;
+        operationType?:
+          | "Create"
+          | "Replace"
+          | "Delete"
+          | "Recreate"
+          | "SystemOperation";
+        canUndelete?: string;
+        canUndeleteReason?: string;
+        eventTimestamp?: string;
+        ownerId?: string;
+        ownerResourceId?: string;
+        database?: {
+          id: string;
+          restoreParameters?: {
+            restoreSource?: string;
+            restoreTimestampInUtc?: string;
+            restoreWithTtlDisabled?: boolean;
+          };
+          createMode?: "Default" | "Restore";
+        };
+      };
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const RestorableSqlDatabasesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11921,9 +15579,7 @@ export const RestorableSqlDatabasesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableSqlDatabasesListOutput =
-  typeof RestorableSqlDatabasesListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableSqlDatabasesListOutput>;
 
 // The operation
 /**
@@ -11941,6 +15597,13 @@ export const RestorableSqlDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RestorableSqlResourcesListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+  restoreLocation?: string;
+  restoreTimestampInUtc?: string;
+}
 export const RestorableSqlResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11954,11 +15617,19 @@ export const RestorableSqlResourcesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlResources",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableSqlResourcesListInput =
-  typeof RestorableSqlResourcesListInput.Type;
+  ) as unknown as Schema.Codec<RestorableSqlResourcesListInput>;
 
 // Output Schema
+export interface RestorableSqlResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    databaseName?: string;
+    collectionNames?: string[];
+  }[];
+  nextLink?: string;
+}
 export const RestorableSqlResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -11973,9 +15644,7 @@ export const RestorableSqlResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableSqlResourcesListOutput =
-  typeof RestorableSqlResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableSqlResourcesListOutput>;
 
 // The operation
 /**
@@ -11995,6 +15664,13 @@ export const RestorableSqlResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RestorableTableResourcesListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+  restoreLocation?: string;
+  restoreTimestampInUtc?: string;
+}
 export const RestorableTableResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12008,11 +15684,13 @@ export const RestorableTableResourcesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTableResources",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableTableResourcesListInput =
-  typeof RestorableTableResourcesListInput.Type;
+  ) as unknown as Schema.Codec<RestorableTableResourcesListInput>;
 
 // Output Schema
+export interface RestorableTableResourcesListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const RestorableTableResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -12025,9 +15703,7 @@ export const RestorableTableResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableTableResourcesListOutput =
-  typeof RestorableTableResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableTableResourcesListOutput>;
 
 // The operation
 /**
@@ -12046,6 +15722,13 @@ export const RestorableTableResourcesList =
     outputSchema: RestorableTableResourcesListOutput,
   }));
 // Input Schema
+export interface RestorableTablesListInput {
+  subscriptionId: string;
+  location: string;
+  instanceId: string;
+  startTime?: string;
+  endTime?: string;
+}
 export const RestorableTablesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12059,10 +15742,33 @@ export const RestorableTablesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTables",
       apiVersion: "2026-03-15",
     }),
-  );
-export type RestorableTablesListInput = typeof RestorableTablesListInput.Type;
+  ) as unknown as Schema.Codec<RestorableTablesListInput>;
 
 // Output Schema
+export interface RestorableTablesListOutput {
+  value?: {
+    properties?: {
+      resource?: {
+        _rid?: string;
+        operationType?:
+          | "Create"
+          | "Replace"
+          | "Delete"
+          | "Recreate"
+          | "SystemOperation";
+        canUndelete?: string;
+        canUndeleteReason?: string;
+        eventTimestamp?: string;
+        ownerId?: string;
+        ownerResourceId?: string;
+      };
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const RestorableTablesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -12098,8 +15804,7 @@ export const RestorableTablesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RestorableTablesListOutput = typeof RestorableTablesListOutput.Type;
+  }) as unknown as Schema.Codec<RestorableTablesListOutput>;
 
 // The operation
 /**
@@ -12119,6 +15824,21 @@ export const RestorableTablesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  serviceName: string;
+  properties?: {
+    instanceSize?: "Cosmos.D4s" | "Cosmos.D8s" | "Cosmos.D16s";
+    instanceCount?: number;
+    serviceType:
+      | "SqlDedicatedGateway"
+      | "DataTransfer"
+      | "GraphAPICompute"
+      | "MaterializedViewsBuilder";
+  };
+}
 export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -12144,10 +15864,22 @@ export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type ServiceCreateInput = typeof ServiceCreateInput.Type;
+) as unknown as Schema.Codec<ServiceCreateInput>;
 
 // Output Schema
+export interface ServiceCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -12166,8 +15898,7 @@ export const ServiceCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServiceCreateOutput = typeof ServiceCreateOutput.Type;
+}) as unknown as Schema.Codec<ServiceCreateOutput>;
 
 // The operation
 /**
@@ -12184,6 +15915,12 @@ export const ServiceCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceCreateOutput,
 }));
 // Input Schema
+export interface ServiceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  serviceName: string;
+}
 export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -12195,12 +15932,12 @@ export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type ServiceDeleteInput = typeof ServiceDeleteInput.Type;
+) as unknown as Schema.Codec<ServiceDeleteInput>;
 
 // Output Schema
-export const ServiceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceDeleteOutput = typeof ServiceDeleteOutput.Type;
+export type ServiceDeleteOutput = void;
+export const ServiceDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceDeleteOutput>;
 
 // The operation
 /**
@@ -12217,6 +15954,12 @@ export const ServiceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceDeleteOutput,
 }));
 // Input Schema
+export interface ServiceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  serviceName: string;
+}
 export const ServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -12228,10 +15971,22 @@ export const ServiceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
     apiVersion: "2026-03-15",
   }),
-);
-export type ServiceGetInput = typeof ServiceGetInput.Type;
+) as unknown as Schema.Codec<ServiceGetInput>;
 
 // Output Schema
+export interface ServiceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -12250,8 +16005,7 @@ export const ServiceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServiceGetOutput = typeof ServiceGetOutput.Type;
+}) as unknown as Schema.Codec<ServiceGetOutput>;
 
 // The operation
 /**
@@ -12268,6 +16022,11 @@ export const ServiceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceGetOutput,
 }));
 // Input Schema
+export interface ServiceListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const ServiceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -12278,10 +16037,25 @@ export const ServiceListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services",
     apiVersion: "2026-03-15",
   }),
-);
-export type ServiceListInput = typeof ServiceListInput.Type;
+) as unknown as Schema.Codec<ServiceListInput>;
 
 // Output Schema
+export interface ServiceListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServiceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -12317,8 +16091,7 @@ export const ServiceListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ServiceListOutput = typeof ServiceListOutput.Type;
+}) as unknown as Schema.Codec<ServiceListOutput>;
 
 // The operation
 /**
@@ -12334,6 +16107,26 @@ export const ServiceList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceListOutput,
 }));
 // Input Schema
+export interface SqlResourcesCreateUpdateClientEncryptionKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  clientEncryptionKeyName: string;
+  properties: {
+    resource: {
+      id?: string;
+      encryptionAlgorithm?: string;
+      wrappedDataEncryptionKey?: string;
+      keyWrapMetadata?: {
+        name?: string;
+        type?: string;
+        value?: string;
+        algorithm?: string;
+      };
+    };
+  };
+}
 export const SqlResourcesCreateUpdateClientEncryptionKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12362,11 +16155,22 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesCreateUpdateClientEncryptionKeyInput =
-  typeof SqlResourcesCreateUpdateClientEncryptionKeyInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesCreateUpdateClientEncryptionKeyInput>;
 
 // Output Schema
+export interface SqlResourcesCreateUpdateClientEncryptionKeyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesCreateUpdateClientEncryptionKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12386,9 +16190,7 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesCreateUpdateClientEncryptionKeyOutput =
-  typeof SqlResourcesCreateUpdateClientEncryptionKeyOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesCreateUpdateClientEncryptionKeyOutput>;
 
 // The operation
 /**
@@ -12407,6 +16209,117 @@ export const SqlResourcesCreateUpdateClientEncryptionKey =
     outputSchema: SqlResourcesCreateUpdateClientEncryptionKeyOutput,
   }));
 // Input Schema
+export interface SqlResourcesCreateUpdateSqlContainerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  properties: {
+    resource: {
+      id: string;
+      indexingPolicy?: {
+        automatic?: boolean;
+        indexingMode?: "consistent" | "lazy" | "none";
+        includedPaths?: {
+          path?: string;
+          indexes?: {
+            dataType?:
+              | "String"
+              | "Number"
+              | "Point"
+              | "Polygon"
+              | "LineString"
+              | "MultiPolygon";
+            precision?: number;
+            kind?: "Hash" | "Range" | "Spatial";
+          }[];
+        }[];
+        excludedPaths?: { path?: string }[];
+        compositeIndexes?: {
+          path?: string;
+          order?: "ascending" | "descending";
+        }[][];
+        spatialIndexes?: {
+          path?: string;
+          types?: ("Point" | "LineString" | "Polygon" | "MultiPolygon")[];
+        }[];
+        vectorIndexes?: {
+          path: string;
+          type: "flat" | "diskANN" | "quantizedFlat";
+          quantizationByteSize?: number;
+          indexingSearchListSize?: number;
+          vectorIndexShardKey?: string[];
+        }[];
+        fullTextIndexes?: { path: string }[];
+      };
+      partitionKey?: {
+        paths?: string[];
+        kind?: "Hash" | "Range" | "MultiHash";
+        version?: number;
+        systemKey?: boolean;
+      };
+      defaultTtl?: number;
+      uniqueKeyPolicy?: { uniqueKeys?: { paths?: string[] }[] };
+      conflictResolutionPolicy?: {
+        mode?: "LastWriterWins" | "Custom";
+        conflictResolutionPath?: string;
+        conflictResolutionProcedure?: string;
+      };
+      clientEncryptionPolicy?: {
+        includedPaths: {
+          path: string;
+          clientEncryptionKeyId: string;
+          encryptionType: string;
+          encryptionAlgorithm: string;
+        }[];
+        policyFormatVersion: number;
+      };
+      analyticalStorageTtl?: number;
+      restoreParameters?: {
+        restoreSource?: string;
+        restoreTimestampInUtc?: string;
+        restoreWithTtlDisabled?: boolean;
+      };
+      createMode?: "Default" | "Restore";
+      computedProperties?: { name?: string; query?: string }[];
+      vectorEmbeddingPolicy?: {
+        vectorEmbeddings?: {
+          path: string;
+          dataType: "float32" | "uint8" | "int8" | "float16";
+          distanceFunction: "euclidean" | "cosine" | "dotproduct";
+          dimensions: number;
+        }[];
+      };
+      fullTextPolicy?: {
+        defaultLanguage?: string;
+        fullTextPaths?: { path: string; language?: string }[];
+      };
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const SqlResourcesCreateUpdateSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12651,11 +16564,22 @@ export const SqlResourcesCreateUpdateSqlContainerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesCreateUpdateSqlContainerInput =
-  typeof SqlResourcesCreateUpdateSqlContainerInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlContainerInput>;
 
 // Output Schema
+export interface SqlResourcesCreateUpdateSqlContainerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesCreateUpdateSqlContainerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12675,9 +16599,7 @@ export const SqlResourcesCreateUpdateSqlContainerOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesCreateUpdateSqlContainerOutput =
-  typeof SqlResourcesCreateUpdateSqlContainerOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlContainerOutput>;
 
 // The operation
 /**
@@ -12696,6 +16618,45 @@ export const SqlResourcesCreateUpdateSqlContainer =
     outputSchema: SqlResourcesCreateUpdateSqlContainerOutput,
   }));
 // Input Schema
+export interface SqlResourcesCreateUpdateSqlDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  properties: {
+    resource: {
+      id: string;
+      restoreParameters?: {
+        restoreSource?: string;
+        restoreTimestampInUtc?: string;
+        restoreWithTtlDisabled?: boolean;
+      };
+      createMode?: "Default" | "Restore";
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const SqlResourcesCreateUpdateSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12759,11 +16720,22 @@ export const SqlResourcesCreateUpdateSqlDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesCreateUpdateSqlDatabaseInput =
-  typeof SqlResourcesCreateUpdateSqlDatabaseInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlDatabaseInput>;
 
 // Output Schema
+export interface SqlResourcesCreateUpdateSqlDatabaseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesCreateUpdateSqlDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12783,9 +16755,7 @@ export const SqlResourcesCreateUpdateSqlDatabaseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesCreateUpdateSqlDatabaseOutput =
-  typeof SqlResourcesCreateUpdateSqlDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlDatabaseOutput>;
 
 // The operation
 /**
@@ -12803,6 +16773,17 @@ export const SqlResourcesCreateUpdateSqlDatabase =
     outputSchema: SqlResourcesCreateUpdateSqlDatabaseOutput,
   }));
 // Input Schema
+export interface SqlResourcesCreateUpdateSqlRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+  properties?: {
+    roleDefinitionId?: string;
+    scope?: string;
+    principalId?: string;
+  };
+}
 export const SqlResourcesCreateUpdateSqlRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12822,11 +16803,22 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesCreateUpdateSqlRoleAssignmentInput =
-  typeof SqlResourcesCreateUpdateSqlRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlRoleAssignmentInput>;
 
 // Output Schema
+export interface SqlResourcesCreateUpdateSqlRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12846,9 +16838,7 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesCreateUpdateSqlRoleAssignmentOutput =
-  typeof SqlResourcesCreateUpdateSqlRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -12866,6 +16856,22 @@ export const SqlResourcesCreateUpdateSqlRoleAssignment =
     outputSchema: SqlResourcesCreateUpdateSqlRoleAssignmentOutput,
   }));
 // Input Schema
+export interface SqlResourcesCreateUpdateSqlRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+  properties?: {
+    roleName?: string;
+    type?: "BuiltInRole" | "CustomRole";
+    assignableScopes?: string[];
+    permissions?: {
+      id?: string;
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+  };
+}
 export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12894,11 +16900,22 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesCreateUpdateSqlRoleDefinitionInput =
-  typeof SqlResourcesCreateUpdateSqlRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlRoleDefinitionInput>;
 
 // Output Schema
+export interface SqlResourcesCreateUpdateSqlRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12918,9 +16935,7 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesCreateUpdateSqlRoleDefinitionOutput =
-  typeof SqlResourcesCreateUpdateSqlRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -12938,6 +16953,39 @@ export const SqlResourcesCreateUpdateSqlRoleDefinition =
     outputSchema: SqlResourcesCreateUpdateSqlRoleDefinitionOutput,
   }));
 // Input Schema
+export interface SqlResourcesCreateUpdateSqlStoredProcedureInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  storedProcedureName: string;
+  properties: {
+    resource: { id: string; body?: string };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const SqlResourcesCreateUpdateSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12996,11 +17044,22 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesCreateUpdateSqlStoredProcedureInput =
-  typeof SqlResourcesCreateUpdateSqlStoredProcedureInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlStoredProcedureInput>;
 
 // Output Schema
+export interface SqlResourcesCreateUpdateSqlStoredProcedureOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesCreateUpdateSqlStoredProcedureOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13020,9 +17079,7 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesCreateUpdateSqlStoredProcedureOutput =
-  typeof SqlResourcesCreateUpdateSqlStoredProcedureOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlStoredProcedureOutput>;
 
 // The operation
 /**
@@ -13042,6 +17099,44 @@ export const SqlResourcesCreateUpdateSqlStoredProcedure =
     outputSchema: SqlResourcesCreateUpdateSqlStoredProcedureOutput,
   }));
 // Input Schema
+export interface SqlResourcesCreateUpdateSqlTriggerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  triggerName: string;
+  properties: {
+    resource: {
+      id: string;
+      body?: string;
+      triggerType?: "Pre" | "Post";
+      triggerOperation?: "All" | "Create" | "Update" | "Delete" | "Replace";
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const SqlResourcesCreateUpdateSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13104,11 +17199,22 @@ export const SqlResourcesCreateUpdateSqlTriggerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesCreateUpdateSqlTriggerInput =
-  typeof SqlResourcesCreateUpdateSqlTriggerInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlTriggerInput>;
 
 // Output Schema
+export interface SqlResourcesCreateUpdateSqlTriggerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesCreateUpdateSqlTriggerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13128,9 +17234,7 @@ export const SqlResourcesCreateUpdateSqlTriggerOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesCreateUpdateSqlTriggerOutput =
-  typeof SqlResourcesCreateUpdateSqlTriggerOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlTriggerOutput>;
 
 // The operation
 /**
@@ -13150,6 +17254,39 @@ export const SqlResourcesCreateUpdateSqlTrigger =
     outputSchema: SqlResourcesCreateUpdateSqlTriggerOutput,
   }));
 // Input Schema
+export interface SqlResourcesCreateUpdateSqlUserDefinedFunctionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  userDefinedFunctionName: string;
+  properties: {
+    resource: { id: string; body?: string };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13208,11 +17345,22 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
-  typeof SqlResourcesCreateUpdateSqlUserDefinedFunctionInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlUserDefinedFunctionInput>;
 
 // Output Schema
+export interface SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13232,9 +17380,7 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput =
-  typeof SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput>;
 
 // The operation
 /**
@@ -13254,6 +17400,13 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunction =
     outputSchema: SqlResourcesCreateUpdateSqlUserDefinedFunctionOutput,
   }));
 // Input Schema
+export interface SqlResourcesDeleteSqlContainerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+}
 export const SqlResourcesDeleteSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13267,15 +17420,12 @@ export const SqlResourcesDeleteSqlContainerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesDeleteSqlContainerInput =
-  typeof SqlResourcesDeleteSqlContainerInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesDeleteSqlContainerInput>;
 
 // Output Schema
+export type SqlResourcesDeleteSqlContainerOutput = void;
 export const SqlResourcesDeleteSqlContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlResourcesDeleteSqlContainerOutput =
-  typeof SqlResourcesDeleteSqlContainerOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlContainerOutput>;
 
 // The operation
 /**
@@ -13294,6 +17444,12 @@ export const SqlResourcesDeleteSqlContainer =
     outputSchema: SqlResourcesDeleteSqlContainerOutput,
   }));
 // Input Schema
+export interface SqlResourcesDeleteSqlDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const SqlResourcesDeleteSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13306,15 +17462,12 @@ export const SqlResourcesDeleteSqlDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesDeleteSqlDatabaseInput =
-  typeof SqlResourcesDeleteSqlDatabaseInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesDeleteSqlDatabaseInput>;
 
 // Output Schema
+export type SqlResourcesDeleteSqlDatabaseOutput = void;
 export const SqlResourcesDeleteSqlDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlResourcesDeleteSqlDatabaseOutput =
-  typeof SqlResourcesDeleteSqlDatabaseOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlDatabaseOutput>;
 
 // The operation
 /**
@@ -13332,6 +17485,12 @@ export const SqlResourcesDeleteSqlDatabase =
     outputSchema: SqlResourcesDeleteSqlDatabaseOutput,
   }));
 // Input Schema
+export interface SqlResourcesDeleteSqlRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const SqlResourcesDeleteSqlRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13344,15 +17503,12 @@ export const SqlResourcesDeleteSqlRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesDeleteSqlRoleAssignmentInput =
-  typeof SqlResourcesDeleteSqlRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesDeleteSqlRoleAssignmentInput>;
 
 // Output Schema
+export type SqlResourcesDeleteSqlRoleAssignmentOutput = void;
 export const SqlResourcesDeleteSqlRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlResourcesDeleteSqlRoleAssignmentOutput =
-  typeof SqlResourcesDeleteSqlRoleAssignmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -13370,6 +17526,12 @@ export const SqlResourcesDeleteSqlRoleAssignment =
     outputSchema: SqlResourcesDeleteSqlRoleAssignmentOutput,
   }));
 // Input Schema
+export interface SqlResourcesDeleteSqlRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const SqlResourcesDeleteSqlRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13382,15 +17544,12 @@ export const SqlResourcesDeleteSqlRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesDeleteSqlRoleDefinitionInput =
-  typeof SqlResourcesDeleteSqlRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesDeleteSqlRoleDefinitionInput>;
 
 // Output Schema
+export type SqlResourcesDeleteSqlRoleDefinitionOutput = void;
 export const SqlResourcesDeleteSqlRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlResourcesDeleteSqlRoleDefinitionOutput =
-  typeof SqlResourcesDeleteSqlRoleDefinitionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -13408,6 +17567,14 @@ export const SqlResourcesDeleteSqlRoleDefinition =
     outputSchema: SqlResourcesDeleteSqlRoleDefinitionOutput,
   }));
 // Input Schema
+export interface SqlResourcesDeleteSqlStoredProcedureInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  storedProcedureName: string;
+}
 export const SqlResourcesDeleteSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13422,15 +17589,12 @@ export const SqlResourcesDeleteSqlStoredProcedureInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesDeleteSqlStoredProcedureInput =
-  typeof SqlResourcesDeleteSqlStoredProcedureInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesDeleteSqlStoredProcedureInput>;
 
 // Output Schema
+export type SqlResourcesDeleteSqlStoredProcedureOutput = void;
 export const SqlResourcesDeleteSqlStoredProcedureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlResourcesDeleteSqlStoredProcedureOutput =
-  typeof SqlResourcesDeleteSqlStoredProcedureOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlStoredProcedureOutput>;
 
 // The operation
 /**
@@ -13450,6 +17614,14 @@ export const SqlResourcesDeleteSqlStoredProcedure =
     outputSchema: SqlResourcesDeleteSqlStoredProcedureOutput,
   }));
 // Input Schema
+export interface SqlResourcesDeleteSqlTriggerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  triggerName: string;
+}
 export const SqlResourcesDeleteSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13464,15 +17636,12 @@ export const SqlResourcesDeleteSqlTriggerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesDeleteSqlTriggerInput =
-  typeof SqlResourcesDeleteSqlTriggerInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesDeleteSqlTriggerInput>;
 
 // Output Schema
+export type SqlResourcesDeleteSqlTriggerOutput = void;
 export const SqlResourcesDeleteSqlTriggerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlResourcesDeleteSqlTriggerOutput =
-  typeof SqlResourcesDeleteSqlTriggerOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlTriggerOutput>;
 
 // The operation
 /**
@@ -13492,6 +17661,14 @@ export const SqlResourcesDeleteSqlTrigger =
     outputSchema: SqlResourcesDeleteSqlTriggerOutput,
   }));
 // Input Schema
+export interface SqlResourcesDeleteSqlUserDefinedFunctionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  userDefinedFunctionName: string;
+}
 export const SqlResourcesDeleteSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13506,15 +17683,12 @@ export const SqlResourcesDeleteSqlUserDefinedFunctionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesDeleteSqlUserDefinedFunctionInput =
-  typeof SqlResourcesDeleteSqlUserDefinedFunctionInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesDeleteSqlUserDefinedFunctionInput>;
 
 // Output Schema
+export type SqlResourcesDeleteSqlUserDefinedFunctionOutput = void;
 export const SqlResourcesDeleteSqlUserDefinedFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlResourcesDeleteSqlUserDefinedFunctionOutput =
-  typeof SqlResourcesDeleteSqlUserDefinedFunctionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlResourcesDeleteSqlUserDefinedFunctionOutput>;
 
 // The operation
 /**
@@ -13534,6 +17708,13 @@ export const SqlResourcesDeleteSqlUserDefinedFunction =
     outputSchema: SqlResourcesDeleteSqlUserDefinedFunctionOutput,
   }));
 // Input Schema
+export interface SqlResourcesGetClientEncryptionKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  clientEncryptionKeyName: string;
+}
 export const SqlResourcesGetClientEncryptionKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13547,11 +17728,22 @@ export const SqlResourcesGetClientEncryptionKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetClientEncryptionKeyInput =
-  typeof SqlResourcesGetClientEncryptionKeyInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetClientEncryptionKeyInput>;
 
 // Output Schema
+export interface SqlResourcesGetClientEncryptionKeyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetClientEncryptionKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13571,9 +17763,7 @@ export const SqlResourcesGetClientEncryptionKeyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetClientEncryptionKeyOutput =
-  typeof SqlResourcesGetClientEncryptionKeyOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetClientEncryptionKeyOutput>;
 
 // The operation
 /**
@@ -13592,6 +17782,13 @@ export const SqlResourcesGetClientEncryptionKey =
     outputSchema: SqlResourcesGetClientEncryptionKeyOutput,
   }));
 // Input Schema
+export interface SqlResourcesGetSqlContainerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+}
 export const SqlResourcesGetSqlContainerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13605,11 +17802,22 @@ export const SqlResourcesGetSqlContainerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlContainerInput =
-  typeof SqlResourcesGetSqlContainerInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlContainerInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlContainerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlContainerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13629,9 +17837,7 @@ export const SqlResourcesGetSqlContainerOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlContainerOutput =
-  typeof SqlResourcesGetSqlContainerOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlContainerOutput>;
 
 // The operation
 /**
@@ -13651,6 +17857,13 @@ export const SqlResourcesGetSqlContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlResourcesGetSqlContainerThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+}
 export const SqlResourcesGetSqlContainerThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13664,11 +17877,22 @@ export const SqlResourcesGetSqlContainerThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlContainerThroughputInput =
-  typeof SqlResourcesGetSqlContainerThroughputInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlContainerThroughputInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlContainerThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlContainerThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13688,9 +17912,7 @@ export const SqlResourcesGetSqlContainerThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlContainerThroughputOutput =
-  typeof SqlResourcesGetSqlContainerThroughputOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlContainerThroughputOutput>;
 
 // The operation
 /**
@@ -13709,6 +17931,12 @@ export const SqlResourcesGetSqlContainerThroughput =
     outputSchema: SqlResourcesGetSqlContainerThroughputOutput,
   }));
 // Input Schema
+export interface SqlResourcesGetSqlDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const SqlResourcesGetSqlDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13721,11 +17949,22 @@ export const SqlResourcesGetSqlDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlDatabaseInput =
-  typeof SqlResourcesGetSqlDatabaseInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlDatabaseInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlDatabaseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13745,9 +17984,7 @@ export const SqlResourcesGetSqlDatabaseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlDatabaseOutput =
-  typeof SqlResourcesGetSqlDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlDatabaseOutput>;
 
 // The operation
 /**
@@ -13766,6 +18003,12 @@ export const SqlResourcesGetSqlDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlResourcesGetSqlDatabaseThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const SqlResourcesGetSqlDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13778,11 +18021,22 @@ export const SqlResourcesGetSqlDatabaseThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlDatabaseThroughputInput =
-  typeof SqlResourcesGetSqlDatabaseThroughputInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlDatabaseThroughputInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlDatabaseThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlDatabaseThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13802,9 +18056,7 @@ export const SqlResourcesGetSqlDatabaseThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlDatabaseThroughputOutput =
-  typeof SqlResourcesGetSqlDatabaseThroughputOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlDatabaseThroughputOutput>;
 
 // The operation
 /**
@@ -13822,6 +18074,12 @@ export const SqlResourcesGetSqlDatabaseThroughput =
     outputSchema: SqlResourcesGetSqlDatabaseThroughputOutput,
   }));
 // Input Schema
+export interface SqlResourcesGetSqlRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const SqlResourcesGetSqlRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13834,11 +18092,22 @@ export const SqlResourcesGetSqlRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlRoleAssignmentInput =
-  typeof SqlResourcesGetSqlRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlRoleAssignmentInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13858,9 +18127,7 @@ export const SqlResourcesGetSqlRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlRoleAssignmentOutput =
-  typeof SqlResourcesGetSqlRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -13878,6 +18145,12 @@ export const SqlResourcesGetSqlRoleAssignment =
     outputSchema: SqlResourcesGetSqlRoleAssignmentOutput,
   }));
 // Input Schema
+export interface SqlResourcesGetSqlRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const SqlResourcesGetSqlRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13890,11 +18163,22 @@ export const SqlResourcesGetSqlRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlRoleDefinitionInput =
-  typeof SqlResourcesGetSqlRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlRoleDefinitionInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13914,9 +18198,7 @@ export const SqlResourcesGetSqlRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlRoleDefinitionOutput =
-  typeof SqlResourcesGetSqlRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -13934,6 +18216,14 @@ export const SqlResourcesGetSqlRoleDefinition =
     outputSchema: SqlResourcesGetSqlRoleDefinitionOutput,
   }));
 // Input Schema
+export interface SqlResourcesGetSqlStoredProcedureInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  storedProcedureName: string;
+}
 export const SqlResourcesGetSqlStoredProcedureInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13948,11 +18238,22 @@ export const SqlResourcesGetSqlStoredProcedureInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlStoredProcedureInput =
-  typeof SqlResourcesGetSqlStoredProcedureInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlStoredProcedureInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlStoredProcedureOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlStoredProcedureOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13972,9 +18273,7 @@ export const SqlResourcesGetSqlStoredProcedureOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlStoredProcedureOutput =
-  typeof SqlResourcesGetSqlStoredProcedureOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlStoredProcedureOutput>;
 
 // The operation
 /**
@@ -13994,6 +18293,14 @@ export const SqlResourcesGetSqlStoredProcedure =
     outputSchema: SqlResourcesGetSqlStoredProcedureOutput,
   }));
 // Input Schema
+export interface SqlResourcesGetSqlTriggerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  triggerName: string;
+}
 export const SqlResourcesGetSqlTriggerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14008,11 +18315,22 @@ export const SqlResourcesGetSqlTriggerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlTriggerInput =
-  typeof SqlResourcesGetSqlTriggerInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlTriggerInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlTriggerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlTriggerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14032,9 +18350,7 @@ export const SqlResourcesGetSqlTriggerOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlTriggerOutput =
-  typeof SqlResourcesGetSqlTriggerOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlTriggerOutput>;
 
 // The operation
 /**
@@ -14055,6 +18371,14 @@ export const SqlResourcesGetSqlTrigger = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlResourcesGetSqlUserDefinedFunctionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  userDefinedFunctionName: string;
+}
 export const SqlResourcesGetSqlUserDefinedFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14069,11 +18393,22 @@ export const SqlResourcesGetSqlUserDefinedFunctionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesGetSqlUserDefinedFunctionInput =
-  typeof SqlResourcesGetSqlUserDefinedFunctionInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesGetSqlUserDefinedFunctionInput>;
 
 // Output Schema
+export interface SqlResourcesGetSqlUserDefinedFunctionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesGetSqlUserDefinedFunctionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14093,9 +18428,7 @@ export const SqlResourcesGetSqlUserDefinedFunctionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesGetSqlUserDefinedFunctionOutput =
-  typeof SqlResourcesGetSqlUserDefinedFunctionOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesGetSqlUserDefinedFunctionOutput>;
 
 // The operation
 /**
@@ -14115,6 +18448,12 @@ export const SqlResourcesGetSqlUserDefinedFunction =
     outputSchema: SqlResourcesGetSqlUserDefinedFunctionOutput,
   }));
 // Input Schema
+export interface SqlResourcesListClientEncryptionKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const SqlResourcesListClientEncryptionKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14127,11 +18466,25 @@ export const SqlResourcesListClientEncryptionKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesListClientEncryptionKeysInput =
-  typeof SqlResourcesListClientEncryptionKeysInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesListClientEncryptionKeysInput>;
 
 // Output Schema
+export interface SqlResourcesListClientEncryptionKeysOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlResourcesListClientEncryptionKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -14168,9 +18521,7 @@ export const SqlResourcesListClientEncryptionKeysOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlResourcesListClientEncryptionKeysOutput =
-  typeof SqlResourcesListClientEncryptionKeysOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesListClientEncryptionKeysOutput>;
 
 // The operation
 /**
@@ -14188,6 +18539,12 @@ export const SqlResourcesListClientEncryptionKeys =
     outputSchema: SqlResourcesListClientEncryptionKeysOutput,
   }));
 // Input Schema
+export interface SqlResourcesListSqlContainersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const SqlResourcesListSqlContainersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14200,11 +18557,25 @@ export const SqlResourcesListSqlContainersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesListSqlContainersInput =
-  typeof SqlResourcesListSqlContainersInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesListSqlContainersInput>;
 
 // Output Schema
+export interface SqlResourcesListSqlContainersOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlResourcesListSqlContainersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -14241,9 +18612,7 @@ export const SqlResourcesListSqlContainersOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlResourcesListSqlContainersOutput =
-  typeof SqlResourcesListSqlContainersOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesListSqlContainersOutput>;
 
 // The operation
 /**
@@ -14261,6 +18630,11 @@ export const SqlResourcesListSqlContainers =
     outputSchema: SqlResourcesListSqlContainersOutput,
   }));
 // Input Schema
+export interface SqlResourcesListSqlDatabasesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const SqlResourcesListSqlDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14272,11 +18646,25 @@ export const SqlResourcesListSqlDatabasesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesListSqlDatabasesInput =
-  typeof SqlResourcesListSqlDatabasesInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesListSqlDatabasesInput>;
 
 // Output Schema
+export interface SqlResourcesListSqlDatabasesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlResourcesListSqlDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -14313,9 +18701,7 @@ export const SqlResourcesListSqlDatabasesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlResourcesListSqlDatabasesOutput =
-  typeof SqlResourcesListSqlDatabasesOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesListSqlDatabasesOutput>;
 
 // The operation
 /**
@@ -14332,6 +18718,11 @@ export const SqlResourcesListSqlDatabases =
     outputSchema: SqlResourcesListSqlDatabasesOutput,
   }));
 // Input Schema
+export interface SqlResourcesListSqlRoleAssignmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const SqlResourcesListSqlRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14343,11 +18734,25 @@ export const SqlResourcesListSqlRoleAssignmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesListSqlRoleAssignmentsInput =
-  typeof SqlResourcesListSqlRoleAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesListSqlRoleAssignmentsInput>;
 
 // Output Schema
+export interface SqlResourcesListSqlRoleAssignmentsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlResourcesListSqlRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -14384,9 +18789,7 @@ export const SqlResourcesListSqlRoleAssignmentsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlResourcesListSqlRoleAssignmentsOutput =
-  typeof SqlResourcesListSqlRoleAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesListSqlRoleAssignmentsOutput>;
 
 // The operation
 /**
@@ -14403,6 +18806,11 @@ export const SqlResourcesListSqlRoleAssignments =
     outputSchema: SqlResourcesListSqlRoleAssignmentsOutput,
   }));
 // Input Schema
+export interface SqlResourcesListSqlRoleDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const SqlResourcesListSqlRoleDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14414,11 +18822,25 @@ export const SqlResourcesListSqlRoleDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesListSqlRoleDefinitionsInput =
-  typeof SqlResourcesListSqlRoleDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesListSqlRoleDefinitionsInput>;
 
 // Output Schema
+export interface SqlResourcesListSqlRoleDefinitionsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlResourcesListSqlRoleDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -14455,9 +18877,7 @@ export const SqlResourcesListSqlRoleDefinitionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlResourcesListSqlRoleDefinitionsOutput =
-  typeof SqlResourcesListSqlRoleDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesListSqlRoleDefinitionsOutput>;
 
 // The operation
 /**
@@ -14474,6 +18894,13 @@ export const SqlResourcesListSqlRoleDefinitions =
     outputSchema: SqlResourcesListSqlRoleDefinitionsOutput,
   }));
 // Input Schema
+export interface SqlResourcesListSqlStoredProceduresInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+}
 export const SqlResourcesListSqlStoredProceduresInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14487,11 +18914,25 @@ export const SqlResourcesListSqlStoredProceduresInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesListSqlStoredProceduresInput =
-  typeof SqlResourcesListSqlStoredProceduresInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesListSqlStoredProceduresInput>;
 
 // Output Schema
+export interface SqlResourcesListSqlStoredProceduresOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlResourcesListSqlStoredProceduresOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -14528,9 +18969,7 @@ export const SqlResourcesListSqlStoredProceduresOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlResourcesListSqlStoredProceduresOutput =
-  typeof SqlResourcesListSqlStoredProceduresOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesListSqlStoredProceduresOutput>;
 
 // The operation
 /**
@@ -14549,6 +18988,13 @@ export const SqlResourcesListSqlStoredProcedures =
     outputSchema: SqlResourcesListSqlStoredProceduresOutput,
   }));
 // Input Schema
+export interface SqlResourcesListSqlTriggersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+}
 export const SqlResourcesListSqlTriggersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14562,11 +19008,25 @@ export const SqlResourcesListSqlTriggersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesListSqlTriggersInput =
-  typeof SqlResourcesListSqlTriggersInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesListSqlTriggersInput>;
 
 // Output Schema
+export interface SqlResourcesListSqlTriggersOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlResourcesListSqlTriggersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -14603,9 +19063,7 @@ export const SqlResourcesListSqlTriggersOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlResourcesListSqlTriggersOutput =
-  typeof SqlResourcesListSqlTriggersOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesListSqlTriggersOutput>;
 
 // The operation
 /**
@@ -14625,6 +19083,13 @@ export const SqlResourcesListSqlTriggers = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlResourcesListSqlUserDefinedFunctionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+}
 export const SqlResourcesListSqlUserDefinedFunctionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14638,11 +19103,25 @@ export const SqlResourcesListSqlUserDefinedFunctionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesListSqlUserDefinedFunctionsInput =
-  typeof SqlResourcesListSqlUserDefinedFunctionsInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesListSqlUserDefinedFunctionsInput>;
 
 // Output Schema
+export interface SqlResourcesListSqlUserDefinedFunctionsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlResourcesListSqlUserDefinedFunctionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -14679,9 +19158,7 @@ export const SqlResourcesListSqlUserDefinedFunctionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlResourcesListSqlUserDefinedFunctionsOutput =
-  typeof SqlResourcesListSqlUserDefinedFunctionsOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesListSqlUserDefinedFunctionsOutput>;
 
 // The operation
 /**
@@ -14700,6 +19177,13 @@ export const SqlResourcesListSqlUserDefinedFunctions =
     outputSchema: SqlResourcesListSqlUserDefinedFunctionsOutput,
   }));
 // Input Schema
+export interface SqlResourcesMigrateSqlContainerToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+}
 export const SqlResourcesMigrateSqlContainerToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14713,11 +19197,22 @@ export const SqlResourcesMigrateSqlContainerToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesMigrateSqlContainerToAutoscaleInput =
-  typeof SqlResourcesMigrateSqlContainerToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesMigrateSqlContainerToAutoscaleInput>;
 
 // Output Schema
+export interface SqlResourcesMigrateSqlContainerToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesMigrateSqlContainerToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14737,9 +19232,7 @@ export const SqlResourcesMigrateSqlContainerToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesMigrateSqlContainerToAutoscaleOutput =
-  typeof SqlResourcesMigrateSqlContainerToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesMigrateSqlContainerToAutoscaleOutput>;
 
 // The operation
 /**
@@ -14758,6 +19251,13 @@ export const SqlResourcesMigrateSqlContainerToAutoscale =
     outputSchema: SqlResourcesMigrateSqlContainerToAutoscaleOutput,
   }));
 // Input Schema
+export interface SqlResourcesMigrateSqlContainerToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+}
 export const SqlResourcesMigrateSqlContainerToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14771,11 +19271,22 @@ export const SqlResourcesMigrateSqlContainerToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesMigrateSqlContainerToManualThroughputInput =
-  typeof SqlResourcesMigrateSqlContainerToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesMigrateSqlContainerToManualThroughputInput>;
 
 // Output Schema
+export interface SqlResourcesMigrateSqlContainerToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesMigrateSqlContainerToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14795,9 +19306,7 @@ export const SqlResourcesMigrateSqlContainerToManualThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesMigrateSqlContainerToManualThroughputOutput =
-  typeof SqlResourcesMigrateSqlContainerToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesMigrateSqlContainerToManualThroughputOutput>;
 
 // The operation
 /**
@@ -14816,6 +19325,12 @@ export const SqlResourcesMigrateSqlContainerToManualThroughput =
     outputSchema: SqlResourcesMigrateSqlContainerToManualThroughputOutput,
   }));
 // Input Schema
+export interface SqlResourcesMigrateSqlDatabaseToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14828,11 +19343,22 @@ export const SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
-  typeof SqlResourcesMigrateSqlDatabaseToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesMigrateSqlDatabaseToAutoscaleInput>;
 
 // Output Schema
+export interface SqlResourcesMigrateSqlDatabaseToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14852,9 +19378,7 @@ export const SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesMigrateSqlDatabaseToAutoscaleOutput =
-  typeof SqlResourcesMigrateSqlDatabaseToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesMigrateSqlDatabaseToAutoscaleOutput>;
 
 // The operation
 /**
@@ -14872,6 +19396,12 @@ export const SqlResourcesMigrateSqlDatabaseToAutoscale =
     outputSchema: SqlResourcesMigrateSqlDatabaseToAutoscaleOutput,
   }));
 // Input Schema
+export interface SqlResourcesMigrateSqlDatabaseToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+}
 export const SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14884,11 +19414,22 @@ export const SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
-  typeof SqlResourcesMigrateSqlDatabaseToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesMigrateSqlDatabaseToManualThroughputInput>;
 
 // Output Schema
+export interface SqlResourcesMigrateSqlDatabaseToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14908,9 +19449,7 @@ export const SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesMigrateSqlDatabaseToManualThroughputOutput =
-  typeof SqlResourcesMigrateSqlDatabaseToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesMigrateSqlDatabaseToManualThroughputOutput>;
 
 // The operation
 /**
@@ -14928,6 +19467,14 @@ export const SqlResourcesMigrateSqlDatabaseToManualThroughput =
     outputSchema: SqlResourcesMigrateSqlDatabaseToManualThroughputOutput,
   }));
 // Input Schema
+export interface SqlResourcesRetrieveContinuousBackupInformationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  location?: string;
+}
 export const SqlResourcesRetrieveContinuousBackupInformationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14942,11 +19489,12 @@ export const SqlResourcesRetrieveContinuousBackupInformationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/retrieveContinuousBackupInformation",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesRetrieveContinuousBackupInformationInput =
-  typeof SqlResourcesRetrieveContinuousBackupInformationInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesRetrieveContinuousBackupInformationInput>;
 
 // Output Schema
+export interface SqlResourcesRetrieveContinuousBackupInformationOutput {
+  continuousBackupInformation?: { latestRestorableTimestamp?: string };
+}
 export const SqlResourcesRetrieveContinuousBackupInformationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
@@ -14954,9 +19502,7 @@ export const SqlResourcesRetrieveContinuousBackupInformationOutput =
         latestRestorableTimestamp: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesRetrieveContinuousBackupInformationOutput =
-  typeof SqlResourcesRetrieveContinuousBackupInformationOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesRetrieveContinuousBackupInformationOutput>;
 
 // The operation
 /**
@@ -14975,6 +19521,47 @@ export const SqlResourcesRetrieveContinuousBackupInformation =
     outputSchema: SqlResourcesRetrieveContinuousBackupInformationOutput,
   }));
 // Input Schema
+export interface SqlResourcesUpdateSqlContainerThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  containerName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const SqlResourcesUpdateSqlContainerThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15041,11 +19628,22 @@ export const SqlResourcesUpdateSqlContainerThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesUpdateSqlContainerThroughputInput =
-  typeof SqlResourcesUpdateSqlContainerThroughputInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesUpdateSqlContainerThroughputInput>;
 
 // Output Schema
+export interface SqlResourcesUpdateSqlContainerThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesUpdateSqlContainerThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15065,9 +19663,7 @@ export const SqlResourcesUpdateSqlContainerThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesUpdateSqlContainerThroughputOutput =
-  typeof SqlResourcesUpdateSqlContainerThroughputOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesUpdateSqlContainerThroughputOutput>;
 
 // The operation
 /**
@@ -15086,6 +19682,46 @@ export const SqlResourcesUpdateSqlContainerThroughput =
     outputSchema: SqlResourcesUpdateSqlContainerThroughputOutput,
   }));
 // Input Schema
+export interface SqlResourcesUpdateSqlDatabaseThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  databaseName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const SqlResourcesUpdateSqlDatabaseThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15151,11 +19787,22 @@ export const SqlResourcesUpdateSqlDatabaseThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type SqlResourcesUpdateSqlDatabaseThroughputInput =
-  typeof SqlResourcesUpdateSqlDatabaseThroughputInput.Type;
+  ) as unknown as Schema.Codec<SqlResourcesUpdateSqlDatabaseThroughputInput>;
 
 // Output Schema
+export interface SqlResourcesUpdateSqlDatabaseThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlResourcesUpdateSqlDatabaseThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15175,9 +19822,7 @@ export const SqlResourcesUpdateSqlDatabaseThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlResourcesUpdateSqlDatabaseThroughputOutput =
-  typeof SqlResourcesUpdateSqlDatabaseThroughputOutput.Type;
+  }) as unknown as Schema.Codec<SqlResourcesUpdateSqlDatabaseThroughputOutput>;
 
 // The operation
 /**
@@ -15195,6 +19840,45 @@ export const SqlResourcesUpdateSqlDatabaseThroughput =
     outputSchema: SqlResourcesUpdateSqlDatabaseThroughputOutput,
   }));
 // Input Schema
+export interface TableResourcesCreateUpdateTableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+  properties: {
+    resource: {
+      id: string;
+      restoreParameters?: {
+        restoreSource?: string;
+        restoreTimestampInUtc?: string;
+        restoreWithTtlDisabled?: boolean;
+      };
+      createMode?: "Default" | "Restore";
+    };
+    options?: {
+      throughput?: number;
+      autoscaleSettings?: { maxThroughput?: number };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const TableResourcesCreateUpdateTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15258,11 +19942,22 @@ export const TableResourcesCreateUpdateTableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesCreateUpdateTableInput =
-  typeof TableResourcesCreateUpdateTableInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesCreateUpdateTableInput>;
 
 // Output Schema
+export interface TableResourcesCreateUpdateTableOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesCreateUpdateTableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15282,9 +19977,7 @@ export const TableResourcesCreateUpdateTableOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesCreateUpdateTableOutput =
-  typeof TableResourcesCreateUpdateTableOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesCreateUpdateTableOutput>;
 
 // The operation
 /**
@@ -15302,6 +19995,18 @@ export const TableResourcesCreateUpdateTable =
     outputSchema: TableResourcesCreateUpdateTableOutput,
   }));
 // Input Schema
+export interface TableResourcesCreateUpdateTableRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+  properties?: {
+    roleDefinitionId?: string;
+    scope?: string;
+    principalId?: string;
+    provisioningState?: string;
+  };
+}
 export const TableResourcesCreateUpdateTableRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15322,11 +20027,22 @@ export const TableResourcesCreateUpdateTableRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesCreateUpdateTableRoleAssignmentInput =
-  typeof TableResourcesCreateUpdateTableRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesCreateUpdateTableRoleAssignmentInput>;
 
 // Output Schema
+export interface TableResourcesCreateUpdateTableRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesCreateUpdateTableRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15346,9 +20062,7 @@ export const TableResourcesCreateUpdateTableRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesCreateUpdateTableRoleAssignmentOutput =
-  typeof TableResourcesCreateUpdateTableRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesCreateUpdateTableRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -15366,6 +20080,23 @@ export const TableResourcesCreateUpdateTableRoleAssignment =
     outputSchema: TableResourcesCreateUpdateTableRoleAssignmentOutput,
   }));
 // Input Schema
+export interface TableResourcesCreateUpdateTableRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+  properties?: {
+    id?: string;
+    roleName?: string;
+    type?: "BuiltInRole" | "CustomRole";
+    assignableScopes?: string[];
+    permissions?: {
+      id?: string;
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+  };
+}
 export const TableResourcesCreateUpdateTableRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15395,11 +20126,22 @@ export const TableResourcesCreateUpdateTableRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesCreateUpdateTableRoleDefinitionInput =
-  typeof TableResourcesCreateUpdateTableRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesCreateUpdateTableRoleDefinitionInput>;
 
 // Output Schema
+export interface TableResourcesCreateUpdateTableRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesCreateUpdateTableRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15419,9 +20161,7 @@ export const TableResourcesCreateUpdateTableRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesCreateUpdateTableRoleDefinitionOutput =
-  typeof TableResourcesCreateUpdateTableRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesCreateUpdateTableRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -15439,6 +20179,12 @@ export const TableResourcesCreateUpdateTableRoleDefinition =
     outputSchema: TableResourcesCreateUpdateTableRoleDefinitionOutput,
   }));
 // Input Schema
+export interface TableResourcesDeleteTableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+}
 export const TableResourcesDeleteTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15451,15 +20197,12 @@ export const TableResourcesDeleteTableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesDeleteTableInput =
-  typeof TableResourcesDeleteTableInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesDeleteTableInput>;
 
 // Output Schema
+export type TableResourcesDeleteTableOutput = void;
 export const TableResourcesDeleteTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TableResourcesDeleteTableOutput =
-  typeof TableResourcesDeleteTableOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableOutput>;
 
 // The operation
 /**
@@ -15478,6 +20221,12 @@ export const TableResourcesDeleteTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TableResourcesDeleteTableRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const TableResourcesDeleteTableRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15490,15 +20239,12 @@ export const TableResourcesDeleteTableRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesDeleteTableRoleAssignmentInput =
-  typeof TableResourcesDeleteTableRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesDeleteTableRoleAssignmentInput>;
 
 // Output Schema
+export type TableResourcesDeleteTableRoleAssignmentOutput = void;
 export const TableResourcesDeleteTableRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TableResourcesDeleteTableRoleAssignmentOutput =
-  typeof TableResourcesDeleteTableRoleAssignmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -15516,6 +20262,12 @@ export const TableResourcesDeleteTableRoleAssignment =
     outputSchema: TableResourcesDeleteTableRoleAssignmentOutput,
   }));
 // Input Schema
+export interface TableResourcesDeleteTableRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const TableResourcesDeleteTableRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15528,15 +20280,12 @@ export const TableResourcesDeleteTableRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesDeleteTableRoleDefinitionInput =
-  typeof TableResourcesDeleteTableRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesDeleteTableRoleDefinitionInput>;
 
 // Output Schema
+export type TableResourcesDeleteTableRoleDefinitionOutput = void;
 export const TableResourcesDeleteTableRoleDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TableResourcesDeleteTableRoleDefinitionOutput =
-  typeof TableResourcesDeleteTableRoleDefinitionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TableResourcesDeleteTableRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -15554,6 +20303,12 @@ export const TableResourcesDeleteTableRoleDefinition =
     outputSchema: TableResourcesDeleteTableRoleDefinitionOutput,
   }));
 // Input Schema
+export interface TableResourcesGetTableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+}
 export const TableResourcesGetTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15566,11 +20321,22 @@ export const TableResourcesGetTableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesGetTableInput =
-  typeof TableResourcesGetTableInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesGetTableInput>;
 
 // Output Schema
+export interface TableResourcesGetTableOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesGetTableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15590,9 +20356,7 @@ export const TableResourcesGetTableOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesGetTableOutput =
-  typeof TableResourcesGetTableOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesGetTableOutput>;
 
 // The operation
 /**
@@ -15611,6 +20375,12 @@ export const TableResourcesGetTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TableResourcesGetTableRoleAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleAssignmentId: string;
+}
 export const TableResourcesGetTableRoleAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15623,11 +20393,22 @@ export const TableResourcesGetTableRoleAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesGetTableRoleAssignmentInput =
-  typeof TableResourcesGetTableRoleAssignmentInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesGetTableRoleAssignmentInput>;
 
 // Output Schema
+export interface TableResourcesGetTableRoleAssignmentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesGetTableRoleAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15647,9 +20428,7 @@ export const TableResourcesGetTableRoleAssignmentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesGetTableRoleAssignmentOutput =
-  typeof TableResourcesGetTableRoleAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesGetTableRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -15667,6 +20446,12 @@ export const TableResourcesGetTableRoleAssignment =
     outputSchema: TableResourcesGetTableRoleAssignmentOutput,
   }));
 // Input Schema
+export interface TableResourcesGetTableRoleDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  roleDefinitionId: string;
+}
 export const TableResourcesGetTableRoleDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15679,11 +20464,22 @@ export const TableResourcesGetTableRoleDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesGetTableRoleDefinitionInput =
-  typeof TableResourcesGetTableRoleDefinitionInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesGetTableRoleDefinitionInput>;
 
 // Output Schema
+export interface TableResourcesGetTableRoleDefinitionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesGetTableRoleDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15703,9 +20499,7 @@ export const TableResourcesGetTableRoleDefinitionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesGetTableRoleDefinitionOutput =
-  typeof TableResourcesGetTableRoleDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesGetTableRoleDefinitionOutput>;
 
 // The operation
 /**
@@ -15723,6 +20517,12 @@ export const TableResourcesGetTableRoleDefinition =
     outputSchema: TableResourcesGetTableRoleDefinitionOutput,
   }));
 // Input Schema
+export interface TableResourcesGetTableThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+}
 export const TableResourcesGetTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15735,11 +20535,22 @@ export const TableResourcesGetTableThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesGetTableThroughputInput =
-  typeof TableResourcesGetTableThroughputInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesGetTableThroughputInput>;
 
 // Output Schema
+export interface TableResourcesGetTableThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesGetTableThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15759,9 +20570,7 @@ export const TableResourcesGetTableThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesGetTableThroughputOutput =
-  typeof TableResourcesGetTableThroughputOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesGetTableThroughputOutput>;
 
 // The operation
 /**
@@ -15779,6 +20588,11 @@ export const TableResourcesGetTableThroughput =
     outputSchema: TableResourcesGetTableThroughputOutput,
   }));
 // Input Schema
+export interface TableResourcesListTableRoleAssignmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const TableResourcesListTableRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15790,11 +20604,25 @@ export const TableResourcesListTableRoleAssignmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesListTableRoleAssignmentsInput =
-  typeof TableResourcesListTableRoleAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesListTableRoleAssignmentsInput>;
 
 // Output Schema
+export interface TableResourcesListTableRoleAssignmentsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TableResourcesListTableRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15829,9 +20657,7 @@ export const TableResourcesListTableRoleAssignmentsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TableResourcesListTableRoleAssignmentsOutput =
-  typeof TableResourcesListTableRoleAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesListTableRoleAssignmentsOutput>;
 
 // The operation
 /**
@@ -15848,6 +20674,11 @@ export const TableResourcesListTableRoleAssignments =
     outputSchema: TableResourcesListTableRoleAssignmentsOutput,
   }));
 // Input Schema
+export interface TableResourcesListTableRoleDefinitionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const TableResourcesListTableRoleDefinitionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15859,11 +20690,25 @@ export const TableResourcesListTableRoleDefinitionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesListTableRoleDefinitionsInput =
-  typeof TableResourcesListTableRoleDefinitionsInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesListTableRoleDefinitionsInput>;
 
 // Output Schema
+export interface TableResourcesListTableRoleDefinitionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TableResourcesListTableRoleDefinitionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15898,9 +20743,7 @@ export const TableResourcesListTableRoleDefinitionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TableResourcesListTableRoleDefinitionsOutput =
-  typeof TableResourcesListTableRoleDefinitionsOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesListTableRoleDefinitionsOutput>;
 
 // The operation
 /**
@@ -15917,6 +20760,11 @@ export const TableResourcesListTableRoleDefinitions =
     outputSchema: TableResourcesListTableRoleDefinitionsOutput,
   }));
 // Input Schema
+export interface TableResourcesListTablesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const TableResourcesListTablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15928,11 +20776,25 @@ export const TableResourcesListTablesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesListTablesInput =
-  typeof TableResourcesListTablesInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesListTablesInput>;
 
 // Output Schema
+export interface TableResourcesListTablesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TableResourcesListTablesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -15969,9 +20831,7 @@ export const TableResourcesListTablesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TableResourcesListTablesOutput =
-  typeof TableResourcesListTablesOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesListTablesOutput>;
 
 // The operation
 /**
@@ -15989,6 +20849,12 @@ export const TableResourcesListTables = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TableResourcesMigrateTableToAutoscaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+}
 export const TableResourcesMigrateTableToAutoscaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16001,11 +20867,22 @@ export const TableResourcesMigrateTableToAutoscaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesMigrateTableToAutoscaleInput =
-  typeof TableResourcesMigrateTableToAutoscaleInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesMigrateTableToAutoscaleInput>;
 
 // Output Schema
+export interface TableResourcesMigrateTableToAutoscaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesMigrateTableToAutoscaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16025,9 +20902,7 @@ export const TableResourcesMigrateTableToAutoscaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesMigrateTableToAutoscaleOutput =
-  typeof TableResourcesMigrateTableToAutoscaleOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesMigrateTableToAutoscaleOutput>;
 
 // The operation
 /**
@@ -16045,6 +20920,12 @@ export const TableResourcesMigrateTableToAutoscale =
     outputSchema: TableResourcesMigrateTableToAutoscaleOutput,
   }));
 // Input Schema
+export interface TableResourcesMigrateTableToManualThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+}
 export const TableResourcesMigrateTableToManualThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16057,11 +20938,22 @@ export const TableResourcesMigrateTableToManualThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesMigrateTableToManualThroughputInput =
-  typeof TableResourcesMigrateTableToManualThroughputInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesMigrateTableToManualThroughputInput>;
 
 // Output Schema
+export interface TableResourcesMigrateTableToManualThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesMigrateTableToManualThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16081,9 +20973,7 @@ export const TableResourcesMigrateTableToManualThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesMigrateTableToManualThroughputOutput =
-  typeof TableResourcesMigrateTableToManualThroughputOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesMigrateTableToManualThroughputOutput>;
 
 // The operation
 /**
@@ -16101,6 +20991,13 @@ export const TableResourcesMigrateTableToManualThroughput =
     outputSchema: TableResourcesMigrateTableToManualThroughputOutput,
   }));
 // Input Schema
+export interface TableResourcesRetrieveContinuousBackupInformationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+  location?: string;
+}
 export const TableResourcesRetrieveContinuousBackupInformationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16114,11 +21011,12 @@ export const TableResourcesRetrieveContinuousBackupInformationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/retrieveContinuousBackupInformation",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesRetrieveContinuousBackupInformationInput =
-  typeof TableResourcesRetrieveContinuousBackupInformationInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesRetrieveContinuousBackupInformationInput>;
 
 // Output Schema
+export interface TableResourcesRetrieveContinuousBackupInformationOutput {
+  continuousBackupInformation?: { latestRestorableTimestamp?: string };
+}
 export const TableResourcesRetrieveContinuousBackupInformationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     continuousBackupInformation: Schema.optional(
@@ -16126,9 +21024,7 @@ export const TableResourcesRetrieveContinuousBackupInformationOutput =
         latestRestorableTimestamp: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesRetrieveContinuousBackupInformationOutput =
-  typeof TableResourcesRetrieveContinuousBackupInformationOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesRetrieveContinuousBackupInformationOutput>;
 
 // The operation
 /**
@@ -16146,6 +21042,46 @@ export const TableResourcesRetrieveContinuousBackupInformation =
     outputSchema: TableResourcesRetrieveContinuousBackupInformationOutput,
   }));
 // Input Schema
+export interface TableResourcesUpdateTableThroughputInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tableName: string;
+  properties: {
+    resource: {
+      throughput?: number;
+      autoscaleSettings?: {
+        maxThroughput: number;
+        autoUpgradePolicy?: {
+          throughputPolicy?: { isEnabled?: boolean; incrementPercent?: number };
+        };
+        targetMaxThroughput?: number;
+      };
+      minimumThroughput?: string;
+      offerReplacePending?: string;
+      instantMaximumThroughput?: string;
+      softAllowedMaximumThroughput?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const TableResourcesUpdateTableThroughputInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16211,11 +21147,22 @@ export const TableResourcesUpdateTableThroughputInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
       apiVersion: "2026-03-15",
     }),
-  );
-export type TableResourcesUpdateTableThroughputInput =
-  typeof TableResourcesUpdateTableThroughputInput.Type;
+  ) as unknown as Schema.Codec<TableResourcesUpdateTableThroughputInput>;
 
 // Output Schema
+export interface TableResourcesUpdateTableThroughputOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TableResourcesUpdateTableThroughputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16235,9 +21182,7 @@ export const TableResourcesUpdateTableThroughputOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TableResourcesUpdateTableThroughputOutput =
-  typeof TableResourcesUpdateTableThroughputOutput.Type;
+  }) as unknown as Schema.Codec<TableResourcesUpdateTableThroughputOutput>;
 
 // The operation
 /**

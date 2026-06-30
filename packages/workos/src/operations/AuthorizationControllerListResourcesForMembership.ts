@@ -9,6 +9,17 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationControllerListResourcesForMembershipInput {
+  organization_membership_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  permission_slug: string;
+  parent_resource_id?: string;
+  parent_resource_type_slug?: string;
+  parent_resource_external_id?: string;
+}
 export const AuthorizationControllerListResourcesForMembershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -25,11 +36,25 @@ export const AuthorizationControllerListResourcesForMembershipInput =
       method: "GET",
       path: "/authorization/organization_memberships/{organization_membership_id}/resources",
     }),
-  );
-export type AuthorizationControllerListResourcesForMembershipInput =
-  typeof AuthorizationControllerListResourcesForMembershipInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationControllerListResourcesForMembershipInput>;
 
 // Output Schema
+export interface AuthorizationControllerListResourcesForMembershipOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    name?: string;
+    description?: string | null;
+    organization_id?: string;
+    parent_resource_id?: string | null;
+    id?: string;
+    external_id?: string;
+    resource_type_slug?: string;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const AuthorizationControllerListResourcesForMembershipOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -55,9 +80,7 @@ export const AuthorizationControllerListResourcesForMembershipOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AuthorizationControllerListResourcesForMembershipOutput =
-  typeof AuthorizationControllerListResourcesForMembershipOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationControllerListResourcesForMembershipOutput>;
 
 // The operation
 /**

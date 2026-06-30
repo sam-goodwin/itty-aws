@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardsStreamTilesRetrieveInput {
+  id: number;
+  project_id: string;
+  filters_override?: string;
+  format?: "json" | "txt";
+  layoutSize?: "sm" | "xs";
+  variables_override?: string;
+}
 export const DashboardsStreamTilesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const DashboardsStreamTilesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/dashboards/{id}/stream_tiles/",
     }),
-  );
-export type DashboardsStreamTilesRetrieveInput =
-  typeof DashboardsStreamTilesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DashboardsStreamTilesRetrieveInput>;
 
 // Output Schema
+export type DashboardsStreamTilesRetrieveOutput = void;
 export const DashboardsStreamTilesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DashboardsStreamTilesRetrieveOutput =
-  typeof DashboardsStreamTilesRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsStreamTilesRetrieveOutput>;
 
 // The operation
 /**

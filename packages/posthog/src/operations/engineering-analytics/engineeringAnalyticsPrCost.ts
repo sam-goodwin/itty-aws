@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface EngineeringAnalyticsPrCostInput {
+  project_id: string;
+  pr_number: number;
+  repo: string;
+  source_id?: string;
+}
 export const EngineeringAnalyticsPrCostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,31 @@ export const EngineeringAnalyticsPrCostInput =
       method: "GET",
       path: "/api/projects/{project_id}/engineering_analytics/pr_cost/",
     }),
-  );
-export type EngineeringAnalyticsPrCostInput =
-  typeof EngineeringAnalyticsPrCostInput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsPrCostInput>;
 
 // Output Schema
+export interface EngineeringAnalyticsPrCostOutput {
+  by_workflow: {
+    workflow_name: string;
+    billable_minutes: number;
+    estimated_cost_usd: number | null;
+    costed_jobs: number;
+    unsettled_jobs: number;
+    excluded_jobs: number;
+  }[];
+  by_run: {
+    run_id: number;
+    run_attempt: number;
+    billable_minutes: number;
+    estimated_cost_usd: number | null;
+  }[];
+  jobs_available: boolean;
+  billable_minutes: number;
+  estimated_cost_usd: number | null;
+  costed_jobs: number;
+  unsettled_jobs: number;
+  excluded_jobs: number;
+}
 export const EngineeringAnalyticsPrCostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     by_workflow: Schema.Array(
@@ -46,9 +72,7 @@ export const EngineeringAnalyticsPrCostOutput =
     costed_jobs: Schema.Number,
     unsettled_jobs: Schema.Number,
     excluded_jobs: Schema.Number,
-  });
-export type EngineeringAnalyticsPrCostOutput =
-  typeof EngineeringAnalyticsPrCostOutput.Type;
+  }) as unknown as Schema.Codec<EngineeringAnalyticsPrCostOutput>;
 
 // The operation
 /**

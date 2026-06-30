@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteAccountsAccountInput {
+  account: string;
+}
 export const DeleteAccountsAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
@@ -12,18 +15,20 @@ export const DeleteAccountsAccountInput =
       path: "/v1/accounts/{account}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteAccountsAccountInput = typeof DeleteAccountsAccountInput.Type;
+  ) as unknown as Schema.Codec<DeleteAccountsAccountInput>;
 
 // Output Schema
+export interface DeleteAccountsAccountOutput {
+  deleted: true;
+  id: string;
+  object: "account";
+}
 export const DeleteAccountsAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["account"]),
-  });
-export type DeleteAccountsAccountOutput =
-  typeof DeleteAccountsAccountOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAccountsAccountOutput>;
 
 // The operation
 /**

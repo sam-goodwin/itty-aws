@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateProjectTransferRequestInput {
+  project_id: string;
+  ttl_seconds?: number;
+}
 export const CreateProjectTransferRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,20 +16,22 @@ export const CreateProjectTransferRequestInput =
       method: "POST",
       path: "/projects/{project_id}/transfer_requests",
     }),
-  );
-export type CreateProjectTransferRequestInput =
-  typeof CreateProjectTransferRequestInput.Type;
+  ) as unknown as Schema.Codec<CreateProjectTransferRequestInput>;
 
 // Output Schema
+export interface CreateProjectTransferRequestOutput {
+  id: string;
+  project_id: string;
+  created_at: string;
+  expires_at: string;
+}
 export const CreateProjectTransferRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     project_id: Schema.String,
     created_at: Schema.String,
     expires_at: Schema.String,
-  });
-export type CreateProjectTransferRequestOutput =
-  typeof CreateProjectTransferRequestOutput.Type;
+  }) as unknown as Schema.Codec<CreateProjectTransferRequestOutput>;
 
 // The operation
 /**

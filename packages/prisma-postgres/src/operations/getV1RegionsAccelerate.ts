@@ -3,14 +3,16 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV1RegionsAccelerateInput {}
 export const GetV1RegionsAccelerateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/v1/regions/accelerate" }),
-  );
-export type GetV1RegionsAccelerateInput =
-  typeof GetV1RegionsAccelerateInput.Type;
+  ) as unknown as Schema.Codec<GetV1RegionsAccelerateInput>;
 
 // Output Schema
+export interface GetV1RegionsAccelerateOutput {
+  data: { id: string; type: string; name: string }[];
+}
 export const GetV1RegionsAccelerateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -20,9 +22,7 @@ export const GetV1RegionsAccelerateOutput =
         name: Schema.String,
       }),
     ),
-  });
-export type GetV1RegionsAccelerateOutput =
-  typeof GetV1RegionsAccelerateOutput.Type;
+  }) as unknown as Schema.Codec<GetV1RegionsAccelerateOutput>;
 
 // The operation
 /**

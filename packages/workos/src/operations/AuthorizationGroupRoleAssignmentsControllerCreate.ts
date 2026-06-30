@@ -9,6 +9,13 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationGroupRoleAssignmentsControllerCreateInput {
+  group_id: string;
+  role_slug: string;
+  resource_id?: string;
+  resource_external_id?: string;
+  resource_type_slug?: string;
+}
 export const AuthorizationGroupRoleAssignmentsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
@@ -21,11 +28,18 @@ export const AuthorizationGroupRoleAssignmentsControllerCreateInput =
       method: "POST",
       path: "/authorization/groups/{group_id}/role_assignments",
     }),
-  );
-export type AuthorizationGroupRoleAssignmentsControllerCreateInput =
-  typeof AuthorizationGroupRoleAssignmentsControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerCreateInput>;
 
 // Output Schema
+export interface AuthorizationGroupRoleAssignmentsControllerCreateOutput {
+  object: string;
+  id: string;
+  group_id: string;
+  role: { slug?: string };
+  resource: { id: string; external_id: string; resource_type_slug: string };
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationGroupRoleAssignmentsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -41,9 +55,7 @@ export const AuthorizationGroupRoleAssignmentsControllerCreateOutput =
     }),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationGroupRoleAssignmentsControllerCreateOutput =
-  typeof AuthorizationGroupRoleAssignmentsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DeleteRoleInput {
+  organization: string;
+  database: string;
+  branch: string;
+  id: string;
+  successor?: string;
+}
 export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -15,12 +22,12 @@ export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/roles/{id}",
   }),
-);
-export type DeleteRoleInput = typeof DeleteRoleInput.Type;
+) as unknown as Schema.Codec<DeleteRoleInput>;
 
 // Output Schema
-export const DeleteRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteRoleOutput = typeof DeleteRoleOutput.Type;
+export type DeleteRoleOutput = void;
+export const DeleteRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteRoleOutput>;
 
 // The operation
 /**

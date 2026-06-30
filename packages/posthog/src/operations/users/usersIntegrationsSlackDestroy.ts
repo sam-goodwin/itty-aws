@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsSlackDestroyInput {
+  slack_user_id: string;
+  uuid: string;
+}
 export const UsersIntegrationsSlackDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slack_user_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const UsersIntegrationsSlackDestroyInput =
       method: "DELETE",
       path: "/api/users/{uuid}/integrations/slack/{slack_user_id}/",
     }),
-  );
-export type UsersIntegrationsSlackDestroyInput =
-  typeof UsersIntegrationsSlackDestroyInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsSlackDestroyInput>;
 
 // Output Schema
+export type UsersIntegrationsSlackDestroyOutput = void;
 export const UsersIntegrationsSlackDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersIntegrationsSlackDestroyOutput =
-  typeof UsersIntegrationsSlackDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersIntegrationsSlackDestroyOutput>;
 
 // The operation
 /**

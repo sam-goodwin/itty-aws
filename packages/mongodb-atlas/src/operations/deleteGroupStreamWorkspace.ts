@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupStreamWorkspaceInput {
+  groupId: string;
+  tenantName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupStreamWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteGroupStreamWorkspaceInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
     }),
-  );
-export type DeleteGroupStreamWorkspaceInput =
-  typeof DeleteGroupStreamWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupStreamWorkspaceInput>;
 
 // Output Schema
+export type DeleteGroupStreamWorkspaceOutput = void;
 export const DeleteGroupStreamWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupStreamWorkspaceOutput =
-  typeof DeleteGroupStreamWorkspaceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamWorkspaceOutput>;
 
 // The operation
 /**

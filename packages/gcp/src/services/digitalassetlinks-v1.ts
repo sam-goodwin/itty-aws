@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface WebAsset {
   site?: string;
 }
 
-export const WebAsset: Schema.Schema<WebAsset> =
+export const WebAsset: Schema.Codec<WebAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     site: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebAsset" });
@@ -37,7 +37,7 @@ export interface CertificateInfo {
   sha256Fingerprint?: string;
 }
 
-export const CertificateInfo: Schema.Schema<CertificateInfo> =
+export const CertificateInfo: Schema.Codec<CertificateInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha256Fingerprint: Schema.optional(Schema.String),
   }).annotate({ identifier: "CertificateInfo" });
@@ -49,7 +49,7 @@ export interface AndroidAppAsset {
   certificate?: CertificateInfo;
 }
 
-export const AndroidAppAsset: Schema.Schema<AndroidAppAsset> =
+export const AndroidAppAsset: Schema.Codec<AndroidAppAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     certificate: Schema.optional(CertificateInfo),
@@ -62,7 +62,7 @@ export interface Asset {
   androidApp?: AndroidAppAsset;
 }
 
-export const Asset: Schema.Schema<Asset> =
+export const Asset: Schema.Codec<Asset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     web: Schema.optional(WebAsset),
     androidApp: Schema.optional(AndroidAppAsset),
@@ -79,7 +79,7 @@ export interface Statement {
   relationExtensions?: Record<string, unknown>;
 }
 
-export const Statement: Schema.Schema<Statement> =
+export const Statement: Schema.Codec<Statement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Asset),
     target: Schema.optional(Asset),
@@ -115,7 +115,7 @@ export interface CheckResponse {
   debugString?: string;
 }
 
-export const CheckResponse: Schema.Schema<CheckResponse> =
+export const CheckResponse: Schema.Codec<CheckResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linked: Schema.optional(Schema.Boolean),
     maxAge: Schema.optional(Schema.String),
@@ -135,7 +135,7 @@ export interface StatementTemplate {
   target?: Asset;
 }
 
-export const StatementTemplate: Schema.Schema<StatementTemplate> =
+export const StatementTemplate: Schema.Codec<StatementTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relation: Schema.optional(Schema.String),
     source: Schema.optional(Asset),
@@ -155,7 +155,7 @@ export interface BulkCheckRequest {
   returnRelationExtensions?: boolean;
 }
 
-export const BulkCheckRequest: Schema.Schema<BulkCheckRequest> =
+export const BulkCheckRequest: Schema.Codec<BulkCheckRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultSource: Schema.optional(Asset),
     statements: Schema.optional(Schema.Array(StatementTemplate)),
@@ -188,7 +188,7 @@ export interface ListResponse {
   statements?: ReadonlyArray<Statement>;
 }
 
-export const ListResponse: Schema.Schema<ListResponse> =
+export const ListResponse: Schema.Codec<ListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxAge: Schema.optional(Schema.String),
     debugString: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface BulkCheckResponse {
   checkResults?: ReadonlyArray<CheckResponse>;
 }
 
-export const BulkCheckResponse: Schema.Schema<BulkCheckResponse> =
+export const BulkCheckResponse: Schema.Codec<BulkCheckResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bulkErrorCode: Schema.optional(Schema.String),
     checkResults: Schema.optional(Schema.Array(CheckResponse)),
@@ -322,7 +322,7 @@ export const CheckAssetlinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/assetlinks:check" }),
   svc,
-) as unknown as Schema.Schema<CheckAssetlinksRequest>;
+) as unknown as Schema.Codec<CheckAssetlinksRequest>;
 
 export type CheckAssetlinksResponse = CheckResponse;
 export const CheckAssetlinksResponse =
@@ -353,7 +353,7 @@ export const BulkCheckAssetlinksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/assetlinks:bulkCheck", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BulkCheckAssetlinksRequest>;
+  ) as unknown as Schema.Codec<BulkCheckAssetlinksRequest>;
 
 export type BulkCheckAssetlinksResponse = BulkCheckResponse;
 export const BulkCheckAssetlinksResponse =
@@ -408,7 +408,7 @@ export const ListStatementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/statements:list" }),
   svc,
-) as unknown as Schema.Schema<ListStatementsRequest>;
+) as unknown as Schema.Codec<ListStatementsRequest>;
 
 export type ListStatementsResponse = ListResponse;
 export const ListStatementsResponse = /*@__PURE__*/ /*#__PURE__*/ ListResponse;

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MetricsValuesRetrieveInput {
+  project_id: string;
+  limit?: number;
+  value?: string;
+}
 export const MetricsValuesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,12 @@ export const MetricsValuesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/metrics/values/",
     }),
-  );
-export type MetricsValuesRetrieveInput = typeof MetricsValuesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MetricsValuesRetrieveInput>;
 
 // Output Schema
+export interface MetricsValuesRetrieveOutput {
+  results: { name: string; metric_type: string }[];
+}
 export const MetricsValuesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -25,9 +32,7 @@ export const MetricsValuesRetrieveOutput =
         metric_type: Schema.String,
       }),
     ),
-  });
-export type MetricsValuesRetrieveOutput =
-  typeof MetricsValuesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MetricsValuesRetrieveOutput>;
 
 // The operation
 /**

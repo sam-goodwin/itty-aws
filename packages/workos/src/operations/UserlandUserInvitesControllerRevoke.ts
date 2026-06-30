@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserInvitesControllerRevokeInput {
+  id: string;
+}
 export const UserlandUserInvitesControllerRevokeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,26 @@ export const UserlandUserInvitesControllerRevokeInput =
       method: "POST",
       path: "/user_management/invitations/{id}/revoke",
     }),
-  );
-export type UserlandUserInvitesControllerRevokeInput =
-  typeof UserlandUserInvitesControllerRevokeInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserInvitesControllerRevokeInput>;
 
 // Output Schema
+export interface UserlandUserInvitesControllerRevokeOutput {
+  object: string;
+  id: string;
+  email: string;
+  state: "pending" | "accepted" | "expired" | "revoked";
+  accepted_at: string | null;
+  revoked_at: string | null;
+  expires_at: string;
+  organization_id: string | null;
+  inviter_user_id: string | null;
+  accepted_user_id: string | null;
+  role_slug: string | null;
+  created_at: string;
+  updated_at: string;
+  token: string;
+  accept_invitation_url: string;
+}
 export const UserlandUserInvitesControllerRevokeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -34,9 +52,7 @@ export const UserlandUserInvitesControllerRevokeOutput =
     updated_at: Schema.String,
     token: Schema.String,
     accept_invitation_url: Schema.String,
-  });
-export type UserlandUserInvitesControllerRevokeOutput =
-  typeof UserlandUserInvitesControllerRevokeOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserInvitesControllerRevokeOutput>;
 
 // The operation
 /**

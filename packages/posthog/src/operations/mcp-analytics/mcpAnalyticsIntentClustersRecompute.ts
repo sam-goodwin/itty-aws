@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpAnalyticsIntentClustersRecomputeInput {
+  project_id: string;
+}
 export const McpAnalyticsIntentClustersRecomputeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const McpAnalyticsIntentClustersRecomputeInput =
       method: "POST",
       path: "/api/projects/{project_id}/mcp_analytics/intent_clusters/recompute/",
     }),
-  );
-export type McpAnalyticsIntentClustersRecomputeInput =
-  typeof McpAnalyticsIntentClustersRecomputeInput.Type;
+  ) as unknown as Schema.Codec<McpAnalyticsIntentClustersRecomputeInput>;
 
 // Output Schema
+export type McpAnalyticsIntentClustersRecomputeOutput = void;
 export const McpAnalyticsIntentClustersRecomputeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type McpAnalyticsIntentClustersRecomputeOutput =
-  typeof McpAnalyticsIntentClustersRecomputeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<McpAnalyticsIntentClustersRecomputeOutput>;
 
 // The operation
 /**

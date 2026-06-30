@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -69,7 +69,7 @@ export interface MonitoringDestination {
   monitoredResource?: string;
 }
 
-export const MonitoringDestination: Schema.Schema<MonitoringDestination> =
+export const MonitoringDestination: Schema.Codec<MonitoringDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     monitoredResource: Schema.optional(Schema.String),
@@ -82,7 +82,7 @@ export interface Monitoring {
   consumerDestinations?: ReadonlyArray<MonitoringDestination>;
 }
 
-export const Monitoring: Schema.Schema<Monitoring> =
+export const Monitoring: Schema.Codec<Monitoring> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     producerDestinations: Schema.optional(Schema.Array(MonitoringDestination)),
     consumerDestinations: Schema.optional(Schema.Array(MonitoringDestination)),
@@ -95,7 +95,7 @@ export interface PolicyBinding {
   member?: string;
 }
 
-export const PolicyBinding: Schema.Schema<PolicyBinding> =
+export const PolicyBinding: Schema.Codec<PolicyBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     member: Schema.optional(Schema.String),
@@ -106,7 +106,7 @@ export interface AddRolesResponse {
   policyBinding?: ReadonlyArray<PolicyBinding>;
 }
 
-export const AddRolesResponse: Schema.Schema<AddRolesResponse> =
+export const AddRolesResponse: Schema.Codec<AddRolesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyBinding: Schema.optional(Schema.Array(PolicyBinding)),
   }).annotate({ identifier: "AddRolesResponse" });
@@ -116,7 +116,7 @@ export interface ConsumerProject {
   projectNum?: string;
 }
 
-export const ConsumerProject: Schema.Schema<ConsumerProject> =
+export const ConsumerProject: Schema.Codec<ConsumerProject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectNum: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConsumerProject" });
@@ -128,7 +128,7 @@ export interface SecondaryIpRange {
   ipCidrRange?: string;
 }
 
-export const SecondaryIpRange: Schema.Schema<SecondaryIpRange> =
+export const SecondaryIpRange: Schema.Codec<SecondaryIpRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rangeName: Schema.optional(Schema.String),
     ipCidrRange: Schema.optional(Schema.String),
@@ -149,7 +149,7 @@ export interface Subnetwork {
   network?: string;
 }
 
-export const Subnetwork: Schema.Schema<Subnetwork> =
+export const Subnetwork: Schema.Codec<Subnetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     secondaryIpRanges: Schema.optional(Schema.Array(SecondaryIpRange)),
@@ -170,7 +170,7 @@ export interface RangeReservation {
   subnetworkCandidates?: ReadonlyArray<Subnetwork>;
 }
 
-export const RangeReservation: Schema.Schema<RangeReservation> =
+export const RangeReservation: Schema.Codec<RangeReservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipPrefixLength: Schema.optional(Schema.Number),
     secondaryRangeIpPrefixLengths: Schema.optional(Schema.Array(Schema.Number)),
@@ -191,7 +191,7 @@ export interface ValidateConsumerConfigRequest {
   rangeReservation?: RangeReservation;
 }
 
-export const ValidateConsumerConfigRequest: Schema.Schema<ValidateConsumerConfigRequest> =
+export const ValidateConsumerConfigRequest: Schema.Codec<ValidateConsumerConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateNetwork: Schema.optional(Schema.Boolean),
     consumerProject: Schema.optional(ConsumerProject),
@@ -205,7 +205,7 @@ export interface SourceContext {
   fileName?: string;
 }
 
-export const SourceContext: Schema.Schema<SourceContext> =
+export const SourceContext: Schema.Codec<SourceContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SourceContext" });
@@ -219,7 +219,7 @@ export interface SystemParameter {
   name?: string;
 }
 
-export const SystemParameter: Schema.Schema<SystemParameter> =
+export const SystemParameter: Schema.Codec<SystemParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlQueryParameter: Schema.optional(Schema.String),
     httpHeader: Schema.optional(Schema.String),
@@ -233,7 +233,7 @@ export interface SystemParameterRule {
   parameters?: ReadonlyArray<SystemParameter>;
 }
 
-export const SystemParameterRule: Schema.Schema<SystemParameterRule> =
+export const SystemParameterRule: Schema.Codec<SystemParameterRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(SystemParameter)),
@@ -244,7 +244,7 @@ export interface SystemParameters {
   rules?: ReadonlyArray<SystemParameterRule>;
 }
 
-export const SystemParameters: Schema.Schema<SystemParameters> =
+export const SystemParameters: Schema.Codec<SystemParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(SystemParameterRule)),
   }).annotate({ identifier: "SystemParameters" });
@@ -256,7 +256,7 @@ export interface Range {
   network?: string;
 }
 
-export const Range: Schema.Schema<Range> =
+export const Range: Schema.Codec<Range> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipCidrRange: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
@@ -269,7 +269,7 @@ export interface Option {
   value?: Record<string, unknown>;
 }
 
-export const Option: Schema.Schema<Option> =
+export const Option: Schema.Codec<Option> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -323,7 +323,7 @@ export interface Field {
   defaultValue?: string;
 }
 
-export const Field: Schema.Schema<Field> =
+export const Field: Schema.Codec<Field> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cardinality: Schema.optional(Schema.String),
     typeUrl: Schema.optional(Schema.String),
@@ -358,7 +358,7 @@ export interface Type {
     | (string & {});
 }
 
-export const Type: Schema.Schema<Type> =
+export const Type: Schema.Codec<Type> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneofs: Schema.optional(Schema.Array(Schema.String)),
     edition: Schema.optional(Schema.String),
@@ -380,7 +380,7 @@ export interface DnsRecordSet {
   type?: string;
 }
 
-export const DnsRecordSet: Schema.Schema<DnsRecordSet> =
+export const DnsRecordSet: Schema.Codec<DnsRecordSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Array(Schema.String)),
@@ -397,7 +397,7 @@ export interface RemoveDnsRecordSetRequest {
   zone?: string;
 }
 
-export const RemoveDnsRecordSetRequest: Schema.Schema<RemoveDnsRecordSetRequest> =
+export const RemoveDnsRecordSetRequest: Schema.Codec<RemoveDnsRecordSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsRecordSet: Schema.optional(DnsRecordSet),
     consumerNetwork: Schema.optional(Schema.String),
@@ -409,7 +409,7 @@ export interface OAuthRequirements {
   canonicalScopes?: string;
 }
 
-export const OAuthRequirements: Schema.Schema<OAuthRequirements> =
+export const OAuthRequirements: Schema.Codec<OAuthRequirements> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     canonicalScopes: Schema.optional(Schema.String),
   }).annotate({ identifier: "OAuthRequirements" });
@@ -421,7 +421,7 @@ export interface LoggingDestination {
   logs?: ReadonlyArray<string>;
 }
 
-export const LoggingDestination: Schema.Schema<LoggingDestination> =
+export const LoggingDestination: Schema.Codec<LoggingDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monitoredResource: Schema.optional(Schema.String),
     logs: Schema.optional(Schema.Array(Schema.String)),
@@ -434,7 +434,7 @@ export interface Logging {
   consumerDestinations?: ReadonlyArray<LoggingDestination>;
 }
 
-export const Logging: Schema.Schema<Logging> =
+export const Logging: Schema.Codec<Logging> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     producerDestinations: Schema.optional(Schema.Array(LoggingDestination)),
     consumerDestinations: Schema.optional(Schema.Array(LoggingDestination)),
@@ -451,7 +451,7 @@ export interface Route {
   nextHopGateway?: string;
 }
 
-export const Route: Schema.Schema<Route> =
+export const Route: Schema.Codec<Route> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     destRange: Schema.optional(Schema.String),
@@ -461,7 +461,7 @@ export const Route: Schema.Schema<Route> =
 
 export interface AddDnsRecordSetMetadata {}
 
-export const AddDnsRecordSetMetadata: Schema.Schema<AddDnsRecordSetMetadata> =
+export const AddDnsRecordSetMetadata: Schema.Codec<AddDnsRecordSetMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddDnsRecordSetMetadata",
   });
@@ -471,7 +471,7 @@ export interface SourceInfo {
   sourceFiles?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const SourceInfo: Schema.Schema<SourceInfo> =
+export const SourceInfo: Schema.Codec<SourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceFiles: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -489,7 +489,7 @@ export interface Endpoint {
   aliases?: ReadonlyArray<string>;
 }
 
-export const Endpoint: Schema.Schema<Endpoint> =
+export const Endpoint: Schema.Codec<Endpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     allowCors: Schema.optional(Schema.Boolean),
@@ -504,7 +504,7 @@ export interface SelectiveGapicGeneration {
   generateOmittedAsInternal?: boolean;
 }
 
-export const SelectiveGapicGeneration: Schema.Schema<SelectiveGapicGeneration> =
+export const SelectiveGapicGeneration: Schema.Codec<SelectiveGapicGeneration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     generateOmittedAsInternal: Schema.optional(Schema.Boolean),
@@ -512,7 +512,7 @@ export const SelectiveGapicGeneration: Schema.Schema<SelectiveGapicGeneration> =
 
 export interface CleanupConnectionMetadata {}
 
-export const CleanupConnectionMetadata: Schema.Schema<CleanupConnectionMetadata> =
+export const CleanupConnectionMetadata: Schema.Codec<CleanupConnectionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CleanupConnectionMetadata",
   });
@@ -526,7 +526,7 @@ export interface BatchingDescriptorProto {
   discriminatorFields?: ReadonlyArray<string>;
 }
 
-export const BatchingDescriptorProto: Schema.Schema<BatchingDescriptorProto> =
+export const BatchingDescriptorProto: Schema.Codec<BatchingDescriptorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batchedField: Schema.optional(Schema.String),
     subresponseField: Schema.optional(Schema.String),
@@ -547,7 +547,7 @@ export interface CommonLanguageSettings {
   >;
 }
 
-export const CommonLanguageSettings: Schema.Schema<CommonLanguageSettings> =
+export const CommonLanguageSettings: Schema.Codec<CommonLanguageSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceDocsUri: Schema.optional(Schema.String),
     selectiveGapicGeneration: Schema.optional(SelectiveGapicGeneration),
@@ -563,7 +563,7 @@ export interface JavaSettings {
   common?: CommonLanguageSettings;
 }
 
-export const JavaSettings: Schema.Schema<JavaSettings> =
+export const JavaSettings: Schema.Codec<JavaSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     libraryPackage: Schema.optional(Schema.String),
     serviceClassNames: Schema.optional(
@@ -581,7 +581,7 @@ export interface ExperimentalFeatures {
   unversionedPackageDisabled?: boolean;
 }
 
-export const ExperimentalFeatures: Schema.Schema<ExperimentalFeatures> =
+export const ExperimentalFeatures: Schema.Codec<ExperimentalFeatures> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protobufPythonicTypesEnabled: Schema.optional(Schema.Boolean),
     restAsyncIoEnabled: Schema.optional(Schema.Boolean),
@@ -595,7 +595,7 @@ export interface PythonSettings {
   common?: CommonLanguageSettings;
 }
 
-export const PythonSettings: Schema.Schema<PythonSettings> =
+export const PythonSettings: Schema.Codec<PythonSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     experimentalFeatures: Schema.optional(ExperimentalFeatures),
     common: Schema.optional(CommonLanguageSettings),
@@ -616,7 +616,7 @@ export interface DotnetSettings {
   handwrittenSignatures?: ReadonlyArray<string>;
 }
 
-export const DotnetSettings: Schema.Schema<DotnetSettings> =
+export const DotnetSettings: Schema.Codec<DotnetSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     renamedResources: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -637,7 +637,7 @@ export interface GoSettings {
   renamedServices?: Record<string, string>;
 }
 
-export const GoSettings: Schema.Schema<GoSettings> =
+export const GoSettings: Schema.Codec<GoSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     renamedServices: Schema.optional(
@@ -650,7 +650,7 @@ export interface CppSettings {
   common?: CommonLanguageSettings;
 }
 
-export const CppSettings: Schema.Schema<CppSettings> =
+export const CppSettings: Schema.Codec<CppSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "CppSettings" });
@@ -662,7 +662,7 @@ export interface PhpSettings {
   libraryPackage?: string;
 }
 
-export const PhpSettings: Schema.Schema<PhpSettings> =
+export const PhpSettings: Schema.Codec<PhpSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     libraryPackage: Schema.optional(Schema.String),
@@ -673,7 +673,7 @@ export interface NodeSettings {
   common?: CommonLanguageSettings;
 }
 
-export const NodeSettings: Schema.Schema<NodeSettings> =
+export const NodeSettings: Schema.Codec<NodeSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "NodeSettings" });
@@ -683,7 +683,7 @@ export interface RubySettings {
   common?: CommonLanguageSettings;
 }
 
-export const RubySettings: Schema.Schema<RubySettings> =
+export const RubySettings: Schema.Codec<RubySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "RubySettings" });
@@ -722,7 +722,7 @@ export interface ClientLibrarySettings {
   rubySettings?: RubySettings;
 }
 
-export const ClientLibrarySettings: Schema.Schema<ClientLibrarySettings> =
+export const ClientLibrarySettings: Schema.Codec<ClientLibrarySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     launchStage: Schema.optional(Schema.String),
     javaSettings: Schema.optional(JavaSettings),
@@ -739,7 +739,7 @@ export const ClientLibrarySettings: Schema.Schema<ClientLibrarySettings> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -753,7 +753,7 @@ export interface CloudSQLConfig {
   umbrellaProject?: string;
 }
 
-export const CloudSQLConfig: Schema.Schema<CloudSQLConfig> =
+export const CloudSQLConfig: Schema.Codec<CloudSQLConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     umbrellaNetwork: Schema.optional(Schema.String),
@@ -767,7 +767,7 @@ export interface AspectRule {
   config?: Record<string, unknown>;
 }
 
-export const AspectRule: Schema.Schema<AspectRule> =
+export const AspectRule: Schema.Codec<AspectRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     config: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -780,7 +780,7 @@ export interface DnsZone {
   dnsSuffix?: string;
 }
 
-export const DnsZone: Schema.Schema<DnsZone> =
+export const DnsZone: Schema.Codec<DnsZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dnsSuffix: Schema.optional(Schema.String),
@@ -793,7 +793,7 @@ export interface Mixin {
   name?: string;
 }
 
-export const Mixin: Schema.Schema<Mixin> =
+export const Mixin: Schema.Codec<Mixin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     root: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -822,7 +822,7 @@ export interface Method {
   responseTypeUrl?: string;
 }
 
-export const Method: Schema.Schema<Method> =
+export const Method: Schema.Codec<Method> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     responseStreaming: Schema.optional(Schema.Boolean),
@@ -857,8 +857,8 @@ export interface Api {
     | (string & {});
 }
 
-export const Api: Schema.Schema<Api> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Api: Schema.Codec<Api> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     mixins: Schema.optional(Schema.Array(Mixin)),
     version: Schema.optional(Schema.String),
     sourceContext: Schema.optional(SourceContext),
@@ -867,11 +867,12 @@ export const Api: Schema.Schema<Api> =
     name: Schema.optional(Schema.String),
     methods: Schema.optional(Schema.Array(Method)),
     syntax: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Api" });
+  },
+).annotate({ identifier: "Api" });
 
 export interface DeleteConnectionMetadata {}
 
-export const DeleteConnectionMetadata: Schema.Schema<DeleteConnectionMetadata> =
+export const DeleteConnectionMetadata: Schema.Codec<DeleteConnectionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteConnectionMetadata",
   });
@@ -885,7 +886,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -901,7 +902,7 @@ export interface FieldPolicy {
   selector?: string;
 }
 
-export const FieldPolicy: Schema.Schema<FieldPolicy> =
+export const FieldPolicy: Schema.Codec<FieldPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcePermission: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -915,7 +916,7 @@ export interface AuthRequirement {
   audiences?: string;
 }
 
-export const AuthRequirement: Schema.Schema<AuthRequirement> =
+export const AuthRequirement: Schema.Codec<AuthRequirement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     providerId: Schema.optional(Schema.String),
     audiences: Schema.optional(Schema.String),
@@ -932,7 +933,7 @@ export interface AuthenticationRule {
   requirements?: ReadonlyArray<AuthRequirement>;
 }
 
-export const AuthenticationRule: Schema.Schema<AuthenticationRule> =
+export const AuthenticationRule: Schema.Codec<AuthenticationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oauth: Schema.optional(OAuthRequirements),
     selector: Schema.optional(Schema.String),
@@ -947,7 +948,7 @@ export interface CustomHttpPattern {
   path?: string;
 }
 
-export const CustomHttpPattern: Schema.Schema<CustomHttpPattern> =
+export const CustomHttpPattern: Schema.Codec<CustomHttpPattern> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -960,7 +961,7 @@ export interface CustomErrorRule {
   isErrorType?: boolean;
 }
 
-export const CustomErrorRule: Schema.Schema<CustomErrorRule> =
+export const CustomErrorRule: Schema.Codec<CustomErrorRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     isErrorType: Schema.optional(Schema.Boolean),
@@ -977,7 +978,7 @@ export interface JwtLocation {
   cookie?: string;
 }
 
-export const JwtLocation: Schema.Schema<JwtLocation> =
+export const JwtLocation: Schema.Codec<JwtLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
     query: Schema.optional(Schema.String),
@@ -1000,7 +1001,7 @@ export interface AuthProvider {
   jwksUri?: string;
 }
 
-export const AuthProvider: Schema.Schema<AuthProvider> =
+export const AuthProvider: Schema.Codec<AuthProvider> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audiences: Schema.optional(Schema.String),
     jwtLocations: Schema.optional(Schema.Array(JwtLocation)),
@@ -1017,7 +1018,7 @@ export interface Authentication {
   providers?: ReadonlyArray<AuthProvider>;
 }
 
-export const Authentication: Schema.Schema<Authentication> =
+export const Authentication: Schema.Codec<Authentication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(AuthenticationRule)),
     providers: Schema.optional(Schema.Array(AuthProvider)),
@@ -1030,7 +1031,7 @@ export interface BillingDestination {
   monitoredResource?: string;
 }
 
-export const BillingDestination: Schema.Schema<BillingDestination> =
+export const BillingDestination: Schema.Codec<BillingDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     monitoredResource: Schema.optional(Schema.String),
@@ -1041,14 +1042,14 @@ export interface Billing {
   consumerDestinations?: ReadonlyArray<BillingDestination>;
 }
 
-export const Billing: Schema.Schema<Billing> =
+export const Billing: Schema.Codec<Billing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerDestinations: Schema.optional(Schema.Array(BillingDestination)),
   }).annotate({ identifier: "Billing" });
 
 export interface DeletePeeredDnsDomainMetadata {}
 
-export const DeletePeeredDnsDomainMetadata: Schema.Schema<DeletePeeredDnsDomainMetadata> =
+export const DeletePeeredDnsDomainMetadata: Schema.Codec<DeletePeeredDnsDomainMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeletePeeredDnsDomainMetadata",
   });
@@ -1076,7 +1077,7 @@ export interface HttpRule {
   delete?: string;
 }
 
-export const HttpRule: Schema.Schema<HttpRule> =
+export const HttpRule: Schema.Codec<HttpRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       post: Schema.optional(Schema.String),
@@ -1090,7 +1091,7 @@ export const HttpRule: Schema.Schema<HttpRule> =
       put: Schema.optional(Schema.String),
       delete: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "HttpRule" }) as any as Schema.Schema<HttpRule>;
+  ).annotate({ identifier: "HttpRule" }) as any as Schema.Codec<HttpRule>;
 
 export interface PeeredDnsDomain {
   /** The DNS domain name suffix e.g. `example.com.`. Cloud DNS requires that a DNS suffix ends with a trailing dot. */
@@ -1099,7 +1100,7 @@ export interface PeeredDnsDomain {
   name?: string;
 }
 
-export const PeeredDnsDomain: Schema.Schema<PeeredDnsDomain> =
+export const PeeredDnsDomain: Schema.Codec<PeeredDnsDomain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsSuffix: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1116,7 +1117,7 @@ export interface SecondaryIpRangeSpec {
   rangeName?: string;
 }
 
-export const SecondaryIpRangeSpec: Schema.Schema<SecondaryIpRangeSpec> =
+export const SecondaryIpRangeSpec: Schema.Codec<SecondaryIpRangeSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipPrefixLength: Schema.optional(Schema.Number),
     requestedAddress: Schema.optional(Schema.String),
@@ -1131,7 +1132,7 @@ export interface AddDnsZoneResponse {
   producerPrivateZone?: DnsZone;
 }
 
-export const AddDnsZoneResponse: Schema.Schema<AddDnsZoneResponse> =
+export const AddDnsZoneResponse: Schema.Codec<AddDnsZoneResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerPeeringZone: Schema.optional(DnsZone),
     producerPrivateZone: Schema.optional(DnsZone),
@@ -1146,7 +1147,7 @@ export interface GoogleCloudServicenetworkingV1ConsumerConfigReservedRange {
   name?: string;
 }
 
-export const GoogleCloudServicenetworkingV1ConsumerConfigReservedRange: Schema.Schema<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange> =
+export const GoogleCloudServicenetworkingV1ConsumerConfigReservedRange: Schema.Codec<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipPrefixLength: Schema.optional(Schema.Number),
     address: Schema.optional(Schema.String),
@@ -1166,7 +1167,7 @@ export interface UpdateDnsRecordSetRequest {
   newDnsRecordSet?: DnsRecordSet;
 }
 
-export const UpdateDnsRecordSetRequest: Schema.Schema<UpdateDnsRecordSetRequest> =
+export const UpdateDnsRecordSetRequest: Schema.Codec<UpdateDnsRecordSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     existingDnsRecordSet: Schema.optional(DnsRecordSet),
     consumerNetwork: Schema.optional(Schema.String),
@@ -1183,7 +1184,7 @@ export interface EnumValue {
   number?: number;
 }
 
-export const EnumValue: Schema.Schema<EnumValue> =
+export const EnumValue: Schema.Codec<EnumValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     options: Schema.optional(Schema.Array(Option)),
@@ -1197,7 +1198,7 @@ export interface SearchRangeRequest {
   ipPrefixLength?: number;
 }
 
-export const SearchRangeRequest: Schema.Schema<SearchRangeRequest> =
+export const SearchRangeRequest: Schema.Codec<SearchRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     ipPrefixLength: Schema.optional(Schema.Number),
@@ -1229,7 +1230,7 @@ export interface MetricDescriptorMetadata {
   >;
 }
 
-export const MetricDescriptorMetadata: Schema.Schema<MetricDescriptorMetadata> =
+export const MetricDescriptorMetadata: Schema.Codec<MetricDescriptorMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingestDelay: Schema.optional(Schema.String),
     launchStage: Schema.optional(Schema.String),
@@ -1263,7 +1264,7 @@ export interface BatchingSettingsProto {
   flowControlByteLimit?: number;
 }
 
-export const BatchingSettingsProto: Schema.Schema<BatchingSettingsProto> =
+export const BatchingSettingsProto: Schema.Codec<BatchingSettingsProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delayThreshold: Schema.optional(Schema.String),
     requestByteLimit: Schema.optional(Schema.Number),
@@ -1282,7 +1283,7 @@ export interface BatchingConfigProto {
   batchDescriptor?: BatchingDescriptorProto;
 }
 
-export const BatchingConfigProto: Schema.Schema<BatchingConfigProto> =
+export const BatchingConfigProto: Schema.Codec<BatchingConfigProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thresholds: Schema.optional(BatchingSettingsProto),
     batchDescriptor: Schema.optional(BatchingDescriptorProto),
@@ -1299,7 +1300,7 @@ export interface LongRunning {
   initialPollDelay?: string;
 }
 
-export const LongRunning: Schema.Schema<LongRunning> =
+export const LongRunning: Schema.Codec<LongRunning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxPollDelay: Schema.optional(Schema.String),
     pollDelayMultiplier: Schema.optional(Schema.Number),
@@ -1318,7 +1319,7 @@ export interface MethodSettings {
   selector?: string;
 }
 
-export const MethodSettings: Schema.Schema<MethodSettings> =
+export const MethodSettings: Schema.Codec<MethodSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoPopulatedFields: Schema.optional(Schema.Array(Schema.String)),
     batching: Schema.optional(BatchingConfigProto),
@@ -1361,7 +1362,7 @@ export interface Publishing {
   codeownerGithubTeams?: ReadonlyArray<string>;
 }
 
-export const Publishing: Schema.Schema<Publishing> =
+export const Publishing: Schema.Codec<Publishing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restReferenceDocumentationUri: Schema.optional(Schema.String),
     githubLabel: Schema.optional(Schema.String),
@@ -1383,7 +1384,7 @@ export interface DnsZonePair {
   producerPrivateZone?: DnsZone;
 }
 
-export const DnsZonePair: Schema.Schema<DnsZonePair> =
+export const DnsZonePair: Schema.Codec<DnsZonePair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerPeeringZone: Schema.optional(DnsZone),
     producerPrivateZone: Schema.optional(DnsZone),
@@ -1394,7 +1395,7 @@ export interface ListDnsZonesResponse {
   dnsZonePairs?: ReadonlyArray<DnsZonePair>;
 }
 
-export const ListDnsZonesResponse: Schema.Schema<ListDnsZonesResponse> =
+export const ListDnsZonesResponse: Schema.Codec<ListDnsZonesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsZonePairs: Schema.optional(Schema.Array(DnsZonePair)),
   }).annotate({ identifier: "ListDnsZonesResponse" });
@@ -1408,14 +1409,14 @@ export interface Page {
   name?: string;
 }
 
-export const Page: Schema.Schema<Page> =
+export const Page: Schema.Codec<Page> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subpages: Schema.optional(Schema.Array(Page)),
       content: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Page" }) as any as Schema.Schema<Page>;
+  ).annotate({ identifier: "Page" }) as any as Schema.Codec<Page>;
 
 export interface DocumentationRule {
   /** Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`. */
@@ -1428,7 +1429,7 @@ export interface DocumentationRule {
   description?: string;
 }
 
-export const DocumentationRule: Schema.Schema<DocumentationRule> =
+export const DocumentationRule: Schema.Codec<DocumentationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deprecationDescription: Schema.optional(Schema.String),
     disableReplacementWords: Schema.optional(Schema.String),
@@ -1455,7 +1456,7 @@ export interface Documentation {
   documentationRootUrl?: string;
 }
 
-export const Documentation: Schema.Schema<Documentation> =
+export const Documentation: Schema.Codec<Documentation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceRootUrl: Schema.optional(Schema.String),
     overview: Schema.optional(Schema.String),
@@ -1493,7 +1494,7 @@ export interface ValidateConsumerConfigResponse {
   isValid?: boolean;
 }
 
-export const ValidateConsumerConfigResponse: Schema.Schema<ValidateConsumerConfigResponse> =
+export const ValidateConsumerConfigResponse: Schema.Codec<ValidateConsumerConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationError: Schema.optional(Schema.String),
     existingSubnetworkCandidates: Schema.optional(Schema.Array(Subnetwork)),
@@ -1507,7 +1508,7 @@ export interface RemoveDnsZoneRequest {
   consumerNetwork?: string;
 }
 
-export const RemoveDnsZoneRequest: Schema.Schema<RemoveDnsZoneRequest> =
+export const RemoveDnsZoneRequest: Schema.Codec<RemoveDnsZoneRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     consumerNetwork: Schema.optional(Schema.String),
@@ -1522,7 +1523,7 @@ export interface AddDnsZoneRequest {
   dnsSuffix?: string;
 }
 
-export const AddDnsZoneRequest: Schema.Schema<AddDnsZoneRequest> =
+export const AddDnsZoneRequest: Schema.Codec<AddDnsZoneRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     consumerNetwork: Schema.optional(Schema.String),
@@ -1534,14 +1535,14 @@ export interface DeleteConnectionRequest {
   consumerNetwork?: string;
 }
 
-export const DeleteConnectionRequest: Schema.Schema<DeleteConnectionRequest> =
+export const DeleteConnectionRequest: Schema.Codec<DeleteConnectionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerNetwork: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteConnectionRequest" });
 
 export interface PartialDeleteConnectionMetadata {}
 
-export const PartialDeleteConnectionMetadata: Schema.Schema<PartialDeleteConnectionMetadata> =
+export const PartialDeleteConnectionMetadata: Schema.Codec<PartialDeleteConnectionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PartialDeleteConnectionMetadata",
   });
@@ -1559,7 +1560,7 @@ export interface ContextRule {
   requested?: ReadonlyArray<string>;
 }
 
-export const ContextRule: Schema.Schema<ContextRule> =
+export const ContextRule: Schema.Codec<ContextRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provided: Schema.optional(Schema.Array(Schema.String)),
     allowedRequestExtensions: Schema.optional(Schema.Array(Schema.String)),
@@ -1573,7 +1574,7 @@ export interface Context {
   rules?: ReadonlyArray<ContextRule>;
 }
 
-export const Context: Schema.Schema<Context> =
+export const Context: Schema.Codec<Context> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(ContextRule)),
   }).annotate({ identifier: "Context" });
@@ -1607,7 +1608,7 @@ export interface BackendRule {
   address?: string;
 }
 
-export const BackendRule: Schema.Schema<BackendRule> =
+export const BackendRule: Schema.Codec<BackendRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       minDeadline: Schema.optional(Schema.Number),
@@ -1624,9 +1625,7 @@ export const BackendRule: Schema.Schema<BackendRule> =
       selector: Schema.optional(Schema.String),
       address: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "BackendRule",
-  }) as any as Schema.Schema<BackendRule>;
+  ).annotate({ identifier: "BackendRule" }) as any as Schema.Codec<BackendRule>;
 
 export interface GoogleCloudServicenetworkingV1betaConnection {
   /** The name of service consumer's VPC network that's connected with service producer network, in the following format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as in `12345` that includes the VPC service consumer's VPC network. `{network}` is the name of the service consumer's VPC network. */
@@ -1639,7 +1638,7 @@ export interface GoogleCloudServicenetworkingV1betaConnection {
   service?: string;
 }
 
-export const GoogleCloudServicenetworkingV1betaConnection: Schema.Schema<GoogleCloudServicenetworkingV1betaConnection> =
+export const GoogleCloudServicenetworkingV1betaConnection: Schema.Codec<GoogleCloudServicenetworkingV1betaConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     peering: Schema.optional(Schema.String),
@@ -1652,7 +1651,7 @@ export interface EnableVpcServiceControlsRequest {
   consumerNetwork?: string;
 }
 
-export const EnableVpcServiceControlsRequest: Schema.Schema<EnableVpcServiceControlsRequest> =
+export const EnableVpcServiceControlsRequest: Schema.Codec<EnableVpcServiceControlsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerNetwork: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnableVpcServiceControlsRequest" });
@@ -1664,7 +1663,7 @@ export interface Http {
   fullyDecodeReservedExpansion?: boolean;
 }
 
-export const Http: Schema.Schema<Http> =
+export const Http: Schema.Codec<Http> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(HttpRule)),
     fullyDecodeReservedExpansion: Schema.optional(Schema.Boolean),
@@ -1672,7 +1671,7 @@ export const Http: Schema.Schema<Http> =
 
 export interface RemoveDnsZoneResponse {}
 
-export const RemoveDnsZoneResponse: Schema.Schema<RemoveDnsZoneResponse> =
+export const RemoveDnsZoneResponse: Schema.Codec<RemoveDnsZoneResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveDnsZoneResponse",
   });
@@ -1686,7 +1685,7 @@ export interface LabelDescriptor {
   description?: string;
 }
 
-export const LabelDescriptor: Schema.Schema<LabelDescriptor> =
+export const LabelDescriptor: Schema.Codec<LabelDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valueType: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -1740,7 +1739,7 @@ export interface MetricDescriptor {
   displayName?: string;
 }
 
-export const MetricDescriptor: Schema.Schema<MetricDescriptor> =
+export const MetricDescriptor: Schema.Codec<MetricDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(LabelDescriptor)),
     metricKind: Schema.optional(Schema.String),
@@ -1762,7 +1761,7 @@ export interface MethodPolicy {
   selector?: string;
 }
 
-export const MethodPolicy: Schema.Schema<MethodPolicy> =
+export const MethodPolicy: Schema.Codec<MethodPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestPolicies: Schema.optional(Schema.Array(FieldPolicy)),
     selector: Schema.optional(Schema.String),
@@ -1791,7 +1790,7 @@ export interface QuotaLimit {
   name?: string;
 }
 
-export const QuotaLimit: Schema.Schema<QuotaLimit> =
+export const QuotaLimit: Schema.Codec<QuotaLimit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unit: Schema.optional(Schema.String),
     defaultLimit: Schema.optional(Schema.String),
@@ -1807,7 +1806,7 @@ export const QuotaLimit: Schema.Schema<QuotaLimit> =
 
 export interface AddDnsZoneMetadata {}
 
-export const AddDnsZoneMetadata: Schema.Schema<AddDnsZoneMetadata> =
+export const AddDnsZoneMetadata: Schema.Codec<AddDnsZoneMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddDnsZoneMetadata",
   });
@@ -1821,7 +1820,7 @@ export interface UsageRule {
   skipServiceControl?: boolean;
 }
 
-export const UsageRule: Schema.Schema<UsageRule> =
+export const UsageRule: Schema.Codec<UsageRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowUnregisteredCalls: Schema.optional(Schema.Boolean),
     selector: Schema.optional(Schema.String),
@@ -1839,7 +1838,7 @@ export interface Connection {
   service?: string;
 }
 
-export const Connection: Schema.Schema<Connection> =
+export const Connection: Schema.Codec<Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     peering: Schema.optional(Schema.String),
@@ -1854,7 +1853,7 @@ export interface CustomError {
   rules?: ReadonlyArray<CustomErrorRule>;
 }
 
-export const CustomError: Schema.Schema<CustomError> =
+export const CustomError: Schema.Codec<CustomError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Array(Schema.String)),
     rules: Schema.optional(Schema.Array(CustomErrorRule)),
@@ -1871,7 +1870,7 @@ export interface GoogleCloudServicenetworkingV1betaSubnetwork {
   outsideAllocation?: boolean;
 }
 
-export const GoogleCloudServicenetworkingV1betaSubnetwork: Schema.Schema<GoogleCloudServicenetworkingV1betaSubnetwork> =
+export const GoogleCloudServicenetworkingV1betaSubnetwork: Schema.Codec<GoogleCloudServicenetworkingV1betaSubnetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipCidrRange: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
@@ -1888,7 +1887,7 @@ export interface AddDnsRecordSetRequest {
   zone?: string;
 }
 
-export const AddDnsRecordSetRequest: Schema.Schema<AddDnsRecordSetRequest> =
+export const AddDnsRecordSetRequest: Schema.Codec<AddDnsRecordSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsRecordSet: Schema.optional(DnsRecordSet),
     consumerNetwork: Schema.optional(Schema.String),
@@ -1900,7 +1899,7 @@ export interface DisableVpcServiceControlsRequest {
   consumerNetwork?: string;
 }
 
-export const DisableVpcServiceControlsRequest: Schema.Schema<DisableVpcServiceControlsRequest> =
+export const DisableVpcServiceControlsRequest: Schema.Codec<DisableVpcServiceControlsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerNetwork: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisableVpcServiceControlsRequest" });
@@ -1910,7 +1909,7 @@ export interface VpcServiceControls {
   enabled?: boolean;
 }
 
-export const VpcServiceControls: Schema.Schema<VpcServiceControls> =
+export const VpcServiceControls: Schema.Codec<VpcServiceControls> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VpcServiceControls" });
@@ -1934,7 +1933,7 @@ export interface Enum {
   enumvalue?: ReadonlyArray<EnumValue>;
 }
 
-export const Enum: Schema.Schema<Enum> =
+export const Enum: Schema.Codec<Enum> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     syntax: Schema.optional(Schema.String),
@@ -1949,7 +1948,7 @@ export interface Backend {
   rules?: ReadonlyArray<BackendRule>;
 }
 
-export const Backend: Schema.Schema<Backend> =
+export const Backend: Schema.Codec<Backend> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(BackendRule)),
   }).annotate({ identifier: "Backend" });
@@ -1961,7 +1960,7 @@ export interface GetDnsZoneResponse {
   consumerPeeringZone?: DnsZone;
 }
 
-export const GetDnsZoneResponse: Schema.Schema<GetDnsZoneResponse> =
+export const GetDnsZoneResponse: Schema.Codec<GetDnsZoneResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     producerPrivateZone: Schema.optional(DnsZone),
     consumerPeeringZone: Schema.optional(DnsZone),
@@ -1974,7 +1973,7 @@ export interface AddRolesRequest {
   policyBinding?: ReadonlyArray<PolicyBinding>;
 }
 
-export const AddRolesRequest: Schema.Schema<AddRolesRequest> =
+export const AddRolesRequest: Schema.Codec<AddRolesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerNetwork: Schema.optional(Schema.String),
     policyBinding: Schema.optional(Schema.Array(PolicyBinding)),
@@ -1982,7 +1981,7 @@ export const AddRolesRequest: Schema.Schema<AddRolesRequest> =
 
 export interface AddRolesMetadata {}
 
-export const AddRolesMetadata: Schema.Schema<AddRolesMetadata> =
+export const AddRolesMetadata: Schema.Codec<AddRolesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddRolesMetadata",
   });
@@ -2018,7 +2017,7 @@ export interface ConsumerConfig {
   producerExportCustomRoutes?: boolean;
 }
 
-export const ConsumerConfig: Schema.Schema<ConsumerConfig> =
+export const ConsumerConfig: Schema.Codec<ConsumerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     producerImportSubnetRoutesWithPublicIp: Schema.optional(Schema.Boolean),
     producerNetwork: Schema.optional(Schema.String),
@@ -2043,14 +2042,14 @@ export interface UpdateConsumerConfigRequest {
   consumerConfig?: ConsumerConfig;
 }
 
-export const UpdateConsumerConfigRequest: Schema.Schema<UpdateConsumerConfigRequest> =
+export const UpdateConsumerConfigRequest: Schema.Codec<UpdateConsumerConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerConfig: Schema.optional(ConsumerConfig),
   }).annotate({ identifier: "UpdateConsumerConfigRequest" });
 
 export interface RemoveDnsRecordSetMetadata {}
 
-export const RemoveDnsRecordSetMetadata: Schema.Schema<RemoveDnsRecordSetMetadata> =
+export const RemoveDnsRecordSetMetadata: Schema.Codec<RemoveDnsRecordSetMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveDnsRecordSetMetadata",
   });
@@ -2062,7 +2061,7 @@ export interface Control {
   environment?: string;
 }
 
-export const Control: Schema.Schema<Control> =
+export const Control: Schema.Codec<Control> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     methodPolicies: Schema.optional(Schema.Array(MethodPolicy)),
     environment: Schema.optional(Schema.String),
@@ -2077,7 +2076,7 @@ export interface Aspect {
   rules?: ReadonlyArray<AspectRule>;
 }
 
-export const Aspect: Schema.Schema<Aspect> =
+export const Aspect: Schema.Codec<Aspect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     spec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -2086,21 +2085,21 @@ export const Aspect: Schema.Schema<Aspect> =
 
 export interface ConsumerConfigMetadata {}
 
-export const ConsumerConfigMetadata: Schema.Schema<ConsumerConfigMetadata> =
+export const ConsumerConfigMetadata: Schema.Codec<ConsumerConfigMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ConsumerConfigMetadata",
   });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
 export interface RemoveDnsRecordSetResponse {}
 
-export const RemoveDnsRecordSetResponse: Schema.Schema<RemoveDnsRecordSetResponse> =
+export const RemoveDnsRecordSetResponse: Schema.Codec<RemoveDnsRecordSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveDnsRecordSetResponse",
   });
@@ -2110,7 +2109,7 @@ export interface ListConnectionsResponse {
   connections?: ReadonlyArray<Connection>;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
+export const ListConnectionsResponse: Schema.Codec<ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connections: Schema.optional(Schema.Array(Connection)),
   }).annotate({ identifier: "ListConnectionsResponse" });
@@ -2120,7 +2119,7 @@ export interface ListDnsRecordSetsResponse {
   dnsRecordSets?: ReadonlyArray<DnsRecordSet>;
 }
 
-export const ListDnsRecordSetsResponse: Schema.Schema<ListDnsRecordSetsResponse> =
+export const ListDnsRecordSetsResponse: Schema.Codec<ListDnsRecordSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsRecordSets: Schema.optional(Schema.Array(DnsRecordSet)),
   }).annotate({ identifier: "ListDnsRecordSetsResponse" });
@@ -2130,14 +2129,14 @@ export interface ListPeeredDnsDomainsResponse {
   peeredDnsDomains?: ReadonlyArray<PeeredDnsDomain>;
 }
 
-export const ListPeeredDnsDomainsResponse: Schema.Schema<ListPeeredDnsDomainsResponse> =
+export const ListPeeredDnsDomainsResponse: Schema.Codec<ListPeeredDnsDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     peeredDnsDomains: Schema.optional(Schema.Array(PeeredDnsDomain)),
   }).annotate({ identifier: "ListPeeredDnsDomainsResponse" });
 
 export interface UpdateDnsRecordSetMetadata {}
 
-export const UpdateDnsRecordSetMetadata: Schema.Schema<UpdateDnsRecordSetMetadata> =
+export const UpdateDnsRecordSetMetadata: Schema.Codec<UpdateDnsRecordSetMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateDnsRecordSetMetadata",
   });
@@ -2166,7 +2165,7 @@ export interface MonitoredResourceDescriptor {
   labels?: ReadonlyArray<LabelDescriptor>;
 }
 
-export const MonitoredResourceDescriptor: Schema.Schema<MonitoredResourceDescriptor> =
+export const MonitoredResourceDescriptor: Schema.Codec<MonitoredResourceDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     launchStage: Schema.optional(Schema.String),
@@ -2183,7 +2182,7 @@ export interface MetricRule {
   metricCosts?: Record<string, string>;
 }
 
-export const MetricRule: Schema.Schema<MetricRule> =
+export const MetricRule: Schema.Codec<MetricRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     metricCosts: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2196,7 +2195,7 @@ export interface Quota {
   metricRules?: ReadonlyArray<MetricRule>;
 }
 
-export const Quota: Schema.Schema<Quota> =
+export const Quota: Schema.Codec<Quota> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limits: Schema.optional(Schema.Array(QuotaLimit)),
     metricRules: Schema.optional(Schema.Array(MetricRule)),
@@ -2213,7 +2212,7 @@ export interface LogDescriptor {
   description?: string;
 }
 
-export const LogDescriptor: Schema.Schema<LogDescriptor> =
+export const LogDescriptor: Schema.Codec<LogDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2230,7 +2229,7 @@ export interface Usage {
   requirements?: ReadonlyArray<string>;
 }
 
-export const Usage: Schema.Schema<Usage> =
+export const Usage: Schema.Codec<Usage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(UsageRule)),
     producerNotificationChannel: Schema.optional(Schema.String),
@@ -2298,7 +2297,7 @@ export interface Service {
   producerProjectId?: string;
 }
 
-export const Service: Schema.Schema<Service> =
+export const Service: Schema.Codec<Service> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monitoredResources: Schema.optional(
       Schema.Array(MonitoredResourceDescriptor),
@@ -2335,7 +2334,7 @@ export const Service: Schema.Schema<Service> =
 
 export interface PeeredDnsDomainMetadata {}
 
-export const PeeredDnsDomainMetadata: Schema.Schema<PeeredDnsDomainMetadata> =
+export const PeeredDnsDomainMetadata: Schema.Codec<PeeredDnsDomainMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PeeredDnsDomainMetadata",
   });
@@ -2383,7 +2382,7 @@ export interface AddSubnetworkRequest {
   useCustomComputeIdempotencyWindow?: boolean;
 }
 
-export const AddSubnetworkRequest: Schema.Schema<AddSubnetworkRequest> =
+export const AddSubnetworkRequest: Schema.Codec<AddSubnetworkRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outsideAllocationPublicIpRange: Schema.optional(Schema.String),
     requestedRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -2409,7 +2408,7 @@ export const AddSubnetworkRequest: Schema.Schema<AddSubnetworkRequest> =
 
 export interface RemoveDnsZoneMetadata {}
 
-export const RemoveDnsZoneMetadata: Schema.Schema<RemoveDnsZoneMetadata> =
+export const RemoveDnsZoneMetadata: Schema.Codec<RemoveDnsZoneMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveDnsZoneMetadata",
   });
@@ -2486,7 +2485,7 @@ export const DisableVpcServiceControlsServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DisableVpcServiceControlsServicesRequest>;
+  ) as unknown as Schema.Codec<DisableVpcServiceControlsServicesRequest>;
 
 export type DisableVpcServiceControlsServicesResponse = Operation;
 export const DisableVpcServiceControlsServicesResponse =
@@ -2525,7 +2524,7 @@ export const SearchRangeServicesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}:searchRange", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SearchRangeServicesRequest>;
+  ) as unknown as Schema.Codec<SearchRangeServicesRequest>;
 
 export type SearchRangeServicesResponse = Operation;
 export const SearchRangeServicesResponse =
@@ -2564,7 +2563,7 @@ export const ValidateServicesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}:validate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ValidateServicesRequest>;
+  ) as unknown as Schema.Codec<ValidateServicesRequest>;
 
 export type ValidateServicesResponse = ValidateConsumerConfigResponse;
 export const ValidateServicesResponse =
@@ -2607,7 +2606,7 @@ export const EnableVpcServiceControlsServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnableVpcServiceControlsServicesRequest>;
+  ) as unknown as Schema.Codec<EnableVpcServiceControlsServicesRequest>;
 
 export type EnableVpcServiceControlsServicesResponse = Operation;
 export const EnableVpcServiceControlsServicesResponse =
@@ -2650,7 +2649,7 @@ export const AddSubnetworkServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddSubnetworkServicesRequest>;
+  ) as unknown as Schema.Codec<AddSubnetworkServicesRequest>;
 
 export type AddSubnetworkServicesResponse = Operation;
 export const AddSubnetworkServicesResponse =
@@ -2700,7 +2699,7 @@ export const GetServicesDnsRecordSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dnsRecordSets:get" }),
     svc,
-  ) as unknown as Schema.Schema<GetServicesDnsRecordSetsRequest>;
+  ) as unknown as Schema.Codec<GetServicesDnsRecordSetsRequest>;
 
 export type GetServicesDnsRecordSetsResponse = DnsRecordSet;
 export const GetServicesDnsRecordSetsResponse =
@@ -2741,7 +2740,7 @@ export const AddServicesDnsRecordSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddServicesDnsRecordSetsRequest>;
+  ) as unknown as Schema.Codec<AddServicesDnsRecordSetsRequest>;
 
 export type AddServicesDnsRecordSetsResponse = Operation;
 export const AddServicesDnsRecordSetsResponse =
@@ -2784,7 +2783,7 @@ export const RemoveServicesDnsRecordSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveServicesDnsRecordSetsRequest>;
+  ) as unknown as Schema.Codec<RemoveServicesDnsRecordSetsRequest>;
 
 export type RemoveServicesDnsRecordSetsResponse = Operation;
 export const RemoveServicesDnsRecordSetsResponse =
@@ -2827,7 +2826,7 @@ export const UpdateServicesDnsRecordSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateServicesDnsRecordSetsRequest>;
+  ) as unknown as Schema.Codec<UpdateServicesDnsRecordSetsRequest>;
 
 export type UpdateServicesDnsRecordSetsResponse = Operation;
 export const UpdateServicesDnsRecordSetsResponse =
@@ -2871,7 +2870,7 @@ export const ListServicesDnsRecordSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dnsRecordSets:list" }),
     svc,
-  ) as unknown as Schema.Schema<ListServicesDnsRecordSetsRequest>;
+  ) as unknown as Schema.Codec<ListServicesDnsRecordSetsRequest>;
 
 export type ListServicesDnsRecordSetsResponse = ListDnsRecordSetsResponse;
 export const ListServicesDnsRecordSetsResponse =
@@ -2908,7 +2907,7 @@ export const AddServicesRolesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/roles:add", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AddServicesRolesRequest>;
+  ) as unknown as Schema.Codec<AddServicesRolesRequest>;
 
 export type AddServicesRolesResponse = Operation;
 export const AddServicesRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2946,7 +2945,7 @@ export const CreateServicesConnectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/connections", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateServicesConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateServicesConnectionsRequest>;
 
 export type CreateServicesConnectionsResponse = Operation;
 export const CreateServicesConnectionsResponse =
@@ -2985,7 +2984,7 @@ export const DeleteConnectionServicesConnectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeleteConnectionServicesConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteConnectionServicesConnectionsRequest>;
 
 export type DeleteConnectionServicesConnectionsResponse = Operation;
 export const DeleteConnectionServicesConnectionsResponse =
@@ -3030,7 +3029,7 @@ export const PatchServicesConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchServicesConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchServicesConnectionsRequest>;
 
 export type PatchServicesConnectionsResponse = Operation;
 export const PatchServicesConnectionsResponse =
@@ -3069,7 +3068,7 @@ export const ListServicesConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListServicesConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListServicesConnectionsRequest>;
 
 export type ListServicesConnectionsResponse = ListConnectionsResponse;
 export const ListServicesConnectionsResponse =
@@ -3107,7 +3106,7 @@ export const AddServicesDnsZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddServicesDnsZonesRequest>;
+  ) as unknown as Schema.Codec<AddServicesDnsZonesRequest>;
 
 export type AddServicesDnsZonesResponse = Operation;
 export const AddServicesDnsZonesResponse =
@@ -3150,7 +3149,7 @@ export const RemoveServicesDnsZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveServicesDnsZonesRequest>;
+  ) as unknown as Schema.Codec<RemoveServicesDnsZonesRequest>;
 
 export type RemoveServicesDnsZonesResponse = Operation;
 export const RemoveServicesDnsZonesResponse =
@@ -3193,7 +3192,7 @@ export const UpdateConsumerConfigServicesProjectsGlobalNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConsumerConfigServicesProjectsGlobalNetworksRequest>;
+  ) as unknown as Schema.Codec<UpdateConsumerConfigServicesProjectsGlobalNetworksRequest>;
 
 export type UpdateConsumerConfigServicesProjectsGlobalNetworksResponse =
   Operation;
@@ -3235,7 +3234,7 @@ export const GetServicesProjectsGlobalNetworksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetServicesProjectsGlobalNetworksRequest>;
+  ) as unknown as Schema.Codec<GetServicesProjectsGlobalNetworksRequest>;
 
 export type GetServicesProjectsGlobalNetworksResponse = ConsumerConfig;
 export const GetServicesProjectsGlobalNetworksResponse =
@@ -3269,7 +3268,7 @@ export const GetVpcServiceControlsServicesProjectsGlobalNetworksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/vpcServiceControls" }),
     svc,
-  ) as unknown as Schema.Schema<GetVpcServiceControlsServicesProjectsGlobalNetworksRequest>;
+  ) as unknown as Schema.Codec<GetVpcServiceControlsServicesProjectsGlobalNetworksRequest>;
 
 export type GetVpcServiceControlsServicesProjectsGlobalNetworksResponse =
   VpcServiceControls;
@@ -3304,7 +3303,7 @@ export const ListServicesProjectsGlobalNetworksDnsZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dnsZones:list" }),
     svc,
-  ) as unknown as Schema.Schema<ListServicesProjectsGlobalNetworksDnsZonesRequest>;
+  ) as unknown as Schema.Codec<ListServicesProjectsGlobalNetworksDnsZonesRequest>;
 
 export type ListServicesProjectsGlobalNetworksDnsZonesResponse =
   ListDnsZonesResponse;
@@ -3339,7 +3338,7 @@ export const GetServicesProjectsGlobalNetworksDnsZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetServicesProjectsGlobalNetworksDnsZonesRequest>;
+  ) as unknown as Schema.Codec<GetServicesProjectsGlobalNetworksDnsZonesRequest>;
 
 export type GetServicesProjectsGlobalNetworksDnsZonesResponse =
   GetDnsZoneResponse;
@@ -3381,7 +3380,7 @@ export const CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
+  ) as unknown as Schema.Codec<CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
 export type CreateServicesProjectsGlobalNetworksPeeredDnsDomainsResponse =
   Operation;
@@ -3418,7 +3417,7 @@ export const DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
+  ) as unknown as Schema.Codec<DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
 export type DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsResponse =
   Operation;
@@ -3455,7 +3454,7 @@ export const ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/peeredDnsDomains" }),
     svc,
-  ) as unknown as Schema.Schema<ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
+  ) as unknown as Schema.Codec<ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
 export type ListServicesProjectsGlobalNetworksPeeredDnsDomainsResponse =
   ListPeeredDnsDomainsResponse;
@@ -3493,7 +3492,7 @@ export const CancelOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3528,7 +3527,7 @@ export const DeleteOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3576,7 +3575,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
@@ -3610,7 +3609,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;

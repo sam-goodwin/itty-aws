@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SubmitOnrampVerificationInput {
+  verificationId: string;
+  otpCode: string;
+}
 export const SubmitOnrampVerificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verificationId: Schema.String.pipe(T.PathParam()),
@@ -12,18 +16,18 @@ export const SubmitOnrampVerificationInput =
       method: "POST",
       path: "/v2/onramp/verifications/{verificationId}/submit",
     }),
-  );
-export type SubmitOnrampVerificationInput =
-  typeof SubmitOnrampVerificationInput.Type;
+  ) as unknown as Schema.Codec<SubmitOnrampVerificationInput>;
 
 // Output Schema
+export interface SubmitOnrampVerificationOutput {
+  verificationId: string;
+  verificationExpiresAt: string;
+}
 export const SubmitOnrampVerificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verificationId: Schema.String,
     verificationExpiresAt: Schema.String,
-  });
-export type SubmitOnrampVerificationOutput =
-  typeof SubmitOnrampVerificationOutput.Type;
+  }) as unknown as Schema.Codec<SubmitOnrampVerificationOutput>;
 
 // The operation
 /**

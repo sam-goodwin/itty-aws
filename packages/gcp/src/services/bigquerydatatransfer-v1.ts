@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface EmailPreferences {
   enableFailureEmail?: boolean;
 }
 
-export const EmailPreferences: Schema.Schema<EmailPreferences> =
+export const EmailPreferences: Schema.Codec<EmailPreferences> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableFailureEmail: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "EmailPreferences" });
@@ -37,7 +37,7 @@ export interface DataplexConfiguration {
   entryGroup?: string;
 }
 
-export const DataplexConfiguration: Schema.Schema<DataplexConfiguration> =
+export const DataplexConfiguration: Schema.Codec<DataplexConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryGroup: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataplexConfiguration" });
@@ -47,7 +47,7 @@ export interface MetadataDestination {
   dataplexConfiguration?: DataplexConfiguration;
 }
 
-export const MetadataDestination: Schema.Schema<MetadataDestination> =
+export const MetadataDestination: Schema.Codec<MetadataDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataplexConfiguration: Schema.optional(DataplexConfiguration),
   }).annotate({ identifier: "MetadataDestination" });
@@ -61,7 +61,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -112,7 +112,7 @@ export interface TransferRun {
   dataSourceId?: string;
 }
 
-export const TransferRun: Schema.Schema<TransferRun> =
+export const TransferRun: Schema.Codec<TransferRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationDatasetId: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -141,7 +141,7 @@ export interface ScheduleOptions {
   endTime?: string;
 }
 
-export const ScheduleOptions: Schema.Schema<ScheduleOptions> =
+export const ScheduleOptions: Schema.Codec<ScheduleOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableAutoScheduling: Schema.optional(Schema.Boolean),
     startTime: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface EventDrivenSchedule {
   pubsubSubscription?: string;
 }
 
-export const EventDrivenSchedule: Schema.Schema<EventDrivenSchedule> =
+export const EventDrivenSchedule: Schema.Codec<EventDrivenSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubSubscription: Schema.optional(Schema.String),
   }).annotate({ identifier: "EventDrivenSchedule" });
@@ -167,7 +167,7 @@ export interface TimeBasedSchedule {
   schedule?: string;
 }
 
-export const TimeBasedSchedule: Schema.Schema<TimeBasedSchedule> =
+export const TimeBasedSchedule: Schema.Codec<TimeBasedSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export const TimeBasedSchedule: Schema.Schema<TimeBasedSchedule> =
 
 export interface ManualSchedule {}
 
-export const ManualSchedule: Schema.Schema<ManualSchedule> =
+export const ManualSchedule: Schema.Codec<ManualSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ManualSchedule",
   });
@@ -190,7 +190,7 @@ export interface ScheduleOptionsV2 {
   manualSchedule?: ManualSchedule;
 }
 
-export const ScheduleOptionsV2: Schema.Schema<ScheduleOptionsV2> =
+export const ScheduleOptionsV2: Schema.Codec<ScheduleOptionsV2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventDrivenSchedule: Schema.optional(EventDrivenSchedule),
     timeBasedSchedule: Schema.optional(TimeBasedSchedule),
@@ -202,7 +202,7 @@ export interface UserInfo {
   email?: string;
 }
 
-export const UserInfo: Schema.Schema<UserInfo> =
+export const UserInfo: Schema.Codec<UserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserInfo" });
@@ -212,7 +212,7 @@ export interface EncryptionConfiguration {
   kmsKeyName?: string;
 }
 
-export const EncryptionConfiguration: Schema.Schema<EncryptionConfiguration> =
+export const EncryptionConfiguration: Schema.Codec<EncryptionConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EncryptionConfiguration" });
@@ -275,7 +275,7 @@ export interface TransferConfig {
   disabled?: boolean;
 }
 
-export const TransferConfig: Schema.Schema<TransferConfig> =
+export const TransferConfig: Schema.Codec<TransferConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetRegion: Schema.optional(Schema.String),
     nextRunTime: Schema.optional(Schema.String),
@@ -308,7 +308,7 @@ export interface ListTransferConfigsResponse {
   transferConfigs?: ReadonlyArray<TransferConfig>;
 }
 
-export const ListTransferConfigsResponse: Schema.Schema<ListTransferConfigsResponse> =
+export const ListTransferConfigsResponse: Schema.Codec<ListTransferConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     transferConfigs: Schema.optional(Schema.Array(TransferConfig)),
@@ -331,7 +331,7 @@ export interface TransferStatusMetric {
     | (string & {});
 }
 
-export const TransferStatusMetric: Schema.Schema<TransferStatusMetric> =
+export const TransferStatusMetric: Schema.Codec<TransferStatusMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pending: Schema.optional(Schema.String),
     failed: Schema.optional(Schema.String),
@@ -351,7 +351,7 @@ export interface TransferStatusSummary {
     | (string & {});
 }
 
-export const TransferStatusSummary: Schema.Schema<TransferStatusSummary> =
+export const TransferStatusSummary: Schema.Codec<TransferStatusSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(TransferStatusMetric)),
     progressUnit: Schema.optional(Schema.String),
@@ -364,7 +364,7 @@ export interface TimeRange {
   endTime?: string;
 }
 
-export const TimeRange: Schema.Schema<TimeRange> =
+export const TimeRange: Schema.Codec<TimeRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -377,7 +377,7 @@ export interface StartManualTransferRunsRequest {
   requestedRunTime?: string;
 }
 
-export const StartManualTransferRunsRequest: Schema.Schema<StartManualTransferRunsRequest> =
+export const StartManualTransferRunsRequest: Schema.Codec<StartManualTransferRunsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedTimeRange: Schema.optional(TimeRange),
     requestedRunTime: Schema.optional(Schema.String),
@@ -388,7 +388,7 @@ export interface EnrollDataSourcesRequest {
   dataSourceIds?: ReadonlyArray<string>;
 }
 
-export const EnrollDataSourcesRequest: Schema.Schema<EnrollDataSourcesRequest> =
+export const EnrollDataSourcesRequest: Schema.Codec<EnrollDataSourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "EnrollDataSourcesRequest" });
@@ -398,7 +398,7 @@ export interface TableDetail {
   partitionCount?: string;
 }
 
-export const TableDetail: Schema.Schema<TableDetail> =
+export const TableDetail: Schema.Codec<TableDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionCount: Schema.optional(Schema.String),
   }).annotate({ identifier: "TableDetail" });
@@ -408,7 +408,7 @@ export interface PartitionDetail {
   table?: string;
 }
 
-export const PartitionDetail: Schema.Schema<PartitionDetail> =
+export const PartitionDetail: Schema.Codec<PartitionDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Schema.String),
   }).annotate({ identifier: "PartitionDetail" });
@@ -420,7 +420,7 @@ export interface HierarchyDetail {
   partitionDetail?: PartitionDetail;
 }
 
-export const HierarchyDetail: Schema.Schema<HierarchyDetail> =
+export const HierarchyDetail: Schema.Codec<HierarchyDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableDetail: Schema.optional(TableDetail),
     partitionDetail: Schema.optional(PartitionDetail),
@@ -439,7 +439,7 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -455,7 +455,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -468,7 +468,7 @@ export interface ScheduleTransferRunsRequest {
   endTime?: string;
 }
 
-export const ScheduleTransferRunsRequest: Schema.Schema<ScheduleTransferRunsRequest> =
+export const ScheduleTransferRunsRequest: Schema.Codec<ScheduleTransferRunsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -476,7 +476,7 @@ export const ScheduleTransferRunsRequest: Schema.Schema<ScheduleTransferRunsRequ
 
 export interface CheckValidCredsRequest {}
 
-export const CheckValidCredsRequest: Schema.Schema<CheckValidCredsRequest> =
+export const CheckValidCredsRequest: Schema.Codec<CheckValidCredsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CheckValidCredsRequest",
   });
@@ -488,7 +488,7 @@ export interface TransferRunBrief {
   run?: string;
 }
 
-export const TransferRunBrief: Schema.Schema<TransferRunBrief> =
+export const TransferRunBrief: Schema.Codec<TransferRunBrief> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     run: Schema.optional(Schema.String),
@@ -512,7 +512,7 @@ export interface TransferResourceStatusDetail {
   completedPercentage?: number;
 }
 
-export const TransferResourceStatusDetail: Schema.Schema<TransferResourceStatusDetail> =
+export const TransferResourceStatusDetail: Schema.Codec<TransferResourceStatusDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -550,7 +550,7 @@ export interface TransferResource {
   updateTime?: string;
 }
 
-export const TransferResource: Schema.Schema<TransferResource> =
+export const TransferResource: Schema.Codec<TransferResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
     latestRun: Schema.optional(TransferRunBrief),
@@ -569,7 +569,7 @@ export interface ListTransferResourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListTransferResourcesResponse: Schema.Schema<ListTransferResourcesResponse> =
+export const ListTransferResourcesResponse: Schema.Codec<ListTransferResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferResources: Schema.optional(Schema.Array(TransferResource)),
     nextPageToken: Schema.optional(Schema.String),
@@ -580,7 +580,7 @@ export interface StartManualTransferRunsResponse {
   runs?: ReadonlyArray<TransferRun>;
 }
 
-export const StartManualTransferRunsResponse: Schema.Schema<StartManualTransferRunsResponse> =
+export const StartManualTransferRunsResponse: Schema.Codec<StartManualTransferRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runs: Schema.optional(Schema.Array(TransferRun)),
   }).annotate({ identifier: "StartManualTransferRunsResponse" });
@@ -599,7 +599,7 @@ export interface TransferMessage {
   messageText?: string;
 }
 
-export const TransferMessage: Schema.Schema<TransferMessage> =
+export const TransferMessage: Schema.Codec<TransferMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     messageTime: Schema.optional(Schema.String),
@@ -652,7 +652,7 @@ export interface DataSourceParameter {
   maxValue?: number;
 }
 
-export const DataSourceParameter: Schema.Schema<DataSourceParameter> =
+export const DataSourceParameter: Schema.Codec<DataSourceParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       maxListSize: Schema.optional(Schema.String),
@@ -675,7 +675,7 @@ export const DataSourceParameter: Schema.Schema<DataSourceParameter> =
     }),
   ).annotate({
     identifier: "DataSourceParameter",
-  }) as any as Schema.Schema<DataSourceParameter>;
+  }) as any as Schema.Codec<DataSourceParameter>;
 
 export interface DataSource {
   /** Specifies whether the data source supports a user defined schedule, or operates on the default schedule. When set to `true`, user can override default schedule. */
@@ -729,7 +729,7 @@ export interface DataSource {
   name?: string;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
+export const DataSource: Schema.Codec<DataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportsCustomSchedule: Schema.optional(Schema.Boolean),
     defaultSchedule: Schema.optional(Schema.String),
@@ -758,7 +758,7 @@ export interface ListDataSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListDataSourcesResponse: Schema.Schema<ListDataSourcesResponse> =
+export const ListDataSourcesResponse: Schema.Codec<ListDataSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSources: Schema.optional(Schema.Array(DataSource)),
     nextPageToken: Schema.optional(Schema.String),
@@ -771,7 +771,7 @@ export interface ListTransferLogsResponse {
   nextPageToken?: string;
 }
 
-export const ListTransferLogsResponse: Schema.Schema<ListTransferLogsResponse> =
+export const ListTransferLogsResponse: Schema.Codec<ListTransferLogsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferMessages: Schema.optional(Schema.Array(TransferMessage)),
     nextPageToken: Schema.optional(Schema.String),
@@ -782,14 +782,14 @@ export interface CheckValidCredsResponse {
   hasValidCreds?: boolean;
 }
 
-export const CheckValidCredsResponse: Schema.Schema<CheckValidCredsResponse> =
+export const CheckValidCredsResponse: Schema.Codec<CheckValidCredsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasValidCreds: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckValidCredsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -801,7 +801,7 @@ export interface ListTransferRunsResponse {
   nextPageToken?: string;
 }
 
-export const ListTransferRunsResponse: Schema.Schema<ListTransferRunsResponse> =
+export const ListTransferRunsResponse: Schema.Codec<ListTransferRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferRuns: Schema.optional(Schema.Array(TransferRun)),
     nextPageToken: Schema.optional(Schema.String),
@@ -812,7 +812,7 @@ export interface UnenrollDataSourcesRequest {
   dataSourceIds?: ReadonlyArray<string>;
 }
 
-export const UnenrollDataSourcesRequest: Schema.Schema<UnenrollDataSourcesRequest> =
+export const UnenrollDataSourcesRequest: Schema.Codec<UnenrollDataSourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "UnenrollDataSourcesRequest" });
@@ -822,7 +822,7 @@ export interface ScheduleTransferRunsResponse {
   runs?: ReadonlyArray<TransferRun>;
 }
 
-export const ScheduleTransferRunsResponse: Schema.Schema<ScheduleTransferRunsResponse> =
+export const ScheduleTransferRunsResponse: Schema.Codec<ScheduleTransferRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runs: Schema.optional(Schema.Array(TransferRun)),
   }).annotate({ identifier: "ScheduleTransferRunsResponse" });
@@ -899,7 +899,7 @@ export const EnrollDataSourcesProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnrollDataSourcesProjectsRequest>;
+  ) as unknown as Schema.Codec<EnrollDataSourcesProjectsRequest>;
 
 export type EnrollDataSourcesProjectsResponse = Empty;
 export const EnrollDataSourcesProjectsResponse =
@@ -942,7 +942,7 @@ export const CheckValidCredsProjectsDataSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckValidCredsProjectsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<CheckValidCredsProjectsDataSourcesRequest>;
 
 export type CheckValidCredsProjectsDataSourcesResponse =
   CheckValidCredsResponse;
@@ -985,7 +985,7 @@ export const ListProjectsDataSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataSources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDataSourcesRequest>;
 
 export type ListProjectsDataSourcesResponse = ListDataSourcesResponse;
 export const ListProjectsDataSourcesResponse =
@@ -1020,7 +1020,7 @@ export const GetProjectsDataSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDataSourcesRequest>;
 
 export type GetProjectsDataSourcesResponse = DataSource;
 export const GetProjectsDataSourcesResponse =
@@ -1062,7 +1062,7 @@ export const ListProjectsTransferConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/transferConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTransferConfigsRequest>;
 
 export type ListProjectsTransferConfigsResponse = ListTransferConfigsResponse;
 export const ListProjectsTransferConfigsResponse =
@@ -1100,7 +1100,7 @@ export const DeleteProjectsTransferConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsTransferConfigsRequest>;
 
 export type DeleteProjectsTransferConfigsResponse = Empty;
 export const DeleteProjectsTransferConfigsResponse =
@@ -1143,7 +1143,7 @@ export const StartManualRunsProjectsTransferConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartManualRunsProjectsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<StartManualRunsProjectsTransferConfigsRequest>;
 
 export type StartManualRunsProjectsTransferConfigsResponse =
   StartManualTransferRunsResponse;
@@ -1201,7 +1201,7 @@ export const PatchProjectsTransferConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsTransferConfigsRequest>;
 
 export type PatchProjectsTransferConfigsResponse = TransferConfig;
 export const PatchProjectsTransferConfigsResponse =
@@ -1237,7 +1237,7 @@ export const GetProjectsTransferConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTransferConfigsRequest>;
 
 export type GetProjectsTransferConfigsResponse = TransferConfig;
 export const GetProjectsTransferConfigsResponse =
@@ -1293,7 +1293,7 @@ export const CreateProjectsTransferConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTransferConfigsRequest>;
 
 export type CreateProjectsTransferConfigsResponse = TransferConfig;
 export const CreateProjectsTransferConfigsResponse =
@@ -1336,7 +1336,7 @@ export const ScheduleRunsProjectsTransferConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ScheduleRunsProjectsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<ScheduleRunsProjectsTransferConfigsRequest>;
 
 export type ScheduleRunsProjectsTransferConfigsResponse =
   ScheduleTransferRunsResponse;
@@ -1373,7 +1373,7 @@ export const GetProjectsTransferConfigsRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTransferConfigsRunsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTransferConfigsRunsRequest>;
 
 export type GetProjectsTransferConfigsRunsResponse = TransferRun;
 export const GetProjectsTransferConfigsRunsResponse =
@@ -1407,7 +1407,7 @@ export const DeleteProjectsTransferConfigsRunsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTransferConfigsRunsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsTransferConfigsRunsRequest>;
 
 export type DeleteProjectsTransferConfigsRunsResponse = Empty;
 export const DeleteProjectsTransferConfigsRunsResponse =
@@ -1464,7 +1464,7 @@ export const ListProjectsTransferConfigsRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/runs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTransferConfigsRunsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTransferConfigsRunsRequest>;
 
 export type ListProjectsTransferConfigsRunsResponse = ListTransferRunsResponse;
 export const ListProjectsTransferConfigsRunsResponse =
@@ -1518,7 +1518,7 @@ export const ListProjectsTransferConfigsRunsTransferLogsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/transferLogs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTransferConfigsRunsTransferLogsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTransferConfigsRunsTransferLogsRequest>;
 
 export type ListProjectsTransferConfigsRunsTransferLogsResponse =
   ListTransferLogsResponse;
@@ -1557,7 +1557,7 @@ export const GetProjectsTransferConfigsTransferResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTransferConfigsTransferResourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTransferConfigsTransferResourcesRequest>;
 
 export type GetProjectsTransferConfigsTransferResourcesResponse =
   TransferResource;
@@ -1601,7 +1601,7 @@ export const ListProjectsTransferConfigsTransferResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/transferResources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTransferConfigsTransferResourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTransferConfigsTransferResourcesRequest>;
 
 export type ListProjectsTransferConfigsTransferResourcesResponse =
   ListTransferResourcesResponse;
@@ -1647,7 +1647,7 @@ export const EnrollDataSourcesProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnrollDataSourcesProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<EnrollDataSourcesProjectsLocationsRequest>;
 
 export type EnrollDataSourcesProjectsLocationsResponse = Empty;
 export const EnrollDataSourcesProjectsLocationsResponse =
@@ -1690,7 +1690,7 @@ export const UnenrollDataSourcesProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnenrollDataSourcesProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UnenrollDataSourcesProjectsLocationsRequest>;
 
 export type UnenrollDataSourcesProjectsLocationsResponse = Empty;
 export const UnenrollDataSourcesProjectsLocationsResponse =
@@ -1726,7 +1726,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1771,7 +1771,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1806,7 +1806,7 @@ export const GetProjectsLocationsDataSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataSourcesRequest>;
 
 export type GetProjectsLocationsDataSourcesResponse = DataSource;
 export const GetProjectsLocationsDataSourcesResponse =
@@ -1847,7 +1847,7 @@ export const CheckValidCredsProjectsLocationsDataSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckValidCredsProjectsLocationsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<CheckValidCredsProjectsLocationsDataSourcesRequest>;
 
 export type CheckValidCredsProjectsLocationsDataSourcesResponse =
   CheckValidCredsResponse;
@@ -1890,7 +1890,7 @@ export const ListProjectsLocationsDataSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataSources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataSourcesRequest>;
 
 export type ListProjectsLocationsDataSourcesResponse = ListDataSourcesResponse;
 export const ListProjectsLocationsDataSourcesResponse =
@@ -1928,7 +1928,7 @@ export const DeleteProjectsLocationsTransferConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTransferConfigsRequest>;
 
 export type DeleteProjectsLocationsTransferConfigsResponse = Empty;
 export const DeleteProjectsLocationsTransferConfigsResponse =
@@ -1975,7 +1975,7 @@ export const ListProjectsLocationsTransferConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/transferConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTransferConfigsRequest>;
 
 export type ListProjectsLocationsTransferConfigsResponse =
   ListTransferConfigsResponse;
@@ -2035,7 +2035,7 @@ export const PatchProjectsLocationsTransferConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTransferConfigsRequest>;
 
 export type PatchProjectsLocationsTransferConfigsResponse = TransferConfig;
 export const PatchProjectsLocationsTransferConfigsResponse =
@@ -2071,7 +2071,7 @@ export const GetProjectsLocationsTransferConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTransferConfigsRequest>;
 
 export type GetProjectsLocationsTransferConfigsResponse = TransferConfig;
 export const GetProjectsLocationsTransferConfigsResponse =
@@ -2112,7 +2112,7 @@ export const StartManualRunsProjectsLocationsTransferConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartManualRunsProjectsLocationsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<StartManualRunsProjectsLocationsTransferConfigsRequest>;
 
 export type StartManualRunsProjectsLocationsTransferConfigsResponse =
   StartManualTransferRunsResponse;
@@ -2171,7 +2171,7 @@ export const CreateProjectsLocationsTransferConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTransferConfigsRequest>;
 
 export type CreateProjectsLocationsTransferConfigsResponse = TransferConfig;
 export const CreateProjectsLocationsTransferConfigsResponse =
@@ -2214,7 +2214,7 @@ export const ScheduleRunsProjectsLocationsTransferConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ScheduleRunsProjectsLocationsTransferConfigsRequest>;
+  ) as unknown as Schema.Codec<ScheduleRunsProjectsLocationsTransferConfigsRequest>;
 
 export type ScheduleRunsProjectsLocationsTransferConfigsResponse =
   ScheduleTransferRunsResponse;
@@ -2251,7 +2251,7 @@ export const DeleteProjectsLocationsTransferConfigsRunsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTransferConfigsRunsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTransferConfigsRunsRequest>;
 
 export type DeleteProjectsLocationsTransferConfigsRunsResponse = Empty;
 export const DeleteProjectsLocationsTransferConfigsRunsResponse =
@@ -2308,7 +2308,7 @@ export const ListProjectsLocationsTransferConfigsRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/runs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTransferConfigsRunsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTransferConfigsRunsRequest>;
 
 export type ListProjectsLocationsTransferConfigsRunsResponse =
   ListTransferRunsResponse;
@@ -2347,7 +2347,7 @@ export const GetProjectsLocationsTransferConfigsRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTransferConfigsRunsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTransferConfigsRunsRequest>;
 
 export type GetProjectsLocationsTransferConfigsRunsResponse = TransferRun;
 export const GetProjectsLocationsTransferConfigsRunsResponse =
@@ -2397,7 +2397,7 @@ export const ListProjectsLocationsTransferConfigsRunsTransferLogsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/transferLogs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTransferConfigsRunsTransferLogsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTransferConfigsRunsTransferLogsRequest>;
 
 export type ListProjectsLocationsTransferConfigsRunsTransferLogsResponse =
   ListTransferLogsResponse;
@@ -2445,7 +2445,7 @@ export const ListProjectsLocationsTransferConfigsTransferResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/transferResources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTransferConfigsTransferResourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
 export type ListProjectsLocationsTransferConfigsTransferResourcesResponse =
   ListTransferResourcesResponse;
@@ -2484,7 +2484,7 @@ export const GetProjectsLocationsTransferConfigsTransferResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTransferConfigsTransferResourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
 export type GetProjectsLocationsTransferConfigsTransferResourcesResponse =
   TransferResource;

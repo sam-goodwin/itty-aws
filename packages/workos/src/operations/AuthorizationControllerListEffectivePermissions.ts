@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationControllerListEffectivePermissionsInput {
+  organization_membership_id: string;
+  resource_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const AuthorizationControllerListEffectivePermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,24 @@ export const AuthorizationControllerListEffectivePermissionsInput =
       method: "GET",
       path: "/authorization/organization_memberships/{organization_membership_id}/resources/{resource_id}/permissions",
     }),
-  );
-export type AuthorizationControllerListEffectivePermissionsInput =
-  typeof AuthorizationControllerListEffectivePermissionsInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationControllerListEffectivePermissionsInput>;
 
 // Output Schema
+export interface AuthorizationControllerListEffectivePermissionsOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    slug?: string;
+    name?: string;
+    description?: string | null;
+    system?: boolean;
+    resource_type_slug?: string;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const AuthorizationControllerListEffectivePermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -46,9 +67,7 @@ export const AuthorizationControllerListEffectivePermissionsOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AuthorizationControllerListEffectivePermissionsOutput =
-  typeof AuthorizationControllerListEffectivePermissionsOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationControllerListEffectivePermissionsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface JumpWireWebDataVaultControllerindexInput {
+  limit?: number;
+  before?: string;
+  after?: string;
+  order?: "asc" | "desc";
+  search?: string;
+  updatedAfter?: string;
+}
 export const JumpWireWebDataVaultControllerindexInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.Number),
@@ -12,11 +20,15 @@ export const JumpWireWebDataVaultControllerindexInput =
     order: Schema.optional(Schema.Literals(["asc", "desc"])),
     search: Schema.optional(Schema.String),
     updatedAfter: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/vault/v1/kv" }));
-export type JumpWireWebDataVaultControllerindexInput =
-  typeof JumpWireWebDataVaultControllerindexInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/vault/v1/kv" }),
+  ) as unknown as Schema.Codec<JumpWireWebDataVaultControllerindexInput>;
 
 // Output Schema
+export interface JumpWireWebDataVaultControllerindexOutput {
+  data: { id: string; name: string; updated_at?: string | null }[];
+  list_metadata: { after?: string | null; before?: string | null };
+}
 export const JumpWireWebDataVaultControllerindexOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -30,9 +42,7 @@ export const JumpWireWebDataVaultControllerindexOutput =
       after: Schema.optional(Schema.NullOr(Schema.String)),
       before: Schema.optional(Schema.NullOr(Schema.String)),
     }),
-  });
-export type JumpWireWebDataVaultControllerindexOutput =
-  typeof JumpWireWebDataVaultControllerindexOutput.Type;
+  }) as unknown as Schema.Codec<JumpWireWebDataVaultControllerindexOutput>;
 
 // The operation
 /**

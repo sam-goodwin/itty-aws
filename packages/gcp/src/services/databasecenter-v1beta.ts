@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Databasecenter_Date {
   day?: number;
 }
 
-export const Databasecenter_Date: Schema.Schema<Databasecenter_Date> =
+export const Databasecenter_Date: Schema.Codec<Databasecenter_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -49,7 +49,7 @@ export interface TimeOfDay {
   seconds?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     hours: Schema.optional(Schema.Number),
@@ -66,7 +66,7 @@ export interface ResourceMaintenanceDenySchedule {
   endDate?: Databasecenter_Date;
 }
 
-export const ResourceMaintenanceDenySchedule: Schema.Schema<ResourceMaintenanceDenySchedule> =
+export const ResourceMaintenanceDenySchedule: Schema.Codec<ResourceMaintenanceDenySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Databasecenter_Date),
     time: Schema.optional(TimeOfDay),
@@ -189,7 +189,7 @@ export interface SignalFilter {
     | (string & {});
 }
 
-export const SignalFilter: Schema.Schema<SignalFilter> =
+export const SignalFilter: Schema.Codec<SignalFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signalType: Schema.optional(Schema.String),
     signalStatus: Schema.optional(Schema.String),
@@ -306,7 +306,7 @@ export interface SignalTypeGroup {
   displayName?: string;
 }
 
-export const SignalTypeGroup: Schema.Schema<SignalTypeGroup> =
+export const SignalTypeGroup: Schema.Codec<SignalTypeGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signalTypes: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
@@ -329,7 +329,7 @@ export interface QueryDatabaseResourceGroupsRequest {
   parent?: string;
 }
 
-export const QueryDatabaseResourceGroupsRequest: Schema.Schema<QueryDatabaseResourceGroupsRequest> =
+export const QueryDatabaseResourceGroupsRequest: Schema.Codec<QueryDatabaseResourceGroupsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     signalFilters: Schema.optional(Schema.Array(SignalFilter)),
@@ -359,7 +359,7 @@ export interface Lineage {
     | (string & {});
 }
 
-export const Lineage: Schema.Schema<Lineage> =
+export const Lineage: Schema.Codec<Lineage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceFqn: Schema.optional(Schema.String),
     targetFqn: Schema.optional(Schema.String),
@@ -376,7 +376,7 @@ export interface Affiliation {
   resourceId?: string;
 }
 
-export const Affiliation: Schema.Schema<Affiliation> =
+export const Affiliation: Schema.Codec<Affiliation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineages: Schema.optional(Schema.Array(Lineage)),
     fullResourceName: Schema.optional(Schema.String),
@@ -422,7 +422,7 @@ export interface Product {
     | (string & {});
 }
 
-export const Product: Schema.Schema<Product> =
+export const Product: Schema.Codec<Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     engine: Schema.optional(Schema.String),
     minorVersion: Schema.optional(Schema.String),
@@ -441,7 +441,7 @@ export interface SubResource {
   product?: Product;
 }
 
-export const SubResource: Schema.Schema<SubResource> =
+export const SubResource: Schema.Codec<SubResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     container: Schema.optional(Schema.String),
     fullResourceName: Schema.optional(Schema.String),
@@ -472,7 +472,7 @@ export interface BackupRunInfo {
     | (string & {});
 }
 
-export const BackupRunInfo: Schema.Schema<BackupRunInfo> =
+export const BackupRunInfo: Schema.Codec<BackupRunInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -493,7 +493,7 @@ export interface ResourceDetails {
   fullResourceName?: string;
 }
 
-export const ResourceDetails: Schema.Schema<ResourceDetails> =
+export const ResourceDetails: Schema.Codec<ResourceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     product: Schema.optional(Product),
     container: Schema.optional(Schema.String),
@@ -508,7 +508,7 @@ export interface DeltaDetails {
   decreasedResources?: ReadonlyArray<ResourceDetails>;
 }
 
-export const DeltaDetails: Schema.Schema<DeltaDetails> =
+export const DeltaDetails: Schema.Codec<DeltaDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     increasedResources: Schema.optional(Schema.Array(ResourceDetails)),
     decreasedResources: Schema.optional(Schema.Array(ResourceDetails)),
@@ -519,7 +519,7 @@ export interface OutdatedMinorVersionInfo {
   recommendedMinorVersion?: string;
 }
 
-export const OutdatedMinorVersionInfo: Schema.Schema<OutdatedMinorVersionInfo> =
+export const OutdatedMinorVersionInfo: Schema.Codec<OutdatedMinorVersionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendedMinorVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "OutdatedMinorVersionInfo" });
@@ -537,7 +537,7 @@ export interface InefficientQueryInfo {
   impactedQueriesCount?: string;
 }
 
-export const InefficientQueryInfo: Schema.Schema<InefficientQueryInfo> =
+export const InefficientQueryInfo: Schema.Codec<InefficientQueryInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageCostBytes: Schema.optional(Schema.String),
     database: Schema.optional(Schema.String),
@@ -557,7 +557,7 @@ export interface RetentionSettingsInfo {
   subResource?: SubResource;
 }
 
-export const RetentionSettingsInfo: Schema.Schema<RetentionSettingsInfo> =
+export const RetentionSettingsInfo: Schema.Codec<RetentionSettingsInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     durationBasedRetention: Schema.optional(Schema.String),
     quantityBasedRetention: Schema.optional(Schema.Number),
@@ -572,7 +572,7 @@ export interface RegulatoryStandard {
   version?: string;
 }
 
-export const RegulatoryStandard: Schema.Schema<RegulatoryStandard> =
+export const RegulatoryStandard: Schema.Codec<RegulatoryStandard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standard: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -589,7 +589,7 @@ export interface SCCInfo {
   category?: string;
 }
 
-export const SCCInfo: Schema.Schema<SCCInfo> =
+export const SCCInfo: Schema.Codec<SCCInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signal: Schema.optional(Schema.String),
     regulatoryStandards: Schema.optional(Schema.Array(RegulatoryStandard)),
@@ -604,7 +604,7 @@ export interface AutomatedBackupPolicyInfo {
   isEnabled?: boolean;
 }
 
-export const AutomatedBackupPolicyInfo: Schema.Schema<AutomatedBackupPolicyInfo> =
+export const AutomatedBackupPolicyInfo: Schema.Codec<AutomatedBackupPolicyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subResource: Schema.optional(SubResource),
     isEnabled: Schema.optional(Schema.Boolean),
@@ -617,7 +617,7 @@ export interface DeletionProtectionInfo {
   deletionProtectionEnabled?: boolean;
 }
 
-export const DeletionProtectionInfo: Schema.Schema<DeletionProtectionInfo> =
+export const DeletionProtectionInfo: Schema.Codec<DeletionProtectionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subResource: Schema.optional(SubResource),
     deletionProtectionEnabled: Schema.optional(Schema.Boolean),
@@ -647,7 +647,7 @@ export interface ResourceMaintenanceSchedule {
     | (string & {});
 }
 
-export const ResourceMaintenanceSchedule: Schema.Schema<ResourceMaintenanceSchedule> =
+export const ResourceMaintenanceSchedule: Schema.Codec<ResourceMaintenanceSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(TimeOfDay),
     day: Schema.optional(Schema.String),
@@ -659,7 +659,7 @@ export interface MaintenanceRecommendationInfo {
   resourceMaintenanceSchedules?: ReadonlyArray<ResourceMaintenanceSchedule>;
 }
 
-export const MaintenanceRecommendationInfo: Schema.Schema<MaintenanceRecommendationInfo> =
+export const MaintenanceRecommendationInfo: Schema.Codec<MaintenanceRecommendationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceMaintenanceSchedules: Schema.optional(
       Schema.Array(ResourceMaintenanceSchedule),
@@ -681,7 +681,7 @@ export interface ResourceSuspensionInfo {
     | (string & {});
 }
 
-export const ResourceSuspensionInfo: Schema.Schema<ResourceSuspensionInfo> =
+export const ResourceSuspensionInfo: Schema.Codec<ResourceSuspensionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceSuspended: Schema.optional(Schema.Boolean),
     suspensionReason: Schema.optional(Schema.String),
@@ -696,7 +696,7 @@ export interface RecommendationInfo {
   recommenderSubtype?: string;
 }
 
-export const RecommendationInfo: Schema.Schema<RecommendationInfo> =
+export const RecommendationInfo: Schema.Codec<RecommendationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommender: Schema.optional(Schema.String),
     recommenderId: Schema.optional(Schema.String),
@@ -841,7 +841,7 @@ export interface AdditionalDetail {
   recommendationInfo?: RecommendationInfo;
 }
 
-export const AdditionalDetail: Schema.Schema<AdditionalDetail> =
+export const AdditionalDetail: Schema.Codec<AdditionalDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backupRunInfo: Schema.optional(BackupRunInfo),
     outdatedMinorVersionInfo: Schema.optional(OutdatedMinorVersionInfo),
@@ -989,7 +989,7 @@ export interface Signal {
   issueCreateTime?: string;
 }
 
-export const Signal: Schema.Schema<Signal> =
+export const Signal: Schema.Codec<Signal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signalType: Schema.optional(Schema.String),
     additionalDetails: Schema.optional(Schema.Array(AdditionalDetail)),
@@ -1009,7 +1009,7 @@ export interface AggregateQueryStatsRequest {
   pageSize?: number;
 }
 
-export const AggregateQueryStatsRequest: Schema.Schema<AggregateQueryStatsRequest> =
+export const AggregateQueryStatsRequest: Schema.Codec<AggregateQueryStatsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -1028,7 +1028,7 @@ export interface AggregateIssueStatsRequest {
   baselineDate?: Databasecenter_Date;
 }
 
-export const AggregateIssueStatsRequest: Schema.Schema<AggregateIssueStatsRequest> =
+export const AggregateIssueStatsRequest: Schema.Codec<AggregateIssueStatsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -1157,7 +1157,7 @@ export interface IssueStats {
     | (string & {});
 }
 
-export const IssueStats: Schema.Schema<IssueStats> =
+export const IssueStats: Schema.Codec<IssueStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signalType: Schema.optional(Schema.String),
     resourceCount: Schema.optional(Schema.Number),
@@ -1260,7 +1260,7 @@ export interface Dimension {
     | (string & {});
 }
 
-export const Dimension: Schema.Schema<Dimension> =
+export const Dimension: Schema.Codec<Dimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     tagKey: Schema.optional(Schema.String),
@@ -1290,7 +1290,7 @@ export interface TypedValue {
   int64Value?: string;
 }
 
-export const TypedValue: Schema.Schema<TypedValue> =
+export const TypedValue: Schema.Codec<TypedValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     doubleValue: Schema.optional(Schema.Number),
     int64Value: Schema.optional(Schema.String),
@@ -1303,7 +1303,7 @@ export interface MetricData {
   value?: TypedValue;
 }
 
-export const MetricData: Schema.Schema<MetricData> =
+export const MetricData: Schema.Codec<MetricData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     observationTime: Schema.optional(Schema.String),
     value: Schema.optional(TypedValue),
@@ -1330,7 +1330,7 @@ export interface Metrics {
   currentStorageUsedBytes?: MetricData;
 }
 
-export const Metrics: Schema.Schema<Metrics> =
+export const Metrics: Schema.Codec<Metrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentMemoryUsedBytes: Schema.optional(MetricData),
     peakStorageUtilization: Schema.optional(MetricData),
@@ -1453,7 +1453,7 @@ export interface SignalProductsFilters {
   products?: ReadonlyArray<Product>;
 }
 
-export const SignalProductsFilters: Schema.Schema<SignalProductsFilters> =
+export const SignalProductsFilters: Schema.Codec<SignalProductsFilters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signalType: Schema.optional(Schema.String),
     products: Schema.optional(Schema.Array(Product)),
@@ -1474,7 +1474,7 @@ export interface QueryIssuesRequest {
   parent?: string;
 }
 
-export const QueryIssuesRequest: Schema.Schema<QueryIssuesRequest> =
+export const QueryIssuesRequest: Schema.Codec<QueryIssuesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     signalProductsFilters: Schema.optional(Schema.Array(SignalProductsFilters)),
@@ -1491,7 +1491,7 @@ export interface UpcomingMaintenance {
   endTime?: string;
 }
 
-export const UpcomingMaintenance: Schema.Schema<UpcomingMaintenance> =
+export const UpcomingMaintenance: Schema.Codec<UpcomingMaintenance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1502,7 +1502,7 @@ export interface BackupDRConfig {
   backupdrManaged?: boolean;
 }
 
-export const BackupDRConfig: Schema.Schema<BackupDRConfig> =
+export const BackupDRConfig: Schema.Codec<BackupDRConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backupdrManaged: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BackupDRConfig" });
@@ -1516,7 +1516,7 @@ export interface Label {
   value?: string;
 }
 
-export const Label: Schema.Schema<Label> =
+export const Label: Schema.Codec<Label> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
@@ -1536,7 +1536,7 @@ export interface MachineConfig {
   maxReservationSlotCount?: string;
 }
 
-export const MachineConfig: Schema.Schema<MachineConfig> =
+export const MachineConfig: Schema.Codec<MachineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vcpuCount: Schema.optional(Schema.Number),
     memorySizeBytes: Schema.optional(Schema.String),
@@ -1554,7 +1554,7 @@ export interface SignalGroup {
   signals?: ReadonlyArray<Signal>;
 }
 
-export const SignalGroup: Schema.Schema<SignalGroup> =
+export const SignalGroup: Schema.Codec<SignalGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     issueCount: Schema.optional(Schema.Number),
@@ -1571,13 +1571,14 @@ export interface Tag {
   value?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     key: Schema.optional(Schema.String),
     inherited: Schema.optional(Schema.Boolean),
     source: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tag" });
+  },
+).annotate({ identifier: "Tag" });
 
 export interface MaintenanceInfo {
   /** Output only. Previous maintenance version of the database resource. Example: "MYSQL_8_0_41.R20250531.01_15". This is available once a minor version maintenance is complete on a database resource. */
@@ -1609,7 +1610,7 @@ export interface MaintenanceInfo {
     | (string & {});
 }
 
-export const MaintenanceInfo: Schema.Schema<MaintenanceInfo> =
+export const MaintenanceInfo: Schema.Codec<MaintenanceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     previousMaintenanceVersion: Schema.optional(Schema.String),
     currentVersionReleaseDate: Schema.optional(Databasecenter_Date),
@@ -1684,7 +1685,7 @@ export interface DatabaseResource {
     | (string & {});
 }
 
-export const DatabaseResource: Schema.Schema<DatabaseResource> =
+export const DatabaseResource: Schema.Codec<DatabaseResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fullResourceName: Schema.optional(Schema.String),
@@ -1708,7 +1709,7 @@ export const DatabaseResource: Schema.Schema<DatabaseResource> =
     }),
   ).annotate({
     identifier: "DatabaseResource",
-  }) as any as Schema.Schema<DatabaseResource>;
+  }) as any as Schema.Codec<DatabaseResource>;
 
 export interface DatabaseResourceIssue {
   /** Signal associated with the issue. */
@@ -1717,7 +1718,7 @@ export interface DatabaseResourceIssue {
   resource?: DatabaseResource;
 }
 
-export const DatabaseResourceIssue: Schema.Schema<DatabaseResourceIssue> =
+export const DatabaseResourceIssue: Schema.Codec<DatabaseResourceIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signal: Schema.optional(Signal),
     resource: Schema.optional(DatabaseResource),
@@ -1732,7 +1733,7 @@ export interface QueryIssuesResponse {
   resourceIssues?: ReadonlyArray<DatabaseResourceIssue>;
 }
 
-export const QueryIssuesResponse: Schema.Schema<QueryIssuesResponse> =
+export const QueryIssuesResponse: Schema.Codec<QueryIssuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1746,7 +1747,7 @@ export interface IssueCount {
   issueCount?: number;
 }
 
-export const IssueCount: Schema.Schema<IssueCount> =
+export const IssueCount: Schema.Codec<IssueCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     issueCount: Schema.optional(Schema.Number),
@@ -1767,7 +1768,7 @@ export interface IssueGroupStats {
   issueStats?: ReadonlyArray<IssueStats>;
 }
 
-export const IssueGroupStats: Schema.Schema<IssueGroupStats> =
+export const IssueGroupStats: Schema.Codec<IssueGroupStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     resourcesCount: Schema.optional(Schema.Number),
@@ -1795,7 +1796,7 @@ export interface QueryMetrics {
     | (string & {});
 }
 
-export const QueryMetrics: Schema.Schema<QueryMetrics> =
+export const QueryMetrics: Schema.Codec<QueryMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowsProcessed: Schema.optional(Schema.String),
     executionCount: Schema.optional(Schema.String),
@@ -1813,7 +1814,7 @@ export interface ResourceId {
   fullResourceName?: string;
 }
 
-export const ResourceId: Schema.Schema<ResourceId> =
+export const ResourceId: Schema.Codec<ResourceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     product: Schema.optional(Product),
@@ -1835,7 +1836,7 @@ export interface QueryStats {
   resourceType?: string;
 }
 
-export const QueryStats: Schema.Schema<QueryStats> =
+export const QueryStats: Schema.Codec<QueryStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryMetrics: Schema.optional(QueryMetrics),
     queryHash: Schema.optional(Schema.String),
@@ -1852,7 +1853,7 @@ export interface DatabaseResourceGroup {
   signalGroups?: ReadonlyArray<IssueCount>;
 }
 
-export const DatabaseResourceGroup: Schema.Schema<DatabaseResourceGroup> =
+export const DatabaseResourceGroup: Schema.Codec<DatabaseResourceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootResources: Schema.optional(Schema.Array(DatabaseResource)),
     signalGroups: Schema.optional(Schema.Array(IssueCount)),
@@ -1869,7 +1870,7 @@ export interface QueryDatabaseResourceGroupsResponse {
   totalSize?: string;
 }
 
-export const QueryDatabaseResourceGroupsResponse: Schema.Schema<QueryDatabaseResourceGroupsResponse> =
+export const QueryDatabaseResourceGroupsResponse: Schema.Codec<QueryDatabaseResourceGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1884,7 +1885,7 @@ export interface QueryStatsInfo {
   aggregatedQueryStats?: QueryStats;
 }
 
-export const QueryStatsInfo: Schema.Schema<QueryStatsInfo> =
+export const QueryStatsInfo: Schema.Codec<QueryStatsInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryStats: Schema.optional(Schema.Array(QueryStats)),
     aggregatedQueryStats: Schema.optional(QueryStats),
@@ -1899,7 +1900,7 @@ export interface AggregateQueryStatsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const AggregateQueryStatsResponse: Schema.Schema<AggregateQueryStatsResponse> =
+export const AggregateQueryStatsResponse: Schema.Codec<AggregateQueryStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryStats: Schema.optional(Schema.Array(QueryStatsInfo)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1915,7 +1916,7 @@ export interface QueryProductsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const QueryProductsResponse: Schema.Schema<QueryProductsResponse> =
+export const QueryProductsResponse: Schema.Codec<QueryProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     products: Schema.optional(Schema.Array(Product)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1933,7 +1934,7 @@ export interface AggregateFleetRow {
   resourcesCount?: number;
 }
 
-export const AggregateFleetRow: Schema.Schema<AggregateFleetRow> =
+export const AggregateFleetRow: Schema.Codec<AggregateFleetRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupsCount: Schema.optional(Schema.Number),
     deltaDetails: Schema.optional(DeltaDetails),
@@ -1952,7 +1953,7 @@ export interface AggregateIssueStatsResponse {
   issueGroupStats?: ReadonlyArray<IssueGroupStats>;
 }
 
-export const AggregateIssueStatsResponse: Schema.Schema<AggregateIssueStatsResponse> =
+export const AggregateIssueStatsResponse: Schema.Codec<AggregateIssueStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     totalResourcesCount: Schema.optional(Schema.Number),
@@ -1975,7 +1976,7 @@ export interface AggregateFleetResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const AggregateFleetResponse: Schema.Schema<AggregateFleetResponse> =
+export const AggregateFleetResponse: Schema.Codec<AggregateFleetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupsTotalCount: Schema.optional(Schema.Number),
     totalSize: Schema.optional(Schema.String),
@@ -2056,7 +2057,7 @@ export const QueryProductsV1betaRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta:queryProducts" }),
     svc,
-  ) as unknown as Schema.Schema<QueryProductsV1betaRequest>;
+  ) as unknown as Schema.Codec<QueryProductsV1betaRequest>;
 
 export type QueryProductsV1betaResponse = QueryProductsResponse;
 export const QueryProductsV1betaResponse =
@@ -2121,7 +2122,7 @@ export const AggregateFleetV1betaRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta:aggregateFleet" }),
     svc,
-  ) as unknown as Schema.Schema<AggregateFleetV1betaRequest>;
+  ) as unknown as Schema.Codec<AggregateFleetV1betaRequest>;
 
 export type AggregateFleetV1betaResponse = AggregateFleetResponse;
 export const AggregateFleetV1betaResponse =
@@ -2160,7 +2161,7 @@ export const AggregateIssueStatsV1betaRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregateIssueStatsV1betaRequest>;
+  ) as unknown as Schema.Codec<AggregateIssueStatsV1betaRequest>;
 
 export type AggregateIssueStatsV1betaResponse = AggregateIssueStatsResponse;
 export const AggregateIssueStatsV1betaResponse =
@@ -2202,7 +2203,7 @@ export const QueryDatabaseResourceGroupsV1betaRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryDatabaseResourceGroupsV1betaRequest>;
+  ) as unknown as Schema.Codec<QueryDatabaseResourceGroupsV1betaRequest>;
 
 export type QueryDatabaseResourceGroupsV1betaResponse =
   QueryDatabaseResourceGroupsResponse;
@@ -2239,7 +2240,7 @@ export const QueryIssuesV1betaRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta:queryIssues", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryIssuesV1betaRequest>;
+  ) as unknown as Schema.Codec<QueryIssuesV1betaRequest>;
 
 export type QueryIssuesV1betaResponse = QueryIssuesResponse;
 export const QueryIssuesV1betaResponse =
@@ -2282,7 +2283,7 @@ export const AggregateQueryStatsFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregateQueryStatsFoldersRequest>;
+  ) as unknown as Schema.Codec<AggregateQueryStatsFoldersRequest>;
 
 export type AggregateQueryStatsFoldersResponse = AggregateQueryStatsResponse;
 export const AggregateQueryStatsFoldersResponse =
@@ -2325,7 +2326,7 @@ export const AggregateQueryStatsOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregateQueryStatsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<AggregateQueryStatsOrganizationsRequest>;
 
 export type AggregateQueryStatsOrganizationsResponse =
   AggregateQueryStatsResponse;
@@ -2369,7 +2370,7 @@ export const AggregateQueryStatsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregateQueryStatsProjectsRequest>;
+  ) as unknown as Schema.Codec<AggregateQueryStatsProjectsRequest>;
 
 export type AggregateQueryStatsProjectsResponse = AggregateQueryStatsResponse;
 export const AggregateQueryStatsProjectsResponse =

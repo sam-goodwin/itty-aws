@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface ComplianceStandard {
   control?: string;
 }
 
-export const ComplianceStandard: Schema.Schema<ComplianceStandard> =
+export const ComplianceStandard: Schema.Codec<ComplianceStandard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standard: Schema.optional(Schema.String),
     control: Schema.optional(Schema.String),
@@ -61,7 +61,7 @@ export interface Property {
   valueExpression?: Expr;
 }
 
-export const Property: Schema.Schema<Property> =
+export const Property: Schema.Codec<Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     valueExpression: Schema.optional(Expr),
@@ -72,7 +72,7 @@ export interface CustomOutputSpec {
   properties?: ReadonlyArray<Property>;
 }
 
-export const CustomOutputSpec: Schema.Schema<CustomOutputSpec> =
+export const CustomOutputSpec: Schema.Codec<CustomOutputSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(Schema.Array(Property)),
   }).annotate({ identifier: "CustomOutputSpec" });
@@ -82,7 +82,7 @@ export interface ResourceSelector {
   resourceTypes?: ReadonlyArray<string>;
 }
 
-export const ResourceSelector: Schema.Schema<ResourceSelector> =
+export const ResourceSelector: Schema.Codec<ResourceSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ResourceSelector" });
@@ -108,7 +108,7 @@ export interface CustomConfig {
   recommendation?: string;
 }
 
-export const CustomConfig: Schema.Schema<CustomConfig> =
+export const CustomConfig: Schema.Codec<CustomConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customOutput: Schema.optional(CustomOutputSpec),
     resourceSelector: Schema.optional(ResourceSelector),
@@ -133,7 +133,7 @@ export interface SecurityHealthAnalyticsCustomModule {
     | (string & {});
 }
 
-export const SecurityHealthAnalyticsCustomModule: Schema.Schema<SecurityHealthAnalyticsCustomModule> =
+export const SecurityHealthAnalyticsCustomModule: Schema.Codec<SecurityHealthAnalyticsCustomModule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     config: Schema.optional(CustomConfig),
@@ -148,7 +148,7 @@ export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
   deniedValues?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSecuritypostureV1PolicyRuleStringValues: Schema.Schema<GoogleCloudSecuritypostureV1PolicyRuleStringValues> =
+export const GoogleCloudSecuritypostureV1PolicyRuleStringValues: Schema.Codec<GoogleCloudSecuritypostureV1PolicyRuleStringValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedValues: Schema.optional(Schema.Array(Schema.String)),
     deniedValues: Schema.optional(Schema.Array(Schema.String)),
@@ -161,7 +161,7 @@ export interface ResourceTypes {
   included?: ReadonlyArray<string>;
 }
 
-export const ResourceTypes: Schema.Schema<ResourceTypes> =
+export const ResourceTypes: Schema.Codec<ResourceTypes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     included: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ResourceTypes" });
@@ -183,7 +183,7 @@ export interface GoogleCloudSecuritypostureV1PolicyRule {
   allowAll?: boolean;
 }
 
-export const GoogleCloudSecuritypostureV1PolicyRule: Schema.Schema<GoogleCloudSecuritypostureV1PolicyRule> =
+export const GoogleCloudSecuritypostureV1PolicyRule: Schema.Codec<GoogleCloudSecuritypostureV1PolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforce: Schema.optional(Schema.Boolean),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -201,7 +201,7 @@ export interface OrgPolicyConstraint {
   policyRules?: ReadonlyArray<GoogleCloudSecuritypostureV1PolicyRule>;
 }
 
-export const OrgPolicyConstraint: Schema.Schema<OrgPolicyConstraint> =
+export const OrgPolicyConstraint: Schema.Codec<OrgPolicyConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cannedConstraintId: Schema.optional(Schema.String),
     policyRules: Schema.optional(
@@ -230,7 +230,7 @@ export interface GoogleCloudSecuritypostureV1CustomConstraint {
   description?: string;
 }
 
-export const GoogleCloudSecuritypostureV1CustomConstraint: Schema.Schema<GoogleCloudSecuritypostureV1CustomConstraint> =
+export const GoogleCloudSecuritypostureV1CustomConstraint: Schema.Codec<GoogleCloudSecuritypostureV1CustomConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -249,7 +249,7 @@ export interface OrgPolicyConstraintCustom {
   policyRules?: ReadonlyArray<GoogleCloudSecuritypostureV1PolicyRule>;
 }
 
-export const OrgPolicyConstraintCustom: Schema.Schema<OrgPolicyConstraintCustom> =
+export const OrgPolicyConstraintCustom: Schema.Codec<OrgPolicyConstraintCustom> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customConstraint: Schema.optional(
       GoogleCloudSecuritypostureV1CustomConstraint,
@@ -270,7 +270,7 @@ export interface SecurityHealthAnalyticsModule {
     | (string & {});
 }
 
-export const SecurityHealthAnalyticsModule: Schema.Schema<SecurityHealthAnalyticsModule> =
+export const SecurityHealthAnalyticsModule: Schema.Codec<SecurityHealthAnalyticsModule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     moduleName: Schema.optional(Schema.String),
     moduleEnablementState: Schema.optional(Schema.String),
@@ -287,7 +287,7 @@ export interface Constraint {
   securityHealthAnalyticsModule?: SecurityHealthAnalyticsModule;
 }
 
-export const Constraint: Schema.Schema<Constraint> =
+export const Constraint: Schema.Codec<Constraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityHealthAnalyticsCustomModule: Schema.optional(
       SecurityHealthAnalyticsCustomModule,
@@ -310,7 +310,7 @@ export interface Policy {
   constraint?: Constraint;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -327,7 +327,7 @@ export interface PolicySet {
   policies?: ReadonlyArray<Policy>;
 }
 
-export const PolicySet: Schema.Schema<PolicySet> =
+export const PolicySet: Schema.Codec<PolicySet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policySetId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -351,7 +351,7 @@ export interface PostureTemplate {
   >;
 }
 
-export const PostureTemplate: Schema.Schema<PostureTemplate> =
+export const PostureTemplate: Schema.Codec<PostureTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     policySets: Schema.optional(Schema.Array(PolicySet)),
@@ -370,7 +370,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -392,7 +392,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -403,7 +403,7 @@ export const Operation: Schema.Schema<Operation> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -440,7 +440,7 @@ export interface Posture {
   policySets?: ReadonlyArray<PolicySet>;
 }
 
-export const Posture: Schema.Schema<Posture> =
+export const Posture: Schema.Codec<Posture> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -464,7 +464,7 @@ export interface ListPosturesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListPosturesResponse: Schema.Schema<ListPosturesResponse> =
+export const ListPosturesResponse: Schema.Codec<ListPosturesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     postures: Schema.optional(Schema.Array(Posture)),
@@ -473,7 +473,7 @@ export const ListPosturesResponse: Schema.Schema<ListPosturesResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -485,7 +485,7 @@ export interface AssetDetails {
   assetType?: string;
 }
 
-export const AssetDetails: Schema.Schema<AssetDetails> =
+export const AssetDetails: Schema.Codec<AssetDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     assetType: Schema.optional(Schema.String),
@@ -498,7 +498,7 @@ export interface ListPostureTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const ListPostureTemplatesResponse: Schema.Schema<ListPostureTemplatesResponse> =
+export const ListPostureTemplatesResponse: Schema.Codec<ListPostureTemplatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     postureTemplates: Schema.optional(Schema.Array(PostureTemplate)),
     nextPageToken: Schema.optional(Schema.String),
@@ -522,7 +522,7 @@ export interface PolicyDetails {
   complianceStandards?: ReadonlyArray<string>;
 }
 
-export const PolicyDetails: Schema.Schema<PolicyDetails> =
+export const PolicyDetails: Schema.Codec<PolicyDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     constraint: Schema.optional(Schema.String),
@@ -543,7 +543,7 @@ export interface PostureDetails {
   postureRevisionId?: string;
 }
 
-export const PostureDetails: Schema.Schema<PostureDetails> =
+export const PostureDetails: Schema.Codec<PostureDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policySet: Schema.optional(Schema.String),
     postureDeployment: Schema.optional(Schema.String),
@@ -575,7 +575,7 @@ export interface Violation {
   violatedPosture?: PostureDetails;
 }
 
-export const Violation: Schema.Schema<Violation> =
+export const Violation: Schema.Codec<Violation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyId: Schema.optional(Schema.String),
     violatedAsset: Schema.optional(AssetDetails),
@@ -593,7 +593,7 @@ export interface IaCValidationReport {
   violations?: ReadonlyArray<Violation>;
 }
 
-export const IaCValidationReport: Schema.Schema<IaCValidationReport> =
+export const IaCValidationReport: Schema.Codec<IaCValidationReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     note: Schema.optional(Schema.String),
     violations: Schema.optional(Schema.Array(Violation)),
@@ -612,7 +612,7 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -628,7 +628,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -645,7 +645,7 @@ export interface Report {
   iacValidationReport?: IaCValidationReport;
 }
 
-export const Report: Schema.Schema<Report> =
+export const Report: Schema.Codec<Report> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -662,7 +662,7 @@ export interface ListReportsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListReportsResponse: Schema.Schema<ListReportsResponse> =
+export const ListReportsResponse: Schema.Codec<ListReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(Report)),
     nextPageToken: Schema.optional(Schema.String),
@@ -678,7 +678,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -690,10 +690,11 @@ export interface IaC {
   tfPlan?: string;
 }
 
-export const IaC: Schema.Schema<IaC> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IaC: Schema.Codec<IaC> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     tfPlan: Schema.optional(Schema.String),
-  }).annotate({ identifier: "IaC" });
+  },
+).annotate({ identifier: "IaC" });
 
 export interface ListPostureRevisionsResponse {
   /** The list of revisions for the Posture. */
@@ -702,7 +703,7 @@ export interface ListPostureRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListPostureRevisionsResponse: Schema.Schema<ListPostureRevisionsResponse> =
+export const ListPostureRevisionsResponse: Schema.Codec<ListPostureRevisionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revisions: Schema.optional(Schema.Array(Posture)),
     nextPageToken: Schema.optional(Schema.String),
@@ -727,7 +728,7 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
@@ -783,7 +784,7 @@ export interface PostureDeployment {
   createTime?: string;
 }
 
-export const PostureDeployment: Schema.Schema<PostureDeployment> =
+export const PostureDeployment: Schema.Codec<PostureDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureMessage: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -811,7 +812,7 @@ export interface ListPostureDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListPostureDeploymentsResponse: Schema.Schema<ListPostureDeploymentsResponse> =
+export const ListPostureDeploymentsResponse: Schema.Codec<ListPostureDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     postureDeployments: Schema.optional(Schema.Array(PostureDeployment)),
@@ -825,7 +826,7 @@ export interface ExtractPostureRequest {
   postureId?: string;
 }
 
-export const ExtractPostureRequest: Schema.Schema<ExtractPostureRequest> =
+export const ExtractPostureRequest: Schema.Codec<ExtractPostureRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workload: Schema.optional(Schema.String),
     postureId: Schema.optional(Schema.String),
@@ -836,7 +837,7 @@ export interface CreateIaCValidationReportRequest {
   iac?: IaC;
 }
 
-export const CreateIaCValidationReportRequest: Schema.Schema<CreateIaCValidationReportRequest> =
+export const CreateIaCValidationReportRequest: Schema.Codec<CreateIaCValidationReportRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iac: Schema.optional(IaC),
   }).annotate({ identifier: "CreateIaCValidationReportRequest" });
@@ -906,7 +907,7 @@ export const GetOrganizationsLocationsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsReportsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsReportsRequest>;
 
 export type GetOrganizationsLocationsReportsResponse = Report;
 export const GetOrganizationsLocationsReportsResponse =
@@ -949,7 +950,7 @@ export const ListOrganizationsLocationsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/reports" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsReportsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsReportsRequest>;
 
 export type ListOrganizationsLocationsReportsResponse = ListReportsResponse;
 export const ListOrganizationsLocationsReportsResponse =
@@ -994,7 +995,7 @@ export const CreateIaCValidationReportOrganizationsLocationsReportsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateIaCValidationReportOrganizationsLocationsReportsRequest>;
+  ) as unknown as Schema.Codec<CreateIaCValidationReportOrganizationsLocationsReportsRequest>;
 
 export type CreateIaCValidationReportOrganizationsLocationsReportsResponse =
   Operation;
@@ -1034,7 +1035,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOrganizationsLocationsOperationsRequest>;
 
 export type CancelOrganizationsLocationsOperationsResponse = Empty;
 export const CancelOrganizationsLocationsOperationsResponse =
@@ -1084,7 +1085,7 @@ export const ListOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsOperationsRequest>;
 
 export type ListOrganizationsLocationsOperationsResponse =
   ListOperationsResponse;
@@ -1123,7 +1124,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsOperationsRequest>;
 
 export type DeleteOrganizationsLocationsOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsOperationsResponse =
@@ -1159,7 +1160,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsOperationsRequest>;
 
 export type GetOrganizationsLocationsOperationsResponse = Operation;
 export const GetOrganizationsLocationsOperationsResponse =
@@ -1202,7 +1203,7 @@ export const ListOrganizationsLocationsPosturesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/postures" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsPosturesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsPosturesRequest>;
 
 export type ListOrganizationsLocationsPosturesResponse = ListPosturesResponse;
 export const ListOrganizationsLocationsPosturesResponse =
@@ -1243,7 +1244,7 @@ export const DeleteOrganizationsLocationsPosturesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsPosturesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsPosturesRequest>;
 
 export type DeleteOrganizationsLocationsPosturesResponse = Operation;
 export const DeleteOrganizationsLocationsPosturesResponse =
@@ -1286,7 +1287,7 @@ export const ExtractOrganizationsLocationsPosturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExtractOrganizationsLocationsPosturesRequest>;
+  ) as unknown as Schema.Codec<ExtractOrganizationsLocationsPosturesRequest>;
 
 export type ExtractOrganizationsLocationsPosturesResponse = Operation;
 export const ExtractOrganizationsLocationsPosturesResponse =
@@ -1325,7 +1326,7 @@ export const GetOrganizationsLocationsPosturesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsPosturesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsPosturesRequest>;
 
 export type GetOrganizationsLocationsPosturesResponse = Posture;
 export const GetOrganizationsLocationsPosturesResponse =
@@ -1365,7 +1366,7 @@ export const CreateOrganizationsLocationsPosturesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/postures", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsPosturesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsPosturesRequest>;
 
 export type CreateOrganizationsLocationsPosturesResponse = Operation;
 export const CreateOrganizationsLocationsPosturesResponse =
@@ -1410,7 +1411,7 @@ export const PatchOrganizationsLocationsPosturesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsPosturesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsPosturesRequest>;
 
 export type PatchOrganizationsLocationsPosturesResponse = Operation;
 export const PatchOrganizationsLocationsPosturesResponse =
@@ -1452,7 +1453,7 @@ export const ListRevisionsOrganizationsLocationsPosturesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
     svc,
-  ) as unknown as Schema.Schema<ListRevisionsOrganizationsLocationsPosturesRequest>;
+  ) as unknown as Schema.Codec<ListRevisionsOrganizationsLocationsPosturesRequest>;
 
 export type ListRevisionsOrganizationsLocationsPosturesResponse =
   ListPostureRevisionsResponse;
@@ -1500,7 +1501,7 @@ export const ListOrganizationsLocationsPostureDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/postureDeployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsPostureDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsPostureDeploymentsRequest>;
 
 export type ListOrganizationsLocationsPostureDeploymentsResponse =
   ListPostureDeploymentsResponse;
@@ -1542,7 +1543,7 @@ export const DeleteOrganizationsLocationsPostureDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsPostureDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsPostureDeploymentsRequest>;
 
 export type DeleteOrganizationsLocationsPostureDeploymentsResponse = Operation;
 export const DeleteOrganizationsLocationsPostureDeploymentsResponse =
@@ -1578,7 +1579,7 @@ export const GetOrganizationsLocationsPostureDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsPostureDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsPostureDeploymentsRequest>;
 
 export type GetOrganizationsLocationsPostureDeploymentsResponse =
   PostureDeployment;
@@ -1625,7 +1626,7 @@ export const CreateOrganizationsLocationsPostureDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsPostureDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsPostureDeploymentsRequest>;
 
 export type CreateOrganizationsLocationsPostureDeploymentsResponse = Operation;
 export const CreateOrganizationsLocationsPostureDeploymentsResponse =
@@ -1667,7 +1668,7 @@ export const PatchOrganizationsLocationsPostureDeploymentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsPostureDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsPostureDeploymentsRequest>;
 
 export type PatchOrganizationsLocationsPostureDeploymentsResponse = Operation;
 export const PatchOrganizationsLocationsPostureDeploymentsResponse =
@@ -1712,7 +1713,7 @@ export const ListOrganizationsLocationsPostureTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/postureTemplates" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsPostureTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsPostureTemplatesRequest>;
 
 export type ListOrganizationsLocationsPostureTemplatesResponse =
   ListPostureTemplatesResponse;
@@ -1754,7 +1755,7 @@ export const GetOrganizationsLocationsPostureTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsPostureTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsPostureTemplatesRequest>;
 
 export type GetOrganizationsLocationsPostureTemplatesResponse = PostureTemplate;
 export const GetOrganizationsLocationsPostureTemplatesResponse =
@@ -1802,7 +1803,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1837,7 +1838,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =

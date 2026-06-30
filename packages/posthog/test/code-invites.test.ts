@@ -39,10 +39,13 @@ describe("CodeInvites", () => {
       "error - Forbidden when the API key lacks Code access",
       () =>
         CodeInvites.codeInvitesCheckAccessRetrieve({}).pipe(
-          Effect.provideService(Credentials, {
-            apiKey: process.env.POSTHOG_NO_CODE_ACCESS_API_KEY!,
-            apiBaseUrl: process.env.POSTHOG_HOST ?? DEFAULT_API_BASE_URL,
-          }),
+          Effect.provideService(
+            Credentials,
+            Effect.succeed({
+              apiKey: process.env.POSTHOG_NO_CODE_ACCESS_API_KEY!,
+              apiBaseUrl: process.env.POSTHOG_HOST ?? DEFAULT_API_BASE_URL,
+            }),
+          ),
           Effect.flip,
           Effect.map((e) => expect(e._tag).toBe("Forbidden")),
         ),
@@ -104,10 +107,13 @@ describe("CodeInvites", () => {
         CodeInvites.codeInvitesRedeemCreate({
           code: `not-a-real-code-${testRunId}`,
         }).pipe(
-          Effect.provideService(Credentials, {
-            apiKey: process.env.POSTHOG_NO_CODE_ACCESS_API_KEY!,
-            apiBaseUrl: process.env.POSTHOG_HOST ?? DEFAULT_API_BASE_URL,
-          }),
+          Effect.provideService(
+            Credentials,
+            Effect.succeed({
+              apiKey: process.env.POSTHOG_NO_CODE_ACCESS_API_KEY!,
+              apiBaseUrl: process.env.POSTHOG_HOST ?? DEFAULT_API_BASE_URL,
+            }),
+          ),
           Effect.flip,
           Effect.map((e) => expect(e._tag).toBe("Forbidden")),
         ),

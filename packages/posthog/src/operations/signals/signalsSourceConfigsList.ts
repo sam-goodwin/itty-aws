@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsSourceConfigsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const SignalsSourceConfigsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,50 @@ export const SignalsSourceConfigsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/source_configs/",
     }),
-  );
-export type SignalsSourceConfigsListInput =
-  typeof SignalsSourceConfigsListInput.Type;
+  ) as unknown as Schema.Codec<SignalsSourceConfigsListInput>;
 
 // Output Schema
+export interface SignalsSourceConfigsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    source_product?:
+      | "session_replay"
+      | "llm_analytics"
+      | "github"
+      | "linear"
+      | "zendesk"
+      | "conversations"
+      | "error_tracking"
+      | "pganalyze"
+      | "signals_scout"
+      | "logs"
+      | "health_checks"
+      | "endpoints"
+      | "replay_vision";
+    source_type?:
+      | "session_analysis_cluster"
+      | "evaluation"
+      | "issue"
+      | "ticket"
+      | "issue_created"
+      | "issue_reopened"
+      | "issue_spiking"
+      | "cross_source_issue"
+      | "alert_state_change"
+      | "health_issue"
+      | "endpoint_execution_failed"
+      | "endpoint_breakdown_limit_exceeded"
+      | "scanner_finding";
+    enabled?: boolean;
+    config?: unknown;
+    created_at?: string;
+    updated_at?: string;
+    status?: string | null;
+  }[];
+}
 export const SignalsSourceConfigsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -70,9 +114,7 @@ export const SignalsSourceConfigsListOutput =
         }),
       ),
     ),
-  });
-export type SignalsSourceConfigsListOutput =
-  typeof SignalsSourceConfigsListOutput.Type;
+  }) as unknown as Schema.Codec<SignalsSourceConfigsListOutput>;
 
 // The operation
 /**

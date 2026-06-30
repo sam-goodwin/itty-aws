@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsStreamRetrieveInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  start?: string;
+}
 export const TasksRunsStreamRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const TasksRunsStreamRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/stream/",
     }),
-  );
-export type TasksRunsStreamRetrieveInput =
-  typeof TasksRunsStreamRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsStreamRetrieveInput>;
 
 // Output Schema
+export type TasksRunsStreamRetrieveOutput = void;
 export const TasksRunsStreamRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TasksRunsStreamRetrieveOutput =
-  typeof TasksRunsStreamRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksRunsStreamRetrieveOutput>;
 
 // The operation
 /**

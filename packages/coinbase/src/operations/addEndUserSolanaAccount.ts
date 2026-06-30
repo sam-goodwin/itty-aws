@@ -3,23 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AddEndUserSolanaAccountInput {
+  userId: string;
+}
 export const AddEndUserSolanaAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "POST", path: "/v2/end-users/{userId}/solana" }));
-export type AddEndUserSolanaAccountInput =
-  typeof AddEndUserSolanaAccountInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/end-users/{userId}/solana" }),
+  ) as unknown as Schema.Codec<AddEndUserSolanaAccountInput>;
 
 // Output Schema
+export interface AddEndUserSolanaAccountOutput {
+  solanaAccount: { address: string; createdAt: string };
+}
 export const AddEndUserSolanaAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solanaAccount: Schema.Struct({
       address: Schema.String,
       createdAt: Schema.String,
     }),
-  });
-export type AddEndUserSolanaAccountOutput =
-  typeof AddEndUserSolanaAccountOutput.Type;
+  }) as unknown as Schema.Codec<AddEndUserSolanaAccountOutput>;
 
 // The operation
 /**

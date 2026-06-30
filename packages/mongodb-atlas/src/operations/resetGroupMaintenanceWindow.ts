@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ResetGroupMaintenanceWindowInput {
+  groupId: string;
+  envelope?: boolean;
+}
 export const ResetGroupMaintenanceWindowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ResetGroupMaintenanceWindowInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow",
     }),
-  );
-export type ResetGroupMaintenanceWindowInput =
-  typeof ResetGroupMaintenanceWindowInput.Type;
+  ) as unknown as Schema.Codec<ResetGroupMaintenanceWindowInput>;
 
 // Output Schema
+export type ResetGroupMaintenanceWindowOutput = void;
 export const ResetGroupMaintenanceWindowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResetGroupMaintenanceWindowOutput =
-  typeof ResetGroupMaintenanceWindowOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResetGroupMaintenanceWindowOutput>;
 
 // The operation
 /**

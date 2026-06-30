@@ -4,22 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteConversationModelInput {
+  modelId: string;
+}
 export const DeleteConversationModelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/conversations/models/{modelId}" }),
-  );
-export type DeleteConversationModelInput =
-  typeof DeleteConversationModelInput.Type;
+  ) as unknown as Schema.Codec<DeleteConversationModelInput>;
 
 // Output Schema
+export interface DeleteConversationModelOutput {
+  id: string;
+}
 export const DeleteConversationModelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type DeleteConversationModelOutput =
-  typeof DeleteConversationModelOutput.Type;
+  }) as unknown as Schema.Codec<DeleteConversationModelOutput>;
 
 // The operation
 /**

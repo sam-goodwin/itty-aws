@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetTrafficBudgetInput {
+  organization: string;
+  database: string;
+  branch: string;
+  id: string;
+}
 export const GetTrafficBudgetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,38 @@ export const GetTrafficBudgetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{id}",
   }),
-);
-export type GetTrafficBudgetInput = typeof GetTrafficBudgetInput.Type;
+) as unknown as Schema.Codec<GetTrafficBudgetInput>;
 
 // Output Schema
+export interface GetTrafficBudgetOutput {
+  id: string;
+  name: string;
+  mode: "enforce" | "warn" | "off";
+  capacity?: number | null;
+  rate?: number | null;
+  burst?: number | null;
+  concurrency?: number | null;
+  warning_threshold?: number | null;
+  actor: { id: string; display_name: string; avatar_url: string };
+  rules: {
+    id: string;
+    kind: "match" | "each";
+    tags: {
+      key_id: string;
+      key: string;
+      value: string;
+      source: "sql" | "system";
+    }[];
+    fingerprint?: string | null;
+    keyspace?: string | null;
+    actor: { id: string; display_name: string; avatar_url: string };
+    syntax_highlighted_sql: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  created_at: string;
+  updated_at: string;
+}
 export const GetTrafficBudgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
@@ -60,8 +94,7 @@ export const GetTrafficBudgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     created_at: Schema.String,
     updated_at: Schema.String,
   },
-);
-export type GetTrafficBudgetOutput = typeof GetTrafficBudgetOutput.Type;
+) as unknown as Schema.Codec<GetTrafficBudgetOutput>;
 
 // The operation
 /**

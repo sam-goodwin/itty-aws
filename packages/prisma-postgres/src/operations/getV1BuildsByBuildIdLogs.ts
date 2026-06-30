@@ -4,20 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1BuildsByBuildIdLogsInput {
+  buildId: string;
+  follow?: "true" | "false";
+  cursor?: string;
+}
 export const GetV1BuildsByBuildIdLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buildId: Schema.String.pipe(T.PathParam()),
     follow: Schema.optional(Schema.Literals(["true", "false"])),
     cursor: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v1/builds/{buildId}/logs" }));
-export type GetV1BuildsByBuildIdLogsInput =
-  typeof GetV1BuildsByBuildIdLogsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/builds/{buildId}/logs" }),
+  ) as unknown as Schema.Codec<GetV1BuildsByBuildIdLogsInput>;
 
 // Output Schema
+export type GetV1BuildsByBuildIdLogsOutput = void;
 export const GetV1BuildsByBuildIdLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetV1BuildsByBuildIdLogsOutput =
-  typeof GetV1BuildsByBuildIdLogsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetV1BuildsByBuildIdLogsOutput>;
 
 // The operation
 /**

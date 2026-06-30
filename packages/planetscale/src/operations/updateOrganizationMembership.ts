@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateOrganizationMembershipInput {
+  organization: string;
+  id: string;
+  role: string;
+}
 export const UpdateOrganizationMembershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,36 @@ export const UpdateOrganizationMembershipInput =
       method: "PATCH",
       path: "/organizations/{organization}/members/{id}",
     }),
-  );
-export type UpdateOrganizationMembershipInput =
-  typeof UpdateOrganizationMembershipInput.Type;
+  ) as unknown as Schema.Codec<UpdateOrganizationMembershipInput>;
 
 // Output Schema
+export interface UpdateOrganizationMembershipOutput {
+  id: string;
+  user: {
+    id: string;
+    display_name: string;
+    name?: string | null;
+    email: string;
+    avatar_url: string;
+    created_at: string;
+    updated_at: string;
+    two_factor_auth_configured: boolean;
+    default_organization?: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    } | null;
+    sso?: boolean | null;
+    managed?: boolean | null;
+    directory_managed?: boolean | null;
+    email_verified?: boolean | null;
+  };
+  role: "member" | "admin";
+  created_at: string;
+  updated_at: string;
+}
 export const UpdateOrganizationMembershipOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -50,9 +80,7 @@ export const UpdateOrganizationMembershipOutput =
     role: Schema.Literals(["member", "admin"]),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type UpdateOrganizationMembershipOutput =
-  typeof UpdateOrganizationMembershipOutput.Type;
+  }) as unknown as Schema.Codec<UpdateOrganizationMembershipOutput>;
 
 // The operation
 /**

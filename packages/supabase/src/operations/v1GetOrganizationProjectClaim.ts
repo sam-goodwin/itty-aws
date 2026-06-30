@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetOrganizationProjectClaimInput {
+  slug: string;
+  token: string;
+}
 export const V1GetOrganizationProjectClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,35 @@ export const V1GetOrganizationProjectClaimInput =
       method: "GET",
       path: "/v1/organizations/{slug}/project-claim/{token}",
     }),
-  );
-export type V1GetOrganizationProjectClaimInput =
-  typeof V1GetOrganizationProjectClaimInput.Type;
+  ) as unknown as Schema.Codec<V1GetOrganizationProjectClaimInput>;
 
 // Output Schema
+export interface V1GetOrganizationProjectClaimOutput {
+  project: { ref: string; name: string };
+  preview: {
+    valid: boolean;
+    warnings: { key: string; message: string }[];
+    errors: { key: string; message: string }[];
+    info: { key: string; message: string }[];
+    members_exceeding_free_project_limit: { name: string; limit: number }[];
+    source_subscription_plan:
+      | "free"
+      | "pro"
+      | "team"
+      | "enterprise"
+      | "platform";
+    target_subscription_plan:
+      | "free"
+      | "pro"
+      | "team"
+      | "enterprise"
+      | "platform"
+      | null;
+  };
+  expires_at: string;
+  created_at: string;
+  created_by: string;
+}
 export const V1GetOrganizationProjectClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.Struct({
@@ -64,9 +92,7 @@ export const V1GetOrganizationProjectClaimOutput =
     expires_at: Schema.String,
     created_at: Schema.String,
     created_by: Schema.String,
-  });
-export type V1GetOrganizationProjectClaimOutput =
-  typeof V1GetOrganizationProjectClaimOutput.Type;
+  }) as unknown as Schema.Codec<V1GetOrganizationProjectClaimOutput>;
 
 // The operation
 /**

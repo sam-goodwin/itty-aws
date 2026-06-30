@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSymbolSetsDownloadRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingSymbolSetsDownloadRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,17 +17,16 @@ export const ErrorTrackingSymbolSetsDownloadRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/symbol_sets/{id}/download/",
     }),
-  );
-export type ErrorTrackingSymbolSetsDownloadRetrieveInput =
-  typeof ErrorTrackingSymbolSetsDownloadRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSymbolSetsDownloadRetrieveInput>;
 
 // Output Schema
+export interface ErrorTrackingSymbolSetsDownloadRetrieveOutput {
+  url?: string;
+}
 export const ErrorTrackingSymbolSetsDownloadRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingSymbolSetsDownloadRetrieveOutput =
-  typeof ErrorTrackingSymbolSetsDownloadRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSymbolSetsDownloadRetrieveOutput>;
 
 // The operation
 /**

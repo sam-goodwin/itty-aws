@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AssignOrganizationVPCEndpointInput {
+  org_id: string;
+  region_id: string;
+  vpc_endpoint_id: string;
+  label: string;
+}
 export const AssignOrganizationVPCEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +20,12 @@ export const AssignOrganizationVPCEndpointInput =
       method: "POST",
       path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}",
     }),
-  );
-export type AssignOrganizationVPCEndpointInput =
-  typeof AssignOrganizationVPCEndpointInput.Type;
+  ) as unknown as Schema.Codec<AssignOrganizationVPCEndpointInput>;
 
 // Output Schema
+export type AssignOrganizationVPCEndpointOutput = void;
 export const AssignOrganizationVPCEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AssignOrganizationVPCEndpointOutput =
-  typeof AssignOrganizationVPCEndpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssignOrganizationVPCEndpointOutput>;
 
 // The operation
 /**

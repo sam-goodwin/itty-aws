@@ -4,14 +4,52 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1DatabasesByDatabaseIdInput {
+  databaseId: string;
+}
 export const GetV1DatabasesByDatabaseIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/databases/{databaseId}" }));
-export type GetV1DatabasesByDatabaseIdInput =
-  typeof GetV1DatabasesByDatabaseIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/databases/{databaseId}" }),
+  ) as unknown as Schema.Codec<GetV1DatabasesByDatabaseIdInput>;
 
 // Output Schema
+export interface GetV1DatabasesByDatabaseIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    status: "failure" | "provisioning" | "ready" | "recovering";
+    createdAt: string;
+    isDefault: boolean;
+    defaultConnectionId: string | null;
+    connections: {
+      id: string;
+      type: string;
+      url: string;
+      name: string;
+      createdAt: string;
+      kind: "postgres" | "accelerate";
+      endpoints: {
+        direct?: { host: string; port: number };
+        pooled?: { host: string; port: number };
+        accelerate?: { host: string; port: number };
+      };
+      directConnection?: { host: string; pass: string; user: string } | null;
+      database: { id: string; url: string; name: string };
+    }[];
+    project: { id: string; url: string; name: string };
+    region: { id: string; name: string } | null;
+    source:
+      | { type: string }
+      | { type: string; databaseId: string; backupId: string }
+      | { type: string; databaseId: string }
+      | null;
+    branchId: string | null;
+  };
+}
 export const GetV1DatabasesByDatabaseIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -83,12 +121,25 @@ export const GetV1DatabasesByDatabaseIdOutput =
           name: Schema.String,
         }),
       ),
-      source: Schema.Unknown,
+      source: Schema.NullOr(
+        Schema.Union([
+          Schema.Struct({
+            type: Schema.String,
+          }),
+          Schema.Struct({
+            type: Schema.String,
+            databaseId: Schema.String,
+            backupId: Schema.String,
+          }),
+          Schema.Struct({
+            type: Schema.String,
+            databaseId: Schema.String,
+          }),
+        ]),
+      ),
       branchId: Schema.NullOr(Schema.String),
     }),
-  });
-export type GetV1DatabasesByDatabaseIdOutput =
-  typeof GetV1DatabasesByDatabaseIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1DatabasesByDatabaseIdOutput>;
 
 // The operation
 /**

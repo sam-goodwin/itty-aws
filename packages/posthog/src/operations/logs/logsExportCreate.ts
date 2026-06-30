@@ -4,19 +4,21 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsExportCreateInput {
+  project_id: string;
+}
 export const LogsExportCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/logs/export/" }),
-);
-export type LogsExportCreateInput = typeof LogsExportCreateInput.Type;
+) as unknown as Schema.Codec<LogsExportCreateInput>;
 
 // Output Schema
+export type LogsExportCreateOutput = Record<string, unknown>;
 export const LogsExportCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
   Schema.String,
   Schema.Unknown,
-);
-export type LogsExportCreateOutput = typeof LogsExportCreateOutput.Type;
+) as unknown as Schema.Codec<LogsExportCreateOutput>;
 
 // The operation
 /**

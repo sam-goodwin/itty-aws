@@ -3,21 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AddEndUserEvmAccountInput {
+  userId: string;
+}
 export const AddEndUserEvmAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "POST", path: "/v2/end-users/{userId}/evm" }));
-export type AddEndUserEvmAccountInput = typeof AddEndUserEvmAccountInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/end-users/{userId}/evm" }),
+  ) as unknown as Schema.Codec<AddEndUserEvmAccountInput>;
 
 // Output Schema
+export interface AddEndUserEvmAccountOutput {
+  evmAccount: { address: string; createdAt: string };
+}
 export const AddEndUserEvmAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evmAccount: Schema.Struct({
       address: Schema.String,
       createdAt: Schema.String,
     }),
-  });
-export type AddEndUserEvmAccountOutput = typeof AddEndUserEvmAccountOutput.Type;
+  }) as unknown as Schema.Codec<AddEndUserEvmAccountOutput>;
 
 // The operation
 /**

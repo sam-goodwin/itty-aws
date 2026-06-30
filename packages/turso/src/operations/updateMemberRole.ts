@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateMemberRoleInput {
+  organizationSlug: string;
+  username: string;
+  role: "admin" | "member" | "viewer";
+}
 export const UpdateMemberRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   username: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,16 @@ export const UpdateMemberRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/v1/organizations/{organizationSlug}/members/{username}",
   }),
-);
-export type UpdateMemberRoleInput = typeof UpdateMemberRoleInput.Type;
+) as unknown as Schema.Codec<UpdateMemberRoleInput>;
 
 // Output Schema
+export interface UpdateMemberRoleOutput {
+  member?: {
+    username?: string;
+    email?: string;
+    role?: "admin" | "member" | "viewer";
+  };
+}
 export const UpdateMemberRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     member: Schema.optional(
@@ -27,8 +38,7 @@ export const UpdateMemberRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type UpdateMemberRoleOutput = typeof UpdateMemberRoleOutput.Type;
+) as unknown as Schema.Codec<UpdateMemberRoleOutput>;
 
 // The operation
 /**

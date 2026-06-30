@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface FileShareGetLimitsInput {
+  subscriptionId: string;
+  location: string;
+}
 export const FileShareGetLimitsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19,10 +23,33 @@ export const FileShareGetLimitsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getLimits",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileShareGetLimitsInput = typeof FileShareGetLimitsInput.Type;
+  ) as unknown as Schema.Codec<FileShareGetLimitsInput>;
 
 // Output Schema
+export interface FileShareGetLimitsOutput {
+  properties: {
+    limits: {
+      maxFileShares: number;
+      maxFileShareSnapshots: number;
+      maxFileShareSubnets: number;
+      maxFileSharePrivateEndpointConnections: number;
+      minProvisionedStorageGiB: number;
+      maxProvisionedStorageGiB: number;
+      minProvisionedIOPerSec: number;
+      maxProvisionedIOPerSec: number;
+      minProvisionedThroughputMiBPerSec: number;
+      maxProvisionedThroughputMiBPerSec: number;
+    };
+    provisioningConstants: {
+      baseIOPerSec: number;
+      scalarIOPerSec: number;
+      baseThroughputMiBPerSec: number;
+      scalarThroughputMiBPerSec: number;
+      guardrailIOPerSecScalar: number;
+      guardrailThroughputScalar: number;
+    };
+  };
+}
 export const FileShareGetLimitsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -47,8 +74,7 @@ export const FileShareGetLimitsOutput =
         guardrailThroughputScalar: Schema.Number,
       }),
     }),
-  });
-export type FileShareGetLimitsOutput = typeof FileShareGetLimitsOutput.Type;
+  }) as unknown as Schema.Codec<FileShareGetLimitsOutput>;
 
 // The operation
 /**
@@ -63,6 +89,11 @@ export const FileShareGetLimits = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileShareGetLimitsOutput,
 }));
 // Input Schema
+export interface FileShareGetProvisioningRecommendationInput {
+  subscriptionId: string;
+  location: string;
+  properties: { provisionedStorageGiB: number };
+}
 export const FileShareGetProvisioningRecommendationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -76,11 +107,16 @@ export const FileShareGetProvisioningRecommendationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getProvisioningRecommendation",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileShareGetProvisioningRecommendationInput =
-  typeof FileShareGetProvisioningRecommendationInput.Type;
+  ) as unknown as Schema.Codec<FileShareGetProvisioningRecommendationInput>;
 
 // Output Schema
+export interface FileShareGetProvisioningRecommendationOutput {
+  properties: {
+    provisionedIOPerSec: number;
+    provisionedThroughputMiBPerSec: number;
+    availableRedundancyOptions: ("Local" | "Zone")[];
+  };
+}
 export const FileShareGetProvisioningRecommendationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -90,9 +126,7 @@ export const FileShareGetProvisioningRecommendationOutput =
         Schema.Literals(["Local", "Zone"]),
       ),
     }),
-  });
-export type FileShareGetProvisioningRecommendationOutput =
-  typeof FileShareGetProvisioningRecommendationOutput.Type;
+  }) as unknown as Schema.Codec<FileShareGetProvisioningRecommendationOutput>;
 
 // The operation
 /**
@@ -108,6 +142,10 @@ export const FileShareGetProvisioningRecommendation =
     outputSchema: FileShareGetProvisioningRecommendationOutput,
   }));
 // Input Schema
+export interface FileShareGetUsageDataInput {
+  subscriptionId: string;
+  location: string;
+}
 export const FileShareGetUsageDataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -118,10 +156,12 @@ export const FileShareGetUsageDataInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getUsageData",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileShareGetUsageDataInput = typeof FileShareGetUsageDataInput.Type;
+  ) as unknown as Schema.Codec<FileShareGetUsageDataInput>;
 
 // Output Schema
+export interface FileShareGetUsageDataOutput {
+  properties: { liveShares: { fileShareCount: number } };
+}
 export const FileShareGetUsageDataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -129,9 +169,7 @@ export const FileShareGetUsageDataOutput =
         fileShareCount: Schema.Number,
       }),
     }),
-  });
-export type FileShareGetUsageDataOutput =
-  typeof FileShareGetUsageDataOutput.Type;
+  }) as unknown as Schema.Codec<FileShareGetUsageDataOutput>;
 
 // The operation
 /**
@@ -148,6 +186,12 @@ export const FileShareGetUsageData = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FileSharesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  name?: string;
+  type?: string;
+}
 export const FileSharesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -160,19 +204,20 @@ export const FileSharesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/checkNameAvailability",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileSharesCheckNameAvailabilityInput =
-  typeof FileSharesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<FileSharesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface FileSharesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const FileSharesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type FileSharesCheckNameAvailabilityOutput =
-  typeof FileSharesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<FileSharesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -190,6 +235,60 @@ export const FileSharesCheckNameAvailability =
     outputSchema: FileSharesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface FileSharesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    mountName?: string;
+    hostName?: string;
+    mediaTier?: "SSD";
+    redundancy?: "Local" | "Zone";
+    protocol?: "NFS";
+    provisionedStorageGiB?: number;
+    provisionedStorageNextAllowedDowngrade?: string;
+    provisionedIOPerSec?: number;
+    provisionedIOPerSecNextAllowedDowngrade?: string;
+    provisionedThroughputMiBPerSec?: number;
+    provisionedThroughputNextAllowedDowngrade?: string;
+    includedBurstIOPerSec?: number;
+    maxBurstIOPerSecCredits?: number;
+    nfsProtocolProperties?: {
+      rootSquash?: "NoRootSquash" | "RootSquash" | "AllSquash";
+      encryptionInTransitRequired?: "Enabled" | "Disabled";
+    };
+    publicAccessProperties?: { allowedSubnets?: string[] };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created"
+      | "TransientFailure"
+      | "Creating"
+      | "Patching"
+      | "Posting";
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const FileSharesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -289,11 +388,22 @@ export const FileSharesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileSharesCreateOrUpdateInput =
-  typeof FileSharesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FileSharesCreateOrUpdateInput>;
 
 // Output Schema
+export interface FileSharesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileSharesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -313,9 +423,7 @@ export const FileSharesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FileSharesCreateOrUpdateOutput =
-  typeof FileSharesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FileSharesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -333,6 +441,11 @@ export const FileSharesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FileSharesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -343,12 +456,12 @@ export const FileSharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
     apiVersion: "2026-06-01",
   }),
-);
-export type FileSharesDeleteInput = typeof FileSharesDeleteInput.Type;
+) as unknown as Schema.Codec<FileSharesDeleteInput>;
 
 // Output Schema
-export const FileSharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileSharesDeleteOutput = typeof FileSharesDeleteOutput.Type;
+export type FileSharesDeleteOutput = void;
+export const FileSharesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileSharesDeleteOutput>;
 
 // The operation
 /**
@@ -364,6 +477,11 @@ export const FileSharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesDeleteOutput,
 }));
 // Input Schema
+export interface FileSharesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -374,10 +492,22 @@ export const FileSharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
     apiVersion: "2026-06-01",
   }),
-);
-export type FileSharesGetInput = typeof FileSharesGetInput.Type;
+) as unknown as Schema.Codec<FileSharesGetInput>;
 
 // Output Schema
+export interface FileSharesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -396,8 +526,7 @@ export const FileSharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FileSharesGetOutput = typeof FileSharesGetOutput.Type;
+}) as unknown as Schema.Codec<FileSharesGetOutput>;
 
 // The operation
 /**
@@ -413,6 +542,10 @@ export const FileSharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesGetOutput,
 }));
 // Input Schema
+export interface FileSharesListByParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const FileSharesListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -423,11 +556,25 @@ export const FileSharesListByParentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileSharesListByParentInput =
-  typeof FileSharesListByParentInput.Type;
+  ) as unknown as Schema.Codec<FileSharesListByParentInput>;
 
 // Output Schema
+export interface FileSharesListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FileSharesListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -462,9 +609,7 @@ export const FileSharesListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FileSharesListByParentOutput =
-  typeof FileSharesListByParentOutput.Type;
+  }) as unknown as Schema.Codec<FileSharesListByParentOutput>;
 
 // The operation
 /**
@@ -481,6 +626,9 @@ export const FileSharesListByParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FileSharesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const FileSharesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -490,11 +638,25 @@ export const FileSharesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/fileShares",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileSharesListBySubscriptionInput =
-  typeof FileSharesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<FileSharesListBySubscriptionInput>;
 
 // Output Schema
+export interface FileSharesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FileSharesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -529,9 +691,7 @@ export const FileSharesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FileSharesListBySubscriptionOutput =
-  typeof FileSharesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<FileSharesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -546,6 +706,17 @@ export const FileSharesListBySubscription =
     outputSchema: FileSharesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface FileShareSnapshotCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+  properties?: {
+    snapshotTime?: string;
+    initiatorId?: string;
+    metadata?: Record<string, string>;
+  };
+}
 export const FileShareSnapshotCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -565,15 +736,12 @@ export const FileShareSnapshotCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileShareSnapshotCreateOrUpdateInput =
-  typeof FileShareSnapshotCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FileShareSnapshotCreateOrUpdateInput>;
 
 // Output Schema
+export type FileShareSnapshotCreateOrUpdateOutput = void;
 export const FileShareSnapshotCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileShareSnapshotCreateOrUpdateOutput =
-  typeof FileShareSnapshotCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileShareSnapshotCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -591,6 +759,12 @@ export const FileShareSnapshotCreateOrUpdate =
     outputSchema: FileShareSnapshotCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FileShareSnapshotDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+}
 export const FileShareSnapshotDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -603,15 +777,12 @@ export const FileShareSnapshotDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileShareSnapshotDeleteInput =
-  typeof FileShareSnapshotDeleteInput.Type;
+  ) as unknown as Schema.Codec<FileShareSnapshotDeleteInput>;
 
 // Output Schema
+export type FileShareSnapshotDeleteOutput = void;
 export const FileShareSnapshotDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileShareSnapshotDeleteOutput =
-  typeof FileShareSnapshotDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileShareSnapshotDeleteOutput>;
 
 // The operation
 /**
@@ -630,6 +801,12 @@ export const FileShareSnapshotDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FileShareSnapshotGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+}
 export const FileShareSnapshotGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -642,10 +819,22 @@ export const FileShareSnapshotGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileShareSnapshotGetInput = typeof FileShareSnapshotGetInput.Type;
+  ) as unknown as Schema.Codec<FileShareSnapshotGetInput>;
 
 // Output Schema
+export interface FileShareSnapshotGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileShareSnapshotGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -665,8 +854,7 @@ export const FileShareSnapshotGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FileShareSnapshotGetOutput = typeof FileShareSnapshotGetOutput.Type;
+  }) as unknown as Schema.Codec<FileShareSnapshotGetOutput>;
 
 // The operation
 /**
@@ -685,6 +873,11 @@ export const FileShareSnapshotGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FileShareSnapshotListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const FileShareSnapshotListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -696,10 +889,25 @@ export const FileShareSnapshotListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileShareSnapshotListInput = typeof FileShareSnapshotListInput.Type;
+  ) as unknown as Schema.Codec<FileShareSnapshotListInput>;
 
 // Output Schema
+export interface FileShareSnapshotListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FileShareSnapshotListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -734,9 +942,7 @@ export const FileShareSnapshotListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FileShareSnapshotListOutput =
-  typeof FileShareSnapshotListOutput.Type;
+  }) as unknown as Schema.Codec<FileShareSnapshotListOutput>;
 
 // The operation
 /**
@@ -754,6 +960,13 @@ export const FileShareSnapshotList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FileShareSnapshotUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+  properties?: { metadata?: Record<string, string> };
+}
 export const FileShareSnapshotUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -771,11 +984,22 @@ export const FileShareSnapshotUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FileShareSnapshotUpdateInput =
-  typeof FileShareSnapshotUpdateInput.Type;
+  ) as unknown as Schema.Codec<FileShareSnapshotUpdateInput>;
 
 // Output Schema
+export interface FileShareSnapshotUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileShareSnapshotUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -795,9 +1019,7 @@ export const FileShareSnapshotUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FileShareSnapshotUpdateOutput =
-  typeof FileShareSnapshotUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FileShareSnapshotUpdateOutput>;
 
 // The operation
 /**
@@ -816,6 +1038,23 @@ export const FileShareSnapshotUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FileSharesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    provisionedStorageGiB?: number;
+    provisionedIOPerSec?: number;
+    provisionedThroughputMiBPerSec?: number;
+    nfsProtocolProperties?: {
+      rootSquash?: "NoRootSquash" | "RootSquash" | "AllSquash";
+      encryptionInTransitRequired?: "Enabled" | "Disabled";
+    };
+    publicAccessProperties?: { allowedSubnets?: string[] };
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+}
 export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -852,10 +1091,22 @@ export const FileSharesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
     apiVersion: "2026-06-01",
   }),
-);
-export type FileSharesUpdateInput = typeof FileSharesUpdateInput.Type;
+) as unknown as Schema.Codec<FileSharesUpdateInput>;
 
 // Output Schema
+export interface FileSharesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -876,8 +1127,7 @@ export const FileSharesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type FileSharesUpdateOutput = typeof FileSharesUpdateOutput.Type;
+) as unknown as Schema.Codec<FileSharesUpdateOutput>;
 
 // The operation
 /**
@@ -893,6 +1143,7 @@ export const FileSharesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FileSharesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -901,10 +1152,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.FileShares/operations",
     apiVersion: "2026-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -927,8 +1192,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -941,6 +1205,33 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -990,11 +1281,22 @@ export const PrivateEndpointConnectionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateInput =
-  typeof PrivateEndpointConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1014,9 +1316,7 @@ export const PrivateEndpointConnectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOutput =
-  typeof PrivateEndpointConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -1035,6 +1335,12 @@ export const PrivateEndpointConnectionsCreate =
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1047,15 +1353,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1073,6 +1376,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1085,11 +1394,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1109,9 +1429,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1129,6 +1447,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByFileShareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsListByFileShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1140,11 +1463,25 @@ export const PrivateEndpointConnectionsListByFileShareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/privateEndpointConnections",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsListByFileShareInput =
-  typeof PrivateEndpointConnectionsListByFileShareInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByFileShareInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByFileShareOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByFileShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1179,9 +1516,7 @@ export const PrivateEndpointConnectionsListByFileShareOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByFileShareOutput =
-  typeof PrivateEndpointConnectionsListByFileShareOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByFileShareOutput>;
 
 // The operation
 /**
@@ -1198,6 +1533,12 @@ export const PrivateEndpointConnectionsListByFileShare =
     outputSchema: PrivateEndpointConnectionsListByFileShareOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1210,11 +1551,22 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1234,9 +1586,7 @@ export const PrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -1255,6 +1605,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1266,11 +1621,25 @@ export const PrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/privateLinkResources",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1305,9 +1674,7 @@ export const PrivateLinkResourcesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**

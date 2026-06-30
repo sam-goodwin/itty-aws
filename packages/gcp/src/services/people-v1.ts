@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface ProfileMetadata {
   >;
 }
 
-export const ProfileMetadata: Schema.Schema<ProfileMetadata> =
+export const ProfileMetadata: Schema.Codec<ProfileMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectType: Schema.optional(Schema.String),
     userTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -62,7 +62,7 @@ export interface Source {
   updateTime?: string;
 }
 
-export const Source: Schema.Schema<Source> =
+export const Source: Schema.Codec<Source> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profileMetadata: Schema.optional(ProfileMetadata),
     etag: Schema.optional(Schema.String),
@@ -82,7 +82,7 @@ export interface FieldMetadata {
   source?: Source;
 }
 
-export const FieldMetadata: Schema.Schema<FieldMetadata> =
+export const FieldMetadata: Schema.Codec<FieldMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourcePrimary: Schema.optional(Schema.Boolean),
     primary: Schema.optional(Schema.Boolean),
@@ -102,7 +102,7 @@ export interface AgeRangeType {
   metadata?: FieldMetadata;
 }
 
-export const AgeRangeType: Schema.Schema<AgeRangeType> =
+export const AgeRangeType: Schema.Codec<AgeRangeType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ageRange: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -115,7 +115,7 @@ export interface Skill {
   metadata?: FieldMetadata;
 }
 
-export const Skill: Schema.Schema<Skill> =
+export const Skill: Schema.Codec<Skill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -134,7 +134,7 @@ export interface EmailAddress {
   formattedType?: string;
 }
 
-export const EmailAddress: Schema.Schema<EmailAddress> =
+export const EmailAddress: Schema.Codec<EmailAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -152,7 +152,7 @@ export interface UserDefined {
   value?: string;
 }
 
-export const UserDefined: Schema.Schema<UserDefined> =
+export const UserDefined: Schema.Codec<UserDefined> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -168,7 +168,7 @@ export interface Photo {
   default?: boolean;
 }
 
-export const Photo: Schema.Schema<Photo> =
+export const Photo: Schema.Codec<Photo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -184,7 +184,7 @@ export interface People_Date {
   year?: number;
 }
 
-export const People_Date: Schema.Schema<People_Date> =
+export const People_Date: Schema.Codec<People_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -202,7 +202,7 @@ export interface Event {
   formattedType?: string;
 }
 
-export const Event: Schema.Schema<Event> =
+export const Event: Schema.Codec<Event> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     type: Schema.optional(Schema.String),
@@ -219,7 +219,7 @@ export interface ClientData {
   metadata?: FieldMetadata;
 }
 
-export const ClientData: Schema.Schema<ClientData> =
+export const ClientData: Schema.Codec<ClientData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export interface RelationshipInterest {
   value?: string;
 }
 
-export const RelationshipInterest: Schema.Schema<RelationshipInterest> =
+export const RelationshipInterest: Schema.Codec<RelationshipInterest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formattedValue: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -251,7 +251,7 @@ export interface Birthday {
   metadata?: FieldMetadata;
 }
 
-export const Birthday: Schema.Schema<Birthday> =
+export const Birthday: Schema.Codec<Birthday> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(People_Date),
     text: Schema.optional(Schema.String),
@@ -273,7 +273,7 @@ export interface ImClient {
   type?: string;
 }
 
-export const ImClient: Schema.Schema<ImClient> =
+export const ImClient: Schema.Codec<ImClient> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     formattedType: Schema.optional(Schema.String),
@@ -294,13 +294,14 @@ export interface Url {
   type?: string;
 }
 
-export const Url: Schema.Schema<Url> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Url: Schema.Codec<Url> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     formattedType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
     type: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Url" });
+  },
+).annotate({ identifier: "Url" });
 
 export interface Biography {
   /** The short biography. */
@@ -315,7 +316,7 @@ export interface Biography {
     | (string & {});
 }
 
-export const Biography: Schema.Schema<Biography> =
+export const Biography: Schema.Codec<Biography> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -329,7 +330,7 @@ export interface BraggingRights {
   value?: string;
 }
 
-export const BraggingRights: Schema.Schema<BraggingRights> =
+export const BraggingRights: Schema.Codec<BraggingRights> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     value: Schema.optional(Schema.String),
@@ -368,7 +369,7 @@ export interface Name {
   givenName?: string;
 }
 
-export const Name: Schema.Schema<Name> =
+export const Name: Schema.Codec<Name> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneticGivenName: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -398,7 +399,7 @@ export interface Relation {
   formattedType?: string;
 }
 
-export const Relation: Schema.Schema<Relation> =
+export const Relation: Schema.Codec<Relation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     type: Schema.optional(Schema.String),
@@ -425,7 +426,7 @@ export interface Location {
   floorSection?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buildingId: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -444,7 +445,7 @@ export interface Locale {
   value?: string;
 }
 
-export const Locale: Schema.Schema<Locale> =
+export const Locale: Schema.Codec<Locale> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     value: Schema.optional(Schema.String),
@@ -477,7 +478,7 @@ export interface Address {
   type?: string;
 }
 
-export const Address: Schema.Schema<Address> =
+export const Address: Schema.Codec<Address> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     poBox: Schema.optional(Schema.String),
     streetAddress: Schema.optional(Schema.String),
@@ -517,7 +518,7 @@ export interface MiscKeyword {
   value?: string;
 }
 
-export const MiscKeyword: Schema.Schema<MiscKeyword> =
+export const MiscKeyword: Schema.Codec<MiscKeyword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formattedType: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -530,7 +531,7 @@ export interface DomainMembership {
   inViewerDomain?: boolean;
 }
 
-export const DomainMembership: Schema.Schema<DomainMembership> =
+export const DomainMembership: Schema.Codec<DomainMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inViewerDomain: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DomainMembership" });
@@ -542,7 +543,7 @@ export interface ContactGroupMembership {
   contactGroupResourceName?: string;
 }
 
-export const ContactGroupMembership: Schema.Schema<ContactGroupMembership> =
+export const ContactGroupMembership: Schema.Codec<ContactGroupMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactGroupId: Schema.optional(Schema.String),
     contactGroupResourceName: Schema.optional(Schema.String),
@@ -557,7 +558,7 @@ export interface Membership {
   contactGroupMembership?: ContactGroupMembership;
 }
 
-export const Membership: Schema.Schema<Membership> =
+export const Membership: Schema.Codec<Membership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     domainMembership: Schema.optional(DomainMembership),
@@ -571,7 +572,7 @@ export interface Occupation {
   value?: string;
 }
 
-export const Occupation: Schema.Schema<Occupation> =
+export const Occupation: Schema.Codec<Occupation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     value: Schema.optional(Schema.String),
@@ -586,7 +587,7 @@ export interface Residence {
   value?: string;
 }
 
-export const Residence: Schema.Schema<Residence> =
+export const Residence: Schema.Codec<Residence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     current: Schema.optional(Schema.Boolean),
@@ -602,7 +603,7 @@ export interface RelationshipStatus {
   formattedValue?: string;
 }
 
-export const RelationshipStatus: Schema.Schema<RelationshipStatus> =
+export const RelationshipStatus: Schema.Codec<RelationshipStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -618,7 +619,7 @@ export interface CoverPhoto {
   default?: boolean;
 }
 
-export const CoverPhoto: Schema.Schema<CoverPhoto> =
+export const CoverPhoto: Schema.Codec<CoverPhoto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -636,7 +637,7 @@ export interface SipAddress {
   type?: string;
 }
 
-export const SipAddress: Schema.Schema<SipAddress> =
+export const SipAddress: Schema.Codec<SipAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formattedType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -655,7 +656,7 @@ export interface Gender {
   formattedValue?: string;
 }
 
-export const Gender: Schema.Schema<Gender> =
+export const Gender: Schema.Codec<Gender> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     value: Schema.optional(Schema.String),
@@ -674,7 +675,7 @@ export interface ExternalId {
   value?: string;
 }
 
-export const ExternalId: Schema.Schema<ExternalId> =
+export const ExternalId: Schema.Codec<ExternalId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formattedType: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -693,7 +694,7 @@ export interface CalendarUrl {
   formattedType?: string;
 }
 
-export const CalendarUrl: Schema.Schema<CalendarUrl> =
+export const CalendarUrl: Schema.Codec<CalendarUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -718,7 +719,7 @@ export interface Nickname {
     | (string & {});
 }
 
-export const Nickname: Schema.Schema<Nickname> =
+export const Nickname: Schema.Codec<Nickname> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -738,7 +739,7 @@ export interface PersonMetadata {
   objectType?: "OBJECT_TYPE_UNSPECIFIED" | "PERSON" | "PAGE" | (string & {});
 }
 
-export const PersonMetadata: Schema.Schema<PersonMetadata> =
+export const PersonMetadata: Schema.Codec<PersonMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Boolean),
     linkedPeopleResourceNames: Schema.optional(Schema.Array(Schema.String)),
@@ -754,7 +755,7 @@ export interface Tagline {
   value?: string;
 }
 
-export const Tagline: Schema.Schema<Tagline> =
+export const Tagline: Schema.Codec<Tagline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(FieldMetadata),
     value: Schema.optional(Schema.String),
@@ -767,7 +768,7 @@ export interface Interest {
   metadata?: FieldMetadata;
 }
 
-export const Interest: Schema.Schema<Interest> =
+export const Interest: Schema.Codec<Interest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -786,7 +787,7 @@ export interface PhoneNumber {
   type?: string;
 }
 
-export const PhoneNumber: Schema.Schema<PhoneNumber> =
+export const PhoneNumber: Schema.Codec<PhoneNumber> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     canonicalForm: Schema.optional(Schema.String),
     formattedType: Schema.optional(Schema.String),
@@ -802,7 +803,7 @@ export interface FileAs {
   metadata?: FieldMetadata;
 }
 
-export const FileAs: Schema.Schema<FileAs> =
+export const FileAs: Schema.Codec<FileAs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     metadata: Schema.optional(FieldMetadata),
@@ -843,7 +844,7 @@ export interface Organization {
   type?: string;
 }
 
-export const Organization: Schema.Schema<Organization> =
+export const Organization: Schema.Codec<Organization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneticName: Schema.optional(Schema.String),
     formattedType: Schema.optional(Schema.String),
@@ -947,7 +948,7 @@ export interface Person {
   skills?: ReadonlyArray<Skill>;
 }
 
-export const Person: Schema.Schema<Person> =
+export const Person: Schema.Codec<Person> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddresses: Schema.optional(Schema.Array(EmailAddress)),
     userDefined: Schema.optional(Schema.Array(UserDefined)),
@@ -994,7 +995,7 @@ export interface SearchResult {
   person?: Person;
 }
 
-export const SearchResult: Schema.Schema<SearchResult> =
+export const SearchResult: Schema.Codec<SearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     person: Schema.optional(Person),
   }).annotate({ identifier: "SearchResult" });
@@ -1004,14 +1005,14 @@ export interface SearchResponse {
   results?: ReadonlyArray<SearchResult>;
 }
 
-export const SearchResponse: Schema.Schema<SearchResponse> =
+export const SearchResponse: Schema.Codec<SearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(SearchResult)),
   }).annotate({ identifier: "SearchResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1023,7 +1024,7 @@ export interface ModifyContactGroupMembersRequest {
   resourceNamesToRemove?: ReadonlyArray<string>;
 }
 
-export const ModifyContactGroupMembersRequest: Schema.Schema<ModifyContactGroupMembersRequest> =
+export const ModifyContactGroupMembersRequest: Schema.Codec<ModifyContactGroupMembersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceNamesToAdd: Schema.optional(Schema.Array(Schema.String)),
     resourceNamesToRemove: Schema.optional(Schema.Array(Schema.String)),
@@ -1036,7 +1037,7 @@ export interface ContactGroupMetadata {
   updateTime?: string;
 }
 
-export const ContactGroupMetadata: Schema.Schema<ContactGroupMetadata> =
+export const ContactGroupMetadata: Schema.Codec<ContactGroupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Boolean),
     updateTime: Schema.optional(Schema.String),
@@ -1049,7 +1050,7 @@ export interface GroupClientData {
   value?: string;
 }
 
-export const GroupClientData: Schema.Schema<GroupClientData> =
+export const GroupClientData: Schema.Codec<GroupClientData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1080,7 +1081,7 @@ export interface ContactGroup {
   clientData?: ReadonlyArray<GroupClientData>;
 }
 
-export const ContactGroup: Schema.Schema<ContactGroup> =
+export const ContactGroup: Schema.Codec<ContactGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     formattedName: Schema.optional(Schema.String),
@@ -1102,7 +1103,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1122,7 +1123,7 @@ export interface PersonResponse {
   person?: Person;
 }
 
-export const PersonResponse: Schema.Schema<PersonResponse> =
+export const PersonResponse: Schema.Codec<PersonResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Status),
     requestedResourceName: Schema.optional(Schema.String),
@@ -1146,7 +1147,7 @@ export interface CopyOtherContactToMyContactsGroupRequest {
   copyMask?: string;
 }
 
-export const CopyOtherContactToMyContactsGroupRequest: Schema.Schema<CopyOtherContactToMyContactsGroupRequest> =
+export const CopyOtherContactToMyContactsGroupRequest: Schema.Codec<CopyOtherContactToMyContactsGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readMask: Schema.optional(Schema.String),
     sources: Schema.optional(Schema.Array(Schema.String)),
@@ -1158,7 +1159,7 @@ export interface BatchCreateContactsResponse {
   createdPeople?: ReadonlyArray<PersonResponse>;
 }
 
-export const BatchCreateContactsResponse: Schema.Schema<BatchCreateContactsResponse> =
+export const BatchCreateContactsResponse: Schema.Codec<BatchCreateContactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdPeople: Schema.optional(Schema.Array(PersonResponse)),
   }).annotate({ identifier: "BatchCreateContactsResponse" });
@@ -1172,7 +1173,7 @@ export interface UpdateContactGroupRequest {
   readGroupFields?: string;
 }
 
-export const UpdateContactGroupRequest: Schema.Schema<UpdateContactGroupRequest> =
+export const UpdateContactGroupRequest: Schema.Codec<UpdateContactGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactGroup: Schema.optional(ContactGroup),
     updateGroupFields: Schema.optional(Schema.String),
@@ -1184,7 +1185,7 @@ export interface GetPeopleResponse {
   responses?: ReadonlyArray<PersonResponse>;
 }
 
-export const GetPeopleResponse: Schema.Schema<GetPeopleResponse> =
+export const GetPeopleResponse: Schema.Codec<GetPeopleResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(PersonResponse)),
   }).annotate({ identifier: "GetPeopleResponse" });
@@ -1202,7 +1203,7 @@ export interface ListConnectionsResponse {
   totalPeople?: number;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
+export const ListConnectionsResponse: Schema.Codec<ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connections: Schema.optional(Schema.Array(Person)),
     totalItems: Schema.optional(Schema.Number),
@@ -1220,7 +1221,7 @@ export interface ContactGroupResponse {
   status?: Status;
 }
 
-export const ContactGroupResponse: Schema.Schema<ContactGroupResponse> =
+export const ContactGroupResponse: Schema.Codec<ContactGroupResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactGroup: Schema.optional(ContactGroup),
     requestedResourceName: Schema.optional(Schema.String),
@@ -1238,7 +1239,7 @@ export interface ListContactGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListContactGroupsResponse: Schema.Schema<ListContactGroupsResponse> =
+export const ListContactGroupsResponse: Schema.Codec<ListContactGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextSyncToken: Schema.optional(Schema.String),
     contactGroups: Schema.optional(Schema.Array(ContactGroup)),
@@ -1251,7 +1252,7 @@ export interface ContactToCreate {
   contactPerson?: Person;
 }
 
-export const ContactToCreate: Schema.Schema<ContactToCreate> =
+export const ContactToCreate: Schema.Codec<ContactToCreate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactPerson: Schema.optional(Person),
   }).annotate({ identifier: "ContactToCreate" });
@@ -1267,7 +1268,7 @@ export interface ListOtherContactsResponse {
   totalSize?: number;
 }
 
-export const ListOtherContactsResponse: Schema.Schema<ListOtherContactsResponse> =
+export const ListOtherContactsResponse: Schema.Codec<ListOtherContactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextSyncToken: Schema.optional(Schema.String),
     otherContacts: Schema.optional(Schema.Array(Person)),
@@ -1284,7 +1285,7 @@ export interface ListDirectoryPeopleResponse {
   nextSyncToken?: string;
 }
 
-export const ListDirectoryPeopleResponse: Schema.Schema<ListDirectoryPeopleResponse> =
+export const ListDirectoryPeopleResponse: Schema.Codec<ListDirectoryPeopleResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     people: Schema.optional(Schema.Array(Person)),
@@ -1300,7 +1301,7 @@ export interface SearchDirectoryPeopleResponse {
   people?: ReadonlyArray<Person>;
 }
 
-export const SearchDirectoryPeopleResponse: Schema.Schema<SearchDirectoryPeopleResponse> =
+export const SearchDirectoryPeopleResponse: Schema.Codec<SearchDirectoryPeopleResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -1314,7 +1315,7 @@ export interface ModifyContactGroupMembersResponse {
   canNotRemoveLastContactGroupResourceNames?: ReadonlyArray<string>;
 }
 
-export const ModifyContactGroupMembersResponse: Schema.Schema<ModifyContactGroupMembersResponse> =
+export const ModifyContactGroupMembersResponse: Schema.Codec<ModifyContactGroupMembersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notFoundResourceNames: Schema.optional(Schema.Array(Schema.String)),
     canNotRemoveLastContactGroupResourceNames: Schema.optional(
@@ -1338,7 +1339,7 @@ export interface BatchCreateContactsRequest {
   contacts?: ReadonlyArray<ContactToCreate>;
 }
 
-export const BatchCreateContactsRequest: Schema.Schema<BatchCreateContactsRequest> =
+export const BatchCreateContactsRequest: Schema.Codec<BatchCreateContactsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readMask: Schema.optional(Schema.String),
     sources: Schema.optional(Schema.Array(Schema.String)),
@@ -1361,7 +1362,7 @@ export interface UpdateContactPhotoRequest {
   personFields?: string;
 }
 
-export const UpdateContactPhotoRequest: Schema.Schema<UpdateContactPhotoRequest> =
+export const UpdateContactPhotoRequest: Schema.Codec<UpdateContactPhotoRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(Schema.String)),
     photoBytes: Schema.optional(Schema.String),
@@ -1373,7 +1374,7 @@ export interface BatchGetContactGroupsResponse {
   responses?: ReadonlyArray<ContactGroupResponse>;
 }
 
-export const BatchGetContactGroupsResponse: Schema.Schema<BatchGetContactGroupsResponse> =
+export const BatchGetContactGroupsResponse: Schema.Codec<BatchGetContactGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(ContactGroupResponse)),
   }).annotate({ identifier: "BatchGetContactGroupsResponse" });
@@ -1383,7 +1384,7 @@ export interface DeleteContactPhotoResponse {
   person?: Person;
 }
 
-export const DeleteContactPhotoResponse: Schema.Schema<DeleteContactPhotoResponse> =
+export const DeleteContactPhotoResponse: Schema.Codec<DeleteContactPhotoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     person: Schema.optional(Person),
   }).annotate({ identifier: "DeleteContactPhotoResponse" });
@@ -1406,7 +1407,7 @@ export interface BatchUpdateContactsRequest {
   contacts?: Record<string, Person>;
 }
 
-export const BatchUpdateContactsRequest: Schema.Schema<BatchUpdateContactsRequest> =
+export const BatchUpdateContactsRequest: Schema.Codec<BatchUpdateContactsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     readMask: Schema.optional(Schema.String),
@@ -1419,7 +1420,7 @@ export interface UpdateContactPhotoResponse {
   person?: Person;
 }
 
-export const UpdateContactPhotoResponse: Schema.Schema<UpdateContactPhotoResponse> =
+export const UpdateContactPhotoResponse: Schema.Codec<UpdateContactPhotoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     person: Schema.optional(Person),
   }).annotate({ identifier: "UpdateContactPhotoResponse" });
@@ -1429,7 +1430,7 @@ export interface BatchUpdateContactsResponse {
   updateResult?: Record<string, PersonResponse>;
 }
 
-export const BatchUpdateContactsResponse: Schema.Schema<BatchUpdateContactsResponse> =
+export const BatchUpdateContactsResponse: Schema.Codec<BatchUpdateContactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateResult: Schema.optional(Schema.Record(Schema.String, PersonResponse)),
   }).annotate({ identifier: "BatchUpdateContactsResponse" });
@@ -1439,7 +1440,7 @@ export interface BatchDeleteContactsRequest {
   resourceNames?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteContactsRequest: Schema.Schema<BatchDeleteContactsRequest> =
+export const BatchDeleteContactsRequest: Schema.Codec<BatchDeleteContactsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeleteContactsRequest" });
@@ -1451,7 +1452,7 @@ export interface CreateContactGroupRequest {
   readGroupFields?: string;
 }
 
-export const CreateContactGroupRequest: Schema.Schema<CreateContactGroupRequest> =
+export const CreateContactGroupRequest: Schema.Codec<CreateContactGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactGroup: Schema.optional(ContactGroup),
     readGroupFields: Schema.optional(Schema.String),
@@ -1547,7 +1548,7 @@ export const ListOtherContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/otherContacts" }),
     svc,
-  ) as unknown as Schema.Schema<ListOtherContactsRequest>;
+  ) as unknown as Schema.Codec<ListOtherContactsRequest>;
 
 export type ListOtherContactsResponse_Op = ListOtherContactsResponse;
 export const ListOtherContactsResponse_Op =
@@ -1588,7 +1589,7 @@ export const SearchOtherContactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/otherContacts:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchOtherContactsRequest>;
+  ) as unknown as Schema.Codec<SearchOtherContactsRequest>;
 
 export type SearchOtherContactsResponse = SearchResponse;
 export const SearchOtherContactsResponse =
@@ -1628,7 +1629,7 @@ export const CopyOtherContactToMyContactsGroupOtherContactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CopyOtherContactToMyContactsGroupOtherContactsRequest>;
+  ) as unknown as Schema.Codec<CopyOtherContactToMyContactsGroupOtherContactsRequest>;
 
 export type CopyOtherContactToMyContactsGroupOtherContactsResponse = Person;
 export const CopyOtherContactToMyContactsGroupOtherContactsResponse =
@@ -1681,7 +1682,7 @@ export const SearchContactsPeopleRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/people:searchContacts" }),
     svc,
-  ) as unknown as Schema.Schema<SearchContactsPeopleRequest>;
+  ) as unknown as Schema.Codec<SearchContactsPeopleRequest>;
 
 export type SearchContactsPeopleResponse = SearchResponse;
 export const SearchContactsPeopleResponse =
@@ -1743,7 +1744,7 @@ export const ListDirectoryPeoplePeopleRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/people:listDirectoryPeople" }),
     svc,
-  ) as unknown as Schema.Schema<ListDirectoryPeoplePeopleRequest>;
+  ) as unknown as Schema.Codec<ListDirectoryPeoplePeopleRequest>;
 
 export type ListDirectoryPeoplePeopleResponse = ListDirectoryPeopleResponse;
 export const ListDirectoryPeoplePeopleResponse =
@@ -1781,7 +1782,7 @@ export const DeleteContactPeopleRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+resourceName}:deleteContact" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteContactPeopleRequest>;
+  ) as unknown as Schema.Codec<DeleteContactPeopleRequest>;
 
 export type DeleteContactPeopleResponse = Empty;
 export const DeleteContactPeopleResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1820,7 +1821,7 @@ export const BatchCreateContactsPeopleRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateContactsPeopleRequest>;
+  ) as unknown as Schema.Codec<BatchCreateContactsPeopleRequest>;
 
 export type BatchCreateContactsPeopleResponse = BatchCreateContactsResponse;
 export const BatchCreateContactsPeopleResponse =
@@ -1884,7 +1885,7 @@ export const UpdateContactPeopleRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateContactPeopleRequest>;
+  ) as unknown as Schema.Codec<UpdateContactPeopleRequest>;
 
 export type UpdateContactPeopleResponse = Person;
 export const UpdateContactPeopleResponse = /*@__PURE__*/ /*#__PURE__*/ Person;
@@ -1939,7 +1940,7 @@ export const GetPeopleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+resourceName}" }),
   svc,
-) as unknown as Schema.Schema<GetPeopleRequest>;
+) as unknown as Schema.Codec<GetPeopleRequest>;
 
 export type GetPeopleResponse_Op = Person;
 export const GetPeopleResponse_Op = /*@__PURE__*/ /*#__PURE__*/ Person;
@@ -1995,7 +1996,7 @@ export const SearchDirectoryPeoplePeopleRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/people:searchDirectoryPeople" }),
     svc,
-  ) as unknown as Schema.Schema<SearchDirectoryPeoplePeopleRequest>;
+  ) as unknown as Schema.Codec<SearchDirectoryPeoplePeopleRequest>;
 
 export type SearchDirectoryPeoplePeopleResponse = SearchDirectoryPeopleResponse;
 export const SearchDirectoryPeoplePeopleResponse =
@@ -2049,7 +2050,7 @@ export const DeleteContactPhotoPeopleRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+resourceName}:deleteContactPhoto" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteContactPhotoPeopleRequest>;
+  ) as unknown as Schema.Codec<DeleteContactPhotoPeopleRequest>;
 
 export type DeleteContactPhotoPeopleResponse = DeleteContactPhotoResponse;
 export const DeleteContactPhotoPeopleResponse =
@@ -2089,7 +2090,7 @@ export const BatchDeleteContactsPeopleRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteContactsPeopleRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteContactsPeopleRequest>;
 
 export type BatchDeleteContactsPeopleResponse = Empty;
 export const BatchDeleteContactsPeopleResponse =
@@ -2129,7 +2130,7 @@ export const BatchUpdateContactsPeopleRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateContactsPeopleRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateContactsPeopleRequest>;
 
 export type BatchUpdateContactsPeopleResponse = BatchUpdateContactsResponse;
 export const BatchUpdateContactsPeopleResponse =
@@ -2181,7 +2182,7 @@ export const CreateContactPeopleRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/people:createContact", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateContactPeopleRequest>;
+  ) as unknown as Schema.Codec<CreateContactPeopleRequest>;
 
 export type CreateContactPeopleResponse = Person;
 export const CreateContactPeopleResponse = /*@__PURE__*/ /*#__PURE__*/ Person;
@@ -2223,7 +2224,7 @@ export const UpdateContactPhotoPeopleRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateContactPhotoPeopleRequest>;
+  ) as unknown as Schema.Codec<UpdateContactPhotoPeopleRequest>;
 
 export type UpdateContactPhotoPeopleResponse = UpdateContactPhotoResponse;
 export const UpdateContactPhotoPeopleResponse =
@@ -2282,7 +2283,7 @@ export const GetBatchGetPeopleRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/people:batchGet" }),
     svc,
-  ) as unknown as Schema.Schema<GetBatchGetPeopleRequest>;
+  ) as unknown as Schema.Codec<GetBatchGetPeopleRequest>;
 
 export type GetBatchGetPeopleResponse = GetPeopleResponse;
 export const GetBatchGetPeopleResponse =
@@ -2356,7 +2357,7 @@ export const ListPeopleConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resourceName}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListPeopleConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListPeopleConnectionsRequest>;
 
 export type ListPeopleConnectionsResponse = ListConnectionsResponse;
 export const ListPeopleConnectionsResponse =
@@ -2399,7 +2400,7 @@ export const GetContactGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resourceName}" }),
     svc,
-  ) as unknown as Schema.Schema<GetContactGroupsRequest>;
+  ) as unknown as Schema.Codec<GetContactGroupsRequest>;
 
 export type GetContactGroupsResponse = ContactGroup;
 export const GetContactGroupsResponse =
@@ -2430,7 +2431,7 @@ export const CreateContactGroupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/contactGroups", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateContactGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateContactGroupsRequest>;
 
 export type CreateContactGroupsResponse = ContactGroup;
 export const CreateContactGroupsResponse =
@@ -2476,7 +2477,7 @@ export const BatchGetContactGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/contactGroups:batchGet" }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetContactGroupsRequest>;
+  ) as unknown as Schema.Codec<BatchGetContactGroupsRequest>;
 
 export type BatchGetContactGroupsResponse_Op = BatchGetContactGroupsResponse;
 export const BatchGetContactGroupsResponse_Op =
@@ -2512,7 +2513,7 @@ export const DeleteContactGroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+resourceName}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteContactGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteContactGroupsRequest>;
 
 export type DeleteContactGroupsResponse = Empty;
 export const DeleteContactGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2558,7 +2559,7 @@ export const ListContactGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/contactGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListContactGroupsRequest>;
+  ) as unknown as Schema.Codec<ListContactGroupsRequest>;
 
 export type ListContactGroupsResponse_Op = ListContactGroupsResponse;
 export const ListContactGroupsResponse_Op =
@@ -2596,7 +2597,7 @@ export const UpdateContactGroupsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+resourceName}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateContactGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateContactGroupsRequest>;
 
 export type UpdateContactGroupsResponse = ContactGroup;
 export const UpdateContactGroupsResponse =
@@ -2639,7 +2640,7 @@ export const ModifyContactGroupsMembersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyContactGroupsMembersRequest>;
+  ) as unknown as Schema.Codec<ModifyContactGroupsMembersRequest>;
 
 export type ModifyContactGroupsMembersResponse =
   ModifyContactGroupMembersResponse;

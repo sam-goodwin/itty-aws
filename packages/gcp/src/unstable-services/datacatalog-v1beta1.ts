@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   restrictedLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope: Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope> =
+export const GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope: Schema.Codec<GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeOrgIds: Schema.optional(Schema.Array(Schema.String)),
     includeProjectIds: Schema.optional(Schema.Array(Schema.String)),
@@ -56,7 +56,7 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   orderBy?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1SearchCatalogRequest: Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogRequest> =
+export const GoogleCloudDatacatalogV1beta1SearchCatalogRequest: Schema.Codec<GoogleCloudDatacatalogV1beta1SearchCatalogRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(
       GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope,
@@ -87,7 +87,7 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   modifyTime?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1SearchCatalogResult: Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResult> =
+export const GoogleCloudDatacatalogV1beta1SearchCatalogResult: Schema.Codec<GoogleCloudDatacatalogV1beta1SearchCatalogResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchResultType: Schema.optional(Schema.String),
     searchResultSubtype: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogV1beta1SearchCatalogResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResponse> =
+export const GoogleCloudDatacatalogV1beta1SearchCatalogResponse: Schema.Codec<GoogleCloudDatacatalogV1beta1SearchCatalogResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1SearchCatalogResult),
@@ -130,7 +130,7 @@ export interface GoogleCloudDatacatalogV1beta1SystemTimestamps {
   expireTime?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1SystemTimestamps: Schema.Schema<GoogleCloudDatacatalogV1beta1SystemTimestamps> =
+export const GoogleCloudDatacatalogV1beta1SystemTimestamps: Schema.Codec<GoogleCloudDatacatalogV1beta1SystemTimestamps> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -148,7 +148,7 @@ export interface GoogleCloudDatacatalogV1beta1EntryGroup {
   dataCatalogTimestamps?: GoogleCloudDatacatalogV1beta1SystemTimestamps;
 }
 
-export const GoogleCloudDatacatalogV1beta1EntryGroup: Schema.Schema<GoogleCloudDatacatalogV1beta1EntryGroup> =
+export const GoogleCloudDatacatalogV1beta1EntryGroup: Schema.Codec<GoogleCloudDatacatalogV1beta1EntryGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -160,7 +160,7 @@ export const GoogleCloudDatacatalogV1beta1EntryGroup: Schema.Schema<GoogleCloudD
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -172,7 +172,7 @@ export interface GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse> =
+export const GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse: Schema.Codec<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryGroups: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1EntryGroup),
@@ -191,7 +191,7 @@ export interface GoogleCloudDatacatalogV1beta1GcsFileSpec {
   sizeBytes?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1GcsFileSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1GcsFileSpec> =
+export const GoogleCloudDatacatalogV1beta1GcsFileSpec: Schema.Codec<GoogleCloudDatacatalogV1beta1GcsFileSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filePath: Schema.optional(Schema.String),
     gcsTimestamps: Schema.optional(
@@ -207,7 +207,7 @@ export interface GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   sampleGcsFileSpecs?: ReadonlyArray<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
 }
 
-export const GoogleCloudDatacatalogV1beta1GcsFilesetSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1GcsFilesetSpec> =
+export const GoogleCloudDatacatalogV1beta1GcsFilesetSpec: Schema.Codec<GoogleCloudDatacatalogV1beta1GcsFilesetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filePatterns: Schema.optional(Schema.Array(Schema.String)),
     sampleGcsFileSpecs: Schema.optional(
@@ -220,7 +220,7 @@ export interface GoogleCloudDatacatalogV1beta1ViewSpec {
   viewQuery?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ViewSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1ViewSpec> =
+export const GoogleCloudDatacatalogV1beta1ViewSpec: Schema.Codec<GoogleCloudDatacatalogV1beta1ViewSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewQuery: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1ViewSpec" });
@@ -230,7 +230,7 @@ export interface GoogleCloudDatacatalogV1beta1TableSpec {
   groupedEntry?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1TableSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1TableSpec> =
+export const GoogleCloudDatacatalogV1beta1TableSpec: Schema.Codec<GoogleCloudDatacatalogV1beta1TableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupedEntry: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1TableSpec" });
@@ -249,7 +249,7 @@ export interface GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   tableSpec?: GoogleCloudDatacatalogV1beta1TableSpec;
 }
 
-export const GoogleCloudDatacatalogV1beta1BigQueryTableSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1BigQueryTableSpec> =
+export const GoogleCloudDatacatalogV1beta1BigQueryTableSpec: Schema.Codec<GoogleCloudDatacatalogV1beta1BigQueryTableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableSourceType: Schema.optional(Schema.String),
     viewSpec: Schema.optional(GoogleCloudDatacatalogV1beta1ViewSpec),
@@ -265,7 +265,7 @@ export interface GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   shardCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec> =
+export const GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec: Schema.Codec<GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
     tablePrefix: Schema.optional(Schema.String),
@@ -287,7 +287,7 @@ export interface GoogleCloudDatacatalogV1beta1ColumnSchema {
   subcolumns?: ReadonlyArray<GoogleCloudDatacatalogV1beta1ColumnSchema>;
 }
 
-export const GoogleCloudDatacatalogV1beta1ColumnSchema: Schema.Schema<GoogleCloudDatacatalogV1beta1ColumnSchema> =
+export const GoogleCloudDatacatalogV1beta1ColumnSchema: Schema.Codec<GoogleCloudDatacatalogV1beta1ColumnSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       column: Schema.optional(Schema.String),
@@ -300,14 +300,14 @@ export const GoogleCloudDatacatalogV1beta1ColumnSchema: Schema.Schema<GoogleClou
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1ColumnSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ColumnSchema>;
+  }) as any as Schema.Codec<GoogleCloudDatacatalogV1beta1ColumnSchema>;
 
 export interface GoogleCloudDatacatalogV1beta1Schema {
   /** Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified. */
   columns?: ReadonlyArray<GoogleCloudDatacatalogV1beta1ColumnSchema>;
 }
 
-export const GoogleCloudDatacatalogV1beta1Schema: Schema.Schema<GoogleCloudDatacatalogV1beta1Schema> =
+export const GoogleCloudDatacatalogV1beta1Schema: Schema.Codec<GoogleCloudDatacatalogV1beta1Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1ColumnSchema),
@@ -325,7 +325,7 @@ export interface GoogleCloudDatacatalogV1beta1UsageStats {
   totalExecutionTimeForCompletionsMillis?: number;
 }
 
-export const GoogleCloudDatacatalogV1beta1UsageStats: Schema.Schema<GoogleCloudDatacatalogV1beta1UsageStats> =
+export const GoogleCloudDatacatalogV1beta1UsageStats: Schema.Codec<GoogleCloudDatacatalogV1beta1UsageStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalCompletions: Schema.optional(Schema.Number),
     totalFailures: Schema.optional(Schema.Number),
@@ -343,7 +343,7 @@ export interface GoogleCloudDatacatalogV1beta1UsageSignal {
   >;
 }
 
-export const GoogleCloudDatacatalogV1beta1UsageSignal: Schema.Schema<GoogleCloudDatacatalogV1beta1UsageSignal> =
+export const GoogleCloudDatacatalogV1beta1UsageSignal: Schema.Codec<GoogleCloudDatacatalogV1beta1UsageSignal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     usageWithinTimeRange: Schema.optional(
@@ -392,7 +392,7 @@ export interface GoogleCloudDatacatalogV1beta1Entry {
   usageSignal?: GoogleCloudDatacatalogV1beta1UsageSignal;
 }
 
-export const GoogleCloudDatacatalogV1beta1Entry: Schema.Schema<GoogleCloudDatacatalogV1beta1Entry> =
+export const GoogleCloudDatacatalogV1beta1Entry: Schema.Codec<GoogleCloudDatacatalogV1beta1Entry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     linkedResource: Schema.optional(Schema.String),
@@ -425,7 +425,7 @@ export interface GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListEntriesResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListEntriesResponse> =
+export const GoogleCloudDatacatalogV1beta1ListEntriesResponse: Schema.Codec<GoogleCloudDatacatalogV1beta1ListEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1beta1Entry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -438,7 +438,7 @@ export interface GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
   displayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue: Schema.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue> =
+export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue: Schema.Codec<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({
@@ -449,7 +449,7 @@ export interface GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
   allowedValues?: ReadonlyArray<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
 }
 
-export const GoogleCloudDatacatalogV1beta1FieldTypeEnumType: Schema.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumType> =
+export const GoogleCloudDatacatalogV1beta1FieldTypeEnumType: Schema.Codec<GoogleCloudDatacatalogV1beta1FieldTypeEnumType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedValues: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue),
@@ -469,7 +469,7 @@ export interface GoogleCloudDatacatalogV1beta1FieldType {
   enumType?: GoogleCloudDatacatalogV1beta1FieldTypeEnumType;
 }
 
-export const GoogleCloudDatacatalogV1beta1FieldType: Schema.Schema<GoogleCloudDatacatalogV1beta1FieldType> =
+export const GoogleCloudDatacatalogV1beta1FieldType: Schema.Codec<GoogleCloudDatacatalogV1beta1FieldType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primitiveType: Schema.optional(Schema.String),
     enumType: Schema.optional(GoogleCloudDatacatalogV1beta1FieldTypeEnumType),
@@ -490,7 +490,7 @@ export interface GoogleCloudDatacatalogV1beta1TagTemplateField {
   order?: number;
 }
 
-export const GoogleCloudDatacatalogV1beta1TagTemplateField: Schema.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField> =
+export const GoogleCloudDatacatalogV1beta1TagTemplateField: Schema.Codec<GoogleCloudDatacatalogV1beta1TagTemplateField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -514,7 +514,7 @@ export interface GoogleCloudDatacatalogV1beta1TagTemplate {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1beta1TagTemplate: Schema.Schema<GoogleCloudDatacatalogV1beta1TagTemplate> =
+export const GoogleCloudDatacatalogV1beta1TagTemplate: Schema.Codec<GoogleCloudDatacatalogV1beta1TagTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -532,7 +532,7 @@ export interface GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
   newTagTemplateFieldId?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest: Schema.Schema<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest> =
+export const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest: Schema.Codec<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newTagTemplateFieldId: Schema.optional(Schema.String),
   }).annotate({
@@ -544,7 +544,7 @@ export interface GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueReq
   newEnumValueDisplayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest: Schema.Schema<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest> =
+export const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest: Schema.Codec<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newEnumValueDisplayName: Schema.optional(Schema.String),
   }).annotate({
@@ -557,7 +557,7 @@ export interface GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
   displayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1TagFieldEnumValue: Schema.Schema<GoogleCloudDatacatalogV1beta1TagFieldEnumValue> =
+export const GoogleCloudDatacatalogV1beta1TagFieldEnumValue: Schema.Codec<GoogleCloudDatacatalogV1beta1TagFieldEnumValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1TagFieldEnumValue" });
@@ -579,7 +579,7 @@ export interface GoogleCloudDatacatalogV1beta1TagField {
   order?: number;
 }
 
-export const GoogleCloudDatacatalogV1beta1TagField: Schema.Schema<GoogleCloudDatacatalogV1beta1TagField> =
+export const GoogleCloudDatacatalogV1beta1TagField: Schema.Codec<GoogleCloudDatacatalogV1beta1TagField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
@@ -603,7 +603,7 @@ export interface GoogleCloudDatacatalogV1beta1Tag {
   fields?: Record<string, GoogleCloudDatacatalogV1beta1TagField>;
 }
 
-export const GoogleCloudDatacatalogV1beta1Tag: Schema.Schema<GoogleCloudDatacatalogV1beta1Tag> =
+export const GoogleCloudDatacatalogV1beta1Tag: Schema.Codec<GoogleCloudDatacatalogV1beta1Tag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     template: Schema.optional(Schema.String),
@@ -621,7 +621,7 @@ export interface GoogleCloudDatacatalogV1beta1ListTagsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListTagsResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse> =
+export const GoogleCloudDatacatalogV1beta1ListTagsResponse: Schema.Codec<GoogleCloudDatacatalogV1beta1ListTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1beta1Tag)),
     nextPageToken: Schema.optional(Schema.String),
@@ -638,7 +638,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -655,7 +655,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -671,7 +671,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -683,7 +683,7 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -693,7 +693,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -703,7 +703,7 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
@@ -713,7 +713,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -723,7 +723,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -739,7 +739,7 @@ export interface GoogleCloudDatacatalogV1beta1TaxonomyService {
   identity?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1TaxonomyService: Schema.Schema<GoogleCloudDatacatalogV1beta1TaxonomyService> =
+export const GoogleCloudDatacatalogV1beta1TaxonomyService: Schema.Codec<GoogleCloudDatacatalogV1beta1TaxonomyService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     identity: Schema.optional(Schema.String),
@@ -764,7 +764,7 @@ export interface GoogleCloudDatacatalogV1beta1Taxonomy {
   service?: GoogleCloudDatacatalogV1beta1TaxonomyService;
 }
 
-export const GoogleCloudDatacatalogV1beta1Taxonomy: Schema.Schema<GoogleCloudDatacatalogV1beta1Taxonomy> =
+export const GoogleCloudDatacatalogV1beta1Taxonomy: Schema.Codec<GoogleCloudDatacatalogV1beta1Taxonomy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -784,7 +784,7 @@ export interface GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse> =
+export const GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse: Schema.Codec<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taxonomies: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1Taxonomy),
@@ -807,7 +807,7 @@ export interface GoogleCloudDatacatalogV1beta1PolicyTag {
   childPolicyTags?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogV1beta1PolicyTag: Schema.Schema<GoogleCloudDatacatalogV1beta1PolicyTag> =
+export const GoogleCloudDatacatalogV1beta1PolicyTag: Schema.Codec<GoogleCloudDatacatalogV1beta1PolicyTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -823,7 +823,7 @@ export interface GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse> =
+export const GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse: Schema.Codec<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTags: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1PolicyTag),
@@ -844,7 +844,7 @@ export interface GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   childPolicyTags?: ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
 }
 
-export const GoogleCloudDatacatalogV1beta1SerializedPolicyTag: Schema.Schema<GoogleCloudDatacatalogV1beta1SerializedPolicyTag> =
+export const GoogleCloudDatacatalogV1beta1SerializedPolicyTag: Schema.Codec<GoogleCloudDatacatalogV1beta1SerializedPolicyTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyTag: Schema.optional(Schema.String),
@@ -856,7 +856,7 @@ export const GoogleCloudDatacatalogV1beta1SerializedPolicyTag: Schema.Schema<Goo
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1SerializedPolicyTag",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
+  }) as any as Schema.Codec<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
 
 export interface GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   /** Required. Display name of the taxonomy. Max 200 bytes when encoded in UTF-8. */
@@ -871,7 +871,7 @@ export interface GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   >;
 }
 
-export const GoogleCloudDatacatalogV1beta1SerializedTaxonomy: Schema.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomy> =
+export const GoogleCloudDatacatalogV1beta1SerializedTaxonomy: Schema.Codec<GoogleCloudDatacatalogV1beta1SerializedTaxonomy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -888,7 +888,7 @@ export interface GoogleCloudDatacatalogV1beta1InlineSource {
   taxonomies?: ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
 }
 
-export const GoogleCloudDatacatalogV1beta1InlineSource: Schema.Schema<GoogleCloudDatacatalogV1beta1InlineSource> =
+export const GoogleCloudDatacatalogV1beta1InlineSource: Schema.Codec<GoogleCloudDatacatalogV1beta1InlineSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taxonomies: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1SerializedTaxonomy),
@@ -900,7 +900,7 @@ export interface GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
   inlineSource?: GoogleCloudDatacatalogV1beta1InlineSource;
 }
 
-export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest: Schema.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest> =
+export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest: Schema.Codec<GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inlineSource: Schema.optional(GoogleCloudDatacatalogV1beta1InlineSource),
   }).annotate({
@@ -912,7 +912,7 @@ export interface GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
   taxonomies?: ReadonlyArray<GoogleCloudDatacatalogV1beta1Taxonomy>;
 }
 
-export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse> =
+export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse: Schema.Codec<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taxonomies: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1Taxonomy),
@@ -926,7 +926,7 @@ export interface GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
   taxonomies?: ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
 }
 
-export const GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse> =
+export const GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse: Schema.Codec<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taxonomies: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1beta1SerializedTaxonomy),
@@ -944,7 +944,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -965,7 +965,7 @@ export interface GoogleCloudDatacatalogV1ReconcileTagsMetadata {
   errors?: Record<string, Status>;
 }
 
-export const GoogleCloudDatacatalogV1ReconcileTagsMetadata: Schema.Schema<GoogleCloudDatacatalogV1ReconcileTagsMetadata> =
+export const GoogleCloudDatacatalogV1ReconcileTagsMetadata: Schema.Codec<GoogleCloudDatacatalogV1ReconcileTagsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Record(Schema.String, Status)),
@@ -980,7 +980,7 @@ export interface GoogleCloudDatacatalogV1ReconcileTagsResponse {
   deletedTagsCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1ReconcileTagsResponse: Schema.Schema<GoogleCloudDatacatalogV1ReconcileTagsResponse> =
+export const GoogleCloudDatacatalogV1ReconcileTagsResponse: Schema.Codec<GoogleCloudDatacatalogV1ReconcileTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdTagsCount: Schema.optional(Schema.String),
     updatedTagsCount: Schema.optional(Schema.String),
@@ -1000,7 +1000,7 @@ export interface GoogleCloudDatacatalogV1ImportEntriesMetadata {
   errors?: ReadonlyArray<Status>;
 }
 
-export const GoogleCloudDatacatalogV1ImportEntriesMetadata: Schema.Schema<GoogleCloudDatacatalogV1ImportEntriesMetadata> =
+export const GoogleCloudDatacatalogV1ImportEntriesMetadata: Schema.Codec<GoogleCloudDatacatalogV1ImportEntriesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Array(Status)),
@@ -1013,7 +1013,7 @@ export interface GoogleCloudDatacatalogV1ImportEntriesResponse {
   deletedEntriesCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1ImportEntriesResponse: Schema.Schema<GoogleCloudDatacatalogV1ImportEntriesResponse> =
+export const GoogleCloudDatacatalogV1ImportEntriesResponse: Schema.Codec<GoogleCloudDatacatalogV1ImportEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upsertedEntriesCount: Schema.optional(Schema.String),
     deletedEntriesCount: Schema.optional(Schema.String),
@@ -1028,7 +1028,7 @@ export interface GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
   instanceHost?: string;
 }
 
-export const GoogleCloudDatacatalogV1SqlDatabaseSystemSpec: Schema.Schema<GoogleCloudDatacatalogV1SqlDatabaseSystemSpec> =
+export const GoogleCloudDatacatalogV1SqlDatabaseSystemSpec: Schema.Codec<GoogleCloudDatacatalogV1SqlDatabaseSystemSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlEngine: Schema.optional(Schema.String),
     databaseVersion: Schema.optional(Schema.String),
@@ -1050,7 +1050,7 @@ export interface GoogleCloudDatacatalogV1LookerSystemSpec {
   parentViewDisplayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1LookerSystemSpec: Schema.Schema<GoogleCloudDatacatalogV1LookerSystemSpec> =
+export const GoogleCloudDatacatalogV1LookerSystemSpec: Schema.Codec<GoogleCloudDatacatalogV1LookerSystemSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentInstanceId: Schema.optional(Schema.String),
     parentInstanceDisplayName: Schema.optional(Schema.String),
@@ -1065,7 +1065,7 @@ export interface GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
   instanceDisplayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1CloudBigtableSystemSpec: Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableSystemSpec> =
+export const GoogleCloudDatacatalogV1CloudBigtableSystemSpec: Schema.Codec<GoogleCloudDatacatalogV1CloudBigtableSystemSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceDisplayName: Schema.optional(Schema.String),
   }).annotate({
@@ -1081,7 +1081,7 @@ export interface GoogleCloudDatacatalogV1SystemTimestamps {
   expireTime?: string;
 }
 
-export const GoogleCloudDatacatalogV1SystemTimestamps: Schema.Schema<GoogleCloudDatacatalogV1SystemTimestamps> =
+export const GoogleCloudDatacatalogV1SystemTimestamps: Schema.Codec<GoogleCloudDatacatalogV1SystemTimestamps> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1097,7 +1097,7 @@ export interface GoogleCloudDatacatalogV1GcsFileSpec {
   sizeBytes?: string;
 }
 
-export const GoogleCloudDatacatalogV1GcsFileSpec: Schema.Schema<GoogleCloudDatacatalogV1GcsFileSpec> =
+export const GoogleCloudDatacatalogV1GcsFileSpec: Schema.Codec<GoogleCloudDatacatalogV1GcsFileSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filePath: Schema.optional(Schema.String),
     gcsTimestamps: Schema.optional(GoogleCloudDatacatalogV1SystemTimestamps),
@@ -1111,7 +1111,7 @@ export interface GoogleCloudDatacatalogV1GcsFilesetSpec {
   sampleGcsFileSpecs?: ReadonlyArray<GoogleCloudDatacatalogV1GcsFileSpec>;
 }
 
-export const GoogleCloudDatacatalogV1GcsFilesetSpec: Schema.Schema<GoogleCloudDatacatalogV1GcsFilesetSpec> =
+export const GoogleCloudDatacatalogV1GcsFilesetSpec: Schema.Codec<GoogleCloudDatacatalogV1GcsFilesetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filePatterns: Schema.optional(Schema.Array(Schema.String)),
     sampleGcsFileSpecs: Schema.optional(
@@ -1124,7 +1124,7 @@ export interface GoogleCloudDatacatalogV1ViewSpec {
   viewQuery?: string;
 }
 
-export const GoogleCloudDatacatalogV1ViewSpec: Schema.Schema<GoogleCloudDatacatalogV1ViewSpec> =
+export const GoogleCloudDatacatalogV1ViewSpec: Schema.Codec<GoogleCloudDatacatalogV1ViewSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewQuery: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1ViewSpec" });
@@ -1134,7 +1134,7 @@ export interface GoogleCloudDatacatalogV1TableSpec {
   groupedEntry?: string;
 }
 
-export const GoogleCloudDatacatalogV1TableSpec: Schema.Schema<GoogleCloudDatacatalogV1TableSpec> =
+export const GoogleCloudDatacatalogV1TableSpec: Schema.Codec<GoogleCloudDatacatalogV1TableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupedEntry: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1TableSpec" });
@@ -1153,7 +1153,7 @@ export interface GoogleCloudDatacatalogV1BigQueryTableSpec {
   tableSpec?: GoogleCloudDatacatalogV1TableSpec;
 }
 
-export const GoogleCloudDatacatalogV1BigQueryTableSpec: Schema.Schema<GoogleCloudDatacatalogV1BigQueryTableSpec> =
+export const GoogleCloudDatacatalogV1BigQueryTableSpec: Schema.Codec<GoogleCloudDatacatalogV1BigQueryTableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableSourceType: Schema.optional(Schema.String),
     viewSpec: Schema.optional(GoogleCloudDatacatalogV1ViewSpec),
@@ -1171,7 +1171,7 @@ export interface GoogleCloudDatacatalogV1BigQueryDateShardedSpec {
   latestShardResource?: string;
 }
 
-export const GoogleCloudDatacatalogV1BigQueryDateShardedSpec: Schema.Schema<GoogleCloudDatacatalogV1BigQueryDateShardedSpec> =
+export const GoogleCloudDatacatalogV1BigQueryDateShardedSpec: Schema.Codec<GoogleCloudDatacatalogV1BigQueryDateShardedSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
     tablePrefix: Schema.optional(Schema.String),
@@ -1203,7 +1203,7 @@ export interface GoogleCloudDatacatalogV1DataplexExternalTable {
   dataCatalogEntry?: string;
 }
 
-export const GoogleCloudDatacatalogV1DataplexExternalTable: Schema.Schema<GoogleCloudDatacatalogV1DataplexExternalTable> =
+export const GoogleCloudDatacatalogV1DataplexExternalTable: Schema.Codec<GoogleCloudDatacatalogV1DataplexExternalTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     system: Schema.optional(Schema.String),
     fullyQualifiedName: Schema.optional(Schema.String),
@@ -1216,7 +1216,7 @@ export interface GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
   text?: string;
 }
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema> =
+export const GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema: Schema.Codec<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -1228,7 +1228,7 @@ export interface GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
   text?: string;
 }
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema> =
+export const GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema: Schema.Codec<GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -1240,7 +1240,7 @@ export interface GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
   text?: string;
 }
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema> =
+export const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema: Schema.Codec<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -1249,21 +1249,21 @@ export const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema: Schema.Schema
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema {}
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema> =
+export const GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema: Schema.Codec<GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema",
   });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema {}
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema> =
+export const GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema: Schema.Codec<GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema",
   });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema {}
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema> =
+export const GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema: Schema.Codec<GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema",
   });
@@ -1283,7 +1283,7 @@ export interface GoogleCloudDatacatalogV1PhysicalSchema {
   csv?: GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 }
 
-export const GoogleCloudDatacatalogV1PhysicalSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchema> =
+export const GoogleCloudDatacatalogV1PhysicalSchema: Schema.Codec<GoogleCloudDatacatalogV1PhysicalSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     avro: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema),
     thrift: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema),
@@ -1308,7 +1308,7 @@ export interface GoogleCloudDatacatalogV1DataplexSpec {
   projectId?: string;
 }
 
-export const GoogleCloudDatacatalogV1DataplexSpec: Schema.Schema<GoogleCloudDatacatalogV1DataplexSpec> =
+export const GoogleCloudDatacatalogV1DataplexSpec: Schema.Codec<GoogleCloudDatacatalogV1DataplexSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
     dataFormat: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchema),
@@ -1325,7 +1325,7 @@ export interface GoogleCloudDatacatalogV1DataplexTableSpec {
   userManaged?: boolean;
 }
 
-export const GoogleCloudDatacatalogV1DataplexTableSpec: Schema.Schema<GoogleCloudDatacatalogV1DataplexTableSpec> =
+export const GoogleCloudDatacatalogV1DataplexTableSpec: Schema.Codec<GoogleCloudDatacatalogV1DataplexTableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalTables: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1DataplexExternalTable),
@@ -1347,7 +1347,7 @@ export interface GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
   sqlQuery?: string;
 }
 
-export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec: Schema.Schema<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec> =
+export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec: Schema.Codec<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewType: Schema.optional(Schema.String),
     baseTable: Schema.optional(Schema.String),
@@ -1365,7 +1365,7 @@ export interface GoogleCloudDatacatalogV1DatabaseTableSpec {
   databaseViewSpec?: GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec;
 }
 
-export const GoogleCloudDatacatalogV1DatabaseTableSpec: Schema.Schema<GoogleCloudDatacatalogV1DatabaseTableSpec> =
+export const GoogleCloudDatacatalogV1DatabaseTableSpec: Schema.Codec<GoogleCloudDatacatalogV1DatabaseTableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     dataplexTable: Schema.optional(GoogleCloudDatacatalogV1DataplexTableSpec),
@@ -1383,7 +1383,7 @@ export interface GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
   type?: "DATABASE_TYPE_UNSPECIFIED" | "POSTGRES" | "MYSQL" | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec: Schema.Schema<GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec> =
+export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec: Schema.Codec<GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceId: Schema.optional(Schema.String),
     database: Schema.optional(Schema.String),
@@ -1401,7 +1401,7 @@ export interface GoogleCloudDatacatalogV1BigQueryConnectionSpec {
   hasCredential?: boolean;
 }
 
-export const GoogleCloudDatacatalogV1BigQueryConnectionSpec: Schema.Schema<GoogleCloudDatacatalogV1BigQueryConnectionSpec> =
+export const GoogleCloudDatacatalogV1BigQueryConnectionSpec: Schema.Codec<GoogleCloudDatacatalogV1BigQueryConnectionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionType: Schema.optional(Schema.String),
     cloudSql: Schema.optional(
@@ -1415,7 +1415,7 @@ export interface GoogleCloudDatacatalogV1DataSourceConnectionSpec {
   bigqueryConnectionSpec?: GoogleCloudDatacatalogV1BigQueryConnectionSpec;
 }
 
-export const GoogleCloudDatacatalogV1DataSourceConnectionSpec: Schema.Schema<GoogleCloudDatacatalogV1DataSourceConnectionSpec> =
+export const GoogleCloudDatacatalogV1DataSourceConnectionSpec: Schema.Codec<GoogleCloudDatacatalogV1DataSourceConnectionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryConnectionSpec: Schema.optional(
       GoogleCloudDatacatalogV1BigQueryConnectionSpec,
@@ -1433,7 +1433,7 @@ export interface GoogleCloudDatacatalogV1RoutineSpecArgument {
   type?: string;
 }
 
-export const GoogleCloudDatacatalogV1RoutineSpecArgument: Schema.Schema<GoogleCloudDatacatalogV1RoutineSpecArgument> =
+export const GoogleCloudDatacatalogV1RoutineSpecArgument: Schema.Codec<GoogleCloudDatacatalogV1RoutineSpecArgument> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.String),
@@ -1445,7 +1445,7 @@ export interface GoogleCloudDatacatalogV1BigQueryRoutineSpec {
   importedLibraries?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogV1BigQueryRoutineSpec: Schema.Schema<GoogleCloudDatacatalogV1BigQueryRoutineSpec> =
+export const GoogleCloudDatacatalogV1BigQueryRoutineSpec: Schema.Codec<GoogleCloudDatacatalogV1BigQueryRoutineSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     importedLibraries: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1BigQueryRoutineSpec" });
@@ -1469,7 +1469,7 @@ export interface GoogleCloudDatacatalogV1RoutineSpec {
   bigqueryRoutineSpec?: GoogleCloudDatacatalogV1BigQueryRoutineSpec;
 }
 
-export const GoogleCloudDatacatalogV1RoutineSpec: Schema.Schema<GoogleCloudDatacatalogV1RoutineSpec> =
+export const GoogleCloudDatacatalogV1RoutineSpec: Schema.Codec<GoogleCloudDatacatalogV1RoutineSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routineType: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
@@ -1504,7 +1504,7 @@ export interface GoogleCloudDatacatalogV1VertexDatasetSpec {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1VertexDatasetSpec: Schema.Schema<GoogleCloudDatacatalogV1VertexDatasetSpec> =
+export const GoogleCloudDatacatalogV1VertexDatasetSpec: Schema.Codec<GoogleCloudDatacatalogV1VertexDatasetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataItemCount: Schema.optional(Schema.String),
     dataType: Schema.optional(Schema.String),
@@ -1515,7 +1515,7 @@ export interface GoogleCloudDatacatalogV1DatasetSpec {
   vertexDatasetSpec?: GoogleCloudDatacatalogV1VertexDatasetSpec;
 }
 
-export const GoogleCloudDatacatalogV1DatasetSpec: Schema.Schema<GoogleCloudDatacatalogV1DatasetSpec> =
+export const GoogleCloudDatacatalogV1DatasetSpec: Schema.Codec<GoogleCloudDatacatalogV1DatasetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vertexDatasetSpec: Schema.optional(
       GoogleCloudDatacatalogV1VertexDatasetSpec,
@@ -1527,7 +1527,7 @@ export interface GoogleCloudDatacatalogV1DataplexFilesetSpec {
   dataplexSpec?: GoogleCloudDatacatalogV1DataplexSpec;
 }
 
-export const GoogleCloudDatacatalogV1DataplexFilesetSpec: Schema.Schema<GoogleCloudDatacatalogV1DataplexFilesetSpec> =
+export const GoogleCloudDatacatalogV1DataplexFilesetSpec: Schema.Codec<GoogleCloudDatacatalogV1DataplexFilesetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataplexSpec: Schema.optional(GoogleCloudDatacatalogV1DataplexSpec),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1DataplexFilesetSpec" });
@@ -1537,7 +1537,7 @@ export interface GoogleCloudDatacatalogV1FilesetSpec {
   dataplexFileset?: GoogleCloudDatacatalogV1DataplexFilesetSpec;
 }
 
-export const GoogleCloudDatacatalogV1FilesetSpec: Schema.Schema<GoogleCloudDatacatalogV1FilesetSpec> =
+export const GoogleCloudDatacatalogV1FilesetSpec: Schema.Codec<GoogleCloudDatacatalogV1FilesetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataplexFileset: Schema.optional(
       GoogleCloudDatacatalogV1DataplexFilesetSpec,
@@ -1555,7 +1555,7 @@ export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableC
   linkedResource?: string;
 }
 
-export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec: Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec> =
+export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec: Schema.Codec<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1571,7 +1571,7 @@ export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
   cloudBigtableClusterSpecs?: ReadonlyArray<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
 }
 
-export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpec: Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpec> =
+export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpec: Schema.Codec<GoogleCloudDatacatalogV1CloudBigtableInstanceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudBigtableClusterSpecs: Schema.optional(
       Schema.Array(
@@ -1587,7 +1587,7 @@ export interface GoogleCloudDatacatalogV1ServiceSpec {
   cloudBigtableInstanceSpec?: GoogleCloudDatacatalogV1CloudBigtableInstanceSpec;
 }
 
-export const GoogleCloudDatacatalogV1ServiceSpec: Schema.Schema<GoogleCloudDatacatalogV1ServiceSpec> =
+export const GoogleCloudDatacatalogV1ServiceSpec: Schema.Codec<GoogleCloudDatacatalogV1ServiceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudBigtableInstanceSpec: Schema.optional(
       GoogleCloudDatacatalogV1CloudBigtableInstanceSpec,
@@ -1610,7 +1610,7 @@ export interface GoogleCloudDatacatalogV1VertexModelSourceInfo {
   copy?: boolean;
 }
 
-export const GoogleCloudDatacatalogV1VertexModelSourceInfo: Schema.Schema<GoogleCloudDatacatalogV1VertexModelSourceInfo> =
+export const GoogleCloudDatacatalogV1VertexModelSourceInfo: Schema.Codec<GoogleCloudDatacatalogV1VertexModelSourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceType: Schema.optional(Schema.String),
     copy: Schema.optional(Schema.Boolean),
@@ -1629,7 +1629,7 @@ export interface GoogleCloudDatacatalogV1VertexModelSpec {
   containerImageUri?: string;
 }
 
-export const GoogleCloudDatacatalogV1VertexModelSpec: Schema.Schema<GoogleCloudDatacatalogV1VertexModelSpec> =
+export const GoogleCloudDatacatalogV1VertexModelSpec: Schema.Codec<GoogleCloudDatacatalogV1VertexModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionId: Schema.optional(Schema.String),
     versionAliases: Schema.optional(Schema.Array(Schema.String)),
@@ -1645,7 +1645,7 @@ export interface GoogleCloudDatacatalogV1ModelSpec {
   vertexModelSpec?: GoogleCloudDatacatalogV1VertexModelSpec;
 }
 
-export const GoogleCloudDatacatalogV1ModelSpec: Schema.Schema<GoogleCloudDatacatalogV1ModelSpec> =
+export const GoogleCloudDatacatalogV1ModelSpec: Schema.Codec<GoogleCloudDatacatalogV1ModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vertexModelSpec: Schema.optional(GoogleCloudDatacatalogV1VertexModelSpec),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1ModelSpec" });
@@ -1659,7 +1659,7 @@ export interface GoogleCloudDatacatalogV1FeatureOnlineStoreSpec {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec: Schema.Schema<GoogleCloudDatacatalogV1FeatureOnlineStoreSpec> =
+export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec: Schema.Codec<GoogleCloudDatacatalogV1FeatureOnlineStoreSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1FeatureOnlineStoreSpec" });
@@ -1671,7 +1671,7 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty {
   type?: string;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty: Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty> =
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty: Schema.Codec<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1686,7 +1686,7 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPrope
   properties?: ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties: Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties> =
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties: Schema.Codec<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -1706,7 +1706,7 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeRefe
   nodeTableColumns?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference: Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference> =
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference: Schema.Codec<GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeAlias: Schema.optional(Schema.String),
     edgeTableColumns: Schema.optional(Schema.Array(Schema.String)),
@@ -1739,7 +1739,7 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
   destinationNodeReference?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTable: Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTable> =
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTable: Schema.Codec<GoogleCloudDatacatalogV1GraphSpecGraphElementTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.String),
     alias: Schema.optional(Schema.String),
@@ -1772,7 +1772,7 @@ export interface GoogleCloudDatacatalogV1GraphSpec {
   edgeTables?: ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpec: Schema.Schema<GoogleCloudDatacatalogV1GraphSpec> =
+export const GoogleCloudDatacatalogV1GraphSpec: Schema.Codec<GoogleCloudDatacatalogV1GraphSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     nodeTables: Schema.optional(
@@ -1788,7 +1788,7 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey {
   columns?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey: Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey> =
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey: Schema.Codec<GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1802,7 +1802,7 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeig
   referenceColumn?: string;
 }
 
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping: Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping> =
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping: Schema.Codec<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     column: Schema.optional(Schema.String),
     referenceColumn: Schema.optional(Schema.String),
@@ -1820,7 +1820,7 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey {
   columnMappings?: ReadonlyArray<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
 }
 
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey: Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey> =
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey: Schema.Codec<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     entry: Schema.optional(Schema.String),
@@ -1840,7 +1840,7 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpec {
   foreignKeys?: ReadonlyArray<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
 }
 
-export const GoogleCloudDatacatalogV1SpannerTableSpec: Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpec> =
+export const GoogleCloudDatacatalogV1SpannerTableSpec: Schema.Codec<GoogleCloudDatacatalogV1SpannerTableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(
       GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey,
@@ -1855,7 +1855,7 @@ export interface GoogleCloudDatacatalogV1EntryOverview {
   overview?: string;
 }
 
-export const GoogleCloudDatacatalogV1EntryOverview: Schema.Schema<GoogleCloudDatacatalogV1EntryOverview> =
+export const GoogleCloudDatacatalogV1EntryOverview: Schema.Codec<GoogleCloudDatacatalogV1EntryOverview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overview: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1EntryOverview" });
@@ -1867,7 +1867,7 @@ export interface GoogleCloudDatacatalogV1ContactsPerson {
   email?: string;
 }
 
-export const GoogleCloudDatacatalogV1ContactsPerson: Schema.Schema<GoogleCloudDatacatalogV1ContactsPerson> =
+export const GoogleCloudDatacatalogV1ContactsPerson: Schema.Codec<GoogleCloudDatacatalogV1ContactsPerson> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     designation: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -1878,7 +1878,7 @@ export interface GoogleCloudDatacatalogV1Contacts {
   people?: ReadonlyArray<GoogleCloudDatacatalogV1ContactsPerson>;
 }
 
-export const GoogleCloudDatacatalogV1Contacts: Schema.Schema<GoogleCloudDatacatalogV1Contacts> =
+export const GoogleCloudDatacatalogV1Contacts: Schema.Codec<GoogleCloudDatacatalogV1Contacts> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     people: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1ContactsPerson),
@@ -1892,7 +1892,7 @@ export interface GoogleCloudDatacatalogV1BusinessContext {
   contacts?: GoogleCloudDatacatalogV1Contacts;
 }
 
-export const GoogleCloudDatacatalogV1BusinessContext: Schema.Schema<GoogleCloudDatacatalogV1BusinessContext> =
+export const GoogleCloudDatacatalogV1BusinessContext: Schema.Codec<GoogleCloudDatacatalogV1BusinessContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryOverview: Schema.optional(GoogleCloudDatacatalogV1EntryOverview),
     contacts: Schema.optional(GoogleCloudDatacatalogV1Contacts),
@@ -1910,7 +1910,7 @@ export interface GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec: Schema.Schema<GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec> =
+export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec: Schema.Codec<GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -1922,7 +1922,7 @@ export interface GoogleCloudDatacatalogV1ColumnSchemaFieldElementType {
   type?: string;
 }
 
-export const GoogleCloudDatacatalogV1ColumnSchemaFieldElementType: Schema.Schema<GoogleCloudDatacatalogV1ColumnSchemaFieldElementType> =
+export const GoogleCloudDatacatalogV1ColumnSchemaFieldElementType: Schema.Codec<GoogleCloudDatacatalogV1ColumnSchemaFieldElementType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -1960,7 +1960,7 @@ export interface GoogleCloudDatacatalogV1ColumnSchema {
   gcRule?: string;
 }
 
-export const GoogleCloudDatacatalogV1ColumnSchema: Schema.Schema<GoogleCloudDatacatalogV1ColumnSchema> =
+export const GoogleCloudDatacatalogV1ColumnSchema: Schema.Codec<GoogleCloudDatacatalogV1ColumnSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       column: Schema.optional(Schema.String),
@@ -1983,14 +1983,14 @@ export const GoogleCloudDatacatalogV1ColumnSchema: Schema.Schema<GoogleCloudData
     }),
   ).annotate({
     identifier: "GoogleCloudDatacatalogV1ColumnSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ColumnSchema>;
+  }) as any as Schema.Codec<GoogleCloudDatacatalogV1ColumnSchema>;
 
 export interface GoogleCloudDatacatalogV1Schema {
   /** The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels. */
   columns?: ReadonlyArray<GoogleCloudDatacatalogV1ColumnSchema>;
 }
 
-export const GoogleCloudDatacatalogV1Schema: Schema.Schema<GoogleCloudDatacatalogV1Schema> =
+export const GoogleCloudDatacatalogV1Schema: Schema.Codec<GoogleCloudDatacatalogV1Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogV1ColumnSchema),
@@ -2008,7 +2008,7 @@ export interface GoogleCloudDatacatalogV1UsageStats {
   totalExecutionTimeForCompletionsMillis?: number;
 }
 
-export const GoogleCloudDatacatalogV1UsageStats: Schema.Schema<GoogleCloudDatacatalogV1UsageStats> =
+export const GoogleCloudDatacatalogV1UsageStats: Schema.Codec<GoogleCloudDatacatalogV1UsageStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalCompletions: Schema.optional(Schema.Number),
     totalFailures: Schema.optional(Schema.Number),
@@ -2021,7 +2021,7 @@ export interface GoogleCloudDatacatalogV1CommonUsageStats {
   viewCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1CommonUsageStats: Schema.Schema<GoogleCloudDatacatalogV1CommonUsageStats> =
+export const GoogleCloudDatacatalogV1CommonUsageStats: Schema.Codec<GoogleCloudDatacatalogV1CommonUsageStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewCount: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1CommonUsageStats" });
@@ -2040,7 +2040,7 @@ export interface GoogleCloudDatacatalogV1UsageSignal {
   favoriteCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1UsageSignal: Schema.Schema<GoogleCloudDatacatalogV1UsageSignal> =
+export const GoogleCloudDatacatalogV1UsageSignal: Schema.Codec<GoogleCloudDatacatalogV1UsageSignal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     usageWithinTimeRange: Schema.optional(
@@ -2059,7 +2059,7 @@ export interface GoogleCloudDatacatalogV1StorageProperties {
   fileType?: string;
 }
 
-export const GoogleCloudDatacatalogV1StorageProperties: Schema.Schema<GoogleCloudDatacatalogV1StorageProperties> =
+export const GoogleCloudDatacatalogV1StorageProperties: Schema.Codec<GoogleCloudDatacatalogV1StorageProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filePattern: Schema.optional(Schema.Array(Schema.String)),
     fileType: Schema.optional(Schema.String),
@@ -2080,7 +2080,7 @@ export interface GoogleCloudDatacatalogV1DataSource {
   storageProperties?: GoogleCloudDatacatalogV1StorageProperties;
 }
 
-export const GoogleCloudDatacatalogV1DataSource: Schema.Schema<GoogleCloudDatacatalogV1DataSource> =
+export const GoogleCloudDatacatalogV1DataSource: Schema.Codec<GoogleCloudDatacatalogV1DataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
@@ -2097,7 +2097,7 @@ export interface GoogleCloudDatacatalogV1PersonalDetails {
   starTime?: string;
 }
 
-export const GoogleCloudDatacatalogV1PersonalDetails: Schema.Schema<GoogleCloudDatacatalogV1PersonalDetails> =
+export const GoogleCloudDatacatalogV1PersonalDetails: Schema.Codec<GoogleCloudDatacatalogV1PersonalDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     starred: Schema.optional(Schema.Boolean),
     starTime: Schema.optional(Schema.String),
@@ -2202,7 +2202,7 @@ export interface GoogleCloudDatacatalogV1Entry {
   personalDetails?: GoogleCloudDatacatalogV1PersonalDetails;
 }
 
-export const GoogleCloudDatacatalogV1Entry: Schema.Schema<GoogleCloudDatacatalogV1Entry> =
+export const GoogleCloudDatacatalogV1Entry: Schema.Codec<GoogleCloudDatacatalogV1Entry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     linkedResource: Schema.optional(Schema.String),
@@ -2259,7 +2259,7 @@ export interface GoogleCloudDatacatalogV1TagFieldEnumValue {
   displayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1TagFieldEnumValue: Schema.Schema<GoogleCloudDatacatalogV1TagFieldEnumValue> =
+export const GoogleCloudDatacatalogV1TagFieldEnumValue: Schema.Codec<GoogleCloudDatacatalogV1TagFieldEnumValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1TagFieldEnumValue" });
@@ -2283,7 +2283,7 @@ export interface GoogleCloudDatacatalogV1TagField {
   order?: number;
 }
 
-export const GoogleCloudDatacatalogV1TagField: Schema.Schema<GoogleCloudDatacatalogV1TagField> =
+export const GoogleCloudDatacatalogV1TagField: Schema.Codec<GoogleCloudDatacatalogV1TagField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
@@ -2314,7 +2314,7 @@ export interface GoogleCloudDatacatalogV1Tag {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1Tag: Schema.Schema<GoogleCloudDatacatalogV1Tag> =
+export const GoogleCloudDatacatalogV1Tag: Schema.Codec<GoogleCloudDatacatalogV1Tag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     template: Schema.optional(Schema.String),
@@ -2335,7 +2335,7 @@ export interface GoogleCloudDatacatalogV1TaggedEntry {
   absentTags?: ReadonlyArray<GoogleCloudDatacatalogV1Tag>;
 }
 
-export const GoogleCloudDatacatalogV1TaggedEntry: Schema.Schema<GoogleCloudDatacatalogV1TaggedEntry> =
+export const GoogleCloudDatacatalogV1TaggedEntry: Schema.Codec<GoogleCloudDatacatalogV1TaggedEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     v1Entry: Schema.optional(GoogleCloudDatacatalogV1Entry),
     presentTags: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1Tag)),
@@ -2347,7 +2347,7 @@ export interface GoogleCloudDatacatalogV1DumpItem {
   taggedEntry?: GoogleCloudDatacatalogV1TaggedEntry;
 }
 
-export const GoogleCloudDatacatalogV1DumpItem: Schema.Schema<GoogleCloudDatacatalogV1DumpItem> =
+export const GoogleCloudDatacatalogV1DumpItem: Schema.Codec<GoogleCloudDatacatalogV1DumpItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taggedEntry: Schema.optional(GoogleCloudDatacatalogV1TaggedEntry),
   }).annotate({ identifier: "GoogleCloudDatacatalogV1DumpItem" });
@@ -2418,7 +2418,7 @@ export const SearchCatalogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1beta1/catalog:search", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SearchCatalogRequest>;
+) as unknown as Schema.Codec<SearchCatalogRequest>;
 
 export type SearchCatalogResponse =
   GoogleCloudDatacatalogV1beta1SearchCatalogResponse;
@@ -2469,7 +2469,7 @@ export const CreateProjectsLocationsEntryGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEntryGroupsRequest>;
 
 export type CreateProjectsLocationsEntryGroupsResponse =
   GoogleCloudDatacatalogV1beta1EntryGroup;
@@ -2514,7 +2514,7 @@ export const PatchProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEntryGroupsRequest>;
 
 export type PatchProjectsLocationsEntryGroupsResponse =
   GoogleCloudDatacatalogV1beta1EntryGroup;
@@ -2554,7 +2554,7 @@ export const GetProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEntryGroupsRequest>;
 
 export type GetProjectsLocationsEntryGroupsResponse =
   GoogleCloudDatacatalogV1beta1EntryGroup;
@@ -2592,7 +2592,7 @@ export const DeleteProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEntryGroupsRequest>;
 
 export type DeleteProjectsLocationsEntryGroupsResponse = Empty;
 export const DeleteProjectsLocationsEntryGroupsResponse =
@@ -2634,7 +2634,7 @@ export const ListProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/entryGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEntryGroupsRequest>;
 
 export type ListProjectsLocationsEntryGroupsResponse =
   GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse;
@@ -2680,7 +2680,7 @@ export const SetIamPolicyProjectsLocationsEntryGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsEntryGroupsRequest>;
 
 export type SetIamPolicyProjectsLocationsEntryGroupsResponse = Policy;
 export const SetIamPolicyProjectsLocationsEntryGroupsResponse =
@@ -2723,7 +2723,7 @@ export const GetIamPolicyProjectsLocationsEntryGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsEntryGroupsRequest>;
 
 export type GetIamPolicyProjectsLocationsEntryGroupsResponse = Policy;
 export const GetIamPolicyProjectsLocationsEntryGroupsResponse =
@@ -2766,7 +2766,7 @@ export const TestIamPermissionsProjectsLocationsEntryGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsEntryGroupsRequest>;
 
 export type TestIamPermissionsProjectsLocationsEntryGroupsResponse =
   TestIamPermissionsResponse;
@@ -2815,7 +2815,7 @@ export const CreateProjectsLocationsEntryGroupsEntriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type CreateProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDatacatalogV1beta1Entry;
@@ -2860,7 +2860,7 @@ export const PatchProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type PatchProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDatacatalogV1beta1Entry;
@@ -2897,7 +2897,7 @@ export const DeleteProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type DeleteProjectsLocationsEntryGroupsEntriesResponse = Empty;
 export const DeleteProjectsLocationsEntryGroupsEntriesResponse =
@@ -2933,7 +2933,7 @@ export const GetProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type GetProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDatacatalogV1beta1Entry;
@@ -2977,7 +2977,7 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/entries" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type ListProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDatacatalogV1beta1ListEntriesResponse;
@@ -3023,7 +3023,7 @@ export const GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type GetIamPolicyProjectsLocationsEntryGroupsEntriesResponse = Policy;
 export const GetIamPolicyProjectsLocationsEntryGroupsEntriesResponse =
@@ -3066,7 +3066,7 @@ export const TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type TestIamPermissionsProjectsLocationsEntryGroupsEntriesResponse =
   TestIamPermissionsResponse;
@@ -3106,7 +3106,7 @@ export const CreateProjectsLocationsEntryGroupsEntriesTagsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+parent}/tags", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsEntriesTagsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
 export type CreateProjectsLocationsEntryGroupsEntriesTagsResponse =
   GoogleCloudDatacatalogV1beta1Tag;
@@ -3149,7 +3149,7 @@ export const PatchProjectsLocationsEntryGroupsEntriesTagsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsEntriesTagsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
 export type PatchProjectsLocationsEntryGroupsEntriesTagsResponse =
   GoogleCloudDatacatalogV1beta1Tag;
@@ -3186,7 +3186,7 @@ export const DeleteProjectsLocationsEntryGroupsEntriesTagsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsEntriesTagsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
 export type DeleteProjectsLocationsEntryGroupsEntriesTagsResponse = Empty;
 export const DeleteProjectsLocationsEntryGroupsEntriesTagsResponse =
@@ -3228,7 +3228,7 @@ export const ListProjectsLocationsEntryGroupsEntriesTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/tags" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
 export type ListProjectsLocationsEntryGroupsEntriesTagsResponse =
   GoogleCloudDatacatalogV1beta1ListTagsResponse;
@@ -3270,7 +3270,7 @@ export const CreateProjectsLocationsEntryGroupsTagsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+parent}/tags", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsTagsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEntryGroupsTagsRequest>;
 
 export type CreateProjectsLocationsEntryGroupsTagsResponse =
   GoogleCloudDatacatalogV1beta1Tag;
@@ -3313,7 +3313,7 @@ export const PatchProjectsLocationsEntryGroupsTagsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsTagsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEntryGroupsTagsRequest>;
 
 export type PatchProjectsLocationsEntryGroupsTagsResponse =
   GoogleCloudDatacatalogV1beta1Tag;
@@ -3350,7 +3350,7 @@ export const DeleteProjectsLocationsEntryGroupsTagsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsTagsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEntryGroupsTagsRequest>;
 
 export type DeleteProjectsLocationsEntryGroupsTagsResponse = Empty;
 export const DeleteProjectsLocationsEntryGroupsTagsResponse =
@@ -3392,7 +3392,7 @@ export const ListProjectsLocationsEntryGroupsTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/tags" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsTagsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEntryGroupsTagsRequest>;
 
 export type ListProjectsLocationsEntryGroupsTagsResponse =
   GoogleCloudDatacatalogV1beta1ListTagsResponse;
@@ -3445,7 +3445,7 @@ export const CreateProjectsLocationsTagTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTagTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTagTemplatesRequest>;
 
 export type CreateProjectsLocationsTagTemplatesResponse =
   GoogleCloudDatacatalogV1beta1TagTemplate;
@@ -3482,7 +3482,7 @@ export const GetProjectsLocationsTagTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTagTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTagTemplatesRequest>;
 
 export type GetProjectsLocationsTagTemplatesResponse =
   GoogleCloudDatacatalogV1beta1TagTemplate;
@@ -3525,7 +3525,7 @@ export const PatchProjectsLocationsTagTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTagTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTagTemplatesRequest>;
 
 export type PatchProjectsLocationsTagTemplatesResponse =
   GoogleCloudDatacatalogV1beta1TagTemplate;
@@ -3565,7 +3565,7 @@ export const DeleteProjectsLocationsTagTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTagTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTagTemplatesRequest>;
 
 export type DeleteProjectsLocationsTagTemplatesResponse = Empty;
 export const DeleteProjectsLocationsTagTemplatesResponse =
@@ -3608,7 +3608,7 @@ export const SetIamPolicyProjectsLocationsTagTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsTagTemplatesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsTagTemplatesRequest>;
 
 export type SetIamPolicyProjectsLocationsTagTemplatesResponse = Policy;
 export const SetIamPolicyProjectsLocationsTagTemplatesResponse =
@@ -3651,7 +3651,7 @@ export const GetIamPolicyProjectsLocationsTagTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsTagTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsTagTemplatesRequest>;
 
 export type GetIamPolicyProjectsLocationsTagTemplatesResponse = Policy;
 export const GetIamPolicyProjectsLocationsTagTemplatesResponse =
@@ -3694,7 +3694,7 @@ export const TestIamPermissionsProjectsLocationsTagTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsTagTemplatesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsTagTemplatesRequest>;
 
 export type TestIamPermissionsProjectsLocationsTagTemplatesResponse =
   TestIamPermissionsResponse;
@@ -3741,7 +3741,7 @@ export const CreateProjectsLocationsTagTemplatesFieldsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+parent}/fields", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTagTemplatesFieldsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTagTemplatesFieldsRequest>;
 
 export type CreateProjectsLocationsTagTemplatesFieldsResponse =
   GoogleCloudDatacatalogV1beta1TagTemplateField;
@@ -3786,7 +3786,7 @@ export const PatchProjectsLocationsTagTemplatesFieldsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTagTemplatesFieldsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTagTemplatesFieldsRequest>;
 
 export type PatchProjectsLocationsTagTemplatesFieldsResponse =
   GoogleCloudDatacatalogV1beta1TagTemplateField;
@@ -3828,7 +3828,7 @@ export const RenameProjectsLocationsTagTemplatesFieldsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:rename", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RenameProjectsLocationsTagTemplatesFieldsRequest>;
+  ) as unknown as Schema.Codec<RenameProjectsLocationsTagTemplatesFieldsRequest>;
 
 export type RenameProjectsLocationsTagTemplatesFieldsResponse =
   GoogleCloudDatacatalogV1beta1TagTemplateField;
@@ -3868,7 +3868,7 @@ export const DeleteProjectsLocationsTagTemplatesFieldsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTagTemplatesFieldsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTagTemplatesFieldsRequest>;
 
 export type DeleteProjectsLocationsTagTemplatesFieldsResponse = Empty;
 export const DeleteProjectsLocationsTagTemplatesFieldsResponse =
@@ -3909,7 +3909,7 @@ export const RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:rename", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest>;
+  ) as unknown as Schema.Codec<RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest>;
 
 export type RenameProjectsLocationsTagTemplatesFieldsEnumValuesResponse =
   GoogleCloudDatacatalogV1beta1TagTemplateField;
@@ -3955,7 +3955,7 @@ export const CreateProjectsLocationsTaxonomiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTaxonomiesRequest>;
 
 export type CreateProjectsLocationsTaxonomiesResponse =
   GoogleCloudDatacatalogV1beta1Taxonomy;
@@ -3992,7 +3992,7 @@ export const DeleteProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTaxonomiesRequest>;
 
 export type DeleteProjectsLocationsTaxonomiesResponse = Empty;
 export const DeleteProjectsLocationsTaxonomiesResponse =
@@ -4036,7 +4036,7 @@ export const PatchProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTaxonomiesRequest>;
 
 export type PatchProjectsLocationsTaxonomiesResponse =
   GoogleCloudDatacatalogV1beta1Taxonomy;
@@ -4082,7 +4082,7 @@ export const ListProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/taxonomies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTaxonomiesRequest>;
 
 export type ListProjectsLocationsTaxonomiesResponse =
   GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse;
@@ -4121,7 +4121,7 @@ export const GetProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTaxonomiesRequest>;
 
 export type GetProjectsLocationsTaxonomiesResponse =
   GoogleCloudDatacatalogV1beta1Taxonomy;
@@ -4163,7 +4163,7 @@ export const GetIamPolicyProjectsLocationsTaxonomiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsTaxonomiesRequest>;
 
 export type GetIamPolicyProjectsLocationsTaxonomiesResponse = Policy;
 export const GetIamPolicyProjectsLocationsTaxonomiesResponse =
@@ -4206,7 +4206,7 @@ export const SetIamPolicyProjectsLocationsTaxonomiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsTaxonomiesRequest>;
 
 export type SetIamPolicyProjectsLocationsTaxonomiesResponse = Policy;
 export const SetIamPolicyProjectsLocationsTaxonomiesResponse =
@@ -4249,7 +4249,7 @@ export const TestIamPermissionsProjectsLocationsTaxonomiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsTaxonomiesRequest>;
 
 export type TestIamPermissionsProjectsLocationsTaxonomiesResponse =
   TestIamPermissionsResponse;
@@ -4295,7 +4295,7 @@ export const ImportProjectsLocationsTaxonomiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsTaxonomiesRequest>;
 
 export type ImportProjectsLocationsTaxonomiesResponse =
   GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse;
@@ -4342,7 +4342,7 @@ export const ExportProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/taxonomies:export" }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsTaxonomiesRequest>;
 
 export type ExportProjectsLocationsTaxonomiesResponse =
   GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse;
@@ -4386,7 +4386,7 @@ export const CreateProjectsLocationsTaxonomiesPolicyTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTaxonomiesPolicyTagsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type CreateProjectsLocationsTaxonomiesPolicyTagsResponse =
   GoogleCloudDatacatalogV1beta1PolicyTag;
@@ -4423,7 +4423,7 @@ export const DeleteProjectsLocationsTaxonomiesPolicyTagsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTaxonomiesPolicyTagsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type DeleteProjectsLocationsTaxonomiesPolicyTagsResponse = Empty;
 export const DeleteProjectsLocationsTaxonomiesPolicyTagsResponse =
@@ -4467,7 +4467,7 @@ export const PatchProjectsLocationsTaxonomiesPolicyTagsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTaxonomiesPolicyTagsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type PatchProjectsLocationsTaxonomiesPolicyTagsResponse =
   GoogleCloudDatacatalogV1beta1PolicyTag;
@@ -4510,7 +4510,7 @@ export const ListProjectsLocationsTaxonomiesPolicyTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/policyTags" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type ListProjectsLocationsTaxonomiesPolicyTagsResponse =
   GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse;
@@ -4549,7 +4549,7 @@ export const GetProjectsLocationsTaxonomiesPolicyTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTaxonomiesPolicyTagsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type GetProjectsLocationsTaxonomiesPolicyTagsResponse =
   GoogleCloudDatacatalogV1beta1PolicyTag;
@@ -4591,7 +4591,7 @@ export const GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsResponse = Policy;
 export const GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsResponse =
@@ -4634,7 +4634,7 @@ export const SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsResponse = Policy;
 export const SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsResponse =
@@ -4677,7 +4677,7 @@ export const TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsResponse =
   TestIamPermissionsResponse;
@@ -4718,7 +4718,7 @@ export const LookupEntriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/entries:lookup" }),
   svc,
-) as unknown as Schema.Schema<LookupEntriesRequest>;
+) as unknown as Schema.Codec<LookupEntriesRequest>;
 
 export type LookupEntriesResponse = GoogleCloudDatacatalogV1beta1Entry;
 export const LookupEntriesResponse =

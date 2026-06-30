@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetEntitlementsActiveEntitlementsInput {
+  customer: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetEntitlementsActiveEntitlementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.String,
@@ -16,16 +23,47 @@ export const GetEntitlementsActiveEntitlementsInput =
       path: "/v1/entitlements/active_entitlements",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetEntitlementsActiveEntitlementsInput =
-  typeof GetEntitlementsActiveEntitlementsInput.Type;
+  ) as unknown as Schema.Codec<GetEntitlementsActiveEntitlementsInput>;
 
 // Output Schema
+export interface GetEntitlementsActiveEntitlementsOutput {
+  data: {
+    feature:
+      | string
+      | {
+          active: boolean;
+          id: string;
+          livemode: boolean;
+          lookup_key: string;
+          metadata: Record<string, string>;
+          name: string;
+          object: "entitlements.feature";
+        };
+    id: string;
+    livemode: boolean;
+    lookup_key: string;
+    object: "entitlements.active_entitlement";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetEntitlementsActiveEntitlementsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
-        feature: Schema.Unknown,
+        feature: Schema.Union([
+          Schema.String,
+          Schema.Struct({
+            active: Schema.Boolean,
+            id: Schema.String,
+            livemode: Schema.Boolean,
+            lookup_key: Schema.String,
+            metadata: Schema.Record(Schema.String, Schema.String),
+            name: Schema.String,
+            object: Schema.Literals(["entitlements.feature"]),
+          }),
+        ]),
         id: Schema.String,
         livemode: Schema.Boolean,
         lookup_key: Schema.String,
@@ -35,9 +73,7 @@ export const GetEntitlementsActiveEntitlementsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetEntitlementsActiveEntitlementsOutput =
-  typeof GetEntitlementsActiveEntitlementsOutput.Type;
+  }) as unknown as Schema.Codec<GetEntitlementsActiveEntitlementsOutput>;
 
 // The operation
 /**

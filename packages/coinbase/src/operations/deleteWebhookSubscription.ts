@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteWebhookSubscriptionInput {
+  subscriptionId: string;
+}
 export const DeleteWebhookSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const DeleteWebhookSubscriptionInput =
       method: "DELETE",
       path: "/v2/data/webhooks/subscriptions/{subscriptionId}",
     }),
-  );
-export type DeleteWebhookSubscriptionInput =
-  typeof DeleteWebhookSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeleteWebhookSubscriptionInput>;
 
 // Output Schema
+export type DeleteWebhookSubscriptionOutput = void;
 export const DeleteWebhookSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteWebhookSubscriptionOutput =
-  typeof DeleteWebhookSubscriptionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteWebhookSubscriptionOutput>;
 
 // The operation
 /**

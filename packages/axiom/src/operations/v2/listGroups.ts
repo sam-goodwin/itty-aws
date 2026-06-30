@@ -3,12 +3,22 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ListGroupsInput {}
 export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v2/rbac/groups" }));
-export type ListGroupsInput = typeof ListGroupsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v2/rbac/groups" }),
+) as unknown as Schema.Codec<ListGroupsInput>;
 
 // Output Schema
+export type ListGroupsOutput = {
+  description?: string;
+  isManaged?: boolean;
+  members?: string[];
+  name: string;
+  roles?: string[];
+  id: string;
+}[];
 export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     description: Schema.optional(Schema.String),
@@ -18,8 +28,7 @@ export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     roles: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.String,
   }),
-);
-export type ListGroupsOutput = typeof ListGroupsOutput.Type;
+) as unknown as Schema.Codec<ListGroupsOutput>;
 
 // The operation
 /**

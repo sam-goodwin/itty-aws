@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetCountrySpecsInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetCountrySpecsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -14,10 +20,27 @@ export const GetCountrySpecsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/country_specs",
     contentType: "form-urlencoded",
   }),
-);
-export type GetCountrySpecsInput = typeof GetCountrySpecsInput.Type;
+) as unknown as Schema.Codec<GetCountrySpecsInput>;
 
 // Output Schema
+export interface GetCountrySpecsOutput {
+  data: {
+    default_currency: string;
+    id: string;
+    object: "country_spec";
+    supported_bank_account_currencies: Record<string, string[]>;
+    supported_payment_currencies: string[];
+    supported_payment_methods: string[];
+    supported_transfer_countries: string[];
+    verification_fields: {
+      company: { additional: string[]; minimum: string[] };
+      individual: { additional: string[]; minimum: string[] };
+    };
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetCountrySpecsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -46,8 +69,7 @@ export const GetCountrySpecsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,
-});
-export type GetCountrySpecsOutput = typeof GetCountrySpecsOutput.Type;
+}) as unknown as Schema.Codec<GetCountrySpecsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EventDefinitionsGolangRetrieveInput {
+  project_id: string;
+}
 export const EventDefinitionsGolangRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const EventDefinitionsGolangRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/event_definitions/golang/",
     }),
-  );
-export type EventDefinitionsGolangRetrieveInput =
-  typeof EventDefinitionsGolangRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EventDefinitionsGolangRetrieveInput>;
 
 // Output Schema
+export type EventDefinitionsGolangRetrieveOutput = void;
 export const EventDefinitionsGolangRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EventDefinitionsGolangRetrieveOutput =
-  typeof EventDefinitionsGolangRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EventDefinitionsGolangRetrieveOutput>;
 
 // The operation
 /**

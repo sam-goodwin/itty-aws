@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface RefinementEntry {
   originalTranslation?: string;
 }
 
-export const RefinementEntry: Schema.Schema<RefinementEntry> =
+export const RefinementEntry: Schema.Codec<RefinementEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceText: Schema.optional(Schema.String),
     originalTranslation: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface SupportedLanguage {
   languageCode?: string;
 }
 
-export const SupportedLanguage: Schema.Schema<SupportedLanguage> =
+export const SupportedLanguage: Schema.Codec<SupportedLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     supportTarget: Schema.optional(Schema.Boolean),
@@ -59,7 +59,7 @@ export interface LanguageCodesSet {
   languageCodes?: ReadonlyArray<string>;
 }
 
-export const LanguageCodesSet: Schema.Schema<LanguageCodesSet> =
+export const LanguageCodesSet: Schema.Codec<LanguageCodesSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "LanguageCodesSet" });
@@ -73,7 +73,7 @@ export interface TranslateTextGlossaryConfig {
   glossary?: string;
 }
 
-export const TranslateTextGlossaryConfig: Schema.Schema<TranslateTextGlossaryConfig> =
+export const TranslateTextGlossaryConfig: Schema.Codec<TranslateTextGlossaryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreCase: Schema.optional(Schema.Boolean),
     contextualTranslationEnabled: Schema.optional(Schema.Boolean),
@@ -91,7 +91,7 @@ export interface Translation {
   glossaryConfig?: TranslateTextGlossaryConfig;
 }
 
-export const Translation: Schema.Schema<Translation> =
+export const Translation: Schema.Codec<Translation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     translatedText: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
@@ -106,7 +106,7 @@ export interface TranslateTextResponse {
   glossaryTranslations?: ReadonlyArray<Translation>;
 }
 
-export const TranslateTextResponse: Schema.Schema<TranslateTextResponse> =
+export const TranslateTextResponse: Schema.Codec<TranslateTextResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     translations: Schema.optional(Schema.Array(Translation)),
     glossaryTranslations: Schema.optional(Schema.Array(Translation)),
@@ -121,7 +121,7 @@ export interface RefineTextRequest {
   targetLanguageCode?: string;
 }
 
-export const RefineTextRequest: Schema.Schema<RefineTextRequest> =
+export const RefineTextRequest: Schema.Codec<RefineTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceLanguageCode: Schema.optional(Schema.String),
     refinementEntries: Schema.optional(Schema.Array(RefinementEntry)),
@@ -135,7 +135,7 @@ export interface LanguageCodePair {
   targetLanguageCode?: string;
 }
 
-export const LanguageCodePair: Schema.Schema<LanguageCodePair> =
+export const LanguageCodePair: Schema.Codec<LanguageCodePair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceLanguageCode: Schema.optional(Schema.String),
     targetLanguageCode: Schema.optional(Schema.String),
@@ -146,7 +146,7 @@ export interface GcsSource {
   inputUri?: string;
 }
 
-export const GcsSource: Schema.Schema<GcsSource> =
+export const GcsSource: Schema.Codec<GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsSource" });
@@ -156,7 +156,7 @@ export interface GlossaryInputConfig {
   gcsSource?: GcsSource;
 }
 
-export const GlossaryInputConfig: Schema.Schema<GlossaryInputConfig> =
+export const GlossaryInputConfig: Schema.Codec<GlossaryInputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GcsSource),
   }).annotate({ identifier: "GlossaryInputConfig" });
@@ -178,7 +178,7 @@ export interface Glossary {
   languageCodesSet?: LanguageCodesSet;
 }
 
-export const Glossary: Schema.Schema<Glossary> =
+export const Glossary: Schema.Codec<Glossary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryCount: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface ListGlossariesResponse {
   nextPageToken?: string;
 }
 
-export const ListGlossariesResponse: Schema.Schema<ListGlossariesResponse> =
+export const ListGlossariesResponse: Schema.Codec<ListGlossariesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     glossaries: Schema.optional(Schema.Array(Glossary)),
     nextPageToken: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface GcsDestination {
   outputUriPrefix?: string;
 }
 
-export const GcsDestination: Schema.Schema<GcsDestination> =
+export const GcsDestination: Schema.Codec<GcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputUriPrefix: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsDestination" });
@@ -219,7 +219,7 @@ export interface DocumentOutputConfig {
   mimeType?: string;
 }
 
-export const DocumentOutputConfig: Schema.Schema<DocumentOutputConfig> =
+export const DocumentOutputConfig: Schema.Codec<DocumentOutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
     mimeType: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface OutputConfig {
   gcsDestination?: GcsDestination;
 }
 
-export const OutputConfig: Schema.Schema<OutputConfig> =
+export const OutputConfig: Schema.Codec<OutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
   }).annotate({ identifier: "OutputConfig" });
@@ -240,7 +240,7 @@ export interface WaitOperationRequest {
   timeout?: string;
 }
 
-export const WaitOperationRequest: Schema.Schema<WaitOperationRequest> =
+export const WaitOperationRequest: Schema.Codec<WaitOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeout: Schema.optional(Schema.String),
   }).annotate({ identifier: "WaitOperationRequest" });
@@ -254,7 +254,7 @@ export interface DocumentTranslation {
   byteStreamOutputs?: ReadonlyArray<string>;
 }
 
-export const DocumentTranslation: Schema.Schema<DocumentTranslation> =
+export const DocumentTranslation: Schema.Codec<DocumentTranslation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     detectedLanguageCode: Schema.optional(Schema.String),
@@ -272,7 +272,7 @@ export interface TranslateDocumentResponse {
   glossaryConfig?: TranslateTextGlossaryConfig;
 }
 
-export const TranslateDocumentResponse: Schema.Schema<TranslateDocumentResponse> =
+export const TranslateDocumentResponse: Schema.Codec<TranslateDocumentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentTranslation: Schema.optional(DocumentTranslation),
     glossaryDocumentTranslation: Schema.optional(DocumentTranslation),
@@ -289,7 +289,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -311,7 +311,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -329,7 +329,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -349,7 +349,7 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -365,7 +365,7 @@ export interface DetectedLanguage {
   confidence?: number;
 }
 
-export const DetectedLanguage: Schema.Schema<DetectedLanguage> =
+export const DetectedLanguage: Schema.Codec<DetectedLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -380,7 +380,7 @@ export interface DocumentInputConfig {
   mimeType?: string;
 }
 
-export const DocumentInputConfig: Schema.Schema<DocumentInputConfig> =
+export const DocumentInputConfig: Schema.Codec<DocumentInputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GcsSource),
     content: Schema.optional(Schema.String),
@@ -392,7 +392,7 @@ export interface SupportedLanguages {
   languages?: ReadonlyArray<SupportedLanguage>;
 }
 
-export const SupportedLanguages: Schema.Schema<SupportedLanguages> =
+export const SupportedLanguages: Schema.Codec<SupportedLanguages> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languages: Schema.optional(Schema.Array(SupportedLanguage)),
   }).annotate({ identifier: "SupportedLanguages" });
@@ -402,14 +402,14 @@ export interface BatchDocumentInputConfig {
   gcsSource?: GcsSource;
 }
 
-export const BatchDocumentInputConfig: Schema.Schema<BatchDocumentInputConfig> =
+export const BatchDocumentInputConfig: Schema.Codec<BatchDocumentInputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GcsSource),
   }).annotate({ identifier: "BatchDocumentInputConfig" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -419,7 +419,7 @@ export interface BatchDocumentOutputConfig {
   gcsDestination?: GcsDestination;
 }
 
-export const BatchDocumentOutputConfig: Schema.Schema<BatchDocumentOutputConfig> =
+export const BatchDocumentOutputConfig: Schema.Codec<BatchDocumentOutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
   }).annotate({ identifier: "BatchDocumentOutputConfig" });
@@ -449,7 +449,7 @@ export interface BatchTranslateDocumentRequest {
   targetLanguageCodes?: ReadonlyArray<string>;
 }
 
-export const BatchTranslateDocumentRequest: Schema.Schema<BatchTranslateDocumentRequest> =
+export const BatchTranslateDocumentRequest: Schema.Codec<BatchTranslateDocumentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputConfigs: Schema.optional(Schema.Array(BatchDocumentInputConfig)),
     enableShadowRemovalNativePdf: Schema.optional(Schema.Boolean),
@@ -493,7 +493,7 @@ export interface TranslateDocumentRequest {
   model?: string;
 }
 
-export const TranslateDocumentRequest: Schema.Schema<TranslateDocumentRequest> =
+export const TranslateDocumentRequest: Schema.Codec<TranslateDocumentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isTranslateNativePdfOnly: Schema.optional(Schema.Boolean),
     targetLanguageCode: Schema.optional(Schema.String),
@@ -513,7 +513,7 @@ export interface DetectLanguageResponse {
   languages?: ReadonlyArray<DetectedLanguage>;
 }
 
-export const DetectLanguageResponse: Schema.Schema<DetectLanguageResponse> =
+export const DetectLanguageResponse: Schema.Codec<DetectLanguageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languages: Schema.optional(Schema.Array(DetectedLanguage)),
   }).annotate({ identifier: "DetectLanguageResponse" });
@@ -525,7 +525,7 @@ export interface InputConfig {
   gcsSource?: GcsSource;
 }
 
-export const InputConfig: Schema.Schema<InputConfig> =
+export const InputConfig: Schema.Codec<InputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     gcsSource: Schema.optional(GcsSource),
@@ -548,7 +548,7 @@ export interface BatchTranslateTextRequest {
   glossaries?: Record<string, TranslateTextGlossaryConfig>;
 }
 
-export const BatchTranslateTextRequest: Schema.Schema<BatchTranslateTextRequest> =
+export const BatchTranslateTextRequest: Schema.Codec<BatchTranslateTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     sourceLanguageCode: Schema.optional(Schema.String),
@@ -566,7 +566,7 @@ export interface RefineTextResponse {
   refinedTranslations?: ReadonlyArray<string>;
 }
 
-export const RefineTextResponse: Schema.Schema<RefineTextResponse> =
+export const RefineTextResponse: Schema.Codec<RefineTextResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refinedTranslations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RefineTextResponse" });
@@ -578,7 +578,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -601,7 +601,7 @@ export interface TranslateTextRequest {
   labels?: Record<string, string>;
 }
 
-export const TranslateTextRequest: Schema.Schema<TranslateTextRequest> =
+export const TranslateTextRequest: Schema.Codec<TranslateTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
@@ -614,7 +614,7 @@ export const TranslateTextRequest: Schema.Schema<TranslateTextRequest> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -630,7 +630,7 @@ export interface DetectLanguageRequest {
   content?: string;
 }
 
-export const DetectLanguageRequest: Schema.Schema<DetectLanguageRequest> =
+export const DetectLanguageRequest: Schema.Codec<DetectLanguageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -711,7 +711,7 @@ export const GetSupportedLanguagesProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+parent}/supportedLanguages" }),
     svc,
-  ) as unknown as Schema.Schema<GetSupportedLanguagesProjectsRequest>;
+  ) as unknown as Schema.Codec<GetSupportedLanguagesProjectsRequest>;
 
 export type GetSupportedLanguagesProjectsResponse = SupportedLanguages;
 export const GetSupportedLanguagesProjectsResponse =
@@ -752,7 +752,7 @@ export const TranslateTextProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TranslateTextProjectsRequest>;
+  ) as unknown as Schema.Codec<TranslateTextProjectsRequest>;
 
 export type TranslateTextProjectsResponse = TranslateTextResponse;
 export const TranslateTextProjectsResponse =
@@ -795,7 +795,7 @@ export const DetectLanguageProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DetectLanguageProjectsRequest>;
+  ) as unknown as Schema.Codec<DetectLanguageProjectsRequest>;
 
 export type DetectLanguageProjectsResponse = DetectLanguageResponse;
 export const DetectLanguageProjectsResponse =
@@ -838,7 +838,7 @@ export const TranslateTextProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TranslateTextProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<TranslateTextProjectsLocationsRequest>;
 
 export type TranslateTextProjectsLocationsResponse = TranslateTextResponse;
 export const TranslateTextProjectsLocationsResponse =
@@ -881,7 +881,7 @@ export const BatchTranslateDocumentProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchTranslateDocumentProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<BatchTranslateDocumentProjectsLocationsRequest>;
 
 export type BatchTranslateDocumentProjectsLocationsResponse = Operation;
 export const BatchTranslateDocumentProjectsLocationsResponse =
@@ -924,7 +924,7 @@ export const TranslateDocumentProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TranslateDocumentProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<TranslateDocumentProjectsLocationsRequest>;
 
 export type TranslateDocumentProjectsLocationsResponse =
   TranslateDocumentResponse;
@@ -968,7 +968,7 @@ export const DetectLanguageProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DetectLanguageProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<DetectLanguageProjectsLocationsRequest>;
 
 export type DetectLanguageProjectsLocationsResponse = DetectLanguageResponse;
 export const DetectLanguageProjectsLocationsResponse =
@@ -1018,7 +1018,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1060,7 +1060,7 @@ export const BatchTranslateTextProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchTranslateTextProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<BatchTranslateTextProjectsLocationsRequest>;
 
 export type BatchTranslateTextProjectsLocationsResponse = Operation;
 export const BatchTranslateTextProjectsLocationsResponse =
@@ -1096,7 +1096,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1135,7 +1135,7 @@ export const GetSupportedLanguagesProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+parent}/supportedLanguages" }),
     svc,
-  ) as unknown as Schema.Schema<GetSupportedLanguagesProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetSupportedLanguagesProjectsLocationsRequest>;
 
 export type GetSupportedLanguagesProjectsLocationsResponse = SupportedLanguages;
 export const GetSupportedLanguagesProjectsLocationsResponse =
@@ -1176,7 +1176,7 @@ export const RefineTextProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RefineTextProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<RefineTextProjectsLocationsRequest>;
 
 export type RefineTextProjectsLocationsResponse = RefineTextResponse;
 export const RefineTextProjectsLocationsResponse =
@@ -1212,7 +1212,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -1262,7 +1262,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -1303,7 +1303,7 @@ export const WaitProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v3beta1/{+name}:wait", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<WaitProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<WaitProjectsLocationsOperationsRequest>;
 
 export type WaitProjectsLocationsOperationsResponse = Operation;
 export const WaitProjectsLocationsOperationsResponse =
@@ -1339,7 +1339,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1376,7 +1376,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v3beta1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -1421,7 +1421,7 @@ export const ListProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+parent}/glossaries" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGlossariesRequest>;
 
 export type ListProjectsLocationsGlossariesResponse = ListGlossariesResponse;
 export const ListProjectsLocationsGlossariesResponse =
@@ -1466,7 +1466,7 @@ export const CreateProjectsLocationsGlossariesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGlossariesRequest>;
 
 export type CreateProjectsLocationsGlossariesResponse = Operation;
 export const CreateProjectsLocationsGlossariesResponse =
@@ -1502,7 +1502,7 @@ export const DeleteProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGlossariesRequest>;
 
 export type DeleteProjectsLocationsGlossariesResponse = Operation;
 export const DeleteProjectsLocationsGlossariesResponse =
@@ -1538,7 +1538,7 @@ export const GetProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGlossariesRequest>;
 
 export type GetProjectsLocationsGlossariesResponse = Glossary;
 export const GetProjectsLocationsGlossariesResponse =

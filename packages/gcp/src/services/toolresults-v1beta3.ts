@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,14 +27,14 @@ export interface ToolExitCode {
   number?: number;
 }
 
-export const ToolExitCode: Schema.Schema<ToolExitCode> =
+export const ToolExitCode: Schema.Codec<ToolExitCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     number: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ToolExitCode" });
 
 export interface IosRoboTest {}
 
-export const IosRoboTest: Schema.Schema<IosRoboTest> =
+export const IosRoboTest: Schema.Codec<IosRoboTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "IosRoboTest",
   });
@@ -46,7 +46,7 @@ export interface OverlappingUIElements {
   resourceName?: ReadonlyArray<string>;
 }
 
-export const OverlappingUIElements: Schema.Schema<OverlappingUIElements> =
+export const OverlappingUIElements: Schema.Codec<OverlappingUIElements> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     screenId: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.Array(Schema.String)),
@@ -59,7 +59,7 @@ export interface RoboScriptExecution {
   successfulActions?: number;
 }
 
-export const RoboScriptExecution: Schema.Schema<RoboScriptExecution> =
+export const RoboScriptExecution: Schema.Codec<RoboScriptExecution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalActions: Schema.optional(Schema.Number),
     successfulActions: Schema.optional(Schema.Number),
@@ -76,7 +76,7 @@ export interface Screen {
   locale?: string;
 }
 
-export const Screen: Schema.Schema<Screen> =
+export const Screen: Schema.Codec<Screen> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileReference: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -95,7 +95,7 @@ export interface ScreenshotCluster {
   keyScreen?: Screen;
 }
 
-export const ScreenshotCluster: Schema.Schema<ScreenshotCluster> =
+export const ScreenshotCluster: Schema.Codec<ScreenshotCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activity: Schema.optional(Schema.String),
     clusterId: Schema.optional(Schema.String),
@@ -108,7 +108,7 @@ export interface ListScreenshotClustersResponse {
   clusters?: ReadonlyArray<ScreenshotCluster>;
 }
 
-export const ListScreenshotClustersResponse: Schema.Schema<ListScreenshotClustersResponse> =
+export const ListScreenshotClustersResponse: Schema.Codec<ListScreenshotClustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusters: Schema.optional(Schema.Array(ScreenshotCluster)),
   }).annotate({ identifier: "ListScreenshotClustersResponse" });
@@ -118,7 +118,7 @@ export interface StackTrace {
   exception?: string;
 }
 
-export const StackTrace: Schema.Schema<StackTrace> =
+export const StackTrace: Schema.Codec<StackTrace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exception: Schema.optional(Schema.String),
   }).annotate({ identifier: "StackTrace" });
@@ -130,11 +130,12 @@ export interface Any {
   value?: string;
 }
 
-export const Any: Schema.Schema<Any> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Any: Schema.Codec<Any> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     typeUrl: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Any" });
+  },
+).annotate({ identifier: "Any" });
 
 export interface TestIssue {
   /** A brief human-readable message describing the issue. Required. */
@@ -192,7 +193,7 @@ export interface TestIssue {
     | (string & {});
 }
 
-export const TestIssue: Schema.Schema<TestIssue> =
+export const TestIssue: Schema.Codec<TestIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
@@ -211,7 +212,7 @@ export interface InconclusiveDetail {
   abortedByUser?: boolean;
 }
 
-export const InconclusiveDetail: Schema.Schema<InconclusiveDetail> =
+export const InconclusiveDetail: Schema.Codec<InconclusiveDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infrastructureFailure: Schema.optional(Schema.Boolean),
     hasErrorLogs: Schema.optional(Schema.Boolean),
@@ -229,7 +230,7 @@ export interface Thumbnail {
   heightPx?: number;
 }
 
-export const Thumbnail: Schema.Schema<Thumbnail> =
+export const Thumbnail: Schema.Codec<Thumbnail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     widthPx: Schema.optional(Schema.Number),
@@ -244,7 +245,7 @@ export interface Duration {
   nanos?: number;
 }
 
-export const Duration: Schema.Schema<Duration> =
+export const Duration: Schema.Codec<Duration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seconds: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -255,7 +256,7 @@ export interface TestTiming {
   testProcessDuration?: Duration;
 }
 
-export const TestTiming: Schema.Schema<TestTiming> =
+export const TestTiming: Schema.Codec<TestTiming> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testProcessDuration: Schema.optional(Duration),
   }).annotate({ identifier: "TestTiming" });
@@ -265,7 +266,7 @@ export interface FileReference {
   fileUri?: string;
 }
 
-export const FileReference: Schema.Schema<FileReference> =
+export const FileReference: Schema.Codec<FileReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "FileReference" });
@@ -277,7 +278,7 @@ export interface ResultsStorage {
   xunitXmlFile?: FileReference;
 }
 
-export const ResultsStorage: Schema.Schema<ResultsStorage> =
+export const ResultsStorage: Schema.Codec<ResultsStorage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultsStoragePath: Schema.optional(FileReference),
     xunitXmlFile: Schema.optional(FileReference),
@@ -285,7 +286,7 @@ export const ResultsStorage: Schema.Schema<ResultsStorage> =
 
 export interface PerformedGoogleLogin {}
 
-export const PerformedGoogleLogin: Schema.Schema<PerformedGoogleLogin> =
+export const PerformedGoogleLogin: Schema.Codec<PerformedGoogleLogin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PerformedGoogleLogin",
   });
@@ -297,7 +298,7 @@ export interface Timestamp {
   nanos?: number;
 }
 
-export const Timestamp: Schema.Schema<Timestamp> =
+export const Timestamp: Schema.Codec<Timestamp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seconds: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -312,7 +313,7 @@ export interface TestCaseReference {
   className?: string;
 }
 
-export const TestCaseReference: Schema.Schema<TestCaseReference> =
+export const TestCaseReference: Schema.Codec<TestCaseReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     testSuiteName: Schema.optional(Schema.String),
@@ -328,7 +329,7 @@ export interface ToolOutputReference {
   testCase?: TestCaseReference;
 }
 
-export const ToolOutputReference: Schema.Schema<ToolOutputReference> =
+export const ToolOutputReference: Schema.Codec<ToolOutputReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     output: Schema.optional(FileReference),
     creationTime: Schema.optional(Timestamp),
@@ -346,7 +347,7 @@ export interface ToolExecution {
   exitCode?: ToolExitCode;
 }
 
-export const ToolExecution: Schema.Schema<ToolExecution> =
+export const ToolExecution: Schema.Codec<ToolExecution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commandLineArguments: Schema.optional(Schema.Array(Schema.String)),
     toolOutputs: Schema.optional(Schema.Array(ToolOutputReference)),
@@ -359,7 +360,7 @@ export interface ToolExecutionStep {
   toolExecution?: ToolExecution;
 }
 
-export const ToolExecutionStep: Schema.Schema<ToolExecutionStep> =
+export const ToolExecutionStep: Schema.Codec<ToolExecutionStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolExecution: Schema.optional(ToolExecution),
   }).annotate({ identifier: "ToolExecutionStep" });
@@ -371,7 +372,7 @@ export interface ProjectSettings {
   defaultBucket?: string;
 }
 
-export const ProjectSettings: Schema.Schema<ProjectSettings> =
+export const ProjectSettings: Schema.Codec<ProjectSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     defaultBucket: Schema.optional(Schema.String),
@@ -398,7 +399,7 @@ export interface TestCase {
   status?: "passed" | "failed" | "error" | "skipped" | "flaky" | (string & {});
 }
 
-export const TestCase: Schema.Schema<TestCase> =
+export const TestCase: Schema.Codec<TestCase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stackTraces: Schema.optional(Schema.Array(StackTrace)),
     testCaseId: Schema.optional(Schema.String),
@@ -417,7 +418,7 @@ export interface ListTestCasesResponse {
   testCases?: ReadonlyArray<TestCase>;
 }
 
-export const ListTestCasesResponse: Schema.Schema<ListTestCasesResponse> =
+export const ListTestCasesResponse: Schema.Codec<ListTestCasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     testCases: Schema.optional(Schema.Array(TestCase)),
@@ -430,7 +431,7 @@ export interface NonSdkApiUsageViolation {
   apiSignatures?: ReadonlyArray<string>;
 }
 
-export const NonSdkApiUsageViolation: Schema.Schema<NonSdkApiUsageViolation> =
+export const NonSdkApiUsageViolation: Schema.Codec<NonSdkApiUsageViolation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uniqueApis: Schema.optional(Schema.Number),
     apiSignatures: Schema.optional(Schema.Array(Schema.String)),
@@ -441,7 +442,7 @@ export interface PerformedMonkeyActions {
   totalActions?: number;
 }
 
-export const PerformedMonkeyActions: Schema.Schema<PerformedMonkeyActions> =
+export const PerformedMonkeyActions: Schema.Codec<PerformedMonkeyActions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalActions: Schema.optional(Schema.Number),
   }).annotate({ identifier: "PerformedMonkeyActions" });
@@ -451,7 +452,7 @@ export interface BlankScreen {
   screenId?: string;
 }
 
-export const BlankScreen: Schema.Schema<BlankScreen> =
+export const BlankScreen: Schema.Codec<BlankScreen> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     screenId: Schema.optional(Schema.String),
   }).annotate({ identifier: "BlankScreen" });
@@ -461,7 +462,7 @@ export interface PendingGoogleUpdateInsight {
   nameOfGoogleLibrary?: string;
 }
 
-export const PendingGoogleUpdateInsight: Schema.Schema<PendingGoogleUpdateInsight> =
+export const PendingGoogleUpdateInsight: Schema.Codec<PendingGoogleUpdateInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameOfGoogleLibrary: Schema.optional(Schema.String),
   }).annotate({ identifier: "PendingGoogleUpdateInsight" });
@@ -473,7 +474,7 @@ export interface UpgradeInsight {
   upgradeToVersion?: string;
 }
 
-export const UpgradeInsight: Schema.Schema<UpgradeInsight> =
+export const UpgradeInsight: Schema.Codec<UpgradeInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     upgradeToVersion: Schema.optional(Schema.String),
@@ -490,7 +491,7 @@ export interface NonSdkApiInsight {
   exampleTraceMessages?: ReadonlyArray<string>;
 }
 
-export const NonSdkApiInsight: Schema.Schema<NonSdkApiInsight> =
+export const NonSdkApiInsight: Schema.Codec<NonSdkApiInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pendingGoogleUpdateInsight: Schema.optional(PendingGoogleUpdateInsight),
     matcherId: Schema.optional(Schema.String),
@@ -521,7 +522,7 @@ export interface NonSdkApi {
   insights?: ReadonlyArray<NonSdkApiInsight>;
 }
 
-export const NonSdkApi: Schema.Schema<NonSdkApi> =
+export const NonSdkApi: Schema.Codec<NonSdkApi> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invocationCount: Schema.optional(Schema.Number),
     list: Schema.optional(Schema.String),
@@ -532,7 +533,7 @@ export const NonSdkApi: Schema.Schema<NonSdkApi> =
 
 export interface AssetIssue {}
 
-export const AssetIssue: Schema.Schema<AssetIssue> =
+export const AssetIssue: Schema.Codec<AssetIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AssetIssue",
   });
@@ -542,7 +543,7 @@ export interface IosTestLoop {
   bundleId?: string;
 }
 
-export const IosTestLoop: Schema.Schema<IosTestLoop> =
+export const IosTestLoop: Schema.Codec<IosTestLoop> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bundleId: Schema.optional(Schema.String),
   }).annotate({ identifier: "IosTestLoop" });
@@ -556,7 +557,7 @@ export interface CPUInfo {
   cpuSpeedInGhz?: number;
 }
 
-export const CPUInfo: Schema.Schema<CPUInfo> =
+export const CPUInfo: Schema.Codec<CPUInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cpuProcessor: Schema.optional(Schema.String),
     numberOfCores: Schema.optional(Schema.Number),
@@ -568,7 +569,7 @@ export interface FatalException {
   stackTrace?: StackTrace;
 }
 
-export const FatalException: Schema.Schema<FatalException> =
+export const FatalException: Schema.Codec<FatalException> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stackTrace: Schema.optional(StackTrace),
   }).annotate({ identifier: "FatalException" });
@@ -584,7 +585,7 @@ export interface AndroidAppInfo {
   versionCode?: string;
 }
 
-export const AndroidAppInfo: Schema.Schema<AndroidAppInfo> =
+export const AndroidAppInfo: Schema.Codec<AndroidAppInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     versionName: Schema.optional(Schema.String),
@@ -608,7 +609,7 @@ export interface IndividualOutcome {
   stepId?: string;
 }
 
-export const IndividualOutcome: Schema.Schema<IndividualOutcome> =
+export const IndividualOutcome: Schema.Codec<IndividualOutcome> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runDuration: Schema.optional(Duration),
     multistepNumber: Schema.optional(Schema.Number),
@@ -630,7 +631,7 @@ export interface PrimaryStep {
   individualOutcome?: ReadonlyArray<IndividualOutcome>;
 }
 
-export const PrimaryStep: Schema.Schema<PrimaryStep> =
+export const PrimaryStep: Schema.Codec<PrimaryStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollUp: Schema.optional(Schema.String),
     individualOutcome: Schema.optional(Schema.Array(IndividualOutcome)),
@@ -643,7 +644,7 @@ export interface MemoryInfo {
   memoryCapInKibibyte?: string;
 }
 
-export const MemoryInfo: Schema.Schema<MemoryInfo> =
+export const MemoryInfo: Schema.Codec<MemoryInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memoryTotalInKibibyte: Schema.optional(Schema.String),
     memoryCapInKibibyte: Schema.optional(Schema.String),
@@ -682,7 +683,7 @@ export interface BasicPerfSampleSeries {
     | (string & {});
 }
 
-export const BasicPerfSampleSeries: Schema.Schema<BasicPerfSampleSeries> =
+export const BasicPerfSampleSeries: Schema.Codec<BasicPerfSampleSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perfUnit: Schema.optional(Schema.String),
     sampleSeriesLabel: Schema.optional(Schema.String),
@@ -704,7 +705,7 @@ export interface PerfSampleSeries {
   basicPerfSampleSeries?: BasicPerfSampleSeries;
 }
 
-export const PerfSampleSeries: Schema.Schema<PerfSampleSeries> =
+export const PerfSampleSeries: Schema.Codec<PerfSampleSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     historyId: Schema.optional(Schema.String),
     executionId: Schema.optional(Schema.String),
@@ -719,14 +720,14 @@ export interface ListPerfSampleSeriesResponse {
   perfSampleSeries?: ReadonlyArray<PerfSampleSeries>;
 }
 
-export const ListPerfSampleSeriesResponse: Schema.Schema<ListPerfSampleSeriesResponse> =
+export const ListPerfSampleSeriesResponse: Schema.Codec<ListPerfSampleSeriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perfSampleSeries: Schema.optional(Schema.Array(PerfSampleSeries)),
   }).annotate({ identifier: "ListPerfSampleSeriesResponse" });
 
 export interface StepSummary {}
 
-export const StepSummary: Schema.Schema<StepSummary> =
+export const StepSummary: Schema.Codec<StepSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StepSummary",
   });
@@ -736,7 +737,7 @@ export interface SuccessDetail {
   otherNativeCrash?: boolean;
 }
 
-export const SuccessDetail: Schema.Schema<SuccessDetail> =
+export const SuccessDetail: Schema.Codec<SuccessDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     otherNativeCrash: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SuccessDetail" });
@@ -758,7 +759,7 @@ export interface FailureDetail {
   unableToCrawl?: boolean;
 }
 
-export const FailureDetail: Schema.Schema<FailureDetail> =
+export const FailureDetail: Schema.Codec<FailureDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timedOut: Schema.optional(Schema.Boolean),
     notInstalled: Schema.optional(Schema.Boolean),
@@ -780,7 +781,7 @@ export interface SkippedDetail {
   incompatibleArchitecture?: boolean;
 }
 
-export const SkippedDetail: Schema.Schema<SkippedDetail> =
+export const SkippedDetail: Schema.Codec<SkippedDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     incompatibleDevice: Schema.optional(Schema.Boolean),
     pendingTimeout: Schema.optional(Schema.Boolean),
@@ -808,7 +809,7 @@ export interface Outcome {
   skippedDetail?: SkippedDetail;
 }
 
-export const Outcome: Schema.Schema<Outcome> =
+export const Outcome: Schema.Codec<Outcome> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inconclusiveDetail: Schema.optional(InconclusiveDetail),
     successDetail: Schema.optional(SuccessDetail),
@@ -836,7 +837,7 @@ export interface TestSuiteOverview {
   elapsedTime?: Duration;
 }
 
-export const TestSuiteOverview: Schema.Schema<TestSuiteOverview> =
+export const TestSuiteOverview: Schema.Codec<TestSuiteOverview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     xmlSource: Schema.optional(FileReference),
     errorCount: Schema.optional(Schema.Number),
@@ -862,7 +863,7 @@ export interface MergedResult {
   testSuiteOverviews?: ReadonlyArray<TestSuiteOverview>;
 }
 
-export const MergedResult: Schema.Schema<MergedResult> =
+export const MergedResult: Schema.Codec<MergedResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     outcome: Schema.optional(Outcome),
@@ -876,7 +877,7 @@ export interface ShardSummary {
   shardResult?: MergedResult;
 }
 
-export const ShardSummary: Schema.Schema<ShardSummary> =
+export const ShardSummary: Schema.Codec<ShardSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runs: Schema.optional(Schema.Array(StepSummary)),
     shardResult: Schema.optional(MergedResult),
@@ -887,7 +888,7 @@ export interface EnvironmentDimensionValueEntry {
   value?: string;
 }
 
-export const EnvironmentDimensionValueEntry: Schema.Schema<EnvironmentDimensionValueEntry> =
+export const EnvironmentDimensionValueEntry: Schema.Codec<EnvironmentDimensionValueEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -918,7 +919,7 @@ export interface Environment {
   resultsStorage?: ResultsStorage;
 }
 
-export const Environment: Schema.Schema<Environment> =
+export const Environment: Schema.Codec<Environment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     completionTime: Schema.optional(Timestamp),
     shardSummaries: Schema.optional(Schema.Array(ShardSummary)),
@@ -948,7 +949,7 @@ export interface ListEnvironmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
+export const ListEnvironmentsResponse: Schema.Codec<ListEnvironmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environments: Schema.optional(Schema.Array(Environment)),
     historyId: Schema.optional(Schema.String),
@@ -962,7 +963,7 @@ export interface SafeHtmlProto {
   privateDoNotAccessOrElseSafeHtmlWrappedValue?: string;
 }
 
-export const SafeHtmlProto: Schema.Schema<SafeHtmlProto> =
+export const SafeHtmlProto: Schema.Codec<SafeHtmlProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateDoNotAccessOrElseSafeHtmlWrappedValue: Schema.optional(
       Schema.String,
@@ -980,7 +981,7 @@ export interface RegionProto {
   widthPx?: number;
 }
 
-export const RegionProto: Schema.Schema<RegionProto> =
+export const RegionProto: Schema.Codec<RegionProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topPx: Schema.optional(Schema.Number),
     leftPx: Schema.optional(Schema.Number),
@@ -1011,7 +1012,7 @@ export interface SuggestionProto {
   screenId?: string;
 }
 
-export const SuggestionProto: Schema.Schema<SuggestionProto> =
+export const SuggestionProto: Schema.Codec<SuggestionProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shortMessage: Schema.optional(SafeHtmlProto),
     title: Schema.optional(Schema.String),
@@ -1038,7 +1039,7 @@ export interface SuggestionClusterProto {
     | (string & {});
 }
 
-export const SuggestionClusterProto: Schema.Schema<SuggestionClusterProto> =
+export const SuggestionClusterProto: Schema.Codec<SuggestionClusterProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(Schema.Array(SuggestionProto)),
     category: Schema.optional(Schema.String),
@@ -1051,7 +1052,7 @@ export interface ListStepAccessibilityClustersResponse {
   clusters?: ReadonlyArray<SuggestionClusterProto>;
 }
 
-export const ListStepAccessibilityClustersResponse: Schema.Schema<ListStepAccessibilityClustersResponse> =
+export const ListStepAccessibilityClustersResponse: Schema.Codec<ListStepAccessibilityClustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     clusters: Schema.optional(Schema.Array(SuggestionClusterProto)),
@@ -1062,7 +1063,7 @@ export interface IosAppCrashed {
   stackTrace?: StackTrace;
 }
 
-export const IosAppCrashed: Schema.Schema<IosAppCrashed> =
+export const IosAppCrashed: Schema.Codec<IosAppCrashed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stackTrace: Schema.optional(StackTrace),
   }).annotate({ identifier: "IosAppCrashed" });
@@ -1078,7 +1079,7 @@ export interface History {
   testPlatform?: "unknownPlatform" | "android" | "ios" | (string & {});
 }
 
-export const History: Schema.Schema<History> =
+export const History: Schema.Codec<History> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     historyId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1091,7 +1092,7 @@ export interface StepLabelsEntry {
   value?: string;
 }
 
-export const StepLabelsEntry: Schema.Schema<StepLabelsEntry> =
+export const StepLabelsEntry: Schema.Codec<StepLabelsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1102,7 +1103,7 @@ export interface StepDimensionValueEntry {
   value?: string;
 }
 
-export const StepDimensionValueEntry: Schema.Schema<StepDimensionValueEntry> =
+export const StepDimensionValueEntry: Schema.Codec<StepDimensionValueEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1117,7 +1118,7 @@ export interface MultiStep {
   primaryStepId?: string;
 }
 
-export const MultiStep: Schema.Schema<MultiStep> =
+export const MultiStep: Schema.Codec<MultiStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryStep: Schema.optional(PrimaryStep),
     multistepNumber: Schema.optional(Schema.Number),
@@ -1135,7 +1136,7 @@ export interface TestExecutionStep {
   testIssues?: ReadonlyArray<TestIssue>;
 }
 
-export const TestExecutionStep: Schema.Schema<TestExecutionStep> =
+export const TestExecutionStep: Schema.Codec<TestExecutionStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolExecution: Schema.optional(ToolExecution),
     testTiming: Schema.optional(TestTiming),
@@ -1181,7 +1182,7 @@ export interface Step {
     | (string & {});
 }
 
-export const Step: Schema.Schema<Step> =
+export const Step: Schema.Codec<Step> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolExecutionStep: Schema.optional(ToolExecutionStep),
     runDuration: Schema.optional(Duration),
@@ -1205,7 +1206,7 @@ export interface CrashDialogError {
   crashPackage?: string;
 }
 
-export const CrashDialogError: Schema.Schema<CrashDialogError> =
+export const CrashDialogError: Schema.Codec<CrashDialogError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     crashPackage: Schema.optional(Schema.String),
   }).annotate({ identifier: "CrashDialogError" });
@@ -1215,7 +1216,7 @@ export interface IosAppInfo {
   name?: string;
 }
 
-export const IosAppInfo: Schema.Schema<IosAppInfo> =
+export const IosAppInfo: Schema.Codec<IosAppInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "IosAppInfo" });
@@ -1227,7 +1228,7 @@ export interface IosXcTest {
   bundleId?: string;
 }
 
-export const IosXcTest: Schema.Schema<IosXcTest> =
+export const IosXcTest: Schema.Codec<IosXcTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     xcodeVersion: Schema.optional(Schema.String),
     bundleId: Schema.optional(Schema.String),
@@ -1246,7 +1247,7 @@ export interface IosTest {
   iosTestLoop?: IosTestLoop;
 }
 
-export const IosTest: Schema.Schema<IosTest> =
+export const IosTest: Schema.Codec<IosTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iosAppInfo: Schema.optional(IosAppInfo),
     iosRoboTest: Schema.optional(IosRoboTest),
@@ -1264,7 +1265,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1284,7 +1285,7 @@ export interface Image {
   error?: Status;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stepId: Schema.optional(Schema.String),
     sourceImage: Schema.optional(ToolOutputReference),
@@ -1299,7 +1300,7 @@ export interface ListStepThumbnailsResponse {
   nextPageToken?: string;
 }
 
-export const ListStepThumbnailsResponse: Schema.Schema<ListStepThumbnailsResponse> =
+export const ListStepThumbnailsResponse: Schema.Codec<ListStepThumbnailsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thumbnails: Schema.optional(Schema.Array(Image)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1307,7 +1308,7 @@ export const ListStepThumbnailsResponse: Schema.Schema<ListStepThumbnailsRespons
 
 export interface LogcatCollectionError {}
 
-export const LogcatCollectionError: Schema.Schema<LogcatCollectionError> =
+export const LogcatCollectionError: Schema.Codec<LogcatCollectionError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LogcatCollectionError",
   });
@@ -1319,7 +1320,7 @@ export interface PerfEnvironment {
   cpuInfo?: CPUInfo;
 }
 
-export const PerfEnvironment: Schema.Schema<PerfEnvironment> =
+export const PerfEnvironment: Schema.Codec<PerfEnvironment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memoryInfo: Schema.optional(MemoryInfo),
     cpuInfo: Schema.optional(CPUInfo),
@@ -1332,7 +1333,7 @@ export interface AppStartTime {
   initialDisplayTime?: Duration;
 }
 
-export const AppStartTime: Schema.Schema<AppStartTime> =
+export const AppStartTime: Schema.Codec<AppStartTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullyDrawnTime: Schema.optional(Duration),
     initialDisplayTime: Schema.optional(Duration),
@@ -1345,7 +1346,7 @@ export interface GraphicsStatsBucket {
   frameCount?: string;
 }
 
-export const GraphicsStatsBucket: Schema.Schema<GraphicsStatsBucket> =
+export const GraphicsStatsBucket: Schema.Codec<GraphicsStatsBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     renderMillis: Schema.optional(Schema.String),
     frameCount: Schema.optional(Schema.String),
@@ -1378,7 +1379,7 @@ export interface GraphicsStats {
   slowUiThreadCount?: string;
 }
 
-export const GraphicsStats: Schema.Schema<GraphicsStats> =
+export const GraphicsStats: Schema.Codec<GraphicsStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalFrames: Schema.optional(Schema.String),
     jankyFrames: Schema.optional(Schema.String),
@@ -1419,7 +1420,7 @@ export interface PerfMetricsSummary {
   stepId?: string;
 }
 
-export const PerfMetricsSummary: Schema.Schema<PerfMetricsSummary> =
+export const PerfMetricsSummary: Schema.Codec<PerfMetricsSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     perfEnvironment: Schema.optional(PerfEnvironment),
@@ -1433,7 +1434,7 @@ export const PerfMetricsSummary: Schema.Schema<PerfMetricsSummary> =
 
 export interface FailedToInstall {}
 
-export const FailedToInstall: Schema.Schema<FailedToInstall> =
+export const FailedToInstall: Schema.Codec<FailedToInstall> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FailedToInstall",
   });
@@ -1451,7 +1452,7 @@ export interface AndroidRoboTest {
   maxSteps?: number;
 }
 
-export const AndroidRoboTest: Schema.Schema<AndroidRoboTest> =
+export const AndroidRoboTest: Schema.Codec<AndroidRoboTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDepth: Schema.optional(Schema.Number),
     appInitialActivity: Schema.optional(Schema.String),
@@ -1471,7 +1472,7 @@ export interface AndroidInstrumentationTest {
   useOrchestrator?: boolean;
 }
 
-export const AndroidInstrumentationTest: Schema.Schema<AndroidInstrumentationTest> =
+export const AndroidInstrumentationTest: Schema.Codec<AndroidInstrumentationTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testRunnerClass: Schema.optional(Schema.String),
     testTargets: Schema.optional(Schema.Array(Schema.String)),
@@ -1481,7 +1482,7 @@ export const AndroidInstrumentationTest: Schema.Schema<AndroidInstrumentationTes
 
 export interface AndroidTestLoop {}
 
-export const AndroidTestLoop: Schema.Schema<AndroidTestLoop> =
+export const AndroidTestLoop: Schema.Codec<AndroidTestLoop> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AndroidTestLoop",
   });
@@ -1499,7 +1500,7 @@ export interface AndroidTest {
   androidTestLoop?: AndroidTestLoop;
 }
 
-export const AndroidTest: Schema.Schema<AndroidTest> =
+export const AndroidTest: Schema.Codec<AndroidTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidRoboTest: Schema.optional(AndroidRoboTest),
     androidInstrumentationTest: Schema.optional(AndroidInstrumentationTest),
@@ -1515,7 +1516,7 @@ export interface Specification {
   iosTest?: IosTest;
 }
 
-export const Specification: Schema.Schema<Specification> =
+export const Specification: Schema.Codec<Specification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidTest: Schema.optional(AndroidTest),
     iosTest: Schema.optional(IosTest),
@@ -1523,7 +1524,7 @@ export const Specification: Schema.Schema<Specification> =
 
 export interface LauncherActivityNotFound {}
 
-export const LauncherActivityNotFound: Schema.Schema<LauncherActivityNotFound> =
+export const LauncherActivityNotFound: Schema.Codec<LauncherActivityNotFound> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LauncherActivityNotFound",
   });
@@ -1533,7 +1534,7 @@ export interface PublishXunitXmlFilesRequest {
   xunitXmlFiles?: ReadonlyArray<FileReference>;
 }
 
-export const PublishXunitXmlFilesRequest: Schema.Schema<PublishXunitXmlFilesRequest> =
+export const PublishXunitXmlFilesRequest: Schema.Codec<PublishXunitXmlFilesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     xunitXmlFiles: Schema.optional(Schema.Array(FileReference)),
   }).annotate({ identifier: "PublishXunitXmlFilesRequest" });
@@ -1545,7 +1546,7 @@ export interface ListStepsResponse {
   nextPageToken?: string;
 }
 
-export const ListStepsResponse: Schema.Schema<ListStepsResponse> =
+export const ListStepsResponse: Schema.Codec<ListStepsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     steps: Schema.optional(Schema.Array(Step)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1556,10 +1557,11 @@ export interface ANR {
   stackTrace?: StackTrace;
 }
 
-export const ANR: Schema.Schema<ANR> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ANR: Schema.Codec<ANR> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     stackTrace: Schema.optional(StackTrace),
-  }).annotate({ identifier: "ANR" });
+  },
+).annotate({ identifier: "ANR" });
 
 export interface EncounteredNonAndroidUiWidgetScreen {
   /** Number of encountered distinct screens with non Android UI widgets. */
@@ -1568,7 +1570,7 @@ export interface EncounteredNonAndroidUiWidgetScreen {
   screenIds?: ReadonlyArray<string>;
 }
 
-export const EncounteredNonAndroidUiWidgetScreen: Schema.Schema<EncounteredNonAndroidUiWidgetScreen> =
+export const EncounteredNonAndroidUiWidgetScreen: Schema.Codec<EncounteredNonAndroidUiWidgetScreen> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     distinctScreens: Schema.optional(Schema.Number),
     screenIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1579,7 +1581,7 @@ export interface UnusedRoboDirective {
   resourceName?: string;
 }
 
-export const UnusedRoboDirective: Schema.Schema<UnusedRoboDirective> =
+export const UnusedRoboDirective: Schema.Codec<UnusedRoboDirective> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "UnusedRoboDirective" });
@@ -1591,7 +1593,7 @@ export interface InAppPurchasesFound {
   inAppPurchasesFlowsExplored?: number;
 }
 
-export const InAppPurchasesFound: Schema.Schema<InAppPurchasesFound> =
+export const InAppPurchasesFound: Schema.Codec<InAppPurchasesFound> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inAppPurchasesFlowsStarted: Schema.optional(Schema.Number),
     inAppPurchasesFlowsExplored: Schema.optional(Schema.Number),
@@ -1599,7 +1601,7 @@ export const InAppPurchasesFound: Schema.Schema<InAppPurchasesFound> =
 
 export interface DetectedAppSplashScreen {}
 
-export const DetectedAppSplashScreen: Schema.Schema<DetectedAppSplashScreen> =
+export const DetectedAppSplashScreen: Schema.Codec<DetectedAppSplashScreen> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DetectedAppSplashScreen",
   });
@@ -1609,21 +1611,21 @@ export interface UsedRoboDirective {
   resourceName?: string;
 }
 
-export const UsedRoboDirective: Schema.Schema<UsedRoboDirective> =
+export const UsedRoboDirective: Schema.Codec<UsedRoboDirective> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "UsedRoboDirective" });
 
 export interface MatrixDimensionDefinition {}
 
-export const MatrixDimensionDefinition: Schema.Schema<MatrixDimensionDefinition> =
+export const MatrixDimensionDefinition: Schema.Codec<MatrixDimensionDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MatrixDimensionDefinition",
   });
 
 export interface DeviceOutOfMemory {}
 
-export const DeviceOutOfMemory: Schema.Schema<DeviceOutOfMemory> =
+export const DeviceOutOfMemory: Schema.Codec<DeviceOutOfMemory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeviceOutOfMemory",
   });
@@ -1633,7 +1635,7 @@ export interface StartActivityNotFound {
   uri?: string;
 }
 
-export const StartActivityNotFound: Schema.Schema<StartActivityNotFound> =
+export const StartActivityNotFound: Schema.Codec<StartActivityNotFound> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -1663,7 +1665,7 @@ export interface Execution {
   testExecutionMatrixId?: string;
 }
 
-export const Execution: Schema.Schema<Execution> =
+export const Execution: Schema.Codec<Execution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionId: Schema.optional(Schema.String),
     creationTime: Schema.optional(Timestamp),
@@ -1679,7 +1681,7 @@ export const Execution: Schema.Schema<Execution> =
 
 export interface InsufficientCoverage {}
 
-export const InsufficientCoverage: Schema.Schema<InsufficientCoverage> =
+export const InsufficientCoverage: Schema.Codec<InsufficientCoverage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InsufficientCoverage",
   });
@@ -1691,7 +1693,7 @@ export interface PerfSample {
   value?: number;
 }
 
-export const PerfSample: Schema.Schema<PerfSample> =
+export const PerfSample: Schema.Codec<PerfSample> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleTime: Schema.optional(Timestamp),
     value: Schema.optional(Schema.Number),
@@ -1701,7 +1703,7 @@ export interface BatchCreatePerfSamplesResponse {
   perfSamples?: ReadonlyArray<PerfSample>;
 }
 
-export const BatchCreatePerfSamplesResponse: Schema.Schema<BatchCreatePerfSamplesResponse> =
+export const BatchCreatePerfSamplesResponse: Schema.Codec<BatchCreatePerfSamplesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perfSamples: Schema.optional(Schema.Array(PerfSample)),
   }).annotate({ identifier: "BatchCreatePerfSamplesResponse" });
@@ -1717,7 +1719,7 @@ export interface NonSdkApiUsageViolationReport {
   exampleApis?: ReadonlyArray<NonSdkApi>;
 }
 
-export const NonSdkApiUsageViolationReport: Schema.Schema<NonSdkApiUsageViolationReport> =
+export const NonSdkApiUsageViolationReport: Schema.Codec<NonSdkApiUsageViolationReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uniqueApis: Schema.optional(Schema.Number),
     targetSdkVersion: Schema.optional(Schema.Number),
@@ -1734,7 +1736,7 @@ export interface UIElementTooDeep {
   screenStateId?: string;
 }
 
-export const UIElementTooDeep: Schema.Schema<UIElementTooDeep> =
+export const UIElementTooDeep: Schema.Codec<UIElementTooDeep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     depth: Schema.optional(Schema.Number),
     screenId: Schema.optional(Schema.String),
@@ -1748,7 +1750,7 @@ export interface ListHistoriesResponse {
   histories?: ReadonlyArray<History>;
 }
 
-export const ListHistoriesResponse: Schema.Schema<ListHistoriesResponse> =
+export const ListHistoriesResponse: Schema.Codec<ListHistoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     histories: Schema.optional(Schema.Array(History)),
@@ -1756,7 +1758,7 @@ export const ListHistoriesResponse: Schema.Schema<ListHistoriesResponse> =
 
 export interface LicensingProtectionTermination {}
 
-export const LicensingProtectionTermination: Schema.Schema<LicensingProtectionTermination> =
+export const LicensingProtectionTermination: Schema.Codec<LicensingProtectionTermination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LicensingProtectionTermination",
   });
@@ -1768,7 +1770,7 @@ export interface ListExecutionsResponse {
   nextPageToken?: string;
 }
 
-export const ListExecutionsResponse: Schema.Schema<ListExecutionsResponse> =
+export const ListExecutionsResponse: Schema.Codec<ListExecutionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executions: Schema.optional(Schema.Array(Execution)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1781,7 +1783,7 @@ export interface EncounteredLoginScreen {
   screenIds?: ReadonlyArray<string>;
 }
 
-export const EncounteredLoginScreen: Schema.Schema<EncounteredLoginScreen> =
+export const EncounteredLoginScreen: Schema.Codec<EncounteredLoginScreen> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     distinctScreens: Schema.optional(Schema.Number),
     screenIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1792,7 +1794,7 @@ export interface UsedRoboIgnoreDirective {
   resourceName?: string;
 }
 
-export const UsedRoboIgnoreDirective: Schema.Schema<UsedRoboIgnoreDirective> =
+export const UsedRoboIgnoreDirective: Schema.Codec<UsedRoboIgnoreDirective> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "UsedRoboIgnoreDirective" });
@@ -1802,7 +1804,7 @@ export interface BatchCreatePerfSamplesRequest {
   perfSamples?: ReadonlyArray<PerfSample>;
 }
 
-export const BatchCreatePerfSamplesRequest: Schema.Schema<BatchCreatePerfSamplesRequest> =
+export const BatchCreatePerfSamplesRequest: Schema.Codec<BatchCreatePerfSamplesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perfSamples: Schema.optional(Schema.Array(PerfSample)),
   }).annotate({ identifier: "BatchCreatePerfSamplesRequest" });
@@ -1813,7 +1815,7 @@ export interface ListPerfSamplesResponse {
   nextPageToken?: string;
 }
 
-export const ListPerfSamplesResponse: Schema.Schema<ListPerfSamplesResponse> =
+export const ListPerfSamplesResponse: Schema.Codec<ListPerfSamplesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perfSamples: Schema.optional(Schema.Array(PerfSample)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1821,14 +1823,14 @@ export const ListPerfSamplesResponse: Schema.Schema<ListPerfSamplesResponse> =
 
 export interface UnspecifiedWarning {}
 
-export const UnspecifiedWarning: Schema.Schema<UnspecifiedWarning> =
+export const UnspecifiedWarning: Schema.Codec<UnspecifiedWarning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UnspecifiedWarning",
   });
 
 export interface AvailableDeepLinks {}
 
-export const AvailableDeepLinks: Schema.Schema<AvailableDeepLinks> =
+export const AvailableDeepLinks: Schema.Codec<AvailableDeepLinks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AvailableDeepLinks",
   });
@@ -1838,7 +1840,7 @@ export interface NativeCrash {
   stackTrace?: StackTrace;
 }
 
-export const NativeCrash: Schema.Schema<NativeCrash> =
+export const NativeCrash: Schema.Codec<NativeCrash> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stackTrace: Schema.optional(StackTrace),
   }).annotate({ identifier: "NativeCrash" });
@@ -1911,7 +1913,7 @@ export const GetSettingsProjectsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/settings",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSettingsProjectsRequest>;
+  ) as unknown as Schema.Codec<GetSettingsProjectsRequest>;
 
 export type GetSettingsProjectsResponse = ProjectSettings;
 export const GetSettingsProjectsResponse =
@@ -1946,7 +1948,7 @@ export const InitializeSettingsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InitializeSettingsProjectsRequest>;
+  ) as unknown as Schema.Codec<InitializeSettingsProjectsRequest>;
 
 export type InitializeSettingsProjectsResponse = ProjectSettings;
 export const InitializeSettingsProjectsResponse =
@@ -1988,7 +1990,7 @@ export const GetProjectsHistoriesRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsHistoriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsHistoriesRequest>;
 
 export type GetProjectsHistoriesResponse = History;
 export const GetProjectsHistoriesResponse = /*@__PURE__*/ /*#__PURE__*/ History;
@@ -2032,7 +2034,7 @@ export const ListProjectsHistoriesRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesRequest>;
 
 export type ListProjectsHistoriesResponse = ListHistoriesResponse;
 export const ListProjectsHistoriesResponse =
@@ -2077,7 +2079,7 @@ export const CreateProjectsHistoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsHistoriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsHistoriesRequest>;
 
 export type CreateProjectsHistoriesResponse = History;
 export const CreateProjectsHistoriesResponse =
@@ -2125,7 +2127,7 @@ export const ListProjectsHistoriesExecutionsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesExecutionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesExecutionsRequest>;
 
 export type ListProjectsHistoriesExecutionsResponse = ListExecutionsResponse;
 export const ListProjectsHistoriesExecutionsResponse =
@@ -2172,7 +2174,7 @@ export const GetProjectsHistoriesExecutionsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsHistoriesExecutionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsHistoriesExecutionsRequest>;
 
 export type GetProjectsHistoriesExecutionsResponse = Execution;
 export const GetProjectsHistoriesExecutionsResponse =
@@ -2222,7 +2224,7 @@ export const PatchProjectsHistoriesExecutionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsHistoriesExecutionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsHistoriesExecutionsRequest>;
 
 export type PatchProjectsHistoriesExecutionsResponse = Execution;
 export const PatchProjectsHistoriesExecutionsResponse =
@@ -2271,7 +2273,7 @@ export const CreateProjectsHistoriesExecutionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsHistoriesExecutionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsHistoriesExecutionsRequest>;
 
 export type CreateProjectsHistoriesExecutionsResponse = Execution;
 export const CreateProjectsHistoriesExecutionsResponse =
@@ -2323,7 +2325,7 @@ export const PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest>;
+  ) as unknown as Schema.Codec<PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest>;
 
 export type PublishXunitXmlFilesProjectsHistoriesExecutionsStepsResponse = Step;
 export const PublishXunitXmlFilesProjectsHistoriesExecutionsStepsResponse =
@@ -2375,7 +2377,7 @@ export const CreateProjectsHistoriesExecutionsStepsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsHistoriesExecutionsStepsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsHistoriesExecutionsStepsRequest>;
 
 export type CreateProjectsHistoriesExecutionsStepsResponse = Step;
 export const CreateProjectsHistoriesExecutionsStepsResponse =
@@ -2426,7 +2428,7 @@ export const ListProjectsHistoriesExecutionsStepsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesExecutionsStepsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesExecutionsStepsRequest>;
 
 export type ListProjectsHistoriesExecutionsStepsResponse = ListStepsResponse;
 export const ListProjectsHistoriesExecutionsStepsResponse =
@@ -2476,7 +2478,7 @@ export const GetProjectsHistoriesExecutionsStepsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsHistoriesExecutionsStepsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsHistoriesExecutionsStepsRequest>;
 
 export type GetProjectsHistoriesExecutionsStepsResponse = Step;
 export const GetProjectsHistoriesExecutionsStepsResponse =
@@ -2529,7 +2531,7 @@ export const PatchProjectsHistoriesExecutionsStepsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsHistoriesExecutionsStepsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsHistoriesExecutionsStepsRequest>;
 
 export type PatchProjectsHistoriesExecutionsStepsResponse = Step;
 export const PatchProjectsHistoriesExecutionsStepsResponse =
@@ -2577,7 +2579,7 @@ export const GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest>;
+  ) as unknown as Schema.Codec<GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest>;
 
 export type GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsResponse =
   PerfMetricsSummary;
@@ -2618,7 +2620,7 @@ export const AccessibilityClustersProjectsHistoriesExecutionsStepsRequest =
       path: "toolresults/v1beta3/{+name}:accessibilityClusters",
     }),
     svc,
-  ) as unknown as Schema.Schema<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>;
+  ) as unknown as Schema.Codec<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>;
 
 export type AccessibilityClustersProjectsHistoriesExecutionsStepsResponse =
   ListStepAccessibilityClustersResponse;
@@ -2671,7 +2673,7 @@ export const ListProjectsHistoriesExecutionsStepsThumbnailsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesExecutionsStepsThumbnailsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesExecutionsStepsThumbnailsRequest>;
 
 export type ListProjectsHistoriesExecutionsStepsThumbnailsResponse =
   ListStepThumbnailsResponse;
@@ -2726,7 +2728,7 @@ export const CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest>;
 
 export type CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryResponse =
   PerfMetricsSummary;
@@ -2786,7 +2788,7 @@ export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
 
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse =
   ListPerfSampleSeriesResponse;
@@ -2836,7 +2838,7 @@ export const GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
 
 export type GetProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse =
   PerfSampleSeries;
@@ -2887,7 +2889,7 @@ export const CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
 
 export type CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse =
   PerfSampleSeries;
@@ -2943,7 +2945,7 @@ export const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesR
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
+  ) as unknown as Schema.Codec<BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
 
 export type BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResponse =
   BatchCreatePerfSamplesResponse;
@@ -2951,7 +2953,11 @@ export const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesR
   /*@__PURE__*/ /*#__PURE__*/ BatchCreatePerfSamplesResponse;
 
 export type BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through repeated calls to this method in order to split up a large request payload - duplicates and existing timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements successfully inserted is returned in the response (omits items which already existed in the database). May return any of the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does not exist */
 export const batchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.OperationMethod<
@@ -2999,7 +3005,7 @@ export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest 
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
 
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResponse =
   ListPerfSamplesResponse;
@@ -3053,7 +3059,7 @@ export const GetProjectsHistoriesExecutionsStepsTestCasesRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsHistoriesExecutionsStepsTestCasesRequest>;
 
 export type GetProjectsHistoriesExecutionsStepsTestCasesResponse = TestCase;
 export const GetProjectsHistoriesExecutionsStepsTestCasesResponse =
@@ -3105,7 +3111,7 @@ export const ListProjectsHistoriesExecutionsStepsTestCasesRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesExecutionsStepsTestCasesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesExecutionsStepsTestCasesRequest>;
 
 export type ListProjectsHistoriesExecutionsStepsTestCasesResponse =
   ListTestCasesResponse;
@@ -3156,7 +3162,7 @@ export const GetProjectsHistoriesExecutionsEnvironmentsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsHistoriesExecutionsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsHistoriesExecutionsEnvironmentsRequest>;
 
 export type GetProjectsHistoriesExecutionsEnvironmentsResponse = Environment;
 export const GetProjectsHistoriesExecutionsEnvironmentsResponse =
@@ -3205,7 +3211,7 @@ export const ListProjectsHistoriesExecutionsEnvironmentsRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesExecutionsEnvironmentsRequest>;
 
 export type ListProjectsHistoriesExecutionsEnvironmentsResponse =
   ListEnvironmentsResponse;
@@ -3256,7 +3262,7 @@ export const GetProjectsHistoriesExecutionsClustersRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsHistoriesExecutionsClustersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsHistoriesExecutionsClustersRequest>;
 
 export type GetProjectsHistoriesExecutionsClustersResponse = ScreenshotCluster;
 export const GetProjectsHistoriesExecutionsClustersResponse =
@@ -3299,7 +3305,7 @@ export const ListProjectsHistoriesExecutionsClustersRequest =
       path: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHistoriesExecutionsClustersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHistoriesExecutionsClustersRequest>;
 
 export type ListProjectsHistoriesExecutionsClustersResponse =
   ListScreenshotClustersResponse;

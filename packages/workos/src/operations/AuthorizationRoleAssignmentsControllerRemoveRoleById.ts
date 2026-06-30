@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput {
+  organization_membership_id: string;
+  role_assignment_id: string;
+}
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput =
       method: "DELETE",
       path: "/authorization/organization_memberships/{organization_membership_id}/role_assignments/{role_assignment_id}",
     }),
-  );
-export type AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput =
-  typeof AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput>;
 
 // Output Schema
+export type AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput = void;
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput =
-  typeof AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput>;
 
 // The operation
 /**

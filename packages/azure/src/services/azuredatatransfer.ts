@@ -4,12 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AzureDataTransferListApprovedSchemasInput {
+  pipeline?: string;
+  direction?: "Send" | "Receive";
+}
 export const AzureDataTransferListApprovedSchemasInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pipeline: Schema.optional(Schema.String),
@@ -20,11 +25,21 @@ export const AzureDataTransferListApprovedSchemasInput =
       path: "/providers/Microsoft.AzureDataTransfer/listApprovedSchemas",
       apiVersion: "2025-05-21",
     }),
-  );
-export type AzureDataTransferListApprovedSchemasInput =
-  typeof AzureDataTransferListApprovedSchemasInput.Type;
+  ) as unknown as Schema.Codec<AzureDataTransferListApprovedSchemasInput>;
 
 // Output Schema
+export interface AzureDataTransferListApprovedSchemasOutput {
+  value?: {
+    id?: string;
+    connectionId?: string;
+    status?: "New" | "Approved";
+    name?: string;
+    content?: string;
+    direction?: "Send" | "Receive";
+    schemaUri?: string;
+    schemaType?: "Xsd" | "Zip";
+  }[];
+}
 export const AzureDataTransferListApprovedSchemasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -41,9 +56,7 @@ export const AzureDataTransferListApprovedSchemasOutput =
         }),
       ),
     ),
-  });
-export type AzureDataTransferListApprovedSchemasOutput =
-  typeof AzureDataTransferListApprovedSchemasOutput.Type;
+  }) as unknown as Schema.Codec<AzureDataTransferListApprovedSchemasOutput>;
 
 // The operation
 /**
@@ -57,6 +70,16 @@ export const AzureDataTransferListApprovedSchemas =
     outputSchema: AzureDataTransferListApprovedSchemasOutput,
   }));
 // Input Schema
+export interface AzureDataTransferValidateSchemaInput {
+  id?: string;
+  connectionId?: string;
+  status?: "New" | "Approved";
+  name?: string;
+  content?: string;
+  direction?: "Send" | "Receive";
+  schemaUri?: string;
+  schemaType?: "Xsd" | "Zip";
+}
 export const AzureDataTransferValidateSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -73,18 +96,18 @@ export const AzureDataTransferValidateSchemaInput =
       path: "/providers/Microsoft.AzureDataTransfer/validateSchema",
       apiVersion: "2025-05-21",
     }),
-  );
-export type AzureDataTransferValidateSchemaInput =
-  typeof AzureDataTransferValidateSchemaInput.Type;
+  ) as unknown as Schema.Codec<AzureDataTransferValidateSchemaInput>;
 
 // Output Schema
+export interface AzureDataTransferValidateSchemaOutput {
+  status?: "Succeeded" | "Failed";
+  message?: string;
+}
 export const AzureDataTransferValidateSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
     message: Schema.optional(Schema.String),
-  });
-export type AzureDataTransferValidateSchemaOutput =
-  typeof AzureDataTransferValidateSchemaOutput.Type;
+  }) as unknown as Schema.Codec<AzureDataTransferValidateSchemaOutput>;
 
 // The operation
 /**
@@ -98,6 +121,75 @@ export const AzureDataTransferValidateSchema =
     outputSchema: AzureDataTransferValidateSchemaOutput,
   }));
 // Input Schema
+export interface ConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  properties?: {
+    pipeline: string;
+    direction?: "Send" | "Receive";
+    justification?: string;
+    status?: "InReview" | "Approved" | "Rejected" | "Accepted";
+    forceDisabledStatus?: (
+      | "ConnectionForceDisabled"
+      | "FlowTypeForceDisabled"
+    )[];
+    statusReason?: string;
+    linkStatus?: "Linked" | "Unlinked";
+    linkedConnectionId?: string;
+    flowTypes?: (
+      | "Unknown"
+      | "Complex"
+      | "DevSecOps"
+      | "Messaging"
+      | "Mission"
+      | "MicrosoftInternal"
+      | "BasicFiles"
+      | "Data"
+      | "Standard"
+      | "StreamingVideo"
+      | "Opaque"
+      | "MissionOpaqueXML"
+      | "DiskImages"
+      | "API"
+    )[];
+    requirementId?: string;
+    remoteSubscriptionId?: string;
+    approver?: string;
+    pin?: string;
+    dateSubmitted?: string;
+    primaryContact?: string;
+    secondaryContacts?: string[];
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Accepted";
+    policies?: string[];
+    schemas?: {
+      id?: string;
+      connectionId?: string;
+      status?: "New" | "Approved";
+      name?: string;
+      content?: string;
+      direction?: "Send" | "Receive";
+      schemaUri?: string;
+      schemaType?: "Xsd" | "Zip";
+    }[];
+    schemaUris?: string[];
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -199,11 +291,22 @@ export const ConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
       apiVersion: "2025-05-21",
     }),
-  );
-export type ConnectionsCreateOrUpdateInput =
-  typeof ConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -223,9 +326,7 @@ export const ConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectionsCreateOrUpdateOutput =
-  typeof ConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -243,6 +344,11 @@ export const ConnectionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+}
 export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -255,12 +361,12 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
+) as unknown as Schema.Codec<ConnectionsDeleteInput>;
 
 // Output Schema
-export const ConnectionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectionsDeleteOutput = typeof ConnectionsDeleteOutput.Type;
+export type ConnectionsDeleteOutput = void;
+export const ConnectionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -276,6 +382,11 @@ export const ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsDeleteOutput,
 }));
 // Input Schema
+export interface ConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+}
 export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -286,10 +397,22 @@ export const ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type ConnectionsGetInput = typeof ConnectionsGetInput.Type;
+) as unknown as Schema.Codec<ConnectionsGetInput>;
 
 // Output Schema
+export interface ConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -308,8 +431,7 @@ export const ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ConnectionsGetOutput = typeof ConnectionsGetOutput.Type;
+}) as unknown as Schema.Codec<ConnectionsGetOutput>;
 
 // The operation
 /**
@@ -325,6 +447,13 @@ export const ConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsGetOutput,
 }));
 // Input Schema
+export interface ConnectionsLinkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  id: string;
+  statusReason?: string;
+}
 export const ConnectionsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -337,10 +466,22 @@ export const ConnectionsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link",
     apiVersion: "2025-05-21",
   }),
-);
-export type ConnectionsLinkInput = typeof ConnectionsLinkInput.Type;
+) as unknown as Schema.Codec<ConnectionsLinkInput>;
 
 // Output Schema
+export interface ConnectionsLinkOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionsLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -359,8 +500,7 @@ export const ConnectionsLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ConnectionsLinkOutput = typeof ConnectionsLinkOutput.Type;
+}) as unknown as Schema.Codec<ConnectionsLinkOutput>;
 
 // The operation
 /**
@@ -376,6 +516,10 @@ export const ConnectionsLink = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsLinkOutput,
 }));
 // Input Schema
+export interface ConnectionsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConnectionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -386,11 +530,25 @@ export const ConnectionsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections",
       apiVersion: "2025-05-21",
     }),
-  );
-export type ConnectionsListByResourceGroupInput =
-  typeof ConnectionsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ConnectionsListByResourceGroupInput>;
 
 // Output Schema
+export interface ConnectionsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectionsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -425,9 +583,7 @@ export const ConnectionsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectionsListByResourceGroupOutput =
-  typeof ConnectionsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -443,6 +599,9 @@ export const ConnectionsListByResourceGroup =
     outputSchema: ConnectionsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ConnectionsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ConnectionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -452,11 +611,25 @@ export const ConnectionsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureDataTransfer/connections",
       apiVersion: "2025-05-21",
     }),
-  );
-export type ConnectionsListBySubscriptionInput =
-  typeof ConnectionsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ConnectionsListBySubscriptionInput>;
 
 // Output Schema
+export interface ConnectionsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectionsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -491,9 +664,7 @@ export const ConnectionsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectionsListBySubscriptionOutput =
-  typeof ConnectionsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -508,6 +679,25 @@ export const ConnectionsListBySubscription =
     outputSchema: ConnectionsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const ConnectionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -542,10 +732,22 @@ export const ConnectionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type ConnectionsUpdateInput = typeof ConnectionsUpdateInput.Type;
+) as unknown as Schema.Codec<ConnectionsUpdateInput>;
 
 // Output Schema
+export interface ConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -565,8 +767,7 @@ export const ConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectionsUpdateOutput = typeof ConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -582,6 +783,106 @@ export const ConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionsUpdateOutput,
 }));
 // Input Schema
+export interface FlowsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+  properties?: {
+    connection?: {
+      name?: string;
+      id: string;
+      location?: string;
+      subscriptionName?: string;
+    };
+    flowId?: string;
+    keyVaultUri?: string;
+    linkStatus?: "Linked" | "Unlinked";
+    linkedFlowId?: string;
+    status?: "Enabled" | "Disabled";
+    forceDisabledStatus?: (
+      | "ConnectionForceDisabled"
+      | "FlowTypeForceDisabled"
+    )[];
+    storageAccountName?: string;
+    storageAccountId?: string;
+    storageContainerName?: string;
+    storageTableName?: string;
+    serviceBusQueueId?: string;
+    flowType?:
+      | "Unknown"
+      | "Complex"
+      | "DevSecOps"
+      | "Messaging"
+      | "Mission"
+      | "MicrosoftInternal"
+      | "BasicFiles"
+      | "Data"
+      | "Standard"
+      | "StreamingVideo"
+      | "Opaque"
+      | "MissionOpaqueXML"
+      | "DiskImages"
+      | "API";
+    dataType?: "Blob" | "Table";
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Accepted";
+    policies?: string[];
+    schema?: {
+      id?: string;
+      connectionId?: string;
+      status?: "New" | "Approved";
+      name?: string;
+      content?: string;
+      direction?: "Send" | "Receive";
+      schemaUri?: string;
+      schemaType?: "Xsd" | "Zip";
+    };
+    messagingOptions?: {
+      billingTier?: "BlobTransport" | "Standard" | "Premium";
+    };
+    apiFlowOptions?: {
+      remoteEndpoint?: string;
+      cname?: string;
+      apiMode?: "SDK" | "Endpoint";
+      identityTranslation?: "UserIdentity" | "ServiceIdentity";
+      senderClientId?: string;
+      remoteCallingModeClientId?: string;
+      audienceOverride?: string;
+    };
+    customerManagedKeyVaultUri?: string;
+    streamId?: string;
+    streamProtocol?: "UDP" | "SRT" | "RTP";
+    streamLatency?: number;
+    passphrase?: string;
+    sourceAddresses?: { sourceAddresses?: string[] };
+    destinationEndpoints?: string[];
+    destinationEndpointPorts?: number[];
+    eventHubId?: string;
+    consumerGroup?: string;
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const FlowsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -725,10 +1026,22 @@ export const FlowsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsCreateOrUpdateInput = typeof FlowsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FlowsCreateOrUpdateInput>;
 
 // Output Schema
+export interface FlowsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -748,8 +1061,7 @@ export const FlowsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FlowsCreateOrUpdateOutput = typeof FlowsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FlowsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -766,6 +1078,12 @@ export const FlowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FlowsCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface FlowsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -777,12 +1095,12 @@ export const FlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type FlowsDeleteInput = typeof FlowsDeleteInput.Type;
+) as unknown as Schema.Codec<FlowsDeleteInput>;
 
 // Output Schema
-export const FlowsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FlowsDeleteOutput = typeof FlowsDeleteOutput.Type;
+export type FlowsDeleteOutput = void;
+export const FlowsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FlowsDeleteOutput>;
 
 // The operation
 /**
@@ -799,6 +1117,12 @@ export const FlowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FlowsDeleteOutput,
 }));
 // Input Schema
+export interface FlowsDisableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -810,10 +1134,22 @@ export const FlowsDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable",
     apiVersion: "2025-05-21",
   }),
-);
-export type FlowsDisableInput = typeof FlowsDisableInput.Type;
+) as unknown as Schema.Codec<FlowsDisableInput>;
 
 // Output Schema
+export interface FlowsDisableOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsDisableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -832,8 +1168,7 @@ export const FlowsDisableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FlowsDisableOutput = typeof FlowsDisableOutput.Type;
+}) as unknown as Schema.Codec<FlowsDisableOutput>;
 
 // The operation
 /**
@@ -850,6 +1185,12 @@ export const FlowsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FlowsDisableOutput,
 }));
 // Input Schema
+export interface FlowsEnableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -861,10 +1202,22 @@ export const FlowsEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable",
     apiVersion: "2025-05-21",
   }),
-);
-export type FlowsEnableInput = typeof FlowsEnableInput.Type;
+) as unknown as Schema.Codec<FlowsEnableInput>;
 
 // Output Schema
+export interface FlowsEnableOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsEnableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -883,8 +1236,7 @@ export const FlowsEnableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FlowsEnableOutput = typeof FlowsEnableOutput.Type;
+}) as unknown as Schema.Codec<FlowsEnableOutput>;
 
 // The operation
 /**
@@ -901,6 +1253,12 @@ export const FlowsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FlowsEnableOutput,
 }));
 // Input Schema
+export interface FlowsGeneratePassphraseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsGeneratePassphraseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -913,11 +1271,22 @@ export const FlowsGeneratePassphraseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/generatePassphrase",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsGeneratePassphraseInput =
-  typeof FlowsGeneratePassphraseInput.Type;
+  ) as unknown as Schema.Codec<FlowsGeneratePassphraseInput>;
 
 // Output Schema
+export interface FlowsGeneratePassphraseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsGeneratePassphraseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -937,9 +1306,7 @@ export const FlowsGeneratePassphraseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FlowsGeneratePassphraseOutput =
-  typeof FlowsGeneratePassphraseOutput.Type;
+  }) as unknown as Schema.Codec<FlowsGeneratePassphraseOutput>;
 
 // The operation
 /**
@@ -958,6 +1325,12 @@ export const FlowsGeneratePassphrase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FlowsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -969,10 +1342,22 @@ export const FlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type FlowsGetInput = typeof FlowsGetInput.Type;
+) as unknown as Schema.Codec<FlowsGetInput>;
 
 // Output Schema
+export interface FlowsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -991,8 +1376,7 @@ export const FlowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FlowsGetOutput = typeof FlowsGetOutput.Type;
+}) as unknown as Schema.Codec<FlowsGetOutput>;
 
 // The operation
 /**
@@ -1009,6 +1393,12 @@ export const FlowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FlowsGetOutput,
 }));
 // Input Schema
+export interface FlowsGetDestinationEndpointPortsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsGetDestinationEndpointPortsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1021,17 +1411,16 @@ export const FlowsGetDestinationEndpointPortsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getDestinationEndpointPorts",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsGetDestinationEndpointPortsInput =
-  typeof FlowsGetDestinationEndpointPortsInput.Type;
+  ) as unknown as Schema.Codec<FlowsGetDestinationEndpointPortsInput>;
 
 // Output Schema
+export interface FlowsGetDestinationEndpointPortsOutput {
+  ports?: number[];
+}
 export const FlowsGetDestinationEndpointPortsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ports: Schema.optional(Schema.Array(Schema.Number)),
-  });
-export type FlowsGetDestinationEndpointPortsOutput =
-  typeof FlowsGetDestinationEndpointPortsOutput.Type;
+  }) as unknown as Schema.Codec<FlowsGetDestinationEndpointPortsOutput>;
 
 // The operation
 /**
@@ -1049,6 +1438,12 @@ export const FlowsGetDestinationEndpointPorts =
     outputSchema: FlowsGetDestinationEndpointPortsOutput,
   }));
 // Input Schema
+export interface FlowsGetDestinationEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsGetDestinationEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1061,17 +1456,16 @@ export const FlowsGetDestinationEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getDestinationEndpoints",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsGetDestinationEndpointsInput =
-  typeof FlowsGetDestinationEndpointsInput.Type;
+  ) as unknown as Schema.Codec<FlowsGetDestinationEndpointsInput>;
 
 // Output Schema
+export interface FlowsGetDestinationEndpointsOutput {
+  endpoints?: string[];
+}
 export const FlowsGetDestinationEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoints: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type FlowsGetDestinationEndpointsOutput =
-  typeof FlowsGetDestinationEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<FlowsGetDestinationEndpointsOutput>;
 
 // The operation
 /**
@@ -1089,6 +1483,12 @@ export const FlowsGetDestinationEndpoints =
     outputSchema: FlowsGetDestinationEndpointsOutput,
   }));
 // Input Schema
+export interface FlowsGetSourceAddressesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsGetSourceAddressesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1101,17 +1501,16 @@ export const FlowsGetSourceAddressesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getSourceAddresses",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsGetSourceAddressesInput =
-  typeof FlowsGetSourceAddressesInput.Type;
+  ) as unknown as Schema.Codec<FlowsGetSourceAddressesInput>;
 
 // Output Schema
+export interface FlowsGetSourceAddressesOutput {
+  sourceAddresses?: string[];
+}
 export const FlowsGetSourceAddressesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type FlowsGetSourceAddressesOutput =
-  typeof FlowsGetSourceAddressesOutput.Type;
+  }) as unknown as Schema.Codec<FlowsGetSourceAddressesOutput>;
 
 // The operation
 /**
@@ -1130,6 +1529,12 @@ export const FlowsGetSourceAddresses = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FlowsGetStreamConnectionStringInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+}
 export const FlowsGetStreamConnectionStringInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1142,17 +1547,16 @@ export const FlowsGetStreamConnectionStringInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getStreamConnectionString",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsGetStreamConnectionStringInput =
-  typeof FlowsGetStreamConnectionStringInput.Type;
+  ) as unknown as Schema.Codec<FlowsGetStreamConnectionStringInput>;
 
 // Output Schema
+export interface FlowsGetStreamConnectionStringOutput {
+  connectionString?: Redacted.Redacted<string>;
+}
 export const FlowsGetStreamConnectionStringOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionString: Schema.optional(SensitiveOutputString),
-  });
-export type FlowsGetStreamConnectionStringOutput =
-  typeof FlowsGetStreamConnectionStringOutput.Type;
+  }) as unknown as Schema.Codec<FlowsGetStreamConnectionStringOutput>;
 
 // The operation
 /**
@@ -1170,6 +1574,14 @@ export const FlowsGetStreamConnectionString =
     outputSchema: FlowsGetStreamConnectionStringOutput,
   }));
 // Input Schema
+export interface FlowsLinkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+  id: string;
+  statusReason?: string;
+}
 export const FlowsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1183,10 +1595,22 @@ export const FlowsLinkInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/link",
     apiVersion: "2025-05-21",
   }),
-);
-export type FlowsLinkInput = typeof FlowsLinkInput.Type;
+) as unknown as Schema.Codec<FlowsLinkInput>;
 
 // Output Schema
+export interface FlowsLinkOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1205,8 +1629,7 @@ export const FlowsLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FlowsLinkOutput = typeof FlowsLinkOutput.Type;
+}) as unknown as Schema.Codec<FlowsLinkOutput>;
 
 // The operation
 /**
@@ -1223,6 +1646,11 @@ export const FlowsLink = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FlowsLinkOutput,
 }));
 // Input Schema
+export interface FlowsListByConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+}
 export const FlowsListByConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1234,10 +1662,25 @@ export const FlowsListByConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsListByConnectionInput = typeof FlowsListByConnectionInput.Type;
+  ) as unknown as Schema.Codec<FlowsListByConnectionInput>;
 
 // Output Schema
+export interface FlowsListByConnectionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FlowsListByConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1272,9 +1715,7 @@ export const FlowsListByConnectionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FlowsListByConnectionOutput =
-  typeof FlowsListByConnectionOutput.Type;
+  }) as unknown as Schema.Codec<FlowsListByConnectionOutput>;
 
 // The operation
 /**
@@ -1292,6 +1733,13 @@ export const FlowsListByConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FlowsSetDestinationEndpointPortsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+  ports?: number[];
+}
 export const FlowsSetDestinationEndpointPortsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1305,11 +1753,22 @@ export const FlowsSetDestinationEndpointPortsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpointPorts",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsSetDestinationEndpointPortsInput =
-  typeof FlowsSetDestinationEndpointPortsInput.Type;
+  ) as unknown as Schema.Codec<FlowsSetDestinationEndpointPortsInput>;
 
 // Output Schema
+export interface FlowsSetDestinationEndpointPortsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsSetDestinationEndpointPortsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1329,9 +1788,7 @@ export const FlowsSetDestinationEndpointPortsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FlowsSetDestinationEndpointPortsOutput =
-  typeof FlowsSetDestinationEndpointPortsOutput.Type;
+  }) as unknown as Schema.Codec<FlowsSetDestinationEndpointPortsOutput>;
 
 // The operation
 /**
@@ -1349,6 +1806,13 @@ export const FlowsSetDestinationEndpointPorts =
     outputSchema: FlowsSetDestinationEndpointPortsOutput,
   }));
 // Input Schema
+export interface FlowsSetDestinationEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+  endpoints?: string[];
+}
 export const FlowsSetDestinationEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1362,11 +1826,22 @@ export const FlowsSetDestinationEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpoints",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsSetDestinationEndpointsInput =
-  typeof FlowsSetDestinationEndpointsInput.Type;
+  ) as unknown as Schema.Codec<FlowsSetDestinationEndpointsInput>;
 
 // Output Schema
+export interface FlowsSetDestinationEndpointsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsSetDestinationEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1386,9 +1861,7 @@ export const FlowsSetDestinationEndpointsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FlowsSetDestinationEndpointsOutput =
-  typeof FlowsSetDestinationEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<FlowsSetDestinationEndpointsOutput>;
 
 // The operation
 /**
@@ -1406,6 +1879,13 @@ export const FlowsSetDestinationEndpoints =
     outputSchema: FlowsSetDestinationEndpointsOutput,
   }));
 // Input Schema
+export interface FlowsSetPassphraseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+  value?: string;
+}
 export const FlowsSetPassphraseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1419,10 +1899,22 @@ export const FlowsSetPassphraseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setPassphrase",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsSetPassphraseInput = typeof FlowsSetPassphraseInput.Type;
+  ) as unknown as Schema.Codec<FlowsSetPassphraseInput>;
 
 // Output Schema
+export interface FlowsSetPassphraseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsSetPassphraseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1442,8 +1934,7 @@ export const FlowsSetPassphraseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FlowsSetPassphraseOutput = typeof FlowsSetPassphraseOutput.Type;
+  }) as unknown as Schema.Codec<FlowsSetPassphraseOutput>;
 
 // The operation
 /**
@@ -1460,6 +1951,13 @@ export const FlowsSetPassphrase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FlowsSetPassphraseOutput,
 }));
 // Input Schema
+export interface FlowsSetSourceAddressesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+  values?: string[];
+}
 export const FlowsSetSourceAddressesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1473,11 +1971,22 @@ export const FlowsSetSourceAddressesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setSourceAddresses",
       apiVersion: "2025-05-21",
     }),
-  );
-export type FlowsSetSourceAddressesInput =
-  typeof FlowsSetSourceAddressesInput.Type;
+  ) as unknown as Schema.Codec<FlowsSetSourceAddressesInput>;
 
 // Output Schema
+export interface FlowsSetSourceAddressesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsSetSourceAddressesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1497,9 +2006,7 @@ export const FlowsSetSourceAddressesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FlowsSetSourceAddressesOutput =
-  typeof FlowsSetSourceAddressesOutput.Type;
+  }) as unknown as Schema.Codec<FlowsSetSourceAddressesOutput>;
 
 // The operation
 /**
@@ -1518,6 +2025,26 @@ export const FlowsSetSourceAddresses = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FlowsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+  flowName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const FlowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1551,10 +2078,22 @@ export const FlowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type FlowsUpdateInput = typeof FlowsUpdateInput.Type;
+) as unknown as Schema.Codec<FlowsUpdateInput>;
 
 // Output Schema
+export interface FlowsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FlowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1573,8 +2112,7 @@ export const FlowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FlowsUpdateOutput = typeof FlowsUpdateOutput.Type;
+}) as unknown as Schema.Codec<FlowsUpdateOutput>;
 
 // The operation
 /**
@@ -1591,6 +2129,12 @@ export const FlowsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FlowsUpdateOutput,
 }));
 // Input Schema
+export interface ListFlowsByPipelineListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+  value?: string[];
+}
 export const ListFlowsByPipelineListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1603,11 +2147,27 @@ export const ListFlowsByPipelineListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/listFlows",
       apiVersion: "2025-05-21",
     }),
-  );
-export type ListFlowsByPipelineListInput =
-  typeof ListFlowsByPipelineListInput.Type;
+  ) as unknown as Schema.Codec<ListFlowsByPipelineListInput>;
 
 // Output Schema
+export interface ListFlowsByPipelineListOutput {
+  value?: {
+    id?: string;
+    flows?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  }[];
+}
 export const ListFlowsByPipelineListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1650,9 +2210,7 @@ export const ListFlowsByPipelineListOutput =
         }),
       ),
     ),
-  });
-export type ListFlowsByPipelineListOutput =
-  typeof ListFlowsByPipelineListOutput.Type;
+  }) as unknown as Schema.Codec<ListFlowsByPipelineListOutput>;
 
 // The operation
 /**
@@ -1670,6 +2228,11 @@ export const ListFlowsByPipelineList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListPendingConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+}
 export const ListPendingConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1681,11 +2244,75 @@ export const ListPendingConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingConnections",
       apiVersion: "2025-05-21",
     }),
-  );
-export type ListPendingConnectionsListInput =
-  typeof ListPendingConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<ListPendingConnectionsListInput>;
 
 // Output Schema
+export interface ListPendingConnectionsListOutput {
+  value: {
+    subscriptionId?: string;
+    pipeline: string;
+    direction?: "Send" | "Receive";
+    justification?: string;
+    status?: "InReview" | "Approved" | "Rejected" | "Accepted";
+    forceDisabledStatus?: (
+      | "ConnectionForceDisabled"
+      | "FlowTypeForceDisabled"
+    )[];
+    statusReason?: string;
+    linkStatus?: "Linked" | "Unlinked";
+    linkedConnectionId?: string;
+    flowTypes?: (
+      | "Unknown"
+      | "Complex"
+      | "DevSecOps"
+      | "Messaging"
+      | "Mission"
+      | "MicrosoftInternal"
+      | "BasicFiles"
+      | "Data"
+      | "Standard"
+      | "StreamingVideo"
+      | "Opaque"
+      | "MissionOpaqueXML"
+      | "DiskImages"
+      | "API"
+    )[];
+    requirementId?: string;
+    remoteSubscriptionId?: string;
+    approver?: string;
+    pin?: string;
+    dateSubmitted?: string;
+    primaryContact?: string;
+    secondaryContacts?: string[];
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Accepted";
+    policies?: string[];
+    schemas?: {
+      id?: string;
+      connectionId?: string;
+      status?: "New" | "Approved";
+      name?: string;
+      content?: string;
+      direction?: "Send" | "Receive";
+      schemaUri?: string;
+      schemaType?: "Xsd" | "Zip";
+    }[];
+    schemaUris?: string[];
+    tags?: Record<string, string>;
+    location: string;
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ListPendingConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1786,9 +2413,7 @@ export const ListPendingConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ListPendingConnectionsListOutput =
-  typeof ListPendingConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<ListPendingConnectionsListOutput>;
 
 // The operation
 /**
@@ -1806,6 +2431,11 @@ export const ListPendingConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListPendingFlowsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectionName: string;
+}
 export const ListPendingFlowsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1817,10 +2447,99 @@ export const ListPendingFlowsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingFlows",
       apiVersion: "2025-05-21",
     }),
-  );
-export type ListPendingFlowsListInput = typeof ListPendingFlowsListInput.Type;
+  ) as unknown as Schema.Codec<ListPendingFlowsListInput>;
 
 // Output Schema
+export interface ListPendingFlowsListOutput {
+  value: {
+    subscriptionId?: string;
+    connectionId?: string;
+    connection?: {
+      name?: string;
+      id: string;
+      location?: string;
+      subscriptionName?: string;
+    };
+    flowId?: string;
+    keyVaultUri?: string;
+    linkStatus?: "Linked" | "Unlinked";
+    linkedFlowId?: string;
+    status?: "Enabled" | "Disabled";
+    forceDisabledStatus?: (
+      | "ConnectionForceDisabled"
+      | "FlowTypeForceDisabled"
+    )[];
+    storageAccountName?: string;
+    storageAccountId?: string;
+    storageContainerName?: string;
+    storageTableName?: string;
+    serviceBusQueueId?: string;
+    flowType?:
+      | "Unknown"
+      | "Complex"
+      | "DevSecOps"
+      | "Messaging"
+      | "Mission"
+      | "MicrosoftInternal"
+      | "BasicFiles"
+      | "Data"
+      | "Standard"
+      | "StreamingVideo"
+      | "Opaque"
+      | "MissionOpaqueXML"
+      | "DiskImages"
+      | "API";
+    dataType?: "Blob" | "Table";
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Accepted";
+    policies?: string[];
+    schema?: {
+      id?: string;
+      connectionId?: string;
+      status?: "New" | "Approved";
+      name?: string;
+      content?: string;
+      direction?: "Send" | "Receive";
+      schemaUri?: string;
+      schemaType?: "Xsd" | "Zip";
+    };
+    messagingOptions?: {
+      billingTier?: "BlobTransport" | "Standard" | "Premium";
+    };
+    apiFlowOptions?: {
+      remoteEndpoint?: string;
+      cname?: string;
+      apiMode?: "SDK" | "Endpoint";
+      identityTranslation?: "UserIdentity" | "ServiceIdentity";
+      senderClientId?: string;
+      remoteCallingModeClientId?: string;
+      audienceOverride?: string;
+    };
+    customerManagedKeyVaultUri?: string;
+    streamId?: string;
+    streamProtocol?: "UDP" | "SRT" | "RTP";
+    streamLatency?: number;
+    passphrase?: string;
+    sourceAddresses?: { sourceAddresses?: string[] };
+    destinationEndpoints?: string[];
+    destinationEndpointPorts?: number[];
+    eventHubId?: string;
+    consumerGroup?: string;
+    tags?: Record<string, string>;
+    location: string;
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ListPendingFlowsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1954,8 +2673,7 @@ export const ListPendingFlowsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ListPendingFlowsListOutput = typeof ListPendingFlowsListOutput.Type;
+  }) as unknown as Schema.Codec<ListPendingFlowsListOutput>;
 
 // The operation
 /**
@@ -1973,6 +2691,19 @@ export const ListPendingFlowsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListSchemasListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+  id?: string;
+  connectionId?: string;
+  status?: "New" | "Approved";
+  name?: string;
+  content?: string;
+  direction?: "Send" | "Receive";
+  schemaUri?: string;
+  schemaType?: "Xsd" | "Zip";
+}
 export const ListSchemasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1991,10 +2722,21 @@ export const ListSchemasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/listSchemas",
     apiVersion: "2025-05-21",
   }),
-);
-export type ListSchemasListInput = typeof ListSchemasListInput.Type;
+) as unknown as Schema.Codec<ListSchemasListInput>;
 
 // Output Schema
+export interface ListSchemasListOutput {
+  value?: {
+    id?: string;
+    connectionId?: string;
+    status?: "New" | "Approved";
+    name?: string;
+    content?: string;
+    direction?: "Send" | "Receive";
+    schemaUri?: string;
+    schemaType?: "Xsd" | "Zip";
+  }[];
+}
 export const ListSchemasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2010,8 +2752,7 @@ export const ListSchemasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ListSchemasListOutput = typeof ListSchemasListOutput.Type;
+}) as unknown as Schema.Codec<ListSchemasListOutput>;
 
 // The operation
 /**
@@ -2027,6 +2768,7 @@ export const ListSchemasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ListSchemasListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2035,10 +2777,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AzureDataTransfer/operations",
     apiVersion: "2025-05-21",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2061,8 +2817,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2075,6 +2830,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PipelinesApproveConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+  id: string;
+  statusReason?: string;
+}
 export const PipelinesApproveConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2088,11 +2850,22 @@ export const PipelinesApproveConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection",
       apiVersion: "2025-05-21",
     }),
-  );
-export type PipelinesApproveConnectionInput =
-  typeof PipelinesApproveConnectionInput.Type;
+  ) as unknown as Schema.Codec<PipelinesApproveConnectionInput>;
 
 // Output Schema
+export interface PipelinesApproveConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelinesApproveConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2112,9 +2885,7 @@ export const PipelinesApproveConnectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PipelinesApproveConnectionOutput =
-  typeof PipelinesApproveConnectionOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesApproveConnectionOutput>;
 
 // The operation
 /**
@@ -2132,6 +2903,93 @@ export const PipelinesApproveConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PipelinesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+  properties?: {
+    remoteCloud: string;
+    displayName?: string;
+    connections?: {
+      id: string;
+      name?: string;
+      type?: string;
+      location?: string;
+      etag?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+      properties?: {
+        internalMetadata?: {
+          operationStatus?: {
+            status?: "Failed" | "Succeeded";
+            id?: string;
+            message?: string;
+          };
+          statusSetBy?: string;
+        };
+      };
+    }[];
+    subscribers?: { email?: string; notifications?: number }[];
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Accepted";
+    policies?: string[];
+    flowTypes?: (
+      | "Unknown"
+      | "Complex"
+      | "DevSecOps"
+      | "Messaging"
+      | "Mission"
+      | "MicrosoftInternal"
+      | "BasicFiles"
+      | "Data"
+      | "Standard"
+      | "StreamingVideo"
+      | "Opaque"
+      | "MissionOpaqueXML"
+      | "DiskImages"
+      | "API"
+    )[];
+    disabledFlowTypes?: (
+      | "Unknown"
+      | "Complex"
+      | "DevSecOps"
+      | "Messaging"
+      | "Mission"
+      | "MicrosoftInternal"
+      | "BasicFiles"
+      | "Data"
+      | "Standard"
+      | "StreamingVideo"
+      | "Opaque"
+      | "MissionOpaqueXML"
+      | "DiskImages"
+      | "API"
+    )[];
+    quarantineDownloadStorageAccount?: string;
+    quarantineDownloadStorageContainer?: string;
+    status?: "Enabled" | "Disabled";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PipelinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2280,11 +3138,22 @@ export const PipelinesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
       apiVersion: "2025-05-21",
     }),
-  );
-export type PipelinesCreateOrUpdateInput =
-  typeof PipelinesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PipelinesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PipelinesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2304,9 +3173,7 @@ export const PipelinesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PipelinesCreateOrUpdateOutput =
-  typeof PipelinesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2324,6 +3191,11 @@ export const PipelinesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PipelinesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+}
 export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2334,12 +3206,12 @@ export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type PipelinesDeleteInput = typeof PipelinesDeleteInput.Type;
+) as unknown as Schema.Codec<PipelinesDeleteInput>;
 
 // Output Schema
-export const PipelinesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PipelinesDeleteOutput = typeof PipelinesDeleteOutput.Type;
+export type PipelinesDeleteOutput = void;
+export const PipelinesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelinesDeleteOutput>;
 
 // The operation
 /**
@@ -2355,6 +3227,15 @@ export const PipelinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PipelinesDeleteOutput,
 }));
 // Input Schema
+export interface PipelinesExecuteActionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+  actionType: "AllowUpdates" | "ForceDisable";
+  targetType: "Pipeline" | "Connection" | "FlowType";
+  targets: string[];
+  justification?: string;
+}
 export const PipelinesExecuteActionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2370,11 +3251,22 @@ export const PipelinesExecuteActionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction",
       apiVersion: "2025-05-21",
     }),
-  );
-export type PipelinesExecuteActionInput =
-  typeof PipelinesExecuteActionInput.Type;
+  ) as unknown as Schema.Codec<PipelinesExecuteActionInput>;
 
 // Output Schema
+export interface PipelinesExecuteActionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelinesExecuteActionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2394,9 +3286,7 @@ export const PipelinesExecuteActionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PipelinesExecuteActionOutput =
-  typeof PipelinesExecuteActionOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesExecuteActionOutput>;
 
 // The operation
 /**
@@ -2414,6 +3304,11 @@ export const PipelinesExecuteAction = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PipelinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+}
 export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2424,10 +3319,22 @@ export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type PipelinesGetInput = typeof PipelinesGetInput.Type;
+) as unknown as Schema.Codec<PipelinesGetInput>;
 
 // Output Schema
+export interface PipelinesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2446,8 +3353,7 @@ export const PipelinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PipelinesGetOutput = typeof PipelinesGetOutput.Type;
+}) as unknown as Schema.Codec<PipelinesGetOutput>;
 
 // The operation
 /**
@@ -2463,6 +3369,10 @@ export const PipelinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PipelinesGetOutput,
 }));
 // Input Schema
+export interface PipelinesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PipelinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2473,11 +3383,25 @@ export const PipelinesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines",
       apiVersion: "2025-05-21",
     }),
-  );
-export type PipelinesListByResourceGroupInput =
-  typeof PipelinesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PipelinesListByResourceGroupInput>;
 
 // Output Schema
+export interface PipelinesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PipelinesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2512,9 +3436,7 @@ export const PipelinesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PipelinesListByResourceGroupOutput =
-  typeof PipelinesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2530,6 +3452,9 @@ export const PipelinesListByResourceGroup =
     outputSchema: PipelinesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PipelinesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PipelinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2539,11 +3464,25 @@ export const PipelinesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureDataTransfer/pipelines",
       apiVersion: "2025-05-21",
     }),
-  );
-export type PipelinesListBySubscriptionInput =
-  typeof PipelinesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PipelinesListBySubscriptionInput>;
 
 // Output Schema
+export interface PipelinesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PipelinesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2578,9 +3517,7 @@ export const PipelinesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PipelinesListBySubscriptionOutput =
-  typeof PipelinesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2596,6 +3533,13 @@ export const PipelinesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PipelinesRejectConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+  id: string;
+  statusReason?: string;
+}
 export const PipelinesRejectConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2609,11 +3553,22 @@ export const PipelinesRejectConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection",
       apiVersion: "2025-05-21",
     }),
-  );
-export type PipelinesRejectConnectionInput =
-  typeof PipelinesRejectConnectionInput.Type;
+  ) as unknown as Schema.Codec<PipelinesRejectConnectionInput>;
 
 // Output Schema
+export interface PipelinesRejectConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelinesRejectConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2633,9 +3588,7 @@ export const PipelinesRejectConnectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PipelinesRejectConnectionOutput =
-  typeof PipelinesRejectConnectionOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesRejectConnectionOutput>;
 
 // The operation
 /**
@@ -2653,6 +3606,43 @@ export const PipelinesRejectConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PipelinesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineName: string;
+  properties?: {
+    flowTypes?: (
+      | "Unknown"
+      | "Complex"
+      | "DevSecOps"
+      | "Messaging"
+      | "Mission"
+      | "MicrosoftInternal"
+      | "BasicFiles"
+      | "Data"
+      | "Standard"
+      | "StreamingVideo"
+      | "Opaque"
+      | "MissionOpaqueXML"
+      | "DiskImages"
+      | "API"
+    )[];
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const PipelinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2709,10 +3699,22 @@ export const PipelinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
     apiVersion: "2025-05-21",
   }),
-);
-export type PipelinesUpdateInput = typeof PipelinesUpdateInput.Type;
+) as unknown as Schema.Codec<PipelinesUpdateInput>;
 
 // Output Schema
+export interface PipelinesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2731,8 +3733,7 @@ export const PipelinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PipelinesUpdateOutput = typeof PipelinesUpdateOutput.Type;
+}) as unknown as Schema.Codec<PipelinesUpdateOutput>;
 
 // The operation
 /**

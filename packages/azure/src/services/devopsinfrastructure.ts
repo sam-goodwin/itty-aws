@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ImageVersionsListByImageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  imageName: string;
+}
 export const ImageVersionsListByImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20,11 +25,25 @@ export const ImageVersionsListByImageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/images/{imageName}/versions",
       apiVersion: "2025-09-20",
     }),
-  );
-export type ImageVersionsListByImageInput =
-  typeof ImageVersionsListByImageInput.Type;
+  ) as unknown as Schema.Codec<ImageVersionsListByImageInput>;
 
 // Output Schema
+export interface ImageVersionsListByImageOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImageVersionsListByImageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -59,9 +78,7 @@ export const ImageVersionsListByImageOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImageVersionsListByImageOutput =
-  typeof ImageVersionsListByImageOutput.Type;
+  }) as unknown as Schema.Codec<ImageVersionsListByImageOutput>;
 
 // The operation
 /**
@@ -79,6 +96,7 @@ export const ImageVersionsListByImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -87,10 +105,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DevOpsInfrastructure/operations",
     apiVersion: "2025-09-20",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -113,8 +145,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -127,6 +158,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PoolsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+  type: "Microsoft.DevOpsInfrastructure/pools";
+}
 export const PoolsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -138,20 +174,22 @@ export const PoolsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/checkNameAvailability",
       apiVersion: "2025-09-20",
     }),
-  );
-export type PoolsCheckNameAvailabilityInput =
-  typeof PoolsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<PoolsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface PoolsCheckNameAvailabilityOutput {
+  available: "Available" | "Unavailable";
+  message: string;
+  name: string;
+  reason: "Invalid" | "AlreadyExists";
+}
 export const PoolsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     available: Schema.Literals(["Available", "Unavailable"]),
     message: Schema.String,
     name: Schema.String,
     reason: Schema.Literals(["Invalid", "AlreadyExists"]),
-  });
-export type PoolsCheckNameAvailabilityOutput =
-  typeof PoolsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<PoolsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -167,6 +205,46 @@ export const PoolsCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoolsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  poolName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    maximumConcurrency: number;
+    organizationProfile: { kind: string };
+    agentProfile: {
+      kind: string;
+      resourcePredictions?: unknown;
+      resourcePredictionsProfile?: { kind: "Manual" | "Automatic" };
+    };
+    fabricProfile: { kind: string };
+    devCenterProjectResourceId: string;
+    runtimeConfiguration?: { workFolder?: string };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -238,10 +316,22 @@ export const PoolsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
       apiVersion: "2025-09-20",
     }),
-  );
-export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PoolsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PoolsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -261,8 +351,7 @@ export const PoolsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PoolsCreateOrUpdateOutput = typeof PoolsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PoolsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -278,6 +367,11 @@ export const PoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface PoolsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  poolName: string;
+}
 export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -288,12 +382,12 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
     apiVersion: "2025-09-20",
   }),
-);
-export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
+) as unknown as Schema.Codec<PoolsDeleteInput>;
 
 // Output Schema
-export const PoolsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PoolsDeleteOutput = typeof PoolsDeleteOutput.Type;
+export type PoolsDeleteOutput = void;
+export const PoolsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteOutput>;
 
 // The operation
 /**
@@ -309,6 +403,12 @@ export const PoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsDeleteOutput,
 }));
 // Input Schema
+export interface PoolsDeleteResourcesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  poolName: string;
+  resourceIds: string[];
+}
 export const PoolsDeleteResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -321,13 +421,12 @@ export const PoolsDeleteResourcesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}/resources",
       apiVersion: "2025-09-20",
     }),
-  );
-export type PoolsDeleteResourcesInput = typeof PoolsDeleteResourcesInput.Type;
+  ) as unknown as Schema.Codec<PoolsDeleteResourcesInput>;
 
 // Output Schema
+export type PoolsDeleteResourcesOutput = void;
 export const PoolsDeleteResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PoolsDeleteResourcesOutput = typeof PoolsDeleteResourcesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteResourcesOutput>;
 
 // The operation
 /**
@@ -345,6 +444,11 @@ export const PoolsDeleteResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoolsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  poolName: string;
+}
 export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -355,10 +459,22 @@ export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
     apiVersion: "2025-09-20",
   }),
-);
-export type PoolsGetInput = typeof PoolsGetInput.Type;
+) as unknown as Schema.Codec<PoolsGetInput>;
 
 // Output Schema
+export interface PoolsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -377,8 +493,7 @@ export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoolsGetOutput = typeof PoolsGetOutput.Type;
+}) as unknown as Schema.Codec<PoolsGetOutput>;
 
 // The operation
 /**
@@ -394,6 +509,10 @@ export const PoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsGetOutput,
 }));
 // Input Schema
+export interface PoolsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -404,11 +523,25 @@ export const PoolsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools",
       apiVersion: "2025-09-20",
     }),
-  );
-export type PoolsListByResourceGroupInput =
-  typeof PoolsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PoolsListByResourceGroupInput>;
 
 // Output Schema
+export interface PoolsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -443,9 +576,7 @@ export const PoolsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PoolsListByResourceGroupOutput =
-  typeof PoolsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PoolsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -462,6 +593,9 @@ export const PoolsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoolsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PoolsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -471,11 +605,25 @@ export const PoolsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/pools",
       apiVersion: "2025-09-20",
     }),
-  );
-export type PoolsListBySubscriptionInput =
-  typeof PoolsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PoolsListBySubscriptionInput>;
 
 // Output Schema
+export interface PoolsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -510,9 +658,7 @@ export const PoolsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PoolsListBySubscriptionOutput =
-  typeof PoolsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PoolsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -528,6 +674,45 @@ export const PoolsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoolsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  poolName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    maximumConcurrency?: number;
+    organizationProfile?: { kind: string };
+    agentProfile?: {
+      kind: string;
+      resourcePredictions?: unknown;
+      resourcePredictionsProfile?: { kind: "Manual" | "Automatic" };
+    };
+    fabricProfile?: { kind: string };
+    devCenterProjectResourceId?: string;
+    runtimeConfiguration?: { workFolder?: string };
+  };
+}
 export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -603,10 +788,22 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
     apiVersion: "2025-09-20",
   }),
-);
-export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;
+) as unknown as Schema.Codec<PoolsUpdateInput>;
 
 // Output Schema
+export interface PoolsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -625,8 +822,7 @@ export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoolsUpdateOutput = typeof PoolsUpdateOutput.Type;
+}) as unknown as Schema.Codec<PoolsUpdateOutput>;
 
 // The operation
 /**
@@ -642,6 +838,11 @@ export const PoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsUpdateOutput,
 }));
 // Input Schema
+export interface ResourceDetailsListByPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  poolName: string;
+}
 export const ResourceDetailsListByPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -653,11 +854,25 @@ export const ResourceDetailsListByPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}/resources",
       apiVersion: "2025-09-20",
     }),
-  );
-export type ResourceDetailsListByPoolInput =
-  typeof ResourceDetailsListByPoolInput.Type;
+  ) as unknown as Schema.Codec<ResourceDetailsListByPoolInput>;
 
 // Output Schema
+export interface ResourceDetailsListByPoolOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ResourceDetailsListByPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -692,9 +907,7 @@ export const ResourceDetailsListByPoolOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ResourceDetailsListByPoolOutput =
-  typeof ResourceDetailsListByPoolOutput.Type;
+  }) as unknown as Schema.Codec<ResourceDetailsListByPoolOutput>;
 
 // The operation
 /**
@@ -712,6 +925,10 @@ export const ResourceDetailsListByPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SkuListByLocationInput {
+  subscriptionId: string;
+  locationName: string;
+}
 export const SkuListByLocationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -723,10 +940,25 @@ export const SkuListByLocationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{locationName}/skus",
     apiVersion: "2025-09-20",
   }),
-);
-export type SkuListByLocationInput = typeof SkuListByLocationInput.Type;
+) as unknown as Schema.Codec<SkuListByLocationInput>;
 
 // Output Schema
+export interface SkuListByLocationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SkuListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -761,8 +993,7 @@ export const SkuListByLocationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SkuListByLocationOutput = typeof SkuListByLocationOutput.Type;
+  }) as unknown as Schema.Codec<SkuListByLocationOutput>;
 
 // The operation
 /**
@@ -777,6 +1008,10 @@ export const SkuListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkuListByLocationOutput,
 }));
 // Input Schema
+export interface SubscriptionUsagesUsagesInput {
+  subscriptionId: string;
+  location: string;
+}
 export const SubscriptionUsagesUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -787,11 +1022,19 @@ export const SubscriptionUsagesUsagesInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{location}/usages",
       apiVersion: "2025-09-20",
     }),
-  );
-export type SubscriptionUsagesUsagesInput =
-  typeof SubscriptionUsagesUsagesInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionUsagesUsagesInput>;
 
 // Output Schema
+export interface SubscriptionUsagesUsagesOutput {
+  value: {
+    name?: { value?: string; localizedValue?: string };
+    id: string;
+    unit: string;
+    currentValue: number;
+    limit: number;
+  }[];
+  nextLink?: string;
+}
 export const SubscriptionUsagesUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -809,9 +1052,7 @@ export const SubscriptionUsagesUsagesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SubscriptionUsagesUsagesOutput =
-  typeof SubscriptionUsagesUsagesOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionUsagesUsagesOutput>;
 
 // The operation
 /**

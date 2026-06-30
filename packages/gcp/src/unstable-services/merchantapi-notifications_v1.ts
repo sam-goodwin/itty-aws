@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -54,7 +54,7 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
@@ -87,7 +87,7 @@ export interface ProductStatusChangeMessage {
   resource?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface NotificationSubscription {
     | (string & {});
 }
 
-export const NotificationSubscription: Schema.Schema<NotificationSubscription> =
+export const NotificationSubscription: Schema.Codec<NotificationSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allManagedAccounts: Schema.optional(Schema.Boolean),
     targetAccount: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface ListNotificationSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListNotificationSubscriptionsResponse: Schema.Schema<ListNotificationSubscriptionsResponse> =
+export const ListNotificationSubscriptionsResponse: Schema.Codec<ListNotificationSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notificationSubscriptions: Schema.optional(
       Schema.Array(NotificationSubscription),
@@ -142,7 +142,7 @@ export const ListNotificationSubscriptionsResponse: Schema.Schema<ListNotificati
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -212,7 +212,7 @@ export const DeleteAccountsNotificationsubscriptionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "notifications/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsNotificationsubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsNotificationsubscriptionsRequest>;
 
 export type DeleteAccountsNotificationsubscriptionsResponse = Empty;
 export const DeleteAccountsNotificationsubscriptionsResponse =
@@ -255,7 +255,7 @@ export const CreateAccountsNotificationsubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsNotificationsubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsNotificationsubscriptionsRequest>;
 
 export type CreateAccountsNotificationsubscriptionsResponse =
   NotificationSubscription;
@@ -292,7 +292,7 @@ export const GetAccountsNotificationsubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "notifications/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsNotificationsubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsNotificationsubscriptionsRequest>;
 
 export type GetAccountsNotificationsubscriptionsResponse =
   NotificationSubscription;
@@ -337,7 +337,7 @@ export const PatchAccountsNotificationsubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsNotificationsubscriptionsRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsNotificationsubscriptionsRequest>;
 
 export type PatchAccountsNotificationsubscriptionsResponse =
   NotificationSubscription;
@@ -383,7 +383,7 @@ export const ListAccountsNotificationsubscriptionsRequest =
       path: "notifications/v1/{+parent}/notificationsubscriptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsNotificationsubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsNotificationsubscriptionsRequest>;
 
 export type ListAccountsNotificationsubscriptionsResponse =
   ListNotificationSubscriptionsResponse;

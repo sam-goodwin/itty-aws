@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface CarrierAndIspAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const CarrierAndIspAssignedTargetingOptionDetails: Schema.Schema<CarrierAndIspAssignedTargetingOptionDetails> =
+export const CarrierAndIspAssignedTargetingOptionDetails: Schema.Codec<CarrierAndIspAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     targetingOptionId: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export interface CustomListTargetingSetting {
   customListId?: string;
 }
 
-export const CustomListTargetingSetting: Schema.Schema<CustomListTargetingSetting> =
+export const CustomListTargetingSetting: Schema.Codec<CustomListTargetingSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customListId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomListTargetingSetting" });
@@ -53,7 +53,7 @@ export interface CustomListGroup {
   settings?: ReadonlyArray<CustomListTargetingSetting>;
 }
 
-export const CustomListGroup: Schema.Schema<CustomListGroup> =
+export const CustomListGroup: Schema.Codec<CustomListGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     settings: Schema.optional(Schema.Array(CustomListTargetingSetting)),
   }).annotate({ identifier: "CustomListGroup" });
@@ -76,7 +76,7 @@ export interface LineItemBudget {
     | (string & {});
 }
 
-export const LineItemBudget: Schema.Schema<LineItemBudget> =
+export const LineItemBudget: Schema.Codec<LineItemBudget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     budgetAllocationType: Schema.optional(Schema.String),
     maxAmount: Schema.optional(Schema.String),
@@ -90,7 +90,7 @@ export interface IntegrationDetails {
   details?: string;
 }
 
-export const IntegrationDetails: Schema.Schema<IntegrationDetails> =
+export const IntegrationDetails: Schema.Codec<IntegrationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationCode: Schema.optional(Schema.String),
     details: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface ThirdPartyVendorConfig {
   placementId?: string;
 }
 
-export const ThirdPartyVendorConfig: Schema.Schema<ThirdPartyVendorConfig> =
+export const ThirdPartyVendorConfig: Schema.Codec<ThirdPartyVendorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vendor: Schema.optional(Schema.String),
     placementId: Schema.optional(Schema.String),
@@ -142,7 +142,7 @@ export interface ThirdPartyMeasurementConfigs {
   brandSafetyVendorConfigs?: ReadonlyArray<ThirdPartyVendorConfig>;
 }
 
-export const ThirdPartyMeasurementConfigs: Schema.Schema<ThirdPartyMeasurementConfigs> =
+export const ThirdPartyMeasurementConfigs: Schema.Codec<ThirdPartyMeasurementConfigs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewabilityVendorConfigs: Schema.optional(
       Schema.Array(ThirdPartyVendorConfig),
@@ -165,7 +165,7 @@ export interface DemandGenSettings {
   linkedMerchantId?: string;
 }
 
-export const DemandGenSettings: Schema.Schema<DemandGenSettings> =
+export const DemandGenSettings: Schema.Codec<DemandGenSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thirdPartyMeasurementConfigs: Schema.optional(ThirdPartyMeasurementConfigs),
     geoLanguageTargetingEnabled: Schema.optional(Schema.Boolean),
@@ -193,7 +193,7 @@ export interface FrequencyCap {
   maxImpressions?: number;
 }
 
-export const FrequencyCap: Schema.Schema<FrequencyCap> =
+export const FrequencyCap: Schema.Codec<FrequencyCap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxViews: Schema.optional(Schema.Number),
     unlimited: Schema.optional(Schema.Boolean),
@@ -211,7 +211,7 @@ export interface TrackingFloodlightActivityConfig {
   postViewLookbackWindowDays?: number;
 }
 
-export const TrackingFloodlightActivityConfig: Schema.Schema<TrackingFloodlightActivityConfig> =
+export const TrackingFloodlightActivityConfig: Schema.Codec<TrackingFloodlightActivityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floodlightActivityId: Schema.optional(Schema.String),
     postClickLookbackWindowDays: Schema.optional(Schema.Number),
@@ -227,7 +227,7 @@ export interface ConversionCountingConfig {
   floodlightActivityConfigs?: ReadonlyArray<TrackingFloodlightActivityConfig>;
 }
 
-export const ConversionCountingConfig: Schema.Schema<ConversionCountingConfig> =
+export const ConversionCountingConfig: Schema.Codec<ConversionCountingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     postViewCountPercentageMillis: Schema.optional(Schema.String),
     primaryAttributionModelId: Schema.optional(Schema.String),
@@ -256,7 +256,7 @@ export interface Pacing {
   dailyMaxImpressions?: string;
 }
 
-export const Pacing: Schema.Schema<Pacing> =
+export const Pacing: Schema.Codec<Pacing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pacingPeriod: Schema.optional(Schema.String),
     dailyMaxMicros: Schema.optional(Schema.String),
@@ -269,7 +269,7 @@ export interface FixedBidStrategy {
   bidAmountMicros?: string;
 }
 
-export const FixedBidStrategy: Schema.Schema<FixedBidStrategy> =
+export const FixedBidStrategy: Schema.Codec<FixedBidStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bidAmountMicros: Schema.optional(Schema.String),
   }).annotate({ identifier: "FixedBidStrategy" });
@@ -294,7 +294,7 @@ export interface MaximizeSpendBidStrategy {
   raiseBidForDeals?: boolean;
 }
 
-export const MaximizeSpendBidStrategy: Schema.Schema<MaximizeSpendBidStrategy> =
+export const MaximizeSpendBidStrategy: Schema.Codec<MaximizeSpendBidStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     performanceGoalType: Schema.optional(Schema.String),
     customBiddingAlgorithmId: Schema.optional(Schema.String),
@@ -322,7 +322,7 @@ export interface PerformanceGoalBidStrategy {
   customBiddingAlgorithmId?: string;
 }
 
-export const PerformanceGoalBidStrategy: Schema.Schema<PerformanceGoalBidStrategy> =
+export const PerformanceGoalBidStrategy: Schema.Codec<PerformanceGoalBidStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxAverageCpmBidAmountMicros: Schema.optional(Schema.String),
     performanceGoalType: Schema.optional(Schema.String),
@@ -353,7 +353,7 @@ export interface DemandGenBiddingStrategy {
     | (string & {});
 }
 
-export const DemandGenBiddingStrategy: Schema.Schema<DemandGenBiddingStrategy> =
+export const DemandGenBiddingStrategy: Schema.Codec<DemandGenBiddingStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveBiddingValue: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -372,7 +372,7 @@ export interface BiddingStrategy {
   demandGenBid?: DemandGenBiddingStrategy;
 }
 
-export const BiddingStrategy: Schema.Schema<BiddingStrategy> =
+export const BiddingStrategy: Schema.Codec<BiddingStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fixedBid: Schema.optional(FixedBidStrategy),
     maximizeSpendAutoBid: Schema.optional(MaximizeSpendBidStrategy),
@@ -391,7 +391,7 @@ export interface VideoAdInventoryControl {
   allowShorts?: boolean;
 }
 
-export const VideoAdInventoryControl: Schema.Schema<VideoAdInventoryControl> =
+export const VideoAdInventoryControl: Schema.Codec<VideoAdInventoryControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowInStream: Schema.optional(Schema.Boolean),
     allowNonSkippableInStream: Schema.optional(Schema.Boolean),
@@ -410,7 +410,7 @@ export interface YoutubeAndPartnersThirdPartyMeasurementSettings {
   reachVendorConfigs?: ReadonlyArray<ThirdPartyVendorConfig>;
 }
 
-export const YoutubeAndPartnersThirdPartyMeasurementSettings: Schema.Schema<YoutubeAndPartnersThirdPartyMeasurementSettings> =
+export const YoutubeAndPartnersThirdPartyMeasurementSettings: Schema.Codec<YoutubeAndPartnersThirdPartyMeasurementSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewabilityVendorConfigs: Schema.optional(
       Schema.Array(ThirdPartyVendorConfig),
@@ -437,7 +437,7 @@ export interface YoutubeAndPartnersInventorySourceConfig {
   includeYoutubeVideos?: boolean;
 }
 
-export const YoutubeAndPartnersInventorySourceConfig: Schema.Schema<YoutubeAndPartnersInventorySourceConfig> =
+export const YoutubeAndPartnersInventorySourceConfig: Schema.Codec<YoutubeAndPartnersInventorySourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeGoogleTv: Schema.optional(Schema.Boolean),
     includeYoutubeVideoPartners: Schema.optional(Schema.Boolean),
@@ -462,7 +462,7 @@ export interface VideoAdSequenceStep {
     | (string & {});
 }
 
-export const VideoAdSequenceStep: Schema.Schema<VideoAdSequenceStep> =
+export const VideoAdSequenceStep: Schema.Codec<VideoAdSequenceStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adGroupId: Schema.optional(Schema.String),
     previousStepId: Schema.optional(Schema.String),
@@ -481,7 +481,7 @@ export interface VideoAdSequenceSettings {
     | (string & {});
 }
 
-export const VideoAdSequenceSettings: Schema.Schema<VideoAdSequenceSettings> =
+export const VideoAdSequenceSettings: Schema.Codec<VideoAdSequenceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     steps: Schema.optional(Schema.Array(VideoAdSequenceStep)),
     minimumDuration: Schema.optional(Schema.String),
@@ -514,7 +514,7 @@ export interface YoutubeAndPartnersBiddingStrategy {
   value?: string;
 }
 
-export const YoutubeAndPartnersBiddingStrategy: Schema.Schema<YoutubeAndPartnersBiddingStrategy> =
+export const YoutubeAndPartnersBiddingStrategy: Schema.Codec<YoutubeAndPartnersBiddingStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adGroupEffectiveTargetCpaSource: Schema.optional(Schema.String),
     adGroupEffectiveTargetCpaValue: Schema.optional(Schema.String),
@@ -539,7 +539,7 @@ export interface TargetFrequency {
   targetCount?: string;
 }
 
-export const TargetFrequency: Schema.Schema<TargetFrequency> =
+export const TargetFrequency: Schema.Codec<TargetFrequency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeUnit: Schema.optional(Schema.String),
     timeUnitCount: Schema.optional(Schema.Number),
@@ -583,7 +583,7 @@ export interface YoutubeAndPartnersSettings {
   relatedVideoIds?: ReadonlyArray<string>;
 }
 
-export const YoutubeAndPartnersSettings: Schema.Schema<YoutubeAndPartnersSettings> =
+export const YoutubeAndPartnersSettings: Schema.Codec<YoutubeAndPartnersSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoAdInventoryControl: Schema.optional(VideoAdInventoryControl),
     thirdPartyMeasurementSettings: Schema.optional(
@@ -620,7 +620,7 @@ export interface TargetingExpansionConfig {
   excludeFirstPartyAudience?: boolean;
 }
 
-export const TargetingExpansionConfig: Schema.Schema<TargetingExpansionConfig> =
+export const TargetingExpansionConfig: Schema.Codec<TargetingExpansionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludeDemographicExpansion: Schema.optional(Schema.Boolean),
     targetingExpansionLevel: Schema.optional(Schema.String),
@@ -638,7 +638,7 @@ export interface MobileApp {
   displayName?: string;
 }
 
-export const MobileApp: Schema.Schema<MobileApp> =
+export const MobileApp: Schema.Codec<MobileApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.optional(Schema.String),
     platform: Schema.optional(Schema.String),
@@ -655,7 +655,7 @@ export interface Displayvideo_Date {
   day?: number;
 }
 
-export const Displayvideo_Date: Schema.Schema<Displayvideo_Date> =
+export const Displayvideo_Date: Schema.Codec<Displayvideo_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -669,7 +669,7 @@ export interface DateRange {
   endDate?: Displayvideo_Date;
 }
 
-export const DateRange: Schema.Schema<DateRange> =
+export const DateRange: Schema.Codec<DateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Displayvideo_Date),
     endDate: Schema.optional(Displayvideo_Date),
@@ -686,7 +686,7 @@ export interface LineItemFlight {
   dateRange?: DateRange;
 }
 
-export const LineItemFlight: Schema.Schema<LineItemFlight> =
+export const LineItemFlight: Schema.Codec<LineItemFlight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flightDateType: Schema.optional(Schema.String),
     dateRange: Schema.optional(DateRange),
@@ -744,7 +744,7 @@ export interface PartnerCost {
   feePercentageMillis?: string;
 }
 
-export const PartnerCost: Schema.Schema<PartnerCost> =
+export const PartnerCost: Schema.Codec<PartnerCost> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invoiceType: Schema.optional(Schema.String),
     feeType: Schema.optional(Schema.String),
@@ -765,7 +765,7 @@ export interface PartnerRevenueModel {
   markupAmount?: string;
 }
 
-export const PartnerRevenueModel: Schema.Schema<PartnerRevenueModel> =
+export const PartnerRevenueModel: Schema.Codec<PartnerRevenueModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     markupType: Schema.optional(Schema.String),
     markupAmount: Schema.optional(Schema.String),
@@ -886,7 +886,7 @@ export interface LineItem {
   name?: string;
 }
 
-export const LineItem: Schema.Schema<LineItem> =
+export const LineItem: Schema.Codec<LineItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containsEuPoliticalAds: Schema.optional(Schema.String),
     excludeNewExchanges: Schema.optional(Schema.Boolean),
@@ -927,7 +927,7 @@ export interface BulkUpdateLineItemsRequest {
   targetLineItem?: LineItem;
 }
 
-export const BulkUpdateLineItemsRequest: Schema.Schema<BulkUpdateLineItemsRequest> =
+export const BulkUpdateLineItemsRequest: Schema.Codec<BulkUpdateLineItemsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineItemIds: Schema.optional(Schema.Array(Schema.String)),
     updateMask: Schema.optional(Schema.String),
@@ -984,7 +984,7 @@ export interface BusinessChainTargetingOptionDetails {
     | (string & {});
 }
 
-export const BusinessChainTargetingOptionDetails: Schema.Schema<BusinessChainTargetingOptionDetails> =
+export const BusinessChainTargetingOptionDetails: Schema.Codec<BusinessChainTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geoRegion: Schema.optional(Schema.String),
     businessChain: Schema.optional(Schema.String),
@@ -1094,7 +1094,7 @@ export interface ExchangeReviewStatus {
     | (string & {});
 }
 
-export const ExchangeReviewStatus: Schema.Schema<ExchangeReviewStatus> =
+export const ExchangeReviewStatus: Schema.Codec<ExchangeReviewStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     exchange: Schema.optional(Schema.String),
@@ -1112,7 +1112,7 @@ export interface PublisherReviewStatus {
     | (string & {});
 }
 
-export const PublisherReviewStatus: Schema.Schema<PublisherReviewStatus> =
+export const PublisherReviewStatus: Schema.Codec<PublisherReviewStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publisherName: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1147,7 +1147,7 @@ export interface ReviewStatusInfo {
     | (string & {});
 }
 
-export const ReviewStatusInfo: Schema.Schema<ReviewStatusInfo> =
+export const ReviewStatusInfo: Schema.Codec<ReviewStatusInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exchangeReviewStatuses: Schema.optional(Schema.Array(ExchangeReviewStatus)),
     publisherReviewStatuses: Schema.optional(
@@ -1171,7 +1171,7 @@ export interface YoutubeVideoDetails {
     | (string & {});
 }
 
-export const YoutubeVideoDetails: Schema.Schema<YoutubeVideoDetails> =
+export const YoutubeVideoDetails: Schema.Codec<YoutubeVideoDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoAssetId: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1185,7 +1185,7 @@ export interface Dimensions {
   heightPixels?: number;
 }
 
-export const Dimensions: Schema.Schema<Dimensions> =
+export const Dimensions: Schema.Codec<Dimensions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     widthPixels: Schema.optional(Schema.Number),
     heightPixels: Schema.optional(Schema.Number),
@@ -1202,7 +1202,7 @@ export interface ImageAsset {
   assetId?: string;
 }
 
-export const ImageAsset: Schema.Schema<ImageAsset> =
+export const ImageAsset: Schema.Codec<ImageAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     fullSize: Schema.optional(Dimensions),
@@ -1237,7 +1237,7 @@ export interface VideoPerformanceAd {
   customParameters?: Record<string, string>;
 }
 
-export const VideoPerformanceAd: Schema.Schema<VideoPerformanceAd> =
+export const VideoPerformanceAd: Schema.Codec<VideoPerformanceAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headlines: Schema.optional(Schema.Array(Schema.String)),
     videos: Schema.optional(Schema.Array(YoutubeVideoDetails)),
@@ -1269,7 +1269,7 @@ export interface CustomLabel {
   value?: string;
 }
 
-export const CustomLabel: Schema.Schema<CustomLabel> =
+export const CustomLabel: Schema.Codec<CustomLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1282,7 +1282,7 @@ export interface ProductMatchDimension {
   customLabel?: CustomLabel;
 }
 
-export const ProductMatchDimension: Schema.Schema<ProductMatchDimension> =
+export const ProductMatchDimension: Schema.Codec<ProductMatchDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productOfferId: Schema.optional(Schema.String),
     customLabel: Schema.optional(CustomLabel),
@@ -1302,7 +1302,7 @@ export interface ProductFeedData {
   isFeedDisabled?: boolean;
 }
 
-export const ProductFeedData: Schema.Schema<ProductFeedData> =
+export const ProductFeedData: Schema.Codec<ProductFeedData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productMatchDimensions: Schema.optional(
       Schema.Array(ProductMatchDimension),
@@ -1316,7 +1316,7 @@ export interface InventorySourceAssignedTargetingOptionDetails {
   inventorySourceId?: string;
 }
 
-export const InventorySourceAssignedTargetingOptionDetails: Schema.Schema<InventorySourceAssignedTargetingOptionDetails> =
+export const InventorySourceAssignedTargetingOptionDetails: Schema.Codec<InventorySourceAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inventorySourceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "InventorySourceAssignedTargetingOptionDetails" });
@@ -1332,7 +1332,7 @@ export interface ContentStreamTypeAssignedTargetingOptionDetails {
   targetingOptionId?: string;
 }
 
-export const ContentStreamTypeAssignedTargetingOptionDetails: Schema.Schema<ContentStreamTypeAssignedTargetingOptionDetails> =
+export const ContentStreamTypeAssignedTargetingOptionDetails: Schema.Codec<ContentStreamTypeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentStreamType: Schema.optional(Schema.String),
     targetingOptionId: Schema.optional(Schema.String),
@@ -1358,7 +1358,7 @@ export interface ContentInstreamPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentInstreamPositionAssignedTargetingOptionDetails: Schema.Schema<ContentInstreamPositionAssignedTargetingOptionDetails> =
+export const ContentInstreamPositionAssignedTargetingOptionDetails: Schema.Codec<ContentInstreamPositionAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentInstreamPosition: Schema.optional(Schema.String),
     adType: Schema.optional(Schema.String),
@@ -1377,7 +1377,7 @@ export interface UserRewardedContentAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const UserRewardedContentAssignedTargetingOptionDetails: Schema.Schema<UserRewardedContentAssignedTargetingOptionDetails> =
+export const UserRewardedContentAssignedTargetingOptionDetails: Schema.Codec<UserRewardedContentAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptionId: Schema.optional(Schema.String),
     userRewardedContent: Schema.optional(Schema.String),
@@ -1404,7 +1404,7 @@ export interface PoiAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const PoiAssignedTargetingOptionDetails: Schema.Schema<PoiAssignedTargetingOptionDetails> =
+export const PoiAssignedTargetingOptionDetails: Schema.Codec<PoiAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proximityRadiusAmount: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -1440,7 +1440,7 @@ export interface SensitiveCategoryAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const SensitiveCategoryAssignedTargetingOptionDetails: Schema.Schema<SensitiveCategoryAssignedTargetingOptionDetails> =
+export const SensitiveCategoryAssignedTargetingOptionDetails: Schema.Codec<SensitiveCategoryAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedSensitiveCategory: Schema.optional(Schema.String),
   }).annotate({
@@ -1471,7 +1471,7 @@ export interface AgeRangeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const AgeRangeAssignedTargetingOptionDetails: Schema.Schema<AgeRangeAssignedTargetingOptionDetails> =
+export const AgeRangeAssignedTargetingOptionDetails: Schema.Codec<AgeRangeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ageRange: Schema.optional(Schema.String),
   }).annotate({ identifier: "AgeRangeAssignedTargetingOptionDetails" });
@@ -1481,7 +1481,7 @@ export interface InventorySourceGroupAssignedTargetingOptionDetails {
   inventorySourceGroupId?: string;
 }
 
-export const InventorySourceGroupAssignedTargetingOptionDetails: Schema.Schema<InventorySourceGroupAssignedTargetingOptionDetails> =
+export const InventorySourceGroupAssignedTargetingOptionDetails: Schema.Codec<InventorySourceGroupAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inventorySourceGroupId: Schema.optional(Schema.String),
   }).annotate({
@@ -1500,7 +1500,7 @@ export interface NativeContentPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const NativeContentPositionAssignedTargetingOptionDetails: Schema.Schema<NativeContentPositionAssignedTargetingOptionDetails> =
+export const NativeContentPositionAssignedTargetingOptionDetails: Schema.Codec<NativeContentPositionAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentPosition: Schema.optional(Schema.String),
   }).annotate({
@@ -1549,7 +1549,7 @@ export interface DoubleVerifyBrandSafetyCategories {
   >;
 }
 
-export const DoubleVerifyBrandSafetyCategories: Schema.Schema<DoubleVerifyBrandSafetyCategories> =
+export const DoubleVerifyBrandSafetyCategories: Schema.Codec<DoubleVerifyBrandSafetyCategories> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     avoidedMediumSeverityCategories: Schema.optional(
       Schema.Array(Schema.String),
@@ -1574,7 +1574,7 @@ export interface DoubleVerifyAppStarRating {
   avoidInsufficientStarRating?: boolean;
 }
 
-export const DoubleVerifyAppStarRating: Schema.Schema<DoubleVerifyAppStarRating> =
+export const DoubleVerifyAppStarRating: Schema.Codec<DoubleVerifyAppStarRating> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     avoidedStarRating: Schema.optional(Schema.String),
     avoidInsufficientStarRating: Schema.optional(Schema.Boolean),
@@ -1603,7 +1603,7 @@ export interface DoubleVerifyDisplayViewability {
     | (string & {});
 }
 
-export const DoubleVerifyDisplayViewability: Schema.Schema<DoubleVerifyDisplayViewability> =
+export const DoubleVerifyDisplayViewability: Schema.Codec<DoubleVerifyDisplayViewability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iab: Schema.optional(Schema.String),
     viewableDuring: Schema.optional(Schema.String),
@@ -1626,7 +1626,7 @@ export interface DoubleVerifyFraudInvalidTraffic {
   avoidInsufficientOption?: boolean;
 }
 
-export const DoubleVerifyFraudInvalidTraffic: Schema.Schema<DoubleVerifyFraudInvalidTraffic> =
+export const DoubleVerifyFraudInvalidTraffic: Schema.Codec<DoubleVerifyFraudInvalidTraffic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     avoidedFraudOption: Schema.optional(Schema.String),
     avoidInsufficientOption: Schema.optional(Schema.Boolean),
@@ -1666,7 +1666,7 @@ export interface DoubleVerifyVideoViewability {
     | (string & {});
 }
 
-export const DoubleVerifyVideoViewability: Schema.Schema<DoubleVerifyVideoViewability> =
+export const DoubleVerifyVideoViewability: Schema.Codec<DoubleVerifyVideoViewability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoViewableRate: Schema.optional(Schema.String),
     videoIab: Schema.optional(Schema.String),
@@ -1699,7 +1699,7 @@ export interface DoubleVerify {
   videoViewability?: DoubleVerifyVideoViewability;
 }
 
-export const DoubleVerify: Schema.Schema<DoubleVerify> =
+export const DoubleVerify: Schema.Codec<DoubleVerify> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customSegmentId: Schema.optional(Schema.String),
     brandSafetyCategories: Schema.optional(DoubleVerifyBrandSafetyCategories),
@@ -1799,7 +1799,7 @@ export interface IntegralAdScience {
     | (string & {});
 }
 
-export const IntegralAdScience: Schema.Schema<IntegralAdScience> =
+export const IntegralAdScience: Schema.Codec<IntegralAdScience> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedGamblingRisk: Schema.optional(Schema.String),
     excludedAlcoholRisk: Schema.optional(Schema.String),
@@ -1833,7 +1833,7 @@ export interface Adloox {
   >;
 }
 
-export const Adloox: Schema.Schema<Adloox> =
+export const Adloox: Schema.Codec<Adloox> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedAdlooxCategories: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Adloox" });
@@ -1847,7 +1847,7 @@ export interface ThirdPartyVerifierAssignedTargetingOptionDetails {
   adloox?: Adloox;
 }
 
-export const ThirdPartyVerifierAssignedTargetingOptionDetails: Schema.Schema<ThirdPartyVerifierAssignedTargetingOptionDetails> =
+export const ThirdPartyVerifierAssignedTargetingOptionDetails: Schema.Codec<ThirdPartyVerifierAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     doubleVerify: Schema.optional(DoubleVerify),
     integralAdScience: Schema.optional(IntegralAdScience),
@@ -1908,7 +1908,7 @@ export interface GeoRegionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const GeoRegionAssignedTargetingOptionDetails: Schema.Schema<GeoRegionAssignedTargetingOptionDetails> =
+export const GeoRegionAssignedTargetingOptionDetails: Schema.Codec<GeoRegionAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptionId: Schema.optional(Schema.String),
     negative: Schema.optional(Schema.Boolean),
@@ -1925,7 +1925,7 @@ export interface ContentGenreAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const ContentGenreAssignedTargetingOptionDetails: Schema.Schema<ContentGenreAssignedTargetingOptionDetails> =
+export const ContentGenreAssignedTargetingOptionDetails: Schema.Codec<ContentGenreAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     targetingOptionId: Schema.optional(Schema.String),
@@ -1937,7 +1937,7 @@ export interface NegativeKeywordListAssignedTargetingOptionDetails {
   negativeKeywordListId?: string;
 }
 
-export const NegativeKeywordListAssignedTargetingOptionDetails: Schema.Schema<NegativeKeywordListAssignedTargetingOptionDetails> =
+export const NegativeKeywordListAssignedTargetingOptionDetails: Schema.Codec<NegativeKeywordListAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negativeKeywordListId: Schema.optional(Schema.String),
   }).annotate({
@@ -1953,7 +1953,7 @@ export interface OperatingSystemAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const OperatingSystemAssignedTargetingOptionDetails: Schema.Schema<OperatingSystemAssignedTargetingOptionDetails> =
+export const OperatingSystemAssignedTargetingOptionDetails: Schema.Codec<OperatingSystemAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negative: Schema.optional(Schema.Boolean),
     targetingOptionId: Schema.optional(Schema.String),
@@ -1975,7 +1975,7 @@ export interface AudioContentTypeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const AudioContentTypeAssignedTargetingOptionDetails: Schema.Schema<AudioContentTypeAssignedTargetingOptionDetails> =
+export const AudioContentTypeAssignedTargetingOptionDetails: Schema.Codec<AudioContentTypeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioContentType: Schema.optional(Schema.String),
   }).annotate({ identifier: "AudioContentTypeAssignedTargetingOptionDetails" });
@@ -1987,7 +1987,7 @@ export interface UrlAssignedTargetingOptionDetails {
   url?: string;
 }
 
-export const UrlAssignedTargetingOptionDetails: Schema.Schema<UrlAssignedTargetingOptionDetails> =
+export const UrlAssignedTargetingOptionDetails: Schema.Codec<UrlAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negative: Schema.optional(Schema.Boolean),
     url: Schema.optional(Schema.String),
@@ -2003,7 +2003,7 @@ export interface EnvironmentAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const EnvironmentAssignedTargetingOptionDetails: Schema.Schema<EnvironmentAssignedTargetingOptionDetails> =
+export const EnvironmentAssignedTargetingOptionDetails: Schema.Codec<EnvironmentAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnvironmentAssignedTargetingOptionDetails" });
@@ -2024,7 +2024,7 @@ export interface ContentDurationAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentDurationAssignedTargetingOptionDetails: Schema.Schema<ContentDurationAssignedTargetingOptionDetails> =
+export const ContentDurationAssignedTargetingOptionDetails: Schema.Codec<ContentDurationAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptionId: Schema.optional(Schema.String),
     contentDuration: Schema.optional(Schema.String),
@@ -2054,7 +2054,7 @@ export interface DayAndTimeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const DayAndTimeAssignedTargetingOptionDetails: Schema.Schema<DayAndTimeAssignedTargetingOptionDetails> =
+export const DayAndTimeAssignedTargetingOptionDetails: Schema.Codec<DayAndTimeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endHour: Schema.optional(Schema.Number),
     dayOfWeek: Schema.optional(Schema.String),
@@ -2067,7 +2067,7 @@ export interface CombinedAudienceTargetingSetting {
   combinedAudienceId?: string;
 }
 
-export const CombinedAudienceTargetingSetting: Schema.Schema<CombinedAudienceTargetingSetting> =
+export const CombinedAudienceTargetingSetting: Schema.Codec<CombinedAudienceTargetingSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     combinedAudienceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CombinedAudienceTargetingSetting" });
@@ -2077,7 +2077,7 @@ export interface CombinedAudienceGroup {
   settings?: ReadonlyArray<CombinedAudienceTargetingSetting>;
 }
 
-export const CombinedAudienceGroup: Schema.Schema<CombinedAudienceGroup> =
+export const CombinedAudienceGroup: Schema.Codec<CombinedAudienceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     settings: Schema.optional(Schema.Array(CombinedAudienceTargetingSetting)),
   }).annotate({ identifier: "CombinedAudienceGroup" });
@@ -2087,7 +2087,7 @@ export interface GoogleAudienceTargetingSetting {
   googleAudienceId?: string;
 }
 
-export const GoogleAudienceTargetingSetting: Schema.Schema<GoogleAudienceTargetingSetting> =
+export const GoogleAudienceTargetingSetting: Schema.Codec<GoogleAudienceTargetingSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleAudienceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAudienceTargetingSetting" });
@@ -2097,7 +2097,7 @@ export interface GoogleAudienceGroup {
   settings?: ReadonlyArray<GoogleAudienceTargetingSetting>;
 }
 
-export const GoogleAudienceGroup: Schema.Schema<GoogleAudienceGroup> =
+export const GoogleAudienceGroup: Schema.Codec<GoogleAudienceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     settings: Schema.optional(Schema.Array(GoogleAudienceTargetingSetting)),
   }).annotate({ identifier: "GoogleAudienceGroup" });
@@ -2113,7 +2113,7 @@ export interface AudienceGroupAssignedTargetingOptionDetails {
   includedGoogleAudienceGroup?: GoogleAudienceGroup;
 }
 
-export const AudienceGroupAssignedTargetingOptionDetails: Schema.Schema<AudienceGroupAssignedTargetingOptionDetails> =
+export const AudienceGroupAssignedTargetingOptionDetails: Schema.Codec<AudienceGroupAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includedCustomListGroup: Schema.optional(CustomListGroup),
     includedCombinedAudienceGroup: Schema.optional(CombinedAudienceGroup),
@@ -2140,7 +2140,7 @@ export interface ContentOutstreamPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentOutstreamPositionAssignedTargetingOptionDetails: Schema.Schema<ContentOutstreamPositionAssignedTargetingOptionDetails> =
+export const ContentOutstreamPositionAssignedTargetingOptionDetails: Schema.Codec<ContentOutstreamPositionAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentOutstreamPosition: Schema.optional(Schema.String),
     adType: Schema.optional(Schema.String),
@@ -2158,7 +2158,7 @@ export interface GenderAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const GenderAssignedTargetingOptionDetails: Schema.Schema<GenderAssignedTargetingOptionDetails> =
+export const GenderAssignedTargetingOptionDetails: Schema.Codec<GenderAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gender: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenderAssignedTargetingOptionDetails" });
@@ -2259,7 +2259,7 @@ export interface ExchangeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ExchangeAssignedTargetingOptionDetails: Schema.Schema<ExchangeAssignedTargetingOptionDetails> =
+export const ExchangeAssignedTargetingOptionDetails: Schema.Codec<ExchangeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exchange: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExchangeAssignedTargetingOptionDetails" });
@@ -2274,7 +2274,7 @@ export interface ParentalStatusAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ParentalStatusAssignedTargetingOptionDetails: Schema.Schema<ParentalStatusAssignedTargetingOptionDetails> =
+export const ParentalStatusAssignedTargetingOptionDetails: Schema.Codec<ParentalStatusAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentalStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "ParentalStatusAssignedTargetingOptionDetails" });
@@ -2288,7 +2288,7 @@ export interface CategoryAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const CategoryAssignedTargetingOptionDetails: Schema.Schema<CategoryAssignedTargetingOptionDetails> =
+export const CategoryAssignedTargetingOptionDetails: Schema.Codec<CategoryAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negative: Schema.optional(Schema.Boolean),
     targetingOptionId: Schema.optional(Schema.String),
@@ -2302,7 +2302,7 @@ export interface YoutubeChannelPackAssignedTargetingOptionDetails {
   channelPackId?: string;
 }
 
-export const YoutubeChannelPackAssignedTargetingOptionDetails: Schema.Schema<YoutubeChannelPackAssignedTargetingOptionDetails> =
+export const YoutubeChannelPackAssignedTargetingOptionDetails: Schema.Codec<YoutubeChannelPackAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negative: Schema.optional(Schema.Boolean),
     channelPackId: Schema.optional(Schema.String),
@@ -2317,7 +2317,7 @@ export interface YoutubeChannelAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const YoutubeChannelAssignedTargetingOptionDetails: Schema.Schema<YoutubeChannelAssignedTargetingOptionDetails> =
+export const YoutubeChannelAssignedTargetingOptionDetails: Schema.Codec<YoutubeChannelAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelId: Schema.optional(Schema.String),
     negative: Schema.optional(Schema.Boolean),
@@ -2337,7 +2337,7 @@ export interface DeviceTypeAssignedTargetingOptionDetails {
   youtubeAndPartnersBidMultiplier?: number;
 }
 
-export const DeviceTypeAssignedTargetingOptionDetails: Schema.Schema<DeviceTypeAssignedTargetingOptionDetails> =
+export const DeviceTypeAssignedTargetingOptionDetails: Schema.Codec<DeviceTypeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceType: Schema.optional(Schema.String),
     youtubeAndPartnersBidMultiplier: Schema.optional(Schema.Number),
@@ -2352,7 +2352,7 @@ export interface DeviceMakeModelAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const DeviceMakeModelAssignedTargetingOptionDetails: Schema.Schema<DeviceMakeModelAssignedTargetingOptionDetails> =
+export const DeviceMakeModelAssignedTargetingOptionDetails: Schema.Codec<DeviceMakeModelAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptionId: Schema.optional(Schema.String),
     negative: Schema.optional(Schema.Boolean),
@@ -2364,7 +2364,7 @@ export interface SubExchangeAssignedTargetingOptionDetails {
   targetingOptionId?: string;
 }
 
-export const SubExchangeAssignedTargetingOptionDetails: Schema.Schema<SubExchangeAssignedTargetingOptionDetails> =
+export const SubExchangeAssignedTargetingOptionDetails: Schema.Codec<SubExchangeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SubExchangeAssignedTargetingOptionDetails" });
@@ -2378,7 +2378,7 @@ export interface LanguageAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const LanguageAssignedTargetingOptionDetails: Schema.Schema<LanguageAssignedTargetingOptionDetails> =
+export const LanguageAssignedTargetingOptionDetails: Schema.Codec<LanguageAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negative: Schema.optional(Schema.Boolean),
     targetingOptionId: Schema.optional(Schema.String),
@@ -2398,7 +2398,7 @@ export interface ProximityLocationListAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ProximityLocationListAssignedTargetingOptionDetails: Schema.Schema<ProximityLocationListAssignedTargetingOptionDetails> =
+export const ProximityLocationListAssignedTargetingOptionDetails: Schema.Codec<ProximityLocationListAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proximityLocationListId: Schema.optional(Schema.String),
     proximityRadius: Schema.optional(Schema.Number),
@@ -2414,7 +2414,7 @@ export interface ChannelAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const ChannelAssignedTargetingOptionDetails: Schema.Schema<ChannelAssignedTargetingOptionDetails> =
+export const ChannelAssignedTargetingOptionDetails: Schema.Codec<ChannelAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelId: Schema.optional(Schema.String),
     negative: Schema.optional(Schema.Boolean),
@@ -2429,7 +2429,7 @@ export interface BrowserAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const BrowserAssignedTargetingOptionDetails: Schema.Schema<BrowserAssignedTargetingOptionDetails> =
+export const BrowserAssignedTargetingOptionDetails: Schema.Codec<BrowserAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negative: Schema.optional(Schema.Boolean),
     targetingOptionId: Schema.optional(Schema.String),
@@ -2447,7 +2447,7 @@ export interface AuthorizedSellerStatusAssignedTargetingOptionDetails {
   targetingOptionId?: string;
 }
 
-export const AuthorizedSellerStatusAssignedTargetingOptionDetails: Schema.Schema<AuthorizedSellerStatusAssignedTargetingOptionDetails> =
+export const AuthorizedSellerStatusAssignedTargetingOptionDetails: Schema.Codec<AuthorizedSellerStatusAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizedSellerStatus: Schema.optional(Schema.String),
     targetingOptionId: Schema.optional(Schema.String),
@@ -2460,7 +2460,7 @@ export interface OmidAssignedTargetingOptionDetails {
   omid?: "OMID_UNSPECIFIED" | "OMID_FOR_MOBILE_DISPLAY_ADS" | (string & {});
 }
 
-export const OmidAssignedTargetingOptionDetails: Schema.Schema<OmidAssignedTargetingOptionDetails> =
+export const OmidAssignedTargetingOptionDetails: Schema.Codec<OmidAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     omid: Schema.optional(Schema.String),
   }).annotate({ identifier: "OmidAssignedTargetingOptionDetails" });
@@ -2484,7 +2484,7 @@ export interface OnScreenPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const OnScreenPositionAssignedTargetingOptionDetails: Schema.Schema<OnScreenPositionAssignedTargetingOptionDetails> =
+export const OnScreenPositionAssignedTargetingOptionDetails: Schema.Codec<OnScreenPositionAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptionId: Schema.optional(Schema.String),
     adType: Schema.optional(Schema.String),
@@ -2499,7 +2499,7 @@ export interface SessionPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const SessionPositionAssignedTargetingOptionDetails: Schema.Schema<SessionPositionAssignedTargetingOptionDetails> =
+export const SessionPositionAssignedTargetingOptionDetails: Schema.Codec<SessionPositionAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionPosition: Schema.optional(Schema.String),
   }).annotate({ identifier: "SessionPositionAssignedTargetingOptionDetails" });
@@ -2511,7 +2511,7 @@ export interface YoutubeVideoAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const YoutubeVideoAssignedTargetingOptionDetails: Schema.Schema<YoutubeVideoAssignedTargetingOptionDetails> =
+export const YoutubeVideoAssignedTargetingOptionDetails: Schema.Codec<YoutubeVideoAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoId: Schema.optional(Schema.String),
     negative: Schema.optional(Schema.Boolean),
@@ -2526,7 +2526,7 @@ export interface KeywordAssignedTargetingOptionDetails {
   exemptedPolicyNames?: ReadonlyArray<string>;
 }
 
-export const KeywordAssignedTargetingOptionDetails: Schema.Schema<KeywordAssignedTargetingOptionDetails> =
+export const KeywordAssignedTargetingOptionDetails: Schema.Codec<KeywordAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyword: Schema.optional(Schema.String),
     negative: Schema.optional(Schema.Boolean),
@@ -2547,7 +2547,7 @@ export interface HouseholdIncomeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const HouseholdIncomeAssignedTargetingOptionDetails: Schema.Schema<HouseholdIncomeAssignedTargetingOptionDetails> =
+export const HouseholdIncomeAssignedTargetingOptionDetails: Schema.Codec<HouseholdIncomeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     householdIncome: Schema.optional(Schema.String),
   }).annotate({ identifier: "HouseholdIncomeAssignedTargetingOptionDetails" });
@@ -2568,7 +2568,7 @@ export interface ViewabilityAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ViewabilityAssignedTargetingOptionDetails: Schema.Schema<ViewabilityAssignedTargetingOptionDetails> =
+export const ViewabilityAssignedTargetingOptionDetails: Schema.Codec<ViewabilityAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewability: Schema.optional(Schema.String),
   }).annotate({ identifier: "ViewabilityAssignedTargetingOptionDetails" });
@@ -2582,7 +2582,7 @@ export interface AppCategoryAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const AppCategoryAssignedTargetingOptionDetails: Schema.Schema<AppCategoryAssignedTargetingOptionDetails> =
+export const AppCategoryAssignedTargetingOptionDetails: Schema.Codec<AppCategoryAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     targetingOptionId: Schema.optional(Schema.String),
@@ -2615,7 +2615,7 @@ export interface AppAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const AppAssignedTargetingOptionDetails: Schema.Schema<AppAssignedTargetingOptionDetails> =
+export const AppAssignedTargetingOptionDetails: Schema.Codec<AppAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negative: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
@@ -2636,7 +2636,7 @@ export interface DigitalContentLabelAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const DigitalContentLabelAssignedTargetingOptionDetails: Schema.Schema<DigitalContentLabelAssignedTargetingOptionDetails> =
+export const DigitalContentLabelAssignedTargetingOptionDetails: Schema.Codec<DigitalContentLabelAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedContentRatingTier: Schema.optional(Schema.String),
   }).annotate({
@@ -2650,7 +2650,7 @@ export interface RegionalLocationListAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const RegionalLocationListAssignedTargetingOptionDetails: Schema.Schema<RegionalLocationListAssignedTargetingOptionDetails> =
+export const RegionalLocationListAssignedTargetingOptionDetails: Schema.Codec<RegionalLocationListAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionalLocationListId: Schema.optional(Schema.String),
     negative: Schema.optional(Schema.Boolean),
@@ -2669,7 +2669,7 @@ export interface VideoPlayerSizeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const VideoPlayerSizeAssignedTargetingOptionDetails: Schema.Schema<VideoPlayerSizeAssignedTargetingOptionDetails> =
+export const VideoPlayerSizeAssignedTargetingOptionDetails: Schema.Codec<VideoPlayerSizeAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoPlayerSize: Schema.optional(Schema.String),
   }).annotate({ identifier: "VideoPlayerSizeAssignedTargetingOptionDetails" });
@@ -2689,7 +2689,7 @@ export interface BusinessChainAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const BusinessChainAssignedTargetingOptionDetails: Schema.Schema<BusinessChainAssignedTargetingOptionDetails> =
+export const BusinessChainAssignedTargetingOptionDetails: Schema.Codec<BusinessChainAssignedTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proximityRadiusAmount: Schema.optional(Schema.Number),
     proximityRadiusUnit: Schema.optional(Schema.String),
@@ -2864,7 +2864,7 @@ export interface AssignedTargetingOption {
   carrierAndIspDetails?: CarrierAndIspAssignedTargetingOptionDetails;
 }
 
-export const AssignedTargetingOption: Schema.Schema<AssignedTargetingOption> =
+export const AssignedTargetingOption: Schema.Codec<AssignedTargetingOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentStreamTypeDetails: Schema.optional(
       ContentStreamTypeAssignedTargetingOptionDetails,
@@ -2999,7 +2999,7 @@ export interface BulkEditAdvertiserAssignedTargetingOptionsResponse {
   createdAssignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
 }
 
-export const BulkEditAdvertiserAssignedTargetingOptionsResponse: Schema.Schema<BulkEditAdvertiserAssignedTargetingOptionsResponse> =
+export const BulkEditAdvertiserAssignedTargetingOptionsResponse: Schema.Codec<BulkEditAdvertiserAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAssignedTargetingOptions: Schema.optional(
       Schema.Array(AssignedTargetingOption),
@@ -3019,7 +3019,7 @@ export interface DuplicateLineItemRequest {
     | (string & {});
 }
 
-export const DuplicateLineItemRequest: Schema.Schema<DuplicateLineItemRequest> =
+export const DuplicateLineItemRequest: Schema.Codec<DuplicateLineItemRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetDisplayName: Schema.optional(Schema.String),
     containsEuPoliticalAds: Schema.optional(Schema.String),
@@ -3035,7 +3035,7 @@ export interface OnScreenPositionTargetingOptionDetails {
     | (string & {});
 }
 
-export const OnScreenPositionTargetingOptionDetails: Schema.Schema<OnScreenPositionTargetingOptionDetails> =
+export const OnScreenPositionTargetingOptionDetails: Schema.Codec<OnScreenPositionTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     onScreenPosition: Schema.optional(Schema.String),
   }).annotate({ identifier: "OnScreenPositionTargetingOptionDetails" });
@@ -3049,7 +3049,7 @@ export interface AssignedInventorySource {
   inventorySourceId?: string;
 }
 
-export const AssignedInventorySource: Schema.Schema<AssignedInventorySource> =
+export const AssignedInventorySource: Schema.Codec<AssignedInventorySource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignedInventorySourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3063,7 +3063,7 @@ export interface ListAssignedInventorySourcesResponse {
   assignedInventorySources?: ReadonlyArray<AssignedInventorySource>;
 }
 
-export const ListAssignedInventorySourcesResponse: Schema.Schema<ListAssignedInventorySourcesResponse> =
+export const ListAssignedInventorySourcesResponse: Schema.Codec<ListAssignedInventorySourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     assignedInventorySources: Schema.optional(
@@ -3078,7 +3078,7 @@ export interface Asset {
   content?: string;
 }
 
-export const Asset: Schema.Schema<Asset> =
+export const Asset: Schema.Codec<Asset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mediaId: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -3089,7 +3089,7 @@ export interface CreateAssetResponse {
   asset?: Asset;
 }
 
-export const CreateAssetResponse: Schema.Schema<CreateAssetResponse> =
+export const CreateAssetResponse: Schema.Codec<CreateAssetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asset: Schema.optional(Asset),
   }).annotate({ identifier: "CreateAssetResponse" });
@@ -3124,7 +3124,7 @@ export interface SdfDownloadTaskMetadata {
     | (string & {});
 }
 
-export const SdfDownloadTaskMetadata: Schema.Schema<SdfDownloadTaskMetadata> =
+export const SdfDownloadTaskMetadata: Schema.Codec<SdfDownloadTaskMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -3140,7 +3140,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -3158,7 +3158,7 @@ export interface BulkEditAssignedTargetingOptionsResponse {
   errors?: ReadonlyArray<Status>;
 }
 
-export const BulkEditAssignedTargetingOptionsResponse: Schema.Schema<BulkEditAssignedTargetingOptionsResponse> =
+export const BulkEditAssignedTargetingOptionsResponse: Schema.Codec<BulkEditAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updatedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
     failedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
@@ -3176,7 +3176,7 @@ export interface BulkEditAssignedInventorySourcesRequest {
   createdAssignedInventorySources?: ReadonlyArray<AssignedInventorySource>;
 }
 
-export const BulkEditAssignedInventorySourcesRequest: Schema.Schema<BulkEditAssignedInventorySourcesRequest> =
+export const BulkEditAssignedInventorySourcesRequest: Schema.Codec<BulkEditAssignedInventorySourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserId: Schema.optional(Schema.String),
     partnerId: Schema.optional(Schema.String),
@@ -3195,7 +3195,7 @@ export interface MeasurementConfig {
   dv360ToCmCostReportingEnabled?: boolean;
 }
 
-export const MeasurementConfig: Schema.Schema<MeasurementConfig> =
+export const MeasurementConfig: Schema.Codec<MeasurementConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dv360ToCmDataSharingEnabled: Schema.optional(Schema.Boolean),
     dv360ToCmCostReportingEnabled: Schema.optional(Schema.Boolean),
@@ -3206,7 +3206,7 @@ export interface PartnerAdServerConfig {
   measurementConfig?: MeasurementConfig;
 }
 
-export const PartnerAdServerConfig: Schema.Schema<PartnerAdServerConfig> =
+export const PartnerAdServerConfig: Schema.Codec<PartnerAdServerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     measurementConfig: Schema.optional(MeasurementConfig),
   }).annotate({ identifier: "PartnerAdServerConfig" });
@@ -3227,7 +3227,7 @@ export interface ScriptError {
   column?: string;
 }
 
-export const ScriptError: Schema.Schema<ScriptError> =
+export const ScriptError: Schema.Codec<ScriptError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
     line: Schema.optional(Schema.String),
@@ -3240,7 +3240,7 @@ export interface CustomBiddingScriptRef {
   resourceName?: string;
 }
 
-export const CustomBiddingScriptRef: Schema.Schema<CustomBiddingScriptRef> =
+export const CustomBiddingScriptRef: Schema.Codec<CustomBiddingScriptRef> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomBiddingScriptRef" });
@@ -3269,7 +3269,7 @@ export interface CustomBiddingScript {
   script?: CustomBiddingScriptRef;
 }
 
-export const CustomBiddingScript: Schema.Schema<CustomBiddingScript> =
+export const CustomBiddingScript: Schema.Codec<CustomBiddingScript> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customBiddingScriptId: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -3297,7 +3297,7 @@ export interface ViewabilityTargetingOptionDetails {
     | (string & {});
 }
 
-export const ViewabilityTargetingOptionDetails: Schema.Schema<ViewabilityTargetingOptionDetails> =
+export const ViewabilityTargetingOptionDetails: Schema.Codec<ViewabilityTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewability: Schema.optional(Schema.String),
   }).annotate({ identifier: "ViewabilityTargetingOptionDetails" });
@@ -3315,7 +3315,7 @@ export interface AdUrl {
   url?: string;
 }
 
-export const AdUrl: Schema.Schema<AdUrl> =
+export const AdUrl: Schema.Codec<AdUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -3349,7 +3349,7 @@ export interface PerformanceGoal {
   performanceGoalString?: string;
 }
 
-export const PerformanceGoal: Schema.Schema<PerformanceGoal> =
+export const PerformanceGoal: Schema.Codec<PerformanceGoal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     performanceGoalType: Schema.optional(Schema.String),
     performanceGoalAmountMicros: Schema.optional(Schema.String),
@@ -3368,7 +3368,7 @@ export interface InsertionOrderBudgetSegment {
   budgetAmountMicros?: string;
 }
 
-export const InsertionOrderBudgetSegment: Schema.Schema<InsertionOrderBudgetSegment> =
+export const InsertionOrderBudgetSegment: Schema.Codec<InsertionOrderBudgetSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     campaignBudgetId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -3394,7 +3394,7 @@ export interface InsertionOrderBudget {
   budgetSegments?: ReadonlyArray<InsertionOrderBudgetSegment>;
 }
 
-export const InsertionOrderBudget: Schema.Schema<InsertionOrderBudget> =
+export const InsertionOrderBudget: Schema.Codec<InsertionOrderBudget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     automationType: Schema.optional(Schema.String),
     budgetUnit: Schema.optional(Schema.String),
@@ -3461,7 +3461,7 @@ export interface InsertionOrder {
   integrationDetails?: IntegrationDetails;
 }
 
-export const InsertionOrder: Schema.Schema<InsertionOrder> =
+export const InsertionOrder: Schema.Codec<InsertionOrder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     bidStrategy: Schema.optional(BiddingStrategy),
@@ -3489,7 +3489,7 @@ export interface ListInsertionOrdersResponse {
   nextPageToken?: string;
 }
 
-export const ListInsertionOrdersResponse: Schema.Schema<ListInsertionOrdersResponse> =
+export const ListInsertionOrdersResponse: Schema.Codec<ListInsertionOrdersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insertionOrders: Schema.optional(Schema.Array(InsertionOrder)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3500,7 +3500,7 @@ export interface SubExchangeTargetingOptionDetails {
   displayName?: string;
 }
 
-export const SubExchangeTargetingOptionDetails: Schema.Schema<SubExchangeTargetingOptionDetails> =
+export const SubExchangeTargetingOptionDetails: Schema.Codec<SubExchangeTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SubExchangeTargetingOptionDetails" });
@@ -3526,7 +3526,7 @@ export interface Transcode {
   transcoded?: boolean;
 }
 
-export const Transcode: Schema.Schema<Transcode> =
+export const Transcode: Schema.Codec<Transcode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     dimensions: Schema.optional(Dimensions),
@@ -3544,7 +3544,7 @@ export interface InventorySourceFilter {
   inventorySourceIds?: ReadonlyArray<string>;
 }
 
-export const InventorySourceFilter: Schema.Schema<InventorySourceFilter> =
+export const InventorySourceFilter: Schema.Codec<InventorySourceFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inventorySourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InventorySourceFilter" });
@@ -3558,14 +3558,14 @@ export interface ContentStreamTypeTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentStreamTypeTargetingOptionDetails: Schema.Schema<ContentStreamTypeTargetingOptionDetails> =
+export const ContentStreamTypeTargetingOptionDetails: Schema.Codec<ContentStreamTypeTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentStreamType: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContentStreamTypeTargetingOptionDetails" });
 
 export interface DeactivateManualTriggerRequest {}
 
-export const DeactivateManualTriggerRequest: Schema.Schema<DeactivateManualTriggerRequest> =
+export const DeactivateManualTriggerRequest: Schema.Codec<DeactivateManualTriggerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeactivateManualTriggerRequest",
   });
@@ -3581,7 +3581,7 @@ export interface AdvertiserCreativeConfig {
   videoCreativeDataSharingAuthorized?: boolean;
 }
 
-export const AdvertiserCreativeConfig: Schema.Schema<AdvertiserCreativeConfig> =
+export const AdvertiserCreativeConfig: Schema.Codec<AdvertiserCreativeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iasClientId: Schema.optional(Schema.String),
     dynamicCreativeEnabled: Schema.optional(Schema.Boolean),
@@ -3598,7 +3598,7 @@ export interface AdvertiserGeneralConfig {
   timeZone?: string;
 }
 
-export const AdvertiserGeneralConfig: Schema.Schema<AdvertiserGeneralConfig> =
+export const AdvertiserGeneralConfig: Schema.Codec<AdvertiserGeneralConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domainUrl: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -3622,7 +3622,7 @@ export interface CmHybridConfig {
   dv360ToCmDataSharingEnabled?: boolean;
 }
 
-export const CmHybridConfig: Schema.Schema<CmHybridConfig> =
+export const CmHybridConfig: Schema.Codec<CmHybridConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cmAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
     dv360ToCmCostReportingEnabled: Schema.optional(Schema.Boolean),
@@ -3638,7 +3638,7 @@ export interface ThirdPartyOnlyConfig {
   pixelOrderIdReportingEnabled?: boolean;
 }
 
-export const ThirdPartyOnlyConfig: Schema.Schema<ThirdPartyOnlyConfig> =
+export const ThirdPartyOnlyConfig: Schema.Codec<ThirdPartyOnlyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pixelOrderIdReportingEnabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ThirdPartyOnlyConfig" });
@@ -3650,7 +3650,7 @@ export interface AdvertiserAdServerConfig {
   thirdPartyOnlyConfig?: ThirdPartyOnlyConfig;
 }
 
-export const AdvertiserAdServerConfig: Schema.Schema<AdvertiserAdServerConfig> =
+export const AdvertiserAdServerConfig: Schema.Codec<AdvertiserAdServerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cmHybridConfig: Schema.optional(CmHybridConfig),
     thirdPartyOnlyConfig: Schema.optional(ThirdPartyOnlyConfig),
@@ -3684,7 +3684,7 @@ export interface SdfConfig {
   adminEmail?: string;
 }
 
-export const SdfConfig: Schema.Schema<SdfConfig> =
+export const SdfConfig: Schema.Codec<SdfConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     adminEmail: Schema.optional(Schema.String),
@@ -3697,7 +3697,7 @@ export interface AdvertiserSdfConfig {
   sdfConfig?: SdfConfig;
 }
 
-export const AdvertiserSdfConfig: Schema.Schema<AdvertiserSdfConfig> =
+export const AdvertiserSdfConfig: Schema.Codec<AdvertiserSdfConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overridePartnerSdfConfig: Schema.optional(Schema.Boolean),
     sdfConfig: Schema.optional(SdfConfig),
@@ -3708,7 +3708,7 @@ export interface AdvertiserDataAccessConfig {
   sdfConfig?: AdvertiserSdfConfig;
 }
 
-export const AdvertiserDataAccessConfig: Schema.Schema<AdvertiserDataAccessConfig> =
+export const AdvertiserDataAccessConfig: Schema.Codec<AdvertiserDataAccessConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sdfConfig: Schema.optional(AdvertiserSdfConfig),
   }).annotate({ identifier: "AdvertiserDataAccessConfig" });
@@ -3718,7 +3718,7 @@ export interface AdvertiserTargetingConfig {
   exemptTvFromViewabilityTargeting?: boolean;
 }
 
-export const AdvertiserTargetingConfig: Schema.Schema<AdvertiserTargetingConfig> =
+export const AdvertiserTargetingConfig: Schema.Codec<AdvertiserTargetingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptTvFromViewabilityTargeting: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AdvertiserTargetingConfig" });
@@ -3765,7 +3765,7 @@ export interface Advertiser {
   updateTime?: string;
 }
 
-export const Advertiser: Schema.Schema<Advertiser> =
+export const Advertiser: Schema.Codec<Advertiser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserId: Schema.optional(Schema.String),
     prismaEnabled: Schema.optional(Schema.Boolean),
@@ -3790,7 +3790,7 @@ export interface ListAdvertisersResponse {
   advertisers?: ReadonlyArray<Advertiser>;
 }
 
-export const ListAdvertisersResponse: Schema.Schema<ListAdvertisersResponse> =
+export const ListAdvertisersResponse: Schema.Codec<ListAdvertisersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     advertisers: Schema.optional(Schema.Array(Advertiser)),
@@ -3809,7 +3809,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -3825,7 +3825,7 @@ export interface LookbackWindow {
   impressionDays?: number;
 }
 
-export const LookbackWindow: Schema.Schema<LookbackWindow> =
+export const LookbackWindow: Schema.Codec<LookbackWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clickDays: Schema.optional(Schema.Number),
     impressionDays: Schema.optional(Schema.Number),
@@ -3836,7 +3836,7 @@ export interface CategoryTargetingOptionDetails {
   displayName?: string;
 }
 
-export const CategoryTargetingOptionDetails: Schema.Schema<CategoryTargetingOptionDetails> =
+export const CategoryTargetingOptionDetails: Schema.Codec<CategoryTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "CategoryTargetingOptionDetails" });
@@ -3848,7 +3848,7 @@ export interface ListPartnerAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListPartnerAssignedTargetingOptionsResponse: Schema.Schema<ListPartnerAssignedTargetingOptionsResponse> =
+export const ListPartnerAssignedTargetingOptionsResponse: Schema.Codec<ListPartnerAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignedTargetingOptions: Schema.optional(
       Schema.Array(AssignedTargetingOption),
@@ -3952,7 +3952,7 @@ export interface ExchangeTargetingOptionDetails {
     | (string & {});
 }
 
-export const ExchangeTargetingOptionDetails: Schema.Schema<ExchangeTargetingOptionDetails> =
+export const ExchangeTargetingOptionDetails: Schema.Codec<ExchangeTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exchange: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExchangeTargetingOptionDetails" });
@@ -3986,7 +3986,7 @@ export interface MastheadAd {
   autoplayVideoStartMillisecond?: string;
 }
 
-export const MastheadAd: Schema.Schema<MastheadAd> =
+export const MastheadAd: Schema.Codec<MastheadAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoplayVideoDuration: Schema.optional(Schema.String),
     headline: Schema.optional(Schema.String),
@@ -4006,7 +4006,7 @@ export interface DisplayVideoSourceAd {
   creativeId?: string;
 }
 
-export const DisplayVideoSourceAd: Schema.Schema<DisplayVideoSourceAd> =
+export const DisplayVideoSourceAd: Schema.Codec<DisplayVideoSourceAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisplayVideoSourceAd" });
@@ -4030,7 +4030,7 @@ export interface VideoDiscoveryAd {
   headline?: string;
 }
 
-export const VideoDiscoveryAd: Schema.Schema<VideoDiscoveryAd> =
+export const VideoDiscoveryAd: Schema.Codec<VideoDiscoveryAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description1: Schema.optional(Schema.String),
     thumbnail: Schema.optional(Schema.String),
@@ -4056,7 +4056,7 @@ export interface CommonInStreamAttribute {
   video?: YoutubeVideoDetails;
 }
 
-export const CommonInStreamAttribute: Schema.Schema<CommonInStreamAttribute> =
+export const CommonInStreamAttribute: Schema.Codec<CommonInStreamAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionHeadline: Schema.optional(Schema.String),
     trackingUrl: Schema.optional(Schema.String),
@@ -4074,7 +4074,7 @@ export interface InStreamAd {
   commonInStreamAttribute?: CommonInStreamAttribute;
 }
 
-export const InStreamAd: Schema.Schema<InStreamAd> =
+export const InStreamAd: Schema.Codec<InStreamAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -4093,7 +4093,7 @@ export interface AudioAd {
   displayUrl?: string;
 }
 
-export const AudioAd: Schema.Schema<AudioAd> =
+export const AudioAd: Schema.Codec<AudioAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finalUrl: Schema.optional(Schema.String),
     trackingUrl: Schema.optional(Schema.String),
@@ -4106,7 +4106,7 @@ export interface BumperAd {
   commonInStreamAttribute?: CommonInStreamAttribute;
 }
 
-export const BumperAd: Schema.Schema<BumperAd> =
+export const BumperAd: Schema.Codec<BumperAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commonInStreamAttribute: Schema.optional(CommonInStreamAttribute),
   }).annotate({ identifier: "BumperAd" });
@@ -4118,7 +4118,7 @@ export interface NonSkippableAd {
   customParameters?: Record<string, string>;
 }
 
-export const NonSkippableAd: Schema.Schema<NonSkippableAd> =
+export const NonSkippableAd: Schema.Codec<NonSkippableAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commonInStreamAttribute: Schema.optional(CommonInStreamAttribute),
     customParameters: Schema.optional(
@@ -4166,7 +4166,7 @@ export interface YoutubeAdGroupAd {
   nonSkippableAd?: NonSkippableAd;
 }
 
-export const YoutubeAdGroupAd: Schema.Schema<YoutubeAdGroupAd> =
+export const YoutubeAdGroupAd: Schema.Codec<YoutubeAdGroupAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mastheadAd: Schema.optional(MastheadAd),
     displayVideoSourceAd: Schema.optional(DisplayVideoSourceAd),
@@ -4197,7 +4197,7 @@ export interface ContentOutstreamPositionTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentOutstreamPositionTargetingOptionDetails: Schema.Schema<ContentOutstreamPositionTargetingOptionDetails> =
+export const ContentOutstreamPositionTargetingOptionDetails: Schema.Codec<ContentOutstreamPositionTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentOutstreamPosition: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContentOutstreamPositionTargetingOptionDetails" });
@@ -4304,7 +4304,7 @@ export interface ExchangeConfigEnabledExchange {
   googleAdManagerBuyerNetworkId?: string;
 }
 
-export const ExchangeConfigEnabledExchange: Schema.Schema<ExchangeConfigEnabledExchange> =
+export const ExchangeConfigEnabledExchange: Schema.Codec<ExchangeConfigEnabledExchange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleAdManagerAgencyId: Schema.optional(Schema.String),
     seatId: Schema.optional(Schema.String),
@@ -4317,7 +4317,7 @@ export interface ExchangeConfig {
   enabledExchanges?: ReadonlyArray<ExchangeConfigEnabledExchange>;
 }
 
-export const ExchangeConfig: Schema.Schema<ExchangeConfig> =
+export const ExchangeConfig: Schema.Codec<ExchangeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabledExchanges: Schema.optional(
       Schema.Array(ExchangeConfigEnabledExchange),
@@ -4331,7 +4331,7 @@ export interface PartnerGeneralConfig {
   currencyCode?: string;
 }
 
-export const PartnerGeneralConfig: Schema.Schema<PartnerGeneralConfig> =
+export const PartnerGeneralConfig: Schema.Codec<PartnerGeneralConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -4342,7 +4342,7 @@ export interface PartnerDataAccessConfig {
   sdfConfig?: SdfConfig;
 }
 
-export const PartnerDataAccessConfig: Schema.Schema<PartnerDataAccessConfig> =
+export const PartnerDataAccessConfig: Schema.Codec<PartnerDataAccessConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sdfConfig: Schema.optional(SdfConfig),
   }).annotate({ identifier: "PartnerDataAccessConfig" });
@@ -4375,7 +4375,7 @@ export interface Partner {
   updateTime?: string;
 }
 
-export const Partner: Schema.Schema<Partner> =
+export const Partner: Schema.Codec<Partner> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exchangeConfig: Schema.optional(ExchangeConfig),
     displayName: Schema.optional(Schema.String),
@@ -4395,7 +4395,7 @@ export interface ListLineItemAssignedTargetingOptionsResponse {
   assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
 }
 
-export const ListLineItemAssignedTargetingOptionsResponse: Schema.Schema<ListLineItemAssignedTargetingOptionsResponse> =
+export const ListLineItemAssignedTargetingOptionsResponse: Schema.Codec<ListLineItemAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     assignedTargetingOptions: Schema.optional(
@@ -4417,7 +4417,7 @@ export interface HouseholdIncomeTargetingOptionDetails {
     | (string & {});
 }
 
-export const HouseholdIncomeTargetingOptionDetails: Schema.Schema<HouseholdIncomeTargetingOptionDetails> =
+export const HouseholdIncomeTargetingOptionDetails: Schema.Codec<HouseholdIncomeTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     householdIncome: Schema.optional(Schema.String),
   }).annotate({ identifier: "HouseholdIncomeTargetingOptionDetails" });
@@ -4427,7 +4427,7 @@ export interface DeviceMakeModelTargetingOptionDetails {
   displayName?: string;
 }
 
-export const DeviceMakeModelTargetingOptionDetails: Schema.Schema<DeviceMakeModelTargetingOptionDetails> =
+export const DeviceMakeModelTargetingOptionDetails: Schema.Codec<DeviceMakeModelTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeviceMakeModelTargetingOptionDetails" });
@@ -4490,7 +4490,7 @@ export interface DeleteAssignedTargetingOptionsRequest {
   assignedTargetingOptionIds?: ReadonlyArray<string>;
 }
 
-export const DeleteAssignedTargetingOptionsRequest: Schema.Schema<DeleteAssignedTargetingOptionsRequest> =
+export const DeleteAssignedTargetingOptionsRequest: Schema.Codec<DeleteAssignedTargetingOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingType: Schema.optional(Schema.String),
     assignedTargetingOptionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -4503,7 +4503,7 @@ export interface ListLineItemsResponse {
   nextPageToken?: string;
 }
 
-export const ListLineItemsResponse: Schema.Schema<ListLineItemsResponse> =
+export const ListLineItemsResponse: Schema.Codec<ListLineItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineItems: Schema.optional(Schema.Array(LineItem)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4534,7 +4534,7 @@ export interface ObaIcon {
   resourceMimeType?: string;
 }
 
-export const ObaIcon: Schema.Schema<ObaIcon> =
+export const ObaIcon: Schema.Codec<ObaIcon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(Schema.String),
     dimensions: Schema.optional(Dimensions),
@@ -4604,7 +4604,7 @@ export interface CreateAssignedTargetingOptionsRequest {
   assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
 }
 
-export const CreateAssignedTargetingOptionsRequest: Schema.Schema<CreateAssignedTargetingOptionsRequest> =
+export const CreateAssignedTargetingOptionsRequest: Schema.Codec<CreateAssignedTargetingOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingType: Schema.optional(Schema.String),
     assignedTargetingOptions: Schema.optional(
@@ -4619,7 +4619,7 @@ export interface BulkEditPartnerAssignedTargetingOptionsRequest {
   createRequests?: ReadonlyArray<CreateAssignedTargetingOptionsRequest>;
 }
 
-export const BulkEditPartnerAssignedTargetingOptionsRequest: Schema.Schema<BulkEditPartnerAssignedTargetingOptionsRequest> =
+export const BulkEditPartnerAssignedTargetingOptionsRequest: Schema.Codec<BulkEditPartnerAssignedTargetingOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteRequests: Schema.optional(
       Schema.Array(DeleteAssignedTargetingOptionsRequest),
@@ -4634,7 +4634,7 @@ export interface OperatingSystemTargetingOptionDetails {
   displayName?: string;
 }
 
-export const OperatingSystemTargetingOptionDetails: Schema.Schema<OperatingSystemTargetingOptionDetails> =
+export const OperatingSystemTargetingOptionDetails: Schema.Codec<OperatingSystemTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "OperatingSystemTargetingOptionDetails" });
@@ -4644,7 +4644,7 @@ export interface PoiSearchTerms {
   poiQuery?: string;
 }
 
-export const PoiSearchTerms: Schema.Schema<PoiSearchTerms> =
+export const PoiSearchTerms: Schema.Codec<PoiSearchTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     poiQuery: Schema.optional(Schema.String),
   }).annotate({ identifier: "PoiSearchTerms" });
@@ -4656,7 +4656,7 @@ export interface BusinessChainSearchTerms {
   regionQuery?: string;
 }
 
-export const BusinessChainSearchTerms: Schema.Schema<BusinessChainSearchTerms> =
+export const BusinessChainSearchTerms: Schema.Codec<BusinessChainSearchTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     businessChainQuery: Schema.optional(Schema.String),
     regionQuery: Schema.optional(Schema.String),
@@ -4667,7 +4667,7 @@ export interface GeoRegionSearchTerms {
   geoRegionQuery?: string;
 }
 
-export const GeoRegionSearchTerms: Schema.Schema<GeoRegionSearchTerms> =
+export const GeoRegionSearchTerms: Schema.Codec<GeoRegionSearchTerms> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geoRegionQuery: Schema.optional(Schema.String),
   }).annotate({ identifier: "GeoRegionSearchTerms" });
@@ -4687,7 +4687,7 @@ export interface SearchTargetingOptionsRequest {
   geoRegionSearchTerms?: GeoRegionSearchTerms;
 }
 
-export const SearchTargetingOptionsRequest: Schema.Schema<SearchTargetingOptionsRequest> =
+export const SearchTargetingOptionsRequest: Schema.Codec<SearchTargetingOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     advertiserId: Schema.optional(Schema.String),
@@ -4712,7 +4712,7 @@ export interface ExitEvent {
   reportingName?: string;
 }
 
-export const ExitEvent: Schema.Schema<ExitEvent> =
+export const ExitEvent: Schema.Codec<ExitEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -4733,7 +4733,7 @@ export interface DigitalContentLabelTargetingOptionDetails {
     | (string & {});
 }
 
-export const DigitalContentLabelTargetingOptionDetails: Schema.Schema<DigitalContentLabelTargetingOptionDetails> =
+export const DigitalContentLabelTargetingOptionDetails: Schema.Codec<DigitalContentLabelTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentRatingTier: Schema.optional(Schema.String),
   }).annotate({ identifier: "DigitalContentLabelTargetingOptionDetails" });
@@ -4753,7 +4753,7 @@ export interface AudioContentTypeTargetingOptionDetails {
     | (string & {});
 }
 
-export const AudioContentTypeTargetingOptionDetails: Schema.Schema<AudioContentTypeTargetingOptionDetails> =
+export const AudioContentTypeTargetingOptionDetails: Schema.Codec<AudioContentTypeTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioContentType: Schema.optional(Schema.String),
   }).annotate({ identifier: "AudioContentTypeTargetingOptionDetails" });
@@ -4770,7 +4770,7 @@ export interface NativeContentPositionTargetingOptionDetails {
     | (string & {});
 }
 
-export const NativeContentPositionTargetingOptionDetails: Schema.Schema<NativeContentPositionTargetingOptionDetails> =
+export const NativeContentPositionTargetingOptionDetails: Schema.Codec<NativeContentPositionTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentPosition: Schema.optional(Schema.String),
   }).annotate({ identifier: "NativeContentPositionTargetingOptionDetails" });
@@ -4799,7 +4799,7 @@ export interface AgeRangeTargetingOptionDetails {
     | (string & {});
 }
 
-export const AgeRangeTargetingOptionDetails: Schema.Schema<AgeRangeTargetingOptionDetails> =
+export const AgeRangeTargetingOptionDetails: Schema.Codec<AgeRangeTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ageRange: Schema.optional(Schema.String),
   }).annotate({ identifier: "AgeRangeTargetingOptionDetails" });
@@ -4816,7 +4816,7 @@ export interface DeviceTypeTargetingOptionDetails {
     | (string & {});
 }
 
-export const DeviceTypeTargetingOptionDetails: Schema.Schema<DeviceTypeTargetingOptionDetails> =
+export const DeviceTypeTargetingOptionDetails: Schema.Codec<DeviceTypeTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceType: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeviceTypeTargetingOptionDetails" });
@@ -4832,7 +4832,7 @@ export interface ContentInstreamPositionTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentInstreamPositionTargetingOptionDetails: Schema.Schema<ContentInstreamPositionTargetingOptionDetails> =
+export const ContentInstreamPositionTargetingOptionDetails: Schema.Codec<ContentInstreamPositionTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentInstreamPosition: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContentInstreamPositionTargetingOptionDetails" });
@@ -4847,7 +4847,7 @@ export interface ParentalStatusTargetingOptionDetails {
     | (string & {});
 }
 
-export const ParentalStatusTargetingOptionDetails: Schema.Schema<ParentalStatusTargetingOptionDetails> =
+export const ParentalStatusTargetingOptionDetails: Schema.Codec<ParentalStatusTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentalStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "ParentalStatusTargetingOptionDetails" });
@@ -4861,7 +4861,7 @@ export interface UserRewardedContentTargetingOptionDetails {
     | (string & {});
 }
 
-export const UserRewardedContentTargetingOptionDetails: Schema.Schema<UserRewardedContentTargetingOptionDetails> =
+export const UserRewardedContentTargetingOptionDetails: Schema.Codec<UserRewardedContentTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userRewardedContent: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserRewardedContentTargetingOptionDetails" });
@@ -4875,7 +4875,7 @@ export interface PoiTargetingOptionDetails {
   displayName?: string;
 }
 
-export const PoiTargetingOptionDetails: Schema.Schema<PoiTargetingOptionDetails> =
+export const PoiTargetingOptionDetails: Schema.Codec<PoiTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -4887,7 +4887,7 @@ export interface ContentGenreTargetingOptionDetails {
   displayName?: string;
 }
 
-export const ContentGenreTargetingOptionDetails: Schema.Schema<ContentGenreTargetingOptionDetails> =
+export const ContentGenreTargetingOptionDetails: Schema.Codec<ContentGenreTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContentGenreTargetingOptionDetails" });
@@ -4897,7 +4897,7 @@ export interface LanguageTargetingOptionDetails {
   displayName?: string;
 }
 
-export const LanguageTargetingOptionDetails: Schema.Schema<LanguageTargetingOptionDetails> =
+export const LanguageTargetingOptionDetails: Schema.Codec<LanguageTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "LanguageTargetingOptionDetails" });
@@ -4950,7 +4950,7 @@ export interface GeoRegionTargetingOptionDetails {
     | (string & {});
 }
 
-export const GeoRegionTargetingOptionDetails: Schema.Schema<GeoRegionTargetingOptionDetails> =
+export const GeoRegionTargetingOptionDetails: Schema.Codec<GeoRegionTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     geoRegionType: Schema.optional(Schema.String),
@@ -4961,7 +4961,7 @@ export interface BrowserTargetingOptionDetails {
   displayName?: string;
 }
 
-export const BrowserTargetingOptionDetails: Schema.Schema<BrowserTargetingOptionDetails> =
+export const BrowserTargetingOptionDetails: Schema.Codec<BrowserTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "BrowserTargetingOptionDetails" });
@@ -4975,7 +4975,7 @@ export interface AuthorizedSellerStatusTargetingOptionDetails {
     | (string & {});
 }
 
-export const AuthorizedSellerStatusTargetingOptionDetails: Schema.Schema<AuthorizedSellerStatusTargetingOptionDetails> =
+export const AuthorizedSellerStatusTargetingOptionDetails: Schema.Codec<AuthorizedSellerStatusTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizedSellerStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuthorizedSellerStatusTargetingOptionDetails" });
@@ -4985,7 +4985,7 @@ export interface OmidTargetingOptionDetails {
   omid?: "OMID_UNSPECIFIED" | "OMID_FOR_MOBILE_DISPLAY_ADS" | (string & {});
 }
 
-export const OmidTargetingOptionDetails: Schema.Schema<OmidTargetingOptionDetails> =
+export const OmidTargetingOptionDetails: Schema.Codec<OmidTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     omid: Schema.optional(Schema.String),
   }).annotate({ identifier: "OmidTargetingOptionDetails" });
@@ -5016,7 +5016,7 @@ export interface SensitiveCategoryTargetingOptionDetails {
     | (string & {});
 }
 
-export const SensitiveCategoryTargetingOptionDetails: Schema.Schema<SensitiveCategoryTargetingOptionDetails> =
+export const SensitiveCategoryTargetingOptionDetails: Schema.Codec<SensitiveCategoryTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sensitiveCategory: Schema.optional(Schema.String),
   }).annotate({ identifier: "SensitiveCategoryTargetingOptionDetails" });
@@ -5032,7 +5032,7 @@ export interface VideoPlayerSizeTargetingOptionDetails {
     | (string & {});
 }
 
-export const VideoPlayerSizeTargetingOptionDetails: Schema.Schema<VideoPlayerSizeTargetingOptionDetails> =
+export const VideoPlayerSizeTargetingOptionDetails: Schema.Codec<VideoPlayerSizeTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoPlayerSize: Schema.optional(Schema.String),
   }).annotate({ identifier: "VideoPlayerSizeTargetingOptionDetails" });
@@ -5047,7 +5047,7 @@ export interface GenderTargetingOptionDetails {
     | (string & {});
 }
 
-export const GenderTargetingOptionDetails: Schema.Schema<GenderTargetingOptionDetails> =
+export const GenderTargetingOptionDetails: Schema.Codec<GenderTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gender: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenderTargetingOptionDetails" });
@@ -5063,7 +5063,7 @@ export interface CarrierAndIspTargetingOptionDetails {
     | (string & {});
 }
 
-export const CarrierAndIspTargetingOptionDetails: Schema.Schema<CarrierAndIspTargetingOptionDetails> =
+export const CarrierAndIspTargetingOptionDetails: Schema.Codec<CarrierAndIspTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5074,7 +5074,7 @@ export interface AppCategoryTargetingOptionDetails {
   displayName?: string;
 }
 
-export const AppCategoryTargetingOptionDetails: Schema.Schema<AppCategoryTargetingOptionDetails> =
+export const AppCategoryTargetingOptionDetails: Schema.Codec<AppCategoryTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "AppCategoryTargetingOptionDetails" });
@@ -5093,7 +5093,7 @@ export interface ContentDurationTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentDurationTargetingOptionDetails: Schema.Schema<ContentDurationTargetingOptionDetails> =
+export const ContentDurationTargetingOptionDetails: Schema.Codec<ContentDurationTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContentDurationTargetingOptionDetails" });
@@ -5108,7 +5108,7 @@ export interface EnvironmentTargetingOptionDetails {
     | (string & {});
 }
 
-export const EnvironmentTargetingOptionDetails: Schema.Schema<EnvironmentTargetingOptionDetails> =
+export const EnvironmentTargetingOptionDetails: Schema.Codec<EnvironmentTargetingOptionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnvironmentTargetingOptionDetails" });
@@ -5239,7 +5239,7 @@ export interface TargetingOption {
   environmentDetails?: EnvironmentTargetingOptionDetails;
 }
 
-export const TargetingOption: Schema.Schema<TargetingOption> =
+export const TargetingOption: Schema.Codec<TargetingOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceMakeModelDetails: Schema.optional(
       DeviceMakeModelTargetingOptionDetails,
@@ -5316,7 +5316,7 @@ export interface SdfDownloadTask {
   resourceName?: string;
 }
 
-export const SdfDownloadTask: Schema.Schema<SdfDownloadTask> =
+export const SdfDownloadTask: Schema.Codec<SdfDownloadTask> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SdfDownloadTask" });
@@ -5347,7 +5347,7 @@ export interface ParentEntityFilter {
     | (string & {});
 }
 
-export const ParentEntityFilter: Schema.Schema<ParentEntityFilter> =
+export const ParentEntityFilter: Schema.Codec<ParentEntityFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterIds: Schema.optional(Schema.Array(Schema.String)),
     fileType: Schema.optional(Schema.Array(Schema.String)),
@@ -5369,7 +5369,7 @@ export interface IdFilter {
   adGroupIds?: ReadonlyArray<string>;
 }
 
-export const IdFilter: Schema.Schema<IdFilter> =
+export const IdFilter: Schema.Codec<IdFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     campaignIds: Schema.optional(Schema.Array(Schema.String)),
     mediaProductIds: Schema.optional(Schema.Array(Schema.String)),
@@ -5415,7 +5415,7 @@ export interface CreateSdfDownloadTaskRequest {
   partnerId?: string;
 }
 
-export const CreateSdfDownloadTaskRequest: Schema.Schema<CreateSdfDownloadTaskRequest> =
+export const CreateSdfDownloadTaskRequest: Schema.Codec<CreateSdfDownloadTaskRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inventorySourceFilter: Schema.optional(InventorySourceFilter),
     parentEntityFilter: Schema.optional(ParentEntityFilter),
@@ -5444,7 +5444,7 @@ export interface GoogleAudience {
   googleAudienceId?: string;
 }
 
-export const GoogleAudience: Schema.Schema<GoogleAudience> =
+export const GoogleAudience: Schema.Codec<GoogleAudience> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5461,7 +5461,7 @@ export interface AssignedLocation {
   assignedLocationId?: string;
 }
 
-export const AssignedLocation: Schema.Schema<AssignedLocation> =
+export const AssignedLocation: Schema.Codec<AssignedLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptionId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5475,7 +5475,7 @@ export interface ListAssignedLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListAssignedLocationsResponse: Schema.Schema<ListAssignedLocationsResponse> =
+export const ListAssignedLocationsResponse: Schema.Codec<ListAssignedLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5490,7 +5490,7 @@ export interface CmTrackingAd {
   cmCreativeId?: string;
 }
 
-export const CmTrackingAd: Schema.Schema<CmTrackingAd> =
+export const CmTrackingAd: Schema.Codec<CmTrackingAd> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cmPlacementId: Schema.optional(Schema.String),
     cmAdId: Schema.optional(Schema.String),
@@ -5504,7 +5504,7 @@ export interface Site {
   name?: string;
 }
 
-export const Site: Schema.Schema<Site> =
+export const Site: Schema.Codec<Site> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlOrAppId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5512,7 +5512,7 @@ export const Site: Schema.Schema<Site> =
 
 export interface ActivateManualTriggerRequest {}
 
-export const ActivateManualTriggerRequest: Schema.Schema<ActivateManualTriggerRequest> =
+export const ActivateManualTriggerRequest: Schema.Codec<ActivateManualTriggerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActivateManualTriggerRequest",
   });
@@ -5524,7 +5524,7 @@ export interface BulkEditAssignedLocationsRequest {
   deletedAssignedLocations?: ReadonlyArray<string>;
 }
 
-export const BulkEditAssignedLocationsRequest: Schema.Schema<BulkEditAssignedLocationsRequest> =
+export const BulkEditAssignedLocationsRequest: Schema.Codec<BulkEditAssignedLocationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAssignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
     deletedAssignedLocations: Schema.optional(Schema.Array(Schema.String)),
@@ -5537,7 +5537,7 @@ export interface NegativeKeyword {
   keywordValue?: string;
 }
 
-export const NegativeKeyword: Schema.Schema<NegativeKeyword> =
+export const NegativeKeyword: Schema.Codec<NegativeKeyword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     keywordValue: Schema.optional(Schema.String),
@@ -5548,7 +5548,7 @@ export interface ReplaceNegativeKeywordsResponse {
   negativeKeywords?: ReadonlyArray<NegativeKeyword>;
 }
 
-export const ReplaceNegativeKeywordsResponse: Schema.Schema<ReplaceNegativeKeywordsResponse> =
+export const ReplaceNegativeKeywordsResponse: Schema.Codec<ReplaceNegativeKeywordsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
   }).annotate({ identifier: "ReplaceNegativeKeywordsResponse" });
@@ -5573,7 +5573,7 @@ export interface GuaranteedOrderStatus {
     | (string & {});
 }
 
-export const GuaranteedOrderStatus: Schema.Schema<GuaranteedOrderStatus> =
+export const GuaranteedOrderStatus: Schema.Codec<GuaranteedOrderStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityPauseReason: Schema.optional(Schema.String),
     entityStatus: Schema.optional(Schema.String),
@@ -5585,7 +5585,7 @@ export interface BulkEditAssignedInventorySourcesResponse {
   assignedInventorySources?: ReadonlyArray<AssignedInventorySource>;
 }
 
-export const BulkEditAssignedInventorySourcesResponse: Schema.Schema<BulkEditAssignedInventorySourcesResponse> =
+export const BulkEditAssignedInventorySourcesResponse: Schema.Codec<BulkEditAssignedInventorySourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignedInventorySources: Schema.optional(
       Schema.Array(AssignedInventorySource),
@@ -5634,7 +5634,7 @@ export interface YoutubeAdGroup {
   productFeedData?: ProductFeedData;
 }
 
-export const YoutubeAdGroup: Schema.Schema<YoutubeAdGroup> =
+export const YoutubeAdGroup: Schema.Codec<YoutubeAdGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5656,7 +5656,7 @@ export interface ListYoutubeAdGroupsResponse {
   youtubeAdGroups?: ReadonlyArray<YoutubeAdGroup>;
 }
 
-export const ListYoutubeAdGroupsResponse: Schema.Schema<ListYoutubeAdGroupsResponse> =
+export const ListYoutubeAdGroupsResponse: Schema.Codec<ListYoutubeAdGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     youtubeAdGroups: Schema.optional(Schema.Array(YoutubeAdGroup)),
@@ -5673,7 +5673,7 @@ export interface BulkUpdateLineItemsResponse {
   errors?: ReadonlyArray<Status>;
 }
 
-export const BulkUpdateLineItemsResponse: Schema.Schema<BulkUpdateLineItemsResponse> =
+export const BulkUpdateLineItemsResponse: Schema.Codec<BulkUpdateLineItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skippedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
     updatedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
@@ -5711,7 +5711,7 @@ export interface AssetAssociation {
   asset?: Asset;
 }
 
-export const AssetAssociation: Schema.Schema<AssetAssociation> =
+export const AssetAssociation: Schema.Codec<AssetAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     asset: Schema.optional(Asset),
@@ -5741,7 +5741,7 @@ export interface AssignedUserRole {
   assignedUserRoleId?: string;
 }
 
-export const AssignedUserRole: Schema.Schema<AssignedUserRole> =
+export const AssignedUserRole: Schema.Codec<AssignedUserRole> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserId: Schema.optional(Schema.String),
     partnerId: Schema.optional(Schema.String),
@@ -5756,7 +5756,7 @@ export interface BulkEditNegativeKeywordsRequest {
   createdNegativeKeywords?: ReadonlyArray<NegativeKeyword>;
 }
 
-export const BulkEditNegativeKeywordsRequest: Schema.Schema<BulkEditNegativeKeywordsRequest> =
+export const BulkEditNegativeKeywordsRequest: Schema.Codec<BulkEditNegativeKeywordsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletedNegativeKeywords: Schema.optional(Schema.Array(Schema.String)),
     createdNegativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
@@ -5775,7 +5775,7 @@ export interface CampaignGoal {
     | (string & {});
 }
 
-export const CampaignGoal: Schema.Schema<CampaignGoal> =
+export const CampaignGoal: Schema.Codec<CampaignGoal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     performanceGoal: Schema.optional(PerformanceGoal),
     campaignGoalType: Schema.optional(Schema.String),
@@ -5788,7 +5788,7 @@ export interface CounterEvent {
   reportingName?: string;
 }
 
-export const CounterEvent: Schema.Schema<CounterEvent> =
+export const CounterEvent: Schema.Codec<CounterEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     reportingName: Schema.optional(Schema.String),
@@ -5818,7 +5818,7 @@ export interface ThirdPartyUrl {
   url?: string;
 }
 
-export const ThirdPartyUrl: Schema.Schema<ThirdPartyUrl> =
+export const ThirdPartyUrl: Schema.Codec<ThirdPartyUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -5838,7 +5838,7 @@ export interface UniversalAdId {
     | (string & {});
 }
 
-export const UniversalAdId: Schema.Schema<UniversalAdId> =
+export const UniversalAdId: Schema.Codec<UniversalAdId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     registry: Schema.optional(Schema.String),
@@ -5851,7 +5851,7 @@ export interface TimerEvent {
   reportingName?: string;
 }
 
-export const TimerEvent: Schema.Schema<TimerEvent> =
+export const TimerEvent: Schema.Codec<TimerEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     reportingName: Schema.optional(Schema.String),
@@ -5864,7 +5864,7 @@ export interface AudioVideoOffset {
   percentage?: string;
 }
 
-export const AudioVideoOffset: Schema.Schema<AudioVideoOffset> =
+export const AudioVideoOffset: Schema.Codec<AudioVideoOffset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seconds: Schema.optional(Schema.String),
     percentage: Schema.optional(Schema.String),
@@ -6017,7 +6017,7 @@ export interface Creative {
   progressOffset?: AudioVideoOffset;
 }
 
-export const Creative: Schema.Schema<Creative> =
+export const Creative: Schema.Codec<Creative> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thirdPartyUrls: Schema.optional(Schema.Array(ThirdPartyUrl)),
     expandOnHover: Schema.optional(Schema.Boolean),
@@ -6075,7 +6075,7 @@ export interface ListCreativesResponse {
   nextPageToken?: string;
 }
 
-export const ListCreativesResponse: Schema.Schema<ListCreativesResponse> =
+export const ListCreativesResponse: Schema.Codec<ListCreativesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creatives: Schema.optional(Schema.Array(Creative)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6090,7 +6090,7 @@ export interface BulkEditAssignedTargetingOptionsRequest {
   createRequests?: ReadonlyArray<CreateAssignedTargetingOptionsRequest>;
 }
 
-export const BulkEditAssignedTargetingOptionsRequest: Schema.Schema<BulkEditAssignedTargetingOptionsRequest> =
+export const BulkEditAssignedTargetingOptionsRequest: Schema.Codec<BulkEditAssignedTargetingOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineItemIds: Schema.optional(Schema.Array(Schema.String)),
     deleteRequests: Schema.optional(
@@ -6114,7 +6114,7 @@ export interface NegativeKeywordList {
   negativeKeywordListId?: string;
 }
 
-export const NegativeKeywordList: Schema.Schema<NegativeKeywordList> =
+export const NegativeKeywordList: Schema.Codec<NegativeKeywordList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6130,7 +6130,7 @@ export interface ListNegativeKeywordListsResponse {
   nextPageToken?: string;
 }
 
-export const ListNegativeKeywordListsResponse: Schema.Schema<ListNegativeKeywordListsResponse> =
+export const ListNegativeKeywordListsResponse: Schema.Codec<ListNegativeKeywordListsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negativeKeywordLists: Schema.optional(Schema.Array(NegativeKeywordList)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6189,7 +6189,7 @@ export interface ActiveViewVideoViewabilityMetricConfig {
     | (string & {});
 }
 
-export const ActiveViewVideoViewabilityMetricConfig: Schema.Schema<ActiveViewVideoViewabilityMetricConfig> =
+export const ActiveViewVideoViewabilityMetricConfig: Schema.Codec<ActiveViewVideoViewabilityMetricConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minimumQuartile: Schema.optional(Schema.String),
     minimumVolume: Schema.optional(Schema.String),
@@ -6220,7 +6220,7 @@ export interface FloodlightGroup {
   lookbackWindow?: LookbackWindow;
 }
 
-export const FloodlightGroup: Schema.Schema<FloodlightGroup> =
+export const FloodlightGroup: Schema.Codec<FloodlightGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floodlightGroupId: Schema.optional(Schema.String),
     activeViewConfig: Schema.optional(ActiveViewVideoViewabilityMetricConfig),
@@ -6238,7 +6238,7 @@ export interface GoogleBytestreamMedia {
   resourceName?: string;
 }
 
-export const GoogleBytestreamMedia: Schema.Schema<GoogleBytestreamMedia> =
+export const GoogleBytestreamMedia: Schema.Codec<GoogleBytestreamMedia> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleBytestreamMedia" });
@@ -6254,7 +6254,7 @@ export interface BulkEditSitesRequest {
   deletedSites?: ReadonlyArray<string>;
 }
 
-export const BulkEditSitesRequest: Schema.Schema<BulkEditSitesRequest> =
+export const BulkEditSitesRequest: Schema.Codec<BulkEditSitesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partnerId: Schema.optional(Schema.String),
     createdSites: Schema.optional(Schema.Array(Site)),
@@ -6277,7 +6277,7 @@ export interface User {
   email?: string;
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6292,7 +6292,7 @@ export interface BulkEditSitesResponse {
   sites?: ReadonlyArray<Site>;
 }
 
-export const BulkEditSitesResponse: Schema.Schema<BulkEditSitesResponse> =
+export const BulkEditSitesResponse: Schema.Codec<BulkEditSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sites: Schema.optional(Schema.Array(Site)),
   }).annotate({ identifier: "BulkEditSitesResponse" });
@@ -6304,7 +6304,7 @@ export interface BulkEditAdvertiserAssignedTargetingOptionsRequest {
   createRequests?: ReadonlyArray<CreateAssignedTargetingOptionsRequest>;
 }
 
-export const BulkEditAdvertiserAssignedTargetingOptionsRequest: Schema.Schema<BulkEditAdvertiserAssignedTargetingOptionsRequest> =
+export const BulkEditAdvertiserAssignedTargetingOptionsRequest: Schema.Codec<BulkEditAdvertiserAssignedTargetingOptionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteRequests: Schema.optional(
       Schema.Array(DeleteAssignedTargetingOptionsRequest),
@@ -6323,7 +6323,7 @@ export interface ListSitesResponse {
   sites?: ReadonlyArray<Site>;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
+export const ListSitesResponse: Schema.Codec<ListSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     sites: Schema.optional(Schema.Array(Site)),
@@ -6334,7 +6334,7 @@ export interface BulkEditAssignedLocationsResponse {
   assignedLocations?: ReadonlyArray<AssignedLocation>;
 }
 
-export const BulkEditAssignedLocationsResponse: Schema.Schema<BulkEditAssignedLocationsResponse> =
+export const BulkEditAssignedLocationsResponse: Schema.Codec<BulkEditAssignedLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
   }).annotate({ identifier: "BulkEditAssignedLocationsResponse" });
@@ -6346,7 +6346,7 @@ export interface YoutubeAdGroupAssignedTargetingOption {
   assignedTargetingOption?: AssignedTargetingOption;
 }
 
-export const YoutubeAdGroupAssignedTargetingOption: Schema.Schema<YoutubeAdGroupAssignedTargetingOption> =
+export const YoutubeAdGroupAssignedTargetingOption: Schema.Codec<YoutubeAdGroupAssignedTargetingOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     youtubeAdGroupId: Schema.optional(Schema.String),
     assignedTargetingOption: Schema.optional(AssignedTargetingOption),
@@ -6359,7 +6359,7 @@ export interface ListYoutubeAdGroupAdsResponse {
   nextPageToken?: string;
 }
 
-export const ListYoutubeAdGroupAdsResponse: Schema.Schema<ListYoutubeAdGroupAdsResponse> =
+export const ListYoutubeAdGroupAdsResponse: Schema.Codec<ListYoutubeAdGroupAdsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     youtubeAdGroupAds: Schema.optional(Schema.Array(YoutubeAdGroupAd)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6370,7 +6370,7 @@ export interface BulkEditAssignedUserRolesResponse {
   createdAssignedUserRoles?: ReadonlyArray<AssignedUserRole>;
 }
 
-export const BulkEditAssignedUserRolesResponse: Schema.Schema<BulkEditAssignedUserRolesResponse> =
+export const BulkEditAssignedUserRolesResponse: Schema.Codec<BulkEditAssignedUserRolesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAssignedUserRoles: Schema.optional(Schema.Array(AssignedUserRole)),
   }).annotate({ identifier: "BulkEditAssignedUserRolesResponse" });
@@ -6380,7 +6380,7 @@ export interface LookupInvoiceCurrencyResponse {
   currencyCode?: string;
 }
 
-export const LookupInvoiceCurrencyResponse: Schema.Schema<LookupInvoiceCurrencyResponse> =
+export const LookupInvoiceCurrencyResponse: Schema.Codec<LookupInvoiceCurrencyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "LookupInvoiceCurrencyResponse" });
@@ -6394,7 +6394,7 @@ export interface PrismaCpeCode {
   prismaClientCode?: string;
 }
 
-export const PrismaCpeCode: Schema.Schema<PrismaCpeCode> =
+export const PrismaCpeCode: Schema.Codec<PrismaCpeCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prismaProductCode: Schema.optional(Schema.String),
     prismaEstimateCode: Schema.optional(Schema.String),
@@ -6414,7 +6414,7 @@ export interface BudgetSummary {
   totalAmountMicros?: string;
 }
 
-export const BudgetSummary: Schema.Schema<BudgetSummary> =
+export const BudgetSummary: Schema.Codec<BudgetSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preTaxAmountMicros: Schema.optional(Schema.String),
     externalBudgetId: Schema.optional(Schema.String),
@@ -6470,7 +6470,7 @@ export interface Invoice {
   nonBudgetMicros?: string;
 }
 
-export const Invoice: Schema.Schema<Invoice> =
+export const Invoice: Schema.Codec<Invoice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalTaxAmountMicros: Schema.optional(Schema.String),
     subtotalAmountMicros: Schema.optional(Schema.String),
@@ -6501,7 +6501,7 @@ export interface ListInvoicesResponse {
   nextPageToken?: string;
 }
 
-export const ListInvoicesResponse: Schema.Schema<ListInvoicesResponse> =
+export const ListInvoicesResponse: Schema.Codec<ListInvoicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invoices: Schema.optional(Schema.Array(Invoice)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6514,7 +6514,7 @@ export interface BulkListAdGroupAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const BulkListAdGroupAssignedTargetingOptionsResponse: Schema.Schema<BulkListAdGroupAssignedTargetingOptionsResponse> =
+export const BulkListAdGroupAssignedTargetingOptionsResponse: Schema.Codec<BulkListAdGroupAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     youtubeAdGroupAssignedTargetingOptions: Schema.optional(
       Schema.Array(YoutubeAdGroupAssignedTargetingOption),
@@ -6541,7 +6541,7 @@ export interface PrismaConfig {
   prismaCpeCode?: PrismaCpeCode;
 }
 
-export const PrismaConfig: Schema.Schema<PrismaConfig> =
+export const PrismaConfig: Schema.Codec<PrismaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prismaType: Schema.optional(Schema.String),
     supplier: Schema.optional(Schema.String),
@@ -6577,7 +6577,7 @@ export interface CampaignBudget {
   invoiceGroupingId?: string;
 }
 
-export const CampaignBudget: Schema.Schema<CampaignBudget> =
+export const CampaignBudget: Schema.Codec<CampaignBudget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalBudgetId: Schema.optional(Schema.String),
     externalBudgetSource: Schema.optional(Schema.String),
@@ -6597,7 +6597,7 @@ export interface CampaignFlight {
   plannedDates?: DateRange;
 }
 
-export const CampaignFlight: Schema.Schema<CampaignFlight> =
+export const CampaignFlight: Schema.Codec<CampaignFlight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     plannedSpendAmountMicros: Schema.optional(Schema.String),
     plannedDates: Schema.optional(DateRange),
@@ -6633,7 +6633,7 @@ export interface Campaign {
   campaignFlight?: CampaignFlight;
 }
 
-export const Campaign: Schema.Schema<Campaign> =
+export const Campaign: Schema.Codec<Campaign> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     campaignGoal: Schema.optional(CampaignGoal),
     name: Schema.optional(Schema.String),
@@ -6654,7 +6654,7 @@ export interface ListCampaignsResponse {
   nextPageToken?: string;
 }
 
-export const ListCampaignsResponse: Schema.Schema<ListCampaignsResponse> =
+export const ListCampaignsResponse: Schema.Codec<ListCampaignsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     campaigns: Schema.optional(Schema.Array(Campaign)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6667,7 +6667,7 @@ export interface ListTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListTargetingOptionsResponse: Schema.Schema<ListTargetingOptionsResponse> =
+export const ListTargetingOptionsResponse: Schema.Codec<ListTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptions: Schema.optional(Schema.Array(TargetingOption)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6680,7 +6680,7 @@ export interface RemarketingConfig {
   advertiserId?: string;
 }
 
-export const RemarketingConfig: Schema.Schema<RemarketingConfig> =
+export const RemarketingConfig: Schema.Codec<RemarketingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remarketingEnabled: Schema.optional(Schema.Boolean),
     advertiserId: Schema.optional(Schema.String),
@@ -6709,7 +6709,7 @@ export interface FloodlightActivity {
   remarketingConfigs?: ReadonlyArray<RemarketingConfig>;
 }
 
-export const FloodlightActivity: Schema.Schema<FloodlightActivity> =
+export const FloodlightActivity: Schema.Codec<FloodlightActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floodlightActivityId: Schema.optional(Schema.String),
     advertiserIds: Schema.optional(Schema.Array(Schema.String)),
@@ -6728,7 +6728,7 @@ export interface EditGuaranteedOrderReadAccessorsResponse {
   readAdvertiserIds?: ReadonlyArray<string>;
 }
 
-export const EditGuaranteedOrderReadAccessorsResponse: Schema.Schema<EditGuaranteedOrderReadAccessorsResponse> =
+export const EditGuaranteedOrderReadAccessorsResponse: Schema.Codec<EditGuaranteedOrderReadAccessorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readAccessInherited: Schema.optional(Schema.Boolean),
     readAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
@@ -6751,7 +6751,7 @@ export interface LocationList {
   displayName?: string;
 }
 
-export const LocationList: Schema.Schema<LocationList> =
+export const LocationList: Schema.Codec<LocationList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationType: Schema.optional(Schema.String),
     locationListId: Schema.optional(Schema.String),
@@ -6767,7 +6767,7 @@ export interface ListLocationListsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationListsResponse: Schema.Schema<ListLocationListsResponse> =
+export const ListLocationListsResponse: Schema.Codec<ListLocationListsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationLists: Schema.optional(Schema.Array(LocationList)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6782,7 +6782,7 @@ export interface InventorySourceGroup {
   inventorySourceGroupId?: string;
 }
 
-export const InventorySourceGroup: Schema.Schema<InventorySourceGroup> =
+export const InventorySourceGroup: Schema.Codec<InventorySourceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6796,7 +6796,7 @@ export interface ListAdvertiserAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAdvertiserAssignedTargetingOptionsResponse: Schema.Schema<ListAdvertiserAssignedTargetingOptionsResponse> =
+export const ListAdvertiserAssignedTargetingOptionsResponse: Schema.Codec<ListAdvertiserAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignedTargetingOptions: Schema.optional(
       Schema.Array(AssignedTargetingOption),
@@ -6824,7 +6824,7 @@ export interface CustomBiddingModelDetails {
   advertiserId?: string;
 }
 
-export const CustomBiddingModelDetails: Schema.Schema<CustomBiddingModelDetails> =
+export const CustomBiddingModelDetails: Schema.Codec<CustomBiddingModelDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readinessState: Schema.optional(Schema.String),
     suspensionState: Schema.optional(Schema.String),
@@ -6862,7 +6862,7 @@ export interface CustomBiddingAlgorithm {
     | (string & {});
 }
 
-export const CustomBiddingAlgorithm: Schema.Schema<CustomBiddingAlgorithm> =
+export const CustomBiddingAlgorithm: Schema.Codec<CustomBiddingAlgorithm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6882,7 +6882,7 @@ export interface ListCustomBiddingAlgorithmsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomBiddingAlgorithmsResponse: Schema.Schema<ListCustomBiddingAlgorithmsResponse> =
+export const ListCustomBiddingAlgorithmsResponse: Schema.Codec<ListCustomBiddingAlgorithmsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customBiddingAlgorithms: Schema.optional(
       Schema.Array(CustomBiddingAlgorithm),
@@ -6895,7 +6895,7 @@ export interface ReplaceSitesResponse {
   sites?: ReadonlyArray<Site>;
 }
 
-export const ReplaceSitesResponse: Schema.Schema<ReplaceSitesResponse> =
+export const ReplaceSitesResponse: Schema.Codec<ReplaceSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sites: Schema.optional(Schema.Array(Site)),
   }).annotate({ identifier: "ReplaceSitesResponse" });
@@ -6909,7 +6909,7 @@ export interface CustomList {
   customListId?: string;
 }
 
-export const CustomList: Schema.Schema<CustomList> =
+export const CustomList: Schema.Codec<CustomList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6923,7 +6923,7 @@ export interface ListCustomListsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomListsResponse: Schema.Schema<ListCustomListsResponse> =
+export const ListCustomListsResponse: Schema.Codec<ListCustomListsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customLists: Schema.optional(Schema.Array(CustomList)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6946,7 +6946,7 @@ export interface Channel {
   negativelyTargetedLineItemCount?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     positivelyTargetedLineItemCount: Schema.optional(Schema.String),
     channelId: Schema.optional(Schema.String),
@@ -6964,7 +6964,7 @@ export interface BulkListAdvertiserAssignedTargetingOptionsResponse {
   assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
 }
 
-export const BulkListAdvertiserAssignedTargetingOptionsResponse: Schema.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse> =
+export const BulkListAdvertiserAssignedTargetingOptionsResponse: Schema.Codec<BulkListAdvertiserAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     assignedTargetingOptions: Schema.optional(
@@ -6981,7 +6981,7 @@ export interface ListNegativeKeywordsResponse {
   nextPageToken?: string;
 }
 
-export const ListNegativeKeywordsResponse: Schema.Schema<ListNegativeKeywordsResponse> =
+export const ListNegativeKeywordsResponse: Schema.Codec<ListNegativeKeywordsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6992,7 +6992,7 @@ export interface BulkEditPartnerAssignedTargetingOptionsResponse {
   createdAssignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
 }
 
-export const BulkEditPartnerAssignedTargetingOptionsResponse: Schema.Schema<BulkEditPartnerAssignedTargetingOptionsResponse> =
+export const BulkEditPartnerAssignedTargetingOptionsResponse: Schema.Codec<BulkEditPartnerAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAssignedTargetingOptions: Schema.optional(
       Schema.Array(AssignedTargetingOption),
@@ -7008,7 +7008,7 @@ export interface LineItemAssignedTargetingOption {
   assignedTargetingOption?: AssignedTargetingOption;
 }
 
-export const LineItemAssignedTargetingOption: Schema.Schema<LineItemAssignedTargetingOption> =
+export const LineItemAssignedTargetingOption: Schema.Codec<LineItemAssignedTargetingOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineItemId: Schema.optional(Schema.String),
     assignedTargetingOption: Schema.optional(AssignedTargetingOption),
@@ -7033,7 +7033,7 @@ export interface AuditAdvertiserResponse {
   campaignCriteriaCount?: string;
 }
 
-export const AuditAdvertiserResponse: Schema.Schema<AuditAdvertiserResponse> =
+export const AuditAdvertiserResponse: Schema.Codec<AuditAdvertiserResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usedInsertionOrdersCount: Schema.optional(Schema.String),
     negativelyTargetedChannelsCount: Schema.optional(Schema.String),
@@ -7052,7 +7052,7 @@ export interface ListYoutubeAdGroupAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListYoutubeAdGroupAssignedTargetingOptionsResponse: Schema.Schema<ListYoutubeAdGroupAssignedTargetingOptionsResponse> =
+export const ListYoutubeAdGroupAssignedTargetingOptionsResponse: Schema.Codec<ListYoutubeAdGroupAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignedTargetingOptions: Schema.optional(
       Schema.Array(AssignedTargetingOption),
@@ -7069,7 +7069,7 @@ export interface BulkListAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const BulkListAssignedTargetingOptionsResponse: Schema.Schema<BulkListAssignedTargetingOptionsResponse> =
+export const BulkListAssignedTargetingOptionsResponse: Schema.Codec<BulkListAssignedTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineItemAssignedTargetingOptions: Schema.optional(
       Schema.Array(LineItemAssignedTargetingOption),
@@ -7088,7 +7088,7 @@ export interface EditGuaranteedOrderReadAccessorsRequest {
   addedAdvertisers?: ReadonlyArray<string>;
 }
 
-export const EditGuaranteedOrderReadAccessorsRequest: Schema.Schema<EditGuaranteedOrderReadAccessorsRequest> =
+export const EditGuaranteedOrderReadAccessorsRequest: Schema.Codec<EditGuaranteedOrderReadAccessorsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readAccessInherited: Schema.optional(Schema.Boolean),
     removedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
@@ -7103,7 +7103,7 @@ export interface ListChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
+export const ListChannelsResponse: Schema.Codec<ListChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channels: Schema.optional(Schema.Array(Channel)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7116,7 +7116,7 @@ export interface BulkEditAssignedUserRolesRequest {
   deletedAssignedUserRoles?: ReadonlyArray<string>;
 }
 
-export const BulkEditAssignedUserRolesRequest: Schema.Schema<BulkEditAssignedUserRolesRequest> =
+export const BulkEditAssignedUserRolesRequest: Schema.Codec<BulkEditAssignedUserRolesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAssignedUserRoles: Schema.optional(Schema.Array(AssignedUserRole)),
     deletedAssignedUserRoles: Schema.optional(Schema.Array(Schema.String)),
@@ -7124,7 +7124,7 @@ export const BulkEditAssignedUserRolesRequest: Schema.Schema<BulkEditAssignedUse
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -7136,7 +7136,7 @@ export interface ListUsersResponse {
   users?: ReadonlyArray<User>;
 }
 
-export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
+export const ListUsersResponse: Schema.Codec<ListUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     users: Schema.optional(Schema.Array(User)),
@@ -7264,7 +7264,7 @@ export interface GuaranteedOrder {
   defaultCampaignId?: string;
 }
 
-export const GuaranteedOrder: Schema.Schema<GuaranteedOrder> =
+export const GuaranteedOrder: Schema.Codec<GuaranteedOrder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readAccessInherited: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -7289,7 +7289,7 @@ export interface ListGuaranteedOrdersResponse {
   nextPageToken?: string;
 }
 
-export const ListGuaranteedOrdersResponse: Schema.Schema<ListGuaranteedOrdersResponse> =
+export const ListGuaranteedOrdersResponse: Schema.Codec<ListGuaranteedOrdersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guaranteedOrders: Schema.optional(Schema.Array(GuaranteedOrder)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7302,7 +7302,7 @@ export interface ListPartnersResponse {
   nextPageToken?: string;
 }
 
-export const ListPartnersResponse: Schema.Schema<ListPartnersResponse> =
+export const ListPartnersResponse: Schema.Codec<ListPartnersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partners: Schema.optional(Schema.Array(Partner)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7325,7 +7325,7 @@ export interface ManualTrigger {
   activationDurationMinutes?: string;
 }
 
-export const ManualTrigger: Schema.Schema<ManualTrigger> =
+export const ManualTrigger: Schema.Codec<ManualTrigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latestActivationTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -7345,7 +7345,7 @@ export interface ReplaceSitesRequest {
   partnerId?: string;
 }
 
-export const ReplaceSitesRequest: Schema.Schema<ReplaceSitesRequest> =
+export const ReplaceSitesRequest: Schema.Codec<ReplaceSitesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newSites: Schema.optional(Schema.Array(Site)),
     advertiserId: Schema.optional(Schema.String),
@@ -7359,7 +7359,7 @@ export interface ListManualTriggersResponse {
   nextPageToken?: string;
 }
 
-export const ListManualTriggersResponse: Schema.Schema<ListManualTriggersResponse> =
+export const ListManualTriggersResponse: Schema.Codec<ListManualTriggersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manualTriggers: Schema.optional(Schema.Array(ManualTrigger)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7372,7 +7372,7 @@ export interface SearchTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const SearchTargetingOptionsResponse: Schema.Schema<SearchTargetingOptionsResponse> =
+export const SearchTargetingOptionsResponse: Schema.Codec<SearchTargetingOptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetingOptions: Schema.optional(Schema.Array(TargetingOption)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7385,7 +7385,7 @@ export interface ListGoogleAudiencesResponse {
   googleAudiences?: ReadonlyArray<GoogleAudience>;
 }
 
-export const ListGoogleAudiencesResponse: Schema.Schema<ListGoogleAudiencesResponse> =
+export const ListGoogleAudiencesResponse: Schema.Codec<ListGoogleAudiencesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     googleAudiences: Schema.optional(Schema.Array(GoogleAudience)),
@@ -7398,7 +7398,7 @@ export interface ListFloodlightActivitiesResponse {
   nextPageToken?: string;
 }
 
-export const ListFloodlightActivitiesResponse: Schema.Schema<ListFloodlightActivitiesResponse> =
+export const ListFloodlightActivitiesResponse: Schema.Codec<ListFloodlightActivitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floodlightActivities: Schema.optional(Schema.Array(FloodlightActivity)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7411,7 +7411,7 @@ export interface ListCustomBiddingScriptsResponse {
   customBiddingScripts?: ReadonlyArray<CustomBiddingScript>;
 }
 
-export const ListCustomBiddingScriptsResponse: Schema.Schema<ListCustomBiddingScriptsResponse> =
+export const ListCustomBiddingScriptsResponse: Schema.Codec<ListCustomBiddingScriptsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     customBiddingScripts: Schema.optional(Schema.Array(CustomBiddingScript)),
@@ -7424,7 +7424,7 @@ export interface ListInventorySourceGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListInventorySourceGroupsResponse: Schema.Schema<ListInventorySourceGroupsResponse> =
+export const ListInventorySourceGroupsResponse: Schema.Codec<ListInventorySourceGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inventorySourceGroups: Schema.optional(Schema.Array(InventorySourceGroup)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7435,7 +7435,7 @@ export interface BulkEditNegativeKeywordsResponse {
   negativeKeywords?: ReadonlyArray<NegativeKeyword>;
 }
 
-export const BulkEditNegativeKeywordsResponse: Schema.Schema<BulkEditNegativeKeywordsResponse> =
+export const BulkEditNegativeKeywordsResponse: Schema.Codec<BulkEditNegativeKeywordsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
   }).annotate({ identifier: "BulkEditNegativeKeywordsResponse" });
@@ -7449,7 +7449,7 @@ export interface CombinedAudience {
   combinedAudienceId?: string;
 }
 
-export const CombinedAudience: Schema.Schema<CombinedAudience> =
+export const CombinedAudience: Schema.Codec<CombinedAudience> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -7461,7 +7461,7 @@ export interface ReplaceNegativeKeywordsRequest {
   newNegativeKeywords?: ReadonlyArray<NegativeKeyword>;
 }
 
-export const ReplaceNegativeKeywordsRequest: Schema.Schema<ReplaceNegativeKeywordsRequest> =
+export const ReplaceNegativeKeywordsRequest: Schema.Codec<ReplaceNegativeKeywordsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newNegativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
   }).annotate({ identifier: "ReplaceNegativeKeywordsRequest" });
@@ -7471,7 +7471,7 @@ export interface DuplicateLineItemResponse {
   duplicateLineItemId?: string;
 }
 
-export const DuplicateLineItemResponse: Schema.Schema<DuplicateLineItemResponse> =
+export const DuplicateLineItemResponse: Schema.Codec<DuplicateLineItemResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duplicateLineItemId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DuplicateLineItemResponse" });
@@ -7483,7 +7483,7 @@ export interface ListCombinedAudiencesResponse {
   nextPageToken?: string;
 }
 
-export const ListCombinedAudiencesResponse: Schema.Schema<ListCombinedAudiencesResponse> =
+export const ListCombinedAudiencesResponse: Schema.Codec<ListCombinedAudiencesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     combinedAudiences: Schema.optional(Schema.Array(CombinedAudience)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7494,7 +7494,7 @@ export interface CreateAssetRequest {
   filename?: string;
 }
 
-export const CreateAssetRequest: Schema.Schema<CreateAssetRequest> =
+export const CreateAssetRequest: Schema.Codec<CreateAssetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filename: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateAssetRequest" });
@@ -7566,7 +7566,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "media/{+resourceName}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = GoogleBytestreamMedia;
 export const UploadMediaResponse =
@@ -7601,7 +7601,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "download/{+resourceName}" }),
   svc,
-) as unknown as Schema.Schema<DownloadMediaRequest>;
+) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = GoogleBytestreamMedia;
 export const DownloadMediaResponse =
@@ -7640,7 +7640,7 @@ export const GetGuaranteedOrdersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/guaranteedOrders/{+guaranteedOrderId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetGuaranteedOrdersRequest>;
+  ) as unknown as Schema.Codec<GetGuaranteedOrdersRequest>;
 
 export type GetGuaranteedOrdersResponse = GuaranteedOrder;
 export const GetGuaranteedOrdersResponse =
@@ -7679,7 +7679,7 @@ export const CreateGuaranteedOrdersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/guaranteedOrders", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateGuaranteedOrdersRequest>;
+  ) as unknown as Schema.Codec<CreateGuaranteedOrdersRequest>;
 
 export type CreateGuaranteedOrdersResponse = GuaranteedOrder;
 export const CreateGuaranteedOrdersResponse =
@@ -7732,7 +7732,7 @@ export const ListGuaranteedOrdersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/guaranteedOrders" }),
     svc,
-  ) as unknown as Schema.Schema<ListGuaranteedOrdersRequest>;
+  ) as unknown as Schema.Codec<ListGuaranteedOrdersRequest>;
 
 export type ListGuaranteedOrdersResponse_Op = ListGuaranteedOrdersResponse;
 export const ListGuaranteedOrdersResponse_Op =
@@ -7776,7 +7776,7 @@ export const EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest>;
+  ) as unknown as Schema.Codec<EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest>;
 
 export type EditGuaranteedOrderReadAccessorsGuaranteedOrdersResponse =
   EditGuaranteedOrderReadAccessorsResponse;
@@ -7831,7 +7831,7 @@ export const PatchGuaranteedOrdersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchGuaranteedOrdersRequest>;
+  ) as unknown as Schema.Codec<PatchGuaranteedOrdersRequest>;
 
 export type PatchGuaranteedOrdersResponse = GuaranteedOrder;
 export const PatchGuaranteedOrdersResponse =
@@ -7880,7 +7880,7 @@ export const PatchFloodlightGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchFloodlightGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchFloodlightGroupsRequest>;
 
 export type PatchFloodlightGroupsResponse = FloodlightGroup;
 export const PatchFloodlightGroupsResponse =
@@ -7919,7 +7919,7 @@ export const GetFloodlightGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/floodlightGroups/{+floodlightGroupId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFloodlightGroupsRequest>;
+  ) as unknown as Schema.Codec<GetFloodlightGroupsRequest>;
 
 export type GetFloodlightGroupsResponse = FloodlightGroup;
 export const GetFloodlightGroupsResponse =
@@ -7961,7 +7961,7 @@ export const GetFloodlightGroupsFloodlightActivitiesRequest =
       path: "v2/floodlightGroups/{+floodlightGroupId}/floodlightActivities/{+floodlightActivityId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetFloodlightGroupsFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<GetFloodlightGroupsFloodlightActivitiesRequest>;
 
 export type GetFloodlightGroupsFloodlightActivitiesResponse =
   FloodlightActivity;
@@ -8011,7 +8011,7 @@ export const ListFloodlightGroupsFloodlightActivitiesRequest =
       path: "v2/floodlightGroups/{+floodlightGroupId}/floodlightActivities",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListFloodlightGroupsFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<ListFloodlightGroupsFloodlightActivitiesRequest>;
 
 export type ListFloodlightGroupsFloodlightActivitiesResponse =
   ListFloodlightActivitiesResponse;
@@ -8063,7 +8063,7 @@ export const GetCustomBiddingAlgorithmsRequest =
       path: "v2/customBiddingAlgorithms/{+customBiddingAlgorithmId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomBiddingAlgorithmsRequest>;
+  ) as unknown as Schema.Codec<GetCustomBiddingAlgorithmsRequest>;
 
 export type GetCustomBiddingAlgorithmsResponse = CustomBiddingAlgorithm;
 export const GetCustomBiddingAlgorithmsResponse =
@@ -8101,7 +8101,7 @@ export const CreateCustomBiddingAlgorithmsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomBiddingAlgorithmsRequest>;
+  ) as unknown as Schema.Codec<CreateCustomBiddingAlgorithmsRequest>;
 
 export type CreateCustomBiddingAlgorithmsResponse = CustomBiddingAlgorithm;
 export const CreateCustomBiddingAlgorithmsResponse =
@@ -8154,7 +8154,7 @@ export const ListCustomBiddingAlgorithmsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/customBiddingAlgorithms" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomBiddingAlgorithmsRequest>;
+  ) as unknown as Schema.Codec<ListCustomBiddingAlgorithmsRequest>;
 
 export type ListCustomBiddingAlgorithmsResponse_Op =
   ListCustomBiddingAlgorithmsResponse;
@@ -8205,7 +8205,7 @@ export const PatchCustomBiddingAlgorithmsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCustomBiddingAlgorithmsRequest>;
+  ) as unknown as Schema.Codec<PatchCustomBiddingAlgorithmsRequest>;
 
 export type PatchCustomBiddingAlgorithmsResponse = CustomBiddingAlgorithm;
 export const PatchCustomBiddingAlgorithmsResponse =
@@ -8254,7 +8254,7 @@ export const UploadScriptCustomBiddingAlgorithmsRequest =
       path: "v2/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadScript",
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadScriptCustomBiddingAlgorithmsRequest>;
+  ) as unknown as Schema.Codec<UploadScriptCustomBiddingAlgorithmsRequest>;
 
 export type UploadScriptCustomBiddingAlgorithmsResponse =
   CustomBiddingScriptRef;
@@ -8307,7 +8307,7 @@ export const GetCustomBiddingAlgorithmsScriptsRequest =
       path: "v2/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomBiddingAlgorithmsScriptsRequest>;
+  ) as unknown as Schema.Codec<GetCustomBiddingAlgorithmsScriptsRequest>;
 
 export type GetCustomBiddingAlgorithmsScriptsResponse = CustomBiddingScript;
 export const GetCustomBiddingAlgorithmsScriptsResponse =
@@ -8363,7 +8363,7 @@ export const ListCustomBiddingAlgorithmsScriptsRequest =
       path: "v2/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomBiddingAlgorithmsScriptsRequest>;
+  ) as unknown as Schema.Codec<ListCustomBiddingAlgorithmsScriptsRequest>;
 
 export type ListCustomBiddingAlgorithmsScriptsResponse =
   ListCustomBiddingScriptsResponse;
@@ -8419,7 +8419,7 @@ export const CreateCustomBiddingAlgorithmsScriptsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomBiddingAlgorithmsScriptsRequest>;
+  ) as unknown as Schema.Codec<CreateCustomBiddingAlgorithmsScriptsRequest>;
 
 export type CreateCustomBiddingAlgorithmsScriptsResponse = CustomBiddingScript;
 export const CreateCustomBiddingAlgorithmsScriptsResponse =
@@ -8475,7 +8475,7 @@ export const PatchInventorySourceGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchInventorySourceGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchInventorySourceGroupsRequest>;
 
 export type PatchInventorySourceGroupsResponse = InventorySourceGroup;
 export const PatchInventorySourceGroupsResponse =
@@ -8524,7 +8524,7 @@ export const DeleteInventorySourceGroupsRequest =
       path: "v2/inventorySourceGroups/{+inventorySourceGroupId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInventorySourceGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteInventorySourceGroupsRequest>;
 
 export type DeleteInventorySourceGroupsResponse = Empty;
 export const DeleteInventorySourceGroupsResponse =
@@ -8577,7 +8577,7 @@ export const ListInventorySourceGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/inventorySourceGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListInventorySourceGroupsRequest>;
+  ) as unknown as Schema.Codec<ListInventorySourceGroupsRequest>;
 
 export type ListInventorySourceGroupsResponse_Op =
   ListInventorySourceGroupsResponse;
@@ -8624,7 +8624,7 @@ export const CreateInventorySourceGroupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/inventorySourceGroups", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateInventorySourceGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateInventorySourceGroupsRequest>;
 
 export type CreateInventorySourceGroupsResponse = InventorySourceGroup;
 export const CreateInventorySourceGroupsResponse =
@@ -8673,7 +8673,7 @@ export const GetInventorySourceGroupsRequest =
       path: "v2/inventorySourceGroups/{+inventorySourceGroupId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetInventorySourceGroupsRequest>;
+  ) as unknown as Schema.Codec<GetInventorySourceGroupsRequest>;
 
 export type GetInventorySourceGroupsResponse = InventorySourceGroup;
 export const GetInventorySourceGroupsResponse =
@@ -8732,7 +8732,7 @@ export const ListInventorySourceGroupsAssignedInventorySourcesRequest =
       path: "v2/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListInventorySourceGroupsAssignedInventorySourcesRequest>;
+  ) as unknown as Schema.Codec<ListInventorySourceGroupsAssignedInventorySourcesRequest>;
 
 export type ListInventorySourceGroupsAssignedInventorySourcesResponse =
   ListAssignedInventorySourcesResponse;
@@ -8788,7 +8788,7 @@ export const CreateInventorySourceGroupsAssignedInventorySourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateInventorySourceGroupsAssignedInventorySourcesRequest>;
+  ) as unknown as Schema.Codec<CreateInventorySourceGroupsAssignedInventorySourcesRequest>;
 
 export type CreateInventorySourceGroupsAssignedInventorySourcesResponse =
   AssignedInventorySource;
@@ -8843,7 +8843,7 @@ export const DeleteInventorySourceGroupsAssignedInventorySourcesRequest =
       path: "v2/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInventorySourceGroupsAssignedInventorySourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteInventorySourceGroupsAssignedInventorySourcesRequest>;
 
 export type DeleteInventorySourceGroupsAssignedInventorySourcesResponse = Empty;
 export const DeleteInventorySourceGroupsAssignedInventorySourcesResponse =
@@ -8890,7 +8890,7 @@ export const BulkEditInventorySourceGroupsAssignedInventorySourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkEditInventorySourceGroupsAssignedInventorySourcesRequest>;
+  ) as unknown as Schema.Codec<BulkEditInventorySourceGroupsAssignedInventorySourcesRequest>;
 
 export type BulkEditInventorySourceGroupsAssignedInventorySourcesResponse =
   BulkEditAssignedInventorySourcesResponse;
@@ -8989,7 +8989,7 @@ export const GetTargetingTypesTargetingOptionsRequest =
       path: "v2/targetingTypes/{+targetingType}/targetingOptions/{+targetingOptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetingTypesTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<GetTargetingTypesTargetingOptionsRequest>;
 
 export type GetTargetingTypesTargetingOptionsResponse = TargetingOption;
 export const GetTargetingTypesTargetingOptionsResponse =
@@ -9094,7 +9094,7 @@ export const ListTargetingTypesTargetingOptionsRequest =
       path: "v2/targetingTypes/{+targetingType}/targetingOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetingTypesTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<ListTargetingTypesTargetingOptionsRequest>;
 
 export type ListTargetingTypesTargetingOptionsResponse =
   ListTargetingOptionsResponse;
@@ -9191,7 +9191,7 @@ export const SearchTargetingTypesTargetingOptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchTargetingTypesTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<SearchTargetingTypesTargetingOptionsRequest>;
 
 export type SearchTargetingTypesTargetingOptionsResponse =
   SearchTargetingOptionsResponse;
@@ -9239,7 +9239,7 @@ export const GetCombinedAudiencesRequest =
       path: "v2/combinedAudiences/{+combinedAudienceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCombinedAudiencesRequest>;
+  ) as unknown as Schema.Codec<GetCombinedAudiencesRequest>;
 
 export type GetCombinedAudiencesResponse = CombinedAudience;
 export const GetCombinedAudiencesResponse =
@@ -9287,7 +9287,7 @@ export const ListCombinedAudiencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/combinedAudiences" }),
     svc,
-  ) as unknown as Schema.Schema<ListCombinedAudiencesRequest>;
+  ) as unknown as Schema.Codec<ListCombinedAudiencesRequest>;
 
 export type ListCombinedAudiencesResponse_Op = ListCombinedAudiencesResponse;
 export const ListCombinedAudiencesResponse_Op =
@@ -9331,7 +9331,7 @@ export const EditAssignedTargetingOptionsPartnersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EditAssignedTargetingOptionsPartnersRequest>;
+  ) as unknown as Schema.Codec<EditAssignedTargetingOptionsPartnersRequest>;
 
 export type EditAssignedTargetingOptionsPartnersResponse =
   BulkEditPartnerAssignedTargetingOptionsResponse;
@@ -9367,7 +9367,7 @@ export const GetPartnersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/partners/{+partnerId}" }),
   svc,
-) as unknown as Schema.Schema<GetPartnersRequest>;
+) as unknown as Schema.Codec<GetPartnersRequest>;
 
 export type GetPartnersResponse = Partner;
 export const GetPartnersResponse = /*@__PURE__*/ /*#__PURE__*/ Partner;
@@ -9405,7 +9405,7 @@ export const ListPartnersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/partners" }),
   svc,
-) as unknown as Schema.Schema<ListPartnersRequest>;
+) as unknown as Schema.Codec<ListPartnersRequest>;
 
 export type ListPartnersResponse_Op = ListPartnersResponse;
 export const ListPartnersResponse_Op =
@@ -9451,7 +9451,7 @@ export const GetPartnersChannelsRequest =
       path: "v2/partners/{+partnerId}/channels/{+channelId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPartnersChannelsRequest>;
+  ) as unknown as Schema.Codec<GetPartnersChannelsRequest>;
 
 export type GetPartnersChannelsResponse = Channel;
 export const GetPartnersChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -9498,7 +9498,7 @@ export const ListPartnersChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/partners/{+partnerId}/channels" }),
     svc,
-  ) as unknown as Schema.Schema<ListPartnersChannelsRequest>;
+  ) as unknown as Schema.Codec<ListPartnersChannelsRequest>;
 
 export type ListPartnersChannelsResponse = ListChannelsResponse;
 export const ListPartnersChannelsResponse =
@@ -9545,7 +9545,7 @@ export const CreatePartnersChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePartnersChannelsRequest>;
+  ) as unknown as Schema.Codec<CreatePartnersChannelsRequest>;
 
 export type CreatePartnersChannelsResponse = Channel;
 export const CreatePartnersChannelsResponse =
@@ -9599,7 +9599,7 @@ export const PatchPartnersChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPartnersChannelsRequest>;
+  ) as unknown as Schema.Codec<PatchPartnersChannelsRequest>;
 
 export type PatchPartnersChannelsResponse = Channel;
 export const PatchPartnersChannelsResponse =
@@ -9650,7 +9650,7 @@ export const CreatePartnersChannelsSitesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePartnersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<CreatePartnersChannelsSitesRequest>;
 
 export type CreatePartnersChannelsSitesResponse = Site;
 export const CreatePartnersChannelsSitesResponse =
@@ -9709,7 +9709,7 @@ export const ListPartnersChannelsSitesRequest =
       path: "v2/partners/{+partnerId}/channels/{+channelId}/sites",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPartnersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<ListPartnersChannelsSitesRequest>;
 
 export type ListPartnersChannelsSitesResponse = ListSitesResponse;
 export const ListPartnersChannelsSitesResponse =
@@ -9761,7 +9761,7 @@ export const DeletePartnersChannelsSitesRequest =
       path: "v2/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePartnersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<DeletePartnersChannelsSitesRequest>;
 
 export type DeletePartnersChannelsSitesResponse = Empty;
 export const DeletePartnersChannelsSitesResponse =
@@ -9807,7 +9807,7 @@ export const BulkEditPartnersChannelsSitesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkEditPartnersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<BulkEditPartnersChannelsSitesRequest>;
 
 export type BulkEditPartnersChannelsSitesResponse = BulkEditSitesResponse;
 export const BulkEditPartnersChannelsSitesResponse =
@@ -9853,7 +9853,7 @@ export const ReplacePartnersChannelsSitesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReplacePartnersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<ReplacePartnersChannelsSitesRequest>;
 
 export type ReplacePartnersChannelsSitesResponse = ReplaceSitesResponse;
 export const ReplacePartnersChannelsSitesResponse =
@@ -9950,7 +9950,7 @@ export const CreatePartnersTargetingTypesAssignedTargetingOptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreatePartnersTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<CreatePartnersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type CreatePartnersTargetingTypesAssignedTargetingOptionsResponse =
   AssignedTargetingOption;
@@ -10049,7 +10049,7 @@ export const DeletePartnersTargetingTypesAssignedTargetingOptionsRequest =
       path: "v2/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePartnersTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<DeletePartnersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type DeletePartnersTargetingTypesAssignedTargetingOptionsResponse =
   Empty;
@@ -10148,7 +10148,7 @@ export const GetPartnersTargetingTypesAssignedTargetingOptionsRequest =
       path: "v2/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPartnersTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<GetPartnersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type GetPartnersTargetingTypesAssignedTargetingOptionsResponse =
   AssignedTargetingOption;
@@ -10252,7 +10252,7 @@ export const ListPartnersTargetingTypesAssignedTargetingOptionsRequest =
       path: "v2/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPartnersTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<ListPartnersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type ListPartnersTargetingTypesAssignedTargetingOptionsResponse =
   ListPartnerAssignedTargetingOptionsResponse;
@@ -10290,7 +10290,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/users/{+userId}" }),
   svc,
-) as unknown as Schema.Schema<GetUsersRequest>;
+) as unknown as Schema.Codec<GetUsersRequest>;
 
 export type GetUsersResponse = User;
 export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -10327,7 +10327,7 @@ export const BulkEditAssignedUserRolesUsersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkEditAssignedUserRolesUsersRequest>;
+  ) as unknown as Schema.Codec<BulkEditAssignedUserRolesUsersRequest>;
 
 export type BulkEditAssignedUserRolesUsersResponse =
   BulkEditAssignedUserRolesResponse;
@@ -10363,7 +10363,7 @@ export const CreateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/users", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateUsersRequest>;
+) as unknown as Schema.Codec<CreateUsersRequest>;
 
 export type CreateUsersResponse = User;
 export const CreateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -10406,7 +10406,7 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/users" }),
   svc,
-) as unknown as Schema.Schema<ListUsersRequest>;
+) as unknown as Schema.Codec<ListUsersRequest>;
 
 export type ListUsersResponse_Op = ListUsersResponse;
 export const ListUsersResponse_Op =
@@ -10446,7 +10446,7 @@ export const PatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v2/users/{+userId}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchUsersRequest>;
+) as unknown as Schema.Codec<PatchUsersRequest>;
 
 export type PatchUsersResponse = User;
 export const PatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -10480,7 +10480,7 @@ export const DeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v2/users/{+userId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteUsersRequest>;
+) as unknown as Schema.Codec<DeleteUsersRequest>;
 
 export type DeleteUsersResponse = Empty;
 export const DeleteUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -10519,7 +10519,7 @@ export const GetCustomListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/customLists/{+customListId}" }),
   svc,
-) as unknown as Schema.Schema<GetCustomListsRequest>;
+) as unknown as Schema.Codec<GetCustomListsRequest>;
 
 export type GetCustomListsResponse = CustomList;
 export const GetCustomListsResponse = /*@__PURE__*/ /*#__PURE__*/ CustomList;
@@ -10564,7 +10564,7 @@ export const ListCustomListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v2/customLists" }),
   svc,
-) as unknown as Schema.Schema<ListCustomListsRequest>;
+) as unknown as Schema.Codec<ListCustomListsRequest>;
 
 export type ListCustomListsResponse_Op = ListCustomListsResponse;
 export const ListCustomListsResponse_Op =
@@ -10599,7 +10599,7 @@ export const CreateAdvertisersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/advertisers", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersRequest>;
 
 export type CreateAdvertisersResponse = Advertiser;
 export const CreateAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
@@ -10633,7 +10633,7 @@ export const GetAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/advertisers/{+advertiserId}" }),
   svc,
-) as unknown as Schema.Schema<GetAdvertisersRequest>;
+) as unknown as Schema.Codec<GetAdvertisersRequest>;
 
 export type GetAdvertisersResponse = Advertiser;
 export const GetAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
@@ -10678,7 +10678,7 @@ export const ListAssignedTargetingOptionsAdvertisersRequest =
       path: "v2/advertisers/{+advertiserId}:listAssignedTargetingOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAssignedTargetingOptionsAdvertisersRequest>;
+  ) as unknown as Schema.Codec<ListAssignedTargetingOptionsAdvertisersRequest>;
 
 export type ListAssignedTargetingOptionsAdvertisersResponse =
   BulkListAdvertiserAssignedTargetingOptionsResponse;
@@ -10727,7 +10727,7 @@ export const PatchAdvertisersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersRequest>;
 
 export type PatchAdvertisersResponse = Advertiser;
 export const PatchAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
@@ -10762,7 +10762,7 @@ export const DeleteAdvertisersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/advertisers/{+advertiserId}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersRequest>;
 
 export type DeleteAdvertisersResponse = Empty;
 export const DeleteAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -10800,7 +10800,7 @@ export const AuditAdvertisersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/advertisers/{+advertiserId}:audit" }),
     svc,
-  ) as unknown as Schema.Schema<AuditAdvertisersRequest>;
+  ) as unknown as Schema.Codec<AuditAdvertisersRequest>;
 
 export type AuditAdvertisersResponse = AuditAdvertiserResponse;
 export const AuditAdvertisersResponse =
@@ -10844,7 +10844,7 @@ export const ListAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v2/advertisers" }),
   svc,
-) as unknown as Schema.Schema<ListAdvertisersRequest>;
+) as unknown as Schema.Codec<ListAdvertisersRequest>;
 
 export type ListAdvertisersResponse_Op = ListAdvertisersResponse;
 export const ListAdvertisersResponse_Op =
@@ -10888,7 +10888,7 @@ export const EditAssignedTargetingOptionsAdvertisersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EditAssignedTargetingOptionsAdvertisersRequest>;
+  ) as unknown as Schema.Codec<EditAssignedTargetingOptionsAdvertisersRequest>;
 
 export type EditAssignedTargetingOptionsAdvertisersResponse =
   BulkEditAdvertiserAssignedTargetingOptionsResponse;
@@ -10931,7 +10931,7 @@ export const GetAdvertisersYoutubeAdGroupAdsRequest =
       path: "v2/advertisers/{+advertiserId}/youtubeAdGroupAds/{+youtubeAdGroupAdId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersYoutubeAdGroupAdsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersYoutubeAdGroupAdsRequest>;
 
 export type GetAdvertisersYoutubeAdGroupAdsResponse = YoutubeAdGroupAd;
 export const GetAdvertisersYoutubeAdGroupAdsResponse =
@@ -10980,7 +10980,7 @@ export const ListAdvertisersYoutubeAdGroupAdsRequest =
       path: "v2/advertisers/{+advertiserId}/youtubeAdGroupAds",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersYoutubeAdGroupAdsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersYoutubeAdGroupAdsRequest>;
 
 export type ListAdvertisersYoutubeAdGroupAdsResponse =
   ListYoutubeAdGroupAdsResponse;
@@ -11037,7 +11037,7 @@ export const ListAdvertisersInvoicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/advertisers/{+advertiserId}/invoices" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersInvoicesRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersInvoicesRequest>;
 
 export type ListAdvertisersInvoicesResponse = ListInvoicesResponse;
 export const ListAdvertisersInvoicesResponse =
@@ -11080,7 +11080,7 @@ export const LookupInvoiceCurrencyAdvertisersInvoicesRequest =
       path: "v2/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency",
     }),
     svc,
-  ) as unknown as Schema.Schema<LookupInvoiceCurrencyAdvertisersInvoicesRequest>;
+  ) as unknown as Schema.Codec<LookupInvoiceCurrencyAdvertisersInvoicesRequest>;
 
 export type LookupInvoiceCurrencyAdvertisersInvoicesResponse =
   LookupInvoiceCurrencyResponse;
@@ -11177,7 +11177,7 @@ export const GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
       path: "v2/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type GetAdvertisersTargetingTypesAssignedTargetingOptionsResponse =
   AssignedTargetingOption;
@@ -11281,7 +11281,7 @@ export const ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
       path: "v2/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type ListAdvertisersTargetingTypesAssignedTargetingOptionsResponse =
   ListAdvertiserAssignedTargetingOptionsResponse;
@@ -11381,7 +11381,7 @@ export const CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type CreateAdvertisersTargetingTypesAssignedTargetingOptionsResponse =
   AssignedTargetingOption;
@@ -11480,7 +11480,7 @@ export const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
       path: "v2/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type DeleteAdvertisersTargetingTypesAssignedTargetingOptionsResponse =
   Empty;
@@ -11523,7 +11523,7 @@ export const GetAdvertisersLocationListsRequest =
       path: "v2/advertisers/{+advertiserId}/locationLists/{+locationListId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersLocationListsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersLocationListsRequest>;
 
 export type GetAdvertisersLocationListsResponse = LocationList;
 export const GetAdvertisersLocationListsResponse =
@@ -11572,7 +11572,7 @@ export const ListAdvertisersLocationListsRequest =
       path: "v2/advertisers/{+advertiserId}/locationLists",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersLocationListsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersLocationListsRequest>;
 
 export type ListAdvertisersLocationListsResponse = ListLocationListsResponse;
 export const ListAdvertisersLocationListsResponse =
@@ -11617,7 +11617,7 @@ export const CreateAdvertisersLocationListsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersLocationListsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersLocationListsRequest>;
 
 export type CreateAdvertisersLocationListsResponse = LocationList;
 export const CreateAdvertisersLocationListsResponse =
@@ -11666,7 +11666,7 @@ export const PatchAdvertisersLocationListsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersLocationListsRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersLocationListsRequest>;
 
 export type PatchAdvertisersLocationListsResponse = LocationList;
 export const PatchAdvertisersLocationListsResponse =
@@ -11712,7 +11712,7 @@ export const BulkEditAdvertisersLocationListsAssignedLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkEditAdvertisersLocationListsAssignedLocationsRequest>;
+  ) as unknown as Schema.Codec<BulkEditAdvertisersLocationListsAssignedLocationsRequest>;
 
 export type BulkEditAdvertisersLocationListsAssignedLocationsResponse =
   BulkEditAssignedLocationsResponse;
@@ -11759,7 +11759,7 @@ export const CreateAdvertisersLocationListsAssignedLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersLocationListsAssignedLocationsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersLocationListsAssignedLocationsRequest>;
 
 export type CreateAdvertisersLocationListsAssignedLocationsResponse =
   AssignedLocation;
@@ -11805,7 +11805,7 @@ export const DeleteAdvertisersLocationListsAssignedLocationsRequest =
       path: "v2/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersLocationListsAssignedLocationsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersLocationListsAssignedLocationsRequest>;
 
 export type DeleteAdvertisersLocationListsAssignedLocationsResponse = Empty;
 export const DeleteAdvertisersLocationListsAssignedLocationsResponse =
@@ -11859,7 +11859,7 @@ export const ListAdvertisersLocationListsAssignedLocationsRequest =
       path: "v2/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersLocationListsAssignedLocationsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersLocationListsAssignedLocationsRequest>;
 
 export type ListAdvertisersLocationListsAssignedLocationsResponse =
   ListAssignedLocationsResponse;
@@ -11905,7 +11905,7 @@ export const CreateAdvertisersCreativesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersCreativesRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersCreativesRequest>;
 
 export type CreateAdvertisersCreativesResponse = Creative;
 export const CreateAdvertisersCreativesResponse =
@@ -11947,7 +11947,7 @@ export const GetAdvertisersCreativesRequest =
       path: "v2/advertisers/{+advertiserId}/creatives/{+creativeId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersCreativesRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersCreativesRequest>;
 
 export type GetAdvertisersCreativesResponse = Creative;
 export const GetAdvertisersCreativesResponse =
@@ -11991,7 +11991,7 @@ export const PatchAdvertisersCreativesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersCreativesRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersCreativesRequest>;
 
 export type PatchAdvertisersCreativesResponse = Creative;
 export const PatchAdvertisersCreativesResponse =
@@ -12033,7 +12033,7 @@ export const DeleteAdvertisersCreativesRequest =
       path: "v2/advertisers/{+advertiserId}/creatives/{+creativeId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersCreativesRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersCreativesRequest>;
 
 export type DeleteAdvertisersCreativesResponse = Empty;
 export const DeleteAdvertisersCreativesResponse =
@@ -12081,7 +12081,7 @@ export const ListAdvertisersCreativesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/advertisers/{+advertiserId}/creatives" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersCreativesRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersCreativesRequest>;
 
 export type ListAdvertisersCreativesResponse = ListCreativesResponse;
 export const ListAdvertisersCreativesResponse =
@@ -12126,7 +12126,7 @@ export const CreateAdvertisersManualTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersManualTriggersRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersManualTriggersRequest>;
 
 export type CreateAdvertisersManualTriggersResponse = ManualTrigger;
 export const CreateAdvertisersManualTriggersResponse =
@@ -12168,7 +12168,7 @@ export const GetAdvertisersManualTriggersRequest =
       path: "v2/advertisers/{+advertiserId}/manualTriggers/{+triggerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersManualTriggersRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersManualTriggersRequest>;
 
 export type GetAdvertisersManualTriggersResponse = ManualTrigger;
 export const GetAdvertisersManualTriggersResponse =
@@ -12215,7 +12215,7 @@ export const PatchAdvertisersManualTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersManualTriggersRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersManualTriggersRequest>;
 
 export type PatchAdvertisersManualTriggersResponse = ManualTrigger;
 export const PatchAdvertisersManualTriggersResponse =
@@ -12261,7 +12261,7 @@ export const ActivateAdvertisersManualTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ActivateAdvertisersManualTriggersRequest>;
+  ) as unknown as Schema.Codec<ActivateAdvertisersManualTriggersRequest>;
 
 export type ActivateAdvertisersManualTriggersResponse = ManualTrigger;
 export const ActivateAdvertisersManualTriggersResponse =
@@ -12312,7 +12312,7 @@ export const ListAdvertisersManualTriggersRequest =
       path: "v2/advertisers/{+advertiserId}/manualTriggers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersManualTriggersRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersManualTriggersRequest>;
 
 export type ListAdvertisersManualTriggersResponse = ListManualTriggersResponse;
 export const ListAdvertisersManualTriggersResponse =
@@ -12360,7 +12360,7 @@ export const DeactivateAdvertisersManualTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeactivateAdvertisersManualTriggersRequest>;
+  ) as unknown as Schema.Codec<DeactivateAdvertisersManualTriggersRequest>;
 
 export type DeactivateAdvertisersManualTriggersResponse = ManualTrigger;
 export const DeactivateAdvertisersManualTriggersResponse =
@@ -12403,7 +12403,7 @@ export const CreateAdvertisersNegativeKeywordListsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersNegativeKeywordListsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersNegativeKeywordListsRequest>;
 
 export type CreateAdvertisersNegativeKeywordListsResponse = NegativeKeywordList;
 export const CreateAdvertisersNegativeKeywordListsResponse =
@@ -12447,7 +12447,7 @@ export const GetAdvertisersNegativeKeywordListsRequest =
       path: "v2/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersNegativeKeywordListsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersNegativeKeywordListsRequest>;
 
 export type GetAdvertisersNegativeKeywordListsResponse = NegativeKeywordList;
 export const GetAdvertisersNegativeKeywordListsResponse =
@@ -12496,7 +12496,7 @@ export const PatchAdvertisersNegativeKeywordListsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersNegativeKeywordListsRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersNegativeKeywordListsRequest>;
 
 export type PatchAdvertisersNegativeKeywordListsResponse = NegativeKeywordList;
 export const PatchAdvertisersNegativeKeywordListsResponse =
@@ -12540,7 +12540,7 @@ export const DeleteAdvertisersNegativeKeywordListsRequest =
       path: "v2/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersNegativeKeywordListsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersNegativeKeywordListsRequest>;
 
 export type DeleteAdvertisersNegativeKeywordListsResponse = Empty;
 export const DeleteAdvertisersNegativeKeywordListsResponse =
@@ -12585,7 +12585,7 @@ export const ListAdvertisersNegativeKeywordListsRequest =
       path: "v2/advertisers/{+advertiserId}/negativeKeywordLists",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersNegativeKeywordListsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersNegativeKeywordListsRequest>;
 
 export type ListAdvertisersNegativeKeywordListsResponse =
   ListNegativeKeywordListsResponse;
@@ -12636,7 +12636,7 @@ export const BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+  ) as unknown as Schema.Codec<BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
 
 export type BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   BulkEditNegativeKeywordsResponse;
@@ -12685,7 +12685,7 @@ export const ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+  ) as unknown as Schema.Codec<ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
 
 export type ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   ReplaceNegativeKeywordsResponse;
@@ -12733,7 +12733,7 @@ export const DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
       path: "v2/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
 
 export type DeleteAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   Empty;
@@ -12790,7 +12790,7 @@ export const ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
       path: "v2/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
 
 export type ListAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   ListNegativeKeywordsResponse;
@@ -12841,7 +12841,7 @@ export const CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
 
 export type CreateAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   NegativeKeyword;
@@ -12893,7 +12893,7 @@ export const ListAdvertisersInsertionOrdersRequest =
       path: "v2/advertisers/{+advertiserId}/insertionOrders",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersInsertionOrdersRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersInsertionOrdersRequest>;
 
 export type ListAdvertisersInsertionOrdersResponse =
   ListInsertionOrdersResponse;
@@ -12945,7 +12945,7 @@ export const PatchAdvertisersInsertionOrdersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersInsertionOrdersRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersInsertionOrdersRequest>;
 
 export type PatchAdvertisersInsertionOrdersResponse = InsertionOrder;
 export const PatchAdvertisersInsertionOrdersResponse =
@@ -12987,7 +12987,7 @@ export const DeleteAdvertisersInsertionOrdersRequest =
       path: "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersInsertionOrdersRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersInsertionOrdersRequest>;
 
 export type DeleteAdvertisersInsertionOrdersResponse = Empty;
 export const DeleteAdvertisersInsertionOrdersResponse =
@@ -13029,7 +13029,7 @@ export const GetAdvertisersInsertionOrdersRequest =
       path: "v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersInsertionOrdersRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersInsertionOrdersRequest>;
 
 export type GetAdvertisersInsertionOrdersResponse = InsertionOrder;
 export const GetAdvertisersInsertionOrdersResponse =
@@ -13070,7 +13070,7 @@ export const CreateAdvertisersInsertionOrdersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersInsertionOrdersRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersInsertionOrdersRequest>;
 
 export type CreateAdvertisersInsertionOrdersResponse = InsertionOrder;
 export const CreateAdvertisersInsertionOrdersResponse =
@@ -13126,7 +13126,7 @@ export const BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRe
       path: "v2/advertisers/{+advertiserId}/youtubeAdGroups:bulkListAdGroupAssignedTargetingOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest>;
+  ) as unknown as Schema.Codec<BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest>;
 
 export type BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsResponse =
   BulkListAdGroupAssignedTargetingOptionsResponse;
@@ -13134,7 +13134,9 @@ export const BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRe
   /*@__PURE__*/ /*#__PURE__*/ BulkListAdGroupAssignedTargetingOptionsResponse;
 
 export type BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists assigned targeting options for multiple YouTube ad groups across targeting types. Inherited assigned targeting options are not included. */
 export const bulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroups: API.PaginatedOperationMethod<
@@ -13171,7 +13173,7 @@ export const GetAdvertisersYoutubeAdGroupsRequest =
       path: "v2/advertisers/{+advertiserId}/youtubeAdGroups/{+youtubeAdGroupId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersYoutubeAdGroupsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersYoutubeAdGroupsRequest>;
 
 export type GetAdvertisersYoutubeAdGroupsResponse = YoutubeAdGroup;
 export const GetAdvertisersYoutubeAdGroupsResponse =
@@ -13220,7 +13222,7 @@ export const ListAdvertisersYoutubeAdGroupsRequest =
       path: "v2/advertisers/{+advertiserId}/youtubeAdGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersYoutubeAdGroupsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersYoutubeAdGroupsRequest>;
 
 export type ListAdvertisersYoutubeAdGroupsResponse =
   ListYoutubeAdGroupsResponse;
@@ -13324,7 +13326,7 @@ export const GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptions
       path: "v2/advertisers/{+advertiserId}/youtubeAdGroups/{+youtubeAdGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResponse =
   AssignedTargetingOption;
@@ -13332,7 +13334,9 @@ export const GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptions
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single targeting option assigned to a YouTube ad group. Inherited assigned targeting options are not included. */
 export const getAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -13431,7 +13435,7 @@ export const ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOption
       path: "v2/advertisers/{+advertiserId}/youtubeAdGroups/{+youtubeAdGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResponse =
   ListYoutubeAdGroupAssignedTargetingOptionsResponse;
@@ -13439,7 +13443,9 @@ export const ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOption
   /*@__PURE__*/ /*#__PURE__*/ ListYoutubeAdGroupAssignedTargetingOptionsResponse;
 
 export type ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the targeting options assigned to a YouTube ad group. Inherited assigned targeting options are not included. */
 export const listAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptions: API.PaginatedOperationMethod<
@@ -13479,7 +13485,7 @@ export const GetAdvertisersChannelsRequest =
       path: "v2/advertisers/{+advertiserId}/channels/{+channelId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersChannelsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersChannelsRequest>;
 
 export type GetAdvertisersChannelsResponse = Channel;
 export const GetAdvertisersChannelsResponse =
@@ -13525,7 +13531,7 @@ export const ListAdvertisersChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/advertisers/{+advertiserId}/channels" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersChannelsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersChannelsRequest>;
 
 export type ListAdvertisersChannelsResponse = ListChannelsResponse;
 export const ListAdvertisersChannelsResponse =
@@ -13570,7 +13576,7 @@ export const CreateAdvertisersChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersChannelsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersChannelsRequest>;
 
 export type CreateAdvertisersChannelsResponse = Channel;
 export const CreateAdvertisersChannelsResponse =
@@ -13622,7 +13628,7 @@ export const PatchAdvertisersChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersChannelsRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersChannelsRequest>;
 
 export type PatchAdvertisersChannelsResponse = Channel;
 export const PatchAdvertisersChannelsResponse =
@@ -13668,7 +13674,7 @@ export const BulkEditAdvertisersChannelsSitesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkEditAdvertisersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<BulkEditAdvertisersChannelsSitesRequest>;
 
 export type BulkEditAdvertisersChannelsSitesResponse = BulkEditSitesResponse;
 export const BulkEditAdvertisersChannelsSitesResponse =
@@ -13714,7 +13720,7 @@ export const ReplaceAdvertisersChannelsSitesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReplaceAdvertisersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<ReplaceAdvertisersChannelsSitesRequest>;
 
 export type ReplaceAdvertisersChannelsSitesResponse = ReplaceSitesResponse;
 export const ReplaceAdvertisersChannelsSitesResponse =
@@ -13771,7 +13777,7 @@ export const ListAdvertisersChannelsSitesRequest =
       path: "v2/advertisers/{+advertiserId}/channels/{+channelId}/sites",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersChannelsSitesRequest>;
 
 export type ListAdvertisersChannelsSitesResponse = ListSitesResponse;
 export const ListAdvertisersChannelsSitesResponse =
@@ -13821,7 +13827,7 @@ export const DeleteAdvertisersChannelsSitesRequest =
       path: "v2/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersChannelsSitesRequest>;
 
 export type DeleteAdvertisersChannelsSitesResponse = Empty;
 export const DeleteAdvertisersChannelsSitesResponse =
@@ -13870,7 +13876,7 @@ export const CreateAdvertisersChannelsSitesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersChannelsSitesRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersChannelsSitesRequest>;
 
 export type CreateAdvertisersChannelsSitesResponse = Site;
 export const CreateAdvertisersChannelsSitesResponse =
@@ -13913,7 +13919,7 @@ export const UploadAdvertisersAssetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadAdvertisersAssetsRequest>;
+  ) as unknown as Schema.Codec<UploadAdvertisersAssetsRequest>;
 
 export type UploadAdvertisersAssetsResponse = CreateAssetResponse;
 export const UploadAdvertisersAssetsResponse =
@@ -13956,7 +13962,7 @@ export const CreateAdvertisersCampaignsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersCampaignsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersCampaignsRequest>;
 
 export type CreateAdvertisersCampaignsResponse = Campaign;
 export const CreateAdvertisersCampaignsResponse =
@@ -13998,7 +14004,7 @@ export const GetAdvertisersCampaignsRequest =
       path: "v2/advertisers/{+advertiserId}/campaigns/{+campaignId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersCampaignsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersCampaignsRequest>;
 
 export type GetAdvertisersCampaignsResponse = Campaign;
 export const GetAdvertisersCampaignsResponse =
@@ -14042,7 +14048,7 @@ export const PatchAdvertisersCampaignsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersCampaignsRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersCampaignsRequest>;
 
 export type PatchAdvertisersCampaignsResponse = Campaign;
 export const PatchAdvertisersCampaignsResponse =
@@ -14084,7 +14090,7 @@ export const DeleteAdvertisersCampaignsRequest =
       path: "v2/advertisers/{+advertiserId}/campaigns/{+campaignId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersCampaignsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersCampaignsRequest>;
 
 export type DeleteAdvertisersCampaignsResponse = Empty;
 export const DeleteAdvertisersCampaignsResponse =
@@ -14132,7 +14138,7 @@ export const ListAdvertisersCampaignsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/advertisers/{+advertiserId}/campaigns" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersCampaignsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersCampaignsRequest>;
 
 export type ListAdvertisersCampaignsResponse = ListCampaignsResponse;
 export const ListAdvertisersCampaignsResponse =
@@ -14180,7 +14186,7 @@ export const DuplicateAdvertisersLineItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DuplicateAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<DuplicateAdvertisersLineItemsRequest>;
 
 export type DuplicateAdvertisersLineItemsResponse = DuplicateLineItemResponse;
 export const DuplicateAdvertisersLineItemsResponse =
@@ -14222,7 +14228,7 @@ export const DeleteAdvertisersLineItemsRequest =
       path: "v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersLineItemsRequest>;
 
 export type DeleteAdvertisersLineItemsResponse = Empty;
 export const DeleteAdvertisersLineItemsResponse =
@@ -14265,7 +14271,7 @@ export const CreateAdvertisersLineItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersLineItemsRequest>;
 
 export type CreateAdvertisersLineItemsResponse = LineItem;
 export const CreateAdvertisersLineItemsResponse =
@@ -14310,7 +14316,7 @@ export const BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest>;
 
 export type BulkEditAssignedTargetingOptionsAdvertisersLineItemsResponse =
   BulkEditAssignedTargetingOptionsResponse;
@@ -14354,7 +14360,7 @@ export const BulkUpdateAdvertisersLineItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkUpdateAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<BulkUpdateAdvertisersLineItemsRequest>;
 
 export type BulkUpdateAdvertisersLineItemsResponse =
   BulkUpdateLineItemsResponse;
@@ -14404,7 +14410,7 @@ export const PatchAdvertisersLineItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersLineItemsRequest>;
 
 export type PatchAdvertisersLineItemsResponse = LineItem;
 export const PatchAdvertisersLineItemsResponse =
@@ -14452,7 +14458,7 @@ export const ListAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/advertisers/{+advertiserId}/lineItems" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersLineItemsRequest>;
 
 export type ListAdvertisersLineItemsResponse = ListLineItemsResponse;
 export const ListAdvertisersLineItemsResponse =
@@ -14510,7 +14516,7 @@ export const BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest =
       path: "v2/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest>;
 
 export type BulkListAssignedTargetingOptionsAdvertisersLineItemsResponse =
   BulkListAssignedTargetingOptionsResponse;
@@ -14555,7 +14561,7 @@ export const GetAdvertisersLineItemsRequest =
       path: "v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersLineItemsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersLineItemsRequest>;
 
 export type GetAdvertisersLineItemsResponse = LineItem;
 export const GetAdvertisersLineItemsResponse =
@@ -14651,7 +14657,7 @@ export const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReques
       path: "v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResponse =
   AssignedTargetingOption;
@@ -14659,7 +14665,9 @@ export const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRespon
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single targeting option assigned to a line item. */
 export const getAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -14756,7 +14764,7 @@ export const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReque
       path: "v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResponse =
   ListLineItemAssignedTargetingOptionsResponse;
@@ -14764,7 +14772,9 @@ export const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRespo
   /*@__PURE__*/ /*#__PURE__*/ ListLineItemAssignedTargetingOptionsResponse;
 
 export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the targeting options assigned to a line item. */
 export const listAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.PaginatedOperationMethod<
@@ -14858,7 +14868,7 @@ export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReq
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResponse =
   AssignedTargetingOption;
@@ -14866,7 +14876,11 @@ export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRes
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assigns a targeting option to a line item. Returns the assigned targeting option if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * DeleteLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API. */
 export const createAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -14958,7 +14972,7 @@ export const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReq
       path: "v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResponse =
   Empty;
@@ -14966,7 +14980,11 @@ export const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * CreateLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API. */
 export const deleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -15001,7 +15019,7 @@ export const GetGoogleAudiencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/googleAudiences/{+googleAudienceId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetGoogleAudiencesRequest>;
+  ) as unknown as Schema.Codec<GetGoogleAudiencesRequest>;
 
 export type GetGoogleAudiencesResponse = GoogleAudience;
 export const GetGoogleAudiencesResponse =
@@ -15049,7 +15067,7 @@ export const ListGoogleAudiencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/googleAudiences" }),
     svc,
-  ) as unknown as Schema.Schema<ListGoogleAudiencesRequest>;
+  ) as unknown as Schema.Codec<ListGoogleAudiencesRequest>;
 
 export type ListGoogleAudiencesResponse_Op = ListGoogleAudiencesResponse;
 export const ListGoogleAudiencesResponse_Op =
@@ -15084,7 +15102,7 @@ export const CreateSdfdownloadtasksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/sdfdownloadtasks", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSdfdownloadtasksRequest>;
+  ) as unknown as Schema.Codec<CreateSdfdownloadtasksRequest>;
 
 export type CreateSdfdownloadtasksResponse = Operation;
 export const CreateSdfdownloadtasksResponse =
@@ -15120,7 +15138,7 @@ export const GetSdfdownloadtasksOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSdfdownloadtasksOperationsRequest>;
+  ) as unknown as Schema.Codec<GetSdfdownloadtasksOperationsRequest>;
 
 export type GetSdfdownloadtasksOperationsResponse = Operation;
 export const GetSdfdownloadtasksOperationsResponse =

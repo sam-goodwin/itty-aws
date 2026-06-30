@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupClusterSearchIndexInput {
+  groupId: string;
+  clusterName: string;
+  indexId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupClusterSearchIndexInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const GetGroupClusterSearchIndexInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId}",
     }),
-  );
-export type GetGroupClusterSearchIndexInput =
-  typeof GetGroupClusterSearchIndexInput.Type;
+  ) as unknown as Schema.Codec<GetGroupClusterSearchIndexInput>;
 
 // Output Schema
+export type GetGroupClusterSearchIndexOutput = void;
 export const GetGroupClusterSearchIndexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterSearchIndexOutput =
-  typeof GetGroupClusterSearchIndexOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterSearchIndexOutput>;
 
 // The operation
 /**

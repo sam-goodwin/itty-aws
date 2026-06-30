@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsSessionLogsRetrieveInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  after?: string;
+  event_types?: string;
+  exclude_types?: string;
+  limit?: number;
+  offset?: number;
+}
 export const TasksRunsSessionLogsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,15 +29,12 @@ export const TasksRunsSessionLogsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/session_logs/",
     }),
-  );
-export type TasksRunsSessionLogsRetrieveInput =
-  typeof TasksRunsSessionLogsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsSessionLogsRetrieveInput>;
 
 // Output Schema
+export type TasksRunsSessionLogsRetrieveOutput = void;
 export const TasksRunsSessionLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TasksRunsSessionLogsRetrieveOutput =
-  typeof TasksRunsSessionLogsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksRunsSessionLogsRetrieveOutput>;
 
 // The operation
 /**

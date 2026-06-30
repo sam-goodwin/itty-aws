@@ -3,6 +3,34 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SsoControllerAuthorizeInput {
+  provider_scopes?: string;
+  provider_query_params?: string;
+  client_id: string;
+  domain?: string;
+  provider?:
+    | "AppleOAuth"
+    | "BitbucketOAuth"
+    | "GitHubOAuth"
+    | "GitLabOAuth"
+    | "GoogleOAuth"
+    | "IntuitOAuth"
+    | "LinkedInOAuth"
+    | "MicrosoftOAuth"
+    | "SalesforceOAuth"
+    | "SlackOAuth"
+    | "VercelMarketplaceOAuth"
+    | "VercelOAuth"
+    | "XeroOAuth";
+  redirect_uri: string;
+  response_type: string;
+  state?: string;
+  connection?: string;
+  organization?: string;
+  domain_hint?: string;
+  login_hint?: string;
+  nonce?: string;
+}
 export const SsoControllerAuthorizeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provider_scopes: Schema.optional(Schema.String),
@@ -37,17 +65,16 @@ export const SsoControllerAuthorizeInput =
   }).pipe(
     T.Http({ method: "GET", path: "/sso/authorize" }),
     T.NoFollowRedirect(),
-  );
-export type SsoControllerAuthorizeInput =
-  typeof SsoControllerAuthorizeInput.Type;
+  ) as unknown as Schema.Codec<SsoControllerAuthorizeInput>;
 
 // Output Schema
+export interface SsoControllerAuthorizeOutput {
+  url?: string;
+}
 export const SsoControllerAuthorizeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
-  });
-export type SsoControllerAuthorizeOutput =
-  typeof SsoControllerAuthorizeOutput.Type;
+  }) as unknown as Schema.Codec<SsoControllerAuthorizeOutput>;
 
 // The operation
 /**

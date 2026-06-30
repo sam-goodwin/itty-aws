@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTaxAssociationsFindInput {
+  expand?: string;
+  payment_intent: string;
+}
 export const GetTaxAssociationsFindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
@@ -13,11 +17,30 @@ export const GetTaxAssociationsFindInput =
       path: "/v1/tax/associations/find",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetTaxAssociationsFindInput =
-  typeof GetTaxAssociationsFindInput.Type;
+  ) as unknown as Schema.Codec<GetTaxAssociationsFindInput>;
 
 // Output Schema
+export interface GetTaxAssociationsFindOutput {
+  calculation: string;
+  id: string;
+  object: "tax.association";
+  payment_intent: string;
+  tax_transaction_attempts:
+    | {
+        committed?: { transaction: string };
+        errored?: {
+          reason:
+            | "another_payment_associated_with_calculation"
+            | "calculation_expired"
+            | "currency_mismatch"
+            | "original_transaction_voided"
+            | "unique_reference_violation";
+        };
+        source: string;
+        status: string;
+      }[]
+    | null;
+}
 export const GetTaxAssociationsFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     calculation: Schema.String,
@@ -48,9 +71,7 @@ export const GetTaxAssociationsFindOutput =
         }),
       ),
     ),
-  });
-export type GetTaxAssociationsFindOutput =
-  typeof GetTaxAssociationsFindOutput.Type;
+  }) as unknown as Schema.Codec<GetTaxAssociationsFindOutput>;
 
 // The operation
 /**

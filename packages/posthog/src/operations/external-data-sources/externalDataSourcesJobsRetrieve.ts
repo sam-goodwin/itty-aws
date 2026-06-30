@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExternalDataSourcesJobsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ExternalDataSourcesJobsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ExternalDataSourcesJobsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/external_data_sources/{id}/jobs/",
     }),
-  );
-export type ExternalDataSourcesJobsRetrieveInput =
-  typeof ExternalDataSourcesJobsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSourcesJobsRetrieveInput>;
 
 // Output Schema
+export type ExternalDataSourcesJobsRetrieveOutput = void;
 export const ExternalDataSourcesJobsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExternalDataSourcesJobsRetrieveOutput =
-  typeof ExternalDataSourcesJobsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesJobsRetrieveOutput>;
 
 // The operation
 /**

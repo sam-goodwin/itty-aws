@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgActivityFeedInput {
+  orgId: string;
+  pretty?: boolean;
+  eventType?: string;
+  maxDate?: string;
+  minDate?: string;
+}
 export const GetOrgActivityFeedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -13,12 +20,12 @@ export const GetOrgActivityFeedInput =
     minDate: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/activityFeed" }),
-  );
-export type GetOrgActivityFeedInput = typeof GetOrgActivityFeedInput.Type;
+  ) as unknown as Schema.Codec<GetOrgActivityFeedInput>;
 
 // Output Schema
-export const GetOrgActivityFeedOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgActivityFeedOutput = typeof GetOrgActivityFeedOutput.Type;
+export type GetOrgActivityFeedOutput = void;
+export const GetOrgActivityFeedOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgActivityFeedOutput>;
 
 // The operation
 /**

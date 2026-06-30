@@ -4,12 +4,30 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetASnippetInput {
+  id: string;
+}
 export const V1GetASnippetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v1/snippets/{id}" }));
-export type V1GetASnippetInput = typeof V1GetASnippetInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/snippets/{id}" }),
+) as unknown as Schema.Codec<V1GetASnippetInput>;
 
 // Output Schema
+export interface V1GetASnippetOutput {
+  id: string;
+  inserted_at: string;
+  updated_at: string;
+  type: "sql";
+  visibility: "user" | "project" | "org" | "public";
+  name: string;
+  description: string | null;
+  project: { id: number; name: string };
+  owner: { id: number; username: string };
+  updated_by: { id: number; username: string };
+  favorite: boolean;
+  content: { favorite?: boolean; schema_version: string; sql: string };
+}
 export const V1GetASnippetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   inserted_at: Schema.String,
@@ -36,8 +54,7 @@ export const V1GetASnippetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schema_version: Schema.String,
     sql: Schema.String,
   }),
-});
-export type V1GetASnippetOutput = typeof V1GetASnippetOutput.Type;
+}) as unknown as Schema.Codec<V1GetASnippetOutput>;
 
 // The operation
 /**

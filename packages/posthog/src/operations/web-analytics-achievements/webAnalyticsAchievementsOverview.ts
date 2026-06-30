@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WebAnalyticsAchievementsOverviewInput {
+  project_id: string;
+}
 export const WebAnalyticsAchievementsOverviewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,38 @@ export const WebAnalyticsAchievementsOverviewInput =
       method: "GET",
       path: "/api/projects/{project_id}/web_analytics_achievements/overview/",
     }),
-  );
-export type WebAnalyticsAchievementsOverviewInput =
-  typeof WebAnalyticsAchievementsOverviewInput.Type;
+  ) as unknown as Schema.Codec<WebAnalyticsAchievementsOverviewInput>;
 
 // Output Schema
+export interface WebAnalyticsAchievementsOverviewOutput {
+  definitions: {
+    key: string;
+    display_name: string;
+    description: string;
+    scope: "user" | "team";
+    is_experiment_track: boolean;
+    stages: { stage: number; name: string; threshold: number }[];
+  }[];
+  user_progress: {
+    track_key: string;
+    current_stage: number;
+    progress_value: number;
+    last_computed_at: string | null;
+    unlocked_at: Record<string, string>;
+  }[];
+  team_progress: {
+    track_key: string;
+    current_stage: number;
+    progress_value: number;
+    last_computed_at: string | null;
+    unlocked_at: Record<string, string>;
+  }[];
+  pending_celebrations: {
+    track_key: string;
+    stage: number;
+    stage_name: string;
+  }[];
+}
 export const WebAnalyticsAchievementsOverviewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     definitions: Schema.Array(
@@ -59,9 +89,7 @@ export const WebAnalyticsAchievementsOverviewOutput =
         stage_name: Schema.String,
       }),
     ),
-  });
-export type WebAnalyticsAchievementsOverviewOutput =
-  typeof WebAnalyticsAchievementsOverviewOutput.Type;
+  }) as unknown as Schema.Codec<WebAnalyticsAchievementsOverviewOutput>;
 
 // The operation
 /**

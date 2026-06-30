@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
+export const Color: Schema.Codec<Color> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     green: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
@@ -56,7 +56,7 @@ export interface IndexInfo {
   displayName?: string;
 }
 
-export const IndexInfo: Schema.Schema<IndexInfo> =
+export const IndexInfo: Schema.Codec<IndexInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     category: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface PlantDescription {
   type?: "POLLEN_TYPE_UNSPECIFIED" | "GRASS" | "TREE" | "WEED" | (string & {});
 }
 
-export const PlantDescription: Schema.Schema<PlantDescription> =
+export const PlantDescription: Schema.Codec<PlantDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     family: Schema.optional(Schema.String),
     specialColors: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface PollenTypeInfo {
   healthRecommendations?: ReadonlyArray<string>;
 }
 
-export const PollenTypeInfo: Schema.Schema<PollenTypeInfo> =
+export const PollenTypeInfo: Schema.Codec<PollenTypeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     inSeason: Schema.optional(Schema.Boolean),
@@ -151,7 +151,7 @@ export interface PlantInfo {
     | (string & {});
 }
 
-export const PlantInfo: Schema.Schema<PlantInfo> =
+export const PlantInfo: Schema.Codec<PlantInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     inSeason: Schema.optional(Schema.Boolean),
@@ -169,7 +169,7 @@ export interface Pollen_Date {
   month?: number;
 }
 
-export const Pollen_Date: Schema.Schema<Pollen_Date> =
+export const Pollen_Date: Schema.Codec<Pollen_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -185,7 +185,7 @@ export interface DayInfo {
   date?: Pollen_Date;
 }
 
-export const DayInfo: Schema.Schema<DayInfo> =
+export const DayInfo: Schema.Codec<DayInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pollenTypeInfo: Schema.optional(Schema.Array(PollenTypeInfo)),
     plantInfo: Schema.optional(Schema.Array(PlantInfo)),
@@ -201,7 +201,7 @@ export interface HttpBody {
   extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
+export const HttpBody: Schema.Codec<HttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -219,7 +219,7 @@ export interface LookupForecastResponse {
   nextPageToken?: string;
 }
 
-export const LookupForecastResponse: Schema.Schema<LookupForecastResponse> =
+export const LookupForecastResponse: Schema.Codec<LookupForecastResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     dailyInfo: Schema.optional(Schema.Array(DayInfo)),
@@ -293,7 +293,7 @@ export const LookupForecastRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/forecast:lookup" }),
   svc,
-) as unknown as Schema.Schema<LookupForecastRequest>;
+) as unknown as Schema.Codec<LookupForecastRequest>;
 
 export type LookupForecastResponse_Op = LookupForecastResponse;
 export const LookupForecastResponse_Op =
@@ -345,7 +345,7 @@ export const LookupHeatmapTileMapTypesHeatmapTilesRequest =
       path: "v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}",
     }),
     svc,
-  ) as unknown as Schema.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>;
+  ) as unknown as Schema.Codec<LookupHeatmapTileMapTypesHeatmapTilesRequest>;
 
 export type LookupHeatmapTileMapTypesHeatmapTilesResponse = HttpBody;
 export const LookupHeatmapTileMapTypesHeatmapTilesResponse =

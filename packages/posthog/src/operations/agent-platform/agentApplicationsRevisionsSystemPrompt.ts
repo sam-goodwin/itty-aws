@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsRevisionsSystemPromptInput {
+  application_id: string;
+  id: string;
+  project_id: string;
+}
 export const AgentApplicationsRevisionsSystemPromptInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -13,19 +18,20 @@ export const AgentApplicationsRevisionsSystemPromptInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/system_prompt/",
     }),
-  );
-export type AgentApplicationsRevisionsSystemPromptInput =
-  typeof AgentApplicationsRevisionsSystemPromptInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsRevisionsSystemPromptInput>;
 
 // Output Schema
+export interface AgentApplicationsRevisionsSystemPromptOutput {
+  revision_id: string;
+  framework_prompt_version: number;
+  system_prompt: string;
+}
 export const AgentApplicationsRevisionsSystemPromptOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revision_id: Schema.String,
     framework_prompt_version: Schema.Number,
     system_prompt: Schema.String,
-  });
-export type AgentApplicationsRevisionsSystemPromptOutput =
-  typeof AgentApplicationsRevisionsSystemPromptOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsRevisionsSystemPromptOutput>;
 
 // The operation
 /**

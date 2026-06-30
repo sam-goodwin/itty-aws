@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ExternalDataSchemasLogsRetrieveInput {
+  id: string;
+  project_id: string;
+  after?: string;
+  before?: string;
+  instance_id?: string;
+  level?: string;
+  limit?: number;
+  search?: string;
+}
 export const ExternalDataSchemasLogsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,15 +28,12 @@ export const ExternalDataSchemasLogsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/external_data_schemas/{id}/logs/",
     }),
-  );
-export type ExternalDataSchemasLogsRetrieveInput =
-  typeof ExternalDataSchemasLogsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSchemasLogsRetrieveInput>;
 
 // Output Schema
+export type ExternalDataSchemasLogsRetrieveOutput = void;
 export const ExternalDataSchemasLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExternalDataSchemasLogsRetrieveOutput =
-  typeof ExternalDataSchemasLogsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSchemasLogsRetrieveOutput>;
 
 // The operation
 /**

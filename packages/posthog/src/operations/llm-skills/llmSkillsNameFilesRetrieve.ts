@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmSkillsNameFilesRetrieveInput {
+  file_path: string;
+  project_id: string;
+  skill_name: string;
+  version?: number;
+}
 export const LlmSkillsNameFilesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     file_path: Schema.String.pipe(T.PathParam()),
@@ -14,19 +20,20 @@ export const LlmSkillsNameFilesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/llm_skills/name/{skill_name}/files/{file_path}/",
     }),
-  );
-export type LlmSkillsNameFilesRetrieveInput =
-  typeof LlmSkillsNameFilesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LlmSkillsNameFilesRetrieveInput>;
 
 // Output Schema
+export interface LlmSkillsNameFilesRetrieveOutput {
+  path?: string;
+  content?: string;
+  content_type?: string;
+}
 export const LlmSkillsNameFilesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
     content_type: Schema.optional(Schema.String),
-  });
-export type LlmSkillsNameFilesRetrieveOutput =
-  typeof LlmSkillsNameFilesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LlmSkillsNameFilesRetrieveOutput>;
 
 // The operation
 /**

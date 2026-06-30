@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -44,7 +44,7 @@ export interface DirectoryList {
   kind?: string;
 }
 
-export const DirectoryList: Schema.Schema<DirectoryList> =
+export const DirectoryList: Schema.Codec<DirectoryList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     discoveryVersion: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -123,7 +123,7 @@ export interface JsonSchema {
   location?: string;
 }
 
-export const JsonSchema: Schema.Schema<JsonSchema> =
+export const JsonSchema: Schema.Codec<JsonSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       $ref: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export const JsonSchema: Schema.Schema<JsonSchema> =
       pattern: Schema.optional(Schema.String),
       location: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "JsonSchema" }) as any as Schema.Schema<JsonSchema>;
+  ).annotate({ identifier: "JsonSchema" }) as any as Schema.Codec<JsonSchema>;
 
 export interface RestMethod {
   /** Whether this method supports media uploads. */
@@ -213,7 +213,7 @@ export interface RestMethod {
   request?: { $ref?: string; parameterName?: string };
 }
 
-export const RestMethod: Schema.Schema<RestMethod> =
+export const RestMethod: Schema.Codec<RestMethod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportsMediaUpload: Schema.optional(Schema.Boolean),
     useMediaDownloadService: Schema.optional(Schema.Boolean),
@@ -272,7 +272,7 @@ export interface RestResource {
   methods?: Record<string, RestMethod>;
 }
 
-export const RestResource: Schema.Schema<RestResource> =
+export const RestResource: Schema.Codec<RestResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deprecated: Schema.optional(Schema.Boolean),
@@ -281,7 +281,7 @@ export const RestResource: Schema.Schema<RestResource> =
     }),
   ).annotate({
     identifier: "RestResource",
-  }) as any as Schema.Schema<RestResource>;
+  }) as any as Schema.Codec<RestResource>;
 
 export interface RestDescription {
   /** The title of this API. */
@@ -352,7 +352,7 @@ export interface RestDescription {
   methods?: Record<string, RestMethod>;
 }
 
-export const RestDescription: Schema.Schema<RestDescription> =
+export const RestDescription: Schema.Codec<RestDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     canonicalName: Schema.optional(Schema.String),
@@ -458,7 +458,7 @@ export const GetRestApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "apis/{api}/{version}/rest" }),
   svc,
-) as unknown as Schema.Schema<GetRestApisRequest>;
+) as unknown as Schema.Codec<GetRestApisRequest>;
 
 export type GetRestApisResponse = RestDescription;
 export const GetRestApisResponse = /*@__PURE__*/ /*#__PURE__*/ RestDescription;
@@ -490,7 +490,7 @@ export const ListApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "apis" }),
   svc,
-) as unknown as Schema.Schema<ListApisRequest>;
+) as unknown as Schema.Codec<ListApisRequest>;
 
 export type ListApisResponse = DirectoryList;
 export const ListApisResponse = /*@__PURE__*/ /*#__PURE__*/ DirectoryList;

@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmPromptsNameRetrieveInput {
+  project_id: string;
+  prompt_name: string;
+  content?: "full" | "preview" | "none";
+  version?: number;
+}
 export const LlmPromptsNameRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,24 @@ export const LlmPromptsNameRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/llm_prompts/name/{prompt_name}/",
     }),
-  );
-export type LlmPromptsNameRetrieveInput =
-  typeof LlmPromptsNameRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LlmPromptsNameRetrieveInput>;
 
 // Output Schema
+export interface LlmPromptsNameRetrieveOutput {
+  id?: string;
+  name?: string;
+  prompt?: unknown;
+  prompt_preview?: string;
+  outline?: { level?: number; text?: string }[];
+  version?: number;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+}
 export const LlmPromptsNameRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -41,9 +60,7 @@ export const LlmPromptsNameRetrieveOutput =
     latest_version: Schema.optional(Schema.Number),
     version_count: Schema.optional(Schema.Number),
     first_version_created_at: Schema.optional(Schema.String),
-  });
-export type LlmPromptsNameRetrieveOutput =
-  typeof LlmPromptsNameRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LlmPromptsNameRetrieveOutput>;
 
 // The operation
 /**

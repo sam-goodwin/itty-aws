@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  domains?: string;
+  search?: string;
+}
 export const OrganizationsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -12,11 +20,43 @@ export const OrganizationsControllerListInput =
     order: Schema.optional(Schema.String),
     domains: Schema.optional(Schema.String),
     search: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/organizations" }));
-export type OrganizationsControllerListInput =
-  typeof OrganizationsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/organizations" }),
+  ) as unknown as Schema.Codec<OrganizationsControllerListInput>;
 
 // Output Schema
+export interface OrganizationsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    name?: string;
+    domains?: {
+      object: string;
+      id: string;
+      organization_id: string;
+      domain: string;
+      state?:
+        | "failed"
+        | "legacy_verified"
+        | "pending"
+        | "unverified"
+        | "verified";
+      verification_prefix?: string;
+      verification_token?: string;
+      verification_strategy?: "dns" | "manual";
+      created_at: string;
+      updated_at: string;
+    }[];
+    metadata?: Record<string, string>;
+    external_id?: string | null;
+    stripe_customer_id?: string;
+    created_at?: string;
+    updated_at?: string;
+    allow_profiles_outside_organization?: boolean;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const OrganizationsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -69,9 +109,7 @@ export const OrganizationsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type OrganizationsControllerListOutput =
-  typeof OrganizationsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsControllerListOutput>;
 
 // The operation
 /**

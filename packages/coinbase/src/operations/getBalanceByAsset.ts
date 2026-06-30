@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetBalanceByAssetInput {
+  accountId: string;
+  asset: string;
+}
 export const GetBalanceByAssetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accountId: Schema.String.pipe(T.PathParam()),
@@ -10,10 +14,18 @@ export const GetBalanceByAssetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ).pipe(
   T.Http({ method: "GET", path: "/v2/accounts/{accountId}/balances/{asset}" }),
-);
-export type GetBalanceByAssetInput = typeof GetBalanceByAssetInput.Type;
+) as unknown as Schema.Codec<GetBalanceByAssetInput>;
 
 // Output Schema
+export interface GetBalanceByAssetOutput {
+  asset: {
+    symbol: string;
+    type: "fiat" | "crypto";
+    name: string;
+    decimals: number;
+  };
+  amount: Record<string, { available: string; total: string }>;
+}
 export const GetBalanceByAssetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asset: Schema.Struct({
@@ -29,8 +41,7 @@ export const GetBalanceByAssetOutput =
         total: Schema.String,
       }),
     ),
-  });
-export type GetBalanceByAssetOutput = typeof GetBalanceByAssetOutput.Type;
+  }) as unknown as Schema.Codec<GetBalanceByAssetOutput>;
 
 // The operation
 /**

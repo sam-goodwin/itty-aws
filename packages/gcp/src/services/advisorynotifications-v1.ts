@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleCloudAdvisorynotificationsV1CsvCsvRow {
   entries?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudAdvisorynotificationsV1CsvCsvRow: Schema.Schema<GoogleCloudAdvisorynotificationsV1CsvCsvRow> =
+export const GoogleCloudAdvisorynotificationsV1CsvCsvRow: Schema.Codec<GoogleCloudAdvisorynotificationsV1CsvCsvRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1CsvCsvRow" });
@@ -39,7 +39,7 @@ export interface GoogleCloudAdvisorynotificationsV1Csv {
   headers?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Csv: Schema.Schema<GoogleCloudAdvisorynotificationsV1Csv> =
+export const GoogleCloudAdvisorynotificationsV1Csv: Schema.Codec<GoogleCloudAdvisorynotificationsV1Csv> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataRows: Schema.optional(
       Schema.Array(GoogleCloudAdvisorynotificationsV1CsvCsvRow),
@@ -61,7 +61,7 @@ export interface GoogleCloudAdvisorynotificationsV1Text {
   enText?: string;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Text: Schema.Schema<GoogleCloudAdvisorynotificationsV1Text> =
+export const GoogleCloudAdvisorynotificationsV1Text: Schema.Codec<GoogleCloudAdvisorynotificationsV1Text> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localizedText: Schema.optional(Schema.String),
     localizationState: Schema.optional(Schema.String),
@@ -73,7 +73,7 @@ export interface GoogleCloudAdvisorynotificationsV1MessageBody {
   text?: GoogleCloudAdvisorynotificationsV1Text;
 }
 
-export const GoogleCloudAdvisorynotificationsV1MessageBody: Schema.Schema<GoogleCloudAdvisorynotificationsV1MessageBody> =
+export const GoogleCloudAdvisorynotificationsV1MessageBody: Schema.Codec<GoogleCloudAdvisorynotificationsV1MessageBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(GoogleCloudAdvisorynotificationsV1Text),
   }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1MessageBody" });
@@ -85,7 +85,7 @@ export interface GoogleCloudAdvisorynotificationsV1Attachment {
   displayName?: string;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Attachment: Schema.Schema<GoogleCloudAdvisorynotificationsV1Attachment> =
+export const GoogleCloudAdvisorynotificationsV1Attachment: Schema.Codec<GoogleCloudAdvisorynotificationsV1Attachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     csv: Schema.optional(GoogleCloudAdvisorynotificationsV1Csv),
     displayName: Schema.optional(Schema.String),
@@ -96,7 +96,7 @@ export interface GoogleCloudAdvisorynotificationsV1Subject {
   text?: GoogleCloudAdvisorynotificationsV1Text;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Subject: Schema.Schema<GoogleCloudAdvisorynotificationsV1Subject> =
+export const GoogleCloudAdvisorynotificationsV1Subject: Schema.Codec<GoogleCloudAdvisorynotificationsV1Subject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(GoogleCloudAdvisorynotificationsV1Text),
   }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Subject" });
@@ -112,7 +112,7 @@ export interface GoogleCloudAdvisorynotificationsV1Message {
   localizationTime?: string;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Message: Schema.Schema<GoogleCloudAdvisorynotificationsV1Message> =
+export const GoogleCloudAdvisorynotificationsV1Message: Schema.Codec<GoogleCloudAdvisorynotificationsV1Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     attachments: Schema.optional(
@@ -141,7 +141,7 @@ export interface GoogleCloudAdvisorynotificationsV1Notification {
   subject?: GoogleCloudAdvisorynotificationsV1Subject;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Notification: Schema.Schema<GoogleCloudAdvisorynotificationsV1Notification> =
+export const GoogleCloudAdvisorynotificationsV1Notification: Schema.Codec<GoogleCloudAdvisorynotificationsV1Notification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     notificationType: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export interface GoogleCloudAdvisorynotificationsV1ListNotificationsResponse {
   totalSize?: number;
 }
 
-export const GoogleCloudAdvisorynotificationsV1ListNotificationsResponse: Schema.Schema<GoogleCloudAdvisorynotificationsV1ListNotificationsResponse> =
+export const GoogleCloudAdvisorynotificationsV1ListNotificationsResponse: Schema.Codec<GoogleCloudAdvisorynotificationsV1ListNotificationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notifications: Schema.optional(
       Schema.Array(GoogleCloudAdvisorynotificationsV1Notification),
@@ -177,7 +177,7 @@ export interface GoogleCloudAdvisorynotificationsV1NotificationSettings {
   enabled?: boolean;
 }
 
-export const GoogleCloudAdvisorynotificationsV1NotificationSettings: Schema.Schema<GoogleCloudAdvisorynotificationsV1NotificationSettings> =
+export const GoogleCloudAdvisorynotificationsV1NotificationSettings: Schema.Codec<GoogleCloudAdvisorynotificationsV1NotificationSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -196,7 +196,7 @@ export interface GoogleCloudAdvisorynotificationsV1Settings {
   etag?: string;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Settings: Schema.Schema<GoogleCloudAdvisorynotificationsV1Settings> =
+export const GoogleCloudAdvisorynotificationsV1Settings: Schema.Codec<GoogleCloudAdvisorynotificationsV1Settings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     notificationSettings: Schema.optional(
@@ -273,7 +273,7 @@ export const GetSettingsOrganizationsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSettingsOrganizationsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetSettingsOrganizationsLocationsRequest>;
 
 export type GetSettingsOrganizationsLocationsResponse =
   GoogleCloudAdvisorynotificationsV1Settings;
@@ -313,7 +313,7 @@ export const UpdateSettingsOrganizationsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSettingsOrganizationsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateSettingsOrganizationsLocationsRequest>;
 
 export type UpdateSettingsOrganizationsLocationsResponse =
   GoogleCloudAdvisorynotificationsV1Settings;
@@ -364,7 +364,7 @@ export const ListOrganizationsLocationsNotificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/notifications" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsNotificationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsNotificationsRequest>;
 
 export type ListOrganizationsLocationsNotificationsResponse =
   GoogleCloudAdvisorynotificationsV1ListNotificationsResponse;
@@ -408,7 +408,7 @@ export const GetOrganizationsLocationsNotificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsNotificationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsNotificationsRequest>;
 
 export type GetOrganizationsLocationsNotificationsResponse =
   GoogleCloudAdvisorynotificationsV1Notification;
@@ -443,7 +443,7 @@ export const GetSettingsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSettingsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetSettingsProjectsLocationsRequest>;
 
 export type GetSettingsProjectsLocationsResponse =
   GoogleCloudAdvisorynotificationsV1Settings;
@@ -483,7 +483,7 @@ export const UpdateSettingsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSettingsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateSettingsProjectsLocationsRequest>;
 
 export type UpdateSettingsProjectsLocationsResponse =
   GoogleCloudAdvisorynotificationsV1Settings;
@@ -525,7 +525,7 @@ export const GetProjectsLocationsNotificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNotificationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsNotificationsRequest>;
 
 export type GetProjectsLocationsNotificationsResponse =
   GoogleCloudAdvisorynotificationsV1Notification;
@@ -574,7 +574,7 @@ export const ListProjectsLocationsNotificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/notifications" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsNotificationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsNotificationsRequest>;
 
 export type ListProjectsLocationsNotificationsResponse =
   GoogleCloudAdvisorynotificationsV1ListNotificationsResponse;

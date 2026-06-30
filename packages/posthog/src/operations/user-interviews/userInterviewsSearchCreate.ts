@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewsSearchCreateInput {
+  project_id: string;
+  query: string;
+  document_types?: ("transcript" | "summary")[];
+  topic_id?: string | null;
+  classifications?: ("abandoned" | "off-topic")[];
+  limit?: number;
+}
 export const UserInterviewsSearchCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +28,18 @@ export const UserInterviewsSearchCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/user_interviews/search/",
     }),
-  );
-export type UserInterviewsSearchCreateInput =
-  typeof UserInterviewsSearchCreateInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewsSearchCreateInput>;
 
 // Output Schema
+export type UserInterviewsSearchCreateOutput = {
+  interview_id: string;
+  document_type: "transcript" | "summary";
+  similarity: number;
+  content_snippet: string;
+  interviewee_identifier: string;
+  topic_id: string | null;
+  created_at: string;
+}[];
 export const UserInterviewsSearchCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -36,9 +51,7 @@ export const UserInterviewsSearchCreateOutput =
       topic_id: Schema.NullOr(Schema.String),
       created_at: Schema.String,
     }),
-  );
-export type UserInterviewsSearchCreateOutput =
-  typeof UserInterviewsSearchCreateOutput.Type;
+  ) as unknown as Schema.Codec<UserInterviewsSearchCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface HogFlowsInvocationResultRetrieveInput {
+  id: string;
+  invocation_id: string;
+  project_id: string;
+}
 export const HogFlowsInvocationResultRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,24 @@ export const HogFlowsInvocationResultRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_flows/{id}/invocation_results/{invocation_id}/",
     }),
-  );
-export type HogFlowsInvocationResultRetrieveInput =
-  typeof HogFlowsInvocationResultRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HogFlowsInvocationResultRetrieveInput>;
 
 // Output Schema
+export interface HogFlowsInvocationResultRetrieveOutput {
+  invocation_globals: Record<string, unknown>;
+  invocation_id: string;
+  status: string;
+  error_kind: string;
+  error_message: string;
+  distinct_id: string;
+  person_id: string;
+  scheduled_at: string;
+  started_at: string | null;
+  finished_at: string | null;
+  duration_ms: number | null;
+  attempts: number;
+  is_retry: boolean;
+}
 export const HogFlowsInvocationResultRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invocation_globals: Schema.Record(Schema.String, Schema.Unknown),
@@ -33,9 +51,7 @@ export const HogFlowsInvocationResultRetrieveOutput =
     duration_ms: Schema.NullOr(Schema.Number),
     attempts: Schema.Number,
     is_retry: Schema.Boolean,
-  });
-export type HogFlowsInvocationResultRetrieveOutput =
-  typeof HogFlowsInvocationResultRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<HogFlowsInvocationResultRetrieveOutput>;
 
 // The operation
 /**

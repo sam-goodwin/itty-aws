@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface MinorVersion {
   version?: string;
 }
 
-export const MinorVersion: Schema.Schema<MinorVersion> =
+export const MinorVersion: Schema.Codec<MinorVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     gridImageId: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export interface ListMinorVersionsResponse {
   minorVersions?: ReadonlyArray<MinorVersion>;
 }
 
-export const ListMinorVersionsResponse: Schema.Schema<ListMinorVersionsResponse> =
+export const ListMinorVersionsResponse: Schema.Codec<ListMinorVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     minorVersions: Schema.optional(Schema.Array(MinorVersion)),
@@ -79,7 +79,7 @@ export interface GoldengateAzureDataLakeStorageConnectionProperties {
   azureTenantId?: string;
 }
 
-export const GoldengateAzureDataLakeStorageConnectionProperties: Schema.Schema<GoldengateAzureDataLakeStorageConnectionProperties> =
+export const GoldengateAzureDataLakeStorageConnectionProperties: Schema.Codec<GoldengateAzureDataLakeStorageConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export const GoldengateAzureDataLakeStorageConnectionProperties: Schema.Schema<G
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -121,7 +121,7 @@ export interface GoldengateOciObjectStorageConnectionProperties {
   region?: string;
 }
 
-export const GoldengateOciObjectStorageConnectionProperties: Schema.Schema<GoldengateOciObjectStorageConnectionProperties> =
+export const GoldengateOciObjectStorageConnectionProperties: Schema.Codec<GoldengateOciObjectStorageConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
     privateKeyFile: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface ExadbVmClusterStorageDetails {
   sizeInGbsPerNode?: number;
 }
 
-export const ExadbVmClusterStorageDetails: Schema.Schema<ExadbVmClusterStorageDetails> =
+export const ExadbVmClusterStorageDetails: Schema.Codec<ExadbVmClusterStorageDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeInGbsPerNode: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ExadbVmClusterStorageDetails" });
@@ -152,7 +152,7 @@ export interface DataCollectionOptionsCommon {
   isDiagnosticsEventsEnabled?: boolean;
 }
 
-export const DataCollectionOptionsCommon: Schema.Schema<DataCollectionOptionsCommon> =
+export const DataCollectionOptionsCommon: Schema.Codec<DataCollectionOptionsCommon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isIncidentLogsEnabled: Schema.optional(Schema.Boolean),
     isHealthMonitoringEnabled: Schema.optional(Schema.Boolean),
@@ -166,7 +166,7 @@ export interface TimeZone {
   id?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
+export const TimeZone: Schema.Codec<TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface ExadbVmClusterProperties {
     | (string & {});
 }
 
-export const ExadbVmClusterProperties: Schema.Schema<ExadbVmClusterProperties> =
+export const ExadbVmClusterProperties: Schema.Codec<ExadbVmClusterProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterName: Schema.optional(Schema.String),
     gridImageId: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export interface ExadbVmCluster {
   createTime?: string;
 }
 
-export const ExadbVmCluster: Schema.Schema<ExadbVmCluster> =
+export const ExadbVmCluster: Schema.Codec<ExadbVmCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backupOdbSubnet: Schema.optional(Schema.String),
     gcpOracleZone: Schema.optional(Schema.String),
@@ -299,7 +299,7 @@ export interface ListExadbVmClustersResponse {
   exadbVmClusters?: ReadonlyArray<ExadbVmCluster>;
 }
 
-export const ListExadbVmClustersResponse: Schema.Schema<ListExadbVmClustersResponse> =
+export const ListExadbVmClustersResponse: Schema.Codec<ListExadbVmClustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -329,7 +329,7 @@ export interface GoldengateSnowflakeConnectionProperties {
     | (string & {});
 }
 
-export const GoldengateSnowflakeConnectionProperties: Schema.Schema<GoldengateSnowflakeConnectionProperties> =
+export const GoldengateSnowflakeConnectionProperties: Schema.Codec<GoldengateSnowflakeConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateKeyFile: Schema.optional(Schema.String),
     technologyType: Schema.optional(Schema.String),
@@ -373,7 +373,7 @@ export interface GoldengateDeploymentVersionProperties {
   releaseTime?: string;
 }
 
-export const GoldengateDeploymentVersionProperties: Schema.Schema<GoldengateDeploymentVersionProperties> =
+export const GoldengateDeploymentVersionProperties: Schema.Codec<GoldengateDeploymentVersionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityFix: Schema.optional(Schema.Boolean),
     supportEndTime: Schema.optional(Schema.String),
@@ -392,7 +392,7 @@ export interface GoldengateDeploymentVersion {
   properties?: GoldengateDeploymentVersionProperties;
 }
 
-export const GoldengateDeploymentVersion: Schema.Schema<GoldengateDeploymentVersion> =
+export const GoldengateDeploymentVersion: Schema.Codec<GoldengateDeploymentVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     ocid: Schema.optional(Schema.String),
@@ -408,7 +408,7 @@ export interface ListGoldengateDeploymentVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListGoldengateDeploymentVersionsResponse: Schema.Schema<ListGoldengateDeploymentVersionsResponse> =
+export const ListGoldengateDeploymentVersionsResponse: Schema.Codec<ListGoldengateDeploymentVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     goldengateDeploymentVersions: Schema.optional(
@@ -430,7 +430,7 @@ export interface GoldengateDeploymentLock {
   relatedResourceId?: string;
 }
 
-export const GoldengateDeploymentLock: Schema.Schema<GoldengateDeploymentLock> =
+export const GoldengateDeploymentLock: Schema.Codec<GoldengateDeploymentLock> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -441,7 +441,7 @@ export const GoldengateDeploymentLock: Schema.Schema<GoldengateDeploymentLock> =
 
 export interface StopGoldengateDeploymentRequest {}
 
-export const StopGoldengateDeploymentRequest: Schema.Schema<StopGoldengateDeploymentRequest> =
+export const StopGoldengateDeploymentRequest: Schema.Codec<StopGoldengateDeploymentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopGoldengateDeploymentRequest",
   });
@@ -459,7 +459,7 @@ export interface DbVersionProperties {
   isLatestForMajorVersion?: boolean;
 }
 
-export const DbVersionProperties: Schema.Schema<DbVersionProperties> =
+export const DbVersionProperties: Schema.Codec<DbVersionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     isUpgradeSupported: Schema.optional(Schema.Boolean),
@@ -475,7 +475,7 @@ export interface DbVersion {
   properties?: DbVersionProperties;
 }
 
-export const DbVersion: Schema.Schema<DbVersion> =
+export const DbVersion: Schema.Codec<DbVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     properties: Schema.optional(DbVersionProperties),
@@ -488,7 +488,7 @@ export interface ListDbVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListDbVersionsResponse: Schema.Schema<ListDbVersionsResponse> =
+export const ListDbVersionsResponse: Schema.Codec<ListDbVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dbVersions: Schema.optional(Schema.Array(DbVersion)),
     nextPageToken: Schema.optional(Schema.String),
@@ -524,7 +524,7 @@ export interface GoldengateMongodbConnectionProperties {
   databaseId?: string;
 }
 
-export const GoldengateMongodbConnectionProperties: Schema.Schema<GoldengateMongodbConnectionProperties> =
+export const GoldengateMongodbConnectionProperties: Schema.Codec<GoldengateMongodbConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     tlsCertificateKeyFilePasswordSecretVersion: Schema.optional(Schema.String),
@@ -580,7 +580,7 @@ export interface GoldengateDeploymentType {
     | (string & {});
 }
 
-export const GoldengateDeploymentType: Schema.Schema<GoldengateDeploymentType> =
+export const GoldengateDeploymentType: Schema.Codec<GoldengateDeploymentType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentType: Schema.optional(Schema.String),
     defaultUsername: Schema.optional(Schema.String),
@@ -604,7 +604,7 @@ export interface ListGoldengateDeploymentTypesResponse {
   nextPageToken?: string;
 }
 
-export const ListGoldengateDeploymentTypesResponse: Schema.Schema<ListGoldengateDeploymentTypesResponse> =
+export const ListGoldengateDeploymentTypesResponse: Schema.Codec<ListGoldengateDeploymentTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goldengateDeploymentTypes: Schema.optional(
       Schema.Array(GoldengateDeploymentType),
@@ -636,7 +636,7 @@ export interface GoldengateDatabricksConnectionProperties {
   technologyType?: string;
 }
 
-export const GoldengateDatabricksConnectionProperties: Schema.Schema<GoldengateDatabricksConnectionProperties> =
+export const GoldengateDatabricksConnectionProperties: Schema.Codec<GoldengateDatabricksConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageCredential: Schema.optional(Schema.String),
     passwordSecretVersion: Schema.optional(Schema.String),
@@ -655,7 +655,7 @@ export interface GoldengateGoogleCloudStorageConnectionProperties {
   serviceAccountKeyFile?: string;
 }
 
-export const GoldengateGoogleCloudStorageConnectionProperties: Schema.Schema<GoldengateGoogleCloudStorageConnectionProperties> =
+export const GoldengateGoogleCloudStorageConnectionProperties: Schema.Codec<GoldengateGoogleCloudStorageConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     serviceAccountKeyFile: Schema.optional(Schema.String),
@@ -674,7 +674,7 @@ export interface TestConnectionAssignmentError {
   action?: string;
 }
 
-export const TestConnectionAssignmentError: Schema.Schema<TestConnectionAssignmentError> =
+export const TestConnectionAssignmentError: Schema.Codec<TestConnectionAssignmentError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issue: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -712,7 +712,7 @@ export interface DbServerProperties {
     | (string & {});
 }
 
-export const DbServerProperties: Schema.Schema<DbServerProperties> =
+export const DbServerProperties: Schema.Codec<DbServerProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memorySizeGb: Schema.optional(Schema.Number),
     maxOcpuCount: Schema.optional(Schema.Number),
@@ -735,7 +735,7 @@ export interface DbServer {
   properties?: DbServerProperties;
 }
 
-export const DbServer: Schema.Schema<DbServer> =
+export const DbServer: Schema.Codec<DbServer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -749,7 +749,7 @@ export interface ListDbServersResponse {
   dbServers?: ReadonlyArray<DbServer>;
 }
 
-export const ListDbServersResponse: Schema.Schema<ListDbServersResponse> =
+export const ListDbServersResponse: Schema.Codec<ListDbServersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dbServers: Schema.optional(Schema.Array(DbServer)),
@@ -776,7 +776,7 @@ export interface DatabaseManagementConfig {
     | (string & {});
 }
 
-export const DatabaseManagementConfig: Schema.Schema<DatabaseManagementConfig> =
+export const DatabaseManagementConfig: Schema.Codec<DatabaseManagementConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementState: Schema.optional(Schema.String),
     managementType: Schema.optional(Schema.String),
@@ -794,7 +794,7 @@ export interface BackupDestinationDetails {
     | (string & {});
 }
 
-export const BackupDestinationDetails: Schema.Schema<BackupDestinationDetails> =
+export const BackupDestinationDetails: Schema.Codec<BackupDestinationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "BackupDestinationDetails" });
@@ -857,7 +857,7 @@ export interface DbBackupConfig {
   retentionPeriodDays?: number;
 }
 
-export const DbBackupConfig: Schema.Schema<DbBackupConfig> =
+export const DbBackupConfig: Schema.Codec<DbBackupConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoFullBackupDay: Schema.optional(Schema.String),
     autoIncrementalBackupWindow: Schema.optional(Schema.String),
@@ -893,7 +893,7 @@ export interface DatabaseProperties {
   dbBackupConfig?: DbBackupConfig;
 }
 
-export const DatabaseProperties: Schema.Schema<DatabaseProperties> =
+export const DatabaseProperties: Schema.Codec<DatabaseProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dbVersion: Schema.optional(Schema.String),
     databaseManagementConfig: Schema.optional(DatabaseManagementConfig),
@@ -948,7 +948,7 @@ export interface Database {
   gcpOracleZone?: string;
 }
 
-export const Database: Schema.Schema<Database> =
+export const Database: Schema.Codec<Database> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adminPassword: Schema.optional(Schema.String),
     tdeWalletPassword: Schema.optional(Schema.String),
@@ -981,7 +981,7 @@ export interface DbHome {
   dbVersion?: string;
 }
 
-export const DbHome: Schema.Schema<DbHome> =
+export const DbHome: Schema.Codec<DbHome> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isUnifiedAuditingEnabled: Schema.optional(Schema.Boolean),
     database: Schema.optional(Database),
@@ -998,7 +998,7 @@ export interface DbSystemOptions {
     | (string & {});
 }
 
-export const DbSystemOptions: Schema.Schema<DbSystemOptions> =
+export const DbSystemOptions: Schema.Codec<DbSystemOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageManagement: Schema.optional(Schema.String),
   }).annotate({ identifier: "DbSystemOptions" });
@@ -1010,7 +1010,7 @@ export interface DataCollectionOptionsDbSystem {
   isDiagnosticsEventsEnabled?: boolean;
 }
 
-export const DataCollectionOptionsDbSystem: Schema.Schema<DataCollectionOptionsDbSystem> =
+export const DataCollectionOptionsDbSystem: Schema.Codec<DataCollectionOptionsDbSystem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isIncidentLogsEnabled: Schema.optional(Schema.Boolean),
     isDiagnosticsEventsEnabled: Schema.optional(Schema.Boolean),
@@ -1082,7 +1082,7 @@ export interface DbSystemProperties {
   computeModel?: "COMPUTE_MODEL_UNSPECIFIED" | "ECPU" | "OCPU" | (string & {});
 }
 
-export const DbSystemProperties: Schema.Schema<DbSystemProperties> =
+export const DbSystemProperties: Schema.Codec<DbSystemProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostname: Schema.optional(Schema.String),
     shape: Schema.optional(Schema.String),
@@ -1127,7 +1127,7 @@ export interface GoldengateConnectionAssignmentProperties {
     | (string & {});
 }
 
-export const GoldengateConnectionAssignmentProperties: Schema.Schema<GoldengateConnectionAssignmentProperties> =
+export const GoldengateConnectionAssignmentProperties: Schema.Codec<GoldengateConnectionAssignmentProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goldengateConnection: Schema.optional(Schema.String),
     goldengateDeployment: Schema.optional(Schema.String),
@@ -1151,7 +1151,7 @@ export interface GoldengateConnectionAssignment {
   entitlementId?: string;
 }
 
-export const GoldengateConnectionAssignment: Schema.Schema<GoldengateConnectionAssignment> =
+export const GoldengateConnectionAssignment: Schema.Codec<GoldengateConnectionAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1177,7 +1177,7 @@ export interface GoldengateMaintenanceWindow {
     | (string & {});
 }
 
-export const GoldengateMaintenanceWindow: Schema.Schema<GoldengateMaintenanceWindow> =
+export const GoldengateMaintenanceWindow: Schema.Codec<GoldengateMaintenanceWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startHour: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.String),
@@ -1196,7 +1196,7 @@ export interface GoldengateMaintenanceConfig {
   interimReleaseUpgradePeriodDays?: number;
 }
 
-export const GoldengateMaintenanceConfig: Schema.Schema<GoldengateMaintenanceConfig> =
+export const GoldengateMaintenanceConfig: Schema.Codec<GoldengateMaintenanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bundleReleaseUpgradePeriodDays: Schema.optional(Schema.Number),
     majorReleaseUpgradePeriodDays: Schema.optional(Schema.Number),
@@ -1225,7 +1225,7 @@ export interface DeploymentDiagnosticData {
   object?: string;
 }
 
-export const DeploymentDiagnosticData: Schema.Schema<DeploymentDiagnosticData> =
+export const DeploymentDiagnosticData: Schema.Codec<DeploymentDiagnosticData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diagnosticState: Schema.optional(Schema.String),
     namespace: Schema.optional(Schema.String),
@@ -1246,7 +1246,7 @@ export interface GoldengateGroupToRolesMapping {
   userGroupId?: string;
 }
 
-export const GoldengateGroupToRolesMapping: Schema.Schema<GoldengateGroupToRolesMapping> =
+export const GoldengateGroupToRolesMapping: Schema.Codec<GoldengateGroupToRolesMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorGroupId: Schema.optional(Schema.String),
     securityGroupId: Schema.optional(Schema.String),
@@ -1281,7 +1281,7 @@ export interface GoldengateOggDeployment {
   groupRolesMapping?: GoldengateGroupToRolesMapping;
 }
 
-export const GoldengateOggDeployment: Schema.Schema<GoldengateOggDeployment> =
+export const GoldengateOggDeployment: Schema.Codec<GoldengateOggDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentialStore: Schema.optional(Schema.String),
     certificate: Schema.optional(Schema.String),
@@ -1302,7 +1302,7 @@ export interface GoldengatePlacement {
   faultDomain?: string;
 }
 
-export const GoldengatePlacement: Schema.Schema<GoldengatePlacement> =
+export const GoldengatePlacement: Schema.Codec<GoldengatePlacement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilityDomain: Schema.optional(Schema.String),
     faultDomain: Schema.optional(Schema.String),
@@ -1313,7 +1313,7 @@ export interface IngressIp {
   ingressIpAddress?: string;
 }
 
-export const IngressIp: Schema.Schema<IngressIp> =
+export const IngressIp: Schema.Codec<IngressIp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingressIpAddress: Schema.optional(Schema.String),
   }).annotate({ identifier: "IngressIp" });
@@ -1338,7 +1338,7 @@ export interface GoldengateBackupSchedule {
   namespace?: string;
 }
 
-export const GoldengateBackupSchedule: Schema.Schema<GoldengateBackupSchedule> =
+export const GoldengateBackupSchedule: Schema.Codec<GoldengateBackupSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadataOnly: Schema.optional(Schema.Boolean),
     frequencyBackupScheduled: Schema.optional(Schema.String),
@@ -1475,7 +1475,7 @@ export interface GoldengateDeploymentProperties {
   deploymentBackupId?: string;
 }
 
-export const GoldengateDeploymentProperties: Schema.Schema<GoldengateDeploymentProperties> =
+export const GoldengateDeploymentProperties: Schema.Codec<GoldengateDeploymentProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maintenanceWindow: Schema.optional(GoldengateMaintenanceWindow),
     upgradeRequiredTime: Schema.optional(Schema.String),
@@ -1528,7 +1528,7 @@ export interface ListDatabasesResponse {
   nextPageToken?: string;
 }
 
-export const ListDatabasesResponse: Schema.Schema<ListDatabasesResponse> =
+export const ListDatabasesResponse: Schema.Codec<ListDatabasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databases: Schema.optional(Schema.Array(Database)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1547,7 +1547,7 @@ export interface GoldengateMicrosoftFabricConnectionProperties {
   endpoint?: string;
 }
 
-export const GoldengateMicrosoftFabricConnectionProperties: Schema.Schema<GoldengateMicrosoftFabricConnectionProperties> =
+export const GoldengateMicrosoftFabricConnectionProperties: Schema.Codec<GoldengateMicrosoftFabricConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -1563,7 +1563,7 @@ export interface StorageSizeDetails {
   recoStorageSizeInGbs?: number;
 }
 
-export const StorageSizeDetails: Schema.Schema<StorageSizeDetails> =
+export const StorageSizeDetails: Schema.Codec<StorageSizeDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStorageSizeInGbs: Schema.optional(Schema.Number),
     recoStorageSizeInGbs: Schema.optional(Schema.Number),
@@ -1576,7 +1576,7 @@ export interface GoldengateHdfsConnectionProperties {
   coreSiteXml?: string;
 }
 
-export const GoldengateHdfsConnectionProperties: Schema.Schema<GoldengateHdfsConnectionProperties> =
+export const GoldengateHdfsConnectionProperties: Schema.Codec<GoldengateHdfsConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     coreSiteXml: Schema.optional(Schema.String),
@@ -1589,7 +1589,7 @@ export interface ExascaleConfig {
   totalStorageSizeGb?: number;
 }
 
-export const ExascaleConfig: Schema.Schema<ExascaleConfig> =
+export const ExascaleConfig: Schema.Codec<ExascaleConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableStorageSizeGb: Schema.optional(Schema.Number),
     totalStorageSizeGb: Schema.optional(Schema.Number),
@@ -1604,7 +1604,7 @@ export interface GoogleCloudStorageIcebergStorage {
   serviceAccountKeyFile?: string;
 }
 
-export const GoogleCloudStorageIcebergStorage: Schema.Schema<GoogleCloudStorageIcebergStorage> =
+export const GoogleCloudStorageIcebergStorage: Schema.Codec<GoogleCloudStorageIcebergStorage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -1647,7 +1647,7 @@ export interface GoldengateKafkaSchemaRegistryConnectionProperties {
   trustStorePasswordSecretVersion?: string;
 }
 
-export const GoldengateKafkaSchemaRegistryConnectionProperties: Schema.Schema<GoldengateKafkaSchemaRegistryConnectionProperties> =
+export const GoldengateKafkaSchemaRegistryConnectionProperties: Schema.Codec<GoldengateKafkaSchemaRegistryConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authenticationType: Schema.optional(Schema.String),
     keyStoreFile: Schema.optional(Schema.String),
@@ -1680,7 +1680,7 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1696,7 +1696,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -1711,7 +1711,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1733,7 +1733,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Status),
@@ -1751,7 +1751,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -1765,7 +1765,7 @@ export interface GoldengateGoogleBigQueryConnectionProperties {
   serviceAccountKeyFile?: string;
 }
 
-export const GoldengateGoogleBigQueryConnectionProperties: Schema.Schema<GoldengateGoogleBigQueryConnectionProperties> =
+export const GoldengateGoogleBigQueryConnectionProperties: Schema.Codec<GoldengateGoogleBigQueryConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     serviceAccountKeyFile: Schema.optional(Schema.String),
@@ -1790,7 +1790,7 @@ export interface AutonomousDatabaseConnectionUrls {
   databaseTransformsUri?: string;
 }
 
-export const AutonomousDatabaseConnectionUrls: Schema.Schema<AutonomousDatabaseConnectionUrls> =
+export const AutonomousDatabaseConnectionUrls: Schema.Codec<AutonomousDatabaseConnectionUrls> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineLearningNotebookUri: Schema.optional(Schema.String),
     machineLearningUserManagementUri: Schema.optional(Schema.String),
@@ -1807,7 +1807,7 @@ export interface CustomerContact {
   email?: string;
 }
 
-export const CustomerContact: Schema.Schema<CustomerContact> =
+export const CustomerContact: Schema.Codec<CustomerContact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerContact" });
@@ -1819,7 +1819,7 @@ export interface NameValuePair {
   value?: string;
 }
 
-export const NameValuePair: Schema.Schema<NameValuePair> =
+export const NameValuePair: Schema.Codec<NameValuePair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1856,7 +1856,7 @@ export interface GoldengateDb2ConnectionProperties {
   sslClientKeystoredbFile?: string;
 }
 
-export const GoldengateDb2ConnectionProperties: Schema.Schema<GoldengateDb2ConnectionProperties> =
+export const GoldengateDb2ConnectionProperties: Schema.Codec<GoldengateDb2ConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalAttributes: Schema.optional(Schema.Array(NameValuePair)),
     host: Schema.optional(Schema.String),
@@ -1883,7 +1883,7 @@ export interface EncryptionKey {
     | (string & {});
 }
 
-export const EncryptionKey: Schema.Schema<EncryptionKey> =
+export const EncryptionKey: Schema.Codec<EncryptionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
     provider: Schema.optional(Schema.String),
@@ -1896,7 +1896,7 @@ export interface EncryptionKeyHistoryEntry {
   activationTime?: string;
 }
 
-export const EncryptionKeyHistoryEntry: Schema.Schema<EncryptionKeyHistoryEntry> =
+export const EncryptionKeyHistoryEntry: Schema.Codec<EncryptionKeyHistoryEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptionKey: Schema.optional(EncryptionKey),
     activationTime: Schema.optional(Schema.String),
@@ -1909,7 +1909,7 @@ export interface AutonomousDatabaseApex {
   apexVersion?: string;
 }
 
-export const AutonomousDatabaseApex: Schema.Schema<AutonomousDatabaseApex> =
+export const AutonomousDatabaseApex: Schema.Codec<AutonomousDatabaseApex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ordsVersion: Schema.optional(Schema.String),
     apexVersion: Schema.optional(Schema.String),
@@ -1924,7 +1924,7 @@ export interface AllConnectionStrings {
   medium?: string;
 }
 
-export const AllConnectionStrings: Schema.Schema<AllConnectionStrings> =
+export const AllConnectionStrings: Schema.Codec<AllConnectionStrings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     low: Schema.optional(Schema.String),
     high: Schema.optional(Schema.String),
@@ -1972,7 +1972,7 @@ export interface DatabaseConnectionStringProfile {
     | (string & {});
 }
 
-export const DatabaseConnectionStringProfile: Schema.Schema<DatabaseConnectionStringProfile> =
+export const DatabaseConnectionStringProfile: Schema.Codec<DatabaseConnectionStringProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostFormat: Schema.optional(Schema.String),
     syntaxFormat: Schema.optional(Schema.String),
@@ -2000,7 +2000,7 @@ export interface AutonomousDatabaseConnectionStrings {
   profiles?: ReadonlyArray<DatabaseConnectionStringProfile>;
 }
 
-export const AutonomousDatabaseConnectionStrings: Schema.Schema<AutonomousDatabaseConnectionStrings> =
+export const AutonomousDatabaseConnectionStrings: Schema.Codec<AutonomousDatabaseConnectionStrings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     low: Schema.optional(Schema.String),
     allConnectionStrings: Schema.optional(AllConnectionStrings),
@@ -2021,7 +2021,7 @@ export interface TimeOfDay {
   seconds?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
@@ -2047,7 +2047,7 @@ export interface ScheduledOperationDetails {
   startTime?: TimeOfDay;
 }
 
-export const ScheduledOperationDetails: Schema.Schema<ScheduledOperationDetails> =
+export const ScheduledOperationDetails: Schema.Codec<ScheduledOperationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stopTime: Schema.optional(TimeOfDay),
     dayOfWeek: Schema.optional(Schema.String),
@@ -2090,7 +2090,7 @@ export interface AutonomousDatabaseStandbySummary {
   disasterRecoveryRoleChangedTime?: string;
 }
 
-export const AutonomousDatabaseStandbySummary: Schema.Schema<AutonomousDatabaseStandbySummary> =
+export const AutonomousDatabaseStandbySummary: Schema.Codec<AutonomousDatabaseStandbySummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lifecycleDetails: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2324,7 +2324,7 @@ export interface AutonomousDatabaseProperties {
   isStorageAutoScalingEnabled?: boolean;
 }
 
-export const AutonomousDatabaseProperties: Schema.Schema<AutonomousDatabaseProperties> =
+export const AutonomousDatabaseProperties: Schema.Codec<AutonomousDatabaseProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptionKeyHistoryEntries: Schema.optional(
       Schema.Array(EncryptionKeyHistoryEntry),
@@ -2428,7 +2428,7 @@ export interface GoldengateOracleConnectionProperties {
     | (string & {});
 }
 
-export const GoldengateOracleConnectionProperties: Schema.Schema<GoldengateOracleConnectionProperties> =
+export const GoldengateOracleConnectionProperties: Schema.Codec<GoldengateOracleConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password: Schema.optional(Schema.String),
     connectionString: Schema.optional(Schema.String),
@@ -2464,7 +2464,7 @@ export interface GoldengateDeployment {
   createTime?: string;
 }
 
-export const GoldengateDeployment: Schema.Schema<GoldengateDeployment> =
+export const GoldengateDeployment: Schema.Codec<GoldengateDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcpOracleZone: Schema.optional(Schema.String),
     entitlementId: Schema.optional(Schema.String),
@@ -2487,7 +2487,7 @@ export interface ListGoldengateDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListGoldengateDeploymentsResponse: Schema.Schema<ListGoldengateDeploymentsResponse> =
+export const ListGoldengateDeploymentsResponse: Schema.Codec<ListGoldengateDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goldengateDeployments: Schema.optional(Schema.Array(GoldengateDeployment)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2499,7 +2499,7 @@ export interface SwitchoverAutonomousDatabaseRequest {
   peerAutonomousDatabase?: string;
 }
 
-export const SwitchoverAutonomousDatabaseRequest: Schema.Schema<SwitchoverAutonomousDatabaseRequest> =
+export const SwitchoverAutonomousDatabaseRequest: Schema.Codec<SwitchoverAutonomousDatabaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     peerAutonomousDatabase: Schema.optional(Schema.String),
   }).annotate({ identifier: "SwitchoverAutonomousDatabaseRequest" });
@@ -2519,7 +2519,7 @@ export interface PluggableDatabaseNodeLevelDetails {
   pluggableDatabaseId?: string;
 }
 
-export const PluggableDatabaseNodeLevelDetails: Schema.Schema<PluggableDatabaseNodeLevelDetails> =
+export const PluggableDatabaseNodeLevelDetails: Schema.Codec<PluggableDatabaseNodeLevelDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     openMode: Schema.optional(Schema.String),
     nodeName: Schema.optional(Schema.String),
@@ -2535,7 +2535,7 @@ export interface PluggableDatabaseConnectionStrings {
   pdbDefault?: string;
 }
 
-export const PluggableDatabaseConnectionStrings: Schema.Schema<PluggableDatabaseConnectionStrings> =
+export const PluggableDatabaseConnectionStrings: Schema.Codec<PluggableDatabaseConnectionStrings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allConnectionStrings: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -2549,7 +2549,7 @@ export interface DefinedTagValue {
   tags?: Record<string, string>;
 }
 
-export const DefinedTagValue: Schema.Schema<DefinedTagValue> =
+export const DefinedTagValue: Schema.Codec<DefinedTagValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "DefinedTagValue" });
@@ -2606,7 +2606,7 @@ export interface PluggableDatabaseProperties {
   lifecycleDetails?: string;
 }
 
-export const PluggableDatabaseProperties: Schema.Schema<PluggableDatabaseProperties> =
+export const PluggableDatabaseProperties: Schema.Codec<PluggableDatabaseProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseManagementConfig: Schema.optional(DatabaseManagementConfig),
     pdbNodeLevelDetails: Schema.optional(
@@ -2638,7 +2638,7 @@ export interface IdentityConnector {
   serviceAgentEmail?: string;
 }
 
-export const IdentityConnector: Schema.Schema<IdentityConnector> =
+export const IdentityConnector: Schema.Codec<IdentityConnector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionState: Schema.optional(Schema.String),
     serviceAgentEmail: Schema.optional(Schema.String),
@@ -2653,7 +2653,7 @@ export interface DataCollectionOptions {
   healthMonitoringEnabled?: boolean;
 }
 
-export const DataCollectionOptions: Schema.Schema<DataCollectionOptions> =
+export const DataCollectionOptions: Schema.Codec<DataCollectionOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     incidentLogsEnabled: Schema.optional(Schema.Boolean),
     diagnosticsEventsEnabled: Schema.optional(Schema.Boolean),
@@ -2756,7 +2756,7 @@ export interface CloudVmClusterProperties {
   dbNodeStorageSizeGb?: number;
 }
 
-export const CloudVmClusterProperties: Schema.Schema<CloudVmClusterProperties> =
+export const CloudVmClusterProperties: Schema.Codec<CloudVmClusterProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeCount: Schema.optional(Schema.Number),
     giVersion: Schema.optional(Schema.String),
@@ -2827,7 +2827,7 @@ export interface CloudVmCluster {
   odbSubnet?: string;
 }
 
-export const CloudVmCluster: Schema.Schema<CloudVmCluster> =
+export const CloudVmCluster: Schema.Codec<CloudVmCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2878,7 +2878,7 @@ export interface DbNodeProperties {
   totalCpuCoreCount?: number;
 }
 
-export const DbNodeProperties: Schema.Schema<DbNodeProperties> =
+export const DbNodeProperties: Schema.Codec<DbNodeProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memorySizeGb: Schema.optional(Schema.Number),
     ocid: Schema.optional(Schema.String),
@@ -2904,7 +2904,7 @@ export interface DatabaseCharacterSet {
   name?: string;
 }
 
-export const DatabaseCharacterSet: Schema.Schema<DatabaseCharacterSet> =
+export const DatabaseCharacterSet: Schema.Codec<DatabaseCharacterSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     characterSetType: Schema.optional(Schema.String),
     characterSet: Schema.optional(Schema.String),
@@ -2932,7 +2932,7 @@ export interface GoldengateOracleAIDataPlatformConnectionProperties {
   privateKeyFile?: string;
 }
 
-export const GoldengateOracleAIDataPlatformConnectionProperties: Schema.Schema<GoldengateOracleAIDataPlatformConnectionProperties> =
+export const GoldengateOracleAIDataPlatformConnectionProperties: Schema.Codec<GoldengateOracleAIDataPlatformConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     technologyType: Schema.optional(Schema.String),
@@ -2954,7 +2954,7 @@ export interface GiVersion {
   version?: string;
 }
 
-export const GiVersion: Schema.Schema<GiVersion> =
+export const GiVersion: Schema.Codec<GiVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -2977,7 +2977,7 @@ export interface AutonomousDbVersion {
   workloadUri?: string;
 }
 
-export const AutonomousDbVersion: Schema.Schema<AutonomousDbVersion> =
+export const AutonomousDbVersion: Schema.Codec<AutonomousDbVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dbWorkload: Schema.optional(Schema.String),
@@ -2992,7 +2992,7 @@ export interface ListAutonomousDbVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAutonomousDbVersionsResponse: Schema.Schema<ListAutonomousDbVersionsResponse> =
+export const ListAutonomousDbVersionsResponse: Schema.Codec<ListAutonomousDbVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autonomousDbVersions: Schema.optional(Schema.Array(AutonomousDbVersion)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3005,7 +3005,7 @@ export interface DbNode {
   properties?: DbNodeProperties;
 }
 
-export const DbNode: Schema.Schema<DbNode> =
+export const DbNode: Schema.Codec<DbNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     properties: Schema.optional(DbNodeProperties),
@@ -3018,7 +3018,7 @@ export interface ListDbNodesResponse {
   dbNodes?: ReadonlyArray<DbNode>;
 }
 
-export const ListDbNodesResponse: Schema.Schema<ListDbNodesResponse> =
+export const ListDbNodesResponse: Schema.Codec<ListDbNodesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dbNodes: Schema.optional(Schema.Array(DbNode)),
@@ -3031,7 +3031,7 @@ export interface GoldengateGenericConnectionProperties {
   host?: string;
 }
 
-export const GoldengateGenericConnectionProperties: Schema.Schema<GoldengateGenericConnectionProperties> =
+export const GoldengateGenericConnectionProperties: Schema.Codec<GoldengateGenericConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     host: Schema.optional(Schema.String),
@@ -3050,7 +3050,7 @@ export interface GoldengateAzureSynapseAnalyticsConnectionProperties {
   technologyType?: string;
 }
 
-export const GoldengateAzureSynapseAnalyticsConnectionProperties: Schema.Schema<GoldengateAzureSynapseAnalyticsConnectionProperties> =
+export const GoldengateAzureSynapseAnalyticsConnectionProperties: Schema.Codec<GoldengateAzureSynapseAnalyticsConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password: Schema.optional(Schema.String),
     connectionString: Schema.optional(Schema.String),
@@ -3070,7 +3070,7 @@ export interface KafkaBootstrapServer {
   privateIpAddress?: string;
 }
 
-export const KafkaBootstrapServer: Schema.Schema<KafkaBootstrapServer> =
+export const KafkaBootstrapServer: Schema.Codec<KafkaBootstrapServer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -3124,7 +3124,7 @@ export interface GoldengateKafkaConnectionProperties {
   trustStorePassword?: string;
 }
 
-export const GoldengateKafkaConnectionProperties: Schema.Schema<GoldengateKafkaConnectionProperties> =
+export const GoldengateKafkaConnectionProperties: Schema.Codec<GoldengateKafkaConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passwordSecretVersion: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -3174,7 +3174,7 @@ export interface GoldengateElasticsearchConnectionProperties {
     | (string & {});
 }
 
-export const GoldengateElasticsearchConnectionProperties: Schema.Schema<GoldengateElasticsearchConnectionProperties> =
+export const GoldengateElasticsearchConnectionProperties: Schema.Codec<GoldengateElasticsearchConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servers: Schema.optional(Schema.String),
     technologyType: Schema.optional(Schema.String),
@@ -3193,7 +3193,7 @@ export interface RestIcebergCatalog {
   properties?: string;
 }
 
-export const RestIcebergCatalog: Schema.Schema<RestIcebergCatalog> =
+export const RestIcebergCatalog: Schema.Codec<RestIcebergCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.String),
@@ -3204,7 +3204,7 @@ export interface GlueIcebergCatalog {
   glueId?: string;
 }
 
-export const GlueIcebergCatalog: Schema.Schema<GlueIcebergCatalog> =
+export const GlueIcebergCatalog: Schema.Codec<GlueIcebergCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     glueId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GlueIcebergCatalog" });
@@ -3216,7 +3216,7 @@ export interface NessieIcebergCatalog {
   branch?: string;
 }
 
-export const NessieIcebergCatalog: Schema.Schema<NessieIcebergCatalog> =
+export const NessieIcebergCatalog: Schema.Codec<NessieIcebergCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     branch: Schema.optional(Schema.String),
@@ -3235,7 +3235,7 @@ export interface PolarisIcebergCatalog {
   clientId?: string;
 }
 
-export const PolarisIcebergCatalog: Schema.Schema<PolarisIcebergCatalog> =
+export const PolarisIcebergCatalog: Schema.Codec<PolarisIcebergCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     polarisCatalog: Schema.optional(Schema.String),
     clientSecret: Schema.optional(Schema.String),
@@ -3264,7 +3264,7 @@ export interface IcebergCatalog {
   polarisIcebergCatalog?: PolarisIcebergCatalog;
 }
 
-export const IcebergCatalog: Schema.Schema<IcebergCatalog> =
+export const IcebergCatalog: Schema.Codec<IcebergCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restIcebergCatalog: Schema.optional(RestIcebergCatalog),
     catalogType: Schema.optional(Schema.String),
@@ -3284,7 +3284,7 @@ export interface AzureDataLakeStorageIcebergStorage {
   endpoint?: string;
 }
 
-export const AzureDataLakeStorageIcebergStorage: Schema.Schema<AzureDataLakeStorageIcebergStorage> =
+export const AzureDataLakeStorageIcebergStorage: Schema.Codec<AzureDataLakeStorageIcebergStorage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     azureAccount: Schema.optional(Schema.String),
     container: Schema.optional(Schema.String),
@@ -3307,7 +3307,7 @@ export interface AmazonS3IcebergStorage {
   accessKeyId?: string;
 }
 
-export const AmazonS3IcebergStorage: Schema.Schema<AmazonS3IcebergStorage> =
+export const AmazonS3IcebergStorage: Schema.Codec<AmazonS3IcebergStorage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemeType: Schema.optional(Schema.String),
     secretAccessKeySecret: Schema.optional(Schema.String),
@@ -3333,7 +3333,7 @@ export interface IcebergStorage {
   amazonS3IcebergStorage?: AmazonS3IcebergStorage;
 }
 
-export const IcebergStorage: Schema.Schema<IcebergStorage> =
+export const IcebergStorage: Schema.Codec<IcebergStorage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleCloudStorageIcebergStorage: Schema.optional(
       GoogleCloudStorageIcebergStorage,
@@ -3354,7 +3354,7 @@ export interface GoldengateIcebergConnectionProperties {
   storage?: IcebergStorage;
 }
 
-export const GoldengateIcebergConnectionProperties: Schema.Schema<GoldengateIcebergConnectionProperties> =
+export const GoldengateIcebergConnectionProperties: Schema.Codec<GoldengateIcebergConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     catalog: Schema.optional(IcebergCatalog),
@@ -3380,7 +3380,7 @@ export interface GoldengateOracleNosqlConnectionProperties {
   privateKeyPassphraseSecret?: string;
 }
 
-export const GoldengateOracleNosqlConnectionProperties: Schema.Schema<GoldengateOracleNosqlConnectionProperties> =
+export const GoldengateOracleNosqlConnectionProperties: Schema.Codec<GoldengateOracleNosqlConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -3409,7 +3409,7 @@ export interface GoldengateGoldengateConnectionProperties {
   host?: string;
 }
 
-export const GoldengateGoldengateConnectionProperties: Schema.Schema<GoldengateGoldengateConnectionProperties> =
+export const GoldengateGoldengateConnectionProperties: Schema.Codec<GoldengateGoldengateConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passwordSecretVersion: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
@@ -3433,7 +3433,7 @@ export interface GoldengateAmazonRedshiftConnectionProperties {
   technologyType?: string;
 }
 
-export const GoldengateAmazonRedshiftConnectionProperties: Schema.Schema<GoldengateAmazonRedshiftConnectionProperties> =
+export const GoldengateAmazonRedshiftConnectionProperties: Schema.Codec<GoldengateAmazonRedshiftConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passwordSecretVersion: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
@@ -3449,7 +3449,7 @@ export interface GoldengateGooglePubsubConnectionProperties {
   serviceAccountKeyFile?: string;
 }
 
-export const GoldengateGooglePubsubConnectionProperties: Schema.Schema<GoldengateGooglePubsubConnectionProperties> =
+export const GoldengateGooglePubsubConnectionProperties: Schema.Codec<GoldengateGooglePubsubConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     serviceAccountKeyFile: Schema.optional(Schema.String),
@@ -3484,7 +3484,7 @@ export interface GoldengateMicrosoftSqlserverConnectionProperties {
   sslCaFile?: string;
 }
 
-export const GoldengateMicrosoftSqlserverConnectionProperties: Schema.Schema<GoldengateMicrosoftSqlserverConnectionProperties> =
+export const GoldengateMicrosoftSqlserverConnectionProperties: Schema.Codec<GoldengateMicrosoftSqlserverConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologyType: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -3557,7 +3557,7 @@ export interface GoldengateJavaMessageServiceConnectionProperties {
   jndiProviderUrl?: string;
 }
 
-export const GoldengateJavaMessageServiceConnectionProperties: Schema.Schema<GoldengateJavaMessageServiceConnectionProperties> =
+export const GoldengateJavaMessageServiceConnectionProperties: Schema.Codec<GoldengateJavaMessageServiceConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyStorePassword: Schema.optional(Schema.String),
     useJndi: Schema.optional(Schema.Boolean),
@@ -3625,7 +3625,7 @@ export interface GoldengateRedisConnectionProperties {
   trustStorePassword?: string;
 }
 
-export const GoldengateRedisConnectionProperties: Schema.Schema<GoldengateRedisConnectionProperties> =
+export const GoldengateRedisConnectionProperties: Schema.Codec<GoldengateRedisConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     password: Schema.optional(Schema.String),
     redisClusterId: Schema.optional(Schema.String),
@@ -3656,7 +3656,7 @@ export interface GoldengateAmazonS3ConnectionProperties {
   secretAccessKeySecret?: string;
 }
 
-export const GoldengateAmazonS3ConnectionProperties: Schema.Schema<GoldengateAmazonS3ConnectionProperties> =
+export const GoldengateAmazonS3ConnectionProperties: Schema.Codec<GoldengateAmazonS3ConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     endpoint: Schema.optional(Schema.String),
@@ -3710,7 +3710,7 @@ export interface GoldengateMysqlConnectionProperties {
   database?: string;
 }
 
-export const GoldengateMysqlConnectionProperties: Schema.Schema<GoldengateMysqlConnectionProperties> =
+export const GoldengateMysqlConnectionProperties: Schema.Codec<GoldengateMysqlConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     additionalAttributes: Schema.optional(Schema.Array(NameValuePair)),
@@ -3773,7 +3773,7 @@ export interface GoldengatePostgresqlConnectionProperties {
   username?: string;
 }
 
-export const GoldengatePostgresqlConnectionProperties: Schema.Schema<GoldengatePostgresqlConnectionProperties> =
+export const GoldengatePostgresqlConnectionProperties: Schema.Codec<GoldengatePostgresqlConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     additionalAttributes: Schema.optional(Schema.Array(NameValuePair)),
@@ -3805,7 +3805,7 @@ export interface GoldengateAmazonKinesisConnectionProperties {
   technologyType?: string;
 }
 
-export const GoldengateAmazonKinesisConnectionProperties: Schema.Schema<GoldengateAmazonKinesisConnectionProperties> =
+export const GoldengateAmazonKinesisConnectionProperties: Schema.Codec<GoldengateAmazonKinesisConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessKeyId: Schema.optional(Schema.String),
     endpoint: Schema.optional(Schema.String),
@@ -3936,7 +3936,7 @@ export interface GoldengateConnectionProperties {
   amazonKinesisConnectionProperties?: GoldengateAmazonKinesisConnectionProperties;
 }
 
-export const GoldengateConnectionProperties: Schema.Schema<GoldengateConnectionProperties> =
+export const GoldengateConnectionProperties: Schema.Codec<GoldengateConnectionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     genericConnectionProperties: Schema.optional(
       GoldengateGenericConnectionProperties,
@@ -4055,7 +4055,7 @@ export interface GoldengateConnection {
   createTime?: string;
 }
 
-export const GoldengateConnection: Schema.Schema<GoldengateConnection> =
+export const GoldengateConnection: Schema.Codec<GoldengateConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcpOracleZone: Schema.optional(Schema.String),
     entitlementId: Schema.optional(Schema.String),
@@ -4077,7 +4077,7 @@ export interface ListGoldengateConnectionsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListGoldengateConnectionsResponse: Schema.Schema<ListGoldengateConnectionsResponse> =
+export const ListGoldengateConnectionsResponse: Schema.Codec<ListGoldengateConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goldengateConnections: Schema.optional(Schema.Array(GoldengateConnection)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4091,7 +4091,7 @@ export interface RemoveVirtualMachineExadbVmClusterRequest {
   requestId?: string;
 }
 
-export const RemoveVirtualMachineExadbVmClusterRequest: Schema.Schema<RemoveVirtualMachineExadbVmClusterRequest> =
+export const RemoveVirtualMachineExadbVmClusterRequest: Schema.Codec<RemoveVirtualMachineExadbVmClusterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostnames: Schema.optional(Schema.Array(Schema.String)),
     requestId: Schema.optional(Schema.String),
@@ -4104,7 +4104,7 @@ export interface ListGiVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListGiVersionsResponse: Schema.Schema<ListGiVersionsResponse> =
+export const ListGiVersionsResponse: Schema.Codec<ListGiVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     giVersions: Schema.optional(Schema.Array(GiVersion)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4112,7 +4112,7 @@ export const ListGiVersionsResponse: Schema.Schema<ListGiVersionsResponse> =
 
 export interface StartGoldengateDeploymentRequest {}
 
-export const StartGoldengateDeploymentRequest: Schema.Schema<StartGoldengateDeploymentRequest> =
+export const StartGoldengateDeploymentRequest: Schema.Codec<StartGoldengateDeploymentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StartGoldengateDeploymentRequest",
   });
@@ -4142,7 +4142,7 @@ export interface OdbSubnet {
     | (string & {});
 }
 
-export const OdbSubnet: Schema.Schema<OdbSubnet> =
+export const OdbSubnet: Schema.Codec<OdbSubnet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
@@ -4159,7 +4159,7 @@ export interface ListDatabaseCharacterSetsResponse {
   nextPageToken?: string;
 }
 
-export const ListDatabaseCharacterSetsResponse: Schema.Schema<ListDatabaseCharacterSetsResponse> =
+export const ListDatabaseCharacterSetsResponse: Schema.Codec<ListDatabaseCharacterSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseCharacterSets: Schema.optional(Schema.Array(DatabaseCharacterSet)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4176,7 +4176,7 @@ export interface CloudAccountDetails {
   linkExistingAccountUri?: string;
 }
 
-export const CloudAccountDetails: Schema.Schema<CloudAccountDetails> =
+export const CloudAccountDetails: Schema.Codec<CloudAccountDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudAccountHomeRegion: Schema.optional(Schema.String),
     accountCreationUri: Schema.optional(Schema.String),
@@ -4211,7 +4211,7 @@ export interface DbSystemShape {
   minCoreCountPerNode?: number;
 }
 
-export const DbSystemShape: Schema.Schema<DbSystemShape> =
+export const DbSystemShape: Schema.Codec<DbSystemShape> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxNodeCount: Schema.optional(Schema.Number),
     minStorageCount: Schema.optional(Schema.Number),
@@ -4283,7 +4283,7 @@ export interface AutonomousDatabaseBackupProperties {
   endTime?: string;
 }
 
-export const AutonomousDatabaseBackupProperties: Schema.Schema<AutonomousDatabaseBackupProperties> =
+export const AutonomousDatabaseBackupProperties: Schema.Codec<AutonomousDatabaseBackupProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyStoreWallet: Schema.optional(Schema.String),
     databaseSizeTb: Schema.optional(Schema.Number),
@@ -4320,7 +4320,7 @@ export interface AutonomousDatabaseBackup {
   labels?: Record<string, string>;
 }
 
-export const AutonomousDatabaseBackup: Schema.Schema<AutonomousDatabaseBackup> =
+export const AutonomousDatabaseBackup: Schema.Codec<AutonomousDatabaseBackup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autonomousDatabase: Schema.optional(Schema.String),
     properties: Schema.optional(AutonomousDatabaseBackupProperties),
@@ -4336,7 +4336,7 @@ export interface ListAutonomousDatabaseBackupsResponse {
   nextPageToken?: string;
 }
 
-export const ListAutonomousDatabaseBackupsResponse: Schema.Schema<ListAutonomousDatabaseBackupsResponse> =
+export const ListAutonomousDatabaseBackupsResponse: Schema.Codec<ListAutonomousDatabaseBackupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autonomousDatabaseBackups: Schema.optional(
       Schema.Array(AutonomousDatabaseBackup),
@@ -4359,7 +4359,7 @@ export interface DbSystemInitialStorageSizeProperties {
   shapeType?: "SHAPE_TYPE_UNSPECIFIED" | "STANDARD_X86" | (string & {});
 }
 
-export const DbSystemInitialStorageSizeProperties: Schema.Schema<DbSystemInitialStorageSizeProperties> =
+export const DbSystemInitialStorageSizeProperties: Schema.Codec<DbSystemInitialStorageSizeProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageSizeDetails: Schema.optional(Schema.Array(StorageSizeDetails)),
     launchFromBackupStorageSizeDetails: Schema.optional(
@@ -4376,7 +4376,7 @@ export interface DbSystemInitialStorageSize {
   properties?: DbSystemInitialStorageSizeProperties;
 }
 
-export const DbSystemInitialStorageSize: Schema.Schema<DbSystemInitialStorageSize> =
+export const DbSystemInitialStorageSize: Schema.Codec<DbSystemInitialStorageSize> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     properties: Schema.optional(DbSystemInitialStorageSizeProperties),
@@ -4389,7 +4389,7 @@ export interface ListDbSystemInitialStorageSizesResponse {
   nextPageToken?: string;
 }
 
-export const ListDbSystemInitialStorageSizesResponse: Schema.Schema<ListDbSystemInitialStorageSizesResponse> =
+export const ListDbSystemInitialStorageSizesResponse: Schema.Codec<ListDbSystemInitialStorageSizesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dbSystemInitialStorageSizes: Schema.optional(
       Schema.Array(DbSystemInitialStorageSize),
@@ -4404,7 +4404,7 @@ export interface ExascaleDbStorageDetails {
   totalSizeGbs?: number;
 }
 
-export const ExascaleDbStorageDetails: Schema.Schema<ExascaleDbStorageDetails> =
+export const ExascaleDbStorageDetails: Schema.Codec<ExascaleDbStorageDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableSizeGbs: Schema.optional(Schema.Number),
     totalSizeGbs: Schema.optional(Schema.Number),
@@ -4453,7 +4453,7 @@ export interface ExascaleDbStorageVaultProperties {
   description?: string;
 }
 
-export const ExascaleDbStorageVaultProperties: Schema.Schema<ExascaleDbStorageVaultProperties> =
+export const ExascaleDbStorageVaultProperties: Schema.Codec<ExascaleDbStorageVaultProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmClusterCount: Schema.optional(Schema.Number),
     state: Schema.optional(Schema.String),
@@ -4487,7 +4487,7 @@ export interface ExascaleDbStorageVault {
   entitlementId?: string;
 }
 
-export const ExascaleDbStorageVault: Schema.Schema<ExascaleDbStorageVault> =
+export const ExascaleDbStorageVault: Schema.Codec<ExascaleDbStorageVault> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
@@ -4506,7 +4506,7 @@ export interface SourceConfig {
   automaticBackupsReplicationEnabled?: boolean;
 }
 
-export const SourceConfig: Schema.Schema<SourceConfig> =
+export const SourceConfig: Schema.Codec<SourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autonomousDatabase: Schema.optional(Schema.String),
     automaticBackupsReplicationEnabled: Schema.optional(Schema.Boolean),
@@ -4517,7 +4517,7 @@ export interface RestoreAutonomousDatabaseRequest {
   restoreTime?: string;
 }
 
-export const RestoreAutonomousDatabaseRequest: Schema.Schema<RestoreAutonomousDatabaseRequest> =
+export const RestoreAutonomousDatabaseRequest: Schema.Codec<RestoreAutonomousDatabaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restoreTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "RestoreAutonomousDatabaseRequest" });
@@ -4531,7 +4531,7 @@ export interface ListOdbSubnetsResponse {
   odbSubnets?: ReadonlyArray<OdbSubnet>;
 }
 
-export const ListOdbSubnetsResponse: Schema.Schema<ListOdbSubnetsResponse> =
+export const ListOdbSubnetsResponse: Schema.Codec<ListOdbSubnetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -4592,7 +4592,7 @@ export interface MaintenanceWindow {
   weeksOfMonth?: ReadonlyArray<number>;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
+export const MaintenanceWindow: Schema.Codec<MaintenanceWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preference: Schema.optional(Schema.String),
     hoursOfDay: Schema.optional(Schema.Array(Schema.Number)),
@@ -4640,7 +4640,7 @@ export interface AutonomousDatabase {
   sourceConfig?: SourceConfig;
 }
 
-export const AutonomousDatabase: Schema.Schema<AutonomousDatabase> =
+export const AutonomousDatabase: Schema.Codec<AutonomousDatabase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(AutonomousDatabaseProperties),
     peerAutonomousDatabases: Schema.optional(Schema.Array(Schema.String)),
@@ -4673,7 +4673,7 @@ export interface PluggableDatabase {
   createTime?: string;
 }
 
-export const PluggableDatabase: Schema.Schema<PluggableDatabase> =
+export const PluggableDatabase: Schema.Codec<PluggableDatabase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     properties: Schema.optional(PluggableDatabaseProperties),
@@ -4688,7 +4688,7 @@ export interface ListPluggableDatabasesResponse {
   nextPageToken?: string;
 }
 
-export const ListPluggableDatabasesResponse: Schema.Schema<ListPluggableDatabasesResponse> =
+export const ListPluggableDatabasesResponse: Schema.Codec<ListPluggableDatabasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pluggableDatabases: Schema.optional(Schema.Array(PluggableDatabase)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4699,7 +4699,7 @@ export interface GenerateAutonomousDatabaseWalletResponse {
   archiveContent?: string;
 }
 
-export const GenerateAutonomousDatabaseWalletResponse: Schema.Schema<GenerateAutonomousDatabaseWalletResponse> =
+export const GenerateAutonomousDatabaseWalletResponse: Schema.Codec<GenerateAutonomousDatabaseWalletResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     archiveContent: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateAutonomousDatabaseWalletResponse" });
@@ -4709,7 +4709,7 @@ export interface LocationMetadata {
   gcpOracleZones?: ReadonlyArray<string>;
 }
 
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
+export const LocationMetadata: Schema.Codec<LocationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcpOracleZones: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "LocationMetadata" });
@@ -4732,7 +4732,7 @@ export interface Entitlement {
   name?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
+export const Entitlement: Schema.Codec<Entitlement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudAccountDetails: Schema.optional(CloudAccountDetails),
     entitlementId: Schema.optional(Schema.String),
@@ -4747,7 +4747,7 @@ export interface ListEntitlementsResponse {
   entitlements?: ReadonlyArray<Entitlement>;
 }
 
-export const ListEntitlementsResponse: Schema.Schema<ListEntitlementsResponse> =
+export const ListEntitlementsResponse: Schema.Codec<ListEntitlementsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     entitlements: Schema.optional(Schema.Array(Entitlement)),
@@ -4831,7 +4831,7 @@ export interface CloudExadataInfrastructureProperties {
     | (string & {});
 }
 
-export const CloudExadataInfrastructureProperties: Schema.Schema<CloudExadataInfrastructureProperties> =
+export const CloudExadataInfrastructureProperties: Schema.Codec<CloudExadataInfrastructureProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dbNodeStorageSizeGb: Schema.optional(Schema.Number),
     nextMaintenanceRunTime: Schema.optional(Schema.String),
@@ -4883,7 +4883,7 @@ export interface CloudExadataInfrastructure {
   gcpOracleZone?: string;
 }
 
-export const CloudExadataInfrastructure: Schema.Schema<CloudExadataInfrastructure> =
+export const CloudExadataInfrastructure: Schema.Codec<CloudExadataInfrastructure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entitlementId: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -4903,7 +4903,7 @@ export interface GenerateAutonomousDatabaseWalletRequest {
   password?: string;
 }
 
-export const GenerateAutonomousDatabaseWalletRequest: Schema.Schema<GenerateAutonomousDatabaseWalletRequest> =
+export const GenerateAutonomousDatabaseWalletRequest: Schema.Codec<GenerateAutonomousDatabaseWalletRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isRegional: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
@@ -4919,7 +4919,7 @@ export interface ListCloudExadataInfrastructuresResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListCloudExadataInfrastructuresResponse: Schema.Schema<ListCloudExadataInfrastructuresResponse> =
+export const ListCloudExadataInfrastructuresResponse: Schema.Codec<ListCloudExadataInfrastructuresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudExadataInfrastructures: Schema.optional(
       Schema.Array(CloudExadataInfrastructure),
@@ -4933,7 +4933,7 @@ export interface TestGoldengateConnectionAssignmentRequest {
   type?: "TEST_TYPE_UNSPECIFIED" | "DEFAULT" | (string & {});
 }
 
-export const TestGoldengateConnectionAssignmentRequest: Schema.Schema<TestGoldengateConnectionAssignmentRequest> =
+export const TestGoldengateConnectionAssignmentRequest: Schema.Codec<TestGoldengateConnectionAssignmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "TestGoldengateConnectionAssignmentRequest" });
@@ -4957,7 +4957,7 @@ export interface OperationMetadata {
   percentComplete?: number;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -5002,7 +5002,7 @@ export interface GoldengateDeploymentEnvironment {
   maxCpuCoreCount?: number;
 }
 
-export const GoldengateDeploymentEnvironment: Schema.Schema<GoldengateDeploymentEnvironment> =
+export const GoldengateDeploymentEnvironment: Schema.Codec<GoldengateDeploymentEnvironment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultCpuCoreCount: Schema.optional(Schema.Number),
     networkBandwidthGbpsPerCpuCore: Schema.optional(Schema.Number),
@@ -5057,7 +5057,7 @@ export interface GoldengateConnectionType {
   technologyTypes?: ReadonlyArray<string>;
 }
 
-export const GoldengateConnectionType: Schema.Schema<GoldengateConnectionType> =
+export const GoldengateConnectionType: Schema.Codec<GoldengateConnectionType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     connectionType: Schema.optional(Schema.String),
@@ -5073,7 +5073,7 @@ export interface ListGoldengateConnectionTypesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListGoldengateConnectionTypesResponse: Schema.Schema<ListGoldengateConnectionTypesResponse> =
+export const ListGoldengateConnectionTypesResponse: Schema.Codec<ListGoldengateConnectionTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     goldengateConnectionTypes: Schema.optional(
@@ -5095,7 +5095,7 @@ export interface AutonomousDatabaseCharacterSet {
     | (string & {});
 }
 
-export const AutonomousDatabaseCharacterSet: Schema.Schema<AutonomousDatabaseCharacterSet> =
+export const AutonomousDatabaseCharacterSet: Schema.Codec<AutonomousDatabaseCharacterSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     characterSet: Schema.optional(Schema.String),
@@ -5109,7 +5109,7 @@ export interface ListAutonomousDatabaseCharacterSetsResponse {
   nextPageToken?: string;
 }
 
-export const ListAutonomousDatabaseCharacterSetsResponse: Schema.Schema<ListAutonomousDatabaseCharacterSetsResponse> =
+export const ListAutonomousDatabaseCharacterSetsResponse: Schema.Codec<ListAutonomousDatabaseCharacterSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autonomousDatabaseCharacterSets: Schema.optional(
       Schema.Array(AutonomousDatabaseCharacterSet),
@@ -5140,7 +5140,7 @@ export interface OdbNetwork {
   entitlementId?: string;
 }
 
-export const OdbNetwork: Schema.Schema<OdbNetwork> =
+export const OdbNetwork: Schema.Codec<OdbNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5153,7 +5153,7 @@ export const OdbNetwork: Schema.Schema<OdbNetwork> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -5181,7 +5181,7 @@ export interface DbSystem {
   properties?: DbSystemProperties;
 }
 
-export const DbSystem: Schema.Schema<DbSystem> =
+export const DbSystem: Schema.Codec<DbSystem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     odbNetwork: Schema.optional(Schema.String),
     ociUrl: Schema.optional(Schema.String),
@@ -5204,7 +5204,7 @@ export interface ListOdbNetworksResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOdbNetworksResponse: Schema.Schema<ListOdbNetworksResponse> =
+export const ListOdbNetworksResponse: Schema.Codec<ListOdbNetworksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     odbNetworks: Schema.optional(Schema.Array(OdbNetwork)),
@@ -5220,7 +5220,7 @@ export interface ListCloudVmClustersResponse {
   nextPageToken?: string;
 }
 
-export const ListCloudVmClustersResponse: Schema.Schema<ListCloudVmClustersResponse> =
+export const ListCloudVmClustersResponse: Schema.Codec<ListCloudVmClustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudVmClusters: Schema.optional(Schema.Array(CloudVmCluster)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -5229,7 +5229,7 @@ export const ListCloudVmClustersResponse: Schema.Schema<ListCloudVmClustersRespo
 
 export interface StartAutonomousDatabaseRequest {}
 
-export const StartAutonomousDatabaseRequest: Schema.Schema<StartAutonomousDatabaseRequest> =
+export const StartAutonomousDatabaseRequest: Schema.Codec<StartAutonomousDatabaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StartAutonomousDatabaseRequest",
   });
@@ -5241,7 +5241,7 @@ export interface ConfigureExascaleCloudExadataInfrastructureRequest {
   requestId?: string;
 }
 
-export const ConfigureExascaleCloudExadataInfrastructureRequest: Schema.Schema<ConfigureExascaleCloudExadataInfrastructureRequest> =
+export const ConfigureExascaleCloudExadataInfrastructureRequest: Schema.Codec<ConfigureExascaleCloudExadataInfrastructureRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalStorageSizeGb: Schema.optional(Schema.Number),
     requestId: Schema.optional(Schema.String),
@@ -5251,7 +5251,7 @@ export const ConfigureExascaleCloudExadataInfrastructureRequest: Schema.Schema<C
 
 export interface StopAutonomousDatabaseRequest {}
 
-export const StopAutonomousDatabaseRequest: Schema.Schema<StopAutonomousDatabaseRequest> =
+export const StopAutonomousDatabaseRequest: Schema.Codec<StopAutonomousDatabaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopAutonomousDatabaseRequest",
   });
@@ -5261,7 +5261,7 @@ export interface FailoverAutonomousDatabaseRequest {
   peerAutonomousDatabase?: string;
 }
 
-export const FailoverAutonomousDatabaseRequest: Schema.Schema<FailoverAutonomousDatabaseRequest> =
+export const FailoverAutonomousDatabaseRequest: Schema.Codec<FailoverAutonomousDatabaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     peerAutonomousDatabase: Schema.optional(Schema.String),
   }).annotate({ identifier: "FailoverAutonomousDatabaseRequest" });
@@ -5275,7 +5275,7 @@ export interface ListDbSystemsResponse {
   dbSystems?: ReadonlyArray<DbSystem>;
 }
 
-export const ListDbSystemsResponse: Schema.Schema<ListDbSystemsResponse> =
+export const ListDbSystemsResponse: Schema.Codec<ListDbSystemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5296,7 +5296,7 @@ export interface TestGoldengateConnectionAssignmentResponse {
   error?: TestConnectionAssignmentError;
 }
 
-export const TestGoldengateConnectionAssignmentResponse: Schema.Schema<TestGoldengateConnectionAssignmentResponse> =
+export const TestGoldengateConnectionAssignmentResponse: Schema.Codec<TestGoldengateConnectionAssignmentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(TestConnectionAssignmentError)),
     resultType: Schema.optional(Schema.String),
@@ -5312,7 +5312,7 @@ export interface ListAutonomousDatabasesResponse {
   autonomousDatabases?: ReadonlyArray<AutonomousDatabase>;
 }
 
-export const ListAutonomousDatabasesResponse: Schema.Schema<ListAutonomousDatabasesResponse> =
+export const ListAutonomousDatabasesResponse: Schema.Codec<ListAutonomousDatabasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -5328,7 +5328,7 @@ export interface ListExascaleDbStorageVaultsResponse {
   nextPageToken?: string;
 }
 
-export const ListExascaleDbStorageVaultsResponse: Schema.Schema<ListExascaleDbStorageVaultsResponse> =
+export const ListExascaleDbStorageVaultsResponse: Schema.Codec<ListExascaleDbStorageVaultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exascaleDbStorageVaults: Schema.optional(
       Schema.Array(ExascaleDbStorageVault),
@@ -5344,7 +5344,7 @@ export interface ListDbSystemShapesResponse {
   nextPageToken?: string;
 }
 
-export const ListDbSystemShapesResponse: Schema.Schema<ListDbSystemShapesResponse> =
+export const ListDbSystemShapesResponse: Schema.Codec<ListDbSystemShapesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dbSystemShapes: Schema.optional(Schema.Array(DbSystemShape)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5359,7 +5359,7 @@ export interface ListGoldengateDeploymentEnvironmentsResponse {
   goldengateDeploymentEnvironments?: ReadonlyArray<GoldengateDeploymentEnvironment>;
 }
 
-export const ListGoldengateDeploymentEnvironmentsResponse: Schema.Schema<ListGoldengateDeploymentEnvironmentsResponse> =
+export const ListGoldengateDeploymentEnvironmentsResponse: Schema.Codec<ListGoldengateDeploymentEnvironmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5370,7 +5370,7 @@ export const ListGoldengateDeploymentEnvironmentsResponse: Schema.Schema<ListGol
 
 export interface RestartAutonomousDatabaseRequest {}
 
-export const RestartAutonomousDatabaseRequest: Schema.Schema<RestartAutonomousDatabaseRequest> =
+export const RestartAutonomousDatabaseRequest: Schema.Codec<RestartAutonomousDatabaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestartAutonomousDatabaseRequest",
   });
@@ -5384,7 +5384,7 @@ export interface ListGoldengateConnectionAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListGoldengateConnectionAssignmentsResponse: Schema.Schema<ListGoldengateConnectionAssignmentsResponse> =
+export const ListGoldengateConnectionAssignmentsResponse: Schema.Codec<ListGoldengateConnectionAssignmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     goldengateConnectionAssignments: Schema.optional(
@@ -5472,7 +5472,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -5507,7 +5507,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -5547,7 +5547,7 @@ export const ListProjectsLocationsGoldengateConnectionTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/goldengateConnectionTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGoldengateConnectionTypesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGoldengateConnectionTypesRequest>;
 
 export type ListProjectsLocationsGoldengateConnectionTypesResponse =
   ListGoldengateConnectionTypesResponse;
@@ -5598,7 +5598,7 @@ export const ListProjectsLocationsExascaleDbStorageVaultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/exascaleDbStorageVaults" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsExascaleDbStorageVaultsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsExascaleDbStorageVaultsRequest>;
 
 export type ListProjectsLocationsExascaleDbStorageVaultsResponse =
   ListExascaleDbStorageVaultsResponse;
@@ -5637,7 +5637,7 @@ export const GetProjectsLocationsExascaleDbStorageVaultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsExascaleDbStorageVaultsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsExascaleDbStorageVaultsRequest>;
 
 export type GetProjectsLocationsExascaleDbStorageVaultsResponse =
   ExascaleDbStorageVault;
@@ -5687,7 +5687,7 @@ export const CreateProjectsLocationsExascaleDbStorageVaultsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsExascaleDbStorageVaultsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsExascaleDbStorageVaultsRequest>;
 
 export type CreateProjectsLocationsExascaleDbStorageVaultsResponse = Operation;
 export const CreateProjectsLocationsExascaleDbStorageVaultsResponse =
@@ -5726,7 +5726,7 @@ export const DeleteProjectsLocationsExascaleDbStorageVaultsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsExascaleDbStorageVaultsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsExascaleDbStorageVaultsRequest>;
 
 export type DeleteProjectsLocationsExascaleDbStorageVaultsResponse = Operation;
 export const DeleteProjectsLocationsExascaleDbStorageVaultsResponse =
@@ -5768,7 +5768,7 @@ export const ListProjectsLocationsAutonomousDbVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/autonomousDbVersions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAutonomousDbVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAutonomousDbVersionsRequest>;
 
 export type ListProjectsLocationsAutonomousDbVersionsResponse =
   ListAutonomousDbVersionsResponse;
@@ -5816,7 +5816,7 @@ export const ListProjectsLocationsDbSystemShapesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbSystemShapes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDbSystemShapesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDbSystemShapesRequest>;
 
 export type ListProjectsLocationsDbSystemShapesResponse =
   ListDbSystemShapesResponse;
@@ -5864,7 +5864,7 @@ export const ListProjectsLocationsPluggableDatabasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/pluggableDatabases" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsPluggableDatabasesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsPluggableDatabasesRequest>;
 
 export type ListProjectsLocationsPluggableDatabasesResponse =
   ListPluggableDatabasesResponse;
@@ -5903,7 +5903,7 @@ export const GetProjectsLocationsPluggableDatabasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsPluggableDatabasesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsPluggableDatabasesRequest>;
 
 export type GetProjectsLocationsPluggableDatabasesResponse = PluggableDatabase;
 export const GetProjectsLocationsPluggableDatabasesResponse =
@@ -5946,7 +5946,7 @@ export const ListProjectsLocationsGoldengateDeploymentEnvironmentsRequest =
       path: "v1/{+parent}/goldengateDeploymentEnvironments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGoldengateDeploymentEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGoldengateDeploymentEnvironmentsRequest>;
 
 export type ListProjectsLocationsGoldengateDeploymentEnvironmentsResponse =
   ListGoldengateDeploymentEnvironmentsResponse;
@@ -5997,7 +5997,7 @@ export const ListProjectsLocationsCloudExadataInfrastructuresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/cloudExadataInfrastructures" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCloudExadataInfrastructuresRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCloudExadataInfrastructuresRequest>;
 
 export type ListProjectsLocationsCloudExadataInfrastructuresResponse =
   ListCloudExadataInfrastructuresResponse;
@@ -6042,7 +6042,7 @@ export const DeleteProjectsLocationsCloudExadataInfrastructuresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCloudExadataInfrastructuresRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCloudExadataInfrastructuresRequest>;
 
 export type DeleteProjectsLocationsCloudExadataInfrastructuresResponse =
   Operation;
@@ -6088,7 +6088,7 @@ export const ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresReques
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresRequest>;
+  ) as unknown as Schema.Codec<ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresRequest>;
 
 export type ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresResponse =
   Operation;
@@ -6096,7 +6096,11 @@ export const ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Configures Exascale for a single Exadata Infrastructure. */
 export const configureExascaleProjectsLocationsCloudExadataInfrastructures: API.OperationMethod<
@@ -6121,7 +6125,7 @@ export const GetProjectsLocationsCloudExadataInfrastructuresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCloudExadataInfrastructuresRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCloudExadataInfrastructuresRequest>;
 
 export type GetProjectsLocationsCloudExadataInfrastructuresResponse =
   CloudExadataInfrastructure;
@@ -6171,7 +6175,7 @@ export const CreateProjectsLocationsCloudExadataInfrastructuresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCloudExadataInfrastructuresRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCloudExadataInfrastructuresRequest>;
 
 export type CreateProjectsLocationsCloudExadataInfrastructuresResponse =
   Operation;
@@ -6214,7 +6218,7 @@ export const ListProjectsLocationsCloudExadataInfrastructuresDbServersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbServers" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCloudExadataInfrastructuresDbServersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCloudExadataInfrastructuresDbServersRequest>;
 
 export type ListProjectsLocationsCloudExadataInfrastructuresDbServersResponse =
   ListDbServersResponse;
@@ -6259,7 +6263,7 @@ export const ListProjectsLocationsDbSystemInitialStorageSizesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbSystemInitialStorageSizes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDbSystemInitialStorageSizesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDbSystemInitialStorageSizesRequest>;
 
 export type ListProjectsLocationsDbSystemInitialStorageSizesResponse =
   ListDbSystemInitialStorageSizesResponse;
@@ -6310,7 +6314,7 @@ export const ListProjectsLocationsAutonomousDatabaseCharacterSetsRequest =
       path: "v1/{+parent}/autonomousDatabaseCharacterSets",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAutonomousDatabaseCharacterSetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAutonomousDatabaseCharacterSetsRequest>;
 
 export type ListProjectsLocationsAutonomousDatabaseCharacterSetsResponse =
   ListAutonomousDatabaseCharacterSetsResponse;
@@ -6349,7 +6353,7 @@ export const GetProjectsLocationsOdbNetworksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOdbNetworksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOdbNetworksRequest>;
 
 export type GetProjectsLocationsOdbNetworksResponse = OdbNetwork;
 export const GetProjectsLocationsOdbNetworksResponse =
@@ -6394,7 +6398,7 @@ export const CreateProjectsLocationsOdbNetworksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/odbNetworks", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsOdbNetworksRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsOdbNetworksRequest>;
 
 export type CreateProjectsLocationsOdbNetworksResponse = Operation;
 export const CreateProjectsLocationsOdbNetworksResponse =
@@ -6433,7 +6437,7 @@ export const DeleteProjectsLocationsOdbNetworksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOdbNetworksRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOdbNetworksRequest>;
 
 export type DeleteProjectsLocationsOdbNetworksResponse = Operation;
 export const DeleteProjectsLocationsOdbNetworksResponse =
@@ -6481,7 +6485,7 @@ export const ListProjectsLocationsOdbNetworksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/odbNetworks" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOdbNetworksRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOdbNetworksRequest>;
 
 export type ListProjectsLocationsOdbNetworksResponse = ListOdbNetworksResponse;
 export const ListProjectsLocationsOdbNetworksResponse =
@@ -6519,7 +6523,7 @@ export const GetProjectsLocationsOdbNetworksOdbSubnetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOdbNetworksOdbSubnetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
 export type GetProjectsLocationsOdbNetworksOdbSubnetsResponse = OdbSubnet;
 export const GetProjectsLocationsOdbNetworksOdbSubnetsResponse =
@@ -6564,7 +6568,7 @@ export const CreateProjectsLocationsOdbNetworksOdbSubnetsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/odbSubnets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsOdbNetworksOdbSubnetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
 export type CreateProjectsLocationsOdbNetworksOdbSubnetsResponse = Operation;
 export const CreateProjectsLocationsOdbNetworksOdbSubnetsResponse =
@@ -6603,7 +6607,7 @@ export const DeleteProjectsLocationsOdbNetworksOdbSubnetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOdbNetworksOdbSubnetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
 export type DeleteProjectsLocationsOdbNetworksOdbSubnetsResponse = Operation;
 export const DeleteProjectsLocationsOdbNetworksOdbSubnetsResponse =
@@ -6651,7 +6655,7 @@ export const ListProjectsLocationsOdbNetworksOdbSubnetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/odbSubnets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOdbNetworksOdbSubnetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
 export type ListProjectsLocationsOdbNetworksOdbSubnetsResponse =
   ListOdbSubnetsResponse;
@@ -6699,7 +6703,7 @@ export const ListProjectsLocationsDatabaseCharacterSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/databaseCharacterSets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatabaseCharacterSetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatabaseCharacterSetsRequest>;
 
 export type ListProjectsLocationsDatabaseCharacterSetsResponse =
   ListDatabaseCharacterSetsResponse;
@@ -6738,7 +6742,7 @@ export const GetProjectsLocationsExadbVmClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsExadbVmClustersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsExadbVmClustersRequest>;
 
 export type GetProjectsLocationsExadbVmClustersResponse = ExadbVmCluster;
 export const GetProjectsLocationsExadbVmClustersResponse =
@@ -6787,7 +6791,7 @@ export const CreateProjectsLocationsExadbVmClustersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsExadbVmClustersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsExadbVmClustersRequest>;
 
 export type CreateProjectsLocationsExadbVmClustersResponse = Operation;
 export const CreateProjectsLocationsExadbVmClustersResponse =
@@ -6835,7 +6839,7 @@ export const ListProjectsLocationsExadbVmClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/exadbVmClusters" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsExadbVmClustersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsExadbVmClustersRequest>;
 
 export type ListProjectsLocationsExadbVmClustersResponse =
   ListExadbVmClustersResponse;
@@ -6883,7 +6887,7 @@ export const RemoveVirtualMachineProjectsLocationsExadbVmClustersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveVirtualMachineProjectsLocationsExadbVmClustersRequest>;
+  ) as unknown as Schema.Codec<RemoveVirtualMachineProjectsLocationsExadbVmClustersRequest>;
 
 export type RemoveVirtualMachineProjectsLocationsExadbVmClustersResponse =
   Operation;
@@ -6923,7 +6927,7 @@ export const DeleteProjectsLocationsExadbVmClustersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsExadbVmClustersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsExadbVmClustersRequest>;
 
 export type DeleteProjectsLocationsExadbVmClustersResponse = Operation;
 export const DeleteProjectsLocationsExadbVmClustersResponse =
@@ -6968,7 +6972,7 @@ export const PatchProjectsLocationsExadbVmClustersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsExadbVmClustersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsExadbVmClustersRequest>;
 
 export type PatchProjectsLocationsExadbVmClustersResponse = Operation;
 export const PatchProjectsLocationsExadbVmClustersResponse =
@@ -7010,7 +7014,7 @@ export const ListProjectsLocationsExadbVmClustersDbNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbNodes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsExadbVmClustersDbNodesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsExadbVmClustersDbNodesRequest>;
 
 export type ListProjectsLocationsExadbVmClustersDbNodesResponse =
   ListDbNodesResponse;
@@ -7052,7 +7056,7 @@ export const DeleteProjectsLocationsDbSystemsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDbSystemsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDbSystemsRequest>;
 
 export type DeleteProjectsLocationsDbSystemsResponse = Operation;
 export const DeleteProjectsLocationsDbSystemsResponse =
@@ -7088,7 +7092,7 @@ export const GetProjectsLocationsDbSystemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDbSystemsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDbSystemsRequest>;
 
 export type GetProjectsLocationsDbSystemsResponse = DbSystem;
 export const GetProjectsLocationsDbSystemsResponse =
@@ -7131,7 +7135,7 @@ export const CreateProjectsLocationsDbSystemsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/dbSystems", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDbSystemsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDbSystemsRequest>;
 
 export type CreateProjectsLocationsDbSystemsResponse = Operation;
 export const CreateProjectsLocationsDbSystemsResponse =
@@ -7179,7 +7183,7 @@ export const ListProjectsLocationsDbSystemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbSystems" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDbSystemsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDbSystemsRequest>;
 
 export type ListProjectsLocationsDbSystemsResponse = ListDbSystemsResponse;
 export const ListProjectsLocationsDbSystemsResponse =
@@ -7226,7 +7230,7 @@ export const ListProjectsLocationsAutonomousDatabaseBackupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/autonomousDatabaseBackups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAutonomousDatabaseBackupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAutonomousDatabaseBackupsRequest>;
 
 export type ListProjectsLocationsAutonomousDatabaseBackupsResponse =
   ListAutonomousDatabaseBackupsResponse;
@@ -7274,7 +7278,7 @@ export const ListProjectsLocationsDatabasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/databases" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatabasesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatabasesRequest>;
 
 export type ListProjectsLocationsDatabasesResponse = ListDatabasesResponse;
 export const ListProjectsLocationsDatabasesResponse =
@@ -7312,7 +7316,7 @@ export const GetProjectsLocationsDatabasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatabasesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatabasesRequest>;
 
 export type GetProjectsLocationsDatabasesResponse = Database;
 export const GetProjectsLocationsDatabasesResponse =
@@ -7346,7 +7350,7 @@ export const GetProjectsLocationsGoldengateConnectionAssignmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGoldengateConnectionAssignmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGoldengateConnectionAssignmentsRequest>;
 
 export type GetProjectsLocationsGoldengateConnectionAssignmentsResponse =
   GoldengateConnectionAssignment;
@@ -7396,7 +7400,7 @@ export const CreateProjectsLocationsGoldengateConnectionAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGoldengateConnectionAssignmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGoldengateConnectionAssignmentsRequest>;
 
 export type CreateProjectsLocationsGoldengateConnectionAssignmentsResponse =
   Operation;
@@ -7436,7 +7440,7 @@ export const DeleteProjectsLocationsGoldengateConnectionAssignmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGoldengateConnectionAssignmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGoldengateConnectionAssignmentsRequest>;
 
 export type DeleteProjectsLocationsGoldengateConnectionAssignmentsResponse =
   Operation;
@@ -7488,7 +7492,7 @@ export const ListProjectsLocationsGoldengateConnectionAssignmentsRequest =
       path: "v1/{+parent}/goldengateConnectionAssignments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGoldengateConnectionAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGoldengateConnectionAssignmentsRequest>;
 
 export type ListProjectsLocationsGoldengateConnectionAssignmentsResponse =
   ListGoldengateConnectionAssignmentsResponse;
@@ -7532,7 +7536,7 @@ export const TestProjectsLocationsGoldengateConnectionAssignmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:test", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TestProjectsLocationsGoldengateConnectionAssignmentsRequest>;
+  ) as unknown as Schema.Codec<TestProjectsLocationsGoldengateConnectionAssignmentsRequest>;
 
 export type TestProjectsLocationsGoldengateConnectionAssignmentsResponse =
   TestGoldengateConnectionAssignmentResponse;
@@ -7578,7 +7582,7 @@ export const GenerateWalletProjectsLocationsAutonomousDatabasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateWalletProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<GenerateWalletProjectsLocationsAutonomousDatabasesRequest>;
 
 export type GenerateWalletProjectsLocationsAutonomousDatabasesResponse =
   GenerateAutonomousDatabaseWalletResponse;
@@ -7624,7 +7628,7 @@ export const PatchProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAutonomousDatabasesRequest>;
 
 export type PatchProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const PatchProjectsLocationsAutonomousDatabasesResponse =
@@ -7663,7 +7667,7 @@ export const StartProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StartProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<StartProjectsLocationsAutonomousDatabasesRequest>;
 
 export type StartProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const StartProjectsLocationsAutonomousDatabasesResponse =
@@ -7702,7 +7706,7 @@ export const StopProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StopProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<StopProjectsLocationsAutonomousDatabasesRequest>;
 
 export type StopProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const StopProjectsLocationsAutonomousDatabasesResponse =
@@ -7738,7 +7742,7 @@ export const GetProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAutonomousDatabasesRequest>;
 
 export type GetProjectsLocationsAutonomousDatabasesResponse =
   AutonomousDatabase;
@@ -7788,7 +7792,7 @@ export const CreateProjectsLocationsAutonomousDatabasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAutonomousDatabasesRequest>;
 
 export type CreateProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const CreateProjectsLocationsAutonomousDatabasesResponse =
@@ -7827,7 +7831,7 @@ export const DeleteProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAutonomousDatabasesRequest>;
 
 export type DeleteProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const DeleteProjectsLocationsAutonomousDatabasesResponse =
@@ -7866,7 +7870,7 @@ export const RestartProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:restart", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RestartProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<RestartProjectsLocationsAutonomousDatabasesRequest>;
 
 export type RestartProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const RestartProjectsLocationsAutonomousDatabasesResponse =
@@ -7914,7 +7918,7 @@ export const ListProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/autonomousDatabases" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAutonomousDatabasesRequest>;
 
 export type ListProjectsLocationsAutonomousDatabasesResponse =
   ListAutonomousDatabasesResponse;
@@ -7958,7 +7962,7 @@ export const SwitchoverProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:switchover", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SwitchoverProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<SwitchoverProjectsLocationsAutonomousDatabasesRequest>;
 
 export type SwitchoverProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const SwitchoverProjectsLocationsAutonomousDatabasesResponse =
@@ -7997,7 +8001,7 @@ export const RestoreProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:restore", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RestoreProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<RestoreProjectsLocationsAutonomousDatabasesRequest>;
 
 export type RestoreProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const RestoreProjectsLocationsAutonomousDatabasesResponse =
@@ -8036,7 +8040,7 @@ export const FailoverProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:failover", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<FailoverProjectsLocationsAutonomousDatabasesRequest>;
+  ) as unknown as Schema.Codec<FailoverProjectsLocationsAutonomousDatabasesRequest>;
 
 export type FailoverProjectsLocationsAutonomousDatabasesResponse = Operation;
 export const FailoverProjectsLocationsAutonomousDatabasesResponse =
@@ -8075,7 +8079,7 @@ export const StopProjectsLocationsGoldengateDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StopProjectsLocationsGoldengateDeploymentsRequest>;
+  ) as unknown as Schema.Codec<StopProjectsLocationsGoldengateDeploymentsRequest>;
 
 export type StopProjectsLocationsGoldengateDeploymentsResponse = Operation;
 export const StopProjectsLocationsGoldengateDeploymentsResponse =
@@ -8123,7 +8127,7 @@ export const ListProjectsLocationsGoldengateDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/goldengateDeployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGoldengateDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGoldengateDeploymentsRequest>;
 
 export type ListProjectsLocationsGoldengateDeploymentsResponse =
   ListGoldengateDeploymentsResponse;
@@ -8165,7 +8169,7 @@ export const StartProjectsLocationsGoldengateDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StartProjectsLocationsGoldengateDeploymentsRequest>;
+  ) as unknown as Schema.Codec<StartProjectsLocationsGoldengateDeploymentsRequest>;
 
 export type StartProjectsLocationsGoldengateDeploymentsResponse = Operation;
 export const StartProjectsLocationsGoldengateDeploymentsResponse =
@@ -8204,7 +8208,7 @@ export const DeleteProjectsLocationsGoldengateDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGoldengateDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGoldengateDeploymentsRequest>;
 
 export type DeleteProjectsLocationsGoldengateDeploymentsResponse = Operation;
 export const DeleteProjectsLocationsGoldengateDeploymentsResponse =
@@ -8240,7 +8244,7 @@ export const GetProjectsLocationsGoldengateDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGoldengateDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGoldengateDeploymentsRequest>;
 
 export type GetProjectsLocationsGoldengateDeploymentsResponse =
   GoldengateDeployment;
@@ -8290,7 +8294,7 @@ export const CreateProjectsLocationsGoldengateDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGoldengateDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGoldengateDeploymentsRequest>;
 
 export type CreateProjectsLocationsGoldengateDeploymentsResponse = Operation;
 export const CreateProjectsLocationsGoldengateDeploymentsResponse =
@@ -8338,7 +8342,7 @@ export const ListProjectsLocationsGoldengateDeploymentTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/goldengateDeploymentTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGoldengateDeploymentTypesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGoldengateDeploymentTypesRequest>;
 
 export type ListProjectsLocationsGoldengateDeploymentTypesResponse =
   ListGoldengateDeploymentTypesResponse;
@@ -8389,7 +8393,7 @@ export const ListProjectsLocationsGoldengateDeploymentVersionsRequest =
       path: "v1/{+parent}/goldengateDeploymentVersions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGoldengateDeploymentVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGoldengateDeploymentVersionsRequest>;
 
 export type ListProjectsLocationsGoldengateDeploymentVersionsResponse =
   ListGoldengateDeploymentVersionsResponse;
@@ -8434,7 +8438,7 @@ export const ListProjectsLocationsEntitlementsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entitlements" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEntitlementsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEntitlementsRequest>;
 
 export type ListProjectsLocationsEntitlementsResponse =
   ListEntitlementsResponse;
@@ -8476,7 +8480,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -8526,7 +8530,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -8564,7 +8568,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -8598,7 +8602,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -8637,7 +8641,7 @@ export const DeleteProjectsLocationsGoldengateConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGoldengateConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGoldengateConnectionsRequest>;
 
 export type DeleteProjectsLocationsGoldengateConnectionsResponse = Operation;
 export const DeleteProjectsLocationsGoldengateConnectionsResponse =
@@ -8673,7 +8677,7 @@ export const GetProjectsLocationsGoldengateConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGoldengateConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGoldengateConnectionsRequest>;
 
 export type GetProjectsLocationsGoldengateConnectionsResponse =
   GoldengateConnection;
@@ -8723,7 +8727,7 @@ export const CreateProjectsLocationsGoldengateConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGoldengateConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGoldengateConnectionsRequest>;
 
 export type CreateProjectsLocationsGoldengateConnectionsResponse = Operation;
 export const CreateProjectsLocationsGoldengateConnectionsResponse =
@@ -8771,7 +8775,7 @@ export const ListProjectsLocationsGoldengateConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/goldengateConnections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGoldengateConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGoldengateConnectionsRequest>;
 
 export type ListProjectsLocationsGoldengateConnectionsResponse =
   ListGoldengateConnectionsResponse;
@@ -8819,7 +8823,7 @@ export const ListProjectsLocationsGiVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/giVersions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGiVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGiVersionsRequest>;
 
 export type ListProjectsLocationsGiVersionsResponse = ListGiVersionsResponse;
 export const ListProjectsLocationsGiVersionsResponse =
@@ -8866,7 +8870,7 @@ export const ListProjectsLocationsGiVersionsMinorVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/minorVersions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGiVersionsMinorVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGiVersionsMinorVersionsRequest>;
 
 export type ListProjectsLocationsGiVersionsMinorVersionsResponse =
   ListMinorVersionsResponse;
@@ -8914,7 +8918,7 @@ export const ListProjectsLocationsDbVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbVersions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDbVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDbVersionsRequest>;
 
 export type ListProjectsLocationsDbVersionsResponse = ListDbVersionsResponse;
 export const ListProjectsLocationsDbVersionsResponse =
@@ -8961,7 +8965,7 @@ export const ListProjectsLocationsCloudVmClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/cloudVmClusters" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCloudVmClustersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCloudVmClustersRequest>;
 
 export type ListProjectsLocationsCloudVmClustersResponse =
   ListCloudVmClustersResponse;
@@ -9006,7 +9010,7 @@ export const DeleteProjectsLocationsCloudVmClustersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCloudVmClustersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCloudVmClustersRequest>;
 
 export type DeleteProjectsLocationsCloudVmClustersResponse = Operation;
 export const DeleteProjectsLocationsCloudVmClustersResponse =
@@ -9042,7 +9046,7 @@ export const GetProjectsLocationsCloudVmClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCloudVmClustersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCloudVmClustersRequest>;
 
 export type GetProjectsLocationsCloudVmClustersResponse = CloudVmCluster;
 export const GetProjectsLocationsCloudVmClustersResponse =
@@ -9091,7 +9095,7 @@ export const CreateProjectsLocationsCloudVmClustersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCloudVmClustersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCloudVmClustersRequest>;
 
 export type CreateProjectsLocationsCloudVmClustersResponse = Operation;
 export const CreateProjectsLocationsCloudVmClustersResponse =
@@ -9133,7 +9137,7 @@ export const ListProjectsLocationsCloudVmClustersDbNodesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbNodes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCloudVmClustersDbNodesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCloudVmClustersDbNodesRequest>;
 
 export type ListProjectsLocationsCloudVmClustersDbNodesResponse =
   ListDbNodesResponse;

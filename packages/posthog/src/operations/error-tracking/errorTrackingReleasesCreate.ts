@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingReleasesCreateInput {
+  project_id: string;
+  version: string;
+  project: string;
+  hash_id?: string | null;
+  metadata?: Record<string, unknown> | null;
+}
 export const ErrorTrackingReleasesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +25,18 @@ export const ErrorTrackingReleasesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/releases/",
     }),
-  );
-export type ErrorTrackingReleasesCreateInput =
-  typeof ErrorTrackingReleasesCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingReleasesCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingReleasesCreateOutput {
+  id?: string;
+  hash_id?: string;
+  team_id?: number;
+  created_at?: string;
+  metadata?: Record<string, unknown> | null;
+  version?: string;
+  project?: string;
+}
 export const ErrorTrackingReleasesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -34,9 +48,7 @@ export const ErrorTrackingReleasesCreateOutput =
     ),
     version: Schema.optional(Schema.String),
     project: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingReleasesCreateOutput =
-  typeof ErrorTrackingReleasesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingReleasesCreateOutput>;
 
 // The operation
 /**

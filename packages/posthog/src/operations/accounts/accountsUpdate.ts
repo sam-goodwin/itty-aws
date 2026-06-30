@@ -3,6 +3,29 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AccountsUpdateInput {
+  id: string;
+  project_id: string;
+  name: string;
+  external_id?: string | null;
+  properties?: {
+    csm?: { id: number; email: string } | null;
+    account_executive?: { id: number; email: string } | null;
+    account_owner?: { id: number; email: string } | null;
+    stripe_customer_id?: string | null;
+    hubspot_deal_id?: string | null;
+    billing_id?: string | null;
+    sfdc_id?: string | null;
+    zendesk_id?: string | null;
+    slack_channel_id?: string | null;
+    usage_dashboard_link?: string | null;
+  } | null;
+  tags?: string[];
+  notebooks: string[];
+  created_at: string;
+  created_by: number | null;
+  updated_at: string | null;
+}
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -52,10 +75,31 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updated_at: Schema.NullOr(Schema.String),
 }).pipe(
   T.Http({ method: "PUT", path: "/api/projects/{project_id}/accounts/{id}/" }),
-);
-export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
+) as unknown as Schema.Codec<AccountsUpdateInput>;
 
 // Output Schema
+export interface AccountsUpdateOutput {
+  id: string;
+  name: string;
+  external_id?: string | null;
+  properties?: {
+    csm?: { id: number; email: string } | null;
+    account_executive?: { id: number; email: string } | null;
+    account_owner?: { id: number; email: string } | null;
+    stripe_customer_id?: string | null;
+    hubspot_deal_id?: string | null;
+    billing_id?: string | null;
+    sfdc_id?: string | null;
+    zendesk_id?: string | null;
+    slack_channel_id?: string | null;
+    usage_dashboard_link?: string | null;
+  } | null;
+  tags?: string[];
+  notebooks: string[];
+  created_at: string;
+  created_by: number | null;
+  updated_at: string | null;
+}
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -102,8 +146,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created_at: Schema.String,
   created_by: Schema.NullOr(Schema.Number),
   updated_at: Schema.NullOr(Schema.String),
-});
-export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
+}) as unknown as Schema.Codec<AccountsUpdateOutput>;
 
 // The operation
 /**

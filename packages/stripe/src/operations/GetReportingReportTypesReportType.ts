@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetReportingReportTypesReportTypeInput {
+  report_type: string;
+  expand?: string;
+}
 export const GetReportingReportTypesReportTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     report_type: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,20 @@ export const GetReportingReportTypesReportTypeInput =
       path: "/v1/reporting/report_types/{report_type}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetReportingReportTypesReportTypeInput =
-  typeof GetReportingReportTypesReportTypeInput.Type;
+  ) as unknown as Schema.Codec<GetReportingReportTypesReportTypeInput>;
 
 // Output Schema
+export interface GetReportingReportTypesReportTypeOutput {
+  data_available_end: number;
+  data_available_start: number;
+  default_columns: string[] | null;
+  id: string;
+  livemode: boolean;
+  name: string;
+  object: "reporting.report_type";
+  updated: number;
+  version: number;
+}
 export const GetReportingReportTypesReportTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data_available_end: Schema.Number,
@@ -29,9 +42,7 @@ export const GetReportingReportTypesReportTypeOutput =
     object: Schema.Literals(["reporting.report_type"]),
     updated: Schema.Number,
     version: Schema.Number,
-  });
-export type GetReportingReportTypesReportTypeOutput =
-  typeof GetReportingReportTypesReportTypeOutput.Type;
+  }) as unknown as Schema.Codec<GetReportingReportTypesReportTypeOutput>;
 
 // The operation
 /**

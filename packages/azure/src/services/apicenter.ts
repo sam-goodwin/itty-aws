@@ -4,11 +4,25 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ApiDefinitionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+  definitionName: string;
+  properties?: {
+    title: string;
+    description?: string;
+    specification?: { name?: string; version?: string };
+  };
+}
 export const ApiDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -36,11 +50,22 @@ export const ApiDefinitionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ApiDefinitionsCreateOrUpdateInput =
-  typeof ApiDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApiDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApiDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApiDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -60,9 +85,7 @@ export const ApiDefinitionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApiDefinitionsCreateOrUpdateOutput =
-  typeof ApiDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApiDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -83,6 +106,15 @@ export const ApiDefinitionsCreateOrUpdate =
     outputSchema: ApiDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApiDefinitionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+  definitionName: string;
+}
 export const ApiDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -98,13 +130,12 @@ export const ApiDefinitionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ApiDefinitionsDeleteInput = typeof ApiDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApiDefinitionsDeleteInput>;
 
 // Output Schema
+export type ApiDefinitionsDeleteOutput = void;
 export const ApiDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApiDefinitionsDeleteOutput = typeof ApiDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApiDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -126,6 +157,15 @@ export const ApiDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApiDefinitionsExportSpecificationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+  definitionName: string;
+}
 export const ApiDefinitionsExportSpecificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -141,18 +181,18 @@ export const ApiDefinitionsExportSpecificationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}/exportSpecification",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ApiDefinitionsExportSpecificationInput =
-  typeof ApiDefinitionsExportSpecificationInput.Type;
+  ) as unknown as Schema.Codec<ApiDefinitionsExportSpecificationInput>;
 
 // Output Schema
+export interface ApiDefinitionsExportSpecificationOutput {
+  format?: "inline" | "link";
+  value?: string;
+}
 export const ApiDefinitionsExportSpecificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     format: Schema.optional(Schema.Literals(["inline", "link"])),
     value: Schema.optional(Schema.String),
-  });
-export type ApiDefinitionsExportSpecificationOutput =
-  typeof ApiDefinitionsExportSpecificationOutput.Type;
+  }) as unknown as Schema.Codec<ApiDefinitionsExportSpecificationOutput>;
 
 // The operation
 /**
@@ -173,6 +213,15 @@ export const ApiDefinitionsExportSpecification =
     outputSchema: ApiDefinitionsExportSpecificationOutput,
   }));
 // Input Schema
+export interface ApiDefinitionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+  definitionName: string;
+}
 export const ApiDefinitionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -189,10 +238,22 @@ export const ApiDefinitionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ApiDefinitionsGetInput = typeof ApiDefinitionsGetInput.Type;
+) as unknown as Schema.Codec<ApiDefinitionsGetInput>;
 
 // Output Schema
+export interface ApiDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApiDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -212,8 +273,7 @@ export const ApiDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApiDefinitionsGetOutput = typeof ApiDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ApiDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -233,6 +293,18 @@ export const ApiDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApiDefinitionsGetOutput,
 }));
 // Input Schema
+export interface ApiDefinitionsImportSpecificationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+  definitionName: string;
+  value?: string;
+  format?: "inline" | "link";
+  specification?: { name?: string; version?: string };
+}
 export const ApiDefinitionsImportSpecificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -256,15 +328,12 @@ export const ApiDefinitionsImportSpecificationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}/importSpecification",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ApiDefinitionsImportSpecificationInput =
-  typeof ApiDefinitionsImportSpecificationInput.Type;
+  ) as unknown as Schema.Codec<ApiDefinitionsImportSpecificationInput>;
 
 // Output Schema
+export type ApiDefinitionsImportSpecificationOutput = void;
 export const ApiDefinitionsImportSpecificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApiDefinitionsImportSpecificationOutput =
-  typeof ApiDefinitionsImportSpecificationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApiDefinitionsImportSpecificationOutput>;
 
 // The operation
 /**
@@ -285,6 +354,15 @@ export const ApiDefinitionsImportSpecification =
     outputSchema: ApiDefinitionsImportSpecificationOutput,
   }));
 // Input Schema
+export interface ApiDefinitionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+  $filter?: string;
+}
 export const ApiDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -300,10 +378,25 @@ export const ApiDefinitionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ApiDefinitionsListInput = typeof ApiDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<ApiDefinitionsListInput>;
 
 // Output Schema
+export interface ApiDefinitionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApiDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -338,8 +431,7 @@ export const ApiDefinitionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApiDefinitionsListOutput = typeof ApiDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<ApiDefinitionsListOutput>;
 
 // The operation
 /**
@@ -359,6 +451,36 @@ export const ApiDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApiDefinitionsListOutput,
 }));
 // Input Schema
+export interface ApisCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  properties?: {
+    title: string;
+    kind: "rest" | "graphql" | "grpc" | "soap" | "webhook" | "websocket";
+    description?: string;
+    summary?: string;
+    lifecycleStage?:
+      | "design"
+      | "development"
+      | "testing"
+      | "preview"
+      | "production"
+      | "deprecated"
+      | "retired";
+    termsOfService?: { url: string };
+    externalDocumentation?: {
+      title?: string;
+      description?: string;
+      url: string;
+    }[];
+    contacts?: { name?: string; url?: string; email?: string }[];
+    license?: { name?: string; url?: string; identifier?: string };
+    customProperties?: unknown;
+  };
+}
 export const ApisCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -429,10 +551,22 @@ export const ApisCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ApisCreateOrUpdateInput = typeof ApisCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApisCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApisCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApisCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -452,8 +586,7 @@ export const ApisCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApisCreateOrUpdateOutput = typeof ApisCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApisCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -471,6 +604,13 @@ export const ApisCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApisCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface ApisDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+}
 export const ApisDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -483,12 +623,12 @@ export const ApisDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ApisDeleteInput = typeof ApisDeleteInput.Type;
+) as unknown as Schema.Codec<ApisDeleteInput>;
 
 // Output Schema
-export const ApisDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApisDeleteOutput = typeof ApisDeleteOutput.Type;
+export type ApisDeleteOutput = void;
+export const ApisDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApisDeleteOutput>;
 
 // The operation
 /**
@@ -506,6 +646,13 @@ export const ApisDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApisDeleteOutput,
 }));
 // Input Schema
+export interface ApisGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+}
 export const ApisGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -518,10 +665,22 @@ export const ApisGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ApisGetInput = typeof ApisGetInput.Type;
+) as unknown as Schema.Codec<ApisGetInput>;
 
 // Output Schema
+export interface ApisGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApisGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -540,8 +699,7 @@ export const ApisGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApisGetOutput = typeof ApisGetOutput.Type;
+}) as unknown as Schema.Codec<ApisGetOutput>;
 
 // The operation
 /**
@@ -559,6 +717,13 @@ export const ApisGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApisGetOutput,
 }));
 // Input Schema
+export interface ApisListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  $filter?: string;
+}
 export const ApisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -571,10 +736,25 @@ export const ApisListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis",
     apiVersion: "2024-03-01",
   }),
-);
-export type ApisListInput = typeof ApisListInput.Type;
+) as unknown as Schema.Codec<ApisListInput>;
 
 // Output Schema
+export interface ApisListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApisListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -598,8 +778,7 @@ export const ApisListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ApisListOutput = typeof ApisListOutput.Type;
+}) as unknown as Schema.Codec<ApisListOutput>;
 
 // The operation
 /**
@@ -617,6 +796,25 @@ export const ApisList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApisListOutput,
 }));
 // Input Schema
+export interface ApiVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+  properties?: {
+    title: string;
+    lifecycleStage:
+      | "design"
+      | "development"
+      | "testing"
+      | "preview"
+      | "production"
+      | "deprecated"
+      | "retired";
+  };
+}
 export const ApiVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -645,11 +843,22 @@ export const ApiVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ApiVersionsCreateOrUpdateInput =
-  typeof ApiVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApiVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApiVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApiVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -669,9 +878,7 @@ export const ApiVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApiVersionsCreateOrUpdateOutput =
-  typeof ApiVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApiVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -692,6 +899,14 @@ export const ApiVersionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApiVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+}
 export const ApiVersionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -707,12 +922,12 @@ export const ApiVersionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ApiVersionsDeleteInput = typeof ApiVersionsDeleteInput.Type;
+) as unknown as Schema.Codec<ApiVersionsDeleteInput>;
 
 // Output Schema
-export const ApiVersionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApiVersionsDeleteOutput = typeof ApiVersionsDeleteOutput.Type;
+export type ApiVersionsDeleteOutput = void;
+export const ApiVersionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApiVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -731,6 +946,14 @@ export const ApiVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApiVersionsDeleteOutput,
 }));
 // Input Schema
+export interface ApiVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  versionName: string;
+}
 export const ApiVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -744,10 +967,22 @@ export const ApiVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ApiVersionsGetInput = typeof ApiVersionsGetInput.Type;
+) as unknown as Schema.Codec<ApiVersionsGetInput>;
 
 // Output Schema
+export interface ApiVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApiVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -766,8 +1001,7 @@ export const ApiVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApiVersionsGetOutput = typeof ApiVersionsGetOutput.Type;
+}) as unknown as Schema.Codec<ApiVersionsGetOutput>;
 
 // The operation
 /**
@@ -786,6 +1020,14 @@ export const ApiVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApiVersionsGetOutput,
 }));
 // Input Schema
+export interface ApiVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  $filter?: string;
+}
 export const ApiVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -799,10 +1041,25 @@ export const ApiVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions",
     apiVersion: "2024-03-01",
   }),
-);
-export type ApiVersionsListInput = typeof ApiVersionsListInput.Type;
+) as unknown as Schema.Codec<ApiVersionsListInput>;
 
 // Output Schema
+export interface ApiVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApiVersionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -826,8 +1083,7 @@ export const ApiVersionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ApiVersionsListOutput = typeof ApiVersionsListOutput.Type;
+}) as unknown as Schema.Codec<ApiVersionsListOutput>;
 
 // The operation
 /**
@@ -846,6 +1102,23 @@ export const ApiVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApiVersionsListOutput,
 }));
 // Input Schema
+export interface DeploymentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  deploymentName: string;
+  properties?: {
+    title?: string;
+    description?: string;
+    environmentId?: string;
+    definitionId?: string;
+    state?: "active" | "inactive";
+    server?: { runtimeUri?: string[] };
+    customProperties?: unknown;
+  };
+}
 export const DeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -875,11 +1148,22 @@ export const DeploymentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/deployments/{deploymentName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateInput =
-  typeof DeploymentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -899,9 +1183,7 @@ export const DeploymentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateOutput =
-  typeof DeploymentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -922,6 +1204,14 @@ export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  deploymentName: string;
+}
 export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -937,12 +1227,12 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/deployments/{deploymentName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
+) as unknown as Schema.Codec<DeploymentsDeleteInput>;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
+export type DeploymentsDeleteOutput = void;
+export const DeploymentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -961,6 +1251,14 @@ export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsDeleteOutput,
 }));
 // Input Schema
+export interface DeploymentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  deploymentName: string;
+}
 export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -974,10 +1272,22 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/deployments/{deploymentName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
+) as unknown as Schema.Codec<DeploymentsGetInput>;
 
 // Output Schema
+export interface DeploymentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -996,8 +1306,7 @@ export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
+}) as unknown as Schema.Codec<DeploymentsGetOutput>;
 
 // The operation
 /**
@@ -1016,6 +1325,14 @@ export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsGetOutput,
 }));
 // Input Schema
+export interface DeploymentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  apiName: string;
+  $filter?: string;
+}
 export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1029,10 +1346,25 @@ export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/deployments",
     apiVersion: "2024-03-01",
   }),
-);
-export type DeploymentsListInput = typeof DeploymentsListInput.Type;
+) as unknown as Schema.Codec<DeploymentsListInput>;
 
 // Output Schema
+export interface DeploymentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1056,8 +1388,7 @@ export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type DeploymentsListOutput = typeof DeploymentsListOutput.Type;
+}) as unknown as Schema.Codec<DeploymentsListOutput>;
 
 // The operation
 /**
@@ -1076,6 +1407,31 @@ export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsListOutput,
 }));
 // Input Schema
+export interface EnvironmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  environmentName: string;
+  properties?: {
+    title: string;
+    description?: string;
+    kind: "development" | "testing" | "staging" | "production";
+    server?: {
+      type?:
+        | "Azure API Management"
+        | "Azure compute service"
+        | "Apigee API Management"
+        | "AWS API Gateway"
+        | "Kong API Gateway"
+        | "Kubernetes"
+        | "MuleSoft API Management";
+      managementPortalUri?: string[];
+    };
+    onboarding?: { instructions?: string; developerPortalUri?: string[] };
+    customProperties?: unknown;
+  };
+}
 export const EnvironmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1124,11 +1480,22 @@ export const EnvironmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments/{environmentName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type EnvironmentsCreateOrUpdateInput =
-  typeof EnvironmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface EnvironmentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1148,9 +1515,7 @@ export const EnvironmentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentsCreateOrUpdateOutput =
-  typeof EnvironmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1170,6 +1535,13 @@ export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  environmentName: string;
+}
 export const EnvironmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1183,12 +1555,12 @@ export const EnvironmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments/{environmentName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type EnvironmentsDeleteInput = typeof EnvironmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsDeleteInput>;
 
 // Output Schema
-export const EnvironmentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentsDeleteOutput = typeof EnvironmentsDeleteOutput.Type;
+export type EnvironmentsDeleteOutput = void;
+export const EnvironmentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDeleteOutput>;
 
 // The operation
 /**
@@ -1206,6 +1578,13 @@ export const EnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentsDeleteOutput,
 }));
 // Input Schema
+export interface EnvironmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  environmentName: string;
+}
 export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1218,10 +1597,22 @@ export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments/{environmentName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type EnvironmentsGetInput = typeof EnvironmentsGetInput.Type;
+) as unknown as Schema.Codec<EnvironmentsGetInput>;
 
 // Output Schema
+export interface EnvironmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1240,8 +1631,7 @@ export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EnvironmentsGetOutput = typeof EnvironmentsGetOutput.Type;
+}) as unknown as Schema.Codec<EnvironmentsGetOutput>;
 
 // The operation
 /**
@@ -1259,6 +1649,13 @@ export const EnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentsGetOutput,
 }));
 // Input Schema
+export interface EnvironmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  $filter?: string;
+}
 export const EnvironmentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1271,10 +1668,25 @@ export const EnvironmentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments",
     apiVersion: "2024-03-01",
   }),
-);
-export type EnvironmentsListInput = typeof EnvironmentsListInput.Type;
+) as unknown as Schema.Codec<EnvironmentsListInput>;
 
 // Output Schema
+export interface EnvironmentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EnvironmentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -1310,8 +1722,7 @@ export const EnvironmentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type EnvironmentsListOutput = typeof EnvironmentsListOutput.Type;
+) as unknown as Schema.Codec<EnvironmentsListOutput>;
 
 // The operation
 /**
@@ -1329,6 +1740,20 @@ export const EnvironmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentsListOutput,
 }));
 // Input Schema
+export interface MetadataSchemasCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  metadataSchemaName: string;
+  properties?: {
+    schema: string;
+    assignedTo?: {
+      entity?: "api" | "environment" | "deployment";
+      required?: boolean;
+      deprecated?: boolean;
+    }[];
+  };
+}
 export const MetadataSchemasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1357,11 +1782,22 @@ export const MetadataSchemasCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/metadataSchemas/{metadataSchemaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type MetadataSchemasCreateOrUpdateInput =
-  typeof MetadataSchemasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MetadataSchemasCreateOrUpdateInput>;
 
 // Output Schema
+export interface MetadataSchemasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetadataSchemasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1381,9 +1817,7 @@ export const MetadataSchemasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MetadataSchemasCreateOrUpdateOutput =
-  typeof MetadataSchemasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MetadataSchemasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1401,6 +1835,12 @@ export const MetadataSchemasCreateOrUpdate =
     outputSchema: MetadataSchemasCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MetadataSchemasDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  metadataSchemaName: string;
+}
 export const MetadataSchemasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1413,14 +1853,12 @@ export const MetadataSchemasDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/metadataSchemas/{metadataSchemaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type MetadataSchemasDeleteInput = typeof MetadataSchemasDeleteInput.Type;
+  ) as unknown as Schema.Codec<MetadataSchemasDeleteInput>;
 
 // Output Schema
+export type MetadataSchemasDeleteOutput = void;
 export const MetadataSchemasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MetadataSchemasDeleteOutput =
-  typeof MetadataSchemasDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MetadataSchemasDeleteOutput>;
 
 // The operation
 /**
@@ -1439,6 +1877,12 @@ export const MetadataSchemasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MetadataSchemasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  metadataSchemaName: string;
+}
 export const MetadataSchemasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1451,10 +1895,22 @@ export const MetadataSchemasGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/metadataSchemas/{metadataSchemaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type MetadataSchemasGetInput = typeof MetadataSchemasGetInput.Type;
+  ) as unknown as Schema.Codec<MetadataSchemasGetInput>;
 
 // Output Schema
+export interface MetadataSchemasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetadataSchemasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1474,8 +1930,7 @@ export const MetadataSchemasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MetadataSchemasGetOutput = typeof MetadataSchemasGetOutput.Type;
+  }) as unknown as Schema.Codec<MetadataSchemasGetOutput>;
 
 // The operation
 /**
@@ -1492,6 +1947,12 @@ export const MetadataSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataSchemasGetOutput,
 }));
 // Input Schema
+export interface MetadataSchemasListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  $filter?: string;
+}
 export const MetadataSchemasListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1504,10 +1965,25 @@ export const MetadataSchemasListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/metadataSchemas",
       apiVersion: "2024-03-01",
     }),
-  );
-export type MetadataSchemasListInput = typeof MetadataSchemasListInput.Type;
+  ) as unknown as Schema.Codec<MetadataSchemasListInput>;
 
 // Output Schema
+export interface MetadataSchemasListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MetadataSchemasListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1542,8 +2018,7 @@ export const MetadataSchemasListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MetadataSchemasListOutput = typeof MetadataSchemasListOutput.Type;
+  }) as unknown as Schema.Codec<MetadataSchemasListOutput>;
 
 // The operation
 /**
@@ -1560,6 +2035,7 @@ export const MetadataSchemasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataSchemasListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1568,10 +2044,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ApiCenter/operations",
     apiVersion: "2024-03-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1594,8 +2084,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1608,6 +2097,27 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  properties?: { provisioningState?: "Succeeded" | "Failed" | "Canceled" };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1649,11 +2159,22 @@ export const ServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ServicesCreateOrUpdateInput =
-  typeof ServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1673,9 +2194,7 @@ export const ServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServicesCreateOrUpdateOutput =
-  typeof ServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1693,6 +2212,11 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1703,12 +2227,12 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+export type ServicesDeleteOutput = void;
+export const ServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -1724,6 +2248,12 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
+export interface ServicesExportMetadataSchemaInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  assignedTo?: "api" | "environment" | "deployment";
+}
 export const ServicesExportMetadataSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1738,18 +2268,18 @@ export const ServicesExportMetadataSchemaInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/exportMetadataSchema",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ServicesExportMetadataSchemaInput =
-  typeof ServicesExportMetadataSchemaInput.Type;
+  ) as unknown as Schema.Codec<ServicesExportMetadataSchemaInput>;
 
 // Output Schema
+export interface ServicesExportMetadataSchemaOutput {
+  format?: "inline" | "link";
+  value?: string;
+}
 export const ServicesExportMetadataSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     format: Schema.optional(Schema.Literals(["inline", "link"])),
     value: Schema.optional(Schema.String),
-  });
-export type ServicesExportMetadataSchemaOutput =
-  typeof ServicesExportMetadataSchemaOutput.Type;
+  }) as unknown as Schema.Codec<ServicesExportMetadataSchemaOutput>;
 
 // The operation
 /**
@@ -1766,6 +2296,11 @@ export const ServicesExportMetadataSchema =
     outputSchema: ServicesExportMetadataSchemaOutput,
   }));
 // Input Schema
+export interface ServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1776,10 +2311,22 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ServicesGetInput = typeof ServicesGetInput.Type;
+) as unknown as Schema.Codec<ServicesGetInput>;
 
 // Output Schema
+export interface ServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1798,8 +2345,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServicesGetOutput = typeof ServicesGetOutput.Type;
+}) as unknown as Schema.Codec<ServicesGetOutput>;
 
 // The operation
 /**
@@ -1815,6 +2361,10 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
+export interface ServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1825,11 +2375,25 @@ export const ServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ServicesListByResourceGroupInput =
-  typeof ServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface ServicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1864,9 +2428,7 @@ export const ServicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServicesListByResourceGroupOutput =
-  typeof ServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1883,6 +2445,9 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1892,11 +2457,25 @@ export const ServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiCenter/services",
       apiVersion: "2024-03-01",
     }),
-  );
-export type ServicesListBySubscriptionInput =
-  typeof ServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface ServicesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1931,9 +2510,7 @@ export const ServicesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServicesListBySubscriptionOutput =
-  typeof ServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1949,6 +2526,25 @@ export const ServicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1981,10 +2577,22 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
+) as unknown as Schema.Codec<ServicesUpdateInput>;
 
 // Output Schema
+export interface ServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2003,8 +2611,7 @@ export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ServicesUpdateOutput>;
 
 // The operation
 /**
@@ -2020,6 +2627,13 @@ export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
+export interface WorkspacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+  properties?: { title: string; description?: string };
+}
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2038,11 +2652,22 @@ export const WorkspacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type WorkspacesCreateOrUpdateInput =
-  typeof WorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkspacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2062,9 +2687,7 @@ export const WorkspacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkspacesCreateOrUpdateOutput =
-  typeof WorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2083,6 +2706,12 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+}
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2094,12 +2723,12 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
+) as unknown as Schema.Codec<WorkspacesDeleteInput>;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
+export type WorkspacesDeleteOutput = void;
+export const WorkspacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -2116,6 +2745,12 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
+export interface WorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  workspaceName: string;
+}
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2127,10 +2762,22 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
+) as unknown as Schema.Codec<WorkspacesGetInput>;
 
 // Output Schema
+export interface WorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2149,8 +2796,7 @@ export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesGetOutput>;
 
 // The operation
 /**
@@ -2167,6 +2813,12 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
+export interface WorkspacesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  $filter?: string;
+}
 export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2178,10 +2830,25 @@ export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces",
     apiVersion: "2024-03-01",
   }),
-);
-export type WorkspacesListInput = typeof WorkspacesListInput.Type;
+) as unknown as Schema.Codec<WorkspacesListInput>;
 
 // Output Schema
+export interface WorkspacesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2205,8 +2872,7 @@ export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesListOutput>;
 
 // The operation
 /**

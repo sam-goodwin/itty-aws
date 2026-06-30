@@ -4,20 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1MergeABranchInput {
+  branch_id_or_ref: string;
+  migration_version?: string;
+}
 export const V1MergeABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   migration_version: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/merge" }),
-);
-export type V1MergeABranchInput = typeof V1MergeABranchInput.Type;
+) as unknown as Schema.Codec<V1MergeABranchInput>;
 
 // Output Schema
+export interface V1MergeABranchOutput {
+  workflow_run_id: string;
+  message: "ok";
+}
 export const V1MergeABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflow_run_id: Schema.String,
   message: Schema.Literals(["ok"]),
-});
-export type V1MergeABranchOutput = typeof V1MergeABranchOutput.Type;
+}) as unknown as Schema.Codec<V1MergeABranchOutput>;
 
 // The operation
 /**

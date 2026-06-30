@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CommentsThreadRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const CommentsThreadRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const CommentsThreadRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/comments/{id}/thread/",
     }),
-  );
-export type CommentsThreadRetrieveInput =
-  typeof CommentsThreadRetrieveInput.Type;
+  ) as unknown as Schema.Codec<CommentsThreadRetrieveInput>;
 
 // Output Schema
+export type CommentsThreadRetrieveOutput = void;
 export const CommentsThreadRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CommentsThreadRetrieveOutput =
-  typeof CommentsThreadRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommentsThreadRetrieveOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface PhotoId {
   id?: string;
 }
 
-export const PhotoId: Schema.Schema<PhotoId> =
+export const PhotoId: Schema.Codec<PhotoId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "PhotoId" });
@@ -39,7 +39,7 @@ export interface Level {
   number?: number;
 }
 
-export const Level: Schema.Schema<Level> =
+export const Level: Schema.Codec<Level> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     number: Schema.optional(Schema.Number),
@@ -52,7 +52,7 @@ export interface LatLng {
   latitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const LatLng: Schema.Codec<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longitude: Schema.optional(Schema.Number),
     latitude: Schema.optional(Schema.Number),
@@ -77,7 +77,7 @@ export interface Pose {
   accuracyMeters?: number;
 }
 
-export const Pose: Schema.Schema<Pose> =
+export const Pose: Schema.Codec<Pose> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     altitude: Schema.optional(Schema.Number),
     pitch: Schema.optional(Schema.Number),
@@ -94,7 +94,7 @@ export interface Connection {
   target?: PhotoId;
 }
 
-export const Connection: Schema.Schema<Connection> =
+export const Connection: Schema.Codec<Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(PhotoId),
   }).annotate({ identifier: "Connection" });
@@ -108,7 +108,7 @@ export interface Place {
   languageCode?: string;
 }
 
-export const Place: Schema.Schema<Place> =
+export const Place: Schema.Codec<Place> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     placeId: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface UploadRef {
   uploadUrl?: string;
 }
 
-export const UploadRef: Schema.Schema<UploadRef> =
+export const UploadRef: Schema.Codec<UploadRef> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "UploadRef" });
@@ -167,7 +167,7 @@ export interface Photo {
   uploadTime?: string;
 }
 
-export const Photo: Schema.Schema<Photo> =
+export const Photo: Schema.Codec<Photo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadUrl: Schema.optional(Schema.String),
     viewCount: Schema.optional(Schema.String),
@@ -193,7 +193,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -209,7 +209,7 @@ export interface PhotoResponse {
   photo?: Photo;
 }
 
-export const PhotoResponse: Schema.Schema<PhotoResponse> =
+export const PhotoResponse: Schema.Codec<PhotoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Status),
     photo: Schema.optional(Photo),
@@ -220,7 +220,7 @@ export interface BatchGetPhotosResponse {
   results?: ReadonlyArray<PhotoResponse>;
 }
 
-export const BatchGetPhotosResponse: Schema.Schema<BatchGetPhotosResponse> =
+export const BatchGetPhotosResponse: Schema.Codec<BatchGetPhotosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(PhotoResponse)),
   }).annotate({ identifier: "BatchGetPhotosResponse" });
@@ -236,7 +236,7 @@ export interface Measurement3d {
   y?: number;
 }
 
-export const Measurement3d: Schema.Schema<Measurement3d> =
+export const Measurement3d: Schema.Codec<Measurement3d> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     z: Schema.optional(Schema.Number),
@@ -253,12 +253,13 @@ export interface Imu {
   magUt?: ReadonlyArray<Measurement3d>;
 }
 
-export const Imu: Schema.Schema<Imu> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Imu: Schema.Codec<Imu> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     gyroRps: Schema.optional(Schema.Array(Measurement3d)),
     accelMpsps: Schema.optional(Schema.Array(Measurement3d)),
     magUt: Schema.optional(Schema.Array(Measurement3d)),
-  }).annotate({ identifier: "Imu" });
+  },
+).annotate({ identifier: "Imu" });
 
 export interface ImuDataGapFailureDetails {
   /** Relative time (from the start of the video stream) when the gap started. */
@@ -267,7 +268,7 @@ export interface ImuDataGapFailureDetails {
   gapDuration?: string;
 }
 
-export const ImuDataGapFailureDetails: Schema.Schema<ImuDataGapFailureDetails> =
+export const ImuDataGapFailureDetails: Schema.Codec<ImuDataGapFailureDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gapStartTime: Schema.optional(Schema.String),
     gapDuration: Schema.optional(Schema.String),
@@ -280,7 +281,7 @@ export interface GpsDataGapFailureDetails {
   gapDuration?: string;
 }
 
-export const GpsDataGapFailureDetails: Schema.Schema<GpsDataGapFailureDetails> =
+export const GpsDataGapFailureDetails: Schema.Codec<GpsDataGapFailureDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gapStartTime: Schema.optional(Schema.String),
     gapDuration: Schema.optional(Schema.String),
@@ -297,7 +298,7 @@ export interface NoOverlapGpsFailureDetails {
   videoStartTime?: string;
 }
 
-export const NoOverlapGpsFailureDetails: Schema.Schema<NoOverlapGpsFailureDetails> =
+export const NoOverlapGpsFailureDetails: Schema.Codec<NoOverlapGpsFailureDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gpsEndTime: Schema.optional(Schema.String),
     videoEndTime: Schema.optional(Schema.String),
@@ -310,7 +311,7 @@ export interface InsufficientGpsFailureDetails {
   gpsPointsFound?: number;
 }
 
-export const InsufficientGpsFailureDetails: Schema.Schema<InsufficientGpsFailureDetails> =
+export const InsufficientGpsFailureDetails: Schema.Codec<InsufficientGpsFailureDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gpsPointsFound: Schema.optional(Schema.Number),
   }).annotate({ identifier: "InsufficientGpsFailureDetails" });
@@ -320,7 +321,7 @@ export interface NotOutdoorsFailureDetails {
   startTime?: string;
 }
 
-export const NotOutdoorsFailureDetails: Schema.Schema<NotOutdoorsFailureDetails> =
+export const NotOutdoorsFailureDetails: Schema.Codec<NotOutdoorsFailureDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "NotOutdoorsFailureDetails" });
@@ -338,7 +339,7 @@ export interface ProcessingFailureDetails {
   notOutdoorsDetails?: NotOutdoorsFailureDetails;
 }
 
-export const ProcessingFailureDetails: Schema.Schema<ProcessingFailureDetails> =
+export const ProcessingFailureDetails: Schema.Codec<ProcessingFailureDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imuDataGapDetails: Schema.optional(ImuDataGapFailureDetails),
     gpsDataGapDetails: Schema.optional(GpsDataGapFailureDetails),
@@ -354,7 +355,7 @@ export interface LatLngBounds {
   northeast?: LatLng;
 }
 
-export const LatLngBounds: Schema.Schema<LatLngBounds> =
+export const LatLngBounds: Schema.Codec<LatLngBounds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     southwest: Schema.optional(LatLng),
     northeast: Schema.optional(LatLng),
@@ -425,7 +426,7 @@ export interface PhotoSequence {
   filename?: string;
 }
 
-export const PhotoSequence: Schema.Schema<PhotoSequence> =
+export const PhotoSequence: Schema.Codec<PhotoSequence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     uploadTime: Schema.optional(Schema.String),
@@ -457,7 +458,7 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -473,7 +474,7 @@ export interface ListPhotosResponse {
   nextPageToken?: string;
 }
 
-export const ListPhotosResponse: Schema.Schema<ListPhotosResponse> =
+export const ListPhotosResponse: Schema.Codec<ListPhotosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     photos: Schema.optional(Schema.Array(Photo)),
     nextPageToken: Schema.optional(Schema.String),
@@ -486,7 +487,7 @@ export interface UpdatePhotoRequest {
   updateMask?: string;
 }
 
-export const UpdatePhotoRequest: Schema.Schema<UpdatePhotoRequest> =
+export const UpdatePhotoRequest: Schema.Codec<UpdatePhotoRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     photo: Schema.optional(Photo),
     updateMask: Schema.optional(Schema.String),
@@ -497,14 +498,14 @@ export interface BatchUpdatePhotosRequest {
   updatePhotoRequests?: ReadonlyArray<UpdatePhotoRequest>;
 }
 
-export const BatchUpdatePhotosRequest: Schema.Schema<BatchUpdatePhotosRequest> =
+export const BatchUpdatePhotosRequest: Schema.Codec<BatchUpdatePhotosRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updatePhotoRequests: Schema.optional(Schema.Array(UpdatePhotoRequest)),
   }).annotate({ identifier: "BatchUpdatePhotosRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -514,7 +515,7 @@ export interface BatchDeletePhotosRequest {
   photoIds?: ReadonlyArray<string>;
 }
 
-export const BatchDeletePhotosRequest: Schema.Schema<BatchDeletePhotosRequest> =
+export const BatchDeletePhotosRequest: Schema.Codec<BatchDeletePhotosRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     photoIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeletePhotosRequest" });
@@ -526,7 +527,7 @@ export interface ListPhotoSequencesResponse {
   nextPageToken?: string;
 }
 
-export const ListPhotoSequencesResponse: Schema.Schema<ListPhotoSequencesResponse> =
+export const ListPhotoSequencesResponse: Schema.Codec<ListPhotoSequencesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     photoSequences: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -537,7 +538,7 @@ export interface BatchUpdatePhotosResponse {
   results?: ReadonlyArray<PhotoResponse>;
 }
 
-export const BatchUpdatePhotosResponse: Schema.Schema<BatchUpdatePhotosResponse> =
+export const BatchUpdatePhotosResponse: Schema.Codec<BatchUpdatePhotosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(PhotoResponse)),
   }).annotate({ identifier: "BatchUpdatePhotosResponse" });
@@ -547,7 +548,7 @@ export interface BatchDeletePhotosResponse {
   status?: ReadonlyArray<Status>;
 }
 
-export const BatchDeletePhotosResponse: Schema.Schema<BatchDeletePhotosResponse> =
+export const BatchDeletePhotosResponse: Schema.Codec<BatchDeletePhotosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Array(Status)),
   }).annotate({ identifier: "BatchDeletePhotosResponse" });
@@ -623,7 +624,7 @@ export const ListPhotoSequencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/photoSequences" }),
     svc,
-  ) as unknown as Schema.Schema<ListPhotoSequencesRequest>;
+  ) as unknown as Schema.Codec<ListPhotoSequencesRequest>;
 
 export type ListPhotoSequencesResponse_Op = ListPhotoSequencesResponse;
 export const ListPhotoSequencesResponse_Op =
@@ -658,7 +659,7 @@ export const StartUploadPhotoRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/photo:startUpload", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StartUploadPhotoRequest>;
+  ) as unknown as Schema.Codec<StartUploadPhotoRequest>;
 
 export type StartUploadPhotoResponse = UploadRef;
 export const StartUploadPhotoResponse = /*@__PURE__*/ /*#__PURE__*/ UploadRef;
@@ -700,7 +701,7 @@ export const GetPhotoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/photo/{photoId}" }),
   svc,
-) as unknown as Schema.Schema<GetPhotoRequest>;
+) as unknown as Schema.Codec<GetPhotoRequest>;
 
 export type GetPhotoResponse = Photo;
 export const GetPhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Photo;
@@ -729,7 +730,7 @@ export const DeletePhotoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/photo/{photoId}" }),
   svc,
-) as unknown as Schema.Schema<DeletePhotoRequest>;
+) as unknown as Schema.Codec<DeletePhotoRequest>;
 
 export type DeletePhotoResponse = Empty;
 export const DeletePhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -763,7 +764,7 @@ export const CreatePhotoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/photo", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreatePhotoRequest>;
+) as unknown as Schema.Codec<CreatePhotoRequest>;
 
 export type CreatePhotoResponse = Photo;
 export const CreatePhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Photo;
@@ -803,7 +804,7 @@ export const UpdatePhotoRequest_Op = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "v1/photo/{id}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdatePhotoRequest_Op>;
+) as unknown as Schema.Codec<UpdatePhotoRequest_Op>;
 
 export type UpdatePhotoResponse = Photo;
 export const UpdatePhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Photo;
@@ -838,7 +839,7 @@ export const BatchDeletePhotosRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/photos:batchDelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeletePhotosRequest_Op>;
+  ) as unknown as Schema.Codec<BatchDeletePhotosRequest_Op>;
 
 export type BatchDeletePhotosResponse_Op = BatchDeletePhotosResponse;
 export const BatchDeletePhotosResponse_Op =
@@ -883,7 +884,7 @@ export const BatchGetPhotosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/photos:batchGet" }),
   svc,
-) as unknown as Schema.Schema<BatchGetPhotosRequest>;
+) as unknown as Schema.Codec<BatchGetPhotosRequest>;
 
 export type BatchGetPhotosResponse_Op = BatchGetPhotosResponse;
 export const BatchGetPhotosResponse_Op =
@@ -927,7 +928,7 @@ export const ListPhotosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/photos" }),
   svc,
-) as unknown as Schema.Schema<ListPhotosRequest>;
+) as unknown as Schema.Codec<ListPhotosRequest>;
 
 export type ListPhotosResponse_Op = ListPhotosResponse;
 export const ListPhotosResponse_Op =
@@ -962,7 +963,7 @@ export const BatchUpdatePhotosRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/photos:batchUpdate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdatePhotosRequest_Op>;
+  ) as unknown as Schema.Codec<BatchUpdatePhotosRequest_Op>;
 
 export type BatchUpdatePhotosResponse_Op = BatchUpdatePhotosResponse;
 export const BatchUpdatePhotosResponse_Op =
@@ -1002,7 +1003,7 @@ export const StartUploadPhotoSequenceRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartUploadPhotoSequenceRequest>;
+  ) as unknown as Schema.Codec<StartUploadPhotoSequenceRequest>;
 
 export type StartUploadPhotoSequenceResponse = UploadRef;
 export const StartUploadPhotoSequenceResponse =
@@ -1041,7 +1042,7 @@ export const CreatePhotoSequenceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/photoSequence", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePhotoSequenceRequest>;
+  ) as unknown as Schema.Codec<CreatePhotoSequenceRequest>;
 
 export type CreatePhotoSequenceResponse = Operation;
 export const CreatePhotoSequenceResponse =
@@ -1083,7 +1084,7 @@ export const GetPhotoSequenceRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/photoSequence/{sequenceId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPhotoSequenceRequest>;
+  ) as unknown as Schema.Codec<GetPhotoSequenceRequest>;
 
 export type GetPhotoSequenceResponse = Operation;
 export const GetPhotoSequenceResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1113,7 +1114,7 @@ export const DeletePhotoSequenceRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/photoSequence/{sequenceId}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePhotoSequenceRequest>;
+  ) as unknown as Schema.Codec<DeletePhotoSequenceRequest>;
 
 export type DeletePhotoSequenceResponse = Empty;
 export const DeletePhotoSequenceResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface GoogleTypeExpr {
   expression?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   allowedValues?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues> =
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues: Schema.Codec<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deniedValues: Schema.optional(Schema.Array(Schema.String)),
     allowedValues: Schema.optional(Schema.Array(Schema.String)),
@@ -71,7 +71,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   parameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> =
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule: Schema.Codec<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     denyAll: Schema.optional(Schema.Boolean),
     condition: Schema.optional(GoogleTypeExpr),
@@ -96,7 +96,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpec {
   rules?: ReadonlyArray<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpec: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpec> =
+export const GoogleCloudOrgpolicyV2PolicySpec: Schema.Codec<GoogleCloudOrgpolicyV2PolicySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     reset: Schema.optional(Schema.Boolean),
@@ -114,7 +114,7 @@ export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
   spec?: GoogleCloudOrgpolicyV2PolicySpec;
 }
 
-export const GoogleCloudOrgpolicyV2AlternatePolicySpec: Schema.Schema<GoogleCloudOrgpolicyV2AlternatePolicySpec> =
+export const GoogleCloudOrgpolicyV2AlternatePolicySpec: Schema.Codec<GoogleCloudOrgpolicyV2AlternatePolicySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     launch: Schema.optional(Schema.String),
     spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
@@ -129,7 +129,7 @@ export interface GoogleCloudPolicysimulatorV1betaAccessTuple {
   fullResourceName?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaAccessTuple: Schema.Schema<GoogleCloudPolicysimulatorV1betaAccessTuple> =
+export const GoogleCloudPolicysimulatorV1betaAccessTuple: Schema.Codec<GoogleCloudPolicysimulatorV1betaAccessTuple> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     principal: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
@@ -157,7 +157,7 @@ export interface GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPrevie
   resourcesPending?: number;
 }
 
-export const GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata: Schema.Schema<GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata> =
+export const GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata: Schema.Codec<GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -179,7 +179,7 @@ export interface GoogleIamV1Binding {
   members?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(GoogleTypeExpr),
     role: Schema.optional(Schema.String),
@@ -198,7 +198,7 @@ export interface GoogleIamV1AuditLogConfig {
     | (string & {});
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
@@ -211,7 +211,7 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
@@ -228,7 +228,7 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
     version: Schema.optional(Schema.Number),
@@ -243,7 +243,7 @@ export interface GoogleCloudPolicysimulatorV1ReplayConfig {
   policyOverlay?: Record<string, GoogleIamV1Policy>;
 }
 
-export const GoogleCloudPolicysimulatorV1ReplayConfig: Schema.Schema<GoogleCloudPolicysimulatorV1ReplayConfig> =
+export const GoogleCloudPolicysimulatorV1ReplayConfig: Schema.Codec<GoogleCloudPolicysimulatorV1ReplayConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logSource: Schema.optional(Schema.String),
     policyOverlay: Schema.optional(
@@ -260,7 +260,7 @@ export interface GoogleTypeDate {
   day?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
+export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -282,7 +282,7 @@ export interface GoogleCloudPolicysimulatorV1ReplayResultsSummary {
   unchangedCount?: number;
 }
 
-export const GoogleCloudPolicysimulatorV1ReplayResultsSummary: Schema.Schema<GoogleCloudPolicysimulatorV1ReplayResultsSummary> =
+export const GoogleCloudPolicysimulatorV1ReplayResultsSummary: Schema.Codec<GoogleCloudPolicysimulatorV1ReplayResultsSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     differenceCount: Schema.optional(Schema.Number),
     errorCount: Schema.optional(Schema.Number),
@@ -311,7 +311,7 @@ export interface GoogleCloudPolicysimulatorV1Replay {
     | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1Replay: Schema.Schema<GoogleCloudPolicysimulatorV1Replay> =
+export const GoogleCloudPolicysimulatorV1Replay: Schema.Codec<GoogleCloudPolicysimulatorV1Replay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(GoogleCloudPolicysimulatorV1ReplayConfig),
     resultsSummary: Schema.optional(
@@ -334,7 +334,7 @@ export interface GoogleCloudOrgpolicyV2Policy {
   etag?: string;
 }
 
-export const GoogleCloudOrgpolicyV2Policy: Schema.Schema<GoogleCloudOrgpolicyV2Policy> =
+export const GoogleCloudOrgpolicyV2Policy: Schema.Codec<GoogleCloudOrgpolicyV2Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
     name: Schema.optional(Schema.String),
@@ -350,7 +350,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay {
   policyParent?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay> =
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleCloudOrgpolicyV2Policy),
     policyParent: Schema.optional(Schema.String),
@@ -385,7 +385,7 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   updateTime?: string;
 }
 
-export const GoogleCloudOrgpolicyV2CustomConstraint: Schema.Schema<GoogleCloudOrgpolicyV2CustomConstraint> =
+export const GoogleCloudOrgpolicyV2CustomConstraint: Schema.Codec<GoogleCloudOrgpolicyV2CustomConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     methodTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -404,7 +404,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstrain
   customConstraintParent?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay> =
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
     customConstraintParent: Schema.optional(Schema.String),
@@ -420,7 +420,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay {
   customConstraints?: ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay> =
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policies: Schema.optional(
       Schema.Array(
@@ -449,7 +449,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResou
   compliant?: number;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts> =
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Number),
     scanned: Schema.optional(Schema.Number),
@@ -468,7 +468,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplayConfig {
   logSource?: "LOG_SOURCE_UNSPECIFIED" | "RECENT_ACCESSES" | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1betaReplayConfig: Schema.Schema<GoogleCloudPolicysimulatorV1betaReplayConfig> =
+export const GoogleCloudPolicysimulatorV1betaReplayConfig: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplayConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyOverlay: Schema.optional(
       Schema.Record(Schema.String, GoogleIamV1Policy),
@@ -491,7 +491,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplayResultsSummary {
   differenceCount?: number;
 }
 
-export const GoogleCloudPolicysimulatorV1betaReplayResultsSummary: Schema.Schema<GoogleCloudPolicysimulatorV1betaReplayResultsSummary> =
+export const GoogleCloudPolicysimulatorV1betaReplayResultsSummary: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplayResultsSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newestDate: Schema.optional(GoogleTypeDate),
     errorCount: Schema.optional(Schema.Number),
@@ -520,7 +520,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplay {
   resultsSummary?: GoogleCloudPolicysimulatorV1betaReplayResultsSummary;
 }
 
-export const GoogleCloudPolicysimulatorV1betaReplay: Schema.Schema<GoogleCloudPolicysimulatorV1betaReplay> =
+export const GoogleCloudPolicysimulatorV1betaReplay: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -539,7 +539,7 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -565,7 +565,7 @@ export interface GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMemb
     | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership: Schema.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership> =
+export const GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership: Schema.Codec<GoogleCloudPolicysimulatorV1betaBindingExplanationAnnotatedMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membership: Schema.optional(Schema.String),
     relevance: Schema.optional(Schema.String),
@@ -613,7 +613,7 @@ export interface GoogleCloudPolicysimulatorV1betaBindingExplanation {
   >;
 }
 
-export const GoogleCloudPolicysimulatorV1betaBindingExplanation: Schema.Schema<GoogleCloudPolicysimulatorV1betaBindingExplanation> =
+export const GoogleCloudPolicysimulatorV1betaBindingExplanation: Schema.Codec<GoogleCloudPolicysimulatorV1betaBindingExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rolePermission: Schema.optional(Schema.String),
     rolePermissionRelevance: Schema.optional(Schema.String),
@@ -654,7 +654,7 @@ export interface GoogleCloudPolicysimulatorV1betaExplainedPolicy {
   fullResourceName?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaExplainedPolicy: Schema.Schema<GoogleCloudPolicysimulatorV1betaExplainedPolicy> =
+export const GoogleCloudPolicysimulatorV1betaExplainedPolicy: Schema.Codec<GoogleCloudPolicysimulatorV1betaExplainedPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevance: Schema.optional(Schema.String),
     access: Schema.optional(Schema.String),
@@ -682,7 +682,7 @@ export interface GoogleCloudPolicysimulatorV1betaExplainedAccess {
   policies?: ReadonlyArray<GoogleCloudPolicysimulatorV1betaExplainedPolicy>;
 }
 
-export const GoogleCloudPolicysimulatorV1betaExplainedAccess: Schema.Schema<GoogleCloudPolicysimulatorV1betaExplainedAccess> =
+export const GoogleCloudPolicysimulatorV1betaExplainedAccess: Schema.Codec<GoogleCloudPolicysimulatorV1betaExplainedAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessState: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -714,7 +714,7 @@ export interface GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPrev
     | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata: Schema.Schema<GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata> =
+export const GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata: Schema.Codec<GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourcesScanned: Schema.optional(Schema.Number),
     requestTime: Schema.optional(Schema.String),
@@ -744,7 +744,7 @@ export interface GoogleCloudPolicysimulatorV1betaAccessStateDiff {
     | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1betaAccessStateDiff: Schema.Schema<GoogleCloudPolicysimulatorV1betaAccessStateDiff> =
+export const GoogleCloudPolicysimulatorV1betaAccessStateDiff: Schema.Codec<GoogleCloudPolicysimulatorV1betaAccessStateDiff> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     simulated: Schema.optional(GoogleCloudPolicysimulatorV1betaExplainedAccess),
     baseline: Schema.optional(GoogleCloudPolicysimulatorV1betaExplainedAccess),
@@ -758,7 +758,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplayDiff {
   accessDiff?: GoogleCloudPolicysimulatorV1betaAccessStateDiff;
 }
 
-export const GoogleCloudPolicysimulatorV1betaReplayDiff: Schema.Schema<GoogleCloudPolicysimulatorV1betaReplayDiff> =
+export const GoogleCloudPolicysimulatorV1betaReplayDiff: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplayDiff> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessDiff: Schema.optional(
       GoogleCloudPolicysimulatorV1betaAccessStateDiff,
@@ -780,7 +780,7 @@ export interface GoogleCloudPolicysimulatorV1betaReplayResult {
   lastSeenDate?: GoogleTypeDate;
 }
 
-export const GoogleCloudPolicysimulatorV1betaReplayResult: Schema.Schema<GoogleCloudPolicysimulatorV1betaReplayResult> =
+export const GoogleCloudPolicysimulatorV1betaReplayResult: Schema.Codec<GoogleCloudPolicysimulatorV1betaReplayResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessTuple: Schema.optional(GoogleCloudPolicysimulatorV1betaAccessTuple),
     diff: Schema.optional(GoogleCloudPolicysimulatorV1betaReplayDiff),
@@ -799,7 +799,7 @@ export interface GoogleCloudPolicysimulatorV1betaResourceContext {
   assetType?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaResourceContext: Schema.Schema<GoogleCloudPolicysimulatorV1betaResourceContext> =
+export const GoogleCloudPolicysimulatorV1betaResourceContext: Schema.Codec<GoogleCloudPolicysimulatorV1betaResourceContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     ancestors: Schema.optional(Schema.Array(Schema.String)),
@@ -831,7 +831,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview {
   customConstraints?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview> =
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -859,7 +859,7 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(GoogleRpcStatus),
@@ -877,7 +877,7 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -895,7 +895,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolation {
   name?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolation: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation> =
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolation: Schema.Codec<GoogleCloudPolicysimulatorV1betaOrgPolicyViolation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(GoogleCloudPolicysimulatorV1betaResourceContext),
     customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
@@ -912,7 +912,7 @@ export interface GoogleCloudPolicysimulatorV1betaListReplayResultsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaListReplayResultsResponse: Schema.Schema<GoogleCloudPolicysimulatorV1betaListReplayResultsResponse> =
+export const GoogleCloudPolicysimulatorV1betaListReplayResultsResponse: Schema.Codec<GoogleCloudPolicysimulatorV1betaListReplayResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replayResults: Schema.optional(
       Schema.Array(GoogleCloudPolicysimulatorV1betaReplayResult),
@@ -927,7 +927,7 @@ export interface GoogleCloudPolicysimulatorV1ReplayOperationMetadata {
   startTime?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1ReplayOperationMetadata: Schema.Schema<GoogleCloudPolicysimulatorV1ReplayOperationMetadata> =
+export const GoogleCloudPolicysimulatorV1ReplayOperationMetadata: Schema.Codec<GoogleCloudPolicysimulatorV1ReplayOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
   }).annotate({
@@ -941,7 +941,7 @@ export interface GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviews
   orgPolicyViolationsPreviews?: ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview>;
 }
 
-export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse: Schema.Schema<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse> =
+export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse: Schema.Codec<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     orgPolicyViolationsPreviews: Schema.optional(
@@ -959,7 +959,7 @@ export interface GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse
   nextPageToken?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse: Schema.Schema<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse> =
+export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse: Schema.Codec<GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgPolicyViolations: Schema.optional(
       Schema.Array(GoogleCloudPolicysimulatorV1betaOrgPolicyViolation),
@@ -977,7 +977,7 @@ export interface GoogleCloudPolicysimulatorV1betaListReplaysResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaListReplaysResponse: Schema.Schema<GoogleCloudPolicysimulatorV1betaListReplaysResponse> =
+export const GoogleCloudPolicysimulatorV1betaListReplaysResponse: Schema.Codec<GoogleCloudPolicysimulatorV1betaListReplaysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replays: Schema.optional(
       Schema.Array(GoogleCloudPolicysimulatorV1betaReplay),
@@ -1052,7 +1052,7 @@ export const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>;
 
 export type GetOrganizationsLocationsAccessPolicySimulationsOperationsResponse =
   GoogleLongrunningOperation;
@@ -1096,7 +1096,7 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
       path: "v1beta/{+parent}/orgPolicyViolationsPreviews",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse;
@@ -1135,7 +1135,7 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview;
@@ -1179,7 +1179,7 @@ export const GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
+  ) as unknown as Schema.Codec<GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export type GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   GoogleLongrunningOperation;
@@ -1230,7 +1230,7 @@ export const CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export type CreateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   GoogleLongrunningOperation;
@@ -1267,7 +1267,7 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsReque
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResponse =
   GoogleLongrunningOperation;
@@ -1275,7 +1275,9 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API.OperationMethod<
@@ -1307,7 +1309,7 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/orgPolicyViolations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest>;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResponse =
   GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse;
@@ -1315,7 +1317,9 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListOrgPolicyViolations lists the OrgPolicyViolations that are present in an OrgPolicyViolationsPreview. */
 export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolations: API.PaginatedOperationMethod<
@@ -1351,7 +1355,7 @@ export const CreateOrganizationsLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/replays", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsReplaysRequest>;
 
 export type CreateOrganizationsLocationsReplaysResponse =
   GoogleLongrunningOperation;
@@ -1394,7 +1398,7 @@ export const ListOrganizationsLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/replays" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsReplaysRequest>;
 
 export type ListOrganizationsLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaListReplaysResponse;
@@ -1433,7 +1437,7 @@ export const GetOrganizationsLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsReplaysRequest>;
 
 export type GetOrganizationsLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaReplay;
@@ -1482,7 +1486,7 @@ export const ListOrganizationsLocationsReplaysOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsReplaysOperationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsReplaysOperationsRequest>;
 
 export type ListOrganizationsLocationsReplaysOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1521,7 +1525,7 @@ export const GetOrganizationsLocationsReplaysOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsReplaysOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsReplaysOperationsRequest>;
 
 export type GetOrganizationsLocationsReplaysOperationsResponse =
   GoogleLongrunningOperation;
@@ -1562,7 +1566,7 @@ export const ListOrganizationsLocationsReplaysResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/results" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsReplaysResultsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsReplaysResultsRequest>;
 
 export type ListOrganizationsLocationsReplaysResultsResponse =
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
@@ -1606,7 +1610,7 @@ export const CreateProjectsLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/replays", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsReplaysRequest>;
 
 export type CreateProjectsLocationsReplaysResponse = GoogleLongrunningOperation;
 export const CreateProjectsLocationsReplaysResponse =
@@ -1648,7 +1652,7 @@ export const ListProjectsLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/replays" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsReplaysRequest>;
 
 export type ListProjectsLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaListReplaysResponse;
@@ -1687,7 +1691,7 @@ export const GetProjectsLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsReplaysRequest>;
 
 export type GetProjectsLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaReplay;
@@ -1736,7 +1740,7 @@ export const ListProjectsLocationsReplaysOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsReplaysOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsReplaysOperationsRequest>;
 
 export type ListProjectsLocationsReplaysOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1775,7 +1779,7 @@ export const GetProjectsLocationsReplaysOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsReplaysOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsReplaysOperationsRequest>;
 
 export type GetProjectsLocationsReplaysOperationsResponse =
   GoogleLongrunningOperation;
@@ -1816,7 +1820,7 @@ export const ListProjectsLocationsReplaysResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/results" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsReplaysResultsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsReplaysResultsRequest>;
 
 export type ListProjectsLocationsReplaysResultsResponse =
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
@@ -1855,7 +1859,7 @@ export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
 export type GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsResponse =
   GoogleLongrunningOperation;
@@ -1890,7 +1894,7 @@ export const GetProjectsLocationsAccessPolicySimulationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>;
 
 export type GetProjectsLocationsAccessPolicySimulationsOperationsResponse =
   GoogleLongrunningOperation;
@@ -1925,7 +1929,7 @@ export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
 export type GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsResponse =
   GoogleLongrunningOperation;
@@ -1960,7 +1964,7 @@ export const GetFoldersLocationsAccessPolicySimulationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>;
 
 export type GetFoldersLocationsAccessPolicySimulationsOperationsResponse =
   GoogleLongrunningOperation;
@@ -2000,7 +2004,7 @@ export const CreateFoldersLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/replays", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateFoldersLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<CreateFoldersLocationsReplaysRequest>;
 
 export type CreateFoldersLocationsReplaysResponse = GoogleLongrunningOperation;
 export const CreateFoldersLocationsReplaysResponse =
@@ -2042,7 +2046,7 @@ export const ListFoldersLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/replays" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<ListFoldersLocationsReplaysRequest>;
 
 export type ListFoldersLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaListReplaysResponse;
@@ -2081,7 +2085,7 @@ export const GetFoldersLocationsReplaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersLocationsReplaysRequest>;
+  ) as unknown as Schema.Codec<GetFoldersLocationsReplaysRequest>;
 
 export type GetFoldersLocationsReplaysResponse =
   GoogleCloudPolicysimulatorV1betaReplay;
@@ -2130,7 +2134,7 @@ export const ListFoldersLocationsReplaysOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersLocationsReplaysOperationsRequest>;
+  ) as unknown as Schema.Codec<ListFoldersLocationsReplaysOperationsRequest>;
 
 export type ListFoldersLocationsReplaysOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -2169,7 +2173,7 @@ export const GetFoldersLocationsReplaysOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersLocationsReplaysOperationsRequest>;
+  ) as unknown as Schema.Codec<GetFoldersLocationsReplaysOperationsRequest>;
 
 export type GetFoldersLocationsReplaysOperationsResponse =
   GoogleLongrunningOperation;
@@ -2210,7 +2214,7 @@ export const ListFoldersLocationsReplaysResultsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/results" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersLocationsReplaysResultsRequest>;
+  ) as unknown as Schema.Codec<ListFoldersLocationsReplaysResultsRequest>;
 
 export type ListFoldersLocationsReplaysResultsResponse =
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
@@ -2262,7 +2266,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta/{+name}" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
 export const ListOperationsResponse =
@@ -2296,7 +2300,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = GoogleLongrunningOperation;
 export const GetOperationsResponse =

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -45,7 +45,7 @@ export interface NotificationSetting {
   name?: string;
 }
 
-export const NotificationSetting: Schema.Schema<NotificationSetting> =
+export const NotificationSetting: Schema.Codec<NotificationSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notificationTypes: Schema.optional(Schema.Array(Schema.String)),
     pubsubTopic: Schema.optional(Schema.String),
@@ -117,7 +117,7 @@ export const GetNotificationSettingAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetNotificationSettingAccountsRequest>;
+  ) as unknown as Schema.Codec<GetNotificationSettingAccountsRequest>;
 
 export type GetNotificationSettingAccountsResponse = NotificationSetting;
 export const GetNotificationSettingAccountsResponse =
@@ -157,7 +157,7 @@ export const UpdateNotificationSettingAccountsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateNotificationSettingAccountsRequest>;
+  ) as unknown as Schema.Codec<UpdateNotificationSettingAccountsRequest>;
 
 export type UpdateNotificationSettingAccountsResponse = NotificationSetting;
 export const UpdateNotificationSettingAccountsResponse =

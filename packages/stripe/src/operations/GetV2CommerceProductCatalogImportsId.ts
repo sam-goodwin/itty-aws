@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV2CommerceProductCatalogImportsIdInput {
+  id: string;
+}
 export const GetV2CommerceProductCatalogImportsIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,49 @@ export const GetV2CommerceProductCatalogImportsIdInput =
       method: "GET",
       path: "/v2/commerce/product_catalog/imports/{id}",
     }),
-  );
-export type GetV2CommerceProductCatalogImportsIdInput =
-  typeof GetV2CommerceProductCatalogImportsIdInput.Type;
+  ) as unknown as Schema.Codec<GetV2CommerceProductCatalogImportsIdInput>;
 
 // Output Schema
+export interface GetV2CommerceProductCatalogImportsIdOutput {
+  created: string;
+  feed_type: "inventory" | "pricing" | "product" | "promotion";
+  id: string;
+  livemode: boolean;
+  metadata: Record<string, string>;
+  mode: "replace" | "upsert";
+  object: "v2.commerce.product_catalog_import";
+  status:
+    | "awaiting_upload"
+    | "failed"
+    | "processing"
+    | "succeeded"
+    | "succeeded_with_errors";
+  status_details?: {
+    awaiting_upload?: { upload_url: { expires_at: string; url: string } };
+    failed?: {
+      code: "file_not_found" | "internal_error" | "invalid_file";
+      failure_message: string;
+      type: "cannot_proceed" | "transient_failure";
+    };
+    processing?: { error_count: string; success_count: string };
+    succeeded?: { success_count: string };
+    succeeded_with_errors?: {
+      error_count: string;
+      error_file: {
+        content_type: string;
+        download_url: { expires_at: string; url: string };
+        size: string;
+      };
+      samples: {
+        error_message: string;
+        field: string;
+        id: string;
+        row: string;
+      }[];
+      success_count: string;
+    };
+  };
+}
 export const GetV2CommerceProductCatalogImportsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.String,
@@ -93,9 +134,7 @@ export const GetV2CommerceProductCatalogImportsIdOutput =
         ),
       }),
     ),
-  });
-export type GetV2CommerceProductCatalogImportsIdOutput =
-  typeof GetV2CommerceProductCatalogImportsIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV2CommerceProductCatalogImportsIdOutput>;
 
 // The operation
 /**

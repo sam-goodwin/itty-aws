@@ -3,6 +3,18 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsModelsRetrieveInput {
+  project_id: string;
+  key_id?: string;
+  provider:
+    | "anthropic"
+    | "azure_openai"
+    | "fireworks"
+    | "gemini"
+    | "openai"
+    | "openrouter"
+    | "together_ai";
+}
 export const LlmAnalyticsModelsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,11 +33,12 @@ export const LlmAnalyticsModelsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/llm_analytics/models/",
     }),
-  );
-export type LlmAnalyticsModelsRetrieveInput =
-  typeof LlmAnalyticsModelsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsModelsRetrieveInput>;
 
 // Output Schema
+export interface LlmAnalyticsModelsRetrieveOutput {
+  models: { id: string; posthog_available: boolean }[];
+}
 export const LlmAnalyticsModelsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     models: Schema.Array(
@@ -34,9 +47,7 @@ export const LlmAnalyticsModelsRetrieveOutput =
         posthog_available: Schema.Boolean,
       }),
     ),
-  });
-export type LlmAnalyticsModelsRetrieveOutput =
-  typeof LlmAnalyticsModelsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsModelsRetrieveOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetQuotesQuotePdfInput {
+  quote: string;
+  expand?: string;
+}
 export const GetQuotesQuotePdfInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     quote: Schema.String.pipe(T.PathParam()),
@@ -14,12 +18,12 @@ export const GetQuotesQuotePdfInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/v1/quotes/{quote}/pdf",
     contentType: "form-urlencoded",
   }),
-);
-export type GetQuotesQuotePdfInput = typeof GetQuotesQuotePdfInput.Type;
+) as unknown as Schema.Codec<GetQuotesQuotePdfInput>;
 
 // Output Schema
-export const GetQuotesQuotePdfOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetQuotesQuotePdfOutput = typeof GetQuotesQuotePdfOutput.Type;
+export type GetQuotesQuotePdfOutput = void;
+export const GetQuotesQuotePdfOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetQuotesQuotePdfOutput>;
 
 // The operation
 /**

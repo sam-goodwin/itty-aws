@@ -4,15 +4,32 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PatchV1BranchesByBranchIdInput {
+  branchId: string;
+  isDefault?: boolean | null;
+}
 export const PatchV1BranchesByBranchIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branchId: Schema.String.pipe(T.PathParam()),
     isDefault: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  }).pipe(T.Http({ method: "PATCH", path: "/v1/branches/{branchId}" }));
-export type PatchV1BranchesByBranchIdInput =
-  typeof PatchV1BranchesByBranchIdInput.Type;
+  }).pipe(
+    T.Http({ method: "PATCH", path: "/v1/branches/{branchId}" }),
+  ) as unknown as Schema.Codec<PatchV1BranchesByBranchIdInput>;
 
 // Output Schema
+export interface PatchV1BranchesByBranchIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    gitName: string;
+    isDefault: boolean;
+    role: "production" | "preview";
+    createdAt: string;
+    updatedAt: string;
+    project: { id: string; url: string; name: string };
+  };
+}
 export const PatchV1BranchesByBranchIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -30,9 +47,7 @@ export const PatchV1BranchesByBranchIdOutput =
         name: Schema.String,
       }),
     }),
-  });
-export type PatchV1BranchesByBranchIdOutput =
-  typeof PatchV1BranchesByBranchIdOutput.Type;
+  }) as unknown as Schema.Codec<PatchV1BranchesByBranchIdOutput>;
 
 // The operation
 /**

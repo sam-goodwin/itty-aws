@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface RevokeGroupClusterMongoDbEmployeeAccessInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RevokeGroupClusterMongoDbEmployeeAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const RevokeGroupClusterMongoDbEmployeeAccessInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess",
     }),
-  );
-export type RevokeGroupClusterMongoDbEmployeeAccessInput =
-  typeof RevokeGroupClusterMongoDbEmployeeAccessInput.Type;
+  ) as unknown as Schema.Codec<RevokeGroupClusterMongoDbEmployeeAccessInput>;
 
 // Output Schema
+export type RevokeGroupClusterMongoDbEmployeeAccessOutput = void;
 export const RevokeGroupClusterMongoDbEmployeeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RevokeGroupClusterMongoDbEmployeeAccessOutput =
-  typeof RevokeGroupClusterMongoDbEmployeeAccessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeGroupClusterMongoDbEmployeeAccessOutput>;
 
 // The operation
 /**

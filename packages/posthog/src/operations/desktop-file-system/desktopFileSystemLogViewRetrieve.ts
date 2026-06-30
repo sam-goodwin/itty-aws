@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemLogViewRetrieveInput {
+  project_id: string;
+}
 export const DesktopFileSystemLogViewRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const DesktopFileSystemLogViewRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/desktop_file_system/log_view/",
     }),
-  );
-export type DesktopFileSystemLogViewRetrieveInput =
-  typeof DesktopFileSystemLogViewRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemLogViewRetrieveInput>;
 
 // Output Schema
+export type DesktopFileSystemLogViewRetrieveOutput = void;
 export const DesktopFileSystemLogViewRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DesktopFileSystemLogViewRetrieveOutput =
-  typeof DesktopFileSystemLogViewRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemLogViewRetrieveOutput>;
 
 // The operation
 /**

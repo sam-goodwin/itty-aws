@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DirectoryGroupsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  directory?: string;
+  user?: string;
+}
 export const DirectoryGroupsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -12,11 +20,26 @@ export const DirectoryGroupsControllerListInput =
     order: Schema.optional(Schema.String),
     directory: Schema.optional(Schema.String),
     user: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/directory_groups" }));
-export type DirectoryGroupsControllerListInput =
-  typeof DirectoryGroupsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/directory_groups" }),
+  ) as unknown as Schema.Codec<DirectoryGroupsControllerListInput>;
 
 // Output Schema
+export interface DirectoryGroupsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    idp_id?: string;
+    directory_id?: string;
+    organization_id?: string;
+    name?: string;
+    raw_attributes?: Record<string, unknown>;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const DirectoryGroupsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -43,9 +66,7 @@ export const DirectoryGroupsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type DirectoryGroupsControllerListOutput =
-  typeof DirectoryGroupsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<DirectoryGroupsControllerListOutput>;
 
 // The operation
 /**

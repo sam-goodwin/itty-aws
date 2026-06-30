@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EndpointsOpenapiSpecRetrieveInput {
+  name: string;
+  project_id: string;
+  version?: number;
+}
 export const EndpointsOpenapiSpecRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const EndpointsOpenapiSpecRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/endpoints/{name}/openapi.json/",
     }),
-  );
-export type EndpointsOpenapiSpecRetrieveInput =
-  typeof EndpointsOpenapiSpecRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EndpointsOpenapiSpecRetrieveInput>;
 
 // Output Schema
+export type EndpointsOpenapiSpecRetrieveOutput = void;
 export const EndpointsOpenapiSpecRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EndpointsOpenapiSpecRetrieveOutput =
-  typeof EndpointsOpenapiSpecRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsOpenapiSpecRetrieveOutput>;
 
 // The operation
 /**

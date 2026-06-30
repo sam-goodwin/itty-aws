@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SecretkeyGenerateInput {
+  app_name: string;
+  secret_name: string;
+  type?: string;
+  value?: number[];
+}
 export const SecretkeyGenerateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     app_name: Schema.String.pipe(T.PathParam()),
@@ -16,10 +22,18 @@ export const SecretkeyGenerateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/apps/{app_name}/secretkeys/{secret_name}/generate",
   }),
-);
-export type SecretkeyGenerateInput = typeof SecretkeyGenerateInput.Type;
+) as unknown as Schema.Codec<SecretkeyGenerateInput>;
 
 // Output Schema
+export interface SecretkeyGenerateOutput {
+  Version?: number;
+  created_at?: string;
+  name?: string;
+  public_key?: number[];
+  type?: string;
+  updated_at?: string;
+  version?: number;
+}
 export const SecretkeyGenerateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Version: Schema.optional(Schema.Number),
@@ -29,8 +43,7 @@ export const SecretkeyGenerateOutput =
     type: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
-  });
-export type SecretkeyGenerateOutput = typeof SecretkeyGenerateOutput.Type;
+  }) as unknown as Schema.Codec<SecretkeyGenerateOutput>;
 
 // The operation
 /**

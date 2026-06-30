@@ -3,6 +3,42 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LogsCountRangesCreateInput {
+  project_id: string;
+  query: {
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    targetBuckets?: number;
+    severityLevels?: (
+      | "trace"
+      | "debug"
+      | "info"
+      | "warn"
+      | "error"
+      | "fatal"
+    )[];
+    serviceNames?: string[];
+    searchTerm?: string;
+    filterGroup?: {
+      key?: string;
+      type?: "log" | "log_attribute" | "log_resource_attribute";
+      operator?:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_date_exact"
+        | "is_date_before"
+        | "is_date_after"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+  };
+}
 export const LogsCountRangesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -59,10 +95,13 @@ export const LogsCountRangesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/logs/count-ranges/",
     }),
-  );
-export type LogsCountRangesCreateInput = typeof LogsCountRangesCreateInput.Type;
+  ) as unknown as Schema.Codec<LogsCountRangesCreateInput>;
 
 // Output Schema
+export interface LogsCountRangesCreateOutput {
+  ranges: { date_from: string; date_to: string; count: number }[];
+  interval: string;
+}
 export const LogsCountRangesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ranges: Schema.Array(
@@ -73,9 +112,7 @@ export const LogsCountRangesCreateOutput =
       }),
     ),
     interval: Schema.String,
-  });
-export type LogsCountRangesCreateOutput =
-  typeof LogsCountRangesCreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsCountRangesCreateOutput>;
 
 // The operation
 /**

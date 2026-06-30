@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface BatchExportsBackfillsRetrieveInput {
+  batch_export_id: string;
+  id: string;
+  project_id: string;
+}
 export const BatchExportsBackfillsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,36 @@ export const BatchExportsBackfillsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/{id}/",
     }),
-  );
-export type BatchExportsBackfillsRetrieveInput =
-  typeof BatchExportsBackfillsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<BatchExportsBackfillsRetrieveInput>;
 
 // Output Schema
+export interface BatchExportsBackfillsRetrieveOutput {
+  id?: string;
+  progress?: {
+    total_runs?: number | null;
+    finished_runs?: number | null;
+    progress?: number | null;
+  } | null;
+  start_at?: string | null;
+  end_at?: string | null;
+  status?:
+    | "Cancelled"
+    | "Completed"
+    | "ContinuedAsNew"
+    | "Failed"
+    | "FailedRetryable"
+    | "Terminated"
+    | "TimedOut"
+    | "Running"
+    | "Starting";
+  created_at?: string;
+  finished_at?: string | null;
+  last_updated_at?: string;
+  total_records_count?: number | null;
+  adjusted_start_at?: string | null;
+  team?: number;
+  batch_export?: string;
+}
 export const BatchExportsBackfillsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -53,9 +83,7 @@ export const BatchExportsBackfillsRetrieveOutput =
     adjusted_start_at: Schema.optional(Schema.NullOr(Schema.String)),
     team: Schema.optional(Schema.Number),
     batch_export: Schema.optional(Schema.String),
-  });
-export type BatchExportsBackfillsRetrieveOutput =
-  typeof BatchExportsBackfillsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<BatchExportsBackfillsRetrieveOutput>;
 
 // The operation
 /**

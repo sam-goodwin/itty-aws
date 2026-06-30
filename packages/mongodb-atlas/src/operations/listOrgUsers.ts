@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgUsersInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  username?: string;
+  orgMembershipStatus?: string;
+  orgMembershipStatuses?: string;
+}
 export const ListOrgUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -14,12 +25,14 @@ export const ListOrgUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   username: Schema.optional(Schema.String),
   orgMembershipStatus: Schema.optional(Schema.String),
   orgMembershipStatuses: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/users" }));
-export type ListOrgUsersInput = typeof ListOrgUsersInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/users" }),
+) as unknown as Schema.Codec<ListOrgUsersInput>;
 
 // Output Schema
-export const ListOrgUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgUsersOutput = typeof ListOrgUsersOutput.Type;
+export type ListOrgUsersOutput = void;
+export const ListOrgUsersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgUsersOutput>;
 
 // The operation
 /**

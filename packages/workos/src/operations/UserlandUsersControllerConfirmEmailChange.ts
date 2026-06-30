@@ -9,6 +9,10 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerConfirmEmailChangeInput {
+  id: string;
+  code?: string;
+}
 export const UserlandUsersControllerConfirmEmailChangeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +22,28 @@ export const UserlandUsersControllerConfirmEmailChangeInput =
       method: "POST",
       path: "/user_management/users/{id}/email_change/confirm",
     }),
-  );
-export type UserlandUsersControllerConfirmEmailChangeInput =
-  typeof UserlandUsersControllerConfirmEmailChangeInput.Type;
+  ) as unknown as Schema.Codec<UserlandUsersControllerConfirmEmailChangeInput>;
 
 // Output Schema
+export interface UserlandUsersControllerConfirmEmailChangeOutput {
+  object: string;
+  user: {
+    object: string;
+    id: string;
+    first_name: string | null;
+    last_name: string | null;
+    name?: string | null;
+    profile_picture_url: string | null;
+    email: string;
+    email_verified: boolean;
+    external_id: string | null;
+    metadata?: Record<string, string>;
+    last_sign_in_at: string | null;
+    locale?: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+}
 export const UserlandUsersControllerConfirmEmailChangeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -42,9 +63,7 @@ export const UserlandUsersControllerConfirmEmailChangeOutput =
       created_at: Schema.String,
       updated_at: Schema.String,
     }),
-  });
-export type UserlandUsersControllerConfirmEmailChangeOutput =
-  typeof UserlandUsersControllerConfirmEmailChangeOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerConfirmEmailChangeOutput>;
 
 // The operation
 /**

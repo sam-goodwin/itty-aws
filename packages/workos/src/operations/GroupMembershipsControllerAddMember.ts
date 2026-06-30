@@ -9,6 +9,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface GroupMembershipsControllerAddMemberInput {
+  organizationId: string;
+  groupId: string;
+  organization_membership_id?: string;
+}
 export const GroupMembershipsControllerAddMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -19,11 +24,18 @@ export const GroupMembershipsControllerAddMemberInput =
       method: "POST",
       path: "/organizations/{organizationId}/groups/{groupId}/organization-memberships",
     }),
-  );
-export type GroupMembershipsControllerAddMemberInput =
-  typeof GroupMembershipsControllerAddMemberInput.Type;
+  ) as unknown as Schema.Codec<GroupMembershipsControllerAddMemberInput>;
 
 // Output Schema
+export interface GroupMembershipsControllerAddMemberOutput {
+  object?: string;
+  id?: string;
+  organization_id?: string;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const GroupMembershipsControllerAddMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -33,9 +45,7 @@ export const GroupMembershipsControllerAddMemberOutput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type GroupMembershipsControllerAddMemberOutput =
-  typeof GroupMembershipsControllerAddMemberOutput.Type;
+  }) as unknown as Schema.Codec<GroupMembershipsControllerAddMemberOutput>;
 
 // The operation
 /**

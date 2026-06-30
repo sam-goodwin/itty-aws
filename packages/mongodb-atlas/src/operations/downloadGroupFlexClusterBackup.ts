@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DownloadGroupFlexClusterBackupInput {
+  name: string;
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DownloadGroupFlexClusterBackupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DownloadGroupFlexClusterBackupInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download",
     }),
-  );
-export type DownloadGroupFlexClusterBackupInput =
-  typeof DownloadGroupFlexClusterBackupInput.Type;
+  ) as unknown as Schema.Codec<DownloadGroupFlexClusterBackupInput>;
 
 // Output Schema
+export type DownloadGroupFlexClusterBackupOutput = void;
 export const DownloadGroupFlexClusterBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupFlexClusterBackupOutput =
-  typeof DownloadGroupFlexClusterBackupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupFlexClusterBackupOutput>;
 
 // The operation
 /**

@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface EngineeringAnalyticsWorkflowHealthInput {
+  project_id: string;
+  branch?: string;
+  date_from?: string;
+  date_to?: string;
+  source_id?: string;
+}
 export const EngineeringAnalyticsWorkflowHealthInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,30 @@ export const EngineeringAnalyticsWorkflowHealthInput =
       method: "GET",
       path: "/api/projects/{project_id}/engineering_analytics/workflow_health/",
     }),
-  );
-export type EngineeringAnalyticsWorkflowHealthInput =
-  typeof EngineeringAnalyticsWorkflowHealthInput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsWorkflowHealthInput>;
 
 // Output Schema
+export type EngineeringAnalyticsWorkflowHealthOutput = {
+  repo: { provider: string; owner: string; name: string };
+  buckets: {
+    bucket_start: string;
+    run_count: number;
+    completed: number;
+    successes: number;
+    failures: number;
+  }[];
+  workflow_name: string;
+  run_count: number;
+  success_rate: number | null;
+  p50_seconds: number | null;
+  p95_seconds: number | null;
+  last_failure_at: string | null;
+  latest_run_failed: boolean | null;
+  latest_run_conclusion: string | null;
+  granularity: string;
+  billable_minutes?: number | null;
+  estimated_cost_usd?: number | null;
+}[];
 export const EngineeringAnalyticsWorkflowHealthOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -50,9 +76,7 @@ export const EngineeringAnalyticsWorkflowHealthOutput =
       billable_minutes: Schema.optional(Schema.NullOr(Schema.Number)),
       estimated_cost_usd: Schema.optional(Schema.NullOr(Schema.Number)),
     }),
-  );
-export type EngineeringAnalyticsWorkflowHealthOutput =
-  typeof EngineeringAnalyticsWorkflowHealthOutput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsWorkflowHealthOutput>;
 
 // The operation
 /**

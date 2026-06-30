@@ -10,15 +10,21 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface DeleteOrgInput {
+  orgId: string;
+  envelope?: boolean;
+}
 export const DeleteOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/orgs/{orgId}" }));
-export type DeleteOrgInput = typeof DeleteOrgInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/api/atlas/v2/orgs/{orgId}" }),
+) as unknown as Schema.Codec<DeleteOrgInput>;
 
 // Output Schema
-export const DeleteOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrgOutput = typeof DeleteOrgOutput.Type;
+export type DeleteOrgOutput = void;
+export const DeleteOrgOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListOrganizationInvoicesInput {
+  organizationSlug: string;
+  type?: "all" | "upcoming" | "issued";
+}
 export const ListOrganizationInvoicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,19 @@ export const ListOrganizationInvoicesInput =
       method: "GET",
       path: "/v1/organizations/{organizationSlug}/invoices",
     }),
-  );
-export type ListOrganizationInvoicesInput =
-  typeof ListOrganizationInvoicesInput.Type;
+  ) as unknown as Schema.Codec<ListOrganizationInvoicesInput>;
 
 // Output Schema
+export interface ListOrganizationInvoicesOutput {
+  invoices?: {
+    invoice_number?: string;
+    amount_due?: string;
+    due_date?: string;
+    paid_at?: string;
+    payment_failed_at?: string;
+    invoice_pdf?: string;
+  }[];
+}
 export const ListOrganizationInvoicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invoices: Schema.optional(
@@ -31,9 +43,7 @@ export const ListOrganizationInvoicesOutput =
         }),
       ),
     ),
-  });
-export type ListOrganizationInvoicesOutput =
-  typeof ListOrganizationInvoicesOutput.Type;
+  }) as unknown as Schema.Codec<ListOrganizationInvoicesOutput>;
 
 // The operation
 /**

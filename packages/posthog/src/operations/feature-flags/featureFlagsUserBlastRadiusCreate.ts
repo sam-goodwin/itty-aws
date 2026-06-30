@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsUserBlastRadiusCreateInput {
+  project_id: string;
+  condition?: Record<string, unknown>;
+  group_type_index?: number | null;
+}
 export const FeatureFlagsUserBlastRadiusCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,18 +19,18 @@ export const FeatureFlagsUserBlastRadiusCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/feature_flags/user_blast_radius/",
     }),
-  );
-export type FeatureFlagsUserBlastRadiusCreateInput =
-  typeof FeatureFlagsUserBlastRadiusCreateInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsUserBlastRadiusCreateInput>;
 
 // Output Schema
+export interface FeatureFlagsUserBlastRadiusCreateOutput {
+  affected?: number;
+  total?: number;
+}
 export const FeatureFlagsUserBlastRadiusCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     affected: Schema.optional(Schema.Number),
     total: Schema.optional(Schema.Number),
-  });
-export type FeatureFlagsUserBlastRadiusCreateOutput =
-  typeof FeatureFlagsUserBlastRadiusCreateOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsUserBlastRadiusCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostAccountsAccountLoginLinksInput {
+  account: string;
+  expand?: string[];
+}
 export const PostAccountsAccountLoginLinksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
@@ -13,19 +17,20 @@ export const PostAccountsAccountLoginLinksInput =
       path: "/v1/accounts/{account}/login_links",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostAccountsAccountLoginLinksInput =
-  typeof PostAccountsAccountLoginLinksInput.Type;
+  ) as unknown as Schema.Codec<PostAccountsAccountLoginLinksInput>;
 
 // Output Schema
+export interface PostAccountsAccountLoginLinksOutput {
+  created: number;
+  object: "login_link";
+  url: string;
+}
 export const PostAccountsAccountLoginLinksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
     object: Schema.Literals(["login_link"]),
     url: Schema.String,
-  });
-export type PostAccountsAccountLoginLinksOutput =
-  typeof PostAccountsAccountLoginLinksOutput.Type;
+  }) as unknown as Schema.Codec<PostAccountsAccountLoginLinksOutput>;
 
 // The operation
 /**

@@ -4,14 +4,49 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DirectoryUsersControllerFindInput {
+  id: string;
+}
 export const DirectoryUsersControllerFindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/directory_users/{id}" }));
-export type DirectoryUsersControllerFindInput =
-  typeof DirectoryUsersControllerFindInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/directory_users/{id}" }),
+  ) as unknown as Schema.Codec<DirectoryUsersControllerFindInput>;
 
 // Output Schema
+export interface DirectoryUsersControllerFindOutput {
+  object?: string;
+  id?: string;
+  directory_id?: string;
+  organization_id?: string;
+  idp_id?: string;
+  email?: string | null;
+  first_name?: string | null;
+  last_name?: string | null;
+  name?: string | null;
+  emails?: { primary?: boolean; type?: string; value?: string | null }[];
+  job_title?: string | null;
+  username?: string | null;
+  state?: "active" | "suspended" | "inactive";
+  raw_attributes?: Record<string, unknown>;
+  custom_attributes?: Record<string, unknown>;
+  role?: { slug?: string };
+  roles?: { slug?: string }[];
+  created_at?: string;
+  updated_at?: string;
+  groups?: {
+    object?: string;
+    id?: string;
+    idp_id?: string;
+    directory_id?: string;
+    organization_id?: string;
+    name?: string;
+    raw_attributes?: Record<string, unknown>;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+}
 export const DirectoryUsersControllerFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -74,9 +109,7 @@ export const DirectoryUsersControllerFindOutput =
         }),
       ),
     ),
-  });
-export type DirectoryUsersControllerFindOutput =
-  typeof DirectoryUsersControllerFindOutput.Type;
+  }) as unknown as Schema.Codec<DirectoryUsersControllerFindOutput>;
 
 // The operation
 /**

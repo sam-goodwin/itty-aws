@@ -4,18 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1DiffABranchInput {
+  branch_id_or_ref: string;
+  included_schemas?: string;
+  pgdelta?: boolean;
+}
 export const V1DiffABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   included_schemas: Schema.optional(Schema.String),
   pgdelta: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/branches/{branch_id_or_ref}/diff" }),
-);
-export type V1DiffABranchInput = typeof V1DiffABranchInput.Type;
+) as unknown as Schema.Codec<V1DiffABranchInput>;
 
 // Output Schema
-export const V1DiffABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DiffABranchOutput = typeof V1DiffABranchOutput.Type;
+export type V1DiffABranchOutput = void;
+export const V1DiffABranchOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DiffABranchOutput>;
 
 // The operation
 /**

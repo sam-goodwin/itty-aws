@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExternalDataSourcesConnectionsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const ExternalDataSourcesConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,19 @@ export const ExternalDataSourcesConnectionsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/external_data_sources/connections/",
     }),
-  );
-export type ExternalDataSourcesConnectionsListInput =
-  typeof ExternalDataSourcesConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSourcesConnectionsListInput>;
 
 // Output Schema
+export interface ExternalDataSourcesConnectionsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    prefix?: string | null;
+    engine?: "duckdb" | "postgres" | "mysql" | null;
+  }[];
+}
 export const ExternalDataSourcesConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -30,13 +44,13 @@ export const ExternalDataSourcesConnectionsListOutput =
         Schema.Struct({
           id: Schema.optional(Schema.String),
           prefix: Schema.optional(Schema.NullOr(Schema.String)),
-          engine: Schema.optional(Schema.Unknown),
+          engine: Schema.optional(
+            Schema.NullOr(Schema.Literals(["duckdb", "postgres", "mysql"])),
+          ),
         }),
       ),
     ),
-  });
-export type ExternalDataSourcesConnectionsListOutput =
-  typeof ExternalDataSourcesConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<ExternalDataSourcesConnectionsListOutput>;
 
 // The operation
 /**

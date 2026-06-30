@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupPeerInput {
+  groupId: string;
+  peerId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   peerId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const DeleteGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/api/atlas/v2/groups/{groupId}/peers/{peerId}",
   }),
-);
-export type DeleteGroupPeerInput = typeof DeleteGroupPeerInput.Type;
+) as unknown as Schema.Codec<DeleteGroupPeerInput>;
 
 // Output Schema
-export const DeleteGroupPeerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupPeerOutput = typeof DeleteGroupPeerOutput.Type;
+export type DeleteGroupPeerOutput = void;
+export const DeleteGroupPeerOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupPeerOutput>;
 
 // The operation
 /**

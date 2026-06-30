@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const UserInterviewTopicsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,46 @@ export const UserInterviewTopicsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/user_interview_topics/",
     }),
-  );
-export type UserInterviewTopicsListInput =
-  typeof UserInterviewTopicsListInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsListInput>;
 
 // Output Schema
+export interface UserInterviewTopicsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    created_at: string;
+    interviewee_emails?: string[];
+    interviewee_distinct_ids?: string[];
+    topic: string;
+    agent_context?: string;
+    questions?: string[];
+    invite_subject?: string;
+    invite_message?: string;
+  }[];
+}
 export const UserInterviewTopicsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -38,7 +79,23 @@ export const UserInterviewTopicsListOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
         created_at: Schema.String,
         interviewee_emails: Schema.optional(Schema.Array(Schema.String)),
@@ -50,9 +107,7 @@ export const UserInterviewTopicsListOutput =
         invite_message: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UserInterviewTopicsListOutput =
-  typeof UserInterviewTopicsListOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewTopicsListOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface FileReference {
   gcsPath?: string;
 }
 
-export const FileReference: Schema.Schema<FileReference> =
+export const FileReference: Schema.Codec<FileReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsPath: Schema.optional(Schema.String),
   }).annotate({ identifier: "FileReference" });
@@ -37,7 +37,7 @@ export interface ApkSplits {
   bundleSplits?: ReadonlyArray<FileReference>;
 }
 
-export const ApkSplits: Schema.Schema<ApkSplits> =
+export const ApkSplits: Schema.Codec<ApkSplits> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bundleSplits: Schema.optional(Schema.Array(FileReference)),
   }).annotate({ identifier: "ApkSplits" });
@@ -49,7 +49,7 @@ export interface AppBundle {
   apks?: ApkSplits;
 }
 
-export const AppBundle: Schema.Schema<AppBundle> =
+export const AppBundle: Schema.Codec<AppBundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bundleLocation: Schema.optional(FileReference),
     apks: Schema.optional(ApkSplits),
@@ -64,7 +64,7 @@ export interface IntentFilter {
   actionNames?: ReadonlyArray<string>;
 }
 
-export const IntentFilter: Schema.Schema<IntentFilter> =
+export const IntentFilter: Schema.Codec<IntentFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoryNames: Schema.optional(Schema.Array(Schema.String)),
     mimeType: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export interface Service {
   intentFilter?: ReadonlyArray<IntentFilter>;
 }
 
-export const Service: Schema.Schema<Service> =
+export const Service: Schema.Codec<Service> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     intentFilter: Schema.optional(Schema.Array(IntentFilter)),
@@ -91,7 +91,7 @@ export interface UsesFeature {
   isRequired?: boolean;
 }
 
-export const UsesFeature: Schema.Schema<UsesFeature> =
+export const UsesFeature: Schema.Codec<UsesFeature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     isRequired: Schema.optional(Schema.Boolean),
@@ -106,7 +106,7 @@ export interface Testing_Date {
   year?: number;
 }
 
-export const Testing_Date: Schema.Schema<Testing_Date> =
+export const Testing_Date: Schema.Codec<Testing_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -127,7 +127,7 @@ export interface DeviceIpBlock {
   addedDate?: Testing_Date;
 }
 
-export const DeviceIpBlock: Schema.Schema<DeviceIpBlock> =
+export const DeviceIpBlock: Schema.Codec<DeviceIpBlock> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     block: Schema.optional(Schema.String),
     form: Schema.optional(Schema.String),
@@ -139,14 +139,14 @@ export interface DeviceIpBlockCatalog {
   ipBlocks?: ReadonlyArray<DeviceIpBlock>;
 }
 
-export const DeviceIpBlockCatalog: Schema.Schema<DeviceIpBlockCatalog> =
+export const DeviceIpBlockCatalog: Schema.Codec<DeviceIpBlockCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipBlocks: Schema.optional(Schema.Array(DeviceIpBlock)),
   }).annotate({ identifier: "DeviceIpBlockCatalog" });
 
 export interface GoogleAuto {}
 
-export const GoogleAuto: Schema.Schema<GoogleAuto> =
+export const GoogleAuto: Schema.Codec<GoogleAuto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAuto",
   });
@@ -156,7 +156,7 @@ export interface Account {
   googleAuto?: GoogleAuto;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleAuto: Schema.optional(GoogleAuto),
   }).annotate({ identifier: "Account" });
@@ -168,7 +168,7 @@ export interface Metadata {
   value?: string;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
+export const Metadata: Schema.Codec<Metadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -181,7 +181,7 @@ export interface ClientInfoDetail {
   key?: string;
 }
 
-export const ClientInfoDetail: Schema.Schema<ClientInfoDetail> =
+export const ClientInfoDetail: Schema.Codec<ClientInfoDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -194,7 +194,7 @@ export interface ClientInfo {
   name?: string;
 }
 
-export const ClientInfo: Schema.Schema<ClientInfo> =
+export const ClientInfo: Schema.Codec<ClientInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientInfoDetails: Schema.optional(Schema.Array(ClientInfoDetail)),
     name: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface LabInfo {
   regionCode?: string;
 }
 
-export const LabInfo: Schema.Schema<LabInfo> =
+export const LabInfo: Schema.Codec<LabInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -220,7 +220,7 @@ export interface DirectAccessVersionInfo {
   minimumAndroidStudioVersion?: string;
 }
 
-export const DirectAccessVersionInfo: Schema.Schema<DirectAccessVersionInfo> =
+export const DirectAccessVersionInfo: Schema.Codec<DirectAccessVersionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     directAccessSupported: Schema.optional(Schema.Boolean),
     minimumAndroidStudioVersion: Schema.optional(Schema.String),
@@ -243,7 +243,7 @@ export interface PerAndroidVersionInfo {
   versionId?: string;
 }
 
-export const PerAndroidVersionInfo: Schema.Schema<PerAndroidVersionInfo> =
+export const PerAndroidVersionInfo: Schema.Codec<PerAndroidVersionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceCapacity: Schema.optional(Schema.String),
     interactiveDeviceAvailabilityEstimate: Schema.optional(Schema.String),
@@ -306,7 +306,7 @@ export interface AndroidModel {
   tags?: ReadonlyArray<string>;
 }
 
-export const AndroidModel: Schema.Schema<AndroidModel> =
+export const AndroidModel: Schema.Codec<AndroidModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessDeniedReasons: Schema.optional(Schema.Array(Schema.String)),
     screenY: Schema.optional(Schema.Number),
@@ -339,7 +339,7 @@ export interface Locale {
   tags?: ReadonlyArray<string>;
 }
 
-export const Locale: Schema.Schema<Locale> =
+export const Locale: Schema.Codec<Locale> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -356,7 +356,7 @@ export interface Orientation {
   tags?: ReadonlyArray<string>;
 }
 
-export const Orientation: Schema.Schema<Orientation> =
+export const Orientation: Schema.Codec<Orientation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -370,7 +370,7 @@ export interface AndroidRuntimeConfiguration {
   orientations?: ReadonlyArray<Orientation>;
 }
 
-export const AndroidRuntimeConfiguration: Schema.Schema<AndroidRuntimeConfiguration> =
+export const AndroidRuntimeConfiguration: Schema.Codec<AndroidRuntimeConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locales: Schema.optional(Schema.Array(Locale)),
     orientations: Schema.optional(Schema.Array(Orientation)),
@@ -383,7 +383,7 @@ export interface Distribution {
   marketShare?: number;
 }
 
-export const Distribution: Schema.Schema<Distribution> =
+export const Distribution: Schema.Codec<Distribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     measurementTime: Schema.optional(Schema.String),
     marketShare: Schema.optional(Schema.Number),
@@ -406,7 +406,7 @@ export interface AndroidVersion {
   distribution?: Distribution;
 }
 
-export const AndroidVersion: Schema.Schema<AndroidVersion> =
+export const AndroidVersion: Schema.Codec<AndroidVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiLevel: Schema.optional(Schema.Number),
     tags: Schema.optional(Schema.Array(Schema.String)),
@@ -426,7 +426,7 @@ export interface AndroidDeviceCatalog {
   versions?: ReadonlyArray<AndroidVersion>;
 }
 
-export const AndroidDeviceCatalog: Schema.Schema<AndroidDeviceCatalog> =
+export const AndroidDeviceCatalog: Schema.Codec<AndroidDeviceCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     models: Schema.optional(Schema.Array(AndroidModel)),
     runtimeConfiguration: Schema.optional(AndroidRuntimeConfiguration),
@@ -435,7 +435,7 @@ export const AndroidDeviceCatalog: Schema.Schema<AndroidDeviceCatalog> =
 
 export interface NoActivityIntent {}
 
-export const NoActivityIntent: Schema.Schema<NoActivityIntent> =
+export const NoActivityIntent: Schema.Codec<NoActivityIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "NoActivityIntent",
   });
@@ -449,7 +449,7 @@ export interface IosDeviceFile {
   devicePath?: string;
 }
 
-export const IosDeviceFile: Schema.Schema<IosDeviceFile> =
+export const IosDeviceFile: Schema.Codec<IosDeviceFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(FileReference),
     bundleId: Schema.optional(Schema.String),
@@ -467,7 +467,7 @@ export interface IosTestSetup {
   networkProfile?: string;
 }
 
-export const IosTestSetup: Schema.Schema<IosTestSetup> =
+export const IosTestSetup: Schema.Codec<IosTestSetup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalIpas: Schema.optional(Schema.Array(FileReference)),
     pullDirectories: Schema.optional(Schema.Array(IosDeviceFile)),
@@ -493,7 +493,7 @@ export interface SessionStateEvent {
   eventTime?: string;
 }
 
-export const SessionStateEvent: Schema.Schema<SessionStateEvent> =
+export const SessionStateEvent: Schema.Codec<SessionStateEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionState: Schema.optional(Schema.String),
     stateMessage: Schema.optional(Schema.String),
@@ -511,7 +511,7 @@ export interface AndroidDevice {
   locale?: string;
 }
 
-export const AndroidDevice: Schema.Schema<AndroidDevice> =
+export const AndroidDevice: Schema.Codec<AndroidDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidVersionId: Schema.optional(Schema.String),
     orientation: Schema.optional(Schema.String),
@@ -551,7 +551,7 @@ export interface DeviceSession {
   inactivityTimeout?: string;
 }
 
-export const DeviceSession: Schema.Schema<DeviceSession> =
+export const DeviceSession: Schema.Codec<DeviceSession> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activeStartTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -570,7 +570,7 @@ export interface UniformSharding {
   numShards?: number;
 }
 
-export const UniformSharding: Schema.Schema<UniformSharding> =
+export const UniformSharding: Schema.Codec<UniformSharding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numShards: Schema.optional(Schema.Number),
   }).annotate({ identifier: "UniformSharding" });
@@ -584,7 +584,7 @@ export interface ToolResultsExecution {
   executionId?: string;
 }
 
-export const ToolResultsExecution: Schema.Schema<ToolResultsExecution> =
+export const ToolResultsExecution: Schema.Codec<ToolResultsExecution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     historyId: Schema.optional(Schema.String),
@@ -598,7 +598,7 @@ export interface ListDeviceSessionsResponse {
   nextPageToken?: string;
 }
 
-export const ListDeviceSessionsResponse: Schema.Schema<ListDeviceSessionsResponse> =
+export const ListDeviceSessionsResponse: Schema.Codec<ListDeviceSessionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceSessions: Schema.optional(Schema.Array(DeviceSession)),
     nextPageToken: Schema.optional(Schema.String),
@@ -609,7 +609,7 @@ export interface TestTargetsForShard {
   testTargets?: ReadonlyArray<string>;
 }
 
-export const TestTargetsForShard: Schema.Schema<TestTargetsForShard> =
+export const TestTargetsForShard: Schema.Codec<TestTargetsForShard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testTargets: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestTargetsForShard" });
@@ -619,7 +619,7 @@ export interface ManualSharding {
   testTargetsForShard?: ReadonlyArray<TestTargetsForShard>;
 }
 
-export const ManualSharding: Schema.Schema<ManualSharding> =
+export const ManualSharding: Schema.Codec<ManualSharding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testTargetsForShard: Schema.optional(Schema.Array(TestTargetsForShard)),
   }).annotate({ identifier: "ManualSharding" });
@@ -629,7 +629,7 @@ export interface SmartSharding {
   targetedShardDuration?: string;
 }
 
-export const SmartSharding: Schema.Schema<SmartSharding> =
+export const SmartSharding: Schema.Codec<SmartSharding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetedShardDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "SmartSharding" });
@@ -643,7 +643,7 @@ export interface ShardingOption {
   uniformSharding?: UniformSharding;
 }
 
-export const ShardingOption: Schema.Schema<ShardingOption> =
+export const ShardingOption: Schema.Codec<ShardingOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manualSharding: Schema.optional(ManualSharding),
     smartSharding: Schema.optional(SmartSharding),
@@ -659,7 +659,7 @@ export interface StartActivityIntent {
   categories?: ReadonlyArray<string>;
 }
 
-export const StartActivityIntent: Schema.Schema<StartActivityIntent> =
+export const StartActivityIntent: Schema.Codec<StartActivityIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
@@ -668,7 +668,7 @@ export const StartActivityIntent: Schema.Schema<StartActivityIntent> =
 
 export interface LauncherActivityIntent {}
 
-export const LauncherActivityIntent: Schema.Schema<LauncherActivityIntent> =
+export const LauncherActivityIntent: Schema.Codec<LauncherActivityIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LauncherActivityIntent",
   });
@@ -684,7 +684,7 @@ export interface RoboStartingIntent {
   noActivity?: NoActivityIntent;
 }
 
-export const RoboStartingIntent: Schema.Schema<RoboStartingIntent> =
+export const RoboStartingIntent: Schema.Codec<RoboStartingIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startActivity: Schema.optional(StartActivityIntent),
     timeout: Schema.optional(Schema.String),
@@ -697,7 +697,7 @@ export interface AndroidDeviceList {
   androidDevices?: ReadonlyArray<AndroidDevice>;
 }
 
-export const AndroidDeviceList: Schema.Schema<AndroidDeviceList> =
+export const AndroidDeviceList: Schema.Codec<AndroidDeviceList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidDevices: Schema.optional(Schema.Array(AndroidDevice)),
   }).annotate({ identifier: "AndroidDeviceList" });
@@ -711,7 +711,7 @@ export interface IosRoboTest {
   roboScript?: FileReference;
 }
 
-export const IosRoboTest: Schema.Schema<IosRoboTest> =
+export const IosRoboTest: Schema.Codec<IosRoboTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appIpa: Schema.optional(FileReference),
     appBundleId: Schema.optional(Schema.String),
@@ -725,7 +725,7 @@ export interface IosRuntimeConfiguration {
   orientations?: ReadonlyArray<Orientation>;
 }
 
-export const IosRuntimeConfiguration: Schema.Schema<IosRuntimeConfiguration> =
+export const IosRuntimeConfiguration: Schema.Codec<IosRuntimeConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locales: Schema.optional(Schema.Array(Locale)),
     orientations: Schema.optional(Schema.Array(Orientation)),
@@ -733,7 +733,7 @@ export const IosRuntimeConfiguration: Schema.Schema<IosRuntimeConfiguration> =
 
 export interface CancelDeviceSessionRequest {}
 
-export const CancelDeviceSessionRequest: Schema.Schema<CancelDeviceSessionRequest> =
+export const CancelDeviceSessionRequest: Schema.Codec<CancelDeviceSessionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelDeviceSessionRequest",
   });
@@ -749,7 +749,7 @@ export interface IosDevice {
   orientation?: string;
 }
 
-export const IosDevice: Schema.Schema<IosDevice> =
+export const IosDevice: Schema.Codec<IosDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iosVersionId: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -762,7 +762,7 @@ export interface IosDeviceList {
   iosDevices?: ReadonlyArray<IosDevice>;
 }
 
-export const IosDeviceList: Schema.Schema<IosDeviceList> =
+export const IosDeviceList: Schema.Codec<IosDeviceList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iosDevices: Schema.optional(Schema.Array(IosDevice)),
   }).annotate({ identifier: "IosDeviceList" });
@@ -780,7 +780,7 @@ export interface PerIosVersionInfo {
     | (string & {});
 }
 
-export const PerIosVersionInfo: Schema.Schema<PerIosVersionInfo> =
+export const PerIosVersionInfo: Schema.Codec<PerIosVersionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionId: Schema.optional(Schema.String),
     deviceCapacity: Schema.optional(Schema.String),
@@ -818,7 +818,7 @@ export interface IosModel {
   tags?: ReadonlyArray<string>;
 }
 
-export const IosModel: Schema.Schema<IosModel> =
+export const IosModel: Schema.Codec<IosModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     screenX: Schema.optional(Schema.Number),
@@ -845,7 +845,7 @@ export interface TrafficRule {
   packetLossRatio?: number;
 }
 
-export const TrafficRule: Schema.Schema<TrafficRule> =
+export const TrafficRule: Schema.Codec<TrafficRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delay: Schema.optional(Schema.String),
     burst: Schema.optional(Schema.Number),
@@ -863,7 +863,7 @@ export interface NetworkConfiguration {
   id?: string;
 }
 
-export const NetworkConfiguration: Schema.Schema<NetworkConfiguration> =
+export const NetworkConfiguration: Schema.Codec<NetworkConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upRule: Schema.optional(TrafficRule),
     downRule: Schema.optional(TrafficRule),
@@ -877,7 +877,7 @@ export interface UsesPermissionTag {
   maxSdkVersion?: number;
 }
 
-export const UsesPermissionTag: Schema.Schema<UsesPermissionTag> =
+export const UsesPermissionTag: Schema.Codec<UsesPermissionTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     maxSdkVersion: Schema.optional(Schema.Number),
@@ -910,7 +910,7 @@ export interface ApkManifest {
   intentFilters?: ReadonlyArray<IntentFilter>;
 }
 
-export const ApkManifest: Schema.Schema<ApkManifest> =
+export const ApkManifest: Schema.Codec<ApkManifest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Array(Metadata)),
     versionName: Schema.optional(Schema.String),
@@ -931,7 +931,7 @@ export interface ApkDetail {
   apkManifest?: ApkManifest;
 }
 
-export const ApkDetail: Schema.Schema<ApkDetail> =
+export const ApkDetail: Schema.Codec<ApkDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apkManifest: Schema.optional(ApkManifest),
   }).annotate({ identifier: "ApkDetail" });
@@ -941,14 +941,14 @@ export interface GetApkDetailsResponse {
   apkDetail?: ApkDetail;
 }
 
-export const GetApkDetailsResponse: Schema.Schema<GetApkDetailsResponse> =
+export const GetApkDetailsResponse: Schema.Codec<GetApkDetailsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apkDetail: Schema.optional(ApkDetail),
   }).annotate({ identifier: "GetApkDetailsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -964,7 +964,7 @@ export interface AndroidMatrix {
   orientations?: ReadonlyArray<string>;
 }
 
-export const AndroidMatrix: Schema.Schema<AndroidMatrix> =
+export const AndroidMatrix: Schema.Codec<AndroidMatrix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidModelIds: Schema.optional(Schema.Array(Schema.String)),
     androidVersionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -981,7 +981,7 @@ export interface EnvironmentMatrix {
   iosDeviceList?: IosDeviceList;
 }
 
-export const EnvironmentMatrix: Schema.Schema<EnvironmentMatrix> =
+export const EnvironmentMatrix: Schema.Codec<EnvironmentMatrix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidDeviceList: Schema.optional(AndroidDeviceList),
     androidMatrix: Schema.optional(AndroidMatrix),
@@ -992,7 +992,7 @@ export interface NetworkConfigurationCatalog {
   configurations?: ReadonlyArray<NetworkConfiguration>;
 }
 
-export const NetworkConfigurationCatalog: Schema.Schema<NetworkConfigurationCatalog> =
+export const NetworkConfigurationCatalog: Schema.Codec<NetworkConfigurationCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurations: Schema.optional(Schema.Array(NetworkConfiguration)),
   }).annotate({ identifier: "NetworkConfigurationCatalog" });
@@ -1004,7 +1004,7 @@ export interface Environment {
   iosDevice?: IosDevice;
 }
 
-export const Environment: Schema.Schema<Environment> =
+export const Environment: Schema.Codec<Environment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidDevice: Schema.optional(AndroidDevice),
     iosDevice: Schema.optional(IosDevice),
@@ -1017,7 +1017,7 @@ export interface TestDetails {
   errorMessage?: string;
 }
 
-export const TestDetails: Schema.Schema<TestDetails> =
+export const TestDetails: Schema.Codec<TestDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     progressMessages: Schema.optional(Schema.Array(Schema.String)),
     errorMessage: Schema.optional(Schema.String),
@@ -1036,7 +1036,7 @@ export interface AndroidTestLoop {
   scenarioLabels?: ReadonlyArray<string>;
 }
 
-export const AndroidTestLoop: Schema.Schema<AndroidTestLoop> =
+export const AndroidTestLoop: Schema.Codec<AndroidTestLoop> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appApk: Schema.optional(FileReference),
     appPackageId: Schema.optional(Schema.String),
@@ -1070,7 +1070,7 @@ export interface AndroidInstrumentationTest {
   testPackageId?: string;
 }
 
-export const AndroidInstrumentationTest: Schema.Schema<AndroidInstrumentationTest> =
+export const AndroidInstrumentationTest: Schema.Codec<AndroidInstrumentationTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orchestratorOption: Schema.optional(Schema.String),
     appBundle: Schema.optional(AppBundle),
@@ -1096,7 +1096,7 @@ export interface IosXcTest {
   testSpecialEntitlements?: boolean;
 }
 
-export const IosXcTest: Schema.Schema<IosXcTest> =
+export const IosXcTest: Schema.Codec<IosXcTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testsZip: Schema.optional(FileReference),
     xctestrun: Schema.optional(FileReference),
@@ -1112,7 +1112,7 @@ export interface EnvironmentVariable {
   key?: string;
 }
 
-export const EnvironmentVariable: Schema.Schema<EnvironmentVariable> =
+export const EnvironmentVariable: Schema.Codec<EnvironmentVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -1125,7 +1125,7 @@ export interface ObbFile {
   obb?: FileReference;
 }
 
-export const ObbFile: Schema.Schema<ObbFile> =
+export const ObbFile: Schema.Codec<ObbFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     obbFileName: Schema.optional(Schema.String),
     obb: Schema.optional(FileReference),
@@ -1138,7 +1138,7 @@ export interface RegularFile {
   devicePath?: string;
 }
 
-export const RegularFile: Schema.Schema<RegularFile> =
+export const RegularFile: Schema.Codec<RegularFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(FileReference),
     devicePath: Schema.optional(Schema.String),
@@ -1151,7 +1151,7 @@ export interface DeviceFile {
   regularFile?: RegularFile;
 }
 
-export const DeviceFile: Schema.Schema<DeviceFile> =
+export const DeviceFile: Schema.Codec<DeviceFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     obbFile: Schema.optional(ObbFile),
     regularFile: Schema.optional(RegularFile),
@@ -1164,18 +1164,19 @@ export interface Apk {
   location?: FileReference;
 }
 
-export const Apk: Schema.Schema<Apk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Apk: Schema.Codec<Apk> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     packageName: Schema.optional(Schema.String),
     location: Schema.optional(FileReference),
-  }).annotate({ identifier: "Apk" });
+  },
+).annotate({ identifier: "Apk" });
 
 export interface SystraceSetup {
   /** Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace. */
   durationSeconds?: number;
 }
 
-export const SystraceSetup: Schema.Schema<SystraceSetup> =
+export const SystraceSetup: Schema.Codec<SystraceSetup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     durationSeconds: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SystraceSetup" });
@@ -1201,7 +1202,7 @@ export interface TestSetup {
   systrace?: SystraceSetup;
 }
 
-export const TestSetup: Schema.Schema<TestSetup> =
+export const TestSetup: Schema.Codec<TestSetup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentVariables: Schema.optional(Schema.Array(EnvironmentVariable)),
     dontAutograntPermissions: Schema.optional(Schema.Boolean),
@@ -1228,7 +1229,7 @@ export interface RoboDirective {
     | (string & {});
 }
 
-export const RoboDirective: Schema.Schema<RoboDirective> =
+export const RoboDirective: Schema.Codec<RoboDirective> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     inputText: Schema.optional(Schema.String),
@@ -1262,7 +1263,7 @@ export interface AndroidRoboTest {
   appInitialActivity?: string;
 }
 
-export const AndroidRoboTest: Schema.Schema<AndroidRoboTest> =
+export const AndroidRoboTest: Schema.Codec<AndroidRoboTest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appBundle: Schema.optional(AppBundle),
     maxDepth: Schema.optional(Schema.Number),
@@ -1285,7 +1286,7 @@ export interface IosTestLoop {
   scenarios?: ReadonlyArray<number>;
 }
 
-export const IosTestLoop: Schema.Schema<IosTestLoop> =
+export const IosTestLoop: Schema.Codec<IosTestLoop> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appBundleId: Schema.optional(Schema.String),
     appIpa: Schema.optional(FileReference),
@@ -1317,7 +1318,7 @@ export interface TestSpecification {
   testTimeout?: string;
 }
 
-export const TestSpecification: Schema.Schema<TestSpecification> =
+export const TestSpecification: Schema.Codec<TestSpecification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iosRoboTest: Schema.optional(IosRoboTest),
     androidTestLoop: Schema.optional(AndroidTestLoop),
@@ -1343,7 +1344,7 @@ export interface ToolResultsStep {
   executionId?: string;
 }
 
-export const ToolResultsStep: Schema.Schema<ToolResultsStep> =
+export const ToolResultsStep: Schema.Codec<ToolResultsStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stepId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -1362,7 +1363,7 @@ export interface Shard {
   testTargetsForShard?: TestTargetsForShard;
 }
 
-export const Shard: Schema.Schema<Shard> =
+export const Shard: Schema.Codec<Shard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedShardDuration: Schema.optional(Schema.String),
     shardIndex: Schema.optional(Schema.Number),
@@ -1405,7 +1406,7 @@ export interface TestExecution {
   shard?: Shard;
 }
 
-export const TestExecution: Schema.Schema<TestExecution> =
+export const TestExecution: Schema.Codec<TestExecution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matrixId: Schema.optional(Schema.String),
     environment: Schema.optional(Environment),
@@ -1426,7 +1427,7 @@ export interface XcodeVersion {
   tags?: ReadonlyArray<string>;
 }
 
-export const XcodeVersion: Schema.Schema<XcodeVersion> =
+export const XcodeVersion: Schema.Codec<XcodeVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(Schema.String)),
@@ -1437,7 +1438,7 @@ export interface GoogleCloudStorage {
   gcsPath?: string;
 }
 
-export const GoogleCloudStorage: Schema.Schema<GoogleCloudStorage> =
+export const GoogleCloudStorage: Schema.Codec<GoogleCloudStorage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsPath: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudStorage" });
@@ -1449,7 +1450,7 @@ export interface MatrixErrorDetail {
   reason?: string;
 }
 
-export const MatrixErrorDetail: Schema.Schema<MatrixErrorDetail> =
+export const MatrixErrorDetail: Schema.Codec<MatrixErrorDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -1462,7 +1463,7 @@ export interface ProvidedSoftwareCatalog {
   orchestratorVersion?: string;
 }
 
-export const ProvidedSoftwareCatalog: Schema.Schema<ProvidedSoftwareCatalog> =
+export const ProvidedSoftwareCatalog: Schema.Codec<ProvidedSoftwareCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidxOrchestratorVersion: Schema.optional(Schema.String),
     orchestratorVersion: Schema.optional(Schema.String),
@@ -1481,7 +1482,7 @@ export interface IosVersion {
   supportedXcodeVersionIds?: ReadonlyArray<string>;
 }
 
-export const IosVersion: Schema.Schema<IosVersion> =
+export const IosVersion: Schema.Codec<IosVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     majorVersion: Schema.optional(Schema.Number),
@@ -1501,7 +1502,7 @@ export interface IosDeviceCatalog {
   versions?: ReadonlyArray<IosVersion>;
 }
 
-export const IosDeviceCatalog: Schema.Schema<IosDeviceCatalog> =
+export const IosDeviceCatalog: Schema.Codec<IosDeviceCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     models: Schema.optional(Schema.Array(IosModel)),
     xcodeVersions: Schema.optional(Schema.Array(XcodeVersion)),
@@ -1522,7 +1523,7 @@ export interface TestEnvironmentCatalog {
   iosDeviceCatalog?: IosDeviceCatalog;
 }
 
-export const TestEnvironmentCatalog: Schema.Schema<TestEnvironmentCatalog> =
+export const TestEnvironmentCatalog: Schema.Codec<TestEnvironmentCatalog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceIpBlockCatalog: Schema.optional(DeviceIpBlockCatalog),
     androidDeviceCatalog: Schema.optional(AndroidDeviceCatalog),
@@ -1538,7 +1539,7 @@ export interface ToolResultsHistory {
   historyId?: string;
 }
 
-export const ToolResultsHistory: Schema.Schema<ToolResultsHistory> =
+export const ToolResultsHistory: Schema.Codec<ToolResultsHistory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     historyId: Schema.optional(Schema.String),
@@ -1555,7 +1556,7 @@ export interface ResultStorage {
   googleCloudStorage?: GoogleCloudStorage;
 }
 
-export const ResultStorage: Schema.Schema<ResultStorage> =
+export const ResultStorage: Schema.Codec<ResultStorage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolResultsHistory: Schema.optional(ToolResultsHistory),
     toolResultsExecution: Schema.optional(ToolResultsExecution),
@@ -1580,7 +1581,7 @@ export interface CancelTestMatrixResponse {
     | (string & {});
 }
 
-export const CancelTestMatrixResponse: Schema.Schema<CancelTestMatrixResponse> =
+export const CancelTestMatrixResponse: Schema.Codec<CancelTestMatrixResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testState: Schema.optional(Schema.String),
   }).annotate({ identifier: "CancelTestMatrixResponse" });
@@ -1674,7 +1675,7 @@ export interface TestMatrix {
   resultStorage?: ResultStorage;
 }
 
-export const TestMatrix: Schema.Schema<TestMatrix> =
+export const TestMatrix: Schema.Codec<TestMatrix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentMatrix: Schema.optional(EnvironmentMatrix),
     state: Schema.optional(Schema.String),
@@ -1777,7 +1778,7 @@ export const GetTestEnvironmentCatalogRequest =
       path: "v1/testEnvironmentCatalog/{environmentType}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTestEnvironmentCatalogRequest>;
+  ) as unknown as Schema.Codec<GetTestEnvironmentCatalogRequest>;
 
 export type GetTestEnvironmentCatalogResponse = TestEnvironmentCatalog;
 export const GetTestEnvironmentCatalogResponse =
@@ -1821,7 +1822,7 @@ export const CreateProjectsTestMatricesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTestMatricesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTestMatricesRequest>;
 
 export type CreateProjectsTestMatricesResponse = TestMatrix;
 export const CreateProjectsTestMatricesResponse =
@@ -1864,7 +1865,7 @@ export const CancelProjectsTestMatricesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsTestMatricesRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsTestMatricesRequest>;
 
 export type CancelProjectsTestMatricesResponse = CancelTestMatrixResponse;
 export const CancelProjectsTestMatricesResponse =
@@ -1906,7 +1907,7 @@ export const GetProjectsTestMatricesRequest =
       path: "v1/projects/{projectId}/testMatrices/{testMatrixId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTestMatricesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTestMatricesRequest>;
 
 export type GetProjectsTestMatricesResponse = TestMatrix;
 export const GetProjectsTestMatricesResponse =
@@ -1946,7 +1947,7 @@ export const ListProjectsDeviceSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deviceSessions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDeviceSessionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDeviceSessionsRequest>;
 
 export type ListProjectsDeviceSessionsResponse = ListDeviceSessionsResponse;
 export const ListProjectsDeviceSessionsResponse =
@@ -1991,7 +1992,7 @@ export const CreateProjectsDeviceSessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDeviceSessionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDeviceSessionsRequest>;
 
 export type CreateProjectsDeviceSessionsResponse = DeviceSession;
 export const CreateProjectsDeviceSessionsResponse =
@@ -2030,7 +2031,7 @@ export const CancelProjectsDeviceSessionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsDeviceSessionsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsDeviceSessionsRequest>;
 
 export type CancelProjectsDeviceSessionsResponse = Empty;
 export const CancelProjectsDeviceSessionsResponse =
@@ -2072,7 +2073,7 @@ export const PatchProjectsDeviceSessionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsDeviceSessionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsDeviceSessionsRequest>;
 
 export type PatchProjectsDeviceSessionsResponse = DeviceSession;
 export const PatchProjectsDeviceSessionsResponse =
@@ -2108,7 +2109,7 @@ export const GetProjectsDeviceSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDeviceSessionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDeviceSessionsRequest>;
 
 export type GetProjectsDeviceSessionsResponse = DeviceSession;
 export const GetProjectsDeviceSessionsResponse =
@@ -2151,7 +2152,7 @@ export const GetApkDetailsApplicationDetailServiceRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetApkDetailsApplicationDetailServiceRequest>;
+  ) as unknown as Schema.Codec<GetApkDetailsApplicationDetailServiceRequest>;
 
 export type GetApkDetailsApplicationDetailServiceResponse =
   GetApkDetailsResponse;

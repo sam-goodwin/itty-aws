@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentFleetStatsInput {
+  project_id: string;
+  since?: string;
+}
 export const AgentFleetStatsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   since: Schema.optional(Schema.String),
@@ -11,10 +15,17 @@ export const AgentFleetStatsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/projects/{project_id}/agent_fleet/stats/",
   }),
-);
-export type AgentFleetStatsInput = typeof AgentFleetStatsInput.Type;
+) as unknown as Schema.Codec<AgentFleetStatsInput>;
 
 // Output Schema
+export interface AgentFleetStatsOutput {
+  liveCount: number;
+  sessionsInWindowCount: number;
+  spendInWindowUsd: number;
+  lastActivityAt: string | null;
+  failedInWindowCount: number;
+  pendingApprovalsCount: number;
+}
 export const AgentFleetStatsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   liveCount: Schema.Number,
   sessionsInWindowCount: Schema.Number,
@@ -22,8 +33,7 @@ export const AgentFleetStatsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   lastActivityAt: Schema.NullOr(Schema.String),
   failedInWindowCount: Schema.Number,
   pendingApprovalsCount: Schema.Number,
-});
-export type AgentFleetStatsOutput = typeof AgentFleetStatsOutput.Type;
+}) as unknown as Schema.Codec<AgentFleetStatsOutput>;
 
 // The operation
 /**

@@ -3,6 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemMoveCreateInput {
+  id: string;
+  project_id: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const DesktopFileSystemMoveCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -21,15 +34,12 @@ export const DesktopFileSystemMoveCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/desktop_file_system/{id}/move/",
     }),
-  );
-export type DesktopFileSystemMoveCreateInput =
-  typeof DesktopFileSystemMoveCreateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemMoveCreateInput>;
 
 // Output Schema
+export type DesktopFileSystemMoveCreateOutput = void;
 export const DesktopFileSystemMoveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DesktopFileSystemMoveCreateOutput =
-  typeof DesktopFileSystemMoveCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemMoveCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface InvitesDelegateCreateInput {
+  organization_id: string;
+  target_email: string;
+  message?: string;
+  step_at_delegation?: string;
+}
 export const InvitesDelegateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,44 @@ export const InvitesDelegateCreateInput =
       method: "POST",
       path: "/api/organizations/{organization_id}/invites/delegate/",
     }),
-  );
-export type InvitesDelegateCreateInput = typeof InvitesDelegateCreateInput.Type;
+  ) as unknown as Schema.Codec<InvitesDelegateCreateInput>;
 
 // Output Schema
+export interface InvitesDelegateCreateOutput {
+  id?: string;
+  target_email?: string;
+  first_name?: string;
+  emailing_attempt_made?: boolean;
+  level?: 1 | 8 | 15;
+  is_expired?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  message?: string | null;
+  private_project_access?: unknown;
+  send_email?: boolean;
+  combine_pending_invites?: boolean;
+}
 export const InvitesDelegateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -39,7 +79,23 @@ export const InvitesDelegateCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -49,9 +105,7 @@ export const InvitesDelegateCreateOutput =
     private_project_access: Schema.optional(Schema.Unknown),
     send_email: Schema.optional(Schema.Boolean),
     combine_pending_invites: Schema.optional(Schema.Boolean),
-  });
-export type InvitesDelegateCreateOutput =
-  typeof InvitesDelegateCreateOutput.Type;
+  }) as unknown as Schema.Codec<InvitesDelegateCreateOutput>;
 
 // The operation
 /**

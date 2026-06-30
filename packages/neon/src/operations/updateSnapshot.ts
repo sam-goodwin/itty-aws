@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateSnapshotInput {
+  project_id: string;
+  snapshot_id: string;
+  snapshot: { name?: string };
+}
 export const UpdateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,23 @@ export const UpdateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/projects/{project_id}/snapshots/{snapshot_id}",
   }),
-);
-export type UpdateSnapshotInput = typeof UpdateSnapshotInput.Type;
+) as unknown as Schema.Codec<UpdateSnapshotInput>;
 
 // Output Schema
+export interface UpdateSnapshotOutput {
+  snapshot: {
+    id: string;
+    name: string;
+    lsn?: string;
+    timestamp?: string;
+    source_branch_id?: string;
+    created_at: string;
+    expires_at?: string;
+    manual?: boolean;
+    full_size?: number;
+    diff_size?: number;
+  };
+}
 export const UpdateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   snapshot: Schema.Struct({
     id: Schema.String,
@@ -31,8 +49,7 @@ export const UpdateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     full_size: Schema.optional(Schema.Number),
     diff_size: Schema.optional(Schema.Number),
   }),
-});
-export type UpdateSnapshotOutput = typeof UpdateSnapshotOutput.Type;
+}) as unknown as Schema.Codec<UpdateSnapshotOutput>;
 
 // The operation
 /**

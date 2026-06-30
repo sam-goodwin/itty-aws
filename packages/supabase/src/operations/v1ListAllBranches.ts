@@ -4,14 +4,58 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1ListAllBranchesInput {
+  ref: string;
+}
 export const V1ListAllBranchesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
   },
-).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/branches" }));
-export type V1ListAllBranchesInput = typeof V1ListAllBranchesInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v1/projects/{ref}/branches" }),
+) as unknown as Schema.Codec<V1ListAllBranchesInput>;
 
 // Output Schema
+export type V1ListAllBranchesOutput = {
+  id: string;
+  name: string;
+  project_ref: string;
+  parent_project_ref: string;
+  is_default: boolean;
+  git_branch?: string;
+  pr_number?: number;
+  latest_check_run_id?: number;
+  persistent: boolean;
+  status:
+    | "CREATING_PROJECT"
+    | "RUNNING_MIGRATIONS"
+    | "MIGRATIONS_PASSED"
+    | "MIGRATIONS_FAILED"
+    | "FUNCTIONS_DEPLOYED"
+    | "FUNCTIONS_FAILED";
+  created_at: string;
+  updated_at: string;
+  review_requested_at?: string;
+  with_data: boolean;
+  notify_url?: string;
+  deletion_scheduled_at?: string;
+  preview_project_status?:
+    | "INACTIVE"
+    | "ACTIVE_HEALTHY"
+    | "ACTIVE_UNHEALTHY"
+    | "COMING_UP"
+    | "UNKNOWN"
+    | "GOING_DOWN"
+    | "INIT_FAILED"
+    | "REMOVED"
+    | "RESTORING"
+    | "UPGRADING"
+    | "PAUSING"
+    | "RESTORE_FAILED"
+    | "RESTARTING"
+    | "PAUSE_FAILED"
+    | "RESIZING";
+}[];
 export const V1ListAllBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
@@ -57,8 +101,7 @@ export const V1ListAllBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
       ]),
     ),
   }),
-);
-export type V1ListAllBranchesOutput = typeof V1ListAllBranchesOutput.Type;
+) as unknown as Schema.Codec<V1ListAllBranchesOutput>;
 
 // The operation
 /**

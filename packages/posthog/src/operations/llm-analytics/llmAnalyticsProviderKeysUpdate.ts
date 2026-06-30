@@ -2,8 +2,54 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface LlmAnalyticsProviderKeysUpdateInput {
+  id: string;
+  project_id: string;
+  provider?:
+    | "openai"
+    | "anthropic"
+    | "gemini"
+    | "openrouter"
+    | "fireworks"
+    | "azure_openai"
+    | "together_ai";
+  name?: string;
+  state?: "unknown" | "ok" | "invalid" | "error";
+  error_message?: string | null;
+  api_key?: string | Redacted.Redacted<string>;
+  api_key_masked?: string;
+  azure_endpoint?: string;
+  api_version?: string;
+  azure_endpoint_display?: string | null;
+  api_version_display?: string | null;
+  set_as_active?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_used_at?: string | null;
+}
 export const LlmAnalyticsProviderKeysUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -45,7 +91,23 @@ export const LlmAnalyticsProviderKeysUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -55,11 +117,53 @@ export const LlmAnalyticsProviderKeysUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/llm_analytics/provider_keys/{id}/",
     }),
-  );
-export type LlmAnalyticsProviderKeysUpdateInput =
-  typeof LlmAnalyticsProviderKeysUpdateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsProviderKeysUpdateInput>;
 
 // Output Schema
+export interface LlmAnalyticsProviderKeysUpdateOutput {
+  id?: string;
+  provider?:
+    | "openai"
+    | "anthropic"
+    | "gemini"
+    | "openrouter"
+    | "fireworks"
+    | "azure_openai"
+    | "together_ai";
+  name?: string;
+  state?: "unknown" | "ok" | "invalid" | "error";
+  error_message?: string | null;
+  api_key?: Redacted.Redacted<string>;
+  api_key_masked?: string;
+  azure_endpoint?: string;
+  api_version?: string;
+  azure_endpoint_display?: string | null;
+  api_version_display?: string | null;
+  set_as_active?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_used_at?: string | null;
+}
 export const LlmAnalyticsProviderKeysUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -100,14 +204,28 @@ export const LlmAnalyticsProviderKeysUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type LlmAnalyticsProviderKeysUpdateOutput =
-  typeof LlmAnalyticsProviderKeysUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsProviderKeysUpdateOutput>;
 
 // The operation
 /**

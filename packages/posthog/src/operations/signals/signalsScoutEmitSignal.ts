@@ -4,6 +4,24 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsScoutEmitSignalInput {
+  project_id: string;
+  run_id: string;
+  description: string;
+  confidence: number;
+  evidence: {
+    source_product: string;
+    summary: string;
+    entity_id?: string | null;
+  }[];
+  hypothesis?: string | null;
+  severity?: "P0" | "P1" | "P2" | "P3" | "P4" | null;
+  dedupe_keys?: string[];
+  tags?: string[];
+  time_range?: { date_from: string; date_to: string } | null;
+  mcp_trace_id?: string | null;
+  finding_id?: string | null;
+}
 export const SignalsScoutEmitSignalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,10 +36,19 @@ export const SignalsScoutEmitSignalInput =
       }),
     ),
     hypothesis: Schema.optional(Schema.NullOr(Schema.String)),
-    severity: Schema.optional(Schema.Unknown),
+    severity: Schema.optional(
+      Schema.NullOr(Schema.Literals(["P0", "P1", "P2", "P3", "P4"])),
+    ),
     dedupe_keys: Schema.optional(Schema.Array(Schema.String)),
     tags: Schema.optional(Schema.Array(Schema.String)),
-    time_range: Schema.optional(Schema.Unknown),
+    time_range: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          date_from: Schema.String,
+          date_to: Schema.String,
+        }),
+      ),
+    ),
     mcp_trace_id: Schema.optional(Schema.NullOr(Schema.String)),
     finding_id: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
@@ -29,19 +56,20 @@ export const SignalsScoutEmitSignalInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/scout/runs/{run_id}/emit-signal/",
     }),
-  );
-export type SignalsScoutEmitSignalInput =
-  typeof SignalsScoutEmitSignalInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutEmitSignalInput>;
 
 // Output Schema
+export interface SignalsScoutEmitSignalOutput {
+  finding_id: string;
+  emitted: boolean;
+  skipped_reason: string | null;
+}
 export const SignalsScoutEmitSignalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finding_id: Schema.String,
     emitted: Schema.Boolean,
     skipped_reason: Schema.NullOr(Schema.String),
-  });
-export type SignalsScoutEmitSignalOutput =
-  typeof SignalsScoutEmitSignalOutput.Type;
+  }) as unknown as Schema.Codec<SignalsScoutEmitSignalOutput>;
 
 // The operation
 /**

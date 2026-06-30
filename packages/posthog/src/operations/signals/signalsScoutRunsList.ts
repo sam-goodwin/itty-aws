@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsScoutRunsListInput {
+  project_id: string;
+  date_from?: string;
+  date_to?: string;
+  emitted?: string;
+  limit?: number;
+  skill_name?: string;
+  skill_version?: number;
+  text?: string;
+}
 export const SignalsScoutRunsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,10 +28,28 @@ export const SignalsScoutRunsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/scout/runs/",
     }),
-  );
-export type SignalsScoutRunsListInput = typeof SignalsScoutRunsListInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutRunsListInput>;
 
 // Output Schema
+export type SignalsScoutRunsListOutput = {
+  run_id: string;
+  skill_name: string;
+  skill_version: number;
+  status: string;
+  created_at: string;
+  started_at: string;
+  completed_at: string | null;
+  task_id?: string | null;
+  task_run_id?: string | null;
+  task_url?: string | null;
+  summary: string;
+  error?: string | null;
+  failure_reason?: string | null;
+  emitted_count: number;
+  emitted_finding_ids: string[];
+  emitted_report_ids: string[];
+  edited_report_ids: string[];
+}[];
 export const SignalsScoutRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -43,8 +71,7 @@ export const SignalsScoutRunsListOutput =
       emitted_report_ids: Schema.Array(Schema.String),
       edited_report_ids: Schema.Array(Schema.String),
     }),
-  );
-export type SignalsScoutRunsListOutput = typeof SignalsScoutRunsListOutput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutRunsListOutput>;
 
 // The operation
 /**

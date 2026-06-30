@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupStreamWorkspaceInput {
+  groupId: string;
+  tenantName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupStreamWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const UpdateGroupStreamWorkspaceInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
     }),
-  );
-export type UpdateGroupStreamWorkspaceInput =
-  typeof UpdateGroupStreamWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupStreamWorkspaceInput>;
 
 // Output Schema
+export type UpdateGroupStreamWorkspaceOutput = void;
 export const UpdateGroupStreamWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupStreamWorkspaceOutput =
-  typeof UpdateGroupStreamWorkspaceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupStreamWorkspaceOutput>;
 
 // The operation
 /**

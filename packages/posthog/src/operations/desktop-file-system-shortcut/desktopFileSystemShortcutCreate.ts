@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemShortcutCreateInput {
+  project_id: string;
+  id?: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const DesktopFileSystemShortcutCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +28,18 @@ export const DesktopFileSystemShortcutCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/desktop_file_system_shortcut/",
     }),
-  );
-export type DesktopFileSystemShortcutCreateInput =
-  typeof DesktopFileSystemShortcutCreateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemShortcutCreateInput>;
 
 // Output Schema
+export interface DesktopFileSystemShortcutCreateOutput {
+  id?: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const DesktopFileSystemShortcutCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -32,9 +49,7 @@ export const DesktopFileSystemShortcutCreateOutput =
     href: Schema.optional(Schema.NullOr(Schema.String)),
     order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
-  });
-export type DesktopFileSystemShortcutCreateOutput =
-  typeof DesktopFileSystemShortcutCreateOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemShortcutCreateOutput>;
 
 // The operation
 /**

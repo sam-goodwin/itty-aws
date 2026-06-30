@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DigitalTwinsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  name: string;
+  type: "Microsoft.DigitalTwins/digitalTwinsInstances";
+}
 export const DigitalTwinsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,11 +27,14 @@ export const DigitalTwinsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/locations/{location}/checkNameAvailability",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsCheckNameAvailabilityInput =
-  typeof DigitalTwinsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface DigitalTwinsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  message?: string | null;
+  reason?: "Invalid" | "AlreadyExists" | null;
+}
 export const DigitalTwinsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
@@ -33,9 +42,7 @@ export const DigitalTwinsCheckNameAvailabilityOutput =
     reason: Schema.optional(
       Schema.NullOr(Schema.Literals(["Invalid", "AlreadyExists"])),
     ),
-  });
-export type DigitalTwinsCheckNameAvailabilityOutput =
-  typeof DigitalTwinsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -51,6 +58,100 @@ export const DigitalTwinsCheckNameAvailability =
     outputSchema: DigitalTwinsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface DigitalTwinsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    createdTime?: string;
+    lastUpdatedTime?: string;
+    provisioningState?:
+      | "Provisioning"
+      | "Deleting"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Warning"
+      | "Suspending"
+      | "Restoring"
+      | "Moving";
+    hostName?: string | null;
+    privateEndpointConnections?:
+      | {
+          id?: string;
+          name?: string;
+          type?: string;
+          properties: {
+            provisioningState?:
+              | "Pending"
+              | "Approved"
+              | "Rejected"
+              | "Disconnected"
+              | null;
+            privateEndpoint?: { id?: string };
+            groupIds?: string[];
+            privateLinkServiceConnectionState?: {
+              status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+              description: string;
+              actionsRequired?: string;
+            };
+          };
+          systemData?: {
+            createdBy?: string | null;
+            createdByType?:
+              | "User"
+              | "Application"
+              | "ManagedIdentity"
+              | "Key"
+              | null;
+            createdAt?: string | null;
+            lastModifiedBy?: string | null;
+            lastModifiedByType?:
+              | "User"
+              | "Application"
+              | "ManagedIdentity"
+              | "Key"
+              | null;
+            lastModifiedAt?: string | null;
+          };
+        }[]
+      | null;
+    publicNetworkAccess?: "Enabled" | "Disabled" | null;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string> | null;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string | null;
+    tenantId?: string | null;
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    > | null;
+  };
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -210,11 +311,42 @@ export const DigitalTwinsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsCreateOrUpdateInput =
-  typeof DigitalTwinsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DigitalTwinsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string> | null;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string | null;
+    tenantId?: string | null;
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    > | null;
+  };
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -267,9 +399,7 @@ export const DigitalTwinsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type DigitalTwinsCreateOrUpdateOutput =
-  typeof DigitalTwinsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -287,6 +417,11 @@ export const DigitalTwinsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DigitalTwinsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const DigitalTwinsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -298,10 +433,42 @@ export const DigitalTwinsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsDeleteInput = typeof DigitalTwinsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsDeleteInput>;
 
 // Output Schema
+export interface DigitalTwinsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string> | null;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string | null;
+    tenantId?: string | null;
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    > | null;
+  };
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -354,8 +521,7 @@ export const DigitalTwinsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type DigitalTwinsDeleteOutput = typeof DigitalTwinsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsDeleteOutput>;
 
 // The operation
 /**
@@ -371,6 +537,53 @@ export const DigitalTwinsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DigitalTwinsDeleteOutput,
 }));
 // Input Schema
+export interface DigitalTwinsEndpointCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  endpointName: string;
+  properties: {
+    endpointType: "EventHub" | "EventGrid" | "ServiceBus";
+    provisioningState?:
+      | "Provisioning"
+      | "Deleting"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Warning"
+      | "Suspending"
+      | "Restoring"
+      | "Moving"
+      | "Disabled"
+      | null;
+    createdTime?: string | null;
+    authenticationType?: "KeyBased" | "IdentityBased";
+    deadLetterSecret?: string | null;
+    deadLetterUri?: string | null;
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string | null;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsEndpointCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -439,11 +652,27 @@ export const DigitalTwinsEndpointCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsEndpointCreateOrUpdateInput =
-  typeof DigitalTwinsEndpointCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsEndpointCreateOrUpdateInput>;
 
 // Output Schema
+export interface DigitalTwinsEndpointCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsEndpointCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -467,9 +696,7 @@ export const DigitalTwinsEndpointCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type DigitalTwinsEndpointCreateOrUpdateOutput =
-  typeof DigitalTwinsEndpointCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsEndpointCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -487,6 +714,12 @@ export const DigitalTwinsEndpointCreateOrUpdate =
     outputSchema: DigitalTwinsEndpointCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DigitalTwinsEndpointDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  endpointName: string;
+}
 export const DigitalTwinsEndpointDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -499,11 +732,27 @@ export const DigitalTwinsEndpointDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsEndpointDeleteInput =
-  typeof DigitalTwinsEndpointDeleteInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsEndpointDeleteInput>;
 
 // Output Schema
+export interface DigitalTwinsEndpointDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsEndpointDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -527,9 +776,7 @@ export const DigitalTwinsEndpointDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type DigitalTwinsEndpointDeleteOutput =
-  typeof DigitalTwinsEndpointDeleteOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsEndpointDeleteOutput>;
 
 // The operation
 /**
@@ -548,6 +795,12 @@ export const DigitalTwinsEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DigitalTwinsEndpointGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  endpointName: string;
+}
 export const DigitalTwinsEndpointGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -560,11 +813,27 @@ export const DigitalTwinsEndpointGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsEndpointGetInput =
-  typeof DigitalTwinsEndpointGetInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsEndpointGetInput>;
 
 // Output Schema
+export interface DigitalTwinsEndpointGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsEndpointGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -588,9 +857,7 @@ export const DigitalTwinsEndpointGetOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type DigitalTwinsEndpointGetOutput =
-  typeof DigitalTwinsEndpointGetOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsEndpointGetOutput>;
 
 // The operation
 /**
@@ -609,6 +876,11 @@ export const DigitalTwinsEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DigitalTwinsEndpointListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const DigitalTwinsEndpointListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -620,11 +892,30 @@ export const DigitalTwinsEndpointListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsEndpointListInput =
-  typeof DigitalTwinsEndpointListInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsEndpointListInput>;
 
 // Output Schema
+export interface DigitalTwinsEndpointListOutput {
+  nextLink?: string | null;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string | null;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+      createdAt?: string | null;
+      lastModifiedBy?: string | null;
+      lastModifiedByType?:
+        | "User"
+        | "Application"
+        | "ManagedIdentity"
+        | "Key"
+        | null;
+      lastModifiedAt?: string | null;
+    };
+  }[];
+}
 export const DigitalTwinsEndpointListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -665,9 +956,7 @@ export const DigitalTwinsEndpointListOutput =
         }),
       ),
     ),
-  });
-export type DigitalTwinsEndpointListOutput =
-  typeof DigitalTwinsEndpointListOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsEndpointListOutput>;
 
 // The operation
 /**
@@ -685,6 +974,11 @@ export const DigitalTwinsEndpointList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DigitalTwinsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const DigitalTwinsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -695,10 +989,42 @@ export const DigitalTwinsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
     apiVersion: "2023-01-31",
   }),
-);
-export type DigitalTwinsGetInput = typeof DigitalTwinsGetInput.Type;
+) as unknown as Schema.Codec<DigitalTwinsGetInput>;
 
 // Output Schema
+export interface DigitalTwinsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string> | null;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string | null;
+    tenantId?: string | null;
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    > | null;
+  };
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -750,8 +1076,7 @@ export const DigitalTwinsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
     }),
   ),
-});
-export type DigitalTwinsGetOutput = typeof DigitalTwinsGetOutput.Type;
+}) as unknown as Schema.Codec<DigitalTwinsGetOutput>;
 
 // The operation
 /**
@@ -767,6 +1092,9 @@ export const DigitalTwinsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DigitalTwinsGetOutput,
 }));
 // Input Schema
+export interface DigitalTwinsListInput {
+  subscriptionId: string;
+}
 export const DigitalTwinsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -775,10 +1103,45 @@ export const DigitalTwinsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
     apiVersion: "2023-01-31",
   }),
-);
-export type DigitalTwinsListInput = typeof DigitalTwinsListInput.Type;
+) as unknown as Schema.Codec<DigitalTwinsListInput>;
 
 // Output Schema
+export interface DigitalTwinsListOutput {
+  nextLink?: string | null;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string> | null;
+    identity?: {
+      type?:
+        | "None"
+        | "SystemAssigned"
+        | "UserAssigned"
+        | "SystemAssigned,UserAssigned";
+      principalId?: string | null;
+      tenantId?: string | null;
+      userAssignedIdentities?: Record<
+        string,
+        { clientId?: string; principalId?: string }
+      > | null;
+    };
+    systemData?: {
+      createdBy?: string | null;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+      createdAt?: string | null;
+      lastModifiedBy?: string | null;
+      lastModifiedByType?:
+        | "User"
+        | "Application"
+        | "ManagedIdentity"
+        | "Key"
+        | null;
+      lastModifiedAt?: string | null;
+    };
+  }[];
+}
 export const DigitalTwinsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -849,8 +1212,7 @@ export const DigitalTwinsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type DigitalTwinsListOutput = typeof DigitalTwinsListOutput.Type;
+) as unknown as Schema.Codec<DigitalTwinsListOutput>;
 
 // The operation
 /**
@@ -864,6 +1226,10 @@ export const DigitalTwinsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DigitalTwinsListOutput,
 }));
 // Input Schema
+export interface DigitalTwinsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DigitalTwinsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -874,11 +1240,45 @@ export const DigitalTwinsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsListByResourceGroupInput =
-  typeof DigitalTwinsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsListByResourceGroupInput>;
 
 // Output Schema
+export interface DigitalTwinsListByResourceGroupOutput {
+  nextLink?: string | null;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string> | null;
+    identity?: {
+      type?:
+        | "None"
+        | "SystemAssigned"
+        | "UserAssigned"
+        | "SystemAssigned,UserAssigned";
+      principalId?: string | null;
+      tenantId?: string | null;
+      userAssignedIdentities?: Record<
+        string,
+        { clientId?: string; principalId?: string }
+      > | null;
+    };
+    systemData?: {
+      createdBy?: string | null;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+      createdAt?: string | null;
+      lastModifiedBy?: string | null;
+      lastModifiedByType?:
+        | "User"
+        | "Application"
+        | "ManagedIdentity"
+        | "Key"
+        | null;
+      lastModifiedAt?: string | null;
+    };
+  }[];
+}
 export const DigitalTwinsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -948,9 +1348,7 @@ export const DigitalTwinsListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type DigitalTwinsListByResourceGroupOutput =
-  typeof DigitalTwinsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -966,6 +1364,26 @@ export const DigitalTwinsListByResourceGroup =
     outputSchema: DigitalTwinsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DigitalTwinsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string> | null;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string | null;
+    tenantId?: string | null;
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    > | null;
+  };
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" | null };
+}
 export const DigitalTwinsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1012,10 +1430,42 @@ export const DigitalTwinsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type DigitalTwinsUpdateInput = typeof DigitalTwinsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DigitalTwinsUpdateInput>;
 
 // Output Schema
+export interface DigitalTwinsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string> | null;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string | null;
+    tenantId?: string | null;
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    > | null;
+  };
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const DigitalTwinsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1068,8 +1518,7 @@ export const DigitalTwinsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type DigitalTwinsUpdateOutput = typeof DigitalTwinsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DigitalTwinsUpdateOutput>;
 
 // The operation
 /**
@@ -1085,6 +1534,7 @@ export const DigitalTwinsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DigitalTwinsUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1093,10 +1543,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DigitalTwins/operations",
     apiVersion: "2023-01-31",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  nextLink?: string | null;
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string | null;
+    isDataAction?: boolean;
+    properties?: Record<string, unknown> | null;
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
   value: Schema.optional(
@@ -1119,8 +1583,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1133,6 +1596,43 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    provisioningState?:
+      | "Pending"
+      | "Approved"
+      | "Rejected"
+      | "Disconnected"
+      | null;
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description: string;
+      actionsRequired?: string;
+    };
+  };
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1191,11 +1691,42 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    provisioningState?:
+      | "Pending"
+      | "Approved"
+      | "Rejected"
+      | "Disconnected"
+      | null;
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description: string;
+      actionsRequired?: string;
+    };
+  };
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1244,9 +1775,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1264,6 +1793,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1276,15 +1811,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1302,6 +1834,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1314,11 +1852,42 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    provisioningState?:
+      | "Pending"
+      | "Approved"
+      | "Rejected"
+      | "Disconnected"
+      | null;
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description: string;
+      actionsRequired?: string;
+    };
+  };
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1367,9 +1936,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1387,6 +1954,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1398,11 +1970,44 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections",
       apiVersion: "2023-01-31",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties: {
+      provisioningState?:
+        | "Pending"
+        | "Approved"
+        | "Rejected"
+        | "Disconnected"
+        | null;
+      privateEndpoint?: { id?: string };
+      groupIds?: string[];
+      privateLinkServiceConnectionState?: {
+        status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+        description: string;
+        actionsRequired?: string;
+      };
+    };
+    systemData?: {
+      createdBy?: string | null;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+      createdAt?: string | null;
+      lastModifiedBy?: string | null;
+      lastModifiedByType?:
+        | "User"
+        | "Application"
+        | "ManagedIdentity"
+        | "Key"
+        | null;
+      lastModifiedAt?: string | null;
+    };
+  }[];
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1472,9 +2077,7 @@ export const PrivateEndpointConnectionsListOutput =
         }),
       ),
     ),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -1491,6 +2094,12 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  resourceId: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1503,11 +2112,19 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateLinkResources/{resourceId}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  properties: {
+    groupId?: string;
+    requiredMembers?: string[];
+    requiredZoneNames?: string[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -1518,9 +2135,7 @@ export const PrivateLinkResourcesGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -1539,6 +2154,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1550,11 +2170,21 @@ export const PrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateLinkResources",
       apiVersion: "2023-01-31",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value?: {
+    properties: {
+      groupId?: string;
+      requiredMembers?: string[];
+      requiredZoneNames?: string[];
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1571,9 +2201,7 @@ export const PrivateLinkResourcesListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -1591,6 +2219,48 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TimeSeriesDatabaseConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  timeSeriesDatabaseConnectionName: string;
+  properties?: {
+    connectionType: "AzureDataExplorer";
+    provisioningState?:
+      | "Provisioning"
+      | "Deleting"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Warning"
+      | "Suspending"
+      | "Restoring"
+      | "Moving"
+      | "Disabled";
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string | null;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1653,11 +2323,27 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
-  typeof TimeSeriesDatabaseConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TimeSeriesDatabaseConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TimeSeriesDatabaseConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const TimeSeriesDatabaseConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1681,9 +2367,7 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type TimeSeriesDatabaseConnectionsCreateOrUpdateOutput =
-  typeof TimeSeriesDatabaseConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TimeSeriesDatabaseConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1701,6 +2385,13 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdate =
     outputSchema: TimeSeriesDatabaseConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface TimeSeriesDatabaseConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  timeSeriesDatabaseConnectionName: string;
+  cleanupConnectionArtifacts?: "true" | "false";
+}
 export const TimeSeriesDatabaseConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1716,11 +2407,27 @@ export const TimeSeriesDatabaseConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type TimeSeriesDatabaseConnectionsDeleteInput =
-  typeof TimeSeriesDatabaseConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<TimeSeriesDatabaseConnectionsDeleteInput>;
 
 // Output Schema
+export interface TimeSeriesDatabaseConnectionsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const TimeSeriesDatabaseConnectionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1744,9 +2451,7 @@ export const TimeSeriesDatabaseConnectionsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type TimeSeriesDatabaseConnectionsDeleteOutput =
-  typeof TimeSeriesDatabaseConnectionsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<TimeSeriesDatabaseConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1765,6 +2470,12 @@ export const TimeSeriesDatabaseConnectionsDelete =
     outputSchema: TimeSeriesDatabaseConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface TimeSeriesDatabaseConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  timeSeriesDatabaseConnectionName: string;
+}
 export const TimeSeriesDatabaseConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1777,11 +2488,27 @@ export const TimeSeriesDatabaseConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}",
       apiVersion: "2023-01-31",
     }),
-  );
-export type TimeSeriesDatabaseConnectionsGetInput =
-  typeof TimeSeriesDatabaseConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<TimeSeriesDatabaseConnectionsGetInput>;
 
 // Output Schema
+export interface TimeSeriesDatabaseConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string | null;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+    createdAt?: string | null;
+    lastModifiedBy?: string | null;
+    lastModifiedByType?:
+      | "User"
+      | "Application"
+      | "ManagedIdentity"
+      | "Key"
+      | null;
+    lastModifiedAt?: string | null;
+  };
+}
 export const TimeSeriesDatabaseConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1805,9 +2532,7 @@ export const TimeSeriesDatabaseConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type TimeSeriesDatabaseConnectionsGetOutput =
-  typeof TimeSeriesDatabaseConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<TimeSeriesDatabaseConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1825,6 +2550,11 @@ export const TimeSeriesDatabaseConnectionsGet =
     outputSchema: TimeSeriesDatabaseConnectionsGetOutput,
   }));
 // Input Schema
+export interface TimeSeriesDatabaseConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const TimeSeriesDatabaseConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1836,11 +2566,30 @@ export const TimeSeriesDatabaseConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections",
       apiVersion: "2023-01-31",
     }),
-  );
-export type TimeSeriesDatabaseConnectionsListInput =
-  typeof TimeSeriesDatabaseConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<TimeSeriesDatabaseConnectionsListInput>;
 
 // Output Schema
+export interface TimeSeriesDatabaseConnectionsListOutput {
+  nextLink?: string | null;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string | null;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key" | null;
+      createdAt?: string | null;
+      lastModifiedBy?: string | null;
+      lastModifiedByType?:
+        | "User"
+        | "Application"
+        | "ManagedIdentity"
+        | "Key"
+        | null;
+      lastModifiedAt?: string | null;
+    };
+  }[];
+}
 export const TimeSeriesDatabaseConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1881,9 +2630,7 @@ export const TimeSeriesDatabaseConnectionsListOutput =
         }),
       ),
     ),
-  });
-export type TimeSeriesDatabaseConnectionsListOutput =
-  typeof TimeSeriesDatabaseConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<TimeSeriesDatabaseConnectionsListOutput>;
 
 // The operation
 /**

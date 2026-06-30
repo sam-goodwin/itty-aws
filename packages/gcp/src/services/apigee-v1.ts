@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -41,7 +41,7 @@ export interface GoogleCloudApigeeV1EnvironmentGroup {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1EnvironmentGroup: Schema.Schema<GoogleCloudApigeeV1EnvironmentGroup> =
+export const GoogleCloudApigeeV1EnvironmentGroup: Schema.Codec<GoogleCloudApigeeV1EnvironmentGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastModifiedAt: Schema.optional(Schema.String),
     hostnames: Schema.optional(Schema.Array(Schema.String)),
@@ -57,7 +57,7 @@ export interface GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListEnvironmentGroupsResponse: Schema.Schema<GoogleCloudApigeeV1ListEnvironmentGroupsResponse> =
+export const GoogleCloudApigeeV1ListEnvironmentGroupsResponse: Schema.Codec<GoogleCloudApigeeV1ListEnvironmentGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentGroups: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1EnvironmentGroup),
@@ -69,7 +69,7 @@ export const GoogleCloudApigeeV1ListEnvironmentGroupsResponse: Schema.Schema<Goo
 
 export interface GoogleCloudApigeeV1ProfileConfigMTLS {}
 
-export const GoogleCloudApigeeV1ProfileConfigMTLS: Schema.Schema<GoogleCloudApigeeV1ProfileConfigMTLS> =
+export const GoogleCloudApigeeV1ProfileConfigMTLS: Schema.Codec<GoogleCloudApigeeV1ProfileConfigMTLS> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigMTLS",
   });
@@ -85,7 +85,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource> =
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export interface GoogleCloudApigeeV1NatAddress {
   ipAddress?: string;
 }
 
-export const GoogleCloudApigeeV1NatAddress: Schema.Schema<GoogleCloudApigeeV1NatAddress> =
+export const GoogleCloudApigeeV1NatAddress: Schema.Codec<GoogleCloudApigeeV1NatAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
   revision?: string;
 }
 
-export const GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment: Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment> =
+export const GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment: Schema.Codec<GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     basepath: Schema.optional(Schema.String),
@@ -150,7 +150,7 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
   description?: string;
 }
 
-export const GoogleCloudApigeeV1DeploymentChangeReportRoutingChange: Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange> =
+export const GoogleCloudApigeeV1DeploymentChangeReportRoutingChange: Schema.Codec<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toDeployment: Schema.optional(
       GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
@@ -174,7 +174,7 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
   description?: string;
 }
 
-export const GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict: Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict> =
+export const GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict: Schema.Codec<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conflictingDeployment: Schema.optional(
       GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
@@ -194,7 +194,7 @@ export interface GoogleRpcPreconditionFailureViolation {
   subject?: string;
 }
 
-export const GoogleRpcPreconditionFailureViolation: Schema.Schema<GoogleRpcPreconditionFailureViolation> =
+export const GoogleRpcPreconditionFailureViolation: Schema.Codec<GoogleRpcPreconditionFailureViolation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -206,7 +206,7 @@ export interface GoogleRpcPreconditionFailure {
   violations?: ReadonlyArray<GoogleRpcPreconditionFailureViolation>;
 }
 
-export const GoogleRpcPreconditionFailure: Schema.Schema<GoogleRpcPreconditionFailure> =
+export const GoogleRpcPreconditionFailure: Schema.Codec<GoogleRpcPreconditionFailure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     violations: Schema.optional(
       Schema.Array(GoogleRpcPreconditionFailureViolation),
@@ -222,7 +222,7 @@ export interface GoogleCloudApigeeV1DeploymentChangeReport {
   validationErrors?: GoogleRpcPreconditionFailure;
 }
 
-export const GoogleCloudApigeeV1DeploymentChangeReport: Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReport> =
+export const GoogleCloudApigeeV1DeploymentChangeReport: Schema.Codec<GoogleCloudApigeeV1DeploymentChangeReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routingChanges: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DeploymentChangeReportRoutingChange),
@@ -244,7 +244,7 @@ export interface GoogleCloudApigeeV1Space {
   updateTime?: string;
 }
 
-export const GoogleCloudApigeeV1Space: Schema.Schema<GoogleCloudApigeeV1Space> =
+export const GoogleCloudApigeeV1Space: Schema.Codec<GoogleCloudApigeeV1Space> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export interface GoogleCloudApigeeV1ListSpacesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSpacesResponse: Schema.Schema<GoogleCloudApigeeV1ListSpacesResponse> =
+export const GoogleCloudApigeeV1ListSpacesResponse: Schema.Codec<GoogleCloudApigeeV1ListSpacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spaces: Schema.optional(Schema.Array(GoogleCloudApigeeV1Space)),
     nextPageToken: Schema.optional(Schema.String),
@@ -274,7 +274,7 @@ export interface GoogleCloudApigeeV1Quota {
   timeUnit?: string;
 }
 
-export const GoogleCloudApigeeV1Quota: Schema.Schema<GoogleCloudApigeeV1Quota> =
+export const GoogleCloudApigeeV1Quota: Schema.Codec<GoogleCloudApigeeV1Quota> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.String),
     interval: Schema.optional(Schema.String),
@@ -288,7 +288,7 @@ export interface GoogleCloudApigeeV1Attribute {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1Attribute: Schema.Schema<GoogleCloudApigeeV1Attribute> =
+export const GoogleCloudApigeeV1Attribute: Schema.Codec<GoogleCloudApigeeV1Attribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -307,7 +307,7 @@ export interface GoogleCloudApigeeV1GrpcOperationConfig {
   service?: string;
 }
 
-export const GoogleCloudApigeeV1GrpcOperationConfig: Schema.Schema<GoogleCloudApigeeV1GrpcOperationConfig> =
+export const GoogleCloudApigeeV1GrpcOperationConfig: Schema.Codec<GoogleCloudApigeeV1GrpcOperationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiSource: Schema.optional(Schema.String),
     methods: Schema.optional(Schema.Array(Schema.String)),
@@ -347,7 +347,7 @@ export interface GoogleCloudApigeeV1Developer {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1Developer: Schema.Schema<GoogleCloudApigeeV1Developer> =
+export const GoogleCloudApigeeV1Developer: Schema.Codec<GoogleCloudApigeeV1Developer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(Schema.String)),
     lastModifiedAt: Schema.optional(Schema.String),
@@ -370,7 +370,7 @@ export interface GoogleCloudApigeeV1ListOfDevelopersResponse {
   developer?: ReadonlyArray<GoogleCloudApigeeV1Developer>;
 }
 
-export const GoogleCloudApigeeV1ListOfDevelopersResponse: Schema.Schema<GoogleCloudApigeeV1ListOfDevelopersResponse> =
+export const GoogleCloudApigeeV1ListOfDevelopersResponse: Schema.Codec<GoogleCloudApigeeV1ListOfDevelopersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developer: Schema.optional(Schema.Array(GoogleCloudApigeeV1Developer)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListOfDevelopersResponse" });
@@ -382,7 +382,7 @@ export interface GoogleCloudApigeeV1SecurityProfileEnvironment {
   attachTime?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileEnvironment: Schema.Schema<GoogleCloudApigeeV1SecurityProfileEnvironment> =
+export const GoogleCloudApigeeV1SecurityProfileEnvironment: Schema.Codec<GoogleCloudApigeeV1SecurityProfileEnvironment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     attachTime: Schema.optional(Schema.String),
@@ -417,7 +417,7 @@ export interface GoogleCloudApigeeV1UpdateError {
   message?: string;
 }
 
-export const GoogleCloudApigeeV1UpdateError: Schema.Schema<GoogleCloudApigeeV1UpdateError> =
+export const GoogleCloudApigeeV1UpdateError: Schema.Codec<GoogleCloudApigeeV1UpdateError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -431,7 +431,7 @@ export interface GoogleCloudApigeeV1AccessSet {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1AccessSet: Schema.Schema<GoogleCloudApigeeV1AccessSet> =
+export const GoogleCloudApigeeV1AccessSet: Schema.Codec<GoogleCloudApigeeV1AccessSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -440,7 +440,7 @@ export const GoogleCloudApigeeV1AccessSet: Schema.Schema<GoogleCloudApigeeV1Acce
 
 export interface GoogleCloudApigeeV1EnableSecurityActionRequest {}
 
-export const GoogleCloudApigeeV1EnableSecurityActionRequest: Schema.Schema<GoogleCloudApigeeV1EnableSecurityActionRequest> =
+export const GoogleCloudApigeeV1EnableSecurityActionRequest: Schema.Codec<GoogleCloudApigeeV1EnableSecurityActionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1EnableSecurityActionRequest",
   });
@@ -452,7 +452,7 @@ export interface GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHea
   ipHeaderIndex?: number;
 }
 
-export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm: Schema.Schema<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm> =
+export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm: Schema.Codec<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipHeaderName: Schema.optional(Schema.String),
     ipHeaderIndex: Schema.optional(Schema.Number),
@@ -463,7 +463,7 @@ export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderI
 
 export interface GoogleCloudApigeeV1ProfileConfigThreat {}
 
-export const GoogleCloudApigeeV1ProfileConfigThreat: Schema.Schema<GoogleCloudApigeeV1ProfileConfigThreat> =
+export const GoogleCloudApigeeV1ProfileConfigThreat: Schema.Codec<GoogleCloudApigeeV1ProfileConfigThreat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigThreat",
   });
@@ -475,7 +475,7 @@ export interface GoogleCloudApigeeV1KeyAliasReference {
   reference?: string;
 }
 
-export const GoogleCloudApigeeV1KeyAliasReference: Schema.Schema<GoogleCloudApigeeV1KeyAliasReference> =
+export const GoogleCloudApigeeV1KeyAliasReference: Schema.Codec<GoogleCloudApigeeV1KeyAliasReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aliasId: Schema.optional(Schema.String),
     reference: Schema.optional(Schema.String),
@@ -486,7 +486,7 @@ export interface GoogleCloudApigeeV1Attributes {
   attribute?: ReadonlyArray<GoogleCloudApigeeV1Attribute>;
 }
 
-export const GoogleCloudApigeeV1Attributes: Schema.Schema<GoogleCloudApigeeV1Attributes> =
+export const GoogleCloudApigeeV1Attributes: Schema.Codec<GoogleCloudApigeeV1Attributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Attributes" });
@@ -498,7 +498,7 @@ export interface GoogleCloudApigeeV1ReferenceConfig {
   resourceName?: string;
 }
 
-export const GoogleCloudApigeeV1ReferenceConfig: Schema.Schema<GoogleCloudApigeeV1ReferenceConfig> =
+export const GoogleCloudApigeeV1ReferenceConfig: Schema.Codec<GoogleCloudApigeeV1ReferenceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
@@ -519,7 +519,7 @@ export interface GoogleCloudApigeeV1QueryMetadata {
   outputFormat?: string;
 }
 
-export const GoogleCloudApigeeV1QueryMetadata: Schema.Schema<GoogleCloudApigeeV1QueryMetadata> =
+export const GoogleCloudApigeeV1QueryMetadata: Schema.Codec<GoogleCloudApigeeV1QueryMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     endTimestamp: Schema.optional(Schema.String),
@@ -536,7 +536,7 @@ export interface GoogleCloudApigeeV1AsyncQueryResult {
   expires?: string;
 }
 
-export const GoogleCloudApigeeV1AsyncQueryResult: Schema.Schema<GoogleCloudApigeeV1AsyncQueryResult> =
+export const GoogleCloudApigeeV1AsyncQueryResult: Schema.Codec<GoogleCloudApigeeV1AsyncQueryResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     self: Schema.optional(Schema.String),
     expires: Schema.optional(Schema.String),
@@ -571,7 +571,7 @@ export interface GoogleCloudApigeeV1AsyncQuery {
   result?: GoogleCloudApigeeV1AsyncQueryResult;
 }
 
-export const GoogleCloudApigeeV1AsyncQuery: Schema.Schema<GoogleCloudApigeeV1AsyncQuery> =
+export const GoogleCloudApigeeV1AsyncQuery: Schema.Codec<GoogleCloudApigeeV1AsyncQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     self: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
@@ -597,7 +597,7 @@ export interface GoogleTypeMoney {
   units?: string;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
+export const GoogleTypeMoney: Schema.Codec<GoogleTypeMoney> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -609,7 +609,7 @@ export interface GoogleCloudApigeeV1AdjustAppGroupBalanceRequest {
   adjustment?: GoogleTypeMoney;
 }
 
-export const GoogleCloudApigeeV1AdjustAppGroupBalanceRequest: Schema.Schema<GoogleCloudApigeeV1AdjustAppGroupBalanceRequest> =
+export const GoogleCloudApigeeV1AdjustAppGroupBalanceRequest: Schema.Codec<GoogleCloudApigeeV1AdjustAppGroupBalanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adjustment: Schema.optional(GoogleTypeMoney),
   }).annotate({
@@ -625,7 +625,7 @@ export interface GoogleCloudApigeeV1AppGroupMonetizationConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1AppGroupMonetizationConfig: Schema.Schema<GoogleCloudApigeeV1AppGroupMonetizationConfig> =
+export const GoogleCloudApigeeV1AppGroupMonetizationConfig: Schema.Codec<GoogleCloudApigeeV1AppGroupMonetizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupMonetizationConfig" });
@@ -649,7 +649,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploy
   gateway?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails> =
+export const GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gatewayType: Schema.optional(Schema.String),
     resourceUri: Schema.optional(Schema.String),
@@ -684,7 +684,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultResource {
   apiHubDeploymentDetails?: GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultResource: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultResource> =
+export const GoogleCloudApigeeV1SecurityAssessmentResultResource: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     apiHubGatewayType: Schema.optional(Schema.String),
@@ -710,7 +710,7 @@ export interface GoogleCloudApigeeV1SecurityReportQueryMetric {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReportQueryMetric: Schema.Schema<GoogleCloudApigeeV1SecurityReportQueryMetric> =
+export const GoogleCloudApigeeV1SecurityReportQueryMetric: Schema.Codec<GoogleCloudApigeeV1SecurityReportQueryMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
@@ -744,7 +744,7 @@ export interface GoogleCloudApigeeV1SecurityReportQuery {
   limit?: number;
 }
 
-export const GoogleCloudApigeeV1SecurityReportQuery: Schema.Schema<GoogleCloudApigeeV1SecurityReportQuery> =
+export const GoogleCloudApigeeV1SecurityReportQuery: Schema.Codec<GoogleCloudApigeeV1SecurityReportQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -776,7 +776,7 @@ export interface GoogleCloudApigeeV1AppGroupSubscription {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroupSubscription: Schema.Schema<GoogleCloudApigeeV1AppGroupSubscription> =
+export const GoogleCloudApigeeV1AppGroupSubscription: Schema.Codec<GoogleCloudApigeeV1AppGroupSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiproduct: Schema.optional(Schema.String),
     lastModifiedAt: Schema.optional(Schema.String),
@@ -793,7 +793,7 @@ export interface GoogleCloudApigeeV1ResourceConfig {
   location?: string;
 }
 
-export const GoogleCloudApigeeV1ResourceConfig: Schema.Schema<GoogleCloudApigeeV1ResourceConfig> =
+export const GoogleCloudApigeeV1ResourceConfig: Schema.Codec<GoogleCloudApigeeV1ResourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -811,7 +811,7 @@ export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiH
   >;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray: Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray> =
+export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray: Schema.Codec<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gatewayTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -824,7 +824,7 @@ export interface GoogleCloudApigeeV1MonetizationConfig {
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1MonetizationConfig: Schema.Schema<GoogleCloudApigeeV1MonetizationConfig> =
+export const GoogleCloudApigeeV1MonetizationConfig: Schema.Codec<GoogleCloudApigeeV1MonetizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1MonetizationConfig" });
@@ -834,7 +834,7 @@ export interface GoogleCloudApigeeV1IntegrationConfig {
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1IntegrationConfig: Schema.Schema<GoogleCloudApigeeV1IntegrationConfig> =
+export const GoogleCloudApigeeV1IntegrationConfig: Schema.Codec<GoogleCloudApigeeV1IntegrationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1IntegrationConfig" });
@@ -846,7 +846,7 @@ export interface GoogleCloudApigeeV1ApiSecurityConfig {
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1ApiSecurityConfig: Schema.Schema<GoogleCloudApigeeV1ApiSecurityConfig> =
+export const GoogleCloudApigeeV1ApiSecurityConfig: Schema.Codec<GoogleCloudApigeeV1ApiSecurityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expiresAt: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -854,7 +854,7 @@ export const GoogleCloudApigeeV1ApiSecurityConfig: Schema.Schema<GoogleCloudApig
 
 export interface GoogleCloudApigeeV1ActivateNatAddressRequest {}
 
-export const GoogleCloudApigeeV1ActivateNatAddressRequest: Schema.Schema<GoogleCloudApigeeV1ActivateNatAddressRequest> =
+export const GoogleCloudApigeeV1ActivateNatAddressRequest: Schema.Codec<GoogleCloudApigeeV1ActivateNatAddressRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ActivateNatAddressRequest",
   });
@@ -866,7 +866,7 @@ export interface GoogleCloudApigeeV1ConnectorsPlatformConfig {
   expiresAt?: string;
 }
 
-export const GoogleCloudApigeeV1ConnectorsPlatformConfig: Schema.Schema<GoogleCloudApigeeV1ConnectorsPlatformConfig> =
+export const GoogleCloudApigeeV1ConnectorsPlatformConfig: Schema.Codec<GoogleCloudApigeeV1ConnectorsPlatformConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     expiresAt: Schema.optional(Schema.String),
@@ -889,7 +889,7 @@ export interface GoogleCloudApigeeV1AnalyticsConfig {
   expireTimeMillis?: string;
 }
 
-export const GoogleCloudApigeeV1AnalyticsConfig: Schema.Schema<GoogleCloudApigeeV1AnalyticsConfig> =
+export const GoogleCloudApigeeV1AnalyticsConfig: Schema.Codec<GoogleCloudApigeeV1AnalyticsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     state: Schema.optional(Schema.String),
@@ -902,7 +902,7 @@ export interface GoogleCloudApigeeV1AdvancedApiOpsConfig {
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1AdvancedApiOpsConfig: Schema.Schema<GoogleCloudApigeeV1AdvancedApiOpsConfig> =
+export const GoogleCloudApigeeV1AdvancedApiOpsConfig: Schema.Codec<GoogleCloudApigeeV1AdvancedApiOpsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1AdvancedApiOpsConfig" });
@@ -922,7 +922,7 @@ export interface GoogleCloudApigeeV1AddonsConfig {
   advancedApiOpsConfig?: GoogleCloudApigeeV1AdvancedApiOpsConfig;
 }
 
-export const GoogleCloudApigeeV1AddonsConfig: Schema.Schema<GoogleCloudApigeeV1AddonsConfig> =
+export const GoogleCloudApigeeV1AddonsConfig: Schema.Codec<GoogleCloudApigeeV1AddonsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiSecurityConfig: Schema.optional(GoogleCloudApigeeV1ApiSecurityConfig),
     monetizationConfig: Schema.optional(GoogleCloudApigeeV1MonetizationConfig),
@@ -952,7 +952,7 @@ export interface GoogleCloudApigeeV1MetricAggregation {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1MetricAggregation: Schema.Schema<GoogleCloudApigeeV1MetricAggregation> =
+export const GoogleCloudApigeeV1MetricAggregation: Schema.Codec<GoogleCloudApigeeV1MetricAggregation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     order: Schema.optional(Schema.String),
@@ -964,7 +964,7 @@ export interface GoogleCloudApigeeV1GrpcOperationGroup {
   operationConfigs?: ReadonlyArray<GoogleCloudApigeeV1GrpcOperationConfig>;
 }
 
-export const GoogleCloudApigeeV1GrpcOperationGroup: Schema.Schema<GoogleCloudApigeeV1GrpcOperationGroup> =
+export const GoogleCloudApigeeV1GrpcOperationGroup: Schema.Codec<GoogleCloudApigeeV1GrpcOperationGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1GrpcOperationConfig),
@@ -1001,7 +1001,7 @@ export interface GoogleCloudApigeeV1SecurityIncident {
   displayName?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityIncident: Schema.Schema<GoogleCloudApigeeV1SecurityIncident> =
+export const GoogleCloudApigeeV1SecurityIncident: Schema.Codec<GoogleCloudApigeeV1SecurityIncident> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     riskLevel: Schema.optional(Schema.String),
     detectionTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -1021,7 +1021,7 @@ export interface GoogleCloudApigeeV1UpdateSecurityIncidentRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudApigeeV1UpdateSecurityIncidentRequest: Schema.Schema<GoogleCloudApigeeV1UpdateSecurityIncidentRequest> =
+export const GoogleCloudApigeeV1UpdateSecurityIncidentRequest: Schema.Codec<GoogleCloudApigeeV1UpdateSecurityIncidentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityIncident: Schema.optional(GoogleCloudApigeeV1SecurityIncident),
     updateMask: Schema.optional(Schema.String),
@@ -1040,7 +1040,7 @@ export interface GoogleCloudApigeeV1EnvironmentGroupAttachment {
   environmentGroupId?: string;
 }
 
-export const GoogleCloudApigeeV1EnvironmentGroupAttachment: Schema.Schema<GoogleCloudApigeeV1EnvironmentGroupAttachment> =
+export const GoogleCloudApigeeV1EnvironmentGroupAttachment: Schema.Codec<GoogleCloudApigeeV1EnvironmentGroupAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     environment: Schema.optional(Schema.String),
@@ -1059,7 +1059,7 @@ export interface GoogleCloudApigeeV1ApiDebugSession {
   id?: string;
 }
 
-export const GoogleCloudApigeeV1ApiDebugSession: Schema.Schema<GoogleCloudApigeeV1ApiDebugSession> =
+export const GoogleCloudApigeeV1ApiDebugSession: Schema.Codec<GoogleCloudApigeeV1ApiDebugSession> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiProxyRevisionId: Schema.optional(Schema.String),
     environmentId: Schema.optional(Schema.String),
@@ -1074,7 +1074,7 @@ export interface GoogleCloudApigeeV1Session {
   timestampMs?: string;
 }
 
-export const GoogleCloudApigeeV1Session: Schema.Schema<GoogleCloudApigeeV1Session> =
+export const GoogleCloudApigeeV1Session: Schema.Codec<GoogleCloudApigeeV1Session> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     timestampMs: Schema.optional(Schema.String),
@@ -1087,7 +1087,7 @@ export interface GoogleCloudApigeeV1ListDebugSessionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListDebugSessionsResponse: Schema.Schema<GoogleCloudApigeeV1ListDebugSessionsResponse> =
+export const GoogleCloudApigeeV1ListDebugSessionsResponse: Schema.Codec<GoogleCloudApigeeV1ListDebugSessionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessions: Schema.optional(Schema.Array(GoogleCloudApigeeV1Session)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1100,7 +1100,7 @@ export interface GoogleCloudApigeeV1ApiProductRef {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1ApiProductRef: Schema.Schema<GoogleCloudApigeeV1ApiProductRef> =
+export const GoogleCloudApigeeV1ApiProductRef: Schema.Codec<GoogleCloudApigeeV1ApiProductRef> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiproduct: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1125,7 +1125,7 @@ export interface GoogleCloudApigeeV1Credential {
   scopes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1Credential: Schema.Schema<GoogleCloudApigeeV1Credential> =
+export const GoogleCloudApigeeV1Credential: Schema.Codec<GoogleCloudApigeeV1Credential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerSecret: Schema.optional(Schema.String),
     expiresAt: Schema.optional(Schema.String),
@@ -1172,7 +1172,7 @@ export interface GoogleCloudApigeeV1App {
   keyExpiresIn?: string;
 }
 
-export const GoogleCloudApigeeV1App: Schema.Schema<GoogleCloudApigeeV1App> =
+export const GoogleCloudApigeeV1App: Schema.Codec<GoogleCloudApigeeV1App> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     appGroup: Schema.optional(Schema.String),
@@ -1209,7 +1209,7 @@ export interface GoogleCloudApigeeV1OperationMetadataProgress {
   details?: Record<string, unknown>;
 }
 
-export const GoogleCloudApigeeV1OperationMetadataProgress: Schema.Schema<GoogleCloudApigeeV1OperationMetadataProgress> =
+export const GoogleCloudApigeeV1OperationMetadataProgress: Schema.Codec<GoogleCloudApigeeV1OperationMetadataProgress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1238,7 +1238,7 @@ export interface GoogleCloudApigeeV1OperationMetadata {
   progress?: GoogleCloudApigeeV1OperationMetadataProgress;
 }
 
-export const GoogleCloudApigeeV1OperationMetadata: Schema.Schema<GoogleCloudApigeeV1OperationMetadata> =
+export const GoogleCloudApigeeV1OperationMetadata: Schema.Codec<GoogleCloudApigeeV1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
     targetResourceName: Schema.optional(Schema.String),
@@ -1268,7 +1268,7 @@ export interface GoogleCloudApigeeV1DebugMask {
   responseJSONPaths?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1DebugMask: Schema.Schema<GoogleCloudApigeeV1DebugMask> =
+export const GoogleCloudApigeeV1DebugMask: Schema.Codec<GoogleCloudApigeeV1DebugMask> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaces: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     responseXPaths: Schema.optional(Schema.Array(Schema.String)),
@@ -1289,7 +1289,7 @@ export interface GoogleCloudApigeeV1ListAppsResponse {
   totalSize?: number;
 }
 
-export const GoogleCloudApigeeV1ListAppsResponse: Schema.Schema<GoogleCloudApigeeV1ListAppsResponse> =
+export const GoogleCloudApigeeV1ListAppsResponse: Schema.Codec<GoogleCloudApigeeV1ListAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app: Schema.optional(Schema.Array(GoogleCloudApigeeV1App)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1304,7 +1304,7 @@ export interface GoogleCloudApigeeV1AliasRevisionConfig {
   type?: "ALIAS_TYPE_UNSPECIFIED" | "CERT" | "KEY_CERT" | (string & {});
 }
 
-export const GoogleCloudApigeeV1AliasRevisionConfig: Schema.Schema<GoogleCloudApigeeV1AliasRevisionConfig> =
+export const GoogleCloudApigeeV1AliasRevisionConfig: Schema.Codec<GoogleCloudApigeeV1AliasRevisionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1318,7 +1318,7 @@ export interface GoogleCloudApigeeV1KeystoreConfig {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1KeystoreConfig: Schema.Schema<GoogleCloudApigeeV1KeystoreConfig> =
+export const GoogleCloudApigeeV1KeystoreConfig: Schema.Codec<GoogleCloudApigeeV1KeystoreConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aliases: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1AliasRevisionConfig),
@@ -1333,7 +1333,7 @@ export interface GoogleCloudApigeeV1TlsInfoCommonName {
   wildcardMatch?: boolean;
 }
 
-export const GoogleCloudApigeeV1TlsInfoCommonName: Schema.Schema<GoogleCloudApigeeV1TlsInfoCommonName> =
+export const GoogleCloudApigeeV1TlsInfoCommonName: Schema.Codec<GoogleCloudApigeeV1TlsInfoCommonName> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     wildcardMatch: Schema.optional(Schema.Boolean),
@@ -1346,7 +1346,7 @@ export interface EdgeConfigstoreBundleBadBundleViolation {
   description?: string;
 }
 
-export const EdgeConfigstoreBundleBadBundleViolation: Schema.Schema<EdgeConfigstoreBundleBadBundleViolation> =
+export const EdgeConfigstoreBundleBadBundleViolation: Schema.Codec<EdgeConfigstoreBundleBadBundleViolation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filename: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1357,7 +1357,7 @@ export interface EdgeConfigstoreBundleBadBundle {
   violations?: ReadonlyArray<EdgeConfigstoreBundleBadBundleViolation>;
 }
 
-export const EdgeConfigstoreBundleBadBundle: Schema.Schema<EdgeConfigstoreBundleBadBundle> =
+export const EdgeConfigstoreBundleBadBundle: Schema.Codec<EdgeConfigstoreBundleBadBundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     violations: Schema.optional(
       Schema.Array(EdgeConfigstoreBundleBadBundleViolation),
@@ -1371,7 +1371,7 @@ export interface GoogleCloudApigeeV1DocumentationFile {
   contents?: string;
 }
 
-export const GoogleCloudApigeeV1DocumentationFile: Schema.Schema<GoogleCloudApigeeV1DocumentationFile> =
+export const GoogleCloudApigeeV1DocumentationFile: Schema.Codec<GoogleCloudApigeeV1DocumentationFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     contents: Schema.optional(Schema.String),
@@ -1382,7 +1382,7 @@ export interface GoogleCloudApigeeV1AsyncApiDocumentation {
   spec?: GoogleCloudApigeeV1DocumentationFile;
 }
 
-export const GoogleCloudApigeeV1AsyncApiDocumentation: Schema.Schema<GoogleCloudApigeeV1AsyncApiDocumentation> =
+export const GoogleCloudApigeeV1AsyncApiDocumentation: Schema.Codec<GoogleCloudApigeeV1AsyncApiDocumentation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spec: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
   }).annotate({ identifier: "GoogleCloudApigeeV1AsyncApiDocumentation" });
@@ -1394,7 +1394,7 @@ export interface GoogleCloudApigeeV1OASDocumentation {
   format?: "FORMAT_UNSPECIFIED" | "YAML" | "JSON" | (string & {});
 }
 
-export const GoogleCloudApigeeV1OASDocumentation: Schema.Schema<GoogleCloudApigeeV1OASDocumentation> =
+export const GoogleCloudApigeeV1OASDocumentation: Schema.Codec<GoogleCloudApigeeV1OASDocumentation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spec: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
     format: Schema.optional(Schema.String),
@@ -1407,7 +1407,7 @@ export interface GoogleCloudApigeeV1GraphqlDocumentation {
   endpointUri?: string;
 }
 
-export const GoogleCloudApigeeV1GraphqlDocumentation: Schema.Schema<GoogleCloudApigeeV1GraphqlDocumentation> =
+export const GoogleCloudApigeeV1GraphqlDocumentation: Schema.Codec<GoogleCloudApigeeV1GraphqlDocumentation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schema: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
     endpointUri: Schema.optional(Schema.String),
@@ -1422,7 +1422,7 @@ export interface GoogleCloudApigeeV1ApiDocDocumentation {
   graphqlDocumentation?: GoogleCloudApigeeV1GraphqlDocumentation;
 }
 
-export const GoogleCloudApigeeV1ApiDocDocumentation: Schema.Schema<GoogleCloudApigeeV1ApiDocDocumentation> =
+export const GoogleCloudApigeeV1ApiDocDocumentation: Schema.Codec<GoogleCloudApigeeV1ApiDocDocumentation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asyncApiDocumentation: Schema.optional(
       GoogleCloudApigeeV1AsyncApiDocumentation,
@@ -1446,7 +1446,7 @@ export interface GoogleCloudApigeeV1ApiDocDocumentationResponse {
   requestId?: string;
 }
 
-export const GoogleCloudApigeeV1ApiDocDocumentationResponse: Schema.Schema<GoogleCloudApigeeV1ApiDocDocumentationResponse> =
+export const GoogleCloudApigeeV1ApiDocDocumentationResponse: Schema.Codec<GoogleCloudApigeeV1ApiDocDocumentationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -1470,7 +1470,7 @@ export interface GoogleCloudApigeeV1DeveloperSubscription {
   endTime?: string;
 }
 
-export const GoogleCloudApigeeV1DeveloperSubscription: Schema.Schema<GoogleCloudApigeeV1DeveloperSubscription> =
+export const GoogleCloudApigeeV1DeveloperSubscription: Schema.Codec<GoogleCloudApigeeV1DeveloperSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiproduct: Schema.optional(Schema.String),
     lastModifiedAt: Schema.optional(Schema.String),
@@ -1487,7 +1487,7 @@ export interface GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse {
   nextStartKey?: string;
 }
 
-export const GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse: Schema.Schema<GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse> =
+export const GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse: Schema.Codec<GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerSubscriptions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DeveloperSubscription),
@@ -1502,7 +1502,7 @@ export interface GoogleCloudApigeeV1ScoreComponentRecommendationActionActionCont
   documentationLink?: string;
 }
 
-export const GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext: Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext> =
+export const GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext: Schema.Codec<GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentationLink: Schema.optional(Schema.String),
   }).annotate({
@@ -1517,7 +1517,7 @@ export interface GoogleCloudApigeeV1ScoreComponentRecommendationAction {
   actionContext?: GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext;
 }
 
-export const GoogleCloudApigeeV1ScoreComponentRecommendationAction: Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendationAction> =
+export const GoogleCloudApigeeV1ScoreComponentRecommendationAction: Schema.Codec<GoogleCloudApigeeV1ScoreComponentRecommendationAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     actionContext: Schema.optional(
@@ -1538,7 +1538,7 @@ export interface GoogleCloudApigeeV1ScoreComponentRecommendation {
   impact?: number;
 }
 
-export const GoogleCloudApigeeV1ScoreComponentRecommendation: Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendation> =
+export const GoogleCloudApigeeV1ScoreComponentRecommendation: Schema.Codec<GoogleCloudApigeeV1ScoreComponentRecommendation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     actions: Schema.optional(
@@ -1565,7 +1565,7 @@ export interface GoogleCloudApigeeV1ScoreComponent {
   recommendations?: ReadonlyArray<GoogleCloudApigeeV1ScoreComponentRecommendation>;
 }
 
-export const GoogleCloudApigeeV1ScoreComponent: Schema.Schema<GoogleCloudApigeeV1ScoreComponent> =
+export const GoogleCloudApigeeV1ScoreComponent: Schema.Codec<GoogleCloudApigeeV1ScoreComponent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     drilldownPaths: Schema.optional(Schema.Array(Schema.String)),
     calculateTime: Schema.optional(Schema.String),
@@ -1584,7 +1584,7 @@ export interface GoogleTypeInterval {
   endTime?: string;
 }
 
-export const GoogleTypeInterval: Schema.Schema<GoogleTypeInterval> =
+export const GoogleTypeInterval: Schema.Codec<GoogleTypeInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1599,7 +1599,7 @@ export interface GoogleCloudApigeeV1Score {
   timeRange?: GoogleTypeInterval;
 }
 
-export const GoogleCloudApigeeV1Score: Schema.Schema<GoogleCloudApigeeV1Score> =
+export const GoogleCloudApigeeV1Score: Schema.Codec<GoogleCloudApigeeV1Score> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     component: Schema.optional(GoogleCloudApigeeV1ScoreComponent),
     subcomponents: Schema.optional(
@@ -1617,7 +1617,7 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1651,7 +1651,7 @@ export interface GoogleCloudApigeeV1CertInfo {
   isValid?: string;
 }
 
-export const GoogleCloudApigeeV1CertInfo: Schema.Schema<GoogleCloudApigeeV1CertInfo> =
+export const GoogleCloudApigeeV1CertInfo: Schema.Codec<GoogleCloudApigeeV1CertInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validFrom: Schema.optional(Schema.String),
     publicKey: Schema.optional(Schema.String),
@@ -1671,7 +1671,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
   resources?: ReadonlyArray<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource>;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray> =
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(
       Schema.Array(
@@ -1685,7 +1685,7 @@ export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestReso
 
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll {}
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll> =
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll",
@@ -1720,7 +1720,7 @@ export interface GoogleCloudApigeeV1SecurityMonitoringCondition {
   updateTime?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityMonitoringCondition: Schema.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition> =
+export const GoogleCloudApigeeV1SecurityMonitoringCondition: Schema.Codec<GoogleCloudApigeeV1SecurityMonitoringCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profile: Schema.optional(Schema.String),
     include: Schema.optional(
@@ -1746,7 +1746,7 @@ export interface GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse {
   securityMonitoringConditions?: ReadonlyArray<GoogleCloudApigeeV1SecurityMonitoringCondition>;
 }
 
-export const GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse> =
+export const GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     securityMonitoringConditions: Schema.optional(
@@ -1776,7 +1776,7 @@ export interface GoogleCloudApigeeV1DataCollector {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1DataCollector: Schema.Schema<GoogleCloudApigeeV1DataCollector> =
+export const GoogleCloudApigeeV1DataCollector: Schema.Codec<GoogleCloudApigeeV1DataCollector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAt: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1792,7 +1792,7 @@ export interface GoogleCloudApigeeV1ListDataCollectorsResponse {
   dataCollectors?: ReadonlyArray<GoogleCloudApigeeV1DataCollector>;
 }
 
-export const GoogleCloudApigeeV1ListDataCollectorsResponse: Schema.Schema<GoogleCloudApigeeV1ListDataCollectorsResponse> =
+export const GoogleCloudApigeeV1ListDataCollectorsResponse: Schema.Codec<GoogleCloudApigeeV1ListDataCollectorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dataCollectors: Schema.optional(
@@ -1809,7 +1809,7 @@ export interface GoogleCloudApigeeV1RateRange {
   end?: string;
 }
 
-export const GoogleCloudApigeeV1RateRange: Schema.Schema<GoogleCloudApigeeV1RateRange> =
+export const GoogleCloudApigeeV1RateRange: Schema.Codec<GoogleCloudApigeeV1RateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fee: Schema.optional(GoogleTypeMoney),
     start: Schema.optional(Schema.String),
@@ -1845,7 +1845,7 @@ export interface GoogleCloudApigeeV1DeveloperApp {
   scopes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1DeveloperApp: Schema.Schema<GoogleCloudApigeeV1DeveloperApp> =
+export const GoogleCloudApigeeV1DeveloperApp: Schema.Codec<GoogleCloudApigeeV1DeveloperApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
     lastModifiedAt: Schema.optional(Schema.String),
@@ -1867,7 +1867,7 @@ export interface GoogleCloudApigeeV1ListDeveloperAppsResponse {
   app?: ReadonlyArray<GoogleCloudApigeeV1DeveloperApp>;
 }
 
-export const GoogleCloudApigeeV1ListDeveloperAppsResponse: Schema.Schema<GoogleCloudApigeeV1ListDeveloperAppsResponse> =
+export const GoogleCloudApigeeV1ListDeveloperAppsResponse: Schema.Codec<GoogleCloudApigeeV1ListDeveloperAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app: Schema.optional(Schema.Array(GoogleCloudApigeeV1DeveloperApp)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListDeveloperAppsResponse" });
@@ -1885,7 +1885,7 @@ export interface GoogleCloudApigeeV1ApiSecurityRuntimeConfig {
   revisionId?: string;
 }
 
-export const GoogleCloudApigeeV1ApiSecurityRuntimeConfig: Schema.Schema<GoogleCloudApigeeV1ApiSecurityRuntimeConfig> =
+export const GoogleCloudApigeeV1ApiSecurityRuntimeConfig: Schema.Codec<GoogleCloudApigeeV1ApiSecurityRuntimeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1901,7 +1901,7 @@ export interface GoogleCloudApigeeV1TestDatastoreResponse {
   error?: string;
 }
 
-export const GoogleCloudApigeeV1TestDatastoreResponse: Schema.Schema<GoogleCloudApigeeV1TestDatastoreResponse> =
+export const GoogleCloudApigeeV1TestDatastoreResponse: Schema.Codec<GoogleCloudApigeeV1TestDatastoreResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     error: Schema.optional(Schema.String),
@@ -1916,7 +1916,7 @@ export interface GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
   instance_id?: string;
 }
 
-export const GoogleCloudApigeeV1CanaryEvaluationMetricLabels: Schema.Schema<GoogleCloudApigeeV1CanaryEvaluationMetricLabels> =
+export const GoogleCloudApigeeV1CanaryEvaluationMetricLabels: Schema.Codec<GoogleCloudApigeeV1CanaryEvaluationMetricLabels> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     env: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1946,7 +1946,7 @@ export interface GoogleCloudApigeeV1CanaryEvaluation {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1CanaryEvaluation: Schema.Schema<GoogleCloudApigeeV1CanaryEvaluation> =
+export const GoogleCloudApigeeV1CanaryEvaluation: Schema.Codec<GoogleCloudApigeeV1CanaryEvaluation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     treatment: Schema.optional(Schema.String),
@@ -1968,7 +1968,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
   uri?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink> =
+export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -1984,7 +1984,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
   link?: GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation> =
+export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     link: Schema.optional(
@@ -2002,7 +2002,7 @@ export interface GoogleCloudApigeeV1Metric {
   values?: ReadonlyArray<unknown>;
 }
 
-export const GoogleCloudApigeeV1Metric: Schema.Schema<GoogleCloudApigeeV1Metric> =
+export const GoogleCloudApigeeV1Metric: Schema.Codec<GoogleCloudApigeeV1Metric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.Unknown)),
@@ -2017,7 +2017,7 @@ export interface GoogleCloudApigeeV1DimensionMetric {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1DimensionMetric: Schema.Schema<GoogleCloudApigeeV1DimensionMetric> =
+export const GoogleCloudApigeeV1DimensionMetric: Schema.Codec<GoogleCloudApigeeV1DimensionMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     individualNames: Schema.optional(Schema.Array(Schema.String)),
     metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
@@ -2033,7 +2033,7 @@ export interface GoogleCloudApigeeV1StatsEnvironmentStats {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1StatsEnvironmentStats: Schema.Schema<GoogleCloudApigeeV1StatsEnvironmentStats> =
+export const GoogleCloudApigeeV1StatsEnvironmentStats: Schema.Codec<GoogleCloudApigeeV1StatsEnvironmentStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
     dimensions: Schema.optional(
@@ -2044,7 +2044,7 @@ export const GoogleCloudApigeeV1StatsEnvironmentStats: Schema.Schema<GoogleCloud
 
 export interface GoogleCloudApigeeV1DisableSecurityActionRequest {}
 
-export const GoogleCloudApigeeV1DisableSecurityActionRequest: Schema.Schema<GoogleCloudApigeeV1DisableSecurityActionRequest> =
+export const GoogleCloudApigeeV1DisableSecurityActionRequest: Schema.Codec<GoogleCloudApigeeV1DisableSecurityActionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1DisableSecurityActionRequest",
   });
@@ -2060,7 +2060,7 @@ export interface GoogleCloudApigeeV1ApiCategory {
   updateTime?: string;
 }
 
-export const GoogleCloudApigeeV1ApiCategory: Schema.Schema<GoogleCloudApigeeV1ApiCategory> =
+export const GoogleCloudApigeeV1ApiCategory: Schema.Codec<GoogleCloudApigeeV1ApiCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     siteId: Schema.optional(Schema.String),
@@ -2075,7 +2075,7 @@ export interface GoogleCloudApigeeV1ConfigVersion {
   minorVersion?: number;
 }
 
-export const GoogleCloudApigeeV1ConfigVersion: Schema.Schema<GoogleCloudApigeeV1ConfigVersion> =
+export const GoogleCloudApigeeV1ConfigVersion: Schema.Codec<GoogleCloudApigeeV1ConfigVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     majorVersion: Schema.optional(Schema.Number),
     minorVersion: Schema.optional(Schema.Number),
@@ -2102,7 +2102,7 @@ export interface GoogleCloudApigeeV1DeveloperAppKey {
   attributes?: ReadonlyArray<GoogleCloudApigeeV1Attribute>;
 }
 
-export const GoogleCloudApigeeV1DeveloperAppKey: Schema.Schema<GoogleCloudApigeeV1DeveloperAppKey> =
+export const GoogleCloudApigeeV1DeveloperAppKey: Schema.Codec<GoogleCloudApigeeV1DeveloperAppKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerSecret: Schema.optional(Schema.String),
     expiresAt: Schema.optional(Schema.String),
@@ -2132,7 +2132,7 @@ export interface GoogleCloudApigeeV1RoutingRule {
   updateTime?: string;
 }
 
-export const GoogleCloudApigeeV1RoutingRule: Schema.Schema<GoogleCloudApigeeV1RoutingRule> =
+export const GoogleCloudApigeeV1RoutingRule: Schema.Codec<GoogleCloudApigeeV1RoutingRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentGroup: Schema.optional(Schema.String),
     otherTargets: Schema.optional(Schema.Array(Schema.String)),
@@ -2150,7 +2150,7 @@ export interface GoogleCloudApigeeV1EndpointChainingRule {
   deploymentGroup?: string;
 }
 
-export const GoogleCloudApigeeV1EndpointChainingRule: Schema.Schema<GoogleCloudApigeeV1EndpointChainingRule> =
+export const GoogleCloudApigeeV1EndpointChainingRule: Schema.Codec<GoogleCloudApigeeV1EndpointChainingRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyIds: Schema.optional(Schema.Array(Schema.String)),
     deploymentGroup: Schema.optional(Schema.String),
@@ -2173,7 +2173,7 @@ export interface GoogleCloudApigeeV1EnvironmentGroupConfig {
   endpointChainingRules?: ReadonlyArray<GoogleCloudApigeeV1EndpointChainingRule>;
 }
 
-export const GoogleCloudApigeeV1EnvironmentGroupConfig: Schema.Schema<GoogleCloudApigeeV1EnvironmentGroupConfig> =
+export const GoogleCloudApigeeV1EnvironmentGroupConfig: Schema.Codec<GoogleCloudApigeeV1EnvironmentGroupConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostnames: Schema.optional(Schema.Array(Schema.String)),
     routingRules: Schema.optional(Schema.Array(GoogleCloudApigeeV1RoutingRule)),
@@ -2199,7 +2199,7 @@ export interface GoogleCloudApigeeV1IngressConfig {
   environmentGroups?: ReadonlyArray<GoogleCloudApigeeV1EnvironmentGroupConfig>;
 }
 
-export const GoogleCloudApigeeV1IngressConfig: Schema.Schema<GoogleCloudApigeeV1IngressConfig> =
+export const GoogleCloudApigeeV1IngressConfig: Schema.Codec<GoogleCloudApigeeV1IngressConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revisionCreateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2219,7 +2219,7 @@ export interface GoogleCloudApigeeV1RevenueShareRange {
   sharePercentage?: number;
 }
 
-export const GoogleCloudApigeeV1RevenueShareRange: Schema.Schema<GoogleCloudApigeeV1RevenueShareRange> =
+export const GoogleCloudApigeeV1RevenueShareRange: Schema.Codec<GoogleCloudApigeeV1RevenueShareRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
@@ -2285,7 +2285,7 @@ export interface GoogleCloudApigeeV1RatePlan {
   startTime?: string;
 }
 
-export const GoogleCloudApigeeV1RatePlan: Schema.Schema<GoogleCloudApigeeV1RatePlan> =
+export const GoogleCloudApigeeV1RatePlan: Schema.Codec<GoogleCloudApigeeV1RatePlan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumptionPricingRates: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1RateRange),
@@ -2337,7 +2337,7 @@ export interface GoogleCloudApigeeV1AppGroup {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroup: Schema.Schema<GoogleCloudApigeeV1AppGroup> =
+export const GoogleCloudApigeeV1AppGroup: Schema.Codec<GoogleCloudApigeeV1AppGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelUri: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -2361,7 +2361,7 @@ export interface GoogleCloudApigeeV1ListAppGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListAppGroupsResponse: Schema.Schema<GoogleCloudApigeeV1ListAppGroupsResponse> =
+export const GoogleCloudApigeeV1ListAppGroupsResponse: Schema.Codec<GoogleCloudApigeeV1ListAppGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     appGroups: Schema.optional(Schema.Array(GoogleCloudApigeeV1AppGroup)),
@@ -2379,7 +2379,7 @@ export interface GoogleTypeTimeOfDay {
   minutes?: number;
 }
 
-export const GoogleTypeTimeOfDay: Schema.Schema<GoogleTypeTimeOfDay> =
+export const GoogleTypeTimeOfDay: Schema.Codec<GoogleTypeTimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
@@ -2403,7 +2403,7 @@ export interface GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow {
   startTime?: GoogleTypeTimeOfDay;
 }
 
-export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow: Schema.Schema<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow> =
+export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow: Schema.Codec<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.String),
     startTime: Schema.optional(GoogleTypeTimeOfDay),
@@ -2422,7 +2422,7 @@ export interface GoogleCloudApigeeV1MaintenanceUpdatePolicy {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1MaintenanceUpdatePolicy: Schema.Schema<GoogleCloudApigeeV1MaintenanceUpdatePolicy> =
+export const GoogleCloudApigeeV1MaintenanceUpdatePolicy: Schema.Codec<GoogleCloudApigeeV1MaintenanceUpdatePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maintenanceWindows: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow),
@@ -2437,7 +2437,7 @@ export interface GoogleCloudApigeeV1AccessLoggingConfig {
   filter?: string;
 }
 
-export const GoogleCloudApigeeV1AccessLoggingConfig: Schema.Schema<GoogleCloudApigeeV1AccessLoggingConfig> =
+export const GoogleCloudApigeeV1AccessLoggingConfig: Schema.Codec<GoogleCloudApigeeV1AccessLoggingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     filter: Schema.optional(Schema.String),
@@ -2448,7 +2448,7 @@ export interface GoogleCloudApigeeV1ScheduledMaintenance {
   startTime?: string;
 }
 
-export const GoogleCloudApigeeV1ScheduledMaintenance: Schema.Schema<GoogleCloudApigeeV1ScheduledMaintenance> =
+export const GoogleCloudApigeeV1ScheduledMaintenance: Schema.Codec<GoogleCloudApigeeV1ScheduledMaintenance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1ScheduledMaintenance" });
@@ -2509,7 +2509,7 @@ export interface GoogleCloudApigeeV1Instance {
   serviceAttachment?: string;
 }
 
-export const GoogleCloudApigeeV1Instance: Schema.Schema<GoogleCloudApigeeV1Instance> =
+export const GoogleCloudApigeeV1Instance: Schema.Codec<GoogleCloudApigeeV1Instance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     peeringCidrRange: Schema.optional(Schema.String),
@@ -2543,7 +2543,7 @@ export interface GoogleCloudApigeeV1AdjustDeveloperBalanceRequest {
   adjustment?: GoogleTypeMoney;
 }
 
-export const GoogleCloudApigeeV1AdjustDeveloperBalanceRequest: Schema.Schema<GoogleCloudApigeeV1AdjustDeveloperBalanceRequest> =
+export const GoogleCloudApigeeV1AdjustDeveloperBalanceRequest: Schema.Codec<GoogleCloudApigeeV1AdjustDeveloperBalanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adjustment: Schema.optional(GoogleTypeMoney),
   }).annotate({
@@ -2561,7 +2561,7 @@ export interface GoogleCloudApigeeV1ProvisionOrganizationRequest {
   runtimeLocation?: string;
 }
 
-export const GoogleCloudApigeeV1ProvisionOrganizationRequest: Schema.Schema<GoogleCloudApigeeV1ProvisionOrganizationRequest> =
+export const GoogleCloudApigeeV1ProvisionOrganizationRequest: Schema.Codec<GoogleCloudApigeeV1ProvisionOrganizationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableVpcPeering: Schema.optional(Schema.Boolean),
     authorizedNetwork: Schema.optional(Schema.String),
@@ -2580,7 +2580,7 @@ export interface GoogleCloudApigeeV1FlowHookConfig {
   continueOnError?: boolean;
 }
 
-export const GoogleCloudApigeeV1FlowHookConfig: Schema.Schema<GoogleCloudApigeeV1FlowHookConfig> =
+export const GoogleCloudApigeeV1FlowHookConfig: Schema.Codec<GoogleCloudApigeeV1FlowHookConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sharedFlowName: Schema.optional(Schema.String),
@@ -2600,7 +2600,7 @@ export interface GoogleCloudApigeeV1AsyncQueryResultView {
   state?: string;
 }
 
-export const GoogleCloudApigeeV1AsyncQueryResultView: Schema.Schema<GoogleCloudApigeeV1AsyncQueryResultView> =
+export const GoogleCloudApigeeV1AsyncQueryResultView: Schema.Codec<GoogleCloudApigeeV1AsyncQueryResultView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(GoogleCloudApigeeV1QueryMetadata),
     rows: Schema.optional(Schema.Array(Schema.Unknown)),
@@ -2630,7 +2630,7 @@ export interface GoogleCloudApigeeV1Export {
   executionTime?: string;
 }
 
-export const GoogleCloudApigeeV1Export: Schema.Schema<GoogleCloudApigeeV1Export> =
+export const GoogleCloudApigeeV1Export: Schema.Codec<GoogleCloudApigeeV1Export> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datastoreName: Schema.optional(Schema.String),
     self: Schema.optional(Schema.String),
@@ -2660,7 +2660,7 @@ export interface GoogleCloudApigeeV1DebugSession {
   count?: number;
 }
 
-export const GoogleCloudApigeeV1DebugSession: Schema.Schema<GoogleCloudApigeeV1DebugSession> =
+export const GoogleCloudApigeeV1DebugSession: Schema.Codec<GoogleCloudApigeeV1DebugSession> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tracesize: Schema.optional(Schema.Number),
     timeout: Schema.optional(Schema.String),
@@ -2673,28 +2673,28 @@ export const GoogleCloudApigeeV1DebugSession: Schema.Schema<GoogleCloudApigeeV1D
 
 export interface GoogleCloudApigeeV1ProfileConfigMediation {}
 
-export const GoogleCloudApigeeV1ProfileConfigMediation: Schema.Schema<GoogleCloudApigeeV1ProfileConfigMediation> =
+export const GoogleCloudApigeeV1ProfileConfigMediation: Schema.Codec<GoogleCloudApigeeV1ProfileConfigMediation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigMediation",
   });
 
 export interface GoogleCloudApigeeV1ProfileConfigAbuse {}
 
-export const GoogleCloudApigeeV1ProfileConfigAbuse: Schema.Schema<GoogleCloudApigeeV1ProfileConfigAbuse> =
+export const GoogleCloudApigeeV1ProfileConfigAbuse: Schema.Codec<GoogleCloudApigeeV1ProfileConfigAbuse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigAbuse",
   });
 
 export interface GoogleCloudApigeeV1ProfileConfigAuthorization {}
 
-export const GoogleCloudApigeeV1ProfileConfigAuthorization: Schema.Schema<GoogleCloudApigeeV1ProfileConfigAuthorization> =
+export const GoogleCloudApigeeV1ProfileConfigAuthorization: Schema.Codec<GoogleCloudApigeeV1ProfileConfigAuthorization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigAuthorization",
   });
 
 export interface GoogleCloudApigeeV1ProfileConfigCORS {}
 
-export const GoogleCloudApigeeV1ProfileConfigCORS: Schema.Schema<GoogleCloudApigeeV1ProfileConfigCORS> =
+export const GoogleCloudApigeeV1ProfileConfigCORS: Schema.Codec<GoogleCloudApigeeV1ProfileConfigCORS> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigCORS",
   });
@@ -2714,7 +2714,7 @@ export interface GoogleCloudApigeeV1ProfileConfigCategory {
   threat?: GoogleCloudApigeeV1ProfileConfigThreat;
 }
 
-export const GoogleCloudApigeeV1ProfileConfigCategory: Schema.Schema<GoogleCloudApigeeV1ProfileConfigCategory> =
+export const GoogleCloudApigeeV1ProfileConfigCategory: Schema.Codec<GoogleCloudApigeeV1ProfileConfigCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mediation: Schema.optional(GoogleCloudApigeeV1ProfileConfigMediation),
     abuse: Schema.optional(GoogleCloudApigeeV1ProfileConfigAbuse),
@@ -2731,7 +2731,7 @@ export interface GoogleCloudApigeeV1ProfileConfig {
   categories?: ReadonlyArray<GoogleCloudApigeeV1ProfileConfigCategory>;
 }
 
-export const GoogleCloudApigeeV1ProfileConfig: Schema.Schema<GoogleCloudApigeeV1ProfileConfig> =
+export const GoogleCloudApigeeV1ProfileConfig: Schema.Codec<GoogleCloudApigeeV1ProfileConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categories: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ProfileConfigCategory),
@@ -2747,7 +2747,7 @@ export interface GoogleCloudApigeeV1SecurityProfileScoringConfig {
   title?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileScoringConfig: Schema.Schema<GoogleCloudApigeeV1SecurityProfileScoringConfig> =
+export const GoogleCloudApigeeV1SecurityProfileScoringConfig: Schema.Codec<GoogleCloudApigeeV1SecurityProfileScoringConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     scorePath: Schema.optional(Schema.String),
@@ -2783,7 +2783,7 @@ export interface GoogleCloudApigeeV1SecurityProfile {
   revisionPublishTime?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityProfile: Schema.Schema<GoogleCloudApigeeV1SecurityProfile> =
+export const GoogleCloudApigeeV1SecurityProfile: Schema.Codec<GoogleCloudApigeeV1SecurityProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -2810,7 +2810,7 @@ export interface GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse> =
+export const GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityProfiles: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityProfile),
@@ -2827,7 +2827,7 @@ export interface GoogleCloudApigeeV1KeyValueEntry {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1KeyValueEntry: Schema.Schema<GoogleCloudApigeeV1KeyValueEntry> =
+export const GoogleCloudApigeeV1KeyValueEntry: Schema.Codec<GoogleCloudApigeeV1KeyValueEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2840,7 +2840,7 @@ export interface GoogleCloudApigeeV1ListKeyValueEntriesResponse {
   keyValueEntries?: ReadonlyArray<GoogleCloudApigeeV1KeyValueEntry>;
 }
 
-export const GoogleCloudApigeeV1ListKeyValueEntriesResponse: Schema.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse> =
+export const GoogleCloudApigeeV1ListKeyValueEntriesResponse: Schema.Codec<GoogleCloudApigeeV1ListKeyValueEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     keyValueEntries: Schema.optional(
@@ -2855,7 +2855,7 @@ export interface GoogleCloudApigeeV1APIProductAssociation {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1APIProductAssociation: Schema.Schema<GoogleCloudApigeeV1APIProductAssociation> =
+export const GoogleCloudApigeeV1APIProductAssociation: Schema.Codec<GoogleCloudApigeeV1APIProductAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiproduct: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2882,7 +2882,7 @@ export interface GoogleCloudApigeeV1AppGroupAppKey {
   expiresAt?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroupAppKey: Schema.Schema<GoogleCloudApigeeV1AppGroupAppKey> =
+export const GoogleCloudApigeeV1AppGroupAppKey: Schema.Codec<GoogleCloudApigeeV1AppGroupAppKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
     status: Schema.optional(Schema.String),
@@ -2919,7 +2919,7 @@ export interface GoogleCloudApigeeV1ApimServiceExtensionExtension {
   >;
 }
 
-export const GoogleCloudApigeeV1ApimServiceExtensionExtension: Schema.Schema<GoogleCloudApigeeV1ApimServiceExtensionExtension> =
+export const GoogleCloudApigeeV1ApimServiceExtensionExtension: Schema.Codec<GoogleCloudApigeeV1ApimServiceExtensionExtension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     failOpen: Schema.optional(Schema.Boolean),
@@ -2941,7 +2941,7 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
   percentage?: number;
 }
 
-export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute: Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute> =
+export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute: Schema.Codec<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     basepath: Schema.optional(Schema.String),
@@ -2956,7 +2956,7 @@ export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse {
   securityIncidents?: ReadonlyArray<GoogleCloudApigeeV1SecurityIncident>;
 }
 
-export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse: Schema.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse> =
+export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse: Schema.Codec<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityIncidents: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityIncident),
@@ -2970,7 +2970,7 @@ export interface GoogleCloudApigeeV1AccessGet {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1AccessGet: Schema.Schema<GoogleCloudApigeeV1AccessGet> =
+export const GoogleCloudApigeeV1AccessGet: Schema.Codec<GoogleCloudApigeeV1AccessGet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2981,7 +2981,7 @@ export interface GoogleCloudApigeeV1AccessRemove {
   success?: boolean;
 }
 
-export const GoogleCloudApigeeV1AccessRemove: Schema.Schema<GoogleCloudApigeeV1AccessRemove> =
+export const GoogleCloudApigeeV1AccessRemove: Schema.Codec<GoogleCloudApigeeV1AccessRemove> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     success: Schema.optional(Schema.Boolean),
@@ -2998,7 +2998,7 @@ export interface GoogleCloudApigeeV1RevisionStatus {
   jsonSpec?: string;
 }
 
-export const GoogleCloudApigeeV1RevisionStatus: Schema.Schema<GoogleCloudApigeeV1RevisionStatus> =
+export const GoogleCloudApigeeV1RevisionStatus: Schema.Codec<GoogleCloudApigeeV1RevisionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(GoogleCloudApigeeV1UpdateError)),
     revisionId: Schema.optional(Schema.String),
@@ -3017,7 +3017,7 @@ export interface GoogleCloudApigeeV1ResourceStatus {
   uid?: string;
 }
 
-export const GoogleCloudApigeeV1ResourceStatus: Schema.Schema<GoogleCloudApigeeV1ResourceStatus> =
+export const GoogleCloudApigeeV1ResourceStatus: Schema.Codec<GoogleCloudApigeeV1ResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     totalReplicas: Schema.optional(Schema.Number),
@@ -3034,7 +3034,7 @@ export interface GoogleCloudApigeeV1ReportInstanceStatusRequest {
   resources?: ReadonlyArray<GoogleCloudApigeeV1ResourceStatus>;
 }
 
-export const GoogleCloudApigeeV1ReportInstanceStatusRequest: Schema.Schema<GoogleCloudApigeeV1ReportInstanceStatusRequest> =
+export const GoogleCloudApigeeV1ReportInstanceStatusRequest: Schema.Codec<GoogleCloudApigeeV1ReportInstanceStatusRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportTime: Schema.optional(Schema.String),
     instanceUid: Schema.optional(Schema.String),
@@ -3048,7 +3048,7 @@ export interface GoogleCloudApigeeV1SetAddonEnablementRequest {
   apiSecurityEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1SetAddonEnablementRequest: Schema.Schema<GoogleCloudApigeeV1SetAddonEnablementRequest> =
+export const GoogleCloudApigeeV1SetAddonEnablementRequest: Schema.Codec<GoogleCloudApigeeV1SetAddonEnablementRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsEnabled: Schema.optional(Schema.Boolean),
     apiSecurityEnabled: Schema.optional(Schema.Boolean),
@@ -3061,7 +3061,7 @@ export interface GoogleCloudApigeeV1TraceSamplingConfig {
   samplingRate?: number;
 }
 
-export const GoogleCloudApigeeV1TraceSamplingConfig: Schema.Schema<GoogleCloudApigeeV1TraceSamplingConfig> =
+export const GoogleCloudApigeeV1TraceSamplingConfig: Schema.Codec<GoogleCloudApigeeV1TraceSamplingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampler: Schema.optional(Schema.String),
     samplingRate: Schema.optional(Schema.Number),
@@ -3076,7 +3076,7 @@ export interface GoogleCloudApigeeV1TraceConfigOverride {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1TraceConfigOverride: Schema.Schema<GoogleCloudApigeeV1TraceConfigOverride> =
+export const GoogleCloudApigeeV1TraceConfigOverride: Schema.Codec<GoogleCloudApigeeV1TraceConfigOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiProxy: Schema.optional(Schema.String),
     samplingConfig: Schema.optional(GoogleCloudApigeeV1TraceSamplingConfig),
@@ -3092,7 +3092,7 @@ export interface GoogleCloudApigeeV1LlmTokenQuota {
   timeUnit?: string;
 }
 
-export const GoogleCloudApigeeV1LlmTokenQuota: Schema.Schema<GoogleCloudApigeeV1LlmTokenQuota> =
+export const GoogleCloudApigeeV1LlmTokenQuota: Schema.Codec<GoogleCloudApigeeV1LlmTokenQuota> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.String),
     interval: Schema.optional(Schema.String),
@@ -3108,7 +3108,7 @@ export interface GoogleCloudApigeeV1LlmOperation {
   model?: string;
 }
 
-export const GoogleCloudApigeeV1LlmOperation: Schema.Schema<GoogleCloudApigeeV1LlmOperation> =
+export const GoogleCloudApigeeV1LlmOperation: Schema.Codec<GoogleCloudApigeeV1LlmOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     resource: Schema.optional(Schema.String),
@@ -3126,7 +3126,7 @@ export interface GoogleCloudApigeeV1LlmOperationConfig {
   llmOperations?: ReadonlyArray<GoogleCloudApigeeV1LlmOperation>;
 }
 
-export const GoogleCloudApigeeV1LlmOperationConfig: Schema.Schema<GoogleCloudApigeeV1LlmOperationConfig> =
+export const GoogleCloudApigeeV1LlmOperationConfig: Schema.Codec<GoogleCloudApigeeV1LlmOperationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     llmTokenQuota: Schema.optional(GoogleCloudApigeeV1LlmTokenQuota),
     apiSource: Schema.optional(Schema.String),
@@ -3141,7 +3141,7 @@ export interface GoogleCloudApigeeV1LlmOperationGroup {
   operationConfigs?: ReadonlyArray<GoogleCloudApigeeV1LlmOperationConfig>;
 }
 
-export const GoogleCloudApigeeV1LlmOperationGroup: Schema.Schema<GoogleCloudApigeeV1LlmOperationGroup> =
+export const GoogleCloudApigeeV1LlmOperationGroup: Schema.Codec<GoogleCloudApigeeV1LlmOperationGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1LlmOperationConfig),
@@ -3155,7 +3155,7 @@ export interface GoogleCloudApigeeV1GraphQLOperation {
   operationTypes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1GraphQLOperation: Schema.Schema<GoogleCloudApigeeV1GraphQLOperation> =
+export const GoogleCloudApigeeV1GraphQLOperation: Schema.Codec<GoogleCloudApigeeV1GraphQLOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     operationTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -3172,7 +3172,7 @@ export interface GoogleCloudApigeeV1GraphQLOperationConfig {
   quota?: GoogleCloudApigeeV1Quota;
 }
 
-export const GoogleCloudApigeeV1GraphQLOperationConfig: Schema.Schema<GoogleCloudApigeeV1GraphQLOperationConfig> =
+export const GoogleCloudApigeeV1GraphQLOperationConfig: Schema.Codec<GoogleCloudApigeeV1GraphQLOperationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiSource: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
@@ -3189,7 +3189,7 @@ export interface GoogleCloudApigeeV1GraphQLOperationGroup {
   operationConfigType?: string;
 }
 
-export const GoogleCloudApigeeV1GraphQLOperationGroup: Schema.Schema<GoogleCloudApigeeV1GraphQLOperationGroup> =
+export const GoogleCloudApigeeV1GraphQLOperationGroup: Schema.Codec<GoogleCloudApigeeV1GraphQLOperationGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1GraphQLOperationConfig),
@@ -3202,7 +3202,7 @@ export interface GoogleCloudApigeeV1PayloadOperation {
   operation?: string;
 }
 
-export const GoogleCloudApigeeV1PayloadOperation: Schema.Schema<GoogleCloudApigeeV1PayloadOperation> =
+export const GoogleCloudApigeeV1PayloadOperation: Schema.Codec<GoogleCloudApigeeV1PayloadOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1PayloadOperation" });
@@ -3218,7 +3218,7 @@ export interface GoogleCloudApigeeV1PayloadOperationConfig {
   attributes?: ReadonlyArray<GoogleCloudApigeeV1Attribute>;
 }
 
-export const GoogleCloudApigeeV1PayloadOperationConfig: Schema.Schema<GoogleCloudApigeeV1PayloadOperationConfig> =
+export const GoogleCloudApigeeV1PayloadOperationConfig: Schema.Codec<GoogleCloudApigeeV1PayloadOperationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1PayloadOperation),
@@ -3233,7 +3233,7 @@ export interface GoogleCloudApigeeV1PayloadOperationGroup {
   operationConfigs?: ReadonlyArray<GoogleCloudApigeeV1PayloadOperationConfig>;
 }
 
-export const GoogleCloudApigeeV1PayloadOperationGroup: Schema.Schema<GoogleCloudApigeeV1PayloadOperationGroup> =
+export const GoogleCloudApigeeV1PayloadOperationGroup: Schema.Codec<GoogleCloudApigeeV1PayloadOperationGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1PayloadOperationConfig),
@@ -3247,7 +3247,7 @@ export interface GoogleCloudApigeeV1Operation {
   resource?: string;
 }
 
-export const GoogleCloudApigeeV1Operation: Schema.Schema<GoogleCloudApigeeV1Operation> =
+export const GoogleCloudApigeeV1Operation: Schema.Codec<GoogleCloudApigeeV1Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     resource: Schema.optional(Schema.String),
@@ -3264,7 +3264,7 @@ export interface GoogleCloudApigeeV1OperationConfig {
   quota?: GoogleCloudApigeeV1Quota;
 }
 
-export const GoogleCloudApigeeV1OperationConfig: Schema.Schema<GoogleCloudApigeeV1OperationConfig> =
+export const GoogleCloudApigeeV1OperationConfig: Schema.Codec<GoogleCloudApigeeV1OperationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiSource: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
@@ -3279,7 +3279,7 @@ export interface GoogleCloudApigeeV1OperationGroup {
   operationConfigType?: string;
 }
 
-export const GoogleCloudApigeeV1OperationGroup: Schema.Schema<GoogleCloudApigeeV1OperationGroup> =
+export const GoogleCloudApigeeV1OperationGroup: Schema.Codec<GoogleCloudApigeeV1OperationGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationConfigs: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1OperationConfig),
@@ -3343,7 +3343,7 @@ export interface GoogleCloudApigeeV1ApiProduct {
   approvalType?: string;
 }
 
-export const GoogleCloudApigeeV1ApiProduct: Schema.Schema<GoogleCloudApigeeV1ApiProduct> =
+export const GoogleCloudApigeeV1ApiProduct: Schema.Codec<GoogleCloudApigeeV1ApiProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     grpcOperationGroup: Schema.optional(GoogleCloudApigeeV1GrpcOperationGroup),
     environments: Schema.optional(Schema.Array(Schema.String)),
@@ -3384,7 +3384,7 @@ export interface GoogleCloudApigeeV1EntityMetadata {
   subType?: string;
 }
 
-export const GoogleCloudApigeeV1EntityMetadata: Schema.Schema<GoogleCloudApigeeV1EntityMetadata> =
+export const GoogleCloudApigeeV1EntityMetadata: Schema.Codec<GoogleCloudApigeeV1EntityMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAt: Schema.optional(Schema.String),
     lastModifiedAt: Schema.optional(Schema.String),
@@ -3414,7 +3414,7 @@ export interface GoogleCloudApigeeV1ApiProxy {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1ApiProxy: Schema.Schema<GoogleCloudApigeeV1ApiProxy> =
+export const GoogleCloudApigeeV1ApiProxy: Schema.Codec<GoogleCloudApigeeV1ApiProxy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revision: Schema.optional(Schema.Array(Schema.String)),
     readOnly: Schema.optional(Schema.Boolean),
@@ -3430,7 +3430,7 @@ export interface GoogleCloudApigeeV1ListApiProxiesResponse {
   proxies?: ReadonlyArray<GoogleCloudApigeeV1ApiProxy>;
 }
 
-export const GoogleCloudApigeeV1ListApiProxiesResponse: Schema.Schema<GoogleCloudApigeeV1ListApiProxiesResponse> =
+export const GoogleCloudApigeeV1ListApiProxiesResponse: Schema.Codec<GoogleCloudApigeeV1ListApiProxiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxies: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiProxy)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListApiProxiesResponse" });
@@ -3446,7 +3446,7 @@ export interface GoogleCloudApigeeV1RuntimeConfig {
   tenantProjectId?: string;
 }
 
-export const GoogleCloudApigeeV1RuntimeConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeConfig> =
+export const GoogleCloudApigeeV1RuntimeConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     analyticsBucket: Schema.optional(Schema.String),
@@ -3459,7 +3459,7 @@ export interface GoogleCloudApigeeV1Certificate {
   certInfo?: ReadonlyArray<GoogleCloudApigeeV1CertInfo>;
 }
 
-export const GoogleCloudApigeeV1Certificate: Schema.Schema<GoogleCloudApigeeV1Certificate> =
+export const GoogleCloudApigeeV1Certificate: Schema.Codec<GoogleCloudApigeeV1Certificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certInfo: Schema.optional(Schema.Array(GoogleCloudApigeeV1CertInfo)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Certificate" });
@@ -3487,7 +3487,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
   scoreImpact?: number;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation> =
+export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.String),
     verdict: Schema.optional(Schema.String),
@@ -3524,7 +3524,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResult {
   >;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResult: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResult> =
+export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResult: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResultScoringResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedAssessmentPerWeight: Schema.optional(
       Schema.Record(Schema.String, Schema.Number),
@@ -3553,7 +3553,7 @@ export interface GoogleCloudApigeeV1Reference {
   resourceType?: string;
 }
 
-export const GoogleCloudApigeeV1Reference: Schema.Schema<GoogleCloudApigeeV1Reference> =
+export const GoogleCloudApigeeV1Reference: Schema.Codec<GoogleCloudApigeeV1Reference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refers: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3568,7 +3568,7 @@ export interface GoogleCloudApigeeV1Property {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1Property: Schema.Schema<GoogleCloudApigeeV1Property> =
+export const GoogleCloudApigeeV1Property: Schema.Codec<GoogleCloudApigeeV1Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3579,7 +3579,7 @@ export interface GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter {
   scorePath?: string;
 }
 
-export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter: Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter> =
+export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter: Schema.Codec<GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scorePath: Schema.optional(Schema.String),
   }).annotate({
@@ -3597,7 +3597,7 @@ export interface GoogleCloudApigeeV1ComputeEnvironmentScoresRequest {
   pageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequest: Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresRequest> =
+export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequest: Schema.Codec<GoogleCloudApigeeV1ComputeEnvironmentScoresRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filters: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter),
@@ -3630,7 +3630,7 @@ export interface GoogleCloudApigeeV1DeploymentConfig {
   location?: string;
 }
 
-export const GoogleCloudApigeeV1DeploymentConfig: Schema.Schema<GoogleCloudApigeeV1DeploymentConfig> =
+export const GoogleCloudApigeeV1DeploymentConfig: Schema.Codec<GoogleCloudApigeeV1DeploymentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyUid: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3650,7 +3650,7 @@ export interface GoogleCloudApigeeV1SecuritySettings {
   mlRetrainingFeedbackEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1SecuritySettings: Schema.Schema<GoogleCloudApigeeV1SecuritySettings> =
+export const GoogleCloudApigeeV1SecuritySettings: Schema.Codec<GoogleCloudApigeeV1SecuritySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mlRetrainingFeedbackEnabled: Schema.optional(Schema.Boolean),
@@ -3667,7 +3667,7 @@ export interface GoogleCloudApigeeV1SecurityFeedbackFeedbackContext {
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContext: Schema.Schema<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext> =
+export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContext: Schema.Codec<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
@@ -3696,7 +3696,7 @@ export interface GoogleCloudApigeeV1PodStatus {
   appVersion?: string;
 }
 
-export const GoogleCloudApigeeV1PodStatus: Schema.Schema<GoogleCloudApigeeV1PodStatus> =
+export const GoogleCloudApigeeV1PodStatus: Schema.Codec<GoogleCloudApigeeV1PodStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentTime: Schema.optional(Schema.String),
     deploymentStatus: Schema.optional(Schema.String),
@@ -3718,7 +3718,7 @@ export interface GoogleCloudApigeeV1Alias {
   type?: "ALIAS_TYPE_UNSPECIFIED" | "CERT" | "KEY_CERT" | (string & {});
 }
 
-export const GoogleCloudApigeeV1Alias: Schema.Schema<GoogleCloudApigeeV1Alias> =
+export const GoogleCloudApigeeV1Alias: Schema.Codec<GoogleCloudApigeeV1Alias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alias: Schema.optional(Schema.String),
     certsInfo: Schema.optional(GoogleCloudApigeeV1Certificate),
@@ -3737,7 +3737,7 @@ export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig {
   include?: GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig: Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig> =
+export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig: Schema.Codec<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.String),
     include: Schema.optional(
@@ -3771,7 +3771,7 @@ export interface GoogleCloudApigeeV1SecurityProfileV2 {
   googleDefined?: boolean;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileV2: Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2> =
+export const GoogleCloudApigeeV1SecurityProfileV2: Schema.Codec<GoogleCloudApigeeV1SecurityProfileV2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profileAssessmentConfigs: Schema.optional(
       Schema.Record(
@@ -3794,7 +3794,7 @@ export interface GoogleCloudApigeeV1ListRatePlansResponse {
   nextStartKey?: string;
 }
 
-export const GoogleCloudApigeeV1ListRatePlansResponse: Schema.Schema<GoogleCloudApigeeV1ListRatePlansResponse> =
+export const GoogleCloudApigeeV1ListRatePlansResponse: Schema.Codec<GoogleCloudApigeeV1ListRatePlansResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ratePlans: Schema.optional(Schema.Array(GoogleCloudApigeeV1RatePlan)),
     nextStartKey: Schema.optional(Schema.String),
@@ -3811,7 +3811,7 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResult {
   scoringResult?: GoogleCloudApigeeV1SecurityAssessmentResultScoringResult;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResult: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResult> =
+export const GoogleCloudApigeeV1SecurityAssessmentResult: Schema.Codec<GoogleCloudApigeeV1SecurityAssessmentResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(
       GoogleCloudApigeeV1SecurityAssessmentResultResource,
@@ -3830,7 +3830,7 @@ export interface GoogleCloudApigeeV1RuntimeAnalyticsConfig {
   billingPipelineEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1RuntimeAnalyticsConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeAnalyticsConfig> =
+export const GoogleCloudApigeeV1RuntimeAnalyticsConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeAnalyticsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     billingPipelineEnabled: Schema.optional(Schema.Boolean),
@@ -3841,7 +3841,7 @@ export interface GoogleCloudApigeeV1RuntimeApiSecurityConfig {
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1RuntimeApiSecurityConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeApiSecurityConfig> =
+export const GoogleCloudApigeeV1RuntimeApiSecurityConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeApiSecurityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeApiSecurityConfig" });
@@ -3859,7 +3859,7 @@ export interface GoogleCloudApigeeV1RuntimeAddonsConfig {
   uid?: string;
 }
 
-export const GoogleCloudApigeeV1RuntimeAddonsConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeAddonsConfig> =
+export const GoogleCloudApigeeV1RuntimeAddonsConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeAddonsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsConfig: Schema.optional(GoogleCloudApigeeV1RuntimeAnalyticsConfig),
     apiSecurityConfig: Schema.optional(
@@ -3883,7 +3883,7 @@ export interface GoogleCloudApigeeV1DatastoreConfig {
   projectId?: string;
 }
 
-export const GoogleCloudApigeeV1DatastoreConfig: Schema.Schema<GoogleCloudApigeeV1DatastoreConfig> =
+export const GoogleCloudApigeeV1DatastoreConfig: Schema.Codec<GoogleCloudApigeeV1DatastoreConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     datasetName: Schema.optional(Schema.String),
@@ -3901,7 +3901,7 @@ export interface GoogleCloudApigeeV1DeveloperMonetizationConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1DeveloperMonetizationConfig: Schema.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig> =
+export const GoogleCloudApigeeV1DeveloperMonetizationConfig: Schema.Codec<GoogleCloudApigeeV1DeveloperMonetizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperMonetizationConfig" });
@@ -3913,7 +3913,7 @@ export interface GoogleCloudApigeeV1ListTraceConfigOverridesResponse {
   traceConfigOverrides?: ReadonlyArray<GoogleCloudApigeeV1TraceConfigOverride>;
 }
 
-export const GoogleCloudApigeeV1ListTraceConfigOverridesResponse: Schema.Schema<GoogleCloudApigeeV1ListTraceConfigOverridesResponse> =
+export const GoogleCloudApigeeV1ListTraceConfigOverridesResponse: Schema.Codec<GoogleCloudApigeeV1ListTraceConfigOverridesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     traceConfigOverrides: Schema.optional(
@@ -3929,7 +3929,7 @@ export interface GoogleCloudApigeeV1Access {
   Remove?: GoogleCloudApigeeV1AccessRemove;
 }
 
-export const GoogleCloudApigeeV1Access: Schema.Schema<GoogleCloudApigeeV1Access> =
+export const GoogleCloudApigeeV1Access: Schema.Codec<GoogleCloudApigeeV1Access> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Get: Schema.optional(GoogleCloudApigeeV1AccessGet),
     Set: Schema.optional(GoogleCloudApigeeV1AccessSet),
@@ -3941,7 +3941,7 @@ export interface GoogleCloudApigeeV1Properties {
   property?: ReadonlyArray<GoogleCloudApigeeV1Property>;
 }
 
-export const GoogleCloudApigeeV1Properties: Schema.Schema<GoogleCloudApigeeV1Properties> =
+export const GoogleCloudApigeeV1Properties: Schema.Codec<GoogleCloudApigeeV1Properties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(Schema.Array(GoogleCloudApigeeV1Property)),
   }).annotate({ identifier: "GoogleCloudApigeeV1Properties" });
@@ -3969,7 +3969,7 @@ export interface GoogleCloudApigeeV1Result {
   reasonPhrase?: string;
 }
 
-export const GoogleCloudApigeeV1Result: Schema.Schema<GoogleCloudApigeeV1Result> =
+export const GoogleCloudApigeeV1Result: Schema.Codec<GoogleCloudApigeeV1Result> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ActionResult: Schema.optional(Schema.String),
     uRI: Schema.optional(Schema.String),
@@ -3990,7 +3990,7 @@ export interface GoogleCloudApigeeV1Point {
   results?: ReadonlyArray<GoogleCloudApigeeV1Result>;
 }
 
-export const GoogleCloudApigeeV1Point: Schema.Schema<GoogleCloudApigeeV1Point> =
+export const GoogleCloudApigeeV1Point: Schema.Codec<GoogleCloudApigeeV1Point> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(GoogleCloudApigeeV1Result)),
@@ -4003,7 +4003,7 @@ export interface GoogleCloudApigeeV1DebugSessionTransaction {
   point?: ReadonlyArray<GoogleCloudApigeeV1Point>;
 }
 
-export const GoogleCloudApigeeV1DebugSessionTransaction: Schema.Schema<GoogleCloudApigeeV1DebugSessionTransaction> =
+export const GoogleCloudApigeeV1DebugSessionTransaction: Schema.Codec<GoogleCloudApigeeV1DebugSessionTransaction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     completed: Schema.optional(Schema.Boolean),
     point: Schema.optional(Schema.Array(GoogleCloudApigeeV1Point)),
@@ -4022,7 +4022,7 @@ export interface GoogleCloudApigeeV1SharedFlow {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1SharedFlow: Schema.Schema<GoogleCloudApigeeV1SharedFlow> =
+export const GoogleCloudApigeeV1SharedFlow: Schema.Codec<GoogleCloudApigeeV1SharedFlow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revision: Schema.optional(Schema.Array(Schema.String)),
     space: Schema.optional(Schema.String),
@@ -4035,7 +4035,7 @@ export interface GoogleCloudApigeeV1ListSharedFlowsResponse {
   sharedFlows?: ReadonlyArray<GoogleCloudApigeeV1SharedFlow>;
 }
 
-export const GoogleCloudApigeeV1ListSharedFlowsResponse: Schema.Schema<GoogleCloudApigeeV1ListSharedFlowsResponse> =
+export const GoogleCloudApigeeV1ListSharedFlowsResponse: Schema.Codec<GoogleCloudApigeeV1ListSharedFlowsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedFlows: Schema.optional(Schema.Array(GoogleCloudApigeeV1SharedFlow)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListSharedFlowsResponse" });
@@ -4047,7 +4047,7 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
   percentage?: number;
 }
 
-export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision: Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision> =
+export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision: Schema.Codec<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revision: Schema.optional(Schema.String),
     percentage: Schema.optional(Schema.Number),
@@ -4084,7 +4084,7 @@ export interface GoogleCloudApigeeV1SecurityFeedback {
   feedbackContexts?: ReadonlyArray<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext>;
 }
 
-export const GoogleCloudApigeeV1SecurityFeedback: Schema.Schema<GoogleCloudApigeeV1SecurityFeedback> =
+export const GoogleCloudApigeeV1SecurityFeedback: Schema.Codec<GoogleCloudApigeeV1SecurityFeedback> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4105,7 +4105,7 @@ export interface GoogleCloudApigeeV1ListSecurityFeedbackResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityFeedbackResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityFeedbackResponse> =
+export const GoogleCloudApigeeV1ListSecurityFeedbackResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityFeedbackResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityFeedback: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityFeedback),
@@ -4144,7 +4144,7 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsRequest {
   pageToken?: string;
 }
 
-export const GoogleCloudApigeeV1QueryTimeSeriesStatsRequest: Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsRequest> =
+export const GoogleCloudApigeeV1QueryTimeSeriesStatsRequest: Schema.Codec<GoogleCloudApigeeV1QueryTimeSeriesStatsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     windowSize: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -4163,7 +4163,7 @@ export interface GoogleCloudApigeeV1SetAddonsRequest {
   addonsConfig?: GoogleCloudApigeeV1AddonsConfig;
 }
 
-export const GoogleCloudApigeeV1SetAddonsRequest: Schema.Schema<GoogleCloudApigeeV1SetAddonsRequest> =
+export const GoogleCloudApigeeV1SetAddonsRequest: Schema.Codec<GoogleCloudApigeeV1SetAddonsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addonsConfig: Schema.optional(GoogleCloudApigeeV1AddonsConfig),
   }).annotate({ identifier: "GoogleCloudApigeeV1SetAddonsRequest" });
@@ -4175,7 +4175,7 @@ export interface GoogleCloudApigeeV1CreditAppGroupBalanceRequest {
   transactionId?: string;
 }
 
-export const GoogleCloudApigeeV1CreditAppGroupBalanceRequest: Schema.Schema<GoogleCloudApigeeV1CreditAppGroupBalanceRequest> =
+export const GoogleCloudApigeeV1CreditAppGroupBalanceRequest: Schema.Codec<GoogleCloudApigeeV1CreditAppGroupBalanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionAmount: Schema.optional(GoogleTypeMoney),
     transactionId: Schema.optional(Schema.String),
@@ -4195,7 +4195,7 @@ export interface GoogleIamV1AuditLogConfig {
     | (string & {});
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
@@ -4208,7 +4208,7 @@ export interface GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderInd
   ipHeaderIndex?: number;
 }
 
-export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm: Schema.Schema<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm> =
+export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm: Schema.Codec<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipHeaderName: Schema.optional(Schema.String),
     ipHeaderIndex: Schema.optional(Schema.Number),
@@ -4224,7 +4224,7 @@ export interface GoogleCloudApigeeV1AppGroupBalanceWallet {
   lastCreditTime?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroupBalanceWallet: Schema.Schema<GoogleCloudApigeeV1AppGroupBalanceWallet> =
+export const GoogleCloudApigeeV1AppGroupBalanceWallet: Schema.Codec<GoogleCloudApigeeV1AppGroupBalanceWallet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     balance: Schema.optional(GoogleTypeMoney),
     lastCreditTime: Schema.optional(Schema.String),
@@ -4235,7 +4235,7 @@ export interface GoogleCloudApigeeV1AppGroupBalance {
   wallets?: ReadonlyArray<GoogleCloudApigeeV1AppGroupBalanceWallet>;
 }
 
-export const GoogleCloudApigeeV1AppGroupBalance: Schema.Schema<GoogleCloudApigeeV1AppGroupBalance> =
+export const GoogleCloudApigeeV1AppGroupBalance: Schema.Codec<GoogleCloudApigeeV1AppGroupBalance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wallets: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1AppGroupBalanceWallet),
@@ -4249,7 +4249,7 @@ export interface GoogleCloudApigeeV1SyncAuthorization {
   identities?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1SyncAuthorization: Schema.Schema<GoogleCloudApigeeV1SyncAuthorization> =
+export const GoogleCloudApigeeV1SyncAuthorization: Schema.Codec<GoogleCloudApigeeV1SyncAuthorization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     identities: Schema.optional(Schema.Array(Schema.String)),
@@ -4262,7 +4262,7 @@ export interface GoogleCloudApigeeV1ResourceFile {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1ResourceFile: Schema.Schema<GoogleCloudApigeeV1ResourceFile> =
+export const GoogleCloudApigeeV1ResourceFile: Schema.Codec<GoogleCloudApigeeV1ResourceFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4273,7 +4273,7 @@ export interface GoogleCloudApigeeV1ResourceFiles {
   resourceFile?: ReadonlyArray<GoogleCloudApigeeV1ResourceFile>;
 }
 
-export const GoogleCloudApigeeV1ResourceFiles: Schema.Schema<GoogleCloudApigeeV1ResourceFiles> =
+export const GoogleCloudApigeeV1ResourceFiles: Schema.Codec<GoogleCloudApigeeV1ResourceFiles> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceFile: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ResourceFile),
@@ -4311,7 +4311,7 @@ export interface GoogleCloudApigeeV1SharedFlowRevision {
   type?: string;
 }
 
-export const GoogleCloudApigeeV1SharedFlowRevision: Schema.Schema<GoogleCloudApigeeV1SharedFlowRevision> =
+export const GoogleCloudApigeeV1SharedFlowRevision: Schema.Codec<GoogleCloudApigeeV1SharedFlowRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4338,7 +4338,7 @@ export interface GoogleCloudApigeeV1ServiceIssuersMapping {
   emailIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1ServiceIssuersMapping: Schema.Schema<GoogleCloudApigeeV1ServiceIssuersMapping> =
+export const GoogleCloudApigeeV1ServiceIssuersMapping: Schema.Codec<GoogleCloudApigeeV1ServiceIssuersMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     emailIds: Schema.optional(Schema.Array(Schema.String)),
@@ -4349,7 +4349,7 @@ export interface GoogleCloudApigeeV1ListHybridIssuersResponse {
   issuers?: ReadonlyArray<GoogleCloudApigeeV1ServiceIssuersMapping>;
 }
 
-export const GoogleCloudApigeeV1ListHybridIssuersResponse: Schema.Schema<GoogleCloudApigeeV1ListHybridIssuersResponse> =
+export const GoogleCloudApigeeV1ListHybridIssuersResponse: Schema.Codec<GoogleCloudApigeeV1ListHybridIssuersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issuers: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ServiceIssuersMapping),
@@ -4361,7 +4361,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
   gateways?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray> =
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gateways: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -4371,7 +4371,7 @@ export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiH
 
 export interface GoogleCloudApigeeV1SecurityActionAllow {}
 
-export const GoogleCloudApigeeV1SecurityActionAllow: Schema.Schema<GoogleCloudApigeeV1SecurityActionAllow> =
+export const GoogleCloudApigeeV1SecurityActionAllow: Schema.Codec<GoogleCloudApigeeV1SecurityActionAllow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1SecurityActionAllow",
   });
@@ -4381,7 +4381,7 @@ export interface GoogleCloudApigeeV1SecurityActionDeny {
   responseCode?: number;
 }
 
-export const GoogleCloudApigeeV1SecurityActionDeny: Schema.Schema<GoogleCloudApigeeV1SecurityActionDeny> =
+export const GoogleCloudApigeeV1SecurityActionDeny: Schema.Codec<GoogleCloudApigeeV1SecurityActionDeny> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responseCode: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudApigeeV1SecurityActionDeny" });
@@ -4411,7 +4411,7 @@ export interface GoogleCloudApigeeV1SecurityActionConditionConfig {
   httpMethods?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1SecurityActionConditionConfig: Schema.Schema<GoogleCloudApigeeV1SecurityActionConditionConfig> =
+export const GoogleCloudApigeeV1SecurityActionConditionConfig: Schema.Codec<GoogleCloudApigeeV1SecurityActionConditionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developers: Schema.optional(Schema.Array(Schema.String)),
     ipAddressRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -4435,7 +4435,7 @@ export interface GoogleCloudApigeeV1SecurityActionHttpHeader {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityActionHttpHeader: Schema.Schema<GoogleCloudApigeeV1SecurityActionHttpHeader> =
+export const GoogleCloudApigeeV1SecurityActionHttpHeader: Schema.Codec<GoogleCloudApigeeV1SecurityActionHttpHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -4446,7 +4446,7 @@ export interface GoogleCloudApigeeV1SecurityActionFlag {
   headers?: ReadonlyArray<GoogleCloudApigeeV1SecurityActionHttpHeader>;
 }
 
-export const GoogleCloudApigeeV1SecurityActionFlag: Schema.Schema<GoogleCloudApigeeV1SecurityActionFlag> =
+export const GoogleCloudApigeeV1SecurityActionFlag: Schema.Codec<GoogleCloudApigeeV1SecurityActionFlag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headers: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityActionHttpHeader),
@@ -4480,7 +4480,7 @@ export interface GoogleCloudApigeeV1SecurityAction {
   apiProxies?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1SecurityAction: Schema.Schema<GoogleCloudApigeeV1SecurityAction> =
+export const GoogleCloudApigeeV1SecurityAction: Schema.Codec<GoogleCloudApigeeV1SecurityAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allow: Schema.optional(GoogleCloudApigeeV1SecurityActionAllow),
     deny: Schema.optional(GoogleCloudApigeeV1SecurityActionDeny),
@@ -4505,7 +4505,7 @@ export interface GoogleCloudApigeeV1SecurityReportResultMetadata {
   expires?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReportResultMetadata: Schema.Schema<GoogleCloudApigeeV1SecurityReportResultMetadata> =
+export const GoogleCloudApigeeV1SecurityReportResultMetadata: Schema.Codec<GoogleCloudApigeeV1SecurityReportResultMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     self: Schema.optional(Schema.String),
     expires: Schema.optional(Schema.String),
@@ -4528,7 +4528,7 @@ export interface GoogleCloudApigeeV1SecurityReportMetadata {
   timeUnit?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReportMetadata: Schema.Schema<GoogleCloudApigeeV1SecurityReportMetadata> =
+export const GoogleCloudApigeeV1SecurityReportMetadata: Schema.Codec<GoogleCloudApigeeV1SecurityReportMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     startTimestamp: Schema.optional(Schema.String),
@@ -4567,7 +4567,7 @@ export interface GoogleCloudApigeeV1SecurityReport {
   displayName?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReport: Schema.Schema<GoogleCloudApigeeV1SecurityReport> =
+export const GoogleCloudApigeeV1SecurityReport: Schema.Codec<GoogleCloudApigeeV1SecurityReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     result: Schema.optional(GoogleCloudApigeeV1SecurityReportResultMetadata),
@@ -4586,7 +4586,7 @@ export const GoogleCloudApigeeV1SecurityReport: Schema.Schema<GoogleCloudApigeeV
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -4614,7 +4614,7 @@ export interface GoogleCloudApigeeV1TlsInfo {
   enforce?: boolean;
 }
 
-export const GoogleCloudApigeeV1TlsInfo: Schema.Schema<GoogleCloudApigeeV1TlsInfo> =
+export const GoogleCloudApigeeV1TlsInfo: Schema.Codec<GoogleCloudApigeeV1TlsInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreValidationErrors: Schema.optional(Schema.Boolean),
     enabled: Schema.optional(Schema.Boolean),
@@ -4635,7 +4635,7 @@ export interface GoogleCloudApigeeV1CreditDeveloperBalanceRequest {
   transactionId?: string;
 }
 
-export const GoogleCloudApigeeV1CreditDeveloperBalanceRequest: Schema.Schema<GoogleCloudApigeeV1CreditDeveloperBalanceRequest> =
+export const GoogleCloudApigeeV1CreditDeveloperBalanceRequest: Schema.Codec<GoogleCloudApigeeV1CreditDeveloperBalanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionAmount: Schema.optional(GoogleTypeMoney),
     transactionId: Schema.optional(Schema.String),
@@ -4654,7 +4654,7 @@ export interface GoogleCloudApigeeV1OrganizationProjectMapping {
   projectIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1OrganizationProjectMapping: Schema.Schema<GoogleCloudApigeeV1OrganizationProjectMapping> =
+export const GoogleCloudApigeeV1OrganizationProjectMapping: Schema.Codec<GoogleCloudApigeeV1OrganizationProjectMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     organization: Schema.optional(Schema.String),
@@ -4667,7 +4667,7 @@ export interface GoogleCloudApigeeV1ListOrganizationsResponse {
   organizations?: ReadonlyArray<GoogleCloudApigeeV1OrganizationProjectMapping>;
 }
 
-export const GoogleCloudApigeeV1ListOrganizationsResponse: Schema.Schema<GoogleCloudApigeeV1ListOrganizationsResponse> =
+export const GoogleCloudApigeeV1ListOrganizationsResponse: Schema.Codec<GoogleCloudApigeeV1ListOrganizationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizations: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1OrganizationProjectMapping),
@@ -4683,7 +4683,7 @@ export interface GoogleApiHttpBody {
   data?: string;
 }
 
-export const GoogleApiHttpBody: Schema.Schema<GoogleApiHttpBody> =
+export const GoogleApiHttpBody: Schema.Codec<GoogleApiHttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extensions: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -4697,7 +4697,7 @@ export interface GoogleCloudApigeeV1ListExportsResponse {
   exports?: ReadonlyArray<GoogleCloudApigeeV1Export>;
 }
 
-export const GoogleCloudApigeeV1ListExportsResponse: Schema.Schema<GoogleCloudApigeeV1ListExportsResponse> =
+export const GoogleCloudApigeeV1ListExportsResponse: Schema.Codec<GoogleCloudApigeeV1ListExportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exports: Schema.optional(Schema.Array(GoogleCloudApigeeV1Export)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListExportsResponse" });
@@ -4709,7 +4709,7 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence {
   points?: ReadonlyArray<ReadonlyArray<unknown>>;
 }
 
-export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence: Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence> =
+export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence: Schema.Codec<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     points: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
@@ -4724,7 +4724,7 @@ export interface GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig {
   subnet?: string;
 }
 
-export const GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig: Schema.Schema<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig> =
+export const GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig: Schema.Codec<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     subnet: Schema.optional(Schema.String),
@@ -4759,7 +4759,7 @@ export interface GoogleCloudApigeeV1ApimServiceExtension {
   extensions?: ReadonlyArray<GoogleCloudApigeeV1ApimServiceExtensionExtension>;
 }
 
-export const GoogleCloudApigeeV1ApimServiceExtension: Schema.Schema<GoogleCloudApigeeV1ApimServiceExtension> =
+export const GoogleCloudApigeeV1ApimServiceExtension: Schema.Codec<GoogleCloudApigeeV1ApimServiceExtension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     lbForwardingRule: Schema.optional(Schema.String),
@@ -4783,7 +4783,7 @@ export interface GoogleCloudApigeeV1ListApimServiceExtensionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListApimServiceExtensionsResponse: Schema.Schema<GoogleCloudApigeeV1ListApimServiceExtensionsResponse> =
+export const GoogleCloudApigeeV1ListApimServiceExtensionsResponse: Schema.Codec<GoogleCloudApigeeV1ListApimServiceExtensionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apimServiceExtensions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ApimServiceExtension),
@@ -4804,7 +4804,7 @@ export interface GoogleCloudApigeeV1FlowHook {
   continueOnError?: boolean;
 }
 
-export const GoogleCloudApigeeV1FlowHook: Schema.Schema<GoogleCloudApigeeV1FlowHook> =
+export const GoogleCloudApigeeV1FlowHook: Schema.Codec<GoogleCloudApigeeV1FlowHook> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flowHookPoint: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -4827,7 +4827,7 @@ export interface GoogleCloudApigeeV1QueryTabularStatsRequest {
   pageSize?: number;
 }
 
-export const GoogleCloudApigeeV1QueryTabularStatsRequest: Schema.Schema<GoogleCloudApigeeV1QueryTabularStatsRequest> =
+export const GoogleCloudApigeeV1QueryTabularStatsRequest: Schema.Codec<GoogleCloudApigeeV1QueryTabularStatsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Schema.String)),
     pageToken: Schema.optional(Schema.String),
@@ -4846,7 +4846,7 @@ export interface GoogleCloudApigeeV1CustomReportMetric {
   function?: string;
 }
 
-export const GoogleCloudApigeeV1CustomReportMetric: Schema.Schema<GoogleCloudApigeeV1CustomReportMetric> =
+export const GoogleCloudApigeeV1CustomReportMetric: Schema.Codec<GoogleCloudApigeeV1CustomReportMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     function: Schema.optional(Schema.String),
@@ -4859,7 +4859,7 @@ export interface GoogleCloudApigeeV1ReportProperty {
   value?: ReadonlyArray<GoogleCloudApigeeV1Attribute>;
 }
 
-export const GoogleCloudApigeeV1ReportProperty: Schema.Schema<GoogleCloudApigeeV1ReportProperty> =
+export const GoogleCloudApigeeV1ReportProperty: Schema.Codec<GoogleCloudApigeeV1ReportProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
@@ -4912,7 +4912,7 @@ export interface GoogleCloudApigeeV1CustomReport {
   tags?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1CustomReport: Schema.Schema<GoogleCloudApigeeV1CustomReport> =
+export const GoogleCloudApigeeV1CustomReport: Schema.Codec<GoogleCloudApigeeV1CustomReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastViewedAt: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -4955,7 +4955,7 @@ export interface GoogleCloudApigeeV1QueryMetric {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1QueryMetric: Schema.Schema<GoogleCloudApigeeV1QueryMetric> =
+export const GoogleCloudApigeeV1QueryMetric: Schema.Codec<GoogleCloudApigeeV1QueryMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operator: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4977,7 +4977,7 @@ export interface GoogleCloudApigeeV1ListApiCategoriesResponse {
   errorCode?: string;
 }
 
-export const GoogleCloudApigeeV1ListApiCategoriesResponse: Schema.Schema<GoogleCloudApigeeV1ListApiCategoriesResponse> =
+export const GoogleCloudApigeeV1ListApiCategoriesResponse: Schema.Codec<GoogleCloudApigeeV1ListApiCategoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
@@ -5013,7 +5013,7 @@ export interface GoogleCloudApigeeV1AppGroupApp {
   scopes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1AppGroupApp: Schema.Schema<GoogleCloudApigeeV1AppGroupApp> =
+export const GoogleCloudApigeeV1AppGroupApp: Schema.Codec<GoogleCloudApigeeV1AppGroupApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastModifiedAt: Schema.optional(Schema.String),
     credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
@@ -5036,7 +5036,7 @@ export interface GoogleCloudApigeeV1ListAppGroupAppsResponse {
   appGroupApps?: ReadonlyArray<GoogleCloudApigeeV1AppGroupApp>;
 }
 
-export const GoogleCloudApigeeV1ListAppGroupAppsResponse: Schema.Schema<GoogleCloudApigeeV1ListAppGroupAppsResponse> =
+export const GoogleCloudApigeeV1ListAppGroupAppsResponse: Schema.Codec<GoogleCloudApigeeV1ListAppGroupAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     appGroupApps: Schema.optional(Schema.Array(GoogleCloudApigeeV1AppGroupApp)),
@@ -5063,7 +5063,7 @@ export interface GoogleCloudApigeeV1TraceConfig {
   samplingConfig?: GoogleCloudApigeeV1TraceSamplingConfig;
 }
 
-export const GoogleCloudApigeeV1TraceConfig: Schema.Schema<GoogleCloudApigeeV1TraceConfig> =
+export const GoogleCloudApigeeV1TraceConfig: Schema.Codec<GoogleCloudApigeeV1TraceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exporter: Schema.optional(Schema.String),
     traceProtocol: Schema.optional(Schema.String),
@@ -5078,7 +5078,7 @@ export interface GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse: Schema.Schema<GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse> =
+export const GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse: Schema.Codec<GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentGroupAttachments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1EnvironmentGroupAttachment),
@@ -5103,7 +5103,7 @@ export interface GoogleCloudApigeeV1DeploymentGroupConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1DeploymentGroupConfig: Schema.Schema<GoogleCloudApigeeV1DeploymentGroupConfig> =
+export const GoogleCloudApigeeV1DeploymentGroupConfig: Schema.Codec<GoogleCloudApigeeV1DeploymentGroupConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uid: Schema.optional(Schema.String),
     revisionId: Schema.optional(Schema.String),
@@ -5148,7 +5148,7 @@ export interface GoogleCloudApigeeV1ApiDoc {
   siteId?: string;
 }
 
-export const GoogleCloudApigeeV1ApiDoc: Schema.Schema<GoogleCloudApigeeV1ApiDoc> =
+export const GoogleCloudApigeeV1ApiDoc: Schema.Codec<GoogleCloudApigeeV1ApiDoc> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoryIds: Schema.optional(Schema.Array(Schema.String)),
     apiProductName: Schema.optional(Schema.String),
@@ -5184,7 +5184,7 @@ export interface GoogleCloudApigeeV1ListApiDocsResponse {
   errorCode?: string;
 }
 
-export const GoogleCloudApigeeV1ListApiDocsResponse: Schema.Schema<GoogleCloudApigeeV1ListApiDocsResponse> =
+export const GoogleCloudApigeeV1ListApiDocsResponse: Schema.Codec<GoogleCloudApigeeV1ListApiDocsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
@@ -5201,7 +5201,7 @@ export interface GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   samplingRate?: number;
 }
 
-export const GoogleCloudApigeeV1RuntimeTraceSamplingConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeTraceSamplingConfig> =
+export const GoogleCloudApigeeV1RuntimeTraceSamplingConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeTraceSamplingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampler: Schema.optional(Schema.String),
     samplingRate: Schema.optional(Schema.Number),
@@ -5214,7 +5214,7 @@ export interface GoogleCloudApigeeV1DnsZonePeeringConfig {
   targetProjectId?: string;
 }
 
-export const GoogleCloudApigeeV1DnsZonePeeringConfig: Schema.Schema<GoogleCloudApigeeV1DnsZonePeeringConfig> =
+export const GoogleCloudApigeeV1DnsZonePeeringConfig: Schema.Codec<GoogleCloudApigeeV1DnsZonePeeringConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetNetworkId: Schema.optional(Schema.String),
     targetProjectId: Schema.optional(Schema.String),
@@ -5243,7 +5243,7 @@ export interface GoogleCloudApigeeV1DnsZone {
   domain?: string;
 }
 
-export const GoogleCloudApigeeV1DnsZone: Schema.Schema<GoogleCloudApigeeV1DnsZone> =
+export const GoogleCloudApigeeV1DnsZone: Schema.Codec<GoogleCloudApigeeV1DnsZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5269,7 +5269,7 @@ export interface GoogleCloudApigeeV1ArchiveDeployment {
   updatedAt?: string;
 }
 
-export const GoogleCloudApigeeV1ArchiveDeployment: Schema.Schema<GoogleCloudApigeeV1ArchiveDeployment> =
+export const GoogleCloudApigeeV1ArchiveDeployment: Schema.Codec<GoogleCloudApigeeV1ArchiveDeployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     gcsUri: Schema.optional(Schema.String),
@@ -5286,7 +5286,7 @@ export interface GoogleCloudApigeeV1ListArchiveDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListArchiveDeploymentsResponse: Schema.Schema<GoogleCloudApigeeV1ListArchiveDeploymentsResponse> =
+export const GoogleCloudApigeeV1ListArchiveDeploymentsResponse: Schema.Codec<GoogleCloudApigeeV1ListArchiveDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     archiveDeployments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ArchiveDeployment),
@@ -5301,7 +5301,7 @@ export interface GoogleCloudApigeeV1Subscription {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1Subscription: Schema.Schema<GoogleCloudApigeeV1Subscription> =
+export const GoogleCloudApigeeV1Subscription: Schema.Codec<GoogleCloudApigeeV1Subscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1Subscription" });
@@ -5313,7 +5313,7 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
@@ -5328,7 +5328,7 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponse: Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponse> =
+export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponse: Schema.Codec<GoogleCloudApigeeV1QueryTimeSeriesStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence),
@@ -5346,7 +5346,7 @@ export interface GoogleCloudApigeeV1ComputeEnvironmentScoresResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ComputeEnvironmentScoresResponse: Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresResponse> =
+export const GoogleCloudApigeeV1ComputeEnvironmentScoresResponse: Schema.Codec<GoogleCloudApigeeV1ComputeEnvironmentScoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scores: Schema.optional(Schema.Array(GoogleCloudApigeeV1Score)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5361,7 +5361,7 @@ export interface GoogleCloudApigeeV1ListApiDebugSessionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListApiDebugSessionsResponse: Schema.Schema<GoogleCloudApigeeV1ListApiDebugSessionsResponse> =
+export const GoogleCloudApigeeV1ListApiDebugSessionsResponse: Schema.Codec<GoogleCloudApigeeV1ListApiDebugSessionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessions: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiDebugSession)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5374,7 +5374,7 @@ export interface GoogleCloudApigeeV1MoveApiProxyRequest {
   space?: string;
 }
 
-export const GoogleCloudApigeeV1MoveApiProxyRequest: Schema.Schema<GoogleCloudApigeeV1MoveApiProxyRequest> =
+export const GoogleCloudApigeeV1MoveApiProxyRequest: Schema.Codec<GoogleCloudApigeeV1MoveApiProxyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1MoveApiProxyRequest" });
@@ -5384,7 +5384,7 @@ export interface GoogleCloudApigeeV1CommonNameConfig {
   matchWildCards?: boolean;
 }
 
-export const GoogleCloudApigeeV1CommonNameConfig: Schema.Schema<GoogleCloudApigeeV1CommonNameConfig> =
+export const GoogleCloudApigeeV1CommonNameConfig: Schema.Codec<GoogleCloudApigeeV1CommonNameConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     matchWildCards: Schema.optional(Schema.Boolean),
@@ -5413,7 +5413,7 @@ export interface GoogleCloudApigeeV1TlsInfoConfig {
   protocols?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1TlsInfoConfig: Schema.Schema<GoogleCloudApigeeV1TlsInfoConfig> =
+export const GoogleCloudApigeeV1TlsInfoConfig: Schema.Codec<GoogleCloudApigeeV1TlsInfoConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientAuthEnabled: Schema.optional(Schema.Boolean),
     trustStore: Schema.optional(Schema.String),
@@ -5449,7 +5449,7 @@ export interface GoogleCloudApigeeV1TargetServerConfig {
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1TargetServerConfig: Schema.Schema<GoogleCloudApigeeV1TargetServerConfig> =
+export const GoogleCloudApigeeV1TargetServerConfig: Schema.Codec<GoogleCloudApigeeV1TargetServerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -5468,7 +5468,7 @@ export interface GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo {
   sizeBytes?: string;
 }
 
-export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo: Schema.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo> =
+export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo: Schema.Codec<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     md5: Schema.optional(Schema.String),
@@ -5486,7 +5486,7 @@ export interface GoogleCloudApigeeV1InstanceAttachment {
   environment?: string;
 }
 
-export const GoogleCloudApigeeV1InstanceAttachment: Schema.Schema<GoogleCloudApigeeV1InstanceAttachment> =
+export const GoogleCloudApigeeV1InstanceAttachment: Schema.Codec<GoogleCloudApigeeV1InstanceAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAt: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5500,7 +5500,7 @@ export interface GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListInstanceAttachmentsResponse: Schema.Schema<GoogleCloudApigeeV1ListInstanceAttachmentsResponse> =
+export const GoogleCloudApigeeV1ListInstanceAttachmentsResponse: Schema.Codec<GoogleCloudApigeeV1ListInstanceAttachmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1InstanceAttachment),
@@ -5519,7 +5519,7 @@ export interface GoogleCloudApigeeV1SchemaSchemaProperty {
   custom?: string;
 }
 
-export const GoogleCloudApigeeV1SchemaSchemaProperty: Schema.Schema<GoogleCloudApigeeV1SchemaSchemaProperty> =
+export const GoogleCloudApigeeV1SchemaSchemaProperty: Schema.Codec<GoogleCloudApigeeV1SchemaSchemaProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -5533,7 +5533,7 @@ export interface GoogleCloudApigeeV1SchemaSchemaElement {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1SchemaSchemaElement: Schema.Schema<GoogleCloudApigeeV1SchemaSchemaElement> =
+export const GoogleCloudApigeeV1SchemaSchemaElement: Schema.Codec<GoogleCloudApigeeV1SchemaSchemaElement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(GoogleCloudApigeeV1SchemaSchemaProperty),
     name: Schema.optional(Schema.String),
@@ -5541,7 +5541,7 @@ export const GoogleCloudApigeeV1SchemaSchemaElement: Schema.Schema<GoogleCloudAp
 
 export interface GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest {}
 
-export const GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest: Schema.Schema<GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest> =
+export const GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest: Schema.Codec<GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest",
   });
@@ -5555,7 +5555,7 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatus {
   deployedRoutes?: ReadonlyArray<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>;
 }
 
-export const GoogleCloudApigeeV1InstanceDeploymentStatus: Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatus> =
+export const GoogleCloudApigeeV1InstanceDeploymentStatus: Schema.Codec<GoogleCloudApigeeV1InstanceDeploymentStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
     deployedRevisions: Schema.optional(
@@ -5600,7 +5600,7 @@ export interface GoogleCloudApigeeV1Deployment {
   instances?: ReadonlyArray<GoogleCloudApigeeV1InstanceDeploymentStatus>;
 }
 
-export const GoogleCloudApigeeV1Deployment: Schema.Schema<GoogleCloudApigeeV1Deployment> =
+export const GoogleCloudApigeeV1Deployment: Schema.Codec<GoogleCloudApigeeV1Deployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiProxy: Schema.optional(Schema.String),
     deployStartTime: Schema.optional(Schema.String),
@@ -5624,7 +5624,7 @@ export interface GoogleCloudApigeeV1ListDeploymentsResponse {
   deployments?: ReadonlyArray<GoogleCloudApigeeV1Deployment>;
 }
 
-export const GoogleCloudApigeeV1ListDeploymentsResponse: Schema.Schema<GoogleCloudApigeeV1ListDeploymentsResponse> =
+export const GoogleCloudApigeeV1ListDeploymentsResponse: Schema.Codec<GoogleCloudApigeeV1ListDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(GoogleCloudApigeeV1Deployment)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListDeploymentsResponse" });
@@ -5638,7 +5638,7 @@ export interface GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation: Schema.Schema<GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation> =
+export const GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation: Schema.Codec<GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityProfileRevisionId: Schema.optional(Schema.String),
     attachTime: Schema.optional(Schema.String),
@@ -5658,7 +5658,7 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -5675,7 +5675,7 @@ export interface GoogleIamV1Binding {
   role?: string;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(GoogleTypeExpr),
@@ -5693,7 +5693,7 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
@@ -5708,7 +5708,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleIamV1Policy),
     updateMask: Schema.optional(Schema.String),
@@ -5745,7 +5745,7 @@ export interface GoogleCloudApigeeV1EndpointAttachment {
   host?: string;
 }
 
-export const GoogleCloudApigeeV1EndpointAttachment: Schema.Schema<GoogleCloudApigeeV1EndpointAttachment> =
+export const GoogleCloudApigeeV1EndpointAttachment: Schema.Codec<GoogleCloudApigeeV1EndpointAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -5764,7 +5764,7 @@ export interface GoogleCloudApigeeV1ControlPlaneAccess {
   synchronizerIdentities?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1ControlPlaneAccess: Schema.Schema<GoogleCloudApigeeV1ControlPlaneAccess> =
+export const GoogleCloudApigeeV1ControlPlaneAccess: Schema.Codec<GoogleCloudApigeeV1ControlPlaneAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsPublisherIdentities: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -5778,7 +5778,7 @@ export interface GoogleCloudApigeeV1ListSecurityIncidentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityIncidentsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityIncidentsResponse> =
+export const GoogleCloudApigeeV1ListSecurityIncidentsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityIncidentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityIncidents: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityIncident),
@@ -5795,7 +5795,7 @@ export interface GoogleCloudApigeeV1ListEndpointAttachmentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListEndpointAttachmentsResponse: Schema.Schema<GoogleCloudApigeeV1ListEndpointAttachmentsResponse> =
+export const GoogleCloudApigeeV1ListEndpointAttachmentsResponse: Schema.Codec<GoogleCloudApigeeV1ListEndpointAttachmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointAttachments: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1EndpointAttachment),
@@ -5812,7 +5812,7 @@ export interface GoogleCloudApigeeV1ListSecurityProfilesV2Response {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityProfilesV2Response: Schema.Schema<GoogleCloudApigeeV1ListSecurityProfilesV2Response> =
+export const GoogleCloudApigeeV1ListSecurityProfilesV2Response: Schema.Codec<GoogleCloudApigeeV1ListSecurityProfilesV2Response> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityProfilesV2: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityProfileV2),
@@ -5827,7 +5827,7 @@ export interface GoogleCloudApigeeV1DeleteCustomReportResponse {
   message?: string;
 }
 
-export const GoogleCloudApigeeV1DeleteCustomReportResponse: Schema.Schema<GoogleCloudApigeeV1DeleteCustomReportResponse> =
+export const GoogleCloudApigeeV1DeleteCustomReportResponse: Schema.Codec<GoogleCloudApigeeV1DeleteCustomReportResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1DeleteCustomReportResponse" });
@@ -5837,14 +5837,14 @@ export interface GoogleCloudApigeeV1GenerateUploadUrlResponse {
   uploadUri?: string;
 }
 
-export const GoogleCloudApigeeV1GenerateUploadUrlResponse: Schema.Schema<GoogleCloudApigeeV1GenerateUploadUrlResponse> =
+export const GoogleCloudApigeeV1GenerateUploadUrlResponse: Schema.Codec<GoogleCloudApigeeV1GenerateUploadUrlResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1GenerateUploadUrlResponse" });
 
 export interface GoogleCloudApigeeV1ReportInstanceStatusResponse {}
 
-export const GoogleCloudApigeeV1ReportInstanceStatusResponse: Schema.Schema<GoogleCloudApigeeV1ReportInstanceStatusResponse> =
+export const GoogleCloudApigeeV1ReportInstanceStatusResponse: Schema.Codec<GoogleCloudApigeeV1ReportInstanceStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ReportInstanceStatusResponse",
   });
@@ -5854,7 +5854,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
+export const GoogleIamV1TestIamPermissionsRequest: Schema.Codec<GoogleIamV1TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
@@ -5864,14 +5864,14 @@ export interface GoogleCloudApigeeV1OptimizedStatsNode {
   data?: ReadonlyArray<unknown>;
 }
 
-export const GoogleCloudApigeeV1OptimizedStatsNode: Schema.Schema<GoogleCloudApigeeV1OptimizedStatsNode> =
+export const GoogleCloudApigeeV1OptimizedStatsNode: Schema.Codec<GoogleCloudApigeeV1OptimizedStatsNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Array(Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudApigeeV1OptimizedStatsNode" });
 
 export interface GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest {}
 
-export const GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest: Schema.Schema<GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest> =
+export const GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest: Schema.Codec<GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest",
   });
@@ -5883,7 +5883,7 @@ export interface GoogleCloudApigeeV1Metadata {
   errors?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1Metadata: Schema.Schema<GoogleCloudApigeeV1Metadata> =
+export const GoogleCloudApigeeV1Metadata: Schema.Codec<GoogleCloudApigeeV1Metadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notices: Schema.optional(Schema.Array(Schema.String)),
     errors: Schema.optional(Schema.Array(Schema.String)),
@@ -5900,7 +5900,7 @@ export interface GoogleCloudApigeeV1OptimizedStatsResponse {
   stats?: GoogleCloudApigeeV1OptimizedStatsNode;
 }
 
-export const GoogleCloudApigeeV1OptimizedStatsResponse: Schema.Schema<GoogleCloudApigeeV1OptimizedStatsResponse> =
+export const GoogleCloudApigeeV1OptimizedStatsResponse: Schema.Codec<GoogleCloudApigeeV1OptimizedStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metaData: Schema.optional(GoogleCloudApigeeV1Metadata),
     resultTruncated: Schema.optional(Schema.Boolean),
@@ -5931,7 +5931,7 @@ export interface GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   openTelemetryProtocolEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1RuntimeTraceConfigOverride: Schema.Schema<GoogleCloudApigeeV1RuntimeTraceConfigOverride> =
+export const GoogleCloudApigeeV1RuntimeTraceConfigOverride: Schema.Codec<GoogleCloudApigeeV1RuntimeTraceConfigOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     samplingConfig: Schema.optional(
       GoogleCloudApigeeV1RuntimeTraceSamplingConfig,
@@ -5976,7 +5976,7 @@ export interface GoogleCloudApigeeV1RuntimeTraceConfig {
   openTelemetryProtocolEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1RuntimeTraceConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeTraceConfig> =
+export const GoogleCloudApigeeV1RuntimeTraceConfig: Schema.Codec<GoogleCloudApigeeV1RuntimeTraceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exporter: Schema.optional(Schema.String),
     traceProtocol: Schema.optional(Schema.String),
@@ -5998,7 +5998,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
   apis?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray> =
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apis: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -6025,7 +6025,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
   apiHubGateways?: GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest> =
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     apiHubApis: Schema.optional(
@@ -6061,7 +6061,7 @@ export interface GoogleCloudApigeeV1ApiCategoryResponse {
   errorCode?: string;
 }
 
-export const GoogleCloudApigeeV1ApiCategoryResponse: Schema.Schema<GoogleCloudApigeeV1ApiCategoryResponse> =
+export const GoogleCloudApigeeV1ApiCategoryResponse: Schema.Codec<GoogleCloudApigeeV1ApiCategoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
@@ -6079,7 +6079,7 @@ export interface GoogleCloudApigeeV1QueryTabularStatsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1QueryTabularStatsResponse: Schema.Schema<GoogleCloudApigeeV1QueryTabularStatsResponse> =
+export const GoogleCloudApigeeV1QueryTabularStatsResponse: Schema.Codec<GoogleCloudApigeeV1QueryTabularStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
     columns: Schema.optional(Schema.Array(Schema.String)),
@@ -6091,7 +6091,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
+export const GoogleIamV1TestIamPermissionsResponse: Schema.Codec<GoogleIamV1TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
@@ -6110,7 +6110,7 @@ export interface GoogleCloudApigeeV1DataCollectorConfig {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1DataCollectorConfig: Schema.Schema<GoogleCloudApigeeV1DataCollectorConfig> =
+export const GoogleCloudApigeeV1DataCollectorConfig: Schema.Codec<GoogleCloudApigeeV1DataCollectorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6121,7 +6121,7 @@ export interface GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig {
   headerIndexAlgorithm?: GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm;
 }
 
-export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig: Schema.Schema<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig> =
+export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig: Schema.Codec<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerIndexAlgorithm: Schema.optional(
       GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm,
@@ -6181,7 +6181,7 @@ export interface GoogleCloudApigeeV1EnvironmentConfig {
   provider?: string;
 }
 
-export const GoogleCloudApigeeV1EnvironmentConfig: Schema.Schema<GoogleCloudApigeeV1EnvironmentConfig> =
+export const GoogleCloudApigeeV1EnvironmentConfig: Schema.Codec<GoogleCloudApigeeV1EnvironmentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(GoogleCloudApigeeV1ResourceConfig)),
     dataCollectors: Schema.optional(
@@ -6226,7 +6226,7 @@ export interface GoogleCloudApigeeV1ListApiProductsResponse {
   apiProduct?: ReadonlyArray<GoogleCloudApigeeV1ApiProduct>;
 }
 
-export const GoogleCloudApigeeV1ListApiProductsResponse: Schema.Schema<GoogleCloudApigeeV1ListApiProductsResponse> =
+export const GoogleCloudApigeeV1ListApiProductsResponse: Schema.Codec<GoogleCloudApigeeV1ListApiProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiProduct: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiProduct)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListApiProductsResponse" });
@@ -6235,7 +6235,7 @@ export interface GoogleCloudApigeeV1ListCustomReportsResponse {
   qualifier?: ReadonlyArray<GoogleCloudApigeeV1CustomReport>;
 }
 
-export const GoogleCloudApigeeV1ListCustomReportsResponse: Schema.Schema<GoogleCloudApigeeV1ListCustomReportsResponse> =
+export const GoogleCloudApigeeV1ListCustomReportsResponse: Schema.Codec<GoogleCloudApigeeV1ListCustomReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qualifier: Schema.optional(Schema.Array(GoogleCloudApigeeV1CustomReport)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListCustomReportsResponse" });
@@ -6247,7 +6247,7 @@ export interface GoogleCloudApigeeV1DateRange {
   start?: string;
 }
 
-export const GoogleCloudApigeeV1DateRange: Schema.Schema<GoogleCloudApigeeV1DateRange> =
+export const GoogleCloudApigeeV1DateRange: Schema.Codec<GoogleCloudApigeeV1DateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.String),
     start: Schema.optional(Schema.String),
@@ -6268,7 +6268,7 @@ export interface GoogleCloudApigeeV1ExportRequest {
   outputFormat?: string;
 }
 
-export const GoogleCloudApigeeV1ExportRequest: Schema.Schema<GoogleCloudApigeeV1ExportRequest> =
+export const GoogleCloudApigeeV1ExportRequest: Schema.Codec<GoogleCloudApigeeV1ExportRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -6303,7 +6303,7 @@ export interface GoogleCloudApigeeV1Query {
   envgroupHostname?: string;
 }
 
-export const GoogleCloudApigeeV1Query: Schema.Schema<GoogleCloudApigeeV1Query> =
+export const GoogleCloudApigeeV1Query: Schema.Codec<GoogleCloudApigeeV1Query> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     outputFormat: Schema.optional(Schema.String),
@@ -6323,7 +6323,7 @@ export interface GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig {
   headerIndexAlgorithm?: GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm;
 }
 
-export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig: Schema.Schema<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig> =
+export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig: Schema.Codec<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerIndexAlgorithm: Schema.optional(
       GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm,
@@ -6339,7 +6339,7 @@ export interface GoogleCloudApigeeV1DeveloperBalanceWallet {
   lastCreditTime?: string;
 }
 
-export const GoogleCloudApigeeV1DeveloperBalanceWallet: Schema.Schema<GoogleCloudApigeeV1DeveloperBalanceWallet> =
+export const GoogleCloudApigeeV1DeveloperBalanceWallet: Schema.Codec<GoogleCloudApigeeV1DeveloperBalanceWallet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     balance: Schema.optional(GoogleTypeMoney),
     lastCreditTime: Schema.optional(Schema.String),
@@ -6354,7 +6354,7 @@ export interface GoogleCloudApigeeV1Schema {
   meta?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApigeeV1Schema: Schema.Schema<GoogleCloudApigeeV1Schema> =
+export const GoogleCloudApigeeV1Schema: Schema.Codec<GoogleCloudApigeeV1Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SchemaSchemaElement),
@@ -6372,7 +6372,7 @@ export interface GoogleCloudApigeeV1ListSecurityReportsResponse {
   securityReports?: ReadonlyArray<GoogleCloudApigeeV1SecurityReport>;
 }
 
-export const GoogleCloudApigeeV1ListSecurityReportsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityReportsResponse> =
+export const GoogleCloudApigeeV1ListSecurityReportsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     securityReports: Schema.optional(
@@ -6387,7 +6387,7 @@ export interface GoogleCloudApigeeV1ListNatAddressesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListNatAddressesResponse: Schema.Schema<GoogleCloudApigeeV1ListNatAddressesResponse> =
+export const GoogleCloudApigeeV1ListNatAddressesResponse: Schema.Codec<GoogleCloudApigeeV1ListNatAddressesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     natAddresses: Schema.optional(Schema.Array(GoogleCloudApigeeV1NatAddress)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6398,7 +6398,7 @@ export interface GoogleCloudApigeeV1ListAsyncQueriesResponse {
   queries?: ReadonlyArray<GoogleCloudApigeeV1AsyncQuery>;
 }
 
-export const GoogleCloudApigeeV1ListAsyncQueriesResponse: Schema.Schema<GoogleCloudApigeeV1ListAsyncQueriesResponse> =
+export const GoogleCloudApigeeV1ListAsyncQueriesResponse: Schema.Codec<GoogleCloudApigeeV1ListAsyncQueriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queries: Schema.optional(Schema.Array(GoogleCloudApigeeV1AsyncQuery)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListAsyncQueriesResponse" });
@@ -6420,7 +6420,7 @@ export interface GoogleCloudApigeeV1Datastore {
   org?: string;
 }
 
-export const GoogleCloudApigeeV1Datastore: Schema.Schema<GoogleCloudApigeeV1Datastore> =
+export const GoogleCloudApigeeV1Datastore: Schema.Codec<GoogleCloudApigeeV1Datastore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -6436,7 +6436,7 @@ export interface GoogleCloudApigeeV1OptimizedStats {
   Response?: GoogleCloudApigeeV1OptimizedStatsResponse;
 }
 
-export const GoogleCloudApigeeV1OptimizedStats: Schema.Schema<GoogleCloudApigeeV1OptimizedStats> =
+export const GoogleCloudApigeeV1OptimizedStats: Schema.Codec<GoogleCloudApigeeV1OptimizedStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Response: Schema.optional(GoogleCloudApigeeV1OptimizedStatsResponse),
   }).annotate({ identifier: "GoogleCloudApigeeV1OptimizedStats" });
@@ -6450,7 +6450,7 @@ export interface GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest {
   appGroupAppKey?: GoogleCloudApigeeV1AppGroupAppKey;
 }
 
-export const GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest: Schema.Schema<GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest> =
+export const GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest: Schema.Codec<GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiProducts: Schema.optional(Schema.Array(Schema.String)),
     action: Schema.optional(Schema.String),
@@ -6466,7 +6466,7 @@ export interface GoogleCloudApigeeV1StatsHostStats {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1StatsHostStats: Schema.Schema<GoogleCloudApigeeV1StatsHostStats> =
+export const GoogleCloudApigeeV1StatsHostStats: Schema.Codec<GoogleCloudApigeeV1StatsHostStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
     dimensions: Schema.optional(
@@ -6484,7 +6484,7 @@ export interface GoogleCloudApigeeV1Stats {
   hosts?: ReadonlyArray<GoogleCloudApigeeV1StatsHostStats>;
 }
 
-export const GoogleCloudApigeeV1Stats: Schema.Schema<GoogleCloudApigeeV1Stats> =
+export const GoogleCloudApigeeV1Stats: Schema.Codec<GoogleCloudApigeeV1Stats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metaData: Schema.optional(GoogleCloudApigeeV1Metadata),
     environments: Schema.optional(
@@ -6495,7 +6495,7 @@ export const GoogleCloudApigeeV1Stats: Schema.Schema<GoogleCloudApigeeV1Stats> =
 
 export interface GoogleCloudApigeeV1GetSyncAuthorizationRequest {}
 
-export const GoogleCloudApigeeV1GetSyncAuthorizationRequest: Schema.Schema<GoogleCloudApigeeV1GetSyncAuthorizationRequest> =
+export const GoogleCloudApigeeV1GetSyncAuthorizationRequest: Schema.Codec<GoogleCloudApigeeV1GetSyncAuthorizationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GetSyncAuthorizationRequest",
   });
@@ -6509,7 +6509,7 @@ export interface GoogleCloudApigeeV1NodeConfig {
   minNodeCount?: string;
 }
 
-export const GoogleCloudApigeeV1NodeConfig: Schema.Schema<GoogleCloudApigeeV1NodeConfig> =
+export const GoogleCloudApigeeV1NodeConfig: Schema.Codec<GoogleCloudApigeeV1NodeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxNodeCount: Schema.optional(Schema.String),
     currentAggregateNodeCount: Schema.optional(Schema.String),
@@ -6565,7 +6565,7 @@ export interface GoogleCloudApigeeV1Environment {
   nodeConfig?: GoogleCloudApigeeV1NodeConfig;
 }
 
-export const GoogleCloudApigeeV1Environment: Schema.Schema<GoogleCloudApigeeV1Environment> =
+export const GoogleCloudApigeeV1Environment: Schema.Codec<GoogleCloudApigeeV1Environment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6594,7 +6594,7 @@ export interface GoogleCloudApigeeV1SecurityActionsConfig {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityActionsConfig: Schema.Schema<GoogleCloudApigeeV1SecurityActionsConfig> =
+export const GoogleCloudApigeeV1SecurityActionsConfig: Schema.Codec<GoogleCloudApigeeV1SecurityActionsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     updateTime: Schema.optional(Schema.String),
@@ -6606,7 +6606,7 @@ export interface GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
   resourceFile?: ReadonlyArray<GoogleCloudApigeeV1ResourceFile>;
 }
 
-export const GoogleCloudApigeeV1ListEnvironmentResourcesResponse: Schema.Schema<GoogleCloudApigeeV1ListEnvironmentResourcesResponse> =
+export const GoogleCloudApigeeV1ListEnvironmentResourcesResponse: Schema.Codec<GoogleCloudApigeeV1ListEnvironmentResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceFile: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1ResourceFile),
@@ -6620,7 +6620,7 @@ export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest {
   requests?: ReadonlyArray<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
 }
 
-export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest: Schema.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest> =
+export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest: Schema.Codec<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1UpdateSecurityIncidentRequest),
@@ -6636,7 +6636,7 @@ export interface GoogleCloudApigeeV1ListSecurityProfilesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityProfilesResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityProfilesResponse> =
+export const GoogleCloudApigeeV1ListSecurityProfilesResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityProfiles: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityProfile),
@@ -6653,7 +6653,7 @@ export interface GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse: Schema.Schema<GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse> =
+export const GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse: Schema.Codec<GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appGroupSubscriptions: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1AppGroupSubscription),
@@ -6668,7 +6668,7 @@ export interface GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse {
   urls?: ReadonlyArray<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo>;
 }
 
-export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse: Schema.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse> =
+export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse: Schema.Codec<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urls: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo),
@@ -6690,7 +6690,7 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -6708,7 +6708,7 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -6722,7 +6722,7 @@ export interface GoogleCloudApigeeV1Keystore {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1Keystore: Schema.Schema<GoogleCloudApigeeV1Keystore> =
+export const GoogleCloudApigeeV1Keystore: Schema.Codec<GoogleCloudApigeeV1Keystore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aliases: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -6737,7 +6737,7 @@ export interface GoogleCloudApigeeV1KeyValueMap {
   encrypted?: boolean;
 }
 
-export const GoogleCloudApigeeV1KeyValueMap: Schema.Schema<GoogleCloudApigeeV1KeyValueMap> =
+export const GoogleCloudApigeeV1KeyValueMap: Schema.Codec<GoogleCloudApigeeV1KeyValueMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     maskedValues: Schema.optional(Schema.Boolean),
@@ -6751,7 +6751,7 @@ export interface GoogleCloudApigeeV1ListSecurityActionsResponse {
   securityActions?: ReadonlyArray<GoogleCloudApigeeV1SecurityAction>;
 }
 
-export const GoogleCloudApigeeV1ListSecurityActionsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityActionsResponse> =
+export const GoogleCloudApigeeV1ListSecurityActionsResponse: Schema.Codec<GoogleCloudApigeeV1ListSecurityActionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     securityActions: Schema.optional(
@@ -6766,7 +6766,7 @@ export interface GoogleCloudApigeeV1ListDnsZonesResponse {
   dnsZones?: ReadonlyArray<GoogleCloudApigeeV1DnsZone>;
 }
 
-export const GoogleCloudApigeeV1ListDnsZonesResponse: Schema.Schema<GoogleCloudApigeeV1ListDnsZonesResponse> =
+export const GoogleCloudApigeeV1ListDnsZonesResponse: Schema.Codec<GoogleCloudApigeeV1ListDnsZonesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dnsZones: Schema.optional(Schema.Array(GoogleCloudApigeeV1DnsZone)),
@@ -6774,7 +6774,7 @@ export const GoogleCloudApigeeV1ListDnsZonesResponse: Schema.Schema<GoogleCloudA
 
 export interface GoogleCloudApigeeV1GenerateUploadUrlRequest {}
 
-export const GoogleCloudApigeeV1GenerateUploadUrlRequest: Schema.Schema<GoogleCloudApigeeV1GenerateUploadUrlRequest> =
+export const GoogleCloudApigeeV1GenerateUploadUrlRequest: Schema.Codec<GoogleCloudApigeeV1GenerateUploadUrlRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GenerateUploadUrlRequest",
   });
@@ -6784,7 +6784,7 @@ export interface GoogleCloudApigeeV1DeveloperBalance {
   wallets?: ReadonlyArray<GoogleCloudApigeeV1DeveloperBalanceWallet>;
 }
 
-export const GoogleCloudApigeeV1DeveloperBalance: Schema.Schema<GoogleCloudApigeeV1DeveloperBalance> =
+export const GoogleCloudApigeeV1DeveloperBalance: Schema.Codec<GoogleCloudApigeeV1DeveloperBalance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wallets: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1DeveloperBalanceWallet),
@@ -6804,7 +6804,7 @@ export interface GoogleCloudApigeeV1DeleteResponse {
   gcpResource?: string;
 }
 
-export const GoogleCloudApigeeV1DeleteResponse: Schema.Schema<GoogleCloudApigeeV1DeleteResponse> =
+export const GoogleCloudApigeeV1DeleteResponse: Schema.Codec<GoogleCloudApigeeV1DeleteResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
@@ -6818,7 +6818,7 @@ export interface GoogleCloudApigeeV1MoveApiProductRequest {
   space?: string;
 }
 
-export const GoogleCloudApigeeV1MoveApiProductRequest: Schema.Schema<GoogleCloudApigeeV1MoveApiProductRequest> =
+export const GoogleCloudApigeeV1MoveApiProductRequest: Schema.Codec<GoogleCloudApigeeV1MoveApiProductRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1MoveApiProductRequest" });
@@ -6836,7 +6836,7 @@ export interface GoogleCloudApigeeV1SecurityReportResultView {
   state?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReportResultView: Schema.Schema<GoogleCloudApigeeV1SecurityReportResultView> =
+export const GoogleCloudApigeeV1SecurityReportResultView: Schema.Codec<GoogleCloudApigeeV1SecurityReportResultView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rows: Schema.optional(Schema.Array(Schema.Unknown)),
     error: Schema.optional(Schema.String),
@@ -6850,7 +6850,7 @@ export interface GoogleCloudApigeeV1GenerateDownloadUrlResponse {
   downloadUri?: string;
 }
 
-export const GoogleCloudApigeeV1GenerateDownloadUrlResponse: Schema.Schema<GoogleCloudApigeeV1GenerateDownloadUrlResponse> =
+export const GoogleCloudApigeeV1GenerateDownloadUrlResponse: Schema.Codec<GoogleCloudApigeeV1GenerateDownloadUrlResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1GenerateDownloadUrlResponse" });
@@ -6860,14 +6860,14 @@ export interface GoogleCloudApigeeV1MoveSharedFlowRequest {
   space?: string;
 }
 
-export const GoogleCloudApigeeV1MoveSharedFlowRequest: Schema.Schema<GoogleCloudApigeeV1MoveSharedFlowRequest> =
+export const GoogleCloudApigeeV1MoveSharedFlowRequest: Schema.Codec<GoogleCloudApigeeV1MoveSharedFlowRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApigeeV1MoveSharedFlowRequest" });
 
 export interface GoogleCloudApigeeV1GenerateDownloadUrlRequest {}
 
-export const GoogleCloudApigeeV1GenerateDownloadUrlRequest: Schema.Schema<GoogleCloudApigeeV1GenerateDownloadUrlRequest> =
+export const GoogleCloudApigeeV1GenerateDownloadUrlRequest: Schema.Codec<GoogleCloudApigeeV1GenerateDownloadUrlRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GenerateDownloadUrlRequest",
   });
@@ -6896,7 +6896,7 @@ export interface GoogleCloudApigeeV1TargetServer {
   sSLInfo?: GoogleCloudApigeeV1TlsInfo;
 }
 
-export const GoogleCloudApigeeV1TargetServer: Schema.Schema<GoogleCloudApigeeV1TargetServer> =
+export const GoogleCloudApigeeV1TargetServer: Schema.Codec<GoogleCloudApigeeV1TargetServer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -6912,7 +6912,7 @@ export interface GoogleCloudApigeeV1ListDatastoresResponse {
   datastores?: ReadonlyArray<GoogleCloudApigeeV1Datastore>;
 }
 
-export const GoogleCloudApigeeV1ListDatastoresResponse: Schema.Schema<GoogleCloudApigeeV1ListDatastoresResponse> =
+export const GoogleCloudApigeeV1ListDatastoresResponse: Schema.Codec<GoogleCloudApigeeV1ListDatastoresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datastores: Schema.optional(Schema.Array(GoogleCloudApigeeV1Datastore)),
   }).annotate({ identifier: "GoogleCloudApigeeV1ListDatastoresResponse" });
@@ -6924,7 +6924,7 @@ export interface GoogleCloudApigeeV1ListInstancesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListInstancesResponse: Schema.Schema<GoogleCloudApigeeV1ListInstancesResponse> =
+export const GoogleCloudApigeeV1ListInstancesResponse: Schema.Codec<GoogleCloudApigeeV1ListInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(GoogleCloudApigeeV1Instance)),
     nextPageToken: Schema.optional(Schema.String),
@@ -6985,7 +6985,7 @@ export interface GoogleCloudApigeeV1ApiProxyRevision {
   createdAt?: string;
 }
 
-export const GoogleCloudApigeeV1ApiProxyRevision: Schema.Schema<GoogleCloudApigeeV1ApiProxyRevision> =
+export const GoogleCloudApigeeV1ApiProxyRevision: Schema.Codec<GoogleCloudApigeeV1ApiProxyRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationEndpoints: Schema.optional(Schema.Array(Schema.String)),
     archive: Schema.optional(Schema.String),
@@ -7030,7 +7030,7 @@ export interface GoogleCloudApigeeV1ApiDocResponse {
   requestId?: string;
 }
 
-export const GoogleCloudApigeeV1ApiDocResponse: Schema.Schema<GoogleCloudApigeeV1ApiDocResponse> =
+export const GoogleCloudApigeeV1ApiDocResponse: Schema.Codec<GoogleCloudApigeeV1ApiDocResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -7048,7 +7048,7 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRespons
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse> =
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse: Schema.Codec<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityAssessmentResults: Schema.optional(
       Schema.Array(GoogleCloudApigeeV1SecurityAssessmentResult),
@@ -7147,7 +7147,7 @@ export interface GoogleCloudApigeeV1Organization {
   lastModifiedAt?: string;
 }
 
-export const GoogleCloudApigeeV1Organization: Schema.Schema<GoogleCloudApigeeV1Organization> =
+export const GoogleCloudApigeeV1Organization: Schema.Codec<GoogleCloudApigeeV1Organization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableVpcPeering: Schema.optional(Schema.Boolean),
     expiresAt: Schema.optional(Schema.String),
@@ -7255,7 +7255,7 @@ export const ProvisionOrganizationProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionOrganizationProjectsRequest>;
+  ) as unknown as Schema.Codec<ProvisionOrganizationProjectsRequest>;
 
 export type ProvisionOrganizationProjectsResponse = GoogleLongrunningOperation;
 export const ProvisionOrganizationProjectsResponse =
@@ -7291,7 +7291,7 @@ export const ListHybridIssuersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListHybridIssuersRequest>;
+  ) as unknown as Schema.Codec<ListHybridIssuersRequest>;
 
 export type ListHybridIssuersResponse =
   GoogleCloudApigeeV1ListHybridIssuersResponse;
@@ -7328,7 +7328,7 @@ export const SetAddonsOrganizationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+org}:setAddons", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetAddonsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<SetAddonsOrganizationsRequest>;
 
 export type SetAddonsOrganizationsResponse = GoogleLongrunningOperation;
 export const SetAddonsOrganizationsResponse =
@@ -7364,7 +7364,7 @@ export const GetSecuritySettingsOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSecuritySettingsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetSecuritySettingsOrganizationsRequest>;
 
 export type GetSecuritySettingsOrganizationsResponse =
   GoogleCloudApigeeV1SecuritySettings;
@@ -7407,7 +7407,7 @@ export const UpdateControlPlaneAccessOrganizationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateControlPlaneAccessOrganizationsRequest>;
+  ) as unknown as Schema.Codec<UpdateControlPlaneAccessOrganizationsRequest>;
 
 export type UpdateControlPlaneAccessOrganizationsResponse =
   GoogleLongrunningOperation;
@@ -7447,7 +7447,7 @@ export const CreateOrganizationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/organizations", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsRequest>;
 
 export type CreateOrganizationsResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsResponse =
@@ -7486,7 +7486,7 @@ export const UpdateOrganizationsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsRequest>;
 
 export type UpdateOrganizationsResponse = GoogleCloudApigeeV1Organization;
 export const UpdateOrganizationsResponse =
@@ -7525,7 +7525,7 @@ export const GetDeployedIngressConfigOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDeployedIngressConfigOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetDeployedIngressConfigOrganizationsRequest>;
 
 export type GetDeployedIngressConfigOrganizationsResponse =
   GoogleCloudApigeeV1IngressConfig;
@@ -7560,7 +7560,7 @@ export const GetRuntimeConfigOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetRuntimeConfigOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetRuntimeConfigOrganizationsRequest>;
 
 export type GetRuntimeConfigOrganizationsResponse =
   GoogleCloudApigeeV1RuntimeConfig;
@@ -7595,7 +7595,7 @@ export const GetProjectMappingOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getProjectMapping" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectMappingOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectMappingOrganizationsRequest>;
 
 export type GetProjectMappingOrganizationsResponse =
   GoogleCloudApigeeV1OrganizationProjectMapping;
@@ -7639,7 +7639,7 @@ export const SetSyncAuthorizationOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetSyncAuthorizationOrganizationsRequest>;
+  ) as unknown as Schema.Codec<SetSyncAuthorizationOrganizationsRequest>;
 
 export type SetSyncAuthorizationOrganizationsResponse =
   GoogleCloudApigeeV1SyncAuthorization;
@@ -7684,7 +7684,7 @@ export const UpdateSecuritySettingsOrganizationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSecuritySettingsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<UpdateSecuritySettingsOrganizationsRequest>;
 
 export type UpdateSecuritySettingsOrganizationsResponse =
   GoogleCloudApigeeV1SecuritySettings;
@@ -7721,7 +7721,7 @@ export const ListOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsRequest>;
 
 export type ListOrganizationsResponse =
   GoogleCloudApigeeV1ListOrganizationsResponse;
@@ -7753,7 +7753,7 @@ export const GetOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsRequest>;
 
 export type GetOrganizationsResponse = GoogleCloudApigeeV1Organization;
 export const GetOrganizationsResponse =
@@ -7787,7 +7787,7 @@ export const DeleteOrganizationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsRequest>;
 
 export type DeleteOrganizationsResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsResponse =
@@ -7823,7 +7823,7 @@ export const GetControlPlaneAccessOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetControlPlaneAccessOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetControlPlaneAccessOrganizationsRequest>;
 
 export type GetControlPlaneAccessOrganizationsResponse =
   GoogleCloudApigeeV1ControlPlaneAccess;
@@ -7867,7 +7867,7 @@ export const GetSyncAuthorizationOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSyncAuthorizationOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetSyncAuthorizationOrganizationsRequest>;
 
 export type GetSyncAuthorizationOrganizationsResponse =
   GoogleCloudApigeeV1SyncAuthorization;
@@ -7910,7 +7910,7 @@ export const PatchOrganizationsApisRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsApisRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsApisRequest>;
 
 export type PatchOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const PatchOrganizationsApisResponse =
@@ -7951,7 +7951,7 @@ export const MoveOrganizationsApisRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveOrganizationsApisRequest>;
+  ) as unknown as Schema.Codec<MoveOrganizationsApisRequest>;
 
 export type MoveOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const MoveOrganizationsApisResponse =
@@ -8002,7 +8002,7 @@ export const CreateOrganizationsApisRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/apis", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsApisRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsApisRequest>;
 
 export type CreateOrganizationsApisResponse =
   GoogleCloudApigeeV1ApiProxyRevision;
@@ -8052,7 +8052,7 @@ export const ListOrganizationsApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apis" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApisRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApisRequest>;
 
 export type ListOrganizationsApisResponse =
   GoogleCloudApigeeV1ListApiProxiesResponse;
@@ -8084,7 +8084,7 @@ export const GetOrganizationsApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApisRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApisRequest>;
 
 export type GetOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const GetOrganizationsApisResponse =
@@ -8115,7 +8115,7 @@ export const DeleteOrganizationsApisRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsApisRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsApisRequest>;
 
 export type DeleteOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const DeleteOrganizationsApisResponse =
@@ -8154,7 +8154,7 @@ export const GetOrganizationsApisRevisionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApisRevisionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApisRevisionsRequest>;
 
 export type GetOrganizationsApisRevisionsResponse = GoogleApiHttpBody;
 export const GetOrganizationsApisRevisionsResponse =
@@ -8188,7 +8188,7 @@ export const DeleteOrganizationsApisRevisionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsApisRevisionsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsApisRevisionsRequest>;
 
 export type DeleteOrganizationsApisRevisionsResponse =
   GoogleCloudApigeeV1ApiProxyRevision;
@@ -8231,7 +8231,7 @@ export const UpdateApiProxyRevisionOrganizationsApisRevisionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateApiProxyRevisionOrganizationsApisRevisionsRequest>;
+  ) as unknown as Schema.Codec<UpdateApiProxyRevisionOrganizationsApisRevisionsRequest>;
 
 export type UpdateApiProxyRevisionOrganizationsApisRevisionsResponse =
   GoogleCloudApigeeV1ApiProxyRevision;
@@ -8268,7 +8268,7 @@ export const ListOrganizationsApisRevisionsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApisRevisionsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApisRevisionsDeploymentsRequest>;
 
 export type ListOrganizationsApisRevisionsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
@@ -8303,7 +8303,7 @@ export const ListOrganizationsApisDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApisDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApisDeploymentsRequest>;
 
 export type ListOrganizationsApisDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
@@ -8338,7 +8338,7 @@ export const GetOrganizationsApisKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApisKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApisKeyvaluemapsRequest>;
 
 export type GetOrganizationsApisKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -8376,7 +8376,7 @@ export const UpdateOrganizationsApisKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsApisKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsApisKeyvaluemapsRequest>;
 
 export type UpdateOrganizationsApisKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -8420,7 +8420,7 @@ export const CreateOrganizationsApisKeyvaluemapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsApisKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsApisKeyvaluemapsRequest>;
 
 export type CreateOrganizationsApisKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -8457,7 +8457,7 @@ export const DeleteOrganizationsApisKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsApisKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsApisKeyvaluemapsRequest>;
 
 export type DeleteOrganizationsApisKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -8494,7 +8494,7 @@ export const DeleteOrganizationsApisKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsApisKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsApisKeyvaluemapsEntriesRequest>;
 
 export type DeleteOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -8531,7 +8531,7 @@ export const GetOrganizationsApisKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApisKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApisKeyvaluemapsEntriesRequest>;
 
 export type GetOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -8572,7 +8572,7 @@ export const ListOrganizationsApisKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entries" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApisKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApisKeyvaluemapsEntriesRequest>;
 
 export type ListOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1ListKeyValueEntriesResponse;
@@ -8614,7 +8614,7 @@ export const CreateOrganizationsApisKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/entries", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsApisKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsApisKeyvaluemapsEntriesRequest>;
 
 export type CreateOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -8654,7 +8654,7 @@ export const UpdateOrganizationsApisKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsApisKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsApisKeyvaluemapsEntriesRequest>;
 
 export type UpdateOrganizationsApisKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -8697,7 +8697,7 @@ export const ListOrganizationsApisDebugsessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/debugsessions" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApisDebugsessionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApisDebugsessionsRequest>;
 
 export type ListOrganizationsApisDebugsessionsResponse =
   GoogleCloudApigeeV1ListApiDebugSessionsResponse;
@@ -8739,7 +8739,7 @@ export const SetDeveloperStatusOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetDeveloperStatusOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<SetDeveloperStatusOrganizationsDevelopersRequest>;
 
 export type SetDeveloperStatusOrganizationsDevelopersResponse =
   GoogleProtobufEmpty;
@@ -8796,7 +8796,7 @@ export const ListOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/developers" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDevelopersRequest>;
 
 export type ListOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1ListOfDevelopersResponse;
@@ -8834,7 +8834,7 @@ export const GetOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDevelopersRequest>;
 
 export type GetOrganizationsDevelopersResponse = GoogleCloudApigeeV1Developer;
 export const GetOrganizationsDevelopersResponse =
@@ -8868,7 +8868,7 @@ export const DeleteOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDevelopersRequest>;
 
 export type DeleteOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1Developer;
@@ -8908,7 +8908,7 @@ export const CreateOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/developers", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsDevelopersRequest>;
 
 export type CreateOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1Developer;
@@ -8948,7 +8948,7 @@ export const UpdateOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsDevelopersRequest>;
 
 export type UpdateOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1Developer;
@@ -8985,7 +8985,7 @@ export const GetBalanceOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBalanceOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<GetBalanceOrganizationsDevelopersRequest>;
 
 export type GetBalanceOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1DeveloperBalance;
@@ -9023,7 +9023,7 @@ export const AttributesOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/attributes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AttributesOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<AttributesOrganizationsDevelopersRequest>;
 
 export type AttributesOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1Attributes;
@@ -9060,7 +9060,7 @@ export const GetMonetizationConfigOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetMonetizationConfigOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<GetMonetizationConfigOrganizationsDevelopersRequest>;
 
 export type GetMonetizationConfigOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1DeveloperMonetizationConfig;
@@ -9100,7 +9100,7 @@ export const UpdateMonetizationConfigOrganizationsDevelopersRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateMonetizationConfigOrganizationsDevelopersRequest>;
+  ) as unknown as Schema.Codec<UpdateMonetizationConfigOrganizationsDevelopersRequest>;
 
 export type UpdateMonetizationConfigOrganizationsDevelopersResponse =
   GoogleCloudApigeeV1DeveloperMonetizationConfig;
@@ -9146,7 +9146,7 @@ export const CreateOrganizationsDevelopersSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsDevelopersSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsDevelopersSubscriptionsRequest>;
 
 export type CreateOrganizationsDevelopersSubscriptionsResponse =
   GoogleCloudApigeeV1DeveloperSubscription;
@@ -9183,7 +9183,7 @@ export const GetOrganizationsDevelopersSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDevelopersSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDevelopersSubscriptionsRequest>;
 
 export type GetOrganizationsDevelopersSubscriptionsResponse =
   GoogleCloudApigeeV1DeveloperSubscription;
@@ -9223,7 +9223,7 @@ export const ExpireOrganizationsDevelopersSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:expire", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExpireOrganizationsDevelopersSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ExpireOrganizationsDevelopersSubscriptionsRequest>;
 
 export type ExpireOrganizationsDevelopersSubscriptionsResponse =
   GoogleCloudApigeeV1DeveloperSubscription;
@@ -9266,7 +9266,7 @@ export const ListOrganizationsDevelopersSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDevelopersSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDevelopersSubscriptionsRequest>;
 
 export type ListOrganizationsDevelopersSubscriptionsResponse =
   GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse;
@@ -9315,7 +9315,7 @@ export const ListOrganizationsDevelopersAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apps" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDevelopersAppsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDevelopersAppsRequest>;
 
 export type ListOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1ListDeveloperAppsResponse;
@@ -9356,7 +9356,7 @@ export const GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest>;
+  ) as unknown as Schema.Codec<GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest>;
 
 export type GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
@@ -9364,7 +9364,11 @@ export const GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
 export type GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Manages access to a developer app by enabling you to: * Approve or revoke a developer app * Generate a new consumer key and secret for a developer app To approve or revoke a developer app, set the `action` query parameter to `approve` or `revoke`, respectively, and the `Content-Type` header to `application/octet-stream`. If a developer app is revoked, none of its API keys are valid for API calls even though the keys are still approved. If successful, the API call returns the following HTTP status code: `204 No Content` To generate a new consumer key and secret for a developer app, pass the new key/secret details. Rather than replace an existing key, this API generates a new key. In this case, multiple key pairs may be associated with a single developer app. Each key pair has an independent status (`approve` or `revoke`) and expiration time. Any approved, non-expired key can be used in an API call. For example, if you're using API key rotation, you can generate new keys with expiration times that overlap keys that are going to expire. You might also generate a new consumer key/secret if the security of the original key/secret is compromised. The `keyExpiresIn` property defines the expiration time for the API key in milliseconds. If you don't set this property or set it to `-1`, the API key never expires. **Notes**: * When generating a new key/secret, this API replaces the existing attributes, notes, and callback URLs with those specified in the request. Include or exclude any existing information that you want to retain or delete, respectively. * To migrate existing consumer keys and secrets to hybrid from another system, see the CreateDeveloperAppKey API. */
 export const generateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApps: API.OperationMethod<
@@ -9394,7 +9398,7 @@ export const CreateOrganizationsDevelopersAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/apps", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsDevelopersAppsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsDevelopersAppsRequest>;
 
 export type CreateOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
@@ -9434,7 +9438,7 @@ export const UpdateOrganizationsDevelopersAppsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsDevelopersAppsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsDevelopersAppsRequest>;
 
 export type UpdateOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
@@ -9477,7 +9481,7 @@ export const GetOrganizationsDevelopersAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDevelopersAppsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDevelopersAppsRequest>;
 
 export type GetOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
@@ -9515,7 +9519,7 @@ export const AttributesOrganizationsDevelopersAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}/attributes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AttributesOrganizationsDevelopersAppsRequest>;
+  ) as unknown as Schema.Codec<AttributesOrganizationsDevelopersAppsRequest>;
 
 export type AttributesOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1Attributes;
@@ -9552,7 +9556,7 @@ export const DeleteOrganizationsDevelopersAppsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAppsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDevelopersAppsRequest>;
 
 export type DeleteOrganizationsDevelopersAppsResponse =
   GoogleCloudApigeeV1DeveloperApp;
@@ -9594,7 +9598,7 @@ export const ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest>;
+  ) as unknown as Schema.Codec<ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest>;
 
 export type ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
@@ -9636,7 +9640,7 @@ export const CreateOrganizationsDevelopersAppsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/keys", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsDevelopersAppsKeysRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsDevelopersAppsKeysRequest>;
 
 export type CreateOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
@@ -9681,7 +9685,7 @@ export const UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest>;
+  ) as unknown as Schema.Codec<UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest>;
 
 export type UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
@@ -9718,7 +9722,7 @@ export const GetOrganizationsDevelopersAppsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDevelopersAppsKeysRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDevelopersAppsKeysRequest>;
 
 export type GetOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
@@ -9753,7 +9757,7 @@ export const DeleteOrganizationsDevelopersAppsKeysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAppsKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDevelopersAppsKeysRequest>;
 
 export type DeleteOrganizationsDevelopersAppsKeysResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
@@ -9795,7 +9799,7 @@ export const CreateOrganizationsDevelopersAppsKeysCreateRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/keys/create", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsDevelopersAppsKeysCreateRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsDevelopersAppsKeysCreateRequest>;
 
 export type CreateOrganizationsDevelopersAppsKeysCreateResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
@@ -9832,7 +9836,7 @@ export const DeleteOrganizationsDevelopersAppsKeysApiproductsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAppsKeysApiproductsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDevelopersAppsKeysApiproductsRequest>;
 
 export type DeleteOrganizationsDevelopersAppsKeysApiproductsResponse =
   GoogleCloudApigeeV1DeveloperAppKey;
@@ -9872,7 +9876,7 @@ export const UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsRequest>;
+  ) as unknown as Schema.Codec<UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsRequest>;
 
 export type UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsResponse =
   GoogleProtobufEmpty;
@@ -9880,7 +9884,11 @@ export const UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API. */
 export const updateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproducts: API.OperationMethod<
@@ -9907,7 +9915,7 @@ export const DeleteOrganizationsDevelopersAppsAttributesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAppsAttributesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDevelopersAppsAttributesRequest>;
 
 export type DeleteOrganizationsDevelopersAppsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -9944,7 +9952,7 @@ export const GetOrganizationsDevelopersAppsAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDevelopersAppsAttributesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDevelopersAppsAttributesRequest>;
 
 export type GetOrganizationsDevelopersAppsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -9982,7 +9990,7 @@ export const UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesReq
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest>;
+  ) as unknown as Schema.Codec<UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest>;
 
 export type UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -9990,7 +9998,11 @@ export const UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a developer app attribute. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. */
 export const updateDeveloperAppAttributeOrganizationsDevelopersAppsAttributes: API.OperationMethod<
@@ -10017,7 +10029,7 @@ export const ListOrganizationsDevelopersAppsAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDevelopersAppsAttributesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDevelopersAppsAttributesRequest>;
 
 export type ListOrganizationsDevelopersAppsAttributesResponse =
   GoogleCloudApigeeV1Attributes;
@@ -10052,7 +10064,7 @@ export const GetOrganizationsDevelopersAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDevelopersAttributesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDevelopersAttributesRequest>;
 
 export type GetOrganizationsDevelopersAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -10087,7 +10099,7 @@ export const DeleteOrganizationsDevelopersAttributesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAttributesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDevelopersAttributesRequest>;
 
 export type DeleteOrganizationsDevelopersAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -10124,7 +10136,7 @@ export const ListOrganizationsDevelopersAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDevelopersAttributesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDevelopersAttributesRequest>;
 
 export type ListOrganizationsDevelopersAttributesResponse =
   GoogleCloudApigeeV1Attributes;
@@ -10162,7 +10174,7 @@ export const UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest>;
+  ) as unknown as Schema.Codec<UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest>;
 
 export type UpdateDeveloperAttributeOrganizationsDevelopersAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -10204,7 +10216,7 @@ export const CreditOrganizationsDevelopersBalanceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:credit", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreditOrganizationsDevelopersBalanceRequest>;
+  ) as unknown as Schema.Codec<CreditOrganizationsDevelopersBalanceRequest>;
 
 export type CreditOrganizationsDevelopersBalanceResponse =
   GoogleCloudApigeeV1DeveloperBalance;
@@ -10246,7 +10258,7 @@ export const AdjustOrganizationsDevelopersBalanceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:adjust", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AdjustOrganizationsDevelopersBalanceRequest>;
+  ) as unknown as Schema.Codec<AdjustOrganizationsDevelopersBalanceRequest>;
 
 export type AdjustOrganizationsDevelopersBalanceResponse =
   GoogleCloudApigeeV1DeveloperBalance;
@@ -10310,7 +10322,7 @@ export const ListOrganizationsHostQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/hostQueries" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsHostQueriesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsHostQueriesRequest>;
 
 export type ListOrganizationsHostQueriesResponse =
   GoogleCloudApigeeV1ListAsyncQueriesResponse;
@@ -10345,7 +10357,7 @@ export const GetResultViewOrganizationsHostQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetResultViewOrganizationsHostQueriesRequest>;
+  ) as unknown as Schema.Codec<GetResultViewOrganizationsHostQueriesRequest>;
 
 export type GetResultViewOrganizationsHostQueriesResponse =
   GoogleCloudApigeeV1AsyncQueryResultView;
@@ -10382,7 +10394,7 @@ export const CreateOrganizationsHostQueriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/hostQueries", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsHostQueriesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsHostQueriesRequest>;
 
 export type CreateOrganizationsHostQueriesResponse =
   GoogleCloudApigeeV1AsyncQuery;
@@ -10419,7 +10431,7 @@ export const GetResultOrganizationsHostQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetResultOrganizationsHostQueriesRequest>;
+  ) as unknown as Schema.Codec<GetResultOrganizationsHostQueriesRequest>;
 
 export type GetResultOrganizationsHostQueriesResponse = GoogleApiHttpBody;
 export const GetResultOrganizationsHostQueriesResponse =
@@ -10453,7 +10465,7 @@ export const GetOrganizationsHostQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsHostQueriesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsHostQueriesRequest>;
 
 export type GetOrganizationsHostQueriesResponse = GoogleCloudApigeeV1AsyncQuery;
 export const GetOrganizationsHostQueriesResponse =
@@ -10487,7 +10499,7 @@ export const DeleteOrganizationsSitesApicategoriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSitesApicategoriesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSitesApicategoriesRequest>;
 
 export type DeleteOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1DeleteResponse;
@@ -10524,7 +10536,7 @@ export const GetOrganizationsSitesApicategoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSitesApicategoriesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSitesApicategoriesRequest>;
 
 export type GetOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1ApiCategoryResponse;
@@ -10559,7 +10571,7 @@ export const ListOrganizationsSitesApicategoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apicategories" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSitesApicategoriesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSitesApicategoriesRequest>;
 
 export type ListOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1ListApiCategoriesResponse;
@@ -10601,7 +10613,7 @@ export const CreateOrganizationsSitesApicategoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSitesApicategoriesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSitesApicategoriesRequest>;
 
 export type CreateOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1ApiCategoryResponse;
@@ -10641,7 +10653,7 @@ export const PatchOrganizationsSitesApicategoriesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsSitesApicategoriesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsSitesApicategoriesRequest>;
 
 export type PatchOrganizationsSitesApicategoriesResponse =
   GoogleCloudApigeeV1ApiCategoryResponse;
@@ -10684,7 +10696,7 @@ export const ListOrganizationsSitesApidocsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apidocs" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSitesApidocsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSitesApidocsRequest>;
 
 export type ListOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ListApiDocsResponse;
@@ -10726,7 +10738,7 @@ export const CreateOrganizationsSitesApidocsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/apidocs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSitesApidocsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSitesApidocsRequest>;
 
 export type CreateOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocResponse;
@@ -10766,7 +10778,7 @@ export const UpdateOrganizationsSitesApidocsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsSitesApidocsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsSitesApidocsRequest>;
 
 export type UpdateOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocResponse;
@@ -10808,7 +10820,7 @@ export const UpdateDocumentationOrganizationsSitesApidocsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDocumentationOrganizationsSitesApidocsRequest>;
+  ) as unknown as Schema.Codec<UpdateDocumentationOrganizationsSitesApidocsRequest>;
 
 export type UpdateDocumentationOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocDocumentationResponse;
@@ -10845,7 +10857,7 @@ export const DeleteOrganizationsSitesApidocsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSitesApidocsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSitesApidocsRequest>;
 
 export type DeleteOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1DeleteResponse;
@@ -10882,7 +10894,7 @@ export const GetDocumentationOrganizationsSitesApidocsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDocumentationOrganizationsSitesApidocsRequest>;
+  ) as unknown as Schema.Codec<GetDocumentationOrganizationsSitesApidocsRequest>;
 
 export type GetDocumentationOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocDocumentationResponse;
@@ -10917,7 +10929,7 @@ export const GetOrganizationsSitesApidocsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSitesApidocsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSitesApidocsRequest>;
 
 export type GetOrganizationsSitesApidocsResponse =
   GoogleCloudApigeeV1ApiDocResponse;
@@ -10952,7 +10964,7 @@ export const GetOrganizationsSecurityProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSecurityProfilesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSecurityProfilesRequest>;
 
 export type GetOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1SecurityProfile;
@@ -10987,7 +10999,7 @@ export const DeleteOrganizationsSecurityProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSecurityProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSecurityProfilesRequest>;
 
 export type DeleteOrganizationsSecurityProfilesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityProfilesResponse =
@@ -11029,7 +11041,7 @@ export const ListOrganizationsSecurityProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/securityProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSecurityProfilesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSecurityProfilesRequest>;
 
 export type ListOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1ListSecurityProfilesResponse;
@@ -11076,7 +11088,7 @@ export const PatchOrganizationsSecurityProfilesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsSecurityProfilesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsSecurityProfilesRequest>;
 
 export type PatchOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1SecurityProfile;
@@ -11119,7 +11131,7 @@ export const ListRevisionsOrganizationsSecurityProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
     svc,
-  ) as unknown as Schema.Schema<ListRevisionsOrganizationsSecurityProfilesRequest>;
+  ) as unknown as Schema.Codec<ListRevisionsOrganizationsSecurityProfilesRequest>;
 
 export type ListRevisionsOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse;
@@ -11172,7 +11184,7 @@ export const CreateOrganizationsSecurityProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSecurityProfilesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSecurityProfilesRequest>;
 
 export type CreateOrganizationsSecurityProfilesResponse =
   GoogleCloudApigeeV1SecurityProfile;
@@ -11218,7 +11230,7 @@ export const CreateOrganizationsSecurityProfilesEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSecurityProfilesEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSecurityProfilesEnvironmentsRequest>;
 
 export type CreateOrganizationsSecurityProfilesEnvironmentsResponse =
   GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation;
@@ -11255,7 +11267,7 @@ export const DeleteOrganizationsSecurityProfilesEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSecurityProfilesEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSecurityProfilesEnvironmentsRequest>;
 
 export type DeleteOrganizationsSecurityProfilesEnvironmentsResponse =
   GoogleProtobufEmpty;
@@ -11301,7 +11313,7 @@ export const ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRe
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest>;
 
 export type ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsResponse =
   GoogleCloudApigeeV1ComputeEnvironmentScoresResponse;
@@ -11309,7 +11321,11 @@ export const ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ComputeEnvironmentScoresResponse;
 
 export type ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ComputeEnvironmentScores calculates scores for requested time range for the specified security profile and environment. */
 export const computeEnvironmentScoresOrganizationsSecurityProfilesEnvironments: API.OperationMethod<
@@ -11336,7 +11352,7 @@ export const GetOrganizationsApiproductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApiproductsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApiproductsRequest>;
 
 export type GetOrganizationsApiproductsResponse = GoogleCloudApigeeV1ApiProduct;
 export const GetOrganizationsApiproductsResponse =
@@ -11373,7 +11389,7 @@ export const AttributesOrganizationsApiproductsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}/attributes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AttributesOrganizationsApiproductsRequest>;
+  ) as unknown as Schema.Codec<AttributesOrganizationsApiproductsRequest>;
 
 export type AttributesOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1Attributes;
@@ -11410,7 +11426,7 @@ export const DeleteOrganizationsApiproductsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsApiproductsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsApiproductsRequest>;
 
 export type DeleteOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ApiProduct;
@@ -11450,7 +11466,7 @@ export const CreateOrganizationsApiproductsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/apiproducts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsApiproductsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsApiproductsRequest>;
 
 export type CreateOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ApiProduct;
@@ -11492,7 +11508,7 @@ export const MoveOrganizationsApiproductsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveOrganizationsApiproductsRequest>;
+  ) as unknown as Schema.Codec<MoveOrganizationsApiproductsRequest>;
 
 export type MoveOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ApiProduct;
@@ -11532,7 +11548,7 @@ export const UpdateOrganizationsApiproductsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsApiproductsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsApiproductsRequest>;
 
 export type UpdateOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ApiProduct;
@@ -11591,7 +11607,7 @@ export const ListOrganizationsApiproductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apiproducts" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApiproductsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApiproductsRequest>;
 
 export type ListOrganizationsApiproductsResponse =
   GoogleCloudApigeeV1ListApiProductsResponse;
@@ -11626,7 +11642,7 @@ export const GetOrganizationsApiproductsRateplansRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApiproductsRateplansRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApiproductsRateplansRequest>;
 
 export type GetOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1RatePlan;
@@ -11661,7 +11677,7 @@ export const DeleteOrganizationsApiproductsRateplansRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsApiproductsRateplansRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsApiproductsRateplansRequest>;
 
 export type DeleteOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1RatePlan;
@@ -11701,7 +11717,7 @@ export const CreateOrganizationsApiproductsRateplansRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/rateplans", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsApiproductsRateplansRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsApiproductsRateplansRequest>;
 
 export type CreateOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1RatePlan;
@@ -11741,7 +11757,7 @@ export const UpdateOrganizationsApiproductsRateplansRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsApiproductsRateplansRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsApiproductsRateplansRequest>;
 
 export type UpdateOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1RatePlan;
@@ -11793,7 +11809,7 @@ export const ListOrganizationsApiproductsRateplansRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/rateplans" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApiproductsRateplansRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApiproductsRateplansRequest>;
 
 export type ListOrganizationsApiproductsRateplansResponse =
   GoogleCloudApigeeV1ListRatePlansResponse;
@@ -11831,7 +11847,7 @@ export const UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest 
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest>;
+  ) as unknown as Schema.Codec<UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest>;
 
 export type UpdateApiProductAttributeOrganizationsApiproductsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -11868,7 +11884,7 @@ export const ListOrganizationsApiproductsAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApiproductsAttributesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApiproductsAttributesRequest>;
 
 export type ListOrganizationsApiproductsAttributesResponse =
   GoogleCloudApigeeV1Attributes;
@@ -11903,7 +11919,7 @@ export const DeleteOrganizationsApiproductsAttributesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsApiproductsAttributesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsApiproductsAttributesRequest>;
 
 export type DeleteOrganizationsApiproductsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -11940,7 +11956,7 @@ export const GetOrganizationsApiproductsAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApiproductsAttributesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApiproductsAttributesRequest>;
 
 export type GetOrganizationsApiproductsAttributesResponse =
   GoogleCloudApigeeV1Attribute;
@@ -11987,7 +12003,7 @@ export const CreateOrganizationsDatacollectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsDatacollectorsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsDatacollectorsRequest>;
 
 export type CreateOrganizationsDatacollectorsResponse =
   GoogleCloudApigeeV1DataCollector;
@@ -12030,7 +12046,7 @@ export const PatchOrganizationsDatacollectorsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsDatacollectorsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsDatacollectorsRequest>;
 
 export type PatchOrganizationsDatacollectorsResponse =
   GoogleCloudApigeeV1DataCollector;
@@ -12073,7 +12089,7 @@ export const ListOrganizationsDatacollectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/datacollectors" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDatacollectorsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDatacollectorsRequest>;
 
 export type ListOrganizationsDatacollectorsResponse =
   GoogleCloudApigeeV1ListDataCollectorsResponse;
@@ -12112,7 +12128,7 @@ export const DeleteOrganizationsDatacollectorsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDatacollectorsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDatacollectorsRequest>;
 
 export type DeleteOrganizationsDatacollectorsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsDatacollectorsResponse =
@@ -12148,7 +12164,7 @@ export const GetOrganizationsDatacollectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDatacollectorsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDatacollectorsRequest>;
 
 export type GetOrganizationsDatacollectorsResponse =
   GoogleCloudApigeeV1DataCollector;
@@ -12183,7 +12199,7 @@ export const DeleteOrganizationsEnvgroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvgroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvgroupsRequest>;
 
 export type DeleteOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsEnvgroupsResponse =
@@ -12219,7 +12235,7 @@ export const GetOrganizationsEnvgroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvgroupsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvgroupsRequest>;
 
 export type GetOrganizationsEnvgroupsResponse =
   GoogleCloudApigeeV1EnvironmentGroup;
@@ -12260,7 +12276,7 @@ export const ListOrganizationsEnvgroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/envgroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvgroupsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvgroupsRequest>;
 
 export type ListOrganizationsEnvgroupsResponse =
   GoogleCloudApigeeV1ListEnvironmentGroupsResponse;
@@ -12307,7 +12323,7 @@ export const CreateOrganizationsEnvgroupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/envgroups", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvgroupsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvgroupsRequest>;
 
 export type CreateOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsEnvgroupsResponse =
@@ -12346,7 +12362,7 @@ export const GetDeployedIngressConfigOrganizationsEnvgroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDeployedIngressConfigOrganizationsEnvgroupsRequest>;
+  ) as unknown as Schema.Codec<GetDeployedIngressConfigOrganizationsEnvgroupsRequest>;
 
 export type GetDeployedIngressConfigOrganizationsEnvgroupsResponse =
   GoogleCloudApigeeV1EnvironmentGroupConfig;
@@ -12389,7 +12405,7 @@ export const PatchOrganizationsEnvgroupsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsEnvgroupsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsEnvgroupsRequest>;
 
 export type PatchOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const PatchOrganizationsEnvgroupsResponse =
@@ -12431,7 +12447,7 @@ export const ListOrganizationsEnvgroupsAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attachments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvgroupsAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvgroupsAttachmentsRequest>;
 
 export type ListOrganizationsEnvgroupsAttachmentsResponse =
   GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse;
@@ -12470,7 +12486,7 @@ export const GetOrganizationsEnvgroupsAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvgroupsAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvgroupsAttachmentsRequest>;
 
 export type GetOrganizationsEnvgroupsAttachmentsResponse =
   GoogleCloudApigeeV1EnvironmentGroupAttachment;
@@ -12510,7 +12526,7 @@ export const CreateOrganizationsEnvgroupsAttachmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/attachments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvgroupsAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvgroupsAttachmentsRequest>;
 
 export type CreateOrganizationsEnvgroupsAttachmentsResponse =
   GoogleLongrunningOperation;
@@ -12547,7 +12563,7 @@ export const DeleteOrganizationsEnvgroupsAttachmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvgroupsAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvgroupsAttachmentsRequest>;
 
 export type DeleteOrganizationsEnvgroupsAttachmentsResponse =
   GoogleLongrunningOperation;
@@ -12598,7 +12614,7 @@ export const CreateOrganizationsApimServiceExtensionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsApimServiceExtensionsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsApimServiceExtensionsRequest>;
 
 export type CreateOrganizationsApimServiceExtensionsResponse =
   GoogleLongrunningOperation;
@@ -12648,7 +12664,7 @@ export const PatchOrganizationsApimServiceExtensionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsApimServiceExtensionsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsApimServiceExtensionsRequest>;
 
 export type PatchOrganizationsApimServiceExtensionsResponse =
   GoogleLongrunningOperation;
@@ -12691,7 +12707,7 @@ export const ListOrganizationsApimServiceExtensionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apimServiceExtensions" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsApimServiceExtensionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsApimServiceExtensionsRequest>;
 
 export type ListOrganizationsApimServiceExtensionsResponse =
   GoogleCloudApigeeV1ListApimServiceExtensionsResponse;
@@ -12730,7 +12746,7 @@ export const DeleteOrganizationsApimServiceExtensionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsApimServiceExtensionsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsApimServiceExtensionsRequest>;
 
 export type DeleteOrganizationsApimServiceExtensionsResponse =
   GoogleLongrunningOperation;
@@ -12767,7 +12783,7 @@ export const GetOrganizationsApimServiceExtensionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsApimServiceExtensionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsApimServiceExtensionsRequest>;
 
 export type GetOrganizationsApimServiceExtensionsResponse =
   GoogleCloudApigeeV1ApimServiceExtension;
@@ -12848,7 +12864,7 @@ export const GetOrganizationsHostStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsHostStatsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsHostStatsRequest>;
 
 export type GetOrganizationsHostStatsResponse = GoogleCloudApigeeV1Stats;
 export const GetOrganizationsHostStatsResponse =
@@ -12887,7 +12903,7 @@ export const BatchComputeOrganizationsSecurityAssessmentResultsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:batchCompute", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BatchComputeOrganizationsSecurityAssessmentResultsRequest>;
+  ) as unknown as Schema.Codec<BatchComputeOrganizationsSecurityAssessmentResultsRequest>;
 
 export type BatchComputeOrganizationsSecurityAssessmentResultsResponse =
   GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse;
@@ -12933,7 +12949,7 @@ export const DeleteOrganizationsSecurityProfilesV2Request =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSecurityProfilesV2Request>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSecurityProfilesV2Request>;
 
 export type DeleteOrganizationsSecurityProfilesV2Response = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityProfilesV2Response =
@@ -12978,7 +12994,7 @@ export const GetOrganizationsSecurityProfilesV2Request =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSecurityProfilesV2Request>;
+  ) as unknown as Schema.Codec<GetOrganizationsSecurityProfilesV2Request>;
 
 export type GetOrganizationsSecurityProfilesV2Response =
   GoogleCloudApigeeV1SecurityProfileV2;
@@ -13028,7 +13044,7 @@ export const ListOrganizationsSecurityProfilesV2Request =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/securityProfilesV2" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSecurityProfilesV2Request>;
+  ) as unknown as Schema.Codec<ListOrganizationsSecurityProfilesV2Request>;
 
 export type ListOrganizationsSecurityProfilesV2Response =
   GoogleCloudApigeeV1ListSecurityProfilesV2Response;
@@ -13081,7 +13097,7 @@ export const CreateOrganizationsSecurityProfilesV2Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSecurityProfilesV2Request>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSecurityProfilesV2Request>;
 
 export type CreateOrganizationsSecurityProfilesV2Response =
   GoogleCloudApigeeV1SecurityProfileV2;
@@ -13126,7 +13142,7 @@ export const PatchOrganizationsSecurityProfilesV2Request =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsSecurityProfilesV2Request>;
+  ) as unknown as Schema.Codec<PatchOrganizationsSecurityProfilesV2Request>;
 
 export type PatchOrganizationsSecurityProfilesV2Response =
   GoogleCloudApigeeV1SecurityProfileV2;
@@ -13168,7 +13184,7 @@ export const ListOrganizationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDeploymentsRequest>;
 
 export type ListOrganizationsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
@@ -13212,7 +13228,7 @@ export const ReportStatusOrganizationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportStatusOrganizationsInstancesRequest>;
+  ) as unknown as Schema.Codec<ReportStatusOrganizationsInstancesRequest>;
 
 export type ReportStatusOrganizationsInstancesResponse =
   GoogleCloudApigeeV1ReportInstanceStatusResponse;
@@ -13249,7 +13265,7 @@ export const GetOrganizationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsInstancesRequest>;
 
 export type GetOrganizationsInstancesResponse = GoogleCloudApigeeV1Instance;
 export const GetOrganizationsInstancesResponse =
@@ -13283,7 +13299,7 @@ export const DeleteOrganizationsInstancesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsInstancesRequest>;
 
 export type DeleteOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsInstancesResponse =
@@ -13325,7 +13341,7 @@ export const ListOrganizationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/instances" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsInstancesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsInstancesRequest>;
 
 export type ListOrganizationsInstancesResponse =
   GoogleCloudApigeeV1ListInstancesResponse;
@@ -13370,7 +13386,7 @@ export const PatchOrganizationsInstancesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsInstancesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsInstancesRequest>;
 
 export type PatchOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const PatchOrganizationsInstancesResponse =
@@ -13409,7 +13425,7 @@ export const CreateOrganizationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/instances", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsInstancesRequest>;
 
 export type CreateOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsInstancesResponse =
@@ -13454,7 +13470,7 @@ export const CreateOrganizationsInstancesCanaryevaluationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsInstancesCanaryevaluationsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsInstancesCanaryevaluationsRequest>;
 
 export type CreateOrganizationsInstancesCanaryevaluationsResponse =
   GoogleLongrunningOperation;
@@ -13491,7 +13507,7 @@ export const GetOrganizationsInstancesCanaryevaluationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsInstancesCanaryevaluationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsInstancesCanaryevaluationsRequest>;
 
 export type GetOrganizationsInstancesCanaryevaluationsResponse =
   GoogleCloudApigeeV1CanaryEvaluation;
@@ -13532,7 +13548,7 @@ export const ListOrganizationsInstancesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attachments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsInstancesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsInstancesAttachmentsRequest>;
 
 export type ListOrganizationsInstancesAttachmentsResponse =
   GoogleCloudApigeeV1ListInstanceAttachmentsResponse;
@@ -13576,7 +13592,7 @@ export const CreateOrganizationsInstancesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/attachments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsInstancesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsInstancesAttachmentsRequest>;
 
 export type CreateOrganizationsInstancesAttachmentsResponse =
   GoogleLongrunningOperation;
@@ -13613,7 +13629,7 @@ export const DeleteOrganizationsInstancesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsInstancesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsInstancesAttachmentsRequest>;
 
 export type DeleteOrganizationsInstancesAttachmentsResponse =
   GoogleLongrunningOperation;
@@ -13650,7 +13666,7 @@ export const GetOrganizationsInstancesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsInstancesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsInstancesAttachmentsRequest>;
 
 export type GetOrganizationsInstancesAttachmentsResponse =
   GoogleCloudApigeeV1InstanceAttachment;
@@ -13691,7 +13707,7 @@ export const ListOrganizationsInstancesNatAddressesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/natAddresses" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsInstancesNatAddressesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsInstancesNatAddressesRequest>;
 
 export type ListOrganizationsInstancesNatAddressesResponse =
   GoogleCloudApigeeV1ListNatAddressesResponse;
@@ -13737,7 +13753,7 @@ export const CreateOrganizationsInstancesNatAddressesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsInstancesNatAddressesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsInstancesNatAddressesRequest>;
 
 export type CreateOrganizationsInstancesNatAddressesResponse =
   GoogleLongrunningOperation;
@@ -13779,7 +13795,7 @@ export const ActivateOrganizationsInstancesNatAddressesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:activate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ActivateOrganizationsInstancesNatAddressesRequest>;
+  ) as unknown as Schema.Codec<ActivateOrganizationsInstancesNatAddressesRequest>;
 
 export type ActivateOrganizationsInstancesNatAddressesResponse =
   GoogleLongrunningOperation;
@@ -13816,7 +13832,7 @@ export const GetOrganizationsInstancesNatAddressesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsInstancesNatAddressesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsInstancesNatAddressesRequest>;
 
 export type GetOrganizationsInstancesNatAddressesResponse =
   GoogleCloudApigeeV1NatAddress;
@@ -13851,7 +13867,7 @@ export const DeleteOrganizationsInstancesNatAddressesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsInstancesNatAddressesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsInstancesNatAddressesRequest>;
 
 export type DeleteOrganizationsInstancesNatAddressesResponse =
   GoogleLongrunningOperation;
@@ -13888,7 +13904,7 @@ export const GetOrganizationsEndpointAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEndpointAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEndpointAttachmentsRequest>;
 
 export type GetOrganizationsEndpointAttachmentsResponse =
   GoogleCloudApigeeV1EndpointAttachment;
@@ -13937,7 +13953,7 @@ export const CreateOrganizationsEndpointAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEndpointAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEndpointAttachmentsRequest>;
 
 export type CreateOrganizationsEndpointAttachmentsResponse =
   GoogleLongrunningOperation;
@@ -13974,7 +13990,7 @@ export const DeleteOrganizationsEndpointAttachmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEndpointAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEndpointAttachmentsRequest>;
 
 export type DeleteOrganizationsEndpointAttachmentsResponse =
   GoogleLongrunningOperation;
@@ -14017,7 +14033,7 @@ export const ListOrganizationsEndpointAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/endpointAttachments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEndpointAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEndpointAttachmentsRequest>;
 
 export type ListOrganizationsEndpointAttachmentsResponse =
   GoogleCloudApigeeV1ListEndpointAttachmentsResponse;
@@ -14102,7 +14118,7 @@ export const GetOrganizationsOptimizedHostStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsOptimizedHostStatsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsOptimizedHostStatsRequest>;
 
 export type GetOrganizationsOptimizedHostStatsResponse =
   GoogleCloudApigeeV1OptimizedStats;
@@ -14137,7 +14153,7 @@ export const DeleteOrganizationsSecurityFeedbackRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSecurityFeedbackRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSecurityFeedbackRequest>;
 
 export type DeleteOrganizationsSecurityFeedbackResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityFeedbackResponse =
@@ -14173,7 +14189,7 @@ export const GetOrganizationsSecurityFeedbackRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSecurityFeedbackRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSecurityFeedbackRequest>;
 
 export type GetOrganizationsSecurityFeedbackResponse =
   GoogleCloudApigeeV1SecurityFeedback;
@@ -14214,7 +14230,7 @@ export const ListOrganizationsSecurityFeedbackRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/securityFeedback" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSecurityFeedbackRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSecurityFeedbackRequest>;
 
 export type ListOrganizationsSecurityFeedbackResponse =
   GoogleCloudApigeeV1ListSecurityFeedbackResponse;
@@ -14267,7 +14283,7 @@ export const CreateOrganizationsSecurityFeedbackRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSecurityFeedbackRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSecurityFeedbackRequest>;
 
 export type CreateOrganizationsSecurityFeedbackResponse =
   GoogleCloudApigeeV1SecurityFeedback;
@@ -14312,7 +14328,7 @@ export const PatchOrganizationsSecurityFeedbackRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsSecurityFeedbackRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsSecurityFeedbackRequest>;
 
 export type PatchOrganizationsSecurityFeedbackResponse =
   GoogleCloudApigeeV1SecurityFeedback;
@@ -14355,7 +14371,7 @@ export const ListOrganizationsSpacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/spaces" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSpacesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSpacesRequest>;
 
 export type ListOrganizationsSpacesResponse =
   GoogleCloudApigeeV1ListSpacesResponse;
@@ -14400,7 +14416,7 @@ export const TestIamPermissionsOrganizationsSpacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsOrganizationsSpacesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsOrganizationsSpacesRequest>;
 
 export type TestIamPermissionsOrganizationsSpacesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -14443,7 +14459,7 @@ export const PatchOrganizationsSpacesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsSpacesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsSpacesRequest>;
 
 export type PatchOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const PatchOrganizationsSpacesResponse =
@@ -14486,7 +14502,7 @@ export const SetIamPolicyOrganizationsSpacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsSpacesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyOrganizationsSpacesRequest>;
 
 export type SetIamPolicyOrganizationsSpacesResponse = GoogleIamV1Policy;
 export const SetIamPolicyOrganizationsSpacesResponse =
@@ -14528,7 +14544,7 @@ export const CreateOrganizationsSpacesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/spaces", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSpacesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSpacesRequest>;
 
 export type CreateOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const CreateOrganizationsSpacesResponse =
@@ -14569,7 +14585,7 @@ export const GetIamPolicyOrganizationsSpacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsSpacesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyOrganizationsSpacesRequest>;
 
 export type GetIamPolicyOrganizationsSpacesResponse = GoogleIamV1Policy;
 export const GetIamPolicyOrganizationsSpacesResponse =
@@ -14603,7 +14619,7 @@ export const GetOrganizationsSpacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSpacesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSpacesRequest>;
 
 export type GetOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const GetOrganizationsSpacesResponse =
@@ -14634,7 +14650,7 @@ export const DeleteOrganizationsSpacesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSpacesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSpacesRequest>;
 
 export type DeleteOrganizationsSpacesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSpacesResponse =
@@ -14681,7 +14697,7 @@ export const UpdateDebugmaskOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDebugmaskOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateDebugmaskOrganizationsEnvironmentsRequest>;
 
 export type UpdateDebugmaskOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1DebugMask;
@@ -14718,7 +14734,7 @@ export const SubscribeOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}:subscribe", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SubscribeOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<SubscribeOrganizationsEnvironmentsRequest>;
 
 export type SubscribeOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1Subscription;
@@ -14755,7 +14771,7 @@ export const GetDeployedConfigOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDeployedConfigOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetDeployedConfigOrganizationsEnvironmentsRequest>;
 
 export type GetDeployedConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1EnvironmentConfig;
@@ -14797,7 +14813,7 @@ export const SetIamPolicyOrganizationsEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyOrganizationsEnvironmentsRequest>;
 
 export type SetIamPolicyOrganizationsEnvironmentsResponse = GoogleIamV1Policy;
 export const SetIamPolicyOrganizationsEnvironmentsResponse =
@@ -14839,7 +14855,7 @@ export const ModifyEnvironmentOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ModifyEnvironmentOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ModifyEnvironmentOrganizationsEnvironmentsRequest>;
 
 export type ModifyEnvironmentOrganizationsEnvironmentsResponse =
   GoogleLongrunningOperation;
@@ -14882,7 +14898,7 @@ export const UpdateTraceConfigOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateTraceConfigOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateTraceConfigOrganizationsEnvironmentsRequest>;
 
 export type UpdateTraceConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1TraceConfig;
@@ -14929,7 +14945,7 @@ export const CreateOrganizationsEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsRequest>;
 
 export type CreateOrganizationsEnvironmentsResponse =
   GoogleLongrunningOperation;
@@ -14969,7 +14985,7 @@ export const UpdateOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsEnvironmentsRequest>;
 
 export type UpdateOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1Environment;
@@ -15011,7 +15027,7 @@ export const GetIamPolicyOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyOrganizationsEnvironmentsRequest>;
 
 export type GetIamPolicyOrganizationsEnvironmentsResponse = GoogleIamV1Policy;
 export const GetIamPolicyOrganizationsEnvironmentsResponse =
@@ -15054,7 +15070,7 @@ export const TestIamPermissionsOrganizationsEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsOrganizationsEnvironmentsRequest>;
 
 export type TestIamPermissionsOrganizationsEnvironmentsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -15091,7 +15107,7 @@ export const GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest>;
 
 export type GetApiSecurityRuntimeConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1ApiSecurityRuntimeConfig;
@@ -15134,7 +15150,7 @@ export const UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest>;
 
 export type UpdateSecurityActionsConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1SecurityActionsConfig;
@@ -15171,7 +15187,7 @@ export const GetTraceConfigOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetTraceConfigOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetTraceConfigOrganizationsEnvironmentsRequest>;
 
 export type GetTraceConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1TraceConfig;
@@ -15206,7 +15222,7 @@ export const GetOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsRequest>;
 
 export type GetOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1Environment;
@@ -15241,7 +15257,7 @@ export const DeleteOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsRequest>;
 
 export type DeleteOrganizationsEnvironmentsResponse =
   GoogleLongrunningOperation;
@@ -15278,7 +15294,7 @@ export const GetDebugmaskOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDebugmaskOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetDebugmaskOrganizationsEnvironmentsRequest>;
 
 export type GetDebugmaskOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1DebugMask;
@@ -15316,7 +15332,7 @@ export const UpdateEnvironmentOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEnvironmentOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateEnvironmentOrganizationsEnvironmentsRequest>;
 
 export type UpdateEnvironmentOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1Environment;
@@ -15353,7 +15369,7 @@ export const GetSecurityActionsConfigOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSecurityActionsConfigOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetSecurityActionsConfigOrganizationsEnvironmentsRequest>;
 
 export type GetSecurityActionsConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1SecurityActionsConfig;
@@ -15391,7 +15407,7 @@ export const UnsubscribeOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}:unsubscribe", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UnsubscribeOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<UnsubscribeOrganizationsEnvironmentsRequest>;
 
 export type UnsubscribeOrganizationsEnvironmentsResponse = GoogleProtobufEmpty;
 export const UnsubscribeOrganizationsEnvironmentsResponse =
@@ -15427,7 +15443,7 @@ export const GetAddonsConfigOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAddonsConfigOrganizationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetAddonsConfigOrganizationsEnvironmentsRequest>;
 
 export type GetAddonsConfigOrganizationsEnvironmentsResponse =
   GoogleCloudApigeeV1AddonsConfig;
@@ -15468,7 +15484,7 @@ export const GetOrganizationsEnvironmentsResourcefilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/resourcefiles/{type}/{name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsResourcefilesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsResourcefilesRequest>;
 
 export type GetOrganizationsEnvironmentsResourcefilesResponse =
   GoogleApiHttpBody;
@@ -15512,7 +15528,7 @@ export const DeleteOrganizationsEnvironmentsResourcefilesRequest =
       path: "v1/{+parent}/resourcefiles/{type}/{name}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsResourcefilesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsResourcefilesRequest>;
 
 export type DeleteOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ResourceFile;
@@ -15552,7 +15568,7 @@ export const ListOrganizationsEnvironmentsResourcefilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/resourcefiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsResourcefilesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsResourcefilesRequest>;
 
 export type ListOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
@@ -15590,7 +15606,7 @@ export const ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesReque
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/resourcefiles/{type}" }),
     svc,
-  ) as unknown as Schema.Schema<ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest>;
+  ) as unknown as Schema.Codec<ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest>;
 
 export type ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
@@ -15598,7 +15614,9 @@ export const ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
 
 export type ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files). */
 export const listEnvironmentResourcesOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
@@ -15637,7 +15655,7 @@ export const CreateOrganizationsEnvironmentsResourcefilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsResourcefilesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsResourcefilesRequest>;
 
 export type CreateOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ResourceFile;
@@ -15687,7 +15705,7 @@ export const UpdateOrganizationsEnvironmentsResourcefilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsResourcefilesRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsEnvironmentsResourcefilesRequest>;
 
 export type UpdateOrganizationsEnvironmentsResourcefilesResponse =
   GoogleCloudApigeeV1ResourceFile;
@@ -15734,7 +15752,7 @@ export const CreateOrganizationsEnvironmentsTargetserversRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsTargetserversRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsTargetserversRequest>;
 
 export type CreateOrganizationsEnvironmentsTargetserversResponse =
   GoogleCloudApigeeV1TargetServer;
@@ -15771,7 +15789,7 @@ export const DeleteOrganizationsEnvironmentsTargetserversRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsTargetserversRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsTargetserversRequest>;
 
 export type DeleteOrganizationsEnvironmentsTargetserversResponse =
   GoogleCloudApigeeV1TargetServer;
@@ -15811,7 +15829,7 @@ export const UpdateOrganizationsEnvironmentsTargetserversRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsTargetserversRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsEnvironmentsTargetserversRequest>;
 
 export type UpdateOrganizationsEnvironmentsTargetserversResponse =
   GoogleCloudApigeeV1TargetServer;
@@ -15848,7 +15866,7 @@ export const GetOrganizationsEnvironmentsTargetserversRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsTargetserversRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsTargetserversRequest>;
 
 export type GetOrganizationsEnvironmentsTargetserversResponse =
   GoogleCloudApigeeV1TargetServer;
@@ -15883,7 +15901,7 @@ export const GetOrganizationsEnvironmentsTraceConfigOverridesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsTraceConfigOverridesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
 export type GetOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleCloudApigeeV1TraceConfigOverride;
@@ -15918,7 +15936,7 @@ export const DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
 export type DeleteOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleProtobufEmpty;
@@ -15963,7 +15981,7 @@ export const PatchOrganizationsEnvironmentsTraceConfigOverridesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsEnvironmentsTraceConfigOverridesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
 export type PatchOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleCloudApigeeV1TraceConfigOverride;
@@ -16005,7 +16023,7 @@ export const CreateOrganizationsEnvironmentsTraceConfigOverridesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/overrides", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsTraceConfigOverridesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
 export type CreateOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleCloudApigeeV1TraceConfigOverride;
@@ -16048,7 +16066,7 @@ export const ListOrganizationsEnvironmentsTraceConfigOverridesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/overrides" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsTraceConfigOverridesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
 export type ListOrganizationsEnvironmentsTraceConfigOverridesResponse =
   GoogleCloudApigeeV1ListTraceConfigOverridesResponse;
@@ -16096,7 +16114,7 @@ export const CreateOrganizationsEnvironmentsSecurityReportsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsSecurityReportsRequest>;
 
 export type CreateOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReport;
@@ -16156,7 +16174,7 @@ export const ListOrganizationsEnvironmentsSecurityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/securityReports" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsSecurityReportsRequest>;
 
 export type ListOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleCloudApigeeV1ListSecurityReportsResponse;
@@ -16195,7 +16213,7 @@ export const GetResultViewOrganizationsEnvironmentsSecurityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetResultViewOrganizationsEnvironmentsSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<GetResultViewOrganizationsEnvironmentsSecurityReportsRequest>;
 
 export type GetResultViewOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReportResultView;
@@ -16230,7 +16248,7 @@ export const GetOrganizationsEnvironmentsSecurityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsSecurityReportsRequest>;
 
 export type GetOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReport;
@@ -16265,7 +16283,7 @@ export const GetResultOrganizationsEnvironmentsSecurityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetResultOrganizationsEnvironmentsSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<GetResultOrganizationsEnvironmentsSecurityReportsRequest>;
 
 export type GetResultOrganizationsEnvironmentsSecurityReportsResponse =
   GoogleApiHttpBody;
@@ -16306,7 +16324,7 @@ export const PatchOrganizationsEnvironmentsSecurityActionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsEnvironmentsSecurityActionsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsEnvironmentsSecurityActionsRequest>;
 
 export type PatchOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
@@ -16348,7 +16366,7 @@ export const EnableOrganizationsEnvironmentsSecurityActionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:enable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EnableOrganizationsEnvironmentsSecurityActionsRequest>;
+  ) as unknown as Schema.Codec<EnableOrganizationsEnvironmentsSecurityActionsRequest>;
 
 export type EnableOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
@@ -16397,7 +16415,7 @@ export const CreateOrganizationsEnvironmentsSecurityActionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsSecurityActionsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsSecurityActionsRequest>;
 
 export type CreateOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
@@ -16443,7 +16461,7 @@ export const ListOrganizationsEnvironmentsSecurityActionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/securityActions" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsSecurityActionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsSecurityActionsRequest>;
 
 export type ListOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1ListSecurityActionsResponse;
@@ -16482,7 +16500,7 @@ export const GetOrganizationsEnvironmentsSecurityActionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsSecurityActionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsSecurityActionsRequest>;
 
 export type GetOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
@@ -16517,7 +16535,7 @@ export const DeleteOrganizationsEnvironmentsSecurityActionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsSecurityActionsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsSecurityActionsRequest>;
 
 export type DeleteOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleProtobufEmpty;
@@ -16559,7 +16577,7 @@ export const DisableOrganizationsEnvironmentsSecurityActionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:disable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DisableOrganizationsEnvironmentsSecurityActionsRequest>;
+  ) as unknown as Schema.Codec<DisableOrganizationsEnvironmentsSecurityActionsRequest>;
 
 export type DisableOrganizationsEnvironmentsSecurityActionsResponse =
   GoogleCloudApigeeV1SecurityAction;
@@ -16609,7 +16627,7 @@ export const DeployOrganizationsEnvironmentsApisRevisionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}/deployments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeployOrganizationsEnvironmentsApisRevisionsRequest>;
+  ) as unknown as Schema.Codec<DeployOrganizationsEnvironmentsApisRevisionsRequest>;
 
 export type DeployOrganizationsEnvironmentsApisRevisionsResponse =
   GoogleCloudApigeeV1Deployment;
@@ -16651,7 +16669,7 @@ export const UndeployOrganizationsEnvironmentsApisRevisionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<UndeployOrganizationsEnvironmentsApisRevisionsRequest>;
+  ) as unknown as Schema.Codec<UndeployOrganizationsEnvironmentsApisRevisionsRequest>;
 
 export type UndeployOrganizationsEnvironmentsApisRevisionsResponse =
   GoogleProtobufEmpty;
@@ -16688,7 +16706,7 @@ export const GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest>;
+  ) as unknown as Schema.Codec<GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest>;
 
 export type GetDeploymentsOrganizationsEnvironmentsApisRevisionsResponse =
   GoogleCloudApigeeV1Deployment;
@@ -16730,7 +16748,7 @@ export const GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest>;
 
 export type GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse =
   GoogleCloudApigeeV1DeploymentChangeReport;
@@ -16738,7 +16756,11 @@ export const GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
 
 export type GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a report for a dry run analysis of a DeployApiProxy request without committing the deployment. In addition to the standard validations performed when adding deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being created. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run DeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateDeployChangeReport`, two permissions are required: * `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` */
 export const generateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeployments: API.OperationMethod<
@@ -16769,7 +16791,7 @@ export const GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest>;
 
 export type GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse =
   GoogleCloudApigeeV1DeploymentChangeReport;
@@ -16777,7 +16799,11 @@ export const GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
 
 export type GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a report for a dry run analysis of an UndeployApiProxy request without committing the undeploy. In addition to the standard validations performed when removing deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being removed. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run UndeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateUndeployChangeReport`, two permissions are required: * `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` */
 export const generateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeployments: API.OperationMethod<
@@ -16814,7 +16840,7 @@ export const CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
 
 export type CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   GoogleCloudApigeeV1DebugSession;
@@ -16851,7 +16877,7 @@ export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
 
 export type GetOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   GoogleCloudApigeeV1DebugSession;
@@ -16892,7 +16918,7 @@ export const ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/debugsessions" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
 
 export type ListOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   GoogleCloudApigeeV1ListDebugSessionsResponse;
@@ -16931,7 +16957,7 @@ export const DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsReques
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/data" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
+  ) as unknown as Schema.Codec<DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
 
 export type DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   GoogleProtobufEmpty;
@@ -16939,7 +16965,11 @@ export const DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the data from a debug session. This does not cancel the debug session or prevent further data from being collected if the session is still active in runtime pods. */
 export const deleteDataOrganizationsEnvironmentsApisRevisionsDebugsessions: API.OperationMethod<
@@ -16964,7 +16994,7 @@ export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest>;
 
 export type GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataResponse =
   GoogleCloudApigeeV1DebugSessionTransaction;
@@ -16999,7 +17029,7 @@ export const ListOrganizationsEnvironmentsApisDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsApisDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsApisDeploymentsRequest>;
 
 export type ListOrganizationsEnvironmentsApisDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
@@ -17034,7 +17064,7 @@ export const GetOrganizationsEnvironmentsQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsQueriesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsQueriesRequest>;
 
 export type GetOrganizationsEnvironmentsQueriesResponse =
   GoogleCloudApigeeV1AsyncQuery;
@@ -17069,7 +17099,7 @@ export const GetResultOrganizationsEnvironmentsQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetResultOrganizationsEnvironmentsQueriesRequest>;
+  ) as unknown as Schema.Codec<GetResultOrganizationsEnvironmentsQueriesRequest>;
 
 export type GetResultOrganizationsEnvironmentsQueriesResponse =
   GoogleApiHttpBody;
@@ -17107,7 +17137,7 @@ export const CreateOrganizationsEnvironmentsQueriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/queries", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsQueriesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsQueriesRequest>;
 
 export type CreateOrganizationsEnvironmentsQueriesResponse =
   GoogleCloudApigeeV1AsyncQuery;
@@ -17144,7 +17174,7 @@ export const GetResulturlOrganizationsEnvironmentsQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetResulturlOrganizationsEnvironmentsQueriesRequest>;
+  ) as unknown as Schema.Codec<GetResulturlOrganizationsEnvironmentsQueriesRequest>;
 
 export type GetResulturlOrganizationsEnvironmentsQueriesResponse =
   GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse;
@@ -17201,7 +17231,7 @@ export const ListOrganizationsEnvironmentsQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/queries" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsQueriesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsQueriesRequest>;
 
 export type ListOrganizationsEnvironmentsQueriesResponse =
   GoogleCloudApigeeV1ListAsyncQueriesResponse;
@@ -17245,7 +17275,7 @@ export const QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest>;
+  ) as unknown as Schema.Codec<QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest>;
 
 export type QueryTabularStatsOrganizationsEnvironmentsSecurityStatsResponse =
   GoogleCloudApigeeV1QueryTabularStatsResponse;
@@ -17291,7 +17321,7 @@ export const QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest>;
+  ) as unknown as Schema.Codec<QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest>;
 
 export type QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsResponse =
   GoogleCloudApigeeV1QueryTimeSeriesStatsResponse;
@@ -17331,7 +17361,7 @@ export const AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest>;
+  ) as unknown as Schema.Codec<AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest>;
 
 export type AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksResponse =
   GoogleCloudApigeeV1FlowHook;
@@ -17368,7 +17398,7 @@ export const GetOrganizationsEnvironmentsFlowhooksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsFlowhooksRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsFlowhooksRequest>;
 
 export type GetOrganizationsEnvironmentsFlowhooksResponse =
   GoogleCloudApigeeV1FlowHook;
@@ -17403,7 +17433,7 @@ export const DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksReque
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest>;
+  ) as unknown as Schema.Codec<DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest>;
 
 export type DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksResponse =
   GoogleCloudApigeeV1FlowHook;
@@ -17411,7 +17441,11 @@ export const DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1FlowHook;
 
 export type DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detaches a shared flow from a flow hook. */
 export const detachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooks: API.OperationMethod<
@@ -17440,7 +17474,7 @@ export const CreateOrganizationsEnvironmentsReferencesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/references", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsReferencesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsReferencesRequest>;
 
 export type CreateOrganizationsEnvironmentsReferencesResponse =
   GoogleCloudApigeeV1Reference;
@@ -17477,7 +17511,7 @@ export const DeleteOrganizationsEnvironmentsReferencesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsReferencesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsReferencesRequest>;
 
 export type DeleteOrganizationsEnvironmentsReferencesResponse =
   GoogleCloudApigeeV1Reference;
@@ -17517,7 +17551,7 @@ export const UpdateOrganizationsEnvironmentsReferencesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsReferencesRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsEnvironmentsReferencesRequest>;
 
 export type UpdateOrganizationsEnvironmentsReferencesResponse =
   GoogleCloudApigeeV1Reference;
@@ -17554,7 +17588,7 @@ export const GetOrganizationsEnvironmentsReferencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsReferencesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsReferencesRequest>;
 
 export type GetOrganizationsEnvironmentsReferencesResponse =
   GoogleCloudApigeeV1Reference;
@@ -17596,7 +17630,7 @@ export const CreateOrganizationsEnvironmentsKeyvaluemapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsKeyvaluemapsRequest>;
 
 export type CreateOrganizationsEnvironmentsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -17636,7 +17670,7 @@ export const UpdateOrganizationsEnvironmentsKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsEnvironmentsKeyvaluemapsRequest>;
 
 export type UpdateOrganizationsEnvironmentsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -17673,7 +17707,7 @@ export const DeleteOrganizationsEnvironmentsKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsKeyvaluemapsRequest>;
 
 export type DeleteOrganizationsEnvironmentsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -17710,7 +17744,7 @@ export const GetOrganizationsEnvironmentsKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsKeyvaluemapsRequest>;
 
 export type GetOrganizationsEnvironmentsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -17748,7 +17782,7 @@ export const CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/entries", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
 export type CreateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -17788,7 +17822,7 @@ export const UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
 export type UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -17831,7 +17865,7 @@ export const ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entries" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
 export type ListOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1ListKeyValueEntriesResponse;
@@ -17870,7 +17904,7 @@ export const DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
 export type DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -17907,7 +17941,7 @@ export const GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
 export type GetOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -17942,7 +17976,7 @@ export const ListOrganizationsEnvironmentsAnalyticsExportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/analytics/exports" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsAnalyticsExportsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsAnalyticsExportsRequest>;
 
 export type ListOrganizationsEnvironmentsAnalyticsExportsResponse =
   GoogleCloudApigeeV1ListExportsResponse;
@@ -17984,7 +18018,7 @@ export const CreateOrganizationsEnvironmentsAnalyticsExportsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsAnalyticsExportsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsAnalyticsExportsRequest>;
 
 export type CreateOrganizationsEnvironmentsAnalyticsExportsResponse =
   GoogleCloudApigeeV1Export;
@@ -18021,7 +18055,7 @@ export const GetOrganizationsEnvironmentsAnalyticsExportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsAnalyticsExportsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsAnalyticsExportsRequest>;
 
 export type GetOrganizationsEnvironmentsAnalyticsExportsResponse =
   GoogleCloudApigeeV1Export;
@@ -18064,7 +18098,7 @@ export const GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest>;
+  ) as unknown as Schema.Codec<GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest>;
 
 export type GetSchemav2OrganizationsEnvironmentsAnalyticsAdminResponse =
   GoogleCloudApigeeV1Schema;
@@ -18146,7 +18180,7 @@ export const GetOrganizationsEnvironmentsStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsStatsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsStatsRequest>;
 
 export type GetOrganizationsEnvironmentsStatsResponse =
   GoogleCloudApigeeV1Stats;
@@ -18190,7 +18224,7 @@ export const ListOrganizationsEnvironmentsSecurityIncidentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/securityIncidents" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsSecurityIncidentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
 export type ListOrganizationsEnvironmentsSecurityIncidentsResponse =
   GoogleCloudApigeeV1ListSecurityIncidentsResponse;
@@ -18229,7 +18263,7 @@ export const GetOrganizationsEnvironmentsSecurityIncidentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsSecurityIncidentsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
 export type GetOrganizationsEnvironmentsSecurityIncidentsResponse =
   GoogleCloudApigeeV1SecurityIncident;
@@ -18272,7 +18306,7 @@ export const PatchOrganizationsEnvironmentsSecurityIncidentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsEnvironmentsSecurityIncidentsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
 export type PatchOrganizationsEnvironmentsSecurityIncidentsResponse =
   GoogleCloudApigeeV1SecurityIncident;
@@ -18318,7 +18352,7 @@ export const BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
 export type BatchUpdateOrganizationsEnvironmentsSecurityIncidentsResponse =
   GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse;
@@ -18360,7 +18394,7 @@ export const GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest>;
 
 export type GetIamPolicyOrganizationsEnvironmentsDeploymentsResponse =
   GoogleIamV1Policy;
@@ -18395,7 +18429,7 @@ export const GetOrganizationsEnvironmentsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsDeploymentsRequest>;
 
 export type GetOrganizationsEnvironmentsDeploymentsResponse =
   GoogleCloudApigeeV1Deployment;
@@ -18435,7 +18469,7 @@ export const ListOrganizationsEnvironmentsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsDeploymentsRequest>;
 
 export type ListOrganizationsEnvironmentsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
@@ -18479,7 +18513,7 @@ export const TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest>;
 
 export type TestIamPermissionsOrganizationsEnvironmentsDeploymentsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -18523,7 +18557,7 @@ export const SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest>;
 
 export type SetIamPolicyOrganizationsEnvironmentsDeploymentsResponse =
   GoogleIamV1Policy;
@@ -18560,7 +18594,7 @@ export const DeleteOrganizationsEnvironmentsCachesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsCachesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsCachesRequest>;
 
 export type DeleteOrganizationsEnvironmentsCachesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsEnvironmentsCachesResponse =
@@ -18605,7 +18639,7 @@ export const SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest>;
+  ) as unknown as Schema.Codec<SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest>;
 
 export type SetAddonEnablementOrganizationsEnvironmentsAddonsConfigResponse =
   GoogleLongrunningOperation;
@@ -18650,7 +18684,7 @@ export const DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}/deployments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
+  ) as unknown as Schema.Codec<DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
 
 export type DeployOrganizationsEnvironmentsSharedflowsRevisionsResponse =
   GoogleCloudApigeeV1Deployment;
@@ -18687,7 +18721,7 @@ export const UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
+  ) as unknown as Schema.Codec<UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
 
 export type UndeployOrganizationsEnvironmentsSharedflowsRevisionsResponse =
   GoogleProtobufEmpty;
@@ -18724,7 +18758,7 @@ export const GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest 
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
+  ) as unknown as Schema.Codec<GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
 
 export type GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsResponse =
   GoogleCloudApigeeV1Deployment;
@@ -18759,7 +18793,7 @@ export const ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest>;
 
 export type ListOrganizationsEnvironmentsSharedflowsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
@@ -18841,7 +18875,7 @@ export const GetOrganizationsEnvironmentsOptimizedStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsOptimizedStatsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsOptimizedStatsRequest>;
 
 export type GetOrganizationsEnvironmentsOptimizedStatsResponse =
   GoogleCloudApigeeV1OptimizedStats;
@@ -18885,7 +18919,7 @@ export const GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
 export type GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1GenerateDownloadUrlResponse;
@@ -18893,7 +18927,11 @@ export const GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1GenerateDownloadUrlResponse;
 
 export type GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a signed URL for downloading the original zip file used to create an Archive Deployment. The URL is only valid for a limited period and should be used within minutes after generation. Each call returns a new upload URL. */
 export const generateDownloadUrlOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod<
@@ -18919,7 +18957,7 @@ export const GetOrganizationsEnvironmentsArchiveDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsArchiveDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
 export type GetOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1ArchiveDeployment;
@@ -18954,7 +18992,7 @@ export const DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
 export type DeleteOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleProtobufEmpty;
@@ -19000,7 +19038,7 @@ export const ListOrganizationsEnvironmentsArchiveDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/archiveDeployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsArchiveDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
 export type ListOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1ListArchiveDeploymentsResponse;
@@ -19048,7 +19086,7 @@ export const GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
 export type GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1GenerateUploadUrlResponse;
@@ -19093,7 +19131,7 @@ export const PatchOrganizationsEnvironmentsArchiveDeploymentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsEnvironmentsArchiveDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
 export type PatchOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleCloudApigeeV1ArchiveDeployment;
@@ -19139,7 +19177,7 @@ export const CreateOrganizationsEnvironmentsArchiveDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsArchiveDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
 export type CreateOrganizationsEnvironmentsArchiveDeploymentsResponse =
   GoogleLongrunningOperation;
@@ -19182,7 +19220,7 @@ export const CreateOrganizationsEnvironmentsKeystoresRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/keystores", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsKeystoresRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsKeystoresRequest>;
 
 export type CreateOrganizationsEnvironmentsKeystoresResponse =
   GoogleCloudApigeeV1Keystore;
@@ -19219,7 +19257,7 @@ export const DeleteOrganizationsEnvironmentsKeystoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsKeystoresRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsKeystoresRequest>;
 
 export type DeleteOrganizationsEnvironmentsKeystoresResponse =
   GoogleCloudApigeeV1Keystore;
@@ -19256,7 +19294,7 @@ export const GetOrganizationsEnvironmentsKeystoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsKeystoresRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsKeystoresRequest>;
 
 export type GetOrganizationsEnvironmentsKeystoresResponse =
   GoogleCloudApigeeV1Keystore;
@@ -19291,7 +19329,7 @@ export const GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/certificate" }),
     svc,
-  ) as unknown as Schema.Schema<GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest>;
+  ) as unknown as Schema.Codec<GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
 export type GetCertificateOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleApiHttpBody;
@@ -19326,7 +19364,7 @@ export const DeleteOrganizationsEnvironmentsKeystoresAliasesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsKeystoresAliasesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
 export type DeleteOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleCloudApigeeV1Alias;
@@ -19363,7 +19401,7 @@ export const GetOrganizationsEnvironmentsKeystoresAliasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsKeystoresAliasesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
 export type GetOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleCloudApigeeV1Alias;
@@ -19398,7 +19436,7 @@ export const CsrOrganizationsEnvironmentsKeystoresAliasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/csr" }),
     svc,
-  ) as unknown as Schema.Schema<CsrOrganizationsEnvironmentsKeystoresAliasesRequest>;
+  ) as unknown as Schema.Codec<CsrOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
 export type CsrOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleApiHttpBody;
@@ -19455,7 +19493,7 @@ export const CreateOrganizationsEnvironmentsKeystoresAliasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/aliases", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsKeystoresAliasesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
 export type CreateOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleCloudApigeeV1Alias;
@@ -19505,7 +19543,7 @@ export const UpdateOrganizationsEnvironmentsKeystoresAliasesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsKeystoresAliasesRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
 export type UpdateOrganizationsEnvironmentsKeystoresAliasesResponse =
   GoogleCloudApigeeV1Alias;
@@ -19545,7 +19583,7 @@ export const CreateOrganizationsAppgroupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/appgroups", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsAppgroupsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsAppgroupsRequest>;
 
 export type CreateOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const CreateOrganizationsAppgroupsResponse =
@@ -19587,7 +19625,7 @@ export const UpdateOrganizationsAppgroupsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsAppgroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsAppgroupsRequest>;
 
 export type UpdateOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const UpdateOrganizationsAppgroupsResponse =
@@ -19623,7 +19661,7 @@ export const GetBalanceOrganizationsAppgroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBalanceOrganizationsAppgroupsRequest>;
+  ) as unknown as Schema.Codec<GetBalanceOrganizationsAppgroupsRequest>;
 
 export type GetBalanceOrganizationsAppgroupsResponse =
   GoogleCloudApigeeV1AppGroupBalance;
@@ -19667,7 +19705,7 @@ export const ListOrganizationsAppgroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/appgroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsAppgroupsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsAppgroupsRequest>;
 
 export type ListOrganizationsAppgroupsResponse =
   GoogleCloudApigeeV1ListAppGroupsResponse;
@@ -19706,7 +19744,7 @@ export const DeleteOrganizationsAppgroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsAppgroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsAppgroupsRequest>;
 
 export type DeleteOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const DeleteOrganizationsAppgroupsResponse =
@@ -19742,7 +19780,7 @@ export const GetOrganizationsAppgroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsAppgroupsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsAppgroupsRequest>;
 
 export type GetOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const GetOrganizationsAppgroupsResponse =
@@ -19776,7 +19814,7 @@ export const GetMonetizationConfigOrganizationsAppgroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetMonetizationConfigOrganizationsAppgroupsRequest>;
+  ) as unknown as Schema.Codec<GetMonetizationConfigOrganizationsAppgroupsRequest>;
 
 export type GetMonetizationConfigOrganizationsAppgroupsResponse =
   GoogleCloudApigeeV1AppGroupMonetizationConfig;
@@ -19816,7 +19854,7 @@ export const UpdateMonetizationConfigOrganizationsAppgroupsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateMonetizationConfigOrganizationsAppgroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateMonetizationConfigOrganizationsAppgroupsRequest>;
 
 export type UpdateMonetizationConfigOrganizationsAppgroupsResponse =
   GoogleCloudApigeeV1AppGroupMonetizationConfig;
@@ -19858,7 +19896,7 @@ export const CreditOrganizationsAppgroupsBalanceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:credit", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreditOrganizationsAppgroupsBalanceRequest>;
+  ) as unknown as Schema.Codec<CreditOrganizationsAppgroupsBalanceRequest>;
 
 export type CreditOrganizationsAppgroupsBalanceResponse =
   GoogleCloudApigeeV1AppGroupBalance;
@@ -19900,7 +19938,7 @@ export const AdjustOrganizationsAppgroupsBalanceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:adjust", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AdjustOrganizationsAppgroupsBalanceRequest>;
+  ) as unknown as Schema.Codec<AdjustOrganizationsAppgroupsBalanceRequest>;
 
 export type AdjustOrganizationsAppgroupsBalanceResponse =
   GoogleCloudApigeeV1AppGroupBalance;
@@ -19937,7 +19975,7 @@ export const GetOrganizationsAppgroupsAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsAppgroupsAppsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsAppgroupsAppsRequest>;
 
 export type GetOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1AppGroupApp;
@@ -19972,7 +20010,7 @@ export const DeleteOrganizationsAppgroupsAppsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsAppgroupsAppsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsAppgroupsAppsRequest>;
 
 export type DeleteOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1AppGroupApp;
@@ -20015,7 +20053,7 @@ export const ListOrganizationsAppgroupsAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apps" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsAppgroupsAppsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsAppgroupsAppsRequest>;
 
 export type ListOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1ListAppGroupAppsResponse;
@@ -20057,7 +20095,7 @@ export const CreateOrganizationsAppgroupsAppsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/apps", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsAppgroupsAppsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsAppgroupsAppsRequest>;
 
 export type CreateOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1AppGroupApp;
@@ -20100,7 +20138,7 @@ export const UpdateOrganizationsAppgroupsAppsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsAppgroupsAppsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsAppgroupsAppsRequest>;
 
 export type UpdateOrganizationsAppgroupsAppsResponse =
   GoogleCloudApigeeV1AppGroupApp;
@@ -20140,7 +20178,7 @@ export const CreateOrganizationsAppgroupsAppsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/keys", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsAppgroupsAppsKeysRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsAppgroupsAppsKeysRequest>;
 
 export type CreateOrganizationsAppgroupsAppsKeysResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
@@ -20177,7 +20215,7 @@ export const DeleteOrganizationsAppgroupsAppsKeysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsAppgroupsAppsKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsAppgroupsAppsKeysRequest>;
 
 export type DeleteOrganizationsAppgroupsAppsKeysResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
@@ -20219,7 +20257,7 @@ export const UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest>;
+  ) as unknown as Schema.Codec<UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest>;
 
 export type UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
@@ -20256,7 +20294,7 @@ export const GetOrganizationsAppgroupsAppsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsAppgroupsAppsKeysRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsAppgroupsAppsKeysRequest>;
 
 export type GetOrganizationsAppgroupsAppsKeysResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
@@ -20294,7 +20332,7 @@ export const UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest>;
+  ) as unknown as Schema.Codec<UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest>;
 
 export type UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsResponse =
   GoogleProtobufEmpty;
@@ -20302,7 +20340,11 @@ export const UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API. */
 export const updateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproducts: API.OperationMethod<
@@ -20329,7 +20371,7 @@ export const DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest>;
 
 export type DeleteOrganizationsAppgroupsAppsKeysApiproductsResponse =
   GoogleCloudApigeeV1AppGroupAppKey;
@@ -20366,7 +20408,7 @@ export const GetOrganizationsAppgroupsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsAppgroupsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsAppgroupsSubscriptionsRequest>;
 
 export type GetOrganizationsAppgroupsSubscriptionsResponse =
   GoogleCloudApigeeV1AppGroupSubscription;
@@ -20406,7 +20448,7 @@ export const ExpireOrganizationsAppgroupsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:expire", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExpireOrganizationsAppgroupsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ExpireOrganizationsAppgroupsSubscriptionsRequest>;
 
 export type ExpireOrganizationsAppgroupsSubscriptionsResponse =
   GoogleCloudApigeeV1AppGroupSubscription;
@@ -20452,7 +20494,7 @@ export const CreateOrganizationsAppgroupsSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsAppgroupsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsAppgroupsSubscriptionsRequest>;
 
 export type CreateOrganizationsAppgroupsSubscriptionsResponse =
   GoogleCloudApigeeV1AppGroupSubscription;
@@ -20495,7 +20537,7 @@ export const ListOrganizationsAppgroupsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsAppgroupsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsAppgroupsSubscriptionsRequest>;
 
 export type ListOrganizationsAppgroupsSubscriptionsResponse =
   GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse;
@@ -20548,7 +20590,7 @@ export const ListOrganizationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsOperationsRequest>;
 
 export type ListOrganizationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -20587,7 +20629,7 @@ export const GetOrganizationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsOperationsRequest>;
 
 export type GetOrganizationsOperationsResponse = GoogleLongrunningOperation;
 export const GetOrganizationsOperationsResponse =
@@ -20621,7 +20663,7 @@ export const DeleteOrganizationsSharedflowsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSharedflowsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSharedflowsRequest>;
 
 export type DeleteOrganizationsSharedflowsResponse =
   GoogleCloudApigeeV1SharedFlow;
@@ -20658,7 +20700,7 @@ export const GetOrganizationsSharedflowsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSharedflowsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSharedflowsRequest>;
 
 export type GetOrganizationsSharedflowsResponse = GoogleCloudApigeeV1SharedFlow;
 export const GetOrganizationsSharedflowsResponse =
@@ -20705,7 +20747,7 @@ export const ListOrganizationsSharedflowsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/sharedflows" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSharedflowsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSharedflowsRequest>;
 
 export type ListOrganizationsSharedflowsResponse =
   GoogleCloudApigeeV1ListSharedFlowsResponse;
@@ -20752,7 +20794,7 @@ export const CreateOrganizationsSharedflowsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/sharedflows", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSharedflowsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSharedflowsRequest>;
 
 export type CreateOrganizationsSharedflowsResponse =
   GoogleCloudApigeeV1SharedFlowRevision;
@@ -20794,7 +20836,7 @@ export const MoveOrganizationsSharedflowsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveOrganizationsSharedflowsRequest>;
+  ) as unknown as Schema.Codec<MoveOrganizationsSharedflowsRequest>;
 
 export type MoveOrganizationsSharedflowsResponse =
   GoogleCloudApigeeV1SharedFlow;
@@ -20831,7 +20873,7 @@ export const ListOrganizationsSharedflowsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSharedflowsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSharedflowsDeploymentsRequest>;
 
 export type ListOrganizationsSharedflowsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
@@ -20872,7 +20914,7 @@ export const UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest>;
+  ) as unknown as Schema.Codec<UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest>;
 
 export type UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsResponse =
   GoogleCloudApigeeV1SharedFlowRevision;
@@ -20912,7 +20954,7 @@ export const GetOrganizationsSharedflowsRevisionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSharedflowsRevisionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSharedflowsRevisionsRequest>;
 
 export type GetOrganizationsSharedflowsRevisionsResponse = GoogleApiHttpBody;
 export const GetOrganizationsSharedflowsRevisionsResponse =
@@ -20946,7 +20988,7 @@ export const DeleteOrganizationsSharedflowsRevisionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSharedflowsRevisionsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSharedflowsRevisionsRequest>;
 
 export type DeleteOrganizationsSharedflowsRevisionsResponse =
   GoogleCloudApigeeV1SharedFlowRevision;
@@ -20983,7 +21025,7 @@ export const ListOrganizationsSharedflowsRevisionsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSharedflowsRevisionsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSharedflowsRevisionsDeploymentsRequest>;
 
 export type ListOrganizationsSharedflowsRevisionsDeploymentsResponse =
   GoogleCloudApigeeV1ListDeploymentsResponse;
@@ -21018,7 +21060,7 @@ export const GetOrganizationsAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsAppsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsAppsRequest>;
 
 export type GetOrganizationsAppsResponse = GoogleCloudApigeeV1App;
 export const GetOrganizationsAppsResponse =
@@ -21087,7 +21129,7 @@ export const ListOrganizationsAppsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apps" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsAppsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsAppsRequest>;
 
 export type ListOrganizationsAppsResponse = GoogleCloudApigeeV1ListAppsResponse;
 export const ListOrganizationsAppsResponse =
@@ -21125,7 +21167,7 @@ export const CreateOrganizationsReportsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/reports", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsReportsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsReportsRequest>;
 
 export type CreateOrganizationsReportsResponse =
   GoogleCloudApigeeV1CustomReport;
@@ -21165,7 +21207,7 @@ export const UpdateOrganizationsReportsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsReportsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsReportsRequest>;
 
 export type UpdateOrganizationsReportsResponse =
   GoogleCloudApigeeV1CustomReport;
@@ -21205,7 +21247,7 @@ export const ListOrganizationsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/reports" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsReportsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsReportsRequest>;
 
 export type ListOrganizationsReportsResponse =
   GoogleCloudApigeeV1ListCustomReportsResponse;
@@ -21240,7 +21282,7 @@ export const GetOrganizationsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsReportsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsReportsRequest>;
 
 export type GetOrganizationsReportsResponse = GoogleCloudApigeeV1CustomReport;
 export const GetOrganizationsReportsResponse =
@@ -21271,7 +21313,7 @@ export const DeleteOrganizationsReportsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsReportsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsReportsRequest>;
 
 export type DeleteOrganizationsReportsResponse =
   GoogleCloudApigeeV1DeleteCustomReportResponse;
@@ -21317,7 +21359,7 @@ export const DeleteOrganizationsSecurityMonitoringConditionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsSecurityMonitoringConditionsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsSecurityMonitoringConditionsRequest>;
 
 export type DeleteOrganizationsSecurityMonitoringConditionsResponse =
   GoogleProtobufEmpty;
@@ -21363,7 +21405,7 @@ export const GetOrganizationsSecurityMonitoringConditionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSecurityMonitoringConditionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSecurityMonitoringConditionsRequest>;
 
 export type GetOrganizationsSecurityMonitoringConditionsResponse =
   GoogleCloudApigeeV1SecurityMonitoringCondition;
@@ -21412,7 +21454,7 @@ export const CreateOrganizationsSecurityMonitoringConditionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSecurityMonitoringConditionsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSecurityMonitoringConditionsRequest>;
 
 export type CreateOrganizationsSecurityMonitoringConditionsResponse =
   GoogleCloudApigeeV1SecurityMonitoringCondition;
@@ -21457,7 +21499,7 @@ export const PatchOrganizationsSecurityMonitoringConditionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsSecurityMonitoringConditionsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsSecurityMonitoringConditionsRequest>;
 
 export type PatchOrganizationsSecurityMonitoringConditionsResponse =
   GoogleCloudApigeeV1SecurityMonitoringCondition;
@@ -21515,7 +21557,7 @@ export const ListOrganizationsSecurityMonitoringConditionsRequest =
       path: "v1/{+parent}/securityMonitoringConditions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSecurityMonitoringConditionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSecurityMonitoringConditionsRequest>;
 
 export type ListOrganizationsSecurityMonitoringConditionsResponse =
   GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse;
@@ -21560,7 +21602,7 @@ export const ListOrganizationsDnsZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dnsZones" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsDnsZonesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsDnsZonesRequest>;
 
 export type ListOrganizationsDnsZonesResponse =
   GoogleCloudApigeeV1ListDnsZonesResponse;
@@ -21599,7 +21641,7 @@ export const GetOrganizationsDnsZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsDnsZonesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsDnsZonesRequest>;
 
 export type GetOrganizationsDnsZonesResponse = GoogleCloudApigeeV1DnsZone;
 export const GetOrganizationsDnsZonesResponse =
@@ -21639,7 +21681,7 @@ export const CreateOrganizationsDnsZonesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/dnsZones", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsDnsZonesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsDnsZonesRequest>;
 
 export type CreateOrganizationsDnsZonesResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsDnsZonesResponse =
@@ -21675,7 +21717,7 @@ export const DeleteOrganizationsDnsZonesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsDnsZonesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsDnsZonesRequest>;
 
 export type DeleteOrganizationsDnsZonesResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsDnsZonesResponse =
@@ -21714,7 +21756,7 @@ export const ListOrganizationsAnalyticsDatastoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/analytics/datastores" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsAnalyticsDatastoresRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsAnalyticsDatastoresRequest>;
 
 export type ListOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1ListDatastoresResponse;
@@ -21756,7 +21798,7 @@ export const CreateOrganizationsAnalyticsDatastoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsAnalyticsDatastoresRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsAnalyticsDatastoresRequest>;
 
 export type CreateOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1Datastore;
@@ -21796,7 +21838,7 @@ export const UpdateOrganizationsAnalyticsDatastoresRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsAnalyticsDatastoresRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsAnalyticsDatastoresRequest>;
 
 export type UpdateOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1Datastore;
@@ -21840,7 +21882,7 @@ export const TestOrganizationsAnalyticsDatastoresRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestOrganizationsAnalyticsDatastoresRequest>;
+  ) as unknown as Schema.Codec<TestOrganizationsAnalyticsDatastoresRequest>;
 
 export type TestOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1TestDatastoreResponse;
@@ -21877,7 +21919,7 @@ export const GetOrganizationsAnalyticsDatastoresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsAnalyticsDatastoresRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsAnalyticsDatastoresRequest>;
 
 export type GetOrganizationsAnalyticsDatastoresResponse =
   GoogleCloudApigeeV1Datastore;
@@ -21912,7 +21954,7 @@ export const DeleteOrganizationsAnalyticsDatastoresRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsAnalyticsDatastoresRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsAnalyticsDatastoresRequest>;
 
 export type DeleteOrganizationsAnalyticsDatastoresResponse =
   GoogleProtobufEmpty;
@@ -21949,7 +21991,7 @@ export const GetResultOrganizationsHostSecurityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetResultOrganizationsHostSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<GetResultOrganizationsHostSecurityReportsRequest>;
 
 export type GetResultOrganizationsHostSecurityReportsResponse =
   GoogleApiHttpBody;
@@ -21984,7 +22026,7 @@ export const GetOrganizationsHostSecurityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsHostSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsHostSecurityReportsRequest>;
 
 export type GetOrganizationsHostSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReport;
@@ -22019,7 +22061,7 @@ export const GetResultViewOrganizationsHostSecurityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetResultViewOrganizationsHostSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<GetResultViewOrganizationsHostSecurityReportsRequest>;
 
 export type GetResultViewOrganizationsHostSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReportResultView;
@@ -22082,7 +22124,7 @@ export const ListOrganizationsHostSecurityReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/hostSecurityReports" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsHostSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsHostSecurityReportsRequest>;
 
 export type ListOrganizationsHostSecurityReportsResponse =
   GoogleCloudApigeeV1ListSecurityReportsResponse;
@@ -22130,7 +22172,7 @@ export const CreateOrganizationsHostSecurityReportsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsHostSecurityReportsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsHostSecurityReportsRequest>;
 
 export type CreateOrganizationsHostSecurityReportsResponse =
   GoogleCloudApigeeV1SecurityReport;
@@ -22174,7 +22216,7 @@ export const CreateOrganizationsKeyvaluemapsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsKeyvaluemapsRequest>;
 
 export type CreateOrganizationsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -22211,7 +22253,7 @@ export const DeleteOrganizationsKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsKeyvaluemapsRequest>;
 
 export type DeleteOrganizationsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -22251,7 +22293,7 @@ export const UpdateOrganizationsKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsKeyvaluemapsRequest>;
 
 export type UpdateOrganizationsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -22288,7 +22330,7 @@ export const GetOrganizationsKeyvaluemapsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsKeyvaluemapsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsKeyvaluemapsRequest>;
 
 export type GetOrganizationsKeyvaluemapsResponse =
   GoogleCloudApigeeV1KeyValueMap;
@@ -22323,7 +22365,7 @@ export const GetOrganizationsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsKeyvaluemapsEntriesRequest>;
 
 export type GetOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -22358,7 +22400,7 @@ export const DeleteOrganizationsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsKeyvaluemapsEntriesRequest>;
 
 export type DeleteOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -22401,7 +22443,7 @@ export const ListOrganizationsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entries" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsKeyvaluemapsEntriesRequest>;
 
 export type ListOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1ListKeyValueEntriesResponse;
@@ -22443,7 +22485,7 @@ export const CreateOrganizationsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/entries", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsKeyvaluemapsEntriesRequest>;
 
 export type CreateOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;
@@ -22483,7 +22525,7 @@ export const UpdateOrganizationsKeyvaluemapsEntriesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsKeyvaluemapsEntriesRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsKeyvaluemapsEntriesRequest>;
 
 export type UpdateOrganizationsKeyvaluemapsEntriesResponse =
   GoogleCloudApigeeV1KeyValueEntry;

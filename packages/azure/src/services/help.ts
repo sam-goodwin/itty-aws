@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DiagnosticsCheckNameAvailabilityInput {
+  scope: string;
+  name?: string;
+  type?: string;
+}
 export const DiagnosticsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -20,19 +25,20 @@ export const DiagnosticsCheckNameAvailabilityInput =
       path: "/{scope}/providers/Microsoft.Help/checkNameAvailability",
       apiVersion: "2023-06-01",
     }),
-  );
-export type DiagnosticsCheckNameAvailabilityInput =
-  typeof DiagnosticsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<DiagnosticsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface DiagnosticsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const DiagnosticsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type DiagnosticsCheckNameAvailabilityOutput =
-  typeof DiagnosticsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -49,6 +55,35 @@ export const DiagnosticsCheckNameAvailability =
     outputSchema: DiagnosticsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface DiagnosticsCreateInput {
+  scope: string;
+  diagnosticsResourceName: string;
+  properties?: {
+    globalParameters?: Record<string, string>;
+    insights?: {
+      solutionId?: string;
+      additionalParameters?: Record<string, string>;
+    }[];
+    acceptedAt?: string;
+    provisioningState?: "Succeeded" | "PartialComplete" | "Failed" | "Canceled";
+    diagnostics?: {
+      solutionId?: string;
+      status?: "Failed" | "MissingInputs" | "Running" | "Succeeded" | "Timeout";
+      insights?: {
+        id?: string;
+        title?: string;
+        results?: string;
+        importanceLevel?: "Critical" | "Warning" | "Information";
+      }[];
+      error?: {
+        code?: string;
+        type?: string;
+        message?: string;
+        details?: unknown[];
+      };
+    }[];
+  };
+}
 export const DiagnosticsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     scope: Schema.String.pipe(T.PathParam()),
@@ -122,10 +157,22 @@ export const DiagnosticsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/{scope}/providers/Microsoft.Help/diagnostics/{diagnosticsResourceName}",
     apiVersion: "2023-06-01",
   }),
-);
-export type DiagnosticsCreateInput = typeof DiagnosticsCreateInput.Type;
+) as unknown as Schema.Codec<DiagnosticsCreateInput>;
 
 // Output Schema
+export interface DiagnosticsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -145,8 +192,7 @@ export const DiagnosticsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiagnosticsCreateOutput = typeof DiagnosticsCreateOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticsCreateOutput>;
 
 // The operation
 /**
@@ -161,6 +207,10 @@ export const DiagnosticsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiagnosticsCreateOutput,
 }));
 // Input Schema
+export interface DiagnosticsGetInput {
+  scope: string;
+  diagnosticsResourceName: string;
+}
 export const DiagnosticsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   diagnosticsResourceName: Schema.String.pipe(T.PathParam()),
@@ -170,10 +220,22 @@ export const DiagnosticsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Help/diagnostics/{diagnosticsResourceName}",
     apiVersion: "2023-06-01",
   }),
-);
-export type DiagnosticsGetInput = typeof DiagnosticsGetInput.Type;
+) as unknown as Schema.Codec<DiagnosticsGetInput>;
 
 // Output Schema
+export interface DiagnosticsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -192,8 +254,7 @@ export const DiagnosticsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DiagnosticsGetOutput = typeof DiagnosticsGetOutput.Type;
+}) as unknown as Schema.Codec<DiagnosticsGetOutput>;
 
 // The operation
 /**
@@ -208,6 +269,11 @@ export const DiagnosticsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiagnosticsGetOutput,
 }));
 // Input Schema
+export interface DiscoverySolutionListInput {
+  scope: string;
+  $filter?: string;
+  $skiptoken?: string;
+}
 export const DiscoverySolutionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -219,10 +285,25 @@ export const DiscoverySolutionListInput =
       path: "/{scope}/providers/Microsoft.Help/discoverySolutions",
       apiVersion: "2023-06-01",
     }),
-  );
-export type DiscoverySolutionListInput = typeof DiscoverySolutionListInput.Type;
+  ) as unknown as Schema.Codec<DiscoverySolutionListInput>;
 
 // Output Schema
+export interface DiscoverySolutionListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiscoverySolutionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -259,9 +340,7 @@ export const DiscoverySolutionListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiscoverySolutionListOutput =
-  typeof DiscoverySolutionListOutput.Type;
+  }) as unknown as Schema.Codec<DiscoverySolutionListOutput>;
 
 // The operation
 /**
@@ -279,6 +358,7 @@ export const DiscoverySolutionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -287,10 +367,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Help/operations",
     apiVersion: "2023-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -313,8 +407,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

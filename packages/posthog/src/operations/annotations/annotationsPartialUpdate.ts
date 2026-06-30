@@ -4,6 +4,51 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface AnnotationsPartialUpdateInput {
+  id: number;
+  project_id: string;
+  content?: string | null;
+  date_marker?: string | null;
+  creation_type?: "USR" | "GIT";
+  dashboard_item?: number | null;
+  dashboard_id?: number | null;
+  dashboard_name?: string | null;
+  insight_short_id?: string | null;
+  insight_name?: string | null;
+  insight_derived_name?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string | null;
+  updated_at?: string;
+  deleted?: boolean;
+  scope?:
+    | "dashboard_item"
+    | "dashboard"
+    | "project"
+    | "organization"
+    | "recording";
+  emoji?: string | null;
+  hidden_in_user_interface?: boolean | null;
+}
 export const AnnotationsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -30,7 +75,23 @@ export const AnnotationsPartialUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -53,11 +114,53 @@ export const AnnotationsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/annotations/{id}/",
     }),
-  );
-export type AnnotationsPartialUpdateInput =
-  typeof AnnotationsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<AnnotationsPartialUpdateInput>;
 
 // Output Schema
+export interface AnnotationsPartialUpdateOutput {
+  id?: number;
+  content?: string | null;
+  date_marker?: string | null;
+  creation_type?: "USR" | "GIT";
+  dashboard_item?: number | null;
+  dashboard_id?: number | null;
+  dashboard_name?: string | null;
+  insight_short_id?: string | null;
+  insight_name?: string | null;
+  insight_derived_name?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string | null;
+  updated_at?: string;
+  deleted?: boolean;
+  scope?:
+    | "dashboard_item"
+    | "dashboard"
+    | "project"
+    | "organization"
+    | "recording";
+  emoji?: string | null;
+  hidden_in_user_interface?: boolean | null;
+}
 export const AnnotationsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -83,7 +186,23 @@ export const AnnotationsPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -101,9 +220,7 @@ export const AnnotationsPartialUpdateOutput =
     ),
     emoji: Schema.optional(Schema.NullOr(Schema.String)),
     hidden_in_user_interface: Schema.optional(Schema.NullOr(Schema.Boolean)),
-  });
-export type AnnotationsPartialUpdateOutput =
-  typeof AnnotationsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AnnotationsPartialUpdateOutput>;
 
 // The operation
 /**

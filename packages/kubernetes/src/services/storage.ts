@@ -4,12 +4,65 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateStorageV1CSIDriverInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attachRequired?: boolean;
+    fsGroupPolicy?: string;
+    nodeAllocatableUpdatePeriodSeconds?: number;
+    podInfoOnMount?: boolean;
+    preventPodSchedulingIfMissing?: boolean;
+    requiresRepublish?: boolean;
+    seLinuxMount?: boolean;
+    serviceAccountTokenInSecrets?: boolean;
+    storageCapacity?: boolean;
+    tokenRequests?: { audience: string; expirationSeconds?: number }[];
+    volumeLifecycleModes?: string[];
+  };
+}
 export const CreateStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -84,11 +137,58 @@ export const CreateStorageV1CSIDriverInput =
     }),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/storage.k8s.io/v1/csidrivers" }),
-  );
-export type CreateStorageV1CSIDriverInput =
-  typeof CreateStorageV1CSIDriverInput.Type;
+  ) as unknown as Schema.Codec<CreateStorageV1CSIDriverInput>;
 
 // Output Schema
+export interface CreateStorageV1CSIDriverOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attachRequired?: boolean;
+    fsGroupPolicy?: string;
+    nodeAllocatableUpdatePeriodSeconds?: number;
+    podInfoOnMount?: boolean;
+    preventPodSchedulingIfMissing?: boolean;
+    requiresRepublish?: boolean;
+    seLinuxMount?: boolean;
+    serviceAccountTokenInSecrets?: boolean;
+    storageCapacity?: boolean;
+    tokenRequests?: { audience: string; expirationSeconds?: number }[];
+    volumeLifecycleModes?: string[];
+  };
+}
 export const CreateStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -157,9 +257,7 @@ export const CreateStorageV1CSIDriverOutput =
       ),
       volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
     }),
-  });
-export type CreateStorageV1CSIDriverOutput =
-  typeof CreateStorageV1CSIDriverOutput.Type;
+  }) as unknown as Schema.Codec<CreateStorageV1CSIDriverOutput>;
 
 // The operation
 /**
@@ -178,6 +276,54 @@ export const createStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CreateStorageV1CSINodeInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    drivers: {
+      allocatable?: { count?: number };
+      name: string;
+      nodeID: string;
+      topologyKeys?: string[];
+    }[];
+  };
+}
 export const CreateStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -244,11 +390,55 @@ export const CreateStorageV1CSINodeInput =
         }),
       ),
     }),
-  }).pipe(T.Http({ method: "POST", path: "/apis/storage.k8s.io/v1/csinodes" }));
-export type CreateStorageV1CSINodeInput =
-  typeof CreateStorageV1CSINodeInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/apis/storage.k8s.io/v1/csinodes" }),
+  ) as unknown as Schema.Codec<CreateStorageV1CSINodeInput>;
 
 // Output Schema
+export interface CreateStorageV1CSINodeOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    drivers: {
+      allocatable?: { count?: number };
+      name: string;
+      nodeID: string;
+      topologyKeys?: string[];
+    }[];
+  };
+}
 export const CreateStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -311,9 +501,7 @@ export const CreateStorageV1CSINodeOutput =
         }),
       ),
     }),
-  });
-export type CreateStorageV1CSINodeOutput =
-  typeof CreateStorageV1CSINodeOutput.Type;
+  }) as unknown as Schema.Codec<CreateStorageV1CSINodeOutput>;
 
 // The operation
 /**
@@ -332,6 +520,54 @@ export const createStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CreateStorageV1NamespacedCSIStorageCapacityInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  capacity?: string;
+  kind?: string;
+  maximumVolumeSize?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  nodeTopology?: {
+    matchExpressions?: { key: string; operator: string; values?: string[] }[];
+    matchLabels?: Record<string, string>;
+  };
+  storageClassName: string;
+}
 export const CreateStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -409,11 +645,52 @@ export const CreateStorageV1NamespacedCSIStorageCapacityInput =
       method: "POST",
       path: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities",
     }),
-  );
-export type CreateStorageV1NamespacedCSIStorageCapacityInput =
-  typeof CreateStorageV1NamespacedCSIStorageCapacityInput.Type;
+  ) as unknown as Schema.Codec<CreateStorageV1NamespacedCSIStorageCapacityInput>;
 
 // Output Schema
+export interface CreateStorageV1NamespacedCSIStorageCapacityOutput {
+  apiVersion?: string;
+  capacity?: string;
+  kind?: string;
+  maximumVolumeSize?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  nodeTopology?: {
+    matchExpressions?: { key: string; operator: string; values?: string[] }[];
+    matchLabels?: Record<string, string>;
+  };
+  storageClassName: string;
+}
 export const CreateStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -481,9 +758,7 @@ export const CreateStorageV1NamespacedCSIStorageCapacityOutput =
       }),
     ),
     storageClassName: Schema.String,
-  });
-export type CreateStorageV1NamespacedCSIStorageCapacityOutput =
-  typeof CreateStorageV1NamespacedCSIStorageCapacityOutput.Type;
+  }) as unknown as Schema.Codec<CreateStorageV1NamespacedCSIStorageCapacityOutput>;
 
 // The operation
 /**
@@ -502,6 +777,55 @@ export const createStorageV1NamespacedCSIStorageCapacity =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateStorageV1StorageClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  allowVolumeExpansion?: boolean;
+  allowedTopologies?: {
+    matchLabelExpressions?: { key: string; values: string[] }[];
+  }[];
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  mountOptions?: string[];
+  parameters?: Record<string, string>;
+  provisioner: string;
+  reclaimPolicy?: string;
+  volumeBindingMode?: string;
+}
 export const CreateStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -576,11 +900,54 @@ export const CreateStorageV1StorageClassInput =
     volumeBindingMode: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/storage.k8s.io/v1/storageclasses" }),
-  );
-export type CreateStorageV1StorageClassInput =
-  typeof CreateStorageV1StorageClassInput.Type;
+  ) as unknown as Schema.Codec<CreateStorageV1StorageClassInput>;
 
 // Output Schema
+export interface CreateStorageV1StorageClassOutput {
+  allowVolumeExpansion?: boolean;
+  allowedTopologies?: {
+    matchLabelExpressions?: { key: string; values: string[] }[];
+  }[];
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  mountOptions?: string[];
+  parameters?: Record<string, string>;
+  provisioner: string;
+  reclaimPolicy?: string;
+  volumeBindingMode?: string;
+}
 export const CreateStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
@@ -649,9 +1016,7 @@ export const CreateStorageV1StorageClassOutput =
     provisioner: Schema.String,
     reclaimPolicy: Schema.optional(Schema.String),
     volumeBindingMode: Schema.optional(Schema.String),
-  });
-export type CreateStorageV1StorageClassOutput =
-  typeof CreateStorageV1StorageClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateStorageV1StorageClassOutput>;
 
 // The operation
 /**
@@ -670,6 +1035,239 @@ export const createStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CreateStorageV1VolumeAttachmentInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const CreateStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1079,11 +1677,238 @@ export const CreateStorageV1VolumeAttachmentInput =
       method: "POST",
       path: "/apis/storage.k8s.io/v1/volumeattachments",
     }),
-  );
-export type CreateStorageV1VolumeAttachmentInput =
-  typeof CreateStorageV1VolumeAttachmentInput.Type;
+  ) as unknown as Schema.Codec<CreateStorageV1VolumeAttachmentInput>;
 
 // Output Schema
+export interface CreateStorageV1VolumeAttachmentOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const CreateStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1484,9 +2309,7 @@ export const CreateStorageV1VolumeAttachmentOutput =
         ),
       }),
     ),
-  });
-export type CreateStorageV1VolumeAttachmentOutput =
-  typeof CreateStorageV1VolumeAttachmentOutput.Type;
+  }) as unknown as Schema.Codec<CreateStorageV1VolumeAttachmentOutput>;
 
 // The operation
 /**
@@ -1504,6 +2327,48 @@ export const createStorageV1VolumeAttachment =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateStorageV1VolumeAttributesClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  driverName: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  parameters?: Record<string, string>;
+}
 export const CreateStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1563,11 +2428,47 @@ export const CreateStorageV1VolumeAttributesClassInput =
       method: "POST",
       path: "/apis/storage.k8s.io/v1/volumeattributesclasses",
     }),
-  );
-export type CreateStorageV1VolumeAttributesClassInput =
-  typeof CreateStorageV1VolumeAttributesClassInput.Type;
+  ) as unknown as Schema.Codec<CreateStorageV1VolumeAttributesClassInput>;
 
 // Output Schema
+export interface CreateStorageV1VolumeAttributesClassOutput {
+  apiVersion?: string;
+  driverName: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  parameters?: Record<string, string>;
+}
 export const CreateStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1618,9 +2519,7 @@ export const CreateStorageV1VolumeAttributesClassOutput =
       }),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type CreateStorageV1VolumeAttributesClassOutput =
-  typeof CreateStorageV1VolumeAttributesClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateStorageV1VolumeAttributesClassOutput>;
 
 // The operation
 /**
@@ -1638,6 +2537,18 @@ export const createStorageV1VolumeAttributesClass =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteStorageV1CSIDriverInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1662,11 +2573,58 @@ export const DeleteStorageV1CSIDriverInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/csidrivers/{name}",
     }),
-  );
-export type DeleteStorageV1CSIDriverInput =
-  typeof DeleteStorageV1CSIDriverInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1CSIDriverInput>;
 
 // Output Schema
+export interface DeleteStorageV1CSIDriverOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attachRequired?: boolean;
+    fsGroupPolicy?: string;
+    nodeAllocatableUpdatePeriodSeconds?: number;
+    podInfoOnMount?: boolean;
+    preventPodSchedulingIfMissing?: boolean;
+    requiresRepublish?: boolean;
+    seLinuxMount?: boolean;
+    serviceAccountTokenInSecrets?: boolean;
+    storageCapacity?: boolean;
+    tokenRequests?: { audience: string; expirationSeconds?: number }[];
+    volumeLifecycleModes?: string[];
+  };
+}
 export const DeleteStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1735,9 +2693,7 @@ export const DeleteStorageV1CSIDriverOutput =
       ),
       volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
     }),
-  });
-export type DeleteStorageV1CSIDriverOutput =
-  typeof DeleteStorageV1CSIDriverOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1CSIDriverOutput>;
 
 // The operation
 /**
@@ -1759,6 +2715,18 @@ export const deleteStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeleteStorageV1CSINodeInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1783,11 +2751,53 @@ export const DeleteStorageV1CSINodeInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/csinodes/{name}",
     }),
-  );
-export type DeleteStorageV1CSINodeInput =
-  typeof DeleteStorageV1CSINodeInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1CSINodeInput>;
 
 // Output Schema
+export interface DeleteStorageV1CSINodeOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    drivers: {
+      allocatable?: { count?: number };
+      name: string;
+      nodeID: string;
+      topologyKeys?: string[];
+    }[];
+  };
+}
 export const DeleteStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1850,9 +2860,7 @@ export const DeleteStorageV1CSINodeOutput =
         }),
       ),
     }),
-  });
-export type DeleteStorageV1CSINodeOutput =
-  typeof DeleteStorageV1CSINodeOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1CSINodeOutput>;
 
 // The operation
 /**
@@ -1874,6 +2882,26 @@ export const deleteStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeleteStorageV1CollectionCSIDriverInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1CollectionCSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1903,11 +2931,32 @@ export const DeleteStorageV1CollectionCSIDriverInput =
     ),
   }).pipe(
     T.Http({ method: "DELETE", path: "/apis/storage.k8s.io/v1/csidrivers" }),
-  );
-export type DeleteStorageV1CollectionCSIDriverInput =
-  typeof DeleteStorageV1CollectionCSIDriverInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1CollectionCSIDriverInput>;
 
 // Output Schema
+export interface DeleteStorageV1CollectionCSIDriverOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStorageV1CollectionCSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1947,9 +2996,7 @@ export const DeleteStorageV1CollectionCSIDriverOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStorageV1CollectionCSIDriverOutput =
-  typeof DeleteStorageV1CollectionCSIDriverOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1CollectionCSIDriverOutput>;
 
 // The operation
 /**
@@ -2018,6 +3065,26 @@ export const deleteStorageV1CollectionCSIDriver =
     outputSchema: DeleteStorageV1CollectionCSIDriverOutput,
   }));
 // Input Schema
+export interface DeleteStorageV1CollectionCSINodeInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1CollectionCSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2047,11 +3114,32 @@ export const DeleteStorageV1CollectionCSINodeInput =
     ),
   }).pipe(
     T.Http({ method: "DELETE", path: "/apis/storage.k8s.io/v1/csinodes" }),
-  );
-export type DeleteStorageV1CollectionCSINodeInput =
-  typeof DeleteStorageV1CollectionCSINodeInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1CollectionCSINodeInput>;
 
 // Output Schema
+export interface DeleteStorageV1CollectionCSINodeOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStorageV1CollectionCSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2091,9 +3179,7 @@ export const DeleteStorageV1CollectionCSINodeOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStorageV1CollectionCSINodeOutput =
-  typeof DeleteStorageV1CollectionCSINodeOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1CollectionCSINodeOutput>;
 
 // The operation
 /**
@@ -2162,6 +3248,27 @@ export const deleteStorageV1CollectionCSINode =
     outputSchema: DeleteStorageV1CollectionCSINodeOutput,
   }));
 // Input Schema
+export interface DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2195,11 +3302,32 @@ export const DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities",
     }),
-  );
-export type DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput =
-  typeof DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1CollectionNamespacedCSIStorageCapacityInput>;
 
 // Output Schema
+export interface DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2239,9 +3367,7 @@ export const DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput =
-  typeof DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput>;
 
 // The operation
 /**
@@ -2311,6 +3437,26 @@ export const deleteStorageV1CollectionNamespacedCSIStorageCapacity =
     outputSchema: DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput,
   }));
 // Input Schema
+export interface DeleteStorageV1CollectionStorageClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1CollectionStorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2343,11 +3489,32 @@ export const DeleteStorageV1CollectionStorageClassInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/storageclasses",
     }),
-  );
-export type DeleteStorageV1CollectionStorageClassInput =
-  typeof DeleteStorageV1CollectionStorageClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1CollectionStorageClassInput>;
 
 // Output Schema
+export interface DeleteStorageV1CollectionStorageClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStorageV1CollectionStorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2387,9 +3554,7 @@ export const DeleteStorageV1CollectionStorageClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStorageV1CollectionStorageClassOutput =
-  typeof DeleteStorageV1CollectionStorageClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1CollectionStorageClassOutput>;
 
 // The operation
 /**
@@ -2458,6 +3623,26 @@ export const deleteStorageV1CollectionStorageClass =
     outputSchema: DeleteStorageV1CollectionStorageClassOutput,
   }));
 // Input Schema
+export interface DeleteStorageV1CollectionVolumeAttachmentInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1CollectionVolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2490,11 +3675,32 @@ export const DeleteStorageV1CollectionVolumeAttachmentInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/volumeattachments",
     }),
-  );
-export type DeleteStorageV1CollectionVolumeAttachmentInput =
-  typeof DeleteStorageV1CollectionVolumeAttachmentInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1CollectionVolumeAttachmentInput>;
 
 // Output Schema
+export interface DeleteStorageV1CollectionVolumeAttachmentOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStorageV1CollectionVolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2534,9 +3740,7 @@ export const DeleteStorageV1CollectionVolumeAttachmentOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStorageV1CollectionVolumeAttachmentOutput =
-  typeof DeleteStorageV1CollectionVolumeAttachmentOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1CollectionVolumeAttachmentOutput>;
 
 // The operation
 /**
@@ -2605,6 +3809,26 @@ export const deleteStorageV1CollectionVolumeAttachment =
     outputSchema: DeleteStorageV1CollectionVolumeAttachmentOutput,
   }));
 // Input Schema
+export interface DeleteStorageV1CollectionVolumeAttributesClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1CollectionVolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2637,11 +3861,32 @@ export const DeleteStorageV1CollectionVolumeAttributesClassInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/volumeattributesclasses",
     }),
-  );
-export type DeleteStorageV1CollectionVolumeAttributesClassInput =
-  typeof DeleteStorageV1CollectionVolumeAttributesClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1CollectionVolumeAttributesClassInput>;
 
 // Output Schema
+export interface DeleteStorageV1CollectionVolumeAttributesClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStorageV1CollectionVolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2681,9 +3926,7 @@ export const DeleteStorageV1CollectionVolumeAttributesClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStorageV1CollectionVolumeAttributesClassOutput =
-  typeof DeleteStorageV1CollectionVolumeAttributesClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1CollectionVolumeAttributesClassOutput>;
 
 // The operation
 /**
@@ -2752,6 +3995,19 @@ export const deleteStorageV1CollectionVolumeAttributesClass =
     outputSchema: DeleteStorageV1CollectionVolumeAttributesClassOutput,
   }));
 // Input Schema
+export interface DeleteStorageV1NamespacedCSIStorageCapacityInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2777,11 +4033,32 @@ export const DeleteStorageV1NamespacedCSIStorageCapacityInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities/{name}",
     }),
-  );
-export type DeleteStorageV1NamespacedCSIStorageCapacityInput =
-  typeof DeleteStorageV1NamespacedCSIStorageCapacityInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1NamespacedCSIStorageCapacityInput>;
 
 // Output Schema
+export interface DeleteStorageV1NamespacedCSIStorageCapacityOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2821,9 +4098,7 @@ export const DeleteStorageV1NamespacedCSIStorageCapacityOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStorageV1NamespacedCSIStorageCapacityOutput =
-  typeof DeleteStorageV1NamespacedCSIStorageCapacityOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1NamespacedCSIStorageCapacityOutput>;
 
 // The operation
 /**
@@ -2845,6 +4120,18 @@ export const deleteStorageV1NamespacedCSIStorageCapacity =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteStorageV1StorageClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2869,11 +4156,54 @@ export const DeleteStorageV1StorageClassInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/storageclasses/{name}",
     }),
-  );
-export type DeleteStorageV1StorageClassInput =
-  typeof DeleteStorageV1StorageClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1StorageClassInput>;
 
 // Output Schema
+export interface DeleteStorageV1StorageClassOutput {
+  allowVolumeExpansion?: boolean;
+  allowedTopologies?: {
+    matchLabelExpressions?: { key: string; values: string[] }[];
+  }[];
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  mountOptions?: string[];
+  parameters?: Record<string, string>;
+  provisioner: string;
+  reclaimPolicy?: string;
+  volumeBindingMode?: string;
+}
 export const DeleteStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
@@ -2942,9 +4272,7 @@ export const DeleteStorageV1StorageClassOutput =
     provisioner: Schema.String,
     reclaimPolicy: Schema.optional(Schema.String),
     volumeBindingMode: Schema.optional(Schema.String),
-  });
-export type DeleteStorageV1StorageClassOutput =
-  typeof DeleteStorageV1StorageClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1StorageClassOutput>;
 
 // The operation
 /**
@@ -2966,6 +4294,18 @@ export const deleteStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeleteStorageV1VolumeAttachmentInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2990,11 +4330,238 @@ export const DeleteStorageV1VolumeAttachmentInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/volumeattachments/{name}",
     }),
-  );
-export type DeleteStorageV1VolumeAttachmentInput =
-  typeof DeleteStorageV1VolumeAttachmentInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1VolumeAttachmentInput>;
 
 // Output Schema
+export interface DeleteStorageV1VolumeAttachmentOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const DeleteStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3395,9 +4962,7 @@ export const DeleteStorageV1VolumeAttachmentOutput =
         ),
       }),
     ),
-  });
-export type DeleteStorageV1VolumeAttachmentOutput =
-  typeof DeleteStorageV1VolumeAttachmentOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1VolumeAttachmentOutput>;
 
 // The operation
 /**
@@ -3418,6 +4983,18 @@ export const deleteStorageV1VolumeAttachment =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteStorageV1VolumeAttributesClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3442,11 +5019,47 @@ export const DeleteStorageV1VolumeAttributesClassInput =
       method: "DELETE",
       path: "/apis/storage.k8s.io/v1/volumeattributesclasses/{name}",
     }),
-  );
-export type DeleteStorageV1VolumeAttributesClassInput =
-  typeof DeleteStorageV1VolumeAttributesClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteStorageV1VolumeAttributesClassInput>;
 
 // Output Schema
+export interface DeleteStorageV1VolumeAttributesClassOutput {
+  apiVersion?: string;
+  driverName: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  parameters?: Record<string, string>;
+}
 export const DeleteStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3497,9 +5110,7 @@ export const DeleteStorageV1VolumeAttributesClassOutput =
       }),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type DeleteStorageV1VolumeAttributesClassOutput =
-  typeof DeleteStorageV1VolumeAttributesClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStorageV1VolumeAttributesClassOutput>;
 
 // The operation
 /**
@@ -3520,13 +5131,21 @@ export const deleteStorageV1VolumeAttributesClass =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetStorageAPIGroupInput {}
 export const GetStorageAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/" }),
-  );
-export type GetStorageAPIGroupInput = typeof GetStorageAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetStorageAPIGroupInput>;
 
 // Output Schema
+export interface GetStorageAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetStorageAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3552,8 +5171,7 @@ export const GetStorageAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetStorageAPIGroupOutput = typeof GetStorageAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetStorageAPIGroupOutput>;
 
 // The operation
 /**
@@ -3564,14 +5182,30 @@ export const getStorageAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetStorageAPIGroupOutput,
 }));
 // Input Schema
+export interface GetStorageV1APIResourcesInput {}
 export const GetStorageV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/" }),
-  );
-export type GetStorageV1APIResourcesInput =
-  typeof GetStorageV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetStorageV1APIResourcesInput>;
 
 // Output Schema
+export interface GetStorageV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetStorageV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3591,9 +5225,7 @@ export const GetStorageV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetStorageV1APIResourcesOutput =
-  typeof GetStorageV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetStorageV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -3606,6 +5238,20 @@ export const getStorageV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListStorageV1CSIDriverInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3622,11 +5268,69 @@ export const ListStorageV1CSIDriverInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/csidrivers" }),
-  );
-export type ListStorageV1CSIDriverInput =
-  typeof ListStorageV1CSIDriverInput.Type;
+  ) as unknown as Schema.Codec<ListStorageV1CSIDriverInput>;
 
 // Output Schema
+export interface ListStorageV1CSIDriverOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      attachRequired?: boolean;
+      fsGroupPolicy?: string;
+      nodeAllocatableUpdatePeriodSeconds?: number;
+      podInfoOnMount?: boolean;
+      preventPodSchedulingIfMissing?: boolean;
+      requiresRepublish?: boolean;
+      seLinuxMount?: boolean;
+      serviceAccountTokenInSecrets?: boolean;
+      storageCapacity?: boolean;
+      tokenRequests?: { audience: string; expirationSeconds?: number }[];
+      volumeLifecycleModes?: string[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3716,9 +5420,7 @@ export const ListStorageV1CSIDriverOutput =
         ),
       }),
     ),
-  });
-export type ListStorageV1CSIDriverOutput =
-  typeof ListStorageV1CSIDriverOutput.Type;
+  }) as unknown as Schema.Codec<ListStorageV1CSIDriverOutput>;
 
 // The operation
 /**
@@ -3785,6 +5487,20 @@ export const listStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListStorageV1CSINodeInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3799,10 +5515,66 @@ export const ListStorageV1CSINodeInput =
     shardSelector: Schema.optional(Schema.String),
     timeoutSeconds: Schema.optional(Schema.Number),
     watch: Schema.optional(Schema.Boolean),
-  }).pipe(T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/csinodes" }));
-export type ListStorageV1CSINodeInput = typeof ListStorageV1CSINodeInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/csinodes" }),
+  ) as unknown as Schema.Codec<ListStorageV1CSINodeInput>;
 
 // Output Schema
+export interface ListStorageV1CSINodeOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      drivers: {
+        allocatable?: { count?: number };
+        name: string;
+        nodeID: string;
+        topologyKeys?: string[];
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3886,8 +5658,7 @@ export const ListStorageV1CSINodeOutput =
         ),
       }),
     ),
-  });
-export type ListStorageV1CSINodeOutput = typeof ListStorageV1CSINodeOutput.Type;
+  }) as unknown as Schema.Codec<ListStorageV1CSINodeOutput>;
 
 // The operation
 /**
@@ -3954,6 +5725,20 @@ export const listStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListStorageV1CSIStorageCapacityForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListStorageV1CSIStorageCapacityForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3973,11 +5758,63 @@ export const ListStorageV1CSIStorageCapacityForAllNamespacesInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/csistoragecapacities",
     }),
-  );
-export type ListStorageV1CSIStorageCapacityForAllNamespacesInput =
-  typeof ListStorageV1CSIStorageCapacityForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListStorageV1CSIStorageCapacityForAllNamespacesInput>;
 
 // Output Schema
+export interface ListStorageV1CSIStorageCapacityForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    capacity?: string;
+    kind?: string;
+    maximumVolumeSize?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    nodeTopology?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    storageClassName: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListStorageV1CSIStorageCapacityForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4066,9 +5903,7 @@ export const ListStorageV1CSIStorageCapacityForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListStorageV1CSIStorageCapacityForAllNamespacesOutput =
-  typeof ListStorageV1CSIStorageCapacityForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListStorageV1CSIStorageCapacityForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -4134,6 +5969,21 @@ export const listStorageV1CSIStorageCapacityForAllNamespaces =
     outputSchema: ListStorageV1CSIStorageCapacityForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListStorageV1NamespacedCSIStorageCapacityInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4154,11 +6004,63 @@ export const ListStorageV1NamespacedCSIStorageCapacityInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities",
     }),
-  );
-export type ListStorageV1NamespacedCSIStorageCapacityInput =
-  typeof ListStorageV1NamespacedCSIStorageCapacityInput.Type;
+  ) as unknown as Schema.Codec<ListStorageV1NamespacedCSIStorageCapacityInput>;
 
 // Output Schema
+export interface ListStorageV1NamespacedCSIStorageCapacityOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    capacity?: string;
+    kind?: string;
+    maximumVolumeSize?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    nodeTopology?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    storageClassName: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4247,9 +6149,7 @@ export const ListStorageV1NamespacedCSIStorageCapacityOutput =
         ),
       }),
     ),
-  });
-export type ListStorageV1NamespacedCSIStorageCapacityOutput =
-  typeof ListStorageV1NamespacedCSIStorageCapacityOutput.Type;
+  }) as unknown as Schema.Codec<ListStorageV1NamespacedCSIStorageCapacityOutput>;
 
 // The operation
 /**
@@ -4316,6 +6216,20 @@ export const listStorageV1NamespacedCSIStorageCapacity =
     outputSchema: ListStorageV1NamespacedCSIStorageCapacityOutput,
   }));
 // Input Schema
+export interface ListStorageV1StorageClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -4332,11 +6246,65 @@ export const ListStorageV1StorageClassInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/storageclasses" }),
-  );
-export type ListStorageV1StorageClassInput =
-  typeof ListStorageV1StorageClassInput.Type;
+  ) as unknown as Schema.Codec<ListStorageV1StorageClassInput>;
 
 // Output Schema
+export interface ListStorageV1StorageClassOutput {
+  apiVersion?: string;
+  items: {
+    allowVolumeExpansion?: boolean;
+    allowedTopologies?: {
+      matchLabelExpressions?: { key: string; values: string[] }[];
+    }[];
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    mountOptions?: string[];
+    parameters?: Record<string, string>;
+    provisioner: string;
+    reclaimPolicy?: string;
+    volumeBindingMode?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4428,9 +6396,7 @@ export const ListStorageV1StorageClassOutput =
         ),
       }),
     ),
-  });
-export type ListStorageV1StorageClassOutput =
-  typeof ListStorageV1StorageClassOutput.Type;
+  }) as unknown as Schema.Codec<ListStorageV1StorageClassOutput>;
 
 // The operation
 /**
@@ -4497,6 +6463,20 @@ export const listStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListStorageV1VolumeAttachmentInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -4516,11 +6496,249 @@ export const ListStorageV1VolumeAttachmentInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/volumeattachments",
     }),
-  );
-export type ListStorageV1VolumeAttachmentInput =
-  typeof ListStorageV1VolumeAttachmentInput.Type;
+  ) as unknown as Schema.Codec<ListStorageV1VolumeAttachmentInput>;
 
 // Output Schema
+export interface ListStorageV1VolumeAttachmentOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      attacher: string;
+      nodeName: string;
+      source: {
+        inlineVolumeSpec?: {
+          accessModes?: string[];
+          awsElasticBlockStore?: {
+            fsType?: string;
+            partition?: number;
+            readOnly?: boolean;
+            volumeID: string;
+          };
+          azureDisk?: {
+            cachingMode?: string;
+            diskName: string;
+            diskURI: string;
+            fsType?: string;
+            kind?: string;
+            readOnly?: boolean;
+          };
+          azureFile?: {
+            readOnly?: boolean;
+            secretName: string;
+            secretNamespace?: string;
+            shareName: string;
+          };
+          capacity?: Record<string, string>;
+          cephfs?: {
+            monitors: string[];
+            path?: string;
+            readOnly?: boolean;
+            secretFile?: string;
+            secretRef?: { name?: string; namespace?: string };
+            user?: string;
+          };
+          cinder?: {
+            fsType?: string;
+            readOnly?: boolean;
+            secretRef?: { name?: string; namespace?: string };
+            volumeID: string;
+          };
+          claimRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          csi?: {
+            controllerExpandSecretRef?: { name?: string; namespace?: string };
+            controllerPublishSecretRef?: { name?: string; namespace?: string };
+            driver: string;
+            fsType?: string;
+            nodeExpandSecretRef?: { name?: string; namespace?: string };
+            nodePublishSecretRef?: { name?: string; namespace?: string };
+            nodeStageSecretRef?: { name?: string; namespace?: string };
+            readOnly?: boolean;
+            volumeAttributes?: Record<string, string>;
+            volumeHandle: string;
+          };
+          fc?: {
+            fsType?: string;
+            lun?: number;
+            readOnly?: boolean;
+            targetWWNs?: string[];
+            wwids?: string[];
+          };
+          flexVolume?: {
+            driver: string;
+            fsType?: string;
+            options?: Record<string, string>;
+            readOnly?: boolean;
+            secretRef?: { name?: string; namespace?: string };
+          };
+          flocker?: { datasetName?: string; datasetUUID?: string };
+          gcePersistentDisk?: {
+            fsType?: string;
+            partition?: number;
+            pdName: string;
+            readOnly?: boolean;
+          };
+          glusterfs?: {
+            endpoints: string;
+            endpointsNamespace?: string;
+            path: string;
+            readOnly?: boolean;
+          };
+          hostPath?: { path: string; type?: string };
+          iscsi?: {
+            chapAuthDiscovery?: boolean;
+            chapAuthSession?: boolean;
+            fsType?: string;
+            initiatorName?: string;
+            iqn: string;
+            iscsiInterface?: string;
+            lun: number;
+            portals?: string[];
+            readOnly?: boolean;
+            secretRef?: { name?: string; namespace?: string };
+            targetPortal: string;
+          };
+          local?: { fsType?: string; path: string };
+          mountOptions?: string[];
+          nfs?: { path: string; readOnly?: boolean; server: string };
+          nodeAffinity?: {
+            required?: {
+              nodeSelectorTerms: {
+                matchExpressions?: {
+                  key: string;
+                  operator: string;
+                  values?: string[];
+                }[];
+                matchFields?: {
+                  key: string;
+                  operator: string;
+                  values?: string[];
+                }[];
+              }[];
+            };
+          };
+          persistentVolumeReclaimPolicy?: string;
+          photonPersistentDisk?: { fsType?: string; pdID: string };
+          portworxVolume?: {
+            fsType?: string;
+            readOnly?: boolean;
+            volumeID: string;
+          };
+          quobyte?: {
+            group?: string;
+            readOnly?: boolean;
+            registry: string;
+            tenant?: string;
+            user?: string;
+            volume: string;
+          };
+          rbd?: {
+            fsType?: string;
+            image: string;
+            keyring?: string;
+            monitors: string[];
+            pool?: string;
+            readOnly?: boolean;
+            secretRef?: { name?: string; namespace?: string };
+            user?: string;
+          };
+          scaleIO?: {
+            fsType?: string;
+            gateway: string;
+            protectionDomain?: string;
+            readOnly?: boolean;
+            secretRef: { name?: string; namespace?: string };
+            sslEnabled?: boolean;
+            storageMode?: string;
+            storagePool?: string;
+            system: string;
+            volumeName?: string;
+          };
+          storageClassName?: string;
+          storageos?: {
+            fsType?: string;
+            readOnly?: boolean;
+            secretRef?: {
+              apiVersion?: string;
+              fieldPath?: string;
+              kind?: string;
+              name?: string;
+              namespace?: string;
+              resourceVersion?: string;
+              uid?: string;
+            };
+            volumeName?: string;
+            volumeNamespace?: string;
+          };
+          volumeAttributesClassName?: string;
+          volumeMode?: string;
+          vsphereVolume?: {
+            fsType?: string;
+            storagePolicyID?: string;
+            storagePolicyName?: string;
+            volumePath: string;
+          };
+        };
+        persistentVolumeName?: string;
+      };
+    };
+    status?: {
+      attachError?: { errorCode?: number; message?: string; time?: string };
+      attached: boolean;
+      attachmentMetadata?: Record<string, string>;
+      detachError?: { errorCode?: number; message?: string; time?: string };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4942,9 +7160,7 @@ export const ListStorageV1VolumeAttachmentOutput =
         ),
       }),
     ),
-  });
-export type ListStorageV1VolumeAttachmentOutput =
-  typeof ListStorageV1VolumeAttachmentOutput.Type;
+  }) as unknown as Schema.Codec<ListStorageV1VolumeAttachmentOutput>;
 
 // The operation
 /**
@@ -5010,6 +7226,20 @@ export const listStorageV1VolumeAttachment =
     outputSchema: ListStorageV1VolumeAttachmentOutput,
   }));
 // Input Schema
+export interface ListStorageV1VolumeAttributesClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -5029,11 +7259,58 @@ export const ListStorageV1VolumeAttributesClassInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/volumeattributesclasses",
     }),
-  );
-export type ListStorageV1VolumeAttributesClassInput =
-  typeof ListStorageV1VolumeAttributesClassInput.Type;
+  ) as unknown as Schema.Codec<ListStorageV1VolumeAttributesClassInput>;
 
 // Output Schema
+export interface ListStorageV1VolumeAttributesClassOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    driverName: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    parameters?: Record<string, string>;
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5107,9 +7384,7 @@ export const ListStorageV1VolumeAttributesClassOutput =
         ),
       }),
     ),
-  });
-export type ListStorageV1VolumeAttributesClassOutput =
-  typeof ListStorageV1VolumeAttributesClassOutput.Type;
+  }) as unknown as Schema.Codec<ListStorageV1VolumeAttributesClassOutput>;
 
 // The operation
 /**
@@ -5175,6 +7450,14 @@ export const listStorageV1VolumeAttributesClass =
     outputSchema: ListStorageV1VolumeAttributesClassOutput,
   }));
 // Input Schema
+export interface PatchStorageV1CSIDriverInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5188,11 +7471,58 @@ export const PatchStorageV1CSIDriverInput =
       method: "PATCH",
       path: "/apis/storage.k8s.io/v1/csidrivers/{name}",
     }),
-  );
-export type PatchStorageV1CSIDriverInput =
-  typeof PatchStorageV1CSIDriverInput.Type;
+  ) as unknown as Schema.Codec<PatchStorageV1CSIDriverInput>;
 
 // Output Schema
+export interface PatchStorageV1CSIDriverOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attachRequired?: boolean;
+    fsGroupPolicy?: string;
+    nodeAllocatableUpdatePeriodSeconds?: number;
+    podInfoOnMount?: boolean;
+    preventPodSchedulingIfMissing?: boolean;
+    requiresRepublish?: boolean;
+    seLinuxMount?: boolean;
+    serviceAccountTokenInSecrets?: boolean;
+    storageCapacity?: boolean;
+    tokenRequests?: { audience: string; expirationSeconds?: number }[];
+    volumeLifecycleModes?: string[];
+  };
+}
 export const PatchStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5261,9 +7591,7 @@ export const PatchStorageV1CSIDriverOutput =
       ),
       volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
     }),
-  });
-export type PatchStorageV1CSIDriverOutput =
-  typeof PatchStorageV1CSIDriverOutput.Type;
+  }) as unknown as Schema.Codec<PatchStorageV1CSIDriverOutput>;
 
 // The operation
 /**
@@ -5284,6 +7612,14 @@ export const patchStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PatchStorageV1CSINodeInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5297,10 +7633,53 @@ export const PatchStorageV1CSINodeInput =
       method: "PATCH",
       path: "/apis/storage.k8s.io/v1/csinodes/{name}",
     }),
-  );
-export type PatchStorageV1CSINodeInput = typeof PatchStorageV1CSINodeInput.Type;
+  ) as unknown as Schema.Codec<PatchStorageV1CSINodeInput>;
 
 // Output Schema
+export interface PatchStorageV1CSINodeOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    drivers: {
+      allocatable?: { count?: number };
+      name: string;
+      nodeID: string;
+      topologyKeys?: string[];
+    }[];
+  };
+}
 export const PatchStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5363,9 +7742,7 @@ export const PatchStorageV1CSINodeOutput =
         }),
       ),
     }),
-  });
-export type PatchStorageV1CSINodeOutput =
-  typeof PatchStorageV1CSINodeOutput.Type;
+  }) as unknown as Schema.Codec<PatchStorageV1CSINodeOutput>;
 
 // The operation
 /**
@@ -5386,6 +7763,15 @@ export const patchStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PatchStorageV1NamespacedCSIStorageCapacityInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5400,11 +7786,52 @@ export const PatchStorageV1NamespacedCSIStorageCapacityInput =
       method: "PATCH",
       path: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities/{name}",
     }),
-  );
-export type PatchStorageV1NamespacedCSIStorageCapacityInput =
-  typeof PatchStorageV1NamespacedCSIStorageCapacityInput.Type;
+  ) as unknown as Schema.Codec<PatchStorageV1NamespacedCSIStorageCapacityInput>;
 
 // Output Schema
+export interface PatchStorageV1NamespacedCSIStorageCapacityOutput {
+  apiVersion?: string;
+  capacity?: string;
+  kind?: string;
+  maximumVolumeSize?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  nodeTopology?: {
+    matchExpressions?: { key: string; operator: string; values?: string[] }[];
+    matchLabels?: Record<string, string>;
+  };
+  storageClassName: string;
+}
 export const PatchStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5472,9 +7899,7 @@ export const PatchStorageV1NamespacedCSIStorageCapacityOutput =
       }),
     ),
     storageClassName: Schema.String,
-  });
-export type PatchStorageV1NamespacedCSIStorageCapacityOutput =
-  typeof PatchStorageV1NamespacedCSIStorageCapacityOutput.Type;
+  }) as unknown as Schema.Codec<PatchStorageV1NamespacedCSIStorageCapacityOutput>;
 
 // The operation
 /**
@@ -5495,6 +7920,14 @@ export const patchStorageV1NamespacedCSIStorageCapacity =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchStorageV1StorageClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5508,11 +7941,54 @@ export const PatchStorageV1StorageClassInput =
       method: "PATCH",
       path: "/apis/storage.k8s.io/v1/storageclasses/{name}",
     }),
-  );
-export type PatchStorageV1StorageClassInput =
-  typeof PatchStorageV1StorageClassInput.Type;
+  ) as unknown as Schema.Codec<PatchStorageV1StorageClassInput>;
 
 // Output Schema
+export interface PatchStorageV1StorageClassOutput {
+  allowVolumeExpansion?: boolean;
+  allowedTopologies?: {
+    matchLabelExpressions?: { key: string; values: string[] }[];
+  }[];
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  mountOptions?: string[];
+  parameters?: Record<string, string>;
+  provisioner: string;
+  reclaimPolicy?: string;
+  volumeBindingMode?: string;
+}
 export const PatchStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
@@ -5581,9 +8057,7 @@ export const PatchStorageV1StorageClassOutput =
     provisioner: Schema.String,
     reclaimPolicy: Schema.optional(Schema.String),
     volumeBindingMode: Schema.optional(Schema.String),
-  });
-export type PatchStorageV1StorageClassOutput =
-  typeof PatchStorageV1StorageClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchStorageV1StorageClassOutput>;
 
 // The operation
 /**
@@ -5604,6 +8078,14 @@ export const patchStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PatchStorageV1VolumeAttachmentInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5617,11 +8099,238 @@ export const PatchStorageV1VolumeAttachmentInput =
       method: "PATCH",
       path: "/apis/storage.k8s.io/v1/volumeattachments/{name}",
     }),
-  );
-export type PatchStorageV1VolumeAttachmentInput =
-  typeof PatchStorageV1VolumeAttachmentInput.Type;
+  ) as unknown as Schema.Codec<PatchStorageV1VolumeAttachmentInput>;
 
 // Output Schema
+export interface PatchStorageV1VolumeAttachmentOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const PatchStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6022,9 +8731,7 @@ export const PatchStorageV1VolumeAttachmentOutput =
         ),
       }),
     ),
-  });
-export type PatchStorageV1VolumeAttachmentOutput =
-  typeof PatchStorageV1VolumeAttachmentOutput.Type;
+  }) as unknown as Schema.Codec<PatchStorageV1VolumeAttachmentOutput>;
 
 // The operation
 /**
@@ -6044,6 +8751,14 @@ export const patchStorageV1VolumeAttachment =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchStorageV1VolumeAttachmentStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStorageV1VolumeAttachmentStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6057,11 +8772,238 @@ export const PatchStorageV1VolumeAttachmentStatusInput =
       method: "PATCH",
       path: "/apis/storage.k8s.io/v1/volumeattachments/{name}/status",
     }),
-  );
-export type PatchStorageV1VolumeAttachmentStatusInput =
-  typeof PatchStorageV1VolumeAttachmentStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchStorageV1VolumeAttachmentStatusInput>;
 
 // Output Schema
+export interface PatchStorageV1VolumeAttachmentStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const PatchStorageV1VolumeAttachmentStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6462,9 +9404,7 @@ export const PatchStorageV1VolumeAttachmentStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchStorageV1VolumeAttachmentStatusOutput =
-  typeof PatchStorageV1VolumeAttachmentStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchStorageV1VolumeAttachmentStatusOutput>;
 
 // The operation
 /**
@@ -6484,6 +9424,14 @@ export const patchStorageV1VolumeAttachmentStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchStorageV1VolumeAttributesClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6497,11 +9445,47 @@ export const PatchStorageV1VolumeAttributesClassInput =
       method: "PATCH",
       path: "/apis/storage.k8s.io/v1/volumeattributesclasses/{name}",
     }),
-  );
-export type PatchStorageV1VolumeAttributesClassInput =
-  typeof PatchStorageV1VolumeAttributesClassInput.Type;
+  ) as unknown as Schema.Codec<PatchStorageV1VolumeAttributesClassInput>;
 
 // Output Schema
+export interface PatchStorageV1VolumeAttributesClassOutput {
+  apiVersion?: string;
+  driverName: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  parameters?: Record<string, string>;
+}
 export const PatchStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6552,9 +9536,7 @@ export const PatchStorageV1VolumeAttributesClassOutput =
       }),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type PatchStorageV1VolumeAttributesClassOutput =
-  typeof PatchStorageV1VolumeAttributesClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchStorageV1VolumeAttributesClassOutput>;
 
 // The operation
 /**
@@ -6574,6 +9556,10 @@ export const patchStorageV1VolumeAttributesClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadStorageV1CSIDriverInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6583,11 +9569,58 @@ export const ReadStorageV1CSIDriverInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/csidrivers/{name}",
     }),
-  );
-export type ReadStorageV1CSIDriverInput =
-  typeof ReadStorageV1CSIDriverInput.Type;
+  ) as unknown as Schema.Codec<ReadStorageV1CSIDriverInput>;
 
 // Output Schema
+export interface ReadStorageV1CSIDriverOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attachRequired?: boolean;
+    fsGroupPolicy?: string;
+    nodeAllocatableUpdatePeriodSeconds?: number;
+    podInfoOnMount?: boolean;
+    preventPodSchedulingIfMissing?: boolean;
+    requiresRepublish?: boolean;
+    seLinuxMount?: boolean;
+    serviceAccountTokenInSecrets?: boolean;
+    storageCapacity?: boolean;
+    tokenRequests?: { audience: string; expirationSeconds?: number }[];
+    volumeLifecycleModes?: string[];
+  };
+}
 export const ReadStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6656,9 +9689,7 @@ export const ReadStorageV1CSIDriverOutput =
       ),
       volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
     }),
-  });
-export type ReadStorageV1CSIDriverOutput =
-  typeof ReadStorageV1CSIDriverOutput.Type;
+  }) as unknown as Schema.Codec<ReadStorageV1CSIDriverOutput>;
 
 // The operation
 /**
@@ -6675,16 +9706,63 @@ export const readStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReadStorageV1CSINodeInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/csinodes/{name}" }),
-  );
-export type ReadStorageV1CSINodeInput = typeof ReadStorageV1CSINodeInput.Type;
+  ) as unknown as Schema.Codec<ReadStorageV1CSINodeInput>;
 
 // Output Schema
+export interface ReadStorageV1CSINodeOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    drivers: {
+      allocatable?: { count?: number };
+      name: string;
+      nodeID: string;
+      topologyKeys?: string[];
+    }[];
+  };
+}
 export const ReadStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6747,8 +9825,7 @@ export const ReadStorageV1CSINodeOutput =
         }),
       ),
     }),
-  });
-export type ReadStorageV1CSINodeOutput = typeof ReadStorageV1CSINodeOutput.Type;
+  }) as unknown as Schema.Codec<ReadStorageV1CSINodeOutput>;
 
 // The operation
 /**
@@ -6765,6 +9842,11 @@ export const readStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReadStorageV1NamespacedCSIStorageCapacityInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6775,11 +9857,52 @@ export const ReadStorageV1NamespacedCSIStorageCapacityInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities/{name}",
     }),
-  );
-export type ReadStorageV1NamespacedCSIStorageCapacityInput =
-  typeof ReadStorageV1NamespacedCSIStorageCapacityInput.Type;
+  ) as unknown as Schema.Codec<ReadStorageV1NamespacedCSIStorageCapacityInput>;
 
 // Output Schema
+export interface ReadStorageV1NamespacedCSIStorageCapacityOutput {
+  apiVersion?: string;
+  capacity?: string;
+  kind?: string;
+  maximumVolumeSize?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  nodeTopology?: {
+    matchExpressions?: { key: string; operator: string; values?: string[] }[];
+    matchLabels?: Record<string, string>;
+  };
+  storageClassName: string;
+}
 export const ReadStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6847,9 +9970,7 @@ export const ReadStorageV1NamespacedCSIStorageCapacityOutput =
       }),
     ),
     storageClassName: Schema.String,
-  });
-export type ReadStorageV1NamespacedCSIStorageCapacityOutput =
-  typeof ReadStorageV1NamespacedCSIStorageCapacityOutput.Type;
+  }) as unknown as Schema.Codec<ReadStorageV1NamespacedCSIStorageCapacityOutput>;
 
 // The operation
 /**
@@ -6866,6 +9987,10 @@ export const readStorageV1NamespacedCSIStorageCapacity =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadStorageV1StorageClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6875,11 +10000,54 @@ export const ReadStorageV1StorageClassInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/storageclasses/{name}",
     }),
-  );
-export type ReadStorageV1StorageClassInput =
-  typeof ReadStorageV1StorageClassInput.Type;
+  ) as unknown as Schema.Codec<ReadStorageV1StorageClassInput>;
 
 // Output Schema
+export interface ReadStorageV1StorageClassOutput {
+  allowVolumeExpansion?: boolean;
+  allowedTopologies?: {
+    matchLabelExpressions?: { key: string; values: string[] }[];
+  }[];
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  mountOptions?: string[];
+  parameters?: Record<string, string>;
+  provisioner: string;
+  reclaimPolicy?: string;
+  volumeBindingMode?: string;
+}
 export const ReadStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
@@ -6948,9 +10116,7 @@ export const ReadStorageV1StorageClassOutput =
     provisioner: Schema.String,
     reclaimPolicy: Schema.optional(Schema.String),
     volumeBindingMode: Schema.optional(Schema.String),
-  });
-export type ReadStorageV1StorageClassOutput =
-  typeof ReadStorageV1StorageClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadStorageV1StorageClassOutput>;
 
 // The operation
 /**
@@ -6967,6 +10133,10 @@ export const readStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReadStorageV1VolumeAttachmentInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6976,11 +10146,238 @@ export const ReadStorageV1VolumeAttachmentInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/volumeattachments/{name}",
     }),
-  );
-export type ReadStorageV1VolumeAttachmentInput =
-  typeof ReadStorageV1VolumeAttachmentInput.Type;
+  ) as unknown as Schema.Codec<ReadStorageV1VolumeAttachmentInput>;
 
 // Output Schema
+export interface ReadStorageV1VolumeAttachmentOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const ReadStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7381,9 +10778,7 @@ export const ReadStorageV1VolumeAttachmentOutput =
         ),
       }),
     ),
-  });
-export type ReadStorageV1VolumeAttachmentOutput =
-  typeof ReadStorageV1VolumeAttachmentOutput.Type;
+  }) as unknown as Schema.Codec<ReadStorageV1VolumeAttachmentOutput>;
 
 // The operation
 /**
@@ -7399,6 +10794,10 @@ export const readStorageV1VolumeAttachment =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadStorageV1VolumeAttachmentStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadStorageV1VolumeAttachmentStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7408,11 +10807,238 @@ export const ReadStorageV1VolumeAttachmentStatusInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/volumeattachments/{name}/status",
     }),
-  );
-export type ReadStorageV1VolumeAttachmentStatusInput =
-  typeof ReadStorageV1VolumeAttachmentStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadStorageV1VolumeAttachmentStatusInput>;
 
 // Output Schema
+export interface ReadStorageV1VolumeAttachmentStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const ReadStorageV1VolumeAttachmentStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7813,9 +11439,7 @@ export const ReadStorageV1VolumeAttachmentStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadStorageV1VolumeAttachmentStatusOutput =
-  typeof ReadStorageV1VolumeAttachmentStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadStorageV1VolumeAttachmentStatusOutput>;
 
 // The operation
 /**
@@ -7831,6 +11455,10 @@ export const readStorageV1VolumeAttachmentStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadStorageV1VolumeAttributesClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7840,11 +11468,47 @@ export const ReadStorageV1VolumeAttributesClassInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/volumeattributesclasses/{name}",
     }),
-  );
-export type ReadStorageV1VolumeAttributesClassInput =
-  typeof ReadStorageV1VolumeAttributesClassInput.Type;
+  ) as unknown as Schema.Codec<ReadStorageV1VolumeAttributesClassInput>;
 
 // Output Schema
+export interface ReadStorageV1VolumeAttributesClassOutput {
+  apiVersion?: string;
+  driverName: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  parameters?: Record<string, string>;
+}
 export const ReadStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7895,9 +11559,7 @@ export const ReadStorageV1VolumeAttributesClassOutput =
       }),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ReadStorageV1VolumeAttributesClassOutput =
-  typeof ReadStorageV1VolumeAttributesClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadStorageV1VolumeAttributesClassOutput>;
 
 // The operation
 /**
@@ -7913,6 +11575,60 @@ export const readStorageV1VolumeAttributesClass =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceStorageV1CSIDriverInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attachRequired?: boolean;
+    fsGroupPolicy?: string;
+    nodeAllocatableUpdatePeriodSeconds?: number;
+    podInfoOnMount?: boolean;
+    preventPodSchedulingIfMissing?: boolean;
+    requiresRepublish?: boolean;
+    seLinuxMount?: boolean;
+    serviceAccountTokenInSecrets?: boolean;
+    storageCapacity?: boolean;
+    tokenRequests?: { audience: string; expirationSeconds?: number }[];
+    volumeLifecycleModes?: string[];
+  };
+}
 export const ReplaceStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7991,11 +11707,58 @@ export const ReplaceStorageV1CSIDriverInput =
       method: "PUT",
       path: "/apis/storage.k8s.io/v1/csidrivers/{name}",
     }),
-  );
-export type ReplaceStorageV1CSIDriverInput =
-  typeof ReplaceStorageV1CSIDriverInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStorageV1CSIDriverInput>;
 
 // Output Schema
+export interface ReplaceStorageV1CSIDriverOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attachRequired?: boolean;
+    fsGroupPolicy?: string;
+    nodeAllocatableUpdatePeriodSeconds?: number;
+    podInfoOnMount?: boolean;
+    preventPodSchedulingIfMissing?: boolean;
+    requiresRepublish?: boolean;
+    seLinuxMount?: boolean;
+    serviceAccountTokenInSecrets?: boolean;
+    storageCapacity?: boolean;
+    tokenRequests?: { audience: string; expirationSeconds?: number }[];
+    volumeLifecycleModes?: string[];
+  };
+}
 export const ReplaceStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8064,9 +11827,7 @@ export const ReplaceStorageV1CSIDriverOutput =
       ),
       volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
     }),
-  });
-export type ReplaceStorageV1CSIDriverOutput =
-  typeof ReplaceStorageV1CSIDriverOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStorageV1CSIDriverOutput>;
 
 // The operation
 /**
@@ -8086,6 +11847,55 @@ export const replaceStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReplaceStorageV1CSINodeInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    drivers: {
+      allocatable?: { count?: number };
+      name: string;
+      nodeID: string;
+      topologyKeys?: string[];
+    }[];
+  };
+}
 export const ReplaceStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8155,11 +11965,53 @@ export const ReplaceStorageV1CSINodeInput =
     }),
   }).pipe(
     T.Http({ method: "PUT", path: "/apis/storage.k8s.io/v1/csinodes/{name}" }),
-  );
-export type ReplaceStorageV1CSINodeInput =
-  typeof ReplaceStorageV1CSINodeInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStorageV1CSINodeInput>;
 
 // Output Schema
+export interface ReplaceStorageV1CSINodeOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    drivers: {
+      allocatable?: { count?: number };
+      name: string;
+      nodeID: string;
+      topologyKeys?: string[];
+    }[];
+  };
+}
 export const ReplaceStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8222,9 +12074,7 @@ export const ReplaceStorageV1CSINodeOutput =
         }),
       ),
     }),
-  });
-export type ReplaceStorageV1CSINodeOutput =
-  typeof ReplaceStorageV1CSINodeOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStorageV1CSINodeOutput>;
 
 // The operation
 /**
@@ -8244,6 +12094,55 @@ export const replaceStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReplaceStorageV1NamespacedCSIStorageCapacityInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  capacity?: string;
+  kind?: string;
+  maximumVolumeSize?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  nodeTopology?: {
+    matchExpressions?: { key: string; operator: string; values?: string[] }[];
+    matchLabels?: Record<string, string>;
+  };
+  storageClassName: string;
+}
 export const ReplaceStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8322,11 +12221,52 @@ export const ReplaceStorageV1NamespacedCSIStorageCapacityInput =
       method: "PUT",
       path: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities/{name}",
     }),
-  );
-export type ReplaceStorageV1NamespacedCSIStorageCapacityInput =
-  typeof ReplaceStorageV1NamespacedCSIStorageCapacityInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStorageV1NamespacedCSIStorageCapacityInput>;
 
 // Output Schema
+export interface ReplaceStorageV1NamespacedCSIStorageCapacityOutput {
+  apiVersion?: string;
+  capacity?: string;
+  kind?: string;
+  maximumVolumeSize?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  nodeTopology?: {
+    matchExpressions?: { key: string; operator: string; values?: string[] }[];
+    matchLabels?: Record<string, string>;
+  };
+  storageClassName: string;
+}
 export const ReplaceStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8394,9 +12334,7 @@ export const ReplaceStorageV1NamespacedCSIStorageCapacityOutput =
       }),
     ),
     storageClassName: Schema.String,
-  });
-export type ReplaceStorageV1NamespacedCSIStorageCapacityOutput =
-  typeof ReplaceStorageV1NamespacedCSIStorageCapacityOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStorageV1NamespacedCSIStorageCapacityOutput>;
 
 // The operation
 /**
@@ -8416,6 +12354,56 @@ export const replaceStorageV1NamespacedCSIStorageCapacity =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceStorageV1StorageClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  allowVolumeExpansion?: boolean;
+  allowedTopologies?: {
+    matchLabelExpressions?: { key: string; values: string[] }[];
+  }[];
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  mountOptions?: string[];
+  parameters?: Record<string, string>;
+  provisioner: string;
+  reclaimPolicy?: string;
+  volumeBindingMode?: string;
+}
 export const ReplaceStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8494,11 +12482,54 @@ export const ReplaceStorageV1StorageClassInput =
       method: "PUT",
       path: "/apis/storage.k8s.io/v1/storageclasses/{name}",
     }),
-  );
-export type ReplaceStorageV1StorageClassInput =
-  typeof ReplaceStorageV1StorageClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStorageV1StorageClassInput>;
 
 // Output Schema
+export interface ReplaceStorageV1StorageClassOutput {
+  allowVolumeExpansion?: boolean;
+  allowedTopologies?: {
+    matchLabelExpressions?: { key: string; values: string[] }[];
+  }[];
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  mountOptions?: string[];
+  parameters?: Record<string, string>;
+  provisioner: string;
+  reclaimPolicy?: string;
+  volumeBindingMode?: string;
+}
 export const ReplaceStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
@@ -8567,9 +12598,7 @@ export const ReplaceStorageV1StorageClassOutput =
     provisioner: Schema.String,
     reclaimPolicy: Schema.optional(Schema.String),
     volumeBindingMode: Schema.optional(Schema.String),
-  });
-export type ReplaceStorageV1StorageClassOutput =
-  typeof ReplaceStorageV1StorageClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStorageV1StorageClassOutput>;
 
 // The operation
 /**
@@ -8588,6 +12617,240 @@ export const replaceStorageV1StorageClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceStorageV1VolumeAttachmentInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const ReplaceStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8998,11 +13261,238 @@ export const ReplaceStorageV1VolumeAttachmentInput =
       method: "PUT",
       path: "/apis/storage.k8s.io/v1/volumeattachments/{name}",
     }),
-  );
-export type ReplaceStorageV1VolumeAttachmentInput =
-  typeof ReplaceStorageV1VolumeAttachmentInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStorageV1VolumeAttachmentInput>;
 
 // Output Schema
+export interface ReplaceStorageV1VolumeAttachmentOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const ReplaceStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9403,9 +13893,7 @@ export const ReplaceStorageV1VolumeAttachmentOutput =
         ),
       }),
     ),
-  });
-export type ReplaceStorageV1VolumeAttachmentOutput =
-  typeof ReplaceStorageV1VolumeAttachmentOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStorageV1VolumeAttachmentOutput>;
 
 // The operation
 /**
@@ -9424,6 +13912,240 @@ export const replaceStorageV1VolumeAttachment =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceStorageV1VolumeAttachmentStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const ReplaceStorageV1VolumeAttachmentStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -9834,11 +14556,238 @@ export const ReplaceStorageV1VolumeAttachmentStatusInput =
       method: "PUT",
       path: "/apis/storage.k8s.io/v1/volumeattachments/{name}/status",
     }),
-  );
-export type ReplaceStorageV1VolumeAttachmentStatusInput =
-  typeof ReplaceStorageV1VolumeAttachmentStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStorageV1VolumeAttachmentStatusInput>;
 
 // Output Schema
+export interface ReplaceStorageV1VolumeAttachmentStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    attacher: string;
+    nodeName: string;
+    source: {
+      inlineVolumeSpec?: {
+        accessModes?: string[];
+        awsElasticBlockStore?: {
+          fsType?: string;
+          partition?: number;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        azureDisk?: {
+          cachingMode?: string;
+          diskName: string;
+          diskURI: string;
+          fsType?: string;
+          kind?: string;
+          readOnly?: boolean;
+        };
+        azureFile?: {
+          readOnly?: boolean;
+          secretName: string;
+          secretNamespace?: string;
+          shareName: string;
+        };
+        capacity?: Record<string, string>;
+        cephfs?: {
+          monitors: string[];
+          path?: string;
+          readOnly?: boolean;
+          secretFile?: string;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        cinder?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          volumeID: string;
+        };
+        claimRef?: {
+          apiVersion?: string;
+          fieldPath?: string;
+          kind?: string;
+          name?: string;
+          namespace?: string;
+          resourceVersion?: string;
+          uid?: string;
+        };
+        csi?: {
+          controllerExpandSecretRef?: { name?: string; namespace?: string };
+          controllerPublishSecretRef?: { name?: string; namespace?: string };
+          driver: string;
+          fsType?: string;
+          nodeExpandSecretRef?: { name?: string; namespace?: string };
+          nodePublishSecretRef?: { name?: string; namespace?: string };
+          nodeStageSecretRef?: { name?: string; namespace?: string };
+          readOnly?: boolean;
+          volumeAttributes?: Record<string, string>;
+          volumeHandle: string;
+        };
+        fc?: {
+          fsType?: string;
+          lun?: number;
+          readOnly?: boolean;
+          targetWWNs?: string[];
+          wwids?: string[];
+        };
+        flexVolume?: {
+          driver: string;
+          fsType?: string;
+          options?: Record<string, string>;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+        };
+        flocker?: { datasetName?: string; datasetUUID?: string };
+        gcePersistentDisk?: {
+          fsType?: string;
+          partition?: number;
+          pdName: string;
+          readOnly?: boolean;
+        };
+        glusterfs?: {
+          endpoints: string;
+          endpointsNamespace?: string;
+          path: string;
+          readOnly?: boolean;
+        };
+        hostPath?: { path: string; type?: string };
+        iscsi?: {
+          chapAuthDiscovery?: boolean;
+          chapAuthSession?: boolean;
+          fsType?: string;
+          initiatorName?: string;
+          iqn: string;
+          iscsiInterface?: string;
+          lun: number;
+          portals?: string[];
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          targetPortal: string;
+        };
+        local?: { fsType?: string; path: string };
+        mountOptions?: string[];
+        nfs?: { path: string; readOnly?: boolean; server: string };
+        nodeAffinity?: {
+          required?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+        };
+        persistentVolumeReclaimPolicy?: string;
+        photonPersistentDisk?: { fsType?: string; pdID: string };
+        portworxVolume?: {
+          fsType?: string;
+          readOnly?: boolean;
+          volumeID: string;
+        };
+        quobyte?: {
+          group?: string;
+          readOnly?: boolean;
+          registry: string;
+          tenant?: string;
+          user?: string;
+          volume: string;
+        };
+        rbd?: {
+          fsType?: string;
+          image: string;
+          keyring?: string;
+          monitors: string[];
+          pool?: string;
+          readOnly?: boolean;
+          secretRef?: { name?: string; namespace?: string };
+          user?: string;
+        };
+        scaleIO?: {
+          fsType?: string;
+          gateway: string;
+          protectionDomain?: string;
+          readOnly?: boolean;
+          secretRef: { name?: string; namespace?: string };
+          sslEnabled?: boolean;
+          storageMode?: string;
+          storagePool?: string;
+          system: string;
+          volumeName?: string;
+        };
+        storageClassName?: string;
+        storageos?: {
+          fsType?: string;
+          readOnly?: boolean;
+          secretRef?: {
+            apiVersion?: string;
+            fieldPath?: string;
+            kind?: string;
+            name?: string;
+            namespace?: string;
+            resourceVersion?: string;
+            uid?: string;
+          };
+          volumeName?: string;
+          volumeNamespace?: string;
+        };
+        volumeAttributesClassName?: string;
+        volumeMode?: string;
+        vsphereVolume?: {
+          fsType?: string;
+          storagePolicyID?: string;
+          storagePolicyName?: string;
+          volumePath: string;
+        };
+      };
+      persistentVolumeName?: string;
+    };
+  };
+  status?: {
+    attachError?: { errorCode?: number; message?: string; time?: string };
+    attached: boolean;
+    attachmentMetadata?: Record<string, string>;
+    detachError?: { errorCode?: number; message?: string; time?: string };
+  };
+}
 export const ReplaceStorageV1VolumeAttachmentStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10239,9 +15188,7 @@ export const ReplaceStorageV1VolumeAttachmentStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceStorageV1VolumeAttachmentStatusOutput =
-  typeof ReplaceStorageV1VolumeAttachmentStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStorageV1VolumeAttachmentStatusOutput>;
 
 // The operation
 /**
@@ -10260,6 +15207,49 @@ export const replaceStorageV1VolumeAttachmentStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceStorageV1VolumeAttributesClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  driverName: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  parameters?: Record<string, string>;
+}
 export const ReplaceStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10320,11 +15310,47 @@ export const ReplaceStorageV1VolumeAttributesClassInput =
       method: "PUT",
       path: "/apis/storage.k8s.io/v1/volumeattributesclasses/{name}",
     }),
-  );
-export type ReplaceStorageV1VolumeAttributesClassInput =
-  typeof ReplaceStorageV1VolumeAttributesClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStorageV1VolumeAttributesClassInput>;
 
 // Output Schema
+export interface ReplaceStorageV1VolumeAttributesClassOutput {
+  apiVersion?: string;
+  driverName: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  parameters?: Record<string, string>;
+}
 export const ReplaceStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10375,9 +15401,7 @@ export const ReplaceStorageV1VolumeAttributesClassOutput =
       }),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ReplaceStorageV1VolumeAttributesClassOutput =
-  typeof ReplaceStorageV1VolumeAttributesClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStorageV1VolumeAttributesClassOutput>;
 
 // The operation
 /**
@@ -10396,6 +15420,21 @@ export const replaceStorageV1VolumeAttributesClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchStorageV1CSIDriverInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10416,18 +15455,18 @@ export const WatchStorageV1CSIDriverInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/csidrivers/{name}",
     }),
-  );
-export type WatchStorageV1CSIDriverInput =
-  typeof WatchStorageV1CSIDriverInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1CSIDriverInput>;
 
 // Output Schema
+export interface WatchStorageV1CSIDriverOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1CSIDriverOutput =
-  typeof WatchStorageV1CSIDriverOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1CSIDriverOutput>;
 
 // The operation
 /**
@@ -10495,6 +15534,20 @@ export const watchStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchStorageV1CSIDriverListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1CSIDriverListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -10511,18 +15564,18 @@ export const WatchStorageV1CSIDriverListInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/watch/csidrivers" }),
-  );
-export type WatchStorageV1CSIDriverListInput =
-  typeof WatchStorageV1CSIDriverListInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1CSIDriverListInput>;
 
 // Output Schema
+export interface WatchStorageV1CSIDriverListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1CSIDriverListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1CSIDriverListOutput =
-  typeof WatchStorageV1CSIDriverListOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1CSIDriverListOutput>;
 
 // The operation
 /**
@@ -10589,6 +15642,21 @@ export const watchStorageV1CSIDriverList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchStorageV1CSINodeInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10609,17 +15677,18 @@ export const WatchStorageV1CSINodeInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/csinodes/{name}",
     }),
-  );
-export type WatchStorageV1CSINodeInput = typeof WatchStorageV1CSINodeInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1CSINodeInput>;
 
 // Output Schema
+export interface WatchStorageV1CSINodeOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1CSINodeOutput =
-  typeof WatchStorageV1CSINodeOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1CSINodeOutput>;
 
 // The operation
 /**
@@ -10687,6 +15756,20 @@ export const watchStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchStorageV1CSINodeListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1CSINodeListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -10703,18 +15786,18 @@ export const WatchStorageV1CSINodeListInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/storage.k8s.io/v1/watch/csinodes" }),
-  );
-export type WatchStorageV1CSINodeListInput =
-  typeof WatchStorageV1CSINodeListInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1CSINodeListInput>;
 
 // Output Schema
+export interface WatchStorageV1CSINodeListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1CSINodeListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1CSINodeListOutput =
-  typeof WatchStorageV1CSINodeListOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1CSINodeListOutput>;
 
 // The operation
 /**
@@ -10781,6 +15864,20 @@ export const watchStorageV1CSINodeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchStorageV1CSIStorageCapacityListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1CSIStorageCapacityListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -10800,18 +15897,18 @@ export const WatchStorageV1CSIStorageCapacityListForAllNamespacesInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/csistoragecapacities",
     }),
-  );
-export type WatchStorageV1CSIStorageCapacityListForAllNamespacesInput =
-  typeof WatchStorageV1CSIStorageCapacityListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1CSIStorageCapacityListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput =
-  typeof WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -10877,6 +15974,22 @@ export const watchStorageV1CSIStorageCapacityListForAllNamespaces =
     outputSchema: WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchStorageV1NamespacedCSIStorageCapacityInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10898,18 +16011,18 @@ export const WatchStorageV1NamespacedCSIStorageCapacityInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/namespaces/{namespace}/csistoragecapacities/{name}",
     }),
-  );
-export type WatchStorageV1NamespacedCSIStorageCapacityInput =
-  typeof WatchStorageV1NamespacedCSIStorageCapacityInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1NamespacedCSIStorageCapacityInput>;
 
 // Output Schema
+export interface WatchStorageV1NamespacedCSIStorageCapacityOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1NamespacedCSIStorageCapacityOutput =
-  typeof WatchStorageV1NamespacedCSIStorageCapacityOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1NamespacedCSIStorageCapacityOutput>;
 
 // The operation
 /**
@@ -10977,6 +16090,21 @@ export const watchStorageV1NamespacedCSIStorageCapacity =
     outputSchema: WatchStorageV1NamespacedCSIStorageCapacityOutput,
   }));
 // Input Schema
+export interface WatchStorageV1NamespacedCSIStorageCapacityListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1NamespacedCSIStorageCapacityListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -10997,18 +16125,18 @@ export const WatchStorageV1NamespacedCSIStorageCapacityListInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/namespaces/{namespace}/csistoragecapacities",
     }),
-  );
-export type WatchStorageV1NamespacedCSIStorageCapacityListInput =
-  typeof WatchStorageV1NamespacedCSIStorageCapacityListInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1NamespacedCSIStorageCapacityListInput>;
 
 // Output Schema
+export interface WatchStorageV1NamespacedCSIStorageCapacityListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1NamespacedCSIStorageCapacityListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1NamespacedCSIStorageCapacityListOutput =
-  typeof WatchStorageV1NamespacedCSIStorageCapacityListOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1NamespacedCSIStorageCapacityListOutput>;
 
 // The operation
 /**
@@ -11075,6 +16203,21 @@ export const watchStorageV1NamespacedCSIStorageCapacityList =
     outputSchema: WatchStorageV1NamespacedCSIStorageCapacityListOutput,
   }));
 // Input Schema
+export interface WatchStorageV1StorageClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11095,18 +16238,18 @@ export const WatchStorageV1StorageClassInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/storageclasses/{name}",
     }),
-  );
-export type WatchStorageV1StorageClassInput =
-  typeof WatchStorageV1StorageClassInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1StorageClassInput>;
 
 // Output Schema
+export interface WatchStorageV1StorageClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1StorageClassOutput =
-  typeof WatchStorageV1StorageClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1StorageClassOutput>;
 
 // The operation
 /**
@@ -11174,6 +16317,20 @@ export const watchStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchStorageV1StorageClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1StorageClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -11193,18 +16350,18 @@ export const WatchStorageV1StorageClassListInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/storageclasses",
     }),
-  );
-export type WatchStorageV1StorageClassListInput =
-  typeof WatchStorageV1StorageClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1StorageClassListInput>;
 
 // Output Schema
+export interface WatchStorageV1StorageClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1StorageClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1StorageClassListOutput =
-  typeof WatchStorageV1StorageClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1StorageClassListOutput>;
 
 // The operation
 /**
@@ -11270,6 +16427,21 @@ export const watchStorageV1StorageClassList =
     outputSchema: WatchStorageV1StorageClassListOutput,
   }));
 // Input Schema
+export interface WatchStorageV1VolumeAttachmentInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11290,18 +16462,18 @@ export const WatchStorageV1VolumeAttachmentInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/volumeattachments/{name}",
     }),
-  );
-export type WatchStorageV1VolumeAttachmentInput =
-  typeof WatchStorageV1VolumeAttachmentInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1VolumeAttachmentInput>;
 
 // Output Schema
+export interface WatchStorageV1VolumeAttachmentOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1VolumeAttachmentOutput =
-  typeof WatchStorageV1VolumeAttachmentOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1VolumeAttachmentOutput>;
 
 // The operation
 /**
@@ -11368,6 +16540,20 @@ export const watchStorageV1VolumeAttachment =
     outputSchema: WatchStorageV1VolumeAttachmentOutput,
   }));
 // Input Schema
+export interface WatchStorageV1VolumeAttachmentListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1VolumeAttachmentListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -11387,18 +16573,18 @@ export const WatchStorageV1VolumeAttachmentListInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/volumeattachments",
     }),
-  );
-export type WatchStorageV1VolumeAttachmentListInput =
-  typeof WatchStorageV1VolumeAttachmentListInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1VolumeAttachmentListInput>;
 
 // Output Schema
+export interface WatchStorageV1VolumeAttachmentListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1VolumeAttachmentListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1VolumeAttachmentListOutput =
-  typeof WatchStorageV1VolumeAttachmentListOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1VolumeAttachmentListOutput>;
 
 // The operation
 /**
@@ -11464,6 +16650,21 @@ export const watchStorageV1VolumeAttachmentList =
     outputSchema: WatchStorageV1VolumeAttachmentListOutput,
   }));
 // Input Schema
+export interface WatchStorageV1VolumeAttributesClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11484,18 +16685,18 @@ export const WatchStorageV1VolumeAttributesClassInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/volumeattributesclasses/{name}",
     }),
-  );
-export type WatchStorageV1VolumeAttributesClassInput =
-  typeof WatchStorageV1VolumeAttributesClassInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1VolumeAttributesClassInput>;
 
 // Output Schema
+export interface WatchStorageV1VolumeAttributesClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1VolumeAttributesClassOutput =
-  typeof WatchStorageV1VolumeAttributesClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1VolumeAttributesClassOutput>;
 
 // The operation
 /**
@@ -11562,6 +16763,20 @@ export const watchStorageV1VolumeAttributesClass =
     outputSchema: WatchStorageV1VolumeAttributesClassOutput,
   }));
 // Input Schema
+export interface WatchStorageV1VolumeAttributesClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStorageV1VolumeAttributesClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -11581,18 +16796,18 @@ export const WatchStorageV1VolumeAttributesClassListInput =
       method: "GET",
       path: "/apis/storage.k8s.io/v1/watch/volumeattributesclasses",
     }),
-  );
-export type WatchStorageV1VolumeAttributesClassListInput =
-  typeof WatchStorageV1VolumeAttributesClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchStorageV1VolumeAttributesClassListInput>;
 
 // Output Schema
+export interface WatchStorageV1VolumeAttributesClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStorageV1VolumeAttributesClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStorageV1VolumeAttributesClassListOutput =
-  typeof WatchStorageV1VolumeAttributesClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchStorageV1VolumeAttributesClassListOutput>;
 
 // The operation
 /**

@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteCouponsCouponInput {
+  coupon: string;
+}
 export const DeleteCouponsCouponInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coupon: Schema.String.pipe(T.PathParam()),
@@ -12,17 +15,20 @@ export const DeleteCouponsCouponInput =
       path: "/v1/coupons/{coupon}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteCouponsCouponInput = typeof DeleteCouponsCouponInput.Type;
+  ) as unknown as Schema.Codec<DeleteCouponsCouponInput>;
 
 // Output Schema
+export interface DeleteCouponsCouponOutput {
+  deleted: true;
+  id: string;
+  object: "coupon";
+}
 export const DeleteCouponsCouponOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["coupon"]),
-  });
-export type DeleteCouponsCouponOutput = typeof DeleteCouponsCouponOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCouponsCouponOutput>;
 
 // The operation
 /**

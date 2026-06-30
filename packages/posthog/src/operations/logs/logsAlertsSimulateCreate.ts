@@ -4,14 +4,64 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsAlertsSimulateCreateInput {
+  project_id: string;
+  filters?: {
+    filterGroup?: {
+      type?: "AND" | "OR";
+      values?: { type?: "AND" | "OR"; values?: unknown[] }[];
+    } | null;
+    serviceNames?: string[] | null;
+    severityLevels?:
+      | ("trace" | "debug" | "info" | "warn" | "error" | "fatal")[]
+      | null;
+  };
+  threshold_count?: number;
+  threshold_operator?: "above" | "below";
+  window_minutes?: number;
+  check_interval_minutes?: number;
+  evaluation_periods?: number;
+  datapoints_to_alarm?: number;
+  cooldown_minutes?: number;
+  date_from?: string;
+}
 export const LogsAlertsSimulateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
       Schema.Struct({
-        filterGroup: Schema.optional(Schema.Unknown),
-        serviceNames: Schema.optional(Schema.Unknown),
-        severityLevels: Schema.optional(Schema.Unknown),
+        filterGroup: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["AND", "OR"])),
+              values: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.Literals(["AND", "OR"])),
+                    values: Schema.optional(Schema.Array(Schema.Unknown)),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        serviceNames: Schema.optional(
+          Schema.NullOr(Schema.Array(Schema.String)),
+        ),
+        severityLevels: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Literals([
+                "trace",
+                "debug",
+                "info",
+                "warn",
+                "error",
+                "fatal",
+              ]),
+            ),
+          ),
+        ),
       }),
     ),
     threshold_count: Schema.optional(Schema.Number),
@@ -27,11 +77,24 @@ export const LogsAlertsSimulateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/logs/alerts/simulate/",
     }),
-  );
-export type LogsAlertsSimulateCreateInput =
-  typeof LogsAlertsSimulateCreateInput.Type;
+  ) as unknown as Schema.Codec<LogsAlertsSimulateCreateInput>;
 
 // Output Schema
+export interface LogsAlertsSimulateCreateOutput {
+  buckets?: {
+    timestamp?: string;
+    count?: number;
+    threshold_breached?: boolean;
+    state?: string;
+    notification?: string;
+    reason?: string;
+  }[];
+  fire_count?: number;
+  resolve_count?: number;
+  total_buckets?: number;
+  threshold_count?: number;
+  threshold_operator?: string;
+}
 export const LogsAlertsSimulateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buckets: Schema.optional(
@@ -51,9 +114,7 @@ export const LogsAlertsSimulateCreateOutput =
     total_buckets: Schema.optional(Schema.Number),
     threshold_count: Schema.optional(Schema.Number),
     threshold_operator: Schema.optional(Schema.String),
-  });
-export type LogsAlertsSimulateCreateOutput =
-  typeof LogsAlertsSimulateCreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsAlertsSimulateCreateOutput>;
 
 // The operation
 /**

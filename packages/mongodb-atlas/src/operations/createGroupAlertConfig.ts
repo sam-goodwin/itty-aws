@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupAlertConfigInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupAlertConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const CreateGroupAlertConfigInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs",
     }),
-  );
-export type CreateGroupAlertConfigInput =
-  typeof CreateGroupAlertConfigInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupAlertConfigInput>;
 
 // Output Schema
+export type CreateGroupAlertConfigOutput = void;
 export const CreateGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupAlertConfigOutput =
-  typeof CreateGroupAlertConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupAlertConfigOutput>;
 
 // The operation
 /**

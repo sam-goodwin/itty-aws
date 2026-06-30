@@ -4,12 +4,57 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetAPITokenInput {
+  id: string;
+}
 export const GetAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/tokens/{id}" }));
-export type GetAPITokenInput = typeof GetAPITokenInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/tokens/{id}" }),
+) as unknown as Schema.Codec<GetAPITokenInput>;
 
 // Output Schema
+export interface GetAPITokenOutput {
+  datasetCapabilities: Record<
+    string,
+    {
+      data?: "delete"[];
+      ingest?: "create"[];
+      query?: "read"[];
+      share?: ("create" | "read" | "delete")[];
+      starredQueries?: ("create" | "read" | "update" | "delete")[];
+      trim?: "update"[];
+      vacuum?: "update"[];
+      virtualFields?: ("create" | "read" | "update" | "delete")[];
+    }
+  >;
+  description?: string;
+  expiresAt?: string | null;
+  id: string;
+  name: string;
+  orgCapabilities: {
+    annotations?: ("create" | "read" | "update" | "delete")[];
+    apiTokens?: ("create" | "read" | "update" | "delete")[];
+    auditLog?: "read"[];
+    billing?: ("read" | "update")[];
+    dashboards?: ("create" | "read" | "update" | "delete")[];
+    datasets?: ("create" | "read" | "update" | "delete")[];
+    endpoints?: ("create" | "read" | "update" | "delete")[];
+    flows?: ("create" | "read" | "update" | "delete")[];
+    integrations?: ("create" | "read" | "update" | "delete")[];
+    monitors?: ("create" | "read" | "update" | "delete")[];
+    notifiers?: ("create" | "read" | "update" | "delete")[];
+    rbac?: ("create" | "read" | "update" | "delete")[];
+    sharedAccessKeys?: ("read" | "update")[];
+    users?: ("create" | "read" | "update" | "delete")[];
+    views?: ("create" | "read" | "update" | "delete")[];
+  };
+  samlAuthenticated?: boolean;
+  viewCapabilities?: Record<
+    string,
+    { query?: "read"[]; share?: ("create" | "read" | "delete")[] }
+  >;
+}
 export const GetAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.Record(
     Schema.String,
@@ -89,8 +134,7 @@ export const GetAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type GetAPITokenOutput = typeof GetAPITokenOutput.Type;
+}) as unknown as Schema.Codec<GetAPITokenOutput>;
 
 // The operation
 /**

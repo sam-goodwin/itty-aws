@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsApprovalsListInput {
+  id: string;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  state?: string;
+}
 export const AgentApplicationsApprovalsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,38 @@ export const AgentApplicationsApprovalsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{id}/approvals/",
     }),
-  );
-export type AgentApplicationsApprovalsListInput =
-  typeof AgentApplicationsApprovalsListInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsApprovalsListInput>;
 
 // Output Schema
+export interface AgentApplicationsApprovalsListOutput {
+  results: {
+    id: string;
+    session_id: string;
+    application_id: string;
+    team_id: number;
+    revision_id: string;
+    turn: number;
+    tool_call_id: string;
+    tool_name: string;
+    proposed_args: Record<string, unknown>;
+    decided_args: Record<string, unknown> | null;
+    assistant_message: Record<string, unknown>;
+    approver_scope: Record<string, unknown>;
+    state:
+      | "queued"
+      | "approving"
+      | "dispatched"
+      | "dispatched_failed"
+      | "rejected"
+      | "expired";
+    decision_by: string | null;
+    decision_at: string | null;
+    decision_reason: string | null;
+    dispatch_outcome: Record<string, unknown> | null;
+    created_at: string;
+    expires_at: string;
+  }[];
+}
 export const AgentApplicationsApprovalsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -56,9 +90,7 @@ export const AgentApplicationsApprovalsListOutput =
         expires_at: Schema.String,
       }),
     ),
-  });
-export type AgentApplicationsApprovalsListOutput =
-  typeof AgentApplicationsApprovalsListOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsApprovalsListOutput>;
 
 // The operation
 /**

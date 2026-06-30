@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupBackupCompliancePolicyInput {
+  groupId: string;
+  envelope?: boolean;
+  overwriteBackupPolicies?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupBackupCompliancePolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const UpdateGroupBackupCompliancePolicyInput =
       method: "PUT",
       path: "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy",
     }),
-  );
-export type UpdateGroupBackupCompliancePolicyInput =
-  typeof UpdateGroupBackupCompliancePolicyInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupBackupCompliancePolicyInput>;
 
 // Output Schema
+export type UpdateGroupBackupCompliancePolicyOutput = void;
 export const UpdateGroupBackupCompliancePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupBackupCompliancePolicyOutput =
-  typeof UpdateGroupBackupCompliancePolicyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupBackupCompliancePolicyOutput>;
 
 // The operation
 /**

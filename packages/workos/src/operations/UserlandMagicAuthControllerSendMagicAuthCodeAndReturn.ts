@@ -4,15 +4,29 @@ import * as T from "../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnInput {
+  email?: string;
+  invitation_token?: string;
+}
 export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     invitation_token: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/user_management/magic_auth" }));
-export type UserlandMagicAuthControllerSendMagicAuthCodeAndReturnInput =
-  typeof UserlandMagicAuthControllerSendMagicAuthCodeAndReturnInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/user_management/magic_auth" }),
+  ) as unknown as Schema.Codec<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnInput>;
 
 // Output Schema
+export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnOutput {
+  object?: string;
+  id?: string;
+  user_id?: string;
+  email?: string;
+  expires_at?: string;
+  created_at?: string;
+  updated_at?: string;
+  code?: string;
+}
 export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -23,9 +37,7 @@ export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
-  });
-export type UserlandMagicAuthControllerSendMagicAuthCodeAndReturnOutput =
-  typeof UserlandMagicAuthControllerSendMagicAuthCodeAndReturnOutput.Type;
+  }) as unknown as Schema.Codec<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnOutput>;
 
 // The operation
 /**

@@ -4,6 +4,15 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface UpdateVirtualFieldInput {
+  id: string;
+  dataset: string;
+  description?: string;
+  expression: string;
+  name: string;
+  type?: string;
+  unit?: string;
+}
 export const UpdateVirtualFieldInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +22,20 @@ export const UpdateVirtualFieldInput =
     name: Schema.String,
     type: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "PUT", path: "/v2/vfields/{id}" }));
-export type UpdateVirtualFieldInput = typeof UpdateVirtualFieldInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/v2/vfields/{id}" }),
+  ) as unknown as Schema.Codec<UpdateVirtualFieldInput>;
 
 // Output Schema
+export interface UpdateVirtualFieldOutput {
+  dataset: string;
+  description?: string;
+  expression: string;
+  name: string;
+  type?: string;
+  unit?: string;
+  id: string;
+}
 export const UpdateVirtualFieldOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset: Schema.String,
@@ -26,8 +45,7 @@ export const UpdateVirtualFieldOutput =
     type: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
     id: Schema.String,
-  });
-export type UpdateVirtualFieldOutput = typeof UpdateVirtualFieldOutput.Type;
+  }) as unknown as Schema.Codec<UpdateVirtualFieldOutput>;
 
 // The operation
 export const updateVirtualField = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

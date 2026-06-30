@@ -9,25 +9,31 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface PostV1AppsByAppIdRollbackInput {
+  appId: string;
+  deploymentId?: string;
+  versionId?: string;
+}
 export const PostV1AppsByAppIdRollbackInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     deploymentId: Schema.optional(Schema.String),
     versionId: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v1/apps/{appId}/rollback" }));
-export type PostV1AppsByAppIdRollbackInput =
-  typeof PostV1AppsByAppIdRollbackInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/apps/{appId}/rollback" }),
+  ) as unknown as Schema.Codec<PostV1AppsByAppIdRollbackInput>;
 
 // Output Schema
+export interface PostV1AppsByAppIdRollbackOutput {
+  data: { appEndpointDomain: string; reassignedDomains: number };
+}
 export const PostV1AppsByAppIdRollbackOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       appEndpointDomain: Schema.String,
       reassignedDomains: Schema.Number,
     }),
-  });
-export type PostV1AppsByAppIdRollbackOutput =
-  typeof PostV1AppsByAppIdRollbackOutput.Type;
+  }) as unknown as Schema.Codec<PostV1AppsByAppIdRollbackOutput>;
 
 // The operation
 /**

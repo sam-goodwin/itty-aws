@@ -4,24 +4,28 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetProjectDiskAutoscaleConfigInput {
+  ref: string;
+}
 export const V1GetProjectDiskAutoscaleConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/config/disk/autoscale" }),
-  );
-export type V1GetProjectDiskAutoscaleConfigInput =
-  typeof V1GetProjectDiskAutoscaleConfigInput.Type;
+  ) as unknown as Schema.Codec<V1GetProjectDiskAutoscaleConfigInput>;
 
 // Output Schema
+export interface V1GetProjectDiskAutoscaleConfigOutput {
+  growth_percent: number | null;
+  min_increment_gb: number | null;
+  max_size_gb: number | null;
+}
 export const V1GetProjectDiskAutoscaleConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     growth_percent: Schema.NullOr(Schema.Number),
     min_increment_gb: Schema.NullOr(Schema.Number),
     max_size_gb: Schema.NullOr(Schema.Number),
-  });
-export type V1GetProjectDiskAutoscaleConfigOutput =
-  typeof V1GetProjectDiskAutoscaleConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1GetProjectDiskAutoscaleConfigOutput>;
 
 // The operation
 /**

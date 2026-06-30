@@ -3,16 +3,41 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpServersListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const McpServersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/mcp_servers/" }),
-);
-export type McpServersListInput = typeof McpServersListInput.Type;
+) as unknown as Schema.Codec<McpServersListInput>;
 
 // Output Schema
+export interface McpServersListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    url?: string;
+    docs_url?: string;
+    description?: string;
+    auth_type?: "api_key" | "oauth";
+    icon_key?: string;
+    category?:
+      | "business"
+      | "data"
+      | "design"
+      | "dev"
+      | "infra"
+      | "productivity";
+  }[];
+}
 export const McpServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -40,8 +65,7 @@ export const McpServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type McpServersListOutput = typeof McpServersListOutput.Type;
+}) as unknown as Schema.Codec<McpServersListOutput>;
 
 // The operation
 /**

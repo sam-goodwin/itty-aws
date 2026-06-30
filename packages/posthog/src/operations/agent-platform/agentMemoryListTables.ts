@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentMemoryListTablesInput {
+  application_id: string;
+  project_id: string;
+}
 export const AgentMemoryListTablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,13 @@ export const AgentMemoryListTablesInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/memory/tables/",
     }),
-  );
-export type AgentMemoryListTablesInput = typeof AgentMemoryListTablesInput.Type;
+  ) as unknown as Schema.Codec<AgentMemoryListTablesInput>;
 
 // Output Schema
+export interface AgentMemoryListTablesOutput {
+  count: number;
+  tables: { name: string; size: number }[];
+}
 export const AgentMemoryListTablesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -25,9 +32,7 @@ export const AgentMemoryListTablesOutput =
         size: Schema.Number,
       }),
     ),
-  });
-export type AgentMemoryListTablesOutput =
-  typeof AgentMemoryListTablesOutput.Type;
+  }) as unknown as Schema.Codec<AgentMemoryListTablesOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1DeleteNetworkBansInput {
+  ref: string;
+  ipv4_addresses: string[];
+  requester_ip?: boolean;
+  identifier?: string;
+}
 export const V1DeleteNetworkBansInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,13 +18,12 @@ export const V1DeleteNetworkBansInput =
     identifier: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/network-bans" }),
-  );
-export type V1DeleteNetworkBansInput = typeof V1DeleteNetworkBansInput.Type;
+  ) as unknown as Schema.Codec<V1DeleteNetworkBansInput>;
 
 // Output Schema
+export type V1DeleteNetworkBansOutput = void;
 export const V1DeleteNetworkBansOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DeleteNetworkBansOutput = typeof V1DeleteNetworkBansOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteNetworkBansOutput>;
 
 // The operation
 /**

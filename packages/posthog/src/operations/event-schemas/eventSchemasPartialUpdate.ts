@@ -4,6 +4,53 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EventSchemasPartialUpdateInput {
+  id: string;
+  project_id: string;
+  event_definition?: string;
+  property_group?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    properties?: {
+      id?: string;
+      name?: string;
+      property_type?: "DateTime" | "String" | "Numeric" | "Boolean" | "Object";
+      is_required?: boolean;
+      is_optional_in_types?: boolean;
+      description?: string;
+      created_at?: string;
+      updated_at?: string;
+    }[];
+    events?: { id?: string; name?: string }[];
+    created_at?: string;
+    updated_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+  };
+  property_group_id?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 export const EventSchemasPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -59,7 +106,23 @@ export const EventSchemasPartialUpdateInput =
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -73,11 +136,55 @@ export const EventSchemasPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/event_schemas/{id}/",
     }),
-  );
-export type EventSchemasPartialUpdateInput =
-  typeof EventSchemasPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<EventSchemasPartialUpdateInput>;
 
 // Output Schema
+export interface EventSchemasPartialUpdateOutput {
+  id?: string;
+  event_definition?: string;
+  property_group?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    properties?: {
+      id?: string;
+      name?: string;
+      property_type?: "DateTime" | "String" | "Numeric" | "Boolean" | "Object";
+      is_required?: boolean;
+      is_optional_in_types?: boolean;
+      description?: string;
+      created_at?: string;
+      updated_at?: string;
+    }[];
+    events?: { id?: string; name?: string }[];
+    created_at?: string;
+    updated_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+  };
+  property_group_id?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 export const EventSchemasPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -132,7 +239,23 @@ export const EventSchemasPartialUpdateOutput =
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -141,9 +264,7 @@ export const EventSchemasPartialUpdateOutput =
     property_group_id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type EventSchemasPartialUpdateOutput =
-  typeof EventSchemasPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EventSchemasPartialUpdateOutput>;
 
 // The operation
 /**

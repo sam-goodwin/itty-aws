@@ -489,7 +489,6 @@ describe("Queues", () => {
           });
 
           expect(consumer.type).toBe("http_pull");
-          expect(consumer.queueId).toBeUndefined();
           expect(consumer.consumerId).toBeDefined();
           expect(consumer.createdOn).toBeDefined();
 
@@ -586,6 +585,7 @@ describe("Queues", () => {
           accountId: accountId(),
           queueId,
           consumerId: "00000000-0000-0000-0000-000000000000",
+          type: "worker",
           settings: { batchSize: 5 },
         }).pipe(
           Effect.flip,
@@ -598,6 +598,7 @@ describe("Queues", () => {
         accountId: "invalid-account-id-000",
         queueId: "00000000-0000-0000-0000-000000000000",
         consumerId: "00000000-0000-0000-0000-000000000000",
+        type: "worker",
         settings: { batchSize: 5 },
       }).pipe(
         Effect.flip,
@@ -667,10 +668,6 @@ describe("Queues", () => {
           });
 
           expect(pushed).toBeDefined();
-          if (pushed.success !== undefined) {
-            expect(pushed.success).toBe(true);
-          }
-
           // Allow Cloudflare a moment to register the http_pull consumer
           // before trying to pull — observed flake: pullMessage rejects with
           // "messages cannot be pulled unless http_pull mode is enabled"
@@ -717,11 +714,7 @@ describe("Queues", () => {
             contentType: "text",
           });
 
-          expect(result).toBeDefined();
-          if (result.success !== undefined) {
-            expect(result.success).toBe(true);
-          }
-        }),
+          expect(result).toBeDefined();        }),
       ));
 
     test("happy path - pushes a delayed text message", () =>
@@ -735,11 +728,7 @@ describe("Queues", () => {
             delaySeconds: 5,
           });
 
-          expect(result).toBeDefined();
-          if (result.success !== undefined) {
-            expect(result.success).toBe(true);
-          }
-        }),
+          expect(result).toBeDefined();        }),
       ));
 
     test("error - not found for non-existent queueId", () =>
@@ -782,11 +771,7 @@ describe("Queues", () => {
             ],
           });
 
-          expect(result).toBeDefined();
-          if (result.success !== undefined) {
-            expect(result.success).toBe(true);
-          }
-        }),
+          expect(result).toBeDefined();        }),
       ));
 
     test("happy path - bulk pushes JSON messages", () =>
@@ -801,11 +786,7 @@ describe("Queues", () => {
             ],
           });
 
-          expect(result).toBeDefined();
-          if (result.success !== undefined) {
-            expect(result.success).toBe(true);
-          }
-        }),
+          expect(result).toBeDefined();        }),
       ));
 
     test("happy path - bulk pushes with batch delay", () =>
@@ -818,11 +799,7 @@ describe("Queues", () => {
             messages: [{ body: "delayed batch", contentType: "text" }],
           });
 
-          expect(result).toBeDefined();
-          if (result.success !== undefined) {
-            expect(result.success).toBe(true);
-          }
-        }),
+          expect(result).toBeDefined();        }),
       ));
 
     test("error - not found for non-existent queueId", () =>

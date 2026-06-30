@@ -3,6 +3,15 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpAnalyticsSessionsListInput {
+  project_id: string;
+  date_from?: string;
+  date_to?: string;
+  limit?: number;
+  offset?: number;
+  order_by?: string;
+  search?: string;
+}
 export const McpAnalyticsSessionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +26,25 @@ export const McpAnalyticsSessionsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/mcp_analytics/sessions/",
     }),
-  );
-export type McpAnalyticsSessionsListInput =
-  typeof McpAnalyticsSessionsListInput.Type;
+  ) as unknown as Schema.Codec<McpAnalyticsSessionsListInput>;
 
 // Output Schema
+export interface McpAnalyticsSessionsListOutput {
+  results: {
+    session_id: string;
+    tool_calls: number;
+    session_start: string;
+    session_end: string;
+    distinct_id_count: number;
+    tools_used: string[];
+    mcp_client_name: string;
+    distinct_id: string;
+    person_email: string;
+    person_name: string;
+    intent: string;
+  }[];
+  has_next: boolean;
+}
 export const McpAnalyticsSessionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -40,9 +63,7 @@ export const McpAnalyticsSessionsListOutput =
       }),
     ),
     has_next: Schema.Boolean,
-  });
-export type McpAnalyticsSessionsListOutput =
-  typeof McpAnalyticsSessionsListOutput.Type;
+  }) as unknown as Schema.Codec<McpAnalyticsSessionsListOutput>;
 
 // The operation
 /**

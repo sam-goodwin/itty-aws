@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -48,7 +48,7 @@ export interface ProductReviewDestinationStatus {
     | (string & {});
 }
 
-export const ProductReviewDestinationStatus: Schema.Schema<ProductReviewDestinationStatus> =
+export const ProductReviewDestinationStatus: Schema.Codec<ProductReviewDestinationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductReviewDestinationStatus" });
@@ -97,7 +97,7 @@ export interface ProductReviewItemLevelIssue {
   detail?: string;
 }
 
-export const ProductReviewItemLevelIssue: Schema.Schema<ProductReviewItemLevelIssue> =
+export const ProductReviewItemLevelIssue: Schema.Codec<ProductReviewItemLevelIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface MerchantReviewItemLevelIssue {
   documentation?: string;
 }
 
-export const MerchantReviewItemLevelIssue: Schema.Schema<MerchantReviewItemLevelIssue> =
+export const MerchantReviewItemLevelIssue: Schema.Codec<MerchantReviewItemLevelIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     resolution: Schema.optional(Schema.String),
@@ -191,7 +191,7 @@ export interface MerchantReviewDestinationStatus {
     | (string & {});
 }
 
-export const MerchantReviewDestinationStatus: Schema.Schema<MerchantReviewDestinationStatus> =
+export const MerchantReviewDestinationStatus: Schema.Codec<MerchantReviewDestinationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
   }).annotate({ identifier: "MerchantReviewDestinationStatus" });
@@ -207,7 +207,7 @@ export interface MerchantReviewStatus {
   destinationStatuses?: ReadonlyArray<MerchantReviewDestinationStatus>;
 }
 
-export const MerchantReviewStatus: Schema.Schema<MerchantReviewStatus> =
+export const MerchantReviewStatus: Schema.Codec<MerchantReviewStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     itemLevelIssues: Schema.optional(
@@ -228,7 +228,7 @@ export interface CustomAttribute {
   groupValues?: ReadonlyArray<CustomAttribute>;
 }
 
-export const CustomAttribute: Schema.Schema<CustomAttribute> =
+export const CustomAttribute: Schema.Codec<CustomAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -237,7 +237,7 @@ export const CustomAttribute: Schema.Schema<CustomAttribute> =
     }),
   ).annotate({
     identifier: "CustomAttribute",
-  }) as any as Schema.Schema<CustomAttribute>;
+  }) as any as Schema.Codec<CustomAttribute>;
 
 export interface MerchantReviewAttributes {
   /** Optional. The reviewer's overall rating of the merchant. */
@@ -279,7 +279,7 @@ export interface MerchantReviewAttributes {
   content?: string;
 }
 
-export const MerchantReviewAttributes: Schema.Schema<MerchantReviewAttributes> =
+export const MerchantReviewAttributes: Schema.Codec<MerchantReviewAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rating: Schema.optional(Schema.Number),
     title: Schema.optional(Schema.String),
@@ -314,7 +314,7 @@ export interface MerchantReview {
   merchantReviewAttributes?: MerchantReviewAttributes;
 }
 
-export const MerchantReview: Schema.Schema<MerchantReview> =
+export const MerchantReview: Schema.Codec<MerchantReview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     merchantReviewId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -331,7 +331,7 @@ export interface ListMerchantReviewsResponse {
   merchantReviews?: ReadonlyArray<MerchantReview>;
 }
 
-export const ListMerchantReviewsResponse: Schema.Schema<ListMerchantReviewsResponse> =
+export const ListMerchantReviewsResponse: Schema.Codec<ListMerchantReviewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     merchantReviews: Schema.optional(Schema.Array(MerchantReview)),
@@ -344,7 +344,7 @@ export interface ReviewLink {
   type?: "TYPE_UNSPECIFIED" | "SINGLETON" | "GROUP" | (string & {});
 }
 
-export const ReviewLink: Schema.Schema<ReviewLink> =
+export const ReviewLink: Schema.Codec<ReviewLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     link: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -419,7 +419,7 @@ export interface ProductReviewAttributes {
   isIncentivizedReview?: boolean;
 }
 
-export const ProductReviewAttributes: Schema.Schema<ProductReviewAttributes> =
+export const ProductReviewAttributes: Schema.Codec<ProductReviewAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gtins: Schema.optional(Schema.Array(Schema.String)),
     brands: Schema.optional(Schema.Array(Schema.String)),
@@ -456,7 +456,7 @@ export const ProductReviewAttributes: Schema.Schema<ProductReviewAttributes> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -472,7 +472,7 @@ export interface ProductReviewStatus {
   itemLevelIssues?: ReadonlyArray<ProductReviewItemLevelIssue>;
 }
 
-export const ProductReviewStatus: Schema.Schema<ProductReviewStatus> =
+export const ProductReviewStatus: Schema.Codec<ProductReviewStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     destinationStatuses: Schema.optional(
@@ -497,7 +497,7 @@ export interface ProductReview {
   productReviewId?: string;
 }
 
-export const ProductReview: Schema.Schema<ProductReview> =
+export const ProductReview: Schema.Codec<ProductReview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productReviewAttributes: Schema.optional(ProductReviewAttributes),
     name: Schema.optional(Schema.String),
@@ -539,7 +539,7 @@ export interface ProductChange {
   regionCode?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     oldValue: Schema.optional(Schema.String),
@@ -572,7 +572,7 @@ export interface ProductStatusChangeMessage {
   changes?: ReadonlyArray<ProductChange>;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
     attribute: Schema.optional(Schema.String),
@@ -592,7 +592,7 @@ export interface ListProductReviewsResponse {
   productReviews?: ReadonlyArray<ProductReview>;
 }
 
-export const ListProductReviewsResponse: Schema.Schema<ListProductReviewsResponse> =
+export const ListProductReviewsResponse: Schema.Codec<ListProductReviewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     productReviews: Schema.optional(Schema.Array(ProductReview)),
@@ -663,7 +663,7 @@ export const DeleteAccountsMerchantReviewsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "reviews/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsMerchantReviewsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsMerchantReviewsRequest>;
 
 export type DeleteAccountsMerchantReviewsResponse = Empty;
 export const DeleteAccountsMerchantReviewsResponse =
@@ -709,7 +709,7 @@ export const InsertAccountsMerchantReviewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsMerchantReviewsRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsMerchantReviewsRequest>;
 
 export type InsertAccountsMerchantReviewsResponse = MerchantReview;
 export const InsertAccountsMerchantReviewsResponse =
@@ -745,7 +745,7 @@ export const GetAccountsMerchantReviewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "reviews/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsMerchantReviewsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsMerchantReviewsRequest>;
 
 export type GetAccountsMerchantReviewsResponse = MerchantReview;
 export const GetAccountsMerchantReviewsResponse =
@@ -785,7 +785,7 @@ export const ListAccountsMerchantReviewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "reviews/v1beta/{+parent}/merchantReviews" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsMerchantReviewsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsMerchantReviewsRequest>;
 
 export type ListAccountsMerchantReviewsResponse = ListMerchantReviewsResponse;
 export const ListAccountsMerchantReviewsResponse =
@@ -823,7 +823,7 @@ export const GetAccountsProductReviewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "reviews/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsProductReviewsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsProductReviewsRequest>;
 
 export type GetAccountsProductReviewsResponse = ProductReview;
 export const GetAccountsProductReviewsResponse =
@@ -863,7 +863,7 @@ export const ListAccountsProductReviewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "reviews/v1beta/{+parent}/productReviews" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsProductReviewsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsProductReviewsRequest>;
 
 export type ListAccountsProductReviewsResponse = ListProductReviewsResponse;
 export const ListAccountsProductReviewsResponse =
@@ -901,7 +901,7 @@ export const DeleteAccountsProductReviewsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "reviews/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsProductReviewsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsProductReviewsRequest>;
 
 export type DeleteAccountsProductReviewsResponse = Empty;
 export const DeleteAccountsProductReviewsResponse =
@@ -947,7 +947,7 @@ export const InsertAccountsProductReviewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsProductReviewsRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsProductReviewsRequest>;
 
 export type InsertAccountsProductReviewsResponse = ProductReview;
 export const InsertAccountsProductReviewsResponse =

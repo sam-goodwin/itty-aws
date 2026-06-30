@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ApplicationCredentialsControllerListInput {
+  id: string;
+}
 export const ApplicationCredentialsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,17 @@ export const ApplicationCredentialsControllerListInput =
       method: "GET",
       path: "/connect/applications/{id}/client_secrets",
     }),
-  );
-export type ApplicationCredentialsControllerListInput =
-  typeof ApplicationCredentialsControllerListInput.Type;
+  ) as unknown as Schema.Codec<ApplicationCredentialsControllerListInput>;
 
 // Output Schema
+export type ApplicationCredentialsControllerListOutput = {
+  object: string;
+  id: string;
+  secret_hint: string;
+  last_used_at: string | null;
+  created_at: string;
+  updated_at: string;
+}[];
 export const ApplicationCredentialsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -27,9 +36,7 @@ export const ApplicationCredentialsControllerListOutput =
       created_at: Schema.String,
       updated_at: Schema.String,
     }),
-  );
-export type ApplicationCredentialsControllerListOutput =
-  typeof ApplicationCredentialsControllerListOutput.Type;
+  ) as unknown as Schema.Codec<ApplicationCredentialsControllerListOutput>;
 
 // The operation
 /**

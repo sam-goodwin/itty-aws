@@ -4,11 +4,42 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CaCertificatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  caCertificateName: string;
+  properties?: {
+    description?: string;
+    encodedCertificate?: string;
+    issueTimeInUtc?: string;
+    expiryTimeInUtc?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Deleted";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const CaCertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -57,19 +88,20 @@ export const CaCertificatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type CaCertificatesCreateOrUpdateInput =
-  typeof CaCertificatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CaCertificatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface CaCertificatesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const CaCertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type CaCertificatesCreateOrUpdateOutput =
-  typeof CaCertificatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CaCertificatesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -89,6 +121,12 @@ export const CaCertificatesCreateOrUpdate =
     outputSchema: CaCertificatesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CaCertificatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  caCertificateName: string;
+}
 export const CaCertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -101,13 +139,12 @@ export const CaCertificatesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type CaCertificatesDeleteInput = typeof CaCertificatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<CaCertificatesDeleteInput>;
 
 // Output Schema
+export type CaCertificatesDeleteOutput = void;
 export const CaCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CaCertificatesDeleteOutput = typeof CaCertificatesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CaCertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -128,6 +165,12 @@ export const CaCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CaCertificatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  caCertificateName: string;
+}
 export const CaCertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -141,17 +184,20 @@ export const CaCertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type CaCertificatesGetInput = typeof CaCertificatesGetInput.Type;
+) as unknown as Schema.Codec<CaCertificatesGetInput>;
 
 // Output Schema
+export interface CaCertificatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const CaCertificatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type CaCertificatesGetOutput = typeof CaCertificatesGetOutput.Type;
+  }) as unknown as Schema.Codec<CaCertificatesGetOutput>;
 
 // The operation
 /**
@@ -170,6 +216,13 @@ export const CaCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CaCertificatesGetOutput,
 }));
 // Input Schema
+export interface CaCertificatesListByNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const CaCertificatesListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -183,11 +236,13 @@ export const CaCertificatesListByNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates",
       apiVersion: "2025-02-15",
     }),
-  );
-export type CaCertificatesListByNamespaceInput =
-  typeof CaCertificatesListByNamespaceInput.Type;
+  ) as unknown as Schema.Codec<CaCertificatesListByNamespaceInput>;
 
 // Output Schema
+export interface CaCertificatesListByNamespaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const CaCertificatesListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -200,9 +255,7 @@ export const CaCertificatesListByNamespaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CaCertificatesListByNamespaceOutput =
-  typeof CaCertificatesListByNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<CaCertificatesListByNamespaceOutput>;
 
 // The operation
 /**
@@ -223,6 +276,55 @@ export const CaCertificatesListByNamespace =
     outputSchema: CaCertificatesListByNamespaceOutput,
   }));
 // Input Schema
+export interface ChannelsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  channelName: string;
+  properties?: {
+    channelType?: "PartnerTopic";
+    partnerTopicInfo?: {
+      azureSubscriptionId?: string;
+      resourceGroupName?: string;
+      name?: string;
+      eventTypeInfo?: {
+        kind?: "Inline";
+        inlineEventTypes?: Record<
+          string,
+          {
+            description?: string;
+            displayName?: string;
+            documentationUrl?: string;
+            dataSchemaUrl?: string;
+          }
+        >;
+      };
+      source?: string;
+    };
+    messageForActivation?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "IdleDueToMirroredPartnerTopicDeletion";
+    readinessState?: "NeverActivated" | "Activated";
+    expirationTimeIfNotActivatedUtc?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ChannelsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -297,19 +399,20 @@ export const ChannelsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ChannelsCreateOrUpdateInput =
-  typeof ChannelsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ChannelsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ChannelsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ChannelsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ChannelsCreateOrUpdateOutput =
-  typeof ChannelsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ChannelsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -330,6 +433,12 @@ export const ChannelsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ChannelsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  channelName: string;
+}
 export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -341,12 +450,12 @@ export const ChannelsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type ChannelsDeleteInput = typeof ChannelsDeleteInput.Type;
+) as unknown as Schema.Codec<ChannelsDeleteInput>;
 
 // Output Schema
-export const ChannelsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ChannelsDeleteOutput = typeof ChannelsDeleteOutput.Type;
+export type ChannelsDeleteOutput = void;
+export const ChannelsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChannelsDeleteOutput>;
 
 // The operation
 /**
@@ -365,6 +474,12 @@ export const ChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ChannelsDeleteOutput,
 }));
 // Input Schema
+export interface ChannelsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  channelName: string;
+}
 export const ChannelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -376,16 +491,19 @@ export const ChannelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type ChannelsGetInput = typeof ChannelsGetInput.Type;
+) as unknown as Schema.Codec<ChannelsGetInput>;
 
 // Output Schema
+export interface ChannelsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ChannelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ChannelsGetOutput = typeof ChannelsGetOutput.Type;
+}) as unknown as Schema.Codec<ChannelsGetOutput>;
 
 // The operation
 /**
@@ -404,6 +522,12 @@ export const ChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ChannelsGetOutput,
 }));
 // Input Schema
+export interface ChannelsGetFullUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  channelName: string;
+}
 export const ChannelsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -416,15 +540,16 @@ export const ChannelsGetFullUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}/getFullUrl",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ChannelsGetFullUrlInput = typeof ChannelsGetFullUrlInput.Type;
+  ) as unknown as Schema.Codec<ChannelsGetFullUrlInput>;
 
 // Output Schema
+export interface ChannelsGetFullUrlOutput {
+  endpointUrl?: string;
+}
 export const ChannelsGetFullUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
-  });
-export type ChannelsGetFullUrlOutput = typeof ChannelsGetFullUrlOutput.Type;
+  }) as unknown as Schema.Codec<ChannelsGetFullUrlOutput>;
 
 // The operation
 /**
@@ -443,6 +568,13 @@ export const ChannelsGetFullUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ChannelsGetFullUrlOutput,
 }));
 // Input Schema
+export interface ChannelsListByPartnerNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const ChannelsListByPartnerNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -456,11 +588,13 @@ export const ChannelsListByPartnerNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ChannelsListByPartnerNamespaceInput =
-  typeof ChannelsListByPartnerNamespaceInput.Type;
+  ) as unknown as Schema.Codec<ChannelsListByPartnerNamespaceInput>;
 
 // Output Schema
+export interface ChannelsListByPartnerNamespaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ChannelsListByPartnerNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -473,9 +607,7 @@ export const ChannelsListByPartnerNamespaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ChannelsListByPartnerNamespaceOutput =
-  typeof ChannelsListByPartnerNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<ChannelsListByPartnerNamespaceOutput>;
 
 // The operation
 /**
@@ -496,6 +628,29 @@ export const ChannelsListByPartnerNamespace =
     outputSchema: ChannelsListByPartnerNamespaceOutput,
   }));
 // Input Schema
+export interface ChannelsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  channelName: string;
+  properties?: {
+    expirationTimeIfNotActivatedUtc?: string;
+    partnerTopicInfo?: {
+      eventTypeInfo?: {
+        kind?: "Inline";
+        inlineEventTypes?: Record<
+          string,
+          {
+            description?: string;
+            displayName?: string;
+            documentationUrl?: string;
+            dataSchemaUrl?: string;
+          }
+        >;
+      };
+    };
+  };
+}
 export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -532,12 +687,12 @@ export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type ChannelsUpdateInput = typeof ChannelsUpdateInput.Type;
+) as unknown as Schema.Codec<ChannelsUpdateInput>;
 
 // Output Schema
-export const ChannelsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ChannelsUpdateOutput = typeof ChannelsUpdateOutput.Type;
+export type ChannelsUpdateOutput = void;
+export const ChannelsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChannelsUpdateOutput>;
 
 // The operation
 /**
@@ -556,6 +711,35 @@ export const ChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ChannelsUpdateOutput,
 }));
 // Input Schema
+export interface ClientGroupsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  clientGroupName: string;
+  properties?: {
+    description?: string;
+    query?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Deleted";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ClientGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -602,19 +786,20 @@ export const ClientGroupsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups/{clientGroupName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ClientGroupsCreateOrUpdateInput =
-  typeof ClientGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClientGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClientGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ClientGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ClientGroupsCreateOrUpdateOutput =
-  typeof ClientGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClientGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -635,6 +820,12 @@ export const ClientGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClientGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  clientGroupName: string;
+}
 export const ClientGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -647,12 +838,12 @@ export const ClientGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups/{clientGroupName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ClientGroupsDeleteInput = typeof ClientGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ClientGroupsDeleteInput>;
 
 // Output Schema
-export const ClientGroupsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClientGroupsDeleteOutput = typeof ClientGroupsDeleteOutput.Type;
+export type ClientGroupsDeleteOutput = void;
+export const ClientGroupsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClientGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -671,6 +862,12 @@ export const ClientGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClientGroupsDeleteOutput,
 }));
 // Input Schema
+export interface ClientGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  clientGroupName: string;
+}
 export const ClientGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -682,16 +879,19 @@ export const ClientGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups/{clientGroupName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type ClientGroupsGetInput = typeof ClientGroupsGetInput.Type;
+) as unknown as Schema.Codec<ClientGroupsGetInput>;
 
 // Output Schema
+export interface ClientGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ClientGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ClientGroupsGetOutput = typeof ClientGroupsGetOutput.Type;
+}) as unknown as Schema.Codec<ClientGroupsGetOutput>;
 
 // The operation
 /**
@@ -710,6 +910,13 @@ export const ClientGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClientGroupsGetOutput,
 }));
 // Input Schema
+export interface ClientGroupsListByNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const ClientGroupsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -723,11 +930,13 @@ export const ClientGroupsListByNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clientGroups",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ClientGroupsListByNamespaceInput =
-  typeof ClientGroupsListByNamespaceInput.Type;
+  ) as unknown as Schema.Codec<ClientGroupsListByNamespaceInput>;
 
 // Output Schema
+export interface ClientGroupsListByNamespaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ClientGroupsListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -740,9 +949,7 @@ export const ClientGroupsListByNamespaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClientGroupsListByNamespaceOutput =
-  typeof ClientGroupsListByNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<ClientGroupsListByNamespaceOutput>;
 
 // The operation
 /**
@@ -764,6 +971,47 @@ export const ClientGroupsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClientsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  clientName: string;
+  properties?: {
+    description?: string;
+    authenticationName?: string;
+    clientCertificateAuthentication?: {
+      validationScheme?:
+        | "SubjectMatchesAuthenticationName"
+        | "DnsMatchesAuthenticationName"
+        | "UriMatchesAuthenticationName"
+        | "IpMatchesAuthenticationName"
+        | "EmailMatchesAuthenticationName"
+        | "ThumbprintMatch";
+      allowedThumbprints?: string[];
+    };
+    state?: "Enabled" | "Disabled";
+    attributes?: Record<string, unknown>;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Deleted";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ClientsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -829,18 +1077,20 @@ export const ClientsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients/{clientName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ClientsCreateOrUpdateInput = typeof ClientsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClientsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClientsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ClientsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ClientsCreateOrUpdateOutput =
-  typeof ClientsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClientsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -861,6 +1111,12 @@ export const ClientsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClientsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  clientName: string;
+}
 export const ClientsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -872,12 +1128,12 @@ export const ClientsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients/{clientName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type ClientsDeleteInput = typeof ClientsDeleteInput.Type;
+) as unknown as Schema.Codec<ClientsDeleteInput>;
 
 // Output Schema
-export const ClientsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClientsDeleteOutput = typeof ClientsDeleteOutput.Type;
+export type ClientsDeleteOutput = void;
+export const ClientsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClientsDeleteOutput>;
 
 // The operation
 /**
@@ -896,6 +1152,12 @@ export const ClientsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClientsDeleteOutput,
 }));
 // Input Schema
+export interface ClientsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  clientName: string;
+}
 export const ClientsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -907,16 +1169,19 @@ export const ClientsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients/{clientName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type ClientsGetInput = typeof ClientsGetInput.Type;
+) as unknown as Schema.Codec<ClientsGetInput>;
 
 // Output Schema
+export interface ClientsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ClientsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ClientsGetOutput = typeof ClientsGetOutput.Type;
+}) as unknown as Schema.Codec<ClientsGetOutput>;
 
 // The operation
 /**
@@ -935,6 +1200,13 @@ export const ClientsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClientsGetOutput,
 }));
 // Input Schema
+export interface ClientsListByNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const ClientsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -948,11 +1220,13 @@ export const ClientsListByNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/clients",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ClientsListByNamespaceInput =
-  typeof ClientsListByNamespaceInput.Type;
+  ) as unknown as Schema.Codec<ClientsListByNamespaceInput>;
 
 // Output Schema
+export interface ClientsListByNamespaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ClientsListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -965,9 +1239,7 @@ export const ClientsListByNamespaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClientsListByNamespaceOutput =
-  typeof ClientsListByNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<ClientsListByNamespaceOutput>;
 
 // The operation
 /**
@@ -989,6 +1261,112 @@ export const ClientsListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainEventSubscriptionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  eventSubscriptionName: string;
+  properties?: {
+    topic?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "AwaitingManualAction";
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+    deliveryWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      destination?: {
+        endpointType:
+          | "WebHook"
+          | "EventHub"
+          | "StorageQueue"
+          | "HybridConnection"
+          | "ServiceBusQueue"
+          | "ServiceBusTopic"
+          | "AzureFunction"
+          | "MonitorAlert"
+          | "NamespaceTopic";
+      };
+    };
+    filter?: {
+      subjectBeginsWith?: string;
+      subjectEndsWith?: string;
+      includedEventTypes?: string[];
+      isSubjectCaseSensitive?: boolean;
+      enableAdvancedFilteringOnArrays?: boolean;
+      advancedFilters?: {
+        operatorType:
+          | "NumberIn"
+          | "NumberNotIn"
+          | "NumberLessThan"
+          | "NumberGreaterThan"
+          | "NumberLessThanOrEquals"
+          | "NumberGreaterThanOrEquals"
+          | "BoolEquals"
+          | "StringIn"
+          | "StringNotIn"
+          | "StringBeginsWith"
+          | "StringEndsWith"
+          | "StringContains"
+          | "NumberInRange"
+          | "NumberNotInRange"
+          | "StringNotBeginsWith"
+          | "StringNotEndsWith"
+          | "StringNotContains"
+          | "IsNullOrUndefined"
+          | "IsNotNull";
+        key?: string;
+      }[];
+    };
+    labels?: string[];
+    expirationTimeUtc?: string;
+    eventDeliverySchema?:
+      | "EventGridSchema"
+      | "CustomInputSchema"
+      | "CloudEventSchemaV1_0";
+    retryPolicy?: {
+      maxDeliveryAttempts?: number;
+      eventTimeToLiveInMinutes?: number;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+    deadLetterWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      deadLetterDestination?: { endpointType: "StorageBlob" };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1150,19 +1528,20 @@ export const DomainEventSubscriptionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainEventSubscriptionsCreateOrUpdateInput =
-  typeof DomainEventSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DomainEventSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DomainEventSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainEventSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DomainEventSubscriptionsCreateOrUpdateOutput =
-  typeof DomainEventSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DomainEventSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1182,6 +1561,12 @@ export const DomainEventSubscriptionsCreateOrUpdate =
     outputSchema: DomainEventSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DomainEventSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  eventSubscriptionName: string;
+}
 export const DomainEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1194,15 +1579,12 @@ export const DomainEventSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainEventSubscriptionsDeleteInput =
-  typeof DomainEventSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DomainEventSubscriptionsDeleteInput>;
 
 // Output Schema
+export type DomainEventSubscriptionsDeleteOutput = void;
 export const DomainEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainEventSubscriptionsDeleteOutput =
-  typeof DomainEventSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -1222,6 +1604,12 @@ export const DomainEventSubscriptionsDelete =
     outputSchema: DomainEventSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface DomainEventSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  eventSubscriptionName: string;
+}
 export const DomainEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1234,19 +1622,20 @@ export const DomainEventSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainEventSubscriptionsGetInput =
-  typeof DomainEventSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<DomainEventSubscriptionsGetInput>;
 
 // Output Schema
+export interface DomainEventSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainEventSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DomainEventSubscriptionsGetOutput =
-  typeof DomainEventSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<DomainEventSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -1267,6 +1656,12 @@ export const DomainEventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainEventSubscriptionsGetDeliveryAttributesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  eventSubscriptionName: string;
+}
 export const DomainEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1279,11 +1674,12 @@ export const DomainEventSubscriptionsGetDeliveryAttributesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainEventSubscriptionsGetDeliveryAttributesInput =
-  typeof DomainEventSubscriptionsGetDeliveryAttributesInput.Type;
+  ) as unknown as Schema.Codec<DomainEventSubscriptionsGetDeliveryAttributesInput>;
 
 // Output Schema
+export interface DomainEventSubscriptionsGetDeliveryAttributesOutput {
+  value?: { name?: string; type: "Static" | "Dynamic" }[];
+}
 export const DomainEventSubscriptionsGetDeliveryAttributesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1294,9 +1690,7 @@ export const DomainEventSubscriptionsGetDeliveryAttributesOutput =
         }),
       ),
     ),
-  });
-export type DomainEventSubscriptionsGetDeliveryAttributesOutput =
-  typeof DomainEventSubscriptionsGetDeliveryAttributesOutput.Type;
+  }) as unknown as Schema.Codec<DomainEventSubscriptionsGetDeliveryAttributesOutput>;
 
 // The operation
 /**
@@ -1316,6 +1710,12 @@ export const DomainEventSubscriptionsGetDeliveryAttributes =
     outputSchema: DomainEventSubscriptionsGetDeliveryAttributesOutput,
   }));
 // Input Schema
+export interface DomainEventSubscriptionsGetFullUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  eventSubscriptionName: string;
+}
 export const DomainEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1328,17 +1728,16 @@ export const DomainEventSubscriptionsGetFullUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainEventSubscriptionsGetFullUrlInput =
-  typeof DomainEventSubscriptionsGetFullUrlInput.Type;
+  ) as unknown as Schema.Codec<DomainEventSubscriptionsGetFullUrlInput>;
 
 // Output Schema
+export interface DomainEventSubscriptionsGetFullUrlOutput {
+  endpointUrl?: string;
+}
 export const DomainEventSubscriptionsGetFullUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
-  });
-export type DomainEventSubscriptionsGetFullUrlOutput =
-  typeof DomainEventSubscriptionsGetFullUrlOutput.Type;
+  }) as unknown as Schema.Codec<DomainEventSubscriptionsGetFullUrlOutput>;
 
 // The operation
 /**
@@ -1358,6 +1757,13 @@ export const DomainEventSubscriptionsGetFullUrl =
     outputSchema: DomainEventSubscriptionsGetFullUrlOutput,
   }));
 // Input Schema
+export interface DomainEventSubscriptionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DomainEventSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1371,11 +1777,13 @@ export const DomainEventSubscriptionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainEventSubscriptionsListInput =
-  typeof DomainEventSubscriptionsListInput.Type;
+  ) as unknown as Schema.Codec<DomainEventSubscriptionsListInput>;
 
 // Output Schema
+export interface DomainEventSubscriptionsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const DomainEventSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1388,9 +1796,7 @@ export const DomainEventSubscriptionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DomainEventSubscriptionsListOutput =
-  typeof DomainEventSubscriptionsListOutput.Type;
+  }) as unknown as Schema.Codec<DomainEventSubscriptionsListOutput>;
 
 // The operation
 /**
@@ -1411,6 +1817,90 @@ export const DomainEventSubscriptionsList =
     outputSchema: DomainEventSubscriptionsListOutput,
   }));
 // Input Schema
+export interface DomainEventSubscriptionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  eventSubscriptionName: string;
+  destination?: {
+    endpointType:
+      | "WebHook"
+      | "EventHub"
+      | "StorageQueue"
+      | "HybridConnection"
+      | "ServiceBusQueue"
+      | "ServiceBusTopic"
+      | "AzureFunction"
+      | "MonitorAlert"
+      | "NamespaceTopic";
+  };
+  deliveryWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+  };
+  filter?: {
+    subjectBeginsWith?: string;
+    subjectEndsWith?: string;
+    includedEventTypes?: string[];
+    isSubjectCaseSensitive?: boolean;
+    enableAdvancedFilteringOnArrays?: boolean;
+    advancedFilters?: {
+      operatorType:
+        | "NumberIn"
+        | "NumberNotIn"
+        | "NumberLessThan"
+        | "NumberGreaterThan"
+        | "NumberLessThanOrEquals"
+        | "NumberGreaterThanOrEquals"
+        | "BoolEquals"
+        | "StringIn"
+        | "StringNotIn"
+        | "StringBeginsWith"
+        | "StringEndsWith"
+        | "StringContains"
+        | "NumberInRange"
+        | "NumberNotInRange"
+        | "StringNotBeginsWith"
+        | "StringNotEndsWith"
+        | "StringNotContains"
+        | "IsNullOrUndefined"
+        | "IsNotNull";
+      key?: string;
+    }[];
+  };
+  labels?: string[];
+  expirationTimeUtc?: string;
+  eventDeliverySchema?:
+    | "EventGridSchema"
+    | "CustomInputSchema"
+    | "CloudEventSchemaV1_0";
+  retryPolicy?: {
+    maxDeliveryAttempts?: number;
+    eventTimeToLiveInMinutes?: number;
+  };
+  deadLetterDestination?: { endpointType: "StorageBlob" };
+  deadLetterWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+  };
+}
 export const DomainEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1539,19 +2029,20 @@ export const DomainEventSubscriptionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainEventSubscriptionsUpdateInput =
-  typeof DomainEventSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DomainEventSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface DomainEventSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainEventSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DomainEventSubscriptionsUpdateOutput =
-  typeof DomainEventSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DomainEventSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -1571,6 +2062,74 @@ export const DomainEventSubscriptionsUpdate =
     outputSchema: DomainEventSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface DomainsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  properties?: {
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+    minimumTlsVersionAllowed?: "1.0" | "1.1" | "1.2";
+    endpoint?: string;
+    inputSchema?:
+      | "EventGridSchema"
+      | "CustomEventSchema"
+      | "CloudEventSchemaV1_0";
+    eventTypeInfo?: {
+      kind?: "Inline";
+      inlineEventTypes?: Record<
+        string,
+        {
+          description?: string;
+          displayName?: string;
+          documentationUrl?: string;
+          dataSchemaUrl?: string;
+        }
+      >;
+    };
+    inputSchemaMapping?: { inputSchemaMappingType: "Json" };
+    metricResourceId?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
+    disableLocalAuth?: boolean;
+    autoCreateTopicWithFirstSubscription?: boolean;
+    autoDeleteTopicWithLastSubscription?: boolean;
+    dataResidencyBoundary?: "WithinGeopair" | "WithinRegion";
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location: string;
+  tags?: Record<string, string>;
+}
 export const DomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1694,18 +2253,20 @@ export const DomainsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DomainsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DomainsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DomainsCreateOrUpdateOutput =
-  typeof DomainsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DomainsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1725,6 +2286,11 @@ export const DomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+}
 export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1735,12 +2301,12 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
+) as unknown as Schema.Codec<DomainsDeleteInput>;
 
 // Output Schema
-export const DomainsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainsDeleteOutput = typeof DomainsDeleteOutput.Type;
+export type DomainsDeleteOutput = void;
+export const DomainsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOutput>;
 
 // The operation
 /**
@@ -1758,6 +2324,11 @@ export const DomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DomainsDeleteOutput,
 }));
 // Input Schema
+export interface DomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+}
 export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1768,16 +2339,19 @@ export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type DomainsGetInput = typeof DomainsGetInput.Type;
+) as unknown as Schema.Codec<DomainsGetInput>;
 
 // Output Schema
+export interface DomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type DomainsGetOutput = typeof DomainsGetOutput.Type;
+}) as unknown as Schema.Codec<DomainsGetOutput>;
 
 // The operation
 /**
@@ -1795,6 +2369,12 @@ export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DomainsGetOutput,
 }));
 // Input Schema
+export interface DomainsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DomainsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1807,11 +2387,13 @@ export const DomainsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainsListByResourceGroupInput =
-  typeof DomainsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DomainsListByResourceGroupInput>;
 
 // Output Schema
+export interface DomainsListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const DomainsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1824,9 +2406,7 @@ export const DomainsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DomainsListByResourceGroupOutput =
-  typeof DomainsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DomainsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1847,6 +2427,11 @@ export const DomainsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DomainsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1858,11 +2443,13 @@ export const DomainsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/domains",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainsListBySubscriptionInput =
-  typeof DomainsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DomainsListBySubscriptionInput>;
 
 // Output Schema
+export interface DomainsListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const DomainsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1875,9 +2462,7 @@ export const DomainsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DomainsListBySubscriptionOutput =
-  typeof DomainsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DomainsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1897,6 +2482,11 @@ export const DomainsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsListSharedAccessKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+}
 export const DomainsListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1908,18 +2498,18 @@ export const DomainsListSharedAccessKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/listKeys",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainsListSharedAccessKeysInput =
-  typeof DomainsListSharedAccessKeysInput.Type;
+  ) as unknown as Schema.Codec<DomainsListSharedAccessKeysInput>;
 
 // Output Schema
+export interface DomainsListSharedAccessKeysOutput {
+  key1?: string;
+  key2?: string;
+}
 export const DomainsListSharedAccessKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type DomainsListSharedAccessKeysOutput =
-  typeof DomainsListSharedAccessKeysOutput.Type;
+  }) as unknown as Schema.Codec<DomainsListSharedAccessKeysOutput>;
 
 // The operation
 /**
@@ -1939,6 +2529,12 @@ export const DomainsListSharedAccessKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  keyName: string;
+}
 export const DomainsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1951,16 +2547,18 @@ export const DomainsRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/regenerateKey",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainsRegenerateKeyInput = typeof DomainsRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<DomainsRegenerateKeyInput>;
 
 // Output Schema
+export interface DomainsRegenerateKeyOutput {
+  key1?: string;
+  key2?: string;
+}
 export const DomainsRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type DomainsRegenerateKeyOutput = typeof DomainsRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<DomainsRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -1980,6 +2578,46 @@ export const DomainsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
+    minimumTlsVersionAllowed?: "1.0" | "1.1" | "1.2";
+    disableLocalAuth?: boolean;
+    autoCreateTopicWithFirstSubscription?: boolean;
+    autoDeleteTopicWithLastSubscription?: boolean;
+    dataResidencyBoundary?: "WithinGeopair" | "WithinRegion";
+    eventTypeInfo?: {
+      kind?: "Inline";
+      inlineEventTypes?: Record<
+        string,
+        {
+          description?: string;
+          displayName?: string;
+          documentationUrl?: string;
+          dataSchemaUrl?: string;
+        }
+      >;
+    };
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2054,12 +2692,12 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
+) as unknown as Schema.Codec<DomainsUpdateInput>;
 
 // Output Schema
-export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainsUpdateOutput = typeof DomainsUpdateOutput.Type;
+export type DomainsUpdateOutput = void;
+export const DomainsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsUpdateOutput>;
 
 // The operation
 /**
@@ -2077,6 +2715,113 @@ export const DomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DomainsUpdateOutput,
 }));
 // Input Schema
+export interface DomainTopicEventSubscriptionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+  properties?: {
+    topic?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "AwaitingManualAction";
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+    deliveryWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      destination?: {
+        endpointType:
+          | "WebHook"
+          | "EventHub"
+          | "StorageQueue"
+          | "HybridConnection"
+          | "ServiceBusQueue"
+          | "ServiceBusTopic"
+          | "AzureFunction"
+          | "MonitorAlert"
+          | "NamespaceTopic";
+      };
+    };
+    filter?: {
+      subjectBeginsWith?: string;
+      subjectEndsWith?: string;
+      includedEventTypes?: string[];
+      isSubjectCaseSensitive?: boolean;
+      enableAdvancedFilteringOnArrays?: boolean;
+      advancedFilters?: {
+        operatorType:
+          | "NumberIn"
+          | "NumberNotIn"
+          | "NumberLessThan"
+          | "NumberGreaterThan"
+          | "NumberLessThanOrEquals"
+          | "NumberGreaterThanOrEquals"
+          | "BoolEquals"
+          | "StringIn"
+          | "StringNotIn"
+          | "StringBeginsWith"
+          | "StringEndsWith"
+          | "StringContains"
+          | "NumberInRange"
+          | "NumberNotInRange"
+          | "StringNotBeginsWith"
+          | "StringNotEndsWith"
+          | "StringNotContains"
+          | "IsNullOrUndefined"
+          | "IsNotNull";
+        key?: string;
+      }[];
+    };
+    labels?: string[];
+    expirationTimeUtc?: string;
+    eventDeliverySchema?:
+      | "EventGridSchema"
+      | "CustomInputSchema"
+      | "CloudEventSchemaV1_0";
+    retryPolicy?: {
+      maxDeliveryAttempts?: number;
+      eventTimeToLiveInMinutes?: number;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+    deadLetterWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      deadLetterDestination?: { endpointType: "StorageBlob" };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainTopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2239,19 +2984,20 @@ export const DomainTopicEventSubscriptionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicEventSubscriptionsCreateOrUpdateInput =
-  typeof DomainTopicEventSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicEventSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DomainTopicEventSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainTopicEventSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DomainTopicEventSubscriptionsCreateOrUpdateOutput =
-  typeof DomainTopicEventSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DomainTopicEventSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2272,6 +3018,13 @@ export const DomainTopicEventSubscriptionsCreateOrUpdate =
     outputSchema: DomainTopicEventSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DomainTopicEventSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const DomainTopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2285,15 +3038,12 @@ export const DomainTopicEventSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicEventSubscriptionsDeleteInput =
-  typeof DomainTopicEventSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicEventSubscriptionsDeleteInput>;
 
 // Output Schema
+export type DomainTopicEventSubscriptionsDeleteOutput = void;
 export const DomainTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainTopicEventSubscriptionsDeleteOutput =
-  typeof DomainTopicEventSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainTopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -2314,6 +3064,13 @@ export const DomainTopicEventSubscriptionsDelete =
     outputSchema: DomainTopicEventSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface DomainTopicEventSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const DomainTopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2327,19 +3084,20 @@ export const DomainTopicEventSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicEventSubscriptionsGetInput =
-  typeof DomainTopicEventSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicEventSubscriptionsGetInput>;
 
 // Output Schema
+export interface DomainTopicEventSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainTopicEventSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DomainTopicEventSubscriptionsGetOutput =
-  typeof DomainTopicEventSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<DomainTopicEventSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -2360,6 +3118,13 @@ export const DomainTopicEventSubscriptionsGet =
     outputSchema: DomainTopicEventSubscriptionsGetOutput,
   }));
 // Input Schema
+export interface DomainTopicEventSubscriptionsGetDeliveryAttributesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const DomainTopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2373,11 +3138,12 @@ export const DomainTopicEventSubscriptionsGetDeliveryAttributesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicEventSubscriptionsGetDeliveryAttributesInput =
-  typeof DomainTopicEventSubscriptionsGetDeliveryAttributesInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicEventSubscriptionsGetDeliveryAttributesInput>;
 
 // Output Schema
+export interface DomainTopicEventSubscriptionsGetDeliveryAttributesOutput {
+  value?: { name?: string; type: "Static" | "Dynamic" }[];
+}
 export const DomainTopicEventSubscriptionsGetDeliveryAttributesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2388,9 +3154,7 @@ export const DomainTopicEventSubscriptionsGetDeliveryAttributesOutput =
         }),
       ),
     ),
-  });
-export type DomainTopicEventSubscriptionsGetDeliveryAttributesOutput =
-  typeof DomainTopicEventSubscriptionsGetDeliveryAttributesOutput.Type;
+  }) as unknown as Schema.Codec<DomainTopicEventSubscriptionsGetDeliveryAttributesOutput>;
 
 // The operation
 /**
@@ -2411,6 +3175,13 @@ export const DomainTopicEventSubscriptionsGetDeliveryAttributes =
     outputSchema: DomainTopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
 // Input Schema
+export interface DomainTopicEventSubscriptionsGetFullUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const DomainTopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2424,17 +3195,16 @@ export const DomainTopicEventSubscriptionsGetFullUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicEventSubscriptionsGetFullUrlInput =
-  typeof DomainTopicEventSubscriptionsGetFullUrlInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicEventSubscriptionsGetFullUrlInput>;
 
 // Output Schema
+export interface DomainTopicEventSubscriptionsGetFullUrlOutput {
+  endpointUrl?: string;
+}
 export const DomainTopicEventSubscriptionsGetFullUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
-  });
-export type DomainTopicEventSubscriptionsGetFullUrlOutput =
-  typeof DomainTopicEventSubscriptionsGetFullUrlOutput.Type;
+  }) as unknown as Schema.Codec<DomainTopicEventSubscriptionsGetFullUrlOutput>;
 
 // The operation
 /**
@@ -2455,6 +3225,14 @@ export const DomainTopicEventSubscriptionsGetFullUrl =
     outputSchema: DomainTopicEventSubscriptionsGetFullUrlOutput,
   }));
 // Input Schema
+export interface DomainTopicEventSubscriptionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  topicName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DomainTopicEventSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2469,11 +3247,13 @@ export const DomainTopicEventSubscriptionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicEventSubscriptionsListInput =
-  typeof DomainTopicEventSubscriptionsListInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicEventSubscriptionsListInput>;
 
 // Output Schema
+export interface DomainTopicEventSubscriptionsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const DomainTopicEventSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2486,9 +3266,7 @@ export const DomainTopicEventSubscriptionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DomainTopicEventSubscriptionsListOutput =
-  typeof DomainTopicEventSubscriptionsListOutput.Type;
+  }) as unknown as Schema.Codec<DomainTopicEventSubscriptionsListOutput>;
 
 // The operation
 /**
@@ -2510,6 +3288,91 @@ export const DomainTopicEventSubscriptionsList =
     outputSchema: DomainTopicEventSubscriptionsListOutput,
   }));
 // Input Schema
+export interface DomainTopicEventSubscriptionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+  destination?: {
+    endpointType:
+      | "WebHook"
+      | "EventHub"
+      | "StorageQueue"
+      | "HybridConnection"
+      | "ServiceBusQueue"
+      | "ServiceBusTopic"
+      | "AzureFunction"
+      | "MonitorAlert"
+      | "NamespaceTopic";
+  };
+  deliveryWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+  };
+  filter?: {
+    subjectBeginsWith?: string;
+    subjectEndsWith?: string;
+    includedEventTypes?: string[];
+    isSubjectCaseSensitive?: boolean;
+    enableAdvancedFilteringOnArrays?: boolean;
+    advancedFilters?: {
+      operatorType:
+        | "NumberIn"
+        | "NumberNotIn"
+        | "NumberLessThan"
+        | "NumberGreaterThan"
+        | "NumberLessThanOrEquals"
+        | "NumberGreaterThanOrEquals"
+        | "BoolEquals"
+        | "StringIn"
+        | "StringNotIn"
+        | "StringBeginsWith"
+        | "StringEndsWith"
+        | "StringContains"
+        | "NumberInRange"
+        | "NumberNotInRange"
+        | "StringNotBeginsWith"
+        | "StringNotEndsWith"
+        | "StringNotContains"
+        | "IsNullOrUndefined"
+        | "IsNotNull";
+      key?: string;
+    }[];
+  };
+  labels?: string[];
+  expirationTimeUtc?: string;
+  eventDeliverySchema?:
+    | "EventGridSchema"
+    | "CustomInputSchema"
+    | "CloudEventSchemaV1_0";
+  retryPolicy?: {
+    maxDeliveryAttempts?: number;
+    eventTimeToLiveInMinutes?: number;
+  };
+  deadLetterDestination?: { endpointType: "StorageBlob" };
+  deadLetterWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+  };
+}
 export const DomainTopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2639,19 +3502,20 @@ export const DomainTopicEventSubscriptionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicEventSubscriptionsUpdateInput =
-  typeof DomainTopicEventSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicEventSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface DomainTopicEventSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainTopicEventSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DomainTopicEventSubscriptionsUpdateOutput =
-  typeof DomainTopicEventSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DomainTopicEventSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -2672,6 +3536,12 @@ export const DomainTopicEventSubscriptionsUpdate =
     outputSchema: DomainTopicEventSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface DomainTopicsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  domainTopicName: string;
+}
 export const DomainTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2684,19 +3554,20 @@ export const DomainTopicsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicsCreateOrUpdateInput =
-  typeof DomainTopicsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DomainTopicsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainTopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DomainTopicsCreateOrUpdateOutput =
-  typeof DomainTopicsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DomainTopicsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2717,6 +3588,12 @@ export const DomainTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainTopicsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  domainTopicName: string;
+}
 export const DomainTopicsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2729,12 +3606,12 @@ export const DomainTopicsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicsDeleteInput = typeof DomainTopicsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicsDeleteInput>;
 
 // Output Schema
-export const DomainTopicsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainTopicsDeleteOutput = typeof DomainTopicsDeleteOutput.Type;
+export type DomainTopicsDeleteOutput = void;
+export const DomainTopicsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -2753,6 +3630,12 @@ export const DomainTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DomainTopicsDeleteOutput,
 }));
 // Input Schema
+export interface DomainTopicsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  domainTopicName: string;
+}
 export const DomainTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2764,16 +3647,19 @@ export const DomainTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type DomainTopicsGetInput = typeof DomainTopicsGetInput.Type;
+) as unknown as Schema.Codec<DomainTopicsGetInput>;
 
 // Output Schema
+export interface DomainTopicsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DomainTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type DomainTopicsGetOutput = typeof DomainTopicsGetOutput.Type;
+}) as unknown as Schema.Codec<DomainTopicsGetOutput>;
 
 // The operation
 /**
@@ -2792,6 +3678,13 @@ export const DomainTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DomainTopicsGetOutput,
 }));
 // Input Schema
+export interface DomainTopicsListByDomainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DomainTopicsListByDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2805,11 +3698,13 @@ export const DomainTopicsListByDomainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics",
       apiVersion: "2025-02-15",
     }),
-  );
-export type DomainTopicsListByDomainInput =
-  typeof DomainTopicsListByDomainInput.Type;
+  ) as unknown as Schema.Codec<DomainTopicsListByDomainInput>;
 
 // Output Schema
+export interface DomainTopicsListByDomainOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const DomainTopicsListByDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2822,9 +3717,7 @@ export const DomainTopicsListByDomainOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DomainTopicsListByDomainOutput =
-  typeof DomainTopicsListByDomainOutput.Type;
+  }) as unknown as Schema.Codec<DomainTopicsListByDomainOutput>;
 
 // The operation
 /**
@@ -2846,6 +3739,110 @@ export const DomainTopicsListByDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EventSubscriptionsCreateOrUpdateInput {
+  scope: string;
+  eventSubscriptionName: string;
+  properties?: {
+    topic?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "AwaitingManualAction";
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+    deliveryWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      destination?: {
+        endpointType:
+          | "WebHook"
+          | "EventHub"
+          | "StorageQueue"
+          | "HybridConnection"
+          | "ServiceBusQueue"
+          | "ServiceBusTopic"
+          | "AzureFunction"
+          | "MonitorAlert"
+          | "NamespaceTopic";
+      };
+    };
+    filter?: {
+      subjectBeginsWith?: string;
+      subjectEndsWith?: string;
+      includedEventTypes?: string[];
+      isSubjectCaseSensitive?: boolean;
+      enableAdvancedFilteringOnArrays?: boolean;
+      advancedFilters?: {
+        operatorType:
+          | "NumberIn"
+          | "NumberNotIn"
+          | "NumberLessThan"
+          | "NumberGreaterThan"
+          | "NumberLessThanOrEquals"
+          | "NumberGreaterThanOrEquals"
+          | "BoolEquals"
+          | "StringIn"
+          | "StringNotIn"
+          | "StringBeginsWith"
+          | "StringEndsWith"
+          | "StringContains"
+          | "NumberInRange"
+          | "NumberNotInRange"
+          | "StringNotBeginsWith"
+          | "StringNotEndsWith"
+          | "StringNotContains"
+          | "IsNullOrUndefined"
+          | "IsNotNull";
+        key?: string;
+      }[];
+    };
+    labels?: string[];
+    expirationTimeUtc?: string;
+    eventDeliverySchema?:
+      | "EventGridSchema"
+      | "CustomInputSchema"
+      | "CloudEventSchemaV1_0";
+    retryPolicy?: {
+      maxDeliveryAttempts?: number;
+      eventTimeToLiveInMinutes?: number;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+    deadLetterWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      deadLetterDestination?: { endpointType: "StorageBlob" };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const EventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3005,19 +4002,20 @@ export const EventSubscriptionsCreateOrUpdateInput =
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsCreateOrUpdateInput =
-  typeof EventSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface EventSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const EventSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsCreateOrUpdateOutput =
-  typeof EventSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3035,6 +4033,10 @@ export const EventSubscriptionsCreateOrUpdate =
     outputSchema: EventSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsDeleteInput {
+  scope: string;
+  eventSubscriptionName: string;
+}
 export const EventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3045,15 +4047,12 @@ export const EventSubscriptionsDeleteInput =
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsDeleteInput =
-  typeof EventSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsDeleteInput>;
 
 // Output Schema
+export type EventSubscriptionsDeleteOutput = void;
 export const EventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EventSubscriptionsDeleteOutput =
-  typeof EventSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -3072,6 +4071,10 @@ export const EventSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EventSubscriptionsGetInput {
+  scope: string;
+  eventSubscriptionName: string;
+}
 export const EventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3082,18 +4085,20 @@ export const EventSubscriptionsGetInput =
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsGetInput = typeof EventSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsGetInput>;
 
 // Output Schema
+export interface EventSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const EventSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsGetOutput =
-  typeof EventSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -3112,6 +4117,10 @@ export const EventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EventSubscriptionsGetDeliveryAttributesInput {
+  scope: string;
+  eventSubscriptionName: string;
+}
 export const EventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3122,11 +4131,12 @@ export const EventSubscriptionsGetDeliveryAttributesInput =
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsGetDeliveryAttributesInput =
-  typeof EventSubscriptionsGetDeliveryAttributesInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsGetDeliveryAttributesInput>;
 
 // Output Schema
+export interface EventSubscriptionsGetDeliveryAttributesOutput {
+  value?: { name?: string; type: "Static" | "Dynamic" }[];
+}
 export const EventSubscriptionsGetDeliveryAttributesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3137,9 +4147,7 @@ export const EventSubscriptionsGetDeliveryAttributesOutput =
         }),
       ),
     ),
-  });
-export type EventSubscriptionsGetDeliveryAttributesOutput =
-  typeof EventSubscriptionsGetDeliveryAttributesOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsGetDeliveryAttributesOutput>;
 
 // The operation
 /**
@@ -3157,6 +4165,10 @@ export const EventSubscriptionsGetDeliveryAttributes =
     outputSchema: EventSubscriptionsGetDeliveryAttributesOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsGetFullUrlInput {
+  scope: string;
+  eventSubscriptionName: string;
+}
 export const EventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3167,17 +4179,16 @@ export const EventSubscriptionsGetFullUrlInput =
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsGetFullUrlInput =
-  typeof EventSubscriptionsGetFullUrlInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsGetFullUrlInput>;
 
 // Output Schema
+export interface EventSubscriptionsGetFullUrlOutput {
+  endpointUrl?: string;
+}
 export const EventSubscriptionsGetFullUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsGetFullUrlOutput =
-  typeof EventSubscriptionsGetFullUrlOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsGetFullUrlOutput>;
 
 // The operation
 /**
@@ -3195,6 +4206,14 @@ export const EventSubscriptionsGetFullUrl =
     outputSchema: EventSubscriptionsGetFullUrlOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListByDomainTopicInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  domainName: string;
+  topicName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListByDomainTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3209,11 +4228,13 @@ export const EventSubscriptionsListByDomainTopicInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/providers/Microsoft.EventGrid/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListByDomainTopicInput =
-  typeof EventSubscriptionsListByDomainTopicInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListByDomainTopicInput>;
 
 // Output Schema
+export interface EventSubscriptionsListByDomainTopicOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListByDomainTopicOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3226,9 +4247,7 @@ export const EventSubscriptionsListByDomainTopicOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListByDomainTopicOutput =
-  typeof EventSubscriptionsListByDomainTopicOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListByDomainTopicOutput>;
 
 // The operation
 /**
@@ -3250,6 +4269,15 @@ export const EventSubscriptionsListByDomainTopic =
     outputSchema: EventSubscriptionsListByDomainTopicOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerNamespace: string;
+  resourceTypeName: string;
+  resourceName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3265,11 +4293,13 @@ export const EventSubscriptionsListByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{providerNamespace}/{resourceTypeName}/{resourceName}/providers/Microsoft.EventGrid/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListByResourceInput =
-  typeof EventSubscriptionsListByResourceInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListByResourceInput>;
 
 // Output Schema
+export interface EventSubscriptionsListByResourceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3282,9 +4312,7 @@ export const EventSubscriptionsListByResourceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListByResourceOutput =
-  typeof EventSubscriptionsListByResourceOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListByResourceOutput>;
 
 // The operation
 /**
@@ -3307,6 +4335,12 @@ export const EventSubscriptionsListByResource =
     outputSchema: EventSubscriptionsListByResourceOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListGlobalByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListGlobalByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3319,11 +4353,13 @@ export const EventSubscriptionsListGlobalByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListGlobalByResourceGroupInput =
-  typeof EventSubscriptionsListGlobalByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListGlobalByResourceGroupInput>;
 
 // Output Schema
+export interface EventSubscriptionsListGlobalByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListGlobalByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3336,9 +4372,7 @@ export const EventSubscriptionsListGlobalByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListGlobalByResourceGroupOutput =
-  typeof EventSubscriptionsListGlobalByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListGlobalByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3358,6 +4392,13 @@ export const EventSubscriptionsListGlobalByResourceGroup =
     outputSchema: EventSubscriptionsListGlobalByResourceGroupOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicTypeName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3371,11 +4412,13 @@ export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput =
-  typeof EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListGlobalByResourceGroupForTopicTypeInput>;
 
 // Output Schema
+export interface EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3388,9 +4431,7 @@ export const EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput =
-  typeof EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput>;
 
 // The operation
 /**
@@ -3411,6 +4452,11 @@ export const EventSubscriptionsListGlobalByResourceGroupForTopicType =
     outputSchema: EventSubscriptionsListGlobalByResourceGroupForTopicTypeOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListGlobalBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListGlobalBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3422,11 +4468,13 @@ export const EventSubscriptionsListGlobalBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListGlobalBySubscriptionInput =
-  typeof EventSubscriptionsListGlobalBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListGlobalBySubscriptionInput>;
 
 // Output Schema
+export interface EventSubscriptionsListGlobalBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListGlobalBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3439,9 +4487,7 @@ export const EventSubscriptionsListGlobalBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListGlobalBySubscriptionOutput =
-  typeof EventSubscriptionsListGlobalBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListGlobalBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3460,6 +4506,12 @@ export const EventSubscriptionsListGlobalBySubscription =
     outputSchema: EventSubscriptionsListGlobalBySubscriptionOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput {
+  subscriptionId: string;
+  topicTypeName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3472,11 +4524,13 @@ export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput =
-  typeof EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListGlobalBySubscriptionForTopicTypeInput>;
 
 // Output Schema
+export interface EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3489,9 +4543,7 @@ export const EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput =
-  typeof EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput>;
 
 // The operation
 /**
@@ -3511,6 +4563,13 @@ export const EventSubscriptionsListGlobalBySubscriptionForTopicType =
     outputSchema: EventSubscriptionsListGlobalBySubscriptionForTopicTypeOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListRegionalByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListRegionalByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3524,11 +4583,13 @@ export const EventSubscriptionsListRegionalByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/locations/{location}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListRegionalByResourceGroupInput =
-  typeof EventSubscriptionsListRegionalByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListRegionalByResourceGroupInput>;
 
 // Output Schema
+export interface EventSubscriptionsListRegionalByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListRegionalByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3541,9 +4602,7 @@ export const EventSubscriptionsListRegionalByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListRegionalByResourceGroupOutput =
-  typeof EventSubscriptionsListRegionalByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListRegionalByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3564,6 +4623,14 @@ export const EventSubscriptionsListRegionalByResourceGroup =
     outputSchema: EventSubscriptionsListRegionalByResourceGroupOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  topicTypeName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3578,11 +4645,13 @@ export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/locations/{location}/topicTypes/{topicTypeName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput =
-  typeof EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListRegionalByResourceGroupForTopicTypeInput>;
 
 // Output Schema
+export interface EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3595,9 +4664,7 @@ export const EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput =
-  typeof EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput>;
 
 // The operation
 /**
@@ -3620,6 +4687,12 @@ export const EventSubscriptionsListRegionalByResourceGroupForTopicType =
       EventSubscriptionsListRegionalByResourceGroupForTopicTypeOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListRegionalBySubscriptionInput {
+  subscriptionId: string;
+  location: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListRegionalBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3632,11 +4705,13 @@ export const EventSubscriptionsListRegionalBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/locations/{location}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListRegionalBySubscriptionInput =
-  typeof EventSubscriptionsListRegionalBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListRegionalBySubscriptionInput>;
 
 // Output Schema
+export interface EventSubscriptionsListRegionalBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListRegionalBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3649,9 +4724,7 @@ export const EventSubscriptionsListRegionalBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListRegionalBySubscriptionOutput =
-  typeof EventSubscriptionsListRegionalBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListRegionalBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3671,6 +4744,13 @@ export const EventSubscriptionsListRegionalBySubscription =
     outputSchema: EventSubscriptionsListRegionalBySubscriptionOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput {
+  subscriptionId: string;
+  location: string;
+  topicTypeName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3684,11 +4764,13 @@ export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/locations/{location}/topicTypes/{topicTypeName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput =
-  typeof EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsListRegionalBySubscriptionForTopicTypeInput>;
 
 // Output Schema
+export interface EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3701,9 +4783,7 @@ export const EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput =
-  typeof EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput>;
 
 // The operation
 /**
@@ -3725,6 +4805,88 @@ export const EventSubscriptionsListRegionalBySubscriptionForTopicType =
       EventSubscriptionsListRegionalBySubscriptionForTopicTypeOutput,
   }));
 // Input Schema
+export interface EventSubscriptionsUpdateInput {
+  scope: string;
+  eventSubscriptionName: string;
+  destination?: {
+    endpointType:
+      | "WebHook"
+      | "EventHub"
+      | "StorageQueue"
+      | "HybridConnection"
+      | "ServiceBusQueue"
+      | "ServiceBusTopic"
+      | "AzureFunction"
+      | "MonitorAlert"
+      | "NamespaceTopic";
+  };
+  deliveryWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+  };
+  filter?: {
+    subjectBeginsWith?: string;
+    subjectEndsWith?: string;
+    includedEventTypes?: string[];
+    isSubjectCaseSensitive?: boolean;
+    enableAdvancedFilteringOnArrays?: boolean;
+    advancedFilters?: {
+      operatorType:
+        | "NumberIn"
+        | "NumberNotIn"
+        | "NumberLessThan"
+        | "NumberGreaterThan"
+        | "NumberLessThanOrEquals"
+        | "NumberGreaterThanOrEquals"
+        | "BoolEquals"
+        | "StringIn"
+        | "StringNotIn"
+        | "StringBeginsWith"
+        | "StringEndsWith"
+        | "StringContains"
+        | "NumberInRange"
+        | "NumberNotInRange"
+        | "StringNotBeginsWith"
+        | "StringNotEndsWith"
+        | "StringNotContains"
+        | "IsNullOrUndefined"
+        | "IsNotNull";
+      key?: string;
+    }[];
+  };
+  labels?: string[];
+  expirationTimeUtc?: string;
+  eventDeliverySchema?:
+    | "EventGridSchema"
+    | "CustomInputSchema"
+    | "CloudEventSchemaV1_0";
+  retryPolicy?: {
+    maxDeliveryAttempts?: number;
+    eventTimeToLiveInMinutes?: number;
+  };
+  deadLetterDestination?: { endpointType: "StorageBlob" };
+  deadLetterWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+  };
+}
 export const EventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3851,19 +5013,20 @@ export const EventSubscriptionsUpdateInput =
       path: "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type EventSubscriptionsUpdateInput =
-  typeof EventSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<EventSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface EventSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const EventSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type EventSubscriptionsUpdateOutput =
-  typeof EventSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EventSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -3882,6 +5045,9 @@ export const EventSubscriptionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExtensionTopicsGetInput {
+  scope: string;
+}
 export const ExtensionTopicsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3891,17 +5057,20 @@ export const ExtensionTopicsGetInput =
       path: "/{scope}/providers/Microsoft.EventGrid/extensionTopics/default",
       apiVersion: "2025-02-15",
     }),
-  );
-export type ExtensionTopicsGetInput = typeof ExtensionTopicsGetInput.Type;
+  ) as unknown as Schema.Codec<ExtensionTopicsGetInput>;
 
 // Output Schema
+export interface ExtensionTopicsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ExtensionTopicsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ExtensionTopicsGetOutput = typeof ExtensionTopicsGetOutput.Type;
+  }) as unknown as Schema.Codec<ExtensionTopicsGetOutput>;
 
 // The operation
 /**
@@ -3917,6 +5086,97 @@ export const ExtensionTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionTopicsGetOutput,
 }));
 // Input Schema
+export interface NamespacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  properties?: {
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Deleted"
+      | "DeleteFailed"
+      | "CreateFailed"
+      | "UpdatedFailed";
+    topicsConfiguration?: {
+      hostname?: string;
+      customDomains?: {
+        fullyQualifiedDomainName: string;
+        validationState?: "Pending" | "Approved" | "ErrorRetrievingDnsRecord";
+        identity?: {
+          type?: "SystemAssigned" | "UserAssigned";
+          userAssignedIdentity?: string;
+        };
+        certificateUrl?: string;
+        expectedTxtRecordName?: string;
+        expectedTxtRecordValue?: string;
+      }[];
+    };
+    topicSpacesConfiguration?: {
+      state?: "Disabled" | "Enabled";
+      routeTopicResourceId?: string;
+      hostname?: string;
+      routingEnrichments?: {
+        static?: { key?: string; valueType: "String" }[];
+        dynamic?: { key?: string; value?: string }[];
+      };
+      maximumSessionExpiryInHours?: number;
+      maximumClientSessionsPerAuthenticationName?: number;
+      routingIdentityInfo?: {
+        type?: "None" | "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      customDomains?: {
+        fullyQualifiedDomainName: string;
+        validationState?: "Pending" | "Approved" | "ErrorRetrievingDnsRecord";
+        identity?: {
+          type?: "SystemAssigned" | "UserAssigned";
+          userAssignedIdentity?: string;
+        };
+        certificateUrl?: string;
+        expectedTxtRecordName?: string;
+        expectedTxtRecordValue?: string;
+      }[];
+    };
+    isZoneRedundant?: boolean;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
+    minimumTlsVersionAllowed?: "1.0" | "1.1" | "1.2";
+  };
+  sku?: { name?: "Standard"; capacity?: number };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location: string;
+  tags?: Record<string, string>;
+}
 export const NamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4109,19 +5369,20 @@ export const NamespacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespacesCreateOrUpdateInput =
-  typeof NamespacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface NamespacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type NamespacesCreateOrUpdateOutput =
-  typeof NamespacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4141,6 +5402,11 @@ export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4151,12 +5417,12 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
+) as unknown as Schema.Codec<NamespacesDeleteInput>;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
+export type NamespacesDeleteOutput = void;
+export const NamespacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespacesDeleteOutput>;
 
 // The operation
 /**
@@ -4174,6 +5440,11 @@ export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesDeleteOutput,
 }));
 // Input Schema
+export interface NamespacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4184,16 +5455,19 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type NamespacesGetInput = typeof NamespacesGetInput.Type;
+) as unknown as Schema.Codec<NamespacesGetInput>;
 
 // Output Schema
+export interface NamespacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
+}) as unknown as Schema.Codec<NamespacesGetOutput>;
 
 // The operation
 /**
@@ -4211,6 +5485,12 @@ export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesGetOutput,
 }));
 // Input Schema
+export interface NamespacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const NamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4223,11 +5503,13 @@ export const NamespacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespacesListByResourceGroupInput =
-  typeof NamespacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListByResourceGroupInput>;
 
 // Output Schema
+export interface NamespacesListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const NamespacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4240,9 +5522,7 @@ export const NamespacesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespacesListByResourceGroupOutput =
-  typeof NamespacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4262,6 +5542,11 @@ export const NamespacesListByResourceGroup =
     outputSchema: NamespacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NamespacesListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const NamespacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4273,11 +5558,13 @@ export const NamespacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/namespaces",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespacesListBySubscriptionInput =
-  typeof NamespacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListBySubscriptionInput>;
 
 // Output Schema
+export interface NamespacesListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const NamespacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4290,9 +5577,7 @@ export const NamespacesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespacesListBySubscriptionOutput =
-  typeof NamespacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4311,6 +5596,11 @@ export const NamespacesListBySubscription =
     outputSchema: NamespacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NamespacesListSharedAccessKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4322,18 +5612,18 @@ export const NamespacesListSharedAccessKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/listKeys",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespacesListSharedAccessKeysInput =
-  typeof NamespacesListSharedAccessKeysInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListSharedAccessKeysInput>;
 
 // Output Schema
+export interface NamespacesListSharedAccessKeysOutput {
+  key1?: string;
+  key2?: string;
+}
 export const NamespacesListSharedAccessKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type NamespacesListSharedAccessKeysOutput =
-  typeof NamespacesListSharedAccessKeysOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListSharedAccessKeysOutput>;
 
 // The operation
 /**
@@ -4352,6 +5642,12 @@ export const NamespacesListSharedAccessKeys =
     outputSchema: NamespacesListSharedAccessKeysOutput,
   }));
 // Input Schema
+export interface NamespacesRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  keyName: string;
+}
 export const NamespacesRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4364,18 +5660,18 @@ export const NamespacesRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/regenerateKey",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespacesRegenerateKeyInput =
-  typeof NamespacesRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<NamespacesRegenerateKeyInput>;
 
 // Output Schema
+export interface NamespacesRegenerateKeyOutput {
+  key1?: string;
+  key2?: string;
+}
 export const NamespacesRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type NamespacesRegenerateKeyOutput =
-  typeof NamespacesRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -4395,6 +5691,68 @@ export const NamespacesRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  sku?: { name?: "Standard"; capacity?: number };
+  properties?: {
+    topicSpacesConfiguration?: {
+      state?: "Disabled" | "Enabled";
+      routeTopicResourceId?: string;
+      routingEnrichments?: {
+        static?: { key?: string; valueType: "String" }[];
+        dynamic?: { key?: string; value?: string }[];
+      };
+      maximumSessionExpiryInHours?: number;
+      maximumClientSessionsPerAuthenticationName?: number;
+      routingIdentityInfo?: {
+        type?: "None" | "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      customDomains?: {
+        fullyQualifiedDomainName: string;
+        validationState?: "Pending" | "Approved" | "ErrorRetrievingDnsRecord";
+        identity?: {
+          type?: "SystemAssigned" | "UserAssigned";
+          userAssignedIdentity?: string;
+        };
+        certificateUrl?: string;
+        expectedTxtRecordName?: string;
+        expectedTxtRecordValue?: string;
+      }[];
+    };
+    topicsConfiguration?: {
+      customDomains?: {
+        fullyQualifiedDomainName: string;
+        validationState?: "Pending" | "Approved" | "ErrorRetrievingDnsRecord";
+        identity?: {
+          type?: "SystemAssigned" | "UserAssigned";
+          userAssignedIdentity?: string;
+        };
+        certificateUrl?: string;
+        expectedTxtRecordName?: string;
+        expectedTxtRecordValue?: string;
+      }[];
+    };
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
+  };
+}
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4542,18 +5900,21 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
+) as unknown as Schema.Codec<NamespacesUpdateInput>;
 
 // Output Schema
+export interface NamespacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   },
-);
-export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
+) as unknown as Schema.Codec<NamespacesUpdateOutput>;
 
 // The operation
 /**
@@ -4571,6 +5932,11 @@ export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
+export interface NamespacesValidateCustomDomainOwnershipInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesValidateCustomDomainOwnershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4582,11 +5948,33 @@ export const NamespacesValidateCustomDomainOwnershipInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/validateCustomDomainOwnership",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespacesValidateCustomDomainOwnershipInput =
-  typeof NamespacesValidateCustomDomainOwnershipInput.Type;
+  ) as unknown as Schema.Codec<NamespacesValidateCustomDomainOwnershipInput>;
 
 // Output Schema
+export interface NamespacesValidateCustomDomainOwnershipOutput {
+  customDomainsForTopicsConfiguration?: {
+    fullyQualifiedDomainName: string;
+    validationState?: "Pending" | "Approved" | "ErrorRetrievingDnsRecord";
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    certificateUrl?: string;
+    expectedTxtRecordName?: string;
+    expectedTxtRecordValue?: string;
+  }[];
+  customDomainsForTopicSpacesConfiguration?: {
+    fullyQualifiedDomainName: string;
+    validationState?: "Pending" | "Approved" | "ErrorRetrievingDnsRecord";
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    certificateUrl?: string;
+    expectedTxtRecordName?: string;
+    expectedTxtRecordValue?: string;
+  }[];
+}
 export const NamespacesValidateCustomDomainOwnershipOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customDomainsForTopicsConfiguration: Schema.optional(
@@ -4639,9 +6027,7 @@ export const NamespacesValidateCustomDomainOwnershipOutput =
         }),
       ),
     ),
-  });
-export type NamespacesValidateCustomDomainOwnershipOutput =
-  typeof NamespacesValidateCustomDomainOwnershipOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesValidateCustomDomainOwnershipOutput>;
 
 // The operation
 /**
@@ -4660,6 +6046,122 @@ export const NamespacesValidateCustomDomainOwnership =
     outputSchema: NamespacesValidateCustomDomainOwnershipOutput,
   }));
 // Input Schema
+export interface NamespaceTopicEventSubscriptionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "AwaitingManualAction"
+      | "Deleted"
+      | "DeleteFailed"
+      | "CreateFailed"
+      | "UpdatedFailed";
+    deliveryConfiguration?: {
+      deliveryMode?: "Queue" | "Push";
+      queue?: {
+        receiveLockDurationInSeconds?: number;
+        maxDeliveryCount?: number;
+        deadLetterDestinationWithResourceIdentity?: {
+          identity?: {
+            type?: "SystemAssigned" | "UserAssigned";
+            userAssignedIdentity?: string;
+          };
+          deadLetterDestination?: { endpointType: "StorageBlob" };
+        };
+        eventTimeToLive?: string;
+      };
+      push?: {
+        maxDeliveryCount?: number;
+        eventTimeToLive?: string;
+        deadLetterDestinationWithResourceIdentity?: {
+          identity?: {
+            type?: "SystemAssigned" | "UserAssigned";
+            userAssignedIdentity?: string;
+          };
+          deadLetterDestination?: { endpointType: "StorageBlob" };
+        };
+        deliveryWithResourceIdentity?: {
+          identity?: {
+            type?: "SystemAssigned" | "UserAssigned";
+            userAssignedIdentity?: string;
+          };
+          destination?: {
+            endpointType:
+              | "WebHook"
+              | "EventHub"
+              | "StorageQueue"
+              | "HybridConnection"
+              | "ServiceBusQueue"
+              | "ServiceBusTopic"
+              | "AzureFunction"
+              | "MonitorAlert"
+              | "NamespaceTopic";
+          };
+        };
+        destination?: {
+          endpointType:
+            | "WebHook"
+            | "EventHub"
+            | "StorageQueue"
+            | "HybridConnection"
+            | "ServiceBusQueue"
+            | "ServiceBusTopic"
+            | "AzureFunction"
+            | "MonitorAlert"
+            | "NamespaceTopic";
+        };
+      };
+    };
+    eventDeliverySchema?: "CloudEventSchemaV1_0";
+    filtersConfiguration?: {
+      includedEventTypes?: string[];
+      filters?: {
+        operatorType:
+          | "NumberIn"
+          | "NumberNotIn"
+          | "NumberLessThan"
+          | "NumberGreaterThan"
+          | "NumberLessThanOrEquals"
+          | "NumberGreaterThanOrEquals"
+          | "BoolEquals"
+          | "StringIn"
+          | "StringNotIn"
+          | "StringBeginsWith"
+          | "StringEndsWith"
+          | "StringContains"
+          | "NumberInRange"
+          | "NumberNotInRange"
+          | "StringNotBeginsWith"
+          | "StringNotEndsWith"
+          | "StringNotContains"
+          | "IsNullOrUndefined"
+          | "IsNotNull";
+        key?: string;
+      }[];
+    };
+    expirationTimeUtc?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4840,19 +6342,20 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicEventSubscriptionsCreateOrUpdateInput =
-  typeof NamespaceTopicEventSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NamespaceTopicEventSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespaceTopicEventSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicEventSubscriptionsCreateOrUpdateOutput =
-  typeof NamespaceTopicEventSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4873,6 +6376,13 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdate =
     outputSchema: NamespaceTopicEventSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NamespaceTopicEventSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const NamespaceTopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4886,15 +6396,12 @@ export const NamespaceTopicEventSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicEventSubscriptionsDeleteInput =
-  typeof NamespaceTopicEventSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsDeleteInput>;
 
 // Output Schema
+export type NamespaceTopicEventSubscriptionsDeleteOutput = void;
 export const NamespaceTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespaceTopicEventSubscriptionsDeleteOutput =
-  typeof NamespaceTopicEventSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -4915,6 +6422,13 @@ export const NamespaceTopicEventSubscriptionsDelete =
     outputSchema: NamespaceTopicEventSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface NamespaceTopicEventSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const NamespaceTopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4928,19 +6442,20 @@ export const NamespaceTopicEventSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicEventSubscriptionsGetInput =
-  typeof NamespaceTopicEventSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsGetInput>;
 
 // Output Schema
+export interface NamespaceTopicEventSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespaceTopicEventSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicEventSubscriptionsGetOutput =
-  typeof NamespaceTopicEventSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -4961,6 +6476,13 @@ export const NamespaceTopicEventSubscriptionsGet =
     outputSchema: NamespaceTopicEventSubscriptionsGetOutput,
   }));
 // Input Schema
+export interface NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4974,11 +6496,12 @@ export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput =
-  typeof NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsGetDeliveryAttributesInput>;
 
 // Output Schema
+export interface NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput {
+  value?: { name?: string; type: "Static" | "Dynamic" }[];
+}
 export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4989,9 +6512,7 @@ export const NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput =
         }),
       ),
     ),
-  });
-export type NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput =
-  typeof NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput>;
 
 // The operation
 /**
@@ -5012,6 +6533,13 @@ export const NamespaceTopicEventSubscriptionsGetDeliveryAttributes =
     outputSchema: NamespaceTopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
 // Input Schema
+export interface NamespaceTopicEventSubscriptionsGetFullUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const NamespaceTopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5025,17 +6553,16 @@ export const NamespaceTopicEventSubscriptionsGetFullUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicEventSubscriptionsGetFullUrlInput =
-  typeof NamespaceTopicEventSubscriptionsGetFullUrlInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsGetFullUrlInput>;
 
 // Output Schema
+export interface NamespaceTopicEventSubscriptionsGetFullUrlOutput {
+  endpointUrl?: string;
+}
 export const NamespaceTopicEventSubscriptionsGetFullUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicEventSubscriptionsGetFullUrlOutput =
-  typeof NamespaceTopicEventSubscriptionsGetFullUrlOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsGetFullUrlOutput>;
 
 // The operation
 /**
@@ -5056,6 +6583,14 @@ export const NamespaceTopicEventSubscriptionsGetFullUrl =
     outputSchema: NamespaceTopicEventSubscriptionsGetFullUrlOutput,
   }));
 // Input Schema
+export interface NamespaceTopicEventSubscriptionsListByNamespaceTopicInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const NamespaceTopicEventSubscriptionsListByNamespaceTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5070,11 +6605,13 @@ export const NamespaceTopicEventSubscriptionsListByNamespaceTopicInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicEventSubscriptionsListByNamespaceTopicInput =
-  typeof NamespaceTopicEventSubscriptionsListByNamespaceTopicInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsListByNamespaceTopicInput>;
 
 // Output Schema
+export interface NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5087,9 +6624,7 @@ export const NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput =
-  typeof NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput>;
 
 // The operation
 /**
@@ -5111,6 +6646,99 @@ export const NamespaceTopicEventSubscriptionsListByNamespaceTopic =
     outputSchema: NamespaceTopicEventSubscriptionsListByNamespaceTopicOutput,
   }));
 // Input Schema
+export interface NamespaceTopicEventSubscriptionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+  properties?: {
+    deliveryConfiguration?: {
+      deliveryMode?: "Queue" | "Push";
+      queue?: {
+        receiveLockDurationInSeconds?: number;
+        maxDeliveryCount?: number;
+        deadLetterDestinationWithResourceIdentity?: {
+          identity?: {
+            type?: "SystemAssigned" | "UserAssigned";
+            userAssignedIdentity?: string;
+          };
+          deadLetterDestination?: { endpointType: "StorageBlob" };
+        };
+        eventTimeToLive?: string;
+      };
+      push?: {
+        maxDeliveryCount?: number;
+        eventTimeToLive?: string;
+        deadLetterDestinationWithResourceIdentity?: {
+          identity?: {
+            type?: "SystemAssigned" | "UserAssigned";
+            userAssignedIdentity?: string;
+          };
+          deadLetterDestination?: { endpointType: "StorageBlob" };
+        };
+        deliveryWithResourceIdentity?: {
+          identity?: {
+            type?: "SystemAssigned" | "UserAssigned";
+            userAssignedIdentity?: string;
+          };
+          destination?: {
+            endpointType:
+              | "WebHook"
+              | "EventHub"
+              | "StorageQueue"
+              | "HybridConnection"
+              | "ServiceBusQueue"
+              | "ServiceBusTopic"
+              | "AzureFunction"
+              | "MonitorAlert"
+              | "NamespaceTopic";
+          };
+        };
+        destination?: {
+          endpointType:
+            | "WebHook"
+            | "EventHub"
+            | "StorageQueue"
+            | "HybridConnection"
+            | "ServiceBusQueue"
+            | "ServiceBusTopic"
+            | "AzureFunction"
+            | "MonitorAlert"
+            | "NamespaceTopic";
+        };
+      };
+    };
+    eventDeliverySchema?: "CloudEventSchemaV1_0";
+    filtersConfiguration?: {
+      includedEventTypes?: string[];
+      filters?: {
+        operatorType:
+          | "NumberIn"
+          | "NumberNotIn"
+          | "NumberLessThan"
+          | "NumberGreaterThan"
+          | "NumberLessThanOrEquals"
+          | "NumberGreaterThanOrEquals"
+          | "BoolEquals"
+          | "StringIn"
+          | "StringNotIn"
+          | "StringBeginsWith"
+          | "StringEndsWith"
+          | "StringContains"
+          | "NumberInRange"
+          | "NumberNotInRange"
+          | "StringNotBeginsWith"
+          | "StringNotEndsWith"
+          | "StringNotContains"
+          | "IsNullOrUndefined"
+          | "IsNotNull";
+        key?: string;
+      }[];
+    };
+    expirationTimeUtc?: string;
+  };
+}
 export const NamespaceTopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5259,19 +6887,20 @@ export const NamespaceTopicEventSubscriptionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicEventSubscriptionsUpdateInput =
-  typeof NamespaceTopicEventSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface NamespaceTopicEventSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespaceTopicEventSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicEventSubscriptionsUpdateOutput =
-  typeof NamespaceTopicEventSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicEventSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -5292,6 +6921,39 @@ export const NamespaceTopicEventSubscriptionsUpdate =
     outputSchema: NamespaceTopicEventSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface NamespaceTopicsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Deleted"
+      | "DeleteFailed"
+      | "CreateFailed"
+      | "UpdatedFailed";
+    publisherType?: "Custom";
+    inputSchema?: "CloudEventSchemaV1_0";
+    eventRetentionInDays?: number;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespaceTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5342,19 +7004,20 @@ export const NamespaceTopicsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicsCreateOrUpdateInput =
-  typeof NamespaceTopicsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NamespaceTopicsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespaceTopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicsCreateOrUpdateOutput =
-  typeof NamespaceTopicsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5374,6 +7037,12 @@ export const NamespaceTopicsCreateOrUpdate =
     outputSchema: NamespaceTopicsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NamespaceTopicsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+}
 export const NamespaceTopicsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5386,14 +7055,12 @@ export const NamespaceTopicsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicsDeleteInput = typeof NamespaceTopicsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicsDeleteInput>;
 
 // Output Schema
+export type NamespaceTopicsDeleteOutput = void;
 export const NamespaceTopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespaceTopicsDeleteOutput =
-  typeof NamespaceTopicsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -5414,6 +7081,12 @@ export const NamespaceTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespaceTopicsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+}
 export const NamespaceTopicsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5426,17 +7099,20 @@ export const NamespaceTopicsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicsGetInput = typeof NamespaceTopicsGetInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicsGetInput>;
 
 // Output Schema
+export interface NamespaceTopicsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespaceTopicsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicsGetOutput = typeof NamespaceTopicsGetOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicsGetOutput>;
 
 // The operation
 /**
@@ -5455,6 +7131,13 @@ export const NamespaceTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespaceTopicsGetOutput,
 }));
 // Input Schema
+export interface NamespaceTopicsListByNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const NamespaceTopicsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5468,11 +7151,13 @@ export const NamespaceTopicsListByNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicsListByNamespaceInput =
-  typeof NamespaceTopicsListByNamespaceInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicsListByNamespaceInput>;
 
 // Output Schema
+export interface NamespaceTopicsListByNamespaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const NamespaceTopicsListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5485,9 +7170,7 @@ export const NamespaceTopicsListByNamespaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicsListByNamespaceOutput =
-  typeof NamespaceTopicsListByNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicsListByNamespaceOutput>;
 
 // The operation
 /**
@@ -5508,6 +7191,12 @@ export const NamespaceTopicsListByNamespace =
     outputSchema: NamespaceTopicsListByNamespaceOutput,
   }));
 // Input Schema
+export interface NamespaceTopicsListSharedAccessKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+}
 export const NamespaceTopicsListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5520,18 +7209,18 @@ export const NamespaceTopicsListSharedAccessKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/listKeys",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicsListSharedAccessKeysInput =
-  typeof NamespaceTopicsListSharedAccessKeysInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicsListSharedAccessKeysInput>;
 
 // Output Schema
+export interface NamespaceTopicsListSharedAccessKeysOutput {
+  key1?: string;
+  key2?: string;
+}
 export const NamespaceTopicsListSharedAccessKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicsListSharedAccessKeysOutput =
-  typeof NamespaceTopicsListSharedAccessKeysOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicsListSharedAccessKeysOutput>;
 
 // The operation
 /**
@@ -5551,6 +7240,13 @@ export const NamespaceTopicsListSharedAccessKeys =
     outputSchema: NamespaceTopicsListSharedAccessKeysOutput,
   }));
 // Input Schema
+export interface NamespaceTopicsRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  keyName: string;
+}
 export const NamespaceTopicsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5564,18 +7260,18 @@ export const NamespaceTopicsRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/regenerateKey",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicsRegenerateKeyInput =
-  typeof NamespaceTopicsRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicsRegenerateKeyInput>;
 
 // Output Schema
+export interface NamespaceTopicsRegenerateKeyOutput {
+  key1?: string;
+  key2?: string;
+}
 export const NamespaceTopicsRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicsRegenerateKeyOutput =
-  typeof NamespaceTopicsRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicsRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -5595,6 +7291,13 @@ export const NamespaceTopicsRegenerateKey =
     outputSchema: NamespaceTopicsRegenerateKeyOutput,
   }));
 // Input Schema
+export interface NamespaceTopicsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicName: string;
+  properties?: { eventRetentionInDays?: number };
+}
 export const NamespaceTopicsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5612,18 +7315,20 @@ export const NamespaceTopicsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type NamespaceTopicsUpdateInput = typeof NamespaceTopicsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespaceTopicsUpdateInput>;
 
 // Output Schema
+export interface NamespaceTopicsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NamespaceTopicsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type NamespaceTopicsUpdateOutput =
-  typeof NamespaceTopicsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceTopicsUpdateOutput>;
 
 // The operation
 /**
@@ -5644,6 +7349,7 @@ export const NamespaceTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -5652,10 +7358,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.EventGrid/operations",
     apiVersion: "2025-02-15",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    isDataAction?: boolean;
+    properties?: unknown;
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -5675,8 +7394,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -5691,6 +7409,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PartnerConfigurationsAuthorizePartnerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerRegistrationImmutableId?: string;
+  partnerName?: string;
+  authorizationExpirationTimeInUtc?: string;
+}
 export const PartnerConfigurationsAuthorizePartnerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5704,19 +7429,20 @@ export const PartnerConfigurationsAuthorizePartnerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default/authorizePartner",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerConfigurationsAuthorizePartnerInput =
-  typeof PartnerConfigurationsAuthorizePartnerInput.Type;
+  ) as unknown as Schema.Codec<PartnerConfigurationsAuthorizePartnerInput>;
 
 // Output Schema
+export interface PartnerConfigurationsAuthorizePartnerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerConfigurationsAuthorizePartnerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerConfigurationsAuthorizePartnerOutput =
-  typeof PartnerConfigurationsAuthorizePartnerOutput.Type;
+  }) as unknown as Schema.Codec<PartnerConfigurationsAuthorizePartnerOutput>;
 
 // The operation
 /**
@@ -5734,6 +7460,40 @@ export const PartnerConfigurationsAuthorizePartner =
     outputSchema: PartnerConfigurationsAuthorizePartnerOutput,
   }));
 // Input Schema
+export interface PartnerConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  properties?: {
+    partnerAuthorization?: {
+      defaultMaximumExpirationTimeInDays?: number;
+      authorizedPartnersList?: {
+        partnerRegistrationImmutableId?: string;
+        partnerName?: string;
+        authorizationExpirationTimeInUtc?: string;
+      }[];
+    };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5795,19 +7555,20 @@ export const PartnerConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerConfigurationsCreateOrUpdateInput =
-  typeof PartnerConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PartnerConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerConfigurationsCreateOrUpdateOutput =
-  typeof PartnerConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5825,6 +7586,10 @@ export const PartnerConfigurationsCreateOrUpdate =
     outputSchema: PartnerConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PartnerConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PartnerConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5835,15 +7600,12 @@ export const PartnerConfigurationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerConfigurationsDeleteInput =
-  typeof PartnerConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PartnerConfigurationsDeleteInput>;
 
 // Output Schema
+export type PartnerConfigurationsDeleteOutput = void;
 export const PartnerConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PartnerConfigurationsDeleteOutput =
-  typeof PartnerConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -5862,6 +7624,10 @@ export const PartnerConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PartnerConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5872,19 +7638,20 @@ export const PartnerConfigurationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerConfigurationsGetInput =
-  typeof PartnerConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<PartnerConfigurationsGetInput>;
 
 // Output Schema
+export interface PartnerConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerConfigurationsGetOutput =
-  typeof PartnerConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<PartnerConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -5903,6 +7670,10 @@ export const PartnerConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerConfigurationsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PartnerConfigurationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5913,11 +7684,13 @@ export const PartnerConfigurationsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerConfigurationsListByResourceGroupInput =
-  typeof PartnerConfigurationsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PartnerConfigurationsListByResourceGroupInput>;
 
 // Output Schema
+export interface PartnerConfigurationsListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerConfigurationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5930,9 +7703,7 @@ export const PartnerConfigurationsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerConfigurationsListByResourceGroupOutput =
-  typeof PartnerConfigurationsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PartnerConfigurationsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5950,6 +7721,11 @@ export const PartnerConfigurationsListByResourceGroup =
     outputSchema: PartnerConfigurationsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PartnerConfigurationsListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PartnerConfigurationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5961,11 +7737,13 @@ export const PartnerConfigurationsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerConfigurations",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerConfigurationsListBySubscriptionInput =
-  typeof PartnerConfigurationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PartnerConfigurationsListBySubscriptionInput>;
 
 // Output Schema
+export interface PartnerConfigurationsListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerConfigurationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5978,9 +7756,7 @@ export const PartnerConfigurationsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerConfigurationsListBySubscriptionOutput =
-  typeof PartnerConfigurationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PartnerConfigurationsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -5999,6 +7775,13 @@ export const PartnerConfigurationsListBySubscription =
     outputSchema: PartnerConfigurationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PartnerConfigurationsUnauthorizePartnerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerRegistrationImmutableId?: string;
+  partnerName?: string;
+  authorizationExpirationTimeInUtc?: string;
+}
 export const PartnerConfigurationsUnauthorizePartnerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6012,19 +7795,20 @@ export const PartnerConfigurationsUnauthorizePartnerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default/unauthorizePartner",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerConfigurationsUnauthorizePartnerInput =
-  typeof PartnerConfigurationsUnauthorizePartnerInput.Type;
+  ) as unknown as Schema.Codec<PartnerConfigurationsUnauthorizePartnerInput>;
 
 // Output Schema
+export interface PartnerConfigurationsUnauthorizePartnerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerConfigurationsUnauthorizePartnerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerConfigurationsUnauthorizePartnerOutput =
-  typeof PartnerConfigurationsUnauthorizePartnerOutput.Type;
+  }) as unknown as Schema.Codec<PartnerConfigurationsUnauthorizePartnerOutput>;
 
 // The operation
 /**
@@ -6042,6 +7826,12 @@ export const PartnerConfigurationsUnauthorizePartner =
     outputSchema: PartnerConfigurationsUnauthorizePartnerOutput,
   }));
 // Input Schema
+export interface PartnerConfigurationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  tags?: Record<string, string>;
+  properties?: { defaultMaximumExpirationTimeInDays?: number };
+}
 export const PartnerConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6058,19 +7848,20 @@ export const PartnerConfigurationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerConfigurations/default",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerConfigurationsUpdateInput =
-  typeof PartnerConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerConfigurationsUpdateInput>;
 
 // Output Schema
+export interface PartnerConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerConfigurationsUpdateOutput =
-  typeof PartnerConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerConfigurationsUpdateOutput>;
 
 // The operation
 /**
@@ -6089,6 +7880,42 @@ export const PartnerConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerNamespacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  properties?: {
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+    partnerRegistrationFullyQualifiedId?: string;
+    minimumTlsVersionAllowed?: "1.0" | "1.1" | "1.2";
+    endpoint?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
+    disableLocalAuth?: boolean;
+    partnerTopicRoutingMode?: "SourceEventAttribute" | "ChannelNameHeader";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location: string;
+  tags?: Record<string, string>;
+}
 export const PartnerNamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6159,19 +7986,20 @@ export const PartnerNamespacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerNamespacesCreateOrUpdateInput =
-  typeof PartnerNamespacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerNamespacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PartnerNamespacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerNamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerNamespacesCreateOrUpdateOutput =
-  typeof PartnerNamespacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerNamespacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6190,6 +8018,11 @@ export const PartnerNamespacesCreateOrUpdate =
     outputSchema: PartnerNamespacesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PartnerNamespacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+}
 export const PartnerNamespacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6201,15 +8034,12 @@ export const PartnerNamespacesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerNamespacesDeleteInput =
-  typeof PartnerNamespacesDeleteInput.Type;
+  ) as unknown as Schema.Codec<PartnerNamespacesDeleteInput>;
 
 // Output Schema
+export type PartnerNamespacesDeleteOutput = void;
 export const PartnerNamespacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PartnerNamespacesDeleteOutput =
-  typeof PartnerNamespacesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerNamespacesDeleteOutput>;
 
 // The operation
 /**
@@ -6229,6 +8059,11 @@ export const PartnerNamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerNamespacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+}
 export const PartnerNamespacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6240,17 +8075,20 @@ export const PartnerNamespacesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerNamespacesGetInput = typeof PartnerNamespacesGetInput.Type;
+  ) as unknown as Schema.Codec<PartnerNamespacesGetInput>;
 
 // Output Schema
+export interface PartnerNamespacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerNamespacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerNamespacesGetOutput = typeof PartnerNamespacesGetOutput.Type;
+  }) as unknown as Schema.Codec<PartnerNamespacesGetOutput>;
 
 // The operation
 /**
@@ -6270,6 +8108,12 @@ export const PartnerNamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerNamespacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PartnerNamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6282,11 +8126,13 @@ export const PartnerNamespacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerNamespacesListByResourceGroupInput =
-  typeof PartnerNamespacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PartnerNamespacesListByResourceGroupInput>;
 
 // Output Schema
+export interface PartnerNamespacesListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerNamespacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6299,9 +8145,7 @@ export const PartnerNamespacesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerNamespacesListByResourceGroupOutput =
-  typeof PartnerNamespacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PartnerNamespacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6321,6 +8165,11 @@ export const PartnerNamespacesListByResourceGroup =
     outputSchema: PartnerNamespacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PartnerNamespacesListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PartnerNamespacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6332,11 +8181,13 @@ export const PartnerNamespacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerNamespaces",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerNamespacesListBySubscriptionInput =
-  typeof PartnerNamespacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PartnerNamespacesListBySubscriptionInput>;
 
 // Output Schema
+export interface PartnerNamespacesListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerNamespacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6349,9 +8200,7 @@ export const PartnerNamespacesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerNamespacesListBySubscriptionOutput =
-  typeof PartnerNamespacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PartnerNamespacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6370,6 +8219,11 @@ export const PartnerNamespacesListBySubscription =
     outputSchema: PartnerNamespacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PartnerNamespacesListSharedAccessKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+}
 export const PartnerNamespacesListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6381,18 +8235,18 @@ export const PartnerNamespacesListSharedAccessKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/listKeys",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerNamespacesListSharedAccessKeysInput =
-  typeof PartnerNamespacesListSharedAccessKeysInput.Type;
+  ) as unknown as Schema.Codec<PartnerNamespacesListSharedAccessKeysInput>;
 
 // Output Schema
+export interface PartnerNamespacesListSharedAccessKeysOutput {
+  key1?: string;
+  key2?: string;
+}
 export const PartnerNamespacesListSharedAccessKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type PartnerNamespacesListSharedAccessKeysOutput =
-  typeof PartnerNamespacesListSharedAccessKeysOutput.Type;
+  }) as unknown as Schema.Codec<PartnerNamespacesListSharedAccessKeysOutput>;
 
 // The operation
 /**
@@ -6411,6 +8265,12 @@ export const PartnerNamespacesListSharedAccessKeys =
     outputSchema: PartnerNamespacesListSharedAccessKeysOutput,
   }));
 // Input Schema
+export interface PartnerNamespacesRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  keyName: string;
+}
 export const PartnerNamespacesRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6423,18 +8283,18 @@ export const PartnerNamespacesRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/regenerateKey",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerNamespacesRegenerateKeyInput =
-  typeof PartnerNamespacesRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<PartnerNamespacesRegenerateKeyInput>;
 
 // Output Schema
+export interface PartnerNamespacesRegenerateKeyOutput {
+  key1?: string;
+  key2?: string;
+}
 export const PartnerNamespacesRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type PartnerNamespacesRegenerateKeyOutput =
-  typeof PartnerNamespacesRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<PartnerNamespacesRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -6453,6 +8313,18 @@ export const PartnerNamespacesRegenerateKey =
     outputSchema: PartnerNamespacesRegenerateKeyOutput,
   }));
 // Input Schema
+export interface PartnerNamespacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerNamespaceName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
+    minimumTlsVersionAllowed?: "1.0" | "1.1" | "1.2";
+    disableLocalAuth?: boolean;
+  };
+}
 export const PartnerNamespacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6484,15 +8356,12 @@ export const PartnerNamespacesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerNamespacesUpdateInput =
-  typeof PartnerNamespacesUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerNamespacesUpdateInput>;
 
 // Output Schema
+export type PartnerNamespacesUpdateOutput = void;
 export const PartnerNamespacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PartnerNamespacesUpdateOutput =
-  typeof PartnerNamespacesUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerNamespacesUpdateOutput>;
 
 // The operation
 /**
@@ -6512,6 +8381,31 @@ export const PartnerNamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerRegistrationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerRegistrationName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+    partnerRegistrationImmutableId?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location: string;
+  tags?: Record<string, string>;
+}
 export const PartnerRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6554,19 +8448,20 @@ export const PartnerRegistrationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerRegistrationsCreateOrUpdateInput =
-  typeof PartnerRegistrationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerRegistrationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PartnerRegistrationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerRegistrationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerRegistrationsCreateOrUpdateOutput =
-  typeof PartnerRegistrationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerRegistrationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6585,6 +8480,11 @@ export const PartnerRegistrationsCreateOrUpdate =
     outputSchema: PartnerRegistrationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PartnerRegistrationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerRegistrationName: string;
+}
 export const PartnerRegistrationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6596,15 +8496,12 @@ export const PartnerRegistrationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerRegistrationsDeleteInput =
-  typeof PartnerRegistrationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PartnerRegistrationsDeleteInput>;
 
 // Output Schema
+export type PartnerRegistrationsDeleteOutput = void;
 export const PartnerRegistrationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PartnerRegistrationsDeleteOutput =
-  typeof PartnerRegistrationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerRegistrationsDeleteOutput>;
 
 // The operation
 /**
@@ -6624,6 +8521,11 @@ export const PartnerRegistrationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerRegistrationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerRegistrationName: string;
+}
 export const PartnerRegistrationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6635,19 +8537,20 @@ export const PartnerRegistrationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerRegistrationsGetInput =
-  typeof PartnerRegistrationsGetInput.Type;
+  ) as unknown as Schema.Codec<PartnerRegistrationsGetInput>;
 
 // Output Schema
+export interface PartnerRegistrationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerRegistrationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerRegistrationsGetOutput =
-  typeof PartnerRegistrationsGetOutput.Type;
+  }) as unknown as Schema.Codec<PartnerRegistrationsGetOutput>;
 
 // The operation
 /**
@@ -6667,6 +8570,12 @@ export const PartnerRegistrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerRegistrationsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PartnerRegistrationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6679,11 +8588,13 @@ export const PartnerRegistrationsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerRegistrationsListByResourceGroupInput =
-  typeof PartnerRegistrationsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PartnerRegistrationsListByResourceGroupInput>;
 
 // Output Schema
+export interface PartnerRegistrationsListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerRegistrationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6696,9 +8607,7 @@ export const PartnerRegistrationsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerRegistrationsListByResourceGroupOutput =
-  typeof PartnerRegistrationsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PartnerRegistrationsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6718,6 +8627,11 @@ export const PartnerRegistrationsListByResourceGroup =
     outputSchema: PartnerRegistrationsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PartnerRegistrationsListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PartnerRegistrationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6729,11 +8643,13 @@ export const PartnerRegistrationsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerRegistrations",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerRegistrationsListBySubscriptionInput =
-  typeof PartnerRegistrationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PartnerRegistrationsListBySubscriptionInput>;
 
 // Output Schema
+export interface PartnerRegistrationsListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerRegistrationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6746,9 +8662,7 @@ export const PartnerRegistrationsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerRegistrationsListBySubscriptionOutput =
-  typeof PartnerRegistrationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PartnerRegistrationsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6767,6 +8681,12 @@ export const PartnerRegistrationsListBySubscription =
     outputSchema: PartnerRegistrationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PartnerRegistrationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerRegistrationName: string;
+  tags?: Record<string, string>;
+}
 export const PartnerRegistrationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6779,15 +8699,12 @@ export const PartnerRegistrationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerRegistrationsUpdateInput =
-  typeof PartnerRegistrationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerRegistrationsUpdateInput>;
 
 // Output Schema
+export type PartnerRegistrationsUpdateOutput = void;
 export const PartnerRegistrationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PartnerRegistrationsUpdateOutput =
-  typeof PartnerRegistrationsUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerRegistrationsUpdateOutput>;
 
 // The operation
 /**
@@ -6807,6 +8724,112 @@ export const PartnerRegistrationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerTopicEventSubscriptionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  eventSubscriptionName: string;
+  properties?: {
+    topic?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "AwaitingManualAction";
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+    deliveryWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      destination?: {
+        endpointType:
+          | "WebHook"
+          | "EventHub"
+          | "StorageQueue"
+          | "HybridConnection"
+          | "ServiceBusQueue"
+          | "ServiceBusTopic"
+          | "AzureFunction"
+          | "MonitorAlert"
+          | "NamespaceTopic";
+      };
+    };
+    filter?: {
+      subjectBeginsWith?: string;
+      subjectEndsWith?: string;
+      includedEventTypes?: string[];
+      isSubjectCaseSensitive?: boolean;
+      enableAdvancedFilteringOnArrays?: boolean;
+      advancedFilters?: {
+        operatorType:
+          | "NumberIn"
+          | "NumberNotIn"
+          | "NumberLessThan"
+          | "NumberGreaterThan"
+          | "NumberLessThanOrEquals"
+          | "NumberGreaterThanOrEquals"
+          | "BoolEquals"
+          | "StringIn"
+          | "StringNotIn"
+          | "StringBeginsWith"
+          | "StringEndsWith"
+          | "StringContains"
+          | "NumberInRange"
+          | "NumberNotInRange"
+          | "StringNotBeginsWith"
+          | "StringNotEndsWith"
+          | "StringNotContains"
+          | "IsNullOrUndefined"
+          | "IsNotNull";
+        key?: string;
+      }[];
+    };
+    labels?: string[];
+    expirationTimeUtc?: string;
+    eventDeliverySchema?:
+      | "EventGridSchema"
+      | "CustomInputSchema"
+      | "CloudEventSchemaV1_0";
+    retryPolicy?: {
+      maxDeliveryAttempts?: number;
+      eventTimeToLiveInMinutes?: number;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+    deadLetterWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      deadLetterDestination?: { endpointType: "StorageBlob" };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerTopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6968,19 +8991,20 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicEventSubscriptionsCreateOrUpdateInput =
-  typeof PartnerTopicEventSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PartnerTopicEventSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerTopicEventSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerTopicEventSubscriptionsCreateOrUpdateOutput =
-  typeof PartnerTopicEventSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7000,6 +9024,12 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdate =
     outputSchema: PartnerTopicEventSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PartnerTopicEventSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  eventSubscriptionName: string;
+}
 export const PartnerTopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7012,15 +9042,12 @@ export const PartnerTopicEventSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicEventSubscriptionsDeleteInput =
-  typeof PartnerTopicEventSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsDeleteInput>;
 
 // Output Schema
+export type PartnerTopicEventSubscriptionsDeleteOutput = void;
 export const PartnerTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PartnerTopicEventSubscriptionsDeleteOutput =
-  typeof PartnerTopicEventSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -7040,6 +9067,12 @@ export const PartnerTopicEventSubscriptionsDelete =
     outputSchema: PartnerTopicEventSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface PartnerTopicEventSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  eventSubscriptionName: string;
+}
 export const PartnerTopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7052,19 +9085,20 @@ export const PartnerTopicEventSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicEventSubscriptionsGetInput =
-  typeof PartnerTopicEventSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsGetInput>;
 
 // Output Schema
+export interface PartnerTopicEventSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerTopicEventSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerTopicEventSubscriptionsGetOutput =
-  typeof PartnerTopicEventSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -7084,6 +9118,12 @@ export const PartnerTopicEventSubscriptionsGet =
     outputSchema: PartnerTopicEventSubscriptionsGetOutput,
   }));
 // Input Schema
+export interface PartnerTopicEventSubscriptionsGetDeliveryAttributesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  eventSubscriptionName: string;
+}
 export const PartnerTopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7096,11 +9136,12 @@ export const PartnerTopicEventSubscriptionsGetDeliveryAttributesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicEventSubscriptionsGetDeliveryAttributesInput =
-  typeof PartnerTopicEventSubscriptionsGetDeliveryAttributesInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsGetDeliveryAttributesInput>;
 
 // Output Schema
+export interface PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput {
+  value?: { name?: string; type: "Static" | "Dynamic" }[];
+}
 export const PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7111,9 +9152,7 @@ export const PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput =
         }),
       ),
     ),
-  });
-export type PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput =
-  typeof PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput>;
 
 // The operation
 /**
@@ -7133,6 +9172,12 @@ export const PartnerTopicEventSubscriptionsGetDeliveryAttributes =
     outputSchema: PartnerTopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
 // Input Schema
+export interface PartnerTopicEventSubscriptionsGetFullUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  eventSubscriptionName: string;
+}
 export const PartnerTopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7145,17 +9190,16 @@ export const PartnerTopicEventSubscriptionsGetFullUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicEventSubscriptionsGetFullUrlInput =
-  typeof PartnerTopicEventSubscriptionsGetFullUrlInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsGetFullUrlInput>;
 
 // Output Schema
+export interface PartnerTopicEventSubscriptionsGetFullUrlOutput {
+  endpointUrl?: string;
+}
 export const PartnerTopicEventSubscriptionsGetFullUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
-  });
-export type PartnerTopicEventSubscriptionsGetFullUrlOutput =
-  typeof PartnerTopicEventSubscriptionsGetFullUrlOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsGetFullUrlOutput>;
 
 // The operation
 /**
@@ -7175,6 +9219,13 @@ export const PartnerTopicEventSubscriptionsGetFullUrl =
     outputSchema: PartnerTopicEventSubscriptionsGetFullUrlOutput,
   }));
 // Input Schema
+export interface PartnerTopicEventSubscriptionsListByPartnerTopicInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PartnerTopicEventSubscriptionsListByPartnerTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7188,11 +9239,13 @@ export const PartnerTopicEventSubscriptionsListByPartnerTopicInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicEventSubscriptionsListByPartnerTopicInput =
-  typeof PartnerTopicEventSubscriptionsListByPartnerTopicInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsListByPartnerTopicInput>;
 
 // Output Schema
+export interface PartnerTopicEventSubscriptionsListByPartnerTopicOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerTopicEventSubscriptionsListByPartnerTopicOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7205,9 +9258,7 @@ export const PartnerTopicEventSubscriptionsListByPartnerTopicOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerTopicEventSubscriptionsListByPartnerTopicOutput =
-  typeof PartnerTopicEventSubscriptionsListByPartnerTopicOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsListByPartnerTopicOutput>;
 
 // The operation
 /**
@@ -7228,6 +9279,90 @@ export const PartnerTopicEventSubscriptionsListByPartnerTopic =
     outputSchema: PartnerTopicEventSubscriptionsListByPartnerTopicOutput,
   }));
 // Input Schema
+export interface PartnerTopicEventSubscriptionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  eventSubscriptionName: string;
+  destination?: {
+    endpointType:
+      | "WebHook"
+      | "EventHub"
+      | "StorageQueue"
+      | "HybridConnection"
+      | "ServiceBusQueue"
+      | "ServiceBusTopic"
+      | "AzureFunction"
+      | "MonitorAlert"
+      | "NamespaceTopic";
+  };
+  deliveryWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+  };
+  filter?: {
+    subjectBeginsWith?: string;
+    subjectEndsWith?: string;
+    includedEventTypes?: string[];
+    isSubjectCaseSensitive?: boolean;
+    enableAdvancedFilteringOnArrays?: boolean;
+    advancedFilters?: {
+      operatorType:
+        | "NumberIn"
+        | "NumberNotIn"
+        | "NumberLessThan"
+        | "NumberGreaterThan"
+        | "NumberLessThanOrEquals"
+        | "NumberGreaterThanOrEquals"
+        | "BoolEquals"
+        | "StringIn"
+        | "StringNotIn"
+        | "StringBeginsWith"
+        | "StringEndsWith"
+        | "StringContains"
+        | "NumberInRange"
+        | "NumberNotInRange"
+        | "StringNotBeginsWith"
+        | "StringNotEndsWith"
+        | "StringNotContains"
+        | "IsNullOrUndefined"
+        | "IsNotNull";
+      key?: string;
+    }[];
+  };
+  labels?: string[];
+  expirationTimeUtc?: string;
+  eventDeliverySchema?:
+    | "EventGridSchema"
+    | "CustomInputSchema"
+    | "CloudEventSchemaV1_0";
+  retryPolicy?: {
+    maxDeliveryAttempts?: number;
+    eventTimeToLiveInMinutes?: number;
+  };
+  deadLetterDestination?: { endpointType: "StorageBlob" };
+  deadLetterWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+  };
+}
 export const PartnerTopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7356,19 +9491,20 @@ export const PartnerTopicEventSubscriptionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicEventSubscriptionsUpdateInput =
-  typeof PartnerTopicEventSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface PartnerTopicEventSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerTopicEventSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerTopicEventSubscriptionsUpdateOutput =
-  typeof PartnerTopicEventSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicEventSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -7388,6 +9524,11 @@ export const PartnerTopicEventSubscriptionsUpdate =
     outputSchema: PartnerTopicEventSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface PartnerTopicsActivateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+}
 export const PartnerTopicsActivateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7399,18 +9540,20 @@ export const PartnerTopicsActivateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/activate",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicsActivateInput = typeof PartnerTopicsActivateInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicsActivateInput>;
 
 // Output Schema
+export interface PartnerTopicsActivateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerTopicsActivateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerTopicsActivateOutput =
-  typeof PartnerTopicsActivateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicsActivateOutput>;
 
 // The operation
 /**
@@ -7430,6 +9573,62 @@ export const PartnerTopicsActivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerTopicsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  properties?: {
+    partnerRegistrationImmutableId?: string;
+    source?: string;
+    eventTypeInfo?: {
+      kind?: "Inline";
+      inlineEventTypes?: Record<
+        string,
+        {
+          description?: string;
+          displayName?: string;
+          documentationUrl?: string;
+          dataSchemaUrl?: string;
+        }
+      >;
+    };
+    expirationTimeIfNotActivatedUtc?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "IdleDueToMirroredChannelResourceDeletion";
+    activationState?: "NeverActivated" | "Activated" | "Deactivated";
+    partnerTopicFriendlyDescription?: string;
+    messageForActivation?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location: string;
+  tags?: Record<string, string>;
+}
 export const PartnerTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7519,19 +9718,20 @@ export const PartnerTopicsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicsCreateOrUpdateInput =
-  typeof PartnerTopicsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PartnerTopicsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerTopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerTopicsCreateOrUpdateOutput =
-  typeof PartnerTopicsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7551,6 +9751,11 @@ export const PartnerTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerTopicsDeactivateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+}
 export const PartnerTopicsDeactivateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7562,19 +9767,20 @@ export const PartnerTopicsDeactivateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/deactivate",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicsDeactivateInput =
-  typeof PartnerTopicsDeactivateInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicsDeactivateInput>;
 
 // Output Schema
+export interface PartnerTopicsDeactivateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerTopicsDeactivateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PartnerTopicsDeactivateOutput =
-  typeof PartnerTopicsDeactivateOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicsDeactivateOutput>;
 
 // The operation
 /**
@@ -7594,6 +9800,11 @@ export const PartnerTopicsDeactivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PartnerTopicsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+}
 export const PartnerTopicsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7605,13 +9816,12 @@ export const PartnerTopicsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicsDeleteInput = typeof PartnerTopicsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicsDeleteInput>;
 
 // Output Schema
+export type PartnerTopicsDeleteOutput = void;
 export const PartnerTopicsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PartnerTopicsDeleteOutput = typeof PartnerTopicsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -7629,6 +9839,11 @@ export const PartnerTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PartnerTopicsDeleteOutput,
 }));
 // Input Schema
+export interface PartnerTopicsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+}
 export const PartnerTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7639,18 +9854,21 @@ export const PartnerTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type PartnerTopicsGetInput = typeof PartnerTopicsGetInput.Type;
+) as unknown as Schema.Codec<PartnerTopicsGetInput>;
 
 // Output Schema
+export interface PartnerTopicsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PartnerTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   },
-);
-export type PartnerTopicsGetOutput = typeof PartnerTopicsGetOutput.Type;
+) as unknown as Schema.Codec<PartnerTopicsGetOutput>;
 
 // The operation
 /**
@@ -7668,6 +9886,12 @@ export const PartnerTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PartnerTopicsGetOutput,
 }));
 // Input Schema
+export interface PartnerTopicsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PartnerTopicsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7680,11 +9904,13 @@ export const PartnerTopicsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicsListByResourceGroupInput =
-  typeof PartnerTopicsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicsListByResourceGroupInput>;
 
 // Output Schema
+export interface PartnerTopicsListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerTopicsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7697,9 +9923,7 @@ export const PartnerTopicsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerTopicsListByResourceGroupOutput =
-  typeof PartnerTopicsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -7719,6 +9943,11 @@ export const PartnerTopicsListByResourceGroup =
     outputSchema: PartnerTopicsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PartnerTopicsListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PartnerTopicsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7730,11 +9959,13 @@ export const PartnerTopicsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/partnerTopics",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicsListBySubscriptionInput =
-  typeof PartnerTopicsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicsListBySubscriptionInput>;
 
 // Output Schema
+export interface PartnerTopicsListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PartnerTopicsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7747,9 +9978,7 @@ export const PartnerTopicsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PartnerTopicsListBySubscriptionOutput =
-  typeof PartnerTopicsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PartnerTopicsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -7768,6 +9997,25 @@ export const PartnerTopicsListBySubscription =
     outputSchema: PartnerTopicsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PartnerTopicsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  partnerTopicName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const PartnerTopicsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7803,13 +10051,12 @@ export const PartnerTopicsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PartnerTopicsUpdateInput = typeof PartnerTopicsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PartnerTopicsUpdateInput>;
 
 // Output Schema
+export type PartnerTopicsUpdateOutput = void;
 export const PartnerTopicsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PartnerTopicsUpdateOutput = typeof PartnerTopicsUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PartnerTopicsUpdateOutput>;
 
 // The operation
 /**
@@ -7827,6 +10074,37 @@ export const PartnerTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PartnerTopicsUpdateOutput,
 }));
 // Input Schema
+export interface PermissionBindingsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  permissionBindingName: string;
+  properties?: {
+    description?: string;
+    topicSpaceName?: string;
+    permission?: "Publisher" | "Subscriber";
+    clientGroupName?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Deleted";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PermissionBindingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7877,19 +10155,20 @@ export const PermissionBindingsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings/{permissionBindingName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PermissionBindingsCreateOrUpdateInput =
-  typeof PermissionBindingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PermissionBindingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PermissionBindingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PermissionBindingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PermissionBindingsCreateOrUpdateOutput =
-  typeof PermissionBindingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PermissionBindingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7909,6 +10188,12 @@ export const PermissionBindingsCreateOrUpdate =
     outputSchema: PermissionBindingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PermissionBindingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  permissionBindingName: string;
+}
 export const PermissionBindingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7921,15 +10206,12 @@ export const PermissionBindingsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings/{permissionBindingName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PermissionBindingsDeleteInput =
-  typeof PermissionBindingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PermissionBindingsDeleteInput>;
 
 // Output Schema
+export type PermissionBindingsDeleteOutput = void;
 export const PermissionBindingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PermissionBindingsDeleteOutput =
-  typeof PermissionBindingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PermissionBindingsDeleteOutput>;
 
 // The operation
 /**
@@ -7950,6 +10232,12 @@ export const PermissionBindingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PermissionBindingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  permissionBindingName: string;
+}
 export const PermissionBindingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7962,18 +10250,20 @@ export const PermissionBindingsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings/{permissionBindingName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PermissionBindingsGetInput = typeof PermissionBindingsGetInput.Type;
+  ) as unknown as Schema.Codec<PermissionBindingsGetInput>;
 
 // Output Schema
+export interface PermissionBindingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PermissionBindingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PermissionBindingsGetOutput =
-  typeof PermissionBindingsGetOutput.Type;
+  }) as unknown as Schema.Codec<PermissionBindingsGetOutput>;
 
 // The operation
 /**
@@ -7994,6 +10284,13 @@ export const PermissionBindingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PermissionBindingsListByNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PermissionBindingsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8007,11 +10304,13 @@ export const PermissionBindingsListByNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/permissionBindings",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PermissionBindingsListByNamespaceInput =
-  typeof PermissionBindingsListByNamespaceInput.Type;
+  ) as unknown as Schema.Codec<PermissionBindingsListByNamespaceInput>;
 
 // Output Schema
+export interface PermissionBindingsListByNamespaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PermissionBindingsListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8024,9 +10323,7 @@ export const PermissionBindingsListByNamespaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PermissionBindingsListByNamespaceOutput =
-  typeof PermissionBindingsListByNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<PermissionBindingsListByNamespaceOutput>;
 
 // The operation
 /**
@@ -8047,6 +10344,13 @@ export const PermissionBindingsListByNamespace =
     outputSchema: PermissionBindingsListByNamespaceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentType: "topics" | "domains" | "partnerNamespaces" | "namespaces";
+  parentName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8065,15 +10369,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -8094,6 +10395,13 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentType: "topics" | "domains" | "partnerNamespaces" | "namespaces";
+  parentName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8112,19 +10420,20 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -8145,6 +10454,14 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentType: "topics" | "domains" | "partnerNamespaces" | "namespaces";
+  parentName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PrivateEndpointConnectionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8164,11 +10481,13 @@ export const PrivateEndpointConnectionsListByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PrivateEndpointConnectionsListByResourceInput =
-  typeof PrivateEndpointConnectionsListByResourceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByResourceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByResourceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8181,9 +10500,7 @@ export const PrivateEndpointConnectionsListByResourceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByResourceOutput =
-  typeof PrivateEndpointConnectionsListByResourceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByResourceOutput>;
 
 // The operation
 /**
@@ -8205,6 +10522,32 @@ export const PrivateEndpointConnectionsListByResource =
     outputSchema: PrivateEndpointConnectionsListByResourceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentType: "topics" | "domains" | "partnerNamespaces" | "namespaces";
+  parentName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8260,19 +10603,20 @@ export const PrivateEndpointConnectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PrivateEndpointConnectionsUpdateInput =
-  typeof PrivateEndpointConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsUpdateOutput =
-  typeof PrivateEndpointConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -8293,6 +10637,13 @@ export const PrivateEndpointConnectionsUpdate =
     outputSchema: PrivateEndpointConnectionsUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentType: string;
+  parentName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8306,11 +10657,20 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  properties?: {
+    groupId?: string;
+    displayName?: string;
+    requiredMembers?: string[];
+    requiredZoneNames?: string[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -8324,9 +10684,7 @@ export const PrivateLinkResourcesGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -8348,6 +10706,14 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentType: string;
+  parentName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PrivateLinkResourcesListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8362,11 +10728,23 @@ export const PrivateLinkResourcesListByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateLinkResources",
       apiVersion: "2025-02-15",
     }),
-  );
-export type PrivateLinkResourcesListByResourceInput =
-  typeof PrivateLinkResourcesListByResourceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByResourceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByResourceOutput {
+  value?: {
+    properties?: {
+      groupId?: string;
+      displayName?: string;
+      requiredMembers?: string[];
+      requiredZoneNames?: string[];
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8387,9 +10765,7 @@ export const PrivateLinkResourcesListByResourceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByResourceOutput =
-  typeof PrivateLinkResourcesListByResourceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByResourceOutput>;
 
 // The operation
 /**
@@ -8411,6 +10787,112 @@ export const PrivateLinkResourcesListByResource =
     outputSchema: PrivateLinkResourcesListByResourceOutput,
   }));
 // Input Schema
+export interface SystemTopicEventSubscriptionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  eventSubscriptionName: string;
+  properties?: {
+    topic?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "AwaitingManualAction";
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+    deliveryWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      destination?: {
+        endpointType:
+          | "WebHook"
+          | "EventHub"
+          | "StorageQueue"
+          | "HybridConnection"
+          | "ServiceBusQueue"
+          | "ServiceBusTopic"
+          | "AzureFunction"
+          | "MonitorAlert"
+          | "NamespaceTopic";
+      };
+    };
+    filter?: {
+      subjectBeginsWith?: string;
+      subjectEndsWith?: string;
+      includedEventTypes?: string[];
+      isSubjectCaseSensitive?: boolean;
+      enableAdvancedFilteringOnArrays?: boolean;
+      advancedFilters?: {
+        operatorType:
+          | "NumberIn"
+          | "NumberNotIn"
+          | "NumberLessThan"
+          | "NumberGreaterThan"
+          | "NumberLessThanOrEquals"
+          | "NumberGreaterThanOrEquals"
+          | "BoolEquals"
+          | "StringIn"
+          | "StringNotIn"
+          | "StringBeginsWith"
+          | "StringEndsWith"
+          | "StringContains"
+          | "NumberInRange"
+          | "NumberNotInRange"
+          | "StringNotBeginsWith"
+          | "StringNotEndsWith"
+          | "StringNotContains"
+          | "IsNullOrUndefined"
+          | "IsNotNull";
+        key?: string;
+      }[];
+    };
+    labels?: string[];
+    expirationTimeUtc?: string;
+    eventDeliverySchema?:
+      | "EventGridSchema"
+      | "CustomInputSchema"
+      | "CloudEventSchemaV1_0";
+    retryPolicy?: {
+      maxDeliveryAttempts?: number;
+      eventTimeToLiveInMinutes?: number;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+    deadLetterWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      deadLetterDestination?: { endpointType: "StorageBlob" };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SystemTopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8572,19 +11054,20 @@ export const SystemTopicEventSubscriptionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicEventSubscriptionsCreateOrUpdateInput =
-  typeof SystemTopicEventSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicEventSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SystemTopicEventSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SystemTopicEventSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SystemTopicEventSubscriptionsCreateOrUpdateOutput =
-  typeof SystemTopicEventSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicEventSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8604,6 +11087,12 @@ export const SystemTopicEventSubscriptionsCreateOrUpdate =
     outputSchema: SystemTopicEventSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SystemTopicEventSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  eventSubscriptionName: string;
+}
 export const SystemTopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8616,15 +11105,12 @@ export const SystemTopicEventSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicEventSubscriptionsDeleteInput =
-  typeof SystemTopicEventSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicEventSubscriptionsDeleteInput>;
 
 // Output Schema
+export type SystemTopicEventSubscriptionsDeleteOutput = void;
 export const SystemTopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SystemTopicEventSubscriptionsDeleteOutput =
-  typeof SystemTopicEventSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SystemTopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -8644,6 +11130,12 @@ export const SystemTopicEventSubscriptionsDelete =
     outputSchema: SystemTopicEventSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface SystemTopicEventSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  eventSubscriptionName: string;
+}
 export const SystemTopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8656,19 +11148,20 @@ export const SystemTopicEventSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicEventSubscriptionsGetInput =
-  typeof SystemTopicEventSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicEventSubscriptionsGetInput>;
 
 // Output Schema
+export interface SystemTopicEventSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SystemTopicEventSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SystemTopicEventSubscriptionsGetOutput =
-  typeof SystemTopicEventSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicEventSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -8688,6 +11181,12 @@ export const SystemTopicEventSubscriptionsGet =
     outputSchema: SystemTopicEventSubscriptionsGetOutput,
   }));
 // Input Schema
+export interface SystemTopicEventSubscriptionsGetDeliveryAttributesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  eventSubscriptionName: string;
+}
 export const SystemTopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8700,11 +11199,12 @@ export const SystemTopicEventSubscriptionsGetDeliveryAttributesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicEventSubscriptionsGetDeliveryAttributesInput =
-  typeof SystemTopicEventSubscriptionsGetDeliveryAttributesInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicEventSubscriptionsGetDeliveryAttributesInput>;
 
 // Output Schema
+export interface SystemTopicEventSubscriptionsGetDeliveryAttributesOutput {
+  value?: { name?: string; type: "Static" | "Dynamic" }[];
+}
 export const SystemTopicEventSubscriptionsGetDeliveryAttributesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8715,9 +11215,7 @@ export const SystemTopicEventSubscriptionsGetDeliveryAttributesOutput =
         }),
       ),
     ),
-  });
-export type SystemTopicEventSubscriptionsGetDeliveryAttributesOutput =
-  typeof SystemTopicEventSubscriptionsGetDeliveryAttributesOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicEventSubscriptionsGetDeliveryAttributesOutput>;
 
 // The operation
 /**
@@ -8737,6 +11235,12 @@ export const SystemTopicEventSubscriptionsGetDeliveryAttributes =
     outputSchema: SystemTopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
 // Input Schema
+export interface SystemTopicEventSubscriptionsGetFullUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  eventSubscriptionName: string;
+}
 export const SystemTopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8749,17 +11253,16 @@ export const SystemTopicEventSubscriptionsGetFullUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicEventSubscriptionsGetFullUrlInput =
-  typeof SystemTopicEventSubscriptionsGetFullUrlInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicEventSubscriptionsGetFullUrlInput>;
 
 // Output Schema
+export interface SystemTopicEventSubscriptionsGetFullUrlOutput {
+  endpointUrl?: string;
+}
 export const SystemTopicEventSubscriptionsGetFullUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
-  });
-export type SystemTopicEventSubscriptionsGetFullUrlOutput =
-  typeof SystemTopicEventSubscriptionsGetFullUrlOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicEventSubscriptionsGetFullUrlOutput>;
 
 // The operation
 /**
@@ -8779,6 +11282,13 @@ export const SystemTopicEventSubscriptionsGetFullUrl =
     outputSchema: SystemTopicEventSubscriptionsGetFullUrlOutput,
   }));
 // Input Schema
+export interface SystemTopicEventSubscriptionsListBySystemTopicInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const SystemTopicEventSubscriptionsListBySystemTopicInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8792,11 +11302,13 @@ export const SystemTopicEventSubscriptionsListBySystemTopicInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicEventSubscriptionsListBySystemTopicInput =
-  typeof SystemTopicEventSubscriptionsListBySystemTopicInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicEventSubscriptionsListBySystemTopicInput>;
 
 // Output Schema
+export interface SystemTopicEventSubscriptionsListBySystemTopicOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const SystemTopicEventSubscriptionsListBySystemTopicOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8809,9 +11321,7 @@ export const SystemTopicEventSubscriptionsListBySystemTopicOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SystemTopicEventSubscriptionsListBySystemTopicOutput =
-  typeof SystemTopicEventSubscriptionsListBySystemTopicOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicEventSubscriptionsListBySystemTopicOutput>;
 
 // The operation
 /**
@@ -8832,6 +11342,90 @@ export const SystemTopicEventSubscriptionsListBySystemTopic =
     outputSchema: SystemTopicEventSubscriptionsListBySystemTopicOutput,
   }));
 // Input Schema
+export interface SystemTopicEventSubscriptionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  eventSubscriptionName: string;
+  destination?: {
+    endpointType:
+      | "WebHook"
+      | "EventHub"
+      | "StorageQueue"
+      | "HybridConnection"
+      | "ServiceBusQueue"
+      | "ServiceBusTopic"
+      | "AzureFunction"
+      | "MonitorAlert"
+      | "NamespaceTopic";
+  };
+  deliveryWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+  };
+  filter?: {
+    subjectBeginsWith?: string;
+    subjectEndsWith?: string;
+    includedEventTypes?: string[];
+    isSubjectCaseSensitive?: boolean;
+    enableAdvancedFilteringOnArrays?: boolean;
+    advancedFilters?: {
+      operatorType:
+        | "NumberIn"
+        | "NumberNotIn"
+        | "NumberLessThan"
+        | "NumberGreaterThan"
+        | "NumberLessThanOrEquals"
+        | "NumberGreaterThanOrEquals"
+        | "BoolEquals"
+        | "StringIn"
+        | "StringNotIn"
+        | "StringBeginsWith"
+        | "StringEndsWith"
+        | "StringContains"
+        | "NumberInRange"
+        | "NumberNotInRange"
+        | "StringNotBeginsWith"
+        | "StringNotEndsWith"
+        | "StringNotContains"
+        | "IsNullOrUndefined"
+        | "IsNotNull";
+      key?: string;
+    }[];
+  };
+  labels?: string[];
+  expirationTimeUtc?: string;
+  eventDeliverySchema?:
+    | "EventGridSchema"
+    | "CustomInputSchema"
+    | "CloudEventSchemaV1_0";
+  retryPolicy?: {
+    maxDeliveryAttempts?: number;
+    eventTimeToLiveInMinutes?: number;
+  };
+  deadLetterDestination?: { endpointType: "StorageBlob" };
+  deadLetterWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+  };
+}
 export const SystemTopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8960,19 +11554,20 @@ export const SystemTopicEventSubscriptionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicEventSubscriptionsUpdateInput =
-  typeof SystemTopicEventSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicEventSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface SystemTopicEventSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SystemTopicEventSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SystemTopicEventSubscriptionsUpdateOutput =
-  typeof SystemTopicEventSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicEventSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -8992,6 +11587,46 @@ export const SystemTopicEventSubscriptionsUpdate =
     outputSchema: SystemTopicEventSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface SystemTopicsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+    source?: string;
+    topicType?: string;
+    metricResourceId?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location: string;
+  tags?: Record<string, string>;
+}
 export const SystemTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9059,19 +11694,20 @@ export const SystemTopicsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicsCreateOrUpdateInput =
-  typeof SystemTopicsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SystemTopicsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SystemTopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SystemTopicsCreateOrUpdateOutput =
-  typeof SystemTopicsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9091,6 +11727,11 @@ export const SystemTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SystemTopicsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+}
 export const SystemTopicsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9102,12 +11743,12 @@ export const SystemTopicsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicsDeleteInput = typeof SystemTopicsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicsDeleteInput>;
 
 // Output Schema
-export const SystemTopicsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SystemTopicsDeleteOutput = typeof SystemTopicsDeleteOutput.Type;
+export type SystemTopicsDeleteOutput = void;
+export const SystemTopicsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SystemTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -9125,6 +11766,11 @@ export const SystemTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SystemTopicsDeleteOutput,
 }));
 // Input Schema
+export interface SystemTopicsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+}
 export const SystemTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9135,16 +11781,19 @@ export const SystemTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type SystemTopicsGetInput = typeof SystemTopicsGetInput.Type;
+) as unknown as Schema.Codec<SystemTopicsGetInput>;
 
 // Output Schema
+export interface SystemTopicsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SystemTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type SystemTopicsGetOutput = typeof SystemTopicsGetOutput.Type;
+}) as unknown as Schema.Codec<SystemTopicsGetOutput>;
 
 // The operation
 /**
@@ -9162,6 +11811,12 @@ export const SystemTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SystemTopicsGetOutput,
 }));
 // Input Schema
+export interface SystemTopicsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const SystemTopicsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9174,11 +11829,13 @@ export const SystemTopicsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicsListByResourceGroupInput =
-  typeof SystemTopicsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicsListByResourceGroupInput>;
 
 // Output Schema
+export interface SystemTopicsListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const SystemTopicsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -9191,9 +11848,7 @@ export const SystemTopicsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SystemTopicsListByResourceGroupOutput =
-  typeof SystemTopicsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -9213,6 +11868,11 @@ export const SystemTopicsListByResourceGroup =
     outputSchema: SystemTopicsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SystemTopicsListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const SystemTopicsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9224,11 +11884,13 @@ export const SystemTopicsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/systemTopics",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicsListBySubscriptionInput =
-  typeof SystemTopicsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicsListBySubscriptionInput>;
 
 // Output Schema
+export interface SystemTopicsListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const SystemTopicsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -9241,9 +11903,7 @@ export const SystemTopicsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SystemTopicsListBySubscriptionOutput =
-  typeof SystemTopicsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -9262,6 +11922,25 @@ export const SystemTopicsListBySubscription =
     outputSchema: SystemTopicsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SystemTopicsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  systemTopicName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const SystemTopicsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9297,17 +11976,20 @@ export const SystemTopicsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type SystemTopicsUpdateInput = typeof SystemTopicsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SystemTopicsUpdateInput>;
 
 // Output Schema
+export interface SystemTopicsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SystemTopicsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SystemTopicsUpdateOutput = typeof SystemTopicsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SystemTopicsUpdateOutput>;
 
 // The operation
 /**
@@ -9325,6 +12007,112 @@ export const SystemTopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SystemTopicsUpdateOutput,
 }));
 // Input Schema
+export interface TopicEventSubscriptionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+  properties?: {
+    topic?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "AwaitingManualAction";
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+    deliveryWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      destination?: {
+        endpointType:
+          | "WebHook"
+          | "EventHub"
+          | "StorageQueue"
+          | "HybridConnection"
+          | "ServiceBusQueue"
+          | "ServiceBusTopic"
+          | "AzureFunction"
+          | "MonitorAlert"
+          | "NamespaceTopic";
+      };
+    };
+    filter?: {
+      subjectBeginsWith?: string;
+      subjectEndsWith?: string;
+      includedEventTypes?: string[];
+      isSubjectCaseSensitive?: boolean;
+      enableAdvancedFilteringOnArrays?: boolean;
+      advancedFilters?: {
+        operatorType:
+          | "NumberIn"
+          | "NumberNotIn"
+          | "NumberLessThan"
+          | "NumberGreaterThan"
+          | "NumberLessThanOrEquals"
+          | "NumberGreaterThanOrEquals"
+          | "BoolEquals"
+          | "StringIn"
+          | "StringNotIn"
+          | "StringBeginsWith"
+          | "StringEndsWith"
+          | "StringContains"
+          | "NumberInRange"
+          | "NumberNotInRange"
+          | "StringNotBeginsWith"
+          | "StringNotEndsWith"
+          | "StringNotContains"
+          | "IsNullOrUndefined"
+          | "IsNotNull";
+        key?: string;
+      }[];
+    };
+    labels?: string[];
+    expirationTimeUtc?: string;
+    eventDeliverySchema?:
+      | "EventGridSchema"
+      | "CustomInputSchema"
+      | "CloudEventSchemaV1_0";
+    retryPolicy?: {
+      maxDeliveryAttempts?: number;
+      eventTimeToLiveInMinutes?: number;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+    deadLetterWithResourceIdentity?: {
+      identity?: {
+        type?: "SystemAssigned" | "UserAssigned";
+        userAssignedIdentity?: string;
+      };
+      deadLetterDestination?: { endpointType: "StorageBlob" };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicEventSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9486,19 +12274,20 @@ export const TopicEventSubscriptionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicEventSubscriptionsCreateOrUpdateInput =
-  typeof TopicEventSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TopicEventSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TopicEventSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicEventSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type TopicEventSubscriptionsCreateOrUpdateOutput =
-  typeof TopicEventSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TopicEventSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9518,6 +12307,12 @@ export const TopicEventSubscriptionsCreateOrUpdate =
     outputSchema: TopicEventSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface TopicEventSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const TopicEventSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9530,15 +12325,12 @@ export const TopicEventSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicEventSubscriptionsDeleteInput =
-  typeof TopicEventSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<TopicEventSubscriptionsDeleteInput>;
 
 // Output Schema
+export type TopicEventSubscriptionsDeleteOutput = void;
 export const TopicEventSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TopicEventSubscriptionsDeleteOutput =
-  typeof TopicEventSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicEventSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -9558,6 +12350,12 @@ export const TopicEventSubscriptionsDelete =
     outputSchema: TopicEventSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface TopicEventSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const TopicEventSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9570,19 +12368,20 @@ export const TopicEventSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicEventSubscriptionsGetInput =
-  typeof TopicEventSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<TopicEventSubscriptionsGetInput>;
 
 // Output Schema
+export interface TopicEventSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicEventSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type TopicEventSubscriptionsGetOutput =
-  typeof TopicEventSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<TopicEventSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -9603,6 +12402,12 @@ export const TopicEventSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicEventSubscriptionsGetDeliveryAttributesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const TopicEventSubscriptionsGetDeliveryAttributesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9615,11 +12420,12 @@ export const TopicEventSubscriptionsGetDeliveryAttributesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicEventSubscriptionsGetDeliveryAttributesInput =
-  typeof TopicEventSubscriptionsGetDeliveryAttributesInput.Type;
+  ) as unknown as Schema.Codec<TopicEventSubscriptionsGetDeliveryAttributesInput>;
 
 // Output Schema
+export interface TopicEventSubscriptionsGetDeliveryAttributesOutput {
+  value?: { name?: string; type: "Static" | "Dynamic" }[];
+}
 export const TopicEventSubscriptionsGetDeliveryAttributesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -9630,9 +12436,7 @@ export const TopicEventSubscriptionsGetDeliveryAttributesOutput =
         }),
       ),
     ),
-  });
-export type TopicEventSubscriptionsGetDeliveryAttributesOutput =
-  typeof TopicEventSubscriptionsGetDeliveryAttributesOutput.Type;
+  }) as unknown as Schema.Codec<TopicEventSubscriptionsGetDeliveryAttributesOutput>;
 
 // The operation
 /**
@@ -9652,6 +12456,12 @@ export const TopicEventSubscriptionsGetDeliveryAttributes =
     outputSchema: TopicEventSubscriptionsGetDeliveryAttributesOutput,
   }));
 // Input Schema
+export interface TopicEventSubscriptionsGetFullUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+}
 export const TopicEventSubscriptionsGetFullUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9664,17 +12474,16 @@ export const TopicEventSubscriptionsGetFullUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicEventSubscriptionsGetFullUrlInput =
-  typeof TopicEventSubscriptionsGetFullUrlInput.Type;
+  ) as unknown as Schema.Codec<TopicEventSubscriptionsGetFullUrlInput>;
 
 // Output Schema
+export interface TopicEventSubscriptionsGetFullUrlOutput {
+  endpointUrl?: string;
+}
 export const TopicEventSubscriptionsGetFullUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpointUrl: Schema.optional(Schema.String),
-  });
-export type TopicEventSubscriptionsGetFullUrlOutput =
-  typeof TopicEventSubscriptionsGetFullUrlOutput.Type;
+  }) as unknown as Schema.Codec<TopicEventSubscriptionsGetFullUrlOutput>;
 
 // The operation
 /**
@@ -9694,6 +12503,13 @@ export const TopicEventSubscriptionsGetFullUrl =
     outputSchema: TopicEventSubscriptionsGetFullUrlOutput,
   }));
 // Input Schema
+export interface TopicEventSubscriptionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const TopicEventSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9707,11 +12523,13 @@ export const TopicEventSubscriptionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicEventSubscriptionsListInput =
-  typeof TopicEventSubscriptionsListInput.Type;
+  ) as unknown as Schema.Codec<TopicEventSubscriptionsListInput>;
 
 // Output Schema
+export interface TopicEventSubscriptionsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const TopicEventSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -9724,9 +12542,7 @@ export const TopicEventSubscriptionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TopicEventSubscriptionsListOutput =
-  typeof TopicEventSubscriptionsListOutput.Type;
+  }) as unknown as Schema.Codec<TopicEventSubscriptionsListOutput>;
 
 // The operation
 /**
@@ -9748,6 +12564,90 @@ export const TopicEventSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicEventSubscriptionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  eventSubscriptionName: string;
+  destination?: {
+    endpointType:
+      | "WebHook"
+      | "EventHub"
+      | "StorageQueue"
+      | "HybridConnection"
+      | "ServiceBusQueue"
+      | "ServiceBusTopic"
+      | "AzureFunction"
+      | "MonitorAlert"
+      | "NamespaceTopic";
+  };
+  deliveryWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    destination?: {
+      endpointType:
+        | "WebHook"
+        | "EventHub"
+        | "StorageQueue"
+        | "HybridConnection"
+        | "ServiceBusQueue"
+        | "ServiceBusTopic"
+        | "AzureFunction"
+        | "MonitorAlert"
+        | "NamespaceTopic";
+    };
+  };
+  filter?: {
+    subjectBeginsWith?: string;
+    subjectEndsWith?: string;
+    includedEventTypes?: string[];
+    isSubjectCaseSensitive?: boolean;
+    enableAdvancedFilteringOnArrays?: boolean;
+    advancedFilters?: {
+      operatorType:
+        | "NumberIn"
+        | "NumberNotIn"
+        | "NumberLessThan"
+        | "NumberGreaterThan"
+        | "NumberLessThanOrEquals"
+        | "NumberGreaterThanOrEquals"
+        | "BoolEquals"
+        | "StringIn"
+        | "StringNotIn"
+        | "StringBeginsWith"
+        | "StringEndsWith"
+        | "StringContains"
+        | "NumberInRange"
+        | "NumberNotInRange"
+        | "StringNotBeginsWith"
+        | "StringNotEndsWith"
+        | "StringNotContains"
+        | "IsNullOrUndefined"
+        | "IsNotNull";
+      key?: string;
+    }[];
+  };
+  labels?: string[];
+  expirationTimeUtc?: string;
+  eventDeliverySchema?:
+    | "EventGridSchema"
+    | "CustomInputSchema"
+    | "CloudEventSchemaV1_0";
+  retryPolicy?: {
+    maxDeliveryAttempts?: number;
+    eventTimeToLiveInMinutes?: number;
+  };
+  deadLetterDestination?: { endpointType: "StorageBlob" };
+  deadLetterWithResourceIdentity?: {
+    identity?: {
+      type?: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentity?: string;
+    };
+    deadLetterDestination?: { endpointType: "StorageBlob" };
+  };
+}
 export const TopicEventSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9876,19 +12776,20 @@ export const TopicEventSubscriptionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicEventSubscriptionsUpdateInput =
-  typeof TopicEventSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<TopicEventSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface TopicEventSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicEventSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type TopicEventSubscriptionsUpdateOutput =
-  typeof TopicEventSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TopicEventSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -9908,6 +12809,72 @@ export const TopicEventSubscriptionsUpdate =
     outputSchema: TopicEventSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface TopicsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  properties?: {
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+    endpoint?: string;
+    eventTypeInfo?: {
+      kind?: "Inline";
+      inlineEventTypes?: Record<
+        string,
+        {
+          description?: string;
+          displayName?: string;
+          documentationUrl?: string;
+          dataSchemaUrl?: string;
+        }
+      >;
+    };
+    minimumTlsVersionAllowed?: "1.0" | "1.1" | "1.2";
+    inputSchema?:
+      | "EventGridSchema"
+      | "CustomEventSchema"
+      | "CloudEventSchemaV1_0";
+    inputSchemaMapping?: { inputSchemaMappingType: "Json" };
+    metricResourceId?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
+    disableLocalAuth?: boolean;
+    dataResidencyBoundary?: "WithinGeopair" | "WithinRegion";
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location: string;
+  tags?: Record<string, string>;
+}
 export const TopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10029,17 +12996,20 @@ export const TopicsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicsCreateOrUpdateInput = typeof TopicsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TopicsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TopicsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type TopicsCreateOrUpdateOutput = typeof TopicsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TopicsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10059,6 +13029,11 @@ export const TopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+}
 export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10069,12 +13044,12 @@ export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
+) as unknown as Schema.Codec<TopicsDeleteInput>;
 
 // Output Schema
-export const TopicsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TopicsDeleteOutput = typeof TopicsDeleteOutput.Type;
+export type TopicsDeleteOutput = void;
+export const TopicsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsDeleteOutput>;
 
 // The operation
 /**
@@ -10092,6 +13067,11 @@ export const TopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicsDeleteOutput,
 }));
 // Input Schema
+export interface TopicsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+}
 export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10102,16 +13082,19 @@ export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type TopicsGetInput = typeof TopicsGetInput.Type;
+) as unknown as Schema.Codec<TopicsGetInput>;
 
 // Output Schema
+export interface TopicsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type TopicsGetOutput = typeof TopicsGetOutput.Type;
+}) as unknown as Schema.Codec<TopicsGetOutput>;
 
 // The operation
 /**
@@ -10129,6 +13112,12 @@ export const TopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicsGetOutput,
 }));
 // Input Schema
+export interface TopicsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const TopicsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10141,11 +13130,13 @@ export const TopicsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicsListByResourceGroupInput =
-  typeof TopicsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<TopicsListByResourceGroupInput>;
 
 // Output Schema
+export interface TopicsListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const TopicsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10158,9 +13149,7 @@ export const TopicsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TopicsListByResourceGroupOutput =
-  typeof TopicsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<TopicsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -10181,6 +13170,11 @@ export const TopicsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicsListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const TopicsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10192,11 +13186,13 @@ export const TopicsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/topics",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicsListBySubscriptionInput =
-  typeof TopicsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<TopicsListBySubscriptionInput>;
 
 // Output Schema
+export interface TopicsListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const TopicsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10209,9 +13205,7 @@ export const TopicsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TopicsListBySubscriptionOutput =
-  typeof TopicsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<TopicsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -10231,6 +13225,13 @@ export const TopicsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicsListEventTypesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerNamespace: string;
+  resourceTypeName: string;
+  resourceName: string;
+}
 export const TopicsListEventTypesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10244,10 +13245,12 @@ export const TopicsListEventTypesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{providerNamespace}/{resourceTypeName}/{resourceName}/providers/Microsoft.EventGrid/eventTypes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicsListEventTypesInput = typeof TopicsListEventTypesInput.Type;
+  ) as unknown as Schema.Codec<TopicsListEventTypesInput>;
 
 // Output Schema
+export interface TopicsListEventTypesOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const TopicsListEventTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10259,8 +13262,7 @@ export const TopicsListEventTypesOutput =
         }),
       ),
     ),
-  });
-export type TopicsListEventTypesOutput = typeof TopicsListEventTypesOutput.Type;
+  }) as unknown as Schema.Codec<TopicsListEventTypesOutput>;
 
 // The operation
 /**
@@ -10282,6 +13284,11 @@ export const TopicsListEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicsListSharedAccessKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+}
 export const TopicsListSharedAccessKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10293,18 +13300,18 @@ export const TopicsListSharedAccessKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/listKeys",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicsListSharedAccessKeysInput =
-  typeof TopicsListSharedAccessKeysInput.Type;
+  ) as unknown as Schema.Codec<TopicsListSharedAccessKeysInput>;
 
 // Output Schema
+export interface TopicsListSharedAccessKeysOutput {
+  key1?: string;
+  key2?: string;
+}
 export const TopicsListSharedAccessKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type TopicsListSharedAccessKeysOutput =
-  typeof TopicsListSharedAccessKeysOutput.Type;
+  }) as unknown as Schema.Codec<TopicsListSharedAccessKeysOutput>;
 
 // The operation
 /**
@@ -10324,6 +13331,35 @@ export const TopicsListSharedAccessKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicSpacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicSpaceName: string;
+  properties?: {
+    description?: string;
+    topicTemplates?: string[];
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Deleted";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicSpacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10370,19 +13406,20 @@ export const TopicSpacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicSpacesCreateOrUpdateInput =
-  typeof TopicSpacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TopicSpacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface TopicSpacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicSpacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type TopicSpacesCreateOrUpdateOutput =
-  typeof TopicSpacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TopicSpacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10403,6 +13440,12 @@ export const TopicSpacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicSpacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicSpaceName: string;
+}
 export const TopicSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10416,12 +13459,12 @@ export const TopicSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type TopicSpacesDeleteInput = typeof TopicSpacesDeleteInput.Type;
+) as unknown as Schema.Codec<TopicSpacesDeleteInput>;
 
 // Output Schema
-export const TopicSpacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TopicSpacesDeleteOutput = typeof TopicSpacesDeleteOutput.Type;
+export type TopicSpacesDeleteOutput = void;
+export const TopicSpacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicSpacesDeleteOutput>;
 
 // The operation
 /**
@@ -10440,6 +13483,12 @@ export const TopicSpacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicSpacesDeleteOutput,
 }));
 // Input Schema
+export interface TopicSpacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  topicSpaceName: string;
+}
 export const TopicSpacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10451,16 +13500,19 @@ export const TopicSpacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces/{topicSpaceName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type TopicSpacesGetInput = typeof TopicSpacesGetInput.Type;
+) as unknown as Schema.Codec<TopicSpacesGetInput>;
 
 // Output Schema
+export interface TopicSpacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicSpacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type TopicSpacesGetOutput = typeof TopicSpacesGetOutput.Type;
+}) as unknown as Schema.Codec<TopicSpacesGetOutput>;
 
 // The operation
 /**
@@ -10479,6 +13531,13 @@ export const TopicSpacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicSpacesGetOutput,
 }));
 // Input Schema
+export interface TopicSpacesListByNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const TopicSpacesListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10492,11 +13551,13 @@ export const TopicSpacesListByNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topicSpaces",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicSpacesListByNamespaceInput =
-  typeof TopicSpacesListByNamespaceInput.Type;
+  ) as unknown as Schema.Codec<TopicSpacesListByNamespaceInput>;
 
 // Output Schema
+export interface TopicSpacesListByNamespaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const TopicSpacesListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10509,9 +13570,7 @@ export const TopicSpacesListByNamespaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TopicSpacesListByNamespaceOutput =
-  typeof TopicSpacesListByNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<TopicSpacesListByNamespaceOutput>;
 
 // The operation
 /**
@@ -10533,6 +13592,12 @@ export const TopicSpacesListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TopicsRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  keyName: string;
+}
 export const TopicsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10545,16 +13610,18 @@ export const TopicsRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/regenerateKey",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicsRegenerateKeyInput = typeof TopicsRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<TopicsRegenerateKeyInput>;
 
 // Output Schema
+export interface TopicsRegenerateKeyOutput {
+  key1?: string;
+  key2?: string;
+}
 export const TopicsRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type TopicsRegenerateKeyOutput = typeof TopicsRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<TopicsRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -10572,6 +13639,44 @@ export const TopicsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicsRegenerateKeyOutput,
 }));
 // Input Schema
+export interface TopicsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  topicName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    inboundIpRules?: { ipMask?: string; action?: "Allow" }[];
+    minimumTlsVersionAllowed?: "1.0" | "1.1" | "1.2";
+    disableLocalAuth?: boolean;
+    dataResidencyBoundary?: "WithinGeopair" | "WithinRegion";
+    eventTypeInfo?: {
+      kind?: "Inline";
+      inlineEventTypes?: Record<
+        string,
+        {
+          description?: string;
+          displayName?: string;
+          documentationUrl?: string;
+          dataSchemaUrl?: string;
+        }
+      >;
+    };
+  };
+}
 export const TopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10644,12 +13749,12 @@ export const TopicsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type TopicsUpdateInput = typeof TopicsUpdateInput.Type;
+) as unknown as Schema.Codec<TopicsUpdateInput>;
 
 // Output Schema
-export const TopicsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TopicsUpdateOutput = typeof TopicsUpdateOutput.Type;
+export type TopicsUpdateOutput = void;
+export const TopicsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsUpdateOutput>;
 
 // The operation
 /**
@@ -10667,6 +13772,9 @@ export const TopicsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicsUpdateOutput,
 }));
 // Input Schema
+export interface TopicTypesGetInput {
+  topicTypeName: string;
+}
 export const TopicTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   topicTypeName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -10675,16 +13783,19 @@ export const TopicTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}",
     apiVersion: "2025-02-15",
   }),
-);
-export type TopicTypesGetInput = typeof TopicTypesGetInput.Type;
+) as unknown as Schema.Codec<TopicTypesGetInput>;
 
 // Output Schema
+export interface TopicTypesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TopicTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type TopicTypesGetOutput = typeof TopicTypesGetOutput.Type;
+}) as unknown as Schema.Codec<TopicTypesGetOutput>;
 
 // The operation
 /**
@@ -10700,6 +13811,7 @@ export const TopicTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicTypesGetOutput,
 }));
 // Input Schema
+export interface TopicTypesListInput {}
 export const TopicTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -10708,10 +13820,12 @@ export const TopicTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.EventGrid/topicTypes",
     apiVersion: "2025-02-15",
   }),
-);
-export type TopicTypesListInput = typeof TopicTypesListInput.Type;
+) as unknown as Schema.Codec<TopicTypesListInput>;
 
 // Output Schema
+export interface TopicTypesListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const TopicTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -10722,8 +13836,7 @@ export const TopicTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type TopicTypesListOutput = typeof TopicTypesListOutput.Type;
+}) as unknown as Schema.Codec<TopicTypesListOutput>;
 
 // The operation
 /**
@@ -10738,6 +13851,9 @@ export const TopicTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicTypesListOutput,
 }));
 // Input Schema
+export interface TopicTypesListEventTypesInput {
+  topicTypeName: string;
+}
 export const TopicTypesListEventTypesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topicTypeName: Schema.String.pipe(T.PathParam()),
@@ -10747,11 +13863,12 @@ export const TopicTypesListEventTypesInput =
       path: "/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventTypes",
       apiVersion: "2025-02-15",
     }),
-  );
-export type TopicTypesListEventTypesInput =
-  typeof TopicTypesListEventTypesInput.Type;
+  ) as unknown as Schema.Codec<TopicTypesListEventTypesInput>;
 
 // Output Schema
+export interface TopicTypesListEventTypesOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const TopicTypesListEventTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10763,9 +13880,7 @@ export const TopicTypesListEventTypesOutput =
         }),
       ),
     ),
-  });
-export type TopicTypesListEventTypesOutput =
-  typeof TopicTypesListEventTypesOutput.Type;
+  }) as unknown as Schema.Codec<TopicTypesListEventTypesOutput>;
 
 // The operation
 /**
@@ -10783,6 +13898,9 @@ export const TopicTypesListEventTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VerifiedPartnersGetInput {
+  verifiedPartnerName: string;
+}
 export const VerifiedPartnersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verifiedPartnerName: Schema.String.pipe(T.PathParam()),
@@ -10792,17 +13910,20 @@ export const VerifiedPartnersGetInput =
       path: "/providers/Microsoft.EventGrid/verifiedPartners/{verifiedPartnerName}",
       apiVersion: "2025-02-15",
     }),
-  );
-export type VerifiedPartnersGetInput = typeof VerifiedPartnersGetInput.Type;
+  ) as unknown as Schema.Codec<VerifiedPartnersGetInput>;
 
 // Output Schema
+export interface VerifiedPartnersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const VerifiedPartnersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type VerifiedPartnersGetOutput = typeof VerifiedPartnersGetOutput.Type;
+  }) as unknown as Schema.Codec<VerifiedPartnersGetOutput>;
 
 // The operation
 /**
@@ -10818,6 +13939,10 @@ export const VerifiedPartnersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VerifiedPartnersGetOutput,
 }));
 // Input Schema
+export interface VerifiedPartnersListInput {
+  $filter?: string;
+  $top?: number;
+}
 export const VerifiedPartnersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -10828,10 +13953,13 @@ export const VerifiedPartnersListInput =
       path: "/providers/Microsoft.EventGrid/verifiedPartners",
       apiVersion: "2025-02-15",
     }),
-  );
-export type VerifiedPartnersListInput = typeof VerifiedPartnersListInput.Type;
+  ) as unknown as Schema.Codec<VerifiedPartnersListInput>;
 
 // Output Schema
+export interface VerifiedPartnersListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const VerifiedPartnersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -10844,8 +13972,7 @@ export const VerifiedPartnersListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VerifiedPartnersListOutput = typeof VerifiedPartnersListOutput.Type;
+  }) as unknown as Schema.Codec<VerifiedPartnersListOutput>;
 
 // The operation
 /**

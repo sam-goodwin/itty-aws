@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1DeleteProjectTpaIntegrationInput {
+  ref: string;
+  tpa_id: string;
+}
 export const V1DeleteProjectTpaIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,20 @@ export const V1DeleteProjectTpaIntegrationInput =
       method: "DELETE",
       path: "/v1/projects/{ref}/config/auth/third-party-auth/{tpa_id}",
     }),
-  );
-export type V1DeleteProjectTpaIntegrationInput =
-  typeof V1DeleteProjectTpaIntegrationInput.Type;
+  ) as unknown as Schema.Codec<V1DeleteProjectTpaIntegrationInput>;
 
 // Output Schema
+export interface V1DeleteProjectTpaIntegrationOutput {
+  id: string;
+  type: string;
+  oidc_issuer_url?: string | null;
+  jwks_url?: string | null;
+  custom_jwks?: unknown | null;
+  resolved_jwks?: unknown | null;
+  inserted_at: string;
+  updated_at: string;
+  resolved_at?: string | null;
+}
 export const V1DeleteProjectTpaIntegrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,9 +42,7 @@ export const V1DeleteProjectTpaIntegrationOutput =
     inserted_at: Schema.String,
     updated_at: Schema.String,
     resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type V1DeleteProjectTpaIntegrationOutput =
-  typeof V1DeleteProjectTpaIntegrationOutput.Type;
+  }) as unknown as Schema.Codec<V1DeleteProjectTpaIntegrationOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFlowsUserBlastRadiusCreateInput {
+  project_id: string;
+  filters?: Record<string, unknown>;
+  group_type_index?: number | null;
+}
 export const HogFlowsUserBlastRadiusCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,19 +19,20 @@ export const HogFlowsUserBlastRadiusCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/hog_flows/user_blast_radius/",
     }),
-  );
-export type HogFlowsUserBlastRadiusCreateInput =
-  typeof HogFlowsUserBlastRadiusCreateInput.Type;
+  ) as unknown as Schema.Codec<HogFlowsUserBlastRadiusCreateInput>;
 
 // Output Schema
+export interface HogFlowsUserBlastRadiusCreateOutput {
+  affected?: number;
+  total?: number;
+  limit?: number;
+}
 export const HogFlowsUserBlastRadiusCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     affected: Schema.optional(Schema.Number),
     total: Schema.optional(Schema.Number),
     limit: Schema.optional(Schema.Number),
-  });
-export type HogFlowsUserBlastRadiusCreateOutput =
-  typeof HogFlowsUserBlastRadiusCreateOutput.Type;
+  }) as unknown as Schema.Codec<HogFlowsUserBlastRadiusCreateOutput>;
 
 // The operation
 /**

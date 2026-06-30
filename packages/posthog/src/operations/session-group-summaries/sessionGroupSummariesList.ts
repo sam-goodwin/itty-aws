@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionGroupSummariesListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const SessionGroupSummariesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,41 @@ export const SessionGroupSummariesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/session_group_summaries/",
     }),
-  );
-export type SessionGroupSummariesListInput =
-  typeof SessionGroupSummariesListInput.Type;
+  ) as unknown as Schema.Codec<SessionGroupSummariesListInput>;
 
 // Output Schema
+export interface SessionGroupSummariesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    title?: string;
+    session_count?: number;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+  }[];
+}
 export const SessionGroupSummariesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -46,16 +81,30 @@ export const SessionGroupSummariesListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
         }),
       ),
     ),
-  });
-export type SessionGroupSummariesListOutput =
-  typeof SessionGroupSummariesListOutput.Type;
+  }) as unknown as Schema.Codec<SessionGroupSummariesListOutput>;
 
 // The operation
 /**

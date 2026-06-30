@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetSchemaRecommendationInput {
+  organization: string;
+  database: string;
+  number: number;
+}
 export const GetSchemaRecommendationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,39 @@ export const GetSchemaRecommendationInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/schema-recommendations/{number}",
     }),
-  );
-export type GetSchemaRecommendationInput =
-  typeof GetSchemaRecommendationInput.Type;
+  ) as unknown as Schema.Codec<GetSchemaRecommendationInput>;
 
 // Output Schema
+export interface GetSchemaRecommendationOutput {
+  id: string;
+  html_url: string;
+  title: string;
+  table_name: string;
+  keyspace: string;
+  ddl_statement: string;
+  number: number;
+  state: "open" | "applied" | "dismissed" | "stale";
+  recommendation_type:
+    | "unused_table"
+    | "unused_index"
+    | "duplicate_index"
+    | "sequence_overflow"
+    | "sequence_overflow_foreign_key"
+    | "new_index"
+    | "encoding_upgrade"
+    | "bloated_table"
+    | "bloated_index";
+  created_at: string;
+  updated_at: string;
+  applied_at: string | null;
+  dismissed_at: string | null;
+  closed_by_deploy_request: {
+    id: string;
+    branch_id: string;
+    number: number;
+  } | null;
+  dismissed_by: { id: string; display_name: string; avatar_url: string } | null;
+}
 export const GetSchemaRecommendationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -58,9 +91,7 @@ export const GetSchemaRecommendationOutput =
         avatar_url: Schema.String,
       }),
     ),
-  });
-export type GetSchemaRecommendationOutput =
-  typeof GetSchemaRecommendationOutput.Type;
+  }) as unknown as Schema.Codec<GetSchemaRecommendationOutput>;
 
 // The operation
 /**

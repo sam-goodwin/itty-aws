@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsBulkUpdateTagsCreateInput {
+  project_id: string;
+  ids?: number[];
+  action?: "add" | "remove" | "set";
+  tags?: string[];
+}
 export const FeatureFlagsBulkUpdateTagsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,13 @@ export const FeatureFlagsBulkUpdateTagsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/feature_flags/bulk_update_tags/",
     }),
-  );
-export type FeatureFlagsBulkUpdateTagsCreateInput =
-  typeof FeatureFlagsBulkUpdateTagsCreateInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsBulkUpdateTagsCreateInput>;
 
 // Output Schema
+export interface FeatureFlagsBulkUpdateTagsCreateOutput {
+  updated?: { id?: number; tags?: string[] }[];
+  skipped?: { id?: number; reason?: string }[];
+}
 export const FeatureFlagsBulkUpdateTagsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updated: Schema.optional(
@@ -38,9 +46,7 @@ export const FeatureFlagsBulkUpdateTagsCreateOutput =
         }),
       ),
     ),
-  });
-export type FeatureFlagsBulkUpdateTagsCreateOutput =
-  typeof FeatureFlagsBulkUpdateTagsCreateOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsBulkUpdateTagsCreateOutput>;
 
 // The operation
 /**

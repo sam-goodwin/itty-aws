@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupProcessPerformanceAdvisorSuggestedIndexesInput {
+  groupId: string;
+  processId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  duration?: number;
+  namespaces?: string;
+  nExamples?: number;
+  nIndexes?: number;
+  since?: number;
+}
 export const ListGroupProcessPerformanceAdvisorSuggestedIndexesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -23,15 +37,12 @@ export const ListGroupProcessPerformanceAdvisorSuggestedIndexesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes",
     }),
-  );
-export type ListGroupProcessPerformanceAdvisorSuggestedIndexesInput =
-  typeof ListGroupProcessPerformanceAdvisorSuggestedIndexesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorSuggestedIndexesInput>;
 
 // Output Schema
+export type ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput = void;
 export const ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
-  typeof ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput>;
 
 // The operation
 /**

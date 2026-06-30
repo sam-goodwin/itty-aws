@@ -4,11 +4,41 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface EndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  endpointType: "AzureEndpoints" | "ExternalEndpoints" | "NestedEndpoints";
+  endpointName: string;
+  properties?: {
+    targetResourceId?: string;
+    target?: string;
+    endpointStatus?: "Enabled" | "Disabled";
+    weight?: number;
+    priority?: number;
+    endpointLocation?: string;
+    endpointMonitorStatus?:
+      | "CheckingEndpoint"
+      | "Online"
+      | "Degraded"
+      | "Disabled"
+      | "Inactive"
+      | "Stopped"
+      | "Unmonitored";
+    minChildEndpoints?: number;
+    minChildEndpointsIPv4?: number;
+    minChildEndpointsIPv6?: number;
+    geoMapping?: string[];
+    subnets?: { first?: string; last?: string; scope?: number }[];
+    customHeaders?: { name?: string; value?: string }[];
+    alwaysServe?: "Enabled" | "Disabled";
+  };
+}
 export const EndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -71,19 +101,20 @@ export const EndpointsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type EndpointsCreateOrUpdateInput =
-  typeof EndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface EndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const EndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type EndpointsCreateOrUpdateOutput =
-  typeof EndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -103,6 +134,13 @@ export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  endpointType: "AzureEndpoints" | "ExternalEndpoints" | "NestedEndpoints";
+  endpointName: string;
+}
 export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -119,14 +157,15 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
     apiVersion: "2022-04-01",
   }),
-);
-export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
+) as unknown as Schema.Codec<EndpointsDeleteInput>;
 
 // Output Schema
+export interface EndpointsDeleteOutput {
+  boolean?: boolean;
+}
 export const EndpointsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   boolean: Schema.optional(Schema.Boolean),
-});
-export type EndpointsDeleteOutput = typeof EndpointsDeleteOutput.Type;
+}) as unknown as Schema.Codec<EndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -144,6 +183,13 @@ export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsDeleteOutput,
 }));
 // Input Schema
+export interface EndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  endpointType: "AzureEndpoints" | "ExternalEndpoints" | "NestedEndpoints";
+  endpointName: string;
+}
 export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -160,16 +206,19 @@ export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
     apiVersion: "2022-04-01",
   }),
-);
-export type EndpointsGetInput = typeof EndpointsGetInput.Type;
+) as unknown as Schema.Codec<EndpointsGetInput>;
 
 // Output Schema
+export interface EndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type EndpointsGetOutput = typeof EndpointsGetOutput.Type;
+}) as unknown as Schema.Codec<EndpointsGetOutput>;
 
 // The operation
 /**
@@ -187,6 +236,36 @@ export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsGetOutput,
 }));
 // Input Schema
+export interface EndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  endpointType: "AzureEndpoints" | "ExternalEndpoints" | "NestedEndpoints";
+  endpointName: string;
+  properties?: {
+    targetResourceId?: string;
+    target?: string;
+    endpointStatus?: "Enabled" | "Disabled";
+    weight?: number;
+    priority?: number;
+    endpointLocation?: string;
+    endpointMonitorStatus?:
+      | "CheckingEndpoint"
+      | "Online"
+      | "Degraded"
+      | "Disabled"
+      | "Inactive"
+      | "Stopped"
+      | "Unmonitored";
+    minChildEndpoints?: number;
+    minChildEndpointsIPv4?: number;
+    minChildEndpointsIPv6?: number;
+    geoMapping?: string[];
+    subnets?: { first?: string; last?: string; scope?: number }[];
+    customHeaders?: { name?: string; value?: string }[];
+    alwaysServe?: "Enabled" | "Disabled";
+  };
+}
 export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -246,16 +325,19 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
     apiVersion: "2022-04-01",
   }),
-);
-export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
+) as unknown as Schema.Codec<EndpointsUpdateInput>;
 
 // Output Schema
+export interface EndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type EndpointsUpdateOutput = typeof EndpointsUpdateOutput.Type;
+}) as unknown as Schema.Codec<EndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -273,6 +355,7 @@ export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsUpdateOutput,
 }));
 // Input Schema
+export interface GeographicHierarchiesGetDefaultInput {}
 export const GeographicHierarchiesGetDefaultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -280,19 +363,20 @@ export const GeographicHierarchiesGetDefaultInput =
       path: "/providers/Microsoft.Network/trafficManagerGeographicHierarchies/default",
       apiVersion: "2022-04-01",
     }),
-  );
-export type GeographicHierarchiesGetDefaultInput =
-  typeof GeographicHierarchiesGetDefaultInput.Type;
+  ) as unknown as Schema.Codec<GeographicHierarchiesGetDefaultInput>;
 
 // Output Schema
+export interface GeographicHierarchiesGetDefaultOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const GeographicHierarchiesGetDefaultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GeographicHierarchiesGetDefaultOutput =
-  typeof GeographicHierarchiesGetDefaultOutput.Type;
+  }) as unknown as Schema.Codec<GeographicHierarchiesGetDefaultOutput>;
 
 // The operation
 /**
@@ -306,6 +390,14 @@ export const GeographicHierarchiesGetDefault =
     outputSchema: GeographicHierarchiesGetDefaultOutput,
   }));
 // Input Schema
+export interface HeatMapGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  heatMapType: "default";
+  topLeft?: string;
+  botRight?: string;
+}
 export const HeatMapGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -319,16 +411,19 @@ export const HeatMapGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/heatMaps/{heatMapType}",
     apiVersion: "2022-04-01",
   }),
-);
-export type HeatMapGetInput = typeof HeatMapGetInput.Type;
+) as unknown as Schema.Codec<HeatMapGetInput>;
 
 // Output Schema
+export interface HeatMapGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const HeatMapGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type HeatMapGetOutput = typeof HeatMapGetOutput.Type;
+}) as unknown as Schema.Codec<HeatMapGetOutput>;
 
 // The operation
 /**
@@ -347,6 +442,11 @@ export const HeatMapGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: HeatMapGetOutput,
 }));
 // Input Schema
+export interface ProfilesCheckTrafficManagerNameAvailabilityV2Input {
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+}
 export const ProfilesCheckTrafficManagerNameAvailabilityV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -358,11 +458,16 @@ export const ProfilesCheckTrafficManagerNameAvailabilityV2Input =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/checkTrafficManagerNameAvailabilityV2",
       apiVersion: "2022-04-01",
     }),
-  );
-export type ProfilesCheckTrafficManagerNameAvailabilityV2Input =
-  typeof ProfilesCheckTrafficManagerNameAvailabilityV2Input.Type;
+  ) as unknown as Schema.Codec<ProfilesCheckTrafficManagerNameAvailabilityV2Input>;
 
 // Output Schema
+export interface ProfilesCheckTrafficManagerNameAvailabilityV2Output {
+  name?: string;
+  type?: string;
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const ProfilesCheckTrafficManagerNameAvailabilityV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -370,9 +475,7 @@ export const ProfilesCheckTrafficManagerNameAvailabilityV2Output =
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type ProfilesCheckTrafficManagerNameAvailabilityV2Output =
-  typeof ProfilesCheckTrafficManagerNameAvailabilityV2Output.Type;
+  }) as unknown as Schema.Codec<ProfilesCheckTrafficManagerNameAvailabilityV2Output>;
 
 // The operation
 /**
@@ -387,6 +490,10 @@ export const ProfilesCheckTrafficManagerNameAvailabilityV2 =
     outputSchema: ProfilesCheckTrafficManagerNameAvailabilityV2Output,
   }));
 // Input Schema
+export interface ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput {
+  name?: string;
+  type?: string;
+}
 export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -397,11 +504,16 @@ export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput =
       path: "/providers/Microsoft.Network/checkTrafficManagerNameAvailability",
       apiVersion: "2022-04-01",
     }),
-  );
-export type ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput =
-  typeof ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityInput>;
 
 // Output Schema
+export interface ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput {
+  name?: string;
+  type?: string;
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -409,9 +521,7 @@ export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput =
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput =
-  typeof ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -425,6 +535,49 @@ export const ProfilesCheckTrafficManagerRelativeDnsNameAvailability =
     outputSchema: ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ProfilesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  properties?: {
+    profileStatus?: "Enabled" | "Disabled";
+    trafficRoutingMethod?:
+      | "Performance"
+      | "Priority"
+      | "Weighted"
+      | "Geographic"
+      | "MultiValue"
+      | "Subnet";
+    dnsConfig?: { relativeName?: string; fqdn?: string; ttl?: number };
+    monitorConfig?: {
+      profileMonitorStatus?:
+        | "CheckingEndpoints"
+        | "Online"
+        | "Degraded"
+        | "Disabled"
+        | "Inactive";
+      protocol?: "HTTP" | "HTTPS" | "TCP";
+      port?: number;
+      path?: string;
+      intervalInSeconds?: number;
+      timeoutInSeconds?: number;
+      toleratedNumberOfFailures?: number;
+      customHeaders?: { name?: string; value?: string }[];
+      expectedStatusCodeRanges?: { min?: number; max?: number }[];
+    };
+    endpoints?: { id?: string; name?: string; type?: string }[];
+    trafficViewEnrollmentStatus?: "Enabled" | "Disabled";
+    allowedEndpointRecordTypes?: (
+      | "DomainName"
+      | "IPv4Address"
+      | "IPv6Address"
+      | "Any"
+    )[];
+    maxReturn?: number;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const ProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -522,19 +675,20 @@ export const ProfilesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type ProfilesCreateOrUpdateInput =
-  typeof ProfilesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProfilesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProfilesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ProfilesCreateOrUpdateOutput =
-  typeof ProfilesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProfilesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -552,6 +706,11 @@ export const ProfilesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProfilesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+}
 export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -562,14 +721,15 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
     apiVersion: "2022-04-01",
   }),
-);
-export type ProfilesDeleteInput = typeof ProfilesDeleteInput.Type;
+) as unknown as Schema.Codec<ProfilesDeleteInput>;
 
 // Output Schema
+export interface ProfilesDeleteOutput {
+  boolean?: boolean;
+}
 export const ProfilesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   boolean: Schema.optional(Schema.Boolean),
-});
-export type ProfilesDeleteOutput = typeof ProfilesDeleteOutput.Type;
+}) as unknown as Schema.Codec<ProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -585,6 +745,11 @@ export const ProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProfilesDeleteOutput,
 }));
 // Input Schema
+export interface ProfilesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+}
 export const ProfilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -595,16 +760,19 @@ export const ProfilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
     apiVersion: "2022-04-01",
   }),
-);
-export type ProfilesGetInput = typeof ProfilesGetInput.Type;
+) as unknown as Schema.Codec<ProfilesGetInput>;
 
 // Output Schema
+export interface ProfilesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ProfilesGetOutput = typeof ProfilesGetOutput.Type;
+}) as unknown as Schema.Codec<ProfilesGetOutput>;
 
 // The operation
 /**
@@ -620,6 +788,10 @@ export const ProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProfilesGetOutput,
 }));
 // Input Schema
+export interface ProfilesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -630,11 +802,13 @@ export const ProfilesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles",
       apiVersion: "2022-04-01",
     }),
-  );
-export type ProfilesListByResourceGroupInput =
-  typeof ProfilesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ProfilesListByResourceGroupInput>;
 
 // Output Schema
+export interface ProfilesListByResourceGroupOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ProfilesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -645,9 +819,7 @@ export const ProfilesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProfilesListByResourceGroupOutput =
-  typeof ProfilesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ProfilesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -664,6 +836,9 @@ export const ProfilesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProfilesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -673,11 +848,13 @@ export const ProfilesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles",
       apiVersion: "2022-04-01",
     }),
-  );
-export type ProfilesListBySubscriptionInput =
-  typeof ProfilesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ProfilesListBySubscriptionInput>;
 
 // Output Schema
+export interface ProfilesListBySubscriptionOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ProfilesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -688,9 +865,7 @@ export const ProfilesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProfilesListBySubscriptionOutput =
-  typeof ProfilesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ProfilesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -706,6 +881,49 @@ export const ProfilesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProfilesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  properties?: {
+    profileStatus?: "Enabled" | "Disabled";
+    trafficRoutingMethod?:
+      | "Performance"
+      | "Priority"
+      | "Weighted"
+      | "Geographic"
+      | "MultiValue"
+      | "Subnet";
+    dnsConfig?: { relativeName?: string; fqdn?: string; ttl?: number };
+    monitorConfig?: {
+      profileMonitorStatus?:
+        | "CheckingEndpoints"
+        | "Online"
+        | "Degraded"
+        | "Disabled"
+        | "Inactive";
+      protocol?: "HTTP" | "HTTPS" | "TCP";
+      port?: number;
+      path?: string;
+      intervalInSeconds?: number;
+      timeoutInSeconds?: number;
+      toleratedNumberOfFailures?: number;
+      customHeaders?: { name?: string; value?: string }[];
+      expectedStatusCodeRanges?: { min?: number; max?: number }[];
+    };
+    endpoints?: { id?: string; name?: string; type?: string }[];
+    trafficViewEnrollmentStatus?: "Enabled" | "Disabled";
+    allowedEndpointRecordTypes?: (
+      | "DomainName"
+      | "IPv4Address"
+      | "IPv6Address"
+      | "Any"
+    )[];
+    maxReturn?: number;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const ProfilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -793,16 +1011,19 @@ export const ProfilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
     apiVersion: "2022-04-01",
   }),
-);
-export type ProfilesUpdateInput = typeof ProfilesUpdateInput.Type;
+) as unknown as Schema.Codec<ProfilesUpdateInput>;
 
 // Output Schema
+export interface ProfilesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ProfilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ProfilesUpdateOutput = typeof ProfilesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ProfilesUpdateOutput>;
 
 // The operation
 /**
@@ -818,6 +1039,9 @@ export const ProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProfilesUpdateOutput,
 }));
 // Input Schema
+export interface TrafficManagerUserMetricsKeysCreateOrUpdateInput {
+  subscriptionId: string;
+}
 export const TrafficManagerUserMetricsKeysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -827,19 +1051,20 @@ export const TrafficManagerUserMetricsKeysCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
       apiVersion: "2022-04-01",
     }),
-  );
-export type TrafficManagerUserMetricsKeysCreateOrUpdateInput =
-  typeof TrafficManagerUserMetricsKeysCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TrafficManagerUserMetricsKeysCreateOrUpdateInput>;
 
 // Output Schema
+export interface TrafficManagerUserMetricsKeysCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TrafficManagerUserMetricsKeysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type TrafficManagerUserMetricsKeysCreateOrUpdateOutput =
-  typeof TrafficManagerUserMetricsKeysCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TrafficManagerUserMetricsKeysCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -854,6 +1079,9 @@ export const TrafficManagerUserMetricsKeysCreateOrUpdate =
     outputSchema: TrafficManagerUserMetricsKeysCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface TrafficManagerUserMetricsKeysDeleteInput {
+  subscriptionId: string;
+}
 export const TrafficManagerUserMetricsKeysDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -863,17 +1091,16 @@ export const TrafficManagerUserMetricsKeysDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
       apiVersion: "2022-04-01",
     }),
-  );
-export type TrafficManagerUserMetricsKeysDeleteInput =
-  typeof TrafficManagerUserMetricsKeysDeleteInput.Type;
+  ) as unknown as Schema.Codec<TrafficManagerUserMetricsKeysDeleteInput>;
 
 // Output Schema
+export interface TrafficManagerUserMetricsKeysDeleteOutput {
+  boolean?: boolean;
+}
 export const TrafficManagerUserMetricsKeysDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boolean: Schema.optional(Schema.Boolean),
-  });
-export type TrafficManagerUserMetricsKeysDeleteOutput =
-  typeof TrafficManagerUserMetricsKeysDeleteOutput.Type;
+  }) as unknown as Schema.Codec<TrafficManagerUserMetricsKeysDeleteOutput>;
 
 // The operation
 /**
@@ -888,6 +1115,9 @@ export const TrafficManagerUserMetricsKeysDelete =
     outputSchema: TrafficManagerUserMetricsKeysDeleteOutput,
   }));
 // Input Schema
+export interface TrafficManagerUserMetricsKeysGetInput {
+  subscriptionId: string;
+}
 export const TrafficManagerUserMetricsKeysGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -897,19 +1127,20 @@ export const TrafficManagerUserMetricsKeysGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
       apiVersion: "2022-04-01",
     }),
-  );
-export type TrafficManagerUserMetricsKeysGetInput =
-  typeof TrafficManagerUserMetricsKeysGetInput.Type;
+  ) as unknown as Schema.Codec<TrafficManagerUserMetricsKeysGetInput>;
 
 // Output Schema
+export interface TrafficManagerUserMetricsKeysGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const TrafficManagerUserMetricsKeysGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type TrafficManagerUserMetricsKeysGetOutput =
-  typeof TrafficManagerUserMetricsKeysGetOutput.Type;
+  }) as unknown as Schema.Codec<TrafficManagerUserMetricsKeysGetOutput>;
 
 // The operation
 /**

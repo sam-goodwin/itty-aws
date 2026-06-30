@@ -4,6 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface ExternalAuthControllerCompleteLoginInput {
+  external_auth_id?: string;
+  user?: {
+    id?: string;
+    email?: string;
+    first_name?: string;
+    last_name?: string;
+    name?: string;
+    metadata?: Record<string, string>;
+  };
+  user_consent_options?: {
+    claim?: string;
+    type?: string;
+    label?: string;
+    choices?: { value?: string; label?: string }[];
+  }[];
+}
 export const ExternalAuthControllerCompleteLoginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     external_auth_id: Schema.optional(Schema.String),
@@ -34,17 +51,18 @@ export const ExternalAuthControllerCompleteLoginInput =
         }),
       ),
     ),
-  }).pipe(T.Http({ method: "POST", path: "/authkit/oauth2/complete" }));
-export type ExternalAuthControllerCompleteLoginInput =
-  typeof ExternalAuthControllerCompleteLoginInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/authkit/oauth2/complete" }),
+  ) as unknown as Schema.Codec<ExternalAuthControllerCompleteLoginInput>;
 
 // Output Schema
+export interface ExternalAuthControllerCompleteLoginOutput {
+  redirect_uri?: string;
+}
 export const ExternalAuthControllerCompleteLoginOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redirect_uri: Schema.optional(Schema.String),
-  });
-export type ExternalAuthControllerCompleteLoginOutput =
-  typeof ExternalAuthControllerCompleteLoginOutput.Type;
+  }) as unknown as Schema.Codec<ExternalAuthControllerCompleteLoginOutput>;
 
 // The operation
 /**

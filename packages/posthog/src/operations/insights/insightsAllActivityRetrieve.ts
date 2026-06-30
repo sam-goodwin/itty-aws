@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightsAllActivityRetrieveInput {
+  project_id: string;
+  format?: "csv" | "json";
+  limit?: number;
+  page?: number;
+}
 export const InsightsAllActivityRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,37 @@ export const InsightsAllActivityRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/insights/activity/",
     }),
-  );
-export type InsightsAllActivityRetrieveInput =
-  typeof InsightsAllActivityRetrieveInput.Type;
+  ) as unknown as Schema.Codec<InsightsAllActivityRetrieveInput>;
 
 // Output Schema
+export interface InsightsAllActivityRetrieveOutput {
+  results?: {
+    id?: string;
+    user?: unknown | null;
+    activity?: string;
+    scope?: string;
+    item_id?: string;
+    detail?: {
+      id?: string;
+      changes?: {
+        type?: string;
+        action?: string;
+        field?: string;
+        before?: unknown;
+        after?: unknown;
+      }[];
+      merge?: { type?: string; source?: unknown; target?: unknown };
+      trigger?: { job_type?: string; job_id?: string; payload?: unknown };
+      name?: string;
+      short_id?: string;
+      type?: string;
+    };
+    created_at?: string;
+  }[];
+  next?: string | null;
+  previous?: string | null;
+  total_count?: number;
+}
 export const InsightsAllActivityRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -70,9 +102,7 @@ export const InsightsAllActivityRetrieveOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     total_count: Schema.optional(Schema.Number),
-  });
-export type InsightsAllActivityRetrieveOutput =
-  typeof InsightsAllActivityRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<InsightsAllActivityRetrieveOutput>;
 
 // The operation
 /**

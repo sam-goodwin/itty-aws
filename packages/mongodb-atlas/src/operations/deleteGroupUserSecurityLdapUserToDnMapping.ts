@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupUserSecurityLdapUserToDnMappingInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupUserSecurityLdapUserToDnMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const DeleteGroupUserSecurityLdapUserToDnMappingInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping",
     }),
-  );
-export type DeleteGroupUserSecurityLdapUserToDnMappingInput =
-  typeof DeleteGroupUserSecurityLdapUserToDnMappingInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupUserSecurityLdapUserToDnMappingInput>;
 
 // Output Schema
+export type DeleteGroupUserSecurityLdapUserToDnMappingOutput = void;
 export const DeleteGroupUserSecurityLdapUserToDnMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupUserSecurityLdapUserToDnMappingOutput =
-  typeof DeleteGroupUserSecurityLdapUserToDnMappingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupUserSecurityLdapUserToDnMappingOutput>;
 
 // The operation
 /**

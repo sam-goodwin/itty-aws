@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface RubricGrade {
   points?: number;
 }
 
-export const RubricGrade: Schema.Schema<RubricGrade> =
+export const RubricGrade: Schema.Codec<RubricGrade> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     levelId: Schema.optional(Schema.String),
     criterionId: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export interface CopyHistory {
   itemId?: string;
 }
 
-export const CopyHistory: Schema.Schema<CopyHistory> =
+export const CopyHistory: Schema.Codec<CopyHistory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     courseId: Schema.optional(Schema.String),
     attachmentId: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface DriveFile {
   thumbnailUrl?: string;
 }
 
-export const DriveFile: Schema.Schema<DriveFile> =
+export const DriveFile: Schema.Codec<DriveFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     alternateLink: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface Name {
   familyName?: string;
 }
 
-export const Name: Schema.Schema<Name> =
+export const Name: Schema.Codec<Name> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     givenName: Schema.optional(Schema.String),
     fullName: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface GlobalPermission {
   permission?: "PERMISSION_UNSPECIFIED" | "CREATE_COURSE" | (string & {});
 }
 
-export const GlobalPermission: Schema.Schema<GlobalPermission> =
+export const GlobalPermission: Schema.Codec<GlobalPermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.String),
   }).annotate({ identifier: "GlobalPermission" });
@@ -117,7 +117,7 @@ export interface UserProfile {
   photoUrl?: string;
 }
 
-export const UserProfile: Schema.Schema<UserProfile> =
+export const UserProfile: Schema.Codec<UserProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verifiedTeacher: Schema.optional(Schema.Boolean),
     name: Schema.optional(Name),
@@ -136,7 +136,7 @@ export interface Teacher {
   userId?: string;
 }
 
-export const Teacher: Schema.Schema<Teacher> =
+export const Teacher: Schema.Codec<Teacher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     courseId: Schema.optional(Schema.String),
     profile: Schema.optional(UserProfile),
@@ -148,7 +148,7 @@ export interface IndividualStudentsOptions {
   studentIds?: ReadonlyArray<string>;
 }
 
-export const IndividualStudentsOptions: Schema.Schema<IndividualStudentsOptions> =
+export const IndividualStudentsOptions: Schema.Codec<IndividualStudentsOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studentIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "IndividualStudentsOptions" });
@@ -165,7 +165,7 @@ export interface SharedDriveFile {
     | (string & {});
 }
 
-export const SharedDriveFile: Schema.Schema<SharedDriveFile> =
+export const SharedDriveFile: Schema.Codec<SharedDriveFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveFile: Schema.optional(DriveFile),
     shareMode: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export interface YouTubeVideo {
   thumbnailUrl?: string;
 }
 
-export const YouTubeVideo: Schema.Schema<YouTubeVideo> =
+export const YouTubeVideo: Schema.Codec<YouTubeVideo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     alternateLink: Schema.optional(Schema.String),
@@ -201,7 +201,7 @@ export interface Form {
   responseUrl?: string;
 }
 
-export const Form: Schema.Schema<Form> =
+export const Form: Schema.Codec<Form> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thumbnailUrl: Schema.optional(Schema.String),
     formUrl: Schema.optional(Schema.String),
@@ -218,7 +218,7 @@ export interface Link {
   title?: string;
 }
 
-export const Link: Schema.Schema<Link> =
+export const Link: Schema.Codec<Link> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thumbnailUrl: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -234,7 +234,7 @@ export interface GeminiGem {
   url?: string;
 }
 
-export const GeminiGem: Schema.Schema<GeminiGem> =
+export const GeminiGem: Schema.Codec<GeminiGem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -250,7 +250,7 @@ export interface NotebookLmNotebook {
   url?: string;
 }
 
-export const NotebookLmNotebook: Schema.Schema<NotebookLmNotebook> =
+export const NotebookLmNotebook: Schema.Codec<NotebookLmNotebook> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -272,7 +272,7 @@ export interface Material {
   notebook?: NotebookLmNotebook;
 }
 
-export const Material: Schema.Schema<Material> =
+export const Material: Schema.Codec<Material> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveFile: Schema.optional(SharedDriveFile),
     youtubeVideo: Schema.optional(YouTubeVideo),
@@ -322,7 +322,7 @@ export interface CourseWorkMaterial {
   scheduledTime?: string;
 }
 
-export const CourseWorkMaterial: Schema.Schema<CourseWorkMaterial> =
+export const CourseWorkMaterial: Schema.Codec<CourseWorkMaterial> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     topicId: Schema.optional(Schema.String),
@@ -347,7 +347,7 @@ export interface ListCourseWorkMaterialResponse {
   courseWorkMaterial?: ReadonlyArray<CourseWorkMaterial>;
 }
 
-export const ListCourseWorkMaterialResponse: Schema.Schema<ListCourseWorkMaterialResponse> =
+export const ListCourseWorkMaterialResponse: Schema.Codec<ListCourseWorkMaterialResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     courseWorkMaterial: Schema.optional(Schema.Array(CourseWorkMaterial)),
@@ -369,7 +369,7 @@ export interface StateHistory {
   actorUserId?: string;
 }
 
-export const StateHistory: Schema.Schema<StateHistory> =
+export const StateHistory: Schema.Codec<StateHistory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     stateTimestamp: Schema.optional(Schema.String),
@@ -378,7 +378,7 @@ export const StateHistory: Schema.Schema<StateHistory> =
 
 export interface TurnInStudentSubmissionRequest {}
 
-export const TurnInStudentSubmissionRequest: Schema.Schema<TurnInStudentSubmissionRequest> =
+export const TurnInStudentSubmissionRequest: Schema.Codec<TurnInStudentSubmissionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TurnInStudentSubmissionRequest",
   });
@@ -388,7 +388,7 @@ export interface MultipleChoiceQuestion {
   choices?: ReadonlyArray<string>;
 }
 
-export const MultipleChoiceQuestion: Schema.Schema<MultipleChoiceQuestion> =
+export const MultipleChoiceQuestion: Schema.Codec<MultipleChoiceQuestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     choices: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "MultipleChoiceQuestion" });
@@ -404,7 +404,7 @@ export interface GradeCategory {
   name?: string;
 }
 
-export const GradeCategory: Schema.Schema<GradeCategory> =
+export const GradeCategory: Schema.Codec<GradeCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     weight: Schema.optional(Schema.Number),
@@ -430,7 +430,7 @@ export interface GradebookSettings {
   gradeCategories?: ReadonlyArray<GradeCategory>;
 }
 
-export const GradebookSettings: Schema.Schema<GradebookSettings> =
+export const GradebookSettings: Schema.Codec<GradebookSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displaySetting: Schema.optional(Schema.String),
     calculationType: Schema.optional(Schema.String),
@@ -446,7 +446,7 @@ export interface DriveFolder {
   title?: string;
 }
 
-export const DriveFolder: Schema.Schema<DriveFolder> =
+export const DriveFolder: Schema.Codec<DriveFolder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     alternateLink: Schema.optional(Schema.String),
@@ -464,7 +464,7 @@ export interface CourseMaterial {
   youTubeVideo?: YouTubeVideo;
 }
 
-export const CourseMaterial: Schema.Schema<CourseMaterial> =
+export const CourseMaterial: Schema.Codec<CourseMaterial> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveFile: Schema.optional(DriveFile),
     form: Schema.optional(Form),
@@ -479,7 +479,7 @@ export interface CourseMaterialSet {
   materials?: ReadonlyArray<CourseMaterial>;
 }
 
-export const CourseMaterialSet: Schema.Schema<CourseMaterialSet> =
+export const CourseMaterialSet: Schema.Codec<CourseMaterialSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     materials: Schema.optional(Schema.Array(CourseMaterial)),
@@ -537,7 +537,7 @@ export interface Course {
     | (string & {});
 }
 
-export const Course: Schema.Schema<Course> =
+export const Course: Schema.Codec<Course> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     teacherGroupEmail: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
@@ -567,7 +567,7 @@ export interface ShortAnswerSubmission {
   answer?: string;
 }
 
-export const ShortAnswerSubmission: Schema.Schema<ShortAnswerSubmission> =
+export const ShortAnswerSubmission: Schema.Codec<ShortAnswerSubmission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answer: Schema.optional(Schema.String),
   }).annotate({ identifier: "ShortAnswerSubmission" });
@@ -577,7 +577,7 @@ export interface MultipleChoiceSubmission {
   answer?: string;
 }
 
-export const MultipleChoiceSubmission: Schema.Schema<MultipleChoiceSubmission> =
+export const MultipleChoiceSubmission: Schema.Codec<MultipleChoiceSubmission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answer: Schema.optional(Schema.String),
   }).annotate({ identifier: "MultipleChoiceSubmission" });
@@ -600,7 +600,7 @@ export interface GradeHistory {
   actorUserId?: string;
 }
 
-export const GradeHistory: Schema.Schema<GradeHistory> =
+export const GradeHistory: Schema.Codec<GradeHistory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gradeTimestamp: Schema.optional(Schema.String),
     gradeChangeType: Schema.optional(Schema.String),
@@ -616,7 +616,7 @@ export interface SubmissionHistory {
   gradeHistory?: GradeHistory;
 }
 
-export const SubmissionHistory: Schema.Schema<SubmissionHistory> =
+export const SubmissionHistory: Schema.Codec<SubmissionHistory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateHistory: Schema.optional(StateHistory),
     gradeHistory: Schema.optional(GradeHistory),
@@ -633,7 +633,7 @@ export interface Attachment {
   link?: Link;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
+export const Attachment: Schema.Codec<Attachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     youTubeVideo: Schema.optional(YouTubeVideo),
     driveFile: Schema.optional(DriveFile),
@@ -646,7 +646,7 @@ export interface AssignmentSubmission {
   attachments?: ReadonlyArray<Attachment>;
 }
 
-export const AssignmentSubmission: Schema.Schema<AssignmentSubmission> =
+export const AssignmentSubmission: Schema.Codec<AssignmentSubmission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachments: Schema.optional(Schema.Array(Attachment)),
   }).annotate({ identifier: "AssignmentSubmission" });
@@ -704,7 +704,7 @@ export interface StudentSubmission {
   assignmentSubmission?: AssignmentSubmission;
 }
 
-export const StudentSubmission: Schema.Schema<StudentSubmission> =
+export const StudentSubmission: Schema.Codec<StudentSubmission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shortAnswerSubmission: Schema.optional(ShortAnswerSubmission),
     courseWorkId: Schema.optional(Schema.String),
@@ -742,7 +742,7 @@ export interface Guardian {
   guardianId?: string;
 }
 
-export const Guardian: Schema.Schema<Guardian> =
+export const Guardian: Schema.Codec<Guardian> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guardianProfile: Schema.optional(UserProfile),
     invitedEmailAddress: Schema.optional(Schema.String),
@@ -757,7 +757,7 @@ export interface ListGuardiansResponse {
   nextPageToken?: string;
 }
 
-export const ListGuardiansResponse: Schema.Schema<ListGuardiansResponse> =
+export const ListGuardiansResponse: Schema.Codec<ListGuardiansResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guardians: Schema.optional(Schema.Array(Guardian)),
     nextPageToken: Schema.optional(Schema.String),
@@ -768,7 +768,7 @@ export interface EmbedUri {
   uri?: string;
 }
 
-export const EmbedUri: Schema.Schema<EmbedUri> =
+export const EmbedUri: Schema.Codec<EmbedUri> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "EmbedUri" });
@@ -782,7 +782,7 @@ export interface Classroom_Date {
   month?: number;
 }
 
-export const Classroom_Date: Schema.Schema<Classroom_Date> =
+export const Classroom_Date: Schema.Codec<Classroom_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -800,7 +800,7 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
@@ -835,7 +835,7 @@ export interface AddOnAttachment {
   id?: string;
 }
 
-export const AddOnAttachment: Schema.Schema<AddOnAttachment> =
+export const AddOnAttachment: Schema.Codec<AddOnAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemId: Schema.optional(Schema.String),
     studentViewUri: Schema.optional(EmbedUri),
@@ -858,7 +858,7 @@ export interface ListAddOnAttachmentsResponse {
   addOnAttachments?: ReadonlyArray<AddOnAttachment>;
 }
 
-export const ListAddOnAttachmentsResponse: Schema.Schema<ListAddOnAttachmentsResponse> =
+export const ListAddOnAttachmentsResponse: Schema.Codec<ListAddOnAttachmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     addOnAttachments: Schema.optional(Schema.Array(AddOnAttachment)),
@@ -871,7 +871,7 @@ export interface ListStudentSubmissionsResponse {
   nextPageToken?: string;
 }
 
-export const ListStudentSubmissionsResponse: Schema.Schema<ListStudentSubmissionsResponse> =
+export const ListStudentSubmissionsResponse: Schema.Codec<ListStudentSubmissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studentSubmissions: Schema.optional(Schema.Array(StudentSubmission)),
     nextPageToken: Schema.optional(Schema.String),
@@ -888,7 +888,7 @@ export interface GradingPeriod {
   title?: string;
 }
 
-export const GradingPeriod: Schema.Schema<GradingPeriod> =
+export const GradingPeriod: Schema.Codec<GradingPeriod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Classroom_Date),
     id: Schema.optional(Schema.String),
@@ -907,7 +907,7 @@ export interface Level {
   points?: number;
 }
 
-export const Level: Schema.Schema<Level> =
+export const Level: Schema.Codec<Level> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -922,7 +922,7 @@ export interface ModifyIndividualStudentsOptions {
   addStudentIds?: ReadonlyArray<string>;
 }
 
-export const ModifyIndividualStudentsOptions: Schema.Schema<ModifyIndividualStudentsOptions> =
+export const ModifyIndividualStudentsOptions: Schema.Codec<ModifyIndividualStudentsOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     removeStudentIds: Schema.optional(Schema.Array(Schema.String)),
     addStudentIds: Schema.optional(Schema.Array(Schema.String)),
@@ -939,7 +939,7 @@ export interface ModifyAnnouncementAssigneesRequest {
     | (string & {});
 }
 
-export const ModifyAnnouncementAssigneesRequest: Schema.Schema<ModifyAnnouncementAssigneesRequest> =
+export const ModifyAnnouncementAssigneesRequest: Schema.Codec<ModifyAnnouncementAssigneesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modifyIndividualStudentsOptions: Schema.optional(
       ModifyIndividualStudentsOptions,
@@ -958,7 +958,7 @@ export interface Student {
   studentWorkFolder?: DriveFolder;
 }
 
-export const Student: Schema.Schema<Student> =
+export const Student: Schema.Codec<Student> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     courseId: Schema.optional(Schema.String),
     profile: Schema.optional(UserProfile),
@@ -968,7 +968,7 @@ export const Student: Schema.Schema<Student> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -978,7 +978,7 @@ export interface CourseAlias {
   alias?: string;
 }
 
-export const CourseAlias: Schema.Schema<CourseAlias> =
+export const CourseAlias: Schema.Codec<CourseAlias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alias: Schema.optional(Schema.String),
   }).annotate({ identifier: "CourseAlias" });
@@ -990,7 +990,7 @@ export interface ListCourseAliasesResponse {
   aliases?: ReadonlyArray<CourseAlias>;
 }
 
-export const ListCourseAliasesResponse: Schema.Schema<ListCourseAliasesResponse> =
+export const ListCourseAliasesResponse: Schema.Codec<ListCourseAliasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     aliases: Schema.optional(Schema.Array(CourseAlias)),
@@ -1016,7 +1016,7 @@ export interface AddOnAttachmentStudentSubmission {
   id?: string;
 }
 
-export const AddOnAttachmentStudentSubmission: Schema.Schema<AddOnAttachmentStudentSubmission> =
+export const AddOnAttachmentStudentSubmission: Schema.Codec<AddOnAttachmentStudentSubmission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
     postSubmissionState: Schema.optional(Schema.String),
@@ -1030,7 +1030,7 @@ export interface ModifyAttachmentsRequest {
   addAttachments?: ReadonlyArray<Attachment>;
 }
 
-export const ModifyAttachmentsRequest: Schema.Schema<ModifyAttachmentsRequest> =
+export const ModifyAttachmentsRequest: Schema.Codec<ModifyAttachmentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addAttachments: Schema.optional(Schema.Array(Attachment)),
   }).annotate({ identifier: "ModifyAttachmentsRequest" });
@@ -1042,7 +1042,7 @@ export interface ListStudentsResponse {
   students?: ReadonlyArray<Student>;
 }
 
-export const ListStudentsResponse: Schema.Schema<ListStudentsResponse> =
+export const ListStudentsResponse: Schema.Codec<ListStudentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     students: Schema.optional(Schema.Array(Student)),
@@ -1053,7 +1053,7 @@ export interface StudentContext {
   submissionId?: string;
 }
 
-export const StudentContext: Schema.Schema<StudentContext> =
+export const StudentContext: Schema.Codec<StudentContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     submissionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "StudentContext" });
@@ -1065,7 +1065,7 @@ export interface ListCoursesResponse {
   courses?: ReadonlyArray<Course>;
 }
 
-export const ListCoursesResponse: Schema.Schema<ListCoursesResponse> =
+export const ListCoursesResponse: Schema.Codec<ListCoursesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     courses: Schema.optional(Schema.Array(Course)),
@@ -1080,7 +1080,7 @@ export interface StudentGroup {
   id?: string;
 }
 
-export const StudentGroup: Schema.Schema<StudentGroup> =
+export const StudentGroup: Schema.Codec<StudentGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     courseId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1104,7 +1104,7 @@ export interface GuardianInvitation {
   creationTime?: string;
 }
 
-export const GuardianInvitation: Schema.Schema<GuardianInvitation> =
+export const GuardianInvitation: Schema.Codec<GuardianInvitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invitedEmailAddress: Schema.optional(Schema.String),
     invitationId: Schema.optional(Schema.String),
@@ -1149,7 +1149,7 @@ export interface Announcement {
   creationTime?: string;
 }
 
-export const Announcement: Schema.Schema<Announcement> =
+export const Announcement: Schema.Codec<Announcement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     materials: Schema.optional(Schema.Array(Material)),
     courseId: Schema.optional(Schema.String),
@@ -1170,7 +1170,7 @@ export interface CourseWorkChangesInfo {
   courseId?: string;
 }
 
-export const CourseWorkChangesInfo: Schema.Schema<CourseWorkChangesInfo> =
+export const CourseWorkChangesInfo: Schema.Codec<CourseWorkChangesInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     courseId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CourseWorkChangesInfo" });
@@ -1180,7 +1180,7 @@ export interface CourseRosterChangesInfo {
   courseId?: string;
 }
 
-export const CourseRosterChangesInfo: Schema.Schema<CourseRosterChangesInfo> =
+export const CourseRosterChangesInfo: Schema.Codec<CourseRosterChangesInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     courseId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CourseRosterChangesInfo" });
@@ -1199,7 +1199,7 @@ export interface Feed {
     | (string & {});
 }
 
-export const Feed: Schema.Schema<Feed> =
+export const Feed: Schema.Codec<Feed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     courseWorkChangesInfo: Schema.optional(CourseWorkChangesInfo),
     courseRosterChangesInfo: Schema.optional(CourseRosterChangesInfo),
@@ -1211,7 +1211,7 @@ export interface Assignment {
   studentWorkFolder?: DriveFolder;
 }
 
-export const Assignment: Schema.Schema<Assignment> =
+export const Assignment: Schema.Codec<Assignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studentWorkFolder: Schema.optional(DriveFolder),
   }).annotate({ identifier: "Assignment" });
@@ -1285,7 +1285,7 @@ export interface CourseWork {
   multipleChoiceQuestion?: MultipleChoiceQuestion;
 }
 
-export const CourseWork: Schema.Schema<CourseWork> =
+export const CourseWork: Schema.Codec<CourseWork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alternateLink: Schema.optional(Schema.String),
     assignment: Schema.optional(Assignment),
@@ -1320,7 +1320,7 @@ export interface ListCourseWorkResponse {
   courseWork?: ReadonlyArray<CourseWork>;
 }
 
-export const ListCourseWorkResponse: Schema.Schema<ListCourseWorkResponse> =
+export const ListCourseWorkResponse: Schema.Codec<ListCourseWorkResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     courseWork: Schema.optional(Schema.Array(CourseWork)),
@@ -1328,14 +1328,14 @@ export const ListCourseWorkResponse: Schema.Schema<ListCourseWorkResponse> =
 
 export interface TeacherContext {}
 
-export const TeacherContext: Schema.Schema<TeacherContext> =
+export const TeacherContext: Schema.Codec<TeacherContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TeacherContext",
   });
 
 export interface ReclaimStudentSubmissionRequest {}
 
-export const ReclaimStudentSubmissionRequest: Schema.Schema<ReclaimStudentSubmissionRequest> =
+export const ReclaimStudentSubmissionRequest: Schema.Codec<ReclaimStudentSubmissionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReclaimStudentSubmissionRequest",
   });
@@ -1355,7 +1355,7 @@ export interface AddOnContext {
   studentContext?: StudentContext;
 }
 
-export const AddOnContext: Schema.Schema<AddOnContext> =
+export const AddOnContext: Schema.Codec<AddOnContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemId: Schema.optional(Schema.String),
     postId: Schema.optional(Schema.String),
@@ -1376,7 +1376,7 @@ export interface Criterion {
   description?: string;
 }
 
-export const Criterion: Schema.Schema<Criterion> =
+export const Criterion: Schema.Codec<Criterion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     levels: Schema.optional(Schema.Array(Level)),
     title: Schema.optional(Schema.String),
@@ -1401,7 +1401,7 @@ export interface Rubric {
   sourceSpreadsheetId?: string;
 }
 
-export const Rubric: Schema.Schema<Rubric> =
+export const Rubric: Schema.Codec<Rubric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1419,7 +1419,7 @@ export interface ListRubricsResponse {
   nextPageToken?: string;
 }
 
-export const ListRubricsResponse: Schema.Schema<ListRubricsResponse> =
+export const ListRubricsResponse: Schema.Codec<ListRubricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rubrics: Schema.optional(Schema.Array(Rubric)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1427,7 +1427,7 @@ export const ListRubricsResponse: Schema.Schema<ListRubricsResponse> =
 
 export interface ReturnStudentSubmissionRequest {}
 
-export const ReturnStudentSubmissionRequest: Schema.Schema<ReturnStudentSubmissionRequest> =
+export const ReturnStudentSubmissionRequest: Schema.Codec<ReturnStudentSubmissionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReturnStudentSubmissionRequest",
   });
@@ -1443,7 +1443,7 @@ export interface Topic {
   courseId?: string;
 }
 
-export const Topic: Schema.Schema<Topic> =
+export const Topic: Schema.Codec<Topic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topicId: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1458,7 +1458,7 @@ export interface ListTopicResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicResponse: Schema.Schema<ListTopicResponse> =
+export const ListTopicResponse: Schema.Codec<ListTopicResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.Array(Topic)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1475,7 +1475,7 @@ export interface ModifyCourseWorkAssigneesRequest {
     | (string & {});
 }
 
-export const ModifyCourseWorkAssigneesRequest: Schema.Schema<ModifyCourseWorkAssigneesRequest> =
+export const ModifyCourseWorkAssigneesRequest: Schema.Codec<ModifyCourseWorkAssigneesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modifyIndividualStudentsOptions: Schema.optional(
       ModifyIndividualStudentsOptions,
@@ -1488,7 +1488,7 @@ export interface CloudPubsubTopic {
   topicName?: string;
 }
 
-export const CloudPubsubTopic: Schema.Schema<CloudPubsubTopic> =
+export const CloudPubsubTopic: Schema.Codec<CloudPubsubTopic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topicName: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudPubsubTopic" });
@@ -1504,7 +1504,7 @@ export interface Registration {
   registrationId?: string;
 }
 
-export const Registration: Schema.Schema<Registration> =
+export const Registration: Schema.Codec<Registration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expiryTime: Schema.optional(Schema.String),
     feed: Schema.optional(Feed),
@@ -1519,7 +1519,7 @@ export interface GradingPeriodSettings {
   applyToExistingCoursework?: boolean;
 }
 
-export const GradingPeriodSettings: Schema.Schema<GradingPeriodSettings> =
+export const GradingPeriodSettings: Schema.Codec<GradingPeriodSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gradingPeriods: Schema.optional(Schema.Array(GradingPeriod)),
     applyToExistingCoursework: Schema.optional(Schema.Boolean),
@@ -1541,7 +1541,7 @@ export interface Invitation {
   userId?: string;
 }
 
-export const Invitation: Schema.Schema<Invitation> =
+export const Invitation: Schema.Codec<Invitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1556,7 +1556,7 @@ export interface ListInvitationsResponse {
   nextPageToken?: string;
 }
 
-export const ListInvitationsResponse: Schema.Schema<ListInvitationsResponse> =
+export const ListInvitationsResponse: Schema.Codec<ListInvitationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invitations: Schema.optional(Schema.Array(Invitation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1569,7 +1569,7 @@ export interface ListTeachersResponse {
   nextPageToken?: string;
 }
 
-export const ListTeachersResponse: Schema.Schema<ListTeachersResponse> =
+export const ListTeachersResponse: Schema.Codec<ListTeachersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     teachers: Schema.optional(Schema.Array(Teacher)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1582,7 +1582,7 @@ export interface ListStudentGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListStudentGroupsResponse: Schema.Schema<ListStudentGroupsResponse> =
+export const ListStudentGroupsResponse: Schema.Codec<ListStudentGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studentGroups: Schema.optional(Schema.Array(StudentGroup)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1595,7 +1595,7 @@ export interface ListGuardianInvitationsResponse {
   nextPageToken?: string;
 }
 
-export const ListGuardianInvitationsResponse: Schema.Schema<ListGuardianInvitationsResponse> =
+export const ListGuardianInvitationsResponse: Schema.Codec<ListGuardianInvitationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     guardianInvitations: Schema.optional(Schema.Array(GuardianInvitation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1608,7 +1608,7 @@ export interface ListAnnouncementsResponse {
   nextPageToken?: string;
 }
 
-export const ListAnnouncementsResponse: Schema.Schema<ListAnnouncementsResponse> =
+export const ListAnnouncementsResponse: Schema.Codec<ListAnnouncementsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     announcements: Schema.optional(Schema.Array(Announcement)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1623,7 +1623,7 @@ export interface StudentGroupMember {
   studentGroupId?: string;
 }
 
-export const StudentGroupMember: Schema.Schema<StudentGroupMember> =
+export const StudentGroupMember: Schema.Codec<StudentGroupMember> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     courseId: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -1637,7 +1637,7 @@ export interface ListStudentGroupMembersResponse {
   nextPageToken?: string;
 }
 
-export const ListStudentGroupMembersResponse: Schema.Schema<ListStudentGroupMembersResponse> =
+export const ListStudentGroupMembersResponse: Schema.Codec<ListStudentGroupMembersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studentGroupMembers: Schema.optional(Schema.Array(StudentGroupMember)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1707,7 +1707,7 @@ export const GetCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/courses/{id}" }),
   svc,
-) as unknown as Schema.Schema<GetCoursesRequest>;
+) as unknown as Schema.Codec<GetCoursesRequest>;
 
 export type GetCoursesResponse = Course;
 export const GetCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Course;
@@ -1740,7 +1740,7 @@ export const GetGradingPeriodSettingsCoursesRequest =
       path: "v1/courses/{courseId}/gradingPeriodSettings",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetGradingPeriodSettingsCoursesRequest>;
+  ) as unknown as Schema.Codec<GetGradingPeriodSettingsCoursesRequest>;
 
 export type GetGradingPeriodSettingsCoursesResponse = GradingPeriodSettings;
 export const GetGradingPeriodSettingsCoursesResponse =
@@ -1773,7 +1773,7 @@ export const CreateCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/courses", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateCoursesRequest>;
+) as unknown as Schema.Codec<CreateCoursesRequest>;
 
 export type CreateCoursesResponse = Course;
 export const CreateCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Course;
@@ -1810,7 +1810,7 @@ export const UpdateCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "v1/courses/{id}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateCoursesRequest>;
+) as unknown as Schema.Codec<UpdateCoursesRequest>;
 
 export type UpdateCoursesResponse = Course;
 export const UpdateCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Course;
@@ -1850,7 +1850,7 @@ export const PatchCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1/courses/{id}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchCoursesRequest>;
+) as unknown as Schema.Codec<PatchCoursesRequest>;
 
 export type PatchCoursesResponse = Course;
 export const PatchCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Course;
@@ -1895,7 +1895,7 @@ export const UpdateGradingPeriodSettingsCoursesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGradingPeriodSettingsCoursesRequest>;
+  ) as unknown as Schema.Codec<UpdateGradingPeriodSettingsCoursesRequest>;
 
 export type UpdateGradingPeriodSettingsCoursesResponse = GradingPeriodSettings;
 export const UpdateGradingPeriodSettingsCoursesResponse =
@@ -1930,7 +1930,7 @@ export const DeleteCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/courses/{id}" }),
   svc,
-) as unknown as Schema.Schema<DeleteCoursesRequest>;
+) as unknown as Schema.Codec<DeleteCoursesRequest>;
 
 export type DeleteCoursesResponse = Empty;
 export const DeleteCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1985,7 +1985,7 @@ export const ListCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/courses" }),
   svc,
-) as unknown as Schema.Schema<ListCoursesRequest>;
+) as unknown as Schema.Codec<ListCoursesRequest>;
 
 export type ListCoursesResponse_Op = ListCoursesResponse;
 export const ListCoursesResponse_Op =
@@ -2026,7 +2026,7 @@ export const ListCoursesAliasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/aliases" }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesAliasesRequest>;
+  ) as unknown as Schema.Codec<ListCoursesAliasesRequest>;
 
 export type ListCoursesAliasesResponse = ListCourseAliasesResponse;
 export const ListCoursesAliasesResponse =
@@ -2068,7 +2068,7 @@ export const CreateCoursesAliasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesAliasesRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesAliasesRequest>;
 
 export type CreateCoursesAliasesResponse = CourseAlias;
 export const CreateCoursesAliasesResponse =
@@ -2107,7 +2107,7 @@ export const DeleteCoursesAliasesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/courses/{courseId}/aliases/{alias}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesAliasesRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesAliasesRequest>;
 
 export type DeleteCoursesAliasesResponse = Empty;
 export const DeleteCoursesAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2149,7 +2149,7 @@ export const CreateCoursesCourseWorkMaterialsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesCourseWorkMaterialsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesCourseWorkMaterialsRequest>;
 
 export type CreateCoursesCourseWorkMaterialsResponse = CourseWorkMaterial;
 export const CreateCoursesCourseWorkMaterialsResponse =
@@ -2191,7 +2191,7 @@ export const GetCoursesCourseWorkMaterialsRequest =
       path: "v1/courses/{courseId}/courseWorkMaterials/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesCourseWorkMaterialsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesCourseWorkMaterialsRequest>;
 
 export type GetCoursesCourseWorkMaterialsResponse = CourseWorkMaterial;
 export const GetCoursesCourseWorkMaterialsResponse =
@@ -2257,7 +2257,7 @@ export const ListCoursesCourseWorkMaterialsRequest =
       path: "v1/courses/{courseId}/courseWorkMaterials",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesCourseWorkMaterialsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesCourseWorkMaterialsRequest>;
 
 export type ListCoursesCourseWorkMaterialsResponse =
   ListCourseWorkMaterialResponse;
@@ -2302,7 +2302,7 @@ export const DeleteCoursesCourseWorkMaterialsRequest =
       path: "v1/courses/{courseId}/courseWorkMaterials/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesCourseWorkMaterialsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesCourseWorkMaterialsRequest>;
 
 export type DeleteCoursesCourseWorkMaterialsResponse = Empty;
 export const DeleteCoursesCourseWorkMaterialsResponse =
@@ -2351,7 +2351,7 @@ export const PatchCoursesCourseWorkMaterialsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesCourseWorkMaterialsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesCourseWorkMaterialsRequest>;
 
 export type PatchCoursesCourseWorkMaterialsResponse = CourseWorkMaterial;
 export const PatchCoursesCourseWorkMaterialsResponse =
@@ -2404,7 +2404,7 @@ export const GetAddOnContextCoursesCourseWorkMaterialsRequest =
       path: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnContext",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAddOnContextCoursesCourseWorkMaterialsRequest>;
+  ) as unknown as Schema.Codec<GetAddOnContextCoursesCourseWorkMaterialsRequest>;
 
 export type GetAddOnContextCoursesCourseWorkMaterialsResponse = AddOnContext;
 export const GetAddOnContextCoursesCourseWorkMaterialsResponse =
@@ -2457,7 +2457,7 @@ export const PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export type PatchCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   AddOnAttachment;
@@ -2506,7 +2506,7 @@ export const DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export type DeleteCoursesCourseWorkMaterialsAddOnAttachmentsResponse = Empty;
 export const DeleteCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
@@ -2557,7 +2557,7 @@ export const ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export type ListCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   ListAddOnAttachmentsResponse;
@@ -2608,7 +2608,7 @@ export const GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export type GetCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   AddOnAttachment;
@@ -2659,7 +2659,7 @@ export const CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export type CreateCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   AddOnAttachment;
@@ -2699,7 +2699,7 @@ export const GetCoursesStudentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/students/{userId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesStudentsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesStudentsRequest>;
 
 export type GetCoursesStudentsResponse = Student;
 export const GetCoursesStudentsResponse = /*@__PURE__*/ /*#__PURE__*/ Student;
@@ -2735,7 +2735,7 @@ export const ListCoursesStudentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/students" }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesStudentsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesStudentsRequest>;
 
 export type ListCoursesStudentsResponse = ListStudentsResponse;
 export const ListCoursesStudentsResponse =
@@ -2782,7 +2782,7 @@ export const CreateCoursesStudentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesStudentsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesStudentsRequest>;
 
 export type CreateCoursesStudentsResponse = Student;
 export const CreateCoursesStudentsResponse =
@@ -2824,7 +2824,7 @@ export const DeleteCoursesStudentsRequest =
       path: "v1/courses/{courseId}/students/{userId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesStudentsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesStudentsRequest>;
 
 export type DeleteCoursesStudentsResponse = Empty;
 export const DeleteCoursesStudentsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2862,7 +2862,7 @@ export const GetCoursesAnnouncementsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/announcements/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesAnnouncementsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesAnnouncementsRequest>;
 
 export type GetCoursesAnnouncementsResponse = Announcement;
 export const GetCoursesAnnouncementsResponse =
@@ -2905,7 +2905,7 @@ export const ModifyAssigneesCoursesAnnouncementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyAssigneesCoursesAnnouncementsRequest>;
+  ) as unknown as Schema.Codec<ModifyAssigneesCoursesAnnouncementsRequest>;
 
 export type ModifyAssigneesCoursesAnnouncementsResponse = Announcement;
 export const ModifyAssigneesCoursesAnnouncementsResponse =
@@ -2948,7 +2948,7 @@ export const CreateCoursesAnnouncementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesAnnouncementsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesAnnouncementsRequest>;
 
 export type CreateCoursesAnnouncementsResponse = Announcement;
 export const CreateCoursesAnnouncementsResponse =
@@ -2997,7 +2997,7 @@ export const PatchCoursesAnnouncementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesAnnouncementsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesAnnouncementsRequest>;
 
 export type PatchCoursesAnnouncementsResponse = Announcement;
 export const PatchCoursesAnnouncementsResponse =
@@ -3050,7 +3050,7 @@ export const GetAddOnContextCoursesAnnouncementsRequest =
       path: "v1/courses/{courseId}/announcements/{itemId}/addOnContext",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAddOnContextCoursesAnnouncementsRequest>;
+  ) as unknown as Schema.Codec<GetAddOnContextCoursesAnnouncementsRequest>;
 
 export type GetAddOnContextCoursesAnnouncementsResponse = AddOnContext;
 export const GetAddOnContextCoursesAnnouncementsResponse =
@@ -3103,7 +3103,7 @@ export const ListCoursesAnnouncementsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/announcements" }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesAnnouncementsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesAnnouncementsRequest>;
 
 export type ListCoursesAnnouncementsResponse = ListAnnouncementsResponse;
 export const ListCoursesAnnouncementsResponse =
@@ -3147,7 +3147,7 @@ export const DeleteCoursesAnnouncementsRequest =
       path: "v1/courses/{courseId}/announcements/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesAnnouncementsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesAnnouncementsRequest>;
 
 export type DeleteCoursesAnnouncementsResponse = Empty;
 export const DeleteCoursesAnnouncementsResponse =
@@ -3199,7 +3199,7 @@ export const CreateCoursesAnnouncementsAddOnAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesAnnouncementsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export type CreateCoursesAnnouncementsAddOnAttachmentsResponse =
   AddOnAttachment;
@@ -3248,7 +3248,7 @@ export const GetCoursesAnnouncementsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesAnnouncementsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export type GetCoursesAnnouncementsAddOnAttachmentsResponse = AddOnAttachment;
 export const GetCoursesAnnouncementsAddOnAttachmentsResponse =
@@ -3297,7 +3297,7 @@ export const ListCoursesAnnouncementsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesAnnouncementsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export type ListCoursesAnnouncementsAddOnAttachmentsResponse =
   ListAddOnAttachmentsResponse;
@@ -3348,7 +3348,7 @@ export const DeleteCoursesAnnouncementsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesAnnouncementsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export type DeleteCoursesAnnouncementsAddOnAttachmentsResponse = Empty;
 export const DeleteCoursesAnnouncementsAddOnAttachmentsResponse =
@@ -3403,7 +3403,7 @@ export const PatchCoursesAnnouncementsAddOnAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesAnnouncementsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export type PatchCoursesAnnouncementsAddOnAttachmentsResponse = AddOnAttachment;
 export const PatchCoursesAnnouncementsAddOnAttachmentsResponse =
@@ -3456,7 +3456,7 @@ export const GetAddOnContextCoursesPostsRequest =
       path: "v1/courses/{courseId}/posts/{postId}/addOnContext",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAddOnContextCoursesPostsRequest>;
+  ) as unknown as Schema.Codec<GetAddOnContextCoursesPostsRequest>;
 
 export type GetAddOnContextCoursesPostsResponse = AddOnContext;
 export const GetAddOnContextCoursesPostsResponse =
@@ -3506,7 +3506,7 @@ export const CreateCoursesPostsAddOnAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesPostsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesPostsAddOnAttachmentsRequest>;
 
 export type CreateCoursesPostsAddOnAttachmentsResponse = AddOnAttachment;
 export const CreateCoursesPostsAddOnAttachmentsResponse =
@@ -3554,7 +3554,7 @@ export const GetCoursesPostsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesPostsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesPostsAddOnAttachmentsRequest>;
 
 export type GetCoursesPostsAddOnAttachmentsResponse = AddOnAttachment;
 export const GetCoursesPostsAddOnAttachmentsResponse =
@@ -3603,7 +3603,7 @@ export const ListCoursesPostsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/posts/{postId}/addOnAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesPostsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesPostsAddOnAttachmentsRequest>;
 
 export type ListCoursesPostsAddOnAttachmentsResponse =
   ListAddOnAttachmentsResponse;
@@ -3654,7 +3654,7 @@ export const DeleteCoursesPostsAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesPostsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesPostsAddOnAttachmentsRequest>;
 
 export type DeleteCoursesPostsAddOnAttachmentsResponse = Empty;
 export const DeleteCoursesPostsAddOnAttachmentsResponse =
@@ -3709,7 +3709,7 @@ export const PatchCoursesPostsAddOnAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesPostsAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesPostsAddOnAttachmentsRequest>;
 
 export type PatchCoursesPostsAddOnAttachmentsResponse = AddOnAttachment;
 export const PatchCoursesPostsAddOnAttachmentsResponse =
@@ -3767,7 +3767,7 @@ export const PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
 
 export type PatchCoursesPostsAddOnAttachmentsStudentSubmissionsResponse =
   AddOnAttachmentStudentSubmission;
@@ -3819,7 +3819,7 @@ export const GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest =
       path: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
 
 export type GetCoursesPostsAddOnAttachmentsStudentSubmissionsResponse =
   AddOnAttachmentStudentSubmission;
@@ -3861,7 +3861,7 @@ export const CreateCoursesTopicsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesTopicsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesTopicsRequest>;
 
 export type CreateCoursesTopicsResponse = Topic;
 export const CreateCoursesTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
@@ -3899,7 +3899,7 @@ export const GetCoursesTopicsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/topics/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesTopicsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesTopicsRequest>;
 
 export type GetCoursesTopicsResponse = Topic;
 export const GetCoursesTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
@@ -3932,7 +3932,7 @@ export const DeleteCoursesTopicsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/courses/{courseId}/topics/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesTopicsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesTopicsRequest>;
 
 export type DeleteCoursesTopicsResponse = Empty;
 export const DeleteCoursesTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3973,7 +3973,7 @@ export const ListCoursesTopicsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/topics" }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesTopicsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesTopicsRequest>;
 
 export type ListCoursesTopicsResponse = ListTopicResponse;
 export const ListCoursesTopicsResponse =
@@ -4021,7 +4021,7 @@ export const PatchCoursesTopicsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesTopicsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesTopicsRequest>;
 
 export type PatchCoursesTopicsResponse = Topic;
 export const PatchCoursesTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
@@ -4063,7 +4063,7 @@ export const CreateCoursesStudentGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesStudentGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesStudentGroupsRequest>;
 
 export type CreateCoursesStudentGroupsResponse = StudentGroup;
 export const CreateCoursesStudentGroupsResponse =
@@ -4105,7 +4105,7 @@ export const DeleteCoursesStudentGroupsRequest =
       path: "v1/courses/{courseId}/studentGroups/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesStudentGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesStudentGroupsRequest>;
 
 export type DeleteCoursesStudentGroupsResponse = Empty;
 export const DeleteCoursesStudentGroupsResponse =
@@ -4147,7 +4147,7 @@ export const ListCoursesStudentGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/studentGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesStudentGroupsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesStudentGroupsRequest>;
 
 export type ListCoursesStudentGroupsResponse = ListStudentGroupsResponse;
 export const ListCoursesStudentGroupsResponse =
@@ -4198,7 +4198,7 @@ export const PatchCoursesStudentGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesStudentGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesStudentGroupsRequest>;
 
 export type PatchCoursesStudentGroupsResponse = StudentGroup;
 export const PatchCoursesStudentGroupsResponse =
@@ -4244,7 +4244,7 @@ export const CreateCoursesStudentGroupsStudentGroupMembersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesStudentGroupsStudentGroupMembersRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesStudentGroupsStudentGroupMembersRequest>;
 
 export type CreateCoursesStudentGroupsStudentGroupMembersResponse =
   StudentGroupMember;
@@ -4290,7 +4290,7 @@ export const DeleteCoursesStudentGroupsStudentGroupMembersRequest =
       path: "v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers/{userId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesStudentGroupsStudentGroupMembersRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesStudentGroupsStudentGroupMembersRequest>;
 
 export type DeleteCoursesStudentGroupsStudentGroupMembersResponse = Empty;
 export const DeleteCoursesStudentGroupsStudentGroupMembersResponse =
@@ -4338,7 +4338,7 @@ export const ListCoursesStudentGroupsStudentGroupMembersRequest =
       path: "v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesStudentGroupsStudentGroupMembersRequest>;
+  ) as unknown as Schema.Codec<ListCoursesStudentGroupsStudentGroupMembersRequest>;
 
 export type ListCoursesStudentGroupsStudentGroupMembersResponse =
   ListStudentGroupMembersResponse;
@@ -4390,7 +4390,7 @@ export const PatchCoursesCourseWorkRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesCourseWorkRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesCourseWorkRequest>;
 
 export type PatchCoursesCourseWorkResponse = CourseWork;
 export const PatchCoursesCourseWorkResponse =
@@ -4443,7 +4443,7 @@ export const GetAddOnContextCoursesCourseWorkRequest =
       path: "v1/courses/{courseId}/courseWork/{itemId}/addOnContext",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAddOnContextCoursesCourseWorkRequest>;
+  ) as unknown as Schema.Codec<GetAddOnContextCoursesCourseWorkRequest>;
 
 export type GetAddOnContextCoursesCourseWorkResponse = AddOnContext;
 export const GetAddOnContextCoursesCourseWorkResponse =
@@ -4493,7 +4493,7 @@ export const UpdateRubricCoursesCourseWorkRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRubricCoursesCourseWorkRequest>;
+  ) as unknown as Schema.Codec<UpdateRubricCoursesCourseWorkRequest>;
 
 export type UpdateRubricCoursesCourseWorkResponse = Rubric;
 export const UpdateRubricCoursesCourseWorkResponse =
@@ -4548,7 +4548,7 @@ export const ListCoursesCourseWorkRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/courseWork" }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesCourseWorkRequest>;
+  ) as unknown as Schema.Codec<ListCoursesCourseWorkRequest>;
 
 export type ListCoursesCourseWorkResponse = ListCourseWorkResponse;
 export const ListCoursesCourseWorkResponse =
@@ -4586,7 +4586,7 @@ export const DeleteCoursesCourseWorkRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/courses/{courseId}/courseWork/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesCourseWorkRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesCourseWorkRequest>;
 
 export type DeleteCoursesCourseWorkResponse = Empty;
 export const DeleteCoursesCourseWorkResponse =
@@ -4625,7 +4625,7 @@ export const GetCoursesCourseWorkRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/courseWork/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesCourseWorkRequest>;
+  ) as unknown as Schema.Codec<GetCoursesCourseWorkRequest>;
 
 export type GetCoursesCourseWorkResponse = CourseWork;
 export const GetCoursesCourseWorkResponse =
@@ -4666,7 +4666,7 @@ export const ModifyAssigneesCoursesCourseWorkRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyAssigneesCoursesCourseWorkRequest>;
+  ) as unknown as Schema.Codec<ModifyAssigneesCoursesCourseWorkRequest>;
 
 export type ModifyAssigneesCoursesCourseWorkResponse = CourseWork;
 export const ModifyAssigneesCoursesCourseWorkResponse =
@@ -4709,7 +4709,7 @@ export const CreateCoursesCourseWorkRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesCourseWorkRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesCourseWorkRequest>;
 
 export type CreateCoursesCourseWorkResponse = CourseWork;
 export const CreateCoursesCourseWorkResponse =
@@ -4761,7 +4761,7 @@ export const CreateCoursesCourseWorkAddOnAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesCourseWorkAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export type CreateCoursesCourseWorkAddOnAttachmentsResponse = AddOnAttachment;
 export const CreateCoursesCourseWorkAddOnAttachmentsResponse =
@@ -4809,7 +4809,7 @@ export const GetCoursesCourseWorkAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesCourseWorkAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export type GetCoursesCourseWorkAddOnAttachmentsResponse = AddOnAttachment;
 export const GetCoursesCourseWorkAddOnAttachmentsResponse =
@@ -4855,7 +4855,7 @@ export const DeleteCoursesCourseWorkAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesCourseWorkAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export type DeleteCoursesCourseWorkAddOnAttachmentsResponse = Empty;
 export const DeleteCoursesCourseWorkAddOnAttachmentsResponse =
@@ -4906,7 +4906,7 @@ export const ListCoursesCourseWorkAddOnAttachmentsRequest =
       path: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesCourseWorkAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export type ListCoursesCourseWorkAddOnAttachmentsResponse =
   ListAddOnAttachmentsResponse;
@@ -4964,7 +4964,7 @@ export const PatchCoursesCourseWorkAddOnAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesCourseWorkAddOnAttachmentsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export type PatchCoursesCourseWorkAddOnAttachmentsResponse = AddOnAttachment;
 export const PatchCoursesCourseWorkAddOnAttachmentsResponse =
@@ -5022,7 +5022,7 @@ export const PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
 
 export type PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsResponse =
   AddOnAttachmentStudentSubmission;
@@ -5074,7 +5074,7 @@ export const GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest =
       path: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
 
 export type GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsResponse =
   AddOnAttachmentStudentSubmission;
@@ -5118,7 +5118,7 @@ export const GetCoursesCourseWorkRubricsRequest =
       path: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesCourseWorkRubricsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesCourseWorkRubricsRequest>;
 
 export type GetCoursesCourseWorkRubricsResponse = Rubric;
 export const GetCoursesCourseWorkRubricsResponse =
@@ -5162,7 +5162,7 @@ export const CreateCoursesCourseWorkRubricsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesCourseWorkRubricsRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesCourseWorkRubricsRequest>;
 
 export type CreateCoursesCourseWorkRubricsResponse = Rubric;
 export const CreateCoursesCourseWorkRubricsResponse =
@@ -5214,7 +5214,7 @@ export const PatchCoursesCourseWorkRubricsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesCourseWorkRubricsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesCourseWorkRubricsRequest>;
 
 export type PatchCoursesCourseWorkRubricsResponse = Rubric;
 export const PatchCoursesCourseWorkRubricsResponse =
@@ -5262,7 +5262,7 @@ export const ListCoursesCourseWorkRubricsRequest =
       path: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesCourseWorkRubricsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesCourseWorkRubricsRequest>;
 
 export type ListCoursesCourseWorkRubricsResponse = ListRubricsResponse;
 export const ListCoursesCourseWorkRubricsResponse =
@@ -5309,7 +5309,7 @@ export const DeleteCoursesCourseWorkRubricsRequest =
       path: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesCourseWorkRubricsRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesCourseWorkRubricsRequest>;
 
 export type DeleteCoursesCourseWorkRubricsResponse = Empty;
 export const DeleteCoursesCourseWorkRubricsResponse =
@@ -5358,7 +5358,7 @@ export const ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type ModifyAttachmentsCoursesCourseWorkStudentSubmissionsResponse =
   StudentSubmission;
@@ -5404,7 +5404,7 @@ export const GetCoursesCourseWorkStudentSubmissionsRequest =
       path: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesCourseWorkStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<GetCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type GetCoursesCourseWorkStudentSubmissionsResponse = StudentSubmission;
 export const GetCoursesCourseWorkStudentSubmissionsResponse =
@@ -5451,7 +5451,7 @@ export const ReclaimCoursesCourseWorkStudentSubmissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReclaimCoursesCourseWorkStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<ReclaimCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type ReclaimCoursesCourseWorkStudentSubmissionsResponse = Empty;
 export const ReclaimCoursesCourseWorkStudentSubmissionsResponse =
@@ -5500,7 +5500,7 @@ export const ReturnCoursesCourseWorkStudentSubmissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReturnCoursesCourseWorkStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<ReturnCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type ReturnCoursesCourseWorkStudentSubmissionsResponse = Empty;
 export const ReturnCoursesCourseWorkStudentSubmissionsResponse =
@@ -5552,7 +5552,7 @@ export const PatchCoursesCourseWorkStudentSubmissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCoursesCourseWorkStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<PatchCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type PatchCoursesCourseWorkStudentSubmissionsResponse =
   StudentSubmission;
@@ -5602,7 +5602,7 @@ export const TurnInCoursesCourseWorkStudentSubmissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TurnInCoursesCourseWorkStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<TurnInCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type TurnInCoursesCourseWorkStudentSubmissionsResponse = Empty;
 export const TurnInCoursesCourseWorkStudentSubmissionsResponse =
@@ -5672,7 +5672,7 @@ export const ListCoursesCourseWorkStudentSubmissionsRequest =
       path: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesCourseWorkStudentSubmissionsRequest>;
+  ) as unknown as Schema.Codec<ListCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type ListCoursesCourseWorkStudentSubmissionsResponse =
   ListStudentSubmissionsResponse;
@@ -5717,7 +5717,7 @@ export const ListCoursesTeachersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/teachers" }),
     svc,
-  ) as unknown as Schema.Schema<ListCoursesTeachersRequest>;
+  ) as unknown as Schema.Codec<ListCoursesTeachersRequest>;
 
 export type ListCoursesTeachersResponse = ListTeachersResponse;
 export const ListCoursesTeachersResponse =
@@ -5759,7 +5759,7 @@ export const CreateCoursesTeachersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCoursesTeachersRequest>;
+  ) as unknown as Schema.Codec<CreateCoursesTeachersRequest>;
 
 export type CreateCoursesTeachersResponse = Teacher;
 export const CreateCoursesTeachersResponse =
@@ -5801,7 +5801,7 @@ export const DeleteCoursesTeachersRequest =
       path: "v1/courses/{courseId}/teachers/{userId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCoursesTeachersRequest>;
+  ) as unknown as Schema.Codec<DeleteCoursesTeachersRequest>;
 
 export type DeleteCoursesTeachersResponse = Empty;
 export const DeleteCoursesTeachersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -5839,7 +5839,7 @@ export const GetCoursesTeachersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/courses/{courseId}/teachers/{userId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCoursesTeachersRequest>;
+  ) as unknown as Schema.Codec<GetCoursesTeachersRequest>;
 
 export type GetCoursesTeachersResponse = Teacher;
 export const GetCoursesTeachersResponse = /*@__PURE__*/ /*#__PURE__*/ Teacher;
@@ -5870,7 +5870,7 @@ export const GetUserProfilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/userProfiles/{userId}" }),
   svc,
-) as unknown as Schema.Schema<GetUserProfilesRequest>;
+) as unknown as Schema.Codec<GetUserProfilesRequest>;
 
 export type GetUserProfilesResponse = UserProfile;
 export const GetUserProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ UserProfile;
@@ -5906,7 +5906,7 @@ export const GetUserProfilesGuardianInvitationsRequest =
       path: "v1/userProfiles/{studentId}/guardianInvitations/{invitationId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUserProfilesGuardianInvitationsRequest>;
+  ) as unknown as Schema.Codec<GetUserProfilesGuardianInvitationsRequest>;
 
 export type GetUserProfilesGuardianInvitationsResponse = GuardianInvitation;
 export const GetUserProfilesGuardianInvitationsResponse =
@@ -5953,7 +5953,7 @@ export const PatchUserProfilesGuardianInvitationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchUserProfilesGuardianInvitationsRequest>;
+  ) as unknown as Schema.Codec<PatchUserProfilesGuardianInvitationsRequest>;
 
 export type PatchUserProfilesGuardianInvitationsResponse = GuardianInvitation;
 export const PatchUserProfilesGuardianInvitationsResponse =
@@ -5996,7 +5996,7 @@ export const CreateUserProfilesGuardianInvitationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUserProfilesGuardianInvitationsRequest>;
+  ) as unknown as Schema.Codec<CreateUserProfilesGuardianInvitationsRequest>;
 
 export type CreateUserProfilesGuardianInvitationsResponse = GuardianInvitation;
 export const CreateUserProfilesGuardianInvitationsResponse =
@@ -6055,7 +6055,7 @@ export const ListUserProfilesGuardianInvitationsRequest =
       path: "v1/userProfiles/{studentId}/guardianInvitations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUserProfilesGuardianInvitationsRequest>;
+  ) as unknown as Schema.Codec<ListUserProfilesGuardianInvitationsRequest>;
 
 export type ListUserProfilesGuardianInvitationsResponse =
   ListGuardianInvitationsResponse;
@@ -6105,7 +6105,7 @@ export const ListUserProfilesGuardiansRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/userProfiles/{studentId}/guardians" }),
     svc,
-  ) as unknown as Schema.Schema<ListUserProfilesGuardiansRequest>;
+  ) as unknown as Schema.Codec<ListUserProfilesGuardiansRequest>;
 
 export type ListUserProfilesGuardiansResponse = ListGuardiansResponse;
 export const ListUserProfilesGuardiansResponse =
@@ -6149,7 +6149,7 @@ export const DeleteUserProfilesGuardiansRequest =
       path: "v1/userProfiles/{studentId}/guardians/{guardianId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUserProfilesGuardiansRequest>;
+  ) as unknown as Schema.Codec<DeleteUserProfilesGuardiansRequest>;
 
 export type DeleteUserProfilesGuardiansResponse = Empty;
 export const DeleteUserProfilesGuardiansResponse =
@@ -6191,7 +6191,7 @@ export const GetUserProfilesGuardiansRequest =
       path: "v1/userProfiles/{studentId}/guardians/{guardianId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUserProfilesGuardiansRequest>;
+  ) as unknown as Schema.Codec<GetUserProfilesGuardiansRequest>;
 
 export type GetUserProfilesGuardiansResponse = Guardian;
 export const GetUserProfilesGuardiansResponse =
@@ -6225,7 +6225,7 @@ export const CreateInvitationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/invitations", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateInvitationsRequest>;
+  ) as unknown as Schema.Codec<CreateInvitationsRequest>;
 
 export type CreateInvitationsResponse = Invitation;
 export const CreateInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ Invitation;
@@ -6264,7 +6264,7 @@ export const AcceptInvitationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcceptInvitationsRequest>;
+  ) as unknown as Schema.Codec<AcceptInvitationsRequest>;
 
 export type AcceptInvitationsResponse = Empty;
 export const AcceptInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -6298,7 +6298,7 @@ export const GetInvitationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/invitations/{id}" }),
   svc,
-) as unknown as Schema.Schema<GetInvitationsRequest>;
+) as unknown as Schema.Codec<GetInvitationsRequest>;
 
 export type GetInvitationsResponse = Invitation;
 export const GetInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ Invitation;
@@ -6328,7 +6328,7 @@ export const DeleteInvitationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/invitations/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInvitationsRequest>;
+  ) as unknown as Schema.Codec<DeleteInvitationsRequest>;
 
 export type DeleteInvitationsResponse = Empty;
 export const DeleteInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -6373,7 +6373,7 @@ export const ListInvitationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/invitations" }),
   svc,
-) as unknown as Schema.Schema<ListInvitationsRequest>;
+) as unknown as Schema.Codec<ListInvitationsRequest>;
 
 export type ListInvitationsResponse_Op = ListInvitationsResponse;
 export const ListInvitationsResponse_Op =
@@ -6408,7 +6408,7 @@ export const CreateRegistrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/registrations", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateRegistrationsRequest>;
+  ) as unknown as Schema.Codec<CreateRegistrationsRequest>;
 
 export type CreateRegistrationsResponse = Registration;
 export const CreateRegistrationsResponse =
@@ -6444,7 +6444,7 @@ export const DeleteRegistrationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/registrations/{registrationId}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRegistrationsRequest>;
+  ) as unknown as Schema.Codec<DeleteRegistrationsRequest>;
 
 export type DeleteRegistrationsResponse = Empty;
 export const DeleteRegistrationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;

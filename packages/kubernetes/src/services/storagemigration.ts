@@ -4,12 +4,64 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateStoragemigrationV1beta1StorageVersionMigrationInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const CreateStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -92,11 +144,57 @@ export const CreateStoragemigrationV1beta1StorageVersionMigrationInput =
       method: "POST",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations",
     }),
-  );
-export type CreateStoragemigrationV1beta1StorageVersionMigrationInput =
-  typeof CreateStoragemigrationV1beta1StorageVersionMigrationInput.Type;
+  ) as unknown as Schema.Codec<CreateStoragemigrationV1beta1StorageVersionMigrationInput>;
 
 // Output Schema
+export interface CreateStoragemigrationV1beta1StorageVersionMigrationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const CreateStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -170,9 +268,7 @@ export const CreateStoragemigrationV1beta1StorageVersionMigrationOutput =
         resourceVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateStoragemigrationV1beta1StorageVersionMigrationOutput =
-  typeof CreateStoragemigrationV1beta1StorageVersionMigrationOutput.Type;
+  }) as unknown as Schema.Codec<CreateStoragemigrationV1beta1StorageVersionMigrationOutput>;
 
 // The operation
 /**
@@ -190,6 +286,26 @@ export const createStoragemigrationV1beta1StorageVersionMigration =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -222,11 +338,32 @@ export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput
       method: "DELETE",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations",
     }),
-  );
-export type DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput =
-  typeof DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput.Type;
+  ) as unknown as Schema.Codec<DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput>;
 
 // Output Schema
+export interface DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -266,9 +403,7 @@ export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutpu
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutput =
-  typeof DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutput>;
 
 // The operation
 /**
@@ -339,6 +474,18 @@ export const deleteStoragemigrationV1beta1CollectionStorageVersionMigration =
       DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutput,
   }));
 // Input Schema
+export interface DeleteStoragemigrationV1beta1StorageVersionMigrationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -363,11 +510,32 @@ export const DeleteStoragemigrationV1beta1StorageVersionMigrationInput =
       method: "DELETE",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}",
     }),
-  );
-export type DeleteStoragemigrationV1beta1StorageVersionMigrationInput =
-  typeof DeleteStoragemigrationV1beta1StorageVersionMigrationInput.Type;
+  ) as unknown as Schema.Codec<DeleteStoragemigrationV1beta1StorageVersionMigrationInput>;
 
 // Output Schema
+export interface DeleteStoragemigrationV1beta1StorageVersionMigrationOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -407,9 +575,7 @@ export const DeleteStoragemigrationV1beta1StorageVersionMigrationOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteStoragemigrationV1beta1StorageVersionMigrationOutput =
-  typeof DeleteStoragemigrationV1beta1StorageVersionMigrationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStoragemigrationV1beta1StorageVersionMigrationOutput>;
 
 // The operation
 /**
@@ -430,14 +596,21 @@ export const deleteStoragemigrationV1beta1StorageVersionMigration =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetStoragemigrationAPIGroupInput {}
 export const GetStoragemigrationAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/storagemigration.k8s.io/" }),
-  );
-export type GetStoragemigrationAPIGroupInput =
-  typeof GetStoragemigrationAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetStoragemigrationAPIGroupInput>;
 
 // Output Schema
+export interface GetStoragemigrationAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetStoragemigrationAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -463,9 +636,7 @@ export const GetStoragemigrationAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetStoragemigrationAPIGroupOutput =
-  typeof GetStoragemigrationAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetStoragemigrationAPIGroupOutput>;
 
 // The operation
 /**
@@ -478,14 +649,30 @@ export const getStoragemigrationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetStoragemigrationV1beta1APIResourcesInput {}
 export const GetStoragemigrationV1beta1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/storagemigration.k8s.io/v1beta1/" }),
-  );
-export type GetStoragemigrationV1beta1APIResourcesInput =
-  typeof GetStoragemigrationV1beta1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetStoragemigrationV1beta1APIResourcesInput>;
 
 // Output Schema
+export interface GetStoragemigrationV1beta1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetStoragemigrationV1beta1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -505,9 +692,7 @@ export const GetStoragemigrationV1beta1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetStoragemigrationV1beta1APIResourcesOutput =
-  typeof GetStoragemigrationV1beta1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetStoragemigrationV1beta1APIResourcesOutput>;
 
 // The operation
 /**
@@ -519,6 +704,20 @@ export const getStoragemigrationV1beta1APIResources =
     outputSchema: GetStoragemigrationV1beta1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListStoragemigrationV1beta1StorageVersionMigrationInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -538,11 +737,68 @@ export const ListStoragemigrationV1beta1StorageVersionMigrationInput =
       method: "GET",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations",
     }),
-  );
-export type ListStoragemigrationV1beta1StorageVersionMigrationInput =
-  typeof ListStoragemigrationV1beta1StorageVersionMigrationInput.Type;
+  ) as unknown as Schema.Codec<ListStoragemigrationV1beta1StorageVersionMigrationInput>;
 
 // Output Schema
+export interface ListStoragemigrationV1beta1StorageVersionMigrationOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: { resource: { group: string; resource: string } };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      resourceVersion?: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -637,9 +893,7 @@ export const ListStoragemigrationV1beta1StorageVersionMigrationOutput =
         ),
       }),
     ),
-  });
-export type ListStoragemigrationV1beta1StorageVersionMigrationOutput =
-  typeof ListStoragemigrationV1beta1StorageVersionMigrationOutput.Type;
+  }) as unknown as Schema.Codec<ListStoragemigrationV1beta1StorageVersionMigrationOutput>;
 
 // The operation
 /**
@@ -705,6 +959,14 @@ export const listStoragemigrationV1beta1StorageVersionMigration =
     outputSchema: ListStoragemigrationV1beta1StorageVersionMigrationOutput,
   }));
 // Input Schema
+export interface PatchStoragemigrationV1beta1StorageVersionMigrationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -718,11 +980,57 @@ export const PatchStoragemigrationV1beta1StorageVersionMigrationInput =
       method: "PATCH",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}",
     }),
-  );
-export type PatchStoragemigrationV1beta1StorageVersionMigrationInput =
-  typeof PatchStoragemigrationV1beta1StorageVersionMigrationInput.Type;
+  ) as unknown as Schema.Codec<PatchStoragemigrationV1beta1StorageVersionMigrationInput>;
 
 // Output Schema
+export interface PatchStoragemigrationV1beta1StorageVersionMigrationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const PatchStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -796,9 +1104,7 @@ export const PatchStoragemigrationV1beta1StorageVersionMigrationOutput =
         resourceVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PatchStoragemigrationV1beta1StorageVersionMigrationOutput =
-  typeof PatchStoragemigrationV1beta1StorageVersionMigrationOutput.Type;
+  }) as unknown as Schema.Codec<PatchStoragemigrationV1beta1StorageVersionMigrationOutput>;
 
 // The operation
 /**
@@ -818,6 +1124,14 @@ export const patchStoragemigrationV1beta1StorageVersionMigration =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -831,11 +1145,57 @@ export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput =
       method: "PATCH",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}/status",
     }),
-  );
-export type PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput =
-  typeof PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput>;
 
 // Output Schema
+export interface PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -909,9 +1269,7 @@ export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
         resourceVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
-  typeof PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput>;
 
 // The operation
 /**
@@ -932,6 +1290,10 @@ export const patchStoragemigrationV1beta1StorageVersionMigrationStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadStoragemigrationV1beta1StorageVersionMigrationInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -941,11 +1303,57 @@ export const ReadStoragemigrationV1beta1StorageVersionMigrationInput =
       method: "GET",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}",
     }),
-  );
-export type ReadStoragemigrationV1beta1StorageVersionMigrationInput =
-  typeof ReadStoragemigrationV1beta1StorageVersionMigrationInput.Type;
+  ) as unknown as Schema.Codec<ReadStoragemigrationV1beta1StorageVersionMigrationInput>;
 
 // Output Schema
+export interface ReadStoragemigrationV1beta1StorageVersionMigrationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const ReadStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1019,9 +1427,7 @@ export const ReadStoragemigrationV1beta1StorageVersionMigrationOutput =
         resourceVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReadStoragemigrationV1beta1StorageVersionMigrationOutput =
-  typeof ReadStoragemigrationV1beta1StorageVersionMigrationOutput.Type;
+  }) as unknown as Schema.Codec<ReadStoragemigrationV1beta1StorageVersionMigrationOutput>;
 
 // The operation
 /**
@@ -1037,6 +1443,10 @@ export const readStoragemigrationV1beta1StorageVersionMigration =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1046,11 +1456,57 @@ export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput =
       method: "GET",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}/status",
     }),
-  );
-export type ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput =
-  typeof ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput>;
 
 // Output Schema
+export interface ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1124,9 +1580,7 @@ export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
         resourceVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
-  typeof ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput>;
 
 // The operation
 /**
@@ -1143,6 +1597,59 @@ export const readStoragemigrationV1beta1StorageVersionMigrationStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceStoragemigrationV1beta1StorageVersionMigrationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1226,11 +1733,57 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationInput =
       method: "PUT",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}",
     }),
-  );
-export type ReplaceStoragemigrationV1beta1StorageVersionMigrationInput =
-  typeof ReplaceStoragemigrationV1beta1StorageVersionMigrationInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStoragemigrationV1beta1StorageVersionMigrationInput>;
 
 // Output Schema
+export interface ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1304,9 +1857,7 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput =
         resourceVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput =
-  typeof ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput>;
 
 // The operation
 /**
@@ -1325,6 +1876,59 @@ export const replaceStoragemigrationV1beta1StorageVersionMigration =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1408,11 +2012,57 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput =
       method: "PUT",
       path: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}/status",
     }),
-  );
-export type ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput =
-  typeof ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput>;
 
 // Output Schema
+export interface ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { resource: { group: string; resource: string } };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceVersion?: string;
+  };
+}
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1486,9 +2136,7 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
         resourceVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
-  typeof ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput>;
 
 // The operation
 /**
@@ -1509,6 +2157,21 @@ export const replaceStoragemigrationV1beta1StorageVersionMigrationStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchStoragemigrationV1beta1StorageVersionMigrationInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1529,18 +2192,18 @@ export const WatchStoragemigrationV1beta1StorageVersionMigrationInput =
       method: "GET",
       path: "/apis/storagemigration.k8s.io/v1beta1/watch/storageversionmigrations/{name}",
     }),
-  );
-export type WatchStoragemigrationV1beta1StorageVersionMigrationInput =
-  typeof WatchStoragemigrationV1beta1StorageVersionMigrationInput.Type;
+  ) as unknown as Schema.Codec<WatchStoragemigrationV1beta1StorageVersionMigrationInput>;
 
 // Output Schema
+export interface WatchStoragemigrationV1beta1StorageVersionMigrationOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStoragemigrationV1beta1StorageVersionMigrationOutput =
-  typeof WatchStoragemigrationV1beta1StorageVersionMigrationOutput.Type;
+  }) as unknown as Schema.Codec<WatchStoragemigrationV1beta1StorageVersionMigrationOutput>;
 
 // The operation
 /**
@@ -1607,6 +2270,20 @@ export const watchStoragemigrationV1beta1StorageVersionMigration =
     outputSchema: WatchStoragemigrationV1beta1StorageVersionMigrationOutput,
   }));
 // Input Schema
+export interface WatchStoragemigrationV1beta1StorageVersionMigrationListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchStoragemigrationV1beta1StorageVersionMigrationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1626,18 +2303,18 @@ export const WatchStoragemigrationV1beta1StorageVersionMigrationListInput =
       method: "GET",
       path: "/apis/storagemigration.k8s.io/v1beta1/watch/storageversionmigrations",
     }),
-  );
-export type WatchStoragemigrationV1beta1StorageVersionMigrationListInput =
-  typeof WatchStoragemigrationV1beta1StorageVersionMigrationListInput.Type;
+  ) as unknown as Schema.Codec<WatchStoragemigrationV1beta1StorageVersionMigrationListInput>;
 
 // Output Schema
+export interface WatchStoragemigrationV1beta1StorageVersionMigrationListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchStoragemigrationV1beta1StorageVersionMigrationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchStoragemigrationV1beta1StorageVersionMigrationListOutput =
-  typeof WatchStoragemigrationV1beta1StorageVersionMigrationListOutput.Type;
+  }) as unknown as Schema.Codec<WatchStoragemigrationV1beta1StorageVersionMigrationListOutput>;
 
 // The operation
 /**

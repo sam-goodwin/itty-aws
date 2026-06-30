@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ExperimentsPromptTemplatesRetrieveInput {
+  project_id: string;
+}
 export const ExperimentsPromptTemplatesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,14 @@ export const ExperimentsPromptTemplatesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/experiments/prompt_templates/",
     }),
-  );
-export type ExperimentsPromptTemplatesRetrieveInput =
-  typeof ExperimentsPromptTemplatesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsPromptTemplatesRetrieveInput>;
 
 // Output Schema
+export type ExperimentsPromptTemplatesRetrieveOutput = {
+  key: string;
+  label: string;
+  description: string;
+}[];
 export const ExperimentsPromptTemplatesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -23,9 +29,7 @@ export const ExperimentsPromptTemplatesRetrieveOutput =
       label: Schema.String,
       description: Schema.String,
     }),
-  );
-export type ExperimentsPromptTemplatesRetrieveOutput =
-  typeof ExperimentsPromptTemplatesRetrieveOutput.Type;
+  ) as unknown as Schema.Codec<ExperimentsPromptTemplatesRetrieveOutput>;
 
 // The operation
 /**

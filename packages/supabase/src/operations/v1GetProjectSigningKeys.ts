@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetProjectSigningKeysInput {
+  ref: string;
+}
 export const V1GetProjectSigningKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,19 @@ export const V1GetProjectSigningKeysInput =
       method: "GET",
       path: "/v1/projects/{ref}/config/auth/signing-keys",
     }),
-  );
-export type V1GetProjectSigningKeysInput =
-  typeof V1GetProjectSigningKeysInput.Type;
+  ) as unknown as Schema.Codec<V1GetProjectSigningKeysInput>;
 
 // Output Schema
+export interface V1GetProjectSigningKeysOutput {
+  keys: {
+    id: string;
+    algorithm: "EdDSA" | "ES256" | "RS256" | "HS256";
+    status: "in_use" | "previously_used" | "revoked" | "standby";
+    public_jwk?: unknown | null;
+    created_at: string;
+    updated_at: string;
+  }[];
+}
 export const V1GetProjectSigningKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.Array(
@@ -34,9 +45,7 @@ export const V1GetProjectSigningKeysOutput =
         updated_at: Schema.String,
       }),
     ),
-  });
-export type V1GetProjectSigningKeysOutput =
-  typeof V1GetProjectSigningKeysOutput.Type;
+  }) as unknown as Schema.Codec<V1GetProjectSigningKeysOutput>;
 
 // The operation
 /**

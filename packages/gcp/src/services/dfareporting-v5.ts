@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Recipient {
   deliveryType?: "LINK" | "ATTACHMENT" | (string & {});
 }
 
-export const Recipient: Schema.Schema<Recipient> =
+export const Recipient: Schema.Codec<Recipient> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export interface RemarketingValueAttribute {
   userAttributeIds?: ReadonlyArray<string>;
 }
 
-export const RemarketingValueAttribute: Schema.Schema<RemarketingValueAttribute> =
+export const RemarketingValueAttribute: Schema.Codec<RemarketingValueAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.Number),
     userAttributeIds: Schema.optional(Schema.Array(Schema.String)),
@@ -60,7 +60,7 @@ export interface DependentFieldValue {
   elementId?: string;
 }
 
-export const DependentFieldValue: Schema.Schema<DependentFieldValue> =
+export const DependentFieldValue: Schema.Codec<DependentFieldValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dynamicFeedId: Schema.optional(Schema.String),
     fieldId: Schema.optional(Schema.Number),
@@ -76,7 +76,7 @@ export interface RequestValue {
   key?: string;
 }
 
-export const RequestValue: Schema.Schema<RequestValue> =
+export const RequestValue: Schema.Codec<RequestValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userAttributeIds: Schema.optional(Schema.Array(Schema.String)),
     excludeFromUserAttributeIds: Schema.optional(Schema.Array(Schema.String)),
@@ -112,7 +112,7 @@ export interface FieldFilter {
     | (string & {});
 }
 
-export const FieldFilter: Schema.Schema<FieldFilter> =
+export const FieldFilter: Schema.Codec<FieldFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchType: Schema.optional(Schema.String),
     boolValue: Schema.optional(Schema.Boolean),
@@ -128,7 +128,7 @@ export interface RuleBlock {
   fieldFilter?: ReadonlyArray<FieldFilter>;
 }
 
-export const RuleBlock: Schema.Schema<RuleBlock> =
+export const RuleBlock: Schema.Codec<RuleBlock> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldFilter: Schema.optional(Schema.Array(FieldFilter)),
   }).annotate({ identifier: "RuleBlock" });
@@ -142,7 +142,7 @@ export interface CustomRule {
   name?: string;
 }
 
-export const CustomRule: Schema.Schema<CustomRule> =
+export const CustomRule: Schema.Codec<CustomRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleBlocks: Schema.optional(Schema.Array(RuleBlock)),
     priority: Schema.optional(Schema.Number),
@@ -156,7 +156,7 @@ export interface CustomValueField {
   requestKey?: string;
 }
 
-export const CustomValueField: Schema.Schema<CustomValueField> =
+export const CustomValueField: Schema.Codec<CustomValueField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.Number),
     requestKey: Schema.optional(Schema.String),
@@ -184,7 +184,7 @@ export interface ProximityFilter {
     | (string & {});
 }
 
-export const ProximityFilter: Schema.Schema<ProximityFilter> =
+export const ProximityFilter: Schema.Codec<ProximityFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     radiusBucketType: Schema.optional(Schema.String),
     fieldId: Schema.optional(Schema.Number),
@@ -222,7 +222,7 @@ export interface DynamicRules {
   proximityFilter?: ProximityFilter;
 }
 
-export const DynamicRules: Schema.Schema<DynamicRules> =
+export const DynamicRules: Schema.Codec<DynamicRules> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remarketingValueAttributes: Schema.optional(
       Schema.Array(RemarketingValueAttribute),
@@ -243,7 +243,7 @@ export interface VideoOffset {
   offsetPercentage?: number;
 }
 
-export const VideoOffset: Schema.Schema<VideoOffset> =
+export const VideoOffset: Schema.Codec<VideoOffset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offsetSeconds: Schema.optional(Schema.Number),
     offsetPercentage: Schema.optional(Schema.Number),
@@ -260,7 +260,7 @@ export interface SiteSkippableSetting {
   progressOffset?: VideoOffset;
 }
 
-export const SiteSkippableSetting: Schema.Schema<SiteSkippableSetting> =
+export const SiteSkippableSetting: Schema.Codec<SiteSkippableSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skippable: Schema.optional(Schema.Boolean),
     skipOffset: Schema.optional(VideoOffset),
@@ -273,7 +273,7 @@ export interface PlacementSingleConversionDomain {
   conversionDomainValue?: string;
 }
 
-export const PlacementSingleConversionDomain: Schema.Schema<PlacementSingleConversionDomain> =
+export const PlacementSingleConversionDomain: Schema.Codec<PlacementSingleConversionDomain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversionDomainId: Schema.optional(Schema.String),
     conversionDomainValue: Schema.optional(Schema.String),
@@ -290,7 +290,7 @@ export interface ClickThroughUrl {
   computedClickThroughUrl?: string;
 }
 
-export const ClickThroughUrl: Schema.Schema<ClickThroughUrl> =
+export const ClickThroughUrl: Schema.Codec<ClickThroughUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customClickThroughUrl: Schema.optional(Schema.String),
     defaultLandingPage: Schema.optional(Schema.Boolean),
@@ -307,7 +307,7 @@ export interface RichMediaExitOverride {
   enabled?: boolean;
 }
 
-export const RichMediaExitOverride: Schema.Schema<RichMediaExitOverride> =
+export const RichMediaExitOverride: Schema.Codec<RichMediaExitOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clickThroughUrl: Schema.optional(ClickThroughUrl),
     exitId: Schema.optional(Schema.String),
@@ -321,7 +321,7 @@ export interface CompanionClickThroughOverride {
   clickThroughUrl?: ClickThroughUrl;
 }
 
-export const CompanionClickThroughOverride: Schema.Schema<CompanionClickThroughOverride> =
+export const CompanionClickThroughOverride: Schema.Codec<CompanionClickThroughOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeId: Schema.optional(Schema.String),
     clickThroughUrl: Schema.optional(ClickThroughUrl),
@@ -337,7 +337,7 @@ export interface CreativeGroupAssignment {
     | (string & {});
 }
 
-export const CreativeGroupAssignment: Schema.Schema<CreativeGroupAssignment> =
+export const CreativeGroupAssignment: Schema.Codec<CreativeGroupAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeGroupId: Schema.optional(Schema.String),
     creativeGroupNumber: Schema.optional(Schema.String),
@@ -363,7 +363,7 @@ export interface DimensionValue {
     | (string & {});
 }
 
-export const DimensionValue: Schema.Schema<DimensionValue> =
+export const DimensionValue: Schema.Codec<DimensionValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -400,7 +400,7 @@ export interface CreativeAssignment {
   creativeIdDimensionValue?: DimensionValue;
 }
 
-export const CreativeAssignment: Schema.Schema<CreativeAssignment> =
+export const CreativeAssignment: Schema.Codec<CreativeAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     richMediaExitOverrides: Schema.optional(
       Schema.Array(RichMediaExitOverride),
@@ -432,7 +432,7 @@ export interface FloodlightActivityDynamicTag {
   tag?: string;
 }
 
-export const FloodlightActivityDynamicTag: Schema.Schema<FloodlightActivityDynamicTag> =
+export const FloodlightActivityDynamicTag: Schema.Codec<FloodlightActivityDynamicTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -454,7 +454,7 @@ export interface FloodlightActivityPublisherDynamicTag {
   viewThrough?: boolean;
 }
 
-export const FloodlightActivityPublisherDynamicTag: Schema.Schema<FloodlightActivityPublisherDynamicTag> =
+export const FloodlightActivityPublisherDynamicTag: Schema.Codec<FloodlightActivityPublisherDynamicTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     siteId: Schema.optional(Schema.String),
     siteIdDimensionValue: Schema.optional(DimensionValue),
@@ -664,7 +664,7 @@ export interface FloodlightActivity {
   subaccountId?: string;
 }
 
-export const FloodlightActivity: Schema.Schema<FloodlightActivity> =
+export const FloodlightActivity: Schema.Codec<FloodlightActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserIdDimensionValue: Schema.optional(DimensionValue),
     userDefinedVariableTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -709,7 +709,7 @@ export interface FloodlightActivitiesListResponse {
   floodlightActivities?: ReadonlyArray<FloodlightActivity>;
 }
 
-export const FloodlightActivitiesListResponse: Schema.Schema<FloodlightActivitiesListResponse> =
+export const FloodlightActivitiesListResponse: Schema.Codec<FloodlightActivitiesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -727,7 +727,7 @@ export interface Language {
   name?: string;
 }
 
-export const Language: Schema.Schema<Language> =
+export const Language: Schema.Codec<Language> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -740,7 +740,7 @@ export interface LanguageTargeting {
   languages?: ReadonlyArray<Language>;
 }
 
-export const LanguageTargeting: Schema.Schema<LanguageTargeting> =
+export const LanguageTargeting: Schema.Codec<LanguageTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languages: Schema.optional(Schema.Array(Language)),
   }).annotate({ identifier: "LanguageTargeting" });
@@ -754,7 +754,7 @@ export interface PlatformType {
   name?: string;
 }
 
-export const PlatformType: Schema.Schema<PlatformType> =
+export const PlatformType: Schema.Codec<PlatformType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -774,7 +774,7 @@ export interface MobileCarrier {
   name?: string;
 }
 
-export const MobileCarrier: Schema.Schema<MobileCarrier> =
+export const MobileCarrier: Schema.Codec<MobileCarrier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countryDartId: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.String),
@@ -796,7 +796,7 @@ export interface OperatingSystem {
   mobile?: boolean;
 }
 
-export const OperatingSystem: Schema.Schema<OperatingSystem> =
+export const OperatingSystem: Schema.Codec<OperatingSystem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dartId: Schema.optional(Schema.String),
     desktop: Schema.optional(Schema.Boolean),
@@ -820,7 +820,7 @@ export interface OperatingSystemVersion {
   name?: string;
 }
 
-export const OperatingSystemVersion: Schema.Schema<OperatingSystemVersion> =
+export const OperatingSystemVersion: Schema.Codec<OperatingSystemVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatingSystem: Schema.optional(OperatingSystem),
     majorVersion: Schema.optional(Schema.String),
@@ -845,7 +845,7 @@ export interface Browser {
   browserVersionId?: string;
 }
 
-export const Browser: Schema.Schema<Browser> =
+export const Browser: Schema.Codec<Browser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     majorVersion: Schema.optional(Schema.String),
     minorVersion: Schema.optional(Schema.String),
@@ -864,7 +864,7 @@ export interface ConnectionType {
   name?: string;
 }
 
-export const ConnectionType: Schema.Schema<ConnectionType> =
+export const ConnectionType: Schema.Codec<ConnectionType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -886,7 +886,7 @@ export interface TechnologyTargeting {
   connectionTypes?: ReadonlyArray<ConnectionType>;
 }
 
-export const TechnologyTargeting: Schema.Schema<TechnologyTargeting> =
+export const TechnologyTargeting: Schema.Codec<TechnologyTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platformTypes: Schema.optional(Schema.Array(PlatformType)),
     mobileCarriers: Schema.optional(Schema.Array(MobileCarrier)),
@@ -903,7 +903,7 @@ export interface KeyValueTargetingExpression {
   expression?: string;
 }
 
-export const KeyValueTargetingExpression: Schema.Schema<KeyValueTargetingExpression> =
+export const KeyValueTargetingExpression: Schema.Codec<KeyValueTargetingExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
   }).annotate({ identifier: "KeyValueTargetingExpression" });
@@ -913,7 +913,7 @@ export interface ContextualKeyword {
   keyword?: string;
 }
 
-export const ContextualKeyword: Schema.Schema<ContextualKeyword> =
+export const ContextualKeyword: Schema.Codec<ContextualKeyword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyword: Schema.optional(Schema.String),
   }).annotate({ identifier: "ContextualKeyword" });
@@ -923,7 +923,7 @@ export interface ContextualKeywordTargeting {
   keywords?: ReadonlyArray<ContextualKeyword>;
 }
 
-export const ContextualKeywordTargeting: Schema.Schema<ContextualKeywordTargeting> =
+export const ContextualKeywordTargeting: Schema.Codec<ContextualKeywordTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keywords: Schema.optional(Schema.Array(ContextualKeyword)),
   }).annotate({ identifier: "ContextualKeywordTargeting" });
@@ -943,7 +943,7 @@ export interface Region {
   kind?: string;
 }
 
-export const Region: Schema.Schema<Region> =
+export const Region: Schema.Codec<Region> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countryDartId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -970,7 +970,7 @@ export interface Metro {
   dmaId?: string;
 }
 
-export const Metro: Schema.Schema<Metro> =
+export const Metro: Schema.Codec<Metro> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metroCode: Schema.optional(Schema.String),
     countryDartId: Schema.optional(Schema.String),
@@ -994,7 +994,7 @@ export interface PostalCode {
   countryDartId?: string;
 }
 
-export const PostalCode: Schema.Schema<PostalCode> =
+export const PostalCode: Schema.Codec<PostalCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.String),
@@ -1030,7 +1030,7 @@ export interface Country {
   >;
 }
 
-export const Country: Schema.Schema<Country> =
+export const Country: Schema.Codec<Country> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sslEnabled: Schema.optional(Schema.Boolean),
     dartId: Schema.optional(Schema.String),
@@ -1061,7 +1061,7 @@ export interface City {
   name?: string;
 }
 
-export const City: Schema.Schema<City> =
+export const City: Schema.Codec<City> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionDartId: Schema.optional(Schema.String),
     metroCode: Schema.optional(Schema.String),
@@ -1089,7 +1089,7 @@ export interface GeoTargeting {
   cities?: ReadonlyArray<City>;
 }
 
-export const GeoTargeting: Schema.Schema<GeoTargeting> =
+export const GeoTargeting: Schema.Codec<GeoTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Region)),
     metros: Schema.optional(Schema.Array(Metro)),
@@ -1104,7 +1104,7 @@ export interface ListTargetingExpression {
   expression?: string;
 }
 
-export const ListTargetingExpression: Schema.Schema<ListTargetingExpression> =
+export const ListTargetingExpression: Schema.Codec<ListTargetingExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTargetingExpression" });
@@ -1127,7 +1127,7 @@ export interface DayPartTargeting {
   hoursOfDay?: ReadonlyArray<number>;
 }
 
-export const DayPartTargeting: Schema.Schema<DayPartTargeting> =
+export const DayPartTargeting: Schema.Codec<DayPartTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userLocalTime: Schema.optional(Schema.Boolean),
     daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
@@ -1165,7 +1165,7 @@ export interface TargetingTemplate {
   dayPartTargeting?: DayPartTargeting;
 }
 
-export const TargetingTemplate: Schema.Schema<TargetingTemplate> =
+export const TargetingTemplate: Schema.Codec<TargetingTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     languageTargeting: Schema.optional(LanguageTargeting),
@@ -1192,7 +1192,7 @@ export interface TargetingTemplatesListResponse {
   nextPageToken?: string;
 }
 
-export const TargetingTemplatesListResponse: Schema.Schema<TargetingTemplatesListResponse> =
+export const TargetingTemplatesListResponse: Schema.Codec<TargetingTemplatesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     targetingTemplates: Schema.optional(Schema.Array(TargetingTemplate)),
@@ -1210,7 +1210,7 @@ export interface ContentCategory {
   accountId?: string;
 }
 
-export const ContentCategory: Schema.Schema<ContentCategory> =
+export const ContentCategory: Schema.Codec<ContentCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1225,7 +1225,7 @@ export interface CountriesListResponse {
   countries?: ReadonlyArray<Country>;
 }
 
-export const CountriesListResponse: Schema.Schema<CountriesListResponse> =
+export const CountriesListResponse: Schema.Codec<CountriesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     countries: Schema.optional(Schema.Array(Country)),
@@ -1244,7 +1244,7 @@ export interface DfpSettings {
   pubPaidPlacementAccepted?: boolean;
 }
 
-export const DfpSettings: Schema.Schema<DfpSettings> =
+export const DfpSettings: Schema.Codec<DfpSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dfpNetworkName: Schema.optional(Schema.String),
     publisherPortalOnly: Schema.optional(Schema.Boolean),
@@ -1264,7 +1264,7 @@ export interface DirectorySiteSettings {
   activeViewOptOut?: boolean;
 }
 
-export const DirectorySiteSettings: Schema.Schema<DirectorySiteSettings> =
+export const DirectorySiteSettings: Schema.Codec<DirectorySiteSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instreamVideoPlacementAccepted: Schema.optional(Schema.Boolean),
     interstitialPlacementAccepted: Schema.optional(Schema.Boolean),
@@ -1304,7 +1304,7 @@ export interface DirectorySite {
   >;
 }
 
-export const DirectorySite: Schema.Schema<DirectorySite> =
+export const DirectorySite: Schema.Codec<DirectorySite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1326,7 +1326,7 @@ export interface OptimizationActivity {
   floodlightActivityIdDimensionValue?: DimensionValue;
 }
 
-export const OptimizationActivity: Schema.Schema<OptimizationActivity> =
+export const OptimizationActivity: Schema.Codec<OptimizationActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floodlightActivityId: Schema.optional(Schema.String),
     weight: Schema.optional(Schema.Number),
@@ -1350,7 +1350,7 @@ export interface CreativeOptimizationConfiguration {
   optimizationActivitys?: ReadonlyArray<OptimizationActivity>;
 }
 
-export const CreativeOptimizationConfiguration: Schema.Schema<CreativeOptimizationConfiguration> =
+export const CreativeOptimizationConfiguration: Schema.Codec<CreativeOptimizationConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     optimizationModel: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1381,7 +1381,7 @@ export interface MeasurementPartnerCampaignLink {
     | (string & {});
 }
 
-export const MeasurementPartnerCampaignLink: Schema.Schema<MeasurementPartnerCampaignLink> =
+export const MeasurementPartnerCampaignLink: Schema.Codec<MeasurementPartnerCampaignLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     measurementPartner: Schema.optional(Schema.String),
     partnerCampaignId: Schema.optional(Schema.String),
@@ -1393,7 +1393,7 @@ export interface AdBlockingConfiguration {
   enabled?: boolean;
 }
 
-export const AdBlockingConfiguration: Schema.Schema<AdBlockingConfiguration> =
+export const AdBlockingConfiguration: Schema.Codec<AdBlockingConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AdBlockingConfiguration" });
@@ -1407,7 +1407,7 @@ export interface AudienceSegment {
   allocation?: number;
 }
 
-export const AudienceSegment: Schema.Schema<AudienceSegment> =
+export const AudienceSegment: Schema.Codec<AudienceSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1423,7 +1423,7 @@ export interface AudienceSegmentGroup {
   audienceSegments?: ReadonlyArray<AudienceSegment>;
 }
 
-export const AudienceSegmentGroup: Schema.Schema<AudienceSegmentGroup> =
+export const AudienceSegmentGroup: Schema.Codec<AudienceSegmentGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1435,7 +1435,7 @@ export interface LastModifiedInfo {
   time?: string;
 }
 
-export const LastModifiedInfo: Schema.Schema<LastModifiedInfo> =
+export const LastModifiedInfo: Schema.Codec<LastModifiedInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     time: Schema.optional(Schema.String),
   }).annotate({ identifier: "LastModifiedInfo" });
@@ -1447,7 +1447,7 @@ export interface EventTagOverride {
   enabled?: boolean;
 }
 
-export const EventTagOverride: Schema.Schema<EventTagOverride> =
+export const EventTagOverride: Schema.Codec<EventTagOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -1460,7 +1460,7 @@ export interface ClickThroughUrlSuffixProperties {
   clickThroughUrlSuffix?: string;
 }
 
-export const ClickThroughUrlSuffixProperties: Schema.Schema<ClickThroughUrlSuffixProperties> =
+export const ClickThroughUrlSuffixProperties: Schema.Codec<ClickThroughUrlSuffixProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overrideInheritedSuffix: Schema.optional(Schema.Boolean),
     clickThroughUrlSuffix: Schema.optional(Schema.String),
@@ -1473,7 +1473,7 @@ export interface DefaultClickThroughEventTagProperties {
   defaultClickThroughEventTagId?: string;
 }
 
-export const DefaultClickThroughEventTagProperties: Schema.Schema<DefaultClickThroughEventTagProperties> =
+export const DefaultClickThroughEventTagProperties: Schema.Codec<DefaultClickThroughEventTagProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overrideInheritedEventTag: Schema.optional(Schema.Boolean),
     defaultClickThroughEventTagId: Schema.optional(Schema.String),
@@ -1539,7 +1539,7 @@ export interface Campaign {
   advertiserIdDimensionValue?: DimensionValue;
 }
 
-export const Campaign: Schema.Schema<Campaign> =
+export const Campaign: Schema.Codec<Campaign> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subaccountId: Schema.optional(Schema.String),
     additionalCreativeOptimizationConfigurations: Schema.optional(
@@ -1586,7 +1586,7 @@ export interface OffsetPosition {
   left?: number;
 }
 
-export const OffsetPosition: Schema.Schema<OffsetPosition> =
+export const OffsetPosition: Schema.Codec<OffsetPosition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     top: Schema.optional(Schema.Number),
     left: Schema.optional(Schema.Number),
@@ -1606,7 +1606,7 @@ export interface UniversalAdId {
     | (string & {});
 }
 
-export const UniversalAdId: Schema.Schema<UniversalAdId> =
+export const UniversalAdId: Schema.Codec<UniversalAdId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     registry: Schema.optional(Schema.String),
@@ -1619,7 +1619,7 @@ export interface Dimension {
   kind?: string;
 }
 
-export const Dimension: Schema.Schema<Dimension> =
+export const Dimension: Schema.Codec<Dimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1634,7 +1634,7 @@ export interface DynamicProfileFeedSettings {
   dynamicRules?: DynamicRules;
 }
 
-export const DynamicProfileFeedSettings: Schema.Schema<DynamicProfileFeedSettings> =
+export const DynamicProfileFeedSettings: Schema.Codec<DynamicProfileFeedSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dynamicFeedId: Schema.optional(Schema.String),
     quantity: Schema.optional(Schema.Number),
@@ -1648,7 +1648,7 @@ export interface DynamicProfileVersion {
   dynamicProfileFeedSettings?: ReadonlyArray<DynamicProfileFeedSettings>;
 }
 
-export const DynamicProfileVersion: Schema.Schema<DynamicProfileVersion> =
+export const DynamicProfileVersion: Schema.Codec<DynamicProfileVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionId: Schema.optional(Schema.String),
     dynamicProfileFeedSettings: Schema.optional(
@@ -1663,7 +1663,7 @@ export interface Metric {
   name?: string;
 }
 
-export const Metric: Schema.Schema<Metric> =
+export const Metric: Schema.Codec<Metric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1682,7 +1682,7 @@ export interface ReportCompatibleFields {
   metrics?: ReadonlyArray<Metric>;
 }
 
-export const ReportCompatibleFields: Schema.Schema<ReportCompatibleFields> =
+export const ReportCompatibleFields: Schema.Codec<ReportCompatibleFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pivotedActivityMetrics: Schema.optional(Schema.Array(Metric)),
     kind: Schema.optional(Schema.String),
@@ -1700,7 +1700,7 @@ export interface ObjectFilter {
   kind?: string;
 }
 
-export const ObjectFilter: Schema.Schema<ObjectFilter> =
+export const ObjectFilter: Schema.Codec<ObjectFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     objectIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1720,7 +1720,7 @@ export interface Size {
   id?: string;
 }
 
-export const Size: Schema.Schema<Size> =
+export const Size: Schema.Codec<Size> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iab: Schema.optional(Schema.Boolean),
     width: Schema.optional(Schema.Number),
@@ -1740,7 +1740,7 @@ export interface PlacementAssignment {
   placementIdDimensionValue?: DimensionValue;
 }
 
-export const PlacementAssignment: Schema.Schema<PlacementAssignment> =
+export const PlacementAssignment: Schema.Codec<PlacementAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active: Schema.optional(Schema.Boolean),
     sslRequired: Schema.optional(Schema.Boolean),
@@ -1767,7 +1767,7 @@ export interface CreativeRotation {
   creativeOptimizationConfigurationId?: string;
 }
 
-export const CreativeRotation: Schema.Schema<CreativeRotation> =
+export const CreativeRotation: Schema.Codec<CreativeRotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeAssignments: Schema.optional(Schema.Array(CreativeAssignment)),
     type: Schema.optional(Schema.String),
@@ -1782,7 +1782,7 @@ export interface FrequencyCap {
   duration?: string;
 }
 
-export const FrequencyCap: Schema.Schema<FrequencyCap> =
+export const FrequencyCap: Schema.Codec<FrequencyCap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     impressions: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -1816,7 +1816,7 @@ export interface DeliverySchedule {
   hardCutoff?: boolean;
 }
 
-export const DeliverySchedule: Schema.Schema<DeliverySchedule> =
+export const DeliverySchedule: Schema.Codec<DeliverySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     frequencyCap: Schema.optional(FrequencyCap),
     priority: Schema.optional(Schema.String),
@@ -1918,7 +1918,7 @@ export interface Ad {
   createInfo?: LastModifiedInfo;
 }
 
-export const Ad: Schema.Schema<Ad> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Ad: Schema.Codec<Ad> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   lastModifiedInfo: Schema.optional(LastModifiedInfo),
   targetingTemplateId: Schema.optional(Schema.String),
   creativeGroupAssignments: Schema.optional(
@@ -1976,7 +1976,7 @@ export interface AdsListResponse {
   nextPageToken?: string;
 }
 
-export const AdsListResponse: Schema.Schema<AdsListResponse> =
+export const AdsListResponse: Schema.Codec<AdsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ads: Schema.optional(Schema.Array(Ad)),
     kind: Schema.optional(Schema.String),
@@ -2008,7 +2008,7 @@ export interface MobileApp {
   publisherName?: string;
 }
 
-export const MobileApp: Schema.Schema<MobileApp> =
+export const MobileApp: Schema.Codec<MobileApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     directory: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -2056,7 +2056,7 @@ export interface TargetableRemarketingList {
   accountId?: string;
 }
 
-export const TargetableRemarketingList: Schema.Schema<TargetableRemarketingList> =
+export const TargetableRemarketingList: Schema.Codec<TargetableRemarketingList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserId: Schema.optional(Schema.String),
     advertiserIdDimensionValue: Schema.optional(DimensionValue),
@@ -2079,7 +2079,7 @@ export interface PlatformTypesListResponse {
   platformTypes?: ReadonlyArray<PlatformType>;
 }
 
-export const PlatformTypesListResponse: Schema.Schema<PlatformTypesListResponse> =
+export const PlatformTypesListResponse: Schema.Codec<PlatformTypesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     platformTypes: Schema.optional(Schema.Array(PlatformType)),
@@ -2094,7 +2094,7 @@ export interface BillingRateTieredRate {
   rateInMicros?: string;
 }
 
-export const BillingRateTieredRate: Schema.Schema<BillingRateTieredRate> =
+export const BillingRateTieredRate: Schema.Codec<BillingRateTieredRate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lowValue: Schema.optional(Schema.String),
     highValue: Schema.optional(Schema.String),
@@ -2155,7 +2155,7 @@ export interface BillingRate {
   endDate?: string;
 }
 
-export const BillingRate: Schema.Schema<BillingRate> =
+export const BillingRate: Schema.Codec<BillingRate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tieredRates: Schema.optional(Schema.Array(BillingRateTieredRate)),
     name: Schema.optional(Schema.String),
@@ -2177,7 +2177,7 @@ export interface BillingRatesListResponse {
   kind?: string;
 }
 
-export const BillingRatesListResponse: Schema.Schema<BillingRatesListResponse> =
+export const BillingRatesListResponse: Schema.Codec<BillingRatesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingRates: Schema.optional(Schema.Array(BillingRate)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2211,7 +2211,7 @@ export interface TvCampaignSummary {
   grp?: string;
 }
 
-export const TvCampaignSummary: Schema.Schema<TvCampaignSummary> =
+export const TvCampaignSummary: Schema.Codec<TvCampaignSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -2231,7 +2231,7 @@ export interface TvCampaignSummariesListResponse {
   kind?: string;
 }
 
-export const TvCampaignSummariesListResponse: Schema.Schema<TvCampaignSummariesListResponse> =
+export const TvCampaignSummariesListResponse: Schema.Codec<TvCampaignSummariesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tvCampaignSummaries: Schema.optional(Schema.Array(TvCampaignSummary)),
     kind: Schema.optional(Schema.String),
@@ -2270,7 +2270,7 @@ export interface BillingProfile {
   isDefault?: boolean;
 }
 
-export const BillingProfile: Schema.Schema<BillingProfile> =
+export const BillingProfile: Schema.Codec<BillingProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -2304,7 +2304,7 @@ export interface CreativeField {
   advertiserId?: string;
 }
 
-export const CreativeField: Schema.Schema<CreativeField> =
+export const CreativeField: Schema.Codec<CreativeField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     subaccountId: Schema.optional(Schema.String),
@@ -2324,7 +2324,7 @@ export interface CreativeFieldsListResponse {
   nextPageToken?: string;
 }
 
-export const CreativeFieldsListResponse: Schema.Schema<CreativeFieldsListResponse> =
+export const CreativeFieldsListResponse: Schema.Codec<CreativeFieldsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     creativeFields: Schema.optional(Schema.Array(CreativeField)),
@@ -2340,7 +2340,7 @@ export interface MobileAppsListResponse {
   kind?: string;
 }
 
-export const MobileAppsListResponse: Schema.Schema<MobileAppsListResponse> =
+export const MobileAppsListResponse: Schema.Codec<MobileAppsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     mobileApps: Schema.optional(Schema.Array(MobileApp)),
@@ -2356,7 +2356,7 @@ export interface SortedDimension {
   name?: string;
 }
 
-export const SortedDimension: Schema.Schema<SortedDimension> =
+export const SortedDimension: Schema.Codec<SortedDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sortOrder: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -2372,7 +2372,7 @@ export interface Activities {
   filters?: ReadonlyArray<DimensionValue>;
 }
 
-export const Activities: Schema.Schema<Activities> =
+export const Activities: Schema.Codec<Activities> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metricNames: Schema.optional(Schema.Array(Schema.String)),
@@ -2386,7 +2386,7 @@ export interface CustomRichMediaEvents {
   kind?: string;
 }
 
-export const CustomRichMediaEvents: Schema.Schema<CustomRichMediaEvents> =
+export const CustomRichMediaEvents: Schema.Codec<CustomRichMediaEvents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filteredEventIds: Schema.optional(Schema.Array(DimensionValue)),
     kind: Schema.optional(Schema.String),
@@ -2419,7 +2419,7 @@ export interface DateRange {
     | (string & {});
 }
 
-export const DateRange: Schema.Schema<DateRange> =
+export const DateRange: Schema.Codec<DateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -2547,7 +2547,7 @@ export interface Report {
     | (string & {});
 }
 
-export const Report: Schema.Schema<Report> =
+export const Report: Schema.Codec<Report> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reachCriteria: Schema.optional(
       Schema.Struct({
@@ -2674,7 +2674,7 @@ export interface PricingSchedulePricingPeriod {
   pricingComment?: string;
 }
 
-export const PricingSchedulePricingPeriod: Schema.Schema<PricingSchedulePricingPeriod> =
+export const PricingSchedulePricingPeriod: Schema.Codec<PricingSchedulePricingPeriod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Schema.String),
     units: Schema.optional(Schema.String),
@@ -2710,7 +2710,7 @@ export interface PricingSchedule {
   testingStartDate?: string;
 }
 
-export const PricingSchedule: Schema.Schema<PricingSchedule> =
+export const PricingSchedule: Schema.Codec<PricingSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pricingType: Schema.optional(Schema.String),
     pricingPeriods: Schema.optional(Schema.Array(PricingSchedulePricingPeriod)),
@@ -2741,7 +2741,7 @@ export interface CreativeGroup {
   name?: string;
 }
 
-export const CreativeGroup: Schema.Schema<CreativeGroup> =
+export const CreativeGroup: Schema.Codec<CreativeGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserIdDimensionValue: Schema.optional(DimensionValue),
     groupNumber: Schema.optional(Schema.Number),
@@ -2780,7 +2780,7 @@ export interface ThirdPartyTrackingUrl {
   url?: string;
 }
 
-export const ThirdPartyTrackingUrl: Schema.Schema<ThirdPartyTrackingUrl> =
+export const ThirdPartyTrackingUrl: Schema.Codec<ThirdPartyTrackingUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thirdPartyUrlType: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -2797,7 +2797,7 @@ export interface CustomViewabilityMetricConfiguration {
   timeMillis?: number;
 }
 
-export const CustomViewabilityMetricConfiguration: Schema.Schema<CustomViewabilityMetricConfiguration> =
+export const CustomViewabilityMetricConfiguration: Schema.Codec<CustomViewabilityMetricConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timePercent: Schema.optional(Schema.Number),
     viewabilityPercent: Schema.optional(Schema.Number),
@@ -2814,7 +2814,7 @@ export interface CustomViewabilityMetric {
   configuration?: CustomViewabilityMetricConfiguration;
 }
 
-export const CustomViewabilityMetric: Schema.Schema<CustomViewabilityMetric> =
+export const CustomViewabilityMetric: Schema.Codec<CustomViewabilityMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2832,7 +2832,7 @@ export interface CrossMediaReachReportCompatibleFields {
   kind?: string;
 }
 
-export const CrossMediaReachReportCompatibleFields: Schema.Schema<CrossMediaReachReportCompatibleFields> =
+export const CrossMediaReachReportCompatibleFields: Schema.Codec<CrossMediaReachReportCompatibleFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionFilters: Schema.optional(Schema.Array(Dimension)),
     dimensions: Schema.optional(Schema.Array(Dimension)),
@@ -2853,7 +2853,7 @@ export interface CrossDimensionReachReportCompatibleFields {
   kind?: string;
 }
 
-export const CrossDimensionReachReportCompatibleFields: Schema.Schema<CrossDimensionReachReportCompatibleFields> =
+export const CrossDimensionReachReportCompatibleFields: Schema.Codec<CrossDimensionReachReportCompatibleFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionFilters: Schema.optional(Schema.Array(Dimension)),
     overlapMetrics: Schema.optional(Schema.Array(Metric)),
@@ -2869,7 +2869,7 @@ export interface TranscodeSetting {
   kind?: string;
 }
 
-export const TranscodeSetting: Schema.Schema<TranscodeSetting> =
+export const TranscodeSetting: Schema.Codec<TranscodeSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabledVideoFormats: Schema.optional(Schema.Array(Schema.Number)),
     kind: Schema.optional(Schema.String),
@@ -2886,7 +2886,7 @@ export interface SiteCompanionSetting {
   kind?: string;
 }
 
-export const SiteCompanionSetting: Schema.Schema<SiteCompanionSetting> =
+export const SiteCompanionSetting: Schema.Codec<SiteCompanionSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabledSizes: Schema.optional(Schema.Array(Size)),
     companionsDisabled: Schema.optional(Schema.Boolean),
@@ -2913,7 +2913,7 @@ export interface ObaIcon {
   yPosition?: string;
 }
 
-export const ObaIcon: Schema.Schema<ObaIcon> =
+export const ObaIcon: Schema.Codec<ObaIcon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     program: Schema.optional(Schema.String),
     iconClickThroughUrl: Schema.optional(Schema.String),
@@ -2932,7 +2932,7 @@ export interface SiteTranscodeSetting {
   kind?: string;
 }
 
-export const SiteTranscodeSetting: Schema.Schema<SiteTranscodeSetting> =
+export const SiteTranscodeSetting: Schema.Codec<SiteTranscodeSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabledVideoFormats: Schema.optional(Schema.Array(Schema.Number)),
     kind: Schema.optional(Schema.String),
@@ -2957,7 +2957,7 @@ export interface SiteVideoSettings {
   kind?: string;
 }
 
-export const SiteVideoSettings: Schema.Schema<SiteVideoSettings> =
+export const SiteVideoSettings: Schema.Codec<SiteVideoSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orientation: Schema.optional(Schema.String),
     obaEnabled: Schema.optional(Schema.Boolean),
@@ -2986,7 +2986,7 @@ export interface TagSetting {
   includeUnescapedlpurlMacro?: boolean;
 }
 
-export const TagSetting: Schema.Schema<TagSetting> =
+export const TagSetting: Schema.Codec<TagSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keywordOption: Schema.optional(Schema.String),
     additionalKeyValues: Schema.optional(Schema.String),
@@ -3002,7 +3002,7 @@ export interface LanguagesListResponse {
   languages?: ReadonlyArray<Language>;
 }
 
-export const LanguagesListResponse: Schema.Schema<LanguagesListResponse> =
+export const LanguagesListResponse: Schema.Codec<LanguagesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     languages: Schema.optional(Schema.Array(Language)),
@@ -3021,7 +3021,7 @@ export interface PathToConversionReportCompatibleFields {
   metrics?: ReadonlyArray<Metric>;
 }
 
-export const PathToConversionReportCompatibleFields: Schema.Schema<PathToConversionReportCompatibleFields> =
+export const PathToConversionReportCompatibleFields: Schema.Codec<PathToConversionReportCompatibleFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perInteractionDimensions: Schema.optional(Schema.Array(Dimension)),
     conversionDimensions: Schema.optional(Schema.Array(Dimension)),
@@ -3037,7 +3037,7 @@ export interface OperatingSystemVersionsListResponse {
   kind?: string;
 }
 
-export const OperatingSystemVersionsListResponse: Schema.Schema<OperatingSystemVersionsListResponse> =
+export const OperatingSystemVersionsListResponse: Schema.Codec<OperatingSystemVersionsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatingSystemVersions: Schema.optional(
       Schema.Array(OperatingSystemVersion),
@@ -3054,7 +3054,7 @@ export interface UserRolePermissionGroup {
   name?: string;
 }
 
-export const UserRolePermissionGroup: Schema.Schema<UserRolePermissionGroup> =
+export const UserRolePermissionGroup: Schema.Codec<UserRolePermissionGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -3068,7 +3068,7 @@ export interface UserRolePermissionGroupsListResponse {
   userRolePermissionGroups?: ReadonlyArray<UserRolePermissionGroup>;
 }
 
-export const UserRolePermissionGroupsListResponse: Schema.Schema<UserRolePermissionGroupsListResponse> =
+export const UserRolePermissionGroupsListResponse: Schema.Codec<UserRolePermissionGroupsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     userRolePermissionGroups: Schema.optional(
@@ -3085,7 +3085,7 @@ export interface TargetableRemarketingListsListResponse {
   nextPageToken?: string;
 }
 
-export const TargetableRemarketingListsListResponse: Schema.Schema<TargetableRemarketingListsListResponse> =
+export const TargetableRemarketingListsListResponse: Schema.Codec<TargetableRemarketingListsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     targetableRemarketingLists: Schema.optional(
@@ -3101,7 +3101,7 @@ export interface CampaignCreativeAssociation {
   creativeId?: string;
 }
 
-export const CampaignCreativeAssociation: Schema.Schema<CampaignCreativeAssociation> =
+export const CampaignCreativeAssociation: Schema.Codec<CampaignCreativeAssociation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     creativeId: Schema.optional(Schema.String),
@@ -3116,7 +3116,7 @@ export interface CampaignCreativeAssociationsListResponse {
   nextPageToken?: string;
 }
 
-export const CampaignCreativeAssociationsListResponse: Schema.Schema<CampaignCreativeAssociationsListResponse> =
+export const CampaignCreativeAssociationsListResponse: Schema.Codec<CampaignCreativeAssociationsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     campaignCreativeAssociations: Schema.optional(
@@ -3138,7 +3138,7 @@ export interface DeepLink {
   fallbackUrl?: string;
 }
 
-export const DeepLink: Schema.Schema<DeepLink> =
+export const DeepLink: Schema.Codec<DeepLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     mobileApp: Schema.optional(MobileApp),
@@ -3164,7 +3164,7 @@ export interface LandingPage {
   advertiserId?: string;
 }
 
-export const LandingPage: Schema.Schema<LandingPage> =
+export const LandingPage: Schema.Codec<LandingPage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3182,7 +3182,7 @@ export interface LookbackConfiguration {
   postImpressionActivitiesDuration?: number;
 }
 
-export const LookbackConfiguration: Schema.Schema<LookbackConfiguration> =
+export const LookbackConfiguration: Schema.Codec<LookbackConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clickDuration: Schema.optional(Schema.Number),
     postImpressionActivitiesDuration: Schema.optional(Schema.Number),
@@ -3197,7 +3197,7 @@ export interface ReportsConfiguration {
   exposureToConversionEnabled?: boolean;
 }
 
-export const ReportsConfiguration: Schema.Schema<ReportsConfiguration> =
+export const ReportsConfiguration: Schema.Codec<ReportsConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lookbackConfiguration: Schema.optional(LookbackConfiguration),
     reportGenerationTimeZoneId: Schema.optional(Schema.String),
@@ -3257,7 +3257,7 @@ export interface Account {
   accountPermissionIds?: ReadonlyArray<string>;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3289,7 +3289,7 @@ export interface AccountsListResponse {
   kind?: string;
 }
 
-export const AccountsListResponse: Schema.Schema<AccountsListResponse> =
+export const AccountsListResponse: Schema.Codec<AccountsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accounts: Schema.optional(Schema.Array(Account)),
@@ -3318,7 +3318,7 @@ export interface AccountActiveAdSummary {
   activeAds?: string;
 }
 
-export const AccountActiveAdSummary: Schema.Schema<AccountActiveAdSummary> =
+export const AccountActiveAdSummary: Schema.Codec<AccountActiveAdSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableAds: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3347,7 +3347,7 @@ export interface UserRolePermission {
   permissionGroupId?: string;
 }
 
-export const UserRolePermission: Schema.Schema<UserRolePermission> =
+export const UserRolePermission: Schema.Codec<UserRolePermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3375,7 +3375,7 @@ export interface UserRole {
   kind?: string;
 }
 
-export const UserRole: Schema.Schema<UserRole> =
+export const UserRole: Schema.Codec<UserRole> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentUserRoleId: Schema.optional(Schema.String),
     defaultUserRole: Schema.optional(Schema.Boolean),
@@ -3416,7 +3416,7 @@ export interface File {
   fileName?: string;
 }
 
-export const File: Schema.Schema<File> =
+export const File: Schema.Codec<File> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urls: Schema.optional(
       Schema.Struct({
@@ -3446,7 +3446,7 @@ export interface FileList {
   nextPageToken?: string;
 }
 
-export const FileList: Schema.Schema<FileList> =
+export const FileList: Schema.Codec<FileList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -3471,7 +3471,7 @@ export interface OfflineUserAddressInfo {
   countryCode?: string;
 }
 
-export const OfflineUserAddressInfo: Schema.Schema<OfflineUserAddressInfo> =
+export const OfflineUserAddressInfo: Schema.Codec<OfflineUserAddressInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hashedLastName: Schema.optional(Schema.String),
     hashedStreetAddress: Schema.optional(Schema.String),
@@ -3526,7 +3526,7 @@ export interface AccountUserProfile {
   kind?: string;
 }
 
-export const AccountUserProfile: Schema.Schema<AccountUserProfile> =
+export const AccountUserProfile: Schema.Codec<AccountUserProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     siteFilter: Schema.optional(ObjectFilter),
     advertiserFilter: Schema.optional(ObjectFilter),
@@ -3656,7 +3656,7 @@ export interface CustomFloodlightVariable {
   value?: string;
 }
 
-export const CustomFloodlightVariable: Schema.Schema<CustomFloodlightVariable> =
+export const CustomFloodlightVariable: Schema.Codec<CustomFloodlightVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3672,7 +3672,7 @@ export interface CartDataItem {
   quantity?: number;
 }
 
-export const CartDataItem: Schema.Schema<CartDataItem> =
+export const CartDataItem: Schema.Codec<CartDataItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemId: Schema.optional(Schema.String),
     unitPrice: Schema.optional(Schema.Number),
@@ -3690,7 +3690,7 @@ export interface CartData {
   merchantId?: string;
 }
 
-export const CartData: Schema.Schema<CartData> =
+export const CartData: Schema.Codec<CartData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(CartDataItem)),
     merchantFeedLabel: Schema.optional(Schema.String),
@@ -3707,7 +3707,7 @@ export interface UserIdentifier {
   addressInfo?: OfflineUserAddressInfo;
 }
 
-export const UserIdentifier: Schema.Schema<UserIdentifier> =
+export const UserIdentifier: Schema.Codec<UserIdentifier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hashedEmail: Schema.optional(Schema.String),
     hashedPhoneNumber: Schema.optional(Schema.String),
@@ -3763,7 +3763,7 @@ export interface Conversion {
   mobileDeviceId?: string;
 }
 
-export const Conversion: Schema.Schema<Conversion> =
+export const Conversion: Schema.Codec<Conversion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchId: Schema.optional(Schema.String),
     encryptedUserId: Schema.optional(Schema.String),
@@ -3813,7 +3813,7 @@ export interface EncryptionInfo {
   kind?: string;
 }
 
-export const EncryptionInfo: Schema.Schema<EncryptionInfo> =
+export const EncryptionInfo: Schema.Codec<EncryptionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptionEntityType: Schema.optional(Schema.String),
     encryptionEntityId: Schema.optional(Schema.String),
@@ -3830,7 +3830,7 @@ export interface ConversionsBatchInsertRequest {
   kind?: string;
 }
 
-export const ConversionsBatchInsertRequest: Schema.Schema<ConversionsBatchInsertRequest> =
+export const ConversionsBatchInsertRequest: Schema.Codec<ConversionsBatchInsertRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversions: Schema.optional(Schema.Array(Conversion)),
     encryptionInfo: Schema.optional(EncryptionInfo),
@@ -3860,7 +3860,7 @@ export interface MeasurementPartnerAdvertiserLink {
   partnerAdvertiserId?: string;
 }
 
-export const MeasurementPartnerAdvertiserLink: Schema.Schema<MeasurementPartnerAdvertiserLink> =
+export const MeasurementPartnerAdvertiserLink: Schema.Codec<MeasurementPartnerAdvertiserLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     measurementPartner: Schema.optional(Schema.String),
     linkStatus: Schema.optional(Schema.String),
@@ -3907,7 +3907,7 @@ export interface Advertiser {
   id?: string;
 }
 
-export const Advertiser: Schema.Schema<Advertiser> =
+export const Advertiser: Schema.Codec<Advertiser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subaccountId: Schema.optional(Schema.String),
     defaultClickThroughEventTagId: Schema.optional(Schema.String),
@@ -3944,7 +3944,7 @@ export interface TvCampaignTimepoint {
     | (string & {});
 }
 
-export const TvCampaignTimepoint: Schema.Schema<TvCampaignTimepoint> =
+export const TvCampaignTimepoint: Schema.Codec<TvCampaignTimepoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spend: Schema.optional(Schema.Number),
     startDate: Schema.optional(Schema.String),
@@ -3960,7 +3960,7 @@ export interface TvCampaignDetail {
   kind?: string;
 }
 
-export const TvCampaignDetail: Schema.Schema<TvCampaignDetail> =
+export const TvCampaignDetail: Schema.Codec<TvCampaignDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     timepoints: Schema.optional(Schema.Array(TvCampaignTimepoint)),
@@ -3978,7 +3978,7 @@ export interface RemarketingListShare {
   kind?: string;
 }
 
-export const RemarketingListShare: Schema.Schema<RemarketingListShare> =
+export const RemarketingListShare: Schema.Codec<RemarketingListShare> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedAccountIds: Schema.optional(Schema.Array(Schema.String)),
     sharedAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
@@ -3997,7 +3997,7 @@ export interface ContentSourceMetaData {
   separator?: string;
 }
 
-export const ContentSourceMetaData: Schema.Schema<ContentSourceMetaData> =
+export const ContentSourceMetaData: Schema.Codec<ContentSourceMetaData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     charset: Schema.optional(Schema.String),
     fieldNames: Schema.optional(Schema.Array(Schema.String)),
@@ -4036,7 +4036,7 @@ export interface ListPopulationTerm {
   variableName?: string;
 }
 
-export const ListPopulationTerm: Schema.Schema<ListPopulationTerm> =
+export const ListPopulationTerm: Schema.Codec<ListPopulationTerm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     variableFriendlyName: Schema.optional(Schema.String),
@@ -4053,7 +4053,7 @@ export interface ListPopulationClause {
   terms?: ReadonlyArray<ListPopulationTerm>;
 }
 
-export const ListPopulationClause: Schema.Schema<ListPopulationClause> =
+export const ListPopulationClause: Schema.Codec<ListPopulationClause> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     terms: Schema.optional(Schema.Array(ListPopulationTerm)),
   }).annotate({ identifier: "ListPopulationClause" });
@@ -4067,7 +4067,7 @@ export interface ListPopulationRule {
   listPopulationClauses?: ReadonlyArray<ListPopulationClause>;
 }
 
-export const ListPopulationRule: Schema.Schema<ListPopulationRule> =
+export const ListPopulationRule: Schema.Codec<ListPopulationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floodlightActivityId: Schema.optional(Schema.String),
     floodlightActivityName: Schema.optional(Schema.String),
@@ -4081,7 +4081,7 @@ export interface BrowsersListResponse {
   browsers?: ReadonlyArray<Browser>;
 }
 
-export const BrowsersListResponse: Schema.Schema<BrowsersListResponse> =
+export const BrowsersListResponse: Schema.Codec<BrowsersListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     browsers: Schema.optional(Schema.Array(Browser)),
@@ -4100,7 +4100,7 @@ export interface FeedSchedule {
   timeZone?: string;
 }
 
-export const FeedSchedule: Schema.Schema<FeedSchedule> =
+export const FeedSchedule: Schema.Codec<FeedSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduleEnabled: Schema.optional(Schema.Boolean),
     startHour: Schema.optional(Schema.String),
@@ -4118,7 +4118,7 @@ export interface CreativeClickThroughUrl {
   customClickThroughUrl?: string;
 }
 
-export const CreativeClickThroughUrl: Schema.Schema<CreativeClickThroughUrl> =
+export const CreativeClickThroughUrl: Schema.Codec<CreativeClickThroughUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computedClickThroughUrl: Schema.optional(Schema.String),
     landingPageId: Schema.optional(Schema.String),
@@ -4138,7 +4138,7 @@ export interface VideoFormat {
   targetBitRate?: number;
 }
 
-export const VideoFormat: Schema.Schema<VideoFormat> =
+export const VideoFormat: Schema.Codec<VideoFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resolution: Schema.optional(Size),
     kind: Schema.optional(Schema.String),
@@ -4156,7 +4156,7 @@ export interface BillingProfilesListResponse {
   nextPageToken?: string;
 }
 
-export const BillingProfilesListResponse: Schema.Schema<BillingProfilesListResponse> =
+export const BillingProfilesListResponse: Schema.Codec<BillingProfilesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     billingProfiles: Schema.optional(Schema.Array(BillingProfile)),
@@ -4177,7 +4177,7 @@ export interface ConversionError {
   message?: string;
 }
 
-export const ConversionError: Schema.Schema<ConversionError> =
+export const ConversionError: Schema.Codec<ConversionError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -4193,7 +4193,7 @@ export interface ConversionStatus {
   kind?: string;
 }
 
-export const ConversionStatus: Schema.Schema<ConversionStatus> =
+export const ConversionStatus: Schema.Codec<ConversionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversion: Schema.optional(Conversion),
     errors: Schema.optional(Schema.Array(ConversionError)),
@@ -4209,7 +4209,7 @@ export interface DimensionFilter {
   value?: string;
 }
 
-export const DimensionFilter: Schema.Schema<DimensionFilter> =
+export const DimensionFilter: Schema.Codec<DimensionFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     dimensionName: Schema.optional(Schema.String),
@@ -4227,7 +4227,7 @@ export interface DimensionValueRequest {
   startDate?: string;
 }
 
-export const DimensionValueRequest: Schema.Schema<DimensionValueRequest> =
+export const DimensionValueRequest: Schema.Codec<DimensionValueRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -4257,7 +4257,7 @@ export interface PopupWindowProperties {
   showScrollBar?: boolean;
 }
 
-export const PopupWindowProperties: Schema.Schema<PopupWindowProperties> =
+export const PopupWindowProperties: Schema.Codec<PopupWindowProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     showToolBar: Schema.optional(Schema.Boolean),
     dimension: Schema.optional(Size),
@@ -4308,7 +4308,7 @@ export interface CreativeCustomEvent {
     | (string & {});
 }
 
-export const CreativeCustomEvent: Schema.Schema<CreativeCustomEvent> =
+export const CreativeCustomEvent: Schema.Codec<CreativeCustomEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     popupWindowProperties: Schema.optional(PopupWindowProperties),
     artworkLabel: Schema.optional(Schema.String),
@@ -4329,7 +4329,7 @@ export interface OperatingSystemsListResponse {
   kind?: string;
 }
 
-export const OperatingSystemsListResponse: Schema.Schema<OperatingSystemsListResponse> =
+export const OperatingSystemsListResponse: Schema.Codec<OperatingSystemsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatingSystems: Schema.optional(Schema.Array(OperatingSystem)),
     kind: Schema.optional(Schema.String),
@@ -4342,7 +4342,7 @@ export interface OmnitureSettings {
   omnitureCostDataEnabled?: boolean;
 }
 
-export const OmnitureSettings: Schema.Schema<OmnitureSettings> =
+export const OmnitureSettings: Schema.Codec<OmnitureSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     omnitureIntegrationEnabled: Schema.optional(Schema.Boolean),
     omnitureCostDataEnabled: Schema.optional(Schema.Boolean),
@@ -4355,7 +4355,7 @@ export interface RegionsListResponse {
   kind?: string;
 }
 
-export const RegionsListResponse: Schema.Schema<RegionsListResponse> =
+export const RegionsListResponse: Schema.Codec<RegionsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Region)),
     kind: Schema.optional(Schema.String),
@@ -4368,7 +4368,7 @@ export interface ThirdPartyAuthenticationToken {
   value?: string;
 }
 
-export const ThirdPartyAuthenticationToken: Schema.Schema<ThirdPartyAuthenticationToken> =
+export const ThirdPartyAuthenticationToken: Schema.Codec<ThirdPartyAuthenticationToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -4430,7 +4430,7 @@ export interface FieldError {
     | (string & {});
 }
 
-export const FieldError: Schema.Schema<FieldError> =
+export const FieldError: Schema.Codec<FieldError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldValues: Schema.optional(Schema.Array(Schema.String)),
     isError: Schema.optional(Schema.Boolean),
@@ -4446,7 +4446,7 @@ export interface IngestionErrorRecord {
   errors?: ReadonlyArray<FieldError>;
 }
 
-export const IngestionErrorRecord: Schema.Schema<IngestionErrorRecord> =
+export const IngestionErrorRecord: Schema.Codec<IngestionErrorRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordId: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Array(FieldError)),
@@ -4516,7 +4516,7 @@ export interface PlacementGroup {
   idDimensionValue?: DimensionValue;
 }
 
-export const PlacementGroup: Schema.Schema<PlacementGroup> =
+export const PlacementGroup: Schema.Codec<PlacementGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pricingSchedule: Schema.optional(PricingSchedule),
     primaryPlacementId: Schema.optional(Schema.String),
@@ -4555,7 +4555,7 @@ export interface PlacementGroupsListResponse {
   nextPageToken?: string;
 }
 
-export const PlacementGroupsListResponse: Schema.Schema<PlacementGroupsListResponse> =
+export const PlacementGroupsListResponse: Schema.Codec<PlacementGroupsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     placementGroups: Schema.optional(Schema.Array(PlacementGroup)),
@@ -4571,7 +4571,7 @@ export interface ConversionsBatchUpdateRequest {
   kind?: string;
 }
 
-export const ConversionsBatchUpdateRequest: Schema.Schema<ConversionsBatchUpdateRequest> =
+export const ConversionsBatchUpdateRequest: Schema.Codec<ConversionsBatchUpdateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversions: Schema.optional(Schema.Array(Conversion)),
     encryptionInfo: Schema.optional(EncryptionInfo),
@@ -4608,7 +4608,7 @@ export interface ChangeLog {
   newValue?: string;
 }
 
-export const ChangeLog: Schema.Schema<ChangeLog> =
+export const ChangeLog: Schema.Codec<ChangeLog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userProfileName: Schema.optional(Schema.String),
     changeTime: Schema.optional(Schema.String),
@@ -4635,7 +4635,7 @@ export interface ClickTag {
   clickThroughUrl?: CreativeClickThroughUrl;
 }
 
-export const ClickTag: Schema.Schema<ClickTag> =
+export const ClickTag: Schema.Codec<ClickTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4661,7 +4661,7 @@ export interface UserProfile {
   userName?: string;
 }
 
-export const UserProfile: Schema.Schema<UserProfile> =
+export const UserProfile: Schema.Codec<UserProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subAccountName: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -4682,7 +4682,7 @@ export interface UserProfileList {
   kind?: string;
 }
 
-export const UserProfileList: Schema.Schema<UserProfileList> =
+export const UserProfileList: Schema.Codec<UserProfileList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(UserProfile)),
@@ -4706,7 +4706,7 @@ export interface AccountPermission {
   name?: string;
 }
 
-export const AccountPermission: Schema.Schema<AccountPermission> =
+export const AccountPermission: Schema.Codec<AccountPermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissionGroupId: Schema.optional(Schema.String),
     level: Schema.optional(Schema.String),
@@ -4735,7 +4735,7 @@ export interface ContentSource {
   createInfo?: LastModifiedInfo;
 }
 
-export const ContentSource: Schema.Schema<ContentSource> =
+export const ContentSource: Schema.Codec<ContentSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     resourceLink: Schema.optional(Schema.String),
@@ -4797,7 +4797,7 @@ export interface FeedField {
     | (string & {});
 }
 
-export const FeedField: Schema.Schema<FeedField> =
+export const FeedField: Schema.Codec<FeedField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterable: Schema.optional(Schema.Boolean),
     required: Schema.optional(Schema.Boolean),
@@ -4835,7 +4835,7 @@ export interface Element {
   isLocalTimestamp?: boolean;
 }
 
-export const Element: Schema.Schema<Element> =
+export const Element: Schema.Codec<Element> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feedFields: Schema.optional(Schema.Array(FeedField)),
     reportingLabelFieldId: Schema.optional(Schema.Number),
@@ -4864,7 +4864,7 @@ export interface IngestionStatus {
   numWarningsTotal?: string;
 }
 
-export const IngestionStatus: Schema.Schema<IngestionStatus> =
+export const IngestionStatus: Schema.Codec<IngestionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numRowsTotal: Schema.optional(Schema.String),
     numRowsProcessed: Schema.optional(Schema.String),
@@ -4893,7 +4893,7 @@ export interface FeedIngestionStatus {
   ingestionErrorRecords?: ReadonlyArray<IngestionErrorRecord>;
 }
 
-export const FeedIngestionStatus: Schema.Schema<FeedIngestionStatus> =
+export const FeedIngestionStatus: Schema.Codec<FeedIngestionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingestionStatus: Schema.optional(IngestionStatus),
     state: Schema.optional(Schema.String),
@@ -4925,7 +4925,7 @@ export interface DynamicFeed {
   feedIngestionStatus?: FeedIngestionStatus;
 }
 
-export const DynamicFeed: Schema.Schema<DynamicFeed> =
+export const DynamicFeed: Schema.Codec<DynamicFeed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentSource: Schema.optional(ContentSource),
     dynamicFeedId: Schema.optional(Schema.String),
@@ -4947,7 +4947,7 @@ export interface DynamicFeedsInsertRequest {
   dynamicFeed?: DynamicFeed;
 }
 
-export const DynamicFeedsInsertRequest: Schema.Schema<DynamicFeedsInsertRequest> =
+export const DynamicFeedsInsertRequest: Schema.Codec<DynamicFeedsInsertRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dynamicProfileId: Schema.optional(Schema.String),
     dynamicFeed: Schema.optional(DynamicFeed),
@@ -4966,7 +4966,7 @@ export interface BillingAssignment {
   advertiserId?: string;
 }
 
-export const BillingAssignment: Schema.Schema<BillingAssignment> =
+export const BillingAssignment: Schema.Codec<BillingAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     campaignId: Schema.optional(Schema.String),
@@ -4986,7 +4986,7 @@ export interface TargetWindow {
   customHtml?: string;
 }
 
-export const TargetWindow: Schema.Schema<TargetWindow> =
+export const TargetWindow: Schema.Codec<TargetWindow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetWindowOption: Schema.optional(Schema.String),
     customHtml: Schema.optional(Schema.String),
@@ -5005,7 +5005,7 @@ export interface CampaignSummary {
   preTaxAmountMicros?: string;
 }
 
-export const CampaignSummary: Schema.Schema<CampaignSummary> =
+export const CampaignSummary: Schema.Codec<CampaignSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingInvoiceCode: Schema.optional(Schema.String),
     taxAmountMicros: Schema.optional(Schema.String),
@@ -5057,7 +5057,7 @@ export interface Invoice {
   correctedInvoiceId?: string;
 }
 
-export const Invoice: Schema.Schema<Invoice> =
+export const Invoice: Schema.Codec<Invoice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invoiceType: Schema.optional(Schema.String),
     totalTaxAmountMicros: Schema.optional(Schema.String),
@@ -5088,7 +5088,7 @@ export interface AdvertiserInvoicesListResponse {
   kind?: string;
 }
 
-export const AdvertiserInvoicesListResponse: Schema.Schema<AdvertiserInvoicesListResponse> =
+export const AdvertiserInvoicesListResponse: Schema.Codec<AdvertiserInvoicesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invoices: Schema.optional(Schema.Array(Invoice)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5205,7 +5205,7 @@ export interface UserDefinedVariableConfiguration {
   dataType?: "STRING" | "NUMBER" | (string & {});
 }
 
-export const UserDefinedVariableConfiguration: Schema.Schema<UserDefinedVariableConfiguration> =
+export const UserDefinedVariableConfiguration: Schema.Codec<UserDefinedVariableConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variableType: Schema.optional(Schema.String),
     reportName: Schema.optional(Schema.String),
@@ -5219,7 +5219,7 @@ export interface CreativeFieldAssignment {
   creativeFieldValueId?: string;
 }
 
-export const CreativeFieldAssignment: Schema.Schema<CreativeFieldAssignment> =
+export const CreativeFieldAssignment: Schema.Codec<CreativeFieldAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creativeFieldId: Schema.optional(Schema.String),
     creativeFieldValueId: Schema.optional(Schema.String),
@@ -5239,7 +5239,7 @@ export interface CreativeAssetId {
   name?: string;
 }
 
-export const CreativeAssetId: Schema.Schema<CreativeAssetId> =
+export const CreativeAssetId: Schema.Codec<CreativeAssetId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5468,7 +5468,7 @@ export interface CreativeAsset {
     | (string & {});
 }
 
-export const CreativeAsset: Schema.Schema<CreativeAsset> =
+export const CreativeAsset: Schema.Codec<CreativeAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bitRate: Schema.optional(Schema.Number),
     pushdown: Schema.optional(Schema.Boolean),
@@ -5535,7 +5535,7 @@ export interface FsCommand {
   left?: number;
 }
 
-export const FsCommand: Schema.Schema<FsCommand> =
+export const FsCommand: Schema.Codec<FsCommand> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     windowHeight: Schema.optional(Schema.Number),
     windowWidth: Schema.optional(Schema.Number),
@@ -5792,7 +5792,7 @@ export interface Creative {
   studioCreativeId?: string;
 }
 
-export const Creative: Schema.Schema<Creative> =
+export const Creative: Schema.Codec<Creative> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thirdPartyRichMediaImpressionsUrl: Schema.optional(Schema.String),
     adParameters: Schema.optional(Schema.String),
@@ -5870,7 +5870,7 @@ export interface CreativesListResponse {
   nextPageToken?: string;
 }
 
-export const CreativesListResponse: Schema.Schema<CreativesListResponse> =
+export const CreativesListResponse: Schema.Codec<CreativesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     creatives: Schema.optional(Schema.Array(Creative)),
@@ -5886,7 +5886,7 @@ export interface UserRolesListResponse {
   nextPageToken?: string;
 }
 
-export const UserRolesListResponse: Schema.Schema<UserRolesListResponse> =
+export const UserRolesListResponse: Schema.Codec<UserRolesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userRoles: Schema.optional(Schema.Array(UserRole)),
     kind: Schema.optional(Schema.String),
@@ -5913,7 +5913,7 @@ export interface SiteSettings {
     | (string & {});
 }
 
-export const SiteSettings: Schema.Schema<SiteSettings> =
+export const SiteSettings: Schema.Codec<SiteSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagSetting: Schema.optional(TagSetting),
     adBlockingOptOut: Schema.optional(Schema.Boolean),
@@ -5942,7 +5942,7 @@ export interface SiteContact {
   title?: string;
 }
 
-export const SiteContact: Schema.Schema<SiteContact> =
+export const SiteContact: Schema.Codec<SiteContact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -5985,7 +5985,7 @@ export interface Site {
   siteContacts?: ReadonlyArray<SiteContact>;
 }
 
-export const Site: Schema.Schema<Site> =
+export const Site: Schema.Codec<Site> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -6012,7 +6012,7 @@ export interface SitesListResponse {
   sites?: ReadonlyArray<Site>;
 }
 
-export const SitesListResponse: Schema.Schema<SitesListResponse> =
+export const SitesListResponse: Schema.Codec<SitesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -6031,7 +6031,7 @@ export interface VideoProcessingData {
   errorReason?: string;
 }
 
-export const VideoProcessingData: Schema.Schema<VideoProcessingData> =
+export const VideoProcessingData: Schema.Codec<VideoProcessingData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processingState: Schema.optional(Schema.String),
     errorReason: Schema.optional(Schema.String),
@@ -6060,7 +6060,7 @@ export interface StudioCreativeAsset {
   studioAccountId?: string;
 }
 
-export const StudioCreativeAsset: Schema.Schema<StudioCreativeAsset> =
+export const StudioCreativeAsset: Schema.Codec<StudioCreativeAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createInfo: Schema.optional(LastModifiedInfo),
     studioCreativeId: Schema.optional(Schema.String),
@@ -6081,7 +6081,7 @@ export interface MetrosListResponse {
   metros?: ReadonlyArray<Metro>;
 }
 
-export const MetrosListResponse: Schema.Schema<MetrosListResponse> =
+export const MetrosListResponse: Schema.Codec<MetrosListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metros: Schema.optional(Schema.Array(Metro)),
@@ -6121,7 +6121,7 @@ export interface TagData {
   adId?: string;
 }
 
-export const TagData: Schema.Schema<TagData> =
+export const TagData: Schema.Codec<TagData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clickTag: Schema.optional(Schema.String),
     impressionTag: Schema.optional(Schema.String),
@@ -6137,7 +6137,7 @@ export interface PlacementTag {
   placementId?: string;
 }
 
-export const PlacementTag: Schema.Schema<PlacementTag> =
+export const PlacementTag: Schema.Codec<PlacementTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagDatas: Schema.optional(Schema.Array(TagData)),
     placementId: Schema.optional(Schema.String),
@@ -6150,7 +6150,7 @@ export interface PlacementsGenerateTagsResponse {
   placementTags?: ReadonlyArray<PlacementTag>;
 }
 
-export const PlacementsGenerateTagsResponse: Schema.Schema<PlacementsGenerateTagsResponse> =
+export const PlacementsGenerateTagsResponse: Schema.Codec<PlacementsGenerateTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     placementTags: Schema.optional(Schema.Array(PlacementTag)),
@@ -6183,7 +6183,7 @@ export interface FloodlightActivityGroup {
   kind?: string;
 }
 
-export const FloodlightActivityGroup: Schema.Schema<FloodlightActivityGroup> =
+export const FloodlightActivityGroup: Schema.Codec<FloodlightActivityGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     tagString: Schema.optional(Schema.String),
@@ -6240,7 +6240,7 @@ export interface YoutubeSettings {
   businessLogoCreativeIds?: ReadonlyArray<string>;
 }
 
-export const YoutubeSettings: Schema.Schema<YoutubeSettings> =
+export const YoutubeSettings: Schema.Codec<YoutubeSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longHeadlines: Schema.optional(Schema.Array(Schema.String)),
     callToActions: Schema.optional(Schema.Array(Schema.String)),
@@ -6257,7 +6257,7 @@ export interface VideoFormatsListResponse {
   videoFormats?: ReadonlyArray<VideoFormat>;
 }
 
-export const VideoFormatsListResponse: Schema.Schema<VideoFormatsListResponse> =
+export const VideoFormatsListResponse: Schema.Codec<VideoFormatsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     videoFormats: Schema.optional(Schema.Array(VideoFormat)),
@@ -6272,7 +6272,7 @@ export interface AdvertiserLandingPagesListResponse {
   landingPages?: ReadonlyArray<LandingPage>;
 }
 
-export const AdvertiserLandingPagesListResponse: Schema.Schema<AdvertiserLandingPagesListResponse> =
+export const AdvertiserLandingPagesListResponse: Schema.Codec<AdvertiserLandingPagesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -6288,7 +6288,7 @@ export interface AdvertisersListResponse {
   kind?: string;
 }
 
-export const AdvertisersListResponse: Schema.Schema<AdvertisersListResponse> =
+export const AdvertisersListResponse: Schema.Codec<AdvertisersListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     advertisers: Schema.optional(Schema.Array(Advertiser)),
@@ -6324,7 +6324,7 @@ export interface DynamicProfile {
   name?: string;
 }
 
-export const DynamicProfile: Schema.Schema<DynamicProfile> =
+export const DynamicProfile: Schema.Codec<DynamicProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     draft: Schema.optional(DynamicProfileVersion),
     archiveStatus: Schema.optional(Schema.String),
@@ -6380,7 +6380,7 @@ export interface RemarketingList {
     | (string & {});
 }
 
-export const RemarketingList: Schema.Schema<RemarketingList> =
+export const RemarketingList: Schema.Codec<RemarketingList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     listSize: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6406,7 +6406,7 @@ export interface RemarketingListsListResponse {
   kind?: string;
 }
 
-export const RemarketingListsListResponse: Schema.Schema<RemarketingListsListResponse> =
+export const RemarketingListsListResponse: Schema.Codec<RemarketingListsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     remarketingLists: Schema.optional(Schema.Array(RemarketingList)),
@@ -6420,7 +6420,7 @@ export interface PostalCodesListResponse {
   postalCodes?: ReadonlyArray<PostalCode>;
 }
 
-export const PostalCodesListResponse: Schema.Schema<PostalCodesListResponse> =
+export const PostalCodesListResponse: Schema.Codec<PostalCodesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     postalCodes: Schema.optional(Schema.Array(PostalCode)),
@@ -6431,7 +6431,7 @@ export interface DynamicProfileGenerateCodeResponse {
   code?: string;
 }
 
-export const DynamicProfileGenerateCodeResponse: Schema.Schema<DynamicProfileGenerateCodeResponse> =
+export const DynamicProfileGenerateCodeResponse: Schema.Codec<DynamicProfileGenerateCodeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "DynamicProfileGenerateCodeResponse" });
@@ -6447,7 +6447,7 @@ export interface AdvertiserGroup {
   kind?: string;
 }
 
-export const AdvertiserGroup: Schema.Schema<AdvertiserGroup> =
+export const AdvertiserGroup: Schema.Codec<AdvertiserGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6464,7 +6464,7 @@ export interface FloodlightActivitiesGenerateTagResponse {
   kind?: string;
 }
 
-export const FloodlightActivitiesGenerateTagResponse: Schema.Schema<FloodlightActivitiesGenerateTagResponse> =
+export const FloodlightActivitiesGenerateTagResponse: Schema.Codec<FloodlightActivitiesGenerateTagResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floodlightActivityTag: Schema.optional(Schema.String),
     globalSiteTagGlobalSnippet: Schema.optional(Schema.String),
@@ -6482,7 +6482,7 @@ export interface DimensionValueList {
   nextPageToken?: string;
 }
 
-export const DimensionValueList: Schema.Schema<DimensionValueList> =
+export const DimensionValueList: Schema.Codec<DimensionValueList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(DimensionValue)),
@@ -6497,7 +6497,7 @@ export interface TagSettings {
   imageTagEnabled?: boolean;
 }
 
-export const TagSettings: Schema.Schema<TagSettings> =
+export const TagSettings: Schema.Codec<TagSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dynamicTagEnabled: Schema.optional(Schema.Boolean),
     imageTagEnabled: Schema.optional(Schema.Boolean),
@@ -6545,7 +6545,7 @@ export interface FloodlightConfiguration {
   idDimensionValue?: DimensionValue;
 }
 
-export const FloodlightConfiguration: Schema.Schema<FloodlightConfiguration> =
+export const FloodlightConfiguration: Schema.Codec<FloodlightConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyticsDataSharingEnabled: Schema.optional(Schema.Boolean),
     accountId: Schema.optional(Schema.String),
@@ -6692,7 +6692,7 @@ export interface CreativeAssetMetadata {
   clickTags?: ReadonlyArray<ClickTag>;
 }
 
-export const CreativeAssetMetadata: Schema.Schema<CreativeAssetMetadata> =
+export const CreativeAssetMetadata: Schema.Codec<CreativeAssetMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assetIdentifier: Schema.optional(CreativeAssetId),
     detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
@@ -6749,7 +6749,7 @@ export interface MeasurementPartnerWrappingData {
     | (string & {});
 }
 
-export const MeasurementPartnerWrappingData: Schema.Schema<MeasurementPartnerWrappingData> =
+export const MeasurementPartnerWrappingData: Schema.Codec<MeasurementPartnerWrappingData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     measurementPartner: Schema.optional(Schema.String),
     tagWrappingMode: Schema.optional(Schema.String),
@@ -6764,7 +6764,7 @@ export interface CitiesListResponse {
   cities?: ReadonlyArray<City>;
 }
 
-export const CitiesListResponse: Schema.Schema<CitiesListResponse> =
+export const CitiesListResponse: Schema.Codec<CitiesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     cities: Schema.optional(Schema.Array(City)),
@@ -6781,7 +6781,7 @@ export interface PlacementStrategy {
   name?: string;
 }
 
-export const PlacementStrategy: Schema.Schema<PlacementStrategy> =
+export const PlacementStrategy: Schema.Codec<PlacementStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -6798,7 +6798,7 @@ export interface PlacementStrategiesListResponse {
   placementStrategies?: ReadonlyArray<PlacementStrategy>;
 }
 
-export const PlacementStrategiesListResponse: Schema.Schema<PlacementStrategiesListResponse> =
+export const PlacementStrategiesListResponse: Schema.Codec<PlacementStrategiesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -6818,7 +6818,7 @@ export interface Subaccount {
   kind?: string;
 }
 
-export const Subaccount: Schema.Schema<Subaccount> =
+export const Subaccount: Schema.Codec<Subaccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6836,7 +6836,7 @@ export interface ConversionsBatchUpdateResponse {
   hasFailures?: boolean;
 }
 
-export const ConversionsBatchUpdateResponse: Schema.Schema<ConversionsBatchUpdateResponse> =
+export const ConversionsBatchUpdateResponse: Schema.Codec<ConversionsBatchUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     status: Schema.optional(Schema.Array(ConversionStatus)),
@@ -6852,7 +6852,7 @@ export interface DfareportingStudioCreativeAssetsInsertRequest {
   studioAccountId?: string;
 }
 
-export const DfareportingStudioCreativeAssetsInsertRequest: Schema.Schema<DfareportingStudioCreativeAssetsInsertRequest> =
+export const DfareportingStudioCreativeAssetsInsertRequest: Schema.Codec<DfareportingStudioCreativeAssetsInsertRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studioAdvertiserId: Schema.optional(Schema.String),
     studioCreativeId: Schema.optional(Schema.String),
@@ -6868,7 +6868,7 @@ export interface DirectorySitesListResponse {
   nextPageToken?: string;
 }
 
-export const DirectorySitesListResponse: Schema.Schema<DirectorySitesListResponse> =
+export const DirectorySitesListResponse: Schema.Codec<DirectorySitesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     directorySites: Schema.optional(Schema.Array(DirectorySite)),
@@ -6886,7 +6886,7 @@ export interface SkippableSetting {
   progressOffset?: VideoOffset;
 }
 
-export const SkippableSetting: Schema.Schema<SkippableSetting> =
+export const SkippableSetting: Schema.Codec<SkippableSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skippable: Schema.optional(Schema.Boolean),
     skipOffset: Schema.optional(VideoOffset),
@@ -6910,7 +6910,7 @@ export interface DynamicTargetingKey {
   objectId?: string;
 }
 
-export const DynamicTargetingKey: Schema.Schema<DynamicTargetingKey> =
+export const DynamicTargetingKey: Schema.Codec<DynamicTargetingKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectType: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -6925,7 +6925,7 @@ export interface DynamicTargetingKeysListResponse {
   dynamicTargetingKeys?: ReadonlyArray<DynamicTargetingKey>;
 }
 
-export const DynamicTargetingKeysListResponse: Schema.Schema<DynamicTargetingKeysListResponse> =
+export const DynamicTargetingKeysListResponse: Schema.Codec<DynamicTargetingKeysListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     dynamicTargetingKeys: Schema.optional(Schema.Array(DynamicTargetingKey)),
@@ -6938,7 +6938,7 @@ export interface BillingAssignmentsListResponse {
   billingAssignments?: ReadonlyArray<BillingAssignment>;
 }
 
-export const BillingAssignmentsListResponse: Schema.Schema<BillingAssignmentsListResponse> =
+export const BillingAssignmentsListResponse: Schema.Codec<BillingAssignmentsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     billingAssignments: Schema.optional(Schema.Array(BillingAssignment)),
@@ -6949,7 +6949,7 @@ export interface StudioCreativeAssetsResponse {
   assets?: ReadonlyArray<StudioCreativeAsset>;
 }
 
-export const StudioCreativeAssetsResponse: Schema.Schema<StudioCreativeAssetsResponse> =
+export const StudioCreativeAssetsResponse: Schema.Codec<StudioCreativeAssetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assets: Schema.optional(Schema.Array(StudioCreativeAsset)),
   }).annotate({ identifier: "StudioCreativeAssetsResponse" });
@@ -6963,7 +6963,7 @@ export interface CreativeGroupsListResponse {
   nextPageToken?: string;
 }
 
-export const CreativeGroupsListResponse: Schema.Schema<CreativeGroupsListResponse> =
+export const CreativeGroupsListResponse: Schema.Codec<CreativeGroupsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     creativeGroups: Schema.optional(Schema.Array(CreativeGroup)),
@@ -6977,7 +6977,7 @@ export interface FloodlightConfigurationsListResponse {
   floodlightConfigurations?: ReadonlyArray<FloodlightConfiguration>;
 }
 
-export const FloodlightConfigurationsListResponse: Schema.Schema<FloodlightConfigurationsListResponse> =
+export const FloodlightConfigurationsListResponse: Schema.Codec<FloodlightConfigurationsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     floodlightConfigurations: Schema.optional(
@@ -6996,7 +6996,7 @@ export interface FloodlightReportCompatibleFields {
   dimensionFilters?: ReadonlyArray<Dimension>;
 }
 
-export const FloodlightReportCompatibleFields: Schema.Schema<FloodlightReportCompatibleFields> =
+export const FloodlightReportCompatibleFields: Schema.Codec<FloodlightReportCompatibleFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Dimension)),
     metrics: Schema.optional(Schema.Array(Metric)),
@@ -7011,7 +7011,7 @@ export interface SizesListResponse {
   sizes?: ReadonlyArray<Size>;
 }
 
-export const SizesListResponse: Schema.Schema<SizesListResponse> =
+export const SizesListResponse: Schema.Codec<SizesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     sizes: Schema.optional(Schema.Array(Size)),
@@ -7060,7 +7060,7 @@ export interface EventTag {
   campaignIdDimensionValue?: DimensionValue;
 }
 
-export const EventTag: Schema.Schema<EventTag> =
+export const EventTag: Schema.Codec<EventTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserIdDimensionValue: Schema.optional(DimensionValue),
     siteIds: Schema.optional(Schema.Array(Schema.String)),
@@ -7091,7 +7091,7 @@ export interface AccountPermissionGroup {
   kind?: string;
 }
 
-export const AccountPermissionGroup: Schema.Schema<AccountPermissionGroup> =
+export const AccountPermissionGroup: Schema.Codec<AccountPermissionGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -7105,7 +7105,7 @@ export interface AccountPermissionGroupsListResponse {
   accountPermissionGroups?: ReadonlyArray<AccountPermissionGroup>;
 }
 
-export const AccountPermissionGroupsListResponse: Schema.Schema<AccountPermissionGroupsListResponse> =
+export const AccountPermissionGroupsListResponse: Schema.Codec<AccountPermissionGroupsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     accountPermissionGroups: Schema.optional(
@@ -7128,7 +7128,7 @@ export interface ReachReportCompatibleFields {
   metrics?: ReadonlyArray<Metric>;
 }
 
-export const ReachReportCompatibleFields: Schema.Schema<ReachReportCompatibleFields> =
+export const ReachReportCompatibleFields: Schema.Codec<ReachReportCompatibleFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pivotedActivityMetrics: Schema.optional(Schema.Array(Metric)),
     reachByFrequencyMetrics: Schema.optional(Schema.Array(Metric)),
@@ -7155,7 +7155,7 @@ export interface CompatibleFields {
   kind?: string;
 }
 
-export const CompatibleFields: Schema.Schema<CompatibleFields> =
+export const CompatibleFields: Schema.Codec<CompatibleFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     crossMediaReachReportCompatibleFields: Schema.optional(
       CrossMediaReachReportCompatibleFields,
@@ -7185,7 +7185,7 @@ export interface CompanionSetting {
   kind?: string;
 }
 
-export const CompanionSetting: Schema.Schema<CompanionSetting> =
+export const CompanionSetting: Schema.Codec<CompanionSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     companionsDisabled: Schema.optional(Schema.Boolean),
     enabledSizes: Schema.optional(Schema.Array(Size)),
@@ -7202,7 +7202,7 @@ export interface ContentCategoriesListResponse {
   nextPageToken?: string;
 }
 
-export const ContentCategoriesListResponse: Schema.Schema<ContentCategoriesListResponse> =
+export const ContentCategoriesListResponse: Schema.Codec<ContentCategoriesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     contentCategories: Schema.optional(Schema.Array(ContentCategory)),
@@ -7216,7 +7216,7 @@ export interface AccountPermissionsListResponse {
   accountPermissions?: ReadonlyArray<AccountPermission>;
 }
 
-export const AccountPermissionsListResponse: Schema.Schema<AccountPermissionsListResponse> =
+export const AccountPermissionsListResponse: Schema.Codec<AccountPermissionsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     accountPermissions: Schema.optional(Schema.Array(AccountPermission)),
@@ -7229,7 +7229,7 @@ export interface EventTagsListResponse {
   eventTags?: ReadonlyArray<EventTag>;
 }
 
-export const EventTagsListResponse: Schema.Schema<EventTagsListResponse> =
+export const EventTagsListResponse: Schema.Codec<EventTagsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     eventTags: Schema.optional(Schema.Array(EventTag)),
@@ -7244,7 +7244,7 @@ export interface AdvertiserGroupsListResponse {
   kind?: string;
 }
 
-export const AdvertiserGroupsListResponse: Schema.Schema<AdvertiserGroupsListResponse> =
+export const AdvertiserGroupsListResponse: Schema.Codec<AdvertiserGroupsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     advertiserGroups: Schema.optional(Schema.Array(AdvertiserGroup)),
@@ -7260,7 +7260,7 @@ export interface ChangeLogsListResponse {
   changeLogs?: ReadonlyArray<ChangeLog>;
 }
 
-export const ChangeLogsListResponse: Schema.Schema<ChangeLogsListResponse> =
+export const ChangeLogsListResponse: Schema.Codec<ChangeLogsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -7271,7 +7271,7 @@ export interface PlacementConversionDomainOverride {
   conversionDomains?: ReadonlyArray<PlacementSingleConversionDomain>;
 }
 
-export const PlacementConversionDomainOverride: Schema.Schema<PlacementConversionDomainOverride> =
+export const PlacementConversionDomainOverride: Schema.Codec<PlacementConversionDomainOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversionDomains: Schema.optional(
       Schema.Array(PlacementSingleConversionDomain),
@@ -7299,7 +7299,7 @@ export interface VideoSettings {
   orientation?: "ANY" | "LANDSCAPE" | "PORTRAIT" | (string & {});
 }
 
-export const VideoSettings: Schema.Schema<VideoSettings> =
+export const VideoSettings: Schema.Codec<VideoSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     companionSettings: Schema.optional(CompanionSetting),
     obaSettings: Schema.optional(ObaIcon),
@@ -7456,7 +7456,7 @@ export interface Placement {
   additionalSizes?: ReadonlyArray<Size>;
 }
 
-export const Placement: Schema.Schema<Placement> =
+export const Placement: Schema.Codec<Placement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     publisherUpdateInfo: Schema.optional(LastModifiedInfo),
@@ -7519,7 +7519,7 @@ export interface PlacementsListResponse {
   kind?: string;
 }
 
-export const PlacementsListResponse: Schema.Schema<PlacementsListResponse> =
+export const PlacementsListResponse: Schema.Codec<PlacementsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     placements: Schema.optional(Schema.Array(Placement)),
@@ -7535,7 +7535,7 @@ export interface CreativeFieldValue {
   kind?: string;
 }
 
-export const CreativeFieldValue: Schema.Schema<CreativeFieldValue> =
+export const CreativeFieldValue: Schema.Codec<CreativeFieldValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -7551,7 +7551,7 @@ export interface CreativeFieldValuesListResponse {
   nextPageToken?: string;
 }
 
-export const CreativeFieldValuesListResponse: Schema.Schema<CreativeFieldValuesListResponse> =
+export const CreativeFieldValuesListResponse: Schema.Codec<CreativeFieldValuesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     creativeFieldValues: Schema.optional(Schema.Array(CreativeFieldValue)),
@@ -7567,7 +7567,7 @@ export interface CampaignsListResponse {
   campaigns?: ReadonlyArray<Campaign>;
 }
 
-export const CampaignsListResponse: Schema.Schema<CampaignsListResponse> =
+export const CampaignsListResponse: Schema.Codec<CampaignsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -7583,7 +7583,7 @@ export interface ConversionsBatchInsertResponse {
   hasFailures?: boolean;
 }
 
-export const ConversionsBatchInsertResponse: Schema.Schema<ConversionsBatchInsertResponse> =
+export const ConversionsBatchInsertResponse: Schema.Codec<ConversionsBatchInsertResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     status: Schema.optional(Schema.Array(ConversionStatus)),
@@ -7597,7 +7597,7 @@ export interface MobileCarriersListResponse {
   mobileCarriers?: ReadonlyArray<MobileCarrier>;
 }
 
-export const MobileCarriersListResponse: Schema.Schema<MobileCarriersListResponse> =
+export const MobileCarriersListResponse: Schema.Codec<MobileCarriersListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     mobileCarriers: Schema.optional(Schema.Array(MobileCarrier)),
@@ -7610,7 +7610,7 @@ export interface StudioCreativeDimension {
   width?: number;
 }
 
-export const StudioCreativeDimension: Schema.Schema<StudioCreativeDimension> =
+export const StudioCreativeDimension: Schema.Codec<StudioCreativeDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     height: Schema.optional(Schema.Number),
     width: Schema.optional(Schema.Number),
@@ -7625,7 +7625,7 @@ export interface SubaccountsListResponse {
   kind?: string;
 }
 
-export const SubaccountsListResponse: Schema.Schema<SubaccountsListResponse> =
+export const SubaccountsListResponse: Schema.Codec<SubaccountsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     subaccounts: Schema.optional(Schema.Array(Subaccount)),
@@ -7643,7 +7643,7 @@ export interface ReportList {
   nextPageToken?: string;
 }
 
-export const ReportList: Schema.Schema<ReportList> =
+export const ReportList: Schema.Codec<ReportList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -7693,7 +7693,7 @@ export interface StudioCreative {
   name?: string;
 }
 
-export const StudioCreative: Schema.Schema<StudioCreative> =
+export const StudioCreative: Schema.Codec<StudioCreative> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dynamicProfileId: Schema.optional(Schema.String),
     studioAdvertiserId: Schema.optional(Schema.String),
@@ -7719,7 +7719,7 @@ export interface AccountUserProfilesListResponse {
   nextPageToken?: string;
 }
 
-export const AccountUserProfilesListResponse: Schema.Schema<AccountUserProfilesListResponse> =
+export const AccountUserProfilesListResponse: Schema.Codec<AccountUserProfilesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     accountUserProfiles: Schema.optional(Schema.Array(AccountUserProfile)),
@@ -7735,7 +7735,7 @@ export interface FloodlightActivityGroupsListResponse {
   nextPageToken?: string;
 }
 
-export const FloodlightActivityGroupsListResponse: Schema.Schema<FloodlightActivityGroupsListResponse> =
+export const FloodlightActivityGroupsListResponse: Schema.Codec<FloodlightActivityGroupsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     floodlightActivityGroups: Schema.optional(
@@ -7751,7 +7751,7 @@ export interface UserRolePermissionsListResponse {
   userRolePermissions?: ReadonlyArray<UserRolePermission>;
 }
 
-export const UserRolePermissionsListResponse: Schema.Schema<UserRolePermissionsListResponse> =
+export const UserRolePermissionsListResponse: Schema.Codec<UserRolePermissionsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     userRolePermissions: Schema.optional(Schema.Array(UserRolePermission)),
@@ -7764,7 +7764,7 @@ export interface ConnectionTypesListResponse {
   kind?: string;
 }
 
-export const ConnectionTypesListResponse: Schema.Schema<ConnectionTypesListResponse> =
+export const ConnectionTypesListResponse: Schema.Codec<ConnectionTypesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionTypes: Schema.optional(Schema.Array(ConnectionType)),
     kind: Schema.optional(Schema.String),
@@ -7852,13 +7852,13 @@ export const DeleteDynamicTargetingKeysRequest =
       path: "userprofiles/{+profileId}/dynamicTargetingKeys/{+objectId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDynamicTargetingKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteDynamicTargetingKeysRequest>;
 
 export interface DeleteDynamicTargetingKeysResponse {}
-export const DeleteDynamicTargetingKeysResponse: Schema.Schema<DeleteDynamicTargetingKeysResponse> =
+export const DeleteDynamicTargetingKeysResponse: Schema.Codec<DeleteDynamicTargetingKeysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteDynamicTargetingKeysResponse>;
+  ) as any as Schema.Codec<DeleteDynamicTargetingKeysResponse>;
 
 export type DeleteDynamicTargetingKeysError =
   | DefaultErrors
@@ -7914,7 +7914,7 @@ export const ListDynamicTargetingKeysRequest =
       path: "userprofiles/{+profileId}/dynamicTargetingKeys",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListDynamicTargetingKeysRequest>;
+  ) as unknown as Schema.Codec<ListDynamicTargetingKeysRequest>;
 
 export type ListDynamicTargetingKeysResponse = DynamicTargetingKeysListResponse;
 export const ListDynamicTargetingKeysResponse =
@@ -7955,7 +7955,7 @@ export const InsertDynamicTargetingKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertDynamicTargetingKeysRequest>;
+  ) as unknown as Schema.Codec<InsertDynamicTargetingKeysRequest>;
 
 export type InsertDynamicTargetingKeysResponse = DynamicTargetingKey;
 export const InsertDynamicTargetingKeysResponse =
@@ -8008,7 +8008,7 @@ export const ListCitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/cities" }),
   svc,
-) as unknown as Schema.Schema<ListCitiesRequest>;
+) as unknown as Schema.Codec<ListCitiesRequest>;
 
 export type ListCitiesResponse = CitiesListResponse;
 export const ListCitiesResponse =
@@ -8045,7 +8045,7 @@ export const GetUserRolePermissionsRequest =
       path: "userprofiles/{+profileId}/userRolePermissions/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUserRolePermissionsRequest>;
+  ) as unknown as Schema.Codec<GetUserRolePermissionsRequest>;
 
 export type GetUserRolePermissionsResponse = UserRolePermission;
 export const GetUserRolePermissionsResponse =
@@ -8082,7 +8082,7 @@ export const ListUserRolePermissionsRequest =
       path: "userprofiles/{+profileId}/userRolePermissions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUserRolePermissionsRequest>;
+  ) as unknown as Schema.Codec<ListUserRolePermissionsRequest>;
 
 export type ListUserRolePermissionsResponse = UserRolePermissionsListResponse;
 export const ListUserRolePermissionsResponse =
@@ -8120,7 +8120,7 @@ export const UpdateAdvertisersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAdvertisersRequest>;
+  ) as unknown as Schema.Codec<UpdateAdvertisersRequest>;
 
 export type UpdateAdvertisersResponse = Advertiser;
 export const UpdateAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
@@ -8162,7 +8162,7 @@ export const InsertAdvertisersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAdvertisersRequest>;
+  ) as unknown as Schema.Codec<InsertAdvertisersRequest>;
 
 export type InsertAdvertisersResponse = Advertiser;
 export const InsertAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
@@ -8207,7 +8207,7 @@ export const PatchAdvertisersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertisersRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertisersRequest>;
 
 export type PatchAdvertisersResponse = Advertiser;
 export const PatchAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
@@ -8247,7 +8247,7 @@ export const GetAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "userprofiles/{+profileId}/advertisers/{+id}",
   }),
   svc,
-) as unknown as Schema.Schema<GetAdvertisersRequest>;
+) as unknown as Schema.Codec<GetAdvertisersRequest>;
 
 export type GetAdvertisersResponse = Advertiser;
 export const GetAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
@@ -8324,7 +8324,7 @@ export const ListAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/advertisers" }),
   svc,
-) as unknown as Schema.Schema<ListAdvertisersRequest>;
+) as unknown as Schema.Codec<ListAdvertisersRequest>;
 
 export type ListAdvertisersResponse = AdvertisersListResponse;
 export const ListAdvertisersResponse =
@@ -8369,7 +8369,7 @@ export const UpdateCreativeFieldValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCreativeFieldValuesRequest>;
+  ) as unknown as Schema.Codec<UpdateCreativeFieldValuesRequest>;
 
 export type UpdateCreativeFieldValuesResponse = CreativeFieldValue;
 export const UpdateCreativeFieldValuesResponse =
@@ -8415,7 +8415,7 @@ export const InsertCreativeFieldValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertCreativeFieldValuesRequest>;
+  ) as unknown as Schema.Codec<InsertCreativeFieldValuesRequest>;
 
 export type InsertCreativeFieldValuesResponse = CreativeFieldValue;
 export const InsertCreativeFieldValuesResponse =
@@ -8464,7 +8464,7 @@ export const PatchCreativeFieldValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCreativeFieldValuesRequest>;
+  ) as unknown as Schema.Codec<PatchCreativeFieldValuesRequest>;
 
 export type PatchCreativeFieldValuesResponse = CreativeFieldValue;
 export const PatchCreativeFieldValuesResponse =
@@ -8509,7 +8509,7 @@ export const GetCreativeFieldValuesRequest =
       path: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCreativeFieldValuesRequest>;
+  ) as unknown as Schema.Codec<GetCreativeFieldValuesRequest>;
 
 export type GetCreativeFieldValuesResponse = CreativeFieldValue;
 export const GetCreativeFieldValuesResponse =
@@ -8549,13 +8549,13 @@ export const DeleteCreativeFieldValuesRequest =
       path: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCreativeFieldValuesRequest>;
+  ) as unknown as Schema.Codec<DeleteCreativeFieldValuesRequest>;
 
 export interface DeleteCreativeFieldValuesResponse {}
-export const DeleteCreativeFieldValuesResponse: Schema.Schema<DeleteCreativeFieldValuesResponse> =
+export const DeleteCreativeFieldValuesResponse: Schema.Codec<DeleteCreativeFieldValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteCreativeFieldValuesResponse>;
+  ) as any as Schema.Codec<DeleteCreativeFieldValuesResponse>;
 
 export type DeleteCreativeFieldValuesError =
   | DefaultErrors
@@ -8613,7 +8613,7 @@ export const ListCreativeFieldValuesRequest =
       path: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCreativeFieldValuesRequest>;
+  ) as unknown as Schema.Codec<ListCreativeFieldValuesRequest>;
 
 export type ListCreativeFieldValuesResponse = CreativeFieldValuesListResponse;
 export const ListCreativeFieldValuesResponse =
@@ -8654,7 +8654,7 @@ export const GetRemarketingListSharesRequest =
       path: "userprofiles/{+profileId}/remarketingListShares/{+remarketingListId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRemarketingListSharesRequest>;
+  ) as unknown as Schema.Codec<GetRemarketingListSharesRequest>;
 
 export type GetRemarketingListSharesResponse = RemarketingListShare;
 export const GetRemarketingListSharesResponse =
@@ -8698,7 +8698,7 @@ export const PatchRemarketingListSharesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRemarketingListSharesRequest>;
+  ) as unknown as Schema.Codec<PatchRemarketingListSharesRequest>;
 
 export type PatchRemarketingListSharesResponse = RemarketingListShare;
 export const PatchRemarketingListSharesResponse =
@@ -8741,7 +8741,7 @@ export const UpdateRemarketingListSharesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRemarketingListSharesRequest>;
+  ) as unknown as Schema.Codec<UpdateRemarketingListSharesRequest>;
 
 export type UpdateRemarketingListSharesResponse = RemarketingListShare;
 export const UpdateRemarketingListSharesResponse =
@@ -8790,7 +8790,7 @@ export const QueryDimensionValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryDimensionValuesRequest>;
+  ) as unknown as Schema.Codec<QueryDimensionValuesRequest>;
 
 export type QueryDimensionValuesResponse = DimensionValueList;
 export const QueryDimensionValuesResponse =
@@ -8932,7 +8932,7 @@ export const ListChangeLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/changeLogs" }),
   svc,
-) as unknown as Schema.Schema<ListChangeLogsRequest>;
+) as unknown as Schema.Codec<ListChangeLogsRequest>;
 
 export type ListChangeLogsResponse = ChangeLogsListResponse;
 export const ListChangeLogsResponse =
@@ -8969,7 +8969,7 @@ export const GetChangeLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/changeLogs/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetChangeLogsRequest>;
+) as unknown as Schema.Codec<GetChangeLogsRequest>;
 
 export type GetChangeLogsResponse = ChangeLog;
 export const GetChangeLogsResponse = /*@__PURE__*/ /*#__PURE__*/ ChangeLog;
@@ -8998,7 +8998,7 @@ export const ListMetrosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/metros" }),
   svc,
-) as unknown as Schema.Schema<ListMetrosRequest>;
+) as unknown as Schema.Codec<ListMetrosRequest>;
 
 export type ListMetrosResponse = MetrosListResponse;
 export const ListMetrosResponse =
@@ -9032,7 +9032,7 @@ export const ListConnectionTypesRequest =
       path: "userprofiles/{+profileId}/connectionTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListConnectionTypesRequest>;
+  ) as unknown as Schema.Codec<ListConnectionTypesRequest>;
 
 export type ListConnectionTypesResponse = ConnectionTypesListResponse;
 export const ListConnectionTypesResponse =
@@ -9069,7 +9069,7 @@ export const GetConnectionTypesRequest =
       path: "userprofiles/{+profileId}/connectionTypes/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetConnectionTypesRequest>;
+  ) as unknown as Schema.Codec<GetConnectionTypesRequest>;
 
 export type GetConnectionTypesResponse = ConnectionType;
 export const GetConnectionTypesResponse =
@@ -9107,7 +9107,7 @@ export const UpdateContentCategoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateContentCategoriesRequest>;
+  ) as unknown as Schema.Codec<UpdateContentCategoriesRequest>;
 
 export type UpdateContentCategoriesResponse = ContentCategory;
 export const UpdateContentCategoriesResponse =
@@ -9150,7 +9150,7 @@ export const InsertContentCategoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertContentCategoriesRequest>;
+  ) as unknown as Schema.Codec<InsertContentCategoriesRequest>;
 
 export type InsertContentCategoriesResponse = ContentCategory;
 export const InsertContentCategoriesResponse =
@@ -9196,7 +9196,7 @@ export const PatchContentCategoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchContentCategoriesRequest>;
+  ) as unknown as Schema.Codec<PatchContentCategoriesRequest>;
 
 export type PatchContentCategoriesResponse = ContentCategory;
 export const PatchContentCategoriesResponse =
@@ -9238,13 +9238,13 @@ export const DeleteContentCategoriesRequest =
       path: "userprofiles/{+profileId}/contentCategories/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteContentCategoriesRequest>;
+  ) as unknown as Schema.Codec<DeleteContentCategoriesRequest>;
 
 export interface DeleteContentCategoriesResponse {}
-export const DeleteContentCategoriesResponse: Schema.Schema<DeleteContentCategoriesResponse> =
+export const DeleteContentCategoriesResponse: Schema.Codec<DeleteContentCategoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteContentCategoriesResponse>;
+  ) as any as Schema.Codec<DeleteContentCategoriesResponse>;
 
 export type DeleteContentCategoriesError =
   | DefaultErrors
@@ -9299,7 +9299,7 @@ export const ListContentCategoriesRequest =
       path: "userprofiles/{+profileId}/contentCategories",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListContentCategoriesRequest>;
+  ) as unknown as Schema.Codec<ListContentCategoriesRequest>;
 
 export type ListContentCategoriesResponse = ContentCategoriesListResponse;
 export const ListContentCategoriesResponse =
@@ -9340,7 +9340,7 @@ export const GetContentCategoriesRequest =
       path: "userprofiles/{+profileId}/contentCategories/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetContentCategoriesRequest>;
+  ) as unknown as Schema.Codec<GetContentCategoriesRequest>;
 
 export type GetContentCategoriesResponse = ContentCategory;
 export const GetContentCategoriesResponse =
@@ -9370,7 +9370,7 @@ export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/regions" }),
   svc,
-) as unknown as Schema.Schema<ListRegionsRequest>;
+) as unknown as Schema.Codec<ListRegionsRequest>;
 
 export type ListRegionsResponse = RegionsListResponse;
 export const ListRegionsResponse =
@@ -9400,7 +9400,7 @@ export const ListBrowsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/browsers" }),
   svc,
-) as unknown as Schema.Schema<ListBrowsersRequest>;
+) as unknown as Schema.Codec<ListBrowsersRequest>;
 
 export type ListBrowsersResponse = BrowsersListResponse;
 export const ListBrowsersResponse =
@@ -9434,7 +9434,7 @@ export const ListAccountPermissionGroupsRequest =
       path: "userprofiles/{+profileId}/accountPermissionGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountPermissionGroupsRequest>;
+  ) as unknown as Schema.Codec<ListAccountPermissionGroupsRequest>;
 
 export type ListAccountPermissionGroupsResponse =
   AccountPermissionGroupsListResponse;
@@ -9475,7 +9475,7 @@ export const GetAccountPermissionGroupsRequest =
       path: "userprofiles/{+profileId}/accountPermissionGroups/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountPermissionGroupsRequest>;
+  ) as unknown as Schema.Codec<GetAccountPermissionGroupsRequest>;
 
 export type GetAccountPermissionGroupsResponse = AccountPermissionGroup;
 export const GetAccountPermissionGroupsResponse =
@@ -9515,7 +9515,7 @@ export const GetPlatformTypesRequest =
       path: "userprofiles/{+profileId}/platformTypes/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPlatformTypesRequest>;
+  ) as unknown as Schema.Codec<GetPlatformTypesRequest>;
 
 export type GetPlatformTypesResponse = PlatformType;
 export const GetPlatformTypesResponse =
@@ -9546,7 +9546,7 @@ export const ListPlatformTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "userprofiles/{+profileId}/platformTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlatformTypesRequest>;
+  ) as unknown as Schema.Codec<ListPlatformTypesRequest>;
 
 export type ListPlatformTypesResponse = PlatformTypesListResponse;
 export const ListPlatformTypesResponse =
@@ -9584,7 +9584,7 @@ export const UpdateAccountUserProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountUserProfilesRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountUserProfilesRequest>;
 
 export type UpdateAccountUserProfilesResponse = AccountUserProfile;
 export const UpdateAccountUserProfilesResponse =
@@ -9626,7 +9626,7 @@ export const GetAccountUserProfilesRequest =
       path: "userprofiles/{profileId}/accountUserProfiles/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountUserProfilesRequest>;
+  ) as unknown as Schema.Codec<GetAccountUserProfilesRequest>;
 
 export type GetAccountUserProfilesResponse = AccountUserProfile;
 export const GetAccountUserProfilesResponse =
@@ -9691,7 +9691,7 @@ export const ListAccountUserProfilesRequest =
       path: "userprofiles/{+profileId}/accountUserProfiles",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountUserProfilesRequest>;
+  ) as unknown as Schema.Codec<ListAccountUserProfilesRequest>;
 
 export type ListAccountUserProfilesResponse = AccountUserProfilesListResponse;
 export const ListAccountUserProfilesResponse =
@@ -9733,7 +9733,7 @@ export const InsertAccountUserProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountUserProfilesRequest>;
+  ) as unknown as Schema.Codec<InsertAccountUserProfilesRequest>;
 
 export type InsertAccountUserProfilesResponse = AccountUserProfile;
 export const InsertAccountUserProfilesResponse =
@@ -9779,7 +9779,7 @@ export const PatchAccountUserProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountUserProfilesRequest>;
+  ) as unknown as Schema.Codec<PatchAccountUserProfilesRequest>;
 
 export type PatchAccountUserProfilesResponse = AccountUserProfile;
 export const PatchAccountUserProfilesResponse =
@@ -9821,7 +9821,7 @@ export const GetOperatingSystemVersionsRequest =
       path: "userprofiles/{+profileId}/operatingSystemVersions/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOperatingSystemVersionsRequest>;
+  ) as unknown as Schema.Codec<GetOperatingSystemVersionsRequest>;
 
 export type GetOperatingSystemVersionsResponse = OperatingSystemVersion;
 export const GetOperatingSystemVersionsResponse =
@@ -9858,7 +9858,7 @@ export const ListOperatingSystemVersionsRequest =
       path: "userprofiles/{+profileId}/operatingSystemVersions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListOperatingSystemVersionsRequest>;
+  ) as unknown as Schema.Codec<ListOperatingSystemVersionsRequest>;
 
 export type ListOperatingSystemVersionsResponse =
   OperatingSystemVersionsListResponse;
@@ -9899,7 +9899,7 @@ export const GetAccountPermissionsRequest =
       path: "userprofiles/{+profileId}/accountPermissions/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountPermissionsRequest>;
+  ) as unknown as Schema.Codec<GetAccountPermissionsRequest>;
 
 export type GetAccountPermissionsResponse = AccountPermission;
 export const GetAccountPermissionsResponse =
@@ -9933,7 +9933,7 @@ export const ListAccountPermissionsRequest =
       path: "userprofiles/{+profileId}/accountPermissions",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountPermissionsRequest>;
+  ) as unknown as Schema.Codec<ListAccountPermissionsRequest>;
 
 export type ListAccountPermissionsResponse = AccountPermissionsListResponse;
 export const ListAccountPermissionsResponse =
@@ -9964,7 +9964,7 @@ export const InsertDynamicProfilesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "studio/dynamicProfiles", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertDynamicProfilesRequest>;
+  ) as unknown as Schema.Codec<InsertDynamicProfilesRequest>;
 
 export type InsertDynamicProfilesResponse = DynamicProfile;
 export const InsertDynamicProfilesResponse =
@@ -10003,7 +10003,7 @@ export const GenerateCodeDynamicProfilesRequest =
       path: "studio/dynamicProfiles/{+dynamicProfileId}/generateCode",
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateCodeDynamicProfilesRequest>;
+  ) as unknown as Schema.Codec<GenerateCodeDynamicProfilesRequest>;
 
 export type GenerateCodeDynamicProfilesResponse =
   DynamicProfileGenerateCodeResponse;
@@ -10042,13 +10042,13 @@ export const PublishDynamicProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PublishDynamicProfilesRequest>;
+  ) as unknown as Schema.Codec<PublishDynamicProfilesRequest>;
 
 export interface PublishDynamicProfilesResponse {}
-export const PublishDynamicProfilesResponse: Schema.Schema<PublishDynamicProfilesResponse> =
+export const PublishDynamicProfilesResponse: Schema.Codec<PublishDynamicProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<PublishDynamicProfilesResponse>;
+  ) as any as Schema.Codec<PublishDynamicProfilesResponse>;
 
 export type PublishDynamicProfilesError =
   | DefaultErrors
@@ -10083,7 +10083,7 @@ export const GetDynamicProfilesRequest =
       path: "studio/dynamicProfiles/{+dynamicProfileId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetDynamicProfilesRequest>;
+  ) as unknown as Schema.Codec<GetDynamicProfilesRequest>;
 
 export type GetDynamicProfilesResponse = DynamicProfile;
 export const GetDynamicProfilesResponse =
@@ -10114,7 +10114,7 @@ export const UpdateDynamicProfilesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "studio/dynamicProfiles", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDynamicProfilesRequest>;
+  ) as unknown as Schema.Codec<UpdateDynamicProfilesRequest>;
 
 export type UpdateDynamicProfilesResponse = DynamicProfile;
 export const UpdateDynamicProfilesResponse =
@@ -10157,7 +10157,7 @@ export const UpdatePlacementGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePlacementGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdatePlacementGroupsRequest>;
 
 export type UpdatePlacementGroupsResponse = PlacementGroup;
 export const UpdatePlacementGroupsResponse =
@@ -10203,7 +10203,7 @@ export const PatchPlacementGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPlacementGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchPlacementGroupsRequest>;
 
 export type PatchPlacementGroupsResponse = PlacementGroup;
 export const PatchPlacementGroupsResponse =
@@ -10246,7 +10246,7 @@ export const InsertPlacementGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertPlacementGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertPlacementGroupsRequest>;
 
 export type InsertPlacementGroupsResponse = PlacementGroup;
 export const InsertPlacementGroupsResponse =
@@ -10288,7 +10288,7 @@ export const GetPlacementGroupsRequest =
       path: "userprofiles/{+profileId}/placementGroups/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPlacementGroupsRequest>;
+  ) as unknown as Schema.Codec<GetPlacementGroupsRequest>;
 
 export type GetPlacementGroupsResponse = PlacementGroup;
 export const GetPlacementGroupsResponse =
@@ -10419,7 +10419,7 @@ export const ListPlacementGroupsRequest =
       path: "userprofiles/{+profileId}/placementGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPlacementGroupsRequest>;
+  ) as unknown as Schema.Codec<ListPlacementGroupsRequest>;
 
 export type ListPlacementGroupsResponse = PlacementGroupsListResponse;
 export const ListPlacementGroupsResponse =
@@ -10461,7 +10461,7 @@ export const BatchinsertConversionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchinsertConversionsRequest>;
+  ) as unknown as Schema.Codec<BatchinsertConversionsRequest>;
 
 export type BatchinsertConversionsResponse = ConversionsBatchInsertResponse;
 export const BatchinsertConversionsResponse =
@@ -10504,7 +10504,7 @@ export const BatchupdateConversionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchupdateConversionsRequest>;
+  ) as unknown as Schema.Codec<BatchupdateConversionsRequest>;
 
 export type BatchupdateConversionsResponse = ConversionsBatchUpdateResponse;
 export const BatchupdateConversionsResponse =
@@ -10544,7 +10544,7 @@ export const RetransformDynamicFeedsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RetransformDynamicFeedsRequest>;
+  ) as unknown as Schema.Codec<RetransformDynamicFeedsRequest>;
 
 export type RetransformDynamicFeedsResponse = DynamicFeed;
 export const RetransformDynamicFeedsResponse =
@@ -10580,7 +10580,7 @@ export const InsertDynamicFeedsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "studio/dynamicFeeds", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertDynamicFeedsRequest>;
+  ) as unknown as Schema.Codec<InsertDynamicFeedsRequest>;
 
 export type InsertDynamicFeedsResponse = DynamicFeed;
 export const InsertDynamicFeedsResponse =
@@ -10616,7 +10616,7 @@ export const UpdateDynamicFeedsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "studio/dynamicFeeds", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDynamicFeedsRequest>;
+  ) as unknown as Schema.Codec<UpdateDynamicFeedsRequest>;
 
 export type UpdateDynamicFeedsResponse = DynamicFeed;
 export const UpdateDynamicFeedsResponse =
@@ -10653,7 +10653,7 @@ export const GetDynamicFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "studio/dynamicFeeds/{+dynamicFeedId}" }),
   svc,
-) as unknown as Schema.Schema<GetDynamicFeedsRequest>;
+) as unknown as Schema.Codec<GetDynamicFeedsRequest>;
 
 export type GetDynamicFeedsResponse = DynamicFeed;
 export const GetDynamicFeedsResponse = /*@__PURE__*/ /*#__PURE__*/ DynamicFeed;
@@ -10689,7 +10689,7 @@ export const GetOperatingSystemsRequest =
       path: "userprofiles/{+profileId}/operatingSystems/{+dartId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOperatingSystemsRequest>;
+  ) as unknown as Schema.Codec<GetOperatingSystemsRequest>;
 
 export type GetOperatingSystemsResponse = OperatingSystem;
 export const GetOperatingSystemsResponse =
@@ -10723,7 +10723,7 @@ export const ListOperatingSystemsRequest =
       path: "userprofiles/{+profileId}/operatingSystems",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListOperatingSystemsRequest>;
+  ) as unknown as Schema.Codec<ListOperatingSystemsRequest>;
 
 export type ListOperatingSystemsResponse = OperatingSystemsListResponse;
 export const ListOperatingSystemsResponse =
@@ -10760,7 +10760,7 @@ export const GetTargetingTemplatesRequest =
       path: "userprofiles/{+profileId}/targetingTemplates/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetingTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetTargetingTemplatesRequest>;
 
 export type GetTargetingTemplatesResponse = TargetingTemplate;
 export const GetTargetingTemplatesResponse =
@@ -10819,7 +10819,7 @@ export const ListTargetingTemplatesRequest =
       path: "userprofiles/{+profileId}/targetingTemplates",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetingTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListTargetingTemplatesRequest>;
 
 export type ListTargetingTemplatesResponse = TargetingTemplatesListResponse;
 export const ListTargetingTemplatesResponse =
@@ -10864,7 +10864,7 @@ export const PatchTargetingTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchTargetingTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchTargetingTemplatesRequest>;
 
 export type PatchTargetingTemplatesResponse = TargetingTemplate;
 export const PatchTargetingTemplatesResponse =
@@ -10907,7 +10907,7 @@ export const InsertTargetingTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertTargetingTemplatesRequest>;
+  ) as unknown as Schema.Codec<InsertTargetingTemplatesRequest>;
 
 export type InsertTargetingTemplatesResponse = TargetingTemplate;
 export const InsertTargetingTemplatesResponse =
@@ -10950,7 +10950,7 @@ export const UpdateTargetingTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateTargetingTemplatesRequest>;
+  ) as unknown as Schema.Codec<UpdateTargetingTemplatesRequest>;
 
 export type UpdateTargetingTemplatesResponse = TargetingTemplate;
 export const UpdateTargetingTemplatesResponse =
@@ -10993,7 +10993,7 @@ export const InsertDirectorySitesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertDirectorySitesRequest>;
+  ) as unknown as Schema.Codec<InsertDirectorySitesRequest>;
 
 export type InsertDirectorySitesResponse = DirectorySite;
 export const InsertDirectorySitesResponse =
@@ -11035,7 +11035,7 @@ export const GetDirectorySitesRequest =
       path: "userprofiles/{+profileId}/directorySites/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetDirectorySitesRequest>;
+  ) as unknown as Schema.Codec<GetDirectorySitesRequest>;
 
 export type GetDirectorySitesResponse = DirectorySite;
 export const GetDirectorySitesResponse =
@@ -11109,7 +11109,7 @@ export const ListDirectorySitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "userprofiles/{+profileId}/directorySites" }),
     svc,
-  ) as unknown as Schema.Schema<ListDirectorySitesRequest>;
+  ) as unknown as Schema.Codec<ListDirectorySitesRequest>;
 
 export type ListDirectorySitesResponse = DirectorySitesListResponse;
 export const ListDirectorySitesResponse =
@@ -11152,7 +11152,7 @@ export const UpdateCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateCampaignsRequest>;
+) as unknown as Schema.Codec<UpdateCampaignsRequest>;
 
 export type UpdateCampaignsResponse = Campaign;
 export const UpdateCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Campaign;
@@ -11189,7 +11189,7 @@ export const GetCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/campaigns/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetCampaignsRequest>;
+) as unknown as Schema.Codec<GetCampaignsRequest>;
 
 export type GetCampaignsResponse = Campaign;
 export const GetCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Campaign;
@@ -11271,7 +11271,7 @@ export const ListCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/campaigns" }),
   svc,
-) as unknown as Schema.Schema<ListCampaignsRequest>;
+) as unknown as Schema.Codec<ListCampaignsRequest>;
 
 export type ListCampaignsResponse = CampaignsListResponse;
 export const ListCampaignsResponse =
@@ -11314,7 +11314,7 @@ export const InsertCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertCampaignsRequest>;
+) as unknown as Schema.Codec<InsertCampaignsRequest>;
 
 export type InsertCampaignsResponse = Campaign;
 export const InsertCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Campaign;
@@ -11358,7 +11358,7 @@ export const PatchCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchCampaignsRequest>;
+) as unknown as Schema.Codec<PatchCampaignsRequest>;
 
 export type PatchCampaignsResponse = Campaign;
 export const PatchCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Campaign;
@@ -11400,7 +11400,7 @@ export const UpdateFloodlightConfigurationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateFloodlightConfigurationsRequest>;
+  ) as unknown as Schema.Codec<UpdateFloodlightConfigurationsRequest>;
 
 export type UpdateFloodlightConfigurationsResponse = FloodlightConfiguration;
 export const UpdateFloodlightConfigurationsResponse =
@@ -11446,7 +11446,7 @@ export const PatchFloodlightConfigurationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchFloodlightConfigurationsRequest>;
+  ) as unknown as Schema.Codec<PatchFloodlightConfigurationsRequest>;
 
 export type PatchFloodlightConfigurationsResponse = FloodlightConfiguration;
 export const PatchFloodlightConfigurationsResponse =
@@ -11488,7 +11488,7 @@ export const ListFloodlightConfigurationsRequest =
       path: "userprofiles/{+profileId}/floodlightConfigurations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListFloodlightConfigurationsRequest>;
+  ) as unknown as Schema.Codec<ListFloodlightConfigurationsRequest>;
 
 export type ListFloodlightConfigurationsResponse =
   FloodlightConfigurationsListResponse;
@@ -11529,7 +11529,7 @@ export const GetFloodlightConfigurationsRequest =
       path: "userprofiles/{+profileId}/floodlightConfigurations/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetFloodlightConfigurationsRequest>;
+  ) as unknown as Schema.Codec<GetFloodlightConfigurationsRequest>;
 
 export type GetFloodlightConfigurationsResponse = FloodlightConfiguration;
 export const GetFloodlightConfigurationsResponse =
@@ -11593,7 +11593,7 @@ export const GetTvCampaignDetailsRequest =
       path: "userprofiles/{+profileId}/tvCampaignDetails/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTvCampaignDetailsRequest>;
+  ) as unknown as Schema.Codec<GetTvCampaignDetailsRequest>;
 
 export type GetTvCampaignDetailsResponse = TvCampaignDetail;
 export const GetTvCampaignDetailsResponse =
@@ -11631,7 +11631,7 @@ export const UpdateCreativeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCreativeGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateCreativeGroupsRequest>;
 
 export type UpdateCreativeGroupsResponse = CreativeGroup;
 export const UpdateCreativeGroupsResponse =
@@ -11674,7 +11674,7 @@ export const InsertCreativeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertCreativeGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertCreativeGroupsRequest>;
 
 export type InsertCreativeGroupsResponse = CreativeGroup;
 export const InsertCreativeGroupsResponse =
@@ -11720,7 +11720,7 @@ export const PatchCreativeGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCreativeGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchCreativeGroupsRequest>;
 
 export type PatchCreativeGroupsResponse = CreativeGroup;
 export const PatchCreativeGroupsResponse =
@@ -11762,7 +11762,7 @@ export const GetCreativeGroupsRequest =
       path: "userprofiles/{+profileId}/creativeGroups/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCreativeGroupsRequest>;
+  ) as unknown as Schema.Codec<GetCreativeGroupsRequest>;
 
 export type GetCreativeGroupsResponse = CreativeGroup;
 export const GetCreativeGroupsResponse =
@@ -11823,7 +11823,7 @@ export const ListCreativeGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "userprofiles/{+profileId}/creativeGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListCreativeGroupsRequest>;
+  ) as unknown as Schema.Codec<ListCreativeGroupsRequest>;
 
 export type ListCreativeGroupsResponse = CreativeGroupsListResponse;
 export const ListCreativeGroupsResponse =
@@ -11872,7 +11872,7 @@ export const ListFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{profileId}/files" }),
   svc,
-) as unknown as Schema.Schema<ListFilesRequest>;
+) as unknown as Schema.Codec<ListFilesRequest>;
 
 export type ListFilesResponse = FileList;
 export const ListFilesResponse = /*@__PURE__*/ /*#__PURE__*/ FileList;
@@ -11909,7 +11909,7 @@ export const GetFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "reports/{reportId}/files/{fileId}" }),
   svc,
-) as unknown as Schema.Schema<GetFilesRequest>;
+) as unknown as Schema.Codec<GetFilesRequest>;
 
 export type GetFilesResponse = File;
 export const GetFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
@@ -11944,7 +11944,7 @@ export const GetPostalCodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "userprofiles/{+profileId}/postalCodes/{+code}",
   }),
   svc,
-) as unknown as Schema.Schema<GetPostalCodesRequest>;
+) as unknown as Schema.Codec<GetPostalCodesRequest>;
 
 export type GetPostalCodesResponse = PostalCode;
 export const GetPostalCodesResponse = /*@__PURE__*/ /*#__PURE__*/ PostalCode;
@@ -11975,7 +11975,7 @@ export const ListPostalCodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/postalCodes" }),
   svc,
-) as unknown as Schema.Schema<ListPostalCodesRequest>;
+) as unknown as Schema.Codec<ListPostalCodesRequest>;
 
 export type ListPostalCodesResponse = PostalCodesListResponse;
 export const ListPostalCodesResponse =
@@ -12012,7 +12012,7 @@ export const GetAccountActiveAdSummariesRequest =
       path: "userprofiles/{+profileId}/accountActiveAdSummaries/{+summaryAccountId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountActiveAdSummariesRequest>;
+  ) as unknown as Schema.Codec<GetAccountActiveAdSummariesRequest>;
 
 export type GetAccountActiveAdSummariesResponse = AccountActiveAdSummary;
 export const GetAccountActiveAdSummariesResponse =
@@ -12052,7 +12052,7 @@ export const GetTargetableRemarketingListsRequest =
       path: "userprofiles/{+profileId}/targetableRemarketingLists/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetTargetableRemarketingListsRequest>;
+  ) as unknown as Schema.Codec<GetTargetableRemarketingListsRequest>;
 
 export type GetTargetableRemarketingListsResponse = TargetableRemarketingList;
 export const GetTargetableRemarketingListsResponse =
@@ -12110,7 +12110,7 @@ export const ListTargetableRemarketingListsRequest =
       path: "userprofiles/{+profileId}/targetableRemarketingLists",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTargetableRemarketingListsRequest>;
+  ) as unknown as Schema.Codec<ListTargetableRemarketingListsRequest>;
 
 export type ListTargetableRemarketingListsResponse =
   TargetableRemarketingListsListResponse;
@@ -12154,7 +12154,7 @@ export const GetCountriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "userprofiles/{+profileId}/countries/{+dartId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetCountriesRequest>;
+) as unknown as Schema.Codec<GetCountriesRequest>;
 
 export type GetCountriesResponse = Country;
 export const GetCountriesResponse = /*@__PURE__*/ /*#__PURE__*/ Country;
@@ -12183,7 +12183,7 @@ export const ListCountriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/countries" }),
   svc,
-) as unknown as Schema.Schema<ListCountriesRequest>;
+) as unknown as Schema.Codec<ListCountriesRequest>;
 
 export type ListCountriesResponse = CountriesListResponse;
 export const ListCountriesResponse =
@@ -12267,7 +12267,7 @@ export const GeneratetagsPlacementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GeneratetagsPlacementsRequest>;
+  ) as unknown as Schema.Codec<GeneratetagsPlacementsRequest>;
 
 export type GeneratetagsPlacementsResponse = PlacementsGenerateTagsResponse;
 export const GeneratetagsPlacementsResponse =
@@ -12421,7 +12421,7 @@ export const ListPlacementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/placements" }),
   svc,
-) as unknown as Schema.Schema<ListPlacementsRequest>;
+) as unknown as Schema.Codec<ListPlacementsRequest>;
 
 export type ListPlacementsResponse = PlacementsListResponse;
 export const ListPlacementsResponse =
@@ -12458,7 +12458,7 @@ export const GetPlacementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/placements/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetPlacementsRequest>;
+) as unknown as Schema.Codec<GetPlacementsRequest>;
 
 export type GetPlacementsResponse = Placement;
 export const GetPlacementsResponse = /*@__PURE__*/ /*#__PURE__*/ Placement;
@@ -12499,7 +12499,7 @@ export const PatchPlacementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchPlacementsRequest>;
+) as unknown as Schema.Codec<PatchPlacementsRequest>;
 
 export type PatchPlacementsResponse = Placement;
 export const PatchPlacementsResponse = /*@__PURE__*/ /*#__PURE__*/ Placement;
@@ -12541,7 +12541,7 @@ export const InsertPlacementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertPlacementsRequest>;
+  ) as unknown as Schema.Codec<InsertPlacementsRequest>;
 
 export type InsertPlacementsResponse = Placement;
 export const InsertPlacementsResponse = /*@__PURE__*/ /*#__PURE__*/ Placement;
@@ -12583,7 +12583,7 @@ export const UpdatePlacementsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePlacementsRequest>;
+  ) as unknown as Schema.Codec<UpdatePlacementsRequest>;
 
 export type UpdatePlacementsResponse = Placement;
 export const UpdatePlacementsResponse = /*@__PURE__*/ /*#__PURE__*/ Placement;
@@ -12659,7 +12659,7 @@ export const ListAdvertiserLandingPagesRequest =
       path: "userprofiles/{+profileId}/advertiserLandingPages",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertiserLandingPagesRequest>;
+  ) as unknown as Schema.Codec<ListAdvertiserLandingPagesRequest>;
 
 export type ListAdvertiserLandingPagesResponse =
   AdvertiserLandingPagesListResponse;
@@ -12704,7 +12704,7 @@ export const GetAdvertiserLandingPagesRequest =
       path: "userprofiles/{+profileId}/advertiserLandingPages/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertiserLandingPagesRequest>;
+  ) as unknown as Schema.Codec<GetAdvertiserLandingPagesRequest>;
 
 export type GetAdvertiserLandingPagesResponse = LandingPage;
 export const GetAdvertiserLandingPagesResponse =
@@ -12745,7 +12745,7 @@ export const InsertAdvertiserLandingPagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAdvertiserLandingPagesRequest>;
+  ) as unknown as Schema.Codec<InsertAdvertiserLandingPagesRequest>;
 
 export type InsertAdvertiserLandingPagesResponse = LandingPage;
 export const InsertAdvertiserLandingPagesResponse =
@@ -12791,7 +12791,7 @@ export const PatchAdvertiserLandingPagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertiserLandingPagesRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertiserLandingPagesRequest>;
 
 export type PatchAdvertiserLandingPagesResponse = LandingPage;
 export const PatchAdvertiserLandingPagesResponse =
@@ -12834,7 +12834,7 @@ export const UpdateAdvertiserLandingPagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAdvertiserLandingPagesRequest>;
+  ) as unknown as Schema.Codec<UpdateAdvertiserLandingPagesRequest>;
 
 export type UpdateAdvertiserLandingPagesResponse = LandingPage;
 export const UpdateAdvertiserLandingPagesResponse =
@@ -12873,7 +12873,7 @@ export const ListUserRolePermissionGroupsRequest =
       path: "userprofiles/{+profileId}/userRolePermissionGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUserRolePermissionGroupsRequest>;
+  ) as unknown as Schema.Codec<ListUserRolePermissionGroupsRequest>;
 
 export type ListUserRolePermissionGroupsResponse =
   UserRolePermissionGroupsListResponse;
@@ -12914,7 +12914,7 @@ export const GetUserRolePermissionGroupsRequest =
       path: "userprofiles/{+profileId}/userRolePermissionGroups/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUserRolePermissionGroupsRequest>;
+  ) as unknown as Schema.Codec<GetUserRolePermissionGroupsRequest>;
 
 export type GetUserRolePermissionGroupsResponse = UserRolePermissionGroup;
 export const GetUserRolePermissionGroupsResponse =
@@ -12956,7 +12956,7 @@ export const UpdateEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateEventTagsRequest>;
+) as unknown as Schema.Codec<UpdateEventTagsRequest>;
 
 export type UpdateEventTagsResponse = EventTag;
 export const UpdateEventTagsResponse = /*@__PURE__*/ /*#__PURE__*/ EventTag;
@@ -12998,13 +12998,13 @@ export const DeleteEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "userprofiles/{+profileId}/eventTags/{+id}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteEventTagsRequest>;
+) as unknown as Schema.Codec<DeleteEventTagsRequest>;
 
 export interface DeleteEventTagsResponse {}
-export const DeleteEventTagsResponse: Schema.Schema<DeleteEventTagsResponse> =
+export const DeleteEventTagsResponse: Schema.Codec<DeleteEventTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteEventTagsResponse>;
+  ) as any as Schema.Codec<DeleteEventTagsResponse>;
 
 export type DeleteEventTagsError =
   | DefaultErrors
@@ -13077,7 +13077,7 @@ export const ListEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/eventTags" }),
   svc,
-) as unknown as Schema.Schema<ListEventTagsRequest>;
+) as unknown as Schema.Codec<ListEventTagsRequest>;
 
 export type ListEventTagsResponse = EventTagsListResponse;
 export const ListEventTagsResponse =
@@ -13110,7 +13110,7 @@ export const GetEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/eventTags/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetEventTagsRequest>;
+) as unknown as Schema.Codec<GetEventTagsRequest>;
 
 export type GetEventTagsResponse = EventTag;
 export const GetEventTagsResponse = /*@__PURE__*/ /*#__PURE__*/ EventTag;
@@ -13148,7 +13148,7 @@ export const InsertEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertEventTagsRequest>;
+) as unknown as Schema.Codec<InsertEventTagsRequest>;
 
 export type InsertEventTagsResponse = EventTag;
 export const InsertEventTagsResponse = /*@__PURE__*/ /*#__PURE__*/ EventTag;
@@ -13192,7 +13192,7 @@ export const PatchEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchEventTagsRequest>;
+) as unknown as Schema.Codec<PatchEventTagsRequest>;
 
 export type PatchEventTagsResponse = EventTag;
 export const PatchEventTagsResponse = /*@__PURE__*/ /*#__PURE__*/ EventTag;
@@ -13236,7 +13236,7 @@ export const UpdateReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateReportsRequest>;
+) as unknown as Schema.Codec<UpdateReportsRequest>;
 
 export type UpdateReportsResponse = Report;
 export const UpdateReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
@@ -13280,7 +13280,7 @@ export const RunReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<RunReportsRequest>;
+) as unknown as Schema.Codec<RunReportsRequest>;
 
 export type RunReportsResponse = File;
 export const RunReportsResponse = /*@__PURE__*/ /*#__PURE__*/ File;
@@ -13321,7 +13321,7 @@ export const InsertReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertReportsRequest>;
+) as unknown as Schema.Codec<InsertReportsRequest>;
 
 export type InsertReportsResponse = Report;
 export const InsertReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
@@ -13361,7 +13361,7 @@ export const GetReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "userprofiles/{profileId}/reports/{reportId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetReportsRequest>;
+) as unknown as Schema.Codec<GetReportsRequest>;
 
 export type GetReportsResponse = Report;
 export const GetReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
@@ -13396,13 +13396,13 @@ export const DeleteReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "userprofiles/{profileId}/reports/{reportId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteReportsRequest>;
+) as unknown as Schema.Codec<DeleteReportsRequest>;
 
 export interface DeleteReportsResponse {}
-export const DeleteReportsResponse: Schema.Schema<DeleteReportsResponse> =
+export const DeleteReportsResponse: Schema.Codec<DeleteReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteReportsResponse>;
+  ) as any as Schema.Codec<DeleteReportsResponse>;
 
 export type DeleteReportsError =
   | DefaultErrors
@@ -13448,7 +13448,7 @@ export const ListReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{profileId}/reports" }),
   svc,
-) as unknown as Schema.Schema<ListReportsRequest>;
+) as unknown as Schema.Codec<ListReportsRequest>;
 
 export type ListReportsResponse = ReportList;
 export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ ReportList;
@@ -13493,7 +13493,7 @@ export const GetReportsFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "userprofiles/{profileId}/reports/{reportId}/files/{fileId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetReportsFilesRequest>;
+) as unknown as Schema.Codec<GetReportsFilesRequest>;
 
 export type GetReportsFilesResponse = File;
 export const GetReportsFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
@@ -13541,7 +13541,7 @@ export const ListReportsFilesRequest =
       path: "userprofiles/{profileId}/reports/{reportId}/files",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListReportsFilesRequest>;
+  ) as unknown as Schema.Codec<ListReportsFilesRequest>;
 
 export type ListReportsFilesResponse = FileList;
 export const ListReportsFilesResponse = /*@__PURE__*/ /*#__PURE__*/ FileList;
@@ -13583,7 +13583,7 @@ export const QueryReportsCompatibleFieldsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryReportsCompatibleFieldsRequest>;
+  ) as unknown as Schema.Codec<QueryReportsCompatibleFieldsRequest>;
 
 export type QueryReportsCompatibleFieldsResponse = CompatibleFields;
 export const QueryReportsCompatibleFieldsResponse =
@@ -13634,7 +13634,7 @@ export const ListCampaignCreativeAssociationsRequest =
       path: "userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCampaignCreativeAssociationsRequest>;
+  ) as unknown as Schema.Codec<ListCampaignCreativeAssociationsRequest>;
 
 export type ListCampaignCreativeAssociationsResponse =
   CampaignCreativeAssociationsListResponse;
@@ -13683,7 +13683,7 @@ export const InsertCampaignCreativeAssociationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertCampaignCreativeAssociationsRequest>;
+  ) as unknown as Schema.Codec<InsertCampaignCreativeAssociationsRequest>;
 
 export type InsertCampaignCreativeAssociationsResponse =
   CampaignCreativeAssociation;
@@ -13730,7 +13730,7 @@ export const InsertCreativeAssetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertCreativeAssetsRequest>;
+  ) as unknown as Schema.Codec<InsertCreativeAssetsRequest>;
 
 export type InsertCreativeAssetsResponse = CreativeAssetMetadata;
 export const InsertCreativeAssetsResponse =
@@ -13773,7 +13773,7 @@ export const UpdateFloodlightActivitiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<UpdateFloodlightActivitiesRequest>;
 
 export type UpdateFloodlightActivitiesResponse = FloodlightActivity;
 export const UpdateFloodlightActivitiesResponse =
@@ -13818,7 +13818,7 @@ export const GeneratetagFloodlightActivitiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GeneratetagFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<GeneratetagFloodlightActivitiesRequest>;
 
 export type GeneratetagFloodlightActivitiesResponse =
   FloodlightActivitiesGenerateTagResponse;
@@ -13862,7 +13862,7 @@ export const InsertFloodlightActivitiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<InsertFloodlightActivitiesRequest>;
 
 export type InsertFloodlightActivitiesResponse = FloodlightActivity;
 export const InsertFloodlightActivitiesResponse =
@@ -13908,7 +13908,7 @@ export const PatchFloodlightActivitiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<PatchFloodlightActivitiesRequest>;
 
 export type PatchFloodlightActivitiesResponse = FloodlightActivity;
 export const PatchFloodlightActivitiesResponse =
@@ -13950,13 +13950,13 @@ export const DeleteFloodlightActivitiesRequest =
       path: "userprofiles/{+profileId}/floodlightActivities/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<DeleteFloodlightActivitiesRequest>;
 
 export interface DeleteFloodlightActivitiesResponse {}
-export const DeleteFloodlightActivitiesResponse: Schema.Schema<DeleteFloodlightActivitiesResponse> =
+export const DeleteFloodlightActivitiesResponse: Schema.Codec<DeleteFloodlightActivitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteFloodlightActivitiesResponse>;
+  ) as any as Schema.Codec<DeleteFloodlightActivitiesResponse>;
 
 export type DeleteFloodlightActivitiesError =
   | DefaultErrors
@@ -14044,7 +14044,7 @@ export const ListFloodlightActivitiesRequest =
       path: "userprofiles/{+profileId}/floodlightActivities",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<ListFloodlightActivitiesRequest>;
 
 export type ListFloodlightActivitiesResponse = FloodlightActivitiesListResponse;
 export const ListFloodlightActivitiesResponse =
@@ -14088,7 +14088,7 @@ export const GetFloodlightActivitiesRequest =
       path: "userprofiles/{+profileId}/floodlightActivities/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetFloodlightActivitiesRequest>;
+  ) as unknown as Schema.Codec<GetFloodlightActivitiesRequest>;
 
 export type GetFloodlightActivitiesResponse = FloodlightActivity;
 export const GetFloodlightActivitiesResponse =
@@ -14126,7 +14126,7 @@ export const UpdateRemarketingListsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRemarketingListsRequest>;
+  ) as unknown as Schema.Codec<UpdateRemarketingListsRequest>;
 
 export type UpdateRemarketingListsResponse = RemarketingList;
 export const UpdateRemarketingListsResponse =
@@ -14172,7 +14172,7 @@ export const PatchRemarketingListsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchRemarketingListsRequest>;
+  ) as unknown as Schema.Codec<PatchRemarketingListsRequest>;
 
 export type PatchRemarketingListsResponse = RemarketingList;
 export const PatchRemarketingListsResponse =
@@ -14215,7 +14215,7 @@ export const InsertRemarketingListsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRemarketingListsRequest>;
+  ) as unknown as Schema.Codec<InsertRemarketingListsRequest>;
 
 export type InsertRemarketingListsResponse = RemarketingList;
 export const InsertRemarketingListsResponse =
@@ -14257,7 +14257,7 @@ export const GetRemarketingListsRequest =
       path: "userprofiles/{+profileId}/remarketingLists/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRemarketingListsRequest>;
+  ) as unknown as Schema.Codec<GetRemarketingListsRequest>;
 
 export type GetRemarketingListsResponse = RemarketingList;
 export const GetRemarketingListsResponse =
@@ -14317,7 +14317,7 @@ export const ListRemarketingListsRequest =
       path: "userprofiles/{+profileId}/remarketingLists",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRemarketingListsRequest>;
+  ) as unknown as Schema.Codec<ListRemarketingListsRequest>;
 
 export type ListRemarketingListsResponse = RemarketingListsListResponse;
 export const ListRemarketingListsResponse =
@@ -14382,7 +14382,7 @@ export const ListTvCampaignSummariesRequest =
       path: "userprofiles/{+profileId}/tvCampaignSummaries",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListTvCampaignSummariesRequest>;
+  ) as unknown as Schema.Codec<ListTvCampaignSummariesRequest>;
 
 export type ListTvCampaignSummariesResponse = TvCampaignSummariesListResponse;
 export const ListTvCampaignSummariesResponse =
@@ -14412,7 +14412,7 @@ export const ListLanguagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/languages" }),
   svc,
-) as unknown as Schema.Schema<ListLanguagesRequest>;
+) as unknown as Schema.Codec<ListLanguagesRequest>;
 
 export type ListLanguagesResponse = LanguagesListResponse;
 export const ListLanguagesResponse =
@@ -14443,7 +14443,7 @@ export const InsertStudioCreativesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "studio/creatives", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertStudioCreativesRequest>;
+  ) as unknown as Schema.Codec<InsertStudioCreativesRequest>;
 
 export type InsertStudioCreativesResponse = StudioCreative;
 export const InsertStudioCreativesResponse =
@@ -14483,13 +14483,13 @@ export const PublishStudioCreativesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PublishStudioCreativesRequest>;
+  ) as unknown as Schema.Codec<PublishStudioCreativesRequest>;
 
 export interface PublishStudioCreativesResponse {}
-export const PublishStudioCreativesResponse: Schema.Schema<PublishStudioCreativesResponse> =
+export const PublishStudioCreativesResponse: Schema.Codec<PublishStudioCreativesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<PublishStudioCreativesResponse>;
+  ) as any as Schema.Codec<PublishStudioCreativesResponse>;
 
 export type PublishStudioCreativesError =
   | DefaultErrors
@@ -14521,7 +14521,7 @@ export const GetStudioCreativesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "studio/creatives/{+studioCreativeId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetStudioCreativesRequest>;
+  ) as unknown as Schema.Codec<GetStudioCreativesRequest>;
 
 export type GetStudioCreativesResponse = StudioCreative;
 export const GetStudioCreativesResponse =
@@ -14558,7 +14558,7 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateAccountsRequest>;
+) as unknown as Schema.Codec<UpdateAccountsRequest>;
 
 export type UpdateAccountsResponse = Account;
 export const UpdateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -14602,7 +14602,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchAccountsRequest>;
+) as unknown as Schema.Codec<PatchAccountsRequest>;
 
 export type PatchAccountsResponse = Account;
 export const PatchAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -14639,7 +14639,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/accounts/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetAccountsRequest>;
+) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -14691,7 +14691,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/accounts" }),
   svc,
-) as unknown as Schema.Schema<ListAccountsRequest>;
+) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse = AccountsListResponse;
 export const ListAccountsResponse =
@@ -14732,7 +14732,7 @@ export const UpdateAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateAdsRequest>;
+) as unknown as Schema.Codec<UpdateAdsRequest>;
 
 export type UpdateAdsResponse = Ad;
 export const UpdateAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Ad;
@@ -14773,7 +14773,7 @@ export const InsertAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertAdsRequest>;
+) as unknown as Schema.Codec<InsertAdsRequest>;
 
 export type InsertAdsResponse = Ad;
 export const InsertAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Ad;
@@ -14817,7 +14817,7 @@ export const PatchAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchAdsRequest>;
+) as unknown as Schema.Codec<PatchAdsRequest>;
 
 export type PatchAdsResponse = Ad;
 export const PatchAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Ad;
@@ -14854,7 +14854,7 @@ export const GetAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/ads/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetAdsRequest>;
+) as unknown as Schema.Codec<GetAdsRequest>;
 
 export type GetAdsResponse = Ad;
 export const GetAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Ad;
@@ -14993,7 +14993,7 @@ export const ListAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/ads" }),
   svc,
-) as unknown as Schema.Schema<ListAdsRequest>;
+) as unknown as Schema.Codec<ListAdsRequest>;
 
 export type ListAdsResponse = AdsListResponse;
 export const ListAdsResponse = /*@__PURE__*/ /*#__PURE__*/ AdsListResponse;
@@ -15036,7 +15036,7 @@ export const PatchUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchUserRolesRequest>;
+) as unknown as Schema.Codec<PatchUserRolesRequest>;
 
 export type PatchUserRolesResponse = UserRole;
 export const PatchUserRolesResponse = /*@__PURE__*/ /*#__PURE__*/ UserRole;
@@ -15079,7 +15079,7 @@ export const InsertUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertUserRolesRequest>;
+) as unknown as Schema.Codec<InsertUserRolesRequest>;
 
 export type InsertUserRolesResponse = UserRole;
 export const InsertUserRolesResponse = /*@__PURE__*/ /*#__PURE__*/ UserRole;
@@ -15116,7 +15116,7 @@ export const GetUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/userRoles/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetUserRolesRequest>;
+) as unknown as Schema.Codec<GetUserRolesRequest>;
 
 export type GetUserRolesResponse = UserRole;
 export const GetUserRolesResponse = /*@__PURE__*/ /*#__PURE__*/ UserRole;
@@ -15175,7 +15175,7 @@ export const ListUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/userRoles" }),
   svc,
-) as unknown as Schema.Schema<ListUserRolesRequest>;
+) as unknown as Schema.Codec<ListUserRolesRequest>;
 
 export type ListUserRolesResponse = UserRolesListResponse;
 export const ListUserRolesResponse =
@@ -15217,13 +15217,13 @@ export const DeleteUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "userprofiles/{+profileId}/userRoles/{+id}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteUserRolesRequest>;
+) as unknown as Schema.Codec<DeleteUserRolesRequest>;
 
 export interface DeleteUserRolesResponse {}
-export const DeleteUserRolesResponse: Schema.Schema<DeleteUserRolesResponse> =
+export const DeleteUserRolesResponse: Schema.Codec<DeleteUserRolesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUserRolesResponse>;
+  ) as any as Schema.Codec<DeleteUserRolesResponse>;
 
 export type DeleteUserRolesError =
   | DefaultErrors
@@ -15263,7 +15263,7 @@ export const UpdateUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateUserRolesRequest>;
+) as unknown as Schema.Codec<UpdateUserRolesRequest>;
 
 export type UpdateUserRolesResponse = UserRole;
 export const UpdateUserRolesResponse = /*@__PURE__*/ /*#__PURE__*/ UserRole;
@@ -15305,7 +15305,7 @@ export const UpdatePlacementStrategiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePlacementStrategiesRequest>;
+  ) as unknown as Schema.Codec<UpdatePlacementStrategiesRequest>;
 
 export type UpdatePlacementStrategiesResponse = PlacementStrategy;
 export const UpdatePlacementStrategiesResponse =
@@ -15351,7 +15351,7 @@ export const PatchPlacementStrategiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchPlacementStrategiesRequest>;
+  ) as unknown as Schema.Codec<PatchPlacementStrategiesRequest>;
 
 export type PatchPlacementStrategiesResponse = PlacementStrategy;
 export const PatchPlacementStrategiesResponse =
@@ -15394,7 +15394,7 @@ export const InsertPlacementStrategiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertPlacementStrategiesRequest>;
+  ) as unknown as Schema.Codec<InsertPlacementStrategiesRequest>;
 
 export type InsertPlacementStrategiesResponse = PlacementStrategy;
 export const InsertPlacementStrategiesResponse =
@@ -15436,13 +15436,13 @@ export const DeletePlacementStrategiesRequest =
       path: "userprofiles/{+profileId}/placementStrategies/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeletePlacementStrategiesRequest>;
+  ) as unknown as Schema.Codec<DeletePlacementStrategiesRequest>;
 
 export interface DeletePlacementStrategiesResponse {}
-export const DeletePlacementStrategiesResponse: Schema.Schema<DeletePlacementStrategiesResponse> =
+export const DeletePlacementStrategiesResponse: Schema.Codec<DeletePlacementStrategiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeletePlacementStrategiesResponse>;
+  ) as any as Schema.Codec<DeletePlacementStrategiesResponse>;
 
 export type DeletePlacementStrategiesError =
   | DefaultErrors
@@ -15497,7 +15497,7 @@ export const ListPlacementStrategiesRequest =
       path: "userprofiles/{+profileId}/placementStrategies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPlacementStrategiesRequest>;
+  ) as unknown as Schema.Codec<ListPlacementStrategiesRequest>;
 
 export type ListPlacementStrategiesResponse = PlacementStrategiesListResponse;
 export const ListPlacementStrategiesResponse =
@@ -15538,7 +15538,7 @@ export const GetPlacementStrategiesRequest =
       path: "userprofiles/{+profileId}/placementStrategies/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPlacementStrategiesRequest>;
+  ) as unknown as Schema.Codec<GetPlacementStrategiesRequest>;
 
 export type GetPlacementStrategiesResponse = PlacementStrategy;
 export const GetPlacementStrategiesResponse =
@@ -15576,7 +15576,7 @@ export const UpdateBillingProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateBillingProfilesRequest>;
+  ) as unknown as Schema.Codec<UpdateBillingProfilesRequest>;
 
 export type UpdateBillingProfilesResponse = BillingProfile;
 export const UpdateBillingProfilesResponse =
@@ -15618,7 +15618,7 @@ export const GetBillingProfilesRequest =
       path: "userprofiles/{+profileId}/billingProfiles/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetBillingProfilesRequest>;
+  ) as unknown as Schema.Codec<GetBillingProfilesRequest>;
 
 export type GetBillingProfilesResponse = BillingProfile;
 export const GetBillingProfilesResponse =
@@ -15690,7 +15690,7 @@ export const ListBillingProfilesRequest =
       path: "userprofiles/{+profileId}/billingProfiles",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingProfilesRequest>;
+  ) as unknown as Schema.Codec<ListBillingProfilesRequest>;
 
 export type ListBillingProfilesResponse = BillingProfilesListResponse;
 export const ListBillingProfilesResponse =
@@ -15732,7 +15732,7 @@ export const UpdateSubaccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSubaccountsRequest>;
+  ) as unknown as Schema.Codec<UpdateSubaccountsRequest>;
 
 export type UpdateSubaccountsResponse = Subaccount;
 export const UpdateSubaccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Subaccount;
@@ -15777,7 +15777,7 @@ export const PatchSubaccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchSubaccountsRequest>;
+  ) as unknown as Schema.Codec<PatchSubaccountsRequest>;
 
 export type PatchSubaccountsResponse = Subaccount;
 export const PatchSubaccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Subaccount;
@@ -15819,7 +15819,7 @@ export const InsertSubaccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertSubaccountsRequest>;
+  ) as unknown as Schema.Codec<InsertSubaccountsRequest>;
 
 export type InsertSubaccountsResponse = Subaccount;
 export const InsertSubaccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Subaccount;
@@ -15875,7 +15875,7 @@ export const ListSubaccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/subaccounts" }),
   svc,
-) as unknown as Schema.Schema<ListSubaccountsRequest>;
+) as unknown as Schema.Codec<ListSubaccountsRequest>;
 
 export type ListSubaccountsResponse = SubaccountsListResponse;
 export const ListSubaccountsResponse =
@@ -15915,7 +15915,7 @@ export const GetSubaccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "userprofiles/{+profileId}/subaccounts/{+id}",
   }),
   svc,
-) as unknown as Schema.Schema<GetSubaccountsRequest>;
+) as unknown as Schema.Codec<GetSubaccountsRequest>;
 
 export type GetSubaccountsResponse = Subaccount;
 export const GetSubaccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Subaccount;
@@ -15947,7 +15947,7 @@ export const InsertStudioCreativeAssetsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "studio/creativeAssets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertStudioCreativeAssetsRequest>;
+  ) as unknown as Schema.Codec<InsertStudioCreativeAssetsRequest>;
 
 export type InsertStudioCreativeAssetsResponse = StudioCreativeAssetsResponse;
 export const InsertStudioCreativeAssetsResponse =
@@ -15990,7 +15990,7 @@ export const GetVideoFormatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "userprofiles/{+profileId}/videoFormats/{+id}",
   }),
   svc,
-) as unknown as Schema.Schema<GetVideoFormatsRequest>;
+) as unknown as Schema.Codec<GetVideoFormatsRequest>;
 
 export type GetVideoFormatsResponse = VideoFormat;
 export const GetVideoFormatsResponse = /*@__PURE__*/ /*#__PURE__*/ VideoFormat;
@@ -16020,7 +16020,7 @@ export const ListVideoFormatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "userprofiles/{+profileId}/videoFormats" }),
     svc,
-  ) as unknown as Schema.Schema<ListVideoFormatsRequest>;
+  ) as unknown as Schema.Codec<ListVideoFormatsRequest>;
 
 export type ListVideoFormatsResponse = VideoFormatsListResponse;
 export const ListVideoFormatsResponse =
@@ -16060,7 +16060,7 @@ export const PatchSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchSitesRequest>;
+) as unknown as Schema.Codec<PatchSitesRequest>;
 
 export type PatchSitesResponse = Site;
 export const PatchSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
@@ -16101,7 +16101,7 @@ export const InsertSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertSitesRequest>;
+) as unknown as Schema.Codec<InsertSitesRequest>;
 
 export type InsertSitesResponse = Site;
 export const InsertSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
@@ -16138,7 +16138,7 @@ export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/sites/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetSitesRequest>;
+) as unknown as Schema.Codec<GetSitesRequest>;
 
 export type GetSitesResponse = Site;
 export const GetSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
@@ -16228,7 +16228,7 @@ export const ListSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/sites" }),
   svc,
-) as unknown as Schema.Schema<ListSitesRequest>;
+) as unknown as Schema.Codec<ListSitesRequest>;
 
 export type ListSitesResponse = SitesListResponse;
 export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SitesListResponse;
@@ -16268,7 +16268,7 @@ export const UpdateSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateSitesRequest>;
+) as unknown as Schema.Codec<UpdateSitesRequest>;
 
 export type UpdateSitesResponse = Site;
 export const UpdateSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
@@ -16309,7 +16309,7 @@ export const ListBillingAssignmentsRequest =
       path: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListBillingAssignmentsRequest>;
 
 export type ListBillingAssignmentsResponse = BillingAssignmentsListResponse;
 export const ListBillingAssignmentsResponse =
@@ -16350,7 +16350,7 @@ export const InsertBillingAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertBillingAssignmentsRequest>;
+  ) as unknown as Schema.Codec<InsertBillingAssignmentsRequest>;
 
 export type InsertBillingAssignmentsResponse = BillingAssignment;
 export const InsertBillingAssignmentsResponse =
@@ -16381,7 +16381,7 @@ export const ListUserProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "userprofiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListUserProfilesRequest>;
+  ) as unknown as Schema.Codec<ListUserProfilesRequest>;
 
 export type ListUserProfilesResponse = UserProfileList;
 export const ListUserProfilesResponse =
@@ -16413,7 +16413,7 @@ export const GetUserProfilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "userprofiles/{profileId}" }),
   svc,
-) as unknown as Schema.Schema<GetUserProfilesRequest>;
+) as unknown as Schema.Codec<GetUserProfilesRequest>;
 
 export type GetUserProfilesResponse = UserProfile;
 export const GetUserProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ UserProfile;
@@ -16445,7 +16445,7 @@ export const GetCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/creatives/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetCreativesRequest>;
+) as unknown as Schema.Codec<GetCreativesRequest>;
 
 export type GetCreativesResponse = Creative;
 export const GetCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
@@ -16564,7 +16564,7 @@ export const ListCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/creatives" }),
   svc,
-) as unknown as Schema.Schema<ListCreativesRequest>;
+) as unknown as Schema.Codec<ListCreativesRequest>;
 
 export type ListCreativesResponse = CreativesListResponse;
 export const ListCreativesResponse =
@@ -16607,7 +16607,7 @@ export const InsertCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertCreativesRequest>;
+) as unknown as Schema.Codec<InsertCreativesRequest>;
 
 export type InsertCreativesResponse = Creative;
 export const InsertCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
@@ -16651,7 +16651,7 @@ export const PatchCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchCreativesRequest>;
+) as unknown as Schema.Codec<PatchCreativesRequest>;
 
 export type PatchCreativesResponse = Creative;
 export const PatchCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
@@ -16694,7 +16694,7 @@ export const UpdateCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateCreativesRequest>;
+) as unknown as Schema.Codec<UpdateCreativesRequest>;
 
 export type UpdateCreativesResponse = Creative;
 export const UpdateCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
@@ -16744,7 +16744,7 @@ export const ListAdvertiserInvoicesRequest =
       path: "userprofiles/{+profileId}/advertisers/{+advertiserId}/invoices",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertiserInvoicesRequest>;
+  ) as unknown as Schema.Codec<ListAdvertiserInvoicesRequest>;
 
 export type ListAdvertiserInvoicesResponse = AdvertiserInvoicesListResponse;
 export const ListAdvertiserInvoicesResponse =
@@ -16785,7 +16785,7 @@ export const ListBillingRatesRequest =
       path: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingRates",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingRatesRequest>;
+  ) as unknown as Schema.Codec<ListBillingRatesRequest>;
 
 export type ListBillingRatesResponse = BillingRatesListResponse;
 export const ListBillingRatesResponse =
@@ -16822,7 +16822,7 @@ export const InsertSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertSizesRequest>;
+) as unknown as Schema.Codec<InsertSizesRequest>;
 
 export type InsertSizesResponse = Size;
 export const InsertSizesResponse = /*@__PURE__*/ /*#__PURE__*/ Size;
@@ -16859,7 +16859,7 @@ export const GetSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/sizes/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetSizesRequest>;
+) as unknown as Schema.Codec<GetSizesRequest>;
 
 export type GetSizesResponse = Size;
 export const GetSizesResponse = /*@__PURE__*/ /*#__PURE__*/ Size;
@@ -16900,7 +16900,7 @@ export const ListSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/sizes" }),
   svc,
-) as unknown as Schema.Schema<ListSizesRequest>;
+) as unknown as Schema.Codec<ListSizesRequest>;
 
 export type ListSizesResponse = SizesListResponse;
 export const ListSizesResponse = /*@__PURE__*/ /*#__PURE__*/ SizesListResponse;
@@ -16936,7 +16936,7 @@ export const GetMobileCarriersRequest =
       path: "userprofiles/{+profileId}/mobileCarriers/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMobileCarriersRequest>;
+  ) as unknown as Schema.Codec<GetMobileCarriersRequest>;
 
 export type GetMobileCarriersResponse = MobileCarrier;
 export const GetMobileCarriersResponse =
@@ -16967,7 +16967,7 @@ export const ListMobileCarriersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "userprofiles/{+profileId}/mobileCarriers" }),
     svc,
-  ) as unknown as Schema.Schema<ListMobileCarriersRequest>;
+  ) as unknown as Schema.Codec<ListMobileCarriersRequest>;
 
 export type ListMobileCarriersResponse = MobileCarriersListResponse;
 export const ListMobileCarriersResponse =
@@ -17005,7 +17005,7 @@ export const UpdateCreativeFieldsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCreativeFieldsRequest>;
+  ) as unknown as Schema.Codec<UpdateCreativeFieldsRequest>;
 
 export type UpdateCreativeFieldsResponse = CreativeField;
 export const UpdateCreativeFieldsResponse =
@@ -17048,7 +17048,7 @@ export const InsertCreativeFieldsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertCreativeFieldsRequest>;
+  ) as unknown as Schema.Codec<InsertCreativeFieldsRequest>;
 
 export type InsertCreativeFieldsResponse = CreativeField;
 export const InsertCreativeFieldsResponse =
@@ -17094,7 +17094,7 @@ export const PatchCreativeFieldsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCreativeFieldsRequest>;
+  ) as unknown as Schema.Codec<PatchCreativeFieldsRequest>;
 
 export type PatchCreativeFieldsResponse = CreativeField;
 export const PatchCreativeFieldsResponse =
@@ -17136,13 +17136,13 @@ export const DeleteCreativeFieldsRequest =
       path: "userprofiles/{+profileId}/creativeFields/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCreativeFieldsRequest>;
+  ) as unknown as Schema.Codec<DeleteCreativeFieldsRequest>;
 
 export interface DeleteCreativeFieldsResponse {}
-export const DeleteCreativeFieldsResponse: Schema.Schema<DeleteCreativeFieldsResponse> =
+export const DeleteCreativeFieldsResponse: Schema.Codec<DeleteCreativeFieldsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteCreativeFieldsResponse>;
+  ) as any as Schema.Codec<DeleteCreativeFieldsResponse>;
 
 export type DeleteCreativeFieldsError =
   | DefaultErrors
@@ -17199,7 +17199,7 @@ export const ListCreativeFieldsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "userprofiles/{+profileId}/creativeFields" }),
     svc,
-  ) as unknown as Schema.Schema<ListCreativeFieldsRequest>;
+  ) as unknown as Schema.Codec<ListCreativeFieldsRequest>;
 
 export type ListCreativeFieldsResponse = CreativeFieldsListResponse;
 export const ListCreativeFieldsResponse =
@@ -17240,7 +17240,7 @@ export const GetCreativeFieldsRequest =
       path: "userprofiles/{+profileId}/creativeFields/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCreativeFieldsRequest>;
+  ) as unknown as Schema.Codec<GetCreativeFieldsRequest>;
 
 export type GetCreativeFieldsResponse = CreativeField;
 export const GetCreativeFieldsResponse =
@@ -17301,7 +17301,7 @@ export const ListMobileAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/mobileApps" }),
   svc,
-) as unknown as Schema.Schema<ListMobileAppsRequest>;
+) as unknown as Schema.Codec<ListMobileAppsRequest>;
 
 export type ListMobileAppsResponse = MobileAppsListResponse;
 export const ListMobileAppsResponse =
@@ -17338,7 +17338,7 @@ export const GetMobileAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "userprofiles/{+profileId}/mobileApps/{+id}" }),
   svc,
-) as unknown as Schema.Schema<GetMobileAppsRequest>;
+) as unknown as Schema.Codec<GetMobileAppsRequest>;
 
 export type GetMobileAppsResponse = MobileApp;
 export const GetMobileAppsResponse = /*@__PURE__*/ /*#__PURE__*/ MobileApp;
@@ -17375,7 +17375,7 @@ export const UpdateFloodlightActivityGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateFloodlightActivityGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateFloodlightActivityGroupsRequest>;
 
 export type UpdateFloodlightActivityGroupsResponse = FloodlightActivityGroup;
 export const UpdateFloodlightActivityGroupsResponse =
@@ -17447,7 +17447,7 @@ export const ListFloodlightActivityGroupsRequest =
       path: "userprofiles/{+profileId}/floodlightActivityGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListFloodlightActivityGroupsRequest>;
+  ) as unknown as Schema.Codec<ListFloodlightActivityGroupsRequest>;
 
 export type ListFloodlightActivityGroupsResponse =
   FloodlightActivityGroupsListResponse;
@@ -17492,7 +17492,7 @@ export const GetFloodlightActivityGroupsRequest =
       path: "userprofiles/{+profileId}/floodlightActivityGroups/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetFloodlightActivityGroupsRequest>;
+  ) as unknown as Schema.Codec<GetFloodlightActivityGroupsRequest>;
 
 export type GetFloodlightActivityGroupsResponse = FloodlightActivityGroup;
 export const GetFloodlightActivityGroupsResponse =
@@ -17533,7 +17533,7 @@ export const InsertFloodlightActivityGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertFloodlightActivityGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertFloodlightActivityGroupsRequest>;
 
 export type InsertFloodlightActivityGroupsResponse = FloodlightActivityGroup;
 export const InsertFloodlightActivityGroupsResponse =
@@ -17579,7 +17579,7 @@ export const PatchFloodlightActivityGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchFloodlightActivityGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchFloodlightActivityGroupsRequest>;
 
 export type PatchFloodlightActivityGroupsResponse = FloodlightActivityGroup;
 export const PatchFloodlightActivityGroupsResponse =
@@ -17622,7 +17622,7 @@ export const UpdateAdvertiserGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAdvertiserGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateAdvertiserGroupsRequest>;
 
 export type UpdateAdvertiserGroupsResponse = AdvertiserGroup;
 export const UpdateAdvertiserGroupsResponse =
@@ -17665,7 +17665,7 @@ export const InsertAdvertiserGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAdvertiserGroupsRequest>;
+  ) as unknown as Schema.Codec<InsertAdvertiserGroupsRequest>;
 
 export type InsertAdvertiserGroupsResponse = AdvertiserGroup;
 export const InsertAdvertiserGroupsResponse =
@@ -17711,7 +17711,7 @@ export const PatchAdvertiserGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdvertiserGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchAdvertiserGroupsRequest>;
 
 export type PatchAdvertiserGroupsResponse = AdvertiserGroup;
 export const PatchAdvertiserGroupsResponse =
@@ -17753,7 +17753,7 @@ export const GetAdvertiserGroupsRequest =
       path: "userprofiles/{+profileId}/advertiserGroups/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAdvertiserGroupsRequest>;
+  ) as unknown as Schema.Codec<GetAdvertiserGroupsRequest>;
 
 export type GetAdvertiserGroupsResponse = AdvertiserGroup;
 export const GetAdvertiserGroupsResponse =
@@ -17790,13 +17790,13 @@ export const DeleteAdvertiserGroupsRequest =
       path: "userprofiles/{+profileId}/advertiserGroups/{+id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdvertiserGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdvertiserGroupsRequest>;
 
 export interface DeleteAdvertiserGroupsResponse {}
-export const DeleteAdvertiserGroupsResponse: Schema.Schema<DeleteAdvertiserGroupsResponse> =
+export const DeleteAdvertiserGroupsResponse: Schema.Codec<DeleteAdvertiserGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAdvertiserGroupsResponse>;
+  ) as any as Schema.Codec<DeleteAdvertiserGroupsResponse>;
 
 export type DeleteAdvertiserGroupsError =
   | DefaultErrors
@@ -17851,7 +17851,7 @@ export const ListAdvertiserGroupsRequest =
       path: "userprofiles/{+profileId}/advertiserGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAdvertiserGroupsRequest>;
+  ) as unknown as Schema.Codec<ListAdvertiserGroupsRequest>;
 
 export type ListAdvertiserGroupsResponse = AdvertiserGroupsListResponse;
 export const ListAdvertiserGroupsResponse =

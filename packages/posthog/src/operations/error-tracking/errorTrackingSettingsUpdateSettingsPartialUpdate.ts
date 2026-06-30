@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingSettingsUpdateSettingsPartialUpdateInput {
+  project_id: string;
+  project_rate_limit_value?: number | null;
+  project_rate_limit_bucket_size_minutes?: number | null;
+  per_issue_rate_limit_value?: number | null;
+  per_issue_rate_limit_bucket_size_minutes?: number | null;
+}
 export const ErrorTrackingSettingsUpdateSettingsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -19,11 +26,15 @@ export const ErrorTrackingSettingsUpdateSettingsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/error_tracking/settings/update_settings/",
     }),
-  );
-export type ErrorTrackingSettingsUpdateSettingsPartialUpdateInput =
-  typeof ErrorTrackingSettingsUpdateSettingsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSettingsUpdateSettingsPartialUpdateInput>;
 
 // Output Schema
+export interface ErrorTrackingSettingsUpdateSettingsPartialUpdateOutput {
+  project_rate_limit_value?: number | null;
+  project_rate_limit_bucket_size_minutes?: number | null;
+  per_issue_rate_limit_value?: number | null;
+  per_issue_rate_limit_bucket_size_minutes?: number | null;
+}
 export const ErrorTrackingSettingsUpdateSettingsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_rate_limit_value: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -34,9 +45,7 @@ export const ErrorTrackingSettingsUpdateSettingsPartialUpdateOutput =
     per_issue_rate_limit_bucket_size_minutes: Schema.optional(
       Schema.NullOr(Schema.Number),
     ),
-  });
-export type ErrorTrackingSettingsUpdateSettingsPartialUpdateOutput =
-  typeof ErrorTrackingSettingsUpdateSettingsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSettingsUpdateSettingsPartialUpdateOutput>;
 
 // The operation
 /**

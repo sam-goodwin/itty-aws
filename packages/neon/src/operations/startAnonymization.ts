@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface StartAnonymizationInput {
+  project_id: string;
+  branch_id: string;
+}
 export const StartAnonymizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,25 @@ export const StartAnonymizationInput =
       method: "POST",
       path: "/projects/{project_id}/branches/{branch_id}/anonymize",
     }),
-  );
-export type StartAnonymizationInput = typeof StartAnonymizationInput.Type;
+  ) as unknown as Schema.Codec<StartAnonymizationInput>;
 
 // Output Schema
+export interface StartAnonymizationOutput {
+  project_id: string;
+  branch_id: string;
+  state: string;
+  status_message?: string;
+  created_at: string;
+  updated_at: string;
+  failed_at?: string;
+  last_run?: {
+    started_at?: string;
+    completed_at?: string;
+    triggered_by?: string;
+    triggered_by_username?: string;
+    masked_columns?: number;
+  };
+}
 export const StartAnonymizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String,
@@ -34,8 +53,7 @@ export const StartAnonymizationOutput =
         masked_columns: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type StartAnonymizationOutput = typeof StartAnonymizationOutput.Type;
+  }) as unknown as Schema.Codec<StartAnonymizationOutput>;
 
 // The operation
 /**

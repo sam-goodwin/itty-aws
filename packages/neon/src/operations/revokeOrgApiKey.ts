@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RevokeOrgApiKeyInput {
+  org_id: string;
+  key_id: number;
+}
 export const RevokeOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
   key_id: Schema.Number.pipe(T.PathParam()),
@@ -11,10 +15,19 @@ export const RevokeOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/organizations/{org_id}/api_keys/{key_id}",
   }),
-);
-export type RevokeOrgApiKeyInput = typeof RevokeOrgApiKeyInput.Type;
+) as unknown as Schema.Codec<RevokeOrgApiKeyInput>;
 
 // Output Schema
+export interface RevokeOrgApiKeyOutput {
+  id: number;
+  name: string;
+  created_at: string;
+  created_by: string;
+  last_used_at?: string | null;
+  last_used_from_addr: string;
+  revoked: boolean;
+  project_id?: string;
+}
 export const RevokeOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.Number,
   name: Schema.String,
@@ -24,8 +37,7 @@ export const RevokeOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_used_from_addr: Schema.String,
   revoked: Schema.Boolean,
   project_id: Schema.optional(Schema.String),
-});
-export type RevokeOrgApiKeyOutput = typeof RevokeOrgApiKeyOutput.Type;
+}) as unknown as Schema.Codec<RevokeOrgApiKeyOutput>;
 
 // The operation
 /**

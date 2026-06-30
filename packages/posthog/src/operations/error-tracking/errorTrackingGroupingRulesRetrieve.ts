@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingGroupingRulesRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingGroupingRulesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,20 @@ export const ErrorTrackingGroupingRulesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/grouping_rules/{id}/",
     }),
-  );
-export type ErrorTrackingGroupingRulesRetrieveInput =
-  typeof ErrorTrackingGroupingRulesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingGroupingRulesRetrieveInput>;
 
 // Output Schema
+export interface ErrorTrackingGroupingRulesRetrieveOutput {
+  id?: string;
+  filters?: unknown;
+  assignee?: { type?: "user" | "role"; id?: number | string } | null;
+  description?: string | null;
+  issue?: Record<string, string> | null;
+  order_key?: number;
+  disabled_data?: unknown;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingGroupingRulesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -25,7 +38,7 @@ export const ErrorTrackingGroupingRulesRetrieveOutput =
       Schema.NullOr(
         Schema.Struct({
           type: Schema.optional(Schema.Literals(["user", "role"])),
-          id: Schema.optional(Schema.Unknown),
+          id: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
         }),
       ),
     ),
@@ -37,9 +50,7 @@ export const ErrorTrackingGroupingRulesRetrieveOutput =
     disabled_data: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingGroupingRulesRetrieveOutput =
-  typeof ErrorTrackingGroupingRulesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingGroupingRulesRetrieveOutput>;
 
 // The operation
 /**

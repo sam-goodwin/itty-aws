@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface PropertyAccessControlsRetrieveInput {
+  project_id: string;
+  property_definition_id: string;
+}
 export const PropertyAccessControlsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,22 @@ export const PropertyAccessControlsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/property_access_controls/",
     }),
-  );
-export type PropertyAccessControlsRetrieveInput =
-  typeof PropertyAccessControlsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<PropertyAccessControlsRetrieveInput>;
 
 // Output Schema
+export interface PropertyAccessControlsRetrieveOutput {
+  access_controls: {
+    id: string;
+    access_level: "read_write" | "read" | "none";
+    organization_member: string | null;
+    role: string | null;
+    created_by: number | null;
+    created_at: string;
+    updated_at: string;
+  }[];
+  available_access_levels: string[];
+  default_access_level: string;
+}
 export const PropertyAccessControlsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     access_controls: Schema.Array(
@@ -32,9 +47,7 @@ export const PropertyAccessControlsRetrieveOutput =
     ),
     available_access_levels: Schema.Array(Schema.String),
     default_access_level: Schema.String,
-  });
-export type PropertyAccessControlsRetrieveOutput =
-  typeof PropertyAccessControlsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<PropertyAccessControlsRetrieveOutput>;
 
 // The operation
 /**

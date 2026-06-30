@@ -4,20 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RadarStandaloneControllerUpdateRadarAttemptInput {
+  id: string;
+  challenge_status?: string;
+  attempt_status?: string;
+}
 export const RadarStandaloneControllerUpdateRadarAttemptInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     challenge_status: Schema.optional(Schema.String),
     attempt_status: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "PUT", path: "/radar/attempts/{id}" }));
-export type RadarStandaloneControllerUpdateRadarAttemptInput =
-  typeof RadarStandaloneControllerUpdateRadarAttemptInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/radar/attempts/{id}" }),
+  ) as unknown as Schema.Codec<RadarStandaloneControllerUpdateRadarAttemptInput>;
 
 // Output Schema
+export type RadarStandaloneControllerUpdateRadarAttemptOutput = void;
 export const RadarStandaloneControllerUpdateRadarAttemptOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RadarStandaloneControllerUpdateRadarAttemptOutput =
-  typeof RadarStandaloneControllerUpdateRadarAttemptOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RadarStandaloneControllerUpdateRadarAttemptOutput>;
 
 // The operation
 /**

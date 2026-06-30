@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface ServiceContext {
   resourceType?: string;
 }
 
-export const ServiceContext: Schema.Schema<ServiceContext> =
+export const ServiceContext: Schema.Codec<ServiceContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     service: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export interface SourceLocation {
   filePath?: string;
 }
 
-export const SourceLocation: Schema.Schema<SourceLocation> =
+export const SourceLocation: Schema.Codec<SourceLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineNumber: Schema.optional(Schema.Number),
     functionName: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface TrackingIssue {
   url?: string;
 }
 
-export const TrackingIssue: Schema.Schema<TrackingIssue> =
+export const TrackingIssue: Schema.Codec<TrackingIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "TrackingIssue" });
@@ -81,7 +81,7 @@ export interface ErrorGroup {
   name?: string;
 }
 
-export const ErrorGroup: Schema.Schema<ErrorGroup> =
+export const ErrorGroup: Schema.Codec<ErrorGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.optional(Schema.String),
     trackingIssues: Schema.optional(Schema.Array(TrackingIssue)),
@@ -98,7 +98,7 @@ export interface TimedCount {
   startTime?: string;
 }
 
-export const TimedCount: Schema.Schema<TimedCount> =
+export const TimedCount: Schema.Codec<TimedCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface SourceReference {
   revisionId?: string;
 }
 
-export const SourceReference: Schema.Schema<SourceReference> =
+export const SourceReference: Schema.Codec<SourceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repository: Schema.optional(Schema.String),
     revisionId: Schema.optional(Schema.String),
@@ -133,7 +133,7 @@ export interface HttpRequestContext {
   url?: string;
 }
 
-export const HttpRequestContext: Schema.Schema<HttpRequestContext> =
+export const HttpRequestContext: Schema.Codec<HttpRequestContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userAgent: Schema.optional(Schema.String),
     referrer: Schema.optional(Schema.String),
@@ -154,7 +154,7 @@ export interface ErrorContext {
   reportLocation?: SourceLocation;
 }
 
-export const ErrorContext: Schema.Schema<ErrorContext> =
+export const ErrorContext: Schema.Codec<ErrorContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceReferences: Schema.optional(Schema.Array(SourceReference)),
     httpRequest: Schema.optional(HttpRequestContext),
@@ -173,7 +173,7 @@ export interface ErrorEvent {
   message?: string;
 }
 
-export const ErrorEvent: Schema.Schema<ErrorEvent> =
+export const ErrorEvent: Schema.Codec<ErrorEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     serviceContext: Schema.optional(ServiceContext),
@@ -202,7 +202,7 @@ export interface ErrorGroupStats {
   affectedServices?: ReadonlyArray<ServiceContext>;
 }
 
-export const ErrorGroupStats: Schema.Schema<ErrorGroupStats> =
+export const ErrorGroupStats: Schema.Codec<ErrorGroupStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group: Schema.optional(ErrorGroup),
     affectedUsersCount: Schema.optional(Schema.String),
@@ -224,7 +224,7 @@ export interface ListGroupStatsResponse {
   nextPageToken?: string;
 }
 
-export const ListGroupStatsResponse: Schema.Schema<ListGroupStatsResponse> =
+export const ListGroupStatsResponse: Schema.Codec<ListGroupStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorGroupStats: Schema.optional(Schema.Array(ErrorGroupStats)),
     timeRangeBegin: Schema.optional(Schema.String),
@@ -242,7 +242,7 @@ export interface ReportedErrorEvent {
   eventTime?: string;
 }
 
-export const ReportedErrorEvent: Schema.Schema<ReportedErrorEvent> =
+export const ReportedErrorEvent: Schema.Codec<ReportedErrorEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     serviceContext: Schema.optional(ServiceContext),
@@ -259,7 +259,7 @@ export interface ListEventsResponse {
   timeRangeBegin?: string;
 }
 
-export const ListEventsResponse: Schema.Schema<ListEventsResponse> =
+export const ListEventsResponse: Schema.Codec<ListEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorEvents: Schema.optional(Schema.Array(ErrorEvent)),
     nextPageToken: Schema.optional(Schema.String),
@@ -268,14 +268,14 @@ export const ListEventsResponse: Schema.Schema<ListEventsResponse> =
 
 export interface DeleteEventsResponse {}
 
-export const DeleteEventsResponse: Schema.Schema<DeleteEventsResponse> =
+export const DeleteEventsResponse: Schema.Codec<DeleteEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteEventsResponse",
   });
 
 export interface ReportErrorEventResponse {}
 
-export const ReportErrorEventResponse: Schema.Schema<ReportErrorEventResponse> =
+export const ReportErrorEventResponse: Schema.Codec<ReportErrorEventResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReportErrorEventResponse",
   });
@@ -345,7 +345,7 @@ export const DeleteEventsProjectsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+projectName}/events" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteEventsProjectsRequest>;
+  ) as unknown as Schema.Codec<DeleteEventsProjectsRequest>;
 
 export type DeleteEventsProjectsResponse = DeleteEventsResponse;
 export const DeleteEventsProjectsResponse =
@@ -381,7 +381,7 @@ export const GetProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+groupName}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsGroupsRequest>;
 
 export type GetProjectsGroupsResponse = ErrorGroup;
 export const GetProjectsGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ ErrorGroup;
@@ -414,7 +414,7 @@ export const UpdateProjectsGroupsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsGroupsRequest>;
 
 export type UpdateProjectsGroupsResponse = ErrorGroup;
 export const UpdateProjectsGroupsResponse =
@@ -450,7 +450,7 @@ export const DeleteEventsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+projectName}/events" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteEventsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<DeleteEventsProjectsLocationsRequest>;
 
 export type DeleteEventsProjectsLocationsResponse = DeleteEventsResponse;
 export const DeleteEventsProjectsLocationsResponse =
@@ -550,7 +550,7 @@ export const ListProjectsLocationsGroupStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+projectName}/groupStats" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGroupStatsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGroupStatsRequest>;
 
 export type ListProjectsLocationsGroupStatsResponse = ListGroupStatsResponse;
 export const ListProjectsLocationsGroupStatsResponse =
@@ -624,7 +624,7 @@ export const ListProjectsLocationsEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+projectName}/events" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEventsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEventsRequest>;
 
 export type ListProjectsLocationsEventsResponse = ListEventsResponse;
 export const ListProjectsLocationsEventsResponse =
@@ -662,7 +662,7 @@ export const GetProjectsLocationsGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+groupName}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGroupsRequest>;
 
 export type GetProjectsLocationsGroupsResponse = ErrorGroup;
 export const GetProjectsLocationsGroupsResponse =
@@ -699,7 +699,7 @@ export const UpdateProjectsLocationsGroupsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsLocationsGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsLocationsGroupsRequest>;
 
 export type UpdateProjectsLocationsGroupsResponse = ErrorGroup;
 export const UpdateProjectsLocationsGroupsResponse =
@@ -799,7 +799,7 @@ export const ListProjectsGroupStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+projectName}/groupStats" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsGroupStatsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsGroupStatsRequest>;
 
 export type ListProjectsGroupStatsResponse = ListGroupStatsResponse;
 export const ListProjectsGroupStatsResponse =
@@ -870,7 +870,7 @@ export const ListProjectsEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+projectName}/events" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsEventsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsEventsRequest>;
 
 export type ListProjectsEventsResponse = ListEventsResponse;
 export const ListProjectsEventsResponse =
@@ -912,7 +912,7 @@ export const ReportProjectsEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportProjectsEventsRequest>;
+  ) as unknown as Schema.Codec<ReportProjectsEventsRequest>;
 
 export type ReportProjectsEventsResponse = ReportErrorEventResponse;
 export const ReportProjectsEventsResponse =

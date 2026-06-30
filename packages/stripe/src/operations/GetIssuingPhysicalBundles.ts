@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetIssuingPhysicalBundlesInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+  status?: "active" | "inactive" | "review";
+  type?: "custom" | "standard";
+}
 export const GetIssuingPhysicalBundlesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
@@ -17,11 +25,27 @@ export const GetIssuingPhysicalBundlesInput =
       path: "/v1/issuing/physical_bundles",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetIssuingPhysicalBundlesInput =
-  typeof GetIssuingPhysicalBundlesInput.Type;
+  ) as unknown as Schema.Codec<GetIssuingPhysicalBundlesInput>;
 
 // Output Schema
+export interface GetIssuingPhysicalBundlesOutput {
+  data: {
+    features: {
+      card_logo: "optional" | "required" | "unsupported";
+      carrier_text: "optional" | "required" | "unsupported";
+      second_line: "optional" | "required" | "unsupported";
+    };
+    id: string;
+    livemode: boolean;
+    name: string;
+    object: "issuing.physical_bundle";
+    status: "active" | "inactive" | "review";
+    type: "custom" | "standard";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetIssuingPhysicalBundlesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -46,9 +70,7 @@ export const GetIssuingPhysicalBundlesOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetIssuingPhysicalBundlesOutput =
-  typeof GetIssuingPhysicalBundlesOutput.Type;
+  }) as unknown as Schema.Codec<GetIssuingPhysicalBundlesOutput>;
 
 // The operation
 /**

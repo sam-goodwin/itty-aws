@@ -3,12 +3,29 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetProjectJWKSInput {
+  project_id: string;
+}
 export const GetProjectJWKSInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/jwks" }));
-export type GetProjectJWKSInput = typeof GetProjectJWKSInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/projects/{project_id}/jwks" }),
+) as unknown as Schema.Codec<GetProjectJWKSInput>;
 
 // Output Schema
+export interface GetProjectJWKSOutput {
+  jwks: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    jwks_url: string;
+    provider_name: string;
+    created_at: string;
+    updated_at: string;
+    jwt_audience?: string;
+    role_names?: string[];
+  }[];
+}
 export const GetProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jwks: Schema.Array(
     Schema.Struct({
@@ -23,8 +40,7 @@ export const GetProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       role_names: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
-});
-export type GetProjectJWKSOutput = typeof GetProjectJWKSOutput.Type;
+}) as unknown as Schema.Codec<GetProjectJWKSOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MarketingAnalyticsSuggestConversionGoalsRetrieveInput {
+  project_id: string;
+  min_count?: number;
+  top_n?: number;
+}
 export const MarketingAnalyticsSuggestConversionGoalsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,24 @@ export const MarketingAnalyticsSuggestConversionGoalsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/marketing_analytics/suggest_conversion_goals/",
     }),
-  );
-export type MarketingAnalyticsSuggestConversionGoalsRetrieveInput =
-  typeof MarketingAnalyticsSuggestConversionGoalsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MarketingAnalyticsSuggestConversionGoalsRetrieveInput>;
 
 // Output Schema
+export interface MarketingAnalyticsSuggestConversionGoalsRetrieveOutput {
+  candidates: {
+    event_name: string;
+    last_30d_count: number;
+    distinct_users_30d: number;
+    pct_with_utm_source: number;
+    pct_with_utm_campaign: number;
+    top_utm_sources: unknown[][];
+    is_already_a_goal: boolean;
+    suggestion_score: number;
+    suggestion_reason: string;
+  }[];
+  lookback_days: number;
+  excluded_events_count: number;
+}
 export const MarketingAnalyticsSuggestConversionGoalsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     candidates: Schema.Array(
@@ -35,9 +53,7 @@ export const MarketingAnalyticsSuggestConversionGoalsRetrieveOutput =
     ),
     lookback_days: Schema.Number,
     excluded_events_count: Schema.Number,
-  });
-export type MarketingAnalyticsSuggestConversionGoalsRetrieveOutput =
-  typeof MarketingAnalyticsSuggestConversionGoalsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MarketingAnalyticsSuggestConversionGoalsRetrieveOutput>;
 
 // The operation
 /**

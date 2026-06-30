@@ -3,8 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface RenewPasswordInput {
+  organization: string;
+  database: string;
+  branch: string;
+  id: string;
+}
 export const RenewPasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -15,10 +22,50 @@ export const RenewPasswordInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/passwords/{id}/renew",
   }),
-);
-export type RenewPasswordInput = typeof RenewPasswordInput.Type;
+) as unknown as Schema.Codec<RenewPasswordInput>;
 
 // Output Schema
+export interface RenewPasswordOutput {
+  id: string;
+  name: string;
+  role: "reader" | "writer" | "admin" | "readwriter";
+  cidrs: string[] | null;
+  created_at: string;
+  deleted_at: string | null;
+  expires_at: string | null;
+  last_used_at: string | null;
+  expired: boolean;
+  direct_vtgate: boolean;
+  direct_vtgate_addresses: string[];
+  ttl_seconds: number | null;
+  access_host_url: string;
+  access_host_regional_url: string;
+  access_host_regional_urls: string[];
+  actor: { id: string; display_name: string; avatar_url: string } | null;
+  region: {
+    id: string;
+    provider: string;
+    enabled: boolean;
+    public_ip_addresses: string[];
+    display_name: string;
+    location: string;
+    slug: string;
+    current_default: boolean;
+    mysql_supported: boolean;
+    postgresql_supported: boolean;
+  };
+  username: string;
+  plain_text: Redacted.Redacted<string>;
+  replica: boolean;
+  renewable: boolean;
+  database_branch: {
+    name: string;
+    id: string;
+    production: boolean;
+    mysql_edge_address: string;
+    private_edge_connectivity: boolean;
+  };
+}
 export const RenewPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -65,8 +112,7 @@ export const RenewPasswordOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mysql_edge_address: Schema.String,
     private_edge_connectivity: Schema.Boolean,
   }),
-});
-export type RenewPasswordOutput = typeof RenewPasswordOutput.Type;
+}) as unknown as Schema.Codec<RenewPasswordOutput>;
 
 // The operation
 /**

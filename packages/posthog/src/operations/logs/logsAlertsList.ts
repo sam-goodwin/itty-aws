@@ -4,16 +4,94 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsAlertsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const LogsAlertsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/logs/alerts/" }),
-);
-export type LogsAlertsListInput = typeof LogsAlertsListInput.Type;
+) as unknown as Schema.Codec<LogsAlertsListInput>;
 
 // Output Schema
+export interface LogsAlertsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    enabled?: boolean;
+    filters?: {
+      filterGroup?: unknown;
+      serviceNames?: string[] | null;
+      severityLevels?:
+        | ("trace" | "debug" | "info" | "warn" | "error" | "fatal")[]
+        | null;
+    };
+    threshold_count?: number;
+    threshold_operator?: "above" | "below";
+    window_minutes?: number;
+    check_interval_minutes?: number;
+    state?:
+      | "not_firing"
+      | "firing"
+      | "pending_resolve"
+      | "errored"
+      | "snoozed"
+      | "broken";
+    evaluation_periods?: number;
+    datapoints_to_alarm?: number;
+    cooldown_minutes?: number;
+    snooze_until?: string | null;
+    next_check_at?: string | null;
+    last_notified_at?: string | null;
+    last_checked_at?: string | null;
+    consecutive_failures?: number;
+    last_error_message?: string | null;
+    state_timeline?: {
+      start?: string;
+      end?: string;
+      state?:
+        | "not_firing"
+        | "firing"
+        | "pending_resolve"
+        | "errored"
+        | "snoozed"
+        | "broken";
+      enabled?: boolean;
+    }[];
+    destination_types?: ("slack" | "webhook" | "teams")[];
+    first_enabled_at?: string | null;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    updated_at?: string | null;
+  }[];
+}
 export const LogsAlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -26,9 +104,38 @@ export const LogsAlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         enabled: Schema.optional(Schema.Boolean),
         filters: Schema.optional(
           Schema.Struct({
-            filterGroup: Schema.optional(Schema.Unknown),
-            serviceNames: Schema.optional(Schema.Unknown),
-            severityLevels: Schema.optional(Schema.Unknown),
+            filterGroup: Schema.optional(
+              Schema.NullOr(
+                Schema.Struct({
+                  type: Schema.optional(Schema.Literals(["AND", "OR"])),
+                  values: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.Literals(["AND", "OR"])),
+                        values: Schema.optional(Schema.Array(Schema.Unknown)),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            serviceNames: Schema.optional(
+              Schema.NullOr(Schema.Array(Schema.String)),
+            ),
+            severityLevels: Schema.optional(
+              Schema.NullOr(
+                Schema.Array(
+                  Schema.Literals([
+                    "trace",
+                    "debug",
+                    "info",
+                    "warn",
+                    "error",
+                    "fatal",
+                  ]),
+                ),
+              ),
+            ),
           }),
         ),
         threshold_count: Schema.optional(Schema.Number),
@@ -93,7 +200,23 @@ export const LogsAlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -101,8 +224,7 @@ export const LogsAlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type LogsAlertsListOutput = typeof LogsAlertsListOutput.Type;
+}) as unknown as Schema.Codec<LogsAlertsListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupLogIntegrationInput {
+  groupId: string;
+  id: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupLogIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteGroupLogIntegrationInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
     }),
-  );
-export type DeleteGroupLogIntegrationInput =
-  typeof DeleteGroupLogIntegrationInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupLogIntegrationInput>;
 
 // Output Schema
+export type DeleteGroupLogIntegrationOutput = void;
 export const DeleteGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupLogIntegrationOutput =
-  typeof DeleteGroupLogIntegrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupLogIntegrationOutput>;
 
 // The operation
 /**

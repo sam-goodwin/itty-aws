@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsReportArtefactsRetrieveInput {
+  id: string;
+  project_id: string;
+  report_id: string;
+}
 export const SignalsReportArtefactsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,36 @@ export const SignalsReportArtefactsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/reports/{report_id}/artefacts/{id}/",
     }),
-  );
-export type SignalsReportArtefactsRetrieveInput =
-  typeof SignalsReportArtefactsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SignalsReportArtefactsRetrieveInput>;
 
 // Output Schema
+export interface SignalsReportArtefactsRetrieveOutput {
+  id: string;
+  type:
+    | "video_segment"
+    | "safety_judgment"
+    | "actionability_judgment"
+    | "priority_judgment"
+    | "signal_finding"
+    | "repo_selection"
+    | "suggested_reviewers"
+    | "dismissal"
+    | "code_reference"
+    | "commit"
+    | "task_run"
+    | "note";
+  content: Record<string, unknown> | unknown[];
+  created_at: string;
+  updated_at: string | null;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+  } | null;
+  task_id: string | null;
+}
 export const SignalsReportArtefactsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -35,14 +65,23 @@ export const SignalsReportArtefactsRetrieveOutput =
       "task_run",
       "note",
     ]),
-    content: Schema.Unknown,
+    content: Schema.Union([
+      Schema.Record(Schema.String, Schema.Unknown),
+      Schema.Array(Schema.Unknown),
+    ]),
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-    created_by: Schema.Unknown,
+    created_by: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+      }),
+    ),
     task_id: Schema.NullOr(Schema.String),
-  });
-export type SignalsReportArtefactsRetrieveOutput =
-  typeof SignalsReportArtefactsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SignalsReportArtefactsRetrieveOutput>;
 
 // The operation
 /**

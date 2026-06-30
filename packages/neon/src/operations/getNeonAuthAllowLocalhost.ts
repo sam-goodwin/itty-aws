@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetNeonAuthAllowLocalhostInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetNeonAuthAllowLocalhostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const GetNeonAuthAllowLocalhostInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/auth/allow_localhost",
     }),
-  );
-export type GetNeonAuthAllowLocalhostInput =
-  typeof GetNeonAuthAllowLocalhostInput.Type;
+  ) as unknown as Schema.Codec<GetNeonAuthAllowLocalhostInput>;
 
 // Output Schema
+export interface GetNeonAuthAllowLocalhostOutput {
+  allow_localhost: boolean;
+}
 export const GetNeonAuthAllowLocalhostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allow_localhost: Schema.Boolean,
-  });
-export type GetNeonAuthAllowLocalhostOutput =
-  typeof GetNeonAuthAllowLocalhostOutput.Type;
+  }) as unknown as Schema.Codec<GetNeonAuthAllowLocalhostOutput>;
 
 // The operation
 /**

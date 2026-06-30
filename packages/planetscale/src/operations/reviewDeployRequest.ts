@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ReviewDeployRequestInput {
+  organization: string;
+  database: string;
+  number: number;
+  state?: "commented" | "approved";
+  body?: string;
+}
 export const ReviewDeployRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,10 +23,18 @@ export const ReviewDeployRequestInput =
       method: "POST",
       path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/reviews",
     }),
-  );
-export type ReviewDeployRequestInput = typeof ReviewDeployRequestInput.Type;
+  ) as unknown as Schema.Codec<ReviewDeployRequestInput>;
 
 // Output Schema
+export interface ReviewDeployRequestOutput {
+  id: string;
+  body: string;
+  html_body: string;
+  state: "commented" | "approved";
+  created_at: string;
+  updated_at: string;
+  actor: { id: string; display_name: string; avatar_url: string };
+}
 export const ReviewDeployRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -33,8 +48,7 @@ export const ReviewDeployRequestOutput =
       display_name: Schema.String,
       avatar_url: Schema.String,
     }),
-  });
-export type ReviewDeployRequestOutput = typeof ReviewDeployRequestOutput.Type;
+  }) as unknown as Schema.Codec<ReviewDeployRequestOutput>;
 
 // The operation
 /**

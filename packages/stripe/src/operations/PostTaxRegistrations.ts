@@ -3,9 +3,365 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostTaxRegistrationsInput {
+  active_from: "now" | number;
+  country: string;
+  country_options: {
+    ae?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    al?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    am?: { type: "simplified" };
+    ao?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    at?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    au?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    aw?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    az?: { type: "simplified" };
+    ba?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    bb?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    bd?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    be?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    bf?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    bg?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    bh?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    bj?: { type: "simplified" };
+    bs?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    by?: { type: "simplified" };
+    ca?: {
+      province_standard?: { province: string };
+      type: "province_standard" | "simplified" | "standard";
+    };
+    cd?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    ch?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    cl?: { type: "simplified" };
+    cm?: { type: "simplified" };
+    co?: { type: "simplified" };
+    cr?: { type: "simplified" };
+    cv?: { type: "simplified" };
+    cy?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    cz?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    de?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    dk?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    ec?: { type: "simplified" };
+    ee?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    eg?: { type: "simplified" };
+    es?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    et?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    fi?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    fr?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    gb?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    ge?: { type: "simplified" };
+    gn?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    gr?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    hr?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    hu?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    id?: { type: "simplified" };
+    ie?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    in?: { type: "simplified" };
+    is?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    it?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    jp?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    ke?: { type: "simplified" };
+    kg?: { type: "simplified" };
+    kh?: { type: "simplified" };
+    kr?: { type: "simplified" };
+    kz?: { type: "simplified" };
+    la?: { type: "simplified" };
+    lk?: { type: "simplified" };
+    lt?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    lu?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    lv?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    ma?: { type: "simplified" };
+    md?: { type: "simplified" };
+    me?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    mk?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    mr?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    mt?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    mx?: { type: "simplified" };
+    my?: { type: "simplified" };
+    ng?: { type: "simplified" };
+    nl?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    no?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    np?: { type: "simplified" };
+    nz?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    om?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    pe?: { type: "simplified" };
+    ph?: { type: "simplified" };
+    pl?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    pt?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    ro?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    rs?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    ru?: { type: "simplified" };
+    sa?: { type: "simplified" };
+    se?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    sg?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    si?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    sk?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    sn?: { type: "simplified" };
+    sr?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    th?: { type: "simplified" };
+    tj?: { type: "simplified" };
+    tr?: { type: "simplified" };
+    tw?: { type: "simplified" };
+    tz?: { type: "simplified" };
+    ua?: { type: "simplified" };
+    ug?: { type: "simplified" };
+    us?: {
+      local_amusement_tax?: { jurisdiction: string };
+      local_lease_tax?: { jurisdiction: string };
+      state: string;
+      state_sales_tax?: {
+        elections: {
+          jurisdiction?: string;
+          type:
+            | "local_use_tax"
+            | "simplified_sellers_use_tax"
+            | "single_local_use_tax";
+        }[];
+      };
+      type:
+        | "local_amusement_tax"
+        | "local_lease_tax"
+        | "state_communications_tax"
+        | "state_retail_delivery_fee"
+        | "state_sales_tax";
+    };
+    uy?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    uz?: { type: "simplified" };
+    vn?: { type: "simplified" };
+    za?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    zm?: { type: "simplified" };
+    zw?: {
+      standard?: { place_of_supply_scheme?: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+  };
+  expand?: string[];
+  expires_at?: number;
+}
 export const PostTaxRegistrationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    active_from: Schema.Unknown,
+    active_from: Schema.Union([Schema.Literals(["now"]), Schema.Number]),
     country: Schema.String,
     country_options: Schema.Struct({
       ae: Schema.optional(
@@ -1150,10 +1506,303 @@ export const PostTaxRegistrationsInput =
       path: "/v1/tax/registrations",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostTaxRegistrationsInput = typeof PostTaxRegistrationsInput.Type;
+  ) as unknown as Schema.Codec<PostTaxRegistrationsInput>;
 
 // Output Schema
+export interface PostTaxRegistrationsOutput {
+  active_from: number;
+  country: string;
+  country_options: {
+    ae?: {
+      standard?: { place_of_supply_scheme: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    al?: { type: "standard" };
+    am?: { type: "simplified" };
+    ao?: { type: "standard" };
+    at?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    au?: {
+      standard?: { place_of_supply_scheme: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    aw?: { type: "standard" };
+    az?: { type: "simplified" };
+    ba?: { type: "standard" };
+    bb?: { type: "standard" };
+    bd?: { type: "standard" };
+    be?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    bf?: { type: "standard" };
+    bg?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    bh?: { type: "standard" };
+    bj?: { type: "simplified" };
+    bs?: { type: "standard" };
+    by?: { type: "simplified" };
+    ca?: {
+      province_standard?: { province: string };
+      type: "province_standard" | "simplified" | "standard";
+    };
+    cd?: { type: "standard" };
+    ch?: {
+      standard?: { place_of_supply_scheme: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    cl?: { type: "simplified" };
+    cm?: { type: "simplified" };
+    co?: { type: "simplified" };
+    cr?: { type: "simplified" };
+    cv?: { type: "simplified" };
+    cy?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    cz?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    de?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    dk?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    ec?: { type: "simplified" };
+    ee?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    eg?: { type: "simplified" };
+    es?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    et?: { type: "standard" };
+    fi?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    fr?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    gb?: {
+      standard?: { place_of_supply_scheme: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    ge?: { type: "simplified" };
+    gn?: { type: "standard" };
+    gr?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    hr?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    hu?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    id?: { type: "simplified" };
+    ie?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    in?: { type: "simplified" };
+    is?: { type: "standard" };
+    it?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    jp?: {
+      standard?: { place_of_supply_scheme: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    ke?: { type: "simplified" };
+    kg?: { type: "simplified" };
+    kh?: { type: "simplified" };
+    kr?: { type: "simplified" };
+    kz?: { type: "simplified" };
+    la?: { type: "simplified" };
+    lk?: { type: "simplified" };
+    lt?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    lu?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    lv?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    ma?: { type: "simplified" };
+    md?: { type: "simplified" };
+    me?: { type: "standard" };
+    mk?: { type: "standard" };
+    mr?: { type: "standard" };
+    mt?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    mx?: { type: "simplified" };
+    my?: { type: "simplified" };
+    ng?: { type: "simplified" };
+    nl?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    no?: {
+      standard?: { place_of_supply_scheme: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    np?: { type: "simplified" };
+    nz?: {
+      standard?: { place_of_supply_scheme: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    om?: { type: "standard" };
+    pe?: { type: "simplified" };
+    ph?: { type: "simplified" };
+    pl?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    pt?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    ro?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    rs?: { type: "standard" };
+    ru?: { type: "simplified" };
+    sa?: { type: "simplified" };
+    se?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    sg?: {
+      standard?: { place_of_supply_scheme: "inbound_goods" | "standard" };
+      type: "standard";
+    };
+    si?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    sk?: {
+      standard?: {
+        place_of_supply_scheme: "inbound_goods" | "small_seller" | "standard";
+      };
+      type: "ioss" | "oss_non_union" | "oss_union" | "standard";
+    };
+    sn?: { type: "simplified" };
+    sr?: { type: "standard" };
+    th?: { type: "simplified" };
+    tj?: { type: "simplified" };
+    tr?: { type: "simplified" };
+    tw?: { type: "simplified" };
+    tz?: { type: "simplified" };
+    ua?: { type: "simplified" };
+    ug?: { type: "simplified" };
+    us?: {
+      local_amusement_tax?: { jurisdiction: string };
+      local_lease_tax?: { jurisdiction: string };
+      state: string;
+      state_sales_tax?: {
+        elections?: {
+          jurisdiction?: string;
+          type:
+            | "local_use_tax"
+            | "simplified_sellers_use_tax"
+            | "single_local_use_tax";
+        }[];
+      };
+      type:
+        | "local_amusement_tax"
+        | "local_lease_tax"
+        | "state_communications_tax"
+        | "state_retail_delivery_fee"
+        | "state_sales_tax";
+    };
+    uy?: { type: "standard" };
+    uz?: { type: "simplified" };
+    vn?: { type: "simplified" };
+    za?: { type: "standard" };
+    zm?: { type: "simplified" };
+    zw?: { type: "standard" };
+  };
+  created: number;
+  expires_at: number | null;
+  id: string;
+  livemode: boolean;
+  object: "tax.registration";
+  status: "active" | "expired" | "scheduled";
+}
 export const PostTaxRegistrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active_from: Schema.Number,
@@ -2155,8 +2804,7 @@ export const PostTaxRegistrationsOutput =
     livemode: Schema.Boolean,
     object: Schema.Literals(["tax.registration"]),
     status: Schema.Literals(["active", "expired", "scheduled"]),
-  });
-export type PostTaxRegistrationsOutput = typeof PostTaxRegistrationsOutput.Type;
+  }) as unknown as Schema.Codec<PostTaxRegistrationsOutput>;
 
 // The operation
 /**

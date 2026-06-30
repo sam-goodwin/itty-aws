@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17,10 +18,43 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.SignalRService/operations",
     apiVersion: "2024-03-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          fillGapWithZero?: string;
+          category?: string;
+          dimensions?: {
+            name?: string;
+            displayName?: string;
+            internalName?: string;
+            toBeExportedForShoebox?: boolean;
+          }[];
+        }[];
+        logSpecifications?: { name?: string; displayName?: string }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -81,8 +115,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -95,6 +128,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SignalRCheckNameAvailabilityInput {
+  location: string;
+  subscriptionId: string;
+  type: string;
+  name: string;
+}
 export const SignalRCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -107,19 +146,20 @@ export const SignalRCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/checkNameAvailability",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCheckNameAvailabilityInput =
-  typeof SignalRCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<SignalRCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface SignalRCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const SignalRCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type SignalRCheckNameAvailabilityOutput =
-  typeof SignalRCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<SignalRCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -135,6 +175,142 @@ export const SignalRCheckNameAvailability =
     outputSchema: SignalRCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface SignalRCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    externalIP?: string;
+    hostName?: string;
+    publicPort?: number;
+    serverPort?: number;
+    version?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    sharedPrivateLinkResources?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    tls?: { clientCertEnabled?: boolean };
+    hostNamePrefix?: string;
+    features?: {
+      flag:
+        | "ServiceMode"
+        | "EnableConnectivityLogs"
+        | "EnableMessagingLogs"
+        | "EnableLiveTrace";
+      value: string;
+      properties?: Record<string, string>;
+    }[];
+    liveTraceConfiguration?: {
+      enabled?: string;
+      categories?: { name?: string; enabled?: string }[];
+    };
+    resourceLogConfiguration?: {
+      categories?: { name?: string; enabled?: string }[];
+    };
+    cors?: { allowedOrigins?: string[] };
+    serverless?: { connectionTimeoutInSeconds?: number };
+    upstream?: {
+      templates?: {
+        hubPattern?: string;
+        eventPattern?: string;
+        categoryPattern?: string;
+        urlTemplate: string;
+        auth?: {
+          type?: "None" | "ManagedIdentity";
+          managedIdentity?: { resource?: string };
+        };
+      }[];
+    };
+    networkACLs?: {
+      defaultAction?: "Allow" | "Deny";
+      publicNetwork?: {
+        allow?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+        deny?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+      };
+      privateEndpoints?: {
+        allow?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+        deny?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+      }[];
+      ipRules?: { value?: string; action?: "Allow" | "Deny" }[];
+    };
+    publicNetworkAccess?: string;
+    disableLocalAuth?: boolean;
+    disableAadAuth?: boolean;
+    regionEndpointEnabled?: string;
+    resourceStopped?: string;
+  };
+  kind?: "SignalR" | "RawWebSockets";
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+    principalId?: string;
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SignalRCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -417,10 +593,22 @@ export const SignalRCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCreateOrUpdateInput = typeof SignalRCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalRCreateOrUpdateInput>;
 
 // Output Schema
+export interface SignalRCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -440,9 +628,7 @@ export const SignalRCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRCreateOrUpdateOutput =
-  typeof SignalRCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalRCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -460,6 +646,27 @@ export const SignalRCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRCustomCertificatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+  properties: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    keyVaultBaseUri: string;
+    keyVaultSecretName: string;
+    keyVaultSecretVersion?: string;
+  };
+}
 export const SignalRCustomCertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -490,11 +697,22 @@ export const SignalRCustomCertificatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCustomCertificatesCreateOrUpdateInput =
-  typeof SignalRCustomCertificatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalRCustomCertificatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SignalRCustomCertificatesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRCustomCertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -514,9 +732,7 @@ export const SignalRCustomCertificatesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRCustomCertificatesCreateOrUpdateOutput =
-  typeof SignalRCustomCertificatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalRCustomCertificatesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -534,6 +750,12 @@ export const SignalRCustomCertificatesCreateOrUpdate =
     outputSchema: SignalRCustomCertificatesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SignalRCustomCertificatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+}
 export const SignalRCustomCertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -546,15 +768,12 @@ export const SignalRCustomCertificatesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCustomCertificatesDeleteInput =
-  typeof SignalRCustomCertificatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SignalRCustomCertificatesDeleteInput>;
 
 // Output Schema
+export type SignalRCustomCertificatesDeleteOutput = void;
 export const SignalRCustomCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalRCustomCertificatesDeleteOutput =
-  typeof SignalRCustomCertificatesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRCustomCertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -572,6 +791,12 @@ export const SignalRCustomCertificatesDelete =
     outputSchema: SignalRCustomCertificatesDeleteOutput,
   }));
 // Input Schema
+export interface SignalRCustomCertificatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+}
 export const SignalRCustomCertificatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -584,11 +809,22 @@ export const SignalRCustomCertificatesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCustomCertificatesGetInput =
-  typeof SignalRCustomCertificatesGetInput.Type;
+  ) as unknown as Schema.Codec<SignalRCustomCertificatesGetInput>;
 
 // Output Schema
+export interface SignalRCustomCertificatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRCustomCertificatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -608,9 +844,7 @@ export const SignalRCustomCertificatesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRCustomCertificatesGetOutput =
-  typeof SignalRCustomCertificatesGetOutput.Type;
+  }) as unknown as Schema.Codec<SignalRCustomCertificatesGetOutput>;
 
 // The operation
 /**
@@ -628,6 +862,11 @@ export const SignalRCustomCertificatesGet =
     outputSchema: SignalRCustomCertificatesGetOutput,
   }));
 // Input Schema
+export interface SignalRCustomCertificatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRCustomCertificatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -639,11 +878,25 @@ export const SignalRCustomCertificatesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCustomCertificatesListInput =
-  typeof SignalRCustomCertificatesListInput.Type;
+  ) as unknown as Schema.Codec<SignalRCustomCertificatesListInput>;
 
 // Output Schema
+export interface SignalRCustomCertificatesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRCustomCertificatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -680,9 +933,7 @@ export const SignalRCustomCertificatesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRCustomCertificatesListOutput =
-  typeof SignalRCustomCertificatesListOutput.Type;
+  }) as unknown as Schema.Codec<SignalRCustomCertificatesListOutput>;
 
 // The operation
 /**
@@ -699,6 +950,26 @@ export const SignalRCustomCertificatesList =
     outputSchema: SignalRCustomCertificatesListOutput,
   }));
 // Input Schema
+export interface SignalRCustomDomainsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+  properties: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    domainName: string;
+    customCertificate: { id?: string };
+  };
+}
 export const SignalRCustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -730,11 +1001,22 @@ export const SignalRCustomDomainsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCustomDomainsCreateOrUpdateInput =
-  typeof SignalRCustomDomainsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalRCustomDomainsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SignalRCustomDomainsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRCustomDomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -754,9 +1036,7 @@ export const SignalRCustomDomainsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRCustomDomainsCreateOrUpdateOutput =
-  typeof SignalRCustomDomainsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalRCustomDomainsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -774,6 +1054,12 @@ export const SignalRCustomDomainsCreateOrUpdate =
     outputSchema: SignalRCustomDomainsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SignalRCustomDomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+}
 export const SignalRCustomDomainsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -786,15 +1072,12 @@ export const SignalRCustomDomainsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCustomDomainsDeleteInput =
-  typeof SignalRCustomDomainsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SignalRCustomDomainsDeleteInput>;
 
 // Output Schema
+export type SignalRCustomDomainsDeleteOutput = void;
 export const SignalRCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalRCustomDomainsDeleteOutput =
-  typeof SignalRCustomDomainsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRCustomDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -813,6 +1096,12 @@ export const SignalRCustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRCustomDomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  name: string;
+}
 export const SignalRCustomDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -825,11 +1114,22 @@ export const SignalRCustomDomainsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCustomDomainsGetInput =
-  typeof SignalRCustomDomainsGetInput.Type;
+  ) as unknown as Schema.Codec<SignalRCustomDomainsGetInput>;
 
 // Output Schema
+export interface SignalRCustomDomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRCustomDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -849,9 +1149,7 @@ export const SignalRCustomDomainsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRCustomDomainsGetOutput =
-  typeof SignalRCustomDomainsGetOutput.Type;
+  }) as unknown as Schema.Codec<SignalRCustomDomainsGetOutput>;
 
 // The operation
 /**
@@ -870,6 +1168,11 @@ export const SignalRCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRCustomDomainsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRCustomDomainsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -881,11 +1184,25 @@ export const SignalRCustomDomainsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRCustomDomainsListInput =
-  typeof SignalRCustomDomainsListInput.Type;
+  ) as unknown as Schema.Codec<SignalRCustomDomainsListInput>;
 
 // Output Schema
+export interface SignalRCustomDomainsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRCustomDomainsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -922,9 +1239,7 @@ export const SignalRCustomDomainsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRCustomDomainsListOutput =
-  typeof SignalRCustomDomainsListOutput.Type;
+  }) as unknown as Schema.Codec<SignalRCustomDomainsListOutput>;
 
 // The operation
 /**
@@ -942,6 +1257,11 @@ export const SignalRCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -952,12 +1272,12 @@ export const SignalRDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type SignalRDeleteInput = typeof SignalRDeleteInput.Type;
+) as unknown as Schema.Codec<SignalRDeleteInput>;
 
 // Output Schema
-export const SignalRDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalRDeleteOutput = typeof SignalRDeleteOutput.Type;
+export type SignalRDeleteOutput = void;
+export const SignalRDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRDeleteOutput>;
 
 // The operation
 /**
@@ -973,6 +1293,11 @@ export const SignalRDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SignalRDeleteOutput,
 }));
 // Input Schema
+export interface SignalRGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -983,10 +1308,22 @@ export const SignalRGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type SignalRGetInput = typeof SignalRGetInput.Type;
+) as unknown as Schema.Codec<SignalRGetInput>;
 
 // Output Schema
+export interface SignalRGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1005,8 +1342,7 @@ export const SignalRGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SignalRGetOutput = typeof SignalRGetOutput.Type;
+}) as unknown as Schema.Codec<SignalRGetOutput>;
 
 // The operation
 /**
@@ -1022,6 +1358,10 @@ export const SignalRGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SignalRGetOutput,
 }));
 // Input Schema
+export interface SignalRListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SignalRListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1032,11 +1372,25 @@ export const SignalRListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRListByResourceGroupInput =
-  typeof SignalRListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SignalRListByResourceGroupInput>;
 
 // Output Schema
+export interface SignalRListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1073,9 +1427,7 @@ export const SignalRListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRListByResourceGroupOutput =
-  typeof SignalRListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SignalRListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1092,6 +1444,9 @@ export const SignalRListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SignalRListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1101,11 +1456,25 @@ export const SignalRListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/signalR",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRListBySubscriptionInput =
-  typeof SignalRListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SignalRListBySubscriptionInput>;
 
 // Output Schema
+export interface SignalRListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1142,9 +1511,7 @@ export const SignalRListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRListBySubscriptionOutput =
-  typeof SignalRListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SignalRListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1160,6 +1527,11 @@ export const SignalRListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1170,17 +1542,21 @@ export const SignalRListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/listKeys",
     apiVersion: "2024-03-01",
   }),
-);
-export type SignalRListKeysInput = typeof SignalRListKeysInput.Type;
+) as unknown as Schema.Codec<SignalRListKeysInput>;
 
 // Output Schema
+export interface SignalRListKeysOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+}
 export const SignalRListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   primaryKey: Schema.optional(Schema.String),
   secondaryKey: Schema.optional(Schema.String),
   primaryConnectionString: Schema.optional(Schema.String),
   secondaryConnectionString: Schema.optional(Schema.String),
-});
-export type SignalRListKeysOutput = typeof SignalRListKeysOutput.Type;
+}) as unknown as Schema.Codec<SignalRListKeysOutput>;
 
 // The operation
 /**
@@ -1196,6 +1572,12 @@ export const SignalRListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SignalRListKeysOutput,
 }));
 // Input Schema
+export interface SignalRListReplicaSkusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const SignalRListReplicaSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1208,11 +1590,29 @@ export const SignalRListReplicaSkusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/skus",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRListReplicaSkusInput =
-  typeof SignalRListReplicaSkusInput.Type;
+  ) as unknown as Schema.Codec<SignalRListReplicaSkusInput>;
 
 // Output Schema
+export interface SignalRListReplicaSkusOutput {
+  value?: {
+    resourceType?: string;
+    sku?: {
+      name: string;
+      tier?: "Free" | "Basic" | "Standard" | "Premium";
+      size?: string;
+      family?: string;
+      capacity?: number;
+    };
+    capacity?: {
+      minimum?: number;
+      maximum?: number;
+      default?: number;
+      allowedValues?: number[];
+      scaleType?: "None" | "Manual" | "Automatic";
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRListReplicaSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1245,9 +1645,7 @@ export const SignalRListReplicaSkusOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRListReplicaSkusOutput =
-  typeof SignalRListReplicaSkusOutput.Type;
+  }) as unknown as Schema.Codec<SignalRListReplicaSkusOutput>;
 
 // The operation
 /**
@@ -1266,6 +1664,11 @@ export const SignalRListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRListSkusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1276,10 +1679,29 @@ export const SignalRListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/skus",
     apiVersion: "2024-03-01",
   }),
-);
-export type SignalRListSkusInput = typeof SignalRListSkusInput.Type;
+) as unknown as Schema.Codec<SignalRListSkusInput>;
 
 // Output Schema
+export interface SignalRListSkusOutput {
+  value?: {
+    resourceType?: string;
+    sku?: {
+      name: string;
+      tier?: "Free" | "Basic" | "Standard" | "Premium";
+      size?: string;
+      family?: string;
+      capacity?: number;
+    };
+    capacity?: {
+      minimum?: number;
+      maximum?: number;
+      default?: number;
+      allowedValues?: number[];
+      scaleType?: "None" | "Manual" | "Automatic";
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1311,8 +1733,7 @@ export const SignalRListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SignalRListSkusOutput = typeof SignalRListSkusOutput.Type;
+}) as unknown as Schema.Codec<SignalRListSkusOutput>;
 
 // The operation
 /**
@@ -1328,6 +1749,12 @@ export const SignalRListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SignalRListSkusOutput,
 }));
 // Input Schema
+export interface SignalRPrivateEndpointConnectionsDeleteInput {
+  privateEndpointConnectionName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRPrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -1340,15 +1767,12 @@ export const SignalRPrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRPrivateEndpointConnectionsDeleteInput =
-  typeof SignalRPrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type SignalRPrivateEndpointConnectionsDeleteOutput = void;
 export const SignalRPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalRPrivateEndpointConnectionsDeleteOutput =
-  typeof SignalRPrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1366,6 +1790,12 @@ export const SignalRPrivateEndpointConnectionsDelete =
     outputSchema: SignalRPrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface SignalRPrivateEndpointConnectionsGetInput {
+  privateEndpointConnectionName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRPrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -1378,11 +1808,22 @@ export const SignalRPrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRPrivateEndpointConnectionsGetInput =
-  typeof SignalRPrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface SignalRPrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRPrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1402,9 +1843,7 @@ export const SignalRPrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRPrivateEndpointConnectionsGetOutput =
-  typeof SignalRPrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1422,6 +1861,11 @@ export const SignalRPrivateEndpointConnectionsGet =
     outputSchema: SignalRPrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface SignalRPrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRPrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1433,11 +1877,25 @@ export const SignalRPrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRPrivateEndpointConnectionsListInput =
-  typeof SignalRPrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface SignalRPrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRPrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1474,9 +1932,7 @@ export const SignalRPrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRPrivateEndpointConnectionsListOutput =
-  typeof SignalRPrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -1493,6 +1949,31 @@ export const SignalRPrivateEndpointConnectionsList =
     outputSchema: SignalRPrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface SignalRPrivateEndpointConnectionsUpdateInput {
+  privateEndpointConnectionName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const SignalRPrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -1542,11 +2023,22 @@ export const SignalRPrivateEndpointConnectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRPrivateEndpointConnectionsUpdateInput =
-  typeof SignalRPrivateEndpointConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsUpdateInput>;
 
 // Output Schema
+export interface SignalRPrivateEndpointConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRPrivateEndpointConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1566,9 +2058,7 @@ export const SignalRPrivateEndpointConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRPrivateEndpointConnectionsUpdateOutput =
-  typeof SignalRPrivateEndpointConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -1586,6 +2076,11 @@ export const SignalRPrivateEndpointConnectionsUpdate =
     outputSchema: SignalRPrivateEndpointConnectionsUpdateOutput,
   }));
 // Input Schema
+export interface SignalRPrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1597,11 +2092,25 @@ export const SignalRPrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateLinkResources",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRPrivateLinkResourcesListInput =
-  typeof SignalRPrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<SignalRPrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface SignalRPrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1638,9 +2147,7 @@ export const SignalRPrivateLinkResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRPrivateLinkResourcesListOutput =
-  typeof SignalRPrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<SignalRPrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -1657,6 +2164,12 @@ export const SignalRPrivateLinkResourcesList =
     outputSchema: SignalRPrivateLinkResourcesListOutput,
   }));
 // Input Schema
+export interface SignalRRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  keyType?: "Primary" | "Secondary" | "Salt";
+}
 export const SignalRRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1669,18 +2182,22 @@ export const SignalRRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/regenerateKey",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRRegenerateKeyInput = typeof SignalRRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<SignalRRegenerateKeyInput>;
 
 // Output Schema
+export interface SignalRRegenerateKeyOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+}
 export const SignalRRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
     secondaryConnectionString: Schema.optional(Schema.String),
-  });
-export type SignalRRegenerateKeyOutput = typeof SignalRRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<SignalRRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -1698,6 +2215,35 @@ export const SignalRRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRReplicasCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    regionEndpointEnabled?: string;
+    resourceStopped?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SignalRReplicasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1742,11 +2288,22 @@ export const SignalRReplicasCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicasCreateOrUpdateInput =
-  typeof SignalRReplicasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicasCreateOrUpdateInput>;
 
 // Output Schema
+export interface SignalRReplicasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRReplicasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1766,9 +2323,7 @@ export const SignalRReplicasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRReplicasCreateOrUpdateOutput =
-  typeof SignalRReplicasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalRReplicasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1786,6 +2341,12 @@ export const SignalRReplicasCreateOrUpdate =
     outputSchema: SignalRReplicasCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SignalRReplicasDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const SignalRReplicasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1798,14 +2359,12 @@ export const SignalRReplicasDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicasDeleteInput = typeof SignalRReplicasDeleteInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicasDeleteInput>;
 
 // Output Schema
+export type SignalRReplicasDeleteOutput = void;
 export const SignalRReplicasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalRReplicasDeleteOutput =
-  typeof SignalRReplicasDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRReplicasDeleteOutput>;
 
 // The operation
 /**
@@ -1824,6 +2383,12 @@ export const SignalRReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRReplicasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const SignalRReplicasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1836,10 +2401,22 @@ export const SignalRReplicasGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicasGetInput = typeof SignalRReplicasGetInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicasGetInput>;
 
 // Output Schema
+export interface SignalRReplicasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRReplicasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1859,8 +2436,7 @@ export const SignalRReplicasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRReplicasGetOutput = typeof SignalRReplicasGetOutput.Type;
+  }) as unknown as Schema.Codec<SignalRReplicasGetOutput>;
 
 // The operation
 /**
@@ -1877,6 +2453,29 @@ export const SignalRReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SignalRReplicasGetOutput,
 }));
 // Input Schema
+export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+  sharedPrivateLinkResourceName: string;
+  properties?: {
+    groupId: string;
+    privateLinkResourceId: string;
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    requestMessage?: string;
+    status?: "Pending" | "Approved" | "Rejected" | "Disconnected" | "Timeout";
+  };
+}
 export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1919,11 +2518,22 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
-  typeof SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1943,9 +2553,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  typeof SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1964,6 +2572,13 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdate =
     outputSchema: SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SignalRReplicaSharedPrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+  sharedPrivateLinkResourceName: string;
+}
 export const SignalRReplicaSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1977,11 +2592,22 @@ export const SignalRReplicaSharedPrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicaSharedPrivateLinkResourcesGetInput =
-  typeof SignalRReplicaSharedPrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicaSharedPrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface SignalRReplicaSharedPrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRReplicaSharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2001,9 +2627,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRReplicaSharedPrivateLinkResourcesGetOutput =
-  typeof SignalRReplicaSharedPrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<SignalRReplicaSharedPrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -2022,6 +2646,12 @@ export const SignalRReplicaSharedPrivateLinkResourcesGet =
     outputSchema: SignalRReplicaSharedPrivateLinkResourcesGetOutput,
   }));
 // Input Schema
+export interface SignalRReplicaSharedPrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const SignalRReplicaSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2034,11 +2664,25 @@ export const SignalRReplicaSharedPrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicaSharedPrivateLinkResourcesListInput =
-  typeof SignalRReplicaSharedPrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicaSharedPrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface SignalRReplicaSharedPrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRReplicaSharedPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2075,9 +2719,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRReplicaSharedPrivateLinkResourcesListOutput =
-  typeof SignalRReplicaSharedPrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<SignalRReplicaSharedPrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -2095,6 +2737,11 @@ export const SignalRReplicaSharedPrivateLinkResourcesList =
     outputSchema: SignalRReplicaSharedPrivateLinkResourcesListOutput,
   }));
 // Input Schema
+export interface SignalRReplicasListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRReplicasListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2106,10 +2753,25 @@ export const SignalRReplicasListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicasListInput = typeof SignalRReplicasListInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicasListInput>;
 
 // Output Schema
+export interface SignalRReplicasListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRReplicasListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2146,8 +2808,7 @@ export const SignalRReplicasListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRReplicasListOutput = typeof SignalRReplicasListOutput.Type;
+  }) as unknown as Schema.Codec<SignalRReplicasListOutput>;
 
 // The operation
 /**
@@ -2163,6 +2824,12 @@ export const SignalRReplicasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SignalRReplicasListOutput,
 }));
 // Input Schema
+export interface SignalRReplicasRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+}
 export const SignalRReplicasRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2175,15 +2842,12 @@ export const SignalRReplicasRestartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/restart",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicasRestartInput =
-  typeof SignalRReplicasRestartInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicasRestartInput>;
 
 // Output Schema
+export type SignalRReplicasRestartOutput = void;
 export const SignalRReplicasRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalRReplicasRestartOutput =
-  typeof SignalRReplicasRestartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRReplicasRestartOutput>;
 
 // The operation
 /**
@@ -2202,6 +2866,35 @@ export const SignalRReplicasRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRReplicasUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  replicaName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    regionEndpointEnabled?: string;
+    resourceStopped?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SignalRReplicasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2246,10 +2939,22 @@ export const SignalRReplicasUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRReplicasUpdateInput = typeof SignalRReplicasUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalRReplicasUpdateInput>;
 
 // Output Schema
+export interface SignalRReplicasUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRReplicasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2269,9 +2974,7 @@ export const SignalRReplicasUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRReplicasUpdateOutput =
-  typeof SignalRReplicasUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalRReplicasUpdateOutput>;
 
 // The operation
 /**
@@ -2290,6 +2993,11 @@ export const SignalRReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SignalRRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2300,12 +3008,12 @@ export const SignalRRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/restart",
     apiVersion: "2024-03-01",
   }),
-);
-export type SignalRRestartInput = typeof SignalRRestartInput.Type;
+) as unknown as Schema.Codec<SignalRRestartInput>;
 
 // Output Schema
-export const SignalRRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalRRestartOutput = typeof SignalRRestartOutput.Type;
+export type SignalRRestartOutput = void;
+export const SignalRRestartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRRestartOutput>;
 
 // The operation
 /**
@@ -2321,6 +3029,28 @@ export const SignalRRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SignalRRestartOutput,
 }));
 // Input Schema
+export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateInput {
+  sharedPrivateLinkResourceName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    groupId: string;
+    privateLinkResourceId: string;
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    requestMessage?: string;
+    status?: "Pending" | "Approved" | "Rejected" | "Disconnected" | "Timeout";
+  };
+}
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
@@ -2362,11 +3092,22 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
-  typeof SignalRSharedPrivateLinkResourcesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2386,9 +3127,7 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  typeof SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2406,6 +3145,12 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdate =
     outputSchema: SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SignalRSharedPrivateLinkResourcesDeleteInput {
+  sharedPrivateLinkResourceName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRSharedPrivateLinkResourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
@@ -2418,15 +3163,12 @@ export const SignalRSharedPrivateLinkResourcesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRSharedPrivateLinkResourcesDeleteInput =
-  typeof SignalRSharedPrivateLinkResourcesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesDeleteInput>;
 
 // Output Schema
+export type SignalRSharedPrivateLinkResourcesDeleteOutput = void;
 export const SignalRSharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalRSharedPrivateLinkResourcesDeleteOutput =
-  typeof SignalRSharedPrivateLinkResourcesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -2444,6 +3186,12 @@ export const SignalRSharedPrivateLinkResourcesDelete =
     outputSchema: SignalRSharedPrivateLinkResourcesDeleteOutput,
   }));
 // Input Schema
+export interface SignalRSharedPrivateLinkResourcesGetInput {
+  sharedPrivateLinkResourceName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRSharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
@@ -2456,11 +3204,22 @@ export const SignalRSharedPrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRSharedPrivateLinkResourcesGetInput =
-  typeof SignalRSharedPrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface SignalRSharedPrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRSharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2480,9 +3239,7 @@ export const SignalRSharedPrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SignalRSharedPrivateLinkResourcesGetOutput =
-  typeof SignalRSharedPrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -2500,6 +3257,11 @@ export const SignalRSharedPrivateLinkResourcesGet =
     outputSchema: SignalRSharedPrivateLinkResourcesGetOutput,
   }));
 // Input Schema
+export interface SignalRSharedPrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const SignalRSharedPrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2511,11 +3273,25 @@ export const SignalRSharedPrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources",
       apiVersion: "2024-03-01",
     }),
-  );
-export type SignalRSharedPrivateLinkResourcesListInput =
-  typeof SignalRSharedPrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface SignalRSharedPrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SignalRSharedPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2552,9 +3328,7 @@ export const SignalRSharedPrivateLinkResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SignalRSharedPrivateLinkResourcesListOutput =
-  typeof SignalRSharedPrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -2571,6 +3345,142 @@ export const SignalRSharedPrivateLinkResourcesList =
     outputSchema: SignalRSharedPrivateLinkResourcesListOutput,
   }));
 // Input Schema
+export interface SignalRUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    externalIP?: string;
+    hostName?: string;
+    publicPort?: number;
+    serverPort?: number;
+    version?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    sharedPrivateLinkResources?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    tls?: { clientCertEnabled?: boolean };
+    hostNamePrefix?: string;
+    features?: {
+      flag:
+        | "ServiceMode"
+        | "EnableConnectivityLogs"
+        | "EnableMessagingLogs"
+        | "EnableLiveTrace";
+      value: string;
+      properties?: Record<string, string>;
+    }[];
+    liveTraceConfiguration?: {
+      enabled?: string;
+      categories?: { name?: string; enabled?: string }[];
+    };
+    resourceLogConfiguration?: {
+      categories?: { name?: string; enabled?: string }[];
+    };
+    cors?: { allowedOrigins?: string[] };
+    serverless?: { connectionTimeoutInSeconds?: number };
+    upstream?: {
+      templates?: {
+        hubPattern?: string;
+        eventPattern?: string;
+        categoryPattern?: string;
+        urlTemplate: string;
+        auth?: {
+          type?: "None" | "ManagedIdentity";
+          managedIdentity?: { resource?: string };
+        };
+      }[];
+    };
+    networkACLs?: {
+      defaultAction?: "Allow" | "Deny";
+      publicNetwork?: {
+        allow?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+        deny?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+      };
+      privateEndpoints?: {
+        allow?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+        deny?: (
+          | "ClientConnection"
+          | "ServerConnection"
+          | "RESTAPI"
+          | "Trace"
+        )[];
+      }[];
+      ipRules?: { value?: string; action?: "Allow" | "Deny" }[];
+    };
+    publicNetworkAccess?: string;
+    disableLocalAuth?: boolean;
+    disableAadAuth?: boolean;
+    regionEndpointEnabled?: string;
+    resourceStopped?: string;
+  };
+  kind?: "SignalR" | "RawWebSockets";
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+    principalId?: string;
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SignalRUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2852,10 +3762,22 @@ export const SignalRUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type SignalRUpdateInput = typeof SignalRUpdateInput.Type;
+) as unknown as Schema.Codec<SignalRUpdateInput>;
 
 // Output Schema
+export interface SignalRUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SignalRUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2874,8 +3796,7 @@ export const SignalRUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SignalRUpdateOutput = typeof SignalRUpdateOutput.Type;
+}) as unknown as Schema.Codec<SignalRUpdateOutput>;
 
 // The operation
 /**
@@ -2891,6 +3812,10 @@ export const SignalRUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SignalRUpdateOutput,
 }));
 // Input Schema
+export interface UsagesListInput {
+  location: string;
+  subscriptionId: string;
+}
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2900,10 +3825,19 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/usages",
     apiVersion: "2024-03-01",
   }),
-);
-export type UsagesListInput = typeof UsagesListInput.Type;
+) as unknown as Schema.Codec<UsagesListInput>;
 
 // Output Schema
+export interface UsagesListOutput {
+  value?: {
+    id?: string;
+    currentValue?: number;
+    limit?: number;
+    name?: { value?: string; localizedValue?: string };
+    unit?: string;
+  }[];
+  nextLink?: string;
+}
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2922,8 +3856,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UsagesListOutput = typeof UsagesListOutput.Type;
+}) as unknown as Schema.Codec<UsagesListOutput>;
 
 // The operation
 /**

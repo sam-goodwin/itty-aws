@@ -3,15 +3,37 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV1ScmInstallationsInput {
+  cursor?: string;
+  limit?: number;
+  workspaceId: string;
+}
 export const GetV1ScmInstallationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     workspaceId: Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/v1/scm-installations" }));
-export type GetV1ScmInstallationsInput = typeof GetV1ScmInstallationsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/scm-installations" }),
+  ) as unknown as Schema.Codec<GetV1ScmInstallationsInput>;
 
 // Output Schema
+export interface GetV1ScmInstallationsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    provider: "github";
+    installationId: number;
+    accountId: number;
+    accountLogin: string;
+    accountType: "user" | "organization";
+    suspended: boolean;
+    createdAt: string;
+    updatedAt: string;
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1ScmInstallationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -33,9 +55,7 @@ export const GetV1ScmInstallationsOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1ScmInstallationsOutput =
-  typeof GetV1ScmInstallationsOutput.Type;
+  }) as unknown as Schema.Codec<GetV1ScmInstallationsOutput>;
 
 // The operation
 /**

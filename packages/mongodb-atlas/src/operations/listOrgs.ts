@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgsInput {
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  name?: string;
+}
 export const ListOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -11,12 +19,14 @@ export const ListOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs" }));
-export type ListOrgsInput = typeof ListOrgsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs" }),
+) as unknown as Schema.Codec<ListOrgsInput>;
 
 // Output Schema
-export const ListOrgsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgsOutput = typeof ListOrgsOutput.Type;
+export type ListOrgsOutput = void;
+export const ListOrgsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgsOutput>;
 
 // The operation
 /**

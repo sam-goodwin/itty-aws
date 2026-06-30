@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetRestorePointInput {
+  ref: string;
+  name?: string;
+}
 export const V1GetRestorePointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -14,17 +18,20 @@ export const V1GetRestorePointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "GET",
     path: "/v1/projects/{ref}/database/backups/restore-point",
   }),
-);
-export type V1GetRestorePointInput = typeof V1GetRestorePointInput.Type;
+) as unknown as Schema.Codec<V1GetRestorePointInput>;
 
 // Output Schema
+export interface V1GetRestorePointOutput {
+  name: string;
+  status: "AVAILABLE" | "PENDING" | "REMOVED" | "FAILED";
+  completed_on: string | null;
+}
 export const V1GetRestorePointOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
     status: Schema.Literals(["AVAILABLE", "PENDING", "REMOVED", "FAILED"]),
     completed_on: Schema.NullOr(Schema.String),
-  });
-export type V1GetRestorePointOutput = typeof V1GetRestorePointOutput.Type;
+  }) as unknown as Schema.Codec<V1GetRestorePointOutput>;
 
 // The operation
 /**

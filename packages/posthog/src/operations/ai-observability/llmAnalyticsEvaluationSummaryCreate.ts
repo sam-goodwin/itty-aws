@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsEvaluationSummaryCreateInput {
+  project_id: string;
+  evaluation_id?: string;
+  filter?: "all" | "pass" | "fail" | "na";
+  generation_ids?: string[];
+  force_refresh?: boolean;
+}
 export const LlmAnalyticsEvaluationSummaryCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,37 @@ export const LlmAnalyticsEvaluationSummaryCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_analytics/evaluation_summary/",
     }),
-  );
-export type LlmAnalyticsEvaluationSummaryCreateInput =
-  typeof LlmAnalyticsEvaluationSummaryCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsEvaluationSummaryCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsEvaluationSummaryCreateOutput {
+  overall_assessment?: string;
+  pass_patterns?: {
+    title?: string;
+    description?: string;
+    frequency?: string;
+    example_generation_ids?: string[];
+  }[];
+  fail_patterns?: {
+    title?: string;
+    description?: string;
+    frequency?: string;
+    example_generation_ids?: string[];
+  }[];
+  na_patterns?: {
+    title?: string;
+    description?: string;
+    frequency?: string;
+    example_generation_ids?: string[];
+  }[];
+  recommendations?: string[];
+  statistics?: {
+    total_analyzed?: number;
+    pass_count?: number;
+    fail_count?: number;
+    na_count?: number;
+  };
+}
 export const LlmAnalyticsEvaluationSummaryCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overall_assessment: Schema.optional(Schema.String),
@@ -63,9 +96,7 @@ export const LlmAnalyticsEvaluationSummaryCreateOutput =
         na_count: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type LlmAnalyticsEvaluationSummaryCreateOutput =
-  typeof LlmAnalyticsEvaluationSummaryCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsEvaluationSummaryCreateOutput>;
 
 // The operation
 /**

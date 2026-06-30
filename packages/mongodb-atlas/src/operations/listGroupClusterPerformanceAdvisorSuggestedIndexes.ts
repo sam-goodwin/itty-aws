@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterPerformanceAdvisorSuggestedIndexesInput {
+  groupId: string;
+  clusterName: string;
+  processIds?: string;
+  namespaces?: string;
+  since?: number;
+  until?: number;
+}
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes",
     }),
-  );
-export type ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
-  typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorSuggestedIndexesInput>;
 
 // Output Schema
+export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput = void;
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
-  typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput>;
 
 // The operation
 /**

@@ -4,11 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DataCollectionRuleConfigurationMetadataFetchInput {
+  subscriptionId: string;
+  location: string;
+  dcrKind?: string;
+  resourceType?: string;
+  withStreamMetadata?: boolean;
+}
 export const DataCollectionRuleConfigurationMetadataFetchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22,11 +29,59 @@ export const DataCollectionRuleConfigurationMetadataFetchInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/locations/{location}/fetchDataCollectionRuleConfigurationMetadata",
       apiVersion: "2025-01-01",
     }),
-  );
-export type DataCollectionRuleConfigurationMetadataFetchInput =
-  typeof DataCollectionRuleConfigurationMetadataFetchInput.Type;
+  ) as unknown as Schema.Codec<DataCollectionRuleConfigurationMetadataFetchInput>;
 
 // Output Schema
+export interface DataCollectionRuleConfigurationMetadataFetchOutput {
+  configurationMetadata?: {
+    platformTelemetry?: {
+      platformLogs?: {
+        supportedDestinations?: string[];
+        supportedResourceTypes?: string[];
+        supportedStreams?: {
+          streamId?: string;
+          metadata?: {
+            logsSpecification?: {
+              name?: string;
+              displayName?: string;
+              groups?: string[];
+            };
+            metricsSpecification?: {
+              name?: string;
+              displayName?: string;
+              description?: string;
+              unit?: string;
+              aggregationType?: string;
+              groups?: string[];
+            };
+          };
+        }[];
+      };
+      platformMetrics?: {
+        supportedDestinations?: string[];
+        supportedResourceTypes?: string[];
+        supportedStreams?: {
+          streamId?: string;
+          metadata?: {
+            logsSpecification?: {
+              name?: string;
+              displayName?: string;
+              groups?: string[];
+            };
+            metricsSpecification?: {
+              name?: string;
+              displayName?: string;
+              description?: string;
+              unit?: string;
+              aggregationType?: string;
+              groups?: string[];
+            };
+          };
+        }[];
+      };
+    };
+  };
+}
 export const DataCollectionRuleConfigurationMetadataFetchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationMetadata: Schema.optional(
@@ -121,9 +176,7 @@ export const DataCollectionRuleConfigurationMetadataFetchOutput =
         ),
       }),
     ),
-  });
-export type DataCollectionRuleConfigurationMetadataFetchOutput =
-  typeof DataCollectionRuleConfigurationMetadataFetchOutput.Type;
+  }) as unknown as Schema.Codec<DataCollectionRuleConfigurationMetadataFetchOutput>;
 
 // The operation
 /**
@@ -139,6 +192,7 @@ export const DataCollectionRuleConfigurationMetadataFetch =
     outputSchema: DataCollectionRuleConfigurationMetadataFetchOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -147,10 +201,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Insights/operations",
     apiVersion: "2025-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -173,8 +241,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -187,6 +254,91 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ScheduledQueryRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ruleName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+  kind?: "LogAlert" | "SimpleLogAlert" | "LogToMetric";
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    createdWithApiVersion?: string;
+    isLegacyLogAnalyticsRule?: boolean;
+    description?: string;
+    displayName?: string;
+    severity?: 0 | 1 | 2 | 3 | 4;
+    enabled?: boolean;
+    scopes?: string[];
+    evaluationFrequency?: string;
+    windowSize?: string;
+    overrideQueryTimeRange?: string;
+    targetResourceTypes?: string[];
+    criteria?: {
+      allOf?: {
+        criterionType?:
+          | "StaticThresholdCriterion"
+          | "DynamicThresholdCriterion";
+        query?: string;
+        timeAggregation?: "Count" | "Average" | "Minimum" | "Maximum" | "Total";
+        metricMeasureColumn?: string;
+        resourceIdColumn?: string;
+        dimensions?: {
+          name: string;
+          operator: "Include" | "Exclude";
+          values: string[];
+        }[];
+        operator?:
+          | "Equals"
+          | "GreaterThan"
+          | "GreaterThanOrEqual"
+          | "LessThan"
+          | "LessThanOrEqual"
+          | "GreaterOrLessThan";
+        threshold?: number;
+        alertSensitivity?: string;
+        ignoreDataBefore?: string;
+        failingPeriods?: {
+          numberOfEvaluationPeriods?: number;
+          minFailingPeriodsToAlert?: number;
+        };
+        metricName?: string;
+        minRecurrenceCount?: number;
+      }[];
+    };
+    muteActionsDuration?: string;
+    actions?: {
+      actionGroups?: string[];
+      customProperties?: Record<string, string>;
+      actionProperties?: Record<string, string>;
+    };
+    isWorkspaceAlertsStorageConfigured?: boolean;
+    checkWorkspaceAlertsStorageConfigured?: boolean;
+    skipQueryValidation?: boolean;
+    autoMitigate?: boolean;
+    resolveConfiguration?: { autoResolved?: boolean; timeToResolve?: string };
+  };
+}
 export const ScheduledQueryRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -330,11 +482,91 @@ export const ScheduledQueryRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ScheduledQueryRulesCreateOrUpdateInput =
-  typeof ScheduledQueryRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScheduledQueryRulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ScheduledQueryRulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+  kind?: "LogAlert" | "SimpleLogAlert" | "LogToMetric";
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    createdWithApiVersion?: string;
+    isLegacyLogAnalyticsRule?: boolean;
+    description?: string;
+    displayName?: string;
+    severity?: 0 | 1 | 2 | 3 | 4;
+    enabled?: boolean;
+    scopes?: string[];
+    evaluationFrequency?: string;
+    windowSize?: string;
+    overrideQueryTimeRange?: string;
+    targetResourceTypes?: string[];
+    criteria?: {
+      allOf?: {
+        criterionType?:
+          | "StaticThresholdCriterion"
+          | "DynamicThresholdCriterion";
+        query?: string;
+        timeAggregation?: "Count" | "Average" | "Minimum" | "Maximum" | "Total";
+        metricMeasureColumn?: string;
+        resourceIdColumn?: string;
+        dimensions?: {
+          name: string;
+          operator: "Include" | "Exclude";
+          values: string[];
+        }[];
+        operator?:
+          | "Equals"
+          | "GreaterThan"
+          | "GreaterThanOrEqual"
+          | "LessThan"
+          | "LessThanOrEqual"
+          | "GreaterOrLessThan";
+        threshold?: number;
+        alertSensitivity?: string;
+        ignoreDataBefore?: string;
+        failingPeriods?: {
+          numberOfEvaluationPeriods?: number;
+          minFailingPeriodsToAlert?: number;
+        };
+        metricName?: string;
+        minRecurrenceCount?: number;
+      }[];
+    };
+    muteActionsDuration?: string;
+    actions?: {
+      actionGroups?: string[];
+      customProperties?: Record<string, string>;
+      actionProperties?: Record<string, string>;
+    };
+    isWorkspaceAlertsStorageConfigured?: boolean;
+    checkWorkspaceAlertsStorageConfigured?: boolean;
+    skipQueryValidation?: boolean;
+    autoMitigate?: boolean;
+    resolveConfiguration?: { autoResolved?: boolean; timeToResolve?: string };
+  };
+}
 export const ScheduledQueryRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -469,9 +701,7 @@ export const ScheduledQueryRulesCreateOrUpdateOutput =
         }),
       ),
     }),
-  });
-export type ScheduledQueryRulesCreateOrUpdateOutput =
-  typeof ScheduledQueryRulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledQueryRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -488,6 +718,11 @@ export const ScheduledQueryRulesCreateOrUpdate =
     outputSchema: ScheduledQueryRulesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ScheduledQueryRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ruleName: string;
+}
 export const ScheduledQueryRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -499,15 +734,12 @@ export const ScheduledQueryRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ScheduledQueryRulesDeleteInput =
-  typeof ScheduledQueryRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ScheduledQueryRulesDeleteInput>;
 
 // Output Schema
+export type ScheduledQueryRulesDeleteOutput = void;
 export const ScheduledQueryRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScheduledQueryRulesDeleteOutput =
-  typeof ScheduledQueryRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScheduledQueryRulesDeleteOutput>;
 
 // The operation
 /**
@@ -525,6 +757,11 @@ export const ScheduledQueryRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScheduledQueryRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ruleName: string;
+}
 export const ScheduledQueryRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -536,11 +773,91 @@ export const ScheduledQueryRulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ScheduledQueryRulesGetInput =
-  typeof ScheduledQueryRulesGetInput.Type;
+  ) as unknown as Schema.Codec<ScheduledQueryRulesGetInput>;
 
 // Output Schema
+export interface ScheduledQueryRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+  kind?: "LogAlert" | "SimpleLogAlert" | "LogToMetric";
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    createdWithApiVersion?: string;
+    isLegacyLogAnalyticsRule?: boolean;
+    description?: string;
+    displayName?: string;
+    severity?: 0 | 1 | 2 | 3 | 4;
+    enabled?: boolean;
+    scopes?: string[];
+    evaluationFrequency?: string;
+    windowSize?: string;
+    overrideQueryTimeRange?: string;
+    targetResourceTypes?: string[];
+    criteria?: {
+      allOf?: {
+        criterionType?:
+          | "StaticThresholdCriterion"
+          | "DynamicThresholdCriterion";
+        query?: string;
+        timeAggregation?: "Count" | "Average" | "Minimum" | "Maximum" | "Total";
+        metricMeasureColumn?: string;
+        resourceIdColumn?: string;
+        dimensions?: {
+          name: string;
+          operator: "Include" | "Exclude";
+          values: string[];
+        }[];
+        operator?:
+          | "Equals"
+          | "GreaterThan"
+          | "GreaterThanOrEqual"
+          | "LessThan"
+          | "LessThanOrEqual"
+          | "GreaterOrLessThan";
+        threshold?: number;
+        alertSensitivity?: string;
+        ignoreDataBefore?: string;
+        failingPeriods?: {
+          numberOfEvaluationPeriods?: number;
+          minFailingPeriodsToAlert?: number;
+        };
+        metricName?: string;
+        minRecurrenceCount?: number;
+      }[];
+    };
+    muteActionsDuration?: string;
+    actions?: {
+      actionGroups?: string[];
+      customProperties?: Record<string, string>;
+      actionProperties?: Record<string, string>;
+    };
+    isWorkspaceAlertsStorageConfigured?: boolean;
+    checkWorkspaceAlertsStorageConfigured?: boolean;
+    skipQueryValidation?: boolean;
+    autoMitigate?: boolean;
+    resolveConfiguration?: { autoResolved?: boolean; timeToResolve?: string };
+  };
+}
 export const ScheduledQueryRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -675,9 +992,7 @@ export const ScheduledQueryRulesGetOutput =
         }),
       ),
     }),
-  });
-export type ScheduledQueryRulesGetOutput =
-  typeof ScheduledQueryRulesGetOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledQueryRulesGetOutput>;
 
 // The operation
 /**
@@ -695,6 +1010,10 @@ export const ScheduledQueryRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScheduledQueryRulesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ScheduledQueryRulesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -705,11 +1024,99 @@ export const ScheduledQueryRulesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ScheduledQueryRulesListByResourceGroupInput =
-  typeof ScheduledQueryRulesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ScheduledQueryRulesListByResourceGroupInput>;
 
 // Output Schema
+export interface ScheduledQueryRulesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type: "SystemAssigned" | "UserAssigned" | "None";
+      userAssignedIdentities?: Record<
+        string,
+        { principalId?: string; clientId?: string }
+      >;
+    };
+    tags?: Record<string, string>;
+    location: string;
+    kind?: "LogAlert" | "SimpleLogAlert" | "LogToMetric";
+    etag?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    properties: {
+      createdWithApiVersion?: string;
+      isLegacyLogAnalyticsRule?: boolean;
+      description?: string;
+      displayName?: string;
+      severity?: 0 | 1 | 2 | 3 | 4;
+      enabled?: boolean;
+      scopes?: string[];
+      evaluationFrequency?: string;
+      windowSize?: string;
+      overrideQueryTimeRange?: string;
+      targetResourceTypes?: string[];
+      criteria?: {
+        allOf?: {
+          criterionType?:
+            | "StaticThresholdCriterion"
+            | "DynamicThresholdCriterion";
+          query?: string;
+          timeAggregation?:
+            | "Count"
+            | "Average"
+            | "Minimum"
+            | "Maximum"
+            | "Total";
+          metricMeasureColumn?: string;
+          resourceIdColumn?: string;
+          dimensions?: {
+            name: string;
+            operator: "Include" | "Exclude";
+            values: string[];
+          }[];
+          operator?:
+            | "Equals"
+            | "GreaterThan"
+            | "GreaterThanOrEqual"
+            | "LessThan"
+            | "LessThanOrEqual"
+            | "GreaterOrLessThan";
+          threshold?: number;
+          alertSensitivity?: string;
+          ignoreDataBefore?: string;
+          failingPeriods?: {
+            numberOfEvaluationPeriods?: number;
+            minFailingPeriodsToAlert?: number;
+          };
+          metricName?: string;
+          minRecurrenceCount?: number;
+        }[];
+      };
+      muteActionsDuration?: string;
+      actions?: {
+        actionGroups?: string[];
+        customProperties?: Record<string, string>;
+        actionProperties?: Record<string, string>;
+      };
+      isWorkspaceAlertsStorageConfigured?: boolean;
+      checkWorkspaceAlertsStorageConfigured?: boolean;
+      skipQueryValidation?: boolean;
+      autoMitigate?: boolean;
+      resolveConfiguration?: { autoResolved?: boolean; timeToResolve?: string };
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScheduledQueryRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -867,9 +1274,7 @@ export const ScheduledQueryRulesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScheduledQueryRulesListByResourceGroupOutput =
-  typeof ScheduledQueryRulesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledQueryRulesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -885,6 +1290,9 @@ export const ScheduledQueryRulesListByResourceGroup =
     outputSchema: ScheduledQueryRulesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ScheduledQueryRulesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ScheduledQueryRulesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -894,11 +1302,99 @@ export const ScheduledQueryRulesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/scheduledQueryRules",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ScheduledQueryRulesListBySubscriptionInput =
-  typeof ScheduledQueryRulesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ScheduledQueryRulesListBySubscriptionInput>;
 
 // Output Schema
+export interface ScheduledQueryRulesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type: "SystemAssigned" | "UserAssigned" | "None";
+      userAssignedIdentities?: Record<
+        string,
+        { principalId?: string; clientId?: string }
+      >;
+    };
+    tags?: Record<string, string>;
+    location: string;
+    kind?: "LogAlert" | "SimpleLogAlert" | "LogToMetric";
+    etag?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    properties: {
+      createdWithApiVersion?: string;
+      isLegacyLogAnalyticsRule?: boolean;
+      description?: string;
+      displayName?: string;
+      severity?: 0 | 1 | 2 | 3 | 4;
+      enabled?: boolean;
+      scopes?: string[];
+      evaluationFrequency?: string;
+      windowSize?: string;
+      overrideQueryTimeRange?: string;
+      targetResourceTypes?: string[];
+      criteria?: {
+        allOf?: {
+          criterionType?:
+            | "StaticThresholdCriterion"
+            | "DynamicThresholdCriterion";
+          query?: string;
+          timeAggregation?:
+            | "Count"
+            | "Average"
+            | "Minimum"
+            | "Maximum"
+            | "Total";
+          metricMeasureColumn?: string;
+          resourceIdColumn?: string;
+          dimensions?: {
+            name: string;
+            operator: "Include" | "Exclude";
+            values: string[];
+          }[];
+          operator?:
+            | "Equals"
+            | "GreaterThan"
+            | "GreaterThanOrEqual"
+            | "LessThan"
+            | "LessThanOrEqual"
+            | "GreaterOrLessThan";
+          threshold?: number;
+          alertSensitivity?: string;
+          ignoreDataBefore?: string;
+          failingPeriods?: {
+            numberOfEvaluationPeriods?: number;
+            minFailingPeriodsToAlert?: number;
+          };
+          metricName?: string;
+          minRecurrenceCount?: number;
+        }[];
+      };
+      muteActionsDuration?: string;
+      actions?: {
+        actionGroups?: string[];
+        customProperties?: Record<string, string>;
+        actionProperties?: Record<string, string>;
+      };
+      isWorkspaceAlertsStorageConfigured?: boolean;
+      checkWorkspaceAlertsStorageConfigured?: boolean;
+      skipQueryValidation?: boolean;
+      autoMitigate?: boolean;
+      resolveConfiguration?: { autoResolved?: boolean; timeToResolve?: string };
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScheduledQueryRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1056,9 +1552,7 @@ export const ScheduledQueryRulesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScheduledQueryRulesListBySubscriptionOutput =
-  typeof ScheduledQueryRulesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledQueryRulesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1073,6 +1567,77 @@ export const ScheduledQueryRulesListBySubscription =
     outputSchema: ScheduledQueryRulesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ScheduledQueryRulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ruleName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    createdWithApiVersion?: string;
+    isLegacyLogAnalyticsRule?: boolean;
+    description?: string;
+    displayName?: string;
+    severity?: 0 | 1 | 2 | 3 | 4;
+    enabled?: boolean;
+    scopes?: string[];
+    evaluationFrequency?: string;
+    windowSize?: string;
+    overrideQueryTimeRange?: string;
+    targetResourceTypes?: string[];
+    criteria?: {
+      allOf?: {
+        criterionType?:
+          | "StaticThresholdCriterion"
+          | "DynamicThresholdCriterion";
+        query?: string;
+        timeAggregation?: "Count" | "Average" | "Minimum" | "Maximum" | "Total";
+        metricMeasureColumn?: string;
+        resourceIdColumn?: string;
+        dimensions?: {
+          name: string;
+          operator: "Include" | "Exclude";
+          values: string[];
+        }[];
+        operator?:
+          | "Equals"
+          | "GreaterThan"
+          | "GreaterThanOrEqual"
+          | "LessThan"
+          | "LessThanOrEqual"
+          | "GreaterOrLessThan";
+        threshold?: number;
+        alertSensitivity?: string;
+        ignoreDataBefore?: string;
+        failingPeriods?: {
+          numberOfEvaluationPeriods?: number;
+          minFailingPeriodsToAlert?: number;
+        };
+        metricName?: string;
+        minRecurrenceCount?: number;
+      }[];
+    };
+    muteActionsDuration?: string;
+    actions?: {
+      actionGroups?: string[];
+      customProperties?: Record<string, string>;
+      actionProperties?: Record<string, string>;
+    };
+    isWorkspaceAlertsStorageConfigured?: boolean;
+    checkWorkspaceAlertsStorageConfigured?: boolean;
+    skipQueryValidation?: boolean;
+    autoMitigate?: boolean;
+    resolveConfiguration?: { autoResolved?: boolean; timeToResolve?: string };
+  };
+}
 export const ScheduledQueryRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1196,11 +1761,91 @@ export const ScheduledQueryRulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}",
       apiVersion: "2026-03-01",
     }),
-  );
-export type ScheduledQueryRulesUpdateInput =
-  typeof ScheduledQueryRulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScheduledQueryRulesUpdateInput>;
 
 // Output Schema
+export interface ScheduledQueryRulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+  kind?: "LogAlert" | "SimpleLogAlert" | "LogToMetric";
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    createdWithApiVersion?: string;
+    isLegacyLogAnalyticsRule?: boolean;
+    description?: string;
+    displayName?: string;
+    severity?: 0 | 1 | 2 | 3 | 4;
+    enabled?: boolean;
+    scopes?: string[];
+    evaluationFrequency?: string;
+    windowSize?: string;
+    overrideQueryTimeRange?: string;
+    targetResourceTypes?: string[];
+    criteria?: {
+      allOf?: {
+        criterionType?:
+          | "StaticThresholdCriterion"
+          | "DynamicThresholdCriterion";
+        query?: string;
+        timeAggregation?: "Count" | "Average" | "Minimum" | "Maximum" | "Total";
+        metricMeasureColumn?: string;
+        resourceIdColumn?: string;
+        dimensions?: {
+          name: string;
+          operator: "Include" | "Exclude";
+          values: string[];
+        }[];
+        operator?:
+          | "Equals"
+          | "GreaterThan"
+          | "GreaterThanOrEqual"
+          | "LessThan"
+          | "LessThanOrEqual"
+          | "GreaterOrLessThan";
+        threshold?: number;
+        alertSensitivity?: string;
+        ignoreDataBefore?: string;
+        failingPeriods?: {
+          numberOfEvaluationPeriods?: number;
+          minFailingPeriodsToAlert?: number;
+        };
+        metricName?: string;
+        minRecurrenceCount?: number;
+      }[];
+    };
+    muteActionsDuration?: string;
+    actions?: {
+      actionGroups?: string[];
+      customProperties?: Record<string, string>;
+      actionProperties?: Record<string, string>;
+    };
+    isWorkspaceAlertsStorageConfigured?: boolean;
+    checkWorkspaceAlertsStorageConfigured?: boolean;
+    skipQueryValidation?: boolean;
+    autoMitigate?: boolean;
+    resolveConfiguration?: { autoResolved?: boolean; timeToResolve?: string };
+  };
+}
 export const ScheduledQueryRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1335,9 +1980,7 @@ export const ScheduledQueryRulesUpdateOutput =
         }),
       ),
     }),
-  });
-export type ScheduledQueryRulesUpdateOutput =
-  typeof ScheduledQueryRulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledQueryRulesUpdateOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface EmissionsGramsPerPax {
   economy?: number;
 }
 
-export const EmissionsGramsPerPax: Schema.Schema<EmissionsGramsPerPax> =
+export const EmissionsGramsPerPax: Schema.Codec<EmissionsGramsPerPax> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     first: Schema.optional(Schema.Number),
     premiumEconomy: Schema.optional(Schema.Number),
@@ -50,7 +50,7 @@ export interface Travelimpactmodel_Date {
   year?: number;
 }
 
-export const Travelimpactmodel_Date: Schema.Schema<Travelimpactmodel_Date> =
+export const Travelimpactmodel_Date: Schema.Codec<Travelimpactmodel_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -68,7 +68,7 @@ export interface EasaLabelMetadata {
   safDiscountPercentage?: number;
 }
 
-export const EasaLabelMetadata: Schema.Schema<EasaLabelMetadata> =
+export const EasaLabelMetadata: Schema.Codec<EasaLabelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelExpiryDate: Schema.optional(Travelimpactmodel_Date),
     labelVersion: Schema.optional(Schema.String),
@@ -89,7 +89,7 @@ export interface Flight {
   destination?: string;
 }
 
-export const Flight: Schema.Schema<Flight> =
+export const Flight: Schema.Codec<Flight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flightNumber: Schema.optional(Schema.Number),
     origin: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface FlightWithEmissions {
   source?: "SOURCE_UNSPECIFIED" | "TIM" | "EASA" | (string & {});
 }
 
-export const FlightWithEmissions: Schema.Schema<FlightWithEmissions> =
+export const FlightWithEmissions: Schema.Codec<FlightWithEmissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emissionsGramsPerPax: Schema.optional(EmissionsGramsPerPax),
     contrailsImpactBucket: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface EmissionsProvenanceEntry {
     | (string & {});
 }
 
-export const EmissionsProvenanceEntry: Schema.Schema<EmissionsProvenanceEntry> =
+export const EmissionsProvenanceEntry: Schema.Codec<EmissionsProvenanceEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cargoMassFractionData: Schema.optional(Schema.Number),
     source: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export interface EmissionsProvenance {
   provenanceEntries?: ReadonlyArray<EmissionsProvenanceEntry>;
 }
 
-export const EmissionsProvenance: Schema.Schema<EmissionsProvenance> =
+export const EmissionsProvenance: Schema.Codec<EmissionsProvenance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provenanceEntries: Schema.optional(Schema.Array(EmissionsProvenanceEntry)),
   }).annotate({ identifier: "EmissionsProvenance" });
@@ -243,7 +243,7 @@ export interface EmissionsMetadata {
   timWebsiteEmissionsCalculatorUrl?: string;
 }
 
-export const EmissionsMetadata: Schema.Schema<EmissionsMetadata> =
+export const EmissionsMetadata: Schema.Codec<EmissionsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emissionsProvenance: Schema.optional(EmissionsProvenance),
     easaLabelMetadata: Schema.optional(EasaLabelMetadata),
@@ -257,7 +257,7 @@ export interface EmissionsBreakdown {
   ttwEmissionsGramsPerPax?: EmissionsGramsPerPax;
 }
 
-export const EmissionsBreakdown: Schema.Schema<EmissionsBreakdown> =
+export const EmissionsBreakdown: Schema.Codec<EmissionsBreakdown> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wttEmissionsGramsPerPax: Schema.optional(EmissionsGramsPerPax),
     ttwEmissionsGramsPerPax: Schema.optional(EmissionsGramsPerPax),
@@ -279,7 +279,7 @@ export interface FlightEmissionsDetails {
   source?: "SOURCE_UNSPECIFIED" | "TIM" | "EASA" | (string & {});
 }
 
-export const FlightEmissionsDetails: Schema.Schema<FlightEmissionsDetails> =
+export const FlightEmissionsDetails: Schema.Codec<FlightEmissionsDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emissionsBreakdown: Schema.optional(EmissionsBreakdown),
     emissionsGramsPerPax: Schema.optional(EmissionsGramsPerPax),
@@ -296,7 +296,7 @@ export interface FlightWithDetailedEmissions {
   emissionsMetadata?: EmissionsMetadata;
 }
 
-export const FlightWithDetailedEmissions: Schema.Schema<FlightWithDetailedEmissions> =
+export const FlightWithDetailedEmissions: Schema.Codec<FlightWithDetailedEmissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flight: Schema.optional(Flight),
     flightEmissionsDetails: Schema.optional(FlightEmissionsDetails),
@@ -314,7 +314,7 @@ export interface ModelVersion {
   major?: number;
 }
 
-export const ModelVersion: Schema.Schema<ModelVersion> =
+export const ModelVersion: Schema.Codec<ModelVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minor: Schema.optional(Schema.Number),
     patch: Schema.optional(Schema.Number),
@@ -329,7 +329,7 @@ export interface ComputeDetailedFlightEmissionsResponse {
   modelVersion?: ModelVersion;
 }
 
-export const ComputeDetailedFlightEmissionsResponse: Schema.Schema<ComputeDetailedFlightEmissionsResponse> =
+export const ComputeDetailedFlightEmissionsResponse: Schema.Codec<ComputeDetailedFlightEmissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flightsWithDetailedEmissions: Schema.optional(
       Schema.Array(FlightWithDetailedEmissions),
@@ -342,7 +342,7 @@ export interface ComputeDetailedFlightEmissionsRequest {
   flights?: ReadonlyArray<Flight>;
 }
 
-export const ComputeDetailedFlightEmissionsRequest: Schema.Schema<ComputeDetailedFlightEmissionsRequest> =
+export const ComputeDetailedFlightEmissionsRequest: Schema.Codec<ComputeDetailedFlightEmissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flights: Schema.optional(Schema.Array(Flight)),
   }).annotate({ identifier: "ComputeDetailedFlightEmissionsRequest" });
@@ -354,7 +354,7 @@ export interface Market {
   destination?: string;
 }
 
-export const Market: Schema.Schema<Market> =
+export const Market: Schema.Codec<Market> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     origin: Schema.optional(Schema.String),
     destination: Schema.optional(Schema.String),
@@ -365,7 +365,7 @@ export interface ComputeTypicalFlightEmissionsRequest {
   markets?: ReadonlyArray<Market>;
 }
 
-export const ComputeTypicalFlightEmissionsRequest: Schema.Schema<ComputeTypicalFlightEmissionsRequest> =
+export const ComputeTypicalFlightEmissionsRequest: Schema.Codec<ComputeTypicalFlightEmissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     markets: Schema.optional(Schema.Array(Market)),
   }).annotate({ identifier: "ComputeTypicalFlightEmissionsRequest" });
@@ -375,7 +375,7 @@ export interface ComputeFlightEmissionsRequest {
   flights?: ReadonlyArray<Flight>;
 }
 
-export const ComputeFlightEmissionsRequest: Schema.Schema<ComputeFlightEmissionsRequest> =
+export const ComputeFlightEmissionsRequest: Schema.Codec<ComputeFlightEmissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flights: Schema.optional(Schema.Array(Flight)),
   }).annotate({ identifier: "ComputeFlightEmissionsRequest" });
@@ -387,7 +387,7 @@ export interface ComputeFlightEmissionsResponse {
   modelVersion?: ModelVersion;
 }
 
-export const ComputeFlightEmissionsResponse: Schema.Schema<ComputeFlightEmissionsResponse> =
+export const ComputeFlightEmissionsResponse: Schema.Codec<ComputeFlightEmissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flightEmissions: Schema.optional(Schema.Array(FlightWithEmissions)),
     modelVersion: Schema.optional(ModelVersion),
@@ -400,7 +400,7 @@ export interface TypicalFlightEmissions {
   market?: Market;
 }
 
-export const TypicalFlightEmissions: Schema.Schema<TypicalFlightEmissions> =
+export const TypicalFlightEmissions: Schema.Codec<TypicalFlightEmissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emissionsGramsPerPax: Schema.optional(EmissionsGramsPerPax),
     market: Schema.optional(Market),
@@ -413,7 +413,7 @@ export interface ComputeTypicalFlightEmissionsResponse {
   modelVersion?: ModelVersion;
 }
 
-export const ComputeTypicalFlightEmissionsResponse: Schema.Schema<ComputeTypicalFlightEmissionsResponse> =
+export const ComputeTypicalFlightEmissionsResponse: Schema.Codec<ComputeTypicalFlightEmissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     typicalFlightEmissions: Schema.optional(
       Schema.Array(TypicalFlightEmissions),
@@ -444,7 +444,7 @@ export interface Scope3FlightSegment {
   departureDate?: Travelimpactmodel_Date;
 }
 
-export const Scope3FlightSegment: Schema.Schema<Scope3FlightSegment> =
+export const Scope3FlightSegment: Schema.Codec<Scope3FlightSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cabinClass: Schema.optional(Schema.String),
     distanceKm: Schema.optional(Schema.String),
@@ -473,7 +473,7 @@ export interface Scope3FlightEmissions {
   wttEmissionsGramsPerPax?: string;
 }
 
-export const Scope3FlightEmissions: Schema.Schema<Scope3FlightEmissions> =
+export const Scope3FlightEmissions: Schema.Codec<Scope3FlightEmissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     flight: Schema.optional(Scope3FlightSegment),
@@ -489,7 +489,7 @@ export interface ComputeScope3FlightEmissionsResponse {
   modelVersion?: ModelVersion;
 }
 
-export const ComputeScope3FlightEmissionsResponse: Schema.Schema<ComputeScope3FlightEmissionsResponse> =
+export const ComputeScope3FlightEmissionsResponse: Schema.Codec<ComputeScope3FlightEmissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flightEmissions: Schema.optional(Schema.Array(Scope3FlightEmissions)),
     modelVersion: Schema.optional(ModelVersion),
@@ -502,7 +502,7 @@ export interface ComputeScope3FlightEmissionsRequest {
   modelVersion?: ModelVersion;
 }
 
-export const ComputeScope3FlightEmissionsRequest: Schema.Schema<ComputeScope3FlightEmissionsRequest> =
+export const ComputeScope3FlightEmissionsRequest: Schema.Codec<ComputeScope3FlightEmissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flights: Schema.optional(Schema.Array(Scope3FlightSegment)),
     modelVersion: Schema.optional(ModelVersion),
@@ -577,7 +577,7 @@ export const ComputeFlightEmissionsFlightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ComputeFlightEmissionsFlightsRequest>;
+  ) as unknown as Schema.Codec<ComputeFlightEmissionsFlightsRequest>;
 
 export type ComputeFlightEmissionsFlightsResponse =
   ComputeFlightEmissionsResponse;
@@ -620,7 +620,7 @@ export const ComputeScope3FlightEmissionsFlightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ComputeScope3FlightEmissionsFlightsRequest>;
+  ) as unknown as Schema.Codec<ComputeScope3FlightEmissionsFlightsRequest>;
 
 export type ComputeScope3FlightEmissionsFlightsResponse =
   ComputeScope3FlightEmissionsResponse;
@@ -663,7 +663,7 @@ export const ComputeTypicalFlightEmissionsFlightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ComputeTypicalFlightEmissionsFlightsRequest>;
+  ) as unknown as Schema.Codec<ComputeTypicalFlightEmissionsFlightsRequest>;
 
 export type ComputeTypicalFlightEmissionsFlightsResponse =
   ComputeTypicalFlightEmissionsResponse;
@@ -706,7 +706,7 @@ export const ComputeDetailedFlightEmissionsFlightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ComputeDetailedFlightEmissionsFlightsRequest>;
+  ) as unknown as Schema.Codec<ComputeDetailedFlightEmissionsFlightsRequest>;
 
 export type ComputeDetailedFlightEmissionsFlightsResponse =
   ComputeDetailedFlightEmissionsResponse;

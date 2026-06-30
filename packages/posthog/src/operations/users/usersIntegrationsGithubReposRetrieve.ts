@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsGithubReposRetrieveInput {
+  installation_id: string;
+  uuid: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const UsersIntegrationsGithubReposRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installation_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,13 @@ export const UsersIntegrationsGithubReposRetrieveInput =
       method: "GET",
       path: "/api/users/{uuid}/integrations/github/{installation_id}/repos/",
     }),
-  );
-export type UsersIntegrationsGithubReposRetrieveInput =
-  typeof UsersIntegrationsGithubReposRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsGithubReposRetrieveInput>;
 
 // Output Schema
+export interface UsersIntegrationsGithubReposRetrieveOutput {
+  repositories?: { id?: number; name?: string; full_name?: string }[];
+  has_more?: boolean;
+}
 export const UsersIntegrationsGithubReposRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
@@ -32,9 +41,7 @@ export const UsersIntegrationsGithubReposRetrieveOutput =
       ),
     ),
     has_more: Schema.optional(Schema.Boolean),
-  });
-export type UsersIntegrationsGithubReposRetrieveOutput =
-  typeof UsersIntegrationsGithubReposRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<UsersIntegrationsGithubReposRetrieveOutput>;
 
 // The operation
 /**

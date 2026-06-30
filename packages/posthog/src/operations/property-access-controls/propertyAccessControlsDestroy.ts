@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface PropertyAccessControlsDestroyInput {
+  project_id: string;
+  organization_member?: string;
+  property_definition_id: string;
+  role?: string;
+}
 export const PropertyAccessControlsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +20,12 @@ export const PropertyAccessControlsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/property_access_controls/",
     }),
-  );
-export type PropertyAccessControlsDestroyInput =
-  typeof PropertyAccessControlsDestroyInput.Type;
+  ) as unknown as Schema.Codec<PropertyAccessControlsDestroyInput>;
 
 // Output Schema
+export type PropertyAccessControlsDestroyOutput = void;
 export const PropertyAccessControlsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PropertyAccessControlsDestroyOutput =
-  typeof PropertyAccessControlsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PropertyAccessControlsDestroyOutput>;
 
 // The operation
 /**

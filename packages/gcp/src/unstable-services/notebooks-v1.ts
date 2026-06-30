@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface ReportInstanceInfoRequest {
   metadata?: Record<string, string>;
 }
 
-export const ReportInstanceInfoRequest: Schema.Schema<ReportInstanceInfoRequest> =
+export const ReportInstanceInfoRequest: Schema.Codec<ReportInstanceInfoRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmId: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -40,7 +40,7 @@ export interface RuntimeGuestOsFeature {
   type?: string;
 }
 
-export const RuntimeGuestOsFeature: Schema.Schema<RuntimeGuestOsFeature> =
+export const RuntimeGuestOsFeature: Schema.Codec<RuntimeGuestOsFeature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "RuntimeGuestOsFeature" });
@@ -54,7 +54,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -76,7 +76,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -92,7 +92,7 @@ export interface ContainerImage {
   tag?: string;
 }
 
-export const ContainerImage: Schema.Schema<ContainerImage> =
+export const ContainerImage: Schema.Codec<ContainerImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repository: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface RuntimeSoftwareConfig {
   kernels?: ReadonlyArray<ContainerImage>;
 }
 
-export const RuntimeSoftwareConfig: Schema.Schema<RuntimeSoftwareConfig> =
+export const RuntimeSoftwareConfig: Schema.Codec<RuntimeSoftwareConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableTerminal: Schema.optional(Schema.Boolean),
     postStartupScript: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export interface DiagnosticConfig {
   copyHomeFilesFlagEnabled?: boolean;
 }
 
-export const DiagnosticConfig: Schema.Schema<DiagnosticConfig> =
+export const DiagnosticConfig: Schema.Codec<DiagnosticConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packetCaptureFlagEnabled: Schema.optional(Schema.Boolean),
     repairFlagEnabled: Schema.optional(Schema.Boolean),
@@ -177,7 +177,7 @@ export interface DiagnoseInstanceRequest {
   timeoutMinutes?: number;
 }
 
-export const DiagnoseInstanceRequest: Schema.Schema<DiagnoseInstanceRequest> =
+export const DiagnoseInstanceRequest: Schema.Codec<DiagnoseInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diagnosticConfig: Schema.optional(DiagnosticConfig),
     timeoutMinutes: Schema.optional(Schema.Number),
@@ -196,7 +196,7 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -214,7 +214,7 @@ export interface ShieldedInstanceConfig {
   enableVtpm?: boolean;
 }
 
-export const ShieldedInstanceConfig: Schema.Schema<ShieldedInstanceConfig> =
+export const ShieldedInstanceConfig: Schema.Codec<ShieldedInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
     enableSecureBoot: Schema.optional(Schema.Boolean),
@@ -234,7 +234,7 @@ export interface GetInstanceHealthResponse {
   healthInfo?: Record<string, string>;
 }
 
-export const GetInstanceHealthResponse: Schema.Schema<GetInstanceHealthResponse> =
+export const GetInstanceHealthResponse: Schema.Codec<GetInstanceHealthResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthState: Schema.optional(Schema.String),
     healthInfo: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -245,7 +245,7 @@ export interface SetInstanceLabelsRequest {
   labels?: Record<string, string>;
 }
 
-export const SetInstanceLabelsRequest: Schema.Schema<SetInstanceLabelsRequest> =
+export const SetInstanceLabelsRequest: Schema.Codec<SetInstanceLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "SetInstanceLabelsRequest" });
@@ -255,7 +255,7 @@ export interface UpdateInstanceMetadataItemsResponse {
   items?: Record<string, string>;
 }
 
-export const UpdateInstanceMetadataItemsResponse: Schema.Schema<UpdateInstanceMetadataItemsResponse> =
+export const UpdateInstanceMetadataItemsResponse: Schema.Codec<UpdateInstanceMetadataItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "UpdateInstanceMetadataItemsResponse" });
@@ -267,7 +267,7 @@ export interface VertexAIParameters {
   network?: string;
 }
 
-export const VertexAIParameters: Schema.Schema<VertexAIParameters> =
+export const VertexAIParameters: Schema.Codec<VertexAIParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     network: Schema.optional(Schema.String),
@@ -278,7 +278,7 @@ export interface DataprocParameters {
   cluster?: string;
 }
 
-export const DataprocParameters: Schema.Schema<DataprocParameters> =
+export const DataprocParameters: Schema.Codec<DataprocParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataprocParameters" });
@@ -300,7 +300,7 @@ export interface SchedulerAcceleratorConfig {
   coreCount?: string;
 }
 
-export const SchedulerAcceleratorConfig: Schema.Schema<SchedulerAcceleratorConfig> =
+export const SchedulerAcceleratorConfig: Schema.Codec<SchedulerAcceleratorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     coreCount: Schema.optional(Schema.String),
@@ -347,7 +347,7 @@ export interface ExecutionTemplate {
   serviceAccount?: string;
 }
 
-export const ExecutionTemplate: Schema.Schema<ExecutionTemplate> =
+export const ExecutionTemplate: Schema.Codec<ExecutionTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     masterType: Schema.optional(Schema.String),
     vertexAiParameters: Schema.optional(VertexAIParameters),
@@ -398,7 +398,7 @@ export interface Execution {
   createTime?: string;
 }
 
-export const Execution: Schema.Schema<Execution> =
+export const Execution: Schema.Codec<Execution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionTemplate: Schema.optional(ExecutionTemplate),
     jobUri: Schema.optional(Schema.String),
@@ -420,7 +420,7 @@ export interface ListExecutionsResponse {
   nextPageToken?: string;
 }
 
-export const ListExecutionsResponse: Schema.Schema<ListExecutionsResponse> =
+export const ListExecutionsResponse: Schema.Codec<ListExecutionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executions: Schema.optional(Schema.Array(Execution)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -434,7 +434,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -447,7 +447,7 @@ export interface InstanceConfig {
   enableHealthMonitoring?: boolean;
 }
 
-export const InstanceConfig: Schema.Schema<InstanceConfig> =
+export const InstanceConfig: Schema.Codec<InstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebookUpgradeSchedule: Schema.optional(Schema.String),
     enableHealthMonitoring: Schema.optional(Schema.Boolean),
@@ -458,14 +458,14 @@ export interface UpdateInstanceConfigRequest {
   config?: InstanceConfig;
 }
 
-export const UpdateInstanceConfigRequest: Schema.Schema<UpdateInstanceConfigRequest> =
+export const UpdateInstanceConfigRequest: Schema.Codec<UpdateInstanceConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(InstanceConfig),
   }).annotate({ identifier: "UpdateInstanceConfigRequest" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -475,7 +475,7 @@ export interface EncryptionConfig {
   kmsKey?: string;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
+export const EncryptionConfig: Schema.Codec<EncryptionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "EncryptionConfig" });
@@ -496,7 +496,7 @@ export interface InstanceMigrationEligibility {
   errors?: ReadonlyArray<"ERROR_UNSPECIFIED" | "DATAPROC_HUB" | (string & {})>;
 }
 
-export const InstanceMigrationEligibility: Schema.Schema<InstanceMigrationEligibility> =
+export const InstanceMigrationEligibility: Schema.Codec<InstanceMigrationEligibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(Schema.String)),
     errors: Schema.optional(Schema.Array(Schema.String)),
@@ -523,7 +523,7 @@ export interface RuntimeAcceleratorConfig {
     | (string & {});
 }
 
-export const RuntimeAcceleratorConfig: Schema.Schema<RuntimeAcceleratorConfig> =
+export const RuntimeAcceleratorConfig: Schema.Codec<RuntimeAcceleratorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coreCount: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -538,7 +538,7 @@ export interface VmImage {
   imageFamily?: string;
 }
 
-export const VmImage: Schema.Schema<VmImage> =
+export const VmImage: Schema.Codec<VmImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.optional(Schema.String),
     imageName: Schema.optional(Schema.String),
@@ -562,7 +562,7 @@ export interface Environment {
   postStartupScript?: string;
 }
 
-export const Environment: Schema.Schema<Environment> =
+export const Environment: Schema.Codec<Environment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -584,7 +584,7 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -601,7 +601,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -617,7 +617,7 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     etag: Schema.optional(Schema.String),
@@ -629,7 +629,7 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -652,7 +652,7 @@ export interface RuntimeMigrationEligibility {
   >;
 }
 
-export const RuntimeMigrationEligibility: Schema.Schema<RuntimeMigrationEligibility> =
+export const RuntimeMigrationEligibility: Schema.Codec<RuntimeMigrationEligibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(Schema.String)),
     errors: Schema.optional(Schema.Array(Schema.String)),
@@ -663,7 +663,7 @@ export interface RuntimeMetrics {
   systemMetrics?: Record<string, string>;
 }
 
-export const RuntimeMetrics: Schema.Schema<RuntimeMetrics> =
+export const RuntimeMetrics: Schema.Codec<RuntimeMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemMetrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "RuntimeMetrics" });
@@ -681,7 +681,7 @@ export interface RuntimeAccessConfig {
     | (string & {});
 }
 
-export const RuntimeAccessConfig: Schema.Schema<RuntimeAccessConfig> =
+export const RuntimeAccessConfig: Schema.Codec<RuntimeAccessConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runtimeOwner: Schema.optional(Schema.String),
     proxyUri: Schema.optional(Schema.String),
@@ -707,7 +707,7 @@ export interface LocalDiskInitializeParams {
   diskSizeGb?: string;
 }
 
-export const LocalDiskInitializeParams: Schema.Schema<LocalDiskInitializeParams> =
+export const LocalDiskInitializeParams: Schema.Codec<LocalDiskInitializeParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskType: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -743,7 +743,7 @@ export interface LocalDisk {
   type?: string;
 }
 
-export const LocalDisk: Schema.Schema<LocalDisk> =
+export const LocalDisk: Schema.Codec<LocalDisk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boot: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
@@ -768,7 +768,7 @@ export interface RuntimeShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 
-export const RuntimeShieldedInstanceConfig: Schema.Schema<RuntimeShieldedInstanceConfig> =
+export const RuntimeShieldedInstanceConfig: Schema.Codec<RuntimeShieldedInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableSecureBoot: Schema.optional(Schema.Boolean),
     enableVtpm: Schema.optional(Schema.Boolean),
@@ -777,7 +777,7 @@ export const RuntimeShieldedInstanceConfig: Schema.Schema<RuntimeShieldedInstanc
 
 export interface BootImage {}
 
-export const BootImage: Schema.Schema<BootImage> =
+export const BootImage: Schema.Codec<BootImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "BootImage",
   });
@@ -819,7 +819,7 @@ export interface VirtualMachineConfig {
   machineType?: string;
 }
 
-export const VirtualMachineConfig: Schema.Schema<VirtualMachineConfig> =
+export const VirtualMachineConfig: Schema.Codec<VirtualMachineConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerImages: Schema.optional(Schema.Array(ContainerImage)),
     guestAttributes: Schema.optional(
@@ -851,7 +851,7 @@ export interface VirtualMachine {
   virtualMachineConfig?: VirtualMachineConfig;
 }
 
-export const VirtualMachine: Schema.Schema<VirtualMachine> =
+export const VirtualMachine: Schema.Codec<VirtualMachine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceName: Schema.optional(Schema.String),
     instanceId: Schema.optional(Schema.String),
@@ -901,7 +901,7 @@ export interface Runtime {
     | (string & {});
 }
 
-export const Runtime: Schema.Schema<Runtime> =
+export const Runtime: Schema.Codec<Runtime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     softwareConfig: Schema.optional(RuntimeSoftwareConfig),
     updateTime: Schema.optional(Schema.String),
@@ -926,7 +926,7 @@ export interface ListRuntimesResponse {
   nextPageToken?: string;
 }
 
-export const ListRuntimesResponse: Schema.Schema<ListRuntimesResponse> =
+export const ListRuntimesResponse: Schema.Codec<ListRuntimesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runtimes: Schema.optional(Schema.Array(Runtime)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -938,7 +938,7 @@ export interface UpgradeRuntimeRequest {
   requestId?: string;
 }
 
-export const UpgradeRuntimeRequest: Schema.Schema<UpgradeRuntimeRequest> =
+export const UpgradeRuntimeRequest: Schema.Codec<UpgradeRuntimeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpgradeRuntimeRequest" });
@@ -954,7 +954,7 @@ export interface UpgradeInstanceRequest {
     | (string & {});
 }
 
-export const UpgradeInstanceRequest: Schema.Schema<UpgradeInstanceRequest> =
+export const UpgradeInstanceRequest: Schema.Codec<UpgradeInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpgradeInstanceRequest" });
@@ -968,7 +968,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -999,7 +999,7 @@ export interface AcceleratorConfig {
   coreCount?: string;
 }
 
-export const AcceleratorConfig: Schema.Schema<AcceleratorConfig> =
+export const AcceleratorConfig: Schema.Codec<AcceleratorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     coreCount: Schema.optional(Schema.String),
@@ -1018,7 +1018,7 @@ export interface UpgradeInstanceInternalRequest {
   vmId?: string;
 }
 
-export const UpgradeInstanceInternalRequest: Schema.Schema<UpgradeInstanceInternalRequest> =
+export const UpgradeInstanceInternalRequest: Schema.Codec<UpgradeInstanceInternalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     vmId: Schema.optional(Schema.String),
@@ -1026,7 +1026,7 @@ export const UpgradeInstanceInternalRequest: Schema.Schema<UpgradeInstanceIntern
 
 export interface ResetInstanceRequest {}
 
-export const ResetInstanceRequest: Schema.Schema<ResetInstanceRequest> =
+export const ResetInstanceRequest: Schema.Codec<ResetInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetInstanceRequest",
   });
@@ -1036,7 +1036,7 @@ export interface StopRuntimeRequest {
   requestId?: string;
 }
 
-export const StopRuntimeRequest: Schema.Schema<StopRuntimeRequest> =
+export const StopRuntimeRequest: Schema.Codec<StopRuntimeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "StopRuntimeRequest" });
@@ -1055,7 +1055,7 @@ export interface ReservationAffinity {
   values?: ReadonlyArray<string>;
 }
 
-export const ReservationAffinity: Schema.Schema<ReservationAffinity> =
+export const ReservationAffinity: Schema.Codec<ReservationAffinity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumeReservationType: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -1071,7 +1071,7 @@ export interface ListEnvironmentsResponse {
   environments?: ReadonlyArray<Environment>;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
+export const ListEnvironmentsResponse: Schema.Codec<ListEnvironmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1083,7 +1083,7 @@ export interface GuestOsFeature {
   type?: string;
 }
 
-export const GuestOsFeature: Schema.Schema<GuestOsFeature> =
+export const GuestOsFeature: Schema.Codec<GuestOsFeature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GuestOsFeature" });
@@ -1115,7 +1115,7 @@ export interface Disk {
   kind?: string;
 }
 
-export const Disk: Schema.Schema<Disk> =
+export const Disk: Schema.Codec<Disk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoDelete: Schema.optional(Schema.Boolean),
     source: Schema.optional(Schema.String),
@@ -1161,7 +1161,7 @@ export interface Schedule {
   createTime?: string;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
+export const Schedule: Schema.Codec<Schedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionTemplate: Schema.optional(ExecutionTemplate),
     recentExecutions: Schema.optional(Schema.Array(Execution)),
@@ -1184,7 +1184,7 @@ export interface ListSchedulesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListSchedulesResponse: Schema.Schema<ListSchedulesResponse> =
+export const ListSchedulesResponse: Schema.Codec<ListSchedulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schedules: Schema.optional(Schema.Array(Schedule)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1219,7 +1219,7 @@ export interface UpgradeHistoryEntry {
   containerImage?: string;
 }
 
-export const UpgradeHistoryEntry: Schema.Schema<UpgradeHistoryEntry> =
+export const UpgradeHistoryEntry: Schema.Codec<UpgradeHistoryEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1257,7 +1257,7 @@ export interface SetInstanceAcceleratorRequest {
     | (string & {});
 }
 
-export const SetInstanceAcceleratorRequest: Schema.Schema<SetInstanceAcceleratorRequest> =
+export const SetInstanceAcceleratorRequest: Schema.Codec<SetInstanceAcceleratorRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coreCount: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1272,7 +1272,7 @@ export interface MigrateInstanceRequest {
     | (string & {});
 }
 
-export const MigrateInstanceRequest: Schema.Schema<MigrateInstanceRequest> =
+export const MigrateInstanceRequest: Schema.Codec<MigrateInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     postStartupScriptOption: Schema.optional(Schema.String),
   }).annotate({ identifier: "MigrateInstanceRequest" });
@@ -1282,7 +1282,7 @@ export interface StartRuntimeRequest {
   requestId?: string;
 }
 
-export const StartRuntimeRequest: Schema.Schema<StartRuntimeRequest> =
+export const StartRuntimeRequest: Schema.Codec<StartRuntimeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "StartRuntimeRequest" });
@@ -1292,7 +1292,7 @@ export interface SetInstanceMachineTypeRequest {
   machineType?: string;
 }
 
-export const SetInstanceMachineTypeRequest: Schema.Schema<SetInstanceMachineTypeRequest> =
+export const SetInstanceMachineTypeRequest: Schema.Codec<SetInstanceMachineTypeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineType: Schema.optional(Schema.String),
   }).annotate({ identifier: "SetInstanceMachineTypeRequest" });
@@ -1304,7 +1304,7 @@ export interface DiagnoseRuntimeRequest {
   timeoutMinutes?: number;
 }
 
-export const DiagnoseRuntimeRequest: Schema.Schema<DiagnoseRuntimeRequest> =
+export const DiagnoseRuntimeRequest: Schema.Codec<DiagnoseRuntimeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diagnosticConfig: Schema.optional(DiagnosticConfig),
     timeoutMinutes: Schema.optional(Schema.Number),
@@ -1418,7 +1418,7 @@ export interface Instance {
   creator?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
+export const Instance: Schema.Codec<Instance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     noPublicIp: Schema.optional(Schema.Boolean),
     kmsKey: Schema.optional(Schema.String),
@@ -1469,7 +1469,7 @@ export interface ListInstancesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
+export const ListInstancesResponse: Schema.Codec<ListInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Instance)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1495,7 +1495,7 @@ export interface OperationMetadata {
   endpoint?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -1512,7 +1512,7 @@ export interface UpdateShieldedInstanceConfigRequest {
   shieldedInstanceConfig?: ShieldedInstanceConfig;
 }
 
-export const UpdateShieldedInstanceConfigRequest: Schema.Schema<UpdateShieldedInstanceConfigRequest> =
+export const UpdateShieldedInstanceConfigRequest: Schema.Codec<UpdateShieldedInstanceConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
   }).annotate({ identifier: "UpdateShieldedInstanceConfigRequest" });
@@ -1522,7 +1522,7 @@ export interface ResetRuntimeRequest {
   requestId?: string;
 }
 
-export const ResetRuntimeRequest: Schema.Schema<ResetRuntimeRequest> =
+export const ResetRuntimeRequest: Schema.Codec<ResetRuntimeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResetRuntimeRequest" });
@@ -1542,7 +1542,7 @@ export interface Event {
   reportTime?: string;
 }
 
-export const Event: Schema.Schema<Event> =
+export const Event: Schema.Codec<Event> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1556,7 +1556,7 @@ export interface ReportRuntimeEventRequest {
   event?: Event;
 }
 
-export const ReportRuntimeEventRequest: Schema.Schema<ReportRuntimeEventRequest> =
+export const ReportRuntimeEventRequest: Schema.Codec<ReportRuntimeEventRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmId: Schema.optional(Schema.String),
     event: Schema.optional(Event),
@@ -1579,7 +1579,7 @@ export interface MigrateRuntimeRequest {
   network?: string;
 }
 
-export const MigrateRuntimeRequest: Schema.Schema<MigrateRuntimeRequest> =
+export const MigrateRuntimeRequest: Schema.Codec<MigrateRuntimeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subnet: Schema.optional(Schema.String),
     requestId: Schema.optional(Schema.String),
@@ -1593,14 +1593,14 @@ export interface RegisterInstanceRequest {
   instanceId?: string;
 }
 
-export const RegisterInstanceRequest: Schema.Schema<RegisterInstanceRequest> =
+export const RegisterInstanceRequest: Schema.Codec<RegisterInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegisterInstanceRequest" });
 
 export interface StopInstanceRequest {}
 
-export const StopInstanceRequest: Schema.Schema<StopInstanceRequest> =
+export const StopInstanceRequest: Schema.Codec<StopInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopInstanceRequest",
   });
@@ -1614,7 +1614,7 @@ export interface SwitchRuntimeRequest {
   requestId?: string;
 }
 
-export const SwitchRuntimeRequest: Schema.Schema<SwitchRuntimeRequest> =
+export const SwitchRuntimeRequest: Schema.Codec<SwitchRuntimeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineType: Schema.optional(Schema.String),
     acceleratorConfig: Schema.optional(RuntimeAcceleratorConfig),
@@ -1626,7 +1626,7 @@ export interface RefreshRuntimeTokenInternalRequest {
   vmId?: string;
 }
 
-export const RefreshRuntimeTokenInternalRequest: Schema.Schema<RefreshRuntimeTokenInternalRequest> =
+export const RefreshRuntimeTokenInternalRequest: Schema.Codec<RefreshRuntimeTokenInternalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RefreshRuntimeTokenInternalRequest" });
@@ -1638,7 +1638,7 @@ export interface RefreshRuntimeTokenInternalResponse {
   expireTime?: string;
 }
 
-export const RefreshRuntimeTokenInternalResponse: Schema.Schema<RefreshRuntimeTokenInternalResponse> =
+export const RefreshRuntimeTokenInternalResponse: Schema.Codec<RefreshRuntimeTokenInternalResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -1649,14 +1649,14 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1666,7 +1666,7 @@ export interface UpdateInstanceMetadataItemsRequest {
   items?: Record<string, string>;
 }
 
-export const UpdateInstanceMetadataItemsRequest: Schema.Schema<UpdateInstanceMetadataItemsRequest> =
+export const UpdateInstanceMetadataItemsRequest: Schema.Codec<UpdateInstanceMetadataItemsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "UpdateInstanceMetadataItemsRequest" });
@@ -1676,7 +1676,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -1688,7 +1688,7 @@ export interface ReportInstanceEventRequest {
   event?: Event;
 }
 
-export const ReportInstanceEventRequest: Schema.Schema<ReportInstanceEventRequest> =
+export const ReportInstanceEventRequest: Schema.Codec<ReportInstanceEventRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vmId: Schema.optional(Schema.String),
     event: Schema.optional(Event),
@@ -1705,7 +1705,7 @@ export interface IsInstanceUpgradeableResponse {
   upgradeInfo?: string;
 }
 
-export const IsInstanceUpgradeableResponse: Schema.Schema<IsInstanceUpgradeableResponse> =
+export const IsInstanceUpgradeableResponse: Schema.Codec<IsInstanceUpgradeableResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upgradeImage: Schema.optional(Schema.String),
     upgradeable: Schema.optional(Schema.Boolean),
@@ -1715,7 +1715,7 @@ export const IsInstanceUpgradeableResponse: Schema.Schema<IsInstanceUpgradeableR
 
 export interface StartInstanceRequest {}
 
-export const StartInstanceRequest: Schema.Schema<StartInstanceRequest> =
+export const StartInstanceRequest: Schema.Codec<StartInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StartInstanceRequest",
   });
@@ -1725,14 +1725,14 @@ export interface RollbackInstanceRequest {
   targetSnapshot?: string;
 }
 
-export const RollbackInstanceRequest: Schema.Schema<RollbackInstanceRequest> =
+export const RollbackInstanceRequest: Schema.Codec<RollbackInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetSnapshot: Schema.optional(Schema.String),
   }).annotate({ identifier: "RollbackInstanceRequest" });
 
 export interface TriggerScheduleRequest {}
 
-export const TriggerScheduleRequest: Schema.Schema<TriggerScheduleRequest> =
+export const TriggerScheduleRequest: Schema.Codec<TriggerScheduleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TriggerScheduleRequest",
   });
@@ -1816,7 +1816,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1851,7 +1851,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1882,7 +1882,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1930,7 +1930,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -1968,7 +1968,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -2007,7 +2007,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -2046,7 +2046,7 @@ export const StopProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StopProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<StopProjectsLocationsRuntimesRequest>;
 
 export type StopProjectsLocationsRuntimesResponse = Operation;
 export const StopProjectsLocationsRuntimesResponse =
@@ -2089,7 +2089,7 @@ export const SetIamPolicyProjectsLocationsRuntimesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsRuntimesRequest>;
 
 export type SetIamPolicyProjectsLocationsRuntimesResponse = Policy;
 export const SetIamPolicyProjectsLocationsRuntimesResponse =
@@ -2130,7 +2130,7 @@ export const GetIamPolicyProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsRuntimesRequest>;
 
 export type GetIamPolicyProjectsLocationsRuntimesResponse = Policy;
 export const GetIamPolicyProjectsLocationsRuntimesResponse =
@@ -2173,7 +2173,7 @@ export const RefreshRuntimeTokenInternalProjectsLocationsRuntimesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RefreshRuntimeTokenInternalProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<RefreshRuntimeTokenInternalProjectsLocationsRuntimesRequest>;
 
 export type RefreshRuntimeTokenInternalProjectsLocationsRuntimesResponse =
   RefreshRuntimeTokenInternalResponse;
@@ -2213,7 +2213,7 @@ export const MigrateProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:migrate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MigrateProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<MigrateProjectsLocationsRuntimesRequest>;
 
 export type MigrateProjectsLocationsRuntimesResponse = Operation;
 export const MigrateProjectsLocationsRuntimesResponse =
@@ -2252,7 +2252,7 @@ export const UpgradeProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:upgrade", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpgradeProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<UpgradeProjectsLocationsRuntimesRequest>;
 
 export type UpgradeProjectsLocationsRuntimesResponse = Operation;
 export const UpgradeProjectsLocationsRuntimesResponse =
@@ -2291,7 +2291,7 @@ export const StartProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StartProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<StartProjectsLocationsRuntimesRequest>;
 
 export type StartProjectsLocationsRuntimesResponse = Operation;
 export const StartProjectsLocationsRuntimesResponse =
@@ -2336,7 +2336,7 @@ export const CreateProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/runtimes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRuntimesRequest>;
 
 export type CreateProjectsLocationsRuntimesResponse = Operation;
 export const CreateProjectsLocationsRuntimesResponse =
@@ -2384,7 +2384,7 @@ export const ListProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/runtimes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRuntimesRequest>;
 
 export type ListProjectsLocationsRuntimesResponse = ListRuntimesResponse;
 export const ListProjectsLocationsRuntimesResponse =
@@ -2425,7 +2425,7 @@ export const DeleteProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRuntimesRequest>;
 
 export type DeleteProjectsLocationsRuntimesResponse = Operation;
 export const DeleteProjectsLocationsRuntimesResponse =
@@ -2464,7 +2464,7 @@ export const ResetProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reset", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResetProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<ResetProjectsLocationsRuntimesRequest>;
 
 export type ResetProjectsLocationsRuntimesResponse = Operation;
 export const ResetProjectsLocationsRuntimesResponse =
@@ -2503,7 +2503,7 @@ export const ReportEventProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reportEvent", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReportEventProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<ReportEventProjectsLocationsRuntimesRequest>;
 
 export type ReportEventProjectsLocationsRuntimesResponse = Operation;
 export const ReportEventProjectsLocationsRuntimesResponse =
@@ -2546,7 +2546,7 @@ export const TestIamPermissionsProjectsLocationsRuntimesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsRuntimesRequest>;
 
 export type TestIamPermissionsProjectsLocationsRuntimesResponse =
   TestIamPermissionsResponse;
@@ -2586,7 +2586,7 @@ export const SwitchProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:switch", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SwitchProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<SwitchProjectsLocationsRuntimesRequest>;
 
 export type SwitchProjectsLocationsRuntimesResponse = Operation;
 export const SwitchProjectsLocationsRuntimesResponse =
@@ -2622,7 +2622,7 @@ export const GetProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRuntimesRequest>;
 
 export type GetProjectsLocationsRuntimesResponse = Runtime;
 export const GetProjectsLocationsRuntimesResponse =
@@ -2659,7 +2659,7 @@ export const DiagnoseProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:diagnose", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DiagnoseProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<DiagnoseProjectsLocationsRuntimesRequest>;
 
 export type DiagnoseProjectsLocationsRuntimesResponse = Operation;
 export const DiagnoseProjectsLocationsRuntimesResponse =
@@ -2704,7 +2704,7 @@ export const PatchProjectsLocationsRuntimesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRuntimesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRuntimesRequest>;
 
 export type PatchProjectsLocationsRuntimesResponse = Operation;
 export const PatchProjectsLocationsRuntimesResponse =
@@ -2740,7 +2740,7 @@ export const GetProjectsLocationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsExecutionsRequest>;
 
 export type GetProjectsLocationsExecutionsResponse = Execution;
 export const GetProjectsLocationsExecutionsResponse =
@@ -2786,7 +2786,7 @@ export const ListProjectsLocationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/executions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsExecutionsRequest>;
 
 export type ListProjectsLocationsExecutionsResponse = ListExecutionsResponse;
 export const ListProjectsLocationsExecutionsResponse =
@@ -2824,7 +2824,7 @@ export const DeleteProjectsLocationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsExecutionsRequest>;
 
 export type DeleteProjectsLocationsExecutionsResponse = Operation;
 export const DeleteProjectsLocationsExecutionsResponse =
@@ -2868,7 +2868,7 @@ export const CreateProjectsLocationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/executions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsExecutionsRequest>;
 
 export type CreateProjectsLocationsExecutionsResponse = Operation;
 export const CreateProjectsLocationsExecutionsResponse =
@@ -2904,7 +2904,7 @@ export const GetProjectsLocationsSchedulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSchedulesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSchedulesRequest>;
 
 export type GetProjectsLocationsSchedulesResponse = Schedule;
 export const GetProjectsLocationsSchedulesResponse =
@@ -2941,7 +2941,7 @@ export const TriggerProjectsLocationsSchedulesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:trigger", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TriggerProjectsLocationsSchedulesRequest>;
+  ) as unknown as Schema.Codec<TriggerProjectsLocationsSchedulesRequest>;
 
 export type TriggerProjectsLocationsSchedulesResponse = Operation;
 export const TriggerProjectsLocationsSchedulesResponse =
@@ -2983,7 +2983,7 @@ export const CreateProjectsLocationsSchedulesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/schedules", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSchedulesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSchedulesRequest>;
 
 export type CreateProjectsLocationsSchedulesResponse = Operation;
 export const CreateProjectsLocationsSchedulesResponse =
@@ -3031,7 +3031,7 @@ export const ListProjectsLocationsSchedulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/schedules" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSchedulesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSchedulesRequest>;
 
 export type ListProjectsLocationsSchedulesResponse = ListSchedulesResponse;
 export const ListProjectsLocationsSchedulesResponse =
@@ -3069,7 +3069,7 @@ export const DeleteProjectsLocationsSchedulesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSchedulesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSchedulesRequest>;
 
 export type DeleteProjectsLocationsSchedulesResponse = Operation;
 export const DeleteProjectsLocationsSchedulesResponse =
@@ -3114,7 +3114,7 @@ export const IsUpgradeableProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+notebookInstance}:isUpgradeable" }),
     svc,
-  ) as unknown as Schema.Schema<IsUpgradeableProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<IsUpgradeableProjectsLocationsInstancesRequest>;
 
 export type IsUpgradeableProjectsLocationsInstancesResponse =
   IsInstanceUpgradeableResponse;
@@ -3149,7 +3149,7 @@ export const GetProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInstancesRequest>;
 
 export type GetProjectsLocationsInstancesResponse = Instance;
 export const GetProjectsLocationsInstancesResponse =
@@ -3186,7 +3186,7 @@ export const DiagnoseProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:diagnose", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DiagnoseProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<DiagnoseProjectsLocationsInstancesRequest>;
 
 export type DiagnoseProjectsLocationsInstancesResponse = Operation;
 export const DiagnoseProjectsLocationsInstancesResponse =
@@ -3222,7 +3222,7 @@ export const DeleteProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsInstancesRequest>;
 
 export type DeleteProjectsLocationsInstancesResponse = Operation;
 export const DeleteProjectsLocationsInstancesResponse =
@@ -3258,7 +3258,7 @@ export const GetInstanceHealthProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getInstanceHealth" }),
     svc,
-  ) as unknown as Schema.Schema<GetInstanceHealthProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetInstanceHealthProjectsLocationsInstancesRequest>;
 
 export type GetInstanceHealthProjectsLocationsInstancesResponse =
   GetInstanceHealthResponse;
@@ -3296,7 +3296,7 @@ export const ResetProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reset", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResetProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<ResetProjectsLocationsInstancesRequest>;
 
 export type ResetProjectsLocationsInstancesResponse = Operation;
 export const ResetProjectsLocationsInstancesResponse =
@@ -3335,7 +3335,7 @@ export const UpgradeProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:upgrade", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpgradeProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<UpgradeProjectsLocationsInstancesRequest>;
 
 export type UpgradeProjectsLocationsInstancesResponse = Operation;
 export const UpgradeProjectsLocationsInstancesResponse =
@@ -3380,7 +3380,7 @@ export const UpdateMetadataItemsProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateMetadataItemsProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateMetadataItemsProjectsLocationsInstancesRequest>;
 
 export type UpdateMetadataItemsProjectsLocationsInstancesResponse =
   UpdateInstanceMetadataItemsResponse;
@@ -3424,7 +3424,7 @@ export const SetIamPolicyProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsInstancesRequest>;
 
 export type SetIamPolicyProjectsLocationsInstancesResponse = Policy;
 export const SetIamPolicyProjectsLocationsInstancesResponse =
@@ -3467,7 +3467,7 @@ export const SetAcceleratorProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetAcceleratorProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<SetAcceleratorProjectsLocationsInstancesRequest>;
 
 export type SetAcceleratorProjectsLocationsInstancesResponse = Operation;
 export const SetAcceleratorProjectsLocationsInstancesResponse =
@@ -3506,7 +3506,7 @@ export const MigrateProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:migrate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MigrateProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<MigrateProjectsLocationsInstancesRequest>;
 
 export type MigrateProjectsLocationsInstancesResponse = Operation;
 export const MigrateProjectsLocationsInstancesResponse =
@@ -3549,7 +3549,7 @@ export const SetMachineTypeProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetMachineTypeProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<SetMachineTypeProjectsLocationsInstancesRequest>;
 
 export type SetMachineTypeProjectsLocationsInstancesResponse = Operation;
 export const SetMachineTypeProjectsLocationsInstancesResponse =
@@ -3592,7 +3592,7 @@ export const TestIamPermissionsProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsInstancesRequest>;
 
 export type TestIamPermissionsProjectsLocationsInstancesResponse =
   TestIamPermissionsResponse;
@@ -3632,7 +3632,7 @@ export const UpdateConfigProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}:updateConfig", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateConfigProjectsLocationsInstancesRequest>;
 
 export type UpdateConfigProjectsLocationsInstancesResponse = Operation;
 export const UpdateConfigProjectsLocationsInstancesResponse =
@@ -3680,7 +3680,7 @@ export const ListProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/instances" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInstancesRequest>;
 
 export type ListProjectsLocationsInstancesResponse = ListInstancesResponse;
 export const ListProjectsLocationsInstancesResponse =
@@ -3721,7 +3721,7 @@ export const RollbackProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:rollback", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RollbackProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<RollbackProjectsLocationsInstancesRequest>;
 
 export type RollbackProjectsLocationsInstancesResponse = Operation;
 export const RollbackProjectsLocationsInstancesResponse =
@@ -3760,7 +3760,7 @@ export const ReportEventProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reportEvent", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReportEventProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<ReportEventProjectsLocationsInstancesRequest>;
 
 export type ReportEventProjectsLocationsInstancesResponse = Operation;
 export const ReportEventProjectsLocationsInstancesResponse =
@@ -3799,7 +3799,7 @@ export const StartProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StartProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<StartProjectsLocationsInstancesRequest>;
 
 export type StartProjectsLocationsInstancesResponse = Operation;
 export const StartProjectsLocationsInstancesResponse =
@@ -3838,7 +3838,7 @@ export const ReportProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:report", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReportProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<ReportProjectsLocationsInstancesRequest>;
 
 export type ReportProjectsLocationsInstancesResponse = Operation;
 export const ReportProjectsLocationsInstancesResponse =
@@ -3881,7 +3881,7 @@ export const RegisterProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RegisterProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<RegisterProjectsLocationsInstancesRequest>;
 
 export type RegisterProjectsLocationsInstancesResponse = Operation;
 export const RegisterProjectsLocationsInstancesResponse =
@@ -3924,7 +3924,7 @@ export const UpgradeInternalProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpgradeInternalProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<UpgradeInternalProjectsLocationsInstancesRequest>;
 
 export type UpgradeInternalProjectsLocationsInstancesResponse = Operation;
 export const UpgradeInternalProjectsLocationsInstancesResponse =
@@ -3966,7 +3966,7 @@ export const CreateProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/instances", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsInstancesRequest>;
 
 export type CreateProjectsLocationsInstancesResponse = Operation;
 export const CreateProjectsLocationsInstancesResponse =
@@ -4005,7 +4005,7 @@ export const SetLabelsProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}:setLabels", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetLabelsProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<SetLabelsProjectsLocationsInstancesRequest>;
 
 export type SetLabelsProjectsLocationsInstancesResponse = Operation;
 export const SetLabelsProjectsLocationsInstancesResponse =
@@ -4050,7 +4050,7 @@ export const UpdateShieldedInstanceConfigProjectsLocationsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateShieldedInstanceConfigProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateShieldedInstanceConfigProjectsLocationsInstancesRequest>;
 
 export type UpdateShieldedInstanceConfigProjectsLocationsInstancesResponse =
   Operation;
@@ -4090,7 +4090,7 @@ export const StopProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StopProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<StopProjectsLocationsInstancesRequest>;
 
 export type StopProjectsLocationsInstancesResponse = Operation;
 export const StopProjectsLocationsInstancesResponse =
@@ -4131,7 +4131,7 @@ export const GetIamPolicyProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsInstancesRequest>;
 
 export type GetIamPolicyProjectsLocationsInstancesResponse = Policy;
 export const GetIamPolicyProjectsLocationsInstancesResponse =
@@ -4165,7 +4165,7 @@ export const GetProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEnvironmentsRequest>;
 
 export type GetProjectsLocationsEnvironmentsResponse = Environment;
 export const GetProjectsLocationsEnvironmentsResponse =
@@ -4205,7 +4205,7 @@ export const ListProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/environments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEnvironmentsRequest>;
 
 export type ListProjectsLocationsEnvironmentsResponse =
   ListEnvironmentsResponse;
@@ -4244,7 +4244,7 @@ export const DeleteProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEnvironmentsRequest>;
 
 export type DeleteProjectsLocationsEnvironmentsResponse = Operation;
 export const DeleteProjectsLocationsEnvironmentsResponse =
@@ -4292,7 +4292,7 @@ export const CreateProjectsLocationsEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEnvironmentsRequest>;
 
 export type CreateProjectsLocationsEnvironmentsResponse = Operation;
 export const CreateProjectsLocationsEnvironmentsResponse =

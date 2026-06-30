@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface VideoAbuseReportSecondaryReason {
   id?: string;
 }
 
-export const VideoAbuseReportSecondaryReason: Schema.Schema<VideoAbuseReportSecondaryReason> =
+export const VideoAbuseReportSecondaryReason: Schema.Codec<VideoAbuseReportSecondaryReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface VideoAbuseReportReasonSnippet {
   secondaryReasons?: ReadonlyArray<VideoAbuseReportSecondaryReason>;
 }
 
-export const VideoAbuseReportReasonSnippet: Schema.Schema<VideoAbuseReportReasonSnippet> =
+export const VideoAbuseReportReasonSnippet: Schema.Codec<VideoAbuseReportReasonSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     secondaryReasons: Schema.optional(
@@ -59,7 +59,7 @@ export interface Thumbnail {
   width?: number;
 }
 
-export const Thumbnail: Schema.Schema<Thumbnail> =
+export const Thumbnail: Schema.Codec<Thumbnail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     height: Schema.optional(Schema.Number),
     url: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface ThumbnailDetails {
   maxres?: Thumbnail;
 }
 
-export const ThumbnailDetails: Schema.Schema<ThumbnailDetails> =
+export const ThumbnailDetails: Schema.Codec<ThumbnailDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standard: Schema.optional(Thumbnail),
     default: Schema.optional(Thumbnail),
@@ -95,7 +95,7 @@ export interface PlaylistStatus {
   podcastStatus?: "enabled" | "disabled" | (string & {});
 }
 
-export const PlaylistStatus: Schema.Schema<PlaylistStatus> =
+export const PlaylistStatus: Schema.Codec<PlaylistStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privacyStatus: Schema.optional(Schema.String),
     podcastStatus: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface PlaylistImageSnippet {
   width?: number;
 }
 
-export const PlaylistImageSnippet: Schema.Schema<PlaylistImageSnippet> =
+export const PlaylistImageSnippet: Schema.Codec<PlaylistImageSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     height: Schema.optional(Schema.Number),
     playlistId: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface VideoPaidProductPlacementDetails {
   hasPaidProductPlacement?: boolean;
 }
 
-export const VideoPaidProductPlacementDetails: Schema.Schema<VideoPaidProductPlacementDetails> =
+export const VideoPaidProductPlacementDetails: Schema.Codec<VideoPaidProductPlacementDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasPaidProductPlacement: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "VideoPaidProductPlacementDetails" });
@@ -137,7 +137,7 @@ export interface VideoSuggestionsTagSuggestion {
   categoryRestricts?: ReadonlyArray<string>;
 }
 
-export const VideoSuggestionsTagSuggestion: Schema.Schema<VideoSuggestionsTagSuggestion> =
+export const VideoSuggestionsTagSuggestion: Schema.Codec<VideoSuggestionsTagSuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     categoryRestricts: Schema.optional(Schema.Array(Schema.String)),
@@ -148,7 +148,7 @@ export interface CommentSnippetAuthorChannelId {
   value?: string;
 }
 
-export const CommentSnippetAuthorChannelId: Schema.Schema<CommentSnippetAuthorChannelId> =
+export const CommentSnippetAuthorChannelId: Schema.Codec<CommentSnippetAuthorChannelId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommentSnippetAuthorChannelId" });
@@ -192,7 +192,7 @@ export interface CommentSnippet {
   parentId?: string;
 }
 
-export const CommentSnippet: Schema.Schema<CommentSnippet> =
+export const CommentSnippet: Schema.Codec<CommentSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishedAt: Schema.optional(Schema.String),
     authorChannelId: Schema.optional(CommentSnippetAuthorChannelId),
@@ -223,7 +223,7 @@ export interface Comment {
   id?: string;
 }
 
-export const Comment: Schema.Schema<Comment> =
+export const Comment: Schema.Codec<Comment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -233,7 +233,7 @@ export const Comment: Schema.Schema<Comment> =
 
 export interface TokenPagination {}
 
-export const TokenPagination: Schema.Schema<TokenPagination> =
+export const TokenPagination: Schema.Codec<TokenPagination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TokenPagination",
   });
@@ -245,7 +245,7 @@ export interface PageInfo {
   resultsPerPage?: number;
 }
 
-export const PageInfo: Schema.Schema<PageInfo> =
+export const PageInfo: Schema.Codec<PageInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalResults: Schema.optional(Schema.Number),
     resultsPerPage: Schema.optional(Schema.Number),
@@ -266,7 +266,7 @@ export interface CuepointSchedule {
     | (string & {});
 }
 
-export const CuepointSchedule: Schema.Schema<CuepointSchedule> =
+export const CuepointSchedule: Schema.Codec<CuepointSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pauseAdsUntil: Schema.optional(Schema.String),
     repeatIntervalSecs: Schema.optional(Schema.Number),
@@ -278,7 +278,7 @@ export interface LiveBroadcastMonetizationDetails {
   cuepointSchedule?: CuepointSchedule;
 }
 
-export const LiveBroadcastMonetizationDetails: Schema.Schema<LiveBroadcastMonetizationDetails> =
+export const LiveBroadcastMonetizationDetails: Schema.Codec<LiveBroadcastMonetizationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cuepointSchedule: Schema.optional(CuepointSchedule),
   }).annotate({ identifier: "LiveBroadcastMonetizationDetails" });
@@ -308,7 +308,7 @@ export interface LiveBroadcastSnippet {
   title?: string;
 }
 
-export const LiveBroadcastSnippet: Schema.Schema<LiveBroadcastSnippet> =
+export const LiveBroadcastSnippet: Schema.Codec<LiveBroadcastSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actualEndTime: Schema.optional(Schema.String),
     actualStartTime: Schema.optional(Schema.String),
@@ -328,7 +328,7 @@ export interface LiveBroadcastStatistics {
   concurrentViewers?: string;
 }
 
-export const LiveBroadcastStatistics: Schema.Schema<LiveBroadcastStatistics> =
+export const LiveBroadcastStatistics: Schema.Codec<LiveBroadcastStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     concurrentViewers: Schema.optional(Schema.String),
   }).annotate({ identifier: "LiveBroadcastStatistics" });
@@ -368,7 +368,7 @@ export interface LiveBroadcastStatus {
   madeForKids?: boolean;
 }
 
-export const LiveBroadcastStatus: Schema.Schema<LiveBroadcastStatus> =
+export const LiveBroadcastStatus: Schema.Codec<LiveBroadcastStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     liveBroadcastPriority: Schema.optional(Schema.String),
     privacyStatus: Schema.optional(Schema.String),
@@ -387,7 +387,7 @@ export interface MonitorStreamInfo {
   enableMonitorStream?: boolean;
 }
 
-export const MonitorStreamInfo: Schema.Schema<MonitorStreamInfo> =
+export const MonitorStreamInfo: Schema.Codec<MonitorStreamInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     broadcastStreamDelayMs: Schema.optional(Schema.Number),
     embedHtml: Schema.optional(Schema.String),
@@ -450,7 +450,7 @@ export interface LiveBroadcastContentDetails {
   enableContentEncryption?: boolean;
 }
 
-export const LiveBroadcastContentDetails: Schema.Schema<LiveBroadcastContentDetails> =
+export const LiveBroadcastContentDetails: Schema.Codec<LiveBroadcastContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableAutoStop: Schema.optional(Schema.Boolean),
     startWithSlate: Schema.optional(Schema.Boolean),
@@ -490,7 +490,7 @@ export interface LiveBroadcast {
   contentDetails?: LiveBroadcastContentDetails;
 }
 
-export const LiveBroadcast: Schema.Schema<LiveBroadcast> =
+export const LiveBroadcast: Schema.Codec<LiveBroadcast> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monetizationDetails: Schema.optional(LiveBroadcastMonetizationDetails),
     kind: Schema.optional(Schema.String),
@@ -522,7 +522,7 @@ export interface LiveBroadcastListResponse {
   nextPageToken?: string;
 }
 
-export const LiveBroadcastListResponse: Schema.Schema<LiveBroadcastListResponse> =
+export const LiveBroadcastListResponse: Schema.Codec<LiveBroadcastListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenPagination: Schema.optional(TokenPagination),
     pageInfo: Schema.optional(PageInfo),
@@ -542,7 +542,7 @@ export interface AccessPolicy {
   exception?: ReadonlyArray<string>;
 }
 
-export const AccessPolicy: Schema.Schema<AccessPolicy> =
+export const AccessPolicy: Schema.Codec<AccessPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowed: Schema.optional(Schema.Boolean),
     exception: Schema.optional(Schema.Array(Schema.String)),
@@ -553,7 +553,7 @@ export interface VideoMonetizationDetails {
   access?: AccessPolicy;
 }
 
-export const VideoMonetizationDetails: Schema.Schema<VideoMonetizationDetails> =
+export const VideoMonetizationDetails: Schema.Codec<VideoMonetizationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     access: Schema.optional(AccessPolicy),
   }).annotate({ identifier: "VideoMonetizationDetails" });
@@ -564,7 +564,7 @@ export interface Entity {
   url?: string;
 }
 
-export const Entity: Schema.Schema<Entity> =
+export const Entity: Schema.Codec<Entity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     typeId: Schema.optional(Schema.String),
@@ -581,7 +581,7 @@ export interface ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails {
     | (string & {});
 }
 
-export const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails: Schema.Schema<ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails> =
+export const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails: Schema.Codec<ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
   }).annotate({
@@ -598,7 +598,7 @@ export interface ChannelToStoreLinkDetailsBillingDetails {
     | (string & {});
 }
 
-export const ChannelToStoreLinkDetailsBillingDetails: Schema.Schema<ChannelToStoreLinkDetailsBillingDetails> =
+export const ChannelToStoreLinkDetailsBillingDetails: Schema.Codec<ChannelToStoreLinkDetailsBillingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChannelToStoreLinkDetailsBillingDetails" });
@@ -616,7 +616,7 @@ export interface ChannelToStoreLinkDetails {
   billingDetails?: ChannelToStoreLinkDetailsBillingDetails;
 }
 
-export const ChannelToStoreLinkDetails: Schema.Schema<ChannelToStoreLinkDetails> =
+export const ChannelToStoreLinkDetails: Schema.Codec<ChannelToStoreLinkDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storeName: Schema.optional(Schema.String),
     storeUrl: Schema.optional(Schema.String),
@@ -642,7 +642,7 @@ export interface ChannelToAffiliateProgramLinkDetails {
   statusUpdateReason?: string;
 }
 
-export const ChannelToAffiliateProgramLinkDetails: Schema.Schema<ChannelToAffiliateProgramLinkDetails> =
+export const ChannelToAffiliateProgramLinkDetails: Schema.Codec<ChannelToAffiliateProgramLinkDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     merchantId: Schema.optional(Schema.String),
     statusUpdateTime: Schema.optional(Schema.String),
@@ -663,7 +663,7 @@ export interface ThirdPartyLinkSnippet {
   channelToAffiliateProgramLink?: ChannelToAffiliateProgramLinkDetails;
 }
 
-export const ThirdPartyLinkSnippet: Schema.Schema<ThirdPartyLinkSnippet> =
+export const ThirdPartyLinkSnippet: Schema.Codec<ThirdPartyLinkSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     channelToStoreLink: Schema.optional(ChannelToStoreLinkDetails),
@@ -676,7 +676,7 @@ export interface ThirdPartyLinkStatus {
   linkStatus?: "unknown" | "failed" | "pending" | "linked" | (string & {});
 }
 
-export const ThirdPartyLinkStatus: Schema.Schema<ThirdPartyLinkStatus> =
+export const ThirdPartyLinkStatus: Schema.Codec<ThirdPartyLinkStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "ThirdPartyLinkStatus" });
@@ -694,7 +694,7 @@ export interface ThirdPartyLink {
   linkingToken?: string;
 }
 
-export const ThirdPartyLink: Schema.Schema<ThirdPartyLink> =
+export const ThirdPartyLink: Schema.Codec<ThirdPartyLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     snippet: Schema.optional(ThirdPartyLinkSnippet),
@@ -714,7 +714,7 @@ export interface ChannelProfileDetails {
   channelUrl?: string;
 }
 
-export const ChannelProfileDetails: Schema.Schema<ChannelProfileDetails> =
+export const ChannelProfileDetails: Schema.Codec<ChannelProfileDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -731,7 +731,7 @@ export interface SuperStickerMetadata {
   altText?: string;
 }
 
-export const SuperStickerMetadata: Schema.Schema<SuperStickerMetadata> =
+export const SuperStickerMetadata: Schema.Codec<SuperStickerMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     altTextLanguage: Schema.optional(Schema.String),
     stickerId: Schema.optional(Schema.String),
@@ -761,7 +761,7 @@ export interface SuperChatEventSnippet {
   createdAt?: string;
 }
 
-export const SuperChatEventSnippet: Schema.Schema<SuperChatEventSnippet> =
+export const SuperChatEventSnippet: Schema.Codec<SuperChatEventSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelId: Schema.optional(Schema.String),
     currency: Schema.optional(Schema.String),
@@ -786,7 +786,7 @@ export interface SuperChatEvent {
   etag?: string;
 }
 
-export const SuperChatEvent: Schema.Schema<SuperChatEvent> =
+export const SuperChatEvent: Schema.Codec<SuperChatEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     snippet: Schema.optional(SuperChatEventSnippet),
@@ -805,7 +805,7 @@ export interface ResourceId {
   channelId?: string;
 }
 
-export const ResourceId: Schema.Schema<ResourceId> =
+export const ResourceId: Schema.Codec<ResourceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     videoId: Schema.optional(Schema.String),
@@ -818,7 +818,7 @@ export interface ActivityContentDetailsBulletin {
   resourceId?: ResourceId;
 }
 
-export const ActivityContentDetailsBulletin: Schema.Schema<ActivityContentDetailsBulletin> =
+export const ActivityContentDetailsBulletin: Schema.Codec<ActivityContentDetailsBulletin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(ResourceId),
   }).annotate({ identifier: "ActivityContentDetailsBulletin" });
@@ -831,7 +831,7 @@ export interface PlaylistImage {
   snippet?: PlaylistImageSnippet;
 }
 
-export const PlaylistImage: Schema.Schema<PlaylistImage> =
+export const PlaylistImage: Schema.Codec<PlaylistImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -843,7 +843,7 @@ export interface PlaylistItemStatus {
   privacyStatus?: "public" | "unlisted" | "private" | (string & {});
 }
 
-export const PlaylistItemStatus: Schema.Schema<PlaylistItemStatus> =
+export const PlaylistItemStatus: Schema.Codec<PlaylistItemStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privacyStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlaylistItemStatus" });
@@ -861,7 +861,7 @@ export interface PlaylistItemContentDetails {
   videoId?: string;
 }
 
-export const PlaylistItemContentDetails: Schema.Schema<PlaylistItemContentDetails> =
+export const PlaylistItemContentDetails: Schema.Codec<PlaylistItemContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startAt: Schema.optional(Schema.String),
     videoPublishedAt: Schema.optional(Schema.String),
@@ -895,7 +895,7 @@ export interface PlaylistItemSnippet {
   title?: string;
 }
 
-export const PlaylistItemSnippet: Schema.Schema<PlaylistItemSnippet> =
+export const PlaylistItemSnippet: Schema.Codec<PlaylistItemSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelTitle: Schema.optional(Schema.String),
     videoOwnerChannelId: Schema.optional(Schema.String),
@@ -925,7 +925,7 @@ export interface PlaylistItem {
   snippet?: PlaylistItemSnippet;
 }
 
-export const PlaylistItem: Schema.Schema<PlaylistItem> =
+export const PlaylistItem: Schema.Codec<PlaylistItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     status: Schema.optional(PlaylistItemStatus),
@@ -954,7 +954,7 @@ export interface PlaylistItemListResponse {
   eventId?: string;
 }
 
-export const PlaylistItemListResponse: Schema.Schema<PlaylistItemListResponse> =
+export const PlaylistItemListResponse: Schema.Codec<PlaylistItemListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(PlaylistItem)),
     visitorId: Schema.optional(Schema.String),
@@ -974,7 +974,7 @@ export interface PlaylistLocalization {
   title?: string;
 }
 
-export const PlaylistLocalization: Schema.Schema<PlaylistLocalization> =
+export const PlaylistLocalization: Schema.Codec<PlaylistLocalization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1003,7 +1003,7 @@ export interface PlaylistSnippet {
   tags?: ReadonlyArray<string>;
 }
 
-export const PlaylistSnippet: Schema.Schema<PlaylistSnippet> =
+export const PlaylistSnippet: Schema.Codec<PlaylistSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     publishedAt: Schema.optional(Schema.String),
@@ -1022,7 +1022,7 @@ export interface PlaylistContentDetails {
   itemCount?: number;
 }
 
-export const PlaylistContentDetails: Schema.Schema<PlaylistContentDetails> =
+export const PlaylistContentDetails: Schema.Codec<PlaylistContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "PlaylistContentDetails" });
@@ -1032,7 +1032,7 @@ export interface PlaylistPlayer {
   embedHtml?: string;
 }
 
-export const PlaylistPlayer: Schema.Schema<PlaylistPlayer> =
+export const PlaylistPlayer: Schema.Codec<PlaylistPlayer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     embedHtml: Schema.optional(Schema.String),
   }).annotate({ identifier: "PlaylistPlayer" });
@@ -1056,7 +1056,7 @@ export interface Playlist {
   player?: PlaylistPlayer;
 }
 
-export const Playlist: Schema.Schema<Playlist> =
+export const Playlist: Schema.Codec<Playlist> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     snippet: Schema.optional(PlaylistSnippet),
@@ -1079,7 +1079,7 @@ export interface LiveChatGiftMembershipReceivedDetails {
   memberLevelName?: string;
 }
 
-export const LiveChatGiftMembershipReceivedDetails: Schema.Schema<LiveChatGiftMembershipReceivedDetails> =
+export const LiveChatGiftMembershipReceivedDetails: Schema.Codec<LiveChatGiftMembershipReceivedDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     associatedMembershipGiftingMessageId: Schema.optional(Schema.String),
     gifterChannelId: Schema.optional(Schema.String),
@@ -1098,7 +1098,7 @@ export interface InvideoPosition {
     | (string & {});
 }
 
-export const InvideoPosition: Schema.Schema<InvideoPosition> =
+export const InvideoPosition: Schema.Codec<InvideoPosition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     cornerPosition: Schema.optional(Schema.String),
@@ -1111,7 +1111,7 @@ export interface ChannelConversionPing {
   context?: "subscribe" | "unsubscribe" | "cview" | (string & {});
 }
 
-export const ChannelConversionPing: Schema.Schema<ChannelConversionPing> =
+export const ChannelConversionPing: Schema.Codec<ChannelConversionPing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversionUrl: Schema.optional(Schema.String),
     context: Schema.optional(Schema.String),
@@ -1122,7 +1122,7 @@ export interface ChannelConversionPings {
   pings?: ReadonlyArray<ChannelConversionPing>;
 }
 
-export const ChannelConversionPings: Schema.Schema<ChannelConversionPings> =
+export const ChannelConversionPings: Schema.Codec<ChannelConversionPings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pings: Schema.optional(Schema.Array(ChannelConversionPing)),
   }).annotate({ identifier: "ChannelConversionPings" });
@@ -1134,7 +1134,7 @@ export interface I18nLanguageSnippet {
   hl?: string;
 }
 
-export const I18nLanguageSnippet: Schema.Schema<I18nLanguageSnippet> =
+export const I18nLanguageSnippet: Schema.Codec<I18nLanguageSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     hl: Schema.optional(Schema.String),
@@ -1151,7 +1151,7 @@ export interface I18nLanguage {
   id?: string;
 }
 
-export const I18nLanguage: Schema.Schema<I18nLanguage> =
+export const I18nLanguage: Schema.Codec<I18nLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1178,7 +1178,7 @@ export interface LiveChatMessageAuthorDetails {
   isChatModerator?: boolean;
 }
 
-export const LiveChatMessageAuthorDetails: Schema.Schema<LiveChatMessageAuthorDetails> =
+export const LiveChatMessageAuthorDetails: Schema.Codec<LiveChatMessageAuthorDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profileImageUrl: Schema.optional(Schema.String),
     isChatSponsor: Schema.optional(Schema.Boolean),
@@ -1199,7 +1199,7 @@ export interface LiveChatMemberMilestoneChatDetails {
   memberMonth?: number;
 }
 
-export const LiveChatMemberMilestoneChatDetails: Schema.Schema<LiveChatMemberMilestoneChatDetails> =
+export const LiveChatMemberMilestoneChatDetails: Schema.Codec<LiveChatMemberMilestoneChatDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberLevelName: Schema.optional(Schema.String),
     userComment: Schema.optional(Schema.String),
@@ -1210,7 +1210,7 @@ export interface LiveChatMessageDeletedDetails {
   deletedMessageId?: string;
 }
 
-export const LiveChatMessageDeletedDetails: Schema.Schema<LiveChatMessageDeletedDetails> =
+export const LiveChatMessageDeletedDetails: Schema.Codec<LiveChatMessageDeletedDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletedMessageId: Schema.optional(Schema.String),
   }).annotate({ identifier: "LiveChatMessageDeletedDetails" });
@@ -1234,7 +1234,7 @@ export interface LiveChatGiftDetails {
   language?: string;
 }
 
-export const LiveChatGiftDetails: Schema.Schema<LiveChatGiftDetails> =
+export const LiveChatGiftDetails: Schema.Codec<LiveChatGiftDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     comboCount: Schema.optional(Schema.Number),
     giftUrl: Schema.optional(Schema.String),
@@ -1251,7 +1251,7 @@ export interface LiveChatPollDetailsPollMetadataPollOption {
   tally?: string;
 }
 
-export const LiveChatPollDetailsPollMetadataPollOption: Schema.Schema<LiveChatPollDetailsPollMetadataPollOption> =
+export const LiveChatPollDetailsPollMetadataPollOption: Schema.Codec<LiveChatPollDetailsPollMetadataPollOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     optionText: Schema.optional(Schema.String),
     tally: Schema.optional(Schema.String),
@@ -1263,7 +1263,7 @@ export interface LiveChatPollDetailsPollMetadata {
   questionText?: string;
 }
 
-export const LiveChatPollDetailsPollMetadata: Schema.Schema<LiveChatPollDetailsPollMetadata> =
+export const LiveChatPollDetailsPollMetadata: Schema.Codec<LiveChatPollDetailsPollMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(
       Schema.Array(LiveChatPollDetailsPollMetadataPollOption),
@@ -1276,7 +1276,7 @@ export interface LiveChatPollDetails {
   status?: "unknown" | "active" | "closed" | (string & {});
 }
 
-export const LiveChatPollDetails: Schema.Schema<LiveChatPollDetails> =
+export const LiveChatPollDetails: Schema.Codec<LiveChatPollDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(LiveChatPollDetailsPollMetadata),
     status: Schema.optional(Schema.String),
@@ -1287,7 +1287,7 @@ export interface LiveChatTextMessageDetails {
   messageText?: string;
 }
 
-export const LiveChatTextMessageDetails: Schema.Schema<LiveChatTextMessageDetails> =
+export const LiveChatTextMessageDetails: Schema.Codec<LiveChatTextMessageDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageText: Schema.optional(Schema.String),
   }).annotate({ identifier: "LiveChatTextMessageDetails" });
@@ -1305,7 +1305,7 @@ export interface LiveChatSuperStickerDetails {
   tier?: number;
 }
 
-export const LiveChatSuperStickerDetails: Schema.Schema<LiveChatSuperStickerDetails> =
+export const LiveChatSuperStickerDetails: Schema.Codec<LiveChatSuperStickerDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currency: Schema.optional(Schema.String),
     superStickerMetadata: Schema.optional(SuperStickerMetadata),
@@ -1323,7 +1323,7 @@ export interface LiveChatUserBannedMessageDetails {
   banDurationSeconds?: string;
 }
 
-export const LiveChatUserBannedMessageDetails: Schema.Schema<LiveChatUserBannedMessageDetails> =
+export const LiveChatUserBannedMessageDetails: Schema.Codec<LiveChatUserBannedMessageDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bannedUserDetails: Schema.optional(ChannelProfileDetails),
     banType: Schema.optional(Schema.String),
@@ -1343,7 +1343,7 @@ export interface LiveChatSuperChatDetails {
   userComment?: string;
 }
 
-export const LiveChatSuperChatDetails: Schema.Schema<LiveChatSuperChatDetails> =
+export const LiveChatSuperChatDetails: Schema.Codec<LiveChatSuperChatDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tier: Schema.optional(Schema.Number),
     amountDisplayString: Schema.optional(Schema.String),
@@ -1359,7 +1359,7 @@ export interface LiveChatNewSponsorDetails {
   isUpgrade?: boolean;
 }
 
-export const LiveChatNewSponsorDetails: Schema.Schema<LiveChatNewSponsorDetails> =
+export const LiveChatNewSponsorDetails: Schema.Codec<LiveChatNewSponsorDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberLevelName: Schema.optional(Schema.String),
     isUpgrade: Schema.optional(Schema.Boolean),
@@ -1376,7 +1376,7 @@ export interface LiveChatFanFundingEventDetails {
   amountDisplayString?: string;
 }
 
-export const LiveChatFanFundingEventDetails: Schema.Schema<LiveChatFanFundingEventDetails> =
+export const LiveChatFanFundingEventDetails: Schema.Codec<LiveChatFanFundingEventDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     userComment: Schema.optional(Schema.String),
@@ -1391,7 +1391,7 @@ export interface LiveChatMembershipGiftingDetails {
   giftMembershipsLevelName?: string;
 }
 
-export const LiveChatMembershipGiftingDetails: Schema.Schema<LiveChatMembershipGiftingDetails> =
+export const LiveChatMembershipGiftingDetails: Schema.Codec<LiveChatMembershipGiftingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     giftMembershipsCount: Schema.optional(Schema.Number),
     giftMembershipsLevelName: Schema.optional(Schema.String),
@@ -1401,7 +1401,7 @@ export interface LiveChatMessageRetractedDetails {
   retractedMessageId?: string;
 }
 
-export const LiveChatMessageRetractedDetails: Schema.Schema<LiveChatMessageRetractedDetails> =
+export const LiveChatMessageRetractedDetails: Schema.Codec<LiveChatMessageRetractedDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retractedMessageId: Schema.optional(Schema.String),
   }).annotate({ identifier: "LiveChatMessageRetractedDetails" });
@@ -1462,7 +1462,7 @@ export interface LiveChatMessageSnippet {
   messageRetractedDetails?: LiveChatMessageRetractedDetails;
 }
 
-export const LiveChatMessageSnippet: Schema.Schema<LiveChatMessageSnippet> =
+export const LiveChatMessageSnippet: Schema.Codec<LiveChatMessageSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishedAt: Schema.optional(Schema.String),
     memberMilestoneChatDetails: Schema.optional(
@@ -1502,7 +1502,7 @@ export interface LiveChatMessage {
   snippet?: LiveChatMessageSnippet;
 }
 
-export const LiveChatMessage: Schema.Schema<LiveChatMessage> =
+export const LiveChatMessage: Schema.Codec<LiveChatMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorDetails: Schema.optional(LiveChatMessageAuthorDetails),
     etag: Schema.optional(Schema.String),
@@ -1518,7 +1518,7 @@ export interface ChannelSectionContentDetails {
   channels?: ReadonlyArray<string>;
 }
 
-export const ChannelSectionContentDetails: Schema.Schema<ChannelSectionContentDetails> =
+export const ChannelSectionContentDetails: Schema.Codec<ChannelSectionContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     playlists: Schema.optional(Schema.Array(Schema.String)),
     channels: Schema.optional(Schema.Array(Schema.String)),
@@ -1533,7 +1533,7 @@ export interface ChannelAuditDetails {
   copyrightStrikesGoodStanding?: boolean;
 }
 
-export const ChannelAuditDetails: Schema.Schema<ChannelAuditDetails> =
+export const ChannelAuditDetails: Schema.Codec<ChannelAuditDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentIdClaimsGoodStanding: Schema.optional(Schema.Boolean),
     communityGuidelinesGoodStanding: Schema.optional(Schema.Boolean),
@@ -1547,7 +1547,7 @@ export interface ChannelLocalization {
   title?: string;
 }
 
-export const ChannelLocalization: Schema.Schema<ChannelLocalization> =
+export const ChannelLocalization: Schema.Codec<ChannelLocalization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1572,7 +1572,7 @@ export interface ChannelSnippet {
   localized?: ChannelLocalization;
 }
 
-export const ChannelSnippet: Schema.Schema<ChannelSnippet> =
+export const ChannelSnippet: Schema.Codec<ChannelSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thumbnails: Schema.optional(ThumbnailDetails),
     customUrl: Schema.optional(Schema.String),
@@ -1602,7 +1602,7 @@ export interface ChannelStatus {
   isChannelMonetizationEnabled?: boolean;
 }
 
-export const ChannelStatus: Schema.Schema<ChannelStatus> =
+export const ChannelStatus: Schema.Codec<ChannelStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longUploadsStatus: Schema.optional(Schema.String),
     madeForKids: Schema.optional(Schema.Boolean),
@@ -1619,7 +1619,7 @@ export interface ChannelContentOwnerDetails {
   timeLinked?: string;
 }
 
-export const ChannelContentOwnerDetails: Schema.Schema<ChannelContentOwnerDetails> =
+export const ChannelContentOwnerDetails: Schema.Codec<ChannelContentOwnerDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentOwner: Schema.optional(Schema.String),
     timeLinked: Schema.optional(Schema.String),
@@ -1635,7 +1635,7 @@ export interface ChannelContentDetails {
   };
 }
 
-export const ChannelContentDetails: Schema.Schema<ChannelContentDetails> =
+export const ChannelContentDetails: Schema.Codec<ChannelContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedPlaylists: Schema.optional(
       Schema.Struct({
@@ -1661,7 +1661,7 @@ export interface ChannelStatistics {
   videoCount?: string;
 }
 
-export const ChannelStatistics: Schema.Schema<ChannelStatistics> =
+export const ChannelStatistics: Schema.Codec<ChannelStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewCount: Schema.optional(Schema.String),
     commentCount: Schema.optional(Schema.String),
@@ -1677,7 +1677,7 @@ export interface ChannelTopicDetails {
   topicCategories?: ReadonlyArray<string>;
 }
 
-export const ChannelTopicDetails: Schema.Schema<ChannelTopicDetails> =
+export const ChannelTopicDetails: Schema.Codec<ChannelTopicDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topicIds: Schema.optional(Schema.Array(Schema.String)),
     topicCategories: Schema.optional(Schema.Array(Schema.String)),
@@ -1692,7 +1692,7 @@ export interface WatchSettings {
   backgroundColor?: string;
 }
 
-export const WatchSettings: Schema.Schema<WatchSettings> =
+export const WatchSettings: Schema.Codec<WatchSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     featuredPlaylistId: Schema.optional(Schema.String),
     textColor: Schema.optional(Schema.String),
@@ -1703,7 +1703,7 @@ export interface LanguageTag {
   value?: string;
 }
 
-export const LanguageTag: Schema.Schema<LanguageTag> =
+export const LanguageTag: Schema.Codec<LanguageTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "LanguageTag" });
@@ -1713,7 +1713,7 @@ export interface LocalizedString {
   language?: string;
 }
 
-export const LocalizedString: Schema.Schema<LocalizedString> =
+export const LocalizedString: Schema.Codec<LocalizedString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
@@ -1726,7 +1726,7 @@ export interface LocalizedProperty {
   default?: string;
 }
 
-export const LocalizedProperty: Schema.Schema<LocalizedProperty> =
+export const LocalizedProperty: Schema.Codec<LocalizedProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultLanguage: Schema.optional(LanguageTag),
     localized: Schema.optional(Schema.Array(LocalizedString)),
@@ -1779,7 +1779,7 @@ export interface ImageSettings {
   bannerMobileLowImageUrl?: string;
 }
 
-export const ImageSettings: Schema.Schema<ImageSettings> =
+export const ImageSettings: Schema.Codec<ImageSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     largeBrandedBannerImageUrl: Schema.optional(LocalizedProperty),
     bannerMobileHdImageUrl: Schema.optional(Schema.String),
@@ -1812,7 +1812,7 @@ export interface PropertyValue {
   value?: string;
 }
 
-export const PropertyValue: Schema.Schema<PropertyValue> =
+export const PropertyValue: Schema.Codec<PropertyValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1848,7 +1848,7 @@ export interface ChannelSettings {
   showRelatedChannels?: boolean;
 }
 
-export const ChannelSettings: Schema.Schema<ChannelSettings> =
+export const ChannelSettings: Schema.Codec<ChannelSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     showBrowseView: Schema.optional(Schema.Boolean),
     featuredChannelsTitle: Schema.optional(Schema.String),
@@ -1877,7 +1877,7 @@ export interface ChannelBrandingSettings {
   channel?: ChannelSettings;
 }
 
-export const ChannelBrandingSettings: Schema.Schema<ChannelBrandingSettings> =
+export const ChannelBrandingSettings: Schema.Codec<ChannelBrandingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     watch: Schema.optional(WatchSettings),
     image: Schema.optional(ImageSettings),
@@ -1914,7 +1914,7 @@ export interface Channel {
   conversionPings?: ChannelConversionPings;
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     auditDetails: Schema.optional(ChannelAuditDetails),
@@ -1952,7 +1952,7 @@ export interface ChannelListResponse {
   visitorId?: string;
 }
 
-export const ChannelListResponse: Schema.Schema<ChannelListResponse> =
+export const ChannelListResponse: Schema.Codec<ChannelListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1974,7 +1974,7 @@ export interface VideoProcessingDetailsProcessingProgress {
   partsProcessed?: string;
 }
 
-export const VideoProcessingDetailsProcessingProgress: Schema.Schema<VideoProcessingDetailsProcessingProgress> =
+export const VideoProcessingDetailsProcessingProgress: Schema.Codec<VideoProcessingDetailsProcessingProgress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeLeftMs: Schema.optional(Schema.String),
     partsTotal: Schema.optional(Schema.String),
@@ -1986,7 +1986,7 @@ export interface ActivityContentDetailsUpload {
   videoId?: string;
 }
 
-export const ActivityContentDetailsUpload: Schema.Schema<ActivityContentDetailsUpload> =
+export const ActivityContentDetailsUpload: Schema.Codec<ActivityContentDetailsUpload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActivityContentDetailsUpload" });
@@ -2005,7 +2005,7 @@ export interface LiveChatBanSnippet {
   liveChatId?: string;
 }
 
-export const LiveChatBanSnippet: Schema.Schema<LiveChatBanSnippet> =
+export const LiveChatBanSnippet: Schema.Codec<LiveChatBanSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     banDurationSeconds: Schema.optional(Schema.String),
@@ -2024,7 +2024,7 @@ export interface LiveChatBan {
   snippet?: LiveChatBanSnippet;
 }
 
-export const LiveChatBan: Schema.Schema<LiveChatBan> =
+export const LiveChatBan: Schema.Codec<LiveChatBan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -2041,7 +2041,7 @@ export interface MembershipsDurationAtLevel {
   level?: string;
 }
 
-export const MembershipsDurationAtLevel: Schema.Schema<MembershipsDurationAtLevel> =
+export const MembershipsDurationAtLevel: Schema.Codec<MembershipsDurationAtLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberSince: Schema.optional(Schema.String),
     memberTotalDurationMonths: Schema.optional(Schema.Number),
@@ -2065,7 +2065,7 @@ export interface CommentThreadSnippet {
   isPublic?: boolean;
 }
 
-export const CommentThreadSnippet: Schema.Schema<CommentThreadSnippet> =
+export const CommentThreadSnippet: Schema.Codec<CommentThreadSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoId: Schema.optional(Schema.String),
     postId: Schema.optional(Schema.String),
@@ -2081,7 +2081,7 @@ export interface CommentThreadReplies {
   comments?: ReadonlyArray<Comment>;
 }
 
-export const CommentThreadReplies: Schema.Schema<CommentThreadReplies> =
+export const CommentThreadReplies: Schema.Codec<CommentThreadReplies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     comments: Schema.optional(Schema.Array(Comment)),
   }).annotate({ identifier: "CommentThreadReplies" });
@@ -2099,7 +2099,7 @@ export interface CommentThread {
   id?: string;
 }
 
-export const CommentThread: Schema.Schema<CommentThread> =
+export const CommentThread: Schema.Codec<CommentThread> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     snippet: Schema.optional(CommentThreadSnippet),
@@ -2126,7 +2126,7 @@ export interface CommentThreadListResponse {
   visitorId?: string;
 }
 
-export const CommentThreadListResponse: Schema.Schema<CommentThreadListResponse> =
+export const CommentThreadListResponse: Schema.Codec<CommentThreadListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -2143,7 +2143,7 @@ export interface ChannelSectionLocalization {
   title?: string;
 }
 
-export const ChannelSectionLocalization: Schema.Schema<ChannelSectionLocalization> =
+export const ChannelSectionLocalization: Schema.Codec<ChannelSectionLocalization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChannelSectionLocalization" });
@@ -2187,7 +2187,7 @@ export interface ChannelSectionSnippet {
     | (string & {});
 }
 
-export const ChannelSectionSnippet: Schema.Schema<ChannelSectionSnippet> =
+export const ChannelSectionSnippet: Schema.Codec<ChannelSectionSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     channelId: Schema.optional(Schema.String),
@@ -2244,7 +2244,7 @@ export interface LiveStreamConfigurationIssue {
   reason?: string;
 }
 
-export const LiveStreamConfigurationIssue: Schema.Schema<LiveStreamConfigurationIssue> =
+export const LiveStreamConfigurationIssue: Schema.Codec<LiveStreamConfigurationIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -2261,7 +2261,7 @@ export interface LiveStreamHealthStatus {
   status?: "good" | "ok" | "bad" | "noData" | "revoked" | (string & {});
 }
 
-export const LiveStreamHealthStatus: Schema.Schema<LiveStreamHealthStatus> =
+export const LiveStreamHealthStatus: Schema.Codec<LiveStreamHealthStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastUpdateTimeSeconds: Schema.optional(Schema.String),
     configurationIssues: Schema.optional(
@@ -2279,7 +2279,7 @@ export interface ChannelSectionTargeting {
   countries?: ReadonlyArray<string>;
 }
 
-export const ChannelSectionTargeting: Schema.Schema<ChannelSectionTargeting> =
+export const ChannelSectionTargeting: Schema.Codec<ChannelSectionTargeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Schema.String)),
     languages: Schema.optional(Schema.Array(Schema.String)),
@@ -2303,7 +2303,7 @@ export interface ChannelSection {
   kind?: string;
 }
 
-export const ChannelSection: Schema.Schema<ChannelSection> =
+export const ChannelSection: Schema.Codec<ChannelSection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localizations: Schema.optional(
       Schema.Record(Schema.String, ChannelSectionLocalization),
@@ -2329,7 +2329,7 @@ export interface ChannelSectionListResponse {
   kind?: string;
 }
 
-export const ChannelSectionListResponse: Schema.Schema<ChannelSectionListResponse> =
+export const ChannelSectionListResponse: Schema.Codec<ChannelSectionListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(ChannelSection)),
     visitorId: Schema.optional(Schema.String),
@@ -2345,7 +2345,7 @@ export interface VideoLocalization {
   title?: string;
 }
 
-export const VideoLocalization: Schema.Schema<VideoLocalization> =
+export const VideoLocalization: Schema.Codec<VideoLocalization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -2383,7 +2383,7 @@ export interface VideoSnippet {
   defaultAudioLanguage?: string;
 }
 
-export const VideoSnippet: Schema.Schema<VideoSnippet> =
+export const VideoSnippet: Schema.Codec<VideoSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     liveBroadcastContent: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -2406,7 +2406,7 @@ export interface LiveChatModeratorSnippet {
   liveChatId?: string;
 }
 
-export const LiveChatModeratorSnippet: Schema.Schema<LiveChatModeratorSnippet> =
+export const LiveChatModeratorSnippet: Schema.Codec<LiveChatModeratorSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     moderatorDetails: Schema.optional(ChannelProfileDetails),
     liveChatId: Schema.optional(Schema.String),
@@ -2423,7 +2423,7 @@ export interface LiveChatModerator {
   etag?: string;
 }
 
-export const LiveChatModerator: Schema.Schema<LiveChatModerator> =
+export const LiveChatModerator: Schema.Codec<LiveChatModerator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(LiveChatModeratorSnippet),
     id: Schema.optional(Schema.String),
@@ -2451,7 +2451,7 @@ export interface LiveChatModeratorListResponse {
   prevPageToken?: string;
 }
 
-export const LiveChatModeratorListResponse: Schema.Schema<LiveChatModeratorListResponse> =
+export const LiveChatModeratorListResponse: Schema.Codec<LiveChatModeratorListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageInfo: Schema.optional(PageInfo),
     tokenPagination: Schema.optional(TokenPagination),
@@ -2469,7 +2469,7 @@ export interface ActivityContentDetailsLike {
   resourceId?: ResourceId;
 }
 
-export const ActivityContentDetailsLike: Schema.Schema<ActivityContentDetailsLike> =
+export const ActivityContentDetailsLike: Schema.Codec<ActivityContentDetailsLike> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(ResourceId),
   }).annotate({ identifier: "ActivityContentDetailsLike" });
@@ -2479,7 +2479,7 @@ export interface ActivityContentDetailsChannelItem {
   resourceId?: ResourceId;
 }
 
-export const ActivityContentDetailsChannelItem: Schema.Schema<ActivityContentDetailsChannelItem> =
+export const ActivityContentDetailsChannelItem: Schema.Codec<ActivityContentDetailsChannelItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(ResourceId),
   }).annotate({ identifier: "ActivityContentDetailsChannelItem" });
@@ -2507,7 +2507,7 @@ export interface ActivityContentDetailsPromotedItem {
   descriptionText?: string;
 }
 
-export const ActivityContentDetailsPromotedItem: Schema.Schema<ActivityContentDetailsPromotedItem> =
+export const ActivityContentDetailsPromotedItem: Schema.Codec<ActivityContentDetailsPromotedItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     impressionUrl: Schema.optional(Schema.Array(Schema.String)),
     videoId: Schema.optional(Schema.String),
@@ -2535,7 +2535,7 @@ export interface ActivityContentDetailsRecommendation {
   resourceId?: ResourceId;
 }
 
-export const ActivityContentDetailsRecommendation: Schema.Schema<ActivityContentDetailsRecommendation> =
+export const ActivityContentDetailsRecommendation: Schema.Codec<ActivityContentDetailsRecommendation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     seedResourceId: Schema.optional(ResourceId),
@@ -2551,7 +2551,7 @@ export interface ActivityContentDetailsPlaylistItem {
   playlistId?: string;
 }
 
-export const ActivityContentDetailsPlaylistItem: Schema.Schema<ActivityContentDetailsPlaylistItem> =
+export const ActivityContentDetailsPlaylistItem: Schema.Codec<ActivityContentDetailsPlaylistItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(ResourceId),
     playlistItemId: Schema.optional(Schema.String),
@@ -2563,7 +2563,7 @@ export interface ActivityContentDetailsComment {
   resourceId?: ResourceId;
 }
 
-export const ActivityContentDetailsComment: Schema.Schema<ActivityContentDetailsComment> =
+export const ActivityContentDetailsComment: Schema.Codec<ActivityContentDetailsComment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(ResourceId),
   }).annotate({ identifier: "ActivityContentDetailsComment" });
@@ -2573,7 +2573,7 @@ export interface ActivityContentDetailsSubscription {
   resourceId?: ResourceId;
 }
 
-export const ActivityContentDetailsSubscription: Schema.Schema<ActivityContentDetailsSubscription> =
+export const ActivityContentDetailsSubscription: Schema.Codec<ActivityContentDetailsSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(ResourceId),
   }).annotate({ identifier: "ActivityContentDetailsSubscription" });
@@ -2591,7 +2591,7 @@ export interface ActivityContentDetailsSocial {
   author?: string;
 }
 
-export const ActivityContentDetailsSocial: Schema.Schema<ActivityContentDetailsSocial> =
+export const ActivityContentDetailsSocial: Schema.Codec<ActivityContentDetailsSocial> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     imageUrl: Schema.optional(Schema.String),
@@ -2605,7 +2605,7 @@ export interface ActivityContentDetailsFavorite {
   resourceId?: ResourceId;
 }
 
-export const ActivityContentDetailsFavorite: Schema.Schema<ActivityContentDetailsFavorite> =
+export const ActivityContentDetailsFavorite: Schema.Codec<ActivityContentDetailsFavorite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(ResourceId),
   }).annotate({ identifier: "ActivityContentDetailsFavorite" });
@@ -2635,7 +2635,7 @@ export interface ActivityContentDetails {
   favorite?: ActivityContentDetailsFavorite;
 }
 
-export const ActivityContentDetails: Schema.Schema<ActivityContentDetails> =
+export const ActivityContentDetails: Schema.Codec<ActivityContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     like: Schema.optional(ActivityContentDetailsLike),
     channelItem: Schema.optional(ActivityContentDetailsChannelItem),
@@ -2682,7 +2682,7 @@ export interface ActivitySnippet {
   description?: string;
 }
 
-export const ActivitySnippet: Schema.Schema<ActivitySnippet> =
+export const ActivitySnippet: Schema.Codec<ActivitySnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelTitle: Schema.optional(Schema.String),
     thumbnails: Schema.optional(ThumbnailDetails),
@@ -2707,7 +2707,7 @@ export interface Activity {
   kind?: string;
 }
 
-export const Activity: Schema.Schema<Activity> =
+export const Activity: Schema.Codec<Activity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     contentDetails: Schema.optional(ActivityContentDetails),
@@ -2735,7 +2735,7 @@ export interface ActivityListResponse {
   eventId?: string;
 }
 
-export const ActivityListResponse: Schema.Schema<ActivityListResponse> =
+export const ActivityListResponse: Schema.Codec<ActivityListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Activity)),
     visitorId: Schema.optional(Schema.String),
@@ -2760,7 +2760,7 @@ export interface PlaylistImageListResponse {
   items?: ReadonlyArray<PlaylistImage>;
 }
 
-export const PlaylistImageListResponse: Schema.Schema<PlaylistImageListResponse> =
+export const PlaylistImageListResponse: Schema.Codec<PlaylistImageListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -2774,7 +2774,7 @@ export interface LevelDetails {
   displayName?: string;
 }
 
-export const LevelDetails: Schema.Schema<LevelDetails> =
+export const LevelDetails: Schema.Codec<LevelDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "LevelDetails" });
@@ -2786,7 +2786,7 @@ export interface VideoContentDetailsRegionRestriction {
   blocked?: ReadonlyArray<string>;
 }
 
-export const VideoContentDetailsRegionRestriction: Schema.Schema<VideoContentDetailsRegionRestriction> =
+export const VideoContentDetailsRegionRestriction: Schema.Codec<VideoContentDetailsRegionRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowed: Schema.optional(Schema.Array(Schema.String)),
     blocked: Schema.optional(Schema.Array(Schema.String)),
@@ -2830,7 +2830,7 @@ export interface CaptionSnippet {
   videoId?: string;
 }
 
-export const CaptionSnippet: Schema.Schema<CaptionSnippet> =
+export const CaptionSnippet: Schema.Codec<CaptionSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioTrackType: Schema.optional(Schema.String),
     isDraft: Schema.optional(Schema.Boolean),
@@ -2869,7 +2869,7 @@ export interface SearchResultSnippet {
   channelTitle?: string;
 }
 
-export const SearchResultSnippet: Schema.Schema<SearchResultSnippet> =
+export const SearchResultSnippet: Schema.Codec<SearchResultSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     liveBroadcastContent: Schema.optional(Schema.String),
     channelId: Schema.optional(Schema.String),
@@ -2891,7 +2891,7 @@ export interface SearchResult {
   etag?: string;
 }
 
-export const SearchResult: Schema.Schema<SearchResult> =
+export const SearchResult: Schema.Codec<SearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(SearchResultSnippet),
     id: Schema.optional(ResourceId),
@@ -2901,7 +2901,7 @@ export const SearchResult: Schema.Schema<SearchResult> =
 
 export interface VideoProjectDetails {}
 
-export const VideoProjectDetails: Schema.Schema<VideoProjectDetails> =
+export const VideoProjectDetails: Schema.Codec<VideoProjectDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "VideoProjectDetails",
   });
@@ -2919,7 +2919,7 @@ export interface SubscriptionContentDetails {
     | (string & {});
 }
 
-export const SubscriptionContentDetails: Schema.Schema<SubscriptionContentDetails> =
+export const SubscriptionContentDetails: Schema.Codec<SubscriptionContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalItemCount: Schema.optional(Schema.Number),
     newItemCount: Schema.optional(Schema.Number),
@@ -2937,7 +2937,7 @@ export interface SubscriptionSubscriberSnippet {
   channelId?: string;
 }
 
-export const SubscriptionSubscriberSnippet: Schema.Schema<SubscriptionSubscriberSnippet> =
+export const SubscriptionSubscriberSnippet: Schema.Codec<SubscriptionSubscriberSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thumbnails: Schema.optional(ThumbnailDetails),
     title: Schema.optional(Schema.String),
@@ -2960,7 +2960,7 @@ export interface SubscriptionSnippet {
   channelId?: string;
 }
 
-export const SubscriptionSnippet: Schema.Schema<SubscriptionSnippet> =
+export const SubscriptionSnippet: Schema.Codec<SubscriptionSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thumbnails: Schema.optional(ThumbnailDetails),
     publishedAt: Schema.optional(Schema.String),
@@ -2985,7 +2985,7 @@ export interface Subscription {
   snippet?: SubscriptionSnippet;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
+export const Subscription: Schema.Codec<Subscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -2997,7 +2997,7 @@ export const Subscription: Schema.Schema<Subscription> =
 
 export interface TestItemTestItemSnippet {}
 
-export const TestItemTestItemSnippet: Schema.Schema<TestItemTestItemSnippet> =
+export const TestItemTestItemSnippet: Schema.Codec<TestItemTestItemSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TestItemTestItemSnippet",
   });
@@ -3015,7 +3015,7 @@ export interface VideoStatistics {
   favoriteCount?: string;
 }
 
-export const VideoStatistics: Schema.Schema<VideoStatistics> =
+export const VideoStatistics: Schema.Codec<VideoStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     likeCount: Schema.optional(Schema.String),
     dislikeCount: Schema.optional(Schema.String),
@@ -3038,7 +3038,7 @@ export interface VideoAgeGating {
   restricted?: boolean;
 }
 
-export const VideoAgeGating: Schema.Schema<VideoAgeGating> =
+export const VideoAgeGating: Schema.Codec<VideoAgeGating> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alcoholContent: Schema.optional(Schema.Boolean),
     videoGameRating: Schema.optional(Schema.String),
@@ -3054,7 +3054,7 @@ export interface VideoTopicDetails {
   relevantTopicIds?: ReadonlyArray<string>;
 }
 
-export const VideoTopicDetails: Schema.Schema<VideoTopicDetails> =
+export const VideoTopicDetails: Schema.Codec<VideoTopicDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topicIds: Schema.optional(Schema.Array(Schema.String)),
     topicCategories: Schema.optional(Schema.Array(Schema.String)),
@@ -3072,7 +3072,7 @@ export interface VideoFileDetailsAudioStream {
   bitrateBps?: string;
 }
 
-export const VideoFileDetailsAudioStream: Schema.Schema<VideoFileDetailsAudioStream> =
+export const VideoFileDetailsAudioStream: Schema.Codec<VideoFileDetailsAudioStream> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelCount: Schema.optional(Schema.Number),
     vendor: Schema.optional(Schema.String),
@@ -3105,7 +3105,7 @@ export interface VideoFileDetailsVideoStream {
   widthPixels?: number;
 }
 
-export const VideoFileDetailsVideoStream: Schema.Schema<VideoFileDetailsVideoStream> =
+export const VideoFileDetailsVideoStream: Schema.Codec<VideoFileDetailsVideoStream> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     heightPixels: Schema.optional(Schema.Number),
     rotation: Schema.optional(Schema.String),
@@ -3146,7 +3146,7 @@ export interface VideoFileDetails {
   durationMs?: string;
 }
 
-export const VideoFileDetails: Schema.Schema<VideoFileDetails> =
+export const VideoFileDetails: Schema.Codec<VideoFileDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileSize: Schema.optional(Schema.String),
     bitrateBps: Schema.optional(Schema.String),
@@ -3958,7 +3958,7 @@ export interface ContentRating {
     | (string & {});
 }
 
-export const ContentRating: Schema.Schema<ContentRating> =
+export const ContentRating: Schema.Codec<ContentRating> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ytRating: Schema.optional(Schema.String),
     bfvcRating: Schema.optional(Schema.String),
@@ -4056,7 +4056,7 @@ export interface VideoContentDetails {
   projection?: "rectangular" | "360" | (string & {});
 }
 
-export const VideoContentDetails: Schema.Schema<VideoContentDetails> =
+export const VideoContentDetails: Schema.Codec<VideoContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasCustomThumbnail: Schema.optional(Schema.Boolean),
     definition: Schema.optional(Schema.String),
@@ -4078,7 +4078,7 @@ export interface VideoPlayer {
   embedWidth?: string;
 }
 
-export const VideoPlayer: Schema.Schema<VideoPlayer> =
+export const VideoPlayer: Schema.Codec<VideoPlayer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     embedHtml: Schema.optional(Schema.String),
     embedHeight: Schema.optional(Schema.String),
@@ -4132,7 +4132,7 @@ export interface VideoStatus {
   embeddable?: boolean;
 }
 
-export const VideoStatus: Schema.Schema<VideoStatus> =
+export const VideoStatus: Schema.Codec<VideoStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containsSyntheticMedia: Schema.optional(Schema.Boolean),
     uploadStatus: Schema.optional(Schema.String),
@@ -4156,7 +4156,7 @@ export interface GeoPoint {
   altitude?: number;
 }
 
-export const GeoPoint: Schema.Schema<GeoPoint> =
+export const GeoPoint: Schema.Codec<GeoPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -4172,7 +4172,7 @@ export interface VideoRecordingDetails {
   location?: GeoPoint;
 }
 
-export const VideoRecordingDetails: Schema.Schema<VideoRecordingDetails> =
+export const VideoRecordingDetails: Schema.Codec<VideoRecordingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationDescription: Schema.optional(Schema.String),
     recordingDate: Schema.optional(Schema.String),
@@ -4208,7 +4208,7 @@ export interface VideoProcessingDetails {
   thumbnailsAvailability?: string;
 }
 
-export const VideoProcessingDetails: Schema.Schema<VideoProcessingDetails> =
+export const VideoProcessingDetails: Schema.Codec<VideoProcessingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processingFailureReason: Schema.optional(Schema.String),
     processingIssuesAvailability: Schema.optional(Schema.String),
@@ -4272,7 +4272,7 @@ export interface VideoSuggestions {
   >;
 }
 
-export const VideoSuggestions: Schema.Schema<VideoSuggestions> =
+export const VideoSuggestions: Schema.Codec<VideoSuggestions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processingWarnings: Schema.optional(Schema.Array(Schema.String)),
     tagSuggestions: Schema.optional(
@@ -4298,7 +4298,7 @@ export interface VideoLiveStreamingDetails {
   activeLiveChatId?: string;
 }
 
-export const VideoLiveStreamingDetails: Schema.Schema<VideoLiveStreamingDetails> =
+export const VideoLiveStreamingDetails: Schema.Codec<VideoLiveStreamingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduledStartTime: Schema.optional(Schema.String),
     scheduledEndTime: Schema.optional(Schema.String),
@@ -4348,7 +4348,7 @@ export interface Video {
   liveStreamingDetails?: VideoLiveStreamingDetails;
 }
 
-export const Video: Schema.Schema<Video> =
+export const Video: Schema.Codec<Video> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statistics: Schema.optional(VideoStatistics),
     ageGating: Schema.optional(VideoAgeGating),
@@ -4394,7 +4394,7 @@ export interface VideoListResponse {
   kind?: string;
 }
 
-export const VideoListResponse: Schema.Schema<VideoListResponse> =
+export const VideoListResponse: Schema.Codec<VideoListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Video)),
     visitorId: Schema.optional(Schema.String),
@@ -4414,7 +4414,7 @@ export interface I18nRegionSnippet {
   name?: string;
 }
 
-export const I18nRegionSnippet: Schema.Schema<I18nRegionSnippet> =
+export const I18nRegionSnippet: Schema.Codec<I18nRegionSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gl: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4431,7 +4431,7 @@ export interface I18nRegion {
   snippet?: I18nRegionSnippet;
 }
 
-export const I18nRegion: Schema.Schema<I18nRegion> =
+export const I18nRegion: Schema.Codec<I18nRegion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -4446,7 +4446,7 @@ export interface LiveStreamContentDetails {
   isReusable?: boolean;
 }
 
-export const LiveStreamContentDetails: Schema.Schema<LiveStreamContentDetails> =
+export const LiveStreamContentDetails: Schema.Codec<LiveStreamContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     closedCaptionsIngestionUrl: Schema.optional(Schema.String),
     isReusable: Schema.optional(Schema.Boolean),
@@ -4457,7 +4457,7 @@ export interface VideoStatsSnippet {
   publishTime?: string;
 }
 
-export const VideoStatsSnippet: Schema.Schema<VideoStatsSnippet> =
+export const VideoStatsSnippet: Schema.Codec<VideoStatsSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "VideoStatsSnippet" });
@@ -4471,7 +4471,7 @@ export interface VideoStatsStatistics {
   commentCount?: string;
 }
 
-export const VideoStatsStatistics: Schema.Schema<VideoStatsStatistics> =
+export const VideoStatsStatistics: Schema.Codec<VideoStatsStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewCount: Schema.optional(Schema.String),
     likeCount: Schema.optional(Schema.String),
@@ -4483,7 +4483,7 @@ export interface VideoStatsContentDetails {
   duration?: string;
 }
 
-export const VideoStatsContentDetails: Schema.Schema<VideoStatsContentDetails> =
+export const VideoStatsContentDetails: Schema.Codec<VideoStatsContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
   }).annotate({ identifier: "VideoStatsContentDetails" });
@@ -4503,7 +4503,7 @@ export interface VideoStat {
   etag?: string;
 }
 
-export const VideoStat: Schema.Schema<VideoStat> =
+export const VideoStat: Schema.Codec<VideoStat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(VideoStatsSnippet),
     statistics: Schema.optional(VideoStatsStatistics),
@@ -4517,7 +4517,7 @@ export interface RelatedEntity {
   entity?: Entity;
 }
 
-export const RelatedEntity: Schema.Schema<RelatedEntity> =
+export const RelatedEntity: Schema.Codec<RelatedEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entity: Schema.optional(Entity),
   }).annotate({ identifier: "RelatedEntity" });
@@ -4533,7 +4533,7 @@ export interface Caption {
   etag?: string;
 }
 
-export const Caption: Schema.Schema<Caption> =
+export const Caption: Schema.Codec<Caption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(CaptionSnippet),
     id: Schema.optional(Schema.String),
@@ -4554,7 +4554,7 @@ export interface CaptionListResponse {
   etag?: string;
 }
 
-export const CaptionListResponse: Schema.Schema<CaptionListResponse> =
+export const CaptionListResponse: Schema.Codec<CaptionListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
@@ -4574,7 +4574,7 @@ export interface VideoAbuseReportReason {
   etag?: string;
 }
 
-export const VideoAbuseReportReason: Schema.Schema<VideoAbuseReportReason> =
+export const VideoAbuseReportReason: Schema.Codec<VideoAbuseReportReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(VideoAbuseReportReasonSnippet),
     id: Schema.optional(Schema.String),
@@ -4604,7 +4604,7 @@ export interface LiveChatMessageListResponse {
   pageInfo?: PageInfo;
 }
 
-export const LiveChatMessageListResponse: Schema.Schema<LiveChatMessageListResponse> =
+export const LiveChatMessageListResponse: Schema.Codec<LiveChatMessageListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(LiveChatMessage)),
@@ -4628,7 +4628,7 @@ export interface BatchGetStatsResponse {
   etag?: string;
 }
 
-export const BatchGetStatsResponse: Schema.Schema<BatchGetStatsResponse> =
+export const BatchGetStatsResponse: Schema.Codec<BatchGetStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(VideoStat)),
     kind: Schema.optional(Schema.String),
@@ -4643,7 +4643,7 @@ export interface VideoCategorySnippet {
   channelId?: string;
 }
 
-export const VideoCategorySnippet: Schema.Schema<VideoCategorySnippet> =
+export const VideoCategorySnippet: Schema.Codec<VideoCategorySnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignable: Schema.optional(Schema.Boolean),
     title: Schema.optional(Schema.String),
@@ -4661,7 +4661,7 @@ export interface VideoCategory {
   etag?: string;
 }
 
-export const VideoCategory: Schema.Schema<VideoCategory> =
+export const VideoCategory: Schema.Codec<VideoCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(VideoCategorySnippet),
     id: Schema.optional(Schema.String),
@@ -4676,7 +4676,7 @@ export interface MembershipsDuration {
   memberTotalDurationMonths?: number;
 }
 
-export const MembershipsDuration: Schema.Schema<MembershipsDuration> =
+export const MembershipsDuration: Schema.Codec<MembershipsDuration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberSince: Schema.optional(Schema.String),
     memberTotalDurationMonths: Schema.optional(Schema.Number),
@@ -4695,7 +4695,7 @@ export interface MembershipsDetails {
   highestAccessibleLevel?: string;
 }
 
-export const MembershipsDetails: Schema.Schema<MembershipsDetails> =
+export const MembershipsDetails: Schema.Codec<MembershipsDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     highestAccessibleLevelDisplayName: Schema.optional(Schema.String),
     membershipsDuration: Schema.optional(MembershipsDuration),
@@ -4715,7 +4715,7 @@ export interface MemberSnippet {
   memberDetails?: ChannelProfileDetails;
 }
 
-export const MemberSnippet: Schema.Schema<MemberSnippet> =
+export const MemberSnippet: Schema.Codec<MemberSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creatorChannelId: Schema.optional(Schema.String),
     membershipsDetails: Schema.optional(MembershipsDetails),
@@ -4731,7 +4731,7 @@ export interface Member {
   snippet?: MemberSnippet;
 }
 
-export const Member: Schema.Schema<Member> =
+export const Member: Schema.Codec<Member> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -4755,7 +4755,7 @@ export interface MemberListResponse {
   visitorId?: string;
 }
 
-export const MemberListResponse: Schema.Schema<MemberListResponse> =
+export const MemberListResponse: Schema.Codec<MemberListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -4776,7 +4776,7 @@ export interface InvideoTiming {
   type?: "offsetFromStart" | "offsetFromEnd" | (string & {});
 }
 
-export const InvideoTiming: Schema.Schema<InvideoTiming> =
+export const InvideoTiming: Schema.Codec<InvideoTiming> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offsetMs: Schema.optional(Schema.String),
     durationMs: Schema.optional(Schema.String),
@@ -4792,7 +4792,7 @@ export interface TestItem {
   etag?: string;
 }
 
-export const TestItem: Schema.Schema<TestItem> =
+export const TestItem: Schema.Codec<TestItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(TestItemTestItemSnippet),
     gaia: Schema.optional(Schema.String),
@@ -4805,7 +4805,7 @@ export interface AbuseType {
   id?: string;
 }
 
-export const AbuseType: Schema.Schema<AbuseType> =
+export const AbuseType: Schema.Codec<AbuseType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "AbuseType" });
@@ -4823,7 +4823,7 @@ export interface I18nLanguageListResponse {
   eventId?: string;
 }
 
-export const I18nLanguageListResponse: Schema.Schema<I18nLanguageListResponse> =
+export const I18nLanguageListResponse: Schema.Codec<I18nLanguageListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(I18nLanguage)),
@@ -4850,7 +4850,7 @@ export interface CommentListResponse {
   pageInfo?: PageInfo;
 }
 
-export const CommentListResponse: Schema.Schema<CommentListResponse> =
+export const CommentListResponse: Schema.Codec<CommentListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -4875,7 +4875,7 @@ export interface IngestionInfo {
   rtmpsBackupIngestionAddress?: string;
 }
 
-export const IngestionInfo: Schema.Schema<IngestionInfo> =
+export const IngestionInfo: Schema.Codec<IngestionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rtmpsIngestionAddress: Schema.optional(Schema.String),
     ingestionAddress: Schema.optional(Schema.String),
@@ -4906,7 +4906,7 @@ export interface CdnSettings {
     | (string & {});
 }
 
-export const CdnSettings: Schema.Schema<CdnSettings> =
+export const CdnSettings: Schema.Codec<CdnSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingestionType: Schema.optional(Schema.String),
     frameRate: Schema.optional(Schema.String),
@@ -4922,7 +4922,7 @@ export interface MembershipsLevelSnippet {
   levelDetails?: LevelDetails;
 }
 
-export const MembershipsLevelSnippet: Schema.Schema<MembershipsLevelSnippet> =
+export const MembershipsLevelSnippet: Schema.Codec<MembershipsLevelSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creatorChannelId: Schema.optional(Schema.String),
     levelDetails: Schema.optional(LevelDetails),
@@ -4939,7 +4939,7 @@ export interface MembershipsLevel {
   id?: string;
 }
 
-export const MembershipsLevel: Schema.Schema<MembershipsLevel> =
+export const MembershipsLevel: Schema.Codec<MembershipsLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -4960,7 +4960,7 @@ export interface Cuepoint {
   etag?: string;
 }
 
-export const Cuepoint: Schema.Schema<Cuepoint> =
+export const Cuepoint: Schema.Codec<Cuepoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insertionOffsetTimeMs: Schema.optional(Schema.String),
     walltimeMs: Schema.optional(Schema.String),
@@ -4981,7 +4981,7 @@ export interface VideoTrainability {
   permitted?: ReadonlyArray<string>;
 }
 
-export const VideoTrainability: Schema.Schema<VideoTrainability> =
+export const VideoTrainability: Schema.Codec<VideoTrainability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5002,7 +5002,7 @@ export interface MembershipsLevelListResponse {
   visitorId?: string;
 }
 
-export const MembershipsLevelListResponse: Schema.Schema<MembershipsLevelListResponse> =
+export const MembershipsLevelListResponse: Schema.Codec<MembershipsLevelListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5031,7 +5031,7 @@ export interface VideoCategoryListResponse {
   eventId?: string;
 }
 
-export const VideoCategoryListResponse: Schema.Schema<VideoCategoryListResponse> =
+export const VideoCategoryListResponse: Schema.Codec<VideoCategoryListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(VideoCategory)),
@@ -5065,7 +5065,7 @@ export interface SearchListResponse {
   regionCode?: string;
 }
 
-export const SearchListResponse: Schema.Schema<SearchListResponse> =
+export const SearchListResponse: Schema.Codec<SearchListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5086,7 +5086,7 @@ export interface VideoRating {
   videoId?: string;
 }
 
-export const VideoRating: Schema.Schema<VideoRating> =
+export const VideoRating: Schema.Codec<VideoRating> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rating: Schema.optional(Schema.String),
     videoId: Schema.optional(Schema.String),
@@ -5105,7 +5105,7 @@ export interface VideoGetRatingResponse {
   visitorId?: string;
 }
 
-export const VideoGetRatingResponse: Schema.Schema<VideoGetRatingResponse> =
+export const VideoGetRatingResponse: Schema.Codec<VideoGetRatingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
@@ -5121,7 +5121,7 @@ export interface AbuseReport {
   relatedEntities?: ReadonlyArray<RelatedEntity>;
 }
 
-export const AbuseReport: Schema.Schema<AbuseReport> =
+export const AbuseReport: Schema.Codec<AbuseReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     abuseTypes: Schema.optional(Schema.Array(AbuseType)),
     subject: Schema.optional(Entity),
@@ -5146,7 +5146,7 @@ export interface SuperChatEventListResponse {
   eventId?: string;
 }
 
-export const SuperChatEventListResponse: Schema.Schema<SuperChatEventListResponse> =
+export const SuperChatEventListResponse: Schema.Codec<SuperChatEventListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(SuperChatEvent)),
     tokenPagination: Schema.optional(TokenPagination),
@@ -5171,7 +5171,7 @@ export interface VideoAbuseReport {
   reasonId?: string;
 }
 
-export const VideoAbuseReport: Schema.Schema<VideoAbuseReport> =
+export const VideoAbuseReport: Schema.Codec<VideoAbuseReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoId: Schema.optional(Schema.String),
     secondaryReasonId: Schema.optional(Schema.String),
@@ -5200,7 +5200,7 @@ export interface PlaylistListResponse {
   etag?: string;
 }
 
-export const PlaylistListResponse: Schema.Schema<PlaylistListResponse> =
+export const PlaylistListResponse: Schema.Codec<PlaylistListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5221,7 +5221,7 @@ export interface ThirdPartyLinkListResponse {
   etag?: string;
 }
 
-export const ThirdPartyLinkListResponse: Schema.Schema<ThirdPartyLinkListResponse> =
+export const ThirdPartyLinkListResponse: Schema.Codec<ThirdPartyLinkListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(ThirdPartyLink)),
     kind: Schema.optional(Schema.String),
@@ -5241,7 +5241,7 @@ export interface VideoAbuseReportReasonListResponse {
   visitorId?: string;
 }
 
-export const VideoAbuseReportReasonListResponse: Schema.Schema<VideoAbuseReportReasonListResponse> =
+export const VideoAbuseReportReasonListResponse: Schema.Codec<VideoAbuseReportReasonListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5263,7 +5263,7 @@ export interface InvideoBranding {
   imageUrl?: string;
 }
 
-export const InvideoBranding: Schema.Schema<InvideoBranding> =
+export const InvideoBranding: Schema.Codec<InvideoBranding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(InvideoPosition),
     imageBytes: Schema.optional(Schema.String),
@@ -5291,7 +5291,7 @@ export interface SubscriptionListResponse {
   nextPageToken?: string;
 }
 
-export const SubscriptionListResponse: Schema.Schema<SubscriptionListResponse> =
+export const SubscriptionListResponse: Schema.Codec<SubscriptionListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenPagination: Schema.optional(TokenPagination),
     pageInfo: Schema.optional(PageInfo),
@@ -5312,7 +5312,7 @@ export interface ChannelBannerResource {
   url?: string;
 }
 
-export const ChannelBannerResource: Schema.Schema<ChannelBannerResource> =
+export const ChannelBannerResource: Schema.Codec<ChannelBannerResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -5331,7 +5331,7 @@ export interface LiveStreamStatus {
     | (string & {});
 }
 
-export const LiveStreamStatus: Schema.Schema<LiveStreamStatus> =
+export const LiveStreamStatus: Schema.Codec<LiveStreamStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     healthStatus: Schema.optional(LiveStreamHealthStatus),
     streamStatus: Schema.optional(Schema.String),
@@ -5349,7 +5349,7 @@ export interface LiveStreamSnippet {
   isDefaultStream?: boolean;
 }
 
-export const LiveStreamSnippet: Schema.Schema<LiveStreamSnippet> =
+export const LiveStreamSnippet: Schema.Codec<LiveStreamSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishedAt: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -5375,7 +5375,7 @@ export interface LiveStream {
   kind?: string;
 }
 
-export const LiveStream: Schema.Schema<LiveStream> =
+export const LiveStream: Schema.Codec<LiveStream> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     contentDetails: Schema.optional(LiveStreamContentDetails),
@@ -5405,7 +5405,7 @@ export interface LiveStreamListResponse {
   tokenPagination?: TokenPagination;
 }
 
-export const LiveStreamListResponse: Schema.Schema<LiveStreamListResponse> =
+export const LiveStreamListResponse: Schema.Codec<LiveStreamListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     prevPageToken: Schema.optional(Schema.String),
@@ -5431,7 +5431,7 @@ export interface ThumbnailSetResponse {
   eventId?: string;
 }
 
-export const ThumbnailSetResponse: Schema.Schema<ThumbnailSetResponse> =
+export const ThumbnailSetResponse: Schema.Codec<ThumbnailSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(ThumbnailDetails)),
     visitorId: Schema.optional(Schema.String),
@@ -5453,7 +5453,7 @@ export interface I18nRegionListResponse {
   kind?: string;
 }
 
-export const I18nRegionListResponse: Schema.Schema<I18nRegionListResponse> =
+export const I18nRegionListResponse: Schema.Codec<I18nRegionListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(I18nRegion)),
     visitorId: Schema.optional(Schema.String),
@@ -5530,7 +5530,7 @@ export const InsertAbuseReportsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "youtube/v3/abuseReports", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertAbuseReportsRequest>;
+  ) as unknown as Schema.Codec<InsertAbuseReportsRequest>;
 
 export type InsertAbuseReportsResponse = AbuseReport;
 export const InsertAbuseReportsResponse =
@@ -5568,7 +5568,7 @@ export const ListI18nLanguagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/i18nLanguages" }),
     svc,
-  ) as unknown as Schema.Schema<ListI18nLanguagesRequest>;
+  ) as unknown as Schema.Codec<ListI18nLanguagesRequest>;
 
 export type ListI18nLanguagesResponse = I18nLanguageListResponse;
 export const ListI18nLanguagesResponse =
@@ -5616,7 +5616,7 @@ export const InsertChannelBannersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertChannelBannersRequest>;
+  ) as unknown as Schema.Codec<InsertChannelBannersRequest>;
 
 export type InsertChannelBannersResponse = ChannelBannerResource;
 export const InsertChannelBannersResponse =
@@ -5670,7 +5670,7 @@ export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "youtube/v3/members" }),
   svc,
-) as unknown as Schema.Schema<ListMembersRequest>;
+) as unknown as Schema.Codec<ListMembersRequest>;
 
 export type ListMembersResponse = MemberListResponse;
 export const ListMembersResponse =
@@ -5867,7 +5867,7 @@ export const ListSearchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "youtube/v3/search" }),
   svc,
-) as unknown as Schema.Schema<ListSearchRequest>;
+) as unknown as Schema.Codec<ListSearchRequest>;
 
 export type ListSearchResponse = SearchListResponse;
 export const ListSearchResponse =
@@ -5903,7 +5903,7 @@ export const ListMembershipsLevelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/membershipsLevels" }),
     svc,
-  ) as unknown as Schema.Schema<ListMembershipsLevelsRequest>;
+  ) as unknown as Schema.Codec<ListMembershipsLevelsRequest>;
 
 export type ListMembershipsLevelsResponse = MembershipsLevelListResponse;
 export const ListMembershipsLevelsResponse =
@@ -5940,13 +5940,13 @@ export const SetWatermarksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "youtube/v3/watermarks/set", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SetWatermarksRequest>;
+) as unknown as Schema.Codec<SetWatermarksRequest>;
 
 export interface SetWatermarksResponse {}
-export const SetWatermarksResponse: Schema.Schema<SetWatermarksResponse> =
+export const SetWatermarksResponse: Schema.Codec<SetWatermarksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<SetWatermarksResponse>;
+  ) as any as Schema.Codec<SetWatermarksResponse>;
 
 export type SetWatermarksError =
   | DefaultErrors
@@ -5987,13 +5987,13 @@ export const UnsetWatermarksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UnsetWatermarksRequest>;
+) as unknown as Schema.Codec<UnsetWatermarksRequest>;
 
 export interface UnsetWatermarksResponse {}
-export const UnsetWatermarksResponse: Schema.Schema<UnsetWatermarksResponse> =
+export const UnsetWatermarksResponse: Schema.Codec<UnsetWatermarksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<UnsetWatermarksResponse>;
+  ) as any as Schema.Codec<UnsetWatermarksResponse>;
 
 export type UnsetWatermarksError =
   | DefaultErrors
@@ -6044,7 +6044,7 @@ export const StreamYoutubeV3LiveChatMessagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/liveChat/messages/stream" }),
     svc,
-  ) as unknown as Schema.Schema<StreamYoutubeV3LiveChatMessagesRequest>;
+  ) as unknown as Schema.Codec<StreamYoutubeV3LiveChatMessagesRequest>;
 
 export type StreamYoutubeV3LiveChatMessagesResponse =
   LiveChatMessageListResponse;
@@ -6091,7 +6091,7 @@ export const InsertLiveChatModeratorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertLiveChatModeratorsRequest>;
+  ) as unknown as Schema.Codec<InsertLiveChatModeratorsRequest>;
 
 export type InsertLiveChatModeratorsResponse = LiveChatModerator;
 export const InsertLiveChatModeratorsResponse =
@@ -6126,13 +6126,13 @@ export const DeleteLiveChatModeratorsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/liveChat/moderators" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLiveChatModeratorsRequest>;
+  ) as unknown as Schema.Codec<DeleteLiveChatModeratorsRequest>;
 
 export interface DeleteLiveChatModeratorsResponse {}
-export const DeleteLiveChatModeratorsResponse: Schema.Schema<DeleteLiveChatModeratorsResponse> =
+export const DeleteLiveChatModeratorsResponse: Schema.Codec<DeleteLiveChatModeratorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteLiveChatModeratorsResponse>;
+  ) as any as Schema.Codec<DeleteLiveChatModeratorsResponse>;
 
 export type DeleteLiveChatModeratorsError =
   | DefaultErrors
@@ -6173,7 +6173,7 @@ export const ListLiveChatModeratorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/liveChat/moderators" }),
     svc,
-  ) as unknown as Schema.Schema<ListLiveChatModeratorsRequest>;
+  ) as unknown as Schema.Codec<ListLiveChatModeratorsRequest>;
 
 export type ListLiveChatModeratorsResponse = LiveChatModeratorListResponse;
 export const ListLiveChatModeratorsResponse =
@@ -6211,7 +6211,7 @@ export const UpdateCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "youtube/v3/comments", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateCommentsRequest>;
+) as unknown as Schema.Codec<UpdateCommentsRequest>;
 
 export type UpdateCommentsResponse = Comment;
 export const UpdateCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
@@ -6250,13 +6250,13 @@ export const MarkAsSpamCommentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkAsSpamCommentsRequest>;
+  ) as unknown as Schema.Codec<MarkAsSpamCommentsRequest>;
 
 export interface MarkAsSpamCommentsResponse {}
-export const MarkAsSpamCommentsResponse: Schema.Schema<MarkAsSpamCommentsResponse> =
+export const MarkAsSpamCommentsResponse: Schema.Codec<MarkAsSpamCommentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<MarkAsSpamCommentsResponse>;
+  ) as any as Schema.Codec<MarkAsSpamCommentsResponse>;
 
 export type MarkAsSpamCommentsError =
   | DefaultErrors
@@ -6303,13 +6303,13 @@ export const SetModerationStatusCommentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetModerationStatusCommentsRequest>;
+  ) as unknown as Schema.Codec<SetModerationStatusCommentsRequest>;
 
 export interface SetModerationStatusCommentsResponse {}
-export const SetModerationStatusCommentsResponse: Schema.Schema<SetModerationStatusCommentsResponse> =
+export const SetModerationStatusCommentsResponse: Schema.Codec<SetModerationStatusCommentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<SetModerationStatusCommentsResponse>;
+  ) as any as Schema.Codec<SetModerationStatusCommentsResponse>;
 
 export type SetModerationStatusCommentsError =
   | DefaultErrors
@@ -6355,7 +6355,7 @@ export const ListCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "youtube/v3/comments" }),
   svc,
-) as unknown as Schema.Schema<ListCommentsRequest>;
+) as unknown as Schema.Codec<ListCommentsRequest>;
 
 export type ListCommentsResponse = CommentListResponse;
 export const ListCommentsResponse =
@@ -6393,7 +6393,7 @@ export const InsertCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "youtube/v3/comments", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertCommentsRequest>;
+) as unknown as Schema.Codec<InsertCommentsRequest>;
 
 export type InsertCommentsResponse = Comment;
 export const InsertCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
@@ -6426,13 +6426,13 @@ export const DeleteCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "youtube/v3/comments" }),
   svc,
-) as unknown as Schema.Schema<DeleteCommentsRequest>;
+) as unknown as Schema.Codec<DeleteCommentsRequest>;
 
 export interface DeleteCommentsResponse {}
-export const DeleteCommentsResponse: Schema.Schema<DeleteCommentsResponse> =
+export const DeleteCommentsResponse: Schema.Codec<DeleteCommentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteCommentsResponse>;
+  ) as any as Schema.Codec<DeleteCommentsResponse>;
 
 export type DeleteCommentsError =
   | DefaultErrors
@@ -6471,7 +6471,7 @@ export const ListVideoCategoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/videoCategories" }),
     svc,
-  ) as unknown as Schema.Schema<ListVideoCategoriesRequest>;
+  ) as unknown as Schema.Codec<ListVideoCategoriesRequest>;
 
 export type ListVideoCategoriesResponse = VideoCategoryListResponse;
 export const ListVideoCategoriesResponse =
@@ -6511,7 +6511,7 @@ export const UpdatePlaylistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "PUT", path: "youtube/v3/playlists", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdatePlaylistsRequest>;
+) as unknown as Schema.Codec<UpdatePlaylistsRequest>;
 
 export type UpdatePlaylistsResponse = Playlist;
 export const UpdatePlaylistsResponse = /*@__PURE__*/ /*#__PURE__*/ Playlist;
@@ -6560,7 +6560,7 @@ export const InsertPlaylistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "youtube/v3/playlists", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertPlaylistsRequest>;
+) as unknown as Schema.Codec<InsertPlaylistsRequest>;
 
 export type InsertPlaylistsResponse = Playlist;
 export const InsertPlaylistsResponse = /*@__PURE__*/ /*#__PURE__*/ Playlist;
@@ -6600,13 +6600,13 @@ export const DeletePlaylistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "DELETE", path: "youtube/v3/playlists" }),
   svc,
-) as unknown as Schema.Schema<DeletePlaylistsRequest>;
+) as unknown as Schema.Codec<DeletePlaylistsRequest>;
 
 export interface DeletePlaylistsResponse {}
-export const DeletePlaylistsResponse: Schema.Schema<DeletePlaylistsResponse> =
+export const DeletePlaylistsResponse: Schema.Codec<DeletePlaylistsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeletePlaylistsResponse>;
+  ) as any as Schema.Codec<DeletePlaylistsResponse>;
 
 export type DeletePlaylistsError =
   | DefaultErrors
@@ -6665,7 +6665,7 @@ export const ListPlaylistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "youtube/v3/playlists" }),
   svc,
-) as unknown as Schema.Schema<ListPlaylistsRequest>;
+) as unknown as Schema.Codec<ListPlaylistsRequest>;
 
 export type ListPlaylistsResponse = PlaylistListResponse;
 export const ListPlaylistsResponse =
@@ -6737,7 +6737,7 @@ export const ListChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "youtube/v3/channels" }),
   svc,
-) as unknown as Schema.Schema<ListChannelsRequest>;
+) as unknown as Schema.Codec<ListChannelsRequest>;
 
 export type ListChannelsResponse = ChannelListResponse;
 export const ListChannelsResponse =
@@ -6780,7 +6780,7 @@ export const UpdateChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "youtube/v3/channels", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateChannelsRequest>;
+) as unknown as Schema.Codec<UpdateChannelsRequest>;
 
 export type UpdateChannelsResponse = Channel;
 export const UpdateChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -6822,7 +6822,7 @@ export const UpdateVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "youtube/v3/videos", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateVideosRequest>;
+) as unknown as Schema.Codec<UpdateVideosRequest>;
 
 export type UpdateVideosResponse = Video;
 export const UpdateVideosResponse = /*@__PURE__*/ /*#__PURE__*/ Video;
@@ -6862,7 +6862,7 @@ export const GetRatingVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "youtube/v3/videos/getRating" }),
   svc,
-) as unknown as Schema.Schema<GetRatingVideosRequest>;
+) as unknown as Schema.Codec<GetRatingVideosRequest>;
 
 export type GetRatingVideosResponse = VideoGetRatingResponse;
 export const GetRatingVideosResponse =
@@ -6930,7 +6930,7 @@ export const ListVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "youtube/v3/videos" }),
   svc,
-) as unknown as Schema.Schema<ListVideosRequest>;
+) as unknown as Schema.Codec<ListVideosRequest>;
 
 export type ListVideosResponse = VideoListResponse;
 export const ListVideosResponse = /*@__PURE__*/ /*#__PURE__*/ VideoListResponse;
@@ -6975,7 +6975,7 @@ export const BatchGetStatsVideosRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/videos:batchGetStats" }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetStatsVideosRequest>;
+  ) as unknown as Schema.Codec<BatchGetStatsVideosRequest>;
 
 export type BatchGetStatsVideosResponse = BatchGetStatsResponse;
 export const BatchGetStatsVideosResponse =
@@ -7029,7 +7029,7 @@ export const InsertVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "youtube/v3/videos", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertVideosRequest>;
+) as unknown as Schema.Codec<InsertVideosRequest>;
 
 export type InsertVideosResponse = Video;
 export const InsertVideosResponse = /*@__PURE__*/ /*#__PURE__*/ Video;
@@ -7067,13 +7067,13 @@ export const DeleteVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "youtube/v3/videos" }),
   svc,
-) as unknown as Schema.Schema<DeleteVideosRequest>;
+) as unknown as Schema.Codec<DeleteVideosRequest>;
 
 export interface DeleteVideosResponse {}
-export const DeleteVideosResponse: Schema.Schema<DeleteVideosResponse> =
+export const DeleteVideosResponse: Schema.Codec<DeleteVideosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteVideosResponse>;
+  ) as any as Schema.Codec<DeleteVideosResponse>;
 
 export type DeleteVideosError =
   | DefaultErrors
@@ -7114,13 +7114,13 @@ export const ReportAbuseVideosRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportAbuseVideosRequest>;
+  ) as unknown as Schema.Codec<ReportAbuseVideosRequest>;
 
 export interface ReportAbuseVideosResponse {}
-export const ReportAbuseVideosResponse: Schema.Schema<ReportAbuseVideosResponse> =
+export const ReportAbuseVideosResponse: Schema.Codec<ReportAbuseVideosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ReportAbuseVideosResponse>;
+  ) as any as Schema.Codec<ReportAbuseVideosResponse>;
 
 export type ReportAbuseVideosError =
   | DefaultErrors
@@ -7152,13 +7152,13 @@ export const RateVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "youtube/v3/videos/rate", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<RateVideosRequest>;
+) as unknown as Schema.Codec<RateVideosRequest>;
 
 export interface RateVideosResponse {}
-export const RateVideosResponse: Schema.Schema<RateVideosResponse> =
+export const RateVideosResponse: Schema.Codec<RateVideosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<RateVideosResponse>;
+  ) as any as Schema.Codec<RateVideosResponse>;
 
 export type RateVideosError =
   | DefaultErrors
@@ -7199,7 +7199,7 @@ export const ListSuperChatEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/superChatEvents" }),
     svc,
-  ) as unknown as Schema.Schema<ListSuperChatEventsRequest>;
+  ) as unknown as Schema.Codec<ListSuperChatEventsRequest>;
 
 export type ListSuperChatEventsResponse = SuperChatEventListResponse;
 export const ListSuperChatEventsResponse =
@@ -7248,7 +7248,7 @@ export const InsertCaptionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "youtube/v3/captions", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertCaptionsRequest>;
+) as unknown as Schema.Codec<InsertCaptionsRequest>;
 
 export type InsertCaptionsResponse = Caption;
 export const InsertCaptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Caption;
@@ -7289,13 +7289,13 @@ export const DeleteCaptionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "youtube/v3/captions" }),
   svc,
-) as unknown as Schema.Schema<DeleteCaptionsRequest>;
+) as unknown as Schema.Codec<DeleteCaptionsRequest>;
 
 export interface DeleteCaptionsResponse {}
-export const DeleteCaptionsResponse: Schema.Schema<DeleteCaptionsResponse> =
+export const DeleteCaptionsResponse: Schema.Codec<DeleteCaptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteCaptionsResponse>;
+  ) as any as Schema.Codec<DeleteCaptionsResponse>;
 
 export type DeleteCaptionsError =
   | DefaultErrors
@@ -7340,7 +7340,7 @@ export const UpdateCaptionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "youtube/v3/captions", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateCaptionsRequest>;
+) as unknown as Schema.Codec<UpdateCaptionsRequest>;
 
 export type UpdateCaptionsResponse = Caption;
 export const UpdateCaptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Caption;
@@ -7388,7 +7388,7 @@ export const ListCaptionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "youtube/v3/captions" }),
   svc,
-) as unknown as Schema.Schema<ListCaptionsRequest>;
+) as unknown as Schema.Codec<ListCaptionsRequest>;
 
 export type ListCaptionsResponse = CaptionListResponse;
 export const ListCaptionsResponse =
@@ -7433,13 +7433,13 @@ export const DownloadCaptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/captions/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadCaptionsRequest>;
+  ) as unknown as Schema.Codec<DownloadCaptionsRequest>;
 
 export interface DownloadCaptionsResponse {}
-export const DownloadCaptionsResponse: Schema.Schema<DownloadCaptionsResponse> =
+export const DownloadCaptionsResponse: Schema.Codec<DownloadCaptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DownloadCaptionsResponse>;
+  ) as any as Schema.Codec<DownloadCaptionsResponse>;
 
 export type DownloadCaptionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -7508,7 +7508,7 @@ export const ListLiveBroadcastsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/liveBroadcasts" }),
     svc,
-  ) as unknown as Schema.Schema<ListLiveBroadcastsRequest>;
+  ) as unknown as Schema.Codec<ListLiveBroadcastsRequest>;
 
 export type ListLiveBroadcastsResponse = LiveBroadcastListResponse;
 export const ListLiveBroadcastsResponse =
@@ -7557,7 +7557,7 @@ export const UpdateLiveBroadcastsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "youtube/v3/liveBroadcasts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateLiveBroadcastsRequest>;
+  ) as unknown as Schema.Codec<UpdateLiveBroadcastsRequest>;
 
 export type UpdateLiveBroadcastsResponse = LiveBroadcast;
 export const UpdateLiveBroadcastsResponse =
@@ -7613,7 +7613,7 @@ export const BindLiveBroadcastsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BindLiveBroadcastsRequest>;
+  ) as unknown as Schema.Codec<BindLiveBroadcastsRequest>;
 
 export type BindLiveBroadcastsResponse = LiveBroadcast;
 export const BindLiveBroadcastsResponse =
@@ -7671,7 +7671,7 @@ export const InsertCuepointLiveBroadcastsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertCuepointLiveBroadcastsRequest>;
+  ) as unknown as Schema.Codec<InsertCuepointLiveBroadcastsRequest>;
 
 export type InsertCuepointLiveBroadcastsResponse = Cuepoint;
 export const InsertCuepointLiveBroadcastsResponse =
@@ -7732,7 +7732,7 @@ export const TransitionLiveBroadcastsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TransitionLiveBroadcastsRequest>;
+  ) as unknown as Schema.Codec<TransitionLiveBroadcastsRequest>;
 
 export type TransitionLiveBroadcastsResponse = LiveBroadcast;
 export const TransitionLiveBroadcastsResponse =
@@ -7785,7 +7785,7 @@ export const InsertLiveBroadcastsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertLiveBroadcastsRequest>;
+  ) as unknown as Schema.Codec<InsertLiveBroadcastsRequest>;
 
 export type InsertLiveBroadcastsResponse = LiveBroadcast;
 export const InsertLiveBroadcastsResponse =
@@ -7831,13 +7831,13 @@ export const DeleteLiveBroadcastsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/liveBroadcasts" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLiveBroadcastsRequest>;
+  ) as unknown as Schema.Codec<DeleteLiveBroadcastsRequest>;
 
 export interface DeleteLiveBroadcastsResponse {}
-export const DeleteLiveBroadcastsResponse: Schema.Schema<DeleteLiveBroadcastsResponse> =
+export const DeleteLiveBroadcastsResponse: Schema.Codec<DeleteLiveBroadcastsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteLiveBroadcastsResponse>;
+  ) as any as Schema.Codec<DeleteLiveBroadcastsResponse>;
 
 export type DeleteLiveBroadcastsError =
   | DefaultErrors
@@ -7871,7 +7871,7 @@ export const ListVideoAbuseReportReasonsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/videoAbuseReportReasons" }),
     svc,
-  ) as unknown as Schema.Schema<ListVideoAbuseReportReasonsRequest>;
+  ) as unknown as Schema.Codec<ListVideoAbuseReportReasonsRequest>;
 
 export type ListVideoAbuseReportReasonsResponse =
   VideoAbuseReportReasonListResponse;
@@ -7928,7 +7928,7 @@ export const ListLiveStreamsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "youtube/v3/liveStreams" }),
   svc,
-) as unknown as Schema.Schema<ListLiveStreamsRequest>;
+) as unknown as Schema.Codec<ListLiveStreamsRequest>;
 
 export type ListLiveStreamsResponse = LiveStreamListResponse;
 export const ListLiveStreamsResponse =
@@ -7977,7 +7977,7 @@ export const UpdateLiveStreamsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "youtube/v3/liveStreams", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateLiveStreamsRequest>;
+  ) as unknown as Schema.Codec<UpdateLiveStreamsRequest>;
 
 export type UpdateLiveStreamsResponse = LiveStream;
 export const UpdateLiveStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ LiveStream;
@@ -8025,7 +8025,7 @@ export const InsertLiveStreamsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "youtube/v3/liveStreams", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertLiveStreamsRequest>;
+  ) as unknown as Schema.Codec<InsertLiveStreamsRequest>;
 
 export type InsertLiveStreamsResponse = LiveStream;
 export const InsertLiveStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ LiveStream;
@@ -8069,13 +8069,13 @@ export const DeleteLiveStreamsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/liveStreams" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLiveStreamsRequest>;
+  ) as unknown as Schema.Codec<DeleteLiveStreamsRequest>;
 
 export interface DeleteLiveStreamsResponse {}
-export const DeleteLiveStreamsResponse: Schema.Schema<DeleteLiveStreamsResponse> =
+export const DeleteLiveStreamsResponse: Schema.Codec<DeleteLiveStreamsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteLiveStreamsResponse>;
+  ) as any as Schema.Codec<DeleteLiveStreamsResponse>;
 
 export type DeleteLiveStreamsError =
   | DefaultErrors
@@ -8107,7 +8107,7 @@ export const GetVideoTrainabilityRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/videoTrainability" }),
     svc,
-  ) as unknown as Schema.Schema<GetVideoTrainabilityRequest>;
+  ) as unknown as Schema.Codec<GetVideoTrainabilityRequest>;
 
 export type GetVideoTrainabilityResponse = VideoTrainability;
 export const GetVideoTrainabilityResponse =
@@ -8141,7 +8141,7 @@ export const ListI18nRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "youtube/v3/i18nRegions" }),
   svc,
-) as unknown as Schema.Schema<ListI18nRegionsRequest>;
+) as unknown as Schema.Codec<ListI18nRegionsRequest>;
 
 export type ListI18nRegionsResponse = I18nRegionListResponse;
 export const ListI18nRegionsResponse =
@@ -8193,7 +8193,7 @@ export const ListActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "youtube/v3/activities" }),
   svc,
-) as unknown as Schema.Schema<ListActivitiesRequest>;
+) as unknown as Schema.Codec<ListActivitiesRequest>;
 
 export type ListActivitiesResponse = ActivityListResponse;
 export const ListActivitiesResponse =
@@ -8232,7 +8232,7 @@ export const InsertLiveChatBansRequest =
   }).pipe(
     T.Http({ method: "POST", path: "youtube/v3/liveChat/bans", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertLiveChatBansRequest>;
+  ) as unknown as Schema.Codec<InsertLiveChatBansRequest>;
 
 export type InsertLiveChatBansResponse = LiveChatBan;
 export const InsertLiveChatBansResponse =
@@ -8267,13 +8267,13 @@ export const DeleteLiveChatBansRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/liveChat/bans" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLiveChatBansRequest>;
+  ) as unknown as Schema.Codec<DeleteLiveChatBansRequest>;
 
 export interface DeleteLiveChatBansResponse {}
-export const DeleteLiveChatBansResponse: Schema.Schema<DeleteLiveChatBansResponse> =
+export const DeleteLiveChatBansResponse: Schema.Codec<DeleteLiveChatBansResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteLiveChatBansResponse>;
+  ) as any as Schema.Codec<DeleteLiveChatBansResponse>;
 
 export type DeleteLiveChatBansError =
   | DefaultErrors
@@ -8324,7 +8324,7 @@ export const ListPlaylistItemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/playlistItems" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlaylistItemsRequest>;
+  ) as unknown as Schema.Codec<ListPlaylistItemsRequest>;
 
 export type ListPlaylistItemsResponse = PlaylistItemListResponse;
 export const ListPlaylistItemsResponse =
@@ -8368,7 +8368,7 @@ export const UpdatePlaylistItemsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "youtube/v3/playlistItems", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePlaylistItemsRequest>;
+  ) as unknown as Schema.Codec<UpdatePlaylistItemsRequest>;
 
 export type UpdatePlaylistItemsResponse = PlaylistItem;
 export const UpdatePlaylistItemsResponse =
@@ -8408,13 +8408,13 @@ export const DeletePlaylistItemsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/playlistItems" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePlaylistItemsRequest>;
+  ) as unknown as Schema.Codec<DeletePlaylistItemsRequest>;
 
 export interface DeletePlaylistItemsResponse {}
-export const DeletePlaylistItemsResponse: Schema.Schema<DeletePlaylistItemsResponse> =
+export const DeletePlaylistItemsResponse: Schema.Codec<DeletePlaylistItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeletePlaylistItemsResponse>;
+  ) as any as Schema.Codec<DeletePlaylistItemsResponse>;
 
 export type DeletePlaylistItemsError =
   | DefaultErrors
@@ -8454,7 +8454,7 @@ export const InsertPlaylistItemsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "youtube/v3/playlistItems", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertPlaylistItemsRequest>;
+  ) as unknown as Schema.Codec<InsertPlaylistItemsRequest>;
 
 export type InsertPlaylistItemsResponse = PlaylistItem;
 export const InsertPlaylistItemsResponse =
@@ -8494,7 +8494,7 @@ export const SetThumbnailsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "youtube/v3/thumbnails/set", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SetThumbnailsRequest>;
+) as unknown as Schema.Codec<SetThumbnailsRequest>;
 
 export type SetThumbnailsResponse = ThumbnailSetResponse;
 export const SetThumbnailsResponse =
@@ -8547,7 +8547,7 @@ export const ListChannelSectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/channelSections" }),
     svc,
-  ) as unknown as Schema.Schema<ListChannelSectionsRequest>;
+  ) as unknown as Schema.Codec<ListChannelSectionsRequest>;
 
 export type ListChannelSectionsResponse = ChannelSectionListResponse;
 export const ListChannelSectionsResponse =
@@ -8590,7 +8590,7 @@ export const UpdateChannelSectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateChannelSectionsRequest>;
+  ) as unknown as Schema.Codec<UpdateChannelSectionsRequest>;
 
 export type UpdateChannelSectionsResponse = ChannelSection;
 export const UpdateChannelSectionsResponse =
@@ -8643,7 +8643,7 @@ export const InsertChannelSectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertChannelSectionsRequest>;
+  ) as unknown as Schema.Codec<InsertChannelSectionsRequest>;
 
 export type InsertChannelSectionsResponse = ChannelSection;
 export const InsertChannelSectionsResponse =
@@ -8683,13 +8683,13 @@ export const DeleteChannelSectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/channelSections" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteChannelSectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteChannelSectionsRequest>;
 
 export interface DeleteChannelSectionsResponse {}
-export const DeleteChannelSectionsResponse: Schema.Schema<DeleteChannelSectionsResponse> =
+export const DeleteChannelSectionsResponse: Schema.Codec<DeleteChannelSectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteChannelSectionsResponse>;
+  ) as any as Schema.Codec<DeleteChannelSectionsResponse>;
 
 export type DeleteChannelSectionsError =
   | DefaultErrors
@@ -8728,7 +8728,7 @@ export const InsertCommentThreadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertCommentThreadsRequest>;
+  ) as unknown as Schema.Codec<InsertCommentThreadsRequest>;
 
 export type InsertCommentThreadsResponse = CommentThread;
 export const InsertCommentThreadsResponse =
@@ -8807,7 +8807,7 @@ export const ListCommentThreadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/commentThreads" }),
     svc,
-  ) as unknown as Schema.Schema<ListCommentThreadsRequest>;
+  ) as unknown as Schema.Codec<ListCommentThreadsRequest>;
 
 export type ListCommentThreadsResponse = CommentThreadListResponse;
 export const ListCommentThreadsResponse =
@@ -8852,7 +8852,7 @@ export const InsertTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "youtube/v3/tests", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertTestsRequest>;
+) as unknown as Schema.Codec<InsertTestsRequest>;
 
 export type InsertTestsResponse = TestItem;
 export const InsertTestsResponse = /*@__PURE__*/ /*#__PURE__*/ TestItem;
@@ -8904,7 +8904,7 @@ export const ListLiveChatMessagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/liveChat/messages" }),
     svc,
-  ) as unknown as Schema.Schema<ListLiveChatMessagesRequest>;
+  ) as unknown as Schema.Codec<ListLiveChatMessagesRequest>;
 
 export type ListLiveChatMessagesResponse = LiveChatMessageListResponse;
 export const ListLiveChatMessagesResponse =
@@ -8947,7 +8947,7 @@ export const TransitionLiveChatMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TransitionLiveChatMessagesRequest>;
+  ) as unknown as Schema.Codec<TransitionLiveChatMessagesRequest>;
 
 export type TransitionLiveChatMessagesResponse = LiveChatMessage;
 export const TransitionLiveChatMessagesResponse =
@@ -8990,7 +8990,7 @@ export const InsertLiveChatMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertLiveChatMessagesRequest>;
+  ) as unknown as Schema.Codec<InsertLiveChatMessagesRequest>;
 
 export type InsertLiveChatMessagesResponse = LiveChatMessage;
 export const InsertLiveChatMessagesResponse =
@@ -9025,13 +9025,13 @@ export const DeleteLiveChatMessagesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/liveChat/messages" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLiveChatMessagesRequest>;
+  ) as unknown as Schema.Codec<DeleteLiveChatMessagesRequest>;
 
 export interface DeleteLiveChatMessagesResponse {}
-export const DeleteLiveChatMessagesResponse: Schema.Schema<DeleteLiveChatMessagesResponse> =
+export const DeleteLiveChatMessagesResponse: Schema.Codec<DeleteLiveChatMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteLiveChatMessagesResponse>;
+  ) as any as Schema.Codec<DeleteLiveChatMessagesResponse>;
 
 export type DeleteLiveChatMessagesError =
   | DefaultErrors
@@ -9073,7 +9073,7 @@ export const UpdatePlaylistImagesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "youtube/v3/playlistImages", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePlaylistImagesRequest>;
+  ) as unknown as Schema.Codec<UpdatePlaylistImagesRequest>;
 
 export type UpdatePlaylistImagesResponse = PlaylistImage;
 export const UpdatePlaylistImagesResponse =
@@ -9128,7 +9128,7 @@ export const InsertPlaylistImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertPlaylistImagesRequest>;
+  ) as unknown as Schema.Codec<InsertPlaylistImagesRequest>;
 
 export type InsertPlaylistImagesResponse = PlaylistImage;
 export const InsertPlaylistImagesResponse =
@@ -9169,13 +9169,13 @@ export const DeletePlaylistImagesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/playlistImages" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePlaylistImagesRequest>;
+  ) as unknown as Schema.Codec<DeletePlaylistImagesRequest>;
 
 export interface DeletePlaylistImagesResponse {}
-export const DeletePlaylistImagesResponse: Schema.Schema<DeletePlaylistImagesResponse> =
+export const DeletePlaylistImagesResponse: Schema.Codec<DeletePlaylistImagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeletePlaylistImagesResponse>;
+  ) as any as Schema.Codec<DeletePlaylistImagesResponse>;
 
 export type DeletePlaylistImagesError =
   | DefaultErrors
@@ -9228,7 +9228,7 @@ export const ListPlaylistImagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/playlistImages" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlaylistImagesRequest>;
+  ) as unknown as Schema.Codec<ListPlaylistImagesRequest>;
 
 export type ListPlaylistImagesResponse = PlaylistImageListResponse;
 export const ListPlaylistImagesResponse =
@@ -9311,7 +9311,7 @@ export const ListSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListSubscriptionsRequest>;
 
 export type ListSubscriptionsResponse = SubscriptionListResponse;
 export const ListSubscriptionsResponse =
@@ -9346,13 +9346,13 @@ export const DeleteSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteSubscriptionsRequest>;
 
 export interface DeleteSubscriptionsResponse {}
-export const DeleteSubscriptionsResponse: Schema.Schema<DeleteSubscriptionsResponse> =
+export const DeleteSubscriptionsResponse: Schema.Codec<DeleteSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteSubscriptionsResponse>;
+  ) as any as Schema.Codec<DeleteSubscriptionsResponse>;
 
 export type DeleteSubscriptionsError =
   | DefaultErrors
@@ -9387,7 +9387,7 @@ export const InsertSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "youtube/v3/subscriptions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<InsertSubscriptionsRequest>;
 
 export type InsertSubscriptionsResponse = Subscription;
 export const InsertSubscriptionsResponse =
@@ -9435,7 +9435,7 @@ export const UpdateThirdPartyLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateThirdPartyLinksRequest>;
+  ) as unknown as Schema.Codec<UpdateThirdPartyLinksRequest>;
 
 export type UpdateThirdPartyLinksResponse = ThirdPartyLink;
 export const UpdateThirdPartyLinksResponse =
@@ -9483,7 +9483,7 @@ export const InsertThirdPartyLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertThirdPartyLinksRequest>;
+  ) as unknown as Schema.Codec<InsertThirdPartyLinksRequest>;
 
 export type InsertThirdPartyLinksResponse = ThirdPartyLink;
 export const InsertThirdPartyLinksResponse =
@@ -9536,13 +9536,13 @@ export const DeleteThirdPartyLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "youtube/v3/thirdPartyLinks" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteThirdPartyLinksRequest>;
+  ) as unknown as Schema.Codec<DeleteThirdPartyLinksRequest>;
 
 export interface DeleteThirdPartyLinksResponse {}
-export const DeleteThirdPartyLinksResponse: Schema.Schema<DeleteThirdPartyLinksResponse> =
+export const DeleteThirdPartyLinksResponse: Schema.Codec<DeleteThirdPartyLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteThirdPartyLinksResponse>;
+  ) as any as Schema.Codec<DeleteThirdPartyLinksResponse>;
 
 export type DeleteThirdPartyLinksError =
   | DefaultErrors
@@ -9591,7 +9591,7 @@ export const ListThirdPartyLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "youtube/v3/thirdPartyLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListThirdPartyLinksRequest>;
+  ) as unknown as Schema.Codec<ListThirdPartyLinksRequest>;
 
 export type ListThirdPartyLinksResponse = ThirdPartyLinkListResponse;
 export const ListThirdPartyLinksResponse =

@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WarehouseSavedQueryFoldersListInput {
+  project_id: string;
+}
 export const WarehouseSavedQueryFoldersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,37 @@ export const WarehouseSavedQueryFoldersListInput =
       method: "GET",
       path: "/api/projects/{project_id}/warehouse_saved_query_folders/",
     }),
-  );
-export type WarehouseSavedQueryFoldersListInput =
-  typeof WarehouseSavedQueryFoldersListInput.Type;
+  ) as unknown as Schema.Codec<WarehouseSavedQueryFoldersListInput>;
 
 // Output Schema
+export type WarehouseSavedQueryFoldersListOutput = {
+  id?: string;
+  name?: string;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  view_count?: number;
+  user_access_level?: string | null;
+}[];
 export const WarehouseSavedQueryFoldersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -36,16 +65,30 @@ export const WarehouseSavedQueryFoldersListOutput =
             hedgehog_config: Schema.optional(
               Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
             ),
-            role_at_organization: Schema.optional(Schema.Unknown),
+            role_at_organization: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals([
+                    "engineering",
+                    "data",
+                    "product",
+                    "founder",
+                    "leadership",
+                    "marketing",
+                    "sales",
+                    "other",
+                  ]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
           }),
         ),
       ),
       view_count: Schema.optional(Schema.Number),
       user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
     }),
-  );
-export type WarehouseSavedQueryFoldersListOutput =
-  typeof WarehouseSavedQueryFoldersListOutput.Type;
+  ) as unknown as Schema.Codec<WarehouseSavedQueryFoldersListOutput>;
 
 // The operation
 /**

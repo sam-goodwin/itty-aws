@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetAnonymizedBranchStatusInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetAnonymizedBranchStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,25 @@ export const GetAnonymizedBranchStatusInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/anonymized_status",
     }),
-  );
-export type GetAnonymizedBranchStatusInput =
-  typeof GetAnonymizedBranchStatusInput.Type;
+  ) as unknown as Schema.Codec<GetAnonymizedBranchStatusInput>;
 
 // Output Schema
+export interface GetAnonymizedBranchStatusOutput {
+  project_id: string;
+  branch_id: string;
+  state: string;
+  status_message?: string;
+  created_at: string;
+  updated_at: string;
+  failed_at?: string;
+  last_run?: {
+    started_at?: string;
+    completed_at?: string;
+    triggered_by?: string;
+    triggered_by_username?: string;
+    masked_columns?: number;
+  };
+}
 export const GetAnonymizedBranchStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String,
@@ -35,9 +53,7 @@ export const GetAnonymizedBranchStatusOutput =
         masked_columns: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type GetAnonymizedBranchStatusOutput =
-  typeof GetAnonymizedBranchStatusOutput.Type;
+  }) as unknown as Schema.Codec<GetAnonymizedBranchStatusOutput>;
 
 // The operation
 /**

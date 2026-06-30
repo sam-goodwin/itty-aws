@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisionScannersRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const VisionScannersRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,48 @@ export const VisionScannersRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/vision/scanners/{id}/",
     }),
-  );
-export type VisionScannersRetrieveInput =
-  typeof VisionScannersRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VisionScannersRetrieveInput>;
 
 // Output Schema
+export interface VisionScannersRetrieveOutput {
+  id: string;
+  name: string;
+  description?: string;
+  scanner_type: "monitor" | "classifier" | "scorer" | "summarizer";
+  scanner_config: unknown;
+  query?: unknown;
+  sampling_rate?: number;
+  provider?: "google";
+  model: "gemini-3-flash-preview" | "gemini-3.1-flash-lite-preview";
+  enabled?: boolean;
+  emits_signals?: boolean;
+  scanner_version: number;
+  estimated_monthly_observations: number | null;
+  last_swept_at: string;
+  created_at: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  updated_at: string;
+}
 export const VisionScannersRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -42,11 +83,39 @@ export const VisionScannersRetrieveOutput =
     estimated_monthly_observations: Schema.NullOr(Schema.Number),
     last_swept_at: Schema.String,
     created_at: Schema.String,
-    created_by: Schema.Unknown,
+    created_by: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+      }),
+    ),
     updated_at: Schema.String,
-  });
-export type VisionScannersRetrieveOutput =
-  typeof VisionScannersRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<VisionScannersRetrieveOutput>;
 
 // The operation
 /**

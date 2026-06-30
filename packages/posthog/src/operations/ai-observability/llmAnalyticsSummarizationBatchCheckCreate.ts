@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsSummarizationBatchCheckCreateInput {
+  project_id: string;
+  trace_ids?: string[];
+  mode?: "minimal" | "detailed";
+  model?: string | null;
+}
 export const LlmAnalyticsSummarizationBatchCheckCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,12 @@ export const LlmAnalyticsSummarizationBatchCheckCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_analytics/summarization/batch_check/",
     }),
-  );
-export type LlmAnalyticsSummarizationBatchCheckCreateInput =
-  typeof LlmAnalyticsSummarizationBatchCheckCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsSummarizationBatchCheckCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsSummarizationBatchCheckCreateOutput {
+  summaries?: { trace_id?: string; title?: string; cached?: boolean }[];
+}
 export const LlmAnalyticsSummarizationBatchCheckCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summaries: Schema.optional(
@@ -31,9 +38,7 @@ export const LlmAnalyticsSummarizationBatchCheckCreateOutput =
         }),
       ),
     ),
-  });
-export type LlmAnalyticsSummarizationBatchCheckCreateOutput =
-  typeof LlmAnalyticsSummarizationBatchCheckCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsSummarizationBatchCheckCreateOutput>;
 
 // The operation
 /**

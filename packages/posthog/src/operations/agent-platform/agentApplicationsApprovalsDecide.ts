@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsApprovalsDecideInput {
+  approval_id: string;
+  id: string;
+  project_id: string;
+  decision: "approve" | "reject";
+  edited_args?: Record<string, unknown>;
+  reason?: string;
+}
 export const AgentApplicationsApprovalsDecideInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approval_id: Schema.String.pipe(T.PathParam()),
@@ -16,18 +24,18 @@ export const AgentApplicationsApprovalsDecideInput =
       method: "POST",
       path: "/api/projects/{project_id}/agent_applications/{id}/approvals/{approval_id}/decide/",
     }),
-  );
-export type AgentApplicationsApprovalsDecideInput =
-  typeof AgentApplicationsApprovalsDecideInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsApprovalsDecideInput>;
 
 // Output Schema
+export interface AgentApplicationsApprovalsDecideOutput {
+  ok: boolean;
+  state: string;
+}
 export const AgentApplicationsApprovalsDecideOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ok: Schema.Boolean,
     state: Schema.String,
-  });
-export type AgentApplicationsApprovalsDecideOutput =
-  typeof AgentApplicationsApprovalsDecideOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsApprovalsDecideOutput>;
 
 // The operation
 /**

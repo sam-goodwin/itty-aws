@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MarketingAnalyticsSuggestUtmMappingsRetrieveInput {
+  project_id: string;
+  lookback_days?: number;
+  min_event_count?: number;
+}
 export const MarketingAnalyticsSuggestUtmMappingsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,48 @@ export const MarketingAnalyticsSuggestUtmMappingsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/marketing_analytics/suggest_utm_mappings/",
     }),
-  );
-export type MarketingAnalyticsSuggestUtmMappingsRetrieveInput =
-  typeof MarketingAnalyticsSuggestUtmMappingsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MarketingAnalyticsSuggestUtmMappingsRetrieveInput>;
 
 // Output Schema
+export interface MarketingAnalyticsSuggestUtmMappingsRetrieveOutput {
+  source_suggestions: {
+    raw_utm_source: string;
+    suggested_target: string;
+    suggested_target_display_name: string;
+    reason: string;
+  }[];
+  campaign_suggestions: {
+    integration: string;
+    integration_display_name: string;
+    suggested_clean_name: string;
+    raw_campaign_values: string[];
+    confidence: number;
+    method: string;
+    reason: string;
+  }[];
+  raw_unmatched_samples: {
+    raw_utm_source: string;
+    event_count: number;
+    suggested_integration: string | null;
+  }[];
+  full_utm_source_catalogue: {
+    raw_utm_source: string;
+    event_count: number;
+    matched_integration: string | null;
+    matched_integration_display_name: string | null;
+    suggested_integration: string | null;
+  }[];
+  current_mappings: {
+    raw_utm_source: string;
+    target: string;
+    target_display_name: string;
+    source: string;
+  }[];
+  total_unmatched_events_in_window: number;
+  total_events_with_utm_in_window: number;
+  lookback_days_used: number;
+  notes: string[];
+}
 export const MarketingAnalyticsSuggestUtmMappingsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source_suggestions: Schema.Array(
@@ -67,9 +109,7 @@ export const MarketingAnalyticsSuggestUtmMappingsRetrieveOutput =
     total_events_with_utm_in_window: Schema.Number,
     lookback_days_used: Schema.Number,
     notes: Schema.Array(Schema.String),
-  });
-export type MarketingAnalyticsSuggestUtmMappingsRetrieveOutput =
-  typeof MarketingAnalyticsSuggestUtmMappingsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MarketingAnalyticsSuggestUtmMappingsRetrieveOutput>;
 
 // The operation
 /**

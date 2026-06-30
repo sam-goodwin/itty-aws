@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupClusterBackupScheduleInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+}
 export const DeleteGroupClusterBackupScheduleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const DeleteGroupClusterBackupScheduleInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule",
     }),
-  );
-export type DeleteGroupClusterBackupScheduleInput =
-  typeof DeleteGroupClusterBackupScheduleInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupClusterBackupScheduleInput>;
 
 // Output Schema
+export type DeleteGroupClusterBackupScheduleOutput = void;
 export const DeleteGroupClusterBackupScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterBackupScheduleOutput =
-  typeof DeleteGroupClusterBackupScheduleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterBackupScheduleOutput>;
 
 // The operation
 /**

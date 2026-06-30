@@ -4,13 +4,58 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetABranchInput {
+  ref: string;
+  name: string;
+}
 export const V1GetABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/branches/{name}" }));
-export type V1GetABranchInput = typeof V1GetABranchInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/projects/{ref}/branches/{name}" }),
+) as unknown as Schema.Codec<V1GetABranchInput>;
 
 // Output Schema
+export interface V1GetABranchOutput {
+  id: string;
+  name: string;
+  project_ref: string;
+  parent_project_ref: string;
+  is_default: boolean;
+  git_branch?: string;
+  pr_number?: number;
+  latest_check_run_id?: number;
+  persistent: boolean;
+  status:
+    | "CREATING_PROJECT"
+    | "RUNNING_MIGRATIONS"
+    | "MIGRATIONS_PASSED"
+    | "MIGRATIONS_FAILED"
+    | "FUNCTIONS_DEPLOYED"
+    | "FUNCTIONS_FAILED";
+  created_at: string;
+  updated_at: string;
+  review_requested_at?: string;
+  with_data: boolean;
+  notify_url?: string;
+  deletion_scheduled_at?: string;
+  preview_project_status?:
+    | "INACTIVE"
+    | "ACTIVE_HEALTHY"
+    | "ACTIVE_UNHEALTHY"
+    | "COMING_UP"
+    | "UNKNOWN"
+    | "GOING_DOWN"
+    | "INIT_FAILED"
+    | "REMOVED"
+    | "RESTORING"
+    | "UPGRADING"
+    | "PAUSING"
+    | "RESTORE_FAILED"
+    | "RESTARTING"
+    | "PAUSE_FAILED"
+    | "RESIZING";
+}
 export const V1GetABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -54,8 +99,7 @@ export const V1GetABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "RESIZING",
     ]),
   ),
-});
-export type V1GetABranchOutput = typeof V1GetABranchOutput.Type;
+}) as unknown as Schema.Codec<V1GetABranchOutput>;
 
 // The operation
 /**

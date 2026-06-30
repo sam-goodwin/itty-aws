@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateVolumeSnapshotInput {
+  app_name: string;
+  volume_id: string;
+}
 export const CreateVolumeSnapshotInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const CreateVolumeSnapshotInput =
       method: "POST",
       path: "/apps/{app_name}/volumes/{volume_id}/snapshots",
     }),
-  );
-export type CreateVolumeSnapshotInput = typeof CreateVolumeSnapshotInput.Type;
+  ) as unknown as Schema.Codec<CreateVolumeSnapshotInput>;
 
 // Output Schema
+export type CreateVolumeSnapshotOutput = void;
 export const CreateVolumeSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateVolumeSnapshotOutput = typeof CreateVolumeSnapshotOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateVolumeSnapshotOutput>;
 
 // The operation
 /**

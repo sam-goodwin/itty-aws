@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesGetMetadataKeyInput {
+  app_name: string;
+  machine_id: string;
+  key: string;
+}
 export const MachinesGetMetadataKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -14,17 +19,16 @@ export const MachinesGetMetadataKeyInput =
       method: "GET",
       path: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
     }),
-  );
-export type MachinesGetMetadataKeyInput =
-  typeof MachinesGetMetadataKeyInput.Type;
+  ) as unknown as Schema.Codec<MachinesGetMetadataKeyInput>;
 
 // Output Schema
+export interface MachinesGetMetadataKeyOutput {
+  value?: string;
+}
 export const MachinesGetMetadataKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
-  });
-export type MachinesGetMetadataKeyOutput =
-  typeof MachinesGetMetadataKeyOutput.Type;
+  }) as unknown as Schema.Codec<MachinesGetMetadataKeyOutput>;
 
 // The operation
 /**

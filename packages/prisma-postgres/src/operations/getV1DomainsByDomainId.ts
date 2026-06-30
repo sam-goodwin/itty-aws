@@ -4,14 +4,47 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1DomainsByDomainIdInput {
+  domainId: string;
+}
 export const GetV1DomainsByDomainIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domainId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/domains/{domainId}" }));
-export type GetV1DomainsByDomainIdInput =
-  typeof GetV1DomainsByDomainIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/domains/{domainId}" }),
+  ) as unknown as Schema.Codec<GetV1DomainsByDomainIdInput>;
 
 // Output Schema
+export interface GetV1DomainsByDomainIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    hostname: string;
+    appId: string;
+    computeServiceId: string;
+    status:
+      | "pending_dns"
+      | "verifying"
+      | "verified_routing_blocked"
+      | "provisioning_tls"
+      | "active"
+      | "failed"
+      | "removing";
+    foundryStatus: string;
+    failureReason: string | null;
+    failureCategory: "dns" | "acme" | "storage" | "unknown" | null | null;
+    certExpiresAt: string | null;
+    createdAt: string;
+    updatedAt: string;
+    dnsRecords: {
+      type: string;
+      name: string;
+      value: string;
+      ttl: number | null;
+    }[];
+  };
+}
 export const GetV1DomainsByDomainIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -47,9 +80,7 @@ export const GetV1DomainsByDomainIdOutput =
         }),
       ),
     }),
-  });
-export type GetV1DomainsByDomainIdOutput =
-  typeof GetV1DomainsByDomainIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1DomainsByDomainIdOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DataWarehouseEnableBackfillCreateInput {
+  project_id: string;
+  table_name: string;
+}
 export const DataWarehouseEnableBackfillCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,18 +16,18 @@ export const DataWarehouseEnableBackfillCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/data_warehouse/enable_backfill/",
     }),
-  );
-export type DataWarehouseEnableBackfillCreateInput =
-  typeof DataWarehouseEnableBackfillCreateInput.Type;
+  ) as unknown as Schema.Codec<DataWarehouseEnableBackfillCreateInput>;
 
 // Output Schema
+export interface DataWarehouseEnableBackfillCreateOutput {
+  enabled: boolean;
+  table_suffix: string;
+}
 export const DataWarehouseEnableBackfillCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     table_suffix: Schema.String,
-  });
-export type DataWarehouseEnableBackfillCreateOutput =
-  typeof DataWarehouseEnableBackfillCreateOutput.Type;
+  }) as unknown as Schema.Codec<DataWarehouseEnableBackfillCreateOutput>;
 
 // The operation
 /**

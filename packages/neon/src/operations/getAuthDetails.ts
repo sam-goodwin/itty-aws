@@ -3,12 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetAuthDetailsInput {}
 export const GetAuthDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/auth" }));
-export type GetAuthDetailsInput = typeof GetAuthDetailsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/auth" }),
+) as unknown as Schema.Codec<GetAuthDetailsInput>;
 
 // Output Schema
+export interface GetAuthDetailsOutput {
+  account_id: string;
+  auth_method:
+    | "keycloak"
+    | "session_cookie"
+    | "api_key_user"
+    | "api_key_org"
+    | "oauth";
+  auth_data?: string;
+}
 export const GetAuthDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   account_id: Schema.String,
   auth_method: Schema.Literals([
@@ -19,8 +31,7 @@ export const GetAuthDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "oauth",
   ]),
   auth_data: Schema.optional(Schema.String),
-});
-export type GetAuthDetailsOutput = typeof GetAuthDetailsOutput.Type;
+}) as unknown as Schema.Codec<GetAuthDetailsOutput>;
 
 // The operation
 /**

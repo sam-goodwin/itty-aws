@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SurveysArchivedResponseUuidsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const SurveysArchivedResponseUuidsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const SurveysArchivedResponseUuidsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/surveys/{id}/archived-response-uuids/",
     }),
-  );
-export type SurveysArchivedResponseUuidsRetrieveInput =
-  typeof SurveysArchivedResponseUuidsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SurveysArchivedResponseUuidsRetrieveInput>;
 
 // Output Schema
+export type SurveysArchivedResponseUuidsRetrieveOutput = void;
 export const SurveysArchivedResponseUuidsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SurveysArchivedResponseUuidsRetrieveOutput =
-  typeof SurveysArchivedResponseUuidsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysArchivedResponseUuidsRetrieveOutput>;
 
 // The operation
 /**

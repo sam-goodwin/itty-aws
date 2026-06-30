@@ -4,11 +4,93 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ApplicationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    typeVersion?: string;
+    parameters?: Record<string, string>;
+    upgradePolicy?: {
+      upgradeReplicaSetCheckTimeout?: string;
+      forceRestart?: boolean;
+      rollingUpgradeMonitoringPolicy?: {
+        failureAction?: "Rollback" | "Manual";
+        healthCheckWaitDuration?: string;
+        healthCheckStableDuration?: string;
+        healthCheckRetryTimeout?: string;
+        upgradeTimeout?: string;
+        upgradeDomainTimeout?: string;
+      };
+      applicationHealthPolicy?: {
+        considerWarningAsError?: boolean;
+        maxPercentUnhealthyDeployedApplications?: number;
+        defaultServiceTypeHealthPolicy?: {
+          maxPercentUnhealthyServices?: number;
+          maxPercentUnhealthyPartitionsPerService?: number;
+          maxPercentUnhealthyReplicasPerPartition?: number;
+        };
+        serviceTypeHealthPolicyMap?: Record<
+          string,
+          {
+            maxPercentUnhealthyServices?: number;
+            maxPercentUnhealthyPartitionsPerService?: number;
+            maxPercentUnhealthyReplicasPerPartition?: number;
+          }
+        >;
+      };
+      upgradeMode?:
+        | "Invalid"
+        | "UnmonitoredAuto"
+        | "UnmonitoredManual"
+        | "Monitored";
+      recreateApplication?: boolean;
+    };
+    minimumNodes?: number;
+    maximumNodes?: number;
+    removeApplicationCapacity?: boolean;
+    metrics?: {
+      name?: string;
+      maximumCapacity?: number;
+      reservationCapacity?: number;
+      totalApplicationCapacity?: number;
+    }[];
+    managedIdentities?: { name: string; principalId: string }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -151,15 +233,12 @@ export const ApplicationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationsCreateOrUpdateInput =
-  typeof ApplicationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsCreateOrUpdateInput>;
 
 // Output Schema
+export type ApplicationsCreateOrUpdateOutput = void;
 export const ApplicationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsCreateOrUpdateOutput =
-  typeof ApplicationsCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -180,6 +259,12 @@ export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+}
 export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -192,12 +277,12 @@ export const ApplicationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsDeleteInput>;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
+export type ApplicationsDeleteOutput = void;
+export const ApplicationsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -216,6 +301,12 @@ export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsDeleteOutput,
 }));
 // Input Schema
+export interface ApplicationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+}
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -227,10 +318,25 @@ export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
     apiVersion: "2021-06-01",
   }),
-);
-export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
+) as unknown as Schema.Codec<ApplicationsGetInput>;
 
 // Output Schema
+export interface ApplicationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -248,8 +354,7 @@ export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
+}) as unknown as Schema.Codec<ApplicationsGetOutput>;
 
 // The operation
 /**
@@ -268,6 +373,11 @@ export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsGetOutput,
 }));
 // Input Schema
+export interface ApplicationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -278,10 +388,28 @@ export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications",
     apiVersion: "2021-06-01",
   }),
-);
-export type ApplicationsListInput = typeof ApplicationsListInput.Type;
+) as unknown as Schema.Codec<ApplicationsListInput>;
 
 // Output Schema
+export interface ApplicationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: string;
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: string;
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -308,8 +436,7 @@ export const ApplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ApplicationsListOutput = typeof ApplicationsListOutput.Type;
+) as unknown as Schema.Codec<ApplicationsListOutput>;
 
 // The operation
 /**
@@ -327,6 +454,75 @@ export const ApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsListOutput,
 }));
 // Input Schema
+export interface ApplicationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+  properties?: {
+    typeVersion?: string;
+    parameters?: Record<string, string>;
+    upgradePolicy?: {
+      upgradeReplicaSetCheckTimeout?: string;
+      forceRestart?: boolean;
+      rollingUpgradeMonitoringPolicy?: {
+        failureAction?: "Rollback" | "Manual";
+        healthCheckWaitDuration?: string;
+        healthCheckStableDuration?: string;
+        healthCheckRetryTimeout?: string;
+        upgradeTimeout?: string;
+        upgradeDomainTimeout?: string;
+      };
+      applicationHealthPolicy?: {
+        considerWarningAsError?: boolean;
+        maxPercentUnhealthyDeployedApplications?: number;
+        defaultServiceTypeHealthPolicy?: {
+          maxPercentUnhealthyServices?: number;
+          maxPercentUnhealthyPartitionsPerService?: number;
+          maxPercentUnhealthyReplicasPerPartition?: number;
+        };
+        serviceTypeHealthPolicyMap?: Record<
+          string,
+          {
+            maxPercentUnhealthyServices?: number;
+            maxPercentUnhealthyPartitionsPerService?: number;
+            maxPercentUnhealthyReplicasPerPartition?: number;
+          }
+        >;
+      };
+      upgradeMode?:
+        | "Invalid"
+        | "UnmonitoredAuto"
+        | "UnmonitoredManual"
+        | "Monitored";
+      recreateApplication?: boolean;
+    };
+    minimumNodes?: number;
+    maximumNodes?: number;
+    removeApplicationCapacity?: boolean;
+    metrics?: {
+      name?: string;
+      maximumCapacity?: number;
+      reservationCapacity?: number;
+      totalApplicationCapacity?: number;
+    }[];
+    managedIdentities?: { name: string; principalId: string }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -446,12 +642,12 @@ export const ApplicationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsUpdateInput>;
 
 // Output Schema
-export const ApplicationsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
+export type ApplicationsUpdateOutput = void;
+export const ApplicationsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsUpdateOutput>;
 
 // The operation
 /**
@@ -470,6 +666,27 @@ export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsUpdateOutput,
 }));
 // Input Schema
+export interface ApplicationTypesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationTypeName: string;
+  properties?: { provisioningState?: string };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationTypesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -503,11 +720,25 @@ export const ApplicationTypesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationTypesCreateOrUpdateInput =
-  typeof ApplicationTypesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationTypesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationTypesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationTypesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -526,9 +757,7 @@ export const ApplicationTypesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationTypesCreateOrUpdateOutput =
-  typeof ApplicationTypesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationTypesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -548,6 +777,12 @@ export const ApplicationTypesCreateOrUpdate =
     outputSchema: ApplicationTypesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApplicationTypesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationTypeName: string;
+}
 export const ApplicationTypesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -560,15 +795,12 @@ export const ApplicationTypesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationTypesDeleteInput =
-  typeof ApplicationTypesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationTypesDeleteInput>;
 
 // Output Schema
+export type ApplicationTypesDeleteOutput = void;
 export const ApplicationTypesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationTypesDeleteOutput =
-  typeof ApplicationTypesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypesDeleteOutput>;
 
 // The operation
 /**
@@ -589,6 +821,12 @@ export const ApplicationTypesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationTypesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationTypeName: string;
+}
 export const ApplicationTypesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -601,10 +839,25 @@ export const ApplicationTypesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationTypesGetInput = typeof ApplicationTypesGetInput.Type;
+  ) as unknown as Schema.Codec<ApplicationTypesGetInput>;
 
 // Output Schema
+export interface ApplicationTypesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationTypesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -623,8 +876,7 @@ export const ApplicationTypesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationTypesGetOutput = typeof ApplicationTypesGetOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationTypesGetOutput>;
 
 // The operation
 /**
@@ -643,6 +895,11 @@ export const ApplicationTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationTypesGetOutput,
 }));
 // Input Schema
+export interface ApplicationTypesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ApplicationTypesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -654,10 +911,28 @@ export const ApplicationTypesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationTypesListInput = typeof ApplicationTypesListInput.Type;
+  ) as unknown as Schema.Codec<ApplicationTypesListInput>;
 
 // Output Schema
+export interface ApplicationTypesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: string;
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: string;
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationTypesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -683,8 +958,7 @@ export const ApplicationTypesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationTypesListOutput = typeof ApplicationTypesListOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationTypesListOutput>;
 
 // The operation
 /**
@@ -704,6 +978,32 @@ export const ApplicationTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationTypeVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationTypeName: string;
+  version: string;
+  properties?: {
+    provisioningState?: string;
+    appPackageUrl: string;
+    defaultParameterList?: Record<string, string>;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationTypeVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -742,15 +1042,12 @@ export const ApplicationTypeVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationTypeVersionsCreateOrUpdateInput =
-  typeof ApplicationTypeVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationTypeVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export type ApplicationTypeVersionsCreateOrUpdateOutput = void;
 export const ApplicationTypeVersionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationTypeVersionsCreateOrUpdateOutput =
-  typeof ApplicationTypeVersionsCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypeVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -771,6 +1068,13 @@ export const ApplicationTypeVersionsCreateOrUpdate =
     outputSchema: ApplicationTypeVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApplicationTypeVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationTypeName: string;
+  version: string;
+}
 export const ApplicationTypeVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -784,15 +1088,12 @@ export const ApplicationTypeVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationTypeVersionsDeleteInput =
-  typeof ApplicationTypeVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationTypeVersionsDeleteInput>;
 
 // Output Schema
+export type ApplicationTypeVersionsDeleteOutput = void;
 export const ApplicationTypeVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationTypeVersionsDeleteOutput =
-  typeof ApplicationTypeVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypeVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -813,6 +1114,13 @@ export const ApplicationTypeVersionsDelete =
     outputSchema: ApplicationTypeVersionsDeleteOutput,
   }));
 // Input Schema
+export interface ApplicationTypeVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationTypeName: string;
+  version: string;
+}
 export const ApplicationTypeVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -826,11 +1134,25 @@ export const ApplicationTypeVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationTypeVersionsGetInput =
-  typeof ApplicationTypeVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<ApplicationTypeVersionsGetInput>;
 
 // Output Schema
+export interface ApplicationTypeVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationTypeVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -849,9 +1171,7 @@ export const ApplicationTypeVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationTypeVersionsGetOutput =
-  typeof ApplicationTypeVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationTypeVersionsGetOutput>;
 
 // The operation
 /**
@@ -873,6 +1193,12 @@ export const ApplicationTypeVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationTypeVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationTypeName: string;
+}
 export const ApplicationTypeVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -885,11 +1211,28 @@ export const ApplicationTypeVersionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ApplicationTypeVersionsListInput =
-  typeof ApplicationTypeVersionsListInput.Type;
+  ) as unknown as Schema.Codec<ApplicationTypeVersionsListInput>;
 
 // Output Schema
+export interface ApplicationTypeVersionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: string;
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: string;
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationTypeVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -915,9 +1258,7 @@ export const ApplicationTypeVersionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationTypeVersionsListOutput =
-  typeof ApplicationTypeVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationTypeVersionsListOutput>;
 
 // The operation
 /**
@@ -938,6 +1279,214 @@ export const ApplicationTypeVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersCreateOrUpdateInput {
+  resourceGroupName: string;
+  clusterName: string;
+  subscriptionId: string;
+  properties?: {
+    addOnFeatures?: (
+      | "RepairManager"
+      | "DnsService"
+      | "BackupRestoreService"
+      | "ResourceMonitorService"
+    )[];
+    availableClusterVersions?: {
+      codeVersion?: string;
+      supportExpiryUtc?: string;
+      environment?: "Windows" | "Linux";
+    }[];
+    azureActiveDirectory?: {
+      tenantId?: string;
+      clusterApplication?: string;
+      clientApplication?: string;
+    };
+    certificate?: {
+      thumbprint: string;
+      thumbprintSecondary?: string;
+      x509StoreName?:
+        | "AddressBook"
+        | "AuthRoot"
+        | "CertificateAuthority"
+        | "Disallowed"
+        | "My"
+        | "Root"
+        | "TrustedPeople"
+        | "TrustedPublisher";
+    };
+    certificateCommonNames?: {
+      commonNames?: {
+        certificateCommonName: string;
+        certificateIssuerThumbprint: string;
+      }[];
+      x509StoreName?:
+        | "AddressBook"
+        | "AuthRoot"
+        | "CertificateAuthority"
+        | "Disallowed"
+        | "My"
+        | "Root"
+        | "TrustedPeople"
+        | "TrustedPublisher";
+    };
+    clientCertificateCommonNames?: {
+      isAdmin: boolean;
+      certificateCommonName: string;
+      certificateIssuerThumbprint: string;
+    }[];
+    clientCertificateThumbprints?: {
+      isAdmin: boolean;
+      certificateThumbprint: string;
+    }[];
+    clusterCodeVersion?: string;
+    clusterEndpoint?: string;
+    clusterId?: string;
+    clusterState?:
+      | "WaitingForNodes"
+      | "Deploying"
+      | "BaselineUpgrade"
+      | "UpdatingUserConfiguration"
+      | "UpdatingUserCertificate"
+      | "UpdatingInfrastructure"
+      | "EnforcingClusterVersion"
+      | "UpgradeServiceUnreachable"
+      | "AutoScale"
+      | "Ready";
+    diagnosticsStorageAccountConfig?: {
+      storageAccountName: string;
+      protectedAccountKeyName: string;
+      protectedAccountKeyName2?: string;
+      blobEndpoint: string;
+      queueEndpoint: string;
+      tableEndpoint: string;
+    };
+    eventStoreServiceEnabled?: boolean;
+    fabricSettings?: {
+      name: string;
+      parameters: { name: string; value: string }[];
+    }[];
+    managementEndpoint: string;
+    nodeTypes: {
+      name: string;
+      placementProperties?: Record<string, string>;
+      capacities?: Record<string, string>;
+      clientConnectionEndpointPort: number;
+      httpGatewayEndpointPort: number;
+      durabilityLevel?: "Bronze" | "Silver" | "Gold";
+      applicationPorts?: { startPort: number; endPort: number };
+      ephemeralPorts?: { startPort: number; endPort: number };
+      isPrimary: boolean;
+      vmInstanceCount: number;
+      reverseProxyEndpointPort?: number;
+      isStateless?: boolean;
+      multipleAvailabilityZones?: boolean;
+    }[];
+    provisioningState?: "Updating" | "Succeeded" | "Failed" | "Canceled";
+    reliabilityLevel?: "None" | "Bronze" | "Silver" | "Gold" | "Platinum";
+    reverseProxyCertificate?: {
+      thumbprint: string;
+      thumbprintSecondary?: string;
+      x509StoreName?:
+        | "AddressBook"
+        | "AuthRoot"
+        | "CertificateAuthority"
+        | "Disallowed"
+        | "My"
+        | "Root"
+        | "TrustedPeople"
+        | "TrustedPublisher";
+    };
+    reverseProxyCertificateCommonNames?: {
+      commonNames?: {
+        certificateCommonName: string;
+        certificateIssuerThumbprint: string;
+      }[];
+      x509StoreName?:
+        | "AddressBook"
+        | "AuthRoot"
+        | "CertificateAuthority"
+        | "Disallowed"
+        | "My"
+        | "Root"
+        | "TrustedPeople"
+        | "TrustedPublisher";
+    };
+    upgradeDescription?: {
+      forceRestart?: boolean;
+      upgradeReplicaSetCheckTimeout: string;
+      healthCheckWaitDuration: string;
+      healthCheckStableDuration: string;
+      healthCheckRetryTimeout: string;
+      upgradeTimeout: string;
+      upgradeDomainTimeout: string;
+      healthPolicy: {
+        maxPercentUnhealthyNodes?: number;
+        maxPercentUnhealthyApplications?: number;
+        applicationHealthPolicies?: Record<
+          string,
+          {
+            defaultServiceTypeHealthPolicy?: {
+              maxPercentUnhealthyServices?: number;
+            };
+            serviceTypeHealthPolicies?: Record<
+              string,
+              { maxPercentUnhealthyServices?: number }
+            >;
+          }
+        >;
+      };
+      deltaHealthPolicy?: {
+        maxPercentDeltaUnhealthyNodes: number;
+        maxPercentUpgradeDomainDeltaUnhealthyNodes: number;
+        maxPercentDeltaUnhealthyApplications: number;
+        applicationDeltaHealthPolicies?: Record<
+          string,
+          {
+            defaultServiceTypeDeltaHealthPolicy?: {
+              maxPercentDeltaUnhealthyServices?: number;
+            };
+            serviceTypeDeltaHealthPolicies?: Record<
+              string,
+              { maxPercentDeltaUnhealthyServices?: number }
+            >;
+          }
+        >;
+      };
+    };
+    upgradeMode?: "Automatic" | "Manual";
+    applicationTypeVersionsCleanupPolicy?: { maxUnusedVersionsToKeep: number };
+    vmImage?: string;
+    sfZonalUpgradeMode?: "Parallel" | "Hierarchical";
+    vmssZonalUpgradeMode?: "Parallel" | "Hierarchical";
+    infrastructureServiceManager?: boolean;
+    upgradeWave?: "Wave0" | "Wave1" | "Wave2";
+    upgradePauseStartTimestampUtc?: string;
+    upgradePauseEndTimestampUtc?: string;
+    waveUpgradePaused?: boolean;
+    notifications?: {
+      isEnabled: boolean;
+      notificationCategory: "WaveProgress";
+      notificationLevel: "Critical" | "All";
+      notificationTargets: {
+        notificationChannel: "EmailUser" | "EmailSubscription";
+        receivers: string[];
+      }[];
+    }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1287,11 +1836,25 @@ export const ClustersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ClustersCreateOrUpdateInput =
-  typeof ClustersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClustersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClustersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1310,9 +1873,7 @@ export const ClustersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersCreateOrUpdateOutput =
-  typeof ClustersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClustersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1332,6 +1893,11 @@ export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersDeleteInput {
+  resourceGroupName: string;
+  clusterName: string;
+  subscriptionId: string;
+}
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1342,12 +1908,12 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
     apiVersion: "2021-06-01",
   }),
-);
-export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
+) as unknown as Schema.Codec<ClustersDeleteInput>;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
+export type ClustersDeleteOutput = void;
+export const ClustersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -1365,6 +1931,11 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
+export interface ClustersGetInput {
+  resourceGroupName: string;
+  clusterName: string;
+  subscriptionId: string;
+}
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1375,10 +1946,25 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
     apiVersion: "2021-06-01",
   }),
-);
-export type ClustersGetInput = typeof ClustersGetInput.Type;
+) as unknown as Schema.Codec<ClustersGetInput>;
 
 // Output Schema
+export interface ClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1396,8 +1982,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersGetOutput = typeof ClustersGetOutput.Type;
+}) as unknown as Schema.Codec<ClustersGetOutput>;
 
 // The operation
 /**
@@ -1415,6 +2000,9 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
+export interface ClustersListInput {
+  subscriptionId: string;
+}
 export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1423,10 +2011,28 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/clusters",
     apiVersion: "2021-06-01",
   }),
-);
-export type ClustersListInput = typeof ClustersListInput.Type;
+) as unknown as Schema.Codec<ClustersListInput>;
 
 // Output Schema
+export interface ClustersListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: string;
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: string;
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1451,8 +2057,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ClustersListOutput = typeof ClustersListOutput.Type;
+}) as unknown as Schema.Codec<ClustersListOutput>;
 
 // The operation
 /**
@@ -1468,6 +2073,10 @@ export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersListOutput,
 }));
 // Input Schema
+export interface ClustersListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1478,11 +2087,28 @@ export const ClustersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ClustersListByResourceGroupInput =
-  typeof ClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface ClustersListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: string;
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: string;
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1508,9 +2134,7 @@ export const ClustersListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListByResourceGroupOutput =
-  typeof ClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1529,6 +2153,12 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersListUpgradableVersionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  targetVersion: string;
+}
 export const ClustersListUpgradableVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1541,17 +2171,16 @@ export const ClustersListUpgradableVersionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/listUpgradableVersions",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ClustersListUpgradableVersionsInput =
-  typeof ClustersListUpgradableVersionsInput.Type;
+  ) as unknown as Schema.Codec<ClustersListUpgradableVersionsInput>;
 
 // Output Schema
+export interface ClustersListUpgradableVersionsOutput {
+  supportedPath?: string[];
+}
 export const ClustersListUpgradableVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportedPath: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ClustersListUpgradableVersionsOutput =
-  typeof ClustersListUpgradableVersionsOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListUpgradableVersionsOutput>;
 
 // The operation
 /**
@@ -1570,6 +2199,152 @@ export const ClustersListUpgradableVersions =
     outputSchema: ClustersListUpgradableVersionsOutput,
   }));
 // Input Schema
+export interface ClustersUpdateInput {
+  resourceGroupName: string;
+  clusterName: string;
+  subscriptionId: string;
+  properties?: {
+    addOnFeatures?: (
+      | "RepairManager"
+      | "DnsService"
+      | "BackupRestoreService"
+      | "ResourceMonitorService"
+    )[];
+    certificate?: {
+      thumbprint: string;
+      thumbprintSecondary?: string;
+      x509StoreName?:
+        | "AddressBook"
+        | "AuthRoot"
+        | "CertificateAuthority"
+        | "Disallowed"
+        | "My"
+        | "Root"
+        | "TrustedPeople"
+        | "TrustedPublisher";
+    };
+    certificateCommonNames?: {
+      commonNames?: {
+        certificateCommonName: string;
+        certificateIssuerThumbprint: string;
+      }[];
+      x509StoreName?:
+        | "AddressBook"
+        | "AuthRoot"
+        | "CertificateAuthority"
+        | "Disallowed"
+        | "My"
+        | "Root"
+        | "TrustedPeople"
+        | "TrustedPublisher";
+    };
+    clientCertificateCommonNames?: {
+      isAdmin: boolean;
+      certificateCommonName: string;
+      certificateIssuerThumbprint: string;
+    }[];
+    clientCertificateThumbprints?: {
+      isAdmin: boolean;
+      certificateThumbprint: string;
+    }[];
+    clusterCodeVersion?: string;
+    eventStoreServiceEnabled?: boolean;
+    fabricSettings?: {
+      name: string;
+      parameters: { name: string; value: string }[];
+    }[];
+    nodeTypes?: {
+      name: string;
+      placementProperties?: Record<string, string>;
+      capacities?: Record<string, string>;
+      clientConnectionEndpointPort: number;
+      httpGatewayEndpointPort: number;
+      durabilityLevel?: "Bronze" | "Silver" | "Gold";
+      applicationPorts?: { startPort: number; endPort: number };
+      ephemeralPorts?: { startPort: number; endPort: number };
+      isPrimary: boolean;
+      vmInstanceCount: number;
+      reverseProxyEndpointPort?: number;
+      isStateless?: boolean;
+      multipleAvailabilityZones?: boolean;
+    }[];
+    reliabilityLevel?: "None" | "Bronze" | "Silver" | "Gold" | "Platinum";
+    reverseProxyCertificate?: {
+      thumbprint: string;
+      thumbprintSecondary?: string;
+      x509StoreName?:
+        | "AddressBook"
+        | "AuthRoot"
+        | "CertificateAuthority"
+        | "Disallowed"
+        | "My"
+        | "Root"
+        | "TrustedPeople"
+        | "TrustedPublisher";
+    };
+    upgradeDescription?: {
+      forceRestart?: boolean;
+      upgradeReplicaSetCheckTimeout: string;
+      healthCheckWaitDuration: string;
+      healthCheckStableDuration: string;
+      healthCheckRetryTimeout: string;
+      upgradeTimeout: string;
+      upgradeDomainTimeout: string;
+      healthPolicy: {
+        maxPercentUnhealthyNodes?: number;
+        maxPercentUnhealthyApplications?: number;
+        applicationHealthPolicies?: Record<
+          string,
+          {
+            defaultServiceTypeHealthPolicy?: {
+              maxPercentUnhealthyServices?: number;
+            };
+            serviceTypeHealthPolicies?: Record<
+              string,
+              { maxPercentUnhealthyServices?: number }
+            >;
+          }
+        >;
+      };
+      deltaHealthPolicy?: {
+        maxPercentDeltaUnhealthyNodes: number;
+        maxPercentUpgradeDomainDeltaUnhealthyNodes: number;
+        maxPercentDeltaUnhealthyApplications: number;
+        applicationDeltaHealthPolicies?: Record<
+          string,
+          {
+            defaultServiceTypeDeltaHealthPolicy?: {
+              maxPercentDeltaUnhealthyServices?: number;
+            };
+            serviceTypeDeltaHealthPolicies?: Record<
+              string,
+              { maxPercentDeltaUnhealthyServices?: number }
+            >;
+          }
+        >;
+      };
+    };
+    applicationTypeVersionsCleanupPolicy?: { maxUnusedVersionsToKeep: number };
+    upgradeMode?: "Automatic" | "Manual";
+    sfZonalUpgradeMode?: "Parallel" | "Hierarchical";
+    vmssZonalUpgradeMode?: "Parallel" | "Hierarchical";
+    infrastructureServiceManager?: boolean;
+    upgradeWave?: "Wave0" | "Wave1" | "Wave2";
+    upgradePauseStartTimestampUtc?: string;
+    upgradePauseEndTimestampUtc?: string;
+    waveUpgradePaused?: boolean;
+    notifications?: {
+      isEnabled: boolean;
+      notificationCategory: "WaveProgress";
+      notificationLevel: "Critical" | "All";
+      notificationTargets: {
+        notificationChannel: "EmailUser" | "EmailSubscription";
+        receivers: string[];
+      }[];
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -1832,10 +2607,25 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}",
     apiVersion: "2021-06-01",
   }),
-);
-export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
+) as unknown as Schema.Codec<ClustersUpdateInput>;
 
 // Output Schema
+export interface ClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1853,8 +2643,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
+}) as unknown as Schema.Codec<ClustersUpdateOutput>;
 
 // The operation
 /**
@@ -1872,6 +2661,11 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
+export interface ClusterVersionsGetInput {
+  location: string;
+  subscriptionId: string;
+  clusterVersion: string;
+}
 export const ClusterVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -1883,10 +2677,22 @@ export const ClusterVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/clusterVersions/{clusterVersion}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ClusterVersionsGetInput = typeof ClusterVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<ClusterVersionsGetInput>;
 
 // Output Schema
+export interface ClusterVersionsGetOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      codeVersion?: string;
+      supportExpiryUtc?: string;
+      environment?: "Windows" | "Linux";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClusterVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1908,8 +2714,7 @@ export const ClusterVersionsGetOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClusterVersionsGetOutput = typeof ClusterVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ClusterVersionsGetOutput>;
 
 // The operation
 /**
@@ -1927,6 +2732,12 @@ export const ClusterVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClusterVersionsGetOutput,
 }));
 // Input Schema
+export interface ClusterVersionsGetByEnvironmentInput {
+  location: string;
+  environment: "Windows" | "Linux";
+  subscriptionId: string;
+  clusterVersion: string;
+}
 export const ClusterVersionsGetByEnvironmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -1939,11 +2750,22 @@ export const ClusterVersionsGetByEnvironmentInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/clusterVersions/{clusterVersion}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ClusterVersionsGetByEnvironmentInput =
-  typeof ClusterVersionsGetByEnvironmentInput.Type;
+  ) as unknown as Schema.Codec<ClusterVersionsGetByEnvironmentInput>;
 
 // Output Schema
+export interface ClusterVersionsGetByEnvironmentOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      codeVersion?: string;
+      supportExpiryUtc?: string;
+      environment?: "Windows" | "Linux";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClusterVersionsGetByEnvironmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1965,9 +2787,7 @@ export const ClusterVersionsGetByEnvironmentOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClusterVersionsGetByEnvironmentOutput =
-  typeof ClusterVersionsGetByEnvironmentOutput.Type;
+  }) as unknown as Schema.Codec<ClusterVersionsGetByEnvironmentOutput>;
 
 // The operation
 /**
@@ -1987,6 +2807,10 @@ export const ClusterVersionsGetByEnvironment =
     outputSchema: ClusterVersionsGetByEnvironmentOutput,
   }));
 // Input Schema
+export interface ClusterVersionsListInput {
+  location: string;
+  subscriptionId: string;
+}
 export const ClusterVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -1997,10 +2821,22 @@ export const ClusterVersionsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/clusterVersions",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ClusterVersionsListInput = typeof ClusterVersionsListInput.Type;
+  ) as unknown as Schema.Codec<ClusterVersionsListInput>;
 
 // Output Schema
+export interface ClusterVersionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      codeVersion?: string;
+      supportExpiryUtc?: string;
+      environment?: "Windows" | "Linux";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClusterVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2022,8 +2858,7 @@ export const ClusterVersionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClusterVersionsListOutput = typeof ClusterVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<ClusterVersionsListOutput>;
 
 // The operation
 /**
@@ -2040,6 +2875,11 @@ export const ClusterVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClusterVersionsListOutput,
 }));
 // Input Schema
+export interface ClusterVersionsListByEnvironmentInput {
+  location: string;
+  environment: "Windows" | "Linux";
+  subscriptionId: string;
+}
 export const ClusterVersionsListByEnvironmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -2051,11 +2891,22 @@ export const ClusterVersionsListByEnvironmentInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/environments/{environment}/clusterVersions",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ClusterVersionsListByEnvironmentInput =
-  typeof ClusterVersionsListByEnvironmentInput.Type;
+  ) as unknown as Schema.Codec<ClusterVersionsListByEnvironmentInput>;
 
 // Output Schema
+export interface ClusterVersionsListByEnvironmentOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      codeVersion?: string;
+      supportExpiryUtc?: string;
+      environment?: "Windows" | "Linux";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClusterVersionsListByEnvironmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2077,9 +2928,7 @@ export const ClusterVersionsListByEnvironmentOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClusterVersionsListByEnvironmentOutput =
-  typeof ClusterVersionsListByEnvironmentOutput.Type;
+  }) as unknown as Schema.Codec<ClusterVersionsListByEnvironmentOutput>;
 
 // The operation
 /**
@@ -2098,6 +2947,7 @@ export const ClusterVersionsListByEnvironment =
     outputSchema: ClusterVersionsListByEnvironmentOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2106,10 +2956,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ServiceFabric/operations",
     apiVersion: "2021-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    nextLink?: string;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2130,8 +2994,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2146,6 +3009,51 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+  serviceName: string;
+  properties?: {
+    placementConstraints?: string;
+    correlationScheme?: {
+      scheme: "Invalid" | "Affinity" | "AlignedAffinity" | "NonAlignedAffinity";
+      serviceName: string;
+    }[];
+    serviceLoadMetrics?: {
+      name: string;
+      weight?: "Zero" | "Low" | "Medium" | "High";
+      primaryDefaultLoad?: number;
+      secondaryDefaultLoad?: number;
+      defaultLoad?: number;
+    }[];
+    servicePlacementPolicies?: {
+      type:
+        | "Invalid"
+        | "InvalidDomain"
+        | "RequiredDomain"
+        | "PreferredPrimaryDomain"
+        | "RequiredDomainDistribution"
+        | "NonPartiallyPlaceService";
+    }[];
+    defaultMoveCost?: "Zero" | "Low" | "Medium" | "High";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2223,15 +3131,12 @@ export const ServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type ServicesCreateOrUpdateInput =
-  typeof ServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServicesCreateOrUpdateInput>;
 
 // Output Schema
+export type ServicesCreateOrUpdateOutput = void;
 export const ServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesCreateOrUpdateOutput =
-  typeof ServicesCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2253,6 +3158,13 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+  serviceName: string;
+}
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2265,12 +3177,12 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
     apiVersion: "2021-06-01",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+export type ServicesDeleteOutput = void;
+export const ServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -2290,6 +3202,13 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
+export interface ServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+  serviceName: string;
+}
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2302,10 +3221,25 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
     apiVersion: "2021-06-01",
   }),
-);
-export type ServicesGetInput = typeof ServicesGetInput.Type;
+) as unknown as Schema.Codec<ServicesGetInput>;
 
 // Output Schema
+export interface ServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2323,8 +3257,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServicesGetOutput = typeof ServicesGetOutput.Type;
+}) as unknown as Schema.Codec<ServicesGetOutput>;
 
 // The operation
 /**
@@ -2344,6 +3277,12 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
+export interface ServicesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+}
 export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2355,10 +3294,28 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services",
     apiVersion: "2021-06-01",
   }),
-);
-export type ServicesListInput = typeof ServicesListInput.Type;
+) as unknown as Schema.Codec<ServicesListInput>;
 
 // Output Schema
+export interface ServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: string;
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: string;
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2383,8 +3340,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ServicesListOutput = typeof ServicesListOutput.Type;
+}) as unknown as Schema.Codec<ServicesListOutput>;
 
 // The operation
 /**
@@ -2403,6 +3359,51 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
+export interface ServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  applicationName: string;
+  serviceName: string;
+  properties?: {
+    placementConstraints?: string;
+    correlationScheme?: {
+      scheme: "Invalid" | "Affinity" | "AlignedAffinity" | "NonAlignedAffinity";
+      serviceName: string;
+    }[];
+    serviceLoadMetrics?: {
+      name: string;
+      weight?: "Zero" | "Low" | "Medium" | "High";
+      primaryDefaultLoad?: number;
+      secondaryDefaultLoad?: number;
+      defaultLoad?: number;
+    }[];
+    servicePlacementPolicies?: {
+      type:
+        | "Invalid"
+        | "InvalidDomain"
+        | "RequiredDomain"
+        | "PreferredPrimaryDomain"
+        | "RequiredDomainDistribution"
+        | "NonPartiallyPlaceService";
+    }[];
+    defaultMoveCost?: "Zero" | "Low" | "Medium" | "High";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: string;
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: string;
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2479,12 +3480,12 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
     apiVersion: "2021-06-01",
   }),
-);
-export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
+) as unknown as Schema.Codec<ServicesUpdateInput>;
 
 // Output Schema
-export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
+export type ServicesUpdateOutput = void;
+export const ServicesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesUpdateOutput>;
 
 // The operation
 /**

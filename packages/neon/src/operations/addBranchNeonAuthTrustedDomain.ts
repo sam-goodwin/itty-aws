@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AddBranchNeonAuthTrustedDomainInput {
+  project_id: string;
+  branch_id: string;
+  domain: string;
+  auth_provider: "mock" | "stack" | "better_auth";
+}
 export const AddBranchNeonAuthTrustedDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +20,12 @@ export const AddBranchNeonAuthTrustedDomainInput =
       method: "POST",
       path: "/projects/{project_id}/branches/{branch_id}/auth/domains",
     }),
-  );
-export type AddBranchNeonAuthTrustedDomainInput =
-  typeof AddBranchNeonAuthTrustedDomainInput.Type;
+  ) as unknown as Schema.Codec<AddBranchNeonAuthTrustedDomainInput>;
 
 // Output Schema
+export type AddBranchNeonAuthTrustedDomainOutput = void;
 export const AddBranchNeonAuthTrustedDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddBranchNeonAuthTrustedDomainOutput =
-  typeof AddBranchNeonAuthTrustedDomainOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddBranchNeonAuthTrustedDomainOutput>;
 
 // The operation
 /**

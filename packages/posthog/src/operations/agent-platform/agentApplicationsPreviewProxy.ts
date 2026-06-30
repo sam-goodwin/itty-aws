@@ -3,6 +3,15 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsPreviewProxyInput {
+  id: string;
+  project_id: string;
+  rest: string;
+  format?: "json" | "sse";
+  revision_id: string;
+  message?: string;
+  session_id?: string;
+}
 export const AgentApplicationsPreviewProxyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -17,15 +26,12 @@ export const AgentApplicationsPreviewProxyInput =
       method: "POST",
       path: "/api/projects/{project_id}/agent_applications/{id}/preview-proxy/{rest}/",
     }),
-  );
-export type AgentApplicationsPreviewProxyInput =
-  typeof AgentApplicationsPreviewProxyInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsPreviewProxyInput>;
 
 // Output Schema
+export type AgentApplicationsPreviewProxyOutput = void;
 export const AgentApplicationsPreviewProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentApplicationsPreviewProxyOutput =
-  typeof AgentApplicationsPreviewProxyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsPreviewProxyOutput>;
 
 // The operation
 /**

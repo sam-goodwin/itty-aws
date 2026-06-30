@@ -3,14 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface QuotaLimitsListInput {
+  project_id: string;
+}
 export const QuotaLimitsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/quota_limits/" }),
-);
-export type QuotaLimitsListInput = typeof QuotaLimitsListInput.Type;
+) as unknown as Schema.Codec<QuotaLimitsListInput>;
 
 // Output Schema
+export type QuotaLimitsListOutput = {
+  limited: Record<string, { limited: boolean }>;
+}[];
 export const QuotaLimitsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     limited: Schema.Record(
@@ -20,8 +25,7 @@ export const QuotaLimitsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
       }),
     ),
   }),
-);
-export type QuotaLimitsListOutput = typeof QuotaLimitsListOutput.Type;
+) as unknown as Schema.Codec<QuotaLimitsListOutput>;
 
 // The operation
 /**

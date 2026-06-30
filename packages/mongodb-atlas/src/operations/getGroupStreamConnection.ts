@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupStreamConnectionInput {
+  groupId: string;
+  tenantName: string;
+  connectionName: string;
+  envelope?: boolean;
+}
 export const GetGroupStreamConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const GetGroupStreamConnectionInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
     }),
-  );
-export type GetGroupStreamConnectionInput =
-  typeof GetGroupStreamConnectionInput.Type;
+  ) as unknown as Schema.Codec<GetGroupStreamConnectionInput>;
 
 // Output Schema
+export type GetGroupStreamConnectionOutput = void;
 export const GetGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupStreamConnectionOutput =
-  typeof GetGroupStreamConnectionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamConnectionOutput>;
 
 // The operation
 /**

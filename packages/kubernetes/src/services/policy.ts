@@ -4,12 +4,78 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreatePolicyV1NamespacedPodDisruptionBudgetInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const CreatePolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -115,11 +181,70 @@ export const CreatePolicyV1NamespacedPodDisruptionBudgetInput =
       method: "POST",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
     }),
-  );
-export type CreatePolicyV1NamespacedPodDisruptionBudgetInput =
-  typeof CreatePolicyV1NamespacedPodDisruptionBudgetInput.Type;
+  ) as unknown as Schema.Codec<CreatePolicyV1NamespacedPodDisruptionBudgetInput>;
 
 // Output Schema
+export interface CreatePolicyV1NamespacedPodDisruptionBudgetOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -215,9 +340,7 @@ export const CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
-  typeof CreatePolicyV1NamespacedPodDisruptionBudgetOutput.Type;
+  }) as unknown as Schema.Codec<CreatePolicyV1NamespacedPodDisruptionBudgetOutput>;
 
 // The operation
 /**
@@ -236,6 +359,27 @@ export const createPolicyV1NamespacedPodDisruptionBudget =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -269,11 +413,32 @@ export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput =
       method: "DELETE",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
     }),
-  );
-export type DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput =
-  typeof DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput.Type;
+  ) as unknown as Schema.Codec<DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput>;
 
 // Output Schema
+export interface DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -313,9 +478,7 @@ export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput =
-  typeof DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput.Type;
+  }) as unknown as Schema.Codec<DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput>;
 
 // The operation
 /**
@@ -385,6 +548,19 @@ export const deletePolicyV1CollectionNamespacedPodDisruptionBudget =
     outputSchema: DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput,
   }));
 // Input Schema
+export interface DeletePolicyV1NamespacedPodDisruptionBudgetInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeletePolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -410,11 +586,32 @@ export const DeletePolicyV1NamespacedPodDisruptionBudgetInput =
       method: "DELETE",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}",
     }),
-  );
-export type DeletePolicyV1NamespacedPodDisruptionBudgetInput =
-  typeof DeletePolicyV1NamespacedPodDisruptionBudgetInput.Type;
+  ) as unknown as Schema.Codec<DeletePolicyV1NamespacedPodDisruptionBudgetInput>;
 
 // Output Schema
+export interface DeletePolicyV1NamespacedPodDisruptionBudgetOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -454,9 +651,7 @@ export const DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
-  typeof DeletePolicyV1NamespacedPodDisruptionBudgetOutput.Type;
+  }) as unknown as Schema.Codec<DeletePolicyV1NamespacedPodDisruptionBudgetOutput>;
 
 // The operation
 /**
@@ -478,12 +673,22 @@ export const deletePolicyV1NamespacedPodDisruptionBudget =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetPolicyAPIGroupInput {}
 export const GetPolicyAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/apis/policy/" }));
-export type GetPolicyAPIGroupInput = typeof GetPolicyAPIGroupInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/apis/policy/" }),
+) as unknown as Schema.Codec<GetPolicyAPIGroupInput>;
 
 // Output Schema
+export interface GetPolicyAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetPolicyAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -509,8 +714,7 @@ export const GetPolicyAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetPolicyAPIGroupOutput = typeof GetPolicyAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetPolicyAPIGroupOutput>;
 
 // The operation
 /**
@@ -521,14 +725,30 @@ export const getPolicyAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetPolicyAPIGroupOutput,
 }));
 // Input Schema
+export interface GetPolicyV1APIResourcesInput {}
 export const GetPolicyV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/policy/v1/" }),
-  );
-export type GetPolicyV1APIResourcesInput =
-  typeof GetPolicyV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetPolicyV1APIResourcesInput>;
 
 // Output Schema
+export interface GetPolicyV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetPolicyV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -548,9 +768,7 @@ export const GetPolicyV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetPolicyV1APIResourcesOutput =
-  typeof GetPolicyV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetPolicyV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -563,6 +781,21 @@ export const getPolicyV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListPolicyV1NamespacedPodDisruptionBudgetInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListPolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -583,11 +816,85 @@ export const ListPolicyV1NamespacedPodDisruptionBudgetInput =
       method: "GET",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets",
     }),
-  );
-export type ListPolicyV1NamespacedPodDisruptionBudgetInput =
-  typeof ListPolicyV1NamespacedPodDisruptionBudgetInput.Type;
+  ) as unknown as Schema.Codec<ListPolicyV1NamespacedPodDisruptionBudgetInput>;
 
 // Output Schema
+export interface ListPolicyV1NamespacedPodDisruptionBudgetOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      maxUnavailable?: string;
+      minAvailable?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      unhealthyPodEvictionPolicy?: string;
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      currentHealthy?: number;
+      desiredHealthy?: number;
+      disruptedPods?: Record<string, string>;
+      disruptionsAllowed?: number;
+      expectedPods?: number;
+      observedGeneration?: number;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListPolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -704,9 +1011,7 @@ export const ListPolicyV1NamespacedPodDisruptionBudgetOutput =
         ),
       }),
     ),
-  });
-export type ListPolicyV1NamespacedPodDisruptionBudgetOutput =
-  typeof ListPolicyV1NamespacedPodDisruptionBudgetOutput.Type;
+  }) as unknown as Schema.Codec<ListPolicyV1NamespacedPodDisruptionBudgetOutput>;
 
 // The operation
 /**
@@ -773,6 +1078,20 @@ export const listPolicyV1NamespacedPodDisruptionBudget =
     outputSchema: ListPolicyV1NamespacedPodDisruptionBudgetOutput,
   }));
 // Input Schema
+export interface ListPolicyV1PodDisruptionBudgetForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListPolicyV1PodDisruptionBudgetForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -789,11 +1108,85 @@ export const ListPolicyV1PodDisruptionBudgetForAllNamespacesInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/policy/v1/poddisruptionbudgets" }),
-  );
-export type ListPolicyV1PodDisruptionBudgetForAllNamespacesInput =
-  typeof ListPolicyV1PodDisruptionBudgetForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListPolicyV1PodDisruptionBudgetForAllNamespacesInput>;
 
 // Output Schema
+export interface ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      maxUnavailable?: string;
+      minAvailable?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      unhealthyPodEvictionPolicy?: string;
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      currentHealthy?: number;
+      desiredHealthy?: number;
+      disruptedPods?: Record<string, string>;
+      disruptionsAllowed?: number;
+      expectedPods?: number;
+      observedGeneration?: number;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -910,9 +1303,7 @@ export const ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
-  typeof ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -978,6 +1369,15 @@ export const listPolicyV1PodDisruptionBudgetForAllNamespaces =
     outputSchema: ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput,
   }));
 // Input Schema
+export interface PatchPolicyV1NamespacedPodDisruptionBudgetInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchPolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -992,11 +1392,70 @@ export const PatchPolicyV1NamespacedPodDisruptionBudgetInput =
       method: "PATCH",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}",
     }),
-  );
-export type PatchPolicyV1NamespacedPodDisruptionBudgetInput =
-  typeof PatchPolicyV1NamespacedPodDisruptionBudgetInput.Type;
+  ) as unknown as Schema.Codec<PatchPolicyV1NamespacedPodDisruptionBudgetInput>;
 
 // Output Schema
+export interface PatchPolicyV1NamespacedPodDisruptionBudgetOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1092,9 +1551,7 @@ export const PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
-  typeof PatchPolicyV1NamespacedPodDisruptionBudgetOutput.Type;
+  }) as unknown as Schema.Codec<PatchPolicyV1NamespacedPodDisruptionBudgetOutput>;
 
 // The operation
 /**
@@ -1115,6 +1572,15 @@ export const patchPolicyV1NamespacedPodDisruptionBudget =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1129,11 +1595,70 @@ export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput =
       method: "PATCH",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status",
     }),
-  );
-export type PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  typeof PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput>;
 
 // Output Schema
+export interface PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1229,9 +1754,7 @@ export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  typeof PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput>;
 
 // The operation
 /**
@@ -1252,6 +1775,11 @@ export const patchPolicyV1NamespacedPodDisruptionBudgetStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadPolicyV1NamespacedPodDisruptionBudgetInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadPolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1262,11 +1790,70 @@ export const ReadPolicyV1NamespacedPodDisruptionBudgetInput =
       method: "GET",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}",
     }),
-  );
-export type ReadPolicyV1NamespacedPodDisruptionBudgetInput =
-  typeof ReadPolicyV1NamespacedPodDisruptionBudgetInput.Type;
+  ) as unknown as Schema.Codec<ReadPolicyV1NamespacedPodDisruptionBudgetInput>;
 
 // Output Schema
+export interface ReadPolicyV1NamespacedPodDisruptionBudgetOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1362,9 +1949,7 @@ export const ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
-  typeof ReadPolicyV1NamespacedPodDisruptionBudgetOutput.Type;
+  }) as unknown as Schema.Codec<ReadPolicyV1NamespacedPodDisruptionBudgetOutput>;
 
 // The operation
 /**
@@ -1381,6 +1966,11 @@ export const readPolicyV1NamespacedPodDisruptionBudget =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1391,11 +1981,70 @@ export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput =
       method: "GET",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status",
     }),
-  );
-export type ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  typeof ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput>;
 
 // Output Schema
+export interface ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1491,9 +2140,7 @@ export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  typeof ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput>;
 
 // The operation
 /**
@@ -1510,6 +2157,73 @@ export const readPolicyV1NamespacedPodDisruptionBudgetStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplacePolicyV1NamespacedPodDisruptionBudgetInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1616,11 +2330,70 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetInput =
       method: "PUT",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}",
     }),
-  );
-export type ReplacePolicyV1NamespacedPodDisruptionBudgetInput =
-  typeof ReplacePolicyV1NamespacedPodDisruptionBudgetInput.Type;
+  ) as unknown as Schema.Codec<ReplacePolicyV1NamespacedPodDisruptionBudgetInput>;
 
 // Output Schema
+export interface ReplacePolicyV1NamespacedPodDisruptionBudgetOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1716,9 +2489,7 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
-  typeof ReplacePolicyV1NamespacedPodDisruptionBudgetOutput.Type;
+  }) as unknown as Schema.Codec<ReplacePolicyV1NamespacedPodDisruptionBudgetOutput>;
 
 // The operation
 /**
@@ -1738,6 +2509,73 @@ export const replacePolicyV1NamespacedPodDisruptionBudget =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1844,11 +2682,70 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput =
       method: "PUT",
       path: "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status",
     }),
-  );
-export type ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  typeof ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput>;
 
 // Output Schema
+export interface ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    maxUnavailable?: string;
+    minAvailable?: string;
+    selector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    unhealthyPodEvictionPolicy?: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    currentHealthy?: number;
+    desiredHealthy?: number;
+    disruptedPods?: Record<string, string>;
+    disruptionsAllowed?: number;
+    expectedPods?: number;
+    observedGeneration?: number;
+  };
+}
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1944,9 +2841,7 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
         observedGeneration: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  typeof ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput>;
 
 // The operation
 /**
@@ -1966,6 +2861,22 @@ export const replacePolicyV1NamespacedPodDisruptionBudgetStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchPolicyV1NamespacedPodDisruptionBudgetInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchPolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1987,18 +2898,18 @@ export const WatchPolicyV1NamespacedPodDisruptionBudgetInput =
       method: "GET",
       path: "/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}",
     }),
-  );
-export type WatchPolicyV1NamespacedPodDisruptionBudgetInput =
-  typeof WatchPolicyV1NamespacedPodDisruptionBudgetInput.Type;
+  ) as unknown as Schema.Codec<WatchPolicyV1NamespacedPodDisruptionBudgetInput>;
 
 // Output Schema
+export interface WatchPolicyV1NamespacedPodDisruptionBudgetOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchPolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchPolicyV1NamespacedPodDisruptionBudgetOutput =
-  typeof WatchPolicyV1NamespacedPodDisruptionBudgetOutput.Type;
+  }) as unknown as Schema.Codec<WatchPolicyV1NamespacedPodDisruptionBudgetOutput>;
 
 // The operation
 /**
@@ -2066,6 +2977,21 @@ export const watchPolicyV1NamespacedPodDisruptionBudget =
     outputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetOutput,
   }));
 // Input Schema
+export interface WatchPolicyV1NamespacedPodDisruptionBudgetListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchPolicyV1NamespacedPodDisruptionBudgetListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2086,18 +3012,18 @@ export const WatchPolicyV1NamespacedPodDisruptionBudgetListInput =
       method: "GET",
       path: "/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets",
     }),
-  );
-export type WatchPolicyV1NamespacedPodDisruptionBudgetListInput =
-  typeof WatchPolicyV1NamespacedPodDisruptionBudgetListInput.Type;
+  ) as unknown as Schema.Codec<WatchPolicyV1NamespacedPodDisruptionBudgetListInput>;
 
 // Output Schema
+export interface WatchPolicyV1NamespacedPodDisruptionBudgetListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchPolicyV1NamespacedPodDisruptionBudgetListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchPolicyV1NamespacedPodDisruptionBudgetListOutput =
-  typeof WatchPolicyV1NamespacedPodDisruptionBudgetListOutput.Type;
+  }) as unknown as Schema.Codec<WatchPolicyV1NamespacedPodDisruptionBudgetListOutput>;
 
 // The operation
 /**
@@ -2164,6 +3090,20 @@ export const watchPolicyV1NamespacedPodDisruptionBudgetList =
     outputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetListOutput,
   }));
 // Input Schema
+export interface WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2183,18 +3123,18 @@ export const WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput =
       method: "GET",
       path: "/apis/policy/v1/watch/poddisruptionbudgets",
     }),
-  );
-export type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput =
-  typeof WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput =
-  typeof WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput>;
 
 // The operation
 /**

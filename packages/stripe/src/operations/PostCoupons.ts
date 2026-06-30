@@ -3,6 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostCouponsInput {
+  amount_off?: number;
+  applies_to?: { products?: string[] };
+  currency?: string;
+  currency_options?: Record<string, { amount_off: number }>;
+  duration?: "forever" | "once" | "repeating";
+  duration_in_months?: number;
+  expand?: string[];
+  id?: string;
+  max_redemptions?: number;
+  metadata?: Record<string, string> | "";
+  name?: string;
+  percent_off?: number;
+  redeem_by?: number;
+}
 export const PostCouponsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   amount_off: Schema.optional(Schema.Number),
   applies_to: Schema.optional(
@@ -24,7 +39,12 @@ export const PostCouponsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.Array(Schema.String)),
   id: Schema.optional(Schema.String),
   max_redemptions: Schema.optional(Schema.Number),
-  metadata: Schema.optional(Schema.Unknown),
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Record(Schema.String, Schema.String),
+      Schema.Literals([""]),
+    ]),
+  ),
   name: Schema.optional(Schema.String),
   percent_off: Schema.optional(Schema.Number),
   redeem_by: Schema.optional(Schema.Number),
@@ -34,10 +54,28 @@ export const PostCouponsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/coupons",
     contentType: "form-urlencoded",
   }),
-);
-export type PostCouponsInput = typeof PostCouponsInput.Type;
+) as unknown as Schema.Codec<PostCouponsInput>;
 
 // Output Schema
+export interface PostCouponsOutput {
+  amount_off: number | null;
+  applies_to?: { products: string[] };
+  created: number;
+  currency: string | null;
+  currency_options?: Record<string, { amount_off: number }>;
+  duration: "forever" | "once" | "repeating";
+  duration_in_months: number | null;
+  id: string;
+  livemode: boolean;
+  max_redemptions: number | null;
+  metadata: Record<string, string> | null;
+  name: string | null;
+  object: "coupon";
+  percent_off: number | null;
+  redeem_by: number | null;
+  times_redeemed: number;
+  valid: boolean;
+}
 export const PostCouponsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   amount_off: Schema.NullOr(Schema.Number),
   applies_to: Schema.optional(
@@ -67,8 +105,7 @@ export const PostCouponsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   redeem_by: Schema.NullOr(Schema.Number),
   times_redeemed: Schema.Number,
   valid: Schema.Boolean,
-});
-export type PostCouponsOutput = typeof PostCouponsOutput.Type;
+}) as unknown as Schema.Codec<PostCouponsOutput>;
 
 // The operation
 /**

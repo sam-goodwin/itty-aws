@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface UpsertSynonymSetInput {
+  synonymSetName: string;
+  items: {
+    id: string;
+    synonyms: string[];
+    root?: string;
+    locale?: string;
+    symbols_to_index?: string[];
+  }[];
+}
 export const UpsertSynonymSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   synonymSetName: Schema.String.pipe(T.PathParam()),
   items: Schema.Array(
@@ -15,10 +25,21 @@ export const UpsertSynonymSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       symbols_to_index: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
-}).pipe(T.Http({ method: "PUT", path: "/synonym_sets/{synonymSetName}" }));
-export type UpsertSynonymSetInput = typeof UpsertSynonymSetInput.Type;
+}).pipe(
+  T.Http({ method: "PUT", path: "/synonym_sets/{synonymSetName}" }),
+) as unknown as Schema.Codec<UpsertSynonymSetInput>;
 
 // Output Schema
+export interface UpsertSynonymSetOutput {
+  items: {
+    id: string;
+    synonyms: string[];
+    root?: string;
+    locale?: string;
+    symbols_to_index?: string[];
+  }[];
+  name: string;
+}
 export const UpsertSynonymSetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     items: Schema.Array(
@@ -32,8 +53,7 @@ export const UpsertSynonymSetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     name: Schema.String,
   },
-);
-export type UpsertSynonymSetOutput = typeof UpsertSynonymSetOutput.Type;
+) as unknown as Schema.Codec<UpsertSynonymSetOutput>;
 
 // The operation
 /**

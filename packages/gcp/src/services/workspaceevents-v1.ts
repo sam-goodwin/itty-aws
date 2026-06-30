@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface FilePart {
   fileWithUri?: string;
 }
 
-export const FilePart: Schema.Schema<FilePart> =
+export const FilePart: Schema.Codec<FilePart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export interface DataPart {
   data?: Record<string, unknown>;
 }
 
-export const DataPart: Schema.Schema<DataPart> =
+export const DataPart: Schema.Codec<DataPart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "DataPart" });
@@ -54,7 +54,7 @@ export interface Part {
   metadata?: Record<string, unknown>;
 }
 
-export const Part: Schema.Schema<Part> =
+export const Part: Schema.Codec<Part> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     file: Schema.optional(FilePart),
     text: Schema.optional(Schema.String),
@@ -77,7 +77,7 @@ export interface Artifact {
   description?: string;
 }
 
-export const Artifact: Schema.Schema<Artifact> =
+export const Artifact: Schema.Codec<Artifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifactId: Schema.optional(Schema.String),
     parts: Schema.optional(Schema.Array(Part)),
@@ -102,7 +102,7 @@ export interface TaskArtifactUpdateEvent {
   append?: boolean;
 }
 
-export const TaskArtifactUpdateEvent: Schema.Schema<TaskArtifactUpdateEvent> =
+export const TaskArtifactUpdateEvent: Schema.Codec<TaskArtifactUpdateEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contextId: Schema.optional(Schema.String),
     artifact: Schema.optional(Artifact),
@@ -117,7 +117,7 @@ export interface NotificationEndpoint {
   pubsubTopic?: string;
 }
 
-export const NotificationEndpoint: Schema.Schema<NotificationEndpoint> =
+export const NotificationEndpoint: Schema.Codec<NotificationEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubTopic: Schema.optional(Schema.String),
   }).annotate({ identifier: "NotificationEndpoint" });
@@ -129,7 +129,7 @@ export interface PayloadOptions {
   fieldMask?: string;
 }
 
-export const PayloadOptions: Schema.Schema<PayloadOptions> =
+export const PayloadOptions: Schema.Codec<PayloadOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeResource: Schema.optional(Schema.Boolean),
     fieldMask: Schema.optional(Schema.String),
@@ -140,7 +140,7 @@ export interface DriveOptions {
   includeDescendants?: boolean;
 }
 
-export const DriveOptions: Schema.Schema<DriveOptions> =
+export const DriveOptions: Schema.Codec<DriveOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeDescendants: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DriveOptions" });
@@ -200,7 +200,7 @@ export interface Subscription {
   targetResource?: string;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
+export const Subscription: Schema.Codec<Subscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userAuthority: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
+export const ListSubscriptionsResponse: Schema.Codec<ListSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
     nextPageToken: Schema.optional(Schema.String),
@@ -237,14 +237,14 @@ export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse>
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface ReactivateSubscriptionRequest {}
 
-export const ReactivateSubscriptionRequest: Schema.Schema<ReactivateSubscriptionRequest> =
+export const ReactivateSubscriptionRequest: Schema.Codec<ReactivateSubscriptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReactivateSubscriptionRequest",
   });
@@ -266,7 +266,7 @@ export interface Message {
   extensions?: ReadonlyArray<string>;
 }
 
-export const Message: Schema.Schema<Message> =
+export const Message: Schema.Codec<Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.Array(Part)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -296,7 +296,7 @@ export interface TaskStatus {
     | (string & {});
 }
 
-export const TaskStatus: Schema.Schema<TaskStatus> =
+export const TaskStatus: Schema.Codec<TaskStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
     timestamp: Schema.optional(Schema.String),
@@ -316,7 +316,7 @@ export interface TaskStatusUpdateEvent {
   final?: boolean;
 }
 
-export const TaskStatusUpdateEvent: Schema.Schema<TaskStatusUpdateEvent> =
+export const TaskStatusUpdateEvent: Schema.Codec<TaskStatusUpdateEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contextId: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -332,7 +332,7 @@ export interface AuthenticationInfo {
   credentials?: string;
 }
 
-export const AuthenticationInfo: Schema.Schema<AuthenticationInfo> =
+export const AuthenticationInfo: Schema.Codec<AuthenticationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemes: Schema.optional(Schema.Array(Schema.String)),
     credentials: Schema.optional(Schema.String),
@@ -349,7 +349,7 @@ export interface PushNotificationConfig {
   id?: string;
 }
 
-export const PushNotificationConfig: Schema.Schema<PushNotificationConfig> =
+export const PushNotificationConfig: Schema.Codec<PushNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     authentication: Schema.optional(AuthenticationInfo),
@@ -368,7 +368,7 @@ export interface SendMessageConfiguration {
   acceptedOutputModes?: ReadonlyArray<string>;
 }
 
-export const SendMessageConfiguration: Schema.Schema<SendMessageConfiguration> =
+export const SendMessageConfiguration: Schema.Codec<SendMessageConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blocking: Schema.optional(Schema.Boolean),
     pushNotification: Schema.optional(PushNotificationConfig),
@@ -387,7 +387,7 @@ export interface SendMessageRequest {
   message?: Message;
 }
 
-export const SendMessageRequest: Schema.Schema<SendMessageRequest> =
+export const SendMessageRequest: Schema.Codec<SendMessageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenant: Schema.optional(Schema.String),
     configuration: Schema.optional(SendMessageConfiguration),
@@ -402,7 +402,7 @@ export interface TaskPushNotificationConfig {
   name?: string;
 }
 
-export const TaskPushNotificationConfig: Schema.Schema<TaskPushNotificationConfig> =
+export const TaskPushNotificationConfig: Schema.Codec<TaskPushNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pushNotificationConfig: Schema.optional(PushNotificationConfig),
     name: Schema.optional(Schema.String),
@@ -415,7 +415,7 @@ export interface ListTaskPushNotificationConfigResponse {
   nextPageToken?: string;
 }
 
-export const ListTaskPushNotificationConfigResponse: Schema.Schema<ListTaskPushNotificationConfigResponse> =
+export const ListTaskPushNotificationConfigResponse: Schema.Codec<ListTaskPushNotificationConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configs: Schema.optional(Schema.Array(TaskPushNotificationConfig)),
     nextPageToken: Schema.optional(Schema.String),
@@ -436,7 +436,7 @@ export interface Task {
   artifacts?: ReadonlyArray<Artifact>;
 }
 
-export const Task: Schema.Schema<Task> =
+export const Task: Schema.Codec<Task> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(TaskStatus),
     history: Schema.optional(Schema.Array(Message)),
@@ -453,7 +453,7 @@ export interface StreamResponse {
   artifactUpdate?: TaskArtifactUpdateEvent;
 }
 
-export const StreamResponse: Schema.Schema<StreamResponse> =
+export const StreamResponse: Schema.Codec<StreamResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     task: Schema.optional(Task),
     message: Schema.optional(Message),
@@ -470,7 +470,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -492,7 +492,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -506,7 +506,7 @@ export interface CancelTaskRequest {
   tenant?: string;
 }
 
-export const CancelTaskRequest: Schema.Schema<CancelTaskRequest> =
+export const CancelTaskRequest: Schema.Codec<CancelTaskRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenant: Schema.optional(Schema.String),
   }).annotate({ identifier: "CancelTaskRequest" });
@@ -589,7 +589,7 @@ export const DeleteSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteSubscriptionsRequest>;
 
 export type DeleteSubscriptionsResponse = Operation;
 export const DeleteSubscriptionsResponse =
@@ -628,7 +628,7 @@ export const ReactivateSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reactivate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReactivateSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ReactivateSubscriptionsRequest>;
 
 export type ReactivateSubscriptionsResponse = Operation;
 export const ReactivateSubscriptionsResponse =
@@ -670,7 +670,7 @@ export const ListSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListSubscriptionsRequest>;
 
 export type ListSubscriptionsResponse_Op = ListSubscriptionsResponse;
 export const ListSubscriptionsResponse_Op =
@@ -705,7 +705,7 @@ export const GetSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetSubscriptionsRequest>;
 
 export type GetSubscriptionsResponse = Subscription;
 export const GetSubscriptionsResponse =
@@ -747,7 +747,7 @@ export const PatchSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<PatchSubscriptionsRequest>;
 
 export type PatchSubscriptionsResponse = Operation;
 export const PatchSubscriptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -787,7 +787,7 @@ export const CreateSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/subscriptions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateSubscriptionsRequest>;
 
 export type CreateSubscriptionsResponse = Operation;
 export const CreateSubscriptionsResponse =
@@ -830,7 +830,7 @@ export const GetTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetTasksRequest>;
+) as unknown as Schema.Codec<GetTasksRequest>;
 
 export type GetTasksResponse = Task;
 export const GetTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
@@ -862,7 +862,7 @@ export const SubscribeTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}:subscribe" }),
   svc,
-) as unknown as Schema.Schema<SubscribeTasksRequest>;
+) as unknown as Schema.Codec<SubscribeTasksRequest>;
 
 export type SubscribeTasksResponse = StreamResponse;
 export const SubscribeTasksResponse =
@@ -895,7 +895,7 @@ export const CancelTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CancelTasksRequest>;
+) as unknown as Schema.Codec<CancelTasksRequest>;
 
 export type CancelTasksResponse = Task;
 export const CancelTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
@@ -939,7 +939,7 @@ export const ListTasksPushNotificationConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/pushNotificationConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListTasksPushNotificationConfigsRequest>;
+  ) as unknown as Schema.Codec<ListTasksPushNotificationConfigsRequest>;
 
 export type ListTasksPushNotificationConfigsResponse =
   ListTaskPushNotificationConfigResponse;
@@ -981,7 +981,7 @@ export const GetTasksPushNotificationConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetTasksPushNotificationConfigsRequest>;
+  ) as unknown as Schema.Codec<GetTasksPushNotificationConfigsRequest>;
 
 export type GetTasksPushNotificationConfigsResponse =
   TaskPushNotificationConfig;
@@ -1025,7 +1025,7 @@ export const CreateTasksPushNotificationConfigsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateTasksPushNotificationConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateTasksPushNotificationConfigsRequest>;
 
 export type CreateTasksPushNotificationConfigsResponse =
   TaskPushNotificationConfig;
@@ -1065,7 +1065,7 @@ export const DeleteTasksPushNotificationConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTasksPushNotificationConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteTasksPushNotificationConfigsRequest>;
 
 export type DeleteTasksPushNotificationConfigsResponse = Empty;
 export const DeleteTasksPushNotificationConfigsResponse =
@@ -1100,7 +1100,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1129,7 +1129,7 @@ export const StreamMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/message:stream", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<StreamMessageRequest>;
+) as unknown as Schema.Codec<StreamMessageRequest>;
 
 export type StreamMessageResponse = StreamResponse;
 export const StreamMessageResponse = /*@__PURE__*/ /*#__PURE__*/ StreamResponse;

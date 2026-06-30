@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Cloudsearch_Date {
   day?: number;
 }
 
-export const Cloudsearch_Date: Schema.Schema<Cloudsearch_Date> =
+export const Cloudsearch_Date: Schema.Codec<Cloudsearch_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -47,7 +47,7 @@ export interface Value {
   timestampValue?: string;
 }
 
-export const Value: Schema.Schema<Value> =
+export const Value: Schema.Codec<Value> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     booleanValue: Schema.optional(Schema.Boolean),
     stringValue: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export interface EnterpriseTopazSidekickPerson {
   obfuscatedGaiaId?: string;
 }
 
-export const EnterpriseTopazSidekickPerson: Schema.Schema<EnterpriseTopazSidekickPerson> =
+export const EnterpriseTopazSidekickPerson: Schema.Codec<EnterpriseTopazSidekickPerson> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     photoUrl: Schema.optional(Schema.String),
@@ -93,7 +93,7 @@ export interface EnterpriseTopazSidekickCommonDebugInfo {
   message?: string;
 }
 
-export const EnterpriseTopazSidekickCommonDebugInfo: Schema.Schema<EnterpriseTopazSidekickCommonDebugInfo> =
+export const EnterpriseTopazSidekickCommonDebugInfo: Schema.Codec<EnterpriseTopazSidekickCommonDebugInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseTopazSidekickCommonDebugInfo" });
@@ -119,7 +119,7 @@ export interface EnterpriseTopazSidekickCommonDocumentJustification {
     | (string & {});
 }
 
-export const EnterpriseTopazSidekickCommonDocumentJustification: Schema.Schema<EnterpriseTopazSidekickCommonDocumentJustification> =
+export const EnterpriseTopazSidekickCommonDocumentJustification: Schema.Codec<EnterpriseTopazSidekickCommonDocumentJustification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     justification: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface EnterpriseTopazSidekickCommonPersonBirthday {
   value?: string;
 }
 
-export const EnterpriseTopazSidekickCommonPersonBirthday: Schema.Schema<EnterpriseTopazSidekickCommonPersonBirthday> =
+export const EnterpriseTopazSidekickCommonPersonBirthday: Schema.Codec<EnterpriseTopazSidekickCommonPersonBirthday> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseTopazSidekickCommonPersonBirthday" });
@@ -172,7 +172,7 @@ export interface EnterpriseTopazSidekickCommonPerson {
   obfuscatedId?: string;
 }
 
-export const EnterpriseTopazSidekickCommonPerson: Schema.Schema<EnterpriseTopazSidekickCommonPerson> =
+export const EnterpriseTopazSidekickCommonPerson: Schema.Codec<EnterpriseTopazSidekickCommonPerson> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       birthday: Schema.optional(EnterpriseTopazSidekickCommonPersonBirthday),
@@ -194,7 +194,7 @@ export const EnterpriseTopazSidekickCommonPerson: Schema.Schema<EnterpriseTopazS
     }),
   ).annotate({
     identifier: "EnterpriseTopazSidekickCommonPerson",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickCommonPerson>;
+  }) as any as Schema.Codec<EnterpriseTopazSidekickCommonPerson>;
 
 export interface EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata {
   /** The owner of the document. */
@@ -225,7 +225,7 @@ export interface EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata {
   lastViewTimeMs?: string;
 }
 
-export const EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata: Schema.Schema<EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata> =
+export const EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata: Schema.Codec<EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     owner: Schema.optional(EnterpriseTopazSidekickCommonPerson),
     lastModificationTimeMillis: Schema.optional(Schema.String),
@@ -321,7 +321,7 @@ export interface EnterpriseTopazSidekickCommonDocument {
   documentId?: string;
 }
 
-export const EnterpriseTopazSidekickCommonDocument: Schema.Schema<EnterpriseTopazSidekickCommonDocument> =
+export const EnterpriseTopazSidekickCommonDocument: Schema.Codec<EnterpriseTopazSidekickCommonDocument> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debugInfo: Schema.optional(EnterpriseTopazSidekickCommonDebugInfo),
     justification: Schema.optional(
@@ -415,7 +415,7 @@ export interface EnterpriseTopazSidekickAgendaEntry {
   otherAttendeesExcluded?: boolean;
 }
 
-export const EnterpriseTopazSidekickAgendaEntry: Schema.Schema<EnterpriseTopazSidekickAgendaEntry> =
+export const EnterpriseTopazSidekickAgendaEntry: Schema.Codec<EnterpriseTopazSidekickAgendaEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isAllDay: Schema.optional(Schema.Boolean),
     agendaItemUrl: Schema.optional(Schema.String),
@@ -456,7 +456,7 @@ export interface EnterpriseTopazSidekickConflictingEventsCardProto {
   mainEvent?: EnterpriseTopazSidekickAgendaEntry;
 }
 
-export const EnterpriseTopazSidekickConflictingEventsCardProto: Schema.Schema<EnterpriseTopazSidekickConflictingEventsCardProto> =
+export const EnterpriseTopazSidekickConflictingEventsCardProto: Schema.Codec<EnterpriseTopazSidekickConflictingEventsCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conflictingEvent: Schema.optional(
       Schema.Array(EnterpriseTopazSidekickAgendaEntry),
@@ -478,7 +478,7 @@ export interface EnterpriseTopazSidekickGap {
   displayRemainingTime?: string;
 }
 
-export const EnterpriseTopazSidekickGap: Schema.Schema<EnterpriseTopazSidekickGap> =
+export const EnterpriseTopazSidekickGap: Schema.Codec<EnterpriseTopazSidekickGap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remainingTime: Schema.optional(Schema.String),
     startTimeMs: Schema.optional(Schema.String),
@@ -494,7 +494,7 @@ export interface EnterpriseTopazSidekickAgendaItem {
   gapBefore?: EnterpriseTopazSidekickGap;
 }
 
-export const EnterpriseTopazSidekickAgendaItem: Schema.Schema<EnterpriseTopazSidekickAgendaItem> =
+export const EnterpriseTopazSidekickAgendaItem: Schema.Codec<EnterpriseTopazSidekickAgendaItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conflictedGroup: Schema.optional(
       EnterpriseTopazSidekickConflictingEventsCardProto,
@@ -508,7 +508,7 @@ export interface QueryActivity {
   query?: string;
 }
 
-export const QueryActivity: Schema.Schema<QueryActivity> =
+export const QueryActivity: Schema.Codec<QueryActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
   }).annotate({ identifier: "QueryActivity" });
@@ -518,7 +518,7 @@ export interface UserActivity {
   queryActivity?: QueryActivity;
 }
 
-export const UserActivity: Schema.Schema<UserActivity> =
+export const UserActivity: Schema.Codec<UserActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryActivity: Schema.optional(QueryActivity),
   }).annotate({ identifier: "UserActivity" });
@@ -529,7 +529,7 @@ export interface QueryCountByStatus {
   statusCode?: number;
 }
 
-export const QueryCountByStatus: Schema.Schema<QueryCountByStatus> =
+export const QueryCountByStatus: Schema.Codec<QueryCountByStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     statusCode: Schema.optional(Schema.Number),
@@ -541,7 +541,7 @@ export interface CustomerQueryStats {
   date?: Cloudsearch_Date;
 }
 
-export const CustomerQueryStats: Schema.Schema<CustomerQueryStats> =
+export const CustomerQueryStats: Schema.Codec<CustomerQueryStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryCountByStatus: Schema.optional(Schema.Array(QueryCountByStatus)),
     date: Schema.optional(Cloudsearch_Date),
@@ -553,7 +553,7 @@ export interface GetCustomerQueryStatsResponse {
   stats?: ReadonlyArray<CustomerQueryStats>;
 }
 
-export const GetCustomerQueryStatsResponse: Schema.Schema<GetCustomerQueryStatsResponse> =
+export const GetCustomerQueryStatsResponse: Schema.Codec<GetCustomerQueryStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalQueryCount: Schema.optional(Schema.String),
     stats: Schema.optional(Schema.Array(CustomerQueryStats)),
@@ -564,7 +564,7 @@ export interface IndexItemOptions {
   allowUnknownGsuitePrincipals?: boolean;
 }
 
-export const IndexItemOptions: Schema.Schema<IndexItemOptions> =
+export const IndexItemOptions: Schema.Codec<IndexItemOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowUnknownGsuitePrincipals: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "IndexItemOptions" });
@@ -576,7 +576,7 @@ export interface CustomerSessionStats {
   searchSessionsCount?: string;
 }
 
-export const CustomerSessionStats: Schema.Schema<CustomerSessionStats> =
+export const CustomerSessionStats: Schema.Codec<CustomerSessionStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Cloudsearch_Date),
     searchSessionsCount: Schema.optional(Schema.String),
@@ -586,7 +586,7 @@ export interface GetCustomerSessionStatsResponse {
   stats?: ReadonlyArray<CustomerSessionStats>;
 }
 
-export const GetCustomerSessionStatsResponse: Schema.Schema<GetCustomerSessionStatsResponse> =
+export const GetCustomerSessionStatsResponse: Schema.Codec<GetCustomerSessionStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stats: Schema.optional(Schema.Array(CustomerSessionStats)),
   }).annotate({ identifier: "GetCustomerSessionStatsResponse" });
@@ -598,7 +598,7 @@ export interface EnterpriseTopazSidekickPersonProfileCardRelatedPeople {
   relation?: "UNKNOWN" | "MANAGER" | "DIRECT_REPORT" | (string & {});
 }
 
-export const EnterpriseTopazSidekickPersonProfileCardRelatedPeople: Schema.Schema<EnterpriseTopazSidekickPersonProfileCardRelatedPeople> =
+export const EnterpriseTopazSidekickPersonProfileCardRelatedPeople: Schema.Codec<EnterpriseTopazSidekickPersonProfileCardRelatedPeople> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedPerson: Schema.optional(
       Schema.Array(EnterpriseTopazSidekickCommonPerson),
@@ -623,7 +623,7 @@ export interface ItemCountByStatus {
   indexedItemsCount?: string;
 }
 
-export const ItemCountByStatus: Schema.Schema<ItemCountByStatus> =
+export const ItemCountByStatus: Schema.Codec<ItemCountByStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -637,7 +637,7 @@ export interface DataSourceIndexStats {
   itemCountByStatus?: ReadonlyArray<ItemCountByStatus>;
 }
 
-export const DataSourceIndexStats: Schema.Schema<DataSourceIndexStats> =
+export const DataSourceIndexStats: Schema.Codec<DataSourceIndexStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Cloudsearch_Date),
     itemCountByStatus: Schema.optional(Schema.Array(ItemCountByStatus)),
@@ -648,7 +648,7 @@ export interface EnterpriseTopazSidekickPeopleDisambiguationCard {
   person?: ReadonlyArray<EnterpriseTopazSidekickCommonPerson>;
 }
 
-export const EnterpriseTopazSidekickPeopleDisambiguationCard: Schema.Schema<EnterpriseTopazSidekickPeopleDisambiguationCard> =
+export const EnterpriseTopazSidekickPeopleDisambiguationCard: Schema.Codec<EnterpriseTopazSidekickPeopleDisambiguationCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     person: Schema.optional(Schema.Array(EnterpriseTopazSidekickCommonPerson)),
   }).annotate({
@@ -662,7 +662,7 @@ export interface EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambigua
   person?: EnterpriseTopazSidekickCommonPerson;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson> =
+export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson: Schema.Codec<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     person: Schema.optional(EnterpriseTopazSidekickCommonPerson),
@@ -678,7 +678,7 @@ export interface SourceCrowdingConfig {
   numSuggestions?: number;
 }
 
-export const SourceCrowdingConfig: Schema.Schema<SourceCrowdingConfig> =
+export const SourceCrowdingConfig: Schema.Codec<SourceCrowdingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numResults: Schema.optional(Schema.Number),
     numSuggestions: Schema.optional(Schema.Number),
@@ -688,7 +688,7 @@ export interface DoubleValues {
   values?: ReadonlyArray<number>;
 }
 
-export const DoubleValues: Schema.Schema<DoubleValues> =
+export const DoubleValues: Schema.Codec<DoubleValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "DoubleValues" });
@@ -698,7 +698,7 @@ export interface RetrievalImportance {
   importance?: "DEFAULT" | "HIGHEST" | "HIGH" | "LOW" | "NONE" | (string & {});
 }
 
-export const RetrievalImportance: Schema.Schema<RetrievalImportance> =
+export const RetrievalImportance: Schema.Codec<RetrievalImportance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     importance: Schema.optional(Schema.String),
   }).annotate({ identifier: "RetrievalImportance" });
@@ -720,7 +720,7 @@ export interface Source {
     | (string & {});
 }
 
-export const Source: Schema.Schema<Source> =
+export const Source: Schema.Codec<Source> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     predefinedSource: Schema.optional(Schema.String),
@@ -763,7 +763,7 @@ export interface QueryOperator {
   isSortable?: boolean;
 }
 
-export const QueryOperator: Schema.Schema<QueryOperator> =
+export const QueryOperator: Schema.Codec<QueryOperator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lessThanOperatorName: Schema.optional(Schema.String),
     isSuggestable: Schema.optional(Schema.Boolean),
@@ -790,7 +790,7 @@ export interface QuerySource {
   operators?: ReadonlyArray<QueryOperator>;
 }
 
-export const QuerySource: Schema.Schema<QuerySource> =
+export const QuerySource: Schema.Codec<QuerySource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
     displayName: Schema.optional(Schema.String),
@@ -803,7 +803,7 @@ export interface ListQuerySourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListQuerySourcesResponse: Schema.Schema<ListQuerySourcesResponse> =
+export const ListQuerySourcesResponse: Schema.Codec<ListQuerySourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(QuerySource)),
     nextPageToken: Schema.optional(Schema.String),
@@ -827,7 +827,7 @@ export interface EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCatego
   rationale?: string;
 }
 
-export const EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry: Schema.Schema<EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry> =
+export const EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry: Schema.Codec<EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     document: Schema.optional(EnterpriseTopazSidekickCommonDocument),
@@ -855,7 +855,7 @@ export interface EnterpriseTopazSidekickDocumentPerCategoryList {
   listTypeDescription?: string;
 }
 
-export const EnterpriseTopazSidekickDocumentPerCategoryList: Schema.Schema<EnterpriseTopazSidekickDocumentPerCategoryList> =
+export const EnterpriseTopazSidekickDocumentPerCategoryList: Schema.Codec<EnterpriseTopazSidekickDocumentPerCategoryList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documents: Schema.optional(
       Schema.Array(
@@ -875,7 +875,7 @@ export interface ValueFilter {
   operatorName?: string;
 }
 
-export const ValueFilter: Schema.Schema<ValueFilter> =
+export const ValueFilter: Schema.Codec<ValueFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Value),
     operatorName: Schema.optional(Schema.String),
@@ -888,7 +888,7 @@ export interface EnterpriseTopazSidekickShareMeetingDocsCardProto {
   document?: ReadonlyArray<EnterpriseTopazSidekickCommonDocument>;
 }
 
-export const EnterpriseTopazSidekickShareMeetingDocsCardProto: Schema.Schema<EnterpriseTopazSidekickShareMeetingDocsCardProto> =
+export const EnterpriseTopazSidekickShareMeetingDocsCardProto: Schema.Codec<EnterpriseTopazSidekickShareMeetingDocsCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
     document: Schema.optional(
@@ -903,7 +903,7 @@ export interface SafeUrlProto {
   privateDoNotAccessOrElseSafeUrlWrappedValue?: string;
 }
 
-export const SafeUrlProto: Schema.Schema<SafeUrlProto> =
+export const SafeUrlProto: Schema.Codec<SafeUrlProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateDoNotAccessOrElseSafeUrlWrappedValue: Schema.optional(Schema.String),
   }).annotate({ identifier: "SafeUrlProto" });
@@ -913,7 +913,7 @@ export interface Name {
   displayName?: string;
 }
 
-export const Name: Schema.Schema<Name> =
+export const Name: Schema.Codec<Name> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Name" });
@@ -927,7 +927,7 @@ export interface GSuitePrincipal {
   gsuiteGroupEmail?: string;
 }
 
-export const GSuitePrincipal: Schema.Schema<GSuitePrincipal> =
+export const GSuitePrincipal: Schema.Codec<GSuitePrincipal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gsuiteDomain: Schema.optional(Schema.Boolean),
     gsuiteUserEmail: Schema.optional(Schema.String),
@@ -943,7 +943,7 @@ export interface Principal {
   groupResourceName?: string;
 }
 
-export const Principal: Schema.Schema<Principal> =
+export const Principal: Schema.Codec<Principal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gsuitePrincipal: Schema.optional(GSuitePrincipal),
     userResourceName: Schema.optional(Schema.String),
@@ -968,7 +968,7 @@ export interface ItemAcl {
   deniedReaders?: ReadonlyArray<Principal>;
 }
 
-export const ItemAcl: Schema.Schema<ItemAcl> =
+export const ItemAcl: Schema.Codec<ItemAcl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readers: Schema.optional(Schema.Array(Principal)),
     aclInheritanceType: Schema.optional(Schema.String),
@@ -986,7 +986,7 @@ export interface EnterpriseTopazSidekickMeetingNotesCardError {
   reason?: "NONE" | "NOT_OWNER" | "UNKNOWN" | (string & {});
 }
 
-export const EnterpriseTopazSidekickMeetingNotesCardError: Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardError> =
+export const EnterpriseTopazSidekickMeetingNotesCardError: Schema.Codec<EnterpriseTopazSidekickMeetingNotesCardError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
@@ -1002,7 +1002,7 @@ export interface IntegerOperatorOptions {
   operatorName?: string;
 }
 
-export const IntegerOperatorOptions: Schema.Schema<IntegerOperatorOptions> =
+export const IntegerOperatorOptions: Schema.Codec<IntegerOperatorOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lessThanOperatorName: Schema.optional(Schema.String),
     greaterThanOperatorName: Schema.optional(Schema.String),
@@ -1014,7 +1014,7 @@ export interface IntegerFacetingOptions {
   integerBuckets?: ReadonlyArray<string>;
 }
 
-export const IntegerFacetingOptions: Schema.Schema<IntegerFacetingOptions> =
+export const IntegerFacetingOptions: Schema.Codec<IntegerFacetingOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integerBuckets: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "IntegerFacetingOptions" });
@@ -1032,7 +1032,7 @@ export interface IntegerPropertyOptions {
   minimumValue?: string;
 }
 
-export const IntegerPropertyOptions: Schema.Schema<IntegerPropertyOptions> =
+export const IntegerPropertyOptions: Schema.Codec<IntegerPropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orderedRanking: Schema.optional(Schema.String),
     operatorOptions: Schema.optional(IntegerOperatorOptions),
@@ -1052,7 +1052,7 @@ export interface EnterpriseTopazSidekickMeetingNotesCardProto {
   event?: EnterpriseTopazSidekickAgendaEntry;
 }
 
-export const EnterpriseTopazSidekickMeetingNotesCardProto: Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardProto> =
+export const EnterpriseTopazSidekickMeetingNotesCardProto: Schema.Codec<EnterpriseTopazSidekickMeetingNotesCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1062,7 +1062,7 @@ export const EnterpriseTopazSidekickMeetingNotesCardProto: Schema.Schema<Enterpr
 
 export interface RemoveActivityResponse {}
 
-export const RemoveActivityResponse: Schema.Schema<RemoveActivityResponse> =
+export const RemoveActivityResponse: Schema.Codec<RemoveActivityResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveActivityResponse",
   });
@@ -1071,7 +1071,7 @@ export interface DriveLocationRestrict {
   type?: "UNSPECIFIED" | "TRASHED" | "STARRED" | (string & {});
 }
 
-export const DriveLocationRestrict: Schema.Schema<DriveLocationRestrict> =
+export const DriveLocationRestrict: Schema.Codec<DriveLocationRestrict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveLocationRestrict" });
@@ -1083,7 +1083,7 @@ export interface CompositeFilter {
   subFilters?: ReadonlyArray<Filter>;
 }
 
-export const CompositeFilter: Schema.Schema<CompositeFilter> =
+export const CompositeFilter: Schema.Codec<CompositeFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       logicOperator: Schema.optional(Schema.String),
@@ -1091,20 +1091,20 @@ export const CompositeFilter: Schema.Schema<CompositeFilter> =
     }),
   ).annotate({
     identifier: "CompositeFilter",
-  }) as any as Schema.Schema<CompositeFilter>;
+  }) as any as Schema.Codec<CompositeFilter>;
 
 export interface Filter {
   valueFilter?: ValueFilter;
   compositeFilter?: CompositeFilter;
 }
 
-export const Filter: Schema.Schema<Filter> =
+export const Filter: Schema.Codec<Filter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       valueFilter: Schema.optional(ValueFilter),
       compositeFilter: Schema.optional(CompositeFilter),
     }),
-  ).annotate({ identifier: "Filter" }) as any as Schema.Schema<Filter>;
+  ).annotate({ identifier: "Filter" }) as any as Schema.Codec<Filter>;
 
 export interface FacetBucket {
   /** Percent of results that match the bucket value. The returned value is between (0-100], and is rounded down to an integer if fractional. If the value is not explicitly returned, it represents a percentage value that rounds to 0. Percentages are returned for all searches, but are an estimate. Because percentages are always returned, you should render percentages instead of counts. */
@@ -1116,7 +1116,7 @@ export interface FacetBucket {
   value?: Value;
 }
 
-export const FacetBucket: Schema.Schema<FacetBucket> =
+export const FacetBucket: Schema.Codec<FacetBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentage: Schema.optional(Schema.Number),
     count: Schema.optional(Schema.Number),
@@ -1133,7 +1133,7 @@ export interface MapTile {
   tileY?: number;
 }
 
-export const MapTile: Schema.Schema<MapTile> =
+export const MapTile: Schema.Codec<MapTile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageUrl: Schema.optional(SafeUrlProto),
     tileX: Schema.optional(Schema.Number),
@@ -1153,7 +1153,7 @@ export interface MapInfo {
   zoom?: number;
 }
 
-export const MapInfo: Schema.Schema<MapInfo> =
+export const MapInfo: Schema.Codec<MapInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     long: Schema.optional(Schema.Number),
     mapTile: Schema.optional(Schema.Array(MapTile)),
@@ -1170,7 +1170,7 @@ export interface EnterpriseTopazFrontendTeamsPersonCorePhoneNumber {
   type?: "UNKNOWN" | "MOBILE" | "OFFICE" | "OTHER" | (string & {});
 }
 
-export const EnterpriseTopazFrontendTeamsPersonCorePhoneNumber: Schema.Schema<EnterpriseTopazFrontendTeamsPersonCorePhoneNumber> =
+export const EnterpriseTopazFrontendTeamsPersonCorePhoneNumber: Schema.Codec<EnterpriseTopazFrontendTeamsPersonCorePhoneNumber> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     phoneUrl: Schema.optional(SafeUrlProto),
@@ -1185,7 +1185,7 @@ export interface EnterpriseTopazFrontendTeamsLink {
   url?: SafeUrlProto;
 }
 
-export const EnterpriseTopazFrontendTeamsLink: Schema.Schema<EnterpriseTopazFrontendTeamsLink> =
+export const EnterpriseTopazFrontendTeamsLink: Schema.Codec<EnterpriseTopazFrontendTeamsLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     url: Schema.optional(SafeUrlProto),
@@ -1266,7 +1266,7 @@ export interface PersonCore {
   fingerprint?: string;
 }
 
-export const PersonCore: Schema.Schema<PersonCore> =
+export const PersonCore: Schema.Codec<PersonCore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       waldoComeBackTime: Schema.optional(Schema.String),
@@ -1308,7 +1308,7 @@ export const PersonCore: Schema.Schema<PersonCore> =
       dottedLineReports: Schema.optional(Schema.Array(PersonCore)),
       fingerprint: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "PersonCore" }) as any as Schema.Schema<PersonCore>;
+  ).annotate({ identifier: "PersonCore" }) as any as Schema.Codec<PersonCore>;
 
 export interface EnumValuePair {
   /** The string value of the EnumValuePair. The maximum length is 32 characters. */
@@ -1317,7 +1317,7 @@ export interface EnumValuePair {
   integerValue?: number;
 }
 
-export const EnumValuePair: Schema.Schema<EnumValuePair> =
+export const EnumValuePair: Schema.Codec<EnumValuePair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValue: Schema.optional(Schema.String),
     integerValue: Schema.optional(Schema.Number),
@@ -1328,7 +1328,7 @@ export interface EnumOperatorOptions {
   operatorName?: string;
 }
 
-export const EnumOperatorOptions: Schema.Schema<EnumOperatorOptions> =
+export const EnumOperatorOptions: Schema.Codec<EnumOperatorOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnumOperatorOptions" });
@@ -1342,7 +1342,7 @@ export interface EnumPropertyOptions {
   operatorOptions?: EnumOperatorOptions;
 }
 
-export const EnumPropertyOptions: Schema.Schema<EnumPropertyOptions> =
+export const EnumPropertyOptions: Schema.Codec<EnumPropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     possibleValues: Schema.optional(Schema.Array(EnumValuePair)),
     orderedRanking: Schema.optional(Schema.String),
@@ -1353,7 +1353,7 @@ export interface EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents {
   events?: ReadonlyArray<EnterpriseTopazSidekickAgendaEntry>;
 }
 
-export const EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents: Schema.Schema<EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents> =
+export const EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents: Schema.Codec<EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     events: Schema.optional(Schema.Array(EnterpriseTopazSidekickAgendaEntry)),
   }).annotate({
@@ -1365,7 +1365,7 @@ export interface SafeHtmlProto {
   privateDoNotAccessOrElseSafeHtmlWrappedValue?: string;
 }
 
-export const SafeHtmlProto: Schema.Schema<SafeHtmlProto> =
+export const SafeHtmlProto: Schema.Codec<SafeHtmlProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateDoNotAccessOrElseSafeHtmlWrappedValue: Schema.optional(
       Schema.String,
@@ -1381,7 +1381,7 @@ export interface EnterpriseTopazSidekickAgendaGroupCardProtoContext {
   eventsRestrict?: "NONE" | "NEXT_MEETING" | (string & {});
 }
 
-export const EnterpriseTopazSidekickAgendaGroupCardProtoContext: Schema.Schema<EnterpriseTopazSidekickAgendaGroupCardProtoContext> =
+export const EnterpriseTopazSidekickAgendaGroupCardProtoContext: Schema.Codec<EnterpriseTopazSidekickAgendaGroupCardProtoContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     context: Schema.optional(Schema.String),
     date: Schema.optional(Schema.String),
@@ -1395,7 +1395,7 @@ export interface EnterpriseTopazSidekickNlpMetadata {
   confidence?: number;
 }
 
-export const EnterpriseTopazSidekickNlpMetadata: Schema.Schema<EnterpriseTopazSidekickNlpMetadata> =
+export const EnterpriseTopazSidekickNlpMetadata: Schema.Codec<EnterpriseTopazSidekickNlpMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
   }).annotate({ identifier: "EnterpriseTopazSidekickNlpMetadata" });
@@ -1413,7 +1413,7 @@ export interface EmailAddress {
   emailUrl?: string;
 }
 
-export const EmailAddress: Schema.Schema<EmailAddress> =
+export const EmailAddress: Schema.Codec<EmailAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     primary: Schema.optional(Schema.Boolean),
@@ -1428,7 +1428,7 @@ export interface PhoneNumber {
   type?: "OTHER" | "MOBILE" | "OFFICE" | (string & {});
 }
 
-export const PhoneNumber: Schema.Schema<PhoneNumber> =
+export const PhoneNumber: Schema.Codec<PhoneNumber> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1439,7 +1439,7 @@ export interface Photo {
   url?: string;
 }
 
-export const Photo: Schema.Schema<Photo> =
+export const Photo: Schema.Codec<Photo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "Photo" });
@@ -1459,7 +1459,7 @@ export interface Person {
   photos?: ReadonlyArray<Photo>;
 }
 
-export const Person: Schema.Schema<Person> =
+export const Person: Schema.Codec<Person> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     personNames: Schema.optional(Schema.Array(Name)),
     emailAddresses: Schema.optional(Schema.Array(EmailAddress)),
@@ -1474,7 +1474,7 @@ export interface PeopleSuggestion {
   person?: Person;
 }
 
-export const PeopleSuggestion: Schema.Schema<PeopleSuggestion> =
+export const PeopleSuggestion: Schema.Codec<PeopleSuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     person: Schema.optional(Person),
   }).annotate({ identifier: "PeopleSuggestion" });
@@ -1483,21 +1483,21 @@ export interface ObjectValues {
   values?: ReadonlyArray<StructuredDataObject>;
 }
 
-export const ObjectValues: Schema.Schema<ObjectValues> =
+export const ObjectValues: Schema.Codec<ObjectValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       values: Schema.optional(Schema.Array(StructuredDataObject)),
     }),
   ).annotate({
     identifier: "ObjectValues",
-  }) as any as Schema.Schema<ObjectValues>;
+  }) as any as Schema.Codec<ObjectValues>;
 
 export interface EnumValues {
   /** The maximum allowable length for string values is 32 characters. */
   values?: ReadonlyArray<string>;
 }
 
-export const EnumValues: Schema.Schema<EnumValues> =
+export const EnumValues: Schema.Codec<EnumValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "EnumValues" });
@@ -1506,7 +1506,7 @@ export interface IntegerValues {
   values?: ReadonlyArray<string>;
 }
 
-export const IntegerValues: Schema.Schema<IntegerValues> =
+export const IntegerValues: Schema.Codec<IntegerValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "IntegerValues" });
@@ -1515,7 +1515,7 @@ export interface TimestampValues {
   values?: ReadonlyArray<string>;
 }
 
-export const TimestampValues: Schema.Schema<TimestampValues> =
+export const TimestampValues: Schema.Codec<TimestampValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TimestampValues" });
@@ -1525,7 +1525,7 @@ export interface HtmlValues {
   values?: ReadonlyArray<string>;
 }
 
-export const HtmlValues: Schema.Schema<HtmlValues> =
+export const HtmlValues: Schema.Codec<HtmlValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "HtmlValues" });
@@ -1535,7 +1535,7 @@ export interface TextValues {
   values?: ReadonlyArray<string>;
 }
 
-export const TextValues: Schema.Schema<TextValues> =
+export const TextValues: Schema.Codec<TextValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TextValues" });
@@ -1544,7 +1544,7 @@ export interface DateValues {
   values?: ReadonlyArray<Cloudsearch_Date>;
 }
 
-export const DateValues: Schema.Schema<DateValues> =
+export const DateValues: Schema.Codec<DateValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Cloudsearch_Date)),
   }).annotate({ identifier: "DateValues" });
@@ -1563,7 +1563,7 @@ export interface NamedProperty {
   doubleValues?: DoubleValues;
 }
 
-export const NamedProperty: Schema.Schema<NamedProperty> =
+export const NamedProperty: Schema.Codec<NamedProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -1579,21 +1579,21 @@ export const NamedProperty: Schema.Schema<NamedProperty> =
     }),
   ).annotate({
     identifier: "NamedProperty",
-  }) as any as Schema.Schema<NamedProperty>;
+  }) as any as Schema.Codec<NamedProperty>;
 
 export interface StructuredDataObject {
   /** The properties for the object. The maximum number of elements is 1000. */
   properties?: ReadonlyArray<NamedProperty>;
 }
 
-export const StructuredDataObject: Schema.Schema<StructuredDataObject> =
+export const StructuredDataObject: Schema.Codec<StructuredDataObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       properties: Schema.optional(Schema.Array(NamedProperty)),
     }),
   ).annotate({
     identifier: "StructuredDataObject",
-  }) as any as Schema.Schema<StructuredDataObject>;
+  }) as any as Schema.Codec<StructuredDataObject>;
 
 export interface ItemStructuredData {
   /** The structured data object that should conform to a registered object definition in the schema for the data source. */
@@ -1602,7 +1602,7 @@ export interface ItemStructuredData {
   hash?: string;
 }
 
-export const ItemStructuredData: Schema.Schema<ItemStructuredData> =
+export const ItemStructuredData: Schema.Codec<ItemStructuredData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(StructuredDataObject),
     hash: Schema.optional(Schema.String),
@@ -1628,7 +1628,7 @@ export interface RepositoryError {
   errorMessage?: string;
 }
 
-export const RepositoryError: Schema.Schema<RepositoryError> =
+export const RepositoryError: Schema.Codec<RepositoryError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     httpStatusCode: Schema.optional(Schema.Number),
@@ -1642,7 +1642,7 @@ export interface FieldViolation {
   description?: string;
 }
 
-export const FieldViolation: Schema.Schema<FieldViolation> =
+export const FieldViolation: Schema.Codec<FieldViolation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1663,7 +1663,7 @@ export interface ProcessingError {
   fieldViolations?: ReadonlyArray<FieldViolation>;
 }
 
-export const ProcessingError: Schema.Schema<ProcessingError> =
+export const ProcessingError: Schema.Codec<ProcessingError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -1685,7 +1685,7 @@ export interface ItemStatus {
   processingErrors?: ReadonlyArray<ProcessingError>;
 }
 
-export const ItemStatus: Schema.Schema<ItemStatus> =
+export const ItemStatus: Schema.Codec<ItemStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositoryErrors: Schema.optional(Schema.Array(RepositoryError)),
     code: Schema.optional(Schema.String),
@@ -1697,7 +1697,7 @@ export interface BooleanOperatorOptions {
   operatorName?: string;
 }
 
-export const BooleanOperatorOptions: Schema.Schema<BooleanOperatorOptions> =
+export const BooleanOperatorOptions: Schema.Codec<BooleanOperatorOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorName: Schema.optional(Schema.String),
   }).annotate({ identifier: "BooleanOperatorOptions" });
@@ -1709,7 +1709,7 @@ export interface CustomerIndexStats {
   itemCountByStatus?: ReadonlyArray<ItemCountByStatus>;
 }
 
-export const CustomerIndexStats: Schema.Schema<CustomerIndexStats> =
+export const CustomerIndexStats: Schema.Codec<CustomerIndexStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Cloudsearch_Date),
     itemCountByStatus: Schema.optional(Schema.Array(ItemCountByStatus)),
@@ -1722,7 +1722,7 @@ export interface GetCustomerIndexStatsResponse {
   averageIndexedItemCount?: string;
 }
 
-export const GetCustomerIndexStatsResponse: Schema.Schema<GetCustomerIndexStatsResponse> =
+export const GetCustomerIndexStatsResponse: Schema.Codec<GetCustomerIndexStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stats: Schema.optional(Schema.Array(CustomerIndexStats)),
     averageIndexedItemCount: Schema.optional(Schema.String),
@@ -1733,7 +1733,7 @@ export interface DebugOptions {
   enableDebugging?: boolean;
 }
 
-export const DebugOptions: Schema.Schema<DebugOptions> =
+export const DebugOptions: Schema.Codec<DebugOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableDebugging: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DebugOptions" });
@@ -1744,7 +1744,7 @@ export interface ListItemNamesForUnmappedIdentityResponse {
   nextPageToken?: string;
 }
 
-export const ListItemNamesForUnmappedIdentityResponse: Schema.Schema<ListItemNamesForUnmappedIdentityResponse> =
+export const ListItemNamesForUnmappedIdentityResponse: Schema.Codec<ListItemNamesForUnmappedIdentityResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemNames: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1757,7 +1757,7 @@ export interface FreshnessOptions {
   freshnessDuration?: string;
 }
 
-export const FreshnessOptions: Schema.Schema<FreshnessOptions> =
+export const FreshnessOptions: Schema.Codec<FreshnessOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freshnessProperty: Schema.optional(Schema.String),
     freshnessDuration: Schema.optional(Schema.String),
@@ -1770,7 +1770,7 @@ export interface MatchRange {
   start?: number;
 }
 
-export const MatchRange: Schema.Schema<MatchRange> =
+export const MatchRange: Schema.Codec<MatchRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.Number),
     start: Schema.optional(Schema.Number),
@@ -1783,7 +1783,7 @@ export interface QueryInterpretationConfig {
   forceDisableSupplementalResults?: boolean;
 }
 
-export const QueryInterpretationConfig: Schema.Schema<QueryInterpretationConfig> =
+export const QueryInterpretationConfig: Schema.Codec<QueryInterpretationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forceVerbatimMode: Schema.optional(Schema.Boolean),
     forceDisableSupplementalResults: Schema.optional(Schema.Boolean),
@@ -1798,7 +1798,7 @@ export interface DateOperatorOptions {
   lessThanOperatorName?: string;
 }
 
-export const DateOperatorOptions: Schema.Schema<DateOperatorOptions> =
+export const DateOperatorOptions: Schema.Codec<DateOperatorOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorName: Schema.optional(Schema.String),
     greaterThanOperatorName: Schema.optional(Schema.String),
@@ -1810,7 +1810,7 @@ export interface DatePropertyOptions {
   operatorOptions?: DateOperatorOptions;
 }
 
-export const DatePropertyOptions: Schema.Schema<DatePropertyOptions> =
+export const DatePropertyOptions: Schema.Codec<DatePropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorOptions: Schema.optional(DateOperatorOptions),
   }).annotate({ identifier: "DatePropertyOptions" });
@@ -1822,7 +1822,7 @@ export interface ScoringConfig {
   disablePersonalization?: boolean;
 }
 
-export const ScoringConfig: Schema.Schema<ScoringConfig> =
+export const ScoringConfig: Schema.Codec<ScoringConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableFreshness: Schema.optional(Schema.Boolean),
     disablePersonalization: Schema.optional(Schema.Boolean),
@@ -1833,7 +1833,7 @@ export interface EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader {
   title?: string;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader> =
+export const EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader: Schema.Codec<EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
   }).annotate({
@@ -1847,7 +1847,7 @@ export interface FilterOptions {
   filter?: Filter;
 }
 
-export const FilterOptions: Schema.Schema<FilterOptions> =
+export const FilterOptions: Schema.Codec<FilterOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectType: Schema.optional(Schema.String),
     filter: Schema.optional(Filter),
@@ -1862,7 +1862,7 @@ export interface ResultDisplayField {
   property?: NamedProperty;
 }
 
-export const ResultDisplayField: Schema.Schema<ResultDisplayField> =
+export const ResultDisplayField: Schema.Codec<ResultDisplayField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     operatorName: Schema.optional(Schema.String),
@@ -1880,7 +1880,7 @@ export interface EnterpriseTopazSidekickMeetingNotesCardRequest {
   >;
 }
 
-export const EnterpriseTopazSidekickMeetingNotesCardRequest: Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardRequest> =
+export const EnterpriseTopazSidekickMeetingNotesCardRequest: Schema.Codec<EnterpriseTopazSidekickMeetingNotesCardRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(EnterpriseTopazSidekickMeetingNotesCardError),
     event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
@@ -1896,7 +1896,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1918,7 +1918,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1936,7 +1936,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -1950,7 +1950,7 @@ export interface EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer {
   label?: string;
 }
 
-export const EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer: Schema.Schema<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer> =
+export const EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer: Schema.Codec<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answer: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -1972,7 +1972,7 @@ export interface UnmappedIdentity {
     | (string & {});
 }
 
-export const UnmappedIdentity: Schema.Schema<UnmappedIdentity> =
+export const UnmappedIdentity: Schema.Codec<UnmappedIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalIdentity: Schema.optional(Principal),
     resolutionStatusCode: Schema.optional(Schema.String),
@@ -1984,7 +1984,7 @@ export interface ListUnmappedIdentitiesResponse {
   nextPageToken?: string;
 }
 
-export const ListUnmappedIdentitiesResponse: Schema.Schema<ListUnmappedIdentitiesResponse> =
+export const ListUnmappedIdentitiesResponse: Schema.Codec<ListUnmappedIdentitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unmappedIdentities: Schema.optional(Schema.Array(UnmappedIdentity)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1997,7 +1997,7 @@ export interface SearchApplicationSessionStats {
   searchSessionsCount?: string;
 }
 
-export const SearchApplicationSessionStats: Schema.Schema<SearchApplicationSessionStats> =
+export const SearchApplicationSessionStats: Schema.Codec<SearchApplicationSessionStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Cloudsearch_Date),
     searchSessionsCount: Schema.optional(Schema.String),
@@ -2025,7 +2025,7 @@ export interface EnterpriseTopazSidekickRankingParams {
   score?: number;
 }
 
-export const EnterpriseTopazSidekickRankingParams: Schema.Schema<EnterpriseTopazSidekickRankingParams> =
+export const EnterpriseTopazSidekickRankingParams: Schema.Codec<EnterpriseTopazSidekickRankingParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     endTimeMs: Schema.optional(Schema.String),
@@ -2064,7 +2064,7 @@ export interface EnterpriseTopazSidekickCardMetadata {
   cardId?: string;
 }
 
-export const EnterpriseTopazSidekickCardMetadata: Schema.Schema<EnterpriseTopazSidekickCardMetadata> =
+export const EnterpriseTopazSidekickCardMetadata: Schema.Codec<EnterpriseTopazSidekickCardMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chronology: Schema.optional(Schema.String),
     rankingParams: Schema.optional(EnterpriseTopazSidekickRankingParams),
@@ -2083,7 +2083,7 @@ export interface Interaction {
   principal?: Principal;
 }
 
-export const Interaction: Schema.Schema<Interaction> =
+export const Interaction: Schema.Codec<Interaction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     interactionTime: Schema.optional(Schema.String),
@@ -2095,7 +2095,7 @@ export interface SearchQualityMetadata {
   quality?: number;
 }
 
-export const SearchQualityMetadata: Schema.Schema<SearchQualityMetadata> =
+export const SearchQualityMetadata: Schema.Codec<SearchQualityMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quality: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SearchQualityMetadata" });
@@ -2107,7 +2107,7 @@ export interface ContextAttribute {
   values?: ReadonlyArray<string>;
 }
 
-export const ContextAttribute: Schema.Schema<ContextAttribute> =
+export const ContextAttribute: Schema.Codec<ContextAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
@@ -2142,7 +2142,7 @@ export interface ItemMetadata {
   objectType?: string;
 }
 
-export const ItemMetadata: Schema.Schema<ItemMetadata> =
+export const ItemMetadata: Schema.Codec<ItemMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hash: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -2164,7 +2164,7 @@ export interface UploadItemRef {
   name?: string;
 }
 
-export const UploadItemRef: Schema.Schema<UploadItemRef> =
+export const UploadItemRef: Schema.Codec<UploadItemRef> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "UploadItemRef" });
@@ -2179,7 +2179,7 @@ export interface ItemContent {
   hash?: string;
 }
 
-export const ItemContent: Schema.Schema<ItemContent> =
+export const ItemContent: Schema.Codec<ItemContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inlineContent: Schema.optional(Schema.String),
     contentFormat: Schema.optional(Schema.String),
@@ -2215,7 +2215,7 @@ export interface Item {
   version?: string;
 }
 
-export const Item: Schema.Schema<Item> =
+export const Item: Schema.Codec<Item> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acl: Schema.optional(ItemAcl),
     payload: Schema.optional(Schema.String),
@@ -2235,7 +2235,7 @@ export interface ListItemsResponse {
   nextPageToken?: string;
 }
 
-export const ListItemsResponse: Schema.Schema<ListItemsResponse> =
+export const ListItemsResponse: Schema.Codec<ListItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Item)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2248,7 +2248,7 @@ export interface EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo {
   disambiguation?: ReadonlyArray<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson>;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo> =
+export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo: Schema.Codec<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     disambiguation: Schema.optional(
@@ -2266,7 +2266,7 @@ export interface SearchApplicationQueryStats {
   date?: Cloudsearch_Date;
 }
 
-export const SearchApplicationQueryStats: Schema.Schema<SearchApplicationQueryStats> =
+export const SearchApplicationQueryStats: Schema.Codec<SearchApplicationQueryStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryCountByStatus: Schema.optional(Schema.Array(QueryCountByStatus)),
     date: Schema.optional(Cloudsearch_Date),
@@ -2284,7 +2284,7 @@ export interface IndexItemRequest {
   mode?: "UNSPECIFIED" | "SYNCHRONOUS" | "ASYNCHRONOUS" | (string & {});
 }
 
-export const IndexItemRequest: Schema.Schema<IndexItemRequest> =
+export const IndexItemRequest: Schema.Codec<IndexItemRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     item: Schema.optional(Item),
     connectorName: Schema.optional(Schema.String),
@@ -2308,7 +2308,7 @@ export interface EnterpriseTopazSidekickTimeSlot {
   endTimeHourAndMinute?: string;
 }
 
-export const EnterpriseTopazSidekickTimeSlot: Schema.Schema<EnterpriseTopazSidekickTimeSlot> =
+export const EnterpriseTopazSidekickTimeSlot: Schema.Codec<EnterpriseTopazSidekickTimeSlot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTimeHourAndMinute: Schema.optional(Schema.String),
     startTimeInMillis: Schema.optional(Schema.String),
@@ -2327,7 +2327,7 @@ export interface SearchItemsByViewUrlRequest {
   pageToken?: string;
 }
 
-export const SearchItemsByViewUrlRequest: Schema.Schema<SearchItemsByViewUrlRequest> =
+export const SearchItemsByViewUrlRequest: Schema.Codec<SearchItemsByViewUrlRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewUrl: Schema.optional(Schema.String),
     debugOptions: Schema.optional(DebugOptions),
@@ -2340,7 +2340,7 @@ export interface EnterpriseTopazSidekickPersonProfileCard {
   relatedPeople?: ReadonlyArray<EnterpriseTopazSidekickPersonProfileCardRelatedPeople>;
 }
 
-export const EnterpriseTopazSidekickPersonProfileCard: Schema.Schema<EnterpriseTopazSidekickPersonProfileCard> =
+export const EnterpriseTopazSidekickPersonProfileCard: Schema.Codec<EnterpriseTopazSidekickPersonProfileCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subject: Schema.optional(EnterpriseTopazSidekickCommonPerson),
     relatedPeople: Schema.optional(
@@ -2355,7 +2355,7 @@ export interface TextOperatorOptions {
   operatorName?: string;
 }
 
-export const TextOperatorOptions: Schema.Schema<TextOperatorOptions> =
+export const TextOperatorOptions: Schema.Codec<TextOperatorOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exactMatchWithOperator: Schema.optional(Schema.Boolean),
     operatorName: Schema.optional(Schema.String),
@@ -2368,7 +2368,7 @@ export interface TextPropertyOptions {
   operatorOptions?: TextOperatorOptions;
 }
 
-export const TextPropertyOptions: Schema.Schema<TextPropertyOptions> =
+export const TextPropertyOptions: Schema.Codec<TextPropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retrievalImportance: Schema.optional(RetrievalImportance),
     operatorOptions: Schema.optional(TextOperatorOptions),
@@ -2379,7 +2379,7 @@ export interface VPCSettings {
   project?: string;
 }
 
-export const VPCSettings: Schema.Schema<VPCSettings> =
+export const VPCSettings: Schema.Codec<VPCSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.optional(Schema.String),
   }).annotate({ identifier: "VPCSettings" });
@@ -2395,7 +2395,7 @@ export interface AuditLoggingSettings {
   logAdminReadActions?: boolean;
 }
 
-export const AuditLoggingSettings: Schema.Schema<AuditLoggingSettings> =
+export const AuditLoggingSettings: Schema.Codec<AuditLoggingSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logDataWriteActions: Schema.optional(Schema.Boolean),
     logDataReadActions: Schema.optional(Schema.Boolean),
@@ -2410,7 +2410,7 @@ export interface CustomerSettings {
   auditLoggingSettings?: AuditLoggingSettings;
 }
 
-export const CustomerSettings: Schema.Schema<CustomerSettings> =
+export const CustomerSettings: Schema.Codec<CustomerSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpcSettings: Schema.optional(VPCSettings),
     auditLoggingSettings: Schema.optional(AuditLoggingSettings),
@@ -2420,7 +2420,7 @@ export interface ResultDisplayLine {
   fields?: ReadonlyArray<ResultDisplayField>;
 }
 
-export const ResultDisplayLine: Schema.Schema<ResultDisplayLine> =
+export const ResultDisplayLine: Schema.Codec<ResultDisplayLine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(ResultDisplayField)),
   }).annotate({ identifier: "ResultDisplayLine" });
@@ -2430,7 +2430,7 @@ export interface Media {
   resourceName?: string;
 }
 
-export const Media: Schema.Schema<Media> =
+export const Media: Schema.Codec<Media> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Media" });
@@ -2442,7 +2442,7 @@ export interface EnterpriseTopazSidekickDocumentGroup {
   groupType?: "UNKNOWN_TYPE" | "ALL" | (string & {});
 }
 
-export const EnterpriseTopazSidekickDocumentGroup: Schema.Schema<EnterpriseTopazSidekickDocumentGroup> =
+export const EnterpriseTopazSidekickDocumentGroup: Schema.Codec<EnterpriseTopazSidekickDocumentGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     personalizedDocument: Schema.optional(
       Schema.Array(EnterpriseTopazSidekickCommonDocument),
@@ -2455,7 +2455,7 @@ export interface EnterpriseTopazSidekickPersonalizedDocsCardProto {
   documentGroup?: ReadonlyArray<EnterpriseTopazSidekickDocumentGroup>;
 }
 
-export const EnterpriseTopazSidekickPersonalizedDocsCardProto: Schema.Schema<EnterpriseTopazSidekickPersonalizedDocsCardProto> =
+export const EnterpriseTopazSidekickPersonalizedDocsCardProto: Schema.Codec<EnterpriseTopazSidekickPersonalizedDocsCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentGroup: Schema.optional(
       Schema.Array(EnterpriseTopazSidekickDocumentGroup),
@@ -2469,7 +2469,7 @@ export interface BooleanPropertyOptions {
   operatorOptions?: BooleanOperatorOptions;
 }
 
-export const BooleanPropertyOptions: Schema.Schema<BooleanPropertyOptions> =
+export const BooleanPropertyOptions: Schema.Codec<BooleanPropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorOptions: Schema.optional(BooleanOperatorOptions),
   }).annotate({ identifier: "BooleanPropertyOptions" });
@@ -2483,7 +2483,7 @@ export interface EnterpriseTopazSidekickScheduledMeeting {
   meetingTitle?: string;
 }
 
-export const EnterpriseTopazSidekickScheduledMeeting: Schema.Schema<EnterpriseTopazSidekickScheduledMeeting> =
+export const EnterpriseTopazSidekickScheduledMeeting: Schema.Codec<EnterpriseTopazSidekickScheduledMeeting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meetingLocation: Schema.optional(Schema.String),
     meetingTime: Schema.optional(EnterpriseTopazSidekickTimeSlot),
@@ -2499,7 +2499,7 @@ export interface EnterpriseTopazSidekickAnswerSuggestedQueryCategory {
   category?: "UNKNOWN" | "CALENDAR" | "DOCUMENT" | "PEOPLE" | (string & {});
 }
 
-export const EnterpriseTopazSidekickAnswerSuggestedQueryCategory: Schema.Schema<EnterpriseTopazSidekickAnswerSuggestedQueryCategory> =
+export const EnterpriseTopazSidekickAnswerSuggestedQueryCategory: Schema.Codec<EnterpriseTopazSidekickAnswerSuggestedQueryCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.Array(Schema.String)),
     isEnabled: Schema.optional(Schema.Boolean),
@@ -2528,7 +2528,7 @@ export interface PollItemsRequest {
   connectorName?: string;
 }
 
-export const PollItemsRequest: Schema.Schema<PollItemsRequest> =
+export const PollItemsRequest: Schema.Codec<PollItemsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queue: Schema.optional(Schema.String),
     statusCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -2546,7 +2546,7 @@ export interface DeleteQueueItemsRequest {
   connectorName?: string;
 }
 
-export const DeleteQueueItemsRequest: Schema.Schema<DeleteQueueItemsRequest> =
+export const DeleteQueueItemsRequest: Schema.Codec<DeleteQueueItemsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debugOptions: Schema.optional(DebugOptions),
     queue: Schema.optional(Schema.String),
@@ -2566,7 +2566,7 @@ export interface SpellResult {
   suggestedQuery?: string;
 }
 
-export const SpellResult: Schema.Schema<SpellResult> =
+export const SpellResult: Schema.Codec<SpellResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestedQueryHtml: Schema.optional(SafeHtmlProto),
     suggestionType: Schema.optional(Schema.String),
@@ -2584,7 +2584,7 @@ export interface FacetResult {
   sourceName?: string;
 }
 
-export const FacetResult: Schema.Schema<FacetResult> =
+export const FacetResult: Schema.Codec<FacetResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectType: Schema.optional(Schema.String),
     operatorName: Schema.optional(Schema.String),
@@ -2603,7 +2603,7 @@ export interface SourceResultCount {
   hasMoreResults?: boolean;
 }
 
-export const SourceResultCount: Schema.Schema<SourceResultCount> =
+export const SourceResultCount: Schema.Codec<SourceResultCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultCountEstimate: Schema.optional(Schema.String),
     source: Schema.optional(Source),
@@ -2616,7 +2616,7 @@ export interface ResultCounts {
   sourceResultCounts?: ReadonlyArray<SourceResultCount>;
 }
 
-export const ResultCounts: Schema.Schema<ResultCounts> =
+export const ResultCounts: Schema.Codec<ResultCounts> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceResultCounts: Schema.optional(Schema.Array(SourceResultCount)),
   }).annotate({ identifier: "ResultCounts" });
@@ -2626,7 +2626,7 @@ export interface SourceScoringConfig {
   sourceImportance?: "DEFAULT" | "LOW" | "HIGH" | (string & {});
 }
 
-export const SourceScoringConfig: Schema.Schema<SourceScoringConfig> =
+export const SourceScoringConfig: Schema.Codec<SourceScoringConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceImportance: Schema.optional(Schema.String),
   }).annotate({ identifier: "SourceScoringConfig" });
@@ -2636,7 +2636,7 @@ export interface HtmlOperatorOptions {
   operatorName?: string;
 }
 
-export const HtmlOperatorOptions: Schema.Schema<HtmlOperatorOptions> =
+export const HtmlOperatorOptions: Schema.Codec<HtmlOperatorOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorName: Schema.optional(Schema.String),
   }).annotate({ identifier: "HtmlOperatorOptions" });
@@ -2654,7 +2654,7 @@ export interface FacetOptions {
   integerFacetingOptions?: IntegerFacetingOptions;
 }
 
-export const FacetOptions: Schema.Schema<FacetOptions> =
+export const FacetOptions: Schema.Codec<FacetOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorName: Schema.optional(Schema.String),
     sourceName: Schema.optional(Schema.String),
@@ -2670,7 +2670,7 @@ export interface GetDataSourceIndexStatsResponse {
   averageIndexedItemCount?: string;
 }
 
-export const GetDataSourceIndexStatsResponse: Schema.Schema<GetDataSourceIndexStatsResponse> =
+export const GetDataSourceIndexStatsResponse: Schema.Codec<GetDataSourceIndexStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stats: Schema.optional(Schema.Array(DataSourceIndexStats)),
     averageIndexedItemCount: Schema.optional(Schema.String),
@@ -2681,7 +2681,7 @@ export interface ResponseDebugInfo {
   formattedDebugInfo?: string;
 }
 
-export const ResponseDebugInfo: Schema.Schema<ResponseDebugInfo> =
+export const ResponseDebugInfo: Schema.Codec<ResponseDebugInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formattedDebugInfo: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResponseDebugInfo" });
@@ -2695,7 +2695,7 @@ export interface TimestampOperatorOptions {
   greaterThanOperatorName?: string;
 }
 
-export const TimestampOperatorOptions: Schema.Schema<TimestampOperatorOptions> =
+export const TimestampOperatorOptions: Schema.Codec<TimestampOperatorOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lessThanOperatorName: Schema.optional(Schema.String),
     operatorName: Schema.optional(Schema.String),
@@ -2709,7 +2709,7 @@ export interface CustomerSearchApplicationStats {
   count?: string;
 }
 
-export const CustomerSearchApplicationStats: Schema.Schema<CustomerSearchApplicationStats> =
+export const CustomerSearchApplicationStats: Schema.Codec<CustomerSearchApplicationStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Cloudsearch_Date),
     count: Schema.optional(Schema.String),
@@ -2722,7 +2722,7 @@ export interface GetCustomerSearchApplicationStatsResponse {
   stats?: ReadonlyArray<CustomerSearchApplicationStats>;
 }
 
-export const GetCustomerSearchApplicationStatsResponse: Schema.Schema<GetCustomerSearchApplicationStatsResponse> =
+export const GetCustomerSearchApplicationStatsResponse: Schema.Codec<GetCustomerSearchApplicationStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     averageSearchApplicationCount: Schema.optional(Schema.String),
     stats: Schema.optional(Schema.Array(CustomerSearchApplicationStats)),
@@ -2741,7 +2741,7 @@ export interface RequestOptions {
   timeZone?: string;
 }
 
-export const RequestOptions: Schema.Schema<RequestOptions> =
+export const RequestOptions: Schema.Codec<RequestOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchApplicationId: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -2757,7 +2757,7 @@ export interface RemoveActivityRequest {
   requestOptions?: RequestOptions;
 }
 
-export const RemoveActivityRequest: Schema.Schema<RemoveActivityRequest> =
+export const RemoveActivityRequest: Schema.Codec<RemoveActivityRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userActivity: Schema.optional(UserActivity),
     requestOptions: Schema.optional(RequestOptions),
@@ -2769,7 +2769,7 @@ export interface SearchItemsByViewUrlResponse {
   items?: ReadonlyArray<Item>;
 }
 
-export const SearchItemsByViewUrlResponse: Schema.Schema<SearchItemsByViewUrlResponse> =
+export const SearchItemsByViewUrlResponse: Schema.Codec<SearchItemsByViewUrlResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Item)),
@@ -2782,7 +2782,7 @@ export interface EnterpriseTopazSidekickGenericAnswerCard {
   answer?: string;
 }
 
-export const EnterpriseTopazSidekickGenericAnswerCard: Schema.Schema<EnterpriseTopazSidekickGenericAnswerCard> =
+export const EnterpriseTopazSidekickGenericAnswerCard: Schema.Codec<EnterpriseTopazSidekickGenericAnswerCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     answer: Schema.optional(Schema.String),
@@ -2793,7 +2793,7 @@ export interface DisplayedProperty {
   propertyName?: string;
 }
 
-export const DisplayedProperty: Schema.Schema<DisplayedProperty> =
+export const DisplayedProperty: Schema.Codec<DisplayedProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisplayedProperty" });
@@ -2803,7 +2803,7 @@ export interface Metaline {
   properties?: ReadonlyArray<DisplayedProperty>;
 }
 
-export const Metaline: Schema.Schema<Metaline> =
+export const Metaline: Schema.Codec<Metaline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(Schema.Array(DisplayedProperty)),
   }).annotate({ identifier: "Metaline" });
@@ -2815,7 +2815,7 @@ export interface ObjectDisplayOptions {
   metalines?: ReadonlyArray<Metaline>;
 }
 
-export const ObjectDisplayOptions: Schema.Schema<ObjectDisplayOptions> =
+export const ObjectDisplayOptions: Schema.Codec<ObjectDisplayOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectDisplayLabel: Schema.optional(Schema.String),
     metalines: Schema.optional(Schema.Array(Metaline)),
@@ -2830,7 +2830,7 @@ export interface ObjectOptions {
   freshnessOptions?: FreshnessOptions;
 }
 
-export const ObjectOptions: Schema.Schema<ObjectOptions> =
+export const ObjectOptions: Schema.Codec<ObjectOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayOptions: Schema.optional(ObjectDisplayOptions),
     suggestionFilteringOperators: Schema.optional(Schema.Array(Schema.String)),
@@ -2842,7 +2842,7 @@ export interface PropertyDisplayOptions {
   displayLabel?: string;
 }
 
-export const PropertyDisplayOptions: Schema.Schema<PropertyDisplayOptions> =
+export const PropertyDisplayOptions: Schema.Codec<PropertyDisplayOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayLabel: Schema.optional(Schema.String),
   }).annotate({ identifier: "PropertyDisplayOptions" });
@@ -2852,7 +2852,7 @@ export interface DoubleOperatorOptions {
   operatorName?: string;
 }
 
-export const DoubleOperatorOptions: Schema.Schema<DoubleOperatorOptions> =
+export const DoubleOperatorOptions: Schema.Codec<DoubleOperatorOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorName: Schema.optional(Schema.String),
   }).annotate({ identifier: "DoubleOperatorOptions" });
@@ -2862,7 +2862,7 @@ export interface DoublePropertyOptions {
   operatorOptions?: DoubleOperatorOptions;
 }
 
-export const DoublePropertyOptions: Schema.Schema<DoublePropertyOptions> =
+export const DoublePropertyOptions: Schema.Codec<DoublePropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorOptions: Schema.optional(DoubleOperatorOptions),
   }).annotate({ identifier: "DoublePropertyOptions" });
@@ -2874,7 +2874,7 @@ export interface HtmlPropertyOptions {
   operatorOptions?: HtmlOperatorOptions;
 }
 
-export const HtmlPropertyOptions: Schema.Schema<HtmlPropertyOptions> =
+export const HtmlPropertyOptions: Schema.Codec<HtmlPropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retrievalImportance: Schema.optional(RetrievalImportance),
     operatorOptions: Schema.optional(HtmlOperatorOptions),
@@ -2885,7 +2885,7 @@ export interface TimestampPropertyOptions {
   operatorOptions?: TimestampOperatorOptions;
 }
 
-export const TimestampPropertyOptions: Schema.Schema<TimestampPropertyOptions> =
+export const TimestampPropertyOptions: Schema.Codec<TimestampPropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorOptions: Schema.optional(TimestampOperatorOptions),
   }).annotate({ identifier: "TimestampPropertyOptions" });
@@ -2895,14 +2895,14 @@ export interface ObjectPropertyOptions {
   subobjectProperties?: ReadonlyArray<PropertyDefinition>;
 }
 
-export const ObjectPropertyOptions: Schema.Schema<ObjectPropertyOptions> =
+export const ObjectPropertyOptions: Schema.Codec<ObjectPropertyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subobjectProperties: Schema.optional(Schema.Array(PropertyDefinition)),
     }),
   ).annotate({
     identifier: "ObjectPropertyOptions",
-  }) as any as Schema.Schema<ObjectPropertyOptions>;
+  }) as any as Schema.Codec<ObjectPropertyOptions>;
 
 export interface PropertyDefinition {
   integerPropertyOptions?: IntegerPropertyOptions;
@@ -2932,7 +2932,7 @@ export interface PropertyDefinition {
   objectPropertyOptions?: ObjectPropertyOptions;
 }
 
-export const PropertyDefinition: Schema.Schema<PropertyDefinition> =
+export const PropertyDefinition: Schema.Codec<PropertyDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integerPropertyOptions: Schema.optional(IntegerPropertyOptions),
@@ -2955,7 +2955,7 @@ export const PropertyDefinition: Schema.Schema<PropertyDefinition> =
     }),
   ).annotate({
     identifier: "PropertyDefinition",
-  }) as any as Schema.Schema<PropertyDefinition>;
+  }) as any as Schema.Codec<PropertyDefinition>;
 
 export interface ObjectDefinition {
   /** The name for the object, which then defines its type. Item indexing requests should set the objectType field equal to this value. For example, if *name* is *Document*, then indexing requests for items of type Document should set objectType equal to *Document*. Each object definition must be uniquely named within a schema. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The maximum length is 256 characters. */
@@ -2966,7 +2966,7 @@ export interface ObjectDefinition {
   propertyDefinitions?: ReadonlyArray<PropertyDefinition>;
 }
 
-export const ObjectDefinition: Schema.Schema<ObjectDefinition> =
+export const ObjectDefinition: Schema.Codec<ObjectDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     options: Schema.optional(ObjectOptions),
@@ -2994,7 +2994,7 @@ export interface DataSource {
   shortName?: string;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
+export const DataSource: Schema.Codec<DataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     operationIds: Schema.optional(Schema.Array(Schema.String)),
@@ -3013,7 +3013,7 @@ export interface ListDataSourceResponse {
   nextPageToken?: string;
 }
 
-export const ListDataSourceResponse: Schema.Schema<ListDataSourceResponse> =
+export const ListDataSourceResponse: Schema.Codec<ListDataSourceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(DataSource)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3030,7 +3030,7 @@ export interface SearchApplicationUserStats {
   thirtyDaysActiveUsersCount?: string;
 }
 
-export const SearchApplicationUserStats: Schema.Schema<SearchApplicationUserStats> =
+export const SearchApplicationUserStats: Schema.Codec<SearchApplicationUserStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Cloudsearch_Date),
     sevenDaysActiveUsersCount: Schema.optional(Schema.String),
@@ -3043,7 +3043,7 @@ export interface PollItemsResponse {
   items?: ReadonlyArray<Item>;
 }
 
-export const PollItemsResponse: Schema.Schema<PollItemsResponse> =
+export const PollItemsResponse: Schema.Codec<PollItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Item)),
   }).annotate({ identifier: "PollItemsResponse" });
@@ -3068,7 +3068,7 @@ export interface DriveMimeTypeRestrict {
     | (string & {});
 }
 
-export const DriveMimeTypeRestrict: Schema.Schema<DriveMimeTypeRestrict> =
+export const DriveMimeTypeRestrict: Schema.Codec<DriveMimeTypeRestrict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveMimeTypeRestrict" });
@@ -3084,7 +3084,7 @@ export interface DriveTimeSpanRestrict {
     | (string & {});
 }
 
-export const DriveTimeSpanRestrict: Schema.Schema<DriveTimeSpanRestrict> =
+export const DriveTimeSpanRestrict: Schema.Codec<DriveTimeSpanRestrict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveTimeSpanRestrict" });
@@ -3097,7 +3097,7 @@ export interface DriveFollowUpRestrict {
     | (string & {});
 }
 
-export const DriveFollowUpRestrict: Schema.Schema<DriveFollowUpRestrict> =
+export const DriveFollowUpRestrict: Schema.Codec<DriveFollowUpRestrict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveFollowUpRestrict" });
@@ -3112,7 +3112,7 @@ export interface RestrictItem {
   driveFollowUpRestrict?: DriveFollowUpRestrict;
 }
 
-export const RestrictItem: Schema.Schema<RestrictItem> =
+export const RestrictItem: Schema.Codec<RestrictItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveLocationRestrict: Schema.optional(DriveLocationRestrict),
     searchOperator: Schema.optional(Schema.String),
@@ -3123,7 +3123,7 @@ export const RestrictItem: Schema.Schema<RestrictItem> =
 
 export interface InitializeCustomerRequest {}
 
-export const InitializeCustomerRequest: Schema.Schema<InitializeCustomerRequest> =
+export const InitializeCustomerRequest: Schema.Codec<InitializeCustomerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InitializeCustomerRequest",
   });
@@ -3151,7 +3151,7 @@ export interface PushItem {
   queue?: string;
 }
 
-export const PushItem: Schema.Schema<PushItem> =
+export const PushItem: Schema.Codec<PushItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadataHash: Schema.optional(Schema.String),
     payload: Schema.optional(Schema.String),
@@ -3171,7 +3171,7 @@ export interface PushItemRequest {
   connectorName?: string;
 }
 
-export const PushItemRequest: Schema.Schema<PushItemRequest> =
+export const PushItemRequest: Schema.Codec<PushItemRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debugOptions: Schema.optional(DebugOptions),
     item: Schema.optional(PushItem),
@@ -3183,7 +3183,7 @@ export interface StructuredResult {
   person?: Person;
 }
 
-export const StructuredResult: Schema.Schema<StructuredResult> =
+export const StructuredResult: Schema.Codec<StructuredResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     person: Schema.optional(Person),
   }).annotate({ identifier: "StructuredResult" });
@@ -3201,7 +3201,7 @@ export interface QuerySuggestion {
   lastQueryTime?: string;
 }
 
-export const QuerySuggestion: Schema.Schema<QuerySuggestion> =
+export const QuerySuggestion: Schema.Codec<QuerySuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceCorpus: Schema.optional(Schema.String),
     lastQueryTime: Schema.optional(Schema.String),
@@ -3211,7 +3211,7 @@ export interface PeoplePromotionCard {
   people?: ReadonlyArray<PersonCore>;
 }
 
-export const PeoplePromotionCard: Schema.Schema<PeoplePromotionCard> =
+export const PeoplePromotionCard: Schema.Codec<PeoplePromotionCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     people: Schema.optional(Schema.Array(PersonCore)),
   }).annotate({ identifier: "PeoplePromotionCard" });
@@ -3227,7 +3227,7 @@ export interface CustomerUserStats {
   sevenDaysActiveUsersCount?: string;
 }
 
-export const CustomerUserStats: Schema.Schema<CustomerUserStats> =
+export const CustomerUserStats: Schema.Codec<CustomerUserStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oneDayActiveUsersCount: Schema.optional(Schema.String),
     thirtyDaysActiveUsersCount: Schema.optional(Schema.String),
@@ -3239,7 +3239,7 @@ export interface GetCustomerUserStatsResponse {
   stats?: ReadonlyArray<CustomerUserStats>;
 }
 
-export const GetCustomerUserStatsResponse: Schema.Schema<GetCustomerUserStatsResponse> =
+export const GetCustomerUserStatsResponse: Schema.Codec<GetCustomerUserStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stats: Schema.optional(Schema.Array(CustomerUserStats)),
   }).annotate({ identifier: "GetCustomerUserStatsResponse" });
@@ -3251,7 +3251,7 @@ export interface DataSourceRestriction {
   filterOptions?: ReadonlyArray<FilterOptions>;
 }
 
-export const DataSourceRestriction: Schema.Schema<DataSourceRestriction> =
+export const DataSourceRestriction: Schema.Codec<DataSourceRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
     filterOptions: Schema.optional(Schema.Array(FilterOptions)),
@@ -3264,7 +3264,7 @@ export interface SortOptions {
   sortOrder?: "ASCENDING" | "DESCENDING" | (string & {});
 }
 
-export const SortOptions: Schema.Schema<SortOptions> =
+export const SortOptions: Schema.Codec<SortOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatorName: Schema.optional(Schema.String),
     sortOrder: Schema.optional(Schema.String),
@@ -3279,7 +3279,7 @@ export interface QueryInterpretationOptions {
   enableVerbatimMode?: boolean;
 }
 
-export const QueryInterpretationOptions: Schema.Schema<QueryInterpretationOptions> =
+export const QueryInterpretationOptions: Schema.Codec<QueryInterpretationOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableNlInterpretation: Schema.optional(Schema.Boolean),
     disableSupplementalResults: Schema.optional(Schema.Boolean),
@@ -3306,7 +3306,7 @@ export interface SearchRequest {
   contextAttributes?: ReadonlyArray<ContextAttribute>;
 }
 
-export const SearchRequest: Schema.Schema<SearchRequest> =
+export const SearchRequest: Schema.Codec<SearchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.Number),
     dataSourceRestrictions: Schema.optional(
@@ -3332,7 +3332,7 @@ export interface SuggestResult {
   querySuggestion?: QuerySuggestion;
 }
 
-export const SuggestResult: Schema.Schema<SuggestResult> =
+export const SuggestResult: Schema.Codec<SuggestResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     peopleSuggestion: Schema.optional(PeopleSuggestion),
     suggestedQuery: Schema.optional(Schema.String),
@@ -3355,7 +3355,7 @@ export interface BackgroundColoredText {
   text?: string;
 }
 
-export const BackgroundColoredText: Schema.Schema<BackgroundColoredText> =
+export const BackgroundColoredText: Schema.Codec<BackgroundColoredText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backgroundColor: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -3368,7 +3368,7 @@ export interface Action {
   url?: string;
 }
 
-export const Action: Schema.Schema<Action> =
+export const Action: Schema.Codec<Action> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -3385,7 +3385,7 @@ export interface Content {
   description?: SafeHtmlProto;
 }
 
-export const Content: Schema.Schema<Content> =
+export const Content: Schema.Codec<Content> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subtitle: Schema.optional(BackgroundColoredText),
     actions: Schema.optional(Schema.Array(Action)),
@@ -3432,7 +3432,7 @@ export interface Context {
   app?: ReadonlyArray<"UNKNOWN_APP" | "TOPAZ" | "MOMA" | (string & {})>;
 }
 
-export const Context: Schema.Schema<Context> =
+export const Context: Schema.Codec<Context> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.Array(Schema.String)),
     startDayOffsetSec: Schema.optional(Schema.String),
@@ -3462,7 +3462,7 @@ export interface ThirdPartyGenericCard {
   context?: Context;
 }
 
-export const ThirdPartyGenericCard: Schema.Schema<ThirdPartyGenericCard> =
+export const ThirdPartyGenericCard: Schema.Codec<ThirdPartyGenericCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isDismissible: Schema.optional(Schema.Boolean),
     priority: Schema.optional(Schema.Number),
@@ -3476,7 +3476,7 @@ export interface EnterpriseTopazSidekickRecentDocumentsCardProto {
   document?: ReadonlyArray<EnterpriseTopazSidekickCommonDocument>;
 }
 
-export const EnterpriseTopazSidekickRecentDocumentsCardProto: Schema.Schema<EnterpriseTopazSidekickRecentDocumentsCardProto> =
+export const EnterpriseTopazSidekickRecentDocumentsCardProto: Schema.Codec<EnterpriseTopazSidekickRecentDocumentsCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(
       Schema.Array(EnterpriseTopazSidekickCommonDocument),
@@ -3491,7 +3491,7 @@ export interface EnterpriseTopazSidekickAgendaGroupCardProto {
   agendaItem?: ReadonlyArray<EnterpriseTopazSidekickAgendaItem>;
 }
 
-export const EnterpriseTopazSidekickAgendaGroupCardProto: Schema.Schema<EnterpriseTopazSidekickAgendaGroupCardProto> =
+export const EnterpriseTopazSidekickAgendaGroupCardProto: Schema.Codec<EnterpriseTopazSidekickAgendaGroupCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentAgendaItem: Schema.optional(EnterpriseTopazSidekickAgendaItem),
     context: Schema.optional(
@@ -3518,7 +3518,7 @@ export interface EnterpriseTopazSidekickAnswerAnswerList {
   labeledAnswer?: ReadonlyArray<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer>;
 }
 
-export const EnterpriseTopazSidekickAnswerAnswerList: Schema.Schema<EnterpriseTopazSidekickAnswerAnswerList> =
+export const EnterpriseTopazSidekickAnswerAnswerList: Schema.Codec<EnterpriseTopazSidekickAnswerAnswerList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     labeledAnswer: Schema.optional(
@@ -3548,7 +3548,7 @@ export interface EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard {
   answer?: ReadonlyArray<SafeHtmlProto>;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard> =
+export const EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard: Schema.Codec<EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subject: Schema.optional(EnterpriseTopazSidekickCommonPerson),
     disambiguationInfo: Schema.optional(
@@ -3570,7 +3570,7 @@ export interface EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard {
   suggestedQueryCategory?: ReadonlyArray<EnterpriseTopazSidekickAnswerSuggestedQueryCategory>;
 }
 
-export const EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard: Schema.Schema<EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard> =
+export const EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard: Schema.Codec<EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestedQueryCategory: Schema.optional(
       Schema.Array(EnterpriseTopazSidekickAnswerSuggestedQueryCategory),
@@ -3606,7 +3606,7 @@ export interface EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard {
     | (string & {});
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard> =
+export const EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard: Schema.Codec<EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     header: Schema.optional(
       EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader,
@@ -3642,7 +3642,7 @@ export interface EnterpriseTopazSidekickFindMeetingTimeCardProto {
   timeBoundaries?: EnterpriseTopazSidekickTimeSlot;
 }
 
-export const EnterpriseTopazSidekickFindMeetingTimeCardProto: Schema.Schema<EnterpriseTopazSidekickFindMeetingTimeCardProto> =
+export const EnterpriseTopazSidekickFindMeetingTimeCardProto: Schema.Codec<EnterpriseTopazSidekickFindMeetingTimeCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invitees: Schema.optional(Schema.Array(EnterpriseTopazSidekickPerson)),
     timezoneId: Schema.optional(Schema.String),
@@ -3665,7 +3665,7 @@ export interface EnterpriseTopazSidekickGetAndKeepAheadCardProto {
   sharedDocuments?: EnterpriseTopazSidekickDocumentPerCategoryList;
 }
 
-export const EnterpriseTopazSidekickGetAndKeepAheadCardProto: Schema.Schema<EnterpriseTopazSidekickGetAndKeepAheadCardProto> =
+export const EnterpriseTopazSidekickGetAndKeepAheadCardProto: Schema.Codec<EnterpriseTopazSidekickGetAndKeepAheadCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     declinedEvents: Schema.optional(
       EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents,
@@ -3761,7 +3761,7 @@ export interface EnterpriseTopazSidekickAssistCardProto {
   getAndKeepAheadCard?: EnterpriseTopazSidekickGetAndKeepAheadCardProto;
 }
 
-export const EnterpriseTopazSidekickAssistCardProto: Schema.Schema<EnterpriseTopazSidekickAssistCardProto> =
+export const EnterpriseTopazSidekickAssistCardProto: Schema.Codec<EnterpriseTopazSidekickAssistCardProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conflictingMeetingsCard: Schema.optional(
       EnterpriseTopazSidekickConflictingEventsCardProto,
@@ -3829,7 +3829,7 @@ export interface ResultDebugInfo {
   formattedDebugInfo?: string;
 }
 
-export const ResultDebugInfo: Schema.Schema<ResultDebugInfo> =
+export const ResultDebugInfo: Schema.Codec<ResultDebugInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formattedDebugInfo: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResultDebugInfo" });
@@ -3841,7 +3841,7 @@ export interface Snippet {
   snippet?: string;
 }
 
-export const Snippet: Schema.Schema<Snippet> =
+export const Snippet: Schema.Codec<Snippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchRanges: Schema.optional(Schema.Array(MatchRange)),
     snippet: Schema.optional(Schema.String),
@@ -3854,7 +3854,7 @@ export interface ResultDisplayMetadata {
   metalines?: ReadonlyArray<ResultDisplayLine>;
 }
 
-export const ResultDisplayMetadata: Schema.Schema<ResultDisplayMetadata> =
+export const ResultDisplayMetadata: Schema.Codec<ResultDisplayMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectTypeLabel: Schema.optional(Schema.String),
     metalines: Schema.optional(Schema.Array(ResultDisplayLine)),
@@ -3881,7 +3881,7 @@ export interface Metadata {
   fields?: ReadonlyArray<NamedProperty>;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
+export const Metadata: Schema.Codec<Metadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
     mimeType: Schema.optional(Schema.String),
@@ -3909,7 +3909,7 @@ export interface SearchResult {
   metadata?: Metadata;
 }
 
-export const SearchResult: Schema.Schema<SearchResult> =
+export const SearchResult: Schema.Codec<SearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       debugInfo: Schema.optional(ResultDebugInfo),
@@ -3921,14 +3921,14 @@ export const SearchResult: Schema.Schema<SearchResult> =
     }),
   ).annotate({
     identifier: "SearchResult",
-  }) as any as Schema.Schema<SearchResult>;
+  }) as any as Schema.Codec<SearchResult>;
 
 export interface ErrorMessage {
   source?: Source;
   errorMessage?: string;
 }
 
-export const ErrorMessage: Schema.Schema<ErrorMessage> =
+export const ErrorMessage: Schema.Codec<ErrorMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Source),
     errorMessage: Schema.optional(Schema.String),
@@ -3938,7 +3938,7 @@ export interface ErrorInfo {
   errorMessages?: ReadonlyArray<ErrorMessage>;
 }
 
-export const ErrorInfo: Schema.Schema<ErrorInfo> =
+export const ErrorInfo: Schema.Codec<ErrorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessages: Schema.optional(Schema.Array(ErrorMessage)),
   }).annotate({ identifier: "ErrorInfo" });
@@ -3959,7 +3959,7 @@ export interface QueryInterpretation {
     | (string & {});
 }
 
-export const QueryInterpretation: Schema.Schema<QueryInterpretation> =
+export const QueryInterpretation: Schema.Codec<QueryInterpretation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interpretationType: Schema.optional(Schema.String),
     interpretedQueryActualResultCount: Schema.optional(Schema.Number),
@@ -3993,7 +3993,7 @@ export interface SearchResponse {
   spellResults?: ReadonlyArray<SpellResult>;
 }
 
-export const SearchResponse: Schema.Schema<SearchResponse> =
+export const SearchResponse: Schema.Codec<SearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasMoreResults: Schema.optional(Schema.Boolean),
     results: Schema.optional(Schema.Array(SearchResult)),
@@ -4015,7 +4015,7 @@ export interface Cloudsearch_Schema {
   objectDefinitions?: ReadonlyArray<ObjectDefinition>;
 }
 
-export const Cloudsearch_Schema: Schema.Schema<Cloudsearch_Schema> =
+export const Cloudsearch_Schema: Schema.Codec<Cloudsearch_Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationIds: Schema.optional(Schema.Array(Schema.String)),
     objectDefinitions: Schema.optional(Schema.Array(ObjectDefinition)),
@@ -4030,7 +4030,7 @@ export interface UpdateSchemaRequest {
   schema?: Cloudsearch_Schema;
 }
 
-export const UpdateSchemaRequest: Schema.Schema<UpdateSchemaRequest> =
+export const UpdateSchemaRequest: Schema.Codec<UpdateSchemaRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debugOptions: Schema.optional(DebugOptions),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -4045,7 +4045,7 @@ export interface UpdateDataSourceRequest {
   debugOptions?: DebugOptions;
 }
 
-export const UpdateDataSourceRequest: Schema.Schema<UpdateDataSourceRequest> =
+export const UpdateDataSourceRequest: Schema.Codec<UpdateDataSourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(DataSource),
     updateMask: Schema.optional(Schema.String),
@@ -4057,7 +4057,7 @@ export interface CheckAccessResponse {
   hasAccess?: boolean;
 }
 
-export const CheckAccessResponse: Schema.Schema<CheckAccessResponse> =
+export const CheckAccessResponse: Schema.Codec<CheckAccessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasAccess: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckAccessResponse" });
@@ -4071,7 +4071,7 @@ export interface SourceConfig {
   crowdingConfig?: SourceCrowdingConfig;
 }
 
-export const SourceConfig: Schema.Schema<SourceConfig> =
+export const SourceConfig: Schema.Codec<SourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scoringConfig: Schema.optional(SourceScoringConfig),
     source: Schema.optional(Source),
@@ -4103,7 +4103,7 @@ export interface SearchApplication {
   defaultFacetOptions?: ReadonlyArray<FacetOptions>;
 }
 
-export const SearchApplication: Schema.Schema<SearchApplication> =
+export const SearchApplication: Schema.Codec<SearchApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     returnResultThumbnailUrls: Schema.optional(Schema.Boolean),
     dataSourceRestrictions: Schema.optional(
@@ -4126,7 +4126,7 @@ export interface ListSearchApplicationsResponse {
   nextPageToken?: string;
 }
 
-export const ListSearchApplicationsResponse: Schema.Schema<ListSearchApplicationsResponse> =
+export const ListSearchApplicationsResponse: Schema.Codec<ListSearchApplicationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchApplications: Schema.optional(Schema.Array(SearchApplication)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4139,7 +4139,7 @@ export interface StartUploadItemRequest {
   debugOptions?: DebugOptions;
 }
 
-export const StartUploadItemRequest: Schema.Schema<StartUploadItemRequest> =
+export const StartUploadItemRequest: Schema.Codec<StartUploadItemRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectorName: Schema.optional(Schema.String),
     debugOptions: Schema.optional(DebugOptions),
@@ -4149,7 +4149,7 @@ export interface GetSearchApplicationSessionStatsResponse {
   stats?: ReadonlyArray<SearchApplicationSessionStats>;
 }
 
-export const GetSearchApplicationSessionStatsResponse: Schema.Schema<GetSearchApplicationSessionStatsResponse> =
+export const GetSearchApplicationSessionStatsResponse: Schema.Codec<GetSearchApplicationSessionStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stats: Schema.optional(Schema.Array(SearchApplicationSessionStats)),
   }).annotate({ identifier: "GetSearchApplicationSessionStatsResponse" });
@@ -4163,7 +4163,7 @@ export interface UnreserveItemsRequest {
   connectorName?: string;
 }
 
-export const UnreserveItemsRequest: Schema.Schema<UnreserveItemsRequest> =
+export const UnreserveItemsRequest: Schema.Codec<UnreserveItemsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debugOptions: Schema.optional(DebugOptions),
     queue: Schema.optional(Schema.String),
@@ -4174,7 +4174,7 @@ export interface GetSearchApplicationUserStatsResponse {
   stats?: ReadonlyArray<SearchApplicationUserStats>;
 }
 
-export const GetSearchApplicationUserStatsResponse: Schema.Schema<GetSearchApplicationUserStatsResponse> =
+export const GetSearchApplicationUserStatsResponse: Schema.Codec<GetSearchApplicationUserStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stats: Schema.optional(Schema.Array(SearchApplicationUserStats)),
   }).annotate({ identifier: "GetSearchApplicationUserStatsResponse" });
@@ -4184,7 +4184,7 @@ export interface QueryItem {
   isSynthetic?: boolean;
 }
 
-export const QueryItem: Schema.Schema<QueryItem> =
+export const QueryItem: Schema.Codec<QueryItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isSynthetic: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "QueryItem" });
@@ -4194,7 +4194,7 @@ export interface ResetSearchApplicationRequest {
   debugOptions?: DebugOptions;
 }
 
-export const ResetSearchApplicationRequest: Schema.Schema<ResetSearchApplicationRequest> =
+export const ResetSearchApplicationRequest: Schema.Codec<ResetSearchApplicationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     debugOptions: Schema.optional(DebugOptions),
   }).annotate({ identifier: "ResetSearchApplicationRequest" });
@@ -4208,7 +4208,7 @@ export interface SuggestRequest {
   dataSourceRestrictions?: ReadonlyArray<DataSourceRestriction>;
 }
 
-export const SuggestRequest: Schema.Schema<SuggestRequest> =
+export const SuggestRequest: Schema.Codec<SuggestRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestOptions: Schema.optional(RequestOptions),
     query: Schema.optional(Schema.String),
@@ -4222,7 +4222,7 @@ export interface SuggestResponse {
   suggestResults?: ReadonlyArray<SuggestResult>;
 }
 
-export const SuggestResponse: Schema.Schema<SuggestResponse> =
+export const SuggestResponse: Schema.Codec<SuggestResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestResults: Schema.optional(Schema.Array(SuggestResult)),
   }).annotate({ identifier: "SuggestResponse" });
@@ -4234,7 +4234,7 @@ export interface GetSearchApplicationQueryStatsResponse {
   stats?: ReadonlyArray<SearchApplicationQueryStats>;
 }
 
-export const GetSearchApplicationQueryStatsResponse: Schema.Schema<GetSearchApplicationQueryStatsResponse> =
+export const GetSearchApplicationQueryStatsResponse: Schema.Codec<GetSearchApplicationQueryStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalQueryCount: Schema.optional(Schema.String),
     stats: Schema.optional(Schema.Array(SearchApplicationQueryStats)),
@@ -4312,7 +4312,7 @@ export const UpdateSchemaIndexingDatasourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSchemaIndexingDatasourcesRequest>;
+  ) as unknown as Schema.Codec<UpdateSchemaIndexingDatasourcesRequest>;
 
 export type UpdateSchemaIndexingDatasourcesResponse = Operation;
 export const UpdateSchemaIndexingDatasourcesResponse =
@@ -4353,7 +4353,7 @@ export const GetSchemaIndexingDatasourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/indexing/{+name}/schema" }),
     svc,
-  ) as unknown as Schema.Schema<GetSchemaIndexingDatasourcesRequest>;
+  ) as unknown as Schema.Codec<GetSchemaIndexingDatasourcesRequest>;
 
 export type GetSchemaIndexingDatasourcesResponse = Cloudsearch_Schema;
 export const GetSchemaIndexingDatasourcesResponse =
@@ -4392,7 +4392,7 @@ export const DeleteSchemaIndexingDatasourcesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/indexing/{+name}/schema" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSchemaIndexingDatasourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteSchemaIndexingDatasourcesRequest>;
 
 export type DeleteSchemaIndexingDatasourcesResponse = Operation;
 export const DeleteSchemaIndexingDatasourcesResponse =
@@ -4435,7 +4435,7 @@ export const PollIndexingDatasourcesItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PollIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<PollIndexingDatasourcesItemsRequest>;
 
 export type PollIndexingDatasourcesItemsResponse = PollItemsResponse;
 export const PollIndexingDatasourcesItemsResponse =
@@ -4490,7 +4490,7 @@ export const ListIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/indexing/{+name}/items" }),
     svc,
-  ) as unknown as Schema.Schema<ListIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<ListIndexingDatasourcesItemsRequest>;
 
 export type ListIndexingDatasourcesItemsResponse = ListItemsResponse;
 export const ListIndexingDatasourcesItemsResponse =
@@ -4545,7 +4545,7 @@ export const DeleteIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/indexing/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<DeleteIndexingDatasourcesItemsRequest>;
 
 export type DeleteIndexingDatasourcesItemsResponse = Operation;
 export const DeleteIndexingDatasourcesItemsResponse =
@@ -4588,7 +4588,7 @@ export const DeleteQueueItemsIndexingDatasourcesItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteQueueItemsIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<DeleteQueueItemsIndexingDatasourcesItemsRequest>;
 
 export type DeleteQueueItemsIndexingDatasourcesItemsResponse = Operation;
 export const DeleteQueueItemsIndexingDatasourcesItemsResponse =
@@ -4627,7 +4627,7 @@ export const PushIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/indexing/{+name}:push", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PushIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<PushIndexingDatasourcesItemsRequest>;
 
 export type PushIndexingDatasourcesItemsResponse = Item;
 export const PushIndexingDatasourcesItemsResponse =
@@ -4673,7 +4673,7 @@ export const GetIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/indexing/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<GetIndexingDatasourcesItemsRequest>;
 
 export type GetIndexingDatasourcesItemsResponse = Item;
 export const GetIndexingDatasourcesItemsResponse =
@@ -4714,7 +4714,7 @@ export const UnreserveIndexingDatasourcesItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnreserveIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<UnreserveIndexingDatasourcesItemsRequest>;
 
 export type UnreserveIndexingDatasourcesItemsResponse = Operation;
 export const UnreserveIndexingDatasourcesItemsResponse =
@@ -4757,7 +4757,7 @@ export const IndexIndexingDatasourcesItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<IndexIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<IndexIndexingDatasourcesItemsRequest>;
 
 export type IndexIndexingDatasourcesItemsResponse = Operation;
 export const IndexIndexingDatasourcesItemsResponse =
@@ -4800,7 +4800,7 @@ export const UploadIndexingDatasourcesItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadIndexingDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<UploadIndexingDatasourcesItemsRequest>;
 
 export type UploadIndexingDatasourcesItemsResponse = UploadItemRef;
 export const UploadIndexingDatasourcesItemsResponse =
@@ -4835,7 +4835,7 @@ export const SuggestQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/query/suggest", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SuggestQueryRequest>;
+) as unknown as Schema.Codec<SuggestQueryRequest>;
 
 export type SuggestQueryResponse = SuggestResponse;
 export const SuggestQueryResponse = /*@__PURE__*/ /*#__PURE__*/ SuggestResponse;
@@ -4870,7 +4870,7 @@ export const RemoveActivityQueryRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/query:removeActivity", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RemoveActivityQueryRequest>;
+  ) as unknown as Schema.Codec<RemoveActivityQueryRequest>;
 
 export type RemoveActivityQueryResponse = RemoveActivityResponse;
 export const RemoveActivityQueryResponse =
@@ -4905,7 +4905,7 @@ export const SearchQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/query/search", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<SearchQueryRequest>;
+) as unknown as Schema.Codec<SearchQueryRequest>;
 
 export type SearchQueryResponse = SearchResponse;
 export const SearchQueryResponse = /*@__PURE__*/ /*#__PURE__*/ SearchResponse;
@@ -4965,7 +4965,7 @@ export const ListQuerySourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/query/sources" }),
     svc,
-  ) as unknown as Schema.Schema<ListQuerySourcesRequest>;
+  ) as unknown as Schema.Codec<ListQuerySourcesRequest>;
 
 export type ListQuerySourcesResponse_Op = ListQuerySourcesResponse;
 export const ListQuerySourcesResponse_Op =
@@ -5022,7 +5022,7 @@ export const ListForunmappedidentityDebugIdentitysourcesItemsRequest =
       path: "v1/debug/{+parent}/items:forunmappedidentity",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListForunmappedidentityDebugIdentitysourcesItemsRequest>;
+  ) as unknown as Schema.Codec<ListForunmappedidentityDebugIdentitysourcesItemsRequest>;
 
 export type ListForunmappedidentityDebugIdentitysourcesItemsResponse =
   ListItemNamesForUnmappedIdentityResponse;
@@ -5084,7 +5084,7 @@ export const ListDebugIdentitysourcesUnmappedidsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/debug/{+parent}/unmappedids" }),
     svc,
-  ) as unknown as Schema.Schema<ListDebugIdentitysourcesUnmappedidsRequest>;
+  ) as unknown as Schema.Codec<ListDebugIdentitysourcesUnmappedidsRequest>;
 
 export type ListDebugIdentitysourcesUnmappedidsResponse =
   ListUnmappedIdentitiesResponse;
@@ -5135,7 +5135,7 @@ export const CheckAccessDebugDatasourcesItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckAccessDebugDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<CheckAccessDebugDatasourcesItemsRequest>;
 
 export type CheckAccessDebugDatasourcesItemsResponse = CheckAccessResponse;
 export const CheckAccessDebugDatasourcesItemsResponse =
@@ -5178,7 +5178,7 @@ export const SearchByViewUrlDebugDatasourcesItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchByViewUrlDebugDatasourcesItemsRequest>;
+  ) as unknown as Schema.Codec<SearchByViewUrlDebugDatasourcesItemsRequest>;
 
 export type SearchByViewUrlDebugDatasourcesItemsResponse =
   SearchItemsByViewUrlResponse;
@@ -5226,7 +5226,7 @@ export const ListDebugDatasourcesItemsUnmappedidsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/debug/{+parent}/unmappedids" }),
     svc,
-  ) as unknown as Schema.Schema<ListDebugDatasourcesItemsUnmappedidsRequest>;
+  ) as unknown as Schema.Codec<ListDebugDatasourcesItemsUnmappedidsRequest>;
 
 export type ListDebugDatasourcesItemsUnmappedidsResponse =
   ListUnmappedIdentitiesResponse;
@@ -5260,7 +5260,7 @@ export const GetCustomerSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v1/settings/customer" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomerSettingsRequest>;
+  ) as unknown as Schema.Codec<GetCustomerSettingsRequest>;
 
 export type GetCustomerSettingsResponse = CustomerSettings;
 export const GetCustomerSettingsResponse =
@@ -5294,7 +5294,7 @@ export const UpdateCustomerSettingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/settings/customer", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCustomerSettingsRequest>;
+  ) as unknown as Schema.Codec<UpdateCustomerSettingsRequest>;
 
 export type UpdateCustomerSettingsResponse = Operation;
 export const UpdateCustomerSettingsResponse =
@@ -5336,7 +5336,7 @@ export const UpdateSettingsSearchapplicationsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/settings/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSettingsSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<UpdateSettingsSearchapplicationsRequest>;
 
 export type UpdateSettingsSearchapplicationsResponse = Operation;
 export const UpdateSettingsSearchapplicationsResponse =
@@ -5377,7 +5377,7 @@ export const DeleteSettingsSearchapplicationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/settings/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSettingsSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<DeleteSettingsSearchapplicationsRequest>;
 
 export type DeleteSettingsSearchapplicationsResponse = Operation;
 export const DeleteSettingsSearchapplicationsResponse =
@@ -5418,7 +5418,7 @@ export const GetSettingsSearchapplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/settings/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSettingsSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<GetSettingsSearchapplicationsRequest>;
 
 export type GetSettingsSearchapplicationsResponse = SearchApplication;
 export const GetSettingsSearchapplicationsResponse =
@@ -5458,7 +5458,7 @@ export const PatchSettingsSearchapplicationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/settings/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchSettingsSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<PatchSettingsSearchapplicationsRequest>;
 
 export type PatchSettingsSearchapplicationsResponse = Operation;
 export const PatchSettingsSearchapplicationsResponse =
@@ -5498,7 +5498,7 @@ export const CreateSettingsSearchapplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSettingsSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<CreateSettingsSearchapplicationsRequest>;
 
 export type CreateSettingsSearchapplicationsResponse = Operation;
 export const CreateSettingsSearchapplicationsResponse =
@@ -5541,7 +5541,7 @@ export const ResetSettingsSearchapplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResetSettingsSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<ResetSettingsSearchapplicationsRequest>;
 
 export type ResetSettingsSearchapplicationsResponse = Operation;
 export const ResetSettingsSearchapplicationsResponse =
@@ -5585,7 +5585,7 @@ export const ListSettingsSearchapplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/settings/searchapplications" }),
     svc,
-  ) as unknown as Schema.Schema<ListSettingsSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<ListSettingsSearchapplicationsRequest>;
 
 export type ListSettingsSearchapplicationsResponse =
   ListSearchApplicationsResponse;
@@ -5629,7 +5629,7 @@ export const DeleteSettingsDatasourcesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/settings/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSettingsDatasourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteSettingsDatasourcesRequest>;
 
 export type DeleteSettingsDatasourcesResponse = Operation;
 export const DeleteSettingsDatasourcesResponse =
@@ -5668,7 +5668,7 @@ export const UpdateSettingsDatasourcesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/settings/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSettingsDatasourcesRequest>;
+  ) as unknown as Schema.Codec<UpdateSettingsDatasourcesRequest>;
 
 export type UpdateSettingsDatasourcesResponse = Operation;
 export const UpdateSettingsDatasourcesResponse =
@@ -5712,7 +5712,7 @@ export const ListSettingsDatasourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/settings/datasources" }),
     svc,
-  ) as unknown as Schema.Schema<ListSettingsDatasourcesRequest>;
+  ) as unknown as Schema.Codec<ListSettingsDatasourcesRequest>;
 
 export type ListSettingsDatasourcesResponse = ListDataSourceResponse;
 export const ListSettingsDatasourcesResponse =
@@ -5747,7 +5747,7 @@ export const CreateSettingsDatasourcesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/settings/datasources", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSettingsDatasourcesRequest>;
+  ) as unknown as Schema.Codec<CreateSettingsDatasourcesRequest>;
 
 export type CreateSettingsDatasourcesResponse = Operation;
 export const CreateSettingsDatasourcesResponse =
@@ -5788,7 +5788,7 @@ export const GetSettingsDatasourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/settings/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSettingsDatasourcesRequest>;
+  ) as unknown as Schema.Codec<GetSettingsDatasourcesRequest>;
 
 export type GetSettingsDatasourcesResponse = DataSource;
 export const GetSettingsDatasourcesResponse =
@@ -5830,7 +5830,7 @@ export const PatchSettingsDatasourcesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/settings/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchSettingsDatasourcesRequest>;
+  ) as unknown as Schema.Codec<PatchSettingsDatasourcesRequest>;
 
 export type PatchSettingsDatasourcesResponse = Operation;
 export const PatchSettingsDatasourcesResponse =
@@ -5868,7 +5868,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/media/{+resourceName}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = Media;
 export const UploadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
@@ -5927,7 +5927,7 @@ export const GetIndexStatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/stats/index" }),
   svc,
-) as unknown as Schema.Schema<GetIndexStatsRequest>;
+) as unknown as Schema.Codec<GetIndexStatsRequest>;
 
 export type GetIndexStatsResponse = GetCustomerIndexStatsResponse;
 export const GetIndexStatsResponse =
@@ -5982,7 +5982,7 @@ export const GetQueryStatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/stats/query" }),
   svc,
-) as unknown as Schema.Schema<GetQueryStatsRequest>;
+) as unknown as Schema.Codec<GetQueryStatsRequest>;
 
 export type GetQueryStatsResponse = GetCustomerQueryStatsResponse;
 export const GetQueryStatsResponse =
@@ -6037,7 +6037,7 @@ export const GetUserStatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/stats/user" }),
   svc,
-) as unknown as Schema.Schema<GetUserStatsRequest>;
+) as unknown as Schema.Codec<GetUserStatsRequest>;
 
 export type GetUserStatsResponse = GetCustomerUserStatsResponse;
 export const GetUserStatsResponse =
@@ -6096,7 +6096,7 @@ export const GetSessionStatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/stats/session" }),
   svc,
-) as unknown as Schema.Schema<GetSessionStatsRequest>;
+) as unknown as Schema.Codec<GetSessionStatsRequest>;
 
 export type GetSessionStatsResponse = GetCustomerSessionStatsResponse;
 export const GetSessionStatsResponse =
@@ -6154,7 +6154,7 @@ export const GetSearchapplicationStatsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/stats/searchapplication" }),
     svc,
-  ) as unknown as Schema.Schema<GetSearchapplicationStatsRequest>;
+  ) as unknown as Schema.Codec<GetSearchapplicationStatsRequest>;
 
 export type GetSearchapplicationStatsResponse =
   GetCustomerSearchApplicationStatsResponse;
@@ -6219,7 +6219,7 @@ export const GetStatsQuerySearchapplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/stats/query/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetStatsQuerySearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<GetStatsQuerySearchapplicationsRequest>;
 
 export type GetStatsQuerySearchapplicationsResponse =
   GetSearchApplicationQueryStatsResponse;
@@ -6284,7 +6284,7 @@ export const GetStatsIndexDatasourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/stats/index/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetStatsIndexDatasourcesRequest>;
+  ) as unknown as Schema.Codec<GetStatsIndexDatasourcesRequest>;
 
 export type GetStatsIndexDatasourcesResponse = GetDataSourceIndexStatsResponse;
 export const GetStatsIndexDatasourcesResponse =
@@ -6348,7 +6348,7 @@ export const GetStatsSessionSearchapplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/stats/session/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetStatsSessionSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<GetStatsSessionSearchapplicationsRequest>;
 
 export type GetStatsSessionSearchapplicationsResponse =
   GetSearchApplicationSessionStatsResponse;
@@ -6413,7 +6413,7 @@ export const GetStatsUserSearchapplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/stats/user/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetStatsUserSearchapplicationsRequest>;
+  ) as unknown as Schema.Codec<GetStatsUserSearchapplicationsRequest>;
 
 export type GetStatsUserSearchapplicationsResponse =
   GetSearchApplicationUserStatsResponse;
@@ -6447,7 +6447,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -6491,7 +6491,7 @@ export const ListOperationsLroRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/lro" }),
     svc,
-  ) as unknown as Schema.Schema<ListOperationsLroRequest>;
+  ) as unknown as Schema.Codec<ListOperationsLroRequest>;
 
 export type ListOperationsLroResponse = ListOperationsResponse;
 export const ListOperationsLroResponse =
@@ -6526,7 +6526,7 @@ export const InitializeCustomerV1Request =
   }).pipe(
     T.Http({ method: "POST", path: "v1:initializeCustomer", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InitializeCustomerV1Request>;
+  ) as unknown as Schema.Codec<InitializeCustomerV1Request>;
 
 export type InitializeCustomerV1Response = Operation;
 export const InitializeCustomerV1Response =

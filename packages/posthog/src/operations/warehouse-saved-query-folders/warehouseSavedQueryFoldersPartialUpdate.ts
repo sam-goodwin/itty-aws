@@ -4,6 +4,35 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WarehouseSavedQueryFoldersPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  view_count?: number;
+  user_access_level?: string | null;
+}
 export const WarehouseSavedQueryFoldersPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -23,7 +52,23 @@ export const WarehouseSavedQueryFoldersPartialUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -34,11 +79,37 @@ export const WarehouseSavedQueryFoldersPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/warehouse_saved_query_folders/{id}/",
     }),
-  );
-export type WarehouseSavedQueryFoldersPartialUpdateInput =
-  typeof WarehouseSavedQueryFoldersPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<WarehouseSavedQueryFoldersPartialUpdateInput>;
 
 // Output Schema
+export interface WarehouseSavedQueryFoldersPartialUpdateOutput {
+  id?: string;
+  name?: string;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  view_count?: number;
+  user_access_level?: string | null;
+}
 export const WarehouseSavedQueryFoldersPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -57,15 +128,29 @@ export const WarehouseSavedQueryFoldersPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     view_count: Schema.optional(Schema.Number),
     user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type WarehouseSavedQueryFoldersPartialUpdateOutput =
-  typeof WarehouseSavedQueryFoldersPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseSavedQueryFoldersPartialUpdateOutput>;
 
 // The operation
 /**

@@ -4,15 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetDiskUtilizationInput {
+  ref: string;
+}
 export const V1GetDiskUtilizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/config/disk/util" }),
-  );
-export type V1GetDiskUtilizationInput = typeof V1GetDiskUtilizationInput.Type;
+  ) as unknown as Schema.Codec<V1GetDiskUtilizationInput>;
 
 // Output Schema
+export interface V1GetDiskUtilizationOutput {
+  timestamp: string;
+  metrics: {
+    fs_size_bytes: number;
+    fs_avail_bytes: number;
+    fs_used_bytes: number;
+  };
+}
 export const V1GetDiskUtilizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timestamp: Schema.String,
@@ -21,8 +31,7 @@ export const V1GetDiskUtilizationOutput =
       fs_avail_bytes: Schema.Number,
       fs_used_bytes: Schema.Number,
     }),
-  });
-export type V1GetDiskUtilizationOutput = typeof V1GetDiskUtilizationOutput.Type;
+  }) as unknown as Schema.Codec<V1GetDiskUtilizationOutput>;
 
 // The operation
 /**

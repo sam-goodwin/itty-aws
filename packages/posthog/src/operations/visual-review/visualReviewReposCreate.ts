@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewReposCreateInput {
+  project_id: string;
+  repo_full_name?: string;
+  repo_external_id?: number | null;
+}
 export const VisualReviewReposCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,18 @@ export const VisualReviewReposCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/visual_review/repos/",
     }),
-  );
-export type VisualReviewReposCreateInput =
-  typeof VisualReviewReposCreateInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposCreateInput>;
 
 // Output Schema
+export interface VisualReviewReposCreateOutput {
+  id?: string;
+  team_id?: number;
+  repo_external_id?: number;
+  repo_full_name?: string;
+  baseline_file_paths?: Record<string, string>;
+  enable_pr_comments?: boolean;
+  created_at?: string;
+}
 export const VisualReviewReposCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -30,9 +42,7 @@ export const VisualReviewReposCreateOutput =
     ),
     enable_pr_comments: Schema.optional(Schema.Boolean),
     created_at: Schema.optional(Schema.String),
-  });
-export type VisualReviewReposCreateOutput =
-  typeof VisualReviewReposCreateOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewReposCreateOutput>;
 
 // The operation
 /**

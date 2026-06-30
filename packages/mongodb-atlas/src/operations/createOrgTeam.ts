@@ -4,16 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateOrgTeamInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/teams" }));
-export type CreateOrgTeamInput = typeof CreateOrgTeamInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/teams" }),
+) as unknown as Schema.Codec<CreateOrgTeamInput>;
 
 // Output Schema
-export const CreateOrgTeamOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateOrgTeamOutput = typeof CreateOrgTeamOutput.Type;
+export type CreateOrgTeamOutput = void;
+export const CreateOrgTeamOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgTeamOutput>;
 
 // The operation
 /**

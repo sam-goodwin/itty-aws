@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AccountQuotasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  quotaName: "ScalableExecution" | "Reporting";
+}
 export const AccountQuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -22,10 +28,22 @@ export const AccountQuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}/quotas/{quotaName}",
     apiVersion: "2024-12-01",
   }),
-);
-export type AccountQuotasGetInput = typeof AccountQuotasGetInput.Type;
+) as unknown as Schema.Codec<AccountQuotasGetInput>;
 
 // Output Schema
+export interface AccountQuotasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -46,8 +64,7 @@ export const AccountQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type AccountQuotasGetOutput = typeof AccountQuotasGetOutput.Type;
+) as unknown as Schema.Codec<AccountQuotasGetOutput>;
 
 // The operation
 /**
@@ -64,6 +81,11 @@ export const AccountQuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountQuotasGetOutput,
 }));
 // Input Schema
+export interface AccountQuotasListByAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountQuotasListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -75,11 +97,25 @@ export const AccountQuotasListByAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}/quotas",
       apiVersion: "2024-12-01",
     }),
-  );
-export type AccountQuotasListByAccountInput =
-  typeof AccountQuotasListByAccountInput.Type;
+  ) as unknown as Schema.Codec<AccountQuotasListByAccountInput>;
 
 // Output Schema
+export interface AccountQuotasListByAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AccountQuotasListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -114,9 +150,7 @@ export const AccountQuotasListByAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AccountQuotasListByAccountOutput =
-  typeof AccountQuotasListByAccountOutput.Type;
+  }) as unknown as Schema.Codec<AccountQuotasListByAccountOutput>;
 
 // The operation
 /**
@@ -134,6 +168,11 @@ export const AccountQuotasListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+}
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -145,19 +184,20 @@ export const AccountsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/checkNameAvailability",
       apiVersion: "2024-12-01",
     }),
-  );
-export type AccountsCheckNameAvailabilityInput =
-  typeof AccountsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<AccountsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface AccountsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const AccountsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type AccountsCheckNameAvailabilityOutput =
-  typeof AccountsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<AccountsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -174,6 +214,27 @@ export const AccountsCheckNameAvailability =
     outputSchema: AccountsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface AccountsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    dashboardUri?: string;
+    regionalAffinity?: "Enabled" | "Disabled";
+    scalableExecution?: "Enabled" | "Disabled";
+    reporting?: "Enabled" | "Disabled";
+    localAuth?: "Enabled" | "Disabled";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Accepted";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -210,11 +271,22 @@ export const AccountsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type AccountsCreateOrUpdateInput =
-  typeof AccountsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AccountsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AccountsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -234,9 +306,7 @@ export const AccountsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountsCreateOrUpdateOutput =
-  typeof AccountsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AccountsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -254,6 +324,11 @@ export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -264,12 +339,12 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
     apiVersion: "2024-12-01",
   }),
-);
-export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
+) as unknown as Schema.Codec<AccountsDeleteInput>;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
+export type AccountsDeleteOutput = void;
+export const AccountsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -285,6 +360,11 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
+export interface AccountsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -295,10 +375,22 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
     apiVersion: "2024-12-01",
   }),
-);
-export type AccountsGetInput = typeof AccountsGetInput.Type;
+) as unknown as Schema.Codec<AccountsGetInput>;
 
 // Output Schema
+export interface AccountsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -317,8 +409,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AccountsGetOutput = typeof AccountsGetOutput.Type;
+}) as unknown as Schema.Codec<AccountsGetOutput>;
 
 // The operation
 /**
@@ -334,6 +425,10 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsGetOutput,
 }));
 // Input Schema
+export interface AccountsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -344,11 +439,25 @@ export const AccountsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts",
       apiVersion: "2024-12-01",
     }),
-  );
-export type AccountsListByResourceGroupInput =
-  typeof AccountsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AccountsListByResourceGroupInput>;
 
 // Output Schema
+export interface AccountsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -383,9 +492,7 @@ export const AccountsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AccountsListByResourceGroupOutput =
-  typeof AccountsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -402,6 +509,9 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -411,11 +521,25 @@ export const AccountsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/accounts",
       apiVersion: "2024-12-01",
     }),
-  );
-export type AccountsListBySubscriptionInput =
-  typeof AccountsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AccountsListBySubscriptionInput>;
 
 // Output Schema
+export interface AccountsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -450,9 +574,7 @@ export const AccountsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AccountsListBySubscriptionOutput =
-  typeof AccountsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -468,6 +590,18 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    regionalAffinity?: "Enabled" | "Disabled";
+    scalableExecution?: "Enabled" | "Disabled";
+    reporting?: "Enabled" | "Disabled";
+    localAuth?: "Enabled" | "Disabled";
+  };
+}
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -491,10 +625,22 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
     apiVersion: "2024-12-01",
   }),
-);
-export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
+) as unknown as Schema.Codec<AccountsUpdateInput>;
 
 // Output Schema
+export interface AccountsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -513,8 +659,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
+}) as unknown as Schema.Codec<AccountsUpdateOutput>;
 
 // The operation
 /**
@@ -530,6 +675,7 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -538,10 +684,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AzurePlaywrightService/operations",
     apiVersion: "2024-12-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -564,8 +724,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -578,6 +737,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface QuotasGetInput {
+  subscriptionId: string;
+  location: string;
+  quotaName: "ScalableExecution" | "Reporting";
+}
 export const QuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -590,10 +754,22 @@ export const QuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/locations/{location}/quotas/{quotaName}",
     apiVersion: "2024-12-01",
   }),
-);
-export type QuotasGetInput = typeof QuotasGetInput.Type;
+) as unknown as Schema.Codec<QuotasGetInput>;
 
 // Output Schema
+export interface QuotasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -612,8 +788,7 @@ export const QuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QuotasGetOutput = typeof QuotasGetOutput.Type;
+}) as unknown as Schema.Codec<QuotasGetOutput>;
 
 // The operation
 /**
@@ -629,6 +804,10 @@ export const QuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotasGetOutput,
 }));
 // Input Schema
+export interface QuotasListBySubscriptionInput {
+  subscriptionId: string;
+  location: string;
+}
 export const QuotasListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -639,11 +818,25 @@ export const QuotasListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/locations/{location}/quotas",
       apiVersion: "2024-12-01",
     }),
-  );
-export type QuotasListBySubscriptionInput =
-  typeof QuotasListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<QuotasListBySubscriptionInput>;
 
 // Output Schema
+export interface QuotasListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QuotasListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -678,9 +871,7 @@ export const QuotasListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type QuotasListBySubscriptionOutput =
-  typeof QuotasListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<QuotasListBySubscriptionOutput>;
 
 // The operation
 /**

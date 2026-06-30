@@ -21,7 +21,7 @@ describe("getAnnotations", () => {
         expect(Array.isArray(annotation.datasets)).toBe(true);
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -67,7 +67,7 @@ describe("getAnnotations", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -80,7 +80,7 @@ describe("getAnnotations", () => {
       // Axiom maps 400 responses to the typed BadRequest error class.
       expect((error as { _tag: string })._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -95,6 +95,6 @@ describe("getAnnotations", () => {
 
       expect((error as { _tag: string })._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

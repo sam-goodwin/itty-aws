@@ -4,6 +4,43 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFlowsBatchJobsCreateInput {
+  id: string;
+  project_id: string;
+  status?:
+    | "waiting"
+    | "queued"
+    | "active"
+    | "completed"
+    | "cancelled"
+    | "failed";
+  hog_flow: string;
+  filters?: unknown;
+  variables?: unknown;
+  created_at: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  updated_at: string;
+}
 export const HogFlowsBatchJobsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -33,7 +70,23 @@ export const HogFlowsBatchJobsCreateInput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     updated_at: Schema.String,
   }).pipe(
@@ -41,11 +94,45 @@ export const HogFlowsBatchJobsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/hog_flows/{id}/batch_jobs/",
     }),
-  );
-export type HogFlowsBatchJobsCreateInput =
-  typeof HogFlowsBatchJobsCreateInput.Type;
+  ) as unknown as Schema.Codec<HogFlowsBatchJobsCreateInput>;
 
 // Output Schema
+export interface HogFlowsBatchJobsCreateOutput {
+  id: string;
+  status?:
+    | "waiting"
+    | "queued"
+    | "active"
+    | "completed"
+    | "cancelled"
+    | "failed";
+  hog_flow: string;
+  filters?: unknown;
+  variables?: unknown;
+  created_at: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  updated_at: string;
+}
 export const HogFlowsBatchJobsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -74,12 +161,26 @@ export const HogFlowsBatchJobsCreateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     updated_at: Schema.String,
-  });
-export type HogFlowsBatchJobsCreateOutput =
-  typeof HogFlowsBatchJobsCreateOutput.Type;
+  }) as unknown as Schema.Codec<HogFlowsBatchJobsCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SendSolanaTransactionWithEndUserAccountInput {
+  userId: string;
+  projectID?: string;
+  address: string;
+  network: "solana" | "solana-devnet";
+  walletSecretId?: string;
+  transaction: string;
+  useCdpSponsor?: boolean;
+}
 export const SendSolanaTransactionWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -17,17 +26,16 @@ export const SendSolanaTransactionWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/solana/send/transaction",
     }),
-  );
-export type SendSolanaTransactionWithEndUserAccountInput =
-  typeof SendSolanaTransactionWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<SendSolanaTransactionWithEndUserAccountInput>;
 
 // Output Schema
+export interface SendSolanaTransactionWithEndUserAccountOutput {
+  transactionSignature: string;
+}
 export const SendSolanaTransactionWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionSignature: Schema.String,
-  });
-export type SendSolanaTransactionWithEndUserAccountOutput =
-  typeof SendSolanaTransactionWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<SendSolanaTransactionWithEndUserAccountOutput>;
 
 // The operation
 /**

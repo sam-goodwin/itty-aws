@@ -3,8 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 import { SensitiveOutputNullableString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface SessionRecordingsSharingListInput {
+  project_id: string;
+  recording_id: string;
+}
 export const SessionRecordingsSharingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,23 @@ export const SessionRecordingsSharingListInput =
       method: "GET",
       path: "/api/projects/{project_id}/session_recordings/{recording_id}/sharing/",
     }),
-  );
-export type SessionRecordingsSharingListInput =
-  typeof SessionRecordingsSharingListInput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingsSharingListInput>;
 
 // Output Schema
+export type SessionRecordingsSharingListOutput = {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}[];
 export const SessionRecordingsSharingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -39,9 +56,7 @@ export const SessionRecordingsSharingListOutput =
         ),
       ),
     }),
-  );
-export type SessionRecordingsSharingListOutput =
-  typeof SessionRecordingsSharingListOutput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingsSharingListOutput>;
 
 // The operation
 /**

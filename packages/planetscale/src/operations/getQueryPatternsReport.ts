@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetQueryPatternsReportInput {
+  organization: string;
+  database: string;
+  branch: string;
+  id: string;
+}
 export const GetQueryPatternsReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const GetQueryPatternsReportInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns/{id}/download",
     }),
-  );
-export type GetQueryPatternsReportInput =
-  typeof GetQueryPatternsReportInput.Type;
+  ) as unknown as Schema.Codec<GetQueryPatternsReportInput>;
 
 // Output Schema
+export type GetQueryPatternsReportOutput = void;
 export const GetQueryPatternsReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetQueryPatternsReportOutput =
-  typeof GetQueryPatternsReportOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetQueryPatternsReportOutput>;
 
 // The operation
 /**

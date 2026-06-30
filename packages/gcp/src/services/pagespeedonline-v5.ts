@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface PagespeedVersion {
   major?: string;
 }
 
-export const PagespeedVersion: Schema.Schema<PagespeedVersion> =
+export const PagespeedVersion: Schema.Codec<PagespeedVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minor: Schema.optional(Schema.String),
     major: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface Environment {
   credits?: Record<string, string>;
 }
 
-export const Environment: Schema.Schema<Environment> =
+export const Environment: Schema.Codec<Environment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkUserAgent: Schema.optional(Schema.String),
     hostUserAgent: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export interface AuditRefs {
   group?: string;
 }
 
-export const AuditRefs: Schema.Schema<AuditRefs> =
+export const AuditRefs: Schema.Codec<AuditRefs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevantAudits: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
@@ -91,7 +91,7 @@ export interface LighthouseCategoryV5 {
   manualDescription?: string;
 }
 
-export const LighthouseCategoryV5: Schema.Schema<LighthouseCategoryV5> =
+export const LighthouseCategoryV5: Schema.Codec<LighthouseCategoryV5> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     auditRefs: Schema.optional(Schema.Array(AuditRefs)),
@@ -116,7 +116,7 @@ export interface Categories {
   "agentic-browsing"?: LighthouseCategoryV5;
 }
 
-export const Categories: Schema.Schema<Categories> =
+export const Categories: Schema.Codec<Categories> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessibility: Schema.optional(LighthouseCategoryV5),
     "best-practices": Schema.optional(LighthouseCategoryV5),
@@ -139,7 +139,7 @@ export interface MetricSavings {
   FCP?: number;
 }
 
-export const MetricSavings: Schema.Schema<MetricSavings> =
+export const MetricSavings: Schema.Codec<MetricSavings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     CLS: Schema.optional(Schema.Number),
     INP: Schema.optional(Schema.Number),
@@ -155,7 +155,7 @@ export interface RuntimeError {
   code?: string;
 }
 
-export const RuntimeError: Schema.Schema<RuntimeError> =
+export const RuntimeError: Schema.Codec<RuntimeError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -174,7 +174,7 @@ export interface ConfigSettings {
   locale?: string;
 }
 
-export const ConfigSettings: Schema.Schema<ConfigSettings> =
+export const ConfigSettings: Schema.Codec<ConfigSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emulatedFormFactor: Schema.optional(Schema.String),
     channel: Schema.optional(Schema.String),
@@ -198,7 +198,7 @@ export interface LhrEntity {
   origins?: ReadonlyArray<string>;
 }
 
-export const LhrEntity: Schema.Schema<LhrEntity> =
+export const LhrEntity: Schema.Codec<LhrEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     homepage: Schema.optional(Schema.String),
@@ -217,7 +217,7 @@ export interface Bucket {
   max?: number;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
+export const Bucket: Schema.Codec<Bucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proportion: Schema.optional(Schema.Number),
     min: Schema.optional(Schema.Number),
@@ -253,7 +253,7 @@ export interface LighthouseAuditResultV5 {
   numericValue?: number;
 }
 
-export const LighthouseAuditResultV5: Schema.Schema<LighthouseAuditResultV5> =
+export const LighthouseAuditResultV5: Schema.Codec<LighthouseAuditResultV5> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     explanation: Schema.optional(Schema.String),
@@ -275,7 +275,7 @@ export interface Timing {
   total?: number;
 }
 
-export const Timing: Schema.Schema<Timing> =
+export const Timing: Schema.Codec<Timing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     total: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Timing" });
@@ -379,7 +379,7 @@ export interface RendererFormattedStrings {
   dropdownDarkTheme?: string;
 }
 
-export const RendererFormattedStrings: Schema.Schema<RendererFormattedStrings> =
+export const RendererFormattedStrings: Schema.Codec<RendererFormattedStrings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dropdownCopyJSON: Schema.optional(Schema.String),
     errorMissingAuditInfo: Schema.optional(Schema.String),
@@ -442,7 +442,7 @@ export interface StackPack {
   iconDataURL?: string;
 }
 
-export const StackPack: Schema.Schema<StackPack> =
+export const StackPack: Schema.Codec<StackPack> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -465,7 +465,7 @@ export interface UserPageLoadMetricV5 {
   category?: string;
 }
 
-export const UserPageLoadMetricV5: Schema.Schema<UserPageLoadMetricV5> =
+export const UserPageLoadMetricV5: Schema.Codec<UserPageLoadMetricV5> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formFactor: Schema.optional(Schema.String),
     distributions: Schema.optional(Schema.Array(Bucket)),
@@ -488,7 +488,7 @@ export interface PagespeedApiLoadingExperienceV5 {
   metrics?: Record<string, UserPageLoadMetricV5>;
 }
 
-export const PagespeedApiLoadingExperienceV5: Schema.Schema<PagespeedApiLoadingExperienceV5> =
+export const PagespeedApiLoadingExperienceV5: Schema.Codec<PagespeedApiLoadingExperienceV5> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overall_category: Schema.optional(Schema.String),
     origin_fallback: Schema.optional(Schema.Boolean),
@@ -504,7 +504,7 @@ export interface I18n {
   rendererFormattedStrings?: RendererFormattedStrings;
 }
 
-export const I18n: Schema.Schema<I18n> =
+export const I18n: Schema.Codec<I18n> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rendererFormattedStrings: Schema.optional(RendererFormattedStrings),
   }).annotate({ identifier: "I18n" });
@@ -516,7 +516,7 @@ export interface CategoryGroupV5 {
   title?: string;
 }
 
-export const CategoryGroupV5: Schema.Schema<CategoryGroupV5> =
+export const CategoryGroupV5: Schema.Codec<CategoryGroupV5> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -563,7 +563,7 @@ export interface LighthouseResultV5 {
   categoryGroups?: Record<string, CategoryGroupV5>;
 }
 
-export const LighthouseResultV5: Schema.Schema<LighthouseResultV5> =
+export const LighthouseResultV5: Schema.Codec<LighthouseResultV5> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stackPacks: Schema.optional(Schema.Array(StackPack)),
     lighthouseVersion: Schema.optional(Schema.String),
@@ -609,7 +609,7 @@ export interface PagespeedApiPagespeedResponseV5 {
   kind?: string;
 }
 
-export const PagespeedApiPagespeedResponseV5: Schema.Schema<PagespeedApiPagespeedResponseV5> =
+export const PagespeedApiPagespeedResponseV5: Schema.Codec<PagespeedApiPagespeedResponseV5> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     captchaResult: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -695,7 +695,7 @@ export const RunpagespeedPagespeedapiRequest =
   }).pipe(
     T.Http({ method: "GET", path: "pagespeedonline/v5/runPagespeed" }),
     svc,
-  ) as unknown as Schema.Schema<RunpagespeedPagespeedapiRequest>;
+  ) as unknown as Schema.Codec<RunpagespeedPagespeedapiRequest>;
 
 export type RunpagespeedPagespeedapiResponse = PagespeedApiPagespeedResponseV5;
 export const RunpagespeedPagespeedapiResponse =

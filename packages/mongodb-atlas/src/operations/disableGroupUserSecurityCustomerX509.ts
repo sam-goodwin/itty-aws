@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DisableGroupUserSecurityCustomerX509Input {
+  groupId: string;
+  envelope?: boolean;
+}
 export const DisableGroupUserSecurityCustomerX509Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const DisableGroupUserSecurityCustomerX509Input =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509",
     }),
-  );
-export type DisableGroupUserSecurityCustomerX509Input =
-  typeof DisableGroupUserSecurityCustomerX509Input.Type;
+  ) as unknown as Schema.Codec<DisableGroupUserSecurityCustomerX509Input>;
 
 // Output Schema
+export type DisableGroupUserSecurityCustomerX509Output = void;
 export const DisableGroupUserSecurityCustomerX509Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisableGroupUserSecurityCustomerX509Output =
-  typeof DisableGroupUserSecurityCustomerX509Output.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisableGroupUserSecurityCustomerX509Output>;
 
 // The operation
 /**

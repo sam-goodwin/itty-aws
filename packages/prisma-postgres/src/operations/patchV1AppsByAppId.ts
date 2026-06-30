@@ -4,16 +4,37 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PatchV1AppsByAppIdInput {
+  appId: string;
+  displayName?: string;
+  branchId?: string | null;
+  branchGitName?: string | null;
+}
 export const PatchV1AppsByAppIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     displayName: Schema.optional(Schema.String),
     branchId: Schema.optional(Schema.NullOr(Schema.String)),
     branchGitName: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "PATCH", path: "/v1/apps/{appId}" }));
-export type PatchV1AppsByAppIdInput = typeof PatchV1AppsByAppIdInput.Type;
+  }).pipe(
+    T.Http({ method: "PATCH", path: "/v1/apps/{appId}" }),
+  ) as unknown as Schema.Codec<PatchV1AppsByAppIdInput>;
 
 // Output Schema
+export interface PatchV1AppsByAppIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    region: { id: string; name: string };
+    projectId: string;
+    branchId: string | null;
+    latestDeploymentId: string | null;
+    appEndpointDomain: string;
+    createdAt: string;
+  };
+}
 export const PatchV1AppsByAppIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -31,8 +52,7 @@ export const PatchV1AppsByAppIdOutput =
       appEndpointDomain: Schema.String,
       createdAt: Schema.String,
     }),
-  });
-export type PatchV1AppsByAppIdOutput = typeof PatchV1AppsByAppIdOutput.Type;
+  }) as unknown as Schema.Codec<PatchV1AppsByAppIdOutput>;
 
 // The operation
 /**

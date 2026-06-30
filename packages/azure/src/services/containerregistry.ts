@@ -4,12 +4,32 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CacheRulesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  cacheRuleName: string;
+  properties?: {
+    credentialSetResourceId?: string;
+    sourceRepository?: string;
+    targetRepository?: string;
+    creationDate?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+}
 export const CacheRulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -39,10 +59,22 @@ export const CacheRulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type CacheRulesCreateInput = typeof CacheRulesCreateInput.Type;
+) as unknown as Schema.Codec<CacheRulesCreateInput>;
 
 // Output Schema
+export interface CacheRulesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CacheRulesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -63,8 +95,7 @@ export const CacheRulesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type CacheRulesCreateOutput = typeof CacheRulesCreateOutput.Type;
+) as unknown as Schema.Codec<CacheRulesCreateOutput>;
 
 // The operation
 /**
@@ -81,6 +112,12 @@ export const CacheRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CacheRulesCreateOutput,
 }));
 // Input Schema
+export interface CacheRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  cacheRuleName: string;
+}
 export const CacheRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -92,12 +129,12 @@ export const CacheRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type CacheRulesDeleteInput = typeof CacheRulesDeleteInput.Type;
+) as unknown as Schema.Codec<CacheRulesDeleteInput>;
 
 // Output Schema
-export const CacheRulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CacheRulesDeleteOutput = typeof CacheRulesDeleteOutput.Type;
+export type CacheRulesDeleteOutput = void;
+export const CacheRulesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CacheRulesDeleteOutput>;
 
 // The operation
 /**
@@ -114,6 +151,12 @@ export const CacheRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CacheRulesDeleteOutput,
 }));
 // Input Schema
+export interface CacheRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  cacheRuleName: string;
+}
 export const CacheRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -125,10 +168,22 @@ export const CacheRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type CacheRulesGetInput = typeof CacheRulesGetInput.Type;
+) as unknown as Schema.Codec<CacheRulesGetInput>;
 
 // Output Schema
+export interface CacheRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CacheRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -147,8 +202,7 @@ export const CacheRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CacheRulesGetOutput = typeof CacheRulesGetOutput.Type;
+}) as unknown as Schema.Codec<CacheRulesGetOutput>;
 
 // The operation
 /**
@@ -165,6 +219,11 @@ export const CacheRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CacheRulesGetOutput,
 }));
 // Input Schema
+export interface CacheRulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const CacheRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -175,10 +234,25 @@ export const CacheRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules",
     apiVersion: "2025-11-01",
   }),
-);
-export type CacheRulesListInput = typeof CacheRulesListInput.Type;
+) as unknown as Schema.Codec<CacheRulesListInput>;
 
 // Output Schema
+export interface CacheRulesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CacheRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -214,8 +288,7 @@ export const CacheRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type CacheRulesListOutput = typeof CacheRulesListOutput.Type;
+}) as unknown as Schema.Codec<CacheRulesListOutput>;
 
 // The operation
 /**
@@ -231,6 +304,13 @@ export const CacheRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CacheRulesListOutput,
 }));
 // Input Schema
+export interface CacheRulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  cacheRuleName: string;
+  properties?: { credentialSetResourceId?: string };
+}
 export const CacheRulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -247,10 +327,22 @@ export const CacheRulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules/{cacheRuleName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type CacheRulesUpdateInput = typeof CacheRulesUpdateInput.Type;
+) as unknown as Schema.Codec<CacheRulesUpdateInput>;
 
 // Output Schema
+export interface CacheRulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CacheRulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -271,8 +363,7 @@ export const CacheRulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type CacheRulesUpdateOutput = typeof CacheRulesUpdateOutput.Type;
+) as unknown as Schema.Codec<CacheRulesUpdateOutput>;
 
 // The operation
 /**
@@ -289,6 +380,58 @@ export const CacheRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CacheRulesUpdateOutput,
 }));
 // Input Schema
+export interface ConnectedRegistriesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  connectedRegistryName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    mode: "ReadWrite" | "ReadOnly" | "Registry" | "Mirror";
+    version?: string;
+    connectionState?: "Online" | "Offline" | "Syncing" | "Unhealthy";
+    lastActivityTime?: string;
+    activation?: { status?: "Active" | "Inactive" };
+    parent: {
+      id?: string;
+      syncProperties: {
+        tokenId: string;
+        schedule?: string;
+        syncWindow?: string;
+        messageTtl: string;
+        lastSyncTime?: string;
+        gatewayEndpoint?: string;
+      };
+    };
+    clientTokenIds?: string[];
+    loginServer?: {
+      host?: string;
+      tls?: {
+        status?: "Enabled" | "Disabled";
+        certificate?: { type?: "LocalDirectory"; location?: string };
+      };
+    };
+    logging?: {
+      logLevel?: "Debug" | "Information" | "Warning" | "Error" | "None";
+      auditLogStatus?: "Enabled" | "Disabled";
+    };
+    statusDetails?: {
+      type?: string;
+      code?: string;
+      description?: string;
+      timestamp?: string;
+      correlationId?: string;
+    }[];
+    notificationsList?: string[];
+    garbageCollection?: { enabled?: boolean; schedule?: string };
+  };
+}
 export const ConnectedRegistriesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -390,11 +533,22 @@ export const ConnectedRegistriesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ConnectedRegistriesCreateInput =
-  typeof ConnectedRegistriesCreateInput.Type;
+  ) as unknown as Schema.Codec<ConnectedRegistriesCreateInput>;
 
 // Output Schema
+export interface ConnectedRegistriesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectedRegistriesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -414,9 +568,7 @@ export const ConnectedRegistriesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectedRegistriesCreateOutput =
-  typeof ConnectedRegistriesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedRegistriesCreateOutput>;
 
 // The operation
 /**
@@ -435,6 +587,12 @@ export const ConnectedRegistriesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectedRegistriesDeactivateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  connectedRegistryName: string;
+}
 export const ConnectedRegistriesDeactivateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -447,15 +605,12 @@ export const ConnectedRegistriesDeactivateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}/deactivate",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ConnectedRegistriesDeactivateInput =
-  typeof ConnectedRegistriesDeactivateInput.Type;
+  ) as unknown as Schema.Codec<ConnectedRegistriesDeactivateInput>;
 
 // Output Schema
+export type ConnectedRegistriesDeactivateOutput = void;
 export const ConnectedRegistriesDeactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectedRegistriesDeactivateOutput =
-  typeof ConnectedRegistriesDeactivateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedRegistriesDeactivateOutput>;
 
 // The operation
 /**
@@ -473,6 +628,12 @@ export const ConnectedRegistriesDeactivate =
     outputSchema: ConnectedRegistriesDeactivateOutput,
   }));
 // Input Schema
+export interface ConnectedRegistriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  connectedRegistryName: string;
+}
 export const ConnectedRegistriesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -485,15 +646,12 @@ export const ConnectedRegistriesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ConnectedRegistriesDeleteInput =
-  typeof ConnectedRegistriesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConnectedRegistriesDeleteInput>;
 
 // Output Schema
+export type ConnectedRegistriesDeleteOutput = void;
 export const ConnectedRegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectedRegistriesDeleteOutput =
-  typeof ConnectedRegistriesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectedRegistriesDeleteOutput>;
 
 // The operation
 /**
@@ -512,6 +670,12 @@ export const ConnectedRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectedRegistriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  connectedRegistryName: string;
+}
 export const ConnectedRegistriesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -524,11 +688,22 @@ export const ConnectedRegistriesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ConnectedRegistriesGetInput =
-  typeof ConnectedRegistriesGetInput.Type;
+  ) as unknown as Schema.Codec<ConnectedRegistriesGetInput>;
 
 // Output Schema
+export interface ConnectedRegistriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectedRegistriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -548,9 +723,7 @@ export const ConnectedRegistriesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectedRegistriesGetOutput =
-  typeof ConnectedRegistriesGetOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedRegistriesGetOutput>;
 
 // The operation
 /**
@@ -569,6 +742,12 @@ export const ConnectedRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectedRegistriesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  $filter?: string;
+}
 export const ConnectedRegistriesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -581,11 +760,25 @@ export const ConnectedRegistriesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ConnectedRegistriesListInput =
-  typeof ConnectedRegistriesListInput.Type;
+  ) as unknown as Schema.Codec<ConnectedRegistriesListInput>;
 
 // Output Schema
+export interface ConnectedRegistriesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectedRegistriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -622,9 +815,7 @@ export const ConnectedRegistriesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectedRegistriesListOutput =
-  typeof ConnectedRegistriesListOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedRegistriesListOutput>;
 
 // The operation
 /**
@@ -643,6 +834,26 @@ export const ConnectedRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectedRegistriesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  connectedRegistryName: string;
+  properties?: {
+    syncProperties?: {
+      schedule?: string;
+      syncWindow?: string;
+      messageTtl?: string;
+    };
+    logging?: {
+      logLevel?: "Debug" | "Information" | "Warning" | "Error" | "None";
+      auditLogStatus?: "Enabled" | "Disabled";
+    };
+    clientTokenIds?: string[];
+    notificationsList?: string[];
+    garbageCollection?: { enabled?: boolean; schedule?: string };
+  };
+}
 export const ConnectedRegistriesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -690,11 +901,22 @@ export const ConnectedRegistriesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries/{connectedRegistryName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ConnectedRegistriesUpdateInput =
-  typeof ConnectedRegistriesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConnectedRegistriesUpdateInput>;
 
 // Output Schema
+export interface ConnectedRegistriesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectedRegistriesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -714,9 +936,7 @@ export const ConnectedRegistriesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectedRegistriesUpdateOutput =
-  typeof ConnectedRegistriesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectedRegistriesUpdateOutput>;
 
 // The operation
 /**
@@ -735,6 +955,46 @@ export const ConnectedRegistriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CredentialSetsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  credentialSetName: string;
+  properties?: {
+    loginServer?: string;
+    authCredentials?: {
+      name?: "Credential1";
+      usernameSecretIdentifier?: string;
+      passwordSecretIdentifier?: string | Redacted.Redacted<string>;
+      credentialHealth?: {
+        status?: "Healthy" | "Unhealthy";
+        errorCode?: string;
+        errorMessage?: string;
+      };
+    }[];
+    creationDate?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const CredentialSetsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -804,10 +1064,22 @@ export const CredentialSetsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type CredentialSetsCreateInput = typeof CredentialSetsCreateInput.Type;
+  ) as unknown as Schema.Codec<CredentialSetsCreateInput>;
 
 // Output Schema
+export interface CredentialSetsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CredentialSetsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -827,8 +1099,7 @@ export const CredentialSetsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CredentialSetsCreateOutput = typeof CredentialSetsCreateOutput.Type;
+  }) as unknown as Schema.Codec<CredentialSetsCreateOutput>;
 
 // The operation
 /**
@@ -847,6 +1118,12 @@ export const CredentialSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CredentialSetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  credentialSetName: string;
+}
 export const CredentialSetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -859,13 +1136,12 @@ export const CredentialSetsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type CredentialSetsDeleteInput = typeof CredentialSetsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CredentialSetsDeleteInput>;
 
 // Output Schema
+export type CredentialSetsDeleteOutput = void;
 export const CredentialSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CredentialSetsDeleteOutput = typeof CredentialSetsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialSetsDeleteOutput>;
 
 // The operation
 /**
@@ -884,6 +1160,12 @@ export const CredentialSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CredentialSetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  credentialSetName: string;
+}
 export const CredentialSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -897,10 +1179,22 @@ export const CredentialSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type CredentialSetsGetInput = typeof CredentialSetsGetInput.Type;
+) as unknown as Schema.Codec<CredentialSetsGetInput>;
 
 // Output Schema
+export interface CredentialSetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CredentialSetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -920,8 +1214,7 @@ export const CredentialSetsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CredentialSetsGetOutput = typeof CredentialSetsGetOutput.Type;
+  }) as unknown as Schema.Codec<CredentialSetsGetOutput>;
 
 // The operation
 /**
@@ -938,6 +1231,11 @@ export const CredentialSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CredentialSetsGetOutput,
 }));
 // Input Schema
+export interface CredentialSetsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const CredentialSetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -949,10 +1247,25 @@ export const CredentialSetsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets",
       apiVersion: "2025-11-01",
     }),
-  );
-export type CredentialSetsListInput = typeof CredentialSetsListInput.Type;
+  ) as unknown as Schema.Codec<CredentialSetsListInput>;
 
 // Output Schema
+export interface CredentialSetsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CredentialSetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -989,8 +1302,7 @@ export const CredentialSetsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CredentialSetsListOutput = typeof CredentialSetsListOutput.Type;
+  }) as unknown as Schema.Codec<CredentialSetsListOutput>;
 
 // The operation
 /**
@@ -1006,6 +1318,37 @@ export const CredentialSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CredentialSetsListOutput,
 }));
 // Input Schema
+export interface CredentialSetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  credentialSetName: string;
+  properties?: {
+    authCredentials?: {
+      name?: "Credential1";
+      usernameSecretIdentifier?: string;
+      passwordSecretIdentifier?: string | Redacted.Redacted<string>;
+      credentialHealth?: {
+        status?: "Healthy" | "Unhealthy";
+        errorCode?: string;
+        errorMessage?: string;
+      };
+    }[];
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const CredentialSetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1063,10 +1406,22 @@ export const CredentialSetsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets/{credentialSetName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type CredentialSetsUpdateInput = typeof CredentialSetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<CredentialSetsUpdateInput>;
 
 // Output Schema
+export interface CredentialSetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CredentialSetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1086,8 +1441,7 @@ export const CredentialSetsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CredentialSetsUpdateOutput = typeof CredentialSetsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CredentialSetsUpdateOutput>;
 
 // The operation
 /**
@@ -1106,6 +1460,7 @@ export const CredentialSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1114,10 +1469,40 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ContainerRegistry/operations",
     apiVersion: "2025-11-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    origin?: string;
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          internalMetricName?: string;
+        }[];
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+      };
+    };
+    isDataAction?: boolean;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1166,8 +1551,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1180,6 +1564,27 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: "None" | "Recreate";
+    };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1227,11 +1632,22 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1251,9 +1667,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1271,6 +1685,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1283,15 +1703,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1309,6 +1726,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1321,11 +1744,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1345,9 +1779,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1365,6 +1797,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1376,11 +1813,25 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections",
       apiVersion: "2025-11-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1417,9 +1868,7 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -1436,6 +1885,11 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface RegistriesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+  type: "Microsoft.ContainerRegistry/registries";
+}
 export const RegistriesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1447,19 +1901,20 @@ export const RegistriesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/checkNameAvailability",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesCheckNameAvailabilityInput =
-  typeof RegistriesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<RegistriesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface RegistriesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const RegistriesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type RegistriesCheckNameAvailabilityOutput =
-  typeof RegistriesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -1474,6 +1929,91 @@ export const RegistriesCheckNameAvailability =
     outputSchema: RegistriesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface RegistriesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  properties?: {
+    loginServer?: string;
+    creationDate?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    status?: { displayStatus?: string; message?: string; timestamp?: string };
+    adminUserEnabled?: boolean;
+    networkRuleSet?: {
+      defaultAction: "Allow" | "Deny";
+      ipRules?: { action?: "Allow"; value: string }[];
+    };
+    policies?: {
+      quarantinePolicy?: { status?: "enabled" | "disabled" };
+      trustPolicy?: { type?: "Notary"; status?: "enabled" | "disabled" };
+      retentionPolicy?: {
+        days?: number;
+        lastUpdatedTime?: string;
+        status?: "enabled" | "disabled";
+      };
+      exportPolicy?: { status?: "enabled" | "disabled" };
+      azureADAuthenticationAsArmPolicy?: { status?: "enabled" | "disabled" };
+    };
+    encryption?: {
+      status?: "enabled" | "disabled";
+      keyVaultProperties?: {
+        keyIdentifier?: string;
+        versionedKeyIdentifier?: string;
+        identity?: string;
+        keyRotationEnabled?: boolean;
+        lastKeyRotationTimestamp?: string;
+      };
+    };
+    dataEndpointEnabled?: boolean;
+    dataEndpointHostNames?: string[];
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    networkRuleBypassOptions?: "AzureServices" | "None";
+    networkRuleBypassAllowedForTasks?: boolean;
+    zoneRedundancy?: "Enabled" | "Disabled";
+    anonymousPullEnabled?: boolean;
+    roleAssignmentMode?:
+      | "AbacRepositoryPermissions"
+      | "LegacyRegistryPermissions";
+  };
+  sku: {
+    name: "Classic" | "Basic" | "Standard" | "Premium";
+    tier?: "Classic" | "Basic" | "Standard" | "Premium";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const RegistriesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1648,10 +2188,22 @@ export const RegistriesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type RegistriesCreateInput = typeof RegistriesCreateInput.Type;
+) as unknown as Schema.Codec<RegistriesCreateInput>;
 
 // Output Schema
+export interface RegistriesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistriesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1672,8 +2224,7 @@ export const RegistriesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type RegistriesCreateOutput = typeof RegistriesCreateOutput.Type;
+) as unknown as Schema.Codec<RegistriesCreateOutput>;
 
 // The operation
 /**
@@ -1689,6 +2240,11 @@ export const RegistriesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesCreateOutput,
 }));
 // Input Schema
+export interface RegistriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1699,12 +2255,12 @@ export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type RegistriesDeleteInput = typeof RegistriesDeleteInput.Type;
+) as unknown as Schema.Codec<RegistriesDeleteInput>;
 
 // Output Schema
-export const RegistriesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistriesDeleteOutput = typeof RegistriesDeleteOutput.Type;
+export type RegistriesDeleteOutput = void;
+export const RegistriesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistriesDeleteOutput>;
 
 // The operation
 /**
@@ -1720,6 +2276,14 @@ export const RegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesDeleteOutput,
 }));
 // Input Schema
+export interface RegistriesGenerateCredentialsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  tokenId?: string;
+  expiry?: string;
+  name?: "password1" | "password2";
+}
 export const RegistriesGenerateCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1734,11 +2298,18 @@ export const RegistriesGenerateCredentialsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/generateCredentials",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesGenerateCredentialsInput =
-  typeof RegistriesGenerateCredentialsInput.Type;
+  ) as unknown as Schema.Codec<RegistriesGenerateCredentialsInput>;
 
 // Output Schema
+export interface RegistriesGenerateCredentialsOutput {
+  username?: string;
+  passwords?: {
+    creationTime?: string;
+    expiry?: string;
+    name?: "password1" | "password2";
+    value?: string;
+  }[];
+}
 export const RegistriesGenerateCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
@@ -1752,9 +2323,7 @@ export const RegistriesGenerateCredentialsOutput =
         }),
       ),
     ),
-  });
-export type RegistriesGenerateCredentialsOutput =
-  typeof RegistriesGenerateCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesGenerateCredentialsOutput>;
 
 // The operation
 /**
@@ -1771,6 +2340,11 @@ export const RegistriesGenerateCredentials =
     outputSchema: RegistriesGenerateCredentialsOutput,
   }));
 // Input Schema
+export interface RegistriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1781,10 +2355,22 @@ export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type RegistriesGetInput = typeof RegistriesGetInput.Type;
+) as unknown as Schema.Codec<RegistriesGetInput>;
 
 // Output Schema
+export interface RegistriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1803,8 +2389,7 @@ export const RegistriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RegistriesGetOutput = typeof RegistriesGetOutput.Type;
+}) as unknown as Schema.Codec<RegistriesGetOutput>;
 
 // The operation
 /**
@@ -1820,6 +2405,11 @@ export const RegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesGetOutput,
 }));
 // Input Schema
+export interface RegistriesGetBuildSourceUploadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const RegistriesGetBuildSourceUploadUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1831,18 +2421,18 @@ export const RegistriesGetBuildSourceUploadUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listBuildSourceUploadUrl",
       apiVersion: "2019-04-01",
     }),
-  );
-export type RegistriesGetBuildSourceUploadUrlInput =
-  typeof RegistriesGetBuildSourceUploadUrlInput.Type;
+  ) as unknown as Schema.Codec<RegistriesGetBuildSourceUploadUrlInput>;
 
 // Output Schema
+export interface RegistriesGetBuildSourceUploadUrlOutput {
+  uploadUrl?: string;
+  relativePath?: string;
+}
 export const RegistriesGetBuildSourceUploadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadUrl: Schema.optional(Schema.String),
     relativePath: Schema.optional(Schema.String),
-  });
-export type RegistriesGetBuildSourceUploadUrlOutput =
-  typeof RegistriesGetBuildSourceUploadUrlOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesGetBuildSourceUploadUrlOutput>;
 
 // The operation
 /**
@@ -1859,6 +2449,12 @@ export const RegistriesGetBuildSourceUploadUrl =
     outputSchema: RegistriesGetBuildSourceUploadUrlOutput,
   }));
 // Input Schema
+export interface RegistriesGetPrivateLinkResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  groupName: string;
+}
 export const RegistriesGetPrivateLinkResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1871,11 +2467,22 @@ export const RegistriesGetPrivateLinkResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateLinkResources/{groupName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesGetPrivateLinkResourceInput =
-  typeof RegistriesGetPrivateLinkResourceInput.Type;
+  ) as unknown as Schema.Codec<RegistriesGetPrivateLinkResourceInput>;
 
 // Output Schema
+export interface RegistriesGetPrivateLinkResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistriesGetPrivateLinkResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1895,9 +2502,7 @@ export const RegistriesGetPrivateLinkResourceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistriesGetPrivateLinkResourceOutput =
-  typeof RegistriesGetPrivateLinkResourceOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesGetPrivateLinkResourceOutput>;
 
 // The operation
 /**
@@ -1915,6 +2520,23 @@ export const RegistriesGetPrivateLinkResource =
     outputSchema: RegistriesGetPrivateLinkResourceOutput,
   }));
 // Input Schema
+export interface RegistriesImportImageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  source: {
+    resourceId?: string;
+    registryUri?: string;
+    credentials?: {
+      username?: string;
+      password: string | Redacted.Redacted<string>;
+    };
+    sourceImage: string;
+  };
+  targetTags?: string[];
+  untaggedTargetRepositories?: string[];
+  mode?: "NoForce" | "Force";
+}
 export const RegistriesImportImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1940,14 +2562,12 @@ export const RegistriesImportImageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importImage",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesImportImageInput = typeof RegistriesImportImageInput.Type;
+  ) as unknown as Schema.Codec<RegistriesImportImageInput>;
 
 // Output Schema
+export type RegistriesImportImageOutput = void;
 export const RegistriesImportImageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistriesImportImageOutput =
-  typeof RegistriesImportImageOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistriesImportImageOutput>;
 
 // The operation
 /**
@@ -1965,6 +2585,9 @@ export const RegistriesImportImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistriesListInput {
+  subscriptionId: string;
+}
 export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1973,10 +2596,25 @@ export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/registries",
     apiVersion: "2025-11-01",
   }),
-);
-export type RegistriesListInput = typeof RegistriesListInput.Type;
+) as unknown as Schema.Codec<RegistriesListInput>;
 
 // Output Schema
+export interface RegistriesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2012,8 +2650,7 @@ export const RegistriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type RegistriesListOutput = typeof RegistriesListOutput.Type;
+}) as unknown as Schema.Codec<RegistriesListOutput>;
 
 // The operation
 /**
@@ -2027,6 +2664,10 @@ export const RegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesListOutput,
 }));
 // Input Schema
+export interface RegistriesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const RegistriesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2037,11 +2678,25 @@ export const RegistriesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesListByResourceGroupInput =
-  typeof RegistriesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RegistriesListByResourceGroupInput>;
 
 // Output Schema
+export interface RegistriesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistriesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2078,9 +2733,7 @@ export const RegistriesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistriesListByResourceGroupOutput =
-  typeof RegistriesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2096,6 +2749,11 @@ export const RegistriesListByResourceGroup =
     outputSchema: RegistriesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface RegistriesListCredentialsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const RegistriesListCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2107,11 +2765,13 @@ export const RegistriesListCredentialsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listCredentials",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesListCredentialsInput =
-  typeof RegistriesListCredentialsInput.Type;
+  ) as unknown as Schema.Codec<RegistriesListCredentialsInput>;
 
 // Output Schema
+export interface RegistriesListCredentialsOutput {
+  username?: string;
+  passwords?: { name?: "password" | "password2"; value?: string }[];
+}
 export const RegistriesListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
@@ -2123,9 +2783,7 @@ export const RegistriesListCredentialsOutput =
         }),
       ),
     ),
-  });
-export type RegistriesListCredentialsOutput =
-  typeof RegistriesListCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesListCredentialsOutput>;
 
 // The operation
 /**
@@ -2143,6 +2801,11 @@ export const RegistriesListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistriesListPrivateLinkResourcesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const RegistriesListPrivateLinkResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2154,11 +2817,25 @@ export const RegistriesListPrivateLinkResourcesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateLinkResources",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesListPrivateLinkResourcesInput =
-  typeof RegistriesListPrivateLinkResourcesInput.Type;
+  ) as unknown as Schema.Codec<RegistriesListPrivateLinkResourcesInput>;
 
 // Output Schema
+export interface RegistriesListPrivateLinkResourcesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistriesListPrivateLinkResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2195,9 +2872,7 @@ export const RegistriesListPrivateLinkResourcesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistriesListPrivateLinkResourcesOutput =
-  typeof RegistriesListPrivateLinkResourcesOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesListPrivateLinkResourcesOutput>;
 
 // The operation
 /**
@@ -2214,6 +2889,11 @@ export const RegistriesListPrivateLinkResources =
     outputSchema: RegistriesListPrivateLinkResourcesOutput,
   }));
 // Input Schema
+export interface RegistriesListUsagesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const RegistriesListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2225,10 +2905,17 @@ export const RegistriesListUsagesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/listUsages",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesListUsagesInput = typeof RegistriesListUsagesInput.Type;
+  ) as unknown as Schema.Codec<RegistriesListUsagesInput>;
 
 // Output Schema
+export interface RegistriesListUsagesOutput {
+  value?: {
+    name?: string;
+    limit?: number;
+    currentValue?: number;
+    unit?: "Count" | "Bytes";
+  }[];
+}
 export const RegistriesListUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2241,8 +2928,7 @@ export const RegistriesListUsagesOutput =
         }),
       ),
     ),
-  });
-export type RegistriesListUsagesOutput = typeof RegistriesListUsagesOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesListUsagesOutput>;
 
 // The operation
 /**
@@ -2260,6 +2946,12 @@ export const RegistriesListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistriesRegenerateCredentialInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: "password" | "password2";
+}
 export const RegistriesRegenerateCredentialInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2272,11 +2964,13 @@ export const RegistriesRegenerateCredentialInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/regenerateCredential",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RegistriesRegenerateCredentialInput =
-  typeof RegistriesRegenerateCredentialInput.Type;
+  ) as unknown as Schema.Codec<RegistriesRegenerateCredentialInput>;
 
 // Output Schema
+export interface RegistriesRegenerateCredentialOutput {
+  username?: string;
+  passwords?: { name?: "password" | "password2"; value?: string }[];
+}
 export const RegistriesRegenerateCredentialOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
@@ -2288,9 +2982,7 @@ export const RegistriesRegenerateCredentialOutput =
         }),
       ),
     ),
-  });
-export type RegistriesRegenerateCredentialOutput =
-  typeof RegistriesRegenerateCredentialOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesRegenerateCredentialOutput>;
 
 // The operation
 /**
@@ -2307,6 +2999,13 @@ export const RegistriesRegenerateCredential =
     outputSchema: RegistriesRegenerateCredentialOutput,
   }));
 // Input Schema
+export interface RegistriesScheduleRunInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  type: string;
+  isArchiveEnabled?: boolean;
+}
 export const RegistriesScheduleRunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2320,18 +3019,20 @@ export const RegistriesScheduleRunInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scheduleRun",
       apiVersion: "2019-04-01",
     }),
-  );
-export type RegistriesScheduleRunInput = typeof RegistriesScheduleRunInput.Type;
+  ) as unknown as Schema.Codec<RegistriesScheduleRunInput>;
 
 // Output Schema
+export interface RegistriesScheduleRunOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const RegistriesScheduleRunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type RegistriesScheduleRunOutput =
-  typeof RegistriesScheduleRunOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesScheduleRunOutput>;
 
 // The operation
 /**
@@ -2349,6 +3050,65 @@ export const RegistriesScheduleRun = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistriesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  sku?: {
+    name: "Classic" | "Basic" | "Standard" | "Premium";
+    tier?: "Classic" | "Basic" | "Standard" | "Premium";
+  };
+  properties?: {
+    adminUserEnabled?: boolean;
+    networkRuleSet?: {
+      defaultAction: "Allow" | "Deny";
+      ipRules?: { action?: "Allow"; value: string }[];
+    };
+    policies?: {
+      quarantinePolicy?: { status?: "enabled" | "disabled" };
+      trustPolicy?: { type?: "Notary"; status?: "enabled" | "disabled" };
+      retentionPolicy?: {
+        days?: number;
+        lastUpdatedTime?: string;
+        status?: "enabled" | "disabled";
+      };
+      exportPolicy?: { status?: "enabled" | "disabled" };
+      azureADAuthenticationAsArmPolicy?: { status?: "enabled" | "disabled" };
+    };
+    encryption?: {
+      status?: "enabled" | "disabled";
+      keyVaultProperties?: {
+        keyIdentifier?: string;
+        versionedKeyIdentifier?: string;
+        identity?: string;
+        keyRotationEnabled?: boolean;
+        lastKeyRotationTimestamp?: string;
+      };
+    };
+    dataEndpointEnabled?: boolean;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    networkRuleBypassOptions?: "AzureServices" | "None";
+    networkRuleBypassAllowedForTasks?: boolean;
+    anonymousPullEnabled?: boolean;
+    roleAssignmentMode?:
+      | "AbacRepositoryPermissions"
+      | "LegacyRegistryPermissions";
+  };
+}
 export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2470,10 +3230,22 @@ export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type RegistriesUpdateInput = typeof RegistriesUpdateInput.Type;
+) as unknown as Schema.Codec<RegistriesUpdateInput>;
 
 // Output Schema
+export interface RegistriesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2494,8 +3266,7 @@ export const RegistriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type RegistriesUpdateOutput = typeof RegistriesUpdateOutput.Type;
+) as unknown as Schema.Codec<RegistriesUpdateOutput>;
 
 // The operation
 /**
@@ -2511,6 +3282,26 @@ export const RegistriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesUpdateOutput,
 }));
 // Input Schema
+export interface ReplicationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  replicationName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    status?: { displayStatus?: string; message?: string; timestamp?: string };
+    regionEndpointEnabled?: boolean;
+    zoneRedundancy?: "Enabled" | "Disabled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ReplicationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2550,10 +3341,22 @@ export const ReplicationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ReplicationsCreateInput = typeof ReplicationsCreateInput.Type;
+  ) as unknown as Schema.Codec<ReplicationsCreateInput>;
 
 // Output Schema
+export interface ReplicationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReplicationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2573,8 +3376,7 @@ export const ReplicationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplicationsCreateOutput = typeof ReplicationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ReplicationsCreateOutput>;
 
 // The operation
 /**
@@ -2591,6 +3393,12 @@ export const ReplicationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReplicationsCreateOutput,
 }));
 // Input Schema
+export interface ReplicationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  replicationName: string;
+}
 export const ReplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2603,12 +3411,12 @@ export const ReplicationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ReplicationsDeleteInput = typeof ReplicationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ReplicationsDeleteInput>;
 
 // Output Schema
-export const ReplicationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ReplicationsDeleteOutput = typeof ReplicationsDeleteOutput.Type;
+export type ReplicationsDeleteOutput = void;
+export const ReplicationsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -2625,6 +3433,12 @@ export const ReplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReplicationsDeleteOutput,
 }));
 // Input Schema
+export interface ReplicationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  replicationName: string;
+}
 export const ReplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2636,10 +3450,22 @@ export const ReplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type ReplicationsGetInput = typeof ReplicationsGetInput.Type;
+) as unknown as Schema.Codec<ReplicationsGetInput>;
 
 // Output Schema
+export interface ReplicationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2658,8 +3484,7 @@ export const ReplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ReplicationsGetOutput = typeof ReplicationsGetOutput.Type;
+}) as unknown as Schema.Codec<ReplicationsGetOutput>;
 
 // The operation
 /**
@@ -2676,6 +3501,11 @@ export const ReplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReplicationsGetOutput,
 }));
 // Input Schema
+export interface ReplicationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const ReplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2686,10 +3516,25 @@ export const ReplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications",
     apiVersion: "2025-11-01",
   }),
-);
-export type ReplicationsListInput = typeof ReplicationsListInput.Type;
+) as unknown as Schema.Codec<ReplicationsListInput>;
 
 // Output Schema
+export interface ReplicationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -2727,8 +3572,7 @@ export const ReplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ReplicationsListOutput = typeof ReplicationsListOutput.Type;
+) as unknown as Schema.Codec<ReplicationsListOutput>;
 
 // The operation
 /**
@@ -2744,6 +3588,14 @@ export const ReplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReplicationsListOutput,
 }));
 // Input Schema
+export interface ReplicationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  replicationName: string;
+  tags?: Record<string, string>;
+  properties?: { regionEndpointEnabled?: boolean };
+}
 export const ReplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2762,10 +3614,22 @@ export const ReplicationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications/{replicationName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ReplicationsUpdateInput = typeof ReplicationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ReplicationsUpdateInput>;
 
 // Output Schema
+export interface ReplicationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReplicationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2785,8 +3649,7 @@ export const ReplicationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplicationsUpdateOutput = typeof ReplicationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ReplicationsUpdateOutput>;
 
 // The operation
 /**
@@ -2803,6 +3666,12 @@ export const ReplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReplicationsUpdateOutput,
 }));
 // Input Schema
+export interface RunsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  runId: string;
+}
 export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2814,12 +3683,12 @@ export const RunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}/cancel",
     apiVersion: "2019-04-01",
   }),
-);
-export type RunsCancelInput = typeof RunsCancelInput.Type;
+) as unknown as Schema.Codec<RunsCancelInput>;
 
 // Output Schema
-export const RunsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RunsCancelOutput = typeof RunsCancelOutput.Type;
+export type RunsCancelOutput = void;
+export const RunsCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RunsCancelOutput>;
 
 // The operation
 /**
@@ -2836,6 +3705,12 @@ export const RunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunsCancelOutput,
 }));
 // Input Schema
+export interface RunsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  runId: string;
+}
 export const RunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2847,16 +3722,19 @@ export const RunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}",
     apiVersion: "2019-04-01",
   }),
-);
-export type RunsGetInput = typeof RunsGetInput.Type;
+) as unknown as Schema.Codec<RunsGetInput>;
 
 // Output Schema
+export interface RunsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const RunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type RunsGetOutput = typeof RunsGetOutput.Type;
+}) as unknown as Schema.Codec<RunsGetOutput>;
 
 // The operation
 /**
@@ -2873,6 +3751,12 @@ export const RunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunsGetOutput,
 }));
 // Input Schema
+export interface RunsGetLogSasUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  runId: string;
+}
 export const RunsGetLogSasUrlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2884,16 +3768,17 @@ export const RunsGetLogSasUrlInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}/listLogSasUrl",
     apiVersion: "2019-04-01",
   }),
-);
-export type RunsGetLogSasUrlInput = typeof RunsGetLogSasUrlInput.Type;
+) as unknown as Schema.Codec<RunsGetLogSasUrlInput>;
 
 // Output Schema
+export interface RunsGetLogSasUrlOutput {
+  logLink?: string;
+}
 export const RunsGetLogSasUrlOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     logLink: Schema.optional(Schema.String),
   },
-);
-export type RunsGetLogSasUrlOutput = typeof RunsGetLogSasUrlOutput.Type;
+) as unknown as Schema.Codec<RunsGetLogSasUrlOutput>;
 
 // The operation
 /**
@@ -2910,6 +3795,13 @@ export const RunsGetLogSasUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunsGetLogSasUrlOutput,
 }));
 // Input Schema
+export interface RunsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const RunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2922,10 +3814,13 @@ export const RunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs",
     apiVersion: "2019-04-01",
   }),
-);
-export type RunsListInput = typeof RunsListInput.Type;
+) as unknown as Schema.Codec<RunsListInput>;
 
 // Output Schema
+export interface RunsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const RunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2937,8 +3832,7 @@ export const RunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type RunsListOutput = typeof RunsListOutput.Type;
+}) as unknown as Schema.Codec<RunsListOutput>;
 
 // The operation
 /**
@@ -2956,6 +3850,13 @@ export const RunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunsListOutput,
 }));
 // Input Schema
+export interface RunsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  runId: string;
+  isArchiveEnabled?: boolean;
+}
 export const RunsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2968,16 +3869,19 @@ export const RunsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs/{runId}",
     apiVersion: "2019-04-01",
   }),
-);
-export type RunsUpdateInput = typeof RunsUpdateInput.Type;
+) as unknown as Schema.Codec<RunsUpdateInput>;
 
 // Output Schema
+export interface RunsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const RunsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type RunsUpdateOutput = typeof RunsUpdateOutput.Type;
+}) as unknown as Schema.Codec<RunsUpdateOutput>;
 
 // The operation
 /**
@@ -2994,6 +3898,25 @@ export const RunsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunsUpdateOutput,
 }));
 // Input Schema
+export interface ScopeMapsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  scopeMapName: string;
+  properties?: {
+    description?: string;
+    type?: string;
+    creationDate?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    actions: string[];
+  };
+}
 export const ScopeMapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3023,10 +3946,22 @@ export const ScopeMapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type ScopeMapsCreateInput = typeof ScopeMapsCreateInput.Type;
+) as unknown as Schema.Codec<ScopeMapsCreateInput>;
 
 // Output Schema
+export interface ScopeMapsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScopeMapsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3045,8 +3980,7 @@ export const ScopeMapsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ScopeMapsCreateOutput = typeof ScopeMapsCreateOutput.Type;
+}) as unknown as Schema.Codec<ScopeMapsCreateOutput>;
 
 // The operation
 /**
@@ -3063,6 +3997,12 @@ export const ScopeMapsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScopeMapsCreateOutput,
 }));
 // Input Schema
+export interface ScopeMapsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  scopeMapName: string;
+}
 export const ScopeMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3074,12 +4014,12 @@ export const ScopeMapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type ScopeMapsDeleteInput = typeof ScopeMapsDeleteInput.Type;
+) as unknown as Schema.Codec<ScopeMapsDeleteInput>;
 
 // Output Schema
-export const ScopeMapsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScopeMapsDeleteOutput = typeof ScopeMapsDeleteOutput.Type;
+export type ScopeMapsDeleteOutput = void;
+export const ScopeMapsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScopeMapsDeleteOutput>;
 
 // The operation
 /**
@@ -3096,6 +4036,12 @@ export const ScopeMapsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScopeMapsDeleteOutput,
 }));
 // Input Schema
+export interface ScopeMapsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  scopeMapName: string;
+}
 export const ScopeMapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3107,10 +4053,22 @@ export const ScopeMapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type ScopeMapsGetInput = typeof ScopeMapsGetInput.Type;
+) as unknown as Schema.Codec<ScopeMapsGetInput>;
 
 // Output Schema
+export interface ScopeMapsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScopeMapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3129,8 +4087,7 @@ export const ScopeMapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ScopeMapsGetOutput = typeof ScopeMapsGetOutput.Type;
+}) as unknown as Schema.Codec<ScopeMapsGetOutput>;
 
 // The operation
 /**
@@ -3147,6 +4104,11 @@ export const ScopeMapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScopeMapsGetOutput,
 }));
 // Input Schema
+export interface ScopeMapsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const ScopeMapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3157,10 +4119,25 @@ export const ScopeMapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps",
     apiVersion: "2025-11-01",
   }),
-);
-export type ScopeMapsListInput = typeof ScopeMapsListInput.Type;
+) as unknown as Schema.Codec<ScopeMapsListInput>;
 
 // Output Schema
+export interface ScopeMapsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScopeMapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -3196,8 +4173,7 @@ export const ScopeMapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ScopeMapsListOutput = typeof ScopeMapsListOutput.Type;
+}) as unknown as Schema.Codec<ScopeMapsListOutput>;
 
 // The operation
 /**
@@ -3213,6 +4189,13 @@ export const ScopeMapsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScopeMapsListOutput,
 }));
 // Input Schema
+export interface ScopeMapsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  scopeMapName: string;
+  properties?: { description?: string; actions?: string[] };
+}
 export const ScopeMapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3230,10 +4213,22 @@ export const ScopeMapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps/{scopeMapName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type ScopeMapsUpdateInput = typeof ScopeMapsUpdateInput.Type;
+) as unknown as Schema.Codec<ScopeMapsUpdateInput>;
 
 // Output Schema
+export interface ScopeMapsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScopeMapsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3252,8 +4247,7 @@ export const ScopeMapsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ScopeMapsUpdateOutput = typeof ScopeMapsUpdateOutput.Type;
+}) as unknown as Schema.Codec<ScopeMapsUpdateOutput>;
 
 // The operation
 /**
@@ -3270,6 +4264,100 @@ export const ScopeMapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScopeMapsUpdateOutput,
 }));
 // Input Schema
+export interface TasksCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  taskName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    creationDate?: string;
+    status?: "Disabled" | "Enabled";
+    platform: {
+      os: "Windows" | "Linux";
+      architecture?: "amd64" | "x86" | "arm";
+      variant?: "v6" | "v7" | "v8";
+    };
+    agentConfiguration?: { cpu?: number };
+    timeout?: number;
+    step: {
+      type: "Docker" | "FileTask" | "EncodedTask";
+      baseImageDependencies?: {
+        type?: "BuildTime" | "RunTime";
+        registry?: string;
+        repository?: string;
+        tag?: string;
+        digest?: string;
+      }[];
+      contextPath?: string;
+      contextAccessToken?: string;
+    };
+    trigger?: {
+      timerTriggers?: {
+        schedule: string;
+        status?: "Disabled" | "Enabled";
+        name: string;
+      }[];
+      sourceTriggers?: {
+        sourceRepository: {
+          sourceControlType: "Github" | "VisualStudioTeamService";
+          repositoryUrl: string;
+          branch?: string;
+          sourceControlAuthProperties?: {
+            tokenType: "PAT" | "OAuth";
+            token: string;
+            refreshToken?: string | Redacted.Redacted<string>;
+            scope?: string;
+            expiresIn?: number;
+          };
+        };
+        sourceTriggerEvents: ("commit" | "pullrequest")[];
+        status?: "Disabled" | "Enabled";
+        name: string;
+      }[];
+      baseImageTrigger?: {
+        baseImageTriggerType: "All" | "Runtime";
+        status?: "Disabled" | "Enabled";
+        name: string;
+      };
+    };
+    credentials?: {
+      sourceRegistry?: { loginMode?: "None" | "Default" };
+      customRegistries?: Record<
+        string,
+        {
+          userName?: { value?: string; type?: "Opaque" | "Vaultsecret" };
+          password?: { value?: string; type?: "Opaque" | "Vaultsecret" };
+          identity?: string;
+        }
+      >;
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3437,18 +4525,23 @@ export const TasksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
     apiVersion: "2019-04-01",
   }),
-);
-export type TasksCreateInput = typeof TasksCreateInput.Type;
+) as unknown as Schema.Codec<TasksCreateInput>;
 
 // Output Schema
+export interface TasksCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const TasksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type TasksCreateOutput = typeof TasksCreateOutput.Type;
+}) as unknown as Schema.Codec<TasksCreateOutput>;
 
 // The operation
 /**
@@ -3465,6 +4558,12 @@ export const TasksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksCreateOutput,
 }));
 // Input Schema
+export interface TasksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  taskName: string;
+}
 export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3476,12 +4575,12 @@ export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
     apiVersion: "2019-04-01",
   }),
-);
-export type TasksDeleteInput = typeof TasksDeleteInput.Type;
+) as unknown as Schema.Codec<TasksDeleteInput>;
 
 // Output Schema
-export const TasksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TasksDeleteOutput = typeof TasksDeleteOutput.Type;
+export type TasksDeleteOutput = void;
+export const TasksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksDeleteOutput>;
 
 // The operation
 /**
@@ -3498,6 +4597,12 @@ export const TasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksDeleteOutput,
 }));
 // Input Schema
+export interface TasksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  taskName: string;
+}
 export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3509,18 +4614,23 @@ export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
     apiVersion: "2019-04-01",
   }),
-);
-export type TasksGetInput = typeof TasksGetInput.Type;
+) as unknown as Schema.Codec<TasksGetInput>;
 
 // Output Schema
+export interface TasksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type TasksGetOutput = typeof TasksGetOutput.Type;
+}) as unknown as Schema.Codec<TasksGetOutput>;
 
 // The operation
 /**
@@ -3537,6 +4647,12 @@ export const TasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksGetOutput,
 }));
 // Input Schema
+export interface TasksGetDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  taskName: string;
+}
 export const TasksGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3548,18 +4664,23 @@ export const TasksGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}/listDetails",
     apiVersion: "2019-04-01",
   }),
-);
-export type TasksGetDetailsInput = typeof TasksGetDetailsInput.Type;
+) as unknown as Schema.Codec<TasksGetDetailsInput>;
 
 // Output Schema
+export interface TasksGetDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const TasksGetDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type TasksGetDetailsOutput = typeof TasksGetDetailsOutput.Type;
+}) as unknown as Schema.Codec<TasksGetDetailsOutput>;
 
 // The operation
 /**
@@ -3576,6 +4697,11 @@ export const TasksGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksGetDetailsOutput,
 }));
 // Input Schema
+export interface TasksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3586,10 +4712,19 @@ export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks",
     apiVersion: "2019-04-01",
   }),
-);
-export type TasksListInput = typeof TasksListInput.Type;
+) as unknown as Schema.Codec<TasksListInput>;
 
 // Output Schema
+export interface TasksListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -3603,8 +4738,7 @@ export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TasksListOutput = typeof TasksListOutput.Type;
+}) as unknown as Schema.Codec<TasksListOutput>;
 
 // The operation
 /**
@@ -3620,6 +4754,81 @@ export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksListOutput,
 }));
 // Input Schema
+export interface TasksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  taskName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    status?: "Disabled" | "Enabled";
+    platform?: {
+      os?: "Windows" | "Linux";
+      architecture?: "amd64" | "x86" | "arm";
+      variant?: "v6" | "v7" | "v8";
+    };
+    agentConfiguration?: { cpu?: number };
+    timeout?: number;
+    step?: {
+      type: "Docker" | "FileTask" | "EncodedTask";
+      contextPath?: string;
+      contextAccessToken?: string;
+    };
+    trigger?: {
+      timerTriggers?: {
+        schedule?: string;
+        status?: "Disabled" | "Enabled";
+        name: string;
+      }[];
+      sourceTriggers?: {
+        sourceRepository?: {
+          sourceControlType?: "Github" | "VisualStudioTeamService";
+          repositoryUrl?: string;
+          branch?: string;
+          sourceControlAuthProperties?: {
+            tokenType?: "PAT" | "OAuth";
+            token?: string;
+            refreshToken?: string | Redacted.Redacted<string>;
+            scope?: string;
+            expiresIn?: number;
+          };
+        };
+        sourceTriggerEvents?: ("commit" | "pullrequest")[];
+        status?: "Disabled" | "Enabled";
+        name: string;
+      }[];
+      baseImageTrigger?: {
+        baseImageTriggerType?: "All" | "Runtime";
+        status?: "Disabled" | "Enabled";
+        name: string;
+      };
+    };
+    credentials?: {
+      sourceRegistry?: { loginMode?: "None" | "Default" };
+      customRegistries?: Record<
+        string,
+        {
+          userName?: { value?: string; type?: "Opaque" | "Vaultsecret" };
+          password?: { value?: string; type?: "Opaque" | "Vaultsecret" };
+          identity?: string;
+        }
+      >;
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3772,18 +4981,23 @@ export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}",
     apiVersion: "2019-04-01",
   }),
-);
-export type TasksUpdateInput = typeof TasksUpdateInput.Type;
+) as unknown as Schema.Codec<TasksUpdateInput>;
 
 // Output Schema
+export interface TasksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type TasksUpdateOutput = typeof TasksUpdateOutput.Type;
+}) as unknown as Schema.Codec<TasksUpdateOutput>;
 
 // The operation
 /**
@@ -3800,6 +5014,38 @@ export const TasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TasksUpdateOutput,
 }));
 // Input Schema
+export interface TokensCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  tokenName: string;
+  properties?: {
+    creationDate?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    scopeMapId?: string;
+    credentials?: {
+      certificates?: {
+        name?: "certificate1" | "certificate2";
+        expiry?: string;
+        thumbprint?: string;
+        encodedPemCertificate?: string;
+      }[];
+      passwords?: {
+        creationTime?: string;
+        expiry?: string;
+        name?: "password1" | "password2";
+        value?: string;
+      }[];
+    };
+    status?: "enabled" | "disabled";
+  };
+}
 export const TokensCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3856,10 +5102,22 @@ export const TokensCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type TokensCreateInput = typeof TokensCreateInput.Type;
+) as unknown as Schema.Codec<TokensCreateInput>;
 
 // Output Schema
+export interface TokensCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TokensCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3878,8 +5136,7 @@ export const TokensCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TokensCreateOutput = typeof TokensCreateOutput.Type;
+}) as unknown as Schema.Codec<TokensCreateOutput>;
 
 // The operation
 /**
@@ -3896,6 +5153,12 @@ export const TokensCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TokensCreateOutput,
 }));
 // Input Schema
+export interface TokensDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  tokenName: string;
+}
 export const TokensDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3907,12 +5170,12 @@ export const TokensDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type TokensDeleteInput = typeof TokensDeleteInput.Type;
+) as unknown as Schema.Codec<TokensDeleteInput>;
 
 // Output Schema
-export const TokensDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TokensDeleteOutput = typeof TokensDeleteOutput.Type;
+export type TokensDeleteOutput = void;
+export const TokensDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TokensDeleteOutput>;
 
 // The operation
 /**
@@ -3929,6 +5192,12 @@ export const TokensDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TokensDeleteOutput,
 }));
 // Input Schema
+export interface TokensGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  tokenName: string;
+}
 export const TokensGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3940,10 +5209,22 @@ export const TokensGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type TokensGetInput = typeof TokensGetInput.Type;
+) as unknown as Schema.Codec<TokensGetInput>;
 
 // Output Schema
+export interface TokensGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TokensGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3962,8 +5243,7 @@ export const TokensGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TokensGetOutput = typeof TokensGetOutput.Type;
+}) as unknown as Schema.Codec<TokensGetOutput>;
 
 // The operation
 /**
@@ -3980,6 +5260,11 @@ export const TokensGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TokensGetOutput,
 }));
 // Input Schema
+export interface TokensListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const TokensListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3990,10 +5275,25 @@ export const TokensListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens",
     apiVersion: "2025-11-01",
   }),
-);
-export type TokensListInput = typeof TokensListInput.Type;
+) as unknown as Schema.Codec<TokensListInput>;
 
 // Output Schema
+export interface TokensListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TokensListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4029,8 +5329,7 @@ export const TokensListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TokensListOutput = typeof TokensListOutput.Type;
+}) as unknown as Schema.Codec<TokensListOutput>;
 
 // The operation
 /**
@@ -4046,6 +5345,30 @@ export const TokensList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TokensListOutput,
 }));
 // Input Schema
+export interface TokensUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  tokenName: string;
+  properties?: {
+    scopeMapId?: string;
+    status?: "enabled" | "disabled";
+    credentials?: {
+      certificates?: {
+        name?: "certificate1" | "certificate2";
+        expiry?: string;
+        thumbprint?: string;
+        encodedPemCertificate?: string;
+      }[];
+      passwords?: {
+        creationTime?: string;
+        expiry?: string;
+        name?: "password1" | "password2";
+        value?: string;
+      }[];
+    };
+  };
+}
 export const TokensUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4091,10 +5414,22 @@ export const TokensUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type TokensUpdateInput = typeof TokensUpdateInput.Type;
+) as unknown as Schema.Codec<TokensUpdateInput>;
 
 // Output Schema
+export interface TokensUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TokensUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4113,8 +5448,7 @@ export const TokensUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TokensUpdateOutput = typeof TokensUpdateOutput.Type;
+}) as unknown as Schema.Codec<TokensUpdateOutput>;
 
 // The operation
 /**
@@ -4131,6 +5465,27 @@ export const TokensUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TokensUpdateOutput,
 }));
 // Input Schema
+export interface WebhooksCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  webhookName: string;
+  tags?: Record<string, string>;
+  location: string;
+  properties?: {
+    serviceUri: string;
+    customHeaders?: Record<string, string>;
+    status?: "enabled" | "disabled";
+    scope?: string;
+    actions: (
+      | "push"
+      | "delete"
+      | "quarantine"
+      | "chart_push"
+      | "chart_delete"
+    )[];
+  };
+}
 export const WebhooksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4163,10 +5518,22 @@ export const WebhooksCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type WebhooksCreateInput = typeof WebhooksCreateInput.Type;
+) as unknown as Schema.Codec<WebhooksCreateInput>;
 
 // Output Schema
+export interface WebhooksCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhooksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4185,8 +5552,7 @@ export const WebhooksCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebhooksCreateOutput = typeof WebhooksCreateOutput.Type;
+}) as unknown as Schema.Codec<WebhooksCreateOutput>;
 
 // The operation
 /**
@@ -4203,6 +5569,12 @@ export const WebhooksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhooksCreateOutput,
 }));
 // Input Schema
+export interface WebhooksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  webhookName: string;
+}
 export const WebhooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4214,12 +5586,12 @@ export const WebhooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type WebhooksDeleteInput = typeof WebhooksDeleteInput.Type;
+) as unknown as Schema.Codec<WebhooksDeleteInput>;
 
 // Output Schema
-export const WebhooksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebhooksDeleteOutput = typeof WebhooksDeleteOutput.Type;
+export type WebhooksDeleteOutput = void;
+export const WebhooksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhooksDeleteOutput>;
 
 // The operation
 /**
@@ -4236,6 +5608,12 @@ export const WebhooksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhooksDeleteOutput,
 }));
 // Input Schema
+export interface WebhooksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  webhookName: string;
+}
 export const WebhooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4247,10 +5625,22 @@ export const WebhooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type WebhooksGetInput = typeof WebhooksGetInput.Type;
+) as unknown as Schema.Codec<WebhooksGetInput>;
 
 // Output Schema
+export interface WebhooksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4269,8 +5659,7 @@ export const WebhooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebhooksGetOutput = typeof WebhooksGetOutput.Type;
+}) as unknown as Schema.Codec<WebhooksGetOutput>;
 
 // The operation
 /**
@@ -4287,6 +5676,12 @@ export const WebhooksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhooksGetOutput,
 }));
 // Input Schema
+export interface WebhooksGetCallbackConfigInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  webhookName: string;
+}
 export const WebhooksGetCallbackConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4299,18 +5694,18 @@ export const WebhooksGetCallbackConfigInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/getCallbackConfig",
       apiVersion: "2025-11-01",
     }),
-  );
-export type WebhooksGetCallbackConfigInput =
-  typeof WebhooksGetCallbackConfigInput.Type;
+  ) as unknown as Schema.Codec<WebhooksGetCallbackConfigInput>;
 
 // Output Schema
+export interface WebhooksGetCallbackConfigOutput {
+  serviceUri: string;
+  customHeaders?: Record<string, string>;
+}
 export const WebhooksGetCallbackConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceUri: Schema.String,
     customHeaders: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type WebhooksGetCallbackConfigOutput =
-  typeof WebhooksGetCallbackConfigOutput.Type;
+  }) as unknown as Schema.Codec<WebhooksGetCallbackConfigOutput>;
 
 // The operation
 /**
@@ -4329,6 +5724,11 @@ export const WebhooksGetCallbackConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebhooksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const WebhooksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4339,10 +5739,25 @@ export const WebhooksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks",
     apiVersion: "2025-11-01",
   }),
-);
-export type WebhooksListInput = typeof WebhooksListInput.Type;
+) as unknown as Schema.Codec<WebhooksListInput>;
 
 // Output Schema
+export interface WebhooksListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebhooksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4378,8 +5793,7 @@ export const WebhooksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type WebhooksListOutput = typeof WebhooksListOutput.Type;
+}) as unknown as Schema.Codec<WebhooksListOutput>;
 
 // The operation
 /**
@@ -4395,6 +5809,12 @@ export const WebhooksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhooksListOutput,
 }));
 // Input Schema
+export interface WebhooksListEventsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  webhookName: string;
+}
 export const WebhooksListEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4407,10 +5827,13 @@ export const WebhooksListEventsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/listEvents",
       apiVersion: "2025-11-01",
     }),
-  );
-export type WebhooksListEventsInput = typeof WebhooksListEventsInput.Type;
+  ) as unknown as Schema.Codec<WebhooksListEventsInput>;
 
 // Output Schema
+export interface WebhooksListEventsOutput {
+  value?: { id?: string }[];
+  nextLink?: string;
+}
 export const WebhooksListEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4421,8 +5844,7 @@ export const WebhooksListEventsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebhooksListEventsOutput = typeof WebhooksListEventsOutput.Type;
+  }) as unknown as Schema.Codec<WebhooksListEventsOutput>;
 
 // The operation
 /**
@@ -4439,6 +5861,12 @@ export const WebhooksListEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhooksListEventsOutput,
 }));
 // Input Schema
+export interface WebhooksPingInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  webhookName: string;
+}
 export const WebhooksPingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4450,14 +5878,15 @@ export const WebhooksPingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/ping",
     apiVersion: "2025-11-01",
   }),
-);
-export type WebhooksPingInput = typeof WebhooksPingInput.Type;
+) as unknown as Schema.Codec<WebhooksPingInput>;
 
 // Output Schema
+export interface WebhooksPingOutput {
+  id?: string;
+}
 export const WebhooksPingOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
-});
-export type WebhooksPingOutput = typeof WebhooksPingOutput.Type;
+}) as unknown as Schema.Codec<WebhooksPingOutput>;
 
 // The operation
 /**
@@ -4474,6 +5903,26 @@ export const WebhooksPing = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhooksPingOutput,
 }));
 // Input Schema
+export interface WebhooksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  webhookName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    serviceUri?: string;
+    customHeaders?: Record<string, string>;
+    status?: "enabled" | "disabled";
+    scope?: string;
+    actions?: (
+      | "push"
+      | "delete"
+      | "quarantine"
+      | "chart_push"
+      | "chart_delete"
+    )[];
+  };
+}
 export const WebhooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4507,10 +5956,22 @@ export const WebhooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type WebhooksUpdateInput = typeof WebhooksUpdateInput.Type;
+) as unknown as Schema.Codec<WebhooksUpdateInput>;
 
 // Output Schema
+export interface WebhooksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4529,8 +5990,7 @@ export const WebhooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebhooksUpdateOutput = typeof WebhooksUpdateOutput.Type;
+}) as unknown as Schema.Codec<WebhooksUpdateOutput>;
 
 // The operation
 /**

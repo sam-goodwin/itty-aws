@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface LogicalView {
   deletionProtection?: boolean;
 }
 
-export const LogicalView: Schema.Schema<LogicalView> =
+export const LogicalView: Schema.Codec<LogicalView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface CreateLogicalViewRequest {
   logicalViewId?: string;
 }
 
-export const CreateLogicalViewRequest: Schema.Schema<CreateLogicalViewRequest> =
+export const CreateLogicalViewRequest: Schema.Codec<CreateLogicalViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     logicalView: Schema.optional(LogicalView),
@@ -86,7 +86,7 @@ export interface Instance {
   knowledgeCatalogRegion?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
+export const Instance: Schema.Codec<Instance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     edition: Schema.optional(Schema.String),
@@ -108,7 +108,7 @@ export interface PartialUpdateInstanceRequest {
   updateMask?: string;
 }
 
-export const PartialUpdateInstanceRequest: Schema.Schema<PartialUpdateInstanceRequest> =
+export const PartialUpdateInstanceRequest: Schema.Codec<PartialUpdateInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Instance),
     updateMask: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export const PartialUpdateInstanceRequest: Schema.Schema<PartialUpdateInstanceRe
 
 export interface GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount {}
 
-export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount: Schema.Schema<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount> =
+export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount: Schema.Codec<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount",
@@ -127,7 +127,7 @@ export interface GoogleBigtableAdminV2TypeBytesEncodingRaw {
   escapeNulls?: boolean;
 }
 
-export const GoogleBigtableAdminV2TypeBytesEncodingRaw: Schema.Schema<GoogleBigtableAdminV2TypeBytesEncodingRaw> =
+export const GoogleBigtableAdminV2TypeBytesEncodingRaw: Schema.Codec<GoogleBigtableAdminV2TypeBytesEncodingRaw> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     escapeNulls: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncodingRaw" });
@@ -137,7 +137,7 @@ export interface GoogleBigtableAdminV2TypeBytesEncoding {
   raw?: GoogleBigtableAdminV2TypeBytesEncodingRaw;
 }
 
-export const GoogleBigtableAdminV2TypeBytesEncoding: Schema.Schema<GoogleBigtableAdminV2TypeBytesEncoding> =
+export const GoogleBigtableAdminV2TypeBytesEncoding: Schema.Codec<GoogleBigtableAdminV2TypeBytesEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     raw: Schema.optional(GoogleBigtableAdminV2TypeBytesEncodingRaw),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncoding" });
@@ -147,7 +147,7 @@ export interface GoogleBigtableAdminV2TypeBytes {
   encoding?: GoogleBigtableAdminV2TypeBytesEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeBytes: Schema.Schema<GoogleBigtableAdminV2TypeBytes> =
+export const GoogleBigtableAdminV2TypeBytes: Schema.Codec<GoogleBigtableAdminV2TypeBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeBytesEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytes" });
@@ -157,7 +157,7 @@ export interface GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
   bytesType?: GoogleBigtableAdminV2TypeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes> =
+export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
   }).annotate({
@@ -166,7 +166,7 @@ export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes: Schema.Schema
 
 export interface GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes {}
 
-export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes> =
+export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes",
   });
@@ -178,7 +178,7 @@ export interface GoogleBigtableAdminV2TypeInt64Encoding {
   orderedCodeBytes?: GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeInt64Encoding: Schema.Schema<GoogleBigtableAdminV2TypeInt64Encoding> =
+export const GoogleBigtableAdminV2TypeInt64Encoding: Schema.Codec<GoogleBigtableAdminV2TypeInt64Encoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigEndianBytes: Schema.optional(
       GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes,
@@ -193,7 +193,7 @@ export interface GoogleBigtableAdminV2TypeInt64 {
   encoding?: GoogleBigtableAdminV2TypeInt64Encoding;
 }
 
-export const GoogleBigtableAdminV2TypeInt64: Schema.Schema<GoogleBigtableAdminV2TypeInt64> =
+export const GoogleBigtableAdminV2TypeInt64: Schema.Codec<GoogleBigtableAdminV2TypeInt64> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64" });
@@ -207,7 +207,7 @@ export interface ListInstancesResponse {
   nextPageToken?: string;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
+export const ListInstancesResponse: Schema.Codec<ListInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(Schema.Array(Instance)),
     failedLocations: Schema.optional(Schema.Array(Schema.String)),
@@ -219,7 +219,7 @@ export interface EncryptionConfig {
   kmsKeyName?: string;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
+export const EncryptionConfig: Schema.Codec<EncryptionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EncryptionConfig" });
@@ -231,7 +231,7 @@ export interface AutoscalingLimits {
   maxServeNodes?: number;
 }
 
-export const AutoscalingLimits: Schema.Schema<AutoscalingLimits> =
+export const AutoscalingLimits: Schema.Codec<AutoscalingLimits> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minServeNodes: Schema.optional(Schema.Number),
     maxServeNodes: Schema.optional(Schema.Number),
@@ -244,7 +244,7 @@ export interface AutoscalingTargets {
   cpuUtilizationPercent?: number;
 }
 
-export const AutoscalingTargets: Schema.Schema<AutoscalingTargets> =
+export const AutoscalingTargets: Schema.Codec<AutoscalingTargets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageUtilizationGibPerNode: Schema.optional(Schema.Number),
     cpuUtilizationPercent: Schema.optional(Schema.Number),
@@ -257,7 +257,7 @@ export interface ClusterAutoscalingConfig {
   autoscalingTargets?: AutoscalingTargets;
 }
 
-export const ClusterAutoscalingConfig: Schema.Schema<ClusterAutoscalingConfig> =
+export const ClusterAutoscalingConfig: Schema.Codec<ClusterAutoscalingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoscalingLimits: Schema.optional(AutoscalingLimits),
     autoscalingTargets: Schema.optional(AutoscalingTargets),
@@ -268,7 +268,7 @@ export interface ClusterConfig {
   clusterAutoscalingConfig?: ClusterAutoscalingConfig;
 }
 
-export const ClusterConfig: Schema.Schema<ClusterConfig> =
+export const ClusterConfig: Schema.Codec<ClusterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterAutoscalingConfig: Schema.optional(ClusterAutoscalingConfig),
   }).annotate({ identifier: "ClusterConfig" });
@@ -306,7 +306,7 @@ export interface Cluster {
   clusterConfig?: ClusterConfig;
 }
 
-export const Cluster: Schema.Schema<Cluster> =
+export const Cluster: Schema.Codec<Cluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     defaultStorageType: Schema.optional(Schema.String),
@@ -325,7 +325,7 @@ export interface PartialUpdateClusterRequest {
   updateMask?: string;
 }
 
-export const PartialUpdateClusterRequest: Schema.Schema<PartialUpdateClusterRequest> =
+export const PartialUpdateClusterRequest: Schema.Codec<PartialUpdateClusterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Cluster),
     updateMask: Schema.optional(Schema.String),
@@ -340,7 +340,7 @@ export interface GoogleBigtableAdminV2MaterializedViewClusterState {
     | (string & {});
 }
 
-export const GoogleBigtableAdminV2MaterializedViewClusterState: Schema.Schema<GoogleBigtableAdminV2MaterializedViewClusterState> =
+export const GoogleBigtableAdminV2MaterializedViewClusterState: Schema.Codec<GoogleBigtableAdminV2MaterializedViewClusterState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replicationState: Schema.optional(Schema.String),
   }).annotate({
@@ -363,7 +363,7 @@ export interface MaterializedView {
   deletionProtection?: boolean;
 }
 
-export const MaterializedView: Schema.Schema<MaterializedView> =
+export const MaterializedView: Schema.Codec<MaterializedView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterStates: Schema.optional(
       Schema.Record(
@@ -386,7 +386,7 @@ export interface CreateMaterializedViewRequest {
   materializedView?: MaterializedView;
 }
 
-export const CreateMaterializedViewRequest: Schema.Schema<CreateMaterializedViewRequest> =
+export const CreateMaterializedViewRequest: Schema.Codec<CreateMaterializedViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     materializedViewId: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -400,7 +400,7 @@ export interface UpdateLogicalViewRequest {
   updateMask?: string;
 }
 
-export const UpdateLogicalViewRequest: Schema.Schema<UpdateLogicalViewRequest> =
+export const UpdateLogicalViewRequest: Schema.Codec<UpdateLogicalViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logicalView: Schema.optional(LogicalView),
     updateMask: Schema.optional(Schema.String),
@@ -408,14 +408,14 @@ export const UpdateLogicalViewRequest: Schema.Schema<UpdateLogicalViewRequest> =
 
 export interface RowAffinity {}
 
-export const RowAffinity: Schema.Schema<RowAffinity> =
+export const RowAffinity: Schema.Codec<RowAffinity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RowAffinity",
   });
 
 export interface GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes {}
 
-export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes> =
+export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes",
   });
@@ -427,7 +427,7 @@ export interface DropRowRangeRequest {
   deleteAllDataFromTable?: boolean;
 }
 
-export const DropRowRangeRequest: Schema.Schema<DropRowRangeRequest> =
+export const DropRowRangeRequest: Schema.Codec<DropRowRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowKeyPrefix: Schema.optional(Schema.String),
     deleteAllDataFromTable: Schema.optional(Schema.Boolean),
@@ -438,7 +438,7 @@ export interface GoogleBigtableAdminV2MemoryLayerMemoryConfig {
   storageSizeGib?: number;
 }
 
-export const GoogleBigtableAdminV2MemoryLayerMemoryConfig: Schema.Schema<GoogleBigtableAdminV2MemoryLayerMemoryConfig> =
+export const GoogleBigtableAdminV2MemoryLayerMemoryConfig: Schema.Codec<GoogleBigtableAdminV2MemoryLayerMemoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageSizeGib: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleBigtableAdminV2MemoryLayerMemoryConfig" });
@@ -452,7 +452,7 @@ export interface OperationProgress {
   endTime?: string;
 }
 
-export const OperationProgress: Schema.Schema<OperationProgress> =
+export const OperationProgress: Schema.Codec<OperationProgress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     progressPercent: Schema.optional(Schema.Number),
     startTime: Schema.optional(Schema.String),
@@ -466,7 +466,7 @@ export interface GoogleBigtableAdminV2TypeEnum {
   enumName?: string;
 }
 
-export const GoogleBigtableAdminV2TypeEnum: Schema.Schema<GoogleBigtableAdminV2TypeEnum> =
+export const GoogleBigtableAdminV2TypeEnum: Schema.Codec<GoogleBigtableAdminV2TypeEnum> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaBundleId: Schema.optional(Schema.String),
     enumName: Schema.optional(Schema.String),
@@ -477,14 +477,14 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes {}
 
-export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes> =
+export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes",
   });
@@ -502,7 +502,7 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -513,7 +513,7 @@ export const Location: Schema.Schema<Location> =
 
 export interface GoogleBigtableAdminV2TypeAggregateMax {}
 
-export const GoogleBigtableAdminV2TypeAggregateMax: Schema.Schema<GoogleBigtableAdminV2TypeAggregateMax> =
+export const GoogleBigtableAdminV2TypeAggregateMax: Schema.Codec<GoogleBigtableAdminV2TypeAggregateMax> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateMax",
   });
@@ -523,7 +523,7 @@ export interface ProtoSchema {
   protoDescriptors?: string;
 }
 
-export const ProtoSchema: Schema.Schema<ProtoSchema> =
+export const ProtoSchema: Schema.Codec<ProtoSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protoDescriptors: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProtoSchema" });
@@ -535,7 +535,7 @@ export interface OptimizeRestoredTableMetadata {
   progress?: OperationProgress;
 }
 
-export const OptimizeRestoredTableMetadata: Schema.Schema<OptimizeRestoredTableMetadata> =
+export const OptimizeRestoredTableMetadata: Schema.Codec<OptimizeRestoredTableMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     progress: Schema.optional(OperationProgress),
@@ -550,7 +550,7 @@ export interface PartialUpdateClusterMetadata {
   requestTime?: string;
 }
 
-export const PartialUpdateClusterMetadata: Schema.Schema<PartialUpdateClusterMetadata> =
+export const PartialUpdateClusterMetadata: Schema.Codec<PartialUpdateClusterMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalRequest: Schema.optional(PartialUpdateClusterRequest),
     finishTime: Schema.optional(Schema.String),
@@ -570,7 +570,7 @@ export interface UpdateTableMetadata {
   name?: string;
 }
 
-export const UpdateTableMetadata: Schema.Schema<UpdateTableMetadata> =
+export const UpdateTableMetadata: Schema.Codec<UpdateTableMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
@@ -586,7 +586,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -594,14 +594,14 @@ export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
 
 export interface GoogleBigtableAdminV2TypeFloat64 {}
 
-export const GoogleBigtableAdminV2TypeFloat64: Schema.Schema<GoogleBigtableAdminV2TypeFloat64> =
+export const GoogleBigtableAdminV2TypeFloat64: Schema.Codec<GoogleBigtableAdminV2TypeFloat64> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeFloat64",
   });
 
 export interface GoogleBigtableAdminV2TypeDate {}
 
-export const GoogleBigtableAdminV2TypeDate: Schema.Schema<GoogleBigtableAdminV2TypeDate> =
+export const GoogleBigtableAdminV2TypeDate: Schema.Codec<GoogleBigtableAdminV2TypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeDate",
   });
@@ -613,7 +613,7 @@ export interface SingleClusterRouting {
   allowTransactionalWrites?: boolean;
 }
 
-export const SingleClusterRouting: Schema.Schema<SingleClusterRouting> =
+export const SingleClusterRouting: Schema.Codec<SingleClusterRouting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterId: Schema.optional(Schema.String),
     allowTransactionalWrites: Schema.optional(Schema.Boolean),
@@ -627,14 +627,14 @@ export interface DataBoostIsolationReadOnly {
     | (string & {});
 }
 
-export const DataBoostIsolationReadOnly: Schema.Schema<DataBoostIsolationReadOnly> =
+export const DataBoostIsolationReadOnly: Schema.Codec<DataBoostIsolationReadOnly> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computeBillingOwner: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataBoostIsolationReadOnly" });
 
 export interface MemoryConfig {}
 
-export const MemoryConfig: Schema.Schema<MemoryConfig> =
+export const MemoryConfig: Schema.Codec<MemoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MemoryConfig",
   });
@@ -651,7 +651,7 @@ export interface StandardIsolation {
   memoryConfig?: MemoryConfig;
 }
 
-export const StandardIsolation: Schema.Schema<StandardIsolation> =
+export const StandardIsolation: Schema.Codec<StandardIsolation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priority: Schema.optional(Schema.String),
     memoryConfig: Schema.optional(MemoryConfig),
@@ -664,7 +664,7 @@ export interface MultiClusterRoutingUseAny {
   rowAffinity?: RowAffinity;
 }
 
-export const MultiClusterRoutingUseAny: Schema.Schema<MultiClusterRoutingUseAny> =
+export const MultiClusterRoutingUseAny: Schema.Codec<MultiClusterRoutingUseAny> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterIds: Schema.optional(Schema.Array(Schema.String)),
     rowAffinity: Schema.optional(RowAffinity),
@@ -694,7 +694,7 @@ export interface AppProfile {
   multiClusterRoutingUseAny?: MultiClusterRoutingUseAny;
 }
 
-export const AppProfile: Schema.Schema<AppProfile> =
+export const AppProfile: Schema.Codec<AppProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     singleClusterRouting: Schema.optional(SingleClusterRouting),
     dataBoostIsolationReadOnly: Schema.optional(DataBoostIsolationReadOnly),
@@ -721,7 +721,7 @@ export interface CreateBackupMetadata {
   finishTime?: string;
 }
 
-export const CreateBackupMetadata: Schema.Schema<CreateBackupMetadata> =
+export const CreateBackupMetadata: Schema.Codec<CreateBackupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -744,7 +744,7 @@ export interface CreateMaterializedViewMetadata {
   originalRequest?: CreateMaterializedViewRequest;
 }
 
-export const CreateMaterializedViewMetadata: Schema.Schema<CreateMaterializedViewMetadata> =
+export const CreateMaterializedViewMetadata: Schema.Codec<CreateMaterializedViewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -758,7 +758,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -768,28 +768,28 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface UndeleteTableRequest {}
 
-export const UndeleteTableRequest: Schema.Schema<UndeleteTableRequest> =
+export const UndeleteTableRequest: Schema.Codec<UndeleteTableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteTableRequest",
   });
 
 export interface GoogleBigtableAdminV2TypeAggregateSum {}
 
-export const GoogleBigtableAdminV2TypeAggregateSum: Schema.Schema<GoogleBigtableAdminV2TypeAggregateSum> =
+export const GoogleBigtableAdminV2TypeAggregateSum: Schema.Codec<GoogleBigtableAdminV2TypeAggregateSum> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateSum",
   });
 
 export interface GoogleBigtableAdminV2TypeAggregateMin {}
 
-export const GoogleBigtableAdminV2TypeAggregateMin: Schema.Schema<GoogleBigtableAdminV2TypeAggregateMin> =
+export const GoogleBigtableAdminV2TypeAggregateMin: Schema.Codec<GoogleBigtableAdminV2TypeAggregateMin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateMin",
   });
@@ -809,7 +809,7 @@ export interface GoogleBigtableAdminV2TypeAggregate {
   min?: GoogleBigtableAdminV2TypeAggregateMin;
 }
 
-export const GoogleBigtableAdminV2TypeAggregate: Schema.Schema<GoogleBigtableAdminV2TypeAggregate> =
+export const GoogleBigtableAdminV2TypeAggregate: Schema.Codec<GoogleBigtableAdminV2TypeAggregate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       inputType: Schema.optional(Type),
@@ -823,11 +823,11 @@ export const GoogleBigtableAdminV2TypeAggregate: Schema.Schema<GoogleBigtableAdm
     }),
   ).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregate",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeAggregate>;
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeAggregate>;
 
 export interface GoogleBigtableAdminV2TypeGeography {}
 
-export const GoogleBigtableAdminV2TypeGeography: Schema.Schema<GoogleBigtableAdminV2TypeGeography> =
+export const GoogleBigtableAdminV2TypeGeography: Schema.Codec<GoogleBigtableAdminV2TypeGeography> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeGeography",
   });
@@ -837,7 +837,7 @@ export interface GoogleBigtableAdminV2TypeTimestampEncoding {
   unixMicrosInt64?: GoogleBigtableAdminV2TypeInt64Encoding;
 }
 
-export const GoogleBigtableAdminV2TypeTimestampEncoding: Schema.Schema<GoogleBigtableAdminV2TypeTimestampEncoding> =
+export const GoogleBigtableAdminV2TypeTimestampEncoding: Schema.Codec<GoogleBigtableAdminV2TypeTimestampEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unixMicrosInt64: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestampEncoding" });
@@ -847,21 +847,21 @@ export interface GoogleBigtableAdminV2TypeTimestamp {
   encoding?: GoogleBigtableAdminV2TypeTimestampEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeTimestamp: Schema.Schema<GoogleBigtableAdminV2TypeTimestamp> =
+export const GoogleBigtableAdminV2TypeTimestamp: Schema.Codec<GoogleBigtableAdminV2TypeTimestamp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeTimestampEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestamp" });
 
 export interface GoogleBigtableAdminV2TypeFloat32 {}
 
-export const GoogleBigtableAdminV2TypeFloat32: Schema.Schema<GoogleBigtableAdminV2TypeFloat32> =
+export const GoogleBigtableAdminV2TypeFloat32: Schema.Codec<GoogleBigtableAdminV2TypeFloat32> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeFloat32",
   });
 
 export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Raw {}
 
-export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw: Schema.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw> =
+export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw: Schema.Codec<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Raw",
   });
@@ -871,7 +871,7 @@ export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
   nullEscapeChar?: string;
 }
 
-export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes: Schema.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes> =
+export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes: Schema.Codec<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nullEscapeChar: Schema.optional(Schema.String),
   }).annotate({
@@ -885,7 +885,7 @@ export interface GoogleBigtableAdminV2TypeStringEncoding {
   utf8Bytes?: GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes;
 }
 
-export const GoogleBigtableAdminV2TypeStringEncoding: Schema.Schema<GoogleBigtableAdminV2TypeStringEncoding> =
+export const GoogleBigtableAdminV2TypeStringEncoding: Schema.Codec<GoogleBigtableAdminV2TypeStringEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     utf8Raw: Schema.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Raw),
     utf8Bytes: Schema.optional(
@@ -898,7 +898,7 @@ export interface GoogleBigtableAdminV2TypeString {
   encoding?: GoogleBigtableAdminV2TypeStringEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeString: Schema.Schema<GoogleBigtableAdminV2TypeString> =
+export const GoogleBigtableAdminV2TypeString: Schema.Codec<GoogleBigtableAdminV2TypeString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeStringEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeString" });
@@ -910,7 +910,7 @@ export interface GoogleBigtableAdminV2TypeMap {
   keyType?: Type;
 }
 
-export const GoogleBigtableAdminV2TypeMap: Schema.Schema<GoogleBigtableAdminV2TypeMap> =
+export const GoogleBigtableAdminV2TypeMap: Schema.Codec<GoogleBigtableAdminV2TypeMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       valueType: Schema.optional(Type),
@@ -918,7 +918,7 @@ export const GoogleBigtableAdminV2TypeMap: Schema.Schema<GoogleBigtableAdminV2Ty
     }),
   ).annotate({
     identifier: "GoogleBigtableAdminV2TypeMap",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeMap>;
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeMap>;
 
 export interface GoogleBigtableAdminV2TypeProto {
   /** The ID of the schema bundle that this proto is defined in. */
@@ -927,7 +927,7 @@ export interface GoogleBigtableAdminV2TypeProto {
   messageName?: string;
 }
 
-export const GoogleBigtableAdminV2TypeProto: Schema.Schema<GoogleBigtableAdminV2TypeProto> =
+export const GoogleBigtableAdminV2TypeProto: Schema.Codec<GoogleBigtableAdminV2TypeProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaBundleId: Schema.optional(Schema.String),
     messageName: Schema.optional(Schema.String),
@@ -940,7 +940,7 @@ export interface GoogleBigtableAdminV2TypeInt32Encoding {
   orderedCodeBytes?: GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeInt32Encoding: Schema.Schema<GoogleBigtableAdminV2TypeInt32Encoding> =
+export const GoogleBigtableAdminV2TypeInt32Encoding: Schema.Codec<GoogleBigtableAdminV2TypeInt32Encoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigEndianBytes: Schema.optional(
       GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes,
@@ -955,7 +955,7 @@ export interface GoogleBigtableAdminV2TypeInt32 {
   encoding?: GoogleBigtableAdminV2TypeInt32Encoding;
 }
 
-export const GoogleBigtableAdminV2TypeInt32: Schema.Schema<GoogleBigtableAdminV2TypeInt32> =
+export const GoogleBigtableAdminV2TypeInt32: Schema.Codec<GoogleBigtableAdminV2TypeInt32> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeInt32Encoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32" });
@@ -965,18 +965,18 @@ export interface GoogleBigtableAdminV2TypeArray {
   elementType?: Type;
 }
 
-export const GoogleBigtableAdminV2TypeArray: Schema.Schema<GoogleBigtableAdminV2TypeArray> =
+export const GoogleBigtableAdminV2TypeArray: Schema.Codec<GoogleBigtableAdminV2TypeArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       elementType: Schema.optional(Type),
     }),
   ).annotate({
     identifier: "GoogleBigtableAdminV2TypeArray",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeArray>;
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeArray>;
 
 export interface GoogleBigtableAdminV2TypeBoolEncoding {}
 
-export const GoogleBigtableAdminV2TypeBoolEncoding: Schema.Schema<GoogleBigtableAdminV2TypeBoolEncoding> =
+export const GoogleBigtableAdminV2TypeBoolEncoding: Schema.Codec<GoogleBigtableAdminV2TypeBoolEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeBoolEncoding",
   });
@@ -986,7 +986,7 @@ export interface GoogleBigtableAdminV2TypeBool {
   encoding?: GoogleBigtableAdminV2TypeBoolEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeBool: Schema.Schema<GoogleBigtableAdminV2TypeBool> =
+export const GoogleBigtableAdminV2TypeBool: Schema.Codec<GoogleBigtableAdminV2TypeBool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeBoolEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBool" });
@@ -1026,7 +1026,7 @@ export interface Type {
   bytesType?: GoogleBigtableAdminV2TypeBytes;
 }
 
-export const Type: Schema.Schema<Type> =
+export const Type: Schema.Codec<Type> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aggregateType: Schema.optional(GoogleBigtableAdminV2TypeAggregate),
@@ -1046,7 +1046,7 @@ export const Type: Schema.Schema<Type> =
       boolType: Schema.optional(GoogleBigtableAdminV2TypeBool),
       bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
     }),
-  ).annotate({ identifier: "Type" }) as any as Schema.Schema<Type>;
+  ).annotate({ identifier: "Type" }) as any as Schema.Codec<Type>;
 
 export interface GoogleBigtableAdminV2TypeStructField {
   /** The field name (optional). Fields without a `field_name` are considered anonymous and cannot be referenced by name. */
@@ -1055,7 +1055,7 @@ export interface GoogleBigtableAdminV2TypeStructField {
   type?: Type;
 }
 
-export const GoogleBigtableAdminV2TypeStructField: Schema.Schema<GoogleBigtableAdminV2TypeStructField> =
+export const GoogleBigtableAdminV2TypeStructField: Schema.Codec<GoogleBigtableAdminV2TypeStructField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fieldName: Schema.optional(Schema.String),
@@ -1063,14 +1063,14 @@ export const GoogleBigtableAdminV2TypeStructField: Schema.Schema<GoogleBigtableA
     }),
   ).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructField",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStructField>;
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeStructField>;
 
 export interface GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes {
   /** Byte sequence used to delimit concatenated fields. The delimiter must contain at least 1 character and at most 50 characters. */
   delimiter?: string;
 }
 
-export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes> =
+export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delimiter: Schema.optional(Schema.String),
   }).annotate({
@@ -1079,14 +1079,14 @@ export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Schem
 
 export interface GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes {}
 
-export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes> =
+export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes",
   });
 
 export interface GoogleBigtableAdminV2TypeStructEncodingSingleton {}
 
-export const GoogleBigtableAdminV2TypeStructEncodingSingleton: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingSingleton> =
+export const GoogleBigtableAdminV2TypeStructEncodingSingleton: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingSingleton> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingSingleton",
   });
@@ -1100,7 +1100,7 @@ export interface GoogleBigtableAdminV2TypeStructEncoding {
   singleton?: GoogleBigtableAdminV2TypeStructEncodingSingleton;
 }
 
-export const GoogleBigtableAdminV2TypeStructEncoding: Schema.Schema<GoogleBigtableAdminV2TypeStructEncoding> =
+export const GoogleBigtableAdminV2TypeStructEncoding: Schema.Codec<GoogleBigtableAdminV2TypeStructEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delimitedBytes: Schema.optional(
       GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes,
@@ -1120,7 +1120,7 @@ export interface GoogleBigtableAdminV2TypeStruct {
   encoding?: GoogleBigtableAdminV2TypeStructEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeStruct: Schema.Schema<GoogleBigtableAdminV2TypeStruct> =
+export const GoogleBigtableAdminV2TypeStruct: Schema.Codec<GoogleBigtableAdminV2TypeStruct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fields: Schema.optional(
@@ -1130,14 +1130,14 @@ export const GoogleBigtableAdminV2TypeStruct: Schema.Schema<GoogleBigtableAdminV
     }),
   ).annotate({
     identifier: "GoogleBigtableAdminV2TypeStruct",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStruct>;
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeStruct>;
 
 export interface CheckConsistencyResponse {
   /** True only if the token is consistent. A token is consistent if replication has caught up with the restrictions specified in the request. */
   consistent?: boolean;
 }
 
-export const CheckConsistencyResponse: Schema.Schema<CheckConsistencyResponse> =
+export const CheckConsistencyResponse: Schema.Codec<CheckConsistencyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consistent: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckConsistencyResponse" });
@@ -1159,7 +1159,7 @@ export interface HotTablet {
   endTime?: string;
 }
 
-export const HotTablet: Schema.Schema<HotTablet> =
+export const HotTablet: Schema.Codec<HotTablet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endKey: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1175,7 +1175,7 @@ export interface TieredStorageRule {
   includeIfOlderThan?: string;
 }
 
-export const TieredStorageRule: Schema.Schema<TieredStorageRule> =
+export const TieredStorageRule: Schema.Codec<TieredStorageRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeIfOlderThan: Schema.optional(Schema.String),
   }).annotate({ identifier: "TieredStorageRule" });
@@ -1185,7 +1185,7 @@ export interface TieredStorageConfig {
   infrequentAccess?: TieredStorageRule;
 }
 
-export const TieredStorageConfig: Schema.Schema<TieredStorageConfig> =
+export const TieredStorageConfig: Schema.Codec<TieredStorageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     infrequentAccess: Schema.optional(TieredStorageRule),
   }).annotate({ identifier: "TieredStorageConfig" });
@@ -1199,7 +1199,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1221,7 +1221,7 @@ export interface EncryptionInfo {
     | (string & {});
 }
 
-export const EncryptionInfo: Schema.Schema<EncryptionInfo> =
+export const EncryptionInfo: Schema.Codec<EncryptionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyVersion: Schema.optional(Schema.String),
     encryptionStatus: Schema.optional(Status),
@@ -1242,7 +1242,7 @@ export interface ClusterState {
   encryptionInfo?: ReadonlyArray<EncryptionInfo>;
 }
 
-export const ClusterState: Schema.Schema<ClusterState> =
+export const ClusterState: Schema.Codec<ClusterState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replicationState: Schema.optional(Schema.String),
     encryptionInfo: Schema.optional(Schema.Array(EncryptionInfo)),
@@ -1259,7 +1259,7 @@ export interface TableStats {
   logicalDataBytes?: string;
 }
 
-export const TableStats: Schema.Schema<TableStats> =
+export const TableStats: Schema.Codec<TableStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowCount: Schema.optional(Schema.String),
     averageCellsPerColumn: Schema.optional(Schema.Number),
@@ -1272,7 +1272,7 @@ export interface ChangeStreamConfig {
   retentionPeriod?: string;
 }
 
-export const ChangeStreamConfig: Schema.Schema<ChangeStreamConfig> =
+export const ChangeStreamConfig: Schema.Codec<ChangeStreamConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retentionPeriod: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChangeStreamConfig" });
@@ -1286,7 +1286,7 @@ export interface AutomatedBackupPolicy {
   locations?: ReadonlyArray<string>;
 }
 
-export const AutomatedBackupPolicy: Schema.Schema<AutomatedBackupPolicy> =
+export const AutomatedBackupPolicy: Schema.Codec<AutomatedBackupPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retentionPeriod: Schema.optional(Schema.String),
     frequency: Schema.optional(Schema.String),
@@ -1306,7 +1306,7 @@ export interface BackupInfo {
   endTime?: string;
 }
 
-export const BackupInfo: Schema.Schema<BackupInfo> =
+export const BackupInfo: Schema.Codec<BackupInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     sourceBackup: Schema.optional(Schema.String),
@@ -1322,7 +1322,7 @@ export interface RestoreInfo {
   backupInfo?: BackupInfo;
 }
 
-export const RestoreInfo: Schema.Schema<RestoreInfo> =
+export const RestoreInfo: Schema.Codec<RestoreInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceType: Schema.optional(Schema.String),
     backupInfo: Schema.optional(BackupInfo),
@@ -1333,26 +1333,26 @@ export interface Union {
   rules?: ReadonlyArray<GcRule>;
 }
 
-export const Union: Schema.Schema<Union> =
+export const Union: Schema.Codec<Union> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rules: Schema.optional(Schema.Array(GcRule)),
     }),
-  ).annotate({ identifier: "Union" }) as any as Schema.Schema<Union>;
+  ).annotate({ identifier: "Union" }) as any as Schema.Codec<Union>;
 
 export interface Intersection {
   /** Only delete cells which would be deleted by every element of `rules`. */
   rules?: ReadonlyArray<GcRule>;
 }
 
-export const Intersection: Schema.Schema<Intersection> =
+export const Intersection: Schema.Codec<Intersection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rules: Schema.optional(Schema.Array(GcRule)),
     }),
   ).annotate({
     identifier: "Intersection",
-  }) as any as Schema.Schema<Intersection>;
+  }) as any as Schema.Codec<Intersection>;
 
 export interface GcRule {
   /** Delete all cells in a column except the most recent N. */
@@ -1365,7 +1365,7 @@ export interface GcRule {
   intersection?: Intersection;
 }
 
-export const GcRule: Schema.Schema<GcRule> =
+export const GcRule: Schema.Codec<GcRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       maxNumVersions: Schema.optional(Schema.Number),
@@ -1373,7 +1373,7 @@ export const GcRule: Schema.Schema<GcRule> =
       maxAge: Schema.optional(Schema.String),
       intersection: Schema.optional(Intersection),
     }),
-  ).annotate({ identifier: "GcRule" }) as any as Schema.Schema<GcRule>;
+  ).annotate({ identifier: "GcRule" }) as any as Schema.Codec<GcRule>;
 
 export interface ColumnFamilyStats {
   /** How many cells are present per column qualifier in this column family, averaged over all rows containing any column in the column family. e.g. For column family "family" in a table with 3 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in "family") * A row with 3 cells in "other:col" (0 columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) = 3.66 in this field. */
@@ -1384,7 +1384,7 @@ export interface ColumnFamilyStats {
   logicalDataBytes?: string;
 }
 
-export const ColumnFamilyStats: Schema.Schema<ColumnFamilyStats> =
+export const ColumnFamilyStats: Schema.Codec<ColumnFamilyStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     averageCellsPerColumn: Schema.optional(Schema.Number),
     averageColumnsPerRow: Schema.optional(Schema.Number),
@@ -1400,7 +1400,7 @@ export interface ColumnFamily {
   stats?: ColumnFamilyStats;
 }
 
-export const ColumnFamily: Schema.Schema<ColumnFamily> =
+export const ColumnFamily: Schema.Codec<ColumnFamily> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcRule: Schema.optional(GcRule),
     valueType: Schema.optional(Type),
@@ -1432,7 +1432,7 @@ export interface Table {
   granularity?: "TIMESTAMP_GRANULARITY_UNSPECIFIED" | "MILLIS" | (string & {});
 }
 
-export const Table: Schema.Schema<Table> =
+export const Table: Schema.Codec<Table> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tieredStorageConfig: Schema.optional(TieredStorageConfig),
     rowKeySchema: Schema.optional(GoogleBigtableAdminV2TypeStruct),
@@ -1454,7 +1454,7 @@ export interface ListTablesResponse {
   nextPageToken?: string;
 }
 
-export const ListTablesResponse: Schema.Schema<ListTablesResponse> =
+export const ListTablesResponse: Schema.Codec<ListTablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tables: Schema.optional(Schema.Array(Table)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1467,7 +1467,7 @@ export interface GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
   qualifiers?: ReadonlyArray<string>;
 }
 
-export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets: Schema.Schema<GoogleBigtableAdminV2AuthorizedViewFamilySubsets> =
+export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets: Schema.Codec<GoogleBigtableAdminV2AuthorizedViewFamilySubsets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qualifierPrefixes: Schema.optional(Schema.Array(Schema.String)),
     qualifiers: Schema.optional(Schema.Array(Schema.String)),
@@ -1485,7 +1485,7 @@ export interface GoogleBigtableAdminV2AuthorizedViewSubsetView {
   rowPrefixes?: ReadonlyArray<string>;
 }
 
-export const GoogleBigtableAdminV2AuthorizedViewSubsetView: Schema.Schema<GoogleBigtableAdminV2AuthorizedViewSubsetView> =
+export const GoogleBigtableAdminV2AuthorizedViewSubsetView: Schema.Codec<GoogleBigtableAdminV2AuthorizedViewSubsetView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     familySubsets: Schema.optional(
       Schema.Record(
@@ -1507,7 +1507,7 @@ export interface AuthorizedView {
   subsetView?: GoogleBigtableAdminV2AuthorizedViewSubsetView;
 }
 
-export const AuthorizedView: Schema.Schema<AuthorizedView> =
+export const AuthorizedView: Schema.Codec<AuthorizedView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1524,7 +1524,7 @@ export interface UpdateAuthorizedViewRequest {
   ignoreWarnings?: boolean;
 }
 
-export const UpdateAuthorizedViewRequest: Schema.Schema<UpdateAuthorizedViewRequest> =
+export const UpdateAuthorizedViewRequest: Schema.Codec<UpdateAuthorizedViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizedView: Schema.optional(AuthorizedView),
     updateMask: Schema.optional(Schema.String),
@@ -1542,7 +1542,7 @@ export interface CreateInstanceRequest {
   clusters?: Record<string, Cluster>;
 }
 
-export const CreateInstanceRequest: Schema.Schema<CreateInstanceRequest> =
+export const CreateInstanceRequest: Schema.Codec<CreateInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Instance),
     parent: Schema.optional(Schema.String),
@@ -1555,7 +1555,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -1569,7 +1569,7 @@ export interface CreateSchemaBundleMetadata {
   requestTime?: string;
 }
 
-export const CreateSchemaBundleMetadata: Schema.Schema<CreateSchemaBundleMetadata> =
+export const CreateSchemaBundleMetadata: Schema.Codec<CreateSchemaBundleMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1585,7 +1585,7 @@ export interface ListClustersResponse {
   clusters?: ReadonlyArray<Cluster>;
 }
 
-export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
+export const ListClustersResponse: Schema.Codec<ListClustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedLocations: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1594,7 +1594,7 @@ export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
 
 export interface GenerateConsistencyTokenRequest {}
 
-export const GenerateConsistencyTokenRequest: Schema.Schema<GenerateConsistencyTokenRequest> =
+export const GenerateConsistencyTokenRequest: Schema.Codec<GenerateConsistencyTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GenerateConsistencyTokenRequest",
   });
@@ -1608,7 +1608,7 @@ export interface CopyBackupMetadata {
   name?: string;
 }
 
-export const CopyBackupMetadata: Schema.Schema<CopyBackupMetadata> =
+export const CopyBackupMetadata: Schema.Codec<CopyBackupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     progress: Schema.optional(OperationProgress),
     sourceBackupInfo: Schema.optional(BackupInfo),
@@ -1628,7 +1628,7 @@ export interface Modification {
   drop?: boolean;
 }
 
-export const Modification: Schema.Schema<Modification> =
+export const Modification: Schema.Codec<Modification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     create: Schema.optional(ColumnFamily),
     update: Schema.optional(ColumnFamily),
@@ -1646,7 +1646,7 @@ export interface CreateInstanceMetadata {
   originalRequest?: CreateInstanceRequest;
 }
 
-export const CreateInstanceMetadata: Schema.Schema<CreateInstanceMetadata> =
+export const CreateInstanceMetadata: Schema.Codec<CreateInstanceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
@@ -1667,7 +1667,7 @@ export interface TableProgress {
     | (string & {});
 }
 
-export const TableProgress: Schema.Schema<TableProgress> =
+export const TableProgress: Schema.Codec<TableProgress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedSizeBytes: Schema.optional(Schema.String),
     estimatedCopiedBytes: Schema.optional(Schema.String),
@@ -1676,7 +1676,7 @@ export const TableProgress: Schema.Schema<TableProgress> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1692,7 +1692,7 @@ export interface Expr {
   expression?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1705,7 +1705,7 @@ export interface GenerateConsistencyTokenResponse {
   consistencyToken?: string;
 }
 
-export const GenerateConsistencyTokenResponse: Schema.Schema<GenerateConsistencyTokenResponse> =
+export const GenerateConsistencyTokenResponse: Schema.Codec<GenerateConsistencyTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consistencyToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateConsistencyTokenResponse" });
@@ -1719,7 +1719,7 @@ export interface UpdateClusterMetadata {
   requestTime?: string;
 }
 
-export const UpdateClusterMetadata: Schema.Schema<UpdateClusterMetadata> =
+export const UpdateClusterMetadata: Schema.Codec<UpdateClusterMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalRequest: Schema.optional(Cluster),
     finishTime: Schema.optional(Schema.String),
@@ -1735,7 +1735,7 @@ export interface CreateClusterRequest {
   cluster?: Cluster;
 }
 
-export const CreateClusterRequest: Schema.Schema<CreateClusterRequest> =
+export const CreateClusterRequest: Schema.Codec<CreateClusterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     clusterId: Schema.optional(Schema.String),
@@ -1753,7 +1753,7 @@ export interface CreateClusterMetadata {
   originalRequest?: CreateClusterRequest;
 }
 
-export const CreateClusterMetadata: Schema.Schema<CreateClusterMetadata> =
+export const CreateClusterMetadata: Schema.Codec<CreateClusterMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     tables: Schema.optional(Schema.Record(Schema.String, TableProgress)),
@@ -1768,7 +1768,7 @@ export interface ListMaterializedViewsResponse {
   nextPageToken?: string;
 }
 
-export const ListMaterializedViewsResponse: Schema.Schema<ListMaterializedViewsResponse> =
+export const ListMaterializedViewsResponse: Schema.Codec<ListMaterializedViewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     materializedViews: Schema.optional(Schema.Array(MaterializedView)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1781,7 +1781,7 @@ export interface RestoreTableRequest {
   backup?: string;
 }
 
-export const RestoreTableRequest: Schema.Schema<RestoreTableRequest> =
+export const RestoreTableRequest: Schema.Codec<RestoreTableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String),
     backup: Schema.optional(Schema.String),
@@ -1794,7 +1794,7 @@ export interface ListAuthorizedViewsResponse {
   authorizedViews?: ReadonlyArray<AuthorizedView>;
 }
 
-export const ListAuthorizedViewsResponse: Schema.Schema<ListAuthorizedViewsResponse> =
+export const ListAuthorizedViewsResponse: Schema.Codec<ListAuthorizedViewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     authorizedViews: Schema.optional(Schema.Array(AuthorizedView)),
@@ -1807,7 +1807,7 @@ export interface ModifyColumnFamiliesRequest {
   ignoreWarnings?: boolean;
 }
 
-export const ModifyColumnFamiliesRequest: Schema.Schema<ModifyColumnFamiliesRequest> =
+export const ModifyColumnFamiliesRequest: Schema.Codec<ModifyColumnFamiliesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modifications: Schema.optional(Schema.Array(Modification)),
     ignoreWarnings: Schema.optional(Schema.Boolean),
@@ -1826,7 +1826,7 @@ export interface UpdateLogicalViewMetadata {
   originalRequest?: UpdateLogicalViewRequest;
 }
 
-export const UpdateLogicalViewMetadata: Schema.Schema<UpdateLogicalViewMetadata> =
+export const UpdateLogicalViewMetadata: Schema.Codec<UpdateLogicalViewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
@@ -1847,7 +1847,7 @@ export interface RestoreTableMetadata {
   backupInfo?: BackupInfo;
 }
 
-export const RestoreTableMetadata: Schema.Schema<RestoreTableMetadata> =
+export const RestoreTableMetadata: Schema.Codec<RestoreTableMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     progress: Schema.optional(OperationProgress),
     optimizeTableOperationName: Schema.optional(Schema.String),
@@ -1865,7 +1865,7 @@ export interface SchemaBundle {
   etag?: string;
 }
 
-export const SchemaBundle: Schema.Schema<SchemaBundle> =
+export const SchemaBundle: Schema.Codec<SchemaBundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     protoSchema: Schema.optional(ProtoSchema),
@@ -1879,7 +1879,7 @@ export interface ListSchemaBundlesResponse {
   nextPageToken?: string;
 }
 
-export const ListSchemaBundlesResponse: Schema.Schema<ListSchemaBundlesResponse> =
+export const ListSchemaBundlesResponse: Schema.Codec<ListSchemaBundlesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaBundles: Schema.optional(Schema.Array(SchemaBundle)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1897,7 +1897,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -1910,7 +1910,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -1925,7 +1925,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -1943,7 +1943,7 @@ export interface Policy {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     version: Schema.optional(Schema.Number),
@@ -1960,7 +1960,7 @@ export interface ListAppProfilesResponse {
   failedLocations?: ReadonlyArray<string>;
 }
 
-export const ListAppProfilesResponse: Schema.Schema<ListAppProfilesResponse> =
+export const ListAppProfilesResponse: Schema.Codec<ListAppProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appProfiles: Schema.optional(Schema.Array(AppProfile)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1980,7 +1980,7 @@ export interface UndeleteTableMetadata {
   name?: string;
 }
 
-export const UndeleteTableMetadata: Schema.Schema<UndeleteTableMetadata> =
+export const UndeleteTableMetadata: Schema.Codec<UndeleteTableMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
@@ -2014,7 +2014,7 @@ export interface Backup {
   sourceBackup?: string;
 }
 
-export const Backup: Schema.Schema<Backup> =
+export const Backup: Schema.Codec<Backup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     encryptionInfo: Schema.optional(EncryptionInfo),
@@ -2034,7 +2034,7 @@ export interface Split {
   key?: string;
 }
 
-export const Split: Schema.Schema<Split> =
+export const Split: Schema.Codec<Split> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "Split" });
@@ -2046,7 +2046,7 @@ export interface ListBackupsResponse {
   backups?: ReadonlyArray<Backup>;
 }
 
-export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
+export const ListBackupsResponse: Schema.Codec<ListBackupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     backups: Schema.optional(Schema.Array(Backup)),
@@ -2061,7 +2061,7 @@ export interface CopyBackupRequest {
   sourceBackup?: string;
 }
 
-export const CopyBackupRequest: Schema.Schema<CopyBackupRequest> =
+export const CopyBackupRequest: Schema.Codec<CopyBackupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     backupId: Schema.optional(Schema.String),
@@ -2081,7 +2081,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -2099,7 +2099,7 @@ export interface UpdateInstanceMetadata {
   originalRequest?: PartialUpdateInstanceRequest;
 }
 
-export const UpdateInstanceMetadata: Schema.Schema<UpdateInstanceMetadata> =
+export const UpdateInstanceMetadata: Schema.Codec<UpdateInstanceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
@@ -2115,7 +2115,7 @@ export interface ListOperationsResponse {
   operations?: ReadonlyArray<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2124,14 +2124,14 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface StandardReadRemoteWrites {}
 
-export const StandardReadRemoteWrites: Schema.Schema<StandardReadRemoteWrites> =
+export const StandardReadRemoteWrites: Schema.Codec<StandardReadRemoteWrites> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StandardReadRemoteWrites",
   });
 
 export interface DataBoostReadLocalWrites {}
 
-export const DataBoostReadLocalWrites: Schema.Schema<DataBoostReadLocalWrites> =
+export const DataBoostReadLocalWrites: Schema.Codec<DataBoostReadLocalWrites> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DataBoostReadLocalWrites",
   });
@@ -2145,7 +2145,7 @@ export interface CheckConsistencyRequest {
   consistencyToken?: string;
 }
 
-export const CheckConsistencyRequest: Schema.Schema<CheckConsistencyRequest> =
+export const CheckConsistencyRequest: Schema.Codec<CheckConsistencyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standardReadRemoteWrites: Schema.optional(StandardReadRemoteWrites),
     dataBoostReadLocalWrites: Schema.optional(DataBoostReadLocalWrites),
@@ -2161,7 +2161,7 @@ export interface CreateTableRequest {
   tableId?: string;
 }
 
-export const CreateTableRequest: Schema.Schema<CreateTableRequest> =
+export const CreateTableRequest: Schema.Codec<CreateTableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     initialSplits: Schema.optional(Schema.Array(Split)),
     table: Schema.optional(Table),
@@ -2170,7 +2170,7 @@ export const CreateTableRequest: Schema.Schema<CreateTableRequest> =
 
 export interface UpdateAppProfileMetadata {}
 
-export const UpdateAppProfileMetadata: Schema.Schema<UpdateAppProfileMetadata> =
+export const UpdateAppProfileMetadata: Schema.Codec<UpdateAppProfileMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateAppProfileMetadata",
   });
@@ -2192,7 +2192,7 @@ export interface MemoryLayer {
     | (string & {});
 }
 
-export const MemoryLayer: Schema.Schema<MemoryLayer> =
+export const MemoryLayer: Schema.Codec<MemoryLayer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -2209,7 +2209,7 @@ export interface ListMemoryLayersResponse {
   nextPageToken?: string;
 }
 
-export const ListMemoryLayersResponse: Schema.Schema<ListMemoryLayersResponse> =
+export const ListMemoryLayersResponse: Schema.Codec<ListMemoryLayersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memoryLayers: Schema.optional(Schema.Array(MemoryLayer)),
     failedLocations: Schema.optional(Schema.Array(Schema.String)),
@@ -2225,7 +2225,7 @@ export interface CreateAuthorizedViewRequest {
   authorizedViewId?: string;
 }
 
-export const CreateAuthorizedViewRequest: Schema.Schema<CreateAuthorizedViewRequest> =
+export const CreateAuthorizedViewRequest: Schema.Codec<CreateAuthorizedViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     authorizedView: Schema.optional(AuthorizedView),
@@ -2241,7 +2241,7 @@ export interface CreateAuthorizedViewMetadata {
   requestTime?: string;
 }
 
-export const CreateAuthorizedViewMetadata: Schema.Schema<CreateAuthorizedViewMetadata> =
+export const CreateAuthorizedViewMetadata: Schema.Codec<CreateAuthorizedViewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalRequest: Schema.optional(CreateAuthorizedViewRequest),
     finishTime: Schema.optional(Schema.String),
@@ -2255,7 +2255,7 @@ export interface ListHotTabletsResponse {
   nextPageToken?: string;
 }
 
-export const ListHotTabletsResponse: Schema.Schema<ListHotTabletsResponse> =
+export const ListHotTabletsResponse: Schema.Codec<ListHotTabletsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hotTablets: Schema.optional(Schema.Array(HotTablet)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2268,7 +2268,7 @@ export interface UpdateMemoryLayerRequest {
   memoryLayer?: MemoryLayer;
 }
 
-export const UpdateMemoryLayerRequest: Schema.Schema<UpdateMemoryLayerRequest> =
+export const UpdateMemoryLayerRequest: Schema.Codec<UpdateMemoryLayerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     memoryLayer: Schema.optional(MemoryLayer),
@@ -2283,7 +2283,7 @@ export interface UpdateMemoryLayerMetadata {
   requestTime?: string;
 }
 
-export const UpdateMemoryLayerMetadata: Schema.Schema<UpdateMemoryLayerMetadata> =
+export const UpdateMemoryLayerMetadata: Schema.Codec<UpdateMemoryLayerMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     originalRequest: Schema.optional(UpdateMemoryLayerRequest),
@@ -2297,7 +2297,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -2312,7 +2312,7 @@ export interface UpdateSchemaBundleMetadata {
   name?: string;
 }
 
-export const UpdateSchemaBundleMetadata: Schema.Schema<UpdateSchemaBundleMetadata> =
+export const UpdateSchemaBundleMetadata: Schema.Codec<UpdateSchemaBundleMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -2328,7 +2328,7 @@ export interface UpdateAuthorizedViewMetadata {
   originalRequest?: UpdateAuthorizedViewRequest;
 }
 
-export const UpdateAuthorizedViewMetadata: Schema.Schema<UpdateAuthorizedViewMetadata> =
+export const UpdateAuthorizedViewMetadata: Schema.Codec<UpdateAuthorizedViewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
@@ -2348,7 +2348,7 @@ export interface CreateLogicalViewMetadata {
   finishTime?: string;
 }
 
-export const CreateLogicalViewMetadata: Schema.Schema<CreateLogicalViewMetadata> =
+export const CreateLogicalViewMetadata: Schema.Codec<CreateLogicalViewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalRequest: Schema.optional(CreateLogicalViewRequest),
     endTime: Schema.optional(Schema.String),
@@ -2364,7 +2364,7 @@ export interface ListLogicalViewsResponse {
   nextPageToken?: string;
 }
 
-export const ListLogicalViewsResponse: Schema.Schema<ListLogicalViewsResponse> =
+export const ListLogicalViewsResponse: Schema.Codec<ListLogicalViewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logicalViews: Schema.optional(Schema.Array(LogicalView)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2441,7 +2441,7 @@ export const PartialUpdateInstanceProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PartialUpdateInstanceProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<PartialUpdateInstanceProjectsInstancesRequest>;
 
 export type PartialUpdateInstanceProjectsInstancesResponse = Operation;
 export const PartialUpdateInstanceProjectsInstancesResponse =
@@ -2477,7 +2477,7 @@ export const DeleteProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesRequest>;
 
 export type DeleteProjectsInstancesResponse = Empty;
 export const DeleteProjectsInstancesResponse =
@@ -2513,7 +2513,7 @@ export const GetProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesRequest>;
 
 export type GetProjectsInstancesResponse = Instance;
 export const GetProjectsInstancesResponse =
@@ -2551,7 +2551,7 @@ export const SetIamPolicyProjectsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesRequest>;
 
 export type SetIamPolicyProjectsInstancesResponse = Policy;
 export const SetIamPolicyProjectsInstancesResponse =
@@ -2594,7 +2594,7 @@ export const GetIamPolicyProjectsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesRequest>;
 
 export type GetIamPolicyProjectsInstancesResponse = Policy;
 export const GetIamPolicyProjectsInstancesResponse =
@@ -2633,7 +2633,7 @@ export const CreateProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/instances", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesRequest>;
 
 export type CreateProjectsInstancesResponse = Operation;
 export const CreateProjectsInstancesResponse =
@@ -2672,7 +2672,7 @@ export const ListProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/instances" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesRequest>;
 
 export type ListProjectsInstancesResponse = ListInstancesResponse;
 export const ListProjectsInstancesResponse =
@@ -2710,7 +2710,7 @@ export const UpdateProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsInstancesRequest>;
 
 export type UpdateProjectsInstancesResponse = Instance;
 export const UpdateProjectsInstancesResponse =
@@ -2753,7 +2753,7 @@ export const TestIamPermissionsProjectsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesRequest>;
 
 export type TestIamPermissionsProjectsInstancesResponse =
   TestIamPermissionsResponse;
@@ -2796,7 +2796,7 @@ export const CreateProjectsInstancesClustersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/clusters", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesClustersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesClustersRequest>;
 
 export type CreateProjectsInstancesClustersResponse = Operation;
 export const CreateProjectsInstancesClustersResponse =
@@ -2835,7 +2835,7 @@ export const ListProjectsInstancesClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/clusters" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesClustersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesClustersRequest>;
 
 export type ListProjectsInstancesClustersResponse = ListClustersResponse;
 export const ListProjectsInstancesClustersResponse =
@@ -2876,7 +2876,7 @@ export const UpdateProjectsInstancesClustersRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsInstancesClustersRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsInstancesClustersRequest>;
 
 export type UpdateProjectsInstancesClustersResponse = Operation;
 export const UpdateProjectsInstancesClustersResponse =
@@ -2912,7 +2912,7 @@ export const GetMemoryLayerProjectsInstancesClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetMemoryLayerProjectsInstancesClustersRequest>;
+  ) as unknown as Schema.Codec<GetMemoryLayerProjectsInstancesClustersRequest>;
 
 export type GetMemoryLayerProjectsInstancesClustersResponse = MemoryLayer;
 export const GetMemoryLayerProjectsInstancesClustersResponse =
@@ -2946,7 +2946,7 @@ export const GetProjectsInstancesClustersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesClustersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesClustersRequest>;
 
 export type GetProjectsInstancesClustersResponse = Cluster;
 export const GetProjectsInstancesClustersResponse =
@@ -2986,7 +2986,7 @@ export const PartialUpdateClusterProjectsInstancesClustersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PartialUpdateClusterProjectsInstancesClustersRequest>;
+  ) as unknown as Schema.Codec<PartialUpdateClusterProjectsInstancesClustersRequest>;
 
 export type PartialUpdateClusterProjectsInstancesClustersResponse = Operation;
 export const PartialUpdateClusterProjectsInstancesClustersResponse =
@@ -3022,7 +3022,7 @@ export const DeleteProjectsInstancesClustersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesClustersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesClustersRequest>;
 
 export type DeleteProjectsInstancesClustersResponse = Empty;
 export const DeleteProjectsInstancesClustersResponse =
@@ -3070,7 +3070,7 @@ export const ListProjectsInstancesClustersHotTabletsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/hotTablets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesClustersHotTabletsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesClustersHotTabletsRequest>;
 
 export type ListProjectsInstancesClustersHotTabletsResponse =
   ListHotTabletsResponse;
@@ -3115,7 +3115,7 @@ export const ListProjectsInstancesClustersMemoryLayersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/memoryLayers" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesClustersMemoryLayersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesClustersMemoryLayersRequest>;
 
 export type ListProjectsInstancesClustersMemoryLayersResponse =
   ListMemoryLayersResponse;
@@ -3160,7 +3160,7 @@ export const PatchProjectsInstancesClustersBackupsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsInstancesClustersBackupsRequest>;
 
 export type PatchProjectsInstancesClustersBackupsResponse = Backup;
 export const PatchProjectsInstancesClustersBackupsResponse =
@@ -3196,7 +3196,7 @@ export const GetProjectsInstancesClustersBackupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesClustersBackupsRequest>;
 
 export type GetProjectsInstancesClustersBackupsResponse = Backup;
 export const GetProjectsInstancesClustersBackupsResponse =
@@ -3237,7 +3237,7 @@ export const SetIamPolicyProjectsInstancesClustersBackupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesClustersBackupsRequest>;
 
 export type SetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
 export const SetIamPolicyProjectsInstancesClustersBackupsResponse =
@@ -3273,7 +3273,7 @@ export const DeleteProjectsInstancesClustersBackupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesClustersBackupsRequest>;
 
 export type DeleteProjectsInstancesClustersBackupsResponse = Empty;
 export const DeleteProjectsInstancesClustersBackupsResponse =
@@ -3316,7 +3316,7 @@ export const GetIamPolicyProjectsInstancesClustersBackupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesClustersBackupsRequest>;
 
 export type GetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
 export const GetIamPolicyProjectsInstancesClustersBackupsResponse =
@@ -3358,7 +3358,7 @@ export const CreateProjectsInstancesClustersBackupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/backups", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesClustersBackupsRequest>;
 
 export type CreateProjectsInstancesClustersBackupsResponse = Operation;
 export const CreateProjectsInstancesClustersBackupsResponse =
@@ -3406,7 +3406,7 @@ export const ListProjectsInstancesClustersBackupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/backups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesClustersBackupsRequest>;
 
 export type ListProjectsInstancesClustersBackupsResponse = ListBackupsResponse;
 export const ListProjectsInstancesClustersBackupsResponse =
@@ -3451,7 +3451,7 @@ export const CopyProjectsInstancesClustersBackupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CopyProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<CopyProjectsInstancesClustersBackupsRequest>;
 
 export type CopyProjectsInstancesClustersBackupsResponse = Operation;
 export const CopyProjectsInstancesClustersBackupsResponse =
@@ -3494,7 +3494,7 @@ export const TestIamPermissionsProjectsInstancesClustersBackupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesClustersBackupsRequest>;
 
 export type TestIamPermissionsProjectsInstancesClustersBackupsResponse =
   TestIamPermissionsResponse;
@@ -3537,7 +3537,7 @@ export const PatchProjectsInstancesMaterializedViewsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsInstancesMaterializedViewsRequest>;
 
 export type PatchProjectsInstancesMaterializedViewsResponse = Operation;
 export const PatchProjectsInstancesMaterializedViewsResponse =
@@ -3580,7 +3580,7 @@ export const SetIamPolicyProjectsInstancesMaterializedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesMaterializedViewsRequest>;
 
 export type SetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesMaterializedViewsResponse =
@@ -3624,7 +3624,7 @@ export const GetProjectsInstancesMaterializedViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesMaterializedViewsRequest>;
 
 export type GetProjectsInstancesMaterializedViewsResponse = MaterializedView;
 export const GetProjectsInstancesMaterializedViewsResponse =
@@ -3665,7 +3665,7 @@ export const GetIamPolicyProjectsInstancesMaterializedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesMaterializedViewsRequest>;
 
 export type GetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesMaterializedViewsResponse =
@@ -3704,7 +3704,7 @@ export const DeleteProjectsInstancesMaterializedViewsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesMaterializedViewsRequest>;
 
 export type DeleteProjectsInstancesMaterializedViewsResponse = Empty;
 export const DeleteProjectsInstancesMaterializedViewsResponse =
@@ -3747,7 +3747,7 @@ export const TestIamPermissionsProjectsInstancesMaterializedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesMaterializedViewsRequest>;
 
 export type TestIamPermissionsProjectsInstancesMaterializedViewsResponse =
   TestIamPermissionsResponse;
@@ -3796,7 +3796,7 @@ export const CreateProjectsInstancesMaterializedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesMaterializedViewsRequest>;
 
 export type CreateProjectsInstancesMaterializedViewsResponse = Operation;
 export const CreateProjectsInstancesMaterializedViewsResponse =
@@ -3846,7 +3846,7 @@ export const ListProjectsInstancesMaterializedViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/materializedViews" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesMaterializedViewsRequest>;
 
 export type ListProjectsInstancesMaterializedViewsResponse =
   ListMaterializedViewsResponse;
@@ -3892,7 +3892,7 @@ export const GetIamPolicyProjectsInstancesLogicalViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesLogicalViewsRequest>;
 
 export type GetIamPolicyProjectsInstancesLogicalViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesLogicalViewsResponse =
@@ -3931,7 +3931,7 @@ export const DeleteProjectsInstancesLogicalViewsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesLogicalViewsRequest>;
 
 export type DeleteProjectsInstancesLogicalViewsResponse = Empty;
 export const DeleteProjectsInstancesLogicalViewsResponse =
@@ -3973,7 +3973,7 @@ export const PatchProjectsInstancesLogicalViewsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsInstancesLogicalViewsRequest>;
 
 export type PatchProjectsInstancesLogicalViewsResponse = Operation;
 export const PatchProjectsInstancesLogicalViewsResponse =
@@ -4016,7 +4016,7 @@ export const SetIamPolicyProjectsInstancesLogicalViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesLogicalViewsRequest>;
 
 export type SetIamPolicyProjectsInstancesLogicalViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesLogicalViewsResponse =
@@ -4052,7 +4052,7 @@ export const GetProjectsInstancesLogicalViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesLogicalViewsRequest>;
 
 export type GetProjectsInstancesLogicalViewsResponse = LogicalView;
 export const GetProjectsInstancesLogicalViewsResponse =
@@ -4093,7 +4093,7 @@ export const TestIamPermissionsProjectsInstancesLogicalViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesLogicalViewsRequest>;
 
 export type TestIamPermissionsProjectsInstancesLogicalViewsResponse =
   TestIamPermissionsResponse;
@@ -4142,7 +4142,7 @@ export const CreateProjectsInstancesLogicalViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesLogicalViewsRequest>;
 
 export type CreateProjectsInstancesLogicalViewsResponse = Operation;
 export const CreateProjectsInstancesLogicalViewsResponse =
@@ -4184,7 +4184,7 @@ export const ListProjectsInstancesLogicalViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/logicalViews" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesLogicalViewsRequest>;
 
 export type ListProjectsInstancesLogicalViewsResponse =
   ListLogicalViewsResponse;
@@ -4236,7 +4236,7 @@ export const CreateProjectsInstancesAppProfilesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/appProfiles", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesAppProfilesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesAppProfilesRequest>;
 
 export type CreateProjectsInstancesAppProfilesResponse = AppProfile;
 export const CreateProjectsInstancesAppProfilesResponse =
@@ -4278,7 +4278,7 @@ export const ListProjectsInstancesAppProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/appProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesAppProfilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesAppProfilesRequest>;
 
 export type ListProjectsInstancesAppProfilesResponse = ListAppProfilesResponse;
 export const ListProjectsInstancesAppProfilesResponse =
@@ -4316,7 +4316,7 @@ export const GetProjectsInstancesAppProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesAppProfilesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesAppProfilesRequest>;
 
 export type GetProjectsInstancesAppProfilesResponse = AppProfile;
 export const GetProjectsInstancesAppProfilesResponse =
@@ -4361,7 +4361,7 @@ export const PatchProjectsInstancesAppProfilesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesAppProfilesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsInstancesAppProfilesRequest>;
 
 export type PatchProjectsInstancesAppProfilesResponse = Operation;
 export const PatchProjectsInstancesAppProfilesResponse =
@@ -4402,7 +4402,7 @@ export const DeleteProjectsInstancesAppProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesAppProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesAppProfilesRequest>;
 
 export type DeleteProjectsInstancesAppProfilesResponse = Empty;
 export const DeleteProjectsInstancesAppProfilesResponse =
@@ -4445,7 +4445,7 @@ export const GenerateConsistencyTokenProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateConsistencyTokenProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<GenerateConsistencyTokenProjectsInstancesTablesRequest>;
 
 export type GenerateConsistencyTokenProjectsInstancesTablesResponse =
   GenerateConsistencyTokenResponse;
@@ -4489,7 +4489,7 @@ export const CheckConsistencyProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckConsistencyProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<CheckConsistencyProjectsInstancesTablesRequest>;
 
 export type CheckConsistencyProjectsInstancesTablesResponse =
   CheckConsistencyResponse;
@@ -4533,7 +4533,7 @@ export const SetIamPolicyProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesTablesRequest>;
 
 export type SetIamPolicyProjectsInstancesTablesResponse = Policy;
 export const SetIamPolicyProjectsInstancesTablesResponse =
@@ -4569,7 +4569,7 @@ export const DeleteProjectsInstancesTablesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesTablesRequest>;
 
 export type DeleteProjectsInstancesTablesResponse = Empty;
 export const DeleteProjectsInstancesTablesResponse =
@@ -4612,7 +4612,7 @@ export const TestIamPermissionsProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesTablesRequest>;
 
 export type TestIamPermissionsProjectsInstancesTablesResponse =
   TestIamPermissionsResponse;
@@ -4652,7 +4652,7 @@ export const UndeleteProjectsInstancesTablesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsInstancesTablesRequest>;
 
 export type UndeleteProjectsInstancesTablesResponse = Operation;
 export const UndeleteProjectsInstancesTablesResponse =
@@ -4699,7 +4699,7 @@ export const PatchProjectsInstancesTablesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsInstancesTablesRequest>;
 
 export type PatchProjectsInstancesTablesResponse = Operation;
 export const PatchProjectsInstancesTablesResponse =
@@ -4746,7 +4746,7 @@ export const GetProjectsInstancesTablesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesTablesRequest>;
 
 export type GetProjectsInstancesTablesResponse = Table;
 export const GetProjectsInstancesTablesResponse =
@@ -4783,7 +4783,7 @@ export const DropRowRangeProjectsInstancesTablesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:dropRowRange", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DropRowRangeProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<DropRowRangeProjectsInstancesTablesRequest>;
 
 export type DropRowRangeProjectsInstancesTablesResponse = Empty;
 export const DropRowRangeProjectsInstancesTablesResponse =
@@ -4826,7 +4826,7 @@ export const RestoreProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RestoreProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<RestoreProjectsInstancesTablesRequest>;
 
 export type RestoreProjectsInstancesTablesResponse = Operation;
 export const RestoreProjectsInstancesTablesResponse =
@@ -4869,7 +4869,7 @@ export const ModifyColumnFamiliesProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyColumnFamiliesProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<ModifyColumnFamiliesProjectsInstancesTablesRequest>;
 
 export type ModifyColumnFamiliesProjectsInstancesTablesResponse = Table;
 export const ModifyColumnFamiliesProjectsInstancesTablesResponse =
@@ -4912,7 +4912,7 @@ export const GetIamPolicyProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesTablesRequest>;
 
 export type GetIamPolicyProjectsInstancesTablesResponse = Policy;
 export const GetIamPolicyProjectsInstancesTablesResponse =
@@ -4951,7 +4951,7 @@ export const CreateProjectsInstancesTablesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/tables", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesTablesRequest>;
 
 export type CreateProjectsInstancesTablesResponse = Table;
 export const CreateProjectsInstancesTablesResponse =
@@ -5004,7 +5004,7 @@ export const ListProjectsInstancesTablesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/tables" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesTablesRequest>;
 
 export type ListProjectsInstancesTablesResponse = ListTablesResponse;
 export const ListProjectsInstancesTablesResponse =
@@ -5049,7 +5049,7 @@ export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
@@ -5088,7 +5088,7 @@ export const DeleteProjectsInstancesTablesAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type DeleteProjectsInstancesTablesAuthorizedViewsResponse = Empty;
 export const DeleteProjectsInstancesTablesAuthorizedViewsResponse =
@@ -5135,7 +5135,7 @@ export const PatchProjectsInstancesTablesAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type PatchProjectsInstancesTablesAuthorizedViewsResponse = Operation;
 export const PatchProjectsInstancesTablesAuthorizedViewsResponse =
@@ -5179,7 +5179,7 @@ export const GetProjectsInstancesTablesAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type GetProjectsInstancesTablesAuthorizedViewsResponse = AuthorizedView;
 export const GetProjectsInstancesTablesAuthorizedViewsResponse =
@@ -5220,7 +5220,7 @@ export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
@@ -5268,7 +5268,7 @@ export const CreateProjectsInstancesTablesAuthorizedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type CreateProjectsInstancesTablesAuthorizedViewsResponse = Operation;
 export const CreateProjectsInstancesTablesAuthorizedViewsResponse =
@@ -5318,7 +5318,7 @@ export const ListProjectsInstancesTablesAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/authorizedViews" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type ListProjectsInstancesTablesAuthorizedViewsResponse =
   ListAuthorizedViewsResponse;
@@ -5364,7 +5364,7 @@ export const TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type TestIamPermissionsProjectsInstancesTablesAuthorizedViewsResponse =
   TestIamPermissionsResponse;
@@ -5404,7 +5404,7 @@ export const DeleteProjectsInstancesTablesSchemaBundlesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type DeleteProjectsInstancesTablesSchemaBundlesResponse = Empty;
 export const DeleteProjectsInstancesTablesSchemaBundlesResponse =
@@ -5447,7 +5447,7 @@ export const GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse = Policy;
 export const GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse =
@@ -5490,7 +5490,7 @@ export const SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse = Policy;
 export const SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse =
@@ -5526,7 +5526,7 @@ export const GetProjectsInstancesTablesSchemaBundlesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type GetProjectsInstancesTablesSchemaBundlesResponse = SchemaBundle;
 export const GetProjectsInstancesTablesSchemaBundlesResponse =
@@ -5571,7 +5571,7 @@ export const PatchProjectsInstancesTablesSchemaBundlesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type PatchProjectsInstancesTablesSchemaBundlesResponse = Operation;
 export const PatchProjectsInstancesTablesSchemaBundlesResponse =
@@ -5614,7 +5614,7 @@ export const TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type TestIamPermissionsProjectsInstancesTablesSchemaBundlesResponse =
   TestIamPermissionsResponse;
@@ -5663,7 +5663,7 @@ export const CreateProjectsInstancesTablesSchemaBundlesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type CreateProjectsInstancesTablesSchemaBundlesResponse = Operation;
 export const CreateProjectsInstancesTablesSchemaBundlesResponse =
@@ -5713,7 +5713,7 @@ export const ListProjectsInstancesTablesSchemaBundlesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/schemaBundles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type ListProjectsInstancesTablesSchemaBundlesResponse =
   ListSchemaBundlesResponse;
@@ -5766,7 +5766,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -5800,7 +5800,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -5844,7 +5844,7 @@ export const ListOperationsProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOperationsProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListOperationsProjectsOperationsRequest>;
 
 export type ListOperationsProjectsOperationsResponse = ListOperationsResponse;
 export const ListOperationsProjectsOperationsResponse =

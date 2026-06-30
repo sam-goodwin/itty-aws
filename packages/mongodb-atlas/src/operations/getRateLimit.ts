@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetRateLimitInput {
+  endpointSetId: string;
+  pretty?: boolean;
+  envelope?: boolean;
+  groupId?: string;
+  orgId?: string;
+  userId?: string;
+  ipAddress?: string;
+}
 export const GetRateLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endpointSetId: Schema.String.pipe(T.PathParam()),
   pretty: Schema.optional(Schema.Boolean),
@@ -14,12 +23,12 @@ export const GetRateLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ipAddress: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/rateLimits/{endpointSetId}" }),
-);
-export type GetRateLimitInput = typeof GetRateLimitInput.Type;
+) as unknown as Schema.Codec<GetRateLimitInput>;
 
 // Output Schema
-export const GetRateLimitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetRateLimitOutput = typeof GetRateLimitOutput.Type;
+export type GetRateLimitOutput = void;
+export const GetRateLimitOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetRateLimitOutput>;
 
 // The operation
 /**

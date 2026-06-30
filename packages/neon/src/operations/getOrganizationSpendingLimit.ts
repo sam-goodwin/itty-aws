@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetOrganizationSpendingLimitInput {
+  org_id: string;
+}
 export const GetOrganizationSpendingLimitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -11,17 +14,16 @@ export const GetOrganizationSpendingLimitInput =
       method: "GET",
       path: "/organizations/{org_id}/billing/spending_limit",
     }),
-  );
-export type GetOrganizationSpendingLimitInput =
-  typeof GetOrganizationSpendingLimitInput.Type;
+  ) as unknown as Schema.Codec<GetOrganizationSpendingLimitInput>;
 
 // Output Schema
+export interface GetOrganizationSpendingLimitOutput {
+  spending_limit_cents: number | null;
+}
 export const GetOrganizationSpendingLimitOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spending_limit_cents: Schema.NullOr(Schema.Number),
-  });
-export type GetOrganizationSpendingLimitOutput =
-  typeof GetOrganizationSpendingLimitOutput.Type;
+  }) as unknown as Schema.Codec<GetOrganizationSpendingLimitOutput>;
 
 // The operation
 /**

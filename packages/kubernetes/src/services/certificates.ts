@@ -4,12 +4,73 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateCertificatesV1CertificateSigningRequestInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateCertificatesV1CertificateSigningRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -96,11 +157,66 @@ export const CreateCertificatesV1CertificateSigningRequestInput =
       method: "POST",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests",
     }),
-  );
-export type CreateCertificatesV1CertificateSigningRequestInput =
-  typeof CreateCertificatesV1CertificateSigningRequestInput.Type;
+  ) as unknown as Schema.Codec<CreateCertificatesV1CertificateSigningRequestInput>;
 
 // Output Schema
+export interface CreateCertificatesV1CertificateSigningRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateCertificatesV1CertificateSigningRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -178,9 +294,7 @@ export const CreateCertificatesV1CertificateSigningRequestOutput =
         ),
       }),
     ),
-  });
-export type CreateCertificatesV1CertificateSigningRequestOutput =
-  typeof CreateCertificatesV1CertificateSigningRequestOutput.Type;
+  }) as unknown as Schema.Codec<CreateCertificatesV1CertificateSigningRequestOutput>;
 
 // The operation
 /**
@@ -198,6 +312,47 @@ export const createCertificatesV1CertificateSigningRequest =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateCertificatesV1beta1ClusterTrustBundleInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { signerName?: string; trustBundle: string };
+}
 export const CreateCertificatesV1beta1ClusterTrustBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -259,11 +414,46 @@ export const CreateCertificatesV1beta1ClusterTrustBundleInput =
       method: "POST",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles",
     }),
-  );
-export type CreateCertificatesV1beta1ClusterTrustBundleInput =
-  typeof CreateCertificatesV1beta1ClusterTrustBundleInput.Type;
+  ) as unknown as Schema.Codec<CreateCertificatesV1beta1ClusterTrustBundleInput>;
 
 // Output Schema
+export interface CreateCertificatesV1beta1ClusterTrustBundleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { signerName?: string; trustBundle: string };
+}
 export const CreateCertificatesV1beta1ClusterTrustBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -316,9 +506,7 @@ export const CreateCertificatesV1beta1ClusterTrustBundleOutput =
       signerName: Schema.optional(Schema.String),
       trustBundle: Schema.String,
     }),
-  });
-export type CreateCertificatesV1beta1ClusterTrustBundleOutput =
-  typeof CreateCertificatesV1beta1ClusterTrustBundleOutput.Type;
+  }) as unknown as Schema.Codec<CreateCertificatesV1beta1ClusterTrustBundleOutput>;
 
 // The operation
 /**
@@ -336,6 +524,75 @@ export const createCertificatesV1beta1ClusterTrustBundle =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateCertificatesV1beta1NamespacedPodCertificateRequestInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const CreateCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -430,11 +687,73 @@ export const CreateCertificatesV1beta1NamespacedPodCertificateRequestInput =
       method: "POST",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests",
     }),
-  );
-export type CreateCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  typeof CreateCertificatesV1beta1NamespacedPodCertificateRequestInput.Type;
+  ) as unknown as Schema.Codec<CreateCertificatesV1beta1NamespacedPodCertificateRequestInput>;
 
 // Output Schema
+export interface CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -519,9 +838,7 @@ export const CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput =
         notBefore: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  typeof CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput.Type;
+  }) as unknown as Schema.Codec<CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput>;
 
 // The operation
 /**
@@ -541,6 +858,18 @@ export const createCertificatesV1beta1NamespacedPodCertificateRequest =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteCertificatesV1CertificateSigningRequestInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCertificatesV1CertificateSigningRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -565,11 +894,32 @@ export const DeleteCertificatesV1CertificateSigningRequestInput =
       method: "DELETE",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}",
     }),
-  );
-export type DeleteCertificatesV1CertificateSigningRequestInput =
-  typeof DeleteCertificatesV1CertificateSigningRequestInput.Type;
+  ) as unknown as Schema.Codec<DeleteCertificatesV1CertificateSigningRequestInput>;
 
 // Output Schema
+export interface DeleteCertificatesV1CertificateSigningRequestOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCertificatesV1CertificateSigningRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -609,9 +959,7 @@ export const DeleteCertificatesV1CertificateSigningRequestOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCertificatesV1CertificateSigningRequestOutput =
-  typeof DeleteCertificatesV1CertificateSigningRequestOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCertificatesV1CertificateSigningRequestOutput>;
 
 // The operation
 /**
@@ -632,6 +980,26 @@ export const deleteCertificatesV1CertificateSigningRequest =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteCertificatesV1CollectionCertificateSigningRequestInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCertificatesV1CollectionCertificateSigningRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -664,11 +1032,32 @@ export const DeleteCertificatesV1CollectionCertificateSigningRequestInput =
       method: "DELETE",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests",
     }),
-  );
-export type DeleteCertificatesV1CollectionCertificateSigningRequestInput =
-  typeof DeleteCertificatesV1CollectionCertificateSigningRequestInput.Type;
+  ) as unknown as Schema.Codec<DeleteCertificatesV1CollectionCertificateSigningRequestInput>;
 
 // Output Schema
+export interface DeleteCertificatesV1CollectionCertificateSigningRequestOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCertificatesV1CollectionCertificateSigningRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -708,9 +1097,7 @@ export const DeleteCertificatesV1CollectionCertificateSigningRequestOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCertificatesV1CollectionCertificateSigningRequestOutput =
-  typeof DeleteCertificatesV1CollectionCertificateSigningRequestOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCertificatesV1CollectionCertificateSigningRequestOutput>;
 
 // The operation
 /**
@@ -779,6 +1166,18 @@ export const deleteCertificatesV1CollectionCertificateSigningRequest =
     outputSchema: DeleteCertificatesV1CollectionCertificateSigningRequestOutput,
   }));
 // Input Schema
+export interface DeleteCertificatesV1beta1ClusterTrustBundleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCertificatesV1beta1ClusterTrustBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -803,11 +1202,32 @@ export const DeleteCertificatesV1beta1ClusterTrustBundleInput =
       method: "DELETE",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles/{name}",
     }),
-  );
-export type DeleteCertificatesV1beta1ClusterTrustBundleInput =
-  typeof DeleteCertificatesV1beta1ClusterTrustBundleInput.Type;
+  ) as unknown as Schema.Codec<DeleteCertificatesV1beta1ClusterTrustBundleInput>;
 
 // Output Schema
+export interface DeleteCertificatesV1beta1ClusterTrustBundleOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCertificatesV1beta1ClusterTrustBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -847,9 +1267,7 @@ export const DeleteCertificatesV1beta1ClusterTrustBundleOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCertificatesV1beta1ClusterTrustBundleOutput =
-  typeof DeleteCertificatesV1beta1ClusterTrustBundleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCertificatesV1beta1ClusterTrustBundleOutput>;
 
 // The operation
 /**
@@ -870,6 +1288,26 @@ export const deleteCertificatesV1beta1ClusterTrustBundle =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteCertificatesV1beta1CollectionClusterTrustBundleInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCertificatesV1beta1CollectionClusterTrustBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -902,11 +1340,32 @@ export const DeleteCertificatesV1beta1CollectionClusterTrustBundleInput =
       method: "DELETE",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles",
     }),
-  );
-export type DeleteCertificatesV1beta1CollectionClusterTrustBundleInput =
-  typeof DeleteCertificatesV1beta1CollectionClusterTrustBundleInput.Type;
+  ) as unknown as Schema.Codec<DeleteCertificatesV1beta1CollectionClusterTrustBundleInput>;
 
 // Output Schema
+export interface DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -946,9 +1405,7 @@ export const DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput =
-  typeof DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput>;
 
 // The operation
 /**
@@ -1017,6 +1474,27 @@ export const deleteCertificatesV1beta1CollectionClusterTrustBundle =
     outputSchema: DeleteCertificatesV1beta1CollectionClusterTrustBundleOutput,
   }));
 // Input Schema
+export interface DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1050,11 +1528,32 @@ export const DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestI
       method: "DELETE",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests",
     }),
-  );
-export type DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestInput =
-  typeof DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestInput.Type;
+  ) as unknown as Schema.Codec<DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestInput>;
 
 // Output Schema
+export interface DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1094,9 +1593,7 @@ export const DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestO
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestOutput =
-  typeof DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestOutput>;
 
 // The operation
 /**
@@ -1168,6 +1665,19 @@ export const deleteCertificatesV1beta1CollectionNamespacedPodCertificateRequest 
       DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestOutput,
   }));
 // Input Schema
+export interface DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1193,11 +1703,32 @@ export const DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput =
       method: "DELETE",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}",
     }),
-  );
-export type DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  typeof DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput.Type;
+  ) as unknown as Schema.Codec<DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput>;
 
 // Output Schema
+export interface DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1237,9 +1768,7 @@ export const DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  typeof DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput>;
 
 // The operation
 /**
@@ -1262,14 +1791,21 @@ export const deleteCertificatesV1beta1NamespacedPodCertificateRequest =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetCertificatesAPIGroupInput {}
 export const GetCertificatesAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/certificates.k8s.io/" }),
-  );
-export type GetCertificatesAPIGroupInput =
-  typeof GetCertificatesAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetCertificatesAPIGroupInput>;
 
 // Output Schema
+export interface GetCertificatesAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetCertificatesAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1295,9 +1831,7 @@ export const GetCertificatesAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetCertificatesAPIGroupOutput =
-  typeof GetCertificatesAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetCertificatesAPIGroupOutput>;
 
 // The operation
 /**
@@ -1310,14 +1844,30 @@ export const getCertificatesAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetCertificatesV1APIResourcesInput {}
 export const GetCertificatesV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/certificates.k8s.io/v1/" }),
-  );
-export type GetCertificatesV1APIResourcesInput =
-  typeof GetCertificatesV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetCertificatesV1APIResourcesInput>;
 
 // Output Schema
+export interface GetCertificatesV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetCertificatesV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1337,9 +1887,7 @@ export const GetCertificatesV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetCertificatesV1APIResourcesOutput =
-  typeof GetCertificatesV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetCertificatesV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1351,14 +1899,30 @@ export const getCertificatesV1APIResources =
     outputSchema: GetCertificatesV1APIResourcesOutput,
   }));
 // Input Schema
+export interface GetCertificatesV1beta1APIResourcesInput {}
 export const GetCertificatesV1beta1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/certificates.k8s.io/v1beta1/" }),
-  );
-export type GetCertificatesV1beta1APIResourcesInput =
-  typeof GetCertificatesV1beta1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetCertificatesV1beta1APIResourcesInput>;
 
 // Output Schema
+export interface GetCertificatesV1beta1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetCertificatesV1beta1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1378,9 +1942,7 @@ export const GetCertificatesV1beta1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetCertificatesV1beta1APIResourcesOutput =
-  typeof GetCertificatesV1beta1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetCertificatesV1beta1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1392,6 +1954,20 @@ export const getCertificatesV1beta1APIResources =
     outputSchema: GetCertificatesV1beta1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListCertificatesV1CertificateSigningRequestInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCertificatesV1CertificateSigningRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1411,11 +1987,77 @@ export const ListCertificatesV1CertificateSigningRequestInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests",
     }),
-  );
-export type ListCertificatesV1CertificateSigningRequestInput =
-  typeof ListCertificatesV1CertificateSigningRequestInput.Type;
+  ) as unknown as Schema.Codec<ListCertificatesV1CertificateSigningRequestInput>;
 
 // Output Schema
+export interface ListCertificatesV1CertificateSigningRequestOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      expirationSeconds?: number;
+      extra?: Record<string, string[]>;
+      groups?: string[];
+      request: string;
+      signerName: string;
+      uid?: string;
+      usages?: string[];
+      username?: string;
+    };
+    status?: {
+      certificate?: string;
+      conditions?: {
+        lastTransitionTime?: string;
+        lastUpdateTime?: string;
+        message?: string;
+        reason?: string;
+        status: string;
+        type: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCertificatesV1CertificateSigningRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1514,9 +2156,7 @@ export const ListCertificatesV1CertificateSigningRequestOutput =
         ),
       }),
     ),
-  });
-export type ListCertificatesV1CertificateSigningRequestOutput =
-  typeof ListCertificatesV1CertificateSigningRequestOutput.Type;
+  }) as unknown as Schema.Codec<ListCertificatesV1CertificateSigningRequestOutput>;
 
 // The operation
 /**
@@ -1582,6 +2222,20 @@ export const listCertificatesV1CertificateSigningRequest =
     outputSchema: ListCertificatesV1CertificateSigningRequestOutput,
   }));
 // Input Schema
+export interface ListCertificatesV1beta1ClusterTrustBundleInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCertificatesV1beta1ClusterTrustBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1601,11 +2255,57 @@ export const ListCertificatesV1beta1ClusterTrustBundleInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles",
     }),
-  );
-export type ListCertificatesV1beta1ClusterTrustBundleInput =
-  typeof ListCertificatesV1beta1ClusterTrustBundleInput.Type;
+  ) as unknown as Schema.Codec<ListCertificatesV1beta1ClusterTrustBundleInput>;
 
 // Output Schema
+export interface ListCertificatesV1beta1ClusterTrustBundleOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: { signerName?: string; trustBundle: string };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCertificatesV1beta1ClusterTrustBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1679,9 +2379,7 @@ export const ListCertificatesV1beta1ClusterTrustBundleOutput =
         ),
       }),
     ),
-  });
-export type ListCertificatesV1beta1ClusterTrustBundleOutput =
-  typeof ListCertificatesV1beta1ClusterTrustBundleOutput.Type;
+  }) as unknown as Schema.Codec<ListCertificatesV1beta1ClusterTrustBundleOutput>;
 
 // The operation
 /**
@@ -1747,6 +2445,21 @@ export const listCertificatesV1beta1ClusterTrustBundle =
     outputSchema: ListCertificatesV1beta1ClusterTrustBundleOutput,
   }));
 // Input Schema
+export interface ListCertificatesV1beta1NamespacedPodCertificateRequestInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1767,11 +2480,84 @@ export const ListCertificatesV1beta1NamespacedPodCertificateRequestInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests",
     }),
-  );
-export type ListCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  typeof ListCertificatesV1beta1NamespacedPodCertificateRequestInput.Type;
+  ) as unknown as Schema.Codec<ListCertificatesV1beta1NamespacedPodCertificateRequestInput>;
 
 // Output Schema
+export interface ListCertificatesV1beta1NamespacedPodCertificateRequestOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      maxExpirationSeconds?: number;
+      nodeName: string;
+      nodeUID: string;
+      pkixPublicKey?: string;
+      podName: string;
+      podUID: string;
+      proofOfPossession?: string;
+      serviceAccountName: string;
+      serviceAccountUID: string;
+      signerName: string;
+      stubPKCS10Request: string;
+      unverifiedUserAnnotations?: Record<string, string>;
+    };
+    status?: {
+      beginRefreshAt?: string;
+      certificateChain?: string;
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      notAfter?: string;
+      notBefore?: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCertificatesV1beta1NamespacedPodCertificateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1877,9 +2663,7 @@ export const ListCertificatesV1beta1NamespacedPodCertificateRequestOutput =
         ),
       }),
     ),
-  });
-export type ListCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  typeof ListCertificatesV1beta1NamespacedPodCertificateRequestOutput.Type;
+  }) as unknown as Schema.Codec<ListCertificatesV1beta1NamespacedPodCertificateRequestOutput>;
 
 // The operation
 /**
@@ -1946,6 +2730,20 @@ export const listCertificatesV1beta1NamespacedPodCertificateRequest =
     outputSchema: ListCertificatesV1beta1NamespacedPodCertificateRequestOutput,
   }));
 // Input Schema
+export interface ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1965,11 +2763,84 @@ export const ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/podcertificaterequests",
     }),
-  );
-export type ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput =
-  typeof ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListCertificatesV1beta1PodCertificateRequestForAllNamespacesInput>;
 
 // Output Schema
+export interface ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      maxExpirationSeconds?: number;
+      nodeName: string;
+      nodeUID: string;
+      pkixPublicKey?: string;
+      podName: string;
+      podUID: string;
+      proofOfPossession?: string;
+      serviceAccountName: string;
+      serviceAccountUID: string;
+      signerName: string;
+      stubPKCS10Request: string;
+      unverifiedUserAnnotations?: Record<string, string>;
+    };
+    status?: {
+      beginRefreshAt?: string;
+      certificateChain?: string;
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      notAfter?: string;
+      notBefore?: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2075,9 +2946,7 @@ export const ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput 
         ),
       }),
     ),
-  });
-export type ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput =
-  typeof ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2145,6 +3014,14 @@ export const listCertificatesV1beta1PodCertificateRequestForAllNamespaces =
       ListCertificatesV1beta1PodCertificateRequestForAllNamespacesOutput,
   }));
 // Input Schema
+export interface PatchCertificatesV1CertificateSigningRequestInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCertificatesV1CertificateSigningRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2158,11 +3035,66 @@ export const PatchCertificatesV1CertificateSigningRequestInput =
       method: "PATCH",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}",
     }),
-  );
-export type PatchCertificatesV1CertificateSigningRequestInput =
-  typeof PatchCertificatesV1CertificateSigningRequestInput.Type;
+  ) as unknown as Schema.Codec<PatchCertificatesV1CertificateSigningRequestInput>;
 
 // Output Schema
+export interface PatchCertificatesV1CertificateSigningRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchCertificatesV1CertificateSigningRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2240,9 +3172,7 @@ export const PatchCertificatesV1CertificateSigningRequestOutput =
         ),
       }),
     ),
-  });
-export type PatchCertificatesV1CertificateSigningRequestOutput =
-  typeof PatchCertificatesV1CertificateSigningRequestOutput.Type;
+  }) as unknown as Schema.Codec<PatchCertificatesV1CertificateSigningRequestOutput>;
 
 // The operation
 /**
@@ -2262,6 +3192,14 @@ export const patchCertificatesV1CertificateSigningRequest =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchCertificatesV1CertificateSigningRequestApprovalInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCertificatesV1CertificateSigningRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2275,11 +3213,66 @@ export const PatchCertificatesV1CertificateSigningRequestApprovalInput =
       method: "PATCH",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval",
     }),
-  );
-export type PatchCertificatesV1CertificateSigningRequestApprovalInput =
-  typeof PatchCertificatesV1CertificateSigningRequestApprovalInput.Type;
+  ) as unknown as Schema.Codec<PatchCertificatesV1CertificateSigningRequestApprovalInput>;
 
 // Output Schema
+export interface PatchCertificatesV1CertificateSigningRequestApprovalOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchCertificatesV1CertificateSigningRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2357,9 +3350,7 @@ export const PatchCertificatesV1CertificateSigningRequestApprovalOutput =
         ),
       }),
     ),
-  });
-export type PatchCertificatesV1CertificateSigningRequestApprovalOutput =
-  typeof PatchCertificatesV1CertificateSigningRequestApprovalOutput.Type;
+  }) as unknown as Schema.Codec<PatchCertificatesV1CertificateSigningRequestApprovalOutput>;
 
 // The operation
 /**
@@ -2379,6 +3370,14 @@ export const patchCertificatesV1CertificateSigningRequestApproval =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchCertificatesV1CertificateSigningRequestStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCertificatesV1CertificateSigningRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2392,11 +3391,66 @@ export const PatchCertificatesV1CertificateSigningRequestStatusInput =
       method: "PATCH",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status",
     }),
-  );
-export type PatchCertificatesV1CertificateSigningRequestStatusInput =
-  typeof PatchCertificatesV1CertificateSigningRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchCertificatesV1CertificateSigningRequestStatusInput>;
 
 // Output Schema
+export interface PatchCertificatesV1CertificateSigningRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchCertificatesV1CertificateSigningRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2474,9 +3528,7 @@ export const PatchCertificatesV1CertificateSigningRequestStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchCertificatesV1CertificateSigningRequestStatusOutput =
-  typeof PatchCertificatesV1CertificateSigningRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchCertificatesV1CertificateSigningRequestStatusOutput>;
 
 // The operation
 /**
@@ -2496,6 +3548,14 @@ export const patchCertificatesV1CertificateSigningRequestStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchCertificatesV1beta1ClusterTrustBundleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCertificatesV1beta1ClusterTrustBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2509,11 +3569,46 @@ export const PatchCertificatesV1beta1ClusterTrustBundleInput =
       method: "PATCH",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles/{name}",
     }),
-  );
-export type PatchCertificatesV1beta1ClusterTrustBundleInput =
-  typeof PatchCertificatesV1beta1ClusterTrustBundleInput.Type;
+  ) as unknown as Schema.Codec<PatchCertificatesV1beta1ClusterTrustBundleInput>;
 
 // Output Schema
+export interface PatchCertificatesV1beta1ClusterTrustBundleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { signerName?: string; trustBundle: string };
+}
 export const PatchCertificatesV1beta1ClusterTrustBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2566,9 +3661,7 @@ export const PatchCertificatesV1beta1ClusterTrustBundleOutput =
       signerName: Schema.optional(Schema.String),
       trustBundle: Schema.String,
     }),
-  });
-export type PatchCertificatesV1beta1ClusterTrustBundleOutput =
-  typeof PatchCertificatesV1beta1ClusterTrustBundleOutput.Type;
+  }) as unknown as Schema.Codec<PatchCertificatesV1beta1ClusterTrustBundleOutput>;
 
 // The operation
 /**
@@ -2588,6 +3681,15 @@ export const patchCertificatesV1beta1ClusterTrustBundle =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchCertificatesV1beta1NamespacedPodCertificateRequestInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2602,11 +3704,73 @@ export const PatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
       method: "PATCH",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}",
     }),
-  );
-export type PatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  typeof PatchCertificatesV1beta1NamespacedPodCertificateRequestInput.Type;
+  ) as unknown as Schema.Codec<PatchCertificatesV1beta1NamespacedPodCertificateRequestInput>;
 
 // Output Schema
+export interface PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2691,9 +3855,7 @@ export const PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
         notBefore: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  typeof PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput.Type;
+  }) as unknown as Schema.Codec<PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput>;
 
 // The operation
 /**
@@ -2714,6 +3876,15 @@ export const patchCertificatesV1beta1NamespacedPodCertificateRequest =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2728,11 +3899,73 @@ export const PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput 
       method: "PATCH",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}/status",
     }),
-  );
-export type PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
-  typeof PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput>;
 
 // Output Schema
+export interface PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2817,9 +4050,7 @@ export const PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput
         notBefore: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
-  typeof PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput>;
 
 // The operation
 /**
@@ -2842,6 +4073,10 @@ export const patchCertificatesV1beta1NamespacedPodCertificateRequestStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadCertificatesV1CertificateSigningRequestInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadCertificatesV1CertificateSigningRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2851,11 +4086,66 @@ export const ReadCertificatesV1CertificateSigningRequestInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}",
     }),
-  );
-export type ReadCertificatesV1CertificateSigningRequestInput =
-  typeof ReadCertificatesV1CertificateSigningRequestInput.Type;
+  ) as unknown as Schema.Codec<ReadCertificatesV1CertificateSigningRequestInput>;
 
 // Output Schema
+export interface ReadCertificatesV1CertificateSigningRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadCertificatesV1CertificateSigningRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2933,9 +4223,7 @@ export const ReadCertificatesV1CertificateSigningRequestOutput =
         ),
       }),
     ),
-  });
-export type ReadCertificatesV1CertificateSigningRequestOutput =
-  typeof ReadCertificatesV1CertificateSigningRequestOutput.Type;
+  }) as unknown as Schema.Codec<ReadCertificatesV1CertificateSigningRequestOutput>;
 
 // The operation
 /**
@@ -2951,6 +4239,10 @@ export const readCertificatesV1CertificateSigningRequest =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadCertificatesV1CertificateSigningRequestApprovalInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadCertificatesV1CertificateSigningRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2960,11 +4252,66 @@ export const ReadCertificatesV1CertificateSigningRequestApprovalInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval",
     }),
-  );
-export type ReadCertificatesV1CertificateSigningRequestApprovalInput =
-  typeof ReadCertificatesV1CertificateSigningRequestApprovalInput.Type;
+  ) as unknown as Schema.Codec<ReadCertificatesV1CertificateSigningRequestApprovalInput>;
 
 // Output Schema
+export interface ReadCertificatesV1CertificateSigningRequestApprovalOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadCertificatesV1CertificateSigningRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3042,9 +4389,7 @@ export const ReadCertificatesV1CertificateSigningRequestApprovalOutput =
         ),
       }),
     ),
-  });
-export type ReadCertificatesV1CertificateSigningRequestApprovalOutput =
-  typeof ReadCertificatesV1CertificateSigningRequestApprovalOutput.Type;
+  }) as unknown as Schema.Codec<ReadCertificatesV1CertificateSigningRequestApprovalOutput>;
 
 // The operation
 /**
@@ -3060,6 +4405,10 @@ export const readCertificatesV1CertificateSigningRequestApproval =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadCertificatesV1CertificateSigningRequestStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadCertificatesV1CertificateSigningRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3069,11 +4418,66 @@ export const ReadCertificatesV1CertificateSigningRequestStatusInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status",
     }),
-  );
-export type ReadCertificatesV1CertificateSigningRequestStatusInput =
-  typeof ReadCertificatesV1CertificateSigningRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadCertificatesV1CertificateSigningRequestStatusInput>;
 
 // Output Schema
+export interface ReadCertificatesV1CertificateSigningRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadCertificatesV1CertificateSigningRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3151,9 +4555,7 @@ export const ReadCertificatesV1CertificateSigningRequestStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadCertificatesV1CertificateSigningRequestStatusOutput =
-  typeof ReadCertificatesV1CertificateSigningRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadCertificatesV1CertificateSigningRequestStatusOutput>;
 
 // The operation
 /**
@@ -3169,6 +4571,10 @@ export const readCertificatesV1CertificateSigningRequestStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadCertificatesV1beta1ClusterTrustBundleInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadCertificatesV1beta1ClusterTrustBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3178,11 +4584,46 @@ export const ReadCertificatesV1beta1ClusterTrustBundleInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles/{name}",
     }),
-  );
-export type ReadCertificatesV1beta1ClusterTrustBundleInput =
-  typeof ReadCertificatesV1beta1ClusterTrustBundleInput.Type;
+  ) as unknown as Schema.Codec<ReadCertificatesV1beta1ClusterTrustBundleInput>;
 
 // Output Schema
+export interface ReadCertificatesV1beta1ClusterTrustBundleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { signerName?: string; trustBundle: string };
+}
 export const ReadCertificatesV1beta1ClusterTrustBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3235,9 +4676,7 @@ export const ReadCertificatesV1beta1ClusterTrustBundleOutput =
       signerName: Schema.optional(Schema.String),
       trustBundle: Schema.String,
     }),
-  });
-export type ReadCertificatesV1beta1ClusterTrustBundleOutput =
-  typeof ReadCertificatesV1beta1ClusterTrustBundleOutput.Type;
+  }) as unknown as Schema.Codec<ReadCertificatesV1beta1ClusterTrustBundleOutput>;
 
 // The operation
 /**
@@ -3253,6 +4692,11 @@ export const readCertificatesV1beta1ClusterTrustBundle =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadCertificatesV1beta1NamespacedPodCertificateRequestInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3263,11 +4707,73 @@ export const ReadCertificatesV1beta1NamespacedPodCertificateRequestInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}",
     }),
-  );
-export type ReadCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  typeof ReadCertificatesV1beta1NamespacedPodCertificateRequestInput.Type;
+  ) as unknown as Schema.Codec<ReadCertificatesV1beta1NamespacedPodCertificateRequestInput>;
 
 // Output Schema
+export interface ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3352,9 +4858,7 @@ export const ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput =
         notBefore: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  typeof ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput.Type;
+  }) as unknown as Schema.Codec<ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput>;
 
 // The operation
 /**
@@ -3371,6 +4875,11 @@ export const readCertificatesV1beta1NamespacedPodCertificateRequest =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3381,11 +4890,73 @@ export const ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}/status",
     }),
-  );
-export type ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
-  typeof ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput>;
 
 // Output Schema
+export interface ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3470,9 +5041,7 @@ export const ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput 
         notBefore: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
-  typeof ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput>;
 
 // The operation
 /**
@@ -3491,6 +5060,68 @@ export const readCertificatesV1beta1NamespacedPodCertificateRequestStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceCertificatesV1CertificateSigningRequestInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceCertificatesV1CertificateSigningRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3578,11 +5209,66 @@ export const ReplaceCertificatesV1CertificateSigningRequestInput =
       method: "PUT",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}",
     }),
-  );
-export type ReplaceCertificatesV1CertificateSigningRequestInput =
-  typeof ReplaceCertificatesV1CertificateSigningRequestInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCertificatesV1CertificateSigningRequestInput>;
 
 // Output Schema
+export interface ReplaceCertificatesV1CertificateSigningRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceCertificatesV1CertificateSigningRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3660,9 +5346,7 @@ export const ReplaceCertificatesV1CertificateSigningRequestOutput =
         ),
       }),
     ),
-  });
-export type ReplaceCertificatesV1CertificateSigningRequestOutput =
-  typeof ReplaceCertificatesV1CertificateSigningRequestOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCertificatesV1CertificateSigningRequestOutput>;
 
 // The operation
 /**
@@ -3681,6 +5365,68 @@ export const replaceCertificatesV1CertificateSigningRequest =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceCertificatesV1CertificateSigningRequestApprovalInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceCertificatesV1CertificateSigningRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3768,11 +5514,66 @@ export const ReplaceCertificatesV1CertificateSigningRequestApprovalInput =
       method: "PUT",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval",
     }),
-  );
-export type ReplaceCertificatesV1CertificateSigningRequestApprovalInput =
-  typeof ReplaceCertificatesV1CertificateSigningRequestApprovalInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCertificatesV1CertificateSigningRequestApprovalInput>;
 
 // Output Schema
+export interface ReplaceCertificatesV1CertificateSigningRequestApprovalOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceCertificatesV1CertificateSigningRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3850,9 +5651,7 @@ export const ReplaceCertificatesV1CertificateSigningRequestApprovalOutput =
         ),
       }),
     ),
-  });
-export type ReplaceCertificatesV1CertificateSigningRequestApprovalOutput =
-  typeof ReplaceCertificatesV1CertificateSigningRequestApprovalOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCertificatesV1CertificateSigningRequestApprovalOutput>;
 
 // The operation
 /**
@@ -3871,6 +5670,68 @@ export const replaceCertificatesV1CertificateSigningRequestApproval =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceCertificatesV1CertificateSigningRequestStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceCertificatesV1CertificateSigningRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3958,11 +5819,66 @@ export const ReplaceCertificatesV1CertificateSigningRequestStatusInput =
       method: "PUT",
       path: "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status",
     }),
-  );
-export type ReplaceCertificatesV1CertificateSigningRequestStatusInput =
-  typeof ReplaceCertificatesV1CertificateSigningRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCertificatesV1CertificateSigningRequestStatusInput>;
 
 // Output Schema
+export interface ReplaceCertificatesV1CertificateSigningRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    expirationSeconds?: number;
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    request: string;
+    signerName: string;
+    uid?: string;
+    usages?: string[];
+    username?: string;
+  };
+  status?: {
+    certificate?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      lastUpdateTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceCertificatesV1CertificateSigningRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4040,9 +5956,7 @@ export const ReplaceCertificatesV1CertificateSigningRequestStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceCertificatesV1CertificateSigningRequestStatusOutput =
-  typeof ReplaceCertificatesV1CertificateSigningRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCertificatesV1CertificateSigningRequestStatusOutput>;
 
 // The operation
 /**
@@ -4061,6 +5975,48 @@ export const replaceCertificatesV1CertificateSigningRequestStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceCertificatesV1beta1ClusterTrustBundleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { signerName?: string; trustBundle: string };
+}
 export const ReplaceCertificatesV1beta1ClusterTrustBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4123,11 +6079,46 @@ export const ReplaceCertificatesV1beta1ClusterTrustBundleInput =
       method: "PUT",
       path: "/apis/certificates.k8s.io/v1beta1/clustertrustbundles/{name}",
     }),
-  );
-export type ReplaceCertificatesV1beta1ClusterTrustBundleInput =
-  typeof ReplaceCertificatesV1beta1ClusterTrustBundleInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCertificatesV1beta1ClusterTrustBundleInput>;
 
 // Output Schema
+export interface ReplaceCertificatesV1beta1ClusterTrustBundleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { signerName?: string; trustBundle: string };
+}
 export const ReplaceCertificatesV1beta1ClusterTrustBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4180,9 +6171,7 @@ export const ReplaceCertificatesV1beta1ClusterTrustBundleOutput =
       signerName: Schema.optional(Schema.String),
       trustBundle: Schema.String,
     }),
-  });
-export type ReplaceCertificatesV1beta1ClusterTrustBundleOutput =
-  typeof ReplaceCertificatesV1beta1ClusterTrustBundleOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCertificatesV1beta1ClusterTrustBundleOutput>;
 
 // The operation
 /**
@@ -4201,6 +6190,76 @@ export const replaceCertificatesV1beta1ClusterTrustBundle =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4296,11 +6355,73 @@ export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput =
       method: "PUT",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}",
     }),
-  );
-export type ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  typeof ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput>;
 
 // Output Schema
+export interface ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4385,9 +6506,7 @@ export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput =
         notBefore: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  typeof ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput>;
 
 // The operation
 /**
@@ -4408,6 +6527,76 @@ export const replaceCertificatesV1beta1NamespacedPodCertificateRequest =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4503,11 +6692,73 @@ export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInpu
       method: "PUT",
       path: "/apis/certificates.k8s.io/v1beta1/namespaces/{namespace}/podcertificaterequests/{name}/status",
     }),
-  );
-export type ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
-  typeof ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput>;
 
 // Output Schema
+export interface ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    maxExpirationSeconds?: number;
+    nodeName: string;
+    nodeUID: string;
+    pkixPublicKey?: string;
+    podName: string;
+    podUID: string;
+    proofOfPossession?: string;
+    serviceAccountName: string;
+    serviceAccountUID: string;
+    signerName: string;
+    stubPKCS10Request: string;
+    unverifiedUserAnnotations?: Record<string, string>;
+  };
+  status?: {
+    beginRefreshAt?: string;
+    certificateChain?: string;
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    notAfter?: string;
+    notBefore?: string;
+  };
+}
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4592,9 +6843,7 @@ export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutp
         notBefore: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput =
-  typeof ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput>;
 
 // The operation
 /**
@@ -4616,6 +6865,21 @@ export const replaceCertificatesV1beta1NamespacedPodCertificateRequestStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchCertificatesV1CertificateSigningRequestInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCertificatesV1CertificateSigningRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4636,18 +6900,18 @@ export const WatchCertificatesV1CertificateSigningRequestInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}",
     }),
-  );
-export type WatchCertificatesV1CertificateSigningRequestInput =
-  typeof WatchCertificatesV1CertificateSigningRequestInput.Type;
+  ) as unknown as Schema.Codec<WatchCertificatesV1CertificateSigningRequestInput>;
 
 // Output Schema
+export interface WatchCertificatesV1CertificateSigningRequestOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCertificatesV1CertificateSigningRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCertificatesV1CertificateSigningRequestOutput =
-  typeof WatchCertificatesV1CertificateSigningRequestOutput.Type;
+  }) as unknown as Schema.Codec<WatchCertificatesV1CertificateSigningRequestOutput>;
 
 // The operation
 /**
@@ -4714,6 +6978,20 @@ export const watchCertificatesV1CertificateSigningRequest =
     outputSchema: WatchCertificatesV1CertificateSigningRequestOutput,
   }));
 // Input Schema
+export interface WatchCertificatesV1CertificateSigningRequestListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCertificatesV1CertificateSigningRequestListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4733,18 +7011,18 @@ export const WatchCertificatesV1CertificateSigningRequestListInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests",
     }),
-  );
-export type WatchCertificatesV1CertificateSigningRequestListInput =
-  typeof WatchCertificatesV1CertificateSigningRequestListInput.Type;
+  ) as unknown as Schema.Codec<WatchCertificatesV1CertificateSigningRequestListInput>;
 
 // Output Schema
+export interface WatchCertificatesV1CertificateSigningRequestListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCertificatesV1CertificateSigningRequestListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCertificatesV1CertificateSigningRequestListOutput =
-  typeof WatchCertificatesV1CertificateSigningRequestListOutput.Type;
+  }) as unknown as Schema.Codec<WatchCertificatesV1CertificateSigningRequestListOutput>;
 
 // The operation
 /**
@@ -4810,6 +7088,21 @@ export const watchCertificatesV1CertificateSigningRequestList =
     outputSchema: WatchCertificatesV1CertificateSigningRequestListOutput,
   }));
 // Input Schema
+export interface WatchCertificatesV1beta1ClusterTrustBundleInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCertificatesV1beta1ClusterTrustBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4830,18 +7123,18 @@ export const WatchCertificatesV1beta1ClusterTrustBundleInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/clustertrustbundles/{name}",
     }),
-  );
-export type WatchCertificatesV1beta1ClusterTrustBundleInput =
-  typeof WatchCertificatesV1beta1ClusterTrustBundleInput.Type;
+  ) as unknown as Schema.Codec<WatchCertificatesV1beta1ClusterTrustBundleInput>;
 
 // Output Schema
+export interface WatchCertificatesV1beta1ClusterTrustBundleOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCertificatesV1beta1ClusterTrustBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCertificatesV1beta1ClusterTrustBundleOutput =
-  typeof WatchCertificatesV1beta1ClusterTrustBundleOutput.Type;
+  }) as unknown as Schema.Codec<WatchCertificatesV1beta1ClusterTrustBundleOutput>;
 
 // The operation
 /**
@@ -4908,6 +7201,20 @@ export const watchCertificatesV1beta1ClusterTrustBundle =
     outputSchema: WatchCertificatesV1beta1ClusterTrustBundleOutput,
   }));
 // Input Schema
+export interface WatchCertificatesV1beta1ClusterTrustBundleListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCertificatesV1beta1ClusterTrustBundleListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4927,18 +7234,18 @@ export const WatchCertificatesV1beta1ClusterTrustBundleListInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/clustertrustbundles",
     }),
-  );
-export type WatchCertificatesV1beta1ClusterTrustBundleListInput =
-  typeof WatchCertificatesV1beta1ClusterTrustBundleListInput.Type;
+  ) as unknown as Schema.Codec<WatchCertificatesV1beta1ClusterTrustBundleListInput>;
 
 // Output Schema
+export interface WatchCertificatesV1beta1ClusterTrustBundleListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCertificatesV1beta1ClusterTrustBundleListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCertificatesV1beta1ClusterTrustBundleListOutput =
-  typeof WatchCertificatesV1beta1ClusterTrustBundleListOutput.Type;
+  }) as unknown as Schema.Codec<WatchCertificatesV1beta1ClusterTrustBundleListOutput>;
 
 // The operation
 /**
@@ -5004,6 +7311,22 @@ export const watchCertificatesV1beta1ClusterTrustBundleList =
     outputSchema: WatchCertificatesV1beta1ClusterTrustBundleListOutput,
   }));
 // Input Schema
+export interface WatchCertificatesV1beta1NamespacedPodCertificateRequestInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5025,18 +7348,18 @@ export const WatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/namespaces/{namespace}/podcertificaterequests/{name}",
     }),
-  );
-export type WatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
-  typeof WatchCertificatesV1beta1NamespacedPodCertificateRequestInput.Type;
+  ) as unknown as Schema.Codec<WatchCertificatesV1beta1NamespacedPodCertificateRequestInput>;
 
 // Output Schema
+export interface WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput =
-  typeof WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput.Type;
+  }) as unknown as Schema.Codec<WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput>;
 
 // The operation
 /**
@@ -5104,6 +7427,21 @@ export const watchCertificatesV1beta1NamespacedPodCertificateRequest =
     outputSchema: WatchCertificatesV1beta1NamespacedPodCertificateRequestOutput,
   }));
 // Input Schema
+export interface WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -5124,18 +7462,18 @@ export const WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput =
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/namespaces/{namespace}/podcertificaterequests",
     }),
-  );
-export type WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput =
-  typeof WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput.Type;
+  ) as unknown as Schema.Codec<WatchCertificatesV1beta1NamespacedPodCertificateRequestListInput>;
 
 // Output Schema
+export interface WatchCertificatesV1beta1NamespacedPodCertificateRequestListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCertificatesV1beta1NamespacedPodCertificateRequestListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCertificatesV1beta1NamespacedPodCertificateRequestListOutput =
-  typeof WatchCertificatesV1beta1NamespacedPodCertificateRequestListOutput.Type;
+  }) as unknown as Schema.Codec<WatchCertificatesV1beta1NamespacedPodCertificateRequestListOutput>;
 
 // The operation
 /**
@@ -5204,6 +7542,20 @@ export const watchCertificatesV1beta1NamespacedPodCertificateRequestList =
       WatchCertificatesV1beta1NamespacedPodCertificateRequestListOutput,
   }));
 // Input Schema
+export interface WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -5223,18 +7575,18 @@ export const WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesIn
       method: "GET",
       path: "/apis/certificates.k8s.io/v1beta1/watch/podcertificaterequests",
     }),
-  );
-export type WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesInput =
-  typeof WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesOutput =
-  typeof WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesOutput>;
 
 // The operation
 /**

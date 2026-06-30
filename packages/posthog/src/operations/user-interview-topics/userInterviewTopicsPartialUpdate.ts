@@ -3,6 +3,39 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at?: string;
+  interviewee_emails?: string[];
+  interviewee_distinct_ids?: string[];
+  topic?: string;
+  agent_context?: string;
+  questions?: string[];
+  invite_subject?: string;
+  invite_message?: string;
+}
 export const UserInterviewTopicsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,7 +52,23 @@ export const UserInterviewTopicsPartialUpdateInput =
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
     created_at: Schema.optional(Schema.String),
@@ -35,11 +84,41 @@ export const UserInterviewTopicsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/user_interview_topics/{id}/",
     }),
-  );
-export type UserInterviewTopicsPartialUpdateInput =
-  typeof UserInterviewTopicsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsPartialUpdateInput>;
 
 // Output Schema
+export interface UserInterviewTopicsPartialUpdateOutput {
+  id: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  interviewee_emails?: string[];
+  interviewee_distinct_ids?: string[];
+  topic: string;
+  agent_context?: string;
+  questions?: string[];
+  invite_subject?: string;
+  invite_message?: string;
+}
 export const UserInterviewTopicsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -54,7 +133,23 @@ export const UserInterviewTopicsPartialUpdateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     interviewee_emails: Schema.optional(Schema.Array(Schema.String)),
@@ -64,9 +159,7 @@ export const UserInterviewTopicsPartialUpdateOutput =
     questions: Schema.optional(Schema.Array(Schema.String)),
     invite_subject: Schema.optional(Schema.String),
     invite_message: Schema.optional(Schema.String),
-  });
-export type UserInterviewTopicsPartialUpdateOutput =
-  typeof UserInterviewTopicsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewTopicsPartialUpdateOutput>;
 
 // The operation
 /**

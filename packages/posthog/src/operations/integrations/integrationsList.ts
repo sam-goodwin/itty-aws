@@ -4,6 +4,51 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsListInput {
+  project_id: string;
+  kind?:
+    | "anthropic"
+    | "apns"
+    | "aws-s3"
+    | "azure-blob"
+    | "bing-ads"
+    | "clickup"
+    | "customerio-app"
+    | "customerio-track"
+    | "customerio-webhook"
+    | "databricks"
+    | "email"
+    | "firebase"
+    | "github"
+    | "gitlab"
+    | "google-ads"
+    | "google-analytics"
+    | "google-cloud-service-account"
+    | "google-cloud-storage"
+    | "google-pubsub"
+    | "google-search-console"
+    | "google-sheets"
+    | "hubspot"
+    | "intercom"
+    | "jira"
+    | "linear"
+    | "linkedin-ads"
+    | "meta-ads"
+    | "pinterest-ads"
+    | "postgresql"
+    | "reddit-ads"
+    | "s3-compatible"
+    | "salesforce"
+    | "slack"
+    | "slack-posthog-code"
+    | "snapchat"
+    | "stripe"
+    | "tiktok-ads"
+    | "twilio"
+    | "vercel";
+  limit?: number;
+  offset?: number;
+}
 export const IntegrationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   kind: Schema.optional(
@@ -53,10 +98,82 @@ export const IntegrationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   offset: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/integrations/" }),
-);
-export type IntegrationsListInput = typeof IntegrationsListInput.Type;
+) as unknown as Schema.Codec<IntegrationsListInput>;
 
 // Output Schema
+export interface IntegrationsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: number;
+    kind?:
+      | "anthropic"
+      | "apns"
+      | "aws-s3"
+      | "azure-blob"
+      | "bing-ads"
+      | "clickup"
+      | "customerio-app"
+      | "customerio-track"
+      | "customerio-webhook"
+      | "databricks"
+      | "email"
+      | "firebase"
+      | "github"
+      | "gitlab"
+      | "google-ads"
+      | "google-analytics"
+      | "google-cloud-service-account"
+      | "google-cloud-storage"
+      | "google-pubsub"
+      | "google-search-console"
+      | "google-sheets"
+      | "hubspot"
+      | "intercom"
+      | "jira"
+      | "linear"
+      | "linkedin-ads"
+      | "meta-ads"
+      | "pinterest-ads"
+      | "postgresql"
+      | "reddit-ads"
+      | "s3-compatible"
+      | "salesforce"
+      | "slack"
+      | "slack-posthog-code"
+      | "snapchat"
+      | "stripe"
+      | "tiktok-ads"
+      | "twilio"
+      | "vercel";
+    config?: unknown;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    errors?: string;
+    display_name?: string;
+  }[];
+}
 export const IntegrationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     count: Schema.optional(Schema.Number),
@@ -126,7 +243,23 @@ export const IntegrationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -136,8 +269,7 @@ export const IntegrationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type IntegrationsListOutput = typeof IntegrationsListOutput.Type;
+) as unknown as Schema.Codec<IntegrationsListOutput>;
 
 // The operation
 /**

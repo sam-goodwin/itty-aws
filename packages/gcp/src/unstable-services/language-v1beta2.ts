@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -46,7 +46,7 @@ export interface XPSSpeechEvaluationMetricsSubModelEvaluationMetric {
   numUtterances?: number;
 }
 
-export const XPSSpeechEvaluationMetricsSubModelEvaluationMetric: Schema.Schema<XPSSpeechEvaluationMetricsSubModelEvaluationMetric> =
+export const XPSSpeechEvaluationMetricsSubModelEvaluationMetric: Schema.Codec<XPSSpeechEvaluationMetricsSubModelEvaluationMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numWords: Schema.optional(Schema.Number),
     biasingModelType: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface XPSMetricEntryLabel {
   labelValue?: string;
 }
 
-export const XPSMetricEntryLabel: Schema.Schema<XPSMetricEntryLabel> =
+export const XPSMetricEntryLabel: Schema.Codec<XPSMetricEntryLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelName: Schema.optional(Schema.String),
     labelValue: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -109,7 +109,7 @@ export interface XPSSpeechModelSpecSubModelSpec {
   isEnhancedModel?: boolean;
 }
 
-export const XPSSpeechModelSpecSubModelSpec: Schema.Schema<XPSSpeechModelSpecSubModelSpec> =
+export const XPSSpeechModelSpecSubModelSpec: Schema.Codec<XPSSpeechModelSpecSubModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     biasingModelType: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface XPSSpeechModelSpec {
   language?: string;
 }
 
-export const XPSSpeechModelSpec: Schema.Schema<XPSSpeechModelSpec> =
+export const XPSSpeechModelSpec: Schema.Codec<XPSSpeechModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     subModelSpecs: Schema.optional(
@@ -148,7 +148,7 @@ export interface DiskMetric {
   gibSec?: string;
 }
 
-export const DiskMetric: Schema.Schema<DiskMetric> =
+export const DiskMetric: Schema.Codec<DiskMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskType: Schema.optional(Schema.String),
     gibSec: Schema.optional(Schema.String),
@@ -501,7 +501,7 @@ export interface RamMetric {
   memories?: number;
 }
 
-export const RamMetric: Schema.Schema<RamMetric> =
+export const RamMetric: Schema.Codec<RamMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineSpec: Schema.optional(Schema.String),
     trackingLabels: Schema.optional(
@@ -526,7 +526,7 @@ export interface TpuMetric {
     | (string & {});
 }
 
-export const TpuMetric: Schema.Schema<TpuMetric> =
+export const TpuMetric: Schema.Codec<TpuMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tpuSec: Schema.optional(Schema.String),
     tpuType: Schema.optional(Schema.String),
@@ -868,7 +868,7 @@ export interface GpuMetric {
   gpuSec?: string;
 }
 
-export const GpuMetric: Schema.Schema<GpuMetric> =
+export const GpuMetric: Schema.Codec<GpuMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gpuType: Schema.optional(Schema.String),
     trackingLabels: Schema.optional(
@@ -1225,7 +1225,7 @@ export interface CpuMetric {
     | (string & {});
 }
 
-export const CpuMetric: Schema.Schema<CpuMetric> =
+export const CpuMetric: Schema.Codec<CpuMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coreSec: Schema.optional(Schema.String),
     trackingLabels: Schema.optional(
@@ -1249,7 +1249,7 @@ export interface InfraUsage {
   cpuMetrics?: ReadonlyArray<CpuMetric>;
 }
 
-export const InfraUsage: Schema.Schema<InfraUsage> =
+export const InfraUsage: Schema.Codec<InfraUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskMetrics: Schema.optional(Schema.Array(DiskMetric)),
     ramMetrics: Schema.optional(Schema.Array(RamMetric)),
@@ -1292,7 +1292,7 @@ export interface XPSVisualization {
   clipPercentLowerbound?: number;
 }
 
-export const XPSVisualization: Schema.Schema<XPSVisualization> =
+export const XPSVisualization: Schema.Codec<XPSVisualization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     overlayType: Schema.optional(Schema.String),
@@ -1307,7 +1307,7 @@ export interface XPSCorrelationStats {
   cramersV?: number;
 }
 
-export const XPSCorrelationStats: Schema.Schema<XPSCorrelationStats> =
+export const XPSCorrelationStats: Schema.Codec<XPSCorrelationStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cramersV: Schema.optional(Schema.Number),
   }).annotate({ identifier: "XPSCorrelationStats" });
@@ -1317,14 +1317,14 @@ export interface XPSStructType {
   fields?: Record<string, XPSDataType>;
 }
 
-export const XPSStructType: Schema.Schema<XPSStructType> =
+export const XPSStructType: Schema.Codec<XPSStructType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fields: Schema.optional(Schema.Record(Schema.String, XPSDataType)),
     }),
   ).annotate({
     identifier: "XPSStructType",
-  }) as any as Schema.Schema<XPSStructType>;
+  }) as any as Schema.Codec<XPSStructType>;
 
 export interface XPSDataType {
   /** Required. The TypeCode for this type. */
@@ -1349,7 +1349,7 @@ export interface XPSDataType {
   timeFormat?: string;
 }
 
-export const XPSDataType: Schema.Schema<XPSDataType> =
+export const XPSDataType: Schema.Codec<XPSDataType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       typeCode: Schema.optional(Schema.String),
@@ -1359,9 +1359,7 @@ export const XPSDataType: Schema.Schema<XPSDataType> =
       listElementType: Schema.optional(XPSDataType),
       timeFormat: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "XPSDataType",
-  }) as any as Schema.Schema<XPSDataType>;
+  ).annotate({ identifier: "XPSDataType" }) as any as Schema.Codec<XPSDataType>;
 
 export interface XPSColumnSpecForecastingMetadata {
   /** The type of the column for FORECASTING model training purposes. */
@@ -1374,7 +1372,7 @@ export interface XPSColumnSpecForecastingMetadata {
     | (string & {});
 }
 
-export const XPSColumnSpecForecastingMetadata: Schema.Schema<XPSColumnSpecForecastingMetadata> =
+export const XPSColumnSpecForecastingMetadata: Schema.Codec<XPSColumnSpecForecastingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnType: Schema.optional(Schema.String),
   }).annotate({ identifier: "XPSColumnSpecForecastingMetadata" });
@@ -1385,7 +1383,7 @@ export interface XPSCommonStats {
   validValueCount?: string;
 }
 
-export const XPSCommonStats: Schema.Schema<XPSCommonStats> =
+export const XPSCommonStats: Schema.Codec<XPSCommonStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nullValueCount: Schema.optional(Schema.String),
     distinctValueCount: Schema.optional(Schema.String),
@@ -1399,7 +1397,7 @@ export interface XPSCategoryStatsSingleCategoryStats {
   count?: string;
 }
 
-export const XPSCategoryStatsSingleCategoryStats: Schema.Schema<XPSCategoryStatsSingleCategoryStats> =
+export const XPSCategoryStatsSingleCategoryStats: Schema.Codec<XPSCategoryStatsSingleCategoryStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -1411,7 +1409,7 @@ export interface XPSCategoryStats {
   topCategoryStats?: ReadonlyArray<XPSCategoryStatsSingleCategoryStats>;
 }
 
-export const XPSCategoryStats: Schema.Schema<XPSCategoryStats> =
+export const XPSCategoryStats: Schema.Codec<XPSCategoryStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commonStats: Schema.optional(XPSCommonStats),
     topCategoryStats: Schema.optional(
@@ -1426,7 +1424,7 @@ export interface XPSStringStatsUnigramStats {
   count?: string;
 }
 
-export const XPSStringStatsUnigramStats: Schema.Schema<XPSStringStatsUnigramStats> =
+export const XPSStringStatsUnigramStats: Schema.Codec<XPSStringStatsUnigramStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -1438,7 +1436,7 @@ export interface XPSStringStats {
   commonStats?: XPSCommonStats;
 }
 
-export const XPSStringStats: Schema.Schema<XPSStringStats> =
+export const XPSStringStats: Schema.Codec<XPSStringStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topUnigramStats: Schema.optional(Schema.Array(XPSStringStatsUnigramStats)),
     commonStats: Schema.optional(XPSCommonStats),
@@ -1449,7 +1447,7 @@ export interface XPSTimestampStatsGranularStats {
   buckets?: Record<string, string>;
 }
 
-export const XPSTimestampStatsGranularStats: Schema.Schema<XPSTimestampStatsGranularStats> =
+export const XPSTimestampStatsGranularStats: Schema.Codec<XPSTimestampStatsGranularStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buckets: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "XPSTimestampStatsGranularStats" });
@@ -1461,7 +1459,7 @@ export interface XPSTimestampStats {
   medianTimestampNanos?: string;
 }
 
-export const XPSTimestampStats: Schema.Schema<XPSTimestampStats> =
+export const XPSTimestampStats: Schema.Codec<XPSTimestampStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     granularStats: Schema.optional(
       Schema.Record(Schema.String, XPSTimestampStatsGranularStats),
@@ -1476,7 +1474,7 @@ export interface XPSArrayStats {
   commonStats?: XPSCommonStats;
 }
 
-export const XPSArrayStats: Schema.Schema<XPSArrayStats> =
+export const XPSArrayStats: Schema.Codec<XPSArrayStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       memberStats: Schema.optional(XPSDataStats),
@@ -1484,7 +1482,7 @@ export const XPSArrayStats: Schema.Schema<XPSArrayStats> =
     }),
   ).annotate({
     identifier: "XPSArrayStats",
-  }) as any as Schema.Schema<XPSArrayStats>;
+  }) as any as Schema.Codec<XPSArrayStats>;
 
 export interface XPSFloat64StatsHistogramBucket {
   /** The maximum value of the bucket, exclusive unless max = `"Infinity"`, in which case it's inclusive. */
@@ -1495,7 +1493,7 @@ export interface XPSFloat64StatsHistogramBucket {
   min?: number;
 }
 
-export const XPSFloat64StatsHistogramBucket: Schema.Schema<XPSFloat64StatsHistogramBucket> =
+export const XPSFloat64StatsHistogramBucket: Schema.Codec<XPSFloat64StatsHistogramBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     max: Schema.optional(Schema.Number),
     count: Schema.optional(Schema.String),
@@ -1514,7 +1512,7 @@ export interface XPSFloat64Stats {
   quantiles?: ReadonlyArray<number>;
 }
 
-export const XPSFloat64Stats: Schema.Schema<XPSFloat64Stats> =
+export const XPSFloat64Stats: Schema.Codec<XPSFloat64Stats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standardDeviation: Schema.optional(Schema.Number),
     commonStats: Schema.optional(XPSCommonStats),
@@ -1531,7 +1529,7 @@ export interface XPSStructStats {
   commonStats?: XPSCommonStats;
 }
 
-export const XPSStructStats: Schema.Schema<XPSStructStats> =
+export const XPSStructStats: Schema.Codec<XPSStructStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fieldStats: Schema.optional(Schema.Record(Schema.String, XPSDataStats)),
@@ -1539,7 +1537,7 @@ export const XPSStructStats: Schema.Schema<XPSStructStats> =
     }),
   ).annotate({
     identifier: "XPSStructStats",
-  }) as any as Schema.Schema<XPSStructStats>;
+  }) as any as Schema.Codec<XPSStructStats>;
 
 export interface XPSDataStats {
   /** The number of values that are null. */
@@ -1562,7 +1560,7 @@ export interface XPSDataStats {
   distinctValueCount?: string;
 }
 
-export const XPSDataStats: Schema.Schema<XPSDataStats> =
+export const XPSDataStats: Schema.Codec<XPSDataStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       nullValueCount: Schema.optional(Schema.String),
@@ -1577,14 +1575,14 @@ export const XPSDataStats: Schema.Schema<XPSDataStats> =
     }),
   ).annotate({
     identifier: "XPSDataStats",
-  }) as any as Schema.Schema<XPSDataStats>;
+  }) as any as Schema.Codec<XPSDataStats>;
 
 export interface XPSColumnSpecCorrelatedColumn {
   columnId?: number;
   correlationStats?: XPSCorrelationStats;
 }
 
-export const XPSColumnSpecCorrelatedColumn: Schema.Schema<XPSColumnSpecCorrelatedColumn> =
+export const XPSColumnSpecCorrelatedColumn: Schema.Codec<XPSColumnSpecCorrelatedColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnId: Schema.optional(Schema.Number),
     correlationStats: Schema.optional(XPSCorrelationStats),
@@ -1604,7 +1602,7 @@ export interface XPSColumnSpec {
   topCorrelatedColumns?: ReadonlyArray<XPSColumnSpecCorrelatedColumn>;
 }
 
-export const XPSColumnSpec: Schema.Schema<XPSColumnSpec> =
+export const XPSColumnSpec: Schema.Codec<XPSColumnSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnId: Schema.optional(Schema.Number),
     dataType: Schema.optional(XPSDataType),
@@ -1629,7 +1627,7 @@ export interface XPSTableSpec {
   rowCount?: string;
 }
 
-export const XPSTableSpec: Schema.Schema<XPSTableSpec> =
+export const XPSTableSpec: Schema.Codec<XPSTableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnSpecs: Schema.optional(Schema.Record(Schema.String, XPSColumnSpec)),
     importedDataSizeInBytes: Schema.optional(Schema.String),
@@ -1651,7 +1649,7 @@ export interface XPSTablesDatasetMetadata {
   targetColumnId?: number;
 }
 
-export const XPSTablesDatasetMetadata: Schema.Schema<XPSTablesDatasetMetadata> =
+export const XPSTablesDatasetMetadata: Schema.Codec<XPSTablesDatasetMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mlUseColumnId: Schema.optional(Schema.Number),
     weightColumnId: Schema.optional(Schema.Number),
@@ -1679,7 +1677,7 @@ export interface XPSFileSpec {
     | (string & {});
 }
 
-export const XPSFileSpec: Schema.Schema<XPSFileSpec> =
+export const XPSFileSpec: Schema.Codec<XPSFileSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     directoryPath: Schema.optional(Schema.String),
     singleFilePath: Schema.optional(Schema.String),
@@ -1718,7 +1716,7 @@ export interface XPSConfidenceMetricsEntry {
   falsePositiveCount?: string;
 }
 
-export const XPSConfidenceMetricsEntry: Schema.Schema<XPSConfidenceMetricsEntry> =
+export const XPSConfidenceMetricsEntry: Schema.Codec<XPSConfidenceMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     falseNegativeCount: Schema.optional(Schema.String),
     falsePositiveRateAt1: Schema.optional(Schema.Number),
@@ -1743,7 +1741,7 @@ export interface XPSConfusionMatrixRow {
   exampleCount?: ReadonlyArray<number>;
 }
 
-export const XPSConfusionMatrixRow: Schema.Schema<XPSConfusionMatrixRow> =
+export const XPSConfusionMatrixRow: Schema.Codec<XPSConfusionMatrixRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Array(Schema.String)),
     exampleCount: Schema.optional(Schema.Array(Schema.Number)),
@@ -1760,7 +1758,7 @@ export interface XPSConfusionMatrix {
   row?: ReadonlyArray<XPSConfusionMatrixRow>;
 }
 
-export const XPSConfusionMatrix: Schema.Schema<XPSConfusionMatrix> =
+export const XPSConfusionMatrix: Schema.Codec<XPSConfusionMatrix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sentimentLabel: Schema.optional(Schema.Array(Schema.Number)),
     category: Schema.optional(Schema.Array(Schema.Number)),
@@ -1785,7 +1783,7 @@ export interface XPSClassificationEvaluationMetrics {
   baseAuPrc?: number;
 }
 
-export const XPSClassificationEvaluationMetrics: Schema.Schema<XPSClassificationEvaluationMetrics> =
+export const XPSClassificationEvaluationMetrics: Schema.Codec<XPSClassificationEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluatedExamplesCount: Schema.optional(Schema.Number),
     confidenceMetricsEntries: Schema.optional(
@@ -1809,7 +1807,7 @@ export interface XPSVideoActionMetricsEntryConfidenceMetricsEntry {
   f1Score?: number;
 }
 
-export const XPSVideoActionMetricsEntryConfidenceMetricsEntry: Schema.Schema<XPSVideoActionMetricsEntryConfidenceMetricsEntry> =
+export const XPSVideoActionMetricsEntryConfidenceMetricsEntry: Schema.Codec<XPSVideoActionMetricsEntryConfidenceMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidenceThreshold: Schema.optional(Schema.Number),
     recall: Schema.optional(Schema.Number),
@@ -1828,7 +1826,7 @@ export interface XPSVideoActionMetricsEntry {
   confidenceMetricsEntries?: ReadonlyArray<XPSVideoActionMetricsEntryConfidenceMetricsEntry>;
 }
 
-export const XPSVideoActionMetricsEntry: Schema.Schema<XPSVideoActionMetricsEntry> =
+export const XPSVideoActionMetricsEntry: Schema.Codec<XPSVideoActionMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     precisionWindowLength: Schema.optional(Schema.String),
     meanAveragePrecision: Schema.optional(Schema.Number),
@@ -1844,7 +1842,7 @@ export interface XPSVideoActionRecognitionEvaluationMetrics {
   videoActionMetricsEntries?: ReadonlyArray<XPSVideoActionMetricsEntry>;
 }
 
-export const XPSVideoActionRecognitionEvaluationMetrics: Schema.Schema<XPSVideoActionRecognitionEvaluationMetrics> =
+export const XPSVideoActionRecognitionEvaluationMetrics: Schema.Codec<XPSVideoActionRecognitionEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluatedActionCount: Schema.optional(Schema.Number),
     videoActionMetricsEntries: Schema.optional(
@@ -1863,7 +1861,7 @@ export interface XPSTextExtractionEvaluationMetrics {
   confusionMatrix?: XPSConfusionMatrix;
 }
 
-export const XPSTextExtractionEvaluationMetrics: Schema.Schema<XPSTextExtractionEvaluationMetrics> =
+export const XPSTextExtractionEvaluationMetrics: Schema.Codec<XPSTextExtractionEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perLabelConfidenceMetrics: Schema.optional(
       Schema.Record(Schema.String, XPSConfidenceMetricsEntry),
@@ -1886,7 +1884,7 @@ export interface XPSBoundingBoxMetricsEntryConfidenceMetricsEntry {
   f1Score?: number;
 }
 
-export const XPSBoundingBoxMetricsEntryConfidenceMetricsEntry: Schema.Schema<XPSBoundingBoxMetricsEntryConfidenceMetricsEntry> =
+export const XPSBoundingBoxMetricsEntryConfidenceMetricsEntry: Schema.Codec<XPSBoundingBoxMetricsEntryConfidenceMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidenceThreshold: Schema.optional(Schema.Number),
     recall: Schema.optional(Schema.Number),
@@ -1905,7 +1903,7 @@ export interface XPSBoundingBoxMetricsEntry {
   confidenceMetricsEntries?: ReadonlyArray<XPSBoundingBoxMetricsEntryConfidenceMetricsEntry>;
 }
 
-export const XPSBoundingBoxMetricsEntry: Schema.Schema<XPSBoundingBoxMetricsEntry> =
+export const XPSBoundingBoxMetricsEntry: Schema.Codec<XPSBoundingBoxMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iouThreshold: Schema.optional(Schema.Number),
     meanAveragePrecision: Schema.optional(Schema.Number),
@@ -1923,7 +1921,7 @@ export interface XPSImageObjectDetectionEvaluationMetrics {
   boundingBoxMetricsEntries?: ReadonlyArray<XPSBoundingBoxMetricsEntry>;
 }
 
-export const XPSImageObjectDetectionEvaluationMetrics: Schema.Schema<XPSImageObjectDetectionEvaluationMetrics> =
+export const XPSImageObjectDetectionEvaluationMetrics: Schema.Codec<XPSImageObjectDetectionEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluatedBoundingBoxCount: Schema.optional(Schema.Number),
     boundingBoxMeanAveragePrecision: Schema.optional(Schema.Number),
@@ -1939,7 +1937,7 @@ export interface XPSTranslationEvaluationMetrics {
   bleuScore?: number;
 }
 
-export const XPSTranslationEvaluationMetrics: Schema.Schema<XPSTranslationEvaluationMetrics> =
+export const XPSTranslationEvaluationMetrics: Schema.Codec<XPSTranslationEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseBleuScore: Schema.optional(Schema.Number),
     bleuScore: Schema.optional(Schema.Number),
@@ -1952,7 +1950,7 @@ export interface XPSRegressionMetricsEntry {
   predictedValue?: number;
 }
 
-export const XPSRegressionMetricsEntry: Schema.Schema<XPSRegressionMetricsEntry> =
+export const XPSRegressionMetricsEntry: Schema.Codec<XPSRegressionMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trueValue: Schema.optional(Schema.Number),
     predictedValue: Schema.optional(Schema.Number),
@@ -1973,7 +1971,7 @@ export interface XPSRegressionEvaluationMetrics {
   regressionMetricsEntries?: ReadonlyArray<XPSRegressionMetricsEntry>;
 }
 
-export const XPSRegressionEvaluationMetrics: Schema.Schema<XPSRegressionEvaluationMetrics> =
+export const XPSRegressionEvaluationMetrics: Schema.Codec<XPSRegressionEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootMeanSquaredError: Schema.optional(Schema.Number),
     rSquared: Schema.optional(Schema.Number),
@@ -2000,7 +1998,7 @@ export interface XPSTablesRegressionMetrics {
   rootMeanSquaredError?: number;
 }
 
-export const XPSTablesRegressionMetrics: Schema.Schema<XPSTablesRegressionMetrics> =
+export const XPSTablesRegressionMetrics: Schema.Codec<XPSTablesRegressionMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regressionMetricsEntries: Schema.optional(
       Schema.Array(XPSRegressionMetricsEntry),
@@ -2035,7 +2033,7 @@ export interface XPSTablesConfidenceMetricsEntry {
   falsePositiveCount?: string;
 }
 
-export const XPSTablesConfidenceMetricsEntry: Schema.Schema<XPSTablesConfidenceMetricsEntry> =
+export const XPSTablesConfidenceMetricsEntry: Schema.Codec<XPSTablesConfidenceMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     falseNegativeCount: Schema.optional(Schema.String),
     truePositiveRate: Schema.optional(Schema.Number),
@@ -2064,7 +2062,7 @@ export interface XPSTablesClassificationMetricsCurveMetrics {
   positionThreshold?: number;
 }
 
-export const XPSTablesClassificationMetricsCurveMetrics: Schema.Schema<XPSTablesClassificationMetricsCurveMetrics> =
+export const XPSTablesClassificationMetricsCurveMetrics: Schema.Codec<XPSTablesClassificationMetricsCurveMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     aucPr: Schema.optional(Schema.Number),
@@ -2081,7 +2079,7 @@ export interface XPSTablesClassificationMetrics {
   curveMetrics?: ReadonlyArray<XPSTablesClassificationMetricsCurveMetrics>;
 }
 
-export const XPSTablesClassificationMetrics: Schema.Schema<XPSTablesClassificationMetrics> =
+export const XPSTablesClassificationMetrics: Schema.Codec<XPSTablesClassificationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curveMetrics: Schema.optional(
       Schema.Array(XPSTablesClassificationMetricsCurveMetrics),
@@ -2095,7 +2093,7 @@ export interface XPSTablesEvaluationMetrics {
   classificationMetrics?: XPSTablesClassificationMetrics;
 }
 
-export const XPSTablesEvaluationMetrics: Schema.Schema<XPSTablesEvaluationMetrics> =
+export const XPSTablesEvaluationMetrics: Schema.Codec<XPSTablesEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regressionMetrics: Schema.optional(XPSTablesRegressionMetrics),
     classificationMetrics: Schema.optional(XPSTablesClassificationMetrics),
@@ -2114,7 +2112,7 @@ export interface XPSTrackMetricsEntryConfidenceMetricsEntry {
   mismatchRate?: number;
 }
 
-export const XPSTrackMetricsEntryConfidenceMetricsEntry: Schema.Schema<XPSTrackMetricsEntryConfidenceMetricsEntry> =
+export const XPSTrackMetricsEntryConfidenceMetricsEntry: Schema.Codec<XPSTrackMetricsEntryConfidenceMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trackingRecall: Schema.optional(Schema.Number),
     boundingBoxIou: Schema.optional(Schema.Number),
@@ -2136,7 +2134,7 @@ export interface XPSTrackMetricsEntry {
   confidenceMetricsEntries?: ReadonlyArray<XPSTrackMetricsEntryConfidenceMetricsEntry>;
 }
 
-export const XPSTrackMetricsEntry: Schema.Schema<XPSTrackMetricsEntry> =
+export const XPSTrackMetricsEntry: Schema.Codec<XPSTrackMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iouThreshold: Schema.optional(Schema.Number),
     meanBoundingBoxIou: Schema.optional(Schema.Number),
@@ -2168,7 +2166,7 @@ export interface XPSVideoObjectTrackingEvaluationMetrics {
   trackMeanAveragePrecision?: number;
 }
 
-export const XPSVideoObjectTrackingEvaluationMetrics: Schema.Schema<XPSVideoObjectTrackingEvaluationMetrics> =
+export const XPSVideoObjectTrackingEvaluationMetrics: Schema.Codec<XPSVideoObjectTrackingEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluatedBoundingboxCount: Schema.optional(Schema.Number),
     trackMeanBoundingBoxIou: Schema.optional(Schema.Number),
@@ -2202,7 +2200,7 @@ export interface XPSTextSentimentEvaluationMetrics {
   confusionMatrix?: XPSConfusionMatrix;
 }
 
-export const XPSTextSentimentEvaluationMetrics: Schema.Schema<XPSTextSentimentEvaluationMetrics> =
+export const XPSTextSentimentEvaluationMetrics: Schema.Codec<XPSTextSentimentEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recall: Schema.optional(Schema.Number),
     quadraticKappa: Schema.optional(Schema.Number),
@@ -2229,7 +2227,7 @@ export interface XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry {
   recall?: number;
 }
 
-export const XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry: Schema.Schema<XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry> =
+export const XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry: Schema.Codec<XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confusionMatrix: Schema.optional(XPSConfusionMatrix),
     confidenceThreshold: Schema.optional(Schema.Number),
@@ -2246,7 +2244,7 @@ export interface XPSImageSegmentationEvaluationMetrics {
   confidenceMetricsEntries?: ReadonlyArray<XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry>;
 }
 
-export const XPSImageSegmentationEvaluationMetrics: Schema.Schema<XPSImageSegmentationEvaluationMetrics> =
+export const XPSImageSegmentationEvaluationMetrics: Schema.Codec<XPSImageSegmentationEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidenceMetricsEntries: Schema.optional(
       Schema.Array(XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry),
@@ -2277,7 +2275,7 @@ export interface XPSEvaluationMetrics {
   videoClassificationEvalMetrics?: XPSClassificationEvaluationMetrics;
 }
 
-export const XPSEvaluationMetrics: Schema.Schema<XPSEvaluationMetrics> =
+export const XPSEvaluationMetrics: Schema.Codec<XPSEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tablesClassificationEvalMetrics: Schema.optional(
       XPSClassificationEvaluationMetrics,
@@ -2327,7 +2325,7 @@ export interface XPSEvaluationMetricsSet {
   numEvaluationMetrics?: string;
 }
 
-export const XPSEvaluationMetricsSet: Schema.Schema<XPSEvaluationMetricsSet> =
+export const XPSEvaluationMetricsSet: Schema.Codec<XPSEvaluationMetricsSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileSpec: Schema.optional(XPSFileSpec),
     evaluationMetrics: Schema.optional(Schema.Array(XPSEvaluationMetrics)),
@@ -2353,7 +2351,7 @@ export interface Document {
   referenceWebUri?: string;
 }
 
-export const Document: Schema.Schema<Document> =
+export const Document: Schema.Codec<Document> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     language: Schema.optional(Schema.String),
     gcsContentUri: Schema.optional(Schema.String),
@@ -2378,7 +2376,7 @@ export interface XPSModelArtifactItem {
   gcsUri?: string;
 }
 
-export const XPSModelArtifactItem: Schema.Schema<XPSModelArtifactItem> =
+export const XPSModelArtifactItem: Schema.Codec<XPSModelArtifactItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifactFormat: Schema.optional(Schema.String),
     gcsUri: Schema.optional(Schema.String),
@@ -2426,7 +2424,7 @@ export interface XPSTextComponentModel {
     | (string & {});
 }
 
-export const XPSTextComponentModel: Schema.Schema<XPSTextComponentModel> =
+export const XPSTextComponentModel: Schema.Codec<XPSTextComponentModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partition: Schema.optional(Schema.String),
     servingArtifact: Schema.optional(XPSModelArtifactItem),
@@ -2444,7 +2442,7 @@ export interface XPSTextTrainResponse {
   componentModel?: ReadonlyArray<XPSTextComponentModel>;
 }
 
-export const XPSTextTrainResponse: Schema.Schema<XPSTextTrainResponse> =
+export const XPSTextTrainResponse: Schema.Codec<XPSTextTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     componentModel: Schema.optional(Schema.Array(XPSTextComponentModel)),
   }).annotate({ identifier: "XPSTextTrainResponse" });
@@ -2454,7 +2452,7 @@ export interface ModerateTextRequest {
   document?: Document;
 }
 
-export const ModerateTextRequest: Schema.Schema<ModerateTextRequest> =
+export const ModerateTextRequest: Schema.Codec<ModerateTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Document),
   }).annotate({ identifier: "ModerateTextRequest" });
@@ -2470,7 +2468,7 @@ export interface XPSTablesModelStructureModelParametersParameter {
   intValue?: string;
 }
 
-export const XPSTablesModelStructureModelParametersParameter: Schema.Schema<XPSTablesModelStructureModelParametersParameter> =
+export const XPSTablesModelStructureModelParametersParameter: Schema.Codec<XPSTablesModelStructureModelParametersParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     floatValue: Schema.optional(Schema.Number),
@@ -2484,7 +2482,7 @@ export interface XPSTablesModelStructureModelParameters {
   hyperparameters?: ReadonlyArray<XPSTablesModelStructureModelParametersParameter>;
 }
 
-export const XPSTablesModelStructureModelParameters: Schema.Schema<XPSTablesModelStructureModelParameters> =
+export const XPSTablesModelStructureModelParameters: Schema.Codec<XPSTablesModelStructureModelParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hyperparameters: Schema.optional(
       Schema.Array(XPSTablesModelStructureModelParametersParameter),
@@ -2582,7 +2580,7 @@ export interface DependencyEdge {
     | (string & {});
 }
 
-export const DependencyEdge: Schema.Schema<DependencyEdge> =
+export const DependencyEdge: Schema.Codec<DependencyEdge> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headTokenIndex: Schema.optional(Schema.Number),
     label: Schema.optional(Schema.String),
@@ -2595,7 +2593,7 @@ export interface TextSpan {
   beginOffset?: number;
 }
 
-export const TextSpan: Schema.Schema<TextSpan> =
+export const TextSpan: Schema.Codec<TextSpan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     beginOffset: Schema.optional(Schema.Number),
@@ -2708,7 +2706,7 @@ export interface PartOfSpeech {
   proper?: "PROPER_UNKNOWN" | "PROPER" | "NOT_PROPER" | (string & {});
 }
 
-export const PartOfSpeech: Schema.Schema<PartOfSpeech> =
+export const PartOfSpeech: Schema.Codec<PartOfSpeech> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     person: Schema.optional(Schema.String),
     aspect: Schema.optional(Schema.String),
@@ -2735,7 +2733,7 @@ export interface Token {
   partOfSpeech?: PartOfSpeech;
 }
 
-export const Token: Schema.Schema<Token> =
+export const Token: Schema.Codec<Token> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dependencyEdge: Schema.optional(DependencyEdge),
     lemma: Schema.optional(Schema.String),
@@ -2750,7 +2748,7 @@ export interface XPSTablesModelColumnInfo {
   featureImportance?: number;
 }
 
-export const XPSTablesModelColumnInfo: Schema.Schema<XPSTablesModelColumnInfo> =
+export const XPSTablesModelColumnInfo: Schema.Codec<XPSTablesModelColumnInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnId: Schema.optional(Schema.Number),
     featureImportance: Schema.optional(Schema.Number),
@@ -2763,7 +2761,7 @@ export interface XPSRow {
   values?: ReadonlyArray<unknown>;
 }
 
-export const XPSRow: Schema.Schema<XPSRow> =
+export const XPSRow: Schema.Codec<XPSRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnIds: Schema.optional(Schema.Array(Schema.Number)),
     values: Schema.optional(Schema.Array(Schema.Unknown)),
@@ -2774,7 +2772,7 @@ export interface XPSTablesModelStructure {
   modelParameters?: ReadonlyArray<XPSTablesModelStructureModelParameters>;
 }
 
-export const XPSTablesModelStructure: Schema.Schema<XPSTablesModelStructure> =
+export const XPSTablesModelStructure: Schema.Codec<XPSTablesModelStructure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelParameters: Schema.optional(
       Schema.Array(XPSTablesModelStructureModelParameters),
@@ -2791,7 +2789,7 @@ export interface XPSTablesTrainResponse {
   trainCostMilliNodeHours?: string;
 }
 
-export const XPSTablesTrainResponse: Schema.Schema<XPSTablesTrainResponse> =
+export const XPSTablesTrainResponse: Schema.Codec<XPSTablesTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tablesModelColumnInfo: Schema.optional(
       Schema.Array(XPSTablesModelColumnInfo),
@@ -2814,7 +2812,7 @@ export interface XPSDataErrors {
   count?: number;
 }
 
-export const XPSDataErrors: Schema.Schema<XPSDataErrors> =
+export const XPSDataErrors: Schema.Codec<XPSDataErrors> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorType: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -2843,7 +2841,7 @@ export interface XPSSpeechPreprocessStats {
   trainWordsCount?: number;
 }
 
-export const XPSSpeechPreprocessStats: Schema.Schema<XPSSpeechPreprocessStats> =
+export const XPSSpeechPreprocessStats: Schema.Codec<XPSSpeechPreprocessStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainExamplesCount: Schema.optional(Schema.Number),
     testWordsCount: Schema.optional(Schema.Number),
@@ -2862,7 +2860,7 @@ export interface XPSSpeechEvaluationMetrics {
   subModelEvaluationMetrics?: ReadonlyArray<XPSSpeechEvaluationMetricsSubModelEvaluationMetric>;
 }
 
-export const XPSSpeechEvaluationMetrics: Schema.Schema<XPSSpeechEvaluationMetrics> =
+export const XPSSpeechEvaluationMetrics: Schema.Codec<XPSSpeechEvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subModelEvaluationMetrics: Schema.optional(
       Schema.Array(XPSSpeechEvaluationMetricsSubModelEvaluationMetric),
@@ -2880,7 +2878,7 @@ export interface XPSSpeechPreprocessResponse {
   prebuiltModelEvaluationMetrics?: XPSSpeechEvaluationMetrics;
 }
 
-export const XPSSpeechPreprocessResponse: Schema.Schema<XPSSpeechPreprocessResponse> =
+export const XPSSpeechPreprocessResponse: Schema.Codec<XPSSpeechPreprocessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cnsTrainDataPath: Schema.optional(Schema.String),
     cnsTestDataPath: Schema.optional(Schema.String),
@@ -2895,7 +2893,7 @@ export interface XPSTrainingObjectivePoint {
   createTime?: string;
 }
 
-export const XPSTrainingObjectivePoint: Schema.Schema<XPSTrainingObjectivePoint> =
+export const XPSTrainingObjectivePoint: Schema.Codec<XPSTrainingObjectivePoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     createTime: Schema.optional(Schema.String),
@@ -2908,7 +2906,7 @@ export interface Sentiment {
   magnitude?: number;
 }
 
-export const Sentiment: Schema.Schema<Sentiment> =
+export const Sentiment: Schema.Codec<Sentiment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
@@ -2921,7 +2919,7 @@ export interface Sentence {
   text?: TextSpan;
 }
 
-export const Sentence: Schema.Schema<Sentence> =
+export const Sentence: Schema.Codec<Sentence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sentiment: Schema.optional(Sentiment),
     text: Schema.optional(TextSpan),
@@ -2934,7 +2932,7 @@ export interface ClassificationCategory {
   confidence?: number;
 }
 
-export const ClassificationCategory: Schema.Schema<ClassificationCategory> =
+export const ClassificationCategory: Schema.Codec<ClassificationCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -2949,7 +2947,7 @@ export interface EntityMention {
   sentiment?: Sentiment;
 }
 
-export const EntityMention: Schema.Schema<EntityMention> =
+export const EntityMention: Schema.Codec<EntityMention> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(TextSpan),
     type: Schema.optional(Schema.String),
@@ -2985,7 +2983,7 @@ export interface Entity {
   metadata?: Record<string, string>;
 }
 
-export const Entity: Schema.Schema<Entity> =
+export const Entity: Schema.Codec<Entity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     sentiment: Schema.optional(Sentiment),
@@ -3012,7 +3010,7 @@ export interface AnnotateTextResponse {
   entities?: ReadonlyArray<Entity>;
 }
 
-export const AnnotateTextResponse: Schema.Schema<AnnotateTextResponse> =
+export const AnnotateTextResponse: Schema.Codec<AnnotateTextResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentSentiment: Schema.optional(Sentiment),
     language: Schema.optional(Schema.String),
@@ -3030,7 +3028,7 @@ export interface AnalyzeSyntaxRequest {
   encodingType?: "NONE" | "UTF8" | "UTF16" | "UTF32" | (string & {});
 }
 
-export const AnalyzeSyntaxRequest: Schema.Schema<AnalyzeSyntaxRequest> =
+export const AnalyzeSyntaxRequest: Schema.Codec<AnalyzeSyntaxRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Document),
     encodingType: Schema.optional(Schema.String),
@@ -3049,7 +3047,7 @@ export interface XPSDockerFormat {
     | (string & {});
 }
 
-export const XPSDockerFormat: Schema.Schema<XPSDockerFormat> =
+export const XPSDockerFormat: Schema.Codec<XPSDockerFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cpuArchitecture: Schema.optional(Schema.String),
     gpuArchitecture: Schema.optional(Schema.String),
@@ -3090,7 +3088,7 @@ export interface XPSImageModelServingSpecModelThroughputEstimation {
     | (string & {});
 }
 
-export const XPSImageModelServingSpecModelThroughputEstimation: Schema.Schema<XPSImageModelServingSpecModelThroughputEstimation> =
+export const XPSImageModelServingSpecModelThroughputEstimation: Schema.Codec<XPSImageModelServingSpecModelThroughputEstimation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeQps: Schema.optional(Schema.Number),
     servomaticPartitionType: Schema.optional(Schema.String),
@@ -3109,7 +3107,7 @@ export interface XPSImageModelServingSpec {
   tfRuntimeVersion?: string;
 }
 
-export const XPSImageModelServingSpec: Schema.Schema<XPSImageModelServingSpec> =
+export const XPSImageModelServingSpec: Schema.Codec<XPSImageModelServingSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelThroughputEstimation: Schema.optional(
       Schema.Array(XPSImageModelServingSpecModelThroughputEstimation),
@@ -3129,7 +3127,7 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
+export const Color: Schema.Codec<Color> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     green: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
@@ -3146,7 +3144,7 @@ export interface XPSColorMapIntColor {
   green?: number;
 }
 
-export const XPSColorMapIntColor: Schema.Schema<XPSColorMapIntColor> =
+export const XPSColorMapIntColor: Schema.Codec<XPSColorMapIntColor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     red: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
@@ -3163,7 +3161,7 @@ export interface XPSColorMap {
   annotationSpecIdToken?: string;
 }
 
-export const XPSColorMap: Schema.Schema<XPSColorMap> =
+export const XPSColorMap: Schema.Codec<XPSColorMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     displayName: Schema.optional(Schema.String),
@@ -3173,35 +3171,35 @@ export const XPSColorMap: Schema.Schema<XPSColorMap> =
 
 export interface XPSEdgeTpuTfLiteFormat {}
 
-export const XPSEdgeTpuTfLiteFormat: Schema.Schema<XPSEdgeTpuTfLiteFormat> =
+export const XPSEdgeTpuTfLiteFormat: Schema.Codec<XPSEdgeTpuTfLiteFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "XPSEdgeTpuTfLiteFormat",
   });
 
 export interface XPSTfLiteFormat {}
 
-export const XPSTfLiteFormat: Schema.Schema<XPSTfLiteFormat> =
+export const XPSTfLiteFormat: Schema.Codec<XPSTfLiteFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "XPSTfLiteFormat",
   });
 
 export interface XPSTfSavedModelFormat {}
 
-export const XPSTfSavedModelFormat: Schema.Schema<XPSTfSavedModelFormat> =
+export const XPSTfSavedModelFormat: Schema.Codec<XPSTfSavedModelFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "XPSTfSavedModelFormat",
   });
 
 export interface XPSCoreMlFormat {}
 
-export const XPSCoreMlFormat: Schema.Schema<XPSCoreMlFormat> =
+export const XPSCoreMlFormat: Schema.Codec<XPSCoreMlFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "XPSCoreMlFormat",
   });
 
 export interface XPSTfJsFormat {}
 
-export const XPSTfJsFormat: Schema.Schema<XPSTfJsFormat> =
+export const XPSTfJsFormat: Schema.Codec<XPSTfJsFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "XPSTfJsFormat",
   });
@@ -3221,7 +3219,7 @@ export interface XPSExportModelOutputConfig {
   tfJsFormat?: XPSTfJsFormat;
 }
 
-export const XPSExportModelOutputConfig: Schema.Schema<XPSExportModelOutputConfig> =
+export const XPSExportModelOutputConfig: Schema.Codec<XPSExportModelOutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputGcrUri: Schema.optional(Schema.String),
     edgeTpuTfLiteFormat: Schema.optional(XPSEdgeTpuTfLiteFormat),
@@ -3239,7 +3237,7 @@ export interface XPSImageExportModelSpec {
   exportModelOutputConfig?: ReadonlyArray<XPSExportModelOutputConfig>;
 }
 
-export const XPSImageExportModelSpec: Schema.Schema<XPSImageExportModelSpec> =
+export const XPSImageExportModelSpec: Schema.Codec<XPSImageExportModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportModelOutputConfig: Schema.optional(
       Schema.Array(XPSExportModelOutputConfig),
@@ -3261,7 +3259,7 @@ export interface XPSImageModelArtifactSpec {
   exportArtifact?: ReadonlyArray<XPSModelArtifactItem>;
 }
 
-export const XPSImageModelArtifactSpec: Schema.Schema<XPSImageModelArtifactSpec> =
+export const XPSImageModelArtifactSpec: Schema.Codec<XPSImageModelArtifactSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelGcsUri: Schema.optional(Schema.String),
     tfJsBinaryGcsPrefix: Schema.optional(Schema.String),
@@ -3290,7 +3288,7 @@ export interface XPSImageSegmentationTrainResponse {
   modelArtifactSpec?: XPSImageModelArtifactSpec;
 }
 
-export const XPSImageSegmentationTrainResponse: Schema.Schema<XPSImageSegmentationTrainResponse> =
+export const XPSImageSegmentationTrainResponse: Schema.Codec<XPSImageSegmentationTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainCostNodeSeconds: Schema.optional(Schema.String),
     modelServingSpec: Schema.optional(XPSImageModelServingSpec),
@@ -3307,7 +3305,7 @@ export interface AnalyzeEntitiesRequest {
   encodingType?: "NONE" | "UTF8" | "UTF16" | "UTF32" | (string & {});
 }
 
-export const AnalyzeEntitiesRequest: Schema.Schema<AnalyzeEntitiesRequest> =
+export const AnalyzeEntitiesRequest: Schema.Codec<AnalyzeEntitiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Document),
     encodingType: Schema.optional(Schema.String),
@@ -3318,7 +3316,7 @@ export interface ModerateTextResponse {
   moderationCategories?: ReadonlyArray<ClassificationCategory>;
 }
 
-export const ModerateTextResponse: Schema.Schema<ModerateTextResponse> =
+export const ModerateTextResponse: Schema.Codec<ModerateTextResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     moderationCategories: Schema.optional(Schema.Array(ClassificationCategory)),
   }).annotate({ identifier: "ModerateTextResponse" });
@@ -3330,7 +3328,7 @@ export interface XPSTuningTrial {
   trainingObjectivePoint?: XPSTrainingObjectivePoint;
 }
 
-export const XPSTuningTrial: Schema.Schema<XPSTuningTrial> =
+export const XPSTuningTrial: Schema.Codec<XPSTuningTrial> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelStructure: Schema.optional(XPSTablesModelStructure),
     trainingObjectivePoint: Schema.optional(XPSTrainingObjectivePoint),
@@ -3350,7 +3348,7 @@ export interface XPSResponseExplanationMetadataInputMetadata {
     | (string & {});
 }
 
-export const XPSResponseExplanationMetadataInputMetadata: Schema.Schema<XPSResponseExplanationMetadataInputMetadata> =
+export const XPSResponseExplanationMetadataInputMetadata: Schema.Codec<XPSResponseExplanationMetadataInputMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visualizationConfig: Schema.optional(XPSVisualization),
     inputTensorName: Schema.optional(Schema.String),
@@ -3362,7 +3360,7 @@ export interface XPSResponseExplanationMetadataOutputMetadata {
   outputTensorName?: string;
 }
 
-export const XPSResponseExplanationMetadataOutputMetadata: Schema.Schema<XPSResponseExplanationMetadataOutputMetadata> =
+export const XPSResponseExplanationMetadataOutputMetadata: Schema.Codec<XPSResponseExplanationMetadataOutputMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputTensorName: Schema.optional(Schema.String),
   }).annotate({ identifier: "XPSResponseExplanationMetadataOutputMetadata" });
@@ -3374,7 +3372,7 @@ export interface XPSResponseExplanationMetadata {
   outputs?: Record<string, XPSResponseExplanationMetadataOutputMetadata>;
 }
 
-export const XPSResponseExplanationMetadata: Schema.Schema<XPSResponseExplanationMetadata> =
+export const XPSResponseExplanationMetadata: Schema.Codec<XPSResponseExplanationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputs: Schema.optional(
       Schema.Record(Schema.String, XPSResponseExplanationMetadataInputMetadata),
@@ -3392,7 +3390,7 @@ export interface XPSXraiAttribution {
   stepCount?: number;
 }
 
-export const XPSXraiAttribution: Schema.Schema<XPSXraiAttribution> =
+export const XPSXraiAttribution: Schema.Codec<XPSXraiAttribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stepCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "XPSXraiAttribution" });
@@ -3402,7 +3400,7 @@ export interface XPSIntegratedGradientsAttribution {
   stepCount?: number;
 }
 
-export const XPSIntegratedGradientsAttribution: Schema.Schema<XPSIntegratedGradientsAttribution> =
+export const XPSIntegratedGradientsAttribution: Schema.Codec<XPSIntegratedGradientsAttribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stepCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "XPSIntegratedGradientsAttribution" });
@@ -3414,7 +3412,7 @@ export interface XPSResponseExplanationParameters {
   integratedGradientsAttribution?: XPSIntegratedGradientsAttribution;
 }
 
-export const XPSResponseExplanationParameters: Schema.Schema<XPSResponseExplanationParameters> =
+export const XPSResponseExplanationParameters: Schema.Codec<XPSResponseExplanationParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     xraiAttribution: Schema.optional(XPSXraiAttribution),
     integratedGradientsAttribution: Schema.optional(
@@ -3431,7 +3429,7 @@ export interface XPSResponseExplanationSpec {
   parameters?: XPSResponseExplanationParameters;
 }
 
-export const XPSResponseExplanationSpec: Schema.Schema<XPSResponseExplanationSpec> =
+export const XPSResponseExplanationSpec: Schema.Codec<XPSResponseExplanationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(XPSResponseExplanationMetadata),
     explanationType: Schema.optional(Schema.String),
@@ -3459,7 +3457,7 @@ export interface XPSImageClassificationTrainResponse {
   modelServingSpec?: XPSImageModelServingSpec;
 }
 
-export const XPSImageClassificationTrainResponse: Schema.Schema<XPSImageClassificationTrainResponse> =
+export const XPSImageClassificationTrainResponse: Schema.Codec<XPSImageClassificationTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainCostNodeSeconds: Schema.optional(Schema.String),
     classCount: Schema.optional(Schema.String),
@@ -3472,7 +3470,7 @@ export const XPSImageClassificationTrainResponse: Schema.Schema<XPSImageClassifi
 
 export interface ClassificationModelOptionsV1Model {}
 
-export const ClassificationModelOptionsV1Model: Schema.Schema<ClassificationModelOptionsV1Model> =
+export const ClassificationModelOptionsV1Model: Schema.Codec<ClassificationModelOptionsV1Model> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ClassificationModelOptionsV1Model",
   });
@@ -3486,7 +3484,7 @@ export interface ClassificationModelOptionsV2Model {
     | (string & {});
 }
 
-export const ClassificationModelOptionsV2Model: Schema.Schema<ClassificationModelOptionsV2Model> =
+export const ClassificationModelOptionsV2Model: Schema.Codec<ClassificationModelOptionsV2Model> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentCategoriesVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClassificationModelOptionsV2Model" });
@@ -3498,7 +3496,7 @@ export interface ClassificationModelOptions {
   v2Model?: ClassificationModelOptionsV2Model;
 }
 
-export const ClassificationModelOptions: Schema.Schema<ClassificationModelOptions> =
+export const ClassificationModelOptions: Schema.Codec<ClassificationModelOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     v1Model: Schema.optional(ClassificationModelOptionsV1Model),
     v2Model: Schema.optional(ClassificationModelOptionsV2Model),
@@ -3511,7 +3509,7 @@ export interface ClassifyTextRequest {
   classificationModelOptions?: ClassificationModelOptions;
 }
 
-export const ClassifyTextRequest: Schema.Schema<ClassifyTextRequest> =
+export const ClassifyTextRequest: Schema.Codec<ClassifyTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Document),
     classificationModelOptions: Schema.optional(ClassificationModelOptions),
@@ -3528,7 +3526,7 @@ export interface XPSExampleSet {
   numExamples?: string;
 }
 
-export const XPSExampleSet: Schema.Schema<XPSExampleSet> =
+export const XPSExampleSet: Schema.Codec<XPSExampleSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numInputSources: Schema.optional(Schema.String),
     fingerprint: Schema.optional(Schema.String),
@@ -3549,7 +3547,7 @@ export interface XPSMetricEntry {
   systemLabels?: ReadonlyArray<XPSMetricEntryLabel>;
 }
 
-export const XPSMetricEntry: Schema.Schema<XPSMetricEntry> =
+export const XPSMetricEntry: Schema.Codec<XPSMetricEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     argentumMetricId: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
@@ -3567,7 +3565,7 @@ export interface AnalyzeSyntaxResponse {
   tokens?: ReadonlyArray<Token>;
 }
 
-export const AnalyzeSyntaxResponse: Schema.Schema<AnalyzeSyntaxResponse> =
+export const AnalyzeSyntaxResponse: Schema.Codec<AnalyzeSyntaxResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     language: Schema.optional(Schema.String),
     sentences: Schema.optional(Schema.Array(Sentence)),
@@ -3583,7 +3581,7 @@ export interface AnalyzeSentimentResponse {
   language?: string;
 }
 
-export const AnalyzeSentimentResponse: Schema.Schema<AnalyzeSentimentResponse> =
+export const AnalyzeSentimentResponse: Schema.Codec<AnalyzeSentimentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentSentiment: Schema.optional(Sentiment),
     sentences: Schema.optional(Schema.Array(Sentence)),
@@ -3595,7 +3593,7 @@ export interface XPSTranslationTrainResponse {
   modelType?: "MODEL_TYPE_UNSPECIFIED" | "LEGACY" | "CURRENT" | (string & {});
 }
 
-export const XPSTranslationTrainResponse: Schema.Schema<XPSTranslationTrainResponse> =
+export const XPSTranslationTrainResponse: Schema.Codec<XPSTranslationTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelType: Schema.optional(Schema.String),
   }).annotate({ identifier: "XPSTranslationTrainResponse" });
@@ -3607,7 +3605,7 @@ export interface XPSTranslationPreprocessResponse {
   validExampleCount?: string;
 }
 
-export const XPSTranslationPreprocessResponse: Schema.Schema<XPSTranslationPreprocessResponse> =
+export const XPSTranslationPreprocessResponse: Schema.Codec<XPSTranslationPreprocessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parsedExampleCount: Schema.optional(Schema.String),
     validExampleCount: Schema.optional(Schema.String),
@@ -3618,7 +3616,7 @@ export interface XPSTablesPreprocessResponse {
   tablesDatasetMetadata?: XPSTablesDatasetMetadata;
 }
 
-export const XPSTablesPreprocessResponse: Schema.Schema<XPSTablesPreprocessResponse> =
+export const XPSTablesPreprocessResponse: Schema.Codec<XPSTablesPreprocessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tablesDatasetMetadata: Schema.optional(XPSTablesDatasetMetadata),
   }).annotate({ identifier: "XPSTablesPreprocessResponse" });
@@ -3631,7 +3629,7 @@ export interface XPSPreprocessResponse {
   tablesPreprocessResponse?: XPSTablesPreprocessResponse;
 }
 
-export const XPSPreprocessResponse: Schema.Schema<XPSPreprocessResponse> =
+export const XPSPreprocessResponse: Schema.Codec<XPSPreprocessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speechPreprocessResp: Schema.optional(XPSSpeechPreprocessResponse),
     outputExampleSet: Schema.optional(XPSExampleSet),
@@ -3658,7 +3656,7 @@ export interface AnnotateTextRequestFeatures {
   extractEntities?: boolean;
 }
 
-export const AnnotateTextRequestFeatures: Schema.Schema<AnnotateTextRequestFeatures> =
+export const AnnotateTextRequestFeatures: Schema.Codec<AnnotateTextRequestFeatures> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extractSyntax: Schema.optional(Schema.Boolean),
     extractDocumentSentiment: Schema.optional(Schema.Boolean),
@@ -3678,7 +3676,7 @@ export interface AnnotateTextRequest {
   features?: AnnotateTextRequestFeatures;
 }
 
-export const AnnotateTextRequest: Schema.Schema<AnnotateTextRequest> =
+export const AnnotateTextRequest: Schema.Codec<AnnotateTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Document),
     encodingType: Schema.optional(Schema.String),
@@ -3687,7 +3685,7 @@ export const AnnotateTextRequest: Schema.Schema<AnnotateTextRequest> =
 
 export interface XPSTextToSpeechTrainResponse {}
 
-export const XPSTextToSpeechTrainResponse: Schema.Schema<XPSTextToSpeechTrainResponse> =
+export const XPSTextToSpeechTrainResponse: Schema.Codec<XPSTextToSpeechTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "XPSTextToSpeechTrainResponse",
   });
@@ -3699,7 +3697,7 @@ export interface XPSVideoModelArtifactSpec {
   exportArtifact?: ReadonlyArray<XPSModelArtifactItem>;
 }
 
-export const XPSVideoModelArtifactSpec: Schema.Schema<XPSVideoModelArtifactSpec> =
+export const XPSVideoModelArtifactSpec: Schema.Codec<XPSVideoModelArtifactSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servingArtifact: Schema.optional(XPSModelArtifactItem),
     exportArtifact: Schema.optional(Schema.Array(XPSModelArtifactItem)),
@@ -3712,7 +3710,7 @@ export interface XPSVideoClassificationTrainResponse {
   modelArtifactSpec?: XPSVideoModelArtifactSpec;
 }
 
-export const XPSVideoClassificationTrainResponse: Schema.Schema<XPSVideoClassificationTrainResponse> =
+export const XPSVideoClassificationTrainResponse: Schema.Codec<XPSVideoClassificationTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainCostNodeSeconds: Schema.optional(Schema.String),
     modelArtifactSpec: Schema.optional(XPSVideoModelArtifactSpec),
@@ -3725,7 +3723,7 @@ export interface XPSVideoActionRecognitionTrainResponse {
   modelArtifactSpec?: XPSVideoModelArtifactSpec;
 }
 
-export const XPSVideoActionRecognitionTrainResponse: Schema.Schema<XPSVideoActionRecognitionTrainResponse> =
+export const XPSVideoActionRecognitionTrainResponse: Schema.Codec<XPSVideoActionRecognitionTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainCostNodeSeconds: Schema.optional(Schema.String),
     modelArtifactSpec: Schema.optional(XPSVideoModelArtifactSpec),
@@ -3743,7 +3741,7 @@ export interface XPSVisionErrorAnalysisConfig {
     | (string & {});
 }
 
-export const XPSVisionErrorAnalysisConfig: Schema.Schema<XPSVisionErrorAnalysisConfig> =
+export const XPSVisionErrorAnalysisConfig: Schema.Codec<XPSVisionErrorAnalysisConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exampleCount: Schema.optional(Schema.Number),
     queryType: Schema.optional(Schema.String),
@@ -3769,7 +3767,7 @@ export interface XPSImageObjectDetectionModelSpec {
     | (string & {});
 }
 
-export const XPSImageObjectDetectionModelSpec: Schema.Schema<XPSImageObjectDetectionModelSpec> =
+export const XPSImageObjectDetectionModelSpec: Schema.Codec<XPSImageObjectDetectionModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainCostNodeSeconds: Schema.optional(Schema.String),
     classCount: Schema.optional(Schema.String),
@@ -3785,7 +3783,7 @@ export interface XPSVideoExportModelSpec {
   exportModelOutputConfig?: ReadonlyArray<XPSExportModelOutputConfig>;
 }
 
-export const XPSVideoExportModelSpec: Schema.Schema<XPSVideoExportModelSpec> =
+export const XPSVideoExportModelSpec: Schema.Codec<XPSVideoExportModelSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportModelOutputConfig: Schema.optional(
       Schema.Array(XPSExportModelOutputConfig),
@@ -3801,7 +3799,7 @@ export interface XPSVideoObjectTrackingTrainResponse {
   modelArtifactSpec?: XPSVideoModelArtifactSpec;
 }
 
-export const XPSVideoObjectTrackingTrainResponse: Schema.Schema<XPSVideoObjectTrackingTrainResponse> =
+export const XPSVideoObjectTrackingTrainResponse: Schema.Codec<XPSVideoObjectTrackingTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainCostNodeSeconds: Schema.optional(Schema.String),
     exportModelSpec: Schema.optional(XPSVideoExportModelSpec),
@@ -3835,7 +3833,7 @@ export interface XPSTrainResponse {
   translationTrainResp?: XPSTranslationTrainResponse;
 }
 
-export const XPSTrainResponse: Schema.Schema<XPSTrainResponse> =
+export const XPSTrainResponse: Schema.Codec<XPSTrainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textTrainResp: Schema.optional(XPSTextTrainResponse),
     deployedModelSizeBytes: Schema.optional(Schema.String),
@@ -3879,7 +3877,7 @@ export interface AnalyzeEntitySentimentRequest {
   encodingType?: "NONE" | "UTF8" | "UTF16" | "UTF32" | (string & {});
 }
 
-export const AnalyzeEntitySentimentRequest: Schema.Schema<AnalyzeEntitySentimentRequest> =
+export const AnalyzeEntitySentimentRequest: Schema.Codec<AnalyzeEntitySentimentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Document),
     encodingType: Schema.optional(Schema.String),
@@ -3890,7 +3888,7 @@ export interface XPSVisionTrainingOperationMetadata {
   explanationUsage?: InfraUsage;
 }
 
-export const XPSVisionTrainingOperationMetadata: Schema.Schema<XPSVisionTrainingOperationMetadata> =
+export const XPSVisionTrainingOperationMetadata: Schema.Codec<XPSVisionTrainingOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explanationUsage: Schema.optional(InfraUsage),
   }).annotate({ identifier: "XPSVisionTrainingOperationMetadata" });
@@ -3900,7 +3898,7 @@ export interface ClassifyTextResponse {
   categories?: ReadonlyArray<ClassificationCategory>;
 }
 
-export const ClassifyTextResponse: Schema.Schema<ClassifyTextResponse> =
+export const ClassifyTextResponse: Schema.Codec<ClassifyTextResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categories: Schema.optional(Schema.Array(ClassificationCategory)),
   }).annotate({ identifier: "ClassifyTextResponse" });
@@ -3912,7 +3910,7 @@ export interface AnalyzeEntitiesResponse {
   language?: string;
 }
 
-export const AnalyzeEntitiesResponse: Schema.Schema<AnalyzeEntitiesResponse> =
+export const AnalyzeEntitiesResponse: Schema.Codec<AnalyzeEntitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entities: Schema.optional(Schema.Array(Entity)),
     language: Schema.optional(Schema.String),
@@ -3923,7 +3921,7 @@ export interface XPSBatchPredictResponse {
   exampleSet?: XPSExampleSet;
 }
 
-export const XPSBatchPredictResponse: Schema.Schema<XPSBatchPredictResponse> =
+export const XPSBatchPredictResponse: Schema.Codec<XPSBatchPredictResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exampleSet: Schema.optional(XPSExampleSet),
   }).annotate({ identifier: "XPSBatchPredictResponse" });
@@ -3949,7 +3947,7 @@ export interface XPSTablesTrainingOperationMetadata {
   trainingStartTime?: string;
 }
 
-export const XPSTablesTrainingOperationMetadata: Schema.Schema<XPSTablesTrainingOperationMetadata> =
+export const XPSTablesTrainingOperationMetadata: Schema.Codec<XPSTablesTrainingOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createModelStage: Schema.optional(Schema.String),
     optimizationObjective: Schema.optional(Schema.String),
@@ -3968,7 +3966,7 @@ export interface AnalyzeSentimentRequest {
   encodingType?: "NONE" | "UTF8" | "UTF16" | "UTF32" | (string & {});
 }
 
-export const AnalyzeSentimentRequest: Schema.Schema<AnalyzeSentimentRequest> =
+export const AnalyzeSentimentRequest: Schema.Codec<AnalyzeSentimentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Document),
     encodingType: Schema.optional(Schema.String),
@@ -3979,7 +3977,7 @@ export interface XPSVideoTrainingOperationMetadata {
   trainCostMilliNodeHour?: string;
 }
 
-export const XPSVideoTrainingOperationMetadata: Schema.Schema<XPSVideoTrainingOperationMetadata> =
+export const XPSVideoTrainingOperationMetadata: Schema.Codec<XPSVideoTrainingOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainCostMilliNodeHour: Schema.optional(Schema.String),
   }).annotate({ identifier: "XPSVideoTrainingOperationMetadata" });
@@ -3989,7 +3987,7 @@ export interface XPSVideoBatchPredictOperationMetadata {
   outputExamples?: ReadonlyArray<string>;
 }
 
-export const XPSVideoBatchPredictOperationMetadata: Schema.Schema<XPSVideoBatchPredictOperationMetadata> =
+export const XPSVideoBatchPredictOperationMetadata: Schema.Codec<XPSVideoBatchPredictOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputExamples: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "XPSVideoBatchPredictOperationMetadata" });
@@ -4001,7 +3999,7 @@ export interface XPSReportingMetrics {
   metricEntries?: ReadonlyArray<XPSMetricEntry>;
 }
 
-export const XPSReportingMetrics: Schema.Schema<XPSReportingMetrics> =
+export const XPSReportingMetrics: Schema.Codec<XPSReportingMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveTrainingDuration: Schema.optional(Schema.String),
     metricEntries: Schema.optional(Schema.Array(XPSMetricEntry)),
@@ -4014,7 +4012,7 @@ export interface AnalyzeEntitySentimentResponse {
   language?: string;
 }
 
-export const AnalyzeEntitySentimentResponse: Schema.Schema<AnalyzeEntitySentimentResponse> =
+export const AnalyzeEntitySentimentResponse: Schema.Codec<AnalyzeEntitySentimentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entities: Schema.optional(Schema.Array(Entity)),
     language: Schema.optional(Schema.String),
@@ -4031,7 +4029,7 @@ export interface XPSXpsOperationMetadata {
   videoBatchPredictOperationMetadata?: XPSVideoBatchPredictOperationMetadata;
 }
 
-export const XPSXpsOperationMetadata: Schema.Schema<XPSXpsOperationMetadata> =
+export const XPSXpsOperationMetadata: Schema.Codec<XPSXpsOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visionTrainingOperationMetadata: Schema.optional(
       XPSVisionTrainingOperationMetadata,
@@ -4118,7 +4116,7 @@ export const AnalyzeEntitiesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnalyzeEntitiesDocumentsRequest>;
+  ) as unknown as Schema.Codec<AnalyzeEntitiesDocumentsRequest>;
 
 export type AnalyzeEntitiesDocumentsResponse = AnalyzeEntitiesResponse;
 export const AnalyzeEntitiesDocumentsResponse =
@@ -4158,7 +4156,7 @@ export const AnnotateTextDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnnotateTextDocumentsRequest>;
+  ) as unknown as Schema.Codec<AnnotateTextDocumentsRequest>;
 
 export type AnnotateTextDocumentsResponse = AnnotateTextResponse;
 export const AnnotateTextDocumentsResponse =
@@ -4198,7 +4196,7 @@ export const AnalyzeSentimentDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnalyzeSentimentDocumentsRequest>;
+  ) as unknown as Schema.Codec<AnalyzeSentimentDocumentsRequest>;
 
 export type AnalyzeSentimentDocumentsResponse = AnalyzeSentimentResponse;
 export const AnalyzeSentimentDocumentsResponse =
@@ -4238,7 +4236,7 @@ export const AnalyzeEntitySentimentDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnalyzeEntitySentimentDocumentsRequest>;
+  ) as unknown as Schema.Codec<AnalyzeEntitySentimentDocumentsRequest>;
 
 export type AnalyzeEntitySentimentDocumentsResponse =
   AnalyzeEntitySentimentResponse;
@@ -4279,7 +4277,7 @@ export const AnalyzeSyntaxDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnalyzeSyntaxDocumentsRequest>;
+  ) as unknown as Schema.Codec<AnalyzeSyntaxDocumentsRequest>;
 
 export type AnalyzeSyntaxDocumentsResponse = AnalyzeSyntaxResponse;
 export const AnalyzeSyntaxDocumentsResponse =
@@ -4319,7 +4317,7 @@ export const ClassifyTextDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ClassifyTextDocumentsRequest>;
+  ) as unknown as Schema.Codec<ClassifyTextDocumentsRequest>;
 
 export type ClassifyTextDocumentsResponse = ClassifyTextResponse;
 export const ClassifyTextDocumentsResponse =
@@ -4359,7 +4357,7 @@ export const ModerateTextDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModerateTextDocumentsRequest>;
+  ) as unknown as Schema.Codec<ModerateTextDocumentsRequest>;
 
 export type ModerateTextDocumentsResponse = ModerateTextResponse;
 export const ModerateTextDocumentsResponse =

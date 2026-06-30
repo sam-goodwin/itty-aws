@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetProjectBranchDatabaseInput {
+  project_id: string;
+  branch_id: string;
+  database_name: string;
+}
 export const GetProjectBranchDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,19 @@ export const GetProjectBranchDatabaseInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/databases/{database_name}",
     }),
-  );
-export type GetProjectBranchDatabaseInput =
-  typeof GetProjectBranchDatabaseInput.Type;
+  ) as unknown as Schema.Codec<GetProjectBranchDatabaseInput>;
 
 // Output Schema
+export interface GetProjectBranchDatabaseOutput {
+  database: {
+    id: number;
+    branch_id: string;
+    name: string;
+    owner_name: string;
+    created_at: string;
+    updated_at: string;
+  };
+}
 export const GetProjectBranchDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.Struct({
@@ -29,9 +42,7 @@ export const GetProjectBranchDatabaseOutput =
       created_at: Schema.String,
       updated_at: Schema.String,
     }),
-  });
-export type GetProjectBranchDatabaseOutput =
-  typeof GetProjectBranchDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<GetProjectBranchDatabaseOutput>;
 
 // The operation
 /**

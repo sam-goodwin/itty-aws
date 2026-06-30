@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTaxRatesInput {
+  active?: boolean;
+  created?: string;
+  ending_before?: string;
+  expand?: string;
+  inclusive?: boolean;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetTaxRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   created: Schema.optional(Schema.String),
@@ -17,10 +26,56 @@ export const GetTaxRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/tax_rates",
     contentType: "form-urlencoded",
   }),
-);
-export type GetTaxRatesInput = typeof GetTaxRatesInput.Type;
+) as unknown as Schema.Codec<GetTaxRatesInput>;
 
 // Output Schema
+export interface GetTaxRatesOutput {
+  data: {
+    active: boolean;
+    country: string | null;
+    created: number;
+    description: string | null;
+    display_name: string;
+    effective_percentage: number | null;
+    flat_amount: { amount: number; currency: string } | null;
+    id: string;
+    inclusive: boolean;
+    jurisdiction: string | null;
+    jurisdiction_level:
+      | "city"
+      | "country"
+      | "county"
+      | "district"
+      | "multiple"
+      | "state"
+      | null;
+    livemode: boolean;
+    metadata: Record<string, string> | null;
+    object: "tax_rate";
+    percentage: number;
+    rate_type: "flat_amount" | "percentage" | null;
+    state: string | null;
+    tax_type:
+      | "amusement_tax"
+      | "communications_tax"
+      | "gst"
+      | "hst"
+      | "igst"
+      | "jct"
+      | "lease_tax"
+      | "pst"
+      | "qst"
+      | "retail_delivery_fee"
+      | "rst"
+      | "sales_tax"
+      | "service_tax"
+      | "vat"
+      | null;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetTaxRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -30,7 +85,12 @@ export const GetTaxRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       description: Schema.NullOr(Schema.String),
       display_name: Schema.String,
       effective_percentage: Schema.NullOr(Schema.Number),
-      flat_amount: Schema.Unknown,
+      flat_amount: Schema.NullOr(
+        Schema.Struct({
+          amount: Schema.Number,
+          currency: Schema.String,
+        }),
+      ),
       id: Schema.String,
       inclusive: Schema.Boolean,
       jurisdiction: Schema.NullOr(Schema.String),
@@ -73,8 +133,7 @@ export const GetTaxRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,
-});
-export type GetTaxRatesOutput = typeof GetTaxRatesOutput.Type;
+}) as unknown as Schema.Codec<GetTaxRatesOutput>;
 
 // The operation
 /**

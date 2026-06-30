@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface OauthApplicationsListInput {
+  organization_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const OauthApplicationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,23 @@ export const OauthApplicationsListInput =
       method: "GET",
       path: "/api/organizations/{organization_id}/oauth_applications/",
     }),
-  );
-export type OauthApplicationsListInput = typeof OauthApplicationsListInput.Type;
+  ) as unknown as Schema.Codec<OauthApplicationsListInput>;
 
 // Output Schema
+export interface OauthApplicationsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    client_id?: string;
+    redirect_uris_list?: string[];
+    is_verified?: boolean;
+    created?: string;
+    updated?: string;
+  }[];
+}
 export const OauthApplicationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -36,9 +54,7 @@ export const OauthApplicationsListOutput =
         }),
       ),
     ),
-  });
-export type OauthApplicationsListOutput =
-  typeof OauthApplicationsListOutput.Type;
+  }) as unknown as Schema.Codec<OauthApplicationsListOutput>;
 
 // The operation
 /**

@@ -3,6 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemCountByPathCreateInput {
+  project_id: string;
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const DesktopFileSystemCountByPathCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,15 +34,12 @@ export const DesktopFileSystemCountByPathCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/desktop_file_system/count_by_path/",
     }),
-  );
-export type DesktopFileSystemCountByPathCreateInput =
-  typeof DesktopFileSystemCountByPathCreateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemCountByPathCreateInput>;
 
 // Output Schema
+export type DesktopFileSystemCountByPathCreateOutput = void;
 export const DesktopFileSystemCountByPathCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DesktopFileSystemCountByPathCreateOutput =
-  typeof DesktopFileSystemCountByPathCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemCountByPathCreateOutput>;
 
 // The operation
 /**

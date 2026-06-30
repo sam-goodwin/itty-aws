@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface Rotation {
   rotationPeriod?: string;
 }
 
-export const Rotation: Schema.Schema<Rotation> =
+export const Rotation: Schema.Codec<Rotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextRotationTime: Schema.optional(Schema.String),
     rotationPeriod: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export interface CustomerManagedEncryption {
   kmsKeyName?: string;
 }
 
-export const CustomerManagedEncryption: Schema.Schema<CustomerManagedEncryption> =
+export const CustomerManagedEncryption: Schema.Codec<CustomerManagedEncryption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerManagedEncryption" });
@@ -50,7 +50,7 @@ export interface Automatic {
   customerManagedEncryption?: CustomerManagedEncryption;
 }
 
-export const Automatic: Schema.Schema<Automatic> =
+export const Automatic: Schema.Codec<Automatic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerManagedEncryption: Schema.optional(CustomerManagedEncryption),
   }).annotate({ identifier: "Automatic" });
@@ -62,7 +62,7 @@ export interface Replica {
   customerManagedEncryption?: CustomerManagedEncryption;
 }
 
-export const Replica: Schema.Schema<Replica> =
+export const Replica: Schema.Codec<Replica> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     customerManagedEncryption: Schema.optional(CustomerManagedEncryption),
@@ -73,7 +73,7 @@ export interface UserManaged {
   replicas?: ReadonlyArray<Replica>;
 }
 
-export const UserManaged: Schema.Schema<UserManaged> =
+export const UserManaged: Schema.Codec<UserManaged> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replicas: Schema.optional(Schema.Array(Replica)),
   }).annotate({ identifier: "UserManaged" });
@@ -85,7 +85,7 @@ export interface Replication {
   userManaged?: UserManaged;
 }
 
-export const Replication: Schema.Schema<Replication> =
+export const Replication: Schema.Codec<Replication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     automatic: Schema.optional(Automatic),
     userManaged: Schema.optional(UserManaged),
@@ -96,7 +96,7 @@ export interface Topic {
   name?: string;
 }
 
-export const Topic: Schema.Schema<Topic> =
+export const Topic: Schema.Codec<Topic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Topic" });
@@ -132,7 +132,7 @@ export interface Secret {
   versionDestroyTtl?: string;
 }
 
-export const Secret: Schema.Schema<Secret> =
+export const Secret: Schema.Codec<Secret> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     rotation: Schema.optional(Rotation),
@@ -161,7 +161,7 @@ export interface ListSecretsResponse {
   nextPageToken?: string;
 }
 
-export const ListSecretsResponse: Schema.Schema<ListSecretsResponse> =
+export const ListSecretsResponse: Schema.Codec<ListSecretsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     secrets: Schema.optional(Schema.Array(Secret)),
@@ -173,7 +173,7 @@ export interface CustomerManagedEncryptionStatus {
   kmsKeyVersionName?: string;
 }
 
-export const CustomerManagedEncryptionStatus: Schema.Schema<CustomerManagedEncryptionStatus> =
+export const CustomerManagedEncryptionStatus: Schema.Codec<CustomerManagedEncryptionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyVersionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerManagedEncryptionStatus" });
@@ -183,7 +183,7 @@ export interface AutomaticStatus {
   customerManagedEncryption?: CustomerManagedEncryptionStatus;
 }
 
-export const AutomaticStatus: Schema.Schema<AutomaticStatus> =
+export const AutomaticStatus: Schema.Codec<AutomaticStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerManagedEncryption: Schema.optional(CustomerManagedEncryptionStatus),
   }).annotate({ identifier: "AutomaticStatus" });
@@ -195,7 +195,7 @@ export interface ReplicaStatus {
   location?: string;
 }
 
-export const ReplicaStatus: Schema.Schema<ReplicaStatus> =
+export const ReplicaStatus: Schema.Codec<ReplicaStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerManagedEncryption: Schema.optional(CustomerManagedEncryptionStatus),
     location: Schema.optional(Schema.String),
@@ -214,7 +214,7 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -235,7 +235,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -248,7 +248,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -265,7 +265,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -282,7 +282,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -300,7 +300,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -315,7 +315,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -330,7 +330,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -352,7 +352,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -366,7 +366,7 @@ export interface DisableSecretVersionRequest {
   etag?: string;
 }
 
-export const DisableSecretVersionRequest: Schema.Schema<DisableSecretVersionRequest> =
+export const DisableSecretVersionRequest: Schema.Codec<DisableSecretVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "DisableSecretVersionRequest" });
@@ -378,7 +378,7 @@ export interface SecretPayload {
   dataCrc32c?: string;
 }
 
-export const SecretPayload: Schema.Schema<SecretPayload> =
+export const SecretPayload: Schema.Codec<SecretPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     dataCrc32c: Schema.optional(Schema.String),
@@ -391,7 +391,7 @@ export interface AccessSecretVersionResponse {
   payload?: SecretPayload;
 }
 
-export const AccessSecretVersionResponse: Schema.Schema<AccessSecretVersionResponse> =
+export const AccessSecretVersionResponse: Schema.Codec<AccessSecretVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     payload: Schema.optional(SecretPayload),
@@ -406,7 +406,7 @@ export interface Progress {
   failedVersionCount?: number;
 }
 
-export const Progress: Schema.Schema<Progress> =
+export const Progress: Schema.Codec<Progress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalVersionCount: Schema.optional(Schema.Number),
     completedVersionCount: Schema.optional(Schema.Number),
@@ -432,7 +432,7 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -449,14 +449,14 @@ export interface DestroySecretVersionRequest {
   etag?: string;
 }
 
-export const DestroySecretVersionRequest: Schema.Schema<DestroySecretVersionRequest> =
+export const DestroySecretVersionRequest: Schema.Codec<DestroySecretVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "DestroySecretVersionRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -466,7 +466,7 @@ export interface UserManagedStatus {
   replicas?: ReadonlyArray<ReplicaStatus>;
 }
 
-export const UserManagedStatus: Schema.Schema<UserManagedStatus> =
+export const UserManagedStatus: Schema.Codec<UserManagedStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replicas: Schema.optional(Schema.Array(ReplicaStatus)),
   }).annotate({ identifier: "UserManagedStatus" });
@@ -478,7 +478,7 @@ export interface ReplicationStatus {
   userManaged?: UserManagedStatus;
 }
 
-export const ReplicationStatus: Schema.Schema<ReplicationStatus> =
+export const ReplicationStatus: Schema.Codec<ReplicationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     automatic: Schema.optional(AutomaticStatus),
     userManaged: Schema.optional(UserManagedStatus),
@@ -510,7 +510,7 @@ export interface SecretVersion {
   name?: string;
 }
 
-export const SecretVersion: Schema.Schema<SecretVersion> =
+export const SecretVersion: Schema.Codec<SecretVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destroyTime: Schema.optional(Schema.String),
     scheduledDestroyTime: Schema.optional(Schema.String),
@@ -532,7 +532,7 @@ export interface ListSecretVersionsResponse {
   totalSize?: number;
 }
 
-export const ListSecretVersionsResponse: Schema.Schema<ListSecretVersionsResponse> =
+export const ListSecretVersionsResponse: Schema.Codec<ListSecretVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     versions: Schema.optional(Schema.Array(SecretVersion)),
@@ -544,7 +544,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -554,7 +554,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -564,7 +564,7 @@ export interface AddSecretVersionRequest {
   payload?: SecretPayload;
 }
 
-export const AddSecretVersionRequest: Schema.Schema<AddSecretVersionRequest> =
+export const AddSecretVersionRequest: Schema.Codec<AddSecretVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     payload: Schema.optional(SecretPayload),
   }).annotate({ identifier: "AddSecretVersionRequest" });
@@ -574,7 +574,7 @@ export interface EnableSecretVersionRequest {
   etag?: string;
 }
 
-export const EnableSecretVersionRequest: Schema.Schema<EnableSecretVersionRequest> =
+export const EnableSecretVersionRequest: Schema.Codec<EnableSecretVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnableSecretVersionRequest" });
@@ -586,7 +586,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -671,7 +671,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -706,7 +706,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -737,7 +737,7 @@ export const GetProjectsLocationsSecretsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSecretsRequest>;
 
 export type GetProjectsLocationsSecretsResponse = Secret;
 export const GetProjectsLocationsSecretsResponse =
@@ -777,7 +777,7 @@ export const PatchProjectsLocationsSecretsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSecretsRequest>;
 
 export type PatchProjectsLocationsSecretsResponse = Secret;
 export const PatchProjectsLocationsSecretsResponse =
@@ -820,7 +820,7 @@ export const TestIamPermissionsProjectsLocationsSecretsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsSecretsRequest>;
 
 export type TestIamPermissionsProjectsLocationsSecretsResponse =
   TestIamPermissionsResponse;
@@ -860,7 +860,7 @@ export const AddVersionProjectsLocationsSecretsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}:addVersion", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AddVersionProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<AddVersionProjectsLocationsSecretsRequest>;
 
 export type AddVersionProjectsLocationsSecretsResponse = SecretVersion;
 export const AddVersionProjectsLocationsSecretsResponse =
@@ -903,7 +903,7 @@ export const SetIamPolicyProjectsLocationsSecretsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsSecretsRequest>;
 
 export type SetIamPolicyProjectsLocationsSecretsResponse = Policy;
 export const SetIamPolicyProjectsLocationsSecretsResponse =
@@ -942,7 +942,7 @@ export const DeleteProjectsLocationsSecretsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSecretsRequest>;
 
 export type DeleteProjectsLocationsSecretsResponse = Empty;
 export const DeleteProjectsLocationsSecretsResponse =
@@ -983,7 +983,7 @@ export const GetIamPolicyProjectsLocationsSecretsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsSecretsRequest>;
 
 export type GetIamPolicyProjectsLocationsSecretsResponse = Policy;
 export const GetIamPolicyProjectsLocationsSecretsResponse =
@@ -1026,7 +1026,7 @@ export const ListProjectsLocationsSecretsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/secrets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSecretsRequest>;
 
 export type ListProjectsLocationsSecretsResponse = ListSecretsResponse;
 export const ListProjectsLocationsSecretsResponse =
@@ -1070,7 +1070,7 @@ export const CreateProjectsLocationsSecretsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/secrets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSecretsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSecretsRequest>;
 
 export type CreateProjectsLocationsSecretsResponse = Secret;
 export const CreateProjectsLocationsSecretsResponse =
@@ -1109,7 +1109,7 @@ export const DisableProjectsLocationsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:disable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DisableProjectsLocationsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<DisableProjectsLocationsSecretsVersionsRequest>;
 
 export type DisableProjectsLocationsSecretsVersionsResponse = SecretVersion;
 export const DisableProjectsLocationsSecretsVersionsResponse =
@@ -1145,7 +1145,7 @@ export const GetProjectsLocationsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSecretsVersionsRequest>;
 
 export type GetProjectsLocationsSecretsVersionsResponse = SecretVersion;
 export const GetProjectsLocationsSecretsVersionsResponse =
@@ -1179,7 +1179,7 @@ export const AccessProjectsLocationsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:access" }),
     svc,
-  ) as unknown as Schema.Schema<AccessProjectsLocationsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<AccessProjectsLocationsSecretsVersionsRequest>;
 
 export type AccessProjectsLocationsSecretsVersionsResponse =
   AccessSecretVersionResponse;
@@ -1217,7 +1217,7 @@ export const EnableProjectsLocationsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:enable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EnableProjectsLocationsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<EnableProjectsLocationsSecretsVersionsRequest>;
 
 export type EnableProjectsLocationsSecretsVersionsResponse = SecretVersion;
 export const EnableProjectsLocationsSecretsVersionsResponse =
@@ -1256,7 +1256,7 @@ export const DestroyProjectsLocationsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:destroy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DestroyProjectsLocationsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<DestroyProjectsLocationsSecretsVersionsRequest>;
 
 export type DestroyProjectsLocationsSecretsVersionsResponse = SecretVersion;
 export const DestroyProjectsLocationsSecretsVersionsResponse =
@@ -1301,7 +1301,7 @@ export const ListProjectsLocationsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSecretsVersionsRequest>;
 
 export type ListProjectsLocationsSecretsVersionsResponse =
   ListSecretVersionsResponse;
@@ -1349,7 +1349,7 @@ export const ListProjectsSecretsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/secrets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSecretsRequest>;
 
 export type ListProjectsSecretsResponse = ListSecretsResponse;
 export const ListProjectsSecretsResponse =
@@ -1390,7 +1390,7 @@ export const CreateProjectsSecretsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/secrets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsSecretsRequest>;
 
 export type CreateProjectsSecretsResponse = Secret;
 export const CreateProjectsSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Secret;
@@ -1430,7 +1430,7 @@ export const GetIamPolicyProjectsSecretsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsSecretsRequest>;
 
 export type GetIamPolicyProjectsSecretsResponse = Policy;
 export const GetIamPolicyProjectsSecretsResponse =
@@ -1467,7 +1467,7 @@ export const DeleteProjectsSecretsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsSecretsRequest>;
 
 export type DeleteProjectsSecretsResponse = Empty;
 export const DeleteProjectsSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1505,7 +1505,7 @@ export const AddVersionProjectsSecretsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}:addVersion", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AddVersionProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<AddVersionProjectsSecretsRequest>;
 
 export type AddVersionProjectsSecretsResponse = SecretVersion;
 export const AddVersionProjectsSecretsResponse =
@@ -1548,7 +1548,7 @@ export const SetIamPolicyProjectsSecretsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsSecretsRequest>;
 
 export type SetIamPolicyProjectsSecretsResponse = Policy;
 export const SetIamPolicyProjectsSecretsResponse =
@@ -1591,7 +1591,7 @@ export const TestIamPermissionsProjectsSecretsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsSecretsRequest>;
 
 export type TestIamPermissionsProjectsSecretsResponse =
   TestIamPermissionsResponse;
@@ -1628,7 +1628,7 @@ export const GetProjectsSecretsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSecretsRequest>;
 
 export type GetProjectsSecretsResponse = Secret;
 export const GetProjectsSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Secret;
@@ -1664,7 +1664,7 @@ export const PatchProjectsSecretsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsSecretsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsSecretsRequest>;
 
 export type PatchProjectsSecretsResponse = Secret;
 export const PatchProjectsSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Secret;
@@ -1702,7 +1702,7 @@ export const DisableProjectsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:disable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DisableProjectsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<DisableProjectsSecretsVersionsRequest>;
 
 export type DisableProjectsSecretsVersionsResponse = SecretVersion;
 export const DisableProjectsSecretsVersionsResponse =
@@ -1738,7 +1738,7 @@ export const GetProjectsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsSecretsVersionsRequest>;
 
 export type GetProjectsSecretsVersionsResponse = SecretVersion;
 export const GetProjectsSecretsVersionsResponse =
@@ -1772,7 +1772,7 @@ export const AccessProjectsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:access" }),
     svc,
-  ) as unknown as Schema.Schema<AccessProjectsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<AccessProjectsSecretsVersionsRequest>;
 
 export type AccessProjectsSecretsVersionsResponse = AccessSecretVersionResponse;
 export const AccessProjectsSecretsVersionsResponse =
@@ -1815,7 +1815,7 @@ export const ListProjectsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsSecretsVersionsRequest>;
 
 export type ListProjectsSecretsVersionsResponse = ListSecretVersionsResponse;
 export const ListProjectsSecretsVersionsResponse =
@@ -1856,7 +1856,7 @@ export const EnableProjectsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:enable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EnableProjectsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<EnableProjectsSecretsVersionsRequest>;
 
 export type EnableProjectsSecretsVersionsResponse = SecretVersion;
 export const EnableProjectsSecretsVersionsResponse =
@@ -1895,7 +1895,7 @@ export const DestroyProjectsSecretsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:destroy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DestroyProjectsSecretsVersionsRequest>;
+  ) as unknown as Schema.Codec<DestroyProjectsSecretsVersionsRequest>;
 
 export type DestroyProjectsSecretsVersionsResponse = SecretVersion;
 export const DestroyProjectsSecretsVersionsResponse =

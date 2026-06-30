@@ -9,6 +9,15 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesControllerListOrganizationMembershipsForResourceInput {
+  resource_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  permission_slug: string;
+  assignment?: "direct" | "indirect";
+}
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
@@ -23,11 +32,41 @@ export const AuthorizationResourcesControllerListOrganizationMembershipsForResou
       method: "GET",
       path: "/authorization/resources/{resource_id}/organization_memberships",
     }),
-  );
-export type AuthorizationResourcesControllerListOrganizationMembershipsForResourceInput =
-  typeof AuthorizationResourcesControllerListOrganizationMembershipsForResourceInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationResourcesControllerListOrganizationMembershipsForResourceInput>;
 
 // Output Schema
+export interface AuthorizationResourcesControllerListOrganizationMembershipsForResourceOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    user_id: string;
+    organization_id: string;
+    status: "active" | "inactive" | "pending";
+    directory_managed: boolean;
+    organization_name?: string;
+    custom_attributes?: Record<string, unknown>;
+    created_at: string;
+    updated_at: string;
+    user: {
+      object?: string;
+      id?: string;
+      first_name?: string | null;
+      last_name?: string | null;
+      name?: string | null;
+      profile_picture_url?: string | null;
+      email?: string;
+      email_verified?: boolean;
+      external_id?: string | null;
+      metadata?: Record<string, string>;
+      last_sign_in_at?: string | null;
+      locale?: string | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -69,9 +108,7 @@ export const AuthorizationResourcesControllerListOrganizationMembershipsForResou
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type AuthorizationResourcesControllerListOrganizationMembershipsForResourceOutput =
-  typeof AuthorizationResourcesControllerListOrganizationMembershipsForResourceOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationResourcesControllerListOrganizationMembershipsForResourceOutput>;
 
 // The operation
 /**

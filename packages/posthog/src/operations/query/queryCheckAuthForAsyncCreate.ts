@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface QueryCheckAuthForAsyncCreateInput {
+  project_id: string;
+}
 export const QueryCheckAuthForAsyncCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,15 @@ export const QueryCheckAuthForAsyncCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/query/check_auth_for_async/",
     }),
-  );
-export type QueryCheckAuthForAsyncCreateInput =
-  typeof QueryCheckAuthForAsyncCreateInput.Type;
+  ) as unknown as Schema.Codec<QueryCheckAuthForAsyncCreateInput>;
 
 // Output Schema
+export type QueryCheckAuthForAsyncCreateOutput = Record<string, unknown>;
 export const QueryCheckAuthForAsyncCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type QueryCheckAuthForAsyncCreateOutput =
-  typeof QueryCheckAuthForAsyncCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<QueryCheckAuthForAsyncCreateOutput>;
 
 // The operation
 /**

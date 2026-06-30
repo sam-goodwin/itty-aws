@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface RequestAiAccessCreateInput {
+  id: string;
+}
 export const RequestAiAccessCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,16 +14,16 @@ export const RequestAiAccessCreateInput =
       method: "POST",
       path: "/api/organizations/{id}/request_ai_access/",
     }),
-  );
-export type RequestAiAccessCreateInput = typeof RequestAiAccessCreateInput.Type;
+  ) as unknown as Schema.Codec<RequestAiAccessCreateInput>;
 
 // Output Schema
+export interface RequestAiAccessCreateOutput {
+  success: boolean;
+}
 export const RequestAiAccessCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
-  });
-export type RequestAiAccessCreateOutput =
-  typeof RequestAiAccessCreateOutput.Type;
+  }) as unknown as Schema.Codec<RequestAiAccessCreateOutput>;
 
 // The operation
 /**

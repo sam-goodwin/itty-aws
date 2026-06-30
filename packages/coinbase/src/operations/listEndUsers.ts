@@ -3,19 +3,117 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListEndUsersInput {
+  pageSize?: number;
+  pageToken?: string;
+  sort?: string;
+}
 export const ListEndUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
   sort: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v2/end-users" }));
-export type ListEndUsersInput = typeof ListEndUsersInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/end-users" }),
+) as unknown as Schema.Codec<ListEndUsersInput>;
 
 // Output Schema
+export interface ListEndUsersOutput {
+  endUsers: {
+    userId: string;
+    authenticationMethods: (
+      | { type: "email"; email: string }
+      | { type: "sms"; phoneNumber: string }
+      | { type: "jwt"; kid: string; sub: string }
+      | {
+          type: "google" | "apple" | "x" | "telegram" | "github";
+          sub: string;
+          email?: string;
+          name?: string;
+          username?: string;
+        }
+      | {
+          type: "google" | "apple" | "x" | "telegram" | "github";
+          id: number;
+          firstName?: string;
+          lastName?: string;
+          photoUrl?: string;
+          authDate: number;
+          username?: string;
+        }
+      | { type: "siwe"; address: string }
+    )[];
+    mfaMethods?: {
+      enrollmentPromptedAt?: string;
+      totp?: { enrolledAt: string };
+      sms?: { enrolledAt: string };
+    };
+    evmAccounts: string[];
+    evmAccountObjects: { address: string; createdAt: string }[];
+    evmSmartAccounts: string[];
+    evmSmartAccountObjects: {
+      address: string;
+      ownerAddresses: string[];
+      createdAt: string;
+    }[];
+    solanaAccounts: string[];
+    solanaAccountObjects: { address: string; createdAt: string }[];
+    createdAt: string;
+  }[];
+  nextPageToken?: string;
+}
 export const ListEndUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endUsers: Schema.Array(
     Schema.Struct({
       userId: Schema.String,
-      authenticationMethods: Schema.Array(Schema.Unknown),
+      authenticationMethods: Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            type: Schema.Literals(["email"]),
+            email: Schema.String,
+          }),
+          Schema.Struct({
+            type: Schema.Literals(["sms"]),
+            phoneNumber: Schema.String,
+          }),
+          Schema.Struct({
+            type: Schema.Literals(["jwt"]),
+            kid: Schema.String,
+            sub: Schema.String,
+          }),
+          Schema.Struct({
+            type: Schema.Literals([
+              "google",
+              "apple",
+              "x",
+              "telegram",
+              "github",
+            ]),
+            sub: Schema.String,
+            email: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            username: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            type: Schema.Literals([
+              "google",
+              "apple",
+              "x",
+              "telegram",
+              "github",
+            ]),
+            id: Schema.Number,
+            firstName: Schema.optional(Schema.String),
+            lastName: Schema.optional(Schema.String),
+            photoUrl: Schema.optional(Schema.String),
+            authDate: Schema.Number,
+            username: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            type: Schema.Literals(["siwe"]),
+            address: Schema.String,
+          }),
+        ]),
+      ),
       mfaMethods: Schema.optional(
         Schema.Struct({
           enrollmentPromptedAt: Schema.optional(Schema.String),
@@ -57,8 +155,7 @@ export const ListEndUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextPageToken: Schema.optional(Schema.String),
-});
-export type ListEndUsersOutput = typeof ListEndUsersOutput.Type;
+}) as unknown as Schema.Codec<ListEndUsersOutput>;
 
 // The operation
 /**

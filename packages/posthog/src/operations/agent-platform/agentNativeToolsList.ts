@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentNativeToolsListInput {
+  project_id: string;
+}
 export const AgentNativeToolsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,10 +14,12 @@ export const AgentNativeToolsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_native_tools/",
     }),
-  );
-export type AgentNativeToolsListInput = typeof AgentNativeToolsListInput.Type;
+  ) as unknown as Schema.Codec<AgentNativeToolsListInput>;
 
 // Output Schema
+export type AgentNativeToolsListOutput = {
+  tools: { id: string; schema: Record<string, unknown> }[];
+}[];
 export const AgentNativeToolsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -25,8 +30,7 @@ export const AgentNativeToolsListOutput =
         }),
       ),
     }),
-  );
-export type AgentNativeToolsListOutput = typeof AgentNativeToolsListOutput.Type;
+  ) as unknown as Schema.Codec<AgentNativeToolsListOutput>;
 
 // The operation
 /**

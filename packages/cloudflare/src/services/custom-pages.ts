@@ -5,12 +5,118 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-pages
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListAssetsResponseResult {
+  /** A short description of the custom asset. */
+  description?: string | null;
+  lastUpdated?: string | null;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (\_). */
+  name?: string | null;
+  /** The size of the asset content in bytes. */
+  sizeBytes?: number | null;
+  /** The URL where the asset content is fetched from. */
+  url?: string | null;
+}
+const ListAssetsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        description: "description",
+        lastUpdated: "last_updated",
+        name: "name",
+        sizeBytes: "size_bytes",
+        url: "url",
+      }),
+    ),
+) as unknown as Schema.Codec<ListAssetsResponseResult>;
+
+interface ListAssetsResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListAssetsResponseResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+) as unknown as Schema.Codec<ListAssetsResponseResultInfo>;
+
+interface ListCustomPagesResponseResult {
+  id?: string | null;
+  createdOn?: string | null;
+  description?: string | null;
+  modifiedOn?: string | null;
+  previewTarget?: string | null;
+  requiredTokens?: string[] | null;
+  /** The custom page state. */
+  state?: "default" | "customized" | (string & {}) | null;
+  /** The URL associated with the custom page. */
+  url?: string | null;
+}
+const ListCustomPagesResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      previewTarget: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      requiredTokens: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      state: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["default", "customized"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        modifiedOn: "modified_on",
+        previewTarget: "preview_target",
+        requiredTokens: "required_tokens",
+        state: "state",
+        url: "url",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListCustomPagesResponseResult>;
 
 // =============================================================================
 // Asset
@@ -45,7 +151,7 @@ export const GetAssetForAccountRequest =
         path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetAssetForAccountRequest>;
+  ) as unknown as Schema.Codec<GetAssetForAccountRequest>;
 
 export const GetAssetForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -58,7 +164,7 @@ export const GetAssetForZoneRequest =
         path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetAssetForZoneRequest>;
+  ) as unknown as Schema.Codec<GetAssetForZoneRequest>;
 
 export interface GetAssetResponse {
   /** A short description of the custom asset. */
@@ -90,7 +196,7 @@ export const GetAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       }),
     )
     .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetAssetResponse>;
+) as unknown as Schema.Codec<GetAssetResponse>;
 
 export type GetAssetError = DefaultErrors;
 
@@ -147,7 +253,7 @@ export const ListAssetsForAccountRequest =
         path: "/accounts/{account_id}/custom_pages/assets",
       }),
     ),
-  ) as unknown as Schema.Schema<ListAssetsForAccountRequest>;
+  ) as unknown as Schema.Codec<ListAssetsForAccountRequest>;
 
 export const ListAssetsForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -157,7 +263,7 @@ export const ListAssetsForZoneRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages/assets" }),
     ),
-  ) as unknown as Schema.Schema<ListAssetsForZoneRequest>;
+  ) as unknown as Schema.Codec<ListAssetsForZoneRequest>;
 
 export interface ListAssetsResponse {
   result: {
@@ -178,53 +284,12 @@ export interface ListAssetsResponse {
 export const ListAssetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastUpdated: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          sizeBytes: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            description: "description",
-            lastUpdated: "last_updated",
-            name: "name",
-            sizeBytes: "size_bytes",
-            url: "url",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListAssetsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListAssetsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListAssetsResponse>;
+) as unknown as Schema.Codec<ListAssetsResponse>;
 
 export type ListAssetsError = DefaultErrors;
 
@@ -300,7 +365,7 @@ export const CreateAssetForAccountRequest =
         path: "/accounts/{account_id}/custom_pages/assets",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateAssetForAccountRequest>;
+  ) as unknown as Schema.Codec<CreateAssetForAccountRequest>;
 
 export const CreateAssetForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -310,7 +375,7 @@ export const CreateAssetForZoneRequest =
     }).pipe(
       T.Http({ method: "POST", path: "/zones/{zone_id}/custom_pages/assets" }),
     ),
-  ) as unknown as Schema.Schema<CreateAssetForZoneRequest>;
+  ) as unknown as Schema.Codec<CreateAssetForZoneRequest>;
 
 export interface CreateAssetResponse {
   /** A short description of the custom asset. */
@@ -343,7 +408,7 @@ export const CreateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateAssetResponse>;
+) as unknown as Schema.Codec<CreateAssetResponse>;
 
 export type CreateAssetError = DefaultErrors;
 
@@ -404,7 +469,7 @@ export const UpdateAssetForAccountRequest =
         path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateAssetForAccountRequest>;
+  ) as unknown as Schema.Codec<UpdateAssetForAccountRequest>;
 
 export const UpdateAssetForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -417,7 +482,7 @@ export const UpdateAssetForZoneRequest =
         path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateAssetForZoneRequest>;
+  ) as unknown as Schema.Codec<UpdateAssetForZoneRequest>;
 
 export interface UpdateAssetResponse {
   /** A short description of the custom asset. */
@@ -450,7 +515,7 @@ export const UpdateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateAssetResponse>;
+) as unknown as Schema.Codec<UpdateAssetResponse>;
 
 export type UpdateAssetError = DefaultErrors;
 
@@ -505,7 +570,7 @@ export const DeleteAssetForAccountRequest =
         path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteAssetForAccountRequest>;
+  ) as unknown as Schema.Codec<DeleteAssetForAccountRequest>;
 
 export const DeleteAssetForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -518,13 +583,13 @@ export const DeleteAssetForZoneRequest =
         path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteAssetForZoneRequest>;
+  ) as unknown as Schema.Codec<DeleteAssetForZoneRequest>;
 
 export type DeleteAssetResponse = unknown;
 
 export const DeleteAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
-) as unknown as Schema.Schema<DeleteAssetResponse>;
+) as unknown as Schema.Codec<DeleteAssetResponse>;
 
 export type DeleteAssetError = DefaultErrors;
 
@@ -583,7 +648,7 @@ export const GetCustomPageForAccountRequest =
         path: "/accounts/{account_id}/custom_pages/{identifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetCustomPageForAccountRequest>;
+  ) as unknown as Schema.Codec<GetCustomPageForAccountRequest>;
 
 export const GetCustomPageForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -596,7 +661,7 @@ export const GetCustomPageForZoneRequest =
         path: "/zones/{zone_id}/custom_pages/{identifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetCustomPageForZoneRequest>;
+  ) as unknown as Schema.Codec<GetCustomPageForZoneRequest>;
 
 export interface GetCustomPageResponse {
   id?: string | null;
@@ -648,7 +713,7 @@ export const GetCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetCustomPageResponse>;
+) as unknown as Schema.Codec<GetCustomPageResponse>;
 
 export type GetCustomPageError = DefaultErrors;
 
@@ -696,7 +761,7 @@ export const ListCustomPagesForAccountRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/custom_pages" }),
     ),
-  ) as unknown as Schema.Schema<ListCustomPagesForAccountRequest>;
+  ) as unknown as Schema.Codec<ListCustomPagesForAccountRequest>;
 
 export const ListCustomPagesForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -704,7 +769,7 @@ export const ListCustomPagesForZoneRequest =
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListCustomPagesBaseFields,
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages" })),
-  ) as unknown as Schema.Schema<ListCustomPagesForZoneRequest>;
+  ) as unknown as Schema.Codec<ListCustomPagesForZoneRequest>;
 
 export interface ListCustomPagesResponse {
   result: {
@@ -722,49 +787,9 @@ export interface ListCustomPagesResponse {
 export const ListCustomPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          createdOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          modifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          previewTarget: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          requiredTokens: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["default", "customized"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdOn: "created_on",
-            description: "description",
-            modifiedOn: "modified_on",
-            previewTarget: "preview_target",
-            requiredTokens: "required_tokens",
-            state: "state",
-            url: "url",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListCustomPagesResponseResult),
     }),
-  ) as unknown as Schema.Schema<ListCustomPagesResponse>;
+  ) as unknown as Schema.Codec<ListCustomPagesResponse>;
 
 export type ListCustomPagesError = DefaultErrors;
 
@@ -836,7 +861,7 @@ export const PutCustomPageForAccountRequest =
         path: "/accounts/{account_id}/custom_pages/{identifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<PutCustomPageForAccountRequest>;
+  ) as unknown as Schema.Codec<PutCustomPageForAccountRequest>;
 
 export const PutCustomPageForZoneRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
@@ -849,7 +874,7 @@ export const PutCustomPageForZoneRequest =
         path: "/zones/{zone_id}/custom_pages/{identifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<PutCustomPageForZoneRequest>;
+  ) as unknown as Schema.Codec<PutCustomPageForZoneRequest>;
 
 export interface PutCustomPageResponse {
   id?: string | null;
@@ -901,7 +926,7 @@ export const PutCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PutCustomPageResponse>;
+) as unknown as Schema.Codec<PutCustomPageResponse>;
 
 export type PutCustomPageError = DefaultErrors;
 

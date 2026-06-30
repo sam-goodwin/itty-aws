@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseColumnAnnotationsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const WarehouseColumnAnnotationsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,20 @@ export const WarehouseColumnAnnotationsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/warehouse_column_annotations/{id}/",
     }),
-  );
-export type WarehouseColumnAnnotationsRetrieveInput =
-  typeof WarehouseColumnAnnotationsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<WarehouseColumnAnnotationsRetrieveInput>;
 
 // Output Schema
+export interface WarehouseColumnAnnotationsRetrieveOutput {
+  id: string;
+  table: string;
+  column_name?: string;
+  description: string;
+  description_source: "canonical" | "ai_generated" | "user_edited";
+  ai_model: string;
+  is_user_edited: boolean;
+  created_at: string;
+  updated_at: string | null;
+}
 export const WarehouseColumnAnnotationsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -32,9 +45,7 @@ export const WarehouseColumnAnnotationsRetrieveOutput =
     is_user_edited: Schema.Boolean,
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type WarehouseColumnAnnotationsRetrieveOutput =
-  typeof WarehouseColumnAnnotationsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseColumnAnnotationsRetrieveOutput>;
 
 // The operation
 /**

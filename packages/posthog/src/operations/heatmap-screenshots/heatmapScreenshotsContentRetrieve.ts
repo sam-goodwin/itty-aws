@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HeatmapScreenshotsContentRetrieveInput {
+  id: string;
+  project_id: string;
+  width?: number;
+}
 export const HeatmapScreenshotsContentRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const HeatmapScreenshotsContentRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/heatmap_screenshots/{id}/content/",
     }),
-  );
-export type HeatmapScreenshotsContentRetrieveInput =
-  typeof HeatmapScreenshotsContentRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HeatmapScreenshotsContentRetrieveInput>;
 
 // Output Schema
+export type HeatmapScreenshotsContentRetrieveOutput = void;
 export const HeatmapScreenshotsContentRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HeatmapScreenshotsContentRetrieveOutput =
-  typeof HeatmapScreenshotsContentRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HeatmapScreenshotsContentRetrieveOutput>;
 
 // The operation
 /**

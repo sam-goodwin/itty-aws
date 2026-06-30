@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1PatchNetworkRestrictionsInput {
+  ref: string;
+  add?: { dbAllowedCidrs?: string[]; dbAllowedCidrsV6?: string[] };
+  remove?: { dbAllowedCidrs?: string[]; dbAllowedCidrsV6?: string[] };
+}
 export const V1PatchNetworkRestrictionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -24,11 +29,17 @@ export const V1PatchNetworkRestrictionsInput =
       method: "PATCH",
       path: "/v1/projects/{ref}/network-restrictions",
     }),
-  );
-export type V1PatchNetworkRestrictionsInput =
-  typeof V1PatchNetworkRestrictionsInput.Type;
+  ) as unknown as Schema.Codec<V1PatchNetworkRestrictionsInput>;
 
 // Output Schema
+export interface V1PatchNetworkRestrictionsOutput {
+  entitlement: "disallowed" | "allowed";
+  config: { dbAllowedCidrs?: { address: string; type: "v4" | "v6" }[] };
+  old_config?: { dbAllowedCidrs?: { address: string; type: "v4" | "v6" }[] };
+  updated_at?: string;
+  applied_at?: string;
+  status: "stored" | "applied";
+}
 export const V1PatchNetworkRestrictionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entitlement: Schema.Literals(["disallowed", "allowed"]),
@@ -57,9 +68,7 @@ export const V1PatchNetworkRestrictionsOutput =
     updated_at: Schema.optional(Schema.String),
     applied_at: Schema.optional(Schema.String),
     status: Schema.Literals(["stored", "applied"]),
-  });
-export type V1PatchNetworkRestrictionsOutput =
-  typeof V1PatchNetworkRestrictionsOutput.Type;
+  }) as unknown as Schema.Codec<V1PatchNetworkRestrictionsOutput>;
 
 // The operation
 /**

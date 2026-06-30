@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTestHelpersTestClocksTestClockInput {
+  test_clock: string;
+  expand?: string;
+}
 export const GetTestHelpersTestClocksTestClockInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     test_clock: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,20 @@ export const GetTestHelpersTestClocksTestClockInput =
       path: "/v1/test_helpers/test_clocks/{test_clock}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetTestHelpersTestClocksTestClockInput =
-  typeof GetTestHelpersTestClocksTestClockInput.Type;
+  ) as unknown as Schema.Codec<GetTestHelpersTestClocksTestClockInput>;
 
 // Output Schema
+export interface GetTestHelpersTestClocksTestClockOutput {
+  created: number;
+  deletes_after: number;
+  frozen_time: number;
+  id: string;
+  livemode: boolean;
+  name: string | null;
+  object: "test_helpers.test_clock";
+  status: "advancing" | "internal_failure" | "ready";
+  status_details: { advancing?: { target_frozen_time: number } };
+}
 export const GetTestHelpersTestClocksTestClockOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -35,9 +48,7 @@ export const GetTestHelpersTestClocksTestClockOutput =
         }),
       ),
     }),
-  });
-export type GetTestHelpersTestClocksTestClockOutput =
-  typeof GetTestHelpersTestClocksTestClockOutput.Type;
+  }) as unknown as Schema.Codec<GetTestHelpersTestClocksTestClockOutput>;
 
 // The operation
 /**

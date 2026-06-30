@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service turnstile
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -33,6 +33,106 @@ export class WidgetNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListWidgetsResponseResult {
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
+  botFightMode: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, this setting can determine the clearance level to be set */
+  clearanceLevel:
+    | "no_clearance"
+    | "jschallenge"
+    | "managed"
+    | "interactive"
+    | (string & {});
+  /** When the widget was created. */
+  createdOn: string;
+  domains: string[];
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId: boolean;
+  /** Widget Mode */
+  mode: "non-interactive" | "invisible" | "managed" | (string & {});
+  /** When the widget was modified. */
+  modifiedOn: string;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you set this to a meaningful string to make it easier to identify your widget, and where it is used. */
+  name: string;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
+  offlabel: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
+  region: "world" | "china" | (string & {});
+  /** Widget item identifier tag. */
+  sitekey: string;
+}
+const ListWidgetsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      botFightMode: Schema.Boolean,
+      clearanceLevel: Schema.Union([
+        Schema.Literals([
+          "no_clearance",
+          "jschallenge",
+          "managed",
+          "interactive",
+        ]),
+        Schema.String,
+      ]),
+      createdOn: Schema.String,
+      domains: Schema.Array(Schema.String),
+      ephemeralId: Schema.Boolean,
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      offlabel: Schema.Boolean,
+      region: Schema.Union([
+        Schema.Literals(["world", "china"]),
+        Schema.String,
+      ]),
+      sitekey: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        botFightMode: "bot_fight_mode",
+        clearanceLevel: "clearance_level",
+        createdOn: "created_on",
+        domains: "domains",
+        ephemeralId: "ephemeral_id",
+        mode: "mode",
+        modifiedOn: "modified_on",
+        name: "name",
+        offlabel: "offlabel",
+        region: "region",
+        sitekey: "sitekey",
+      }),
+    ),
+) as unknown as Schema.Codec<ListWidgetsResponseResult>;
+
+interface ListWidgetsResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListWidgetsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListWidgetsResponseResultInfo>;
+
+// =============================================================================
 // SecretWidget
 // =============================================================================
 
@@ -57,7 +157,7 @@ export const RotateSecretWidgetRequest =
         path: "/accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret",
       }),
     ),
-  ) as unknown as Schema.Schema<RotateSecretWidgetRequest>;
+  ) as unknown as Schema.Codec<RotateSecretWidgetRequest>;
 
 export interface RotateSecretWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -137,7 +237,7 @@ export const RotateSecretWidgetResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<RotateSecretWidgetResponse>;
+  ) as unknown as Schema.Codec<RotateSecretWidgetResponse>;
 
 export type RotateSecretWidgetError = DefaultErrors;
 
@@ -172,7 +272,7 @@ export const GetWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
     }),
   ),
-) as unknown as Schema.Schema<GetWidgetRequest>;
+) as unknown as Schema.Codec<GetWidgetRequest>;
 
 export interface GetWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -252,7 +352,7 @@ export const GetWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetWidgetResponse>;
+) as unknown as Schema.Codec<GetWidgetResponse>;
 
 export type GetWidgetError = DefaultErrors | WidgetNotFound | Forbidden;
 
@@ -314,7 +414,7 @@ export const ListWidgetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/challenges/widgets",
       }),
     ),
-) as unknown as Schema.Schema<ListWidgetsRequest>;
+) as unknown as Schema.Codec<ListWidgetsRequest>;
 
 export interface ListWidgetsResponse {
   result: {
@@ -346,73 +446,12 @@ export interface ListWidgetsResponse {
 export const ListWidgetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          botFightMode: Schema.Boolean,
-          clearanceLevel: Schema.Union([
-            Schema.Literals([
-              "no_clearance",
-              "jschallenge",
-              "managed",
-              "interactive",
-            ]),
-            Schema.String,
-          ]),
-          createdOn: Schema.String,
-          domains: Schema.Array(Schema.String),
-          ephemeralId: Schema.Boolean,
-          mode: Schema.Union([
-            Schema.Literals(["non-interactive", "invisible", "managed"]),
-            Schema.String,
-          ]),
-          modifiedOn: Schema.String,
-          name: Schema.String,
-          offlabel: Schema.Boolean,
-          region: Schema.Union([
-            Schema.Literals(["world", "china"]),
-            Schema.String,
-          ]),
-          sitekey: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            botFightMode: "bot_fight_mode",
-            clearanceLevel: "clearance_level",
-            createdOn: "created_on",
-            domains: "domains",
-            ephemeralId: "ephemeral_id",
-            mode: "mode",
-            modifiedOn: "modified_on",
-            name: "name",
-            offlabel: "offlabel",
-            region: "region",
-            sitekey: "sitekey",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListWidgetsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListWidgetsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListWidgetsResponse>;
+) as unknown as Schema.Codec<ListWidgetsResponse>;
 
 export type ListWidgetsError = DefaultErrors;
 
@@ -537,7 +576,7 @@ export const CreateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/challenges/widgets",
       }),
     ),
-) as unknown as Schema.Schema<CreateWidgetRequest>;
+) as unknown as Schema.Codec<CreateWidgetRequest>;
 
 export interface CreateWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -617,7 +656,7 @@ export const CreateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateWidgetResponse>;
+) as unknown as Schema.Codec<CreateWidgetResponse>;
 
 export type CreateWidgetError = DefaultErrors;
 
@@ -703,7 +742,7 @@ export const UpdateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateWidgetRequest>;
+) as unknown as Schema.Codec<UpdateWidgetRequest>;
 
 export interface UpdateWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -783,7 +822,7 @@ export const UpdateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateWidgetResponse>;
+) as unknown as Schema.Codec<UpdateWidgetResponse>;
 
 export type UpdateWidgetError = DefaultErrors;
 
@@ -815,7 +854,7 @@ export const DeleteWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteWidgetRequest>;
+) as unknown as Schema.Codec<DeleteWidgetRequest>;
 
 export interface DeleteWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -895,7 +934,7 @@ export const DeleteWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteWidgetResponse>;
+) as unknown as Schema.Codec<DeleteWidgetResponse>;
 
 export type DeleteWidgetError = DefaultErrors | WidgetNotFound | Forbidden;
 

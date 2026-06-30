@@ -4,12 +4,21 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ArmTemplatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  artifactSourceName: string;
+  name: string;
+  $expand?: string;
+}
 export const ArmTemplatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -23,10 +32,22 @@ export const ArmTemplatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/armtemplates/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type ArmTemplatesGetInput = typeof ArmTemplatesGetInput.Type;
+) as unknown as Schema.Codec<ArmTemplatesGetInput>;
 
 // Output Schema
+export interface ArmTemplatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArmTemplatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -45,8 +66,7 @@ export const ArmTemplatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ArmTemplatesGetOutput = typeof ArmTemplatesGetOutput.Type;
+}) as unknown as Schema.Codec<ArmTemplatesGetOutput>;
 
 // The operation
 /**
@@ -65,6 +85,16 @@ export const ArmTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArmTemplatesGetOutput,
 }));
 // Input Schema
+export interface ArmTemplatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  artifactSourceName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const ArmTemplatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -80,10 +110,25 @@ export const ArmTemplatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/armtemplates",
     apiVersion: "2018-09-15",
   }),
-);
-export type ArmTemplatesListInput = typeof ArmTemplatesListInput.Type;
+) as unknown as Schema.Codec<ArmTemplatesListInput>;
 
 // Output Schema
+export interface ArmTemplatesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ArmTemplatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -119,8 +164,7 @@ export const ArmTemplatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ArmTemplatesListOutput = typeof ArmTemplatesListOutput.Type;
+) as unknown as Schema.Codec<ArmTemplatesListOutput>;
 
 // The operation
 /**
@@ -141,6 +185,17 @@ export const ArmTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArmTemplatesListOutput,
 }));
 // Input Schema
+export interface ArtifactsGenerateArmTemplateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  artifactSourceName: string;
+  name: string;
+  virtualMachineName?: string;
+  parameters?: { name?: string; value?: string }[];
+  location?: string;
+  fileUploadOptions?: "UploadFilesAndGenerateSasTokens" | "None";
+}
 export const ArtifactsGenerateArmTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -167,18 +222,18 @@ export const ArtifactsGenerateArmTemplateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts/{name}/generateArmTemplate",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ArtifactsGenerateArmTemplateInput =
-  typeof ArtifactsGenerateArmTemplateInput.Type;
+  ) as unknown as Schema.Codec<ArtifactsGenerateArmTemplateInput>;
 
 // Output Schema
+export interface ArtifactsGenerateArmTemplateOutput {
+  template?: Record<string, unknown>;
+  parameters?: Record<string, unknown>;
+}
 export const ArtifactsGenerateArmTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  });
-export type ArtifactsGenerateArmTemplateOutput =
-  typeof ArtifactsGenerateArmTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactsGenerateArmTemplateOutput>;
 
 // The operation
 /**
@@ -197,6 +252,14 @@ export const ArtifactsGenerateArmTemplate =
     outputSchema: ArtifactsGenerateArmTemplateOutput,
   }));
 // Input Schema
+export interface ArtifactsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  artifactSourceName: string;
+  name: string;
+  $expand?: string;
+}
 export const ArtifactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -210,10 +273,22 @@ export const ArtifactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type ArtifactsGetInput = typeof ArtifactsGetInput.Type;
+) as unknown as Schema.Codec<ArtifactsGetInput>;
 
 // Output Schema
+export interface ArtifactsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -232,8 +307,7 @@ export const ArtifactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ArtifactsGetOutput = typeof ArtifactsGetOutput.Type;
+}) as unknown as Schema.Codec<ArtifactsGetOutput>;
 
 // The operation
 /**
@@ -252,6 +326,16 @@ export const ArtifactsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArtifactsGetOutput,
 }));
 // Input Schema
+export interface ArtifactsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  artifactSourceName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const ArtifactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -267,10 +351,25 @@ export const ArtifactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts",
     apiVersion: "2018-09-15",
   }),
-);
-export type ArtifactsListInput = typeof ArtifactsListInput.Type;
+) as unknown as Schema.Codec<ArtifactsListInput>;
 
 // Output Schema
+export interface ArtifactsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ArtifactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -294,8 +393,7 @@ export const ArtifactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ArtifactsListOutput = typeof ArtifactsListOutput.Type;
+}) as unknown as Schema.Codec<ArtifactsListOutput>;
 
 // The operation
 /**
@@ -316,6 +414,27 @@ export const ArtifactsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArtifactsListOutput,
 }));
 // Input Schema
+export interface ArtifactSourcesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    displayName?: string;
+    uri?: string;
+    sourceType?: "VsoGit" | "GitHub" | "StorageAccount";
+    folderPath?: string;
+    armTemplateFolderPath?: string;
+    branchRef?: string;
+    securityToken?: string;
+    status?: "Enabled" | "Disabled";
+    createdDate?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const ArtifactSourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -345,11 +464,22 @@ export const ArtifactSourcesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ArtifactSourcesCreateOrUpdateInput =
-  typeof ArtifactSourcesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ArtifactSourcesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ArtifactSourcesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactSourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -369,9 +499,7 @@ export const ArtifactSourcesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactSourcesCreateOrUpdateOutput =
-  typeof ArtifactSourcesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactSourcesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -389,6 +517,12 @@ export const ArtifactSourcesCreateOrUpdate =
     outputSchema: ArtifactSourcesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ArtifactSourcesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const ArtifactSourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -401,14 +535,12 @@ export const ArtifactSourcesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ArtifactSourcesDeleteInput = typeof ArtifactSourcesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ArtifactSourcesDeleteInput>;
 
 // Output Schema
+export type ArtifactSourcesDeleteOutput = void;
 export const ArtifactSourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArtifactSourcesDeleteOutput =
-  typeof ArtifactSourcesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactSourcesDeleteOutput>;
 
 // The operation
 /**
@@ -427,6 +559,13 @@ export const ArtifactSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArtifactSourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const ArtifactSourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -440,10 +579,22 @@ export const ArtifactSourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ArtifactSourcesGetInput = typeof ArtifactSourcesGetInput.Type;
+  ) as unknown as Schema.Codec<ArtifactSourcesGetInput>;
 
 // Output Schema
+export interface ArtifactSourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactSourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -463,8 +614,7 @@ export const ArtifactSourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactSourcesGetOutput = typeof ArtifactSourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactSourcesGetOutput>;
 
 // The operation
 /**
@@ -482,6 +632,15 @@ export const ArtifactSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArtifactSourcesGetOutput,
 }));
 // Input Schema
+export interface ArtifactSourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const ArtifactSourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -497,10 +656,25 @@ export const ArtifactSourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ArtifactSourcesListInput = typeof ArtifactSourcesListInput.Type;
+  ) as unknown as Schema.Codec<ArtifactSourcesListInput>;
 
 // Output Schema
+export interface ArtifactSourcesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ArtifactSourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -535,8 +709,7 @@ export const ArtifactSourcesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ArtifactSourcesListOutput = typeof ArtifactSourcesListOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactSourcesListOutput>;
 
 // The operation
 /**
@@ -556,6 +729,13 @@ export const ArtifactSourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArtifactSourcesListOutput,
 }));
 // Input Schema
+export interface ArtifactSourcesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const ArtifactSourcesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -569,10 +749,22 @@ export const ArtifactSourcesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ArtifactSourcesUpdateInput = typeof ArtifactSourcesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ArtifactSourcesUpdateInput>;
 
 // Output Schema
+export interface ArtifactSourcesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactSourcesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -592,9 +784,7 @@ export const ArtifactSourcesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactSourcesUpdateOutput =
-  typeof ArtifactSourcesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactSourcesUpdateOutput>;
 
 // The operation
 /**
@@ -613,6 +803,53 @@ export const ArtifactSourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CostsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    targetCost?: {
+      status?: "Enabled" | "Disabled";
+      target?: number;
+      costThresholds?: {
+        thresholdId?: string;
+        percentageThreshold?: { thresholdValue?: number };
+        displayOnChart?: "Enabled" | "Disabled";
+        sendNotificationWhenExceeded?: "Enabled" | "Disabled";
+        notificationSent?: string;
+      }[];
+      cycleStartDateTime?: string;
+      cycleEndDateTime?: string;
+      cycleType?: "CalendarMonth" | "Custom";
+    };
+    labCostSummary?: { estimatedLabCost?: number };
+    labCostDetails?: {
+      date?: string;
+      cost?: number;
+      costType?: "Unavailable" | "Reported" | "Projected";
+    }[];
+    resourceCosts?: {
+      resourcename?: string;
+      resourceUId?: string;
+      resourceCost?: number;
+      resourceType?: string;
+      resourceOwner?: string;
+      resourcePricingTier?: string;
+      resourceStatus?: string;
+      resourceId?: string;
+      externalResourceId?: string;
+    }[];
+    currencyCode?: string;
+    startDateTime?: string;
+    endDateTime?: string;
+    createdDate?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const CostsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -696,10 +933,22 @@ export const CostsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/costs/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type CostsCreateOrUpdateInput = typeof CostsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CostsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CostsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CostsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -719,8 +968,7 @@ export const CostsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CostsCreateOrUpdateOutput = typeof CostsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CostsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -737,6 +985,13 @@ export const CostsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CostsCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface CostsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const CostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -749,10 +1004,22 @@ export const CostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/costs/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type CostsGetInput = typeof CostsGetInput.Type;
+) as unknown as Schema.Codec<CostsGetInput>;
 
 // Output Schema
+export interface CostsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -771,8 +1038,7 @@ export const CostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CostsGetOutput = typeof CostsGetOutput.Type;
+}) as unknown as Schema.Codec<CostsGetOutput>;
 
 // The operation
 /**
@@ -790,6 +1056,49 @@ export const CostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CostsGetOutput,
 }));
 // Input Schema
+export interface CustomImagesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    vm?: {
+      sourceVmId?: string;
+      windowsOsInfo?: {
+        windowsOsState?:
+          | "NonSysprepped"
+          | "SysprepRequested"
+          | "SysprepApplied";
+      };
+      linuxOsInfo?: {
+        linuxOsState?:
+          | "NonDeprovisioned"
+          | "DeprovisionRequested"
+          | "DeprovisionApplied";
+      };
+    };
+    vhd?: {
+      imageName?: string;
+      sysPrep?: boolean;
+      osType: "Windows" | "Linux" | "None";
+    };
+    description?: string;
+    author?: string;
+    creationDate?: string;
+    managedImageId?: string;
+    managedSnapshotId?: string;
+    dataDiskStorageInfo?: {
+      lun?: string;
+      storageType?: "Standard" | "Premium" | "StandardSSD";
+    }[];
+    customImagePlan?: { id?: string; publisher?: string; offer?: string };
+    isPlanAuthorized?: boolean;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const CustomImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -865,11 +1174,22 @@ export const CustomImagesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type CustomImagesCreateOrUpdateInput =
-  typeof CustomImagesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomImagesCreateOrUpdateInput>;
 
 // Output Schema
+export interface CustomImagesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomImagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -889,9 +1209,7 @@ export const CustomImagesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomImagesCreateOrUpdateOutput =
-  typeof CustomImagesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomImagesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -910,6 +1228,12 @@ export const CustomImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomImagesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const CustomImagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -922,12 +1246,12 @@ export const CustomImagesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type CustomImagesDeleteInput = typeof CustomImagesDeleteInput.Type;
+  ) as unknown as Schema.Codec<CustomImagesDeleteInput>;
 
 // Output Schema
-export const CustomImagesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CustomImagesDeleteOutput = typeof CustomImagesDeleteOutput.Type;
+export type CustomImagesDeleteOutput = void;
+export const CustomImagesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomImagesDeleteOutput>;
 
 // The operation
 /**
@@ -944,6 +1268,13 @@ export const CustomImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CustomImagesDeleteOutput,
 }));
 // Input Schema
+export interface CustomImagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const CustomImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -956,10 +1287,22 @@ export const CustomImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type CustomImagesGetInput = typeof CustomImagesGetInput.Type;
+) as unknown as Schema.Codec<CustomImagesGetInput>;
 
 // Output Schema
+export interface CustomImagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -978,8 +1321,7 @@ export const CustomImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CustomImagesGetOutput = typeof CustomImagesGetOutput.Type;
+}) as unknown as Schema.Codec<CustomImagesGetOutput>;
 
 // The operation
 /**
@@ -997,6 +1339,15 @@ export const CustomImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CustomImagesGetOutput,
 }));
 // Input Schema
+export interface CustomImagesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const CustomImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1011,10 +1362,25 @@ export const CustomImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages",
     apiVersion: "2018-09-15",
   }),
-);
-export type CustomImagesListInput = typeof CustomImagesListInput.Type;
+) as unknown as Schema.Codec<CustomImagesListInput>;
 
 // Output Schema
+export interface CustomImagesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CustomImagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -1050,8 +1416,7 @@ export const CustomImagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type CustomImagesListOutput = typeof CustomImagesListOutput.Type;
+) as unknown as Schema.Codec<CustomImagesListOutput>;
 
 // The operation
 /**
@@ -1071,6 +1436,13 @@ export const CustomImagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CustomImagesListOutput,
 }));
 // Input Schema
+export interface CustomImagesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const CustomImagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1084,10 +1456,22 @@ export const CustomImagesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type CustomImagesUpdateInput = typeof CustomImagesUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomImagesUpdateInput>;
 
 // Output Schema
+export interface CustomImagesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomImagesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1107,8 +1491,7 @@ export const CustomImagesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomImagesUpdateOutput = typeof CustomImagesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomImagesUpdateOutput>;
 
 // The operation
 /**
@@ -1125,6 +1508,14 @@ export const CustomImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CustomImagesUpdateOutput,
 }));
 // Input Schema
+export interface DisksAttachInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  leasedByLabVmId?: string;
+}
 export const DisksAttachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1138,12 +1529,12 @@ export const DisksAttachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/attach",
     apiVersion: "2018-09-15",
   }),
-);
-export type DisksAttachInput = typeof DisksAttachInput.Type;
+) as unknown as Schema.Codec<DisksAttachInput>;
 
 // Output Schema
-export const DisksAttachOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisksAttachOutput = typeof DisksAttachOutput.Type;
+export type DisksAttachOutput = void;
+export const DisksAttachOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksAttachOutput>;
 
 // The operation
 /**
@@ -1161,6 +1552,28 @@ export const DisksAttach = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksAttachOutput,
 }));
 // Input Schema
+export interface DisksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  properties: {
+    diskType?: "Standard" | "Premium" | "StandardSSD";
+    diskSizeGiB?: number;
+    leasedByLabVmId?: string;
+    diskBlobName?: string;
+    diskUri?: string;
+    storageAccountId?: string;
+    createdDate?: string;
+    hostCaching?: string;
+    managedDiskId?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const DisksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1191,10 +1604,22 @@ export const DisksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type DisksCreateOrUpdateInput = typeof DisksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DisksCreateOrUpdateInput>;
 
 // Output Schema
+export interface DisksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1214,8 +1639,7 @@ export const DisksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DisksCreateOrUpdateOutput = typeof DisksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DisksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1233,6 +1657,13 @@ export const DisksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface DisksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+}
 export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1245,12 +1676,12 @@ export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type DisksDeleteInput = typeof DisksDeleteInput.Type;
+) as unknown as Schema.Codec<DisksDeleteInput>;
 
 // Output Schema
-export const DisksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisksDeleteOutput = typeof DisksDeleteOutput.Type;
+export type DisksDeleteOutput = void;
+export const DisksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDeleteOutput>;
 
 // The operation
 /**
@@ -1268,6 +1699,14 @@ export const DisksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksDeleteOutput,
 }));
 // Input Schema
+export interface DisksDetachInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  leasedByLabVmId?: string;
+}
 export const DisksDetachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1281,12 +1720,12 @@ export const DisksDetachInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/detach",
     apiVersion: "2018-09-15",
   }),
-);
-export type DisksDetachInput = typeof DisksDetachInput.Type;
+) as unknown as Schema.Codec<DisksDetachInput>;
 
 // Output Schema
-export const DisksDetachOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisksDetachOutput = typeof DisksDetachOutput.Type;
+export type DisksDetachOutput = void;
+export const DisksDetachOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDetachOutput>;
 
 // The operation
 /**
@@ -1304,6 +1743,14 @@ export const DisksDetach = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksDetachOutput,
 }));
 // Input Schema
+export interface DisksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  $expand?: string;
+}
 export const DisksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1317,10 +1764,22 @@ export const DisksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type DisksGetInput = typeof DisksGetInput.Type;
+) as unknown as Schema.Codec<DisksGetInput>;
 
 // Output Schema
+export interface DisksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1339,8 +1798,7 @@ export const DisksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DisksGetOutput = typeof DisksGetOutput.Type;
+}) as unknown as Schema.Codec<DisksGetOutput>;
 
 // The operation
 /**
@@ -1359,6 +1817,16 @@ export const DisksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksGetOutput,
 }));
 // Input Schema
+export interface DisksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const DisksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1374,10 +1842,25 @@ export const DisksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks",
     apiVersion: "2018-09-15",
   }),
-);
-export type DisksListInput = typeof DisksListInput.Type;
+) as unknown as Schema.Codec<DisksListInput>;
 
 // Output Schema
+export interface DisksListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DisksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1401,8 +1884,7 @@ export const DisksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type DisksListOutput = typeof DisksListOutput.Type;
+}) as unknown as Schema.Codec<DisksListOutput>;
 
 // The operation
 /**
@@ -1423,6 +1905,14 @@ export const DisksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksListOutput,
 }));
 // Input Schema
+export interface DisksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const DisksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1436,10 +1926,22 @@ export const DisksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type DisksUpdateInput = typeof DisksUpdateInput.Type;
+) as unknown as Schema.Codec<DisksUpdateInput>;
 
 // Output Schema
+export interface DisksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1458,8 +1960,7 @@ export const DisksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DisksUpdateOutput = typeof DisksUpdateOutput.Type;
+}) as unknown as Schema.Codec<DisksUpdateOutput>;
 
 // The operation
 /**
@@ -1477,6 +1978,26 @@ export const DisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksUpdateOutput,
 }));
 // Input Schema
+export interface EnvironmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  properties: {
+    deploymentProperties?: {
+      armTemplateId?: string;
+      parameters?: { name?: string; value?: string }[];
+    };
+    armTemplateDisplayName?: string;
+    resourceGroupId?: string;
+    createdByUser?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const EnvironmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1512,11 +2033,22 @@ export const EnvironmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type EnvironmentsCreateOrUpdateInput =
-  typeof EnvironmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface EnvironmentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1536,9 +2068,7 @@ export const EnvironmentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentsCreateOrUpdateOutput =
-  typeof EnvironmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1558,6 +2088,13 @@ export const EnvironmentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+}
 export const EnvironmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1571,12 +2108,12 @@ export const EnvironmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type EnvironmentsDeleteInput = typeof EnvironmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsDeleteInput>;
 
 // Output Schema
-export const EnvironmentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentsDeleteOutput = typeof EnvironmentsDeleteOutput.Type;
+export type EnvironmentsDeleteOutput = void;
+export const EnvironmentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDeleteOutput>;
 
 // The operation
 /**
@@ -1594,6 +2131,14 @@ export const EnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentsDeleteOutput,
 }));
 // Input Schema
+export interface EnvironmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  $expand?: string;
+}
 export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1607,10 +2152,22 @@ export const EnvironmentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type EnvironmentsGetInput = typeof EnvironmentsGetInput.Type;
+) as unknown as Schema.Codec<EnvironmentsGetInput>;
 
 // Output Schema
+export interface EnvironmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1629,8 +2186,7 @@ export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EnvironmentsGetOutput = typeof EnvironmentsGetOutput.Type;
+}) as unknown as Schema.Codec<EnvironmentsGetOutput>;
 
 // The operation
 /**
@@ -1649,6 +2205,16 @@ export const EnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentsGetOutput,
 }));
 // Input Schema
+export interface EnvironmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const EnvironmentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1664,10 +2230,25 @@ export const EnvironmentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments",
     apiVersion: "2018-09-15",
   }),
-);
-export type EnvironmentsListInput = typeof EnvironmentsListInput.Type;
+) as unknown as Schema.Codec<EnvironmentsListInput>;
 
 // Output Schema
+export interface EnvironmentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EnvironmentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -1703,8 +2284,7 @@ export const EnvironmentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type EnvironmentsListOutput = typeof EnvironmentsListOutput.Type;
+) as unknown as Schema.Codec<EnvironmentsListOutput>;
 
 // The operation
 /**
@@ -1725,6 +2305,14 @@ export const EnvironmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentsListOutput,
 }));
 // Input Schema
+export interface EnvironmentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const EnvironmentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1739,10 +2327,22 @@ export const EnvironmentsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type EnvironmentsUpdateInput = typeof EnvironmentsUpdateInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsUpdateInput>;
 
 // Output Schema
+export interface EnvironmentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1762,8 +2362,7 @@ export const EnvironmentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentsUpdateOutput = typeof EnvironmentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentsUpdateOutput>;
 
 // The operation
 /**
@@ -1781,6 +2380,112 @@ export const EnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentsUpdateOutput,
 }));
 // Input Schema
+export interface FormulasCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    description?: string;
+    author?: string;
+    osType?: string;
+    creationDate?: string;
+    formulaContent?: {
+      properties?: {
+        bulkCreationParameters?: { instanceCount?: number };
+        notes?: string;
+        ownerObjectId?: string;
+        ownerUserPrincipalName?: string;
+        createdDate?: string;
+        customImageId?: string;
+        size?: string;
+        userName?: string;
+        password?: string | Redacted.Redacted<string>;
+        sshKey?: string;
+        isAuthenticationWithSshKey?: boolean;
+        labSubnetName?: string;
+        labVirtualNetworkId?: string;
+        disallowPublicIpAddress?: boolean;
+        artifacts?: {
+          artifactId?: string;
+          artifactTitle?: string;
+          parameters?: { name?: string; value?: string }[];
+          status?: string;
+          deploymentStatusMessage?: string;
+          vmExtensionStatusMessage?: string;
+          installTime?: string;
+        }[];
+        galleryImageReference?: {
+          offer?: string;
+          publisher?: string;
+          sku?: string;
+          osType?: string;
+          version?: string;
+        };
+        planId?: string;
+        networkInterface?: {
+          virtualNetworkId?: string;
+          subnetId?: string;
+          publicIpAddressId?: string;
+          publicIpAddress?: string;
+          privateIpAddress?: string;
+          dnsName?: string;
+          rdpAuthority?: string;
+          sshAuthority?: string;
+          sharedPublicIpAddressConfiguration?: {
+            inboundNatRules?: {
+              transportProtocol?: "Tcp" | "Udp";
+              frontendPort?: number;
+              backendPort?: number;
+            }[];
+          };
+        };
+        expirationDate?: string;
+        allowClaim?: boolean;
+        storageType?: string;
+        environmentId?: string;
+        dataDiskParameters?: {
+          attachNewDataDiskOptions?: {
+            diskSizeGiB?: number;
+            diskName?: string;
+            diskType?: "Standard" | "Premium" | "StandardSSD";
+          };
+          existingLabDiskId?: string;
+          hostCaching?: "None" | "ReadOnly" | "ReadWrite";
+        }[];
+        scheduleParameters?: {
+          properties?: {
+            status?: "Enabled" | "Disabled";
+            taskType?: string;
+            weeklyRecurrence?: { weekdays?: string[]; time?: string };
+            dailyRecurrence?: { time?: string };
+            hourlyRecurrence?: { minute?: number };
+            timeZoneId?: string;
+            notificationSettings?: {
+              status?: "Enabled" | "Disabled";
+              timeInMinutes?: number;
+              webhookUrl?: string;
+              emailRecipient?: string;
+              notificationLocale?: string;
+            };
+            targetResourceId?: string;
+          };
+          name?: string;
+          location?: string;
+          tags?: Record<string, string>;
+        }[];
+      };
+      name?: string;
+      location?: string;
+      tags?: Record<string, string>;
+    };
+    vm?: { labVmId?: string };
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const FormulasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1971,11 +2676,22 @@ export const FormulasCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type FormulasCreateOrUpdateInput =
-  typeof FormulasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FormulasCreateOrUpdateInput>;
 
 // Output Schema
+export interface FormulasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FormulasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1995,9 +2711,7 @@ export const FormulasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FormulasCreateOrUpdateOutput =
-  typeof FormulasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FormulasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2016,6 +2730,12 @@ export const FormulasCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FormulasDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const FormulasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2027,12 +2747,12 @@ export const FormulasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type FormulasDeleteInput = typeof FormulasDeleteInput.Type;
+) as unknown as Schema.Codec<FormulasDeleteInput>;
 
 // Output Schema
-export const FormulasDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FormulasDeleteOutput = typeof FormulasDeleteOutput.Type;
+export type FormulasDeleteOutput = void;
+export const FormulasDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FormulasDeleteOutput>;
 
 // The operation
 /**
@@ -2049,6 +2769,13 @@ export const FormulasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FormulasDeleteOutput,
 }));
 // Input Schema
+export interface FormulasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const FormulasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2061,10 +2788,22 @@ export const FormulasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type FormulasGetInput = typeof FormulasGetInput.Type;
+) as unknown as Schema.Codec<FormulasGetInput>;
 
 // Output Schema
+export interface FormulasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FormulasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2083,8 +2822,7 @@ export const FormulasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FormulasGetOutput = typeof FormulasGetOutput.Type;
+}) as unknown as Schema.Codec<FormulasGetOutput>;
 
 // The operation
 /**
@@ -2102,6 +2840,15 @@ export const FormulasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FormulasGetOutput,
 }));
 // Input Schema
+export interface FormulasListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const FormulasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2116,10 +2863,25 @@ export const FormulasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas",
     apiVersion: "2018-09-15",
   }),
-);
-export type FormulasListInput = typeof FormulasListInput.Type;
+) as unknown as Schema.Codec<FormulasListInput>;
 
 // Output Schema
+export interface FormulasListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FormulasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2143,8 +2905,7 @@ export const FormulasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FormulasListOutput = typeof FormulasListOutput.Type;
+}) as unknown as Schema.Codec<FormulasListOutput>;
 
 // The operation
 /**
@@ -2164,6 +2925,13 @@ export const FormulasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FormulasListOutput,
 }));
 // Input Schema
+export interface FormulasUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const FormulasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2176,10 +2944,22 @@ export const FormulasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type FormulasUpdateInput = typeof FormulasUpdateInput.Type;
+) as unknown as Schema.Codec<FormulasUpdateInput>;
 
 // Output Schema
+export interface FormulasUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FormulasUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2198,8 +2978,7 @@ export const FormulasUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FormulasUpdateOutput = typeof FormulasUpdateOutput.Type;
+}) as unknown as Schema.Codec<FormulasUpdateOutput>;
 
 // The operation
 /**
@@ -2216,6 +2995,15 @@ export const FormulasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FormulasUpdateOutput,
 }));
 // Input Schema
+export interface GalleryImagesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const GalleryImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2232,10 +3020,25 @@ export const GalleryImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/galleryimages",
     apiVersion: "2018-09-15",
   }),
-);
-export type GalleryImagesListInput = typeof GalleryImagesListInput.Type;
+) as unknown as Schema.Codec<GalleryImagesListInput>;
 
 // Output Schema
+export interface GalleryImagesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GalleryImagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2270,8 +3073,7 @@ export const GalleryImagesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GalleryImagesListOutput = typeof GalleryImagesListOutput.Type;
+  }) as unknown as Schema.Codec<GalleryImagesListOutput>;
 
 // The operation
 /**
@@ -2291,6 +3093,32 @@ export const GalleryImagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GalleryImagesListOutput,
 }));
 // Input Schema
+export interface GlobalSchedulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  properties: {
+    status?: "Enabled" | "Disabled";
+    taskType?: string;
+    weeklyRecurrence?: { weekdays?: string[]; time?: string };
+    dailyRecurrence?: { time?: string };
+    hourlyRecurrence?: { minute?: number };
+    timeZoneId?: string;
+    notificationSettings?: {
+      status?: "Enabled" | "Disabled";
+      timeInMinutes?: number;
+      webhookUrl?: string;
+      emailRecipient?: string;
+      notificationLocale?: string;
+    };
+    createdDate?: string;
+    targetResourceId?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const GlobalSchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2338,11 +3166,22 @@ export const GlobalSchedulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type GlobalSchedulesCreateOrUpdateInput =
-  typeof GlobalSchedulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GlobalSchedulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface GlobalSchedulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GlobalSchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2362,9 +3201,7 @@ export const GlobalSchedulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GlobalSchedulesCreateOrUpdateOutput =
-  typeof GlobalSchedulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GlobalSchedulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2381,6 +3218,11 @@ export const GlobalSchedulesCreateOrUpdate =
     outputSchema: GlobalSchedulesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GlobalSchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const GlobalSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2392,14 +3234,12 @@ export const GlobalSchedulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type GlobalSchedulesDeleteInput = typeof GlobalSchedulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<GlobalSchedulesDeleteInput>;
 
 // Output Schema
+export type GlobalSchedulesDeleteOutput = void;
 export const GlobalSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GlobalSchedulesDeleteOutput =
-  typeof GlobalSchedulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -2417,6 +3257,11 @@ export const GlobalSchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GlobalSchedulesExecuteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const GlobalSchedulesExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2428,15 +3273,12 @@ export const GlobalSchedulesExecuteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}/execute",
       apiVersion: "2018-09-15",
     }),
-  );
-export type GlobalSchedulesExecuteInput =
-  typeof GlobalSchedulesExecuteInput.Type;
+  ) as unknown as Schema.Codec<GlobalSchedulesExecuteInput>;
 
 // Output Schema
+export type GlobalSchedulesExecuteOutput = void;
 export const GlobalSchedulesExecuteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GlobalSchedulesExecuteOutput =
-  typeof GlobalSchedulesExecuteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesExecuteOutput>;
 
 // The operation
 /**
@@ -2454,6 +3296,12 @@ export const GlobalSchedulesExecute = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GlobalSchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  $expand?: string;
+}
 export const GlobalSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2466,10 +3314,22 @@ export const GlobalSchedulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type GlobalSchedulesGetInput = typeof GlobalSchedulesGetInput.Type;
+  ) as unknown as Schema.Codec<GlobalSchedulesGetInput>;
 
 // Output Schema
+export interface GlobalSchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GlobalSchedulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2489,8 +3349,7 @@ export const GlobalSchedulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GlobalSchedulesGetOutput = typeof GlobalSchedulesGetOutput.Type;
+  }) as unknown as Schema.Codec<GlobalSchedulesGetOutput>;
 
 // The operation
 /**
@@ -2507,6 +3366,14 @@ export const GlobalSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GlobalSchedulesGetOutput,
 }));
 // Input Schema
+export interface GlobalSchedulesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const GlobalSchedulesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2521,11 +3388,25 @@ export const GlobalSchedulesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules",
       apiVersion: "2018-09-15",
     }),
-  );
-export type GlobalSchedulesListByResourceGroupInput =
-  typeof GlobalSchedulesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<GlobalSchedulesListByResourceGroupInput>;
 
 // Output Schema
+export interface GlobalSchedulesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GlobalSchedulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2560,9 +3441,7 @@ export const GlobalSchedulesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GlobalSchedulesListByResourceGroupOutput =
-  typeof GlobalSchedulesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<GlobalSchedulesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2582,6 +3461,13 @@ export const GlobalSchedulesListByResourceGroup =
     outputSchema: GlobalSchedulesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface GlobalSchedulesListBySubscriptionInput {
+  subscriptionId: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const GlobalSchedulesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2595,11 +3481,25 @@ export const GlobalSchedulesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/schedules",
       apiVersion: "2018-09-15",
     }),
-  );
-export type GlobalSchedulesListBySubscriptionInput =
-  typeof GlobalSchedulesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<GlobalSchedulesListBySubscriptionInput>;
 
 // Output Schema
+export interface GlobalSchedulesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GlobalSchedulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2634,9 +3534,7 @@ export const GlobalSchedulesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GlobalSchedulesListBySubscriptionOutput =
-  typeof GlobalSchedulesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<GlobalSchedulesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2655,6 +3553,13 @@ export const GlobalSchedulesListBySubscription =
     outputSchema: GlobalSchedulesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface GlobalSchedulesRetargetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  currentResourceId?: string;
+  targetResourceId?: string;
+}
 export const GlobalSchedulesRetargetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2668,15 +3573,12 @@ export const GlobalSchedulesRetargetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}/retarget",
       apiVersion: "2018-09-15",
     }),
-  );
-export type GlobalSchedulesRetargetInput =
-  typeof GlobalSchedulesRetargetInput.Type;
+  ) as unknown as Schema.Codec<GlobalSchedulesRetargetInput>;
 
 // Output Schema
+export type GlobalSchedulesRetargetOutput = void;
 export const GlobalSchedulesRetargetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GlobalSchedulesRetargetOutput =
-  typeof GlobalSchedulesRetargetOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalSchedulesRetargetOutput>;
 
 // The operation
 /**
@@ -2694,6 +3596,12 @@ export const GlobalSchedulesRetarget = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GlobalSchedulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const GlobalSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2706,10 +3614,22 @@ export const GlobalSchedulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type GlobalSchedulesUpdateInput = typeof GlobalSchedulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<GlobalSchedulesUpdateInput>;
 
 // Output Schema
+export interface GlobalSchedulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GlobalSchedulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2729,9 +3649,7 @@ export const GlobalSchedulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GlobalSchedulesUpdateOutput =
-  typeof GlobalSchedulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GlobalSchedulesUpdateOutput>;
 
 // The operation
 /**
@@ -2749,6 +3667,11 @@ export const GlobalSchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LabsClaimAnyVmInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const LabsClaimAnyVmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2759,12 +3682,12 @@ export const LabsClaimAnyVmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/claimAnyVm",
     apiVersion: "2018-09-15",
   }),
-);
-export type LabsClaimAnyVmInput = typeof LabsClaimAnyVmInput.Type;
+) as unknown as Schema.Codec<LabsClaimAnyVmInput>;
 
 // Output Schema
-export const LabsClaimAnyVmOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LabsClaimAnyVmOutput = typeof LabsClaimAnyVmOutput.Type;
+export type LabsClaimAnyVmOutput = void;
+export const LabsClaimAnyVmOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsClaimAnyVmOutput>;
 
 // The operation
 /**
@@ -2780,6 +3703,97 @@ export const LabsClaimAnyVm = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LabsClaimAnyVmOutput,
 }));
 // Input Schema
+export interface LabsCreateEnvironmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  properties?: {
+    bulkCreationParameters?: { instanceCount?: number };
+    notes?: string;
+    ownerObjectId?: string;
+    ownerUserPrincipalName?: string;
+    createdDate?: string;
+    customImageId?: string;
+    size?: string;
+    userName?: string;
+    password?: string | Redacted.Redacted<string>;
+    sshKey?: string;
+    isAuthenticationWithSshKey?: boolean;
+    labSubnetName?: string;
+    labVirtualNetworkId?: string;
+    disallowPublicIpAddress?: boolean;
+    artifacts?: {
+      artifactId?: string;
+      artifactTitle?: string;
+      parameters?: { name?: string; value?: string }[];
+      status?: string;
+      deploymentStatusMessage?: string;
+      vmExtensionStatusMessage?: string;
+      installTime?: string;
+    }[];
+    galleryImageReference?: {
+      offer?: string;
+      publisher?: string;
+      sku?: string;
+      osType?: string;
+      version?: string;
+    };
+    planId?: string;
+    networkInterface?: {
+      virtualNetworkId?: string;
+      subnetId?: string;
+      publicIpAddressId?: string;
+      publicIpAddress?: string;
+      privateIpAddress?: string;
+      dnsName?: string;
+      rdpAuthority?: string;
+      sshAuthority?: string;
+      sharedPublicIpAddressConfiguration?: {
+        inboundNatRules?: {
+          transportProtocol?: "Tcp" | "Udp";
+          frontendPort?: number;
+          backendPort?: number;
+        }[];
+      };
+    };
+    expirationDate?: string;
+    allowClaim?: boolean;
+    storageType?: string;
+    environmentId?: string;
+    dataDiskParameters?: {
+      attachNewDataDiskOptions?: {
+        diskSizeGiB?: number;
+        diskName?: string;
+        diskType?: "Standard" | "Premium" | "StandardSSD";
+      };
+      existingLabDiskId?: string;
+      hostCaching?: "None" | "ReadOnly" | "ReadWrite";
+    }[];
+    scheduleParameters?: {
+      properties?: {
+        status?: "Enabled" | "Disabled";
+        taskType?: string;
+        weeklyRecurrence?: { weekdays?: string[]; time?: string };
+        dailyRecurrence?: { time?: string };
+        hourlyRecurrence?: { minute?: number };
+        timeZoneId?: string;
+        notificationSettings?: {
+          status?: "Enabled" | "Disabled";
+          timeInMinutes?: number;
+          webhookUrl?: string;
+          emailRecipient?: string;
+          notificationLocale?: string;
+        };
+        targetResourceId?: string;
+      };
+      name?: string;
+      location?: string;
+      tags?: Record<string, string>;
+    }[];
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const LabsCreateEnvironmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2943,14 +3957,12 @@ export const LabsCreateEnvironmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/createEnvironment",
       apiVersion: "2018-09-15",
     }),
-  );
-export type LabsCreateEnvironmentInput = typeof LabsCreateEnvironmentInput.Type;
+  ) as unknown as Schema.Codec<LabsCreateEnvironmentInput>;
 
 // Output Schema
+export type LabsCreateEnvironmentOutput = void;
 export const LabsCreateEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LabsCreateEnvironmentOutput =
-  typeof LabsCreateEnvironmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsCreateEnvironmentOutput>;
 
 // The operation
 /**
@@ -2968,6 +3980,43 @@ export const LabsCreateEnvironment = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LabsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  properties: {
+    defaultStorageAccount?: string;
+    defaultPremiumStorageAccount?: string;
+    artifactsStorageAccount?: string;
+    premiumDataDiskStorageAccount?: string;
+    vaultName?: string;
+    labStorageType?: "Standard" | "Premium" | "StandardSSD";
+    mandatoryArtifactsResourceIdsLinux?: string[];
+    mandatoryArtifactsResourceIdsWindows?: string[];
+    createdDate?: string;
+    premiumDataDisks?: "Disabled" | "Enabled";
+    environmentPermission?: "Reader" | "Contributor";
+    announcement?: {
+      title?: string;
+      markdown?: string;
+      enabled?: "Enabled" | "Disabled";
+      expirationDate?: string;
+      expired?: boolean;
+      provisioningState?: string;
+      uniqueIdentifier?: string;
+    };
+    support?: { enabled?: "Enabled" | "Disabled"; markdown?: string };
+    vmCreationResourceGroup?: string;
+    publicIpId?: string;
+    loadBalancerId?: string;
+    networkSecurityGroupId?: string;
+    extendedProperties?: Record<string, string>;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const LabsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3030,10 +4079,22 @@ export const LabsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type LabsCreateOrUpdateInput = typeof LabsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LabsCreateOrUpdateInput>;
 
 // Output Schema
+export interface LabsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LabsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3053,8 +4114,7 @@ export const LabsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LabsCreateOrUpdateOutput = typeof LabsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LabsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3070,6 +4130,11 @@ export const LabsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LabsCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface LabsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3080,12 +4145,12 @@ export const LabsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type LabsDeleteInput = typeof LabsDeleteInput.Type;
+) as unknown as Schema.Codec<LabsDeleteInput>;
 
 // Output Schema
-export const LabsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LabsDeleteOutput = typeof LabsDeleteOutput.Type;
+export type LabsDeleteOutput = void;
+export const LabsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsDeleteOutput>;
 
 // The operation
 /**
@@ -3101,6 +4166,13 @@ export const LabsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LabsDeleteOutput,
 }));
 // Input Schema
+export interface LabsExportResourceUsageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  blobStorageAbsoluteSasUri?: string;
+  usageStartDate?: string;
+}
 export const LabsExportResourceUsageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3114,15 +4186,12 @@ export const LabsExportResourceUsageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/exportResourceUsage",
       apiVersion: "2018-09-15",
     }),
-  );
-export type LabsExportResourceUsageInput =
-  typeof LabsExportResourceUsageInput.Type;
+  ) as unknown as Schema.Codec<LabsExportResourceUsageInput>;
 
 // Output Schema
+export type LabsExportResourceUsageOutput = void;
 export const LabsExportResourceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LabsExportResourceUsageOutput =
-  typeof LabsExportResourceUsageOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsExportResourceUsageOutput>;
 
 // The operation
 /**
@@ -3140,6 +4209,12 @@ export const LabsExportResourceUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LabsGenerateUploadUriInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  blobName?: string;
+}
 export const LabsGenerateUploadUriInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3152,16 +4227,16 @@ export const LabsGenerateUploadUriInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/generateUploadUri",
       apiVersion: "2018-09-15",
     }),
-  );
-export type LabsGenerateUploadUriInput = typeof LabsGenerateUploadUriInput.Type;
+  ) as unknown as Schema.Codec<LabsGenerateUploadUriInput>;
 
 // Output Schema
+export interface LabsGenerateUploadUriOutput {
+  uploadUri?: string;
+}
 export const LabsGenerateUploadUriOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadUri: Schema.optional(Schema.String),
-  });
-export type LabsGenerateUploadUriOutput =
-  typeof LabsGenerateUploadUriOutput.Type;
+  }) as unknown as Schema.Codec<LabsGenerateUploadUriOutput>;
 
 // The operation
 /**
@@ -3179,6 +4254,12 @@ export const LabsGenerateUploadUri = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LabsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  $expand?: string;
+}
 export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3190,10 +4271,22 @@ export const LabsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type LabsGetInput = typeof LabsGetInput.Type;
+) as unknown as Schema.Codec<LabsGetInput>;
 
 // Output Schema
+export interface LabsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LabsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3212,8 +4305,7 @@ export const LabsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type LabsGetOutput = typeof LabsGetOutput.Type;
+}) as unknown as Schema.Codec<LabsGetOutput>;
 
 // The operation
 /**
@@ -3230,6 +4322,13 @@ export const LabsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LabsGetOutput,
 }));
 // Input Schema
+export interface LabsImportVirtualMachineInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  sourceVirtualMachineResourceId?: string;
+  destinationVirtualMachineName?: string;
+}
 export const LabsImportVirtualMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3243,15 +4342,12 @@ export const LabsImportVirtualMachineInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/importVirtualMachine",
       apiVersion: "2018-09-15",
     }),
-  );
-export type LabsImportVirtualMachineInput =
-  typeof LabsImportVirtualMachineInput.Type;
+  ) as unknown as Schema.Codec<LabsImportVirtualMachineInput>;
 
 // Output Schema
+export type LabsImportVirtualMachineOutput = void;
 export const LabsImportVirtualMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LabsImportVirtualMachineOutput =
-  typeof LabsImportVirtualMachineOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LabsImportVirtualMachineOutput>;
 
 // The operation
 /**
@@ -3269,6 +4365,14 @@ export const LabsImportVirtualMachine = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LabsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const LabsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3283,11 +4387,25 @@ export const LabsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs",
       apiVersion: "2018-09-15",
     }),
-  );
-export type LabsListByResourceGroupInput =
-  typeof LabsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<LabsListByResourceGroupInput>;
 
 // Output Schema
+export interface LabsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LabsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3322,9 +4440,7 @@ export const LabsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LabsListByResourceGroupOutput =
-  typeof LabsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<LabsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3345,6 +4461,13 @@ export const LabsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LabsListBySubscriptionInput {
+  subscriptionId: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const LabsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3358,11 +4481,25 @@ export const LabsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/labs",
       apiVersion: "2018-09-15",
     }),
-  );
-export type LabsListBySubscriptionInput =
-  typeof LabsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<LabsListBySubscriptionInput>;
 
 // Output Schema
+export interface LabsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LabsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3397,9 +4534,7 @@ export const LabsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LabsListBySubscriptionOutput =
-  typeof LabsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<LabsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3419,6 +4554,11 @@ export const LabsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LabsListVhdsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const LabsListVhdsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3429,10 +4569,13 @@ export const LabsListVhdsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/listVhds",
     apiVersion: "2018-09-15",
   }),
-);
-export type LabsListVhdsInput = typeof LabsListVhdsInput.Type;
+) as unknown as Schema.Codec<LabsListVhdsInput>;
 
 // Output Schema
+export interface LabsListVhdsOutput {
+  value: { id?: string }[];
+  nextLink?: string;
+}
 export const LabsListVhdsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -3440,8 +4583,7 @@ export const LabsListVhdsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type LabsListVhdsOutput = typeof LabsListVhdsOutput.Type;
+}) as unknown as Schema.Codec<LabsListVhdsOutput>;
 
 // The operation
 /**
@@ -3457,6 +4599,12 @@ export const LabsListVhds = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LabsListVhdsOutput,
 }));
 // Input Schema
+export interface LabsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3468,10 +4616,22 @@ export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type LabsUpdateInput = typeof LabsUpdateInput.Type;
+) as unknown as Schema.Codec<LabsUpdateInput>;
 
 // Output Schema
+export interface LabsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LabsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3490,8 +4650,7 @@ export const LabsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type LabsUpdateOutput = typeof LabsUpdateOutput.Type;
+}) as unknown as Schema.Codec<LabsUpdateOutput>;
 
 // The operation
 /**
@@ -3507,6 +4666,24 @@ export const LabsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LabsUpdateOutput,
 }));
 // Input Schema
+export interface NotificationChannelsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    webHookUrl?: string;
+    emailRecipient?: string;
+    notificationLocale?: string;
+    description?: string;
+    events?: { eventName?: "AutoShutdown" | "Cost" }[];
+    createdDate?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const NotificationChannelsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3539,11 +4716,22 @@ export const NotificationChannelsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type NotificationChannelsCreateOrUpdateInput =
-  typeof NotificationChannelsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NotificationChannelsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NotificationChannelsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationChannelsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3563,9 +4751,7 @@ export const NotificationChannelsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationChannelsCreateOrUpdateOutput =
-  typeof NotificationChannelsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NotificationChannelsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3583,6 +4769,12 @@ export const NotificationChannelsCreateOrUpdate =
     outputSchema: NotificationChannelsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NotificationChannelsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const NotificationChannelsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3595,15 +4787,12 @@ export const NotificationChannelsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type NotificationChannelsDeleteInput =
-  typeof NotificationChannelsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NotificationChannelsDeleteInput>;
 
 // Output Schema
+export type NotificationChannelsDeleteOutput = void;
 export const NotificationChannelsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotificationChannelsDeleteOutput =
-  typeof NotificationChannelsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationChannelsDeleteOutput>;
 
 // The operation
 /**
@@ -3622,6 +4811,13 @@ export const NotificationChannelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationChannelsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const NotificationChannelsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3635,11 +4831,22 @@ export const NotificationChannelsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type NotificationChannelsGetInput =
-  typeof NotificationChannelsGetInput.Type;
+  ) as unknown as Schema.Codec<NotificationChannelsGetInput>;
 
 // Output Schema
+export interface NotificationChannelsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationChannelsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3659,9 +4866,7 @@ export const NotificationChannelsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationChannelsGetOutput =
-  typeof NotificationChannelsGetOutput.Type;
+  }) as unknown as Schema.Codec<NotificationChannelsGetOutput>;
 
 // The operation
 /**
@@ -3681,6 +4886,15 @@ export const NotificationChannelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationChannelsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const NotificationChannelsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3696,11 +4910,25 @@ export const NotificationChannelsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels",
       apiVersion: "2018-09-15",
     }),
-  );
-export type NotificationChannelsListInput =
-  typeof NotificationChannelsListInput.Type;
+  ) as unknown as Schema.Codec<NotificationChannelsListInput>;
 
 // Output Schema
+export interface NotificationChannelsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NotificationChannelsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3735,9 +4963,7 @@ export const NotificationChannelsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NotificationChannelsListOutput =
-  typeof NotificationChannelsListOutput.Type;
+  }) as unknown as Schema.Codec<NotificationChannelsListOutput>;
 
 // The operation
 /**
@@ -3759,6 +4985,14 @@ export const NotificationChannelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationChannelsNotifyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  eventName?: "AutoShutdown" | "Cost";
+  jsonPayload?: string;
+}
 export const NotificationChannelsNotifyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3773,15 +5007,12 @@ export const NotificationChannelsNotifyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}/notify",
       apiVersion: "2018-09-15",
     }),
-  );
-export type NotificationChannelsNotifyInput =
-  typeof NotificationChannelsNotifyInput.Type;
+  ) as unknown as Schema.Codec<NotificationChannelsNotifyInput>;
 
 // Output Schema
+export type NotificationChannelsNotifyOutput = void;
 export const NotificationChannelsNotifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotificationChannelsNotifyOutput =
-  typeof NotificationChannelsNotifyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationChannelsNotifyOutput>;
 
 // The operation
 /**
@@ -3800,6 +5031,13 @@ export const NotificationChannelsNotify = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationChannelsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const NotificationChannelsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3813,11 +5051,22 @@ export const NotificationChannelsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type NotificationChannelsUpdateInput =
-  typeof NotificationChannelsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NotificationChannelsUpdateInput>;
 
 // Output Schema
+export interface NotificationChannelsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationChannelsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3837,9 +5086,7 @@ export const NotificationChannelsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationChannelsUpdateOutput =
-  typeof NotificationChannelsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NotificationChannelsUpdateOutput>;
 
 // The operation
 /**
@@ -3858,6 +5105,11 @@ export const NotificationChannelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsGetInput {
+  subscriptionId: string;
+  locationName: string;
+  name: string;
+}
 export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   locationName: Schema.String.pipe(T.PathParam()),
@@ -3868,10 +5120,61 @@ export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/locations/{locationName}/operations/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type OperationsGetInput = typeof OperationsGetInput.Type;
+) as unknown as Schema.Codec<OperationsGetInput>;
 
 // Output Schema
+export interface OperationsGetOutput {
+  status?: string;
+  statusCode?:
+    | "Continue"
+    | "SwitchingProtocols"
+    | "OK"
+    | "Created"
+    | "Accepted"
+    | "NonAuthoritativeInformation"
+    | "NoContent"
+    | "ResetContent"
+    | "PartialContent"
+    | "MultipleChoices"
+    | "Ambiguous"
+    | "MovedPermanently"
+    | "Moved"
+    | "Found"
+    | "Redirect"
+    | "SeeOther"
+    | "RedirectMethod"
+    | "NotModified"
+    | "UseProxy"
+    | "Unused"
+    | "TemporaryRedirect"
+    | "RedirectKeepVerb"
+    | "BadRequest"
+    | "Unauthorized"
+    | "PaymentRequired"
+    | "Forbidden"
+    | "NotFound"
+    | "MethodNotAllowed"
+    | "NotAcceptable"
+    | "ProxyAuthenticationRequired"
+    | "RequestTimeout"
+    | "Conflict"
+    | "Gone"
+    | "LengthRequired"
+    | "PreconditionFailed"
+    | "RequestEntityTooLarge"
+    | "RequestUriTooLong"
+    | "UnsupportedMediaType"
+    | "RequestedRangeNotSatisfiable"
+    | "ExpectationFailed"
+    | "UpgradeRequired"
+    | "InternalServerError"
+    | "NotImplemented"
+    | "BadGateway"
+    | "ServiceUnavailable"
+    | "GatewayTimeout"
+    | "HttpVersionNotSupported";
+  error?: { code?: string; message?: string };
+}
 export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   statusCode: Schema.optional(
@@ -3931,8 +5234,7 @@ export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       message: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OperationsGetOutput = typeof OperationsGetOutput.Type;
+}) as unknown as Schema.Codec<OperationsGetOutput>;
 
 // The operation
 /**
@@ -3948,6 +5250,36 @@ export const OperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsGetOutput,
 }));
 // Input Schema
+export interface PoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  policySetName: string;
+  name: string;
+  properties: {
+    description?: string;
+    status?: "Enabled" | "Disabled";
+    factName?:
+      | "UserOwnedLabVmCount"
+      | "UserOwnedLabPremiumVmCount"
+      | "LabVmCount"
+      | "LabPremiumVmCount"
+      | "LabVmSize"
+      | "GalleryImage"
+      | "UserOwnedLabVmCountInSubnet"
+      | "LabTargetCost"
+      | "EnvironmentTemplate"
+      | "ScheduleEditPermission";
+    factData?: string;
+    threshold?: string;
+    evaluatorType?: "AllowedValuesPolicy" | "MaxValuePolicy";
+    createdDate?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const PoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3989,11 +5321,22 @@ export const PoliciesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type PoliciesCreateOrUpdateInput =
-  typeof PoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4013,9 +5356,7 @@ export const PoliciesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PoliciesCreateOrUpdateOutput =
-  typeof PoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4035,6 +5376,13 @@ export const PoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  policySetName: string;
+  name: string;
+}
 export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4047,12 +5395,12 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
+) as unknown as Schema.Codec<PoliciesDeleteInput>;
 
 // Output Schema
-export const PoliciesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PoliciesDeleteOutput = typeof PoliciesDeleteOutput.Type;
+export type PoliciesDeleteOutput = void;
+export const PoliciesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -4070,6 +5418,14 @@ export const PoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoliciesDeleteOutput,
 }));
 // Input Schema
+export interface PoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  policySetName: string;
+  name: string;
+  $expand?: string;
+}
 export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4083,10 +5439,22 @@ export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type PoliciesGetInput = typeof PoliciesGetInput.Type;
+) as unknown as Schema.Codec<PoliciesGetInput>;
 
 // Output Schema
+export interface PoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4105,8 +5473,7 @@ export const PoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoliciesGetOutput = typeof PoliciesGetOutput.Type;
+}) as unknown as Schema.Codec<PoliciesGetOutput>;
 
 // The operation
 /**
@@ -4125,6 +5492,16 @@ export const PoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoliciesGetOutput,
 }));
 // Input Schema
+export interface PoliciesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  policySetName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4140,10 +5517,25 @@ export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies",
     apiVersion: "2018-09-15",
   }),
-);
-export type PoliciesListInput = typeof PoliciesListInput.Type;
+) as unknown as Schema.Codec<PoliciesListInput>;
 
 // Output Schema
+export interface PoliciesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -4167,8 +5559,7 @@ export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type PoliciesListOutput = typeof PoliciesListOutput.Type;
+}) as unknown as Schema.Codec<PoliciesListOutput>;
 
 // The operation
 /**
@@ -4189,6 +5580,14 @@ export const PoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoliciesListOutput,
 }));
 // Input Schema
+export interface PoliciesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  policySetName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4202,10 +5601,22 @@ export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type PoliciesUpdateInput = typeof PoliciesUpdateInput.Type;
+) as unknown as Schema.Codec<PoliciesUpdateInput>;
 
 // Output Schema
+export interface PoliciesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoliciesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4224,8 +5635,7 @@ export const PoliciesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoliciesUpdateOutput = typeof PoliciesUpdateOutput.Type;
+}) as unknown as Schema.Codec<PoliciesUpdateOutput>;
 
 // The operation
 /**
@@ -4243,6 +5653,18 @@ export const PoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoliciesUpdateOutput,
 }));
 // Input Schema
+export interface PolicySetsEvaluatePoliciesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  policies?: {
+    factName?: string;
+    factData?: string;
+    valueOffset?: string;
+    userObjectId?: string;
+  }[];
+}
 export const PolicySetsEvaluatePoliciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4265,11 +5687,15 @@ export const PolicySetsEvaluatePoliciesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{name}/evaluatePolicies",
       apiVersion: "2018-09-15",
     }),
-  );
-export type PolicySetsEvaluatePoliciesInput =
-  typeof PolicySetsEvaluatePoliciesInput.Type;
+  ) as unknown as Schema.Codec<PolicySetsEvaluatePoliciesInput>;
 
 // Output Schema
+export interface PolicySetsEvaluatePoliciesOutput {
+  results?: {
+    hasError?: boolean;
+    policyViolations?: { code?: string; message?: string }[];
+  }[];
+}
 export const PolicySetsEvaluatePoliciesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -4287,9 +5713,7 @@ export const PolicySetsEvaluatePoliciesOutput =
         }),
       ),
     ),
-  });
-export type PolicySetsEvaluatePoliciesOutput =
-  typeof PolicySetsEvaluatePoliciesOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetsEvaluatePoliciesOutput>;
 
 // The operation
 /**
@@ -4308,6 +5732,7 @@ export const PolicySetsEvaluatePolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderOperationsListInput {}
 export const ProviderOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -4315,11 +5740,24 @@ export const ProviderOperationsListInput =
       path: "/providers/Microsoft.DevTestLab/operations",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ProviderOperationsListInput =
-  typeof ProviderOperationsListInput.Type;
+  ) as unknown as Schema.Codec<ProviderOperationsListInput>;
 
 // Output Schema
+export interface ProviderOperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const ProviderOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4343,9 +5781,7 @@ export const ProviderOperationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProviderOperationsListOutput =
-  typeof ProviderOperationsListOutput.Type;
+  }) as unknown as Schema.Codec<ProviderOperationsListOutput>;
 
 // The operation
 /**
@@ -4360,6 +5796,33 @@ export const ProviderOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    status?: "Enabled" | "Disabled";
+    taskType?: string;
+    weeklyRecurrence?: { weekdays?: string[]; time?: string };
+    dailyRecurrence?: { time?: string };
+    hourlyRecurrence?: { minute?: number };
+    timeZoneId?: string;
+    notificationSettings?: {
+      status?: "Enabled" | "Disabled";
+      timeInMinutes?: number;
+      webhookUrl?: string;
+      emailRecipient?: string;
+      notificationLocale?: string;
+    };
+    createdDate?: string;
+    targetResourceId?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const SchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4408,11 +5871,22 @@ export const SchedulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type SchedulesCreateOrUpdateInput =
-  typeof SchedulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchedulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SchedulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4432,9 +5906,7 @@ export const SchedulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchedulesCreateOrUpdateOutput =
-  typeof SchedulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchedulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4453,6 +5925,12 @@ export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4464,12 +5942,12 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
+) as unknown as Schema.Codec<SchedulesDeleteInput>;
 
 // Output Schema
-export const SchedulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
+export type SchedulesDeleteOutput = void;
+export const SchedulesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -4486,6 +5964,12 @@ export const SchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesDeleteOutput,
 }));
 // Input Schema
+export interface SchedulesExecuteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const SchedulesExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4497,12 +5981,12 @@ export const SchedulesExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}/execute",
     apiVersion: "2018-09-15",
   }),
-);
-export type SchedulesExecuteInput = typeof SchedulesExecuteInput.Type;
+) as unknown as Schema.Codec<SchedulesExecuteInput>;
 
 // Output Schema
-export const SchedulesExecuteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchedulesExecuteOutput = typeof SchedulesExecuteOutput.Type;
+export type SchedulesExecuteOutput = void;
+export const SchedulesExecuteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulesExecuteOutput>;
 
 // The operation
 /**
@@ -4519,6 +6003,13 @@ export const SchedulesExecute = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesExecuteOutput,
 }));
 // Input Schema
+export interface SchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4531,10 +6022,22 @@ export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type SchedulesGetInput = typeof SchedulesGetInput.Type;
+) as unknown as Schema.Codec<SchedulesGetInput>;
 
 // Output Schema
+export interface SchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4553,8 +6056,7 @@ export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchedulesGetOutput = typeof SchedulesGetOutput.Type;
+}) as unknown as Schema.Codec<SchedulesGetOutput>;
 
 // The operation
 /**
@@ -4572,6 +6074,15 @@ export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesGetOutput,
 }));
 // Input Schema
+export interface SchedulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const SchedulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4586,10 +6097,25 @@ export const SchedulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules",
     apiVersion: "2018-09-15",
   }),
-);
-export type SchedulesListInput = typeof SchedulesListInput.Type;
+) as unknown as Schema.Codec<SchedulesListInput>;
 
 // Output Schema
+export interface SchedulesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchedulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -4613,8 +6139,7 @@ export const SchedulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SchedulesListOutput = typeof SchedulesListOutput.Type;
+}) as unknown as Schema.Codec<SchedulesListOutput>;
 
 // The operation
 /**
@@ -4634,6 +6159,12 @@ export const SchedulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesListOutput,
 }));
 // Input Schema
+export interface SchedulesListApplicableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const SchedulesListApplicableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4646,11 +6177,25 @@ export const SchedulesListApplicableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}/listApplicable",
       apiVersion: "2018-09-15",
     }),
-  );
-export type SchedulesListApplicableInput =
-  typeof SchedulesListApplicableInput.Type;
+  ) as unknown as Schema.Codec<SchedulesListApplicableInput>;
 
 // Output Schema
+export interface SchedulesListApplicableOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchedulesListApplicableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4685,9 +6230,7 @@ export const SchedulesListApplicableOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchedulesListApplicableOutput =
-  typeof SchedulesListApplicableOutput.Type;
+  }) as unknown as Schema.Codec<SchedulesListApplicableOutput>;
 
 // The operation
 /**
@@ -4706,6 +6249,13 @@ export const SchedulesListApplicable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4718,10 +6268,22 @@ export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type SchedulesUpdateInput = typeof SchedulesUpdateInput.Type;
+) as unknown as Schema.Codec<SchedulesUpdateInput>;
 
 // Output Schema
+export interface SchedulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4740,8 +6302,7 @@ export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchedulesUpdateOutput = typeof SchedulesUpdateOutput.Type;
+}) as unknown as Schema.Codec<SchedulesUpdateOutput>;
 
 // The operation
 /**
@@ -4758,6 +6319,20 @@ export const SchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesUpdateOutput,
 }));
 // Input Schema
+export interface SecretsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  properties: {
+    value?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const SecretsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4778,10 +6353,22 @@ export const SecretsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type SecretsCreateOrUpdateInput = typeof SecretsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SecretsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SecretsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecretsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4801,9 +6388,7 @@ export const SecretsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecretsCreateOrUpdateOutput =
-  typeof SecretsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SecretsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4823,6 +6408,13 @@ export const SecretsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SecretsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+}
 export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4835,12 +6427,12 @@ export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type SecretsDeleteInput = typeof SecretsDeleteInput.Type;
+) as unknown as Schema.Codec<SecretsDeleteInput>;
 
 // Output Schema
-export const SecretsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SecretsDeleteOutput = typeof SecretsDeleteOutput.Type;
+export type SecretsDeleteOutput = void;
+export const SecretsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecretsDeleteOutput>;
 
 // The operation
 /**
@@ -4858,6 +6450,14 @@ export const SecretsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SecretsDeleteOutput,
 }));
 // Input Schema
+export interface SecretsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  $expand?: string;
+}
 export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4871,10 +6471,22 @@ export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type SecretsGetInput = typeof SecretsGetInput.Type;
+) as unknown as Schema.Codec<SecretsGetInput>;
 
 // Output Schema
+export interface SecretsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4893,8 +6505,7 @@ export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SecretsGetOutput = typeof SecretsGetOutput.Type;
+}) as unknown as Schema.Codec<SecretsGetOutput>;
 
 // The operation
 /**
@@ -4913,6 +6524,16 @@ export const SecretsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SecretsGetOutput,
 }));
 // Input Schema
+export interface SecretsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4928,10 +6549,25 @@ export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets",
     apiVersion: "2018-09-15",
   }),
-);
-export type SecretsListInput = typeof SecretsListInput.Type;
+) as unknown as Schema.Codec<SecretsListInput>;
 
 // Output Schema
+export interface SecretsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -4955,8 +6591,7 @@ export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SecretsListOutput = typeof SecretsListOutput.Type;
+}) as unknown as Schema.Codec<SecretsListOutput>;
 
 // The operation
 /**
@@ -4977,6 +6612,14 @@ export const SecretsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SecretsListOutput,
 }));
 // Input Schema
+export interface SecretsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4990,10 +6633,22 @@ export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type SecretsUpdateInput = typeof SecretsUpdateInput.Type;
+) as unknown as Schema.Codec<SecretsUpdateInput>;
 
 // Output Schema
+export interface SecretsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5012,8 +6667,7 @@ export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SecretsUpdateOutput = typeof SecretsUpdateOutput.Type;
+}) as unknown as Schema.Codec<SecretsUpdateOutput>;
 
 // The operation
 /**
@@ -5031,6 +6685,35 @@ export const SecretsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SecretsUpdateOutput,
 }));
 // Input Schema
+export interface ServiceFabricSchedulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  serviceFabricName: string;
+  name: string;
+  properties: {
+    status?: "Enabled" | "Disabled";
+    taskType?: string;
+    weeklyRecurrence?: { weekdays?: string[]; time?: string };
+    dailyRecurrence?: { time?: string };
+    hourlyRecurrence?: { minute?: number };
+    timeZoneId?: string;
+    notificationSettings?: {
+      status?: "Enabled" | "Disabled";
+      timeInMinutes?: number;
+      webhookUrl?: string;
+      emailRecipient?: string;
+      notificationLocale?: string;
+    };
+    createdDate?: string;
+    targetResourceId?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const ServiceFabricSchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5081,11 +6764,22 @@ export const ServiceFabricSchedulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricSchedulesCreateOrUpdateInput =
-  typeof ServiceFabricSchedulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricSchedulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServiceFabricSchedulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceFabricSchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5105,9 +6799,7 @@ export const ServiceFabricSchedulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceFabricSchedulesCreateOrUpdateOutput =
-  typeof ServiceFabricSchedulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricSchedulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5127,6 +6819,14 @@ export const ServiceFabricSchedulesCreateOrUpdate =
     outputSchema: ServiceFabricSchedulesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ServiceFabricSchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  serviceFabricName: string;
+  name: string;
+}
 export const ServiceFabricSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5141,15 +6841,12 @@ export const ServiceFabricSchedulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricSchedulesDeleteInput =
-  typeof ServiceFabricSchedulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricSchedulesDeleteInput>;
 
 // Output Schema
+export type ServiceFabricSchedulesDeleteOutput = void;
 export const ServiceFabricSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceFabricSchedulesDeleteOutput =
-  typeof ServiceFabricSchedulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -5169,6 +6866,14 @@ export const ServiceFabricSchedulesDelete =
     outputSchema: ServiceFabricSchedulesDeleteOutput,
   }));
 // Input Schema
+export interface ServiceFabricSchedulesExecuteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  serviceFabricName: string;
+  name: string;
+}
 export const ServiceFabricSchedulesExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5183,15 +6888,12 @@ export const ServiceFabricSchedulesExecuteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}/execute",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricSchedulesExecuteInput =
-  typeof ServiceFabricSchedulesExecuteInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricSchedulesExecuteInput>;
 
 // Output Schema
+export type ServiceFabricSchedulesExecuteOutput = void;
 export const ServiceFabricSchedulesExecuteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceFabricSchedulesExecuteOutput =
-  typeof ServiceFabricSchedulesExecuteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricSchedulesExecuteOutput>;
 
 // The operation
 /**
@@ -5211,6 +6913,15 @@ export const ServiceFabricSchedulesExecute =
     outputSchema: ServiceFabricSchedulesExecuteOutput,
   }));
 // Input Schema
+export interface ServiceFabricSchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  serviceFabricName: string;
+  name: string;
+  $expand?: string;
+}
 export const ServiceFabricSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5226,11 +6937,22 @@ export const ServiceFabricSchedulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricSchedulesGetInput =
-  typeof ServiceFabricSchedulesGetInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricSchedulesGetInput>;
 
 // Output Schema
+export interface ServiceFabricSchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceFabricSchedulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5250,9 +6972,7 @@ export const ServiceFabricSchedulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceFabricSchedulesGetOutput =
-  typeof ServiceFabricSchedulesGetOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricSchedulesGetOutput>;
 
 // The operation
 /**
@@ -5274,6 +6994,17 @@ export const ServiceFabricSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceFabricSchedulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  serviceFabricName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const ServiceFabricSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5291,11 +7022,25 @@ export const ServiceFabricSchedulesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricSchedulesListInput =
-  typeof ServiceFabricSchedulesListInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricSchedulesListInput>;
 
 // Output Schema
+export interface ServiceFabricSchedulesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServiceFabricSchedulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5330,9 +7075,7 @@ export const ServiceFabricSchedulesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServiceFabricSchedulesListOutput =
-  typeof ServiceFabricSchedulesListOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricSchedulesListOutput>;
 
 // The operation
 /**
@@ -5356,6 +7099,15 @@ export const ServiceFabricSchedulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceFabricSchedulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  serviceFabricName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const ServiceFabricSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5371,11 +7123,22 @@ export const ServiceFabricSchedulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricSchedulesUpdateInput =
-  typeof ServiceFabricSchedulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricSchedulesUpdateInput>;
 
 // Output Schema
+export interface ServiceFabricSchedulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceFabricSchedulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5395,9 +7158,7 @@ export const ServiceFabricSchedulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceFabricSchedulesUpdateOutput =
-  typeof ServiceFabricSchedulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricSchedulesUpdateOutput>;
 
 // The operation
 /**
@@ -5417,6 +7178,34 @@ export const ServiceFabricSchedulesUpdate =
     outputSchema: ServiceFabricSchedulesUpdateOutput,
   }));
 // Input Schema
+export interface ServiceFabricsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  properties: {
+    externalServiceFabricId?: string;
+    environmentId?: string;
+    applicableSchedule?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    };
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const ServiceFabricsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5469,11 +7258,22 @@ export const ServiceFabricsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricsCreateOrUpdateInput =
-  typeof ServiceFabricsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServiceFabricsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceFabricsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5493,9 +7293,7 @@ export const ServiceFabricsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceFabricsCreateOrUpdateOutput =
-  typeof ServiceFabricsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5514,6 +7312,13 @@ export const ServiceFabricsCreateOrUpdate =
     outputSchema: ServiceFabricsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ServiceFabricsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+}
 export const ServiceFabricsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5527,13 +7332,12 @@ export const ServiceFabricsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricsDeleteInput = typeof ServiceFabricsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricsDeleteInput>;
 
 // Output Schema
+export type ServiceFabricsDeleteOutput = void;
 export const ServiceFabricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceFabricsDeleteOutput = typeof ServiceFabricsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsDeleteOutput>;
 
 // The operation
 /**
@@ -5553,6 +7357,14 @@ export const ServiceFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceFabricsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  $expand?: string;
+}
 export const ServiceFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5568,10 +7380,22 @@ export const ServiceFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type ServiceFabricsGetInput = typeof ServiceFabricsGetInput.Type;
+) as unknown as Schema.Codec<ServiceFabricsGetInput>;
 
 // Output Schema
+export interface ServiceFabricsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceFabricsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5591,8 +7415,7 @@ export const ServiceFabricsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceFabricsGetOutput = typeof ServiceFabricsGetOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricsGetOutput>;
 
 // The operation
 /**
@@ -5611,6 +7434,16 @@ export const ServiceFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceFabricsGetOutput,
 }));
 // Input Schema
+export interface ServiceFabricsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const ServiceFabricsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5627,10 +7460,25 @@ export const ServiceFabricsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricsListInput = typeof ServiceFabricsListInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricsListInput>;
 
 // Output Schema
+export interface ServiceFabricsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServiceFabricsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5665,8 +7513,7 @@ export const ServiceFabricsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServiceFabricsListOutput = typeof ServiceFabricsListOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricsListOutput>;
 
 // The operation
 /**
@@ -5687,6 +7534,13 @@ export const ServiceFabricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceFabricsListOutput,
 }));
 // Input Schema
+export interface ServiceFabricsListApplicableSchedulesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+}
 export const ServiceFabricsListApplicableSchedulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5700,11 +7554,22 @@ export const ServiceFabricsListApplicableSchedulesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/listApplicableSchedules",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricsListApplicableSchedulesInput =
-  typeof ServiceFabricsListApplicableSchedulesInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricsListApplicableSchedulesInput>;
 
 // Output Schema
+export interface ServiceFabricsListApplicableSchedulesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceFabricsListApplicableSchedulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5724,9 +7589,7 @@ export const ServiceFabricsListApplicableSchedulesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceFabricsListApplicableSchedulesOutput =
-  typeof ServiceFabricsListApplicableSchedulesOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricsListApplicableSchedulesOutput>;
 
 // The operation
 /**
@@ -5745,6 +7608,13 @@ export const ServiceFabricsListApplicableSchedules =
     outputSchema: ServiceFabricsListApplicableSchedulesOutput,
   }));
 // Input Schema
+export interface ServiceFabricsStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+}
 export const ServiceFabricsStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5758,13 +7628,12 @@ export const ServiceFabricsStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/start",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricsStartInput = typeof ServiceFabricsStartInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricsStartInput>;
 
 // Output Schema
+export type ServiceFabricsStartOutput = void;
 export const ServiceFabricsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceFabricsStartOutput = typeof ServiceFabricsStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsStartOutput>;
 
 // The operation
 /**
@@ -5782,6 +7651,13 @@ export const ServiceFabricsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceFabricsStartOutput,
 }));
 // Input Schema
+export interface ServiceFabricsStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+}
 export const ServiceFabricsStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5795,12 +7671,12 @@ export const ServiceFabricsStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/stop",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricsStopInput = typeof ServiceFabricsStopInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricsStopInput>;
 
 // Output Schema
-export const ServiceFabricsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceFabricsStopOutput = typeof ServiceFabricsStopOutput.Type;
+export type ServiceFabricsStopOutput = void;
+export const ServiceFabricsStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceFabricsStopOutput>;
 
 // The operation
 /**
@@ -5818,6 +7694,14 @@ export const ServiceFabricsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceFabricsStopOutput,
 }));
 // Input Schema
+export interface ServiceFabricsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  userName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const ServiceFabricsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5832,10 +7716,22 @@ export const ServiceFabricsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceFabricsUpdateInput = typeof ServiceFabricsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceFabricsUpdateInput>;
 
 // Output Schema
+export interface ServiceFabricsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceFabricsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5855,8 +7751,7 @@ export const ServiceFabricsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceFabricsUpdateOutput = typeof ServiceFabricsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceFabricsUpdateOutput>;
 
 // The operation
 /**
@@ -5876,6 +7771,24 @@ export const ServiceFabricsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceRunnersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+  location?: string;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    clientSecretUrl?: string;
+  };
+}
 export const ServiceRunnersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5905,11 +7818,22 @@ export const ServiceRunnersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceRunnersCreateOrUpdateInput =
-  typeof ServiceRunnersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceRunnersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServiceRunnersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceRunnersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5929,9 +7853,7 @@ export const ServiceRunnersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceRunnersCreateOrUpdateOutput =
-  typeof ServiceRunnersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceRunnersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5949,6 +7871,12 @@ export const ServiceRunnersCreateOrUpdate =
     outputSchema: ServiceRunnersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ServiceRunnersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const ServiceRunnersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5961,13 +7889,12 @@ export const ServiceRunnersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type ServiceRunnersDeleteInput = typeof ServiceRunnersDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServiceRunnersDeleteInput>;
 
 // Output Schema
+export type ServiceRunnersDeleteOutput = void;
 export const ServiceRunnersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceRunnersDeleteOutput = typeof ServiceRunnersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceRunnersDeleteOutput>;
 
 // The operation
 /**
@@ -5986,6 +7913,12 @@ export const ServiceRunnersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceRunnersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const ServiceRunnersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5999,10 +7932,22 @@ export const ServiceRunnersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type ServiceRunnersGetInput = typeof ServiceRunnersGetInput.Type;
+) as unknown as Schema.Codec<ServiceRunnersGetInput>;
 
 // Output Schema
+export interface ServiceRunnersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceRunnersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6022,8 +7967,7 @@ export const ServiceRunnersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceRunnersGetOutput = typeof ServiceRunnersGetOutput.Type;
+  }) as unknown as Schema.Codec<ServiceRunnersGetOutput>;
 
 // The operation
 /**
@@ -6040,6 +7984,27 @@ export const ServiceRunnersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceRunnersGetOutput,
 }));
 // Input Schema
+export interface UsersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    identity?: {
+      principalName?: string;
+      principalId?: string;
+      tenantId?: string;
+      objectId?: string;
+      appId?: string;
+    };
+    secretStore?: { keyVaultUri?: string; keyVaultId?: string };
+    createdDate?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const UsersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6074,10 +8039,22 @@ export const UsersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<UsersCreateOrUpdateInput>;
 
 // Output Schema
+export interface UsersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6097,8 +8074,7 @@ export const UsersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UsersCreateOrUpdateOutput = typeof UsersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<UsersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6115,6 +8091,12 @@ export const UsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface UsersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6126,12 +8108,12 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type UsersDeleteInput = typeof UsersDeleteInput.Type;
+) as unknown as Schema.Codec<UsersDeleteInput>;
 
 // Output Schema
-export const UsersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
+export type UsersDeleteOutput = void;
+export const UsersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
 
 // The operation
 /**
@@ -6148,6 +8130,13 @@ export const UsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersDeleteOutput,
 }));
 // Input Schema
+export interface UsersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6160,10 +8149,22 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type UsersGetInput = typeof UsersGetInput.Type;
+) as unknown as Schema.Codec<UsersGetInput>;
 
 // Output Schema
+export interface UsersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6182,8 +8183,7 @@ export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UsersGetOutput = typeof UsersGetOutput.Type;
+}) as unknown as Schema.Codec<UsersGetOutput>;
 
 // The operation
 /**
@@ -6201,6 +8201,15 @@ export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersGetOutput,
 }));
 // Input Schema
+export interface UsersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const UsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6215,10 +8224,25 @@ export const UsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users",
     apiVersion: "2018-09-15",
   }),
-);
-export type UsersListInput = typeof UsersListInput.Type;
+) as unknown as Schema.Codec<UsersListInput>;
 
 // Output Schema
+export interface UsersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -6242,8 +8266,7 @@ export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UsersListOutput = typeof UsersListOutput.Type;
+}) as unknown as Schema.Codec<UsersListOutput>;
 
 // The operation
 /**
@@ -6263,6 +8286,13 @@ export const UsersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersListOutput,
 }));
 // Input Schema
+export interface UsersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6275,10 +8305,22 @@ export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}",
     apiVersion: "2018-09-15",
   }),
-);
-export type UsersUpdateInput = typeof UsersUpdateInput.Type;
+) as unknown as Schema.Codec<UsersUpdateInput>;
 
 // Output Schema
+export interface UsersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6297,8 +8339,7 @@ export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UsersUpdateOutput = typeof UsersUpdateOutput.Type;
+}) as unknown as Schema.Codec<UsersUpdateOutput>;
 
 // The operation
 /**
@@ -6315,6 +8356,19 @@ export const UsersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersUpdateOutput,
 }));
 // Input Schema
+export interface VirtualMachinesAddDataDiskInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  attachNewDataDiskOptions?: {
+    diskSizeGiB?: number;
+    diskName?: string;
+    diskType?: "Standard" | "Premium" | "StandardSSD";
+  };
+  existingLabDiskId?: string;
+  hostCaching?: "None" | "ReadOnly" | "ReadWrite";
+}
 export const VirtualMachinesAddDataDiskInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6340,15 +8394,12 @@ export const VirtualMachinesAddDataDiskInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/addDataDisk",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesAddDataDiskInput =
-  typeof VirtualMachinesAddDataDiskInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesAddDataDiskInput>;
 
 // Output Schema
+export type VirtualMachinesAddDataDiskOutput = void;
 export const VirtualMachinesAddDataDiskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesAddDataDiskOutput =
-  typeof VirtualMachinesAddDataDiskOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesAddDataDiskOutput>;
 
 // The operation
 /**
@@ -6367,6 +8418,21 @@ export const VirtualMachinesAddDataDisk = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesApplyArtifactsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  artifacts?: {
+    artifactId?: string;
+    artifactTitle?: string;
+    parameters?: { name?: string; value?: string }[];
+    status?: string;
+    deploymentStatusMessage?: string;
+    vmExtensionStatusMessage?: string;
+    installTime?: string;
+  }[];
+}
 export const VirtualMachinesApplyArtifactsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6399,15 +8465,12 @@ export const VirtualMachinesApplyArtifactsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/applyArtifacts",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesApplyArtifactsInput =
-  typeof VirtualMachinesApplyArtifactsInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesApplyArtifactsInput>;
 
 // Output Schema
+export type VirtualMachinesApplyArtifactsOutput = void;
 export const VirtualMachinesApplyArtifactsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesApplyArtifactsOutput =
-  typeof VirtualMachinesApplyArtifactsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesApplyArtifactsOutput>;
 
 // The operation
 /**
@@ -6425,6 +8488,34 @@ export const VirtualMachinesApplyArtifacts =
     outputSchema: VirtualMachinesApplyArtifactsOutput,
   }));
 // Input Schema
+export interface VirtualMachineSchedulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  virtualMachineName: string;
+  name: string;
+  properties: {
+    status?: "Enabled" | "Disabled";
+    taskType?: string;
+    weeklyRecurrence?: { weekdays?: string[]; time?: string };
+    dailyRecurrence?: { time?: string };
+    hourlyRecurrence?: { minute?: number };
+    timeZoneId?: string;
+    notificationSettings?: {
+      status?: "Enabled" | "Disabled";
+      timeInMinutes?: number;
+      webhookUrl?: string;
+      emailRecipient?: string;
+      notificationLocale?: string;
+    };
+    createdDate?: string;
+    targetResourceId?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const VirtualMachineSchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6474,11 +8565,22 @@ export const VirtualMachineSchedulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachineSchedulesCreateOrUpdateInput =
-  typeof VirtualMachineSchedulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineSchedulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualMachineSchedulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineSchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6498,9 +8600,7 @@ export const VirtualMachineSchedulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineSchedulesCreateOrUpdateOutput =
-  typeof VirtualMachineSchedulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineSchedulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6519,6 +8619,13 @@ export const VirtualMachineSchedulesCreateOrUpdate =
     outputSchema: VirtualMachineSchedulesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachineSchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  virtualMachineName: string;
+  name: string;
+}
 export const VirtualMachineSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6532,15 +8639,12 @@ export const VirtualMachineSchedulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachineSchedulesDeleteInput =
-  typeof VirtualMachineSchedulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineSchedulesDeleteInput>;
 
 // Output Schema
+export type VirtualMachineSchedulesDeleteOutput = void;
 export const VirtualMachineSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineSchedulesDeleteOutput =
-  typeof VirtualMachineSchedulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -6559,6 +8663,13 @@ export const VirtualMachineSchedulesDelete =
     outputSchema: VirtualMachineSchedulesDeleteOutput,
   }));
 // Input Schema
+export interface VirtualMachineSchedulesExecuteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  virtualMachineName: string;
+  name: string;
+}
 export const VirtualMachineSchedulesExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6572,15 +8683,12 @@ export const VirtualMachineSchedulesExecuteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}/execute",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachineSchedulesExecuteInput =
-  typeof VirtualMachineSchedulesExecuteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineSchedulesExecuteInput>;
 
 // Output Schema
+export type VirtualMachineSchedulesExecuteOutput = void;
 export const VirtualMachineSchedulesExecuteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineSchedulesExecuteOutput =
-  typeof VirtualMachineSchedulesExecuteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineSchedulesExecuteOutput>;
 
 // The operation
 /**
@@ -6599,6 +8707,14 @@ export const VirtualMachineSchedulesExecute =
     outputSchema: VirtualMachineSchedulesExecuteOutput,
   }));
 // Input Schema
+export interface VirtualMachineSchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  virtualMachineName: string;
+  name: string;
+  $expand?: string;
+}
 export const VirtualMachineSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6613,11 +8729,22 @@ export const VirtualMachineSchedulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachineSchedulesGetInput =
-  typeof VirtualMachineSchedulesGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineSchedulesGetInput>;
 
 // Output Schema
+export interface VirtualMachineSchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineSchedulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6637,9 +8764,7 @@ export const VirtualMachineSchedulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineSchedulesGetOutput =
-  typeof VirtualMachineSchedulesGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineSchedulesGetOutput>;
 
 // The operation
 /**
@@ -6660,6 +8785,16 @@ export const VirtualMachineSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineSchedulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  virtualMachineName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const VirtualMachineSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6676,11 +8811,25 @@ export const VirtualMachineSchedulesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachineSchedulesListInput =
-  typeof VirtualMachineSchedulesListInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineSchedulesListInput>;
 
 // Output Schema
+export interface VirtualMachineSchedulesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualMachineSchedulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6715,9 +8864,7 @@ export const VirtualMachineSchedulesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualMachineSchedulesListOutput =
-  typeof VirtualMachineSchedulesListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineSchedulesListOutput>;
 
 // The operation
 /**
@@ -6740,6 +8887,14 @@ export const VirtualMachineSchedulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineSchedulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  virtualMachineName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const VirtualMachineSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6754,11 +8909,22 @@ export const VirtualMachineSchedulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachineSchedulesUpdateInput =
-  typeof VirtualMachineSchedulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineSchedulesUpdateInput>;
 
 // Output Schema
+export interface VirtualMachineSchedulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineSchedulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6778,9 +8944,7 @@ export const VirtualMachineSchedulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineSchedulesUpdateOutput =
-  typeof VirtualMachineSchedulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineSchedulesUpdateOutput>;
 
 // The operation
 /**
@@ -6799,6 +8963,12 @@ export const VirtualMachineSchedulesUpdate =
     outputSchema: VirtualMachineSchedulesUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachinesClaimInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6811,13 +8981,12 @@ export const VirtualMachinesClaimInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/claim",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesClaimInput = typeof VirtualMachinesClaimInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesClaimInput>;
 
 // Output Schema
+export type VirtualMachinesClaimOutput = void;
 export const VirtualMachinesClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesClaimOutput = typeof VirtualMachinesClaimOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesClaimOutput>;
 
 // The operation
 /**
@@ -6836,6 +9005,141 @@ export const VirtualMachinesClaim = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    notes?: string;
+    ownerObjectId?: string;
+    ownerUserPrincipalName?: string;
+    createdByUserId?: string;
+    createdByUser?: string;
+    createdDate?: string;
+    computeId?: string;
+    customImageId?: string;
+    osType?: string;
+    size?: string;
+    userName?: string;
+    password?: string | Redacted.Redacted<string>;
+    sshKey?: string;
+    isAuthenticationWithSshKey?: boolean;
+    fqdn?: string;
+    labSubnetName?: string;
+    labVirtualNetworkId?: string;
+    disallowPublicIpAddress?: boolean;
+    artifacts?: {
+      artifactId?: string;
+      artifactTitle?: string;
+      parameters?: { name?: string; value?: string }[];
+      status?: string;
+      deploymentStatusMessage?: string;
+      vmExtensionStatusMessage?: string;
+      installTime?: string;
+    }[];
+    artifactDeploymentStatus?: {
+      deploymentStatus?: string;
+      artifactsApplied?: number;
+      totalArtifacts?: number;
+    };
+    galleryImageReference?: {
+      offer?: string;
+      publisher?: string;
+      sku?: string;
+      osType?: string;
+      version?: string;
+    };
+    planId?: string;
+    computeVm?: {
+      statuses?: { code?: string; displayStatus?: string; message?: string }[];
+      osType?: string;
+      vmSize?: string;
+      networkInterfaceId?: string;
+      osDiskId?: string;
+      dataDiskIds?: string[];
+      dataDisks?: {
+        name?: string;
+        diskUri?: string;
+        managedDiskId?: string;
+        diskSizeGiB?: number;
+      }[];
+    };
+    networkInterface?: {
+      virtualNetworkId?: string;
+      subnetId?: string;
+      publicIpAddressId?: string;
+      publicIpAddress?: string;
+      privateIpAddress?: string;
+      dnsName?: string;
+      rdpAuthority?: string;
+      sshAuthority?: string;
+      sharedPublicIpAddressConfiguration?: {
+        inboundNatRules?: {
+          transportProtocol?: "Tcp" | "Udp";
+          frontendPort?: number;
+          backendPort?: number;
+        }[];
+      };
+    };
+    applicableSchedule?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    };
+    expirationDate?: string;
+    allowClaim?: boolean;
+    storageType?: string;
+    virtualMachineCreationSource?:
+      | "FromCustomImage"
+      | "FromGalleryImage"
+      | "FromSharedGalleryImage";
+    environmentId?: string;
+    dataDiskParameters?: {
+      attachNewDataDiskOptions?: {
+        diskSizeGiB?: number;
+        diskName?: string;
+        diskType?: "Standard" | "Premium" | "StandardSSD";
+      };
+      existingLabDiskId?: string;
+      hostCaching?: "None" | "ReadOnly" | "ReadWrite";
+    }[];
+    scheduleParameters?: {
+      properties?: {
+        status?: "Enabled" | "Disabled";
+        taskType?: string;
+        weeklyRecurrence?: { weekdays?: string[]; time?: string };
+        dailyRecurrence?: { time?: string };
+        hourlyRecurrence?: { minute?: number };
+        timeZoneId?: string;
+        notificationSettings?: {
+          status?: "Enabled" | "Disabled";
+          timeInMinutes?: number;
+          webhookUrl?: string;
+          emailRecipient?: string;
+          notificationLocale?: string;
+        };
+        targetResourceId?: string;
+      };
+      name?: string;
+      location?: string;
+      tags?: Record<string, string>;
+    }[];
+    lastKnownPowerState?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const VirtualMachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7072,11 +9376,22 @@ export const VirtualMachinesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesCreateOrUpdateInput =
-  typeof VirtualMachinesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualMachinesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7096,9 +9411,7 @@ export const VirtualMachinesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachinesCreateOrUpdateOutput =
-  typeof VirtualMachinesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7116,6 +9429,12 @@ export const VirtualMachinesCreateOrUpdate =
     outputSchema: VirtualMachinesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachinesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7128,14 +9447,12 @@ export const VirtualMachinesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesDeleteInput>;
 
 // Output Schema
+export type VirtualMachinesDeleteOutput = void;
 export const VirtualMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesDeleteOutput =
-  typeof VirtualMachinesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -7154,6 +9471,13 @@ export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesDetachDataDiskInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  existingLabDiskId?: string;
+}
 export const VirtualMachinesDetachDataDiskInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7167,15 +9491,12 @@ export const VirtualMachinesDetachDataDiskInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/detachDataDisk",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesDetachDataDiskInput =
-  typeof VirtualMachinesDetachDataDiskInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesDetachDataDiskInput>;
 
 // Output Schema
+export type VirtualMachinesDetachDataDiskOutput = void;
 export const VirtualMachinesDetachDataDiskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesDetachDataDiskOutput =
-  typeof VirtualMachinesDetachDataDiskOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDetachDataDiskOutput>;
 
 // The operation
 /**
@@ -7193,6 +9514,13 @@ export const VirtualMachinesDetachDataDisk =
     outputSchema: VirtualMachinesDetachDataDiskOutput,
   }));
 // Input Schema
+export interface VirtualMachinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const VirtualMachinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7206,10 +9534,22 @@ export const VirtualMachinesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesGetInput>;
 
 // Output Schema
+export interface VirtualMachinesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7229,8 +9569,7 @@ export const VirtualMachinesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesGetOutput>;
 
 // The operation
 /**
@@ -7248,6 +9587,12 @@ export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesGetOutput,
 }));
 // Input Schema
+export interface VirtualMachinesGetRdpFileContentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesGetRdpFileContentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7260,17 +9605,16 @@ export const VirtualMachinesGetRdpFileContentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/getRdpFileContents",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesGetRdpFileContentsInput =
-  typeof VirtualMachinesGetRdpFileContentsInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesGetRdpFileContentsInput>;
 
 // Output Schema
+export interface VirtualMachinesGetRdpFileContentsOutput {
+  contents?: string;
+}
 export const VirtualMachinesGetRdpFileContentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contents: Schema.optional(Schema.String),
-  });
-export type VirtualMachinesGetRdpFileContentsOutput =
-  typeof VirtualMachinesGetRdpFileContentsOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesGetRdpFileContentsOutput>;
 
 // The operation
 /**
@@ -7288,6 +9632,15 @@ export const VirtualMachinesGetRdpFileContents =
     outputSchema: VirtualMachinesGetRdpFileContentsOutput,
   }));
 // Input Schema
+export interface VirtualMachinesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const VirtualMachinesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7303,10 +9656,25 @@ export const VirtualMachinesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesListInput = typeof VirtualMachinesListInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesListInput>;
 
 // Output Schema
+export interface VirtualMachinesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualMachinesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7341,8 +9709,7 @@ export const VirtualMachinesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualMachinesListOutput = typeof VirtualMachinesListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesListOutput>;
 
 // The operation
 /**
@@ -7362,6 +9729,12 @@ export const VirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesListOutput,
 }));
 // Input Schema
+export interface VirtualMachinesListApplicableSchedulesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesListApplicableSchedulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7374,11 +9747,22 @@ export const VirtualMachinesListApplicableSchedulesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/listApplicableSchedules",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesListApplicableSchedulesInput =
-  typeof VirtualMachinesListApplicableSchedulesInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesListApplicableSchedulesInput>;
 
 // Output Schema
+export interface VirtualMachinesListApplicableSchedulesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachinesListApplicableSchedulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7398,9 +9782,7 @@ export const VirtualMachinesListApplicableSchedulesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachinesListApplicableSchedulesOutput =
-  typeof VirtualMachinesListApplicableSchedulesOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesListApplicableSchedulesOutput>;
 
 // The operation
 /**
@@ -7418,6 +9800,12 @@ export const VirtualMachinesListApplicableSchedules =
     outputSchema: VirtualMachinesListApplicableSchedulesOutput,
   }));
 // Input Schema
+export interface VirtualMachinesRedeployInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesRedeployInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7430,15 +9818,12 @@ export const VirtualMachinesRedeployInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/redeploy",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesRedeployInput =
-  typeof VirtualMachinesRedeployInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesRedeployInput>;
 
 // Output Schema
+export type VirtualMachinesRedeployOutput = void;
 export const VirtualMachinesRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesRedeployOutput =
-  typeof VirtualMachinesRedeployOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRedeployOutput>;
 
 // The operation
 /**
@@ -7457,6 +9842,13 @@ export const VirtualMachinesRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesResizeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  size?: string;
+}
 export const VirtualMachinesResizeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7470,14 +9862,12 @@ export const VirtualMachinesResizeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/resize",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesResizeInput = typeof VirtualMachinesResizeInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesResizeInput>;
 
 // Output Schema
+export type VirtualMachinesResizeOutput = void;
 export const VirtualMachinesResizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesResizeOutput =
-  typeof VirtualMachinesResizeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesResizeOutput>;
 
 // The operation
 /**
@@ -7496,6 +9886,12 @@ export const VirtualMachinesResize = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7508,15 +9904,12 @@ export const VirtualMachinesRestartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/restart",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesRestartInput =
-  typeof VirtualMachinesRestartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesRestartInput>;
 
 // Output Schema
+export type VirtualMachinesRestartOutput = void;
 export const VirtualMachinesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesRestartOutput =
-  typeof VirtualMachinesRestartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestartOutput>;
 
 // The operation
 /**
@@ -7535,6 +9928,12 @@ export const VirtualMachinesRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7547,13 +9946,12 @@ export const VirtualMachinesStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/start",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesStartInput>;
 
 // Output Schema
+export type VirtualMachinesStartOutput = void;
 export const VirtualMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStartOutput>;
 
 // The operation
 /**
@@ -7572,6 +9970,12 @@ export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7584,13 +9988,12 @@ export const VirtualMachinesStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/stop",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesStopInput>;
 
 // Output Schema
+export type VirtualMachinesStopOutput = void;
 export const VirtualMachinesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStopOutput>;
 
 // The operation
 /**
@@ -7607,6 +10010,12 @@ export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesStopOutput,
 }));
 // Input Schema
+export interface VirtualMachinesTransferDisksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesTransferDisksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7619,15 +10028,12 @@ export const VirtualMachinesTransferDisksInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/transferDisks",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesTransferDisksInput =
-  typeof VirtualMachinesTransferDisksInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesTransferDisksInput>;
 
 // Output Schema
+export type VirtualMachinesTransferDisksOutput = void;
 export const VirtualMachinesTransferDisksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesTransferDisksOutput =
-  typeof VirtualMachinesTransferDisksOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesTransferDisksOutput>;
 
 // The operation
 /**
@@ -7645,6 +10051,12 @@ export const VirtualMachinesTransferDisks =
     outputSchema: VirtualMachinesTransferDisksOutput,
   }));
 // Input Schema
+export interface VirtualMachinesUnClaimInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualMachinesUnClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7657,15 +10069,12 @@ export const VirtualMachinesUnClaimInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/unClaim",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesUnClaimInput =
-  typeof VirtualMachinesUnClaimInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesUnClaimInput>;
 
 // Output Schema
+export type VirtualMachinesUnClaimOutput = void;
 export const VirtualMachinesUnClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesUnClaimOutput =
-  typeof VirtualMachinesUnClaimOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesUnClaimOutput>;
 
 // The operation
 /**
@@ -7684,6 +10093,13 @@ export const VirtualMachinesUnClaim = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const VirtualMachinesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7697,10 +10113,22 @@ export const VirtualMachinesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesUpdateInput>;
 
 // Output Schema
+export interface VirtualMachinesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachinesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7720,9 +10148,7 @@ export const VirtualMachinesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachinesUpdateOutput =
-  typeof VirtualMachinesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesUpdateOutput>;
 
 // The operation
 /**
@@ -7741,6 +10167,40 @@ export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  properties: {
+    allowedSubnets?: {
+      resourceId?: string;
+      labSubnetName?: string;
+      allowPublicIp?: "Default" | "Deny" | "Allow";
+    }[];
+    description?: string;
+    externalProviderResourceId?: string;
+    externalSubnets?: { id?: string; name?: string }[];
+    subnetOverrides?: {
+      resourceId?: string;
+      labSubnetName?: string;
+      useInVmCreationPermission?: "Default" | "Deny" | "Allow";
+      usePublicIpAddressPermission?: "Default" | "Deny" | "Allow";
+      sharedPublicIpAddressConfiguration?: {
+        allowedPorts?: {
+          transportProtocol?: "Tcp" | "Udp";
+          backendPort?: number;
+        }[];
+      };
+      virtualNetworkPoolName?: string;
+    }[];
+    createdDate?: string;
+    provisioningState?: string;
+    uniqueIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const VirtualNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7810,11 +10270,22 @@ export const VirtualNetworksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualNetworksCreateOrUpdateInput =
-  typeof VirtualNetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7834,9 +10305,7 @@ export const VirtualNetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksCreateOrUpdateOutput =
-  typeof VirtualNetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7854,6 +10323,12 @@ export const VirtualNetworksCreateOrUpdate =
     outputSchema: VirtualNetworksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+}
 export const VirtualNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7866,14 +10341,12 @@ export const VirtualNetworksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksDeleteInput>;
 
 // Output Schema
+export type VirtualNetworksDeleteOutput = void;
 export const VirtualNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualNetworksDeleteOutput =
-  typeof VirtualNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -7892,6 +10365,13 @@ export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  $expand?: string;
+}
 export const VirtualNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7905,10 +10385,22 @@ export const VirtualNetworksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksGetInput>;
 
 // Output Schema
+export interface VirtualNetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7928,8 +10420,7 @@ export const VirtualNetworksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksGetOutput>;
 
 // The operation
 /**
@@ -7947,6 +10438,15 @@ export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualNetworksGetOutput,
 }));
 // Input Schema
+export interface VirtualNetworksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  $expand?: string;
+  $filter?: string;
+  $top?: number;
+  $orderby?: string;
+}
 export const VirtualNetworksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7962,10 +10462,25 @@ export const VirtualNetworksListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualNetworksListInput = typeof VirtualNetworksListInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksListInput>;
 
 // Output Schema
+export interface VirtualNetworksListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualNetworksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8000,8 +10515,7 @@ export const VirtualNetworksListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualNetworksListOutput = typeof VirtualNetworksListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksListOutput>;
 
 // The operation
 /**
@@ -8021,6 +10535,13 @@ export const VirtualNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualNetworksListOutput,
 }));
 // Input Schema
+export interface VirtualNetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  labName: string;
+  name: string;
+  tags?: Record<string, string>;
+}
 export const VirtualNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8034,10 +10555,22 @@ export const VirtualNetworksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}",
       apiVersion: "2018-09-15",
     }),
-  );
-export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8057,9 +10590,7 @@ export const VirtualNetworksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksUpdateOutput =
-  typeof VirtualNetworksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksUpdateOutput>;
 
 // The operation
 /**

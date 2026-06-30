@@ -4,12 +4,60 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateAuthenticationV1SelfSubjectReviewInput {
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  pretty?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  status?: {
+    userInfo?: {
+      extra?: Record<string, string[]>;
+      groups?: string[];
+      uid?: string;
+      username?: string;
+    };
+  };
+}
 export const CreateAuthenticationV1SelfSubjectReviewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
@@ -81,11 +129,53 @@ export const CreateAuthenticationV1SelfSubjectReviewInput =
       method: "POST",
       path: "/apis/authentication.k8s.io/v1/selfsubjectreviews",
     }),
-  );
-export type CreateAuthenticationV1SelfSubjectReviewInput =
-  typeof CreateAuthenticationV1SelfSubjectReviewInput.Type;
+  ) as unknown as Schema.Codec<CreateAuthenticationV1SelfSubjectReviewInput>;
 
 // Output Schema
+export interface CreateAuthenticationV1SelfSubjectReviewOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  status?: {
+    userInfo?: {
+      extra?: Record<string, string[]>;
+      groups?: string[];
+      uid?: string;
+      username?: string;
+    };
+  };
+}
 export const CreateAuthenticationV1SelfSubjectReviewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -148,9 +238,7 @@ export const CreateAuthenticationV1SelfSubjectReviewOutput =
         ),
       }),
     ),
-  });
-export type CreateAuthenticationV1SelfSubjectReviewOutput =
-  typeof CreateAuthenticationV1SelfSubjectReviewOutput.Type;
+  }) as unknown as Schema.Codec<CreateAuthenticationV1SelfSubjectReviewOutput>;
 
 // The operation
 /**
@@ -168,6 +256,58 @@ export const createAuthenticationV1SelfSubjectReview =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAuthenticationV1TokenReviewInput {
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  pretty?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { audiences?: string[]; token: string };
+  status?: {
+    audiences?: string[];
+    authenticated?: boolean;
+    error?: string;
+    user?: {
+      extra?: Record<string, string[]>;
+      groups?: string[];
+      uid?: string;
+      username?: string;
+    };
+  };
+}
 export const CreateAuthenticationV1TokenReviewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
@@ -246,11 +386,57 @@ export const CreateAuthenticationV1TokenReviewInput =
       method: "POST",
       path: "/apis/authentication.k8s.io/v1/tokenreviews",
     }),
-  );
-export type CreateAuthenticationV1TokenReviewInput =
-  typeof CreateAuthenticationV1TokenReviewInput.Type;
+  ) as unknown as Schema.Codec<CreateAuthenticationV1TokenReviewInput>;
 
 // Output Schema
+export interface CreateAuthenticationV1TokenReviewOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { audiences?: string[]; token: string };
+  status?: {
+    audiences?: string[];
+    authenticated?: boolean;
+    error?: string;
+    user?: {
+      extra?: Record<string, string[]>;
+      groups?: string[];
+      uid?: string;
+      username?: string;
+    };
+  };
+}
 export const CreateAuthenticationV1TokenReviewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -320,9 +506,7 @@ export const CreateAuthenticationV1TokenReviewOutput =
         ),
       }),
     ),
-  });
-export type CreateAuthenticationV1TokenReviewOutput =
-  typeof CreateAuthenticationV1TokenReviewOutput.Type;
+  }) as unknown as Schema.Codec<CreateAuthenticationV1TokenReviewOutput>;
 
 // The operation
 /**
@@ -340,14 +524,21 @@ export const createAuthenticationV1TokenReview =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface GetAuthenticationAPIGroupInput {}
 export const GetAuthenticationAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/authentication.k8s.io/" }),
-  );
-export type GetAuthenticationAPIGroupInput =
-  typeof GetAuthenticationAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetAuthenticationAPIGroupInput>;
 
 // Output Schema
+export interface GetAuthenticationAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetAuthenticationAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -373,9 +564,7 @@ export const GetAuthenticationAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetAuthenticationAPIGroupOutput =
-  typeof GetAuthenticationAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetAuthenticationAPIGroupOutput>;
 
 // The operation
 /**
@@ -388,14 +577,30 @@ export const getAuthenticationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetAuthenticationV1APIResourcesInput {}
 export const GetAuthenticationV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/authentication.k8s.io/v1/" }),
-  );
-export type GetAuthenticationV1APIResourcesInput =
-  typeof GetAuthenticationV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetAuthenticationV1APIResourcesInput>;
 
 // Output Schema
+export interface GetAuthenticationV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetAuthenticationV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -415,9 +620,7 @@ export const GetAuthenticationV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetAuthenticationV1APIResourcesOutput =
-  typeof GetAuthenticationV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetAuthenticationV1APIResourcesOutput>;
 
 // The operation
 /**

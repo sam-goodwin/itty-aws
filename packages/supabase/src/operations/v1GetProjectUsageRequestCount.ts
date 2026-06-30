@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetProjectUsageRequestCountInput {
+  ref: string;
+}
 export const V1GetProjectUsageRequestCountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,26 @@ export const V1GetProjectUsageRequestCountInput =
       method: "GET",
       path: "/v1/projects/{ref}/analytics/endpoints/usage.api-requests-count",
     }),
-  );
-export type V1GetProjectUsageRequestCountInput =
-  typeof V1GetProjectUsageRequestCountInput.Type;
+  ) as unknown as Schema.Codec<V1GetProjectUsageRequestCountInput>;
 
 // Output Schema
+export interface V1GetProjectUsageRequestCountOutput {
+  result?: { count: number }[];
+  error?:
+    | string
+    | {
+        code: number;
+        errors: {
+          domain: string;
+          location: string;
+          locationType: string;
+          message: string;
+          reason: string;
+        }[];
+        message: string;
+        status: string;
+      };
+}
 export const V1GetProjectUsageRequestCountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(
@@ -26,10 +44,26 @@ export const V1GetProjectUsageRequestCountOutput =
         }),
       ),
     ),
-    error: Schema.optional(Schema.Unknown),
-  });
-export type V1GetProjectUsageRequestCountOutput =
-  typeof V1GetProjectUsageRequestCountOutput.Type;
+    error: Schema.optional(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          code: Schema.Number,
+          errors: Schema.Array(
+            Schema.Struct({
+              domain: Schema.String,
+              location: Schema.String,
+              locationType: Schema.String,
+              message: Schema.String,
+              reason: Schema.String,
+            }),
+          ),
+          message: Schema.String,
+          status: Schema.String,
+        }),
+      ]),
+    ),
+  }) as unknown as Schema.Codec<V1GetProjectUsageRequestCountOutput>;
 
 // The operation
 /**

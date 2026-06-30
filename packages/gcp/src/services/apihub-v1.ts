@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface GoogleCloudApihubV1SearchResourcesRequest {
   filter?: string;
 }
 
-export const GoogleCloudApihubV1SearchResourcesRequest: Schema.Schema<GoogleCloudApihubV1SearchResourcesRequest> =
+export const GoogleCloudApihubV1SearchResourcesRequest: Schema.Codec<GoogleCloudApihubV1SearchResourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String),
     query: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface GoogleCloudApihubV1QueryParam {
   name?: string;
 }
 
-export const GoogleCloudApihubV1QueryParam: Schema.Schema<GoogleCloudApihubV1QueryParam> =
+export const GoogleCloudApihubV1QueryParam: Schema.Codec<GoogleCloudApihubV1QueryParam> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface GoogleCloudApihubV1GoogleServiceAccountConfig {
   serviceAccount?: string;
 }
 
-export const GoogleCloudApihubV1GoogleServiceAccountConfig: Schema.Schema<GoogleCloudApihubV1GoogleServiceAccountConfig> =
+export const GoogleCloudApihubV1GoogleServiceAccountConfig: Schema.Codec<GoogleCloudApihubV1GoogleServiceAccountConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApihubV1GoogleServiceAccountConfig" });
@@ -89,7 +89,7 @@ export interface GoogleCloudApihubV1AuthConfigTemplate {
   serviceAccount?: GoogleCloudApihubV1GoogleServiceAccountConfig;
 }
 
-export const GoogleCloudApihubV1AuthConfigTemplate: Schema.Schema<GoogleCloudApihubV1AuthConfigTemplate> =
+export const GoogleCloudApihubV1AuthConfigTemplate: Schema.Codec<GoogleCloudApihubV1AuthConfigTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportedAuthTypes: Schema.optional(Schema.Array(Schema.String)),
     serviceAccount: Schema.optional(
@@ -110,7 +110,7 @@ export interface GoogleCloudApihubV1LastExecution {
   resultMetadata?: string;
 }
 
-export const GoogleCloudApihubV1LastExecution: Schema.Schema<GoogleCloudApihubV1LastExecution> =
+export const GoogleCloudApihubV1LastExecution: Schema.Codec<GoogleCloudApihubV1LastExecution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface GoogleCloudApihubV1ToolAnnotations {
   readOnlyHint?: boolean;
 }
 
-export const GoogleCloudApihubV1ToolAnnotations: Schema.Schema<GoogleCloudApihubV1ToolAnnotations> =
+export const GoogleCloudApihubV1ToolAnnotations: Schema.Codec<GoogleCloudApihubV1ToolAnnotations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     idempotentHint: Schema.optional(Schema.Boolean),
@@ -151,7 +151,7 @@ export interface GoogleCloudApihubV1OperationSchema {
   jsonSchema?: Record<string, unknown>;
 }
 
-export const GoogleCloudApihubV1OperationSchema: Schema.Schema<GoogleCloudApihubV1OperationSchema> =
+export const GoogleCloudApihubV1OperationSchema: Schema.Codec<GoogleCloudApihubV1OperationSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jsonSchema: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudApihubV1OperationSchema" });
@@ -171,7 +171,7 @@ export interface GoogleCloudApihubV1McpTool {
   outputSchema?: GoogleCloudApihubV1OperationSchema;
 }
 
-export const GoogleCloudApihubV1McpTool: Schema.Schema<GoogleCloudApihubV1McpTool> =
+export const GoogleCloudApihubV1McpTool: Schema.Codec<GoogleCloudApihubV1McpTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -188,7 +188,7 @@ export interface GoogleCloudApihubV1Path {
   description?: string;
 }
 
-export const GoogleCloudApihubV1Path: Schema.Schema<GoogleCloudApihubV1Path> =
+export const GoogleCloudApihubV1Path: Schema.Codec<GoogleCloudApihubV1Path> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -211,7 +211,7 @@ export interface GoogleCloudApihubV1HttpOperation {
   path?: GoogleCloudApihubV1Path;
 }
 
-export const GoogleCloudApihubV1HttpOperation: Schema.Schema<GoogleCloudApihubV1HttpOperation> =
+export const GoogleCloudApihubV1HttpOperation: Schema.Codec<GoogleCloudApihubV1HttpOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     path: Schema.optional(GoogleCloudApihubV1Path),
@@ -222,7 +222,7 @@ export interface GoogleCloudApihubV1Documentation {
   externalUri?: string;
 }
 
-export const GoogleCloudApihubV1Documentation: Schema.Schema<GoogleCloudApihubV1Documentation> =
+export const GoogleCloudApihubV1Documentation: Schema.Codec<GoogleCloudApihubV1Documentation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApihubV1Documentation" });
@@ -240,7 +240,7 @@ export interface GoogleCloudApihubV1OperationDetails {
   documentation?: GoogleCloudApihubV1Documentation;
 }
 
-export const GoogleCloudApihubV1OperationDetails: Schema.Schema<GoogleCloudApihubV1OperationDetails> =
+export const GoogleCloudApihubV1OperationDetails: Schema.Codec<GoogleCloudApihubV1OperationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mcpTool: Schema.optional(GoogleCloudApihubV1McpTool),
     deprecated: Schema.optional(Schema.Boolean),
@@ -256,7 +256,7 @@ export interface GoogleCloudApihubV1PluginInstanceActionSource {
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1PluginInstanceActionSource: Schema.Schema<GoogleCloudApihubV1PluginInstanceActionSource> =
+export const GoogleCloudApihubV1PluginInstanceActionSource: Schema.Codec<GoogleCloudApihubV1PluginInstanceActionSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pluginInstance: Schema.optional(Schema.String),
     actionId: Schema.optional(Schema.String),
@@ -275,7 +275,7 @@ export interface GoogleCloudApihubV1SourceMetadata {
   sourceType?: "SOURCE_TYPE_UNSPECIFIED" | "PLUGIN" | (string & {});
 }
 
-export const GoogleCloudApihubV1SourceMetadata: Schema.Schema<GoogleCloudApihubV1SourceMetadata> =
+export const GoogleCloudApihubV1SourceMetadata: Schema.Codec<GoogleCloudApihubV1SourceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalResourceCreateTime: Schema.optional(Schema.String),
     originalResourceUpdateTime: Schema.optional(Schema.String),
@@ -291,7 +291,7 @@ export interface GoogleCloudApihubV1StringAttributeValues {
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApihubV1StringAttributeValues: Schema.Schema<GoogleCloudApihubV1StringAttributeValues> =
+export const GoogleCloudApihubV1StringAttributeValues: Schema.Codec<GoogleCloudApihubV1StringAttributeValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudApihubV1StringAttributeValues" });
@@ -307,7 +307,7 @@ export interface GoogleCloudApihubV1AllowedValue {
   description?: string;
 }
 
-export const GoogleCloudApihubV1AllowedValue: Schema.Schema<GoogleCloudApihubV1AllowedValue> =
+export const GoogleCloudApihubV1AllowedValue: Schema.Codec<GoogleCloudApihubV1AllowedValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     immutable: Schema.optional(Schema.Boolean),
@@ -320,7 +320,7 @@ export interface GoogleCloudApihubV1EnumAttributeValues {
   values?: ReadonlyArray<GoogleCloudApihubV1AllowedValue>;
 }
 
-export const GoogleCloudApihubV1EnumAttributeValues: Schema.Schema<GoogleCloudApihubV1EnumAttributeValues> =
+export const GoogleCloudApihubV1EnumAttributeValues: Schema.Codec<GoogleCloudApihubV1EnumAttributeValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(GoogleCloudApihubV1AllowedValue)),
   }).annotate({ identifier: "GoogleCloudApihubV1EnumAttributeValues" });
@@ -338,7 +338,7 @@ export interface GoogleCloudApihubV1AttributeValues {
   uriValues?: GoogleCloudApihubV1StringAttributeValues;
 }
 
-export const GoogleCloudApihubV1AttributeValues: Schema.Schema<GoogleCloudApihubV1AttributeValues> =
+export const GoogleCloudApihubV1AttributeValues: Schema.Codec<GoogleCloudApihubV1AttributeValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.String),
     jsonValues: Schema.optional(GoogleCloudApihubV1StringAttributeValues),
@@ -364,7 +364,7 @@ export interface GoogleCloudApihubV1ApiOperation {
   attributes?: Record<string, GoogleCloudApihubV1AttributeValues>;
 }
 
-export const GoogleCloudApihubV1ApiOperation: Schema.Schema<GoogleCloudApihubV1ApiOperation> =
+export const GoogleCloudApihubV1ApiOperation: Schema.Codec<GoogleCloudApihubV1ApiOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(GoogleCloudApihubV1OperationDetails),
     createTime: Schema.optional(Schema.String),
@@ -386,7 +386,7 @@ export interface GoogleCloudApihubV1ListApiOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListApiOperationsResponse: Schema.Schema<GoogleCloudApihubV1ListApiOperationsResponse> =
+export const GoogleCloudApihubV1ListApiOperationsResponse: Schema.Codec<GoogleCloudApihubV1ListApiOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiOperations: Schema.optional(
       Schema.Array(GoogleCloudApihubV1ApiOperation),
@@ -401,7 +401,7 @@ export interface GoogleCloudApihubV1Owner {
   email?: string;
 }
 
-export const GoogleCloudApihubV1Owner: Schema.Schema<GoogleCloudApihubV1Owner> =
+export const GoogleCloudApihubV1Owner: Schema.Codec<GoogleCloudApihubV1Owner> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -421,7 +421,7 @@ export interface GoogleCloudApihubV1OpenApiSpecDetails {
   owner?: GoogleCloudApihubV1Owner;
 }
 
-export const GoogleCloudApihubV1OpenApiSpecDetails: Schema.Schema<GoogleCloudApihubV1OpenApiSpecDetails> =
+export const GoogleCloudApihubV1OpenApiSpecDetails: Schema.Codec<GoogleCloudApihubV1OpenApiSpecDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     format: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -435,7 +435,7 @@ export interface GoogleCloudApihubV1SpecDetails {
   description?: string;
 }
 
-export const GoogleCloudApihubV1SpecDetails: Schema.Schema<GoogleCloudApihubV1SpecDetails> =
+export const GoogleCloudApihubV1SpecDetails: Schema.Codec<GoogleCloudApihubV1SpecDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     openApiSpecDetails: Schema.optional(GoogleCloudApihubV1OpenApiSpecDetails),
     description: Schema.optional(Schema.String),
@@ -452,7 +452,7 @@ export interface GoogleCloudApihubV1ExecutionStatus {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1ExecutionStatus: Schema.Schema<GoogleCloudApihubV1ExecutionStatus> =
+export const GoogleCloudApihubV1ExecutionStatus: Schema.Codec<GoogleCloudApihubV1ExecutionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastExecution: Schema.optional(GoogleCloudApihubV1LastExecution),
     currentExecutionState: Schema.optional(Schema.String),
@@ -469,7 +469,7 @@ export interface GoogleCloudApihubV1ResourceConfig {
   pubsubTopic?: string;
 }
 
-export const GoogleCloudApihubV1ResourceConfig: Schema.Schema<GoogleCloudApihubV1ResourceConfig> =
+export const GoogleCloudApihubV1ResourceConfig: Schema.Codec<GoogleCloudApihubV1ResourceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionType: Schema.optional(Schema.String),
     pubsubTopic: Schema.optional(Schema.String),
@@ -480,7 +480,7 @@ export interface GoogleCloudApihubV1CustomCuration {
   curation?: string;
 }
 
-export const GoogleCloudApihubV1CustomCuration: Schema.Schema<GoogleCloudApihubV1CustomCuration> =
+export const GoogleCloudApihubV1CustomCuration: Schema.Codec<GoogleCloudApihubV1CustomCuration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curation: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApihubV1CustomCuration" });
@@ -496,7 +496,7 @@ export interface GoogleCloudApihubV1CurationConfig {
   customCuration?: GoogleCloudApihubV1CustomCuration;
 }
 
-export const GoogleCloudApihubV1CurationConfig: Schema.Schema<GoogleCloudApihubV1CurationConfig> =
+export const GoogleCloudApihubV1CurationConfig: Schema.Codec<GoogleCloudApihubV1CurationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curationType: Schema.optional(Schema.String),
     customCuration: Schema.optional(GoogleCloudApihubV1CustomCuration),
@@ -528,7 +528,7 @@ export interface GoogleCloudApihubV1PluginInstanceAction {
   curationConfig?: GoogleCloudApihubV1CurationConfig;
 }
 
-export const GoogleCloudApihubV1PluginInstanceAction: Schema.Schema<GoogleCloudApihubV1PluginInstanceAction> =
+export const GoogleCloudApihubV1PluginInstanceAction: Schema.Codec<GoogleCloudApihubV1PluginInstanceAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionId: Schema.optional(Schema.String),
     hubInstanceAction: Schema.optional(GoogleCloudApihubV1ExecutionStatus),
@@ -557,7 +557,7 @@ export interface GoogleCloudCommonOperationMetadata {
   verb?: string;
 }
 
-export const GoogleCloudCommonOperationMetadata: Schema.Schema<GoogleCloudCommonOperationMetadata> =
+export const GoogleCloudCommonOperationMetadata: Schema.Codec<GoogleCloudCommonOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -573,7 +573,7 @@ export interface GoogleCloudApihubV1HostingService {
   serviceUri?: string;
 }
 
-export const GoogleCloudApihubV1HostingService: Schema.Schema<GoogleCloudApihubV1HostingService> =
+export const GoogleCloudApihubV1HostingService: Schema.Codec<GoogleCloudApihubV1HostingService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApihubV1HostingService" });
@@ -594,7 +594,7 @@ export interface GoogleCloudApihubV1PluginActionConfig {
   displayName?: string;
 }
 
-export const GoogleCloudApihubV1PluginActionConfig: Schema.Schema<GoogleCloudApihubV1PluginActionConfig> =
+export const GoogleCloudApihubV1PluginActionConfig: Schema.Codec<GoogleCloudApihubV1PluginActionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerMode: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -611,7 +611,7 @@ export interface GoogleCloudApihubV1ConfigValueOption {
   description?: string;
 }
 
-export const GoogleCloudApihubV1ConfigValueOption: Schema.Schema<GoogleCloudApihubV1ConfigValueOption> =
+export const GoogleCloudApihubV1ConfigValueOption: Schema.Codec<GoogleCloudApihubV1ConfigValueOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -645,7 +645,7 @@ export interface GoogleCloudApihubV1ConfigVariableTemplate {
   multiSelectOptions?: ReadonlyArray<GoogleCloudApihubV1ConfigValueOption>;
 }
 
-export const GoogleCloudApihubV1ConfigVariableTemplate: Schema.Schema<GoogleCloudApihubV1ConfigVariableTemplate> =
+export const GoogleCloudApihubV1ConfigVariableTemplate: Schema.Codec<GoogleCloudApihubV1ConfigVariableTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     valueType: Schema.optional(Schema.String),
@@ -667,7 +667,7 @@ export interface GoogleCloudApihubV1ConfigTemplate {
   additionalConfigTemplate?: ReadonlyArray<GoogleCloudApihubV1ConfigVariableTemplate>;
 }
 
-export const GoogleCloudApihubV1ConfigTemplate: Schema.Schema<GoogleCloudApihubV1ConfigTemplate> =
+export const GoogleCloudApihubV1ConfigTemplate: Schema.Codec<GoogleCloudApihubV1ConfigTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authConfigTemplate: Schema.optional(GoogleCloudApihubV1AuthConfigTemplate),
     additionalConfigTemplate: Schema.optional(
@@ -723,7 +723,7 @@ export interface GoogleCloudApihubV1Plugin {
   type?: GoogleCloudApihubV1AttributeValues;
 }
 
-export const GoogleCloudApihubV1Plugin: Schema.Schema<GoogleCloudApihubV1Plugin> =
+export const GoogleCloudApihubV1Plugin: Schema.Codec<GoogleCloudApihubV1Plugin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     documentation: Schema.optional(GoogleCloudApihubV1Documentation),
@@ -750,7 +750,7 @@ export interface GoogleCloudApihubV1EnvironmentFilter {
   environments?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApihubV1EnvironmentFilter: Schema.Schema<GoogleCloudApihubV1EnvironmentFilter> =
+export const GoogleCloudApihubV1EnvironmentFilter: Schema.Codec<GoogleCloudApihubV1EnvironmentFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allEnvironments: Schema.optional(Schema.Boolean),
     environments: Schema.optional(Schema.Array(Schema.String)),
@@ -761,7 +761,7 @@ export interface GoogleCloudApihubV1ApigeeEdgeConfig {
   environmentFilter?: GoogleCloudApihubV1EnvironmentFilter;
 }
 
-export const GoogleCloudApihubV1ApigeeEdgeConfig: Schema.Schema<GoogleCloudApihubV1ApigeeEdgeConfig> =
+export const GoogleCloudApihubV1ApigeeEdgeConfig: Schema.Codec<GoogleCloudApihubV1ApigeeEdgeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
   }).annotate({ identifier: "GoogleCloudApihubV1ApigeeEdgeConfig" });
@@ -771,7 +771,7 @@ export interface GoogleCloudApihubV1AgentRegistrySyncConfig {
   disabled?: boolean;
 }
 
-export const GoogleCloudApihubV1AgentRegistrySyncConfig: Schema.Schema<GoogleCloudApihubV1AgentRegistrySyncConfig> =
+export const GoogleCloudApihubV1AgentRegistrySyncConfig: Schema.Codec<GoogleCloudApihubV1AgentRegistrySyncConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApihubV1AgentRegistrySyncConfig" });
@@ -793,7 +793,7 @@ export interface GoogleCloudApihubV1Config {
   vertexLocation?: string;
 }
 
-export const GoogleCloudApihubV1Config: Schema.Schema<GoogleCloudApihubV1Config> =
+export const GoogleCloudApihubV1Config: Schema.Codec<GoogleCloudApihubV1Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disableSearch: Schema.optional(Schema.Boolean),
     cmekKeyName: Schema.optional(Schema.String),
@@ -831,7 +831,7 @@ export interface GoogleCloudApihubV1ApiHubInstance {
   config?: GoogleCloudApihubV1Config;
 }
 
-export const GoogleCloudApihubV1ApiHubInstance: Schema.Schema<GoogleCloudApihubV1ApiHubInstance> =
+export const GoogleCloudApihubV1ApiHubInstance: Schema.Codec<GoogleCloudApihubV1ApiHubInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -878,7 +878,7 @@ export interface GoogleCloudApihubV1Version {
   documentation?: GoogleCloudApihubV1Documentation;
 }
 
-export const GoogleCloudApihubV1Version: Schema.Schema<GoogleCloudApihubV1Version> =
+export const GoogleCloudApihubV1Version: Schema.Codec<GoogleCloudApihubV1Version> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compliance: Schema.optional(GoogleCloudApihubV1AttributeValues),
     specs: Schema.optional(Schema.Array(Schema.String)),
@@ -909,7 +909,7 @@ export interface GoogleCloudApihubV1ListVersionsResponse {
   versions?: ReadonlyArray<GoogleCloudApihubV1Version>;
 }
 
-export const GoogleCloudApihubV1ListVersionsResponse: Schema.Schema<GoogleCloudApihubV1ListVersionsResponse> =
+export const GoogleCloudApihubV1ListVersionsResponse: Schema.Codec<GoogleCloudApihubV1ListVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     versions: Schema.optional(Schema.Array(GoogleCloudApihubV1Version)),
@@ -936,7 +936,7 @@ export interface GoogleCloudApihubV1ExternalApi {
   name?: string;
 }
 
-export const GoogleCloudApihubV1ExternalApi: Schema.Schema<GoogleCloudApihubV1ExternalApi> =
+export const GoogleCloudApihubV1ExternalApi: Schema.Codec<GoogleCloudApihubV1ExternalApi> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoints: Schema.optional(Schema.Array(Schema.String)),
     paths: Schema.optional(Schema.Array(Schema.String)),
@@ -958,7 +958,7 @@ export interface GoogleCloudApihubV1ListExternalApisResponse {
   externalApis?: ReadonlyArray<GoogleCloudApihubV1ExternalApi>;
 }
 
-export const GoogleCloudApihubV1ListExternalApisResponse: Schema.Schema<GoogleCloudApihubV1ListExternalApisResponse> =
+export const GoogleCloudApihubV1ListExternalApisResponse: Schema.Codec<GoogleCloudApihubV1ListExternalApisResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     externalApis: Schema.optional(Schema.Array(GoogleCloudApihubV1ExternalApi)),
@@ -969,7 +969,7 @@ export interface GoogleCloudApihubV1ApigeeOPDKConfig {
   environmentFilter?: GoogleCloudApihubV1EnvironmentFilter;
 }
 
-export const GoogleCloudApihubV1ApigeeOPDKConfig: Schema.Schema<GoogleCloudApihubV1ApigeeOPDKConfig> =
+export const GoogleCloudApihubV1ApigeeOPDKConfig: Schema.Codec<GoogleCloudApihubV1ApigeeOPDKConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
   }).annotate({ identifier: "GoogleCloudApihubV1ApigeeOPDKConfig" });
@@ -979,7 +979,7 @@ export interface GoogleCloudApihubV1ApigeeXHybridConfig {
   environmentFilter?: GoogleCloudApihubV1EnvironmentFilter;
 }
 
-export const GoogleCloudApihubV1ApigeeXHybridConfig: Schema.Schema<GoogleCloudApihubV1ApigeeXHybridConfig> =
+export const GoogleCloudApihubV1ApigeeXHybridConfig: Schema.Codec<GoogleCloudApihubV1ApigeeXHybridConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
   }).annotate({ identifier: "GoogleCloudApihubV1ApigeeXHybridConfig" });
@@ -995,7 +995,7 @@ export interface GoogleCloudApihubV1GatewayPluginConfig {
   apigeeEdgeConfig?: GoogleCloudApihubV1ApigeeEdgeConfig;
 }
 
-export const GoogleCloudApihubV1GatewayPluginConfig: Schema.Schema<GoogleCloudApihubV1GatewayPluginConfig> =
+export const GoogleCloudApihubV1GatewayPluginConfig: Schema.Codec<GoogleCloudApihubV1GatewayPluginConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apigeeOpdkConfig: Schema.optional(GoogleCloudApihubV1ApigeeOPDKConfig),
     apigeeXHybridConfig: Schema.optional(
@@ -1010,7 +1010,7 @@ export interface GoogleCloudApihubV1GatewayPluginAddonConfig {
   gatewayPluginConfigs?: ReadonlyArray<GoogleCloudApihubV1GatewayPluginConfig>;
 }
 
-export const GoogleCloudApihubV1GatewayPluginAddonConfig: Schema.Schema<GoogleCloudApihubV1GatewayPluginAddonConfig> =
+export const GoogleCloudApihubV1GatewayPluginAddonConfig: Schema.Codec<GoogleCloudApihubV1GatewayPluginAddonConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gatewayPluginConfigs: Schema.optional(
       Schema.Array(GoogleCloudApihubV1GatewayPluginConfig),
@@ -1022,7 +1022,7 @@ export interface GoogleCloudApihubV1AllDataAddonConfig {
   enabled?: boolean;
 }
 
-export const GoogleCloudApihubV1AllDataAddonConfig: Schema.Schema<GoogleCloudApihubV1AllDataAddonConfig> =
+export const GoogleCloudApihubV1AllDataAddonConfig: Schema.Codec<GoogleCloudApihubV1AllDataAddonConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudApihubV1AllDataAddonConfig" });
@@ -1034,7 +1034,7 @@ export interface GoogleCloudApihubV1AddonConfig {
   allDataAddonConfig?: GoogleCloudApihubV1AllDataAddonConfig;
 }
 
-export const GoogleCloudApihubV1AddonConfig: Schema.Schema<GoogleCloudApihubV1AddonConfig> =
+export const GoogleCloudApihubV1AddonConfig: Schema.Codec<GoogleCloudApihubV1AddonConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gatewayPluginAddonConfig: Schema.optional(
       GoogleCloudApihubV1GatewayPluginAddonConfig,
@@ -1044,7 +1044,7 @@ export const GoogleCloudApihubV1AddonConfig: Schema.Schema<GoogleCloudApihubV1Ad
 
 export interface GoogleCloudApihubV1LintSpecRequest {}
 
-export const GoogleCloudApihubV1LintSpecRequest: Schema.Schema<GoogleCloudApihubV1LintSpecRequest> =
+export const GoogleCloudApihubV1LintSpecRequest: Schema.Codec<GoogleCloudApihubV1LintSpecRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApihubV1LintSpecRequest",
   });
@@ -1054,7 +1054,7 @@ export interface GoogleCloudApihubV1DisablePluginInstanceActionRequest {
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1DisablePluginInstanceActionRequest: Schema.Schema<GoogleCloudApihubV1DisablePluginInstanceActionRequest> =
+export const GoogleCloudApihubV1DisablePluginInstanceActionRequest: Schema.Codec<GoogleCloudApihubV1DisablePluginInstanceActionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionId: Schema.optional(Schema.String),
   }).annotate({
@@ -1094,7 +1094,7 @@ export interface GoogleCloudApihubV1DiscoveredApiObservation {
   createTime?: string;
 }
 
-export const GoogleCloudApihubV1DiscoveredApiObservation: Schema.Schema<GoogleCloudApihubV1DiscoveredApiObservation> =
+export const GoogleCloudApihubV1DiscoveredApiObservation: Schema.Codec<GoogleCloudApihubV1DiscoveredApiObservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serverIps: Schema.optional(Schema.Array(Schema.String)),
     sourceTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -1119,7 +1119,7 @@ export interface GoogleCloudApihubV1ListDiscoveredApiObservationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListDiscoveredApiObservationsResponse: Schema.Schema<GoogleCloudApihubV1ListDiscoveredApiObservationsResponse> =
+export const GoogleCloudApihubV1ListDiscoveredApiObservationsResponse: Schema.Codec<GoogleCloudApihubV1ListDiscoveredApiObservationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     discoveredApiObservations: Schema.optional(
       Schema.Array(GoogleCloudApihubV1DiscoveredApiObservation),
@@ -1138,7 +1138,7 @@ export interface GoogleCloudApihubV1RuntimeProjectAttachment {
   createTime?: string;
 }
 
-export const GoogleCloudApihubV1RuntimeProjectAttachment: Schema.Schema<GoogleCloudApihubV1RuntimeProjectAttachment> =
+export const GoogleCloudApihubV1RuntimeProjectAttachment: Schema.Codec<GoogleCloudApihubV1RuntimeProjectAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runtimeProject: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1150,7 +1150,7 @@ export interface GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse {
   runtimeProjectAttachment?: GoogleCloudApihubV1RuntimeProjectAttachment;
 }
 
-export const GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse: Schema.Schema<GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse> =
+export const GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse: Schema.Codec<GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runtimeProjectAttachment: Schema.optional(
       GoogleCloudApihubV1RuntimeProjectAttachment,
@@ -1166,7 +1166,7 @@ export interface GoogleCloudApihubV1Point {
   character?: number;
 }
 
-export const GoogleCloudApihubV1Point: Schema.Schema<GoogleCloudApihubV1Point> =
+export const GoogleCloudApihubV1Point: Schema.Codec<GoogleCloudApihubV1Point> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     line: Schema.optional(Schema.Number),
     character: Schema.optional(Schema.Number),
@@ -1177,7 +1177,7 @@ export interface GoogleCloudApihubV1MatchResult {
   name?: string;
 }
 
-export const GoogleCloudApihubV1MatchResult: Schema.Schema<GoogleCloudApihubV1MatchResult> =
+export const GoogleCloudApihubV1MatchResult: Schema.Codec<GoogleCloudApihubV1MatchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApihubV1MatchResult" });
@@ -1189,7 +1189,7 @@ export interface GoogleCloudApihubV1ListPluginsResponse {
   plugins?: ReadonlyArray<GoogleCloudApihubV1Plugin>;
 }
 
-export const GoogleCloudApihubV1ListPluginsResponse: Schema.Schema<GoogleCloudApihubV1ListPluginsResponse> =
+export const GoogleCloudApihubV1ListPluginsResponse: Schema.Codec<GoogleCloudApihubV1ListPluginsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     plugins: Schema.optional(Schema.Array(GoogleCloudApihubV1Plugin)),
@@ -1238,7 +1238,7 @@ export interface GoogleCloudApihubV1Api {
   documentation?: GoogleCloudApihubV1Documentation;
 }
 
-export const GoogleCloudApihubV1Api: Schema.Schema<GoogleCloudApihubV1Api> =
+export const GoogleCloudApihubV1Api: Schema.Codec<GoogleCloudApihubV1Api> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selectedVersion: Schema.optional(Schema.String),
     targetUser: Schema.optional(GoogleCloudApihubV1AttributeValues),
@@ -1277,7 +1277,7 @@ export interface GoogleCloudApihubV1ListApisResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListApisResponse: Schema.Schema<GoogleCloudApihubV1ListApisResponse> =
+export const GoogleCloudApihubV1ListApisResponse: Schema.Codec<GoogleCloudApihubV1ListApisResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apis: Schema.optional(Schema.Array(GoogleCloudApihubV1Api)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1288,7 +1288,7 @@ export interface GoogleCloudApihubV1LookupApiHubInstanceResponse {
   apiHubInstance?: GoogleCloudApihubV1ApiHubInstance;
 }
 
-export const GoogleCloudApihubV1LookupApiHubInstanceResponse: Schema.Schema<GoogleCloudApihubV1LookupApiHubInstanceResponse> =
+export const GoogleCloudApihubV1LookupApiHubInstanceResponse: Schema.Codec<GoogleCloudApihubV1LookupApiHubInstanceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiHubInstance: Schema.optional(GoogleCloudApihubV1ApiHubInstance),
   }).annotate({
@@ -1334,7 +1334,7 @@ export interface GoogleCloudApihubV1Deployment {
   sourceUri?: GoogleCloudApihubV1AttributeValues;
 }
 
-export const GoogleCloudApihubV1Deployment: Schema.Schema<GoogleCloudApihubV1Deployment> =
+export const GoogleCloudApihubV1Deployment: Schema.Codec<GoogleCloudApihubV1Deployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.optional(Schema.String),
     environment: Schema.optional(GoogleCloudApihubV1AttributeValues),
@@ -1371,7 +1371,7 @@ export interface GoogleCloudApihubV1DeploymentMetadata {
   originalId?: string;
 }
 
-export const GoogleCloudApihubV1DeploymentMetadata: Schema.Schema<GoogleCloudApihubV1DeploymentMetadata> =
+export const GoogleCloudApihubV1DeploymentMetadata: Schema.Codec<GoogleCloudApihubV1DeploymentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalCreateTime: Schema.optional(Schema.String),
     deployment: Schema.optional(GoogleCloudApihubV1Deployment),
@@ -1386,7 +1386,7 @@ export interface GoogleCloudApihubV1SpecContents {
   mimeType?: string;
 }
 
-export const GoogleCloudApihubV1SpecContents: Schema.Schema<GoogleCloudApihubV1SpecContents> =
+export const GoogleCloudApihubV1SpecContents: Schema.Codec<GoogleCloudApihubV1SpecContents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contents: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.String),
@@ -1409,7 +1409,7 @@ export interface GoogleCloudApihubV1AdditionalSpecContent {
   labels?: Record<string, string>;
 }
 
-export const GoogleCloudApihubV1AdditionalSpecContent: Schema.Schema<GoogleCloudApihubV1AdditionalSpecContent> =
+export const GoogleCloudApihubV1AdditionalSpecContent: Schema.Codec<GoogleCloudApihubV1AdditionalSpecContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     specContents: Schema.optional(GoogleCloudApihubV1SpecContents),
     updateTime: Schema.optional(Schema.String),
@@ -1431,7 +1431,7 @@ export interface GoogleCloudApihubV1SummaryEntry {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1SummaryEntry: Schema.Schema<GoogleCloudApihubV1SummaryEntry> =
+export const GoogleCloudApihubV1SummaryEntry: Schema.Codec<GoogleCloudApihubV1SummaryEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     severity: Schema.optional(Schema.String),
@@ -1444,7 +1444,7 @@ export interface GoogleCloudApihubV1Range {
   end?: GoogleCloudApihubV1Point;
 }
 
-export const GoogleCloudApihubV1Range: Schema.Schema<GoogleCloudApihubV1Range> =
+export const GoogleCloudApihubV1Range: Schema.Codec<GoogleCloudApihubV1Range> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     start: Schema.optional(GoogleCloudApihubV1Point),
     end: Schema.optional(GoogleCloudApihubV1Point),
@@ -1469,7 +1469,7 @@ export interface GoogleCloudApihubV1Issue {
   message?: string;
 }
 
-export const GoogleCloudApihubV1Issue: Schema.Schema<GoogleCloudApihubV1Issue> =
+export const GoogleCloudApihubV1Issue: Schema.Codec<GoogleCloudApihubV1Issue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -1497,7 +1497,7 @@ export interface GoogleCloudApihubV1LintResponse {
   createTime?: string;
 }
 
-export const GoogleCloudApihubV1LintResponse: Schema.Schema<GoogleCloudApihubV1LintResponse> =
+export const GoogleCloudApihubV1LintResponse: Schema.Codec<GoogleCloudApihubV1LintResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summary: Schema.optional(Schema.Array(GoogleCloudApihubV1SummaryEntry)),
     state: Schema.optional(Schema.String),
@@ -1542,7 +1542,7 @@ export interface GoogleCloudApihubV1Spec {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1Spec: Schema.Schema<GoogleCloudApihubV1Spec> =
+export const GoogleCloudApihubV1Spec: Schema.Codec<GoogleCloudApihubV1Spec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1577,7 +1577,7 @@ export interface GoogleCloudApihubV1SpecMetadata {
   originalId?: string;
 }
 
-export const GoogleCloudApihubV1SpecMetadata: Schema.Schema<GoogleCloudApihubV1SpecMetadata> =
+export const GoogleCloudApihubV1SpecMetadata: Schema.Codec<GoogleCloudApihubV1SpecMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spec: Schema.optional(GoogleCloudApihubV1Spec),
     originalCreateTime: Schema.optional(Schema.String),
@@ -1600,7 +1600,7 @@ export interface GoogleCloudApihubV1VersionMetadata {
   version?: GoogleCloudApihubV1Version;
 }
 
-export const GoogleCloudApihubV1VersionMetadata: Schema.Schema<GoogleCloudApihubV1VersionMetadata> =
+export const GoogleCloudApihubV1VersionMetadata: Schema.Codec<GoogleCloudApihubV1VersionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployments: Schema.optional(
       Schema.Array(GoogleCloudApihubV1DeploymentMetadata),
@@ -1625,7 +1625,7 @@ export interface GoogleCloudApihubV1APIMetadata {
   originalId?: string;
 }
 
-export const GoogleCloudApihubV1APIMetadata: Schema.Schema<GoogleCloudApihubV1APIMetadata> =
+export const GoogleCloudApihubV1APIMetadata: Schema.Codec<GoogleCloudApihubV1APIMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     api: Schema.optional(GoogleCloudApihubV1Api),
     versions: Schema.optional(Schema.Array(GoogleCloudApihubV1VersionMetadata)),
@@ -1639,7 +1639,7 @@ export interface GoogleCloudApihubV1ApiMetadataList {
   apiMetadata?: ReadonlyArray<GoogleCloudApihubV1APIMetadata>;
 }
 
-export const GoogleCloudApihubV1ApiMetadataList: Schema.Schema<GoogleCloudApihubV1ApiMetadataList> =
+export const GoogleCloudApihubV1ApiMetadataList: Schema.Codec<GoogleCloudApihubV1ApiMetadataList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiMetadata: Schema.optional(Schema.Array(GoogleCloudApihubV1APIMetadata)),
   }).annotate({ identifier: "GoogleCloudApihubV1ApiMetadataList" });
@@ -1649,14 +1649,14 @@ export interface GoogleCloudApihubV1ApiData {
   apiMetadataList?: GoogleCloudApihubV1ApiMetadataList;
 }
 
-export const GoogleCloudApihubV1ApiData: Schema.Schema<GoogleCloudApihubV1ApiData> =
+export const GoogleCloudApihubV1ApiData: Schema.Codec<GoogleCloudApihubV1ApiData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiMetadataList: Schema.optional(GoogleCloudApihubV1ApiMetadataList),
   }).annotate({ identifier: "GoogleCloudApihubV1ApiData" });
 
 export interface GoogleCloudApihubV1DisablePluginRequest {}
 
-export const GoogleCloudApihubV1DisablePluginRequest: Schema.Schema<GoogleCloudApihubV1DisablePluginRequest> =
+export const GoogleCloudApihubV1DisablePluginRequest: Schema.Codec<GoogleCloudApihubV1DisablePluginRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApihubV1DisablePluginRequest",
   });
@@ -1666,7 +1666,7 @@ export interface GoogleCloudApihubV1MultiStringValues {
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudApihubV1MultiStringValues: Schema.Schema<GoogleCloudApihubV1MultiStringValues> =
+export const GoogleCloudApihubV1MultiStringValues: Schema.Codec<GoogleCloudApihubV1MultiStringValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudApihubV1MultiStringValues" });
@@ -1676,7 +1676,7 @@ export interface GoogleCloudApihubV1ManageAddonConfigRequest {
   config?: GoogleCloudApihubV1AddonConfig;
 }
 
-export const GoogleCloudApihubV1ManageAddonConfigRequest: Schema.Schema<GoogleCloudApihubV1ManageAddonConfigRequest> =
+export const GoogleCloudApihubV1ManageAddonConfigRequest: Schema.Codec<GoogleCloudApihubV1ManageAddonConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(GoogleCloudApihubV1AddonConfig),
   }).annotate({ identifier: "GoogleCloudApihubV1ManageAddonConfigRequest" });
@@ -1686,7 +1686,7 @@ export interface GoogleCloudApihubV1Secret {
   secretVersion?: string;
 }
 
-export const GoogleCloudApihubV1Secret: Schema.Schema<GoogleCloudApihubV1Secret> =
+export const GoogleCloudApihubV1Secret: Schema.Codec<GoogleCloudApihubV1Secret> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secretVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApihubV1Secret" });
@@ -1707,7 +1707,7 @@ export interface GoogleCloudApihubV1ApiKeyConfig {
   apiKey?: GoogleCloudApihubV1Secret;
 }
 
-export const GoogleCloudApihubV1ApiKeyConfig: Schema.Schema<GoogleCloudApihubV1ApiKeyConfig> =
+export const GoogleCloudApihubV1ApiKeyConfig: Schema.Codec<GoogleCloudApihubV1ApiKeyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpElementLocation: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1716,7 +1716,7 @@ export const GoogleCloudApihubV1ApiKeyConfig: Schema.Schema<GoogleCloudApihubV1A
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1732,7 +1732,7 @@ export interface GoogleCloudApihubV1DependencyErrorDetail {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1DependencyErrorDetail: Schema.Schema<GoogleCloudApihubV1DependencyErrorDetail> =
+export const GoogleCloudApihubV1DependencyErrorDetail: Schema.Codec<GoogleCloudApihubV1DependencyErrorDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorTime: Schema.optional(Schema.String),
     error: Schema.optional(Schema.String),
@@ -1743,7 +1743,7 @@ export interface GoogleCloudApihubV1ActionExecutionDetail {
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1ActionExecutionDetail: Schema.Schema<GoogleCloudApihubV1ActionExecutionDetail> =
+export const GoogleCloudApihubV1ActionExecutionDetail: Schema.Codec<GoogleCloudApihubV1ActionExecutionDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudApihubV1ActionExecutionDetail" });
@@ -1753,7 +1753,7 @@ export interface GoogleCloudApihubV1ExecutePluginInstanceActionRequest {
   actionExecutionDetail?: GoogleCloudApihubV1ActionExecutionDetail;
 }
 
-export const GoogleCloudApihubV1ExecutePluginInstanceActionRequest: Schema.Schema<GoogleCloudApihubV1ExecutePluginInstanceActionRequest> =
+export const GoogleCloudApihubV1ExecutePluginInstanceActionRequest: Schema.Codec<GoogleCloudApihubV1ExecutePluginInstanceActionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionExecutionDetail: Schema.optional(
       GoogleCloudApihubV1ActionExecutionDetail,
@@ -1778,7 +1778,7 @@ export interface GoogleCloudApihubV1Header {
   count?: string;
 }
 
-export const GoogleCloudApihubV1Header: Schema.Schema<GoogleCloudApihubV1Header> =
+export const GoogleCloudApihubV1Header: Schema.Codec<GoogleCloudApihubV1Header> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dataType: Schema.optional(Schema.String),
@@ -1794,7 +1794,7 @@ export interface GoogleCloudApihubV1DependencyEntityReference {
   operationResourceName?: string;
 }
 
-export const GoogleCloudApihubV1DependencyEntityReference: Schema.Schema<GoogleCloudApihubV1DependencyEntityReference> =
+export const GoogleCloudApihubV1DependencyEntityReference: Schema.Codec<GoogleCloudApihubV1DependencyEntityReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalApiResourceName: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1824,7 +1824,7 @@ export interface GoogleCloudApihubV1Dependency {
   state?: "STATE_UNSPECIFIED" | "PROPOSED" | "VALIDATED" | (string & {});
 }
 
-export const GoogleCloudApihubV1Dependency: Schema.Schema<GoogleCloudApihubV1Dependency> =
+export const GoogleCloudApihubV1Dependency: Schema.Codec<GoogleCloudApihubV1Dependency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     consumer: Schema.optional(GoogleCloudApihubV1DependencyEntityReference),
@@ -1847,7 +1847,7 @@ export interface GoogleCloudApihubV1ListDependenciesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListDependenciesResponse: Schema.Schema<GoogleCloudApihubV1ListDependenciesResponse> =
+export const GoogleCloudApihubV1ListDependenciesResponse: Schema.Codec<GoogleCloudApihubV1ListDependenciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dependencies: Schema.optional(Schema.Array(GoogleCloudApihubV1Dependency)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1858,7 +1858,7 @@ export interface GoogleCloudApihubV1HttpRequest {
   headers?: Record<string, GoogleCloudApihubV1Header>;
 }
 
-export const GoogleCloudApihubV1HttpRequest: Schema.Schema<GoogleCloudApihubV1HttpRequest> =
+export const GoogleCloudApihubV1HttpRequest: Schema.Codec<GoogleCloudApihubV1HttpRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headers: Schema.optional(
       Schema.Record(Schema.String, GoogleCloudApihubV1Header),
@@ -1878,7 +1878,7 @@ export interface GoogleCloudLocationLocation {
   displayName?: string;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
+export const GoogleCloudLocationLocation: Schema.Codec<GoogleCloudLocationLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1894,7 +1894,7 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
+export const GoogleCloudLocationListLocationsResponse: Schema.Codec<GoogleCloudLocationListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1905,7 +1905,7 @@ export interface GoogleCloudApihubV1MultiIntValues {
   values?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudApihubV1MultiIntValues: Schema.Schema<GoogleCloudApihubV1MultiIntValues> =
+export const GoogleCloudApihubV1MultiIntValues: Schema.Codec<GoogleCloudApihubV1MultiIntValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "GoogleCloudApihubV1MultiIntValues" });
@@ -1915,7 +1915,7 @@ export interface GoogleCloudApihubV1EnablePluginInstanceActionRequest {
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1EnablePluginInstanceActionRequest: Schema.Schema<GoogleCloudApihubV1EnablePluginInstanceActionRequest> =
+export const GoogleCloudApihubV1EnablePluginInstanceActionRequest: Schema.Codec<GoogleCloudApihubV1EnablePluginInstanceActionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionId: Schema.optional(Schema.String),
   }).annotate({
@@ -1929,7 +1929,7 @@ export interface GoogleCloudApihubV1ListDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListDeploymentsResponse: Schema.Schema<GoogleCloudApihubV1ListDeploymentsResponse> =
+export const GoogleCloudApihubV1ListDeploymentsResponse: Schema.Codec<GoogleCloudApihubV1ListDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(GoogleCloudApihubV1Deployment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1940,7 +1940,7 @@ export interface GoogleCloudApihubV1MultiSelectValues {
   values?: ReadonlyArray<GoogleCloudApihubV1ConfigValueOption>;
 }
 
-export const GoogleCloudApihubV1MultiSelectValues: Schema.Schema<GoogleCloudApihubV1MultiSelectValues> =
+export const GoogleCloudApihubV1MultiSelectValues: Schema.Codec<GoogleCloudApihubV1MultiSelectValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(GoogleCloudApihubV1ConfigValueOption)),
   }).annotate({ identifier: "GoogleCloudApihubV1MultiSelectValues" });
@@ -1966,7 +1966,7 @@ export interface GoogleCloudApihubV1ConfigVariable {
   multiSelectValues?: GoogleCloudApihubV1MultiSelectValues;
 }
 
-export const GoogleCloudApihubV1ConfigVariable: Schema.Schema<GoogleCloudApihubV1ConfigVariable> =
+export const GoogleCloudApihubV1ConfigVariable: Schema.Codec<GoogleCloudApihubV1ConfigVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     multiStringValues: Schema.optional(GoogleCloudApihubV1MultiStringValues),
     boolValue: Schema.optional(Schema.Boolean),
@@ -2008,7 +2008,7 @@ export interface GoogleCloudApihubV1Addon {
   updateTime?: string;
 }
 
-export const GoogleCloudApihubV1Addon: Schema.Schema<GoogleCloudApihubV1Addon> =
+export const GoogleCloudApihubV1Addon: Schema.Codec<GoogleCloudApihubV1Addon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2027,7 +2027,7 @@ export interface GoogleCloudApihubV1ListAddonsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListAddonsResponse: Schema.Schema<GoogleCloudApihubV1ListAddonsResponse> =
+export const GoogleCloudApihubV1ListAddonsResponse: Schema.Codec<GoogleCloudApihubV1ListAddonsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addons: Schema.optional(Schema.Array(GoogleCloudApihubV1Addon)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2042,7 +2042,7 @@ export interface GoogleCloudApihubV1FlattenedApiVersionDeploymentView {
   api?: GoogleCloudApihubV1Api;
 }
 
-export const GoogleCloudApihubV1FlattenedApiVersionDeploymentView: Schema.Schema<GoogleCloudApihubV1FlattenedApiVersionDeploymentView> =
+export const GoogleCloudApihubV1FlattenedApiVersionDeploymentView: Schema.Codec<GoogleCloudApihubV1FlattenedApiVersionDeploymentView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(GoogleCloudApihubV1Version),
     deployment: Schema.optional(GoogleCloudApihubV1Deployment),
@@ -2062,7 +2062,7 @@ export interface GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView {
   api?: GoogleCloudApihubV1Api;
 }
 
-export const GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView: Schema.Schema<GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView> =
+export const GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView: Schema.Codec<GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(GoogleCloudApihubV1Version),
     apiOperation: Schema.optional(GoogleCloudApihubV1ApiOperation),
@@ -2079,7 +2079,7 @@ export interface GoogleCloudApihubV1ApiView {
   mcpToolView?: GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView;
 }
 
-export const GoogleCloudApihubV1ApiView: Schema.Schema<GoogleCloudApihubV1ApiView> =
+export const GoogleCloudApihubV1ApiView: Schema.Codec<GoogleCloudApihubV1ApiView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mcpServerView: Schema.optional(
       GoogleCloudApihubV1FlattenedApiVersionDeploymentView,
@@ -2096,7 +2096,7 @@ export interface GoogleCloudApihubV1RetrieveApiViewsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1RetrieveApiViewsResponse: Schema.Schema<GoogleCloudApihubV1RetrieveApiViewsResponse> =
+export const GoogleCloudApihubV1RetrieveApiViewsResponse: Schema.Codec<GoogleCloudApihubV1RetrieveApiViewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiViews: Schema.optional(Schema.Array(GoogleCloudApihubV1ApiView)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2116,7 +2116,7 @@ export interface GoogleCloudApihubV1PathParam {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1PathParam: Schema.Schema<GoogleCloudApihubV1PathParam> =
+export const GoogleCloudApihubV1PathParam: Schema.Codec<GoogleCloudApihubV1PathParam> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(Schema.Number),
     dataType: Schema.optional(Schema.String),
@@ -2129,7 +2129,7 @@ export interface GoogleCloudApihubV1HttpResponse {
   responseCodes?: Record<string, string>;
 }
 
-export const GoogleCloudApihubV1HttpResponse: Schema.Schema<GoogleCloudApihubV1HttpResponse> =
+export const GoogleCloudApihubV1HttpResponse: Schema.Codec<GoogleCloudApihubV1HttpResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headers: Schema.optional(
       Schema.Record(Schema.String, GoogleCloudApihubV1Header),
@@ -2150,7 +2150,7 @@ export interface GoogleCloudApihubV1HttpOperationDetails {
   request?: GoogleCloudApihubV1HttpRequest;
 }
 
-export const GoogleCloudApihubV1HttpOperationDetails: Schema.Schema<GoogleCloudApihubV1HttpOperationDetails> =
+export const GoogleCloudApihubV1HttpOperationDetails: Schema.Codec<GoogleCloudApihubV1HttpOperationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pathParams: Schema.optional(Schema.Array(GoogleCloudApihubV1PathParam)),
     queryParams: Schema.optional(
@@ -2188,7 +2188,7 @@ export interface GoogleCloudApihubV1DiscoveredApiOperation {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1DiscoveredApiOperation: Schema.Schema<GoogleCloudApihubV1DiscoveredApiOperation> =
+export const GoogleCloudApihubV1DiscoveredApiOperation: Schema.Codec<GoogleCloudApihubV1DiscoveredApiOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     httpOperation: Schema.optional(GoogleCloudApihubV1HttpOperationDetails),
@@ -2209,7 +2209,7 @@ export interface GoogleCloudApihubV1ListDiscoveredApiOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListDiscoveredApiOperationsResponse: Schema.Schema<GoogleCloudApihubV1ListDiscoveredApiOperationsResponse> =
+export const GoogleCloudApihubV1ListDiscoveredApiOperationsResponse: Schema.Codec<GoogleCloudApihubV1ListDiscoveredApiOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     discoveredApiOperations: Schema.optional(
       Schema.Array(GoogleCloudApihubV1DiscoveredApiOperation),
@@ -2228,7 +2228,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -2250,7 +2250,7 @@ export interface GoogleLongrunningOperation {
   done?: boolean;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -2266,7 +2266,7 @@ export interface GoogleCloudApihubV1StyleGuideContents {
   contents?: string;
 }
 
-export const GoogleCloudApihubV1StyleGuideContents: Schema.Schema<GoogleCloudApihubV1StyleGuideContents> =
+export const GoogleCloudApihubV1StyleGuideContents: Schema.Codec<GoogleCloudApihubV1StyleGuideContents> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     contents: Schema.optional(Schema.String),
@@ -2274,7 +2274,7 @@ export const GoogleCloudApihubV1StyleGuideContents: Schema.Schema<GoogleCloudApi
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
@@ -2290,7 +2290,7 @@ export interface GoogleCloudApihubV1SourceEnvironment {
   updateTime?: string;
 }
 
-export const GoogleCloudApihubV1SourceEnvironment: Schema.Schema<GoogleCloudApihubV1SourceEnvironment> =
+export const GoogleCloudApihubV1SourceEnvironment: Schema.Codec<GoogleCloudApihubV1SourceEnvironment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceEnvironment: Schema.optional(Schema.String),
     sourceEnvironmentUri: Schema.optional(Schema.String),
@@ -2313,7 +2313,7 @@ export interface GoogleCloudApihubV1CollectApiDataRequest {
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1CollectApiDataRequest: Schema.Schema<GoogleCloudApihubV1CollectApiDataRequest> =
+export const GoogleCloudApihubV1CollectApiDataRequest: Schema.Codec<GoogleCloudApihubV1CollectApiDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collectionType: Schema.optional(Schema.String),
     apiData: Schema.optional(GoogleCloudApihubV1ApiData),
@@ -2328,7 +2328,7 @@ export interface GoogleCloudApihubV1Schema {
   rawValue?: string;
 }
 
-export const GoogleCloudApihubV1Schema: Schema.Schema<GoogleCloudApihubV1Schema> =
+export const GoogleCloudApihubV1Schema: Schema.Codec<GoogleCloudApihubV1Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     rawValue: Schema.optional(Schema.String),
@@ -2351,7 +2351,7 @@ export interface GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest {
   data?: string;
 }
 
-export const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest: Schema.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest> =
+export const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest: Schema.Codec<GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
@@ -2368,7 +2368,7 @@ export interface GoogleCloudApihubV1ApplicationIntegrationEndpointDetails {
   triggerId?: string;
 }
 
-export const GoogleCloudApihubV1ApplicationIntegrationEndpointDetails: Schema.Schema<GoogleCloudApihubV1ApplicationIntegrationEndpointDetails> =
+export const GoogleCloudApihubV1ApplicationIntegrationEndpointDetails: Schema.Codec<GoogleCloudApihubV1ApplicationIntegrationEndpointDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     triggerId: Schema.optional(Schema.String),
@@ -2381,7 +2381,7 @@ export interface GoogleCloudApihubV1Endpoint {
   applicationIntegrationEndpointDetails?: GoogleCloudApihubV1ApplicationIntegrationEndpointDetails;
 }
 
-export const GoogleCloudApihubV1Endpoint: Schema.Schema<GoogleCloudApihubV1Endpoint> =
+export const GoogleCloudApihubV1Endpoint: Schema.Codec<GoogleCloudApihubV1Endpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationIntegrationEndpointDetails: Schema.optional(
       GoogleCloudApihubV1ApplicationIntegrationEndpointDetails,
@@ -2395,7 +2395,7 @@ export interface GoogleCloudApihubV1PluginInstanceActionID {
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1PluginInstanceActionID: Schema.Schema<GoogleCloudApihubV1PluginInstanceActionID> =
+export const GoogleCloudApihubV1PluginInstanceActionID: Schema.Codec<GoogleCloudApihubV1PluginInstanceActionID> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pluginInstance: Schema.optional(Schema.String),
     actionId: Schema.optional(Schema.String),
@@ -2432,7 +2432,7 @@ export interface GoogleCloudApihubV1Curation {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1Curation: Schema.Schema<GoogleCloudApihubV1Curation> =
+export const GoogleCloudApihubV1Curation: Schema.Codec<GoogleCloudApihubV1Curation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoint: Schema.optional(GoogleCloudApihubV1Endpoint),
     name: Schema.optional(Schema.String),
@@ -2455,7 +2455,7 @@ export interface GoogleCloudApihubV1ListCurationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListCurationsResponse: Schema.Schema<GoogleCloudApihubV1ListCurationsResponse> =
+export const GoogleCloudApihubV1ListCurationsResponse: Schema.Codec<GoogleCloudApihubV1ListCurationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curations: Schema.optional(Schema.Array(GoogleCloudApihubV1Curation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2468,7 +2468,7 @@ export interface GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse {
   runtimeProjectAttachments?: ReadonlyArray<GoogleCloudApihubV1RuntimeProjectAttachment>;
 }
 
-export const GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse: Schema.Schema<GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse> =
+export const GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse: Schema.Codec<GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     runtimeProjectAttachments: Schema.optional(
@@ -2483,7 +2483,7 @@ export interface GoogleCloudApihubV1FetchAdditionalSpecContentResponse {
   additionalSpecContent?: GoogleCloudApihubV1AdditionalSpecContent;
 }
 
-export const GoogleCloudApihubV1FetchAdditionalSpecContentResponse: Schema.Schema<GoogleCloudApihubV1FetchAdditionalSpecContentResponse> =
+export const GoogleCloudApihubV1FetchAdditionalSpecContentResponse: Schema.Codec<GoogleCloudApihubV1FetchAdditionalSpecContentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalSpecContent: Schema.optional(
       GoogleCloudApihubV1AdditionalSpecContent,
@@ -2538,7 +2538,7 @@ export interface GoogleCloudApihubV1Attribute {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1Attribute: Schema.Schema<GoogleCloudApihubV1Attribute> =
+export const GoogleCloudApihubV1Attribute: Schema.Codec<GoogleCloudApihubV1Attribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     allowedValues: Schema.optional(
@@ -2562,7 +2562,7 @@ export interface GoogleCloudApihubV1Oauth2ClientCredentialsConfig {
   clientSecret?: GoogleCloudApihubV1Secret;
 }
 
-export const GoogleCloudApihubV1Oauth2ClientCredentialsConfig: Schema.Schema<GoogleCloudApihubV1Oauth2ClientCredentialsConfig> =
+export const GoogleCloudApihubV1Oauth2ClientCredentialsConfig: Schema.Codec<GoogleCloudApihubV1Oauth2ClientCredentialsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     clientSecret: Schema.optional(GoogleCloudApihubV1Secret),
@@ -2587,7 +2587,7 @@ export interface GoogleCloudApihubV1Definition {
   type?: "TYPE_UNSPECIFIED" | "SCHEMA" | (string & {});
 }
 
-export const GoogleCloudApihubV1Definition: Schema.Schema<GoogleCloudApihubV1Definition> =
+export const GoogleCloudApihubV1Definition: Schema.Codec<GoogleCloudApihubV1Definition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -2615,7 +2615,7 @@ export interface GoogleCloudApihubV1ApiHubResource {
   version?: GoogleCloudApihubV1Version;
 }
 
-export const GoogleCloudApihubV1ApiHubResource: Schema.Schema<GoogleCloudApihubV1ApiHubResource> =
+export const GoogleCloudApihubV1ApiHubResource: Schema.Codec<GoogleCloudApihubV1ApiHubResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployment: Schema.optional(GoogleCloudApihubV1Deployment),
     definition: Schema.optional(GoogleCloudApihubV1Definition),
@@ -2630,7 +2630,7 @@ export interface GoogleCloudApihubV1SearchResult {
   resource?: GoogleCloudApihubV1ApiHubResource;
 }
 
-export const GoogleCloudApihubV1SearchResult: Schema.Schema<GoogleCloudApihubV1SearchResult> =
+export const GoogleCloudApihubV1SearchResult: Schema.Codec<GoogleCloudApihubV1SearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(GoogleCloudApihubV1ApiHubResource),
   }).annotate({ identifier: "GoogleCloudApihubV1SearchResult" });
@@ -2642,7 +2642,7 @@ export interface GoogleCloudApihubV1ListSpecsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListSpecsResponse: Schema.Schema<GoogleCloudApihubV1ListSpecsResponse> =
+export const GoogleCloudApihubV1ListSpecsResponse: Schema.Codec<GoogleCloudApihubV1ListSpecsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     specs: Schema.optional(Schema.Array(GoogleCloudApihubV1Spec)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2655,7 +2655,7 @@ export interface GoogleCloudApihubV1ListAttributesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListAttributesResponse: Schema.Schema<GoogleCloudApihubV1ListAttributesResponse> =
+export const GoogleCloudApihubV1ListAttributesResponse: Schema.Codec<GoogleCloudApihubV1ListAttributesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributes: Schema.optional(Schema.Array(GoogleCloudApihubV1Attribute)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2668,7 +2668,7 @@ export interface GoogleCloudApihubV1UserPasswordConfig {
   password?: GoogleCloudApihubV1Secret;
 }
 
-export const GoogleCloudApihubV1UserPasswordConfig: Schema.Schema<GoogleCloudApihubV1UserPasswordConfig> =
+export const GoogleCloudApihubV1UserPasswordConfig: Schema.Codec<GoogleCloudApihubV1UserPasswordConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(GoogleCloudApihubV1Secret),
@@ -2694,7 +2694,7 @@ export interface GoogleCloudApihubV1AuthConfig {
   apiKeyConfig?: GoogleCloudApihubV1ApiKeyConfig;
 }
 
-export const GoogleCloudApihubV1AuthConfig: Schema.Schema<GoogleCloudApihubV1AuthConfig> =
+export const GoogleCloudApihubV1AuthConfig: Schema.Codec<GoogleCloudApihubV1AuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oauth2ClientCredentialsConfig: Schema.optional(
       GoogleCloudApihubV1Oauth2ClientCredentialsConfig,
@@ -2716,7 +2716,7 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2732,7 +2732,7 @@ export interface GoogleCloudApihubV1HostProjectRegistration {
   name?: string;
 }
 
-export const GoogleCloudApihubV1HostProjectRegistration: Schema.Schema<GoogleCloudApihubV1HostProjectRegistration> =
+export const GoogleCloudApihubV1HostProjectRegistration: Schema.Codec<GoogleCloudApihubV1HostProjectRegistration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcpProject: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -2746,7 +2746,7 @@ export interface GoogleCloudApihubV1ListHostProjectRegistrationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListHostProjectRegistrationsResponse: Schema.Schema<GoogleCloudApihubV1ListHostProjectRegistrationsResponse> =
+export const GoogleCloudApihubV1ListHostProjectRegistrationsResponse: Schema.Codec<GoogleCloudApihubV1ListHostProjectRegistrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostProjectRegistrations: Schema.optional(
       Schema.Array(GoogleCloudApihubV1HostProjectRegistration),
@@ -2758,7 +2758,7 @@ export const GoogleCloudApihubV1ListHostProjectRegistrationsResponse: Schema.Sch
 
 export interface GoogleCloudApihubV1EnablePluginRequest {}
 
-export const GoogleCloudApihubV1EnablePluginRequest: Schema.Schema<GoogleCloudApihubV1EnablePluginRequest> =
+export const GoogleCloudApihubV1EnablePluginRequest: Schema.Codec<GoogleCloudApihubV1EnablePluginRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApihubV1EnablePluginRequest",
   });
@@ -2799,7 +2799,7 @@ export interface GoogleCloudApihubV1PluginInstance {
   name?: string;
 }
 
-export const GoogleCloudApihubV1PluginInstance: Schema.Schema<GoogleCloudApihubV1PluginInstance> =
+export const GoogleCloudApihubV1PluginInstance: Schema.Codec<GoogleCloudApihubV1PluginInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalConfig: Schema.optional(
       Schema.Record(Schema.String, GoogleCloudApihubV1ConfigVariable),
@@ -2827,7 +2827,7 @@ export interface GoogleCloudApihubV1ListPluginInstancesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListPluginInstancesResponse: Schema.Schema<GoogleCloudApihubV1ListPluginInstancesResponse> =
+export const GoogleCloudApihubV1ListPluginInstancesResponse: Schema.Codec<GoogleCloudApihubV1ListPluginInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pluginInstances: Schema.optional(
       Schema.Array(GoogleCloudApihubV1PluginInstance),
@@ -2844,7 +2844,7 @@ export interface GoogleCloudApihubV1StyleGuide {
   contents?: GoogleCloudApihubV1StyleGuideContents;
 }
 
-export const GoogleCloudApihubV1StyleGuide: Schema.Schema<GoogleCloudApihubV1StyleGuide> =
+export const GoogleCloudApihubV1StyleGuide: Schema.Codec<GoogleCloudApihubV1StyleGuide> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linter: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2853,7 +2853,7 @@ export const GoogleCloudApihubV1StyleGuide: Schema.Schema<GoogleCloudApihubV1Sty
 
 export interface GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse {}
 
-export const GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse: Schema.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse> =
+export const GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse: Schema.Codec<GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse",
   });
@@ -2875,7 +2875,7 @@ export interface GoogleCloudApihubV1OperationMetadata {
   statusMessage?: string;
 }
 
-export const GoogleCloudApihubV1OperationMetadata: Schema.Schema<GoogleCloudApihubV1OperationMetadata> =
+export const GoogleCloudApihubV1OperationMetadata: Schema.Codec<GoogleCloudApihubV1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -2893,7 +2893,7 @@ export interface GoogleCloudApihubV1SearchResourcesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1SearchResourcesResponse: Schema.Schema<GoogleCloudApihubV1SearchResourcesResponse> =
+export const GoogleCloudApihubV1SearchResourcesResponse: Schema.Codec<GoogleCloudApihubV1SearchResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchResults: Schema.optional(
       Schema.Array(GoogleCloudApihubV1SearchResult),
@@ -2975,7 +2975,7 @@ export const SearchResourcesProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchResourcesProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SearchResourcesProjectsLocationsRequest>;
 
 export type SearchResourcesProjectsLocationsResponse =
   GoogleCloudApihubV1SearchResourcesResponse;
@@ -3026,7 +3026,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
@@ -3062,7 +3062,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
@@ -3096,7 +3096,7 @@ export const LookupRuntimeProjectAttachmentProjectsLocationsRequest =
       path: "v1/{+name}:lookupRuntimeProjectAttachment",
     }),
     svc,
-  ) as unknown as Schema.Schema<LookupRuntimeProjectAttachmentProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<LookupRuntimeProjectAttachmentProjectsLocationsRequest>;
 
 export type LookupRuntimeProjectAttachmentProjectsLocationsResponse =
   GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse;
@@ -3147,7 +3147,7 @@ export const RetrieveApiViewsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:retrieveApiViews" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveApiViewsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<RetrieveApiViewsProjectsLocationsRequest>;
 
 export type RetrieveApiViewsProjectsLocationsResponse =
   GoogleCloudApihubV1RetrieveApiViewsResponse;
@@ -3195,7 +3195,7 @@ export const CollectApiDataProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CollectApiDataProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<CollectApiDataProjectsLocationsRequest>;
 
 export type CollectApiDataProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -3246,7 +3246,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -3285,7 +3285,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -3319,7 +3319,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -3360,7 +3360,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -3408,7 +3408,7 @@ export const CreateProjectsLocationsExternalApisRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsExternalApisRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsExternalApisRequest>;
 
 export type CreateProjectsLocationsExternalApisResponse =
   GoogleCloudApihubV1ExternalApi;
@@ -3445,7 +3445,7 @@ export const GetProjectsLocationsExternalApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsExternalApisRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsExternalApisRequest>;
 
 export type GetProjectsLocationsExternalApisResponse =
   GoogleCloudApihubV1ExternalApi;
@@ -3486,7 +3486,7 @@ export const ListProjectsLocationsExternalApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/externalApis" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsExternalApisRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsExternalApisRequest>;
 
 export type ListProjectsLocationsExternalApisResponse =
   GoogleCloudApihubV1ListExternalApisResponse;
@@ -3531,7 +3531,7 @@ export const PatchProjectsLocationsExternalApisRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsExternalApisRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsExternalApisRequest>;
 
 export type PatchProjectsLocationsExternalApisResponse =
   GoogleCloudApihubV1ExternalApi;
@@ -3568,7 +3568,7 @@ export const DeleteProjectsLocationsExternalApisRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsExternalApisRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsExternalApisRequest>;
 
 export type DeleteProjectsLocationsExternalApisResponse = Empty;
 export const DeleteProjectsLocationsExternalApisResponse =
@@ -3604,7 +3604,7 @@ export const GetProjectsLocationsDependenciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDependenciesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDependenciesRequest>;
 
 export type GetProjectsLocationsDependenciesResponse =
   GoogleCloudApihubV1Dependency;
@@ -3648,7 +3648,7 @@ export const ListProjectsLocationsDependenciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dependencies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDependenciesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDependenciesRequest>;
 
 export type ListProjectsLocationsDependenciesResponse =
   GoogleCloudApihubV1ListDependenciesResponse;
@@ -3693,7 +3693,7 @@ export const PatchProjectsLocationsDependenciesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDependenciesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDependenciesRequest>;
 
 export type PatchProjectsLocationsDependenciesResponse =
   GoogleCloudApihubV1Dependency;
@@ -3730,7 +3730,7 @@ export const DeleteProjectsLocationsDependenciesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDependenciesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDependenciesRequest>;
 
 export type DeleteProjectsLocationsDependenciesResponse = Empty;
 export const DeleteProjectsLocationsDependenciesResponse =
@@ -3778,7 +3778,7 @@ export const CreateProjectsLocationsDependenciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDependenciesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDependenciesRequest>;
 
 export type CreateProjectsLocationsDependenciesResponse =
   GoogleCloudApihubV1Dependency;
@@ -3815,7 +3815,7 @@ export const GetProjectsLocationsRuntimeProjectAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRuntimeProjectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
 export type GetProjectsLocationsRuntimeProjectAttachmentsResponse =
   GoogleCloudApihubV1RuntimeProjectAttachment;
@@ -3862,7 +3862,7 @@ export const ListProjectsLocationsRuntimeProjectAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/runtimeProjectAttachments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRuntimeProjectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
 export type ListProjectsLocationsRuntimeProjectAttachmentsResponse =
   GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse;
@@ -3915,7 +3915,7 @@ export const CreateProjectsLocationsRuntimeProjectAttachmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRuntimeProjectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
 export type CreateProjectsLocationsRuntimeProjectAttachmentsResponse =
   GoogleCloudApihubV1RuntimeProjectAttachment;
@@ -3952,7 +3952,7 @@ export const DeleteProjectsLocationsRuntimeProjectAttachmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRuntimeProjectAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
 export type DeleteProjectsLocationsRuntimeProjectAttachmentsResponse = Empty;
 export const DeleteProjectsLocationsRuntimeProjectAttachmentsResponse =
@@ -3994,7 +3994,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/discoveredApiObservations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredApiObservationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDiscoveredApiObservationsRequest>;
 
 export type ListProjectsLocationsDiscoveredApiObservationsResponse =
   GoogleCloudApihubV1ListDiscoveredApiObservationsResponse;
@@ -4033,7 +4033,7 @@ export const GetProjectsLocationsDiscoveredApiObservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredApiObservationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDiscoveredApiObservationsRequest>;
 
 export type GetProjectsLocationsDiscoveredApiObservationsResponse =
   GoogleCloudApihubV1DiscoveredApiObservation;
@@ -4074,7 +4074,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/discoveredApiOperations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
 
 export type ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResponse =
   GoogleCloudApihubV1ListDiscoveredApiOperationsResponse;
@@ -4082,7 +4082,9 @@ export const ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListDiscoveredApiOperationsResponse;
 
 export type ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the DiscoveredAPIOperations in a given project, location and ApiObservation. */
 export const listProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperations: API.PaginatedOperationMethod<
@@ -4113,7 +4115,7 @@ export const GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperation
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
 
 export type GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResponse =
   GoogleCloudApihubV1DiscoveredApiOperation;
@@ -4121,7 +4123,9 @@ export const GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1DiscoveredApiOperation;
 
 export type GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DiscoveredAPIOperation in a given project, location, ApiObservation and ApiOperation. */
 export const getProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperations: API.OperationMethod<
@@ -4154,7 +4158,7 @@ export const CreateProjectsLocationsCurationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/curations", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCurationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCurationsRequest>;
 
 export type CreateProjectsLocationsCurationsResponse =
   GoogleCloudApihubV1Curation;
@@ -4197,7 +4201,7 @@ export const PatchProjectsLocationsCurationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCurationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCurationsRequest>;
 
 export type PatchProjectsLocationsCurationsResponse =
   GoogleCloudApihubV1Curation;
@@ -4234,7 +4238,7 @@ export const DeleteProjectsLocationsCurationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCurationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCurationsRequest>;
 
 export type DeleteProjectsLocationsCurationsResponse = Empty;
 export const DeleteProjectsLocationsCurationsResponse =
@@ -4270,7 +4274,7 @@ export const GetProjectsLocationsCurationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCurationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCurationsRequest>;
 
 export type GetProjectsLocationsCurationsResponse = GoogleCloudApihubV1Curation;
 export const GetProjectsLocationsCurationsResponse =
@@ -4313,7 +4317,7 @@ export const ListProjectsLocationsCurationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/curations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCurationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCurationsRequest>;
 
 export type ListProjectsLocationsCurationsResponse =
   GoogleCloudApihubV1ListCurationsResponse;
@@ -4352,7 +4356,7 @@ export const GetProjectsLocationsPluginsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsPluginsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsPluginsRequest>;
 
 export type GetProjectsLocationsPluginsResponse = GoogleCloudApihubV1Plugin;
 export const GetProjectsLocationsPluginsResponse =
@@ -4395,7 +4399,7 @@ export const ListProjectsLocationsPluginsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/plugins" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsPluginsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsPluginsRequest>;
 
 export type ListProjectsLocationsPluginsResponse =
   GoogleCloudApihubV1ListPluginsResponse;
@@ -4434,7 +4438,7 @@ export const DeleteProjectsLocationsPluginsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsPluginsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsPluginsRequest>;
 
 export type DeleteProjectsLocationsPluginsResponse = GoogleLongrunningOperation;
 export const DeleteProjectsLocationsPluginsResponse =
@@ -4470,7 +4474,7 @@ export const GetStyleGuideProjectsLocationsPluginsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetStyleGuideProjectsLocationsPluginsRequest>;
+  ) as unknown as Schema.Codec<GetStyleGuideProjectsLocationsPluginsRequest>;
 
 export type GetStyleGuideProjectsLocationsPluginsResponse =
   GoogleCloudApihubV1StyleGuide;
@@ -4510,7 +4514,7 @@ export const EnableProjectsLocationsPluginsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:enable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EnableProjectsLocationsPluginsRequest>;
+  ) as unknown as Schema.Codec<EnableProjectsLocationsPluginsRequest>;
 
 export type EnableProjectsLocationsPluginsResponse = GoogleCloudApihubV1Plugin;
 export const EnableProjectsLocationsPluginsResponse =
@@ -4552,7 +4556,7 @@ export const UpdateStyleGuideProjectsLocationsPluginsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateStyleGuideProjectsLocationsPluginsRequest>;
+  ) as unknown as Schema.Codec<UpdateStyleGuideProjectsLocationsPluginsRequest>;
 
 export type UpdateStyleGuideProjectsLocationsPluginsResponse =
   GoogleCloudApihubV1StyleGuide;
@@ -4595,7 +4599,7 @@ export const CreateProjectsLocationsPluginsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/plugins", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsPluginsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsPluginsRequest>;
 
 export type CreateProjectsLocationsPluginsResponse = GoogleCloudApihubV1Plugin;
 export const CreateProjectsLocationsPluginsResponse =
@@ -4636,7 +4640,7 @@ export const DisableProjectsLocationsPluginsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:disable", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DisableProjectsLocationsPluginsRequest>;
+  ) as unknown as Schema.Codec<DisableProjectsLocationsPluginsRequest>;
 
 export type DisableProjectsLocationsPluginsResponse = GoogleCloudApihubV1Plugin;
 export const DisableProjectsLocationsPluginsResponse =
@@ -4672,7 +4676,7 @@ export const GetContentsProjectsLocationsPluginsStyleGuideRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:contents" }),
     svc,
-  ) as unknown as Schema.Schema<GetContentsProjectsLocationsPluginsStyleGuideRequest>;
+  ) as unknown as Schema.Codec<GetContentsProjectsLocationsPluginsStyleGuideRequest>;
 
 export type GetContentsProjectsLocationsPluginsStyleGuideResponse =
   GoogleCloudApihubV1StyleGuideContents;
@@ -4713,7 +4717,7 @@ export const PatchProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsPluginsInstancesRequest>;
 
 export type PatchProjectsLocationsPluginsInstancesResponse =
   GoogleCloudApihubV1PluginInstance;
@@ -4750,7 +4754,7 @@ export const DeleteProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsPluginsInstancesRequest>;
 
 export type DeleteProjectsLocationsPluginsInstancesResponse =
   GoogleLongrunningOperation;
@@ -4792,7 +4796,7 @@ export const DisableActionProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:disableAction", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DisableActionProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<DisableActionProjectsLocationsPluginsInstancesRequest>;
 
 export type DisableActionProjectsLocationsPluginsInstancesResponse =
   GoogleLongrunningOperation;
@@ -4834,7 +4838,7 @@ export const EnableActionProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:enableAction", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EnableActionProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<EnableActionProjectsLocationsPluginsInstancesRequest>;
 
 export type EnableActionProjectsLocationsPluginsInstancesResponse =
   GoogleLongrunningOperation;
@@ -4879,7 +4883,7 @@ export const CreateProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/instances", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsPluginsInstancesRequest>;
 
 export type CreateProjectsLocationsPluginsInstancesResponse =
   GoogleLongrunningOperation;
@@ -4925,7 +4929,7 @@ export const ManageSourceDataProjectsLocationsPluginsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ManageSourceDataProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<ManageSourceDataProjectsLocationsPluginsInstancesRequest>;
 
 export type ManageSourceDataProjectsLocationsPluginsInstancesResponse =
   GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse;
@@ -4967,7 +4971,7 @@ export const ExecuteActionProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:executeAction", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteActionProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<ExecuteActionProjectsLocationsPluginsInstancesRequest>;
 
 export type ExecuteActionProjectsLocationsPluginsInstancesResponse =
   GoogleLongrunningOperation;
@@ -5004,7 +5008,7 @@ export const GetProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsPluginsInstancesRequest>;
 
 export type GetProjectsLocationsPluginsInstancesResponse =
   GoogleCloudApihubV1PluginInstance;
@@ -5048,7 +5052,7 @@ export const ListProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/instances" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsPluginsInstancesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsPluginsInstancesRequest>;
 
 export type ListProjectsLocationsPluginsInstancesResponse =
   GoogleCloudApihubV1ListPluginInstancesResponse;
@@ -5093,7 +5097,7 @@ export const PatchProjectsLocationsAttributesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAttributesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAttributesRequest>;
 
 export type PatchProjectsLocationsAttributesResponse =
   GoogleCloudApihubV1Attribute;
@@ -5130,7 +5134,7 @@ export const DeleteProjectsLocationsAttributesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAttributesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAttributesRequest>;
 
 export type DeleteProjectsLocationsAttributesResponse = Empty;
 export const DeleteProjectsLocationsAttributesResponse =
@@ -5166,7 +5170,7 @@ export const GetProjectsLocationsAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAttributesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAttributesRequest>;
 
 export type GetProjectsLocationsAttributesResponse =
   GoogleCloudApihubV1Attribute;
@@ -5210,7 +5214,7 @@ export const ListProjectsLocationsAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAttributesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAttributesRequest>;
 
 export type ListProjectsLocationsAttributesResponse =
   GoogleCloudApihubV1ListAttributesResponse;
@@ -5257,7 +5261,7 @@ export const CreateProjectsLocationsAttributesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/attributes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAttributesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAttributesRequest>;
 
 export type CreateProjectsLocationsAttributesResponse =
   GoogleCloudApihubV1Attribute;
@@ -5294,7 +5298,7 @@ export const LookupProjectsLocationsApiHubInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apiHubInstances:lookup" }),
     svc,
-  ) as unknown as Schema.Schema<LookupProjectsLocationsApiHubInstancesRequest>;
+  ) as unknown as Schema.Codec<LookupProjectsLocationsApiHubInstancesRequest>;
 
 export type LookupProjectsLocationsApiHubInstancesResponse =
   GoogleCloudApihubV1LookupApiHubInstanceResponse;
@@ -5341,7 +5345,7 @@ export const CreateProjectsLocationsApiHubInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApiHubInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsApiHubInstancesRequest>;
 
 export type CreateProjectsLocationsApiHubInstancesResponse =
   GoogleLongrunningOperation;
@@ -5378,7 +5382,7 @@ export const GetProjectsLocationsApiHubInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApiHubInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsApiHubInstancesRequest>;
 
 export type GetProjectsLocationsApiHubInstancesResponse =
   GoogleCloudApihubV1ApiHubInstance;
@@ -5413,7 +5417,7 @@ export const DeleteProjectsLocationsApiHubInstancesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApiHubInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsApiHubInstancesRequest>;
 
 export type DeleteProjectsLocationsApiHubInstancesResponse =
   GoogleLongrunningOperation;
@@ -5456,7 +5460,7 @@ export const PatchProjectsLocationsApiHubInstancesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApiHubInstancesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsApiHubInstancesRequest>;
 
 export type PatchProjectsLocationsApiHubInstancesResponse =
   GoogleLongrunningOperation;
@@ -5493,7 +5497,7 @@ export const GetProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDeploymentsRequest>;
 
 export type GetProjectsLocationsDeploymentsResponse =
   GoogleCloudApihubV1Deployment;
@@ -5537,7 +5541,7 @@ export const ListProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDeploymentsRequest>;
 
 export type ListProjectsLocationsDeploymentsResponse =
   GoogleCloudApihubV1ListDeploymentsResponse;
@@ -5582,7 +5586,7 @@ export const PatchProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDeploymentsRequest>;
 
 export type PatchProjectsLocationsDeploymentsResponse =
   GoogleCloudApihubV1Deployment;
@@ -5619,7 +5623,7 @@ export const DeleteProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDeploymentsRequest>;
 
 export type DeleteProjectsLocationsDeploymentsResponse = Empty;
 export const DeleteProjectsLocationsDeploymentsResponse =
@@ -5663,7 +5667,7 @@ export const CreateProjectsLocationsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/deployments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDeploymentsRequest>;
 
 export type CreateProjectsLocationsDeploymentsResponse =
   GoogleCloudApihubV1Deployment;
@@ -5700,7 +5704,7 @@ export const GetProjectsLocationsHostProjectRegistrationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsHostProjectRegistrationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsHostProjectRegistrationsRequest>;
 
 export type GetProjectsLocationsHostProjectRegistrationsResponse =
   GoogleCloudApihubV1HostProjectRegistration;
@@ -5747,7 +5751,7 @@ export const ListProjectsLocationsHostProjectRegistrationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/hostProjectRegistrations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsHostProjectRegistrationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsHostProjectRegistrationsRequest>;
 
 export type ListProjectsLocationsHostProjectRegistrationsResponse =
   GoogleCloudApihubV1ListHostProjectRegistrationsResponse;
@@ -5800,7 +5804,7 @@ export const CreateProjectsLocationsHostProjectRegistrationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsHostProjectRegistrationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsHostProjectRegistrationsRequest>;
 
 export type CreateProjectsLocationsHostProjectRegistrationsResponse =
   GoogleCloudApihubV1HostProjectRegistration;
@@ -5837,7 +5841,7 @@ export const GetProjectsLocationsAddonsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAddonsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAddonsRequest>;
 
 export type GetProjectsLocationsAddonsResponse = GoogleCloudApihubV1Addon;
 export const GetProjectsLocationsAddonsResponse =
@@ -5876,7 +5880,7 @@ export const ManageConfigProjectsLocationsAddonsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:manageConfig", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ManageConfigProjectsLocationsAddonsRequest>;
+  ) as unknown as Schema.Codec<ManageConfigProjectsLocationsAddonsRequest>;
 
 export type ManageConfigProjectsLocationsAddonsResponse =
   GoogleLongrunningOperation;
@@ -5922,7 +5926,7 @@ export const ListProjectsLocationsAddonsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/addons" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAddonsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAddonsRequest>;
 
 export type ListProjectsLocationsAddonsResponse =
   GoogleCloudApihubV1ListAddonsResponse;
@@ -5967,7 +5971,7 @@ export const CreateProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/apis", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsApisRequest>;
 
 export type CreateProjectsLocationsApisResponse = GoogleCloudApihubV1Api;
 export const CreateProjectsLocationsApisResponse =
@@ -6009,7 +6013,7 @@ export const PatchProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsApisRequest>;
 
 export type PatchProjectsLocationsApisResponse = GoogleCloudApihubV1Api;
 export const PatchProjectsLocationsApisResponse =
@@ -6048,7 +6052,7 @@ export const DeleteProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsApisRequest>;
 
 export type DeleteProjectsLocationsApisResponse = Empty;
 export const DeleteProjectsLocationsApisResponse =
@@ -6084,7 +6088,7 @@ export const GetProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsApisRequest>;
 
 export type GetProjectsLocationsApisResponse = GoogleCloudApihubV1Api;
 export const GetProjectsLocationsApisResponse =
@@ -6127,7 +6131,7 @@ export const ListProjectsLocationsApisRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/apis" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsApisRequest>;
 
 export type ListProjectsLocationsApisResponse =
   GoogleCloudApihubV1ListApisResponse;
@@ -6172,7 +6176,7 @@ export const PatchProjectsLocationsApisVersionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsApisVersionsRequest>;
 
 export type PatchProjectsLocationsApisVersionsResponse =
   GoogleCloudApihubV1Version;
@@ -6212,7 +6216,7 @@ export const DeleteProjectsLocationsApisVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsApisVersionsRequest>;
 
 export type DeleteProjectsLocationsApisVersionsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsResponse =
@@ -6248,7 +6252,7 @@ export const GetProjectsLocationsApisVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsApisVersionsRequest>;
 
 export type GetProjectsLocationsApisVersionsResponse =
   GoogleCloudApihubV1Version;
@@ -6292,7 +6296,7 @@ export const ListProjectsLocationsApisVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsApisVersionsRequest>;
 
 export type ListProjectsLocationsApisVersionsResponse =
   GoogleCloudApihubV1ListVersionsResponse;
@@ -6337,7 +6341,7 @@ export const CreateProjectsLocationsApisVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsApisVersionsRequest>;
 
 export type CreateProjectsLocationsApisVersionsResponse =
   GoogleCloudApihubV1Version;
@@ -6374,7 +6378,7 @@ export const GetProjectsLocationsApisVersionsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsApisVersionsOperationsRequest>;
 
 export type GetProjectsLocationsApisVersionsOperationsResponse =
   GoogleCloudApihubV1ApiOperation;
@@ -6418,7 +6422,7 @@ export const ListProjectsLocationsApisVersionsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsApisVersionsOperationsRequest>;
 
 export type ListProjectsLocationsApisVersionsOperationsResponse =
   GoogleCloudApihubV1ListApiOperationsResponse;
@@ -6463,7 +6467,7 @@ export const PatchProjectsLocationsApisVersionsOperationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsOperationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsApisVersionsOperationsRequest>;
 
 export type PatchProjectsLocationsApisVersionsOperationsResponse =
   GoogleCloudApihubV1ApiOperation;
@@ -6500,7 +6504,7 @@ export const DeleteProjectsLocationsApisVersionsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsApisVersionsOperationsRequest>;
 
 export type DeleteProjectsLocationsApisVersionsOperationsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsOperationsResponse =
@@ -6544,7 +6548,7 @@ export const CreateProjectsLocationsApisVersionsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/operations", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsOperationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsApisVersionsOperationsRequest>;
 
 export type CreateProjectsLocationsApisVersionsOperationsResponse =
   GoogleCloudApihubV1ApiOperation;
@@ -6587,7 +6591,7 @@ export const CreateProjectsLocationsApisVersionsSpecsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/specs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsApisVersionsSpecsRequest>;
 
 export type CreateProjectsLocationsApisVersionsSpecsResponse =
   GoogleCloudApihubV1Spec;
@@ -6624,7 +6628,7 @@ export const GetProjectsLocationsApisVersionsSpecsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsSpecsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsApisVersionsSpecsRequest>;
 
 export type GetProjectsLocationsApisVersionsSpecsResponse =
   GoogleCloudApihubV1Spec;
@@ -6659,7 +6663,7 @@ export const GetContentsProjectsLocationsApisVersionsSpecsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:contents" }),
     svc,
-  ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>;
+  ) as unknown as Schema.Codec<GetContentsProjectsLocationsApisVersionsSpecsRequest>;
 
 export type GetContentsProjectsLocationsApisVersionsSpecsResponse =
   GoogleCloudApihubV1SpecContents;
@@ -6703,7 +6707,7 @@ export const FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:fetchAdditionalSpecContent" }),
     svc,
-  ) as unknown as Schema.Schema<FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest>;
+  ) as unknown as Schema.Codec<FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest>;
 
 export type FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsResponse =
   GoogleCloudApihubV1FetchAdditionalSpecContentResponse;
@@ -6747,7 +6751,7 @@ export const ListProjectsLocationsApisVersionsSpecsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/specs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsApisVersionsSpecsRequest>;
 
 export type ListProjectsLocationsApisVersionsSpecsResponse =
   GoogleCloudApihubV1ListSpecsResponse;
@@ -6791,7 +6795,7 @@ export const LintProjectsLocationsApisVersionsSpecsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:lint", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<LintProjectsLocationsApisVersionsSpecsRequest>;
+  ) as unknown as Schema.Codec<LintProjectsLocationsApisVersionsSpecsRequest>;
 
 export type LintProjectsLocationsApisVersionsSpecsResponse = Empty;
 export const LintProjectsLocationsApisVersionsSpecsResponse =
@@ -6833,7 +6837,7 @@ export const PatchProjectsLocationsApisVersionsSpecsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsApisVersionsSpecsRequest>;
 
 export type PatchProjectsLocationsApisVersionsSpecsResponse =
   GoogleCloudApihubV1Spec;
@@ -6870,7 +6874,7 @@ export const DeleteProjectsLocationsApisVersionsSpecsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsApisVersionsSpecsRequest>;
 
 export type DeleteProjectsLocationsApisVersionsSpecsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsSpecsResponse =
@@ -6906,7 +6910,7 @@ export const GetProjectsLocationsApisVersionsDefinitionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsDefinitionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsApisVersionsDefinitionsRequest>;
 
 export type GetProjectsLocationsApisVersionsDefinitionsResponse =
   GoogleCloudApihubV1Definition;

@@ -4,12 +4,62 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateCoordinationV1NamespacedLeaseInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    acquireTime?: string;
+    holderIdentity?: string;
+    leaseDurationSeconds?: number;
+    leaseTransitions?: number;
+    preferredHolder?: string;
+    renewTime?: string;
+    strategy?: string;
+  };
+}
 export const CreateCoordinationV1NamespacedLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -79,11 +129,54 @@ export const CreateCoordinationV1NamespacedLeaseInput =
       method: "POST",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases",
     }),
-  );
-export type CreateCoordinationV1NamespacedLeaseInput =
-  typeof CreateCoordinationV1NamespacedLeaseInput.Type;
+  ) as unknown as Schema.Codec<CreateCoordinationV1NamespacedLeaseInput>;
 
 // Output Schema
+export interface CreateCoordinationV1NamespacedLeaseOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    acquireTime?: string;
+    holderIdentity?: string;
+    leaseDurationSeconds?: number;
+    leaseTransitions?: number;
+    preferredHolder?: string;
+    renewTime?: string;
+    strategy?: string;
+  };
+}
 export const CreateCoordinationV1NamespacedLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -143,9 +236,7 @@ export const CreateCoordinationV1NamespacedLeaseOutput =
         strategy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateCoordinationV1NamespacedLeaseOutput =
-  typeof CreateCoordinationV1NamespacedLeaseOutput.Type;
+  }) as unknown as Schema.Codec<CreateCoordinationV1NamespacedLeaseOutput>;
 
 // The operation
 /**
@@ -164,6 +255,55 @@ export const createCoordinationV1NamespacedLease =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateCoordinationV1alpha2NamespacedLeaseCandidateInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const CreateCoordinationV1alpha2NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -230,11 +370,53 @@ export const CreateCoordinationV1alpha2NamespacedLeaseCandidateInput =
       method: "POST",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
     }),
-  );
-export type CreateCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  typeof CreateCoordinationV1alpha2NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<CreateCoordinationV1alpha2NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -291,9 +473,7 @@ export const CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput =
       renewTime: Schema.optional(Schema.String),
       strategy: Schema.String,
     }),
-  });
-export type CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  typeof CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -312,6 +492,55 @@ export const createCoordinationV1alpha2NamespacedLeaseCandidate =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateCoordinationV1beta1NamespacedLeaseCandidateInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const CreateCoordinationV1beta1NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -378,11 +607,53 @@ export const CreateCoordinationV1beta1NamespacedLeaseCandidateInput =
       method: "POST",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
     }),
-  );
-export type CreateCoordinationV1beta1NamespacedLeaseCandidateInput =
-  typeof CreateCoordinationV1beta1NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<CreateCoordinationV1beta1NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface CreateCoordinationV1beta1NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const CreateCoordinationV1beta1NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -439,9 +710,7 @@ export const CreateCoordinationV1beta1NamespacedLeaseCandidateOutput =
       renewTime: Schema.optional(Schema.String),
       strategy: Schema.String,
     }),
-  });
-export type CreateCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  typeof CreateCoordinationV1beta1NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<CreateCoordinationV1beta1NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -460,6 +729,27 @@ export const createCoordinationV1beta1NamespacedLeaseCandidate =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteCoordinationV1CollectionNamespacedLeaseInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCoordinationV1CollectionNamespacedLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -493,11 +783,32 @@ export const DeleteCoordinationV1CollectionNamespacedLeaseInput =
       method: "DELETE",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases",
     }),
-  );
-export type DeleteCoordinationV1CollectionNamespacedLeaseInput =
-  typeof DeleteCoordinationV1CollectionNamespacedLeaseInput.Type;
+  ) as unknown as Schema.Codec<DeleteCoordinationV1CollectionNamespacedLeaseInput>;
 
 // Output Schema
+export interface DeleteCoordinationV1CollectionNamespacedLeaseOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCoordinationV1CollectionNamespacedLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -537,9 +848,7 @@ export const DeleteCoordinationV1CollectionNamespacedLeaseOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCoordinationV1CollectionNamespacedLeaseOutput =
-  typeof DeleteCoordinationV1CollectionNamespacedLeaseOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCoordinationV1CollectionNamespacedLeaseOutput>;
 
 // The operation
 /**
@@ -609,6 +918,19 @@ export const deleteCoordinationV1CollectionNamespacedLease =
     outputSchema: DeleteCoordinationV1CollectionNamespacedLeaseOutput,
   }));
 // Input Schema
+export interface DeleteCoordinationV1NamespacedLeaseInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCoordinationV1NamespacedLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -634,11 +956,32 @@ export const DeleteCoordinationV1NamespacedLeaseInput =
       method: "DELETE",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}",
     }),
-  );
-export type DeleteCoordinationV1NamespacedLeaseInput =
-  typeof DeleteCoordinationV1NamespacedLeaseInput.Type;
+  ) as unknown as Schema.Codec<DeleteCoordinationV1NamespacedLeaseInput>;
 
 // Output Schema
+export interface DeleteCoordinationV1NamespacedLeaseOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCoordinationV1NamespacedLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -678,9 +1021,7 @@ export const DeleteCoordinationV1NamespacedLeaseOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCoordinationV1NamespacedLeaseOutput =
-  typeof DeleteCoordinationV1NamespacedLeaseOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCoordinationV1NamespacedLeaseOutput>;
 
 // The operation
 /**
@@ -702,6 +1043,27 @@ export const deleteCoordinationV1NamespacedLease =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -735,11 +1097,32 @@ export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput =
       method: "DELETE",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
     }),
-  );
-export type DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput =
-  typeof DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -779,9 +1162,7 @@ export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput 
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput =
-  typeof DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -853,6 +1234,19 @@ export const deleteCoordinationV1alpha2CollectionNamespacedLeaseCandidate =
       DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateOutput,
   }));
 // Input Schema
+export interface DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -878,11 +1272,32 @@ export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput =
       method: "DELETE",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  typeof DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -922,9 +1337,7 @@ export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  typeof DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -946,6 +1359,27 @@ export const deleteCoordinationV1alpha2NamespacedLeaseCandidate =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -979,11 +1413,32 @@ export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput =
       method: "DELETE",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
     }),
-  );
-export type DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput =
-  typeof DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1023,9 +1478,7 @@ export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput =
-  typeof DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -1097,6 +1550,19 @@ export const deleteCoordinationV1beta1CollectionNamespacedLeaseCandidate =
       DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateOutput,
   }));
 // Input Schema
+export interface DeleteCoordinationV1beta1NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteCoordinationV1beta1NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1122,11 +1588,32 @@ export const DeleteCoordinationV1beta1NamespacedLeaseCandidateInput =
       method: "DELETE",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type DeleteCoordinationV1beta1NamespacedLeaseCandidateInput =
-  typeof DeleteCoordinationV1beta1NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<DeleteCoordinationV1beta1NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1166,9 +1653,7 @@ export const DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  typeof DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -1190,14 +1675,21 @@ export const deleteCoordinationV1beta1NamespacedLeaseCandidate =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetCoordinationAPIGroupInput {}
 export const GetCoordinationAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/" }),
-  );
-export type GetCoordinationAPIGroupInput =
-  typeof GetCoordinationAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetCoordinationAPIGroupInput>;
 
 // Output Schema
+export interface GetCoordinationAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetCoordinationAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1223,9 +1715,7 @@ export const GetCoordinationAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetCoordinationAPIGroupOutput =
-  typeof GetCoordinationAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetCoordinationAPIGroupOutput>;
 
 // The operation
 /**
@@ -1238,14 +1728,30 @@ export const getCoordinationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetCoordinationV1APIResourcesInput {}
 export const GetCoordinationV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1/" }),
-  );
-export type GetCoordinationV1APIResourcesInput =
-  typeof GetCoordinationV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetCoordinationV1APIResourcesInput>;
 
 // Output Schema
+export interface GetCoordinationV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetCoordinationV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1265,9 +1771,7 @@ export const GetCoordinationV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetCoordinationV1APIResourcesOutput =
-  typeof GetCoordinationV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetCoordinationV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1279,14 +1783,30 @@ export const getCoordinationV1APIResources =
     outputSchema: GetCoordinationV1APIResourcesOutput,
   }));
 // Input Schema
+export interface GetCoordinationV1alpha2APIResourcesInput {}
 export const GetCoordinationV1alpha2APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1alpha2/" }),
-  );
-export type GetCoordinationV1alpha2APIResourcesInput =
-  typeof GetCoordinationV1alpha2APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetCoordinationV1alpha2APIResourcesInput>;
 
 // Output Schema
+export interface GetCoordinationV1alpha2APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetCoordinationV1alpha2APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1306,9 +1826,7 @@ export const GetCoordinationV1alpha2APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetCoordinationV1alpha2APIResourcesOutput =
-  typeof GetCoordinationV1alpha2APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetCoordinationV1alpha2APIResourcesOutput>;
 
 // The operation
 /**
@@ -1320,14 +1838,30 @@ export const getCoordinationV1alpha2APIResources =
     outputSchema: GetCoordinationV1alpha2APIResourcesOutput,
   }));
 // Input Schema
+export interface GetCoordinationV1beta1APIResourcesInput {}
 export const GetCoordinationV1beta1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1beta1/" }),
-  );
-export type GetCoordinationV1beta1APIResourcesInput =
-  typeof GetCoordinationV1beta1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetCoordinationV1beta1APIResourcesInput>;
 
 // Output Schema
+export interface GetCoordinationV1beta1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetCoordinationV1beta1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1347,9 +1881,7 @@ export const GetCoordinationV1beta1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetCoordinationV1beta1APIResourcesOutput =
-  typeof GetCoordinationV1beta1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetCoordinationV1beta1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1361,6 +1893,20 @@ export const getCoordinationV1beta1APIResources =
     outputSchema: GetCoordinationV1beta1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListCoordinationV1LeaseForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCoordinationV1LeaseForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1377,11 +1923,65 @@ export const ListCoordinationV1LeaseForAllNamespacesInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/coordination.k8s.io/v1/leases" }),
-  );
-export type ListCoordinationV1LeaseForAllNamespacesInput =
-  typeof ListCoordinationV1LeaseForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListCoordinationV1LeaseForAllNamespacesInput>;
 
 // Output Schema
+export interface ListCoordinationV1LeaseForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      acquireTime?: string;
+      holderIdentity?: string;
+      leaseDurationSeconds?: number;
+      leaseTransitions?: number;
+      preferredHolder?: string;
+      renewTime?: string;
+      strategy?: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCoordinationV1LeaseForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1462,9 +2062,7 @@ export const ListCoordinationV1LeaseForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListCoordinationV1LeaseForAllNamespacesOutput =
-  typeof ListCoordinationV1LeaseForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListCoordinationV1LeaseForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -1530,6 +2128,21 @@ export const listCoordinationV1LeaseForAllNamespaces =
     outputSchema: ListCoordinationV1LeaseForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListCoordinationV1NamespacedLeaseInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCoordinationV1NamespacedLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1550,11 +2163,65 @@ export const ListCoordinationV1NamespacedLeaseInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases",
     }),
-  );
-export type ListCoordinationV1NamespacedLeaseInput =
-  typeof ListCoordinationV1NamespacedLeaseInput.Type;
+  ) as unknown as Schema.Codec<ListCoordinationV1NamespacedLeaseInput>;
 
 // Output Schema
+export interface ListCoordinationV1NamespacedLeaseOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      acquireTime?: string;
+      holderIdentity?: string;
+      leaseDurationSeconds?: number;
+      leaseTransitions?: number;
+      preferredHolder?: string;
+      renewTime?: string;
+      strategy?: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCoordinationV1NamespacedLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1635,9 +2302,7 @@ export const ListCoordinationV1NamespacedLeaseOutput =
         ),
       }),
     ),
-  });
-export type ListCoordinationV1NamespacedLeaseOutput =
-  typeof ListCoordinationV1NamespacedLeaseOutput.Type;
+  }) as unknown as Schema.Codec<ListCoordinationV1NamespacedLeaseOutput>;
 
 // The operation
 /**
@@ -1704,6 +2369,20 @@ export const listCoordinationV1NamespacedLease =
     outputSchema: ListCoordinationV1NamespacedLeaseOutput,
   }));
 // Input Schema
+export interface ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1723,11 +2402,64 @@ export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/leasecandidates",
     }),
-  );
-export type ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput =
-  typeof ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListCoordinationV1alpha2LeaseCandidateForAllNamespacesInput>;
 
 // Output Schema
+export interface ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      binaryVersion: string;
+      emulationVersion?: string;
+      leaseName: string;
+      pingTime?: string;
+      renewTime?: string;
+      strategy: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1805,9 +2537,7 @@ export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput =
-  typeof ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -1873,6 +2603,21 @@ export const listCoordinationV1alpha2LeaseCandidateForAllNamespaces =
     outputSchema: ListCoordinationV1alpha2LeaseCandidateForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListCoordinationV1alpha2NamespacedLeaseCandidateInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCoordinationV1alpha2NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1893,11 +2638,64 @@ export const ListCoordinationV1alpha2NamespacedLeaseCandidateInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
     }),
-  );
-export type ListCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  typeof ListCoordinationV1alpha2NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<ListCoordinationV1alpha2NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface ListCoordinationV1alpha2NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      binaryVersion: string;
+      emulationVersion?: string;
+      leaseName: string;
+      pingTime?: string;
+      renewTime?: string;
+      strategy: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCoordinationV1alpha2NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1975,9 +2773,7 @@ export const ListCoordinationV1alpha2NamespacedLeaseCandidateOutput =
         ),
       }),
     ),
-  });
-export type ListCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  typeof ListCoordinationV1alpha2NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<ListCoordinationV1alpha2NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -2044,6 +2840,20 @@ export const listCoordinationV1alpha2NamespacedLeaseCandidate =
     outputSchema: ListCoordinationV1alpha2NamespacedLeaseCandidateOutput,
   }));
 // Input Schema
+export interface ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2063,11 +2873,64 @@ export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/leasecandidates",
     }),
-  );
-export type ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput =
-  typeof ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListCoordinationV1beta1LeaseCandidateForAllNamespacesInput>;
 
 // Output Schema
+export interface ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      binaryVersion: string;
+      emulationVersion?: string;
+      leaseName: string;
+      pingTime?: string;
+      renewTime?: string;
+      strategy: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2145,9 +3008,7 @@ export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput =
-  typeof ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2213,6 +3074,21 @@ export const listCoordinationV1beta1LeaseCandidateForAllNamespaces =
     outputSchema: ListCoordinationV1beta1LeaseCandidateForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListCoordinationV1beta1NamespacedLeaseCandidateInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListCoordinationV1beta1NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2233,11 +3109,64 @@ export const ListCoordinationV1beta1NamespacedLeaseCandidateInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
     }),
-  );
-export type ListCoordinationV1beta1NamespacedLeaseCandidateInput =
-  typeof ListCoordinationV1beta1NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<ListCoordinationV1beta1NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface ListCoordinationV1beta1NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      binaryVersion: string;
+      emulationVersion?: string;
+      leaseName: string;
+      pingTime?: string;
+      renewTime?: string;
+      strategy: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListCoordinationV1beta1NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2315,9 +3244,7 @@ export const ListCoordinationV1beta1NamespacedLeaseCandidateOutput =
         ),
       }),
     ),
-  });
-export type ListCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  typeof ListCoordinationV1beta1NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<ListCoordinationV1beta1NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -2384,6 +3311,15 @@ export const listCoordinationV1beta1NamespacedLeaseCandidate =
     outputSchema: ListCoordinationV1beta1NamespacedLeaseCandidateOutput,
   }));
 // Input Schema
+export interface PatchCoordinationV1NamespacedLeaseInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCoordinationV1NamespacedLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2398,11 +3334,54 @@ export const PatchCoordinationV1NamespacedLeaseInput =
       method: "PATCH",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}",
     }),
-  );
-export type PatchCoordinationV1NamespacedLeaseInput =
-  typeof PatchCoordinationV1NamespacedLeaseInput.Type;
+  ) as unknown as Schema.Codec<PatchCoordinationV1NamespacedLeaseInput>;
 
 // Output Schema
+export interface PatchCoordinationV1NamespacedLeaseOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    acquireTime?: string;
+    holderIdentity?: string;
+    leaseDurationSeconds?: number;
+    leaseTransitions?: number;
+    preferredHolder?: string;
+    renewTime?: string;
+    strategy?: string;
+  };
+}
 export const PatchCoordinationV1NamespacedLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2462,9 +3441,7 @@ export const PatchCoordinationV1NamespacedLeaseOutput =
         strategy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PatchCoordinationV1NamespacedLeaseOutput =
-  typeof PatchCoordinationV1NamespacedLeaseOutput.Type;
+  }) as unknown as Schema.Codec<PatchCoordinationV1NamespacedLeaseOutput>;
 
 // The operation
 /**
@@ -2485,6 +3462,15 @@ export const patchCoordinationV1NamespacedLease =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchCoordinationV1alpha2NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2499,11 +3485,53 @@ export const PatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
       method: "PATCH",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type PatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  typeof PatchCoordinationV1alpha2NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<PatchCoordinationV1alpha2NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2560,9 +3588,7 @@ export const PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
       renewTime: Schema.optional(Schema.String),
       strategy: Schema.String,
     }),
-  });
-export type PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  typeof PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -2583,6 +3609,15 @@ export const patchCoordinationV1alpha2NamespacedLeaseCandidate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchCoordinationV1beta1NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchCoordinationV1beta1NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2597,11 +3632,53 @@ export const PatchCoordinationV1beta1NamespacedLeaseCandidateInput =
       method: "PATCH",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type PatchCoordinationV1beta1NamespacedLeaseCandidateInput =
-  typeof PatchCoordinationV1beta1NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<PatchCoordinationV1beta1NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface PatchCoordinationV1beta1NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const PatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2658,9 +3735,7 @@ export const PatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
       renewTime: Schema.optional(Schema.String),
       strategy: Schema.String,
     }),
-  });
-export type PatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  typeof PatchCoordinationV1beta1NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<PatchCoordinationV1beta1NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -2681,6 +3756,11 @@ export const patchCoordinationV1beta1NamespacedLeaseCandidate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadCoordinationV1NamespacedLeaseInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadCoordinationV1NamespacedLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2691,11 +3771,54 @@ export const ReadCoordinationV1NamespacedLeaseInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}",
     }),
-  );
-export type ReadCoordinationV1NamespacedLeaseInput =
-  typeof ReadCoordinationV1NamespacedLeaseInput.Type;
+  ) as unknown as Schema.Codec<ReadCoordinationV1NamespacedLeaseInput>;
 
 // Output Schema
+export interface ReadCoordinationV1NamespacedLeaseOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    acquireTime?: string;
+    holderIdentity?: string;
+    leaseDurationSeconds?: number;
+    leaseTransitions?: number;
+    preferredHolder?: string;
+    renewTime?: string;
+    strategy?: string;
+  };
+}
 export const ReadCoordinationV1NamespacedLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2755,9 +3878,7 @@ export const ReadCoordinationV1NamespacedLeaseOutput =
         strategy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReadCoordinationV1NamespacedLeaseOutput =
-  typeof ReadCoordinationV1NamespacedLeaseOutput.Type;
+  }) as unknown as Schema.Codec<ReadCoordinationV1NamespacedLeaseOutput>;
 
 // The operation
 /**
@@ -2774,6 +3895,11 @@ export const readCoordinationV1NamespacedLease =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadCoordinationV1alpha2NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadCoordinationV1alpha2NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2784,11 +3910,53 @@ export const ReadCoordinationV1alpha2NamespacedLeaseCandidateInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type ReadCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  typeof ReadCoordinationV1alpha2NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<ReadCoordinationV1alpha2NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2845,9 +4013,7 @@ export const ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput =
       renewTime: Schema.optional(Schema.String),
       strategy: Schema.String,
     }),
-  });
-export type ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  typeof ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -2864,6 +4030,11 @@ export const readCoordinationV1alpha2NamespacedLeaseCandidate =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadCoordinationV1beta1NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadCoordinationV1beta1NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2874,11 +4045,53 @@ export const ReadCoordinationV1beta1NamespacedLeaseCandidateInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type ReadCoordinationV1beta1NamespacedLeaseCandidateInput =
-  typeof ReadCoordinationV1beta1NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<ReadCoordinationV1beta1NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface ReadCoordinationV1beta1NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const ReadCoordinationV1beta1NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2935,9 +4148,7 @@ export const ReadCoordinationV1beta1NamespacedLeaseCandidateOutput =
       renewTime: Schema.optional(Schema.String),
       strategy: Schema.String,
     }),
-  });
-export type ReadCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  typeof ReadCoordinationV1beta1NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<ReadCoordinationV1beta1NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -2954,6 +4165,57 @@ export const readCoordinationV1beta1NamespacedLeaseCandidate =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceCoordinationV1NamespacedLeaseInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    acquireTime?: string;
+    holderIdentity?: string;
+    leaseDurationSeconds?: number;
+    leaseTransitions?: number;
+    preferredHolder?: string;
+    renewTime?: string;
+    strategy?: string;
+  };
+}
 export const ReplaceCoordinationV1NamespacedLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3024,11 +4286,54 @@ export const ReplaceCoordinationV1NamespacedLeaseInput =
       method: "PUT",
       path: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}",
     }),
-  );
-export type ReplaceCoordinationV1NamespacedLeaseInput =
-  typeof ReplaceCoordinationV1NamespacedLeaseInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCoordinationV1NamespacedLeaseInput>;
 
 // Output Schema
+export interface ReplaceCoordinationV1NamespacedLeaseOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    acquireTime?: string;
+    holderIdentity?: string;
+    leaseDurationSeconds?: number;
+    leaseTransitions?: number;
+    preferredHolder?: string;
+    renewTime?: string;
+    strategy?: string;
+  };
+}
 export const ReplaceCoordinationV1NamespacedLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3088,9 +4393,7 @@ export const ReplaceCoordinationV1NamespacedLeaseOutput =
         strategy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplaceCoordinationV1NamespacedLeaseOutput =
-  typeof ReplaceCoordinationV1NamespacedLeaseOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCoordinationV1NamespacedLeaseOutput>;
 
 // The operation
 /**
@@ -3110,6 +4413,56 @@ export const replaceCoordinationV1NamespacedLease =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3177,11 +4530,53 @@ export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput =
       method: "PUT",
       path: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  typeof ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3238,9 +4633,7 @@ export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput =
       renewTime: Schema.optional(Schema.String),
       strategy: Schema.String,
     }),
-  });
-export type ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  typeof ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -3260,6 +4653,56 @@ export const replaceCoordinationV1alpha2NamespacedLeaseCandidate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3327,11 +4770,53 @@ export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput =
       method: "PUT",
       path: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput =
-  typeof ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    binaryVersion: string;
+    emulationVersion?: string;
+    leaseName: string;
+    pingTime?: string;
+    renewTime?: string;
+    strategy: string;
+  };
+}
 export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3388,9 +4873,7 @@ export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput =
       renewTime: Schema.optional(Schema.String),
       strategy: Schema.String,
     }),
-  });
-export type ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  typeof ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -3410,6 +4893,20 @@ export const replaceCoordinationV1beta1NamespacedLeaseCandidate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchCoordinationV1LeaseListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1LeaseListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3429,18 +4926,18 @@ export const WatchCoordinationV1LeaseListForAllNamespacesInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/watch/leases",
     }),
-  );
-export type WatchCoordinationV1LeaseListForAllNamespacesInput =
-  typeof WatchCoordinationV1LeaseListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1LeaseListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchCoordinationV1LeaseListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1LeaseListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1LeaseListForAllNamespacesOutput =
-  typeof WatchCoordinationV1LeaseListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1LeaseListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -3506,6 +5003,22 @@ export const watchCoordinationV1LeaseListForAllNamespaces =
     outputSchema: WatchCoordinationV1LeaseListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchCoordinationV1NamespacedLeaseInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1NamespacedLeaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3527,18 +5040,18 @@ export const WatchCoordinationV1NamespacedLeaseInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}",
     }),
-  );
-export type WatchCoordinationV1NamespacedLeaseInput =
-  typeof WatchCoordinationV1NamespacedLeaseInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1NamespacedLeaseInput>;
 
 // Output Schema
+export interface WatchCoordinationV1NamespacedLeaseOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1NamespacedLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1NamespacedLeaseOutput =
-  typeof WatchCoordinationV1NamespacedLeaseOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1NamespacedLeaseOutput>;
 
 // The operation
 /**
@@ -3606,6 +5119,21 @@ export const watchCoordinationV1NamespacedLease =
     outputSchema: WatchCoordinationV1NamespacedLeaseOutput,
   }));
 // Input Schema
+export interface WatchCoordinationV1NamespacedLeaseListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1NamespacedLeaseListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3626,18 +5154,18 @@ export const WatchCoordinationV1NamespacedLeaseListInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases",
     }),
-  );
-export type WatchCoordinationV1NamespacedLeaseListInput =
-  typeof WatchCoordinationV1NamespacedLeaseListInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1NamespacedLeaseListInput>;
 
 // Output Schema
+export interface WatchCoordinationV1NamespacedLeaseListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1NamespacedLeaseListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1NamespacedLeaseListOutput =
-  typeof WatchCoordinationV1NamespacedLeaseListOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1NamespacedLeaseListOutput>;
 
 // The operation
 /**
@@ -3704,6 +5232,20 @@ export const watchCoordinationV1NamespacedLeaseList =
     outputSchema: WatchCoordinationV1NamespacedLeaseListOutput,
   }));
 // Input Schema
+export interface WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3723,18 +5265,18 @@ export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/watch/leasecandidates",
     }),
-  );
-export type WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput =
-  typeof WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput =
-  typeof WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -3802,6 +5344,22 @@ export const watchCoordinationV1alpha2LeaseCandidateListForAllNamespaces =
       WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3823,18 +5381,18 @@ export const WatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/watch/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type WatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
-  typeof WatchCoordinationV1alpha2NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1alpha2NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput =
-  typeof WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -3902,6 +5460,21 @@ export const watchCoordinationV1alpha2NamespacedLeaseCandidate =
     outputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateOutput,
   }));
 // Input Schema
+export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3922,18 +5495,18 @@ export const WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1alpha2/watch/namespaces/{namespace}/leasecandidates",
     }),
-  );
-export type WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput =
-  typeof WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1alpha2NamespacedLeaseCandidateListInput>;
 
 // Output Schema
+export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput =
-  typeof WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput>;
 
 // The operation
 /**
@@ -4000,6 +5573,20 @@ export const watchCoordinationV1alpha2NamespacedLeaseCandidateList =
     outputSchema: WatchCoordinationV1alpha2NamespacedLeaseCandidateListOutput,
   }));
 // Input Schema
+export interface WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4019,18 +5606,18 @@ export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/watch/leasecandidates",
     }),
-  );
-export type WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput =
-  typeof WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput =
-  typeof WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -4098,6 +5685,22 @@ export const watchCoordinationV1beta1LeaseCandidateListForAllNamespaces =
       WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchCoordinationV1beta1NamespacedLeaseCandidateInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4119,18 +5722,18 @@ export const WatchCoordinationV1beta1NamespacedLeaseCandidateInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leasecandidates/{name}",
     }),
-  );
-export type WatchCoordinationV1beta1NamespacedLeaseCandidateInput =
-  typeof WatchCoordinationV1beta1NamespacedLeaseCandidateInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1beta1NamespacedLeaseCandidateInput>;
 
 // Output Schema
+export interface WatchCoordinationV1beta1NamespacedLeaseCandidateOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1beta1NamespacedLeaseCandidateOutput =
-  typeof WatchCoordinationV1beta1NamespacedLeaseCandidateOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1beta1NamespacedLeaseCandidateOutput>;
 
 // The operation
 /**
@@ -4198,6 +5801,21 @@ export const watchCoordinationV1beta1NamespacedLeaseCandidate =
     outputSchema: WatchCoordinationV1beta1NamespacedLeaseCandidateOutput,
   }));
 // Input Schema
+export interface WatchCoordinationV1beta1NamespacedLeaseCandidateListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4218,18 +5836,18 @@ export const WatchCoordinationV1beta1NamespacedLeaseCandidateListInput =
       method: "GET",
       path: "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leasecandidates",
     }),
-  );
-export type WatchCoordinationV1beta1NamespacedLeaseCandidateListInput =
-  typeof WatchCoordinationV1beta1NamespacedLeaseCandidateListInput.Type;
+  ) as unknown as Schema.Codec<WatchCoordinationV1beta1NamespacedLeaseCandidateListInput>;
 
 // Output Schema
+export interface WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput =
-  typeof WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput.Type;
+  }) as unknown as Schema.Codec<WatchCoordinationV1beta1NamespacedLeaseCandidateListOutput>;
 
 // The operation
 /**

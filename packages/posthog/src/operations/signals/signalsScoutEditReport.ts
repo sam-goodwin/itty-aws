@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsScoutEditReportInput {
+  project_id: string;
+  run_id: string;
+  report_id: string;
+  title?: string | null;
+  summary?: string | null;
+  append_note?: string | null;
+}
 export const SignalsScoutEditReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,19 +25,20 @@ export const SignalsScoutEditReportInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/scout/runs/{run_id}/edit-report/",
     }),
-  );
-export type SignalsScoutEditReportInput =
-  typeof SignalsScoutEditReportInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutEditReportInput>;
 
 // Output Schema
+export interface SignalsScoutEditReportOutput {
+  report_id: string;
+  updated_fields: string[];
+  note_appended: boolean;
+}
 export const SignalsScoutEditReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     report_id: Schema.String,
     updated_fields: Schema.Array(Schema.String),
     note_appended: Schema.Boolean,
-  });
-export type SignalsScoutEditReportOutput =
-  typeof SignalsScoutEditReportOutput.Type;
+  }) as unknown as Schema.Codec<SignalsScoutEditReportOutput>;
 
 // The operation
 /**

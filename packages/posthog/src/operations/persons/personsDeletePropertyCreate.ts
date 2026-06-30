@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsDeletePropertyCreateInput {
+  id: string;
+  project_id: string;
+  format?: "csv" | "json";
+  $unset?: string;
+}
 export const PersonsDeletePropertyCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const PersonsDeletePropertyCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/persons/{id}/delete_property/",
     }),
-  );
-export type PersonsDeletePropertyCreateInput =
-  typeof PersonsDeletePropertyCreateInput.Type;
+  ) as unknown as Schema.Codec<PersonsDeletePropertyCreateInput>;
 
 // Output Schema
+export type PersonsDeletePropertyCreateOutput = void;
 export const PersonsDeletePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PersonsDeletePropertyCreateOutput =
-  typeof PersonsDeletePropertyCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsDeletePropertyCreateOutput>;
 
 // The operation
 /**

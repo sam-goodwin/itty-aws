@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentMemoryUpdateFileInput {
+  application_id: string;
+  project_id: string;
+  path: string;
+  description?: string;
+  content?: string;
+  tags?: string[];
+}
 export const AgentMemoryUpdateFileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -16,16 +24,16 @@ export const AgentMemoryUpdateFileInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/memory/files/by_path/",
     }),
-  );
-export type AgentMemoryUpdateFileInput = typeof AgentMemoryUpdateFileInput.Type;
+  ) as unknown as Schema.Codec<AgentMemoryUpdateFileInput>;
 
 // Output Schema
+export interface AgentMemoryUpdateFileOutput {
+  content: string;
+}
 export const AgentMemoryUpdateFileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.String,
-  });
-export type AgentMemoryUpdateFileOutput =
-  typeof AgentMemoryUpdateFileOutput.Type;
+  }) as unknown as Schema.Codec<AgentMemoryUpdateFileOutput>;
 
 // The operation
 /**

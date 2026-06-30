@@ -4,12 +4,60 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AttachedNetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  attachedNetworkConnectionName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Updating"
+      | "Updated"
+      | "Deleting"
+      | "Deleted"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress"
+      | "StorageProvisioningFailed";
+    networkConnectionId: string;
+    networkConnectionLocation?: string;
+    healthCheckStatus?:
+      | "Unknown"
+      | "Pending"
+      | "Running"
+      | "Passed"
+      | "Warning"
+      | "Failed"
+      | "Informational";
+    domainJoinType?: "HybridAzureADJoin" | "AzureADJoin" | "None";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttachedNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -79,11 +127,22 @@ export const AttachedNetworksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type AttachedNetworksCreateOrUpdateInput =
-  typeof AttachedNetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AttachedNetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface AttachedNetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttachedNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -103,9 +162,7 @@ export const AttachedNetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttachedNetworksCreateOrUpdateOutput =
-  typeof AttachedNetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AttachedNetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -123,6 +180,12 @@ export const AttachedNetworksCreateOrUpdate =
     outputSchema: AttachedNetworksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AttachedNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  attachedNetworkConnectionName: string;
+}
 export const AttachedNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -135,15 +198,12 @@ export const AttachedNetworksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type AttachedNetworksDeleteInput =
-  typeof AttachedNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<AttachedNetworksDeleteInput>;
 
 // Output Schema
+export type AttachedNetworksDeleteOutput = void;
 export const AttachedNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AttachedNetworksDeleteOutput =
-  typeof AttachedNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AttachedNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -162,6 +222,12 @@ export const AttachedNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AttachedNetworksGetByDevCenterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  attachedNetworkConnectionName: string;
+}
 export const AttachedNetworksGetByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -174,11 +240,22 @@ export const AttachedNetworksGetByDevCenterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type AttachedNetworksGetByDevCenterInput =
-  typeof AttachedNetworksGetByDevCenterInput.Type;
+  ) as unknown as Schema.Codec<AttachedNetworksGetByDevCenterInput>;
 
 // Output Schema
+export interface AttachedNetworksGetByDevCenterOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttachedNetworksGetByDevCenterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -198,9 +275,7 @@ export const AttachedNetworksGetByDevCenterOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttachedNetworksGetByDevCenterOutput =
-  typeof AttachedNetworksGetByDevCenterOutput.Type;
+  }) as unknown as Schema.Codec<AttachedNetworksGetByDevCenterOutput>;
 
 // The operation
 /**
@@ -218,6 +293,12 @@ export const AttachedNetworksGetByDevCenter =
     outputSchema: AttachedNetworksGetByDevCenterOutput,
   }));
 // Input Schema
+export interface AttachedNetworksGetByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  attachedNetworkConnectionName: string;
+}
 export const AttachedNetworksGetByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -230,11 +311,22 @@ export const AttachedNetworksGetByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/attachednetworks/{attachedNetworkConnectionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type AttachedNetworksGetByProjectInput =
-  typeof AttachedNetworksGetByProjectInput.Type;
+  ) as unknown as Schema.Codec<AttachedNetworksGetByProjectInput>;
 
 // Output Schema
+export interface AttachedNetworksGetByProjectOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttachedNetworksGetByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -254,9 +346,7 @@ export const AttachedNetworksGetByProjectOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttachedNetworksGetByProjectOutput =
-  typeof AttachedNetworksGetByProjectOutput.Type;
+  }) as unknown as Schema.Codec<AttachedNetworksGetByProjectOutput>;
 
 // The operation
 /**
@@ -274,6 +364,12 @@ export const AttachedNetworksGetByProject =
     outputSchema: AttachedNetworksGetByProjectOutput,
   }));
 // Input Schema
+export interface AttachedNetworksListByDevCenterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  $top?: number;
+}
 export const AttachedNetworksListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -286,11 +382,25 @@ export const AttachedNetworksListByDevCenterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks",
       apiVersion: "2025-02-01",
     }),
-  );
-export type AttachedNetworksListByDevCenterInput =
-  typeof AttachedNetworksListByDevCenterInput.Type;
+  ) as unknown as Schema.Codec<AttachedNetworksListByDevCenterInput>;
 
 // Output Schema
+export interface AttachedNetworksListByDevCenterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AttachedNetworksListByDevCenterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -327,9 +437,7 @@ export const AttachedNetworksListByDevCenterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AttachedNetworksListByDevCenterOutput =
-  typeof AttachedNetworksListByDevCenterOutput.Type;
+  }) as unknown as Schema.Codec<AttachedNetworksListByDevCenterOutput>;
 
 // The operation
 /**
@@ -347,6 +455,12 @@ export const AttachedNetworksListByDevCenter =
     outputSchema: AttachedNetworksListByDevCenterOutput,
   }));
 // Input Schema
+export interface AttachedNetworksListByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  $top?: number;
+}
 export const AttachedNetworksListByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -359,11 +473,25 @@ export const AttachedNetworksListByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/attachednetworks",
       apiVersion: "2025-02-01",
     }),
-  );
-export type AttachedNetworksListByProjectInput =
-  typeof AttachedNetworksListByProjectInput.Type;
+  ) as unknown as Schema.Codec<AttachedNetworksListByProjectInput>;
 
 // Output Schema
+export interface AttachedNetworksListByProjectOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AttachedNetworksListByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -400,9 +528,7 @@ export const AttachedNetworksListByProjectOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AttachedNetworksListByProjectOutput =
-  typeof AttachedNetworksListByProjectOutput.Type;
+  }) as unknown as Schema.Codec<AttachedNetworksListByProjectOutput>;
 
 // The operation
 /**
@@ -420,6 +546,12 @@ export const AttachedNetworksListByProject =
     outputSchema: AttachedNetworksListByProjectOutput,
   }));
 // Input Schema
+export interface CatalogsConnectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+}
 export const CatalogsConnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -431,12 +563,12 @@ export const CatalogsConnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/connect",
     apiVersion: "2025-02-01",
   }),
-);
-export type CatalogsConnectInput = typeof CatalogsConnectInput.Type;
+) as unknown as Schema.Codec<CatalogsConnectInput>;
 
 // Output Schema
-export const CatalogsConnectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CatalogsConnectOutput = typeof CatalogsConnectOutput.Type;
+export type CatalogsConnectOutput = void;
+export const CatalogsConnectOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsConnectOutput>;
 
 // The operation
 /**
@@ -453,6 +585,39 @@ export const CatalogsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsConnectOutput,
 }));
 // Input Schema
+export interface CatalogsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+  properties?: {
+    gitHub?: {
+      uri?: string;
+      branch?: string;
+      secretIdentifier?: string;
+      path?: string;
+    };
+    adoGit?: {
+      uri?: string;
+      branch?: string;
+      secretIdentifier?: string;
+      path?: string;
+    };
+    syncType?: "Manual" | "Scheduled";
+    tags?: Record<string, string>;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CatalogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -504,11 +669,22 @@ export const CatalogsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type CatalogsCreateOrUpdateInput =
-  typeof CatalogsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CatalogsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CatalogsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CatalogsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -528,9 +704,7 @@ export const CatalogsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CatalogsCreateOrUpdateOutput =
-  typeof CatalogsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -549,6 +723,12 @@ export const CatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+}
 export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -560,12 +740,12 @@ export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type CatalogsDeleteInput = typeof CatalogsDeleteInput.Type;
+) as unknown as Schema.Codec<CatalogsDeleteInput>;
 
 // Output Schema
-export const CatalogsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CatalogsDeleteOutput = typeof CatalogsDeleteOutput.Type;
+export type CatalogsDeleteOutput = void;
+export const CatalogsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsDeleteOutput>;
 
 // The operation
 /**
@@ -582,6 +762,12 @@ export const CatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsDeleteOutput,
 }));
 // Input Schema
+export interface CatalogsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+}
 export const CatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -593,10 +779,22 @@ export const CatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type CatalogsGetInput = typeof CatalogsGetInput.Type;
+) as unknown as Schema.Codec<CatalogsGetInput>;
 
 // Output Schema
+export interface CatalogsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -615,8 +813,7 @@ export const CatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CatalogsGetOutput = typeof CatalogsGetOutput.Type;
+}) as unknown as Schema.Codec<CatalogsGetOutput>;
 
 // The operation
 /**
@@ -633,6 +830,12 @@ export const CatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsGetOutput,
 }));
 // Input Schema
+export interface CatalogsGetSyncErrorDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+}
 export const CatalogsGetSyncErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -645,11 +848,17 @@ export const CatalogsGetSyncErrorDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/getSyncErrorDetails",
       apiVersion: "2025-02-01",
     }),
-  );
-export type CatalogsGetSyncErrorDetailsInput =
-  typeof CatalogsGetSyncErrorDetailsInput.Type;
+  ) as unknown as Schema.Codec<CatalogsGetSyncErrorDetailsInput>;
 
 // Output Schema
+export interface CatalogsGetSyncErrorDetailsOutput {
+  operationError?: { code?: string; message?: string };
+  conflicts?: { path?: string; name?: string }[];
+  errors?: {
+    path?: string;
+    errorDetails?: { code?: string; message?: string }[];
+  }[];
+}
 export const CatalogsGetSyncErrorDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationError: Schema.optional(
@@ -681,9 +890,7 @@ export const CatalogsGetSyncErrorDetailsOutput =
         }),
       ),
     ),
-  });
-export type CatalogsGetSyncErrorDetailsOutput =
-  typeof CatalogsGetSyncErrorDetailsOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsGetSyncErrorDetailsOutput>;
 
 // The operation
 /**
@@ -702,6 +909,12 @@ export const CatalogsGetSyncErrorDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsListByDevCenterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  $top?: number;
+}
 export const CatalogsListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -714,11 +927,25 @@ export const CatalogsListByDevCenterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs",
       apiVersion: "2025-02-01",
     }),
-  );
-export type CatalogsListByDevCenterInput =
-  typeof CatalogsListByDevCenterInput.Type;
+  ) as unknown as Schema.Codec<CatalogsListByDevCenterInput>;
 
 // Output Schema
+export interface CatalogsListByDevCenterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CatalogsListByDevCenterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -755,9 +982,7 @@ export const CatalogsListByDevCenterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CatalogsListByDevCenterOutput =
-  typeof CatalogsListByDevCenterOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsListByDevCenterOutput>;
 
 // The operation
 /**
@@ -776,6 +1001,12 @@ export const CatalogsListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsSyncInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+}
 export const CatalogsSyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -787,12 +1018,12 @@ export const CatalogsSyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync",
     apiVersion: "2025-02-01",
   }),
-);
-export type CatalogsSyncInput = typeof CatalogsSyncInput.Type;
+) as unknown as Schema.Codec<CatalogsSyncInput>;
 
 // Output Schema
-export const CatalogsSyncOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CatalogsSyncOutput = typeof CatalogsSyncOutput.Type;
+export type CatalogsSyncOutput = void;
+export const CatalogsSyncOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsSyncOutput>;
 
 // The operation
 /**
@@ -809,6 +1040,28 @@ export const CatalogsSync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsSyncOutput,
 }));
 // Input Schema
+export interface CatalogsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+  properties?: {
+    gitHub?: {
+      uri?: string;
+      branch?: string;
+      secretIdentifier?: string;
+      path?: string;
+    };
+    adoGit?: {
+      uri?: string;
+      branch?: string;
+      secretIdentifier?: string;
+      path?: string;
+    };
+    syncType?: "Manual" | "Scheduled";
+    tags?: Record<string, string>;
+  };
+}
 export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -842,10 +1095,22 @@ export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type CatalogsUpdateInput = typeof CatalogsUpdateInput.Type;
+) as unknown as Schema.Codec<CatalogsUpdateInput>;
 
 // Output Schema
+export interface CatalogsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CatalogsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -864,8 +1129,7 @@ export const CatalogsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CatalogsUpdateOutput = typeof CatalogsUpdateOutput.Type;
+}) as unknown as Schema.Codec<CatalogsUpdateOutput>;
 
 // The operation
 /**
@@ -882,6 +1146,11 @@ export const CatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsUpdateOutput,
 }));
 // Input Schema
+export interface CheckNameAvailabilityExecuteInput {
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+}
 export const CheckNameAvailabilityExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -893,19 +1162,20 @@ export const CheckNameAvailabilityExecuteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/checkNameAvailability",
       apiVersion: "2025-02-01",
     }),
-  );
-export type CheckNameAvailabilityExecuteInput =
-  typeof CheckNameAvailabilityExecuteInput.Type;
+  ) as unknown as Schema.Codec<CheckNameAvailabilityExecuteInput>;
 
 // Output Schema
+export interface CheckNameAvailabilityExecuteOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const CheckNameAvailabilityExecuteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type CheckNameAvailabilityExecuteOutput =
-  typeof CheckNameAvailabilityExecuteOutput.Type;
+  }) as unknown as Schema.Codec<CheckNameAvailabilityExecuteOutput>;
 
 // The operation
 /**
@@ -922,6 +1192,12 @@ export const CheckNameAvailabilityExecute =
     outputSchema: CheckNameAvailabilityExecuteOutput,
   }));
 // Input Schema
+export interface CheckScopedNameAvailabilityExecuteInput {
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+  scope?: string;
+}
 export const CheckScopedNameAvailabilityExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -934,19 +1210,20 @@ export const CheckScopedNameAvailabilityExecuteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/checkScopedNameAvailability",
       apiVersion: "2025-02-01",
     }),
-  );
-export type CheckScopedNameAvailabilityExecuteInput =
-  typeof CheckScopedNameAvailabilityExecuteInput.Type;
+  ) as unknown as Schema.Codec<CheckScopedNameAvailabilityExecuteInput>;
 
 // Output Schema
+export interface CheckScopedNameAvailabilityExecuteOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const CheckScopedNameAvailabilityExecuteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type CheckScopedNameAvailabilityExecuteOutput =
-  typeof CheckScopedNameAvailabilityExecuteOutput.Type;
+  }) as unknown as Schema.Codec<CheckScopedNameAvailabilityExecuteOutput>;
 
 // The operation
 /**
@@ -961,6 +1238,13 @@ export const CheckScopedNameAvailabilityExecute =
     outputSchema: CheckScopedNameAvailabilityExecuteOutput,
   }));
 // Input Schema
+export interface CustomizationTasksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+  taskName: string;
+}
 export const CustomizationTasksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -974,10 +1258,22 @@ export const CustomizationTasksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks/{taskName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type CustomizationTasksGetInput = typeof CustomizationTasksGetInput.Type;
+  ) as unknown as Schema.Codec<CustomizationTasksGetInput>;
 
 // Output Schema
+export interface CustomizationTasksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomizationTasksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -997,9 +1293,7 @@ export const CustomizationTasksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomizationTasksGetOutput =
-  typeof CustomizationTasksGetOutput.Type;
+  }) as unknown as Schema.Codec<CustomizationTasksGetOutput>;
 
 // The operation
 /**
@@ -1019,6 +1313,13 @@ export const CustomizationTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomizationTasksGetErrorDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+  taskName: string;
+}
 export const CustomizationTasksGetErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1032,11 +1333,12 @@ export const CustomizationTasksGetErrorDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks/{taskName}/getErrorDetails",
       apiVersion: "2025-02-01",
     }),
-  );
-export type CustomizationTasksGetErrorDetailsInput =
-  typeof CustomizationTasksGetErrorDetailsInput.Type;
+  ) as unknown as Schema.Codec<CustomizationTasksGetErrorDetailsInput>;
 
 // Output Schema
+export interface CustomizationTasksGetErrorDetailsOutput {
+  errors?: { code?: string; message?: string }[];
+}
 export const CustomizationTasksGetErrorDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(
@@ -1047,9 +1349,7 @@ export const CustomizationTasksGetErrorDetailsOutput =
         }),
       ),
     ),
-  });
-export type CustomizationTasksGetErrorDetailsOutput =
-  typeof CustomizationTasksGetErrorDetailsOutput.Type;
+  }) as unknown as Schema.Codec<CustomizationTasksGetErrorDetailsOutput>;
 
 // The operation
 /**
@@ -1068,6 +1368,13 @@ export const CustomizationTasksGetErrorDetails =
     outputSchema: CustomizationTasksGetErrorDetailsOutput,
   }));
 // Input Schema
+export interface CustomizationTasksListByCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+  $top?: number;
+}
 export const CustomizationTasksListByCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1081,11 +1388,25 @@ export const CustomizationTasksListByCatalogInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks",
       apiVersion: "2025-02-01",
     }),
-  );
-export type CustomizationTasksListByCatalogInput =
-  typeof CustomizationTasksListByCatalogInput.Type;
+  ) as unknown as Schema.Codec<CustomizationTasksListByCatalogInput>;
 
 // Output Schema
+export interface CustomizationTasksListByCatalogOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CustomizationTasksListByCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1122,9 +1443,7 @@ export const CustomizationTasksListByCatalogOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CustomizationTasksListByCatalogOutput =
-  typeof CustomizationTasksListByCatalogOutput.Type;
+  }) as unknown as Schema.Codec<CustomizationTasksListByCatalogOutput>;
 
 // The operation
 /**
@@ -1143,6 +1462,26 @@ export const CustomizationTasksListByCatalog =
     outputSchema: CustomizationTasksListByCatalogOutput,
   }));
 // Input Schema
+export interface DevBoxDefinitionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  devBoxDefinitionName: string;
+  properties?: {
+    imageReference?: { id?: string; exactVersion?: string };
+    sku?: {
+      name: string;
+      tier?: "Free" | "Basic" | "Standard" | "Premium";
+      size?: string;
+      family?: string;
+      capacity?: number;
+    };
+    osStorageType?: string;
+    hibernateSupport?: "Disabled" | "Enabled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DevBoxDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1182,11 +1521,22 @@ export const DevBoxDefinitionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevBoxDefinitionsCreateOrUpdateInput =
-  typeof DevBoxDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DevBoxDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DevBoxDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevBoxDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1206,9 +1556,7 @@ export const DevBoxDefinitionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevBoxDefinitionsCreateOrUpdateOutput =
-  typeof DevBoxDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DevBoxDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1226,6 +1574,12 @@ export const DevBoxDefinitionsCreateOrUpdate =
     outputSchema: DevBoxDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DevBoxDefinitionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  devBoxDefinitionName: string;
+}
 export const DevBoxDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1238,15 +1592,12 @@ export const DevBoxDefinitionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevBoxDefinitionsDeleteInput =
-  typeof DevBoxDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DevBoxDefinitionsDeleteInput>;
 
 // Output Schema
+export type DevBoxDefinitionsDeleteOutput = void;
 export const DevBoxDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevBoxDefinitionsDeleteOutput =
-  typeof DevBoxDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevBoxDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -1265,6 +1616,12 @@ export const DevBoxDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevBoxDefinitionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  devBoxDefinitionName: string;
+}
 export const DevBoxDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1277,10 +1634,22 @@ export const DevBoxDefinitionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevBoxDefinitionsGetInput = typeof DevBoxDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<DevBoxDefinitionsGetInput>;
 
 // Output Schema
+export interface DevBoxDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevBoxDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1300,8 +1669,7 @@ export const DevBoxDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevBoxDefinitionsGetOutput = typeof DevBoxDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<DevBoxDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -1320,6 +1688,12 @@ export const DevBoxDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevBoxDefinitionsGetByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  devBoxDefinitionName: string;
+}
 export const DevBoxDefinitionsGetByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1332,11 +1706,22 @@ export const DevBoxDefinitionsGetByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/devboxdefinitions/{devBoxDefinitionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevBoxDefinitionsGetByProjectInput =
-  typeof DevBoxDefinitionsGetByProjectInput.Type;
+  ) as unknown as Schema.Codec<DevBoxDefinitionsGetByProjectInput>;
 
 // Output Schema
+export interface DevBoxDefinitionsGetByProjectOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevBoxDefinitionsGetByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1356,9 +1741,7 @@ export const DevBoxDefinitionsGetByProjectOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevBoxDefinitionsGetByProjectOutput =
-  typeof DevBoxDefinitionsGetByProjectOutput.Type;
+  }) as unknown as Schema.Codec<DevBoxDefinitionsGetByProjectOutput>;
 
 // The operation
 /**
@@ -1376,6 +1759,12 @@ export const DevBoxDefinitionsGetByProject =
     outputSchema: DevBoxDefinitionsGetByProjectOutput,
   }));
 // Input Schema
+export interface DevBoxDefinitionsListByDevCenterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  $top?: number;
+}
 export const DevBoxDefinitionsListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1388,11 +1777,25 @@ export const DevBoxDefinitionsListByDevCenterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevBoxDefinitionsListByDevCenterInput =
-  typeof DevBoxDefinitionsListByDevCenterInput.Type;
+  ) as unknown as Schema.Codec<DevBoxDefinitionsListByDevCenterInput>;
 
 // Output Schema
+export interface DevBoxDefinitionsListByDevCenterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DevBoxDefinitionsListByDevCenterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1429,9 +1832,7 @@ export const DevBoxDefinitionsListByDevCenterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DevBoxDefinitionsListByDevCenterOutput =
-  typeof DevBoxDefinitionsListByDevCenterOutput.Type;
+  }) as unknown as Schema.Codec<DevBoxDefinitionsListByDevCenterOutput>;
 
 // The operation
 /**
@@ -1449,6 +1850,12 @@ export const DevBoxDefinitionsListByDevCenter =
     outputSchema: DevBoxDefinitionsListByDevCenterOutput,
   }));
 // Input Schema
+export interface DevBoxDefinitionsListByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  $top?: number;
+}
 export const DevBoxDefinitionsListByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1461,11 +1868,25 @@ export const DevBoxDefinitionsListByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/devboxdefinitions",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevBoxDefinitionsListByProjectInput =
-  typeof DevBoxDefinitionsListByProjectInput.Type;
+  ) as unknown as Schema.Codec<DevBoxDefinitionsListByProjectInput>;
 
 // Output Schema
+export interface DevBoxDefinitionsListByProjectOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DevBoxDefinitionsListByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1502,9 +1923,7 @@ export const DevBoxDefinitionsListByProjectOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DevBoxDefinitionsListByProjectOutput =
-  typeof DevBoxDefinitionsListByProjectOutput.Type;
+  }) as unknown as Schema.Codec<DevBoxDefinitionsListByProjectOutput>;
 
 // The operation
 /**
@@ -1522,6 +1941,26 @@ export const DevBoxDefinitionsListByProject =
     outputSchema: DevBoxDefinitionsListByProjectOutput,
   }));
 // Input Schema
+export interface DevBoxDefinitionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  devBoxDefinitionName: string;
+  properties?: {
+    imageReference?: { id?: string; exactVersion?: string };
+    sku?: {
+      name: string;
+      tier?: "Free" | "Basic" | "Standard" | "Premium";
+      size?: string;
+      family?: string;
+      capacity?: number;
+    };
+    osStorageType?: string;
+    hibernateSupport?: "Disabled" | "Enabled";
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const DevBoxDefinitionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1561,11 +2000,22 @@ export const DevBoxDefinitionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevBoxDefinitionsUpdateInput =
-  typeof DevBoxDefinitionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DevBoxDefinitionsUpdateInput>;
 
 // Output Schema
+export interface DevBoxDefinitionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevBoxDefinitionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1585,9 +2035,7 @@ export const DevBoxDefinitionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevBoxDefinitionsUpdateOutput =
-  typeof DevBoxDefinitionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DevBoxDefinitionsUpdateOutput>;
 
 // The operation
 /**
@@ -1606,6 +2054,51 @@ export const DevBoxDefinitionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevCentersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  properties?: {
+    encryption?: {
+      customerManagedKeyEncryption?: {
+        keyEncryptionKeyIdentity?: {
+          identityType?:
+            | "systemAssignedIdentity"
+            | "userAssignedIdentity"
+            | "delegatedResourceIdentity";
+          userAssignedIdentityResourceId?: string;
+          delegatedIdentityClientId?: string;
+        };
+        keyEncryptionKeyUrl?: string;
+      };
+    };
+    displayName?: string;
+    projectCatalogSettings?: {
+      catalogItemSyncEnableStatus?: "Enabled" | "Disabled";
+    };
+    networkSettings?: {
+      microsoftHostedNetworkEnableStatus?: "Enabled" | "Disabled";
+    };
+    devBoxProvisioningSettings?: {
+      installAzureMonitorAgentEnableStatus?: "Enabled" | "Disabled";
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DevCentersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1690,11 +2183,22 @@ export const DevCentersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevCentersCreateOrUpdateInput =
-  typeof DevCentersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DevCentersCreateOrUpdateInput>;
 
 // Output Schema
+export interface DevCentersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevCentersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1714,9 +2218,7 @@ export const DevCentersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevCentersCreateOrUpdateOutput =
-  typeof DevCentersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DevCentersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1734,6 +2236,11 @@ export const DevCentersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevCentersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+}
 export const DevCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1744,12 +2251,12 @@ export const DevCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type DevCentersDeleteInput = typeof DevCentersDeleteInput.Type;
+) as unknown as Schema.Codec<DevCentersDeleteInput>;
 
 // Output Schema
-export const DevCentersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevCentersDeleteOutput = typeof DevCentersDeleteOutput.Type;
+export type DevCentersDeleteOutput = void;
+export const DevCentersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevCentersDeleteOutput>;
 
 // The operation
 /**
@@ -1765,6 +2272,11 @@ export const DevCentersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevCentersDeleteOutput,
 }));
 // Input Schema
+export interface DevCentersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+}
 export const DevCentersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1775,10 +2287,22 @@ export const DevCentersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type DevCentersGetInput = typeof DevCentersGetInput.Type;
+) as unknown as Schema.Codec<DevCentersGetInput>;
 
 // Output Schema
+export interface DevCentersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevCentersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1797,8 +2321,7 @@ export const DevCentersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DevCentersGetOutput = typeof DevCentersGetOutput.Type;
+}) as unknown as Schema.Codec<DevCentersGetOutput>;
 
 // The operation
 /**
@@ -1814,6 +2337,11 @@ export const DevCentersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevCentersGetOutput,
 }));
 // Input Schema
+export interface DevCentersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const DevCentersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1825,11 +2353,25 @@ export const DevCentersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevCentersListByResourceGroupInput =
-  typeof DevCentersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DevCentersListByResourceGroupInput>;
 
 // Output Schema
+export interface DevCentersListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DevCentersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1866,9 +2408,7 @@ export const DevCentersListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DevCentersListByResourceGroupOutput =
-  typeof DevCentersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DevCentersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1885,6 +2425,10 @@ export const DevCentersListByResourceGroup =
     outputSchema: DevCentersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DevCentersListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const DevCentersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1895,11 +2439,25 @@ export const DevCentersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/devcenters",
       apiVersion: "2025-02-01",
     }),
-  );
-export type DevCentersListBySubscriptionInput =
-  typeof DevCentersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DevCentersListBySubscriptionInput>;
 
 // Output Schema
+export interface DevCentersListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DevCentersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1936,9 +2494,7 @@ export const DevCentersListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DevCentersListBySubscriptionOutput =
-  typeof DevCentersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DevCentersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1954,6 +2510,51 @@ export const DevCentersListBySubscription =
     outputSchema: DevCentersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DevCentersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    encryption?: {
+      customerManagedKeyEncryption?: {
+        keyEncryptionKeyIdentity?: {
+          identityType?:
+            | "systemAssignedIdentity"
+            | "userAssignedIdentity"
+            | "delegatedResourceIdentity";
+          userAssignedIdentityResourceId?: string;
+          delegatedIdentityClientId?: string;
+        };
+        keyEncryptionKeyUrl?: string;
+      };
+    };
+    displayName?: string;
+    projectCatalogSettings?: {
+      catalogItemSyncEnableStatus?: "Enabled" | "Disabled";
+    };
+    networkSettings?: {
+      microsoftHostedNetworkEnableStatus?: "Enabled" | "Disabled";
+    };
+    devBoxProvisioningSettings?: {
+      installAzureMonitorAgentEnableStatus?: "Enabled" | "Disabled";
+    };
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const DevCentersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2037,10 +2638,22 @@ export const DevCentersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type DevCentersUpdateInput = typeof DevCentersUpdateInput.Type;
+) as unknown as Schema.Codec<DevCentersUpdateInput>;
 
 // Output Schema
+export interface DevCentersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevCentersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2061,8 +2674,7 @@ export const DevCentersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type DevCentersUpdateOutput = typeof DevCentersUpdateOutput.Type;
+) as unknown as Schema.Codec<DevCentersUpdateOutput>;
 
 // The operation
 /**
@@ -2078,6 +2690,13 @@ export const DevCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevCentersUpdateOutput,
 }));
 // Input Schema
+export interface EnvironmentDefinitionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+  environmentDefinitionName: string;
+}
 export const EnvironmentDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2091,11 +2710,22 @@ export const EnvironmentDefinitionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentDefinitionsGetInput =
-  typeof EnvironmentDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentDefinitionsGetInput>;
 
 // Output Schema
+export interface EnvironmentDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2115,9 +2745,7 @@ export const EnvironmentDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentDefinitionsGetOutput =
-  typeof EnvironmentDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -2137,6 +2765,13 @@ export const EnvironmentDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentDefinitionsGetByProjectCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  environmentDefinitionName: string;
+}
 export const EnvironmentDefinitionsGetByProjectCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2150,11 +2785,22 @@ export const EnvironmentDefinitionsGetByProjectCatalogInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentDefinitionsGetByProjectCatalogInput =
-  typeof EnvironmentDefinitionsGetByProjectCatalogInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentDefinitionsGetByProjectCatalogInput>;
 
 // Output Schema
+export interface EnvironmentDefinitionsGetByProjectCatalogOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentDefinitionsGetByProjectCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2174,9 +2820,7 @@ export const EnvironmentDefinitionsGetByProjectCatalogOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentDefinitionsGetByProjectCatalogOutput =
-  typeof EnvironmentDefinitionsGetByProjectCatalogOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentDefinitionsGetByProjectCatalogOutput>;
 
 // The operation
 /**
@@ -2195,6 +2839,13 @@ export const EnvironmentDefinitionsGetByProjectCatalog =
     outputSchema: EnvironmentDefinitionsGetByProjectCatalogOutput,
   }));
 // Input Schema
+export interface EnvironmentDefinitionsGetErrorDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+  environmentDefinitionName: string;
+}
 export const EnvironmentDefinitionsGetErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2208,11 +2859,12 @@ export const EnvironmentDefinitionsGetErrorDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentDefinitionsGetErrorDetailsInput =
-  typeof EnvironmentDefinitionsGetErrorDetailsInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentDefinitionsGetErrorDetailsInput>;
 
 // Output Schema
+export interface EnvironmentDefinitionsGetErrorDetailsOutput {
+  errors?: { code?: string; message?: string }[];
+}
 export const EnvironmentDefinitionsGetErrorDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(
@@ -2223,9 +2875,7 @@ export const EnvironmentDefinitionsGetErrorDetailsOutput =
         }),
       ),
     ),
-  });
-export type EnvironmentDefinitionsGetErrorDetailsOutput =
-  typeof EnvironmentDefinitionsGetErrorDetailsOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentDefinitionsGetErrorDetailsOutput>;
 
 // The operation
 /**
@@ -2244,6 +2894,13 @@ export const EnvironmentDefinitionsGetErrorDetails =
     outputSchema: EnvironmentDefinitionsGetErrorDetailsOutput,
   }));
 // Input Schema
+export interface EnvironmentDefinitionsListByCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  catalogName: string;
+  $top?: number;
+}
 export const EnvironmentDefinitionsListByCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2257,11 +2914,25 @@ export const EnvironmentDefinitionsListByCatalogInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/environmentDefinitions",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentDefinitionsListByCatalogInput =
-  typeof EnvironmentDefinitionsListByCatalogInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentDefinitionsListByCatalogInput>;
 
 // Output Schema
+export interface EnvironmentDefinitionsListByCatalogOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EnvironmentDefinitionsListByCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2298,9 +2969,7 @@ export const EnvironmentDefinitionsListByCatalogOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EnvironmentDefinitionsListByCatalogOutput =
-  typeof EnvironmentDefinitionsListByCatalogOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentDefinitionsListByCatalogOutput>;
 
 // The operation
 /**
@@ -2319,6 +2988,12 @@ export const EnvironmentDefinitionsListByCatalog =
     outputSchema: EnvironmentDefinitionsListByCatalogOutput,
   }));
 // Input Schema
+export interface EnvironmentDefinitionsListByProjectCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+}
 export const EnvironmentDefinitionsListByProjectCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2331,11 +3006,25 @@ export const EnvironmentDefinitionsListByProjectCatalogInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentDefinitionsListByProjectCatalogInput =
-  typeof EnvironmentDefinitionsListByProjectCatalogInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentDefinitionsListByProjectCatalogInput>;
 
 // Output Schema
+export interface EnvironmentDefinitionsListByProjectCatalogOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EnvironmentDefinitionsListByProjectCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2372,9 +3061,7 @@ export const EnvironmentDefinitionsListByProjectCatalogOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EnvironmentDefinitionsListByProjectCatalogOutput =
-  typeof EnvironmentDefinitionsListByProjectCatalogOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentDefinitionsListByProjectCatalogOutput>;
 
 // The operation
 /**
@@ -2392,6 +3079,25 @@ export const EnvironmentDefinitionsListByProjectCatalog =
     outputSchema: EnvironmentDefinitionsListByProjectCatalogOutput,
   }));
 // Input Schema
+export interface EnvironmentTypesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  environmentTypeName: string;
+  properties?: { displayName?: string };
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentTypesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2427,11 +3133,22 @@ export const EnvironmentTypesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentTypesCreateOrUpdateInput =
-  typeof EnvironmentTypesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentTypesCreateOrUpdateInput>;
 
 // Output Schema
+export interface EnvironmentTypesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentTypesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2451,9 +3168,7 @@ export const EnvironmentTypesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentTypesCreateOrUpdateOutput =
-  typeof EnvironmentTypesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentTypesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2471,6 +3186,12 @@ export const EnvironmentTypesCreateOrUpdate =
     outputSchema: EnvironmentTypesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface EnvironmentTypesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  environmentTypeName: string;
+}
 export const EnvironmentTypesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2483,15 +3204,12 @@ export const EnvironmentTypesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentTypesDeleteInput =
-  typeof EnvironmentTypesDeleteInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentTypesDeleteInput>;
 
 // Output Schema
+export type EnvironmentTypesDeleteOutput = void;
 export const EnvironmentTypesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentTypesDeleteOutput =
-  typeof EnvironmentTypesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentTypesDeleteOutput>;
 
 // The operation
 /**
@@ -2510,6 +3228,12 @@ export const EnvironmentTypesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentTypesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  environmentTypeName: string;
+}
 export const EnvironmentTypesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2522,10 +3246,22 @@ export const EnvironmentTypesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentTypesGetInput = typeof EnvironmentTypesGetInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentTypesGetInput>;
 
 // Output Schema
+export interface EnvironmentTypesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentTypesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2545,8 +3281,7 @@ export const EnvironmentTypesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentTypesGetOutput = typeof EnvironmentTypesGetOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentTypesGetOutput>;
 
 // The operation
 /**
@@ -2563,6 +3298,12 @@ export const EnvironmentTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentTypesGetOutput,
 }));
 // Input Schema
+export interface EnvironmentTypesListByDevCenterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  $top?: number;
+}
 export const EnvironmentTypesListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2575,11 +3316,25 @@ export const EnvironmentTypesListByDevCenterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentTypesListByDevCenterInput =
-  typeof EnvironmentTypesListByDevCenterInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentTypesListByDevCenterInput>;
 
 // Output Schema
+export interface EnvironmentTypesListByDevCenterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EnvironmentTypesListByDevCenterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2616,9 +3371,7 @@ export const EnvironmentTypesListByDevCenterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EnvironmentTypesListByDevCenterOutput =
-  typeof EnvironmentTypesListByDevCenterOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentTypesListByDevCenterOutput>;
 
 // The operation
 /**
@@ -2636,6 +3389,14 @@ export const EnvironmentTypesListByDevCenter =
     outputSchema: EnvironmentTypesListByDevCenterOutput,
   }));
 // Input Schema
+export interface EnvironmentTypesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  environmentTypeName: string;
+  properties?: { displayName?: string };
+  tags?: Record<string, string>;
+}
 export const EnvironmentTypesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2654,11 +3415,22 @@ export const EnvironmentTypesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type EnvironmentTypesUpdateInput =
-  typeof EnvironmentTypesUpdateInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentTypesUpdateInput>;
 
 // Output Schema
+export interface EnvironmentTypesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentTypesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2678,9 +3450,7 @@ export const EnvironmentTypesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentTypesUpdateOutput =
-  typeof EnvironmentTypesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentTypesUpdateOutput>;
 
 // The operation
 /**
@@ -2699,6 +3469,43 @@ export const EnvironmentTypesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GalleriesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  galleryName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Updating"
+      | "Updated"
+      | "Deleting"
+      | "Deleted"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress"
+      | "StorageProvisioningFailed";
+    galleryResourceId: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GalleriesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2753,11 +3560,22 @@ export const GalleriesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type GalleriesCreateOrUpdateInput =
-  typeof GalleriesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GalleriesCreateOrUpdateInput>;
 
 // Output Schema
+export interface GalleriesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GalleriesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2777,9 +3595,7 @@ export const GalleriesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GalleriesCreateOrUpdateOutput =
-  typeof GalleriesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GalleriesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2798,6 +3614,12 @@ export const GalleriesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GalleriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  galleryName: string;
+}
 export const GalleriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2809,12 +3631,12 @@ export const GalleriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type GalleriesDeleteInput = typeof GalleriesDeleteInput.Type;
+) as unknown as Schema.Codec<GalleriesDeleteInput>;
 
 // Output Schema
-export const GalleriesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GalleriesDeleteOutput = typeof GalleriesDeleteOutput.Type;
+export type GalleriesDeleteOutput = void;
+export const GalleriesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GalleriesDeleteOutput>;
 
 // The operation
 /**
@@ -2831,6 +3653,12 @@ export const GalleriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GalleriesDeleteOutput,
 }));
 // Input Schema
+export interface GalleriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  galleryName: string;
+}
 export const GalleriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2842,10 +3670,22 @@ export const GalleriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type GalleriesGetInput = typeof GalleriesGetInput.Type;
+) as unknown as Schema.Codec<GalleriesGetInput>;
 
 // Output Schema
+export interface GalleriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GalleriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2864,8 +3704,7 @@ export const GalleriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GalleriesGetOutput = typeof GalleriesGetOutput.Type;
+}) as unknown as Schema.Codec<GalleriesGetOutput>;
 
 // The operation
 /**
@@ -2882,6 +3721,12 @@ export const GalleriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GalleriesGetOutput,
 }));
 // Input Schema
+export interface GalleriesListByDevCenterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  $top?: number;
+}
 export const GalleriesListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2894,11 +3739,25 @@ export const GalleriesListByDevCenterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries",
       apiVersion: "2025-02-01",
     }),
-  );
-export type GalleriesListByDevCenterInput =
-  typeof GalleriesListByDevCenterInput.Type;
+  ) as unknown as Schema.Codec<GalleriesListByDevCenterInput>;
 
 // Output Schema
+export interface GalleriesListByDevCenterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GalleriesListByDevCenterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2935,9 +3794,7 @@ export const GalleriesListByDevCenterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GalleriesListByDevCenterOutput =
-  typeof GalleriesListByDevCenterOutput.Type;
+  }) as unknown as Schema.Codec<GalleriesListByDevCenterOutput>;
 
 // The operation
 /**
@@ -2956,6 +3813,13 @@ export const GalleriesListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  galleryName: string;
+  imageName: string;
+}
 export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2968,10 +3832,22 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images/{imageName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type ImagesGetInput = typeof ImagesGetInput.Type;
+) as unknown as Schema.Codec<ImagesGetInput>;
 
 // Output Schema
+export interface ImagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2990,8 +3866,7 @@ export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ImagesGetOutput = typeof ImagesGetOutput.Type;
+}) as unknown as Schema.Codec<ImagesGetOutput>;
 
 // The operation
 /**
@@ -3009,6 +3884,12 @@ export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesGetOutput,
 }));
 // Input Schema
+export interface ImagesGetByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  imageName: string;
+}
 export const ImagesGetByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3021,10 +3902,22 @@ export const ImagesGetByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/images/{imageName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ImagesGetByProjectInput = typeof ImagesGetByProjectInput.Type;
+  ) as unknown as Schema.Codec<ImagesGetByProjectInput>;
 
 // Output Schema
+export interface ImagesGetByProjectOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImagesGetByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3044,8 +3937,7 @@ export const ImagesGetByProjectOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImagesGetByProjectOutput = typeof ImagesGetByProjectOutput.Type;
+  }) as unknown as Schema.Codec<ImagesGetByProjectOutput>;
 
 // The operation
 /**
@@ -3062,6 +3954,12 @@ export const ImagesGetByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesGetByProjectOutput,
 }));
 // Input Schema
+export interface ImagesListByDevCenterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  $top?: number;
+}
 export const ImagesListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3074,10 +3972,25 @@ export const ImagesListByDevCenterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/images",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ImagesListByDevCenterInput = typeof ImagesListByDevCenterInput.Type;
+  ) as unknown as Schema.Codec<ImagesListByDevCenterInput>;
 
 // Output Schema
+export interface ImagesListByDevCenterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImagesListByDevCenterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3114,9 +4027,7 @@ export const ImagesListByDevCenterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImagesListByDevCenterOutput =
-  typeof ImagesListByDevCenterOutput.Type;
+  }) as unknown as Schema.Codec<ImagesListByDevCenterOutput>;
 
 // The operation
 /**
@@ -3135,6 +4046,13 @@ export const ImagesListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImagesListByGalleryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  galleryName: string;
+  $top?: number;
+}
 export const ImagesListByGalleryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3148,10 +4066,25 @@ export const ImagesListByGalleryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ImagesListByGalleryInput = typeof ImagesListByGalleryInput.Type;
+  ) as unknown as Schema.Codec<ImagesListByGalleryInput>;
 
 // Output Schema
+export interface ImagesListByGalleryOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImagesListByGalleryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3188,8 +4121,7 @@ export const ImagesListByGalleryOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImagesListByGalleryOutput = typeof ImagesListByGalleryOutput.Type;
+  }) as unknown as Schema.Codec<ImagesListByGalleryOutput>;
 
 // The operation
 /**
@@ -3207,6 +4139,11 @@ export const ImagesListByGallery = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesListByGalleryOutput,
 }));
 // Input Schema
+export interface ImagesListByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const ImagesListByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3218,10 +4155,25 @@ export const ImagesListByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/images",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ImagesListByProjectInput = typeof ImagesListByProjectInput.Type;
+  ) as unknown as Schema.Codec<ImagesListByProjectInput>;
 
 // Output Schema
+export interface ImagesListByProjectOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImagesListByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3258,8 +4210,7 @@ export const ImagesListByProjectOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImagesListByProjectOutput = typeof ImagesListByProjectOutput.Type;
+  }) as unknown as Schema.Codec<ImagesListByProjectOutput>;
 
 // The operation
 /**
@@ -3275,6 +4226,14 @@ export const ImagesListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesListByProjectOutput,
 }));
 // Input Schema
+export interface ImageVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  galleryName: string;
+  imageName: string;
+  versionName: string;
+}
 export const ImageVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3288,10 +4247,22 @@ export const ImageVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images/{imageName}/versions/{versionName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type ImageVersionsGetInput = typeof ImageVersionsGetInput.Type;
+) as unknown as Schema.Codec<ImageVersionsGetInput>;
 
 // Output Schema
+export interface ImageVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImageVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3312,8 +4283,7 @@ export const ImageVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ImageVersionsGetOutput = typeof ImageVersionsGetOutput.Type;
+) as unknown as Schema.Codec<ImageVersionsGetOutput>;
 
 // The operation
 /**
@@ -3332,6 +4302,13 @@ export const ImageVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImageVersionsGetOutput,
 }));
 // Input Schema
+export interface ImageVersionsGetByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  imageName: string;
+  versionName: string;
+}
 export const ImageVersionsGetByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3345,11 +4322,22 @@ export const ImageVersionsGetByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/images/{imageName}/versions/{versionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ImageVersionsGetByProjectInput =
-  typeof ImageVersionsGetByProjectInput.Type;
+  ) as unknown as Schema.Codec<ImageVersionsGetByProjectInput>;
 
 // Output Schema
+export interface ImageVersionsGetByProjectOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImageVersionsGetByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3369,9 +4357,7 @@ export const ImageVersionsGetByProjectOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImageVersionsGetByProjectOutput =
-  typeof ImageVersionsGetByProjectOutput.Type;
+  }) as unknown as Schema.Codec<ImageVersionsGetByProjectOutput>;
 
 // The operation
 /**
@@ -3391,6 +4377,13 @@ export const ImageVersionsGetByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImageVersionsListByImageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  galleryName: string;
+  imageName: string;
+}
 export const ImageVersionsListByImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3404,11 +4397,25 @@ export const ImageVersionsListByImageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images/{imageName}/versions",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ImageVersionsListByImageInput =
-  typeof ImageVersionsListByImageInput.Type;
+  ) as unknown as Schema.Codec<ImageVersionsListByImageInput>;
 
 // Output Schema
+export interface ImageVersionsListByImageOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImageVersionsListByImageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3445,9 +4452,7 @@ export const ImageVersionsListByImageOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImageVersionsListByImageOutput =
-  typeof ImageVersionsListByImageOutput.Type;
+  }) as unknown as Schema.Codec<ImageVersionsListByImageOutput>;
 
 // The operation
 /**
@@ -3467,6 +4472,12 @@ export const ImageVersionsListByImage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImageVersionsListByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  imageName: string;
+}
 export const ImageVersionsListByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3479,11 +4490,25 @@ export const ImageVersionsListByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/images/{imageName}/versions",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ImageVersionsListByProjectInput =
-  typeof ImageVersionsListByProjectInput.Type;
+  ) as unknown as Schema.Codec<ImageVersionsListByProjectInput>;
 
 // Output Schema
+export interface ImageVersionsListByProjectOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImageVersionsListByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3520,9 +4545,7 @@ export const ImageVersionsListByProjectOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImageVersionsListByProjectOutput =
-  typeof ImageVersionsListByProjectOutput.Type;
+  }) as unknown as Schema.Codec<ImageVersionsListByProjectOutput>;
 
 // The operation
 /**
@@ -3541,6 +4564,20 @@ export const ImageVersionsListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkConnectionName: string;
+  properties?: {
+    subnetId?: string;
+    domainName?: string;
+    organizationUnit?: string;
+    domainUsername?: string;
+    domainPassword?: string | Redacted.Redacted<string>;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3563,11 +4600,22 @@ export const NetworkConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsCreateOrUpdateInput =
-  typeof NetworkConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3587,9 +4635,7 @@ export const NetworkConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkConnectionsCreateOrUpdateOutput =
-  typeof NetworkConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3606,6 +4652,11 @@ export const NetworkConnectionsCreateOrUpdate =
     outputSchema: NetworkConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkConnectionName: string;
+}
 export const NetworkConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3617,15 +4668,12 @@ export const NetworkConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsDeleteInput =
-  typeof NetworkConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsDeleteInput>;
 
 // Output Schema
+export type NetworkConnectionsDeleteOutput = void;
 export const NetworkConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkConnectionsDeleteOutput =
-  typeof NetworkConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -3643,6 +4691,11 @@ export const NetworkConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkConnectionName: string;
+}
 export const NetworkConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3654,10 +4707,22 @@ export const NetworkConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsGetInput = typeof NetworkConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsGetInput>;
 
 // Output Schema
+export interface NetworkConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3677,9 +4742,7 @@ export const NetworkConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkConnectionsGetOutput =
-  typeof NetworkConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConnectionsGetOutput>;
 
 // The operation
 /**
@@ -3697,6 +4760,11 @@ export const NetworkConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkConnectionsGetHealthDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkConnectionName: string;
+}
 export const NetworkConnectionsGetHealthDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3708,11 +4776,22 @@ export const NetworkConnectionsGetHealthDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/healthChecks/latest",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsGetHealthDetailsInput =
-  typeof NetworkConnectionsGetHealthDetailsInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsGetHealthDetailsInput>;
 
 // Output Schema
+export interface NetworkConnectionsGetHealthDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkConnectionsGetHealthDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3732,9 +4811,7 @@ export const NetworkConnectionsGetHealthDetailsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkConnectionsGetHealthDetailsOutput =
-  typeof NetworkConnectionsGetHealthDetailsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConnectionsGetHealthDetailsOutput>;
 
 // The operation
 /**
@@ -3751,6 +4828,11 @@ export const NetworkConnectionsGetHealthDetails =
     outputSchema: NetworkConnectionsGetHealthDetailsOutput,
   }));
 // Input Schema
+export interface NetworkConnectionsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const NetworkConnectionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3762,11 +4844,25 @@ export const NetworkConnectionsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsListByResourceGroupInput =
-  typeof NetworkConnectionsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkConnectionsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkConnectionsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3803,9 +4899,7 @@ export const NetworkConnectionsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkConnectionsListByResourceGroupOutput =
-  typeof NetworkConnectionsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConnectionsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3822,6 +4916,10 @@ export const NetworkConnectionsListByResourceGroup =
     outputSchema: NetworkConnectionsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkConnectionsListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const NetworkConnectionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3832,11 +4930,25 @@ export const NetworkConnectionsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/networkConnections",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsListBySubscriptionInput =
-  typeof NetworkConnectionsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkConnectionsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkConnectionsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3873,9 +4985,7 @@ export const NetworkConnectionsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkConnectionsListBySubscriptionOutput =
-  typeof NetworkConnectionsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConnectionsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3891,6 +5001,12 @@ export const NetworkConnectionsListBySubscription =
     outputSchema: NetworkConnectionsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkConnectionsListHealthDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkConnectionName: string;
+  $top?: number;
+}
 export const NetworkConnectionsListHealthDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3903,11 +5019,25 @@ export const NetworkConnectionsListHealthDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/healthChecks",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsListHealthDetailsInput =
-  typeof NetworkConnectionsListHealthDetailsInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsListHealthDetailsInput>;
 
 // Output Schema
+export interface NetworkConnectionsListHealthDetailsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkConnectionsListHealthDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3944,9 +5074,7 @@ export const NetworkConnectionsListHealthDetailsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkConnectionsListHealthDetailsOutput =
-  typeof NetworkConnectionsListHealthDetailsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConnectionsListHealthDetailsOutput>;
 
 // The operation
 /**
@@ -3964,6 +5092,12 @@ export const NetworkConnectionsListHealthDetails =
     outputSchema: NetworkConnectionsListHealthDetailsOutput,
   }));
 // Input Schema
+export interface NetworkConnectionsListOutboundNetworkDependenciesEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkConnectionName: string;
+  $top?: number;
+}
 export const NetworkConnectionsListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3976,11 +5110,20 @@ export const NetworkConnectionsListOutboundNetworkDependenciesEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/outboundNetworkDependenciesEndpoints",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsListOutboundNetworkDependenciesEndpointsInput =
-  typeof NetworkConnectionsListOutboundNetworkDependenciesEndpointsInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsListOutboundNetworkDependenciesEndpointsInput>;
 
 // Output Schema
+export interface NetworkConnectionsListOutboundNetworkDependenciesEndpointsOutput {
+  value?: {
+    category?: string;
+    endpoints?: {
+      domainName?: string;
+      description?: string;
+      endpointDetails?: { port?: number }[];
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const NetworkConnectionsListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4006,9 +5149,7 @@ export const NetworkConnectionsListOutboundNetworkDependenciesEndpointsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkConnectionsListOutboundNetworkDependenciesEndpointsOutput =
-  typeof NetworkConnectionsListOutboundNetworkDependenciesEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConnectionsListOutboundNetworkDependenciesEndpointsOutput>;
 
 // The operation
 /**
@@ -4028,6 +5169,11 @@ export const NetworkConnectionsListOutboundNetworkDependenciesEndpoints =
       NetworkConnectionsListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
+export interface NetworkConnectionsRunHealthChecksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkConnectionName: string;
+}
 export const NetworkConnectionsRunHealthChecksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4039,15 +5185,12 @@ export const NetworkConnectionsRunHealthChecksInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/runHealthChecks",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsRunHealthChecksInput =
-  typeof NetworkConnectionsRunHealthChecksInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsRunHealthChecksInput>;
 
 // Output Schema
+export type NetworkConnectionsRunHealthChecksOutput = void;
 export const NetworkConnectionsRunHealthChecksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkConnectionsRunHealthChecksOutput =
-  typeof NetworkConnectionsRunHealthChecksOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkConnectionsRunHealthChecksOutput>;
 
 // The operation
 /**
@@ -4064,6 +5207,20 @@ export const NetworkConnectionsRunHealthChecks =
     outputSchema: NetworkConnectionsRunHealthChecksOutput,
   }));
 // Input Schema
+export interface NetworkConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkConnectionName: string;
+  properties?: {
+    subnetId?: string;
+    domainName?: string;
+    organizationUnit?: string;
+    domainUsername?: string;
+    domainPassword?: string | Redacted.Redacted<string>;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const NetworkConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4086,11 +5243,22 @@ export const NetworkConnectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type NetworkConnectionsUpdateInput =
-  typeof NetworkConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkConnectionsUpdateInput>;
 
 // Output Schema
+export interface NetworkConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4110,9 +5278,7 @@ export const NetworkConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkConnectionsUpdateOutput =
-  typeof NetworkConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -4130,6 +5296,7 @@ export const NetworkConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -4138,10 +5305,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DevCenter/operations",
     apiVersion: "2025-02-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4164,8 +5345,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -4178,6 +5358,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationStatusesGetInput {
+  subscriptionId: string;
+  location: string;
+  operationId: string;
+}
 export const OperationStatusesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4189,10 +5374,42 @@ export const OperationStatusesGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/locations/{location}/operationStatuses/{operationId}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
+  ) as unknown as Schema.Codec<OperationStatusesGetInput>;
 
 // Output Schema
+export interface OperationStatusesGetOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const OperationStatusesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4248,8 +5465,7 @@ export const OperationStatusesGetOutput =
         ),
       }),
     ),
-  });
-export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationStatusesGetOutput>;
 
 // The operation
 /**
@@ -4269,6 +5485,44 @@ export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoolsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+  properties?: {
+    devBoxDefinitionType?: "Reference" | "Value";
+    devBoxDefinitionName?: string;
+    devBoxDefinition?: {
+      imageReference?: { id?: string; exactVersion?: string };
+      sku?: {
+        name: string;
+        tier?: "Free" | "Basic" | "Standard" | "Premium";
+        size?: string;
+        family?: string;
+        capacity?: number;
+      };
+      activeImageReference?: { id?: string; exactVersion?: string };
+    };
+    networkConnectionName?: string;
+    licenseType?: "Windows_Client";
+    localAdministrator?: "Disabled" | "Enabled";
+    stopOnDisconnect?: {
+      status?: "Enabled" | "Disabled";
+      gracePeriodMinutes?: number;
+    };
+    stopOnNoConnect?: {
+      status?: "Enabled" | "Disabled";
+      gracePeriodMinutes?: number;
+    };
+    singleSignOnStatus?: "Disabled" | "Enabled";
+    displayName?: string;
+    virtualNetworkType?: "Managed" | "Unmanaged";
+    managedVirtualNetworkRegions?: string[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4345,10 +5599,22 @@ export const PoolsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PoolsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PoolsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4368,8 +5634,7 @@ export const PoolsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PoolsCreateOrUpdateOutput = typeof PoolsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PoolsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4386,6 +5651,12 @@ export const PoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface PoolsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+}
 export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4397,12 +5668,12 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
+) as unknown as Schema.Codec<PoolsDeleteInput>;
 
 // Output Schema
-export const PoolsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PoolsDeleteOutput = typeof PoolsDeleteOutput.Type;
+export type PoolsDeleteOutput = void;
+export const PoolsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsDeleteOutput>;
 
 // The operation
 /**
@@ -4419,6 +5690,12 @@ export const PoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsDeleteOutput,
 }));
 // Input Schema
+export interface PoolsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+}
 export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4430,10 +5707,22 @@ export const PoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type PoolsGetInput = typeof PoolsGetInput.Type;
+) as unknown as Schema.Codec<PoolsGetInput>;
 
 // Output Schema
+export interface PoolsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4452,8 +5741,7 @@ export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoolsGetOutput = typeof PoolsGetOutput.Type;
+}) as unknown as Schema.Codec<PoolsGetOutput>;
 
 // The operation
 /**
@@ -4470,6 +5758,12 @@ export const PoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsGetOutput,
 }));
 // Input Schema
+export interface PoolsListByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  $top?: number;
+}
 export const PoolsListByProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4482,10 +5776,25 @@ export const PoolsListByProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools",
       apiVersion: "2025-02-01",
     }),
-  );
-export type PoolsListByProjectInput = typeof PoolsListByProjectInput.Type;
+  ) as unknown as Schema.Codec<PoolsListByProjectInput>;
 
 // Output Schema
+export interface PoolsListByProjectOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PoolsListByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4522,8 +5831,7 @@ export const PoolsListByProjectOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PoolsListByProjectOutput = typeof PoolsListByProjectOutput.Type;
+  }) as unknown as Schema.Codec<PoolsListByProjectOutput>;
 
 // The operation
 /**
@@ -4540,6 +5848,12 @@ export const PoolsListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsListByProjectOutput,
 }));
 // Input Schema
+export interface PoolsRunHealthChecksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+}
 export const PoolsRunHealthChecksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4552,13 +5866,12 @@ export const PoolsRunHealthChecksInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/runHealthChecks",
       apiVersion: "2025-02-01",
     }),
-  );
-export type PoolsRunHealthChecksInput = typeof PoolsRunHealthChecksInput.Type;
+  ) as unknown as Schema.Codec<PoolsRunHealthChecksInput>;
 
 // Output Schema
+export type PoolsRunHealthChecksOutput = void;
 export const PoolsRunHealthChecksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PoolsRunHealthChecksOutput = typeof PoolsRunHealthChecksOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolsRunHealthChecksOutput>;
 
 // The operation
 /**
@@ -4577,6 +5890,44 @@ export const PoolsRunHealthChecks = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoolsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+  properties?: {
+    devBoxDefinitionType?: "Reference" | "Value";
+    devBoxDefinitionName?: string;
+    devBoxDefinition?: {
+      imageReference?: { id?: string; exactVersion?: string };
+      sku?: {
+        name: string;
+        tier?: "Free" | "Basic" | "Standard" | "Premium";
+        size?: string;
+        family?: string;
+        capacity?: number;
+      };
+      activeImageReference?: { id?: string; exactVersion?: string };
+    };
+    networkConnectionName?: string;
+    licenseType?: "Windows_Client";
+    localAdministrator?: "Disabled" | "Enabled";
+    stopOnDisconnect?: {
+      status?: "Enabled" | "Disabled";
+      gracePeriodMinutes?: number;
+    };
+    stopOnNoConnect?: {
+      status?: "Enabled" | "Disabled";
+      gracePeriodMinutes?: number;
+    };
+    singleSignOnStatus?: "Disabled" | "Enabled";
+    displayName?: string;
+    virtualNetworkType?: "Managed" | "Unmanaged";
+    managedVirtualNetworkRegions?: string[];
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4652,10 +6003,22 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;
+) as unknown as Schema.Codec<PoolsUpdateInput>;
 
 // Output Schema
+export interface PoolsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4674,8 +6037,7 @@ export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoolsUpdateOutput = typeof PoolsUpdateOutput.Type;
+}) as unknown as Schema.Codec<PoolsUpdateOutput>;
 
 // The operation
 /**
@@ -4692,6 +6054,12 @@ export const PoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolsUpdateOutput,
 }));
 // Input Schema
+export interface ProjectAllowedEnvironmentTypesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  environmentTypeName: string;
+}
 export const ProjectAllowedEnvironmentTypesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4704,11 +6072,22 @@ export const ProjectAllowedEnvironmentTypesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/allowedEnvironmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectAllowedEnvironmentTypesGetInput =
-  typeof ProjectAllowedEnvironmentTypesGetInput.Type;
+  ) as unknown as Schema.Codec<ProjectAllowedEnvironmentTypesGetInput>;
 
 // Output Schema
+export interface ProjectAllowedEnvironmentTypesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectAllowedEnvironmentTypesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4728,9 +6107,7 @@ export const ProjectAllowedEnvironmentTypesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectAllowedEnvironmentTypesGetOutput =
-  typeof ProjectAllowedEnvironmentTypesGetOutput.Type;
+  }) as unknown as Schema.Codec<ProjectAllowedEnvironmentTypesGetOutput>;
 
 // The operation
 /**
@@ -4748,6 +6125,12 @@ export const ProjectAllowedEnvironmentTypesGet =
     outputSchema: ProjectAllowedEnvironmentTypesGetOutput,
   }));
 // Input Schema
+export interface ProjectAllowedEnvironmentTypesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  $top?: number;
+}
 export const ProjectAllowedEnvironmentTypesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4760,11 +6143,25 @@ export const ProjectAllowedEnvironmentTypesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/allowedEnvironmentTypes",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectAllowedEnvironmentTypesListInput =
-  typeof ProjectAllowedEnvironmentTypesListInput.Type;
+  ) as unknown as Schema.Codec<ProjectAllowedEnvironmentTypesListInput>;
 
 // Output Schema
+export interface ProjectAllowedEnvironmentTypesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectAllowedEnvironmentTypesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4801,9 +6198,7 @@ export const ProjectAllowedEnvironmentTypesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectAllowedEnvironmentTypesListOutput =
-  typeof ProjectAllowedEnvironmentTypesListOutput.Type;
+  }) as unknown as Schema.Codec<ProjectAllowedEnvironmentTypesListOutput>;
 
 // The operation
 /**
@@ -4821,6 +6216,13 @@ export const ProjectAllowedEnvironmentTypesList =
     outputSchema: ProjectAllowedEnvironmentTypesListOutput,
   }));
 // Input Schema
+export interface ProjectCatalogEnvironmentDefinitionsGetErrorDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  environmentDefinitionName: string;
+}
 export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4834,11 +6236,12 @@ export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogEnvironmentDefinitionsGetErrorDetailsInput =
-  typeof ProjectCatalogEnvironmentDefinitionsGetErrorDetailsInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogEnvironmentDefinitionsGetErrorDetailsInput>;
 
 // Output Schema
+export interface ProjectCatalogEnvironmentDefinitionsGetErrorDetailsOutput {
+  errors?: { code?: string; message?: string }[];
+}
 export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(
@@ -4849,9 +6252,7 @@ export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsOutput =
         }),
       ),
     ),
-  });
-export type ProjectCatalogEnvironmentDefinitionsGetErrorDetailsOutput =
-  typeof ProjectCatalogEnvironmentDefinitionsGetErrorDetailsOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogEnvironmentDefinitionsGetErrorDetailsOutput>;
 
 // The operation
 /**
@@ -4870,6 +6271,14 @@ export const ProjectCatalogEnvironmentDefinitionsGetErrorDetails =
     outputSchema: ProjectCatalogEnvironmentDefinitionsGetErrorDetailsOutput,
   }));
 // Input Schema
+export interface ProjectCatalogImageDefinitionBuildCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  imageDefinitionName: string;
+  buildName: string;
+}
 export const ProjectCatalogImageDefinitionBuildCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4884,15 +6293,12 @@ export const ProjectCatalogImageDefinitionBuildCancelInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/cancel",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogImageDefinitionBuildCancelInput =
-  typeof ProjectCatalogImageDefinitionBuildCancelInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogImageDefinitionBuildCancelInput>;
 
 // Output Schema
+export type ProjectCatalogImageDefinitionBuildCancelOutput = void;
 export const ProjectCatalogImageDefinitionBuildCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectCatalogImageDefinitionBuildCancelOutput =
-  typeof ProjectCatalogImageDefinitionBuildCancelOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectCatalogImageDefinitionBuildCancelOutput>;
 
 // The operation
 /**
@@ -4912,6 +6318,14 @@ export const ProjectCatalogImageDefinitionBuildCancel =
     outputSchema: ProjectCatalogImageDefinitionBuildCancelOutput,
   }));
 // Input Schema
+export interface ProjectCatalogImageDefinitionBuildGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  imageDefinitionName: string;
+  buildName: string;
+}
 export const ProjectCatalogImageDefinitionBuildGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4926,11 +6340,22 @@ export const ProjectCatalogImageDefinitionBuildGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogImageDefinitionBuildGetInput =
-  typeof ProjectCatalogImageDefinitionBuildGetInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogImageDefinitionBuildGetInput>;
 
 // Output Schema
+export interface ProjectCatalogImageDefinitionBuildGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCatalogImageDefinitionBuildGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4950,9 +6375,7 @@ export const ProjectCatalogImageDefinitionBuildGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectCatalogImageDefinitionBuildGetOutput =
-  typeof ProjectCatalogImageDefinitionBuildGetOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogImageDefinitionBuildGetOutput>;
 
 // The operation
 /**
@@ -4972,6 +6395,14 @@ export const ProjectCatalogImageDefinitionBuildGet =
     outputSchema: ProjectCatalogImageDefinitionBuildGetOutput,
   }));
 // Input Schema
+export interface ProjectCatalogImageDefinitionBuildGetBuildDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  imageDefinitionName: string;
+  buildName: string;
+}
 export const ProjectCatalogImageDefinitionBuildGetBuildDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4986,11 +6417,22 @@ export const ProjectCatalogImageDefinitionBuildGetBuildDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/getBuildDetails",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogImageDefinitionBuildGetBuildDetailsInput =
-  typeof ProjectCatalogImageDefinitionBuildGetBuildDetailsInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogImageDefinitionBuildGetBuildDetailsInput>;
 
 // Output Schema
+export interface ProjectCatalogImageDefinitionBuildGetBuildDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCatalogImageDefinitionBuildGetBuildDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5010,9 +6452,7 @@ export const ProjectCatalogImageDefinitionBuildGetBuildDetailsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectCatalogImageDefinitionBuildGetBuildDetailsOutput =
-  typeof ProjectCatalogImageDefinitionBuildGetBuildDetailsOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogImageDefinitionBuildGetBuildDetailsOutput>;
 
 // The operation
 /**
@@ -5032,6 +6472,13 @@ export const ProjectCatalogImageDefinitionBuildGetBuildDetails =
     outputSchema: ProjectCatalogImageDefinitionBuildGetBuildDetailsOutput,
   }));
 // Input Schema
+export interface ProjectCatalogImageDefinitionBuildsListByImageDefinitionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  imageDefinitionName: string;
+}
 export const ProjectCatalogImageDefinitionBuildsListByImageDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5045,11 +6492,25 @@ export const ProjectCatalogImageDefinitionBuildsListByImageDefinitionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogImageDefinitionBuildsListByImageDefinitionInput =
-  typeof ProjectCatalogImageDefinitionBuildsListByImageDefinitionInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogImageDefinitionBuildsListByImageDefinitionInput>;
 
 // Output Schema
+export interface ProjectCatalogImageDefinitionBuildsListByImageDefinitionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectCatalogImageDefinitionBuildsListByImageDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5086,9 +6547,7 @@ export const ProjectCatalogImageDefinitionBuildsListByImageDefinitionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectCatalogImageDefinitionBuildsListByImageDefinitionOutput =
-  typeof ProjectCatalogImageDefinitionBuildsListByImageDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogImageDefinitionBuildsListByImageDefinitionOutput>;
 
 // The operation
 /**
@@ -5108,6 +6567,13 @@ export const ProjectCatalogImageDefinitionBuildsListByImageDefinition =
       ProjectCatalogImageDefinitionBuildsListByImageDefinitionOutput,
   }));
 // Input Schema
+export interface ProjectCatalogImageDefinitionsBuildImageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  imageDefinitionName: string;
+}
 export const ProjectCatalogImageDefinitionsBuildImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5121,15 +6587,12 @@ export const ProjectCatalogImageDefinitionsBuildImageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/buildImage",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogImageDefinitionsBuildImageInput =
-  typeof ProjectCatalogImageDefinitionsBuildImageInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogImageDefinitionsBuildImageInput>;
 
 // Output Schema
+export type ProjectCatalogImageDefinitionsBuildImageOutput = void;
 export const ProjectCatalogImageDefinitionsBuildImageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectCatalogImageDefinitionsBuildImageOutput =
-  typeof ProjectCatalogImageDefinitionsBuildImageOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectCatalogImageDefinitionsBuildImageOutput>;
 
 // The operation
 /**
@@ -5148,6 +6611,13 @@ export const ProjectCatalogImageDefinitionsBuildImage =
     outputSchema: ProjectCatalogImageDefinitionsBuildImageOutput,
   }));
 // Input Schema
+export interface ProjectCatalogImageDefinitionsGetByProjectCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  imageDefinitionName: string;
+}
 export const ProjectCatalogImageDefinitionsGetByProjectCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5161,11 +6631,22 @@ export const ProjectCatalogImageDefinitionsGetByProjectCatalogInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogImageDefinitionsGetByProjectCatalogInput =
-  typeof ProjectCatalogImageDefinitionsGetByProjectCatalogInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogImageDefinitionsGetByProjectCatalogInput>;
 
 // Output Schema
+export interface ProjectCatalogImageDefinitionsGetByProjectCatalogOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCatalogImageDefinitionsGetByProjectCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5185,9 +6666,7 @@ export const ProjectCatalogImageDefinitionsGetByProjectCatalogOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectCatalogImageDefinitionsGetByProjectCatalogOutput =
-  typeof ProjectCatalogImageDefinitionsGetByProjectCatalogOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogImageDefinitionsGetByProjectCatalogOutput>;
 
 // The operation
 /**
@@ -5206,6 +6685,13 @@ export const ProjectCatalogImageDefinitionsGetByProjectCatalog =
     outputSchema: ProjectCatalogImageDefinitionsGetByProjectCatalogOutput,
   }));
 // Input Schema
+export interface ProjectCatalogImageDefinitionsGetErrorDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  imageDefinitionName: string;
+}
 export const ProjectCatalogImageDefinitionsGetErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5219,11 +6705,12 @@ export const ProjectCatalogImageDefinitionsGetErrorDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/getErrorDetails",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogImageDefinitionsGetErrorDetailsInput =
-  typeof ProjectCatalogImageDefinitionsGetErrorDetailsInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogImageDefinitionsGetErrorDetailsInput>;
 
 // Output Schema
+export interface ProjectCatalogImageDefinitionsGetErrorDetailsOutput {
+  errors?: { code?: string; message?: string }[];
+}
 export const ProjectCatalogImageDefinitionsGetErrorDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(
@@ -5234,9 +6721,7 @@ export const ProjectCatalogImageDefinitionsGetErrorDetailsOutput =
         }),
       ),
     ),
-  });
-export type ProjectCatalogImageDefinitionsGetErrorDetailsOutput =
-  typeof ProjectCatalogImageDefinitionsGetErrorDetailsOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogImageDefinitionsGetErrorDetailsOutput>;
 
 // The operation
 /**
@@ -5255,6 +6740,13 @@ export const ProjectCatalogImageDefinitionsGetErrorDetails =
     outputSchema: ProjectCatalogImageDefinitionsGetErrorDetailsOutput,
   }));
 // Input Schema
+export interface ProjectCatalogImageDefinitionsListByProjectCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  $top?: number;
+}
 export const ProjectCatalogImageDefinitionsListByProjectCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5268,11 +6760,25 @@ export const ProjectCatalogImageDefinitionsListByProjectCatalogInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogImageDefinitionsListByProjectCatalogInput =
-  typeof ProjectCatalogImageDefinitionsListByProjectCatalogInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogImageDefinitionsListByProjectCatalogInput>;
 
 // Output Schema
+export interface ProjectCatalogImageDefinitionsListByProjectCatalogOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectCatalogImageDefinitionsListByProjectCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5309,9 +6815,7 @@ export const ProjectCatalogImageDefinitionsListByProjectCatalogOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectCatalogImageDefinitionsListByProjectCatalogOutput =
-  typeof ProjectCatalogImageDefinitionsListByProjectCatalogOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogImageDefinitionsListByProjectCatalogOutput>;
 
 // The operation
 /**
@@ -5330,6 +6834,12 @@ export const ProjectCatalogImageDefinitionsListByProjectCatalog =
     outputSchema: ProjectCatalogImageDefinitionsListByProjectCatalogOutput,
   }));
 // Input Schema
+export interface ProjectCatalogsConnectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+}
 export const ProjectCatalogsConnectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5342,15 +6852,12 @@ export const ProjectCatalogsConnectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/connect",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogsConnectInput =
-  typeof ProjectCatalogsConnectInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogsConnectInput>;
 
 // Output Schema
+export type ProjectCatalogsConnectOutput = void;
 export const ProjectCatalogsConnectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectCatalogsConnectOutput =
-  typeof ProjectCatalogsConnectOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectCatalogsConnectOutput>;
 
 // The operation
 /**
@@ -5369,6 +6876,39 @@ export const ProjectCatalogsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectCatalogsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  properties?: {
+    gitHub?: {
+      uri?: string;
+      branch?: string;
+      secretIdentifier?: string;
+      path?: string;
+    };
+    adoGit?: {
+      uri?: string;
+      branch?: string;
+      secretIdentifier?: string;
+      path?: string;
+    };
+    syncType?: "Manual" | "Scheduled";
+    tags?: Record<string, string>;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCatalogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5420,11 +6960,22 @@ export const ProjectCatalogsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogsCreateOrUpdateInput =
-  typeof ProjectCatalogsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProjectCatalogsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCatalogsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5444,9 +6995,7 @@ export const ProjectCatalogsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectCatalogsCreateOrUpdateOutput =
-  typeof ProjectCatalogsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5464,6 +7013,12 @@ export const ProjectCatalogsCreateOrUpdate =
     outputSchema: ProjectCatalogsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ProjectCatalogsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+}
 export const ProjectCatalogsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5476,14 +7031,12 @@ export const ProjectCatalogsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogsDeleteInput = typeof ProjectCatalogsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogsDeleteInput>;
 
 // Output Schema
+export type ProjectCatalogsDeleteOutput = void;
 export const ProjectCatalogsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectCatalogsDeleteOutput =
-  typeof ProjectCatalogsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectCatalogsDeleteOutput>;
 
 // The operation
 /**
@@ -5502,6 +7055,12 @@ export const ProjectCatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectCatalogsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+}
 export const ProjectCatalogsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5514,10 +7073,22 @@ export const ProjectCatalogsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogsGetInput = typeof ProjectCatalogsGetInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogsGetInput>;
 
 // Output Schema
+export interface ProjectCatalogsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCatalogsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5537,8 +7108,7 @@ export const ProjectCatalogsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectCatalogsGetOutput = typeof ProjectCatalogsGetOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogsGetOutput>;
 
 // The operation
 /**
@@ -5555,6 +7125,12 @@ export const ProjectCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectCatalogsGetOutput,
 }));
 // Input Schema
+export interface ProjectCatalogsGetSyncErrorDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+}
 export const ProjectCatalogsGetSyncErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5567,11 +7143,17 @@ export const ProjectCatalogsGetSyncErrorDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/getSyncErrorDetails",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogsGetSyncErrorDetailsInput =
-  typeof ProjectCatalogsGetSyncErrorDetailsInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogsGetSyncErrorDetailsInput>;
 
 // Output Schema
+export interface ProjectCatalogsGetSyncErrorDetailsOutput {
+  operationError?: { code?: string; message?: string };
+  conflicts?: { path?: string; name?: string }[];
+  errors?: {
+    path?: string;
+    errorDetails?: { code?: string; message?: string }[];
+  }[];
+}
 export const ProjectCatalogsGetSyncErrorDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationError: Schema.optional(
@@ -5603,9 +7185,7 @@ export const ProjectCatalogsGetSyncErrorDetailsOutput =
         }),
       ),
     ),
-  });
-export type ProjectCatalogsGetSyncErrorDetailsOutput =
-  typeof ProjectCatalogsGetSyncErrorDetailsOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogsGetSyncErrorDetailsOutput>;
 
 // The operation
 /**
@@ -5623,6 +7203,12 @@ export const ProjectCatalogsGetSyncErrorDetails =
     outputSchema: ProjectCatalogsGetSyncErrorDetailsOutput,
   }));
 // Input Schema
+export interface ProjectCatalogsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  $top?: number;
+}
 export const ProjectCatalogsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5635,10 +7221,25 @@ export const ProjectCatalogsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogsListInput = typeof ProjectCatalogsListInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogsListInput>;
 
 // Output Schema
+export interface ProjectCatalogsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectCatalogsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5675,8 +7276,7 @@ export const ProjectCatalogsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectCatalogsListOutput = typeof ProjectCatalogsListOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogsListOutput>;
 
 // The operation
 /**
@@ -5693,6 +7293,28 @@ export const ProjectCatalogsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectCatalogsListOutput,
 }));
 // Input Schema
+export interface ProjectCatalogsPatchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+  properties?: {
+    gitHub?: {
+      uri?: string;
+      branch?: string;
+      secretIdentifier?: string;
+      path?: string;
+    };
+    adoGit?: {
+      uri?: string;
+      branch?: string;
+      secretIdentifier?: string;
+      path?: string;
+    };
+    syncType?: "Manual" | "Scheduled";
+    tags?: Record<string, string>;
+  };
+}
 export const ProjectCatalogsPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5727,10 +7349,22 @@ export const ProjectCatalogsPatchInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogsPatchInput = typeof ProjectCatalogsPatchInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogsPatchInput>;
 
 // Output Schema
+export interface ProjectCatalogsPatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCatalogsPatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5750,8 +7384,7 @@ export const ProjectCatalogsPatchOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectCatalogsPatchOutput = typeof ProjectCatalogsPatchOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCatalogsPatchOutput>;
 
 // The operation
 /**
@@ -5770,6 +7403,12 @@ export const ProjectCatalogsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectCatalogsSyncInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  catalogName: string;
+}
 export const ProjectCatalogsSyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5782,13 +7421,12 @@ export const ProjectCatalogsSyncInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/sync",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectCatalogsSyncInput = typeof ProjectCatalogsSyncInput.Type;
+  ) as unknown as Schema.Codec<ProjectCatalogsSyncInput>;
 
 // Output Schema
+export type ProjectCatalogsSyncOutput = void;
 export const ProjectCatalogsSyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectCatalogsSyncOutput = typeof ProjectCatalogsSyncOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectCatalogsSyncOutput>;
 
 // The operation
 /**
@@ -5805,6 +7443,50 @@ export const ProjectCatalogsSync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectCatalogsSyncOutput,
 }));
 // Input Schema
+export interface ProjectEnvironmentTypesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  environmentTypeName: string;
+  properties?: {
+    deploymentTargetId?: string;
+    displayName?: string;
+    status?: "Enabled" | "Disabled";
+    creatorRoleAssignment?: {
+      roles?: Record<string, { roleName?: string; description?: string }>;
+    };
+    userRoleAssignments?: Record<
+      string,
+      { roles?: Record<string, { roleName?: string; description?: string }> }
+    >;
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectEnvironmentTypesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5893,11 +7575,22 @@ export const ProjectEnvironmentTypesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectEnvironmentTypesCreateOrUpdateInput =
-  typeof ProjectEnvironmentTypesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectEnvironmentTypesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProjectEnvironmentTypesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectEnvironmentTypesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5917,9 +7610,7 @@ export const ProjectEnvironmentTypesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectEnvironmentTypesCreateOrUpdateOutput =
-  typeof ProjectEnvironmentTypesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectEnvironmentTypesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5937,6 +7628,12 @@ export const ProjectEnvironmentTypesCreateOrUpdate =
     outputSchema: ProjectEnvironmentTypesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ProjectEnvironmentTypesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  environmentTypeName: string;
+}
 export const ProjectEnvironmentTypesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5949,15 +7646,12 @@ export const ProjectEnvironmentTypesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectEnvironmentTypesDeleteInput =
-  typeof ProjectEnvironmentTypesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProjectEnvironmentTypesDeleteInput>;
 
 // Output Schema
+export type ProjectEnvironmentTypesDeleteOutput = void;
 export const ProjectEnvironmentTypesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectEnvironmentTypesDeleteOutput =
-  typeof ProjectEnvironmentTypesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectEnvironmentTypesDeleteOutput>;
 
 // The operation
 /**
@@ -5975,6 +7669,12 @@ export const ProjectEnvironmentTypesDelete =
     outputSchema: ProjectEnvironmentTypesDeleteOutput,
   }));
 // Input Schema
+export interface ProjectEnvironmentTypesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  environmentTypeName: string;
+}
 export const ProjectEnvironmentTypesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5987,11 +7687,22 @@ export const ProjectEnvironmentTypesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectEnvironmentTypesGetInput =
-  typeof ProjectEnvironmentTypesGetInput.Type;
+  ) as unknown as Schema.Codec<ProjectEnvironmentTypesGetInput>;
 
 // Output Schema
+export interface ProjectEnvironmentTypesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectEnvironmentTypesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6011,9 +7722,7 @@ export const ProjectEnvironmentTypesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectEnvironmentTypesGetOutput =
-  typeof ProjectEnvironmentTypesGetOutput.Type;
+  }) as unknown as Schema.Codec<ProjectEnvironmentTypesGetOutput>;
 
 // The operation
 /**
@@ -6032,6 +7741,12 @@ export const ProjectEnvironmentTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectEnvironmentTypesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  $top?: number;
+}
 export const ProjectEnvironmentTypesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6044,11 +7759,25 @@ export const ProjectEnvironmentTypesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectEnvironmentTypesListInput =
-  typeof ProjectEnvironmentTypesListInput.Type;
+  ) as unknown as Schema.Codec<ProjectEnvironmentTypesListInput>;
 
 // Output Schema
+export interface ProjectEnvironmentTypesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectEnvironmentTypesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6085,9 +7814,7 @@ export const ProjectEnvironmentTypesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectEnvironmentTypesListOutput =
-  typeof ProjectEnvironmentTypesListOutput.Type;
+  }) as unknown as Schema.Codec<ProjectEnvironmentTypesListOutput>;
 
 // The operation
 /**
@@ -6106,6 +7833,38 @@ export const ProjectEnvironmentTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectEnvironmentTypesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  environmentTypeName: string;
+  properties?: {
+    deploymentTargetId?: string;
+    displayName?: string;
+    status?: "Enabled" | "Disabled";
+    creatorRoleAssignment?: {
+      roles?: Record<string, { roleName?: string; description?: string }>;
+    };
+    userRoleAssignments?: Record<
+      string,
+      { roles?: Record<string, { roleName?: string; description?: string }> }
+    >;
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const ProjectEnvironmentTypesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6176,11 +7935,22 @@ export const ProjectEnvironmentTypesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes/{environmentTypeName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectEnvironmentTypesUpdateInput =
-  typeof ProjectEnvironmentTypesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectEnvironmentTypesUpdateInput>;
 
 // Output Schema
+export interface ProjectEnvironmentTypesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectEnvironmentTypesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6200,9 +7970,7 @@ export const ProjectEnvironmentTypesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectEnvironmentTypesUpdateOutput =
-  typeof ProjectEnvironmentTypesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectEnvironmentTypesUpdateOutput>;
 
 // The operation
 /**
@@ -6220,6 +7988,32 @@ export const ProjectEnvironmentTypesUpdate =
     outputSchema: ProjectEnvironmentTypesUpdateOutput,
   }));
 // Input Schema
+export interface ProjectPoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  projectPolicyName: string;
+  properties?: {
+    resourcePolicies?: {
+      resources?: string;
+      filter?: string;
+      action?: "Allow" | "Deny";
+      resourceType?: "Images" | "AttachedNetworks" | "Skus";
+    }[];
+    scopes?: string[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6266,11 +8060,22 @@ export const ProjectPoliciesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectPoliciesCreateOrUpdateInput =
-  typeof ProjectPoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectPoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProjectPoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6290,9 +8095,7 @@ export const ProjectPoliciesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectPoliciesCreateOrUpdateOutput =
-  typeof ProjectPoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectPoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6310,6 +8113,12 @@ export const ProjectPoliciesCreateOrUpdate =
     outputSchema: ProjectPoliciesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ProjectPoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  projectPolicyName: string;
+}
 export const ProjectPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6322,14 +8131,12 @@ export const ProjectPoliciesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectPoliciesDeleteInput = typeof ProjectPoliciesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProjectPoliciesDeleteInput>;
 
 // Output Schema
+export type ProjectPoliciesDeleteOutput = void;
 export const ProjectPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectPoliciesDeleteOutput =
-  typeof ProjectPoliciesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -6348,6 +8155,12 @@ export const ProjectPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectPoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  projectPolicyName: string;
+}
 export const ProjectPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6360,10 +8173,22 @@ export const ProjectPoliciesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectPoliciesGetInput = typeof ProjectPoliciesGetInput.Type;
+  ) as unknown as Schema.Codec<ProjectPoliciesGetInput>;
 
 // Output Schema
+export interface ProjectPoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6383,8 +8208,7 @@ export const ProjectPoliciesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectPoliciesGetOutput = typeof ProjectPoliciesGetOutput.Type;
+  }) as unknown as Schema.Codec<ProjectPoliciesGetOutput>;
 
 // The operation
 /**
@@ -6401,6 +8225,12 @@ export const ProjectPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectPoliciesGetOutput,
 }));
 // Input Schema
+export interface ProjectPoliciesListByDevCenterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  $top?: number;
+}
 export const ProjectPoliciesListByDevCenterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6413,11 +8243,25 @@ export const ProjectPoliciesListByDevCenterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectPoliciesListByDevCenterInput =
-  typeof ProjectPoliciesListByDevCenterInput.Type;
+  ) as unknown as Schema.Codec<ProjectPoliciesListByDevCenterInput>;
 
 // Output Schema
+export interface ProjectPoliciesListByDevCenterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectPoliciesListByDevCenterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6454,9 +8298,7 @@ export const ProjectPoliciesListByDevCenterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectPoliciesListByDevCenterOutput =
-  typeof ProjectPoliciesListByDevCenterOutput.Type;
+  }) as unknown as Schema.Codec<ProjectPoliciesListByDevCenterOutput>;
 
 // The operation
 /**
@@ -6474,6 +8316,21 @@ export const ProjectPoliciesListByDevCenter =
     outputSchema: ProjectPoliciesListByDevCenterOutput,
   }));
 // Input Schema
+export interface ProjectPoliciesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  devCenterName: string;
+  projectPolicyName: string;
+  properties?: {
+    resourcePolicies?: {
+      resources?: string;
+      filter?: string;
+      action?: "Allow" | "Deny";
+      resourceType?: "Images" | "AttachedNetworks" | "Skus";
+    }[];
+    scopes?: string[];
+  };
+}
 export const ProjectPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6503,10 +8360,22 @@ export const ProjectPoliciesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectPoliciesUpdateInput = typeof ProjectPoliciesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectPoliciesUpdateInput>;
 
 // Output Schema
+export interface ProjectPoliciesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6526,9 +8395,7 @@ export const ProjectPoliciesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectPoliciesUpdateOutput =
-  typeof ProjectPoliciesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectPoliciesUpdateOutput>;
 
 // The operation
 /**
@@ -6547,6 +8414,35 @@ export const ProjectPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  properties?: {
+    devCenterId?: string;
+    description?: string;
+    maxDevBoxesPerUser?: number;
+    displayName?: string;
+    catalogSettings?: {
+      catalogItemSyncTypes?: ("EnvironmentDefinition" | "ImageDefinition")[];
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ProjectsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6598,11 +8494,22 @@ export const ProjectsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectsCreateOrUpdateInput =
-  typeof ProjectsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProjectsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6622,9 +8529,7 @@ export const ProjectsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectsCreateOrUpdateOutput =
-  typeof ProjectsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6642,6 +8547,11 @@ export const ProjectsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6652,12 +8562,12 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
+) as unknown as Schema.Codec<ProjectsDeleteInput>;
 
 // Output Schema
-export const ProjectsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
+export type ProjectsDeleteOutput = void;
+export const ProjectsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectsDeleteOutput>;
 
 // The operation
 /**
@@ -6673,6 +8583,11 @@ export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsDeleteOutput,
 }));
 // Input Schema
+export interface ProjectsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6683,10 +8598,22 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type ProjectsGetInput = typeof ProjectsGetInput.Type;
+) as unknown as Schema.Codec<ProjectsGetInput>;
 
 // Output Schema
+export interface ProjectsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6705,8 +8632,7 @@ export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsGetOutput = typeof ProjectsGetOutput.Type;
+}) as unknown as Schema.Codec<ProjectsGetOutput>;
 
 // The operation
 /**
@@ -6722,6 +8648,11 @@ export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsGetOutput,
 }));
 // Input Schema
+export interface ProjectsGetInheritedSettingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const ProjectsGetInheritedSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6733,11 +8664,17 @@ export const ProjectsGetInheritedSettingsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/getInheritedSettings",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectsGetInheritedSettingsInput =
-  typeof ProjectsGetInheritedSettingsInput.Type;
+  ) as unknown as Schema.Codec<ProjectsGetInheritedSettingsInput>;
 
 // Output Schema
+export interface ProjectsGetInheritedSettingsOutput {
+  projectCatalogSettings?: {
+    catalogItemSyncEnableStatus?: "Enabled" | "Disabled";
+  };
+  networkSettings?: {
+    microsoftHostedNetworkEnableStatus?: "Enabled" | "Disabled";
+  };
+}
 export const ProjectsGetInheritedSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectCatalogSettings: Schema.optional(
@@ -6754,9 +8691,7 @@ export const ProjectsGetInheritedSettingsOutput =
         ),
       }),
     ),
-  });
-export type ProjectsGetInheritedSettingsOutput =
-  typeof ProjectsGetInheritedSettingsOutput.Type;
+  }) as unknown as Schema.Codec<ProjectsGetInheritedSettingsOutput>;
 
 // The operation
 /**
@@ -6773,6 +8708,11 @@ export const ProjectsGetInheritedSettings =
     outputSchema: ProjectsGetInheritedSettingsOutput,
   }));
 // Input Schema
+export interface ProjectsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const ProjectsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6784,11 +8724,25 @@ export const ProjectsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectsListByResourceGroupInput =
-  typeof ProjectsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ProjectsListByResourceGroupInput>;
 
 // Output Schema
+export interface ProjectsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6825,9 +8779,7 @@ export const ProjectsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectsListByResourceGroupOutput =
-  typeof ProjectsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ProjectsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6845,6 +8797,10 @@ export const ProjectsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectsListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const ProjectsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6855,11 +8811,25 @@ export const ProjectsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/projects",
       apiVersion: "2025-02-01",
     }),
-  );
-export type ProjectsListBySubscriptionInput =
-  typeof ProjectsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ProjectsListBySubscriptionInput>;
 
 // Output Schema
+export interface ProjectsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6896,9 +8866,7 @@ export const ProjectsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectsListBySubscriptionOutput =
-  typeof ProjectsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ProjectsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6915,6 +8883,35 @@ export const ProjectsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  properties?: {
+    devCenterId?: string;
+    description?: string;
+    maxDevBoxesPerUser?: number;
+    displayName?: string;
+    catalogSettings?: {
+      catalogItemSyncTypes?: ("EnvironmentDefinition" | "ImageDefinition")[];
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6965,10 +8962,22 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
+) as unknown as Schema.Codec<ProjectsUpdateInput>;
 
 // Output Schema
+export interface ProjectsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6987,8 +8996,7 @@ export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsUpdateOutput = typeof ProjectsUpdateOutput.Type;
+}) as unknown as Schema.Codec<ProjectsUpdateOutput>;
 
 // The operation
 /**
@@ -7004,6 +9012,26 @@ export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsUpdateOutput,
 }));
 // Input Schema
+export interface SchedulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+  scheduleName: string;
+  $top?: number;
+  properties?: { tags?: Record<string, string>; location?: string };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7041,11 +9069,22 @@ export const SchedulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
       apiVersion: "2025-02-01",
     }),
-  );
-export type SchedulesCreateOrUpdateInput =
-  typeof SchedulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchedulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SchedulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7065,9 +9104,7 @@ export const SchedulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchedulesCreateOrUpdateOutput =
-  typeof SchedulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchedulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7088,6 +9125,14 @@ export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+  scheduleName: string;
+  $top?: number;
+}
 export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7101,12 +9146,12 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
+) as unknown as Schema.Codec<SchedulesDeleteInput>;
 
 // Output Schema
-export const SchedulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
+export type SchedulesDeleteOutput = void;
+export const SchedulesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -7125,6 +9170,14 @@ export const SchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesDeleteOutput,
 }));
 // Input Schema
+export interface SchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+  scheduleName: string;
+  $top?: number;
+}
 export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7138,10 +9191,22 @@ export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type SchedulesGetInput = typeof SchedulesGetInput.Type;
+) as unknown as Schema.Codec<SchedulesGetInput>;
 
 // Output Schema
+export interface SchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -7160,8 +9225,7 @@ export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchedulesGetOutput = typeof SchedulesGetOutput.Type;
+}) as unknown as Schema.Codec<SchedulesGetOutput>;
 
 // The operation
 /**
@@ -7180,6 +9244,13 @@ export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesGetOutput,
 }));
 // Input Schema
+export interface SchedulesListByPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+  $top?: number;
+}
 export const SchedulesListByPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7193,10 +9264,25 @@ export const SchedulesListByPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules",
       apiVersion: "2025-02-01",
     }),
-  );
-export type SchedulesListByPoolInput = typeof SchedulesListByPoolInput.Type;
+  ) as unknown as Schema.Codec<SchedulesListByPoolInput>;
 
 // Output Schema
+export interface SchedulesListByPoolOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchedulesListByPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7233,8 +9319,7 @@ export const SchedulesListByPoolOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchedulesListByPoolOutput = typeof SchedulesListByPoolOutput.Type;
+  }) as unknown as Schema.Codec<SchedulesListByPoolOutput>;
 
 // The operation
 /**
@@ -7252,6 +9337,15 @@ export const SchedulesListByPool = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesListByPoolOutput,
 }));
 // Input Schema
+export interface SchedulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  poolName: string;
+  scheduleName: string;
+  $top?: number;
+  properties?: { tags?: Record<string, string>; location?: string };
+}
 export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7271,10 +9365,22 @@ export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
     apiVersion: "2025-02-01",
   }),
-);
-export type SchedulesUpdateInput = typeof SchedulesUpdateInput.Type;
+) as unknown as Schema.Codec<SchedulesUpdateInput>;
 
 // Output Schema
+export interface SchedulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -7293,8 +9399,7 @@ export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchedulesUpdateOutput = typeof SchedulesUpdateOutput.Type;
+}) as unknown as Schema.Codec<SchedulesUpdateOutput>;
 
 // The operation
 /**
@@ -7313,6 +9418,11 @@ export const SchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesUpdateOutput,
 }));
 // Input Schema
+export interface SkusListByProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const SkusListByProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7325,10 +9435,19 @@ export const SkusListByProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/listSkus",
     apiVersion: "2025-02-01",
   }),
-);
-export type SkusListByProjectInput = typeof SkusListByProjectInput.Type;
+) as unknown as Schema.Codec<SkusListByProjectInput>;
 
 // Output Schema
+export interface SkusListByProjectOutput {
+  value?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  }[];
+  nextLink?: string;
+}
 export const SkusListByProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7345,8 +9464,7 @@ export const SkusListByProjectOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SkusListByProjectOutput = typeof SkusListByProjectOutput.Type;
+  }) as unknown as Schema.Codec<SkusListByProjectOutput>;
 
 // The operation
 /**
@@ -7362,6 +9480,10 @@ export const SkusListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkusListByProjectOutput,
 }));
 // Input Schema
+export interface SkusListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const SkusListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7372,11 +9494,19 @@ export const SkusListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/skus",
       apiVersion: "2025-02-01",
     }),
-  );
-export type SkusListBySubscriptionInput =
-  typeof SkusListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SkusListBySubscriptionInput>;
 
 // Output Schema
+export interface SkusListBySubscriptionOutput {
+  value?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  }[];
+  nextLink?: string;
+}
 export const SkusListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7393,9 +9523,7 @@ export const SkusListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SkusListBySubscriptionOutput =
-  typeof SkusListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SkusListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -7412,6 +9540,10 @@ export const SkusListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UsagesListByLocationInput {
+  subscriptionId: string;
+  location: string;
+}
 export const UsagesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7422,10 +9554,19 @@ export const UsagesListByLocationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/locations/{location}/usages",
       apiVersion: "2025-02-01",
     }),
-  );
-export type UsagesListByLocationInput = typeof UsagesListByLocationInput.Type;
+  ) as unknown as Schema.Codec<UsagesListByLocationInput>;
 
 // Output Schema
+export interface UsagesListByLocationOutput {
+  value?: {
+    currentValue?: number;
+    limit?: number;
+    unit?: "Count";
+    name?: { localizedValue?: string; value?: string };
+    id?: string;
+  }[];
+  nextLink?: string;
+}
 export const UsagesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7445,8 +9586,7 @@ export const UsagesListByLocationOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
+  }) as unknown as Schema.Codec<UsagesListByLocationOutput>;
 
 // The operation
 /**

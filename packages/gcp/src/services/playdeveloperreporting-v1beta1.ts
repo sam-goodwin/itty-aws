@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleTypeTimeZone {
   version?: string;
 }
 
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
+export const GoogleTypeTimeZone: Schema.Codec<GoogleTypeTimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface GoogleTypeDateTime {
   timeZone?: GoogleTypeTimeZone;
 }
 
-export const GoogleTypeDateTime: Schema.Schema<GoogleTypeDateTime> =
+export const GoogleTypeDateTime: Schema.Codec<GoogleTypeDateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
@@ -81,7 +81,7 @@ export interface GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness {
   latestEndTime?: GoogleTypeDateTime;
 }
 
-export const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness: Schema.Schema<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness> =
+export const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness: Schema.Codec<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregationPeriod: Schema.optional(Schema.String),
     latestEndTime: Schema.optional(GoogleTypeDateTime),
@@ -94,7 +94,7 @@ export interface GooglePlayDeveloperReportingV1beta1FreshnessInfo {
   freshnesses?: ReadonlyArray<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1FreshnessInfo: Schema.Schema<GooglePlayDeveloperReportingV1beta1FreshnessInfo> =
+export const GooglePlayDeveloperReportingV1beta1FreshnessInfo: Schema.Codec<GooglePlayDeveloperReportingV1beta1FreshnessInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freshnesses: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness),
@@ -110,7 +110,7 @@ export interface GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateM
   name?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet: Schema.Schema<GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet> =
+export const GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1beta1FreshnessInfo,
@@ -126,7 +126,7 @@ export interface GoogleTypeDecimal {
   value?: string;
 }
 
-export const GoogleTypeDecimal: Schema.Schema<GoogleTypeDecimal> =
+export const GoogleTypeDecimal: Schema.Codec<GoogleTypeDecimal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeDecimal" });
@@ -138,7 +138,7 @@ export interface GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval {
   upperBound?: GoogleTypeDecimal;
 }
 
-export const GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval: Schema.Schema<GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval> =
+export const GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval: Schema.Codec<GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lowerBound: Schema.optional(GoogleTypeDecimal),
     upperBound: Schema.optional(GoogleTypeDecimal),
@@ -157,7 +157,7 @@ export interface GooglePlayDeveloperReportingV1beta1DimensionValue {
   int64Value?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1DimensionValue: Schema.Schema<GooglePlayDeveloperReportingV1beta1DimensionValue> =
+export const GooglePlayDeveloperReportingV1beta1DimensionValue: Schema.Codec<GooglePlayDeveloperReportingV1beta1DimensionValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     valueLabel: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export interface GooglePlayDeveloperReportingV1beta1MetricValue {
   decimalValueConfidenceInterval?: GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval;
 }
 
-export const GooglePlayDeveloperReportingV1beta1MetricValue: Schema.Schema<GooglePlayDeveloperReportingV1beta1MetricValue> =
+export const GooglePlayDeveloperReportingV1beta1MetricValue: Schema.Codec<GooglePlayDeveloperReportingV1beta1MetricValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metric: Schema.optional(Schema.String),
     decimalValue: Schema.optional(GoogleTypeDecimal),
@@ -201,7 +201,7 @@ export interface GooglePlayDeveloperReportingV1beta1MetricsRow {
     | (string & {});
 }
 
-export const GooglePlayDeveloperReportingV1beta1MetricsRow: Schema.Schema<GooglePlayDeveloperReportingV1beta1MetricsRow> =
+export const GooglePlayDeveloperReportingV1beta1MetricsRow: Schema.Codec<GooglePlayDeveloperReportingV1beta1MetricsRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1DimensionValue),
@@ -220,7 +220,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRespo
   rows?: ReadonlyArray<GooglePlayDeveloperReportingV1beta1MetricsRow>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse> =
+export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rows: Schema.optional(
@@ -240,7 +240,7 @@ export interface GooglePlayDeveloperReportingV1beta1IssueAnnotation {
   body?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1IssueAnnotation: Schema.Schema<GooglePlayDeveloperReportingV1beta1IssueAnnotation> =
+export const GooglePlayDeveloperReportingV1beta1IssueAnnotation: Schema.Codec<GooglePlayDeveloperReportingV1beta1IssueAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface GooglePlayDeveloperReportingV1beta1OsVersion {
   apiLevel?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1OsVersion: Schema.Schema<GooglePlayDeveloperReportingV1beta1OsVersion> =
+export const GooglePlayDeveloperReportingV1beta1OsVersion: Schema.Codec<GooglePlayDeveloperReportingV1beta1OsVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiLevel: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePlayDeveloperReportingV1beta1OsVersion" });
@@ -264,7 +264,7 @@ export interface GooglePlayDeveloperReportingV1beta1AppVersion {
   versionCode?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1AppVersion: Schema.Schema<GooglePlayDeveloperReportingV1beta1AppVersion> =
+export const GooglePlayDeveloperReportingV1beta1AppVersion: Schema.Codec<GooglePlayDeveloperReportingV1beta1AppVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GooglePlayDeveloperReportingV1beta1AppVersion" });
@@ -307,7 +307,7 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorIssue {
   distinctUsersPercent?: GoogleTypeDecimal;
 }
 
-export const GooglePlayDeveloperReportingV1beta1ErrorIssue: Schema.Schema<GooglePlayDeveloperReportingV1beta1ErrorIssue> =
+export const GooglePlayDeveloperReportingV1beta1ErrorIssue: Schema.Codec<GooglePlayDeveloperReportingV1beta1ErrorIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     annotations: Schema.optional(
@@ -343,7 +343,7 @@ export interface GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse> =
+export const GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorIssues: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1ErrorIssue),
@@ -360,7 +360,7 @@ export interface GooglePlayDeveloperReportingV1beta1AnrRateMetricSet {
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
 
-export const GooglePlayDeveloperReportingV1beta1AnrRateMetricSet: Schema.Schema<GooglePlayDeveloperReportingV1beta1AnrRateMetricSet> =
+export const GooglePlayDeveloperReportingV1beta1AnrRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1beta1AnrRateMetricSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
@@ -377,7 +377,7 @@ export interface GooglePlayDeveloperReportingV1beta1LmkRateMetricSet {
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
 
-export const GooglePlayDeveloperReportingV1beta1LmkRateMetricSet: Schema.Schema<GooglePlayDeveloperReportingV1beta1LmkRateMetricSet> =
+export const GooglePlayDeveloperReportingV1beta1LmkRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1beta1LmkRateMetricSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
@@ -394,7 +394,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetr
   rows?: ReadonlyArray<GooglePlayDeveloperReportingV1beta1MetricsRow>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse> =
+export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rows: Schema.optional(
@@ -412,7 +412,7 @@ export interface GooglePlayDeveloperReportingV1beta1DeviceId {
   buildDevice?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1DeviceId: Schema.Schema<GooglePlayDeveloperReportingV1beta1DeviceId> =
+export const GooglePlayDeveloperReportingV1beta1DeviceId: Schema.Codec<GooglePlayDeveloperReportingV1beta1DeviceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buildBrand: Schema.optional(Schema.String),
     buildDevice: Schema.optional(Schema.String),
@@ -427,7 +427,7 @@ export interface GooglePlayDeveloperReportingV1beta1DeviceModelSummary {
   deviceUri?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1DeviceModelSummary: Schema.Schema<GooglePlayDeveloperReportingV1beta1DeviceModelSummary> =
+export const GooglePlayDeveloperReportingV1beta1DeviceModelSummary: Schema.Codec<GooglePlayDeveloperReportingV1beta1DeviceModelSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     marketingName: Schema.optional(Schema.String),
     deviceId: Schema.optional(GooglePlayDeveloperReportingV1beta1DeviceId),
@@ -462,7 +462,7 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorReport {
   eventTime?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1ErrorReport: Schema.Schema<GooglePlayDeveloperReportingV1beta1ErrorReport> =
+export const GooglePlayDeveloperReportingV1beta1ErrorReport: Schema.Codec<GooglePlayDeveloperReportingV1beta1ErrorReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceModel: Schema.optional(
       GooglePlayDeveloperReportingV1beta1DeviceModelSummary,
@@ -484,7 +484,7 @@ export interface GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse {
   nextPageToken?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse> =
+export const GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorReports: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1ErrorReport),
@@ -508,7 +508,7 @@ export interface GooglePlayDeveloperReportingV1beta1TimelineSpec {
   endTime?: GoogleTypeDateTime;
 }
 
-export const GooglePlayDeveloperReportingV1beta1TimelineSpec: Schema.Schema<GooglePlayDeveloperReportingV1beta1TimelineSpec> =
+export const GooglePlayDeveloperReportingV1beta1TimelineSpec: Schema.Codec<GooglePlayDeveloperReportingV1beta1TimelineSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregationPeriod: Schema.optional(Schema.String),
     startTime: Schema.optional(GoogleTypeDateTime),
@@ -530,7 +530,7 @@ export interface GooglePlayDeveloperReportingV1beta1Anomaly {
   metricSet?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1Anomaly: Schema.Schema<GooglePlayDeveloperReportingV1beta1Anomaly> =
+export const GooglePlayDeveloperReportingV1beta1Anomaly: Schema.Codec<GooglePlayDeveloperReportingV1beta1Anomaly> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1DimensionValue),
@@ -550,7 +550,7 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet {
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
 
-export const GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet: Schema.Schema<GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet> =
+export const GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
@@ -582,7 +582,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelock
   metrics?: ReadonlyArray<string>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest> =
+export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -605,7 +605,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResp
   rows?: ReadonlyArray<GooglePlayDeveloperReportingV1beta1MetricsRow>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse> =
+export const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rows: Schema.optional(
@@ -623,7 +623,7 @@ export interface GooglePlayDeveloperReportingV1beta1Release {
   versionCodes?: ReadonlyArray<string>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1Release: Schema.Schema<GooglePlayDeveloperReportingV1beta1Release> =
+export const GooglePlayDeveloperReportingV1beta1Release: Schema.Codec<GooglePlayDeveloperReportingV1beta1Release> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     versionCodes: Schema.optional(Schema.Array(Schema.String)),
@@ -636,7 +636,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelock
   nextPageToken?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse> =
+export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1MetricsRow),
@@ -654,7 +654,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRespons
   rows?: ReadonlyArray<GooglePlayDeveloperReportingV1beta1MetricsRow>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse> =
+export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rows: Schema.optional(
@@ -674,7 +674,7 @@ export interface GooglePlayDeveloperReportingV1beta1App {
   displayName?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1App: Schema.Schema<GooglePlayDeveloperReportingV1beta1App> =
+export const GooglePlayDeveloperReportingV1beta1App: Schema.Codec<GooglePlayDeveloperReportingV1beta1App> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -688,7 +688,7 @@ export interface GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse
   nextPageToken?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse> =
+export const GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(GooglePlayDeveloperReportingV1beta1App)),
     nextPageToken: Schema.optional(Schema.String),
@@ -706,7 +706,7 @@ export interface GooglePlayDeveloperReportingV1beta1Track {
   displayName?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1Track: Schema.Schema<GooglePlayDeveloperReportingV1beta1Track> =
+export const GooglePlayDeveloperReportingV1beta1Track: Schema.Codec<GooglePlayDeveloperReportingV1beta1Track> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servingReleases: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1Release),
@@ -720,7 +720,7 @@ export interface GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions {
   tracks?: ReadonlyArray<GooglePlayDeveloperReportingV1beta1Track>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions: Schema.Schema<GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions> =
+export const GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions: Schema.Codec<GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tracks: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1Track),
@@ -736,7 +736,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRespons
   nextPageToken?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse> =
+export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1MetricsRow),
@@ -769,7 +769,7 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetR
   metrics?: ReadonlyArray<string>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest: Schema.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest> =
+export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Schema.String)),
     timelineSpec: Schema.optional(
@@ -792,7 +792,7 @@ export interface GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
 
-export const GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet: Schema.Schema<GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet> =
+export const GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     freshnessInfo: Schema.optional(
@@ -825,7 +825,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetr
   dimensions?: ReadonlyArray<string>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest> =
+export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Schema.String),
@@ -863,7 +863,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest
   metrics?: ReadonlyArray<string>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest> =
+export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -886,7 +886,7 @@ export interface GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet {
   name?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet: Schema.Schema<GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet> =
+export const GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1beta1FreshnessInfo,
@@ -918,7 +918,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest
     | (string & {});
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest> =
+export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Schema.String),
@@ -941,7 +941,7 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetR
   nextPageToken?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse> =
+export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1MetricsRow),
@@ -959,7 +959,7 @@ export interface GooglePlayDeveloperReportingV1beta1CrashRateMetricSet {
   name?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1CrashRateMetricSet: Schema.Schema<GooglePlayDeveloperReportingV1beta1CrashRateMetricSet> =
+export const GooglePlayDeveloperReportingV1beta1CrashRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1beta1CrashRateMetricSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1beta1FreshnessInfo,
@@ -984,7 +984,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequ
   dimensions?: ReadonlyArray<string>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest> =
+export const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     pageSize: Schema.optional(Schema.Number),
@@ -1021,7 +1021,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetReque
   dimensions?: ReadonlyArray<string>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest: Schema.Schema<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest> =
+export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Schema.String),
@@ -1044,7 +1044,7 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetric
   nextPageToken?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse> =
+export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1MetricsRow),
@@ -1062,7 +1062,7 @@ export interface GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet {
   name?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet: Schema.Schema<GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet> =
+export const GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet: Schema.Codec<GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freshnessInfo: Schema.optional(
       GooglePlayDeveloperReportingV1beta1FreshnessInfo,
@@ -1079,7 +1079,7 @@ export interface GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse: Schema.Schema<GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse> =
+export const GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse: Schema.Codec<GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     anomalies: Schema.optional(
       Schema.Array(GooglePlayDeveloperReportingV1beta1Anomaly),
@@ -1111,7 +1111,7 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetric
   metrics?: ReadonlyArray<string>;
 }
 
-export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest: Schema.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest> =
+export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest: Schema.Codec<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -1200,7 +1200,7 @@ export const ListAnomaliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+parent}/anomalies" }),
   svc,
-) as unknown as Schema.Schema<ListAnomaliesRequest>;
+) as unknown as Schema.Codec<ListAnomaliesRequest>;
 
 export type ListAnomaliesResponse =
   GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse;
@@ -1236,7 +1236,7 @@ export const GetVitalsExcessivewakeuprateRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVitalsExcessivewakeuprateRequest>;
+  ) as unknown as Schema.Codec<GetVitalsExcessivewakeuprateRequest>;
 
 export type GetVitalsExcessivewakeuprateResponse =
   GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet;
@@ -1276,7 +1276,7 @@ export const QueryVitalsExcessivewakeuprateRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryVitalsExcessivewakeuprateRequest>;
+  ) as unknown as Schema.Codec<QueryVitalsExcessivewakeuprateRequest>;
 
 export type QueryVitalsExcessivewakeuprateResponse =
   GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse;
@@ -1313,7 +1313,7 @@ export const GetVitalsCrashrateRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVitalsCrashrateRequest>;
+  ) as unknown as Schema.Codec<GetVitalsCrashrateRequest>;
 
 export type GetVitalsCrashrateResponse =
   GooglePlayDeveloperReportingV1beta1CrashRateMetricSet;
@@ -1350,7 +1350,7 @@ export const QueryVitalsCrashrateRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryVitalsCrashrateRequest>;
+  ) as unknown as Schema.Codec<QueryVitalsCrashrateRequest>;
 
 export type QueryVitalsCrashrateResponse =
   GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse;
@@ -1387,7 +1387,7 @@ export const GetVitalsAnrrateRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVitalsAnrrateRequest>;
+  ) as unknown as Schema.Codec<GetVitalsAnrrateRequest>;
 
 export type GetVitalsAnrrateResponse =
   GooglePlayDeveloperReportingV1beta1AnrRateMetricSet;
@@ -1424,7 +1424,7 @@ export const QueryVitalsAnrrateRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryVitalsAnrrateRequest>;
+  ) as unknown as Schema.Codec<QueryVitalsAnrrateRequest>;
 
 export type QueryVitalsAnrrateResponse =
   GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse;
@@ -1461,7 +1461,7 @@ export const GetVitalsStuckbackgroundwakelockrateRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVitalsStuckbackgroundwakelockrateRequest>;
+  ) as unknown as Schema.Codec<GetVitalsStuckbackgroundwakelockrateRequest>;
 
 export type GetVitalsStuckbackgroundwakelockrateResponse =
   GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet;
@@ -1501,7 +1501,7 @@ export const QueryVitalsStuckbackgroundwakelockrateRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryVitalsStuckbackgroundwakelockrateRequest>;
+  ) as unknown as Schema.Codec<QueryVitalsStuckbackgroundwakelockrateRequest>;
 
 export type QueryVitalsStuckbackgroundwakelockrateResponse =
   GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse;
@@ -1538,7 +1538,7 @@ export const GetVitalsSlowrenderingrateRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVitalsSlowrenderingrateRequest>;
+  ) as unknown as Schema.Codec<GetVitalsSlowrenderingrateRequest>;
 
 export type GetVitalsSlowrenderingrateResponse =
   GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet;
@@ -1578,7 +1578,7 @@ export const QueryVitalsSlowrenderingrateRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryVitalsSlowrenderingrateRequest>;
+  ) as unknown as Schema.Codec<QueryVitalsSlowrenderingrateRequest>;
 
 export type QueryVitalsSlowrenderingrateResponse =
   GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse;
@@ -1615,7 +1615,7 @@ export const GetVitalsLmkrateRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVitalsLmkrateRequest>;
+  ) as unknown as Schema.Codec<GetVitalsLmkrateRequest>;
 
 export type GetVitalsLmkrateResponse =
   GooglePlayDeveloperReportingV1beta1LmkRateMetricSet;
@@ -1652,7 +1652,7 @@ export const QueryVitalsLmkrateRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryVitalsLmkrateRequest>;
+  ) as unknown as Schema.Codec<QueryVitalsLmkrateRequest>;
 
 export type QueryVitalsLmkrateResponse =
   GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse;
@@ -1689,7 +1689,7 @@ export const GetVitalsSlowstartrateRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVitalsSlowstartrateRequest>;
+  ) as unknown as Schema.Codec<GetVitalsSlowstartrateRequest>;
 
 export type GetVitalsSlowstartrateResponse =
   GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet;
@@ -1726,7 +1726,7 @@ export const QueryVitalsSlowstartrateRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryVitalsSlowstartrateRequest>;
+  ) as unknown as Schema.Codec<QueryVitalsSlowstartrateRequest>;
 
 export type QueryVitalsSlowstartrateResponse =
   GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse;
@@ -1872,7 +1872,7 @@ export const SearchVitalsErrorsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/errorReports:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchVitalsErrorsReportsRequest>;
+  ) as unknown as Schema.Codec<SearchVitalsErrorsReportsRequest>;
 
 export type SearchVitalsErrorsReportsResponse =
   GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse;
@@ -1911,7 +1911,7 @@ export const GetVitalsErrorsCountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVitalsErrorsCountsRequest>;
+  ) as unknown as Schema.Codec<GetVitalsErrorsCountsRequest>;
 
 export type GetVitalsErrorsCountsResponse =
   GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet;
@@ -1948,7 +1948,7 @@ export const QueryVitalsErrorsCountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<QueryVitalsErrorsCountsRequest>;
+  ) as unknown as Schema.Codec<QueryVitalsErrorsCountsRequest>;
 
 export type QueryVitalsErrorsCountsResponse =
   GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse;
@@ -2102,7 +2102,7 @@ export const SearchVitalsErrorsIssuesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/errorIssues:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchVitalsErrorsIssuesRequest>;
+  ) as unknown as Schema.Codec<SearchVitalsErrorsIssuesRequest>;
 
 export type SearchVitalsErrorsIssuesResponse =
   GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse;
@@ -2144,7 +2144,7 @@ export const FetchReleaseFilterOptionsAppsRequest =
       path: "v1beta1/{+name}:fetchReleaseFilterOptions",
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchReleaseFilterOptionsAppsRequest>;
+  ) as unknown as Schema.Codec<FetchReleaseFilterOptionsAppsRequest>;
 
 export type FetchReleaseFilterOptionsAppsResponse =
   GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions;
@@ -2181,7 +2181,7 @@ export const SearchAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/apps:search" }),
   svc,
-) as unknown as Schema.Schema<SearchAppsRequest>;
+) as unknown as Schema.Codec<SearchAppsRequest>;
 
 export type SearchAppsResponse =
   GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse;

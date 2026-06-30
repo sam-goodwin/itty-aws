@@ -208,6 +208,7 @@ describe("AI", () => {
         finetuneId: "00000000-0000-0000-0000-000000000000",
         accountId: accountId(),
         fileName: "test.jsonl",
+        file: new Blob(["{}"]),
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("ModelNotSupported")),
@@ -218,6 +219,7 @@ describe("AI", () => {
         finetuneId: "00000000-0000-0000-0000-000000000000",
         accountId: "invalid-account-id-000",
         fileName: "test.jsonl",
+        file: new Blob(["{}"]),
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("AccountNotFound")),
@@ -228,6 +230,7 @@ describe("AI", () => {
         finetuneId: "00000000-0000-0000-0000-000000000000",
         accountId: "",
         fileName: "test.jsonl",
+        file: new Blob(["{}"]),
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("AccountNotFound")),
@@ -238,6 +241,7 @@ describe("AI", () => {
         finetuneId: "",
         accountId: accountId(),
         fileName: "test.jsonl",
+        file: new Blob(["{}"]),
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("ModelNotSupported")),

@@ -29,7 +29,7 @@ describe("deleteVirtualField", () => {
           name: fieldName,
           description: "deleteVirtualField happy path",
           expression: "1 + 1",
-        } as unknown as Record<string, never>);
+        });
         createdId = created.id;
 
         yield* deleteVirtualField({ id: created.id });
@@ -54,7 +54,7 @@ describe("deleteVirtualField", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -68,6 +68,6 @@ describe("deleteVirtualField", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

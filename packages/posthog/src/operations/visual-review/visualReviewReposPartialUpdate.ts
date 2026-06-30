@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewReposPartialUpdateInput {
+  id: string;
+  project_id: string;
+  baseline_file_paths?: Record<string, string> | null;
+  enable_pr_comments?: boolean | null;
+}
 export const VisualReviewReposPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +23,18 @@ export const VisualReviewReposPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/visual_review/repos/{id}/",
     }),
-  );
-export type VisualReviewReposPartialUpdateInput =
-  typeof VisualReviewReposPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposPartialUpdateInput>;
 
 // Output Schema
+export interface VisualReviewReposPartialUpdateOutput {
+  id?: string;
+  team_id?: number;
+  repo_external_id?: number;
+  repo_full_name?: string;
+  baseline_file_paths?: Record<string, string>;
+  enable_pr_comments?: boolean;
+  created_at?: string;
+}
 export const VisualReviewReposPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -33,9 +46,7 @@ export const VisualReviewReposPartialUpdateOutput =
     ),
     enable_pr_comments: Schema.optional(Schema.Boolean),
     created_at: Schema.optional(Schema.String),
-  });
-export type VisualReviewReposPartialUpdateOutput =
-  typeof VisualReviewReposPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewReposPartialUpdateOutput>;
 
 // The operation
 /**

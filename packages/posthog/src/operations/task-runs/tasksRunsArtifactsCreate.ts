@@ -4,6 +4,34 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsArtifactsCreateInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  artifacts?: {
+    name?: string;
+    type?:
+      | "plan"
+      | "context"
+      | "reference"
+      | "output"
+      | "artifact"
+      | "tree_snapshot"
+      | "user_attachment"
+      | "skill_bundle";
+    source?: string;
+    content?: string;
+    content_encoding?: "utf-8" | "base64";
+    content_type?: string;
+    metadata?: {
+      skill_name: string;
+      skill_source: "user" | "repo" | "marketplace" | "codex";
+      content_sha256: string;
+      bundle_format: "zip";
+      schema_version: number;
+    };
+  }[];
+}
 export const TasksRunsArtifactsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -53,11 +81,28 @@ export const TasksRunsArtifactsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/",
     }),
-  );
-export type TasksRunsArtifactsCreateInput =
-  typeof TasksRunsArtifactsCreateInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsArtifactsCreateInput>;
 
 // Output Schema
+export interface TasksRunsArtifactsCreateOutput {
+  artifacts?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    source?: string;
+    size?: number;
+    content_type?: string;
+    metadata?: {
+      skill_name: string;
+      skill_source: "user" | "repo" | "marketplace" | "codex";
+      content_sha256: string;
+      bundle_format: "zip";
+      schema_version: number;
+    };
+    storage_path?: string;
+    uploaded_at?: string;
+  }[];
+}
 export const TasksRunsArtifactsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifacts: Schema.optional(
@@ -88,9 +133,7 @@ export const TasksRunsArtifactsCreateOutput =
         }),
       ),
     ),
-  });
-export type TasksRunsArtifactsCreateOutput =
-  typeof TasksRunsArtifactsCreateOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsArtifactsCreateOutput>;
 
 // The operation
 /**

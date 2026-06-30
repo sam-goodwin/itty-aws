@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ExternalDataSourcesConnectLinkRetrieveInput {
+  project_id: string;
+  source_type: string;
+}
 export const ExternalDataSourcesConnectLinkRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,20 +16,22 @@ export const ExternalDataSourcesConnectLinkRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/external_data_sources/connect_link/",
     }),
-  );
-export type ExternalDataSourcesConnectLinkRetrieveInput =
-  typeof ExternalDataSourcesConnectLinkRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSourcesConnectLinkRetrieveInput>;
 
 // Output Schema
+export interface ExternalDataSourcesConnectLinkRetrieveOutput {
+  source_type: string;
+  auth_method: "oauth" | "credentials";
+  connect_url: string;
+  instructions: string;
+}
 export const ExternalDataSourcesConnectLinkRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source_type: Schema.String,
     auth_method: Schema.Literals(["oauth", "credentials"]),
     connect_url: Schema.String,
     instructions: Schema.String,
-  });
-export type ExternalDataSourcesConnectLinkRetrieveOutput =
-  typeof ExternalDataSourcesConnectLinkRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ExternalDataSourcesConnectLinkRetrieveOutput>;
 
 // The operation
 /**

@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpServerInstallationsUpdateInput {
+  id: string;
+  project_id: string;
+  template_id?: string | null;
+  name?: string;
+  icon_key?: string;
+  display_name?: string;
+  url?: string;
+  description?: string;
+  auth_type?: "api_key" | "oauth";
+  is_enabled?: boolean;
+  needs_reauth?: boolean;
+  pending_oauth?: boolean;
+  proxy_url?: string;
+  tool_count?: number;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const McpServerInstallationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -26,11 +44,26 @@ export const McpServerInstallationsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/mcp_server_installations/{id}/",
     }),
-  );
-export type McpServerInstallationsUpdateInput =
-  typeof McpServerInstallationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<McpServerInstallationsUpdateInput>;
 
 // Output Schema
+export interface McpServerInstallationsUpdateOutput {
+  id?: string;
+  template_id?: string | null;
+  name?: string;
+  icon_key?: string;
+  display_name?: string;
+  url?: string;
+  description?: string;
+  auth_type?: "api_key" | "oauth";
+  is_enabled?: boolean;
+  needs_reauth?: boolean;
+  pending_oauth?: boolean;
+  proxy_url?: string;
+  tool_count?: number;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const McpServerInstallationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -48,9 +81,7 @@ export const McpServerInstallationsUpdateOutput =
     tool_count: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type McpServerInstallationsUpdateOutput =
-  typeof McpServerInstallationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<McpServerInstallationsUpdateOutput>;
 
 // The operation
 /**

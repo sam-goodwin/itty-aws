@@ -4,11 +4,30 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ADCCatalogsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  properties?: {
+    sku?: "Free" | "Standard";
+    units?: number;
+    admins?: { upn?: string; objectId?: string }[];
+    users?: { upn?: string; objectId?: string }[];
+    successfullyProvisioned?: boolean;
+    enableAutomaticUnitAdjustment?: boolean;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const ADCCatalogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -50,11 +69,17 @@ export const ADCCatalogsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
       apiVersion: "2016-03-30",
     }),
-  );
-export type ADCCatalogsCreateOrUpdateInput =
-  typeof ADCCatalogsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ADCCatalogsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ADCCatalogsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const ADCCatalogsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -63,9 +88,7 @@ export const ADCCatalogsCreateOrUpdateOutput =
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
-  });
-export type ADCCatalogsCreateOrUpdateOutput =
-  typeof ADCCatalogsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ADCCatalogsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -85,6 +108,11 @@ export const ADCCatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ADCCatalogsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+}
 export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -97,12 +125,12 @@ export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
     apiVersion: "2016-03-30",
   }),
-);
-export type ADCCatalogsDeleteInput = typeof ADCCatalogsDeleteInput.Type;
+) as unknown as Schema.Codec<ADCCatalogsDeleteInput>;
 
 // Output Schema
-export const ADCCatalogsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ADCCatalogsDeleteOutput = typeof ADCCatalogsDeleteOutput.Type;
+export type ADCCatalogsDeleteOutput = void;
+export const ADCCatalogsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ADCCatalogsDeleteOutput>;
 
 // The operation
 /**
@@ -120,6 +148,11 @@ export const ADCCatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ADCCatalogsDeleteOutput,
 }));
 // Input Schema
+export interface ADCCatalogsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+}
 export const ADCCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -130,10 +163,17 @@ export const ADCCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
     apiVersion: "2016-03-30",
   }),
-);
-export type ADCCatalogsGetInput = typeof ADCCatalogsGetInput.Type;
+) as unknown as Schema.Codec<ADCCatalogsGetInput>;
 
 // Output Schema
+export interface ADCCatalogsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const ADCCatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -141,8 +181,7 @@ export const ADCCatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   etag: Schema.optional(Schema.String),
-});
-export type ADCCatalogsGetOutput = typeof ADCCatalogsGetOutput.Type;
+}) as unknown as Schema.Codec<ADCCatalogsGetOutput>;
 
 // The operation
 /**
@@ -160,6 +199,10 @@ export const ADCCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ADCCatalogsGetOutput,
 }));
 // Input Schema
+export interface ADCCatalogsListtByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ADCCatalogsListtByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -170,11 +213,19 @@ export const ADCCatalogsListtByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs",
       apiVersion: "2016-03-30",
     }),
-  );
-export type ADCCatalogsListtByResourceGroupInput =
-  typeof ADCCatalogsListtByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ADCCatalogsListtByResourceGroupInput>;
 
 // Output Schema
+export interface ADCCatalogsListtByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    etag?: string;
+  }[];
+}
 export const ADCCatalogsListtByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -189,9 +240,7 @@ export const ADCCatalogsListtByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type ADCCatalogsListtByResourceGroupOutput =
-  typeof ADCCatalogsListtByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ADCCatalogsListtByResourceGroupOutput>;
 
 // The operation
 /**
@@ -209,6 +258,25 @@ export const ADCCatalogsListtByResourceGroup =
     outputSchema: ADCCatalogsListtByResourceGroupOutput,
   }));
 // Input Schema
+export interface ADCCatalogsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  properties?: {
+    sku?: "Free" | "Standard";
+    units?: number;
+    admins?: { upn?: string; objectId?: string }[];
+    users?: { upn?: string; objectId?: string }[];
+    successfullyProvisioned?: boolean;
+    enableAutomaticUnitAdjustment?: boolean;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const ADCCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -251,10 +319,17 @@ export const ADCCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
     apiVersion: "2016-03-30",
   }),
-);
-export type ADCCatalogsUpdateInput = typeof ADCCatalogsUpdateInput.Type;
+) as unknown as Schema.Codec<ADCCatalogsUpdateInput>;
 
 // Output Schema
+export interface ADCCatalogsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const ADCCatalogsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -263,8 +338,7 @@ export const ADCCatalogsUpdateOutput =
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
-  });
-export type ADCCatalogsUpdateOutput = typeof ADCCatalogsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ADCCatalogsUpdateOutput>;
 
 // The operation
 /**
@@ -282,6 +356,7 @@ export const ADCCatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ADCCatalogsUpdateOutput,
 }));
 // Input Schema
+export interface ADCOperationsListInput {}
 export const ADCOperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -290,10 +365,20 @@ export const ADCOperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DataCatalog/operations",
     apiVersion: "2016-03-30",
   }),
-);
-export type ADCOperationsListInput = typeof ADCOperationsListInput.Type;
+) as unknown as Schema.Codec<ADCOperationsListInput>;
 
 // Output Schema
+export interface ADCOperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      description?: string;
+      operation?: string;
+      provider?: string;
+      resource?: string;
+    };
+  }[];
+}
 export const ADCOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -311,8 +396,7 @@ export const ADCOperationsListOutput =
         }),
       ),
     ),
-  });
-export type ADCOperationsListOutput = typeof ADCOperationsListOutput.Type;
+  }) as unknown as Schema.Codec<ADCOperationsListOutput>;
 
 // The operation
 /**

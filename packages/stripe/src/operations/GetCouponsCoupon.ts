@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetCouponsCouponInput {
+  coupon: string;
+  expand?: string;
+}
 export const GetCouponsCouponInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   coupon: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
@@ -12,10 +16,28 @@ export const GetCouponsCouponInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/coupons/{coupon}",
     contentType: "form-urlencoded",
   }),
-);
-export type GetCouponsCouponInput = typeof GetCouponsCouponInput.Type;
+) as unknown as Schema.Codec<GetCouponsCouponInput>;
 
 // Output Schema
+export interface GetCouponsCouponOutput {
+  amount_off: number | null;
+  applies_to?: { products: string[] };
+  created: number;
+  currency: string | null;
+  currency_options?: Record<string, { amount_off: number }>;
+  duration: "forever" | "once" | "repeating";
+  duration_in_months: number | null;
+  id: string;
+  livemode: boolean;
+  max_redemptions: number | null;
+  metadata: Record<string, string> | null;
+  name: string | null;
+  object: "coupon";
+  percent_off: number | null;
+  redeem_by: number | null;
+  times_redeemed: number;
+  valid: boolean;
+}
 export const GetCouponsCouponOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     amount_off: Schema.NullOr(Schema.Number),
@@ -47,8 +69,7 @@ export const GetCouponsCouponOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     times_redeemed: Schema.Number,
     valid: Schema.Boolean,
   },
-);
-export type GetCouponsCouponOutput = typeof GetCouponsCouponOutput.Type;
+) as unknown as Schema.Codec<GetCouponsCouponOutput>;
 
 // The operation
 /**

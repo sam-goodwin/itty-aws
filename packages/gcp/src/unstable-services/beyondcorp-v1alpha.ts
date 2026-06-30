@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface ServiceAccount {
   email?: string;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
+export const ServiceAccount: Schema.Codec<ServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceAccount" });
@@ -37,7 +37,7 @@ export interface PrincipalInfo {
   serviceAccount?: ServiceAccount;
 }
 
-export const PrincipalInfo: Schema.Schema<PrincipalInfo> =
+export const PrincipalInfo: Schema.Codec<PrincipalInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(ServiceAccount),
   }).annotate({ identifier: "PrincipalInfo" });
@@ -61,7 +61,7 @@ export interface ResourceInfo {
   sub?: ReadonlyArray<ResourceInfo>;
 }
 
-export const ResourceInfo: Schema.Schema<ResourceInfo> =
+export const ResourceInfo: Schema.Codec<ResourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       status: Schema.optional(Schema.String),
@@ -72,7 +72,7 @@ export const ResourceInfo: Schema.Schema<ResourceInfo> =
     }),
   ).annotate({
     identifier: "ResourceInfo",
-  }) as any as Schema.Schema<ResourceInfo>;
+  }) as any as Schema.Codec<ResourceInfo>;
 
 export interface Connector {
   /** Output only. The current state of the connector. */
@@ -102,7 +102,7 @@ export interface Connector {
   createTime?: string;
 }
 
-export const Connector: Schema.Schema<Connector> =
+export const Connector: Schema.Codec<Connector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo {
   resource?: Record<string, unknown>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -147,11 +147,11 @@ export const GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo: Schema.Schem
     }),
   ).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>;
+  }) as any as Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>;
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig {}
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig",
   });
@@ -163,7 +163,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint {
   hostname?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     hostname: Schema.optional(Schema.String),
@@ -186,7 +186,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata
   groupable?: boolean;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterable: Schema.optional(Schema.Boolean),
     description: Schema.optional(Schema.String),
@@ -224,7 +224,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata
   displayName?: string;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export interface AppGatewayOperationMetadata {
   statusMessage?: string;
 }
 
-export const AppGatewayOperationMetadata: Schema.Schema<AppGatewayOperationMetadata> =
+export const AppGatewayOperationMetadata: Schema.Codec<AppGatewayOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -277,7 +277,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher {
   ports?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostname: Schema.optional(Schema.String),
     ports: Schema.optional(Schema.Array(Schema.Number)),
@@ -295,7 +295,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDe
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputType: Schema.optional(Schema.String),
   }).annotate({
@@ -313,7 +313,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDe
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputType: Schema.optional(Schema.String),
   }).annotate({
@@ -331,7 +331,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDe
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputType: Schema.optional(Schema.String),
   }).annotate({
@@ -355,7 +355,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders {
   groupInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceInfo: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo,
@@ -387,7 +387,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig
   metadataHeaders?: Record<string, string>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedClientHeaders: Schema.optional(Schema.Array(Schema.String)),
     contextualHeaders: Schema.optional(
@@ -408,7 +408,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream
   name?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -421,7 +421,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream
   endpoints?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoints: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint),
@@ -436,7 +436,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy {
   regions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -454,7 +454,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream
   egressPolicy?: GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxyProtocol: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig,
@@ -494,7 +494,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication {
   upstreams?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -524,7 +524,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails
   errorMsg?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentConfigVersion: Schema.optional(Schema.String),
     expectedConfigVersion: Schema.optional(Schema.String),
@@ -542,7 +542,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalI
   email?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
@@ -557,7 +557,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping 
   fieldFilter?: string;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupFields: Schema.optional(Schema.Array(Schema.String)),
     fieldFilter: Schema.optional(Schema.String),
@@ -588,7 +588,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig {
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -613,7 +613,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal {
   value?: string;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -628,7 +628,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow {
   fieldValues?: ReadonlyArray<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal>;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldValues: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal),
@@ -648,7 +648,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight {
   rows?: ReadonlyArray<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow>;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appliedConfig: Schema.optional(
       GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig,
@@ -669,7 +669,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApi
   path?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({
@@ -694,7 +694,7 @@ export interface GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperati
   statusMessage?: string;
 }
 
-export const GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata> =
+export const GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -713,7 +713,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfigClou
   pubsubSubscription?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfigCloudPubSubNotificationConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfigCloudPubSubNotificationConfig> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfigCloudPubSubNotificationConfig: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfigCloudPubSubNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubSubscription: Schema.optional(Schema.String),
   }).annotate({
@@ -726,7 +726,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfig {
   pubsubNotification?: GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfigCloudPubSubNotificationConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfig> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfig: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubNotification: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfigCloudPubSubNotificationConfig,
@@ -742,7 +742,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig {
   targetImage?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stableImage: Schema.optional(Schema.String),
     targetImage: Schema.optional(Schema.String),
@@ -761,7 +761,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorInstanceCo
   imageConfig?: GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorInstanceConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorInstanceConfig> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorInstanceConfig: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sequenceNumber: Schema.optional(Schema.String),
     instanceConfig: Schema.optional(
@@ -789,7 +789,7 @@ export interface GoogleTypeExpr {
   title?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -806,7 +806,7 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -825,7 +825,7 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -838,7 +838,7 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
@@ -855,7 +855,7 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
@@ -870,7 +870,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleIamV1Policy),
     updateMask: Schema.optional(Schema.String),
@@ -891,7 +891,7 @@ export interface CloudSecurityZerotrustApplinkAppConnectorProtoGateway {
   selfLink?: string;
 }
 
-export const CloudSecurityZerotrustApplinkAppConnectorProtoGateway: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoGateway> =
+export const CloudSecurityZerotrustApplinkAppConnectorProtoGateway: Schema.Codec<CloudSecurityZerotrustApplinkAppConnectorProtoGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     interface: Schema.optional(Schema.String),
@@ -912,7 +912,7 @@ export interface Gateway {
   uri?: string;
 }
 
-export const Gateway: Schema.Schema<Gateway> =
+export const Gateway: Schema.Codec<Gateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPort: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
@@ -926,7 +926,7 @@ export interface ApplicationEndpoint {
   host?: string;
 }
 
-export const ApplicationEndpoint: Schema.Schema<ApplicationEndpoint> =
+export const ApplicationEndpoint: Schema.Codec<ApplicationEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     host: Schema.optional(Schema.String),
@@ -964,7 +964,7 @@ export interface Connection {
   applicationEndpoint?: ApplicationEndpoint;
 }
 
-export const Connection: Schema.Schema<Connection> =
+export const Connection: Schema.Codec<Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -984,7 +984,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApi
   resourceOverride?: GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceOverride: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor,
@@ -999,7 +999,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery {
   apiGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiGateway: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway,
@@ -1025,7 +1025,7 @@ export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig 
   userPort?: number;
 }
 
-export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig> =
+export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig: Schema.Codec<CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationName: Schema.optional(Schema.String),
     gateway: Schema.optional(
@@ -1050,7 +1050,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsig
   rows?: ReadonlyArray<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow>;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appliedConfig: Schema.optional(
       GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig,
@@ -1073,7 +1073,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsRes
   applications?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1090,7 +1090,7 @@ export interface GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubs
   effectiveCancellationTime?: string;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse: Schema.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse> =
+export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse: Schema.Codec<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveCancellationTime: Schema.optional(Schema.String),
   }).annotate({
@@ -1107,7 +1107,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1118,7 +1118,7 @@ export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails {}
 
-export const GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails> =
+export const GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails",
   });
@@ -1140,7 +1140,7 @@ export interface GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata {
   statusMessage?: string;
 }
 
-export const GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata> =
+export const GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
@@ -1170,7 +1170,7 @@ export interface ConnectionOperationMetadata {
   verb?: string;
 }
 
-export const ConnectionOperationMetadata: Schema.Schema<ConnectionOperationMetadata> =
+export const ConnectionOperationMetadata: Schema.Codec<ConnectionOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
@@ -1198,7 +1198,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMeta
   verb?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata> =
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
@@ -1223,7 +1223,7 @@ export interface ContainerHealthDetails {
   currentConfigVersion?: string;
 }
 
-export const ContainerHealthDetails: Schema.Schema<ContainerHealthDetails> =
+export const ContainerHealthDetails: Schema.Codec<ContainerHealthDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extendedStatus: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1246,7 +1246,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway 
   appGateway?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway> =
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingressPort: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
@@ -1265,7 +1265,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicat
   host?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint> =
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     host: Schema.optional(Schema.String),
@@ -1310,7 +1310,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection {
   labels?: Record<string, string>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection> =
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     satisfiesPzi: Schema.optional(Schema.Boolean),
     state: Schema.optional(Schema.String),
@@ -1340,7 +1340,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnections
   recentMigVms?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponseAppConnectionDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponseAppConnectionDetails> =
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponseAppConnectionDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponseAppConnectionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appConnection: Schema.optional(
       GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection,
@@ -1356,7 +1356,7 @@ export interface CloudPubSubNotificationConfig {
   pubsubSubscription?: string;
 }
 
-export const CloudPubSubNotificationConfig: Schema.Schema<CloudPubSubNotificationConfig> =
+export const CloudPubSubNotificationConfig: Schema.Codec<CloudPubSubNotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubSubscription: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudPubSubNotificationConfig" });
@@ -1374,7 +1374,7 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1385,7 +1385,7 @@ export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperatio
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1395,7 +1395,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway {
   assignedIps?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignedIps: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1411,7 +1411,7 @@ export interface ListConnectorsResponse {
   connectors?: ReadonlyArray<Connector>;
 }
 
-export const ListConnectorsResponse: Schema.Schema<ListConnectorsResponse> =
+export const ListConnectorsResponse: Schema.Codec<ListConnectorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1423,7 +1423,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigR
   instanceConfig?: GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorInstanceConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceConfig: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorInstanceConfig,
@@ -1470,7 +1470,7 @@ export interface GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscripti
   endTime?: string;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription: Schema.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription> =
+export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription: Schema.Codec<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccount: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1498,7 +1498,7 @@ export interface GoogleLongrunningListOperationsResponse {
   operations?: ReadonlyArray<GoogleLongrunningOperation>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1510,7 +1510,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
+export const GoogleIamV1TestIamPermissionsResponse: Schema.Codec<GoogleIamV1TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
@@ -1524,7 +1524,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnections
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse> =
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appConnectionDetails: Schema.optional(
       Schema.Array(
@@ -1555,7 +1555,7 @@ export interface ConnectorOperationMetadata {
   verb?: string;
 }
 
-export const ConnectorOperationMetadata: Schema.Schema<ConnectorOperationMetadata> =
+export const ConnectorOperationMetadata: Schema.Codec<ConnectorOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
@@ -1568,7 +1568,7 @@ export const ConnectorOperationMetadata: Schema.Schema<ConnectorOperationMetadat
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
@@ -1580,7 +1580,7 @@ export interface AllocatedConnection {
   ingressPort?: number;
 }
 
-export const AllocatedConnection: Schema.Schema<AllocatedConnection> =
+export const AllocatedConnection: Schema.Codec<AllocatedConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pscUri: Schema.optional(Schema.String),
     ingressPort: Schema.optional(Schema.Number),
@@ -1588,7 +1588,7 @@ export const AllocatedConnection: Schema.Schema<AllocatedConnection> =
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails {}
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails",
   });
@@ -1604,7 +1604,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails {
   expectedConfigVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails> =
+export const GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentConfigVersion: Schema.optional(Schema.String),
     extendedStatus: Schema.optional(
@@ -1633,7 +1633,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationM
   statusMessage?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1652,7 +1652,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalI
   serviceAccount?: GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(
       GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount,
@@ -1679,7 +1679,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetada
   createTime?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata> =
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
@@ -1721,7 +1721,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector {
   principalInfo?: GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uid: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -1749,7 +1749,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsRespo
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     appConnectors: Schema.optional(
@@ -1778,7 +1778,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOper
   statusMessage?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1828,7 +1828,7 @@ export interface AppGateway {
   satisfiesPzs?: boolean;
 }
 
-export const AppGateway: Schema.Schema<AppGateway> =
+export const AppGateway: Schema.Codec<AppGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     uid: Schema.optional(Schema.String),
@@ -1854,7 +1854,7 @@ export interface ReportStatusRequest {
   validateOnly?: boolean;
 }
 
-export const ReportStatusRequest: Schema.Schema<ReportStatusRequest> =
+export const ReportStatusRequest: Schema.Codec<ReportStatusRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceInfo: Schema.optional(ResourceInfo),
     requestId: Schema.optional(Schema.String),
@@ -1868,7 +1868,7 @@ export interface GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscr
   nextPageToken?: string;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse: Schema.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse> =
+export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse: Schema.Codec<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(
       Schema.Array(
@@ -1883,7 +1883,7 @@ export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscripti
 
 export interface GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse {}
 
-export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse: Schema.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse> =
+export const GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse: Schema.Codec<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse",
@@ -1896,7 +1896,7 @@ export interface ConnectionDetails {
   connection?: Connection;
 }
 
-export const ConnectionDetails: Schema.Schema<ConnectionDetails> =
+export const ConnectionDetails: Schema.Codec<ConnectionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recentMigVms: Schema.optional(Schema.Array(Schema.String)),
     connection: Schema.optional(Connection),
@@ -1907,14 +1907,14 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
+export const GoogleIamV1TestIamPermissionsRequest: Schema.Codec<GoogleIamV1TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails {}
 
-export const CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails: Schema.Schema<CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails> =
+export const CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails: Schema.Codec<CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails",
   });
@@ -1928,7 +1928,7 @@ export interface ListAppGatewaysResponse {
   nextPageToken?: string;
 }
 
-export const ListAppGatewaysResponse: Schema.Schema<ListAppGatewaysResponse> =
+export const ListAppGatewaysResponse: Schema.Codec<ListAppGatewaysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appGateways: Schema.optional(Schema.Array(AppGateway)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1940,7 +1940,7 @@ export interface NotificationConfig {
   pubsubNotification?: CloudPubSubNotificationConfig;
 }
 
-export const NotificationConfig: Schema.Schema<NotificationConfig> =
+export const NotificationConfig: Schema.Codec<NotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubNotification: Schema.optional(CloudPubSubNotificationConfig),
   }).annotate({ identifier: "NotificationConfig" });
@@ -1952,7 +1952,7 @@ export interface ImageConfig {
   targetImage?: string;
 }
 
-export const ImageConfig: Schema.Schema<ImageConfig> =
+export const ImageConfig: Schema.Codec<ImageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stableImage: Schema.optional(Schema.String),
     targetImage: Schema.optional(Schema.String),
@@ -1969,7 +1969,7 @@ export interface ConnectorInstanceConfig {
   sequenceNumber?: string;
 }
 
-export const ConnectorInstanceConfig: Schema.Schema<ConnectorInstanceConfig> =
+export const ConnectorInstanceConfig: Schema.Codec<ConnectorInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceConfig: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -1984,7 +1984,7 @@ export interface ResolveInstanceConfigResponse {
   instanceConfig?: ConnectorInstanceConfig;
 }
 
-export const ResolveInstanceConfigResponse: Schema.Schema<ResolveInstanceConfigResponse> =
+export const ResolveInstanceConfigResponse: Schema.Codec<ResolveInstanceConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceConfig: Schema.optional(ConnectorInstanceConfig),
   }).annotate({ identifier: "ResolveInstanceConfigResponse" });
@@ -2006,7 +2006,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperatio
   statusMessage?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata> =
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -2027,7 +2027,7 @@ export interface Tunnelv1ProtoTunnelerError {
   retryable?: boolean;
 }
 
-export const Tunnelv1ProtoTunnelerError: Schema.Schema<Tunnelv1ProtoTunnelerError> =
+export const Tunnelv1ProtoTunnelerError: Schema.Codec<Tunnelv1ProtoTunnelerError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     err: Schema.optional(Schema.String),
     retryable: Schema.optional(Schema.Boolean),
@@ -2046,7 +2046,7 @@ export interface Tunnelv1ProtoTunnelerInfo {
   totalRetryCount?: number;
 }
 
-export const Tunnelv1ProtoTunnelerInfo: Schema.Schema<Tunnelv1ProtoTunnelerInfo> =
+export const Tunnelv1ProtoTunnelerInfo: Schema.Codec<Tunnelv1ProtoTunnelerInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     latestErr: Schema.optional(Tunnelv1ProtoTunnelerError),
@@ -2064,7 +2064,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest {
   resourceInfo?: GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest> =
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest: Schema.Codec<GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     requestId: Schema.optional(Schema.String),
@@ -2082,7 +2082,7 @@ export interface GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsRes
   nextPageToken?: string;
 }
 
-export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse: Schema.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse> =
+export const GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse: Schema.Codec<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insights: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight),
@@ -2098,7 +2098,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub {
   internetGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     internetGateway: Schema.optional(
       GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway,
@@ -2140,7 +2140,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway {
   createTime?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     serviceDiscovery: Schema.optional(
@@ -2185,7 +2185,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperation
   statusMessage?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -2212,7 +2212,7 @@ export interface GoogleCloudLocationLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
+export const GoogleCloudLocationLocation: Schema.Codec<GoogleCloudLocationLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2223,7 +2223,7 @@ export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocat
 
 export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails {}
 
-export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails> =
+export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails: Schema.Codec<CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails",
@@ -2236,7 +2236,7 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
+export const GoogleCloudLocationListLocationsResponse: Schema.Codec<GoogleCloudLocationListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2251,7 +2251,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGateway
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse> =
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse: Schema.Codec<GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityGateways: Schema.optional(
       Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway),
@@ -2272,7 +2272,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsRes
   nextPageToken?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse> =
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse: Schema.Codec<GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     appConnections: Schema.optional(
@@ -2293,7 +2293,7 @@ export interface ListConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
+export const ListConnectionsResponse: Schema.Codec<ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connections: Schema.optional(Schema.Array(Connection)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -2309,7 +2309,7 @@ export interface ResolveConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const ResolveConnectionsResponse: Schema.Schema<ResolveConnectionsResponse> =
+export const ResolveConnectionsResponse: Schema.Codec<ResolveConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     connectionDetails: Schema.optional(Schema.Array(ConnectionDetails)),
@@ -2318,7 +2318,7 @@ export const ResolveConnectionsResponse: Schema.Schema<ResolveConnectionsRespons
 
 export interface RemoteAgentDetails {}
 
-export const RemoteAgentDetails: Schema.Schema<RemoteAgentDetails> =
+export const RemoteAgentDetails: Schema.Codec<RemoteAgentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoteAgentDetails",
   });
@@ -2340,7 +2340,7 @@ export interface GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperat
   statusMessage?: string;
 }
 
-export const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata> =
+export const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata: Schema.Codec<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
@@ -2433,7 +2433,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
@@ -2469,7 +2469,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
@@ -2512,7 +2512,7 @@ export const ListProjectsLocationsAppGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/appGateways" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppGatewaysRequest>;
 
 export type ListProjectsLocationsAppGatewaysResponse = ListAppGatewaysResponse;
 export const ListProjectsLocationsAppGatewaysResponse =
@@ -2558,7 +2558,7 @@ export const DeleteProjectsLocationsAppGatewaysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppGatewaysRequest>;
 
 export type DeleteProjectsLocationsAppGatewaysResponse =
   GoogleLongrunningOperation;
@@ -2595,7 +2595,7 @@ export const GetProjectsLocationsAppGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppGatewaysRequest>;
 
 export type GetProjectsLocationsAppGatewaysResponse = AppGateway;
 export const GetProjectsLocationsAppGatewaysResponse =
@@ -2649,7 +2649,7 @@ export const CreateProjectsLocationsAppGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppGatewaysRequest>;
 
 export type CreateProjectsLocationsAppGatewaysResponse =
   GoogleLongrunningOperation;
@@ -2693,7 +2693,7 @@ export const SetIamPolicyProjectsLocationsAppGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsAppGatewaysRequest>;
 
 export type SetIamPolicyProjectsLocationsAppGatewaysResponse =
   GoogleIamV1Policy;
@@ -2735,7 +2735,7 @@ export const GetIamPolicyProjectsLocationsAppGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsAppGatewaysRequest>;
 
 export type GetIamPolicyProjectsLocationsAppGatewaysResponse =
   GoogleIamV1Policy;
@@ -2779,7 +2779,7 @@ export const TestIamPermissionsProjectsLocationsAppGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppGatewaysRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsAppGatewaysRequest>;
 
 export type TestIamPermissionsProjectsLocationsAppGatewaysResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -2816,7 +2816,7 @@ export const GetProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionsRequest>;
 
 export type GetProjectsLocationsConnectionsResponse = Connection;
 export const GetProjectsLocationsConnectionsResponse =
@@ -2870,7 +2870,7 @@ export const CreateProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionsRequest>;
 
 export type CreateProjectsLocationsConnectionsResponse =
   GoogleLongrunningOperation;
@@ -2919,7 +2919,7 @@ export const ListProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRequest>;
 
 export type ListProjectsLocationsConnectionsResponse = ListConnectionsResponse;
 export const ListProjectsLocationsConnectionsResponse =
@@ -2965,7 +2965,7 @@ export const DeleteProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionsRequest>;
 
 export type DeleteProjectsLocationsConnectionsResponse =
   GoogleLongrunningOperation;
@@ -3007,7 +3007,7 @@ export const GetIamPolicyProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsConnectionsRequest>;
 
 export type GetIamPolicyProjectsLocationsConnectionsResponse =
   GoogleIamV1Policy;
@@ -3049,7 +3049,7 @@ export const SetIamPolicyProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsConnectionsRequest>;
 
 export type SetIamPolicyProjectsLocationsConnectionsResponse =
   GoogleIamV1Policy;
@@ -3105,7 +3105,7 @@ export const PatchProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConnectionsRequest>;
 
 export type PatchProjectsLocationsConnectionsResponse =
   GoogleLongrunningOperation;
@@ -3153,7 +3153,7 @@ export const ResolveProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/connections:resolve" }),
     svc,
-  ) as unknown as Schema.Schema<ResolveProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ResolveProjectsLocationsConnectionsRequest>;
 
 export type ResolveProjectsLocationsConnectionsResponse =
   ResolveConnectionsResponse;
@@ -3201,7 +3201,7 @@ export const ReportStatusProjectsLocationsAppConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportStatusProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<ReportStatusProjectsLocationsAppConnectorsRequest>;
 
 export type ReportStatusProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
@@ -3247,7 +3247,7 @@ export const TestIamPermissionsProjectsLocationsAppConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsAppConnectorsRequest>;
 
 export type TestIamPermissionsProjectsLocationsAppConnectorsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -3284,7 +3284,7 @@ export const GetProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppConnectorsRequest>;
 
 export type GetProjectsLocationsAppConnectorsResponse =
   GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector;
@@ -3324,7 +3324,7 @@ export const GetIamPolicyProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsAppConnectorsRequest>;
 
 export type GetIamPolicyProjectsLocationsAppConnectorsResponse =
   GoogleIamV1Policy;
@@ -3375,7 +3375,7 @@ export const PatchProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppConnectorsRequest>;
 
 export type PatchProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
@@ -3424,7 +3424,7 @@ export const ListProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/appConnectors" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppConnectorsRequest>;
 
 export type ListProjectsLocationsAppConnectorsResponse =
   GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse;
@@ -3471,7 +3471,7 @@ export const DeleteProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppConnectorsRequest>;
 
 export type DeleteProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
@@ -3511,7 +3511,7 @@ export const ResolveInstanceConfigProjectsLocationsAppConnectorsRequest =
       path: "v1alpha/{+appConnector}:resolveInstanceConfig",
     }),
     svc,
-  ) as unknown as Schema.Schema<ResolveInstanceConfigProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<ResolveInstanceConfigProjectsLocationsAppConnectorsRequest>;
 
 export type ResolveInstanceConfigProjectsLocationsAppConnectorsResponse =
   GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse;
@@ -3568,7 +3568,7 @@ export const CreateProjectsLocationsAppConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppConnectorsRequest>;
 
 export type CreateProjectsLocationsAppConnectorsResponse =
   GoogleLongrunningOperation;
@@ -3612,7 +3612,7 @@ export const SetIamPolicyProjectsLocationsAppConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAppConnectorsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsAppConnectorsRequest>;
 
 export type SetIamPolicyProjectsLocationsAppConnectorsResponse =
   GoogleIamV1Policy;
@@ -3656,7 +3656,7 @@ export const SetIamPolicyProjectsLocationsApplicationDomainsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApplicationDomainsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsApplicationDomainsRequest>;
 
 export type SetIamPolicyProjectsLocationsApplicationDomainsResponse =
   GoogleIamV1Policy;
@@ -3702,7 +3702,7 @@ export const TestIamPermissionsProjectsLocationsApplicationDomainsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApplicationDomainsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsApplicationDomainsRequest>;
 
 export type TestIamPermissionsProjectsLocationsApplicationDomainsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -3744,7 +3744,7 @@ export const GetIamPolicyProjectsLocationsApplicationDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApplicationDomainsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsApplicationDomainsRequest>;
 
 export type GetIamPolicyProjectsLocationsApplicationDomainsResponse =
   GoogleIamV1Policy;
@@ -3791,7 +3791,7 @@ export const ListProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/appConnections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAppConnectionsRequest>;
 
 export type ListProjectsLocationsAppConnectionsResponse =
   GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse;
@@ -3838,7 +3838,7 @@ export const DeleteProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAppConnectionsRequest>;
 
 export type DeleteProjectsLocationsAppConnectionsResponse =
   GoogleLongrunningOperation;
@@ -3897,7 +3897,7 @@ export const CreateProjectsLocationsAppConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppConnectionsRequest>;
 
 export type CreateProjectsLocationsAppConnectionsResponse =
   GoogleLongrunningOperation;
@@ -3941,7 +3941,7 @@ export const SetIamPolicyProjectsLocationsAppConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsAppConnectionsRequest>;
 
 export type SetIamPolicyProjectsLocationsAppConnectionsResponse =
   GoogleIamV1Policy;
@@ -3999,7 +3999,7 @@ export const PatchProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAppConnectionsRequest>;
 
 export type PatchProjectsLocationsAppConnectionsResponse =
   GoogleLongrunningOperation;
@@ -4036,7 +4036,7 @@ export const GetProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAppConnectionsRequest>;
 
 export type GetProjectsLocationsAppConnectionsResponse =
   GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection;
@@ -4076,7 +4076,7 @@ export const GetIamPolicyProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsAppConnectionsRequest>;
 
 export type GetIamPolicyProjectsLocationsAppConnectionsResponse =
   GoogleIamV1Policy;
@@ -4120,7 +4120,7 @@ export const TestIamPermissionsProjectsLocationsAppConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsAppConnectionsRequest>;
 
 export type TestIamPermissionsProjectsLocationsAppConnectionsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -4168,7 +4168,7 @@ export const ResolveProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/appConnections:resolve" }),
     svc,
-  ) as unknown as Schema.Schema<ResolveProjectsLocationsAppConnectionsRequest>;
+  ) as unknown as Schema.Codec<ResolveProjectsLocationsAppConnectionsRequest>;
 
 export type ResolveProjectsLocationsAppConnectionsResponse =
   GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse;
@@ -4207,7 +4207,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -4255,7 +4255,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -4294,7 +4294,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -4335,7 +4335,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -4378,7 +4378,7 @@ export const ReportStatusProjectsLocationsConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReportStatusProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<ReportStatusProjectsLocationsConnectorsRequest>;
 
 export type ReportStatusProjectsLocationsConnectorsResponse =
   GoogleLongrunningOperation;
@@ -4415,7 +4415,7 @@ export const GetProjectsLocationsConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectorsRequest>;
 
 export type GetProjectsLocationsConnectorsResponse = Connector;
 export const GetProjectsLocationsConnectorsResponse =
@@ -4454,7 +4454,7 @@ export const GetIamPolicyProjectsLocationsConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsConnectorsRequest>;
 
 export type GetIamPolicyProjectsLocationsConnectorsResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsConnectorsResponse =
@@ -4502,7 +4502,7 @@ export const PatchProjectsLocationsConnectorsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConnectorsRequest>;
 
 export type PatchProjectsLocationsConnectorsResponse =
   GoogleLongrunningOperation;
@@ -4551,7 +4551,7 @@ export const ListProjectsLocationsConnectorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/connectors" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectorsRequest>;
 
 export type ListProjectsLocationsConnectorsResponse = ListConnectorsResponse;
 export const ListProjectsLocationsConnectorsResponse =
@@ -4597,7 +4597,7 @@ export const DeleteProjectsLocationsConnectorsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectorsRequest>;
 
 export type DeleteProjectsLocationsConnectorsResponse =
   GoogleLongrunningOperation;
@@ -4637,7 +4637,7 @@ export const ResolveInstanceConfigProjectsLocationsConnectorsRequest =
       path: "v1alpha/{+connector}:resolveInstanceConfig",
     }),
     svc,
-  ) as unknown as Schema.Schema<ResolveInstanceConfigProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<ResolveInstanceConfigProjectsLocationsConnectorsRequest>;
 
 export type ResolveInstanceConfigProjectsLocationsConnectorsResponse =
   ResolveInstanceConfigResponse;
@@ -4692,7 +4692,7 @@ export const CreateProjectsLocationsConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectorsRequest>;
 
 export type CreateProjectsLocationsConnectorsResponse =
   GoogleLongrunningOperation;
@@ -4736,7 +4736,7 @@ export const SetIamPolicyProjectsLocationsConnectorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsConnectorsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsConnectorsRequest>;
 
 export type SetIamPolicyProjectsLocationsConnectorsResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsConnectorsResponse =
@@ -4814,7 +4814,7 @@ export const ConfiguredInsightProjectsLocationsInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+insight}:configuredInsight" }),
     svc,
-  ) as unknown as Schema.Schema<ConfiguredInsightProjectsLocationsInsightsRequest>;
+  ) as unknown as Schema.Codec<ConfiguredInsightProjectsLocationsInsightsRequest>;
 
 export type ConfiguredInsightProjectsLocationsInsightsResponse =
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse;
@@ -4856,7 +4856,7 @@ export const GetProjectsLocationsInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInsightsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInsightsRequest>;
 
 export type GetProjectsLocationsInsightsResponse =
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight;
@@ -4924,7 +4924,7 @@ export const ListProjectsLocationsInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/insights" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInsightsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInsightsRequest>;
 
 export type ListProjectsLocationsInsightsResponse =
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse;
@@ -4970,7 +4970,7 @@ export const SetIamPolicyProjectsLocationsSecurityGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
 
 export type SetIamPolicyProjectsLocationsSecurityGatewaysResponse =
   GoogleIamV1Policy;
@@ -5012,7 +5012,7 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
 
 export type GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
   GoogleIamV1Policy;
@@ -5059,7 +5059,7 @@ export const ListProjectsLocationsSecurityGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/securityGateways" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSecurityGatewaysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSecurityGatewaysRequest>;
 
 export type ListProjectsLocationsSecurityGatewaysResponse =
   GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse;
@@ -5106,7 +5106,7 @@ export const DeleteProjectsLocationsSecurityGatewaysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSecurityGatewaysRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSecurityGatewaysRequest>;
 
 export type DeleteProjectsLocationsSecurityGatewaysResponse =
   GoogleLongrunningOperation;
@@ -5143,7 +5143,7 @@ export const GetProjectsLocationsSecurityGatewaysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSecurityGatewaysRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSecurityGatewaysRequest>;
 
 export type GetProjectsLocationsSecurityGatewaysResponse =
   GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway;
@@ -5195,7 +5195,7 @@ export const CreateProjectsLocationsSecurityGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSecurityGatewaysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSecurityGatewaysRequest>;
 
 export type CreateProjectsLocationsSecurityGatewaysResponse =
   GoogleLongrunningOperation;
@@ -5241,7 +5241,7 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsSecurityGatewaysRequest>;
 
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -5289,7 +5289,7 @@ export const PatchProjectsLocationsSecurityGatewaysRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSecurityGatewaysRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSecurityGatewaysRequest>;
 
 export type PatchProjectsLocationsSecurityGatewaysResponse =
   GoogleLongrunningOperation;
@@ -5337,7 +5337,7 @@ export const PatchProjectsLocationsSecurityGatewaysApplicationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type PatchProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleLongrunningOperation;
@@ -5383,7 +5383,7 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequ
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -5391,7 +5391,11 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
@@ -5417,7 +5421,7 @@ export const GetProjectsLocationsSecurityGatewaysApplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type GetProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication;
@@ -5469,7 +5473,7 @@ export const CreateProjectsLocationsSecurityGatewaysApplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type CreateProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleLongrunningOperation;
@@ -5518,7 +5522,7 @@ export const ListProjectsLocationsSecurityGatewaysApplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/applications" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type ListProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse;
@@ -5565,7 +5569,7 @@ export const DeleteProjectsLocationsSecurityGatewaysApplicationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type DeleteProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleLongrunningOperation;
@@ -5607,7 +5611,7 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleIamV1Policy;
@@ -5649,7 +5653,7 @@ export const SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
   GoogleIamV1Policy;
@@ -5693,7 +5697,7 @@ export const SetIamPolicyProjectsLocationsApplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsApplicationsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsApplicationsRequest>;
 
 export type SetIamPolicyProjectsLocationsApplicationsResponse =
   GoogleIamV1Policy;
@@ -5739,7 +5743,7 @@ export const TestIamPermissionsProjectsLocationsApplicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsApplicationsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsApplicationsRequest>;
 
 export type TestIamPermissionsProjectsLocationsApplicationsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -5781,7 +5785,7 @@ export const GetIamPolicyProjectsLocationsApplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsApplicationsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsApplicationsRequest>;
 
 export type GetIamPolicyProjectsLocationsApplicationsResponse =
   GoogleIamV1Policy;
@@ -5849,7 +5853,7 @@ export const ListOrganizationsLocationsInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/insights" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsInsightsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsInsightsRequest>;
 
 export type ListOrganizationsLocationsInsightsResponse =
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse;
@@ -5891,7 +5895,7 @@ export const GetOrganizationsLocationsInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsInsightsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsInsightsRequest>;
 
 export type GetOrganizationsLocationsInsightsResponse =
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight;
@@ -5968,7 +5972,7 @@ export const ConfiguredInsightOrganizationsLocationsInsightsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+insight}:configuredInsight" }),
     svc,
-  ) as unknown as Schema.Schema<ConfiguredInsightOrganizationsLocationsInsightsRequest>;
+  ) as unknown as Schema.Codec<ConfiguredInsightOrganizationsLocationsInsightsRequest>;
 
 export type ConfiguredInsightOrganizationsLocationsInsightsResponse =
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse;
@@ -6016,7 +6020,7 @@ export const CreateOrganizationsLocationsSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsSubscriptionsRequest>;
 
 export type CreateOrganizationsLocationsSubscriptionsResponse =
   GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription;
@@ -6053,7 +6057,7 @@ export const GetOrganizationsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsSubscriptionsRequest>;
 
 export type GetOrganizationsLocationsSubscriptionsResponse =
   GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription;
@@ -6094,7 +6098,7 @@ export const ListOrganizationsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsSubscriptionsRequest>;
 
 export type ListOrganizationsLocationsSubscriptionsResponse =
   GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse;
@@ -6136,7 +6140,7 @@ export const CancelOrganizationsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:cancel" }),
     svc,
-  ) as unknown as Schema.Schema<CancelOrganizationsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CancelOrganizationsLocationsSubscriptionsRequest>;
 
 export type CancelOrganizationsLocationsSubscriptionsResponse =
   GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse;
@@ -6182,7 +6186,7 @@ export const PatchOrganizationsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsSubscriptionsRequest>;
 
 export type PatchOrganizationsLocationsSubscriptionsResponse =
   GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription;
@@ -6222,7 +6226,7 @@ export const RestartOrganizationsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:restart" }),
     svc,
-  ) as unknown as Schema.Schema<RestartOrganizationsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<RestartOrganizationsLocationsSubscriptionsRequest>;
 
 export type RestartOrganizationsLocationsSubscriptionsResponse =
   GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse;
@@ -6271,7 +6275,7 @@ export const ListOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsOperationsRequest>;
 
 export type ListOrganizationsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -6310,7 +6314,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsOperationsRequest>;
 
 export type DeleteOrganizationsLocationsOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsOperationsResponse =
@@ -6346,7 +6350,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsOperationsRequest>;
 
 export type GetOrganizationsLocationsOperationsResponse =
   GoogleLongrunningOperation;
@@ -6386,7 +6390,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOrganizationsLocationsOperationsRequest>;
 
 export type CancelOrganizationsLocationsOperationsResponse = Empty;
 export const CancelOrganizationsLocationsOperationsResponse =

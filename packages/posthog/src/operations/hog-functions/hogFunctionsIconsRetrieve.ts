@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFunctionsIconsRetrieveInput {
+  project_id: string;
+}
 export const HogFunctionsIconsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const HogFunctionsIconsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_functions/icons/",
     }),
-  );
-export type HogFunctionsIconsRetrieveInput =
-  typeof HogFunctionsIconsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HogFunctionsIconsRetrieveInput>;
 
 // Output Schema
+export type HogFunctionsIconsRetrieveOutput = void;
 export const HogFunctionsIconsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HogFunctionsIconsRetrieveOutput =
-  typeof HogFunctionsIconsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFunctionsIconsRetrieveOutput>;
 
 // The operation
 /**

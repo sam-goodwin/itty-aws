@@ -4,12 +4,56 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetRoleByIdInput {
+  id: string;
+}
 export const GetRoleByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/rbac/roles/{id}" }));
-export type GetRoleByIdInput = typeof GetRoleByIdInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/rbac/roles/{id}" }),
+) as unknown as Schema.Codec<GetRoleByIdInput>;
 
 // Output Schema
+export interface GetRoleByIdOutput {
+  datasetCapabilities?: Record<
+    string,
+    {
+      data?: "delete"[];
+      ingest?: "create"[];
+      query?: "read"[];
+      share?: ("create" | "read" | "delete")[];
+      starredQueries?: ("create" | "read" | "update" | "delete")[];
+      trim?: "update"[];
+      vacuum?: "update"[];
+      virtualFields?: ("create" | "read" | "update" | "delete")[];
+    }
+  >;
+  description?: string;
+  members?: string[];
+  name: string;
+  orgCapabilities?: {
+    annotations?: ("create" | "read" | "update" | "delete")[];
+    apiTokens?: ("create" | "read" | "update" | "delete")[];
+    auditLog?: "read"[];
+    billing?: ("read" | "update")[];
+    dashboards?: ("create" | "read" | "update" | "delete")[];
+    datasets?: ("create" | "read" | "update" | "delete")[];
+    endpoints?: ("create" | "read" | "update" | "delete")[];
+    flows?: ("create" | "read" | "update" | "delete")[];
+    integrations?: ("create" | "read" | "update" | "delete")[];
+    monitors?: ("create" | "read" | "update" | "delete")[];
+    notifiers?: ("create" | "read" | "update" | "delete")[];
+    rbac?: ("create" | "read" | "update" | "delete")[];
+    sharedAccessKeys?: ("read" | "update")[];
+    users?: ("create" | "read" | "update" | "delete")[];
+    views?: ("create" | "read" | "update" | "delete")[];
+  };
+  viewCapabilities?: Record<
+    string,
+    { query?: "read"[]; share?: ("create" | "read" | "delete")[] }
+  >;
+  id: string;
+}
 export const GetRoleByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
@@ -94,8 +138,7 @@ export const GetRoleByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   id: Schema.String,
-});
-export type GetRoleByIdOutput = typeof GetRoleByIdOutput.Type;
+}) as unknown as Schema.Codec<GetRoleByIdOutput>;
 
 // The operation
 /**

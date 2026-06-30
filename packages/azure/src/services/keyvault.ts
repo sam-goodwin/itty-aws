@@ -4,11 +4,56 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface KeysCreateIfNotExistInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  keyName: string;
+  tags?: Record<string, string>;
+  properties: {
+    attributes?: {
+      enabled?: boolean;
+      nbf?: number;
+      exp?: number;
+      created?: number;
+      updated?: number;
+      recoveryLevel?:
+        | "Purgeable"
+        | "Recoverable+Purgeable"
+        | "Recoverable"
+        | "Recoverable+ProtectedSubscription";
+      exportable?: boolean;
+    };
+    kty?: "EC" | "EC-HSM" | "RSA" | "RSA-HSM";
+    keyOps?: (
+      | "encrypt"
+      | "decrypt"
+      | "sign"
+      | "verify"
+      | "wrapKey"
+      | "unwrapKey"
+      | "import"
+      | "release"
+    )[];
+    keySize?: number;
+    curveName?: "P-256" | "P-384" | "P-521" | "P-256K";
+    keyUri?: string;
+    keyUriWithVersion?: string;
+    rotationPolicy?: {
+      attributes?: { created?: number; updated?: number; expiryTime?: string };
+      lifetimeActions?: {
+        trigger?: { timeAfterCreate?: string; timeBeforeExpiry?: string };
+        action?: { type?: "rotate" | "notify" };
+      }[];
+    };
+    release_policy?: { contentType?: string; data?: string };
+  };
+}
 export const KeysCreateIfNotExistInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -99,10 +144,22 @@ export const KeysCreateIfNotExistInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys/{keyName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type KeysCreateIfNotExistInput = typeof KeysCreateIfNotExistInput.Type;
+  ) as unknown as Schema.Codec<KeysCreateIfNotExistInput>;
 
 // Output Schema
+export interface KeysCreateIfNotExistOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KeysCreateIfNotExistOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -122,8 +179,7 @@ export const KeysCreateIfNotExistOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type KeysCreateIfNotExistOutput = typeof KeysCreateIfNotExistOutput.Type;
+  }) as unknown as Schema.Codec<KeysCreateIfNotExistOutput>;
 
 // The operation
 /**
@@ -142,6 +198,12 @@ export const KeysCreateIfNotExist = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface KeysGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  keyName: string;
+}
 export const KeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -153,10 +215,22 @@ export const KeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys/{keyName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type KeysGetInput = typeof KeysGetInput.Type;
+) as unknown as Schema.Codec<KeysGetInput>;
 
 // Output Schema
+export interface KeysGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -175,8 +249,7 @@ export const KeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type KeysGetOutput = typeof KeysGetOutput.Type;
+}) as unknown as Schema.Codec<KeysGetOutput>;
 
 // The operation
 /**
@@ -193,6 +266,13 @@ export const KeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: KeysGetOutput,
 }));
 // Input Schema
+export interface KeysGetVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  keyName: string;
+  keyVersion: string;
+}
 export const KeysGetVersionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -205,10 +285,22 @@ export const KeysGetVersionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys/{keyName}/versions/{keyVersion}",
     apiVersion: "2026-02-01",
   }),
-);
-export type KeysGetVersionInput = typeof KeysGetVersionInput.Type;
+) as unknown as Schema.Codec<KeysGetVersionInput>;
 
 // Output Schema
+export interface KeysGetVersionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KeysGetVersionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -227,8 +319,7 @@ export const KeysGetVersionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type KeysGetVersionOutput = typeof KeysGetVersionOutput.Type;
+}) as unknown as Schema.Codec<KeysGetVersionOutput>;
 
 // The operation
 /**
@@ -246,6 +337,11 @@ export const KeysGetVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: KeysGetVersionOutput,
 }));
 // Input Schema
+export interface KeysListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+}
 export const KeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -256,10 +352,25 @@ export const KeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys",
     apiVersion: "2026-02-01",
   }),
-);
-export type KeysListInput = typeof KeysListInput.Type;
+) as unknown as Schema.Codec<KeysListInput>;
 
 // Output Schema
+export interface KeysListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const KeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -283,8 +394,7 @@ export const KeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type KeysListOutput = typeof KeysListOutput.Type;
+}) as unknown as Schema.Codec<KeysListOutput>;
 
 // The operation
 /**
@@ -300,6 +410,12 @@ export const KeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: KeysListOutput,
 }));
 // Input Schema
+export interface KeysListVersionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  keyName: string;
+}
 export const KeysListVersionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -311,10 +427,25 @@ export const KeysListVersionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/keys/{keyName}/versions",
     apiVersion: "2026-02-01",
   }),
-);
-export type KeysListVersionsInput = typeof KeysListVersionsInput.Type;
+) as unknown as Schema.Codec<KeysListVersionsInput>;
 
 // Output Schema
+export interface KeysListVersionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const KeysListVersionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -350,8 +481,7 @@ export const KeysListVersionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type KeysListVersionsOutput = typeof KeysListVersionsOutput.Type;
+) as unknown as Schema.Codec<KeysListVersionsOutput>;
 
 // The operation
 /**
@@ -368,6 +498,51 @@ export const KeysListVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: KeysListVersionsOutput,
 }));
 // Input Schema
+export interface ManagedHsmKeysCreateIfNotExistInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  keyName: string;
+  tags?: Record<string, string>;
+  properties: {
+    attributes?: {
+      enabled?: boolean;
+      nbf?: number;
+      exp?: number;
+      created?: number;
+      updated?: number;
+      recoveryLevel?:
+        | "Purgeable"
+        | "Recoverable+Purgeable"
+        | "Recoverable"
+        | "Recoverable+ProtectedSubscription";
+      exportable?: boolean;
+    };
+    kty?: "EC" | "EC-HSM" | "RSA" | "RSA-HSM";
+    keyOps?: (
+      | "encrypt"
+      | "decrypt"
+      | "sign"
+      | "verify"
+      | "wrapKey"
+      | "unwrapKey"
+      | "import"
+      | "release"
+    )[];
+    keySize?: number;
+    curveName?: "P-256" | "P-384" | "P-521" | "P-256K";
+    keyUri?: string;
+    keyUriWithVersion?: string;
+    rotationPolicy?: {
+      attributes?: { created?: number; updated?: number; expiryTime?: string };
+      lifetimeActions?: {
+        trigger?: { timeAfterCreate?: string; timeBeforeExpiry?: string };
+        action?: { type?: "rotate" | "notify" };
+      }[];
+    };
+    release_policy?: { contentType?: string; data?: string };
+  };
+}
 export const ManagedHsmKeysCreateIfNotExistInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -458,11 +633,22 @@ export const ManagedHsmKeysCreateIfNotExistInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmKeysCreateIfNotExistInput =
-  typeof ManagedHsmKeysCreateIfNotExistInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmKeysCreateIfNotExistInput>;
 
 // Output Schema
+export interface ManagedHsmKeysCreateIfNotExistOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedHsmKeysCreateIfNotExistOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -482,9 +668,7 @@ export const ManagedHsmKeysCreateIfNotExistOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedHsmKeysCreateIfNotExistOutput =
-  typeof ManagedHsmKeysCreateIfNotExistOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmKeysCreateIfNotExistOutput>;
 
 // The operation
 /**
@@ -502,6 +686,12 @@ export const ManagedHsmKeysCreateIfNotExist =
     outputSchema: ManagedHsmKeysCreateIfNotExistOutput,
   }));
 // Input Schema
+export interface ManagedHsmKeysGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  keyName: string;
+}
 export const ManagedHsmKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -515,10 +705,22 @@ export const ManagedHsmKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type ManagedHsmKeysGetInput = typeof ManagedHsmKeysGetInput.Type;
+) as unknown as Schema.Codec<ManagedHsmKeysGetInput>;
 
 // Output Schema
+export interface ManagedHsmKeysGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedHsmKeysGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -538,8 +740,7 @@ export const ManagedHsmKeysGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedHsmKeysGetOutput = typeof ManagedHsmKeysGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmKeysGetOutput>;
 
 // The operation
 /**
@@ -556,6 +757,13 @@ export const ManagedHsmKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ManagedHsmKeysGetOutput,
 }));
 // Input Schema
+export interface ManagedHsmKeysGetVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  keyName: string;
+  keyVersion: string;
+}
 export const ManagedHsmKeysGetVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -569,11 +777,22 @@ export const ManagedHsmKeysGetVersionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}/versions/{keyVersion}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmKeysGetVersionInput =
-  typeof ManagedHsmKeysGetVersionInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmKeysGetVersionInput>;
 
 // Output Schema
+export interface ManagedHsmKeysGetVersionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedHsmKeysGetVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -593,9 +812,7 @@ export const ManagedHsmKeysGetVersionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedHsmKeysGetVersionOutput =
-  typeof ManagedHsmKeysGetVersionOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmKeysGetVersionOutput>;
 
 // The operation
 /**
@@ -615,6 +832,11 @@ export const ManagedHsmKeysGetVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedHsmKeysListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const ManagedHsmKeysListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -626,10 +848,25 @@ export const ManagedHsmKeysListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmKeysListInput = typeof ManagedHsmKeysListInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmKeysListInput>;
 
 // Output Schema
+export interface ManagedHsmKeysListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedHsmKeysListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -664,8 +901,7 @@ export const ManagedHsmKeysListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedHsmKeysListOutput = typeof ManagedHsmKeysListOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmKeysListOutput>;
 
 // The operation
 /**
@@ -681,6 +917,12 @@ export const ManagedHsmKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ManagedHsmKeysListOutput,
 }));
 // Input Schema
+export interface ManagedHsmKeysListVersionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  keyName: string;
+}
 export const ManagedHsmKeysListVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -693,11 +935,25 @@ export const ManagedHsmKeysListVersionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}/versions",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmKeysListVersionsInput =
-  typeof ManagedHsmKeysListVersionsInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmKeysListVersionsInput>;
 
 // Output Schema
+export interface ManagedHsmKeysListVersionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedHsmKeysListVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -732,9 +988,7 @@ export const ManagedHsmKeysListVersionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedHsmKeysListVersionsOutput =
-  typeof ManagedHsmKeysListVersionsOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmKeysListVersionsOutput>;
 
 // The operation
 /**
@@ -753,6 +1007,10 @@ export const ManagedHsmKeysListVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedHsmsCheckMhsmNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+}
 export const ManagedHsmsCheckMhsmNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -763,11 +1021,14 @@ export const ManagedHsmsCheckMhsmNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/checkMhsmNameAvailability",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmsCheckMhsmNameAvailabilityInput =
-  typeof ManagedHsmsCheckMhsmNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmsCheckMhsmNameAvailabilityInput>;
 
 // Output Schema
+export interface ManagedHsmsCheckMhsmNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "AccountNameInvalid" | "AlreadyExists";
+  message?: string;
+}
 export const ManagedHsmsCheckMhsmNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
@@ -775,9 +1036,7 @@ export const ManagedHsmsCheckMhsmNameAvailabilityOutput =
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
     ),
     message: Schema.optional(Schema.String),
-  });
-export type ManagedHsmsCheckMhsmNameAvailabilityOutput =
-  typeof ManagedHsmsCheckMhsmNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmsCheckMhsmNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -792,6 +1051,97 @@ export const ManagedHsmsCheckMhsmNameAvailability =
     outputSchema: ManagedHsmsCheckMhsmNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ManagedHsmsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  properties?: {
+    tenantId?: string;
+    initialAdminObjectIds?: string[];
+    hsmUri?: string;
+    enableSoftDelete?: boolean;
+    softDeleteRetentionInDays?: number;
+    enablePurgeProtection?: boolean;
+    createMode?: "recover" | "default";
+    statusMessage?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Provisioning"
+      | "Failed"
+      | "Updating"
+      | "Deleting"
+      | "Activated"
+      | "SecurityDomainRestore"
+      | "Restoring";
+    networkAcls?: {
+      bypass?: "AzureServices" | "None";
+      defaultAction?: "Allow" | "Deny";
+      ipRules?: { value: string }[];
+      serviceTags?: { tag: string }[];
+      virtualNetworkRules?: { id: string }[];
+    };
+    regions?: {
+      name?: string;
+      provisioningState?:
+        | "Preprovisioning"
+        | "Provisioning"
+        | "Succeeded"
+        | "Failed"
+        | "Deleting"
+        | "Cleanup";
+      isPrimary?: boolean;
+    }[];
+    privateEndpointConnections?: {
+      id?: string;
+      etag?: string;
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: "None";
+        };
+        provisioningState?:
+          | "Succeeded"
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Failed"
+          | "Disconnected";
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    scheduledPurgeDate?: string;
+    securityDomainProperties?: {
+      activationStatus?: "Active" | "NotActivated" | "Unknown" | "Failed";
+      activationStatusMessage?: string;
+    };
+  };
+  sku?: {
+    family: "B" | "C";
+    name:
+      | "Standard_B1"
+      | "Custom_B32"
+      | "Custom_B6"
+      | "Custom_C42"
+      | "Custom_C10";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ManagedHsmsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -962,11 +1312,22 @@ export const ManagedHsmsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmsCreateOrUpdateInput =
-  typeof ManagedHsmsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ManagedHsmsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedHsmsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -986,9 +1347,7 @@ export const ManagedHsmsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedHsmsCreateOrUpdateOutput =
-  typeof ManagedHsmsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1006,6 +1365,11 @@ export const ManagedHsmsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedHsmsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const ManagedHsmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1018,12 +1382,12 @@ export const ManagedHsmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
     apiVersion: "2026-02-01",
   }),
-);
-export type ManagedHsmsDeleteInput = typeof ManagedHsmsDeleteInput.Type;
+) as unknown as Schema.Codec<ManagedHsmsDeleteInput>;
 
 // Output Schema
-export const ManagedHsmsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedHsmsDeleteOutput = typeof ManagedHsmsDeleteOutput.Type;
+export type ManagedHsmsDeleteOutput = void;
+export const ManagedHsmsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedHsmsDeleteOutput>;
 
 // The operation
 /**
@@ -1039,6 +1403,11 @@ export const ManagedHsmsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ManagedHsmsDeleteOutput,
 }));
 // Input Schema
+export interface ManagedHsmsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const ManagedHsmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1049,10 +1418,22 @@ export const ManagedHsmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
     apiVersion: "2026-02-01",
   }),
-);
-export type ManagedHsmsGetInput = typeof ManagedHsmsGetInput.Type;
+) as unknown as Schema.Codec<ManagedHsmsGetInput>;
 
 // Output Schema
+export interface ManagedHsmsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedHsmsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1071,8 +1452,7 @@ export const ManagedHsmsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ManagedHsmsGetOutput = typeof ManagedHsmsGetOutput.Type;
+}) as unknown as Schema.Codec<ManagedHsmsGetOutput>;
 
 // The operation
 /**
@@ -1088,6 +1468,11 @@ export const ManagedHsmsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ManagedHsmsGetOutput,
 }));
 // Input Schema
+export interface ManagedHsmsGetDeletedInput {
+  subscriptionId: string;
+  location: string;
+  name: string;
+}
 export const ManagedHsmsGetDeletedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1099,10 +1484,22 @@ export const ManagedHsmsGetDeletedInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/locations/{location}/deletedManagedHSMs/{name}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmsGetDeletedInput = typeof ManagedHsmsGetDeletedInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmsGetDeletedInput>;
 
 // Output Schema
+export interface ManagedHsmsGetDeletedOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedHsmsGetDeletedOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1122,9 +1519,7 @@ export const ManagedHsmsGetDeletedOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedHsmsGetDeletedOutput =
-  typeof ManagedHsmsGetDeletedOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmsGetDeletedOutput>;
 
 // The operation
 /**
@@ -1142,6 +1537,11 @@ export const ManagedHsmsGetDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedHsmsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const ManagedHsmsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1153,11 +1553,25 @@ export const ManagedHsmsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmsListByResourceGroupInput =
-  typeof ManagedHsmsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmsListByResourceGroupInput>;
 
 // Output Schema
+export interface ManagedHsmsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedHsmsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1192,9 +1606,7 @@ export const ManagedHsmsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedHsmsListByResourceGroupOutput =
-  typeof ManagedHsmsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1211,6 +1623,10 @@ export const ManagedHsmsListByResourceGroup =
     outputSchema: ManagedHsmsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ManagedHsmsListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const ManagedHsmsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1221,11 +1637,25 @@ export const ManagedHsmsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/managedHSMs",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmsListBySubscriptionInput =
-  typeof ManagedHsmsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmsListBySubscriptionInput>;
 
 // Output Schema
+export interface ManagedHsmsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedHsmsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1260,9 +1690,7 @@ export const ManagedHsmsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedHsmsListBySubscriptionOutput =
-  typeof ManagedHsmsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1278,6 +1706,9 @@ export const ManagedHsmsListBySubscription =
     outputSchema: ManagedHsmsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ManagedHsmsListDeletedInput {
+  subscriptionId: string;
+}
 export const ManagedHsmsListDeletedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1287,11 +1718,25 @@ export const ManagedHsmsListDeletedInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/deletedManagedHSMs",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmsListDeletedInput =
-  typeof ManagedHsmsListDeletedInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmsListDeletedInput>;
 
 // Output Schema
+export interface ManagedHsmsListDeletedOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedHsmsListDeletedOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1326,9 +1771,7 @@ export const ManagedHsmsListDeletedOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedHsmsListDeletedOutput =
-  typeof ManagedHsmsListDeletedOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmsListDeletedOutput>;
 
 // The operation
 /**
@@ -1344,6 +1787,11 @@ export const ManagedHsmsListDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedHsmsPurgeDeletedInput {
+  subscriptionId: string;
+  location: string;
+  name: string;
+}
 export const ManagedHsmsPurgeDeletedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1355,15 +1803,12 @@ export const ManagedHsmsPurgeDeletedInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/locations/{location}/deletedManagedHSMs/{name}/purge",
       apiVersion: "2026-02-01",
     }),
-  );
-export type ManagedHsmsPurgeDeletedInput =
-  typeof ManagedHsmsPurgeDeletedInput.Type;
+  ) as unknown as Schema.Codec<ManagedHsmsPurgeDeletedInput>;
 
 // Output Schema
+export type ManagedHsmsPurgeDeletedOutput = void;
 export const ManagedHsmsPurgeDeletedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedHsmsPurgeDeletedOutput =
-  typeof ManagedHsmsPurgeDeletedOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedHsmsPurgeDeletedOutput>;
 
 // The operation
 /**
@@ -1381,6 +1826,97 @@ export const ManagedHsmsPurgeDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedHsmsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  properties?: {
+    tenantId?: string;
+    initialAdminObjectIds?: string[];
+    hsmUri?: string;
+    enableSoftDelete?: boolean;
+    softDeleteRetentionInDays?: number;
+    enablePurgeProtection?: boolean;
+    createMode?: "recover" | "default";
+    statusMessage?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Provisioning"
+      | "Failed"
+      | "Updating"
+      | "Deleting"
+      | "Activated"
+      | "SecurityDomainRestore"
+      | "Restoring";
+    networkAcls?: {
+      bypass?: "AzureServices" | "None";
+      defaultAction?: "Allow" | "Deny";
+      ipRules?: { value: string }[];
+      serviceTags?: { tag: string }[];
+      virtualNetworkRules?: { id: string }[];
+    };
+    regions?: {
+      name?: string;
+      provisioningState?:
+        | "Preprovisioning"
+        | "Provisioning"
+        | "Succeeded"
+        | "Failed"
+        | "Deleting"
+        | "Cleanup";
+      isPrimary?: boolean;
+    }[];
+    privateEndpointConnections?: {
+      id?: string;
+      etag?: string;
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: "None";
+        };
+        provisioningState?:
+          | "Succeeded"
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Failed"
+          | "Disconnected";
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    scheduledPurgeDate?: string;
+    securityDomainProperties?: {
+      activationStatus?: "Active" | "NotActivated" | "Unknown" | "Failed";
+      activationStatusMessage?: string;
+    };
+  };
+  sku?: {
+    family: "B" | "C";
+    name:
+      | "Standard_B1"
+      | "Custom_B32"
+      | "Custom_B6"
+      | "Custom_C42"
+      | "Custom_C10";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ManagedHsmsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1552,10 +2088,22 @@ export const ManagedHsmsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}",
     apiVersion: "2026-02-01",
   }),
-);
-export type ManagedHsmsUpdateInput = typeof ManagedHsmsUpdateInput.Type;
+) as unknown as Schema.Codec<ManagedHsmsUpdateInput>;
 
 // Output Schema
+export interface ManagedHsmsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedHsmsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1575,8 +2123,7 @@ export const ManagedHsmsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedHsmsUpdateOutput = typeof ManagedHsmsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedHsmsUpdateOutput>;
 
 // The operation
 /**
@@ -1592,6 +2139,12 @@ export const ManagedHsmsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ManagedHsmsUpdateOutput,
 }));
 // Input Schema
+export interface MHSMPrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  privateEndpointConnectionName: string;
+}
 export const MHSMPrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1604,11 +2157,22 @@ export const MHSMPrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type MHSMPrivateEndpointConnectionsDeleteInput =
-  typeof MHSMPrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<MHSMPrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export interface MHSMPrivateEndpointConnectionsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MHSMPrivateEndpointConnectionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1628,9 +2192,7 @@ export const MHSMPrivateEndpointConnectionsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MHSMPrivateEndpointConnectionsDeleteOutput =
-  typeof MHSMPrivateEndpointConnectionsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<MHSMPrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1648,6 +2210,12 @@ export const MHSMPrivateEndpointConnectionsDelete =
     outputSchema: MHSMPrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface MHSMPrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  privateEndpointConnectionName: string;
+}
 export const MHSMPrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1660,11 +2228,22 @@ export const MHSMPrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type MHSMPrivateEndpointConnectionsGetInput =
-  typeof MHSMPrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<MHSMPrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface MHSMPrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MHSMPrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1684,9 +2263,7 @@ export const MHSMPrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MHSMPrivateEndpointConnectionsGetOutput =
-  typeof MHSMPrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<MHSMPrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1704,6 +2281,11 @@ export const MHSMPrivateEndpointConnectionsGet =
     outputSchema: MHSMPrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface MHSMPrivateEndpointConnectionsListByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const MHSMPrivateEndpointConnectionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1715,11 +2297,25 @@ export const MHSMPrivateEndpointConnectionsListByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections",
       apiVersion: "2026-02-01",
     }),
-  );
-export type MHSMPrivateEndpointConnectionsListByResourceInput =
-  typeof MHSMPrivateEndpointConnectionsListByResourceInput.Type;
+  ) as unknown as Schema.Codec<MHSMPrivateEndpointConnectionsListByResourceInput>;
 
 // Output Schema
+export interface MHSMPrivateEndpointConnectionsListByResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MHSMPrivateEndpointConnectionsListByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1754,9 +2350,7 @@ export const MHSMPrivateEndpointConnectionsListByResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MHSMPrivateEndpointConnectionsListByResourceOutput =
-  typeof MHSMPrivateEndpointConnectionsListByResourceOutput.Type;
+  }) as unknown as Schema.Codec<MHSMPrivateEndpointConnectionsListByResourceOutput>;
 
 // The operation
 /**
@@ -1773,6 +2367,52 @@ export const MHSMPrivateEndpointConnectionsListByResource =
     outputSchema: MHSMPrivateEndpointConnectionsListByResourceOutput,
   }));
 // Input Schema
+export interface MHSMPrivateEndpointConnectionsPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: "None";
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Disconnected";
+  };
+  sku?: {
+    family: "B" | "C";
+    name:
+      | "Standard_B1"
+      | "Custom_B32"
+      | "Custom_B6"
+      | "Custom_C42"
+      | "Custom_C10";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  etag?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const MHSMPrivateEndpointConnectionsPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1854,11 +2494,22 @@ export const MHSMPrivateEndpointConnectionsPutInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type MHSMPrivateEndpointConnectionsPutInput =
-  typeof MHSMPrivateEndpointConnectionsPutInput.Type;
+  ) as unknown as Schema.Codec<MHSMPrivateEndpointConnectionsPutInput>;
 
 // Output Schema
+export interface MHSMPrivateEndpointConnectionsPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MHSMPrivateEndpointConnectionsPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1878,9 +2529,7 @@ export const MHSMPrivateEndpointConnectionsPutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MHSMPrivateEndpointConnectionsPutOutput =
-  typeof MHSMPrivateEndpointConnectionsPutOutput.Type;
+  }) as unknown as Schema.Codec<MHSMPrivateEndpointConnectionsPutOutput>;
 
 // The operation
 /**
@@ -1898,6 +2547,11 @@ export const MHSMPrivateEndpointConnectionsPut =
     outputSchema: MHSMPrivateEndpointConnectionsPutOutput,
   }));
 // Input Schema
+export interface MHSMPrivateLinkResourcesListByMHSMResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const MHSMPrivateLinkResourcesListByMHSMResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1909,11 +2563,24 @@ export const MHSMPrivateLinkResourcesListByMHSMResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateLinkResources",
       apiVersion: "2026-02-01",
     }),
-  );
-export type MHSMPrivateLinkResourcesListByMHSMResourceInput =
-  typeof MHSMPrivateLinkResourcesListByMHSMResourceInput.Type;
+  ) as unknown as Schema.Codec<MHSMPrivateLinkResourcesListByMHSMResourceInput>;
 
 // Output Schema
+export interface MHSMPrivateLinkResourcesListByMHSMResourceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const MHSMPrivateLinkResourcesListByMHSMResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1949,9 +2616,7 @@ export const MHSMPrivateLinkResourcesListByMHSMResourceOutput =
         }),
       ),
     ),
-  });
-export type MHSMPrivateLinkResourcesListByMHSMResourceOutput =
-  typeof MHSMPrivateLinkResourcesListByMHSMResourceOutput.Type;
+  }) as unknown as Schema.Codec<MHSMPrivateLinkResourcesListByMHSMResourceOutput>;
 
 // The operation
 /**
@@ -1968,6 +2633,11 @@ export const MHSMPrivateLinkResourcesListByMHSMResource =
     outputSchema: MHSMPrivateLinkResourcesListByMHSMResourceOutput,
   }));
 // Input Schema
+export interface MHSMRegionsListByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const MHSMRegionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1979,11 +2649,23 @@ export const MHSMRegionsListByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/regions",
       apiVersion: "2026-02-01",
     }),
-  );
-export type MHSMRegionsListByResourceInput =
-  typeof MHSMRegionsListByResourceInput.Type;
+  ) as unknown as Schema.Codec<MHSMRegionsListByResourceInput>;
 
 // Output Schema
+export interface MHSMRegionsListByResourceOutput {
+  value: {
+    name?: string;
+    provisioningState?:
+      | "Preprovisioning"
+      | "Provisioning"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Cleanup";
+    isPrimary?: boolean;
+  }[];
+  nextLink?: string;
+}
 export const MHSMRegionsListByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2003,9 +2685,7 @@ export const MHSMRegionsListByResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MHSMRegionsListByResourceOutput =
-  typeof MHSMRegionsListByResourceOutput.Type;
+  }) as unknown as Schema.Codec<MHSMRegionsListByResourceOutput>;
 
 // The operation
 /**
@@ -2023,6 +2703,7 @@ export const MHSMRegionsListByResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2031,10 +2712,49 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.KeyVault/operations",
     apiVersion: "2026-02-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          supportedAggregationTypes?: string[];
+          supportedTimeGrainTypes?: string[];
+          lockAggregationType?: string;
+          dimensions?: {
+            name?: string;
+            displayName?: string;
+            toBeExportedForShoebox?: boolean;
+          }[];
+          fillGapWithZero?: boolean;
+          internalMetricName?: string;
+        }[];
+      };
+    };
+    isDataAction?: boolean;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2100,8 +2820,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2114,6 +2833,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2126,11 +2851,22 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2150,9 +2886,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2170,6 +2904,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2182,11 +2922,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2206,9 +2957,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -2226,6 +2975,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+}
 export const PrivateEndpointConnectionsListByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2237,11 +2991,25 @@ export const PrivateEndpointConnectionsListByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections",
       apiVersion: "2026-02-01",
     }),
-  );
-export type PrivateEndpointConnectionsListByResourceInput =
-  typeof PrivateEndpointConnectionsListByResourceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByResourceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2276,9 +3044,7 @@ export const PrivateEndpointConnectionsListByResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByResourceOutput =
-  typeof PrivateEndpointConnectionsListByResourceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByResourceOutput>;
 
 // The operation
 /**
@@ -2295,6 +3061,30 @@ export const PrivateEndpointConnectionsListByResource =
     outputSchema: PrivateEndpointConnectionsListByResourceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: "None";
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Disconnected";
+  };
+  location?: string;
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const PrivateEndpointConnectionsPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2343,11 +3133,22 @@ export const PrivateEndpointConnectionsPutInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type PrivateEndpointConnectionsPutInput =
-  typeof PrivateEndpointConnectionsPutInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsPutInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2367,9 +3168,7 @@ export const PrivateEndpointConnectionsPutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsPutOutput =
-  typeof PrivateEndpointConnectionsPutOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsPutOutput>;
 
 // The operation
 /**
@@ -2387,6 +3186,11 @@ export const PrivateEndpointConnectionsPut =
     outputSchema: PrivateEndpointConnectionsPutOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListByVaultInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+}
 export const PrivateLinkResourcesListByVaultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2398,11 +3202,24 @@ export const PrivateLinkResourcesListByVaultInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/privateLinkResources",
       apiVersion: "2026-02-01",
     }),
-  );
-export type PrivateLinkResourcesListByVaultInput =
-  typeof PrivateLinkResourcesListByVaultInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByVaultInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByVaultOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const PrivateLinkResourcesListByVaultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2438,9 +3255,7 @@ export const PrivateLinkResourcesListByVaultOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkResourcesListByVaultOutput =
-  typeof PrivateLinkResourcesListByVaultOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByVaultOutput>;
 
 // The operation
 /**
@@ -2457,6 +3272,26 @@ export const PrivateLinkResourcesListByVault =
     outputSchema: PrivateLinkResourcesListByVaultOutput,
   }));
 // Input Schema
+export interface SecretsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  secretName: string;
+  tags?: Record<string, string>;
+  properties: {
+    value?: string;
+    contentType?: string;
+    attributes?: {
+      enabled?: boolean;
+      nbf?: number;
+      exp?: number;
+      created?: number;
+      updated?: number;
+    };
+    secretUri?: string;
+    secretUriWithVersion?: string;
+  };
+}
 export const SecretsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2485,10 +3320,22 @@ export const SecretsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SecretsCreateOrUpdateInput = typeof SecretsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SecretsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SecretsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecretsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2508,9 +3355,7 @@ export const SecretsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecretsCreateOrUpdateOutput =
-  typeof SecretsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SecretsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2529,6 +3374,12 @@ export const SecretsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SecretsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  secretName: string;
+}
 export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2540,10 +3391,22 @@ export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type SecretsGetInput = typeof SecretsGetInput.Type;
+) as unknown as Schema.Codec<SecretsGetInput>;
 
 // Output Schema
+export interface SecretsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2562,8 +3425,7 @@ export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SecretsGetOutput = typeof SecretsGetOutput.Type;
+}) as unknown as Schema.Codec<SecretsGetOutput>;
 
 // The operation
 /**
@@ -2580,6 +3442,12 @@ export const SecretsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SecretsGetOutput,
 }));
 // Input Schema
+export interface SecretsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  $top?: number;
+}
 export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2591,10 +3459,25 @@ export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets",
     apiVersion: "2026-02-01",
   }),
-);
-export type SecretsListInput = typeof SecretsListInput.Type;
+) as unknown as Schema.Codec<SecretsListInput>;
 
 // Output Schema
+export interface SecretsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2618,8 +3501,7 @@ export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SecretsListOutput = typeof SecretsListOutput.Type;
+}) as unknown as Schema.Codec<SecretsListOutput>;
 
 // The operation
 /**
@@ -2636,6 +3518,24 @@ export const SecretsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SecretsListOutput,
 }));
 // Input Schema
+export interface SecretsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  secretName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    value?: string;
+    contentType?: string;
+    attributes?: {
+      enabled?: boolean;
+      nbf?: number;
+      exp?: number;
+      created?: number;
+      updated?: number;
+    };
+  };
+}
 export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2663,10 +3563,22 @@ export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type SecretsUpdateInput = typeof SecretsUpdateInput.Type;
+) as unknown as Schema.Codec<SecretsUpdateInput>;
 
 // Output Schema
+export interface SecretsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2685,8 +3597,7 @@ export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SecretsUpdateOutput = typeof SecretsUpdateOutput.Type;
+}) as unknown as Schema.Codec<SecretsUpdateOutput>;
 
 // The operation
 /**
@@ -2703,6 +3614,11 @@ export const SecretsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SecretsUpdateOutput,
 }));
 // Input Schema
+export interface VaultsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+  type: "Microsoft.KeyVault/vaults";
+}
 export const VaultsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2714,11 +3630,14 @@ export const VaultsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/checkNameAvailability",
       apiVersion: "2026-02-01",
     }),
-  );
-export type VaultsCheckNameAvailabilityInput =
-  typeof VaultsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<VaultsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface VaultsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "AccountNameInvalid" | "AlreadyExists";
+  message?: string;
+}
 export const VaultsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
@@ -2726,9 +3645,7 @@ export const VaultsCheckNameAvailabilityOutput =
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
     ),
     message: Schema.optional(Schema.String),
-  });
-export type VaultsCheckNameAvailabilityOutput =
-  typeof VaultsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<VaultsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -2744,6 +3661,134 @@ export const VaultsCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VaultsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  location: string;
+  tags?: Record<string, string>;
+  properties: {
+    tenantId: string;
+    sku: { family: "A"; name: "standard" | "premium" };
+    accessPolicies?: {
+      tenantId: string;
+      objectId: string;
+      applicationId?: string;
+      permissions: {
+        keys?: (
+          | "all"
+          | "encrypt"
+          | "decrypt"
+          | "wrapKey"
+          | "unwrapKey"
+          | "sign"
+          | "verify"
+          | "get"
+          | "list"
+          | "create"
+          | "update"
+          | "import"
+          | "delete"
+          | "backup"
+          | "restore"
+          | "recover"
+          | "purge"
+          | "release"
+          | "rotate"
+          | "getrotationpolicy"
+          | "setrotationpolicy"
+        )[];
+        secrets?: (
+          | "all"
+          | "get"
+          | "list"
+          | "set"
+          | "delete"
+          | "backup"
+          | "restore"
+          | "recover"
+          | "purge"
+        )[];
+        certificates?: (
+          | "all"
+          | "get"
+          | "list"
+          | "delete"
+          | "create"
+          | "import"
+          | "update"
+          | "managecontacts"
+          | "getissuers"
+          | "listissuers"
+          | "setissuers"
+          | "deleteissuers"
+          | "manageissuers"
+          | "recover"
+          | "purge"
+          | "backup"
+          | "restore"
+        )[];
+        storage?: (
+          | "all"
+          | "get"
+          | "list"
+          | "delete"
+          | "set"
+          | "update"
+          | "regeneratekey"
+          | "recover"
+          | "purge"
+          | "backup"
+          | "restore"
+          | "setsas"
+          | "listsas"
+          | "getsas"
+          | "deletesas"
+        )[];
+      };
+    }[];
+    vaultUri?: string;
+    hsmPoolResourceId?: string;
+    enabledForDeployment?: boolean;
+    enabledForDiskEncryption?: boolean;
+    enabledForTemplateDeployment?: boolean;
+    enableSoftDelete?: boolean;
+    softDeleteRetentionInDays?: number;
+    enableRbacAuthorization?: boolean;
+    createMode?: "recover" | "default";
+    enablePurgeProtection?: boolean;
+    networkAcls?: {
+      bypass?: "AzureServices" | "None";
+      defaultAction?: "Allow" | "Deny";
+      ipRules?: { value: string }[];
+      virtualNetworkRules?: {
+        id: string;
+        ignoreMissingVnetServiceEndpoint?: boolean;
+      }[];
+    };
+    provisioningState?: "Succeeded" | "RegisteringDns";
+    privateEndpointConnections?: {
+      id?: string;
+      etag?: string;
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: "None";
+        };
+        provisioningState?:
+          | "Succeeded"
+          | "Creating"
+          | "Updating"
+          | "Deleting"
+          | "Failed"
+          | "Disconnected";
+      };
+    }[];
+    publicNetworkAccess?: string;
+  };
+}
 export const VaultsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2939,10 +3984,22 @@ export const VaultsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type VaultsCreateOrUpdateInput = typeof VaultsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VaultsCreateOrUpdateInput>;
 
 // Output Schema
+export interface VaultsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VaultsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2962,8 +4019,7 @@ export const VaultsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VaultsCreateOrUpdateOutput = typeof VaultsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VaultsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2981,6 +4037,11 @@ export const VaultsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VaultsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+}
 export const VaultsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2991,12 +4052,12 @@ export const VaultsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type VaultsDeleteInput = typeof VaultsDeleteInput.Type;
+) as unknown as Schema.Codec<VaultsDeleteInput>;
 
 // Output Schema
-export const VaultsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VaultsDeleteOutput = typeof VaultsDeleteOutput.Type;
+export type VaultsDeleteOutput = void;
+export const VaultsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VaultsDeleteOutput>;
 
 // The operation
 /**
@@ -3012,6 +4073,11 @@ export const VaultsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VaultsDeleteOutput,
 }));
 // Input Schema
+export interface VaultsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+}
 export const VaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3022,10 +4088,22 @@ export const VaultsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type VaultsGetInput = typeof VaultsGetInput.Type;
+) as unknown as Schema.Codec<VaultsGetInput>;
 
 // Output Schema
+export interface VaultsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3044,8 +4122,7 @@ export const VaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VaultsGetOutput = typeof VaultsGetOutput.Type;
+}) as unknown as Schema.Codec<VaultsGetOutput>;
 
 // The operation
 /**
@@ -3061,6 +4138,11 @@ export const VaultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VaultsGetOutput,
 }));
 // Input Schema
+export interface VaultsGetDeletedInput {
+  subscriptionId: string;
+  location: string;
+  vaultName: string;
+}
 export const VaultsGetDeletedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -3071,10 +4153,22 @@ export const VaultsGetDeletedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/locations/{location}/deletedVaults/{vaultName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type VaultsGetDeletedInput = typeof VaultsGetDeletedInput.Type;
+) as unknown as Schema.Codec<VaultsGetDeletedInput>;
 
 // Output Schema
+export interface VaultsGetDeletedOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VaultsGetDeletedOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3095,8 +4189,7 @@ export const VaultsGetDeletedOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type VaultsGetDeletedOutput = typeof VaultsGetDeletedOutput.Type;
+) as unknown as Schema.Codec<VaultsGetDeletedOutput>;
 
 // The operation
 /**
@@ -3112,6 +4205,11 @@ export const VaultsGetDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VaultsGetDeletedOutput,
 }));
 // Input Schema
+export interface VaultsListInput {
+  subscriptionId: string;
+  $filter: "resourceType eq 'Microsoft.KeyVault/vaults'";
+  $top?: number;
+}
 export const VaultsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.Literals(["resourceType eq 'Microsoft.KeyVault/vaults'"]),
@@ -3122,10 +4220,25 @@ export const VaultsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resources",
     apiVersion: "2026-02-01",
   }),
-);
-export type VaultsListInput = typeof VaultsListInput.Type;
+) as unknown as Schema.Codec<VaultsListInput>;
 
 // Output Schema
+export interface VaultsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VaultsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -3149,8 +4262,7 @@ export const VaultsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type VaultsListOutput = typeof VaultsListOutput.Type;
+}) as unknown as Schema.Codec<VaultsListOutput>;
 
 // The operation
 /**
@@ -3166,6 +4278,11 @@ export const VaultsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VaultsListOutput,
 }));
 // Input Schema
+export interface VaultsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const VaultsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3177,11 +4294,25 @@ export const VaultsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults",
       apiVersion: "2026-02-01",
     }),
-  );
-export type VaultsListByResourceGroupInput =
-  typeof VaultsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<VaultsListByResourceGroupInput>;
 
 // Output Schema
+export interface VaultsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VaultsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3216,9 +4347,7 @@ export const VaultsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VaultsListByResourceGroupOutput =
-  typeof VaultsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<VaultsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3236,6 +4365,10 @@ export const VaultsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VaultsListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const VaultsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3246,11 +4379,25 @@ export const VaultsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/vaults",
       apiVersion: "2026-02-01",
     }),
-  );
-export type VaultsListBySubscriptionInput =
-  typeof VaultsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<VaultsListBySubscriptionInput>;
 
 // Output Schema
+export interface VaultsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VaultsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3285,9 +4432,7 @@ export const VaultsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VaultsListBySubscriptionOutput =
-  typeof VaultsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<VaultsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3304,6 +4449,9 @@ export const VaultsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VaultsListDeletedInput {
+  subscriptionId: string;
+}
 export const VaultsListDeletedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3314,10 +4462,25 @@ export const VaultsListDeletedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/deletedVaults",
     apiVersion: "2026-02-01",
   }),
-);
-export type VaultsListDeletedInput = typeof VaultsListDeletedInput.Type;
+) as unknown as Schema.Codec<VaultsListDeletedInput>;
 
 // Output Schema
+export interface VaultsListDeletedOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VaultsListDeletedOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3352,8 +4515,7 @@ export const VaultsListDeletedOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VaultsListDeletedOutput = typeof VaultsListDeletedOutput.Type;
+  }) as unknown as Schema.Codec<VaultsListDeletedOutput>;
 
 // The operation
 /**
@@ -3367,6 +4529,11 @@ export const VaultsListDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VaultsListDeletedOutput,
 }));
 // Input Schema
+export interface VaultsPurgeDeletedInput {
+  subscriptionId: string;
+  location: string;
+  vaultName: string;
+}
 export const VaultsPurgeDeletedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3378,12 +4545,12 @@ export const VaultsPurgeDeletedInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/locations/{location}/deletedVaults/{vaultName}/purge",
       apiVersion: "2026-02-01",
     }),
-  );
-export type VaultsPurgeDeletedInput = typeof VaultsPurgeDeletedInput.Type;
+  ) as unknown as Schema.Codec<VaultsPurgeDeletedInput>;
 
 // Output Schema
-export const VaultsPurgeDeletedOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VaultsPurgeDeletedOutput = typeof VaultsPurgeDeletedOutput.Type;
+export type VaultsPurgeDeletedOutput = void;
+export const VaultsPurgeDeletedOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VaultsPurgeDeletedOutput>;
 
 // The operation
 /**
@@ -3399,6 +4566,111 @@ export const VaultsPurgeDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VaultsPurgeDeletedOutput,
 }));
 // Input Schema
+export interface VaultsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    tenantId?: string;
+    sku?: { family: "A"; name: "standard" | "premium" };
+    accessPolicies?: {
+      tenantId: string;
+      objectId: string;
+      applicationId?: string;
+      permissions: {
+        keys?: (
+          | "all"
+          | "encrypt"
+          | "decrypt"
+          | "wrapKey"
+          | "unwrapKey"
+          | "sign"
+          | "verify"
+          | "get"
+          | "list"
+          | "create"
+          | "update"
+          | "import"
+          | "delete"
+          | "backup"
+          | "restore"
+          | "recover"
+          | "purge"
+          | "release"
+          | "rotate"
+          | "getrotationpolicy"
+          | "setrotationpolicy"
+        )[];
+        secrets?: (
+          | "all"
+          | "get"
+          | "list"
+          | "set"
+          | "delete"
+          | "backup"
+          | "restore"
+          | "recover"
+          | "purge"
+        )[];
+        certificates?: (
+          | "all"
+          | "get"
+          | "list"
+          | "delete"
+          | "create"
+          | "import"
+          | "update"
+          | "managecontacts"
+          | "getissuers"
+          | "listissuers"
+          | "setissuers"
+          | "deleteissuers"
+          | "manageissuers"
+          | "recover"
+          | "purge"
+          | "backup"
+          | "restore"
+        )[];
+        storage?: (
+          | "all"
+          | "get"
+          | "list"
+          | "delete"
+          | "set"
+          | "update"
+          | "regeneratekey"
+          | "recover"
+          | "purge"
+          | "backup"
+          | "restore"
+          | "setsas"
+          | "listsas"
+          | "getsas"
+          | "deletesas"
+        )[];
+      };
+    }[];
+    enabledForDeployment?: boolean;
+    enabledForDiskEncryption?: boolean;
+    enabledForTemplateDeployment?: boolean;
+    enableSoftDelete?: boolean;
+    enableRbacAuthorization?: boolean;
+    softDeleteRetentionInDays?: number;
+    createMode?: "recover" | "default";
+    enablePurgeProtection?: boolean;
+    networkAcls?: {
+      bypass?: "AzureServices" | "None";
+      defaultAction?: "Allow" | "Deny";
+      ipRules?: { value: string }[];
+      virtualNetworkRules?: {
+        id: string;
+        ignoreMissingVnetServiceEndpoint?: boolean;
+      }[];
+    };
+    publicNetworkAccess?: string;
+  };
+}
 export const VaultsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3550,10 +4822,22 @@ export const VaultsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type VaultsUpdateInput = typeof VaultsUpdateInput.Type;
+) as unknown as Schema.Codec<VaultsUpdateInput>;
 
 // Output Schema
+export interface VaultsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VaultsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3572,8 +4856,7 @@ export const VaultsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VaultsUpdateOutput = typeof VaultsUpdateOutput.Type;
+}) as unknown as Schema.Codec<VaultsUpdateOutput>;
 
 // The operation
 /**
@@ -3589,6 +4872,95 @@ export const VaultsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VaultsUpdateOutput,
 }));
 // Input Schema
+export interface VaultsUpdateAccessPolicyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vaultName: string;
+  operationKind: "add" | "replace" | "remove";
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  properties: {
+    accessPolicies: {
+      tenantId: string;
+      objectId: string;
+      applicationId?: string;
+      permissions: {
+        keys?: (
+          | "all"
+          | "encrypt"
+          | "decrypt"
+          | "wrapKey"
+          | "unwrapKey"
+          | "sign"
+          | "verify"
+          | "get"
+          | "list"
+          | "create"
+          | "update"
+          | "import"
+          | "delete"
+          | "backup"
+          | "restore"
+          | "recover"
+          | "purge"
+          | "release"
+          | "rotate"
+          | "getrotationpolicy"
+          | "setrotationpolicy"
+        )[];
+        secrets?: (
+          | "all"
+          | "get"
+          | "list"
+          | "set"
+          | "delete"
+          | "backup"
+          | "restore"
+          | "recover"
+          | "purge"
+        )[];
+        certificates?: (
+          | "all"
+          | "get"
+          | "list"
+          | "delete"
+          | "create"
+          | "import"
+          | "update"
+          | "managecontacts"
+          | "getissuers"
+          | "listissuers"
+          | "setissuers"
+          | "deleteissuers"
+          | "manageissuers"
+          | "recover"
+          | "purge"
+          | "backup"
+          | "restore"
+        )[];
+        storage?: (
+          | "all"
+          | "get"
+          | "list"
+          | "delete"
+          | "set"
+          | "update"
+          | "regeneratekey"
+          | "recover"
+          | "purge"
+          | "backup"
+          | "restore"
+          | "setsas"
+          | "listsas"
+          | "getsas"
+          | "deletesas"
+        )[];
+      };
+    }[];
+  };
+}
 export const VaultsUpdateAccessPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3704,11 +5076,94 @@ export const VaultsUpdateAccessPolicyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/accessPolicies/{operationKind}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type VaultsUpdateAccessPolicyInput =
-  typeof VaultsUpdateAccessPolicyInput.Type;
+  ) as unknown as Schema.Codec<VaultsUpdateAccessPolicyInput>;
 
 // Output Schema
+export interface VaultsUpdateAccessPolicyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  properties: {
+    accessPolicies: {
+      tenantId: string;
+      objectId: string;
+      applicationId?: string;
+      permissions: {
+        keys?: (
+          | "all"
+          | "encrypt"
+          | "decrypt"
+          | "wrapKey"
+          | "unwrapKey"
+          | "sign"
+          | "verify"
+          | "get"
+          | "list"
+          | "create"
+          | "update"
+          | "import"
+          | "delete"
+          | "backup"
+          | "restore"
+          | "recover"
+          | "purge"
+          | "release"
+          | "rotate"
+          | "getrotationpolicy"
+          | "setrotationpolicy"
+        )[];
+        secrets?: (
+          | "all"
+          | "get"
+          | "list"
+          | "set"
+          | "delete"
+          | "backup"
+          | "restore"
+          | "recover"
+          | "purge"
+        )[];
+        certificates?: (
+          | "all"
+          | "get"
+          | "list"
+          | "delete"
+          | "create"
+          | "import"
+          | "update"
+          | "managecontacts"
+          | "getissuers"
+          | "listissuers"
+          | "setissuers"
+          | "deleteissuers"
+          | "manageissuers"
+          | "recover"
+          | "purge"
+          | "backup"
+          | "restore"
+        )[];
+        storage?: (
+          | "all"
+          | "get"
+          | "list"
+          | "delete"
+          | "set"
+          | "update"
+          | "regeneratekey"
+          | "recover"
+          | "purge"
+          | "backup"
+          | "restore"
+          | "setsas"
+          | "listsas"
+          | "getsas"
+          | "deletesas"
+        )[];
+      };
+    }[];
+  };
+}
 export const VaultsUpdateAccessPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3812,9 +5267,7 @@ export const VaultsUpdateAccessPolicyOutput =
         }),
       ),
     }),
-  });
-export type VaultsUpdateAccessPolicyOutput =
-  typeof VaultsUpdateAccessPolicyOutput.Type;
+  }) as unknown as Schema.Codec<VaultsUpdateAccessPolicyOutput>;
 
 // The operation
 /**

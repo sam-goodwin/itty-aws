@@ -2,14 +2,41 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { SensitiveOutputString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetNotifiersInput {}
 export const GetNotifiersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v2/notifiers" }));
-export type GetNotifiersInput = typeof GetNotifiersInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v2/notifiers" }),
+) as unknown as Schema.Codec<GetNotifiersInput>;
 
 // Output Schema
+export type GetNotifiersOutput = {
+  createdAt?: string;
+  createdBy?: string;
+  disabledUntil?: string;
+  name: string;
+  properties: {
+    customWebhook?: {
+      body: string;
+      headers?: Record<string, string>;
+      secretHeaders?: Record<string, string>;
+      url: string;
+    };
+    discord?: { discordChannel?: string; discordToken?: string };
+    discordWebhook?: { discordWebhookUrl?: string };
+    email?: { emails?: string[] };
+    microsoftTeams?: { microsoftTeamsUrl?: string };
+    opsgenie?: { apiKey?: Redacted.Redacted<string>; isEU?: boolean };
+    pagerduty?: { routingKey?: string; token?: string };
+    slack?: { slackUrl?: string };
+    webhook?: { url?: string };
+  };
+  updatedAt?: string;
+  id?: string;
+}[];
 export const GetNotifiersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     createdAt: Schema.optional(Schema.String),
@@ -74,8 +101,7 @@ export const GetNotifiersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     updatedAt: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }),
-);
-export type GetNotifiersOutput = typeof GetNotifiersOutput.Type;
+) as unknown as Schema.Codec<GetNotifiersOutput>;
 
 // The operation
 /**

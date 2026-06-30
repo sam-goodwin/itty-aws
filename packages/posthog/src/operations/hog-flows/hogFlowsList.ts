@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFlowsListInput {
+  project_id: string;
+  created_at?: string;
+  created_by?: number;
+  id?: string;
+  limit?: number;
+  offset?: number;
+  status?: "active" | "archived" | "draft";
+  updated_at?: string;
+}
 export const HogFlowsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   created_at: Schema.optional(Schema.String),
@@ -15,10 +25,57 @@ export const HogFlowsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updated_at: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/hog_flows/" }),
-);
-export type HogFlowsListInput = typeof HogFlowsListInput.Type;
+) as unknown as Schema.Codec<HogFlowsListInput>;
 
 // Output Schema
+export interface HogFlowsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string | null;
+    description?: string;
+    version?: number;
+    status?: "draft" | "active" | "archived";
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    updated_at?: string;
+    trigger?: unknown;
+    trigger_masking?: unknown;
+    conversion?: unknown;
+    exit_condition?:
+      | "exit_on_conversion"
+      | "exit_on_trigger_not_matched"
+      | "exit_on_trigger_not_matched_or_conversion"
+      | "exit_only_at_end";
+    edges?: unknown;
+    actions?: unknown;
+    abort_action?: string | null;
+    variables?: unknown;
+    billable_action_types?: unknown;
+  }[];
+}
 export const HogFlowsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -47,7 +104,23 @@ export const HogFlowsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -71,8 +144,7 @@ export const HogFlowsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type HogFlowsListOutput = typeof HogFlowsListOutput.Type;
+}) as unknown as Schema.Codec<HogFlowsListOutput>;
 
 // The operation
 /**

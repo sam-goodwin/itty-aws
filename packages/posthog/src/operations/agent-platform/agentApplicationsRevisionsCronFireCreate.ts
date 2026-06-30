@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsRevisionsCronFireCreateInput {
+  application_id: string;
+  id: string;
+  project_id: string;
+  cron_name: string;
+  request_id?: string | null;
+}
 export const AgentApplicationsRevisionsCronFireCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,16 @@ export const AgentApplicationsRevisionsCronFireCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/cron/fire/",
     }),
-  );
-export type AgentApplicationsRevisionsCronFireCreateInput =
-  typeof AgentApplicationsRevisionsCronFireCreateInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsRevisionsCronFireCreateInput>;
 
 // Output Schema
+export interface AgentApplicationsRevisionsCronFireCreateOutput {
+  ok: boolean;
+  session_id: string;
+  fired_at: string;
+  idempotency_key: string;
+  request_id: string;
+}
 export const AgentApplicationsRevisionsCronFireCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ok: Schema.Boolean,
@@ -27,9 +39,7 @@ export const AgentApplicationsRevisionsCronFireCreateOutput =
     fired_at: Schema.String,
     idempotency_key: Schema.String,
     request_id: Schema.String,
-  });
-export type AgentApplicationsRevisionsCronFireCreateOutput =
-  typeof AgentApplicationsRevisionsCronFireCreateOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsRevisionsCronFireCreateOutput>;
 
 // The operation
 /**

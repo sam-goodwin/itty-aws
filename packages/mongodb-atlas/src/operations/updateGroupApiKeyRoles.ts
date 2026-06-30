@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupApiKeyRolesInput {
+  groupId: string;
+  apiUserId: string;
+  pageNum?: number;
+  itemsPerPage?: number;
+  includeCount?: boolean;
+  pretty?: boolean;
+  envelope?: boolean;
+}
 export const UpdateGroupApiKeyRolesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const UpdateGroupApiKeyRolesInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
     }),
-  );
-export type UpdateGroupApiKeyRolesInput =
-  typeof UpdateGroupApiKeyRolesInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupApiKeyRolesInput>;
 
 // Output Schema
+export type UpdateGroupApiKeyRolesOutput = void;
 export const UpdateGroupApiKeyRolesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupApiKeyRolesOutput =
-  typeof UpdateGroupApiKeyRolesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupApiKeyRolesOutput>;
 
 // The operation
 /**

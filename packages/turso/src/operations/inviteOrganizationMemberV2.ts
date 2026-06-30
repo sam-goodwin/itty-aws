@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface InviteOrganizationMemberV2Input {
+  organizationSlug: string;
+  email?: string;
+  username?: string;
+  role?: "admin" | "member" | "viewer";
+}
 export const InviteOrganizationMemberV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,16 @@ export const InviteOrganizationMemberV2Input =
       method: "POST",
       path: "/v2/organizations/{organizationSlug}/invites",
     }),
-  );
-export type InviteOrganizationMemberV2Input =
-  typeof InviteOrganizationMemberV2Input.Type;
+  ) as unknown as Schema.Codec<InviteOrganizationMemberV2Input>;
 
 // Output Schema
+export interface InviteOrganizationMemberV2Output {
+  invited?: {
+    email?: string;
+    role?: "admin" | "member" | "viewer";
+    organization?: string;
+  };
+}
 export const InviteOrganizationMemberV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invited: Schema.optional(
@@ -28,9 +39,7 @@ export const InviteOrganizationMemberV2Output =
         organization: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InviteOrganizationMemberV2Output =
-  typeof InviteOrganizationMemberV2Output.Type;
+  }) as unknown as Schema.Codec<InviteOrganizationMemberV2Output>;
 
 // The operation
 /**

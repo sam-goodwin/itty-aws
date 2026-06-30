@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AccountsAddRootCollectionAdminInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  objectId?: string;
+}
 export const AccountsAddRootCollectionAdminInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +27,12 @@ export const AccountsAddRootCollectionAdminInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/addRootCollectionAdmin",
       apiVersion: "2021-12-01",
     }),
-  );
-export type AccountsAddRootCollectionAdminInput =
-  typeof AccountsAddRootCollectionAdminInput.Type;
+  ) as unknown as Schema.Codec<AccountsAddRootCollectionAdminInput>;
 
 // Output Schema
+export type AccountsAddRootCollectionAdminOutput = void;
 export const AccountsAddRootCollectionAdminOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccountsAddRootCollectionAdminOutput =
-  typeof AccountsAddRootCollectionAdminOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsAddRootCollectionAdminOutput>;
 
 // The operation
 /**
@@ -48,6 +51,11 @@ export const AccountsAddRootCollectionAdmin =
     outputSchema: AccountsAddRootCollectionAdminOutput,
   }));
 // Input Schema
+export interface AccountsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+}
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -59,19 +67,20 @@ export const AccountsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Purview/checkNameAvailability",
       apiVersion: "2021-12-01",
     }),
-  );
-export type AccountsCheckNameAvailabilityInput =
-  typeof AccountsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<AccountsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface AccountsCheckNameAvailabilityOutput {
+  message?: string;
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const AccountsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type AccountsCheckNameAvailabilityOutput =
-  typeof AccountsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<AccountsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -88,6 +97,96 @@ export const AccountsCheckNameAvailability =
     outputSchema: AccountsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface AccountsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    accountStatus?: {
+      accountProvisioningState?:
+        | "Unknown"
+        | "Creating"
+        | "Updating"
+        | "Moving"
+        | "Deleting"
+        | "SoftDeleting"
+        | "SoftDeleted"
+        | "Failed"
+        | "Succeeded"
+        | "Canceled";
+      errorDetails?: {
+        code?: string;
+        details?: unknown[];
+        message?: string;
+        target?: string;
+      };
+    };
+    cloudConnectors?: { awsExternalId?: string };
+    createdAt?: string;
+    createdBy?: string;
+    createdByObjectId?: string;
+    endpoints?: { catalog?: string; guardian?: string; scan?: string };
+    friendlyName?: string;
+    managedEventHubState?: "NotSpecified" | "Disabled" | "Enabled";
+    managedResourceGroupName?: string;
+    managedResources?: {
+      eventHubNamespace?: string;
+      resourceGroup?: string;
+      storageAccount?: string;
+    };
+    managedResourcesPublicNetworkAccess?:
+      | "NotSpecified"
+      | "Enabled"
+      | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      systemData?: {
+        createdAt?: string;
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      };
+      type?: string;
+    }[];
+    provisioningState?:
+      | "Unknown"
+      | "Creating"
+      | "Moving"
+      | "Deleting"
+      | "SoftDeleting"
+      | "SoftDeleted"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+  };
+  sku?: { capacity?: number; name?: "Standard" };
+  id?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    >;
+  };
+  location?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  tags?: Record<string, string>;
+  type?: string;
+}
 export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -251,11 +350,33 @@ export const AccountsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
       apiVersion: "2021-12-01",
     }),
-  );
-export type AccountsCreateOrUpdateInput =
-  typeof AccountsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AccountsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AccountsCreateOrUpdateOutput {
+  id?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    >;
+  };
+  location?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  tags?: Record<string, string>;
+  type?: string;
+}
 export const AccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -295,9 +416,7 @@ export const AccountsCreateOrUpdateOutput =
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     type: Schema.optional(Schema.String),
-  });
-export type AccountsCreateOrUpdateOutput =
-  typeof AccountsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AccountsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -317,6 +436,11 @@ export const AccountsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -327,12 +451,12 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
     apiVersion: "2021-12-01",
   }),
-);
-export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
+) as unknown as Schema.Codec<AccountsDeleteInput>;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
+export type AccountsDeleteOutput = void;
+export const AccountsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -350,6 +474,11 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
+export interface AccountsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -360,10 +489,33 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
     apiVersion: "2021-12-01",
   }),
-);
-export type AccountsGetInput = typeof AccountsGetInput.Type;
+) as unknown as Schema.Codec<AccountsGetInput>;
 
 // Output Schema
+export interface AccountsGetOutput {
+  id?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    >;
+  };
+  location?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  tags?: Record<string, string>;
+  type?: string;
+}
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   identity: Schema.optional(
@@ -402,8 +554,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   type: Schema.optional(Schema.String),
-});
-export type AccountsGetOutput = typeof AccountsGetOutput.Type;
+}) as unknown as Schema.Codec<AccountsGetOutput>;
 
 // The operation
 /**
@@ -421,6 +572,11 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsGetOutput,
 }));
 // Input Schema
+export interface AccountsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skipToken?: string;
+}
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -432,11 +588,37 @@ export const AccountsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts",
       apiVersion: "2021-12-01",
     }),
-  );
-export type AccountsListByResourceGroupInput =
-  typeof AccountsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AccountsListByResourceGroupInput>;
 
 // Output Schema
+export interface AccountsListByResourceGroupOutput {
+  count?: number;
+  nextLink?: string;
+  value: {
+    id?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "None" | "SystemAssigned" | "UserAssigned";
+      userAssignedIdentities?: Record<
+        string,
+        { clientId?: string; principalId?: string }
+      >;
+    };
+    location?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    tags?: Record<string, string>;
+    type?: string;
+  }[];
+}
 export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -492,9 +674,7 @@ export const AccountsListByResourceGroupOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountsListByResourceGroupOutput =
-  typeof AccountsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -514,6 +694,10 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsListBySubscriptionInput {
+  subscriptionId: string;
+  $skipToken?: string;
+}
 export const AccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -524,11 +708,37 @@ export const AccountsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Purview/accounts",
       apiVersion: "2021-12-01",
     }),
-  );
-export type AccountsListBySubscriptionInput =
-  typeof AccountsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AccountsListBySubscriptionInput>;
 
 // Output Schema
+export interface AccountsListBySubscriptionOutput {
+  count?: number;
+  nextLink?: string;
+  value: {
+    id?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "None" | "SystemAssigned" | "UserAssigned";
+      userAssignedIdentities?: Record<
+        string,
+        { clientId?: string; principalId?: string }
+      >;
+    };
+    location?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    tags?: Record<string, string>;
+    type?: string;
+  }[];
+}
 export const AccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -584,9 +794,7 @@ export const AccountsListBySubscriptionOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountsListBySubscriptionOutput =
-  typeof AccountsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -605,6 +813,11 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -615,17 +828,19 @@ export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/listkeys",
     apiVersion: "2021-12-01",
   }),
-);
-export type AccountsListKeysInput = typeof AccountsListKeysInput.Type;
+) as unknown as Schema.Codec<AccountsListKeysInput>;
 
 // Output Schema
+export interface AccountsListKeysOutput {
+  atlasKafkaPrimaryEndpoint?: string;
+  atlasKafkaSecondaryEndpoint?: string;
+}
 export const AccountsListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     atlasKafkaPrimaryEndpoint: Schema.optional(Schema.String),
     atlasKafkaSecondaryEndpoint: Schema.optional(Schema.String),
   },
-);
-export type AccountsListKeysOutput = typeof AccountsListKeysOutput.Type;
+) as unknown as Schema.Codec<AccountsListKeysOutput>;
 
 // The operation
 /**
@@ -643,6 +858,83 @@ export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsListKeysOutput,
 }));
 // Input Schema
+export interface AccountsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    >;
+  };
+  properties?: {
+    accountStatus?: {
+      accountProvisioningState?:
+        | "Unknown"
+        | "Creating"
+        | "Updating"
+        | "Moving"
+        | "Deleting"
+        | "SoftDeleting"
+        | "SoftDeleted"
+        | "Failed"
+        | "Succeeded"
+        | "Canceled";
+      errorDetails?: {
+        code?: string;
+        details?: unknown[];
+        message?: string;
+        target?: string;
+      };
+    };
+    cloudConnectors?: { awsExternalId?: string };
+    createdAt?: string;
+    createdBy?: string;
+    createdByObjectId?: string;
+    endpoints?: { catalog?: string; guardian?: string; scan?: string };
+    friendlyName?: string;
+    managedEventHubState?: "NotSpecified" | "Disabled" | "Enabled";
+    managedResourceGroupName?: string;
+    managedResources?: {
+      eventHubNamespace?: string;
+      resourceGroup?: string;
+      storageAccount?: string;
+    };
+    managedResourcesPublicNetworkAccess?:
+      | "NotSpecified"
+      | "Enabled"
+      | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      systemData?: {
+        createdAt?: string;
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      };
+      type?: string;
+    }[];
+    provisioningState?:
+      | "Unknown"
+      | "Creating"
+      | "Moving"
+      | "Deleting"
+      | "SoftDeleting"
+      | "SoftDeleted"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+  };
+  tags?: Record<string, string>;
+}
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -781,10 +1073,33 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
     apiVersion: "2021-12-01",
   }),
-);
-export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
+) as unknown as Schema.Codec<AccountsUpdateInput>;
 
 // Output Schema
+export interface AccountsUpdateOutput {
+  id?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { clientId?: string; principalId?: string }
+    >;
+  };
+  location?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  tags?: Record<string, string>;
+  type?: string;
+}
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   identity: Schema.optional(
@@ -823,8 +1138,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   type: Schema.optional(Schema.String),
-});
-export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
+}) as unknown as Schema.Codec<AccountsUpdateOutput>;
 
 // The operation
 /**
@@ -842,6 +1156,11 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
+export interface DefaultAccountsGetInput {
+  scopeTenantId: string;
+  scopeType: "Tenant" | "Subscription";
+  scope?: string;
+}
 export const DefaultAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopeTenantId: Schema.String,
@@ -853,10 +1172,17 @@ export const DefaultAccountsGetInput =
       path: "/providers/Microsoft.Purview/getDefaultAccount",
       apiVersion: "2021-12-01",
     }),
-  );
-export type DefaultAccountsGetInput = typeof DefaultAccountsGetInput.Type;
+  ) as unknown as Schema.Codec<DefaultAccountsGetInput>;
 
 // Output Schema
+export interface DefaultAccountsGetOutput {
+  accountName?: string;
+  resourceGroupName?: string;
+  scope?: string;
+  scopeTenantId?: string;
+  scopeType?: "Tenant" | "Subscription";
+  subscriptionId?: string;
+}
 export const DefaultAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
@@ -865,8 +1191,7 @@ export const DefaultAccountsGetOutput =
     scopeTenantId: Schema.optional(Schema.String),
     scopeType: Schema.optional(Schema.Literals(["Tenant", "Subscription"])),
     subscriptionId: Schema.optional(Schema.String),
-  });
-export type DefaultAccountsGetOutput = typeof DefaultAccountsGetOutput.Type;
+  }) as unknown as Schema.Codec<DefaultAccountsGetOutput>;
 
 // The operation
 /**
@@ -884,6 +1209,11 @@ export const DefaultAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DefaultAccountsGetOutput,
 }));
 // Input Schema
+export interface DefaultAccountsRemoveInput {
+  scopeTenantId: string;
+  scopeType: "Tenant" | "Subscription";
+  scope?: string;
+}
 export const DefaultAccountsRemoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopeTenantId: Schema.String,
@@ -895,14 +1225,12 @@ export const DefaultAccountsRemoveInput =
       path: "/providers/Microsoft.Purview/removeDefaultAccount",
       apiVersion: "2021-12-01",
     }),
-  );
-export type DefaultAccountsRemoveInput = typeof DefaultAccountsRemoveInput.Type;
+  ) as unknown as Schema.Codec<DefaultAccountsRemoveInput>;
 
 // Output Schema
+export type DefaultAccountsRemoveOutput = void;
 export const DefaultAccountsRemoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DefaultAccountsRemoveOutput =
-  typeof DefaultAccountsRemoveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DefaultAccountsRemoveOutput>;
 
 // The operation
 /**
@@ -920,6 +1248,14 @@ export const DefaultAccountsRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DefaultAccountsSetInput {
+  accountName?: string;
+  resourceGroupName?: string;
+  scope?: string;
+  scopeTenantId?: string;
+  scopeType?: "Tenant" | "Subscription";
+  subscriptionId?: string;
+}
 export const DefaultAccountsSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
@@ -934,10 +1270,17 @@ export const DefaultAccountsSetInput =
       path: "/providers/Microsoft.Purview/setDefaultAccount",
       apiVersion: "2021-12-01",
     }),
-  );
-export type DefaultAccountsSetInput = typeof DefaultAccountsSetInput.Type;
+  ) as unknown as Schema.Codec<DefaultAccountsSetInput>;
 
 // Output Schema
+export interface DefaultAccountsSetOutput {
+  accountName?: string;
+  resourceGroupName?: string;
+  scope?: string;
+  scopeTenantId?: string;
+  scopeType?: "Tenant" | "Subscription";
+  subscriptionId?: string;
+}
 export const DefaultAccountsSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
@@ -946,8 +1289,7 @@ export const DefaultAccountsSetOutput =
     scopeTenantId: Schema.optional(Schema.String),
     scopeType: Schema.optional(Schema.Literals(["Tenant", "Subscription"])),
     subscriptionId: Schema.optional(Schema.String),
-  });
-export type DefaultAccountsSetOutput = typeof DefaultAccountsSetOutput.Type;
+  }) as unknown as Schema.Codec<DefaultAccountsSetOutput>;
 
 // The operation
 /**
@@ -960,6 +1302,12 @@ export const DefaultAccountsSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DefaultAccountsSetOutput,
 }));
 // Input Schema
+export interface FeaturesAccountGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  features?: string[];
+}
 export const FeaturesAccountGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -972,15 +1320,16 @@ export const FeaturesAccountGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/listFeatures",
       apiVersion: "2021-12-01",
     }),
-  );
-export type FeaturesAccountGetInput = typeof FeaturesAccountGetInput.Type;
+  ) as unknown as Schema.Codec<FeaturesAccountGetInput>;
 
 // Output Schema
+export interface FeaturesAccountGetOutput {
+  features?: Record<string, boolean>;
+}
 export const FeaturesAccountGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Record(Schema.String, Schema.Boolean)),
-  });
-export type FeaturesAccountGetOutput = typeof FeaturesAccountGetOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesAccountGetOutput>;
 
 // The operation
 /**
@@ -1000,6 +1349,11 @@ export const FeaturesAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FeaturesAccountGetOutput,
 }));
 // Input Schema
+export interface FeaturesSubscriptionGetInput {
+  subscriptionId: string;
+  locations: string;
+  features?: string[];
+}
 export const FeaturesSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1011,17 +1365,16 @@ export const FeaturesSubscriptionGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Purview/locations/{locations}/listFeatures",
       apiVersion: "2021-12-01",
     }),
-  );
-export type FeaturesSubscriptionGetInput =
-  typeof FeaturesSubscriptionGetInput.Type;
+  ) as unknown as Schema.Codec<FeaturesSubscriptionGetInput>;
 
 // Output Schema
+export interface FeaturesSubscriptionGetOutput {
+  features?: Record<string, boolean>;
+}
 export const FeaturesSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Record(Schema.String, Schema.Boolean)),
-  });
-export type FeaturesSubscriptionGetOutput =
-  typeof FeaturesSubscriptionGetOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesSubscriptionGetOutput>;
 
 // The operation
 /**
@@ -1042,6 +1395,35 @@ export const FeaturesSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface KafkaConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  kafkaConfigurationName: string;
+  properties?: {
+    consumerGroup?: string;
+    credentials?: {
+      identityId?: string;
+      type?: "None" | "SystemAssigned" | "UserAssigned";
+    };
+    eventHubResourceId?: string;
+    eventHubType?: "Notification" | "Hook";
+    eventStreamingState?: "Disabled" | "Enabled";
+    eventStreamingType?: "None" | "Managed" | "Azure";
+    eventHubPartitionId?: string;
+  };
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const KafkaConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1095,11 +1477,22 @@ export const KafkaConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations/{kafkaConfigurationName}",
       apiVersion: "2021-12-01",
     }),
-  );
-export type KafkaConfigurationsCreateOrUpdateInput =
-  typeof KafkaConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<KafkaConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface KafkaConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const KafkaConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1119,9 +1512,7 @@ export const KafkaConfigurationsCreateOrUpdateOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type KafkaConfigurationsCreateOrUpdateOutput =
-  typeof KafkaConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<KafkaConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1141,6 +1532,12 @@ export const KafkaConfigurationsCreateOrUpdate =
     outputSchema: KafkaConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface KafkaConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  kafkaConfigurationName: string;
+}
 export const KafkaConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1153,15 +1550,12 @@ export const KafkaConfigurationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations/{kafkaConfigurationName}",
       apiVersion: "2021-12-01",
     }),
-  );
-export type KafkaConfigurationsDeleteInput =
-  typeof KafkaConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<KafkaConfigurationsDeleteInput>;
 
 // Output Schema
+export type KafkaConfigurationsDeleteOutput = void;
 export const KafkaConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type KafkaConfigurationsDeleteOutput =
-  typeof KafkaConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KafkaConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -1182,6 +1576,12 @@ export const KafkaConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface KafkaConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  kafkaConfigurationName: string;
+}
 export const KafkaConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1194,11 +1594,22 @@ export const KafkaConfigurationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations/{kafkaConfigurationName}",
       apiVersion: "2021-12-01",
     }),
-  );
-export type KafkaConfigurationsGetInput =
-  typeof KafkaConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<KafkaConfigurationsGetInput>;
 
 // Output Schema
+export interface KafkaConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const KafkaConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1218,9 +1629,7 @@ export const KafkaConfigurationsGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type KafkaConfigurationsGetOutput =
-  typeof KafkaConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<KafkaConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -1241,6 +1650,12 @@ export const KafkaConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface KafkaConfigurationsListByAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $skipToken?: string;
+}
 export const KafkaConfigurationsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1253,11 +1668,25 @@ export const KafkaConfigurationsListByAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations",
       apiVersion: "2021-12-01",
     }),
-  );
-export type KafkaConfigurationsListByAccountInput =
-  typeof KafkaConfigurationsListByAccountInput.Type;
+  ) as unknown as Schema.Codec<KafkaConfigurationsListByAccountInput>;
 
 // Output Schema
+export interface KafkaConfigurationsListByAccountOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const KafkaConfigurationsListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1292,9 +1721,7 @@ export const KafkaConfigurationsListByAccountOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type KafkaConfigurationsListByAccountOutput =
-  typeof KafkaConfigurationsListByAccountOutput.Type;
+  }) as unknown as Schema.Codec<KafkaConfigurationsListByAccountOutput>;
 
 // The operation
 /**
@@ -1314,6 +1741,7 @@ export const KafkaConfigurationsListByAccount =
     outputSchema: KafkaConfigurationsListByAccountOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1322,10 +1750,50 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Purview/operations",
     apiVersion: "2021-12-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  nextLink?: string;
+  value: {
+    display?: {
+      description?: string;
+      operation?: string;
+      provider?: string;
+      resource?: string;
+    };
+    isDataAction?: boolean;
+    name?: string;
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: {
+          blobDuration?: string;
+          displayName?: string;
+          name?: string;
+        }[];
+        metricSpecifications?: {
+          aggregationType?: string;
+          dimensions?: {
+            displayName?: string;
+            name?: string;
+            toBeExportedForCustomer?: boolean;
+          }[];
+          displayDescription?: string;
+          displayName?: string;
+          enableRegionalMdmAccount?: string;
+          internalMetricName?: string;
+          name?: string;
+          resourceIdDimensionNameOverride?: string;
+          sourceMdmNamespace?: string;
+          supportedAggregationTypes?: string[];
+          supportedTimeGrainTypes?: string[];
+          unit?: string;
+        }[];
+      };
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
@@ -1394,8 +1862,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1410,6 +1877,32 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      actionsRequired?: string;
+      description?: string;
+      status?: "Unknown" | "Pending" | "Approved" | "Rejected" | "Disconnected";
+    };
+    provisioningState?: string;
+  };
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1464,11 +1957,22 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-12-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1488,9 +1992,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1510,6 +2012,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1522,15 +2030,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-12-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1550,6 +2055,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1562,11 +2073,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-12-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1586,9 +2108,7 @@ export const PrivateEndpointConnectionsGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1608,6 +2128,12 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $skipToken?: string;
+}
 export const PrivateEndpointConnectionsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1620,11 +2146,25 @@ export const PrivateEndpointConnectionsListByAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections",
       apiVersion: "2021-12-01",
     }),
-  );
-export type PrivateEndpointConnectionsListByAccountInput =
-  typeof PrivateEndpointConnectionsListByAccountInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByAccountInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByAccountOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const PrivateEndpointConnectionsListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1659,9 +2199,7 @@ export const PrivateEndpointConnectionsListByAccountOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsListByAccountOutput =
-  typeof PrivateEndpointConnectionsListByAccountOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByAccountOutput>;
 
 // The operation
 /**
@@ -1681,6 +2219,12 @@ export const PrivateEndpointConnectionsListByAccount =
     outputSchema: PrivateEndpointConnectionsListByAccountOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetByGroupIdInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  groupId: string;
+}
 export const PrivateLinkResourcesGetByGroupIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1693,11 +2237,19 @@ export const PrivateLinkResourcesGetByGroupIdInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateLinkResources/{groupId}",
       apiVersion: "2021-12-01",
     }),
-  );
-export type PrivateLinkResourcesGetByGroupIdInput =
-  typeof PrivateLinkResourcesGetByGroupIdInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetByGroupIdInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetByGroupIdOutput {
+  id?: string;
+  name?: string;
+  properties?: {
+    groupId?: string;
+    requiredMembers?: string[];
+    requiredZoneNames?: string[];
+  };
+  type?: string;
+}
 export const PrivateLinkResourcesGetByGroupIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1710,9 +2262,7 @@ export const PrivateLinkResourcesGetByGroupIdOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesGetByGroupIdOutput =
-  typeof PrivateLinkResourcesGetByGroupIdOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetByGroupIdOutput>;
 
 // The operation
 /**
@@ -1732,6 +2282,11 @@ export const PrivateLinkResourcesGetByGroupId =
     outputSchema: PrivateLinkResourcesGetByGroupIdOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListByAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const PrivateLinkResourcesListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1743,11 +2298,22 @@ export const PrivateLinkResourcesListByAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateLinkResources",
       apiVersion: "2021-12-01",
     }),
-  );
-export type PrivateLinkResourcesListByAccountInput =
-  typeof PrivateLinkResourcesListByAccountInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByAccountInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByAccountOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    properties?: {
+      groupId?: string;
+      requiredMembers?: string[];
+      requiredZoneNames?: string[];
+    };
+    type?: string;
+  }[];
+}
 export const PrivateLinkResourcesListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1765,9 +2331,7 @@ export const PrivateLinkResourcesListByAccountOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesListByAccountOutput =
-  typeof PrivateLinkResourcesListByAccountOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByAccountOutput>;
 
 // The operation
 /**
@@ -1786,6 +2350,11 @@ export const PrivateLinkResourcesListByAccount =
     outputSchema: PrivateLinkResourcesListByAccountOutput,
   }));
 // Input Schema
+export interface UsagesGetInput {
+  subscriptionId: string;
+  location: string;
+  $filter?: string;
+}
 export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -1796,10 +2365,19 @@ export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Purview/locations/{location}/usages",
     apiVersion: "2021-12-01",
   }),
-);
-export type UsagesGetInput = typeof UsagesGetInput.Type;
+) as unknown as Schema.Codec<UsagesGetInput>;
 
 // Output Schema
+export interface UsagesGetOutput {
+  value?: {
+    currentValue?: number;
+    id?: string;
+    limit?: number;
+    name?: { localizedValue?: string; value?: string };
+    unit?: string;
+  }[];
+  nextLink?: string;
+}
 export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1818,8 +2396,7 @@ export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UsagesGetOutput = typeof UsagesGetOutput.Type;
+}) as unknown as Schema.Codec<UsagesGetOutput>;
 
 // The operation
 /**

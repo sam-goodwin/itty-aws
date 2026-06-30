@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface VerifyGroupUserSecurityLdapInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const VerifyGroupUserSecurityLdapInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const VerifyGroupUserSecurityLdapInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify",
     }),
-  );
-export type VerifyGroupUserSecurityLdapInput =
-  typeof VerifyGroupUserSecurityLdapInput.Type;
+  ) as unknown as Schema.Codec<VerifyGroupUserSecurityLdapInput>;
 
 // Output Schema
+export type VerifyGroupUserSecurityLdapOutput = void;
 export const VerifyGroupUserSecurityLdapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VerifyGroupUserSecurityLdapOutput =
-  typeof VerifyGroupUserSecurityLdapOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VerifyGroupUserSecurityLdapOutput>;
 
 // The operation
 /**

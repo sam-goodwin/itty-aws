@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListClusterSizeSkusInput {
+  organization: string;
+  engine?: "mysql" | "postgresql";
+  rates?: boolean;
+  region?: string;
+  database?: string;
+}
 export const ListClusterSizeSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,10 +23,27 @@ export const ListClusterSizeSkusInput =
       method: "GET",
       path: "/organizations/{organization}/cluster-size-skus",
     }),
-  );
-export type ListClusterSizeSkusInput = typeof ListClusterSizeSkusInput.Type;
+  ) as unknown as Schema.Codec<ListClusterSizeSkusInput>;
 
 // Output Schema
+export type ListClusterSizeSkusOutput = {
+  name: string;
+  display_name: string;
+  cpu: string;
+  storage?: number | null;
+  ram: number;
+  metal: boolean;
+  enabled: boolean;
+  provider?: string | null;
+  default_vtgate: string;
+  default_vtgate_rate?: number | null;
+  replica_rate?: number | null;
+  rate?: number | null;
+  sort_order: number;
+  architecture?: string | null;
+  development: boolean;
+  production: boolean;
+}[];
 export const ListClusterSizeSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -40,8 +64,7 @@ export const ListClusterSizeSkusOutput =
       development: Schema.Boolean,
       production: Schema.Boolean,
     }),
-  );
-export type ListClusterSizeSkusOutput = typeof ListClusterSizeSkusOutput.Type;
+  ) as unknown as Schema.Codec<ListClusterSizeSkusOutput>;
 
 // The operation
 /**

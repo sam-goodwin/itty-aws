@@ -3,6 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemLogViewCreateInput {
+  project_id: string;
+  id?: string;
+  path?: string;
+  depth?: number | null;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  meta?: unknown;
+  shortcut?: boolean | null;
+  created_at?: string;
+  last_viewed_at?: string | null;
+}
 export const DesktopFileSystemLogViewCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,15 +34,12 @@ export const DesktopFileSystemLogViewCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/desktop_file_system/log_view/",
     }),
-  );
-export type DesktopFileSystemLogViewCreateInput =
-  typeof DesktopFileSystemLogViewCreateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemLogViewCreateInput>;
 
 // Output Schema
+export type DesktopFileSystemLogViewCreateOutput = void;
 export const DesktopFileSystemLogViewCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DesktopFileSystemLogViewCreateOutput =
-  typeof DesktopFileSystemLogViewCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemLogViewCreateOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -47,7 +47,7 @@ export interface Enrollment {
   messageBus?: string;
 }
 
-export const Enrollment: Schema.Schema<Enrollment> =
+export const Enrollment: Schema.Codec<Enrollment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -89,7 +89,7 @@ export interface EventFilter {
   attribute?: string;
 }
 
-export const EventFilter: Schema.Schema<EventFilter> =
+export const EventFilter: Schema.Codec<EventFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
@@ -121,7 +121,7 @@ export interface StateCondition {
   message?: string;
 }
 
-export const StateCondition: Schema.Schema<StateCondition> =
+export const StateCondition: Schema.Codec<StateCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -155,7 +155,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -173,7 +173,7 @@ export interface FilteringAttribute {
   pathPatternSupported?: boolean;
 }
 
-export const FilteringAttribute: Schema.Schema<FilteringAttribute> =
+export const FilteringAttribute: Schema.Codec<FilteringAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     attribute: Schema.optional(Schema.String),
@@ -188,7 +188,7 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAu
   serviceAccount?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken> =
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken: Schema.Codec<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(Schema.String),
     serviceAccount: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export interface ProjectSubscriptions {
   list?: ReadonlyArray<string>;
 }
 
-export const ProjectSubscriptions: Schema.Schema<ProjectSubscriptions> =
+export const ProjectSubscriptions: Schema.Codec<ProjectSubscriptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     list: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ProjectSubscriptions" });
@@ -223,7 +223,7 @@ export interface LoggingConfig {
     | (string & {});
 }
 
-export const LoggingConfig: Schema.Schema<LoggingConfig> =
+export const LoggingConfig: Schema.Codec<LoggingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logSeverity: Schema.optional(Schema.String),
   }).annotate({ identifier: "LoggingConfig" });
@@ -233,7 +233,7 @@ export interface OrganizationSubscription {
   enabled?: boolean;
 }
 
-export const OrganizationSubscription: Schema.Schema<OrganizationSubscription> =
+export const OrganizationSubscription: Schema.Codec<OrganizationSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "OrganizationSubscription" });
@@ -267,7 +267,7 @@ export interface GoogleApiSource {
   organizationSubscription?: OrganizationSubscription;
 }
 
-export const GoogleApiSource: Schema.Schema<GoogleApiSource> =
+export const GoogleApiSource: Schema.Codec<GoogleApiSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoKeyName: Schema.optional(Schema.String),
     projectSubscriptions: Schema.optional(ProjectSubscriptions),
@@ -293,7 +293,7 @@ export interface ListGoogleApiSourcesResponse {
   googleApiSources?: ReadonlyArray<GoogleApiSource>;
 }
 
-export const ListGoogleApiSourcesResponse: Schema.Schema<ListGoogleApiSourcesResponse> =
+export const ListGoogleApiSourcesResponse: Schema.Codec<ListGoogleApiSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -317,7 +317,7 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
@@ -341,21 +341,22 @@ export interface GKE {
   namespace?: string;
 }
 
-export const GKE: Schema.Schema<GKE> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GKE: Schema.Codec<GKE> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     cluster: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
     service: Schema.optional(Schema.String),
     namespace: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GKE" });
+  },
+).annotate({ identifier: "GKE" });
 
 export interface GoogleCloudEventarcV1PipelineMediationTransformation {
   /** Optional. The CEL expression template to apply to transform messages. The following CEL extension functions are provided for use in this CEL expression: - merge: map1.merge(map2) -> map3 - Merges the passed CEL map with the existing CEL map the function is applied to. - If the same key exists in both maps, if the key's value is type map both maps are merged else the value from the passed map is used. - denormalize: map.denormalize() -> map - Denormalizes a CEL map such that every value of type map or key in the map is expanded to return a single level map. - The resulting keys are "." separated indices of the map keys. - For example: { "a": 1, "b": { "c": 2, "d": 3 } "e": [4, 5] } .denormalize() -> { "a": 1, "b.c": 2, "b.d": 3, "e.0": 4, "e.1": 5 } - setField: map.setField(key, value) -> message - Sets the field of the message with the given key to the given value. - If the field is not present it will be added. - If the field is present it will be overwritten. - The key can be a dot separated path to set a field in a nested message. - Key must be of type string. - Value may be any valid type. - removeFields: map.removeFields([key1, key2, ...]) -> message - Removes the fields of the map with the given keys. - The keys can be a dot separated path to remove a field in a nested message. - If a key is not found it will be ignored. - Keys must be of type string. - toMap: [map1, map2, ...].toMap() -> map - Converts a CEL list of CEL maps to a single CEL map - toDestinationPayloadFormat(): message.data.toDestinationPayloadFormat() -> string or bytes - Converts the message data to the destination payload format specified in Pipeline.Destination.output_payload_format - This function is meant to be applied to the message.data field. - If the destination payload format is not set, the function will return the message data unchanged. - toCloudEventJsonWithPayloadFormat: message.toCloudEventJsonWithPayloadFormat() -> map - Converts a message to the corresponding structure of JSON format for CloudEvents - This function applies toDestinationPayloadFormat() to the message data. It also sets the corresponding datacontenttype of the CloudEvent, as indicated by Pipeline.Destination.output_payload_format. If no output_payload_format is set it will use the existing datacontenttype on the CloudEvent if present, else leave datacontenttype absent. - This function expects that the content of the message will adhere to the standard CloudEvent format. If it doesn't then this function will fail. - The result is a CEL map that corresponds to the JSON representation of the CloudEvent. To convert that data to a JSON string it can be chained with the toJsonString function. */
   transformationTemplate?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineMediationTransformation: Schema.Schema<GoogleCloudEventarcV1PipelineMediationTransformation> =
+export const GoogleCloudEventarcV1PipelineMediationTransformation: Schema.Codec<GoogleCloudEventarcV1PipelineMediationTransformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformationTemplate: Schema.optional(Schema.String),
   }).annotate({
@@ -367,7 +368,7 @@ export interface GoogleCloudEventarcV1PipelineMediation {
   transformation?: GoogleCloudEventarcV1PipelineMediationTransformation;
 }
 
-export const GoogleCloudEventarcV1PipelineMediation: Schema.Schema<GoogleCloudEventarcV1PipelineMediation> =
+export const GoogleCloudEventarcV1PipelineMediation: Schema.Codec<GoogleCloudEventarcV1PipelineMediation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformation: Schema.optional(
       GoogleCloudEventarcV1PipelineMediationTransformation,
@@ -379,7 +380,7 @@ export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat
   schemaDefinition?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat: Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat> =
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat: Schema.Codec<GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaDefinition: Schema.optional(Schema.String),
   }).annotate({
@@ -392,7 +393,7 @@ export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat {
   schemaDefinition?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat: Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat> =
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat: Schema.Codec<GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaDefinition: Schema.optional(Schema.String),
   }).annotate({
@@ -401,7 +402,7 @@ export const GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat: Schema
 
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat {}
 
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat: Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat> =
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat: Schema.Codec<GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat",
   });
@@ -415,7 +416,7 @@ export interface GoogleCloudEventarcV1PipelineMessagePayloadFormat {
   json?: GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat;
 }
 
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormat: Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormat> =
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormat: Schema.Codec<GoogleCloudEventarcV1PipelineMessagePayloadFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protobuf: Schema.optional(
       GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat,
@@ -439,7 +440,7 @@ export interface GoogleCloudEventarcV1PipelineRetryPolicy {
   maxRetryDelay?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineRetryPolicy: Schema.Schema<GoogleCloudEventarcV1PipelineRetryPolicy> =
+export const GoogleCloudEventarcV1PipelineRetryPolicy: Schema.Codec<GoogleCloudEventarcV1PipelineRetryPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxAttempts: Schema.optional(Schema.Number),
     minRetryDelay: Schema.optional(Schema.String),
@@ -451,7 +452,7 @@ export interface GoogleCloudEventarcV1PipelineDestinationNetworkConfig {
   networkAttachment?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationNetworkConfig: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationNetworkConfig> =
+export const GoogleCloudEventarcV1PipelineDestinationNetworkConfig: Schema.Codec<GoogleCloudEventarcV1PipelineDestinationNetworkConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkAttachment: Schema.optional(Schema.String),
   }).annotate({
@@ -465,7 +466,7 @@ export interface GoogleCloudEventarcV1PipelineDestinationHttpEndpoint {
   messageBindingTemplate?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationHttpEndpoint: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationHttpEndpoint> =
+export const GoogleCloudEventarcV1PipelineDestinationHttpEndpoint: Schema.Codec<GoogleCloudEventarcV1PipelineDestinationHttpEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     messageBindingTemplate: Schema.optional(Schema.String),
@@ -480,7 +481,7 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOid
   audience?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken> =
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken: Schema.Codec<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
     audience: Schema.optional(Schema.String),
@@ -496,7 +497,7 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig {
   googleOidc?: GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig> =
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig: Schema.Codec<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oauthToken: Schema.optional(
       GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken,
@@ -525,7 +526,7 @@ export interface GoogleCloudEventarcV1PipelineDestination {
   messageBus?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestination: Schema.Schema<GoogleCloudEventarcV1PipelineDestination> =
+export const GoogleCloudEventarcV1PipelineDestination: Schema.Codec<GoogleCloudEventarcV1PipelineDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkConfig: Schema.optional(
       GoogleCloudEventarcV1PipelineDestinationNetworkConfig,
@@ -577,7 +578,7 @@ export interface Pipeline {
   cryptoKeyName?: string;
 }
 
-export const Pipeline: Schema.Schema<Pipeline> =
+export const Pipeline: Schema.Codec<Pipeline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     inputPayloadFormat: Schema.optional(
@@ -611,7 +612,7 @@ export interface ListPipelinesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListPipelinesResponse: Schema.Schema<ListPipelinesResponse> =
+export const ListPipelinesResponse: Schema.Codec<ListPipelinesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pipelines: Schema.optional(Schema.Array(Pipeline)),
     nextPageToken: Schema.optional(Schema.String),
@@ -641,7 +642,7 @@ export interface MessageBus {
   annotations?: Record<string, string>;
 }
 
-export const MessageBus: Schema.Schema<MessageBus> =
+export const MessageBus: Schema.Codec<MessageBus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -666,7 +667,7 @@ export interface EventType {
   filteringAttributes?: ReadonlyArray<FilteringAttribute>;
 }
 
-export const EventType: Schema.Schema<EventType> =
+export const EventType: Schema.Codec<EventType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     eventSchemaUri: Schema.optional(Schema.String),
@@ -683,7 +684,7 @@ export interface Provider {
   displayName?: string;
 }
 
-export const Provider: Schema.Schema<Provider> =
+export const Provider: Schema.Codec<Provider> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTypes: Schema.optional(Schema.Array(EventType)),
     name: Schema.optional(Schema.String),
@@ -697,7 +698,7 @@ export interface Pubsub {
   topic?: string;
 }
 
-export const Pubsub: Schema.Schema<Pubsub> =
+export const Pubsub: Schema.Codec<Pubsub> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     topic: Schema.optional(Schema.String),
@@ -712,7 +713,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -751,7 +752,7 @@ export interface Channel {
   cryptoKeyName?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubTopic: Schema.optional(Schema.String),
     satisfiesPzs: Schema.optional(Schema.Boolean),
@@ -779,7 +780,7 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -795,7 +796,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -810,7 +811,7 @@ export interface ListMessageBusEnrollmentsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListMessageBusEnrollmentsResponse: Schema.Schema<ListMessageBusEnrollmentsResponse> =
+export const ListMessageBusEnrollmentsResponse: Schema.Codec<ListMessageBusEnrollmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     enrollments: Schema.optional(Schema.Array(Schema.String)),
@@ -822,7 +823,7 @@ export interface Transport {
   pubsub?: Pubsub;
 }
 
-export const Transport: Schema.Schema<Transport> =
+export const Transport: Schema.Codec<Transport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsub: Schema.optional(Pubsub),
   }).annotate({ identifier: "Transport" });
@@ -832,7 +833,7 @@ export interface RetryPolicy {
   maxAttempts?: number;
 }
 
-export const RetryPolicy: Schema.Schema<RetryPolicy> =
+export const RetryPolicy: Schema.Codec<RetryPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxAttempts: Schema.optional(Schema.Number),
   }).annotate({ identifier: "RetryPolicy" });
@@ -842,7 +843,7 @@ export interface HttpEndpoint {
   uri?: string;
 }
 
-export const HttpEndpoint: Schema.Schema<HttpEndpoint> =
+export const HttpEndpoint: Schema.Codec<HttpEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "HttpEndpoint" });
@@ -852,7 +853,7 @@ export interface NetworkConfig {
   networkAttachment?: string;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
+export const NetworkConfig: Schema.Codec<NetworkConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkAttachment: Schema.optional(Schema.String),
   }).annotate({ identifier: "NetworkConfig" });
@@ -866,7 +867,7 @@ export interface CloudRun {
   service?: string;
 }
 
-export const CloudRun: Schema.Schema<CloudRun> =
+export const CloudRun: Schema.Codec<CloudRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -888,7 +889,7 @@ export interface Destination {
   cloudFunction?: string;
 }
 
-export const Destination: Schema.Schema<Destination> =
+export const Destination: Schema.Codec<Destination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpEndpoint: Schema.optional(HttpEndpoint),
     networkConfig: Schema.optional(NetworkConfig),
@@ -931,7 +932,7 @@ export interface Trigger {
   name?: string;
 }
 
-export const Trigger: Schema.Schema<Trigger> =
+export const Trigger: Schema.Codec<Trigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     transport: Schema.optional(Transport),
@@ -959,7 +960,7 @@ export interface ListTriggersResponse {
   triggers?: ReadonlyArray<Trigger>;
 }
 
-export const ListTriggersResponse: Schema.Schema<ListTriggersResponse> =
+export const ListTriggersResponse: Schema.Codec<ListTriggersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -979,7 +980,7 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -999,7 +1000,7 @@ export interface GoogleChannelConfig {
   labels?: Record<string, string>;
 }
 
-export const GoogleChannelConfig: Schema.Schema<GoogleChannelConfig> =
+export const GoogleChannelConfig: Schema.Codec<GoogleChannelConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     cryptoKeyName: Schema.optional(Schema.String),
@@ -1016,7 +1017,7 @@ export interface ListProvidersResponse {
   nextPageToken?: string;
 }
 
-export const ListProvidersResponse: Schema.Schema<ListProvidersResponse> =
+export const ListProvidersResponse: Schema.Codec<ListProvidersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     providers: Schema.optional(Schema.Array(Provider)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1030,7 +1031,7 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
@@ -1047,7 +1048,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     version: Schema.optional(Schema.Number),
@@ -1062,7 +1063,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -1085,7 +1086,7 @@ export interface ChannelConnection {
   activationToken?: string;
 }
 
-export const ChannelConnection: Schema.Schema<ChannelConnection> =
+export const ChannelConnection: Schema.Codec<ChannelConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uid: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1105,7 +1106,7 @@ export interface ListChannelConnectionsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListChannelConnectionsResponse: Schema.Schema<ListChannelConnectionsResponse> =
+export const ListChannelConnectionsResponse: Schema.Codec<ListChannelConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     channelConnections: Schema.optional(Schema.Array(ChannelConnection)),
@@ -1121,7 +1122,7 @@ export interface ListMessageBusesResponse {
   nextPageToken?: string;
 }
 
-export const ListMessageBusesResponse: Schema.Schema<ListMessageBusesResponse> =
+export const ListMessageBusesResponse: Schema.Codec<ListMessageBusesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageBuses: Schema.optional(Schema.Array(MessageBus)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1133,7 +1134,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -1147,7 +1148,7 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -1163,7 +1164,7 @@ export interface ListEnrollmentsResponse {
   enrollments?: ReadonlyArray<Enrollment>;
 }
 
-export const ListEnrollmentsResponse: Schema.Schema<ListEnrollmentsResponse> =
+export const ListEnrollmentsResponse: Schema.Codec<ListEnrollmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1172,7 +1173,7 @@ export const ListEnrollmentsResponse: Schema.Schema<ListEnrollmentsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1186,7 +1187,7 @@ export interface ListChannelsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
+export const ListChannelsResponse: Schema.Codec<ListChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     channels: Schema.optional(Schema.Array(Channel)),
@@ -1195,7 +1196,7 @@ export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
@@ -1205,7 +1206,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -1275,7 +1276,7 @@ export const GetGoogleChannelConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetGoogleChannelConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetGoogleChannelConfigProjectsLocationsRequest>;
 
 export type GetGoogleChannelConfigProjectsLocationsResponse =
   GoogleChannelConfig;
@@ -1324,7 +1325,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1359,7 +1360,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1396,7 +1397,7 @@ export const UpdateGoogleChannelConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGoogleChannelConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateGoogleChannelConfigProjectsLocationsRequest>;
 
 export type UpdateGoogleChannelConfigProjectsLocationsResponse =
   GoogleChannelConfig;
@@ -1433,7 +1434,7 @@ export const GetProjectsLocationsChannelConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsChannelConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsChannelConnectionsRequest>;
 
 export type GetProjectsLocationsChannelConnectionsResponse = ChannelConnection;
 export const GetProjectsLocationsChannelConnectionsResponse =
@@ -1474,7 +1475,7 @@ export const SetIamPolicyProjectsLocationsChannelConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsChannelConnectionsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsChannelConnectionsRequest>;
 
 export type SetIamPolicyProjectsLocationsChannelConnectionsResponse = Policy;
 export const SetIamPolicyProjectsLocationsChannelConnectionsResponse =
@@ -1517,7 +1518,7 @@ export const TestIamPermissionsProjectsLocationsChannelConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsChannelConnectionsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsChannelConnectionsRequest>;
 
 export type TestIamPermissionsProjectsLocationsChannelConnectionsResponse =
   TestIamPermissionsResponse;
@@ -1560,7 +1561,7 @@ export const ListProjectsLocationsChannelConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/channelConnections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsChannelConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsChannelConnectionsRequest>;
 
 export type ListProjectsLocationsChannelConnectionsResponse =
   ListChannelConnectionsResponse;
@@ -1599,7 +1600,7 @@ export const DeleteProjectsLocationsChannelConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsChannelConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsChannelConnectionsRequest>;
 
 export type DeleteProjectsLocationsChannelConnectionsResponse =
   GoogleLongrunningOperation;
@@ -1641,7 +1642,7 @@ export const GetIamPolicyProjectsLocationsChannelConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsChannelConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsChannelConnectionsRequest>;
 
 export type GetIamPolicyProjectsLocationsChannelConnectionsResponse = Policy;
 export const GetIamPolicyProjectsLocationsChannelConnectionsResponse =
@@ -1687,7 +1688,7 @@ export const CreateProjectsLocationsChannelConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsChannelConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsChannelConnectionsRequest>;
 
 export type CreateProjectsLocationsChannelConnectionsResponse =
   GoogleLongrunningOperation;
@@ -1724,7 +1725,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -1760,7 +1761,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1799,7 +1800,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -1849,7 +1850,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1904,7 +1905,7 @@ export const PatchProjectsLocationsMessageBusesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsMessageBusesRequest>;
 
 export type PatchProjectsLocationsMessageBusesResponse =
   GoogleLongrunningOperation;
@@ -1954,7 +1955,7 @@ export const DeleteProjectsLocationsMessageBusesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsMessageBusesRequest>;
 
 export type DeleteProjectsLocationsMessageBusesResponse =
   GoogleLongrunningOperation;
@@ -1998,7 +1999,7 @@ export const SetIamPolicyProjectsLocationsMessageBusesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsMessageBusesRequest>;
 
 export type SetIamPolicyProjectsLocationsMessageBusesResponse = Policy;
 export const SetIamPolicyProjectsLocationsMessageBusesResponse =
@@ -2041,7 +2042,7 @@ export const TestIamPermissionsProjectsLocationsMessageBusesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsMessageBusesRequest>;
 
 export type TestIamPermissionsProjectsLocationsMessageBusesResponse =
   TestIamPermissionsResponse;
@@ -2090,7 +2091,7 @@ export const ListProjectsLocationsMessageBusesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/messageBuses" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsMessageBusesRequest>;
 
 export type ListProjectsLocationsMessageBusesResponse =
   ListMessageBusesResponse;
@@ -2146,7 +2147,7 @@ export const CreateProjectsLocationsMessageBusesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsMessageBusesRequest>;
 
 export type CreateProjectsLocationsMessageBusesResponse =
   GoogleLongrunningOperation;
@@ -2188,7 +2189,7 @@ export const GetIamPolicyProjectsLocationsMessageBusesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsMessageBusesRequest>;
 
 export type GetIamPolicyProjectsLocationsMessageBusesResponse = Policy;
 export const GetIamPolicyProjectsLocationsMessageBusesResponse =
@@ -2222,7 +2223,7 @@ export const GetProjectsLocationsMessageBusesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsMessageBusesRequest>;
 
 export type GetProjectsLocationsMessageBusesResponse = MessageBus;
 export const GetProjectsLocationsMessageBusesResponse =
@@ -2262,7 +2263,7 @@ export const ListEnrollmentsProjectsLocationsMessageBusesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:listEnrollments" }),
     svc,
-  ) as unknown as Schema.Schema<ListEnrollmentsProjectsLocationsMessageBusesRequest>;
+  ) as unknown as Schema.Codec<ListEnrollmentsProjectsLocationsMessageBusesRequest>;
 
 export type ListEnrollmentsProjectsLocationsMessageBusesResponse =
   ListMessageBusEnrollmentsResponse;
@@ -2318,7 +2319,7 @@ export const CreateProjectsLocationsGoogleApiSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGoogleApiSourcesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGoogleApiSourcesRequest>;
 
 export type CreateProjectsLocationsGoogleApiSourcesResponse =
   GoogleLongrunningOperation;
@@ -2360,7 +2361,7 @@ export const GetIamPolicyProjectsLocationsGoogleApiSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGoogleApiSourcesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsGoogleApiSourcesRequest>;
 
 export type GetIamPolicyProjectsLocationsGoogleApiSourcesResponse = Policy;
 export const GetIamPolicyProjectsLocationsGoogleApiSourcesResponse =
@@ -2410,7 +2411,7 @@ export const PatchProjectsLocationsGoogleApiSourcesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGoogleApiSourcesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsGoogleApiSourcesRequest>;
 
 export type PatchProjectsLocationsGoogleApiSourcesResponse =
   GoogleLongrunningOperation;
@@ -2460,7 +2461,7 @@ export const DeleteProjectsLocationsGoogleApiSourcesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGoogleApiSourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGoogleApiSourcesRequest>;
 
 export type DeleteProjectsLocationsGoogleApiSourcesResponse =
   GoogleLongrunningOperation;
@@ -2509,7 +2510,7 @@ export const ListProjectsLocationsGoogleApiSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/googleApiSources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGoogleApiSourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGoogleApiSourcesRequest>;
 
 export type ListProjectsLocationsGoogleApiSourcesResponse =
   ListGoogleApiSourcesResponse;
@@ -2548,7 +2549,7 @@ export const GetProjectsLocationsGoogleApiSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGoogleApiSourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGoogleApiSourcesRequest>;
 
 export type GetProjectsLocationsGoogleApiSourcesResponse = GoogleApiSource;
 export const GetProjectsLocationsGoogleApiSourcesResponse =
@@ -2589,7 +2590,7 @@ export const SetIamPolicyProjectsLocationsGoogleApiSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGoogleApiSourcesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsGoogleApiSourcesRequest>;
 
 export type SetIamPolicyProjectsLocationsGoogleApiSourcesResponse = Policy;
 export const SetIamPolicyProjectsLocationsGoogleApiSourcesResponse =
@@ -2632,7 +2633,7 @@ export const TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest>;
 
 export type TestIamPermissionsProjectsLocationsGoogleApiSourcesResponse =
   TestIamPermissionsResponse;
@@ -2680,7 +2681,7 @@ export const CreateProjectsLocationsChannelsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/channels", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsChannelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsChannelsRequest>;
 
 export type CreateProjectsLocationsChannelsResponse =
   GoogleLongrunningOperation;
@@ -2722,7 +2723,7 @@ export const GetIamPolicyProjectsLocationsChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsChannelsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsChannelsRequest>;
 
 export type GetIamPolicyProjectsLocationsChannelsResponse = Policy;
 export const GetIamPolicyProjectsLocationsChannelsResponse =
@@ -2767,7 +2768,7 @@ export const PatchProjectsLocationsChannelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsChannelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsChannelsRequest>;
 
 export type PatchProjectsLocationsChannelsResponse = GoogleLongrunningOperation;
 export const PatchProjectsLocationsChannelsResponse =
@@ -2808,7 +2809,7 @@ export const DeleteProjectsLocationsChannelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsChannelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsChannelsRequest>;
 
 export type DeleteProjectsLocationsChannelsResponse =
   GoogleLongrunningOperation;
@@ -2854,7 +2855,7 @@ export const ListProjectsLocationsChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/channels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsChannelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsChannelsRequest>;
 
 export type ListProjectsLocationsChannelsResponse = ListChannelsResponse;
 export const ListProjectsLocationsChannelsResponse =
@@ -2892,7 +2893,7 @@ export const GetProjectsLocationsChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsChannelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsChannelsRequest>;
 
 export type GetProjectsLocationsChannelsResponse = Channel;
 export const GetProjectsLocationsChannelsResponse =
@@ -2933,7 +2934,7 @@ export const SetIamPolicyProjectsLocationsChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsChannelsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsChannelsRequest>;
 
 export type SetIamPolicyProjectsLocationsChannelsResponse = Policy;
 export const SetIamPolicyProjectsLocationsChannelsResponse =
@@ -2976,7 +2977,7 @@ export const TestIamPermissionsProjectsLocationsChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsChannelsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsChannelsRequest>;
 
 export type TestIamPermissionsProjectsLocationsChannelsResponse =
   TestIamPermissionsResponse;
@@ -3018,7 +3019,7 @@ export const GetIamPolicyProjectsLocationsEnrollmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEnrollmentsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsEnrollmentsRequest>;
 
 export type GetIamPolicyProjectsLocationsEnrollmentsResponse = Policy;
 export const GetIamPolicyProjectsLocationsEnrollmentsResponse =
@@ -3068,7 +3069,7 @@ export const PatchProjectsLocationsEnrollmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEnrollmentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEnrollmentsRequest>;
 
 export type PatchProjectsLocationsEnrollmentsResponse =
   GoogleLongrunningOperation;
@@ -3118,7 +3119,7 @@ export const DeleteProjectsLocationsEnrollmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEnrollmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEnrollmentsRequest>;
 
 export type DeleteProjectsLocationsEnrollmentsResponse =
   GoogleLongrunningOperation;
@@ -3167,7 +3168,7 @@ export const ListProjectsLocationsEnrollmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/enrollments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEnrollmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEnrollmentsRequest>;
 
 export type ListProjectsLocationsEnrollmentsResponse = ListEnrollmentsResponse;
 export const ListProjectsLocationsEnrollmentsResponse =
@@ -3205,7 +3206,7 @@ export const GetProjectsLocationsEnrollmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEnrollmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEnrollmentsRequest>;
 
 export type GetProjectsLocationsEnrollmentsResponse = Enrollment;
 export const GetProjectsLocationsEnrollmentsResponse =
@@ -3246,7 +3247,7 @@ export const SetIamPolicyProjectsLocationsEnrollmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsEnrollmentsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsEnrollmentsRequest>;
 
 export type SetIamPolicyProjectsLocationsEnrollmentsResponse = Policy;
 export const SetIamPolicyProjectsLocationsEnrollmentsResponse =
@@ -3289,7 +3290,7 @@ export const TestIamPermissionsProjectsLocationsEnrollmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsEnrollmentsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsEnrollmentsRequest>;
 
 export type TestIamPermissionsProjectsLocationsEnrollmentsResponse =
   TestIamPermissionsResponse;
@@ -3339,7 +3340,7 @@ export const CreateProjectsLocationsEnrollmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/enrollments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEnrollmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEnrollmentsRequest>;
 
 export type CreateProjectsLocationsEnrollmentsResponse =
   GoogleLongrunningOperation;
@@ -3387,7 +3388,7 @@ export const CreateProjectsLocationsTriggersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/triggers", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTriggersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTriggersRequest>;
 
 export type CreateProjectsLocationsTriggersResponse =
   GoogleLongrunningOperation;
@@ -3440,7 +3441,7 @@ export const PatchProjectsLocationsTriggersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTriggersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTriggersRequest>;
 
 export type PatchProjectsLocationsTriggersResponse = GoogleLongrunningOperation;
 export const PatchProjectsLocationsTriggersResponse =
@@ -3489,7 +3490,7 @@ export const DeleteProjectsLocationsTriggersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTriggersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTriggersRequest>;
 
 export type DeleteProjectsLocationsTriggersResponse =
   GoogleLongrunningOperation;
@@ -3531,7 +3532,7 @@ export const GetIamPolicyProjectsLocationsTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsTriggersRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsTriggersRequest>;
 
 export type GetIamPolicyProjectsLocationsTriggersResponse = Policy;
 export const GetIamPolicyProjectsLocationsTriggersResponse =
@@ -3565,7 +3566,7 @@ export const GetProjectsLocationsTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTriggersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTriggersRequest>;
 
 export type GetProjectsLocationsTriggersResponse = Trigger;
 export const GetProjectsLocationsTriggersResponse =
@@ -3606,7 +3607,7 @@ export const SetIamPolicyProjectsLocationsTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsTriggersRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsTriggersRequest>;
 
 export type SetIamPolicyProjectsLocationsTriggersResponse = Policy;
 export const SetIamPolicyProjectsLocationsTriggersResponse =
@@ -3649,7 +3650,7 @@ export const TestIamPermissionsProjectsLocationsTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsTriggersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsTriggersRequest>;
 
 export type TestIamPermissionsProjectsLocationsTriggersResponse =
   TestIamPermissionsResponse;
@@ -3698,7 +3699,7 @@ export const ListProjectsLocationsTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/triggers" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTriggersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTriggersRequest>;
 
 export type ListProjectsLocationsTriggersResponse = ListTriggersResponse;
 export const ListProjectsLocationsTriggersResponse =
@@ -3736,7 +3737,7 @@ export const GetProjectsLocationsProvidersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProvidersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProvidersRequest>;
 
 export type GetProjectsLocationsProvidersResponse = Provider;
 export const GetProjectsLocationsProvidersResponse =
@@ -3782,7 +3783,7 @@ export const ListProjectsLocationsProvidersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/providers" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProvidersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProvidersRequest>;
 
 export type ListProjectsLocationsProvidersResponse = ListProvidersResponse;
 export const ListProjectsLocationsProvidersResponse =
@@ -3836,7 +3837,7 @@ export const PatchProjectsLocationsPipelinesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsPipelinesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsPipelinesRequest>;
 
 export type PatchProjectsLocationsPipelinesResponse =
   GoogleLongrunningOperation;
@@ -3886,7 +3887,7 @@ export const DeleteProjectsLocationsPipelinesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsPipelinesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsPipelinesRequest>;
 
 export type DeleteProjectsLocationsPipelinesResponse =
   GoogleLongrunningOperation;
@@ -3928,7 +3929,7 @@ export const GetIamPolicyProjectsLocationsPipelinesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsPipelinesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsPipelinesRequest>;
 
 export type GetIamPolicyProjectsLocationsPipelinesResponse = Policy;
 export const GetIamPolicyProjectsLocationsPipelinesResponse =
@@ -3962,7 +3963,7 @@ export const GetProjectsLocationsPipelinesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsPipelinesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsPipelinesRequest>;
 
 export type GetProjectsLocationsPipelinesResponse = Pipeline;
 export const GetProjectsLocationsPipelinesResponse =
@@ -4003,7 +4004,7 @@ export const SetIamPolicyProjectsLocationsPipelinesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsPipelinesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsPipelinesRequest>;
 
 export type SetIamPolicyProjectsLocationsPipelinesResponse = Policy;
 export const SetIamPolicyProjectsLocationsPipelinesResponse =
@@ -4046,7 +4047,7 @@ export const TestIamPermissionsProjectsLocationsPipelinesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsPipelinesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsPipelinesRequest>;
 
 export type TestIamPermissionsProjectsLocationsPipelinesResponse =
   TestIamPermissionsResponse;
@@ -4095,7 +4096,7 @@ export const ListProjectsLocationsPipelinesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/pipelines" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsPipelinesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsPipelinesRequest>;
 
 export type ListProjectsLocationsPipelinesResponse = ListPipelinesResponse;
 export const ListProjectsLocationsPipelinesResponse =
@@ -4144,7 +4145,7 @@ export const CreateProjectsLocationsPipelinesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/pipelines", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsPipelinesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsPipelinesRequest>;
 
 export type CreateProjectsLocationsPipelinesResponse =
   GoogleLongrunningOperation;

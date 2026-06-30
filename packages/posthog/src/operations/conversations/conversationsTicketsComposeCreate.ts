@@ -4,6 +4,15 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsTicketsComposeCreateInput {
+  project_id: string;
+  recipient_email: string;
+  recipient_distinct_id?: string;
+  email_subject?: string;
+  email_config_id: string;
+  message: string;
+  rich_content?: unknown;
+}
 export const ConversationsTicketsComposeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,18 +27,18 @@ export const ConversationsTicketsComposeCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/conversations/tickets/compose/",
     }),
-  );
-export type ConversationsTicketsComposeCreateInput =
-  typeof ConversationsTicketsComposeCreateInput.Type;
+  ) as unknown as Schema.Codec<ConversationsTicketsComposeCreateInput>;
 
 // Output Schema
+export interface ConversationsTicketsComposeCreateOutput {
+  id: string;
+  ticket_number: number;
+}
 export const ConversationsTicketsComposeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     ticket_number: Schema.Number,
-  });
-export type ConversationsTicketsComposeCreateOutput =
-  typeof ConversationsTicketsComposeCreateOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsTicketsComposeCreateOutput>;
 
 // The operation
 /**

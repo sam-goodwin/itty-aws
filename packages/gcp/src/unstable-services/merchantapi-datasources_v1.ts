@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface DataSourceReference {
   supplementalDataSourceName?: string;
 }
 
-export const DataSourceReference: Schema.Schema<DataSourceReference> =
+export const DataSourceReference: Schema.Codec<DataSourceReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryDataSourceName: Schema.optional(Schema.String),
     self: Schema.optional(Schema.Boolean),
@@ -49,7 +49,7 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seconds: Schema.optional(Schema.Number),
     hours: Schema.optional(Schema.Number),
@@ -62,7 +62,7 @@ export interface DefaultRule {
   takeFromDataSources?: ReadonlyArray<DataSourceReference>;
 }
 
-export const DefaultRule: Schema.Schema<DefaultRule> =
+export const DefaultRule: Schema.Codec<DefaultRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     takeFromDataSources: Schema.optional(Schema.Array(DataSourceReference)),
   }).annotate({ identifier: "DefaultRule" });
@@ -76,7 +76,7 @@ export interface SupplementalProductDataSource {
   referencingPrimaryDataSources?: ReadonlyArray<DataSourceReference>;
 }
 
-export const SupplementalProductDataSource: Schema.Schema<SupplementalProductDataSource> =
+export const SupplementalProductDataSource: Schema.Codec<SupplementalProductDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentLanguage: Schema.optional(Schema.String),
     feedLabel: Schema.optional(Schema.String),
@@ -87,14 +87,14 @@ export const SupplementalProductDataSource: Schema.Schema<SupplementalProductDat
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface MerchantReviewDataSource {}
 
-export const MerchantReviewDataSource: Schema.Schema<MerchantReviewDataSource> =
+export const MerchantReviewDataSource: Schema.Codec<MerchantReviewDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MerchantReviewDataSource",
   });
@@ -120,7 +120,7 @@ export interface Destination {
   state?: "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | (string & {});
 }
 
-export const Destination: Schema.Schema<Destination> =
+export const Destination: Schema.Codec<Destination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -133,7 +133,7 @@ export interface LocalInventoryDataSource {
   feedLabel?: string;
 }
 
-export const LocalInventoryDataSource: Schema.Schema<LocalInventoryDataSource> =
+export const LocalInventoryDataSource: Schema.Codec<LocalInventoryDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentLanguage: Schema.optional(Schema.String),
     feedLabel: Schema.optional(Schema.String),
@@ -141,7 +141,7 @@ export const LocalInventoryDataSource: Schema.Schema<LocalInventoryDataSource> =
 
 export interface ProductReviewDataSource {}
 
-export const ProductReviewDataSource: Schema.Schema<ProductReviewDataSource> =
+export const ProductReviewDataSource: Schema.Codec<ProductReviewDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ProductReviewDataSource",
   });
@@ -181,7 +181,7 @@ export interface FetchSettings {
   username?: string;
 }
 
-export const FetchSettings: Schema.Schema<FetchSettings> =
+export const FetchSettings: Schema.Codec<FetchSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     timeOfDay: Schema.optional(TimeOfDay),
@@ -208,7 +208,7 @@ export interface FileInput {
   fetchSettings?: FetchSettings;
 }
 
-export const FileInput: Schema.Schema<FileInput> =
+export const FileInput: Schema.Codec<FileInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileInputType: Schema.optional(Schema.String),
     fileName: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface PrimaryProductDataSource {
   countries?: ReadonlyArray<string>;
 }
 
-export const PrimaryProductDataSource: Schema.Schema<PrimaryProductDataSource> =
+export const PrimaryProductDataSource: Schema.Codec<PrimaryProductDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentLanguage: Schema.optional(Schema.String),
     defaultRule: Schema.optional(DefaultRule),
@@ -247,7 +247,7 @@ export interface RegionalInventoryDataSource {
   contentLanguage?: string;
 }
 
-export const RegionalInventoryDataSource: Schema.Schema<RegionalInventoryDataSource> =
+export const RegionalInventoryDataSource: Schema.Codec<RegionalInventoryDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     contentLanguage: Schema.optional(Schema.String),
@@ -260,7 +260,7 @@ export interface PromotionDataSource {
   targetCountry?: string;
 }
 
-export const PromotionDataSource: Schema.Schema<PromotionDataSource> =
+export const PromotionDataSource: Schema.Codec<PromotionDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentLanguage: Schema.optional(Schema.String),
     targetCountry: Schema.optional(Schema.String),
@@ -299,7 +299,7 @@ export interface DataSource {
   promotionDataSource?: PromotionDataSource;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
+export const DataSource: Schema.Codec<DataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localInventoryDataSource: Schema.optional(LocalInventoryDataSource),
     displayName: Schema.optional(Schema.String),
@@ -332,7 +332,7 @@ export interface Issue {
   severity?: "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR" | (string & {});
 }
 
-export const Issue: Schema.Schema<Issue> =
+export const Issue: Schema.Codec<Issue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -374,7 +374,7 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
@@ -384,7 +384,7 @@ export const ProductChange: Schema.Schema<ProductChange> =
 
 export interface FetchDataSourceRequest {}
 
-export const FetchDataSourceRequest: Schema.Schema<FetchDataSourceRequest> =
+export const FetchDataSourceRequest: Schema.Codec<FetchDataSourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchDataSourceRequest",
   });
@@ -414,7 +414,7 @@ export interface ProductStatusChangeMessage {
     | (string & {});
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managingAccount: Schema.optional(Schema.String),
     expirationTime: Schema.optional(Schema.String),
@@ -434,7 +434,7 @@ export interface ListDataSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListDataSourcesResponse: Schema.Schema<ListDataSourcesResponse> =
+export const ListDataSourcesResponse: Schema.Codec<ListDataSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSources: Schema.optional(Schema.Array(DataSource)),
     nextPageToken: Schema.optional(Schema.String),
@@ -464,7 +464,7 @@ export interface FileUpload {
   issues?: ReadonlyArray<Issue>;
 }
 
-export const FileUpload: Schema.Schema<FileUpload> =
+export const FileUpload: Schema.Codec<FileUpload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -547,7 +547,7 @@ export const ListAccountsDataSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "datasources/v1/{+parent}/dataSources" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsDataSourcesRequest>;
 
 export type ListAccountsDataSourcesResponse = ListDataSourcesResponse;
 export const ListAccountsDataSourcesResponse =
@@ -588,7 +588,7 @@ export const PatchAccountsDataSourcesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "datasources/v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsDataSourcesRequest>;
 
 export type PatchAccountsDataSourcesResponse = DataSource;
 export const PatchAccountsDataSourcesResponse =
@@ -624,7 +624,7 @@ export const GetAccountsDataSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "datasources/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsDataSourcesRequest>;
 
 export type GetAccountsDataSourcesResponse = DataSource;
 export const GetAccountsDataSourcesResponse =
@@ -662,7 +662,7 @@ export const FetchAccountsDataSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchAccountsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<FetchAccountsDataSourcesRequest>;
 
 export type FetchAccountsDataSourcesResponse = Empty;
 export const FetchAccountsDataSourcesResponse =
@@ -705,7 +705,7 @@ export const CreateAccountsDataSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsDataSourcesRequest>;
 
 export type CreateAccountsDataSourcesResponse = DataSource;
 export const CreateAccountsDataSourcesResponse =
@@ -741,7 +741,7 @@ export const DeleteAccountsDataSourcesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "datasources/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsDataSourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsDataSourcesRequest>;
 
 export type DeleteAccountsDataSourcesResponse = Empty;
 export const DeleteAccountsDataSourcesResponse =
@@ -777,7 +777,7 @@ export const GetAccountsDataSourcesFileUploadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "datasources/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsDataSourcesFileUploadsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsDataSourcesFileUploadsRequest>;
 
 export type GetAccountsDataSourcesFileUploadsResponse = FileUpload;
 export const GetAccountsDataSourcesFileUploadsResponse =

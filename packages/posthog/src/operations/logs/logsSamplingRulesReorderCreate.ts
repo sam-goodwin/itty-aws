@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LogsSamplingRulesReorderCreateInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  ordered_ids: string[];
+}
 export const LogsSamplingRulesReorderCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,29 @@ export const LogsSamplingRulesReorderCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/logs/sampling_rules/reorder/",
     }),
-  );
-export type LogsSamplingRulesReorderCreateInput =
-  typeof LogsSamplingRulesReorderCreateInput.Type;
+  ) as unknown as Schema.Codec<LogsSamplingRulesReorderCreateInput>;
 
 // Output Schema
+export interface LogsSamplingRulesReorderCreateOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    name: string;
+    enabled?: boolean;
+    priority?: number | null;
+    rule_type: "severity_sampling" | "path_drop" | "rate_limit";
+    scope_service?: string | null;
+    scope_path_pattern?: string | null;
+    scope_attribute_filters?: Record<string, unknown>[];
+    config: unknown;
+    version: number;
+    created_by: number;
+    created_at: string;
+    updated_at: string | null;
+  }[];
+}
 export const LogsSamplingRulesReorderCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -47,9 +71,7 @@ export const LogsSamplingRulesReorderCreateOutput =
         updated_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type LogsSamplingRulesReorderCreateOutput =
-  typeof LogsSamplingRulesReorderCreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsSamplingRulesReorderCreateOutput>;
 
 // The operation
 /**

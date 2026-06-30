@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface Group {
   email?: string;
 }
 
-export const Group: Schema.Schema<Group> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "Group" });
@@ -37,7 +37,7 @@ export interface TextContent {
   text?: string;
 }
 
-export const TextContent: Schema.Schema<TextContent> =
+export const TextContent: Schema.Codec<TextContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextContent" });
@@ -47,14 +47,14 @@ export interface User {
   email?: string;
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "User" });
 
 export interface Family {}
 
-export const Family: Schema.Schema<Family> =
+export const Family: Schema.Codec<Family> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Family",
   });
@@ -76,7 +76,7 @@ export interface Permission {
   family?: Family;
 }
 
-export const Permission: Schema.Schema<Permission> =
+export const Permission: Schema.Codec<Permission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(User),
     group: Schema.optional(Group),
@@ -94,7 +94,7 @@ export interface CreatePermissionRequest {
   permission?: Permission;
 }
 
-export const CreatePermissionRequest: Schema.Schema<CreatePermissionRequest> =
+export const CreatePermissionRequest: Schema.Codec<CreatePermissionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     permission: Schema.optional(Permission),
@@ -109,21 +109,21 @@ export interface ListItem {
   checked?: boolean;
 }
 
-export const ListItem: Schema.Schema<ListItem> =
+export const ListItem: Schema.Codec<ListItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       childListItems: Schema.optional(Schema.Array(ListItem)),
       text: Schema.optional(TextContent),
       checked: Schema.optional(Schema.Boolean),
     }),
-  ).annotate({ identifier: "ListItem" }) as any as Schema.Schema<ListItem>;
+  ).annotate({ identifier: "ListItem" }) as any as Schema.Codec<ListItem>;
 
 export interface ListContent {
   /** The items in the list. The number of items must be less than 1,000. */
   listItems?: ReadonlyArray<ListItem>;
 }
 
-export const ListContent: Schema.Schema<ListContent> =
+export const ListContent: Schema.Codec<ListContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     listItems: Schema.optional(Schema.Array(ListItem)),
   }).annotate({ identifier: "ListContent" });
@@ -135,7 +135,7 @@ export interface Attachment {
   mimeType?: ReadonlyArray<string>;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
+export const Attachment: Schema.Codec<Attachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.Array(Schema.String)),
@@ -148,7 +148,7 @@ export interface Section {
   list?: ListContent;
 }
 
-export const Section: Schema.Schema<Section> =
+export const Section: Schema.Codec<Section> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(TextContent),
     list: Schema.optional(ListContent),
@@ -175,7 +175,7 @@ export interface Note {
   body?: Section;
 }
 
-export const Note: Schema.Schema<Note> =
+export const Note: Schema.Codec<Note> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Permission)),
     trashed: Schema.optional(Schema.Boolean),
@@ -193,7 +193,7 @@ export interface BatchCreatePermissionsRequest {
   requests?: ReadonlyArray<CreatePermissionRequest>;
 }
 
-export const BatchCreatePermissionsRequest: Schema.Schema<BatchCreatePermissionsRequest> =
+export const BatchCreatePermissionsRequest: Schema.Codec<BatchCreatePermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(CreatePermissionRequest)),
   }).annotate({ identifier: "BatchCreatePermissionsRequest" });
@@ -203,7 +203,7 @@ export interface BatchDeletePermissionsRequest {
   names?: ReadonlyArray<string>;
 }
 
-export const BatchDeletePermissionsRequest: Schema.Schema<BatchDeletePermissionsRequest> =
+export const BatchDeletePermissionsRequest: Schema.Codec<BatchDeletePermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeletePermissionsRequest" });
@@ -215,7 +215,7 @@ export interface ListNotesResponse {
   notes?: ReadonlyArray<Note>;
 }
 
-export const ListNotesResponse: Schema.Schema<ListNotesResponse> =
+export const ListNotesResponse: Schema.Codec<ListNotesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     notes: Schema.optional(Schema.Array(Note)),
@@ -223,7 +223,7 @@ export const ListNotesResponse: Schema.Schema<ListNotesResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -233,7 +233,7 @@ export interface BatchCreatePermissionsResponse {
   permissions?: ReadonlyArray<Permission>;
 }
 
-export const BatchCreatePermissionsResponse: Schema.Schema<BatchCreatePermissionsResponse> =
+export const BatchCreatePermissionsResponse: Schema.Codec<BatchCreatePermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Permission)),
   }).annotate({ identifier: "BatchCreatePermissionsResponse" });
@@ -302,7 +302,7 @@ export const CreateNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/notes", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateNotesRequest>;
+) as unknown as Schema.Codec<CreateNotesRequest>;
 
 export type CreateNotesResponse = Note;
 export const CreateNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
@@ -342,7 +342,7 @@ export const ListNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/notes" }),
   svc,
-) as unknown as Schema.Schema<ListNotesRequest>;
+) as unknown as Schema.Codec<ListNotesRequest>;
 
 export type ListNotesResponse_Op = ListNotesResponse;
 export const ListNotesResponse_Op =
@@ -376,7 +376,7 @@ export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetNotesRequest>;
+) as unknown as Schema.Codec<GetNotesRequest>;
 
 export type GetNotesResponse = Note;
 export const GetNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
@@ -405,7 +405,7 @@ export const DeleteNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteNotesRequest>;
+) as unknown as Schema.Codec<DeleteNotesRequest>;
 
 export type DeleteNotesResponse = Empty;
 export const DeleteNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -447,7 +447,7 @@ export const BatchCreateNotesPermissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateNotesPermissionsRequest>;
+  ) as unknown as Schema.Codec<BatchCreateNotesPermissionsRequest>;
 
 export type BatchCreateNotesPermissionsResponse =
   BatchCreatePermissionsResponse;
@@ -491,7 +491,7 @@ export const BatchDeleteNotesPermissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteNotesPermissionsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteNotesPermissionsRequest>;
 
 export type BatchDeleteNotesPermissionsResponse = Empty;
 export const BatchDeleteNotesPermissionsResponse =
@@ -529,7 +529,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DownloadMediaRequest>;
+) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Attachment;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Attachment;

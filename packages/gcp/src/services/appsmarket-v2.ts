@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -41,7 +41,7 @@ export interface UserLicense {
   applicationId?: string;
 }
 
-export const UserLicense: Schema.Schema<UserLicense> =
+export const UserLicense: Schema.Codec<UserLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     editionId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface Editions {
   seatCount?: number;
 }
 
-export const Editions: Schema.Schema<Editions> =
+export const Editions: Schema.Codec<Editions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     editionId: Schema.optional(Schema.String),
     assignedSeats: Schema.optional(Schema.Number),
@@ -84,7 +84,7 @@ export interface CustomerLicense {
   customerId?: string;
 }
 
-export const CustomerLicense: Schema.Schema<CustomerLicense> =
+export const CustomerLicense: Schema.Codec<CustomerLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     applicationId: Schema.optional(Schema.String),
@@ -141,7 +141,7 @@ export const GetUserLicenseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "appsmarket/v2/userLicense/{applicationId}/{userId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetUserLicenseRequest>;
+) as unknown as Schema.Codec<GetUserLicenseRequest>;
 
 export type GetUserLicenseResponse = UserLicense;
 export const GetUserLicenseResponse = /*@__PURE__*/ /*#__PURE__*/ UserLicense;
@@ -177,7 +177,7 @@ export const GetCustomerLicenseRequest =
       path: "appsmarket/v2/customerLicense/{applicationId}/{customerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomerLicenseRequest>;
+  ) as unknown as Schema.Codec<GetCustomerLicenseRequest>;
 
 export type GetCustomerLicenseResponse = CustomerLicense;
 export const GetCustomerLicenseResponse =

@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFunctionsLogsRetrieveInput {
+  id: string;
+  project_id: string;
+  after?: string;
+  before?: string;
+  instance_id?: string;
+  level?: string;
+  limit?: number;
+  search?: string;
+}
 export const HogFunctionsLogsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,15 +29,12 @@ export const HogFunctionsLogsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_functions/{id}/logs/",
     }),
-  );
-export type HogFunctionsLogsRetrieveInput =
-  typeof HogFunctionsLogsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HogFunctionsLogsRetrieveInput>;
 
 // Output Schema
+export type HogFunctionsLogsRetrieveOutput = void;
 export const HogFunctionsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HogFunctionsLogsRetrieveOutput =
-  typeof HogFunctionsLogsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HogFunctionsLogsRetrieveOutput>;
 
 // The operation
 /**

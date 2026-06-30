@@ -3,6 +3,49 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmSkillsCreateInput {
+  project_id: string;
+  id?: string;
+  name?: string;
+  description?: string;
+  body?: string;
+  license?: string;
+  compatibility?: string;
+  allowed_tools?: string[];
+  metadata?: Record<string, unknown>;
+  category?: string;
+  files?: { path?: string; content?: string; content_type?: string }[];
+  outline?: { level?: number; text?: string }[];
+  version?: number;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+}
 export const LlmSkillsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
@@ -45,7 +88,23 @@ export const LlmSkillsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -58,10 +117,51 @@ export const LlmSkillsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   first_version_created_at: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/llm_skills/" }),
-);
-export type LlmSkillsCreateInput = typeof LlmSkillsCreateInput.Type;
+) as unknown as Schema.Codec<LlmSkillsCreateInput>;
 
 // Output Schema
+export interface LlmSkillsCreateOutput {
+  id?: string;
+  name?: string;
+  description?: string;
+  body?: string;
+  license?: string;
+  compatibility?: string;
+  allowed_tools?: string[];
+  metadata?: Record<string, unknown>;
+  category?: string;
+  files?: { path?: string; content?: string; content_type?: string }[];
+  outline?: { level?: number; text?: string }[];
+  version?: number;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+}
 export const LlmSkillsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -103,7 +203,23 @@ export const LlmSkillsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -114,8 +230,7 @@ export const LlmSkillsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   latest_version: Schema.optional(Schema.Number),
   version_count: Schema.optional(Schema.Number),
   first_version_created_at: Schema.optional(Schema.String),
-});
-export type LlmSkillsCreateOutput = typeof LlmSkillsCreateOutput.Type;
+}) as unknown as Schema.Codec<LlmSkillsCreateOutput>;
 
 // The operation
 /**

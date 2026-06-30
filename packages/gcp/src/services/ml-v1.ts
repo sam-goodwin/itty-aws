@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValue
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec: Schema.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec> =
+export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec: Schema.Codec<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -42,7 +42,7 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec {
   minValue?: string;
 }
 
-export const GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec: Schema.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec> =
+export const GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec: Schema.Codec<GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxValue: Schema.optional(Schema.String),
     minValue: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscrete
   values?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec: Schema.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec> =
+export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec: Schema.Codec<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({
@@ -68,7 +68,7 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec {
   values?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec: Schema.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec> =
+export const GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec: Schema.Codec<GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({
@@ -82,7 +82,7 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec {
   minValue?: number;
 }
 
-export const GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec: Schema.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec> =
+export const GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec: Schema.Codec<GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxValue: Schema.optional(Schema.Number),
     minValue: Schema.optional(Schema.Number),
@@ -95,7 +95,7 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec {
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec: Schema.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec> =
+export const GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec: Schema.Codec<GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -107,7 +107,7 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategori
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec: Schema.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec> =
+export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec: Schema.Codec<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -148,7 +148,7 @@ export interface GoogleCloudMlV1_StudyConfig_ParameterSpec {
   parentCategoricalValues?: GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec;
 }
 
-export const GoogleCloudMlV1_StudyConfig_ParameterSpec: Schema.Schema<GoogleCloudMlV1_StudyConfig_ParameterSpec> =
+export const GoogleCloudMlV1_StudyConfig_ParameterSpec: Schema.Codec<GoogleCloudMlV1_StudyConfig_ParameterSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integerValueSpec: Schema.optional(
@@ -181,7 +181,7 @@ export const GoogleCloudMlV1_StudyConfig_ParameterSpec: Schema.Schema<GoogleClou
     }),
   ).annotate({
     identifier: "GoogleCloudMlV1_StudyConfig_ParameterSpec",
-  }) as any as Schema.Schema<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
+  }) as any as Schema.Codec<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
 
 export interface GoogleCloudMlV1_Trial_Parameter {
   /** Must be set if ParameterType is DOUBLE or DISCRETE. */
@@ -194,7 +194,7 @@ export interface GoogleCloudMlV1_Trial_Parameter {
   stringValue?: string;
 }
 
-export const GoogleCloudMlV1_Trial_Parameter: Schema.Schema<GoogleCloudMlV1_Trial_Parameter> =
+export const GoogleCloudMlV1_Trial_Parameter: Schema.Codec<GoogleCloudMlV1_Trial_Parameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floatValue: Schema.optional(Schema.Number),
     intValue: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export interface GoogleCloudMlV1_Measurement_Metric {
   value?: number;
 }
 
-export const GoogleCloudMlV1_Measurement_Metric: Schema.Schema<GoogleCloudMlV1_Measurement_Metric> =
+export const GoogleCloudMlV1_Measurement_Metric: Schema.Codec<GoogleCloudMlV1_Measurement_Metric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metric: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -224,7 +224,7 @@ export interface GoogleCloudMlV1__Measurement {
   metrics?: ReadonlyArray<GoogleCloudMlV1_Measurement_Metric>;
 }
 
-export const GoogleCloudMlV1__Measurement: Schema.Schema<GoogleCloudMlV1__Measurement> =
+export const GoogleCloudMlV1__Measurement: Schema.Codec<GoogleCloudMlV1__Measurement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stepCount: Schema.optional(Schema.String),
     elapsedTime: Schema.optional(Schema.String),
@@ -260,7 +260,7 @@ export interface GoogleCloudMlV1__Trial {
   measurements?: ReadonlyArray<GoogleCloudMlV1__Measurement>;
 }
 
-export const GoogleCloudMlV1__Trial: Schema.Schema<GoogleCloudMlV1__Trial> =
+export const GoogleCloudMlV1__Trial: Schema.Codec<GoogleCloudMlV1__Trial> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     trialInfeasible: Schema.optional(Schema.Boolean),
@@ -290,7 +290,7 @@ export interface GoogleCloudMlV1__SuggestTrialsResponse {
   trials?: ReadonlyArray<GoogleCloudMlV1__Trial>;
 }
 
-export const GoogleCloudMlV1__SuggestTrialsResponse: Schema.Schema<GoogleCloudMlV1__SuggestTrialsResponse> =
+export const GoogleCloudMlV1__SuggestTrialsResponse: Schema.Codec<GoogleCloudMlV1__SuggestTrialsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     studyState: Schema.optional(Schema.String),
@@ -303,7 +303,7 @@ export interface GoogleCloudMlV1__IntegratedGradientsAttribution {
   numIntegralSteps?: number;
 }
 
-export const GoogleCloudMlV1__IntegratedGradientsAttribution: Schema.Schema<GoogleCloudMlV1__IntegratedGradientsAttribution> =
+export const GoogleCloudMlV1__IntegratedGradientsAttribution: Schema.Codec<GoogleCloudMlV1__IntegratedGradientsAttribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numIntegralSteps: Schema.optional(Schema.Number),
   }).annotate({
@@ -317,7 +317,7 @@ export interface GoogleCloudMlV1_StudyConfig_MetricSpec {
   metric?: string;
 }
 
-export const GoogleCloudMlV1_StudyConfig_MetricSpec: Schema.Schema<GoogleCloudMlV1_StudyConfig_MetricSpec> =
+export const GoogleCloudMlV1_StudyConfig_MetricSpec: Schema.Codec<GoogleCloudMlV1_StudyConfig_MetricSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goal: Schema.optional(Schema.String),
     metric: Schema.optional(Schema.String),
@@ -328,7 +328,7 @@ export interface GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStop
   useElapsedTime?: boolean;
 }
 
-export const GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig: Schema.Schema<GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig> =
+export const GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig: Schema.Codec<GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     useElapsedTime: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -341,7 +341,7 @@ export interface GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStopping
   useElapsedTime?: boolean;
 }
 
-export const GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig: Schema.Schema<GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig> =
+export const GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig: Schema.Codec<GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     useElapsedTime: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -354,7 +354,7 @@ export interface GoogleCloudMlV1__AutomatedStoppingConfig {
   medianAutomatedStoppingConfig?: GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig;
 }
 
-export const GoogleCloudMlV1__AutomatedStoppingConfig: Schema.Schema<GoogleCloudMlV1__AutomatedStoppingConfig> =
+export const GoogleCloudMlV1__AutomatedStoppingConfig: Schema.Codec<GoogleCloudMlV1__AutomatedStoppingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     decayCurveStoppingConfig: Schema.optional(
       GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig,
@@ -380,7 +380,7 @@ export interface GoogleCloudMlV1__StudyConfig {
   automatedStoppingConfig?: GoogleCloudMlV1__AutomatedStoppingConfig;
 }
 
-export const GoogleCloudMlV1__StudyConfig: Schema.Schema<GoogleCloudMlV1__StudyConfig> =
+export const GoogleCloudMlV1__StudyConfig: Schema.Codec<GoogleCloudMlV1__StudyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     metrics: Schema.optional(
@@ -399,7 +399,7 @@ export interface GoogleCloudMlV1__XraiAttribution {
   numIntegralSteps?: number;
 }
 
-export const GoogleCloudMlV1__XraiAttribution: Schema.Schema<GoogleCloudMlV1__XraiAttribution> =
+export const GoogleCloudMlV1__XraiAttribution: Schema.Codec<GoogleCloudMlV1__XraiAttribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numIntegralSteps: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudMlV1__XraiAttribution" });
@@ -409,7 +409,7 @@ export interface GoogleCloudMlV1__SampledShapleyAttribution {
   numPaths?: number;
 }
 
-export const GoogleCloudMlV1__SampledShapleyAttribution: Schema.Schema<GoogleCloudMlV1__SampledShapleyAttribution> =
+export const GoogleCloudMlV1__SampledShapleyAttribution: Schema.Codec<GoogleCloudMlV1__SampledShapleyAttribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numPaths: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudMlV1__SampledShapleyAttribution" });
@@ -423,7 +423,7 @@ export interface GoogleCloudMlV1__ExplanationConfig {
   sampledShapleyAttribution?: GoogleCloudMlV1__SampledShapleyAttribution;
 }
 
-export const GoogleCloudMlV1__ExplanationConfig: Schema.Schema<GoogleCloudMlV1__ExplanationConfig> =
+export const GoogleCloudMlV1__ExplanationConfig: Schema.Codec<GoogleCloudMlV1__ExplanationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integratedGradientsAttribution: Schema.optional(
       GoogleCloudMlV1__IntegratedGradientsAttribution,
@@ -443,7 +443,7 @@ export interface GoogleApi__HttpBody {
   data?: string;
 }
 
-export const GoogleApi__HttpBody: Schema.Schema<GoogleApi__HttpBody> =
+export const GoogleApi__HttpBody: Schema.Codec<GoogleApi__HttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extensions: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -457,7 +457,7 @@ export interface GoogleCloudMlV1__ExplainRequest {
   httpBody?: GoogleApi__HttpBody;
 }
 
-export const GoogleCloudMlV1__ExplainRequest: Schema.Schema<GoogleCloudMlV1__ExplainRequest> =
+export const GoogleCloudMlV1__ExplainRequest: Schema.Codec<GoogleCloudMlV1__ExplainRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpBody: Schema.optional(GoogleApi__HttpBody),
   }).annotate({ identifier: "GoogleCloudMlV1__ExplainRequest" });
@@ -473,7 +473,7 @@ export interface GoogleCloudMlV1__BuiltInAlgorithmOutput {
   runtimeVersion?: string;
 }
 
-export const GoogleCloudMlV1__BuiltInAlgorithmOutput: Schema.Schema<GoogleCloudMlV1__BuiltInAlgorithmOutput> =
+export const GoogleCloudMlV1__BuiltInAlgorithmOutput: Schema.Codec<GoogleCloudMlV1__BuiltInAlgorithmOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     framework: Schema.optional(Schema.String),
     pythonVersion: Schema.optional(Schema.String),
@@ -488,7 +488,7 @@ export interface GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
   trainingStep?: string;
 }
 
-export const GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric: Schema.Schema<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric> =
+export const GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric: Schema.Codec<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectiveValue: Schema.optional(Schema.Number),
     trainingStep: Schema.optional(Schema.String),
@@ -528,7 +528,7 @@ export interface GoogleCloudMlV1__HyperparameterOutput {
   allMetrics?: ReadonlyArray<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
 }
 
-export const GoogleCloudMlV1__HyperparameterOutput: Schema.Schema<GoogleCloudMlV1__HyperparameterOutput> =
+export const GoogleCloudMlV1__HyperparameterOutput: Schema.Codec<GoogleCloudMlV1__HyperparameterOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     hyperparameters: Schema.optional(
@@ -555,7 +555,7 @@ export interface GoogleCloudMlV1__ListOptimalTrialsResponse {
   trials?: ReadonlyArray<GoogleCloudMlV1__Trial>;
 }
 
-export const GoogleCloudMlV1__ListOptimalTrialsResponse: Schema.Schema<GoogleCloudMlV1__ListOptimalTrialsResponse> =
+export const GoogleCloudMlV1__ListOptimalTrialsResponse: Schema.Codec<GoogleCloudMlV1__ListOptimalTrialsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trials: Schema.optional(Schema.Array(GoogleCloudMlV1__Trial)),
   }).annotate({ identifier: "GoogleCloudMlV1__ListOptimalTrialsResponse" });
@@ -567,7 +567,7 @@ export interface GoogleCloudMlV1__RouteMap {
   health?: string;
 }
 
-export const GoogleCloudMlV1__RouteMap: Schema.Schema<GoogleCloudMlV1__RouteMap> =
+export const GoogleCloudMlV1__RouteMap: Schema.Codec<GoogleCloudMlV1__RouteMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     predict: Schema.optional(Schema.String),
     health: Schema.optional(Schema.String),
@@ -591,7 +591,7 @@ export interface GoogleCloudMlV1__Study {
   name?: string;
 }
 
-export const GoogleCloudMlV1__Study: Schema.Schema<GoogleCloudMlV1__Study> =
+export const GoogleCloudMlV1__Study: Schema.Codec<GoogleCloudMlV1__Study> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -605,7 +605,7 @@ export interface GoogleCloudMlV1__ListStudiesResponse {
   studies?: ReadonlyArray<GoogleCloudMlV1__Study>;
 }
 
-export const GoogleCloudMlV1__ListStudiesResponse: Schema.Schema<GoogleCloudMlV1__ListStudiesResponse> =
+export const GoogleCloudMlV1__ListStudiesResponse: Schema.Codec<GoogleCloudMlV1__ListStudiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studies: Schema.optional(Schema.Array(GoogleCloudMlV1__Study)),
   }).annotate({ identifier: "GoogleCloudMlV1__ListStudiesResponse" });
@@ -638,7 +638,7 @@ export interface GoogleCloudMlV1__ParameterSpec {
     | (string & {});
 }
 
-export const GoogleCloudMlV1__ParameterSpec: Schema.Schema<GoogleCloudMlV1__ParameterSpec> =
+export const GoogleCloudMlV1__ParameterSpec: Schema.Codec<GoogleCloudMlV1__ParameterSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     discreteValues: Schema.optional(Schema.Array(Schema.Number)),
     categoricalValues: Schema.optional(Schema.Array(Schema.String)),
@@ -674,7 +674,7 @@ export interface GoogleCloudMlV1__HyperparameterSpec {
   maxFailedTrials?: number;
 }
 
-export const GoogleCloudMlV1__HyperparameterSpec: Schema.Schema<GoogleCloudMlV1__HyperparameterSpec> =
+export const GoogleCloudMlV1__HyperparameterSpec: Schema.Codec<GoogleCloudMlV1__HyperparameterSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableTrialEarlyStopping: Schema.optional(Schema.Boolean),
     maxParallelTrials: Schema.optional(Schema.Number),
@@ -692,7 +692,7 @@ export interface GoogleCloudMlV1__ContainerPort {
   containerPort?: number;
 }
 
-export const GoogleCloudMlV1__ContainerPort: Schema.Schema<GoogleCloudMlV1__ContainerPort> =
+export const GoogleCloudMlV1__ContainerPort: Schema.Codec<GoogleCloudMlV1__ContainerPort> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerPort: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudMlV1__ContainerPort" });
@@ -708,7 +708,7 @@ export interface GoogleCloudMlV1__SuggestTrialsMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudMlV1__SuggestTrialsMetadata: Schema.Schema<GoogleCloudMlV1__SuggestTrialsMetadata> =
+export const GoogleCloudMlV1__SuggestTrialsMetadata: Schema.Codec<GoogleCloudMlV1__SuggestTrialsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     study: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -725,7 +725,7 @@ export interface GoogleCloudMlV1__CompleteTrialRequest {
   infeasibleReason?: string;
 }
 
-export const GoogleCloudMlV1__CompleteTrialRequest: Schema.Schema<GoogleCloudMlV1__CompleteTrialRequest> =
+export const GoogleCloudMlV1__CompleteTrialRequest: Schema.Codec<GoogleCloudMlV1__CompleteTrialRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finalMeasurement: Schema.optional(GoogleCloudMlV1__Measurement),
     trialInfeasible: Schema.optional(Schema.Boolean),
@@ -752,7 +752,7 @@ export interface GoogleCloudMlV1__AcceleratorConfig {
   count?: string;
 }
 
-export const GoogleCloudMlV1__AcceleratorConfig: Schema.Schema<GoogleCloudMlV1__AcceleratorConfig> =
+export const GoogleCloudMlV1__AcceleratorConfig: Schema.Codec<GoogleCloudMlV1__AcceleratorConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -765,7 +765,7 @@ export interface GoogleCloudMlV1__DiskConfig {
   bootDiskType?: string;
 }
 
-export const GoogleCloudMlV1__DiskConfig: Schema.Schema<GoogleCloudMlV1__DiskConfig> =
+export const GoogleCloudMlV1__DiskConfig: Schema.Codec<GoogleCloudMlV1__DiskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bootDiskSizeGb: Schema.optional(Schema.Number),
     bootDiskType: Schema.optional(Schema.String),
@@ -786,7 +786,7 @@ export interface GoogleCloudMlV1__ReplicaConfig {
   containerCommand?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudMlV1__ReplicaConfig: Schema.Schema<GoogleCloudMlV1__ReplicaConfig> =
+export const GoogleCloudMlV1__ReplicaConfig: Schema.Codec<GoogleCloudMlV1__ReplicaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageUri: Schema.optional(Schema.String),
     tpuTfVersion: Schema.optional(Schema.String),
@@ -801,7 +801,7 @@ export interface GoogleCloudMlV1__EncryptionConfig {
   kmsKeyName?: string;
 }
 
-export const GoogleCloudMlV1__EncryptionConfig: Schema.Schema<GoogleCloudMlV1__EncryptionConfig> =
+export const GoogleCloudMlV1__EncryptionConfig: Schema.Codec<GoogleCloudMlV1__EncryptionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudMlV1__EncryptionConfig" });
@@ -815,7 +815,7 @@ export interface GoogleCloudMlV1__Scheduling {
   maxRunningTime?: string;
 }
 
-export const GoogleCloudMlV1__Scheduling: Schema.Schema<GoogleCloudMlV1__Scheduling> =
+export const GoogleCloudMlV1__Scheduling: Schema.Codec<GoogleCloudMlV1__Scheduling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priority: Schema.optional(Schema.Number),
     maxWaitTime: Schema.optional(Schema.String),
@@ -884,7 +884,7 @@ export interface GoogleCloudMlV1__TrainingInput {
   masterConfig?: GoogleCloudMlV1__ReplicaConfig;
 }
 
-export const GoogleCloudMlV1__TrainingInput: Schema.Schema<GoogleCloudMlV1__TrainingInput> =
+export const GoogleCloudMlV1__TrainingInput: Schema.Codec<GoogleCloudMlV1__TrainingInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workerConfig: Schema.optional(GoogleCloudMlV1__ReplicaConfig),
     pythonVersion: Schema.optional(Schema.String),
@@ -926,7 +926,7 @@ export interface GoogleIamV1__AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1__AuditLogConfig: Schema.Schema<GoogleIamV1__AuditLogConfig> =
+export const GoogleIamV1__AuditLogConfig: Schema.Codec<GoogleIamV1__AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -943,7 +943,7 @@ export interface GoogleType__Expr {
   expression?: string;
 }
 
-export const GoogleType__Expr: Schema.Schema<GoogleType__Expr> =
+export const GoogleType__Expr: Schema.Codec<GoogleType__Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -960,7 +960,7 @@ export interface GoogleIamV1__Binding {
   role?: string;
 }
 
-export const GoogleIamV1__Binding: Schema.Schema<GoogleIamV1__Binding> =
+export const GoogleIamV1__Binding: Schema.Codec<GoogleIamV1__Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(GoogleType__Expr),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -974,7 +974,7 @@ export interface GoogleIamV1__AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1__AuditLogConfig>;
 }
 
-export const GoogleIamV1__AuditConfig: Schema.Schema<GoogleIamV1__AuditConfig> =
+export const GoogleIamV1__AuditConfig: Schema.Codec<GoogleIamV1__AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1__AuditLogConfig)),
@@ -991,7 +991,7 @@ export interface GoogleIamV1__Policy {
   auditConfigs?: ReadonlyArray<GoogleIamV1__AuditConfig>;
 }
 
-export const GoogleIamV1__Policy: Schema.Schema<GoogleIamV1__Policy> =
+export const GoogleIamV1__Policy: Schema.Codec<GoogleIamV1__Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     bindings: Schema.optional(Schema.Array(GoogleIamV1__Binding)),
@@ -1006,7 +1006,7 @@ export interface GoogleIamV1__SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1__SetIamPolicyRequest: Schema.Schema<GoogleIamV1__SetIamPolicyRequest> =
+export const GoogleIamV1__SetIamPolicyRequest: Schema.Codec<GoogleIamV1__SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleIamV1__Policy),
     updateMask: Schema.optional(Schema.String),
@@ -1014,7 +1014,7 @@ export const GoogleIamV1__SetIamPolicyRequest: Schema.Schema<GoogleIamV1__SetIam
 
 export interface GoogleCloudMlV1__ListOptimalTrialsRequest {}
 
-export const GoogleCloudMlV1__ListOptimalTrialsRequest: Schema.Schema<GoogleCloudMlV1__ListOptimalTrialsRequest> =
+export const GoogleCloudMlV1__ListOptimalTrialsRequest: Schema.Codec<GoogleCloudMlV1__ListOptimalTrialsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudMlV1__ListOptimalTrialsRequest",
   });
@@ -1026,7 +1026,7 @@ export interface GoogleCloudMlV1__EnvVar {
   name?: string;
 }
 
-export const GoogleCloudMlV1__EnvVar: Schema.Schema<GoogleCloudMlV1__EnvVar> =
+export const GoogleCloudMlV1__EnvVar: Schema.Codec<GoogleCloudMlV1__EnvVar> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1037,14 +1037,14 @@ export interface GoogleIamV1__TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1__TestIamPermissionsResponse: Schema.Schema<GoogleIamV1__TestIamPermissionsResponse> =
+export const GoogleIamV1__TestIamPermissionsResponse: Schema.Codec<GoogleIamV1__TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1__TestIamPermissionsResponse" });
 
 export interface GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest {}
 
-export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest: Schema.Schema<GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest> =
+export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest: Schema.Codec<GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest",
   });
@@ -1062,7 +1062,7 @@ export interface GoogleCloudMlV1__ContainerSpec {
   command?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudMlV1__ContainerSpec: Schema.Schema<GoogleCloudMlV1__ContainerSpec> =
+export const GoogleCloudMlV1__ContainerSpec: Schema.Codec<GoogleCloudMlV1__ContainerSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     env: Schema.optional(Schema.Array(GoogleCloudMlV1__EnvVar)),
@@ -1076,7 +1076,7 @@ export interface GoogleCloudMlV1__ManualScaling {
   nodes?: number;
 }
 
-export const GoogleCloudMlV1__ManualScaling: Schema.Schema<GoogleCloudMlV1__ManualScaling> =
+export const GoogleCloudMlV1__ManualScaling: Schema.Codec<GoogleCloudMlV1__ManualScaling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudMlV1__ManualScaling" });
@@ -1092,7 +1092,7 @@ export interface GoogleCloudMlV1__MetricSpec {
     | (string & {});
 }
 
-export const GoogleCloudMlV1__MetricSpec: Schema.Schema<GoogleCloudMlV1__MetricSpec> =
+export const GoogleCloudMlV1__MetricSpec: Schema.Codec<GoogleCloudMlV1__MetricSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -1107,7 +1107,7 @@ export interface GoogleCloudMlV1__AutoScaling {
   minNodes?: number;
 }
 
-export const GoogleCloudMlV1__AutoScaling: Schema.Schema<GoogleCloudMlV1__AutoScaling> =
+export const GoogleCloudMlV1__AutoScaling: Schema.Codec<GoogleCloudMlV1__AutoScaling> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(GoogleCloudMlV1__MetricSpec)),
     maxNodes: Schema.optional(Schema.Number),
@@ -1121,7 +1121,7 @@ export interface GoogleCloudMlV1__RequestLoggingConfig {
   bigqueryTableName?: string;
 }
 
-export const GoogleCloudMlV1__RequestLoggingConfig: Schema.Schema<GoogleCloudMlV1__RequestLoggingConfig> =
+export const GoogleCloudMlV1__RequestLoggingConfig: Schema.Codec<GoogleCloudMlV1__RequestLoggingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     samplingPercentage: Schema.optional(Schema.Number),
     bigqueryTableName: Schema.optional(Schema.String),
@@ -1194,7 +1194,7 @@ export interface GoogleCloudMlV1__Version {
   packageUris?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudMlV1__Version: Schema.Schema<GoogleCloudMlV1__Version> =
+export const GoogleCloudMlV1__Version: Schema.Codec<GoogleCloudMlV1__Version> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runtimeVersion: Schema.optional(Schema.String),
     machineType: Schema.optional(Schema.String),
@@ -1233,7 +1233,7 @@ export interface GoogleCloudMlV1__ListVersionsResponse {
   versions?: ReadonlyArray<GoogleCloudMlV1__Version>;
 }
 
-export const GoogleCloudMlV1__ListVersionsResponse: Schema.Schema<GoogleCloudMlV1__ListVersionsResponse> =
+export const GoogleCloudMlV1__ListVersionsResponse: Schema.Codec<GoogleCloudMlV1__ListVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     versions: Schema.optional(Schema.Array(GoogleCloudMlV1__Version)),
@@ -1258,7 +1258,7 @@ export interface GoogleCloudMlV1__Model {
   description?: string;
 }
 
-export const GoogleCloudMlV1__Model: Schema.Schema<GoogleCloudMlV1__Model> =
+export const GoogleCloudMlV1__Model: Schema.Codec<GoogleCloudMlV1__Model> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     onlinePredictionLogging: Schema.optional(Schema.Boolean),
     regions: Schema.optional(Schema.Array(Schema.String)),
@@ -1275,7 +1275,7 @@ export interface GoogleIamV1__TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1__TestIamPermissionsRequest: Schema.Schema<GoogleIamV1__TestIamPermissionsRequest> =
+export const GoogleIamV1__TestIamPermissionsRequest: Schema.Codec<GoogleIamV1__TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1__TestIamPermissionsRequest" });
@@ -1289,7 +1289,7 @@ export interface GoogleCloudMlV1__CheckTrialEarlyStoppingStateResponse {
   startTime?: string;
 }
 
-export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateResponse: Schema.Schema<GoogleCloudMlV1__CheckTrialEarlyStoppingStateResponse> =
+export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateResponse: Schema.Codec<GoogleCloudMlV1__CheckTrialEarlyStoppingStateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shouldStop: Schema.optional(Schema.Boolean),
     endTime: Schema.optional(Schema.String),
@@ -1323,7 +1323,7 @@ export interface GoogleCloudMlV1__Capability {
     | (string & {});
 }
 
-export const GoogleCloudMlV1__Capability: Schema.Schema<GoogleCloudMlV1__Capability> =
+export const GoogleCloudMlV1__Capability: Schema.Codec<GoogleCloudMlV1__Capability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availableAccelerators: Schema.optional(Schema.Array(Schema.String)),
     type: Schema.optional(Schema.String),
@@ -1335,7 +1335,7 @@ export interface GoogleCloudMlV1__Location {
   capabilities?: ReadonlyArray<GoogleCloudMlV1__Capability>;
 }
 
-export const GoogleCloudMlV1__Location: Schema.Schema<GoogleCloudMlV1__Location> =
+export const GoogleCloudMlV1__Location: Schema.Codec<GoogleCloudMlV1__Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     capabilities: Schema.optional(Schema.Array(GoogleCloudMlV1__Capability)),
@@ -1352,7 +1352,7 @@ export interface GoogleCloudMlV1__PredictionOutput {
   outputPath?: string;
 }
 
-export const GoogleCloudMlV1__PredictionOutput: Schema.Schema<GoogleCloudMlV1__PredictionOutput> =
+export const GoogleCloudMlV1__PredictionOutput: Schema.Codec<GoogleCloudMlV1__PredictionOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeHours: Schema.optional(Schema.Number),
     errorCount: Schema.optional(Schema.String),
@@ -1401,7 +1401,7 @@ export interface GoogleCloudMlV1__PredictionInput {
   region?: string;
 }
 
-export const GoogleCloudMlV1__PredictionInput: Schema.Schema<GoogleCloudMlV1__PredictionInput> =
+export const GoogleCloudMlV1__PredictionInput: Schema.Codec<GoogleCloudMlV1__PredictionInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFormat: Schema.optional(Schema.String),
     maxWorkerCount: Schema.optional(Schema.String),
@@ -1419,7 +1419,7 @@ export const GoogleCloudMlV1__PredictionInput: Schema.Schema<GoogleCloudMlV1__Pr
 
 export interface GoogleCloudMlV1__StopTrialRequest {}
 
-export const GoogleCloudMlV1__StopTrialRequest: Schema.Schema<GoogleCloudMlV1__StopTrialRequest> =
+export const GoogleCloudMlV1__StopTrialRequest: Schema.Codec<GoogleCloudMlV1__StopTrialRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudMlV1__StopTrialRequest",
   });
@@ -1429,7 +1429,7 @@ export interface GoogleCloudMlV1__ListTrialsResponse {
   trials?: ReadonlyArray<GoogleCloudMlV1__Trial>;
 }
 
-export const GoogleCloudMlV1__ListTrialsResponse: Schema.Schema<GoogleCloudMlV1__ListTrialsResponse> =
+export const GoogleCloudMlV1__ListTrialsResponse: Schema.Codec<GoogleCloudMlV1__ListTrialsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trials: Schema.optional(Schema.Array(GoogleCloudMlV1__Trial)),
   }).annotate({ identifier: "GoogleCloudMlV1__ListTrialsResponse" });
@@ -1443,7 +1443,7 @@ export interface GoogleRpc__Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpc__Status: Schema.Schema<GoogleRpc__Status> =
+export const GoogleRpc__Status: Schema.Codec<GoogleRpc__Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1465,7 +1465,7 @@ export interface GoogleLongrunning__Operation {
   done?: boolean;
 }
 
-export const GoogleLongrunning__Operation: Schema.Schema<GoogleLongrunning__Operation> =
+export const GoogleLongrunning__Operation: Schema.Codec<GoogleLongrunning__Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -1483,7 +1483,7 @@ export interface GoogleLongrunning__ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunning__ListOperationsResponse: Schema.Schema<GoogleLongrunning__ListOperationsResponse> =
+export const GoogleLongrunning__ListOperationsResponse: Schema.Codec<GoogleLongrunning__ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(GoogleLongrunning__Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1492,7 +1492,7 @@ export const GoogleLongrunning__ListOperationsResponse: Schema.Schema<GoogleLong
 
 export interface GoogleCloudMlV1__SetDefaultVersionRequest {}
 
-export const GoogleCloudMlV1__SetDefaultVersionRequest: Schema.Schema<GoogleCloudMlV1__SetDefaultVersionRequest> =
+export const GoogleCloudMlV1__SetDefaultVersionRequest: Schema.Codec<GoogleCloudMlV1__SetDefaultVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudMlV1__SetDefaultVersionRequest",
   });
@@ -1504,7 +1504,7 @@ export interface GoogleCloudMlV1__SuggestTrialsRequest {
   clientId?: string;
 }
 
-export const GoogleCloudMlV1__SuggestTrialsRequest: Schema.Schema<GoogleCloudMlV1__SuggestTrialsRequest> =
+export const GoogleCloudMlV1__SuggestTrialsRequest: Schema.Codec<GoogleCloudMlV1__SuggestTrialsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestionCount: Schema.optional(Schema.Number),
     clientId: Schema.optional(Schema.String),
@@ -1515,7 +1515,7 @@ export interface GoogleCloudMlV1__PredictRequest {
   httpBody?: GoogleApi__HttpBody;
 }
 
-export const GoogleCloudMlV1__PredictRequest: Schema.Schema<GoogleCloudMlV1__PredictRequest> =
+export const GoogleCloudMlV1__PredictRequest: Schema.Codec<GoogleCloudMlV1__PredictRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     httpBody: Schema.optional(GoogleApi__HttpBody),
   }).annotate({ identifier: "GoogleCloudMlV1__PredictRequest" });
@@ -1525,7 +1525,7 @@ export interface GoogleCloudMlV1__Config {
   tpuServiceAccount?: string;
 }
 
-export const GoogleCloudMlV1__Config: Schema.Schema<GoogleCloudMlV1__Config> =
+export const GoogleCloudMlV1__Config: Schema.Codec<GoogleCloudMlV1__Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tpuServiceAccount: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudMlV1__Config" });
@@ -1539,7 +1539,7 @@ export interface GoogleCloudMlV1__CheckTrialEarlyStoppingStateMetatdata {
   study?: string;
 }
 
-export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateMetatdata: Schema.Schema<GoogleCloudMlV1__CheckTrialEarlyStoppingStateMetatdata> =
+export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateMetatdata: Schema.Codec<GoogleCloudMlV1__CheckTrialEarlyStoppingStateMetatdata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     trial: Schema.optional(Schema.String),
@@ -1550,7 +1550,7 @@ export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateMetatdata: Schema.Sche
 
 export interface GoogleCloudMlV1__CancelJobRequest {}
 
-export const GoogleCloudMlV1__CancelJobRequest: Schema.Schema<GoogleCloudMlV1__CancelJobRequest> =
+export const GoogleCloudMlV1__CancelJobRequest: Schema.Codec<GoogleCloudMlV1__CancelJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudMlV1__CancelJobRequest",
   });
@@ -1562,7 +1562,7 @@ export interface GoogleCloudMlV1__ListModelsResponse {
   models?: ReadonlyArray<GoogleCloudMlV1__Model>;
 }
 
-export const GoogleCloudMlV1__ListModelsResponse: Schema.Schema<GoogleCloudMlV1__ListModelsResponse> =
+export const GoogleCloudMlV1__ListModelsResponse: Schema.Codec<GoogleCloudMlV1__ListModelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     models: Schema.optional(Schema.Array(GoogleCloudMlV1__Model)),
@@ -1587,7 +1587,7 @@ export interface GoogleCloudMlV1__TrainingOutput {
   builtInAlgorithmOutput?: GoogleCloudMlV1__BuiltInAlgorithmOutput;
 }
 
-export const GoogleCloudMlV1__TrainingOutput: Schema.Schema<GoogleCloudMlV1__TrainingOutput> =
+export const GoogleCloudMlV1__TrainingOutput: Schema.Codec<GoogleCloudMlV1__TrainingOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumedMLUnits: Schema.optional(Schema.Number),
     isHyperparameterTuningJob: Schema.optional(Schema.Boolean),
@@ -1605,7 +1605,7 @@ export const GoogleCloudMlV1__TrainingOutput: Schema.Schema<GoogleCloudMlV1__Tra
 
 export interface GoogleProtobuf__Empty {}
 
-export const GoogleProtobuf__Empty: Schema.Schema<GoogleProtobuf__Empty> =
+export const GoogleProtobuf__Empty: Schema.Codec<GoogleProtobuf__Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobuf__Empty",
   });
@@ -1648,7 +1648,7 @@ export interface GoogleCloudMlV1__Job {
   etag?: string;
 }
 
-export const GoogleCloudMlV1__Job: Schema.Schema<GoogleCloudMlV1__Job> =
+export const GoogleCloudMlV1__Job: Schema.Codec<GoogleCloudMlV1__Job> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     predictionOutput: Schema.optional(GoogleCloudMlV1__PredictionOutput),
     createTime: Schema.optional(Schema.String),
@@ -1672,7 +1672,7 @@ export interface GoogleCloudMlV1__ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudMlV1__ListJobsResponse: Schema.Schema<GoogleCloudMlV1__ListJobsResponse> =
+export const GoogleCloudMlV1__ListJobsResponse: Schema.Codec<GoogleCloudMlV1__ListJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(GoogleCloudMlV1__Job)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1707,7 +1707,7 @@ export interface GoogleCloudMlV1__OperationMetadata {
   isCancellationRequested?: boolean;
 }
 
-export const GoogleCloudMlV1__OperationMetadata: Schema.Schema<GoogleCloudMlV1__OperationMetadata> =
+export const GoogleCloudMlV1__OperationMetadata: Schema.Codec<GoogleCloudMlV1__OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelName: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1728,7 +1728,7 @@ export interface GoogleCloudMlV1__GetConfigResponse {
   serviceAccount?: string;
 }
 
-export const GoogleCloudMlV1__GetConfigResponse: Schema.Schema<GoogleCloudMlV1__GetConfigResponse> =
+export const GoogleCloudMlV1__GetConfigResponse: Schema.Codec<GoogleCloudMlV1__GetConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     config: Schema.optional(GoogleCloudMlV1__Config),
     serviceAccountProject: Schema.optional(Schema.String),
@@ -1740,7 +1740,7 @@ export interface GoogleCloudMlV1__AddTrialMeasurementRequest {
   measurement?: GoogleCloudMlV1__Measurement;
 }
 
-export const GoogleCloudMlV1__AddTrialMeasurementRequest: Schema.Schema<GoogleCloudMlV1__AddTrialMeasurementRequest> =
+export const GoogleCloudMlV1__AddTrialMeasurementRequest: Schema.Codec<GoogleCloudMlV1__AddTrialMeasurementRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     measurement: Schema.optional(GoogleCloudMlV1__Measurement),
   }).annotate({ identifier: "GoogleCloudMlV1__AddTrialMeasurementRequest" });
@@ -1752,7 +1752,7 @@ export interface GoogleCloudMlV1__ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudMlV1__ListLocationsResponse: Schema.Schema<GoogleCloudMlV1__ListLocationsResponse> =
+export const GoogleCloudMlV1__ListLocationsResponse: Schema.Codec<GoogleCloudMlV1__ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(GoogleCloudMlV1__Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1827,7 +1827,7 @@ export const ExplainProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1/{+name}:explain", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<ExplainProjectsRequest>;
+) as unknown as Schema.Codec<ExplainProjectsRequest>;
 
 export type ExplainProjectsResponse = GoogleApi__HttpBody;
 export const ExplainProjectsResponse =
@@ -1863,7 +1863,7 @@ export const GetConfigProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:getConfig" }),
     svc,
-  ) as unknown as Schema.Schema<GetConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<GetConfigProjectsRequest>;
 
 export type GetConfigProjectsResponse = GoogleCloudMlV1__GetConfigResponse;
 export const GetConfigProjectsResponse =
@@ -1898,7 +1898,7 @@ export const PredictProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1/{+name}:predict", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PredictProjectsRequest>;
+) as unknown as Schema.Codec<PredictProjectsRequest>;
 
 export type PredictProjectsResponse = GoogleApi__HttpBody;
 export const PredictProjectsResponse =
@@ -1934,7 +1934,7 @@ export const DeleteProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsModelsRequest>;
 
 export type DeleteProjectsModelsResponse = GoogleLongrunning__Operation;
 export const DeleteProjectsModelsResponse =
@@ -1976,7 +1976,7 @@ export const PatchProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsModelsRequest>;
 
 export type PatchProjectsModelsResponse = GoogleLongrunning__Operation;
 export const PatchProjectsModelsResponse =
@@ -2012,7 +2012,7 @@ export const GetProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsModelsRequest>;
 
 export type GetProjectsModelsResponse = GoogleCloudMlV1__Model;
 export const GetProjectsModelsResponse =
@@ -2048,7 +2048,7 @@ export const GetIamPolicyProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsModelsRequest>;
 
 export type GetIamPolicyProjectsModelsResponse = GoogleIamV1__Policy;
 export const GetIamPolicyProjectsModelsResponse =
@@ -2089,7 +2089,7 @@ export const SetIamPolicyProjectsModelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsModelsRequest>;
 
 export type SetIamPolicyProjectsModelsResponse = GoogleIamV1__Policy;
 export const SetIamPolicyProjectsModelsResponse =
@@ -2128,7 +2128,7 @@ export const CreateProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/models", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsModelsRequest>;
 
 export type CreateProjectsModelsResponse = GoogleCloudMlV1__Model;
 export const CreateProjectsModelsResponse =
@@ -2173,7 +2173,7 @@ export const TestIamPermissionsProjectsModelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsModelsRequest>;
 
 export type TestIamPermissionsProjectsModelsResponse =
   GoogleIamV1__TestIamPermissionsResponse;
@@ -2219,7 +2219,7 @@ export const ListProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/models" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsModelsRequest>;
 
 export type ListProjectsModelsResponse = GoogleCloudMlV1__ListModelsResponse;
 export const ListProjectsModelsResponse =
@@ -2263,7 +2263,7 @@ export const ListProjectsModelsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsModelsVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsModelsVersionsRequest>;
 
 export type ListProjectsModelsVersionsResponse =
   GoogleCloudMlV1__ListVersionsResponse;
@@ -2307,7 +2307,7 @@ export const SetDefaultProjectsModelsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:setDefault", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetDefaultProjectsModelsVersionsRequest>;
+  ) as unknown as Schema.Codec<SetDefaultProjectsModelsVersionsRequest>;
 
 export type SetDefaultProjectsModelsVersionsResponse = GoogleCloudMlV1__Version;
 export const SetDefaultProjectsModelsVersionsResponse =
@@ -2343,7 +2343,7 @@ export const DeleteProjectsModelsVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsModelsVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsModelsVersionsRequest>;
 
 export type DeleteProjectsModelsVersionsResponse = GoogleLongrunning__Operation;
 export const DeleteProjectsModelsVersionsResponse =
@@ -2379,7 +2379,7 @@ export const GetProjectsModelsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsModelsVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsModelsVersionsRequest>;
 
 export type GetProjectsModelsVersionsResponse = GoogleCloudMlV1__Version;
 export const GetProjectsModelsVersionsResponse =
@@ -2416,7 +2416,7 @@ export const CreateProjectsModelsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsModelsVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsModelsVersionsRequest>;
 
 export type CreateProjectsModelsVersionsResponse = GoogleLongrunning__Operation;
 export const CreateProjectsModelsVersionsResponse =
@@ -2458,7 +2458,7 @@ export const PatchProjectsModelsVersionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsModelsVersionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsModelsVersionsRequest>;
 
 export type PatchProjectsModelsVersionsResponse = GoogleLongrunning__Operation;
 export const PatchProjectsModelsVersionsResponse =
@@ -2500,7 +2500,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse =
   GoogleCloudMlV1__ListLocationsResponse;
@@ -2536,7 +2536,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = GoogleCloudMlV1__Location;
 export const GetProjectsLocationsResponse =
@@ -2567,7 +2567,7 @@ export const ListProjectsLocationsStudiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/studies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsStudiesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsStudiesRequest>;
 
 export type ListProjectsLocationsStudiesResponse =
   GoogleCloudMlV1__ListStudiesResponse;
@@ -2608,7 +2608,7 @@ export const CreateProjectsLocationsStudiesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/studies", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsStudiesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsStudiesRequest>;
 
 export type CreateProjectsLocationsStudiesResponse = GoogleCloudMlV1__Study;
 export const CreateProjectsLocationsStudiesResponse =
@@ -2644,7 +2644,7 @@ export const GetProjectsLocationsStudiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsStudiesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsStudiesRequest>;
 
 export type GetProjectsLocationsStudiesResponse = GoogleCloudMlV1__Study;
 export const GetProjectsLocationsStudiesResponse =
@@ -2678,7 +2678,7 @@ export const DeleteProjectsLocationsStudiesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsStudiesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsStudiesRequest>;
 
 export type DeleteProjectsLocationsStudiesResponse = GoogleProtobuf__Empty;
 export const DeleteProjectsLocationsStudiesResponse =
@@ -2719,7 +2719,7 @@ export const CompleteProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:complete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CompleteProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<CompleteProjectsLocationsStudiesTrialsRequest>;
 
 export type CompleteProjectsLocationsStudiesTrialsResponse =
   GoogleCloudMlV1__Trial;
@@ -2765,7 +2765,7 @@ export const CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest>;
 
 export type CheckEarlyStoppingStateProjectsLocationsStudiesTrialsResponse =
   GoogleLongrunning__Operation;
@@ -2802,7 +2802,7 @@ export const ListProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/trials" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsStudiesTrialsRequest>;
 
 export type ListProjectsLocationsStudiesTrialsResponse =
   GoogleCloudMlV1__ListTrialsResponse;
@@ -2846,7 +2846,7 @@ export const SuggestProjectsLocationsStudiesTrialsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SuggestProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<SuggestProjectsLocationsStudiesTrialsRequest>;
 
 export type SuggestProjectsLocationsStudiesTrialsResponse =
   GoogleLongrunning__Operation;
@@ -2883,7 +2883,7 @@ export const GetProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsStudiesTrialsRequest>;
 
 export type GetProjectsLocationsStudiesTrialsResponse = GoogleCloudMlV1__Trial;
 export const GetProjectsLocationsStudiesTrialsResponse =
@@ -2926,7 +2926,7 @@ export const AddMeasurementProjectsLocationsStudiesTrialsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddMeasurementProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<AddMeasurementProjectsLocationsStudiesTrialsRequest>;
 
 export type AddMeasurementProjectsLocationsStudiesTrialsResponse =
   GoogleCloudMlV1__Trial;
@@ -2966,7 +2966,7 @@ export const StopProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<StopProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<StopProjectsLocationsStudiesTrialsRequest>;
 
 export type StopProjectsLocationsStudiesTrialsResponse = GoogleCloudMlV1__Trial;
 export const StopProjectsLocationsStudiesTrialsResponse =
@@ -3011,7 +3011,7 @@ export const ListOptimalTrialsProjectsLocationsStudiesTrialsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListOptimalTrialsProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<ListOptimalTrialsProjectsLocationsStudiesTrialsRequest>;
 
 export type ListOptimalTrialsProjectsLocationsStudiesTrialsResponse =
   GoogleCloudMlV1__ListOptimalTrialsResponse;
@@ -3051,7 +3051,7 @@ export const CreateProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/trials", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsStudiesTrialsRequest>;
 
 export type CreateProjectsLocationsStudiesTrialsResponse =
   GoogleCloudMlV1__Trial;
@@ -3088,7 +3088,7 @@ export const DeleteProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsStudiesTrialsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsStudiesTrialsRequest>;
 
 export type DeleteProjectsLocationsStudiesTrialsResponse =
   GoogleProtobuf__Empty;
@@ -3125,7 +3125,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse =
   GoogleLongrunning__Operation;
@@ -3160,7 +3160,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = GoogleProtobuf__Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -3205,7 +3205,7 @@ export const ListProjectsJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/jobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsJobsRequest>;
 
 export type ListProjectsJobsResponse = GoogleCloudMlV1__ListJobsResponse;
 export const ListProjectsJobsResponse =
@@ -3243,7 +3243,7 @@ export const CreateProjectsJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/jobs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsJobsRequest>;
 
 export type CreateProjectsJobsResponse = GoogleCloudMlV1__Job;
 export const CreateProjectsJobsResponse =
@@ -3285,7 +3285,7 @@ export const PatchProjectsJobsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsJobsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsJobsRequest>;
 
 export type PatchProjectsJobsResponse = GoogleCloudMlV1__Job;
 export const PatchProjectsJobsResponse =
@@ -3330,7 +3330,7 @@ export const TestIamPermissionsProjectsJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsJobsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsJobsRequest>;
 
 export type TestIamPermissionsProjectsJobsResponse =
   GoogleIamV1__TestIamPermissionsResponse;
@@ -3370,7 +3370,7 @@ export const CancelProjectsJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsJobsRequest>;
 
 export type CancelProjectsJobsResponse = GoogleProtobuf__Empty;
 export const CancelProjectsJobsResponse =
@@ -3411,7 +3411,7 @@ export const GetIamPolicyProjectsJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsJobsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsJobsRequest>;
 
 export type GetIamPolicyProjectsJobsResponse = GoogleIamV1__Policy;
 export const GetIamPolicyProjectsJobsResponse =
@@ -3446,7 +3446,7 @@ export const GetProjectsJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsJobsRequest>;
+) as unknown as Schema.Codec<GetProjectsJobsRequest>;
 
 export type GetProjectsJobsResponse = GoogleCloudMlV1__Job;
 export const GetProjectsJobsResponse =
@@ -3484,7 +3484,7 @@ export const SetIamPolicyProjectsJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsJobsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsJobsRequest>;
 
 export type SetIamPolicyProjectsJobsResponse = GoogleIamV1__Policy;
 export const SetIamPolicyProjectsJobsResponse =
@@ -3520,7 +3520,7 @@ export const CancelProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsOperationsRequest>;
 
 export type CancelProjectsOperationsResponse = GoogleProtobuf__Empty;
 export const CancelProjectsOperationsResponse =
@@ -3570,7 +3570,7 @@ export const ListProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsOperationsRequest>;
 
 export type ListProjectsOperationsResponse =
   GoogleLongrunning__ListOperationsResponse;
@@ -3606,7 +3606,7 @@ export const GetProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = GoogleLongrunning__Operation;
 export const GetProjectsOperationsResponse =

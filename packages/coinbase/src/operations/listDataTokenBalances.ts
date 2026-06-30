@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListDataTokenBalancesInput {
+  address: string;
+  network: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const ListDataTokenBalancesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,21 @@ export const ListDataTokenBalancesInput =
       method: "GET",
       path: "/v2/data/evm/token-balances/{network}/{address}",
     }),
-  );
-export type ListDataTokenBalancesInput = typeof ListDataTokenBalancesInput.Type;
+  ) as unknown as Schema.Codec<ListDataTokenBalancesInput>;
 
 // Output Schema
+export interface ListDataTokenBalancesOutput {
+  balances: {
+    amount: { amount: string; decimals: number };
+    token: {
+      network: "base" | "base-sepolia" | "ethereum";
+      symbol?: string;
+      name?: string;
+      contractAddress: string;
+    };
+  }[];
+  nextPageToken?: string;
+}
 export const ListDataTokenBalancesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     balances: Schema.Array(
@@ -35,9 +52,7 @@ export const ListDataTokenBalancesOutput =
       }),
     ),
     nextPageToken: Schema.optional(Schema.String),
-  });
-export type ListDataTokenBalancesOutput =
-  typeof ListDataTokenBalancesOutput.Type;
+  }) as unknown as Schema.Codec<ListDataTokenBalancesOutput>;
 
 // The operation
 /**

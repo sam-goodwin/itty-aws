@@ -4,12 +4,61 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ApplicationDefinitionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationDefinitionName: string;
+  properties: {
+    lockLevel: "CanNotDelete" | "ReadOnly" | "None";
+    displayName?: string;
+    isEnabled?: boolean;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ApplicationResourceTemplate"
+        | "CreateUiDefinition"
+        | "MainTemplateParameters";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    description?: string;
+    packageFileUri?: string;
+    storageAccountId?: string;
+    mainTemplate?: unknown;
+    createUiDefinition?: unknown;
+    notificationPolicy?: { notificationEndpoints: { uri: string }[] };
+    lockingPolicy?: {
+      allowedActions?: string[];
+      allowedDataActions?: string[];
+    };
+    deploymentPolicy?: {
+      deploymentMode: "NotSpecified" | "Incremental" | "Complete";
+    };
+    managementPolicy?: { mode?: "NotSpecified" | "Unmanaged" | "Managed" };
+    policies?: {
+      name?: string;
+      policyDefinitionId?: string;
+      parameters?: string;
+    }[];
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -104,11 +153,24 @@ export const ApplicationDefinitionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationDefinitionsCreateOrUpdateInput =
-  typeof ApplicationDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -130,9 +192,7 @@ export const ApplicationDefinitionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationDefinitionsCreateOrUpdateOutput =
-  typeof ApplicationDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -149,6 +209,11 @@ export const ApplicationDefinitionsCreateOrUpdate =
     outputSchema: ApplicationDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApplicationDefinitionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationDefinitionName: string;
+}
 export const ApplicationDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -160,15 +225,12 @@ export const ApplicationDefinitionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationDefinitionsDeleteInput =
-  typeof ApplicationDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsDeleteInput>;
 
 // Output Schema
+export type ApplicationDefinitionsDeleteOutput = void;
 export const ApplicationDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationDefinitionsDeleteOutput =
-  typeof ApplicationDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -185,6 +247,11 @@ export const ApplicationDefinitionsDelete =
     outputSchema: ApplicationDefinitionsDeleteOutput,
   }));
 // Input Schema
+export interface ApplicationDefinitionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationDefinitionName: string;
+}
 export const ApplicationDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -196,11 +263,24 @@ export const ApplicationDefinitionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationDefinitionsGetInput =
-  typeof ApplicationDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsGetInput>;
 
 // Output Schema
+export interface ApplicationDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -222,9 +302,7 @@ export const ApplicationDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationDefinitionsGetOutput =
-  typeof ApplicationDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -242,6 +320,10 @@ export const ApplicationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationDefinitionsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ApplicationDefinitionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -252,11 +334,27 @@ export const ApplicationDefinitionsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationDefinitionsListByResourceGroupInput =
-  typeof ApplicationDefinitionsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsListByResourceGroupInput>;
 
 // Output Schema
+export interface ApplicationDefinitionsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationDefinitionsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -295,9 +393,7 @@ export const ApplicationDefinitionsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationDefinitionsListByResourceGroupOutput =
-  typeof ApplicationDefinitionsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationDefinitionsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -313,6 +409,9 @@ export const ApplicationDefinitionsListByResourceGroup =
     outputSchema: ApplicationDefinitionsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ApplicationDefinitionsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ApplicationDefinitionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -322,11 +421,27 @@ export const ApplicationDefinitionsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applicationDefinitions",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationDefinitionsListBySubscriptionInput =
-  typeof ApplicationDefinitionsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsListBySubscriptionInput>;
 
 // Output Schema
+export interface ApplicationDefinitionsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationDefinitionsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -365,9 +480,7 @@ export const ApplicationDefinitionsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationDefinitionsListBySubscriptionOutput =
-  typeof ApplicationDefinitionsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationDefinitionsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -382,6 +495,12 @@ export const ApplicationDefinitionsListBySubscription =
     outputSchema: ApplicationDefinitionsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ApplicationDefinitionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationDefinitionName: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationDefinitionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -394,11 +513,24 @@ export const ApplicationDefinitionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationDefinitionsUpdateInput =
-  typeof ApplicationDefinitionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsUpdateInput>;
 
 // Output Schema
+export interface ApplicationDefinitionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationDefinitionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -420,9 +552,7 @@ export const ApplicationDefinitionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationDefinitionsUpdateOutput =
-  typeof ApplicationDefinitionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationDefinitionsUpdateOutput>;
 
 // The operation
 /**
@@ -439,6 +569,84 @@ export const ApplicationDefinitionsUpdate =
     outputSchema: ApplicationDefinitionsUpdateOutput,
   }));
 // Input Schema
+export interface ApplicationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationName: string;
+  properties: {
+    managedResourceGroupId?: string;
+    applicationDefinitionId?: string;
+    parameters?: unknown;
+    outputs?: unknown;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    billingDetails?: { resourceUsageId?: string };
+    jitAccessPolicy?: {
+      jitAccessEnabled: boolean;
+      jitApprovalMode?: "NotSpecified" | "AutoApprove" | "ManualApprove";
+      jitApprovers?: {
+        id: string;
+        type?: "user" | "group";
+        displayName?: string;
+      }[];
+      maximumJitAccessDuration?: string;
+    };
+    publisherTenantId?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    managementMode?: "NotSpecified" | "Unmanaged" | "Managed";
+    customerSupport?: { contactName?: string; email: string; phone: string };
+    supportUrls?: { publicAzure?: string; governmentCloud?: string };
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ViewDefinition"
+        | "Authorizations"
+        | "CustomRoleDefinition";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version: string;
+  };
+  kind: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; tenantId?: string }
+    >;
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -589,11 +797,24 @@ export const ApplicationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsCreateOrUpdateInput =
-  typeof ApplicationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -615,9 +836,7 @@ export const ApplicationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationsCreateOrUpdateOutput =
-  typeof ApplicationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -635,6 +854,82 @@ export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsCreateOrUpdateByIdInput {
+  applicationId: string;
+  properties: {
+    managedResourceGroupId?: string;
+    applicationDefinitionId?: string;
+    parameters?: unknown;
+    outputs?: unknown;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    billingDetails?: { resourceUsageId?: string };
+    jitAccessPolicy?: {
+      jitAccessEnabled: boolean;
+      jitApprovalMode?: "NotSpecified" | "AutoApprove" | "ManualApprove";
+      jitApprovers?: {
+        id: string;
+        type?: "user" | "group";
+        displayName?: string;
+      }[];
+      maximumJitAccessDuration?: string;
+    };
+    publisherTenantId?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    managementMode?: "NotSpecified" | "Unmanaged" | "Managed";
+    customerSupport?: { contactName?: string; email: string; phone: string };
+    supportUrls?: { publicAzure?: string; governmentCloud?: string };
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ViewDefinition"
+        | "Authorizations"
+        | "CustomRoleDefinition";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version: string;
+  };
+  kind: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; tenantId?: string }
+    >;
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationsCreateOrUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
@@ -783,11 +1078,24 @@ export const ApplicationsCreateOrUpdateByIdInput =
       path: "/{applicationId}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsCreateOrUpdateByIdInput =
-  typeof ApplicationsCreateOrUpdateByIdInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsCreateOrUpdateByIdInput>;
 
 // Output Schema
+export interface ApplicationsCreateOrUpdateByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsCreateOrUpdateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -809,9 +1117,7 @@ export const ApplicationsCreateOrUpdateByIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationsCreateOrUpdateByIdOutput =
-  typeof ApplicationsCreateOrUpdateByIdOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsCreateOrUpdateByIdOutput>;
 
 // The operation
 /**
@@ -826,6 +1132,11 @@ export const ApplicationsCreateOrUpdateById =
     outputSchema: ApplicationsCreateOrUpdateByIdOutput,
   }));
 // Input Schema
+export interface ApplicationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationName: string;
+}
 export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -837,12 +1148,12 @@ export const ApplicationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsDeleteInput>;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
+export type ApplicationsDeleteOutput = void;
+export const ApplicationsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -858,6 +1169,9 @@ export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsDeleteOutput,
 }));
 // Input Schema
+export interface ApplicationsDeleteByIdInput {
+  applicationId: string;
+}
 export const ApplicationsDeleteByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
@@ -867,15 +1181,12 @@ export const ApplicationsDeleteByIdInput =
       path: "/{applicationId}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsDeleteByIdInput =
-  typeof ApplicationsDeleteByIdInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsDeleteByIdInput>;
 
 // Output Schema
+export type ApplicationsDeleteByIdOutput = void;
 export const ApplicationsDeleteByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsDeleteByIdOutput =
-  typeof ApplicationsDeleteByIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteByIdOutput>;
 
 // The operation
 /**
@@ -891,6 +1202,11 @@ export const ApplicationsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationName: string;
+}
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -901,10 +1217,24 @@ export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
     apiVersion: "2021-07-01",
   }),
-);
-export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
+) as unknown as Schema.Codec<ApplicationsGetInput>;
 
 // Output Schema
+export interface ApplicationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -925,8 +1255,7 @@ export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
+}) as unknown as Schema.Codec<ApplicationsGetOutput>;
 
 // The operation
 /**
@@ -942,6 +1271,9 @@ export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsGetOutput,
 }));
 // Input Schema
+export interface ApplicationsGetByIdInput {
+  applicationId: string;
+}
 export const ApplicationsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
@@ -951,10 +1283,24 @@ export const ApplicationsGetByIdInput =
       path: "/{applicationId}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsGetByIdInput = typeof ApplicationsGetByIdInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsGetByIdInput>;
 
 // Output Schema
+export interface ApplicationsGetByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsGetByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -976,8 +1322,7 @@ export const ApplicationsGetByIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationsGetByIdOutput = typeof ApplicationsGetByIdOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsGetByIdOutput>;
 
 // The operation
 /**
@@ -991,6 +1336,11 @@ export const ApplicationsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsGetByIdOutput,
 }));
 // Input Schema
+export interface ApplicationsListAllowedUpgradePlansInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationName: string;
+}
 export const ApplicationsListAllowedUpgradePlansInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1002,11 +1352,18 @@ export const ApplicationsListAllowedUpgradePlansInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/listAllowedUpgradePlans",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsListAllowedUpgradePlansInput =
-  typeof ApplicationsListAllowedUpgradePlansInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsListAllowedUpgradePlansInput>;
 
 // Output Schema
+export interface ApplicationsListAllowedUpgradePlansOutput {
+  value?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version: string;
+  }[];
+}
 export const ApplicationsListAllowedUpgradePlansOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1020,9 +1377,7 @@ export const ApplicationsListAllowedUpgradePlansOutput =
         }),
       ),
     ),
-  });
-export type ApplicationsListAllowedUpgradePlansOutput =
-  typeof ApplicationsListAllowedUpgradePlansOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsListAllowedUpgradePlansOutput>;
 
 // The operation
 /**
@@ -1039,6 +1394,10 @@ export const ApplicationsListAllowedUpgradePlans =
     outputSchema: ApplicationsListAllowedUpgradePlansOutput,
   }));
 // Input Schema
+export interface ApplicationsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ApplicationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1049,11 +1408,27 @@ export const ApplicationsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsListByResourceGroupInput =
-  typeof ApplicationsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsListByResourceGroupInput>;
 
 // Output Schema
+export interface ApplicationsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1092,9 +1467,7 @@ export const ApplicationsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationsListByResourceGroupOutput =
-  typeof ApplicationsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1110,6 +1483,9 @@ export const ApplicationsListByResourceGroup =
     outputSchema: ApplicationsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ApplicationsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ApplicationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1119,11 +1495,27 @@ export const ApplicationsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applications",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsListBySubscriptionInput =
-  typeof ApplicationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsListBySubscriptionInput>;
 
 // Output Schema
+export interface ApplicationsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1162,9 +1554,7 @@ export const ApplicationsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationsListBySubscriptionOutput =
-  typeof ApplicationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1179,6 +1569,13 @@ export const ApplicationsListBySubscription =
     outputSchema: ApplicationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ApplicationsListTokensInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationName: string;
+  authorizationAudience?: string;
+  userAssignedIdentities?: string[];
+}
 export const ApplicationsListTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1192,11 +1589,20 @@ export const ApplicationsListTokensInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsListTokensInput =
-  typeof ApplicationsListTokensInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsListTokensInput>;
 
 // Output Schema
+export interface ApplicationsListTokensOutput {
+  value?: {
+    accessToken?: Redacted.Redacted<string>;
+    expiresIn?: string;
+    expiresOn?: string;
+    notBefore?: string;
+    authorizationAudience?: string;
+    resourceId?: string;
+    tokenType?: string;
+  }[];
+}
 export const ApplicationsListTokensOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1212,9 +1618,7 @@ export const ApplicationsListTokensOutput =
         }),
       ),
     ),
-  });
-export type ApplicationsListTokensOutput =
-  typeof ApplicationsListTokensOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsListTokensOutput>;
 
 // The operation
 /**
@@ -1232,6 +1636,11 @@ export const ApplicationsListTokens = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsRefreshPermissionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationName: string;
+}
 export const ApplicationsRefreshPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1243,15 +1652,12 @@ export const ApplicationsRefreshPermissionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/refreshPermissions",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsRefreshPermissionsInput =
-  typeof ApplicationsRefreshPermissionsInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsRefreshPermissionsInput>;
 
 // Output Schema
+export type ApplicationsRefreshPermissionsOutput = void;
 export const ApplicationsRefreshPermissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsRefreshPermissionsOutput =
-  typeof ApplicationsRefreshPermissionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsRefreshPermissionsOutput>;
 
 // The operation
 /**
@@ -1268,6 +1674,84 @@ export const ApplicationsRefreshPermissions =
     outputSchema: ApplicationsRefreshPermissionsOutput,
   }));
 // Input Schema
+export interface ApplicationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationName: string;
+  properties?: {
+    managedResourceGroupId?: string;
+    applicationDefinitionId?: string;
+    parameters?: unknown;
+    outputs?: unknown;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    billingDetails?: { resourceUsageId?: string };
+    jitAccessPolicy?: {
+      jitAccessEnabled: boolean;
+      jitApprovalMode?: "NotSpecified" | "AutoApprove" | "ManualApprove";
+      jitApprovers?: {
+        id: string;
+        type?: "user" | "group";
+        displayName?: string;
+      }[];
+      maximumJitAccessDuration?: string;
+    };
+    publisherTenantId?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    managementMode?: "NotSpecified" | "Unmanaged" | "Managed";
+    customerSupport?: { contactName?: string; email: string; phone: string };
+    supportUrls?: { publicAzure?: string; governmentCloud?: string };
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ViewDefinition"
+        | "Authorizations"
+        | "CustomRoleDefinition";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  plan?: {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  kind?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; tenantId?: string }
+    >;
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1420,10 +1904,24 @@ export const ApplicationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsUpdateInput>;
 
 // Output Schema
+export interface ApplicationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1445,8 +1943,7 @@ export const ApplicationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsUpdateOutput>;
 
 // The operation
 /**
@@ -1462,6 +1959,26 @@ export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsUpdateOutput,
 }));
 // Input Schema
+export interface ApplicationsUpdateAccessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationName: string;
+  approver?: string;
+  metadata: {
+    originRequestId?: string;
+    requestorId?: string;
+    tenantDisplayName?: string;
+    subjectDisplayName?: string;
+  };
+  status: "NotSpecified" | "Elevate" | "Remove";
+  subStatus:
+    | "NotSpecified"
+    | "Approved"
+    | "Denied"
+    | "Failed"
+    | "Expired"
+    | "Timeout";
+}
 export const ApplicationsUpdateAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1489,15 +2006,12 @@ export const ApplicationsUpdateAccessInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/updateAccess",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsUpdateAccessInput =
-  typeof ApplicationsUpdateAccessInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsUpdateAccessInput>;
 
 // Output Schema
+export type ApplicationsUpdateAccessOutput = void;
 export const ApplicationsUpdateAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsUpdateAccessOutput =
-  typeof ApplicationsUpdateAccessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsUpdateAccessOutput>;
 
 // The operation
 /**
@@ -1515,6 +2029,82 @@ export const ApplicationsUpdateAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsUpdateByIdInput {
+  applicationId: string;
+  properties?: {
+    managedResourceGroupId?: string;
+    applicationDefinitionId?: string;
+    parameters?: unknown;
+    outputs?: unknown;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    billingDetails?: { resourceUsageId?: string };
+    jitAccessPolicy?: {
+      jitAccessEnabled: boolean;
+      jitApprovalMode?: "NotSpecified" | "AutoApprove" | "ManualApprove";
+      jitApprovers?: {
+        id: string;
+        type?: "user" | "group";
+        displayName?: string;
+      }[];
+      maximumJitAccessDuration?: string;
+    };
+    publisherTenantId?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    managementMode?: "NotSpecified" | "Unmanaged" | "Managed";
+    customerSupport?: { contactName?: string; email: string; phone: string };
+    supportUrls?: { publicAzure?: string; governmentCloud?: string };
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ViewDefinition"
+        | "Authorizations"
+        | "CustomRoleDefinition";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  plan?: {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  kind?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; tenantId?: string }
+    >;
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationsUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
@@ -1665,11 +2255,24 @@ export const ApplicationsUpdateByIdInput =
       path: "/{applicationId}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type ApplicationsUpdateByIdInput =
-  typeof ApplicationsUpdateByIdInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsUpdateByIdInput>;
 
 // Output Schema
+export interface ApplicationsUpdateByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsUpdateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1691,9 +2294,7 @@ export const ApplicationsUpdateByIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationsUpdateByIdOutput =
-  typeof ApplicationsUpdateByIdOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsUpdateByIdOutput>;
 
 // The operation
 /**
@@ -1709,6 +2310,58 @@ export const ApplicationsUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JitRequestsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jitRequestName: string;
+  properties?: {
+    applicationResourceId: string;
+    publisherTenantId?: string;
+    jitAuthorizationPolicies: {
+      principalId: string;
+      roleDefinitionId: string;
+    }[];
+    jitSchedulingPolicy: {
+      type: "NotSpecified" | "Once" | "Recurring";
+      duration: string;
+      startTime: string;
+    };
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    jitRequestState?:
+      | "NotSpecified"
+      | "Pending"
+      | "Approved"
+      | "Denied"
+      | "Failed"
+      | "Canceled"
+      | "Expired"
+      | "Timeout";
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JitRequestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1795,11 +2448,24 @@ export const JitRequestsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type JitRequestsCreateOrUpdateInput =
-  typeof JitRequestsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<JitRequestsCreateOrUpdateInput>;
 
 // Output Schema
+export interface JitRequestsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JitRequestsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1821,9 +2487,7 @@ export const JitRequestsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type JitRequestsCreateOrUpdateOutput =
-  typeof JitRequestsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<JitRequestsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1841,6 +2505,11 @@ export const jitRequestsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JitRequestsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jitRequestName: string;
+}
 export const JitRequestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1853,12 +2522,12 @@ export const JitRequestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
     apiVersion: "2021-07-01",
   }),
-);
-export type JitRequestsDeleteInput = typeof JitRequestsDeleteInput.Type;
+) as unknown as Schema.Codec<JitRequestsDeleteInput>;
 
 // Output Schema
-export const JitRequestsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JitRequestsDeleteOutput = typeof JitRequestsDeleteOutput.Type;
+export type JitRequestsDeleteOutput = void;
+export const JitRequestsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JitRequestsDeleteOutput>;
 
 // The operation
 /**
@@ -1874,6 +2543,11 @@ export const jitRequestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JitRequestsDeleteOutput,
 }));
 // Input Schema
+export interface JitRequestsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jitRequestName: string;
+}
 export const JitRequestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1884,10 +2558,24 @@ export const JitRequestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
     apiVersion: "2021-07-01",
   }),
-);
-export type JitRequestsGetInput = typeof JitRequestsGetInput.Type;
+) as unknown as Schema.Codec<JitRequestsGetInput>;
 
 // Output Schema
+export interface JitRequestsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JitRequestsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1908,8 +2596,7 @@ export const JitRequestsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JitRequestsGetOutput = typeof JitRequestsGetOutput.Type;
+}) as unknown as Schema.Codec<JitRequestsGetOutput>;
 
 // The operation
 /**
@@ -1925,6 +2612,10 @@ export const JitRequestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JitRequestsGetOutput,
 }));
 // Input Schema
+export interface JitRequestsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const JitRequestsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1935,11 +2626,27 @@ export const JitRequestsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests",
       apiVersion: "2021-07-01",
     }),
-  );
-export type JitRequestsListByResourceGroupInput =
-  typeof JitRequestsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<JitRequestsListByResourceGroupInput>;
 
 // Output Schema
+export interface JitRequestsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JitRequestsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1978,9 +2685,7 @@ export const JitRequestsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JitRequestsListByResourceGroupOutput =
-  typeof JitRequestsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<JitRequestsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1996,6 +2701,9 @@ export const jitRequestsListByResourceGroup =
     outputSchema: JitRequestsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface JitRequestsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const JitRequestsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2005,11 +2713,27 @@ export const JitRequestsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/jitRequests",
       apiVersion: "2021-07-01",
     }),
-  );
-export type JitRequestsListBySubscriptionInput =
-  typeof JitRequestsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<JitRequestsListBySubscriptionInput>;
 
 // Output Schema
+export interface JitRequestsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JitRequestsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2048,9 +2772,7 @@ export const JitRequestsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JitRequestsListBySubscriptionOutput =
-  typeof JitRequestsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<JitRequestsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2065,6 +2787,12 @@ export const jitRequestsListBySubscription =
     outputSchema: JitRequestsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface JitRequestsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jitRequestName: string;
+  tags?: Record<string, string>;
+}
 export const JitRequestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2078,10 +2806,24 @@ export const JitRequestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
     apiVersion: "2021-07-01",
   }),
-);
-export type JitRequestsUpdateInput = typeof JitRequestsUpdateInput.Type;
+) as unknown as Schema.Codec<JitRequestsUpdateInput>;
 
 // Output Schema
+export interface JitRequestsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JitRequestsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2103,8 +2845,7 @@ export const JitRequestsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type JitRequestsUpdateOutput = typeof JitRequestsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<JitRequestsUpdateOutput>;
 
 // The operation
 /**
@@ -2120,6 +2861,7 @@ export const JitRequestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JitRequestsUpdateOutput,
 }));
 // Input Schema
+export interface ListOperationsInput {}
 export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2128,10 +2870,24 @@ export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Solutions/operations",
     apiVersion: "2021-07-01",
   }),
-);
-export type ListOperationsInput = typeof ListOperationsInput.Type;
+) as unknown as Schema.Codec<ListOperationsInput>;
 
 // Output Schema
+export interface ListOperationsOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2154,8 +2910,7 @@ export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ListOperationsOutput = typeof ListOperationsOutput.Type;
+}) as unknown as Schema.Codec<ListOperationsOutput>;
 
 // The operation
 /**

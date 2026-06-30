@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface Organization {
   organizationName?: string;
 }
 
-export const Organization: Schema.Schema<Organization> =
+export const Organization: Schema.Codec<Organization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.optional(Schema.String),
     organizationName: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface CustomApp {
   languageCode?: string;
 }
 
-export const CustomApp: Schema.Schema<CustomApp> =
+export const CustomApp: Schema.Codec<CustomApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     organizations: Schema.optional(Schema.Array(Organization)),
@@ -126,7 +126,7 @@ export const CreateAccountsCustomAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsCustomAppsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsCustomAppsRequest>;
 
 export type CreateAccountsCustomAppsResponse = CustomApp;
 export const CreateAccountsCustomAppsResponse =

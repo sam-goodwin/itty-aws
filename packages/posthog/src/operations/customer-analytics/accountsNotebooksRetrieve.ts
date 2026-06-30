@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AccountsNotebooksRetrieveInput {
+  account_id: string;
+  project_id: string;
+  short_id: string;
+}
 export const AccountsNotebooksRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,60 @@ export const AccountsNotebooksRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/accounts/{account_id}/notebooks/{short_id}/",
     }),
-  );
-export type AccountsNotebooksRetrieveInput =
-  typeof AccountsNotebooksRetrieveInput.Type;
+  ) as unknown as Schema.Codec<AccountsNotebooksRetrieveInput>;
 
 // Output Schema
+export interface AccountsNotebooksRetrieveOutput {
+  id: string;
+  short_id: string;
+  title?: string | null;
+  content?: unknown;
+  text_content?: string | null;
+  created_at: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  last_modified_at: string;
+  last_modified_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+}
 export const AccountsNotebooksRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -37,7 +91,23 @@ export const AccountsNotebooksRetrieveOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     last_modified_at: Schema.String,
     last_modified_by: Schema.Struct({
@@ -51,11 +121,25 @@ export const AccountsNotebooksRetrieveOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
-  });
-export type AccountsNotebooksRetrieveOutput =
-  typeof AccountsNotebooksRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<AccountsNotebooksRetrieveOutput>;
 
 // The operation
 /**

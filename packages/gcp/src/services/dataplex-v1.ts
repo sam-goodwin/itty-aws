@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -71,7 +71,7 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -80,14 +80,14 @@ export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongru
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
@@ -97,7 +97,7 @@ export interface GoogleCloudDataplexV1EntryTypeAspectInfo {
   type?: string;
 }
 
-export const GoogleCloudDataplexV1EntryTypeAspectInfo: Schema.Schema<GoogleCloudDataplexV1EntryTypeAspectInfo> =
+export const GoogleCloudDataplexV1EntryTypeAspectInfo: Schema.Codec<GoogleCloudDataplexV1EntryTypeAspectInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1EntryTypeAspectInfo" });
@@ -107,7 +107,7 @@ export interface GoogleCloudDataplexV1EntryTypeAuthorization {
   alternateUsePermission?: string;
 }
 
-export const GoogleCloudDataplexV1EntryTypeAuthorization: Schema.Schema<GoogleCloudDataplexV1EntryTypeAuthorization> =
+export const GoogleCloudDataplexV1EntryTypeAuthorization: Schema.Codec<GoogleCloudDataplexV1EntryTypeAuthorization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alternateUsePermission: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1EntryTypeAuthorization" });
@@ -141,7 +141,7 @@ export interface GoogleCloudDataplexV1EntryType {
   authorization?: GoogleCloudDataplexV1EntryTypeAuthorization;
 }
 
-export const GoogleCloudDataplexV1EntryType: Schema.Schema<GoogleCloudDataplexV1EntryType> =
+export const GoogleCloudDataplexV1EntryType: Schema.Codec<GoogleCloudDataplexV1EntryType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -169,7 +169,7 @@ export interface GoogleCloudDataplexV1ListEntryTypesResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListEntryTypesResponse: Schema.Schema<GoogleCloudDataplexV1ListEntryTypesResponse> =
+export const GoogleCloudDataplexV1ListEntryTypesResponse: Schema.Codec<GoogleCloudDataplexV1ListEntryTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryTypes: Schema.optional(Schema.Array(GoogleCloudDataplexV1EntryType)),
     nextPageToken: Schema.optional(Schema.String),
@@ -181,7 +181,7 @@ export interface GoogleCloudDataplexV1AspectTypeAuthorization {
   alternateUsePermission?: string;
 }
 
-export const GoogleCloudDataplexV1AspectTypeAuthorization: Schema.Schema<GoogleCloudDataplexV1AspectTypeAuthorization> =
+export const GoogleCloudDataplexV1AspectTypeAuthorization: Schema.Codec<GoogleCloudDataplexV1AspectTypeAuthorization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alternateUsePermission: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1AspectTypeAuthorization" });
@@ -195,7 +195,7 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
   deprecated?: string;
 }
 
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue: Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue> =
+export const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue: Schema.Codec<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
   required?: boolean;
 }
 
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints: Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints> =
+export const GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints: Schema.Codec<GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     required: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -231,7 +231,7 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
   stringValues?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations: Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations> =
+export const GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations: Schema.Codec<GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deprecated: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -268,7 +268,7 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplate {
   annotations?: GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations;
 }
 
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplate: Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplate> =
+export const GoogleCloudDataplexV1AspectTypeMetadataTemplate: Schema.Codec<GoogleCloudDataplexV1AspectTypeMetadataTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       index: Schema.optional(Schema.Number),
@@ -297,7 +297,7 @@ export const GoogleCloudDataplexV1AspectTypeMetadataTemplate: Schema.Schema<Goog
     }),
   ).annotate({
     identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplate",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplate>;
+  }) as any as Schema.Codec<GoogleCloudDataplexV1AspectTypeMetadataTemplate>;
 
 export interface GoogleCloudDataplexV1AspectType {
   /** Output only. The relative resource name of the AspectType, of the form: projects/{project_number}/locations/{location_id}/aspectTypes/{aspect_type_id}. */
@@ -333,7 +333,7 @@ export interface GoogleCloudDataplexV1AspectType {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1AspectType: Schema.Schema<GoogleCloudDataplexV1AspectType> =
+export const GoogleCloudDataplexV1AspectType: Schema.Codec<GoogleCloudDataplexV1AspectType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -362,7 +362,7 @@ export interface GoogleCloudDataplexV1ListAspectTypesResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListAspectTypesResponse: Schema.Schema<GoogleCloudDataplexV1ListAspectTypesResponse> =
+export const GoogleCloudDataplexV1ListAspectTypesResponse: Schema.Codec<GoogleCloudDataplexV1ListAspectTypesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aspectTypes: Schema.optional(Schema.Array(GoogleCloudDataplexV1AspectType)),
     nextPageToken: Schema.optional(Schema.String),
@@ -394,7 +394,7 @@ export interface GoogleCloudDataplexV1EntryGroup {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1EntryGroup: Schema.Schema<GoogleCloudDataplexV1EntryGroup> =
+export const GoogleCloudDataplexV1EntryGroup: Schema.Codec<GoogleCloudDataplexV1EntryGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -416,7 +416,7 @@ export interface GoogleCloudDataplexV1ListEntryGroupsResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListEntryGroupsResponse: Schema.Schema<GoogleCloudDataplexV1ListEntryGroupsResponse> =
+export const GoogleCloudDataplexV1ListEntryGroupsResponse: Schema.Codec<GoogleCloudDataplexV1ListEntryGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryGroups: Schema.optional(Schema.Array(GoogleCloudDataplexV1EntryGroup)),
     nextPageToken: Schema.optional(Schema.String),
@@ -432,7 +432,7 @@ export interface GoogleCloudDataplexV1AspectSource {
   dataVersion?: string;
 }
 
-export const GoogleCloudDataplexV1AspectSource: Schema.Schema<GoogleCloudDataplexV1AspectSource> =
+export const GoogleCloudDataplexV1AspectSource: Schema.Codec<GoogleCloudDataplexV1AspectSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -454,7 +454,7 @@ export interface GoogleCloudDataplexV1Aspect {
   aspectSource?: GoogleCloudDataplexV1AspectSource;
 }
 
-export const GoogleCloudDataplexV1Aspect: Schema.Schema<GoogleCloudDataplexV1Aspect> =
+export const GoogleCloudDataplexV1Aspect: Schema.Codec<GoogleCloudDataplexV1Aspect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aspectType: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -471,7 +471,7 @@ export interface GoogleCloudDataplexV1EntrySourceAncestor {
   type?: string;
 }
 
-export const GoogleCloudDataplexV1EntrySourceAncestor: Schema.Schema<GoogleCloudDataplexV1EntrySourceAncestor> =
+export const GoogleCloudDataplexV1EntrySourceAncestor: Schema.Codec<GoogleCloudDataplexV1EntrySourceAncestor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -500,7 +500,7 @@ export interface GoogleCloudDataplexV1EntrySource {
   location?: string;
 }
 
-export const GoogleCloudDataplexV1EntrySource: Schema.Schema<GoogleCloudDataplexV1EntrySource> =
+export const GoogleCloudDataplexV1EntrySource: Schema.Codec<GoogleCloudDataplexV1EntrySource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     system: Schema.optional(Schema.String),
@@ -535,7 +535,7 @@ export interface GoogleCloudDataplexV1Entry {
   entrySource?: GoogleCloudDataplexV1EntrySource;
 }
 
-export const GoogleCloudDataplexV1Entry: Schema.Schema<GoogleCloudDataplexV1Entry> =
+export const GoogleCloudDataplexV1Entry: Schema.Codec<GoogleCloudDataplexV1Entry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     entryType: Schema.optional(Schema.String),
@@ -556,7 +556,7 @@ export interface GoogleCloudDataplexV1ListEntriesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListEntriesResponse: Schema.Schema<GoogleCloudDataplexV1ListEntriesResponse> =
+export const GoogleCloudDataplexV1ListEntriesResponse: Schema.Codec<GoogleCloudDataplexV1ListEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(GoogleCloudDataplexV1Entry)),
     nextPageToken: Schema.optional(Schema.String),
@@ -573,7 +573,7 @@ export interface GoogleCloudDataplexV1ModifyEntryRequest {
   aspectKeys?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ModifyEntryRequest: Schema.Schema<GoogleCloudDataplexV1ModifyEntryRequest> =
+export const GoogleCloudDataplexV1ModifyEntryRequest: Schema.Codec<GoogleCloudDataplexV1ModifyEntryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entry: Schema.optional(GoogleCloudDataplexV1Entry),
     updateMask: Schema.optional(Schema.String),
@@ -586,7 +586,7 @@ export interface GoogleCloudDataplexV1SearchEntriesResultSnippets {
   dataplexEntry?: GoogleCloudDataplexV1Entry;
 }
 
-export const GoogleCloudDataplexV1SearchEntriesResultSnippets: Schema.Schema<GoogleCloudDataplexV1SearchEntriesResultSnippets> =
+export const GoogleCloudDataplexV1SearchEntriesResultSnippets: Schema.Codec<GoogleCloudDataplexV1SearchEntriesResultSnippets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataplexEntry: Schema.optional(GoogleCloudDataplexV1Entry),
   }).annotate({
@@ -601,7 +601,7 @@ export interface GoogleCloudDataplexV1SearchEntriesResult {
   snippets?: GoogleCloudDataplexV1SearchEntriesResultSnippets;
 }
 
-export const GoogleCloudDataplexV1SearchEntriesResult: Schema.Schema<GoogleCloudDataplexV1SearchEntriesResult> =
+export const GoogleCloudDataplexV1SearchEntriesResult: Schema.Codec<GoogleCloudDataplexV1SearchEntriesResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkedResource: Schema.optional(Schema.String),
     dataplexEntry: Schema.optional(GoogleCloudDataplexV1Entry),
@@ -619,7 +619,7 @@ export interface GoogleCloudDataplexV1SearchEntriesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1SearchEntriesResponse: Schema.Schema<GoogleCloudDataplexV1SearchEntriesResponse> =
+export const GoogleCloudDataplexV1SearchEntriesResponse: Schema.Codec<GoogleCloudDataplexV1SearchEntriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1SearchEntriesResult),
@@ -644,7 +644,7 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   referencedEntryScopes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope: Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope> =
+export const GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope: Schema.Codec<GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryGroups: Schema.optional(Schema.Array(Schema.String)),
     entryTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -681,7 +681,7 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobSpec {
   logLevel?: "LOG_LEVEL_UNSPECIFIED" | "DEBUG" | "INFO" | (string & {});
 }
 
-export const GoogleCloudDataplexV1MetadataJobImportJobSpec: Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobSpec> =
+export const GoogleCloudDataplexV1MetadataJobImportJobSpec: Schema.Codec<GoogleCloudDataplexV1MetadataJobImportJobSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceStorageUri: Schema.optional(Schema.String),
     sourceCreateTime: Schema.optional(Schema.String),
@@ -706,7 +706,7 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope {
   aspectTypes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope: Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope> =
+export const GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope: Schema.Codec<GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationLevel: Schema.optional(Schema.Boolean),
     projects: Schema.optional(Schema.Array(Schema.String)),
@@ -724,7 +724,7 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobSpec {
   outputPath?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobExportJobSpec: Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobSpec> =
+export const GoogleCloudDataplexV1MetadataJobExportJobSpec: Schema.Codec<GoogleCloudDataplexV1MetadataJobExportJobSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(
       GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope,
@@ -753,7 +753,7 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobResult {
   unchangedEntryLinks?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobImportJobResult: Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobResult> =
+export const GoogleCloudDataplexV1MetadataJobImportJobResult: Schema.Codec<GoogleCloudDataplexV1MetadataJobImportJobResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletedEntries: Schema.optional(Schema.String),
     updatedEntries: Schema.optional(Schema.String),
@@ -775,7 +775,7 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobResult {
   errorMessage?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobExportJobResult: Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobResult> =
+export const GoogleCloudDataplexV1MetadataJobExportJobResult: Schema.Codec<GoogleCloudDataplexV1MetadataJobExportJobResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportedEntries: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -803,7 +803,7 @@ export interface GoogleCloudDataplexV1MetadataJobStatus {
   updateTime?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobStatus: Schema.Schema<GoogleCloudDataplexV1MetadataJobStatus> =
+export const GoogleCloudDataplexV1MetadataJobStatus: Schema.Codec<GoogleCloudDataplexV1MetadataJobStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -836,7 +836,7 @@ export interface GoogleCloudDataplexV1MetadataJob {
   status?: GoogleCloudDataplexV1MetadataJobStatus;
 }
 
-export const GoogleCloudDataplexV1MetadataJob: Schema.Schema<GoogleCloudDataplexV1MetadataJob> =
+export const GoogleCloudDataplexV1MetadataJob: Schema.Codec<GoogleCloudDataplexV1MetadataJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -864,7 +864,7 @@ export interface GoogleCloudDataplexV1ListMetadataJobsResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListMetadataJobsResponse: Schema.Schema<GoogleCloudDataplexV1ListMetadataJobsResponse> =
+export const GoogleCloudDataplexV1ListMetadataJobsResponse: Schema.Codec<GoogleCloudDataplexV1ListMetadataJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadataJobs: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1MetadataJob),
@@ -875,7 +875,7 @@ export const GoogleCloudDataplexV1ListMetadataJobsResponse: Schema.Schema<Google
 
 export interface GoogleCloudDataplexV1CancelMetadataJobRequest {}
 
-export const GoogleCloudDataplexV1CancelMetadataJobRequest: Schema.Schema<GoogleCloudDataplexV1CancelMetadataJobRequest> =
+export const GoogleCloudDataplexV1CancelMetadataJobRequest: Schema.Codec<GoogleCloudDataplexV1CancelMetadataJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1CancelMetadataJobRequest",
   });
@@ -889,7 +889,7 @@ export interface GoogleCloudDataplexV1EntryLinkEntryReference {
   type?: "UNSPECIFIED" | "SOURCE" | "TARGET" | (string & {});
 }
 
-export const GoogleCloudDataplexV1EntryLinkEntryReference: Schema.Schema<GoogleCloudDataplexV1EntryLinkEntryReference> =
+export const GoogleCloudDataplexV1EntryLinkEntryReference: Schema.Codec<GoogleCloudDataplexV1EntryLinkEntryReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -911,7 +911,7 @@ export interface GoogleCloudDataplexV1EntryLink {
   entryReferences?: ReadonlyArray<GoogleCloudDataplexV1EntryLinkEntryReference>;
 }
 
-export const GoogleCloudDataplexV1EntryLink: Schema.Schema<GoogleCloudDataplexV1EntryLink> =
+export const GoogleCloudDataplexV1EntryLink: Schema.Codec<GoogleCloudDataplexV1EntryLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     entryLinkType: Schema.optional(Schema.String),
@@ -932,7 +932,7 @@ export interface GoogleCloudDataplexV1LookupEntryLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1LookupEntryLinksResponse: Schema.Schema<GoogleCloudDataplexV1LookupEntryLinksResponse> =
+export const GoogleCloudDataplexV1LookupEntryLinksResponse: Schema.Codec<GoogleCloudDataplexV1LookupEntryLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryLinks: Schema.optional(Schema.Array(GoogleCloudDataplexV1EntryLink)),
     nextPageToken: Schema.optional(Schema.String),
@@ -947,7 +947,7 @@ export interface GoogleCloudDataplexV1LookupContextRequest {
   options?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1LookupContextRequest: Schema.Schema<GoogleCloudDataplexV1LookupContextRequest> =
+export const GoogleCloudDataplexV1LookupContextRequest: Schema.Codec<GoogleCloudDataplexV1LookupContextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Schema.String)),
     context: Schema.optional(Schema.String),
@@ -959,7 +959,7 @@ export interface GoogleCloudDataplexV1LookupContextResponse {
   context?: string;
 }
 
-export const GoogleCloudDataplexV1LookupContextResponse: Schema.Schema<GoogleCloudDataplexV1LookupContextResponse> =
+export const GoogleCloudDataplexV1LookupContextResponse: Schema.Codec<GoogleCloudDataplexV1LookupContextResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     context: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1LookupContextResponse" });
@@ -973,7 +973,7 @@ export interface GoogleCloudDataplexV1MetadataFeedScope {
   entryGroups?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1MetadataFeedScope: Schema.Schema<GoogleCloudDataplexV1MetadataFeedScope> =
+export const GoogleCloudDataplexV1MetadataFeedScope: Schema.Codec<GoogleCloudDataplexV1MetadataFeedScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationLevel: Schema.optional(Schema.Boolean),
     projects: Schema.optional(Schema.Array(Schema.String)),
@@ -991,7 +991,7 @@ export interface GoogleCloudDataplexV1MetadataFeedFilters {
   >;
 }
 
-export const GoogleCloudDataplexV1MetadataFeedFilters: Schema.Schema<GoogleCloudDataplexV1MetadataFeedFilters> =
+export const GoogleCloudDataplexV1MetadataFeedFilters: Schema.Codec<GoogleCloudDataplexV1MetadataFeedFilters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryTypes: Schema.optional(Schema.Array(Schema.String)),
     aspectTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -1017,7 +1017,7 @@ export interface GoogleCloudDataplexV1MetadataFeed {
   pubsubTopic?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataFeed: Schema.Schema<GoogleCloudDataplexV1MetadataFeed> =
+export const GoogleCloudDataplexV1MetadataFeed: Schema.Codec<GoogleCloudDataplexV1MetadataFeed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -1038,7 +1038,7 @@ export interface GoogleCloudDataplexV1ListMetadataFeedsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListMetadataFeedsResponse: Schema.Schema<GoogleCloudDataplexV1ListMetadataFeedsResponse> =
+export const GoogleCloudDataplexV1ListMetadataFeedsResponse: Schema.Codec<GoogleCloudDataplexV1ListMetadataFeedsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadataFeeds: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1MetadataFeed),
@@ -1070,7 +1070,7 @@ export interface GoogleCloudDataplexV1Glossary {
   etag?: string;
 }
 
-export const GoogleCloudDataplexV1Glossary: Schema.Schema<GoogleCloudDataplexV1Glossary> =
+export const GoogleCloudDataplexV1Glossary: Schema.Codec<GoogleCloudDataplexV1Glossary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -1093,7 +1093,7 @@ export interface GoogleCloudDataplexV1ListGlossariesResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListGlossariesResponse: Schema.Schema<GoogleCloudDataplexV1ListGlossariesResponse> =
+export const GoogleCloudDataplexV1ListGlossariesResponse: Schema.Codec<GoogleCloudDataplexV1ListGlossariesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     glossaries: Schema.optional(Schema.Array(GoogleCloudDataplexV1Glossary)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1119,7 +1119,7 @@ export interface GoogleCloudDataplexV1GlossaryCategory {
   parent?: string;
 }
 
-export const GoogleCloudDataplexV1GlossaryCategory: Schema.Schema<GoogleCloudDataplexV1GlossaryCategory> =
+export const GoogleCloudDataplexV1GlossaryCategory: Schema.Codec<GoogleCloudDataplexV1GlossaryCategory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -1140,7 +1140,7 @@ export interface GoogleCloudDataplexV1ListGlossaryCategoriesResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListGlossaryCategoriesResponse: Schema.Schema<GoogleCloudDataplexV1ListGlossaryCategoriesResponse> =
+export const GoogleCloudDataplexV1ListGlossaryCategoriesResponse: Schema.Codec<GoogleCloudDataplexV1ListGlossaryCategoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categories: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1GlossaryCategory),
@@ -1170,7 +1170,7 @@ export interface GoogleCloudDataplexV1GlossaryTerm {
   parent?: string;
 }
 
-export const GoogleCloudDataplexV1GlossaryTerm: Schema.Schema<GoogleCloudDataplexV1GlossaryTerm> =
+export const GoogleCloudDataplexV1GlossaryTerm: Schema.Codec<GoogleCloudDataplexV1GlossaryTerm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -1191,7 +1191,7 @@ export interface GoogleCloudDataplexV1ListGlossaryTermsResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListGlossaryTermsResponse: Schema.Schema<GoogleCloudDataplexV1ListGlossaryTermsResponse> =
+export const GoogleCloudDataplexV1ListGlossaryTermsResponse: Schema.Codec<GoogleCloudDataplexV1ListGlossaryTermsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     terms: Schema.optional(Schema.Array(GoogleCloudDataplexV1GlossaryTerm)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1207,7 +1207,7 @@ export interface GoogleCloudDataplexV1CreateEntryRequest {
   entry?: GoogleCloudDataplexV1Entry;
 }
 
-export const GoogleCloudDataplexV1CreateEntryRequest: Schema.Schema<GoogleCloudDataplexV1CreateEntryRequest> =
+export const GoogleCloudDataplexV1CreateEntryRequest: Schema.Codec<GoogleCloudDataplexV1CreateEntryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     entryId: Schema.optional(Schema.String),
@@ -1227,7 +1227,7 @@ export interface GoogleCloudDataplexV1UpdateEntryRequest {
   aspectKeys?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1UpdateEntryRequest: Schema.Schema<GoogleCloudDataplexV1UpdateEntryRequest> =
+export const GoogleCloudDataplexV1UpdateEntryRequest: Schema.Codec<GoogleCloudDataplexV1UpdateEntryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entry: Schema.optional(GoogleCloudDataplexV1Entry),
     updateMask: Schema.optional(Schema.String),
@@ -1241,7 +1241,7 @@ export interface GoogleCloudDataplexV1DeleteEntryRequest {
   name?: string;
 }
 
-export const GoogleCloudDataplexV1DeleteEntryRequest: Schema.Schema<GoogleCloudDataplexV1DeleteEntryRequest> =
+export const GoogleCloudDataplexV1DeleteEntryRequest: Schema.Codec<GoogleCloudDataplexV1DeleteEntryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1DeleteEntryRequest" });
@@ -1255,7 +1255,7 @@ export interface GoogleCloudDataplexV1CreateEntryLinkRequest {
   entryLink?: GoogleCloudDataplexV1EntryLink;
 }
 
-export const GoogleCloudDataplexV1CreateEntryLinkRequest: Schema.Schema<GoogleCloudDataplexV1CreateEntryLinkRequest> =
+export const GoogleCloudDataplexV1CreateEntryLinkRequest: Schema.Codec<GoogleCloudDataplexV1CreateEntryLinkRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     entryLinkId: Schema.optional(Schema.String),
@@ -1267,7 +1267,7 @@ export interface GoogleCloudDataplexV1DeleteEntryLinkRequest {
   name?: string;
 }
 
-export const GoogleCloudDataplexV1DeleteEntryLinkRequest: Schema.Schema<GoogleCloudDataplexV1DeleteEntryLinkRequest> =
+export const GoogleCloudDataplexV1DeleteEntryLinkRequest: Schema.Codec<GoogleCloudDataplexV1DeleteEntryLinkRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1DeleteEntryLinkRequest" });
@@ -1283,7 +1283,7 @@ export interface GoogleCloudDataplexV1CreateGlossaryRequest {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudDataplexV1CreateGlossaryRequest: Schema.Schema<GoogleCloudDataplexV1CreateGlossaryRequest> =
+export const GoogleCloudDataplexV1CreateGlossaryRequest: Schema.Codec<GoogleCloudDataplexV1CreateGlossaryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     glossaryId: Schema.optional(Schema.String),
@@ -1300,7 +1300,7 @@ export interface GoogleCloudDataplexV1UpdateGlossaryRequest {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudDataplexV1UpdateGlossaryRequest: Schema.Schema<GoogleCloudDataplexV1UpdateGlossaryRequest> =
+export const GoogleCloudDataplexV1UpdateGlossaryRequest: Schema.Codec<GoogleCloudDataplexV1UpdateGlossaryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     glossary: Schema.optional(GoogleCloudDataplexV1Glossary),
     updateMask: Schema.optional(Schema.String),
@@ -1314,7 +1314,7 @@ export interface GoogleCloudDataplexV1DeleteGlossaryRequest {
   etag?: string;
 }
 
-export const GoogleCloudDataplexV1DeleteGlossaryRequest: Schema.Schema<GoogleCloudDataplexV1DeleteGlossaryRequest> =
+export const GoogleCloudDataplexV1DeleteGlossaryRequest: Schema.Codec<GoogleCloudDataplexV1DeleteGlossaryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1329,7 +1329,7 @@ export interface GoogleCloudDataplexV1CreateGlossaryCategoryRequest {
   category?: GoogleCloudDataplexV1GlossaryCategory;
 }
 
-export const GoogleCloudDataplexV1CreateGlossaryCategoryRequest: Schema.Schema<GoogleCloudDataplexV1CreateGlossaryCategoryRequest> =
+export const GoogleCloudDataplexV1CreateGlossaryCategoryRequest: Schema.Codec<GoogleCloudDataplexV1CreateGlossaryCategoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     categoryId: Schema.optional(Schema.String),
@@ -1345,7 +1345,7 @@ export interface GoogleCloudDataplexV1UpdateGlossaryCategoryRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudDataplexV1UpdateGlossaryCategoryRequest: Schema.Schema<GoogleCloudDataplexV1UpdateGlossaryCategoryRequest> =
+export const GoogleCloudDataplexV1UpdateGlossaryCategoryRequest: Schema.Codec<GoogleCloudDataplexV1UpdateGlossaryCategoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(GoogleCloudDataplexV1GlossaryCategory),
     updateMask: Schema.optional(Schema.String),
@@ -1358,7 +1358,7 @@ export interface GoogleCloudDataplexV1DeleteGlossaryCategoryRequest {
   name?: string;
 }
 
-export const GoogleCloudDataplexV1DeleteGlossaryCategoryRequest: Schema.Schema<GoogleCloudDataplexV1DeleteGlossaryCategoryRequest> =
+export const GoogleCloudDataplexV1DeleteGlossaryCategoryRequest: Schema.Codec<GoogleCloudDataplexV1DeleteGlossaryCategoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -1374,7 +1374,7 @@ export interface GoogleCloudDataplexV1CreateGlossaryTermRequest {
   term?: GoogleCloudDataplexV1GlossaryTerm;
 }
 
-export const GoogleCloudDataplexV1CreateGlossaryTermRequest: Schema.Schema<GoogleCloudDataplexV1CreateGlossaryTermRequest> =
+export const GoogleCloudDataplexV1CreateGlossaryTermRequest: Schema.Codec<GoogleCloudDataplexV1CreateGlossaryTermRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     termId: Schema.optional(Schema.String),
@@ -1388,7 +1388,7 @@ export interface GoogleCloudDataplexV1UpdateGlossaryTermRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudDataplexV1UpdateGlossaryTermRequest: Schema.Schema<GoogleCloudDataplexV1UpdateGlossaryTermRequest> =
+export const GoogleCloudDataplexV1UpdateGlossaryTermRequest: Schema.Codec<GoogleCloudDataplexV1UpdateGlossaryTermRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     term: Schema.optional(GoogleCloudDataplexV1GlossaryTerm),
     updateMask: Schema.optional(Schema.String),
@@ -1399,7 +1399,7 @@ export interface GoogleCloudDataplexV1DeleteGlossaryTermRequest {
   name?: string;
 }
 
-export const GoogleCloudDataplexV1DeleteGlossaryTermRequest: Schema.Schema<GoogleCloudDataplexV1DeleteGlossaryTermRequest> =
+export const GoogleCloudDataplexV1DeleteGlossaryTermRequest: Schema.Codec<GoogleCloudDataplexV1DeleteGlossaryTermRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1DeleteGlossaryTermRequest" });
@@ -1415,7 +1415,7 @@ export interface GoogleCloudDataplexV1DataProductAccessRequest {
   requestedPrincipal?: string;
 }
 
-export const GoogleCloudDataplexV1DataProductAccessRequest: Schema.Schema<GoogleCloudDataplexV1DataProductAccessRequest> =
+export const GoogleCloudDataplexV1DataProductAccessRequest: Schema.Codec<GoogleCloudDataplexV1DataProductAccessRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     accessGroupId: Schema.optional(Schema.String),
@@ -1506,7 +1506,7 @@ export interface GoogleCloudDataplexV1ChangeRequest {
   etag?: string;
 }
 
-export const GoogleCloudDataplexV1ChangeRequest: Schema.Schema<GoogleCloudDataplexV1ChangeRequest> =
+export const GoogleCloudDataplexV1ChangeRequest: Schema.Codec<GoogleCloudDataplexV1ChangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -1565,7 +1565,7 @@ export interface GoogleCloudDataplexV1ListChangeRequestsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListChangeRequestsResponse: Schema.Schema<GoogleCloudDataplexV1ListChangeRequestsResponse> =
+export const GoogleCloudDataplexV1ListChangeRequestsResponse: Schema.Codec<GoogleCloudDataplexV1ListChangeRequestsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changeRequests: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1ChangeRequest),
@@ -1581,7 +1581,7 @@ export interface GoogleCloudDataplexV1ApproveChangeRequestRequest {
   etag?: string;
 }
 
-export const GoogleCloudDataplexV1ApproveChangeRequestRequest: Schema.Schema<GoogleCloudDataplexV1ApproveChangeRequestRequest> =
+export const GoogleCloudDataplexV1ApproveChangeRequestRequest: Schema.Codec<GoogleCloudDataplexV1ApproveChangeRequestRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
   }).annotate({
@@ -1595,7 +1595,7 @@ export interface GoogleCloudDataplexV1RejectChangeRequestRequest {
   etag?: string;
 }
 
-export const GoogleCloudDataplexV1RejectChangeRequestRequest: Schema.Schema<GoogleCloudDataplexV1RejectChangeRequestRequest> =
+export const GoogleCloudDataplexV1RejectChangeRequestRequest: Schema.Codec<GoogleCloudDataplexV1RejectChangeRequestRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     comment: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1614,7 +1614,7 @@ export interface GoogleCloudDataplexV1EncryptionConfigFailureDetails {
   errorMessage?: string;
 }
 
-export const GoogleCloudDataplexV1EncryptionConfigFailureDetails: Schema.Schema<GoogleCloudDataplexV1EncryptionConfigFailureDetails> =
+export const GoogleCloudDataplexV1EncryptionConfigFailureDetails: Schema.Codec<GoogleCloudDataplexV1EncryptionConfigFailureDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -1646,7 +1646,7 @@ export interface GoogleCloudDataplexV1EncryptionConfig {
   enableMetastoreEncryption?: boolean;
 }
 
-export const GoogleCloudDataplexV1EncryptionConfig: Schema.Schema<GoogleCloudDataplexV1EncryptionConfig> =
+export const GoogleCloudDataplexV1EncryptionConfig: Schema.Codec<GoogleCloudDataplexV1EncryptionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -1669,7 +1669,7 @@ export interface GoogleCloudDataplexV1ListEncryptionConfigsResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListEncryptionConfigsResponse: Schema.Schema<GoogleCloudDataplexV1ListEncryptionConfigsResponse> =
+export const GoogleCloudDataplexV1ListEncryptionConfigsResponse: Schema.Codec<GoogleCloudDataplexV1ListEncryptionConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptionConfigs: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1EncryptionConfig),
@@ -1691,7 +1691,7 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1708,7 +1708,7 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -1727,7 +1727,7 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -1740,7 +1740,7 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
@@ -1757,7 +1757,7 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
@@ -1772,7 +1772,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleIamV1Policy),
     updateMask: Schema.optional(Schema.String),
@@ -1783,7 +1783,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
+export const GoogleIamV1TestIamPermissionsRequest: Schema.Codec<GoogleIamV1TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
@@ -1793,7 +1793,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
+export const GoogleIamV1TestIamPermissionsResponse: Schema.Codec<GoogleIamV1TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
@@ -1807,7 +1807,7 @@ export interface GoogleCloudDataplexV1ContactIdentity {
   contactId?: string;
 }
 
-export const GoogleCloudDataplexV1ContactIdentity: Schema.Schema<GoogleCloudDataplexV1ContactIdentity> =
+export const GoogleCloudDataplexV1ContactIdentity: Schema.Codec<GoogleCloudDataplexV1ContactIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactName: Schema.optional(Schema.String),
     contactRole: Schema.optional(Schema.String),
@@ -1819,7 +1819,7 @@ export interface GoogleCloudDataplexV1Contacts {
   identities?: ReadonlyArray<GoogleCloudDataplexV1ContactIdentity>;
 }
 
-export const GoogleCloudDataplexV1Contacts: Schema.Schema<GoogleCloudDataplexV1Contacts> =
+export const GoogleCloudDataplexV1Contacts: Schema.Codec<GoogleCloudDataplexV1Contacts> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identities: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1ContactIdentity),
@@ -1847,7 +1847,7 @@ export interface GoogleCloudDataplexV1DataDomain {
   updateTime?: string;
 }
 
-export const GoogleCloudDataplexV1DataDomain: Schema.Schema<GoogleCloudDataplexV1DataDomain> =
+export const GoogleCloudDataplexV1DataDomain: Schema.Codec<GoogleCloudDataplexV1DataDomain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -1867,7 +1867,7 @@ export interface GoogleCloudDataplexV1ListDataDomainsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListDataDomainsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataDomainsResponse> =
+export const GoogleCloudDataplexV1ListDataDomainsResponse: Schema.Codec<GoogleCloudDataplexV1ListDataDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataDomains: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataDomain)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1884,7 +1884,7 @@ export interface GoogleCloudDataplexV1DataDomainBinding {
   createTime?: string;
 }
 
-export const GoogleCloudDataplexV1DataDomainBinding: Schema.Schema<GoogleCloudDataplexV1DataDomainBinding> =
+export const GoogleCloudDataplexV1DataDomainBinding: Schema.Codec<GoogleCloudDataplexV1DataDomainBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -1899,7 +1899,7 @@ export interface GoogleCloudDataplexV1ListDataDomainBindingsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListDataDomainBindingsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataDomainBindingsResponse> =
+export const GoogleCloudDataplexV1ListDataDomainBindingsResponse: Schema.Codec<GoogleCloudDataplexV1ListDataDomainBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataDomainBindings: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataDomainBinding),
@@ -1916,7 +1916,7 @@ export interface GoogleCloudDataplexV1DataProductPrincipal {
   serviceAccount?: string;
 }
 
-export const GoogleCloudDataplexV1DataProductPrincipal: Schema.Schema<GoogleCloudDataplexV1DataProductPrincipal> =
+export const GoogleCloudDataplexV1DataProductPrincipal: Schema.Codec<GoogleCloudDataplexV1DataProductPrincipal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleGroup: Schema.optional(Schema.String),
     serviceAccount: Schema.optional(Schema.String),
@@ -1933,7 +1933,7 @@ export interface GoogleCloudDataplexV1DataProductAccessGroup {
   principal?: GoogleCloudDataplexV1DataProductPrincipal;
 }
 
-export const GoogleCloudDataplexV1DataProductAccessGroup: Schema.Schema<GoogleCloudDataplexV1DataProductAccessGroup> =
+export const GoogleCloudDataplexV1DataProductAccessGroup: Schema.Codec<GoogleCloudDataplexV1DataProductAccessGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1946,7 +1946,7 @@ export interface GoogleCloudDataplexV1DataProductAccessApprovalConfig {
   approverEmails?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataProductAccessApprovalConfig: Schema.Schema<GoogleCloudDataplexV1DataProductAccessApprovalConfig> =
+export const GoogleCloudDataplexV1DataProductAccessApprovalConfig: Schema.Codec<GoogleCloudDataplexV1DataProductAccessApprovalConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approverEmails: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1982,7 +1982,7 @@ export interface GoogleCloudDataplexV1DataProduct {
   accessApprovalConfig?: GoogleCloudDataplexV1DataProductAccessApprovalConfig;
 }
 
-export const GoogleCloudDataplexV1DataProduct: Schema.Schema<GoogleCloudDataplexV1DataProduct> =
+export const GoogleCloudDataplexV1DataProduct: Schema.Codec<GoogleCloudDataplexV1DataProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -2012,7 +2012,7 @@ export interface GoogleCloudDataplexV1ListDataProductsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListDataProductsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataProductsResponse> =
+export const GoogleCloudDataplexV1ListDataProductsResponse: Schema.Codec<GoogleCloudDataplexV1ListDataProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataProducts: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataProduct),
@@ -2028,7 +2028,7 @@ export interface GoogleCloudDataplexV1RequestDataProductAccessRequest {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudDataplexV1RequestDataProductAccessRequest: Schema.Schema<GoogleCloudDataplexV1RequestDataProductAccessRequest> =
+export const GoogleCloudDataplexV1RequestDataProductAccessRequest: Schema.Codec<GoogleCloudDataplexV1RequestDataProductAccessRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changeRequest: Schema.optional(GoogleCloudDataplexV1ChangeRequest),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -2041,7 +2041,7 @@ export interface GoogleCloudDataplexV1RequestDataProductAccessResponse {
   changeRequestName?: string;
 }
 
-export const GoogleCloudDataplexV1RequestDataProductAccessResponse: Schema.Schema<GoogleCloudDataplexV1RequestDataProductAccessResponse> =
+export const GoogleCloudDataplexV1RequestDataProductAccessResponse: Schema.Codec<GoogleCloudDataplexV1RequestDataProductAccessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changeRequestName: Schema.optional(Schema.String),
   }).annotate({
@@ -2053,7 +2053,7 @@ export interface GoogleCloudDataplexV1DataAssetAccessGroupConfig {
   iamRoles?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataAssetAccessGroupConfig: Schema.Schema<GoogleCloudDataplexV1DataAssetAccessGroupConfig> =
+export const GoogleCloudDataplexV1DataAssetAccessGroupConfig: Schema.Codec<GoogleCloudDataplexV1DataAssetAccessGroupConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iamRoles: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -2082,7 +2082,7 @@ export interface GoogleCloudDataplexV1DataAsset {
   >;
 }
 
-export const GoogleCloudDataplexV1DataAsset: Schema.Schema<GoogleCloudDataplexV1DataAsset> =
+export const GoogleCloudDataplexV1DataAsset: Schema.Codec<GoogleCloudDataplexV1DataAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -2106,7 +2106,7 @@ export interface GoogleCloudDataplexV1ListDataAssetsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListDataAssetsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataAssetsResponse> =
+export const GoogleCloudDataplexV1ListDataAssetsResponse: Schema.Codec<GoogleCloudDataplexV1ListDataAssetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataAssets: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataAsset)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2135,7 +2135,7 @@ export interface GoogleCloudDataplexV1DataTaxonomy {
   classCount?: number;
 }
 
-export const GoogleCloudDataplexV1DataTaxonomy: Schema.Schema<GoogleCloudDataplexV1DataTaxonomy> =
+export const GoogleCloudDataplexV1DataTaxonomy: Schema.Codec<GoogleCloudDataplexV1DataTaxonomy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -2158,7 +2158,7 @@ export interface GoogleCloudDataplexV1ListDataTaxonomiesResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListDataTaxonomiesResponse: Schema.Schema<GoogleCloudDataplexV1ListDataTaxonomiesResponse> =
+export const GoogleCloudDataplexV1ListDataTaxonomiesResponse: Schema.Codec<GoogleCloudDataplexV1ListDataTaxonomiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataTaxonomies: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataTaxonomy),
@@ -2176,7 +2176,7 @@ export interface GoogleCloudDataplexV1DataAttributeBindingPath {
   attributes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataAttributeBindingPath: Schema.Schema<GoogleCloudDataplexV1DataAttributeBindingPath> =
+export const GoogleCloudDataplexV1DataAttributeBindingPath: Schema.Codec<GoogleCloudDataplexV1DataAttributeBindingPath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(Schema.String)),
@@ -2207,7 +2207,7 @@ export interface GoogleCloudDataplexV1DataAttributeBinding {
   paths?: ReadonlyArray<GoogleCloudDataplexV1DataAttributeBindingPath>;
 }
 
-export const GoogleCloudDataplexV1DataAttributeBinding: Schema.Schema<GoogleCloudDataplexV1DataAttributeBinding> =
+export const GoogleCloudDataplexV1DataAttributeBinding: Schema.Codec<GoogleCloudDataplexV1DataAttributeBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -2233,7 +2233,7 @@ export interface GoogleCloudDataplexV1ListDataAttributeBindingsResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListDataAttributeBindingsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataAttributeBindingsResponse> =
+export const GoogleCloudDataplexV1ListDataAttributeBindingsResponse: Schema.Codec<GoogleCloudDataplexV1ListDataAttributeBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataAttributeBindings: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataAttributeBinding),
@@ -2253,7 +2253,7 @@ export interface GoogleCloudDataplexV1ResourceAccessSpec {
   owners?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ResourceAccessSpec: Schema.Schema<GoogleCloudDataplexV1ResourceAccessSpec> =
+export const GoogleCloudDataplexV1ResourceAccessSpec: Schema.Codec<GoogleCloudDataplexV1ResourceAccessSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readers: Schema.optional(Schema.Array(Schema.String)),
     writers: Schema.optional(Schema.Array(Schema.String)),
@@ -2265,7 +2265,7 @@ export interface GoogleCloudDataplexV1DataAccessSpec {
   readers?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataAccessSpec: Schema.Schema<GoogleCloudDataplexV1DataAccessSpec> =
+export const GoogleCloudDataplexV1DataAccessSpec: Schema.Codec<GoogleCloudDataplexV1DataAccessSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudDataplexV1DataAccessSpec" });
@@ -2297,7 +2297,7 @@ export interface GoogleCloudDataplexV1DataAttribute {
   dataAccessSpec?: GoogleCloudDataplexV1DataAccessSpec;
 }
 
-export const GoogleCloudDataplexV1DataAttribute: Schema.Schema<GoogleCloudDataplexV1DataAttribute> =
+export const GoogleCloudDataplexV1DataAttribute: Schema.Codec<GoogleCloudDataplexV1DataAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -2324,7 +2324,7 @@ export interface GoogleCloudDataplexV1ListDataAttributesResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListDataAttributesResponse: Schema.Schema<GoogleCloudDataplexV1ListDataAttributesResponse> =
+export const GoogleCloudDataplexV1ListDataAttributesResponse: Schema.Codec<GoogleCloudDataplexV1ListDataAttributesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataAttributes: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataAttribute),
@@ -2342,7 +2342,7 @@ export interface GoogleCloudDataplexV1DataSource {
   resource?: string;
 }
 
-export const GoogleCloudDataplexV1DataSource: Schema.Schema<GoogleCloudDataplexV1DataSource> =
+export const GoogleCloudDataplexV1DataSource: Schema.Codec<GoogleCloudDataplexV1DataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entity: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
@@ -2350,7 +2350,7 @@ export const GoogleCloudDataplexV1DataSource: Schema.Schema<GoogleCloudDataplexV
 
 export interface GoogleCloudDataplexV1TriggerOnDemand {}
 
-export const GoogleCloudDataplexV1TriggerOnDemand: Schema.Schema<GoogleCloudDataplexV1TriggerOnDemand> =
+export const GoogleCloudDataplexV1TriggerOnDemand: Schema.Codec<GoogleCloudDataplexV1TriggerOnDemand> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1TriggerOnDemand",
   });
@@ -2360,7 +2360,7 @@ export interface GoogleCloudDataplexV1TriggerSchedule {
   cron?: string;
 }
 
-export const GoogleCloudDataplexV1TriggerSchedule: Schema.Schema<GoogleCloudDataplexV1TriggerSchedule> =
+export const GoogleCloudDataplexV1TriggerSchedule: Schema.Codec<GoogleCloudDataplexV1TriggerSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cron: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1TriggerSchedule" });
@@ -2370,7 +2370,7 @@ export interface GoogleCloudDataplexV1TriggerOneTime {
   ttlAfterScanCompletion?: string;
 }
 
-export const GoogleCloudDataplexV1TriggerOneTime: Schema.Schema<GoogleCloudDataplexV1TriggerOneTime> =
+export const GoogleCloudDataplexV1TriggerOneTime: Schema.Codec<GoogleCloudDataplexV1TriggerOneTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttlAfterScanCompletion: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1TriggerOneTime" });
@@ -2384,7 +2384,7 @@ export interface GoogleCloudDataplexV1Trigger {
   oneTime?: GoogleCloudDataplexV1TriggerOneTime;
 }
 
-export const GoogleCloudDataplexV1Trigger: Schema.Schema<GoogleCloudDataplexV1Trigger> =
+export const GoogleCloudDataplexV1Trigger: Schema.Codec<GoogleCloudDataplexV1Trigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     onDemand: Schema.optional(GoogleCloudDataplexV1TriggerOnDemand),
     schedule: Schema.optional(GoogleCloudDataplexV1TriggerSchedule),
@@ -2398,7 +2398,7 @@ export interface GoogleCloudDataplexV1DataScanExecutionSpec {
   field?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanExecutionSpec: Schema.Schema<GoogleCloudDataplexV1DataScanExecutionSpec> =
+export const GoogleCloudDataplexV1DataScanExecutionSpec: Schema.Codec<GoogleCloudDataplexV1DataScanExecutionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trigger: Schema.optional(GoogleCloudDataplexV1Trigger),
     field: Schema.optional(Schema.String),
@@ -2413,7 +2413,7 @@ export interface GoogleCloudDataplexV1DataScanExecutionStatus {
   latestJobCreateTime?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanExecutionStatus: Schema.Schema<GoogleCloudDataplexV1DataScanExecutionStatus> =
+export const GoogleCloudDataplexV1DataScanExecutionStatus: Schema.Codec<GoogleCloudDataplexV1DataScanExecutionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latestJobStartTime: Schema.optional(Schema.String),
     latestJobEndTime: Schema.optional(Schema.String),
@@ -2431,7 +2431,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   strictMaxEnabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRangeExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRangeExpectation> =
+export const GoogleCloudDataplexV1DataQualityRuleRangeExpectation: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleRangeExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minValue: Schema.optional(Schema.String),
     maxValue: Schema.optional(Schema.String),
@@ -2443,7 +2443,7 @@ export const GoogleCloudDataplexV1DataQualityRuleRangeExpectation: Schema.Schema
 
 export interface GoogleCloudDataplexV1DataQualityRuleNonNullExpectation {}
 
-export const GoogleCloudDataplexV1DataQualityRuleNonNullExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleNonNullExpectation> =
+export const GoogleCloudDataplexV1DataQualityRuleNonNullExpectation: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleNonNullExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleNonNullExpectation",
   });
@@ -2453,7 +2453,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleSetExpectation {
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleSetExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleSetExpectation> =
+export const GoogleCloudDataplexV1DataQualityRuleSetExpectation: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleSetExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -2465,7 +2465,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
   regex?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRegexExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRegexExpectation> =
+export const GoogleCloudDataplexV1DataQualityRuleRegexExpectation: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleRegexExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regex: Schema.optional(Schema.String),
   }).annotate({
@@ -2474,7 +2474,7 @@ export const GoogleCloudDataplexV1DataQualityRuleRegexExpectation: Schema.Schema
 
 export interface GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation {}
 
-export const GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation> =
+export const GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation",
   });
@@ -2492,7 +2492,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   strictMaxEnabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation> =
+export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statistic: Schema.optional(Schema.String),
     minValue: Schema.optional(Schema.String),
@@ -2508,7 +2508,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
   sqlExpression?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation> =
+export const GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlExpression: Schema.optional(Schema.String),
   }).annotate({
@@ -2520,7 +2520,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
   sqlExpression?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation> =
+export const GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlExpression: Schema.optional(Schema.String),
   }).annotate({
@@ -2532,7 +2532,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
   sqlStatement?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleSqlAssertion: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleSqlAssertion> =
+export const GoogleCloudDataplexV1DataQualityRuleSqlAssertion: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleSqlAssertion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlStatement: Schema.optional(Schema.String),
   }).annotate({
@@ -2544,7 +2544,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterV
   value?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue> =
+export const GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -2557,7 +2557,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateSql {
   query?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplateSql: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateSql> =
+export const GoogleCloudDataplexV1DataQualityRuleTemplateSql: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleTemplateSql> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
   }).annotate({
@@ -2571,7 +2571,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescriptio
   defaultValue?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription> =
+export const GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     defaultValue: Schema.optional(Schema.String),
@@ -2596,7 +2596,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplate {
   capabilities?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplate: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplate> =
+export const GoogleCloudDataplexV1DataQualityRuleTemplate: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dimension: Schema.optional(Schema.String),
@@ -2626,7 +2626,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateReference {
   ruleTemplate?: GoogleCloudDataplexV1DataQualityRuleTemplate;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplateReference: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateReference> =
+export const GoogleCloudDataplexV1DataQualityRuleTemplateReference: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleTemplateReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     values: Schema.optional(
@@ -2650,7 +2650,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEn
   displayName?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource> =
+export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryType: Schema.optional(Schema.String),
     entry: Schema.optional(Schema.String),
@@ -2667,7 +2667,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEn
   entryLink?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource> =
+export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryLinkType: Schema.optional(Schema.String),
     entryLink: Schema.optional(Schema.String),
@@ -2683,7 +2683,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement {
   entryLinkSource?: GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement> =
+export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entrySource: Schema.optional(
       GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource,
@@ -2700,7 +2700,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSource {
   rulePathElements?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRuleSource: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSource> =
+export const GoogleCloudDataplexV1DataQualityRuleRuleSource: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleRuleSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rulePathElements: Schema.optional(
       Schema.Array(
@@ -2716,7 +2716,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleDebugQuery {
   sqlStatement?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleDebugQuery: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleDebugQuery> =
+export const GoogleCloudDataplexV1DataQualityRuleDebugQuery: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleDebugQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     sqlStatement: Schema.optional(Schema.String),
@@ -2765,7 +2765,7 @@ export interface GoogleCloudDataplexV1DataQualityRule {
   debugQueries?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleDebugQuery>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRule: Schema.Schema<GoogleCloudDataplexV1DataQualityRule> =
+export const GoogleCloudDataplexV1DataQualityRule: Schema.Codec<GoogleCloudDataplexV1DataQualityRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rangeExpectation: Schema.optional(
       GoogleCloudDataplexV1DataQualityRuleRangeExpectation,
@@ -2816,7 +2816,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExpo
   resultsTable?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport> =
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport: Schema.Codec<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultsTable: Schema.optional(Schema.String),
   }).annotate({
@@ -2829,7 +2829,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
   emails?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients> =
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients: Schema.Codec<GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -2841,7 +2841,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresho
   scoreThreshold?: number;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger> =
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger: Schema.Codec<GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scoreThreshold: Schema.optional(Schema.Number),
   }).annotate({
@@ -2851,7 +2851,7 @@ export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTr
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger {}
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger> =
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger: Schema.Codec<GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger",
@@ -2859,7 +2859,7 @@ export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigge
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger {}
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger> =
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger: Schema.Codec<GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger",
@@ -2876,7 +2876,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotification
   jobEndTrigger?: GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport> =
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport: Schema.Codec<GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recipients: Schema.optional(
       GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients,
@@ -2902,7 +2902,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActions {
   notificationReport?: GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActions: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActions> =
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActions: Schema.Codec<GoogleCloudDataplexV1DataQualitySpecPostScanActions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryExport: Schema.optional(
       GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport,
@@ -2931,7 +2931,7 @@ export interface GoogleCloudDataplexV1DataQualitySpec {
   filter?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpec: Schema.Schema<GoogleCloudDataplexV1DataQualitySpec> =
+export const GoogleCloudDataplexV1DataQualitySpec: Schema.Codec<GoogleCloudDataplexV1DataQualitySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataQualityRule)),
     samplingPercent: Schema.optional(Schema.Number),
@@ -2949,7 +2949,7 @@ export interface GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExpo
   resultsTable?: string;
 }
 
-export const GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport: Schema.Schema<GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport> =
+export const GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport: Schema.Codec<GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultsTable: Schema.optional(Schema.String),
   }).annotate({
@@ -2962,7 +2962,7 @@ export interface GoogleCloudDataplexV1DataProfileSpecPostScanActions {
   bigqueryExport?: GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport;
 }
 
-export const GoogleCloudDataplexV1DataProfileSpecPostScanActions: Schema.Schema<GoogleCloudDataplexV1DataProfileSpecPostScanActions> =
+export const GoogleCloudDataplexV1DataProfileSpecPostScanActions: Schema.Codec<GoogleCloudDataplexV1DataProfileSpecPostScanActions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryExport: Schema.optional(
       GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport,
@@ -2976,7 +2976,7 @@ export interface GoogleCloudDataplexV1DataProfileSpecSelectedFields {
   fieldNames?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataProfileSpecSelectedFields: Schema.Schema<GoogleCloudDataplexV1DataProfileSpecSelectedFields> =
+export const GoogleCloudDataplexV1DataProfileSpecSelectedFields: Schema.Codec<GoogleCloudDataplexV1DataProfileSpecSelectedFields> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -3000,7 +3000,7 @@ export interface GoogleCloudDataplexV1DataProfileSpec {
   mode?: "MODE_UNSPECIFIED" | "STANDARD" | "LIGHTWEIGHT" | (string & {});
 }
 
-export const GoogleCloudDataplexV1DataProfileSpec: Schema.Schema<GoogleCloudDataplexV1DataProfileSpec> =
+export const GoogleCloudDataplexV1DataProfileSpec: Schema.Codec<GoogleCloudDataplexV1DataProfileSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     samplingPercent: Schema.optional(Schema.Number),
     rowFilter: Schema.optional(Schema.String),
@@ -3028,7 +3028,7 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig 
   project?: string;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig> =
+export const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig: Schema.Codec<GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableType: Schema.optional(Schema.String),
     connection: Schema.optional(Schema.String),
@@ -3052,7 +3052,7 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions {
   quote?: string;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions> =
+export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions: Schema.Codec<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerRows: Schema.optional(Schema.Number),
     delimiter: Schema.optional(Schema.String),
@@ -3070,7 +3070,7 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions 
   typeInferenceDisabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions> =
+export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions: Schema.Codec<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(Schema.String),
     typeInferenceDisabled: Schema.optional(Schema.Boolean),
@@ -3086,7 +3086,7 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructured
   globalEndpointEnabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions> =
+export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions: Schema.Codec<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     semanticInferenceEnabled: Schema.optional(Schema.Boolean),
     globalEndpointEnabled: Schema.optional(Schema.Boolean),
@@ -3108,7 +3108,7 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
   unstructuredDataOptions?: GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfig: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfig> =
+export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfig: Schema.Codec<GoogleCloudDataplexV1DataDiscoverySpecStorageConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includePatterns: Schema.optional(Schema.Array(Schema.String)),
     excludePatterns: Schema.optional(Schema.Array(Schema.String)),
@@ -3132,7 +3132,7 @@ export interface GoogleCloudDataplexV1DataDiscoverySpec {
   storageConfig?: GoogleCloudDataplexV1DataDiscoverySpecStorageConfig;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpec: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpec> =
+export const GoogleCloudDataplexV1DataDiscoverySpec: Schema.Codec<GoogleCloudDataplexV1DataDiscoverySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryPublishingConfig: Schema.optional(
       GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig,
@@ -3156,7 +3156,7 @@ export interface GoogleCloudDataplexV1DataDocumentationSpec {
   >;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationSpec: Schema.Schema<GoogleCloudDataplexV1DataDocumentationSpec> =
+export const GoogleCloudDataplexV1DataDocumentationSpec: Schema.Codec<GoogleCloudDataplexV1DataDocumentationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     catalogPublishingEnabled: Schema.optional(Schema.Boolean),
     generationScopes: Schema.optional(Schema.Array(Schema.String)),
@@ -3171,7 +3171,7 @@ export interface GoogleCloudDataplexV1UnstructuredDataProfileSpec {
   globalEndpointEnabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1UnstructuredDataProfileSpec: Schema.Schema<GoogleCloudDataplexV1UnstructuredDataProfileSpec> =
+export const GoogleCloudDataplexV1UnstructuredDataProfileSpec: Schema.Codec<GoogleCloudDataplexV1UnstructuredDataProfileSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     graphProfilePublishingEnabled: Schema.optional(Schema.Boolean),
     customizedPrompt: Schema.optional(Schema.String),
@@ -3185,7 +3185,7 @@ export interface GoogleCloudDataplexV1DataQualityDimension {
   name?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityDimension: Schema.Schema<GoogleCloudDataplexV1DataQualityDimension> =
+export const GoogleCloudDataplexV1DataQualityDimension: Schema.Codec<GoogleCloudDataplexV1DataQualityDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityDimension" });
@@ -3199,7 +3199,7 @@ export interface GoogleCloudDataplexV1DataQualityDimensionResult {
   score?: number;
 }
 
-export const GoogleCloudDataplexV1DataQualityDimensionResult: Schema.Schema<GoogleCloudDataplexV1DataQualityDimensionResult> =
+export const GoogleCloudDataplexV1DataQualityDimensionResult: Schema.Codec<GoogleCloudDataplexV1DataQualityDimensionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(GoogleCloudDataplexV1DataQualityDimension),
     passed: Schema.optional(Schema.Boolean),
@@ -3219,7 +3219,7 @@ export interface GoogleCloudDataplexV1DataQualityColumnResult {
   dimensions?: ReadonlyArray<GoogleCloudDataplexV1DataQualityDimensionResult>;
 }
 
-export const GoogleCloudDataplexV1DataQualityColumnResult: Schema.Schema<GoogleCloudDataplexV1DataQualityColumnResult> =
+export const GoogleCloudDataplexV1DataQualityColumnResult: Schema.Codec<GoogleCloudDataplexV1DataQualityColumnResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     column: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -3238,7 +3238,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult {
   value?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult> =
+export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3252,7 +3252,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet {
   results?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet> =
+export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult),
@@ -3282,7 +3282,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleResult {
   debugQueriesResultSets?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleResult: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResult> =
+export const GoogleCloudDataplexV1DataQualityRuleResult: Schema.Codec<GoogleCloudDataplexV1DataQualityRuleResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rule: Schema.optional(GoogleCloudDataplexV1DataQualityRule),
     passed: Schema.optional(Schema.Boolean),
@@ -3308,7 +3308,7 @@ export interface GoogleCloudDataplexV1ScannedDataIncrementalField {
   end?: string;
 }
 
-export const GoogleCloudDataplexV1ScannedDataIncrementalField: Schema.Schema<GoogleCloudDataplexV1ScannedDataIncrementalField> =
+export const GoogleCloudDataplexV1ScannedDataIncrementalField: Schema.Codec<GoogleCloudDataplexV1ScannedDataIncrementalField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     start: Schema.optional(Schema.String),
@@ -3322,7 +3322,7 @@ export interface GoogleCloudDataplexV1ScannedData {
   incrementalField?: GoogleCloudDataplexV1ScannedDataIncrementalField;
 }
 
-export const GoogleCloudDataplexV1ScannedData: Schema.Schema<GoogleCloudDataplexV1ScannedData> =
+export const GoogleCloudDataplexV1ScannedData: Schema.Codec<GoogleCloudDataplexV1ScannedData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     incrementalField: Schema.optional(
       GoogleCloudDataplexV1ScannedDataIncrementalField,
@@ -3341,7 +3341,7 @@ export interface GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQ
   message?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult: Schema.Schema<GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult> =
+export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult: Schema.Codec<GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -3355,7 +3355,7 @@ export interface GoogleCloudDataplexV1DataQualityResultPostScanActionsResult {
   bigqueryExportResult?: GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult;
 }
 
-export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResult: Schema.Schema<GoogleCloudDataplexV1DataQualityResultPostScanActionsResult> =
+export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResult: Schema.Codec<GoogleCloudDataplexV1DataQualityResultPostScanActionsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryExportResult: Schema.optional(
       GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult,
@@ -3374,7 +3374,7 @@ export interface GoogleCloudDataplexV1DataScanCatalogPublishingStatus {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1DataScanCatalogPublishingStatus: Schema.Schema<GoogleCloudDataplexV1DataScanCatalogPublishingStatus> =
+export const GoogleCloudDataplexV1DataScanCatalogPublishingStatus: Schema.Codec<GoogleCloudDataplexV1DataScanCatalogPublishingStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({
@@ -3392,7 +3392,7 @@ export interface GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGenerated
   volumeIntermediateTable?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets: Schema.Schema<GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets> =
+export const GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets: Schema.Codec<GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultTable: Schema.optional(Schema.String),
     dataIntermediateTable: Schema.optional(Schema.String),
@@ -3426,7 +3426,7 @@ export interface GoogleCloudDataplexV1DataQualityResult {
   anomalyDetectionGeneratedAssets?: GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets;
 }
 
-export const GoogleCloudDataplexV1DataQualityResult: Schema.Schema<GoogleCloudDataplexV1DataQualityResult> =
+export const GoogleCloudDataplexV1DataQualityResult: Schema.Codec<GoogleCloudDataplexV1DataQualityResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passed: Schema.optional(Schema.Boolean),
     score: Schema.optional(Schema.Number),
@@ -3461,7 +3461,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTo
   ratio?: number;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue> =
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue: Schema.Codec<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -3480,7 +3480,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoSt
   averageLength?: number;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo> =
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo: Schema.Codec<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minLength: Schema.optional(Schema.String),
     maxLength: Schema.optional(Schema.String),
@@ -3503,7 +3503,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIn
   max?: string;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo> =
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo: Schema.Codec<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     average: Schema.optional(Schema.Number),
     standardDeviation: Schema.optional(Schema.Number),
@@ -3528,7 +3528,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDo
   max?: number;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo> =
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo: Schema.Codec<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     average: Schema.optional(Schema.Number),
     standardDeviation: Schema.optional(Schema.Number),
@@ -3555,7 +3555,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   doubleProfile?: GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo> =
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo: Schema.Codec<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nullRatio: Schema.optional(Schema.Number),
     distinctRatio: Schema.optional(Schema.Number),
@@ -3588,7 +3588,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileField {
   profile?: GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileField: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileField> =
+export const GoogleCloudDataplexV1DataProfileResultProfileField: Schema.Codec<GoogleCloudDataplexV1DataProfileResultProfileField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3605,7 +3605,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfile {
   fields?: ReadonlyArray<GoogleCloudDataplexV1DataProfileResultProfileField>;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfile: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfile> =
+export const GoogleCloudDataplexV1DataProfileResultProfile: Schema.Codec<GoogleCloudDataplexV1DataProfileResultProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataProfileResultProfileField),
@@ -3624,7 +3624,7 @@ export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQ
   message?: string;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult: Schema.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult> =
+export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult: Schema.Codec<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -3638,7 +3638,7 @@ export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResult {
   bigqueryExportResult?: GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResult: Schema.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResult> =
+export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResult: Schema.Codec<GoogleCloudDataplexV1DataProfileResultPostScanActionsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryExportResult: Schema.optional(
       GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult,
@@ -3660,7 +3660,7 @@ export interface GoogleCloudDataplexV1DataProfileResult {
   catalogPublishingStatus?: GoogleCloudDataplexV1DataScanCatalogPublishingStatus;
 }
 
-export const GoogleCloudDataplexV1DataProfileResult: Schema.Schema<GoogleCloudDataplexV1DataProfileResult> =
+export const GoogleCloudDataplexV1DataProfileResult: Schema.Codec<GoogleCloudDataplexV1DataProfileResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowCount: Schema.optional(Schema.String),
     profile: Schema.optional(GoogleCloudDataplexV1DataProfileResultProfile),
@@ -3680,7 +3680,7 @@ export interface GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing {
   location?: string;
 }
 
-export const GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing: Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing> =
+export const GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing: Schema.Codec<GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -3709,7 +3709,7 @@ export interface GoogleCloudDataplexV1DataDiscoveryResultScanStatistics {
   filesetsUpdated?: number;
 }
 
-export const GoogleCloudDataplexV1DataDiscoveryResultScanStatistics: Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResultScanStatistics> =
+export const GoogleCloudDataplexV1DataDiscoveryResultScanStatistics: Schema.Codec<GoogleCloudDataplexV1DataDiscoveryResultScanStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scannedFileCount: Schema.optional(Schema.Number),
     dataProcessedBytes: Schema.optional(Schema.String),
@@ -3731,7 +3731,7 @@ export interface GoogleCloudDataplexV1DataDiscoveryResult {
   scanStatistics?: GoogleCloudDataplexV1DataDiscoveryResultScanStatistics;
 }
 
-export const GoogleCloudDataplexV1DataDiscoveryResult: Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResult> =
+export const GoogleCloudDataplexV1DataDiscoveryResult: Schema.Codec<GoogleCloudDataplexV1DataDiscoveryResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryPublishing: Schema.optional(
       GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing,
@@ -3748,7 +3748,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipS
   paths?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths> =
+export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths: Schema.Codec<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableFqn: Schema.optional(Schema.String),
     paths: Schema.optional(Schema.Array(Schema.String)),
@@ -3774,7 +3774,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship 
   type?: "TYPE_UNSPECIFIED" | "SCHEMA_JOIN" | (string & {});
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship> =
+export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship: Schema.Codec<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     leftSchemaPaths: Schema.optional(
       GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
@@ -3796,7 +3796,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultQuery {
   description?: string;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultQuery: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultQuery> =
+export const GoogleCloudDataplexV1DataDocumentationResultQuery: Schema.Codec<GoogleCloudDataplexV1DataDocumentationResultQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sql: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -3813,7 +3813,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultDatasetResult {
   queries?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultQuery>;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultDatasetResult: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultDatasetResult> =
+export const GoogleCloudDataplexV1DataDocumentationResultDatasetResult: Schema.Codec<GoogleCloudDataplexV1DataDocumentationResultDatasetResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overview: Schema.optional(Schema.String),
     schemaRelationships: Schema.optional(
@@ -3837,7 +3837,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultField {
   fields?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultField>;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultField: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultField> =
+export const GoogleCloudDataplexV1DataDocumentationResultField: Schema.Codec<GoogleCloudDataplexV1DataDocumentationResultField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -3848,14 +3848,14 @@ export const GoogleCloudDataplexV1DataDocumentationResultField: Schema.Schema<Go
     }),
   ).annotate({
     identifier: "GoogleCloudDataplexV1DataDocumentationResultField",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultField>;
+  }) as any as Schema.Codec<GoogleCloudDataplexV1DataDocumentationResultField>;
 
 export interface GoogleCloudDataplexV1DataDocumentationResultSchema {
   /** Output only. The list of columns. */
   fields?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultField>;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultSchema: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchema> =
+export const GoogleCloudDataplexV1DataDocumentationResultSchema: Schema.Codec<GoogleCloudDataplexV1DataDocumentationResultSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataDocumentationResultField),
@@ -3875,7 +3875,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultTableResult {
   queries?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultQuery>;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultTableResult: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultTableResult> =
+export const GoogleCloudDataplexV1DataDocumentationResultTableResult: Schema.Codec<GoogleCloudDataplexV1DataDocumentationResultTableResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     overview: Schema.optional(Schema.String),
@@ -3894,7 +3894,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResult {
   tableResult?: GoogleCloudDataplexV1DataDocumentationResultTableResult;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResult: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResult> =
+export const GoogleCloudDataplexV1DataDocumentationResult: Schema.Codec<GoogleCloudDataplexV1DataDocumentationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetResult: Schema.optional(
       GoogleCloudDataplexV1DataDocumentationResultDatasetResult,
@@ -3911,7 +3911,7 @@ export interface GoogleCloudDataplexV1GraphProfileFieldExtractionHints {
   synthesis?: string;
 }
 
-export const GoogleCloudDataplexV1GraphProfileFieldExtractionHints: Schema.Schema<GoogleCloudDataplexV1GraphProfileFieldExtractionHints> =
+export const GoogleCloudDataplexV1GraphProfileFieldExtractionHints: Schema.Codec<GoogleCloudDataplexV1GraphProfileFieldExtractionHints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     normalization: Schema.optional(Schema.String),
     synthesis: Schema.optional(Schema.String),
@@ -3952,7 +3952,7 @@ export interface GoogleCloudDataplexV1GraphProfileField {
   fields?: ReadonlyArray<GoogleCloudDataplexV1GraphProfileField>;
 }
 
-export const GoogleCloudDataplexV1GraphProfileField: Schema.Schema<GoogleCloudDataplexV1GraphProfileField> =
+export const GoogleCloudDataplexV1GraphProfileField: Schema.Codec<GoogleCloudDataplexV1GraphProfileField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -3969,14 +3969,14 @@ export const GoogleCloudDataplexV1GraphProfileField: Schema.Schema<GoogleCloudDa
     }),
   ).annotate({
     identifier: "GoogleCloudDataplexV1GraphProfileField",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1GraphProfileField>;
+  }) as any as Schema.Codec<GoogleCloudDataplexV1GraphProfileField>;
 
 export interface GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints {
   /** Output only. Expected occurrence frequency of this node type within a document. Format: "Bounds - Description" Example: "0:N - A document may contain multiple people names." */
   cardinality?: string;
 }
 
-export const GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints: Schema.Schema<GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints> =
+export const GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints: Schema.Codec<GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cardinality: Schema.optional(Schema.String),
   }).annotate({
@@ -3996,7 +3996,7 @@ export interface GoogleCloudDataplexV1GraphProfileNodeType {
   primaryKeys?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1GraphProfileNodeType: Schema.Schema<GoogleCloudDataplexV1GraphProfileNodeType> =
+export const GoogleCloudDataplexV1GraphProfileNodeType: Schema.Codec<GoogleCloudDataplexV1GraphProfileNodeType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     fields: Schema.optional(
@@ -4014,7 +4014,7 @@ export interface GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints {
   cardinality?: string;
 }
 
-export const GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints: Schema.Schema<GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints> =
+export const GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints: Schema.Codec<GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cardinality: Schema.optional(Schema.String),
   }).annotate({
@@ -4028,7 +4028,7 @@ export interface GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping
   referencedField?: string;
 }
 
-export const GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping: Schema.Schema<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping> =
+export const GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping: Schema.Codec<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     referencedField: Schema.optional(Schema.String),
@@ -4048,7 +4048,7 @@ export interface GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey {
   fieldMappings?: ReadonlyArray<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping>;
 }
 
-export const GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey: Schema.Schema<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey> =
+export const GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey: Schema.Codec<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -4079,7 +4079,7 @@ export interface GoogleCloudDataplexV1GraphProfileEdgeType {
   foreignKeys?: ReadonlyArray<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey>;
 }
 
-export const GoogleCloudDataplexV1GraphProfileEdgeType: Schema.Schema<GoogleCloudDataplexV1GraphProfileEdgeType> =
+export const GoogleCloudDataplexV1GraphProfileEdgeType: Schema.Codec<GoogleCloudDataplexV1GraphProfileEdgeType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sourceNodeType: Schema.optional(Schema.String),
@@ -4103,7 +4103,7 @@ export interface GoogleCloudDataplexV1GraphProfile {
   edgeTypes?: ReadonlyArray<GoogleCloudDataplexV1GraphProfileEdgeType>;
 }
 
-export const GoogleCloudDataplexV1GraphProfile: Schema.Schema<GoogleCloudDataplexV1GraphProfile> =
+export const GoogleCloudDataplexV1GraphProfile: Schema.Codec<GoogleCloudDataplexV1GraphProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeTypes: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1GraphProfileNodeType),
@@ -4122,7 +4122,7 @@ export interface GoogleCloudDataplexV1UnstructuredDataProfileResult {
   description?: string;
 }
 
-export const GoogleCloudDataplexV1UnstructuredDataProfileResult: Schema.Schema<GoogleCloudDataplexV1UnstructuredDataProfileResult> =
+export const GoogleCloudDataplexV1UnstructuredDataProfileResult: Schema.Codec<GoogleCloudDataplexV1UnstructuredDataProfileResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partialFailureMessage: Schema.optional(Schema.String),
     graphProfile: Schema.optional(GoogleCloudDataplexV1GraphProfile),
@@ -4133,14 +4133,14 @@ export const GoogleCloudDataplexV1UnstructuredDataProfileResult: Schema.Schema<G
 
 export interface GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent {}
 
-export const GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent: Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent> =
+export const GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent: Schema.Codec<GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent",
   });
 
 export interface GoogleCloudDataplexV1ExecutionIdentityUserCredential {}
 
-export const GoogleCloudDataplexV1ExecutionIdentityUserCredential: Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityUserCredential> =
+export const GoogleCloudDataplexV1ExecutionIdentityUserCredential: Schema.Codec<GoogleCloudDataplexV1ExecutionIdentityUserCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ExecutionIdentityUserCredential",
   });
@@ -4150,7 +4150,7 @@ export interface GoogleCloudDataplexV1ExecutionIdentityServiceAccount {
   email?: string;
 }
 
-export const GoogleCloudDataplexV1ExecutionIdentityServiceAccount: Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityServiceAccount> =
+export const GoogleCloudDataplexV1ExecutionIdentityServiceAccount: Schema.Codec<GoogleCloudDataplexV1ExecutionIdentityServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
@@ -4166,7 +4166,7 @@ export interface GoogleCloudDataplexV1ExecutionIdentity {
   serviceAccount?: GoogleCloudDataplexV1ExecutionIdentityServiceAccount;
 }
 
-export const GoogleCloudDataplexV1ExecutionIdentity: Schema.Schema<GoogleCloudDataplexV1ExecutionIdentity> =
+export const GoogleCloudDataplexV1ExecutionIdentity: Schema.Codec<GoogleCloudDataplexV1ExecutionIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataplexServiceAgent: Schema.optional(
       GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent,
@@ -4241,7 +4241,7 @@ export interface GoogleCloudDataplexV1DataScan {
   executionIdentity?: GoogleCloudDataplexV1ExecutionIdentity;
 }
 
-export const GoogleCloudDataplexV1DataScan: Schema.Schema<GoogleCloudDataplexV1DataScan> =
+export const GoogleCloudDataplexV1DataScan: Schema.Codec<GoogleCloudDataplexV1DataScan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -4289,7 +4289,7 @@ export interface GoogleCloudDataplexV1ListDataScansResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListDataScansResponse: Schema.Schema<GoogleCloudDataplexV1ListDataScansResponse> =
+export const GoogleCloudDataplexV1ListDataScansResponse: Schema.Codec<GoogleCloudDataplexV1ListDataScansResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataScans: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataScan)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4298,7 +4298,7 @@ export const GoogleCloudDataplexV1ListDataScansResponse: Schema.Schema<GoogleClo
 
 export interface GoogleCloudDataplexV1RunDataScanRequest {}
 
-export const GoogleCloudDataplexV1RunDataScanRequest: Schema.Schema<GoogleCloudDataplexV1RunDataScanRequest> =
+export const GoogleCloudDataplexV1RunDataScanRequest: Schema.Codec<GoogleCloudDataplexV1RunDataScanRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1RunDataScanRequest",
   });
@@ -4360,7 +4360,7 @@ export interface GoogleCloudDataplexV1DataScanJob {
   unstructuredDataProfileResult?: GoogleCloudDataplexV1UnstructuredDataProfileResult;
 }
 
-export const GoogleCloudDataplexV1DataScanJob: Schema.Schema<GoogleCloudDataplexV1DataScanJob> =
+export const GoogleCloudDataplexV1DataScanJob: Schema.Codec<GoogleCloudDataplexV1DataScanJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -4398,7 +4398,7 @@ export interface GoogleCloudDataplexV1RunDataScanResponse {
   job?: GoogleCloudDataplexV1DataScanJob;
 }
 
-export const GoogleCloudDataplexV1RunDataScanResponse: Schema.Schema<GoogleCloudDataplexV1RunDataScanResponse> =
+export const GoogleCloudDataplexV1RunDataScanResponse: Schema.Codec<GoogleCloudDataplexV1RunDataScanResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     job: Schema.optional(GoogleCloudDataplexV1DataScanJob),
   }).annotate({ identifier: "GoogleCloudDataplexV1RunDataScanResponse" });
@@ -4410,7 +4410,7 @@ export interface GoogleCloudDataplexV1ListDataScanJobsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListDataScanJobsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataScanJobsResponse> =
+export const GoogleCloudDataplexV1ListDataScanJobsResponse: Schema.Codec<GoogleCloudDataplexV1ListDataScanJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataScanJobs: Schema.optional(
       Schema.Array(GoogleCloudDataplexV1DataScanJob),
@@ -4420,21 +4420,21 @@ export const GoogleCloudDataplexV1ListDataScanJobsResponse: Schema.Schema<Google
 
 export interface GoogleCloudDataplexV1CancelDataScanJobRequest {}
 
-export const GoogleCloudDataplexV1CancelDataScanJobRequest: Schema.Schema<GoogleCloudDataplexV1CancelDataScanJobRequest> =
+export const GoogleCloudDataplexV1CancelDataScanJobRequest: Schema.Codec<GoogleCloudDataplexV1CancelDataScanJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1CancelDataScanJobRequest",
   });
 
 export interface GoogleCloudDataplexV1CancelDataScanJobResponse {}
 
-export const GoogleCloudDataplexV1CancelDataScanJobResponse: Schema.Schema<GoogleCloudDataplexV1CancelDataScanJobResponse> =
+export const GoogleCloudDataplexV1CancelDataScanJobResponse: Schema.Codec<GoogleCloudDataplexV1CancelDataScanJobResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1CancelDataScanJobResponse",
   });
 
 export interface GoogleCloudDataplexV1GenerateDataQualityRulesRequest {}
 
-export const GoogleCloudDataplexV1GenerateDataQualityRulesRequest: Schema.Schema<GoogleCloudDataplexV1GenerateDataQualityRulesRequest> =
+export const GoogleCloudDataplexV1GenerateDataQualityRulesRequest: Schema.Codec<GoogleCloudDataplexV1GenerateDataQualityRulesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1GenerateDataQualityRulesRequest",
   });
@@ -4444,7 +4444,7 @@ export interface GoogleCloudDataplexV1GenerateDataQualityRulesResponse {
   rule?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRule>;
 }
 
-export const GoogleCloudDataplexV1GenerateDataQualityRulesResponse: Schema.Schema<GoogleCloudDataplexV1GenerateDataQualityRulesResponse> =
+export const GoogleCloudDataplexV1GenerateDataQualityRulesResponse: Schema.Codec<GoogleCloudDataplexV1GenerateDataQualityRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rule: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataQualityRule)),
   }).annotate({
@@ -4462,7 +4462,7 @@ export interface GoogleCloudDataplexV1StorageFormatCsvOptions {
   quote?: string;
 }
 
-export const GoogleCloudDataplexV1StorageFormatCsvOptions: Schema.Schema<GoogleCloudDataplexV1StorageFormatCsvOptions> =
+export const GoogleCloudDataplexV1StorageFormatCsvOptions: Schema.Codec<GoogleCloudDataplexV1StorageFormatCsvOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(Schema.String),
     headerRows: Schema.optional(Schema.Number),
@@ -4475,7 +4475,7 @@ export interface GoogleCloudDataplexV1StorageFormatJsonOptions {
   encoding?: string;
 }
 
-export const GoogleCloudDataplexV1StorageFormatJsonOptions: Schema.Schema<GoogleCloudDataplexV1StorageFormatJsonOptions> =
+export const GoogleCloudDataplexV1StorageFormatJsonOptions: Schema.Codec<GoogleCloudDataplexV1StorageFormatJsonOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1StorageFormatJsonOptions" });
@@ -4485,7 +4485,7 @@ export interface GoogleCloudDataplexV1StorageFormatIcebergOptions {
   metadataLocation?: string;
 }
 
-export const GoogleCloudDataplexV1StorageFormatIcebergOptions: Schema.Schema<GoogleCloudDataplexV1StorageFormatIcebergOptions> =
+export const GoogleCloudDataplexV1StorageFormatIcebergOptions: Schema.Codec<GoogleCloudDataplexV1StorageFormatIcebergOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadataLocation: Schema.optional(Schema.String),
   }).annotate({
@@ -4525,7 +4525,7 @@ export interface GoogleCloudDataplexV1StorageFormat {
   iceberg?: GoogleCloudDataplexV1StorageFormatIcebergOptions;
 }
 
-export const GoogleCloudDataplexV1StorageFormat: Schema.Schema<GoogleCloudDataplexV1StorageFormat> =
+export const GoogleCloudDataplexV1StorageFormat: Schema.Codec<GoogleCloudDataplexV1StorageFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     format: Schema.optional(Schema.String),
     compressionFormat: Schema.optional(Schema.String),
@@ -4542,7 +4542,7 @@ export interface GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility {
   reason?: string;
 }
 
-export const GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility: Schema.Schema<GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility> =
+export const GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility: Schema.Codec<GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compatible: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
@@ -4557,7 +4557,7 @@ export interface GoogleCloudDataplexV1EntityCompatibilityStatus {
   bigquery?: GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility;
 }
 
-export const GoogleCloudDataplexV1EntityCompatibilityStatus: Schema.Schema<GoogleCloudDataplexV1EntityCompatibilityStatus> =
+export const GoogleCloudDataplexV1EntityCompatibilityStatus: Schema.Codec<GoogleCloudDataplexV1EntityCompatibilityStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hiveMetastore: Schema.optional(
       GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility,
@@ -4572,7 +4572,7 @@ export interface GoogleCloudDataplexV1StorageAccess {
   read?: "ACCESS_MODE_UNSPECIFIED" | "DIRECT" | "MANAGED" | (string & {});
 }
 
-export const GoogleCloudDataplexV1StorageAccess: Schema.Schema<GoogleCloudDataplexV1StorageAccess> =
+export const GoogleCloudDataplexV1StorageAccess: Schema.Codec<GoogleCloudDataplexV1StorageAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     read: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1StorageAccess" });
@@ -4612,7 +4612,7 @@ export interface GoogleCloudDataplexV1SchemaSchemaField {
   fields?: ReadonlyArray<GoogleCloudDataplexV1SchemaSchemaField>;
 }
 
-export const GoogleCloudDataplexV1SchemaSchemaField: Schema.Schema<GoogleCloudDataplexV1SchemaSchemaField> =
+export const GoogleCloudDataplexV1SchemaSchemaField: Schema.Codec<GoogleCloudDataplexV1SchemaSchemaField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -4625,7 +4625,7 @@ export const GoogleCloudDataplexV1SchemaSchemaField: Schema.Schema<GoogleCloudDa
     }),
   ).annotate({
     identifier: "GoogleCloudDataplexV1SchemaSchemaField",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1SchemaSchemaField>;
+  }) as any as Schema.Codec<GoogleCloudDataplexV1SchemaSchemaField>;
 
 export interface GoogleCloudDataplexV1SchemaPartitionField {
   /** Required. Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore.. */
@@ -4651,7 +4651,7 @@ export interface GoogleCloudDataplexV1SchemaPartitionField {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1SchemaPartitionField: Schema.Schema<GoogleCloudDataplexV1SchemaPartitionField> =
+export const GoogleCloudDataplexV1SchemaPartitionField: Schema.Codec<GoogleCloudDataplexV1SchemaPartitionField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4671,7 +4671,7 @@ export interface GoogleCloudDataplexV1Schema {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1Schema: Schema.Schema<GoogleCloudDataplexV1Schema> =
+export const GoogleCloudDataplexV1Schema: Schema.Codec<GoogleCloudDataplexV1Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userManaged: Schema.optional(Schema.Boolean),
     fields: Schema.optional(
@@ -4726,7 +4726,7 @@ export interface GoogleCloudDataplexV1Entity {
   schema?: GoogleCloudDataplexV1Schema;
 }
 
-export const GoogleCloudDataplexV1Entity: Schema.Schema<GoogleCloudDataplexV1Entity> =
+export const GoogleCloudDataplexV1Entity: Schema.Codec<GoogleCloudDataplexV1Entity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -4757,7 +4757,7 @@ export interface GoogleCloudDataplexV1ListEntitiesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListEntitiesResponse: Schema.Schema<GoogleCloudDataplexV1ListEntitiesResponse> =
+export const GoogleCloudDataplexV1ListEntitiesResponse: Schema.Codec<GoogleCloudDataplexV1ListEntitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entities: Schema.optional(Schema.Array(GoogleCloudDataplexV1Entity)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4774,7 +4774,7 @@ export interface GoogleCloudDataplexV1Partition {
   etag?: string;
 }
 
-export const GoogleCloudDataplexV1Partition: Schema.Schema<GoogleCloudDataplexV1Partition> =
+export const GoogleCloudDataplexV1Partition: Schema.Codec<GoogleCloudDataplexV1Partition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
@@ -4789,7 +4789,7 @@ export interface GoogleCloudDataplexV1ListPartitionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListPartitionsResponse: Schema.Schema<GoogleCloudDataplexV1ListPartitionsResponse> =
+export const GoogleCloudDataplexV1ListPartitionsResponse: Schema.Codec<GoogleCloudDataplexV1ListPartitionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitions: Schema.optional(Schema.Array(GoogleCloudDataplexV1Partition)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4800,7 +4800,7 @@ export interface GoogleCloudDataplexV1LakeMetastore {
   service?: string;
 }
 
-export const GoogleCloudDataplexV1LakeMetastore: Schema.Schema<GoogleCloudDataplexV1LakeMetastore> =
+export const GoogleCloudDataplexV1LakeMetastore: Schema.Codec<GoogleCloudDataplexV1LakeMetastore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1LakeMetastore" });
@@ -4814,7 +4814,7 @@ export interface GoogleCloudDataplexV1AssetStatus {
   securityPolicyApplyingAssets?: number;
 }
 
-export const GoogleCloudDataplexV1AssetStatus: Schema.Schema<GoogleCloudDataplexV1AssetStatus> =
+export const GoogleCloudDataplexV1AssetStatus: Schema.Codec<GoogleCloudDataplexV1AssetStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     activeAssets: Schema.optional(Schema.Number),
@@ -4838,7 +4838,7 @@ export interface GoogleCloudDataplexV1LakeMetastoreStatus {
   endpoint?: string;
 }
 
-export const GoogleCloudDataplexV1LakeMetastoreStatus: Schema.Schema<GoogleCloudDataplexV1LakeMetastoreStatus> =
+export const GoogleCloudDataplexV1LakeMetastoreStatus: Schema.Codec<GoogleCloudDataplexV1LakeMetastoreStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -4879,7 +4879,7 @@ export interface GoogleCloudDataplexV1Lake {
   metastoreStatus?: GoogleCloudDataplexV1LakeMetastoreStatus;
 }
 
-export const GoogleCloudDataplexV1Lake: Schema.Schema<GoogleCloudDataplexV1Lake> =
+export const GoogleCloudDataplexV1Lake: Schema.Codec<GoogleCloudDataplexV1Lake> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -4904,7 +4904,7 @@ export interface GoogleCloudDataplexV1ListLakesResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListLakesResponse: Schema.Schema<GoogleCloudDataplexV1ListLakesResponse> =
+export const GoogleCloudDataplexV1ListLakesResponse: Schema.Codec<GoogleCloudDataplexV1ListLakesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lakes: Schema.optional(Schema.Array(GoogleCloudDataplexV1Lake)),
     nextPageToken: Schema.optional(Schema.String),
@@ -4920,7 +4920,7 @@ export interface GoogleCloudDataplexV1ActionInvalidDataFormat {
   newFormat?: string;
 }
 
-export const GoogleCloudDataplexV1ActionInvalidDataFormat: Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataFormat> =
+export const GoogleCloudDataplexV1ActionInvalidDataFormat: Schema.Codec<GoogleCloudDataplexV1ActionInvalidDataFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampledDataLocations: Schema.optional(Schema.Array(Schema.String)),
     expectedFormat: Schema.optional(Schema.String),
@@ -4944,7 +4944,7 @@ export interface GoogleCloudDataplexV1ActionIncompatibleDataSchema {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1ActionIncompatibleDataSchema: Schema.Schema<GoogleCloudDataplexV1ActionIncompatibleDataSchema> =
+export const GoogleCloudDataplexV1ActionIncompatibleDataSchema: Schema.Codec<GoogleCloudDataplexV1ActionIncompatibleDataSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Schema.String),
     existingSchema: Schema.optional(Schema.String),
@@ -4964,7 +4964,7 @@ export interface GoogleCloudDataplexV1ActionInvalidDataPartition {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1ActionInvalidDataPartition: Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataPartition> =
+export const GoogleCloudDataplexV1ActionInvalidDataPartition: Schema.Codec<GoogleCloudDataplexV1ActionInvalidDataPartition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expectedStructure: Schema.optional(Schema.String),
   }).annotate({
@@ -4973,21 +4973,21 @@ export const GoogleCloudDataplexV1ActionInvalidDataPartition: Schema.Schema<Goog
 
 export interface GoogleCloudDataplexV1ActionMissingData {}
 
-export const GoogleCloudDataplexV1ActionMissingData: Schema.Schema<GoogleCloudDataplexV1ActionMissingData> =
+export const GoogleCloudDataplexV1ActionMissingData: Schema.Codec<GoogleCloudDataplexV1ActionMissingData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ActionMissingData",
   });
 
 export interface GoogleCloudDataplexV1ActionMissingResource {}
 
-export const GoogleCloudDataplexV1ActionMissingResource: Schema.Schema<GoogleCloudDataplexV1ActionMissingResource> =
+export const GoogleCloudDataplexV1ActionMissingResource: Schema.Codec<GoogleCloudDataplexV1ActionMissingResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ActionMissingResource",
   });
 
 export interface GoogleCloudDataplexV1ActionUnauthorizedResource {}
 
-export const GoogleCloudDataplexV1ActionUnauthorizedResource: Schema.Schema<GoogleCloudDataplexV1ActionUnauthorizedResource> =
+export const GoogleCloudDataplexV1ActionUnauthorizedResource: Schema.Codec<GoogleCloudDataplexV1ActionUnauthorizedResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ActionUnauthorizedResource",
   });
@@ -4997,7 +4997,7 @@ export interface GoogleCloudDataplexV1ActionFailedSecurityPolicyApply {
   asset?: string;
 }
 
-export const GoogleCloudDataplexV1ActionFailedSecurityPolicyApply: Schema.Schema<GoogleCloudDataplexV1ActionFailedSecurityPolicyApply> =
+export const GoogleCloudDataplexV1ActionFailedSecurityPolicyApply: Schema.Codec<GoogleCloudDataplexV1ActionFailedSecurityPolicyApply> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asset: Schema.optional(Schema.String),
   }).annotate({
@@ -5006,7 +5006,7 @@ export const GoogleCloudDataplexV1ActionFailedSecurityPolicyApply: Schema.Schema
 
 export interface GoogleCloudDataplexV1ActionInvalidDataOrganization {}
 
-export const GoogleCloudDataplexV1ActionInvalidDataOrganization: Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataOrganization> =
+export const GoogleCloudDataplexV1ActionInvalidDataOrganization: Schema.Codec<GoogleCloudDataplexV1ActionInvalidDataOrganization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ActionInvalidDataOrganization",
   });
@@ -5051,7 +5051,7 @@ export interface GoogleCloudDataplexV1Action {
   invalidDataOrganization?: GoogleCloudDataplexV1ActionInvalidDataOrganization;
 }
 
-export const GoogleCloudDataplexV1Action: Schema.Schema<GoogleCloudDataplexV1Action> =
+export const GoogleCloudDataplexV1Action: Schema.Codec<GoogleCloudDataplexV1Action> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     issue: Schema.optional(Schema.String),
@@ -5092,7 +5092,7 @@ export interface GoogleCloudDataplexV1ListActionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListActionsResponse: Schema.Schema<GoogleCloudDataplexV1ListActionsResponse> =
+export const GoogleCloudDataplexV1ListActionsResponse: Schema.Codec<GoogleCloudDataplexV1ListActionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actions: Schema.optional(Schema.Array(GoogleCloudDataplexV1Action)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5109,7 +5109,7 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions {
   disableTypeInference?: boolean;
 }
 
-export const GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions: Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions> =
+export const GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions: Schema.Codec<GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerRows: Schema.optional(Schema.Number),
     delimiter: Schema.optional(Schema.String),
@@ -5126,7 +5126,7 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions {
   disableTypeInference?: boolean;
 }
 
-export const GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions: Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions> =
+export const GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions: Schema.Codec<GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(Schema.String),
     disableTypeInference: Schema.optional(Schema.Boolean),
@@ -5149,7 +5149,7 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpec {
   schedule?: string;
 }
 
-export const GoogleCloudDataplexV1ZoneDiscoverySpec: Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpec> =
+export const GoogleCloudDataplexV1ZoneDiscoverySpec: Schema.Codec<GoogleCloudDataplexV1ZoneDiscoverySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     includePatterns: Schema.optional(Schema.Array(Schema.String)),
@@ -5172,7 +5172,7 @@ export interface GoogleCloudDataplexV1ZoneResourceSpec {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1ZoneResourceSpec: Schema.Schema<GoogleCloudDataplexV1ZoneResourceSpec> =
+export const GoogleCloudDataplexV1ZoneResourceSpec: Schema.Codec<GoogleCloudDataplexV1ZoneResourceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDataplexV1ZoneResourceSpec" });
@@ -5210,7 +5210,7 @@ export interface GoogleCloudDataplexV1Zone {
   assetStatus?: GoogleCloudDataplexV1AssetStatus;
 }
 
-export const GoogleCloudDataplexV1Zone: Schema.Schema<GoogleCloudDataplexV1Zone> =
+export const GoogleCloudDataplexV1Zone: Schema.Codec<GoogleCloudDataplexV1Zone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5233,7 +5233,7 @@ export interface GoogleCloudDataplexV1ListZonesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListZonesResponse: Schema.Schema<GoogleCloudDataplexV1ListZonesResponse> =
+export const GoogleCloudDataplexV1ListZonesResponse: Schema.Codec<GoogleCloudDataplexV1ListZonesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zones: Schema.optional(Schema.Array(GoogleCloudDataplexV1Zone)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5256,7 +5256,7 @@ export interface GoogleCloudDataplexV1AssetResourceSpec {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1AssetResourceSpec: Schema.Schema<GoogleCloudDataplexV1AssetResourceSpec> =
+export const GoogleCloudDataplexV1AssetResourceSpec: Schema.Codec<GoogleCloudDataplexV1AssetResourceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5274,7 +5274,7 @@ export interface GoogleCloudDataplexV1AssetResourceStatus {
   managedAccessIdentity?: string;
 }
 
-export const GoogleCloudDataplexV1AssetResourceStatus: Schema.Schema<GoogleCloudDataplexV1AssetResourceStatus> =
+export const GoogleCloudDataplexV1AssetResourceStatus: Schema.Codec<GoogleCloudDataplexV1AssetResourceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -5291,7 +5291,7 @@ export interface GoogleCloudDataplexV1AssetSecurityStatus {
   updateTime?: string;
 }
 
-export const GoogleCloudDataplexV1AssetSecurityStatus: Schema.Schema<GoogleCloudDataplexV1AssetSecurityStatus> =
+export const GoogleCloudDataplexV1AssetSecurityStatus: Schema.Codec<GoogleCloudDataplexV1AssetSecurityStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -5309,7 +5309,7 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions {
   disableTypeInference?: boolean;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions: Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions> =
+export const GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions: Schema.Codec<GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerRows: Schema.optional(Schema.Number),
     delimiter: Schema.optional(Schema.String),
@@ -5326,7 +5326,7 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions {
   disableTypeInference?: boolean;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions: Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions> =
+export const GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions: Schema.Codec<GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(Schema.String),
     disableTypeInference: Schema.optional(Schema.Boolean),
@@ -5349,7 +5349,7 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpec {
   schedule?: string;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoverySpec: Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpec> =
+export const GoogleCloudDataplexV1AssetDiscoverySpec: Schema.Codec<GoogleCloudDataplexV1AssetDiscoverySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     includePatterns: Schema.optional(Schema.Array(Schema.String)),
@@ -5374,7 +5374,7 @@ export interface GoogleCloudDataplexV1AssetDiscoveryStatusStats {
   filesets?: string;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoveryStatusStats: Schema.Schema<GoogleCloudDataplexV1AssetDiscoveryStatusStats> =
+export const GoogleCloudDataplexV1AssetDiscoveryStatusStats: Schema.Codec<GoogleCloudDataplexV1AssetDiscoveryStatusStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataItems: Schema.optional(Schema.String),
     dataSize: Schema.optional(Schema.String),
@@ -5403,7 +5403,7 @@ export interface GoogleCloudDataplexV1AssetDiscoveryStatus {
   lastRunDuration?: string;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoveryStatus: Schema.Schema<GoogleCloudDataplexV1AssetDiscoveryStatus> =
+export const GoogleCloudDataplexV1AssetDiscoveryStatus: Schema.Codec<GoogleCloudDataplexV1AssetDiscoveryStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -5448,7 +5448,7 @@ export interface GoogleCloudDataplexV1Asset {
   discoveryStatus?: GoogleCloudDataplexV1AssetDiscoveryStatus;
 }
 
-export const GoogleCloudDataplexV1Asset: Schema.Schema<GoogleCloudDataplexV1Asset> =
+export const GoogleCloudDataplexV1Asset: Schema.Codec<GoogleCloudDataplexV1Asset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5472,7 +5472,7 @@ export interface GoogleCloudDataplexV1ListAssetsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListAssetsResponse: Schema.Schema<GoogleCloudDataplexV1ListAssetsResponse> =
+export const GoogleCloudDataplexV1ListAssetsResponse: Schema.Codec<GoogleCloudDataplexV1ListAssetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assets: Schema.optional(Schema.Array(GoogleCloudDataplexV1Asset)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5491,7 +5491,7 @@ export interface GoogleCloudDataplexV1TaskTriggerSpec {
   schedule?: string;
 }
 
-export const GoogleCloudDataplexV1TaskTriggerSpec: Schema.Schema<GoogleCloudDataplexV1TaskTriggerSpec> =
+export const GoogleCloudDataplexV1TaskTriggerSpec: Schema.Codec<GoogleCloudDataplexV1TaskTriggerSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -5513,7 +5513,7 @@ export interface GoogleCloudDataplexV1TaskExecutionSpec {
   kmsKey?: string;
 }
 
-export const GoogleCloudDataplexV1TaskExecutionSpec: Schema.Schema<GoogleCloudDataplexV1TaskExecutionSpec> =
+export const GoogleCloudDataplexV1TaskExecutionSpec: Schema.Codec<GoogleCloudDataplexV1TaskExecutionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     args: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     serviceAccount: Schema.optional(Schema.String),
@@ -5561,7 +5561,7 @@ export interface GoogleCloudDataplexV1Job {
   executionSpec?: GoogleCloudDataplexV1TaskExecutionSpec;
 }
 
-export const GoogleCloudDataplexV1Job: Schema.Schema<GoogleCloudDataplexV1Job> =
+export const GoogleCloudDataplexV1Job: Schema.Codec<GoogleCloudDataplexV1Job> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -5584,7 +5584,7 @@ export interface GoogleCloudDataplexV1TaskExecutionStatus {
   latestJob?: GoogleCloudDataplexV1Job;
 }
 
-export const GoogleCloudDataplexV1TaskExecutionStatus: Schema.Schema<GoogleCloudDataplexV1TaskExecutionStatus> =
+export const GoogleCloudDataplexV1TaskExecutionStatus: Schema.Codec<GoogleCloudDataplexV1TaskExecutionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     latestJob: Schema.optional(GoogleCloudDataplexV1Job),
@@ -5597,7 +5597,7 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResource
   maxExecutorsCount?: number;
 }
 
-export const GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources: Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources> =
+export const GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources: Schema.Codec<GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executorsCount: Schema.optional(Schema.Number),
     maxExecutorsCount: Schema.optional(Schema.Number),
@@ -5617,7 +5617,7 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntim
   properties?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime: Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime> =
+export const GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime: Schema.Codec<GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     javaJars: Schema.optional(Schema.Array(Schema.String)),
@@ -5637,7 +5637,7 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
   networkTags?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork: Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork> =
+export const GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork: Schema.Codec<GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     subNetwork: Schema.optional(Schema.String),
@@ -5655,7 +5655,7 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpec {
   vpcNetwork?: GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork;
 }
 
-export const GoogleCloudDataplexV1TaskInfrastructureSpec: Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpec> =
+export const GoogleCloudDataplexV1TaskInfrastructureSpec: Schema.Codec<GoogleCloudDataplexV1TaskInfrastructureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batch: Schema.optional(
       GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources,
@@ -5687,7 +5687,7 @@ export interface GoogleCloudDataplexV1TaskSparkTaskConfig {
   infrastructureSpec?: GoogleCloudDataplexV1TaskInfrastructureSpec;
 }
 
-export const GoogleCloudDataplexV1TaskSparkTaskConfig: Schema.Schema<GoogleCloudDataplexV1TaskSparkTaskConfig> =
+export const GoogleCloudDataplexV1TaskSparkTaskConfig: Schema.Codec<GoogleCloudDataplexV1TaskSparkTaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mainJarFileUri: Schema.optional(Schema.String),
     mainClass: Schema.optional(Schema.String),
@@ -5712,7 +5712,7 @@ export interface GoogleCloudDataplexV1TaskNotebookTaskConfig {
   archiveUris?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1TaskNotebookTaskConfig: Schema.Schema<GoogleCloudDataplexV1TaskNotebookTaskConfig> =
+export const GoogleCloudDataplexV1TaskNotebookTaskConfig: Schema.Codec<GoogleCloudDataplexV1TaskNotebookTaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebook: Schema.optional(Schema.String),
     infrastructureSpec: Schema.optional(
@@ -5757,7 +5757,7 @@ export interface GoogleCloudDataplexV1Task {
   notebook?: GoogleCloudDataplexV1TaskNotebookTaskConfig;
 }
 
-export const GoogleCloudDataplexV1Task: Schema.Schema<GoogleCloudDataplexV1Task> =
+export const GoogleCloudDataplexV1Task: Schema.Codec<GoogleCloudDataplexV1Task> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -5783,7 +5783,7 @@ export interface GoogleCloudDataplexV1ListTasksResponse {
   unreachableLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ListTasksResponse: Schema.Schema<GoogleCloudDataplexV1ListTasksResponse> =
+export const GoogleCloudDataplexV1ListTasksResponse: Schema.Codec<GoogleCloudDataplexV1ListTasksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tasks: Schema.optional(Schema.Array(GoogleCloudDataplexV1Task)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5797,7 +5797,7 @@ export interface GoogleCloudDataplexV1ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListJobsResponse: Schema.Schema<GoogleCloudDataplexV1ListJobsResponse> =
+export const GoogleCloudDataplexV1ListJobsResponse: Schema.Codec<GoogleCloudDataplexV1ListJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(GoogleCloudDataplexV1Job)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5810,7 +5810,7 @@ export interface GoogleCloudDataplexV1RunTaskRequest {
   args?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1RunTaskRequest: Schema.Schema<GoogleCloudDataplexV1RunTaskRequest> =
+export const GoogleCloudDataplexV1RunTaskRequest: Schema.Codec<GoogleCloudDataplexV1RunTaskRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     args: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -5821,14 +5821,14 @@ export interface GoogleCloudDataplexV1RunTaskResponse {
   job?: GoogleCloudDataplexV1Job;
 }
 
-export const GoogleCloudDataplexV1RunTaskResponse: Schema.Schema<GoogleCloudDataplexV1RunTaskResponse> =
+export const GoogleCloudDataplexV1RunTaskResponse: Schema.Codec<GoogleCloudDataplexV1RunTaskResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     job: Schema.optional(GoogleCloudDataplexV1Job),
   }).annotate({ identifier: "GoogleCloudDataplexV1RunTaskResponse" });
 
 export interface GoogleCloudDataplexV1CancelJobRequest {}
 
-export const GoogleCloudDataplexV1CancelJobRequest: Schema.Schema<GoogleCloudDataplexV1CancelJobRequest> =
+export const GoogleCloudDataplexV1CancelJobRequest: Schema.Codec<GoogleCloudDataplexV1CancelJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1CancelJobRequest",
   });
@@ -5846,7 +5846,7 @@ export interface GoogleCloudLocationLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
+export const GoogleCloudLocationLocation: Schema.Codec<GoogleCloudLocationLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -5862,7 +5862,7 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
+export const GoogleCloudLocationListLocationsResponse: Schema.Codec<GoogleCloudLocationListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5885,7 +5885,7 @@ export interface GoogleCloudDataplexV1OperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudDataplexV1OperationMetadata: Schema.Schema<GoogleCloudDataplexV1OperationMetadata> =
+export const GoogleCloudDataplexV1OperationMetadata: Schema.Codec<GoogleCloudDataplexV1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -5901,7 +5901,7 @@ export interface GoogleCloudDataplexV1DiscoveryEventConfigDetails {
   parameters?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventConfigDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventConfigDetails> =
+export const GoogleCloudDataplexV1DiscoveryEventConfigDetails: Schema.Codec<GoogleCloudDataplexV1DiscoveryEventConfigDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({
@@ -5915,7 +5915,7 @@ export interface GoogleCloudDataplexV1DiscoveryEventEntityDetails {
   type?: "ENTITY_TYPE_UNSPECIFIED" | "TABLE" | "FILESET" | (string & {});
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventEntityDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventEntityDetails> =
+export const GoogleCloudDataplexV1DiscoveryEventEntityDetails: Schema.Codec<GoogleCloudDataplexV1DiscoveryEventEntityDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entity: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5934,7 +5934,7 @@ export interface GoogleCloudDataplexV1DiscoveryEventPartitionDetails {
   sampledDataLocations?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventPartitionDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventPartitionDetails> =
+export const GoogleCloudDataplexV1DiscoveryEventPartitionDetails: Schema.Codec<GoogleCloudDataplexV1DiscoveryEventPartitionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partition: Schema.optional(Schema.String),
     entity: Schema.optional(Schema.String),
@@ -5951,7 +5951,7 @@ export interface GoogleCloudDataplexV1DiscoveryEventActionDetails {
   issue?: string;
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventActionDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventActionDetails> =
+export const GoogleCloudDataplexV1DiscoveryEventActionDetails: Schema.Codec<GoogleCloudDataplexV1DiscoveryEventActionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     issue: Schema.optional(Schema.String),
@@ -5971,7 +5971,7 @@ export interface GoogleCloudDataplexV1DiscoveryEventTableDetails {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventTableDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventTableDetails> =
+export const GoogleCloudDataplexV1DiscoveryEventTableDetails: Schema.Codec<GoogleCloudDataplexV1DiscoveryEventTableDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6019,7 +6019,7 @@ export interface GoogleCloudDataplexV1DiscoveryEvent {
   table?: GoogleCloudDataplexV1DiscoveryEventTableDetails;
 }
 
-export const GoogleCloudDataplexV1DiscoveryEvent: Schema.Schema<GoogleCloudDataplexV1DiscoveryEvent> =
+export const GoogleCloudDataplexV1DiscoveryEvent: Schema.Codec<GoogleCloudDataplexV1DiscoveryEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     lakeId: Schema.optional(Schema.String),
@@ -6070,7 +6070,7 @@ export interface GoogleCloudDataplexV1JobEvent {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1JobEvent: Schema.Schema<GoogleCloudDataplexV1JobEvent> =
+export const GoogleCloudDataplexV1JobEvent: Schema.Codec<GoogleCloudDataplexV1JobEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     jobId: Schema.optional(Schema.String),
@@ -6099,7 +6099,7 @@ export interface GoogleCloudDataplexV1SessionEventQueryDetail {
   dataProcessedBytes?: string;
 }
 
-export const GoogleCloudDataplexV1SessionEventQueryDetail: Schema.Schema<GoogleCloudDataplexV1SessionEventQueryDetail> =
+export const GoogleCloudDataplexV1SessionEventQueryDetail: Schema.Codec<GoogleCloudDataplexV1SessionEventQueryDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryId: Schema.optional(Schema.String),
     queryText: Schema.optional(Schema.String),
@@ -6134,7 +6134,7 @@ export interface GoogleCloudDataplexV1SessionEvent {
   unassignedDuration?: string;
 }
 
-export const GoogleCloudDataplexV1SessionEvent: Schema.Schema<GoogleCloudDataplexV1SessionEvent> =
+export const GoogleCloudDataplexV1SessionEvent: Schema.Codec<GoogleCloudDataplexV1SessionEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -6157,7 +6157,7 @@ export interface GoogleCloudDataplexV1ImportItem {
   aspectKeys?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDataplexV1ImportItem: Schema.Schema<GoogleCloudDataplexV1ImportItem> =
+export const GoogleCloudDataplexV1ImportItem: Schema.Codec<GoogleCloudDataplexV1ImportItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entry: Schema.optional(GoogleCloudDataplexV1Entry),
     entryLink: Schema.optional(GoogleCloudDataplexV1EntryLink),
@@ -6170,7 +6170,7 @@ export interface GoogleCloudDataplexV1DataScanEventDataProfileResult {
   rowCount?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanEventDataProfileResult: Schema.Schema<GoogleCloudDataplexV1DataScanEventDataProfileResult> =
+export const GoogleCloudDataplexV1DataScanEventDataProfileResult: Schema.Codec<GoogleCloudDataplexV1DataScanEventDataProfileResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowCount: Schema.optional(Schema.String),
   }).annotate({
@@ -6192,7 +6192,7 @@ export interface GoogleCloudDataplexV1DataScanEventDataQualityResult {
   columnScore?: Record<string, number>;
 }
 
-export const GoogleCloudDataplexV1DataScanEventDataQualityResult: Schema.Schema<GoogleCloudDataplexV1DataScanEventDataQualityResult> =
+export const GoogleCloudDataplexV1DataScanEventDataQualityResult: Schema.Codec<GoogleCloudDataplexV1DataScanEventDataQualityResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowCount: Schema.optional(Schema.String),
     passed: Schema.optional(Schema.Boolean),
@@ -6217,7 +6217,7 @@ export interface GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs {
   columnFilterApplied?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs: Schema.Schema<GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs> =
+export const GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs: Schema.Codec<GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     samplingPercent: Schema.optional(Schema.Number),
     rowFilterApplied: Schema.optional(Schema.Boolean),
@@ -6233,7 +6233,7 @@ export interface GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs {
   rowFilterApplied?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs: Schema.Schema<GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs> =
+export const GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs: Schema.Codec<GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     samplingPercent: Schema.optional(Schema.Number),
     rowFilterApplied: Schema.optional(Schema.Boolean),
@@ -6253,7 +6253,7 @@ export interface GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQuery
   message?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult: Schema.Schema<GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult> =
+export const GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult: Schema.Codec<GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -6267,7 +6267,7 @@ export interface GoogleCloudDataplexV1DataScanEventPostScanActionsResult {
   bigqueryExportResult?: GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult;
 }
 
-export const GoogleCloudDataplexV1DataScanEventPostScanActionsResult: Schema.Schema<GoogleCloudDataplexV1DataScanEventPostScanActionsResult> =
+export const GoogleCloudDataplexV1DataScanEventPostScanActionsResult: Schema.Codec<GoogleCloudDataplexV1DataScanEventPostScanActionsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigqueryExportResult: Schema.optional(
       GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult,
@@ -6330,7 +6330,7 @@ export interface GoogleCloudDataplexV1DataScanEvent {
   catalogPublishingStatus?: GoogleCloudDataplexV1DataScanCatalogPublishingStatus;
 }
 
-export const GoogleCloudDataplexV1DataScanEvent: Schema.Schema<GoogleCloudDataplexV1DataScanEvent> =
+export const GoogleCloudDataplexV1DataScanEvent: Schema.Codec<GoogleCloudDataplexV1DataScanEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.String),
     jobId: Schema.optional(Schema.String),
@@ -6408,7 +6408,7 @@ export interface GoogleCloudDataplexV1DataQualityScanRuleResult {
   assertionRowCount?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityScanRuleResult: Schema.Schema<GoogleCloudDataplexV1DataQualityScanRuleResult> =
+export const GoogleCloudDataplexV1DataQualityScanRuleResult: Schema.Codec<GoogleCloudDataplexV1DataQualityScanRuleResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
     dataSource: Schema.optional(Schema.String),
@@ -6432,7 +6432,7 @@ export interface GoogleCloudDataplexV1GovernanceEventEntity {
   entityType?: "ENTITY_TYPE_UNSPECIFIED" | "TABLE" | "FILESET" | (string & {});
 }
 
-export const GoogleCloudDataplexV1GovernanceEventEntity: Schema.Schema<GoogleCloudDataplexV1GovernanceEventEntity> =
+export const GoogleCloudDataplexV1GovernanceEventEntity: Schema.Codec<GoogleCloudDataplexV1GovernanceEventEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entity: Schema.optional(Schema.String),
     entityType: Schema.optional(Schema.String),
@@ -6465,7 +6465,7 @@ export interface GoogleCloudDataplexV1GovernanceEvent {
   entity?: GoogleCloudDataplexV1GovernanceEventEntity;
 }
 
-export const GoogleCloudDataplexV1GovernanceEvent: Schema.Schema<GoogleCloudDataplexV1GovernanceEvent> =
+export const GoogleCloudDataplexV1GovernanceEvent: Schema.Codec<GoogleCloudDataplexV1GovernanceEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
@@ -6492,7 +6492,7 @@ export interface GoogleCloudDataplexV1BusinessGlossaryEvent {
   resource?: string;
 }
 
-export const GoogleCloudDataplexV1BusinessGlossaryEvent: Schema.Schema<GoogleCloudDataplexV1BusinessGlossaryEvent> =
+export const GoogleCloudDataplexV1BusinessGlossaryEvent: Schema.Codec<GoogleCloudDataplexV1BusinessGlossaryEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
@@ -6512,7 +6512,7 @@ export interface GoogleCloudDataplexV1EntryLinkEvent {
   resource?: string;
 }
 
-export const GoogleCloudDataplexV1EntryLinkEvent: Schema.Schema<GoogleCloudDataplexV1EntryLinkEvent> =
+export const GoogleCloudDataplexV1EntryLinkEvent: Schema.Codec<GoogleCloudDataplexV1EntryLinkEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
@@ -6606,7 +6606,7 @@ export const LookupEntryProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:lookupEntry" }),
     svc,
-  ) as unknown as Schema.Schema<LookupEntryProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<LookupEntryProjectsLocationsRequest>;
 
 export type LookupEntryProjectsLocationsResponse = GoogleCloudDataplexV1Entry;
 export const LookupEntryProjectsLocationsResponse =
@@ -6645,7 +6645,7 @@ export const ModifyEntryProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:modifyEntry", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ModifyEntryProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ModifyEntryProjectsLocationsRequest>;
 
 export type ModifyEntryProjectsLocationsResponse = GoogleCloudDataplexV1Entry;
 export const ModifyEntryProjectsLocationsResponse =
@@ -6701,7 +6701,7 @@ export const SearchEntriesProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:searchEntries", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SearchEntriesProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SearchEntriesProjectsLocationsRequest>;
 
 export type SearchEntriesProjectsLocationsResponse =
   GoogleCloudDataplexV1SearchEntriesResponse;
@@ -6759,7 +6759,7 @@ export const LookupEntryLinksProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:lookupEntryLinks" }),
     svc,
-  ) as unknown as Schema.Schema<LookupEntryLinksProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<LookupEntryLinksProjectsLocationsRequest>;
 
 export type LookupEntryLinksProjectsLocationsResponse =
   GoogleCloudDataplexV1LookupEntryLinksResponse;
@@ -6803,7 +6803,7 @@ export const LookupContextProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:lookupContext", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<LookupContextProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<LookupContextProjectsLocationsRequest>;
 
 export type LookupContextProjectsLocationsResponse =
   GoogleCloudDataplexV1LookupContextResponse;
@@ -6854,7 +6854,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
@@ -6890,7 +6890,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
@@ -6935,7 +6935,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -6974,7 +6974,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -7008,7 +7008,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -7049,7 +7049,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -7098,7 +7098,7 @@ export const CreateProjectsLocationsEntryTypesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/entryTypes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEntryTypesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEntryTypesRequest>;
 
 export type CreateProjectsLocationsEntryTypesResponse =
   GoogleLongrunningOperation;
@@ -7146,7 +7146,7 @@ export const PatchProjectsLocationsEntryTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEntryTypesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEntryTypesRequest>;
 
 export type PatchProjectsLocationsEntryTypesResponse =
   GoogleLongrunningOperation;
@@ -7186,7 +7186,7 @@ export const DeleteProjectsLocationsEntryTypesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryTypesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEntryTypesRequest>;
 
 export type DeleteProjectsLocationsEntryTypesResponse =
   GoogleLongrunningOperation;
@@ -7235,7 +7235,7 @@ export const ListProjectsLocationsEntryTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entryTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEntryTypesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEntryTypesRequest>;
 
 export type ListProjectsLocationsEntryTypesResponse =
   GoogleCloudDataplexV1ListEntryTypesResponse;
@@ -7274,7 +7274,7 @@ export const GetProjectsLocationsEntryTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEntryTypesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEntryTypesRequest>;
 
 export type GetProjectsLocationsEntryTypesResponse =
   GoogleCloudDataplexV1EntryType;
@@ -7316,7 +7316,7 @@ export const SetIamPolicyProjectsLocationsEntryTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsEntryTypesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsEntryTypesRequest>;
 
 export type SetIamPolicyProjectsLocationsEntryTypesResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsEntryTypesResponse =
@@ -7357,7 +7357,7 @@ export const GetIamPolicyProjectsLocationsEntryTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEntryTypesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsEntryTypesRequest>;
 
 export type GetIamPolicyProjectsLocationsEntryTypesResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsEntryTypesResponse =
@@ -7400,7 +7400,7 @@ export const TestIamPermissionsProjectsLocationsEntryTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsEntryTypesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsEntryTypesRequest>;
 
 export type TestIamPermissionsProjectsLocationsEntryTypesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -7450,7 +7450,7 @@ export const CreateProjectsLocationsAspectTypesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/aspectTypes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAspectTypesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAspectTypesRequest>;
 
 export type CreateProjectsLocationsAspectTypesResponse =
   GoogleLongrunningOperation;
@@ -7498,7 +7498,7 @@ export const PatchProjectsLocationsAspectTypesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAspectTypesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAspectTypesRequest>;
 
 export type PatchProjectsLocationsAspectTypesResponse =
   GoogleLongrunningOperation;
@@ -7538,7 +7538,7 @@ export const DeleteProjectsLocationsAspectTypesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAspectTypesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAspectTypesRequest>;
 
 export type DeleteProjectsLocationsAspectTypesResponse =
   GoogleLongrunningOperation;
@@ -7587,7 +7587,7 @@ export const ListProjectsLocationsAspectTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/aspectTypes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAspectTypesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAspectTypesRequest>;
 
 export type ListProjectsLocationsAspectTypesResponse =
   GoogleCloudDataplexV1ListAspectTypesResponse;
@@ -7626,7 +7626,7 @@ export const GetProjectsLocationsAspectTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAspectTypesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAspectTypesRequest>;
 
 export type GetProjectsLocationsAspectTypesResponse =
   GoogleCloudDataplexV1AspectType;
@@ -7668,7 +7668,7 @@ export const SetIamPolicyProjectsLocationsAspectTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAspectTypesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsAspectTypesRequest>;
 
 export type SetIamPolicyProjectsLocationsAspectTypesResponse =
   GoogleIamV1Policy;
@@ -7710,7 +7710,7 @@ export const GetIamPolicyProjectsLocationsAspectTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAspectTypesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsAspectTypesRequest>;
 
 export type GetIamPolicyProjectsLocationsAspectTypesResponse =
   GoogleIamV1Policy;
@@ -7754,7 +7754,7 @@ export const TestIamPermissionsProjectsLocationsAspectTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAspectTypesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsAspectTypesRequest>;
 
 export type TestIamPermissionsProjectsLocationsAspectTypesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -7804,7 +7804,7 @@ export const CreateProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/entryGroups", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEntryGroupsRequest>;
 
 export type CreateProjectsLocationsEntryGroupsResponse =
   GoogleLongrunningOperation;
@@ -7852,7 +7852,7 @@ export const PatchProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEntryGroupsRequest>;
 
 export type PatchProjectsLocationsEntryGroupsResponse =
   GoogleLongrunningOperation;
@@ -7892,7 +7892,7 @@ export const DeleteProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEntryGroupsRequest>;
 
 export type DeleteProjectsLocationsEntryGroupsResponse =
   GoogleLongrunningOperation;
@@ -7941,7 +7941,7 @@ export const ListProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entryGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEntryGroupsRequest>;
 
 export type ListProjectsLocationsEntryGroupsResponse =
   GoogleCloudDataplexV1ListEntryGroupsResponse;
@@ -7980,7 +7980,7 @@ export const GetProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEntryGroupsRequest>;
 
 export type GetProjectsLocationsEntryGroupsResponse =
   GoogleCloudDataplexV1EntryGroup;
@@ -8022,7 +8022,7 @@ export const SetIamPolicyProjectsLocationsEntryGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsEntryGroupsRequest>;
 
 export type SetIamPolicyProjectsLocationsEntryGroupsResponse =
   GoogleIamV1Policy;
@@ -8064,7 +8064,7 @@ export const GetIamPolicyProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsEntryGroupsRequest>;
 
 export type GetIamPolicyProjectsLocationsEntryGroupsResponse =
   GoogleIamV1Policy;
@@ -8108,7 +8108,7 @@ export const TestIamPermissionsProjectsLocationsEntryGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsEntryGroupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsEntryGroupsRequest>;
 
 export type TestIamPermissionsProjectsLocationsEntryGroupsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -8151,7 +8151,7 @@ export const CreateProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/entries", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type CreateProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDataplexV1Entry;
@@ -8209,7 +8209,7 @@ export const PatchProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type PatchProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDataplexV1Entry;
@@ -8246,7 +8246,7 @@ export const DeleteProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type DeleteProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDataplexV1Entry;
@@ -8292,7 +8292,7 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entries" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type ListProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDataplexV1ListEntriesResponse;
@@ -8350,7 +8350,7 @@ export const GetProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type GetProjectsLocationsEntryGroupsEntriesResponse =
   GoogleCloudDataplexV1Entry;
@@ -8393,7 +8393,7 @@ export const CreateProjectsLocationsEntryGroupsEntryLinksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/entryLinks", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsEntryLinksRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEntryGroupsEntryLinksRequest>;
 
 export type CreateProjectsLocationsEntryGroupsEntryLinksResponse =
   GoogleCloudDataplexV1EntryLink;
@@ -8443,7 +8443,7 @@ export const PatchProjectsLocationsEntryGroupsEntryLinksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsEntryLinksRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEntryGroupsEntryLinksRequest>;
 
 export type PatchProjectsLocationsEntryGroupsEntryLinksResponse =
   GoogleCloudDataplexV1EntryLink;
@@ -8480,7 +8480,7 @@ export const DeleteProjectsLocationsEntryGroupsEntryLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsEntryLinksRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEntryGroupsEntryLinksRequest>;
 
 export type DeleteProjectsLocationsEntryGroupsEntryLinksResponse =
   GoogleCloudDataplexV1EntryLink;
@@ -8517,7 +8517,7 @@ export const GetProjectsLocationsEntryGroupsEntryLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsEntryLinksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEntryGroupsEntryLinksRequest>;
 
 export type GetProjectsLocationsEntryGroupsEntryLinksResponse =
   GoogleCloudDataplexV1EntryLink;
@@ -8569,7 +8569,7 @@ export const CreateProjectsLocationsMetadataJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsMetadataJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsMetadataJobsRequest>;
 
 export type CreateProjectsLocationsMetadataJobsResponse =
   GoogleLongrunningOperation;
@@ -8606,7 +8606,7 @@ export const GetProjectsLocationsMetadataJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsMetadataJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsMetadataJobsRequest>;
 
 export type GetProjectsLocationsMetadataJobsResponse =
   GoogleCloudDataplexV1MetadataJob;
@@ -8653,7 +8653,7 @@ export const ListProjectsLocationsMetadataJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/metadataJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsMetadataJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsMetadataJobsRequest>;
 
 export type ListProjectsLocationsMetadataJobsResponse =
   GoogleCloudDataplexV1ListMetadataJobsResponse;
@@ -8697,7 +8697,7 @@ export const CancelProjectsLocationsMetadataJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsMetadataJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsMetadataJobsRequest>;
 
 export type CancelProjectsLocationsMetadataJobsResponse = Empty;
 export const CancelProjectsLocationsMetadataJobsResponse =
@@ -8750,7 +8750,7 @@ export const CreateProjectsLocationsMetadataFeedsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsMetadataFeedsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsMetadataFeedsRequest>;
 
 export type CreateProjectsLocationsMetadataFeedsResponse =
   GoogleLongrunningOperation;
@@ -8787,7 +8787,7 @@ export const GetProjectsLocationsMetadataFeedsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsMetadataFeedsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsMetadataFeedsRequest>;
 
 export type GetProjectsLocationsMetadataFeedsResponse =
   GoogleCloudDataplexV1MetadataFeed;
@@ -8834,7 +8834,7 @@ export const ListProjectsLocationsMetadataFeedsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/metadataFeeds" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsMetadataFeedsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsMetadataFeedsRequest>;
 
 export type ListProjectsLocationsMetadataFeedsResponse =
   GoogleCloudDataplexV1ListMetadataFeedsResponse;
@@ -8873,7 +8873,7 @@ export const DeleteProjectsLocationsMetadataFeedsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataFeedsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsMetadataFeedsRequest>;
 
 export type DeleteProjectsLocationsMetadataFeedsResponse =
   GoogleLongrunningOperation;
@@ -8921,7 +8921,7 @@ export const PatchProjectsLocationsMetadataFeedsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsMetadataFeedsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsMetadataFeedsRequest>;
 
 export type PatchProjectsLocationsMetadataFeedsResponse =
   GoogleLongrunningOperation;
@@ -8969,7 +8969,7 @@ export const CreateProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/glossaries", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGlossariesRequest>;
 
 export type CreateProjectsLocationsGlossariesResponse =
   GoogleLongrunningOperation;
@@ -9017,7 +9017,7 @@ export const PatchProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsGlossariesRequest>;
 
 export type PatchProjectsLocationsGlossariesResponse =
   GoogleLongrunningOperation;
@@ -9057,7 +9057,7 @@ export const DeleteProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGlossariesRequest>;
 
 export type DeleteProjectsLocationsGlossariesResponse =
   GoogleLongrunningOperation;
@@ -9094,7 +9094,7 @@ export const GetProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGlossariesRequest>;
 
 export type GetProjectsLocationsGlossariesResponse =
   GoogleCloudDataplexV1Glossary;
@@ -9141,7 +9141,7 @@ export const ListProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/glossaries" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGlossariesRequest>;
 
 export type ListProjectsLocationsGlossariesResponse =
   GoogleCloudDataplexV1ListGlossariesResponse;
@@ -9187,7 +9187,7 @@ export const SetIamPolicyProjectsLocationsGlossariesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsGlossariesRequest>;
 
 export type SetIamPolicyProjectsLocationsGlossariesResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsGlossariesResponse =
@@ -9228,7 +9228,7 @@ export const GetIamPolicyProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsGlossariesRequest>;
 
 export type GetIamPolicyProjectsLocationsGlossariesResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsGlossariesResponse =
@@ -9271,7 +9271,7 @@ export const TestIamPermissionsProjectsLocationsGlossariesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGlossariesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsGlossariesRequest>;
 
 export type TestIamPermissionsProjectsLocationsGlossariesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -9316,7 +9316,7 @@ export const CreateProjectsLocationsGlossariesCategoriesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/categories", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGlossariesCategoriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGlossariesCategoriesRequest>;
 
 export type CreateProjectsLocationsGlossariesCategoriesResponse =
   GoogleCloudDataplexV1GlossaryCategory;
@@ -9361,7 +9361,7 @@ export const PatchProjectsLocationsGlossariesCategoriesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGlossariesCategoriesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsGlossariesCategoriesRequest>;
 
 export type PatchProjectsLocationsGlossariesCategoriesResponse =
   GoogleCloudDataplexV1GlossaryCategory;
@@ -9398,7 +9398,7 @@ export const DeleteProjectsLocationsGlossariesCategoriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesCategoriesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGlossariesCategoriesRequest>;
 
 export type DeleteProjectsLocationsGlossariesCategoriesResponse = Empty;
 export const DeleteProjectsLocationsGlossariesCategoriesResponse =
@@ -9434,7 +9434,7 @@ export const GetProjectsLocationsGlossariesCategoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesCategoriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGlossariesCategoriesRequest>;
 
 export type GetProjectsLocationsGlossariesCategoriesResponse =
   GoogleCloudDataplexV1GlossaryCategory;
@@ -9481,7 +9481,7 @@ export const ListProjectsLocationsGlossariesCategoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/categories" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesCategoriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGlossariesCategoriesRequest>;
 
 export type ListProjectsLocationsGlossariesCategoriesResponse =
   GoogleCloudDataplexV1ListGlossaryCategoriesResponse;
@@ -9527,7 +9527,7 @@ export const SetIamPolicyProjectsLocationsGlossariesCategoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGlossariesCategoriesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsGlossariesCategoriesRequest>;
 
 export type SetIamPolicyProjectsLocationsGlossariesCategoriesResponse =
   GoogleIamV1Policy;
@@ -9569,7 +9569,7 @@ export const GetIamPolicyProjectsLocationsGlossariesCategoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlossariesCategoriesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsGlossariesCategoriesRequest>;
 
 export type GetIamPolicyProjectsLocationsGlossariesCategoriesResponse =
   GoogleIamV1Policy;
@@ -9613,7 +9613,7 @@ export const TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest>;
 
 export type TestIamPermissionsProjectsLocationsGlossariesCategoriesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -9656,7 +9656,7 @@ export const CreateProjectsLocationsGlossariesTermsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/terms", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGlossariesTermsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGlossariesTermsRequest>;
 
 export type CreateProjectsLocationsGlossariesTermsResponse =
   GoogleCloudDataplexV1GlossaryTerm;
@@ -9699,7 +9699,7 @@ export const PatchProjectsLocationsGlossariesTermsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGlossariesTermsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsGlossariesTermsRequest>;
 
 export type PatchProjectsLocationsGlossariesTermsResponse =
   GoogleCloudDataplexV1GlossaryTerm;
@@ -9736,7 +9736,7 @@ export const DeleteProjectsLocationsGlossariesTermsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesTermsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGlossariesTermsRequest>;
 
 export type DeleteProjectsLocationsGlossariesTermsResponse = Empty;
 export const DeleteProjectsLocationsGlossariesTermsResponse =
@@ -9772,7 +9772,7 @@ export const GetProjectsLocationsGlossariesTermsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesTermsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGlossariesTermsRequest>;
 
 export type GetProjectsLocationsGlossariesTermsResponse =
   GoogleCloudDataplexV1GlossaryTerm;
@@ -9819,7 +9819,7 @@ export const ListProjectsLocationsGlossariesTermsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/terms" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesTermsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGlossariesTermsRequest>;
 
 export type ListProjectsLocationsGlossariesTermsResponse =
   GoogleCloudDataplexV1ListGlossaryTermsResponse;
@@ -9865,7 +9865,7 @@ export const SetIamPolicyProjectsLocationsGlossariesTermsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGlossariesTermsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsGlossariesTermsRequest>;
 
 export type SetIamPolicyProjectsLocationsGlossariesTermsResponse =
   GoogleIamV1Policy;
@@ -9907,7 +9907,7 @@ export const GetIamPolicyProjectsLocationsGlossariesTermsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlossariesTermsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsGlossariesTermsRequest>;
 
 export type GetIamPolicyProjectsLocationsGlossariesTermsResponse =
   GoogleIamV1Policy;
@@ -9951,7 +9951,7 @@ export const TestIamPermissionsProjectsLocationsGlossariesTermsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGlossariesTermsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsGlossariesTermsRequest>;
 
 export type TestIamPermissionsProjectsLocationsGlossariesTermsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -9988,7 +9988,7 @@ export const GetProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsChangeRequestsRequest>;
 
 export type GetProjectsLocationsChangeRequestsResponse =
   GoogleCloudDataplexV1ChangeRequest;
@@ -10035,7 +10035,7 @@ export const ListProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/changeRequests" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsChangeRequestsRequest>;
 
 export type ListProjectsLocationsChangeRequestsResponse =
   GoogleCloudDataplexV1ListChangeRequestsResponse;
@@ -10082,7 +10082,7 @@ export const PatchProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsChangeRequestsRequest>;
 
 export type PatchProjectsLocationsChangeRequestsResponse =
   GoogleCloudDataplexV1ChangeRequest;
@@ -10122,7 +10122,7 @@ export const DeleteProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsChangeRequestsRequest>;
 
 export type DeleteProjectsLocationsChangeRequestsResponse = Empty;
 export const DeleteProjectsLocationsChangeRequestsResponse =
@@ -10163,7 +10163,7 @@ export const ApproveProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApproveProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<ApproveProjectsLocationsChangeRequestsRequest>;
 
 export type ApproveProjectsLocationsChangeRequestsResponse =
   GoogleCloudDataplexV1ChangeRequest;
@@ -10205,7 +10205,7 @@ export const RejectProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:reject", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RejectProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<RejectProjectsLocationsChangeRequestsRequest>;
 
 export type RejectProjectsLocationsChangeRequestsResponse =
   GoogleCloudDataplexV1ChangeRequest;
@@ -10249,7 +10249,7 @@ export const SetIamPolicyProjectsLocationsChangeRequestsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsChangeRequestsRequest>;
 
 export type SetIamPolicyProjectsLocationsChangeRequestsResponse =
   GoogleIamV1Policy;
@@ -10291,7 +10291,7 @@ export const GetIamPolicyProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsChangeRequestsRequest>;
 
 export type GetIamPolicyProjectsLocationsChangeRequestsResponse =
   GoogleIamV1Policy;
@@ -10335,7 +10335,7 @@ export const TestIamPermissionsProjectsLocationsChangeRequestsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsChangeRequestsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsChangeRequestsRequest>;
 
 export type TestIamPermissionsProjectsLocationsChangeRequestsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -10379,7 +10379,7 @@ export const SetIamPolicyProjectsLocationsLakesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsLakesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsLakesRequest>;
 
 export type SetIamPolicyProjectsLocationsLakesResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsLakesResponse =
@@ -10420,7 +10420,7 @@ export const GetIamPolicyProjectsLocationsLakesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsLakesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsLakesRequest>;
 
 export type GetIamPolicyProjectsLocationsLakesResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsLakesResponse =
@@ -10463,7 +10463,7 @@ export const TestIamPermissionsProjectsLocationsLakesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsLakesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsLakesRequest>;
 
 export type TestIamPermissionsProjectsLocationsLakesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -10511,7 +10511,7 @@ export const CreateProjectsLocationsLakesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/lakes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsLakesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsLakesRequest>;
 
 export type CreateProjectsLocationsLakesResponse = GoogleLongrunningOperation;
 export const CreateProjectsLocationsLakesResponse =
@@ -10558,7 +10558,7 @@ export const PatchProjectsLocationsLakesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsLakesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsLakesRequest>;
 
 export type PatchProjectsLocationsLakesResponse = GoogleLongrunningOperation;
 export const PatchProjectsLocationsLakesResponse =
@@ -10594,7 +10594,7 @@ export const DeleteProjectsLocationsLakesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsLakesRequest>;
 
 export type DeleteProjectsLocationsLakesResponse = GoogleLongrunningOperation;
 export const DeleteProjectsLocationsLakesResponse =
@@ -10642,7 +10642,7 @@ export const ListProjectsLocationsLakesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/lakes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesRequest>;
 
 export type ListProjectsLocationsLakesResponse =
   GoogleCloudDataplexV1ListLakesResponse;
@@ -10681,7 +10681,7 @@ export const GetProjectsLocationsLakesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsLakesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsLakesRequest>;
 
 export type GetProjectsLocationsLakesResponse = GoogleCloudDataplexV1Lake;
 export const GetProjectsLocationsLakesResponse =
@@ -10722,7 +10722,7 @@ export const SetIamPolicyProjectsLocationsLakesZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsLakesZonesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsLakesZonesRequest>;
 
 export type SetIamPolicyProjectsLocationsLakesZonesResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsLakesZonesResponse =
@@ -10763,7 +10763,7 @@ export const GetIamPolicyProjectsLocationsLakesZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsLakesZonesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsLakesZonesRequest>;
 
 export type GetIamPolicyProjectsLocationsLakesZonesResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsLakesZonesResponse =
@@ -10806,7 +10806,7 @@ export const TestIamPermissionsProjectsLocationsLakesZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsLakesZonesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsLakesZonesRequest>;
 
 export type TestIamPermissionsProjectsLocationsLakesZonesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -10854,7 +10854,7 @@ export const CreateProjectsLocationsLakesZonesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/zones", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsLakesZonesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsLakesZonesRequest>;
 
 export type CreateProjectsLocationsLakesZonesResponse =
   GoogleLongrunningOperation;
@@ -10902,7 +10902,7 @@ export const PatchProjectsLocationsLakesZonesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsLakesZonesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsLakesZonesRequest>;
 
 export type PatchProjectsLocationsLakesZonesResponse =
   GoogleLongrunningOperation;
@@ -10939,7 +10939,7 @@ export const DeleteProjectsLocationsLakesZonesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesZonesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsLakesZonesRequest>;
 
 export type DeleteProjectsLocationsLakesZonesResponse =
   GoogleLongrunningOperation;
@@ -10988,7 +10988,7 @@ export const ListProjectsLocationsLakesZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/zones" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesZonesRequest>;
 
 export type ListProjectsLocationsLakesZonesResponse =
   GoogleCloudDataplexV1ListZonesResponse;
@@ -11027,7 +11027,7 @@ export const GetProjectsLocationsLakesZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsLakesZonesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsLakesZonesRequest>;
 
 export type GetProjectsLocationsLakesZonesResponse = GoogleCloudDataplexV1Zone;
 export const GetProjectsLocationsLakesZonesResponse =
@@ -11068,7 +11068,7 @@ export const SetIamPolicyProjectsLocationsLakesZonesAssetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsLakesZonesAssetsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsLakesZonesAssetsRequest>;
 
 export type SetIamPolicyProjectsLocationsLakesZonesAssetsResponse =
   GoogleIamV1Policy;
@@ -11110,7 +11110,7 @@ export const GetIamPolicyProjectsLocationsLakesZonesAssetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsLakesZonesAssetsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsLakesZonesAssetsRequest>;
 
 export type GetIamPolicyProjectsLocationsLakesZonesAssetsResponse =
   GoogleIamV1Policy;
@@ -11154,7 +11154,7 @@ export const TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest>;
 
 export type TestIamPermissionsProjectsLocationsLakesZonesAssetsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -11202,7 +11202,7 @@ export const CreateProjectsLocationsLakesZonesAssetsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/assets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsLakesZonesAssetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsLakesZonesAssetsRequest>;
 
 export type CreateProjectsLocationsLakesZonesAssetsResponse =
   GoogleLongrunningOperation;
@@ -11250,7 +11250,7 @@ export const PatchProjectsLocationsLakesZonesAssetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsLakesZonesAssetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsLakesZonesAssetsRequest>;
 
 export type PatchProjectsLocationsLakesZonesAssetsResponse =
   GoogleLongrunningOperation;
@@ -11287,7 +11287,7 @@ export const DeleteProjectsLocationsLakesZonesAssetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesZonesAssetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsLakesZonesAssetsRequest>;
 
 export type DeleteProjectsLocationsLakesZonesAssetsResponse =
   GoogleLongrunningOperation;
@@ -11336,7 +11336,7 @@ export const ListProjectsLocationsLakesZonesAssetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/assets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesAssetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesZonesAssetsRequest>;
 
 export type ListProjectsLocationsLakesZonesAssetsResponse =
   GoogleCloudDataplexV1ListAssetsResponse;
@@ -11375,7 +11375,7 @@ export const GetProjectsLocationsLakesZonesAssetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsLakesZonesAssetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsLakesZonesAssetsRequest>;
 
 export type GetProjectsLocationsLakesZonesAssetsResponse =
   GoogleCloudDataplexV1Asset;
@@ -11416,7 +11416,7 @@ export const ListProjectsLocationsLakesZonesAssetsActionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/actions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesAssetsActionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesZonesAssetsActionsRequest>;
 
 export type ListProjectsLocationsLakesZonesAssetsActionsResponse =
   GoogleCloudDataplexV1ListActionsResponse;
@@ -11463,7 +11463,7 @@ export const CreateProjectsLocationsLakesZonesEntitiesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/entities", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsLakesZonesEntitiesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsLakesZonesEntitiesRequest>;
 
 export type CreateProjectsLocationsLakesZonesEntitiesResponse =
   GoogleCloudDataplexV1Entity;
@@ -11508,7 +11508,7 @@ export const UpdateProjectsLocationsLakesZonesEntitiesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsLocationsLakesZonesEntitiesRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsLocationsLakesZonesEntitiesRequest>;
 
 export type UpdateProjectsLocationsLakesZonesEntitiesResponse =
   GoogleCloudDataplexV1Entity;
@@ -11548,7 +11548,7 @@ export const DeleteProjectsLocationsLakesZonesEntitiesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesZonesEntitiesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsLakesZonesEntitiesRequest>;
 
 export type DeleteProjectsLocationsLakesZonesEntitiesResponse = Empty;
 export const DeleteProjectsLocationsLakesZonesEntitiesResponse =
@@ -11592,7 +11592,7 @@ export const GetProjectsLocationsLakesZonesEntitiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsLakesZonesEntitiesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsLakesZonesEntitiesRequest>;
 
 export type GetProjectsLocationsLakesZonesEntitiesResponse =
   GoogleCloudDataplexV1Entity;
@@ -11639,7 +11639,7 @@ export const ListProjectsLocationsLakesZonesEntitiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/entities" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesEntitiesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesZonesEntitiesRequest>;
 
 export type ListProjectsLocationsLakesZonesEntitiesResponse =
   GoogleCloudDataplexV1ListEntitiesResponse;
@@ -11686,7 +11686,7 @@ export const CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/partitions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
 export type CreateProjectsLocationsLakesZonesEntitiesPartitionsResponse =
   GoogleCloudDataplexV1Partition;
@@ -11726,7 +11726,7 @@ export const DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
 export type DeleteProjectsLocationsLakesZonesEntitiesPartitionsResponse = Empty;
 export const DeleteProjectsLocationsLakesZonesEntitiesPartitionsResponse =
@@ -11762,7 +11762,7 @@ export const GetProjectsLocationsLakesZonesEntitiesPartitionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
 export type GetProjectsLocationsLakesZonesEntitiesPartitionsResponse =
   GoogleCloudDataplexV1Partition;
@@ -11806,7 +11806,7 @@ export const ListProjectsLocationsLakesZonesEntitiesPartitionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/partitions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
 export type ListProjectsLocationsLakesZonesEntitiesPartitionsResponse =
   GoogleCloudDataplexV1ListPartitionsResponse;
@@ -11851,7 +11851,7 @@ export const ListProjectsLocationsLakesZonesActionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/actions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesActionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesZonesActionsRequest>;
 
 export type ListProjectsLocationsLakesZonesActionsResponse =
   GoogleCloudDataplexV1ListActionsResponse;
@@ -11897,7 +11897,7 @@ export const SetIamPolicyProjectsLocationsLakesTasksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsLakesTasksRequest>;
 
 export type SetIamPolicyProjectsLocationsLakesTasksResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsLakesTasksResponse =
@@ -11938,7 +11938,7 @@ export const GetIamPolicyProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsLakesTasksRequest>;
 
 export type GetIamPolicyProjectsLocationsLakesTasksResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsLakesTasksResponse =
@@ -11981,7 +11981,7 @@ export const TestIamPermissionsProjectsLocationsLakesTasksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsLakesTasksRequest>;
 
 export type TestIamPermissionsProjectsLocationsLakesTasksResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -12029,7 +12029,7 @@ export const CreateProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/tasks", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsLakesTasksRequest>;
 
 export type CreateProjectsLocationsLakesTasksResponse =
   GoogleLongrunningOperation;
@@ -12077,7 +12077,7 @@ export const PatchProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsLakesTasksRequest>;
 
 export type PatchProjectsLocationsLakesTasksResponse =
   GoogleLongrunningOperation;
@@ -12114,7 +12114,7 @@ export const DeleteProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsLakesTasksRequest>;
 
 export type DeleteProjectsLocationsLakesTasksResponse =
   GoogleLongrunningOperation;
@@ -12163,7 +12163,7 @@ export const ListProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/tasks" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesTasksRequest>;
 
 export type ListProjectsLocationsLakesTasksResponse =
   GoogleCloudDataplexV1ListTasksResponse;
@@ -12202,7 +12202,7 @@ export const GetProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsLakesTasksRequest>;
 
 export type GetProjectsLocationsLakesTasksResponse = GoogleCloudDataplexV1Task;
 export const GetProjectsLocationsLakesTasksResponse =
@@ -12241,7 +12241,7 @@ export const RunProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:run", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RunProjectsLocationsLakesTasksRequest>;
+  ) as unknown as Schema.Codec<RunProjectsLocationsLakesTasksRequest>;
 
 export type RunProjectsLocationsLakesTasksResponse =
   GoogleCloudDataplexV1RunTaskResponse;
@@ -12284,7 +12284,7 @@ export const ListProjectsLocationsLakesTasksJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/jobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesTasksJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesTasksJobsRequest>;
 
 export type ListProjectsLocationsLakesTasksJobsResponse =
   GoogleCloudDataplexV1ListJobsResponse;
@@ -12323,7 +12323,7 @@ export const GetProjectsLocationsLakesTasksJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsLakesTasksJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsLakesTasksJobsRequest>;
 
 export type GetProjectsLocationsLakesTasksJobsResponse =
   GoogleCloudDataplexV1Job;
@@ -12363,7 +12363,7 @@ export const CancelProjectsLocationsLakesTasksJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsLakesTasksJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsLakesTasksJobsRequest>;
 
 export type CancelProjectsLocationsLakesTasksJobsResponse = Empty;
 export const CancelProjectsLocationsLakesTasksJobsResponse =
@@ -12405,7 +12405,7 @@ export const ListProjectsLocationsLakesActionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/actions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsLakesActionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsLakesActionsRequest>;
 
 export type ListProjectsLocationsLakesActionsResponse =
   GoogleCloudDataplexV1ListActionsResponse;
@@ -12451,7 +12451,7 @@ export const SetIamPolicyProjectsLocationsDataScansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataScansRequest>;
 
 export type SetIamPolicyProjectsLocationsDataScansResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsDataScansResponse =
@@ -12492,7 +12492,7 @@ export const GetIamPolicyProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataScansRequest>;
 
 export type GetIamPolicyProjectsLocationsDataScansResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsDataScansResponse =
@@ -12535,7 +12535,7 @@ export const TestIamPermissionsProjectsLocationsDataScansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataScansRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataScansResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -12583,7 +12583,7 @@ export const CreateProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/dataScans", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataScansRequest>;
 
 export type CreateProjectsLocationsDataScansResponse =
   GoogleLongrunningOperation;
@@ -12631,7 +12631,7 @@ export const PatchProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataScansRequest>;
 
 export type PatchProjectsLocationsDataScansResponse =
   GoogleLongrunningOperation;
@@ -12671,7 +12671,7 @@ export const DeleteProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataScansRequest>;
 
 export type DeleteProjectsLocationsDataScansResponse =
   GoogleLongrunningOperation;
@@ -12711,7 +12711,7 @@ export const GetProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataScansRequest>;
 
 export type GetProjectsLocationsDataScansResponse =
   GoogleCloudDataplexV1DataScan;
@@ -12758,7 +12758,7 @@ export const ListProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataScans" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataScansRequest>;
 
 export type ListProjectsLocationsDataScansResponse =
   GoogleCloudDataplexV1ListDataScansResponse;
@@ -12802,7 +12802,7 @@ export const RunProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:run", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RunProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<RunProjectsLocationsDataScansRequest>;
 
 export type RunProjectsLocationsDataScansResponse =
   GoogleCloudDataplexV1RunDataScanResponse;
@@ -12848,7 +12848,7 @@ export const GenerateDataQualityRulesProjectsLocationsDataScansRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateDataQualityRulesProjectsLocationsDataScansRequest>;
+  ) as unknown as Schema.Codec<GenerateDataQualityRulesProjectsLocationsDataScansRequest>;
 
 export type GenerateDataQualityRulesProjectsLocationsDataScansResponse =
   GoogleCloudDataplexV1GenerateDataQualityRulesResponse;
@@ -12888,7 +12888,7 @@ export const GetProjectsLocationsDataScansJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataScansJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataScansJobsRequest>;
 
 export type GetProjectsLocationsDataScansJobsResponse =
   GoogleCloudDataplexV1DataScanJob;
@@ -12932,7 +12932,7 @@ export const ListProjectsLocationsDataScansJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/jobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataScansJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataScansJobsRequest>;
 
 export type ListProjectsLocationsDataScansJobsResponse =
   GoogleCloudDataplexV1ListDataScanJobsResponse;
@@ -12976,7 +12976,7 @@ export const CancelProjectsLocationsDataScansJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsDataScansJobsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsDataScansJobsRequest>;
 
 export type CancelProjectsLocationsDataScansJobsResponse =
   GoogleCloudDataplexV1CancelDataScanJobResponse;
@@ -13022,7 +13022,7 @@ export const GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest>;
+  ) as unknown as Schema.Codec<GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest>;
 
 export type GenerateDataQualityRulesProjectsLocationsDataScansJobsResponse =
   GoogleCloudDataplexV1GenerateDataQualityRulesResponse;
@@ -13066,7 +13066,7 @@ export const SetIamPolicyProjectsLocationsDataTaxonomiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataTaxonomiesRequest>;
 
 export type SetIamPolicyProjectsLocationsDataTaxonomiesResponse =
   GoogleIamV1Policy;
@@ -13108,7 +13108,7 @@ export const GetIamPolicyProjectsLocationsDataTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataTaxonomiesRequest>;
 
 export type GetIamPolicyProjectsLocationsDataTaxonomiesResponse =
   GoogleIamV1Policy;
@@ -13152,7 +13152,7 @@ export const TestIamPermissionsProjectsLocationsDataTaxonomiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataTaxonomiesRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataTaxonomiesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -13205,7 +13205,7 @@ export const CreateProjectsLocationsDataTaxonomiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataTaxonomiesRequest>;
 
 export type CreateProjectsLocationsDataTaxonomiesResponse =
   GoogleLongrunningOperation;
@@ -13253,7 +13253,7 @@ export const PatchProjectsLocationsDataTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataTaxonomiesRequest>;
 
 export type PatchProjectsLocationsDataTaxonomiesResponse =
   GoogleLongrunningOperation;
@@ -13293,7 +13293,7 @@ export const DeleteProjectsLocationsDataTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataTaxonomiesRequest>;
 
 export type DeleteProjectsLocationsDataTaxonomiesResponse =
   GoogleLongrunningOperation;
@@ -13342,7 +13342,7 @@ export const ListProjectsLocationsDataTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataTaxonomies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataTaxonomiesRequest>;
 
 export type ListProjectsLocationsDataTaxonomiesResponse =
   GoogleCloudDataplexV1ListDataTaxonomiesResponse;
@@ -13380,7 +13380,7 @@ export const GetProjectsLocationsDataTaxonomiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataTaxonomiesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataTaxonomiesRequest>;
 
 export type GetProjectsLocationsDataTaxonomiesResponse =
   GoogleCloudDataplexV1DataTaxonomy;
@@ -13422,7 +13422,7 @@ export const SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type SetIamPolicyProjectsLocationsDataTaxonomiesAttributesResponse =
   GoogleIamV1Policy;
@@ -13464,7 +13464,7 @@ export const GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type GetIamPolicyProjectsLocationsDataTaxonomiesAttributesResponse =
   GoogleIamV1Policy;
@@ -13508,7 +13508,7 @@ export const TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest 
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -13560,7 +13560,7 @@ export const CreateProjectsLocationsDataTaxonomiesAttributesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/attributes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataTaxonomiesAttributesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type CreateProjectsLocationsDataTaxonomiesAttributesResponse =
   GoogleLongrunningOperation;
@@ -13610,7 +13610,7 @@ export const PatchProjectsLocationsDataTaxonomiesAttributesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataTaxonomiesAttributesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type PatchProjectsLocationsDataTaxonomiesAttributesResponse =
   GoogleLongrunningOperation;
@@ -13650,7 +13650,7 @@ export const DeleteProjectsLocationsDataTaxonomiesAttributesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataTaxonomiesAttributesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type DeleteProjectsLocationsDataTaxonomiesAttributesResponse =
   GoogleLongrunningOperation;
@@ -13699,7 +13699,7 @@ export const ListProjectsLocationsDataTaxonomiesAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataTaxonomiesAttributesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type ListProjectsLocationsDataTaxonomiesAttributesResponse =
   GoogleCloudDataplexV1ListDataAttributesResponse;
@@ -13738,7 +13738,7 @@ export const GetProjectsLocationsDataTaxonomiesAttributesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataTaxonomiesAttributesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type GetProjectsLocationsDataTaxonomiesAttributesResponse =
   GoogleCloudDataplexV1DataAttribute;
@@ -13780,7 +13780,7 @@ export const SetIamPolicyProjectsLocationsDataAttributeBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataAttributeBindingsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataAttributeBindingsRequest>;
 
 export type SetIamPolicyProjectsLocationsDataAttributeBindingsResponse =
   GoogleIamV1Policy;
@@ -13822,7 +13822,7 @@ export const GetIamPolicyProjectsLocationsDataAttributeBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataAttributeBindingsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataAttributeBindingsRequest>;
 
 export type GetIamPolicyProjectsLocationsDataAttributeBindingsResponse =
   GoogleIamV1Policy;
@@ -13866,7 +13866,7 @@ export const TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataAttributeBindingsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -13922,7 +13922,7 @@ export const CreateProjectsLocationsDataAttributeBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataAttributeBindingsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataAttributeBindingsRequest>;
 
 export type CreateProjectsLocationsDataAttributeBindingsResponse =
   GoogleLongrunningOperation;
@@ -13972,7 +13972,7 @@ export const PatchProjectsLocationsDataAttributeBindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataAttributeBindingsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataAttributeBindingsRequest>;
 
 export type PatchProjectsLocationsDataAttributeBindingsResponse =
   GoogleLongrunningOperation;
@@ -14012,7 +14012,7 @@ export const DeleteProjectsLocationsDataAttributeBindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataAttributeBindingsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataAttributeBindingsRequest>;
 
 export type DeleteProjectsLocationsDataAttributeBindingsResponse =
   GoogleLongrunningOperation;
@@ -14061,7 +14061,7 @@ export const ListProjectsLocationsDataAttributeBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataAttributeBindings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataAttributeBindingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataAttributeBindingsRequest>;
 
 export type ListProjectsLocationsDataAttributeBindingsResponse =
   GoogleCloudDataplexV1ListDataAttributeBindingsResponse;
@@ -14100,7 +14100,7 @@ export const GetProjectsLocationsDataAttributeBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataAttributeBindingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataAttributeBindingsRequest>;
 
 export type GetProjectsLocationsDataAttributeBindingsResponse =
   GoogleCloudDataplexV1DataAttributeBinding;
@@ -14142,7 +14142,7 @@ export const SetIamPolicyProjectsLocationsEntryLinkTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsEntryLinkTypesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsEntryLinkTypesRequest>;
 
 export type SetIamPolicyProjectsLocationsEntryLinkTypesResponse =
   GoogleIamV1Policy;
@@ -14184,7 +14184,7 @@ export const GetIamPolicyProjectsLocationsEntryLinkTypesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEntryLinkTypesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsEntryLinkTypesRequest>;
 
 export type GetIamPolicyProjectsLocationsEntryLinkTypesResponse =
   GoogleIamV1Policy;
@@ -14228,7 +14228,7 @@ export const TestIamPermissionsProjectsLocationsEntryLinkTypesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsEntryLinkTypesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsEntryLinkTypesRequest>;
 
 export type TestIamPermissionsProjectsLocationsEntryLinkTypesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -14272,7 +14272,7 @@ export const SetIamPolicyProjectsLocationsGovernanceRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGovernanceRulesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsGovernanceRulesRequest>;
 
 export type SetIamPolicyProjectsLocationsGovernanceRulesResponse =
   GoogleIamV1Policy;
@@ -14314,7 +14314,7 @@ export const GetIamPolicyProjectsLocationsGovernanceRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGovernanceRulesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsGovernanceRulesRequest>;
 
 export type GetIamPolicyProjectsLocationsGovernanceRulesResponse =
   GoogleIamV1Policy;
@@ -14358,7 +14358,7 @@ export const TestIamPermissionsProjectsLocationsGovernanceRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGovernanceRulesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsGovernanceRulesRequest>;
 
 export type TestIamPermissionsProjectsLocationsGovernanceRulesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -14402,7 +14402,7 @@ export const SetIamPolicyProjectsLocationsDataProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataProductsRequest>;
 
 export type SetIamPolicyProjectsLocationsDataProductsResponse =
   GoogleIamV1Policy;
@@ -14444,7 +14444,7 @@ export const GetIamPolicyProjectsLocationsDataProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataProductsRequest>;
 
 export type GetIamPolicyProjectsLocationsDataProductsResponse =
   GoogleIamV1Policy;
@@ -14488,7 +14488,7 @@ export const TestIamPermissionsProjectsLocationsDataProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataProductsRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataProductsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -14542,7 +14542,7 @@ export const CreateProjectsLocationsDataProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataProductsRequest>;
 
 export type CreateProjectsLocationsDataProductsResponse =
   GoogleLongrunningOperation;
@@ -14587,7 +14587,7 @@ export const DeleteProjectsLocationsDataProductsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataProductsRequest>;
 
 export type DeleteProjectsLocationsDataProductsResponse =
   GoogleLongrunningOperation;
@@ -14624,7 +14624,7 @@ export const GetProjectsLocationsDataProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataProductsRequest>;
 
 export type GetProjectsLocationsDataProductsResponse =
   GoogleCloudDataplexV1DataProduct;
@@ -14671,7 +14671,7 @@ export const ListProjectsLocationsDataProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataProducts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataProductsRequest>;
 
 export type ListProjectsLocationsDataProductsResponse =
   GoogleCloudDataplexV1ListDataProductsResponse;
@@ -14721,7 +14721,7 @@ export const PatchProjectsLocationsDataProductsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataProductsRequest>;
 
 export type PatchProjectsLocationsDataProductsResponse =
   GoogleLongrunningOperation;
@@ -14767,7 +14767,7 @@ export const RequestAccessProjectsLocationsDataProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RequestAccessProjectsLocationsDataProductsRequest>;
+  ) as unknown as Schema.Codec<RequestAccessProjectsLocationsDataProductsRequest>;
 
 export type RequestAccessProjectsLocationsDataProductsResponse =
   GoogleCloudDataplexV1RequestDataProductAccessResponse;
@@ -14817,7 +14817,7 @@ export const CreateProjectsLocationsDataProductsDataAssetsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/dataAssets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataProductsDataAssetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataProductsDataAssetsRequest>;
 
 export type CreateProjectsLocationsDataProductsDataAssetsResponse =
   GoogleLongrunningOperation;
@@ -14865,7 +14865,7 @@ export const PatchProjectsLocationsDataProductsDataAssetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataProductsDataAssetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataProductsDataAssetsRequest>;
 
 export type PatchProjectsLocationsDataProductsDataAssetsResponse =
   GoogleLongrunningOperation;
@@ -14910,7 +14910,7 @@ export const DeleteProjectsLocationsDataProductsDataAssetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataProductsDataAssetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataProductsDataAssetsRequest>;
 
 export type DeleteProjectsLocationsDataProductsDataAssetsResponse =
   GoogleLongrunningOperation;
@@ -14947,7 +14947,7 @@ export const GetProjectsLocationsDataProductsDataAssetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataProductsDataAssetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataProductsDataAssetsRequest>;
 
 export type GetProjectsLocationsDataProductsDataAssetsResponse =
   GoogleCloudDataplexV1DataAsset;
@@ -14994,7 +14994,7 @@ export const ListProjectsLocationsDataProductsDataAssetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataAssets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataProductsDataAssetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataProductsDataAssetsRequest>;
 
 export type ListProjectsLocationsDataProductsDataAssetsResponse =
   GoogleCloudDataplexV1ListDataAssetsResponse;
@@ -15040,7 +15040,7 @@ export const SetIamPolicyProjectsLocationsDataDomainsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataDomainsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataDomainsRequest>;
 
 export type SetIamPolicyProjectsLocationsDataDomainsResponse =
   GoogleIamV1Policy;
@@ -15082,7 +15082,7 @@ export const GetIamPolicyProjectsLocationsDataDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataDomainsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataDomainsRequest>;
 
 export type GetIamPolicyProjectsLocationsDataDomainsResponse =
   GoogleIamV1Policy;
@@ -15126,7 +15126,7 @@ export const TestIamPermissionsProjectsLocationsDataDomainsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataDomainsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataDomainsRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataDomainsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -15176,7 +15176,7 @@ export const CreateProjectsLocationsDataDomainsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/dataDomains", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataDomainsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataDomainsRequest>;
 
 export type CreateProjectsLocationsDataDomainsResponse =
   GoogleLongrunningOperation;
@@ -15224,7 +15224,7 @@ export const PatchProjectsLocationsDataDomainsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataDomainsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataDomainsRequest>;
 
 export type PatchProjectsLocationsDataDomainsResponse =
   GoogleLongrunningOperation;
@@ -15261,7 +15261,7 @@ export const DeleteProjectsLocationsDataDomainsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataDomainsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataDomainsRequest>;
 
 export type DeleteProjectsLocationsDataDomainsResponse =
   GoogleLongrunningOperation;
@@ -15310,7 +15310,7 @@ export const ListProjectsLocationsDataDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dataDomains" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataDomainsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataDomainsRequest>;
 
 export type ListProjectsLocationsDataDomainsResponse =
   GoogleCloudDataplexV1ListDataDomainsResponse;
@@ -15349,7 +15349,7 @@ export const GetProjectsLocationsDataDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataDomainsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataDomainsRequest>;
 
 export type GetProjectsLocationsDataDomainsResponse =
   GoogleCloudDataplexV1DataDomain;
@@ -15399,7 +15399,7 @@ export const CreateProjectsLocationsDataDomainsBindingsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/bindings", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataDomainsBindingsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataDomainsBindingsRequest>;
 
 export type CreateProjectsLocationsDataDomainsBindingsResponse =
   GoogleLongrunningOperation;
@@ -15436,7 +15436,7 @@ export const DeleteProjectsLocationsDataDomainsBindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataDomainsBindingsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataDomainsBindingsRequest>;
 
 export type DeleteProjectsLocationsDataDomainsBindingsResponse =
   GoogleLongrunningOperation;
@@ -15473,7 +15473,7 @@ export const GetProjectsLocationsDataDomainsBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataDomainsBindingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataDomainsBindingsRequest>;
 
 export type GetProjectsLocationsDataDomainsBindingsResponse =
   GoogleCloudDataplexV1DataDomainBinding;
@@ -15520,7 +15520,7 @@ export const ListProjectsLocationsDataDomainsBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/bindings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataDomainsBindingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataDomainsBindingsRequest>;
 
 export type ListProjectsLocationsDataDomainsBindingsResponse =
   GoogleCloudDataplexV1ListDataDomainBindingsResponse;
@@ -15573,7 +15573,7 @@ export const ListOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsOperationsRequest>;
 
 export type ListOrganizationsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -15612,7 +15612,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsOperationsRequest>;
 
 export type GetOrganizationsLocationsOperationsResponse =
   GoogleLongrunningOperation;
@@ -15647,7 +15647,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsOperationsRequest>;
 
 export type DeleteOrganizationsLocationsOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsOperationsResponse =
@@ -15688,7 +15688,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOrganizationsLocationsOperationsRequest>;
 
 export type CancelOrganizationsLocationsOperationsResponse = Empty;
 export const CancelOrganizationsLocationsOperationsResponse =
@@ -15738,7 +15738,7 @@ export const CreateOrganizationsLocationsEncryptionConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsEncryptionConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type CreateOrganizationsLocationsEncryptionConfigsResponse =
   GoogleLongrunningOperation;
@@ -15783,7 +15783,7 @@ export const PatchOrganizationsLocationsEncryptionConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsEncryptionConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type PatchOrganizationsLocationsEncryptionConfigsResponse =
   GoogleLongrunningOperation;
@@ -15823,7 +15823,7 @@ export const DeleteOrganizationsLocationsEncryptionConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsEncryptionConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type DeleteOrganizationsLocationsEncryptionConfigsResponse =
   GoogleLongrunningOperation;
@@ -15872,7 +15872,7 @@ export const ListOrganizationsLocationsEncryptionConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/encryptionConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsEncryptionConfigsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type ListOrganizationsLocationsEncryptionConfigsResponse =
   GoogleCloudDataplexV1ListEncryptionConfigsResponse;
@@ -15911,7 +15911,7 @@ export const GetOrganizationsLocationsEncryptionConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsEncryptionConfigsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type GetOrganizationsLocationsEncryptionConfigsResponse =
   GoogleCloudDataplexV1EncryptionConfig;
@@ -15953,7 +15953,7 @@ export const SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type SetIamPolicyOrganizationsLocationsEncryptionConfigsResponse =
   GoogleIamV1Policy;
@@ -15995,7 +15995,7 @@ export const GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type GetIamPolicyOrganizationsLocationsEncryptionConfigsResponse =
   GoogleIamV1Policy;
@@ -16039,7 +16039,7 @@ export const TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type TestIamPermissionsOrganizationsLocationsEncryptionConfigsResponse =
   GoogleIamV1TestIamPermissionsResponse;

@@ -4,14 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1ListOrganizationMembersInput {
+  slug: string;
+}
 export const V1ListOrganizationMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/organizations/{slug}/members" }));
-export type V1ListOrganizationMembersInput =
-  typeof V1ListOrganizationMembersInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/organizations/{slug}/members" }),
+  ) as unknown as Schema.Codec<V1ListOrganizationMembersInput>;
 
 // Output Schema
+export type V1ListOrganizationMembersOutput = {
+  user_id: string;
+  user_name: string;
+  email?: string;
+  role_name: string;
+  mfa_enabled: boolean;
+  avatar_url: string | null;
+}[];
 export const V1ListOrganizationMembersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -22,9 +33,7 @@ export const V1ListOrganizationMembersOutput =
       mfa_enabled: Schema.Boolean,
       avatar_url: Schema.NullOr(Schema.String),
     }),
-  );
-export type V1ListOrganizationMembersOutput =
-  typeof V1ListOrganizationMembersOutput.Type;
+  ) as unknown as Schema.Codec<V1ListOrganizationMembersOutput>;
 
 // The operation
 /**

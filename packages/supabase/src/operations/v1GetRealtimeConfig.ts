@@ -4,15 +4,30 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetRealtimeConfigInput {
+  ref: string;
+}
 export const V1GetRealtimeConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/config/realtime" }),
-  );
-export type V1GetRealtimeConfigInput = typeof V1GetRealtimeConfigInput.Type;
+  ) as unknown as Schema.Codec<V1GetRealtimeConfigInput>;
 
 // Output Schema
+export interface V1GetRealtimeConfigOutput {
+  private_only: boolean | null;
+  connection_pool: number | null;
+  max_concurrent_users: number | null;
+  max_events_per_second: number | null;
+  max_bytes_per_second: number | null;
+  max_channels_per_client: number | null;
+  max_joins_per_second: number | null;
+  max_presence_events_per_second: number | null;
+  max_payload_size_in_kb: number | null;
+  suspend: boolean | null;
+  presence_enabled: boolean;
+}
 export const V1GetRealtimeConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     private_only: Schema.NullOr(Schema.Boolean),
@@ -26,8 +41,7 @@ export const V1GetRealtimeConfigOutput =
     max_payload_size_in_kb: Schema.NullOr(Schema.Number),
     suspend: Schema.NullOr(Schema.Boolean),
     presence_enabled: Schema.Boolean,
-  });
-export type V1GetRealtimeConfigOutput = typeof V1GetRealtimeConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1GetRealtimeConfigOutput>;
 
 // The operation
 /**

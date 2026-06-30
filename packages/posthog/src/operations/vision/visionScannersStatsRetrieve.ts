@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisionScannersStatsRetrieveInput {
+  project_id: string;
+}
 export const VisionScannersStatsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,19 @@ export const VisionScannersStatsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/vision/scanners/stats/",
     }),
-  );
-export type VisionScannersStatsRetrieveInput =
-  typeof VisionScannersStatsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VisionScannersStatsRetrieveInput>;
 
 // Output Schema
+export interface VisionScannersStatsRetrieveOutput {
+  total: number;
+  enabled: number;
+  by_type: {
+    monitor: { enabled: number; total: number };
+    classifier: { enabled: number; total: number };
+    scorer: { enabled: number; total: number };
+    summarizer: { enabled: number; total: number };
+  };
+}
 export const VisionScannersStatsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     total: Schema.Number,
@@ -38,9 +49,7 @@ export const VisionScannersStatsRetrieveOutput =
         total: Schema.Number,
       }),
     }),
-  });
-export type VisionScannersStatsRetrieveOutput =
-  typeof VisionScannersStatsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<VisionScannersStatsRetrieveOutput>;
 
 // The operation
 /**

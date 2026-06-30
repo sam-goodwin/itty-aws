@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RunSQLQueryInput {
+  sql: string;
+  cache?: { maxAgeMs?: number };
+}
 export const RunSQLQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sql: Schema.String,
   cache: Schema.optional(
@@ -10,10 +14,46 @@ export const RunSQLQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       maxAgeMs: Schema.optional(Schema.Number),
     }),
   ),
-}).pipe(T.Http({ method: "POST", path: "/v2/data/query/run" }));
-export type RunSQLQueryInput = typeof RunSQLQueryInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/data/query/run" }),
+) as unknown as Schema.Codec<RunSQLQueryInput>;
 
 // Output Schema
+export interface RunSQLQueryOutput {
+  result?: Record<string, unknown>[];
+  schema?: {
+    columns?: {
+      name?: string;
+      type?:
+        | "String"
+        | "UInt8"
+        | "UInt16"
+        | "UInt32"
+        | "UInt64"
+        | "UInt128"
+        | "UInt256"
+        | "Int8"
+        | "Int16"
+        | "Int32"
+        | "Int64"
+        | "Int128"
+        | "Int256"
+        | "Float32"
+        | "Float64"
+        | "Bool"
+        | "Date"
+        | "DateTime"
+        | "DateTime64"
+        | "UUID";
+    }[];
+  };
+  metadata?: {
+    cached?: boolean;
+    executionTimestamp?: string;
+    executionTimeMs?: number;
+    rowCount?: number;
+  };
+}
 export const RunSQLQueryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.optional(
     Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -61,8 +101,7 @@ export const RunSQLQueryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       rowCount: Schema.optional(Schema.Number),
     }),
   ),
-});
-export type RunSQLQueryOutput = typeof RunSQLQueryOutput.Type;
+}) as unknown as Schema.Codec<RunSQLQueryOutput>;
 
 // The operation
 /**

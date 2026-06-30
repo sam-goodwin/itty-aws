@@ -4,16 +4,30 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsListInput {
+  project_id: string;
+  cursor?: string;
+  group_key?: string;
+  group_type_index: number;
+  search?: string;
+}
 export const GroupsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   cursor: Schema.optional(Schema.String),
   group_key: Schema.optional(Schema.String),
   group_type_index: Schema.Number,
   search: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/projects/{project_id}/groups/" }));
-export type GroupsListInput = typeof GroupsListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/groups/" }),
+) as unknown as Schema.Codec<GroupsListInput>;
 
 // Output Schema
+export type GroupsListOutput = {
+  group_type_index?: number;
+  group_key?: string;
+  group_properties?: unknown;
+  created_at?: string;
+}[];
 export const GroupsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     group_type_index: Schema.optional(Schema.Number),
@@ -21,8 +35,7 @@ export const GroupsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     group_properties: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
   }),
-);
-export type GroupsListOutput = typeof GroupsListOutput.Type;
+) as unknown as Schema.Codec<GroupsListOutput>;
 
 // The operation
 /**

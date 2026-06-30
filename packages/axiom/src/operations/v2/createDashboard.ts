@@ -4,6 +4,175 @@ import * as T from "../../traits.ts";
 import { BadRequest, Conflict } from "../../errors.ts";
 
 // Input Schema
+export interface CreateDashboardInput {
+  dashboard: {
+    name: string;
+    owner: string;
+    description?: string;
+    charts: (
+      | { id: string; type: "TimeSeries"; name?: string; query: unknown }
+      | { id: string; type: "Heatmap"; name?: string; query: unknown }
+      | {
+          id: string;
+          type: "LogStream";
+          name?: string;
+          query: unknown;
+          tableSettings?: {
+            columns?: unknown[];
+            settings?: {
+              fontSize?: string;
+              highlightSeverity?: boolean;
+              showRaw?: boolean;
+              showEvent?: boolean;
+              showTimestamp?: boolean;
+              wrapLines?: boolean;
+              hideNulls?: boolean;
+              fitColumns?: boolean;
+            };
+          };
+        }
+      | { id: string; type: "Pie"; name?: string; query: unknown }
+      | { id: string; type: "Scatter"; name?: string; query: unknown }
+      | {
+          id: string;
+          type: "Table";
+          name?: string;
+          query: unknown;
+          tableSettings?: {
+            columns?: unknown[];
+            settings?: {
+              fontSize?: string;
+              highlightSeverity?: boolean;
+              showRaw?: boolean;
+              showEvent?: boolean;
+              showTimestamp?: boolean;
+              wrapLines?: boolean;
+              hideNulls?: boolean;
+              fitColumns?: boolean;
+            };
+          };
+        }
+      | { id: string; type: "TopK"; name?: string; query: unknown }
+      | {
+          id: string;
+          type: "Statistic";
+          name?: string;
+          query: unknown;
+          colorScheme?:
+            | "Blue"
+            | "Orange"
+            | "Red"
+            | "Purple"
+            | "Teal"
+            | "Yellow"
+            | "Green"
+            | "Pink"
+            | "Grey"
+            | "Brown";
+          customUnits?: string;
+          showChart?: boolean | string;
+          hideValue?: boolean;
+          chartHeight?: string | number;
+          errorThreshold?:
+            | "Above"
+            | "AboveOrEqual"
+            | "Below"
+            | "BelowOrEqual"
+            | "AboveOrBelow";
+          errorThresholdValue?: string;
+          warningThreshold?:
+            | "Above"
+            | "AboveOrEqual"
+            | "Below"
+            | "BelowOrEqual"
+            | "AboveOrBelow";
+          warningThresholdValue?: string;
+          invertTheme?: boolean;
+          background?: string;
+          textColor?: string;
+          labelColor?: string;
+          chartFillColor?: string;
+          okColorProps?: {
+            background?: string;
+            chartFillColor?: string;
+            labelColor?: string;
+            textColor?: string;
+          };
+          warningColorProps?: {
+            background?: string;
+            chartFillColor?: string;
+            labelColor?: string;
+            textColor?: string;
+          };
+          errorColorProps?: {
+            background?: string;
+            chartFillColor?: string;
+            labelColor?: string;
+            textColor?: string;
+          };
+        }
+      | { id: string; type: "Note"; text: string; variant?: "default" }
+      | {
+          id: string;
+          type: "MonitorList";
+          name?: string;
+          selectedMonitors: string[];
+          columns: {
+            status: boolean;
+            history: boolean;
+            dataset: boolean;
+            type: boolean;
+            notifiers: boolean;
+          };
+        }
+      | {
+          id: string;
+          type: "SmartFilter";
+          name?: string;
+          filters: unknown[];
+          logo?: string;
+          logoDark?: string;
+        }
+      | { id: string; type: "Spacer"; name?: string }
+    )[];
+    layout: {
+      i: string;
+      x: number;
+      y: number | null;
+      w: number;
+      h: number;
+      minW?: number;
+      minH?: number;
+      maxW?: number;
+      maxH?: number;
+      static?: boolean;
+    }[];
+    refreshTime: 15 | 60 | 300;
+    schemaVersion: 2;
+    against?:
+      | "-1h"
+      | "-3h"
+      | "-6h"
+      | "-12h"
+      | "-1d"
+      | "-3d"
+      | "-7d"
+      | "-1w"
+      | "-2w"
+      | "-3w"
+      | "-30d"
+      | "-60d"
+      | "-90d";
+    againstTimestamp?: string;
+    timeWindowStart: string;
+    timeWindowEnd: string;
+    uid?: string;
+  };
+  message?: string;
+  overwrite?: boolean;
+  uid?: string;
+  version?: string | number;
+}
 export const CreateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dashboard: Schema.Struct({
     name: Schema.String,
@@ -51,11 +220,188 @@ export const CreateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   message: Schema.optional(Schema.String),
   overwrite: Schema.optional(Schema.Boolean),
   uid: Schema.optional(Schema.String),
-  version: Schema.optional(Schema.Unknown),
-}).pipe(T.Http({ method: "POST", path: "/v2/dashboards" }));
-export type CreateDashboardInput = typeof CreateDashboardInput.Type;
+  version: Schema.optional(Schema.Union([Schema.String, Schema.Number])),
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/dashboards" }),
+) as unknown as Schema.Codec<CreateDashboardInput>;
 
 // Output Schema
+export interface CreateDashboardOutput {
+  dashboard: {
+    createdAt: string;
+    createdBy: string;
+    dashboard: {
+      name: string;
+      owner: string;
+      description?: string;
+      charts: (
+        | { id: string; type: "TimeSeries"; name?: string; query: unknown }
+        | { id: string; type: "Heatmap"; name?: string; query: unknown }
+        | {
+            id: string;
+            type: "LogStream";
+            name?: string;
+            query: unknown;
+            tableSettings?: {
+              columns?: unknown[];
+              settings?: {
+                fontSize?: string;
+                highlightSeverity?: boolean;
+                showRaw?: boolean;
+                showEvent?: boolean;
+                showTimestamp?: boolean;
+                wrapLines?: boolean;
+                hideNulls?: boolean;
+                fitColumns?: boolean;
+              };
+            };
+          }
+        | { id: string; type: "Pie"; name?: string; query: unknown }
+        | { id: string; type: "Scatter"; name?: string; query: unknown }
+        | {
+            id: string;
+            type: "Table";
+            name?: string;
+            query: unknown;
+            tableSettings?: {
+              columns?: unknown[];
+              settings?: {
+                fontSize?: string;
+                highlightSeverity?: boolean;
+                showRaw?: boolean;
+                showEvent?: boolean;
+                showTimestamp?: boolean;
+                wrapLines?: boolean;
+                hideNulls?: boolean;
+                fitColumns?: boolean;
+              };
+            };
+          }
+        | { id: string; type: "TopK"; name?: string; query: unknown }
+        | {
+            id: string;
+            type: "Statistic";
+            name?: string;
+            query: unknown;
+            colorScheme?:
+              | "Blue"
+              | "Orange"
+              | "Red"
+              | "Purple"
+              | "Teal"
+              | "Yellow"
+              | "Green"
+              | "Pink"
+              | "Grey"
+              | "Brown";
+            customUnits?: string;
+            showChart?: unknown;
+            hideValue?: boolean;
+            chartHeight?: unknown;
+            errorThreshold?:
+              | "Above"
+              | "AboveOrEqual"
+              | "Below"
+              | "BelowOrEqual"
+              | "AboveOrBelow";
+            errorThresholdValue?: string;
+            warningThreshold?:
+              | "Above"
+              | "AboveOrEqual"
+              | "Below"
+              | "BelowOrEqual"
+              | "AboveOrBelow";
+            warningThresholdValue?: string;
+            invertTheme?: boolean;
+            background?: string;
+            textColor?: string;
+            labelColor?: string;
+            chartFillColor?: string;
+            okColorProps?: {
+              background?: string;
+              chartFillColor?: string;
+              labelColor?: string;
+              textColor?: string;
+            };
+            warningColorProps?: {
+              background?: string;
+              chartFillColor?: string;
+              labelColor?: string;
+              textColor?: string;
+            };
+            errorColorProps?: {
+              background?: string;
+              chartFillColor?: string;
+              labelColor?: string;
+              textColor?: string;
+            };
+          }
+        | { id: string; type: "Note"; text: string; variant?: "default" }
+        | {
+            id: string;
+            type: "MonitorList";
+            name?: string;
+            selectedMonitors: string[];
+            columns: {
+              status: boolean;
+              history: boolean;
+              dataset: boolean;
+              type: boolean;
+              notifiers: boolean;
+            };
+          }
+        | {
+            id: string;
+            type: "SmartFilter";
+            name?: string;
+            filters: unknown[];
+            logo?: string;
+            logoDark?: string;
+          }
+        | { id: string; type: "Spacer"; name?: string }
+      )[];
+      layout: {
+        i: string;
+        x: number;
+        y: number | null;
+        w: number;
+        h: number;
+        minW?: number;
+        minH?: number;
+        maxW?: number;
+        maxH?: number;
+        static?: boolean;
+      }[];
+      refreshTime: 15 | 60 | 300;
+      schemaVersion: 2;
+      against?:
+        | "-1h"
+        | "-3h"
+        | "-6h"
+        | "-12h"
+        | "-1d"
+        | "-3d"
+        | "-7d"
+        | "-1w"
+        | "-2w"
+        | "-3w"
+        | "-30d"
+        | "-60d"
+        | "-90d";
+      againstTimestamp?: string;
+      timeWindowStart: string;
+      timeWindowEnd: string;
+      uid?: string;
+    };
+    id: string;
+    uid: string;
+    updatedAt: string;
+    updatedBy: string;
+    version: string | number;
+  };
+  overwritten?: boolean;
+  status: "created" | "updated";
+}
 export const CreateDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dashboard: Schema.Struct({
     createdAt: Schema.String,
@@ -107,12 +453,11 @@ export const CreateDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uid: Schema.String,
     updatedAt: Schema.String,
     updatedBy: Schema.String,
-    version: Schema.Unknown,
+    version: Schema.Union([Schema.String, Schema.Number]),
   }),
   overwritten: Schema.optional(Schema.Boolean),
   status: Schema.Literals(["created", "updated"]),
-});
-export type CreateDashboardOutput = typeof CreateDashboardOutput.Type;
+}) as unknown as Schema.Codec<CreateDashboardOutput>;
 
 // The operation
 /**

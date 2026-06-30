@@ -4,6 +4,111 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsPartialUpdateInput {
+  id: number;
+  project_id: string;
+  key?: string;
+  name?: string;
+  filters?: {
+    groups?: {
+      properties?: (
+        | {
+            key?: string;
+            type?: "cohort" | "person" | "group";
+            cohort_name?: string | null;
+            group_type_index?: number | null;
+            value?: unknown;
+            operator?:
+              | "exact"
+              | "is_not"
+              | "icontains"
+              | "not_icontains"
+              | "regex"
+              | "not_regex"
+              | "gt"
+              | "gte"
+              | "lt"
+              | "lte";
+          }
+        | {
+            key?: string;
+            type?: "cohort" | "person" | "group";
+            cohort_name?: string | null;
+            group_type_index?: number | null;
+            operator?: "is_set" | "is_not_set";
+            value?: unknown;
+          }
+        | {
+            key?: string;
+            type?: "cohort" | "person" | "group";
+            cohort_name?: string | null;
+            group_type_index?: number | null;
+            operator?: "is_date_exact" | "is_date_before" | "is_date_after";
+            value?: string;
+          }
+        | {
+            key?: string;
+            type?: "cohort" | "person" | "group";
+            cohort_name?: string | null;
+            group_type_index?: number | null;
+            operator?:
+              | "semver_gt"
+              | "semver_gte"
+              | "semver_lt"
+              | "semver_lte"
+              | "semver_eq"
+              | "semver_neq"
+              | "semver_tilde"
+              | "semver_caret"
+              | "semver_wildcard";
+            value?: string;
+          }
+        | {
+            key?: string;
+            type?: "cohort" | "person" | "group";
+            cohort_name?: string | null;
+            group_type_index?: number | null;
+            operator?: "icontains_multi" | "not_icontains_multi";
+            value?: string[];
+          }
+        | {
+            key?: string;
+            type?: "cohort";
+            cohort_name?: string | null;
+            group_type_index?: number | null;
+            operator?: "in" | "not_in";
+            value?: unknown;
+          }
+        | {
+            key?: string;
+            type?: "flag";
+            cohort_name?: string | null;
+            group_type_index?: number | null;
+            operator?: "flag_evaluates_to";
+            value?: unknown;
+          }
+      )[];
+      rollout_percentage?: number;
+      variant?: string | null;
+      aggregation_group_type_index?: number | null;
+    }[];
+    multivariate?: {
+      variants?: { key?: string; name?: string; rollout_percentage?: number }[];
+    } | null;
+    aggregation_group_type_index?: number | null;
+    payloads?: Record<string, string>;
+    feature_enrollment?: boolean | null;
+    early_exit?: boolean;
+  };
+  active?: boolean;
+  archived?: boolean;
+  tags?: string[];
+  evaluation_contexts?: string[];
+  is_remote_configuration?: boolean | null;
+  ensure_experience_continuity?: boolean | null;
+  evaluation_runtime?: "server" | "client" | "all" | null;
+  bucketing_identifier?: "distinct_id" | "device_id" | null;
+}
 export const FeatureFlagsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -15,7 +120,148 @@ export const FeatureFlagsPartialUpdateInput =
         groups: Schema.optional(
           Schema.Array(
             Schema.Struct({
-              properties: Schema.optional(Schema.Array(Schema.Unknown)),
+              properties: Schema.optional(
+                Schema.Array(
+                  Schema.Union([
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      value: Schema.optional(Schema.Unknown),
+                      operator: Schema.optional(
+                        Schema.Literals([
+                          "exact",
+                          "is_not",
+                          "icontains",
+                          "not_icontains",
+                          "regex",
+                          "not_regex",
+                          "gt",
+                          "gte",
+                          "lt",
+                          "lte",
+                        ]),
+                      ),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals(["is_set", "is_not_set"]),
+                      ),
+                      value: Schema.optional(Schema.Unknown),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals([
+                          "is_date_exact",
+                          "is_date_before",
+                          "is_date_after",
+                        ]),
+                      ),
+                      value: Schema.optional(Schema.String),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals([
+                          "semver_gt",
+                          "semver_gte",
+                          "semver_lt",
+                          "semver_lte",
+                          "semver_eq",
+                          "semver_neq",
+                          "semver_tilde",
+                          "semver_caret",
+                          "semver_wildcard",
+                        ]),
+                      ),
+                      value: Schema.optional(Schema.String),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals([
+                          "icontains_multi",
+                          "not_icontains_multi",
+                        ]),
+                      ),
+                      value: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.Literals(["cohort"])),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals(["in", "not_in"]),
+                      ),
+                      value: Schema.optional(Schema.Unknown),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.Literals(["flag"])),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals(["flag_evaluates_to"]),
+                      ),
+                      value: Schema.optional(Schema.Unknown),
+                    }),
+                  ]),
+                ),
+              ),
               rollout_percentage: Schema.optional(Schema.Number),
               variant: Schema.optional(Schema.NullOr(Schema.String)),
               aggregation_group_type_index: Schema.optional(
@@ -24,7 +270,21 @@ export const FeatureFlagsPartialUpdateInput =
             }),
           ),
         ),
-        multivariate: Schema.optional(Schema.Unknown),
+        multivariate: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              variants: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.String),
+                    rollout_percentage: Schema.optional(Schema.Number),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         aggregation_group_type_index: Schema.optional(
           Schema.NullOr(Schema.Number),
         ),
@@ -41,18 +301,104 @@ export const FeatureFlagsPartialUpdateInput =
     ensure_experience_continuity: Schema.optional(
       Schema.NullOr(Schema.Boolean),
     ),
-    evaluation_runtime: Schema.optional(Schema.Unknown),
-    bucketing_identifier: Schema.optional(Schema.Unknown),
+    evaluation_runtime: Schema.optional(
+      Schema.NullOr(Schema.Literals(["server", "client", "all"])),
+    ),
+    bucketing_identifier: Schema.optional(
+      Schema.NullOr(Schema.Literals(["distinct_id", "device_id"])),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/api/projects/{project_id}/feature_flags/{id}/",
     }),
-  );
-export type FeatureFlagsPartialUpdateInput =
-  typeof FeatureFlagsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsPartialUpdateInput>;
 
 // Output Schema
+export interface FeatureFlagsPartialUpdateOutput {
+  id?: number;
+  name?: string;
+  key?: string;
+  filters?: Record<string, unknown>;
+  deleted?: boolean;
+  active?: boolean;
+  archived?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string | null;
+  version?: number;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  ensure_experience_continuity?: boolean | null;
+  experiment_set?: number[];
+  experiment_set_metadata?: { id: number; name: string; is_running: boolean }[];
+  surveys?: Record<string, unknown>;
+  features?: Record<string, unknown>;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
+  can_edit?: boolean;
+  tags?: unknown[];
+  evaluation_contexts?: unknown[];
+  usage_dashboard?: number;
+  analytics_dashboards?: number[];
+  has_enriched_analytics?: boolean | null;
+  user_access_level?: string | null;
+  creation_context?:
+    | "feature_flags"
+    | "experiments"
+    | "surveys"
+    | "early_access_features"
+    | "web_experiments"
+    | "product_tours";
+  is_remote_configuration?: boolean | null;
+  has_encrypted_payloads?: boolean | null;
+  status?: string;
+  evaluation_runtime?: "server" | "client" | "all" | "" | null;
+  bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+  last_called_at?: string | null;
+  _create_in_folder?: string;
+  _should_create_usage_dashboard?: boolean;
+  is_used_in_replay_settings?: boolean;
+}
 export const FeatureFlagsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -75,7 +421,23 @@ export const FeatureFlagsPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -95,7 +457,23 @@ export const FeatureFlagsPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -136,15 +514,27 @@ export const FeatureFlagsPartialUpdateOutput =
     is_remote_configuration: Schema.optional(Schema.NullOr(Schema.Boolean)),
     has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
     status: Schema.optional(Schema.String),
-    evaluation_runtime: Schema.optional(Schema.Unknown),
-    bucketing_identifier: Schema.optional(Schema.Unknown),
+    evaluation_runtime: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["server", "client", "all"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
+    bucketing_identifier: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["distinct_id", "device_id"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     last_called_at: Schema.optional(Schema.NullOr(Schema.String)),
     _create_in_folder: Schema.optional(Schema.String),
     _should_create_usage_dashboard: Schema.optional(Schema.Boolean),
     is_used_in_replay_settings: Schema.optional(Schema.Boolean),
-  });
-export type FeatureFlagsPartialUpdateOutput =
-  typeof FeatureFlagsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsPartialUpdateOutput>;
 
 // The operation
 /**

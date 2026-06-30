@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -47,7 +47,7 @@ export interface CustomerProfileCompany {
   citationIds?: ReadonlyArray<string>;
 }
 
-export const CustomerProfileCompany: Schema.Schema<CustomerProfileCompany> =
+export const CustomerProfileCompany: Schema.Codec<CustomerProfileCompany> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     company: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
@@ -58,7 +58,7 @@ export interface UpsertConfigurationResponse {
   configuration?: string;
 }
 
-export const UpsertConfigurationResponse: Schema.Schema<UpsertConfigurationResponse> =
+export const UpsertConfigurationResponse: Schema.Codec<UpsertConfigurationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpsertConfigurationResponse" });
@@ -82,7 +82,7 @@ export interface SeverityAnalysis {
     | (string & {});
 }
 
-export const SeverityAnalysis: Schema.Schema<SeverityAnalysis> =
+export const SeverityAnalysis: Schema.Codec<SeverityAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.String),
     reasoning: Schema.optional(Schema.String),
@@ -117,7 +117,7 @@ export interface PublicExploit {
   sizeBytes?: string;
 }
 
-export const PublicExploit: Schema.Schema<PublicExploit> =
+export const PublicExploit: Schema.Codec<PublicExploit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     exploitGrade: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface ProductFix {
   publishTime?: string;
 }
 
-export const ProductFix: Schema.Schema<ProductFix> =
+export const ProductFix: Schema.Codec<ProductFix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     sourceId: Schema.optional(Schema.String),
@@ -162,7 +162,7 @@ export interface Association {
     | (string & {});
 }
 
-export const Association: Schema.Schema<Association> =
+export const Association: Schema.Codec<Association> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -261,7 +261,7 @@ export interface VulnerabilityMatch {
   epssScore?: number;
 }
 
-export const VulnerabilityMatch: Schema.Schema<VulnerabilityMatch> =
+export const VulnerabilityMatch: Schema.Codec<VulnerabilityMatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchedTechnologies: Schema.optional(Schema.Array(Schema.String)),
     exploitationVectors: Schema.optional(Schema.Array(Schema.String)),
@@ -287,7 +287,7 @@ export interface TargetTechnologyFindingDetail {
   vulnerabilityMatch?: VulnerabilityMatch;
 }
 
-export const TargetTechnologyFindingDetail: Schema.Schema<TargetTechnologyFindingDetail> =
+export const TargetTechnologyFindingDetail: Schema.Codec<TargetTechnologyFindingDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vulnerabilityMatch: Schema.optional(VulnerabilityMatch),
   }).annotate({ identifier: "TargetTechnologyFindingDetail" });
@@ -299,7 +299,7 @@ export interface AlertDocumentTranslation {
   translatedContent?: string;
 }
 
-export const AlertDocumentTranslation: Schema.Schema<AlertDocumentTranslation> =
+export const AlertDocumentTranslation: Schema.Codec<AlertDocumentTranslation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     translatedTitle: Schema.optional(Schema.String),
     translatedContent: Schema.optional(Schema.String),
@@ -318,7 +318,7 @@ export interface CustomerProfileCitation {
   citationId?: string;
 }
 
-export const CustomerProfileCitation: Schema.Schema<CustomerProfileCitation> =
+export const CustomerProfileCitation: Schema.Codec<CustomerProfileCitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     document: Schema.optional(Schema.String),
@@ -342,7 +342,7 @@ export interface CustomerProfileContactInfo {
   citationIds?: ReadonlyArray<string>;
 }
 
-export const CustomerProfileContactInfo: Schema.Schema<CustomerProfileContactInfo> =
+export const CustomerProfileContactInfo: Schema.Codec<CustomerProfileContactInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -359,7 +359,7 @@ export interface CustomerProfileWebPresence {
   citationIds?: ReadonlyArray<string>;
 }
 
-export const CustomerProfileWebPresence: Schema.Schema<CustomerProfileWebPresence> =
+export const CustomerProfileWebPresence: Schema.Codec<CustomerProfileWebPresence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
@@ -372,7 +372,7 @@ export interface CustomerProfileIndustry {
   citationIds?: ReadonlyArray<string>;
 }
 
-export const CustomerProfileIndustry: Schema.Schema<CustomerProfileIndustry> =
+export const CustomerProfileIndustry: Schema.Codec<CustomerProfileIndustry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     industry: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
@@ -387,7 +387,7 @@ export interface CustomerProfilePerson {
   name?: string;
 }
 
-export const CustomerProfilePerson: Schema.Schema<CustomerProfilePerson> =
+export const CustomerProfilePerson: Schema.Codec<CustomerProfilePerson> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
@@ -401,7 +401,7 @@ export interface CustomerProfileSecurityConsiderations {
   considerations?: ReadonlyArray<string>;
 }
 
-export const CustomerProfileSecurityConsiderations: Schema.Schema<CustomerProfileSecurityConsiderations> =
+export const CustomerProfileSecurityConsiderations: Schema.Codec<CustomerProfileSecurityConsiderations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     note: Schema.optional(Schema.String),
     considerations: Schema.optional(Schema.Array(Schema.String)),
@@ -414,7 +414,7 @@ export interface CustomerProfileCitedString {
   citationIds?: ReadonlyArray<string>;
 }
 
-export const CustomerProfileCitedString: Schema.Schema<CustomerProfileCitedString> =
+export const CustomerProfileCitedString: Schema.Codec<CustomerProfileCitedString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
@@ -447,7 +447,7 @@ export interface CustomerProfileSummary {
   entityType?: CustomerProfileCitedString;
 }
 
-export const CustomerProfileSummary: Schema.Schema<CustomerProfileSummary> =
+export const CustomerProfileSummary: Schema.Codec<CustomerProfileSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryWebsite: Schema.optional(CustomerProfileCitedString),
     keyPeopleSummary: Schema.optional(CustomerProfileCitedString),
@@ -472,7 +472,7 @@ export interface CustomerProfileProduct {
   product?: string;
 }
 
-export const CustomerProfileProduct: Schema.Schema<CustomerProfileProduct> =
+export const CustomerProfileProduct: Schema.Codec<CustomerProfileProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     citationIds: Schema.optional(Schema.Array(Schema.String)),
     brand: Schema.optional(Schema.String),
@@ -490,7 +490,7 @@ export interface CustomerProfileLocation {
   brand?: string;
 }
 
-export const CustomerProfileLocation: Schema.Schema<CustomerProfileLocation> =
+export const CustomerProfileLocation: Schema.Codec<CustomerProfileLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     facilityType: Schema.optional(Schema.String),
     address: Schema.optional(Schema.String),
@@ -527,7 +527,7 @@ export interface CustomerProfileConfig {
   locations?: ReadonlyArray<CustomerProfileLocation>;
 }
 
-export const CustomerProfileConfig: Schema.Schema<CustomerProfileConfig> =
+export const CustomerProfileConfig: Schema.Codec<CustomerProfileConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     citations: Schema.optional(Schema.Array(CustomerProfileCitation)),
     parentCompanies: Schema.optional(Schema.Array(CustomerProfileCompany)),
@@ -581,7 +581,7 @@ export interface TechnologyWatchListAlertThreshold {
     | (string & {});
 }
 
-export const TechnologyWatchListAlertThreshold: Schema.Schema<TechnologyWatchListAlertThreshold> =
+export const TechnologyWatchListAlertThreshold: Schema.Codec<TechnologyWatchListAlertThreshold> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priorityMinimum: Schema.optional(Schema.String),
     epssScoreMinimum: Schema.optional(Schema.Number),
@@ -597,7 +597,7 @@ export interface TechnologyWatchListConfig {
   alertThreshold?: TechnologyWatchListAlertThreshold;
 }
 
-export const TechnologyWatchListConfig: Schema.Schema<TechnologyWatchListConfig> =
+export const TechnologyWatchListConfig: Schema.Codec<TechnologyWatchListConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     technologies: Schema.optional(Schema.Array(Schema.String)),
     alertThreshold: Schema.optional(TechnologyWatchListAlertThreshold),
@@ -612,7 +612,7 @@ export interface ConfigurationDetail {
   technologyWatchlist?: TechnologyWatchListConfig;
 }
 
-export const ConfigurationDetail: Schema.Schema<ConfigurationDetail> =
+export const ConfigurationDetail: Schema.Codec<ConfigurationDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerProfile: Schema.optional(CustomerProfileConfig),
     detailType: Schema.optional(Schema.String),
@@ -630,7 +630,7 @@ export interface Audit {
   updater?: string;
 }
 
-export const Audit: Schema.Schema<Audit> =
+export const Audit: Schema.Codec<Audit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -664,7 +664,7 @@ export interface Configuration {
     | (string & {});
 }
 
-export const Configuration: Schema.Schema<Configuration> =
+export const Configuration: Schema.Codec<Configuration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detail: Schema.optional(ConfigurationDetail),
     description: Schema.optional(Schema.String),
@@ -686,7 +686,7 @@ export interface ConfigurationRevision {
   name?: string;
 }
 
-export const ConfigurationRevision: Schema.Schema<ConfigurationRevision> =
+export const ConfigurationRevision: Schema.Codec<ConfigurationRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snapshot: Schema.optional(Configuration),
     createTime: Schema.optional(Schema.String),
@@ -698,14 +698,14 @@ export interface TargetTechnologyAlertDetail {
   vulnerabilityMatch?: VulnerabilityMatch;
 }
 
-export const TargetTechnologyAlertDetail: Schema.Schema<TargetTechnologyAlertDetail> =
+export const TargetTechnologyAlertDetail: Schema.Codec<TargetTechnologyAlertDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vulnerabilityMatch: Schema.optional(VulnerabilityMatch),
   }).annotate({ identifier: "TargetTechnologyAlertDetail" });
 
 export interface MarkAlertAsTriagedRequest {}
 
-export const MarkAlertAsTriagedRequest: Schema.Schema<MarkAlertAsTriagedRequest> =
+export const MarkAlertAsTriagedRequest: Schema.Codec<MarkAlertAsTriagedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsTriagedRequest",
   });
@@ -717,7 +717,7 @@ export interface InsiderThreatAlertDetail {
   discoveryDocumentIds?: ReadonlyArray<string>;
 }
 
-export const InsiderThreatAlertDetail: Schema.Schema<InsiderThreatAlertDetail> =
+export const InsiderThreatAlertDetail: Schema.Codec<InsiderThreatAlertDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
@@ -730,7 +730,7 @@ export interface ListConfigurationsResponse {
   nextPageToken?: string;
 }
 
-export const ListConfigurationsResponse: Schema.Schema<ListConfigurationsResponse> =
+export const ListConfigurationsResponse: Schema.Codec<ListConfigurationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurations: Schema.optional(Schema.Array(Configuration)),
     nextPageToken: Schema.optional(Schema.String),
@@ -751,7 +751,7 @@ export interface InsiderThreatFindingDetail {
   documentId?: string;
 }
 
-export const InsiderThreatFindingDetail: Schema.Schema<InsiderThreatFindingDetail> =
+export const InsiderThreatFindingDetail: Schema.Codec<InsiderThreatFindingDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     matchScore: Schema.optional(Schema.Number),
@@ -760,7 +760,7 @@ export const InsiderThreatFindingDetail: Schema.Schema<InsiderThreatFindingDetai
 
 export interface MarkAlertAsFalsePositiveRequest {}
 
-export const MarkAlertAsFalsePositiveRequest: Schema.Schema<MarkAlertAsFalsePositiveRequest> =
+export const MarkAlertAsFalsePositiveRequest: Schema.Codec<MarkAlertAsFalsePositiveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsFalsePositiveRequest",
   });
@@ -780,7 +780,7 @@ export interface InitialAccessBrokerFindingDetail {
     | (string & {});
 }
 
-export const InitialAccessBrokerFindingDetail: Schema.Schema<InitialAccessBrokerFindingDetail> =
+export const InitialAccessBrokerFindingDetail: Schema.Codec<InitialAccessBrokerFindingDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchScore: Schema.optional(Schema.Number),
     documentId: Schema.optional(Schema.String),
@@ -802,7 +802,7 @@ export interface DataLeakFindingDetail {
     | (string & {});
 }
 
-export const DataLeakFindingDetail: Schema.Schema<DataLeakFindingDetail> =
+export const DataLeakFindingDetail: Schema.Codec<DataLeakFindingDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchScore: Schema.optional(Schema.Number),
     documentId: Schema.optional(Schema.String),
@@ -822,7 +822,7 @@ export interface FindingDetail {
   insiderThreat?: InsiderThreatFindingDetail;
 }
 
-export const FindingDetail: Schema.Schema<FindingDetail> =
+export const FindingDetail: Schema.Codec<FindingDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detailType: Schema.optional(Schema.String),
     initialAccessBroker: Schema.optional(InitialAccessBrokerFindingDetail),
@@ -860,7 +860,7 @@ export interface AlertDocument {
   sourceUri?: string;
 }
 
-export const AlertDocument: Schema.Schema<AlertDocument> =
+export const AlertDocument: Schema.Codec<AlertDocument> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     aiSummary: Schema.optional(Schema.String),
@@ -884,7 +884,7 @@ export interface Evidence {
   distinctThemes?: ReadonlyArray<string>;
 }
 
-export const Evidence: Schema.Schema<Evidence> =
+export const Evidence: Schema.Codec<Evidence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commonThemes: Schema.optional(Schema.Array(Schema.String)),
     distinctThemes: Schema.optional(Schema.Array(Schema.String)),
@@ -913,7 +913,7 @@ export interface RelevanceAnalysis {
   evidence?: Evidence;
 }
 
-export const RelevanceAnalysis: Schema.Schema<RelevanceAnalysis> =
+export const RelevanceAnalysis: Schema.Codec<RelevanceAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevanceLevel: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.String),
@@ -949,7 +949,7 @@ export interface Finding {
   severity?: number;
 }
 
-export const Finding: Schema.Schema<Finding> =
+export const Finding: Schema.Codec<Finding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reoccurrenceTimes: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
@@ -967,7 +967,7 @@ export const Finding: Schema.Schema<Finding> =
 
 export interface MarkAlertAsBenignRequest {}
 
-export const MarkAlertAsBenignRequest: Schema.Schema<MarkAlertAsBenignRequest> =
+export const MarkAlertAsBenignRequest: Schema.Codec<MarkAlertAsBenignRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsBenignRequest",
   });
@@ -985,7 +985,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1001,7 +1001,7 @@ export interface DataLeakAlertDetail {
   discoveryDocumentIds?: ReadonlyArray<string>;
 }
 
-export const DataLeakAlertDetail: Schema.Schema<DataLeakAlertDetail> =
+export const DataLeakAlertDetail: Schema.Codec<DataLeakAlertDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1014,7 +1014,7 @@ export interface GenerateOrgProfileConfigurationRequest {
   displayName?: string;
 }
 
-export const GenerateOrgProfileConfigurationRequest: Schema.Schema<GenerateOrgProfileConfigurationRequest> =
+export const GenerateOrgProfileConfigurationRequest: Schema.Codec<GenerateOrgProfileConfigurationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1027,7 +1027,7 @@ export interface FacetCount {
   count?: number;
 }
 
-export const FacetCount: Schema.Schema<FacetCount> =
+export const FacetCount: Schema.Codec<FacetCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -1048,7 +1048,7 @@ export interface Facet {
   maxValue?: string;
 }
 
-export const Facet: Schema.Schema<Facet> =
+export const Facet: Schema.Codec<Facet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     facetCounts: Schema.optional(Schema.Array(FacetCount)),
     facetType: Schema.optional(Schema.String),
@@ -1060,7 +1060,7 @@ export const Facet: Schema.Schema<Facet> =
 
 export interface MarkAlertAsTrackedExternallyRequest {}
 
-export const MarkAlertAsTrackedExternallyRequest: Schema.Schema<MarkAlertAsTrackedExternallyRequest> =
+export const MarkAlertAsTrackedExternallyRequest: Schema.Codec<MarkAlertAsTrackedExternallyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsTrackedExternallyRequest",
   });
@@ -1072,7 +1072,7 @@ export interface ListConfigurationRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListConfigurationRevisionsResponse: Schema.Schema<ListConfigurationRevisionsResponse> =
+export const ListConfigurationRevisionsResponse: Schema.Codec<ListConfigurationRevisionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revisions: Schema.optional(Schema.Array(ConfigurationRevision)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1085,7 +1085,7 @@ export interface SearchFindingsResponse {
   nextPageToken?: string;
 }
 
-export const SearchFindingsResponse: Schema.Schema<SearchFindingsResponse> =
+export const SearchFindingsResponse: Schema.Codec<SearchFindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(Finding)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1111,7 +1111,7 @@ export interface PriorityAnalysis {
   reasoning?: string;
 }
 
-export const PriorityAnalysis: Schema.Schema<PriorityAnalysis> =
+export const PriorityAnalysis: Schema.Codec<PriorityAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priorityLevel: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.String),
@@ -1125,7 +1125,7 @@ export interface InitialAccessBrokerAlertDetail {
   discoveryDocumentIds?: ReadonlyArray<string>;
 }
 
-export const InitialAccessBrokerAlertDetail: Schema.Schema<InitialAccessBrokerAlertDetail> =
+export const InitialAccessBrokerAlertDetail: Schema.Codec<InitialAccessBrokerAlertDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1144,7 +1144,7 @@ export interface AlertDetail {
   dataLeak?: DataLeakAlertDetail;
 }
 
-export const AlertDetail: Schema.Schema<AlertDetail> =
+export const AlertDetail: Schema.Codec<AlertDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetTechnology: Schema.optional(TargetTechnologyAlertDetail),
     detailType: Schema.optional(Schema.String),
@@ -1200,7 +1200,7 @@ export interface Alert {
   detail?: AlertDetail;
 }
 
-export const Alert: Schema.Schema<Alert> =
+export const Alert: Schema.Codec<Alert> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     findings: Schema.optional(Schema.Array(Schema.String)),
@@ -1225,14 +1225,14 @@ export interface EnumerateAlertFacetsResponse {
   facets?: ReadonlyArray<Facet>;
 }
 
-export const EnumerateAlertFacetsResponse: Schema.Schema<EnumerateAlertFacetsResponse> =
+export const EnumerateAlertFacetsResponse: Schema.Codec<EnumerateAlertFacetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     facets: Schema.optional(Schema.Array(Facet)),
   }).annotate({ identifier: "EnumerateAlertFacetsResponse" });
 
 export interface MarkAlertAsReadRequest {}
 
-export const MarkAlertAsReadRequest: Schema.Schema<MarkAlertAsReadRequest> =
+export const MarkAlertAsReadRequest: Schema.Codec<MarkAlertAsReadRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsReadRequest",
   });
@@ -1244,7 +1244,7 @@ export interface ListAlertsResponse {
   nextPageToken?: string;
 }
 
-export const ListAlertsResponse: Schema.Schema<ListAlertsResponse> =
+export const ListAlertsResponse: Schema.Codec<ListAlertsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alerts: Schema.optional(Schema.Array(Alert)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1255,7 +1255,7 @@ export interface MarkAlertAsDuplicateRequest {
   duplicateOf?: string;
 }
 
-export const MarkAlertAsDuplicateRequest: Schema.Schema<MarkAlertAsDuplicateRequest> =
+export const MarkAlertAsDuplicateRequest: Schema.Codec<MarkAlertAsDuplicateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duplicateOf: Schema.optional(Schema.String),
   }).annotate({ identifier: "MarkAlertAsDuplicateRequest" });
@@ -1267,7 +1267,7 @@ export interface ListFindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListFindingsResponse: Schema.Schema<ListFindingsResponse> =
+export const ListFindingsResponse: Schema.Codec<ListFindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(Finding)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1275,21 +1275,21 @@ export const ListFindingsResponse: Schema.Schema<ListFindingsResponse> =
 
 export interface MarkAlertAsEscalatedRequest {}
 
-export const MarkAlertAsEscalatedRequest: Schema.Schema<MarkAlertAsEscalatedRequest> =
+export const MarkAlertAsEscalatedRequest: Schema.Codec<MarkAlertAsEscalatedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsEscalatedRequest",
   });
 
 export interface MarkAlertAsResolvedRequest {}
 
-export const MarkAlertAsResolvedRequest: Schema.Schema<MarkAlertAsResolvedRequest> =
+export const MarkAlertAsResolvedRequest: Schema.Codec<MarkAlertAsResolvedRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsResolvedRequest",
   });
 
 export interface MarkAlertAsNotActionableRequest {}
 
-export const MarkAlertAsNotActionableRequest: Schema.Schema<MarkAlertAsNotActionableRequest> =
+export const MarkAlertAsNotActionableRequest: Schema.Codec<MarkAlertAsNotActionableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsNotActionableRequest",
   });
@@ -1368,7 +1368,7 @@ export const GenerateOrgProfileProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateOrgProfileProjectsRequest>;
+  ) as unknown as Schema.Codec<GenerateOrgProfileProjectsRequest>;
 
 export type GenerateOrgProfileProjectsResponse = Operation;
 export const GenerateOrgProfileProjectsResponse =
@@ -1404,7 +1404,7 @@ export const GetProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAlertsRequest>;
 
 export type GetProjectsAlertsResponse = Alert;
 export const GetProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
@@ -1437,7 +1437,7 @@ export const EscalateProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:escalate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EscalateProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<EscalateProjectsAlertsRequest>;
 
 export type EscalateProjectsAlertsResponse = Alert;
 export const EscalateProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
@@ -1479,7 +1479,7 @@ export const FalsePositiveProjectsAlertsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FalsePositiveProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<FalsePositiveProjectsAlertsRequest>;
 
 export type FalsePositiveProjectsAlertsResponse = Alert;
 export const FalsePositiveProjectsAlertsResponse =
@@ -1518,7 +1518,7 @@ export const EnumerateFacetsProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/alerts:enumerateFacets" }),
     svc,
-  ) as unknown as Schema.Schema<EnumerateFacetsProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<EnumerateFacetsProjectsAlertsRequest>;
 
 export type EnumerateFacetsProjectsAlertsResponse =
   EnumerateAlertFacetsResponse;
@@ -1556,7 +1556,7 @@ export const BenignProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:benign", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BenignProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<BenignProjectsAlertsRequest>;
 
 export type BenignProjectsAlertsResponse = Alert;
 export const BenignProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
@@ -1594,7 +1594,7 @@ export const ReadProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:read", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReadProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<ReadProjectsAlertsRequest>;
 
 export type ReadProjectsAlertsResponse = Alert;
 export const ReadProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
@@ -1636,7 +1636,7 @@ export const NotActionableProjectsAlertsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<NotActionableProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<NotActionableProjectsAlertsRequest>;
 
 export type NotActionableProjectsAlertsResponse = Alert;
 export const NotActionableProjectsAlertsResponse =
@@ -1675,7 +1675,7 @@ export const TriageProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:triage", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TriageProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<TriageProjectsAlertsRequest>;
 
 export type TriageProjectsAlertsResponse = Alert;
 export const TriageProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
@@ -1713,7 +1713,7 @@ export const ResolveProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:resolve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResolveProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<ResolveProjectsAlertsRequest>;
 
 export type ResolveProjectsAlertsResponse = Alert;
 export const ResolveProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
@@ -1757,7 +1757,7 @@ export const TrackExternallyProjectsAlertsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TrackExternallyProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<TrackExternallyProjectsAlertsRequest>;
 
 export type TrackExternallyProjectsAlertsResponse = Alert;
 export const TrackExternallyProjectsAlertsResponse =
@@ -1796,7 +1796,7 @@ export const DuplicateProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:duplicate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DuplicateProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<DuplicateProjectsAlertsRequest>;
 
 export type DuplicateProjectsAlertsResponse = Alert;
 export const DuplicateProjectsAlertsResponse =
@@ -1844,7 +1844,7 @@ export const ListProjectsAlertsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/alerts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAlertsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAlertsRequest>;
 
 export type ListProjectsAlertsResponse = ListAlertsResponse;
 export const ListProjectsAlertsResponse =
@@ -1879,7 +1879,7 @@ export const GetProjectsAlertsDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAlertsDocumentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAlertsDocumentsRequest>;
 
 export type GetProjectsAlertsDocumentsResponse = AlertDocument;
 export const GetProjectsAlertsDocumentsResponse =
@@ -1925,7 +1925,7 @@ export const ListProjectsFindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/findings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsFindingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsFindingsRequest>;
 
 export type ListProjectsFindingsResponse = ListFindingsResponse;
 export const ListProjectsFindingsResponse =
@@ -1972,7 +1972,7 @@ export const SearchProjectsFindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/findings:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsFindingsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsFindingsRequest>;
 
 export type SearchProjectsFindingsResponse = SearchFindingsResponse;
 export const SearchProjectsFindingsResponse =
@@ -2007,7 +2007,7 @@ export const GetProjectsFindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsFindingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsFindingsRequest>;
 
 export type GetProjectsFindingsResponse = Finding;
 export const GetProjectsFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Finding;
@@ -2037,7 +2037,7 @@ export const GetProjectsConfigurationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsConfigurationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsConfigurationsRequest>;
 
 export type GetProjectsConfigurationsResponse = Configuration;
 export const GetProjectsConfigurationsResponse =
@@ -2083,7 +2083,7 @@ export const ListProjectsConfigurationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/configurations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsConfigurationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsConfigurationsRequest>;
 
 export type ListProjectsConfigurationsResponse = ListConfigurationsResponse;
 export const ListProjectsConfigurationsResponse =
@@ -2133,7 +2133,7 @@ export const UpsertProjectsConfigurationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpsertProjectsConfigurationsRequest>;
+  ) as unknown as Schema.Codec<UpsertProjectsConfigurationsRequest>;
 
 export type UpsertProjectsConfigurationsResponse = UpsertConfigurationResponse;
 export const UpsertProjectsConfigurationsResponse =
@@ -2181,7 +2181,7 @@ export const ListProjectsConfigurationsRevisionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/revisions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsConfigurationsRevisionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsConfigurationsRevisionsRequest>;
 
 export type ListProjectsConfigurationsRevisionsResponse =
   ListConfigurationRevisionsResponse;

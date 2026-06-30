@@ -4,15 +4,78 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListProjectOperationsInput {
+  project_id: string;
+  cursor?: string;
+  limit?: number;
+}
 export const ListProjectOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/operations" }));
-export type ListProjectOperationsInput = typeof ListProjectOperationsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/projects/{project_id}/operations" }),
+  ) as unknown as Schema.Codec<ListProjectOperationsInput>;
 
 // Output Schema
+export interface ListProjectOperationsOutput {
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+  pagination?: { cursor: string };
+}
 export const ListProjectOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.Array(
@@ -78,9 +141,7 @@ export const ListProjectOperationsOutput =
         cursor: Schema.String,
       }),
     ),
-  });
-export type ListProjectOperationsOutput =
-  typeof ListProjectOperationsOutput.Type;
+  }) as unknown as Schema.Codec<ListProjectOperationsOutput>;
 
 // The operation
 /**

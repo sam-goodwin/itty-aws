@@ -3,13 +3,16 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RetrieveStopwordsSetsInput {}
 export const RetrieveStopwordsSetsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/stopwords" }),
-  );
-export type RetrieveStopwordsSetsInput = typeof RetrieveStopwordsSetsInput.Type;
+  ) as unknown as Schema.Codec<RetrieveStopwordsSetsInput>;
 
 // Output Schema
+export interface RetrieveStopwordsSetsOutput {
+  stopwords: { id: string; stopwords: string[]; locale?: string }[];
+}
 export const RetrieveStopwordsSetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stopwords: Schema.Array(
@@ -19,9 +22,7 @@ export const RetrieveStopwordsSetsOutput =
         locale: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RetrieveStopwordsSetsOutput =
-  typeof RetrieveStopwordsSetsOutput.Type;
+  }) as unknown as Schema.Codec<RetrieveStopwordsSetsOutput>;
 
 // The operation
 /**

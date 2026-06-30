@@ -3,6 +3,38 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UserlandSsoControllerAuthorizeInput {
+  code_challenge_method?: string;
+  code_challenge?: string;
+  domain_hint?: string;
+  connection_id?: string;
+  provider_query_params?: string;
+  provider_scopes?: string;
+  invitation_token?: string;
+  screen_hint?: "sign-up" | "sign-in";
+  login_hint?: string;
+  provider?:
+    | "authkit"
+    | "AppleOAuth"
+    | "BitbucketOAuth"
+    | "GitHubOAuth"
+    | "GitLabOAuth"
+    | "GoogleOAuth"
+    | "IntuitOAuth"
+    | "LinkedInOAuth"
+    | "MicrosoftOAuth"
+    | "SalesforceOAuth"
+    | "SlackOAuth"
+    | "VercelMarketplaceOAuth"
+    | "VercelOAuth"
+    | "XeroOAuth";
+  prompt?: string;
+  state?: string;
+  organization_id?: string;
+  response_type: string;
+  redirect_uri: string;
+  client_id: string;
+}
 export const UserlandSsoControllerAuthorizeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code_challenge_method: Schema.optional(Schema.String),
@@ -38,15 +70,14 @@ export const UserlandSsoControllerAuthorizeInput =
     response_type: Schema.String,
     redirect_uri: Schema.String,
     client_id: Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/user_management/authorize" }));
-export type UserlandSsoControllerAuthorizeInput =
-  typeof UserlandSsoControllerAuthorizeInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/user_management/authorize" }),
+  ) as unknown as Schema.Codec<UserlandSsoControllerAuthorizeInput>;
 
 // Output Schema
+export type UserlandSsoControllerAuthorizeOutput = void;
 export const UserlandSsoControllerAuthorizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserlandSsoControllerAuthorizeOutput =
-  typeof UserlandSsoControllerAuthorizeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandSsoControllerAuthorizeOutput>;
 
 // The operation
 /**

@@ -4,18 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteStopwordsSetInput {
+  setId: string;
+}
 export const DeleteStopwordsSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     setId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/stopwords/{setId}" }));
-export type DeleteStopwordsSetInput = typeof DeleteStopwordsSetInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/stopwords/{setId}" }),
+  ) as unknown as Schema.Codec<DeleteStopwordsSetInput>;
 
 // Output Schema
+export interface DeleteStopwordsSetOutput {
+  id: string;
+}
 export const DeleteStopwordsSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type DeleteStopwordsSetOutput = typeof DeleteStopwordsSetOutput.Type;
+  }) as unknown as Schema.Codec<DeleteStopwordsSetOutput>;
 
 // The operation
 /**

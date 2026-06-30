@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupDatabaseUserInput {
+  groupId: string;
+  databaseName: string;
+  username: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupDatabaseUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const UpdateGroupDatabaseUserInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
     }),
-  );
-export type UpdateGroupDatabaseUserInput =
-  typeof UpdateGroupDatabaseUserInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupDatabaseUserInput>;
 
 // Output Schema
+export type UpdateGroupDatabaseUserOutput = void;
 export const UpdateGroupDatabaseUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupDatabaseUserOutput =
-  typeof UpdateGroupDatabaseUserOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupDatabaseUserOutput>;
 
 // The operation
 /**

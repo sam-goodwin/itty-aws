@@ -3,6 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SendEvmAssetWithEndUserAccountInput {
+  userId: string;
+  address: string;
+  asset: "usdc";
+  projectID?: string;
+  to: string;
+  amount: string;
+  network:
+    | "base"
+    | "base-sepolia"
+    | "ethereum"
+    | "ethereum-sepolia"
+    | "avalanche"
+    | "polygon"
+    | "optimism"
+    | "arbitrum"
+    | "arbitrum-sepolia"
+    | "world"
+    | "world-sepolia";
+  useCdpPaymaster?: boolean;
+  paymasterUrl?: string;
+  paymasterContext?: Record<string, unknown>;
+  walletSecretId?: string;
+}
 export const SendEvmAssetWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -35,18 +59,18 @@ export const SendEvmAssetWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/evm/{address}/send/{asset}",
     }),
-  );
-export type SendEvmAssetWithEndUserAccountInput =
-  typeof SendEvmAssetWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<SendEvmAssetWithEndUserAccountInput>;
 
 // Output Schema
+export interface SendEvmAssetWithEndUserAccountOutput {
+  transactionHash?: string | null;
+  userOpHash?: string | null;
+}
 export const SendEvmAssetWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionHash: Schema.optional(Schema.NullOr(Schema.String)),
     userOpHash: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type SendEvmAssetWithEndUserAccountOutput =
-  typeof SendEvmAssetWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<SendEvmAssetWithEndUserAccountOutput>;
 
 // The operation
 /**

@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupStreamWorkspacesInput {
+  groupId: string;
+  envelope?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupStreamWorkspacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +20,12 @@ export const ListGroupStreamWorkspacesInput =
     pretty: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/streams" }),
-  );
-export type ListGroupStreamWorkspacesInput =
-  typeof ListGroupStreamWorkspacesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupStreamWorkspacesInput>;
 
 // Output Schema
+export type ListGroupStreamWorkspacesOutput = void;
 export const ListGroupStreamWorkspacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupStreamWorkspacesOutput =
-  typeof ListGroupStreamWorkspacesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamWorkspacesOutput>;
 
 // The operation
 /**

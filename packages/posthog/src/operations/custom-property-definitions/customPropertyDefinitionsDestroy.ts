@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomPropertyDefinitionsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const CustomPropertyDefinitionsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const CustomPropertyDefinitionsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/custom_property_definitions/{id}/",
     }),
-  );
-export type CustomPropertyDefinitionsDestroyInput =
-  typeof CustomPropertyDefinitionsDestroyInput.Type;
+  ) as unknown as Schema.Codec<CustomPropertyDefinitionsDestroyInput>;
 
 // Output Schema
+export type CustomPropertyDefinitionsDestroyOutput = void;
 export const CustomPropertyDefinitionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CustomPropertyDefinitionsDestroyOutput =
-  typeof CustomPropertyDefinitionsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomPropertyDefinitionsDestroyOutput>;
 
 // The operation
 /**

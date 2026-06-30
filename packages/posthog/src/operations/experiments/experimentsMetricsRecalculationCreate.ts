@@ -3,6 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ExperimentsMetricsRecalculationCreateInput {
+  id: number;
+  project_id: string;
+  trigger?:
+    | "manual"
+    | "cold_run"
+    | "stale_refresh"
+    | "auto_refresh"
+    | "config_change"
+    | "experiment_launch"
+    | "experiment_stop"
+    | "experiment_update";
+}
 export const ExperimentsMetricsRecalculationCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -24,11 +37,39 @@ export const ExperimentsMetricsRecalculationCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/",
     }),
-  );
-export type ExperimentsMetricsRecalculationCreateInput =
-  typeof ExperimentsMetricsRecalculationCreateInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsMetricsRecalculationCreateInput>;
 
 // Output Schema
+export interface ExperimentsMetricsRecalculationCreateOutput {
+  id: string;
+  experiment_id: number;
+  status: "pending" | "in_progress" | "completed" | "failed";
+  total_metrics: number;
+  completed_metrics: number;
+  failed_metrics: number;
+  metric_errors: unknown;
+  trigger:
+    | "manual"
+    | "cold_run"
+    | "stale_refresh"
+    | "auto_refresh"
+    | "config_change"
+    | "experiment_launch"
+    | "experiment_stop"
+    | "experiment_update";
+  created_at: string;
+  started_at: string | null;
+  completed_at: string | null;
+  query_to: string | null;
+  is_existing: boolean;
+  result_source: "recalculation" | "timeseries_fallback";
+  results: {
+    metric_uuid: string;
+    status: "pending" | "completed" | "failed";
+    result: unknown;
+    error_message: string | null;
+  }[];
+}
 export const ExperimentsMetricsRecalculationCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -62,9 +103,7 @@ export const ExperimentsMetricsRecalculationCreateOutput =
         error_message: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ExperimentsMetricsRecalculationCreateOutput =
-  typeof ExperimentsMetricsRecalculationCreateOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsMetricsRecalculationCreateOutput>;
 
 // The operation
 /**

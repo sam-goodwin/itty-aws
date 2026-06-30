@@ -4,11 +4,61 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AzureMonitorWorkspacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  properties?: {
+    accountId?: string;
+    metrics?: {
+      prometheusQueryEndpoint?: string;
+      internalId?: string;
+      enableAccessUsingResourcePermissions?: boolean;
+    };
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    defaultIngestionSettings?: {
+      dataCollectionRuleResourceId?: string;
+      dataCollectionEndpointResourceId?: string;
+      dataCollectionRuleImmutableId?: string;
+      ingestionEndpoints?: { metrics?: string };
+    };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AzureMonitorWorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -109,11 +159,22 @@ export const AzureMonitorWorkspacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
       apiVersion: "2025-10-03",
     }),
-  );
-export type AzureMonitorWorkspacesCreateOrUpdateInput =
-  typeof AzureMonitorWorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AzureMonitorWorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface AzureMonitorWorkspacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureMonitorWorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -133,9 +194,7 @@ export const AzureMonitorWorkspacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureMonitorWorkspacesCreateOrUpdateOutput =
-  typeof AzureMonitorWorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AzureMonitorWorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -152,6 +211,11 @@ export const AzureMonitorWorkspacesCreateOrUpdate =
     outputSchema: AzureMonitorWorkspacesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AzureMonitorWorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+}
 export const AzureMonitorWorkspacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -163,15 +227,12 @@ export const AzureMonitorWorkspacesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
       apiVersion: "2025-10-03",
     }),
-  );
-export type AzureMonitorWorkspacesDeleteInput =
-  typeof AzureMonitorWorkspacesDeleteInput.Type;
+  ) as unknown as Schema.Codec<AzureMonitorWorkspacesDeleteInput>;
 
 // Output Schema
+export type AzureMonitorWorkspacesDeleteOutput = void;
 export const AzureMonitorWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AzureMonitorWorkspacesDeleteOutput =
-  typeof AzureMonitorWorkspacesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AzureMonitorWorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -188,6 +249,11 @@ export const AzureMonitorWorkspacesDelete =
     outputSchema: AzureMonitorWorkspacesDeleteOutput,
   }));
 // Input Schema
+export interface AzureMonitorWorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+}
 export const AzureMonitorWorkspacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -199,11 +265,22 @@ export const AzureMonitorWorkspacesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
       apiVersion: "2025-10-03",
     }),
-  );
-export type AzureMonitorWorkspacesGetInput =
-  typeof AzureMonitorWorkspacesGetInput.Type;
+  ) as unknown as Schema.Codec<AzureMonitorWorkspacesGetInput>;
 
 // Output Schema
+export interface AzureMonitorWorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureMonitorWorkspacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -223,9 +300,7 @@ export const AzureMonitorWorkspacesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureMonitorWorkspacesGetOutput =
-  typeof AzureMonitorWorkspacesGetOutput.Type;
+  }) as unknown as Schema.Codec<AzureMonitorWorkspacesGetOutput>;
 
 // The operation
 /**
@@ -243,6 +318,10 @@ export const AzureMonitorWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AzureMonitorWorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AzureMonitorWorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -253,11 +332,25 @@ export const AzureMonitorWorkspacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts",
       apiVersion: "2025-10-03",
     }),
-  );
-export type AzureMonitorWorkspacesListByResourceGroupInput =
-  typeof AzureMonitorWorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AzureMonitorWorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface AzureMonitorWorkspacesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AzureMonitorWorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -292,9 +385,7 @@ export const AzureMonitorWorkspacesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureMonitorWorkspacesListByResourceGroupOutput =
-  typeof AzureMonitorWorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AzureMonitorWorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -310,6 +401,9 @@ export const AzureMonitorWorkspacesListByResourceGroup =
     outputSchema: AzureMonitorWorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AzureMonitorWorkspacesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AzureMonitorWorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -319,11 +413,25 @@ export const AzureMonitorWorkspacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Monitor/accounts",
       apiVersion: "2025-10-03",
     }),
-  );
-export type AzureMonitorWorkspacesListBySubscriptionInput =
-  typeof AzureMonitorWorkspacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AzureMonitorWorkspacesListBySubscriptionInput>;
 
 // Output Schema
+export interface AzureMonitorWorkspacesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AzureMonitorWorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -358,9 +466,7 @@ export const AzureMonitorWorkspacesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureMonitorWorkspacesListBySubscriptionOutput =
-  typeof AzureMonitorWorkspacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AzureMonitorWorkspacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -375,6 +481,54 @@ export const AzureMonitorWorkspacesListBySubscription =
     outputSchema: AzureMonitorWorkspacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AzureMonitorWorkspacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    accountId?: string;
+    metrics?: {
+      prometheusQueryEndpoint?: string;
+      internalId?: string;
+      enableAccessUsingResourcePermissions?: boolean;
+    };
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    defaultIngestionSettings?: {
+      dataCollectionRuleResourceId?: string;
+      dataCollectionEndpointResourceId?: string;
+      dataCollectionRuleImmutableId?: string;
+      ingestionEndpoints?: { metrics?: string };
+    };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+}
 export const AzureMonitorWorkspacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -473,11 +627,22 @@ export const AzureMonitorWorkspacesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
       apiVersion: "2025-10-03",
     }),
-  );
-export type AzureMonitorWorkspacesUpdateInput =
-  typeof AzureMonitorWorkspacesUpdateInput.Type;
+  ) as unknown as Schema.Codec<AzureMonitorWorkspacesUpdateInput>;
 
 // Output Schema
+export interface AzureMonitorWorkspacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureMonitorWorkspacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -497,9 +662,7 @@ export const AzureMonitorWorkspacesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureMonitorWorkspacesUpdateOutput =
-  typeof AzureMonitorWorkspacesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AzureMonitorWorkspacesUpdateOutput>;
 
 // The operation
 /**
@@ -516,6 +679,17 @@ export const AzureMonitorWorkspacesUpdate =
     outputSchema: AzureMonitorWorkspacesUpdateOutput,
   }));
 // Input Schema
+export interface IssueAddInvestigationResultInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  id: string;
+  origin?: { addedBy: string; addedByType: "Manual" | "Automatic" };
+  createdAt?: string;
+  lastModifiedAt?: string;
+  result: string;
+}
 export const IssueAddInvestigationResultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -538,11 +712,16 @@ export const IssueAddInvestigationResultInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/addInvestigationResult",
       apiVersion: "2025-10-03",
     }),
-  );
-export type IssueAddInvestigationResultInput =
-  typeof IssueAddInvestigationResultInput.Type;
+  ) as unknown as Schema.Codec<IssueAddInvestigationResultInput>;
 
 // Output Schema
+export interface IssueAddInvestigationResultOutput {
+  id: string;
+  origin?: { addedBy: string; addedByType: "Manual" | "Automatic" };
+  createdAt?: string;
+  lastModifiedAt?: string;
+  result: string;
+}
 export const IssueAddInvestigationResultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -555,9 +734,7 @@ export const IssueAddInvestigationResultOutput =
     createdAt: Schema.optional(Schema.String),
     lastModifiedAt: Schema.optional(Schema.String),
     result: Schema.String,
-  });
-export type IssueAddInvestigationResultOutput =
-  typeof IssueAddInvestigationResultOutput.Type;
+  }) as unknown as Schema.Codec<IssueAddInvestigationResultOutput>;
 
 // The operation
 /**
@@ -576,6 +753,19 @@ export const IssueAddInvestigationResult = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IssueAddOrUpdateAlertsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  value: {
+    id: string;
+    relevance: "None" | "Relevant" | "Irrelevant";
+    origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
+    addedAt: string;
+    lastModifiedAt: string;
+  }[];
+}
 export const IssueAddOrUpdateAlertsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -600,11 +790,18 @@ export const IssueAddOrUpdateAlertsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/addOrUpdateAlerts",
       apiVersion: "2025-10-03",
     }),
-  );
-export type IssueAddOrUpdateAlertsInput =
-  typeof IssueAddOrUpdateAlertsInput.Type;
+  ) as unknown as Schema.Codec<IssueAddOrUpdateAlertsInput>;
 
 // Output Schema
+export interface IssueAddOrUpdateAlertsOutput {
+  value: {
+    id: string;
+    relevance: "None" | "Relevant" | "Irrelevant";
+    origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
+    addedAt: string;
+    lastModifiedAt: string;
+  }[];
+}
 export const IssueAddOrUpdateAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -619,9 +816,7 @@ export const IssueAddOrUpdateAlertsOutput =
         lastModifiedAt: Schema.String,
       }),
     ),
-  });
-export type IssueAddOrUpdateAlertsOutput =
-  typeof IssueAddOrUpdateAlertsOutput.Type;
+  }) as unknown as Schema.Codec<IssueAddOrUpdateAlertsOutput>;
 
 // The operation
 /**
@@ -640,6 +835,19 @@ export const IssueAddOrUpdateAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IssueAddOrUpdateResourcesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  value: {
+    id: string;
+    relevance: "None" | "Relevant" | "Irrelevant";
+    origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
+    addedAt: string;
+    lastModifiedAt: string;
+  }[];
+}
 export const IssueAddOrUpdateResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -664,11 +872,18 @@ export const IssueAddOrUpdateResourcesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/addOrUpdateResources",
       apiVersion: "2025-10-03",
     }),
-  );
-export type IssueAddOrUpdateResourcesInput =
-  typeof IssueAddOrUpdateResourcesInput.Type;
+  ) as unknown as Schema.Codec<IssueAddOrUpdateResourcesInput>;
 
 // Output Schema
+export interface IssueAddOrUpdateResourcesOutput {
+  value: {
+    id: string;
+    relevance: "None" | "Relevant" | "Irrelevant";
+    origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
+    addedAt: string;
+    lastModifiedAt: string;
+  }[];
+}
 export const IssueAddOrUpdateResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -683,9 +898,7 @@ export const IssueAddOrUpdateResourcesOutput =
         lastModifiedAt: Schema.String,
       }),
     ),
-  });
-export type IssueAddOrUpdateResourcesOutput =
-  typeof IssueAddOrUpdateResourcesOutput.Type;
+  }) as unknown as Schema.Codec<IssueAddOrUpdateResourcesOutput>;
 
 // The operation
 /**
@@ -704,6 +917,34 @@ export const IssueAddOrUpdateResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IssueCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  related?: string;
+  properties?: {
+    title: string;
+    status: "New" | "InProgress" | "Mitigated" | "Closed" | "Canceled";
+    severity: string;
+    investigations: { id: string; createdAt: string }[];
+    impactTime: string;
+    investigationsCount: number;
+    background?: {
+      type?: string;
+      text?: string;
+      details?: { name: string; value: string }[];
+    };
+    notifications?: {
+      updateTypes?: {
+        updateType: "IssueCreation" | "TimeBased" | "OnChange";
+      }[];
+      actionGroupIds?: string[];
+      excludeDefaultActionGroups?: boolean;
+    };
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+}
 export const IssueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -771,10 +1012,22 @@ export const IssueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}",
     apiVersion: "2025-10-03",
   }),
-);
-export type IssueCreateInput = typeof IssueCreateInput.Type;
+) as unknown as Schema.Codec<IssueCreateInput>;
 
 // Output Schema
+export interface IssueCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IssueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -793,8 +1046,7 @@ export const IssueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type IssueCreateOutput = typeof IssueCreateOutput.Type;
+}) as unknown as Schema.Codec<IssueCreateOutput>;
 
 // The operation
 /**
@@ -812,6 +1064,12 @@ export const IssueCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IssueCreateOutput,
 }));
 // Input Schema
+export interface IssueDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+}
 export const IssueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -823,12 +1081,12 @@ export const IssueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}",
     apiVersion: "2025-10-03",
   }),
-);
-export type IssueDeleteInput = typeof IssueDeleteInput.Type;
+) as unknown as Schema.Codec<IssueDeleteInput>;
 
 // Output Schema
-export const IssueDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IssueDeleteOutput = typeof IssueDeleteOutput.Type;
+export type IssueDeleteOutput = void;
+export const IssueDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IssueDeleteOutput>;
 
 // The operation
 /**
@@ -845,6 +1103,12 @@ export const IssueDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IssueDeleteOutput,
 }));
 // Input Schema
+export interface IssueFetchBackgroundVisualizationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+}
 export const IssueFetchBackgroundVisualizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -857,11 +1121,13 @@ export const IssueFetchBackgroundVisualizationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/fetchBackgroundVisualization",
       apiVersion: "2025-10-03",
     }),
-  );
-export type IssueFetchBackgroundVisualizationInput =
-  typeof IssueFetchBackgroundVisualizationInput.Type;
+  ) as unknown as Schema.Codec<IssueFetchBackgroundVisualizationInput>;
 
 // Output Schema
+export interface IssueFetchBackgroundVisualizationOutput {
+  visualization: string;
+  origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
+}
 export const IssueFetchBackgroundVisualizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visualization: Schema.String,
@@ -869,9 +1135,7 @@ export const IssueFetchBackgroundVisualizationOutput =
       addedBy: Schema.String,
       addedByType: Schema.Literals(["Manual", "Automatic"]),
     }),
-  });
-export type IssueFetchBackgroundVisualizationOutput =
-  typeof IssueFetchBackgroundVisualizationOutput.Type;
+  }) as unknown as Schema.Codec<IssueFetchBackgroundVisualizationOutput>;
 
 // The operation
 /**
@@ -889,6 +1153,13 @@ export const IssueFetchBackgroundVisualization =
     outputSchema: IssueFetchBackgroundVisualizationOutput,
   }));
 // Input Schema
+export interface IssueFetchInvestigationResultInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  investigationId: string;
+}
 export const IssueFetchInvestigationResultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -902,11 +1173,16 @@ export const IssueFetchInvestigationResultInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/fetchInvestigationResult",
       apiVersion: "2025-10-03",
     }),
-  );
-export type IssueFetchInvestigationResultInput =
-  typeof IssueFetchInvestigationResultInput.Type;
+  ) as unknown as Schema.Codec<IssueFetchInvestigationResultInput>;
 
 // Output Schema
+export interface IssueFetchInvestigationResultOutput {
+  id: string;
+  origin?: { addedBy: string; addedByType: "Manual" | "Automatic" };
+  createdAt?: string;
+  lastModifiedAt?: string;
+  result: string;
+}
 export const IssueFetchInvestigationResultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -919,9 +1195,7 @@ export const IssueFetchInvestigationResultOutput =
     createdAt: Schema.optional(Schema.String),
     lastModifiedAt: Schema.optional(Schema.String),
     result: Schema.String,
-  });
-export type IssueFetchInvestigationResultOutput =
-  typeof IssueFetchInvestigationResultOutput.Type;
+  }) as unknown as Schema.Codec<IssueFetchInvestigationResultOutput>;
 
 // The operation
 /**
@@ -939,6 +1213,12 @@ export const IssueFetchInvestigationResult =
     outputSchema: IssueFetchInvestigationResultOutput,
   }));
 // Input Schema
+export interface IssueGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+}
 export const IssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -950,10 +1230,22 @@ export const IssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}",
     apiVersion: "2025-10-03",
   }),
-);
-export type IssueGetInput = typeof IssueGetInput.Type;
+) as unknown as Schema.Codec<IssueGetInput>;
 
 // Output Schema
+export interface IssueGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -972,8 +1264,7 @@ export const IssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type IssueGetOutput = typeof IssueGetOutput.Type;
+}) as unknown as Schema.Codec<IssueGetOutput>;
 
 // The operation
 /**
@@ -990,6 +1281,11 @@ export const IssueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IssueGetOutput,
 }));
 // Input Schema
+export interface IssueListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+}
 export const IssueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1000,10 +1296,25 @@ export const IssueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues",
     apiVersion: "2025-10-03",
   }),
-);
-export type IssueListInput = typeof IssueListInput.Type;
+) as unknown as Schema.Codec<IssueListInput>;
 
 // Output Schema
+export interface IssueListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IssueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1027,8 +1338,7 @@ export const IssueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type IssueListOutput = typeof IssueListOutput.Type;
+}) as unknown as Schema.Codec<IssueListOutput>;
 
 // The operation
 /**
@@ -1044,6 +1354,13 @@ export const IssueList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IssueListOutput,
 }));
 // Input Schema
+export interface IssueListAlertsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  filter?: string;
+}
 export const IssueListAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1056,10 +1373,19 @@ export const IssueListAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/listAlerts",
     apiVersion: "2025-10-03",
   }),
-);
-export type IssueListAlertsInput = typeof IssueListAlertsInput.Type;
+) as unknown as Schema.Codec<IssueListAlertsInput>;
 
 // Output Schema
+export interface IssueListAlertsOutput {
+  value: {
+    id: string;
+    relevance: "None" | "Relevant" | "Irrelevant";
+    origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
+    addedAt: string;
+    lastModifiedAt: string;
+  }[];
+  nextLink?: string;
+}
 export const IssueListAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1074,8 +1400,7 @@ export const IssueListAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type IssueListAlertsOutput = typeof IssueListAlertsOutput.Type;
+}) as unknown as Schema.Codec<IssueListAlertsOutput>;
 
 // The operation
 /**
@@ -1092,6 +1417,13 @@ export const IssueListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IssueListAlertsOutput,
 }));
 // Input Schema
+export interface IssueListResourcesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  filter?: string;
+}
 export const IssueListResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1105,10 +1437,19 @@ export const IssueListResourcesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/listResources",
       apiVersion: "2025-10-03",
     }),
-  );
-export type IssueListResourcesInput = typeof IssueListResourcesInput.Type;
+  ) as unknown as Schema.Codec<IssueListResourcesInput>;
 
 // Output Schema
+export interface IssueListResourcesOutput {
+  value: {
+    id: string;
+    relevance: "None" | "Relevant" | "Irrelevant";
+    origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
+    addedAt: string;
+    lastModifiedAt: string;
+  }[];
+  nextLink?: string;
+}
 export const IssueListResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1124,8 +1465,7 @@ export const IssueListResourcesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IssueListResourcesOutput = typeof IssueListResourcesOutput.Type;
+  }) as unknown as Schema.Codec<IssueListResourcesOutput>;
 
 // The operation
 /**
@@ -1142,6 +1482,14 @@ export const IssueListResources = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IssueListResourcesOutput,
 }));
 // Input Schema
+export interface IssueSetBackgroundVisualizationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  visualization: string;
+  origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
+}
 export const IssueSetBackgroundVisualizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1159,15 +1507,12 @@ export const IssueSetBackgroundVisualizationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/setBackgroundVisualization",
       apiVersion: "2025-10-03",
     }),
-  );
-export type IssueSetBackgroundVisualizationInput =
-  typeof IssueSetBackgroundVisualizationInput.Type;
+  ) as unknown as Schema.Codec<IssueSetBackgroundVisualizationInput>;
 
 // Output Schema
+export type IssueSetBackgroundVisualizationOutput = void;
 export const IssueSetBackgroundVisualizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IssueSetBackgroundVisualizationOutput =
-  typeof IssueSetBackgroundVisualizationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IssueSetBackgroundVisualizationOutput>;
 
 // The operation
 /**
@@ -1185,6 +1530,30 @@ export const IssueSetBackgroundVisualization =
     outputSchema: IssueSetBackgroundVisualizationOutput,
   }));
 // Input Schema
+export interface IssueUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  issueName: string;
+  properties?: {
+    title?: string;
+    status?: "New" | "InProgress" | "Mitigated" | "Closed" | "Canceled";
+    severity?: string;
+    impactTime?: string;
+    background?: {
+      type?: string;
+      text?: string;
+      details?: { name: string; value: string }[];
+    };
+    notifications?: {
+      updateTypes?: {
+        updateType: "IssueCreation" | "TimeBased" | "OnChange";
+      }[];
+      actionGroupIds?: string[];
+      excludeDefaultActionGroups?: boolean;
+    };
+  };
+}
 export const IssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1243,10 +1612,22 @@ export const IssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}",
     apiVersion: "2025-10-03",
   }),
-);
-export type IssueUpdateInput = typeof IssueUpdateInput.Type;
+) as unknown as Schema.Codec<IssueUpdateInput>;
 
 // Output Schema
+export interface IssueUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IssueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1265,8 +1646,7 @@ export const IssueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type IssueUpdateOutput = typeof IssueUpdateOutput.Type;
+}) as unknown as Schema.Codec<IssueUpdateOutput>;
 
 // The operation
 /**
@@ -1283,6 +1663,16 @@ export const IssueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IssueUpdateOutput,
 }));
 // Input Schema
+export interface MetricsContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  metricsContainerName: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    version?: string;
+  };
+}
 export const MetricsContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1303,11 +1693,22 @@ export const MetricsContainersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/metricsContainers/{metricsContainerName}",
       apiVersion: "2025-10-03",
     }),
-  );
-export type MetricsContainersCreateOrUpdateInput =
-  typeof MetricsContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MetricsContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface MetricsContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetricsContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1327,9 +1728,7 @@ export const MetricsContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MetricsContainersCreateOrUpdateOutput =
-  typeof MetricsContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MetricsContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1347,6 +1746,12 @@ export const MetricsContainersCreateOrUpdate =
     outputSchema: MetricsContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MetricsContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+  metricsContainerName: string;
+}
 export const MetricsContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1359,10 +1764,22 @@ export const MetricsContainersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/metricsContainers/{metricsContainerName}",
       apiVersion: "2025-10-03",
     }),
-  );
-export type MetricsContainersGetInput = typeof MetricsContainersGetInput.Type;
+  ) as unknown as Schema.Codec<MetricsContainersGetInput>;
 
 // Output Schema
+export interface MetricsContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetricsContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1382,8 +1799,7 @@ export const MetricsContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MetricsContainersGetOutput = typeof MetricsContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<MetricsContainersGetOutput>;
 
 // The operation
 /**
@@ -1402,6 +1818,11 @@ export const MetricsContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MetricsContainersListByAzureMonitorWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureMonitorWorkspaceName: string;
+}
 export const MetricsContainersListByAzureMonitorWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1413,11 +1834,25 @@ export const MetricsContainersListByAzureMonitorWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/metricsContainers",
       apiVersion: "2025-10-03",
     }),
-  );
-export type MetricsContainersListByAzureMonitorWorkspaceInput =
-  typeof MetricsContainersListByAzureMonitorWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<MetricsContainersListByAzureMonitorWorkspaceInput>;
 
 // Output Schema
+export interface MetricsContainersListByAzureMonitorWorkspaceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MetricsContainersListByAzureMonitorWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1452,9 +1887,7 @@ export const MetricsContainersListByAzureMonitorWorkspaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MetricsContainersListByAzureMonitorWorkspaceOutput =
-  typeof MetricsContainersListByAzureMonitorWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<MetricsContainersListByAzureMonitorWorkspaceOutput>;
 
 // The operation
 /**
@@ -1471,6 +1904,7 @@ export const MetricsContainersListByAzureMonitorWorkspace =
     outputSchema: MetricsContainersListByAzureMonitorWorkspaceOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1479,10 +1913,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Monitor/operations",
     apiVersion: "2026-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1505,8 +1953,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1519,6 +1966,108 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PipelineGroupsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineGroupName: string;
+  properties?: {
+    replicas?: number;
+    receivers: {
+      type: "Syslog" | "OTLP";
+      name: string;
+      tlsConfiguration?: string;
+      syslog?: {
+        endpoint: string;
+        allowedFormats?: (
+          | "all"
+          | "syslogRfc3164"
+          | "syslogRfc5424"
+          | "cefRfc3164"
+          | "cefRfc5424"
+          | "rawCef"
+        )[];
+        transportProtocol?: "tcp" | "udp";
+        allowSkipPriHeader?: boolean;
+      };
+      otlp?: { endpoint: string };
+    }[];
+    processors: {
+      type:
+        | "Batch"
+        | "TransformLanguage"
+        | "MicrosoftSyslog"
+        | "MicrosoftCommonSecurityLog";
+      name: string;
+      batch?: { batchSize?: number; timeout?: number };
+      transformLanguage?: { transformStatement: string };
+    }[];
+    exporters: {
+      type: "AzureMonitorWorkspaceLogs";
+      name: string;
+      azureMonitorWorkspaceLogs?: {
+        api: {
+          dataCollectionEndpointUrl: string;
+          stream: string;
+          dataCollectionRule: string;
+          schema: {
+            recordMap: { from: string; to: string }[];
+            resourceMap?: { from: string; to: string }[];
+            scopeMap?: { from: string; to: string }[];
+          };
+        };
+        persistence?: { maxStorageUsage?: number; retentionPeriod?: number };
+      };
+    }[];
+    service: {
+      pipelines: {
+        name: string;
+        type: "Logs";
+        receivers: string[];
+        processors?: string[];
+        exporters: string[];
+      }[];
+      persistence?: { persistentVolumeName: string };
+    };
+    executionPlacement?: {
+      constraints?: {
+        capability: string;
+        operator: "In" | "NotIn" | "Exists" | "DoesNotExist";
+        values?: string[];
+      }[];
+      distribution?: { maxInstancesPerHost?: number };
+    };
+    tlsConfigurations?: {
+      name: string;
+      mode?: "disabled" | "serverOnly" | "mutualTls";
+      tlsCertificate?: {
+        certificate: {
+          type: "kubernetesSecret" | "kubernetesConfigMap";
+          location: string;
+          subLocation: string;
+        };
+        privateKey: {
+          type: "kubernetesSecret";
+          location: string;
+          subLocation: string;
+        };
+      };
+      clientCa?: {
+        type: "kubernetesSecret" | "kubernetesConfigMap";
+        location: string;
+        subLocation: string;
+      };
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting";
+  };
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PipelineGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1728,11 +2277,22 @@ export const PipelineGroupsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PipelineGroupsCreateOrUpdateInput =
-  typeof PipelineGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PipelineGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PipelineGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelineGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1752,9 +2312,7 @@ export const PipelineGroupsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PipelineGroupsCreateOrUpdateOutput =
-  typeof PipelineGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PipelineGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1771,6 +2329,11 @@ export const PipelineGroupsCreateOrUpdate =
     outputSchema: PipelineGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PipelineGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineGroupName: string;
+}
 export const PipelineGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1782,13 +2345,12 @@ export const PipelineGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PipelineGroupsDeleteInput = typeof PipelineGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PipelineGroupsDeleteInput>;
 
 // Output Schema
+export type PipelineGroupsDeleteOutput = void;
 export const PipelineGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PipelineGroupsDeleteOutput = typeof PipelineGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelineGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -1806,6 +2368,11 @@ export const PipelineGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PipelineGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineGroupName: string;
+}
 export const PipelineGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1818,10 +2385,22 @@ export const PipelineGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type PipelineGroupsGetInput = typeof PipelineGroupsGetInput.Type;
+) as unknown as Schema.Codec<PipelineGroupsGetInput>;
 
 // Output Schema
+export interface PipelineGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelineGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1841,8 +2420,7 @@ export const PipelineGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PipelineGroupsGetOutput = typeof PipelineGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<PipelineGroupsGetOutput>;
 
 // The operation
 /**
@@ -1858,6 +2436,10 @@ export const PipelineGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PipelineGroupsGetOutput,
 }));
 // Input Schema
+export interface PipelineGroupsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PipelineGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1868,11 +2450,25 @@ export const PipelineGroupsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PipelineGroupsListByResourceGroupInput =
-  typeof PipelineGroupsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PipelineGroupsListByResourceGroupInput>;
 
 // Output Schema
+export interface PipelineGroupsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PipelineGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1907,9 +2503,7 @@ export const PipelineGroupsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PipelineGroupsListByResourceGroupOutput =
-  typeof PipelineGroupsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PipelineGroupsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1925,6 +2519,9 @@ export const PipelineGroupsListByResourceGroup =
     outputSchema: PipelineGroupsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PipelineGroupsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PipelineGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1934,11 +2531,25 @@ export const PipelineGroupsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Monitor/pipelineGroups",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PipelineGroupsListBySubscriptionInput =
-  typeof PipelineGroupsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PipelineGroupsListBySubscriptionInput>;
 
 // Output Schema
+export interface PipelineGroupsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PipelineGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1973,9 +2584,7 @@ export const PipelineGroupsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PipelineGroupsListBySubscriptionOutput =
-  typeof PipelineGroupsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PipelineGroupsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1990,6 +2599,100 @@ export const PipelineGroupsListBySubscription =
     outputSchema: PipelineGroupsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PipelineGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pipelineGroupName: string;
+  properties?: {
+    replicas?: number;
+    receivers?: {
+      type: "Syslog" | "OTLP";
+      name: string;
+      tlsConfiguration?: string;
+      syslog?: {
+        endpoint: string;
+        allowedFormats?: (
+          | "all"
+          | "syslogRfc3164"
+          | "syslogRfc5424"
+          | "cefRfc3164"
+          | "cefRfc5424"
+          | "rawCef"
+        )[];
+        transportProtocol?: "tcp" | "udp";
+        allowSkipPriHeader?: boolean;
+      };
+      otlp?: { endpoint: string };
+    }[];
+    processors?: {
+      type:
+        | "Batch"
+        | "TransformLanguage"
+        | "MicrosoftSyslog"
+        | "MicrosoftCommonSecurityLog";
+      name: string;
+      batch?: { batchSize?: number; timeout?: number };
+      transformLanguage?: { transformStatement: string };
+    }[];
+    exporters?: {
+      type: "AzureMonitorWorkspaceLogs";
+      name: string;
+      azureMonitorWorkspaceLogs?: {
+        api: {
+          dataCollectionEndpointUrl: string;
+          stream: string;
+          dataCollectionRule: string;
+          schema: {
+            recordMap: { from: string; to: string }[];
+            resourceMap?: { from: string; to: string }[];
+            scopeMap?: { from: string; to: string }[];
+          };
+        };
+        persistence?: { maxStorageUsage?: number; retentionPeriod?: number };
+      };
+    }[];
+    service?: {
+      pipelines?: {
+        name: string;
+        type: "Logs";
+        receivers: string[];
+        processors?: string[];
+        exporters: string[];
+      }[];
+      persistence?: { persistentVolumeName?: string };
+    };
+    executionPlacement?: {
+      constraints?: {
+        capability: string;
+        operator: "In" | "NotIn" | "Exists" | "DoesNotExist";
+        values?: string[];
+      }[];
+      distribution?: { maxInstancesPerHost?: number };
+    };
+    tlsConfigurations?: {
+      name: string;
+      mode?: "disabled" | "serverOnly" | "mutualTls";
+      tlsCertificate?: {
+        certificate: {
+          type: "kubernetesSecret" | "kubernetesConfigMap";
+          location: string;
+          subLocation: string;
+        };
+        privateKey: {
+          type: "kubernetesSecret";
+          location: string;
+          subLocation: string;
+        };
+      };
+      clientCa?: {
+        type: "kubernetesSecret" | "kubernetesConfigMap";
+        location: string;
+        subLocation: string;
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const PipelineGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2193,10 +2896,22 @@ export const PipelineGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type PipelineGroupsUpdateInput = typeof PipelineGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PipelineGroupsUpdateInput>;
 
 // Output Schema
+export interface PipelineGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelineGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2216,8 +2931,7 @@ export const PipelineGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PipelineGroupsUpdateOutput = typeof PipelineGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PipelineGroupsUpdateOutput>;
 
 // The operation
 /**

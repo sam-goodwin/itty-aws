@@ -10,6 +10,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesControllerUpdateInput {
+  resource_id: string;
+  name?: string;
+  description?: string | null;
+}
 export const AuthorizationResourcesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +22,21 @@ export const AuthorizationResourcesControllerUpdateInput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({ method: "PATCH", path: "/authorization/resources/{resource_id}" }),
-  );
-export type AuthorizationResourcesControllerUpdateInput =
-  typeof AuthorizationResourcesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationResourcesControllerUpdateInput>;
 
 // Output Schema
+export interface AuthorizationResourcesControllerUpdateOutput {
+  object: string;
+  name: string;
+  description: string | null;
+  organization_id: string;
+  parent_resource_id: string | null;
+  id: string;
+  external_id: string;
+  resource_type_slug: string;
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationResourcesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -34,9 +49,7 @@ export const AuthorizationResourcesControllerUpdateOutput =
     resource_type_slug: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationResourcesControllerUpdateOutput =
-  typeof AuthorizationResourcesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationResourcesControllerUpdateOutput>;
 
 // The operation
 /**

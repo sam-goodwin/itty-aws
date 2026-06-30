@@ -4,6 +4,21 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesWaitInput {
+  app_name: string;
+  machine_id: string;
+  version?: string;
+  instance_id?: string;
+  from_event_id?: string;
+  timeout?: number;
+  state?:
+    | "started"
+    | "stopped"
+    | "suspended"
+    | "destroyed"
+    | "failed"
+    | "settled";
+}
 export const MachinesWaitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
@@ -26,17 +41,21 @@ export const MachinesWaitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/apps/{app_name}/machines/{machine_id}/wait",
   }),
-);
-export type MachinesWaitInput = typeof MachinesWaitInput.Type;
+) as unknown as Schema.Codec<MachinesWaitInput>;
 
 // Output Schema
+export interface MachinesWaitOutput {
+  event_id?: string;
+  ok?: boolean;
+  state?: string;
+  version?: string;
+}
 export const MachinesWaitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   event_id: Schema.optional(Schema.String),
   ok: Schema.optional(Schema.Boolean),
   state: Schema.optional(Schema.String),
   version: Schema.optional(Schema.String),
-});
-export type MachinesWaitOutput = typeof MachinesWaitOutput.Type;
+}) as unknown as Schema.Codec<MachinesWaitOutput>;
 
 // The operation
 /**

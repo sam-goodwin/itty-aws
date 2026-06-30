@@ -3,19 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ExportEvmAccountInput {
+  address: string;
+  exportEncryptionKey: string;
+}
 export const ExportEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
   exportEncryptionKey: Schema.String,
-}).pipe(T.Http({ method: "POST", path: "/v2/evm/accounts/{address}/export" }));
-export type ExportEvmAccountInput = typeof ExportEvmAccountInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/evm/accounts/{address}/export" }),
+) as unknown as Schema.Codec<ExportEvmAccountInput>;
 
 // Output Schema
+export interface ExportEvmAccountOutput {
+  encryptedPrivateKey: string;
+}
 export const ExportEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     encryptedPrivateKey: Schema.String,
   },
-);
-export type ExportEvmAccountOutput = typeof ExportEvmAccountOutput.Type;
+) as unknown as Schema.Codec<ExportEvmAccountOutput>;
 
 // The operation
 /**

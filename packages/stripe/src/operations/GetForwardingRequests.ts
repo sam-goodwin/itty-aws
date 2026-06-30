@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetForwardingRequestsInput {
+  created?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetForwardingRequestsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
@@ -16,10 +23,44 @@ export const GetForwardingRequestsInput =
       path: "/v1/forwarding/requests",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetForwardingRequestsInput = typeof GetForwardingRequestsInput.Type;
+  ) as unknown as Schema.Codec<GetForwardingRequestsInput>;
 
 // Output Schema
+export interface GetForwardingRequestsOutput {
+  data: {
+    created: number;
+    id: string;
+    livemode: boolean;
+    metadata?: Record<string, string> | null;
+    object: "forwarding.request";
+    payment_method: string;
+    replacements: (
+      | "card_cvc"
+      | "card_expiry"
+      | "card_number"
+      | "cardholder_name"
+      | "request_signature"
+    )[];
+    request_context: {
+      destination_duration: number;
+      destination_ip_address: string;
+    } | null;
+    request_details: {
+      body: string;
+      headers: { name: string; value: string }[];
+      http_method: "POST";
+    } | null;
+    response_details: {
+      body: string;
+      headers: { name: string; value: string }[];
+      status: number;
+    } | null;
+    url: string | null;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetForwardingRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -41,18 +82,43 @@ export const GetForwardingRequestsOutput =
             "request_signature",
           ]),
         ),
-        request_context: Schema.Unknown,
-        request_details: Schema.Unknown,
-        response_details: Schema.Unknown,
+        request_context: Schema.NullOr(
+          Schema.Struct({
+            destination_duration: Schema.Number,
+            destination_ip_address: Schema.String,
+          }),
+        ),
+        request_details: Schema.NullOr(
+          Schema.Struct({
+            body: Schema.String,
+            headers: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            http_method: Schema.Literals(["POST"]),
+          }),
+        ),
+        response_details: Schema.NullOr(
+          Schema.Struct({
+            body: Schema.String,
+            headers: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            status: Schema.Number,
+          }),
+        ),
         url: Schema.NullOr(Schema.String),
       }),
     ),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetForwardingRequestsOutput =
-  typeof GetForwardingRequestsOutput.Type;
+  }) as unknown as Schema.Codec<GetForwardingRequestsOutput>;
 
 // The operation
 /**

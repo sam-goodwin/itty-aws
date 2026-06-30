@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomPropertyDefinitionsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  description?: string | null;
+  display_type?:
+    | "text"
+    | "number"
+    | "currency"
+    | "percent"
+    | "date"
+    | "datetime"
+    | "boolean";
+  is_big_number?: boolean;
+  created_at?: string;
+  created_by?: number | null;
+  updated_at?: string | null;
+}
 export const CustomPropertyDefinitionsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -29,11 +47,26 @@ export const CustomPropertyDefinitionsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/custom_property_definitions/{id}/",
     }),
-  );
-export type CustomPropertyDefinitionsPartialUpdateInput =
-  typeof CustomPropertyDefinitionsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomPropertyDefinitionsPartialUpdateInput>;
 
 // Output Schema
+export interface CustomPropertyDefinitionsPartialUpdateOutput {
+  id: string;
+  name: string;
+  description?: string | null;
+  display_type:
+    | "text"
+    | "number"
+    | "currency"
+    | "percent"
+    | "date"
+    | "datetime"
+    | "boolean";
+  is_big_number?: boolean;
+  created_at: string;
+  created_by: number | null;
+  updated_at: string | null;
+}
 export const CustomPropertyDefinitionsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -52,9 +85,7 @@ export const CustomPropertyDefinitionsPartialUpdateOutput =
     created_at: Schema.String,
     created_by: Schema.NullOr(Schema.Number),
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type CustomPropertyDefinitionsPartialUpdateOutput =
-  typeof CustomPropertyDefinitionsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomPropertyDefinitionsPartialUpdateOutput>;
 
 // The operation
 /**

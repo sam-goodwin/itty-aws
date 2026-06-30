@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RevokeDelegationForEndUserInput {
+  userId: string;
+  projectID?: string;
+  walletSecretId?: string;
+}
 export const RevokeDelegationForEndUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const RevokeDelegationForEndUserInput =
       method: "DELETE",
       path: "/v2/embedded-wallet-api/end-users/{userId}/delegation",
     }),
-  );
-export type RevokeDelegationForEndUserInput =
-  typeof RevokeDelegationForEndUserInput.Type;
+  ) as unknown as Schema.Codec<RevokeDelegationForEndUserInput>;
 
 // Output Schema
+export type RevokeDelegationForEndUserOutput = void;
 export const RevokeDelegationForEndUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RevokeDelegationForEndUserOutput =
-  typeof RevokeDelegationForEndUserOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeDelegationForEndUserOutput>;
 
 // The operation
 /**

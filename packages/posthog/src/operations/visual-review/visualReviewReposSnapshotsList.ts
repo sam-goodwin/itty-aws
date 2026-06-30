@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisualReviewReposSnapshotsListInput {
+  identifier: string;
+  project_id: string;
+  repo_id: string;
+  run_type: string;
+  limit?: number;
+  offset?: number;
+}
 export const VisualReviewReposSnapshotsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identifier: Schema.String.pipe(T.PathParam()),
@@ -16,11 +24,35 @@ export const VisualReviewReposSnapshotsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/repos/{repo_id}/snapshots/{run_type}/{identifier}/",
     }),
-  );
-export type VisualReviewReposSnapshotsListInput =
-  typeof VisualReviewReposSnapshotsListInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposSnapshotsListInput>;
 
 // Output Schema
+export interface VisualReviewReposSnapshotsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    current_artifact?: {
+      id?: string;
+      content_hash?: string;
+      width?: number | null;
+      height?: number | null;
+      download_url?: string | null;
+    } | null;
+    run_id?: string;
+    snapshot_id?: string;
+    result?: string;
+    branch?: string;
+    commit_sha?: string;
+    created_at?: string;
+    pr_number?: number | null;
+    diff_percentage?: number | null;
+    review_state?: string;
+    ssim_score?: number | null;
+    change_kind?: string;
+    size_mismatch?: boolean;
+  }[];
+}
 export const VisualReviewReposSnapshotsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -29,7 +61,17 @@ export const VisualReviewReposSnapshotsListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          current_artifact: Schema.optional(Schema.Unknown),
+          current_artifact: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                content_hash: Schema.optional(Schema.String),
+                width: Schema.optional(Schema.NullOr(Schema.Number)),
+                height: Schema.optional(Schema.NullOr(Schema.Number)),
+                download_url: Schema.optional(Schema.NullOr(Schema.String)),
+              }),
+            ),
+          ),
           run_id: Schema.optional(Schema.String),
           snapshot_id: Schema.optional(Schema.String),
           result: Schema.optional(Schema.String),
@@ -45,9 +87,7 @@ export const VisualReviewReposSnapshotsListOutput =
         }),
       ),
     ),
-  });
-export type VisualReviewReposSnapshotsListOutput =
-  typeof VisualReviewReposSnapshotsListOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewReposSnapshotsListOutput>;
 
 // The operation
 /**

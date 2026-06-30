@@ -4,22 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuditLogsRetentionControllerAuditLogsRetentionInput {
+  id: string;
+}
 export const AuditLogsRetentionControllerAuditLogsRetentionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{id}/audit_logs_retention" }),
-  );
-export type AuditLogsRetentionControllerAuditLogsRetentionInput =
-  typeof AuditLogsRetentionControllerAuditLogsRetentionInput.Type;
+  ) as unknown as Schema.Codec<AuditLogsRetentionControllerAuditLogsRetentionInput>;
 
 // Output Schema
+export interface AuditLogsRetentionControllerAuditLogsRetentionOutput {
+  retention_period_in_days?: number | null;
+}
 export const AuditLogsRetentionControllerAuditLogsRetentionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retention_period_in_days: Schema.optional(Schema.NullOr(Schema.Number)),
-  });
-export type AuditLogsRetentionControllerAuditLogsRetentionOutput =
-  typeof AuditLogsRetentionControllerAuditLogsRetentionOutput.Type;
+  }) as unknown as Schema.Codec<AuditLogsRetentionControllerAuditLogsRetentionOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface RolesRoleMembershipsListInput {
+  organization_id: string;
+  role_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const RolesRoleMembershipsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,73 @@ export const RolesRoleMembershipsListInput =
       method: "GET",
       path: "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/",
     }),
-  );
-export type RolesRoleMembershipsListInput =
-  typeof RolesRoleMembershipsListInput.Type;
+  ) as unknown as Schema.Codec<RolesRoleMembershipsListInput>;
 
 // Output Schema
+export interface RolesRoleMembershipsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    role_id?: string;
+    organization_member?: {
+      id?: string;
+      user?: {
+        id?: number;
+        uuid?: string;
+        distinct_id?: string | null;
+        first_name?: string;
+        last_name?: string;
+        email?: string;
+        is_email_verified?: boolean | null;
+        hedgehog_config?: Record<string, unknown> | null;
+        role_at_organization?:
+          | "engineering"
+          | "data"
+          | "product"
+          | "founder"
+          | "leadership"
+          | "marketing"
+          | "sales"
+          | "other"
+          | ""
+          | null;
+      } | null;
+      level?: 1 | 8 | 15;
+      joined_at?: string;
+      updated_at?: string;
+      is_2fa_enabled?: boolean;
+      has_social_auth?: boolean;
+      last_login?: string;
+      search_match_type?: "exact" | "similar" | null;
+    };
+    user?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    joined_at?: string;
+    updated_at?: string;
+    user_uuid?: string;
+  }[];
+}
 export const RolesRoleMembershipsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -50,7 +118,23 @@ export const RolesRoleMembershipsListOutput =
                         Schema.Record(Schema.String, Schema.Unknown),
                       ),
                     ),
-                    role_at_organization: Schema.optional(Schema.Unknown),
+                    role_at_organization: Schema.optional(
+                      Schema.NullOr(
+                        Schema.Union([
+                          Schema.Literals([
+                            "engineering",
+                            "data",
+                            "product",
+                            "founder",
+                            "leadership",
+                            "marketing",
+                            "sales",
+                            "other",
+                          ]),
+                          Schema.Literals([""]),
+                        ]),
+                      ),
+                    ),
                   }),
                 ),
               ),
@@ -60,7 +144,9 @@ export const RolesRoleMembershipsListOutput =
               is_2fa_enabled: Schema.optional(Schema.Boolean),
               has_social_auth: Schema.optional(Schema.Boolean),
               last_login: Schema.optional(Schema.String),
-              search_match_type: Schema.optional(Schema.Unknown),
+              search_match_type: Schema.optional(
+                Schema.NullOr(Schema.Literals(["exact", "similar"])),
+              ),
             }),
           ),
           user: Schema.optional(
@@ -78,7 +164,23 @@ export const RolesRoleMembershipsListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -88,9 +190,7 @@ export const RolesRoleMembershipsListOutput =
         }),
       ),
     ),
-  });
-export type RolesRoleMembershipsListOutput =
-  typeof RolesRoleMembershipsListOutput.Type;
+  }) as unknown as Schema.Codec<RolesRoleMembershipsListOutput>;
 
 // The operation
 /**

@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TasksSummariesCreateInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  ids: string[];
+}
 export const TasksSummariesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,32 @@ export const TasksSummariesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tasks/summaries/",
     }),
-  );
-export type TasksSummariesCreateInput = typeof TasksSummariesCreateInput.Type;
+  ) as unknown as Schema.Codec<TasksSummariesCreateInput>;
 
 // Output Schema
+export interface TasksSummariesCreateOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    title: string;
+    repository: string | null;
+    created_at: string;
+    updated_at: string;
+    latest_run?: {
+      status:
+        | "not_started"
+        | "queued"
+        | "in_progress"
+        | "completed"
+        | "failed"
+        | "cancelled"
+        | null;
+      environment: "local" | "cloud" | null;
+    } | null;
+  }[];
+}
 export const TasksSummariesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -30,11 +58,26 @@ export const TasksSummariesCreateOutput =
         repository: Schema.NullOr(Schema.String),
         created_at: Schema.String,
         updated_at: Schema.String,
-        latest_run: Schema.optional(Schema.Unknown),
+        latest_run: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              status: Schema.NullOr(
+                Schema.Literals([
+                  "not_started",
+                  "queued",
+                  "in_progress",
+                  "completed",
+                  "failed",
+                  "cancelled",
+                ]),
+              ),
+              environment: Schema.NullOr(Schema.Literals(["local", "cloud"])),
+            }),
+          ),
+        ),
       }),
     ),
-  });
-export type TasksSummariesCreateOutput = typeof TasksSummariesCreateOutput.Type;
+  }) as unknown as Schema.Codec<TasksSummariesCreateOutput>;
 
 // The operation
 /**

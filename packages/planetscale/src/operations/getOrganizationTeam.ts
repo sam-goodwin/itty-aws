@@ -9,6 +9,10 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface GetOrganizationTeamInput {
+  organization: string;
+  team: string;
+}
 export const GetOrganizationTeamInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -18,10 +22,48 @@ export const GetOrganizationTeamInput =
       method: "GET",
       path: "/organizations/{organization}/teams/{team}",
     }),
-  );
-export type GetOrganizationTeamInput = typeof GetOrganizationTeamInput.Type;
+  ) as unknown as Schema.Codec<GetOrganizationTeamInput>;
 
 // Output Schema
+export interface GetOrganizationTeamOutput {
+  id: string;
+  display_name: string;
+  creator: { id: string; display_name: string; avatar_url: string };
+  members: {
+    id: string;
+    display_name: string;
+    name: string;
+    email: string;
+    avatar_url: string;
+    created_at: string;
+    updated_at: string;
+    two_factor_auth_configured: boolean;
+    default_organization?: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    } | null;
+    sso?: boolean | null;
+    managed?: boolean | null;
+    directory_managed?: boolean | null;
+    email_verified?: boolean | null;
+  }[];
+  databases: { id: string; name: string; url: string; branches_url: string }[];
+  analyst_databases: {
+    id: string;
+    name: string;
+    url: string;
+    branches_url: string;
+  }[];
+  name: string;
+  slug: string;
+  created_at: string;
+  updated_at: string;
+  description: string | null;
+  managed: boolean;
+}
 export const GetOrganizationTeamOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -80,8 +122,7 @@ export const GetOrganizationTeamOutput =
     updated_at: Schema.String,
     description: Schema.NullOr(Schema.String),
     managed: Schema.Boolean,
-  });
-export type GetOrganizationTeamOutput = typeof GetOrganizationTeamOutput.Type;
+  }) as unknown as Schema.Codec<GetOrganizationTeamOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -53,7 +53,7 @@ export interface ContainerFeatures {
   supportUserPermissions?: boolean;
 }
 
-export const ContainerFeatures: Schema.Schema<ContainerFeatures> =
+export const ContainerFeatures: Schema.Codec<ContainerFeatures> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTemplates: Schema.optional(Schema.Boolean),
     supportBuiltInVariables: Schema.optional(Schema.Boolean),
@@ -204,7 +204,7 @@ export interface BuiltInVariable {
   workspaceId?: string;
 }
 
-export const BuiltInVariable: Schema.Schema<BuiltInVariable> =
+export const BuiltInVariable: Schema.Codec<BuiltInVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -221,7 +221,7 @@ export interface ListEnabledBuiltInVariablesResponse {
   nextPageToken?: string;
 }
 
-export const ListEnabledBuiltInVariablesResponse: Schema.Schema<ListEnabledBuiltInVariablesResponse> =
+export const ListEnabledBuiltInVariablesResponse: Schema.Codec<ListEnabledBuiltInVariablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     builtInVariable: Schema.optional(Schema.Array(BuiltInVariable)),
     nextPageToken: Schema.optional(Schema.String),
@@ -251,7 +251,7 @@ export interface Parameter {
   list?: ReadonlyArray<Parameter>;
 }
 
-export const Parameter: Schema.Schema<Parameter> =
+export const Parameter: Schema.Codec<Parameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       type: Schema.optional(Schema.String),
@@ -261,7 +261,7 @@ export const Parameter: Schema.Schema<Parameter> =
       value: Schema.optional(Schema.String),
       list: Schema.optional(Schema.Array(Parameter)),
     }),
-  ).annotate({ identifier: "Parameter" }) as any as Schema.Schema<Parameter>;
+  ).annotate({ identifier: "Parameter" }) as any as Schema.Codec<Parameter>;
 
 export interface Condition {
   /** The type of operator for this condition. */
@@ -283,7 +283,7 @@ export interface Condition {
   parameter?: ReadonlyArray<Parameter>;
 }
 
-export const Condition: Schema.Schema<Condition> =
+export const Condition: Schema.Codec<Condition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     parameter: Schema.optional(Schema.Array(Parameter)),
@@ -296,7 +296,7 @@ export interface ZoneBoundary {
   customEvaluationTriggerId?: ReadonlyArray<string>;
 }
 
-export const ZoneBoundary: Schema.Schema<ZoneBoundary> =
+export const ZoneBoundary: Schema.Codec<ZoneBoundary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.Array(Condition)),
     customEvaluationTriggerId: Schema.optional(Schema.Array(Schema.String)),
@@ -309,7 +309,7 @@ export interface ZoneTypeRestriction {
   whitelistedTypeId?: ReadonlyArray<string>;
 }
 
-export const ZoneTypeRestriction: Schema.Schema<ZoneTypeRestriction> =
+export const ZoneTypeRestriction: Schema.Codec<ZoneTypeRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enable: Schema.optional(Schema.Boolean),
     whitelistedTypeId: Schema.optional(Schema.Array(Schema.String)),
@@ -322,7 +322,7 @@ export interface ZoneChildContainer {
   nickname?: string;
 }
 
-export const ZoneChildContainer: Schema.Schema<ZoneChildContainer> =
+export const ZoneChildContainer: Schema.Codec<ZoneChildContainer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicId: Schema.optional(Schema.String),
     nickname: Schema.optional(Schema.String),
@@ -355,7 +355,7 @@ export interface Zone {
   path?: string;
 }
 
-export const Zone: Schema.Schema<Zone> =
+export const Zone: Schema.Codec<Zone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     containerId: Schema.optional(Schema.String),
@@ -376,7 +376,7 @@ export interface RevertZoneResponse {
   zone?: Zone;
 }
 
-export const RevertZoneResponse: Schema.Schema<RevertZoneResponse> =
+export const RevertZoneResponse: Schema.Codec<RevertZoneResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Zone),
   }).annotate({ identifier: "RevertZoneResponse" });
@@ -412,7 +412,7 @@ export interface ContainerVersionHeader {
   numClients?: string;
 }
 
-export const ContainerVersionHeader: Schema.Schema<ContainerVersionHeader> =
+export const ContainerVersionHeader: Schema.Codec<ContainerVersionHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numCustomTemplates: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -459,7 +459,7 @@ export interface Client {
   clientId?: string;
 }
 
-export const Client: Schema.Schema<Client> =
+export const Client: Schema.Codec<Client> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -490,7 +490,7 @@ export interface ContainerAccess {
     | (string & {});
 }
 
-export const ContainerAccess: Schema.Schema<ContainerAccess> =
+export const ContainerAccess: Schema.Codec<ContainerAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
@@ -503,7 +503,7 @@ export interface SetupTag {
   stopOnSetupFailure?: boolean;
 }
 
-export const SetupTag: Schema.Schema<SetupTag> =
+export const SetupTag: Schema.Codec<SetupTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagName: Schema.optional(Schema.String),
     stopOnSetupFailure: Schema.optional(Schema.Boolean),
@@ -516,7 +516,7 @@ export interface TeardownTag {
   stopTeardownOnFailure?: boolean;
 }
 
-export const TeardownTag: Schema.Schema<TeardownTag> =
+export const TeardownTag: Schema.Codec<TeardownTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagName: Schema.optional(Schema.String),
     stopTeardownOnFailure: Schema.optional(Schema.Boolean),
@@ -529,7 +529,7 @@ export interface TagConsentSetting {
   consentType?: Parameter;
 }
 
-export const TagConsentSetting: Schema.Schema<TagConsentSetting> =
+export const TagConsentSetting: Schema.Codec<TagConsentSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consentStatus: Schema.optional(Schema.String),
     consentType: Schema.optional(Parameter),
@@ -593,8 +593,8 @@ export interface Tag {
   blockingTriggerId?: ReadonlyArray<string>;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     parentFolderId: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
     firingTriggerId: Schema.optional(Schema.Array(Schema.String)),
@@ -620,14 +620,15 @@ export const Tag: Schema.Schema<Tag> =
     tagId: Schema.optional(Schema.String),
     consentSettings: Schema.optional(TagConsentSetting),
     blockingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Tag" });
+  },
+).annotate({ identifier: "Tag" });
 
 export interface RevertTagResponse {
   /** Tag as it appears in the latest container version since the last workspace synchronization operation. If no tag is present, that means the tag was deleted in the latest container version. */
   tag?: Tag;
 }
 
-export const RevertTagResponse: Schema.Schema<RevertTagResponse> =
+export const RevertTagResponse: Schema.Codec<RevertTagResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Tag),
   }).annotate({ identifier: "RevertTagResponse" });
@@ -653,7 +654,7 @@ export interface Folder {
   folderId?: string;
 }
 
-export const Folder: Schema.Schema<Folder> =
+export const Folder: Schema.Codec<Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     containerId: Schema.optional(Schema.String),
@@ -671,7 +672,7 @@ export interface RevertFolderResponse {
   folder?: Folder;
 }
 
-export const RevertFolderResponse: Schema.Schema<RevertFolderResponse> =
+export const RevertFolderResponse: Schema.Codec<RevertFolderResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folder: Schema.optional(Folder),
   }).annotate({ identifier: "RevertFolderResponse" });
@@ -683,7 +684,7 @@ export interface AccountFeatures {
   supportMultipleContainers?: boolean;
 }
 
-export const AccountFeatures: Schema.Schema<AccountFeatures> =
+export const AccountFeatures: Schema.Codec<AccountFeatures> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportUserPermissions: Schema.optional(Schema.Boolean),
     supportMultipleContainers: Schema.optional(Schema.Boolean),
@@ -708,7 +709,7 @@ export interface Destination {
   destinationLinkId?: string;
 }
 
-export const Destination: Schema.Schema<Destination> =
+export const Destination: Schema.Codec<Destination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationId: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -730,7 +731,7 @@ export interface AccountAccess {
     | (string & {});
 }
 
-export const AccountAccess: Schema.Schema<AccountAccess> =
+export const AccountAccess: Schema.Codec<AccountAccess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccountAccess" });
@@ -748,7 +749,7 @@ export interface UserPermission {
   accountAccess?: AccountAccess;
 }
 
-export const UserPermission: Schema.Schema<UserPermission> =
+export const UserPermission: Schema.Codec<UserPermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     containerAccess: Schema.optional(Schema.Array(ContainerAccess)),
@@ -764,7 +765,7 @@ export interface ListUserPermissionsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserPermissionsResponse: Schema.Schema<ListUserPermissionsResponse> =
+export const ListUserPermissionsResponse: Schema.Codec<ListUserPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userPermission: Schema.optional(Schema.Array(UserPermission)),
     nextPageToken: Schema.optional(Schema.String),
@@ -777,7 +778,7 @@ export interface CreateContainerVersionRequestVersionOptions {
   notes?: string;
 }
 
-export const CreateContainerVersionRequestVersionOptions: Schema.Schema<CreateContainerVersionRequestVersionOptions> =
+export const CreateContainerVersionRequestVersionOptions: Schema.Codec<CreateContainerVersionRequestVersionOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     notes: Schema.optional(Schema.String),
@@ -790,7 +791,7 @@ export interface ListDestinationsResponse {
   nextPageToken?: string;
 }
 
-export const ListDestinationsResponse: Schema.Schema<ListDestinationsResponse> =
+export const ListDestinationsResponse: Schema.Codec<ListDestinationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.Array(Destination)),
     nextPageToken: Schema.optional(Schema.String),
@@ -899,7 +900,7 @@ export interface Trigger {
   parameter?: ReadonlyArray<Parameter>;
 }
 
-export const Trigger: Schema.Schema<Trigger> =
+export const Trigger: Schema.Codec<Trigger> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.Array(Condition)),
     autoEventFilter: Schema.optional(Schema.Array(Condition)),
@@ -954,7 +955,7 @@ export interface GalleryReference {
   signature?: string;
 }
 
-export const GalleryReference: Schema.Schema<GalleryReference> =
+export const GalleryReference: Schema.Codec<GalleryReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     templateDeveloperId: Schema.optional(Schema.String),
@@ -989,7 +990,7 @@ export interface CustomTemplate {
   path?: string;
 }
 
-export const CustomTemplate: Schema.Schema<CustomTemplate> =
+export const CustomTemplate: Schema.Codec<CustomTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     galleryReference: Schema.optional(GalleryReference),
     accountId: Schema.optional(Schema.String),
@@ -1024,7 +1025,7 @@ export interface GtagConfig {
   workspaceId?: string;
 }
 
-export const GtagConfig: Schema.Schema<GtagConfig> =
+export const GtagConfig: Schema.Codec<GtagConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagManagerUrl: Schema.optional(Schema.String),
     parameter: Schema.optional(Schema.Array(Parameter)),
@@ -1058,7 +1059,7 @@ export interface VariableFormatValue {
   convertTrueToValue?: Parameter;
 }
 
-export const VariableFormatValue: Schema.Schema<VariableFormatValue> =
+export const VariableFormatValue: Schema.Codec<VariableFormatValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     convertToBoolean: Schema.optional(Schema.Boolean),
     caseConversionType: Schema.optional(Schema.String),
@@ -1106,7 +1107,7 @@ export interface Variable {
   tagManagerUrl?: string;
 }
 
-export const Variable: Schema.Schema<Variable> =
+export const Variable: Schema.Codec<Variable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     containerId: Schema.optional(Schema.String),
@@ -1154,7 +1155,7 @@ export interface Transformation {
   notes?: string;
 }
 
-export const Transformation: Schema.Schema<Transformation> =
+export const Transformation: Schema.Codec<Transformation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     workspaceId: Schema.optional(Schema.String),
@@ -1201,7 +1202,7 @@ export interface Entity {
   builtInVariable?: BuiltInVariable;
 }
 
-export const Entity: Schema.Schema<Entity> =
+export const Entity: Schema.Codec<Entity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Tag),
     changeStatus: Schema.optional(Schema.String),
@@ -1223,7 +1224,7 @@ export interface MergeConflict {
   entityInBaseVersion?: Entity;
 }
 
-export const MergeConflict: Schema.Schema<MergeConflict> =
+export const MergeConflict: Schema.Codec<MergeConflict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityInWorkspace: Schema.optional(Entity),
     entityInBaseVersion: Schema.optional(Entity),
@@ -1262,7 +1263,7 @@ export interface Environment {
   description?: string;
 }
 
-export const Environment: Schema.Schema<Environment> =
+export const Environment: Schema.Codec<Environment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentId: Schema.optional(Schema.String),
     tagManagerUrl: Schema.optional(Schema.String),
@@ -1288,7 +1289,7 @@ export interface ListEnvironmentsResponse {
   environment?: ReadonlyArray<Environment>;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
+export const ListEnvironmentsResponse: Schema.Codec<ListEnvironmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     environment: Schema.optional(Schema.Array(Environment)),
@@ -1299,7 +1300,7 @@ export interface BulkUpdateWorkspaceResponse {
   changes?: ReadonlyArray<Entity>;
 }
 
-export const BulkUpdateWorkspaceResponse: Schema.Schema<BulkUpdateWorkspaceResponse> =
+export const BulkUpdateWorkspaceResponse: Schema.Codec<BulkUpdateWorkspaceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(Entity)),
   }).annotate({ identifier: "BulkUpdateWorkspaceResponse" });
@@ -1309,7 +1310,7 @@ export interface RevertTemplateResponse {
   template?: CustomTemplate;
 }
 
-export const RevertTemplateResponse: Schema.Schema<RevertTemplateResponse> =
+export const RevertTemplateResponse: Schema.Codec<RevertTemplateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(CustomTemplate),
   }).annotate({ identifier: "RevertTemplateResponse" });
@@ -1331,7 +1332,7 @@ export interface Account {
   features?: AccountFeatures;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareData: Schema.optional(Schema.Boolean),
     fingerprint: Schema.optional(Schema.String),
@@ -1349,7 +1350,7 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
+export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.Array(Account)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1362,7 +1363,7 @@ export interface ListFoldersResponse {
   nextPageToken?: string;
 }
 
-export const ListFoldersResponse: Schema.Schema<ListFoldersResponse> =
+export const ListFoldersResponse: Schema.Codec<ListFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folder: Schema.optional(Schema.Array(Folder)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1373,7 +1374,7 @@ export interface ProposedChange {
   changes?: ReadonlyArray<Entity>;
 }
 
-export const ProposedChange: Schema.Schema<ProposedChange> =
+export const ProposedChange: Schema.Codec<ProposedChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(Entity)),
   }).annotate({ identifier: "ProposedChange" });
@@ -1385,7 +1386,7 @@ export interface ListGtagConfigResponse {
   nextPageToken?: string;
 }
 
-export const ListGtagConfigResponse: Schema.Schema<ListGtagConfigResponse> =
+export const ListGtagConfigResponse: Schema.Codec<ListGtagConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gtagConfig: Schema.optional(Schema.Array(GtagConfig)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1398,7 +1399,7 @@ export interface ListTriggersResponse {
   nextPageToken?: string;
 }
 
-export const ListTriggersResponse: Schema.Schema<ListTriggersResponse> =
+export const ListTriggersResponse: Schema.Codec<ListTriggersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trigger: Schema.optional(Schema.Array(Trigger)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1409,7 +1410,7 @@ export interface RevertTriggerResponse {
   trigger?: Trigger;
 }
 
-export const RevertTriggerResponse: Schema.Schema<RevertTriggerResponse> =
+export const RevertTriggerResponse: Schema.Codec<RevertTriggerResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trigger: Schema.optional(Trigger),
   }).annotate({ identifier: "RevertTriggerResponse" });
@@ -1421,7 +1422,7 @@ export interface GetWorkspaceStatusResponse {
   mergeConflict?: ReadonlyArray<MergeConflict>;
 }
 
-export const GetWorkspaceStatusResponse: Schema.Schema<GetWorkspaceStatusResponse> =
+export const GetWorkspaceStatusResponse: Schema.Codec<GetWorkspaceStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workspaceChange: Schema.optional(Schema.Array(Entity)),
     mergeConflict: Schema.optional(Schema.Array(MergeConflict)),
@@ -1466,7 +1467,7 @@ export interface Container {
   containerId?: string;
 }
 
-export const Container: Schema.Schema<Container> =
+export const Container: Schema.Codec<Container> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     publicId: Schema.optional(Schema.String),
@@ -1526,7 +1527,7 @@ export interface ContainerVersion {
   path?: string;
 }
 
-export const ContainerVersion: Schema.Schema<ContainerVersion> =
+export const ContainerVersion: Schema.Codec<ContainerVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folder: Schema.optional(Schema.Array(Folder)),
     trigger: Schema.optional(Schema.Array(Trigger)),
@@ -1603,7 +1604,7 @@ export interface CompilerErrorLite {
   errorMessage?: string;
 }
 
-export const CompilerErrorLite: Schema.Schema<CompilerErrorLite> =
+export const CompilerErrorLite: Schema.Codec<CompilerErrorLite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorType: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -1618,7 +1619,7 @@ export interface PublishContainerVersionResponse {
   compilerError?: boolean;
 }
 
-export const PublishContainerVersionResponse: Schema.Schema<PublishContainerVersionResponse> =
+export const PublishContainerVersionResponse: Schema.Codec<PublishContainerVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerVersion: Schema.optional(ContainerVersion),
     compilerErrors: Schema.optional(Schema.Array(CompilerErrorLite)),
@@ -1632,7 +1633,7 @@ export interface SyncStatus {
   syncError?: boolean;
 }
 
-export const SyncStatus: Schema.Schema<SyncStatus> =
+export const SyncStatus: Schema.Codec<SyncStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mergeConflict: Schema.optional(Schema.Boolean),
     syncError: Schema.optional(Schema.Boolean),
@@ -1645,7 +1646,7 @@ export interface SyncWorkspaceResponse {
   mergeConflict?: ReadonlyArray<MergeConflict>;
 }
 
-export const SyncWorkspaceResponse: Schema.Schema<SyncWorkspaceResponse> =
+export const SyncWorkspaceResponse: Schema.Codec<SyncWorkspaceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syncStatus: Schema.optional(SyncStatus),
     mergeConflict: Schema.optional(Schema.Array(MergeConflict)),
@@ -1662,7 +1663,7 @@ export interface QuickPreviewResponse {
   syncStatus?: SyncStatus;
 }
 
-export const QuickPreviewResponse: Schema.Schema<QuickPreviewResponse> =
+export const QuickPreviewResponse: Schema.Codec<QuickPreviewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compilerError: Schema.optional(Schema.Boolean),
     containerVersion: Schema.optional(ContainerVersion),
@@ -1681,7 +1682,7 @@ export interface FolderEntities {
   nextPageToken?: string;
 }
 
-export const FolderEntities: Schema.Schema<FolderEntities> =
+export const FolderEntities: Schema.Codec<FolderEntities> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.Array(Tag)),
     variable: Schema.optional(Schema.Array(Variable)),
@@ -1708,7 +1709,7 @@ export interface Workspace {
   workspaceId?: string;
 }
 
-export const Workspace: Schema.Schema<Workspace> =
+export const Workspace: Schema.Codec<Workspace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagManagerUrl: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1727,7 +1728,7 @@ export interface ListWorkspacesResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkspacesResponse: Schema.Schema<ListWorkspacesResponse> =
+export const ListWorkspacesResponse: Schema.Codec<ListWorkspacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workspace: Schema.optional(Schema.Array(Workspace)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1738,7 +1739,7 @@ export interface RevertVariableResponse {
   variable?: Variable;
 }
 
-export const RevertVariableResponse: Schema.Schema<RevertVariableResponse> =
+export const RevertVariableResponse: Schema.Codec<RevertVariableResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variable: Schema.optional(Variable),
   }).annotate({ identifier: "RevertVariableResponse" });
@@ -1750,7 +1751,7 @@ export interface ListContainerVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListContainerVersionsResponse: Schema.Schema<ListContainerVersionsResponse> =
+export const ListContainerVersionsResponse: Schema.Codec<ListContainerVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerVersionHeader: Schema.optional(
       Schema.Array(ContainerVersionHeader),
@@ -1771,7 +1772,7 @@ export interface CreateContainerVersionResponse {
   compilerError?: boolean;
 }
 
-export const CreateContainerVersionResponse: Schema.Schema<CreateContainerVersionResponse> =
+export const CreateContainerVersionResponse: Schema.Codec<CreateContainerVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syncStatus: Schema.optional(SyncStatus),
     containerVersion: Schema.optional(ContainerVersion),
@@ -1787,7 +1788,7 @@ export interface ListTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const ListTemplatesResponse: Schema.Schema<ListTemplatesResponse> =
+export const ListTemplatesResponse: Schema.Codec<ListTemplatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Array(CustomTemplate)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1800,7 +1801,7 @@ export interface GetContainerSnippetResponse {
   containerConfig?: string;
 }
 
-export const GetContainerSnippetResponse: Schema.Schema<GetContainerSnippetResponse> =
+export const GetContainerSnippetResponse: Schema.Codec<GetContainerSnippetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(Schema.String),
     containerConfig: Schema.optional(Schema.String),
@@ -1811,7 +1812,7 @@ export interface CreateBuiltInVariableResponse {
   builtInVariable?: ReadonlyArray<BuiltInVariable>;
 }
 
-export const CreateBuiltInVariableResponse: Schema.Schema<CreateBuiltInVariableResponse> =
+export const CreateBuiltInVariableResponse: Schema.Codec<CreateBuiltInVariableResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     builtInVariable: Schema.optional(Schema.Array(BuiltInVariable)),
   }).annotate({ identifier: "CreateBuiltInVariableResponse" });
@@ -1823,7 +1824,7 @@ export interface ListVariablesResponse {
   nextPageToken?: string;
 }
 
-export const ListVariablesResponse: Schema.Schema<ListVariablesResponse> =
+export const ListVariablesResponse: Schema.Codec<ListVariablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variable: Schema.optional(Schema.Array(Variable)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1834,7 +1835,7 @@ export interface RevertBuiltInVariableResponse {
   enabled?: boolean;
 }
 
-export const RevertBuiltInVariableResponse: Schema.Schema<RevertBuiltInVariableResponse> =
+export const RevertBuiltInVariableResponse: Schema.Codec<RevertBuiltInVariableResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "RevertBuiltInVariableResponse" });
@@ -1844,7 +1845,7 @@ export interface RevertTransformationResponse {
   transformation?: Transformation;
 }
 
-export const RevertTransformationResponse: Schema.Schema<RevertTransformationResponse> =
+export const RevertTransformationResponse: Schema.Codec<RevertTransformationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformation: Schema.optional(Transformation),
   }).annotate({ identifier: "RevertTransformationResponse" });
@@ -1854,7 +1855,7 @@ export interface RevertClientResponse {
   client?: Client;
 }
 
-export const RevertClientResponse: Schema.Schema<RevertClientResponse> =
+export const RevertClientResponse: Schema.Codec<RevertClientResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client: Schema.optional(Client),
   }).annotate({ identifier: "RevertClientResponse" });
@@ -1866,7 +1867,7 @@ export interface ListContainersResponse {
   nextPageToken?: string;
 }
 
-export const ListContainersResponse: Schema.Schema<ListContainersResponse> =
+export const ListContainersResponse: Schema.Codec<ListContainersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     container: Schema.optional(Schema.Array(Container)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1879,7 +1880,7 @@ export interface ListClientsResponse {
   nextPageToken?: string;
 }
 
-export const ListClientsResponse: Schema.Schema<ListClientsResponse> =
+export const ListClientsResponse: Schema.Codec<ListClientsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client: Schema.optional(Schema.Array(Client)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1892,7 +1893,7 @@ export interface ListZonesResponse {
   nextPageToken?: string;
 }
 
-export const ListZonesResponse: Schema.Schema<ListZonesResponse> =
+export const ListZonesResponse: Schema.Codec<ListZonesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zone: Schema.optional(Schema.Array(Zone)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1905,7 +1906,7 @@ export interface ListTagsResponse {
   nextPageToken?: string;
 }
 
-export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
+export const ListTagsResponse: Schema.Codec<ListTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.Array(Tag)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1918,7 +1919,7 @@ export interface ListTransformationsResponse {
   nextPageToken?: string;
 }
 
-export const ListTransformationsResponse: Schema.Schema<ListTransformationsResponse> =
+export const ListTransformationsResponse: Schema.Codec<ListTransformationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformation: Schema.optional(Schema.Array(Transformation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1988,7 +1989,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
   svc,
-) as unknown as Schema.Schema<GetAccountsRequest>;
+) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -2023,7 +2024,7 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateAccountsRequest>;
+) as unknown as Schema.Codec<UpdateAccountsRequest>;
 
 export type UpdateAccountsResponse = Account;
 export const UpdateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -2062,7 +2063,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "tagmanager/v2/accounts" }),
   svc,
-) as unknown as Schema.Schema<ListAccountsRequest>;
+) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
@@ -2105,7 +2106,7 @@ export const UpdateAccountsContainersRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersRequest>;
 
 export type UpdateAccountsContainersResponse = Container;
 export const UpdateAccountsContainersResponse =
@@ -2164,7 +2165,7 @@ export const CombineAccountsContainersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CombineAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<CombineAccountsContainersRequest>;
 
 export type CombineAccountsContainersResponse = Container;
 export const CombineAccountsContainersResponse =
@@ -2200,13 +2201,13 @@ export const DeleteAccountsContainersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersRequest>;
 
 export interface DeleteAccountsContainersResponse {}
-export const DeleteAccountsContainersResponse: Schema.Schema<DeleteAccountsContainersResponse> =
+export const DeleteAccountsContainersResponse: Schema.Codec<DeleteAccountsContainersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersResponse>;
 
 export type DeleteAccountsContainersError =
   | DefaultErrors
@@ -2243,7 +2244,7 @@ export const LookupAccountsContainersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/accounts/containers:lookup" }),
     svc,
-  ) as unknown as Schema.Schema<LookupAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<LookupAccountsContainersRequest>;
 
 export type LookupAccountsContainersResponse = Container;
 export const LookupAccountsContainersResponse =
@@ -2305,7 +2306,7 @@ export const Move_tag_idAccountsContainersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Move_tag_idAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<Move_tag_idAccountsContainersRequest>;
 
 export type Move_tag_idAccountsContainersResponse = Container;
 export const Move_tag_idAccountsContainersResponse =
@@ -2344,7 +2345,7 @@ export const ListAccountsContainersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/containers" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersRequest>;
 
 export type ListAccountsContainersResponse = ListContainersResponse;
 export const ListAccountsContainersResponse =
@@ -2386,7 +2387,7 @@ export const CreateAccountsContainersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersRequest>;
 
 export type CreateAccountsContainersResponse = Container;
 export const CreateAccountsContainersResponse =
@@ -2422,7 +2423,7 @@ export const GetAccountsContainersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersRequest>;
 
 export type GetAccountsContainersResponse = Container;
 export const GetAccountsContainersResponse =
@@ -2453,7 +2454,7 @@ export const SnippetAccountsContainersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}:snippet" }),
     svc,
-  ) as unknown as Schema.Schema<SnippetAccountsContainersRequest>;
+  ) as unknown as Schema.Codec<SnippetAccountsContainersRequest>;
 
 export type SnippetAccountsContainersResponse = GetContainerSnippetResponse;
 export const SnippetAccountsContainersResponse =
@@ -2491,7 +2492,7 @@ export const UndeleteAccountsContainersVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<UndeleteAccountsContainersVersionsRequest>;
 
 export type UndeleteAccountsContainersVersionsResponse = ContainerVersion;
 export const UndeleteAccountsContainersVersionsResponse =
@@ -2532,7 +2533,7 @@ export const GetAccountsContainersVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersVersionsRequest>;
 
 export type GetAccountsContainersVersionsResponse = ContainerVersion;
 export const GetAccountsContainersVersionsResponse =
@@ -2574,7 +2575,7 @@ export const UpdateAccountsContainersVersionsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersVersionsRequest>;
 
 export type UpdateAccountsContainersVersionsResponse = ContainerVersion;
 export const UpdateAccountsContainersVersionsResponse =
@@ -2610,13 +2611,13 @@ export const DeleteAccountsContainersVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersVersionsRequest>;
 
 export interface DeleteAccountsContainersVersionsResponse {}
-export const DeleteAccountsContainersVersionsResponse: Schema.Schema<DeleteAccountsContainersVersionsResponse> =
+export const DeleteAccountsContainersVersionsResponse: Schema.Codec<DeleteAccountsContainersVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersVersionsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersVersionsResponse>;
 
 export type DeleteAccountsContainersVersionsError =
   | DefaultErrors
@@ -2648,7 +2649,7 @@ export const LiveAccountsContainersVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/versions:live" }),
     svc,
-  ) as unknown as Schema.Schema<LiveAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<LiveAccountsContainersVersionsRequest>;
 
 export type LiveAccountsContainersVersionsResponse = ContainerVersion;
 export const LiveAccountsContainersVersionsResponse =
@@ -2691,7 +2692,7 @@ export const PublishAccountsContainersVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PublishAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<PublishAccountsContainersVersionsRequest>;
 
 export type PublishAccountsContainersVersionsResponse =
   PublishContainerVersionResponse;
@@ -2732,7 +2733,7 @@ export const Set_latestAccountsContainersVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Set_latestAccountsContainersVersionsRequest>;
+  ) as unknown as Schema.Codec<Set_latestAccountsContainersVersionsRequest>;
 
 export type Set_latestAccountsContainersVersionsResponse = ContainerVersion;
 export const Set_latestAccountsContainersVersionsResponse =
@@ -2768,7 +2769,7 @@ export const ListAccountsContainersDestinationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/destinations" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersDestinationsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersDestinationsRequest>;
 
 export type ListAccountsContainersDestinationsResponse =
   ListDestinationsResponse;
@@ -2803,7 +2804,7 @@ export const GetAccountsContainersDestinationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersDestinationsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersDestinationsRequest>;
 
 export type GetAccountsContainersDestinationsResponse = Destination;
 export const GetAccountsContainersDestinationsResponse =
@@ -2851,7 +2852,7 @@ export const LinkAccountsContainersDestinationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<LinkAccountsContainersDestinationsRequest>;
+  ) as unknown as Schema.Codec<LinkAccountsContainersDestinationsRequest>;
 
 export type LinkAccountsContainersDestinationsResponse = Destination;
 export const LinkAccountsContainersDestinationsResponse =
@@ -2887,7 +2888,7 @@ export const GetAccountsContainersEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersEnvironmentsRequest>;
 
 export type GetAccountsContainersEnvironmentsResponse = Environment;
 export const GetAccountsContainersEnvironmentsResponse =
@@ -2929,7 +2930,7 @@ export const UpdateAccountsContainersEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersEnvironmentsRequest>;
 
 export type UpdateAccountsContainersEnvironmentsResponse = Environment;
 export const UpdateAccountsContainersEnvironmentsResponse =
@@ -2965,13 +2966,13 @@ export const DeleteAccountsContainersEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersEnvironmentsRequest>;
 
 export interface DeleteAccountsContainersEnvironmentsResponse {}
-export const DeleteAccountsContainersEnvironmentsResponse: Schema.Schema<DeleteAccountsContainersEnvironmentsResponse> =
+export const DeleteAccountsContainersEnvironmentsResponse: Schema.Codec<DeleteAccountsContainersEnvironmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersEnvironmentsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersEnvironmentsResponse>;
 
 export type DeleteAccountsContainersEnvironmentsError =
   | DefaultErrors
@@ -3010,7 +3011,7 @@ export const CreateAccountsContainersEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersEnvironmentsRequest>;
 
 export type CreateAccountsContainersEnvironmentsResponse = Environment;
 export const CreateAccountsContainersEnvironmentsResponse =
@@ -3049,7 +3050,7 @@ export const ListAccountsContainersEnvironmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/environments" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersEnvironmentsRequest>;
 
 export type ListAccountsContainersEnvironmentsResponse =
   ListEnvironmentsResponse;
@@ -3095,7 +3096,7 @@ export const ReauthorizeAccountsContainersEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReauthorizeAccountsContainersEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ReauthorizeAccountsContainersEnvironmentsRequest>;
 
 export type ReauthorizeAccountsContainersEnvironmentsResponse = Environment;
 export const ReauthorizeAccountsContainersEnvironmentsResponse =
@@ -3135,7 +3136,7 @@ export const SyncAccountsContainersWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SyncAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<SyncAccountsContainersWorkspacesRequest>;
 
 export type SyncAccountsContainersWorkspacesResponse = SyncWorkspaceResponse;
 export const SyncAccountsContainersWorkspacesResponse =
@@ -3180,7 +3181,7 @@ export const Create_versionAccountsContainersWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Create_versionAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<Create_versionAccountsContainersWorkspacesRequest>;
 
 export type Create_versionAccountsContainersWorkspacesResponse =
   CreateContainerVersionResponse;
@@ -3217,7 +3218,7 @@ export const GetAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesRequest>;
 
 export type GetAccountsContainersWorkspacesResponse = Workspace;
 export const GetAccountsContainersWorkspacesResponse =
@@ -3255,7 +3256,7 @@ export const Quick_previewAccountsContainersWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Quick_previewAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<Quick_previewAccountsContainersWorkspacesRequest>;
 
 export type Quick_previewAccountsContainersWorkspacesResponse =
   QuickPreviewResponse;
@@ -3292,13 +3293,13 @@ export const DeleteAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesResponse {}
-export const DeleteAccountsContainersWorkspacesResponse: Schema.Schema<DeleteAccountsContainersWorkspacesResponse> =
+export const DeleteAccountsContainersWorkspacesResponse: Schema.Codec<DeleteAccountsContainersWorkspacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesResponse>;
 
 export type DeleteAccountsContainersWorkspacesError =
   | DefaultErrors
@@ -3338,7 +3339,7 @@ export const UpdateAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesRequest>;
 
 export type UpdateAccountsContainersWorkspacesResponse = Workspace;
 export const UpdateAccountsContainersWorkspacesResponse =
@@ -3374,7 +3375,7 @@ export const GetStatusAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}/status" }),
     svc,
-  ) as unknown as Schema.Schema<GetStatusAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<GetStatusAccountsContainersWorkspacesRequest>;
 
 export type GetStatusAccountsContainersWorkspacesResponse =
   GetWorkspaceStatusResponse;
@@ -3421,13 +3422,13 @@ export const Resolve_conflictAccountsContainersWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Resolve_conflictAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<Resolve_conflictAccountsContainersWorkspacesRequest>;
 
 export interface Resolve_conflictAccountsContainersWorkspacesResponse {}
-export const Resolve_conflictAccountsContainersWorkspacesResponse: Schema.Schema<Resolve_conflictAccountsContainersWorkspacesResponse> =
+export const Resolve_conflictAccountsContainersWorkspacesResponse: Schema.Codec<Resolve_conflictAccountsContainersWorkspacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<Resolve_conflictAccountsContainersWorkspacesResponse>;
+  ) as any as Schema.Codec<Resolve_conflictAccountsContainersWorkspacesResponse>;
 
 export type Resolve_conflictAccountsContainersWorkspacesError =
   | DefaultErrors
@@ -3462,7 +3463,7 @@ export const ListAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/workspaces" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesRequest>;
 
 export type ListAccountsContainersWorkspacesResponse = ListWorkspacesResponse;
 export const ListAccountsContainersWorkspacesResponse =
@@ -3507,7 +3508,7 @@ export const Bulk_updateAccountsContainersWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Bulk_updateAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<Bulk_updateAccountsContainersWorkspacesRequest>;
 
 export type Bulk_updateAccountsContainersWorkspacesResponse =
   BulkUpdateWorkspaceResponse;
@@ -3551,7 +3552,7 @@ export const CreateAccountsContainersWorkspacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesRequest>;
 
 export type CreateAccountsContainersWorkspacesResponse = Workspace;
 export const CreateAccountsContainersWorkspacesResponse =
@@ -3596,7 +3597,7 @@ export const RevertAccountsContainersWorkspacesTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesTagsRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesTagsRequest>;
 
 export type RevertAccountsContainersWorkspacesTagsResponse = RevertTagResponse;
 export const RevertAccountsContainersWorkspacesTagsResponse =
@@ -3635,7 +3636,7 @@ export const ListAccountsContainersWorkspacesTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/tags" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesTagsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesTagsRequest>;
 
 export type ListAccountsContainersWorkspacesTagsResponse = ListTagsResponse;
 export const ListAccountsContainersWorkspacesTagsResponse =
@@ -3680,7 +3681,7 @@ export const CreateAccountsContainersWorkspacesTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesTagsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesTagsRequest>;
 
 export type CreateAccountsContainersWorkspacesTagsResponse = Tag;
 export const CreateAccountsContainersWorkspacesTagsResponse =
@@ -3716,7 +3717,7 @@ export const GetAccountsContainersWorkspacesTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesTagsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesTagsRequest>;
 
 export type GetAccountsContainersWorkspacesTagsResponse = Tag;
 export const GetAccountsContainersWorkspacesTagsResponse =
@@ -3758,7 +3759,7 @@ export const UpdateAccountsContainersWorkspacesTagsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesTagsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesTagsRequest>;
 
 export type UpdateAccountsContainersWorkspacesTagsResponse = Tag;
 export const UpdateAccountsContainersWorkspacesTagsResponse =
@@ -3794,13 +3795,13 @@ export const DeleteAccountsContainersWorkspacesTagsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesTagsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesTagsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTagsResponse {}
-export const DeleteAccountsContainersWorkspacesTagsResponse: Schema.Schema<DeleteAccountsContainersWorkspacesTagsResponse> =
+export const DeleteAccountsContainersWorkspacesTagsResponse: Schema.Codec<DeleteAccountsContainersWorkspacesTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesTagsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesTagsResponse>;
 
 export type DeleteAccountsContainersWorkspacesTagsError =
   | DefaultErrors
@@ -3841,7 +3842,7 @@ export const RevertAccountsContainersWorkspacesClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesClientsRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesClientsRequest>;
 
 export type RevertAccountsContainersWorkspacesClientsResponse =
   RevertClientResponse;
@@ -3885,7 +3886,7 @@ export const CreateAccountsContainersWorkspacesClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesClientsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesClientsRequest>;
 
 export type CreateAccountsContainersWorkspacesClientsResponse = Client;
 export const CreateAccountsContainersWorkspacesClientsResponse =
@@ -3924,7 +3925,7 @@ export const ListAccountsContainersWorkspacesClientsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/clients" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesClientsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesClientsRequest>;
 
 export type ListAccountsContainersWorkspacesClientsResponse =
   ListClientsResponse;
@@ -3963,7 +3964,7 @@ export const GetAccountsContainersWorkspacesClientsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesClientsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesClientsRequest>;
 
 export type GetAccountsContainersWorkspacesClientsResponse = Client;
 export const GetAccountsContainersWorkspacesClientsResponse =
@@ -4005,7 +4006,7 @@ export const UpdateAccountsContainersWorkspacesClientsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesClientsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesClientsRequest>;
 
 export type UpdateAccountsContainersWorkspacesClientsResponse = Client;
 export const UpdateAccountsContainersWorkspacesClientsResponse =
@@ -4041,13 +4042,13 @@ export const DeleteAccountsContainersWorkspacesClientsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesClientsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesClientsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesClientsResponse {}
-export const DeleteAccountsContainersWorkspacesClientsResponse: Schema.Schema<DeleteAccountsContainersWorkspacesClientsResponse> =
+export const DeleteAccountsContainersWorkspacesClientsResponse: Schema.Codec<DeleteAccountsContainersWorkspacesClientsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesClientsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesClientsResponse>;
 
 export type DeleteAccountsContainersWorkspacesClientsError =
   | DefaultErrors
@@ -4085,7 +4086,7 @@ export const ListAccountsContainersWorkspacesBuilt_in_variablesRequest =
       path: "tagmanager/v2/{+parent}/built_in_variables",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
 export type ListAccountsContainersWorkspacesBuilt_in_variablesResponse =
   ListEnabledBuiltInVariablesResponse;
@@ -4251,7 +4252,7 @@ export const CreateAccountsContainersWorkspacesBuilt_in_variablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
 export type CreateAccountsContainersWorkspacesBuilt_in_variablesResponse =
   CreateBuiltInVariableResponse;
@@ -4411,13 +4412,13 @@ export const DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse {}
-export const DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse: Schema.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse> =
+export const DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse: Schema.Codec<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse>;
 
 export type DeleteAccountsContainersWorkspacesBuilt_in_variablesError =
   | DefaultErrors
@@ -4574,7 +4575,7 @@ export const RevertAccountsContainersWorkspacesBuilt_in_variablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
 export type RevertAccountsContainersWorkspacesBuilt_in_variablesResponse =
   RevertBuiltInVariableResponse;
@@ -4620,7 +4621,7 @@ export const RevertAccountsContainersWorkspacesVariablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesVariablesRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesVariablesRequest>;
 
 export type RevertAccountsContainersWorkspacesVariablesResponse =
   RevertVariableResponse;
@@ -4660,7 +4661,7 @@ export const ListAccountsContainersWorkspacesVariablesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/variables" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesVariablesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesVariablesRequest>;
 
 export type ListAccountsContainersWorkspacesVariablesResponse =
   ListVariablesResponse;
@@ -4706,7 +4707,7 @@ export const CreateAccountsContainersWorkspacesVariablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesVariablesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesVariablesRequest>;
 
 export type CreateAccountsContainersWorkspacesVariablesResponse = Variable;
 export const CreateAccountsContainersWorkspacesVariablesResponse =
@@ -4742,7 +4743,7 @@ export const GetAccountsContainersWorkspacesVariablesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesVariablesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesVariablesRequest>;
 
 export type GetAccountsContainersWorkspacesVariablesResponse = Variable;
 export const GetAccountsContainersWorkspacesVariablesResponse =
@@ -4784,7 +4785,7 @@ export const UpdateAccountsContainersWorkspacesVariablesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesVariablesRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesVariablesRequest>;
 
 export type UpdateAccountsContainersWorkspacesVariablesResponse = Variable;
 export const UpdateAccountsContainersWorkspacesVariablesResponse =
@@ -4820,13 +4821,13 @@ export const DeleteAccountsContainersWorkspacesVariablesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesVariablesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesVariablesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesVariablesResponse {}
-export const DeleteAccountsContainersWorkspacesVariablesResponse: Schema.Schema<DeleteAccountsContainersWorkspacesVariablesResponse> =
+export const DeleteAccountsContainersWorkspacesVariablesResponse: Schema.Codec<DeleteAccountsContainersWorkspacesVariablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesVariablesResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesVariablesResponse>;
 
 export type DeleteAccountsContainersWorkspacesVariablesError =
   | DefaultErrors
@@ -4867,7 +4868,7 @@ export const RevertAccountsContainersWorkspacesTransformationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesTransformationsRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesTransformationsRequest>;
 
 export type RevertAccountsContainersWorkspacesTransformationsResponse =
   RevertTransformationResponse;
@@ -4907,7 +4908,7 @@ export const ListAccountsContainersWorkspacesTransformationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/transformations" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesTransformationsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesTransformationsRequest>;
 
 export type ListAccountsContainersWorkspacesTransformationsResponse =
   ListTransformationsResponse;
@@ -4953,7 +4954,7 @@ export const CreateAccountsContainersWorkspacesTransformationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesTransformationsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesTransformationsRequest>;
 
 export type CreateAccountsContainersWorkspacesTransformationsResponse =
   Transformation;
@@ -4990,7 +4991,7 @@ export const GetAccountsContainersWorkspacesTransformationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesTransformationsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesTransformationsRequest>;
 
 export type GetAccountsContainersWorkspacesTransformationsResponse =
   Transformation;
@@ -5033,7 +5034,7 @@ export const UpdateAccountsContainersWorkspacesTransformationsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesTransformationsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesTransformationsRequest>;
 
 export type UpdateAccountsContainersWorkspacesTransformationsResponse =
   Transformation;
@@ -5070,13 +5071,13 @@ export const DeleteAccountsContainersWorkspacesTransformationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesTransformationsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesTransformationsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTransformationsResponse {}
-export const DeleteAccountsContainersWorkspacesTransformationsResponse: Schema.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse> =
+export const DeleteAccountsContainersWorkspacesTransformationsResponse: Schema.Codec<DeleteAccountsContainersWorkspacesTransformationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesTransformationsResponse>;
 
 export type DeleteAccountsContainersWorkspacesTransformationsError =
   | DefaultErrors
@@ -5130,7 +5131,7 @@ export const Import_from_galleryAccountsContainersWorkspacesTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Import_from_galleryAccountsContainersWorkspacesTemplatesRequest>;
+  ) as unknown as Schema.Codec<Import_from_galleryAccountsContainersWorkspacesTemplatesRequest>;
 
 export type Import_from_galleryAccountsContainersWorkspacesTemplatesResponse =
   CustomTemplate;
@@ -5176,7 +5177,7 @@ export const RevertAccountsContainersWorkspacesTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesTemplatesRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesTemplatesRequest>;
 
 export type RevertAccountsContainersWorkspacesTemplatesResponse =
   RevertTemplateResponse;
@@ -5220,7 +5221,7 @@ export const CreateAccountsContainersWorkspacesTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesTemplatesRequest>;
 
 export type CreateAccountsContainersWorkspacesTemplatesResponse =
   CustomTemplate;
@@ -5260,7 +5261,7 @@ export const ListAccountsContainersWorkspacesTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/templates" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesTemplatesRequest>;
 
 export type ListAccountsContainersWorkspacesTemplatesResponse =
   ListTemplatesResponse;
@@ -5299,7 +5300,7 @@ export const GetAccountsContainersWorkspacesTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesTemplatesRequest>;
 
 export type GetAccountsContainersWorkspacesTemplatesResponse = CustomTemplate;
 export const GetAccountsContainersWorkspacesTemplatesResponse =
@@ -5341,7 +5342,7 @@ export const UpdateAccountsContainersWorkspacesTemplatesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesTemplatesRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesTemplatesRequest>;
 
 export type UpdateAccountsContainersWorkspacesTemplatesResponse =
   CustomTemplate;
@@ -5378,13 +5379,13 @@ export const DeleteAccountsContainersWorkspacesTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesTemplatesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTemplatesResponse {}
-export const DeleteAccountsContainersWorkspacesTemplatesResponse: Schema.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse> =
+export const DeleteAccountsContainersWorkspacesTemplatesResponse: Schema.Codec<DeleteAccountsContainersWorkspacesTemplatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesTemplatesResponse>;
 
 export type DeleteAccountsContainersWorkspacesTemplatesError =
   | DefaultErrors
@@ -5423,7 +5424,7 @@ export const CreateAccountsContainersWorkspacesTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesTriggersRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesTriggersRequest>;
 
 export type CreateAccountsContainersWorkspacesTriggersResponse = Trigger;
 export const CreateAccountsContainersWorkspacesTriggersResponse =
@@ -5462,7 +5463,7 @@ export const ListAccountsContainersWorkspacesTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/triggers" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesTriggersRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesTriggersRequest>;
 
 export type ListAccountsContainersWorkspacesTriggersResponse =
   ListTriggersResponse;
@@ -5501,7 +5502,7 @@ export const GetAccountsContainersWorkspacesTriggersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesTriggersRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesTriggersRequest>;
 
 export type GetAccountsContainersWorkspacesTriggersResponse = Trigger;
 export const GetAccountsContainersWorkspacesTriggersResponse =
@@ -5543,7 +5544,7 @@ export const UpdateAccountsContainersWorkspacesTriggersRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesTriggersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesTriggersRequest>;
 
 export type UpdateAccountsContainersWorkspacesTriggersResponse = Trigger;
 export const UpdateAccountsContainersWorkspacesTriggersResponse =
@@ -5579,13 +5580,13 @@ export const DeleteAccountsContainersWorkspacesTriggersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesTriggersRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesTriggersRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTriggersResponse {}
-export const DeleteAccountsContainersWorkspacesTriggersResponse: Schema.Schema<DeleteAccountsContainersWorkspacesTriggersResponse> =
+export const DeleteAccountsContainersWorkspacesTriggersResponse: Schema.Codec<DeleteAccountsContainersWorkspacesTriggersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesTriggersResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesTriggersResponse>;
 
 export type DeleteAccountsContainersWorkspacesTriggersError =
   | DefaultErrors
@@ -5626,7 +5627,7 @@ export const RevertAccountsContainersWorkspacesTriggersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesTriggersRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesTriggersRequest>;
 
 export type RevertAccountsContainersWorkspacesTriggersResponse =
   RevertTriggerResponse;
@@ -5672,7 +5673,7 @@ export const RevertAccountsContainersWorkspacesZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesZonesRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesZonesRequest>;
 
 export type RevertAccountsContainersWorkspacesZonesResponse =
   RevertZoneResponse;
@@ -5716,7 +5717,7 @@ export const CreateAccountsContainersWorkspacesZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesZonesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesZonesRequest>;
 
 export type CreateAccountsContainersWorkspacesZonesResponse = Zone;
 export const CreateAccountsContainersWorkspacesZonesResponse =
@@ -5755,7 +5756,7 @@ export const ListAccountsContainersWorkspacesZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/zones" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesZonesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesZonesRequest>;
 
 export type ListAccountsContainersWorkspacesZonesResponse = ListZonesResponse;
 export const ListAccountsContainersWorkspacesZonesResponse =
@@ -5793,7 +5794,7 @@ export const GetAccountsContainersWorkspacesZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesZonesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesZonesRequest>;
 
 export type GetAccountsContainersWorkspacesZonesResponse = Zone;
 export const GetAccountsContainersWorkspacesZonesResponse =
@@ -5835,7 +5836,7 @@ export const UpdateAccountsContainersWorkspacesZonesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesZonesRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesZonesRequest>;
 
 export type UpdateAccountsContainersWorkspacesZonesResponse = Zone;
 export const UpdateAccountsContainersWorkspacesZonesResponse =
@@ -5871,13 +5872,13 @@ export const DeleteAccountsContainersWorkspacesZonesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesZonesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesZonesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesZonesResponse {}
-export const DeleteAccountsContainersWorkspacesZonesResponse: Schema.Schema<DeleteAccountsContainersWorkspacesZonesResponse> =
+export const DeleteAccountsContainersWorkspacesZonesResponse: Schema.Codec<DeleteAccountsContainersWorkspacesZonesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesZonesResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesZonesResponse>;
 
 export type DeleteAccountsContainersWorkspacesZonesError =
   | DefaultErrors
@@ -5909,7 +5910,7 @@ export const GetAccountsContainersWorkspacesFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesFoldersRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesFoldersRequest>;
 
 export type GetAccountsContainersWorkspacesFoldersResponse = Folder;
 export const GetAccountsContainersWorkspacesFoldersResponse =
@@ -5951,7 +5952,7 @@ export const UpdateAccountsContainersWorkspacesFoldersRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesFoldersRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesFoldersRequest>;
 
 export type UpdateAccountsContainersWorkspacesFoldersResponse = Folder;
 export const UpdateAccountsContainersWorkspacesFoldersResponse =
@@ -5987,13 +5988,13 @@ export const DeleteAccountsContainersWorkspacesFoldersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesFoldersRequest>;
 
 export interface DeleteAccountsContainersWorkspacesFoldersResponse {}
-export const DeleteAccountsContainersWorkspacesFoldersResponse: Schema.Schema<DeleteAccountsContainersWorkspacesFoldersResponse> =
+export const DeleteAccountsContainersWorkspacesFoldersResponse: Schema.Codec<DeleteAccountsContainersWorkspacesFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesFoldersResponse>;
 
 export type DeleteAccountsContainersWorkspacesFoldersError =
   | DefaultErrors
@@ -6028,7 +6029,7 @@ export const ListAccountsContainersWorkspacesFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/folders" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesFoldersRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesFoldersRequest>;
 
 export type ListAccountsContainersWorkspacesFoldersResponse =
   ListFoldersResponse;
@@ -6074,7 +6075,7 @@ export const CreateAccountsContainersWorkspacesFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesFoldersRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesFoldersRequest>;
 
 export type CreateAccountsContainersWorkspacesFoldersResponse = Folder;
 export const CreateAccountsContainersWorkspacesFoldersResponse =
@@ -6132,13 +6133,13 @@ export const Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest>;
+  ) as unknown as Schema.Codec<Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest>;
 
 export interface Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse {}
-export const Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse: Schema.Schema<Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse> =
+export const Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse: Schema.Codec<Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse>;
+  ) as any as Schema.Codec<Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse>;
 
 export type Move_entities_to_folderAccountsContainersWorkspacesFoldersError =
   | DefaultErrors
@@ -6179,7 +6180,7 @@ export const RevertAccountsContainersWorkspacesFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertAccountsContainersWorkspacesFoldersRequest>;
+  ) as unknown as Schema.Codec<RevertAccountsContainersWorkspacesFoldersRequest>;
 
 export type RevertAccountsContainersWorkspacesFoldersResponse =
   RevertFolderResponse;
@@ -6223,7 +6224,7 @@ export const EntitiesAccountsContainersWorkspacesFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EntitiesAccountsContainersWorkspacesFoldersRequest>;
+  ) as unknown as Schema.Codec<EntitiesAccountsContainersWorkspacesFoldersRequest>;
 
 export type EntitiesAccountsContainersWorkspacesFoldersResponse =
   FolderEntities;
@@ -6267,7 +6268,7 @@ export const ListAccountsContainersWorkspacesGtag_configRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/gtag_config" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesGtag_configRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersWorkspacesGtag_configRequest>;
 
 export type ListAccountsContainersWorkspacesGtag_configResponse =
   ListGtagConfigResponse;
@@ -6313,7 +6314,7 @@ export const CreateAccountsContainersWorkspacesGtag_configRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsContainersWorkspacesGtag_configRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsContainersWorkspacesGtag_configRequest>;
 
 export type CreateAccountsContainersWorkspacesGtag_configResponse = GtagConfig;
 export const CreateAccountsContainersWorkspacesGtag_configResponse =
@@ -6349,7 +6350,7 @@ export const GetAccountsContainersWorkspacesGtag_configRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesGtag_configRequest>;
+  ) as unknown as Schema.Codec<GetAccountsContainersWorkspacesGtag_configRequest>;
 
 export type GetAccountsContainersWorkspacesGtag_configResponse = GtagConfig;
 export const GetAccountsContainersWorkspacesGtag_configResponse =
@@ -6391,7 +6392,7 @@ export const UpdateAccountsContainersWorkspacesGtag_configRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesGtag_configRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsContainersWorkspacesGtag_configRequest>;
 
 export type UpdateAccountsContainersWorkspacesGtag_configResponse = GtagConfig;
 export const UpdateAccountsContainersWorkspacesGtag_configResponse =
@@ -6427,13 +6428,13 @@ export const DeleteAccountsContainersWorkspacesGtag_configRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesGtag_configRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsContainersWorkspacesGtag_configRequest>;
 
 export interface DeleteAccountsContainersWorkspacesGtag_configResponse {}
-export const DeleteAccountsContainersWorkspacesGtag_configResponse: Schema.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse> =
+export const DeleteAccountsContainersWorkspacesGtag_configResponse: Schema.Codec<DeleteAccountsContainersWorkspacesGtag_configResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>;
+  ) as any as Schema.Codec<DeleteAccountsContainersWorkspacesGtag_configResponse>;
 
 export type DeleteAccountsContainersWorkspacesGtag_configError =
   | DefaultErrors
@@ -6473,7 +6474,7 @@ export const ListAccountsContainersVersion_headersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/version_headers" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsContainersVersion_headersRequest>;
+  ) as unknown as Schema.Codec<ListAccountsContainersVersion_headersRequest>;
 
 export type ListAccountsContainersVersion_headersResponse =
   ListContainerVersionsResponse;
@@ -6515,7 +6516,7 @@ export const LatestAccountsContainersVersion_headersRequest =
       path: "tagmanager/v2/{+parent}/version_headers:latest",
     }),
     svc,
-  ) as unknown as Schema.Schema<LatestAccountsContainersVersion_headersRequest>;
+  ) as unknown as Schema.Codec<LatestAccountsContainersVersion_headersRequest>;
 
 export type LatestAccountsContainersVersion_headersResponse =
   ContainerVersionHeader;
@@ -6557,7 +6558,7 @@ export const CreateAccountsUser_permissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsUser_permissionsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsUser_permissionsRequest>;
 
 export type CreateAccountsUser_permissionsResponse = UserPermission;
 export const CreateAccountsUser_permissionsResponse =
@@ -6596,7 +6597,7 @@ export const ListAccountsUser_permissionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+parent}/user_permissions" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsUser_permissionsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsUser_permissionsRequest>;
 
 export type ListAccountsUser_permissionsResponse = ListUserPermissionsResponse;
 export const ListAccountsUser_permissionsResponse =
@@ -6634,7 +6635,7 @@ export const GetAccountsUser_permissionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsUser_permissionsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsUser_permissionsRequest>;
 
 export type GetAccountsUser_permissionsResponse = UserPermission;
 export const GetAccountsUser_permissionsResponse =
@@ -6671,7 +6672,7 @@ export const UpdateAccountsUser_permissionsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "tagmanager/v2/{+path}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsUser_permissionsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsUser_permissionsRequest>;
 
 export type UpdateAccountsUser_permissionsResponse = UserPermission;
 export const UpdateAccountsUser_permissionsResponse =
@@ -6707,13 +6708,13 @@ export const DeleteAccountsUser_permissionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "tagmanager/v2/{+path}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsUser_permissionsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsUser_permissionsRequest>;
 
 export interface DeleteAccountsUser_permissionsResponse {}
-export const DeleteAccountsUser_permissionsResponse: Schema.Schema<DeleteAccountsUser_permissionsResponse> =
+export const DeleteAccountsUser_permissionsResponse: Schema.Codec<DeleteAccountsUser_permissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAccountsUser_permissionsResponse>;
+  ) as any as Schema.Codec<DeleteAccountsUser_permissionsResponse>;
 
 export type DeleteAccountsUser_permissionsError =
   | DefaultErrors

@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ApiKeysControllerDeleteInput {
+  id: string;
+}
 export const ApiKeysControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/api_keys/{id}" }));
-export type ApiKeysControllerDeleteInput =
-  typeof ApiKeysControllerDeleteInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/api_keys/{id}" }),
+  ) as unknown as Schema.Codec<ApiKeysControllerDeleteInput>;
 
 // Output Schema
+export type ApiKeysControllerDeleteOutput = void;
 export const ApiKeysControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApiKeysControllerDeleteOutput =
-  typeof ApiKeysControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApiKeysControllerDeleteOutput>;
 
 // The operation
 /**

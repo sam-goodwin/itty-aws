@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface SignedData {
   signature?: string;
 }
 
-export const SignedData: Schema.Schema<SignedData> =
+export const SignedData: Schema.Codec<SignedData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     signature: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface VerifyChallengeResponseResult {
   signedPublicKeyAndChallenge?: string;
 }
 
-export const VerifyChallengeResponseResult: Schema.Schema<VerifyChallengeResponseResult> =
+export const VerifyChallengeResponseResult: Schema.Codec<VerifyChallengeResponseResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceEnrollmentId: Schema.optional(Schema.String),
     attestedDeviceId: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export const VerifyChallengeResponseResult: Schema.Schema<VerifyChallengeRespons
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -71,7 +71,7 @@ export interface Challenge {
   alternativeChallenge?: SignedData;
 }
 
-export const Challenge: Schema.Schema<Challenge> =
+export const Challenge: Schema.Codec<Challenge> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     challenge: Schema.optional(SignedData),
     alternativeChallenge: Schema.optional(SignedData),
@@ -84,7 +84,7 @@ export interface VerifyChallengeResponseRequest {
   challengeResponse?: SignedData;
 }
 
-export const VerifyChallengeResponseRequest: Schema.Schema<VerifyChallengeResponseRequest> =
+export const VerifyChallengeResponseRequest: Schema.Codec<VerifyChallengeResponseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expectedIdentity: Schema.optional(Schema.String),
     challengeResponse: Schema.optional(SignedData),
@@ -156,7 +156,7 @@ export const CreateChallengeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1/challenge", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateChallengeRequest>;
+) as unknown as Schema.Codec<CreateChallengeRequest>;
 
 export type CreateChallengeResponse = Challenge;
 export const CreateChallengeResponse = /*@__PURE__*/ /*#__PURE__*/ Challenge;
@@ -192,7 +192,7 @@ export const VerifyChallengeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1/challenge:verify", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<VerifyChallengeRequest>;
+) as unknown as Schema.Codec<VerifyChallengeRequest>;
 
 export type VerifyChallengeResponse = VerifyChallengeResponseResult;
 export const VerifyChallengeResponse =

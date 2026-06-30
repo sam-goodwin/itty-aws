@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SurveysSummarizeResponsesCreateInput {
+  id: string;
+  project_id: string;
+  question_id?: string;
+  question_index?: number;
+  force_refresh?: boolean;
+}
 export const SurveysSummarizeResponsesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const SurveysSummarizeResponsesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/surveys/{id}/summarize_responses/",
     }),
-  );
-export type SurveysSummarizeResponsesCreateInput =
-  typeof SurveysSummarizeResponsesCreateInput.Type;
+  ) as unknown as Schema.Codec<SurveysSummarizeResponsesCreateInput>;
 
 // Output Schema
+export type SurveysSummarizeResponsesCreateOutput = void;
 export const SurveysSummarizeResponsesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SurveysSummarizeResponsesCreateOutput =
-  typeof SurveysSummarizeResponsesCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysSummarizeResponsesCreateOutput>;
 
 // The operation
 /**

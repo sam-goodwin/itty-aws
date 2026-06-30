@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface PushConfig {
   pushEndpoint?: string;
 }
 
-export const PushConfig: Schema.Schema<PushConfig> =
+export const PushConfig: Schema.Codec<PushConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pushEndpoint: Schema.optional(Schema.String),
   }).annotate({ identifier: "PushConfig" });
@@ -41,7 +41,7 @@ export interface PullBatchRequest {
   returnImmediately?: boolean;
 }
 
-export const PullBatchRequest: Schema.Schema<PullBatchRequest> =
+export const PullBatchRequest: Schema.Codec<PullBatchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     maxEvents: Schema.optional(Schema.Number),
@@ -55,7 +55,7 @@ export interface ModifyPushConfigRequest {
   pushConfig?: PushConfig;
 }
 
-export const ModifyPushConfigRequest: Schema.Schema<ModifyPushConfigRequest> =
+export const ModifyPushConfigRequest: Schema.Codec<ModifyPushConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     pushConfig: Schema.optional(PushConfig),
@@ -70,7 +70,7 @@ export interface Label {
   numValue?: string;
 }
 
-export const Label: Schema.Schema<Label> =
+export const Label: Schema.Codec<Label> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     strValue: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -88,7 +88,7 @@ export interface PubsubMessage {
   messageId?: string;
 }
 
-export const PubsubMessage: Schema.Schema<PubsubMessage> =
+export const PubsubMessage: Schema.Codec<PubsubMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishTime: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -107,7 +107,7 @@ export interface PubsubEvent {
   message?: PubsubMessage;
 }
 
-export const PubsubEvent: Schema.Schema<PubsubEvent> =
+export const PubsubEvent: Schema.Codec<PubsubEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Boolean),
     truncated: Schema.optional(Schema.Boolean),
@@ -122,7 +122,7 @@ export interface PullResponse {
   ackId?: string;
 }
 
-export const PullResponse: Schema.Schema<PullResponse> =
+export const PullResponse: Schema.Codec<PullResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubEvent: Schema.optional(PubsubEvent),
     ackId: Schema.optional(Schema.String),
@@ -133,7 +133,7 @@ export interface PullBatchResponse {
   pullResponses?: ReadonlyArray<PullResponse>;
 }
 
-export const PullBatchResponse: Schema.Schema<PullBatchResponse> =
+export const PullBatchResponse: Schema.Codec<PullBatchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pullResponses: Schema.optional(Schema.Array(PullResponse)),
   }).annotate({ identifier: "PullBatchResponse" });
@@ -149,7 +149,7 @@ export interface Subscription {
   pushConfig?: PushConfig;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
+export const Subscription: Schema.Codec<Subscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ackDeadlineSeconds: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -164,7 +164,7 @@ export interface ListSubscriptionsResponse {
   subscription?: ReadonlyArray<Subscription>;
 }
 
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
+export const ListSubscriptionsResponse: Schema.Codec<ListSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     subscription: Schema.optional(Schema.Array(Subscription)),
@@ -177,7 +177,7 @@ export interface PublishRequest {
   message?: PubsubMessage;
 }
 
-export const PublishRequest: Schema.Schema<PublishRequest> =
+export const PublishRequest: Schema.Codec<PublishRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
     message: Schema.optional(PubsubMessage),
@@ -190,7 +190,7 @@ export interface PublishBatchRequest {
   topic?: string;
 }
 
-export const PublishBatchRequest: Schema.Schema<PublishBatchRequest> =
+export const PublishBatchRequest: Schema.Codec<PublishBatchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(PubsubMessage)),
     topic: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface ModifyAckDeadlineRequest {
   ackDeadlineSeconds?: number;
 }
 
-export const ModifyAckDeadlineRequest: Schema.Schema<ModifyAckDeadlineRequest> =
+export const ModifyAckDeadlineRequest: Schema.Codec<ModifyAckDeadlineRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     ackId: Schema.optional(Schema.String),
@@ -220,7 +220,7 @@ export interface Topic {
   name?: string;
 }
 
-export const Topic: Schema.Schema<Topic> =
+export const Topic: Schema.Codec<Topic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Topic" });
@@ -230,7 +230,7 @@ export interface PublishBatchResponse {
   messageIds?: ReadonlyArray<string>;
 }
 
-export const PublishBatchResponse: Schema.Schema<PublishBatchResponse> =
+export const PublishBatchResponse: Schema.Codec<PublishBatchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PublishBatchResponse" });
@@ -242,7 +242,7 @@ export interface AcknowledgeRequest {
   ackId?: ReadonlyArray<string>;
 }
 
-export const AcknowledgeRequest: Schema.Schema<AcknowledgeRequest> =
+export const AcknowledgeRequest: Schema.Codec<AcknowledgeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     ackId: Schema.optional(Schema.Array(Schema.String)),
@@ -255,7 +255,7 @@ export interface ListTopicsResponse {
   topic?: ReadonlyArray<Topic>;
 }
 
-export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
+export const ListTopicsResponse: Schema.Codec<ListTopicsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     topic: Schema.optional(Schema.Array(Topic)),
@@ -268,7 +268,7 @@ export interface PullRequest {
   returnImmediately?: boolean;
 }
 
-export const PullRequest: Schema.Schema<PullRequest> =
+export const PullRequest: Schema.Codec<PullRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     returnImmediately: Schema.optional(Schema.Boolean),
@@ -276,7 +276,7 @@ export const PullRequest: Schema.Schema<PullRequest> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -351,7 +351,7 @@ export const ListTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1a/topics" }),
   svc,
-) as unknown as Schema.Schema<ListTopicsRequest>;
+) as unknown as Schema.Codec<ListTopicsRequest>;
 
 export type ListTopicsResponse_Op = ListTopicsResponse;
 export const ListTopicsResponse_Op =
@@ -385,7 +385,7 @@ export const GetTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1a/topics/{+topic}" }),
   svc,
-) as unknown as Schema.Schema<GetTopicsRequest>;
+) as unknown as Schema.Codec<GetTopicsRequest>;
 
 export type GetTopicsResponse = Topic;
 export const GetTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
@@ -414,7 +414,7 @@ export const DeleteTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1beta1a/topics/{+topic}" }),
   svc,
-) as unknown as Schema.Schema<DeleteTopicsRequest>;
+) as unknown as Schema.Codec<DeleteTopicsRequest>;
 
 export type DeleteTopicsResponse = Empty;
 export const DeleteTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -448,7 +448,7 @@ export const PublishTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1beta1a/topics/publish", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PublishTopicsRequest>;
+) as unknown as Schema.Codec<PublishTopicsRequest>;
 
 export type PublishTopicsResponse = Empty;
 export const PublishTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -487,7 +487,7 @@ export const PublishBatchTopicsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PublishBatchTopicsRequest>;
+  ) as unknown as Schema.Codec<PublishBatchTopicsRequest>;
 
 export type PublishBatchTopicsResponse = PublishBatchResponse;
 export const PublishBatchTopicsResponse =
@@ -522,7 +522,7 @@ export const CreateTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1beta1a/topics", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateTopicsRequest>;
+) as unknown as Schema.Codec<CreateTopicsRequest>;
 
 export type CreateTopicsResponse = Topic;
 export const CreateTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
@@ -561,7 +561,7 @@ export const ModifyPushConfigSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyPushConfigSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ModifyPushConfigSubscriptionsRequest>;
 
 export type ModifyPushConfigSubscriptionsResponse = Empty;
 export const ModifyPushConfigSubscriptionsResponse =
@@ -601,7 +601,7 @@ export const ModifyAckDeadlineSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyAckDeadlineSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ModifyAckDeadlineSubscriptionsRequest>;
 
 export type ModifyAckDeadlineSubscriptionsResponse = Empty;
 export const ModifyAckDeadlineSubscriptionsResponse =
@@ -637,7 +637,7 @@ export const GetSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1a/subscriptions/{+subscription}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetSubscriptionsRequest>;
 
 export type GetSubscriptionsResponse = Subscription;
 export const GetSubscriptionsResponse =
@@ -668,7 +668,7 @@ export const CreateSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1a/subscriptions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateSubscriptionsRequest>;
 
 export type CreateSubscriptionsResponse = Subscription;
 export const CreateSubscriptionsResponse =
@@ -708,7 +708,7 @@ export const PullSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PullSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<PullSubscriptionsRequest>;
 
 export type PullSubscriptionsResponse = PullResponse;
 export const PullSubscriptionsResponse =
@@ -748,7 +748,7 @@ export const AcknowledgeSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcknowledgeSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<AcknowledgeSubscriptionsRequest>;
 
 export type AcknowledgeSubscriptionsResponse = Empty;
 export const AcknowledgeSubscriptionsResponse =
@@ -787,7 +787,7 @@ export const DeleteSubscriptionsRequest =
       path: "v1beta1a/subscriptions/{+subscription}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteSubscriptionsRequest>;
 
 export type DeleteSubscriptionsResponse = Empty;
 export const DeleteSubscriptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -826,7 +826,7 @@ export const PullBatchSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PullBatchSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<PullBatchSubscriptionsRequest>;
 
 export type PullBatchSubscriptionsResponse = PullBatchResponse;
 export const PullBatchSubscriptionsResponse =
@@ -868,7 +868,7 @@ export const ListSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1a/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListSubscriptionsRequest>;
 
 export type ListSubscriptionsResponse_Op = ListSubscriptionsResponse;
 export const ListSubscriptionsResponse_Op =

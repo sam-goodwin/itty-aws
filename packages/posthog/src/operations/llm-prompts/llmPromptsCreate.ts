@@ -3,6 +3,42 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmPromptsCreateInput {
+  project_id: string;
+  id?: string;
+  name?: string;
+  prompt?: unknown;
+  version?: number;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+  outline?: { level?: number; text?: string }[];
+}
 export const LlmPromptsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
@@ -22,7 +58,23 @@ export const LlmPromptsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -43,10 +95,44 @@ export const LlmPromptsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/llm_prompts/" }),
-);
-export type LlmPromptsCreateInput = typeof LlmPromptsCreateInput.Type;
+) as unknown as Schema.Codec<LlmPromptsCreateInput>;
 
 // Output Schema
+export interface LlmPromptsCreateOutput {
+  id?: string;
+  name?: string;
+  prompt?: unknown;
+  version?: number;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+  outline?: { level?: number; text?: string }[];
+}
 export const LlmPromptsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -66,7 +152,23 @@ export const LlmPromptsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -86,8 +188,7 @@ export const LlmPromptsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type LlmPromptsCreateOutput = typeof LlmPromptsCreateOutput.Type;
+) as unknown as Schema.Codec<LlmPromptsCreateOutput>;
 
 // The operation
 /**

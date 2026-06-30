@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupBackupPrivateEndpointInput {
+  groupId: string;
+  cloudProvider: "AWS";
+  pretty?: boolean;
+  envelope?: boolean;
+}
 export const CreateGroupBackupPrivateEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateGroupBackupPrivateEndpointInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints",
     }),
-  );
-export type CreateGroupBackupPrivateEndpointInput =
-  typeof CreateGroupBackupPrivateEndpointInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupBackupPrivateEndpointInput>;
 
 // Output Schema
+export type CreateGroupBackupPrivateEndpointOutput = void;
 export const CreateGroupBackupPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupBackupPrivateEndpointOutput =
-  typeof CreateGroupBackupPrivateEndpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupBackupPrivateEndpointOutput>;
 
 // The operation
 /**

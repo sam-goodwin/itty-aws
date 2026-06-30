@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentMemoryListFilesInput {
+  application_id: string;
+  project_id: string;
+  prefix?: string;
+}
 export const AgentMemoryListFilesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,19 @@ export const AgentMemoryListFilesInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/memory/files/",
     }),
-  );
-export type AgentMemoryListFilesInput = typeof AgentMemoryListFilesInput.Type;
+  ) as unknown as Schema.Codec<AgentMemoryListFilesInput>;
 
 // Output Schema
+export interface AgentMemoryListFilesOutput {
+  count: number;
+  entries: {
+    path: string;
+    description: string;
+    tags: string[];
+    created_at: string | null;
+    updated_at: string | null;
+  }[];
+}
 export const AgentMemoryListFilesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -29,8 +43,7 @@ export const AgentMemoryListFilesOutput =
         updated_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AgentMemoryListFilesOutput = typeof AgentMemoryListFilesOutput.Type;
+  }) as unknown as Schema.Codec<AgentMemoryListFilesOutput>;
 
 // The operation
 /**

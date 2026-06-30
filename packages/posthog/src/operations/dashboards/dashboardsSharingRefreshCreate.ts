@@ -6,8 +6,25 @@ import {
   SensitiveNullableString,
   SensitiveOutputNullableString,
 } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface DashboardsSharingRefreshCreateInput {
+  dashboard_id: number;
+  project_id: string;
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: string | Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}
 export const DashboardsSharingRefreshCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dashboard_id: Schema.Number.pipe(T.PathParam()),
@@ -33,11 +50,23 @@ export const DashboardsSharingRefreshCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/dashboards/{dashboard_id}/sharing/refresh/",
     }),
-  );
-export type DashboardsSharingRefreshCreateInput =
-  typeof DashboardsSharingRefreshCreateInput.Type;
+  ) as unknown as Schema.Codec<DashboardsSharingRefreshCreateInput>;
 
 // Output Schema
+export interface DashboardsSharingRefreshCreateOutput {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}
 export const DashboardsSharingRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
@@ -56,9 +85,7 @@ export const DashboardsSharingRefreshCreateOutput =
         }),
       ),
     ),
-  });
-export type DashboardsSharingRefreshCreateOutput =
-  typeof DashboardsSharingRefreshCreateOutput.Type;
+  }) as unknown as Schema.Codec<DashboardsSharingRefreshCreateOutput>;
 
 // The operation
 /**

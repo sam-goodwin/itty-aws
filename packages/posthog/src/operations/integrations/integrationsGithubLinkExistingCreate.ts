@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface IntegrationsGithubLinkExistingCreateInput {
+  project_id: string;
+  source_team_id?: number | null;
+  installation_id?: string;
+}
 export const IntegrationsGithubLinkExistingCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,77 @@ export const IntegrationsGithubLinkExistingCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/integrations/github/link_existing/",
     }),
-  );
-export type IntegrationsGithubLinkExistingCreateInput =
-  typeof IntegrationsGithubLinkExistingCreateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGithubLinkExistingCreateInput>;
 
 // Output Schema
+export interface IntegrationsGithubLinkExistingCreateOutput {
+  id?: number;
+  kind?:
+    | "anthropic"
+    | "apns"
+    | "aws-s3"
+    | "azure-blob"
+    | "bing-ads"
+    | "clickup"
+    | "customerio-app"
+    | "customerio-track"
+    | "customerio-webhook"
+    | "databricks"
+    | "email"
+    | "firebase"
+    | "github"
+    | "gitlab"
+    | "google-ads"
+    | "google-analytics"
+    | "google-cloud-service-account"
+    | "google-cloud-storage"
+    | "google-pubsub"
+    | "google-search-console"
+    | "google-sheets"
+    | "hubspot"
+    | "intercom"
+    | "jira"
+    | "linear"
+    | "linkedin-ads"
+    | "meta-ads"
+    | "pinterest-ads"
+    | "postgresql"
+    | "reddit-ads"
+    | "s3-compatible"
+    | "salesforce"
+    | "slack"
+    | "slack-posthog-code"
+    | "snapchat"
+    | "stripe"
+    | "tiktok-ads"
+    | "twilio"
+    | "vercel";
+  config?: unknown;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  errors?: string;
+  display_name?: string;
+}
 export const IntegrationsGithubLinkExistingCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -79,15 +150,29 @@ export const IntegrationsGithubLinkExistingCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     errors: Schema.optional(Schema.String),
     display_name: Schema.optional(Schema.String),
-  });
-export type IntegrationsGithubLinkExistingCreateOutput =
-  typeof IntegrationsGithubLinkExistingCreateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsGithubLinkExistingCreateOutput>;
 
 // The operation
 /**

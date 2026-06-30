@@ -4,13 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface TokensAuthenticateInput {
+  header?: string;
+}
 export const TokensAuthenticateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/tokens/authenticate" }));
-export type TokensAuthenticateInput = typeof TokensAuthenticateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/tokens/authenticate" }),
+  ) as unknown as Schema.Codec<TokensAuthenticateInput>;
 
 // Output Schema
+export type TokensAuthenticateOutput = {
+  caveats?: { caveats?: unknown[] };
+  header?: string;
+  nonce?: { kid?: number[]; proof?: boolean; rnd?: number[] };
+  permission_token?: number[];
+}[];
 export const TokensAuthenticateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -29,8 +39,7 @@ export const TokensAuthenticateOutput =
       ),
       permission_token: Schema.optional(Schema.Array(Schema.Number)),
     }),
-  );
-export type TokensAuthenticateOutput = typeof TokensAuthenticateOutput.Type;
+  ) as unknown as Schema.Codec<TokensAuthenticateOutput>;
 
 // The operation
 /**

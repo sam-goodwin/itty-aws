@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingExternalReferencesListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ErrorTrackingExternalReferencesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,22 @@ export const ErrorTrackingExternalReferencesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/external_references/",
     }),
-  );
-export type ErrorTrackingExternalReferencesListInput =
-  typeof ErrorTrackingExternalReferencesListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingExternalReferencesListInput>;
 
 // Output Schema
+export interface ErrorTrackingExternalReferencesListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id?: string;
+    integration?: { id?: number; kind?: string; display_name?: string };
+    integration_id?: number;
+    config?: Record<string, string>;
+    issue?: string;
+    external_url?: string;
+  }[];
+}
 export const ErrorTrackingExternalReferencesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -39,9 +55,7 @@ export const ErrorTrackingExternalReferencesListOutput =
         external_url: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ErrorTrackingExternalReferencesListOutput =
-  typeof ErrorTrackingExternalReferencesListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingExternalReferencesListOutput>;
 
 // The operation
 /**

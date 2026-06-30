@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -67,7 +67,7 @@ export interface Result {
   fileFormat?: string;
 }
 
-export const Result: Schema.Schema<Result> =
+export const Result: Schema.Codec<Result> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     snippet: Schema.optional(Schema.String),
@@ -124,7 +124,7 @@ export interface Promotion {
   image?: { source?: string; height?: number; width?: number };
 }
 
-export const Promotion: Schema.Schema<Promotion> =
+export const Promotion: Schema.Codec<Promotion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     htmlTitle: Schema.optional(Schema.String),
     displayLink: Schema.optional(Schema.String),
@@ -288,7 +288,7 @@ export interface Search {
   };
 }
 
-export const Search: Schema.Schema<Search> =
+export const Search: Schema.Codec<Search> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchInformation: Schema.optional(
       Schema.Struct({
@@ -634,7 +634,7 @@ export const ListCseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "customsearch/v1" }),
   svc,
-) as unknown as Schema.Schema<ListCseRequest>;
+) as unknown as Schema.Codec<ListCseRequest>;
 
 export type ListCseResponse = Search;
 export const ListCseResponse = /*@__PURE__*/ /*#__PURE__*/ Search;
@@ -813,7 +813,7 @@ export const ListCseSiterestrictRequest =
   }).pipe(
     T.Http({ method: "GET", path: "customsearch/v1/siterestrict" }),
     svc,
-  ) as unknown as Schema.Schema<ListCseSiterestrictRequest>;
+  ) as unknown as Schema.Codec<ListCseSiterestrictRequest>;
 
 export type ListCseSiterestrictResponse = Search;
 export const ListCseSiterestrictResponse = /*@__PURE__*/ /*#__PURE__*/ Search;

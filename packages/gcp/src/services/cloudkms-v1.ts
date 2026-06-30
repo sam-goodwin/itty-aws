@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface ShowEffectiveAutokeyConfigResponse {
   keyProject?: string;
 }
 
-export const ShowEffectiveAutokeyConfigResponse: Schema.Schema<ShowEffectiveAutokeyConfigResponse> =
+export const ShowEffectiveAutokeyConfigResponse: Schema.Codec<ShowEffectiveAutokeyConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyProject: Schema.optional(Schema.String),
   }).annotate({ identifier: "ShowEffectiveAutokeyConfigResponse" });
@@ -37,7 +37,7 @@ export interface RemoveQuorumMember {
   twoFactorPublicKeyPem?: string;
 }
 
-export const RemoveQuorumMember: Schema.Schema<RemoveQuorumMember> =
+export const RemoveQuorumMember: Schema.Codec<RemoveQuorumMember> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     twoFactorPublicKeyPem: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveQuorumMember" });
@@ -49,7 +49,7 @@ export interface ChallengeReply {
   publicKeyPem?: string;
 }
 
-export const ChallengeReply: Schema.Schema<ChallengeReply> =
+export const ChallengeReply: Schema.Codec<ChallengeReply> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedChallenge: Schema.optional(Schema.String),
     publicKeyPem: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface RequiredActionQuorumReply {
   quorumChallengeReplies?: ReadonlyArray<ChallengeReply>;
 }
 
-export const RequiredActionQuorumReply: Schema.Schema<RequiredActionQuorumReply> =
+export const RequiredActionQuorumReply: Schema.Codec<RequiredActionQuorumReply> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredChallengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
     quorumChallengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
@@ -73,7 +73,7 @@ export interface QuorumReply {
   challengeReplies?: ReadonlyArray<ChallengeReply>;
 }
 
-export const QuorumReply: Schema.Schema<QuorumReply> =
+export const QuorumReply: Schema.Codec<QuorumReply> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     challengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
   }).annotate({ identifier: "QuorumReply" });
@@ -85,7 +85,7 @@ export interface ApproveSingleTenantHsmInstanceProposalRequest {
   quorumReply?: QuorumReply;
 }
 
-export const ApproveSingleTenantHsmInstanceProposalRequest: Schema.Schema<ApproveSingleTenantHsmInstanceProposalRequest> =
+export const ApproveSingleTenantHsmInstanceProposalRequest: Schema.Codec<ApproveSingleTenantHsmInstanceProposalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredActionQuorumReply: Schema.optional(RequiredActionQuorumReply),
     quorumReply: Schema.optional(QuorumReply),
@@ -98,7 +98,7 @@ export interface RegisterTwoFactorAuthKeys {
   requiredApproverCount?: number;
 }
 
-export const RegisterTwoFactorAuthKeys: Schema.Schema<RegisterTwoFactorAuthKeys> =
+export const RegisterTwoFactorAuthKeys: Schema.Codec<RegisterTwoFactorAuthKeys> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     twoFactorPublicKeyPems: Schema.optional(Schema.Array(Schema.String)),
     requiredApproverCount: Schema.optional(Schema.Number),
@@ -115,7 +115,7 @@ export interface DecryptRequest {
   additionalAuthenticatedDataCrc32c?: string;
 }
 
-export const DecryptRequest: Schema.Schema<DecryptRequest> =
+export const DecryptRequest: Schema.Codec<DecryptRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ciphertext: Schema.optional(Schema.String),
     additionalAuthenticatedData: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface KeyHandle {
   resourceTypeSelector?: string;
 }
 
-export const KeyHandle: Schema.Schema<KeyHandle> =
+export const KeyHandle: Schema.Codec<KeyHandle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -146,7 +146,7 @@ export interface WrappingPublicKey {
   data?: string;
 }
 
-export const WrappingPublicKey: Schema.Schema<WrappingPublicKey> =
+export const WrappingPublicKey: Schema.Codec<WrappingPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pem: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export interface CertificateChains {
   googlePartitionCerts?: ReadonlyArray<string>;
 }
 
-export const CertificateChains: Schema.Schema<CertificateChains> =
+export const CertificateChains: Schema.Codec<CertificateChains> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     caviumCerts: Schema.optional(Schema.Array(Schema.String)),
     googleCardCerts: Schema.optional(Schema.Array(Schema.String)),
@@ -181,7 +181,7 @@ export interface KeyOperationAttestation {
   content?: string;
 }
 
-export const KeyOperationAttestation: Schema.Schema<KeyOperationAttestation> =
+export const KeyOperationAttestation: Schema.Codec<KeyOperationAttestation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certChains: Schema.optional(CertificateChains),
     format: Schema.optional(Schema.String),
@@ -244,7 +244,7 @@ export interface ImportJob {
   createTime?: string;
 }
 
-export const ImportJob: Schema.Schema<ImportJob> =
+export const ImportJob: Schema.Codec<ImportJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     importMethod: Schema.optional(Schema.String),
     publicKeyFormat: Schema.optional(Schema.String),
@@ -269,7 +269,7 @@ export interface ListImportJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListImportJobsResponse: Schema.Schema<ListImportJobsResponse> =
+export const ListImportJobsResponse: Schema.Codec<ListImportJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     importJobs: Schema.optional(Schema.Array(ImportJob)),
     totalSize: Schema.optional(Schema.Number),
@@ -287,7 +287,7 @@ export interface RetiredResource {
   deleteTime?: string;
 }
 
-export const RetiredResource: Schema.Schema<RetiredResource> =
+export const RetiredResource: Schema.Codec<RetiredResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalResource: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -304,7 +304,7 @@ export interface ListRetiredResourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListRetiredResourcesResponse: Schema.Schema<ListRetiredResourcesResponse> =
+export const ListRetiredResourcesResponse: Schema.Codec<ListRetiredResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.String),
     retiredResources: Schema.optional(Schema.Array(RetiredResource)),
@@ -330,7 +330,7 @@ export interface KeyAccessJustificationsPolicy {
   >;
 }
 
-export const KeyAccessJustificationsPolicy: Schema.Schema<KeyAccessJustificationsPolicy> =
+export const KeyAccessJustificationsPolicy: Schema.Codec<KeyAccessJustificationsPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedAccessReasons: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "KeyAccessJustificationsPolicy" });
@@ -344,7 +344,7 @@ export interface KeyAccessJustificationsPolicyConfig {
   defaultKeyAccessJustificationPolicy?: KeyAccessJustificationsPolicy;
 }
 
-export const KeyAccessJustificationsPolicyConfig: Schema.Schema<KeyAccessJustificationsPolicyConfig> =
+export const KeyAccessJustificationsPolicyConfig: Schema.Codec<KeyAccessJustificationsPolicyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultPolicyAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -360,7 +360,7 @@ export interface ChecksummedData {
   crc32cChecksum?: string;
 }
 
-export const ChecksummedData: Schema.Schema<ChecksummedData> =
+export const ChecksummedData: Schema.Codec<ChecksummedData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     crc32cChecksum: Schema.optional(Schema.String),
@@ -444,7 +444,7 @@ export interface PublicKey {
     | (string & {});
 }
 
-export const PublicKey: Schema.Schema<PublicKey> =
+export const PublicKey: Schema.Codec<PublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKeyFormat: Schema.optional(Schema.String),
     pemCrc32c: Schema.optional(Schema.String),
@@ -464,7 +464,7 @@ export interface QuorumAuth {
   totalApproverCount?: number;
 }
 
-export const QuorumAuth: Schema.Schema<QuorumAuth> =
+export const QuorumAuth: Schema.Codec<QuorumAuth> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     twoFactorPublicKeyPems: Schema.optional(Schema.Array(Schema.String)),
     requiredApproverCount: Schema.optional(Schema.Number),
@@ -500,7 +500,7 @@ export interface SingleTenantHsmInstance {
   quorumAuth?: QuorumAuth;
 }
 
-export const SingleTenantHsmInstance: Schema.Schema<SingleTenantHsmInstance> =
+export const SingleTenantHsmInstance: Schema.Codec<SingleTenantHsmInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     keyPortabilityEnabled: Schema.optional(Schema.Boolean),
@@ -521,7 +521,7 @@ export interface ListSingleTenantHsmInstancesResponse {
   nextPageToken?: string;
 }
 
-export const ListSingleTenantHsmInstancesResponse: Schema.Schema<ListSingleTenantHsmInstancesResponse> =
+export const ListSingleTenantHsmInstancesResponse: Schema.Codec<ListSingleTenantHsmInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     singleTenantHsmInstances: Schema.optional(
@@ -545,7 +545,7 @@ export interface RawEncryptRequest {
   additionalAuthenticatedDataCrc32c?: string;
 }
 
-export const RawEncryptRequest: Schema.Schema<RawEncryptRequest> =
+export const RawEncryptRequest: Schema.Codec<RawEncryptRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     plaintext: Schema.optional(Schema.String),
     plaintextCrc32c: Schema.optional(Schema.String),
@@ -562,7 +562,7 @@ export interface ListKeyHandlesResponse {
   nextPageToken?: string;
 }
 
-export const ListKeyHandlesResponse: Schema.Schema<ListKeyHandlesResponse> =
+export const ListKeyHandlesResponse: Schema.Codec<ListKeyHandlesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyHandles: Schema.optional(Schema.Array(KeyHandle)),
     nextPageToken: Schema.optional(Schema.String),
@@ -590,7 +590,7 @@ export interface RawDecryptResponse {
   verifiedInitializationVectorCrc32c?: boolean;
 }
 
-export const RawDecryptResponse: Schema.Schema<RawDecryptResponse> =
+export const RawDecryptResponse: Schema.Codec<RawDecryptResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protectionLevel: Schema.optional(Schema.String),
     verifiedAdditionalAuthenticatedDataCrc32c: Schema.optional(Schema.Boolean),
@@ -611,7 +611,7 @@ export interface Digest {
   externalMu?: string;
 }
 
-export const Digest: Schema.Schema<Digest> =
+export const Digest: Schema.Codec<Digest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha384: Schema.optional(Schema.String),
     sha512: Schema.optional(Schema.String),
@@ -640,7 +640,7 @@ export interface Certificate {
   sha256Fingerprint?: string;
 }
 
-export const Certificate: Schema.Schema<Certificate> =
+export const Certificate: Schema.Codec<Certificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notAfterTime: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
@@ -664,7 +664,7 @@ export interface ServiceResolver {
   serverCertificates?: ReadonlyArray<Certificate>;
 }
 
-export const ServiceResolver: Schema.Schema<ServiceResolver> =
+export const ServiceResolver: Schema.Codec<ServiceResolver> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceDirectoryService: Schema.optional(Schema.String),
     hostname: Schema.optional(Schema.String),
@@ -691,7 +691,7 @@ export interface EkmConnection {
   createTime?: string;
 }
 
-export const EkmConnection: Schema.Schema<EkmConnection> =
+export const EkmConnection: Schema.Codec<EkmConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoSpacePath: Schema.optional(Schema.String),
     keyManagementMode: Schema.optional(Schema.String),
@@ -710,7 +710,7 @@ export interface ListEkmConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const ListEkmConnectionsResponse: Schema.Schema<ListEkmConnectionsResponse> =
+export const ListEkmConnectionsResponse: Schema.Codec<ListEkmConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ekmConnections: Schema.optional(Schema.Array(EkmConnection)),
     totalSize: Schema.optional(Schema.Number),
@@ -747,7 +747,7 @@ export interface RawEncryptResponse {
   initializationVector?: string;
 }
 
-export const RawEncryptResponse: Schema.Schema<RawEncryptResponse> =
+export const RawEncryptResponse: Schema.Codec<RawEncryptResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagLength: Schema.optional(Schema.Number),
     initializationVectorCrc32c: Schema.optional(Schema.String),
@@ -766,7 +766,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -778,7 +778,7 @@ export interface ExternalProtectionLevelOptions {
   ekmConnectionKeyPath?: string;
 }
 
-export const ExternalProtectionLevelOptions: Schema.Schema<ExternalProtectionLevelOptions> =
+export const ExternalProtectionLevelOptions: Schema.Codec<ExternalProtectionLevelOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalKeyUri: Schema.optional(Schema.String),
     ekmConnectionKeyPath: Schema.optional(Schema.String),
@@ -797,7 +797,7 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
@@ -813,7 +813,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -826,7 +826,7 @@ export interface Challenge {
   challenge?: string;
 }
 
-export const Challenge: Schema.Schema<Challenge> =
+export const Challenge: Schema.Codec<Challenge> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKeyPem: Schema.optional(Schema.String),
     challenge: Schema.optional(Schema.String),
@@ -839,7 +839,7 @@ export interface GenerateRandomBytesResponse {
   data?: string;
 }
 
-export const GenerateRandomBytesResponse: Schema.Schema<GenerateRandomBytesResponse> =
+export const GenerateRandomBytesResponse: Schema.Codec<GenerateRandomBytesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataCrc32c: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -847,7 +847,7 @@ export const GenerateRandomBytesResponse: Schema.Schema<GenerateRandomBytesRespo
 
 export interface RestoreCryptoKeyVersionRequest {}
 
-export const RestoreCryptoKeyVersionRequest: Schema.Schema<RestoreCryptoKeyVersionRequest> =
+export const RestoreCryptoKeyVersionRequest: Schema.Codec<RestoreCryptoKeyVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestoreCryptoKeyVersionRequest",
   });
@@ -859,7 +859,7 @@ export interface KeyRing {
   createTime?: string;
 }
 
-export const KeyRing: Schema.Schema<KeyRing> =
+export const KeyRing: Schema.Codec<KeyRing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -874,7 +874,7 @@ export interface QuorumParameters {
   approvedTwoFactorPublicKeyPems?: ReadonlyArray<string>;
 }
 
-export const QuorumParameters: Schema.Schema<QuorumParameters> =
+export const QuorumParameters: Schema.Codec<QuorumParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredApproverCount: Schema.optional(Schema.Number),
     challenges: Schema.optional(Schema.Array(Challenge)),
@@ -888,28 +888,28 @@ export interface UpdateCryptoKeyPrimaryVersionRequest {
   cryptoKeyVersionId?: string;
 }
 
-export const UpdateCryptoKeyPrimaryVersionRequest: Schema.Schema<UpdateCryptoKeyPrimaryVersionRequest> =
+export const UpdateCryptoKeyPrimaryVersionRequest: Schema.Codec<UpdateCryptoKeyPrimaryVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoKeyVersionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateCryptoKeyPrimaryVersionRequest" });
 
 export interface DeleteSingleTenantHsmInstance {}
 
-export const DeleteSingleTenantHsmInstance: Schema.Schema<DeleteSingleTenantHsmInstance> =
+export const DeleteSingleTenantHsmInstance: Schema.Codec<DeleteSingleTenantHsmInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteSingleTenantHsmInstance",
   });
 
 export interface RefreshSingleTenantHsmInstance {}
 
-export const RefreshSingleTenantHsmInstance: Schema.Schema<RefreshSingleTenantHsmInstance> =
+export const RefreshSingleTenantHsmInstance: Schema.Codec<RefreshSingleTenantHsmInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RefreshSingleTenantHsmInstance",
   });
 
 export interface EnableSingleTenantHsmInstance {}
 
-export const EnableSingleTenantHsmInstance: Schema.Schema<EnableSingleTenantHsmInstance> =
+export const EnableSingleTenantHsmInstance: Schema.Codec<EnableSingleTenantHsmInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableSingleTenantHsmInstance",
   });
@@ -919,14 +919,14 @@ export interface AddQuorumMember {
   twoFactorPublicKeyPem?: string;
 }
 
-export const AddQuorumMember: Schema.Schema<AddQuorumMember> =
+export const AddQuorumMember: Schema.Codec<AddQuorumMember> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     twoFactorPublicKeyPem: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddQuorumMember" });
 
 export interface DisableSingleTenantHsmInstance {}
 
-export const DisableSingleTenantHsmInstance: Schema.Schema<DisableSingleTenantHsmInstance> =
+export const DisableSingleTenantHsmInstance: Schema.Codec<DisableSingleTenantHsmInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableSingleTenantHsmInstance",
   });
@@ -942,7 +942,7 @@ export interface RequiredActionQuorumParameters {
   approvedTwoFactorPublicKeyPems?: ReadonlyArray<string>;
 }
 
-export const RequiredActionQuorumParameters: Schema.Schema<RequiredActionQuorumParameters> =
+export const RequiredActionQuorumParameters: Schema.Codec<RequiredActionQuorumParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredApproverCount: Schema.optional(Schema.Number),
     quorumChallenges: Schema.optional(Schema.Array(Challenge)),
@@ -998,7 +998,7 @@ export interface SingleTenantHsmInstanceProposal {
   requiredActionQuorumParameters?: RequiredActionQuorumParameters;
 }
 
-export const SingleTenantHsmInstanceProposal: Schema.Schema<SingleTenantHsmInstanceProposal> =
+export const SingleTenantHsmInstanceProposal: Schema.Codec<SingleTenantHsmInstanceProposal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     deleteSingleTenantHsmInstance: Schema.optional(
@@ -1038,7 +1038,7 @@ export interface ListSingleTenantHsmInstanceProposalsResponse {
   totalSize?: number;
 }
 
-export const ListSingleTenantHsmInstanceProposalsResponse: Schema.Schema<ListSingleTenantHsmInstanceProposalsResponse> =
+export const ListSingleTenantHsmInstanceProposalsResponse: Schema.Codec<ListSingleTenantHsmInstanceProposalsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     singleTenantHsmInstanceProposals: Schema.optional(
@@ -1049,7 +1049,7 @@ export const ListSingleTenantHsmInstanceProposalsResponse: Schema.Schema<ListSin
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1059,7 +1059,7 @@ export interface ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
   effectiveKajPolicy?: KeyAccessJustificationsPolicyConfig;
 }
 
-export const ShowEffectiveKeyAccessJustificationsPolicyConfigResponse: Schema.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse> =
+export const ShowEffectiveKeyAccessJustificationsPolicyConfigResponse: Schema.Codec<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveKajPolicy: Schema.optional(KeyAccessJustificationsPolicyConfig),
   }).annotate({
@@ -1168,7 +1168,7 @@ export interface CryptoKeyVersion {
   destroyTime?: string;
 }
 
-export const CryptoKeyVersion: Schema.Schema<CryptoKeyVersion> =
+export const CryptoKeyVersion: Schema.Codec<CryptoKeyVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalDestructionFailureReason: Schema.optional(Schema.String),
     attestation: Schema.optional(KeyOperationAttestation),
@@ -1252,7 +1252,7 @@ export interface CryptoKeyVersionTemplate {
     | (string & {});
 }
 
-export const CryptoKeyVersionTemplate: Schema.Schema<CryptoKeyVersionTemplate> =
+export const CryptoKeyVersionTemplate: Schema.Codec<CryptoKeyVersionTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protectionLevel: Schema.optional(Schema.String),
     algorithm: Schema.optional(Schema.String),
@@ -1293,7 +1293,7 @@ export interface CryptoKey {
   cryptoKeyBackend?: string;
 }
 
-export const CryptoKey: Schema.Schema<CryptoKey> =
+export const CryptoKey: Schema.Codec<CryptoKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyAccessJustificationsPolicy: Schema.optional(
       KeyAccessJustificationsPolicy,
@@ -1320,7 +1320,7 @@ export interface ListCryptoKeysResponse {
   nextPageToken?: string;
 }
 
-export const ListCryptoKeysResponse: Schema.Schema<ListCryptoKeysResponse> =
+export const ListCryptoKeysResponse: Schema.Codec<ListCryptoKeysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cryptoKeys: Schema.optional(Schema.Array(CryptoKey)),
     totalSize: Schema.optional(Schema.Number),
@@ -1329,7 +1329,7 @@ export const ListCryptoKeysResponse: Schema.Schema<ListCryptoKeysResponse> =
 
 export interface DestroyCryptoKeyVersionRequest {}
 
-export const DestroyCryptoKeyVersionRequest: Schema.Schema<DestroyCryptoKeyVersionRequest> =
+export const DestroyCryptoKeyVersionRequest: Schema.Codec<DestroyCryptoKeyVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DestroyCryptoKeyVersionRequest",
   });
@@ -1345,7 +1345,7 @@ export interface MacVerifyRequest {
   mac?: string;
 }
 
-export const MacVerifyRequest: Schema.Schema<MacVerifyRequest> =
+export const MacVerifyRequest: Schema.Codec<MacVerifyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     macCrc32c: Schema.optional(Schema.String),
@@ -1364,7 +1364,7 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -1381,7 +1381,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -1400,7 +1400,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -1413,7 +1413,7 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
@@ -1430,7 +1430,7 @@ export interface Policy {
   auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
@@ -1445,7 +1445,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -1456,7 +1456,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -1470,7 +1470,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1492,7 +1492,7 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -1523,7 +1523,7 @@ export interface AsymmetricSignResponse {
   verifiedDigestCrc32c?: boolean;
 }
 
-export const AsymmetricSignResponse: Schema.Schema<AsymmetricSignResponse> =
+export const AsymmetricSignResponse: Schema.Codec<AsymmetricSignResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signatureCrc32c: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1535,7 +1535,7 @@ export const AsymmetricSignResponse: Schema.Schema<AsymmetricSignResponse> =
 
 export interface VerifyConnectivityResponse {}
 
-export const VerifyConnectivityResponse: Schema.Schema<VerifyConnectivityResponse> =
+export const VerifyConnectivityResponse: Schema.Codec<VerifyConnectivityResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "VerifyConnectivityResponse",
   });
@@ -1558,7 +1558,7 @@ export interface AsymmetricDecryptResponse {
     | (string & {});
 }
 
-export const AsymmetricDecryptResponse: Schema.Schema<AsymmetricDecryptResponse> =
+export const AsymmetricDecryptResponse: Schema.Codec<AsymmetricDecryptResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verifiedCiphertextCrc32c: Schema.optional(Schema.Boolean),
     plaintext: Schema.optional(Schema.String),
@@ -1573,7 +1573,7 @@ export interface KeyAccessJustificationsEnrollmentConfig {
   policyEnforcement?: boolean;
 }
 
-export const KeyAccessJustificationsEnrollmentConfig: Schema.Schema<KeyAccessJustificationsEnrollmentConfig> =
+export const KeyAccessJustificationsEnrollmentConfig: Schema.Codec<KeyAccessJustificationsEnrollmentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogging: Schema.optional(Schema.Boolean),
     policyEnforcement: Schema.optional(Schema.Boolean),
@@ -1588,7 +1588,7 @@ export interface ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
   externalConfig?: KeyAccessJustificationsEnrollmentConfig;
 }
 
-export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse: Schema.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse> =
+export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse: Schema.Codec<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     softwareConfig: Schema.optional(KeyAccessJustificationsEnrollmentConfig),
     hardwareConfig: Schema.optional(KeyAccessJustificationsEnrollmentConfig),
@@ -1621,7 +1621,7 @@ export interface AutokeyConfig {
   name?: string;
 }
 
-export const AutokeyConfig: Schema.Schema<AutokeyConfig> =
+export const AutokeyConfig: Schema.Codec<AutokeyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     keyProjectResolutionMode: Schema.optional(Schema.String),
@@ -1652,7 +1652,7 @@ export interface EncryptResponse {
   name?: string;
 }
 
-export const EncryptResponse: Schema.Schema<EncryptResponse> =
+export const EncryptResponse: Schema.Codec<EncryptResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ciphertextCrc32c: Schema.optional(Schema.String),
     verifiedAdditionalAuthenticatedDataCrc32c: Schema.optional(Schema.Boolean),
@@ -1671,7 +1671,7 @@ export interface ListKeyRingsResponse {
   keyRings?: ReadonlyArray<KeyRing>;
 }
 
-export const ListKeyRingsResponse: Schema.Schema<ListKeyRingsResponse> =
+export const ListKeyRingsResponse: Schema.Codec<ListKeyRingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -1695,7 +1695,7 @@ export interface RawDecryptRequest {
   initializationVectorCrc32c?: string;
 }
 
-export const RawDecryptRequest: Schema.Schema<RawDecryptRequest> =
+export const RawDecryptRequest: Schema.Codec<RawDecryptRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalAuthenticatedData: Schema.optional(Schema.String),
     initializationVector: Schema.optional(Schema.String),
@@ -1708,7 +1708,7 @@ export const RawDecryptRequest: Schema.Schema<RawDecryptRequest> =
 
 export interface ApproveSingleTenantHsmInstanceProposalResponse {}
 
-export const ApproveSingleTenantHsmInstanceProposalResponse: Schema.Schema<ApproveSingleTenantHsmInstanceProposalResponse> =
+export const ApproveSingleTenantHsmInstanceProposalResponse: Schema.Codec<ApproveSingleTenantHsmInstanceProposalResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ApproveSingleTenantHsmInstanceProposalResponse",
   });
@@ -1722,7 +1722,7 @@ export interface ListCryptoKeyVersionsResponse {
   cryptoKeyVersions?: ReadonlyArray<CryptoKeyVersion>;
 }
 
-export const ListCryptoKeyVersionsResponse: Schema.Schema<ListCryptoKeyVersionsResponse> =
+export const ListCryptoKeyVersionsResponse: Schema.Codec<ListCryptoKeyVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -1749,7 +1749,7 @@ export interface MacSignResponse {
   macCrc32c?: string;
 }
 
-export const MacSignResponse: Schema.Schema<MacSignResponse> =
+export const MacSignResponse: Schema.Codec<MacSignResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protectionLevel: Schema.optional(Schema.String),
     mac: Schema.optional(Schema.String),
@@ -1819,7 +1819,7 @@ export interface ImportCryptoKeyVersionRequest {
   wrappedKey?: string;
 }
 
-export const ImportCryptoKeyVersionRequest: Schema.Schema<ImportCryptoKeyVersionRequest> =
+export const ImportCryptoKeyVersionRequest: Schema.Codec<ImportCryptoKeyVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     importJob: Schema.optional(Schema.String),
     cryptoKeyVersion: Schema.optional(Schema.String),
@@ -1842,7 +1842,7 @@ export interface GenerateRandomBytesRequest {
     | (string & {});
 }
 
-export const GenerateRandomBytesRequest: Schema.Schema<GenerateRandomBytesRequest> =
+export const GenerateRandomBytesRequest: Schema.Codec<GenerateRandomBytesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lengthBytes: Schema.optional(Schema.Number),
     protectionLevel: Schema.optional(Schema.String),
@@ -1855,7 +1855,7 @@ export interface MacSignRequest {
   data?: string;
 }
 
-export const MacSignRequest: Schema.Schema<MacSignRequest> =
+export const MacSignRequest: Schema.Codec<MacSignRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataCrc32c: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -1872,7 +1872,7 @@ export interface AsymmetricSignRequest {
   data?: string;
 }
 
-export const AsymmetricSignRequest: Schema.Schema<AsymmetricSignRequest> =
+export const AsymmetricSignRequest: Schema.Codec<AsymmetricSignRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataCrc32c: Schema.optional(Schema.String),
     digest: Schema.optional(Digest),
@@ -1898,7 +1898,7 @@ export interface DecryptResponse {
     | (string & {});
 }
 
-export const DecryptResponse: Schema.Schema<DecryptResponse> =
+export const DecryptResponse: Schema.Codec<DecryptResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     plaintext: Schema.optional(Schema.String),
     plaintextCrc32c: Schema.optional(Schema.String),
@@ -1915,7 +1915,7 @@ export interface LocationMetadata {
   hsmAvailable?: boolean;
 }
 
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
+export const LocationMetadata: Schema.Codec<LocationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hsmSingleTenantAvailable: Schema.optional(Schema.Boolean),
     ekmAvailable: Schema.optional(Schema.Boolean),
@@ -1933,7 +1933,7 @@ export interface EncryptRequest {
   additionalAuthenticatedDataCrc32c?: string;
 }
 
-export const EncryptRequest: Schema.Schema<EncryptRequest> =
+export const EncryptRequest: Schema.Codec<EncryptRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     plaintext: Schema.optional(Schema.String),
     plaintextCrc32c: Schema.optional(Schema.String),
@@ -1948,7 +1948,7 @@ export interface AsymmetricDecryptRequest {
   ciphertextCrc32c?: string;
 }
 
-export const AsymmetricDecryptRequest: Schema.Schema<AsymmetricDecryptRequest> =
+export const AsymmetricDecryptRequest: Schema.Codec<AsymmetricDecryptRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ciphertext: Schema.optional(Schema.String),
     ciphertextCrc32c: Schema.optional(Schema.String),
@@ -1956,7 +1956,7 @@ export const AsymmetricDecryptRequest: Schema.Schema<AsymmetricDecryptRequest> =
 
 export interface ExecuteSingleTenantHsmInstanceProposalRequest {}
 
-export const ExecuteSingleTenantHsmInstanceProposalRequest: Schema.Schema<ExecuteSingleTenantHsmInstanceProposalRequest> =
+export const ExecuteSingleTenantHsmInstanceProposalRequest: Schema.Codec<ExecuteSingleTenantHsmInstanceProposalRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExecuteSingleTenantHsmInstanceProposalRequest",
   });
@@ -1983,7 +1983,7 @@ export interface MacVerifyResponse {
   verifiedDataCrc32c?: boolean;
 }
 
-export const MacVerifyResponse: Schema.Schema<MacVerifyResponse> =
+export const MacVerifyResponse: Schema.Codec<MacVerifyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
     protectionLevel: Schema.optional(Schema.String),
@@ -2000,7 +2000,7 @@ export interface DecapsulateRequest {
   ciphertext?: string;
 }
 
-export const DecapsulateRequest: Schema.Schema<DecapsulateRequest> =
+export const DecapsulateRequest: Schema.Codec<DecapsulateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ciphertextCrc32c: Schema.optional(Schema.String),
     ciphertext: Schema.optional(Schema.String),
@@ -2013,7 +2013,7 @@ export interface EkmConfig {
   defaultEkmConnection?: string;
 }
 
-export const EkmConfig: Schema.Schema<EkmConfig> =
+export const EkmConfig: Schema.Codec<EkmConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     defaultEkmConnection: Schema.optional(Schema.String),
@@ -2039,7 +2039,7 @@ export interface DecapsulateResponse {
   verifiedCiphertextCrc32c?: boolean;
 }
 
-export const DecapsulateResponse: Schema.Schema<DecapsulateResponse> =
+export const DecapsulateResponse: Schema.Codec<DecapsulateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sharedSecret: Schema.optional(Schema.String),
@@ -2113,7 +2113,7 @@ export const GetAutokeyConfigFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAutokeyConfigFoldersRequest>;
+  ) as unknown as Schema.Codec<GetAutokeyConfigFoldersRequest>;
 
 export type GetAutokeyConfigFoldersResponse = AutokeyConfig;
 export const GetAutokeyConfigFoldersResponse =
@@ -2144,7 +2144,7 @@ export const GetKajPolicyConfigFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetKajPolicyConfigFoldersRequest>;
+  ) as unknown as Schema.Codec<GetKajPolicyConfigFoldersRequest>;
 
 export type GetKajPolicyConfigFoldersResponse =
   KeyAccessJustificationsPolicyConfig;
@@ -2185,7 +2185,7 @@ export const UpdateAutokeyConfigFoldersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAutokeyConfigFoldersRequest>;
+  ) as unknown as Schema.Codec<UpdateAutokeyConfigFoldersRequest>;
 
 export type UpdateAutokeyConfigFoldersResponse = AutokeyConfig;
 export const UpdateAutokeyConfigFoldersResponse =
@@ -2229,7 +2229,7 @@ export const UpdateKajPolicyConfigFoldersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateKajPolicyConfigFoldersRequest>;
+  ) as unknown as Schema.Codec<UpdateKajPolicyConfigFoldersRequest>;
 
 export type UpdateKajPolicyConfigFoldersResponse =
   KeyAccessJustificationsPolicyConfig;
@@ -2269,7 +2269,7 @@ export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest
       path: "v1/{+project}:showEffectiveKeyAccessJustificationsEnrollmentConfig",
     }),
     svc,
-  ) as unknown as Schema.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest>;
 
 export type ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsResponse =
   ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse;
@@ -2304,7 +2304,7 @@ export const GetAutokeyConfigProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAutokeyConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<GetAutokeyConfigProjectsRequest>;
 
 export type GetAutokeyConfigProjectsResponse = AutokeyConfig;
 export const GetAutokeyConfigProjectsResponse =
@@ -2346,7 +2346,7 @@ export const UpdateKajPolicyConfigProjectsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateKajPolicyConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<UpdateKajPolicyConfigProjectsRequest>;
 
 export type UpdateKajPolicyConfigProjectsResponse =
   KeyAccessJustificationsPolicyConfig;
@@ -2386,7 +2386,7 @@ export const ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest =
       path: "v1/{+project}:showEffectiveKeyAccessJustificationsPolicyConfig",
     }),
     svc,
-  ) as unknown as Schema.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest>;
 
 export type ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsResponse =
   ShowEffectiveKeyAccessJustificationsPolicyConfigResponse;
@@ -2421,7 +2421,7 @@ export const ShowEffectiveAutokeyConfigProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:showEffectiveAutokeyConfig" }),
     svc,
-  ) as unknown as Schema.Schema<ShowEffectiveAutokeyConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<ShowEffectiveAutokeyConfigProjectsRequest>;
 
 export type ShowEffectiveAutokeyConfigProjectsResponse =
   ShowEffectiveAutokeyConfigResponse;
@@ -2456,7 +2456,7 @@ export const GetKajPolicyConfigProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetKajPolicyConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<GetKajPolicyConfigProjectsRequest>;
 
 export type GetKajPolicyConfigProjectsResponse =
   KeyAccessJustificationsPolicyConfig;
@@ -2497,7 +2497,7 @@ export const UpdateAutokeyConfigProjectsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAutokeyConfigProjectsRequest>;
+  ) as unknown as Schema.Codec<UpdateAutokeyConfigProjectsRequest>;
 
 export type UpdateAutokeyConfigProjectsResponse = AutokeyConfig;
 export const UpdateAutokeyConfigProjectsResponse =
@@ -2533,7 +2533,7 @@ export const GetEkmConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEkmConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetEkmConfigProjectsLocationsRequest>;
 
 export type GetEkmConfigProjectsLocationsResponse = EkmConfig;
 export const GetEkmConfigProjectsLocationsResponse =
@@ -2574,7 +2574,7 @@ export const GenerateRandomBytesProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateRandomBytesProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GenerateRandomBytesProjectsLocationsRequest>;
 
 export type GenerateRandomBytesProjectsLocationsResponse =
   GenerateRandomBytesResponse;
@@ -2617,7 +2617,7 @@ export const UpdateEkmConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEkmConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateEkmConfigProjectsLocationsRequest>;
 
 export type UpdateEkmConfigProjectsLocationsResponse = EkmConfig;
 export const UpdateEkmConfigProjectsLocationsResponse =
@@ -2667,7 +2667,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -2702,7 +2702,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -2739,7 +2739,7 @@ export const ListProjectsLocationsRetiredResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/retiredResources" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRetiredResourcesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRetiredResourcesRequest>;
 
 export type ListProjectsLocationsRetiredResourcesResponse =
   ListRetiredResourcesResponse;
@@ -2778,7 +2778,7 @@ export const GetProjectsLocationsRetiredResourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRetiredResourcesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRetiredResourcesRequest>;
 
 export type GetProjectsLocationsRetiredResourcesResponse = RetiredResource;
 export const GetProjectsLocationsRetiredResourcesResponse =
@@ -2812,7 +2812,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -2846,7 +2846,7 @@ export const VerifyConnectivityProjectsLocationsEkmConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:verifyConnectivity" }),
     svc,
-  ) as unknown as Schema.Schema<VerifyConnectivityProjectsLocationsEkmConnectionsRequest>;
+  ) as unknown as Schema.Codec<VerifyConnectivityProjectsLocationsEkmConnectionsRequest>;
 
 export type VerifyConnectivityProjectsLocationsEkmConnectionsResponse =
   VerifyConnectivityResponse;
@@ -2887,7 +2887,7 @@ export const PatchProjectsLocationsEkmConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEkmConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEkmConnectionsRequest>;
 
 export type PatchProjectsLocationsEkmConnectionsResponse = EkmConnection;
 export const PatchProjectsLocationsEkmConnectionsResponse =
@@ -2928,7 +2928,7 @@ export const GetIamPolicyProjectsLocationsEkmConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEkmConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsEkmConnectionsRequest>;
 
 export type GetIamPolicyProjectsLocationsEkmConnectionsResponse = Policy;
 export const GetIamPolicyProjectsLocationsEkmConnectionsResponse =
@@ -2974,7 +2974,7 @@ export const CreateProjectsLocationsEkmConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEkmConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEkmConnectionsRequest>;
 
 export type CreateProjectsLocationsEkmConnectionsResponse = EkmConnection;
 export const CreateProjectsLocationsEkmConnectionsResponse =
@@ -3022,7 +3022,7 @@ export const ListProjectsLocationsEkmConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/ekmConnections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEkmConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEkmConnectionsRequest>;
 
 export type ListProjectsLocationsEkmConnectionsResponse =
   ListEkmConnectionsResponse;
@@ -3068,7 +3068,7 @@ export const SetIamPolicyProjectsLocationsEkmConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsEkmConnectionsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsEkmConnectionsRequest>;
 
 export type SetIamPolicyProjectsLocationsEkmConnectionsResponse = Policy;
 export const SetIamPolicyProjectsLocationsEkmConnectionsResponse =
@@ -3111,7 +3111,7 @@ export const TestIamPermissionsProjectsLocationsEkmConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsEkmConnectionsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsEkmConnectionsRequest>;
 
 export type TestIamPermissionsProjectsLocationsEkmConnectionsResponse =
   TestIamPermissionsResponse;
@@ -3148,7 +3148,7 @@ export const GetProjectsLocationsEkmConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEkmConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEkmConnectionsRequest>;
 
 export type GetProjectsLocationsEkmConnectionsResponse = EkmConnection;
 export const GetProjectsLocationsEkmConnectionsResponse =
@@ -3194,7 +3194,7 @@ export const ListProjectsLocationsKeyRingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/keyRings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsKeyRingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsKeyRingsRequest>;
 
 export type ListProjectsLocationsKeyRingsResponse = ListKeyRingsResponse;
 export const ListProjectsLocationsKeyRingsResponse =
@@ -3239,7 +3239,7 @@ export const SetIamPolicyProjectsLocationsKeyRingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsKeyRingsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsKeyRingsRequest>;
 
 export type SetIamPolicyProjectsLocationsKeyRingsResponse = Policy;
 export const SetIamPolicyProjectsLocationsKeyRingsResponse =
@@ -3282,7 +3282,7 @@ export const TestIamPermissionsProjectsLocationsKeyRingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsKeyRingsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsKeyRingsRequest>;
 
 export type TestIamPermissionsProjectsLocationsKeyRingsResponse =
   TestIamPermissionsResponse;
@@ -3319,7 +3319,7 @@ export const GetProjectsLocationsKeyRingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsKeyRingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsKeyRingsRequest>;
 
 export type GetProjectsLocationsKeyRingsResponse = KeyRing;
 export const GetProjectsLocationsKeyRingsResponse =
@@ -3358,7 +3358,7 @@ export const GetIamPolicyProjectsLocationsKeyRingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsKeyRingsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsKeyRingsRequest>;
 
 export type GetIamPolicyProjectsLocationsKeyRingsResponse = Policy;
 export const GetIamPolicyProjectsLocationsKeyRingsResponse =
@@ -3398,7 +3398,7 @@ export const CreateProjectsLocationsKeyRingsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/keyRings", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsKeyRingsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsKeyRingsRequest>;
 
 export type CreateProjectsLocationsKeyRingsResponse = KeyRing;
 export const CreateProjectsLocationsKeyRingsResponse =
@@ -3446,7 +3446,7 @@ export const ListProjectsLocationsKeyRingsImportJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/importJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsKeyRingsImportJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsKeyRingsImportJobsRequest>;
 
 export type ListProjectsLocationsKeyRingsImportJobsResponse =
   ListImportJobsResponse;
@@ -3492,7 +3492,7 @@ export const SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest>;
 
 export type SetIamPolicyProjectsLocationsKeyRingsImportJobsResponse = Policy;
 export const SetIamPolicyProjectsLocationsKeyRingsImportJobsResponse =
@@ -3535,7 +3535,7 @@ export const TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest>;
 
 export type TestIamPermissionsProjectsLocationsKeyRingsImportJobsResponse =
   TestIamPermissionsResponse;
@@ -3583,7 +3583,7 @@ export const GetProjectsLocationsKeyRingsImportJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsKeyRingsImportJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsKeyRingsImportJobsRequest>;
 
 export type GetProjectsLocationsKeyRingsImportJobsResponse = ImportJob;
 export const GetProjectsLocationsKeyRingsImportJobsResponse =
@@ -3622,7 +3622,7 @@ export const GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest>;
 
 export type GetIamPolicyProjectsLocationsKeyRingsImportJobsResponse = Policy;
 export const GetIamPolicyProjectsLocationsKeyRingsImportJobsResponse =
@@ -3664,7 +3664,7 @@ export const CreateProjectsLocationsKeyRingsImportJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/importJobs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsKeyRingsImportJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsKeyRingsImportJobsRequest>;
 
 export type CreateProjectsLocationsKeyRingsImportJobsResponse = ImportJob;
 export const CreateProjectsLocationsKeyRingsImportJobsResponse =
@@ -3717,7 +3717,7 @@ export const ListProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/cryptoKeys" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type ListProjectsLocationsKeyRingsCryptoKeysResponse =
   ListCryptoKeysResponse;
@@ -3763,7 +3763,7 @@ export const TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysResponse =
   TestIamPermissionsResponse;
@@ -3813,7 +3813,7 @@ export const CreateProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/cryptoKeys", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type CreateProjectsLocationsKeyRingsCryptoKeysResponse = CryptoKey;
 export const CreateProjectsLocationsKeyRingsCryptoKeysResponse =
@@ -3852,7 +3852,7 @@ export const DecryptProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:decrypt", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DecryptProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<DecryptProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type DecryptProjectsLocationsKeyRingsCryptoKeysResponse =
   DecryptResponse;
@@ -3889,7 +3889,7 @@ export const GetProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type GetProjectsLocationsKeyRingsCryptoKeysResponse = CryptoKey;
 export const GetProjectsLocationsKeyRingsCryptoKeysResponse =
@@ -3923,7 +3923,7 @@ export const DeleteProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type DeleteProjectsLocationsKeyRingsCryptoKeysResponse = Operation;
 export const DeleteProjectsLocationsKeyRingsCryptoKeysResponse =
@@ -3968,7 +3968,7 @@ export const UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysResponse =
   CryptoKey;
@@ -4012,7 +4012,7 @@ export const SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type SetIamPolicyProjectsLocationsKeyRingsCryptoKeysResponse = Policy;
 export const SetIamPolicyProjectsLocationsKeyRingsCryptoKeysResponse =
@@ -4051,7 +4051,7 @@ export const EncryptProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:encrypt", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EncryptProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<EncryptProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type EncryptProjectsLocationsKeyRingsCryptoKeysResponse =
   EncryptResponse;
@@ -4093,7 +4093,7 @@ export const GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type GetIamPolicyProjectsLocationsKeyRingsCryptoKeysResponse = Policy;
 export const GetIamPolicyProjectsLocationsKeyRingsCryptoKeysResponse =
@@ -4133,7 +4133,7 @@ export const PatchProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsKeyRingsCryptoKeysRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type PatchProjectsLocationsKeyRingsCryptoKeysResponse = CryptoKey;
 export const PatchProjectsLocationsKeyRingsCryptoKeysResponse =
@@ -4172,7 +4172,7 @@ export const DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequ
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:decapsulate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   DecapsulateResponse;
@@ -4180,7 +4180,11 @@ export const DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResp
   /*@__PURE__*/ /*#__PURE__*/ DecapsulateResponse;
 
 export type DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decapsulates data that was encapsulated with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose KEY_ENCAPSULATION. */
 export const decapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4206,7 +4210,7 @@ export const DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   Operation;
@@ -4246,7 +4250,7 @@ export const MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:macSign", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   MacSignResponse;
@@ -4298,7 +4302,7 @@ export const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/cryptoKeyVersions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   ListCryptoKeyVersionsResponse;
@@ -4340,7 +4344,7 @@ export const RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:restore", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   CryptoKeyVersion;
@@ -4388,7 +4392,7 @@ export const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReq
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/publicKey" }),
     svc,
-  ) as unknown as Schema.Schema<GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   PublicKey;
@@ -4396,7 +4400,9 @@ export const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRes
   /*@__PURE__*/ /*#__PURE__*/ PublicKey;
 
 export type GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the public key for the given CryptoKeyVersion. The CryptoKey.purpose must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT. */
 export const getPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4426,7 +4432,7 @@ export const DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:destroy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   CryptoKeyVersion;
@@ -4463,7 +4469,7 @@ export const GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   CryptoKeyVersion;
@@ -4501,7 +4507,7 @@ export const MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReques
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:macVerify", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   MacVerifyResponse;
@@ -4509,7 +4515,11 @@ export const MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespon
   /*@__PURE__*/ /*#__PURE__*/ MacVerifyResponse;
 
 export type MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and returns a response that indicates whether or not the verification was successful. */
 export const macVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4541,7 +4551,7 @@ export const AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersio
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   AsymmetricDecryptResponse;
@@ -4549,7 +4559,11 @@ export const AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersio
   /*@__PURE__*/ /*#__PURE__*/ AsymmetricDecryptResponse;
 
 export type AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decrypts data that was encrypted with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_DECRYPT. */
 export const asymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4582,7 +4596,7 @@ export const PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   CryptoKeyVersion;
@@ -4626,7 +4640,7 @@ export const CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   CryptoKeyVersion;
@@ -4670,7 +4684,7 @@ export const ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   CryptoKeyVersion;
@@ -4710,7 +4724,7 @@ export const RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReque
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:rawDecrypt", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   RawDecryptResponse;
@@ -4718,7 +4732,11 @@ export const RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespo
   /*@__PURE__*/ /*#__PURE__*/ RawDecryptResponse;
 
 export type RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decrypts data that was originally encrypted using a raw cryptographic mechanism. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
 export const rawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4747,7 +4765,7 @@ export const RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReque
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:rawEncrypt", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   RawEncryptResponse;
@@ -4755,7 +4773,11 @@ export const RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespo
   /*@__PURE__*/ /*#__PURE__*/ RawEncryptResponse;
 
 export type RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Encrypts data using portable cryptographic primitives. Most users should choose Encrypt and Decrypt rather than their raw counterparts. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
 export const rawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4788,7 +4810,7 @@ export const AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsR
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+  ) as unknown as Schema.Codec<AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   AsymmetricSignResponse;
@@ -4796,7 +4818,11 @@ export const AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsR
   /*@__PURE__*/ /*#__PURE__*/ AsymmetricSignResponse;
 
 export type AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN, producing a signature that can be verified with the public key retrieved from GetPublicKey. */
 export const asymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4835,7 +4861,7 @@ export const CreateProjectsLocationsSingleTenantHsmInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSingleTenantHsmInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSingleTenantHsmInstancesRequest>;
 
 export type CreateProjectsLocationsSingleTenantHsmInstancesResponse = Operation;
 export const CreateProjectsLocationsSingleTenantHsmInstancesResponse =
@@ -4871,7 +4897,7 @@ export const GetProjectsLocationsSingleTenantHsmInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSingleTenantHsmInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSingleTenantHsmInstancesRequest>;
 
 export type GetProjectsLocationsSingleTenantHsmInstancesResponse =
   SingleTenantHsmInstance;
@@ -4923,7 +4949,7 @@ export const ListProjectsLocationsSingleTenantHsmInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/singleTenantHsmInstances" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSingleTenantHsmInstancesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSingleTenantHsmInstancesRequest>;
 
 export type ListProjectsLocationsSingleTenantHsmInstancesResponse =
   ListSingleTenantHsmInstancesResponse;
@@ -4970,7 +4996,7 @@ export const CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/proposals", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export type CreateProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   Operation;
@@ -5024,7 +5050,7 @@ export const ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/proposals" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export type ListProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   ListSingleTenantHsmInstanceProposalsResponse;
@@ -5063,7 +5089,7 @@ export const GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export type GetProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   SingleTenantHsmInstanceProposal;
@@ -5098,7 +5124,7 @@ export const DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export type DeleteProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   Empty;
@@ -5140,7 +5166,7 @@ export const ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+  ) as unknown as Schema.Codec<ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export type ApproveProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   ApproveSingleTenantHsmInstanceProposalResponse;
@@ -5182,7 +5208,7 @@ export const ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:execute", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+  ) as unknown as Schema.Codec<ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export type ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   Operation;
@@ -5226,7 +5252,7 @@ export const SetIamPolicyProjectsLocationsEkmConfigRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsEkmConfigRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsEkmConfigRequest>;
 
 export type SetIamPolicyProjectsLocationsEkmConfigResponse = Policy;
 export const SetIamPolicyProjectsLocationsEkmConfigResponse =
@@ -5269,7 +5295,7 @@ export const TestIamPermissionsProjectsLocationsEkmConfigRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsEkmConfigRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsEkmConfigRequest>;
 
 export type TestIamPermissionsProjectsLocationsEkmConfigResponse =
   TestIamPermissionsResponse;
@@ -5311,7 +5337,7 @@ export const GetIamPolicyProjectsLocationsEkmConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEkmConfigRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsEkmConfigRequest>;
 
 export type GetIamPolicyProjectsLocationsEkmConfigResponse = Policy;
 export const GetIamPolicyProjectsLocationsEkmConfigResponse =
@@ -5353,7 +5379,7 @@ export const CreateProjectsLocationsKeyHandlesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/keyHandles", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsKeyHandlesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsKeyHandlesRequest>;
 
 export type CreateProjectsLocationsKeyHandlesResponse = Operation;
 export const CreateProjectsLocationsKeyHandlesResponse =
@@ -5398,7 +5424,7 @@ export const ListProjectsLocationsKeyHandlesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/keyHandles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsKeyHandlesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsKeyHandlesRequest>;
 
 export type ListProjectsLocationsKeyHandlesResponse = ListKeyHandlesResponse;
 export const ListProjectsLocationsKeyHandlesResponse =
@@ -5436,7 +5462,7 @@ export const GetProjectsLocationsKeyHandlesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsKeyHandlesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsKeyHandlesRequest>;
 
 export type GetProjectsLocationsKeyHandlesResponse = KeyHandle;
 export const GetProjectsLocationsKeyHandlesResponse =
@@ -5470,7 +5496,7 @@ export const GetKajPolicyConfigOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetKajPolicyConfigOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetKajPolicyConfigOrganizationsRequest>;
 
 export type GetKajPolicyConfigOrganizationsResponse =
   KeyAccessJustificationsPolicyConfig;
@@ -5513,7 +5539,7 @@ export const UpdateKajPolicyConfigOrganizationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateKajPolicyConfigOrganizationsRequest>;
+  ) as unknown as Schema.Codec<UpdateKajPolicyConfigOrganizationsRequest>;
 
 export type UpdateKajPolicyConfigOrganizationsResponse =
   KeyAccessJustificationsPolicyConfig;

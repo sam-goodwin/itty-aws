@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteDocumentInput {
+  collectionName: string;
+  documentId: string;
+}
 export const DeleteDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   documentId: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,12 @@ export const DeleteDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/collections/{collectionName}/documents/{documentId}",
   }),
-);
-export type DeleteDocumentInput = typeof DeleteDocumentInput.Type;
+) as unknown as Schema.Codec<DeleteDocumentInput>;
 
 // Output Schema
-export const DeleteDocumentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type DeleteDocumentOutput = typeof DeleteDocumentOutput.Type;
+export type DeleteDocumentOutput = unknown;
+export const DeleteDocumentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DeleteDocumentOutput>;
 
 // The operation
 /**

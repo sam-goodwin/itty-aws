@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgUserInput {
+  orgId: string;
+  userId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  orgMembershipStatuses?: string;
+}
 export const GetOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -12,12 +19,12 @@ export const GetOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgMembershipStatuses: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/users/{userId}" }),
-);
-export type GetOrgUserInput = typeof GetOrgUserInput.Type;
+) as unknown as Schema.Codec<GetOrgUserInput>;
 
 // Output Schema
-export const GetOrgUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgUserOutput = typeof GetOrgUserOutput.Type;
+export type GetOrgUserOutput = void;
+export const GetOrgUserOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgUserOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeGapSuggestionsDismissCreateInput {
+  id: string;
+  project_id: string;
+}
 export const BusinessKnowledgeGapSuggestionsDismissCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,20 @@ export const BusinessKnowledgeGapSuggestionsDismissCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/business_knowledge/gap_suggestions/{id}/dismiss/",
     }),
-  );
-export type BusinessKnowledgeGapSuggestionsDismissCreateInput =
-  typeof BusinessKnowledgeGapSuggestionsDismissCreateInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeGapSuggestionsDismissCreateInput>;
 
 // Output Schema
+export interface BusinessKnowledgeGapSuggestionsDismissCreateOutput {
+  id: string;
+  ticket_id: string;
+  topic: string;
+  normalized_topic: string;
+  ticket_type: string;
+  outcome: string;
+  status: string;
+  resolved_source_id: string | null;
+  created_at: string;
+}
 export const BusinessKnowledgeGapSuggestionsDismissCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -28,9 +41,7 @@ export const BusinessKnowledgeGapSuggestionsDismissCreateOutput =
     status: Schema.String,
     resolved_source_id: Schema.NullOr(Schema.String),
     created_at: Schema.String,
-  });
-export type BusinessKnowledgeGapSuggestionsDismissCreateOutput =
-  typeof BusinessKnowledgeGapSuggestionsDismissCreateOutput.Type;
+  }) as unknown as Schema.Codec<BusinessKnowledgeGapSuggestionsDismissCreateOutput>;
 
 // The operation
 /**

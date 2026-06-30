@@ -3,6 +3,33 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeSourcesRefreshCreateInput {
+  id: string;
+  project_id: string;
+  team_id: number;
+  name: string;
+  source_type: "text" | "url" | "file";
+  status: "pending" | "processing" | "ready" | "error";
+  error_message: string;
+  document_count: number;
+  chunk_count: number;
+  created_at: string;
+  updated_at: string | null;
+  source_url: string;
+  last_refresh_at: string | null;
+  last_refresh_status: "success" | "not_modified" | "error";
+  last_refresh_error: string;
+  refresh_interval: "manual" | "1h" | "6h" | "24h" | "7d";
+  next_refresh_at: string | null;
+  has_unsafe_documents: boolean;
+  embedding_status: "pending" | "completed" | "disabled";
+  crawl_mode: "single" | "sitemap" | "same_origin" | "github_repo";
+  crawl_config: unknown;
+  original_filename: string;
+  file_content_type: string;
+  file_size_bytes: number | null;
+  always_include: boolean;
+}
 export const BusinessKnowledgeSourcesRefreshCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -40,11 +67,35 @@ export const BusinessKnowledgeSourcesRefreshCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/business_knowledge/sources/{id}/refresh/",
     }),
-  );
-export type BusinessKnowledgeSourcesRefreshCreateInput =
-  typeof BusinessKnowledgeSourcesRefreshCreateInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeSourcesRefreshCreateInput>;
 
 // Output Schema
+export interface BusinessKnowledgeSourcesRefreshCreateOutput {
+  id: string;
+  team_id: number;
+  name: string;
+  source_type: "text" | "url" | "file";
+  status: "pending" | "processing" | "ready" | "error";
+  error_message: string;
+  document_count: number;
+  chunk_count: number;
+  created_at: string;
+  updated_at: string | null;
+  source_url: string;
+  last_refresh_at: string | null;
+  last_refresh_status: "success" | "not_modified" | "error";
+  last_refresh_error: string;
+  refresh_interval: "manual" | "1h" | "6h" | "24h" | "7d";
+  next_refresh_at: string | null;
+  has_unsafe_documents: boolean;
+  embedding_status: "pending" | "completed" | "disabled";
+  crawl_mode: "single" | "sitemap" | "same_origin" | "github_repo";
+  crawl_config: unknown;
+  original_filename: string;
+  file_content_type: string;
+  file_size_bytes: number | null;
+  always_include: boolean;
+}
 export const BusinessKnowledgeSourcesRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -76,9 +127,7 @@ export const BusinessKnowledgeSourcesRefreshCreateOutput =
     file_content_type: Schema.String,
     file_size_bytes: Schema.NullOr(Schema.Number),
     always_include: Schema.Boolean,
-  });
-export type BusinessKnowledgeSourcesRefreshCreateOutput =
-  typeof BusinessKnowledgeSourcesRefreshCreateOutput.Type;
+  }) as unknown as Schema.Codec<BusinessKnowledgeSourcesRefreshCreateOutput>;
 
 // The operation
 /**

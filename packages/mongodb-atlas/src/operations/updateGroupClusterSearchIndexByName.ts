@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupClusterSearchIndexByNameInput {
+  groupId: string;
+  clusterName: string;
+  collectionName: string;
+  databaseName: string;
+  indexName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupClusterSearchIndexByNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const UpdateGroupClusterSearchIndexByNameInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}",
     }),
-  );
-export type UpdateGroupClusterSearchIndexByNameInput =
-  typeof UpdateGroupClusterSearchIndexByNameInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupClusterSearchIndexByNameInput>;
 
 // Output Schema
+export type UpdateGroupClusterSearchIndexByNameOutput = void;
 export const UpdateGroupClusterSearchIndexByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterSearchIndexByNameOutput =
-  typeof UpdateGroupClusterSearchIndexByNameOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterSearchIndexByNameOutput>;
 
 // The operation
 /**

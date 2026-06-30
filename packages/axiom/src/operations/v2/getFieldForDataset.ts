@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetFieldForDatasetInput {
+  dataset_id: string;
+  field_id: string;
+}
 export const GetFieldForDatasetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,16 @@ export const GetFieldForDatasetInput =
       method: "GET",
       path: "/v2/datasets/{dataset_id}/fields/{field_id}",
     }),
-  );
-export type GetFieldForDatasetInput = typeof GetFieldForDatasetInput.Type;
+  ) as unknown as Schema.Codec<GetFieldForDatasetInput>;
 
 // Output Schema
+export interface GetFieldForDatasetOutput {
+  description?: string;
+  hidden?: boolean;
+  name: string;
+  type: string;
+  unit?: string;
+}
 export const GetFieldForDatasetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
@@ -24,8 +34,7 @@ export const GetFieldForDatasetOutput =
     name: Schema.String,
     type: Schema.String,
     unit: Schema.optional(Schema.String),
-  });
-export type GetFieldForDatasetOutput = typeof GetFieldForDatasetOutput.Type;
+  }) as unknown as Schema.Codec<GetFieldForDatasetOutput>;
 
 // The operation
 export const getFieldForDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

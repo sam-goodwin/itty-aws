@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsScoutRunsRecentEmissionsInput {
+  project_id: string;
+  date_from?: string;
+  date_to?: string;
+  limit?: number;
+  skill_name?: string;
+}
 export const SignalsScoutRunsRecentEmissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,21 @@ export const SignalsScoutRunsRecentEmissionsInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/scout/runs/emissions/recent/",
     }),
-  );
-export type SignalsScoutRunsRecentEmissionsInput =
-  typeof SignalsScoutRunsRecentEmissionsInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutRunsRecentEmissionsInput>;
 
 // Output Schema
+export type SignalsScoutRunsRecentEmissionsOutput = {
+  id: string;
+  run_id: string;
+  finding_id: string;
+  description: string;
+  weight: number;
+  confidence: number;
+  severity: "P0" | "P1" | "P2" | "P3" | "P4" | null;
+  tags: string[];
+  source_id: string;
+  emitted_at: string;
+}[];
 export const SignalsScoutRunsRecentEmissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -29,14 +46,12 @@ export const SignalsScoutRunsRecentEmissionsOutput =
       description: Schema.String,
       weight: Schema.Number,
       confidence: Schema.Number,
-      severity: Schema.Unknown,
+      severity: Schema.NullOr(Schema.Literals(["P0", "P1", "P2", "P3", "P4"])),
       tags: Schema.Array(Schema.String),
       source_id: Schema.String,
       emitted_at: Schema.String,
     }),
-  );
-export type SignalsScoutRunsRecentEmissionsOutput =
-  typeof SignalsScoutRunsRecentEmissionsOutput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutRunsRecentEmissionsOutput>;
 
 // The operation
 /**

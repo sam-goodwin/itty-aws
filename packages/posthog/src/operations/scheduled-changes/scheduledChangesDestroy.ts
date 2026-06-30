@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ScheduledChangesDestroyInput {
+  id: number;
+  project_id: string;
+}
 export const ScheduledChangesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const ScheduledChangesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/scheduled_changes/{id}/",
     }),
-  );
-export type ScheduledChangesDestroyInput =
-  typeof ScheduledChangesDestroyInput.Type;
+  ) as unknown as Schema.Codec<ScheduledChangesDestroyInput>;
 
 // Output Schema
+export type ScheduledChangesDestroyOutput = void;
 export const ScheduledChangesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScheduledChangesDestroyOutput =
-  typeof ScheduledChangesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScheduledChangesDestroyOutput>;
 
 // The operation
 /**

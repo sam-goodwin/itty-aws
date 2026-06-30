@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -26,7 +26,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributesContact
   email?: string;
 }
 
-export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo: Schema.Schema<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo> =
+export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
@@ -44,7 +44,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributesCritica
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality: Schema.Schema<GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality> =
+export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -61,7 +61,7 @@ export interface GroupMembership {
     | (string & {});
 }
 
-export const GroupMembership: Schema.Schema<GroupMembership> =
+export const GroupMembership: Schema.Codec<GroupMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.optional(Schema.String),
     groupType: Schema.optional(Schema.String),
@@ -77,7 +77,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCr
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality> =
+export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -95,7 +95,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEn
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment> =
+export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -107,7 +107,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCo
   email?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo> =
+export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
@@ -123,7 +123,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes {
   operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes> =
+export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     criticality: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality,
@@ -156,7 +156,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -173,7 +173,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -188,7 +188,7 @@ export interface ListOperationsResponse {
   operations?: ReadonlyArray<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -200,7 +200,7 @@ export interface Label {
   name?: string;
 }
 
-export const Label: Schema.Schema<Label> =
+export const Label: Schema.Codec<Label> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -214,7 +214,7 @@ export interface Container {
   name?: string;
 }
 
-export const Container: Schema.Schema<Container> =
+export const Container: Schema.Codec<Container> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Label)),
     createTime: Schema.optional(Schema.String),
@@ -231,7 +231,7 @@ export interface Securitycenter_Object {
   name?: string;
 }
 
-export const Securitycenter_Object: Schema.Schema<Securitycenter_Object> =
+export const Securitycenter_Object: Schema.Codec<Securitycenter_Object> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     group: Schema.optional(Schema.String),
@@ -242,7 +242,7 @@ export const Securitycenter_Object: Schema.Schema<Securitycenter_Object> =
 
 export interface GoogleCloudSecuritycenterV2BulkMuteFindingsResponse {}
 
-export const GoogleCloudSecuritycenterV2BulkMuteFindingsResponse: Schema.Schema<GoogleCloudSecuritycenterV2BulkMuteFindingsResponse> =
+export const GoogleCloudSecuritycenterV2BulkMuteFindingsResponse: Schema.Codec<GoogleCloudSecuritycenterV2BulkMuteFindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudSecuritycenterV2BulkMuteFindingsResponse",
   });
@@ -252,7 +252,7 @@ export interface GoogleCloudSecuritycenterV2DiskPath {
   partitionUuid?: string;
 }
 
-export const GoogleCloudSecuritycenterV2DiskPath: Schema.Schema<GoogleCloudSecuritycenterV2DiskPath> =
+export const GoogleCloudSecuritycenterV2DiskPath: Schema.Codec<GoogleCloudSecuritycenterV2DiskPath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relativePath: Schema.optional(Schema.String),
     partitionUuid: Schema.optional(Schema.String),
@@ -269,7 +269,7 @@ export interface GoogleCloudSecuritycenterV2FileOperation {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2FileOperation: Schema.Schema<GoogleCloudSecuritycenterV2FileOperation> =
+export const GoogleCloudSecuritycenterV2FileOperation: Schema.Codec<GoogleCloudSecuritycenterV2FileOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2FileOperation" });
@@ -290,7 +290,7 @@ export interface GoogleCloudSecuritycenterV2File {
   operations?: ReadonlyArray<GoogleCloudSecuritycenterV2FileOperation>;
 }
 
-export const GoogleCloudSecuritycenterV2File: Schema.Schema<GoogleCloudSecuritycenterV2File> =
+export const GoogleCloudSecuritycenterV2File: Schema.Codec<GoogleCloudSecuritycenterV2File> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha256: Schema.optional(Schema.String),
     hashedSize: Schema.optional(Schema.String),
@@ -310,7 +310,7 @@ export interface GoogleCloudSecuritycenterV2Label {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Label: Schema.Schema<GoogleCloudSecuritycenterV2Label> =
+export const GoogleCloudSecuritycenterV2Label: Schema.Codec<GoogleCloudSecuritycenterV2Label> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -320,7 +320,7 @@ export interface GoogleCloudSecuritycenterV2Node {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Node: Schema.Schema<GoogleCloudSecuritycenterV2Node> =
+export const GoogleCloudSecuritycenterV2Node: Schema.Codec<GoogleCloudSecuritycenterV2Node> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Node" });
@@ -337,7 +337,7 @@ export interface GoogleCloudSecuritycenterV2DataAccessEvent {
   eventTime?: string;
 }
 
-export const GoogleCloudSecuritycenterV2DataAccessEvent: Schema.Schema<GoogleCloudSecuritycenterV2DataAccessEvent> =
+export const GoogleCloudSecuritycenterV2DataAccessEvent: Schema.Codec<GoogleCloudSecuritycenterV2DataAccessEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
@@ -351,7 +351,7 @@ export interface Dataset {
   displayName?: string;
 }
 
-export const Dataset: Schema.Schema<Dataset> =
+export const Dataset: Schema.Codec<Dataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -362,7 +362,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributesContact
   email?: string;
 }
 
-export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo: Schema.Schema<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo> =
+export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({
@@ -379,7 +379,7 @@ export interface TicketInfo {
   id?: string;
 }
 
-export const TicketInfo: Schema.Schema<TicketInfo> =
+export const TicketInfo: Schema.Codec<TicketInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignee: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -403,7 +403,7 @@ export interface GoogleCloudSecuritycenterV1ExternalSystem {
   casePriority?: string;
 }
 
-export const GoogleCloudSecuritycenterV1ExternalSystem: Schema.Schema<GoogleCloudSecuritycenterV1ExternalSystem> =
+export const GoogleCloudSecuritycenterV1ExternalSystem: Schema.Codec<GoogleCloudSecuritycenterV1ExternalSystem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignees: Schema.optional(Schema.Array(Schema.String)),
     ticketInfo: Schema.optional(TicketInfo),
@@ -423,7 +423,7 @@ export interface PortRange {
   max?: string;
 }
 
-export const PortRange: Schema.Schema<PortRange> =
+export const PortRange: Schema.Codec<PortRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.String),
     max: Schema.optional(Schema.String),
@@ -434,7 +434,7 @@ export interface IpRule {
   portRanges?: ReadonlyArray<PortRange>;
 }
 
-export const IpRule: Schema.Schema<IpRule> =
+export const IpRule: Schema.Codec<IpRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     portRanges: Schema.optional(Schema.Array(PortRange)),
@@ -444,7 +444,7 @@ export interface Allowed {
   ipRules?: ReadonlyArray<IpRule>;
 }
 
-export const Allowed: Schema.Schema<Allowed> =
+export const Allowed: Schema.Codec<Allowed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipRules: Schema.optional(Schema.Array(IpRule)),
   }).annotate({ identifier: "Allowed" });
@@ -453,7 +453,7 @@ export interface GoogleCloudSecuritycenterV2Contact {
   email?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Contact: Schema.Schema<GoogleCloudSecuritycenterV2Contact> =
+export const GoogleCloudSecuritycenterV2Contact: Schema.Codec<GoogleCloudSecuritycenterV2Contact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Contact" });
@@ -463,7 +463,7 @@ export interface GoogleCloudSecuritycenterV2HttpResponse {
   path?: string;
 }
 
-export const GoogleCloudSecuritycenterV2HttpResponse: Schema.Schema<GoogleCloudSecuritycenterV2HttpResponse> =
+export const GoogleCloudSecuritycenterV2HttpResponse: Schema.Codec<GoogleCloudSecuritycenterV2HttpResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -473,7 +473,7 @@ export interface BigQueryDestination {
   dataset?: string;
 }
 
-export const BigQueryDestination: Schema.Schema<BigQueryDestination> =
+export const BigQueryDestination: Schema.Codec<BigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
   }).annotate({ identifier: "BigQueryDestination" });
@@ -482,7 +482,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -504,7 +504,7 @@ export interface GoogleCloudSecuritycenterV2AiModel {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2AiModel: Schema.Schema<GoogleCloudSecuritycenterV2AiModel> =
+export const GoogleCloudSecuritycenterV2AiModel: Schema.Codec<GoogleCloudSecuritycenterV2AiModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     usageCategory: Schema.optional(Schema.String),
@@ -521,7 +521,7 @@ export interface Reference {
   source?: string;
 }
 
-export const Reference: Schema.Schema<Reference> =
+export const Reference: Schema.Codec<Reference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
@@ -532,11 +532,12 @@ export interface Cwe {
   references?: ReadonlyArray<Reference>;
 }
 
-export const Cwe: Schema.Schema<Cwe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Cwe: Schema.Codec<Cwe> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     id: Schema.optional(Schema.String),
     references: Schema.optional(Schema.Array(Reference)),
-  }).annotate({ identifier: "Cwe" });
+  },
+).annotate({ identifier: "Cwe" });
 
 export interface Package {
   packageName?: string;
@@ -545,7 +546,7 @@ export interface Package {
   packageType?: string;
 }
 
-export const Package: Schema.Schema<Package> =
+export const Package: Schema.Codec<Package> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     packageVersion: Schema.optional(Schema.String),
@@ -603,7 +604,7 @@ export interface Cvssv3 {
     | (string & {});
 }
 
-export const Cvssv3: Schema.Schema<Cvssv3> =
+export const Cvssv3: Schema.Codec<Cvssv3> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attackVector: Schema.optional(Schema.String),
     attackComplexity: Schema.optional(Schema.String),
@@ -642,8 +643,8 @@ export interface Cve {
   cvssv3?: Cvssv3;
 }
 
-export const Cve: Schema.Schema<Cve> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Cve: Schema.Codec<Cve> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     firstExploitationDate: Schema.optional(Schema.String),
     exploitationActivity: Schema.optional(Schema.String),
     zeroDay: Schema.optional(Schema.Boolean),
@@ -654,7 +655,8 @@ export const Cve: Schema.Schema<Cve> =
     references: Schema.optional(Schema.Array(Reference)),
     id: Schema.optional(Schema.String),
     cvssv3: Schema.optional(Cvssv3),
-  }).annotate({ identifier: "Cve" });
+  },
+).annotate({ identifier: "Cve" });
 
 export interface SecurityBulletin {
   bulletinId?: string;
@@ -662,7 +664,7 @@ export interface SecurityBulletin {
   suggestedUpgradeVersion?: string;
 }
 
-export const SecurityBulletin: Schema.Schema<SecurityBulletin> =
+export const SecurityBulletin: Schema.Codec<SecurityBulletin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bulletinId: Schema.optional(Schema.String),
     submissionTime: Schema.optional(Schema.String),
@@ -679,7 +681,7 @@ export interface Vulnerability {
   offendingPackage?: Package;
 }
 
-export const Vulnerability: Schema.Schema<Vulnerability> =
+export const Vulnerability: Schema.Codec<Vulnerability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cwes: Schema.optional(Schema.Array(Cwe)),
     fixedPackage: Schema.optional(Package),
@@ -694,7 +696,7 @@ export interface GoogleCloudSecuritycenterV2AdcSharedTemplateRevision {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AdcSharedTemplateRevision: Schema.Schema<GoogleCloudSecuritycenterV2AdcSharedTemplateRevision> =
+export const GoogleCloudSecuritycenterV2AdcSharedTemplateRevision: Schema.Codec<GoogleCloudSecuritycenterV2AdcSharedTemplateRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -706,7 +708,7 @@ export interface GoogleCloudSecuritycenterV2IamRolePermission {
   role?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IamRolePermission: Schema.Schema<GoogleCloudSecuritycenterV2IamRolePermission> =
+export const GoogleCloudSecuritycenterV2IamRolePermission: Schema.Codec<GoogleCloudSecuritycenterV2IamRolePermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -725,7 +727,7 @@ export interface GoogleCloudSecuritycenterV2Job {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2Job: Schema.Schema<GoogleCloudSecuritycenterV2Job> =
+export const GoogleCloudSecuritycenterV2Job: Schema.Codec<GoogleCloudSecuritycenterV2Job> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -741,7 +743,7 @@ export interface GoogleCloudSecuritycenterV2Container {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Container: Schema.Schema<GoogleCloudSecuritycenterV2Container> =
+export const GoogleCloudSecuritycenterV2Container: Schema.Codec<GoogleCloudSecuritycenterV2Container> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Label)),
     createTime: Schema.optional(Schema.String),
@@ -755,7 +757,7 @@ export interface GoogleCloudSecuritycenterV2Detection {
   binary?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Detection: Schema.Schema<GoogleCloudSecuritycenterV2Detection> =
+export const GoogleCloudSecuritycenterV2Detection: Schema.Codec<GoogleCloudSecuritycenterV2Detection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentPagesMatched: Schema.optional(Schema.Number),
     binary: Schema.optional(Schema.String),
@@ -766,7 +768,7 @@ export interface GoogleCloudSecuritycenterV2MemoryHashSignature {
   binaryFamily?: string;
 }
 
-export const GoogleCloudSecuritycenterV2MemoryHashSignature: Schema.Schema<GoogleCloudSecuritycenterV2MemoryHashSignature> =
+export const GoogleCloudSecuritycenterV2MemoryHashSignature: Schema.Codec<GoogleCloudSecuritycenterV2MemoryHashSignature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detections: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2Detection),
@@ -778,7 +780,7 @@ export interface GoogleCloudSecuritycenterV2YaraRuleSignature {
   yaraRule?: string;
 }
 
-export const GoogleCloudSecuritycenterV2YaraRuleSignature: Schema.Schema<GoogleCloudSecuritycenterV2YaraRuleSignature> =
+export const GoogleCloudSecuritycenterV2YaraRuleSignature: Schema.Codec<GoogleCloudSecuritycenterV2YaraRuleSignature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yaraRule: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2YaraRuleSignature" });
@@ -793,7 +795,7 @@ export interface GoogleCloudSecuritycenterV2ProcessSignature {
   yaraRuleSignature?: GoogleCloudSecuritycenterV2YaraRuleSignature;
 }
 
-export const GoogleCloudSecuritycenterV2ProcessSignature: Schema.Schema<GoogleCloudSecuritycenterV2ProcessSignature> =
+export const GoogleCloudSecuritycenterV2ProcessSignature: Schema.Codec<GoogleCloudSecuritycenterV2ProcessSignature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signatureType: Schema.optional(Schema.String),
     memoryHashSignature: Schema.optional(
@@ -811,7 +813,7 @@ export interface GoogleCloudSecuritycenterV2Indicator {
   domains?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSecuritycenterV2Indicator: Schema.Schema<GoogleCloudSecuritycenterV2Indicator> =
+export const GoogleCloudSecuritycenterV2Indicator: Schema.Codec<GoogleCloudSecuritycenterV2Indicator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signatures: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2ProcessSignature),
@@ -831,7 +833,7 @@ export interface GoogleCloudSecuritycenterV2StaticMute {
   applyTime?: string;
 }
 
-export const GoogleCloudSecuritycenterV2StaticMute: Schema.Schema<GoogleCloudSecuritycenterV2StaticMute> =
+export const GoogleCloudSecuritycenterV2StaticMute: Schema.Codec<GoogleCloudSecuritycenterV2StaticMute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     applyTime: Schema.optional(Schema.String),
@@ -842,7 +844,7 @@ export interface GoogleCloudSecuritycenterV2DynamicMuteRecord {
   matchTime?: string;
 }
 
-export const GoogleCloudSecuritycenterV2DynamicMuteRecord: Schema.Schema<GoogleCloudSecuritycenterV2DynamicMuteRecord> =
+export const GoogleCloudSecuritycenterV2DynamicMuteRecord: Schema.Codec<GoogleCloudSecuritycenterV2DynamicMuteRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     muteConfig: Schema.optional(Schema.String),
     matchTime: Schema.optional(Schema.String),
@@ -853,7 +855,7 @@ export interface GoogleCloudSecuritycenterV2MuteInfo {
   dynamicMuteRecords?: ReadonlyArray<GoogleCloudSecuritycenterV2DynamicMuteRecord>;
 }
 
-export const GoogleCloudSecuritycenterV2MuteInfo: Schema.Schema<GoogleCloudSecuritycenterV2MuteInfo> =
+export const GoogleCloudSecuritycenterV2MuteInfo: Schema.Codec<GoogleCloudSecuritycenterV2MuteInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     staticMute: Schema.optional(GoogleCloudSecuritycenterV2StaticMute),
     dynamicMuteRecords: Schema.optional(
@@ -865,7 +867,7 @@ export interface GoogleCloudSecuritycenterV2ContactDetails {
   contacts?: ReadonlyArray<GoogleCloudSecuritycenterV2Contact>;
 }
 
-export const GoogleCloudSecuritycenterV2ContactDetails: Schema.Schema<GoogleCloudSecuritycenterV2ContactDetails> =
+export const GoogleCloudSecuritycenterV2ContactDetails: Schema.Codec<GoogleCloudSecuritycenterV2ContactDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contacts: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Contact)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2ContactDetails" });
@@ -883,7 +885,7 @@ export interface GoogleCloudSecuritycenterV2DiscoveredWorkload {
   confidence?: "CONFIDENCE_UNSPECIFIED" | "CONFIDENCE_HIGH" | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2DiscoveredWorkload: Schema.Schema<GoogleCloudSecuritycenterV2DiscoveredWorkload> =
+export const GoogleCloudSecuritycenterV2DiscoveredWorkload: Schema.Codec<GoogleCloudSecuritycenterV2DiscoveredWorkload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadType: Schema.optional(Schema.String),
     detectedRelevantKeywords: Schema.optional(Schema.Boolean),
@@ -899,7 +901,7 @@ export interface GoogleCloudSecuritycenterV2PolicyViolationSummary {
   policyViolationsCount?: string;
 }
 
-export const GoogleCloudSecuritycenterV2PolicyViolationSummary: Schema.Schema<GoogleCloudSecuritycenterV2PolicyViolationSummary> =
+export const GoogleCloudSecuritycenterV2PolicyViolationSummary: Schema.Codec<GoogleCloudSecuritycenterV2PolicyViolationSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationErrorsCount: Schema.optional(Schema.String),
     outOfScopeResourcesCount: Schema.optional(Schema.String),
@@ -914,7 +916,7 @@ export interface GoogleCloudSecuritycenterV2EnvironmentVariable {
   val?: string;
 }
 
-export const GoogleCloudSecuritycenterV2EnvironmentVariable: Schema.Schema<GoogleCloudSecuritycenterV2EnvironmentVariable> =
+export const GoogleCloudSecuritycenterV2EnvironmentVariable: Schema.Codec<GoogleCloudSecuritycenterV2EnvironmentVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     val: Schema.optional(Schema.String),
@@ -934,7 +936,7 @@ export interface GoogleCloudSecuritycenterV2Process {
   userId?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Process: Schema.Schema<GoogleCloudSecuritycenterV2Process> =
+export const GoogleCloudSecuritycenterV2Process: Schema.Codec<GoogleCloudSecuritycenterV2Process> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     libraries: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2File)),
     name: Schema.optional(Schema.String),
@@ -957,7 +959,7 @@ export interface GoogleCloudSecuritycenterV2SecurityMarks {
   canonicalName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2SecurityMarks: Schema.Schema<GoogleCloudSecuritycenterV2SecurityMarks> =
+export const GoogleCloudSecuritycenterV2SecurityMarks: Schema.Codec<GoogleCloudSecuritycenterV2SecurityMarks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     marks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -968,7 +970,7 @@ export interface GoogleCloudSecuritycenterV2LoadBalancer {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2LoadBalancer: Schema.Schema<GoogleCloudSecuritycenterV2LoadBalancer> =
+export const GoogleCloudSecuritycenterV2LoadBalancer: Schema.Codec<GoogleCloudSecuritycenterV2LoadBalancer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2LoadBalancer" });
@@ -984,7 +986,7 @@ export interface GoogleCloudSecuritycenterV2SecretStatus {
   lastUpdatedTime?: string;
 }
 
-export const GoogleCloudSecuritycenterV2SecretStatus: Schema.Schema<GoogleCloudSecuritycenterV2SecretStatus> =
+export const GoogleCloudSecuritycenterV2SecretStatus: Schema.Codec<GoogleCloudSecuritycenterV2SecretStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validity: Schema.optional(Schema.String),
     lastUpdatedTime: Schema.optional(Schema.String),
@@ -994,7 +996,7 @@ export interface GoogleCloudSecuritycenterV2SecretEnvironmentVariable {
   key?: string;
 }
 
-export const GoogleCloudSecuritycenterV2SecretEnvironmentVariable: Schema.Schema<GoogleCloudSecuritycenterV2SecretEnvironmentVariable> =
+export const GoogleCloudSecuritycenterV2SecretEnvironmentVariable: Schema.Codec<GoogleCloudSecuritycenterV2SecretEnvironmentVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({
@@ -1005,7 +1007,7 @@ export interface GoogleCloudSecuritycenterV2SecretFilePath {
   path?: string;
 }
 
-export const GoogleCloudSecuritycenterV2SecretFilePath: Schema.Schema<GoogleCloudSecuritycenterV2SecretFilePath> =
+export const GoogleCloudSecuritycenterV2SecretFilePath: Schema.Codec<GoogleCloudSecuritycenterV2SecretFilePath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2SecretFilePath" });
@@ -1017,7 +1019,7 @@ export interface GoogleCloudSecuritycenterV2Secret {
   filePath?: GoogleCloudSecuritycenterV2SecretFilePath;
 }
 
-export const GoogleCloudSecuritycenterV2Secret: Schema.Schema<GoogleCloudSecuritycenterV2Secret> =
+export const GoogleCloudSecuritycenterV2Secret: Schema.Codec<GoogleCloudSecuritycenterV2Secret> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     status: Schema.optional(GoogleCloudSecuritycenterV2SecretStatus),
@@ -1034,7 +1036,7 @@ export interface GoogleCloudSecuritycenterV2CloudLoggingEntry {
   timestamp?: string;
 }
 
-export const GoogleCloudSecuritycenterV2CloudLoggingEntry: Schema.Schema<GoogleCloudSecuritycenterV2CloudLoggingEntry> =
+export const GoogleCloudSecuritycenterV2CloudLoggingEntry: Schema.Codec<GoogleCloudSecuritycenterV2CloudLoggingEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logId: Schema.optional(Schema.String),
     insertId: Schema.optional(Schema.String),
@@ -1046,7 +1048,7 @@ export interface GoogleCloudSecuritycenterV2LogEntry {
   cloudLoggingEntry?: GoogleCloudSecuritycenterV2CloudLoggingEntry;
 }
 
-export const GoogleCloudSecuritycenterV2LogEntry: Schema.Schema<GoogleCloudSecuritycenterV2LogEntry> =
+export const GoogleCloudSecuritycenterV2LogEntry: Schema.Codec<GoogleCloudSecuritycenterV2LogEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudLoggingEntry: Schema.optional(
       GoogleCloudSecuritycenterV2CloudLoggingEntry,
@@ -1376,7 +1378,7 @@ export interface GoogleCloudSecuritycenterV2MitreAttack {
   >;
 }
 
-export const GoogleCloudSecuritycenterV2MitreAttack: Schema.Schema<GoogleCloudSecuritycenterV2MitreAttack> =
+export const GoogleCloudSecuritycenterV2MitreAttack: Schema.Codec<GoogleCloudSecuritycenterV2MitreAttack> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryTactic: Schema.optional(Schema.String),
     additionalTechniques: Schema.optional(Schema.Array(Schema.String)),
@@ -1396,7 +1398,7 @@ export interface GoogleCloudSecuritycenterV2Subject {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Subject: Schema.Schema<GoogleCloudSecuritycenterV2Subject> =
+export const GoogleCloudSecuritycenterV2Subject: Schema.Codec<GoogleCloudSecuritycenterV2Subject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
@@ -1409,7 +1411,7 @@ export interface GoogleCloudSecuritycenterV2Role {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Role: Schema.Schema<GoogleCloudSecuritycenterV2Role> =
+export const GoogleCloudSecuritycenterV2Role: Schema.Codec<GoogleCloudSecuritycenterV2Role> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
@@ -1423,7 +1425,7 @@ export interface GoogleCloudSecuritycenterV2Binding {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Binding: Schema.Schema<GoogleCloudSecuritycenterV2Binding> =
+export const GoogleCloudSecuritycenterV2Binding: Schema.Codec<GoogleCloudSecuritycenterV2Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subjects: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Subject)),
     role: Schema.optional(GoogleCloudSecuritycenterV2Role),
@@ -1439,7 +1441,7 @@ export interface GoogleCloudSecuritycenterV2Object {
   group?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Object: Schema.Schema<GoogleCloudSecuritycenterV2Object> =
+export const GoogleCloudSecuritycenterV2Object: Schema.Codec<GoogleCloudSecuritycenterV2Object> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1460,7 +1462,7 @@ export interface GoogleCloudSecuritycenterV2AccessReview {
   subresource?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AccessReview: Schema.Schema<GoogleCloudSecuritycenterV2AccessReview> =
+export const GoogleCloudSecuritycenterV2AccessReview: Schema.Codec<GoogleCloudSecuritycenterV2AccessReview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -1478,7 +1480,7 @@ export interface GoogleCloudSecuritycenterV2Pod {
   labels?: ReadonlyArray<GoogleCloudSecuritycenterV2Label>;
 }
 
-export const GoogleCloudSecuritycenterV2Pod: Schema.Schema<GoogleCloudSecuritycenterV2Pod> =
+export const GoogleCloudSecuritycenterV2Pod: Schema.Codec<GoogleCloudSecuritycenterV2Pod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ns: Schema.optional(Schema.String),
     containers: Schema.optional(
@@ -1493,7 +1495,7 @@ export interface GoogleCloudSecuritycenterV2NodePool {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2NodePool: Schema.Schema<GoogleCloudSecuritycenterV2NodePool> =
+export const GoogleCloudSecuritycenterV2NodePool: Schema.Codec<GoogleCloudSecuritycenterV2NodePool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Node)),
     name: Schema.optional(Schema.String),
@@ -1509,7 +1511,7 @@ export interface GoogleCloudSecuritycenterV2Kubernetes {
   nodePools?: ReadonlyArray<GoogleCloudSecuritycenterV2NodePool>;
 }
 
-export const GoogleCloudSecuritycenterV2Kubernetes: Schema.Schema<GoogleCloudSecuritycenterV2Kubernetes> =
+export const GoogleCloudSecuritycenterV2Kubernetes: Schema.Codec<GoogleCloudSecuritycenterV2Kubernetes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Binding)),
     objects: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2Object)),
@@ -1537,7 +1539,7 @@ export interface GoogleCloudSecuritycenterV2DataFlowEvent {
   principalEmail?: string;
 }
 
-export const GoogleCloudSecuritycenterV2DataFlowEvent: Schema.Schema<GoogleCloudSecuritycenterV2DataFlowEvent> =
+export const GoogleCloudSecuritycenterV2DataFlowEvent: Schema.Codec<GoogleCloudSecuritycenterV2DataFlowEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -1555,7 +1557,7 @@ export interface GoogleCloudSecuritycenterV2ArtifactGuardPolicy {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2ArtifactGuardPolicy: Schema.Schema<GoogleCloudSecuritycenterV2ArtifactGuardPolicy> =
+export const GoogleCloudSecuritycenterV2ArtifactGuardPolicy: Schema.Codec<GoogleCloudSecuritycenterV2ArtifactGuardPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyId: Schema.optional(Schema.String),
     failureReason: Schema.optional(Schema.String),
@@ -1567,7 +1569,7 @@ export interface GoogleCloudSecuritycenterV2ArtifactGuardPolicies {
   resourceId?: string;
 }
 
-export const GoogleCloudSecuritycenterV2ArtifactGuardPolicies: Schema.Schema<GoogleCloudSecuritycenterV2ArtifactGuardPolicies> =
+export const GoogleCloudSecuritycenterV2ArtifactGuardPolicies: Schema.Codec<GoogleCloudSecuritycenterV2ArtifactGuardPolicies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failingPolicies: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2ArtifactGuardPolicy),
@@ -1581,7 +1583,7 @@ export interface GoogleCloudSecuritycenterV2Geolocation {
   regionCode?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Geolocation: Schema.Schema<GoogleCloudSecuritycenterV2Geolocation> =
+export const GoogleCloudSecuritycenterV2Geolocation: Schema.Codec<GoogleCloudSecuritycenterV2Geolocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Geolocation" });
@@ -1591,7 +1593,7 @@ export interface GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo {
   principalSubject?: string;
 }
 
-export const GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo: Schema.Schema<GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo> =
+export const GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo: Schema.Codec<GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     principalEmail: Schema.optional(Schema.String),
     principalSubject: Schema.optional(Schema.String),
@@ -1613,7 +1615,7 @@ export interface GoogleCloudSecuritycenterV2Access {
   methodName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Access: Schema.Schema<GoogleCloudSecuritycenterV2Access> =
+export const GoogleCloudSecuritycenterV2Access: Schema.Codec<GoogleCloudSecuritycenterV2Access> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     callerIpGeo: Schema.optional(GoogleCloudSecuritycenterV2Geolocation),
     serviceAccountDelegationInfo: Schema.optional(
@@ -1637,7 +1639,7 @@ export interface GoogleCloudSecuritycenterV2Notebook {
   lastAuthor?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Notebook: Schema.Schema<GoogleCloudSecuritycenterV2Notebook> =
+export const GoogleCloudSecuritycenterV2Notebook: Schema.Codec<GoogleCloudSecuritycenterV2Notebook> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebookUpdateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1654,7 +1656,7 @@ export interface GoogleCloudSecuritycenterV2Database {
   userName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Database: Schema.Schema<GoogleCloudSecuritycenterV2Database> =
+export const GoogleCloudSecuritycenterV2Database: Schema.Codec<GoogleCloudSecuritycenterV2Database> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1671,7 +1673,7 @@ export interface GoogleCloudSecuritycenterV2Requests {
   longTermDenied?: number;
 }
 
-export const GoogleCloudSecuritycenterV2Requests: Schema.Schema<GoogleCloudSecuritycenterV2Requests> =
+export const GoogleCloudSecuritycenterV2Requests: Schema.Codec<GoogleCloudSecuritycenterV2Requests> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shortTermAllowed: Schema.optional(Schema.Number),
     ratio: Schema.optional(Schema.Number),
@@ -1683,7 +1685,7 @@ export interface GoogleCloudSecuritycenterV2AdaptiveProtection {
   confidence?: number;
 }
 
-export const GoogleCloudSecuritycenterV2AdaptiveProtection: Schema.Schema<GoogleCloudSecuritycenterV2AdaptiveProtection> =
+export const GoogleCloudSecuritycenterV2AdaptiveProtection: Schema.Codec<GoogleCloudSecuritycenterV2AdaptiveProtection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AdaptiveProtection" });
@@ -1694,7 +1696,7 @@ export interface GoogleCloudSecuritycenterV2SecurityPolicy {
   preview?: boolean;
 }
 
-export const GoogleCloudSecuritycenterV2SecurityPolicy: Schema.Schema<GoogleCloudSecuritycenterV2SecurityPolicy> =
+export const GoogleCloudSecuritycenterV2SecurityPolicy: Schema.Codec<GoogleCloudSecuritycenterV2SecurityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1709,7 +1711,7 @@ export interface GoogleCloudSecuritycenterV2Attack {
   volumeBpsLong?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Attack: Schema.Schema<GoogleCloudSecuritycenterV2Attack> =
+export const GoogleCloudSecuritycenterV2Attack: Schema.Codec<GoogleCloudSecuritycenterV2Attack> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     volumePpsLong: Schema.optional(Schema.String),
     volumePps: Schema.optional(Schema.Number),
@@ -1727,7 +1729,7 @@ export interface GoogleCloudSecuritycenterV2CloudArmor {
   threatVector?: string;
 }
 
-export const GoogleCloudSecuritycenterV2CloudArmor: Schema.Schema<GoogleCloudSecuritycenterV2CloudArmor> =
+export const GoogleCloudSecuritycenterV2CloudArmor: Schema.Codec<GoogleCloudSecuritycenterV2CloudArmor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(GoogleCloudSecuritycenterV2Requests),
     adaptiveProtection: Schema.optional(
@@ -1743,7 +1745,7 @@ export interface GoogleCloudSecuritycenterV2IamDetails {
   iamRolePermissions?: ReadonlyArray<GoogleCloudSecuritycenterV2IamRolePermission>;
 }
 
-export const GoogleCloudSecuritycenterV2IamDetails: Schema.Schema<GoogleCloudSecuritycenterV2IamDetails> =
+export const GoogleCloudSecuritycenterV2IamDetails: Schema.Codec<GoogleCloudSecuritycenterV2IamDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iamRolePermissions: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2IamRolePermission),
@@ -1754,7 +1756,7 @@ export interface GoogleCloudSecuritycenterV2Disk {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Disk: Schema.Schema<GoogleCloudSecuritycenterV2Disk> =
+export const GoogleCloudSecuritycenterV2Disk: Schema.Codec<GoogleCloudSecuritycenterV2Disk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Disk" });
@@ -1765,7 +1767,7 @@ export interface GoogleCloudSecuritycenterV2PolicyDriftDetails {
   expectedValue?: string;
 }
 
-export const GoogleCloudSecuritycenterV2PolicyDriftDetails: Schema.Schema<GoogleCloudSecuritycenterV2PolicyDriftDetails> =
+export const GoogleCloudSecuritycenterV2PolicyDriftDetails: Schema.Codec<GoogleCloudSecuritycenterV2PolicyDriftDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectedValue: Schema.optional(Schema.String),
     field: Schema.optional(Schema.String),
@@ -1783,7 +1785,7 @@ export interface GoogleCloudSecuritycenterV2SecurityPosture {
   changedPolicy?: string;
 }
 
-export const GoogleCloudSecuritycenterV2SecurityPosture: Schema.Schema<GoogleCloudSecuritycenterV2SecurityPosture> =
+export const GoogleCloudSecuritycenterV2SecurityPosture: Schema.Codec<GoogleCloudSecuritycenterV2SecurityPosture> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revisionId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1807,7 +1809,7 @@ export interface GoogleCloudSecuritycenterV2SensitivityScore {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2SensitivityScore: Schema.Schema<GoogleCloudSecuritycenterV2SensitivityScore> =
+export const GoogleCloudSecuritycenterV2SensitivityScore: Schema.Codec<GoogleCloudSecuritycenterV2SensitivityScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2SensitivityScore" });
@@ -1818,7 +1820,7 @@ export interface GoogleCloudSecuritycenterV2InfoType {
   version?: string;
 }
 
-export const GoogleCloudSecuritycenterV2InfoType: Schema.Schema<GoogleCloudSecuritycenterV2InfoType> =
+export const GoogleCloudSecuritycenterV2InfoType: Schema.Codec<GoogleCloudSecuritycenterV2InfoType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sensitivityScore: Schema.optional(
@@ -1837,7 +1839,7 @@ export interface GoogleCloudSecuritycenterV2CloudDlpDataProfile {
   dataProfile?: string;
 }
 
-export const GoogleCloudSecuritycenterV2CloudDlpDataProfile: Schema.Schema<GoogleCloudSecuritycenterV2CloudDlpDataProfile> =
+export const GoogleCloudSecuritycenterV2CloudDlpDataProfile: Schema.Codec<GoogleCloudSecuritycenterV2CloudDlpDataProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentType: Schema.optional(Schema.String),
     infoTypes: Schema.optional(
@@ -1850,7 +1852,7 @@ export interface GoogleCloudSecuritycenterV2Network {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Network: Schema.Schema<GoogleCloudSecuritycenterV2Network> =
+export const GoogleCloudSecuritycenterV2Network: Schema.Codec<GoogleCloudSecuritycenterV2Network> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Network" });
@@ -1861,7 +1863,7 @@ export interface GoogleCloudSecuritycenterV2IamBinding {
   role?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IamBinding: Schema.Schema<GoogleCloudSecuritycenterV2IamBinding> =
+export const GoogleCloudSecuritycenterV2IamBinding: Schema.Codec<GoogleCloudSecuritycenterV2IamBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     member: Schema.optional(Schema.String),
@@ -1892,7 +1894,7 @@ export interface GoogleCloudSecuritycenterV2ExternalExposure {
   exposedApplication?: string;
 }
 
-export const GoogleCloudSecuritycenterV2ExternalExposure: Schema.Schema<GoogleCloudSecuritycenterV2ExternalExposure> =
+export const GoogleCloudSecuritycenterV2ExternalExposure: Schema.Codec<GoogleCloudSecuritycenterV2ExternalExposure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostnameUri: Schema.optional(Schema.String),
     backendBucket: Schema.optional(Schema.String),
@@ -1925,7 +1927,7 @@ export interface GoogleCloudSecuritycenterV2Compliance {
   version?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Compliance: Schema.Schema<GoogleCloudSecuritycenterV2Compliance> =
+export const GoogleCloudSecuritycenterV2Compliance: Schema.Codec<GoogleCloudSecuritycenterV2Compliance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standard: Schema.optional(Schema.String),
     ids: Schema.optional(Schema.Array(Schema.String)),
@@ -1942,7 +1944,7 @@ export interface GoogleCloudSecuritycenterV2AttackExposure {
   exposedMediumValueResourcesCount?: number;
 }
 
-export const GoogleCloudSecuritycenterV2AttackExposure: Schema.Schema<GoogleCloudSecuritycenterV2AttackExposure> =
+export const GoogleCloudSecuritycenterV2AttackExposure: Schema.Codec<GoogleCloudSecuritycenterV2AttackExposure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     latestCalculationTime: Schema.optional(Schema.String),
@@ -1967,7 +1969,7 @@ export interface GoogleCloudSecuritycenterV2DataRetentionDeletionEvent {
   maxRetentionAllowed?: string;
 }
 
-export const GoogleCloudSecuritycenterV2DataRetentionDeletionEvent: Schema.Schema<GoogleCloudSecuritycenterV2DataRetentionDeletionEvent> =
+export const GoogleCloudSecuritycenterV2DataRetentionDeletionEvent: Schema.Codec<GoogleCloudSecuritycenterV2DataRetentionDeletionEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventType: Schema.optional(Schema.String),
     eventDetectionTime: Schema.optional(Schema.String),
@@ -1982,7 +1984,7 @@ export interface GoogleCloudSecuritycenterV2AffectedResources {
   count?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AffectedResources: Schema.Schema<GoogleCloudSecuritycenterV2AffectedResources> =
+export const GoogleCloudSecuritycenterV2AffectedResources: Schema.Codec<GoogleCloudSecuritycenterV2AffectedResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AffectedResources" });
@@ -1993,7 +1995,7 @@ export interface GoogleCloudSecuritycenterV2SecurityBulletin {
   suggestedUpgradeVersion?: string;
 }
 
-export const GoogleCloudSecuritycenterV2SecurityBulletin: Schema.Schema<GoogleCloudSecuritycenterV2SecurityBulletin> =
+export const GoogleCloudSecuritycenterV2SecurityBulletin: Schema.Codec<GoogleCloudSecuritycenterV2SecurityBulletin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bulletinId: Schema.optional(Schema.String),
     submissionTime: Schema.optional(Schema.String),
@@ -2007,7 +2009,7 @@ export interface GoogleCloudSecuritycenterV2Package {
   packageType?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Package: Schema.Schema<GoogleCloudSecuritycenterV2Package> =
+export const GoogleCloudSecuritycenterV2Package: Schema.Codec<GoogleCloudSecuritycenterV2Package> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     packageVersion: Schema.optional(Schema.String),
@@ -2020,7 +2022,7 @@ export interface GoogleCloudSecuritycenterV2Reference {
   source?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Reference: Schema.Schema<GoogleCloudSecuritycenterV2Reference> =
+export const GoogleCloudSecuritycenterV2Reference: Schema.Codec<GoogleCloudSecuritycenterV2Reference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
@@ -2031,7 +2033,7 @@ export interface GoogleCloudSecuritycenterV2Cwe {
   references?: ReadonlyArray<GoogleCloudSecuritycenterV2Reference>;
 }
 
-export const GoogleCloudSecuritycenterV2Cwe: Schema.Schema<GoogleCloudSecuritycenterV2Cwe> =
+export const GoogleCloudSecuritycenterV2Cwe: Schema.Codec<GoogleCloudSecuritycenterV2Cwe> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     references: Schema.optional(
@@ -2089,7 +2091,7 @@ export interface GoogleCloudSecuritycenterV2Cvssv3 {
   baseScore?: number;
 }
 
-export const GoogleCloudSecuritycenterV2Cvssv3: Schema.Schema<GoogleCloudSecuritycenterV2Cvssv3> =
+export const GoogleCloudSecuritycenterV2Cvssv3: Schema.Codec<GoogleCloudSecuritycenterV2Cvssv3> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privilegesRequired: Schema.optional(Schema.String),
     userInteraction: Schema.optional(Schema.String),
@@ -2128,7 +2130,7 @@ export interface GoogleCloudSecuritycenterV2Cve {
   references?: ReadonlyArray<GoogleCloudSecuritycenterV2Reference>;
 }
 
-export const GoogleCloudSecuritycenterV2Cve: Schema.Schema<GoogleCloudSecuritycenterV2Cve> =
+export const GoogleCloudSecuritycenterV2Cve: Schema.Codec<GoogleCloudSecuritycenterV2Cve> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstExploitationDate: Schema.optional(Schema.String),
     exploitationActivity: Schema.optional(Schema.String),
@@ -2154,7 +2156,7 @@ export interface GoogleCloudSecuritycenterV2Vulnerability {
   cve?: GoogleCloudSecuritycenterV2Cve;
 }
 
-export const GoogleCloudSecuritycenterV2Vulnerability: Schema.Schema<GoogleCloudSecuritycenterV2Vulnerability> =
+export const GoogleCloudSecuritycenterV2Vulnerability: Schema.Codec<GoogleCloudSecuritycenterV2Vulnerability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     providerRiskScore: Schema.optional(Schema.String),
     securityBulletin: Schema.optional(
@@ -2180,7 +2182,7 @@ export interface GoogleCloudSecuritycenterV2BackupDisasterRecovery {
   applications?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSecuritycenterV2BackupDisasterRecovery: Schema.Schema<GoogleCloudSecuritycenterV2BackupDisasterRecovery> =
+export const GoogleCloudSecuritycenterV2BackupDisasterRecovery: Schema.Codec<GoogleCloudSecuritycenterV2BackupDisasterRecovery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profile: Schema.optional(Schema.String),
     backupType: Schema.optional(Schema.String),
@@ -2205,7 +2207,7 @@ export interface GoogleCloudSecuritycenterV2TicketInfo {
   description?: string;
 }
 
-export const GoogleCloudSecuritycenterV2TicketInfo: Schema.Schema<GoogleCloudSecuritycenterV2TicketInfo> =
+export const GoogleCloudSecuritycenterV2TicketInfo: Schema.Codec<GoogleCloudSecuritycenterV2TicketInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignee: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -2229,7 +2231,7 @@ export interface GoogleCloudSecuritycenterV2ExternalSystem {
   caseSla?: string;
 }
 
-export const GoogleCloudSecuritycenterV2ExternalSystem: Schema.Schema<GoogleCloudSecuritycenterV2ExternalSystem> =
+export const GoogleCloudSecuritycenterV2ExternalSystem: Schema.Codec<GoogleCloudSecuritycenterV2ExternalSystem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     externalUid: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2249,7 +2251,7 @@ export interface GoogleCloudSecuritycenterV2ToxicCombination {
   attackExposureScore?: number;
 }
 
-export const GoogleCloudSecuritycenterV2ToxicCombination: Schema.Schema<GoogleCloudSecuritycenterV2ToxicCombination> =
+export const GoogleCloudSecuritycenterV2ToxicCombination: Schema.Codec<GoogleCloudSecuritycenterV2ToxicCombination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedFindings: Schema.optional(Schema.Array(Schema.String)),
     attackExposureScore: Schema.optional(Schema.Number),
@@ -2267,7 +2269,7 @@ export interface GoogleCloudSecuritycenterV2AgentDataAccessEvent {
   principalSubject?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AgentDataAccessEvent: Schema.Schema<GoogleCloudSecuritycenterV2AgentDataAccessEvent> =
+export const GoogleCloudSecuritycenterV2AgentDataAccessEvent: Schema.Codec<GoogleCloudSecuritycenterV2AgentDataAccessEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
@@ -2292,7 +2294,7 @@ export interface GoogleCloudSecuritycenterV2Connection {
   sourceIp?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Connection: Schema.Schema<GoogleCloudSecuritycenterV2Connection> =
+export const GoogleCloudSecuritycenterV2Connection: Schema.Codec<GoogleCloudSecuritycenterV2Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     destinationPort: Schema.optional(Schema.Number),
@@ -2310,7 +2312,7 @@ export interface GoogleCloudSecuritycenterV2GroupMembership {
   groupId?: string;
 }
 
-export const GoogleCloudSecuritycenterV2GroupMembership: Schema.Schema<GoogleCloudSecuritycenterV2GroupMembership> =
+export const GoogleCloudSecuritycenterV2GroupMembership: Schema.Codec<GoogleCloudSecuritycenterV2GroupMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupType: Schema.optional(Schema.String),
     groupId: Schema.optional(Schema.String),
@@ -2320,7 +2322,7 @@ export interface GoogleCloudSecuritycenterV2Chokepoint {
   relatedFindings?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSecuritycenterV2Chokepoint: Schema.Schema<GoogleCloudSecuritycenterV2Chokepoint> =
+export const GoogleCloudSecuritycenterV2Chokepoint: Schema.Codec<GoogleCloudSecuritycenterV2Chokepoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedFindings: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Chokepoint" });
@@ -2330,7 +2332,7 @@ export interface GoogleCloudSecuritycenterV2ExfilResource {
   components?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSecuritycenterV2ExfilResource: Schema.Schema<GoogleCloudSecuritycenterV2ExfilResource> =
+export const GoogleCloudSecuritycenterV2ExfilResource: Schema.Codec<GoogleCloudSecuritycenterV2ExfilResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     components: Schema.optional(Schema.Array(Schema.String)),
@@ -2342,7 +2344,7 @@ export interface GoogleCloudSecuritycenterV2Exfiltration {
   totalExfiltratedBytes?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Exfiltration: Schema.Schema<GoogleCloudSecuritycenterV2Exfiltration> =
+export const GoogleCloudSecuritycenterV2Exfiltration: Schema.Codec<GoogleCloudSecuritycenterV2Exfiltration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2ExfilResource),
@@ -2358,7 +2360,7 @@ export interface GoogleCloudSecuritycenterV2Pipeline {
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Pipeline: Schema.Schema<GoogleCloudSecuritycenterV2Pipeline> =
+export const GoogleCloudSecuritycenterV2Pipeline: Schema.Codec<GoogleCloudSecuritycenterV2Pipeline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2370,7 +2372,7 @@ export interface GoogleCloudSecuritycenterV2Dataset {
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Dataset: Schema.Schema<GoogleCloudSecuritycenterV2Dataset> =
+export const GoogleCloudSecuritycenterV2Dataset: Schema.Codec<GoogleCloudSecuritycenterV2Dataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2382,7 +2384,7 @@ export interface GoogleCloudSecuritycenterV2VertexAi {
   datasets?: ReadonlyArray<GoogleCloudSecuritycenterV2Dataset>;
 }
 
-export const GoogleCloudSecuritycenterV2VertexAi: Schema.Schema<GoogleCloudSecuritycenterV2VertexAi> =
+export const GoogleCloudSecuritycenterV2VertexAi: Schema.Codec<GoogleCloudSecuritycenterV2VertexAi> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pipelines: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2Pipeline),
@@ -2395,7 +2397,7 @@ export interface GoogleCloudSecuritycenterV2PortRange {
   max?: string;
 }
 
-export const GoogleCloudSecuritycenterV2PortRange: Schema.Schema<GoogleCloudSecuritycenterV2PortRange> =
+export const GoogleCloudSecuritycenterV2PortRange: Schema.Codec<GoogleCloudSecuritycenterV2PortRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.String),
     max: Schema.optional(Schema.String),
@@ -2406,7 +2408,7 @@ export interface GoogleCloudSecuritycenterV2IpRule {
   portRanges?: ReadonlyArray<GoogleCloudSecuritycenterV2PortRange>;
 }
 
-export const GoogleCloudSecuritycenterV2IpRule: Schema.Schema<GoogleCloudSecuritycenterV2IpRule> =
+export const GoogleCloudSecuritycenterV2IpRule: Schema.Codec<GoogleCloudSecuritycenterV2IpRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protocol: Schema.optional(Schema.String),
     portRanges: Schema.optional(
@@ -2418,7 +2420,7 @@ export interface GoogleCloudSecuritycenterV2Denied {
   ipRules?: ReadonlyArray<GoogleCloudSecuritycenterV2IpRule>;
 }
 
-export const GoogleCloudSecuritycenterV2Denied: Schema.Schema<GoogleCloudSecuritycenterV2Denied> =
+export const GoogleCloudSecuritycenterV2Denied: Schema.Codec<GoogleCloudSecuritycenterV2Denied> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipRules: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2IpRule)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Denied" });
@@ -2427,7 +2429,7 @@ export interface GoogleCloudSecuritycenterV2Allowed {
   ipRules?: ReadonlyArray<GoogleCloudSecuritycenterV2IpRule>;
 }
 
-export const GoogleCloudSecuritycenterV2Allowed: Schema.Schema<GoogleCloudSecuritycenterV2Allowed> =
+export const GoogleCloudSecuritycenterV2Allowed: Schema.Codec<GoogleCloudSecuritycenterV2Allowed> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipRules: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV2IpRule)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2Allowed" });
@@ -2441,7 +2443,7 @@ export interface GoogleCloudSecuritycenterV2IpRules {
   destinationIpRanges?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSecuritycenterV2IpRules: Schema.Schema<GoogleCloudSecuritycenterV2IpRules> =
+export const GoogleCloudSecuritycenterV2IpRules: Schema.Codec<GoogleCloudSecuritycenterV2IpRules> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     direction: Schema.optional(Schema.String),
     sourceIpRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -2456,7 +2458,7 @@ export interface GoogleCloudSecuritycenterV2Control {
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Control: Schema.Schema<GoogleCloudSecuritycenterV2Control> =
+export const GoogleCloudSecuritycenterV2Control: Schema.Codec<GoogleCloudSecuritycenterV2Control> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     controlName: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2482,7 +2484,7 @@ export interface GoogleCloudSecuritycenterV2Framework {
   controls?: ReadonlyArray<GoogleCloudSecuritycenterV2Control>;
 }
 
-export const GoogleCloudSecuritycenterV2Framework: Schema.Schema<GoogleCloudSecuritycenterV2Framework> =
+export const GoogleCloudSecuritycenterV2Framework: Schema.Codec<GoogleCloudSecuritycenterV2Framework> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2502,7 +2504,7 @@ export interface GoogleCloudSecuritycenterV2CloudControl {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2CloudControl: Schema.Schema<GoogleCloudSecuritycenterV2CloudControl> =
+export const GoogleCloudSecuritycenterV2CloudControl: Schema.Codec<GoogleCloudSecuritycenterV2CloudControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudControlName: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
@@ -2516,7 +2518,7 @@ export interface GoogleCloudSecuritycenterV2ComplianceDetails {
   cloudControl?: GoogleCloudSecuritycenterV2CloudControl;
 }
 
-export const GoogleCloudSecuritycenterV2ComplianceDetails: Schema.Schema<GoogleCloudSecuritycenterV2ComplianceDetails> =
+export const GoogleCloudSecuritycenterV2ComplianceDetails: Schema.Codec<GoogleCloudSecuritycenterV2ComplianceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudControlDeploymentNames: Schema.optional(Schema.Array(Schema.String)),
     frameworks: Schema.optional(
@@ -2537,7 +2539,7 @@ export interface GoogleCloudSecuritycenterV2KernelRootkit {
   unexpectedProcessesInRunqueue?: boolean;
 }
 
-export const GoogleCloudSecuritycenterV2KernelRootkit: Schema.Schema<GoogleCloudSecuritycenterV2KernelRootkit> =
+export const GoogleCloudSecuritycenterV2KernelRootkit: Schema.Codec<GoogleCloudSecuritycenterV2KernelRootkit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unexpectedReadOnlyDataModification: Schema.optional(Schema.Boolean),
     unexpectedSystemCallHandler: Schema.optional(Schema.Boolean),
@@ -2557,7 +2559,7 @@ export interface GoogleCloudSecuritycenterV2CloudDlpInspection {
   infoTypeCount?: string;
 }
 
-export const GoogleCloudSecuritycenterV2CloudDlpInspection: Schema.Schema<GoogleCloudSecuritycenterV2CloudDlpInspection> =
+export const GoogleCloudSecuritycenterV2CloudDlpInspection: Schema.Codec<GoogleCloudSecuritycenterV2CloudDlpInspection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inspectJob: Schema.optional(Schema.String),
     infoType: Schema.optional(Schema.String),
@@ -2569,7 +2571,7 @@ export interface GoogleCloudSecuritycenterV2OrgPolicy {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2OrgPolicy: Schema.Schema<GoogleCloudSecuritycenterV2OrgPolicy> =
+export const GoogleCloudSecuritycenterV2OrgPolicy: Schema.Codec<GoogleCloudSecuritycenterV2OrgPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2OrgPolicy" });
@@ -2579,7 +2581,7 @@ export interface GoogleCloudSecuritycenterV2Application {
   fullUri?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Application: Schema.Schema<GoogleCloudSecuritycenterV2Application> =
+export const GoogleCloudSecuritycenterV2Application: Schema.Codec<GoogleCloudSecuritycenterV2Application> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseUri: Schema.optional(Schema.String),
     fullUri: Schema.optional(Schema.String),
@@ -2677,7 +2679,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
   application?: GoogleCloudSecuritycenterV2Application;
 }
 
-export const GoogleCloudSecuritycenterV2Finding: Schema.Schema<GoogleCloudSecuritycenterV2Finding> =
+export const GoogleCloudSecuritycenterV2Finding: Schema.Codec<GoogleCloudSecuritycenterV2Finding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     job: Schema.optional(GoogleCloudSecuritycenterV2Job),
     containers: Schema.optional(
@@ -2815,7 +2817,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnviron
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment: Schema.Schema<GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment> =
+export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -2831,7 +2833,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributes {
   operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
 }
 
-export const GoogleCloudSecuritycenterV2ResourceApplicationAttributes: Schema.Schema<GoogleCloudSecuritycenterV2ResourceApplicationAttributes> =
+export const GoogleCloudSecuritycenterV2ResourceApplicationAttributes: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplicationAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     criticality: Schema.optional(
       GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality,
@@ -2863,7 +2865,7 @@ export interface GoogleCloudSecuritycenterV2ResourceApplication {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2ResourceApplication: Schema.Schema<GoogleCloudSecuritycenterV2ResourceApplication> =
+export const GoogleCloudSecuritycenterV2ResourceApplication: Schema.Codec<GoogleCloudSecuritycenterV2ResourceApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributes: Schema.optional(
       GoogleCloudSecuritycenterV2ResourceApplicationAttributes,
@@ -2876,7 +2878,7 @@ export interface GoogleCloudSecuritycenterV2AdcApplication {
   attributes?: GoogleCloudSecuritycenterV2ResourceApplicationAttributes;
 }
 
-export const GoogleCloudSecuritycenterV2AdcApplication: Schema.Schema<GoogleCloudSecuritycenterV2AdcApplication> =
+export const GoogleCloudSecuritycenterV2AdcApplication: Schema.Codec<GoogleCloudSecuritycenterV2AdcApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
@@ -2901,7 +2903,7 @@ export interface GoogleCloudSecuritycenterV2ResourcePathNode {
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2ResourcePathNode: Schema.Schema<GoogleCloudSecuritycenterV2ResourcePathNode> =
+export const GoogleCloudSecuritycenterV2ResourcePathNode: Schema.Codec<GoogleCloudSecuritycenterV2ResourcePathNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeType: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -2912,7 +2914,7 @@ export interface GoogleCloudSecuritycenterV2ResourcePath {
   nodes?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourcePathNode>;
 }
 
-export const GoogleCloudSecuritycenterV2ResourcePath: Schema.Schema<GoogleCloudSecuritycenterV2ResourcePath> =
+export const GoogleCloudSecuritycenterV2ResourcePath: Schema.Codec<GoogleCloudSecuritycenterV2ResourcePath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2ResourcePathNode),
@@ -2923,7 +2925,7 @@ export interface GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision: Schema.Schema<GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision> =
+export const GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision: Schema.Codec<GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -2935,7 +2937,7 @@ export interface GoogleCloudSecuritycenterV2AwsOrganizationalUnit {
   id?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AwsOrganizationalUnit: Schema.Schema<GoogleCloudSecuritycenterV2AwsOrganizationalUnit> =
+export const GoogleCloudSecuritycenterV2AwsOrganizationalUnit: Schema.Codec<GoogleCloudSecuritycenterV2AwsOrganizationalUnit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -2948,7 +2950,7 @@ export interface GoogleCloudSecuritycenterV2AwsAccount {
   id?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AwsAccount: Schema.Schema<GoogleCloudSecuritycenterV2AwsAccount> =
+export const GoogleCloudSecuritycenterV2AwsAccount: Schema.Codec<GoogleCloudSecuritycenterV2AwsAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -2958,7 +2960,7 @@ export interface GoogleCloudSecuritycenterV2AwsOrganization {
   id?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AwsOrganization: Schema.Schema<GoogleCloudSecuritycenterV2AwsOrganization> =
+export const GoogleCloudSecuritycenterV2AwsOrganization: Schema.Codec<GoogleCloudSecuritycenterV2AwsOrganization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2AwsOrganization" });
@@ -2969,7 +2971,7 @@ export interface GoogleCloudSecuritycenterV2AwsMetadata {
   organization?: GoogleCloudSecuritycenterV2AwsOrganization;
 }
 
-export const GoogleCloudSecuritycenterV2AwsMetadata: Schema.Schema<GoogleCloudSecuritycenterV2AwsMetadata> =
+export const GoogleCloudSecuritycenterV2AwsMetadata: Schema.Codec<GoogleCloudSecuritycenterV2AwsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationalUnits: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV2AwsOrganizationalUnit),
@@ -2983,7 +2985,7 @@ export interface GoogleCloudSecuritycenterV2Folder {
   resourceFolderDisplayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2Folder: Schema.Schema<GoogleCloudSecuritycenterV2Folder> =
+export const GoogleCloudSecuritycenterV2Folder: Schema.Codec<GoogleCloudSecuritycenterV2Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceFolder: Schema.optional(Schema.String),
     resourceFolderDisplayName: Schema.optional(Schema.String),
@@ -2998,7 +3000,7 @@ export interface GcpMetadata {
   project?: string;
 }
 
-export const GcpMetadata: Schema.Schema<GcpMetadata> =
+export const GcpMetadata: Schema.Codec<GcpMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectDisplayName: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -3013,7 +3015,7 @@ export interface GoogleCloudSecuritycenterV2AzureSubscription {
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AzureSubscription: Schema.Schema<GoogleCloudSecuritycenterV2AzureSubscription> =
+export const GoogleCloudSecuritycenterV2AzureSubscription: Schema.Codec<GoogleCloudSecuritycenterV2AzureSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3024,7 +3026,7 @@ export interface GoogleCloudSecuritycenterV2AzureResourceGroup {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AzureResourceGroup: Schema.Schema<GoogleCloudSecuritycenterV2AzureResourceGroup> =
+export const GoogleCloudSecuritycenterV2AzureResourceGroup: Schema.Codec<GoogleCloudSecuritycenterV2AzureResourceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3035,7 +3037,7 @@ export interface GoogleCloudSecuritycenterV2AzureTenant {
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AzureTenant: Schema.Schema<GoogleCloudSecuritycenterV2AzureTenant> =
+export const GoogleCloudSecuritycenterV2AzureTenant: Schema.Codec<GoogleCloudSecuritycenterV2AzureTenant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3046,7 +3048,7 @@ export interface GoogleCloudSecuritycenterV2AzureManagementGroup {
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2AzureManagementGroup: Schema.Schema<GoogleCloudSecuritycenterV2AzureManagementGroup> =
+export const GoogleCloudSecuritycenterV2AzureManagementGroup: Schema.Codec<GoogleCloudSecuritycenterV2AzureManagementGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3061,7 +3063,7 @@ export interface GoogleCloudSecuritycenterV2AzureMetadata {
   managementGroups?: ReadonlyArray<GoogleCloudSecuritycenterV2AzureManagementGroup>;
 }
 
-export const GoogleCloudSecuritycenterV2AzureMetadata: Schema.Schema<GoogleCloudSecuritycenterV2AzureMetadata> =
+export const GoogleCloudSecuritycenterV2AzureMetadata: Schema.Codec<GoogleCloudSecuritycenterV2AzureMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(GoogleCloudSecuritycenterV2AzureSubscription),
     resourceGroup: Schema.optional(
@@ -3096,7 +3098,7 @@ export interface GoogleCloudSecuritycenterV2Resource {
   adcSharedTemplate?: GoogleCloudSecuritycenterV2AdcSharedTemplateRevision;
 }
 
-export const GoogleCloudSecuritycenterV2Resource: Schema.Schema<GoogleCloudSecuritycenterV2Resource> =
+export const GoogleCloudSecuritycenterV2Resource: Schema.Codec<GoogleCloudSecuritycenterV2Resource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3127,7 +3129,7 @@ export interface GoogleCloudSecuritycenterV2NotificationMessage {
   resource?: GoogleCloudSecuritycenterV2Resource;
 }
 
-export const GoogleCloudSecuritycenterV2NotificationMessage: Schema.Schema<GoogleCloudSecuritycenterV2NotificationMessage> =
+export const GoogleCloudSecuritycenterV2NotificationMessage: Schema.Codec<GoogleCloudSecuritycenterV2NotificationMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finding: Schema.optional(GoogleCloudSecuritycenterV2Finding),
     notificationConfigName: Schema.optional(Schema.String),
@@ -3139,7 +3141,7 @@ export interface Pipeline {
   displayName?: string;
 }
 
-export const Pipeline: Schema.Schema<Pipeline> =
+export const Pipeline: Schema.Codec<Pipeline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3150,7 +3152,7 @@ export interface VertexAi {
   datasets?: ReadonlyArray<Dataset>;
 }
 
-export const VertexAi: Schema.Schema<VertexAi> =
+export const VertexAi: Schema.Codec<VertexAi> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pipelines: Schema.optional(Schema.Array(Pipeline)),
     datasets: Schema.optional(Schema.Array(Dataset)),
@@ -3160,7 +3162,7 @@ export interface GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin: Schema.Schema<GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin> =
+export const GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin: Schema.Codec<GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -3171,7 +3173,7 @@ export interface AdcApplicationTemplateRevision {
   name?: string;
 }
 
-export const AdcApplicationTemplateRevision: Schema.Schema<AdcApplicationTemplateRevision> =
+export const AdcApplicationTemplateRevision: Schema.Codec<AdcApplicationTemplateRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdcApplicationTemplateRevision" });
@@ -3181,7 +3183,7 @@ export interface GoogleCloudSecuritycenterV1beta1SecurityMarks {
   marks?: Record<string, string>;
 }
 
-export const GoogleCloudSecuritycenterV1beta1SecurityMarks: Schema.Schema<GoogleCloudSecuritycenterV1beta1SecurityMarks> =
+export const GoogleCloudSecuritycenterV1beta1SecurityMarks: Schema.Codec<GoogleCloudSecuritycenterV1beta1SecurityMarks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     marks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3200,7 +3202,7 @@ export interface GoogleCloudSecuritycenterV1beta1Finding {
   externalUri?: string;
 }
 
-export const GoogleCloudSecuritycenterV1beta1Finding: Schema.Schema<GoogleCloudSecuritycenterV1beta1Finding> =
+export const GoogleCloudSecuritycenterV1beta1Finding: Schema.Codec<GoogleCloudSecuritycenterV1beta1Finding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -3231,7 +3233,7 @@ export interface BackupDisasterRecovery {
   applications?: ReadonlyArray<string>;
 }
 
-export const BackupDisasterRecovery: Schema.Schema<BackupDisasterRecovery> =
+export const BackupDisasterRecovery: Schema.Codec<BackupDisasterRecovery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profile: Schema.optional(Schema.String),
     backupType: Schema.optional(Schema.String),
@@ -3257,7 +3259,7 @@ export interface DataAccessEvent {
   principalEmail?: string;
 }
 
-export const DataAccessEvent: Schema.Schema<DataAccessEvent> =
+export const DataAccessEvent: Schema.Codec<DataAccessEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -3271,7 +3273,7 @@ export interface SecurityMarks {
   canonicalName?: string;
 }
 
-export const SecurityMarks: Schema.Schema<SecurityMarks> =
+export const SecurityMarks: Schema.Codec<SecurityMarks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     marks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3283,7 +3285,7 @@ export interface HttpResponse {
   path?: string;
 }
 
-export const HttpResponse: Schema.Schema<HttpResponse> =
+export const HttpResponse: Schema.Codec<HttpResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -3293,7 +3295,7 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
@@ -3303,7 +3305,7 @@ export interface AzureTenant {
   id?: string;
 }
 
-export const AzureTenant: Schema.Schema<AzureTenant> =
+export const AzureTenant: Schema.Codec<AzureTenant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -3314,7 +3316,7 @@ export interface ToxicCombination {
   attackExposureScore?: number;
 }
 
-export const ToxicCombination: Schema.Schema<ToxicCombination> =
+export const ToxicCombination: Schema.Codec<ToxicCombination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedFindings: Schema.optional(Schema.Array(Schema.String)),
     attackExposureScore: Schema.optional(Schema.Number),
@@ -3335,7 +3337,7 @@ export interface Connection {
     | (string & {});
 }
 
-export const Connection: Schema.Schema<Connection> =
+export const Connection: Schema.Codec<Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceIp: Schema.optional(Schema.String),
     destinationPort: Schema.optional(Schema.Number),
@@ -3349,7 +3351,7 @@ export interface Detection {
   percentPagesMatched?: number;
 }
 
-export const Detection: Schema.Schema<Detection> =
+export const Detection: Schema.Codec<Detection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     binary: Schema.optional(Schema.String),
     percentPagesMatched: Schema.optional(Schema.Number),
@@ -3360,7 +3362,7 @@ export interface MemoryHashSignature {
   binaryFamily?: string;
 }
 
-export const MemoryHashSignature: Schema.Schema<MemoryHashSignature> =
+export const MemoryHashSignature: Schema.Codec<MemoryHashSignature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detections: Schema.optional(Schema.Array(Detection)),
     binaryFamily: Schema.optional(Schema.String),
@@ -3374,7 +3376,7 @@ export interface SecurityCenterProperties {
   resourceType?: string;
 }
 
-export const SecurityCenterProperties: Schema.Schema<SecurityCenterProperties> =
+export const SecurityCenterProperties: Schema.Codec<SecurityCenterProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceProject: Schema.optional(Schema.String),
     resourceOwners: Schema.optional(Schema.Array(Schema.String)),
@@ -3392,7 +3394,7 @@ export interface Asset {
   createTime?: string;
 }
 
-export const Asset: Schema.Schema<Asset> =
+export const Asset: Schema.Codec<Asset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     securityCenterProperties: Schema.optional(SecurityCenterProperties),
@@ -3417,7 +3419,7 @@ export interface ListAssetsResult {
   asset?: Asset;
 }
 
-export const ListAssetsResult: Schema.Schema<ListAssetsResult> =
+export const ListAssetsResult: Schema.Codec<ListAssetsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     asset: Schema.optional(Asset),
@@ -3430,7 +3432,7 @@ export interface PolicyViolationSummary {
   conformantResourcesCount?: string;
 }
 
-export const PolicyViolationSummary: Schema.Schema<PolicyViolationSummary> =
+export const PolicyViolationSummary: Schema.Codec<PolicyViolationSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationErrorsCount: Schema.optional(Schema.String),
     outOfScopeResourcesCount: Schema.optional(Schema.String),
@@ -3443,7 +3445,7 @@ export interface GoogleCloudSecuritycenterV1IamRolePermission {
   role?: string;
 }
 
-export const GoogleCloudSecuritycenterV1IamRolePermission: Schema.Schema<GoogleCloudSecuritycenterV1IamRolePermission> =
+export const GoogleCloudSecuritycenterV1IamRolePermission: Schema.Codec<GoogleCloudSecuritycenterV1IamRolePermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -3453,7 +3455,7 @@ export interface GoogleCloudSecuritycenterV1IamDetails {
   iamRolePermissions?: ReadonlyArray<GoogleCloudSecuritycenterV1IamRolePermission>;
 }
 
-export const GoogleCloudSecuritycenterV1IamDetails: Schema.Schema<GoogleCloudSecuritycenterV1IamDetails> =
+export const GoogleCloudSecuritycenterV1IamDetails: Schema.Codec<GoogleCloudSecuritycenterV1IamDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iamRolePermissions: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV1IamRolePermission),
@@ -3465,7 +3467,7 @@ export interface AzureResourceGroup {
   id?: string;
 }
 
-export const AzureResourceGroup: Schema.Schema<AzureResourceGroup> =
+export const AzureResourceGroup: Schema.Codec<AzureResourceGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -3478,7 +3480,7 @@ export interface CloudDlpInspection {
   infoType?: string;
 }
 
-export const CloudDlpInspection: Schema.Schema<CloudDlpInspection> =
+export const CloudDlpInspection: Schema.Codec<CloudDlpInspection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullScan: Schema.optional(Schema.Boolean),
     infoTypeCount: Schema.optional(Schema.String),
@@ -3498,7 +3500,7 @@ export interface AgentDataAccessEvent {
     | (string & {});
 }
 
-export const AgentDataAccessEvent: Schema.Schema<AgentDataAccessEvent> =
+export const AgentDataAccessEvent: Schema.Codec<AgentDataAccessEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -3510,7 +3512,7 @@ export interface YaraRuleSignature {
   yaraRule?: string;
 }
 
-export const YaraRuleSignature: Schema.Schema<YaraRuleSignature> =
+export const YaraRuleSignature: Schema.Codec<YaraRuleSignature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yaraRule: Schema.optional(Schema.String),
   }).annotate({ identifier: "YaraRuleSignature" });
@@ -3520,7 +3522,7 @@ export interface ExfilResource {
   name?: string;
 }
 
-export const ExfilResource: Schema.Schema<ExfilResource> =
+export const ExfilResource: Schema.Codec<ExfilResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     components: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -3531,7 +3533,7 @@ export interface AzureSubscription {
   id?: string;
 }
 
-export const AzureSubscription: Schema.Schema<AzureSubscription> =
+export const AzureSubscription: Schema.Codec<AzureSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -3542,7 +3544,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount> =
+export const GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3567,7 +3569,7 @@ export interface GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping: Schema.Schema<GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping> =
+export const GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping: Schema.Codec<GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mediumSensitivityMapping: Schema.optional(Schema.String),
     highSensitivityMapping: Schema.optional(Schema.String),
@@ -3579,7 +3581,7 @@ export interface AffectedResources {
   count?: string;
 }
 
-export const AffectedResources: Schema.Schema<AffectedResources> =
+export const AffectedResources: Schema.Codec<AffectedResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
   }).annotate({ identifier: "AffectedResources" });
@@ -3588,7 +3590,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -3604,7 +3606,7 @@ export interface GoogleCloudSecuritycenterV1BigQueryExport {
   description?: string;
 }
 
-export const GoogleCloudSecuritycenterV1BigQueryExport: Schema.Schema<GoogleCloudSecuritycenterV1BigQueryExport> =
+export const GoogleCloudSecuritycenterV1BigQueryExport: Schema.Codec<GoogleCloudSecuritycenterV1BigQueryExport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dataset: Schema.optional(Schema.String),
@@ -3623,7 +3625,7 @@ export interface Notebook {
   lastAuthor?: string;
 }
 
-export const Notebook: Schema.Schema<Notebook> =
+export const Notebook: Schema.Codec<Notebook> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebookUpdateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3648,7 +3650,7 @@ export interface AiModel {
     | (string & {});
 }
 
-export const AiModel: Schema.Schema<AiModel> =
+export const AiModel: Schema.Codec<AiModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     usageCategory: Schema.optional(Schema.String),
@@ -3664,7 +3666,7 @@ export interface OrgPolicy {
   name?: string;
 }
 
-export const OrgPolicy: Schema.Schema<OrgPolicy> =
+export const OrgPolicy: Schema.Codec<OrgPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "OrgPolicy" });
@@ -3673,7 +3675,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevisi
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision> =
+export const GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -3686,7 +3688,7 @@ export interface GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount 
   value?: number;
 }
 
-export const GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount: Schema.Schema<GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount> =
+export const GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount: Schema.Codec<GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -3703,7 +3705,7 @@ export interface GroupFindingsRequest {
   pageSize?: number;
 }
 
-export const GroupFindingsRequest: Schema.Schema<GroupFindingsRequest> =
+export const GroupFindingsRequest: Schema.Codec<GroupFindingsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readTime: Schema.optional(Schema.String),
     pageToken: Schema.optional(Schema.String),
@@ -3717,7 +3719,7 @@ export interface AzureManagementGroup {
   displayName?: string;
 }
 
-export const AzureManagementGroup: Schema.Schema<AzureManagementGroup> =
+export const AzureManagementGroup: Schema.Codec<AzureManagementGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3733,7 +3735,7 @@ export interface AccessReview {
   subresource?: string;
 }
 
-export const AccessReview: Schema.Schema<AccessReview> =
+export const AccessReview: Schema.Codec<AccessReview> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     group: Schema.optional(Schema.String),
@@ -3750,7 +3752,7 @@ export interface Role {
   name?: string;
 }
 
-export const Role: Schema.Schema<Role> =
+export const Role: Schema.Codec<Role> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     ns: Schema.optional(Schema.String),
@@ -3768,7 +3770,7 @@ export interface Subject {
   ns?: string;
 }
 
-export const Subject: Schema.Schema<Subject> =
+export const Subject: Schema.Codec<Subject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3782,7 +3784,7 @@ export interface GoogleCloudSecuritycenterV1Binding {
   ns?: string;
 }
 
-export const GoogleCloudSecuritycenterV1Binding: Schema.Schema<GoogleCloudSecuritycenterV1Binding> =
+export const GoogleCloudSecuritycenterV1Binding: Schema.Codec<GoogleCloudSecuritycenterV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Role),
     subjects: Schema.optional(Schema.Array(Subject)),
@@ -3794,7 +3796,7 @@ export interface Node {
   name?: string;
 }
 
-export const Node: Schema.Schema<Node> =
+export const Node: Schema.Codec<Node> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Node" });
@@ -3804,7 +3806,7 @@ export interface NodePool {
   nodes?: ReadonlyArray<Node>;
 }
 
-export const NodePool: Schema.Schema<NodePool> =
+export const NodePool: Schema.Codec<NodePool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     nodes: Schema.optional(Schema.Array(Node)),
@@ -3817,13 +3819,14 @@ export interface Pod {
   labels?: ReadonlyArray<Label>;
 }
 
-export const Pod: Schema.Schema<Pod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Pod: Schema.Codec<Pod> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     ns: Schema.optional(Schema.String),
     containers: Schema.optional(Schema.Array(Container)),
     name: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Array(Label)),
-  }).annotate({ identifier: "Pod" });
+  },
+).annotate({ identifier: "Pod" });
 
 export interface Kubernetes {
   accessReviews?: ReadonlyArray<AccessReview>;
@@ -3835,7 +3838,7 @@ export interface Kubernetes {
   roles?: ReadonlyArray<Role>;
 }
 
-export const Kubernetes: Schema.Schema<Kubernetes> =
+export const Kubernetes: Schema.Codec<Kubernetes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessReviews: Schema.optional(Schema.Array(AccessReview)),
     bindings: Schema.optional(Schema.Array(GoogleCloudSecuritycenterV1Binding)),
@@ -3859,7 +3862,7 @@ export interface DataFlowEvent {
   violatedLocation?: string;
 }
 
-export const DataFlowEvent: Schema.Schema<DataFlowEvent> =
+export const DataFlowEvent: Schema.Codec<DataFlowEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
@@ -3872,7 +3875,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAwsMetadata {
   account?: GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceAwsMetadata: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceAwsMetadata> =
+export const GoogleCloudSecuritycenterV2IssueResourceAwsMetadata: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAwsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount,
@@ -3886,7 +3889,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubsc
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription> =
+export const GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3899,7 +3902,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAzureMetadata {
   subscription?: GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceAzureMetadata: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceAzureMetadata> =
+export const GoogleCloudSecuritycenterV2IssueResourceAzureMetadata: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAzureMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription,
@@ -3913,7 +3916,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplication {
   attributes?: GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceApplication: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceApplication> =
+export const GoogleCloudSecuritycenterV2IssueResourceApplication: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
@@ -3928,7 +3931,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAdcApplication {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceAdcApplication: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceAdcApplication> =
+export const GoogleCloudSecuritycenterV2IssueResourceAdcApplication: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAdcApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributes: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes,
@@ -3942,7 +3945,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateR
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision> =
+export const GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -3954,7 +3957,7 @@ export interface GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata {
   projectId?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata: Schema.Schema<GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata> =
+export const GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata: Schema.Codec<GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
   }).annotate({
@@ -3980,7 +3983,7 @@ export interface GoogleCloudSecuritycenterV2IssueResource {
   googleCloudMetadata?: GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata;
 }
 
-export const GoogleCloudSecuritycenterV2IssueResource: Schema.Schema<GoogleCloudSecuritycenterV2IssueResource> =
+export const GoogleCloudSecuritycenterV2IssueResource: Schema.Codec<GoogleCloudSecuritycenterV2IssueResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     awsMetadata: Schema.optional(
       GoogleCloudSecuritycenterV2IssueResourceAwsMetadata,
@@ -4013,7 +4016,7 @@ export interface GoogleCloudSecuritycenterV2IssueFindingCve {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueFindingCve: Schema.Schema<GoogleCloudSecuritycenterV2IssueFindingCve> =
+export const GoogleCloudSecuritycenterV2IssueFindingCve: Schema.Codec<GoogleCloudSecuritycenterV2IssueFindingCve> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2IssueFindingCve" });
@@ -4024,7 +4027,7 @@ export interface GoogleCloudSecuritycenterV2IssueFinding {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueFinding: Schema.Schema<GoogleCloudSecuritycenterV2IssueFinding> =
+export const GoogleCloudSecuritycenterV2IssueFinding: Schema.Codec<GoogleCloudSecuritycenterV2IssueFinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cve: Schema.optional(GoogleCloudSecuritycenterV2IssueFindingCve),
     securityBulletin: Schema.optional(
@@ -4040,7 +4043,7 @@ export interface GoogleCloudSecuritycenterV2IssueMute {
   muteUpdateTime?: string;
 }
 
-export const GoogleCloudSecuritycenterV2IssueMute: Schema.Schema<GoogleCloudSecuritycenterV2IssueMute> =
+export const GoogleCloudSecuritycenterV2IssueMute: Schema.Codec<GoogleCloudSecuritycenterV2IssueMute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     muteState: Schema.optional(Schema.String),
     muteReason: Schema.optional(Schema.String),
@@ -4061,7 +4064,7 @@ export interface GoogleCloudSecuritycenterV2IssueDomain {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2IssueDomain: Schema.Schema<GoogleCloudSecuritycenterV2IssueDomain> =
+export const GoogleCloudSecuritycenterV2IssueDomain: Schema.Codec<GoogleCloudSecuritycenterV2IssueDomain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domainCategory: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV2IssueDomain" });
@@ -4071,7 +4074,7 @@ export interface GoogleCloudSecuritycenterV2IssueSecurityContextContext {
   values?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSecuritycenterV2IssueSecurityContextContext: Schema.Schema<GoogleCloudSecuritycenterV2IssueSecurityContextContext> =
+export const GoogleCloudSecuritycenterV2IssueSecurityContextContext: Schema.Codec<GoogleCloudSecuritycenterV2IssueSecurityContextContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(Schema.String)),
@@ -4084,7 +4087,7 @@ export interface GoogleCloudSecuritycenterV2IssueSecurityContext {
   aggregatedCount?: GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount;
 }
 
-export const GoogleCloudSecuritycenterV2IssueSecurityContext: Schema.Schema<GoogleCloudSecuritycenterV2IssueSecurityContext> =
+export const GoogleCloudSecuritycenterV2IssueSecurityContext: Schema.Codec<GoogleCloudSecuritycenterV2IssueSecurityContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     context: Schema.optional(
       GoogleCloudSecuritycenterV2IssueSecurityContextContext,
@@ -4127,7 +4130,7 @@ export interface GoogleCloudSecuritycenterV2Issue {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2Issue: Schema.Schema<GoogleCloudSecuritycenterV2Issue> =
+export const GoogleCloudSecuritycenterV2Issue: Schema.Codec<GoogleCloudSecuritycenterV2Issue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -4162,7 +4165,7 @@ export interface IamBinding {
   action?: "ACTION_UNSPECIFIED" | "ADD" | "REMOVE" | (string & {});
 }
 
-export const IamBinding: Schema.Schema<IamBinding> =
+export const IamBinding: Schema.Codec<IamBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     member: Schema.optional(Schema.String),
@@ -4182,7 +4185,7 @@ export interface DiscoveredWorkload {
   confidence?: "CONFIDENCE_UNSPECIFIED" | "CONFIDENCE_HIGH" | (string & {});
 }
 
-export const DiscoveredWorkload: Schema.Schema<DiscoveredWorkload> =
+export const DiscoveredWorkload: Schema.Codec<DiscoveredWorkload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadType: Schema.optional(Schema.String),
     detectedRelevantKeywords: Schema.optional(Schema.Boolean),
@@ -4201,7 +4204,7 @@ export interface ProcessSignature {
   yaraRuleSignature?: YaraRuleSignature;
 }
 
-export const ProcessSignature: Schema.Schema<ProcessSignature> =
+export const ProcessSignature: Schema.Codec<ProcessSignature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signatureType: Schema.optional(Schema.String),
     memoryHashSignature: Schema.optional(MemoryHashSignature),
@@ -4213,7 +4216,7 @@ export interface ServiceAccountDelegationInfo {
   principalSubject?: string;
 }
 
-export const ServiceAccountDelegationInfo: Schema.Schema<ServiceAccountDelegationInfo> =
+export const ServiceAccountDelegationInfo: Schema.Codec<ServiceAccountDelegationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     principalEmail: Schema.optional(Schema.String),
     principalSubject: Schema.optional(Schema.String),
@@ -4228,7 +4231,7 @@ export interface GroupAssetsRequest {
   groupBy?: string;
 }
 
-export const GroupAssetsRequest: Schema.Schema<GroupAssetsRequest> =
+export const GroupAssetsRequest: Schema.Codec<GroupAssetsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compareDuration: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -4242,7 +4245,7 @@ export interface GoogleCloudSecuritycenterV1ResourceSelector {
   resourceTypes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudSecuritycenterV1ResourceSelector: Schema.Schema<GoogleCloudSecuritycenterV1ResourceSelector> =
+export const GoogleCloudSecuritycenterV1ResourceSelector: Schema.Codec<GoogleCloudSecuritycenterV1ResourceSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudSecuritycenterV1ResourceSelector" });
@@ -4252,7 +4255,7 @@ export interface AwsOrganizationalUnit {
   id?: string;
 }
 
-export const AwsOrganizationalUnit: Schema.Schema<AwsOrganizationalUnit> =
+export const AwsOrganizationalUnit: Schema.Codec<AwsOrganizationalUnit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -4262,7 +4265,7 @@ export interface Disk {
   name?: string;
 }
 
-export const Disk: Schema.Schema<Disk> =
+export const Disk: Schema.Codec<Disk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Disk" });
@@ -4277,7 +4280,7 @@ export interface StaticMute {
   applyTime?: string;
 }
 
-export const StaticMute: Schema.Schema<StaticMute> =
+export const StaticMute: Schema.Codec<StaticMute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     applyTime: Schema.optional(Schema.String),
@@ -4288,7 +4291,7 @@ export interface EnvironmentVariable {
   val?: string;
 }
 
-export const EnvironmentVariable: Schema.Schema<EnvironmentVariable> =
+export const EnvironmentVariable: Schema.Codec<EnvironmentVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     val: Schema.optional(Schema.String),
@@ -4299,7 +4302,7 @@ export interface SetFindingStateRequest {
   startTime?: string;
 }
 
-export const SetFindingStateRequest: Schema.Schema<SetFindingStateRequest> =
+export const SetFindingStateRequest: Schema.Codec<SetFindingStateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -4315,7 +4318,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnviron
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment: Schema.Schema<GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment> =
+export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -4330,7 +4333,7 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -4344,7 +4347,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -4355,7 +4358,7 @@ export interface Geolocation {
   regionCode?: string;
 }
 
-export const Geolocation: Schema.Schema<Geolocation> =
+export const Geolocation: Schema.Codec<Geolocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "Geolocation" });
@@ -4374,7 +4377,7 @@ export interface Access {
   principalSubject?: string;
 }
 
-export const Access: Schema.Schema<Access> =
+export const Access: Schema.Codec<Access> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccountKeyName: Schema.optional(Schema.String),
     serviceName: Schema.optional(Schema.String),
@@ -4396,7 +4399,7 @@ export interface ExportFindingsMetadata {
   bigQueryDestination?: BigQueryDestination;
 }
 
-export const ExportFindingsMetadata: Schema.Schema<ExportFindingsMetadata> =
+export const ExportFindingsMetadata: Schema.Codec<ExportFindingsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportStartTime: Schema.optional(Schema.String),
     bigQueryDestination: Schema.optional(BigQueryDestination),
@@ -4412,7 +4415,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributesCritica
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality: Schema.Schema<GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality> =
+export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -4428,7 +4431,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
   operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
 }
 
-export const GoogleCloudSecuritycenterV1ResourceApplicationAttributes: Schema.Schema<GoogleCloudSecuritycenterV1ResourceApplicationAttributes> =
+export const GoogleCloudSecuritycenterV1ResourceApplicationAttributes: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplicationAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.optional(
       GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment,
@@ -4461,7 +4464,7 @@ export interface SecurityPolicy {
   preview?: boolean;
 }
 
-export const SecurityPolicy: Schema.Schema<SecurityPolicy> =
+export const SecurityPolicy: Schema.Codec<SecurityPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4481,13 +4484,14 @@ export interface Job {
   location?: string;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Job: Schema.Codec<Job> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     errorCode: Schema.optional(Schema.Number),
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Job" });
+  },
+).annotate({ identifier: "Job" });
 
 export interface GoogleCloudSecuritycenterV2ResourceValueConfig {
   scope?: string;
@@ -4514,7 +4518,7 @@ export interface GoogleCloudSecuritycenterV2ResourceValueConfig {
   createTime?: string;
 }
 
-export const GoogleCloudSecuritycenterV2ResourceValueConfig: Schema.Schema<GoogleCloudSecuritycenterV2ResourceValueConfig> =
+export const GoogleCloudSecuritycenterV2ResourceValueConfig: Schema.Codec<GoogleCloudSecuritycenterV2ResourceValueConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -4537,7 +4541,7 @@ export interface Chokepoint {
   relatedFindings?: ReadonlyArray<string>;
 }
 
-export const Chokepoint: Schema.Schema<Chokepoint> =
+export const Chokepoint: Schema.Codec<Chokepoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedFindings: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Chokepoint" });
@@ -4547,7 +4551,7 @@ export interface Application {
   fullUri?: string;
 }
 
-export const Application: Schema.Schema<Application> =
+export const Application: Schema.Codec<Application> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseUri: Schema.optional(Schema.String),
     fullUri: Schema.optional(Schema.String),
@@ -4570,7 +4574,7 @@ export interface ResourcePathNode {
   displayName?: string;
 }
 
-export const ResourcePathNode: Schema.Schema<ResourcePathNode> =
+export const ResourcePathNode: Schema.Codec<ResourcePathNode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeType: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -4581,7 +4585,7 @@ export interface ResourcePath {
   nodes?: ReadonlyArray<ResourcePathNode>;
 }
 
-export const ResourcePath: Schema.Schema<ResourcePath> =
+export const ResourcePath: Schema.Codec<ResourcePath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodes: Schema.optional(Schema.Array(ResourcePathNode)),
   }).annotate({ identifier: "ResourcePath" });
@@ -4591,7 +4595,7 @@ export interface GoogleCloudSecuritycenterV1Property {
   valueExpression?: Expr;
 }
 
-export const GoogleCloudSecuritycenterV1Property: Schema.Schema<GoogleCloudSecuritycenterV1Property> =
+export const GoogleCloudSecuritycenterV1Property: Schema.Codec<GoogleCloudSecuritycenterV1Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     valueExpression: Schema.optional(Expr),
@@ -4601,7 +4605,7 @@ export interface GoogleCloudSecuritycenterV1CustomOutputSpec {
   properties?: ReadonlyArray<GoogleCloudSecuritycenterV1Property>;
 }
 
-export const GoogleCloudSecuritycenterV1CustomOutputSpec: Schema.Schema<GoogleCloudSecuritycenterV1CustomOutputSpec> =
+export const GoogleCloudSecuritycenterV1CustomOutputSpec: Schema.Codec<GoogleCloudSecuritycenterV1CustomOutputSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV1Property),
@@ -4623,7 +4627,7 @@ export interface GoogleCloudSecuritycenterV1CustomConfig {
   recommendation?: string;
 }
 
-export const GoogleCloudSecuritycenterV1CustomConfig: Schema.Schema<GoogleCloudSecuritycenterV1CustomConfig> =
+export const GoogleCloudSecuritycenterV1CustomConfig: Schema.Codec<GoogleCloudSecuritycenterV1CustomConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customOutput: Schema.optional(GoogleCloudSecuritycenterV1CustomOutputSpec),
     description: Schema.optional(Schema.String),
@@ -4647,7 +4651,7 @@ export interface GoogleCloudSecuritycenterV1MuteConfig {
   createTime?: string;
 }
 
-export const GoogleCloudSecuritycenterV1MuteConfig: Schema.Schema<GoogleCloudSecuritycenterV1MuteConfig> =
+export const GoogleCloudSecuritycenterV1MuteConfig: Schema.Codec<GoogleCloudSecuritycenterV1MuteConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     mostRecentEditor: Schema.optional(Schema.String),
@@ -4664,7 +4668,7 @@ export interface Contact {
   email?: string;
 }
 
-export const Contact: Schema.Schema<Contact> =
+export const Contact: Schema.Codec<Contact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "Contact" });
@@ -4673,7 +4677,7 @@ export interface AdaptiveProtection {
   confidence?: number;
 }
 
-export const AdaptiveProtection: Schema.Schema<AdaptiveProtection> =
+export const AdaptiveProtection: Schema.Codec<AdaptiveProtection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AdaptiveProtection" });
@@ -4682,7 +4686,7 @@ export interface SecretFilePath {
   path?: string;
 }
 
-export const SecretFilePath: Schema.Schema<SecretFilePath> =
+export const SecretFilePath: Schema.Codec<SecretFilePath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecretFilePath" });
@@ -4698,7 +4702,7 @@ export interface SecretStatus {
     | (string & {});
 }
 
-export const SecretStatus: Schema.Schema<SecretStatus> =
+export const SecretStatus: Schema.Codec<SecretStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastUpdatedTime: Schema.optional(Schema.String),
     validity: Schema.optional(Schema.String),
@@ -4708,7 +4712,7 @@ export interface SecretEnvironmentVariable {
   key?: string;
 }
 
-export const SecretEnvironmentVariable: Schema.Schema<SecretEnvironmentVariable> =
+export const SecretEnvironmentVariable: Schema.Codec<SecretEnvironmentVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecretEnvironmentVariable" });
@@ -4720,7 +4724,7 @@ export interface Secret {
   environmentVariable?: SecretEnvironmentVariable;
 }
 
-export const Secret: Schema.Schema<Secret> =
+export const Secret: Schema.Codec<Secret> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filePath: Schema.optional(SecretFilePath),
     type: Schema.optional(Schema.String),
@@ -4733,7 +4737,7 @@ export interface AwsAccount {
   name?: string;
 }
 
-export const AwsAccount: Schema.Schema<AwsAccount> =
+export const AwsAccount: Schema.Codec<AwsAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4743,7 +4747,7 @@ export interface AwsOrganization {
   id?: string;
 }
 
-export const AwsOrganization: Schema.Schema<AwsOrganization> =
+export const AwsOrganization: Schema.Codec<AwsOrganization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "AwsOrganization" });
@@ -4754,7 +4758,7 @@ export interface AwsMetadata {
   organization?: AwsOrganization;
 }
 
-export const AwsMetadata: Schema.Schema<AwsMetadata> =
+export const AwsMetadata: Schema.Codec<AwsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationalUnits: Schema.optional(Schema.Array(AwsOrganizationalUnit)),
     account: Schema.optional(AwsAccount),
@@ -4771,7 +4775,7 @@ export interface AttackExposure {
   exposedHighValueResourcesCount?: number;
 }
 
-export const AttackExposure: Schema.Schema<AttackExposure> =
+export const AttackExposure: Schema.Codec<AttackExposure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exposedLowValueResourcesCount: Schema.optional(Schema.Number),
     score: Schema.optional(Schema.Number),
@@ -4787,7 +4791,7 @@ export interface DynamicMuteRecord {
   matchTime?: string;
 }
 
-export const DynamicMuteRecord: Schema.Schema<DynamicMuteRecord> =
+export const DynamicMuteRecord: Schema.Codec<DynamicMuteRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     muteConfig: Schema.optional(Schema.String),
     matchTime: Schema.optional(Schema.String),
@@ -4805,7 +4809,7 @@ export interface GoogleCloudSecuritycenterV2MuteConfig {
   type?: "MUTE_CONFIG_TYPE_UNSPECIFIED" | "STATIC" | "DYNAMIC" | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV2MuteConfig: Schema.Schema<GoogleCloudSecuritycenterV2MuteConfig> =
+export const GoogleCloudSecuritycenterV2MuteConfig: Schema.Codec<GoogleCloudSecuritycenterV2MuteConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     mostRecentEditor: Schema.optional(Schema.String),
@@ -4820,7 +4824,7 @@ export const GoogleCloudSecuritycenterV2MuteConfig: Schema.Schema<GoogleCloudSec
 
 export interface ExportFindingsResponse {}
 
-export const ExportFindingsResponse: Schema.Schema<ExportFindingsResponse> =
+export const ExportFindingsResponse: Schema.Codec<ExportFindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportFindingsResponse",
   });
@@ -4830,7 +4834,7 @@ export interface AdcApplication {
   attributes?: GoogleCloudSecuritycenterV1ResourceApplicationAttributes;
 }
 
-export const AdcApplication: Schema.Schema<AdcApplication> =
+export const AdcApplication: Schema.Codec<AdcApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
@@ -4845,7 +4849,7 @@ export interface ListAssetsResponse {
   readTime?: string;
 }
 
-export const ListAssetsResponse: Schema.Schema<ListAssetsResponse> =
+export const ListAssetsResponse: Schema.Codec<ListAssetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -4863,7 +4867,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
   duration?: string;
 }
 
-export const GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse: Schema.Schema<GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse> =
+export const GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -4875,7 +4879,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -4890,7 +4894,7 @@ export interface SensitivityScore {
     | (string & {});
 }
 
-export const SensitivityScore: Schema.Schema<SensitivityScore> =
+export const SensitivityScore: Schema.Codec<SensitivityScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.String),
   }).annotate({ identifier: "SensitivityScore" });
@@ -4899,7 +4903,7 @@ export interface Denied {
   ipRules?: ReadonlyArray<IpRule>;
 }
 
-export const Denied: Schema.Schema<Denied> =
+export const Denied: Schema.Codec<Denied> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipRules: Schema.optional(Schema.Array(IpRule)),
   }).annotate({ identifier: "Denied" });
@@ -4910,7 +4914,7 @@ export interface InfoType {
   version?: string;
 }
 
-export const InfoType: Schema.Schema<InfoType> =
+export const InfoType: Schema.Codec<InfoType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sensitivityScore: Schema.optional(SensitivityScore),
@@ -4922,7 +4926,7 @@ export interface Folder {
   resourceFolderDisplayName?: string;
 }
 
-export const Folder: Schema.Schema<Folder> =
+export const Folder: Schema.Codec<Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceFolder: Schema.optional(Schema.String),
     resourceFolderDisplayName: Schema.optional(Schema.String),
@@ -4938,7 +4942,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -4949,7 +4953,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -4979,7 +4983,7 @@ export interface ExternalExposure {
   pscNetworkAttachment?: string;
 }
 
-export const ExternalExposure: Schema.Schema<ExternalExposure> =
+export const ExternalExposure: Schema.Codec<ExternalExposure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     internalBackendService: Schema.optional(Schema.String),
     instanceGroup: Schema.optional(Schema.String),
@@ -5015,7 +5019,7 @@ export interface FileOperation {
     | (string & {});
 }
 
-export const FileOperation: Schema.Schema<FileOperation> =
+export const FileOperation: Schema.Codec<FileOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "FileOperation" });
@@ -5024,7 +5028,7 @@ export interface LoadBalancer {
   name?: string;
 }
 
-export const LoadBalancer: Schema.Schema<LoadBalancer> =
+export const LoadBalancer: Schema.Codec<LoadBalancer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "LoadBalancer" });
@@ -5037,7 +5041,7 @@ export interface Attack {
   volumeBpsLong?: string;
 }
 
-export const Attack: Schema.Schema<Attack> =
+export const Attack: Schema.Codec<Attack> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     classification: Schema.optional(Schema.String),
     volumePpsLong: Schema.optional(Schema.String),
@@ -5051,7 +5055,7 @@ export interface GroupResult {
   count?: string;
 }
 
-export const GroupResult: Schema.Schema<GroupResult> =
+export const GroupResult: Schema.Codec<GroupResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     count: Schema.optional(Schema.String),
@@ -5064,7 +5068,7 @@ export interface CloudLoggingEntry {
   timestamp?: string;
 }
 
-export const CloudLoggingEntry: Schema.Schema<CloudLoggingEntry> =
+export const CloudLoggingEntry: Schema.Codec<CloudLoggingEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logId: Schema.optional(Schema.String),
     insertId: Schema.optional(Schema.String),
@@ -5076,7 +5080,7 @@ export interface LogEntry {
   cloudLoggingEntry?: CloudLoggingEntry;
 }
 
-export const LogEntry: Schema.Schema<LogEntry> =
+export const LogEntry: Schema.Codec<LogEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudLoggingEntry: Schema.optional(CloudLoggingEntry),
   }).annotate({ identifier: "LogEntry" });
@@ -5086,7 +5090,7 @@ export interface DiskPath {
   relativePath?: string;
 }
 
-export const DiskPath: Schema.Schema<DiskPath> =
+export const DiskPath: Schema.Codec<DiskPath> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionUuid: Schema.optional(Schema.String),
     relativePath: Schema.optional(Schema.String),
@@ -5108,7 +5112,7 @@ export interface File {
   operations?: ReadonlyArray<FileOperation>;
 }
 
-export const File: Schema.Schema<File> =
+export const File: Schema.Codec<File> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partiallyHashed: Schema.optional(Schema.Boolean),
     path: Schema.optional(Schema.String),
@@ -5127,7 +5131,7 @@ export interface Source {
   description?: string;
 }
 
-export const Source: Schema.Schema<Source> =
+export const Source: Schema.Codec<Source> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5139,7 +5143,7 @@ export interface ListSourcesResponse {
   sources?: ReadonlyArray<Source>;
 }
 
-export const ListSourcesResponse: Schema.Schema<ListSourcesResponse> =
+export const ListSourcesResponse: Schema.Codec<ListSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     sources: Schema.optional(Schema.Array(Source)),
@@ -5147,7 +5151,7 @@ export const ListSourcesResponse: Schema.Schema<ListSourcesResponse> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -5159,7 +5163,7 @@ export interface AzureMetadata {
   tenant?: AzureTenant;
 }
 
-export const AzureMetadata: Schema.Schema<AzureMetadata> =
+export const AzureMetadata: Schema.Codec<AzureMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroups: Schema.optional(Schema.Array(AzureManagementGroup)),
     subscription: Schema.optional(AzureSubscription),
@@ -5171,7 +5175,7 @@ export interface ContactDetails {
   contacts?: ReadonlyArray<Contact>;
 }
 
-export const ContactDetails: Schema.Schema<ContactDetails> =
+export const ContactDetails: Schema.Codec<ContactDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contacts: Schema.optional(Schema.Array(Contact)),
   }).annotate({ identifier: "ContactDetails" });
@@ -5181,7 +5185,7 @@ export interface Control {
   displayName?: string;
 }
 
-export const Control: Schema.Schema<Control> =
+export const Control: Schema.Codec<Control> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     controlName: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5207,7 +5211,7 @@ export interface Framework {
   controls?: ReadonlyArray<Control>;
 }
 
-export const Framework: Schema.Schema<Framework> =
+export const Framework: Schema.Codec<Framework> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5222,7 +5226,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
   name?: string;
 }
 
-export const GoogleCloudSecuritycenterV1p1beta1SecurityMarks: Schema.Schema<GoogleCloudSecuritycenterV1p1beta1SecurityMarks> =
+export const GoogleCloudSecuritycenterV1p1beta1SecurityMarks: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1SecurityMarks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     marks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     canonicalName: Schema.optional(Schema.String),
@@ -5240,7 +5244,7 @@ export interface ArtifactGuardPolicy {
   failureReason?: string;
 }
 
-export const ArtifactGuardPolicy: Schema.Schema<ArtifactGuardPolicy> =
+export const ArtifactGuardPolicy: Schema.Codec<ArtifactGuardPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     policyId: Schema.optional(Schema.String),
@@ -5268,7 +5272,7 @@ export interface GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule 
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule: Schema.Schema<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule> =
+export const GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule: Schema.Codec<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     enablementState: Schema.optional(Schema.String),
@@ -5300,7 +5304,7 @@ export interface GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping: Schema.Schema<GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping> =
+export const GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping: Schema.Codec<GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mediumSensitivityMapping: Schema.optional(Schema.String),
     highSensitivityMapping: Schema.optional(Schema.String),
@@ -5333,7 +5337,7 @@ export interface GoogleCloudSecuritycenterV1ResourceValueConfig {
   updateTime?: string;
 }
 
-export const GoogleCloudSecuritycenterV1ResourceValueConfig: Schema.Schema<GoogleCloudSecuritycenterV1ResourceValueConfig> =
+export const GoogleCloudSecuritycenterV1ResourceValueConfig: Schema.Codec<GoogleCloudSecuritycenterV1ResourceValueConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     sensitiveDataProtectionMapping: Schema.optional(
@@ -5359,7 +5363,7 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
@@ -5372,7 +5376,7 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(Policy),
@@ -5395,7 +5399,7 @@ export interface GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCust
   displayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule: Schema.Schema<GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule> =
+export const GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule: Schema.Codec<GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudProvider: Schema.optional(Schema.String),
     customConfig: Schema.optional(GoogleCloudSecuritycenterV1CustomConfig),
@@ -5414,7 +5418,7 @@ export interface Requests {
   shortTermAllowed?: number;
 }
 
-export const Requests: Schema.Schema<Requests> =
+export const Requests: Schema.Codec<Requests> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longTermAllowed: Schema.optional(Schema.Number),
     longTermDenied: Schema.optional(Schema.Number),
@@ -5432,7 +5436,7 @@ export interface CloudDlpDataProfile {
   dataProfile?: string;
 }
 
-export const CloudDlpDataProfile: Schema.Schema<CloudDlpDataProfile> =
+export const CloudDlpDataProfile: Schema.Codec<CloudDlpDataProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentType: Schema.optional(Schema.String),
     infoTypes: Schema.optional(Schema.Array(InfoType)),
@@ -5443,7 +5447,7 @@ export interface AdcSharedTemplateRevision {
   name?: string;
 }
 
-export const AdcSharedTemplateRevision: Schema.Schema<AdcSharedTemplateRevision> =
+export const AdcSharedTemplateRevision: Schema.Codec<AdcSharedTemplateRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdcSharedTemplateRevision" });
@@ -5452,7 +5456,7 @@ export interface VulnerabilityCountBySeverity {
   severityToFindingCount?: Record<string, string>;
 }
 
-export const VulnerabilityCountBySeverity: Schema.Schema<VulnerabilityCountBySeverity> =
+export const VulnerabilityCountBySeverity: Schema.Codec<VulnerabilityCountBySeverity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severityToFindingCount: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -5465,7 +5469,7 @@ export interface PolicyDriftDetails {
   expectedValue?: string;
 }
 
-export const PolicyDriftDetails: Schema.Schema<PolicyDriftDetails> =
+export const PolicyDriftDetails: Schema.Codec<PolicyDriftDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectedValue: Schema.optional(Schema.String),
     field: Schema.optional(Schema.String),
@@ -5484,7 +5488,7 @@ export interface GoogleCloudSecuritycenterV2BigQueryExport {
   mostRecentEditor?: string;
 }
 
-export const GoogleCloudSecuritycenterV2BigQueryExport: Schema.Schema<GoogleCloudSecuritycenterV2BigQueryExport> =
+export const GoogleCloudSecuritycenterV2BigQueryExport: Schema.Codec<GoogleCloudSecuritycenterV2BigQueryExport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     dataset: Schema.optional(Schema.String),
@@ -5502,7 +5506,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplication {
   attributes?: GoogleCloudSecuritycenterV1ResourceApplicationAttributes;
 }
 
-export const GoogleCloudSecuritycenterV1ResourceApplication: Schema.Schema<GoogleCloudSecuritycenterV1ResourceApplication> =
+export const GoogleCloudSecuritycenterV1ResourceApplication: Schema.Codec<GoogleCloudSecuritycenterV1ResourceApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     attributes: Schema.optional(
@@ -5538,7 +5542,7 @@ export interface GoogleCloudSecuritycenterV1Resource {
   parentDisplayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV1Resource: Schema.Schema<GoogleCloudSecuritycenterV1Resource> =
+export const GoogleCloudSecuritycenterV1Resource: Schema.Codec<GoogleCloudSecuritycenterV1Resource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.optional(Schema.String),
     adcSharedTemplate: Schema.optional(AdcSharedTemplateRevision),
@@ -5569,7 +5573,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1Folder {
   resourceFolderDisplayName?: string;
 }
 
-export const GoogleCloudSecuritycenterV1p1beta1Folder: Schema.Schema<GoogleCloudSecuritycenterV1p1beta1Folder> =
+export const GoogleCloudSecuritycenterV1p1beta1Folder: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceFolder: Schema.optional(Schema.String),
     resourceFolderDisplayName: Schema.optional(Schema.String),
@@ -5584,7 +5588,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1Resource {
   parent?: string;
 }
 
-export const GoogleCloudSecuritycenterV1p1beta1Resource: Schema.Schema<GoogleCloudSecuritycenterV1p1beta1Resource> =
+export const GoogleCloudSecuritycenterV1p1beta1Resource: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1Resource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     folders: Schema.optional(
       Schema.Array(GoogleCloudSecuritycenterV1p1beta1Folder),
@@ -5600,7 +5604,7 @@ export interface Network {
   name?: string;
 }
 
-export const Network: Schema.Schema<Network> =
+export const Network: Schema.Codec<Network> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Network" });
@@ -5614,7 +5618,7 @@ export interface AssetDiscoveryConfig {
     | (string & {});
 }
 
-export const AssetDiscoveryConfig: Schema.Schema<AssetDiscoveryConfig> =
+export const AssetDiscoveryConfig: Schema.Codec<AssetDiscoveryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectIds: Schema.optional(Schema.Array(Schema.String)),
     inclusionMode: Schema.optional(Schema.String),
@@ -5626,7 +5630,7 @@ export interface OrganizationSettings {
   enableAssetDiscovery?: boolean;
 }
 
-export const OrganizationSettings: Schema.Schema<OrganizationSettings> =
+export const OrganizationSettings: Schema.Codec<OrganizationSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     assetDiscoveryConfig: Schema.optional(AssetDiscoveryConfig),
@@ -5645,7 +5649,7 @@ export interface KernelRootkit {
   unexpectedFtraceHandler?: boolean;
 }
 
-export const KernelRootkit: Schema.Schema<KernelRootkit> =
+export const KernelRootkit: Schema.Codec<KernelRootkit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unexpectedReadOnlyDataModification: Schema.optional(Schema.Boolean),
     unexpectedSystemCallHandler: Schema.optional(Schema.Boolean),
@@ -5665,7 +5669,7 @@ export interface Indicator {
   uris?: ReadonlyArray<string>;
 }
 
-export const Indicator: Schema.Schema<Indicator> =
+export const Indicator: Schema.Codec<Indicator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipAddresses: Schema.optional(Schema.Array(Schema.String)),
     domains: Schema.optional(Schema.Array(Schema.String)),
@@ -5684,7 +5688,7 @@ export interface SecurityPosture {
   changedPolicy?: string;
 }
 
-export const SecurityPosture: Schema.Schema<SecurityPosture> =
+export const SecurityPosture: Schema.Codec<SecurityPosture> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revisionId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5705,7 +5709,7 @@ export interface CloudArmor {
   threatVector?: string;
 }
 
-export const CloudArmor: Schema.Schema<CloudArmor> =
+export const CloudArmor: Schema.Codec<CloudArmor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityPolicy: Schema.optional(SecurityPolicy),
     attack: Schema.optional(Attack),
@@ -5717,7 +5721,7 @@ export const CloudArmor: Schema.Schema<CloudArmor> =
 
 export interface GoogleCloudSecuritycenterV1BulkMuteFindingsResponse {}
 
-export const GoogleCloudSecuritycenterV1BulkMuteFindingsResponse: Schema.Schema<GoogleCloudSecuritycenterV1BulkMuteFindingsResponse> =
+export const GoogleCloudSecuritycenterV1BulkMuteFindingsResponse: Schema.Codec<GoogleCloudSecuritycenterV1BulkMuteFindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudSecuritycenterV1BulkMuteFindingsResponse",
   });
@@ -5731,7 +5735,7 @@ export interface Database {
   userName?: string;
 }
 
-export const Database: Schema.Schema<Database> =
+export const Database: Schema.Codec<Database> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5755,7 +5759,7 @@ export interface Process {
   libraries?: ReadonlyArray<File>;
 }
 
-export const Process: Schema.Schema<Process> =
+export const Process: Schema.Codec<Process> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     envVariables: Schema.optional(Schema.Array(EnvironmentVariable)),
     envVariablesTruncated: Schema.optional(Schema.Boolean),
@@ -5781,7 +5785,7 @@ export interface CloudControl {
     | (string & {});
 }
 
-export const CloudControl: Schema.Schema<CloudControl> =
+export const CloudControl: Schema.Codec<CloudControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyType: Schema.optional(Schema.String),
     cloudControlName: Schema.optional(Schema.String),
@@ -5795,7 +5799,7 @@ export interface ComplianceDetails {
   cloudControl?: CloudControl;
 }
 
-export const ComplianceDetails: Schema.Schema<ComplianceDetails> =
+export const ComplianceDetails: Schema.Codec<ComplianceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudControlDeploymentNames: Schema.optional(Schema.Array(Schema.String)),
     frameworks: Schema.optional(Schema.Array(Framework)),
@@ -5808,7 +5812,7 @@ export interface Compliance {
   version?: string;
 }
 
-export const Compliance: Schema.Schema<Compliance> =
+export const Compliance: Schema.Codec<Compliance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standard: Schema.optional(Schema.String),
     ids: Schema.optional(Schema.Array(Schema.String)),
@@ -5829,7 +5833,7 @@ export interface DataRetentionDeletionEvent {
   maxRetentionAllowed?: string;
 }
 
-export const DataRetentionDeletionEvent: Schema.Schema<DataRetentionDeletionEvent> =
+export const DataRetentionDeletionEvent: Schema.Codec<DataRetentionDeletionEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventType: Schema.optional(Schema.String),
     eventDetectionTime: Schema.optional(Schema.String),
@@ -5847,7 +5851,7 @@ export interface IpRules {
   exposedServices?: ReadonlyArray<string>;
 }
 
-export const IpRules: Schema.Schema<IpRules> =
+export const IpRules: Schema.Codec<IpRules> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     direction: Schema.optional(Schema.String),
     sourceIpRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -5863,7 +5867,7 @@ export interface Exfiltration {
   targets?: ReadonlyArray<ExfilResource>;
 }
 
-export const Exfiltration: Schema.Schema<Exfiltration> =
+export const Exfiltration: Schema.Codec<Exfiltration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalExfiltratedBytes: Schema.optional(Schema.String),
     sources: Schema.optional(Schema.Array(ExfilResource)),
@@ -5875,7 +5879,7 @@ export interface MuteInfo {
   dynamicMuteRecords?: ReadonlyArray<DynamicMuteRecord>;
 }
 
-export const MuteInfo: Schema.Schema<MuteInfo> =
+export const MuteInfo: Schema.Codec<MuteInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     staticMute: Schema.optional(StaticMute),
     dynamicMuteRecords: Schema.optional(Schema.Array(DynamicMuteRecord)),
@@ -6204,7 +6208,7 @@ export interface MitreAttack {
   version?: string;
 }
 
-export const MitreAttack: Schema.Schema<MitreAttack> =
+export const MitreAttack: Schema.Codec<MitreAttack> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryTechniques: Schema.optional(Schema.Array(Schema.String)),
     additionalTactics: Schema.optional(Schema.Array(Schema.String)),
@@ -6218,7 +6222,7 @@ export interface ArtifactGuardPolicies {
   resourceId?: string;
 }
 
-export const ArtifactGuardPolicies: Schema.Schema<ArtifactGuardPolicies> =
+export const ArtifactGuardPolicies: Schema.Codec<ArtifactGuardPolicies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failingPolicies: Schema.optional(Schema.Array(ArtifactGuardPolicy)),
     resourceId: Schema.optional(Schema.String),
@@ -6315,7 +6319,7 @@ export interface Finding {
   artifactGuardPolicies?: ArtifactGuardPolicies;
 }
 
-export const Finding: Schema.Schema<Finding> =
+export const Finding: Schema.Codec<Finding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vulnerability: Schema.optional(Vulnerability),
     name: Schema.optional(Schema.String),
@@ -6400,7 +6404,7 @@ export interface GoogleCloudSecuritycenterV1NotificationMessage {
   resource?: GoogleCloudSecuritycenterV1Resource;
 }
 
-export const GoogleCloudSecuritycenterV1NotificationMessage: Schema.Schema<GoogleCloudSecuritycenterV1NotificationMessage> =
+export const GoogleCloudSecuritycenterV1NotificationMessage: Schema.Codec<GoogleCloudSecuritycenterV1NotificationMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finding: Schema.optional(Finding),
     notificationConfigName: Schema.optional(Schema.String),
@@ -6428,7 +6432,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1Finding {
   externalUri?: string;
 }
 
-export const GoogleCloudSecuritycenterV1p1beta1Finding: Schema.Schema<GoogleCloudSecuritycenterV1p1beta1Finding> =
+export const GoogleCloudSecuritycenterV1p1beta1Finding: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1Finding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -6460,7 +6464,7 @@ export interface VulnerabilitySnapshot {
   findingCount?: VulnerabilityCountBySeverity;
 }
 
-export const VulnerabilitySnapshot: Schema.Schema<VulnerabilitySnapshot> =
+export const VulnerabilitySnapshot: Schema.Codec<VulnerabilitySnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudProvider: Schema.optional(Schema.String),
     snapshotTime: Schema.optional(Schema.String),
@@ -6475,7 +6479,7 @@ export interface ListFindingsResponse {
   totalSize?: number;
 }
 
-export const ListFindingsResponse: Schema.Schema<ListFindingsResponse> =
+export const ListFindingsResponse: Schema.Codec<ListFindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     findings: Schema.optional(
@@ -6495,7 +6499,7 @@ export interface GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse: Schema.Schema<GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse> =
+export const GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse: Schema.Codec<GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -6509,7 +6513,7 @@ export interface GroupAssetsResponse {
   readTime?: string;
 }
 
-export const GroupAssetsResponse: Schema.Schema<GroupAssetsResponse> =
+export const GroupAssetsResponse: Schema.Codec<GroupAssetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     groupByResults: Schema.optional(Schema.Array(GroupResult)),
@@ -6522,7 +6526,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
   resource?: GoogleCloudSecuritycenterV1p1beta1Resource;
 }
 
-export const GoogleCloudSecuritycenterV1p1beta1NotificationMessage: Schema.Schema<GoogleCloudSecuritycenterV1p1beta1NotificationMessage> =
+export const GoogleCloudSecuritycenterV1p1beta1NotificationMessage: Schema.Codec<GoogleCloudSecuritycenterV1p1beta1NotificationMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finding: Schema.optional(GoogleCloudSecuritycenterV1p1beta1Finding),
     notificationConfigName: Schema.optional(Schema.String),
@@ -6533,14 +6537,14 @@ export const GoogleCloudSecuritycenterV1p1beta1NotificationMessage: Schema.Schem
 
 export interface RunAssetDiscoveryRequest {}
 
-export const RunAssetDiscoveryRequest: Schema.Schema<RunAssetDiscoveryRequest> =
+export const RunAssetDiscoveryRequest: Schema.Codec<RunAssetDiscoveryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RunAssetDiscoveryRequest",
   });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -6555,7 +6559,7 @@ export interface GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
     | (string & {});
 }
 
-export const GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse: Schema.Schema<GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse> =
+export const GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse: Schema.Codec<GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -6569,7 +6573,7 @@ export interface GroupFindingsResponse {
   readTime?: string;
 }
 
-export const GroupFindingsResponse: Schema.Schema<GroupFindingsResponse> =
+export const GroupFindingsResponse: Schema.Codec<GroupFindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     groupByResults: Schema.optional(Schema.Array(GroupResult)),
@@ -6640,7 +6644,7 @@ export const GetOrganizationSettingsOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationSettingsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationSettingsOrganizationsRequest>;
 
 export type GetOrganizationSettingsOrganizationsResponse = OrganizationSettings;
 export const GetOrganizationSettingsOrganizationsResponse =
@@ -6677,7 +6681,7 @@ export const UpdateOrganizationSettingsOrganizationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationSettingsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationSettingsOrganizationsRequest>;
 
 export type UpdateOrganizationSettingsOrganizationsResponse =
   OrganizationSettings;
@@ -6719,7 +6723,7 @@ export const CreateOrganizationsSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSourcesRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSourcesRequest>;
 
 export type CreateOrganizationsSourcesResponse = Source;
 export const CreateOrganizationsSourcesResponse =
@@ -6757,7 +6761,7 @@ export const ListOrganizationsSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/sources" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSourcesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSourcesRequest>;
 
 export type ListOrganizationsSourcesResponse = ListSourcesResponse;
 export const ListOrganizationsSourcesResponse =
@@ -6798,7 +6802,7 @@ export const PatchOrganizationsSourcesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsSourcesRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsSourcesRequest>;
 
 export type PatchOrganizationsSourcesResponse = Source;
 export const PatchOrganizationsSourcesResponse =
@@ -6839,7 +6843,7 @@ export const SetIamPolicyOrganizationsSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsSourcesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyOrganizationsSourcesRequest>;
 
 export type SetIamPolicyOrganizationsSourcesResponse = Policy;
 export const SetIamPolicyOrganizationsSourcesResponse =
@@ -6880,7 +6884,7 @@ export const GetIamPolicyOrganizationsSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsSourcesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyOrganizationsSourcesRequest>;
 
 export type GetIamPolicyOrganizationsSourcesResponse = Policy;
 export const GetIamPolicyOrganizationsSourcesResponse =
@@ -6921,7 +6925,7 @@ export const TestIamPermissionsOrganizationsSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsOrganizationsSourcesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsOrganizationsSourcesRequest>;
 
 export type TestIamPermissionsOrganizationsSourcesResponse =
   TestIamPermissionsResponse;
@@ -6956,7 +6960,7 @@ export const GetOrganizationsSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsSourcesRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsSourcesRequest>;
 
 export type GetOrganizationsSourcesResponse = Source;
 export const GetOrganizationsSourcesResponse =
@@ -6994,7 +6998,7 @@ export const UpdateSecurityMarksOrganizationsSourcesFindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSecurityMarksOrganizationsSourcesFindingsRequest>;
+  ) as unknown as Schema.Codec<UpdateSecurityMarksOrganizationsSourcesFindingsRequest>;
 
 export type UpdateSecurityMarksOrganizationsSourcesFindingsResponse =
   GoogleCloudSecuritycenterV1beta1SecurityMarks;
@@ -7040,7 +7044,7 @@ export const CreateOrganizationsSourcesFindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsSourcesFindingsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsSourcesFindingsRequest>;
 
 export type CreateOrganizationsSourcesFindingsResponse =
   GoogleCloudSecuritycenterV1beta1Finding;
@@ -7087,7 +7091,7 @@ export const ListOrganizationsSourcesFindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/findings" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsSourcesFindingsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsSourcesFindingsRequest>;
 
 export type ListOrganizationsSourcesFindingsResponse = ListFindingsResponse;
 export const ListOrganizationsSourcesFindingsResponse =
@@ -7126,7 +7130,7 @@ export const SetStateOrganizationsSourcesFindingsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:setState", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetStateOrganizationsSourcesFindingsRequest>;
+  ) as unknown as Schema.Codec<SetStateOrganizationsSourcesFindingsRequest>;
 
 export type SetStateOrganizationsSourcesFindingsResponse =
   GoogleCloudSecuritycenterV1beta1Finding;
@@ -7168,7 +7172,7 @@ export const PatchOrganizationsSourcesFindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsSourcesFindingsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsSourcesFindingsRequest>;
 
 export type PatchOrganizationsSourcesFindingsResponse =
   GoogleCloudSecuritycenterV1beta1Finding;
@@ -7210,7 +7214,7 @@ export const GroupOrganizationsSourcesFindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GroupOrganizationsSourcesFindingsRequest>;
+  ) as unknown as Schema.Codec<GroupOrganizationsSourcesFindingsRequest>;
 
 export type GroupOrganizationsSourcesFindingsResponse = GroupFindingsResponse;
 export const GroupOrganizationsSourcesFindingsResponse =
@@ -7260,7 +7264,7 @@ export const ListOrganizationsAssetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/assets" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsAssetsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsAssetsRequest>;
 
 export type ListOrganizationsAssetsResponse = ListAssetsResponse;
 export const ListOrganizationsAssetsResponse =
@@ -7302,7 +7306,7 @@ export const UpdateSecurityMarksOrganizationsAssetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSecurityMarksOrganizationsAssetsRequest>;
+  ) as unknown as Schema.Codec<UpdateSecurityMarksOrganizationsAssetsRequest>;
 
 export type UpdateSecurityMarksOrganizationsAssetsResponse =
   GoogleCloudSecuritycenterV1beta1SecurityMarks;
@@ -7344,7 +7348,7 @@ export const GroupOrganizationsAssetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GroupOrganizationsAssetsRequest>;
+  ) as unknown as Schema.Codec<GroupOrganizationsAssetsRequest>;
 
 export type GroupOrganizationsAssetsResponse = GroupAssetsResponse;
 export const GroupOrganizationsAssetsResponse =
@@ -7385,7 +7389,7 @@ export const RunDiscoveryOrganizationsAssetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunDiscoveryOrganizationsAssetsRequest>;
+  ) as unknown as Schema.Codec<RunDiscoveryOrganizationsAssetsRequest>;
 
 export type RunDiscoveryOrganizationsAssetsResponse = Operation;
 export const RunDiscoveryOrganizationsAssetsResponse =
@@ -7429,7 +7433,7 @@ export const ListOrganizationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsOperationsRequest>;
 
 export type ListOrganizationsOperationsResponse = ListOperationsResponse;
 export const ListOrganizationsOperationsResponse =
@@ -7465,7 +7469,7 @@ export const GetOrganizationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsOperationsRequest>;
 
 export type GetOrganizationsOperationsResponse = Operation;
 export const GetOrganizationsOperationsResponse =
@@ -7497,7 +7501,7 @@ export const DeleteOrganizationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsOperationsRequest>;
 
 export type DeleteOrganizationsOperationsResponse = Empty;
 export const DeleteOrganizationsOperationsResponse =
@@ -7534,7 +7538,7 @@ export const CancelOrganizationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOrganizationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOrganizationsOperationsRequest>;
 
 export type CancelOrganizationsOperationsResponse = Empty;
 export const CancelOrganizationsOperationsResponse =

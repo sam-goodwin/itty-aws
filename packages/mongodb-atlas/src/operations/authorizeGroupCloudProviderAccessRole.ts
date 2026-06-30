@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizeGroupCloudProviderAccessRoleInput {
+  groupId: string;
+  roleId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const AuthorizeGroupCloudProviderAccessRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const AuthorizeGroupCloudProviderAccessRoleInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}",
     }),
-  );
-export type AuthorizeGroupCloudProviderAccessRoleInput =
-  typeof AuthorizeGroupCloudProviderAccessRoleInput.Type;
+  ) as unknown as Schema.Codec<AuthorizeGroupCloudProviderAccessRoleInput>;
 
 // Output Schema
+export type AuthorizeGroupCloudProviderAccessRoleOutput = void;
 export const AuthorizeGroupCloudProviderAccessRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AuthorizeGroupCloudProviderAccessRoleOutput =
-  typeof AuthorizeGroupCloudProviderAccessRoleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizeGroupCloudProviderAccessRoleOutput>;
 
 // The operation
 /**

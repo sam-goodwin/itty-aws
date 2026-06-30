@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetConsumptionHistoryPerBranchV2Input {
+  cursor?: string;
+  limit?: number;
+  project_ids: string;
+  branch_ids?: string;
+  from: string;
+  to: string;
+  granularity: string;
+  org_id: string;
+  metrics: string;
+}
 export const GetConsumptionHistoryPerBranchV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
@@ -15,11 +26,29 @@ export const GetConsumptionHistoryPerBranchV2Input =
     granularity: Schema.String,
     org_id: Schema.String,
     metrics: Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/consumption_history/v2/branches" }));
-export type GetConsumptionHistoryPerBranchV2Input =
-  typeof GetConsumptionHistoryPerBranchV2Input.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/consumption_history/v2/branches" }),
+  ) as unknown as Schema.Codec<GetConsumptionHistoryPerBranchV2Input>;
 
 // Output Schema
+export interface GetConsumptionHistoryPerBranchV2Output {
+  branches: {
+    project_id: string;
+    branch_id: string;
+    periods: {
+      period_id: string;
+      period_plan: string;
+      period_start: string;
+      period_end?: string;
+      consumption: {
+        timeframe_start?: string;
+        timeframe_end?: string;
+        metrics?: { metric_name: string; value: number }[];
+      }[];
+    }[];
+  }[];
+  pagination?: { cursor: string };
+}
 export const GetConsumptionHistoryPerBranchV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branches: Schema.Array(
@@ -55,9 +84,7 @@ export const GetConsumptionHistoryPerBranchV2Output =
         cursor: Schema.String,
       }),
     ),
-  });
-export type GetConsumptionHistoryPerBranchV2Output =
-  typeof GetConsumptionHistoryPerBranchV2Output.Type;
+  }) as unknown as Schema.Codec<GetConsumptionHistoryPerBranchV2Output>;
 
 // The operation
 /**

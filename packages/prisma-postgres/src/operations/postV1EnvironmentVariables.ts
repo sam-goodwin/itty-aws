@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PostV1EnvironmentVariablesInput {
+  projectId: string;
+  branchId?: string;
+  class: "production" | "preview";
+  key: string;
+  value: string;
+}
 export const PostV1EnvironmentVariablesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.String,
@@ -11,11 +18,26 @@ export const PostV1EnvironmentVariablesInput =
     class: Schema.Literals(["production", "preview"]),
     key: Schema.String,
     value: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/v1/environment-variables" }));
-export type PostV1EnvironmentVariablesInput =
-  typeof PostV1EnvironmentVariablesInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/environment-variables" }),
+  ) as unknown as Schema.Codec<PostV1EnvironmentVariablesInput>;
 
 // Output Schema
+export interface PostV1EnvironmentVariablesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    projectId: string;
+    branchId: string | null;
+    class: "production" | "preview";
+    key: string;
+    valueKid: string;
+    isManagedBySystem: boolean;
+    createdAt: string;
+    updatedAt: string;
+  };
+}
 export const PostV1EnvironmentVariablesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -31,9 +53,7 @@ export const PostV1EnvironmentVariablesOutput =
       createdAt: Schema.String,
       updatedAt: Schema.String,
     }),
-  });
-export type PostV1EnvironmentVariablesOutput =
-  typeof PostV1EnvironmentVariablesOutput.Type;
+  }) as unknown as Schema.Codec<PostV1EnvironmentVariablesOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -52,7 +52,7 @@ export interface IssueSeverityPerReportingContext {
   demotedCountries?: ReadonlyArray<string>;
 }
 
-export const IssueSeverityPerReportingContext: Schema.Schema<IssueSeverityPerReportingContext> =
+export const IssueSeverityPerReportingContext: Schema.Codec<IssueSeverityPerReportingContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
@@ -71,7 +71,7 @@ export interface ItemIssueSeverity {
   severityPerReportingContext?: ReadonlyArray<IssueSeverityPerReportingContext>;
 }
 
-export const ItemIssueSeverity: Schema.Schema<ItemIssueSeverity> =
+export const ItemIssueSeverity: Schema.Codec<ItemIssueSeverity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregatedSeverity: Schema.optional(Schema.String),
     severityPerReportingContext: Schema.optional(
@@ -88,7 +88,7 @@ export interface SearchRequest {
   pageToken?: string;
 }
 
-export const SearchRequest: Schema.Schema<SearchRequest> =
+export const SearchRequest: Schema.Codec<SearchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -102,7 +102,7 @@ export interface Price {
   currencyCode?: string;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -156,7 +156,7 @@ export interface PriceInsightsProductView {
   suggestedPrice?: Price;
 }
 
-export const PriceInsightsProductView: Schema.Schema<PriceInsightsProductView> =
+export const PriceInsightsProductView: Schema.Codec<PriceInsightsProductView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     predictedClicksChangeFraction: Schema.optional(Schema.Number),
     price: Schema.optional(Price),
@@ -189,7 +189,7 @@ export interface Merchantapi_Date {
   day?: number;
 }
 
-export const Merchantapi_Date: Schema.Schema<Merchantapi_Date> =
+export const Merchantapi_Date: Schema.Codec<Merchantapi_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -209,7 +209,7 @@ export interface NonProductPerformanceView {
   clickThroughRate?: number;
 }
 
-export const NonProductPerformanceView: Schema.Schema<NonProductPerformanceView> =
+export const NonProductPerformanceView: Schema.Codec<NonProductPerformanceView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Merchantapi_Date),
     clicks: Schema.optional(Schema.String),
@@ -250,7 +250,7 @@ export interface StatusPerReportingContext {
     | (string & {});
 }
 
-export const StatusPerReportingContext: Schema.Schema<StatusPerReportingContext> =
+export const StatusPerReportingContext: Schema.Codec<StatusPerReportingContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pendingCountries: Schema.optional(Schema.Array(Schema.String)),
     approvedCountries: Schema.optional(Schema.Array(Schema.String)),
@@ -278,7 +278,7 @@ export interface CompetitiveVisibilityBenchmarkView {
   reportCategoryId?: string;
 }
 
-export const CompetitiveVisibilityBenchmarkView: Schema.Schema<CompetitiveVisibilityBenchmarkView> =
+export const CompetitiveVisibilityBenchmarkView: Schema.Codec<CompetitiveVisibilityBenchmarkView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Merchantapi_Date),
     reportCountryCode: Schema.optional(Schema.String),
@@ -295,7 +295,7 @@ export interface ItemIssueType {
   canonicalAttribute?: string;
 }
 
-export const ItemIssueType: Schema.Schema<ItemIssueType> =
+export const ItemIssueType: Schema.Codec<ItemIssueType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     canonicalAttribute: Schema.optional(Schema.String),
@@ -314,7 +314,7 @@ export interface ItemIssue {
     | (string & {});
 }
 
-export const ItemIssue: Schema.Schema<ItemIssue> =
+export const ItemIssue: Schema.Codec<ItemIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(ItemIssueType),
     severity: Schema.optional(ItemIssueSeverity),
@@ -420,7 +420,7 @@ export interface ProductView {
     | (string & {});
 }
 
-export const ProductView: Schema.Schema<ProductView> =
+export const ProductView: Schema.Codec<ProductView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTime: Schema.optional(Schema.String),
     categoryL3: Schema.optional(Schema.String),
@@ -486,7 +486,7 @@ export interface CompetitiveVisibilityTopMerchantView {
   reportCountryCode?: string;
 }
 
-export const CompetitiveVisibilityTopMerchantView: Schema.Schema<CompetitiveVisibilityTopMerchantView> =
+export const CompetitiveVisibilityTopMerchantView: Schema.Codec<CompetitiveVisibilityTopMerchantView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportCategoryId: Schema.optional(Schema.String),
     higherPositionRate: Schema.optional(Schema.Number),
@@ -532,7 +532,7 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
@@ -577,7 +577,7 @@ export interface PriceCompetitivenessProductView {
   productTypeL5?: string;
 }
 
-export const PriceCompetitivenessProductView: Schema.Schema<PriceCompetitivenessProductView> =
+export const PriceCompetitivenessProductView: Schema.Codec<PriceCompetitivenessProductView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoryL1: Schema.optional(Schema.String),
     productTypeL3: Schema.optional(Schema.String),
@@ -628,7 +628,7 @@ export interface CompetitiveVisibilityCompetitorView {
   reportCountryCode?: string;
 }
 
-export const CompetitiveVisibilityCompetitorView: Schema.Schema<CompetitiveVisibilityCompetitorView> =
+export const CompetitiveVisibilityCompetitorView: Schema.Codec<CompetitiveVisibilityCompetitorView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportCategoryId: Schema.optional(Schema.String),
     higherPositionRate: Schema.optional(Schema.Number),
@@ -689,7 +689,7 @@ export interface BestSellersBrandView {
   previousRank?: string;
 }
 
-export const BestSellersBrandView: Schema.Schema<BestSellersBrandView> =
+export const BestSellersBrandView: Schema.Codec<BestSellersBrandView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportCategoryId: Schema.optional(Schema.String),
     brand: Schema.optional(Schema.String),
@@ -777,7 +777,7 @@ export interface BestSellersProductClusterView {
   title?: string;
 }
 
-export const BestSellersProductClusterView: Schema.Schema<BestSellersProductClusterView> =
+export const BestSellersProductClusterView: Schema.Codec<BestSellersProductClusterView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoryL4: Schema.optional(Schema.String),
     inventoryStatus: Schema.optional(Schema.String),
@@ -869,7 +869,7 @@ export interface ProductPerformanceView {
   customLabel4?: string;
 }
 
-export const ProductPerformanceView: Schema.Schema<ProductPerformanceView> =
+export const ProductPerformanceView: Schema.Codec<ProductPerformanceView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customLabel2: Schema.optional(Schema.String),
     categoryL3: Schema.optional(Schema.String),
@@ -925,7 +925,7 @@ export interface ReportRow {
   productPerformanceView?: ProductPerformanceView;
 }
 
-export const ReportRow: Schema.Schema<ReportRow> =
+export const ReportRow: Schema.Codec<ReportRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productView: Schema.optional(ProductView),
     priceCompetitivenessProductView: Schema.optional(
@@ -956,7 +956,7 @@ export interface SearchResponse {
   results?: ReadonlyArray<ReportRow>;
 }
 
-export const SearchResponse: Schema.Schema<SearchResponse> =
+export const SearchResponse: Schema.Codec<SearchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(ReportRow)),
@@ -987,7 +987,7 @@ export interface ProductStatusChangeMessage {
   expirationTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     changes: Schema.optional(Schema.Array(ProductChange)),
@@ -1072,7 +1072,7 @@ export const SearchAccountsReportsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchAccountsReportsRequest>;
+  ) as unknown as Schema.Codec<SearchAccountsReportsRequest>;
 
 export type SearchAccountsReportsResponse = SearchResponse;
 export const SearchAccountsReportsResponse =

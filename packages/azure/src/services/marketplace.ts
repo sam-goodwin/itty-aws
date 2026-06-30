@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17,10 +18,25 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Marketplace/operations",
     apiVersion: "2025-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: unknown;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -42,8 +58,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -56,6 +71,17 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateStoreAcknowledgeOfferNotificationInput {
+  privateStoreId: string;
+  offerId: string;
+  properties?: {
+    acknowledge?: boolean;
+    dismiss?: boolean;
+    removeOffer?: boolean;
+    addPlans?: string[];
+    removePlans?: string[];
+  };
+}
 export const PrivateStoreAcknowledgeOfferNotificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -75,15 +101,12 @@ export const PrivateStoreAcknowledgeOfferNotificationInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/offers/{offerId}/acknowledgeNotification",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreAcknowledgeOfferNotificationInput =
-  typeof PrivateStoreAcknowledgeOfferNotificationInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreAcknowledgeOfferNotificationInput>;
 
 // Output Schema
+export type PrivateStoreAcknowledgeOfferNotificationOutput = void;
 export const PrivateStoreAcknowledgeOfferNotificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateStoreAcknowledgeOfferNotificationOutput =
-  typeof PrivateStoreAcknowledgeOfferNotificationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreAcknowledgeOfferNotificationOutput>;
 
 // The operation
 /**
@@ -99,6 +122,9 @@ export const PrivateStoreAcknowledgeOfferNotification =
     outputSchema: PrivateStoreAcknowledgeOfferNotificationOutput,
   }));
 // Input Schema
+export interface PrivateStoreAdminRequestApprovalsListInput {
+  privateStoreId: string;
+}
 export const PrivateStoreAdminRequestApprovalsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -108,11 +134,25 @@ export const PrivateStoreAdminRequestApprovalsListInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreAdminRequestApprovalsListInput =
-  typeof PrivateStoreAdminRequestApprovalsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreAdminRequestApprovalsListInput>;
 
 // Output Schema
+export interface PrivateStoreAdminRequestApprovalsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateStoreAdminRequestApprovalsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -149,9 +189,7 @@ export const PrivateStoreAdminRequestApprovalsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateStoreAdminRequestApprovalsListOutput =
-  typeof PrivateStoreAdminRequestApprovalsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreAdminRequestApprovalsListOutput>;
 
 // The operation
 /**
@@ -166,6 +204,9 @@ export const PrivateStoreAdminRequestApprovalsList =
     outputSchema: PrivateStoreAdminRequestApprovalsListOutput,
   }));
 // Input Schema
+export interface PrivateStoreAnyExistingOffersInTheCollectionsInput {
+  privateStoreId: string;
+}
 export const PrivateStoreAnyExistingOffersInTheCollectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -175,17 +216,16 @@ export const PrivateStoreAnyExistingOffersInTheCollectionsInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/anyExistingOffersInTheCollections",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreAnyExistingOffersInTheCollectionsInput =
-  typeof PrivateStoreAnyExistingOffersInTheCollectionsInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreAnyExistingOffersInTheCollectionsInput>;
 
 // Output Schema
+export interface PrivateStoreAnyExistingOffersInTheCollectionsOutput {
+  value?: boolean;
+}
 export const PrivateStoreAnyExistingOffersInTheCollectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
-  });
-export type PrivateStoreAnyExistingOffersInTheCollectionsOutput =
-  typeof PrivateStoreAnyExistingOffersInTheCollectionsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreAnyExistingOffersInTheCollectionsOutput>;
 
 // The operation
 /**
@@ -200,6 +240,9 @@ export const PrivateStoreAnyExistingOffersInTheCollections =
     outputSchema: PrivateStoreAnyExistingOffersInTheCollectionsOutput,
   }));
 // Input Schema
+export interface PrivateStoreBillingAccountsInput {
+  privateStoreId: string;
+}
 export const PrivateStoreBillingAccountsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -209,17 +252,16 @@ export const PrivateStoreBillingAccountsInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/billingAccounts",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreBillingAccountsInput =
-  typeof PrivateStoreBillingAccountsInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreBillingAccountsInput>;
 
 // Output Schema
+export interface PrivateStoreBillingAccountsOutput {
+  billingAccounts?: string[];
+}
 export const PrivateStoreBillingAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccounts: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type PrivateStoreBillingAccountsOutput =
-  typeof PrivateStoreBillingAccountsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreBillingAccountsOutput>;
 
 // The operation
 /**
@@ -235,6 +277,10 @@ export const PrivateStoreBillingAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateStoreBulkCollectionsActionInput {
+  privateStoreId: string;
+  properties?: { collectionIds?: string[]; action?: string };
+}
 export const PrivateStoreBulkCollectionsActionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -250,11 +296,13 @@ export const PrivateStoreBulkCollectionsActionInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/bulkCollectionsAction",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreBulkCollectionsActionInput =
-  typeof PrivateStoreBulkCollectionsActionInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreBulkCollectionsActionInput>;
 
 // Output Schema
+export interface PrivateStoreBulkCollectionsActionOutput {
+  succeeded?: { collectionName?: string; collectionId?: string }[];
+  failed?: { collectionName?: string; collectionId?: string }[];
+}
 export const PrivateStoreBulkCollectionsActionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     succeeded: Schema.optional(
@@ -273,9 +321,7 @@ export const PrivateStoreBulkCollectionsActionOutput =
         }),
       ),
     ),
-  });
-export type PrivateStoreBulkCollectionsActionOutput =
-  typeof PrivateStoreBulkCollectionsActionOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreBulkCollectionsActionOutput>;
 
 // The operation
 /**
@@ -290,6 +336,10 @@ export const PrivateStoreBulkCollectionsAction =
     outputSchema: PrivateStoreBulkCollectionsActionOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionApproveAllItemsInput {
+  privateStoreId: string;
+  collectionId: string;
+}
 export const PrivateStoreCollectionApproveAllItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -300,11 +350,22 @@ export const PrivateStoreCollectionApproveAllItemsInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/approveAllItems",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionApproveAllItemsInput =
-  typeof PrivateStoreCollectionApproveAllItemsInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionApproveAllItemsInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionApproveAllItemsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCollectionApproveAllItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -324,9 +385,7 @@ export const PrivateStoreCollectionApproveAllItemsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCollectionApproveAllItemsOutput =
-  typeof PrivateStoreCollectionApproveAllItemsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionApproveAllItemsOutput>;
 
 // The operation
 /**
@@ -342,6 +401,25 @@ export const PrivateStoreCollectionApproveAllItems =
     outputSchema: PrivateStoreCollectionApproveAllItemsOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionCreateOrUpdateInput {
+  privateStoreId: string;
+  collectionId: string;
+  properties?: {
+    collectionId?: string;
+    collectionName?: string;
+    claim?: string;
+    allSubscriptions?: boolean;
+    approveAllItems?: boolean;
+    approveAllItemsModifiedAt?: string;
+    subscriptionsList?: string[];
+    enabled?: boolean;
+    numberOfOffers?: number;
+    appliedRules?: {
+      type?: "PrivateProducts" | "TermsAndCondition";
+      value?: string[];
+    }[];
+  };
+}
 export const PrivateStoreCollectionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -375,11 +453,22 @@ export const PrivateStoreCollectionCreateOrUpdateInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionCreateOrUpdateInput =
-  typeof PrivateStoreCollectionCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCollectionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -399,9 +488,7 @@ export const PrivateStoreCollectionCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCollectionCreateOrUpdateOutput =
-  typeof PrivateStoreCollectionCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -417,6 +504,10 @@ export const PrivateStoreCollectionCreateOrUpdate =
     outputSchema: PrivateStoreCollectionCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionDeleteInput {
+  privateStoreId: string;
+  collectionId: string;
+}
 export const PrivateStoreCollectionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -427,15 +518,12 @@ export const PrivateStoreCollectionDeleteInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionDeleteInput =
-  typeof PrivateStoreCollectionDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionDeleteInput>;
 
 // Output Schema
+export type PrivateStoreCollectionDeleteOutput = void;
 export const PrivateStoreCollectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateStoreCollectionDeleteOutput =
-  typeof PrivateStoreCollectionDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionDeleteOutput>;
 
 // The operation
 /**
@@ -451,6 +539,10 @@ export const PrivateStoreCollectionDelete =
     outputSchema: PrivateStoreCollectionDeleteOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionDisableApproveAllItemsInput {
+  privateStoreId: string;
+  collectionId: string;
+}
 export const PrivateStoreCollectionDisableApproveAllItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -461,11 +553,22 @@ export const PrivateStoreCollectionDisableApproveAllItemsInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/disableApproveAllItems",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionDisableApproveAllItemsInput =
-  typeof PrivateStoreCollectionDisableApproveAllItemsInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionDisableApproveAllItemsInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionDisableApproveAllItemsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCollectionDisableApproveAllItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -485,9 +588,7 @@ export const PrivateStoreCollectionDisableApproveAllItemsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCollectionDisableApproveAllItemsOutput =
-  typeof PrivateStoreCollectionDisableApproveAllItemsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionDisableApproveAllItemsOutput>;
 
 // The operation
 /**
@@ -503,6 +604,10 @@ export const PrivateStoreCollectionDisableApproveAllItems =
     outputSchema: PrivateStoreCollectionDisableApproveAllItemsOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionGetInput {
+  privateStoreId: string;
+  collectionId: string;
+}
 export const PrivateStoreCollectionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -513,11 +618,22 @@ export const PrivateStoreCollectionGetInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionGetInput =
-  typeof PrivateStoreCollectionGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionGetInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCollectionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -537,9 +653,7 @@ export const PrivateStoreCollectionGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCollectionGetOutput =
-  typeof PrivateStoreCollectionGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionGetOutput>;
 
 // The operation
 /**
@@ -556,6 +670,9 @@ export const PrivateStoreCollectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateStoreCollectionListInput {
+  privateStoreId: string;
+}
 export const PrivateStoreCollectionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -565,11 +682,25 @@ export const PrivateStoreCollectionListInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionListInput =
-  typeof PrivateStoreCollectionListInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionListInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateStoreCollectionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -606,9 +737,7 @@ export const PrivateStoreCollectionListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateStoreCollectionListOutput =
-  typeof PrivateStoreCollectionListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionListOutput>;
 
 // The operation
 /**
@@ -624,6 +753,12 @@ export const PrivateStoreCollectionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateStoreCollectionOfferContextsViewInput {
+  privateStoreId: string;
+  collectionId: string;
+  offerId: string;
+  properties?: { subscriptionIds?: string[] };
+}
 export const PrivateStoreCollectionOfferContextsViewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -640,11 +775,22 @@ export const PrivateStoreCollectionOfferContextsViewInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}/contextsView",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionOfferContextsViewInput =
-  typeof PrivateStoreCollectionOfferContextsViewInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionOfferContextsViewInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionOfferContextsViewOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCollectionOfferContextsViewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -664,9 +810,7 @@ export const PrivateStoreCollectionOfferContextsViewOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCollectionOfferContextsViewOutput =
-  typeof PrivateStoreCollectionOfferContextsViewOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionOfferContextsViewOutput>;
 
 // The operation
 /**
@@ -683,6 +827,37 @@ export const PrivateStoreCollectionOfferContextsView =
     outputSchema: PrivateStoreCollectionOfferContextsViewOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionOfferCreateOrUpdateInput {
+  privateStoreId: string;
+  collectionId: string;
+  offerId: string;
+  properties?: {
+    uniqueOfferId?: string;
+    offerDisplayName?: string;
+    publisherDisplayName?: string;
+    eTag?: string;
+    privateStoreId?: string;
+    createdAt?: string;
+    modifiedAt?: string;
+    specificPlanIdsLimitation?: string[];
+    updateSuppressedDueIdempotence?: boolean;
+    iconFileUris?: Record<string, string>;
+    isStopSell?: boolean;
+    plans?: {
+      skuId?: string;
+      planId?: string;
+      planDisplayName?: string;
+      accessibility?:
+        | "Unknown"
+        | "Public"
+        | "PrivateTenantOnLevel"
+        | "PrivateSubscriptionOnLevel";
+      altStackReference?: string;
+      stackType?: string;
+      isStopSell?: boolean;
+    }[];
+  };
+}
 export const PrivateStoreCollectionOfferCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -731,11 +906,22 @@ export const PrivateStoreCollectionOfferCreateOrUpdateInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionOfferCreateOrUpdateInput =
-  typeof PrivateStoreCollectionOfferCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionOfferCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionOfferCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCollectionOfferCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -755,9 +941,7 @@ export const PrivateStoreCollectionOfferCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCollectionOfferCreateOrUpdateOutput =
-  typeof PrivateStoreCollectionOfferCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionOfferCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -774,6 +958,11 @@ export const PrivateStoreCollectionOfferCreateOrUpdate =
     outputSchema: PrivateStoreCollectionOfferCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionOfferDeleteInput {
+  privateStoreId: string;
+  collectionId: string;
+  offerId: string;
+}
 export const PrivateStoreCollectionOfferDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -785,15 +974,12 @@ export const PrivateStoreCollectionOfferDeleteInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionOfferDeleteInput =
-  typeof PrivateStoreCollectionOfferDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionOfferDeleteInput>;
 
 // Output Schema
+export type PrivateStoreCollectionOfferDeleteOutput = void;
 export const PrivateStoreCollectionOfferDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateStoreCollectionOfferDeleteOutput =
-  typeof PrivateStoreCollectionOfferDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionOfferDeleteOutput>;
 
 // The operation
 /**
@@ -810,6 +996,11 @@ export const PrivateStoreCollectionOfferDelete =
     outputSchema: PrivateStoreCollectionOfferDeleteOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionOfferGetInput {
+  privateStoreId: string;
+  collectionId: string;
+  offerId: string;
+}
 export const PrivateStoreCollectionOfferGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -821,11 +1012,22 @@ export const PrivateStoreCollectionOfferGetInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionOfferGetInput =
-  typeof PrivateStoreCollectionOfferGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionOfferGetInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionOfferGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCollectionOfferGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -845,9 +1047,7 @@ export const PrivateStoreCollectionOfferGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCollectionOfferGetOutput =
-  typeof PrivateStoreCollectionOfferGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionOfferGetOutput>;
 
 // The operation
 /**
@@ -864,6 +1064,10 @@ export const PrivateStoreCollectionOfferGet =
     outputSchema: PrivateStoreCollectionOfferGetOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionOfferListInput {
+  privateStoreId: string;
+  collectionId: string;
+}
 export const PrivateStoreCollectionOfferListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -874,11 +1078,25 @@ export const PrivateStoreCollectionOfferListInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionOfferListInput =
-  typeof PrivateStoreCollectionOfferListInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionOfferListInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionOfferListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateStoreCollectionOfferListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -913,9 +1131,7 @@ export const PrivateStoreCollectionOfferListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateStoreCollectionOfferListOutput =
-  typeof PrivateStoreCollectionOfferListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionOfferListOutput>;
 
 // The operation
 /**
@@ -931,6 +1147,11 @@ export const PrivateStoreCollectionOfferList =
     outputSchema: PrivateStoreCollectionOfferListOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionOfferListByContextsInput {
+  privateStoreId: string;
+  collectionId: string;
+  properties?: { subscriptionIds?: string[] };
+}
 export const PrivateStoreCollectionOfferListByContextsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -946,11 +1167,43 @@ export const PrivateStoreCollectionOfferListByContextsInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/mapOffersToContexts",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionOfferListByContextsInput =
-  typeof PrivateStoreCollectionOfferListByContextsInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionOfferListByContextsInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionOfferListByContextsOutput {
+  value?: {
+    context?: string;
+    offers?: {
+      value?: {
+        uniqueOfferId?: string;
+        offerDisplayName?: string;
+        publisherDisplayName?: string;
+        eTag?: string;
+        privateStoreId?: string;
+        createdAt?: string;
+        modifiedAt?: string;
+        specificPlanIdsLimitation?: string[];
+        updateSuppressedDueIdempotence?: boolean;
+        iconFileUris?: Record<string, string>;
+        isStopSell?: boolean;
+        plans?: {
+          skuId?: string;
+          planId?: string;
+          planDisplayName?: string;
+          accessibility?:
+            | "Unknown"
+            | "Public"
+            | "PrivateTenantOnLevel"
+            | "PrivateSubscriptionOnLevel";
+          altStackReference?: string;
+          stackType?: string;
+          isStopSell?: boolean;
+        }[];
+      }[];
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateStoreCollectionOfferListByContextsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1008,9 +1261,7 @@ export const PrivateStoreCollectionOfferListByContextsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateStoreCollectionOfferListByContextsOutput =
-  typeof PrivateStoreCollectionOfferListByContextsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionOfferListByContextsOutput>;
 
 // The operation
 /**
@@ -1026,6 +1277,11 @@ export const PrivateStoreCollectionOfferListByContexts =
     outputSchema: PrivateStoreCollectionOfferListByContextsOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionOfferPostInput {
+  privateStoreId: string;
+  collectionId: string;
+  offerId: string;
+}
 export const PrivateStoreCollectionOfferPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1037,15 +1293,12 @@ export const PrivateStoreCollectionOfferPostInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionOfferPostInput =
-  typeof PrivateStoreCollectionOfferPostInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionOfferPostInput>;
 
 // Output Schema
+export type PrivateStoreCollectionOfferPostOutput = void;
 export const PrivateStoreCollectionOfferPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateStoreCollectionOfferPostOutput =
-  typeof PrivateStoreCollectionOfferPostOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionOfferPostOutput>;
 
 // The operation
 /**
@@ -1062,6 +1315,16 @@ export const PrivateStoreCollectionOfferPost =
     outputSchema: PrivateStoreCollectionOfferPostOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput {
+  privateStoreId: string;
+  collectionId: string;
+  offerId: string;
+  properties?: {
+    offerId?: string;
+    eTag?: string;
+    plansContext?: { context?: string; planIds?: string[] }[];
+  };
+}
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1087,11 +1350,22 @@ export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}/upsertOfferWithMultiContext",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
-  typeof PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1111,9 +1385,7 @@ export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
-  typeof PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput>;
 
 // The operation
 /**
@@ -1130,6 +1402,10 @@ export const PrivateStoreCollectionOfferUpsertOfferWithMultiContext =
     outputSchema: PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionPostInput {
+  privateStoreId: string;
+  collectionId: string;
+}
 export const PrivateStoreCollectionPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1140,15 +1416,12 @@ export const PrivateStoreCollectionPostInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionPostInput =
-  typeof PrivateStoreCollectionPostInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionPostInput>;
 
 // Output Schema
+export type PrivateStoreCollectionPostOutput = void;
 export const PrivateStoreCollectionPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateStoreCollectionPostOutput =
-  typeof PrivateStoreCollectionPostOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCollectionPostOutput>;
 
 // The operation
 /**
@@ -1165,6 +1438,10 @@ export const PrivateStoreCollectionPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateStoreCollectionsToSubscriptionsMappingInput {
+  privateStoreId: string;
+  properties?: { subscriptionIds?: string[] };
+}
 export const PrivateStoreCollectionsToSubscriptionsMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1179,11 +1456,15 @@ export const PrivateStoreCollectionsToSubscriptionsMappingInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collectionsToSubscriptionsMapping",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionsToSubscriptionsMappingInput =
-  typeof PrivateStoreCollectionsToSubscriptionsMappingInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionsToSubscriptionsMappingInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionsToSubscriptionsMappingOutput {
+  details?: Record<
+    string,
+    { collectionName?: string; subscriptions?: string[] }
+  >;
+}
 export const PrivateStoreCollectionsToSubscriptionsMappingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
@@ -1195,9 +1476,7 @@ export const PrivateStoreCollectionsToSubscriptionsMappingOutput =
         }),
       ),
     ),
-  });
-export type PrivateStoreCollectionsToSubscriptionsMappingOutput =
-  typeof PrivateStoreCollectionsToSubscriptionsMappingOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionsToSubscriptionsMappingOutput>;
 
 // The operation
 /**
@@ -1212,6 +1491,15 @@ export const PrivateStoreCollectionsToSubscriptionsMapping =
     outputSchema: PrivateStoreCollectionsToSubscriptionsMappingOutput,
   }));
 // Input Schema
+export interface PrivateStoreCollectionTransferOffersInput {
+  privateStoreId: string;
+  collectionId: string;
+  properties?: {
+    targetCollections?: string[];
+    operation?: string;
+    offerIdsList?: string[];
+  };
+}
 export const PrivateStoreCollectionTransferOffersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1229,11 +1517,13 @@ export const PrivateStoreCollectionTransferOffersInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/transferOffers",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCollectionTransferOffersInput =
-  typeof PrivateStoreCollectionTransferOffersInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCollectionTransferOffersInput>;
 
 // Output Schema
+export interface PrivateStoreCollectionTransferOffersOutput {
+  succeeded?: { collectionName?: string; collectionId?: string }[];
+  failed?: { collectionName?: string; collectionId?: string }[];
+}
 export const PrivateStoreCollectionTransferOffersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     succeeded: Schema.optional(
@@ -1252,9 +1542,7 @@ export const PrivateStoreCollectionTransferOffersOutput =
         }),
       ),
     ),
-  });
-export type PrivateStoreCollectionTransferOffersOutput =
-  typeof PrivateStoreCollectionTransferOffersOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCollectionTransferOffersOutput>;
 
 // The operation
 /**
@@ -1270,6 +1558,25 @@ export const PrivateStoreCollectionTransferOffers =
     outputSchema: PrivateStoreCollectionTransferOffersOutput,
   }));
 // Input Schema
+export interface PrivateStoreCreateApprovalRequestInput {
+  privateStoreId: string;
+  requestApprovalId: string;
+  properties?: {
+    offerId?: string;
+    offerDisplayName?: string;
+    publisherId?: string;
+    plansDetails?: {
+      planId?: string;
+      status?: "Pending" | "Rejected" | "Approved" | "None";
+      requestDate?: unknown;
+      justification?: string;
+      subscriptionId?: string;
+      subscriptionName?: string;
+    }[];
+    isClosed?: boolean;
+    messageCode?: number;
+  };
+}
 export const PrivateStoreCreateApprovalRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1303,11 +1610,22 @@ export const PrivateStoreCreateApprovalRequestInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCreateApprovalRequestInput =
-  typeof PrivateStoreCreateApprovalRequestInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCreateApprovalRequestInput>;
 
 // Output Schema
+export interface PrivateStoreCreateApprovalRequestOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreCreateApprovalRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1327,9 +1645,7 @@ export const PrivateStoreCreateApprovalRequestOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreCreateApprovalRequestOutput =
-  typeof PrivateStoreCreateApprovalRequestOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreCreateApprovalRequestOutput>;
 
 // The operation
 /**
@@ -1345,6 +1661,27 @@ export const PrivateStoreCreateApprovalRequest =
     outputSchema: PrivateStoreCreateApprovalRequestOutput,
   }));
 // Input Schema
+export interface PrivateStoreCreateOrUpdateInput {
+  privateStoreId: string;
+  properties?: {
+    availability?: "enabled" | "disabled";
+    privateStoreId?: string;
+    eTag?: string;
+    privateStoreName?: string;
+    tenantId?: string;
+    isGov?: boolean;
+    collectionIds?: string[];
+    branding?: Record<string, string>;
+    notificationsSettings?: {
+      recipients?: {
+        principalId?: string;
+        emailAddress?: string;
+        displayName?: string;
+      }[];
+      sendToAllMarketplaceAdmins?: boolean;
+    };
+  };
+}
 export const PrivateStoreCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1380,15 +1717,12 @@ export const PrivateStoreCreateOrUpdateInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreCreateOrUpdateInput =
-  typeof PrivateStoreCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreCreateOrUpdateInput>;
 
 // Output Schema
+export type PrivateStoreCreateOrUpdateOutput = void;
 export const PrivateStoreCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateStoreCreateOrUpdateOutput =
-  typeof PrivateStoreCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1404,6 +1738,9 @@ export const PrivateStoreCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateStoreDeleteInput {
+  privateStoreId: string;
+}
 export const PrivateStoreDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1413,12 +1750,12 @@ export const PrivateStoreDeleteInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreDeleteInput = typeof PrivateStoreDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreDeleteInput>;
 
 // Output Schema
-export const PrivateStoreDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateStoreDeleteOutput = typeof PrivateStoreDeleteOutput.Type;
+export type PrivateStoreDeleteOutput = void;
+export const PrivateStoreDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreDeleteOutput>;
 
 // The operation
 /**
@@ -1432,6 +1769,9 @@ export const PrivateStoreDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateStoreDeleteOutput,
 }));
 // Input Schema
+export interface PrivateStoreFetchAllSubscriptionsInTenantInput {
+  privateStoreId: string;
+}
 export const PrivateStoreFetchAllSubscriptionsInTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1441,11 +1781,19 @@ export const PrivateStoreFetchAllSubscriptionsInTenantInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/fetchAllSubscriptionsInTenant",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreFetchAllSubscriptionsInTenantInput =
-  typeof PrivateStoreFetchAllSubscriptionsInTenantInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreFetchAllSubscriptionsInTenantInput>;
 
 // Output Schema
+export interface PrivateStoreFetchAllSubscriptionsInTenantOutput {
+  value?: {
+    id?: string;
+    subscriptionId?: string;
+    displayName?: string;
+    state?: "Enabled" | "Warned" | "PastDue" | "Disabled" | "Deleted";
+  }[];
+  skipToken?: string;
+  count?: number;
+}
 export const PrivateStoreFetchAllSubscriptionsInTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1468,9 +1816,7 @@ export const PrivateStoreFetchAllSubscriptionsInTenantOutput =
     ),
     skipToken: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
-  });
-export type PrivateStoreFetchAllSubscriptionsInTenantOutput =
-  typeof PrivateStoreFetchAllSubscriptionsInTenantOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreFetchAllSubscriptionsInTenantOutput>;
 
 // The operation
 /**
@@ -1486,6 +1832,9 @@ export const PrivateStoreFetchAllSubscriptionsInTenant =
     outputSchema: PrivateStoreFetchAllSubscriptionsInTenantOutput,
   }));
 // Input Schema
+export interface PrivateStoreGetInput {
+  privateStoreId: string;
+}
 export const PrivateStoreGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1494,10 +1843,22 @@ export const PrivateStoreGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
     apiVersion: "2025-01-01",
   }),
-);
-export type PrivateStoreGetInput = typeof PrivateStoreGetInput.Type;
+) as unknown as Schema.Codec<PrivateStoreGetInput>;
 
 // Output Schema
+export interface PrivateStoreGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1516,8 +1877,7 @@ export const PrivateStoreGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PrivateStoreGetOutput = typeof PrivateStoreGetOutput.Type;
+}) as unknown as Schema.Codec<PrivateStoreGetOutput>;
 
 // The operation
 /**
@@ -1531,6 +1891,11 @@ export const PrivateStoreGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateStoreGetOutput,
 }));
 // Input Schema
+export interface PrivateStoreGetAdminRequestApprovalInput {
+  privateStoreId: string;
+  adminRequestApprovalId: string;
+  publisherId: string;
+}
 export const PrivateStoreGetAdminRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1542,11 +1907,22 @@ export const PrivateStoreGetAdminRequestApprovalInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals/{adminRequestApprovalId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreGetAdminRequestApprovalInput =
-  typeof PrivateStoreGetAdminRequestApprovalInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreGetAdminRequestApprovalInput>;
 
 // Output Schema
+export interface PrivateStoreGetAdminRequestApprovalOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreGetAdminRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1566,9 +1942,7 @@ export const PrivateStoreGetAdminRequestApprovalOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreGetAdminRequestApprovalOutput =
-  typeof PrivateStoreGetAdminRequestApprovalOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreGetAdminRequestApprovalOutput>;
 
 // The operation
 /**
@@ -1585,6 +1959,9 @@ export const PrivateStoreGetAdminRequestApproval =
     outputSchema: PrivateStoreGetAdminRequestApprovalOutput,
   }));
 // Input Schema
+export interface PrivateStoreGetApprovalRequestsListInput {
+  privateStoreId: string;
+}
 export const PrivateStoreGetApprovalRequestsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1594,11 +1971,25 @@ export const PrivateStoreGetApprovalRequestsListInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreGetApprovalRequestsListInput =
-  typeof PrivateStoreGetApprovalRequestsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreGetApprovalRequestsListInput>;
 
 // Output Schema
+export interface PrivateStoreGetApprovalRequestsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateStoreGetApprovalRequestsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1635,9 +2026,7 @@ export const PrivateStoreGetApprovalRequestsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateStoreGetApprovalRequestsListOutput =
-  typeof PrivateStoreGetApprovalRequestsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreGetApprovalRequestsListOutput>;
 
 // The operation
 /**
@@ -1652,6 +2041,10 @@ export const PrivateStoreGetApprovalRequestsList =
     outputSchema: PrivateStoreGetApprovalRequestsListOutput,
   }));
 // Input Schema
+export interface PrivateStoreGetRequestApprovalInput {
+  privateStoreId: string;
+  requestApprovalId: string;
+}
 export const PrivateStoreGetRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1662,11 +2055,22 @@ export const PrivateStoreGetRequestApprovalInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreGetRequestApprovalInput =
-  typeof PrivateStoreGetRequestApprovalInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreGetRequestApprovalInput>;
 
 // Output Schema
+export interface PrivateStoreGetRequestApprovalOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreGetRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1686,9 +2090,7 @@ export const PrivateStoreGetRequestApprovalOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreGetRequestApprovalOutput =
-  typeof PrivateStoreGetRequestApprovalOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreGetRequestApprovalOutput>;
 
 // The operation
 /**
@@ -1704,6 +2106,9 @@ export const PrivateStoreGetRequestApproval =
     outputSchema: PrivateStoreGetRequestApprovalOutput,
   }));
 // Input Schema
+export interface PrivateStoreListInput {
+  "use-cache"?: string;
+}
 export const PrivateStoreListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   "use-cache": Schema.optional(Schema.String),
 }).pipe(
@@ -1712,10 +2117,25 @@ export const PrivateStoreListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Marketplace/privateStores",
     apiVersion: "2025-01-01",
   }),
-);
-export type PrivateStoreListInput = typeof PrivateStoreListInput.Type;
+) as unknown as Schema.Codec<PrivateStoreListInput>;
 
 // Output Schema
+export interface PrivateStoreListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateStoreListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -1751,8 +2171,7 @@ export const PrivateStoreListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type PrivateStoreListOutput = typeof PrivateStoreListOutput.Type;
+) as unknown as Schema.Codec<PrivateStoreListOutput>;
 
 // The operation
 /**
@@ -1766,6 +2185,9 @@ export const PrivateStoreList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateStoreListOutput,
 }));
 // Input Schema
+export interface PrivateStoreListNewPlansNotificationsInput {
+  privateStoreId: string;
+}
 export const PrivateStoreListNewPlansNotificationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1775,11 +2197,19 @@ export const PrivateStoreListNewPlansNotificationsInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listNewPlansNotifications",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreListNewPlansNotificationsInput =
-  typeof PrivateStoreListNewPlansNotificationsInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreListNewPlansNotificationsInput>;
 
 // Output Schema
+export interface PrivateStoreListNewPlansNotificationsOutput {
+  newPlansNotifications?: {
+    offerId?: string;
+    displayName?: string;
+    isFuturePlansEnabled?: boolean;
+    messageCode?: number;
+    icon?: string;
+    plans?: { planId?: string; planDisplayName?: string }[];
+  }[];
+}
 export const PrivateStoreListNewPlansNotificationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newPlansNotifications: Schema.optional(
@@ -1801,9 +2231,7 @@ export const PrivateStoreListNewPlansNotificationsOutput =
         }),
       ),
     ),
-  });
-export type PrivateStoreListNewPlansNotificationsOutput =
-  typeof PrivateStoreListNewPlansNotificationsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreListNewPlansNotificationsOutput>;
 
 // The operation
 /**
@@ -1818,6 +2246,10 @@ export const PrivateStoreListNewPlansNotifications =
     outputSchema: PrivateStoreListNewPlansNotificationsOutput,
   }));
 // Input Schema
+export interface PrivateStoreListStopSellOffersPlansNotificationsInput {
+  privateStoreId: string;
+  subscriptions?: string[];
+}
 export const PrivateStoreListStopSellOffersPlansNotificationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1828,11 +2260,21 @@ export const PrivateStoreListStopSellOffersPlansNotificationsInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listStopSellOffersPlansNotifications",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreListStopSellOffersPlansNotificationsInput =
-  typeof PrivateStoreListStopSellOffersPlansNotificationsInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreListStopSellOffersPlansNotificationsInput>;
 
 // Output Schema
+export interface PrivateStoreListStopSellOffersPlansNotificationsOutput {
+  stopSellNotifications?: {
+    offerId?: string;
+    displayName?: string;
+    isEntire?: boolean;
+    messageCode?: number;
+    icon?: string;
+    plans?: { planId?: string; planDisplayName?: string }[];
+    publicContext?: boolean;
+    subscriptionsIds?: string[];
+  }[];
+}
 export const PrivateStoreListStopSellOffersPlansNotificationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stopSellNotifications: Schema.optional(
@@ -1856,9 +2298,7 @@ export const PrivateStoreListStopSellOffersPlansNotificationsOutput =
         }),
       ),
     ),
-  });
-export type PrivateStoreListStopSellOffersPlansNotificationsOutput =
-  typeof PrivateStoreListStopSellOffersPlansNotificationsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreListStopSellOffersPlansNotificationsOutput>;
 
 // The operation
 /**
@@ -1873,6 +2313,9 @@ export const PrivateStoreListStopSellOffersPlansNotifications =
     outputSchema: PrivateStoreListStopSellOffersPlansNotificationsOutput,
   }));
 // Input Schema
+export interface PrivateStoreListSubscriptionsContextInput {
+  privateStoreId: string;
+}
 export const PrivateStoreListSubscriptionsContextInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1882,17 +2325,16 @@ export const PrivateStoreListSubscriptionsContextInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listSubscriptionsContext",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreListSubscriptionsContextInput =
-  typeof PrivateStoreListSubscriptionsContextInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreListSubscriptionsContextInput>;
 
 // Output Schema
+export interface PrivateStoreListSubscriptionsContextOutput {
+  subscriptionsIds?: string[];
+}
 export const PrivateStoreListSubscriptionsContextOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionsIds: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type PrivateStoreListSubscriptionsContextOutput =
-  typeof PrivateStoreListSubscriptionsContextOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreListSubscriptionsContextOutput>;
 
 // The operation
 /**
@@ -1907,6 +2349,14 @@ export const PrivateStoreListSubscriptionsContext =
     outputSchema: PrivateStoreListSubscriptionsContextOutput,
   }));
 // Input Schema
+export interface PrivateStoreQueryApprovedPlansInput {
+  privateStoreId: string;
+  properties?: {
+    offerId?: string;
+    planIds?: string[];
+    subscriptionIds?: string[];
+  };
+}
 export const PrivateStoreQueryApprovedPlansInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1923,11 +2373,16 @@ export const PrivateStoreQueryApprovedPlansInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryApprovedPlans",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreQueryApprovedPlansInput =
-  typeof PrivateStoreQueryApprovedPlansInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreQueryApprovedPlansInput>;
 
 // Output Schema
+export interface PrivateStoreQueryApprovedPlansOutput {
+  details?: {
+    planId?: string;
+    subscriptionIds?: string[];
+    allSubscriptions?: boolean;
+  }[];
+}
 export const PrivateStoreQueryApprovedPlansOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
@@ -1939,9 +2394,7 @@ export const PrivateStoreQueryApprovedPlansOutput =
         }),
       ),
     ),
-  });
-export type PrivateStoreQueryApprovedPlansOutput =
-  typeof PrivateStoreQueryApprovedPlansOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreQueryApprovedPlansOutput>;
 
 // The operation
 /**
@@ -1956,6 +2409,9 @@ export const PrivateStoreQueryApprovedPlans =
     outputSchema: PrivateStoreQueryApprovedPlansOutput,
   }));
 // Input Schema
+export interface PrivateStoreQueryNotificationsStateInput {
+  privateStoreId: string;
+}
 export const PrivateStoreQueryNotificationsStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -1965,11 +2421,35 @@ export const PrivateStoreQueryNotificationsStateInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryNotificationsState",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreQueryNotificationsStateInput =
-  typeof PrivateStoreQueryNotificationsStateInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreQueryNotificationsStateInput>;
 
 // Output Schema
+export interface PrivateStoreQueryNotificationsStateOutput {
+  stopSellNotifications?: {
+    offerId?: string;
+    displayName?: string;
+    isEntire?: boolean;
+    messageCode?: number;
+    icon?: string;
+    plans?: { planId?: string; planDisplayName?: string }[];
+  }[];
+  newNotifications?: {
+    offerId?: string;
+    displayName?: string;
+    isFuturePlansEnabled?: boolean;
+    messageCode?: number;
+    icon?: string;
+    plans?: { planId?: string; planDisplayName?: string }[];
+  }[];
+  approvalRequests?: {
+    offerId?: string;
+    displayName?: string;
+    publisherId?: string;
+    messageCode?: number;
+    icon?: string;
+    plans?: { planId?: string; planDisplayName?: string }[];
+  }[];
+}
 export const PrivateStoreQueryNotificationsStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stopSellNotifications: Schema.optional(
@@ -2029,9 +2509,7 @@ export const PrivateStoreQueryNotificationsStateOutput =
         }),
       ),
     ),
-  });
-export type PrivateStoreQueryNotificationsStateOutput =
-  typeof PrivateStoreQueryNotificationsStateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreQueryNotificationsStateOutput>;
 
 // The operation
 /**
@@ -2046,6 +2524,9 @@ export const PrivateStoreQueryNotificationsState =
     outputSchema: PrivateStoreQueryNotificationsStateOutput,
   }));
 // Input Schema
+export interface PrivateStoreQueryOffersInput {
+  privateStoreId: string;
+}
 export const PrivateStoreQueryOffersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -2055,11 +2536,38 @@ export const PrivateStoreQueryOffersInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryOffers",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreQueryOffersInput =
-  typeof PrivateStoreQueryOffersInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreQueryOffersInput>;
 
 // Output Schema
+export interface PrivateStoreQueryOffersOutput {
+  value?: {
+    uniqueOfferId?: string;
+    offerDisplayName?: string;
+    publisherDisplayName?: string;
+    eTag?: string;
+    privateStoreId?: string;
+    createdAt?: string;
+    modifiedAt?: string;
+    specificPlanIdsLimitation?: string[];
+    updateSuppressedDueIdempotence?: boolean;
+    iconFileUris?: Record<string, string>;
+    isStopSell?: boolean;
+    plans?: {
+      skuId?: string;
+      planId?: string;
+      planDisplayName?: string;
+      accessibility?:
+        | "Unknown"
+        | "Public"
+        | "PrivateTenantOnLevel"
+        | "PrivateSubscriptionOnLevel";
+      altStackReference?: string;
+      stackType?: string;
+      isStopSell?: boolean;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const PrivateStoreQueryOffersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2104,9 +2612,7 @@ export const PrivateStoreQueryOffersOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateStoreQueryOffersOutput =
-  typeof PrivateStoreQueryOffersOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreQueryOffersOutput>;
 
 // The operation
 /**
@@ -2122,6 +2628,15 @@ export const PrivateStoreQueryOffers = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateStoreQueryRequestApprovalInput {
+  privateStoreId: string;
+  requestApprovalId: string;
+  properties?: {
+    publisherId?: string;
+    planIds?: string[];
+    subscriptionId?: string;
+  };
+}
 export const PrivateStoreQueryRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -2139,11 +2654,25 @@ export const PrivateStoreQueryRequestApprovalInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}/query",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreQueryRequestApprovalInput =
-  typeof PrivateStoreQueryRequestApprovalInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreQueryRequestApprovalInput>;
 
 // Output Schema
+export interface PrivateStoreQueryRequestApprovalOutput {
+  uniqueOfferId?: string;
+  plansDetails?: Record<
+    string,
+    {
+      planId?: string;
+      status?: "Pending" | "Rejected" | "Approved" | "None";
+      requestDate?: unknown;
+      justification?: string;
+      subscriptionId?: string;
+      subscriptionName?: string;
+    }
+  >;
+  etag?: string;
+  messageCode?: number;
+}
 export const PrivateStoreQueryRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uniqueOfferId: Schema.optional(Schema.String),
@@ -2164,9 +2693,7 @@ export const PrivateStoreQueryRequestApprovalOutput =
     ),
     etag: Schema.optional(Schema.String),
     messageCode: Schema.optional(Schema.Number),
-  });
-export type PrivateStoreQueryRequestApprovalOutput =
-  typeof PrivateStoreQueryRequestApprovalOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreQueryRequestApprovalOutput>;
 
 // The operation
 /**
@@ -2182,6 +2709,10 @@ export const PrivateStoreQueryRequestApproval =
     outputSchema: PrivateStoreQueryRequestApprovalOutput,
   }));
 // Input Schema
+export interface PrivateStoreQueryUserOffersInput {
+  privateStoreId: string;
+  properties?: { offerIds?: string[]; subscriptionIds?: string[] };
+}
 export const PrivateStoreQueryUserOffersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -2197,11 +2728,38 @@ export const PrivateStoreQueryUserOffersInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryUserOffers",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreQueryUserOffersInput =
-  typeof PrivateStoreQueryUserOffersInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreQueryUserOffersInput>;
 
 // Output Schema
+export interface PrivateStoreQueryUserOffersOutput {
+  value?: {
+    uniqueOfferId?: string;
+    offerDisplayName?: string;
+    publisherDisplayName?: string;
+    eTag?: string;
+    privateStoreId?: string;
+    createdAt?: string;
+    modifiedAt?: string;
+    specificPlanIdsLimitation?: string[];
+    updateSuppressedDueIdempotence?: boolean;
+    iconFileUris?: Record<string, string>;
+    isStopSell?: boolean;
+    plans?: {
+      skuId?: string;
+      planId?: string;
+      planDisplayName?: string;
+      accessibility?:
+        | "Unknown"
+        | "Public"
+        | "PrivateTenantOnLevel"
+        | "PrivateSubscriptionOnLevel";
+      altStackReference?: string;
+      stackType?: string;
+      isStopSell?: boolean;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const PrivateStoreQueryUserOffersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2246,9 +2804,7 @@ export const PrivateStoreQueryUserOffersOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateStoreQueryUserOffersOutput =
-  typeof PrivateStoreQueryUserOffersOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreQueryUserOffersOutput>;
 
 // The operation
 /**
@@ -2264,6 +2820,32 @@ export const PrivateStoreQueryUserOffers = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateStoreUpdateAdminRequestApprovalInput {
+  privateStoreId: string;
+  adminRequestApprovalId: string;
+  properties?: {
+    offerId?: string;
+    displayName?: string;
+    publisherId?: string;
+    adminAction?: "Approved" | "Rejected";
+    approvedPlans?: string[];
+    comment?: string;
+    administrator?: string;
+    plans?: {
+      planId?: string;
+      planDisplayName?: string;
+      requesters?: {
+        user?: string;
+        date?: string;
+        justification?: string;
+        subscriptionId?: string;
+        subscriptionName?: string;
+      }[];
+    }[];
+    collectionIds?: string[];
+    icon?: string;
+  };
+}
 export const PrivateStoreUpdateAdminRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -2306,11 +2888,22 @@ export const PrivateStoreUpdateAdminRequestApprovalInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals/{adminRequestApprovalId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreUpdateAdminRequestApprovalInput =
-  typeof PrivateStoreUpdateAdminRequestApprovalInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreUpdateAdminRequestApprovalInput>;
 
 // Output Schema
+export interface PrivateStoreUpdateAdminRequestApprovalOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateStoreUpdateAdminRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2330,9 +2923,7 @@ export const PrivateStoreUpdateAdminRequestApprovalOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateStoreUpdateAdminRequestApprovalOutput =
-  typeof PrivateStoreUpdateAdminRequestApprovalOutput.Type;
+  }) as unknown as Schema.Codec<PrivateStoreUpdateAdminRequestApprovalOutput>;
 
 // The operation
 /**
@@ -2348,6 +2939,11 @@ export const PrivateStoreUpdateAdminRequestApproval =
     outputSchema: PrivateStoreUpdateAdminRequestApprovalOutput,
   }));
 // Input Schema
+export interface PrivateStoreWithdrawPlanInput {
+  privateStoreId: string;
+  requestApprovalId: string;
+  properties?: { planId?: string; publisherId?: string };
+}
 export const PrivateStoreWithdrawPlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -2364,15 +2960,12 @@ export const PrivateStoreWithdrawPlanInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}/withdrawPlan",
       apiVersion: "2025-01-01",
     }),
-  );
-export type PrivateStoreWithdrawPlanInput =
-  typeof PrivateStoreWithdrawPlanInput.Type;
+  ) as unknown as Schema.Codec<PrivateStoreWithdrawPlanInput>;
 
 // Output Schema
+export type PrivateStoreWithdrawPlanOutput = void;
 export const PrivateStoreWithdrawPlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateStoreWithdrawPlanOutput =
-  typeof PrivateStoreWithdrawPlanOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateStoreWithdrawPlanOutput>;
 
 // The operation
 /**
@@ -2389,6 +2982,10 @@ export const PrivateStoreWithdrawPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QueryRulesInput {
+  privateStoreId: string;
+  collectionId: string;
+}
 export const QueryRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   collectionId: Schema.String.pipe(T.PathParam()),
@@ -2398,10 +2995,16 @@ export const QueryRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/queryRules",
     apiVersion: "2025-01-01",
   }),
-);
-export type QueryRulesInput = typeof QueryRulesInput.Type;
+) as unknown as Schema.Codec<QueryRulesInput>;
 
 // Output Schema
+export interface QueryRulesOutput {
+  value?: {
+    type?: "PrivateProducts" | "TermsAndCondition";
+    value?: string[];
+  }[];
+  nextLink?: string;
+}
 export const QueryRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2414,8 +3017,7 @@ export const QueryRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QueryRulesOutput = typeof QueryRulesOutput.Type;
+}) as unknown as Schema.Codec<QueryRulesOutput>;
 
 // The operation
 /**
@@ -2430,6 +3032,10 @@ export const QueryRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueryRulesOutput,
 }));
 // Input Schema
+export interface QueryUserRulesInput {
+  privateStoreId: string;
+  properties?: { subscriptionIds?: string[] };
+}
 export const QueryUserRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -2443,10 +3049,16 @@ export const QueryUserRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryUserRules",
     apiVersion: "2025-01-01",
   }),
-);
-export type QueryUserRulesInput = typeof QueryUserRulesInput.Type;
+) as unknown as Schema.Codec<QueryUserRulesInput>;
 
 // Output Schema
+export interface QueryUserRulesOutput {
+  value?: {
+    type?: "PrivateProducts" | "TermsAndCondition";
+    value?: string[];
+  }[];
+  nextLink?: string;
+}
 export const QueryUserRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2459,8 +3071,7 @@ export const QueryUserRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QueryUserRulesOutput = typeof QueryUserRulesOutput.Type;
+}) as unknown as Schema.Codec<QueryUserRulesOutput>;
 
 // The operation
 /**
@@ -2474,6 +3085,15 @@ export const QueryUserRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueryUserRulesOutput,
 }));
 // Input Schema
+export interface SetCollectionRulesInput {
+  privateStoreId: string;
+  collectionId: string;
+  value?: {
+    type?: "PrivateProducts" | "TermsAndCondition";
+    value?: string[];
+  }[];
+  nextLink?: string;
+}
 export const SetCollectionRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
@@ -2495,12 +3115,12 @@ export const SetCollectionRulesInput =
       path: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/setRules",
       apiVersion: "2025-01-01",
     }),
-  );
-export type SetCollectionRulesInput = typeof SetCollectionRulesInput.Type;
+  ) as unknown as Schema.Codec<SetCollectionRulesInput>;
 
 // Output Schema
-export const SetCollectionRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SetCollectionRulesOutput = typeof SetCollectionRulesOutput.Type;
+export type SetCollectionRulesOutput = void;
+export const SetCollectionRulesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SetCollectionRulesOutput>;
 
 // The operation
 /**

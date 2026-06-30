@@ -3,8 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 import { SensitiveOutputNullableString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface InsightsSharingListInput {
+  insight_id: number;
+  project_id: string;
+}
 export const InsightsSharingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insight_id: Schema.Number.pipe(T.PathParam()),
@@ -14,10 +19,23 @@ export const InsightsSharingListInput =
       method: "GET",
       path: "/api/projects/{project_id}/insights/{insight_id}/sharing/",
     }),
-  );
-export type InsightsSharingListInput = typeof InsightsSharingListInput.Type;
+  ) as unknown as Schema.Codec<InsightsSharingListInput>;
 
 // Output Schema
+export type InsightsSharingListOutput = {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}[];
 export const InsightsSharingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -38,8 +56,7 @@ export const InsightsSharingListOutput =
         ),
       ),
     }),
-  );
-export type InsightsSharingListOutput = typeof InsightsSharingListOutput.Type;
+  ) as unknown as Schema.Codec<InsightsSharingListOutput>;
 
 // The operation
 /**

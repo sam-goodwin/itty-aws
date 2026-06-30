@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -39,7 +39,7 @@ export interface ContentTypeInfo {
   fromFusionId?: string;
 }
 
-export const ContentTypeInfo: Schema.Schema<ContentTypeInfo> =
+export const ContentTypeInfo: Schema.Codec<ContentTypeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fusionIdDetectionMetadata: Schema.optional(Schema.String),
     fromHeader: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface ObjectId {
   generation?: string;
 }
 
-export const ObjectId: Schema.Schema<ObjectId> =
+export const ObjectId: Schema.Codec<ObjectId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     objectName: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export interface Blobstore2Info {
   blobId?: string;
 }
 
-export const Blobstore2Info: Schema.Schema<Blobstore2Info> =
+export const Blobstore2Info: Schema.Codec<Blobstore2Info> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadFragmentListCreationInfo: Schema.optional(Schema.String),
     readToken: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface CompositeMedia {
   blobRef?: string;
 }
 
-export const CompositeMedia: Schema.Schema<CompositeMedia> =
+export const CompositeMedia: Schema.Codec<CompositeMedia> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     crc32cHash: Schema.optional(Schema.Number),
     inline: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface DiffChecksumsResponse {
   checksumsLocation?: CompositeMedia;
 }
 
-export const DiffChecksumsResponse: Schema.Schema<DiffChecksumsResponse> =
+export const DiffChecksumsResponse: Schema.Codec<DiffChecksumsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     chunkSizeBytes: Schema.optional(Schema.String),
@@ -169,7 +169,7 @@ export interface DiffVersionResponse {
   objectSizeBytes?: string;
 }
 
-export const DiffVersionResponse: Schema.Schema<DiffVersionResponse> =
+export const DiffVersionResponse: Schema.Codec<DiffVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     objectSizeBytes: Schema.optional(Schema.String),
@@ -184,7 +184,7 @@ export interface DiffUploadRequest {
   checksumsInfo?: CompositeMedia;
 }
 
-export const DiffUploadRequest: Schema.Schema<DiffUploadRequest> =
+export const DiffUploadRequest: Schema.Codec<DiffUploadRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectInfo: Schema.optional(CompositeMedia),
     objectVersion: Schema.optional(Schema.String),
@@ -198,7 +198,7 @@ export interface DownloadParameters {
   ignoreRange?: boolean;
 }
 
-export const DownloadParameters: Schema.Schema<DownloadParameters> =
+export const DownloadParameters: Schema.Codec<DownloadParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowGzipCompression: Schema.optional(Schema.Boolean),
     ignoreRange: Schema.optional(Schema.Boolean),
@@ -209,7 +209,7 @@ export interface DiffDownloadResponse {
   objectLocation?: CompositeMedia;
 }
 
-export const DiffDownloadResponse: Schema.Schema<DiffDownloadResponse> =
+export const DiffDownloadResponse: Schema.Codec<DiffDownloadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectLocation: Schema.optional(CompositeMedia),
   }).annotate({ identifier: "DiffDownloadResponse" });
@@ -221,7 +221,7 @@ export interface DiffUploadResponse {
   originalObject?: CompositeMedia;
 }
 
-export const DiffUploadResponse: Schema.Schema<DiffUploadResponse> =
+export const DiffUploadResponse: Schema.Codec<DiffUploadResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectVersion: Schema.optional(Schema.String),
     originalObject: Schema.optional(CompositeMedia),
@@ -306,7 +306,7 @@ export interface Media {
   diffUploadResponse?: DiffUploadResponse;
 }
 
-export const Media: Schema.Schema<Media> =
+export const Media: Schema.Codec<Media> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -353,7 +353,7 @@ export interface Escalation {
   justification?: string;
 }
 
-export const Escalation: Schema.Schema<Escalation> =
+export const Escalation: Schema.Codec<Escalation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     justification: Schema.optional(Schema.String),
@@ -370,7 +370,7 @@ export interface Actor {
   username?: string;
 }
 
-export const Actor: Schema.Schema<Actor> =
+export const Actor: Schema.Codec<Actor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googleSupport: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
@@ -393,7 +393,7 @@ export interface Attachment {
   name?: string;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
+export const Attachment: Schema.Codec<Attachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     sizeBytes: Schema.optional(Schema.String),
@@ -410,7 +410,7 @@ export interface ListAttachmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListAttachmentsResponse: Schema.Schema<ListAttachmentsResponse> =
+export const ListAttachmentsResponse: Schema.Codec<ListAttachmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachments: Schema.optional(Schema.Array(Attachment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -418,14 +418,14 @@ export const ListAttachmentsResponse: Schema.Schema<ListAttachmentsResponse> =
 
 export interface CloseCaseRequest {}
 
-export const CloseCaseRequest: Schema.Schema<CloseCaseRequest> =
+export const CloseCaseRequest: Schema.Codec<CloseCaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseCaseRequest",
   });
 
 export interface UndeleteSupportEventSubscriptionRequest {}
 
-export const UndeleteSupportEventSubscriptionRequest: Schema.Schema<UndeleteSupportEventSubscriptionRequest> =
+export const UndeleteSupportEventSubscriptionRequest: Schema.Codec<UndeleteSupportEventSubscriptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteSupportEventSubscriptionRequest",
   });
@@ -435,7 +435,7 @@ export interface EscalateCaseRequest {
   escalation?: Escalation;
 }
 
-export const EscalateCaseRequest: Schema.Schema<EscalateCaseRequest> =
+export const EscalateCaseRequest: Schema.Codec<EscalateCaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     escalation: Schema.optional(Escalation),
   }).annotate({ identifier: "EscalateCaseRequest" });
@@ -469,7 +469,7 @@ export interface SupportEventSubscription {
   updateTime?: string;
 }
 
-export const SupportEventSubscription: Schema.Schema<SupportEventSubscription> =
+export const SupportEventSubscription: Schema.Codec<SupportEventSubscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteTime: Schema.optional(Schema.String),
     pubSubTopic: Schema.optional(Schema.String),
@@ -488,7 +488,7 @@ export interface ListSupportEventSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSupportEventSubscriptionsResponse: Schema.Schema<ListSupportEventSubscriptionsResponse> =
+export const ListSupportEventSubscriptionsResponse: Schema.Codec<ListSupportEventSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportEventSubscriptions: Schema.optional(
       Schema.Array(SupportEventSubscription),
@@ -503,7 +503,7 @@ export interface CaseClassification {
   displayName?: string;
 }
 
-export const CaseClassification: Schema.Schema<CaseClassification> =
+export const CaseClassification: Schema.Codec<CaseClassification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -556,7 +556,7 @@ export interface Case {
   updateTime?: string;
 }
 
-export const Case: Schema.Schema<Case> =
+export const Case: Schema.Codec<Case> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     escalated: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -582,7 +582,7 @@ export interface ListCasesResponse {
   nextPageToken?: string;
 }
 
-export const ListCasesResponse: Schema.Schema<ListCasesResponse> =
+export const ListCasesResponse: Schema.Codec<ListCasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cases: Schema.optional(Schema.Array(Case)),
     nextPageToken: Schema.optional(Schema.String),
@@ -601,7 +601,7 @@ export interface Comment {
   plainTextBody?: string;
 }
 
-export const Comment: Schema.Schema<Comment> =
+export const Comment: Schema.Codec<Comment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creator: Schema.optional(Actor),
     body: Schema.optional(Schema.String),
@@ -617,7 +617,7 @@ export interface ListCommentsResponse {
   nextPageToken?: string;
 }
 
-export const ListCommentsResponse: Schema.Schema<ListCommentsResponse> =
+export const ListCommentsResponse: Schema.Codec<ListCommentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     comments: Schema.optional(Schema.Array(Comment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -630,7 +630,7 @@ export interface SearchCaseClassificationsResponse {
   caseClassifications?: ReadonlyArray<CaseClassification>;
 }
 
-export const SearchCaseClassificationsResponse: Schema.Schema<SearchCaseClassificationsResponse> =
+export const SearchCaseClassificationsResponse: Schema.Codec<SearchCaseClassificationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     caseClassifications: Schema.optional(Schema.Array(CaseClassification)),
@@ -643,7 +643,7 @@ export interface SearchCasesResponse {
   cases?: ReadonlyArray<Case>;
 }
 
-export const SearchCasesResponse: Schema.Schema<SearchCasesResponse> =
+export const SearchCasesResponse: Schema.Codec<SearchCasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     cases: Schema.optional(Schema.Array(Case)),
@@ -654,7 +654,7 @@ export interface CreateAttachmentRequest {
   attachment?: Attachment;
 }
 
-export const CreateAttachmentRequest: Schema.Schema<CreateAttachmentRequest> =
+export const CreateAttachmentRequest: Schema.Codec<CreateAttachmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachment: Schema.optional(Attachment),
   }).annotate({ identifier: "CreateAttachmentRequest" });
@@ -731,7 +731,7 @@ export const CreateSupportEventSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSupportEventSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateSupportEventSubscriptionsRequest>;
 
 export type CreateSupportEventSubscriptionsResponse = SupportEventSubscription;
 export const CreateSupportEventSubscriptionsResponse =
@@ -767,7 +767,7 @@ export const DeleteSupportEventSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSupportEventSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteSupportEventSubscriptionsRequest>;
 
 export type DeleteSupportEventSubscriptionsResponse = SupportEventSubscription;
 export const DeleteSupportEventSubscriptionsResponse =
@@ -809,7 +809,7 @@ export const PatchSupportEventSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchSupportEventSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<PatchSupportEventSubscriptionsRequest>;
 
 export type PatchSupportEventSubscriptionsResponse = SupportEventSubscription;
 export const PatchSupportEventSubscriptionsResponse =
@@ -845,7 +845,7 @@ export const GetSupportEventSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSupportEventSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetSupportEventSubscriptionsRequest>;
 
 export type GetSupportEventSubscriptionsResponse = SupportEventSubscription;
 export const GetSupportEventSubscriptionsResponse =
@@ -893,7 +893,7 @@ export const ListSupportEventSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/supportEventSubscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListSupportEventSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListSupportEventSubscriptionsRequest>;
 
 export type ListSupportEventSubscriptionsResponse_Op =
   ListSupportEventSubscriptionsResponse;
@@ -937,7 +937,7 @@ export const UndeleteSupportEventSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteSupportEventSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<UndeleteSupportEventSubscriptionsRequest>;
 
 export type UndeleteSupportEventSubscriptionsResponse =
   SupportEventSubscription;
@@ -982,7 +982,7 @@ export const ListCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+parent}/cases" }),
   svc,
-) as unknown as Schema.Schema<ListCasesRequest>;
+) as unknown as Schema.Codec<ListCasesRequest>;
 
 export type ListCasesResponse_Op = ListCasesResponse;
 export const ListCasesResponse_Op =
@@ -1022,7 +1022,7 @@ export const PatchCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchCasesRequest>;
+) as unknown as Schema.Codec<PatchCasesRequest>;
 
 export type PatchCasesResponse = Case;
 export const PatchCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
@@ -1056,7 +1056,7 @@ export const GetCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetCasesRequest>;
+) as unknown as Schema.Codec<GetCasesRequest>;
 
 export type GetCasesResponse = Case;
 export const GetCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
@@ -1094,7 +1094,7 @@ export const SearchCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+parent}/cases:search" }),
   svc,
-) as unknown as Schema.Schema<SearchCasesRequest>;
+) as unknown as Schema.Codec<SearchCasesRequest>;
 
 export type SearchCasesResponse_Op = SearchCasesResponse;
 export const SearchCasesResponse_Op =
@@ -1131,7 +1131,7 @@ export const CreateCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/{+parent}/cases", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateCasesRequest>;
+) as unknown as Schema.Codec<CreateCasesRequest>;
 
 export type CreateCasesResponse = Case;
 export const CreateCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
@@ -1168,7 +1168,7 @@ export const EscalateCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/{+name}:escalate", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<EscalateCasesRequest>;
+) as unknown as Schema.Codec<EscalateCasesRequest>;
 
 export type EscalateCasesResponse = Case;
 export const EscalateCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
@@ -1205,7 +1205,7 @@ export const CloseCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/{+name}:close", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CloseCasesRequest>;
+) as unknown as Schema.Codec<CloseCasesRequest>;
 
 export type CloseCasesResponse = Case;
 export const CloseCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Case;
@@ -1246,7 +1246,7 @@ export const ListCasesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/attachments" }),
     svc,
-  ) as unknown as Schema.Schema<ListCasesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListCasesAttachmentsRequest>;
 
 export type ListCasesAttachmentsResponse = ListAttachmentsResponse;
 export const ListCasesAttachmentsResponse =
@@ -1281,7 +1281,7 @@ export const GetCasesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCasesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetCasesAttachmentsRequest>;
 
 export type GetCasesAttachmentsResponse = Attachment;
 export const GetCasesAttachmentsResponse =
@@ -1315,7 +1315,7 @@ export const CreateCasesCommentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/comments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateCasesCommentsRequest>;
+  ) as unknown as Schema.Codec<CreateCasesCommentsRequest>;
 
 export type CreateCasesCommentsResponse = Comment;
 export const CreateCasesCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
@@ -1350,7 +1350,7 @@ export const GetCasesCommentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCasesCommentsRequest>;
+  ) as unknown as Schema.Codec<GetCasesCommentsRequest>;
 
 export type GetCasesCommentsResponse = Comment;
 export const GetCasesCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
@@ -1386,7 +1386,7 @@ export const ListCasesCommentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/comments" }),
     svc,
-  ) as unknown as Schema.Schema<ListCasesCommentsRequest>;
+  ) as unknown as Schema.Codec<ListCasesCommentsRequest>;
 
 export type ListCasesCommentsResponse = ListCommentsResponse;
 export const ListCasesCommentsResponse =
@@ -1423,7 +1423,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/{+parent}/attachments", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = Attachment;
 export const UploadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Attachment;
@@ -1457,7 +1457,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}:download" }),
   svc,
-) as unknown as Schema.Schema<DownloadMediaRequest>;
+) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Media;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
@@ -1493,7 +1493,7 @@ export const SearchCaseClassificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/caseClassifications:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchCaseClassificationsRequest>;
+  ) as unknown as Schema.Codec<SearchCaseClassificationsRequest>;
 
 export type SearchCaseClassificationsResponse_Op =
   SearchCaseClassificationsResponse;

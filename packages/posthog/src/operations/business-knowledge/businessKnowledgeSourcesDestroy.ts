@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeSourcesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const BusinessKnowledgeSourcesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const BusinessKnowledgeSourcesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/business_knowledge/sources/{id}/",
     }),
-  );
-export type BusinessKnowledgeSourcesDestroyInput =
-  typeof BusinessKnowledgeSourcesDestroyInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeSourcesDestroyInput>;
 
 // Output Schema
+export type BusinessKnowledgeSourcesDestroyOutput = void;
 export const BusinessKnowledgeSourcesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BusinessKnowledgeSourcesDestroyOutput =
-  typeof BusinessKnowledgeSourcesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BusinessKnowledgeSourcesDestroyOutput>;
 
 // The operation
 /**

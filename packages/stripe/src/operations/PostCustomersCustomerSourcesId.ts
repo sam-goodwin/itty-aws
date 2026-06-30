@@ -1,8 +1,43 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostCustomersCustomerSourcesIdInput {
+  customer: string;
+  id: string;
+  account_holder_name?: string;
+  account_holder_type?: "company" | "individual";
+  address_city?: string;
+  address_country?: string;
+  address_line1?: string;
+  address_line2?: string;
+  address_state?: string;
+  address_zip?: string;
+  exp_month?: string;
+  exp_year?: string;
+  expand?: string[];
+  metadata?: Record<string, string> | "";
+  name?: string;
+  owner?: {
+    address?: {
+      city?: string;
+      country?: string;
+      line1?: string;
+      line2?: string;
+      postal_code?: string;
+      state?: string;
+    };
+    email?: string;
+    name?: string;
+    phone?: string;
+  };
+}
 export const PostCustomersCustomerSourcesIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
@@ -20,7 +55,12 @@ export const PostCustomersCustomerSourcesIdInput =
     exp_month: Schema.optional(Schema.String),
     exp_year: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
-    metadata: Schema.optional(Schema.Unknown),
+    metadata: Schema.optional(
+      Schema.Union([
+        Schema.Record(Schema.String, Schema.String),
+        Schema.Literals([""]),
+      ]),
+    ),
     name: Schema.optional(Schema.String),
     owner: Schema.optional(
       Schema.Struct({
@@ -45,15 +85,12 @@ export const PostCustomersCustomerSourcesIdInput =
       path: "/v1/customers/{customer}/sources/{id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostCustomersCustomerSourcesIdInput =
-  typeof PostCustomersCustomerSourcesIdInput.Type;
+  ) as unknown as Schema.Codec<PostCustomersCustomerSourcesIdInput>;
 
 // Output Schema
+export type PostCustomersCustomerSourcesIdOutput = unknown;
 export const PostCustomersCustomerSourcesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type PostCustomersCustomerSourcesIdOutput =
-  typeof PostCustomersCustomerSourcesIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<PostCustomersCustomerSourcesIdOutput>;
 
 // The operation
 /**

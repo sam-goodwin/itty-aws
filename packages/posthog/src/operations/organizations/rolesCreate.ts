@@ -4,6 +4,35 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface RolesCreateInput {
+  organization_id: string;
+  id?: string;
+  name?: string;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  members?: Record<string, unknown>[];
+  is_default?: boolean;
+}
 export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
@@ -22,7 +51,23 @@ export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -35,10 +80,37 @@ export const RolesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/api/organizations/{organization_id}/roles/",
   }),
-);
-export type RolesCreateInput = typeof RolesCreateInput.Type;
+) as unknown as Schema.Codec<RolesCreateInput>;
 
 // Output Schema
+export interface RolesCreateOutput {
+  id?: string;
+  name?: string;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  members?: Record<string, unknown>[];
+  is_default?: boolean;
+}
 export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -56,7 +128,23 @@ export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -64,8 +152,7 @@ export const RolesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
   ),
   is_default: Schema.optional(Schema.Boolean),
-});
-export type RolesCreateOutput = typeof RolesCreateOutput.Type;
+}) as unknown as Schema.Codec<RolesCreateOutput>;
 
 // The operation
 /**

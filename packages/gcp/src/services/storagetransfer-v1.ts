@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -71,7 +71,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -80,14 +80,14 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -99,7 +99,7 @@ export interface GoogleServiceAccount {
   subjectId?: string;
 }
 
-export const GoogleServiceAccount: Schema.Schema<GoogleServiceAccount> =
+export const GoogleServiceAccount: Schema.Codec<GoogleServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountEmail: Schema.optional(Schema.String),
     subjectId: Schema.optional(Schema.String),
@@ -114,7 +114,7 @@ export interface GcsData {
   managedFolderTransferEnabled?: boolean;
 }
 
-export const GcsData: Schema.Schema<GcsData> =
+export const GcsData: Schema.Codec<GcsData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export interface PosixFilesystem {
   rootDirectory?: string;
 }
 
-export const PosixFilesystem: Schema.Schema<PosixFilesystem> =
+export const PosixFilesystem: Schema.Codec<PosixFilesystem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootDirectory: Schema.optional(Schema.String),
   }).annotate({ identifier: "PosixFilesystem" });
@@ -138,7 +138,7 @@ export interface AwsAccessKey {
   secretAccessKey?: string;
 }
 
-export const AwsAccessKey: Schema.Schema<AwsAccessKey> =
+export const AwsAccessKey: Schema.Codec<AwsAccessKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessKeyId: Schema.optional(Schema.String),
     secretAccessKey: Schema.optional(Schema.String),
@@ -163,7 +163,7 @@ export interface AwsS3Data {
   privateNetworkService?: string;
 }
 
-export const AwsS3Data: Schema.Schema<AwsS3Data> =
+export const AwsS3Data: Schema.Codec<AwsS3Data> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     awsAccessKey: Schema.optional(AwsAccessKey),
@@ -180,7 +180,7 @@ export interface HttpData {
   listUrl?: string;
 }
 
-export const HttpData: Schema.Schema<HttpData> =
+export const HttpData: Schema.Codec<HttpData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     listUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "HttpData" });
@@ -190,7 +190,7 @@ export interface AzureCredentials {
   sasToken?: string;
 }
 
-export const AzureCredentials: Schema.Schema<AzureCredentials> =
+export const AzureCredentials: Schema.Codec<AzureCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sasToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "AzureCredentials" });
@@ -202,7 +202,7 @@ export interface FederatedIdentityConfig {
   tenantId?: string;
 }
 
-export const FederatedIdentityConfig: Schema.Schema<FederatedIdentityConfig> =
+export const FederatedIdentityConfig: Schema.Codec<FederatedIdentityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -225,7 +225,7 @@ export interface AzureBlobStorageData {
   privateNetworkService?: string;
 }
 
-export const AzureBlobStorageData: Schema.Schema<AzureBlobStorageData> =
+export const AzureBlobStorageData: Schema.Codec<AzureBlobStorageData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageAccount: Schema.optional(Schema.String),
     azureCredentials: Schema.optional(AzureCredentials),
@@ -263,7 +263,7 @@ export interface S3CompatibleMetadata {
     | (string & {});
 }
 
-export const S3CompatibleMetadata: Schema.Schema<S3CompatibleMetadata> =
+export const S3CompatibleMetadata: Schema.Codec<S3CompatibleMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authMethod: Schema.optional(Schema.String),
     requestModel: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export interface AwsS3CompatibleData {
   s3Metadata?: S3CompatibleMetadata;
 }
 
-export const AwsS3CompatibleData: Schema.Schema<AwsS3CompatibleData> =
+export const AwsS3CompatibleData: Schema.Codec<AwsS3CompatibleData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -298,7 +298,7 @@ export interface HdfsData {
   path?: string;
 }
 
-export const HdfsData: Schema.Schema<HdfsData> =
+export const HdfsData: Schema.Codec<HdfsData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "HdfsData" });
@@ -320,7 +320,7 @@ export interface ObjectConditions {
   matchGlob?: string;
 }
 
-export const ObjectConditions: Schema.Schema<ObjectConditions> =
+export const ObjectConditions: Schema.Codec<ObjectConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minTimeElapsedSinceLastModification: Schema.optional(Schema.String),
     maxTimeElapsedSinceLastModification: Schema.optional(Schema.String),
@@ -380,7 +380,7 @@ export interface MetadataOptions {
     | (string & {});
 }
 
-export const MetadataOptions: Schema.Schema<MetadataOptions> =
+export const MetadataOptions: Schema.Codec<MetadataOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     symlink: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.String),
@@ -411,7 +411,7 @@ export interface TransferOptions {
   metadataOptions?: MetadataOptions;
 }
 
-export const TransferOptions: Schema.Schema<TransferOptions> =
+export const TransferOptions: Schema.Codec<TransferOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overwriteObjectsAlreadyExistingInSink: Schema.optional(Schema.Boolean),
     deleteObjectsUniqueInSink: Schema.optional(Schema.Boolean),
@@ -425,7 +425,7 @@ export interface TransferManifest {
   location?: string;
 }
 
-export const TransferManifest: Schema.Schema<TransferManifest> =
+export const TransferManifest: Schema.Codec<TransferManifest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
   }).annotate({ identifier: "TransferManifest" });
@@ -463,7 +463,7 @@ export interface TransferSpec {
   sinkAgentPoolName?: string;
 }
 
-export const TransferSpec: Schema.Schema<TransferSpec> =
+export const TransferSpec: Schema.Codec<TransferSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDataSink: Schema.optional(GcsData),
     posixDataSink: Schema.optional(PosixFilesystem),
@@ -493,7 +493,7 @@ export interface ReplicationSpec {
   transferOptions?: TransferOptions;
 }
 
-export const ReplicationSpec: Schema.Schema<ReplicationSpec> =
+export const ReplicationSpec: Schema.Codec<ReplicationSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDataSource: Schema.optional(GcsData),
     gcsDataSink: Schema.optional(GcsData),
@@ -520,7 +520,7 @@ export interface NotificationConfig {
     | (string & {});
 }
 
-export const NotificationConfig: Schema.Schema<NotificationConfig> =
+export const NotificationConfig: Schema.Codec<NotificationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pubsubTopic: Schema.optional(Schema.String),
     eventTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -544,7 +544,7 @@ export interface LoggingConfig {
   enableOnpremGcsTransferLogs?: boolean;
 }
 
-export const LoggingConfig: Schema.Schema<LoggingConfig> =
+export const LoggingConfig: Schema.Codec<LoggingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logActions: Schema.optional(Schema.Array(Schema.String)),
     logActionStates: Schema.optional(Schema.Array(Schema.String)),
@@ -560,7 +560,7 @@ export interface Storagetransfer_Date {
   day?: number;
 }
 
-export const Storagetransfer_Date: Schema.Schema<Storagetransfer_Date> =
+export const Storagetransfer_Date: Schema.Codec<Storagetransfer_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -578,7 +578,7 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
@@ -599,7 +599,7 @@ export interface Schedule {
   repeatInterval?: string;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
+export const Schedule: Schema.Codec<Schedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduleStartDate: Schema.optional(Storagetransfer_Date),
     scheduleEndDate: Schema.optional(Storagetransfer_Date),
@@ -617,7 +617,7 @@ export interface EventStream {
   eventStreamExpirationTime?: string;
 }
 
-export const EventStream: Schema.Schema<EventStream> =
+export const EventStream: Schema.Codec<EventStream> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     eventStreamStartTime: Schema.optional(Schema.String),
@@ -662,7 +662,7 @@ export interface TransferJob {
   latestOperationName?: string;
 }
 
-export const TransferJob: Schema.Schema<TransferJob> =
+export const TransferJob: Schema.Codec<TransferJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -690,7 +690,7 @@ export interface UpdateTransferJobRequest {
   updateTransferJobFieldMask?: string;
 }
 
-export const UpdateTransferJobRequest: Schema.Schema<UpdateTransferJobRequest> =
+export const UpdateTransferJobRequest: Schema.Codec<UpdateTransferJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     transferJob: Schema.optional(TransferJob),
@@ -704,7 +704,7 @@ export interface ListTransferJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListTransferJobsResponse: Schema.Schema<ListTransferJobsResponse> =
+export const ListTransferJobsResponse: Schema.Codec<ListTransferJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transferJobs: Schema.optional(Schema.Array(TransferJob)),
     nextPageToken: Schema.optional(Schema.String),
@@ -712,14 +712,14 @@ export const ListTransferJobsResponse: Schema.Schema<ListTransferJobsResponse> =
 
 export interface PauseTransferOperationRequest {}
 
-export const PauseTransferOperationRequest: Schema.Schema<PauseTransferOperationRequest> =
+export const PauseTransferOperationRequest: Schema.Codec<PauseTransferOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PauseTransferOperationRequest",
   });
 
 export interface ResumeTransferOperationRequest {}
 
-export const ResumeTransferOperationRequest: Schema.Schema<ResumeTransferOperationRequest> =
+export const ResumeTransferOperationRequest: Schema.Codec<ResumeTransferOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResumeTransferOperationRequest",
   });
@@ -729,7 +729,7 @@ export interface RunTransferJobRequest {
   projectId?: string;
 }
 
-export const RunTransferJobRequest: Schema.Schema<RunTransferJobRequest> =
+export const RunTransferJobRequest: Schema.Codec<RunTransferJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RunTransferJobRequest" });
@@ -739,7 +739,7 @@ export interface BandwidthLimit {
   limitMbps?: string;
 }
 
-export const BandwidthLimit: Schema.Schema<BandwidthLimit> =
+export const BandwidthLimit: Schema.Codec<BandwidthLimit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limitMbps: Schema.optional(Schema.String),
   }).annotate({ identifier: "BandwidthLimit" });
@@ -760,7 +760,7 @@ export interface AgentPool {
   bandwidthLimit?: BandwidthLimit;
 }
 
-export const AgentPool: Schema.Schema<AgentPool> =
+export const AgentPool: Schema.Codec<AgentPool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -775,7 +775,7 @@ export interface ListAgentPoolsResponse {
   nextPageToken?: string;
 }
 
-export const ListAgentPoolsResponse: Schema.Schema<ListAgentPoolsResponse> =
+export const ListAgentPoolsResponse: Schema.Codec<ListAgentPoolsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentPools: Schema.optional(Schema.Array(AgentPool)),
     nextPageToken: Schema.optional(Schema.String),
@@ -830,7 +830,7 @@ export interface TransferCounters {
   unsupportedS3GlacierObjectsSkippedCount?: string;
 }
 
-export const TransferCounters: Schema.Schema<TransferCounters> =
+export const TransferCounters: Schema.Codec<TransferCounters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectsFoundFromSource: Schema.optional(Schema.String),
     bytesFoundFromSource: Schema.optional(Schema.String),
@@ -864,7 +864,7 @@ export interface ErrorLogEntry {
   errorDetails?: ReadonlyArray<string>;
 }
 
-export const ErrorLogEntry: Schema.Schema<ErrorLogEntry> =
+export const ErrorLogEntry: Schema.Codec<ErrorLogEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     errorDetails: Schema.optional(Schema.Array(Schema.String)),
@@ -897,7 +897,7 @@ export interface ErrorSummary {
   errorLogEntries?: ReadonlyArray<ErrorLogEntry>;
 }
 
-export const ErrorSummary: Schema.Schema<ErrorSummary> =
+export const ErrorSummary: Schema.Codec<ErrorSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     errorCount: Schema.optional(Schema.String),
@@ -938,7 +938,7 @@ export interface TransferOperation {
   transferJobName?: string;
 }
 
-export const TransferOperation: Schema.Schema<TransferOperation> =
+export const TransferOperation: Schema.Codec<TransferOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -1032,7 +1032,7 @@ export const ListTransferOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListTransferOperationsRequest>;
+  ) as unknown as Schema.Codec<ListTransferOperationsRequest>;
 
 export type ListTransferOperationsResponse = ListOperationsResponse;
 export const ListTransferOperationsResponse =
@@ -1067,7 +1067,7 @@ export const GetTransferOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetTransferOperationsRequest>;
+  ) as unknown as Schema.Codec<GetTransferOperationsRequest>;
 
 export type GetTransferOperationsResponse = Operation;
 export const GetTransferOperationsResponse =
@@ -1101,7 +1101,7 @@ export const CancelTransferOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelTransferOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelTransferOperationsRequest>;
 
 export type CancelTransferOperationsResponse = Empty;
 export const CancelTransferOperationsResponse =
@@ -1140,7 +1140,7 @@ export const PauseTransferOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:pause", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PauseTransferOperationsRequest>;
+  ) as unknown as Schema.Codec<PauseTransferOperationsRequest>;
 
 export type PauseTransferOperationsResponse = Empty;
 export const PauseTransferOperationsResponse =
@@ -1179,7 +1179,7 @@ export const ResumeTransferOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:resume", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResumeTransferOperationsRequest>;
+  ) as unknown as Schema.Codec<ResumeTransferOperationsRequest>;
 
 export type ResumeTransferOperationsResponse = Empty;
 export const ResumeTransferOperationsResponse =
@@ -1215,7 +1215,7 @@ export const GetGoogleServiceAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/googleServiceAccounts/{projectId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetGoogleServiceAccountsRequest>;
+  ) as unknown as Schema.Codec<GetGoogleServiceAccountsRequest>;
 
 export type GetGoogleServiceAccountsResponse = GoogleServiceAccount;
 export const GetGoogleServiceAccountsResponse =
@@ -1249,7 +1249,7 @@ export const CreateTransferJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/transferJobs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateTransferJobsRequest>;
+  ) as unknown as Schema.Codec<CreateTransferJobsRequest>;
 
 export type CreateTransferJobsResponse = TransferJob;
 export const CreateTransferJobsResponse =
@@ -1288,7 +1288,7 @@ export const PatchTransferJobsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+jobName}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchTransferJobsRequest>;
+  ) as unknown as Schema.Codec<PatchTransferJobsRequest>;
 
 export type PatchTransferJobsResponse = TransferJob;
 export const PatchTransferJobsResponse =
@@ -1328,7 +1328,7 @@ export const GetTransferJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/{+jobName}" }),
   svc,
-) as unknown as Schema.Schema<GetTransferJobsRequest>;
+) as unknown as Schema.Codec<GetTransferJobsRequest>;
 
 export type GetTransferJobsResponse = TransferJob;
 export const GetTransferJobsResponse = /*@__PURE__*/ /*#__PURE__*/ TransferJob;
@@ -1364,7 +1364,7 @@ export const ListTransferJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/transferJobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListTransferJobsRequest>;
+  ) as unknown as Schema.Codec<ListTransferJobsRequest>;
 
 export type ListTransferJobsResponse_Op = ListTransferJobsResponse;
 export const ListTransferJobsResponse_Op =
@@ -1403,7 +1403,7 @@ export const RunTransferJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1/{+jobName}:run", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<RunTransferJobsRequest>;
+) as unknown as Schema.Codec<RunTransferJobsRequest>;
 
 export type RunTransferJobsResponse = Operation;
 export const RunTransferJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1441,7 +1441,7 @@ export const DeleteTransferJobsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+jobName}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTransferJobsRequest>;
+  ) as unknown as Schema.Codec<DeleteTransferJobsRequest>;
 
 export type DeleteTransferJobsResponse = Empty;
 export const DeleteTransferJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1488,7 +1488,7 @@ export const CreateProjectsAgentPoolsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsAgentPoolsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsAgentPoolsRequest>;
 
 export type CreateProjectsAgentPoolsResponse = AgentPool;
 export const CreateProjectsAgentPoolsResponse =
@@ -1530,7 +1530,7 @@ export const PatchProjectsAgentPoolsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsAgentPoolsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsAgentPoolsRequest>;
 
 export type PatchProjectsAgentPoolsResponse = AgentPool;
 export const PatchProjectsAgentPoolsResponse =
@@ -1566,7 +1566,7 @@ export const GetProjectsAgentPoolsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAgentPoolsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAgentPoolsRequest>;
 
 export type GetProjectsAgentPoolsResponse = AgentPool;
 export const GetProjectsAgentPoolsResponse =
@@ -1606,7 +1606,7 @@ export const ListProjectsAgentPoolsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{+projectId}/agentPools" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAgentPoolsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAgentPoolsRequest>;
 
 export type ListProjectsAgentPoolsResponse = ListAgentPoolsResponse;
 export const ListProjectsAgentPoolsResponse =
@@ -1641,7 +1641,7 @@ export const DeleteProjectsAgentPoolsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsAgentPoolsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsAgentPoolsRequest>;
 
 export type DeleteProjectsAgentPoolsResponse = Empty;
 export const DeleteProjectsAgentPoolsResponse =

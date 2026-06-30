@@ -6,8 +6,25 @@ import {
   SensitiveNullableString,
   SensitiveOutputNullableString,
 } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface InsightsSharingRefreshCreateInput {
+  insight_id: number;
+  project_id: string;
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: string | Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}
 export const InsightsSharingRefreshCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insight_id: Schema.Number.pipe(T.PathParam()),
@@ -33,11 +50,23 @@ export const InsightsSharingRefreshCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/insights/{insight_id}/sharing/refresh/",
     }),
-  );
-export type InsightsSharingRefreshCreateInput =
-  typeof InsightsSharingRefreshCreateInput.Type;
+  ) as unknown as Schema.Codec<InsightsSharingRefreshCreateInput>;
 
 // Output Schema
+export interface InsightsSharingRefreshCreateOutput {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}
 export const InsightsSharingRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
@@ -56,9 +85,7 @@ export const InsightsSharingRefreshCreateOutput =
         }),
       ),
     ),
-  });
-export type InsightsSharingRefreshCreateOutput =
-  typeof InsightsSharingRefreshCreateOutput.Type;
+  }) as unknown as Schema.Codec<InsightsSharingRefreshCreateOutput>;
 
 // The operation
 /**

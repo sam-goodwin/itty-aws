@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsParserRecipesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const LlmAnalyticsParserRecipesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const LlmAnalyticsParserRecipesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/llm_analytics/parser_recipes/{id}/",
     }),
-  );
-export type LlmAnalyticsParserRecipesDestroyInput =
-  typeof LlmAnalyticsParserRecipesDestroyInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsParserRecipesDestroyInput>;
 
 // Output Schema
+export type LlmAnalyticsParserRecipesDestroyOutput = void;
 export const LlmAnalyticsParserRecipesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LlmAnalyticsParserRecipesDestroyOutput =
-  typeof LlmAnalyticsParserRecipesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LlmAnalyticsParserRecipesDestroyOutput>;
 
 // The operation
 /**

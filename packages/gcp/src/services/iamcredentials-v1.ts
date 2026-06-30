@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface ServiceAccountAllowedLocations {
   encodedLocations?: string;
 }
 
-export const ServiceAccountAllowedLocations: Schema.Schema<ServiceAccountAllowedLocations> =
+export const ServiceAccountAllowedLocations: Schema.Codec<ServiceAccountAllowedLocations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Schema.String)),
     encodedLocations: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface GenerateAccessTokenResponse {
   accessToken?: string;
 }
 
-export const GenerateAccessTokenResponse: Schema.Schema<GenerateAccessTokenResponse> =
+export const GenerateAccessTokenResponse: Schema.Codec<GenerateAccessTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     accessToken: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface GenerateIdTokenRequest {
   audience?: string;
 }
 
-export const GenerateIdTokenRequest: Schema.Schema<GenerateIdTokenRequest> =
+export const GenerateIdTokenRequest: Schema.Codec<GenerateIdTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegates: Schema.optional(Schema.Array(Schema.String)),
     includeEmail: Schema.optional(Schema.Boolean),
@@ -74,7 +74,7 @@ export interface SignBlobRequest {
   payload?: string;
 }
 
-export const SignBlobRequest: Schema.Schema<SignBlobRequest> =
+export const SignBlobRequest: Schema.Codec<SignBlobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegates: Schema.optional(Schema.Array(Schema.String)),
     payload: Schema.optional(Schema.String),
@@ -87,7 +87,7 @@ export interface SignJwtResponse {
   signedJwt?: string;
 }
 
-export const SignJwtResponse: Schema.Schema<SignJwtResponse> =
+export const SignJwtResponse: Schema.Codec<SignJwtResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyId: Schema.optional(Schema.String),
     signedJwt: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export interface GenerateIdTokenResponse {
   token?: string;
 }
 
-export const GenerateIdTokenResponse: Schema.Schema<GenerateIdTokenResponse> =
+export const GenerateIdTokenResponse: Schema.Codec<GenerateIdTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateIdTokenResponse" });
@@ -110,7 +110,7 @@ export interface SignBlobResponse {
   signedBlob?: string;
 }
 
-export const SignBlobResponse: Schema.Schema<SignBlobResponse> =
+export const SignBlobResponse: Schema.Codec<SignBlobResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyId: Schema.optional(Schema.String),
     signedBlob: Schema.optional(Schema.String),
@@ -123,7 +123,7 @@ export interface WorkforcePoolAllowedLocations {
   encodedLocations?: string;
 }
 
-export const WorkforcePoolAllowedLocations: Schema.Schema<WorkforcePoolAllowedLocations> =
+export const WorkforcePoolAllowedLocations: Schema.Codec<WorkforcePoolAllowedLocations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Schema.String)),
     encodedLocations: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface GenerateAccessTokenRequest {
   scope?: ReadonlyArray<string>;
 }
 
-export const GenerateAccessTokenRequest: Schema.Schema<GenerateAccessTokenRequest> =
+export const GenerateAccessTokenRequest: Schema.Codec<GenerateAccessTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegates: Schema.optional(Schema.Array(Schema.String)),
     lifetime: Schema.optional(Schema.String),
@@ -152,7 +152,7 @@ export interface SignJwtRequest {
   delegates?: ReadonlyArray<string>;
 }
 
-export const SignJwtRequest: Schema.Schema<SignJwtRequest> =
+export const SignJwtRequest: Schema.Codec<SignJwtRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.String),
     delegates: Schema.optional(Schema.Array(Schema.String)),
@@ -165,7 +165,7 @@ export interface WorkloadIdentityPoolAllowedLocations {
   encodedLocations?: string;
 }
 
-export const WorkloadIdentityPoolAllowedLocations: Schema.Schema<WorkloadIdentityPoolAllowedLocations> =
+export const WorkloadIdentityPoolAllowedLocations: Schema.Codec<WorkloadIdentityPoolAllowedLocations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Schema.String)),
     encodedLocations: Schema.optional(Schema.String),
@@ -239,7 +239,7 @@ export const SignJwtProjectsServiceAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:signJwt", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SignJwtProjectsServiceAccountsRequest>;
+  ) as unknown as Schema.Codec<SignJwtProjectsServiceAccountsRequest>;
 
 export type SignJwtProjectsServiceAccountsResponse = SignJwtResponse;
 export const SignJwtProjectsServiceAccountsResponse =
@@ -282,7 +282,7 @@ export const GenerateIdTokenProjectsServiceAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateIdTokenProjectsServiceAccountsRequest>;
+  ) as unknown as Schema.Codec<GenerateIdTokenProjectsServiceAccountsRequest>;
 
 export type GenerateIdTokenProjectsServiceAccountsResponse =
   GenerateIdTokenResponse;
@@ -322,7 +322,7 @@ export const SignBlobProjectsServiceAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:signBlob", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SignBlobProjectsServiceAccountsRequest>;
+  ) as unknown as Schema.Codec<SignBlobProjectsServiceAccountsRequest>;
 
 export type SignBlobProjectsServiceAccountsResponse = SignBlobResponse;
 export const SignBlobProjectsServiceAccountsResponse =
@@ -365,7 +365,7 @@ export const GenerateAccessTokenProjectsServiceAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateAccessTokenProjectsServiceAccountsRequest>;
+  ) as unknown as Schema.Codec<GenerateAccessTokenProjectsServiceAccountsRequest>;
 
 export type GenerateAccessTokenProjectsServiceAccountsResponse =
   GenerateAccessTokenResponse;
@@ -402,7 +402,7 @@ export const GetAllowedLocationsProjectsServiceAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
     svc,
-  ) as unknown as Schema.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>;
+  ) as unknown as Schema.Codec<GetAllowedLocationsProjectsServiceAccountsRequest>;
 
 export type GetAllowedLocationsProjectsServiceAccountsResponse =
   ServiceAccountAllowedLocations;
@@ -437,7 +437,7 @@ export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
     svc,
-  ) as unknown as Schema.Schema<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>;
+  ) as unknown as Schema.Codec<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>;
 
 export type GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsResponse =
   WorkloadIdentityPoolAllowedLocations;
@@ -472,7 +472,7 @@ export const GetAllowedLocationsLocationsWorkforcePoolsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
     svc,
-  ) as unknown as Schema.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>;
+  ) as unknown as Schema.Codec<GetAllowedLocationsLocationsWorkforcePoolsRequest>;
 
 export type GetAllowedLocationsLocationsWorkforcePoolsResponse =
   WorkforcePoolAllowedLocations;

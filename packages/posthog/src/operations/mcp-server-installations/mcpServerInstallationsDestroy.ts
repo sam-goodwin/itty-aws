@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpServerInstallationsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const McpServerInstallationsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const McpServerInstallationsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/mcp_server_installations/{id}/",
     }),
-  );
-export type McpServerInstallationsDestroyInput =
-  typeof McpServerInstallationsDestroyInput.Type;
+  ) as unknown as Schema.Codec<McpServerInstallationsDestroyInput>;
 
 // Output Schema
+export type McpServerInstallationsDestroyOutput = void;
 export const McpServerInstallationsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type McpServerInstallationsDestroyOutput =
-  typeof McpServerInstallationsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<McpServerInstallationsDestroyOutput>;
 
 // The operation
 /**

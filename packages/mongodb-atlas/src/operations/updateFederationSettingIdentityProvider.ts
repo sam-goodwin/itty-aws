@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateFederationSettingIdentityProviderInput {
+  federationSettingsId: string;
+  identityProviderId: string;
+  envelope?: boolean;
+}
 export const UpdateFederationSettingIdentityProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const UpdateFederationSettingIdentityProviderInput =
       method: "PATCH",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}",
     }),
-  );
-export type UpdateFederationSettingIdentityProviderInput =
-  typeof UpdateFederationSettingIdentityProviderInput.Type;
+  ) as unknown as Schema.Codec<UpdateFederationSettingIdentityProviderInput>;
 
 // Output Schema
+export type UpdateFederationSettingIdentityProviderOutput = void;
 export const UpdateFederationSettingIdentityProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateFederationSettingIdentityProviderOutput =
-  typeof UpdateFederationSettingIdentityProviderOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateFederationSettingIdentityProviderOutput>;
 
 // The operation
 /**

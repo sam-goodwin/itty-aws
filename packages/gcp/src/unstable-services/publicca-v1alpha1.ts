@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface ExternalAccountKey {
   name?: string;
 }
 
-export const ExternalAccountKey: Schema.Schema<ExternalAccountKey> =
+export const ExternalAccountKey: Schema.Codec<ExternalAccountKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyId: Schema.optional(Schema.String),
     b64MacKey: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export const CreateProjectsLocationsExternalAccountKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsExternalAccountKeysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsExternalAccountKeysRequest>;
 
 export type CreateProjectsLocationsExternalAccountKeysResponse =
   ExternalAccountKey;

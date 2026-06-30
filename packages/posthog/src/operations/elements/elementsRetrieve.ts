@@ -4,15 +4,29 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ElementsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const ElementsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.Number.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/elements/{id}/" }),
-);
-export type ElementsRetrieveInput = typeof ElementsRetrieveInput.Type;
+) as unknown as Schema.Codec<ElementsRetrieveInput>;
 
 // Output Schema
+export interface ElementsRetrieveOutput {
+  text?: string | null;
+  tag_name?: string | null;
+  attr_class?: string[] | null;
+  href?: string | null;
+  attr_id?: string | null;
+  nth_child?: number | null;
+  nth_of_type?: number | null;
+  attributes?: unknown;
+  order?: number | null;
+}
 export const ElementsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     text: Schema.optional(Schema.NullOr(Schema.String)),
@@ -25,8 +39,7 @@ export const ElementsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     attributes: Schema.optional(Schema.Unknown),
     order: Schema.optional(Schema.NullOr(Schema.Number)),
   },
-);
-export type ElementsRetrieveOutput = typeof ElementsRetrieveOutput.Type;
+) as unknown as Schema.Codec<ElementsRetrieveOutput>;
 
 // The operation
 /**

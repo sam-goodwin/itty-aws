@@ -3,6 +3,30 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansDurationHistogramCreateInput {
+  project_id: string;
+  query: {
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    serviceNames?: string[];
+    statusCodes?: number[];
+    filterGroup?: {
+      key: string;
+      type: "span" | "span_attribute" | "span_resource_attribute";
+      operator:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+  };
+}
 export const TracingSpansDurationHistogramCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -46,15 +70,12 @@ export const TracingSpansDurationHistogramCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tracing/spans/duration-histogram/",
     }),
-  );
-export type TracingSpansDurationHistogramCreateInput =
-  typeof TracingSpansDurationHistogramCreateInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansDurationHistogramCreateInput>;
 
 // Output Schema
+export type TracingSpansDurationHistogramCreateOutput = void;
 export const TracingSpansDurationHistogramCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TracingSpansDurationHistogramCreateOutput =
-  typeof TracingSpansDurationHistogramCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansDurationHistogramCreateOutput>;
 
 // The operation
 /**

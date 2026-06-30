@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupClusterGlobalWriteCustomZoneMappingInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupClusterGlobalWriteCustomZoneMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateGroupClusterGlobalWriteCustomZoneMappingInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
     }),
-  );
-export type CreateGroupClusterGlobalWriteCustomZoneMappingInput =
-  typeof CreateGroupClusterGlobalWriteCustomZoneMappingInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupClusterGlobalWriteCustomZoneMappingInput>;
 
 // Output Schema
+export type CreateGroupClusterGlobalWriteCustomZoneMappingOutput = void;
 export const CreateGroupClusterGlobalWriteCustomZoneMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupClusterGlobalWriteCustomZoneMappingOutput =
-  typeof CreateGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterGlobalWriteCustomZoneMappingOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesDeleteMetadataInput {
+  app_name: string;
+  machine_id: string;
+  key: string;
+}
 export const MachinesDeleteMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const MachinesDeleteMetadataInput =
       method: "DELETE",
       path: "/apps/{app_name}/machines/{machine_id}/metadata/{key}",
     }),
-  );
-export type MachinesDeleteMetadataInput =
-  typeof MachinesDeleteMetadataInput.Type;
+  ) as unknown as Schema.Codec<MachinesDeleteMetadataInput>;
 
 // Output Schema
+export type MachinesDeleteMetadataOutput = void;
 export const MachinesDeleteMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesDeleteMetadataOutput =
-  typeof MachinesDeleteMetadataOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteMetadataOutput>;
 
 // The operation
 /**

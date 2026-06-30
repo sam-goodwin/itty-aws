@@ -3,6 +3,18 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseColumnAnnotationsCreateInput {
+  project_id: string;
+  id: string;
+  table: string;
+  column_name?: string;
+  description: string;
+  description_source: "canonical" | "ai_generated" | "user_edited";
+  ai_model: string;
+  is_user_edited: boolean;
+  created_at: string;
+  updated_at: string | null;
+}
 export const WarehouseColumnAnnotationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -24,11 +36,20 @@ export const WarehouseColumnAnnotationsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/warehouse_column_annotations/",
     }),
-  );
-export type WarehouseColumnAnnotationsCreateInput =
-  typeof WarehouseColumnAnnotationsCreateInput.Type;
+  ) as unknown as Schema.Codec<WarehouseColumnAnnotationsCreateInput>;
 
 // Output Schema
+export interface WarehouseColumnAnnotationsCreateOutput {
+  id: string;
+  table: string;
+  column_name?: string;
+  description: string;
+  description_source: "canonical" | "ai_generated" | "user_edited";
+  ai_model: string;
+  is_user_edited: boolean;
+  created_at: string;
+  updated_at: string | null;
+}
 export const WarehouseColumnAnnotationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -44,9 +65,7 @@ export const WarehouseColumnAnnotationsCreateOutput =
     is_user_edited: Schema.Boolean,
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type WarehouseColumnAnnotationsCreateOutput =
-  typeof WarehouseColumnAnnotationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseColumnAnnotationsCreateOutput>;
 
 // The operation
 /**

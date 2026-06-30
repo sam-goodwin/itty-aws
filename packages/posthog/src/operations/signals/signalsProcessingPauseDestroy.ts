@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsProcessingPauseDestroyInput {
+  project_id: string;
+}
 export const SignalsProcessingPauseDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,18 +15,18 @@ export const SignalsProcessingPauseDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/signals/processing/pause/",
     }),
-  );
-export type SignalsProcessingPauseDestroyInput =
-  typeof SignalsProcessingPauseDestroyInput.Type;
+  ) as unknown as Schema.Codec<SignalsProcessingPauseDestroyInput>;
 
 // Output Schema
+export interface SignalsProcessingPauseDestroyOutput {
+  status?: string;
+  paused_until?: string;
+}
 export const SignalsProcessingPauseDestroyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     paused_until: Schema.optional(Schema.String),
-  });
-export type SignalsProcessingPauseDestroyOutput =
-  typeof SignalsProcessingPauseDestroyOutput.Type;
+  }) as unknown as Schema.Codec<SignalsProcessingPauseDestroyOutput>;
 
 // The operation
 /**

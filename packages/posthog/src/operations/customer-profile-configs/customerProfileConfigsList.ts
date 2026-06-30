@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomerProfileConfigsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const CustomerProfileConfigsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,28 @@ export const CustomerProfileConfigsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/customer_profile_configs/",
     }),
-  );
-export type CustomerProfileConfigsListInput =
-  typeof CustomerProfileConfigsListInput.Type;
+  ) as unknown as Schema.Codec<CustomerProfileConfigsListInput>;
 
 // Output Schema
+export interface CustomerProfileConfigsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    scope?:
+      | "person"
+      | "group_0"
+      | "group_1"
+      | "group_2"
+      | "group_3"
+      | "group_4";
+    content?: unknown;
+    sidebar?: unknown;
+    created_at?: string;
+    updated_at?: string | null;
+  }[];
+}
 export const CustomerProfileConfigsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -44,9 +66,7 @@ export const CustomerProfileConfigsListOutput =
         }),
       ),
     ),
-  });
-export type CustomerProfileConfigsListOutput =
-  typeof CustomerProfileConfigsListOutput.Type;
+  }) as unknown as Schema.Codec<CustomerProfileConfigsListOutput>;
 
 // The operation
 /**

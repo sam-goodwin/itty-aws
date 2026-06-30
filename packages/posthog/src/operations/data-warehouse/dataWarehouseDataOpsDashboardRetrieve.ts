@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DataWarehouseDataOpsDashboardRetrieveInput {
+  project_id: string;
+}
 export const DataWarehouseDataOpsDashboardRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const DataWarehouseDataOpsDashboardRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/data_warehouse/data_ops_dashboard/",
     }),
-  );
-export type DataWarehouseDataOpsDashboardRetrieveInput =
-  typeof DataWarehouseDataOpsDashboardRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DataWarehouseDataOpsDashboardRetrieveInput>;
 
 // Output Schema
+export type DataWarehouseDataOpsDashboardRetrieveOutput = void;
 export const DataWarehouseDataOpsDashboardRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataWarehouseDataOpsDashboardRetrieveOutput =
-  typeof DataWarehouseDataOpsDashboardRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataWarehouseDataOpsDashboardRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SavedListInput {
+  project_id: string;
+  created_by?: number;
+  limit?: number;
+  offset?: number;
+  order?: string;
+  search?: string;
+  status?: string;
+  type?: string;
+}
 export const SavedListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   created_by: Schema.optional(Schema.Number),
@@ -13,10 +23,52 @@ export const SavedListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   search: Schema.optional(Schema.String),
   status: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/projects/{project_id}/saved/" }));
-export type SavedListInput = typeof SavedListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/saved/" }),
+) as unknown as Schema.Codec<SavedListInput>;
 
 // Output Schema
+export type SavedListOutput = {
+  results: {
+    id?: string;
+    short_id?: string;
+    name?: string | null;
+    url?: string;
+    data_url?: string | null;
+    target_widths?: unknown;
+    type?: "screenshot" | "iframe" | "recording";
+    status?: "processing" | "completed" | "failed";
+    has_content?: boolean;
+    snapshots?: { width: number; has_content: boolean }[];
+    deleted?: boolean;
+    block_consent_modals?: boolean;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string;
+    updated_at?: string;
+    exception?: string | null;
+  }[];
+  count: number;
+}[];
 export const SavedListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     results: Schema.Array(
@@ -57,7 +109,23 @@ export const SavedListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -68,8 +136,7 @@ export const SavedListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     ),
     count: Schema.Number,
   }),
-);
-export type SavedListOutput = typeof SavedListOutput.Type;
+) as unknown as Schema.Codec<SavedListOutput>;
 
 // The operation
 /**

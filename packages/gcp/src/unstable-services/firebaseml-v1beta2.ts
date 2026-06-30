@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface TfLiteModel {
   automlModel?: string;
 }
 
-export const TfLiteModel: Schema.Schema<TfLiteModel> =
+export const TfLiteModel: Schema.Codec<TfLiteModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeBytes: Schema.optional(Schema.String),
     gcsTfliteUri: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -63,7 +63,7 @@ export interface ModelState {
   published?: boolean;
 }
 
-export const ModelState: Schema.Schema<ModelState> =
+export const ModelState: Schema.Codec<ModelState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationError: Schema.optional(Status),
     published: Schema.optional(Schema.Boolean),
@@ -82,7 +82,7 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -114,7 +114,7 @@ export interface Model {
   updateTime?: string;
 }
 
-export const Model: Schema.Schema<Model> =
+export const Model: Schema.Codec<Model> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     tfliteModel: Schema.optional(TfLiteModel),
@@ -135,7 +135,7 @@ export interface ListModelsResponse {
   nextPageToken?: string;
 }
 
-export const ListModelsResponse: Schema.Schema<ListModelsResponse> =
+export const ListModelsResponse: Schema.Codec<ListModelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     models: Schema.optional(Schema.Array(Model)),
     nextPageToken: Schema.optional(Schema.String),
@@ -152,7 +152,7 @@ export interface DownloadModelResponse {
   sizeBytes?: string;
 }
 
-export const DownloadModelResponse: Schema.Schema<DownloadModelResponse> =
+export const DownloadModelResponse: Schema.Codec<DownloadModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelFormat: Schema.optional(Schema.String),
     downloadUri: Schema.optional(Schema.String),
@@ -162,7 +162,7 @@ export const DownloadModelResponse: Schema.Schema<DownloadModelResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -177,7 +177,7 @@ export interface ModelOperationMetadata {
   name?: string;
 }
 
-export const ModelOperationMetadata: Schema.Schema<ModelOperationMetadata> =
+export const ModelOperationMetadata: Schema.Codec<ModelOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     basicOperationStatus: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -257,7 +257,7 @@ export const ListProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+parent}/models" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsModelsRequest>;
 
 export type ListProjectsModelsResponse = ListModelsResponse;
 export const ListProjectsModelsResponse =
@@ -298,7 +298,7 @@ export const PatchProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsModelsRequest>;
 
 export type PatchProjectsModelsResponse = Operation;
 export const PatchProjectsModelsResponse =
@@ -334,7 +334,7 @@ export const GetProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsModelsRequest>;
 
 export type GetProjectsModelsResponse = Model;
 export const GetProjectsModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Model;
@@ -364,7 +364,7 @@ export const DeleteProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsModelsRequest>;
 
 export type DeleteProjectsModelsResponse = Empty;
 export const DeleteProjectsModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -399,7 +399,7 @@ export const DownloadProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsModelsRequest>;
 
 export type DownloadProjectsModelsResponse = DownloadModelResponse;
 export const DownloadProjectsModelsResponse =
@@ -433,7 +433,7 @@ export const CreateProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta2/{+parent}/models", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsModelsRequest>;
 
 export type CreateProjectsModelsResponse = Operation;
 export const CreateProjectsModelsResponse =
@@ -469,7 +469,7 @@ export const GetProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetBackupPolicyInput {
+  id: string;
+  organization: string;
+  database: string;
+}
 export const GetBackupPolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,27 @@ export const GetBackupPolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
   }),
-);
-export type GetBackupPolicyInput = typeof GetBackupPolicyInput.Type;
+) as unknown as Schema.Codec<GetBackupPolicyInput>;
 
 // Output Schema
+export interface GetBackupPolicyOutput {
+  id: string;
+  display_name: string;
+  name: string;
+  target: "production" | "development";
+  retention_value: number;
+  retention_unit: string;
+  frequency_value: number;
+  frequency_unit: string;
+  schedule_time: string;
+  schedule_day: number | null;
+  schedule_week: number | null;
+  created_at: string;
+  updated_at: string;
+  last_ran_at: string | null;
+  next_run_at: string | null;
+  required: boolean;
+}
 export const GetBackupPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   display_name: Schema.String,
@@ -34,8 +56,7 @@ export const GetBackupPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_ran_at: Schema.NullOr(Schema.String),
   next_run_at: Schema.NullOr(Schema.String),
   required: Schema.Boolean,
-});
-export type GetBackupPolicyOutput = typeof GetBackupPolicyOutput.Type;
+}) as unknown as Schema.Codec<GetBackupPolicyOutput>;
 
 // The operation
 /**

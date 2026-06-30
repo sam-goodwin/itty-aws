@@ -4,14 +4,18 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ListAllOrganizationsInput {}
 export const V1ListAllOrganizationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/v1/organizations" }),
-  );
-export type V1ListAllOrganizationsInput =
-  typeof V1ListAllOrganizationsInput.Type;
+  ) as unknown as Schema.Codec<V1ListAllOrganizationsInput>;
 
 // Output Schema
+export type V1ListAllOrganizationsOutput = {
+  id: string;
+  slug: string;
+  name: string;
+}[];
 export const V1ListAllOrganizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -19,9 +23,7 @@ export const V1ListAllOrganizationsOutput =
       slug: Schema.String,
       name: Schema.String,
     }),
-  );
-export type V1ListAllOrganizationsOutput =
-  typeof V1ListAllOrganizationsOutput.Type;
+  ) as unknown as Schema.Codec<V1ListAllOrganizationsOutput>;
 
 // The operation
 /**

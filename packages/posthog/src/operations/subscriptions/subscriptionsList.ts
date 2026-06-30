@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SubscriptionsListInput {
+  project_id: string;
+  created_by?: string;
+  dashboard?: number;
+  insight?: number;
+  limit?: number;
+  offset?: number;
+  ordering?: string;
+  resource_type?: "ai_prompt" | "dashboard" | "insight";
+  search?: string;
+  target_type?: "email" | "slack";
+}
 export const SubscriptionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,10 +33,74 @@ export const SubscriptionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/subscriptions/" }),
-);
-export type SubscriptionsListInput = typeof SubscriptionsListInput.Type;
+) as unknown as Schema.Codec<SubscriptionsListInput>;
 
 // Output Schema
+export interface SubscriptionsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: number;
+    resource_type?: "insight" | "dashboard" | "ai_prompt";
+    dashboard?: number | null;
+    insight?: number | null;
+    insight_short_id?: string | null;
+    resource_name?: string | null;
+    dashboard_export_insights?: number[];
+    prompt?: string | null;
+    target_type?: "email" | "slack";
+    target_value?: string;
+    frequency?: "daily" | "weekly" | "monthly" | "yearly";
+    interval?: number;
+    byweekday?:
+      | (
+          | "monday"
+          | "tuesday"
+          | "wednesday"
+          | "thursday"
+          | "friday"
+          | "saturday"
+          | "sunday"
+        )[]
+      | null;
+    bysetpos?: number | null;
+    count?: number | null;
+    start_date?: string;
+    until_date?: string | null;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    deleted?: boolean;
+    enabled?: boolean;
+    title?: string | null;
+    summary?: string;
+    next_delivery_date?: string | null;
+    integration_id?: number | null;
+    invite_message?: string | null;
+    summary_enabled?: boolean;
+    summary_prompt_guide?: string;
+  }[];
+}
 export const SubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -86,7 +162,23 @@ export const SubscriptionsListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -102,8 +194,7 @@ export const SubscriptionsListOutput =
         }),
       ),
     ),
-  });
-export type SubscriptionsListOutput = typeof SubscriptionsListOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionsListOutput>;
 
 // The operation
 /**

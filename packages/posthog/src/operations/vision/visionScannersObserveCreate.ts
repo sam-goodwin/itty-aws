@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisionScannersObserveCreateInput {
+  id: string;
+  project_id: string;
+  session_id: string;
+}
 export const VisionScannersObserveCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const VisionScannersObserveCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/vision/scanners/{id}/observe/",
     }),
-  );
-export type VisionScannersObserveCreateInput =
-  typeof VisionScannersObserveCreateInput.Type;
+  ) as unknown as Schema.Codec<VisionScannersObserveCreateInput>;
 
 // Output Schema
+export type VisionScannersObserveCreateOutput = void;
 export const VisionScannersObserveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VisionScannersObserveCreateOutput =
-  typeof VisionScannersObserveCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VisionScannersObserveCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,42 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DatasetItemsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  dataset?: string;
+  input?: unknown;
+  output?: unknown;
+  metadata?: unknown;
+  ref_trace_id?: string | null;
+  ref_timestamp?: string | null;
+  ref_source_id?: string | null;
+  deleted?: boolean | null;
+  created_at?: string;
+  updated_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetItemsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -31,7 +67,23 @@ export const DatasetItemsPartialUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -41,11 +93,44 @@ export const DatasetItemsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/dataset_items/{id}/",
     }),
-  );
-export type DatasetItemsPartialUpdateInput =
-  typeof DatasetItemsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatasetItemsPartialUpdateInput>;
 
 // Output Schema
+export interface DatasetItemsPartialUpdateOutput {
+  id?: string;
+  dataset?: string;
+  input?: unknown;
+  output?: unknown;
+  metadata?: unknown;
+  ref_trace_id?: string | null;
+  ref_timestamp?: string | null;
+  ref_source_id?: string | null;
+  deleted?: boolean | null;
+  created_at?: string;
+  updated_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const DatasetItemsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -72,14 +157,28 @@ export const DatasetItemsPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
-export type DatasetItemsPartialUpdateOutput =
-  typeof DatasetItemsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatasetItemsPartialUpdateOutput>;
 
 // The operation
 /**

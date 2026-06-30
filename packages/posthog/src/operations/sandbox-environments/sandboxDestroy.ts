@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SandboxDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const SandboxDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,12 @@ export const SandboxDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/api/projects/{project_id}/sandbox_environments/{id}/",
   }),
-);
-export type SandboxDestroyInput = typeof SandboxDestroyInput.Type;
+) as unknown as Schema.Codec<SandboxDestroyInput>;
 
 // Output Schema
-export const SandboxDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SandboxDestroyOutput = typeof SandboxDestroyOutput.Type;
+export type SandboxDestroyOutput = void;
+export const SandboxDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SandboxDestroyOutput>;
 
 // The operation
 /**

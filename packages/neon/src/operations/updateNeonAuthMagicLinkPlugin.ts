@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateNeonAuthMagicLinkPluginInput {
+  project_id: string;
+  branch_id: string;
+  enabled?: boolean;
+  expires_in?: number;
+  disable_sign_up?: boolean;
+}
 export const UpdateNeonAuthMagicLinkPluginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,19 +22,20 @@ export const UpdateNeonAuthMagicLinkPluginInput =
       method: "PATCH",
       path: "/projects/{project_id}/branches/{branch_id}/auth/plugins/magic-link",
     }),
-  );
-export type UpdateNeonAuthMagicLinkPluginInput =
-  typeof UpdateNeonAuthMagicLinkPluginInput.Type;
+  ) as unknown as Schema.Codec<UpdateNeonAuthMagicLinkPluginInput>;
 
 // Output Schema
+export interface UpdateNeonAuthMagicLinkPluginOutput {
+  enabled: boolean;
+  expires_in: number;
+  disable_sign_up: boolean;
+}
 export const UpdateNeonAuthMagicLinkPluginOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     expires_in: Schema.Number,
     disable_sign_up: Schema.Boolean,
-  });
-export type UpdateNeonAuthMagicLinkPluginOutput =
-  typeof UpdateNeonAuthMagicLinkPluginOutput.Type;
+  }) as unknown as Schema.Codec<UpdateNeonAuthMagicLinkPluginOutput>;
 
 // The operation
 /**

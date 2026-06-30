@@ -1,8 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetRefundsRefundInput {
+  refund: string;
+  expand?: string;
+}
 export const GetRefundsRefundInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   refund: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
@@ -12,14 +21,766 @@ export const GetRefundsRefundInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/refunds/{refund}",
     contentType: "form-urlencoded",
   }),
-);
-export type GetRefundsRefundInput = typeof GetRefundsRefundInput.Type;
+) as unknown as Schema.Codec<GetRefundsRefundInput>;
 
 // Output Schema
+export interface GetRefundsRefundOutput {
+  amount: number;
+  balance_transaction:
+    | string
+    | {
+        amount: number;
+        available_on: number;
+        balance_type:
+          | "issuing"
+          | "payments"
+          | "refund_and_dispute_prefunding"
+          | "risk_reserved";
+        created: number;
+        currency: string;
+        description: string | null;
+        exchange_rate: number | null;
+        fee: number;
+        fee_details: {
+          amount: number;
+          application: string | null;
+          currency: string;
+          description: string | null;
+          type: string;
+        }[];
+        id: string;
+        net: number;
+        object: "balance_transaction";
+        reporting_category: string;
+        source: string | unknown | null;
+        status: string;
+        type:
+          | "adjustment"
+          | "advance"
+          | "advance_funding"
+          | "anticipation_repayment"
+          | "application_fee"
+          | "application_fee_refund"
+          | "charge"
+          | "climate_order_purchase"
+          | "climate_order_refund"
+          | "connect_collection_transfer"
+          | "contribution"
+          | "fee_credit_funding"
+          | "inbound_transfer"
+          | "inbound_transfer_reversal"
+          | "issuing_authorization_hold"
+          | "issuing_authorization_release"
+          | "issuing_dispute"
+          | "issuing_transaction"
+          | "obligation_outbound"
+          | "obligation_reversal_inbound"
+          | "payment"
+          | "payment_failure_refund"
+          | "payment_network_reserve_hold"
+          | "payment_network_reserve_release"
+          | "payment_refund"
+          | "payment_reversal"
+          | "payment_unreconciled"
+          | "payout"
+          | "payout_cancel"
+          | "payout_failure"
+          | "payout_minimum_balance_hold"
+          | "payout_minimum_balance_release"
+          | "refund"
+          | "refund_failure"
+          | "reserve_hold"
+          | "reserve_release"
+          | "reserve_transaction"
+          | "reserved_funds"
+          | "stripe_balance_payment_debit"
+          | "stripe_balance_payment_debit_reversal"
+          | "stripe_fee"
+          | "stripe_fx_fee"
+          | "tax_fee"
+          | "tax_fund"
+          | "topup"
+          | "topup_reversal"
+          | "transfer"
+          | "transfer_cancel"
+          | "transfer_failure"
+          | "transfer_refund";
+      }
+    | null;
+  charge: unknown;
+  created: number;
+  currency: string;
+  description?: string;
+  destination_details?: {
+    affirm?: {};
+    afterpay_clearpay?: {};
+    alipay?: {};
+    alma?: {};
+    amazon_pay?: {};
+    au_bank_transfer?: {};
+    blik?: {
+      network_decline_code: string | null;
+      reference: string | null;
+      reference_status: string | null;
+    };
+    br_bank_transfer?: {
+      reference: string | null;
+      reference_status: string | null;
+    };
+    card?: {
+      reference?: string;
+      reference_status?: string;
+      reference_type?: string;
+      type: "pending" | "refund" | "reversal";
+    };
+    cashapp?: {};
+    crypto?: { reference: string | null };
+    customer_cash_balance?: {};
+    eps?: {};
+    eu_bank_transfer?: {
+      reference: string | null;
+      reference_status: string | null;
+    };
+    gb_bank_transfer?: {
+      reference: string | null;
+      reference_status: string | null;
+    };
+    giropay?: {};
+    grabpay?: {};
+    jp_bank_transfer?: {
+      reference: string | null;
+      reference_status: string | null;
+    };
+    klarna?: {};
+    mb_way?: { reference: string | null; reference_status: string | null };
+    multibanco?: { reference: string | null; reference_status: string | null };
+    mx_bank_transfer?: {
+      reference: string | null;
+      reference_status: string | null;
+    };
+    nz_bank_transfer?: {};
+    p24?: { reference: string | null; reference_status: string | null };
+    paynow?: {};
+    paypal?: { network_decline_code: string | null };
+    pix?: {};
+    revolut?: {};
+    scalapay?: {};
+    sofort?: {};
+    swish?: {
+      network_decline_code: string | null;
+      reference: string | null;
+      reference_status: string | null;
+    };
+    th_bank_transfer?: {
+      reference: string | null;
+      reference_status: string | null;
+    };
+    twint?: {};
+    type: string;
+    us_bank_transfer?: {
+      reference: string | null;
+      reference_status: string | null;
+    };
+    wechat_pay?: {};
+    zip?: {};
+  };
+  failure_balance_transaction?:
+    | string
+    | {
+        amount: number;
+        available_on: number;
+        balance_type:
+          | "issuing"
+          | "payments"
+          | "refund_and_dispute_prefunding"
+          | "risk_reserved";
+        created: number;
+        currency: string;
+        description: string | null;
+        exchange_rate: number | null;
+        fee: number;
+        fee_details: {
+          amount: number;
+          application: string | null;
+          currency: string;
+          description: string | null;
+          type: string;
+        }[];
+        id: string;
+        net: number;
+        object: "balance_transaction";
+        reporting_category: string;
+        source: string | unknown | null;
+        status: string;
+        type:
+          | "adjustment"
+          | "advance"
+          | "advance_funding"
+          | "anticipation_repayment"
+          | "application_fee"
+          | "application_fee_refund"
+          | "charge"
+          | "climate_order_purchase"
+          | "climate_order_refund"
+          | "connect_collection_transfer"
+          | "contribution"
+          | "fee_credit_funding"
+          | "inbound_transfer"
+          | "inbound_transfer_reversal"
+          | "issuing_authorization_hold"
+          | "issuing_authorization_release"
+          | "issuing_dispute"
+          | "issuing_transaction"
+          | "obligation_outbound"
+          | "obligation_reversal_inbound"
+          | "payment"
+          | "payment_failure_refund"
+          | "payment_network_reserve_hold"
+          | "payment_network_reserve_release"
+          | "payment_refund"
+          | "payment_reversal"
+          | "payment_unreconciled"
+          | "payout"
+          | "payout_cancel"
+          | "payout_failure"
+          | "payout_minimum_balance_hold"
+          | "payout_minimum_balance_release"
+          | "refund"
+          | "refund_failure"
+          | "reserve_hold"
+          | "reserve_release"
+          | "reserve_transaction"
+          | "reserved_funds"
+          | "stripe_balance_payment_debit"
+          | "stripe_balance_payment_debit_reversal"
+          | "stripe_fee"
+          | "stripe_fx_fee"
+          | "tax_fee"
+          | "tax_fund"
+          | "topup"
+          | "topup_reversal"
+          | "transfer"
+          | "transfer_cancel"
+          | "transfer_failure"
+          | "transfer_refund";
+      };
+  failure_reason?: string;
+  id: string;
+  instructions_email?: string;
+  metadata: Record<string, string> | null;
+  next_action?: {
+    display_details?: {
+      email_sent: { email_sent_at: number; email_sent_to: string };
+      expires_at: number;
+    };
+    type: string;
+  };
+  object: "refund";
+  payment_intent: unknown;
+  pending_reason?: "charge_pending" | "insufficient_funds" | "processing";
+  presentment_details?: {
+    presentment_amount: number;
+    presentment_currency: string;
+  };
+  reason:
+    | "duplicate"
+    | "expired_uncaptured_charge"
+    | "fraudulent"
+    | "requested_by_customer"
+    | null;
+  receipt_number: string | null;
+  source_transfer_reversal:
+    | string
+    | {
+        amount: number;
+        balance_transaction:
+          | string
+          | {
+              amount: number;
+              available_on: number;
+              balance_type:
+                | "issuing"
+                | "payments"
+                | "refund_and_dispute_prefunding"
+                | "risk_reserved";
+              created: number;
+              currency: string;
+              description: string | null;
+              exchange_rate: number | null;
+              fee: number;
+              fee_details: {
+                amount: number;
+                application: string | null;
+                currency: string;
+                description: string | null;
+                type: string;
+              }[];
+              id: string;
+              net: number;
+              object: "balance_transaction";
+              reporting_category: string;
+              source: string | unknown | null;
+              status: string;
+              type:
+                | "adjustment"
+                | "advance"
+                | "advance_funding"
+                | "anticipation_repayment"
+                | "application_fee"
+                | "application_fee_refund"
+                | "charge"
+                | "climate_order_purchase"
+                | "climate_order_refund"
+                | "connect_collection_transfer"
+                | "contribution"
+                | "fee_credit_funding"
+                | "inbound_transfer"
+                | "inbound_transfer_reversal"
+                | "issuing_authorization_hold"
+                | "issuing_authorization_release"
+                | "issuing_dispute"
+                | "issuing_transaction"
+                | "obligation_outbound"
+                | "obligation_reversal_inbound"
+                | "payment"
+                | "payment_failure_refund"
+                | "payment_network_reserve_hold"
+                | "payment_network_reserve_release"
+                | "payment_refund"
+                | "payment_reversal"
+                | "payment_unreconciled"
+                | "payout"
+                | "payout_cancel"
+                | "payout_failure"
+                | "payout_minimum_balance_hold"
+                | "payout_minimum_balance_release"
+                | "refund"
+                | "refund_failure"
+                | "reserve_hold"
+                | "reserve_release"
+                | "reserve_transaction"
+                | "reserved_funds"
+                | "stripe_balance_payment_debit"
+                | "stripe_balance_payment_debit_reversal"
+                | "stripe_fee"
+                | "stripe_fx_fee"
+                | "tax_fee"
+                | "tax_fund"
+                | "topup"
+                | "topup_reversal"
+                | "transfer"
+                | "transfer_cancel"
+                | "transfer_failure"
+                | "transfer_refund";
+            }
+          | null;
+        created: number;
+        currency: string;
+        destination_payment_refund: unknown;
+        id: string;
+        metadata: Record<string, string> | null;
+        object: "transfer_reversal";
+        source_refund: unknown;
+        transfer:
+          | string
+          | {
+              amount: number;
+              amount_reversed: number;
+              balance_transaction:
+                | string
+                | {
+                    amount: number;
+                    available_on: number;
+                    balance_type:
+                      | "issuing"
+                      | "payments"
+                      | "refund_and_dispute_prefunding"
+                      | "risk_reserved";
+                    created: number;
+                    currency: string;
+                    description: string | null;
+                    exchange_rate: number | null;
+                    fee: number;
+                    fee_details: {
+                      amount: number;
+                      application: string | null;
+                      currency: string;
+                      description: string | null;
+                      type: string;
+                    }[];
+                    id: string;
+                    net: number;
+                    object: "balance_transaction";
+                    reporting_category: string;
+                    source: string | unknown | null;
+                    status: string;
+                    type:
+                      | "adjustment"
+                      | "advance"
+                      | "advance_funding"
+                      | "anticipation_repayment"
+                      | "application_fee"
+                      | "application_fee_refund"
+                      | "charge"
+                      | "climate_order_purchase"
+                      | "climate_order_refund"
+                      | "connect_collection_transfer"
+                      | "contribution"
+                      | "fee_credit_funding"
+                      | "inbound_transfer"
+                      | "inbound_transfer_reversal"
+                      | "issuing_authorization_hold"
+                      | "issuing_authorization_release"
+                      | "issuing_dispute"
+                      | "issuing_transaction"
+                      | "obligation_outbound"
+                      | "obligation_reversal_inbound"
+                      | "payment"
+                      | "payment_failure_refund"
+                      | "payment_network_reserve_hold"
+                      | "payment_network_reserve_release"
+                      | "payment_refund"
+                      | "payment_reversal"
+                      | "payment_unreconciled"
+                      | "payout"
+                      | "payout_cancel"
+                      | "payout_failure"
+                      | "payout_minimum_balance_hold"
+                      | "payout_minimum_balance_release"
+                      | "refund"
+                      | "refund_failure"
+                      | "reserve_hold"
+                      | "reserve_release"
+                      | "reserve_transaction"
+                      | "reserved_funds"
+                      | "stripe_balance_payment_debit"
+                      | "stripe_balance_payment_debit_reversal"
+                      | "stripe_fee"
+                      | "stripe_fx_fee"
+                      | "tax_fee"
+                      | "tax_fund"
+                      | "topup"
+                      | "topup_reversal"
+                      | "transfer"
+                      | "transfer_cancel"
+                      | "transfer_failure"
+                      | "transfer_refund";
+                  }
+                | null;
+              created: number;
+              currency: string;
+              description: string | null;
+              destination: unknown;
+              destination_payment?: unknown;
+              id: string;
+              livemode: boolean;
+              metadata: Record<string, string>;
+              object: "transfer";
+              reversals: {
+                data: unknown[];
+                has_more: boolean;
+                object: "list";
+                url: string;
+              };
+              reversed: boolean;
+              source_transaction: unknown;
+              source_type?: string;
+              transfer_group: string | null;
+            };
+      }
+    | null;
+  status: string | null;
+  transfer_reversal:
+    | string
+    | {
+        amount: number;
+        balance_transaction:
+          | string
+          | {
+              amount: number;
+              available_on: number;
+              balance_type:
+                | "issuing"
+                | "payments"
+                | "refund_and_dispute_prefunding"
+                | "risk_reserved";
+              created: number;
+              currency: string;
+              description: string | null;
+              exchange_rate: number | null;
+              fee: number;
+              fee_details: {
+                amount: number;
+                application: string | null;
+                currency: string;
+                description: string | null;
+                type: string;
+              }[];
+              id: string;
+              net: number;
+              object: "balance_transaction";
+              reporting_category: string;
+              source: string | unknown | null;
+              status: string;
+              type:
+                | "adjustment"
+                | "advance"
+                | "advance_funding"
+                | "anticipation_repayment"
+                | "application_fee"
+                | "application_fee_refund"
+                | "charge"
+                | "climate_order_purchase"
+                | "climate_order_refund"
+                | "connect_collection_transfer"
+                | "contribution"
+                | "fee_credit_funding"
+                | "inbound_transfer"
+                | "inbound_transfer_reversal"
+                | "issuing_authorization_hold"
+                | "issuing_authorization_release"
+                | "issuing_dispute"
+                | "issuing_transaction"
+                | "obligation_outbound"
+                | "obligation_reversal_inbound"
+                | "payment"
+                | "payment_failure_refund"
+                | "payment_network_reserve_hold"
+                | "payment_network_reserve_release"
+                | "payment_refund"
+                | "payment_reversal"
+                | "payment_unreconciled"
+                | "payout"
+                | "payout_cancel"
+                | "payout_failure"
+                | "payout_minimum_balance_hold"
+                | "payout_minimum_balance_release"
+                | "refund"
+                | "refund_failure"
+                | "reserve_hold"
+                | "reserve_release"
+                | "reserve_transaction"
+                | "reserved_funds"
+                | "stripe_balance_payment_debit"
+                | "stripe_balance_payment_debit_reversal"
+                | "stripe_fee"
+                | "stripe_fx_fee"
+                | "tax_fee"
+                | "tax_fund"
+                | "topup"
+                | "topup_reversal"
+                | "transfer"
+                | "transfer_cancel"
+                | "transfer_failure"
+                | "transfer_refund";
+            }
+          | null;
+        created: number;
+        currency: string;
+        destination_payment_refund: unknown;
+        id: string;
+        metadata: Record<string, string> | null;
+        object: "transfer_reversal";
+        source_refund: unknown;
+        transfer:
+          | string
+          | {
+              amount: number;
+              amount_reversed: number;
+              balance_transaction:
+                | string
+                | {
+                    amount: number;
+                    available_on: number;
+                    balance_type:
+                      | "issuing"
+                      | "payments"
+                      | "refund_and_dispute_prefunding"
+                      | "risk_reserved";
+                    created: number;
+                    currency: string;
+                    description: string | null;
+                    exchange_rate: number | null;
+                    fee: number;
+                    fee_details: {
+                      amount: number;
+                      application: string | null;
+                      currency: string;
+                      description: string | null;
+                      type: string;
+                    }[];
+                    id: string;
+                    net: number;
+                    object: "balance_transaction";
+                    reporting_category: string;
+                    source: string | unknown | null;
+                    status: string;
+                    type:
+                      | "adjustment"
+                      | "advance"
+                      | "advance_funding"
+                      | "anticipation_repayment"
+                      | "application_fee"
+                      | "application_fee_refund"
+                      | "charge"
+                      | "climate_order_purchase"
+                      | "climate_order_refund"
+                      | "connect_collection_transfer"
+                      | "contribution"
+                      | "fee_credit_funding"
+                      | "inbound_transfer"
+                      | "inbound_transfer_reversal"
+                      | "issuing_authorization_hold"
+                      | "issuing_authorization_release"
+                      | "issuing_dispute"
+                      | "issuing_transaction"
+                      | "obligation_outbound"
+                      | "obligation_reversal_inbound"
+                      | "payment"
+                      | "payment_failure_refund"
+                      | "payment_network_reserve_hold"
+                      | "payment_network_reserve_release"
+                      | "payment_refund"
+                      | "payment_reversal"
+                      | "payment_unreconciled"
+                      | "payout"
+                      | "payout_cancel"
+                      | "payout_failure"
+                      | "payout_minimum_balance_hold"
+                      | "payout_minimum_balance_release"
+                      | "refund"
+                      | "refund_failure"
+                      | "reserve_hold"
+                      | "reserve_release"
+                      | "reserve_transaction"
+                      | "reserved_funds"
+                      | "stripe_balance_payment_debit"
+                      | "stripe_balance_payment_debit_reversal"
+                      | "stripe_fee"
+                      | "stripe_fx_fee"
+                      | "tax_fee"
+                      | "tax_fund"
+                      | "topup"
+                      | "topup_reversal"
+                      | "transfer"
+                      | "transfer_cancel"
+                      | "transfer_failure"
+                      | "transfer_refund";
+                  }
+                | null;
+              created: number;
+              currency: string;
+              description: string | null;
+              destination: unknown;
+              destination_payment?: unknown;
+              id: string;
+              livemode: boolean;
+              metadata: Record<string, string>;
+              object: "transfer";
+              reversals: {
+                data: unknown[];
+                has_more: boolean;
+                object: "list";
+                url: string;
+              };
+              reversed: boolean;
+              source_transaction: unknown;
+              source_type?: string;
+              transfer_group: string | null;
+            };
+      }
+    | null;
+}
 export const GetRefundsRefundOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     amount: Schema.Number,
-    balance_transaction: Schema.Unknown,
+    balance_transaction: Schema.NullOr(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          amount: Schema.Number,
+          available_on: Schema.Number,
+          balance_type: Schema.Literals([
+            "issuing",
+            "payments",
+            "refund_and_dispute_prefunding",
+            "risk_reserved",
+          ]),
+          created: Schema.Number,
+          currency: Schema.String,
+          description: Schema.NullOr(Schema.String),
+          exchange_rate: Schema.NullOr(Schema.Number),
+          fee: Schema.Number,
+          fee_details: Schema.Array(
+            Schema.Struct({
+              amount: Schema.Number,
+              application: Schema.NullOr(Schema.String),
+              currency: Schema.String,
+              description: Schema.NullOr(Schema.String),
+              type: Schema.String,
+            }),
+          ),
+          id: Schema.String,
+          net: Schema.Number,
+          object: Schema.Literals(["balance_transaction"]),
+          reporting_category: Schema.String,
+          source: Schema.NullOr(Schema.Union([Schema.String, Schema.Unknown])),
+          status: Schema.String,
+          type: Schema.Literals([
+            "adjustment",
+            "advance",
+            "advance_funding",
+            "anticipation_repayment",
+            "application_fee",
+            "application_fee_refund",
+            "charge",
+            "climate_order_purchase",
+            "climate_order_refund",
+            "connect_collection_transfer",
+            "contribution",
+            "fee_credit_funding",
+            "inbound_transfer",
+            "inbound_transfer_reversal",
+            "issuing_authorization_hold",
+            "issuing_authorization_release",
+            "issuing_dispute",
+            "issuing_transaction",
+            "obligation_outbound",
+            "obligation_reversal_inbound",
+            "payment",
+            "payment_failure_refund",
+            "payment_network_reserve_hold",
+            "payment_network_reserve_release",
+            "payment_refund",
+            "payment_reversal",
+            "payment_unreconciled",
+            "payout",
+            "payout_cancel",
+            "payout_failure",
+            "payout_minimum_balance_hold",
+            "payout_minimum_balance_release",
+            "refund",
+            "refund_failure",
+            "reserve_hold",
+            "reserve_release",
+            "reserve_transaction",
+            "reserved_funds",
+            "stripe_balance_payment_debit",
+            "stripe_balance_payment_debit_reversal",
+            "stripe_fee",
+            "stripe_fx_fee",
+            "tax_fee",
+            "tax_fund",
+            "topup",
+            "topup_reversal",
+            "transfer",
+            "transfer_cancel",
+            "transfer_failure",
+            "transfer_refund",
+          ]),
+        }),
+      ]),
+    ),
     charge: Schema.Unknown,
     created: Schema.Number,
     currency: Schema.String,
@@ -142,7 +903,93 @@ export const GetRefundsRefundOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         zip: Schema.optional(Schema.Struct({})),
       }),
     ),
-    failure_balance_transaction: Schema.optional(Schema.Unknown),
+    failure_balance_transaction: Schema.optional(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          amount: Schema.Number,
+          available_on: Schema.Number,
+          balance_type: Schema.Literals([
+            "issuing",
+            "payments",
+            "refund_and_dispute_prefunding",
+            "risk_reserved",
+          ]),
+          created: Schema.Number,
+          currency: Schema.String,
+          description: Schema.NullOr(Schema.String),
+          exchange_rate: Schema.NullOr(Schema.Number),
+          fee: Schema.Number,
+          fee_details: Schema.Array(
+            Schema.Struct({
+              amount: Schema.Number,
+              application: Schema.NullOr(Schema.String),
+              currency: Schema.String,
+              description: Schema.NullOr(Schema.String),
+              type: Schema.String,
+            }),
+          ),
+          id: Schema.String,
+          net: Schema.Number,
+          object: Schema.Literals(["balance_transaction"]),
+          reporting_category: Schema.String,
+          source: Schema.NullOr(Schema.Union([Schema.String, Schema.Unknown])),
+          status: Schema.String,
+          type: Schema.Literals([
+            "adjustment",
+            "advance",
+            "advance_funding",
+            "anticipation_repayment",
+            "application_fee",
+            "application_fee_refund",
+            "charge",
+            "climate_order_purchase",
+            "climate_order_refund",
+            "connect_collection_transfer",
+            "contribution",
+            "fee_credit_funding",
+            "inbound_transfer",
+            "inbound_transfer_reversal",
+            "issuing_authorization_hold",
+            "issuing_authorization_release",
+            "issuing_dispute",
+            "issuing_transaction",
+            "obligation_outbound",
+            "obligation_reversal_inbound",
+            "payment",
+            "payment_failure_refund",
+            "payment_network_reserve_hold",
+            "payment_network_reserve_release",
+            "payment_refund",
+            "payment_reversal",
+            "payment_unreconciled",
+            "payout",
+            "payout_cancel",
+            "payout_failure",
+            "payout_minimum_balance_hold",
+            "payout_minimum_balance_release",
+            "refund",
+            "refund_failure",
+            "reserve_hold",
+            "reserve_release",
+            "reserve_transaction",
+            "reserved_funds",
+            "stripe_balance_payment_debit",
+            "stripe_balance_payment_debit_reversal",
+            "stripe_fee",
+            "stripe_fx_fee",
+            "tax_fee",
+            "tax_fund",
+            "topup",
+            "topup_reversal",
+            "transfer",
+            "transfer_cancel",
+            "transfer_failure",
+            "transfer_refund",
+          ]),
+        }),
+      ]),
+    ),
     failure_reason: Schema.optional(Schema.String),
     id: Schema.String,
     instructions_email: Schema.optional(Schema.String),
@@ -185,8 +1032,7 @@ export const GetRefundsRefundOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     status: Schema.NullOr(Schema.String),
     transfer_reversal: Schema.Unknown,
   },
-);
-export type GetRefundsRefundOutput = typeof GetRefundsRefundOutput.Type;
+) as unknown as Schema.Codec<GetRefundsRefundOutput>;
 
 // The operation
 /**

@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemInstructionsVersionsListInput {
+  id: string;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const DesktopFileSystemInstructionsVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +22,41 @@ export const DesktopFileSystemInstructionsVersionsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/desktop_file_system/{id}/instructions/versions/",
     }),
-  );
-export type DesktopFileSystemInstructionsVersionsListInput =
-  typeof DesktopFileSystemInstructionsVersionsListInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemInstructionsVersionsListInput>;
 
 // Output Schema
+export interface DesktopFileSystemInstructionsVersionsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    version: number;
+    is_latest: boolean;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    created_at: string;
+  }[];
+}
 export const DesktopFileSystemInstructionsVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -41,14 +78,28 @@ export const DesktopFileSystemInstructionsVersionsListOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
         created_at: Schema.String,
       }),
     ),
-  });
-export type DesktopFileSystemInstructionsVersionsListOutput =
-  typeof DesktopFileSystemInstructionsVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemInstructionsVersionsListOutput>;
 
 // The operation
 /**

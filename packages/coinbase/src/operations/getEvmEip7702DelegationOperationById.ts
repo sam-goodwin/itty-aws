@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetEvmEip7702DelegationOperationByIdInput {
+  delegationOperationId: string;
+}
 export const GetEvmEip7702DelegationOperationByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegationOperationId: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,23 @@ export const GetEvmEip7702DelegationOperationByIdInput =
       method: "GET",
       path: "/v2/evm/eip7702/delegation-operations/{delegationOperationId}",
     }),
-  );
-export type GetEvmEip7702DelegationOperationByIdInput =
-  typeof GetEvmEip7702DelegationOperationByIdInput.Type;
+  ) as unknown as Schema.Codec<GetEvmEip7702DelegationOperationByIdInput>;
 
 // Output Schema
+export interface GetEvmEip7702DelegationOperationByIdOutput {
+  delegationOperationId: string;
+  status: "UNSPECIFIED" | "PENDING" | "SUBMITTED" | "COMPLETED" | "FAILED";
+  transactionHash?: string;
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "polygon"
+    | "ethereum"
+    | "ethereum-sepolia";
+  delegateAddress?: string;
+}
 export const GetEvmEip7702DelegationOperationByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegationOperationId: Schema.String,
@@ -37,9 +52,7 @@ export const GetEvmEip7702DelegationOperationByIdOutput =
       "ethereum-sepolia",
     ]),
     delegateAddress: Schema.optional(Schema.String),
-  });
-export type GetEvmEip7702DelegationOperationByIdOutput =
-  typeof GetEvmEip7702DelegationOperationByIdOutput.Type;
+  }) as unknown as Schema.Codec<GetEvmEip7702DelegationOperationByIdOutput>;
 
 // The operation
 /**

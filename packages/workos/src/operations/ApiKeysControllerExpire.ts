@@ -4,20 +4,50 @@ import * as T from "../traits.ts";
 import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface ApiKeysControllerExpireInput {
+  id: string;
+  expires_at?: string | null;
+}
 export const ApiKeysControllerExpireInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expires_at: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "POST", path: "/api_keys/{id}/expire" }));
-export type ApiKeysControllerExpireInput =
-  typeof ApiKeysControllerExpireInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/api_keys/{id}/expire" }),
+  ) as unknown as Schema.Codec<ApiKeysControllerExpireInput>;
 
 // Output Schema
+export interface ApiKeysControllerExpireOutput {
+  object?: string;
+  id?: string;
+  owner?:
+    | { type: string; id: string }
+    | { type: string; id: string; organization_id: string };
+  name?: string;
+  obfuscated_value?: string;
+  last_used_at?: string | null;
+  expires_at?: string | null;
+  permissions?: string[];
+  created_at?: string;
+  updated_at?: string;
+}
 export const ApiKeysControllerExpireOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
-    owner: Schema.optional(Schema.Unknown),
+    owner: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          type: Schema.String,
+          id: Schema.String,
+        }),
+        Schema.Struct({
+          type: Schema.String,
+          id: Schema.String,
+          organization_id: Schema.String,
+        }),
+      ]),
+    ),
     name: Schema.optional(Schema.String),
     obfuscated_value: Schema.optional(Schema.String),
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -25,9 +55,7 @@ export const ApiKeysControllerExpireOutput =
     permissions: Schema.optional(Schema.Array(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ApiKeysControllerExpireOutput =
-  typeof ApiKeysControllerExpireOutput.Type;
+  }) as unknown as Schema.Codec<ApiKeysControllerExpireOutput>;
 
 // The operation
 /**

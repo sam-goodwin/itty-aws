@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface ListRateLimitsInput {
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  envelope?: boolean;
+  groupId?: string;
+  orgId?: string;
+  userId?: string;
+  ipAddress?: string;
+  name?: string;
+  endpointPath?: string;
+}
 export const ListRateLimitsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   itemsPerPage: Schema.optional(Schema.Number),
   pageNum: Schema.optional(Schema.Number),
@@ -15,12 +27,14 @@ export const ListRateLimitsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ipAddress: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   endpointPath: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/rateLimits" }));
-export type ListRateLimitsInput = typeof ListRateLimitsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/rateLimits" }),
+) as unknown as Schema.Codec<ListRateLimitsInput>;
 
 // Output Schema
-export const ListRateLimitsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListRateLimitsOutput = typeof ListRateLimitsOutput.Type;
+export type ListRateLimitsOutput = void;
+export const ListRateLimitsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListRateLimitsOutput>;
 
 // The operation
 /**

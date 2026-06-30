@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsScoutMetadataGetInput {
+  project_id: string;
+}
 export const SignalsScoutMetadataGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,19 @@ export const SignalsScoutMetadataGetInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/scout/metadata/current/",
     }),
-  );
-export type SignalsScoutMetadataGetInput =
-  typeof SignalsScoutMetadataGetInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutMetadataGetInput>;
 
 // Output Schema
+export interface SignalsScoutMetadataGetOutput {
+  enrolled: boolean;
+  banner_message: string | null;
+  limits: {
+    max_runs_per_tick: number;
+    max_runs_per_day: number | null;
+    runs_today: number;
+    runs_remaining_today: number | null;
+  };
+}
 export const SignalsScoutMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enrolled: Schema.Boolean,
@@ -26,9 +37,7 @@ export const SignalsScoutMetadataGetOutput =
       runs_today: Schema.Number,
       runs_remaining_today: Schema.NullOr(Schema.Number),
     }),
-  });
-export type SignalsScoutMetadataGetOutput =
-  typeof SignalsScoutMetadataGetOutput.Type;
+  }) as unknown as Schema.Codec<SignalsScoutMetadataGetOutput>;
 
 // The operation
 /**

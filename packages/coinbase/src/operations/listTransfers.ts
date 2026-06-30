@@ -3,6 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListTransfersInput {
+  status?: string;
+  accountId?: string;
+  sourceAccountId?: string;
+  targetAccountId?: string;
+  createdAfter?: string;
+  createdBefore?: string;
+  updatedAfter?: string;
+  updatedBefore?: string;
+  sourceAsset?: string;
+  targetAsset?: string;
+  sourceAddress?: string;
+  targetAddress?: string;
+  targetEmail?: string;
+  transferId?: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const ListTransfersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
   accountId: Schema.optional(Schema.String),
@@ -20,10 +38,107 @@ export const ListTransfersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   transferId: Schema.optional(Schema.String),
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v2/transfers" }));
-export type ListTransfersInput = typeof ListTransfersInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/transfers" }),
+) as unknown as Schema.Codec<ListTransfersInput>;
 
 // Output Schema
+export interface ListTransfersOutput {
+  transfers: {
+    transferId?: string;
+    status?: "quoted" | "processing" | "completed" | "failed";
+    source:
+      | { accountId: string; asset: string }
+      | { paymentMethodId: string; asset: string }
+      | {
+          address: string;
+          network:
+            | "base"
+            | "ethereum"
+            | "solana"
+            | "aptos"
+            | "arbitrum"
+            | "arbitrum-sepolia"
+            | "optimism"
+            | "polygon"
+            | "world"
+            | "world-sepolia";
+          destinationTag?: string;
+          asset: string;
+        }
+      | { bankName: string; accountLast4: string; currency: string };
+    target:
+      | { accountId: string; asset: string }
+      | { paymentMethodId: string; asset: string }
+      | {
+          address: string;
+          network:
+            | "base"
+            | "ethereum"
+            | "solana"
+            | "aptos"
+            | "arbitrum"
+            | "arbitrum-sepolia"
+            | "optimism"
+            | "polygon"
+            | "world"
+            | "world-sepolia";
+          destinationTag?: string;
+          asset: string;
+        }
+      | { email: string; asset: string };
+    sourceAmount?: string;
+    sourceAsset?: string;
+    targetAmount?: string;
+    targetAsset?: string;
+    exchangeRate?: { sourceAsset: string; targetAsset: string; rate: string };
+    fees?: {
+      type: "bank" | "conversion" | "network" | "other";
+      amount: string;
+      asset: string;
+    }[];
+    estimate?: {
+      exchangeRate?: { sourceAsset: string; targetAsset: string; rate: string };
+      targetAmount?: string;
+      targetAsset?: string;
+      fees?: {
+        type: "bank" | "conversion" | "network" | "other";
+        amount: string;
+        asset: string;
+      }[];
+      estimatedAt: string;
+    };
+    completedAt?: string;
+    failureReason?: string;
+    expiresAt?: string;
+    executedAt?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    metadata?: Record<string, string>;
+    details?: {
+      depositDestination?: { id: string };
+      onchainTransactions?: {
+        transactionHash: string;
+        network:
+          | "base"
+          | "ethereum"
+          | "solana"
+          | "aptos"
+          | "arbitrum"
+          | "arbitrum-sepolia"
+          | "optimism"
+          | "polygon"
+          | "world"
+          | "world-sepolia";
+      }[];
+      travelRule?: {
+        status?: "incomplete" | "completed";
+        statusMessage?: string;
+      };
+    };
+  }[];
+  nextPageToken?: string;
+}
 export const ListTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   transfers: Schema.Array(
     Schema.Struct({
@@ -31,8 +146,69 @@ export const ListTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       status: Schema.optional(
         Schema.Literals(["quoted", "processing", "completed", "failed"]),
       ),
-      source: Schema.Unknown,
-      target: Schema.Unknown,
+      source: Schema.Union([
+        Schema.Struct({
+          accountId: Schema.String,
+          asset: Schema.String,
+        }),
+        Schema.Struct({
+          paymentMethodId: Schema.String,
+          asset: Schema.String,
+        }),
+        Schema.Struct({
+          address: Schema.String,
+          network: Schema.Literals([
+            "base",
+            "ethereum",
+            "solana",
+            "aptos",
+            "arbitrum",
+            "arbitrum-sepolia",
+            "optimism",
+            "polygon",
+            "world",
+            "world-sepolia",
+          ]),
+          destinationTag: Schema.optional(Schema.String),
+          asset: Schema.String,
+        }),
+        Schema.Struct({
+          bankName: Schema.String,
+          accountLast4: Schema.String,
+          currency: Schema.String,
+        }),
+      ]),
+      target: Schema.Union([
+        Schema.Struct({
+          accountId: Schema.String,
+          asset: Schema.String,
+        }),
+        Schema.Struct({
+          paymentMethodId: Schema.String,
+          asset: Schema.String,
+        }),
+        Schema.Struct({
+          address: Schema.String,
+          network: Schema.Literals([
+            "base",
+            "ethereum",
+            "solana",
+            "aptos",
+            "arbitrum",
+            "arbitrum-sepolia",
+            "optimism",
+            "polygon",
+            "world",
+            "world-sepolia",
+          ]),
+          destinationTag: Schema.optional(Schema.String),
+          asset: Schema.String,
+        }),
+        Schema.Struct({
+          email: Schema.String,
+          asset: Schema.String,
+        }),
+      ]),
       sourceAmount: Schema.optional(Schema.String),
       sourceAsset: Schema.optional(Schema.String),
       targetAmount: Schema.optional(Schema.String),
@@ -127,8 +303,7 @@ export const ListTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextPageToken: Schema.optional(Schema.String),
-});
-export type ListTransfersOutput = typeof ListTransfersOutput.Type;
+}) as unknown as Schema.Codec<ListTransfersOutput>;
 
 // The operation
 /**

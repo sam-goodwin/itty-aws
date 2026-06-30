@@ -4,6 +4,35 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface BatchExportsBackfillsCancelCreateInput {
+  batch_export_id: string;
+  id: string;
+  project_id: string;
+  progress?: {
+    total_runs?: number | null;
+    finished_runs?: number | null;
+    progress?: number | null;
+  } | null;
+  start_at?: string | null;
+  end_at?: string | null;
+  status?:
+    | "Cancelled"
+    | "Completed"
+    | "ContinuedAsNew"
+    | "Failed"
+    | "FailedRetryable"
+    | "Terminated"
+    | "TimedOut"
+    | "Running"
+    | "Starting";
+  created_at?: string;
+  finished_at?: string | null;
+  last_updated_at?: string;
+  total_records_count?: number | null;
+  adjusted_start_at?: string | null;
+  team?: number;
+  batch_export?: string;
+}
 export const BatchExportsBackfillsCancelCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
@@ -45,15 +74,12 @@ export const BatchExportsBackfillsCancelCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/{id}/cancel/",
     }),
-  );
-export type BatchExportsBackfillsCancelCreateInput =
-  typeof BatchExportsBackfillsCancelCreateInput.Type;
+  ) as unknown as Schema.Codec<BatchExportsBackfillsCancelCreateInput>;
 
 // Output Schema
+export type BatchExportsBackfillsCancelCreateOutput = void;
 export const BatchExportsBackfillsCancelCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BatchExportsBackfillsCancelCreateOutput =
-  typeof BatchExportsBackfillsCancelCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsBackfillsCancelCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesMetricsUpdateInput {
+  group_type_index: number;
+  id: string;
+  project_id: string;
+  name?: string;
+  format?: "numeric" | "currency";
+  interval?: number;
+  display?: "number" | "sparkline";
+  filters?: Record<string, unknown>;
+  math?: "count" | "sum";
+  math_property?: string | null;
+}
 export const GroupsTypesMetricsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_type_index: Schema.Number.pipe(T.PathParam()),
@@ -21,11 +33,19 @@ export const GroupsTypesMetricsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/groups_types/{group_type_index}/metrics/{id}/",
     }),
-  );
-export type GroupsTypesMetricsUpdateInput =
-  typeof GroupsTypesMetricsUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupsTypesMetricsUpdateInput>;
 
 // Output Schema
+export interface GroupsTypesMetricsUpdateOutput {
+  id?: string;
+  name?: string;
+  format?: "numeric" | "currency";
+  interval?: number;
+  display?: "number" | "sparkline";
+  filters?: Record<string, unknown>;
+  math?: "count" | "sum";
+  math_property?: string | null;
+}
 export const GroupsTypesMetricsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -36,9 +56,7 @@ export const GroupsTypesMetricsUpdateOutput =
     filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     math: Schema.optional(Schema.Literals(["count", "sum"])),
     math_property: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type GroupsTypesMetricsUpdateOutput =
-  typeof GroupsTypesMetricsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupsTypesMetricsUpdateOutput>;
 
 // The operation
 /**

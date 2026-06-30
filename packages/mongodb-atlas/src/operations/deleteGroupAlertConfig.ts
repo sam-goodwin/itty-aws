@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupAlertConfigInput {
+  groupId: string;
+  alertConfigId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupAlertConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteGroupAlertConfigInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
     }),
-  );
-export type DeleteGroupAlertConfigInput =
-  typeof DeleteGroupAlertConfigInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupAlertConfigInput>;
 
 // Output Schema
+export type DeleteGroupAlertConfigOutput = void;
 export const DeleteGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupAlertConfigOutput =
-  typeof DeleteGroupAlertConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupAlertConfigOutput>;
 
 // The operation
 /**

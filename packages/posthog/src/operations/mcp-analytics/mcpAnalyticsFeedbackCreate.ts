@@ -3,6 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpAnalyticsFeedbackCreateInput {
+  project_id: string;
+  attempted_tool?: string;
+  mcp_client_name?: string;
+  mcp_client_version?: string;
+  mcp_protocol_version?: string;
+  mcp_transport?: string;
+  mcp_session_id?: string;
+  mcp_trace_id?: string;
+  goal: string;
+  feedback: string;
+  category?: "results" | "usability" | "bug" | "docs" | "other";
+}
 export const McpAnalyticsFeedbackCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -23,11 +36,26 @@ export const McpAnalyticsFeedbackCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/mcp_analytics/feedback/",
     }),
-  );
-export type McpAnalyticsFeedbackCreateInput =
-  typeof McpAnalyticsFeedbackCreateInput.Type;
+  ) as unknown as Schema.Codec<McpAnalyticsFeedbackCreateInput>;
 
 // Output Schema
+export interface McpAnalyticsFeedbackCreateOutput {
+  id: string;
+  kind: "feedback" | "missing_capability";
+  goal: string;
+  summary: string;
+  category: string;
+  blocked: boolean | null;
+  attempted_tool: string;
+  mcp_client_name: string;
+  mcp_client_version: string;
+  mcp_protocol_version: string;
+  mcp_transport: string;
+  mcp_session_id: string;
+  mcp_trace_id: string;
+  created_at: string;
+  updated_at: string;
+}
 export const McpAnalyticsFeedbackCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -45,9 +73,7 @@ export const McpAnalyticsFeedbackCreateOutput =
     mcp_trace_id: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type McpAnalyticsFeedbackCreateOutput =
-  typeof McpAnalyticsFeedbackCreateOutput.Type;
+  }) as unknown as Schema.Codec<McpAnalyticsFeedbackCreateOutput>;
 
 // The operation
 /**

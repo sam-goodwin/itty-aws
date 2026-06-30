@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsGithubReposRetrieveInput {
+  id: number;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const IntegrationsGithubReposRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -16,11 +23,13 @@ export const IntegrationsGithubReposRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/github_repos/",
     }),
-  );
-export type IntegrationsGithubReposRetrieveInput =
-  typeof IntegrationsGithubReposRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGithubReposRetrieveInput>;
 
 // Output Schema
+export interface IntegrationsGithubReposRetrieveOutput {
+  repositories?: { id?: number; name?: string; full_name?: string }[];
+  has_more?: boolean;
+}
 export const IntegrationsGithubReposRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
@@ -33,9 +42,7 @@ export const IntegrationsGithubReposRetrieveOutput =
       ),
     ),
     has_more: Schema.optional(Schema.Boolean),
-  });
-export type IntegrationsGithubReposRetrieveOutput =
-  typeof IntegrationsGithubReposRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsGithubReposRetrieveOutput>;
 
 // The operation
 /**

@@ -4,21 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface JumpWireWebKeyControllerdecryptInput {
+  keys: string;
+}
 export const JumpWireWebKeyControllerdecryptInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/vault/v1/keys/decrypt" }));
-export type JumpWireWebKeyControllerdecryptInput =
-  typeof JumpWireWebKeyControllerdecryptInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/vault/v1/keys/decrypt" }),
+  ) as unknown as Schema.Codec<JumpWireWebKeyControllerdecryptInput>;
 
 // Output Schema
+export interface JumpWireWebKeyControllerdecryptOutput {
+  data_key: string;
+  id: string;
+}
 export const JumpWireWebKeyControllerdecryptOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data_key: Schema.String,
     id: Schema.String,
-  });
-export type JumpWireWebKeyControllerdecryptOutput =
-  typeof JumpWireWebKeyControllerdecryptOutput.Type;
+  }) as unknown as Schema.Codec<JumpWireWebKeyControllerdecryptOutput>;
 
 // The operation
 /**

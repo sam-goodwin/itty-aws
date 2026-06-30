@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CommentsListInput {
+  project_id: string;
+  completed?: "any" | "open" | "completed";
+  cursor?: string;
+  item_id?: string;
+  kind?: "any" | "comment" | "task";
+  scope?: string;
+  search?: string;
+  source_comment?: string;
+}
 export const CommentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   completed: Schema.optional(Schema.Literals(["any", "open", "completed"])),
@@ -15,10 +25,71 @@ export const CommentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   source_comment: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/comments/" }),
-);
-export type CommentsListInput = typeof CommentsListInput.Type;
+) as unknown as Schema.Codec<CommentsListInput>;
 
 // Output Schema
+export interface CommentsListOutput {
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    deleted?: boolean | null;
+    mentions?: number[];
+    slug?: string;
+    is_task?: boolean;
+    completed_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    content?: string | null;
+    rich_content?: unknown;
+    version?: number;
+    created_at?: string;
+    item_id?: string | null;
+    item_context?: unknown;
+    scope?: string;
+    completed_at?: string | null;
+    source_comment?: string | null;
+  }[];
+}
 export const CommentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -39,7 +110,23 @@ export const CommentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -47,7 +134,39 @@ export const CommentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         mentions: Schema.optional(Schema.Array(Schema.Number)),
         slug: Schema.optional(Schema.String),
         is_task: Schema.optional(Schema.Boolean),
-        completed_by: Schema.optional(Schema.Unknown),
+        completed_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
+            }),
+          ),
+        ),
         content: Schema.optional(Schema.NullOr(Schema.String)),
         rich_content: Schema.optional(Schema.Unknown),
         version: Schema.optional(Schema.Number),
@@ -60,8 +179,7 @@ export const CommentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type CommentsListOutput = typeof CommentsListOutput.Type;
+}) as unknown as Schema.Codec<CommentsListOutput>;
 
 // The operation
 /**

@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerDelete0Input {
+  id: string;
+}
 export const UserlandUsersControllerDelete0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/user_management/users/{id}" }));
-export type UserlandUsersControllerDelete0Input =
-  typeof UserlandUsersControllerDelete0Input.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/user_management/users/{id}" }),
+  ) as unknown as Schema.Codec<UserlandUsersControllerDelete0Input>;
 
 // Output Schema
+export type UserlandUsersControllerDelete0Output = void;
 export const UserlandUsersControllerDelete0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserlandUsersControllerDelete0Output =
-  typeof UserlandUsersControllerDelete0Output.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandUsersControllerDelete0Output>;
 
 // The operation
 /**

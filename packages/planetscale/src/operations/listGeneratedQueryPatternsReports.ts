@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGeneratedQueryPatternsReportsInput {
+  organization: string;
+  database: string;
+  branch: string;
+  starting_after?: string;
+  ending_before?: string;
+  limit?: number;
+}
 export const ListGeneratedQueryPatternsReportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,25 @@ export const ListGeneratedQueryPatternsReportsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns",
     }),
-  );
-export type ListGeneratedQueryPatternsReportsInput =
-  typeof ListGeneratedQueryPatternsReportsInput.Type;
+  ) as unknown as Schema.Codec<ListGeneratedQueryPatternsReportsInput>;
 
 // Output Schema
+export interface ListGeneratedQueryPatternsReportsOutput {
+  type: string;
+  has_next: boolean;
+  has_prev: boolean;
+  cursor_start: string | null;
+  cursor_end: string | null;
+  data: {
+    id: string;
+    state: "pending" | "completed" | "failed";
+    created_at: string;
+    finished_at: string | null;
+    url: string;
+    download_url: string;
+    actor: { id: string; display_name: string; avatar_url: string };
+  }[];
+}
 export const ListGeneratedQueryPatternsReportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -44,9 +66,7 @@ export const ListGeneratedQueryPatternsReportsOutput =
         }),
       }),
     ),
-  });
-export type ListGeneratedQueryPatternsReportsOutput =
-  typeof ListGeneratedQueryPatternsReportsOutput.Type;
+  }) as unknown as Schema.Codec<ListGeneratedQueryPatternsReportsOutput>;
 
 // The operation
 /**

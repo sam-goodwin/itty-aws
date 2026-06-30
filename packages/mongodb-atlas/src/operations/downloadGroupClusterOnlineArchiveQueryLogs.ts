@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DownloadGroupClusterOnlineArchiveQueryLogsInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  startDate?: number;
+  endDate?: number;
+  archiveOnly?: boolean;
+}
 export const DownloadGroupClusterOnlineArchiveQueryLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const DownloadGroupClusterOnlineArchiveQueryLogsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz",
     }),
-  );
-export type DownloadGroupClusterOnlineArchiveQueryLogsInput =
-  typeof DownloadGroupClusterOnlineArchiveQueryLogsInput.Type;
+  ) as unknown as Schema.Codec<DownloadGroupClusterOnlineArchiveQueryLogsInput>;
 
 // Output Schema
+export type DownloadGroupClusterOnlineArchiveQueryLogsOutput = void;
 export const DownloadGroupClusterOnlineArchiveQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupClusterOnlineArchiveQueryLogsOutput =
-  typeof DownloadGroupClusterOnlineArchiveQueryLogsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupClusterOnlineArchiveQueryLogsOutput>;
 
 // The operation
 /**

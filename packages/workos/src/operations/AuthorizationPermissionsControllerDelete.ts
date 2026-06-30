@@ -4,20 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationPermissionsControllerDeleteInput {
+  slug: string;
+}
 export const AuthorizationPermissionsControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/authorization/permissions/{slug}" }),
-  );
-export type AuthorizationPermissionsControllerDeleteInput =
-  typeof AuthorizationPermissionsControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationPermissionsControllerDeleteInput>;
 
 // Output Schema
+export type AuthorizationPermissionsControllerDeleteOutput = void;
 export const AuthorizationPermissionsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AuthorizationPermissionsControllerDeleteOutput =
-  typeof AuthorizationPermissionsControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationPermissionsControllerDeleteOutput>;
 
 // The operation
 /**

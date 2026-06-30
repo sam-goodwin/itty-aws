@@ -10,6 +10,13 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupPrivateEndpointEndpointServiceEndpointInput {
+  groupId: string;
+  cloudProvider: "AWS" | "AZURE" | "GCP";
+  endpointServiceId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupPrivateEndpointEndpointServiceEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -22,15 +29,12 @@ export const CreateGroupPrivateEndpointEndpointServiceEndpointInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint",
     }),
-  );
-export type CreateGroupPrivateEndpointEndpointServiceEndpointInput =
-  typeof CreateGroupPrivateEndpointEndpointServiceEndpointInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupPrivateEndpointEndpointServiceEndpointInput>;
 
 // Output Schema
+export type CreateGroupPrivateEndpointEndpointServiceEndpointOutput = void;
 export const CreateGroupPrivateEndpointEndpointServiceEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupPrivateEndpointEndpointServiceEndpointOutput =
-  typeof CreateGroupPrivateEndpointEndpointServiceEndpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupPrivateEndpointEndpointServiceEndpointOutput>;
 
 // The operation
 /**

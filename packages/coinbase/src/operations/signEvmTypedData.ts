@@ -3,6 +3,19 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignEvmTypedDataInput {
+  address: string;
+  domain: {
+    name?: string;
+    version?: string;
+    chainId?: number;
+    verifyingContract?: string;
+    salt?: string;
+  };
+  types: unknown;
+  primaryType: string;
+  message: unknown;
+}
 export const SignEvmTypedDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
   domain: Schema.Struct({
@@ -20,16 +33,17 @@ export const SignEvmTypedDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/v2/evm/accounts/{address}/sign/typed-data",
   }),
-);
-export type SignEvmTypedDataInput = typeof SignEvmTypedDataInput.Type;
+) as unknown as Schema.Codec<SignEvmTypedDataInput>;
 
 // Output Schema
+export interface SignEvmTypedDataOutput {
+  signature: string;
+}
 export const SignEvmTypedDataOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     signature: Schema.String,
   },
-);
-export type SignEvmTypedDataOutput = typeof SignEvmTypedDataOutput.Type;
+) as unknown as Schema.Codec<SignEvmTypedDataOutput>;
 
 // The operation
 /**

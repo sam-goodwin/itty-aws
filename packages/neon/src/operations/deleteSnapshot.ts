@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteSnapshotInput {
+  project_id: string;
+  snapshot_id: string;
+}
 export const DeleteSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
@@ -11,12 +15,12 @@ export const DeleteSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/projects/{project_id}/snapshots/{snapshot_id}",
   }),
-);
-export type DeleteSnapshotInput = typeof DeleteSnapshotInput.Type;
+) as unknown as Schema.Codec<DeleteSnapshotInput>;
 
 // Output Schema
-export const DeleteSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteSnapshotOutput = typeof DeleteSnapshotOutput.Type;
+export type DeleteSnapshotOutput = void;
+export const DeleteSnapshotOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteSnapshotOutput>;
 
 // The operation
 /**

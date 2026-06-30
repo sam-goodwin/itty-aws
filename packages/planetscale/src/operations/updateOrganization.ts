@@ -4,16 +4,45 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateOrganizationInput {
+  organization: string;
+  billing_email?: string;
+  idp_managed_roles?: boolean;
+  invoice_budget_amount?: number;
+}
 export const UpdateOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     billing_email: Schema.optional(Schema.String),
     idp_managed_roles: Schema.optional(Schema.Boolean),
     invoice_budget_amount: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "PATCH", path: "/organizations/{organization}" }));
-export type UpdateOrganizationInput = typeof UpdateOrganizationInput.Type;
+  }).pipe(
+    T.Http({ method: "PATCH", path: "/organizations/{organization}" }),
+  ) as unknown as Schema.Codec<UpdateOrganizationInput>;
 
 // Output Schema
+export interface UpdateOrganizationOutput {
+  id: string;
+  name: string;
+  billing_email: string;
+  created_at: string;
+  updated_at: string;
+  plan: string;
+  valid_billing_info: boolean;
+  sso: boolean;
+  sso_directory: boolean;
+  single_tenancy: boolean;
+  managed_tenancy: boolean;
+  has_past_due_invoices?: boolean | null;
+  database_count: number;
+  sso_portal_url?: string | null;
+  features: Record<string, unknown>;
+  idp_managed_roles: boolean;
+  invoice_budget_amount: string;
+  keyspace_shard_limit: number;
+  has_card: boolean;
+  payment_info_required: boolean;
+}
 export const UpdateOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -36,8 +65,7 @@ export const UpdateOrganizationOutput =
     keyspace_shard_limit: Schema.Number,
     has_card: Schema.Boolean,
     payment_info_required: Schema.Boolean,
-  });
-export type UpdateOrganizationOutput = typeof UpdateOrganizationOutput.Type;
+  }) as unknown as Schema.Codec<UpdateOrganizationOutput>;
 
 // The operation
 /**

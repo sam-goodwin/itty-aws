@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsDestroyInput {
+  id: number;
+  project_id: string;
+}
 export const FeatureFlagsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const FeatureFlagsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/feature_flags/{id}/",
     }),
-  );
-export type FeatureFlagsDestroyInput = typeof FeatureFlagsDestroyInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsDestroyInput>;
 
 // Output Schema
+export type FeatureFlagsDestroyOutput = void;
 export const FeatureFlagsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FeatureFlagsDestroyOutput = typeof FeatureFlagsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsDestroyOutput>;
 
 // The operation
 /**

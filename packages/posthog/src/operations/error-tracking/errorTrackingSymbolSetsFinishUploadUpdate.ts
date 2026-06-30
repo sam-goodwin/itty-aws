@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSymbolSetsFinishUploadUpdateInput {
+  id: string;
+  project_id: string;
+  content_hash: string;
+}
 export const ErrorTrackingSymbolSetsFinishUploadUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const ErrorTrackingSymbolSetsFinishUploadUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/error_tracking/symbol_sets/{id}/finish_upload/",
     }),
-  );
-export type ErrorTrackingSymbolSetsFinishUploadUpdateInput =
-  typeof ErrorTrackingSymbolSetsFinishUploadUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSymbolSetsFinishUploadUpdateInput>;
 
 // Output Schema
+export type ErrorTrackingSymbolSetsFinishUploadUpdateOutput = void;
 export const ErrorTrackingSymbolSetsFinishUploadUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingSymbolSetsFinishUploadUpdateOutput =
-  typeof ErrorTrackingSymbolSetsFinishUploadUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsFinishUploadUpdateOutput>;
 
 // The operation
 /**

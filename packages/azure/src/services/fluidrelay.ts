@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface FluidRelayContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+  fluidRelayContainerName: string;
+}
 export const FluidRelayContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +27,12 @@ export const FluidRelayContainersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers/{fluidRelayContainerName}",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayContainersDeleteInput =
-  typeof FluidRelayContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayContainersDeleteInput>;
 
 // Output Schema
+export type FluidRelayContainersDeleteOutput = void;
 export const FluidRelayContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FluidRelayContainersDeleteOutput =
-  typeof FluidRelayContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FluidRelayContainersDeleteOutput>;
 
 // The operation
 /**
@@ -48,6 +51,12 @@ export const FluidRelayContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluidRelayContainersGetInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+  fluidRelayContainerName: string;
+}
 export const FluidRelayContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -60,19 +69,20 @@ export const FluidRelayContainersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers/{fluidRelayContainerName}",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayContainersGetInput =
-  typeof FluidRelayContainersGetInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayContainersGetInput>;
 
 // Output Schema
+export interface FluidRelayContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FluidRelayContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FluidRelayContainersGetOutput =
-  typeof FluidRelayContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayContainersGetOutput>;
 
 // The operation
 /**
@@ -91,6 +101,11 @@ export const FluidRelayContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluidRelayContainersListByFluidRelayServersInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+}
 export const FluidRelayContainersListByFluidRelayServersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -102,11 +117,13 @@ export const FluidRelayContainersListByFluidRelayServersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayContainersListByFluidRelayServersInput =
-  typeof FluidRelayContainersListByFluidRelayServersInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayContainersListByFluidRelayServersInput>;
 
 // Output Schema
+export interface FluidRelayContainersListByFluidRelayServersOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const FluidRelayContainersListByFluidRelayServersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -119,9 +136,7 @@ export const FluidRelayContainersListByFluidRelayServersOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FluidRelayContainersListByFluidRelayServersOutput =
-  typeof FluidRelayContainersListByFluidRelayServersOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayContainersListByFluidRelayServersOutput>;
 
 // The operation
 /**
@@ -138,6 +153,7 @@ export const FluidRelayContainersListByFluidRelayServers =
     outputSchema: FluidRelayContainersListByFluidRelayServersOutput,
   }));
 // Input Schema
+export interface FluidRelayOperationsListInput {}
 export const FluidRelayOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -145,11 +161,22 @@ export const FluidRelayOperationsListInput =
       path: "/providers/Microsoft.FluidRelay/operations",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayOperationsListInput =
-  typeof FluidRelayOperationsListInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayOperationsListInput>;
 
 // Output Schema
+export interface FluidRelayOperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    isDataAction?: boolean;
+  }[];
+  nextLink?: string;
+}
 export const FluidRelayOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -169,9 +196,7 @@ export const FluidRelayOperationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FluidRelayOperationsListOutput =
-  typeof FluidRelayOperationsListOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayOperationsListOutput>;
 
 // The operation
 /**
@@ -186,6 +211,53 @@ export const FluidRelayOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluidRelayServersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+  properties?: {
+    frsTenantId?: string;
+    fluidRelayEndpoints?: {
+      ordererEndpoints?: string[];
+      storageEndpoints?: string[];
+      serviceEndpoints?: string[];
+    };
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    encryption?: {
+      customerManagedKeyEncryption?: {
+        keyEncryptionKeyIdentity?: {
+          identityType?: "SystemAssigned" | "UserAssigned";
+          userAssignedIdentityResourceId?: string;
+        };
+        keyEncryptionKeyUrl?: string;
+      };
+    };
+    storagesku?: "standard" | "basic";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const FluidRelayServersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -271,19 +343,20 @@ export const FluidRelayServersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayServersCreateOrUpdateInput =
-  typeof FluidRelayServersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayServersCreateOrUpdateInput>;
 
 // Output Schema
+export interface FluidRelayServersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FluidRelayServersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FluidRelayServersCreateOrUpdateOutput =
-  typeof FluidRelayServersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayServersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -300,6 +373,11 @@ export const FluidRelayServersCreateOrUpdate =
     outputSchema: FluidRelayServersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FluidRelayServersDeleteInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+}
 export const FluidRelayServersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -311,15 +389,12 @@ export const FluidRelayServersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayServersDeleteInput =
-  typeof FluidRelayServersDeleteInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayServersDeleteInput>;
 
 // Output Schema
+export type FluidRelayServersDeleteOutput = void;
 export const FluidRelayServersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FluidRelayServersDeleteOutput =
-  typeof FluidRelayServersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FluidRelayServersDeleteOutput>;
 
 // The operation
 /**
@@ -337,6 +412,11 @@ export const FluidRelayServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluidRelayServersGetInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+}
 export const FluidRelayServersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -348,17 +428,20 @@ export const FluidRelayServersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayServersGetInput = typeof FluidRelayServersGetInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayServersGetInput>;
 
 // Output Schema
+export interface FluidRelayServersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FluidRelayServersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FluidRelayServersGetOutput = typeof FluidRelayServersGetOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayServersGetOutput>;
 
 // The operation
 /**
@@ -376,6 +459,10 @@ export const FluidRelayServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluidRelayServersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroup: string;
+}
 export const FluidRelayServersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -386,11 +473,13 @@ export const FluidRelayServersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayServersListByResourceGroupInput =
-  typeof FluidRelayServersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayServersListByResourceGroupInput>;
 
 // Output Schema
+export interface FluidRelayServersListByResourceGroupOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const FluidRelayServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -401,9 +490,7 @@ export const FluidRelayServersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FluidRelayServersListByResourceGroupOutput =
-  typeof FluidRelayServersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayServersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -419,6 +506,9 @@ export const FluidRelayServersListByResourceGroup =
     outputSchema: FluidRelayServersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface FluidRelayServersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const FluidRelayServersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -428,11 +518,13 @@ export const FluidRelayServersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.FluidRelay/fluidRelayServers",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayServersListBySubscriptionInput =
-  typeof FluidRelayServersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayServersListBySubscriptionInput>;
 
 // Output Schema
+export interface FluidRelayServersListBySubscriptionOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const FluidRelayServersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -443,9 +535,7 @@ export const FluidRelayServersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FluidRelayServersListBySubscriptionOutput =
-  typeof FluidRelayServersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayServersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -460,6 +550,11 @@ export const FluidRelayServersListBySubscription =
     outputSchema: FluidRelayServersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface FluidRelayServersListKeysInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+}
 export const FluidRelayServersListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -471,18 +566,18 @@ export const FluidRelayServersListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/listKeys",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayServersListKeysInput =
-  typeof FluidRelayServersListKeysInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayServersListKeysInput>;
 
 // Output Schema
+export interface FluidRelayServersListKeysOutput {
+  key1?: string;
+  key2?: string;
+}
 export const FluidRelayServersListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type FluidRelayServersListKeysOutput =
-  typeof FluidRelayServersListKeysOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayServersListKeysOutput>;
 
 // The operation
 /**
@@ -500,6 +595,12 @@ export const FluidRelayServersListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluidRelayServersRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+  keyName: "key1" | "key2";
+}
 export const FluidRelayServersRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -512,18 +613,18 @@ export const FluidRelayServersRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/regenerateKey",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayServersRegenerateKeyInput =
-  typeof FluidRelayServersRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayServersRegenerateKeyInput>;
 
 // Output Schema
+export interface FluidRelayServersRegenerateKeyOutput {
+  key1?: string;
+  key2?: string;
+}
 export const FluidRelayServersRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type FluidRelayServersRegenerateKeyOutput =
-  typeof FluidRelayServersRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayServersRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -540,6 +641,37 @@ export const FluidRelayServersRegenerateKey =
     outputSchema: FluidRelayServersRegenerateKeyOutput,
   }));
 // Input Schema
+export interface FluidRelayServersUpdateInput {
+  subscriptionId: string;
+  resourceGroup: string;
+  fluidRelayServerName: string;
+  properties?: {
+    encryption?: {
+      customerManagedKeyEncryption?: {
+        keyEncryptionKeyIdentity?: {
+          identityType?: "SystemAssigned" | "UserAssigned";
+          userAssignedIdentityResourceId?: string;
+        };
+        keyEncryptionKeyUrl?: string;
+      };
+    };
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+}
 export const FluidRelayServersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -599,19 +731,20 @@ export const FluidRelayServersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
       apiVersion: "2022-06-01",
     }),
-  );
-export type FluidRelayServersUpdateInput =
-  typeof FluidRelayServersUpdateInput.Type;
+  ) as unknown as Schema.Codec<FluidRelayServersUpdateInput>;
 
 // Output Schema
+export interface FluidRelayServersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FluidRelayServersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FluidRelayServersUpdateOutput =
-  typeof FluidRelayServersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FluidRelayServersUpdateOutput>;
 
 // The operation
 /**

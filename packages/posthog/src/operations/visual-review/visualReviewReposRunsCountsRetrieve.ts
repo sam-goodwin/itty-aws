@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisualReviewReposRunsCountsRetrieveInput {
+  project_id: string;
+  repo_id: string;
+}
 export const VisualReviewReposRunsCountsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,20 +16,22 @@ export const VisualReviewReposRunsCountsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/repos/{repo_id}/runs/counts/",
     }),
-  );
-export type VisualReviewReposRunsCountsRetrieveInput =
-  typeof VisualReviewReposRunsCountsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposRunsCountsRetrieveInput>;
 
 // Output Schema
+export interface VisualReviewReposRunsCountsRetrieveOutput {
+  needs_review?: number;
+  clean?: number;
+  processing?: number;
+  stale?: number;
+}
 export const VisualReviewReposRunsCountsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     needs_review: Schema.optional(Schema.Number),
     clean: Schema.optional(Schema.Number),
     processing: Schema.optional(Schema.Number),
     stale: Schema.optional(Schema.Number),
-  });
-export type VisualReviewReposRunsCountsRetrieveOutput =
-  typeof VisualReviewReposRunsCountsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewReposRunsCountsRetrieveOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
   aggregatorProviderId?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1AggregatorInfo> =
+export const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1AggregatorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregatorProviderId: Schema.optional(Schema.String),
   }).annotate({
@@ -71,7 +71,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1AccountReport {
   previousPeriodChargedLeads?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1AccountReport: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReport> =
+export const GoogleAdsHomeservicesLocalservicesV1AccountReport: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1AccountReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phoneLeadResponsiveness: Schema.optional(Schema.Number),
     accountId: Schema.optional(Schema.String),
@@ -103,7 +103,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsRespons
   nextPageToken?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse> =
+export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountReports: Schema.optional(
       Schema.Array(GoogleAdsHomeservicesLocalservicesV1AccountReport),
@@ -121,7 +121,7 @@ export interface GoogleTypeTimeZone {
   id?: string;
 }
 
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
+export const GoogleTypeTimeZone: Schema.Codec<GoogleTypeTimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1MessageLead {
   customerName?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1MessageLead: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1MessageLead> =
+export const GoogleAdsHomeservicesLocalservicesV1MessageLead: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1MessageLead> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobType: Schema.optional(Schema.String),
     postalCode: Schema.optional(Schema.String),
@@ -157,7 +157,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1PhoneLead {
   consumerPhoneNumber?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1PhoneLead: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1PhoneLead> =
+export const GoogleAdsHomeservicesLocalservicesV1PhoneLead: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1PhoneLead> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chargedCallTimestamp: Schema.optional(Schema.String),
     chargedConnectedCallDurationSeconds: Schema.optional(Schema.String),
@@ -177,7 +177,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1BookingLead {
   bookingAppointmentTimestamp?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1BookingLead: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1BookingLead> =
+export const GoogleAdsHomeservicesLocalservicesV1BookingLead: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1BookingLead> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consumerPhoneNumber: Schema.optional(Schema.String),
     consumerEmail: Schema.optional(Schema.String),
@@ -234,7 +234,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
     | (string & {});
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport> =
+export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timezone: Schema.optional(GoogleTypeTimeZone),
     accountId: Schema.optional(Schema.String),
@@ -270,7 +270,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsRe
   detailedLeadReports?: ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse> =
+export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     detailedLeadReports: Schema.optional(
@@ -359,7 +359,7 @@ export const SearchDetailedLeadReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/detailedLeadReports:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchDetailedLeadReportsRequest>;
+  ) as unknown as Schema.Codec<SearchDetailedLeadReportsRequest>;
 
 export type SearchDetailedLeadReportsResponse =
   GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse;
@@ -434,7 +434,7 @@ export const SearchAccountReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/accountReports:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchAccountReportsRequest>;
+  ) as unknown as Schema.Codec<SearchAccountReportsRequest>;
 
 export type SearchAccountReportsResponse =
   GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse;

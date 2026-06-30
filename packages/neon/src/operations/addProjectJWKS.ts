@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AddProjectJWKSInput {
+  project_id: string;
+  jwks_url: string;
+  provider_name: string;
+  branch_id?: string;
+  jwt_audience?: string;
+  role_names?: string[];
+  skip_role_creation?: boolean;
+}
 export const AddProjectJWKSInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   jwks_url: Schema.String,
@@ -11,10 +20,78 @@ export const AddProjectJWKSInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jwt_audience: Schema.optional(Schema.String),
   role_names: Schema.optional(Schema.Array(Schema.String)),
   skip_role_creation: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/projects/{project_id}/jwks" }));
-export type AddProjectJWKSInput = typeof AddProjectJWKSInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/projects/{project_id}/jwks" }),
+) as unknown as Schema.Codec<AddProjectJWKSInput>;
 
 // Output Schema
+export interface AddProjectJWKSOutput {
+  jwks: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    jwks_url: string;
+    provider_name: string;
+    created_at: string;
+    updated_at: string;
+    jwt_audience?: string;
+    role_names?: string[];
+  };
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+}
 export const AddProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jwks: Schema.Struct({
     id: Schema.String,
@@ -85,8 +162,7 @@ export const AddProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       total_duration_ms: Schema.Number,
     }),
   ),
-});
-export type AddProjectJWKSOutput = typeof AddProjectJWKSOutput.Type;
+}) as unknown as Schema.Codec<AddProjectJWKSOutput>;
 
 // The operation
 /**

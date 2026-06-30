@@ -4,16 +4,25 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuditLogExportsControllerExportInput {
+  auditLogExportId: string;
+}
 export const AuditLogExportsControllerExportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogExportId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/audit_logs/exports/{auditLogExportId}" }),
-  );
-export type AuditLogExportsControllerExportInput =
-  typeof AuditLogExportsControllerExportInput.Type;
+  ) as unknown as Schema.Codec<AuditLogExportsControllerExportInput>;
 
 // Output Schema
+export interface AuditLogExportsControllerExportOutput {
+  object?: string;
+  id?: string;
+  state?: "pending" | "ready" | "error" | "expired";
+  url?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuditLogExportsControllerExportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -24,9 +33,7 @@ export const AuditLogExportsControllerExportOutput =
     url: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuditLogExportsControllerExportOutput =
-  typeof AuditLogExportsControllerExportOutput.Type;
+  }) as unknown as Schema.Codec<AuditLogExportsControllerExportOutput>;
 
 // The operation
 /**

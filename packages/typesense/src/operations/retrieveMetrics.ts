@@ -3,14 +3,17 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RetrieveMetricsInput {}
 export const RetrieveMetricsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/metrics.json" }));
-export type RetrieveMetricsInput = typeof RetrieveMetricsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/metrics.json" }),
+) as unknown as Schema.Codec<RetrieveMetricsInput>;
 
 // Output Schema
-export const RetrieveMetricsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type RetrieveMetricsOutput = typeof RetrieveMetricsOutput.Type;
+export type RetrieveMetricsOutput = unknown;
+export const RetrieveMetricsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<RetrieveMetricsOutput>;
 
 // The operation
 /**

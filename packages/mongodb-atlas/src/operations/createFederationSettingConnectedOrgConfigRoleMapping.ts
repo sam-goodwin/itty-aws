@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateFederationSettingConnectedOrgConfigRoleMappingInput {
+  federationSettingsId: string;
+  orgId: string;
+  envelope?: boolean;
+}
 export const CreateFederationSettingConnectedOrgConfigRoleMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const CreateFederationSettingConnectedOrgConfigRoleMappingInput =
       method: "POST",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings",
     }),
-  );
-export type CreateFederationSettingConnectedOrgConfigRoleMappingInput =
-  typeof CreateFederationSettingConnectedOrgConfigRoleMappingInput.Type;
+  ) as unknown as Schema.Codec<CreateFederationSettingConnectedOrgConfigRoleMappingInput>;
 
 // Output Schema
+export type CreateFederationSettingConnectedOrgConfigRoleMappingOutput = void;
 export const CreateFederationSettingConnectedOrgConfigRoleMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateFederationSettingConnectedOrgConfigRoleMappingOutput =
-  typeof CreateFederationSettingConnectedOrgConfigRoleMappingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateFederationSettingConnectedOrgConfigRoleMappingOutput>;
 
 // The operation
 /**

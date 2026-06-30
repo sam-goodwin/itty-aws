@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsGithubPrepareCallbackCreateInput {
+  uuid: string;
+  installation_id: string;
+}
 export const UsersIntegrationsGithubPrepareCallbackCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const UsersIntegrationsGithubPrepareCallbackCreateInput =
       method: "POST",
       path: "/api/users/{uuid}/integrations/github/prepare_callback/",
     }),
-  );
-export type UsersIntegrationsGithubPrepareCallbackCreateInput =
-  typeof UsersIntegrationsGithubPrepareCallbackCreateInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsGithubPrepareCallbackCreateInput>;
 
 // Output Schema
+export type UsersIntegrationsGithubPrepareCallbackCreateOutput = void;
 export const UsersIntegrationsGithubPrepareCallbackCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersIntegrationsGithubPrepareCallbackCreateOutput =
-  typeof UsersIntegrationsGithubPrepareCallbackCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersIntegrationsGithubPrepareCallbackCreateOutput>;
 
 // The operation
 /**

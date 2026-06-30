@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSymbolSetsBulkStartUploadCreateInput {
+  project_id: string;
+  chunk_ids?: string[];
+  release_id?: string | null;
+  symbol_sets?: {
+    chunk_id: string;
+    release_id?: string | null;
+    content_hash?: string | null;
+  }[];
+  force?: boolean;
+  skip_on_conflict?: boolean;
+}
 export const ErrorTrackingSymbolSetsBulkStartUploadCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -25,15 +37,12 @@ export const ErrorTrackingSymbolSetsBulkStartUploadCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/symbol_sets/bulk_start_upload/",
     }),
-  );
-export type ErrorTrackingSymbolSetsBulkStartUploadCreateInput =
-  typeof ErrorTrackingSymbolSetsBulkStartUploadCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkStartUploadCreateInput>;
 
 // Output Schema
+export type ErrorTrackingSymbolSetsBulkStartUploadCreateOutput = void;
 export const ErrorTrackingSymbolSetsBulkStartUploadCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingSymbolSetsBulkStartUploadCreateOutput =
-  typeof ErrorTrackingSymbolSetsBulkStartUploadCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkStartUploadCreateOutput>;
 
 // The operation
 /**

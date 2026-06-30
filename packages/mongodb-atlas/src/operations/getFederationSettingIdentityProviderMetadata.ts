@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetFederationSettingIdentityProviderMetadataInput {
+  federationSettingsId: string;
+  identityProviderId: string;
+}
 export const GetFederationSettingIdentityProviderMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const GetFederationSettingIdentityProviderMetadataInput =
       method: "GET",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml",
     }),
-  );
-export type GetFederationSettingIdentityProviderMetadataInput =
-  typeof GetFederationSettingIdentityProviderMetadataInput.Type;
+  ) as unknown as Schema.Codec<GetFederationSettingIdentityProviderMetadataInput>;
 
 // Output Schema
+export type GetFederationSettingIdentityProviderMetadataOutput = void;
 export const GetFederationSettingIdentityProviderMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetFederationSettingIdentityProviderMetadataOutput =
-  typeof GetFederationSettingIdentityProviderMetadataOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetFederationSettingIdentityProviderMetadataOutput>;
 
 // The operation
 /**

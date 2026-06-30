@@ -4,16 +4,30 @@ import * as T from "../traits.ts";
 import { BadRequest, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface JumpWireWebDataVaultControllercreateInput {
+  key_context: Record<string, string>;
+  name: string;
+  value: string;
+}
 export const JumpWireWebDataVaultControllercreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key_context: Schema.Record(Schema.String, Schema.String),
     name: Schema.String,
     value: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/vault/v1/kv" }));
-export type JumpWireWebDataVaultControllercreateInput =
-  typeof JumpWireWebDataVaultControllercreateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/vault/v1/kv" }),
+  ) as unknown as Schema.Codec<JumpWireWebDataVaultControllercreateInput>;
 
 // Output Schema
+export interface JumpWireWebDataVaultControllercreateOutput {
+  context: Record<string, string>;
+  environment_id: string;
+  id: string;
+  key_id: string;
+  updated_at: string;
+  updated_by: { id: string; name: string };
+  version_id?: string | null;
+}
 export const JumpWireWebDataVaultControllercreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     context: Schema.Record(Schema.String, Schema.String),
@@ -26,9 +40,7 @@ export const JumpWireWebDataVaultControllercreateOutput =
       name: Schema.String,
     }),
     version_id: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type JumpWireWebDataVaultControllercreateOutput =
-  typeof JumpWireWebDataVaultControllercreateOutput.Type;
+  }) as unknown as Schema.Codec<JumpWireWebDataVaultControllercreateOutput>;
 
 // The operation
 /**

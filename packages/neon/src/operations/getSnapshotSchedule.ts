@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetSnapshotScheduleInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetSnapshotScheduleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,18 @@ export const GetSnapshotScheduleInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/backup_schedule",
     }),
-  );
-export type GetSnapshotScheduleInput = typeof GetSnapshotScheduleInput.Type;
+  ) as unknown as Schema.Codec<GetSnapshotScheduleInput>;
 
 // Output Schema
+export interface GetSnapshotScheduleOutput {
+  schedule: {
+    frequency: string;
+    hour?: number;
+    day?: number;
+    month?: number;
+    retention_seconds?: number;
+  }[];
+}
 export const GetSnapshotScheduleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schedule: Schema.Array(
@@ -27,8 +39,7 @@ export const GetSnapshotScheduleOutput =
         retention_seconds: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type GetSnapshotScheduleOutput = typeof GetSnapshotScheduleOutput.Type;
+  }) as unknown as Schema.Codec<GetSnapshotScheduleOutput>;
 
 // The operation
 /**

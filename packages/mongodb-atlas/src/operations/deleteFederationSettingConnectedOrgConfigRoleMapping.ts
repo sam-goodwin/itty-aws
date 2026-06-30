@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteFederationSettingConnectedOrgConfigRoleMappingInput {
+  federationSettingsId: string;
+  id: string;
+  orgId: string;
+  envelope?: boolean;
+}
 export const DeleteFederationSettingConnectedOrgConfigRoleMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteFederationSettingConnectedOrgConfigRoleMappingInput =
       method: "DELETE",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}",
     }),
-  );
-export type DeleteFederationSettingConnectedOrgConfigRoleMappingInput =
-  typeof DeleteFederationSettingConnectedOrgConfigRoleMappingInput.Type;
+  ) as unknown as Schema.Codec<DeleteFederationSettingConnectedOrgConfigRoleMappingInput>;
 
 // Output Schema
+export type DeleteFederationSettingConnectedOrgConfigRoleMappingOutput = void;
 export const DeleteFederationSettingConnectedOrgConfigRoleMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteFederationSettingConnectedOrgConfigRoleMappingOutput =
-  typeof DeleteFederationSettingConnectedOrgConfigRoleMappingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteFederationSettingConnectedOrgConfigRoleMappingOutput>;
 
 // The operation
 /**

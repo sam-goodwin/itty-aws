@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentMemoryDeleteFileInput {
+  application_id: string;
+  project_id: string;
+  path: string;
+}
 export const AgentMemoryDeleteFileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -13,14 +18,12 @@ export const AgentMemoryDeleteFileInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/memory/files/by_path/",
     }),
-  );
-export type AgentMemoryDeleteFileInput = typeof AgentMemoryDeleteFileInput.Type;
+  ) as unknown as Schema.Codec<AgentMemoryDeleteFileInput>;
 
 // Output Schema
+export type AgentMemoryDeleteFileOutput = void;
 export const AgentMemoryDeleteFileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentMemoryDeleteFileOutput =
-  typeof AgentMemoryDeleteFileOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentMemoryDeleteFileOutput>;
 
 // The operation
 /**

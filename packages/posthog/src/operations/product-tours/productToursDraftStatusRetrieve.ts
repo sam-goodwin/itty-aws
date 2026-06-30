@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProductToursDraftStatusRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ProductToursDraftStatusRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +17,18 @@ export const ProductToursDraftStatusRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/product_tours/{id}/draft_status/",
     }),
-  );
-export type ProductToursDraftStatusRetrieveInput =
-  typeof ProductToursDraftStatusRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ProductToursDraftStatusRetrieveInput>;
 
 // Output Schema
+export interface ProductToursDraftStatusRetrieveOutput {
+  updated_at?: string;
+  has_draft?: boolean;
+}
 export const ProductToursDraftStatusRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updated_at: Schema.optional(Schema.String),
     has_draft: Schema.optional(Schema.Boolean),
-  });
-export type ProductToursDraftStatusRetrieveOutput =
-  typeof ProductToursDraftStatusRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ProductToursDraftStatusRetrieveOutput>;
 
 // The operation
 /**

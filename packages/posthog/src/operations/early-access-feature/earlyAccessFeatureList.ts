@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EarlyAccessFeatureListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const EarlyAccessFeatureListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,43 @@ export const EarlyAccessFeatureListInput =
       method: "GET",
       path: "/api/projects/{project_id}/early_access_feature/",
     }),
-  );
-export type EarlyAccessFeatureListInput =
-  typeof EarlyAccessFeatureListInput.Type;
+  ) as unknown as Schema.Codec<EarlyAccessFeatureListInput>;
 
 // Output Schema
+export interface EarlyAccessFeatureListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    feature_flag?: {
+      id?: number;
+      team_id?: number;
+      name?: string;
+      key?: string;
+      filters?: Record<string, unknown>;
+      deleted?: boolean;
+      active?: boolean;
+      ensure_experience_continuity?: boolean | null;
+      version?: number | null;
+      evaluation_runtime?: "server" | "client" | "all" | "" | null;
+      bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+      evaluation_contexts?: string[];
+    };
+    name?: string;
+    description?: string;
+    stage?:
+      | "draft"
+      | "concept"
+      | "alpha"
+      | "beta"
+      | "general-availability"
+      | "archived";
+    documentation_url?: string;
+    payload?: Record<string, unknown>;
+    created_at?: string;
+  }[];
+}
 export const EarlyAccessFeatureListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -43,8 +80,22 @@ export const EarlyAccessFeatureListOutput =
                 Schema.NullOr(Schema.Boolean),
               ),
               version: Schema.optional(Schema.NullOr(Schema.Number)),
-              evaluation_runtime: Schema.optional(Schema.Unknown),
-              bucketing_identifier: Schema.optional(Schema.Unknown),
+              evaluation_runtime: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals(["server", "client", "all"]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
+              bucketing_identifier: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals(["distinct_id", "device_id"]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
               evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
             }),
           ),
@@ -68,9 +119,7 @@ export const EarlyAccessFeatureListOutput =
         }),
       ),
     ),
-  });
-export type EarlyAccessFeatureListOutput =
-  typeof EarlyAccessFeatureListOutput.Type;
+  }) as unknown as Schema.Codec<EarlyAccessFeatureListOutput>;
 
 // The operation
 /**

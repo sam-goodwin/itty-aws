@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseColumnStatisticsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const WarehouseColumnStatisticsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,26 @@ export const WarehouseColumnStatisticsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/warehouse_column_statistics/{id}/",
     }),
-  );
-export type WarehouseColumnStatisticsRetrieveInput =
-  typeof WarehouseColumnStatisticsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<WarehouseColumnStatisticsRetrieveInput>;
 
 // Output Schema
+export interface WarehouseColumnStatisticsRetrieveOutput {
+  id: string;
+  table: string;
+  column_name: string;
+  column_type: string;
+  row_count: number;
+  null_count: number;
+  null_fraction: number;
+  min_value: string;
+  max_value: string;
+  has_min_max: boolean;
+  computed_at: string;
+  computed_for_delta_version: number;
+  stats_basis: string;
+  created_at: string;
+  updated_at: string | null;
+}
 export const WarehouseColumnStatisticsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -34,9 +53,7 @@ export const WarehouseColumnStatisticsRetrieveOutput =
     stats_basis: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type WarehouseColumnStatisticsRetrieveOutput =
-  typeof WarehouseColumnStatisticsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<WarehouseColumnStatisticsRetrieveOutput>;
 
 // The operation
 /**

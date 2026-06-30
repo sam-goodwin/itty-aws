@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupFlexClustersInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupFlexClustersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,14 +25,12 @@ export const ListGroupFlexClustersInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters",
     }),
-  );
-export type ListGroupFlexClustersInput = typeof ListGroupFlexClustersInput.Type;
+  ) as unknown as Schema.Codec<ListGroupFlexClustersInput>;
 
 // Output Schema
+export type ListGroupFlexClustersOutput = void;
 export const ListGroupFlexClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupFlexClustersOutput =
-  typeof ListGroupFlexClustersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupFlexClustersOutput>;
 
 // The operation
 /**

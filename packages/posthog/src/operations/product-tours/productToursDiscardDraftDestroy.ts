@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProductToursDiscardDraftDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ProductToursDiscardDraftDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,74 @@ export const ProductToursDiscardDraftDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/product_tours/{id}/discard_draft/",
     }),
-  );
-export type ProductToursDiscardDraftDestroyInput =
-  typeof ProductToursDiscardDraftDestroyInput.Type;
+  ) as unknown as Schema.Codec<ProductToursDiscardDraftDestroyInput>;
 
 // Output Schema
+export interface ProductToursDiscardDraftDestroyOutput {
+  id?: string;
+  name?: string;
+  description?: string;
+  internal_targeting_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  linked_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  targeting_flag_filters?: Record<string, unknown> | null;
+  content?: unknown;
+  draft_content?: unknown;
+  has_draft?: boolean;
+  auto_launch?: boolean;
+  start_date?: string | null;
+  end_date?: string | null;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  updated_at?: string;
+  archived?: boolean;
+  search_match_type?: "exact" | "similar" | null;
+}
 export const ProductToursDiscardDraftDestroyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -36,8 +103,22 @@ export const ProductToursDiscardDraftDestroyOutput =
           Schema.NullOr(Schema.Boolean),
         ),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -54,8 +135,22 @@ export const ProductToursDiscardDraftDestroyOutput =
           Schema.NullOr(Schema.Boolean),
         ),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -82,16 +177,32 @@ export const ProductToursDiscardDraftDestroyOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     updated_at: Schema.optional(Schema.String),
     archived: Schema.optional(Schema.Boolean),
-    search_match_type: Schema.optional(Schema.Unknown),
-  });
-export type ProductToursDiscardDraftDestroyOutput =
-  typeof ProductToursDiscardDraftDestroyOutput.Type;
+    search_match_type: Schema.optional(
+      Schema.NullOr(Schema.Literals(["exact", "similar"])),
+    ),
+  }) as unknown as Schema.Codec<ProductToursDiscardDraftDestroyOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSymbolSetsBulkDeleteCreateInput {
+  project_id: string;
+  ids: string[];
+}
 export const ErrorTrackingSymbolSetsBulkDeleteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ErrorTrackingSymbolSetsBulkDeleteCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/symbol_sets/bulk_delete/",
     }),
-  );
-export type ErrorTrackingSymbolSetsBulkDeleteCreateInput =
-  typeof ErrorTrackingSymbolSetsBulkDeleteCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkDeleteCreateInput>;
 
 // Output Schema
+export type ErrorTrackingSymbolSetsBulkDeleteCreateOutput = void;
 export const ErrorTrackingSymbolSetsBulkDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingSymbolSetsBulkDeleteCreateOutput =
-  typeof ErrorTrackingSymbolSetsBulkDeleteCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkDeleteCreateOutput>;
 
 // The operation
 /**

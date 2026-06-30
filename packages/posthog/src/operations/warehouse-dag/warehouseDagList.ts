@@ -3,16 +3,19 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseDagListInput {
+  project_id: string;
+}
 export const WarehouseDagListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/warehouse_dag/" }),
-);
-export type WarehouseDagListInput = typeof WarehouseDagListInput.Type;
+) as unknown as Schema.Codec<WarehouseDagListInput>;
 
 // Output Schema
-export const WarehouseDagListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WarehouseDagListOutput = typeof WarehouseDagListOutput.Type;
+export type WarehouseDagListOutput = void;
+export const WarehouseDagListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseDagListOutput>;
 
 // The operation
 /**

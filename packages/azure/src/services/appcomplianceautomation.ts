@@ -4,11 +4,33 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface EvidenceCreateOrUpdateInput {
+  reportName: string;
+  evidenceName: string;
+  offerGuid?: string;
+  reportCreatorTenantId?: string;
+  properties: {
+    evidenceType?: "File" | "AutoCollectedEvidence" | "Data";
+    filePath: string;
+    extraData?: string;
+    controlId?: string;
+    responsibilityId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Fixing"
+      | "Verifying"
+      | "Updating";
+  };
+}
 export const EvidenceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -42,11 +64,22 @@ export const EvidenceCreateOrUpdateInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}",
       apiVersion: "2024-06-27",
     }),
-  );
-export type EvidenceCreateOrUpdateInput =
-  typeof EvidenceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EvidenceCreateOrUpdateInput>;
 
 // Output Schema
+export interface EvidenceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EvidenceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -66,9 +99,7 @@ export const EvidenceCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EvidenceCreateOrUpdateOutput =
-  typeof EvidenceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EvidenceCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -87,6 +118,10 @@ export const EvidenceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EvidenceDeleteInput {
+  reportName: string;
+  evidenceName: string;
+}
 export const EvidenceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
@@ -96,12 +131,12 @@ export const EvidenceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type EvidenceDeleteInput = typeof EvidenceDeleteInput.Type;
+) as unknown as Schema.Codec<EvidenceDeleteInput>;
 
 // Output Schema
-export const EvidenceDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EvidenceDeleteOutput = typeof EvidenceDeleteOutput.Type;
+export type EvidenceDeleteOutput = void;
+export const EvidenceDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EvidenceDeleteOutput>;
 
 // The operation
 /**
@@ -116,6 +151,12 @@ export const EvidenceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EvidenceDeleteOutput,
 }));
 // Input Schema
+export interface EvidenceDownloadInput {
+  reportName: string;
+  evidenceName: string;
+  reportCreatorTenantId?: string;
+  offerGuid?: string;
+}
 export const EvidenceDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
@@ -127,10 +168,12 @@ export const EvidenceDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}/download",
     apiVersion: "2024-06-27",
   }),
-);
-export type EvidenceDownloadInput = typeof EvidenceDownloadInput.Type;
+) as unknown as Schema.Codec<EvidenceDownloadInput>;
 
 // Output Schema
+export interface EvidenceDownloadOutput {
+  evidenceFile?: { url?: string };
+}
 export const EvidenceDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     evidenceFile: Schema.optional(
@@ -139,8 +182,7 @@ export const EvidenceDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type EvidenceDownloadOutput = typeof EvidenceDownloadOutput.Type;
+) as unknown as Schema.Codec<EvidenceDownloadOutput>;
 
 // The operation
 /**
@@ -155,6 +197,10 @@ export const EvidenceDownload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EvidenceDownloadOutput,
 }));
 // Input Schema
+export interface EvidenceGetInput {
+  reportName: string;
+  evidenceName: string;
+}
 export const EvidenceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
@@ -164,10 +210,22 @@ export const EvidenceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences/{evidenceName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type EvidenceGetInput = typeof EvidenceGetInput.Type;
+) as unknown as Schema.Codec<EvidenceGetInput>;
 
 // Output Schema
+export interface EvidenceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EvidenceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -186,8 +244,7 @@ export const EvidenceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EvidenceGetOutput = typeof EvidenceGetOutput.Type;
+}) as unknown as Schema.Codec<EvidenceGetOutput>;
 
 // The operation
 /**
@@ -202,6 +259,16 @@ export const EvidenceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EvidenceGetOutput,
 }));
 // Input Schema
+export interface EvidenceListByReportInput {
+  reportName: string;
+  $skipToken?: string;
+  $top?: number;
+  $select?: string;
+  $filter?: string;
+  $orderby?: string;
+  offerGuid?: string;
+  reportCreatorTenantId?: string;
+}
 export const EvidenceListByReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -218,10 +285,25 @@ export const EvidenceListByReportInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences",
       apiVersion: "2024-06-27",
     }),
-  );
-export type EvidenceListByReportInput = typeof EvidenceListByReportInput.Type;
+  ) as unknown as Schema.Codec<EvidenceListByReportInput>;
 
 // Output Schema
+export interface EvidenceListByReportOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EvidenceListByReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -256,8 +338,7 @@ export const EvidenceListByReportOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EvidenceListByReportOutput = typeof EvidenceListByReportOutput.Type;
+  }) as unknown as Schema.Codec<EvidenceListByReportOutput>;
 
 // The operation
 /**
@@ -280,6 +361,7 @@ export const EvidenceListByReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -288,10 +370,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AppComplianceAutomation/operations",
     apiVersion: "2024-06-27",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -314,8 +410,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -328,6 +423,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProviderActionsCheckNameAvailabilityInput {
+  name?: string;
+  type?: string;
+}
 export const ProviderActionsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -338,19 +437,20 @@ export const ProviderActionsCheckNameAvailabilityInput =
       path: "/providers/Microsoft.AppComplianceAutomation/checkNameAvailability",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ProviderActionsCheckNameAvailabilityInput =
-  typeof ProviderActionsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ProviderActionsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ProviderActionsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const ProviderActionsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type ProviderActionsCheckNameAvailabilityOutput =
-  typeof ProviderActionsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ProviderActionsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -366,6 +466,9 @@ export const ProviderActionsCheckNameAvailability =
     outputSchema: ProviderActionsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ProviderActionsGetCollectionCountInput {
+  type?: string;
+}
 export const ProviderActionsGetCollectionCountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
@@ -375,17 +478,16 @@ export const ProviderActionsGetCollectionCountInput =
       path: "/providers/Microsoft.AppComplianceAutomation/getCollectionCount",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ProviderActionsGetCollectionCountInput =
-  typeof ProviderActionsGetCollectionCountInput.Type;
+  ) as unknown as Schema.Codec<ProviderActionsGetCollectionCountInput>;
 
 // Output Schema
+export interface ProviderActionsGetCollectionCountOutput {
+  count?: number;
+}
 export const ProviderActionsGetCollectionCountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
-  });
-export type ProviderActionsGetCollectionCountOutput =
-  typeof ProviderActionsGetCollectionCountOutput.Type;
+  }) as unknown as Schema.Codec<ProviderActionsGetCollectionCountOutput>;
 
 // The operation
 /**
@@ -399,6 +501,9 @@ export const ProviderActionsGetCollectionCount =
     outputSchema: ProviderActionsGetCollectionCountOutput,
   }));
 // Input Schema
+export interface ProviderActionsGetOverviewStatusInput {
+  type?: string;
+}
 export const ProviderActionsGetOverviewStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
@@ -408,11 +513,12 @@ export const ProviderActionsGetOverviewStatusInput =
       path: "/providers/Microsoft.AppComplianceAutomation/getOverviewStatus",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ProviderActionsGetOverviewStatusInput =
-  typeof ProviderActionsGetOverviewStatusInput.Type;
+  ) as unknown as Schema.Codec<ProviderActionsGetOverviewStatusInput>;
 
 // Output Schema
+export interface ProviderActionsGetOverviewStatusOutput {
+  statusList?: { statusName?: string; statusValue?: string }[];
+}
 export const ProviderActionsGetOverviewStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusList: Schema.optional(
@@ -423,9 +529,7 @@ export const ProviderActionsGetOverviewStatusOutput =
         }),
       ),
     ),
-  });
-export type ProviderActionsGetOverviewStatusOutput =
-  typeof ProviderActionsGetOverviewStatusOutput.Type;
+  }) as unknown as Schema.Codec<ProviderActionsGetOverviewStatusOutput>;
 
 // The operation
 /**
@@ -439,6 +543,9 @@ export const ProviderActionsGetOverviewStatus =
     outputSchema: ProviderActionsGetOverviewStatusOutput,
   }));
 // Input Schema
+export interface ProviderActionsListInUseStorageAccountsInput {
+  subscriptionIds?: string[];
+}
 export const ProviderActionsListInUseStorageAccountsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -448,11 +555,17 @@ export const ProviderActionsListInUseStorageAccountsInput =
       path: "/providers/Microsoft.AppComplianceAutomation/listInUseStorageAccounts",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ProviderActionsListInUseStorageAccountsInput =
-  typeof ProviderActionsListInUseStorageAccountsInput.Type;
+  ) as unknown as Schema.Codec<ProviderActionsListInUseStorageAccountsInput>;
 
 // Output Schema
+export interface ProviderActionsListInUseStorageAccountsOutput {
+  storageAccountList?: {
+    subscriptionId?: string;
+    resourceGroup?: string;
+    accountName?: string;
+    location?: string;
+  }[];
+}
 export const ProviderActionsListInUseStorageAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageAccountList: Schema.optional(
@@ -465,9 +578,7 @@ export const ProviderActionsListInUseStorageAccountsOutput =
         }),
       ),
     ),
-  });
-export type ProviderActionsListInUseStorageAccountsOutput =
-  typeof ProviderActionsListInUseStorageAccountsOutput.Type;
+  }) as unknown as Schema.Codec<ProviderActionsListInUseStorageAccountsOutput>;
 
 // The operation
 /**
@@ -481,6 +592,9 @@ export const ProviderActionsListInUseStorageAccounts =
     outputSchema: ProviderActionsListInUseStorageAccountsOutput,
   }));
 // Input Schema
+export interface ProviderActionsOnboardInput {
+  subscriptionIds: string[];
+}
 export const ProviderActionsOnboardInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionIds: Schema.Array(Schema.String),
@@ -490,17 +604,16 @@ export const ProviderActionsOnboardInput =
       path: "/providers/Microsoft.AppComplianceAutomation/onboard",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ProviderActionsOnboardInput =
-  typeof ProviderActionsOnboardInput.Type;
+  ) as unknown as Schema.Codec<ProviderActionsOnboardInput>;
 
 // Output Schema
+export interface ProviderActionsOnboardOutput {
+  subscriptionIds?: string[];
+}
 export const ProviderActionsOnboardOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ProviderActionsOnboardOutput =
-  typeof ProviderActionsOnboardOutput.Type;
+  }) as unknown as Schema.Codec<ProviderActionsOnboardOutput>;
 
 // The operation
 /**
@@ -515,6 +628,9 @@ export const ProviderActionsOnboard = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderActionsTriggerEvaluationInput {
+  resourceIds: string[];
+}
 export const ProviderActionsTriggerEvaluationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceIds: Schema.Array(Schema.String),
@@ -524,11 +640,25 @@ export const ProviderActionsTriggerEvaluationInput =
       path: "/providers/Microsoft.AppComplianceAutomation/triggerEvaluation",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ProviderActionsTriggerEvaluationInput =
-  typeof ProviderActionsTriggerEvaluationInput.Type;
+  ) as unknown as Schema.Codec<ProviderActionsTriggerEvaluationInput>;
 
 // Output Schema
+export interface ProviderActionsTriggerEvaluationOutput {
+  properties?: {
+    triggerTime?: string;
+    evaluationEndTime?: string;
+    resourceIds?: string[];
+    quickAssessments?: {
+      resourceId?: string;
+      responsibilityId?: string;
+      timestamp?: string;
+      resourceStatus?: "Healthy" | "Unhealthy";
+      displayName?: string;
+      description?: string;
+      remediationLink?: string;
+    }[];
+  };
+}
 export const ProviderActionsTriggerEvaluationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -553,9 +683,7 @@ export const ProviderActionsTriggerEvaluationOutput =
         ),
       }),
     ),
-  });
-export type ProviderActionsTriggerEvaluationOutput =
-  typeof ProviderActionsTriggerEvaluationOutput.Type;
+  }) as unknown as Schema.Codec<ProviderActionsTriggerEvaluationOutput>;
 
 // The operation
 /**
@@ -569,6 +697,57 @@ export const ProviderActionsTriggerEvaluation =
     outputSchema: ProviderActionsTriggerEvaluationOutput,
   }));
 // Input Schema
+export interface ReportCreateOrUpdateInput {
+  reportName: string;
+  properties: {
+    triggerTime: string;
+    timeZone: string;
+    resources: {
+      resourceId: string;
+      resourceType?: string;
+      resourceKind?: string;
+      resourceOrigin?: "Azure" | "AWS" | "GCP";
+      accountId?: string;
+    }[];
+    status?: "Active" | "Failed" | "Reviewing" | "Disabled";
+    errors?: string[];
+    tenantId?: string;
+    offerGuid?: string;
+    nextTriggerTime?: string;
+    lastTriggerTime?: string;
+    subscriptions?: string[];
+    complianceStatus?: {
+      m365?: {
+        passedCount?: number;
+        failedCount?: number;
+        manualCount?: number;
+        notApplicableCount?: number;
+        pendingCount?: number;
+      };
+    };
+    storageInfo?: {
+      subscriptionId?: string;
+      resourceGroup?: string;
+      accountName?: string;
+      location?: string;
+    };
+    certRecords?: {
+      offerGuid?: string;
+      certificationStatus?: string;
+      ingestionStatus?: string;
+      controls?: { controlId?: string; controlStatus?: string }[];
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Fixing"
+      | "Verifying"
+      | "Updating";
+  };
+}
 export const ReportCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -652,10 +831,22 @@ export const ReportCreateOrUpdateInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ReportCreateOrUpdateInput = typeof ReportCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ReportCreateOrUpdateInput>;
 
 // Output Schema
+export interface ReportCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReportCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -675,8 +866,7 @@ export const ReportCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReportCreateOrUpdateOutput = typeof ReportCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ReportCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -692,6 +882,9 @@ export const ReportCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReportDeleteInput {
+  reportName: string;
+}
 export const ReportDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -700,12 +893,12 @@ export const ReportDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type ReportDeleteInput = typeof ReportDeleteInput.Type;
+) as unknown as Schema.Codec<ReportDeleteInput>;
 
 // Output Schema
-export const ReportDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ReportDeleteOutput = typeof ReportDeleteOutput.Type;
+export type ReportDeleteOutput = void;
+export const ReportDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReportDeleteOutput>;
 
 // The operation
 /**
@@ -719,6 +912,9 @@ export const ReportDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReportDeleteOutput,
 }));
 // Input Schema
+export interface ReportFixInput {
+  reportName: string;
+}
 export const ReportFixInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -727,15 +923,17 @@ export const ReportFixInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/fix",
     apiVersion: "2024-06-27",
   }),
-);
-export type ReportFixInput = typeof ReportFixInput.Type;
+) as unknown as Schema.Codec<ReportFixInput>;
 
 // Output Schema
+export interface ReportFixOutput {
+  result?: "Succeeded" | "Failed";
+  reason?: string;
+}
 export const ReportFixOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
   reason: Schema.optional(Schema.String),
-});
-export type ReportFixOutput = typeof ReportFixOutput.Type;
+}) as unknown as Schema.Codec<ReportFixOutput>;
 
 // The operation
 /**
@@ -749,6 +947,9 @@ export const ReportFix = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReportFixOutput,
 }));
 // Input Schema
+export interface ReportGetInput {
+  reportName: string;
+}
 export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -757,10 +958,22 @@ export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type ReportGetInput = typeof ReportGetInput.Type;
+) as unknown as Schema.Codec<ReportGetInput>;
 
 // Output Schema
+export interface ReportGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -779,8 +992,7 @@ export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ReportGetOutput = typeof ReportGetOutput.Type;
+}) as unknown as Schema.Codec<ReportGetOutput>;
 
 // The operation
 /**
@@ -794,6 +1006,9 @@ export const ReportGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReportGetOutput,
 }));
 // Input Schema
+export interface ReportGetScopingQuestionsInput {
+  reportName: string;
+}
 export const ReportGetScopingQuestionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -803,11 +1018,52 @@ export const ReportGetScopingQuestionsInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/getScopingQuestions",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ReportGetScopingQuestionsInput =
-  typeof ReportGetScopingQuestionsInput.Type;
+  ) as unknown as Schema.Codec<ReportGetScopingQuestionsInput>;
 
 // Output Schema
+export interface ReportGetScopingQuestionsOutput {
+  questions?: {
+    questionId: string;
+    superiorQuestionId?: string;
+    inputType:
+      | "None"
+      | "Text"
+      | "Email"
+      | "MultilineText"
+      | "Url"
+      | "Number"
+      | "Boolean"
+      | "Telephone"
+      | "YesNoNa"
+      | "Date"
+      | "YearPicker"
+      | "SingleSelection"
+      | "SingleSelectDropdown"
+      | "MultiSelectCheckbox"
+      | "MultiSelectDropdown"
+      | "MultiSelectDropdownCustom"
+      | "Group"
+      | "Upload";
+    optionIds: string[];
+    rules: (
+      | "Required"
+      | "CharLength"
+      | "Url"
+      | "Urls"
+      | "Domains"
+      | "USPrivacyShield"
+      | "PublicSOX"
+      | "CreditCardPCI"
+      | "AzureApplication"
+      | "ValidGuid"
+      | "PublisherVerification"
+      | "DynamicDropdown"
+      | "PreventNonEnglishChar"
+      | "ValidEmail"
+    )[];
+    showSubQuestionsValue?: string;
+  }[];
+}
 export const ReportGetScopingQuestionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     questions: Schema.optional(
@@ -858,9 +1114,7 @@ export const ReportGetScopingQuestionsOutput =
         }),
       ),
     ),
-  });
-export type ReportGetScopingQuestionsOutput =
-  typeof ReportGetScopingQuestionsOutput.Type;
+  }) as unknown as Schema.Codec<ReportGetScopingQuestionsOutput>;
 
 // The operation
 /**
@@ -876,6 +1130,15 @@ export const ReportGetScopingQuestions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReportListInput {
+  $skipToken?: string;
+  $top?: number;
+  $select?: string;
+  $filter?: string;
+  $orderby?: string;
+  offerGuid?: string;
+  reportCreatorTenantId?: string;
+}
 export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $skipToken: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -890,10 +1153,25 @@ export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports",
     apiVersion: "2024-06-27",
   }),
-);
-export type ReportListInput = typeof ReportListInput.Type;
+) as unknown as Schema.Codec<ReportListInput>;
 
 // Output Schema
+export interface ReportListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReportListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -917,8 +1195,7 @@ export const ReportListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ReportListOutput = typeof ReportListOutput.Type;
+}) as unknown as Schema.Codec<ReportListOutput>;
 
 // The operation
 /**
@@ -938,6 +1215,11 @@ export const ReportList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReportListOutput,
 }));
 // Input Schema
+export interface ReportNestedResourceCheckNameAvailabilityInput {
+  reportName: string;
+  name?: string;
+  type?: string;
+}
 export const ReportNestedResourceCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -949,19 +1231,20 @@ export const ReportNestedResourceCheckNameAvailabilityInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/checkNameAvailability",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ReportNestedResourceCheckNameAvailabilityInput =
-  typeof ReportNestedResourceCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ReportNestedResourceCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ReportNestedResourceCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const ReportNestedResourceCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type ReportNestedResourceCheckNameAvailabilityOutput =
-  typeof ReportNestedResourceCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ReportNestedResourceCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -978,6 +1261,15 @@ export const ReportNestedResourceCheckNameAvailability =
     outputSchema: ReportNestedResourceCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ReportSyncCertRecordInput {
+  reportName: string;
+  certRecord: {
+    offerGuid?: string;
+    certificationStatus?: string;
+    ingestionStatus?: string;
+    controls?: { controlId?: string; controlStatus?: string }[];
+  };
+}
 export const ReportSyncCertRecordInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -1000,10 +1292,17 @@ export const ReportSyncCertRecordInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/syncCertRecord",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ReportSyncCertRecordInput = typeof ReportSyncCertRecordInput.Type;
+  ) as unknown as Schema.Codec<ReportSyncCertRecordInput>;
 
 // Output Schema
+export interface ReportSyncCertRecordOutput {
+  certRecord?: {
+    offerGuid?: string;
+    certificationStatus?: string;
+    ingestionStatus?: string;
+    controls?: { controlId?: string; controlStatus?: string }[];
+  };
+}
 export const ReportSyncCertRecordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certRecord: Schema.optional(
@@ -1021,8 +1320,7 @@ export const ReportSyncCertRecordOutput =
         ),
       }),
     ),
-  });
-export type ReportSyncCertRecordOutput = typeof ReportSyncCertRecordOutput.Type;
+  }) as unknown as Schema.Codec<ReportSyncCertRecordOutput>;
 
 // The operation
 /**
@@ -1038,6 +1336,57 @@ export const ReportSyncCertRecord = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReportUpdateInput {
+  reportName: string;
+  properties?: {
+    triggerTime?: string;
+    timeZone?: string;
+    resources?: {
+      resourceId: string;
+      resourceType?: string;
+      resourceKind?: string;
+      resourceOrigin?: "Azure" | "AWS" | "GCP";
+      accountId?: string;
+    }[];
+    status?: "Active" | "Failed" | "Reviewing" | "Disabled";
+    errors?: string[];
+    tenantId?: string;
+    offerGuid?: string;
+    nextTriggerTime?: string;
+    lastTriggerTime?: string;
+    subscriptions?: string[];
+    complianceStatus?: {
+      m365?: {
+        passedCount?: number;
+        failedCount?: number;
+        manualCount?: number;
+        notApplicableCount?: number;
+        pendingCount?: number;
+      };
+    };
+    storageInfo?: {
+      subscriptionId?: string;
+      resourceGroup?: string;
+      accountName?: string;
+      location?: string;
+    };
+    certRecords?: {
+      offerGuid?: string;
+      certificationStatus?: string;
+      ingestionStatus?: string;
+      controls?: { controlId?: string; controlStatus?: string }[];
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Fixing"
+      | "Verifying"
+      | "Updating";
+  };
+}
 export const ReportUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -1124,10 +1473,22 @@ export const ReportUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type ReportUpdateInput = typeof ReportUpdateInput.Type;
+) as unknown as Schema.Codec<ReportUpdateInput>;
 
 // Output Schema
+export interface ReportUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReportUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1146,8 +1507,7 @@ export const ReportUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ReportUpdateOutput = typeof ReportUpdateOutput.Type;
+}) as unknown as Schema.Codec<ReportUpdateOutput>;
 
 // The operation
 /**
@@ -1161,6 +1521,9 @@ export const ReportUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReportUpdateOutput,
 }));
 // Input Schema
+export interface ReportVerifyInput {
+  reportName: string;
+}
 export const ReportVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1169,15 +1532,17 @@ export const ReportVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/verify",
     apiVersion: "2024-06-27",
   }),
-);
-export type ReportVerifyInput = typeof ReportVerifyInput.Type;
+) as unknown as Schema.Codec<ReportVerifyInput>;
 
 // Output Schema
+export interface ReportVerifyOutput {
+  result?: "Succeeded" | "Failed";
+  reason?: string;
+}
 export const ReportVerifyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
   reason: Schema.optional(Schema.String),
-});
-export type ReportVerifyOutput = typeof ReportVerifyOutput.Type;
+}) as unknown as Schema.Codec<ReportVerifyOutput>;
 
 // The operation
 /**
@@ -1191,6 +1556,22 @@ export const ReportVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReportVerifyOutput,
 }));
 // Input Schema
+export interface ScopingConfigurationCreateOrUpdateInput {
+  reportName: string;
+  scopingConfigurationName: string;
+  properties: {
+    answers?: { questionId: string; answers: string[] }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Fixing"
+      | "Verifying"
+      | "Updating";
+  };
+}
 export const ScopingConfigurationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -1223,11 +1604,22 @@ export const ScopingConfigurationCreateOrUpdateInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ScopingConfigurationCreateOrUpdateInput =
-  typeof ScopingConfigurationCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScopingConfigurationCreateOrUpdateInput>;
 
 // Output Schema
+export interface ScopingConfigurationCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScopingConfigurationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1247,9 +1639,7 @@ export const ScopingConfigurationCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScopingConfigurationCreateOrUpdateOutput =
-  typeof ScopingConfigurationCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScopingConfigurationCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1265,6 +1655,10 @@ export const ScopingConfigurationCreateOrUpdate =
     outputSchema: ScopingConfigurationCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ScopingConfigurationDeleteInput {
+  reportName: string;
+  scopingConfigurationName: string;
+}
 export const ScopingConfigurationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -1275,15 +1669,12 @@ export const ScopingConfigurationDeleteInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ScopingConfigurationDeleteInput =
-  typeof ScopingConfigurationDeleteInput.Type;
+  ) as unknown as Schema.Codec<ScopingConfigurationDeleteInput>;
 
 // Output Schema
+export type ScopingConfigurationDeleteOutput = void;
 export const ScopingConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScopingConfigurationDeleteOutput =
-  typeof ScopingConfigurationDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScopingConfigurationDeleteOutput>;
 
 // The operation
 /**
@@ -1300,6 +1691,10 @@ export const ScopingConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScopingConfigurationGetInput {
+  reportName: string;
+  scopingConfigurationName: string;
+}
 export const ScopingConfigurationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -1310,11 +1705,22 @@ export const ScopingConfigurationGetInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ScopingConfigurationGetInput =
-  typeof ScopingConfigurationGetInput.Type;
+  ) as unknown as Schema.Codec<ScopingConfigurationGetInput>;
 
 // Output Schema
+export interface ScopingConfigurationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScopingConfigurationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1334,9 +1740,7 @@ export const ScopingConfigurationGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScopingConfigurationGetOutput =
-  typeof ScopingConfigurationGetOutput.Type;
+  }) as unknown as Schema.Codec<ScopingConfigurationGetOutput>;
 
 // The operation
 /**
@@ -1353,6 +1757,9 @@ export const ScopingConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScopingConfigurationListInput {
+  reportName: string;
+}
 export const ScopingConfigurationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -1362,11 +1769,25 @@ export const ScopingConfigurationListInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations",
       apiVersion: "2024-06-27",
     }),
-  );
-export type ScopingConfigurationListInput =
-  typeof ScopingConfigurationListInput.Type;
+  ) as unknown as Schema.Codec<ScopingConfigurationListInput>;
 
 // Output Schema
+export interface ScopingConfigurationListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScopingConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1401,9 +1822,7 @@ export const ScopingConfigurationListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScopingConfigurationListOutput =
-  typeof ScopingConfigurationListOutput.Type;
+  }) as unknown as Schema.Codec<ScopingConfigurationListOutput>;
 
 // The operation
 /**
@@ -1419,6 +1838,17 @@ export const ScopingConfigurationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SnapshotDownloadInput {
+  reportName: string;
+  snapshotName: string;
+  reportCreatorTenantId?: string;
+  downloadType:
+    | "ComplianceReport"
+    | "CompliancePdfReport"
+    | "ComplianceDetailedPdfReport"
+    | "ResourceList";
+  offerGuid?: string;
+}
 export const SnapshotDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
@@ -1436,10 +1866,33 @@ export const SnapshotDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots/{snapshotName}/download",
     apiVersion: "2024-06-27",
   }),
-);
-export type SnapshotDownloadInput = typeof SnapshotDownloadInput.Type;
+) as unknown as Schema.Codec<SnapshotDownloadInput>;
 
 // Output Schema
+export interface SnapshotDownloadOutput {
+  resourceList?: {
+    subscriptionId?: string;
+    resourceGroup?: string;
+    resourceType?: string;
+    resourceId?: string;
+  }[];
+  complianceReport?: {
+    categoryName?: string;
+    controlFamilyName?: string;
+    controlId?: string;
+    controlName?: string;
+    controlStatus?: "Passed" | "Failed" | "NotApplicable" | "PendingApproval";
+    responsibilityTitle?: string;
+    responsibilityDescription?: string;
+    resourceId?: string;
+    resourceType?: string;
+    resourceOrigin?: "Azure" | "AWS" | "GCP";
+    resourceStatus?: "Healthy" | "Unhealthy";
+    resourceStatusChangeDate?: string;
+  }[];
+  compliancePdfReport?: { sasUri?: string };
+  complianceDetailedPdfReport?: { sasUri?: string };
+}
 export const SnapshotDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceList: Schema.optional(
@@ -1492,8 +1945,7 @@ export const SnapshotDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type SnapshotDownloadOutput = typeof SnapshotDownloadOutput.Type;
+) as unknown as Schema.Codec<SnapshotDownloadOutput>;
 
 // The operation
 /**
@@ -1508,6 +1960,10 @@ export const SnapshotDownload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SnapshotDownloadOutput,
 }));
 // Input Schema
+export interface SnapshotGetInput {
+  reportName: string;
+  snapshotName: string;
+}
 export const SnapshotGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
@@ -1517,10 +1973,22 @@ export const SnapshotGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots/{snapshotName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type SnapshotGetInput = typeof SnapshotGetInput.Type;
+) as unknown as Schema.Codec<SnapshotGetInput>;
 
 // Output Schema
+export interface SnapshotGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SnapshotGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1539,8 +2007,7 @@ export const SnapshotGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SnapshotGetOutput = typeof SnapshotGetOutput.Type;
+}) as unknown as Schema.Codec<SnapshotGetOutput>;
 
 // The operation
 /**
@@ -1555,6 +2022,16 @@ export const SnapshotGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SnapshotGetOutput,
 }));
 // Input Schema
+export interface SnapshotListInput {
+  reportName: string;
+  $skipToken?: string;
+  $top?: number;
+  $select?: string;
+  $filter?: string;
+  $orderby?: string;
+  offerGuid?: string;
+  reportCreatorTenantId?: string;
+}
 export const SnapshotListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   $skipToken: Schema.optional(Schema.String),
@@ -1570,10 +2047,25 @@ export const SnapshotListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots",
     apiVersion: "2024-06-27",
   }),
-);
-export type SnapshotListInput = typeof SnapshotListInput.Type;
+) as unknown as Schema.Codec<SnapshotListInput>;
 
 // Output Schema
+export interface SnapshotListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SnapshotListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1597,8 +2089,7 @@ export const SnapshotListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SnapshotListOutput = typeof SnapshotListOutput.Type;
+}) as unknown as Schema.Codec<SnapshotListOutput>;
 
 // The operation
 /**
@@ -1619,6 +2110,39 @@ export const SnapshotList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SnapshotListOutput,
 }));
 // Input Schema
+export interface WebhookCreateOrUpdateInput {
+  reportName: string;
+  webhookName: string;
+  properties: {
+    webhookId?: string;
+    status?: "Enabled" | "Disabled";
+    tenantId?: string;
+    sendAllEvents?: "true" | "false";
+    events?: (
+      | "generate_snapshot_success"
+      | "generate_snapshot_failed"
+      | "assessment_failure"
+      | "report_configuration_changes"
+      | "report_deletion"
+    )[];
+    payloadUrl?: string;
+    contentType?: "application/json";
+    webhookKey?: string;
+    updateWebhookKey?: "true" | "false";
+    webhookKeyEnabled?: "true" | "false";
+    enableSslVerification?: "true" | "false";
+    deliveryStatus?: "Succeeded" | "Failed" | "NotStarted";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Fixing"
+      | "Verifying"
+      | "Updating";
+  };
+}
 export const WebhookCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
@@ -1669,10 +2193,22 @@ export const WebhookCreateOrUpdateInput =
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
       apiVersion: "2024-06-27",
     }),
-  );
-export type WebhookCreateOrUpdateInput = typeof WebhookCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebhookCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebhookCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhookCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1692,9 +2228,7 @@ export const WebhookCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebhookCreateOrUpdateOutput =
-  typeof WebhookCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebhookCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1711,6 +2245,10 @@ export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebhookDeleteInput {
+  reportName: string;
+  webhookName: string;
+}
 export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
@@ -1720,12 +2258,12 @@ export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type WebhookDeleteInput = typeof WebhookDeleteInput.Type;
+) as unknown as Schema.Codec<WebhookDeleteInput>;
 
 // Output Schema
-export const WebhookDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebhookDeleteOutput = typeof WebhookDeleteOutput.Type;
+export type WebhookDeleteOutput = void;
+export const WebhookDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhookDeleteOutput>;
 
 // The operation
 /**
@@ -1740,6 +2278,10 @@ export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhookDeleteOutput,
 }));
 // Input Schema
+export interface WebhookGetInput {
+  reportName: string;
+  webhookName: string;
+}
 export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
@@ -1749,10 +2291,22 @@ export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type WebhookGetInput = typeof WebhookGetInput.Type;
+) as unknown as Schema.Codec<WebhookGetInput>;
 
 // Output Schema
+export interface WebhookGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1771,8 +2325,7 @@ export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebhookGetOutput = typeof WebhookGetOutput.Type;
+}) as unknown as Schema.Codec<WebhookGetOutput>;
 
 // The operation
 /**
@@ -1787,6 +2340,16 @@ export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhookGetOutput,
 }));
 // Input Schema
+export interface WebhookListInput {
+  reportName: string;
+  $skipToken?: string;
+  $top?: number;
+  $select?: string;
+  $filter?: string;
+  $orderby?: string;
+  offerGuid?: string;
+  reportCreatorTenantId?: string;
+}
 export const WebhookListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   $skipToken: Schema.optional(Schema.String),
@@ -1802,10 +2365,25 @@ export const WebhookListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks",
     apiVersion: "2024-06-27",
   }),
-);
-export type WebhookListInput = typeof WebhookListInput.Type;
+) as unknown as Schema.Codec<WebhookListInput>;
 
 // Output Schema
+export interface WebhookListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebhookListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1829,8 +2407,7 @@ export const WebhookListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type WebhookListOutput = typeof WebhookListOutput.Type;
+}) as unknown as Schema.Codec<WebhookListOutput>;
 
 // The operation
 /**
@@ -1851,6 +2428,39 @@ export const WebhookList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhookListOutput,
 }));
 // Input Schema
+export interface WebhookUpdateInput {
+  reportName: string;
+  webhookName: string;
+  properties?: {
+    webhookId?: string;
+    status?: "Enabled" | "Disabled";
+    tenantId?: string;
+    sendAllEvents?: "true" | "false";
+    events?: (
+      | "generate_snapshot_success"
+      | "generate_snapshot_failed"
+      | "assessment_failure"
+      | "report_configuration_changes"
+      | "report_deletion"
+    )[];
+    payloadUrl?: string;
+    contentType?: "application/json";
+    webhookKey?: string;
+    updateWebhookKey?: "true" | "false";
+    webhookKeyEnabled?: "true" | "false";
+    enableSslVerification?: "true" | "false";
+    deliveryStatus?: "Succeeded" | "Failed" | "NotStarted";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Fixing"
+      | "Verifying"
+      | "Updating";
+  };
+}
 export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
@@ -1902,10 +2512,22 @@ export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
     apiVersion: "2024-06-27",
   }),
-);
-export type WebhookUpdateInput = typeof WebhookUpdateInput.Type;
+) as unknown as Schema.Codec<WebhookUpdateInput>;
 
 // Output Schema
+export interface WebhookUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1924,8 +2546,7 @@ export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebhookUpdateOutput = typeof WebhookUpdateOutput.Type;
+}) as unknown as Schema.Codec<WebhookUpdateOutput>;
 
 // The operation
 /**

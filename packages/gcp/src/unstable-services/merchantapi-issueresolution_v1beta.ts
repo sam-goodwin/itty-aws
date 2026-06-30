@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface TextWithTooltip {
     | (string & {});
 }
 
-export const TextWithTooltip: Schema.Schema<TextWithTooltip> =
+export const TextWithTooltip: Schema.Codec<TextWithTooltip> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     simpleValue: Schema.optional(Schema.String),
     simpleTooltipValue: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface ChoiceInputOption {
   additionalInput?: InputField;
 }
 
-export const ChoiceInputOption: Schema.Schema<ChoiceInputOption> =
+export const ChoiceInputOption: Schema.Codec<ChoiceInputOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       label: Schema.optional(TextWithTooltip),
@@ -60,25 +60,23 @@ export const ChoiceInputOption: Schema.Schema<ChoiceInputOption> =
     }),
   ).annotate({
     identifier: "ChoiceInputOption",
-  }) as any as Schema.Schema<ChoiceInputOption>;
+  }) as any as Schema.Codec<ChoiceInputOption>;
 
 export interface ChoiceInput {
   /** A list of choices. Only one option can be selected. */
   options?: ReadonlyArray<ChoiceInputOption>;
 }
 
-export const ChoiceInput: Schema.Schema<ChoiceInput> =
+export const ChoiceInput: Schema.Codec<ChoiceInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       options: Schema.optional(Schema.Array(ChoiceInputOption)),
     }),
-  ).annotate({
-    identifier: "ChoiceInput",
-  }) as any as Schema.Schema<ChoiceInput>;
+  ).annotate({ identifier: "ChoiceInput" }) as any as Schema.Codec<ChoiceInput>;
 
 export interface CheckboxInput {}
 
-export const CheckboxInput: Schema.Schema<CheckboxInput> =
+export const CheckboxInput: Schema.Codec<CheckboxInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CheckboxInput",
   });
@@ -98,7 +96,7 @@ export interface TextInput {
     | (string & {});
 }
 
-export const TextInput: Schema.Schema<TextInput> =
+export const TextInput: Schema.Codec<TextInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formatInfo: Schema.optional(Schema.String),
     ariaLabel: Schema.optional(Schema.String),
@@ -121,7 +119,7 @@ export interface InputField {
   required?: boolean;
 }
 
-export const InputField: Schema.Schema<InputField> =
+export const InputField: Schema.Codec<InputField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       choiceInput: Schema.optional(ChoiceInput),
@@ -131,7 +129,7 @@ export const InputField: Schema.Schema<InputField> =
       textInput: Schema.optional(TextInput),
       required: Schema.optional(Schema.Boolean),
     }),
-  ).annotate({ identifier: "InputField" }) as any as Schema.Schema<InputField>;
+  ).annotate({ identifier: "InputField" }) as any as Schema.Codec<InputField>;
 
 export interface Callout {
   /** A full message that needs to be shown to the business. */
@@ -145,7 +143,7 @@ export interface Callout {
     | (string & {});
 }
 
-export const Callout: Schema.Schema<Callout> =
+export const Callout: Schema.Codec<Callout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullMessage: Schema.optional(TextWithTooltip),
     styleHint: Schema.optional(Schema.String),
@@ -168,7 +166,7 @@ export interface ActionFlow {
   dialogCallout?: Callout;
 }
 
-export const ActionFlow: Schema.Schema<ActionFlow> =
+export const ActionFlow: Schema.Codec<ActionFlow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputs: Schema.optional(Schema.Array(InputField)),
     dialogTitle: Schema.optional(Schema.String),
@@ -186,7 +184,7 @@ export interface BuiltInUserInputAction {
   flows?: ReadonlyArray<ActionFlow>;
 }
 
-export const BuiltInUserInputAction: Schema.Schema<BuiltInUserInputAction> =
+export const BuiltInUserInputAction: Schema.Codec<BuiltInUserInputAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionContext: Schema.optional(Schema.String),
     flows: Schema.optional(Schema.Array(ActionFlow)),
@@ -201,14 +199,14 @@ export interface Reason {
   message?: string;
 }
 
-export const Reason: Schema.Schema<Reason> =
+export const Reason: Schema.Codec<Reason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       detail: Schema.optional(Schema.String),
       action: Schema.optional(Action),
       message: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Reason" }) as any as Schema.Schema<Reason>;
+  ).annotate({ identifier: "Reason" }) as any as Schema.Codec<Reason>;
 
 export interface ExternalAction {
   /** The type of external action. */
@@ -224,7 +222,7 @@ export interface ExternalAction {
   uri?: string;
 }
 
-export const ExternalAction: Schema.Schema<ExternalAction> =
+export const ExternalAction: Schema.Codec<ExternalAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -237,7 +235,7 @@ export interface AdditionalContent {
   paragraphs?: ReadonlyArray<string>;
 }
 
-export const AdditionalContent: Schema.Schema<AdditionalContent> =
+export const AdditionalContent: Schema.Codec<AdditionalContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     paragraphs: Schema.optional(Schema.Array(Schema.String)),
@@ -263,7 +261,7 @@ export interface BuiltInSimpleAction {
   additionalContent?: AdditionalContent;
 }
 
-export const BuiltInSimpleAction: Schema.Schema<BuiltInSimpleAction> =
+export const BuiltInSimpleAction: Schema.Codec<BuiltInSimpleAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     attributeCode: Schema.optional(Schema.String),
@@ -285,7 +283,7 @@ export interface Action {
   buttonLabel?: string;
 }
 
-export const Action: Schema.Schema<Action> =
+export const Action: Schema.Codec<Action> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       builtinUserInputAction: Schema.optional(BuiltInUserInputAction),
@@ -295,7 +293,7 @@ export const Action: Schema.Schema<Action> =
       builtinSimpleAction: Schema.optional(BuiltInSimpleAction),
       buttonLabel: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Action" }) as any as Schema.Schema<Action>;
+  ).annotate({ identifier: "Action" }) as any as Schema.Codec<Action>;
 
 export interface Region {
   /** The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) */
@@ -304,7 +302,7 @@ export interface Region {
   name?: string;
 }
 
-export const Region: Schema.Schema<Region> =
+export const Region: Schema.Codec<Region> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -317,7 +315,7 @@ export interface Breakdown {
   details?: ReadonlyArray<string>;
 }
 
-export const Breakdown: Schema.Schema<Breakdown> =
+export const Breakdown: Schema.Codec<Breakdown> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Region)),
     details: Schema.optional(Schema.Array(Schema.String)),
@@ -337,7 +335,7 @@ export interface Impact {
   breakdowns?: ReadonlyArray<Breakdown>;
 }
 
-export const Impact: Schema.Schema<Impact> =
+export const Impact: Schema.Codec<Impact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -357,7 +355,7 @@ export interface RenderedIssue {
   title?: string;
 }
 
-export const RenderedIssue: Schema.Schema<RenderedIssue> =
+export const RenderedIssue: Schema.Codec<RenderedIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prerenderedOutOfCourtDisputeSettlement: Schema.optional(Schema.String),
     prerenderedContent: Schema.optional(Schema.String),
@@ -371,7 +369,7 @@ export interface RenderAccountIssuesResponse {
   renderedIssues?: ReadonlyArray<RenderedIssue>;
 }
 
-export const RenderAccountIssuesResponse: Schema.Schema<RenderAccountIssuesResponse> =
+export const RenderAccountIssuesResponse: Schema.Codec<RenderAccountIssuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     renderedIssues: Schema.optional(Schema.Array(RenderedIssue)),
   }).annotate({ identifier: "RenderAccountIssuesResponse" });
@@ -381,7 +379,7 @@ export interface TextInputValue {
   value?: string;
 }
 
-export const TextInputValue: Schema.Schema<TextInputValue> =
+export const TextInputValue: Schema.Codec<TextInputValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextInputValue" });
@@ -391,7 +389,7 @@ export interface ChoiceInputValue {
   choiceInputOptionId?: string;
 }
 
-export const ChoiceInputValue: Schema.Schema<ChoiceInputValue> =
+export const ChoiceInputValue: Schema.Codec<ChoiceInputValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     choiceInputOptionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChoiceInputValue" });
@@ -401,7 +399,7 @@ export interface CheckboxInputValue {
   value?: boolean;
 }
 
-export const CheckboxInputValue: Schema.Schema<CheckboxInputValue> =
+export const CheckboxInputValue: Schema.Codec<CheckboxInputValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckboxInputValue" });
@@ -417,7 +415,7 @@ export interface InputValue {
   checkboxInputValue?: CheckboxInputValue;
 }
 
-export const InputValue: Schema.Schema<InputValue> =
+export const InputValue: Schema.Codec<InputValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputFieldId: Schema.optional(Schema.String),
     textInputValue: Schema.optional(TextInputValue),
@@ -453,7 +451,7 @@ export interface ItemLevelIssue {
   description?: string;
 }
 
-export const ItemLevelIssue: Schema.Schema<ItemLevelIssue> =
+export const ItemLevelIssue: Schema.Codec<ItemLevelIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -476,7 +474,7 @@ export interface Stats {
   disapprovedCount?: string;
 }
 
-export const Stats: Schema.Schema<Stats> =
+export const Stats: Schema.Codec<Stats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activeCount: Schema.optional(Schema.String),
     pendingCount: Schema.optional(Schema.String),
@@ -518,7 +516,7 @@ export interface AggregateProductStatus {
   stats?: Stats;
 }
 
-export const AggregateProductStatus: Schema.Schema<AggregateProductStatus> =
+export const AggregateProductStatus: Schema.Codec<AggregateProductStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     itemLevelIssues: Schema.optional(Schema.Array(ItemLevelIssue)),
@@ -559,7 +557,7 @@ export interface ProductChange {
   regionCode?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
@@ -592,7 +590,7 @@ export interface ProductStatusChangeMessage {
   resourceId?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     managingAccount: Schema.optional(Schema.String),
@@ -612,7 +610,7 @@ export interface ActionInput {
   actionFlowId?: string;
 }
 
-export const ActionInput: Schema.Schema<ActionInput> =
+export const ActionInput: Schema.Codec<ActionInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputValues: Schema.optional(Schema.Array(InputValue)),
     actionFlowId: Schema.optional(Schema.String),
@@ -625,7 +623,7 @@ export interface ListAggregateProductStatusesResponse {
   nextPageToken?: string;
 }
 
-export const ListAggregateProductStatusesResponse: Schema.Schema<ListAggregateProductStatusesResponse> =
+export const ListAggregateProductStatusesResponse: Schema.Codec<ListAggregateProductStatusesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregateProductStatuses: Schema.optional(
       Schema.Array(AggregateProductStatus),
@@ -638,7 +636,7 @@ export interface RenderProductIssuesResponse {
   renderedIssues?: ReadonlyArray<RenderedIssue>;
 }
 
-export const RenderProductIssuesResponse: Schema.Schema<RenderProductIssuesResponse> =
+export const RenderProductIssuesResponse: Schema.Codec<RenderProductIssuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     renderedIssues: Schema.optional(Schema.Array(RenderedIssue)),
   }).annotate({ identifier: "RenderProductIssuesResponse" });
@@ -648,7 +646,7 @@ export interface TriggerActionResponse {
   message?: string;
 }
 
-export const TriggerActionResponse: Schema.Schema<TriggerActionResponse> =
+export const TriggerActionResponse: Schema.Codec<TriggerActionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "TriggerActionResponse" });
@@ -667,7 +665,7 @@ export interface RenderIssuesRequestPayload {
     | (string & {});
 }
 
-export const RenderIssuesRequestPayload: Schema.Schema<RenderIssuesRequestPayload> =
+export const RenderIssuesRequestPayload: Schema.Codec<RenderIssuesRequestPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentOption: Schema.optional(Schema.String),
     userInputActionOption: Schema.optional(Schema.String),
@@ -680,7 +678,7 @@ export interface TriggerActionPayload {
   actionInput?: ActionInput;
 }
 
-export const TriggerActionPayload: Schema.Schema<TriggerActionPayload> =
+export const TriggerActionPayload: Schema.Codec<TriggerActionPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionContext: Schema.optional(Schema.String),
     actionInput: Schema.optional(ActionInput),
@@ -763,7 +761,7 @@ export const ListAccountsAggregateProductStatusesRequest =
       path: "issueresolution/v1beta/{+parent}/aggregateProductStatuses",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsAggregateProductStatusesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsAggregateProductStatusesRequest>;
 
 export type ListAccountsAggregateProductStatusesResponse =
   ListAggregateProductStatusesResponse;
@@ -817,7 +815,7 @@ export const RenderaccountissuesIssueresolutionRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RenderaccountissuesIssueresolutionRequest>;
+  ) as unknown as Schema.Codec<RenderaccountissuesIssueresolutionRequest>;
 
 export type RenderaccountissuesIssueresolutionResponse =
   RenderAccountIssuesResponse;
@@ -869,7 +867,7 @@ export const RenderproductissuesIssueresolutionRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RenderproductissuesIssueresolutionRequest>;
+  ) as unknown as Schema.Codec<RenderproductissuesIssueresolutionRequest>;
 
 export type RenderproductissuesIssueresolutionResponse =
   RenderProductIssuesResponse;
@@ -918,7 +916,7 @@ export const TriggeractionIssueresolutionRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TriggeractionIssueresolutionRequest>;
+  ) as unknown as Schema.Codec<TriggeractionIssueresolutionRequest>;
 
 export type TriggeractionIssueresolutionResponse = TriggerActionResponse;
 export const TriggeractionIssueresolutionResponse =

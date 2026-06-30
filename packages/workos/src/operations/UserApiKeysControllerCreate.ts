@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserApiKeysControllerCreateInput {
+  userId: string;
+  name: string;
+  organization_id: string;
+  permissions?: string[];
+  expires_at?: string;
+}
 export const UserApiKeysControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,22 @@ export const UserApiKeysControllerCreateInput =
       method: "POST",
       path: "/user_management/users/{userId}/api_keys",
     }),
-  );
-export type UserApiKeysControllerCreateInput =
-  typeof UserApiKeysControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<UserApiKeysControllerCreateInput>;
 
 // Output Schema
+export interface UserApiKeysControllerCreateOutput {
+  object: string;
+  id: string;
+  owner: { type: string; id: string; organization_id: string };
+  name: string;
+  obfuscated_value: string;
+  last_used_at: string | null;
+  expires_at: string | null;
+  permissions: string[];
+  created_at: string;
+  updated_at: string;
+  value: string;
+}
 export const UserApiKeysControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -38,9 +56,7 @@ export const UserApiKeysControllerCreateOutput =
     created_at: Schema.String,
     updated_at: Schema.String,
     value: Schema.String,
-  });
-export type UserApiKeysControllerCreateOutput =
-  typeof UserApiKeysControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<UserApiKeysControllerCreateOutput>;
 
 // The operation
 /**

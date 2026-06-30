@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListDeployRequestsInput {
+  organization: string;
+  database: string;
+  state?: string;
+  branch?: string;
+  into_branch?: string;
+  deployed_at?: string;
+  running_at?: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListDeployRequestsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -20,10 +31,192 @@ export const ListDeployRequestsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/deploy-requests",
     }),
-  );
-export type ListDeployRequestsInput = typeof ListDeployRequestsInput.Type;
+  ) as unknown as Schema.Codec<ListDeployRequestsInput>;
 
 // Output Schema
+export interface ListDeployRequestsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    number: number;
+    actor: { id: string; display_name: string; avatar_url: string };
+    closed_by?: { id: string; display_name: string; avatar_url: string } | null;
+    branch: string;
+    branch_id: string;
+    branch_deleted: boolean;
+    branch_deleted_by?: {
+      id: string;
+      display_name: string;
+      avatar_url: string;
+    } | null;
+    branch_deleted_at: string | null;
+    into_branch: string;
+    into_branch_sharded: boolean;
+    into_branch_shard_count: number;
+    into_branch_keyspace_count: number;
+    approved: boolean;
+    state: "open" | "closed";
+    deployment_state:
+      | "pending"
+      | "ready"
+      | "no_changes"
+      | "queued"
+      | "submitting"
+      | "in_progress"
+      | "pending_cutover"
+      | "in_progress_vschema"
+      | "in_progress_cancel"
+      | "in_progress_cutover"
+      | "complete"
+      | "complete_cancel"
+      | "complete_error"
+      | "complete_pending_revert"
+      | "in_progress_revert"
+      | "in_progress_revert_vschema"
+      | "complete_revert"
+      | "complete_revert_error"
+      | "cancelled"
+      | "error";
+    deployment: {
+      id: string;
+      auto_cutover: boolean;
+      auto_delete_branch: boolean;
+      created_at: string;
+      cutover_at: string | null;
+      cutover_expiring: boolean;
+      deploy_check_errors?: string | null;
+      finished_at: string | null;
+      force_cutover_requested_at: string | null;
+      queued_at: string | null;
+      ready_to_cutover_at: string | null;
+      started_at: string | null;
+      state:
+        | "pending"
+        | "ready"
+        | "no_changes"
+        | "queued"
+        | "submitting"
+        | "in_progress"
+        | "pending_cutover"
+        | "in_progress_vschema"
+        | "in_progress_cancel"
+        | "in_progress_cutover"
+        | "complete"
+        | "complete_cancel"
+        | "complete_error"
+        | "complete_pending_revert"
+        | "in_progress_revert"
+        | "in_progress_revert_vschema"
+        | "complete_revert"
+        | "complete_revert_error"
+        | "cancelled"
+        | "error";
+      submitted_at: string | null;
+      updated_at: string;
+      into_branch: string;
+      deploy_request_number: number;
+      deployable: boolean;
+      preceding_deployments: Record<string, unknown>[];
+      deploy_operations: {
+        id: string;
+        state:
+          | "pending"
+          | "queued"
+          | "in_progress"
+          | "complete"
+          | "cancelled"
+          | "error";
+        keyspace_name: string;
+        table_name: string;
+        operation_name: string;
+        eta_seconds: number | null;
+        progress_percentage: number | null;
+        deploy_error_docs_url: string | null;
+        ddl_statement: string;
+        syntax_highlighted_ddl: string;
+        created_at: string;
+        updated_at: string;
+        throttled_at: string | null;
+        can_drop_data: boolean;
+        table_locked: boolean;
+        table_recently_used: boolean;
+        table_recently_used_at: string | null;
+        removed_foreign_key_names: string[] | null;
+        deploy_errors: string | null;
+      }[];
+      deploy_operation_summaries: {
+        id: string;
+        created_at: string;
+        deploy_errors: string;
+        ddl_statement: string;
+        eta_seconds: number;
+        keyspace_name: string;
+        operation_name: string;
+        progress_percentage: number;
+        state: "pending" | "in_progress" | "complete" | "cancelled" | "error";
+        syntax_highlighted_ddl: string;
+        table_name: string;
+        table_recently_used_at: string | null;
+        throttled_at: string | null;
+        removed_foreign_key_names: string[];
+        shard_count: number;
+        shard_names: string[];
+        can_drop_data: boolean;
+        table_recently_used: boolean;
+        sharded: boolean;
+        operations: {
+          id: string;
+          shard: string;
+          state:
+            | "pending"
+            | "queued"
+            | "in_progress"
+            | "complete"
+            | "cancelled"
+            | "error";
+          progress_percentage: number;
+          eta_seconds: number;
+        }[];
+      }[];
+      lint_errors: Record<string, unknown>[];
+      sequential_diff_dependencies: Record<string, unknown>[];
+      lookup_vindex_operations: Record<string, unknown>[];
+      throttler_configurations?: Record<string, unknown> | null;
+      deployment_revert_request: Record<string, unknown> | null;
+      actor?: { id: string; display_name: string; avatar_url: string } | null;
+      cutover_actor?: {
+        id: string;
+        display_name: string;
+        avatar_url: string;
+      } | null;
+      cancelled_actor?: {
+        id: string;
+        display_name: string;
+        avatar_url: string;
+      } | null;
+      schema_last_updated_at: string | null;
+      table_locked: boolean;
+      locked_table_name?: string | null;
+      instant_ddl: boolean;
+      instant_ddl_eligible: boolean;
+      queue_paused: boolean;
+      queue_pause_reason: string | null;
+    };
+    num_comments: number;
+    html_url: string;
+    notes: string;
+    html_body: string;
+    created_at: string;
+    updated_at: string;
+    closed_at: string | null;
+    deployed_at: string | null;
+  }[];
+}
 export const ListDeployRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -271,8 +464,7 @@ export const ListDeployRequestsOutput =
         deployed_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ListDeployRequestsOutput = typeof ListDeployRequestsOutput.Type;
+  }) as unknown as Schema.Codec<ListDeployRequestsOutput>;
 
 // The operation
 /**

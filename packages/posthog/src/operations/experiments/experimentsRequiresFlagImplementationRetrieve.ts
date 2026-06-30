@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExperimentsRequiresFlagImplementationRetrieveInput {
+  project_id: string;
+}
 export const ExperimentsRequiresFlagImplementationRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const ExperimentsRequiresFlagImplementationRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/experiments/requires_flag_implementation/",
     }),
-  );
-export type ExperimentsRequiresFlagImplementationRetrieveInput =
-  typeof ExperimentsRequiresFlagImplementationRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsRequiresFlagImplementationRetrieveInput>;
 
 // Output Schema
+export type ExperimentsRequiresFlagImplementationRetrieveOutput = void;
 export const ExperimentsRequiresFlagImplementationRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExperimentsRequiresFlagImplementationRetrieveOutput =
-  typeof ExperimentsRequiresFlagImplementationRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsRequiresFlagImplementationRetrieveOutput>;
 
 // The operation
 /**

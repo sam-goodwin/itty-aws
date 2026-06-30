@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface HogFlowsMetricsGlobalRetrieveInput {
+  project_id: string;
+  after?: string;
+  before?: string;
+}
 export const HogFlowsMetricsGlobalRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,14 @@ export const HogFlowsMetricsGlobalRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_flows/metrics/global/",
     }),
-  );
-export type HogFlowsMetricsGlobalRetrieveInput =
-  typeof HogFlowsMetricsGlobalRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HogFlowsMetricsGlobalRetrieveInput>;
 
 // Output Schema
+export type HogFlowsMetricsGlobalRetrieveOutput = {
+  workflow_id: string;
+  succeeded: number;
+  failed: number;
+}[];
 export const HogFlowsMetricsGlobalRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -25,9 +33,7 @@ export const HogFlowsMetricsGlobalRetrieveOutput =
       succeeded: Schema.Number,
       failed: Schema.Number,
     }),
-  );
-export type HogFlowsMetricsGlobalRetrieveOutput =
-  typeof HogFlowsMetricsGlobalRetrieveOutput.Type;
+  ) as unknown as Schema.Codec<HogFlowsMetricsGlobalRetrieveOutput>;
 
 // The operation
 /**

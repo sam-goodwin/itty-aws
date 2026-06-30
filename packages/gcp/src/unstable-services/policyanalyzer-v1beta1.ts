@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleCloudPolicyanalyzerV1beta1ObservationPeriod {
   startTime?: string;
 }
 
-export const GoogleCloudPolicyanalyzerV1beta1ObservationPeriod: Schema.Schema<GoogleCloudPolicyanalyzerV1beta1ObservationPeriod> =
+export const GoogleCloudPolicyanalyzerV1beta1ObservationPeriod: Schema.Codec<GoogleCloudPolicyanalyzerV1beta1ObservationPeriod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface GoogleCloudPolicyanalyzerV1beta1Activity {
   fullResourceName?: string;
 }
 
-export const GoogleCloudPolicyanalyzerV1beta1Activity: Schema.Schema<GoogleCloudPolicyanalyzerV1beta1Activity> =
+export const GoogleCloudPolicyanalyzerV1beta1Activity: Schema.Codec<GoogleCloudPolicyanalyzerV1beta1Activity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activityType: Schema.optional(Schema.String),
     observationPeriod: Schema.optional(
@@ -65,7 +65,7 @@ export interface GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse: Schema.Schema<GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse> =
+export const GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse: Schema.Codec<GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activities: Schema.optional(
       Schema.Array(GoogleCloudPolicyanalyzerV1beta1Activity),
@@ -126,7 +126,7 @@ export const QueryFoldersLocationsActivityTypesActivitiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/activities:query" }),
     svc,
-  ) as unknown as Schema.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>;
+  ) as unknown as Schema.Codec<QueryFoldersLocationsActivityTypesActivitiesRequest>;
 
 export type QueryFoldersLocationsActivityTypesActivitiesResponse =
   GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
@@ -174,7 +174,7 @@ export const QueryProjectsLocationsActivityTypesActivitiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/activities:query" }),
     svc,
-  ) as unknown as Schema.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>;
+  ) as unknown as Schema.Codec<QueryProjectsLocationsActivityTypesActivitiesRequest>;
 
 export type QueryProjectsLocationsActivityTypesActivitiesResponse =
   GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
@@ -222,7 +222,7 @@ export const QueryOrganizationsLocationsActivityTypesActivitiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/activities:query" }),
     svc,
-  ) as unknown as Schema.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>;
+  ) as unknown as Schema.Codec<QueryOrganizationsLocationsActivityTypesActivitiesRequest>;
 
 export type QueryOrganizationsLocationsActivityTypesActivitiesResponse =
   GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;

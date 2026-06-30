@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Axis {
   start?: number;
 }
 
-export const Axis: Schema.Schema<Axis> =
+export const Axis: Schema.Codec<Axis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.Number),
     tag: Schema.optional(Schema.String),
@@ -45,11 +45,12 @@ export interface Tag {
   name?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     weight: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tag" });
+  },
+).annotate({ identifier: "Tag" });
 
 export interface Webfont {
   /** The font version. */
@@ -78,7 +79,7 @@ export interface Webfont {
   files?: Record<string, string>;
 }
 
-export const Webfont: Schema.Schema<Webfont> =
+export const Webfont: Schema.Codec<Webfont> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     lastModified: Schema.optional(Schema.String),
@@ -101,7 +102,7 @@ export interface WebfontList {
   kind?: string;
 }
 
-export const WebfontList: Schema.Schema<WebfontList> =
+export const WebfontList: Schema.Codec<WebfontList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Webfont)),
     kind: Schema.optional(Schema.String),
@@ -176,7 +177,7 @@ export const ListWebfontsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/webfonts" }),
   svc,
-) as unknown as Schema.Schema<ListWebfontsRequest>;
+) as unknown as Schema.Codec<ListWebfontsRequest>;
 
 export type ListWebfontsResponse = WebfontList;
 export const ListWebfontsResponse = /*@__PURE__*/ /*#__PURE__*/ WebfontList;

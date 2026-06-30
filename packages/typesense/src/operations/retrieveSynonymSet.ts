@@ -4,13 +4,27 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RetrieveSynonymSetInput {
+  synonymSetName: string;
+}
 export const RetrieveSynonymSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     synonymSetName: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/synonym_sets/{synonymSetName}" }));
-export type RetrieveSynonymSetInput = typeof RetrieveSynonymSetInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/synonym_sets/{synonymSetName}" }),
+  ) as unknown as Schema.Codec<RetrieveSynonymSetInput>;
 
 // Output Schema
+export interface RetrieveSynonymSetOutput {
+  items: {
+    id: string;
+    synonyms: string[];
+    root?: string;
+    locale?: string;
+    symbols_to_index?: string[];
+  }[];
+  name: string;
+}
 export const RetrieveSynonymSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.Array(
@@ -23,8 +37,7 @@ export const RetrieveSynonymSetOutput =
       }),
     ),
     name: Schema.String,
-  });
-export type RetrieveSynonymSetOutput = typeof RetrieveSynonymSetOutput.Type;
+  }) as unknown as Schema.Codec<RetrieveSynonymSetOutput>;
 
 // The operation
 /**

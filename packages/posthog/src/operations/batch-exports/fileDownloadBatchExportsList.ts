@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface FileDownloadBatchExportsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const FileDownloadBatchExportsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,28 @@ export const FileDownloadBatchExportsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/file_download_batch_exports/",
     }),
-  );
-export type FileDownloadBatchExportsListInput =
-  typeof FileDownloadBatchExportsListInput.Type;
+  ) as unknown as Schema.Codec<FileDownloadBatchExportsListInput>;
 
 // Output Schema
+export interface FileDownloadBatchExportsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    status:
+      | "Cancelled"
+      | "Completed"
+      | "ContinuedAsNew"
+      | "Failed"
+      | "FailedRetryable"
+      | "FailedBilling"
+      | "Terminated"
+      | "TimedOut"
+      | "Running"
+      | "Starting";
+  }[];
+}
 export const FileDownloadBatchExportsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -40,9 +62,7 @@ export const FileDownloadBatchExportsListOutput =
         ]),
       }),
     ),
-  });
-export type FileDownloadBatchExportsListOutput =
-  typeof FileDownloadBatchExportsListOutput.Type;
+  }) as unknown as Schema.Codec<FileDownloadBatchExportsListOutput>;
 
 // The operation
 /**

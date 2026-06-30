@@ -4,6 +4,15 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsBulkDeleteCreateInput {
+  project_id: string;
+  format?: "csv" | "json";
+  ids?: string[];
+  distinct_ids?: string[];
+  delete_events?: boolean;
+  delete_recordings?: boolean;
+  keep_person?: boolean;
+}
 export const PersonsBulkDeleteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const PersonsBulkDeleteCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/persons/bulk_delete/",
     }),
-  );
-export type PersonsBulkDeleteCreateInput =
-  typeof PersonsBulkDeleteCreateInput.Type;
+  ) as unknown as Schema.Codec<PersonsBulkDeleteCreateInput>;
 
 // Output Schema
+export type PersonsBulkDeleteCreateOutput = void;
 export const PersonsBulkDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PersonsBulkDeleteCreateOutput =
-  typeof PersonsBulkDeleteCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsBulkDeleteCreateOutput>;
 
 // The operation
 /**

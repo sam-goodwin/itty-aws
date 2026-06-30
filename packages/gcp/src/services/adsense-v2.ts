@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface AdClientAdCode {
   ampBody?: string;
 }
 
-export const AdClientAdCode: Schema.Schema<AdClientAdCode> =
+export const AdClientAdCode: Schema.Codec<AdClientAdCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ampHead: Schema.optional(Schema.String),
     adCode: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export interface Cell {
   value?: string;
 }
 
-export const Cell: Schema.Schema<Cell> =
+export const Cell: Schema.Codec<Cell> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "Cell" });
@@ -53,10 +53,11 @@ export interface Row {
   cells?: ReadonlyArray<Cell>;
 }
 
-export const Row: Schema.Schema<Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Row: Schema.Codec<Row> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     cells: Schema.optional(Schema.Array(Cell)),
-  }).annotate({ identifier: "Row" });
+  },
+).annotate({ identifier: "Row" });
 
 export interface UrlChannel {
   /** Output only. Resource name of the URL channel. Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel} */
@@ -67,7 +68,7 @@ export interface UrlChannel {
   uriPattern?: string;
 }
 
-export const UrlChannel: Schema.Schema<UrlChannel> =
+export const UrlChannel: Schema.Codec<UrlChannel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     reportingDimensionId: Schema.optional(Schema.String),
@@ -90,7 +91,7 @@ export interface Alert {
     | (string & {});
 }
 
-export const Alert: Schema.Schema<Alert> =
+export const Alert: Schema.Codec<Alert> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -107,7 +108,7 @@ export interface Adsense_Date {
   day?: number;
 }
 
-export const Adsense_Date: Schema.Schema<Adsense_Date> =
+export const Adsense_Date: Schema.Codec<Adsense_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -133,7 +134,7 @@ export interface Site {
   autoAdsEnabled?: boolean;
 }
 
-export const Site: Schema.Schema<Site> =
+export const Site: Schema.Codec<Site> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingDimensionId: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -149,7 +150,7 @@ export interface ListSitesResponse {
   sites?: ReadonlyArray<Site>;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
+export const ListSitesResponse: Schema.Codec<ListSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     sites: Schema.optional(Schema.Array(Site)),
@@ -169,7 +170,7 @@ export interface PolicyTopic {
     | (string & {});
 }
 
-export const PolicyTopic: Schema.Schema<PolicyTopic> =
+export const PolicyTopic: Schema.Codec<PolicyTopic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
     mustFix: Schema.optional(Schema.Boolean),
@@ -215,7 +216,7 @@ export interface PolicyIssue {
   name?: string;
 }
 
-export const PolicyIssue: Schema.Schema<PolicyIssue> =
+export const PolicyIssue: Schema.Codec<PolicyIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warningEscalationDate: Schema.optional(Adsense_Date),
     action: Schema.optional(Schema.String),
@@ -238,7 +239,7 @@ export interface TimeZone {
   id?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
+export const TimeZone: Schema.Codec<TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -266,7 +267,7 @@ export interface Account {
   name?: string;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -286,7 +287,7 @@ export interface Payment {
   name?: string;
 }
 
-export const Payment: Schema.Schema<Payment> =
+export const Payment: Schema.Codec<Payment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Adsense_Date),
     amount: Schema.optional(Schema.String),
@@ -304,7 +305,7 @@ export interface CustomChannel {
   active?: boolean;
 }
 
-export const CustomChannel: Schema.Schema<CustomChannel> =
+export const CustomChannel: Schema.Codec<CustomChannel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingDimensionId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -319,7 +320,7 @@ export interface ListLinkedCustomChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListLinkedCustomChannelsResponse: Schema.Schema<ListLinkedCustomChannelsResponse> =
+export const ListLinkedCustomChannelsResponse: Schema.Codec<ListLinkedCustomChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customChannels: Schema.optional(Schema.Array(CustomChannel)),
     nextPageToken: Schema.optional(Schema.String),
@@ -339,7 +340,7 @@ export interface ContentAdsSettings {
   size?: string;
 }
 
-export const ContentAdsSettings: Schema.Schema<ContentAdsSettings> =
+export const ContentAdsSettings: Schema.Codec<ContentAdsSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     size: Schema.optional(Schema.String),
@@ -358,7 +359,7 @@ export interface AdUnit {
   reportingDimensionId?: string;
 }
 
-export const AdUnit: Schema.Schema<AdUnit> =
+export const AdUnit: Schema.Codec<AdUnit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -374,7 +375,7 @@ export interface ListUrlChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListUrlChannelsResponse: Schema.Schema<ListUrlChannelsResponse> =
+export const ListUrlChannelsResponse: Schema.Codec<ListUrlChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urlChannels: Schema.optional(Schema.Array(UrlChannel)),
     nextPageToken: Schema.optional(Schema.String),
@@ -387,7 +388,7 @@ export interface ListChildAccountsResponse {
   accounts?: ReadonlyArray<Account>;
 }
 
-export const ListChildAccountsResponse: Schema.Schema<ListChildAccountsResponse> =
+export const ListChildAccountsResponse: Schema.Codec<ListChildAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accounts: Schema.optional(Schema.Array(Account)),
@@ -400,7 +401,7 @@ export interface SavedReport {
   title?: string;
 }
 
-export const SavedReport: Schema.Schema<SavedReport> =
+export const SavedReport: Schema.Codec<SavedReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -413,7 +414,7 @@ export interface ListSavedReportsResponse {
   nextPageToken?: string;
 }
 
-export const ListSavedReportsResponse: Schema.Schema<ListSavedReportsResponse> =
+export const ListSavedReportsResponse: Schema.Codec<ListSavedReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     savedReports: Schema.optional(Schema.Array(SavedReport)),
     nextPageToken: Schema.optional(Schema.String),
@@ -426,7 +427,7 @@ export interface ListPolicyIssuesResponse {
   nextPageToken?: string;
 }
 
-export const ListPolicyIssuesResponse: Schema.Schema<ListPolicyIssuesResponse> =
+export const ListPolicyIssuesResponse: Schema.Codec<ListPolicyIssuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyIssues: Schema.optional(Schema.Array(PolicyIssue)),
     nextPageToken: Schema.optional(Schema.String),
@@ -437,7 +438,7 @@ export interface ListAlertsResponse {
   alerts?: ReadonlyArray<Alert>;
 }
 
-export const ListAlertsResponse: Schema.Schema<ListAlertsResponse> =
+export const ListAlertsResponse: Schema.Codec<ListAlertsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alerts: Schema.optional(Schema.Array(Alert)),
   }).annotate({ identifier: "ListAlertsResponse" });
@@ -459,7 +460,7 @@ export interface Header {
     | (string & {});
 }
 
-export const Header: Schema.Schema<Header> =
+export const Header: Schema.Codec<Header> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -485,7 +486,7 @@ export interface ReportResult {
   endDate?: Adsense_Date;
 }
 
-export const ReportResult: Schema.Schema<ReportResult> =
+export const ReportResult: Schema.Codec<ReportResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalMatchedRows: Schema.optional(Schema.String),
     headers: Schema.optional(Schema.Array(Header)),
@@ -499,7 +500,7 @@ export const ReportResult: Schema.Schema<ReportResult> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -509,7 +510,7 @@ export interface AdUnitAdCode {
   adCode?: string;
 }
 
-export const AdUnitAdCode: Schema.Schema<AdUnitAdCode> =
+export const AdUnitAdCode: Schema.Codec<AdUnitAdCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdUnitAdCode" });
@@ -523,7 +524,7 @@ export interface HttpBody {
   data?: string;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
+export const HttpBody: Schema.Codec<HttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     extensions: Schema.optional(
@@ -548,7 +549,7 @@ export interface AdClient {
     | (string & {});
 }
 
-export const AdClient: Schema.Schema<AdClient> =
+export const AdClient: Schema.Codec<AdClient> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingDimensionId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -563,7 +564,7 @@ export interface AdBlockingRecoveryTag {
   errorProtectionCode?: string;
 }
 
-export const AdBlockingRecoveryTag: Schema.Schema<AdBlockingRecoveryTag> =
+export const AdBlockingRecoveryTag: Schema.Codec<AdBlockingRecoveryTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     errorProtectionCode: Schema.optional(Schema.String),
@@ -576,7 +577,7 @@ export interface ListAdUnitsResponse {
   adUnits?: ReadonlyArray<AdUnit>;
 }
 
-export const ListAdUnitsResponse: Schema.Schema<ListAdUnitsResponse> =
+export const ListAdUnitsResponse: Schema.Codec<ListAdUnitsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     adUnits: Schema.optional(Schema.Array(AdUnit)),
@@ -587,7 +588,7 @@ export interface ListPaymentsResponse {
   payments?: ReadonlyArray<Payment>;
 }
 
-export const ListPaymentsResponse: Schema.Schema<ListPaymentsResponse> =
+export const ListPaymentsResponse: Schema.Codec<ListPaymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     payments: Schema.optional(Schema.Array(Payment)),
   }).annotate({ identifier: "ListPaymentsResponse" });
@@ -599,7 +600,7 @@ export interface ListCustomChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomChannelsResponse: Schema.Schema<ListCustomChannelsResponse> =
+export const ListCustomChannelsResponse: Schema.Codec<ListCustomChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customChannels: Schema.optional(Schema.Array(CustomChannel)),
     nextPageToken: Schema.optional(Schema.String),
@@ -612,7 +613,7 @@ export interface ListAdClientsResponse {
   nextPageToken?: string;
 }
 
-export const ListAdClientsResponse: Schema.Schema<ListAdClientsResponse> =
+export const ListAdClientsResponse: Schema.Codec<ListAdClientsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adClients: Schema.optional(Schema.Array(AdClient)),
     nextPageToken: Schema.optional(Schema.String),
@@ -625,7 +626,7 @@ export interface ListAccountsResponse {
   accounts?: ReadonlyArray<Account>;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
+export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accounts: Schema.optional(Schema.Array(Account)),
@@ -638,7 +639,7 @@ export interface ListLinkedAdUnitsResponse {
   nextPageToken?: string;
 }
 
-export const ListLinkedAdUnitsResponse: Schema.Schema<ListLinkedAdUnitsResponse> =
+export const ListLinkedAdUnitsResponse: Schema.Codec<ListLinkedAdUnitsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adUnits: Schema.optional(Schema.Array(AdUnit)),
     nextPageToken: Schema.optional(Schema.String),
@@ -715,7 +716,7 @@ export const ListChildAccountsAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}:listChildAccounts" }),
     svc,
-  ) as unknown as Schema.Schema<ListChildAccountsAccountsRequest>;
+  ) as unknown as Schema.Codec<ListChildAccountsAccountsRequest>;
 
 export type ListChildAccountsAccountsResponse = ListChildAccountsResponse;
 export const ListChildAccountsAccountsResponse =
@@ -755,7 +756,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/accounts" }),
   svc,
-) as unknown as Schema.Schema<ListAccountsRequest>;
+) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
@@ -790,7 +791,7 @@ export const GetAdBlockingRecoveryTagAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/adBlockingRecoveryTag" }),
     svc,
-  ) as unknown as Schema.Schema<GetAdBlockingRecoveryTagAccountsRequest>;
+  ) as unknown as Schema.Codec<GetAdBlockingRecoveryTagAccountsRequest>;
 
 export type GetAdBlockingRecoveryTagAccountsResponse = AdBlockingRecoveryTag;
 export const GetAdBlockingRecoveryTagAccountsResponse =
@@ -823,7 +824,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetAccountsRequest>;
+) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -859,7 +860,7 @@ export const ListAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/sites" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsSitesRequest>;
 
 export type ListAccountsSitesResponse = ListSitesResponse;
 export const ListAccountsSitesResponse =
@@ -894,7 +895,7 @@ export const GetAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsSitesRequest>;
 
 export type GetAccountsSitesResponse = Site;
 export const GetAccountsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
@@ -924,7 +925,7 @@ export const ListAccountsPaymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/payments" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsPaymentsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsPaymentsRequest>;
 
 export type ListAccountsPaymentsResponse = ListPaymentsResponse;
 export const ListAccountsPaymentsResponse =
@@ -960,7 +961,7 @@ export const ListAccountsAlertsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/alerts" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsAlertsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsAlertsRequest>;
 
 export type ListAccountsAlertsResponse = ListAlertsResponse;
 export const ListAccountsAlertsResponse =
@@ -991,7 +992,7 @@ export const GetAccountsPolicyIssuesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsPolicyIssuesRequest>;
+  ) as unknown as Schema.Codec<GetAccountsPolicyIssuesRequest>;
 
 export type GetAccountsPolicyIssuesResponse = PolicyIssue;
 export const GetAccountsPolicyIssuesResponse =
@@ -1028,7 +1029,7 @@ export const ListAccountsPolicyIssuesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/policyIssues" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsPolicyIssuesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsPolicyIssuesRequest>;
 
 export type ListAccountsPolicyIssuesResponse = ListPolicyIssuesResponse;
 export const ListAccountsPolicyIssuesResponse =
@@ -1066,7 +1067,7 @@ export const GetAccountsAdclientsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsAdclientsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsAdclientsRequest>;
 
 export type GetAccountsAdclientsResponse = AdClient;
 export const GetAccountsAdclientsResponse =
@@ -1097,7 +1098,7 @@ export const GetAdcodeAccountsAdclientsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/adcode" }),
     svc,
-  ) as unknown as Schema.Schema<GetAdcodeAccountsAdclientsRequest>;
+  ) as unknown as Schema.Codec<GetAdcodeAccountsAdclientsRequest>;
 
 export type GetAdcodeAccountsAdclientsResponse = AdClientAdCode;
 export const GetAdcodeAccountsAdclientsResponse =
@@ -1137,7 +1138,7 @@ export const ListAccountsAdclientsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/adclients" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsAdclientsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsAdclientsRequest>;
 
 export type ListAccountsAdclientsResponse = ListAdClientsResponse;
 export const ListAccountsAdclientsResponse =
@@ -1172,7 +1173,7 @@ export const GetAccountsAdclientsAdunitsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsAdclientsAdunitsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsAdclientsAdunitsRequest>;
 
 export type GetAccountsAdclientsAdunitsResponse = AdUnit;
 export const GetAccountsAdclientsAdunitsResponse =
@@ -1212,7 +1213,7 @@ export const ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}:listLinkedCustomChannels" }),
     svc,
-  ) as unknown as Schema.Schema<ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest>;
+  ) as unknown as Schema.Codec<ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest>;
 
 export type ListLinkedCustomChannelsAccountsAdclientsAdunitsResponse =
   ListLinkedCustomChannelsResponse;
@@ -1257,7 +1258,7 @@ export const ListAccountsAdclientsAdunitsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/adunits" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsAdclientsAdunitsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsAdclientsAdunitsRequest>;
 
 export type ListAccountsAdclientsAdunitsResponse = ListAdUnitsResponse;
 export const ListAccountsAdclientsAdunitsResponse =
@@ -1301,7 +1302,7 @@ export const PatchAccountsAdclientsAdunitsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsAdclientsAdunitsRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsAdclientsAdunitsRequest>;
 
 export type PatchAccountsAdclientsAdunitsResponse = AdUnit;
 export const PatchAccountsAdclientsAdunitsResponse =
@@ -1340,7 +1341,7 @@ export const CreateAccountsAdclientsAdunitsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/adunits", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsAdclientsAdunitsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsAdclientsAdunitsRequest>;
 
 export type CreateAccountsAdclientsAdunitsResponse = AdUnit;
 export const CreateAccountsAdclientsAdunitsResponse =
@@ -1376,7 +1377,7 @@ export const GetAdcodeAccountsAdclientsAdunitsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/adcode" }),
     svc,
-  ) as unknown as Schema.Schema<GetAdcodeAccountsAdclientsAdunitsRequest>;
+  ) as unknown as Schema.Codec<GetAdcodeAccountsAdclientsAdunitsRequest>;
 
 export type GetAdcodeAccountsAdclientsAdunitsResponse = AdUnitAdCode;
 export const GetAdcodeAccountsAdclientsAdunitsResponse =
@@ -1416,7 +1417,7 @@ export const ListAccountsAdclientsCustomchannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/customchannels" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsAdclientsCustomchannelsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsAdclientsCustomchannelsRequest>;
 
 export type ListAccountsAdclientsCustomchannelsResponse =
   ListCustomChannelsResponse;
@@ -1455,7 +1456,7 @@ export const GetAccountsAdclientsCustomchannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsAdclientsCustomchannelsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsAdclientsCustomchannelsRequest>;
 
 export type GetAccountsAdclientsCustomchannelsResponse = CustomChannel;
 export const GetAccountsAdclientsCustomchannelsResponse =
@@ -1489,7 +1490,7 @@ export const DeleteAccountsAdclientsCustomchannelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsAdclientsCustomchannelsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsAdclientsCustomchannelsRequest>;
 
 export type DeleteAccountsAdclientsCustomchannelsResponse = Empty;
 export const DeleteAccountsAdclientsCustomchannelsResponse =
@@ -1531,7 +1532,7 @@ export const ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}:listLinkedAdUnits" }),
     svc,
-  ) as unknown as Schema.Schema<ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest>;
+  ) as unknown as Schema.Codec<ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest>;
 
 export type ListLinkedAdUnitsAccountsAdclientsCustomchannelsResponse =
   ListLinkedAdUnitsResponse;
@@ -1576,7 +1577,7 @@ export const PatchAccountsAdclientsCustomchannelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsAdclientsCustomchannelsRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsAdclientsCustomchannelsRequest>;
 
 export type PatchAccountsAdclientsCustomchannelsResponse = CustomChannel;
 export const PatchAccountsAdclientsCustomchannelsResponse =
@@ -1619,7 +1620,7 @@ export const CreateAccountsAdclientsCustomchannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsAdclientsCustomchannelsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsAdclientsCustomchannelsRequest>;
 
 export type CreateAccountsAdclientsCustomchannelsResponse = CustomChannel;
 export const CreateAccountsAdclientsCustomchannelsResponse =
@@ -1655,7 +1656,7 @@ export const GetAccountsAdclientsUrlchannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsAdclientsUrlchannelsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsAdclientsUrlchannelsRequest>;
 
 export type GetAccountsAdclientsUrlchannelsResponse = UrlChannel;
 export const GetAccountsAdclientsUrlchannelsResponse =
@@ -1695,7 +1696,7 @@ export const ListAccountsAdclientsUrlchannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/urlchannels" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsAdclientsUrlchannelsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsAdclientsUrlchannelsRequest>;
 
 export type ListAccountsAdclientsUrlchannelsResponse = ListUrlChannelsResponse;
 export const ListAccountsAdclientsUrlchannelsResponse =
@@ -1733,7 +1734,7 @@ export const GetSavedAccountsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/saved" }),
     svc,
-  ) as unknown as Schema.Schema<GetSavedAccountsReportsRequest>;
+  ) as unknown as Schema.Codec<GetSavedAccountsReportsRequest>;
 
 export type GetSavedAccountsReportsResponse = SavedReport;
 export const GetSavedAccountsReportsResponse =
@@ -1944,7 +1945,7 @@ export const GenerateCsvAccountsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+account}/reports:generateCsv" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateCsvAccountsReportsRequest>;
+  ) as unknown as Schema.Codec<GenerateCsvAccountsReportsRequest>;
 
 export type GenerateCsvAccountsReportsResponse = HttpBody;
 export const GenerateCsvAccountsReportsResponse =
@@ -2158,7 +2159,7 @@ export const GenerateAccountsReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+account}/reports:generate" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateAccountsReportsRequest>;
+  ) as unknown as Schema.Codec<GenerateAccountsReportsRequest>;
 
 export type GenerateAccountsReportsResponse = ReportResult;
 export const GenerateAccountsReportsResponse =
@@ -2250,7 +2251,7 @@ export const GenerateAccountsReportsSavedRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/saved:generate" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateAccountsReportsSavedRequest>;
+  ) as unknown as Schema.Codec<GenerateAccountsReportsSavedRequest>;
 
 export type GenerateAccountsReportsSavedResponse = ReportResult;
 export const GenerateAccountsReportsSavedResponse =
@@ -2345,7 +2346,7 @@ export const GenerateCsvAccountsReportsSavedRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/saved:generateCsv" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateCsvAccountsReportsSavedRequest>;
+  ) as unknown as Schema.Codec<GenerateCsvAccountsReportsSavedRequest>;
 
 export type GenerateCsvAccountsReportsSavedResponse = HttpBody;
 export const GenerateCsvAccountsReportsSavedResponse =
@@ -2385,7 +2386,7 @@ export const ListAccountsReportsSavedRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/reports/saved" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsReportsSavedRequest>;
+  ) as unknown as Schema.Codec<ListAccountsReportsSavedRequest>;
 
 export type ListAccountsReportsSavedResponse = ListSavedReportsResponse;
 export const ListAccountsReportsSavedResponse =

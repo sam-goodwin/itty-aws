@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface Bucket {
   name?: string;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
+export const Bucket: Schema.Codec<Bucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Bucket" });
@@ -43,7 +43,7 @@ export interface DefaultBucket {
   name?: string;
 }
 
-export const DefaultBucket: Schema.Schema<DefaultBucket> =
+export const DefaultBucket: Schema.Codec<DefaultBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     bucket: Schema.optional(Bucket),
@@ -53,7 +53,7 @@ export const DefaultBucket: Schema.Schema<DefaultBucket> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -65,7 +65,7 @@ export interface ListBucketsResponse {
   nextPageToken?: string;
 }
 
-export const ListBucketsResponse: Schema.Schema<ListBucketsResponse> =
+export const ListBucketsResponse: Schema.Codec<ListBucketsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buckets: Schema.optional(Schema.Array(Bucket)),
     nextPageToken: Schema.optional(Schema.String),
@@ -73,14 +73,14 @@ export const ListBucketsResponse: Schema.Schema<ListBucketsResponse> =
 
 export interface AddFirebaseRequest {}
 
-export const AddFirebaseRequest: Schema.Schema<AddFirebaseRequest> =
+export const AddFirebaseRequest: Schema.Codec<AddFirebaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddFirebaseRequest",
   });
 
 export interface RemoveFirebaseRequest {}
 
-export const RemoveFirebaseRequest: Schema.Schema<RemoveFirebaseRequest> =
+export const RemoveFirebaseRequest: Schema.Codec<RemoveFirebaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveFirebaseRequest",
   });
@@ -150,7 +150,7 @@ export const GetDefaultBucketProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDefaultBucketProjectsRequest>;
+  ) as unknown as Schema.Codec<GetDefaultBucketProjectsRequest>;
 
 export type GetDefaultBucketProjectsResponse = DefaultBucket;
 export const GetDefaultBucketProjectsResponse =
@@ -184,7 +184,7 @@ export const DeleteDefaultBucketProjectsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDefaultBucketProjectsRequest>;
+  ) as unknown as Schema.Codec<DeleteDefaultBucketProjectsRequest>;
 
 export type DeleteDefaultBucketProjectsResponse = Empty;
 export const DeleteDefaultBucketProjectsResponse =
@@ -226,7 +226,7 @@ export const ListProjectsBucketsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/buckets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsBucketsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsBucketsRequest>;
 
 export type ListProjectsBucketsResponse = ListBucketsResponse;
 export const ListProjectsBucketsResponse =
@@ -268,7 +268,7 @@ export const AddFirebaseProjectsBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddFirebaseProjectsBucketsRequest>;
+  ) as unknown as Schema.Codec<AddFirebaseProjectsBucketsRequest>;
 
 export type AddFirebaseProjectsBucketsResponse = Bucket;
 export const AddFirebaseProjectsBucketsResponse =
@@ -304,7 +304,7 @@ export const GetProjectsBucketsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsBucketsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsBucketsRequest>;
 
 export type GetProjectsBucketsResponse = Bucket;
 export const GetProjectsBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
@@ -341,7 +341,7 @@ export const RemoveFirebaseProjectsBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveFirebaseProjectsBucketsRequest>;
+  ) as unknown as Schema.Codec<RemoveFirebaseProjectsBucketsRequest>;
 
 export type RemoveFirebaseProjectsBucketsResponse = Empty;
 export const RemoveFirebaseProjectsBucketsResponse =
@@ -384,7 +384,7 @@ export const CreateProjectsDefaultBucketRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDefaultBucketRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDefaultBucketRequest>;
 
 export type CreateProjectsDefaultBucketResponse = DefaultBucket;
 export const CreateProjectsDefaultBucketResponse =

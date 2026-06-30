@@ -9,16 +9,33 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRolesControllerUpdateInput {
+  slug: string;
+  name?: string;
+  description?: string | null;
+}
 export const AuthorizationRolesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "PATCH", path: "/authorization/roles/{slug}" }));
-export type AuthorizationRolesControllerUpdateInput =
-  typeof AuthorizationRolesControllerUpdateInput.Type;
+  }).pipe(
+    T.Http({ method: "PATCH", path: "/authorization/roles/{slug}" }),
+  ) as unknown as Schema.Codec<AuthorizationRolesControllerUpdateInput>;
 
 // Output Schema
+export interface AuthorizationRolesControllerUpdateOutput {
+  slug: string;
+  object: string;
+  id: string;
+  name: string;
+  description: string | null;
+  type: "EnvironmentRole" | "OrganizationRole";
+  resource_type_slug: string;
+  permissions: string[];
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationRolesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String,
@@ -31,9 +48,7 @@ export const AuthorizationRolesControllerUpdateOutput =
     permissions: Schema.Array(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationRolesControllerUpdateOutput =
-  typeof AuthorizationRolesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationRolesControllerUpdateOutput>;
 
 // The operation
 /**

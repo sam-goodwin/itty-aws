@@ -4,6 +4,42 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InvitesCreateInput {
+  organization_id: string;
+  id?: string;
+  target_email?: string;
+  first_name?: string;
+  emailing_attempt_made?: boolean;
+  level?: 1 | 8 | 15;
+  is_expired?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  message?: string | null;
+  private_project_access?: unknown;
+  send_email?: boolean;
+  combine_pending_invites?: boolean;
+}
 export const InvitesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
@@ -25,7 +61,23 @@ export const InvitesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -40,10 +92,44 @@ export const InvitesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/api/organizations/{organization_id}/invites/",
   }),
-);
-export type InvitesCreateInput = typeof InvitesCreateInput.Type;
+) as unknown as Schema.Codec<InvitesCreateInput>;
 
 // Output Schema
+export interface InvitesCreateOutput {
+  id?: string;
+  target_email?: string;
+  first_name?: string;
+  emailing_attempt_made?: boolean;
+  level?: 1 | 8 | 15;
+  is_expired?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  message?: string | null;
+  private_project_access?: unknown;
+  send_email?: boolean;
+  combine_pending_invites?: boolean;
+}
 export const InvitesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   target_email: Schema.optional(Schema.String),
@@ -64,7 +150,23 @@ export const InvitesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -74,8 +176,7 @@ export const InvitesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   private_project_access: Schema.optional(Schema.Unknown),
   send_email: Schema.optional(Schema.Boolean),
   combine_pending_invites: Schema.optional(Schema.Boolean),
-});
-export type InvitesCreateOutput = typeof InvitesCreateOutput.Type;
+}) as unknown as Schema.Codec<InvitesCreateOutput>;
 
 // The operation
 /**

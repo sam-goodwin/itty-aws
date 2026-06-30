@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface FieldValueSelectionValue {
   displayName?: string;
 }
 
-export const FieldValueSelectionValue: Schema.Schema<FieldValueSelectionValue> =
+export const FieldValueSelectionValue: Schema.Codec<FieldValueSelectionValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     badged: Schema.optional(Schema.Boolean),
@@ -43,7 +43,7 @@ export interface FieldValueUserValue {
   email?: string;
 }
 
-export const FieldValueUserValue: Schema.Schema<FieldValueUserValue> =
+export const FieldValueUserValue: Schema.Codec<FieldValueUserValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).annotate({ identifier: "FieldValueUserValue" });
@@ -53,7 +53,7 @@ export interface CustomerIdentity {
   id?: string;
 }
 
-export const CustomerIdentity: Schema.Schema<CustomerIdentity> =
+export const CustomerIdentity: Schema.Codec<CustomerIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerIdentity" });
@@ -65,7 +65,7 @@ export interface UserIdentity {
   userEmail?: string;
 }
 
-export const UserIdentity: Schema.Schema<UserIdentity> =
+export const UserIdentity: Schema.Codec<UserIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     userEmail: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export interface GroupIdentity {
   id?: string;
 }
 
-export const GroupIdentity: Schema.Schema<GroupIdentity> =
+export const GroupIdentity: Schema.Codec<GroupIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupEmail: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -93,7 +93,7 @@ export interface OwnerIdentity {
   groupIdentity?: GroupIdentity;
 }
 
-export const OwnerIdentity: Schema.Schema<OwnerIdentity> =
+export const OwnerIdentity: Schema.Codec<OwnerIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerIdentity: Schema.optional(CustomerIdentity),
     userIdentity: Schema.optional(UserIdentity),
@@ -107,7 +107,7 @@ export interface OwnerDetails {
   ownerIdentity?: ReadonlyArray<OwnerIdentity>;
 }
 
-export const OwnerDetails: Schema.Schema<OwnerDetails> =
+export const OwnerDetails: Schema.Codec<OwnerDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ownerType: Schema.optional(Schema.String),
     ownerIdentity: Schema.optional(Schema.Array(OwnerIdentity)),
@@ -124,7 +124,7 @@ export interface ActivityEventsStatus {
   httpStatusCode?: number;
 }
 
-export const ActivityEventsStatus: Schema.Schema<ActivityEventsStatus> =
+export const ActivityEventsStatus: Schema.Codec<ActivityEventsStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -158,7 +158,7 @@ export interface UsageReport {
   date?: string;
 }
 
-export const UsageReport: Schema.Schema<UsageReport> =
+export const UsageReport: Schema.Codec<UsageReport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -205,7 +205,7 @@ export interface NestedParameter {
   name?: string;
 }
 
-export const NestedParameter: Schema.Schema<NestedParameter> =
+export const NestedParameter: Schema.Codec<NestedParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     multiIntValue: Schema.optional(Schema.Array(Schema.String)),
@@ -225,7 +225,7 @@ export interface ActivityNetworkInfo {
   subdivisionCode?: string;
 }
 
-export const ActivityNetworkInfo: Schema.Schema<ActivityNetworkInfo> =
+export const ActivityNetworkInfo: Schema.Codec<ActivityNetworkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     ipAsn: Schema.optional(Schema.Array(Schema.Number)),
@@ -237,7 +237,7 @@ export interface FieldValueTextListValue {
   values?: ReadonlyArray<string>;
 }
 
-export const FieldValueTextListValue: Schema.Schema<FieldValueTextListValue> =
+export const FieldValueTextListValue: Schema.Codec<FieldValueTextListValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "FieldValueTextListValue" });
@@ -251,7 +251,7 @@ export interface Admin_Date {
   month?: number;
 }
 
-export const Admin_Date: Schema.Schema<Admin_Date> =
+export const Admin_Date: Schema.Codec<Admin_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -263,7 +263,7 @@ export interface Reason {
   reasonType?: string;
 }
 
-export const Reason: Schema.Schema<Reason> =
+export const Reason: Schema.Codec<Reason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reasonType: Schema.optional(Schema.String),
   }).annotate({ identifier: "Reason" });
@@ -273,7 +273,7 @@ export interface FieldValueSelectionListValue {
   values?: ReadonlyArray<FieldValueSelectionValue>;
 }
 
-export const FieldValueSelectionListValue: Schema.Schema<FieldValueSelectionListValue> =
+export const FieldValueSelectionListValue: Schema.Codec<FieldValueSelectionListValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(FieldValueSelectionValue)),
   }).annotate({ identifier: "FieldValueSelectionListValue" });
@@ -283,7 +283,7 @@ export interface FieldValueUserListValue {
   values?: ReadonlyArray<FieldValueUserValue>;
 }
 
-export const FieldValueUserListValue: Schema.Schema<FieldValueUserListValue> =
+export const FieldValueUserListValue: Schema.Codec<FieldValueUserListValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(FieldValueUserValue)),
   }).annotate({ identifier: "FieldValueUserListValue" });
@@ -319,7 +319,7 @@ export interface FieldValue {
   unsetValue?: boolean;
 }
 
-export const FieldValue: Schema.Schema<FieldValue> =
+export const FieldValue: Schema.Codec<FieldValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     textListValue: Schema.optional(FieldValueTextListValue),
@@ -348,7 +348,7 @@ export interface AppliedLabel {
   reason?: Reason;
 }
 
-export const AppliedLabel: Schema.Schema<AppliedLabel> =
+export const AppliedLabel: Schema.Codec<AppliedLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -371,7 +371,7 @@ export interface ResourceDetails {
   appliedLabels?: ReadonlyArray<AppliedLabel>;
 }
 
-export const ResourceDetails: Schema.Schema<ResourceDetails> =
+export const ResourceDetails: Schema.Codec<ResourceDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ownerDetails: Schema.optional(OwnerDetails),
     relation: Schema.optional(Schema.String),
@@ -446,7 +446,7 @@ export interface Activity {
   };
 }
 
-export const Activity: Schema.Schema<Activity> =
+export const Activity: Schema.Codec<Activity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     events: Schema.optional(
@@ -519,7 +519,7 @@ export const Activity: Schema.Schema<Activity> =
         applicationName: Schema.optional(Schema.String),
       }),
     ),
-  }).annotate({ identifier: "Activity" }) as any as Schema.Schema<Activity>;
+  }).annotate({ identifier: "Activity" }) as any as Schema.Codec<Activity>;
 
 export interface Activities {
   /** ETag of the resource. */
@@ -532,7 +532,7 @@ export interface Activities {
   items?: ReadonlyArray<Activity>;
 }
 
-export const Activities: Schema.Schema<Activities> =
+export const Activities: Schema.Codec<Activities> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -563,7 +563,7 @@ export interface Channel {
   expiration?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -594,7 +594,7 @@ export interface UsageReports {
   etag?: string;
 }
 
-export const UsageReports: Schema.Schema<UsageReports> =
+export const UsageReports: Schema.Codec<UsageReports> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     warnings: Schema.optional(
@@ -692,7 +692,7 @@ export const GetCustomerUsageReportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "admin/reports/v1/usage/dates/{date}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomerUsageReportsRequest>;
+  ) as unknown as Schema.Codec<GetCustomerUsageReportsRequest>;
 
 export type GetCustomerUsageReportsResponse = UsageReports;
 export const GetCustomerUsageReportsResponse =
@@ -832,7 +832,7 @@ export const ListActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}",
   }),
   svc,
-) as unknown as Schema.Schema<ListActivitiesRequest>;
+) as unknown as Schema.Codec<ListActivitiesRequest>;
 
 export type ListActivitiesResponse = Activities;
 export const ListActivitiesResponse = /*@__PURE__*/ /*#__PURE__*/ Activities;
@@ -935,7 +935,7 @@ export const WatchActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<WatchActivitiesRequest>;
+) as unknown as Schema.Codec<WatchActivitiesRequest>;
 
 export type WatchActivitiesResponse = Channel;
 export const WatchActivitiesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -973,13 +973,13 @@ export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<StopChannelsRequest>;
+) as unknown as Schema.Codec<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
+export const StopChannelsResponse: Schema.Codec<StopChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<StopChannelsResponse>;
+  ) as any as Schema.Codec<StopChannelsResponse>;
 
 export type StopChannelsError =
   | DefaultErrors
@@ -1040,7 +1040,7 @@ export const GetUserUsageReportRequest =
       path: "admin/reports/v1/usage/users/{userKey}/dates/{date}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUserUsageReportRequest>;
+  ) as unknown as Schema.Codec<GetUserUsageReportRequest>;
 
 export type GetUserUsageReportResponse = UsageReports;
 export const GetUserUsageReportResponse =
@@ -1099,7 +1099,7 @@ export const GetEntityUsageReportsRequest =
       path: "admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetEntityUsageReportsRequest>;
+  ) as unknown as Schema.Codec<GetEntityUsageReportsRequest>;
 
 export type GetEntityUsageReportsResponse = UsageReports;
 export const GetEntityUsageReportsResponse =

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateOrgSettingsInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateOrgSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     orgId: Schema.String.pipe(T.PathParam()),
@@ -12,12 +17,12 @@ export const UpdateOrgSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ).pipe(
   T.Http({ method: "PATCH", path: "/api/atlas/v2/orgs/{orgId}/settings" }),
-);
-export type UpdateOrgSettingsInput = typeof UpdateOrgSettingsInput.Type;
+) as unknown as Schema.Codec<UpdateOrgSettingsInput>;
 
 // Output Schema
-export const UpdateOrgSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateOrgSettingsOutput = typeof UpdateOrgSettingsOutput.Type;
+export type UpdateOrgSettingsOutput = void;
+export const UpdateOrgSettingsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateOrgSettingsOutput>;
 
 // The operation
 /**

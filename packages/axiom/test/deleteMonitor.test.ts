@@ -38,7 +38,7 @@ describe("deleteMonitor", () => {
           notifierIds: [],
           alertOnNoData: false,
           resolvable: true,
-        } as unknown as Record<string, never>);
+        });
 
         createdMonitorId = created.id;
 
@@ -70,7 +70,7 @@ describe("deleteMonitor", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -86,6 +86,6 @@ describe("deleteMonitor", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

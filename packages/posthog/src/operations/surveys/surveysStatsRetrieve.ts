@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SurveysStatsRetrieveInput {
+  id: string;
+  project_id: string;
+  date_from?: string;
+  date_to?: string;
+  include_per_question_stats?: boolean;
+}
 export const SurveysStatsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -16,10 +23,17 @@ export const SurveysStatsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/surveys/{id}/stats/",
     }),
-  );
-export type SurveysStatsRetrieveInput = typeof SurveysStatsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SurveysStatsRetrieveInput>;
 
 // Output Schema
+export interface SurveysStatsRetrieveOutput {
+  survey_id?: string;
+  start_date?: string | null;
+  end_date?: string | null;
+  stats?: Record<string, unknown>;
+  rates?: Record<string, unknown>;
+  per_question_stats?: unknown[];
+}
 export const SurveysStatsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     survey_id: Schema.optional(Schema.String),
@@ -28,8 +42,7 @@ export const SurveysStatsRetrieveOutput =
     stats: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     rates: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     per_question_stats: Schema.optional(Schema.Array(Schema.Unknown)),
-  });
-export type SurveysStatsRetrieveOutput = typeof SurveysStatsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SurveysStatsRetrieveOutput>;
 
 // The operation
 /**

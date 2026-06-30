@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExternalDataSourcesCheckCdcPrerequisitesCreateInput {
+  project_id: string;
+}
 export const ExternalDataSourcesCheckCdcPrerequisitesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,18 +15,18 @@ export const ExternalDataSourcesCheckCdcPrerequisitesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/external_data_sources/check_cdc_prerequisites/",
     }),
-  );
-export type ExternalDataSourcesCheckCdcPrerequisitesCreateInput =
-  typeof ExternalDataSourcesCheckCdcPrerequisitesCreateInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSourcesCheckCdcPrerequisitesCreateInput>;
 
 // Output Schema
+export interface ExternalDataSourcesCheckCdcPrerequisitesCreateOutput {
+  valid?: boolean;
+  errors?: string[];
+}
 export const ExternalDataSourcesCheckCdcPrerequisitesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valid: Schema.optional(Schema.Boolean),
     errors: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ExternalDataSourcesCheckCdcPrerequisitesCreateOutput =
-  typeof ExternalDataSourcesCheckCdcPrerequisitesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalDataSourcesCheckCdcPrerequisitesCreateOutput>;
 
 // The operation
 /**

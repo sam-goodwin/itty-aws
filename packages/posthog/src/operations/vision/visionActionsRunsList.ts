@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisionActionsRunsListInput {
+  project_id: string;
+  vision_action_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const VisionActionsRunsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,24 @@ export const VisionActionsRunsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/vision/actions/{vision_action_id}/runs/",
     }),
-  );
-export type VisionActionsRunsListInput = typeof VisionActionsRunsListInput.Type;
+  ) as unknown as Schema.Codec<VisionActionsRunsListInput>;
 
 // Output Schema
+export interface VisionActionsRunsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    status: "running" | "completed" | "failed" | "skipped";
+    scheduled_at: string | null;
+    observation_count: number;
+    synthesized_markdown: string;
+    error_reason: string | null;
+    created_at: string;
+    updated_at: string;
+  }[];
+}
 export const VisionActionsRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -35,9 +55,7 @@ export const VisionActionsRunsListOutput =
         updated_at: Schema.String,
       }),
     ),
-  });
-export type VisionActionsRunsListOutput =
-  typeof VisionActionsRunsListOutput.Type;
+  }) as unknown as Schema.Codec<VisionActionsRunsListOutput>;
 
 // The operation
 /**

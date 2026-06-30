@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface ListAlertConfigMatcherFieldNamesInput {
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListAlertConfigMatcherFieldNamesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     envelope: Schema.optional(Schema.Boolean),
@@ -13,15 +17,12 @@ export const ListAlertConfigMatcherFieldNamesInput =
       method: "GET",
       path: "/api/atlas/v2/alertConfigs/matchers/fieldNames",
     }),
-  );
-export type ListAlertConfigMatcherFieldNamesInput =
-  typeof ListAlertConfigMatcherFieldNamesInput.Type;
+  ) as unknown as Schema.Codec<ListAlertConfigMatcherFieldNamesInput>;
 
 // Output Schema
+export type ListAlertConfigMatcherFieldNamesOutput = void;
 export const ListAlertConfigMatcherFieldNamesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListAlertConfigMatcherFieldNamesOutput =
-  typeof ListAlertConfigMatcherFieldNamesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListAlertConfigMatcherFieldNamesOutput>;
 
 // The operation
 /**

@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetBackupScheduleInput {
+  ref: string;
+}
 export const V1GetBackupScheduleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,16 +15,18 @@ export const V1GetBackupScheduleInput =
       method: "GET",
       path: "/v1/projects/{ref}/database/backups/schedule",
     }),
-  );
-export type V1GetBackupScheduleInput = typeof V1GetBackupScheduleInput.Type;
+  ) as unknown as Schema.Codec<V1GetBackupScheduleInput>;
 
 // Output Schema
+export interface V1GetBackupScheduleOutput {
+  schedule_for: string;
+  updated_at: string;
+}
 export const V1GetBackupScheduleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schedule_for: Schema.String,
     updated_at: Schema.String,
-  });
-export type V1GetBackupScheduleOutput = typeof V1GetBackupScheduleOutput.Type;
+  }) as unknown as Schema.Codec<V1GetBackupScheduleOutput>;
 
 // The operation
 /**

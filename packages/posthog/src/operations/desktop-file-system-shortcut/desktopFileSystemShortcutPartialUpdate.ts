@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemShortcutPartialUpdateInput {
+  id: string;
+  project_id: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const DesktopFileSystemShortcutPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +28,18 @@ export const DesktopFileSystemShortcutPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/desktop_file_system_shortcut/{id}/",
     }),
-  );
-export type DesktopFileSystemShortcutPartialUpdateInput =
-  typeof DesktopFileSystemShortcutPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemShortcutPartialUpdateInput>;
 
 // Output Schema
+export interface DesktopFileSystemShortcutPartialUpdateOutput {
+  id?: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const DesktopFileSystemShortcutPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -32,9 +49,7 @@ export const DesktopFileSystemShortcutPartialUpdateOutput =
     href: Schema.optional(Schema.NullOr(Schema.String)),
     order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
-  });
-export type DesktopFileSystemShortcutPartialUpdateOutput =
-  typeof DesktopFileSystemShortcutPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemShortcutPartialUpdateOutput>;
 
 // The operation
 /**

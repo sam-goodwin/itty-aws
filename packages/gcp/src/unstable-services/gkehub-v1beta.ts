@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface Role {
     | (string & {});
 }
 
-export const Role: Schema.Schema<Role> =
+export const Role: Schema.Codec<Role> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customRole: Schema.optional(Schema.String),
     predefinedRole: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface RBACRoleBindingLifecycleState {
     | (string & {});
 }
 
-export const RBACRoleBindingLifecycleState: Schema.Schema<RBACRoleBindingLifecycleState> =
+export const RBACRoleBindingLifecycleState: Schema.Codec<RBACRoleBindingLifecycleState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "RBACRoleBindingLifecycleState" });
@@ -80,7 +80,7 @@ export interface RBACRoleBinding {
   state?: RBACRoleBindingLifecycleState;
 }
 
-export const RBACRoleBinding: Schema.Schema<RBACRoleBinding> =
+export const RBACRoleBinding: Schema.Codec<RBACRoleBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     role: Schema.optional(Role),
@@ -101,7 +101,7 @@ export interface ListScopeRBACRoleBindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListScopeRBACRoleBindingsResponse: Schema.Schema<ListScopeRBACRoleBindingsResponse> =
+export const ListScopeRBACRoleBindingsResponse: Schema.Codec<ListScopeRBACRoleBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rbacrolebindings: Schema.optional(Schema.Array(RBACRoleBinding)),
     nextPageToken: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface ConfigManagementBinauthzVersion {
   webhookVersion?: string;
 }
 
-export const ConfigManagementBinauthzVersion: Schema.Schema<ConfigManagementBinauthzVersion> =
+export const ConfigManagementBinauthzVersion: Schema.Codec<ConfigManagementBinauthzVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webhookVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigManagementBinauthzVersion" });
@@ -134,7 +134,7 @@ export interface SecurityPostureConfig {
     | (string & {});
 }
 
-export const SecurityPostureConfig: Schema.Schema<SecurityPostureConfig> =
+export const SecurityPostureConfig: Schema.Codec<SecurityPostureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vulnerabilityMode: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.String),
@@ -145,7 +145,7 @@ export interface PolicyBinding {
   name?: string;
 }
 
-export const PolicyBinding: Schema.Schema<PolicyBinding> =
+export const PolicyBinding: Schema.Codec<PolicyBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "PolicyBinding" });
@@ -161,7 +161,7 @@ export interface BinaryAuthorizationConfig {
   policyBindings?: ReadonlyArray<PolicyBinding>;
 }
 
-export const BinaryAuthorizationConfig: Schema.Schema<BinaryAuthorizationConfig> =
+export const BinaryAuthorizationConfig: Schema.Codec<BinaryAuthorizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationMode: Schema.optional(Schema.String),
     policyBindings: Schema.optional(Schema.Array(PolicyBinding)),
@@ -172,7 +172,7 @@ export interface ComplianceStandard {
   standard?: string;
 }
 
-export const ComplianceStandard: Schema.Schema<ComplianceStandard> =
+export const ComplianceStandard: Schema.Codec<ComplianceStandard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standard: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComplianceStandard" });
@@ -184,7 +184,7 @@ export interface CompliancePostureConfig {
   complianceStandards?: ReadonlyArray<ComplianceStandard>;
 }
 
-export const CompliancePostureConfig: Schema.Schema<CompliancePostureConfig> =
+export const CompliancePostureConfig: Schema.Codec<CompliancePostureConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
     complianceStandards: Schema.optional(Schema.Array(ComplianceStandard)),
@@ -199,7 +199,7 @@ export interface DefaultClusterConfig {
   compliancePostureConfig?: CompliancePostureConfig;
 }
 
-export const DefaultClusterConfig: Schema.Schema<DefaultClusterConfig> =
+export const DefaultClusterConfig: Schema.Codec<DefaultClusterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityPostureConfig: Schema.optional(SecurityPostureConfig),
     binaryAuthorizationConfig: Schema.optional(BinaryAuthorizationConfig),
@@ -219,7 +219,7 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     locationId: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -248,7 +248,7 @@ export interface Status {
   description?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export interface AppDevExperienceFeatureState {
   networkingInstallSucceeded?: Status;
 }
 
-export const AppDevExperienceFeatureState: Schema.Schema<AppDevExperienceFeatureState> =
+export const AppDevExperienceFeatureState: Schema.Codec<AppDevExperienceFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkingInstallSucceeded: Schema.optional(Status),
   }).annotate({ identifier: "AppDevExperienceFeatureState" });
@@ -271,7 +271,7 @@ export interface ServiceMeshStatusDetails {
   details?: string;
 }
 
-export const ServiceMeshStatusDetails: Schema.Schema<ServiceMeshStatusDetails> =
+export const ServiceMeshStatusDetails: Schema.Codec<ServiceMeshStatusDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     details: Schema.optional(Schema.String),
@@ -308,7 +308,7 @@ export interface IdentityServiceOidcConfig {
   deployCloudConsoleProxy?: boolean;
 }
 
-export const IdentityServiceOidcConfig: Schema.Schema<IdentityServiceOidcConfig> =
+export const IdentityServiceOidcConfig: Schema.Codec<IdentityServiceOidcConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kubectlRedirectUri: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.String),
@@ -328,7 +328,7 @@ export const IdentityServiceOidcConfig: Schema.Schema<IdentityServiceOidcConfig>
 
 export interface ScopeFeatureSpec {}
 
-export const ScopeFeatureSpec: Schema.Schema<ScopeFeatureSpec> =
+export const ScopeFeatureSpec: Schema.Codec<ScopeFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ScopeFeatureSpec",
   });
@@ -344,7 +344,7 @@ export interface NamespaceLifecycleState {
     | (string & {});
 }
 
-export const NamespaceLifecycleState: Schema.Schema<NamespaceLifecycleState> =
+export const NamespaceLifecycleState: Schema.Codec<NamespaceLifecycleState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "NamespaceLifecycleState" });
@@ -370,7 +370,7 @@ export interface Namespace {
   name?: string;
 }
 
-export const Namespace: Schema.Schema<Namespace> =
+export const Namespace: Schema.Codec<Namespace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     state: Schema.optional(NamespaceLifecycleState),
@@ -394,7 +394,7 @@ export interface IdentityServiceSimpleBindCredentials {
   password?: string;
 }
 
-export const IdentityServiceSimpleBindCredentials: Schema.Schema<IdentityServiceSimpleBindCredentials> =
+export const IdentityServiceSimpleBindCredentials: Schema.Codec<IdentityServiceSimpleBindCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptedPassword: Schema.optional(Schema.String),
     dn: Schema.optional(Schema.String),
@@ -406,7 +406,7 @@ export interface IdentityServiceServiceAccountConfig {
   simpleBindCredentials?: IdentityServiceSimpleBindCredentials;
 }
 
-export const IdentityServiceServiceAccountConfig: Schema.Schema<IdentityServiceServiceAccountConfig> =
+export const IdentityServiceServiceAccountConfig: Schema.Codec<IdentityServiceServiceAccountConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     simpleBindCredentials: Schema.optional(
       IdentityServiceSimpleBindCredentials,
@@ -420,7 +420,7 @@ export interface ClusterUpgradeGKEUpgrade {
   version?: string;
 }
 
-export const ClusterUpgradeGKEUpgrade: Schema.Schema<ClusterUpgradeGKEUpgrade> =
+export const ClusterUpgradeGKEUpgrade: Schema.Codec<ClusterUpgradeGKEUpgrade> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -443,7 +443,7 @@ export interface ClusterUpgradeUpgradeStatus {
   updateTime?: string;
 }
 
-export const ClusterUpgradeUpgradeStatus: Schema.Schema<ClusterUpgradeUpgradeStatus> =
+export const ClusterUpgradeUpgradeStatus: Schema.Codec<ClusterUpgradeUpgradeStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -459,7 +459,7 @@ export interface ClusterUpgradeGKEUpgradeState {
   status?: ClusterUpgradeUpgradeStatus;
 }
 
-export const ClusterUpgradeGKEUpgradeState: Schema.Schema<ClusterUpgradeGKEUpgradeState> =
+export const ClusterUpgradeGKEUpgradeState: Schema.Codec<ClusterUpgradeGKEUpgradeState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stats: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     upgrade: Schema.optional(ClusterUpgradeGKEUpgrade),
@@ -468,7 +468,7 @@ export const ClusterUpgradeGKEUpgradeState: Schema.Schema<ClusterUpgradeGKEUpgra
 
 export interface CancelRolloutRequest {}
 
-export const CancelRolloutRequest: Schema.Schema<CancelRolloutRequest> =
+export const CancelRolloutRequest: Schema.Codec<CancelRolloutRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelRolloutRequest",
   });
@@ -480,7 +480,7 @@ export interface ConfigManagementHierarchyControllerVersion {
   extension?: string;
 }
 
-export const ConfigManagementHierarchyControllerVersion: Schema.Schema<ConfigManagementHierarchyControllerVersion> =
+export const ConfigManagementHierarchyControllerVersion: Schema.Codec<ConfigManagementHierarchyControllerVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hnc: Schema.optional(Schema.String),
     extension: Schema.optional(Schema.String),
@@ -491,7 +491,7 @@ export interface WorkloadIdentityFeatureSpec {
   scopeTenancyPool?: string;
 }
 
-export const WorkloadIdentityFeatureSpec: Schema.Schema<WorkloadIdentityFeatureSpec> =
+export const WorkloadIdentityFeatureSpec: Schema.Codec<WorkloadIdentityFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopeTenancyPool: Schema.optional(Schema.String),
   }).annotate({ identifier: "WorkloadIdentityFeatureSpec" });
@@ -513,7 +513,7 @@ export interface OperationMetadata {
   cancelRequested?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -546,7 +546,7 @@ export interface ServiceMeshMembershipSpec {
     | (string & {});
 }
 
-export const ServiceMeshMembershipSpec: Schema.Schema<ServiceMeshMembershipSpec> =
+export const ServiceMeshMembershipSpec: Schema.Codec<ServiceMeshMembershipSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     controlPlane: Schema.optional(Schema.String),
     management: Schema.optional(Schema.String),
@@ -558,7 +558,7 @@ export interface IdentityServiceGoogleConfig {
   disable?: boolean;
 }
 
-export const IdentityServiceGoogleConfig: Schema.Schema<IdentityServiceGoogleConfig> =
+export const IdentityServiceGoogleConfig: Schema.Codec<IdentityServiceGoogleConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disable: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "IdentityServiceGoogleConfig" });
@@ -580,7 +580,7 @@ export interface IdentityServiceAzureADConfig {
   encryptedClientSecret?: string;
 }
 
-export const IdentityServiceAzureADConfig: Schema.Schema<IdentityServiceAzureADConfig> =
+export const IdentityServiceAzureADConfig: Schema.Codec<IdentityServiceAzureADConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kubectlRedirectUri: Schema.optional(Schema.String),
     userClaim: Schema.optional(Schema.String),
@@ -600,7 +600,7 @@ export interface IdentityServiceServerConfig {
   certificateAuthorityData?: string;
 }
 
-export const IdentityServiceServerConfig: Schema.Schema<IdentityServiceServerConfig> =
+export const IdentityServiceServerConfig: Schema.Codec<IdentityServiceServerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     connectionType: Schema.optional(Schema.String),
@@ -616,7 +616,7 @@ export interface IdentityServiceGroupConfig {
   idAttribute?: string;
 }
 
-export const IdentityServiceGroupConfig: Schema.Schema<IdentityServiceGroupConfig> =
+export const IdentityServiceGroupConfig: Schema.Codec<IdentityServiceGroupConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseDn: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -634,7 +634,7 @@ export interface IdentityServiceUserConfig {
   loginAttribute?: string;
 }
 
-export const IdentityServiceUserConfig: Schema.Schema<IdentityServiceUserConfig> =
+export const IdentityServiceUserConfig: Schema.Codec<IdentityServiceUserConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     idAttribute: Schema.optional(Schema.String),
     baseDn: Schema.optional(Schema.String),
@@ -653,7 +653,7 @@ export interface IdentityServiceLdapConfig {
   serviceAccount?: IdentityServiceServiceAccountConfig;
 }
 
-export const IdentityServiceLdapConfig: Schema.Schema<IdentityServiceLdapConfig> =
+export const IdentityServiceLdapConfig: Schema.Codec<IdentityServiceLdapConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     server: Schema.optional(IdentityServiceServerConfig),
     group: Schema.optional(IdentityServiceGroupConfig),
@@ -680,7 +680,7 @@ export interface IdentityServiceSamlConfig {
   groupPrefix?: string;
 }
 
-export const IdentityServiceSamlConfig: Schema.Schema<IdentityServiceSamlConfig> =
+export const IdentityServiceSamlConfig: Schema.Codec<IdentityServiceSamlConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeMapping: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -711,7 +711,7 @@ export interface IdentityServiceAuthMethod {
   proxy?: string;
 }
 
-export const IdentityServiceAuthMethod: Schema.Schema<IdentityServiceAuthMethod> =
+export const IdentityServiceAuthMethod: Schema.Codec<IdentityServiceAuthMethod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     googleConfig: Schema.optional(IdentityServiceGoogleConfig),
@@ -729,7 +729,7 @@ export interface IdentityServiceDiagnosticInterface {
   expirationTime?: string;
 }
 
-export const IdentityServiceDiagnosticInterface: Schema.Schema<IdentityServiceDiagnosticInterface> =
+export const IdentityServiceDiagnosticInterface: Schema.Codec<IdentityServiceDiagnosticInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     expirationTime: Schema.optional(Schema.String),
@@ -742,7 +742,7 @@ export interface IdentityServiceIdentityServiceOptions {
   sessionDuration?: string;
 }
 
-export const IdentityServiceIdentityServiceOptions: Schema.Schema<IdentityServiceIdentityServiceOptions> =
+export const IdentityServiceIdentityServiceOptions: Schema.Codec<IdentityServiceIdentityServiceOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diagnosticInterface: Schema.optional(IdentityServiceDiagnosticInterface),
     sessionDuration: Schema.optional(Schema.String),
@@ -755,7 +755,7 @@ export interface IdentityServiceMembershipSpec {
   identityServiceOptions?: IdentityServiceIdentityServiceOptions;
 }
 
-export const IdentityServiceMembershipSpec: Schema.Schema<IdentityServiceMembershipSpec> =
+export const IdentityServiceMembershipSpec: Schema.Codec<IdentityServiceMembershipSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authMethods: Schema.optional(Schema.Array(IdentityServiceAuthMethod)),
     identityServiceOptions: Schema.optional(
@@ -768,7 +768,7 @@ export interface ConfigManagementBinauthzConfig {
   enabled?: boolean;
 }
 
-export const ConfigManagementBinauthzConfig: Schema.Schema<ConfigManagementBinauthzConfig> =
+export const ConfigManagementBinauthzConfig: Schema.Codec<ConfigManagementBinauthzConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ConfigManagementBinauthzConfig" });
@@ -783,7 +783,7 @@ export interface ConfigManagementPolicyControllerMonitoring {
   >;
 }
 
-export const ConfigManagementPolicyControllerMonitoring: Schema.Schema<ConfigManagementPolicyControllerMonitoring> =
+export const ConfigManagementPolicyControllerMonitoring: Schema.Codec<ConfigManagementPolicyControllerMonitoring> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backends: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ConfigManagementPolicyControllerMonitoring" });
@@ -809,7 +809,7 @@ export interface ConfigManagementPolicyController {
   monitoring?: ConfigManagementPolicyControllerMonitoring;
 }
 
-export const ConfigManagementPolicyController: Schema.Schema<ConfigManagementPolicyController> =
+export const ConfigManagementPolicyController: Schema.Codec<ConfigManagementPolicyController> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     templateLibraryInstalled: Schema.optional(Schema.Boolean),
@@ -841,7 +841,7 @@ export interface ConfigManagementGitConfig {
   gcpServiceAccountEmail?: string;
 }
 
-export const ConfigManagementGitConfig: Schema.Schema<ConfigManagementGitConfig> =
+export const ConfigManagementGitConfig: Schema.Codec<ConfigManagementGitConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syncRev: Schema.optional(Schema.String),
     policyDir: Schema.optional(Schema.String),
@@ -866,7 +866,7 @@ export interface ConfigManagementContainerOverride {
   cpuRequest?: string;
 }
 
-export const ConfigManagementContainerOverride: Schema.Schema<ConfigManagementContainerOverride> =
+export const ConfigManagementContainerOverride: Schema.Codec<ConfigManagementContainerOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memoryLimit: Schema.optional(Schema.String),
     containerName: Schema.optional(Schema.String),
@@ -884,7 +884,7 @@ export interface ConfigManagementDeploymentOverride {
   deploymentNamespace?: string;
 }
 
-export const ConfigManagementDeploymentOverride: Schema.Schema<ConfigManagementDeploymentOverride> =
+export const ConfigManagementDeploymentOverride: Schema.Codec<ConfigManagementDeploymentOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containers: Schema.optional(
       Schema.Array(ConfigManagementContainerOverride),
@@ -906,7 +906,7 @@ export interface ConfigManagementOciConfig {
   syncWaitSecs?: string;
 }
 
-export const ConfigManagementOciConfig: Schema.Schema<ConfigManagementOciConfig> =
+export const ConfigManagementOciConfig: Schema.Codec<ConfigManagementOciConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyDir: Schema.optional(Schema.String),
     secretType: Schema.optional(Schema.String),
@@ -934,7 +934,7 @@ export interface ConfigManagementConfigSync {
   oci?: ConfigManagementOciConfig;
 }
 
-export const ConfigManagementConfigSync: Schema.Schema<ConfigManagementConfigSync> =
+export const ConfigManagementConfigSync: Schema.Codec<ConfigManagementConfigSync> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preventDrift: Schema.optional(Schema.Boolean),
     metricsGcpServiceAccountEmail: Schema.optional(Schema.String),
@@ -957,7 +957,7 @@ export interface ConfigManagementHierarchyControllerConfig {
   enableHierarchicalResourceQuota?: boolean;
 }
 
-export const ConfigManagementHierarchyControllerConfig: Schema.Schema<ConfigManagementHierarchyControllerConfig> =
+export const ConfigManagementHierarchyControllerConfig: Schema.Codec<ConfigManagementHierarchyControllerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enablePodTreeLabels: Schema.optional(Schema.Boolean),
     enabled: Schema.optional(Schema.Boolean),
@@ -985,7 +985,7 @@ export interface ConfigManagementMembershipSpec {
   hierarchyController?: ConfigManagementHierarchyControllerConfig;
 }
 
-export const ConfigManagementMembershipSpec: Schema.Schema<ConfigManagementMembershipSpec> =
+export const ConfigManagementMembershipSpec: Schema.Codec<ConfigManagementMembershipSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.String),
     management: Schema.optional(Schema.String),
@@ -1007,7 +1007,7 @@ export interface PolicyControllerTemplateLibraryConfig {
     | (string & {});
 }
 
-export const PolicyControllerTemplateLibraryConfig: Schema.Schema<PolicyControllerTemplateLibraryConfig> =
+export const PolicyControllerTemplateLibraryConfig: Schema.Codec<PolicyControllerTemplateLibraryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installation: Schema.optional(Schema.String),
   }).annotate({ identifier: "PolicyControllerTemplateLibraryConfig" });
@@ -1017,7 +1017,7 @@ export interface PolicyControllerBundleInstallSpec {
   exemptedNamespaces?: ReadonlyArray<string>;
 }
 
-export const PolicyControllerBundleInstallSpec: Schema.Schema<PolicyControllerBundleInstallSpec> =
+export const PolicyControllerBundleInstallSpec: Schema.Codec<PolicyControllerBundleInstallSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedNamespaces: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PolicyControllerBundleInstallSpec" });
@@ -1029,7 +1029,7 @@ export interface PolicyControllerPolicyContentSpec {
   bundles?: Record<string, PolicyControllerBundleInstallSpec>;
 }
 
-export const PolicyControllerPolicyContentSpec: Schema.Schema<PolicyControllerPolicyContentSpec> =
+export const PolicyControllerPolicyContentSpec: Schema.Codec<PolicyControllerPolicyContentSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     templateLibrary: Schema.optional(PolicyControllerTemplateLibraryConfig),
     bundles: Schema.optional(
@@ -1047,7 +1047,7 @@ export interface PolicyControllerMonitoringConfig {
   >;
 }
 
-export const PolicyControllerMonitoringConfig: Schema.Schema<PolicyControllerMonitoringConfig> =
+export const PolicyControllerMonitoringConfig: Schema.Codec<PolicyControllerMonitoringConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backends: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PolicyControllerMonitoringConfig" });
@@ -1059,7 +1059,7 @@ export interface PolicyControllerResourceList {
   cpu?: string;
 }
 
-export const PolicyControllerResourceList: Schema.Schema<PolicyControllerResourceList> =
+export const PolicyControllerResourceList: Schema.Codec<PolicyControllerResourceList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memory: Schema.optional(Schema.String),
     cpu: Schema.optional(Schema.String),
@@ -1072,7 +1072,7 @@ export interface PolicyControllerResourceRequirements {
   requests?: PolicyControllerResourceList;
 }
 
-export const PolicyControllerResourceRequirements: Schema.Schema<PolicyControllerResourceRequirements> =
+export const PolicyControllerResourceRequirements: Schema.Codec<PolicyControllerResourceRequirements> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limits: Schema.optional(PolicyControllerResourceList),
     requests: Schema.optional(PolicyControllerResourceList),
@@ -1089,7 +1089,7 @@ export interface PolicyControllerToleration {
   value?: string;
 }
 
-export const PolicyControllerToleration: Schema.Schema<PolicyControllerToleration> =
+export const PolicyControllerToleration: Schema.Codec<PolicyControllerToleration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operator: Schema.optional(Schema.String),
     effect: Schema.optional(Schema.String),
@@ -1114,7 +1114,7 @@ export interface PolicyControllerPolicyControllerDeploymentConfig {
   podAntiAffinity?: boolean;
 }
 
-export const PolicyControllerPolicyControllerDeploymentConfig: Schema.Schema<PolicyControllerPolicyControllerDeploymentConfig> =
+export const PolicyControllerPolicyControllerDeploymentConfig: Schema.Codec<PolicyControllerPolicyControllerDeploymentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replicaCount: Schema.optional(Schema.String),
     containerResources: Schema.optional(PolicyControllerResourceRequirements),
@@ -1157,7 +1157,7 @@ export interface PolicyControllerHubConfig {
   logDeniesEnabled?: boolean;
 }
 
-export const PolicyControllerHubConfig: Schema.Schema<PolicyControllerHubConfig> =
+export const PolicyControllerHubConfig: Schema.Codec<PolicyControllerHubConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installSpec: Schema.optional(Schema.String),
     auditIntervalSeconds: Schema.optional(Schema.String),
@@ -1183,7 +1183,7 @@ export interface PolicyControllerMembershipSpec {
   version?: string;
 }
 
-export const PolicyControllerMembershipSpec: Schema.Schema<PolicyControllerMembershipSpec> =
+export const PolicyControllerMembershipSpec: Schema.Codec<PolicyControllerMembershipSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyControllerHubConfig: Schema.optional(PolicyControllerHubConfig),
     version: Schema.optional(Schema.String),
@@ -1200,7 +1200,7 @@ export interface CommonFleetDefaultMemberConfigSpec {
   policycontroller?: PolicyControllerMembershipSpec;
 }
 
-export const CommonFleetDefaultMemberConfigSpec: Schema.Schema<CommonFleetDefaultMemberConfigSpec> =
+export const CommonFleetDefaultMemberConfigSpec: Schema.Codec<CommonFleetDefaultMemberConfigSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mesh: Schema.optional(ServiceMeshMembershipSpec),
     identityservice: Schema.optional(IdentityServiceMembershipSpec),
@@ -1215,7 +1215,7 @@ export interface MultiCloudCluster {
   resourceLink?: string;
 }
 
-export const MultiCloudCluster: Schema.Schema<MultiCloudCluster> =
+export const MultiCloudCluster: Schema.Codec<MultiCloudCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterMissing: Schema.optional(Schema.Boolean),
     resourceLink: Schema.optional(Schema.String),
@@ -1228,7 +1228,7 @@ export interface ClusterUpgradeIgnoredMembership {
   ignoredTime?: string;
 }
 
-export const ClusterUpgradeIgnoredMembership: Schema.Schema<ClusterUpgradeIgnoredMembership> =
+export const ClusterUpgradeIgnoredMembership: Schema.Codec<ClusterUpgradeIgnoredMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     ignoredTime: Schema.optional(Schema.String),
@@ -1241,7 +1241,7 @@ export interface ClusterUpgradeMembershipGKEUpgradeState {
   upgrade?: ClusterUpgradeGKEUpgrade;
 }
 
-export const ClusterUpgradeMembershipGKEUpgradeState: Schema.Schema<ClusterUpgradeMembershipGKEUpgradeState> =
+export const ClusterUpgradeMembershipGKEUpgradeState: Schema.Codec<ClusterUpgradeMembershipGKEUpgradeState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(ClusterUpgradeUpgradeStatus),
     upgrade: Schema.optional(ClusterUpgradeGKEUpgrade),
@@ -1254,7 +1254,7 @@ export interface ClusterUpgradeMembershipState {
   upgrades?: ReadonlyArray<ClusterUpgradeMembershipGKEUpgradeState>;
 }
 
-export const ClusterUpgradeMembershipState: Schema.Schema<ClusterUpgradeMembershipState> =
+export const ClusterUpgradeMembershipState: Schema.Codec<ClusterUpgradeMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignored: Schema.optional(ClusterUpgradeIgnoredMembership),
     upgrades: Schema.optional(
@@ -1269,7 +1269,7 @@ export interface FleetObservabilityFeatureError {
   description?: string;
 }
 
-export const FleetObservabilityFeatureError: Schema.Schema<FleetObservabilityFeatureError> =
+export const FleetObservabilityFeatureError: Schema.Codec<FleetObservabilityFeatureError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1282,7 +1282,7 @@ export interface FleetObservabilityFleetObservabilityBaseFeatureState {
   errors?: ReadonlyArray<FleetObservabilityFeatureError>;
 }
 
-export const FleetObservabilityFleetObservabilityBaseFeatureState: Schema.Schema<FleetObservabilityFleetObservabilityBaseFeatureState> =
+export const FleetObservabilityFleetObservabilityBaseFeatureState: Schema.Codec<FleetObservabilityFleetObservabilityBaseFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     errors: Schema.optional(Schema.Array(FleetObservabilityFeatureError)),
@@ -1297,7 +1297,7 @@ export interface FleetObservabilityFleetObservabilityLoggingState {
   scopeLog?: FleetObservabilityFleetObservabilityBaseFeatureState;
 }
 
-export const FleetObservabilityFleetObservabilityLoggingState: Schema.Schema<FleetObservabilityFleetObservabilityLoggingState> =
+export const FleetObservabilityFleetObservabilityLoggingState: Schema.Codec<FleetObservabilityFleetObservabilityLoggingState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultLog: Schema.optional(
       FleetObservabilityFleetObservabilityBaseFeatureState,
@@ -1314,7 +1314,7 @@ export interface ConfigManagementInstallError {
   errorMessage?: string;
 }
 
-export const ConfigManagementInstallError: Schema.Schema<ConfigManagementInstallError> =
+export const ConfigManagementInstallError: Schema.Codec<ConfigManagementInstallError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigManagementInstallError" });
@@ -1324,7 +1324,7 @@ export interface ClusterSelector {
   labelSelector?: string;
 }
 
-export const ClusterSelector: Schema.Schema<ClusterSelector> =
+export const ClusterSelector: Schema.Codec<ClusterSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelSelector: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClusterSelector" });
@@ -1353,7 +1353,7 @@ export interface RolloutStage {
   soakDuration?: string;
 }
 
-export const RolloutStage: Schema.Schema<RolloutStage> =
+export const RolloutStage: Schema.Codec<RolloutStage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stageNumber: Schema.optional(Schema.Number),
     fleetProjects: Schema.optional(Schema.Array(Schema.String)),
@@ -1379,7 +1379,7 @@ export interface KubernetesMetadata {
   nodeCount?: number;
 }
 
-export const KubernetesMetadata: Schema.Schema<KubernetesMetadata> =
+export const KubernetesMetadata: Schema.Codec<KubernetesMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vcpuCount: Schema.optional(Schema.Number),
     kubernetesApiServerVersion: Schema.optional(Schema.String),
@@ -1400,7 +1400,7 @@ export interface FleetLifecycleState {
     | (string & {});
 }
 
-export const FleetLifecycleState: Schema.Schema<FleetLifecycleState> =
+export const FleetLifecycleState: Schema.Codec<FleetLifecycleState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "FleetLifecycleState" });
@@ -1414,7 +1414,7 @@ export interface ListMembershipRBACRoleBindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListMembershipRBACRoleBindingsResponse: Schema.Schema<ListMembershipRBACRoleBindingsResponse> =
+export const ListMembershipRBACRoleBindingsResponse: Schema.Codec<ListMembershipRBACRoleBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     rbacrolebindings: Schema.optional(Schema.Array(RBACRoleBinding)),
@@ -1426,7 +1426,7 @@ export interface EdgeCluster {
   resourceLink?: string;
 }
 
-export const EdgeCluster: Schema.Schema<EdgeCluster> =
+export const EdgeCluster: Schema.Codec<EdgeCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceLink: Schema.optional(Schema.String),
   }).annotate({ identifier: "EdgeCluster" });
@@ -1442,7 +1442,7 @@ export interface ClusterUpgradeGKEUpgradeFeatureCondition {
   updateTime?: string;
 }
 
-export const ClusterUpgradeGKEUpgradeFeatureCondition: Schema.Schema<ClusterUpgradeGKEUpgradeFeatureCondition> =
+export const ClusterUpgradeGKEUpgradeFeatureCondition: Schema.Codec<ClusterUpgradeGKEUpgradeFeatureCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -1457,7 +1457,7 @@ export interface ClusterUpgradeGKEUpgradeFeatureState {
   conditions?: ReadonlyArray<ClusterUpgradeGKEUpgradeFeatureCondition>;
 }
 
-export const ClusterUpgradeGKEUpgradeFeatureState: Schema.Schema<ClusterUpgradeGKEUpgradeFeatureState> =
+export const ClusterUpgradeGKEUpgradeFeatureState: Schema.Codec<ClusterUpgradeGKEUpgradeFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upgradeState: Schema.optional(Schema.Array(ClusterUpgradeGKEUpgradeState)),
     conditions: Schema.optional(
@@ -1470,7 +1470,7 @@ export interface FleetObservabilityRoutingConfig {
   mode?: "MODE_UNSPECIFIED" | "COPY" | "MOVE" | (string & {});
 }
 
-export const FleetObservabilityRoutingConfig: Schema.Schema<FleetObservabilityRoutingConfig> =
+export const FleetObservabilityRoutingConfig: Schema.Codec<FleetObservabilityRoutingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
   }).annotate({ identifier: "FleetObservabilityRoutingConfig" });
@@ -1482,7 +1482,7 @@ export interface FleetObservabilityLoggingConfig {
   fleetScopeLogsConfig?: FleetObservabilityRoutingConfig;
 }
 
-export const FleetObservabilityLoggingConfig: Schema.Schema<FleetObservabilityLoggingConfig> =
+export const FleetObservabilityLoggingConfig: Schema.Codec<FleetObservabilityLoggingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultConfig: Schema.optional(FleetObservabilityRoutingConfig),
     fleetScopeLogsConfig: Schema.optional(FleetObservabilityRoutingConfig),
@@ -1501,7 +1501,7 @@ export interface MonitoringConfig {
   projectId?: string;
 }
 
-export const MonitoringConfig: Schema.Schema<MonitoringConfig> =
+export const MonitoringConfig: Schema.Codec<MonitoringConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cluster: Schema.optional(Schema.String),
     kubernetesMetricsPrefix: Schema.optional(Schema.String),
@@ -1522,7 +1522,7 @@ export interface MembershipState {
     | (string & {});
 }
 
-export const MembershipState: Schema.Schema<MembershipState> =
+export const MembershipState: Schema.Codec<MembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "MembershipState" });
@@ -1544,7 +1544,7 @@ export interface OnPremCluster {
     | (string & {});
 }
 
-export const OnPremCluster: Schema.Schema<OnPremCluster> =
+export const OnPremCluster: Schema.Codec<OnPremCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adminCluster: Schema.optional(Schema.Boolean),
     resourceLink: Schema.optional(Schema.String),
@@ -1563,7 +1563,7 @@ export interface ResourceOptions {
   k8sVersion?: string;
 }
 
-export const ResourceOptions: Schema.Schema<ResourceOptions> =
+export const ResourceOptions: Schema.Codec<ResourceOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectVersion: Schema.optional(Schema.String),
     v1beta1Crd: Schema.optional(Schema.Boolean),
@@ -1578,7 +1578,7 @@ export interface ResourceManifest {
   clusterScoped?: boolean;
 }
 
-export const ResourceManifest: Schema.Schema<ResourceManifest> =
+export const ResourceManifest: Schema.Codec<ResourceManifest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manifest: Schema.optional(Schema.String),
     clusterScoped: Schema.optional(Schema.Boolean),
@@ -1595,7 +1595,7 @@ export interface KubernetesResource {
   connectResources?: ReadonlyArray<ResourceManifest>;
 }
 
-export const KubernetesResource: Schema.Schema<KubernetesResource> =
+export const KubernetesResource: Schema.Codec<KubernetesResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membershipCrManifest: Schema.optional(Schema.String),
     resourceOptions: Schema.optional(ResourceOptions),
@@ -1610,7 +1610,7 @@ export interface GkeCluster {
   clusterMissing?: boolean;
 }
 
-export const GkeCluster: Schema.Schema<GkeCluster> =
+export const GkeCluster: Schema.Codec<GkeCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceLink: Schema.optional(Schema.String),
     clusterMissing: Schema.optional(Schema.Boolean),
@@ -1621,7 +1621,7 @@ export interface ApplianceCluster {
   resourceLink?: string;
 }
 
-export const ApplianceCluster: Schema.Schema<ApplianceCluster> =
+export const ApplianceCluster: Schema.Codec<ApplianceCluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceLink: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApplianceCluster" });
@@ -1645,7 +1645,7 @@ export interface MembershipEndpoint {
   multiCloudCluster?: MultiCloudCluster;
 }
 
-export const MembershipEndpoint: Schema.Schema<MembershipEndpoint> =
+export const MembershipEndpoint: Schema.Codec<MembershipEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     onPremCluster: Schema.optional(OnPremCluster),
     kubernetesResource: Schema.optional(KubernetesResource),
@@ -1672,7 +1672,7 @@ export interface Authority {
   oidcJwks?: string;
 }
 
-export const Authority: Schema.Schema<Authority> =
+export const Authority: Schema.Codec<Authority> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopeTenancyWorkloadIdentityPool: Schema.optional(Schema.String),
     identityProvider: Schema.optional(Schema.String),
@@ -1722,7 +1722,7 @@ export interface Membership {
   lastConnectionTime?: string;
 }
 
-export const Membership: Schema.Schema<Membership> =
+export const Membership: Schema.Codec<Membership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monitoringConfig: Schema.optional(MonitoringConfig),
     name: Schema.optional(Schema.String),
@@ -1750,7 +1750,7 @@ export interface ListBoundMembershipsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListBoundMembershipsResponse: Schema.Schema<ListBoundMembershipsResponse> =
+export const ListBoundMembershipsResponse: Schema.Codec<ListBoundMembershipsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     memberships: Schema.optional(Schema.Array(Membership)),
@@ -1759,7 +1759,7 @@ export const ListBoundMembershipsResponse: Schema.Schema<ListBoundMembershipsRes
 
 export interface PauseRolloutRequest {}
 
-export const PauseRolloutRequest: Schema.Schema<PauseRolloutRequest> =
+export const PauseRolloutRequest: Schema.Codec<PauseRolloutRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PauseRolloutRequest",
   });
@@ -1791,7 +1791,7 @@ export interface ConfigManagementGatekeeperDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementGatekeeperDeploymentState: Schema.Schema<ConfigManagementGatekeeperDeploymentState> =
+export const ConfigManagementGatekeeperDeploymentState: Schema.Codec<ConfigManagementGatekeeperDeploymentState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gatekeeperControllerManagerState: Schema.optional(Schema.String),
     gatekeeperAudit: Schema.optional(Schema.String),
@@ -1809,7 +1809,7 @@ export interface ScopeLifecycleState {
     | (string & {});
 }
 
-export const ScopeLifecycleState: Schema.Schema<ScopeLifecycleState> =
+export const ScopeLifecycleState: Schema.Codec<ScopeLifecycleState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "ScopeLifecycleState" });
@@ -1833,7 +1833,7 @@ export interface Scope {
   state?: ScopeLifecycleState;
 }
 
-export const Scope: Schema.Schema<Scope> =
+export const Scope: Schema.Codec<Scope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaceLabels: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1852,7 +1852,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -1868,7 +1868,7 @@ export interface WorkloadIdentityIdentityProviderStateDetail {
   description?: string;
 }
 
-export const WorkloadIdentityIdentityProviderStateDetail: Schema.Schema<WorkloadIdentityIdentityProviderStateDetail> =
+export const WorkloadIdentityIdentityProviderStateDetail: Schema.Codec<WorkloadIdentityIdentityProviderStateDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1884,7 +1884,7 @@ export interface WorkloadIdentityMembershipState {
   >;
 }
 
-export const WorkloadIdentityMembershipState: Schema.Schema<WorkloadIdentityMembershipState> =
+export const WorkloadIdentityMembershipState: Schema.Codec<WorkloadIdentityMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     identityProviderStateDetails: Schema.optional(
@@ -1903,7 +1903,7 @@ export interface MultiClusterIngressFeatureSpec {
     | (string & {});
 }
 
-export const MultiClusterIngressFeatureSpec: Schema.Schema<MultiClusterIngressFeatureSpec> =
+export const MultiClusterIngressFeatureSpec: Schema.Codec<MultiClusterIngressFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configMembership: Schema.optional(Schema.String),
     billing: Schema.optional(Schema.String),
@@ -1918,7 +1918,7 @@ export interface ConfigManagementGroupVersionKind {
   kind?: string;
 }
 
-export const ConfigManagementGroupVersionKind: Schema.Schema<ConfigManagementGroupVersionKind> =
+export const ConfigManagementGroupVersionKind: Schema.Codec<ConfigManagementGroupVersionKind> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -1936,7 +1936,7 @@ export interface ConfigManagementErrorResource {
   resourceGvk?: ConfigManagementGroupVersionKind;
 }
 
-export const ConfigManagementErrorResource: Schema.Schema<ConfigManagementErrorResource> =
+export const ConfigManagementErrorResource: Schema.Codec<ConfigManagementErrorResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceNamespace: Schema.optional(Schema.String),
     sourcePath: Schema.optional(Schema.String),
@@ -1953,7 +1953,7 @@ export interface ConfigManagementSyncError {
   errorResources?: ReadonlyArray<ConfigManagementErrorResource>;
 }
 
-export const ConfigManagementSyncError: Schema.Schema<ConfigManagementSyncError> =
+export const ConfigManagementSyncError: Schema.Codec<ConfigManagementSyncError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -1988,7 +1988,7 @@ export interface ConfigManagementSyncState {
   syncToken?: string;
 }
 
-export const ConfigManagementSyncState: Schema.Schema<ConfigManagementSyncState> =
+export const ConfigManagementSyncState: Schema.Codec<ConfigManagementSyncState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastSyncTime: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
@@ -2074,7 +2074,7 @@ export interface ConfigManagementConfigSyncDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementConfigSyncDeploymentState: Schema.Schema<ConfigManagementConfigSyncDeploymentState> =
+export const ConfigManagementConfigSyncDeploymentState: Schema.Codec<ConfigManagementConfigSyncDeploymentState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reconcilerManager: Schema.optional(Schema.String),
     gitSync: Schema.optional(Schema.String),
@@ -2092,7 +2092,7 @@ export interface ConfigManagementConfigSyncError {
   errorMessage?: string;
 }
 
-export const ConfigManagementConfigSyncError: Schema.Schema<ConfigManagementConfigSyncError> =
+export const ConfigManagementConfigSyncError: Schema.Codec<ConfigManagementConfigSyncError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigManagementConfigSyncError" });
@@ -2118,7 +2118,7 @@ export interface ConfigManagementConfigSyncVersion {
   otelCollector?: string;
 }
 
-export const ConfigManagementConfigSyncVersion: Schema.Schema<ConfigManagementConfigSyncVersion> =
+export const ConfigManagementConfigSyncVersion: Schema.Codec<ConfigManagementConfigSyncVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootReconciler: Schema.optional(Schema.String),
     syncer: Schema.optional(Schema.String),
@@ -2175,7 +2175,7 @@ export interface ConfigManagementConfigSyncState {
     | (string & {});
 }
 
-export const ConfigManagementConfigSyncState: Schema.Schema<ConfigManagementConfigSyncState> =
+export const ConfigManagementConfigSyncState: Schema.Codec<ConfigManagementConfigSyncState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syncState: Schema.optional(ConfigManagementSyncState),
     deploymentState: Schema.optional(ConfigManagementConfigSyncDeploymentState),
@@ -2197,7 +2197,7 @@ export interface ServiceMeshFeatureSpec {
     | (string & {});
 }
 
-export const ServiceMeshFeatureSpec: Schema.Schema<ServiceMeshFeatureSpec> =
+export const ServiceMeshFeatureSpec: Schema.Codec<ServiceMeshFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modernizationCompatibility: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceMeshFeatureSpec" });
@@ -2207,7 +2207,7 @@ export interface RBACRoleBindingActuationFeatureSpec {
   allowedCustomRoles?: ReadonlyArray<string>;
 }
 
-export const RBACRoleBindingActuationFeatureSpec: Schema.Schema<RBACRoleBindingActuationFeatureSpec> =
+export const RBACRoleBindingActuationFeatureSpec: Schema.Codec<RBACRoleBindingActuationFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedCustomRoles: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RBACRoleBindingActuationFeatureSpec" });
@@ -2217,7 +2217,7 @@ export interface DataplaneV2FeatureSpec {
   enableEncryption?: boolean;
 }
 
-export const DataplaneV2FeatureSpec: Schema.Schema<DataplaneV2FeatureSpec> =
+export const DataplaneV2FeatureSpec: Schema.Codec<DataplaneV2FeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableEncryption: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DataplaneV2FeatureSpec" });
@@ -2227,14 +2227,14 @@ export interface FleetObservabilityFeatureSpec {
   loggingConfig?: FleetObservabilityLoggingConfig;
 }
 
-export const FleetObservabilityFeatureSpec: Schema.Schema<FleetObservabilityFeatureSpec> =
+export const FleetObservabilityFeatureSpec: Schema.Codec<FleetObservabilityFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     loggingConfig: Schema.optional(FleetObservabilityLoggingConfig),
   }).annotate({ identifier: "FleetObservabilityFeatureSpec" });
 
 export interface AppDevExperienceFeatureSpec {}
 
-export const AppDevExperienceFeatureSpec: Schema.Schema<AppDevExperienceFeatureSpec> =
+export const AppDevExperienceFeatureSpec: Schema.Codec<AppDevExperienceFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AppDevExperienceFeatureSpec",
   });
@@ -2244,7 +2244,7 @@ export interface ClusterUpgradePostConditions {
   soaking?: string;
 }
 
-export const ClusterUpgradePostConditions: Schema.Schema<ClusterUpgradePostConditions> =
+export const ClusterUpgradePostConditions: Schema.Codec<ClusterUpgradePostConditions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     soaking: Schema.optional(Schema.String),
   }).annotate({ identifier: "ClusterUpgradePostConditions" });
@@ -2256,7 +2256,7 @@ export interface ClusterUpgradeGKEUpgradeOverride {
   postConditions?: ClusterUpgradePostConditions;
 }
 
-export const ClusterUpgradeGKEUpgradeOverride: Schema.Schema<ClusterUpgradeGKEUpgradeOverride> =
+export const ClusterUpgradeGKEUpgradeOverride: Schema.Codec<ClusterUpgradeGKEUpgradeOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upgrade: Schema.optional(ClusterUpgradeGKEUpgrade),
     postConditions: Schema.optional(ClusterUpgradePostConditions),
@@ -2271,7 +2271,7 @@ export interface ClusterUpgradeFleetSpec {
   postConditions?: ClusterUpgradePostConditions;
 }
 
-export const ClusterUpgradeFleetSpec: Schema.Schema<ClusterUpgradeFleetSpec> =
+export const ClusterUpgradeFleetSpec: Schema.Codec<ClusterUpgradeFleetSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upstreamFleets: Schema.optional(Schema.Array(Schema.String)),
     gkeUpgradeOverrides: Schema.optional(
@@ -2299,7 +2299,7 @@ export interface CommonFeatureSpec {
   clusterupgrade?: ClusterUpgradeFleetSpec;
 }
 
-export const CommonFeatureSpec: Schema.Schema<CommonFeatureSpec> =
+export const CommonFeatureSpec: Schema.Codec<CommonFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadidentity: Schema.optional(WorkloadIdentityFeatureSpec),
     mesh: Schema.optional(ServiceMeshFeatureSpec),
@@ -2323,7 +2323,7 @@ export interface Origin {
     | (string & {});
 }
 
-export const Origin: Schema.Schema<Origin> =
+export const Origin: Schema.Codec<Origin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "Origin" });
@@ -2335,7 +2335,7 @@ export interface TypeMeta {
   apiVersion?: string;
 }
 
-export const TypeMeta: Schema.Schema<TypeMeta> =
+export const TypeMeta: Schema.Codec<TypeMeta> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
@@ -2348,7 +2348,7 @@ export interface ConnectAgentResource {
   type?: TypeMeta;
 }
 
-export const ConnectAgentResource: Schema.Schema<ConnectAgentResource> =
+export const ConnectAgentResource: Schema.Codec<ConnectAgentResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manifest: Schema.optional(Schema.String),
     type: Schema.optional(TypeMeta),
@@ -2365,7 +2365,7 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -2385,7 +2385,7 @@ export interface RolloutCreationScope {
   >;
 }
 
-export const RolloutCreationScope: Schema.Schema<RolloutCreationScope> =
+export const RolloutCreationScope: Schema.Codec<RolloutCreationScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upgradeTypes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RolloutCreationScope" });
@@ -2397,7 +2397,7 @@ export interface AutoUpgradeConfig {
   rolloutCreationScope?: RolloutCreationScope;
 }
 
-export const AutoUpgradeConfig: Schema.Schema<AutoUpgradeConfig> =
+export const AutoUpgradeConfig: Schema.Codec<AutoUpgradeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforcedRollouts: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -2414,7 +2414,7 @@ export interface Stage {
   soakDuration?: string;
 }
 
-export const Stage: Schema.Schema<Stage> =
+export const Stage: Schema.Codec<Stage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fleetProjects: Schema.optional(Schema.Array(Schema.String)),
     clusterSelector: Schema.optional(ClusterSelector),
@@ -2445,7 +2445,7 @@ export interface OperationalState {
   >;
 }
 
-export const OperationalState: Schema.Schema<OperationalState> =
+export const OperationalState: Schema.Codec<OperationalState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stateChangeTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2498,7 +2498,7 @@ export interface RolloutSequence {
   createTime?: string;
 }
 
-export const RolloutSequence: Schema.Schema<RolloutSequence> =
+export const RolloutSequence: Schema.Codec<RolloutSequence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoUpgradeConfig: Schema.optional(AutoUpgradeConfig),
     targetControlPlaneVersion: Schema.optional(Schema.String),
@@ -2543,7 +2543,7 @@ export interface RolloutTarget {
   cluster?: string;
 }
 
-export const RolloutTarget: Schema.Schema<RolloutTarget> =
+export const RolloutTarget: Schema.Codec<RolloutTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2554,14 +2554,14 @@ export const RolloutTarget: Schema.Schema<RolloutTarget> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
 export interface RBACRoleBindingActuationFeatureState {}
 
-export const RBACRoleBindingActuationFeatureState: Schema.Schema<RBACRoleBindingActuationFeatureState> =
+export const RBACRoleBindingActuationFeatureState: Schema.Codec<RBACRoleBindingActuationFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RBACRoleBindingActuationFeatureState",
   });
@@ -2573,7 +2573,7 @@ export interface ListScopesResponse {
   nextPageToken?: string;
 }
 
-export const ListScopesResponse: Schema.Schema<ListScopesResponse> =
+export const ListScopesResponse: Schema.Codec<ListScopesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Scope)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2588,7 +2588,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -2610,7 +2610,7 @@ export interface Operation {
   error?: GoogleRpcStatus;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -2628,7 +2628,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2647,7 +2647,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -2658,7 +2658,7 @@ export interface FleetObservabilityFleetObservabilityMonitoringState {
   state?: FleetObservabilityFleetObservabilityBaseFeatureState;
 }
 
-export const FleetObservabilityFleetObservabilityMonitoringState: Schema.Schema<FleetObservabilityFleetObservabilityMonitoringState> =
+export const FleetObservabilityFleetObservabilityMonitoringState: Schema.Codec<FleetObservabilityFleetObservabilityMonitoringState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(
       FleetObservabilityFleetObservabilityBaseFeatureState,
@@ -2674,7 +2674,7 @@ export interface FleetObservabilityFeatureState {
   logging?: FleetObservabilityFleetObservabilityLoggingState;
 }
 
-export const FleetObservabilityFeatureState: Schema.Schema<FleetObservabilityFeatureState> =
+export const FleetObservabilityFeatureState: Schema.Codec<FleetObservabilityFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monitoring: Schema.optional(
       FleetObservabilityFleetObservabilityMonitoringState,
@@ -2691,7 +2691,7 @@ export interface Binding {
   members?: ReadonlyArray<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     role: Schema.optional(Schema.String),
@@ -2700,7 +2700,7 @@ export const Binding: Schema.Schema<Binding> =
 
 export interface FleetObservabilityMembershipSpec {}
 
-export const FleetObservabilityMembershipSpec: Schema.Schema<FleetObservabilityMembershipSpec> =
+export const FleetObservabilityMembershipSpec: Schema.Codec<FleetObservabilityMembershipSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FleetObservabilityMembershipSpec",
   });
@@ -2716,7 +2716,7 @@ export interface MembershipSpec {
   version?: string;
 }
 
-export const MembershipSpec: Schema.Schema<MembershipSpec> =
+export const MembershipSpec: Schema.Codec<MembershipSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     securityPolicy: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -2739,7 +2739,7 @@ export interface MembershipFeatureSpec {
   cloudbuild?: MembershipSpec;
 }
 
-export const MembershipFeatureSpec: Schema.Schema<MembershipFeatureSpec> =
+export const MembershipFeatureSpec: Schema.Codec<MembershipFeatureSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configmanagement: Schema.optional(ConfigManagementMembershipSpec),
     policycontroller: Schema.optional(PolicyControllerMembershipSpec),
@@ -2762,7 +2762,7 @@ export interface FeatureResourceState {
     | (string & {});
 }
 
-export const FeatureResourceState: Schema.Schema<FeatureResourceState> =
+export const FeatureResourceState: Schema.Codec<FeatureResourceState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "FeatureResourceState" });
@@ -2774,7 +2774,7 @@ export interface MeteringMembershipState {
   preciseLastMeasuredClusterVcpuCapacity?: number;
 }
 
-export const MeteringMembershipState: Schema.Schema<MeteringMembershipState> =
+export const MeteringMembershipState: Schema.Codec<MeteringMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastMeasurementTime: Schema.optional(Schema.String),
     preciseLastMeasuredClusterVcpuCapacity: Schema.optional(Schema.Number),
@@ -2789,7 +2789,7 @@ export interface FeatureState {
   updateTime?: string;
 }
 
-export const FeatureState: Schema.Schema<FeatureState> =
+export const FeatureState: Schema.Codec<FeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -2813,7 +2813,7 @@ export interface ServiceMeshDataPlaneManagement {
     | (string & {});
 }
 
-export const ServiceMeshDataPlaneManagement: Schema.Schema<ServiceMeshDataPlaneManagement> =
+export const ServiceMeshDataPlaneManagement: Schema.Codec<ServiceMeshDataPlaneManagement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.Array(ServiceMeshStatusDetails)),
     state: Schema.optional(Schema.String),
@@ -2843,7 +2843,7 @@ export interface ServiceMeshControlPlaneManagement {
   details?: ReadonlyArray<ServiceMeshStatusDetails>;
 }
 
-export const ServiceMeshControlPlaneManagement: Schema.Schema<ServiceMeshControlPlaneManagement> =
+export const ServiceMeshControlPlaneManagement: Schema.Codec<ServiceMeshControlPlaneManagement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     implementation: Schema.optional(Schema.String),
@@ -2931,7 +2931,7 @@ export interface ServiceMeshCondition {
     | (string & {});
 }
 
-export const ServiceMeshCondition: Schema.Schema<ServiceMeshCondition> =
+export const ServiceMeshCondition: Schema.Codec<ServiceMeshCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     documentationLink: Schema.optional(Schema.String),
@@ -2948,7 +2948,7 @@ export interface ServiceMeshMembershipState {
   conditions?: ReadonlyArray<ServiceMeshCondition>;
 }
 
-export const ServiceMeshMembershipState: Schema.Schema<ServiceMeshMembershipState> =
+export const ServiceMeshMembershipState: Schema.Codec<ServiceMeshMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataPlaneManagement: Schema.optional(ServiceMeshDataPlaneManagement),
     controlPlaneManagement: Schema.optional(ServiceMeshControlPlaneManagement),
@@ -2966,7 +2966,7 @@ export interface IdentityServiceMembershipState {
   memberConfig?: IdentityServiceMembershipSpec;
 }
 
-export const IdentityServiceMembershipState: Schema.Schema<IdentityServiceMembershipState> =
+export const IdentityServiceMembershipState: Schema.Codec<IdentityServiceMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     installedVersion: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2976,7 +2976,7 @@ export const IdentityServiceMembershipState: Schema.Schema<IdentityServiceMember
 
 export interface FleetObservabilityMembershipState {}
 
-export const FleetObservabilityMembershipState: Schema.Schema<FleetObservabilityMembershipState> =
+export const FleetObservabilityMembershipState: Schema.Codec<FleetObservabilityMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FleetObservabilityMembershipState",
   });
@@ -2999,7 +2999,7 @@ export interface PolicyControllerOnClusterState {
     | (string & {});
 }
 
-export const PolicyControllerOnClusterState: Schema.Schema<PolicyControllerOnClusterState> =
+export const PolicyControllerOnClusterState: Schema.Codec<PolicyControllerOnClusterState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -3014,7 +3014,7 @@ export interface PolicyControllerPolicyContentState {
   templateLibraryState?: PolicyControllerOnClusterState;
 }
 
-export const PolicyControllerPolicyContentState: Schema.Schema<PolicyControllerPolicyContentState> =
+export const PolicyControllerPolicyContentState: Schema.Codec<PolicyControllerPolicyContentState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bundleStates: Schema.optional(
       Schema.Record(Schema.String, PolicyControllerOnClusterState),
@@ -3043,7 +3043,7 @@ export interface PolicyControllerMembershipState {
   policyContentState?: PolicyControllerPolicyContentState;
 }
 
-export const PolicyControllerMembershipState: Schema.Schema<PolicyControllerMembershipState> =
+export const PolicyControllerMembershipState: Schema.Codec<PolicyControllerMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     componentStates: Schema.optional(
@@ -3065,7 +3065,7 @@ export interface ConfigManagementBinauthzState {
   version?: ConfigManagementBinauthzVersion;
 }
 
-export const ConfigManagementBinauthzState: Schema.Schema<ConfigManagementBinauthzState> =
+export const ConfigManagementBinauthzState: Schema.Codec<ConfigManagementBinauthzState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webhook: Schema.optional(Schema.String),
     version: Schema.optional(ConfigManagementBinauthzVersion),
@@ -3078,7 +3078,7 @@ export interface ConfigManagementPolicyControllerMigration {
   stage?: "STAGE_UNSPECIFIED" | "ACM_MANAGED" | "POCO_MANAGED" | (string & {});
 }
 
-export const ConfigManagementPolicyControllerMigration: Schema.Schema<ConfigManagementPolicyControllerMigration> =
+export const ConfigManagementPolicyControllerMigration: Schema.Codec<ConfigManagementPolicyControllerMigration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     copyTime: Schema.optional(Schema.String),
     stage: Schema.optional(Schema.String),
@@ -3089,7 +3089,7 @@ export interface ConfigManagementPolicyControllerVersion {
   version?: string;
 }
 
-export const ConfigManagementPolicyControllerVersion: Schema.Schema<ConfigManagementPolicyControllerVersion> =
+export const ConfigManagementPolicyControllerVersion: Schema.Codec<ConfigManagementPolicyControllerVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConfigManagementPolicyControllerVersion" });
@@ -3103,7 +3103,7 @@ export interface ConfigManagementPolicyControllerState {
   version?: ConfigManagementPolicyControllerVersion;
 }
 
-export const ConfigManagementPolicyControllerState: Schema.Schema<ConfigManagementPolicyControllerState> =
+export const ConfigManagementPolicyControllerState: Schema.Codec<ConfigManagementPolicyControllerState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentState: Schema.optional(ConfigManagementGatekeeperDeploymentState),
     migration: Schema.optional(ConfigManagementPolicyControllerMigration),
@@ -3125,7 +3125,7 @@ export interface ConfigManagementOperatorState {
     | (string & {});
 }
 
-export const ConfigManagementOperatorState: Schema.Schema<ConfigManagementOperatorState> =
+export const ConfigManagementOperatorState: Schema.Codec<ConfigManagementOperatorState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(ConfigManagementInstallError)),
     version: Schema.optional(Schema.String),
@@ -3151,7 +3151,7 @@ export interface ConfigManagementHierarchyControllerDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementHierarchyControllerDeploymentState: Schema.Schema<ConfigManagementHierarchyControllerDeploymentState> =
+export const ConfigManagementHierarchyControllerDeploymentState: Schema.Codec<ConfigManagementHierarchyControllerDeploymentState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hnc: Schema.optional(Schema.String),
     extension: Schema.optional(Schema.String),
@@ -3166,7 +3166,7 @@ export interface ConfigManagementHierarchyControllerState {
   state?: ConfigManagementHierarchyControllerDeploymentState;
 }
 
-export const ConfigManagementHierarchyControllerState: Schema.Schema<ConfigManagementHierarchyControllerState> =
+export const ConfigManagementHierarchyControllerState: Schema.Codec<ConfigManagementHierarchyControllerState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(ConfigManagementHierarchyControllerVersion),
     state: Schema.optional(ConfigManagementHierarchyControllerDeploymentState),
@@ -3191,7 +3191,7 @@ export interface ConfigManagementMembershipState {
   configSyncState?: ConfigManagementConfigSyncState;
 }
 
-export const ConfigManagementMembershipState: Schema.Schema<ConfigManagementMembershipState> =
+export const ConfigManagementMembershipState: Schema.Codec<ConfigManagementMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     binauthzState: Schema.optional(ConfigManagementBinauthzState),
     clusterName: Schema.optional(Schema.String),
@@ -3230,7 +3230,7 @@ export interface MembershipFeatureState {
   configmanagement?: ConfigManagementMembershipState;
 }
 
-export const MembershipFeatureState: Schema.Schema<MembershipFeatureState> =
+export const MembershipFeatureState: Schema.Codec<MembershipFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metering: Schema.optional(MeteringMembershipState),
     state: Schema.optional(FeatureState),
@@ -3253,7 +3253,7 @@ export interface ClusterUpgradeFleetState {
   ignored?: Record<string, ClusterUpgradeIgnoredMembership>;
 }
 
-export const ClusterUpgradeFleetState: Schema.Schema<ClusterUpgradeFleetState> =
+export const ClusterUpgradeFleetState: Schema.Codec<ClusterUpgradeFleetState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downstreamFleets: Schema.optional(Schema.Array(Schema.String)),
     gkeState: Schema.optional(ClusterUpgradeGKEUpgradeFeatureState),
@@ -3273,7 +3273,7 @@ export interface WorkloadIdentityWorkloadIdentityPoolStateDetail {
   description?: string;
 }
 
-export const WorkloadIdentityWorkloadIdentityPoolStateDetail: Schema.Schema<WorkloadIdentityWorkloadIdentityPoolStateDetail> =
+export const WorkloadIdentityWorkloadIdentityPoolStateDetail: Schema.Codec<WorkloadIdentityWorkloadIdentityPoolStateDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -3292,7 +3292,7 @@ export interface WorkloadIdentityNamespaceStateDetail {
   description?: string;
 }
 
-export const WorkloadIdentityNamespaceStateDetail: Schema.Schema<WorkloadIdentityNamespaceStateDetail> =
+export const WorkloadIdentityNamespaceStateDetail: Schema.Codec<WorkloadIdentityNamespaceStateDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -3320,7 +3320,7 @@ export interface WorkloadIdentityFeatureState {
   workloadIdentityPool?: string;
 }
 
-export const WorkloadIdentityFeatureState: Schema.Schema<WorkloadIdentityFeatureState> =
+export const WorkloadIdentityFeatureState: Schema.Codec<WorkloadIdentityFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaceStates: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -3353,7 +3353,7 @@ export interface CommonFeatureState {
   rbacrolebindingactuation?: RBACRoleBindingActuationFeatureState;
 }
 
-export const CommonFeatureState: Schema.Schema<CommonFeatureState> =
+export const CommonFeatureState: Schema.Codec<CommonFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fleetobservability: Schema.optional(FleetObservabilityFeatureState),
     state: Schema.optional(FeatureState),
@@ -3370,7 +3370,7 @@ export interface ScopeFeatureState {
   state?: FeatureState;
 }
 
-export const ScopeFeatureState: Schema.Schema<ScopeFeatureState> =
+export const ScopeFeatureState: Schema.Codec<ScopeFeatureState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(FeatureState),
   }).annotate({ identifier: "ScopeFeatureState" });
@@ -3406,7 +3406,7 @@ export interface Feature {
   spec?: CommonFeatureSpec;
 }
 
-export const Feature: Schema.Schema<Feature> =
+export const Feature: Schema.Codec<Feature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopeSpecs: Schema.optional(Schema.Record(Schema.String, ScopeFeatureSpec)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -3439,7 +3439,7 @@ export interface ListFeaturesResponse {
   nextPageToken?: string;
 }
 
-export const ListFeaturesResponse: Schema.Schema<ListFeaturesResponse> =
+export const ListFeaturesResponse: Schema.Codec<ListFeaturesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Feature)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3452,7 +3452,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -3469,7 +3469,7 @@ export interface Policy {
   auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     etag: Schema.optional(Schema.String),
@@ -3486,7 +3486,7 @@ export interface RolloutMembershipState {
   targets?: ReadonlyArray<RolloutTarget>;
 }
 
-export const RolloutMembershipState: Schema.Schema<RolloutMembershipState> =
+export const RolloutMembershipState: Schema.Codec<RolloutMembershipState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     stageAssignment: Schema.optional(Schema.Number),
@@ -3504,7 +3504,7 @@ export interface VersionUpgrade {
   desiredVersion?: string;
 }
 
-export const VersionUpgrade: Schema.Schema<VersionUpgrade> =
+export const VersionUpgrade: Schema.Codec<VersionUpgrade> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     desiredVersion: Schema.optional(Schema.String),
@@ -3570,7 +3570,7 @@ export interface Rollout {
   stages?: ReadonlyArray<RolloutStage>;
 }
 
-export const Rollout: Schema.Schema<Rollout> =
+export const Rollout: Schema.Codec<Rollout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
@@ -3601,7 +3601,7 @@ export interface ListRolloutsResponse {
   nextPageToken?: string;
 }
 
-export const ListRolloutsResponse: Schema.Schema<ListRolloutsResponse> =
+export const ListRolloutsResponse: Schema.Codec<ListRolloutsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollouts: Schema.optional(Schema.Array(Rollout)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3616,7 +3616,7 @@ export interface ListMembershipsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListMembershipsResponse: Schema.Schema<ListMembershipsResponse> =
+export const ListMembershipsResponse: Schema.Codec<ListMembershipsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     resources: Schema.optional(Schema.Array(Membership)),
@@ -3630,7 +3630,7 @@ export interface ListPermittedScopesResponse {
   nextPageToken?: string;
 }
 
-export const ListPermittedScopesResponse: Schema.Schema<ListPermittedScopesResponse> =
+export const ListPermittedScopesResponse: Schema.Codec<ListPermittedScopesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Scope)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3647,7 +3647,7 @@ export interface MembershipBindingLifecycleState {
     | (string & {});
 }
 
-export const MembershipBindingLifecycleState: Schema.Schema<MembershipBindingLifecycleState> =
+export const MembershipBindingLifecycleState: Schema.Codec<MembershipBindingLifecycleState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "MembershipBindingLifecycleState" });
@@ -3671,7 +3671,7 @@ export interface MembershipBinding {
   deleteTime?: string;
 }
 
-export const MembershipBinding: Schema.Schema<MembershipBinding> =
+export const MembershipBinding: Schema.Codec<MembershipBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -3688,7 +3688,7 @@ export interface ForceCompleteRolloutStageRequest {
   stageNumber?: number;
 }
 
-export const ForceCompleteRolloutStageRequest: Schema.Schema<ForceCompleteRolloutStageRequest> =
+export const ForceCompleteRolloutStageRequest: Schema.Codec<ForceCompleteRolloutStageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stageNumber: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ForceCompleteRolloutStageRequest" });
@@ -3698,7 +3698,7 @@ export interface GenerateConnectManifestResponse {
   manifest?: ReadonlyArray<ConnectAgentResource>;
 }
 
-export const GenerateConnectManifestResponse: Schema.Schema<GenerateConnectManifestResponse> =
+export const GenerateConnectManifestResponse: Schema.Codec<GenerateConnectManifestResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manifest: Schema.optional(Schema.Array(ConnectAgentResource)),
   }).annotate({ identifier: "GenerateConnectManifestResponse" });
@@ -3708,7 +3708,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -3734,7 +3734,7 @@ export interface Fleet {
   state?: FleetLifecycleState;
 }
 
-export const Fleet: Schema.Schema<Fleet> =
+export const Fleet: Schema.Codec<Fleet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultClusterConfig: Schema.optional(DefaultClusterConfig),
     name: Schema.optional(Schema.String),
@@ -3754,7 +3754,7 @@ export interface ListFleetsResponse {
   nextPageToken?: string;
 }
 
-export const ListFleetsResponse: Schema.Schema<ListFleetsResponse> =
+export const ListFleetsResponse: Schema.Codec<ListFleetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fleets: Schema.optional(Schema.Array(Fleet)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3767,7 +3767,7 @@ export interface ResumeRolloutRequest {
   validateOnly?: boolean;
 }
 
-export const ResumeRolloutRequest: Schema.Schema<ResumeRolloutRequest> =
+export const ResumeRolloutRequest: Schema.Codec<ResumeRolloutRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduleOffset: Schema.optional(Schema.String),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -3786,7 +3786,7 @@ export interface UpgradeRolloutSequenceRequest {
   force?: boolean;
 }
 
-export const UpgradeRolloutSequenceRequest: Schema.Schema<UpgradeRolloutSequenceRequest> =
+export const UpgradeRolloutSequenceRequest: Schema.Codec<UpgradeRolloutSequenceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upgradeType: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -3800,7 +3800,7 @@ export interface ListRolloutSequencesResponse {
   nextPageToken?: string;
 }
 
-export const ListRolloutSequencesResponse: Schema.Schema<ListRolloutSequencesResponse> =
+export const ListRolloutSequencesResponse: Schema.Codec<ListRolloutSequencesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rolloutSequences: Schema.optional(Schema.Array(RolloutSequence)),
     nextPageToken: Schema.optional(Schema.String),
@@ -3808,7 +3808,7 @@ export const ListRolloutSequencesResponse: Schema.Schema<ListRolloutSequencesRes
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -3822,7 +3822,7 @@ export interface ListMembershipBindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListMembershipBindingsResponse: Schema.Schema<ListMembershipBindingsResponse> =
+export const ListMembershipBindingsResponse: Schema.Codec<ListMembershipBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membershipBindings: Schema.optional(Schema.Array(MembershipBinding)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -3834,7 +3834,7 @@ export interface GenerateMembershipRBACRoleBindingYAMLResponse {
   roleBindingsYaml?: string;
 }
 
-export const GenerateMembershipRBACRoleBindingYAMLResponse: Schema.Schema<GenerateMembershipRBACRoleBindingYAMLResponse> =
+export const GenerateMembershipRBACRoleBindingYAMLResponse: Schema.Codec<GenerateMembershipRBACRoleBindingYAMLResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleBindingsYaml: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateMembershipRBACRoleBindingYAMLResponse" });
@@ -3846,7 +3846,7 @@ export interface ListScopeNamespacesResponse {
   scopeNamespaces?: ReadonlyArray<Namespace>;
 }
 
-export const ListScopeNamespacesResponse: Schema.Schema<ListScopeNamespacesResponse> =
+export const ListScopeNamespacesResponse: Schema.Codec<ListScopeNamespacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     scopeNamespaces: Schema.optional(Schema.Array(Namespace)),
@@ -3859,7 +3859,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -3944,7 +3944,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -3979,7 +3979,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -4030,7 +4030,7 @@ export const GenerateConnectManifestProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}:generateConnectManifest" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
 
 export type GenerateConnectManifestProjectsLocationsMembershipsResponse =
   GenerateConnectManifestResponse;
@@ -4072,7 +4072,7 @@ export const SetIamPolicyProjectsLocationsMembershipsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsMembershipsRequest>;
 
 export type SetIamPolicyProjectsLocationsMembershipsResponse = Policy;
 export const SetIamPolicyProjectsLocationsMembershipsResponse =
@@ -4114,7 +4114,7 @@ export const DeleteProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsMembershipsRequest>;
 
 export type DeleteProjectsLocationsMembershipsResponse = Operation;
 export const DeleteProjectsLocationsMembershipsResponse =
@@ -4150,7 +4150,7 @@ export const GetProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsMembershipsRequest>;
 
 export type GetProjectsLocationsMembershipsResponse = Membership;
 export const GetProjectsLocationsMembershipsResponse =
@@ -4196,7 +4196,7 @@ export const ListProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/memberships" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsMembershipsRequest>;
 
 export type ListProjectsLocationsMembershipsResponse = ListMembershipsResponse;
 export const ListProjectsLocationsMembershipsResponse =
@@ -4239,7 +4239,7 @@ export const GetIamPolicyProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsMembershipsRequest>;
 
 export type GetIamPolicyProjectsLocationsMembershipsResponse = Policy;
 export const GetIamPolicyProjectsLocationsMembershipsResponse =
@@ -4288,7 +4288,7 @@ export const CreateProjectsLocationsMembershipsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsMembershipsRequest>;
 
 export type CreateProjectsLocationsMembershipsResponse = Operation;
 export const CreateProjectsLocationsMembershipsResponse =
@@ -4333,7 +4333,7 @@ export const PatchProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsMembershipsRequest>;
 
 export type PatchProjectsLocationsMembershipsResponse = Operation;
 export const PatchProjectsLocationsMembershipsResponse =
@@ -4376,7 +4376,7 @@ export const TestIamPermissionsProjectsLocationsMembershipsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsMembershipsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsMembershipsRequest>;
 
 export type TestIamPermissionsProjectsLocationsMembershipsResponse =
   TestIamPermissionsResponse;
@@ -4413,7 +4413,7 @@ export const GetProjectsLocationsMembershipsBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsBindingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsMembershipsBindingsRequest>;
 
 export type GetProjectsLocationsMembershipsBindingsResponse = MembershipBinding;
 export const GetProjectsLocationsMembershipsBindingsResponse =
@@ -4456,7 +4456,7 @@ export const ListProjectsLocationsMembershipsBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/bindings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsBindingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsMembershipsBindingsRequest>;
 
 export type ListProjectsLocationsMembershipsBindingsResponse =
   ListMembershipBindingsResponse;
@@ -4495,7 +4495,7 @@ export const DeleteProjectsLocationsMembershipsBindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsBindingsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsMembershipsBindingsRequest>;
 
 export type DeleteProjectsLocationsMembershipsBindingsResponse = Operation;
 export const DeleteProjectsLocationsMembershipsBindingsResponse =
@@ -4543,7 +4543,7 @@ export const CreateProjectsLocationsMembershipsBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsMembershipsBindingsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsMembershipsBindingsRequest>;
 
 export type CreateProjectsLocationsMembershipsBindingsResponse = Operation;
 export const CreateProjectsLocationsMembershipsBindingsResponse =
@@ -4585,7 +4585,7 @@ export const PatchProjectsLocationsMembershipsBindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsBindingsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsMembershipsBindingsRequest>;
 
 export type PatchProjectsLocationsMembershipsBindingsResponse = Operation;
 export const PatchProjectsLocationsMembershipsBindingsResponse =
@@ -4621,7 +4621,7 @@ export const DeleteProjectsLocationsMembershipsRbacrolebindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export type DeleteProjectsLocationsMembershipsRbacrolebindingsResponse =
   Operation;
@@ -4670,7 +4670,7 @@ export const GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRb
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export type GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsResponse =
   GenerateMembershipRBACRoleBindingYAMLResponse;
@@ -4678,7 +4678,11 @@ export const GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRb
   /*@__PURE__*/ /*#__PURE__*/ GenerateMembershipRBACRoleBindingYAMLResponse;
 
 export type GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a YAML of the RBAC policies for the specified RoleBinding and its associated impersonation resources. */
 export const generateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindings: API.OperationMethod<
@@ -4717,7 +4721,7 @@ export const CreateProjectsLocationsMembershipsRbacrolebindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsMembershipsRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export type CreateProjectsLocationsMembershipsRbacrolebindingsResponse =
   Operation;
@@ -4760,7 +4764,7 @@ export const PatchProjectsLocationsMembershipsRbacrolebindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export type PatchProjectsLocationsMembershipsRbacrolebindingsResponse =
   Operation;
@@ -4797,7 +4801,7 @@ export const GetProjectsLocationsMembershipsRbacrolebindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export type GetProjectsLocationsMembershipsRbacrolebindingsResponse =
   RBACRoleBinding;
@@ -4838,7 +4842,7 @@ export const ListProjectsLocationsMembershipsRbacrolebindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/rbacrolebindings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export type ListProjectsLocationsMembershipsRbacrolebindingsResponse =
   ListMembershipRBACRoleBindingsResponse;
@@ -4877,7 +4881,7 @@ export const DeleteProjectsLocationsFleetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsFleetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsFleetsRequest>;
 
 export type DeleteProjectsLocationsFleetsResponse = Operation;
 export const DeleteProjectsLocationsFleetsResponse =
@@ -4919,7 +4923,7 @@ export const PatchProjectsLocationsFleetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsFleetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsFleetsRequest>;
 
 export type PatchProjectsLocationsFleetsResponse = Operation;
 export const PatchProjectsLocationsFleetsResponse =
@@ -4958,7 +4962,7 @@ export const CreateProjectsLocationsFleetsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/fleets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsFleetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsFleetsRequest>;
 
 export type CreateProjectsLocationsFleetsResponse = Operation;
 export const CreateProjectsLocationsFleetsResponse =
@@ -5000,7 +5004,7 @@ export const ListProjectsLocationsFleetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/fleets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsFleetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsFleetsRequest>;
 
 export type ListProjectsLocationsFleetsResponse = ListFleetsResponse;
 export const ListProjectsLocationsFleetsResponse =
@@ -5038,7 +5042,7 @@ export const GetProjectsLocationsFleetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsFleetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsFleetsRequest>;
 
 export type GetProjectsLocationsFleetsResponse = Fleet;
 export const GetProjectsLocationsFleetsResponse =
@@ -5075,7 +5079,7 @@ export const PauseProjectsLocationsRolloutsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:pause", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PauseProjectsLocationsRolloutsRequest>;
+  ) as unknown as Schema.Codec<PauseProjectsLocationsRolloutsRequest>;
 
 export type PauseProjectsLocationsRolloutsResponse = Operation;
 export const PauseProjectsLocationsRolloutsResponse =
@@ -5120,7 +5124,7 @@ export const ListProjectsLocationsRolloutsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/rollouts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRolloutsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRolloutsRequest>;
 
 export type ListProjectsLocationsRolloutsResponse = ListRolloutsResponse;
 export const ListProjectsLocationsRolloutsResponse =
@@ -5158,7 +5162,7 @@ export const GetProjectsLocationsRolloutsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRolloutsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRolloutsRequest>;
 
 export type GetProjectsLocationsRolloutsResponse = Rollout;
 export const GetProjectsLocationsRolloutsResponse =
@@ -5195,7 +5199,7 @@ export const ResumeProjectsLocationsRolloutsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:resume", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResumeProjectsLocationsRolloutsRequest>;
+  ) as unknown as Schema.Codec<ResumeProjectsLocationsRolloutsRequest>;
 
 export type ResumeProjectsLocationsRolloutsResponse = Operation;
 export const ResumeProjectsLocationsRolloutsResponse =
@@ -5238,7 +5242,7 @@ export const ForceCompleteStageProjectsLocationsRolloutsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ForceCompleteStageProjectsLocationsRolloutsRequest>;
+  ) as unknown as Schema.Codec<ForceCompleteStageProjectsLocationsRolloutsRequest>;
 
 export type ForceCompleteStageProjectsLocationsRolloutsResponse = Operation;
 export const ForceCompleteStageProjectsLocationsRolloutsResponse =
@@ -5277,7 +5281,7 @@ export const DeleteProjectsLocationsRolloutsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRolloutsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRolloutsRequest>;
 
 export type DeleteProjectsLocationsRolloutsResponse = Operation;
 export const DeleteProjectsLocationsRolloutsResponse =
@@ -5316,7 +5320,7 @@ export const CancelProjectsLocationsRolloutsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsRolloutsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsRolloutsRequest>;
 
 export type CancelProjectsLocationsRolloutsResponse = Operation;
 export const CancelProjectsLocationsRolloutsResponse =
@@ -5352,7 +5356,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -5389,7 +5393,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -5439,7 +5443,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -5477,7 +5481,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -5519,7 +5523,7 @@ export const ListPermittedProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/scopes:listPermitted" }),
     svc,
-  ) as unknown as Schema.Schema<ListPermittedProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<ListPermittedProjectsLocationsScopesRequest>;
 
 export type ListPermittedProjectsLocationsScopesResponse =
   ListPermittedScopesResponse;
@@ -5567,7 +5571,7 @@ export const ListMembershipsProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+scopeName}:listMemberships" }),
     svc,
-  ) as unknown as Schema.Schema<ListMembershipsProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<ListMembershipsProjectsLocationsScopesRequest>;
 
 export type ListMembershipsProjectsLocationsScopesResponse =
   ListBoundMembershipsResponse;
@@ -5606,7 +5610,7 @@ export const DeleteProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsScopesRequest>;
 
 export type DeleteProjectsLocationsScopesResponse = Operation;
 export const DeleteProjectsLocationsScopesResponse =
@@ -5649,7 +5653,7 @@ export const SetIamPolicyProjectsLocationsScopesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsScopesRequest>;
 
 export type SetIamPolicyProjectsLocationsScopesResponse = Policy;
 export const SetIamPolicyProjectsLocationsScopesResponse =
@@ -5691,7 +5695,7 @@ export const CreateProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+parent}/scopes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsScopesRequest>;
 
 export type CreateProjectsLocationsScopesResponse = Operation;
 export const CreateProjectsLocationsScopesResponse =
@@ -5733,7 +5737,7 @@ export const PatchProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsScopesRequest>;
 
 export type PatchProjectsLocationsScopesResponse = Operation;
 export const PatchProjectsLocationsScopesResponse =
@@ -5776,7 +5780,7 @@ export const TestIamPermissionsProjectsLocationsScopesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsScopesRequest>;
 
 export type TestIamPermissionsProjectsLocationsScopesResponse =
   TestIamPermissionsResponse;
@@ -5818,7 +5822,7 @@ export const GetIamPolicyProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsScopesRequest>;
 
 export type GetIamPolicyProjectsLocationsScopesResponse = Policy;
 export const GetIamPolicyProjectsLocationsScopesResponse =
@@ -5852,7 +5856,7 @@ export const GetProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsScopesRequest>;
 
 export type GetProjectsLocationsScopesResponse = Scope;
 export const GetProjectsLocationsScopesResponse =
@@ -5892,7 +5896,7 @@ export const ListProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/scopes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsScopesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsScopesRequest>;
 
 export type ListProjectsLocationsScopesResponse = ListScopesResponse;
 export const ListProjectsLocationsScopesResponse =
@@ -5936,7 +5940,7 @@ export const PatchProjectsLocationsScopesRbacrolebindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsScopesRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsScopesRbacrolebindingsRequest>;
 
 export type PatchProjectsLocationsScopesRbacrolebindingsResponse = Operation;
 export const PatchProjectsLocationsScopesRbacrolebindingsResponse =
@@ -5984,7 +5988,7 @@ export const CreateProjectsLocationsScopesRbacrolebindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsScopesRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsScopesRbacrolebindingsRequest>;
 
 export type CreateProjectsLocationsScopesRbacrolebindingsResponse = Operation;
 export const CreateProjectsLocationsScopesRbacrolebindingsResponse =
@@ -6020,7 +6024,7 @@ export const DeleteProjectsLocationsScopesRbacrolebindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsScopesRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsScopesRbacrolebindingsRequest>;
 
 export type DeleteProjectsLocationsScopesRbacrolebindingsResponse = Operation;
 export const DeleteProjectsLocationsScopesRbacrolebindingsResponse =
@@ -6062,7 +6066,7 @@ export const ListProjectsLocationsScopesRbacrolebindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/rbacrolebindings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsScopesRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsScopesRbacrolebindingsRequest>;
 
 export type ListProjectsLocationsScopesRbacrolebindingsResponse =
   ListScopeRBACRoleBindingsResponse;
@@ -6101,7 +6105,7 @@ export const GetProjectsLocationsScopesRbacrolebindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsScopesRbacrolebindingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsScopesRbacrolebindingsRequest>;
 
 export type GetProjectsLocationsScopesRbacrolebindingsResponse =
   RBACRoleBinding;
@@ -6136,7 +6140,7 @@ export const DeleteProjectsLocationsScopesNamespacesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsScopesNamespacesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsScopesNamespacesRequest>;
 
 export type DeleteProjectsLocationsScopesNamespacesResponse = Operation;
 export const DeleteProjectsLocationsScopesNamespacesResponse =
@@ -6178,7 +6182,7 @@ export const PatchProjectsLocationsScopesNamespacesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsScopesNamespacesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsScopesNamespacesRequest>;
 
 export type PatchProjectsLocationsScopesNamespacesResponse = Operation;
 export const PatchProjectsLocationsScopesNamespacesResponse =
@@ -6226,7 +6230,7 @@ export const CreateProjectsLocationsScopesNamespacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsScopesNamespacesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsScopesNamespacesRequest>;
 
 export type CreateProjectsLocationsScopesNamespacesResponse = Operation;
 export const CreateProjectsLocationsScopesNamespacesResponse =
@@ -6268,7 +6272,7 @@ export const ListProjectsLocationsScopesNamespacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/namespaces" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsScopesNamespacesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsScopesNamespacesRequest>;
 
 export type ListProjectsLocationsScopesNamespacesResponse =
   ListScopeNamespacesResponse;
@@ -6307,7 +6311,7 @@ export const GetProjectsLocationsScopesNamespacesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsScopesNamespacesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsScopesNamespacesRequest>;
 
 export type GetProjectsLocationsScopesNamespacesResponse = Namespace;
 export const GetProjectsLocationsScopesNamespacesResponse =
@@ -6346,7 +6350,7 @@ export const GetIamPolicyProjectsLocationsFeaturesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsFeaturesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsFeaturesRequest>;
 
 export type GetIamPolicyProjectsLocationsFeaturesResponse = Policy;
 export const GetIamPolicyProjectsLocationsFeaturesResponse =
@@ -6385,7 +6389,7 @@ export const GetProjectsLocationsFeaturesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsFeaturesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsFeaturesRequest>;
 
 export type GetProjectsLocationsFeaturesResponse = Feature;
 export const GetProjectsLocationsFeaturesResponse =
@@ -6436,7 +6440,7 @@ export const ListProjectsLocationsFeaturesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/features" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsFeaturesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsFeaturesRequest>;
 
 export type ListProjectsLocationsFeaturesResponse = ListFeaturesResponse;
 export const ListProjectsLocationsFeaturesResponse =
@@ -6481,7 +6485,7 @@ export const SetIamPolicyProjectsLocationsFeaturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsFeaturesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsFeaturesRequest>;
 
 export type SetIamPolicyProjectsLocationsFeaturesResponse = Policy;
 export const SetIamPolicyProjectsLocationsFeaturesResponse =
@@ -6530,7 +6534,7 @@ export const CreateProjectsLocationsFeaturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsFeaturesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsFeaturesRequest>;
 
 export type CreateProjectsLocationsFeaturesResponse = Operation;
 export const CreateProjectsLocationsFeaturesResponse =
@@ -6575,7 +6579,7 @@ export const PatchProjectsLocationsFeaturesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsFeaturesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsFeaturesRequest>;
 
 export type PatchProjectsLocationsFeaturesResponse = Operation;
 export const PatchProjectsLocationsFeaturesResponse =
@@ -6618,7 +6622,7 @@ export const TestIamPermissionsProjectsLocationsFeaturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsFeaturesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsFeaturesRequest>;
 
 export type TestIamPermissionsProjectsLocationsFeaturesResponse =
   TestIamPermissionsResponse;
@@ -6661,7 +6665,7 @@ export const DeleteProjectsLocationsFeaturesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsFeaturesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsFeaturesRequest>;
 
 export type DeleteProjectsLocationsFeaturesResponse = Operation;
 export const DeleteProjectsLocationsFeaturesResponse =
@@ -6697,7 +6701,7 @@ export const DeleteProjectsLocationsRolloutSequencesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRolloutSequencesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRolloutSequencesRequest>;
 
 export type DeleteProjectsLocationsRolloutSequencesResponse = Operation;
 export const DeleteProjectsLocationsRolloutSequencesResponse =
@@ -6736,7 +6740,7 @@ export const UpgradeProjectsLocationsRolloutSequencesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:upgrade", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpgradeProjectsLocationsRolloutSequencesRequest>;
+  ) as unknown as Schema.Codec<UpgradeProjectsLocationsRolloutSequencesRequest>;
 
 export type UpgradeProjectsLocationsRolloutSequencesResponse = Operation;
 export const UpgradeProjectsLocationsRolloutSequencesResponse =
@@ -6778,7 +6782,7 @@ export const PatchProjectsLocationsRolloutSequencesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRolloutSequencesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRolloutSequencesRequest>;
 
 export type PatchProjectsLocationsRolloutSequencesResponse = Operation;
 export const PatchProjectsLocationsRolloutSequencesResponse =
@@ -6826,7 +6830,7 @@ export const CreateProjectsLocationsRolloutSequencesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRolloutSequencesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRolloutSequencesRequest>;
 
 export type CreateProjectsLocationsRolloutSequencesResponse = Operation;
 export const CreateProjectsLocationsRolloutSequencesResponse =
@@ -6871,7 +6875,7 @@ export const ListProjectsLocationsRolloutSequencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/rolloutSequences" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRolloutSequencesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRolloutSequencesRequest>;
 
 export type ListProjectsLocationsRolloutSequencesResponse =
   ListRolloutSequencesResponse;
@@ -6910,7 +6914,7 @@ export const GetProjectsLocationsRolloutSequencesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRolloutSequencesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRolloutSequencesRequest>;
 
 export type GetProjectsLocationsRolloutSequencesResponse = RolloutSequence;
 export const GetProjectsLocationsRolloutSequencesResponse =
@@ -6950,7 +6954,7 @@ export const ListOrganizationsLocationsFleetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/fleets" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsFleetsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsFleetsRequest>;
 
 export type ListOrganizationsLocationsFleetsResponse = ListFleetsResponse;
 export const ListOrganizationsLocationsFleetsResponse =

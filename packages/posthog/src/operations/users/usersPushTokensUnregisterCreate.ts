@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersPushTokensUnregisterCreateInput {
+  uuid: string;
+  token: string;
+}
 export const UsersPushTokensUnregisterCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const UsersPushTokensUnregisterCreateInput =
       method: "POST",
       path: "/api/users/{uuid}/push_tokens/unregister/",
     }),
-  );
-export type UsersPushTokensUnregisterCreateInput =
-  typeof UsersPushTokensUnregisterCreateInput.Type;
+  ) as unknown as Schema.Codec<UsersPushTokensUnregisterCreateInput>;
 
 // Output Schema
+export type UsersPushTokensUnregisterCreateOutput = void;
 export const UsersPushTokensUnregisterCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersPushTokensUnregisterCreateOutput =
-  typeof UsersPushTokensUnregisterCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersPushTokensUnregisterCreateOutput>;
 
 // The operation
 /**

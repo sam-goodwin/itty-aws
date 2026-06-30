@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1ProjectsByProjectIdComputeServicesInput {
+  projectId: string;
+  cursor?: string;
+  limit?: number;
+}
 export const GetV1ProjectsByProjectIdComputeServicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,24 @@ export const GetV1ProjectsByProjectIdComputeServicesInput =
       method: "GET",
       path: "/v1/projects/{projectId}/compute-services",
     }),
-  );
-export type GetV1ProjectsByProjectIdComputeServicesInput =
-  typeof GetV1ProjectsByProjectIdComputeServicesInput.Type;
+  ) as unknown as Schema.Codec<GetV1ProjectsByProjectIdComputeServicesInput>;
 
 // Output Schema
+export interface GetV1ProjectsByProjectIdComputeServicesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    region: { id: string; name: string };
+    projectId: string;
+    branchId: string | null;
+    latestVersionId: string | null;
+    serviceEndpointDomain: string;
+    createdAt: string;
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1ProjectsByProjectIdComputeServicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -42,9 +60,7 @@ export const GetV1ProjectsByProjectIdComputeServicesOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1ProjectsByProjectIdComputeServicesOutput =
-  typeof GetV1ProjectsByProjectIdComputeServicesOutput.Type;
+  }) as unknown as Schema.Codec<GetV1ProjectsByProjectIdComputeServicesOutput>;
 
 // The operation
 /**

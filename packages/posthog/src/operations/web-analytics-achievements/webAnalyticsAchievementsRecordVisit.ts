@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WebAnalyticsAchievementsRecordVisitInput {
+  project_id: string;
+}
 export const WebAnalyticsAchievementsRecordVisitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,17 +14,16 @@ export const WebAnalyticsAchievementsRecordVisitInput =
       method: "POST",
       path: "/api/projects/{project_id}/web_analytics_achievements/record_visit/",
     }),
-  );
-export type WebAnalyticsAchievementsRecordVisitInput =
-  typeof WebAnalyticsAchievementsRecordVisitInput.Type;
+  ) as unknown as Schema.Codec<WebAnalyticsAchievementsRecordVisitInput>;
 
 // Output Schema
+export interface WebAnalyticsAchievementsRecordVisitOutput {
+  recorded: boolean;
+}
 export const WebAnalyticsAchievementsRecordVisitOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recorded: Schema.Boolean,
-  });
-export type WebAnalyticsAchievementsRecordVisitOutput =
-  typeof WebAnalyticsAchievementsRecordVisitOutput.Type;
+  }) as unknown as Schema.Codec<WebAnalyticsAchievementsRecordVisitOutput>;
 
 // The operation
 /**

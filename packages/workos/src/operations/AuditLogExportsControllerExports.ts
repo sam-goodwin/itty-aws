@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuditLogExportsControllerExportsInput {
+  organization_id?: string;
+  range_start?: string;
+  range_end?: string;
+  actions?: string[];
+  actors?: string[];
+  actor_names?: string[];
+  actor_ids?: string[];
+  targets?: string[];
+}
 export const AuditLogExportsControllerExportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
@@ -14,11 +24,19 @@ export const AuditLogExportsControllerExportsInput =
     actor_names: Schema.optional(Schema.Array(Schema.String)),
     actor_ids: Schema.optional(Schema.Array(Schema.String)),
     targets: Schema.optional(Schema.Array(Schema.String)),
-  }).pipe(T.Http({ method: "POST", path: "/audit_logs/exports" }));
-export type AuditLogExportsControllerExportsInput =
-  typeof AuditLogExportsControllerExportsInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/audit_logs/exports" }),
+  ) as unknown as Schema.Codec<AuditLogExportsControllerExportsInput>;
 
 // Output Schema
+export interface AuditLogExportsControllerExportsOutput {
+  object?: string;
+  id?: string;
+  state?: "pending" | "ready" | "error" | "expired";
+  url?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuditLogExportsControllerExportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -29,9 +47,7 @@ export const AuditLogExportsControllerExportsOutput =
     url: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuditLogExportsControllerExportsOutput =
-  typeof AuditLogExportsControllerExportsOutput.Type;
+  }) as unknown as Schema.Codec<AuditLogExportsControllerExportsOutput>;
 
 // The operation
 /**

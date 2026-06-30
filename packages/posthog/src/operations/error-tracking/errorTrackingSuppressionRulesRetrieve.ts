@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingSuppressionRulesRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingSuppressionRulesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,18 @@ export const ErrorTrackingSuppressionRulesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/suppression_rules/{id}/",
     }),
-  );
-export type ErrorTrackingSuppressionRulesRetrieveInput =
-  typeof ErrorTrackingSuppressionRulesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesRetrieveInput>;
 
 // Output Schema
+export interface ErrorTrackingSuppressionRulesRetrieveOutput {
+  id?: string;
+  filters?: unknown;
+  order_key?: number;
+  disabled_data?: unknown;
+  sampling_rate?: number;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingSuppressionRulesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -26,9 +37,7 @@ export const ErrorTrackingSuppressionRulesRetrieveOutput =
     sampling_rate: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingSuppressionRulesRetrieveOutput =
-  typeof ErrorTrackingSuppressionRulesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesRetrieveOutput>;
 
 // The operation
 /**

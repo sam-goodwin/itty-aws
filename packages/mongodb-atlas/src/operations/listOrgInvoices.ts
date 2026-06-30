@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgInvoicesInput {
+  orgId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  viewLinkedInvoices?: boolean;
+  statusNames?: string;
+  fromDate?: string;
+  toDate?: string;
+  sortBy?: "START_DATE" | "END_DATE";
+  orderBy?: "desc" | "asc";
+}
 export const ListOrgInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -17,12 +31,14 @@ export const ListOrgInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   toDate: Schema.optional(Schema.String),
   sortBy: Schema.optional(Schema.Literals(["START_DATE", "END_DATE"])),
   orderBy: Schema.optional(Schema.Literals(["desc", "asc"])),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/invoices" }));
-export type ListOrgInvoicesInput = typeof ListOrgInvoicesInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/invoices" }),
+) as unknown as Schema.Codec<ListOrgInvoicesInput>;
 
 // Output Schema
-export const ListOrgInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgInvoicesOutput = typeof ListOrgInvoicesOutput.Type;
+export type ListOrgInvoicesOutput = void;
+export const ListOrgInvoicesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgInvoicesOutput>;
 
 // The operation
 /**

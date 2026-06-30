@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateOrganizationInvitationsInput {
+  org_id: string;
+  invitations: {
+    email: string;
+    role: "admin" | "member" | "editor" | "viewer" | "collaborator";
+  }[];
+}
 export const CreateOrganizationInvitationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +27,19 @@ export const CreateOrganizationInvitationsInput =
     ),
   }).pipe(
     T.Http({ method: "POST", path: "/organizations/{org_id}/invitations" }),
-  );
-export type CreateOrganizationInvitationsInput =
-  typeof CreateOrganizationInvitationsInput.Type;
+  ) as unknown as Schema.Codec<CreateOrganizationInvitationsInput>;
 
 // Output Schema
+export interface CreateOrganizationInvitationsOutput {
+  invitations: {
+    id: string;
+    email: string;
+    org_id: string;
+    invited_by: string;
+    invited_at: string;
+    role: "admin" | "member" | "editor" | "viewer" | "collaborator";
+  }[];
+}
 export const CreateOrganizationInvitationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invitations: Schema.Array(
@@ -43,9 +58,7 @@ export const CreateOrganizationInvitationsOutput =
         ]),
       }),
     ),
-  });
-export type CreateOrganizationInvitationsOutput =
-  typeof CreateOrganizationInvitationsOutput.Type;
+  }) as unknown as Schema.Codec<CreateOrganizationInvitationsOutput>;
 
 // The operation
 /**

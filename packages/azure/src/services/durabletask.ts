@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17,10 +18,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DurableTask/operations",
     apiVersion: "2026-02-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -43,8 +58,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -57,6 +71,25 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface RetentionPoliciesCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    retentionPolicies?: {
+      retentionPeriodInDays: number;
+      orchestrationState?: "Completed" | "Failed" | "Terminated" | "Canceled";
+    }[];
+  };
+}
 export const RetentionPoliciesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -98,11 +131,22 @@ export const RetentionPoliciesCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
       apiVersion: "2026-02-01",
     }),
-  );
-export type RetentionPoliciesCreateOrReplaceInput =
-  typeof RetentionPoliciesCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<RetentionPoliciesCreateOrReplaceInput>;
 
 // Output Schema
+export interface RetentionPoliciesCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RetentionPoliciesCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -122,9 +166,7 @@ export const RetentionPoliciesCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RetentionPoliciesCreateOrReplaceOutput =
-  typeof RetentionPoliciesCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<RetentionPoliciesCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -141,6 +183,11 @@ export const RetentionPoliciesCreateOrReplace =
     outputSchema: RetentionPoliciesCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface RetentionPoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+}
 export const RetentionPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -152,15 +199,12 @@ export const RetentionPoliciesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
       apiVersion: "2026-02-01",
     }),
-  );
-export type RetentionPoliciesDeleteInput =
-  typeof RetentionPoliciesDeleteInput.Type;
+  ) as unknown as Schema.Codec<RetentionPoliciesDeleteInput>;
 
 // Output Schema
+export type RetentionPoliciesDeleteOutput = void;
 export const RetentionPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RetentionPoliciesDeleteOutput =
-  typeof RetentionPoliciesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RetentionPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -178,6 +222,11 @@ export const RetentionPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RetentionPoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+}
 export const RetentionPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -189,10 +238,22 @@ export const RetentionPoliciesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
       apiVersion: "2026-02-01",
     }),
-  );
-export type RetentionPoliciesGetInput = typeof RetentionPoliciesGetInput.Type;
+  ) as unknown as Schema.Codec<RetentionPoliciesGetInput>;
 
 // Output Schema
+export interface RetentionPoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RetentionPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -212,8 +273,7 @@ export const RetentionPoliciesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RetentionPoliciesGetOutput = typeof RetentionPoliciesGetOutput.Type;
+  }) as unknown as Schema.Codec<RetentionPoliciesGetOutput>;
 
 // The operation
 /**
@@ -231,6 +291,11 @@ export const RetentionPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RetentionPoliciesListBySchedulerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+}
 export const RetentionPoliciesListBySchedulerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -242,11 +307,25 @@ export const RetentionPoliciesListBySchedulerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies",
       apiVersion: "2026-02-01",
     }),
-  );
-export type RetentionPoliciesListBySchedulerInput =
-  typeof RetentionPoliciesListBySchedulerInput.Type;
+  ) as unknown as Schema.Codec<RetentionPoliciesListBySchedulerInput>;
 
 // Output Schema
+export interface RetentionPoliciesListBySchedulerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RetentionPoliciesListBySchedulerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -281,9 +360,7 @@ export const RetentionPoliciesListBySchedulerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RetentionPoliciesListBySchedulerOutput =
-  typeof RetentionPoliciesListBySchedulerOutput.Type;
+  }) as unknown as Schema.Codec<RetentionPoliciesListBySchedulerOutput>;
 
 // The operation
 /**
@@ -300,6 +377,25 @@ export const RetentionPoliciesListByScheduler =
     outputSchema: RetentionPoliciesListBySchedulerOutput,
   }));
 // Input Schema
+export interface RetentionPoliciesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    retentionPolicies?: {
+      retentionPeriodInDays: number;
+      orchestrationState?: "Completed" | "Failed" | "Terminated" | "Canceled";
+    }[];
+  };
+}
 export const RetentionPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -341,11 +437,22 @@ export const RetentionPoliciesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
       apiVersion: "2026-02-01",
     }),
-  );
-export type RetentionPoliciesUpdateInput =
-  typeof RetentionPoliciesUpdateInput.Type;
+  ) as unknown as Schema.Codec<RetentionPoliciesUpdateInput>;
 
 // Output Schema
+export interface RetentionPoliciesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RetentionPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -365,9 +472,7 @@ export const RetentionPoliciesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RetentionPoliciesUpdateOutput =
-  typeof RetentionPoliciesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RetentionPoliciesUpdateOutput>;
 
 // The operation
 /**
@@ -385,6 +490,44 @@ export const RetentionPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    endpoint?: string;
+    ipAllowlist: string[];
+    sku: {
+      name: "Dedicated" | "Consumption";
+      capacity?: number;
+      redundancyState?: "None" | "Zone";
+    };
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SchedulersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -456,11 +599,22 @@ export const SchedulersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersCreateOrUpdateInput =
-  typeof SchedulersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchedulersCreateOrUpdateInput>;
 
 // Output Schema
+export interface SchedulersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -480,9 +634,7 @@ export const SchedulersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchedulersCreateOrUpdateOutput =
-  typeof SchedulersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -500,6 +652,33 @@ export const SchedulersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulersCreateOrUpdatePrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -549,11 +728,22 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersCreateOrUpdatePrivateEndpointConnectionInput =
-  typeof SchedulersCreateOrUpdatePrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<SchedulersCreateOrUpdatePrivateEndpointConnectionInput>;
 
 // Output Schema
+export interface SchedulersCreateOrUpdatePrivateEndpointConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulersCreateOrUpdatePrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -573,9 +763,7 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchedulersCreateOrUpdatePrivateEndpointConnectionOutput =
-  typeof SchedulersCreateOrUpdatePrivateEndpointConnectionOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersCreateOrUpdatePrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -594,6 +782,11 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnection =
     outputSchema: SchedulersCreateOrUpdatePrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface SchedulersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+}
 export const SchedulersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -604,12 +797,12 @@ export const SchedulersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type SchedulersDeleteInput = typeof SchedulersDeleteInput.Type;
+) as unknown as Schema.Codec<SchedulersDeleteInput>;
 
 // Output Schema
-export const SchedulersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchedulersDeleteOutput = typeof SchedulersDeleteOutput.Type;
+export type SchedulersDeleteOutput = void;
+export const SchedulersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulersDeleteOutput>;
 
 // The operation
 /**
@@ -625,6 +818,12 @@ export const SchedulersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulersDeleteOutput,
 }));
 // Input Schema
+export interface SchedulersDeletePrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  privateEndpointConnectionName: string;
+}
 export const SchedulersDeletePrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -637,15 +836,12 @@ export const SchedulersDeletePrivateEndpointConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersDeletePrivateEndpointConnectionInput =
-  typeof SchedulersDeletePrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<SchedulersDeletePrivateEndpointConnectionInput>;
 
 // Output Schema
+export type SchedulersDeletePrivateEndpointConnectionOutput = void;
 export const SchedulersDeletePrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchedulersDeletePrivateEndpointConnectionOutput =
-  typeof SchedulersDeletePrivateEndpointConnectionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulersDeletePrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -663,6 +859,11 @@ export const SchedulersDeletePrivateEndpointConnection =
     outputSchema: SchedulersDeletePrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface SchedulersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+}
 export const SchedulersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -673,10 +874,22 @@ export const SchedulersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type SchedulersGetInput = typeof SchedulersGetInput.Type;
+) as unknown as Schema.Codec<SchedulersGetInput>;
 
 // Output Schema
+export interface SchedulersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -695,8 +908,7 @@ export const SchedulersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchedulersGetOutput = typeof SchedulersGetOutput.Type;
+}) as unknown as Schema.Codec<SchedulersGetOutput>;
 
 // The operation
 /**
@@ -712,6 +924,12 @@ export const SchedulersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulersGetOutput,
 }));
 // Input Schema
+export interface SchedulersGetPrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  privateEndpointConnectionName: string;
+}
 export const SchedulersGetPrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -724,11 +942,22 @@ export const SchedulersGetPrivateEndpointConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersGetPrivateEndpointConnectionInput =
-  typeof SchedulersGetPrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<SchedulersGetPrivateEndpointConnectionInput>;
 
 // Output Schema
+export interface SchedulersGetPrivateEndpointConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulersGetPrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -748,9 +977,7 @@ export const SchedulersGetPrivateEndpointConnectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchedulersGetPrivateEndpointConnectionOutput =
-  typeof SchedulersGetPrivateEndpointConnectionOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersGetPrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -768,6 +995,12 @@ export const SchedulersGetPrivateEndpointConnection =
     outputSchema: SchedulersGetPrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface SchedulersGetPrivateLinkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  privateLinkResourceName: string;
+}
 export const SchedulersGetPrivateLinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -780,11 +1013,22 @@ export const SchedulersGetPrivateLinkInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersGetPrivateLinkInput =
-  typeof SchedulersGetPrivateLinkInput.Type;
+  ) as unknown as Schema.Codec<SchedulersGetPrivateLinkInput>;
 
 // Output Schema
+export interface SchedulersGetPrivateLinkOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulersGetPrivateLinkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -804,9 +1048,7 @@ export const SchedulersGetPrivateLinkOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchedulersGetPrivateLinkOutput =
-  typeof SchedulersGetPrivateLinkOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersGetPrivateLinkOutput>;
 
 // The operation
 /**
@@ -825,6 +1067,10 @@ export const SchedulersGetPrivateLink = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SchedulersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -835,11 +1081,25 @@ export const SchedulersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersListByResourceGroupInput =
-  typeof SchedulersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SchedulersListByResourceGroupInput>;
 
 // Output Schema
+export interface SchedulersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchedulersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -874,9 +1134,7 @@ export const SchedulersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchedulersListByResourceGroupOutput =
-  typeof SchedulersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -892,6 +1150,9 @@ export const SchedulersListByResourceGroup =
     outputSchema: SchedulersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SchedulersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SchedulersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -901,11 +1162,25 @@ export const SchedulersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DurableTask/schedulers",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersListBySubscriptionInput =
-  typeof SchedulersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SchedulersListBySubscriptionInput>;
 
 // Output Schema
+export interface SchedulersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchedulersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -940,9 +1215,7 @@ export const SchedulersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchedulersListBySubscriptionOutput =
-  typeof SchedulersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -957,6 +1230,11 @@ export const SchedulersListBySubscription =
     outputSchema: SchedulersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SchedulersListPrivateEndpointConnectionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+}
 export const SchedulersListPrivateEndpointConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -968,11 +1246,25 @@ export const SchedulersListPrivateEndpointConnectionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersListPrivateEndpointConnectionsInput =
-  typeof SchedulersListPrivateEndpointConnectionsInput.Type;
+  ) as unknown as Schema.Codec<SchedulersListPrivateEndpointConnectionsInput>;
 
 // Output Schema
+export interface SchedulersListPrivateEndpointConnectionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchedulersListPrivateEndpointConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1007,9 +1299,7 @@ export const SchedulersListPrivateEndpointConnectionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchedulersListPrivateEndpointConnectionsOutput =
-  typeof SchedulersListPrivateEndpointConnectionsOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersListPrivateEndpointConnectionsOutput>;
 
 // The operation
 /**
@@ -1026,6 +1316,11 @@ export const SchedulersListPrivateEndpointConnections =
     outputSchema: SchedulersListPrivateEndpointConnectionsOutput,
   }));
 // Input Schema
+export interface SchedulersListPrivateLinksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+}
 export const SchedulersListPrivateLinksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1037,11 +1332,25 @@ export const SchedulersListPrivateLinksInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersListPrivateLinksInput =
-  typeof SchedulersListPrivateLinksInput.Type;
+  ) as unknown as Schema.Codec<SchedulersListPrivateLinksInput>;
 
 // Output Schema
+export interface SchedulersListPrivateLinksOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchedulersListPrivateLinksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1076,9 +1385,7 @@ export const SchedulersListPrivateLinksOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchedulersListPrivateLinksOutput =
-  typeof SchedulersListPrivateLinksOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersListPrivateLinksOutput>;
 
 // The operation
 /**
@@ -1096,6 +1403,30 @@ export const SchedulersListPrivateLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    endpoint?: string;
+    ipAllowlist?: string[];
+    sku?: {
+      name?: "Dedicated" | "Consumption";
+      capacity?: number;
+      redundancyState?: "None" | "Zone";
+    };
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  tags?: Record<string, string>;
+}
 export const SchedulersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1134,10 +1465,22 @@ export const SchedulersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type SchedulersUpdateInput = typeof SchedulersUpdateInput.Type;
+) as unknown as Schema.Codec<SchedulersUpdateInput>;
 
 // Output Schema
+export interface SchedulersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1158,8 +1501,7 @@ export const SchedulersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type SchedulersUpdateOutput = typeof SchedulersUpdateOutput.Type;
+) as unknown as Schema.Codec<SchedulersUpdateOutput>;
 
 // The operation
 /**
@@ -1175,6 +1517,20 @@ export const SchedulersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulersUpdateOutput,
 }));
 // Input Schema
+export interface SchedulersUpdatePrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const SchedulersUpdatePrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1205,11 +1561,22 @@ export const SchedulersUpdatePrivateEndpointConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type SchedulersUpdatePrivateEndpointConnectionInput =
-  typeof SchedulersUpdatePrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<SchedulersUpdatePrivateEndpointConnectionInput>;
 
 // Output Schema
+export interface SchedulersUpdatePrivateEndpointConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulersUpdatePrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1229,9 +1596,7 @@ export const SchedulersUpdatePrivateEndpointConnectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchedulersUpdatePrivateEndpointConnectionOutput =
-  typeof SchedulersUpdatePrivateEndpointConnectionOutput.Type;
+  }) as unknown as Schema.Codec<SchedulersUpdatePrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -1249,6 +1614,23 @@ export const SchedulersUpdatePrivateEndpointConnection =
     outputSchema: SchedulersUpdatePrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface TaskHubsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  taskHubName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    dashboardUrl?: string;
+  };
+}
 export const TaskHubsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1277,11 +1659,22 @@ export const TaskHubsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
       apiVersion: "2026-02-01",
     }),
-  );
-export type TaskHubsCreateOrUpdateInput =
-  typeof TaskHubsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TaskHubsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TaskHubsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TaskHubsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1301,9 +1694,7 @@ export const TaskHubsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TaskHubsCreateOrUpdateOutput =
-  typeof TaskHubsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TaskHubsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1322,6 +1713,12 @@ export const TaskHubsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TaskHubsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  taskHubName: string;
+}
 export const TaskHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1333,12 +1730,12 @@ export const TaskHubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type TaskHubsDeleteInput = typeof TaskHubsDeleteInput.Type;
+) as unknown as Schema.Codec<TaskHubsDeleteInput>;
 
 // Output Schema
-export const TaskHubsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TaskHubsDeleteOutput = typeof TaskHubsDeleteOutput.Type;
+export type TaskHubsDeleteOutput = void;
+export const TaskHubsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TaskHubsDeleteOutput>;
 
 // The operation
 /**
@@ -1355,6 +1752,12 @@ export const TaskHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TaskHubsDeleteOutput,
 }));
 // Input Schema
+export interface TaskHubsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+  taskHubName: string;
+}
 export const TaskHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1366,10 +1769,22 @@ export const TaskHubsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
     apiVersion: "2026-02-01",
   }),
-);
-export type TaskHubsGetInput = typeof TaskHubsGetInput.Type;
+) as unknown as Schema.Codec<TaskHubsGetInput>;
 
 // Output Schema
+export interface TaskHubsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TaskHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1388,8 +1803,7 @@ export const TaskHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TaskHubsGetOutput = typeof TaskHubsGetOutput.Type;
+}) as unknown as Schema.Codec<TaskHubsGetOutput>;
 
 // The operation
 /**
@@ -1406,6 +1820,11 @@ export const TaskHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TaskHubsGetOutput,
 }));
 // Input Schema
+export interface TaskHubsListBySchedulerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schedulerName: string;
+}
 export const TaskHubsListBySchedulerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1417,11 +1836,25 @@ export const TaskHubsListBySchedulerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs",
       apiVersion: "2026-02-01",
     }),
-  );
-export type TaskHubsListBySchedulerInput =
-  typeof TaskHubsListBySchedulerInput.Type;
+  ) as unknown as Schema.Codec<TaskHubsListBySchedulerInput>;
 
 // Output Schema
+export interface TaskHubsListBySchedulerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TaskHubsListBySchedulerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1456,9 +1889,7 @@ export const TaskHubsListBySchedulerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TaskHubsListBySchedulerOutput =
-  typeof TaskHubsListBySchedulerOutput.Type;
+  }) as unknown as Schema.Codec<TaskHubsListBySchedulerOutput>;
 
 // The operation
 /**

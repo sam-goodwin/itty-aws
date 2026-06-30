@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ManagedViewsetsUpdateInput {
+  kind: "revenue_analytics";
+  project_id: string;
+}
 export const ManagedViewsetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.Literals(["revenue_analytics"]).pipe(T.PathParam()),
@@ -12,14 +16,12 @@ export const ManagedViewsetsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/managed_viewsets/{kind}/",
     }),
-  );
-export type ManagedViewsetsUpdateInput = typeof ManagedViewsetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedViewsetsUpdateInput>;
 
 // Output Schema
+export type ManagedViewsetsUpdateOutput = void;
 export const ManagedViewsetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedViewsetsUpdateOutput =
-  typeof ManagedViewsetsUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedViewsetsUpdateOutput>;
 
 // The operation
 /**

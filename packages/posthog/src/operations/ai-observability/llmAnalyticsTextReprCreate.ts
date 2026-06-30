@@ -4,6 +4,23 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsTextReprCreateInput {
+  project_id: string;
+  event_type?: "$ai_generation" | "$ai_span" | "$ai_embedding" | "$ai_trace";
+  data?: unknown;
+  options?: {
+    max_length?: number;
+    truncated?: boolean;
+    truncate_buffer?: number;
+    include_markers?: boolean;
+    collapsed?: boolean;
+    include_metadata?: boolean;
+    include_hierarchy?: boolean;
+    max_depth?: number;
+    tools_collapse_threshold?: number;
+    include_line_numbers?: boolean;
+  };
+}
 export const LlmAnalyticsTextReprCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -35,11 +52,21 @@ export const LlmAnalyticsTextReprCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_analytics/text_repr/",
     }),
-  );
-export type LlmAnalyticsTextReprCreateInput =
-  typeof LlmAnalyticsTextReprCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsTextReprCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsTextReprCreateOutput {
+  text?: string;
+  metadata?: {
+    event_type?: string;
+    event_id?: string;
+    trace_id?: string;
+    rendering?: string;
+    char_count?: number;
+    truncated?: boolean;
+    error?: string;
+  };
+}
 export const LlmAnalyticsTextReprCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
@@ -54,9 +81,7 @@ export const LlmAnalyticsTextReprCreateOutput =
         error: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LlmAnalyticsTextReprCreateOutput =
-  typeof LlmAnalyticsTextReprCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsTextReprCreateOutput>;
 
 // The operation
 /**

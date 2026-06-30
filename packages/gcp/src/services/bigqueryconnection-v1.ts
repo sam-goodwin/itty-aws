@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface SparkHistoryServerConfig {
   dataprocCluster?: string;
 }
 
-export const SparkHistoryServerConfig: Schema.Schema<SparkHistoryServerConfig> =
+export const SparkHistoryServerConfig: Schema.Codec<SparkHistoryServerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataprocCluster: Schema.optional(Schema.String),
   }).annotate({ identifier: "SparkHistoryServerConfig" });
@@ -37,7 +37,7 @@ export interface MetastoreServiceConfig {
   metastoreService?: string;
 }
 
-export const MetastoreServiceConfig: Schema.Schema<MetastoreServiceConfig> =
+export const MetastoreServiceConfig: Schema.Codec<MetastoreServiceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metastoreService: Schema.optional(Schema.String),
   }).annotate({ identifier: "MetastoreServiceConfig" });
@@ -51,7 +51,7 @@ export interface SparkProperties {
   serviceAccountId?: string;
 }
 
-export const SparkProperties: Schema.Schema<SparkProperties> =
+export const SparkProperties: Schema.Codec<SparkProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sparkHistoryServerConfig: Schema.optional(SparkHistoryServerConfig),
     metastoreServiceConfig: Schema.optional(MetastoreServiceConfig),
@@ -65,7 +65,7 @@ export interface CloudSqlCredential {
   password?: string;
 }
 
-export const CloudSqlCredential: Schema.Schema<CloudSqlCredential> =
+export const CloudSqlCredential: Schema.Codec<CloudSqlCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface CloudSqlProperties {
   credential?: CloudSqlCredential;
 }
 
-export const CloudSqlProperties: Schema.Schema<CloudSqlProperties> =
+export const CloudSqlProperties: Schema.Codec<CloudSqlProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceId: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export interface CloudResourceProperties {
   serviceAccountId?: string;
 }
 
-export const CloudResourceProperties: Schema.Schema<CloudResourceProperties> =
+export const CloudResourceProperties: Schema.Codec<CloudResourceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccountId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CloudResourceProperties" });
@@ -110,7 +110,7 @@ export interface AwsAccessRole {
   identity?: string;
 }
 
-export const AwsAccessRole: Schema.Schema<AwsAccessRole> =
+export const AwsAccessRole: Schema.Codec<AwsAccessRole> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iamRoleId: Schema.optional(Schema.String),
     identity: Schema.optional(Schema.String),
@@ -121,7 +121,7 @@ export interface AwsProperties {
   accessRole?: AwsAccessRole;
 }
 
-export const AwsProperties: Schema.Schema<AwsProperties> =
+export const AwsProperties: Schema.Codec<AwsProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessRole: Schema.optional(AwsAccessRole),
   }).annotate({ identifier: "AwsProperties" });
@@ -141,7 +141,7 @@ export interface CloudSpannerProperties {
   useDataBoost?: boolean;
 }
 
-export const CloudSpannerProperties: Schema.Schema<CloudSpannerProperties> =
+export const CloudSpannerProperties: Schema.Codec<CloudSpannerProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     useParallelism: Schema.optional(Schema.Boolean),
     databaseRole: Schema.optional(Schema.String),
@@ -160,7 +160,7 @@ export interface SalesforceDataCloudProperties {
   tenantId?: string;
 }
 
-export const SalesforceDataCloudProperties: Schema.Schema<SalesforceDataCloudProperties> =
+export const SalesforceDataCloudProperties: Schema.Codec<SalesforceDataCloudProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceUri: Schema.optional(Schema.String),
     identity: Schema.optional(Schema.String),
@@ -174,7 +174,7 @@ export interface ConnectorConfigurationSecret {
   secretType?: "SECRET_TYPE_UNSPECIFIED" | "PLAINTEXT" | (string & {});
 }
 
-export const ConnectorConfigurationSecret: Schema.Schema<ConnectorConfigurationSecret> =
+export const ConnectorConfigurationSecret: Schema.Codec<ConnectorConfigurationSecret> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     plaintext: Schema.optional(Schema.String),
     secretType: Schema.optional(Schema.String),
@@ -187,7 +187,7 @@ export interface ConnectorConfigurationUsernamePassword {
   password?: ConnectorConfigurationSecret;
 }
 
-export const ConnectorConfigurationUsernamePassword: Schema.Schema<ConnectorConfigurationUsernamePassword> =
+export const ConnectorConfigurationUsernamePassword: Schema.Codec<ConnectorConfigurationUsernamePassword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(ConnectorConfigurationSecret),
@@ -206,7 +206,7 @@ export interface ConnectorConfigurationParameterValue {
   secretValue?: ConnectorConfigurationSecret;
 }
 
-export const ConnectorConfigurationParameterValue: Schema.Schema<ConnectorConfigurationParameterValue> =
+export const ConnectorConfigurationParameterValue: Schema.Codec<ConnectorConfigurationParameterValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     int32Value: Schema.optional(Schema.Number),
     stringValue: Schema.optional(Schema.String),
@@ -224,7 +224,7 @@ export interface ConnectorConfigurationAuthentication {
   parameters?: Record<string, ConnectorConfigurationParameterValue>;
 }
 
-export const ConnectorConfigurationAuthentication: Schema.Schema<ConnectorConfigurationAuthentication> =
+export const ConnectorConfigurationAuthentication: Schema.Codec<ConnectorConfigurationAuthentication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
     usernamePassword: Schema.optional(ConnectorConfigurationUsernamePassword),
@@ -238,7 +238,7 @@ export interface ConnectorConfigurationPrivateServiceConnect {
   networkAttachment?: string;
 }
 
-export const ConnectorConfigurationPrivateServiceConnect: Schema.Schema<ConnectorConfigurationPrivateServiceConnect> =
+export const ConnectorConfigurationPrivateServiceConnect: Schema.Codec<ConnectorConfigurationPrivateServiceConnect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkAttachment: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConnectorConfigurationPrivateServiceConnect" });
@@ -248,7 +248,7 @@ export interface ConnectorConfigurationNetwork {
   privateServiceConnect?: ConnectorConfigurationPrivateServiceConnect;
 }
 
-export const ConnectorConfigurationNetwork: Schema.Schema<ConnectorConfigurationNetwork> =
+export const ConnectorConfigurationNetwork: Schema.Codec<ConnectorConfigurationNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateServiceConnect: Schema.optional(
       ConnectorConfigurationPrivateServiceConnect,
@@ -262,7 +262,7 @@ export interface ConnectorConfigurationAsset {
   googleCloudResource?: string;
 }
 
-export const ConnectorConfigurationAsset: Schema.Schema<ConnectorConfigurationAsset> =
+export const ConnectorConfigurationAsset: Schema.Codec<ConnectorConfigurationAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     googleCloudResource: Schema.optional(Schema.String),
@@ -273,7 +273,7 @@ export interface ConnectorConfigurationEndpoint {
   hostPort?: string;
 }
 
-export const ConnectorConfigurationEndpoint: Schema.Schema<ConnectorConfigurationEndpoint> =
+export const ConnectorConfigurationEndpoint: Schema.Codec<ConnectorConfigurationEndpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostPort: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConnectorConfigurationEndpoint" });
@@ -293,7 +293,7 @@ export interface ConnectorConfiguration {
   endpoint?: ConnectorConfigurationEndpoint;
 }
 
-export const ConnectorConfiguration: Schema.Schema<ConnectorConfiguration> =
+export const ConnectorConfiguration: Schema.Codec<ConnectorConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authentication: Schema.optional(ConnectorConfigurationAuthentication),
     network: Schema.optional(ConnectorConfigurationNetwork),
@@ -322,7 +322,7 @@ export interface AzureProperties {
   federatedApplicationClientId?: string;
 }
 
-export const AzureProperties: Schema.Schema<AzureProperties> =
+export const AzureProperties: Schema.Codec<AzureProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -366,7 +366,7 @@ export interface Connection {
   azure?: AzureProperties;
 }
 
-export const Connection: Schema.Schema<Connection> =
+export const Connection: Schema.Codec<Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spark: Schema.optional(SparkProperties),
     name: Schema.optional(Schema.String),
@@ -390,7 +390,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -402,7 +402,7 @@ export interface ListConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
+export const ListConnectionsResponse: Schema.Codec<ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connections: Schema.optional(Schema.Array(Connection)),
     nextPageToken: Schema.optional(Schema.String),
@@ -420,7 +420,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -433,7 +433,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -450,7 +450,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -467,7 +467,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -485,7 +485,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
@@ -500,7 +500,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -511,7 +511,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -521,7 +521,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -531,14 +531,14 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -615,7 +615,7 @@ export const TestIamPermissionsProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsConnectionsRequest>;
 
 export type TestIamPermissionsProjectsLocationsConnectionsResponse =
   TestIamPermissionsResponse;
@@ -652,7 +652,7 @@ export const GetProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionsRequest>;
 
 export type GetProjectsLocationsConnectionsResponse = Connection;
 export const GetProjectsLocationsConnectionsResponse =
@@ -686,7 +686,7 @@ export const DeleteProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionsRequest>;
 
 export type DeleteProjectsLocationsConnectionsResponse = Empty;
 export const DeleteProjectsLocationsConnectionsResponse =
@@ -730,7 +730,7 @@ export const CreateProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/connections", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionsRequest>;
 
 export type CreateProjectsLocationsConnectionsResponse = Connection;
 export const CreateProjectsLocationsConnectionsResponse =
@@ -772,7 +772,7 @@ export const ListProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRequest>;
 
 export type ListProjectsLocationsConnectionsResponse = ListConnectionsResponse;
 export const ListProjectsLocationsConnectionsResponse =
@@ -816,7 +816,7 @@ export const PatchProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConnectionsRequest>;
 
 export type PatchProjectsLocationsConnectionsResponse = Connection;
 export const PatchProjectsLocationsConnectionsResponse =
@@ -859,7 +859,7 @@ export const GetIamPolicyProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsConnectionsRequest>;
 
 export type GetIamPolicyProjectsLocationsConnectionsResponse = Policy;
 export const GetIamPolicyProjectsLocationsConnectionsResponse =
@@ -902,7 +902,7 @@ export const SetIamPolicyProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsConnectionsRequest>;
 
 export type SetIamPolicyProjectsLocationsConnectionsResponse = Policy;
 export const SetIamPolicyProjectsLocationsConnectionsResponse =

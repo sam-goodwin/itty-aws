@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ConversationsTicketsMessagesListInput {
+  id: string;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ConversationsTicketsMessagesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,23 @@ export const ConversationsTicketsMessagesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/conversations/tickets/{id}/messages/",
     }),
-  );
-export type ConversationsTicketsMessagesListInput =
-  typeof ConversationsTicketsMessagesListInput.Type;
+  ) as unknown as Schema.Codec<ConversationsTicketsMessagesListInput>;
 
 // Output Schema
+export interface ConversationsTicketsMessagesListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    content: string;
+    rich_content: unknown;
+    author_type: string;
+    author_name: string;
+    is_private: boolean;
+    created_at: string;
+  }[];
+}
 export const ConversationsTicketsMessagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -35,9 +53,7 @@ export const ConversationsTicketsMessagesListOutput =
         created_at: Schema.String,
       }),
     ),
-  });
-export type ConversationsTicketsMessagesListOutput =
-  typeof ConversationsTicketsMessagesListOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsTicketsMessagesListOutput>;
 
 // The operation
 /**

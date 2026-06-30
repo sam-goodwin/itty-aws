@@ -4,14 +4,56 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DirectoriesControllerFindInput {
+  id: string;
+}
 export const DirectoriesControllerFindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/directories/{id}" }));
-export type DirectoriesControllerFindInput =
-  typeof DirectoriesControllerFindInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/directories/{id}" }),
+  ) as unknown as Schema.Codec<DirectoriesControllerFindInput>;
 
 // Output Schema
+export interface DirectoriesControllerFindOutput {
+  object?: string;
+  id?: string;
+  organization_id?: string;
+  external_key?: string;
+  type?:
+    | "azure scim v2.0"
+    | "bamboohr"
+    | "breathe hr"
+    | "cezanne hr"
+    | "cyberark scim v2.0"
+    | "fourth hr"
+    | "generic scim v2.0"
+    | "gsuite directory"
+    | "hibob"
+    | "sailpoint scim v2.0"
+    | "jump cloud scim v2.0"
+    | "okta scim v2.0"
+    | "onelogin scim v2.0"
+    | "people hr"
+    | "personio"
+    | "pingfederate scim v2.0"
+    | "rippling scim v2.0"
+    | "s3"
+    | "sftp"
+    | "sftp workday"
+    | "workday";
+  state?:
+    | "linked"
+    | "validating"
+    | "invalid_credentials"
+    | "unlinked"
+    | "deleting";
+  name?: string;
+  domain?: string;
+  metadata?: { users: { active: number; inactive: number }; groups: number };
+  created_at?: string;
+  updated_at?: string;
+}
 export const DirectoriesControllerFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -65,9 +107,7 @@ export const DirectoriesControllerFindOutput =
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type DirectoriesControllerFindOutput =
-  typeof DirectoriesControllerFindOutput.Type;
+  }) as unknown as Schema.Codec<DirectoriesControllerFindOutput>;
 
 // The operation
 /**

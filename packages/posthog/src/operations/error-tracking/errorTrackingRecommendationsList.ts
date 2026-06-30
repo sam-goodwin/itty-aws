@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingRecommendationsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ErrorTrackingRecommendationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,25 @@ export const ErrorTrackingRecommendationsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/recommendations/",
     }),
-  );
-export type ErrorTrackingRecommendationsListInput =
-  typeof ErrorTrackingRecommendationsListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingRecommendationsListInput>;
 
 // Output Schema
+export interface ErrorTrackingRecommendationsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    type?: string;
+    meta?: unknown;
+    completed?: boolean;
+    status?: string;
+    computed_at?: string | null;
+    dismissed_at?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+}
 export const ErrorTrackingRecommendationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -38,9 +57,7 @@ export const ErrorTrackingRecommendationsListOutput =
         }),
       ),
     ),
-  });
-export type ErrorTrackingRecommendationsListOutput =
-  typeof ErrorTrackingRecommendationsListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingRecommendationsListOutput>;
 
 // The operation
 /**

@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-nameservers
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -49,6 +49,65 @@ export class Forbidden extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Dnsrecord {
+  /** DNS record type. */
+  type?: "A" | "AAAA" | (string & {}) | null;
+  /** DNS record contents (an IPv4 or IPv6 address). */
+  value?: string | null;
+}
+const Dnsrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Dnsrecord>;
+
+interface GetCustomNameserverResponseResult {
+  /** A and AAAA records associated with the nameserver. */
+  dnsRecords: {
+    type?: "A" | "AAAA" | (string & {}) | null;
+    value?: string | null;
+  }[];
+  /** The FQDN of the name server. */
+  nsName: string;
+  /** @deprecated Verification status of the nameserver. */
+  status: "moved" | "pending" | "verified" | (string & {});
+  /** Identifier. */
+  zoneTag: string;
+  /** The number of the set that this name server belongs to. */
+  nsSet?: number | null;
+}
+const GetCustomNameserverResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      dnsRecords: Schema.Array(Dnsrecord),
+      nsName: Schema.String,
+      status: Schema.Union([
+        Schema.Literals(["moved", "pending", "verified"]),
+        Schema.String,
+      ]),
+      zoneTag: Schema.String,
+      nsSet: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        dnsRecords: "dns_records",
+        nsName: "ns_name",
+        status: "status",
+        zoneTag: "zone_tag",
+        nsSet: "ns_set",
+      }),
+    ),
+  ) as unknown as Schema.Codec<GetCustomNameserverResponseResult>;
+
+// =============================================================================
 // CustomNameserver
 // =============================================================================
 
@@ -64,7 +123,7 @@ export const GetCustomNameserverRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/custom_ns" }),
     ),
-  ) as unknown as Schema.Schema<GetCustomNameserverRequest>;
+  ) as unknown as Schema.Codec<GetCustomNameserverRequest>;
 
 export interface GetCustomNameserverResponse {
   result: {
@@ -82,40 +141,9 @@ export interface GetCustomNameserverResponse {
 export const GetCustomNameserverResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          dnsRecords: Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Union([
-                  Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.String]),
-                  Schema.Null,
-                ]),
-              ),
-              value: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-          ),
-          nsName: Schema.String,
-          status: Schema.Union([
-            Schema.Literals(["moved", "pending", "verified"]),
-            Schema.String,
-          ]),
-          zoneTag: Schema.String,
-          nsSet: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            dnsRecords: "dns_records",
-            nsName: "ns_name",
-            status: "status",
-            zoneTag: "zone_tag",
-            nsSet: "ns_set",
-          }),
-        ),
-      ),
+      result: Schema.Array(GetCustomNameserverResponseResult),
     }),
-  ) as unknown as Schema.Schema<GetCustomNameserverResponse>;
+  ) as unknown as Schema.Codec<GetCustomNameserverResponse>;
 
 export type GetCustomNameserverError =
   | DefaultErrors
@@ -156,7 +184,7 @@ export const CreateCustomNameserverRequest =
       Schema.encodeKeys({ nsName: "ns_name", nsSet: "ns_set" }),
       T.Http({ method: "POST", path: "/accounts/{account_id}/custom_ns" }),
     ),
-  ) as unknown as Schema.Schema<CreateCustomNameserverRequest>;
+  ) as unknown as Schema.Codec<CreateCustomNameserverRequest>;
 
 export interface CreateCustomNameserverResponse {
   /** A and AAAA records associated with the nameserver. */
@@ -177,17 +205,7 @@ export interface CreateCustomNameserverResponse {
 export const CreateCustomNameserverResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      dnsRecords: Schema.Array(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      dnsRecords: Schema.Array(Dnsrecord),
       nsName: Schema.String,
       status: Schema.Union([
         Schema.Literals(["moved", "pending", "verified"]),
@@ -206,7 +224,7 @@ export const CreateCustomNameserverResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateCustomNameserverResponse>;
+  ) as unknown as Schema.Codec<CreateCustomNameserverResponse>;
 
 export type CreateCustomNameserverError =
   | DefaultErrors
@@ -246,7 +264,7 @@ export const DeleteCustomNameserverRequest =
         path: "/accounts/{account_id}/custom_ns/{customNSId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteCustomNameserverRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomNameserverRequest>;
 
 export interface DeleteCustomNameserverResponse {
   result: string[];
@@ -257,7 +275,7 @@ export const DeleteCustomNameserverResponse =
     Schema.Struct({
       result: Schema.Array(Schema.String),
     }),
-  ) as unknown as Schema.Schema<DeleteCustomNameserverResponse>;
+  ) as unknown as Schema.Codec<DeleteCustomNameserverResponse>;
 
 export type DeleteCustomNameserverError =
   | DefaultErrors

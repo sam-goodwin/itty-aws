@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   results?: Record<string, unknown>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse> =
+export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse: Schema.Codec<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
@@ -41,7 +41,7 @@ export interface GoogleHomeEnterpriseSdmV1ParentRelation {
   displayName?: string;
 }
 
-export const GoogleHomeEnterpriseSdmV1ParentRelation: Schema.Schema<GoogleHomeEnterpriseSdmV1ParentRelation> =
+export const GoogleHomeEnterpriseSdmV1ParentRelation: Schema.Codec<GoogleHomeEnterpriseSdmV1ParentRelation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface GoogleHomeEnterpriseSdmV1Device {
   parentRelations?: ReadonlyArray<GoogleHomeEnterpriseSdmV1ParentRelation>;
 }
 
-export const GoogleHomeEnterpriseSdmV1Device: Schema.Schema<GoogleHomeEnterpriseSdmV1Device> =
+export const GoogleHomeEnterpriseSdmV1Device: Schema.Codec<GoogleHomeEnterpriseSdmV1Device> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -73,7 +73,7 @@ export interface GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   devices?: ReadonlyArray<GoogleHomeEnterpriseSdmV1Device>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ListDevicesResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ListDevicesResponse> =
+export const GoogleHomeEnterpriseSdmV1ListDevicesResponse: Schema.Codec<GoogleHomeEnterpriseSdmV1ListDevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Device)),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListDevicesResponse" });
@@ -85,7 +85,7 @@ export interface GoogleHomeEnterpriseSdmV1Structure {
   traits?: Record<string, unknown>;
 }
 
-export const GoogleHomeEnterpriseSdmV1Structure: Schema.Schema<GoogleHomeEnterpriseSdmV1Structure> =
+export const GoogleHomeEnterpriseSdmV1Structure: Schema.Codec<GoogleHomeEnterpriseSdmV1Structure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -96,7 +96,7 @@ export interface GoogleHomeEnterpriseSdmV1ListStructuresResponse {
   structures?: ReadonlyArray<GoogleHomeEnterpriseSdmV1Structure>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ListStructuresResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse> =
+export const GoogleHomeEnterpriseSdmV1ListStructuresResponse: Schema.Codec<GoogleHomeEnterpriseSdmV1ListStructuresResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structures: Schema.optional(
       Schema.Array(GoogleHomeEnterpriseSdmV1Structure),
@@ -112,7 +112,7 @@ export interface GoogleHomeEnterpriseSdmV1Room {
   name?: string;
 }
 
-export const GoogleHomeEnterpriseSdmV1Room: Schema.Schema<GoogleHomeEnterpriseSdmV1Room> =
+export const GoogleHomeEnterpriseSdmV1Room: Schema.Codec<GoogleHomeEnterpriseSdmV1Room> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   command?: string;
 }
 
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest: Schema.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest> =
+export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest: Schema.Codec<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     command: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   rooms?: ReadonlyArray<GoogleHomeEnterpriseSdmV1Room>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ListRoomsResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ListRoomsResponse> =
+export const GoogleHomeEnterpriseSdmV1ListRoomsResponse: Schema.Codec<GoogleHomeEnterpriseSdmV1ListRoomsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rooms: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Room)),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListRoomsResponse" });
@@ -211,7 +211,7 @@ export const ListEnterprisesDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListEnterprisesDevicesRequest>;
+  ) as unknown as Schema.Codec<ListEnterprisesDevicesRequest>;
 
 export type ListEnterprisesDevicesResponse =
   GoogleHomeEnterpriseSdmV1ListDevicesResponse;
@@ -252,7 +252,7 @@ export const ExecuteCommandEnterprisesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteCommandEnterprisesDevicesRequest>;
+  ) as unknown as Schema.Codec<ExecuteCommandEnterprisesDevicesRequest>;
 
 export type ExecuteCommandEnterprisesDevicesResponse =
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse;
@@ -289,7 +289,7 @@ export const GetEnterprisesDevicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEnterprisesDevicesRequest>;
+  ) as unknown as Schema.Codec<GetEnterprisesDevicesRequest>;
 
 export type GetEnterprisesDevicesResponse = GoogleHomeEnterpriseSdmV1Device;
 export const GetEnterprisesDevicesResponse =
@@ -320,7 +320,7 @@ export const GetEnterprisesStructuresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEnterprisesStructuresRequest>;
+  ) as unknown as Schema.Codec<GetEnterprisesStructuresRequest>;
 
 export type GetEnterprisesStructuresResponse =
   GoogleHomeEnterpriseSdmV1Structure;
@@ -358,7 +358,7 @@ export const ListEnterprisesStructuresRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/structures" }),
     svc,
-  ) as unknown as Schema.Schema<ListEnterprisesStructuresRequest>;
+  ) as unknown as Schema.Codec<ListEnterprisesStructuresRequest>;
 
 export type ListEnterprisesStructuresResponse =
   GoogleHomeEnterpriseSdmV1ListStructuresResponse;
@@ -393,7 +393,7 @@ export const GetEnterprisesStructuresRoomsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEnterprisesStructuresRoomsRequest>;
+  ) as unknown as Schema.Codec<GetEnterprisesStructuresRoomsRequest>;
 
 export type GetEnterprisesStructuresRoomsResponse =
   GoogleHomeEnterpriseSdmV1Room;
@@ -428,7 +428,7 @@ export const ListEnterprisesStructuresRoomsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/rooms" }),
     svc,
-  ) as unknown as Schema.Schema<ListEnterprisesStructuresRoomsRequest>;
+  ) as unknown as Schema.Codec<ListEnterprisesStructuresRoomsRequest>;
 
 export type ListEnterprisesStructuresRoomsResponse =
   GoogleHomeEnterpriseSdmV1ListRoomsResponse;

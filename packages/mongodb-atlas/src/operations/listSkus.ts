@@ -4,18 +4,27 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface ListSkusInput {
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/skus" }));
-export type ListSkusInput = typeof ListSkusInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/skus" }),
+) as unknown as Schema.Codec<ListSkusInput>;
 
 // Output Schema
-export const ListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListSkusOutput = typeof ListSkusOutput.Type;
+export type ListSkusOutput = void;
+export const ListSkusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListSkusOutput>;
 
 // The operation
 /**

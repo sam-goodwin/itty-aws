@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface WidgetsPublicControllerIssueWidgetSessionTokenInput {
+  organization_id?: string;
+  user_id?: string;
+  scopes?: (
+    | "widgets:users-table:manage"
+    | "widgets:domain-verification:manage"
+    | "widgets:sso:manage"
+    | "widgets:api-keys:manage"
+    | "widgets:dsync:manage"
+    | "widgets:audit-log-streaming:manage"
+    | "widgets:pipes:manage"
+  )[];
+}
 export const WidgetsPublicControllerIssueWidgetSessionTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
@@ -21,17 +34,18 @@ export const WidgetsPublicControllerIssueWidgetSessionTokenInput =
         ]),
       ),
     ),
-  }).pipe(T.Http({ method: "POST", path: "/widgets/token" }));
-export type WidgetsPublicControllerIssueWidgetSessionTokenInput =
-  typeof WidgetsPublicControllerIssueWidgetSessionTokenInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/widgets/token" }),
+  ) as unknown as Schema.Codec<WidgetsPublicControllerIssueWidgetSessionTokenInput>;
 
 // Output Schema
+export interface WidgetsPublicControllerIssueWidgetSessionTokenOutput {
+  token?: string;
+}
 export const WidgetsPublicControllerIssueWidgetSessionTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
-  });
-export type WidgetsPublicControllerIssueWidgetSessionTokenOutput =
-  typeof WidgetsPublicControllerIssueWidgetSessionTokenOutput.Type;
+  }) as unknown as Schema.Codec<WidgetsPublicControllerIssueWidgetSessionTokenOutput>;
 
 // The operation
 /**

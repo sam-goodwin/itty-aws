@@ -9,6 +9,19 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface PostV1ProjectsByProjectIdComputeServicesInput {
+  projectId: string;
+  displayName: string;
+  regionId?:
+    | "us-east-1"
+    | "us-west-1"
+    | "eu-west-3"
+    | "eu-central-1"
+    | "ap-northeast-1"
+    | "ap-southeast-1";
+  branchId?: string | null;
+  branchGitName?: string | null;
+}
 export const PostV1ProjectsByProjectIdComputeServicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
@@ -30,11 +43,23 @@ export const PostV1ProjectsByProjectIdComputeServicesInput =
       method: "POST",
       path: "/v1/projects/{projectId}/compute-services",
     }),
-  );
-export type PostV1ProjectsByProjectIdComputeServicesInput =
-  typeof PostV1ProjectsByProjectIdComputeServicesInput.Type;
+  ) as unknown as Schema.Codec<PostV1ProjectsByProjectIdComputeServicesInput>;
 
 // Output Schema
+export interface PostV1ProjectsByProjectIdComputeServicesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    region: { id: string; name: string };
+    projectId: string;
+    branchId: string | null;
+    latestVersionId: string | null;
+    serviceEndpointDomain: string;
+    createdAt: string;
+  };
+}
 export const PostV1ProjectsByProjectIdComputeServicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -52,9 +77,7 @@ export const PostV1ProjectsByProjectIdComputeServicesOutput =
       serviceEndpointDomain: Schema.String,
       createdAt: Schema.String,
     }),
-  });
-export type PostV1ProjectsByProjectIdComputeServicesOutput =
-  typeof PostV1ProjectsByProjectIdComputeServicesOutput.Type;
+  }) as unknown as Schema.Codec<PostV1ProjectsByProjectIdComputeServicesOutput>;
 
 // The operation
 /**

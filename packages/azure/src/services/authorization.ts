@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DenyAssignmentsGetInput {
+  scope: string;
+  denyAssignmentId: string;
+}
 export const DenyAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -19,10 +23,47 @@ export const DenyAssignmentsGetInput =
       path: "/{scope}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type DenyAssignmentsGetInput = typeof DenyAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<DenyAssignmentsGetInput>;
 
 // Output Schema
+export interface DenyAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    denyAssignmentName?: string;
+    description?: string;
+    permissions?: {
+      actions?: string[];
+      notActions?: string[];
+      dataActions?: string[];
+      notDataActions?: string[];
+      condition?: string;
+      conditionVersion?: string;
+    }[];
+    scope?: string;
+    doNotApplyToChildScopes?: boolean;
+    principals?: {
+      id?: string;
+      displayName?: string;
+      type?: string;
+      email?: string;
+    }[];
+    excludePrincipals?: {
+      id?: string;
+      displayName?: string;
+      type?: string;
+      email?: string;
+    }[];
+    isSystemProtected?: boolean;
+    condition?: string;
+    conditionVersion?: string;
+    createdOn?: string;
+    updatedOn?: string;
+    createdBy?: string;
+    updatedBy?: string;
+  };
+}
 export const DenyAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -75,8 +116,7 @@ export const DenyAssignmentsGetOutput =
         updatedBy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DenyAssignmentsGetOutput = typeof DenyAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<DenyAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -91,6 +131,9 @@ export const DenyAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DenyAssignmentsGetOutput,
 }));
 // Input Schema
+export interface DenyAssignmentsGetByIdInput {
+  denyAssignmentId: string;
+}
 export const DenyAssignmentsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     denyAssignmentId: Schema.String.pipe(T.PathParam()),
@@ -100,11 +143,47 @@ export const DenyAssignmentsGetByIdInput =
       path: "/{denyAssignmentId}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type DenyAssignmentsGetByIdInput =
-  typeof DenyAssignmentsGetByIdInput.Type;
+  ) as unknown as Schema.Codec<DenyAssignmentsGetByIdInput>;
 
 // Output Schema
+export interface DenyAssignmentsGetByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    denyAssignmentName?: string;
+    description?: string;
+    permissions?: {
+      actions?: string[];
+      notActions?: string[];
+      dataActions?: string[];
+      notDataActions?: string[];
+      condition?: string;
+      conditionVersion?: string;
+    }[];
+    scope?: string;
+    doNotApplyToChildScopes?: boolean;
+    principals?: {
+      id?: string;
+      displayName?: string;
+      type?: string;
+      email?: string;
+    }[];
+    excludePrincipals?: {
+      id?: string;
+      displayName?: string;
+      type?: string;
+      email?: string;
+    }[];
+    isSystemProtected?: boolean;
+    condition?: string;
+    conditionVersion?: string;
+    createdOn?: string;
+    updatedOn?: string;
+    createdBy?: string;
+    updatedBy?: string;
+  };
+}
 export const DenyAssignmentsGetByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -157,9 +236,7 @@ export const DenyAssignmentsGetByIdOutput =
         updatedBy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DenyAssignmentsGetByIdOutput =
-  typeof DenyAssignmentsGetByIdOutput.Type;
+  }) as unknown as Schema.Codec<DenyAssignmentsGetByIdOutput>;
 
 // The operation
 /**
@@ -175,6 +252,10 @@ export const DenyAssignmentsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DenyAssignmentsListInput {
+  subscriptionId: string;
+  $filter?: string;
+}
 export const DenyAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -185,10 +266,50 @@ export const DenyAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/denyAssignments",
       apiVersion: "2022-04-01",
     }),
-  );
-export type DenyAssignmentsListInput = typeof DenyAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<DenyAssignmentsListInput>;
 
 // Output Schema
+export interface DenyAssignmentsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      denyAssignmentName?: string;
+      description?: string;
+      permissions?: {
+        actions?: string[];
+        notActions?: string[];
+        dataActions?: string[];
+        notDataActions?: string[];
+        condition?: string;
+        conditionVersion?: string;
+      }[];
+      scope?: string;
+      doNotApplyToChildScopes?: boolean;
+      principals?: {
+        id?: string;
+        displayName?: string;
+        type?: string;
+        email?: string;
+      }[];
+      excludePrincipals?: {
+        id?: string;
+        displayName?: string;
+        type?: string;
+        email?: string;
+      }[];
+      isSystemProtected?: boolean;
+      condition?: string;
+      conditionVersion?: string;
+      createdOn?: string;
+      updatedOn?: string;
+      createdBy?: string;
+      updatedBy?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DenyAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -250,8 +371,7 @@ export const DenyAssignmentsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DenyAssignmentsListOutput = typeof DenyAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<DenyAssignmentsListOutput>;
 
 // The operation
 /**
@@ -266,6 +386,15 @@ export const DenyAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DenyAssignmentsListOutput,
 }));
 // Input Schema
+export interface DenyAssignmentsListForResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  $filter?: string;
+}
 export const DenyAssignmentsListForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -281,11 +410,50 @@ export const DenyAssignmentsListForResourceInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/denyAssignments",
       apiVersion: "2022-04-01",
     }),
-  );
-export type DenyAssignmentsListForResourceInput =
-  typeof DenyAssignmentsListForResourceInput.Type;
+  ) as unknown as Schema.Codec<DenyAssignmentsListForResourceInput>;
 
 // Output Schema
+export interface DenyAssignmentsListForResourceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      denyAssignmentName?: string;
+      description?: string;
+      permissions?: {
+        actions?: string[];
+        notActions?: string[];
+        dataActions?: string[];
+        notDataActions?: string[];
+        condition?: string;
+        conditionVersion?: string;
+      }[];
+      scope?: string;
+      doNotApplyToChildScopes?: boolean;
+      principals?: {
+        id?: string;
+        displayName?: string;
+        type?: string;
+        email?: string;
+      }[];
+      excludePrincipals?: {
+        id?: string;
+        displayName?: string;
+        type?: string;
+        email?: string;
+      }[];
+      isSystemProtected?: boolean;
+      condition?: string;
+      conditionVersion?: string;
+      createdOn?: string;
+      updatedOn?: string;
+      createdBy?: string;
+      updatedBy?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DenyAssignmentsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -347,9 +515,7 @@ export const DenyAssignmentsListForResourceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DenyAssignmentsListForResourceOutput =
-  typeof DenyAssignmentsListForResourceOutput.Type;
+  }) as unknown as Schema.Codec<DenyAssignmentsListForResourceOutput>;
 
 // The operation
 /**
@@ -370,6 +536,11 @@ export const DenyAssignmentsListForResource =
     outputSchema: DenyAssignmentsListForResourceOutput,
   }));
 // Input Schema
+export interface DenyAssignmentsListForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+}
 export const DenyAssignmentsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -381,11 +552,50 @@ export const DenyAssignmentsListForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/denyAssignments",
       apiVersion: "2022-04-01",
     }),
-  );
-export type DenyAssignmentsListForResourceGroupInput =
-  typeof DenyAssignmentsListForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DenyAssignmentsListForResourceGroupInput>;
 
 // Output Schema
+export interface DenyAssignmentsListForResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      denyAssignmentName?: string;
+      description?: string;
+      permissions?: {
+        actions?: string[];
+        notActions?: string[];
+        dataActions?: string[];
+        notDataActions?: string[];
+        condition?: string;
+        conditionVersion?: string;
+      }[];
+      scope?: string;
+      doNotApplyToChildScopes?: boolean;
+      principals?: {
+        id?: string;
+        displayName?: string;
+        type?: string;
+        email?: string;
+      }[];
+      excludePrincipals?: {
+        id?: string;
+        displayName?: string;
+        type?: string;
+        email?: string;
+      }[];
+      isSystemProtected?: boolean;
+      condition?: string;
+      conditionVersion?: string;
+      createdOn?: string;
+      updatedOn?: string;
+      createdBy?: string;
+      updatedBy?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DenyAssignmentsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -447,9 +657,7 @@ export const DenyAssignmentsListForResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DenyAssignmentsListForResourceGroupOutput =
-  typeof DenyAssignmentsListForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DenyAssignmentsListForResourceGroupOutput>;
 
 // The operation
 /**
@@ -466,6 +674,10 @@ export const DenyAssignmentsListForResourceGroup =
     outputSchema: DenyAssignmentsListForResourceGroupOutput,
   }));
 // Input Schema
+export interface DenyAssignmentsListForScopeInput {
+  scope: string;
+  $filter?: string;
+}
 export const DenyAssignmentsListForScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -476,11 +688,50 @@ export const DenyAssignmentsListForScopeInput =
       path: "/{scope}/providers/Microsoft.Authorization/denyAssignments",
       apiVersion: "2022-04-01",
     }),
-  );
-export type DenyAssignmentsListForScopeInput =
-  typeof DenyAssignmentsListForScopeInput.Type;
+  ) as unknown as Schema.Codec<DenyAssignmentsListForScopeInput>;
 
 // Output Schema
+export interface DenyAssignmentsListForScopeOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      denyAssignmentName?: string;
+      description?: string;
+      permissions?: {
+        actions?: string[];
+        notActions?: string[];
+        dataActions?: string[];
+        notDataActions?: string[];
+        condition?: string;
+        conditionVersion?: string;
+      }[];
+      scope?: string;
+      doNotApplyToChildScopes?: boolean;
+      principals?: {
+        id?: string;
+        displayName?: string;
+        type?: string;
+        email?: string;
+      }[];
+      excludePrincipals?: {
+        id?: string;
+        displayName?: string;
+        type?: string;
+        email?: string;
+      }[];
+      isSystemProtected?: boolean;
+      condition?: string;
+      conditionVersion?: string;
+      createdOn?: string;
+      updatedOn?: string;
+      createdBy?: string;
+      updatedBy?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DenyAssignmentsListForScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -542,9 +793,7 @@ export const DenyAssignmentsListForScopeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DenyAssignmentsListForScopeOutput =
-  typeof DenyAssignmentsListForScopeOutput.Type;
+  }) as unknown as Schema.Codec<DenyAssignmentsListForScopeOutput>;
 
 // The operation
 /**
@@ -561,6 +810,14 @@ export const DenyAssignmentsListForScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PermissionsListForResourceInput {
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  subscriptionId: string;
+}
 export const PermissionsListForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -575,11 +832,18 @@ export const PermissionsListForResourceInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/permissions",
       apiVersion: "2022-04-01",
     }),
-  );
-export type PermissionsListForResourceInput =
-  typeof PermissionsListForResourceInput.Type;
+  ) as unknown as Schema.Codec<PermissionsListForResourceInput>;
 
 // Output Schema
+export interface PermissionsListForResourceOutput {
+  value?: {
+    actions?: string[];
+    notActions?: string[];
+    dataActions?: string[];
+    notDataActions?: string[];
+  }[];
+  nextLink?: string;
+}
 export const PermissionsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -593,9 +857,7 @@ export const PermissionsListForResourceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PermissionsListForResourceOutput =
-  typeof PermissionsListForResourceOutput.Type;
+  }) as unknown as Schema.Codec<PermissionsListForResourceOutput>;
 
 // The operation
 /**
@@ -616,6 +878,10 @@ export const PermissionsListForResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PermissionsListForResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const PermissionsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -626,11 +892,18 @@ export const PermissionsListForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/permissions",
       apiVersion: "2022-04-01",
     }),
-  );
-export type PermissionsListForResourceGroupInput =
-  typeof PermissionsListForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PermissionsListForResourceGroupInput>;
 
 // Output Schema
+export interface PermissionsListForResourceGroupOutput {
+  value?: {
+    actions?: string[];
+    notActions?: string[];
+    dataActions?: string[];
+    notDataActions?: string[];
+  }[];
+  nextLink?: string;
+}
 export const PermissionsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -644,9 +917,7 @@ export const PermissionsListForResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PermissionsListForResourceGroupOutput =
-  typeof PermissionsListForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PermissionsListForResourceGroupOutput>;
 
 // The operation
 /**
@@ -662,6 +933,10 @@ export const PermissionsListForResourceGroup =
     outputSchema: PermissionsListForResourceGroupOutput,
   }));
 // Input Schema
+export interface ProviderOperationsMetadataGetInput {
+  resourceProviderNamespace: string;
+  $expand?: string;
+}
 export const ProviderOperationsMetadataGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -672,19 +947,20 @@ export const ProviderOperationsMetadataGetInput =
       path: "/providers/Microsoft.Authorization/providerOperations/{resourceProviderNamespace}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type ProviderOperationsMetadataGetInput =
-  typeof ProviderOperationsMetadataGetInput.Type;
+  ) as unknown as Schema.Codec<ProviderOperationsMetadataGetInput>;
 
 // Output Schema
+export interface ProviderOperationsMetadataGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ProviderOperationsMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ProviderOperationsMetadataGetOutput =
-  typeof ProviderOperationsMetadataGetOutput.Type;
+  }) as unknown as Schema.Codec<ProviderOperationsMetadataGetOutput>;
 
 // The operation
 /**
@@ -700,6 +976,9 @@ export const ProviderOperationsMetadataGet =
     outputSchema: ProviderOperationsMetadataGetOutput,
   }));
 // Input Schema
+export interface ProviderOperationsMetadataListInput {
+  $expand?: string;
+}
 export const ProviderOperationsMetadataListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $expand: Schema.optional(Schema.String),
@@ -709,11 +988,13 @@ export const ProviderOperationsMetadataListInput =
       path: "/providers/Microsoft.Authorization/providerOperations",
       apiVersion: "2022-04-01",
     }),
-  );
-export type ProviderOperationsMetadataListInput =
-  typeof ProviderOperationsMetadataListInput.Type;
+  ) as unknown as Schema.Codec<ProviderOperationsMetadataListInput>;
 
 // Output Schema
+export interface ProviderOperationsMetadataListOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ProviderOperationsMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -724,9 +1005,7 @@ export const ProviderOperationsMetadataListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProviderOperationsMetadataListOutput =
-  typeof ProviderOperationsMetadataListOutput.Type;
+  }) as unknown as Schema.Codec<ProviderOperationsMetadataListOutput>;
 
 // The operation
 /**
@@ -741,6 +1020,29 @@ export const ProviderOperationsMetadataList =
     outputSchema: ProviderOperationsMetadataListOutput,
   }));
 // Input Schema
+export interface RoleAssignmentsCreateInput {
+  scope: string;
+  roleAssignmentName: string;
+  properties: {
+    scope?: string;
+    roleDefinitionId: string;
+    principalId: string;
+    principalType?:
+      | "User"
+      | "Group"
+      | "ServicePrincipal"
+      | "ForeignGroup"
+      | "Device";
+    description?: string;
+    condition?: string;
+    conditionVersion?: string;
+    createdOn?: string;
+    updatedOn?: string;
+    createdBy?: string;
+    updatedBy?: string;
+    delegatedManagedIdentityResourceId?: string;
+  };
+}
 export const RoleAssignmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -773,10 +1075,22 @@ export const RoleAssignmentsCreateInput =
       path: "/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsCreateInput = typeof RoleAssignmentsCreateInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsCreateInput>;
 
 // Output Schema
+export interface RoleAssignmentsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoleAssignmentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -796,9 +1110,7 @@ export const RoleAssignmentsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleAssignmentsCreateOutput =
-  typeof RoleAssignmentsCreateOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsCreateOutput>;
 
 // The operation
 /**
@@ -815,6 +1127,28 @@ export const RoleAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RoleAssignmentsCreateByIdInput {
+  roleAssignmentId: string;
+  properties: {
+    scope?: string;
+    roleDefinitionId: string;
+    principalId: string;
+    principalType?:
+      | "User"
+      | "Group"
+      | "ServicePrincipal"
+      | "ForeignGroup"
+      | "Device";
+    description?: string;
+    condition?: string;
+    conditionVersion?: string;
+    createdOn?: string;
+    updatedOn?: string;
+    createdBy?: string;
+    updatedBy?: string;
+    delegatedManagedIdentityResourceId?: string;
+  };
+}
 export const RoleAssignmentsCreateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
@@ -846,11 +1180,22 @@ export const RoleAssignmentsCreateByIdInput =
       path: "/{roleAssignmentId}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsCreateByIdInput =
-  typeof RoleAssignmentsCreateByIdInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsCreateByIdInput>;
 
 // Output Schema
+export interface RoleAssignmentsCreateByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoleAssignmentsCreateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -870,9 +1215,7 @@ export const RoleAssignmentsCreateByIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleAssignmentsCreateByIdOutput =
-  typeof RoleAssignmentsCreateByIdOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsCreateByIdOutput>;
 
 // The operation
 /**
@@ -888,6 +1231,11 @@ export const RoleAssignmentsCreateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RoleAssignmentsDeleteInput {
+  scope: string;
+  roleAssignmentName: string;
+  tenantId?: string;
+}
 export const RoleAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -899,10 +1247,22 @@ export const RoleAssignmentsDeleteInput =
       path: "/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsDeleteInput = typeof RoleAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsDeleteInput>;
 
 // Output Schema
+export interface RoleAssignmentsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoleAssignmentsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -922,9 +1282,7 @@ export const RoleAssignmentsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleAssignmentsDeleteOutput =
-  typeof RoleAssignmentsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -942,6 +1300,10 @@ export const RoleAssignmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RoleAssignmentsDeleteByIdInput {
+  roleAssignmentId: string;
+  tenantId?: string;
+}
 export const RoleAssignmentsDeleteByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
@@ -952,11 +1314,22 @@ export const RoleAssignmentsDeleteByIdInput =
       path: "/{roleAssignmentId}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsDeleteByIdInput =
-  typeof RoleAssignmentsDeleteByIdInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsDeleteByIdInput>;
 
 // Output Schema
+export interface RoleAssignmentsDeleteByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoleAssignmentsDeleteByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -976,9 +1349,7 @@ export const RoleAssignmentsDeleteByIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleAssignmentsDeleteByIdOutput =
-  typeof RoleAssignmentsDeleteByIdOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsDeleteByIdOutput>;
 
 // The operation
 /**
@@ -995,6 +1366,11 @@ export const RoleAssignmentsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RoleAssignmentsGetInput {
+  scope: string;
+  roleAssignmentName: string;
+  tenantId?: string;
+}
 export const RoleAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1006,10 +1382,22 @@ export const RoleAssignmentsGetInput =
       path: "/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsGetInput = typeof RoleAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsGetInput>;
 
 // Output Schema
+export interface RoleAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoleAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1029,8 +1417,7 @@ export const RoleAssignmentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleAssignmentsGetOutput = typeof RoleAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -1046,6 +1433,10 @@ export const RoleAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RoleAssignmentsGetOutput,
 }));
 // Input Schema
+export interface RoleAssignmentsGetByIdInput {
+  roleAssignmentId: string;
+  tenantId?: string;
+}
 export const RoleAssignmentsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
@@ -1056,11 +1447,22 @@ export const RoleAssignmentsGetByIdInput =
       path: "/{roleAssignmentId}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsGetByIdInput =
-  typeof RoleAssignmentsGetByIdInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsGetByIdInput>;
 
 // Output Schema
+export interface RoleAssignmentsGetByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoleAssignmentsGetByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1080,9 +1482,7 @@ export const RoleAssignmentsGetByIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleAssignmentsGetByIdOutput =
-  typeof RoleAssignmentsGetByIdOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsGetByIdOutput>;
 
 // The operation
 /**
@@ -1099,6 +1499,15 @@ export const RoleAssignmentsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RoleAssignmentsListForResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  resourceType: string;
+  resourceName: string;
+  $filter?: string;
+  tenantId?: string;
+}
 export const RoleAssignmentsListForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1114,11 +1523,25 @@ export const RoleAssignmentsListForResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/roleAssignments",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsListForResourceInput =
-  typeof RoleAssignmentsListForResourceInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsListForResourceInput>;
 
 // Output Schema
+export interface RoleAssignmentsListForResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RoleAssignmentsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1153,9 +1576,7 @@ export const RoleAssignmentsListForResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RoleAssignmentsListForResourceOutput =
-  typeof RoleAssignmentsListForResourceOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsListForResourceOutput>;
 
 // The operation
 /**
@@ -1176,6 +1597,12 @@ export const RoleAssignmentsListForResource =
     outputSchema: RoleAssignmentsListForResourceOutput,
   }));
 // Input Schema
+export interface RoleAssignmentsListForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  tenantId?: string;
+}
 export const RoleAssignmentsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1188,11 +1615,25 @@ export const RoleAssignmentsListForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsListForResourceGroupInput =
-  typeof RoleAssignmentsListForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsListForResourceGroupInput>;
 
 // Output Schema
+export interface RoleAssignmentsListForResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RoleAssignmentsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1227,9 +1668,7 @@ export const RoleAssignmentsListForResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RoleAssignmentsListForResourceGroupOutput =
-  typeof RoleAssignmentsListForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsListForResourceGroupOutput>;
 
 // The operation
 /**
@@ -1247,6 +1686,12 @@ export const RoleAssignmentsListForResourceGroup =
     outputSchema: RoleAssignmentsListForResourceGroupOutput,
   }));
 // Input Schema
+export interface RoleAssignmentsListForScopeInput {
+  scope: string;
+  $filter?: string;
+  tenantId?: string;
+  $skipToken?: string;
+}
 export const RoleAssignmentsListForScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1259,11 +1704,25 @@ export const RoleAssignmentsListForScopeInput =
       path: "/{scope}/providers/Microsoft.Authorization/roleAssignments",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsListForScopeInput =
-  typeof RoleAssignmentsListForScopeInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsListForScopeInput>;
 
 // Output Schema
+export interface RoleAssignmentsListForScopeOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RoleAssignmentsListForScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1298,9 +1757,7 @@ export const RoleAssignmentsListForScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RoleAssignmentsListForScopeOutput =
-  typeof RoleAssignmentsListForScopeOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsListForScopeOutput>;
 
 // The operation
 /**
@@ -1319,6 +1776,11 @@ export const RoleAssignmentsListForScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RoleAssignmentsListForSubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  tenantId?: string;
+}
 export const RoleAssignmentsListForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1330,11 +1792,25 @@ export const RoleAssignmentsListForSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleAssignmentsListForSubscriptionInput =
-  typeof RoleAssignmentsListForSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RoleAssignmentsListForSubscriptionInput>;
 
 // Output Schema
+export interface RoleAssignmentsListForSubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RoleAssignmentsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1369,9 +1845,7 @@ export const RoleAssignmentsListForSubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RoleAssignmentsListForSubscriptionOutput =
-  typeof RoleAssignmentsListForSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RoleAssignmentsListForSubscriptionOutput>;
 
 // The operation
 /**
@@ -1388,6 +1862,29 @@ export const RoleAssignmentsListForSubscription =
     outputSchema: RoleAssignmentsListForSubscriptionOutput,
   }));
 // Input Schema
+export interface RoleDefinitionsCreateOrUpdateInput {
+  scope: string;
+  roleDefinitionId: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    roleName?: string;
+    description?: string;
+    type?: string;
+    permissions?: {
+      actions?: string[];
+      notActions?: string[];
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+    assignableScopes?: string[];
+    createdOn?: string;
+    updatedOn?: string;
+    createdBy?: string;
+    updatedBy?: string;
+  };
+}
 export const RoleDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1423,11 +1920,30 @@ export const RoleDefinitionsCreateOrUpdateInput =
       path: "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleDefinitionsCreateOrUpdateInput =
-  typeof RoleDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RoleDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RoleDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    roleName?: string;
+    description?: string;
+    type?: string;
+    permissions?: {
+      actions?: string[];
+      notActions?: string[];
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+    assignableScopes?: string[];
+    createdOn?: string;
+    updatedOn?: string;
+    createdBy?: string;
+    updatedBy?: string;
+  };
+}
 export const RoleDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1455,9 +1971,7 @@ export const RoleDefinitionsCreateOrUpdateOutput =
         updatedBy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleDefinitionsCreateOrUpdateOutput =
-  typeof RoleDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RoleDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1473,6 +1987,10 @@ export const RoleDefinitionsCreateOrUpdate =
     outputSchema: RoleDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RoleDefinitionsDeleteInput {
+  scope: string;
+  roleDefinitionId: string;
+}
 export const RoleDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1483,10 +2001,30 @@ export const RoleDefinitionsDeleteInput =
       path: "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleDefinitionsDeleteInput = typeof RoleDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RoleDefinitionsDeleteInput>;
 
 // Output Schema
+export interface RoleDefinitionsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    roleName?: string;
+    description?: string;
+    type?: string;
+    permissions?: {
+      actions?: string[];
+      notActions?: string[];
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+    assignableScopes?: string[];
+    createdOn?: string;
+    updatedOn?: string;
+    createdBy?: string;
+    updatedBy?: string;
+  };
+}
 export const RoleDefinitionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1514,9 +2052,7 @@ export const RoleDefinitionsDeleteOutput =
         updatedBy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleDefinitionsDeleteOutput =
-  typeof RoleDefinitionsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<RoleDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -1533,6 +2069,10 @@ export const RoleDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RoleDefinitionsGetInput {
+  scope: string;
+  roleDefinitionId: string;
+}
 export const RoleDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1543,10 +2083,30 @@ export const RoleDefinitionsGetInput =
       path: "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleDefinitionsGetInput = typeof RoleDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<RoleDefinitionsGetInput>;
 
 // Output Schema
+export interface RoleDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    roleName?: string;
+    description?: string;
+    type?: string;
+    permissions?: {
+      actions?: string[];
+      notActions?: string[];
+      dataActions?: string[];
+      notDataActions?: string[];
+    }[];
+    assignableScopes?: string[];
+    createdOn?: string;
+    updatedOn?: string;
+    createdBy?: string;
+    updatedBy?: string;
+  };
+}
 export const RoleDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1574,8 +2134,7 @@ export const RoleDefinitionsGetOutput =
         updatedBy: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoleDefinitionsGetOutput = typeof RoleDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<RoleDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -1590,6 +2149,10 @@ export const RoleDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RoleDefinitionsGetOutput,
 }));
 // Input Schema
+export interface RoleDefinitionsListInput {
+  scope: string;
+  $filter?: string;
+}
 export const RoleDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1600,10 +2163,33 @@ export const RoleDefinitionsListInput =
       path: "/{scope}/providers/Microsoft.Authorization/roleDefinitions",
       apiVersion: "2022-04-01",
     }),
-  );
-export type RoleDefinitionsListInput = typeof RoleDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<RoleDefinitionsListInput>;
 
 // Output Schema
+export interface RoleDefinitionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      roleName?: string;
+      description?: string;
+      type?: string;
+      permissions?: {
+        actions?: string[];
+        notActions?: string[];
+        dataActions?: string[];
+        notDataActions?: string[];
+      }[];
+      assignableScopes?: string[];
+      createdOn?: string;
+      updatedOn?: string;
+      createdBy?: string;
+      updatedBy?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RoleDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1640,8 +2226,7 @@ export const RoleDefinitionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RoleDefinitionsListOutput = typeof RoleDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<RoleDefinitionsListOutput>;
 
 // The operation
 /**

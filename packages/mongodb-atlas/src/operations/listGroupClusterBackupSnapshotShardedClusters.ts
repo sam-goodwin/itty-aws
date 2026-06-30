@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterBackupSnapshotShardedClustersInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListGroupClusterBackupSnapshotShardedClustersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const ListGroupClusterBackupSnapshotShardedClustersInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters",
     }),
-  );
-export type ListGroupClusterBackupSnapshotShardedClustersInput =
-  typeof ListGroupClusterBackupSnapshotShardedClustersInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterBackupSnapshotShardedClustersInput>;
 
 // Output Schema
+export type ListGroupClusterBackupSnapshotShardedClustersOutput = void;
 export const ListGroupClusterBackupSnapshotShardedClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterBackupSnapshotShardedClustersOutput =
-  typeof ListGroupClusterBackupSnapshotShardedClustersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterBackupSnapshotShardedClustersOutput>;
 
 // The operation
 /**

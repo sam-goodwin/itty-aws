@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupServiceAccountInput {
+  clientId: string;
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupServiceAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const UpdateGroupServiceAccountInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}",
     }),
-  );
-export type UpdateGroupServiceAccountInput =
-  typeof UpdateGroupServiceAccountInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupServiceAccountInput>;
 
 // Output Schema
+export type UpdateGroupServiceAccountOutput = void;
 export const UpdateGroupServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupServiceAccountOutput =
-  typeof UpdateGroupServiceAccountOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupServiceAccountOutput>;
 
 // The operation
 /**

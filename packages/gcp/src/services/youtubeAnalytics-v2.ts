@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -38,7 +38,7 @@ export interface ErrorProto {
   code?: string;
 }
 
-export const ErrorProto: Schema.Schema<ErrorProto> =
+export const ErrorProto: Schema.Codec<ErrorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface GroupContentDetails {
   itemCount?: string;
 }
 
-export const GroupContentDetails: Schema.Schema<GroupContentDetails> =
+export const GroupContentDetails: Schema.Codec<GroupContentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemType: Schema.optional(Schema.String),
     itemCount: Schema.optional(Schema.String),
@@ -80,7 +80,7 @@ export interface Errors {
     | (string & {});
 }
 
-export const Errors: Schema.Schema<Errors> =
+export const Errors: Schema.Codec<Errors> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Schema.Array(ErrorProto)),
     requestId: Schema.optional(Schema.String),
@@ -94,7 +94,7 @@ export interface GroupSnippet {
   publishedAt?: string;
 }
 
-export const GroupSnippet: Schema.Schema<GroupSnippet> =
+export const GroupSnippet: Schema.Codec<GroupSnippet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     publishedAt: Schema.optional(Schema.String),
@@ -115,7 +115,7 @@ export interface Group {
   id?: string;
 }
 
-export const Group: Schema.Schema<Group> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentDetails: Schema.optional(GroupContentDetails),
     etag: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface GroupItemResource {
   id?: string;
 }
 
-export const GroupItemResource: Schema.Schema<GroupItemResource> =
+export const GroupItemResource: Schema.Codec<GroupItemResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface GroupItem {
   errors?: Errors;
 }
 
-export const GroupItem: Schema.Schema<GroupItem> =
+export const GroupItem: Schema.Codec<GroupItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -172,7 +172,7 @@ export interface ResultTableColumnHeader {
   columnType?: string;
 }
 
-export const ResultTableColumnHeader: Schema.Schema<ResultTableColumnHeader> =
+export const ResultTableColumnHeader: Schema.Codec<ResultTableColumnHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -184,7 +184,7 @@ export interface EmptyResponse {
   errors?: Errors;
 }
 
-export const EmptyResponse: Schema.Schema<EmptyResponse> =
+export const EmptyResponse: Schema.Codec<EmptyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Errors),
   }).annotate({ identifier: "EmptyResponse" });
@@ -202,7 +202,7 @@ export interface ListGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListGroupsResponse: Schema.Schema<ListGroupsResponse> =
+export const ListGroupsResponse: Schema.Codec<ListGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     errors: Schema.optional(Errors),
@@ -222,7 +222,7 @@ export interface QueryResponse {
   columnHeaders?: ReadonlyArray<ResultTableColumnHeader>;
 }
 
-export const QueryResponse: Schema.Schema<QueryResponse> =
+export const QueryResponse: Schema.Codec<QueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     errors: Schema.optional(Errors),
@@ -241,7 +241,7 @@ export interface ListGroupItemsResponse {
   errors?: Errors;
 }
 
-export const ListGroupItemsResponse: Schema.Schema<ListGroupItemsResponse> =
+export const ListGroupItemsResponse: Schema.Codec<ListGroupItemsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -324,7 +324,7 @@ export const ListGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/groups" }),
   svc,
-) as unknown as Schema.Schema<ListGroupsRequest>;
+) as unknown as Schema.Codec<ListGroupsRequest>;
 
 export type ListGroupsResponse_Op = ListGroupsResponse;
 export const ListGroupsResponse_Op =
@@ -364,7 +364,7 @@ export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "v2/groups", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateGroupsRequest>;
+) as unknown as Schema.Codec<UpdateGroupsRequest>;
 
 export type UpdateGroupsResponse = Group;
 export const UpdateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
@@ -403,7 +403,7 @@ export const InsertGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/groups", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertGroupsRequest>;
+) as unknown as Schema.Codec<InsertGroupsRequest>;
 
 export type InsertGroupsResponse = Group;
 export const InsertGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
@@ -442,7 +442,7 @@ export const DeleteGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v2/groups" }),
   svc,
-) as unknown as Schema.Schema<DeleteGroupsRequest>;
+) as unknown as Schema.Codec<DeleteGroupsRequest>;
 
 export type DeleteGroupsResponse = EmptyResponse;
 export const DeleteGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ EmptyResponse;
@@ -481,7 +481,7 @@ export const ListGroupItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/groupItems" }),
   svc,
-) as unknown as Schema.Schema<ListGroupItemsRequest>;
+) as unknown as Schema.Codec<ListGroupItemsRequest>;
 
 export type ListGroupItemsResponse_Op = ListGroupItemsResponse;
 export const ListGroupItemsResponse_Op =
@@ -517,7 +517,7 @@ export const InsertGroupItemsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/groupItems", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertGroupItemsRequest>;
+  ) as unknown as Schema.Codec<InsertGroupItemsRequest>;
 
 export type InsertGroupItemsResponse = GroupItem;
 export const InsertGroupItemsResponse = /*@__PURE__*/ /*#__PURE__*/ GroupItem;
@@ -557,7 +557,7 @@ export const DeleteGroupItemsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/groupItems" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGroupItemsRequest>;
+  ) as unknown as Schema.Codec<DeleteGroupItemsRequest>;
 
 export type DeleteGroupItemsResponse = EmptyResponse;
 export const DeleteGroupItemsResponse =
@@ -624,7 +624,7 @@ export const QueryReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/reports" }),
   svc,
-) as unknown as Schema.Schema<QueryReportsRequest>;
+) as unknown as Schema.Codec<QueryReportsRequest>;
 
 export type QueryReportsResponse = QueryResponse;
 export const QueryReportsResponse = /*@__PURE__*/ /*#__PURE__*/ QueryResponse;

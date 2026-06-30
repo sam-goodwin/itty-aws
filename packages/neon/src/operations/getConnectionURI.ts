@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetConnectionURIInput {
+  project_id: string;
+  branch_id?: string;
+  endpoint_id?: string;
+  database_name: string;
+  role_name: string;
+  pooled?: boolean;
+}
 export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.optional(Schema.String),
@@ -13,16 +21,17 @@ export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pooled: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/projects/{project_id}/connection_uri" }),
-);
-export type GetConnectionURIInput = typeof GetConnectionURIInput.Type;
+) as unknown as Schema.Codec<GetConnectionURIInput>;
 
 // Output Schema
+export interface GetConnectionURIOutput {
+  uri: string;
+}
 export const GetConnectionURIOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     uri: Schema.String,
   },
-);
-export type GetConnectionURIOutput = typeof GetConnectionURIOutput.Type;
+) as unknown as Schema.Codec<GetConnectionURIOutput>;
 
 // The operation
 /**

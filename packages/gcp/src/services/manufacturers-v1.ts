@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface FloatUnit {
   unit?: string;
 }
 
-export const FloatUnit: Schema.Schema<FloatUnit> =
+export const FloatUnit: Schema.Codec<FloatUnit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface Capacity {
   unit?: string;
 }
 
-export const Capacity: Schema.Schema<Capacity> =
+export const Capacity: Schema.Codec<Capacity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface Image {
   imageUrl?: string;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface Price {
   amount?: string;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currency: Schema.optional(Schema.String),
     amount: Schema.optional(Schema.String),
@@ -108,7 +108,7 @@ export interface GoogleShoppingManufacturersV1ProductCertification {
   value?: string;
 }
 
-export const GoogleShoppingManufacturersV1ProductCertification: Schema.Schema<GoogleShoppingManufacturersV1ProductCertification> =
+export const GoogleShoppingManufacturersV1ProductCertification: Schema.Codec<GoogleShoppingManufacturersV1ProductCertification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authority: Schema.optional(Schema.String),
     link: Schema.optional(Schema.String),
@@ -142,7 +142,7 @@ export interface Grocery {
   directions?: string;
 }
 
-export const Grocery: Schema.Schema<Grocery> =
+export const Grocery: Schema.Codec<Grocery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageInstructions: Schema.optional(Schema.String),
     activeIngredients: Schema.optional(Schema.String),
@@ -164,7 +164,7 @@ export interface VoluntaryNutritionFact {
   dailyPercentage?: number;
 }
 
-export const VoluntaryNutritionFact: Schema.Schema<VoluntaryNutritionFact> =
+export const VoluntaryNutritionFact: Schema.Codec<VoluntaryNutritionFact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(FloatUnit),
@@ -260,7 +260,7 @@ export interface Nutrition {
   potassium?: FloatUnit;
 }
 
-export const Nutrition: Schema.Schema<Nutrition> =
+export const Nutrition: Schema.Codec<Nutrition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalFat: Schema.optional(FloatUnit),
     saturatedFatDailyPercentage: Schema.optional(Schema.Number),
@@ -318,7 +318,7 @@ export interface FeatureDescription {
   image?: Image;
 }
 
-export const FeatureDescription: Schema.Schema<FeatureDescription> =
+export const FeatureDescription: Schema.Codec<FeatureDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headline: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
@@ -334,7 +334,7 @@ export interface ProductDetail {
   attributeValue?: string;
 }
 
-export const ProductDetail: Schema.Schema<ProductDetail> =
+export const ProductDetail: Schema.Codec<ProductDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sectionName: Schema.optional(Schema.String),
     attributeName: Schema.optional(Schema.String),
@@ -348,7 +348,7 @@ export interface Count {
   unit?: string;
 }
 
-export const Count: Schema.Schema<Count> =
+export const Count: Schema.Codec<Count> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
@@ -441,7 +441,7 @@ export interface Attributes {
   count?: Count;
 }
 
-export const Attributes: Schema.Schema<Attributes> =
+export const Attributes: Schema.Codec<Attributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gtin: Schema.optional(Schema.Array(Schema.String)),
     capacity: Schema.optional(Capacity),
@@ -519,7 +519,7 @@ export interface Issue {
   type?: string;
 }
 
-export const Issue: Schema.Schema<Issue> =
+export const Issue: Schema.Codec<Issue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     resolution: Schema.optional(Schema.String),
@@ -545,7 +545,7 @@ export interface DestinationStatus {
   status?: "UNKNOWN" | "ACTIVE" | "PENDING" | "DISAPPROVED" | (string & {});
 }
 
-export const DestinationStatus: Schema.Schema<DestinationStatus> =
+export const DestinationStatus: Schema.Codec<DestinationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
     approvedCountries: Schema.optional(Schema.Array(Schema.String)),
@@ -575,7 +575,7 @@ export interface Product {
   destinationStatuses?: ReadonlyArray<DestinationStatus>;
 }
 
-export const Product: Schema.Schema<Product> =
+export const Product: Schema.Codec<Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     attributes: Schema.optional(Attributes),
@@ -605,7 +605,7 @@ export interface Certification {
   logo?: string;
 }
 
-export const Certification: Schema.Schema<Certification> =
+export const Certification: Schema.Codec<Certification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     validUntil: Schema.optional(Schema.String),
@@ -639,7 +639,7 @@ export interface ProductCertification {
   name?: string;
 }
 
-export const ProductCertification: Schema.Schema<ProductCertification> =
+export const ProductCertification: Schema.Codec<ProductCertification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     countryCode: Schema.optional(Schema.Array(Schema.String)),
@@ -660,7 +660,7 @@ export interface ListProductCertificationsResponse {
   nextPageToken?: string;
 }
 
-export const ListProductCertificationsResponse: Schema.Schema<ListProductCertificationsResponse> =
+export const ListProductCertificationsResponse: Schema.Codec<ListProductCertificationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productCertifications: Schema.optional(Schema.Array(ProductCertification)),
     nextPageToken: Schema.optional(Schema.String),
@@ -673,7 +673,7 @@ export interface ListProductsResponse {
   nextPageToken?: string;
 }
 
-export const ListProductsResponse: Schema.Schema<ListProductsResponse> =
+export const ListProductsResponse: Schema.Codec<ListProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     products: Schema.optional(Schema.Array(Product)),
     nextPageToken: Schema.optional(Schema.String),
@@ -681,7 +681,7 @@ export const ListProductsResponse: Schema.Schema<ListProductsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -767,7 +767,7 @@ export const ListAccountsProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/products" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsProductsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsProductsRequest>;
 
 export type ListAccountsProductsResponse = ListProductsResponse;
 export const ListAccountsProductsResponse =
@@ -805,7 +805,7 @@ export const DeleteAccountsProductsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+parent}/products/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsProductsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsProductsRequest>;
 
 export type DeleteAccountsProductsResponse = Empty;
 export const DeleteAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -853,7 +853,7 @@ export const GetAccountsProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/products/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsProductsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsProductsRequest>;
 
 export type GetAccountsProductsResponse = Product;
 export const GetAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
@@ -893,7 +893,7 @@ export const UpdateAccountsProductsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAccountsProductsRequest>;
+  ) as unknown as Schema.Codec<UpdateAccountsProductsRequest>;
 
 export type UpdateAccountsProductsResponse = Empty;
 export const UpdateAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -934,7 +934,7 @@ export const PatchAccountsLanguagesProductCertificationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsLanguagesProductCertificationsRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsLanguagesProductCertificationsRequest>;
 
 export type PatchAccountsLanguagesProductCertificationsResponse =
   ProductCertification;
@@ -977,7 +977,7 @@ export const ListAccountsLanguagesProductCertificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/productCertifications" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsLanguagesProductCertificationsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsLanguagesProductCertificationsRequest>;
 
 export type ListAccountsLanguagesProductCertificationsResponse =
   ListProductCertificationsResponse;
@@ -1016,7 +1016,7 @@ export const DeleteAccountsLanguagesProductCertificationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsLanguagesProductCertificationsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsLanguagesProductCertificationsRequest>;
 
 export type DeleteAccountsLanguagesProductCertificationsResponse = Empty;
 export const DeleteAccountsLanguagesProductCertificationsResponse =
@@ -1052,7 +1052,7 @@ export const GetAccountsLanguagesProductCertificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsLanguagesProductCertificationsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsLanguagesProductCertificationsRequest>;
 
 export type GetAccountsLanguagesProductCertificationsResponse =
   ProductCertification;

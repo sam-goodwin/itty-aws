@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface FileSystemShortcutReorderCreateInput {
+  project_id: string;
+  ordered_ids: string[];
+}
 export const FileSystemShortcutReorderCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,23 @@ export const FileSystemShortcutReorderCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/file_system_shortcut/reorder/",
     }),
-  );
-export type FileSystemShortcutReorderCreateInput =
-  typeof FileSystemShortcutReorderCreateInput.Type;
+  ) as unknown as Schema.Codec<FileSystemShortcutReorderCreateInput>;
 
 // Output Schema
+export interface FileSystemShortcutReorderCreateOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    path?: string;
+    type?: string;
+    ref?: string | null;
+    href?: string | null;
+    order?: number;
+    created_at?: string;
+  }[];
+}
 export const FileSystemShortcutReorderCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -35,9 +51,7 @@ export const FileSystemShortcutReorderCreateOutput =
         }),
       ),
     ),
-  });
-export type FileSystemShortcutReorderCreateOutput =
-  typeof FileSystemShortcutReorderCreateOutput.Type;
+  }) as unknown as Schema.Codec<FileSystemShortcutReorderCreateOutput>;
 
 // The operation
 /**

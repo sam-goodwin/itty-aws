@@ -3,6 +3,18 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface HealthIssuesPartialUpdateInput {
+  id: string;
+  project_id: string;
+  kind?: string;
+  severity?: "critical" | "warning" | "info";
+  status?: "active" | "resolved";
+  dismissed?: boolean;
+  payload?: Record<string, unknown>;
+  created_at?: string;
+  updated_at?: string;
+  resolved_at?: string | null;
+}
 export const HealthIssuesPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +32,20 @@ export const HealthIssuesPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/health_issues/{id}/",
     }),
-  );
-export type HealthIssuesPartialUpdateInput =
-  typeof HealthIssuesPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<HealthIssuesPartialUpdateInput>;
 
 // Output Schema
+export interface HealthIssuesPartialUpdateOutput {
+  id?: string;
+  kind?: string;
+  severity?: "critical" | "warning" | "info";
+  status?: "active" | "resolved";
+  dismissed?: boolean;
+  payload?: Record<string, unknown>;
+  created_at?: string;
+  updated_at?: string;
+  resolved_at?: string | null;
+}
 export const HealthIssuesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -36,9 +57,7 @@ export const HealthIssuesPartialUpdateOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type HealthIssuesPartialUpdateOutput =
-  typeof HealthIssuesPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HealthIssuesPartialUpdateOutput>;
 
 // The operation
 /**

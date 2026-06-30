@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupProcessPerformanceAdvisorSlowQueryLogsInput {
+  groupId: string;
+  processId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  duration?: number;
+  namespaces?: string;
+  nLogs?: number;
+  since?: number;
+  includeMetrics?: boolean;
+  includeReplicaState?: boolean;
+  includeOpType?: boolean;
+}
 export const ListGroupProcessPerformanceAdvisorSlowQueryLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -22,15 +35,12 @@ export const ListGroupProcessPerformanceAdvisorSlowQueryLogsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs",
     }),
-  );
-export type ListGroupProcessPerformanceAdvisorSlowQueryLogsInput =
-  typeof ListGroupProcessPerformanceAdvisorSlowQueryLogsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorSlowQueryLogsInput>;
 
 // Output Schema
+export type ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput = void;
 export const ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
-  typeof ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput>;
 
 // The operation
 /**

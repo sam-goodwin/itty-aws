@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetEntitlementsFeaturesInput {
+  archived?: boolean;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  lookup_key?: string;
+  starting_after?: string;
+}
 export const GetEntitlementsFeaturesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     archived: Schema.optional(Schema.Boolean),
@@ -17,11 +25,23 @@ export const GetEntitlementsFeaturesInput =
       path: "/v1/entitlements/features",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetEntitlementsFeaturesInput =
-  typeof GetEntitlementsFeaturesInput.Type;
+  ) as unknown as Schema.Codec<GetEntitlementsFeaturesInput>;
 
 // Output Schema
+export interface GetEntitlementsFeaturesOutput {
+  data: {
+    active: boolean;
+    id: string;
+    livemode: boolean;
+    lookup_key: string;
+    metadata: Record<string, string>;
+    name: string;
+    object: "entitlements.feature";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetEntitlementsFeaturesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -38,9 +58,7 @@ export const GetEntitlementsFeaturesOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetEntitlementsFeaturesOutput =
-  typeof GetEntitlementsFeaturesOutput.Type;
+  }) as unknown as Schema.Codec<GetEntitlementsFeaturesOutput>;
 
 // The operation
 /**

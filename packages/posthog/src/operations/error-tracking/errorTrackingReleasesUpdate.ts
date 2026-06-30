@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingReleasesUpdateInput {
+  id: string;
+  project_id: string;
+  version?: string | null;
+  project?: string | null;
+  hash_id?: string | null;
+  metadata?: Record<string, unknown> | null;
+}
 export const ErrorTrackingReleasesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,15 +27,12 @@ export const ErrorTrackingReleasesUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/error_tracking/releases/{id}/",
     }),
-  );
-export type ErrorTrackingReleasesUpdateInput =
-  typeof ErrorTrackingReleasesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingReleasesUpdateInput>;
 
 // Output Schema
+export type ErrorTrackingReleasesUpdateOutput = void;
 export const ErrorTrackingReleasesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingReleasesUpdateOutput =
-  typeof ErrorTrackingReleasesUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingReleasesUpdateOutput>;
 
 // The operation
 /**

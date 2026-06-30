@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProjectSecretApiKeysListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ProjectSecretApiKeysListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,45 @@ export const ProjectSecretApiKeysListInput =
       method: "GET",
       path: "/api/projects/{project_id}/project_secret_api_keys/",
     }),
-  );
-export type ProjectSecretApiKeysListInput =
-  typeof ProjectSecretApiKeysListInput.Type;
+  ) as unknown as Schema.Codec<ProjectSecretApiKeysListInput>;
 
 // Output Schema
+export interface ProjectSecretApiKeysListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    label?: string;
+    value?: string;
+    mask_value?: string | null;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    last_used_at?: string | null;
+    last_rolled_at?: string | null;
+    scopes?: string[];
+  }[];
+}
 export const ProjectSecretApiKeysListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -44,7 +83,23 @@ export const ProjectSecretApiKeysListOutput =
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
           last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -53,9 +108,7 @@ export const ProjectSecretApiKeysListOutput =
         }),
       ),
     ),
-  });
-export type ProjectSecretApiKeysListOutput =
-  typeof ProjectSecretApiKeysListOutput.Type;
+  }) as unknown as Schema.Codec<ProjectSecretApiKeysListOutput>;
 
 // The operation
 /**

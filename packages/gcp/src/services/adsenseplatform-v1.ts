@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
+export const TimeZone: Schema.Codec<TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export const TimeZone: Schema.Schema<TimeZone> =
 
 export interface RequestSiteReviewResponse {}
 
-export const RequestSiteReviewResponse: Schema.Schema<RequestSiteReviewResponse> =
+export const RequestSiteReviewResponse: Schema.Codec<RequestSiteReviewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RequestSiteReviewResponse",
   });
@@ -57,7 +57,7 @@ export interface Site {
   domain?: string;
 }
 
-export const Site: Schema.Schema<Site> =
+export const Site: Schema.Codec<Site> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface ListSitesResponse {
   nextPageToken?: string;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
+export const ListSitesResponse: Schema.Codec<ListSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sites: Schema.optional(Schema.Array(Site)),
     nextPageToken: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export interface Account {
   createTime?: string;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     creationRequestId: Schema.optional(Schema.String),
@@ -117,7 +117,7 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
+export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(Account)),
     nextPageToken: Schema.optional(Schema.String),
@@ -125,14 +125,14 @@ export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface CloseAccountResponse {}
 
-export const CloseAccountResponse: Schema.Schema<CloseAccountResponse> =
+export const CloseAccountResponse: Schema.Codec<CloseAccountResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseAccountResponse",
   });
@@ -160,7 +160,7 @@ export interface Address {
   state?: string;
 }
 
-export const Address: Schema.Schema<Address> =
+export const Address: Schema.Codec<Address> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     city: Schema.optional(Schema.String),
     company: Schema.optional(Schema.String),
@@ -181,7 +181,7 @@ export interface EventInfo {
   billingAddress?: Address;
 }
 
-export const EventInfo: Schema.Schema<EventInfo> =
+export const EventInfo: Schema.Codec<EventInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     billingAddress: Schema.optional(Address),
@@ -200,7 +200,7 @@ export interface Event {
   eventTime?: string;
 }
 
-export const Event: Schema.Schema<Event> =
+export const Event: Schema.Codec<Event> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventInfo: Schema.optional(EventInfo),
     eventType: Schema.optional(Schema.String),
@@ -212,14 +212,14 @@ export interface LookupAccountResponse {
   name?: string;
 }
 
-export const LookupAccountResponse: Schema.Schema<LookupAccountResponse> =
+export const LookupAccountResponse: Schema.Codec<LookupAccountResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "LookupAccountResponse" });
 
 export interface CloseAccountRequest {}
 
-export const CloseAccountRequest: Schema.Schema<CloseAccountRequest> =
+export const CloseAccountRequest: Schema.Codec<CloseAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseAccountRequest",
   });
@@ -292,7 +292,7 @@ export const CreatePlatformsAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/accounts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePlatformsAccountsRequest>;
+  ) as unknown as Schema.Codec<CreatePlatformsAccountsRequest>;
 
 export type CreatePlatformsAccountsResponse = Account;
 export const CreatePlatformsAccountsResponse =
@@ -331,7 +331,7 @@ export const ClosePlatformsAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:close", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ClosePlatformsAccountsRequest>;
+  ) as unknown as Schema.Codec<ClosePlatformsAccountsRequest>;
 
 export type ClosePlatformsAccountsResponse = CloseAccountResponse;
 export const ClosePlatformsAccountsResponse =
@@ -372,7 +372,7 @@ export const LookupPlatformsAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/accounts:lookup" }),
     svc,
-  ) as unknown as Schema.Schema<LookupPlatformsAccountsRequest>;
+  ) as unknown as Schema.Codec<LookupPlatformsAccountsRequest>;
 
 export type LookupPlatformsAccountsResponse = LookupAccountResponse;
 export const LookupPlatformsAccountsResponse =
@@ -403,7 +403,7 @@ export const GetPlatformsAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPlatformsAccountsRequest>;
+  ) as unknown as Schema.Codec<GetPlatformsAccountsRequest>;
 
 export type GetPlatformsAccountsResponse = Account;
 export const GetPlatformsAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
@@ -439,7 +439,7 @@ export const ListPlatformsAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/accounts" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlatformsAccountsRequest>;
+  ) as unknown as Schema.Codec<ListPlatformsAccountsRequest>;
 
 export type ListPlatformsAccountsResponse = ListAccountsResponse;
 export const ListPlatformsAccountsResponse =
@@ -477,7 +477,7 @@ export const CreatePlatformsAccountsEventsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/events", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePlatformsAccountsEventsRequest>;
+  ) as unknown as Schema.Codec<CreatePlatformsAccountsEventsRequest>;
 
 export type CreatePlatformsAccountsEventsResponse = Event;
 export const CreatePlatformsAccountsEventsResponse =
@@ -513,7 +513,7 @@ export const GetPlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<GetPlatformsAccountsSitesRequest>;
 
 export type GetPlatformsAccountsSitesResponse = Site;
 export const GetPlatformsAccountsSitesResponse =
@@ -550,7 +550,7 @@ export const CreatePlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/sites", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<CreatePlatformsAccountsSitesRequest>;
 
 export type CreatePlatformsAccountsSitesResponse = Site;
 export const CreatePlatformsAccountsSitesResponse =
@@ -586,7 +586,7 @@ export const RequestReviewPlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:requestReview", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RequestReviewPlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<RequestReviewPlatformsAccountsSitesRequest>;
 
 export type RequestReviewPlatformsAccountsSitesResponse =
   RequestSiteReviewResponse;
@@ -623,7 +623,7 @@ export const DeletePlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<DeletePlatformsAccountsSitesRequest>;
 
 export type DeletePlatformsAccountsSitesResponse = Empty;
 export const DeletePlatformsAccountsSitesResponse =
@@ -665,7 +665,7 @@ export const ListPlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/sites" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<ListPlatformsAccountsSitesRequest>;
 
 export type ListPlatformsAccountsSitesResponse = ListSitesResponse;
 export const ListPlatformsAccountsSitesResponse =

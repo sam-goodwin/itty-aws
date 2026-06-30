@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardsListInput {
+  project_id: string;
+  folder?: string;
+  format?: "json" | "txt";
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const DashboardsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   folder: Schema.optional(Schema.String),
@@ -13,10 +21,57 @@ export const DashboardsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   search: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/dashboards/" }),
-);
-export type DashboardsListInput = typeof DashboardsListInput.Type;
+) as unknown as Schema.Codec<DashboardsListInput>;
 
 // Output Schema
+export interface DashboardsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: number;
+    name?: string | null;
+    description?: string;
+    pinned?: boolean;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    last_accessed_at?: string | null;
+    last_viewed_at?: string | null;
+    folder?: string | null;
+    is_shared?: boolean;
+    deleted?: boolean;
+    creation_mode?: "default" | "template" | "duplicate" | "unlisted";
+    tags?: unknown[];
+    restriction_level?: 21 | 37;
+    effective_restriction_level?: 21 | 37;
+    effective_privilege_level?: 21 | 37;
+    user_access_level?: string | null;
+    access_control_version?: string;
+    last_refresh?: string | null;
+    team_id?: number;
+    search_match_type?: "exact" | "similar" | null;
+  }[];
+}
 export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -42,7 +97,23 @@ export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -62,12 +133,13 @@ export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         access_control_version: Schema.optional(Schema.String),
         last_refresh: Schema.optional(Schema.NullOr(Schema.String)),
         team_id: Schema.optional(Schema.Number),
-        search_match_type: Schema.optional(Schema.Unknown),
+        search_match_type: Schema.optional(
+          Schema.NullOr(Schema.Literals(["exact", "similar"])),
+        ),
       }),
     ),
   ),
-});
-export type DashboardsListOutput = typeof DashboardsListOutput.Type;
+}) as unknown as Schema.Codec<DashboardsListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface NotebooksKernelDataframeRetrieveInput {
+  project_id: string;
+  short_id: string;
+}
 export const NotebooksKernelDataframeRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const NotebooksKernelDataframeRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/notebooks/{short_id}/kernel/dataframe/",
     }),
-  );
-export type NotebooksKernelDataframeRetrieveInput =
-  typeof NotebooksKernelDataframeRetrieveInput.Type;
+  ) as unknown as Schema.Codec<NotebooksKernelDataframeRetrieveInput>;
 
 // Output Schema
+export type NotebooksKernelDataframeRetrieveOutput = void;
 export const NotebooksKernelDataframeRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebooksKernelDataframeRetrieveOutput =
-  typeof NotebooksKernelDataframeRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksKernelDataframeRetrieveOutput>;
 
 // The operation
 /**

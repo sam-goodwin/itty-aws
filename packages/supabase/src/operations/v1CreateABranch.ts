@@ -4,6 +4,46 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1CreateABranchInput {
+  ref: string;
+  branch_name: string;
+  git_branch?: string;
+  is_default?: boolean;
+  persistent?: boolean;
+  region?: string;
+  desired_instance_size?:
+    | "pico"
+    | "nano"
+    | "micro"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "2xlarge"
+    | "4xlarge"
+    | "8xlarge"
+    | "12xlarge"
+    | "16xlarge"
+    | "24xlarge"
+    | "24xlarge_optimized_memory"
+    | "24xlarge_optimized_cpu"
+    | "24xlarge_high_memory"
+    | "48xlarge"
+    | "48xlarge_optimized_memory"
+    | "48xlarge_optimized_cpu"
+    | "48xlarge_high_memory";
+  release_channel?:
+    | "internal"
+    | "alpha"
+    | "beta"
+    | "ga"
+    | "withdrawn"
+    | "preview";
+  postgres_engine?: "15" | "17" | "17-oriole";
+  secrets?: Record<string, string>;
+  with_data?: boolean;
+  notify_url?: string;
+}
 export const V1CreateABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   branch_name: Schema.String,
@@ -49,10 +89,51 @@ export const V1CreateABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   secrets: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   with_data: Schema.optional(Schema.Boolean),
   notify_url: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/branches" }));
-export type V1CreateABranchInput = typeof V1CreateABranchInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v1/projects/{ref}/branches" }),
+) as unknown as Schema.Codec<V1CreateABranchInput>;
 
 // Output Schema
+export interface V1CreateABranchOutput {
+  id: string;
+  name: string;
+  project_ref: string;
+  parent_project_ref: string;
+  is_default: boolean;
+  git_branch?: string;
+  pr_number?: number;
+  latest_check_run_id?: number;
+  persistent: boolean;
+  status:
+    | "CREATING_PROJECT"
+    | "RUNNING_MIGRATIONS"
+    | "MIGRATIONS_PASSED"
+    | "MIGRATIONS_FAILED"
+    | "FUNCTIONS_DEPLOYED"
+    | "FUNCTIONS_FAILED";
+  created_at: string;
+  updated_at: string;
+  review_requested_at?: string;
+  with_data: boolean;
+  notify_url?: string;
+  deletion_scheduled_at?: string;
+  preview_project_status?:
+    | "INACTIVE"
+    | "ACTIVE_HEALTHY"
+    | "ACTIVE_UNHEALTHY"
+    | "COMING_UP"
+    | "UNKNOWN"
+    | "GOING_DOWN"
+    | "INIT_FAILED"
+    | "REMOVED"
+    | "RESTORING"
+    | "UPGRADING"
+    | "PAUSING"
+    | "RESTORE_FAILED"
+    | "RESTARTING"
+    | "PAUSE_FAILED"
+    | "RESIZING";
+}
 export const V1CreateABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -96,8 +177,7 @@ export const V1CreateABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "RESIZING",
     ]),
   ),
-});
-export type V1CreateABranchOutput = typeof V1CreateABranchOutput.Type;
+}) as unknown as Schema.Codec<V1CreateABranchOutput>;
 
 // The operation
 /**

@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface FileDownloadBatchExportsLogsRetrieveInput {
+  id: string;
+  project_id: string;
+  after?: string;
+  before?: string;
+  instance_id?: string;
+  level?: string;
+  limit?: number;
+  search?: string;
+}
 export const FileDownloadBatchExportsLogsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,15 +28,12 @@ export const FileDownloadBatchExportsLogsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/file_download_batch_exports/{id}/logs/",
     }),
-  );
-export type FileDownloadBatchExportsLogsRetrieveInput =
-  typeof FileDownloadBatchExportsLogsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FileDownloadBatchExportsLogsRetrieveInput>;
 
 // Output Schema
+export type FileDownloadBatchExportsLogsRetrieveOutput = void;
 export const FileDownloadBatchExportsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileDownloadBatchExportsLogsRetrieveOutput =
-  typeof FileDownloadBatchExportsLogsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileDownloadBatchExportsLogsRetrieveOutput>;
 
 // The operation
 /**

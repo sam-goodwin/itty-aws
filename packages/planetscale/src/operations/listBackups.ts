@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListBackupsInput {
+  organization: string;
+  database: string;
+  branch: string;
+  all?: boolean;
+  state?: "pending" | "running" | "success" | "failed" | "canceled" | "ignored";
+  policy?: string;
+  from?: string;
+  to?: string;
+  running_at?: string;
+  production?: boolean;
+  page?: number;
+  per_page?: number;
+}
 export const ListBackupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -31,10 +45,81 @@ export const ListBackupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/backups",
   }),
-);
-export type ListBackupsInput = typeof ListBackupsInput.Type;
+) as unknown as Schema.Codec<ListBackupsInput>;
 
 // Output Schema
+export interface ListBackupsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    name: string;
+    state:
+      | "pending"
+      | "running"
+      | "success"
+      | "failed"
+      | "canceled"
+      | "ignored";
+    size: number;
+    estimated_storage_cost: number;
+    created_at: string;
+    updated_at: string;
+    started_at: string | null;
+    expires_at: string | null;
+    completed_at: string | null;
+    deleted_at: string | null;
+    pvc_size: number;
+    uncompressed_size: number;
+    protected: boolean;
+    required: boolean;
+    restored_branches: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    }[];
+    actor: { id: string; display_name: string; avatar_url: string } | null;
+    backup_policy?: {
+      id: string;
+      display_name: string;
+      name: string;
+      target: "production" | "development";
+      retention_value: number;
+      retention_unit: string;
+      frequency_value: number;
+      frequency_unit: string;
+      schedule_time: string | null;
+      schedule_day: number | null;
+      schedule_week: number | null;
+      created_at: string;
+      updated_at: string;
+      last_ran_at: string | null;
+      next_run_at: string | null;
+      required: boolean;
+    } | null;
+    schema_snapshot?: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      linted_at: string | null;
+      url: string;
+    } | null;
+    database_branch?: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    } | null;
+  }[];
+}
 export const ListBackupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
@@ -129,8 +214,7 @@ export const ListBackupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type ListBackupsOutput = typeof ListBackupsOutput.Type;
+}) as unknown as Schema.Codec<ListBackupsOutput>;
 
 // The operation
 /**

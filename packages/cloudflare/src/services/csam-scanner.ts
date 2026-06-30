@@ -5,12 +5,84 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service csam-scanner
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Value {
+  /** Notification email address for CSAM scan results. Masked in responses unless explicitly unmasked via admin endpoint. */
+  email?: string | null;
+  /** Current verification state of the notification email. */
+  emailState?: "valid" | "pending" | "unverified" | (string & {}) | null;
+  /** Whether CSAM scanning is enabled for this zone. */
+  enabled?: boolean | null;
+  /** Map of scanning sources and their enabled state. */
+  sources?: Record<string, unknown> | null;
+  /** The zone's plan level. */
+  zonePlan?: string | null;
+}
+const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    emailState: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["valid", "pending", "unverified"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    sources: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+    zonePlan: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      email: "email",
+      emailState: "email_state",
+      enabled: "enabled",
+      sources: "sources",
+      zonePlan: "zone_plan",
+    }),
+  ),
+) as unknown as Schema.Codec<Value>;
+
+interface Value2 {
+  /** Notification email address for CSAM scan results. When changed, email verification is triggered automatically. */
+  email?: string | null;
+  /** Whether CSAM scanning is enabled for this zone. */
+  enabled?: boolean | null;
+  /** Set to true to trigger re-sending the email verification. Write-only; never appears in responses (omitted when false). */
+  resendEmail?: boolean | null;
+  /** Map of scanning sources and their enabled state. */
+  sources?: Record<string, unknown> | null;
+}
+const Value2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    resendEmail: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    sources: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      email: "email",
+      enabled: "enabled",
+      resendEmail: "resend_email",
+      sources: "sources",
+    }),
+  ),
+) as unknown as Schema.Codec<Value2>;
 
 // =============================================================================
 // CsamScanner
@@ -31,7 +103,7 @@ export const GetCsamScannerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/settings/csam_scanner_third_party",
       }),
     ),
-) as unknown as Schema.Schema<GetCsamScannerRequest>;
+) as unknown as Schema.Codec<GetCsamScannerRequest>;
 
 export interface GetCsamScannerResponse {
   /** The feature identifier. */
@@ -58,43 +130,7 @@ export const GetCsamScannerResponse =
       ),
       editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      value: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            emailState: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["valid", "pending", "unverified"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sources: Schema.optional(
-              Schema.Union([
-                Schema.Record(Schema.String, Schema.Unknown),
-                Schema.Null,
-              ]),
-            ),
-            zonePlan: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              email: "email",
-              emailState: "email_state",
-              enabled: "enabled",
-              sources: "sources",
-              zonePlan: "zone_plan",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      value: Schema.optional(Schema.Union([Value, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -105,7 +141,7 @@ export const GetCsamScannerResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetCsamScannerResponse>;
+  ) as unknown as Schema.Codec<GetCsamScannerResponse>;
 
 export type GetCsamScannerError = DefaultErrors;
 
@@ -139,30 +175,14 @@ export const PatchCsamScannerRequest =
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       id: Schema.optional(Schema.Literal("csam_scanner")),
-      value: Schema.optional(
-        Schema.Struct({
-          email: Schema.optional(Schema.String),
-          enabled: Schema.optional(Schema.Boolean),
-          resendEmail: Schema.optional(Schema.Boolean),
-          sources: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            email: "email",
-            enabled: "enabled",
-            resendEmail: "resend_email",
-            sources: "sources",
-          }),
-        ),
-      ),
+      value: Schema.optional(Value2),
     }).pipe(
       T.Http({
         method: "PATCH",
         path: "/zones/{zone_id}/settings/csam_scanner_third_party",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchCsamScannerRequest>;
+  ) as unknown as Schema.Codec<PatchCsamScannerRequest>;
 
 export interface PatchCsamScannerResponse {
   /** The feature identifier. */
@@ -189,43 +209,7 @@ export const PatchCsamScannerResponse =
       ),
       editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      value: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            emailState: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["valid", "pending", "unverified"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sources: Schema.optional(
-              Schema.Union([
-                Schema.Record(Schema.String, Schema.Unknown),
-                Schema.Null,
-              ]),
-            ),
-            zonePlan: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              email: "email",
-              emailState: "email_state",
-              enabled: "enabled",
-              sources: "sources",
-              zonePlan: "zone_plan",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      value: Schema.optional(Schema.Union([Value, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -236,7 +220,7 @@ export const PatchCsamScannerResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchCsamScannerResponse>;
+  ) as unknown as Schema.Codec<PatchCsamScannerResponse>;
 
 export type PatchCsamScannerError = DefaultErrors;
 

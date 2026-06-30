@@ -3,14 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetCurrentUserOrganizationsInput {}
 export const GetCurrentUserOrganizationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/users/me/organizations" }),
-  );
-export type GetCurrentUserOrganizationsInput =
-  typeof GetCurrentUserOrganizationsInput.Type;
+  ) as unknown as Schema.Codec<GetCurrentUserOrganizationsInput>;
 
 // Output Schema
+export interface GetCurrentUserOrganizationsOutput {
+  organizations: {
+    id: string;
+    name: string;
+    handle: string;
+    plan: string;
+    created_at: string;
+    managed_by: string;
+    updated_at: string;
+    allow_hipaa_projects?: boolean;
+    require_mfa?: boolean;
+  }[];
+}
 export const GetCurrentUserOrganizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizations: Schema.Array(
@@ -26,9 +38,7 @@ export const GetCurrentUserOrganizationsOutput =
         require_mfa: Schema.optional(Schema.Boolean),
       }),
     ),
-  });
-export type GetCurrentUserOrganizationsOutput =
-  typeof GetCurrentUserOrganizationsOutput.Type;
+  }) as unknown as Schema.Codec<GetCurrentUserOrganizationsOutput>;
 
 // The operation
 /**

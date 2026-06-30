@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage {
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage: Schema.Schema<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage> =
+export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage: Schema.Codec<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     languageCode: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak: Schema.Schema<GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak> =
+export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak: Schema.Codec<GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isPrefix: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
   detectedBreak?: GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak;
 }
 
-export const GoogleCloudVisionV1p1beta1TextAnnotationTextProperty: Schema.Schema<GoogleCloudVisionV1p1beta1TextAnnotationTextProperty> =
+export const GoogleCloudVisionV1p1beta1TextAnnotationTextProperty: Schema.Codec<GoogleCloudVisionV1p1beta1TextAnnotationTextProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectedLanguages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage),
@@ -85,7 +85,7 @@ export interface GoogleCloudVisionV1p1beta1Vertex {
   y?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1Vertex: Schema.Schema<GoogleCloudVisionV1p1beta1Vertex> =
+export const GoogleCloudVisionV1p1beta1Vertex: Schema.Codec<GoogleCloudVisionV1p1beta1Vertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -98,7 +98,7 @@ export interface GoogleCloudVisionV1p1beta1NormalizedVertex {
   y?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1NormalizedVertex: Schema.Schema<GoogleCloudVisionV1p1beta1NormalizedVertex> =
+export const GoogleCloudVisionV1p1beta1NormalizedVertex: Schema.Codec<GoogleCloudVisionV1p1beta1NormalizedVertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -111,7 +111,7 @@ export interface GoogleCloudVisionV1p1beta1BoundingPoly {
   normalizedVertices?: ReadonlyArray<GoogleCloudVisionV1p1beta1NormalizedVertex>;
 }
 
-export const GoogleCloudVisionV1p1beta1BoundingPoly: Schema.Schema<GoogleCloudVisionV1p1beta1BoundingPoly> =
+export const GoogleCloudVisionV1p1beta1BoundingPoly: Schema.Codec<GoogleCloudVisionV1p1beta1BoundingPoly> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vertices: Schema.optional(Schema.Array(GoogleCloudVisionV1p1beta1Vertex)),
     normalizedVertices: Schema.optional(
@@ -130,7 +130,7 @@ export interface GoogleCloudVisionV1p1beta1Symbol {
   boundingBox?: GoogleCloudVisionV1p1beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p1beta1Symbol: Schema.Schema<GoogleCloudVisionV1p1beta1Symbol> =
+export const GoogleCloudVisionV1p1beta1Symbol: Schema.Codec<GoogleCloudVisionV1p1beta1Symbol> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p1beta1TextAnnotationTextProperty,
@@ -151,7 +151,7 @@ export interface GoogleCloudVisionV1p1beta1Word {
   boundingBox?: GoogleCloudVisionV1p1beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p1beta1Word: Schema.Schema<GoogleCloudVisionV1p1beta1Word> =
+export const GoogleCloudVisionV1p1beta1Word: Schema.Codec<GoogleCloudVisionV1p1beta1Word> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p1beta1TextAnnotationTextProperty,
@@ -168,7 +168,7 @@ export interface GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage {
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage: Schema.Schema<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage> =
+export const GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage: Schema.Codec<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     languageCode: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export interface GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak: Schema.Schema<GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak> =
+export const GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak: Schema.Codec<GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isPrefix: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
@@ -205,7 +205,7 @@ export interface GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
   detectedBreak?: GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak;
 }
 
-export const GoogleCloudVisionV1p2beta1TextAnnotationTextProperty: Schema.Schema<GoogleCloudVisionV1p2beta1TextAnnotationTextProperty> =
+export const GoogleCloudVisionV1p2beta1TextAnnotationTextProperty: Schema.Codec<GoogleCloudVisionV1p2beta1TextAnnotationTextProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectedLanguages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage),
@@ -224,7 +224,7 @@ export interface GoogleCloudVisionV1p2beta1Vertex {
   y?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1Vertex: Schema.Schema<GoogleCloudVisionV1p2beta1Vertex> =
+export const GoogleCloudVisionV1p2beta1Vertex: Schema.Codec<GoogleCloudVisionV1p2beta1Vertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -237,7 +237,7 @@ export interface GoogleCloudVisionV1p2beta1NormalizedVertex {
   y?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1NormalizedVertex: Schema.Schema<GoogleCloudVisionV1p2beta1NormalizedVertex> =
+export const GoogleCloudVisionV1p2beta1NormalizedVertex: Schema.Codec<GoogleCloudVisionV1p2beta1NormalizedVertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -250,7 +250,7 @@ export interface GoogleCloudVisionV1p2beta1BoundingPoly {
   normalizedVertices?: ReadonlyArray<GoogleCloudVisionV1p2beta1NormalizedVertex>;
 }
 
-export const GoogleCloudVisionV1p2beta1BoundingPoly: Schema.Schema<GoogleCloudVisionV1p2beta1BoundingPoly> =
+export const GoogleCloudVisionV1p2beta1BoundingPoly: Schema.Codec<GoogleCloudVisionV1p2beta1BoundingPoly> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vertices: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Vertex)),
     normalizedVertices: Schema.optional(
@@ -269,7 +269,7 @@ export interface GoogleCloudVisionV1p2beta1Symbol {
   boundingBox?: GoogleCloudVisionV1p2beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p2beta1Symbol: Schema.Schema<GoogleCloudVisionV1p2beta1Symbol> =
+export const GoogleCloudVisionV1p2beta1Symbol: Schema.Codec<GoogleCloudVisionV1p2beta1Symbol> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p2beta1TextAnnotationTextProperty,
@@ -290,7 +290,7 @@ export interface GoogleCloudVisionV1p2beta1Word {
   property?: GoogleCloudVisionV1p2beta1TextAnnotationTextProperty;
 }
 
-export const GoogleCloudVisionV1p2beta1Word: Schema.Schema<GoogleCloudVisionV1p2beta1Word> =
+export const GoogleCloudVisionV1p2beta1Word: Schema.Codec<GoogleCloudVisionV1p2beta1Word> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p2beta1BoundingPoly),
     symbols: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Symbol)),
@@ -311,7 +311,7 @@ export interface GoogleCloudVisionV1p2beta1Paragraph {
   boundingBox?: GoogleCloudVisionV1p2beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p2beta1Paragraph: Schema.Schema<GoogleCloudVisionV1p2beta1Paragraph> =
+export const GoogleCloudVisionV1p2beta1Paragraph: Schema.Codec<GoogleCloudVisionV1p2beta1Paragraph> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p2beta1TextAnnotationTextProperty,
@@ -341,7 +341,7 @@ export interface GoogleCloudVisionV1p2beta1Block {
   paragraphs?: ReadonlyArray<GoogleCloudVisionV1p2beta1Paragraph>;
 }
 
-export const GoogleCloudVisionV1p2beta1Block: Schema.Schema<GoogleCloudVisionV1p2beta1Block> =
+export const GoogleCloudVisionV1p2beta1Block: Schema.Codec<GoogleCloudVisionV1p2beta1Block> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     blockType: Schema.optional(Schema.String),
@@ -365,7 +365,7 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
+export const Color: Schema.Codec<Color> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     green: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
@@ -382,7 +382,7 @@ export interface ColorInfo {
   color?: Color;
 }
 
-export const ColorInfo: Schema.Schema<ColorInfo> =
+export const ColorInfo: Schema.Codec<ColorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     pixelFraction: Schema.optional(Schema.Number),
@@ -396,7 +396,7 @@ export interface KeyValue {
   key?: string;
 }
 
-export const KeyValue: Schema.Schema<KeyValue> =
+export const KeyValue: Schema.Codec<KeyValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -415,7 +415,7 @@ export interface Product {
   description?: string;
 }
 
-export const Product: Schema.Schema<Product> =
+export const Product: Schema.Codec<Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productCategory: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -431,7 +431,7 @@ export interface WebImage {
   score?: number;
 }
 
-export const WebImage: Schema.Schema<WebImage> =
+export const WebImage: Schema.Codec<WebImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -442,7 +442,7 @@ export interface GoogleCloudVisionV1p4beta1GcsSource {
   uri?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1GcsSource: Schema.Schema<GoogleCloudVisionV1p4beta1GcsSource> =
+export const GoogleCloudVisionV1p4beta1GcsSource: Schema.Codec<GoogleCloudVisionV1p4beta1GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1GcsSource" });
@@ -456,7 +456,7 @@ export interface GoogleCloudVisionV1p4beta1InputConfig {
   mimeType?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1InputConfig: Schema.Schema<GoogleCloudVisionV1p4beta1InputConfig> =
+export const GoogleCloudVisionV1p4beta1InputConfig: Schema.Codec<GoogleCloudVisionV1p4beta1InputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     gcsSource: Schema.optional(GoogleCloudVisionV1p4beta1GcsSource),
@@ -470,7 +470,7 @@ export interface GoogleCloudVisionV1p4beta1Vertex {
   y?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1Vertex: Schema.Schema<GoogleCloudVisionV1p4beta1Vertex> =
+export const GoogleCloudVisionV1p4beta1Vertex: Schema.Codec<GoogleCloudVisionV1p4beta1Vertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -483,7 +483,7 @@ export interface GoogleCloudVisionV1p4beta1NormalizedVertex {
   y?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1NormalizedVertex: Schema.Schema<GoogleCloudVisionV1p4beta1NormalizedVertex> =
+export const GoogleCloudVisionV1p4beta1NormalizedVertex: Schema.Codec<GoogleCloudVisionV1p4beta1NormalizedVertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -496,7 +496,7 @@ export interface GoogleCloudVisionV1p4beta1BoundingPoly {
   normalizedVertices?: ReadonlyArray<GoogleCloudVisionV1p4beta1NormalizedVertex>;
 }
 
-export const GoogleCloudVisionV1p4beta1BoundingPoly: Schema.Schema<GoogleCloudVisionV1p4beta1BoundingPoly> =
+export const GoogleCloudVisionV1p4beta1BoundingPoly: Schema.Codec<GoogleCloudVisionV1p4beta1BoundingPoly> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vertices: Schema.optional(Schema.Array(GoogleCloudVisionV1p4beta1Vertex)),
     normalizedVertices: Schema.optional(
@@ -513,7 +513,7 @@ export interface GoogleCloudVisionV1p4beta1Property {
   uint64Value?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1Property: Schema.Schema<GoogleCloudVisionV1p4beta1Property> =
+export const GoogleCloudVisionV1p4beta1Property: Schema.Codec<GoogleCloudVisionV1p4beta1Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -527,7 +527,7 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const LatLng: Schema.Codec<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -538,7 +538,7 @@ export interface GoogleCloudVisionV1p4beta1LocationInfo {
   latLng?: LatLng;
 }
 
-export const GoogleCloudVisionV1p4beta1LocationInfo: Schema.Schema<GoogleCloudVisionV1p4beta1LocationInfo> =
+export const GoogleCloudVisionV1p4beta1LocationInfo: Schema.Codec<GoogleCloudVisionV1p4beta1LocationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1LocationInfo" });
@@ -564,7 +564,7 @@ export interface GoogleCloudVisionV1p4beta1EntityAnnotation {
   locale?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1EntityAnnotation: Schema.Schema<GoogleCloudVisionV1p4beta1EntityAnnotation> =
+export const GoogleCloudVisionV1p4beta1EntityAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1EntityAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
     properties: Schema.optional(
@@ -588,7 +588,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebImage {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1WebDetectionWebImage: Schema.Schema<GoogleCloudVisionV1p4beta1WebDetectionWebImage> =
+export const GoogleCloudVisionV1p4beta1WebDetectionWebImage: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetectionWebImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -601,7 +601,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebLabel {
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1WebDetectionWebLabel: Schema.Schema<GoogleCloudVisionV1p4beta1WebDetectionWebLabel> =
+export const GoogleCloudVisionV1p4beta1WebDetectionWebLabel: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetectionWebLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -616,7 +616,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebEntity {
   entityId?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1WebDetectionWebEntity: Schema.Schema<GoogleCloudVisionV1p4beta1WebDetectionWebEntity> =
+export const GoogleCloudVisionV1p4beta1WebDetectionWebEntity: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetectionWebEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -638,7 +638,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebPage {
   fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
 }
 
-export const GoogleCloudVisionV1p4beta1WebDetectionWebPage: Schema.Schema<GoogleCloudVisionV1p4beta1WebDetectionWebPage> =
+export const GoogleCloudVisionV1p4beta1WebDetectionWebPage: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetectionWebPage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partialMatchingImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1WebDetectionWebImage),
@@ -666,7 +666,7 @@ export interface GoogleCloudVisionV1p4beta1WebDetection {
   fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
 }
 
-export const GoogleCloudVisionV1p4beta1WebDetection: Schema.Schema<GoogleCloudVisionV1p4beta1WebDetection> =
+export const GoogleCloudVisionV1p4beta1WebDetection: Schema.Codec<GoogleCloudVisionV1p4beta1WebDetection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partialMatchingImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1WebDetectionWebImage),
@@ -697,7 +697,7 @@ export interface GoogleCloudVisionV1p4beta1CropHint {
   importanceFraction?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1CropHint: Schema.Schema<GoogleCloudVisionV1p4beta1CropHint> =
+export const GoogleCloudVisionV1p4beta1CropHint: Schema.Codec<GoogleCloudVisionV1p4beta1CropHint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     boundingPoly: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
@@ -709,7 +709,7 @@ export interface GoogleCloudVisionV1p4beta1CropHintsAnnotation {
   cropHints?: ReadonlyArray<GoogleCloudVisionV1p4beta1CropHint>;
 }
 
-export const GoogleCloudVisionV1p4beta1CropHintsAnnotation: Schema.Schema<GoogleCloudVisionV1p4beta1CropHintsAnnotation> =
+export const GoogleCloudVisionV1p4beta1CropHintsAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1CropHintsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1CropHint),
@@ -723,7 +723,7 @@ export interface GoogleCloudVisionV1p4beta1ImageAnnotationContext {
   pageNumber?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1ImageAnnotationContext: Schema.Schema<GoogleCloudVisionV1p4beta1ImageAnnotationContext> =
+export const GoogleCloudVisionV1p4beta1ImageAnnotationContext: Schema.Codec<GoogleCloudVisionV1p4beta1ImageAnnotationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
@@ -740,7 +740,7 @@ export interface GoogleCloudVisionV1p4beta1ColorInfo {
   color?: Color;
 }
 
-export const GoogleCloudVisionV1p4beta1ColorInfo: Schema.Schema<GoogleCloudVisionV1p4beta1ColorInfo> =
+export const GoogleCloudVisionV1p4beta1ColorInfo: Schema.Codec<GoogleCloudVisionV1p4beta1ColorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     pixelFraction: Schema.optional(Schema.Number),
@@ -752,7 +752,7 @@ export interface GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
   colors?: ReadonlyArray<GoogleCloudVisionV1p4beta1ColorInfo>;
 }
 
-export const GoogleCloudVisionV1p4beta1DominantColorsAnnotation: Schema.Schema<GoogleCloudVisionV1p4beta1DominantColorsAnnotation> =
+export const GoogleCloudVisionV1p4beta1DominantColorsAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1DominantColorsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(GoogleCloudVisionV1p4beta1ColorInfo)),
   }).annotate({
@@ -764,7 +764,7 @@ export interface GoogleCloudVisionV1p4beta1ImageProperties {
   dominantColors?: GoogleCloudVisionV1p4beta1DominantColorsAnnotation;
 }
 
-export const GoogleCloudVisionV1p4beta1ImageProperties: Schema.Schema<GoogleCloudVisionV1p4beta1ImageProperties> =
+export const GoogleCloudVisionV1p4beta1ImageProperties: Schema.Codec<GoogleCloudVisionV1p4beta1ImageProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(
       GoogleCloudVisionV1p4beta1DominantColorsAnnotation,
@@ -778,7 +778,7 @@ export interface GoogleCloudVisionV1p4beta1ProductKeyValue {
   value?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1ProductKeyValue: Schema.Schema<GoogleCloudVisionV1p4beta1ProductKeyValue> =
+export const GoogleCloudVisionV1p4beta1ProductKeyValue: Schema.Codec<GoogleCloudVisionV1p4beta1ProductKeyValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -797,7 +797,7 @@ export interface GoogleCloudVisionV1p4beta1Product {
   productCategory?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1Product: Schema.Schema<GoogleCloudVisionV1p4beta1Product> =
+export const GoogleCloudVisionV1p4beta1Product: Schema.Codec<GoogleCloudVisionV1p4beta1Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     productLabels: Schema.optional(
@@ -817,7 +817,7 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1ProductSearchResultsResult: Schema.Schema<GoogleCloudVisionV1p4beta1ProductSearchResultsResult> =
+export const GoogleCloudVisionV1p4beta1ProductSearchResultsResult: Schema.Codec<GoogleCloudVisionV1p4beta1ProductSearchResultsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     product: Schema.optional(GoogleCloudVisionV1p4beta1Product),
@@ -837,7 +837,7 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation 
   name?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation: Schema.Schema<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation> =
+export const GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     mid: Schema.optional(Schema.String),
@@ -857,7 +857,7 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
   boundingPoly?: GoogleCloudVisionV1p4beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult: Schema.Schema<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult> =
+export const GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult: Schema.Codec<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1ProductSearchResultsResult),
@@ -881,7 +881,7 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResults {
   productGroupedResults?: ReadonlyArray<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>;
 }
 
-export const GoogleCloudVisionV1p4beta1ProductSearchResults: Schema.Schema<GoogleCloudVisionV1p4beta1ProductSearchResults> =
+export const GoogleCloudVisionV1p4beta1ProductSearchResults: Schema.Codec<GoogleCloudVisionV1p4beta1ProductSearchResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexTime: Schema.optional(Schema.String),
     results: Schema.optional(
@@ -901,7 +901,7 @@ export interface GoogleCloudVisionV1p4beta1Position {
   z?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1Position: Schema.Schema<GoogleCloudVisionV1p4beta1Position> =
+export const GoogleCloudVisionV1p4beta1Position: Schema.Codec<GoogleCloudVisionV1p4beta1Position> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -953,7 +953,7 @@ export interface GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p4beta1FaceAnnotationLandmark: Schema.Schema<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark> =
+export const GoogleCloudVisionV1p4beta1FaceAnnotationLandmark: Schema.Codec<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(GoogleCloudVisionV1p4beta1Position),
     type: Schema.optional(Schema.String),
@@ -970,7 +970,7 @@ export interface GoogleCloudVisionV1p4beta1Celebrity {
   description?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1Celebrity: Schema.Schema<GoogleCloudVisionV1p4beta1Celebrity> =
+export const GoogleCloudVisionV1p4beta1Celebrity: Schema.Codec<GoogleCloudVisionV1p4beta1Celebrity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -984,7 +984,7 @@ export interface GoogleCloudVisionV1p4beta1FaceRecognitionResult {
   confidence?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1FaceRecognitionResult: Schema.Schema<GoogleCloudVisionV1p4beta1FaceRecognitionResult> =
+export const GoogleCloudVisionV1p4beta1FaceRecognitionResult: Schema.Codec<GoogleCloudVisionV1p4beta1FaceRecognitionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     celebrity: Schema.optional(GoogleCloudVisionV1p4beta1Celebrity),
     confidence: Schema.optional(Schema.Number),
@@ -1076,7 +1076,7 @@ export interface GoogleCloudVisionV1p4beta1FaceAnnotation {
   panAngle?: number;
 }
 
-export const GoogleCloudVisionV1p4beta1FaceAnnotation: Schema.Schema<GoogleCloudVisionV1p4beta1FaceAnnotation> =
+export const GoogleCloudVisionV1p4beta1FaceAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1FaceAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
     rollAngle: Schema.optional(Schema.Number),
@@ -1148,7 +1148,7 @@ export interface GoogleCloudVisionV1p4beta1SafeSearchAnnotation {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p4beta1SafeSearchAnnotation: Schema.Schema<GoogleCloudVisionV1p4beta1SafeSearchAnnotation> =
+export const GoogleCloudVisionV1p4beta1SafeSearchAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1SafeSearchAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     racy: Schema.optional(Schema.String),
     adult: Schema.optional(Schema.String),
@@ -1166,7 +1166,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1188,7 +1188,7 @@ export interface GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation: Schema.Schema<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation> =
+export const GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mid: Schema.optional(Schema.String),
@@ -1206,7 +1206,7 @@ export interface GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage {
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage: Schema.Schema<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage> =
+export const GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage: Schema.Codec<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     languageCode: Schema.optional(Schema.String),
@@ -1228,7 +1228,7 @@ export interface GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak: Schema.Schema<GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak> =
+export const GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak: Schema.Codec<GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isPrefix: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
@@ -1243,7 +1243,7 @@ export interface GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
   detectedBreak?: GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak;
 }
 
-export const GoogleCloudVisionV1p4beta1TextAnnotationTextProperty: Schema.Schema<GoogleCloudVisionV1p4beta1TextAnnotationTextProperty> =
+export const GoogleCloudVisionV1p4beta1TextAnnotationTextProperty: Schema.Codec<GoogleCloudVisionV1p4beta1TextAnnotationTextProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectedLanguages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage),
@@ -1266,7 +1266,7 @@ export interface GoogleCloudVisionV1p4beta1Symbol {
   text?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1Symbol: Schema.Schema<GoogleCloudVisionV1p4beta1Symbol> =
+export const GoogleCloudVisionV1p4beta1Symbol: Schema.Codec<GoogleCloudVisionV1p4beta1Symbol> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     property: Schema.optional(
@@ -1287,7 +1287,7 @@ export interface GoogleCloudVisionV1p4beta1Word {
   symbols?: ReadonlyArray<GoogleCloudVisionV1p4beta1Symbol>;
 }
 
-export const GoogleCloudVisionV1p4beta1Word: Schema.Schema<GoogleCloudVisionV1p4beta1Word> =
+export const GoogleCloudVisionV1p4beta1Word: Schema.Codec<GoogleCloudVisionV1p4beta1Word> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     property: Schema.optional(
@@ -1308,7 +1308,7 @@ export interface GoogleCloudVisionV1p4beta1Paragraph {
   boundingBox?: GoogleCloudVisionV1p4beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p4beta1Paragraph: Schema.Schema<GoogleCloudVisionV1p4beta1Paragraph> =
+export const GoogleCloudVisionV1p4beta1Paragraph: Schema.Codec<GoogleCloudVisionV1p4beta1Paragraph> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p4beta1TextAnnotationTextProperty,
@@ -1338,7 +1338,7 @@ export interface GoogleCloudVisionV1p4beta1Block {
   property?: GoogleCloudVisionV1p4beta1TextAnnotationTextProperty;
 }
 
-export const GoogleCloudVisionV1p4beta1Block: Schema.Schema<GoogleCloudVisionV1p4beta1Block> =
+export const GoogleCloudVisionV1p4beta1Block: Schema.Codec<GoogleCloudVisionV1p4beta1Block> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     boundingBox: Schema.optional(GoogleCloudVisionV1p4beta1BoundingPoly),
@@ -1364,7 +1364,7 @@ export interface GoogleCloudVisionV1p4beta1Page {
   property?: GoogleCloudVisionV1p4beta1TextAnnotationTextProperty;
 }
 
-export const GoogleCloudVisionV1p4beta1Page: Schema.Schema<GoogleCloudVisionV1p4beta1Page> =
+export const GoogleCloudVisionV1p4beta1Page: Schema.Codec<GoogleCloudVisionV1p4beta1Page> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     width: Schema.optional(Schema.Number),
@@ -1382,7 +1382,7 @@ export interface GoogleCloudVisionV1p4beta1TextAnnotation {
   text?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1TextAnnotation: Schema.Schema<GoogleCloudVisionV1p4beta1TextAnnotation> =
+export const GoogleCloudVisionV1p4beta1TextAnnotation: Schema.Codec<GoogleCloudVisionV1p4beta1TextAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pages: Schema.optional(Schema.Array(GoogleCloudVisionV1p4beta1Page)),
     text: Schema.optional(Schema.String),
@@ -1419,7 +1419,7 @@ export interface GoogleCloudVisionV1p4beta1AnnotateImageResponse {
   fullTextAnnotation?: GoogleCloudVisionV1p4beta1TextAnnotation;
 }
 
-export const GoogleCloudVisionV1p4beta1AnnotateImageResponse: Schema.Schema<GoogleCloudVisionV1p4beta1AnnotateImageResponse> =
+export const GoogleCloudVisionV1p4beta1AnnotateImageResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AnnotateImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logoAnnotations: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1EntityAnnotation),
@@ -1472,7 +1472,7 @@ export interface GoogleCloudVisionV1p4beta1AnnotateFileResponse {
   error?: Status;
 }
 
-export const GoogleCloudVisionV1p4beta1AnnotateFileResponse: Schema.Schema<GoogleCloudVisionV1p4beta1AnnotateFileResponse> =
+export const GoogleCloudVisionV1p4beta1AnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputConfig: Schema.optional(GoogleCloudVisionV1p4beta1InputConfig),
     responses: Schema.optional(
@@ -1487,7 +1487,7 @@ export interface GoogleCloudVisionV1p1beta1GcsDestination {
   uri?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1GcsDestination: Schema.Schema<GoogleCloudVisionV1p1beta1GcsDestination> =
+export const GoogleCloudVisionV1p1beta1GcsDestination: Schema.Codec<GoogleCloudVisionV1p1beta1GcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1GcsDestination" });
@@ -1499,7 +1499,7 @@ export interface GoogleCloudVisionV1p1beta1OutputConfig {
   batchSize?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1OutputConfig: Schema.Schema<GoogleCloudVisionV1p1beta1OutputConfig> =
+export const GoogleCloudVisionV1p1beta1OutputConfig: Schema.Codec<GoogleCloudVisionV1p1beta1OutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GoogleCloudVisionV1p1beta1GcsDestination),
     batchSize: Schema.optional(Schema.Number),
@@ -1510,7 +1510,7 @@ export interface GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse {
   outputConfig?: GoogleCloudVisionV1p1beta1OutputConfig;
 }
 
-export const GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse: Schema.Schema<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse> =
+export const GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p1beta1OutputConfig),
   }).annotate({
@@ -1528,7 +1528,7 @@ export interface ObjectAnnotation {
   name?: string;
 }
 
-export const ObjectAnnotation: Schema.Schema<ObjectAnnotation> =
+export const ObjectAnnotation: Schema.Codec<ObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     mid: Schema.optional(Schema.String),
@@ -1543,7 +1543,7 @@ export interface DetectedLanguage {
   languageCode?: string;
 }
 
-export const DetectedLanguage: Schema.Schema<DetectedLanguage> =
+export const DetectedLanguage: Schema.Codec<DetectedLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     languageCode: Schema.optional(Schema.String),
@@ -1563,7 +1563,7 @@ export interface DetectedBreak {
   isPrefix?: boolean;
 }
 
-export const DetectedBreak: Schema.Schema<DetectedBreak> =
+export const DetectedBreak: Schema.Codec<DetectedBreak> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     isPrefix: Schema.optional(Schema.Boolean),
@@ -1576,7 +1576,7 @@ export interface TextProperty {
   detectedBreak?: DetectedBreak;
 }
 
-export const TextProperty: Schema.Schema<TextProperty> =
+export const TextProperty: Schema.Codec<TextProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectedLanguages: Schema.optional(Schema.Array(DetectedLanguage)),
     detectedBreak: Schema.optional(DetectedBreak),
@@ -1589,7 +1589,7 @@ export interface ImageAnnotationContext {
   pageNumber?: number;
 }
 
-export const ImageAnnotationContext: Schema.Schema<ImageAnnotationContext> =
+export const ImageAnnotationContext: Schema.Codec<ImageAnnotationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
@@ -1602,7 +1602,7 @@ export interface Vertex {
   y?: number;
 }
 
-export const Vertex: Schema.Schema<Vertex> =
+export const Vertex: Schema.Codec<Vertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -1615,7 +1615,7 @@ export interface NormalizedVertex {
   y?: number;
 }
 
-export const NormalizedVertex: Schema.Schema<NormalizedVertex> =
+export const NormalizedVertex: Schema.Codec<NormalizedVertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -1628,7 +1628,7 @@ export interface BoundingPoly {
   normalizedVertices?: ReadonlyArray<NormalizedVertex>;
 }
 
-export const BoundingPoly: Schema.Schema<BoundingPoly> =
+export const BoundingPoly: Schema.Codec<BoundingPoly> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vertices: Schema.optional(Schema.Array(Vertex)),
     normalizedVertices: Schema.optional(Schema.Array(NormalizedVertex)),
@@ -1645,7 +1645,7 @@ export interface Vision_Symbol {
   boundingBox?: BoundingPoly;
 }
 
-export const Vision_Symbol: Schema.Schema<Vision_Symbol> =
+export const Vision_Symbol: Schema.Codec<Vision_Symbol> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(TextProperty),
     confidence: Schema.optional(Schema.Number),
@@ -1664,7 +1664,7 @@ export interface Word {
   boundingBox?: BoundingPoly;
 }
 
-export const Word: Schema.Schema<Word> =
+export const Word: Schema.Codec<Word> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(TextProperty),
     confidence: Schema.optional(Schema.Number),
@@ -1683,7 +1683,7 @@ export interface Paragraph {
   words?: ReadonlyArray<Word>;
 }
 
-export const Paragraph: Schema.Schema<Paragraph> =
+export const Paragraph: Schema.Codec<Paragraph> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(BoundingPoly),
     confidence: Schema.optional(Schema.Number),
@@ -1700,7 +1700,7 @@ export interface GoogleCloudVisionV1p2beta1CropHint {
   confidence?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1CropHint: Schema.Schema<GoogleCloudVisionV1p2beta1CropHint> =
+export const GoogleCloudVisionV1p2beta1CropHint: Schema.Codec<GoogleCloudVisionV1p2beta1CropHint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p2beta1BoundingPoly),
     importanceFraction: Schema.optional(Schema.Number),
@@ -1714,7 +1714,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebImage {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1WebDetectionWebImage: Schema.Schema<GoogleCloudVisionV1p3beta1WebDetectionWebImage> =
+export const GoogleCloudVisionV1p3beta1WebDetectionWebImage: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetectionWebImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -1733,7 +1733,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebPage {
   partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
 }
 
-export const GoogleCloudVisionV1p3beta1WebDetectionWebPage: Schema.Schema<GoogleCloudVisionV1p3beta1WebDetectionWebPage> =
+export const GoogleCloudVisionV1p3beta1WebDetectionWebPage: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetectionWebPage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullMatchingImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1WebDetectionWebImage),
@@ -1751,7 +1751,7 @@ export interface GoogleCloudVisionV1p4beta1GcsDestination {
   uri?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1GcsDestination: Schema.Schema<GoogleCloudVisionV1p4beta1GcsDestination> =
+export const GoogleCloudVisionV1p4beta1GcsDestination: Schema.Codec<GoogleCloudVisionV1p4beta1GcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p4beta1GcsDestination" });
@@ -1763,7 +1763,7 @@ export interface GoogleCloudVisionV1p4beta1OutputConfig {
   gcsDestination?: GoogleCloudVisionV1p4beta1GcsDestination;
 }
 
-export const GoogleCloudVisionV1p4beta1OutputConfig: Schema.Schema<GoogleCloudVisionV1p4beta1OutputConfig> =
+export const GoogleCloudVisionV1p4beta1OutputConfig: Schema.Codec<GoogleCloudVisionV1p4beta1OutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batchSize: Schema.optional(Schema.Number),
     gcsDestination: Schema.optional(GoogleCloudVisionV1p4beta1GcsDestination),
@@ -1778,7 +1778,7 @@ export interface GoogleCloudVisionV1p3beta1ColorInfo {
   color?: Color;
 }
 
-export const GoogleCloudVisionV1p3beta1ColorInfo: Schema.Schema<GoogleCloudVisionV1p3beta1ColorInfo> =
+export const GoogleCloudVisionV1p3beta1ColorInfo: Schema.Codec<GoogleCloudVisionV1p3beta1ColorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     pixelFraction: Schema.optional(Schema.Number),
@@ -1790,7 +1790,7 @@ export interface GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
   colors?: ReadonlyArray<GoogleCloudVisionV1p3beta1ColorInfo>;
 }
 
-export const GoogleCloudVisionV1p3beta1DominantColorsAnnotation: Schema.Schema<GoogleCloudVisionV1p3beta1DominantColorsAnnotation> =
+export const GoogleCloudVisionV1p3beta1DominantColorsAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1DominantColorsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(GoogleCloudVisionV1p3beta1ColorInfo)),
   }).annotate({
@@ -1806,7 +1806,7 @@ export interface GoogleCloudVisionV1p2beta1Position {
   z?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1Position: Schema.Schema<GoogleCloudVisionV1p2beta1Position> =
+export const GoogleCloudVisionV1p2beta1Position: Schema.Codec<GoogleCloudVisionV1p2beta1Position> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -1822,7 +1822,7 @@ export interface Position {
   z?: number;
 }
 
-export const Position: Schema.Schema<Position> =
+export const Position: Schema.Codec<Position> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -1836,7 +1836,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebLabel {
   label?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1WebDetectionWebLabel: Schema.Schema<GoogleCloudVisionV1p1beta1WebDetectionWebLabel> =
+export const GoogleCloudVisionV1p1beta1WebDetectionWebLabel: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetectionWebLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -1849,7 +1849,7 @@ export interface GoogleCloudVisionV1p2beta1ImageSource {
   gcsImageUri?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1ImageSource: Schema.Schema<GoogleCloudVisionV1p2beta1ImageSource> =
+export const GoogleCloudVisionV1p2beta1ImageSource: Schema.Codec<GoogleCloudVisionV1p2beta1ImageSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageUri: Schema.optional(Schema.String),
     gcsImageUri: Schema.optional(Schema.String),
@@ -1862,7 +1862,7 @@ export interface GoogleCloudVisionV1p2beta1Image {
   source?: GoogleCloudVisionV1p2beta1ImageSource;
 }
 
-export const GoogleCloudVisionV1p2beta1Image: Schema.Schema<GoogleCloudVisionV1p2beta1Image> =
+export const GoogleCloudVisionV1p2beta1Image: Schema.Codec<GoogleCloudVisionV1p2beta1Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     source: Schema.optional(GoogleCloudVisionV1p2beta1ImageSource),
@@ -1875,7 +1875,7 @@ export interface GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage {
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage: Schema.Schema<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage> =
+export const GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage: Schema.Codec<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     languageCode: Schema.optional(Schema.String),
@@ -1897,7 +1897,7 @@ export interface GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak: Schema.Schema<GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak> =
+export const GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak: Schema.Codec<GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isPrefix: Schema.optional(Schema.Boolean),
     type: Schema.optional(Schema.String),
@@ -1912,7 +1912,7 @@ export interface GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
   detectedBreak?: GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak;
 }
 
-export const GoogleCloudVisionV1p3beta1TextAnnotationTextProperty: Schema.Schema<GoogleCloudVisionV1p3beta1TextAnnotationTextProperty> =
+export const GoogleCloudVisionV1p3beta1TextAnnotationTextProperty: Schema.Codec<GoogleCloudVisionV1p3beta1TextAnnotationTextProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detectedLanguages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage),
@@ -1931,7 +1931,7 @@ export interface GoogleCloudVisionV1p3beta1Vertex {
   y?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1Vertex: Schema.Schema<GoogleCloudVisionV1p3beta1Vertex> =
+export const GoogleCloudVisionV1p3beta1Vertex: Schema.Codec<GoogleCloudVisionV1p3beta1Vertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -1944,7 +1944,7 @@ export interface GoogleCloudVisionV1p3beta1NormalizedVertex {
   y?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1NormalizedVertex: Schema.Schema<GoogleCloudVisionV1p3beta1NormalizedVertex> =
+export const GoogleCloudVisionV1p3beta1NormalizedVertex: Schema.Codec<GoogleCloudVisionV1p3beta1NormalizedVertex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -1957,7 +1957,7 @@ export interface GoogleCloudVisionV1p3beta1BoundingPoly {
   normalizedVertices?: ReadonlyArray<GoogleCloudVisionV1p3beta1NormalizedVertex>;
 }
 
-export const GoogleCloudVisionV1p3beta1BoundingPoly: Schema.Schema<GoogleCloudVisionV1p3beta1BoundingPoly> =
+export const GoogleCloudVisionV1p3beta1BoundingPoly: Schema.Codec<GoogleCloudVisionV1p3beta1BoundingPoly> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vertices: Schema.optional(Schema.Array(GoogleCloudVisionV1p3beta1Vertex)),
     normalizedVertices: Schema.optional(
@@ -1976,7 +1976,7 @@ export interface GoogleCloudVisionV1p3beta1Symbol {
   confidence?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1Symbol: Schema.Schema<GoogleCloudVisionV1p3beta1Symbol> =
+export const GoogleCloudVisionV1p3beta1Symbol: Schema.Codec<GoogleCloudVisionV1p3beta1Symbol> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     boundingBox: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
@@ -1997,7 +1997,7 @@ export interface GoogleCloudVisionV1p3beta1Word {
   property?: GoogleCloudVisionV1p3beta1TextAnnotationTextProperty;
 }
 
-export const GoogleCloudVisionV1p3beta1Word: Schema.Schema<GoogleCloudVisionV1p3beta1Word> =
+export const GoogleCloudVisionV1p3beta1Word: Schema.Codec<GoogleCloudVisionV1p3beta1Word> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
     symbols: Schema.optional(Schema.Array(GoogleCloudVisionV1p3beta1Symbol)),
@@ -2018,7 +2018,7 @@ export interface GoogleCloudVisionV1p3beta1Paragraph {
   boundingBox?: GoogleCloudVisionV1p3beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p3beta1Paragraph: Schema.Schema<GoogleCloudVisionV1p3beta1Paragraph> =
+export const GoogleCloudVisionV1p3beta1Paragraph: Schema.Codec<GoogleCloudVisionV1p3beta1Paragraph> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p3beta1TextAnnotationTextProperty,
@@ -2048,7 +2048,7 @@ export interface GoogleCloudVisionV1p3beta1Block {
   confidence?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1Block: Schema.Schema<GoogleCloudVisionV1p3beta1Block> =
+export const GoogleCloudVisionV1p3beta1Block: Schema.Codec<GoogleCloudVisionV1p3beta1Block> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blockType: Schema.optional(Schema.String),
     property: Schema.optional(
@@ -2070,7 +2070,7 @@ export interface GoogleCloudVisionV1p3beta1ReferenceImage {
   boundingPolys?: ReadonlyArray<GoogleCloudVisionV1p3beta1BoundingPoly>;
 }
 
-export const GoogleCloudVisionV1p3beta1ReferenceImage: Schema.Schema<GoogleCloudVisionV1p3beta1ReferenceImage> =
+export const GoogleCloudVisionV1p3beta1ReferenceImage: Schema.Codec<GoogleCloudVisionV1p3beta1ReferenceImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -2086,7 +2086,7 @@ export interface GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
   statuses?: ReadonlyArray<Status>;
 }
 
-export const GoogleCloudVisionV1p3beta1ImportProductSetsResponse: Schema.Schema<GoogleCloudVisionV1p3beta1ImportProductSetsResponse> =
+export const GoogleCloudVisionV1p3beta1ImportProductSetsResponse: Schema.Codec<GoogleCloudVisionV1p3beta1ImportProductSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1ReferenceImage),
@@ -2107,7 +2107,7 @@ export interface GoogleCloudVisionV1p1beta1Paragraph {
   boundingBox?: GoogleCloudVisionV1p1beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p1beta1Paragraph: Schema.Schema<GoogleCloudVisionV1p1beta1Paragraph> =
+export const GoogleCloudVisionV1p1beta1Paragraph: Schema.Codec<GoogleCloudVisionV1p1beta1Paragraph> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     property: Schema.optional(
       GoogleCloudVisionV1p1beta1TextAnnotationTextProperty,
@@ -2137,7 +2137,7 @@ export interface GoogleCloudVisionV1p1beta1Block {
   confidence?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1Block: Schema.Schema<GoogleCloudVisionV1p1beta1Block> =
+export const GoogleCloudVisionV1p1beta1Block: Schema.Codec<GoogleCloudVisionV1p1beta1Block> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blockType: Schema.optional(Schema.String),
     property: Schema.optional(
@@ -2163,7 +2163,7 @@ export interface GoogleCloudVisionV1p1beta1Page {
   blocks?: ReadonlyArray<GoogleCloudVisionV1p1beta1Block>;
 }
 
-export const GoogleCloudVisionV1p1beta1Page: Schema.Schema<GoogleCloudVisionV1p1beta1Page> =
+export const GoogleCloudVisionV1p1beta1Page: Schema.Codec<GoogleCloudVisionV1p1beta1Page> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
@@ -2181,7 +2181,7 @@ export interface GoogleCloudVisionV1p1beta1TextAnnotation {
   pages?: ReadonlyArray<GoogleCloudVisionV1p1beta1Page>;
 }
 
-export const GoogleCloudVisionV1p1beta1TextAnnotation: Schema.Schema<GoogleCloudVisionV1p1beta1TextAnnotation> =
+export const GoogleCloudVisionV1p1beta1TextAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1TextAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     pages: Schema.optional(Schema.Array(GoogleCloudVisionV1p1beta1Page)),
@@ -2196,7 +2196,7 @@ export interface GoogleCloudVisionV1p1beta1ColorInfo {
   pixelFraction?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1ColorInfo: Schema.Schema<GoogleCloudVisionV1p1beta1ColorInfo> =
+export const GoogleCloudVisionV1p1beta1ColorInfo: Schema.Codec<GoogleCloudVisionV1p1beta1ColorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     score: Schema.optional(Schema.Number),
@@ -2208,7 +2208,7 @@ export interface GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
   colors?: ReadonlyArray<GoogleCloudVisionV1p1beta1ColorInfo>;
 }
 
-export const GoogleCloudVisionV1p1beta1DominantColorsAnnotation: Schema.Schema<GoogleCloudVisionV1p1beta1DominantColorsAnnotation> =
+export const GoogleCloudVisionV1p1beta1DominantColorsAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1DominantColorsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(GoogleCloudVisionV1p1beta1ColorInfo)),
   }).annotate({
@@ -2224,7 +2224,7 @@ export interface GoogleCloudVisionV1p3beta1Position {
   z?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1Position: Schema.Schema<GoogleCloudVisionV1p3beta1Position> =
+export const GoogleCloudVisionV1p3beta1Position: Schema.Codec<GoogleCloudVisionV1p3beta1Position> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -2276,7 +2276,7 @@ export interface GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
   position?: GoogleCloudVisionV1p3beta1Position;
 }
 
-export const GoogleCloudVisionV1p3beta1FaceAnnotationLandmark: Schema.Schema<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark> =
+export const GoogleCloudVisionV1p3beta1FaceAnnotationLandmark: Schema.Codec<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     position: Schema.optional(GoogleCloudVisionV1p3beta1Position),
@@ -2289,7 +2289,7 @@ export interface GoogleCloudVisionV1p3beta1GcsDestination {
   uri?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1GcsDestination: Schema.Schema<GoogleCloudVisionV1p3beta1GcsDestination> =
+export const GoogleCloudVisionV1p3beta1GcsDestination: Schema.Codec<GoogleCloudVisionV1p3beta1GcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1GcsDestination" });
@@ -2301,7 +2301,7 @@ export interface GoogleCloudVisionV1p3beta1OutputConfig {
   gcsDestination?: GoogleCloudVisionV1p3beta1GcsDestination;
 }
 
-export const GoogleCloudVisionV1p3beta1OutputConfig: Schema.Schema<GoogleCloudVisionV1p3beta1OutputConfig> =
+export const GoogleCloudVisionV1p3beta1OutputConfig: Schema.Codec<GoogleCloudVisionV1p3beta1OutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batchSize: Schema.optional(Schema.Number),
     gcsDestination: Schema.optional(GoogleCloudVisionV1p3beta1GcsDestination),
@@ -2316,7 +2316,7 @@ export interface CropHint {
   importanceFraction?: number;
 }
 
-export const CropHint: Schema.Schema<CropHint> =
+export const CropHint: Schema.Codec<CropHint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     boundingPoly: Schema.optional(BoundingPoly),
@@ -2338,7 +2338,7 @@ export interface GoogleCloudVisionV1p4beta1OperationMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1OperationMetadata: Schema.Schema<GoogleCloudVisionV1p4beta1OperationMetadata> =
+export const GoogleCloudVisionV1p4beta1OperationMetadata: Schema.Codec<GoogleCloudVisionV1p4beta1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -2350,7 +2350,7 @@ export interface GoogleCloudVisionV1p2beta1GcsSource {
   uri?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1GcsSource: Schema.Schema<GoogleCloudVisionV1p2beta1GcsSource> =
+export const GoogleCloudVisionV1p2beta1GcsSource: Schema.Codec<GoogleCloudVisionV1p2beta1GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1GcsSource" });
@@ -2364,7 +2364,7 @@ export interface GoogleCloudVisionV1p2beta1InputConfig {
   content?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1InputConfig: Schema.Schema<GoogleCloudVisionV1p2beta1InputConfig> =
+export const GoogleCloudVisionV1p2beta1InputConfig: Schema.Codec<GoogleCloudVisionV1p2beta1InputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     gcsSource: Schema.optional(GoogleCloudVisionV1p2beta1GcsSource),
@@ -2391,7 +2391,7 @@ export interface Block {
   confidence?: number;
 }
 
-export const Block: Schema.Schema<Block> =
+export const Block: Schema.Codec<Block> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingBox: Schema.optional(BoundingPoly),
     paragraphs: Schema.optional(Schema.Array(Paragraph)),
@@ -2413,7 +2413,7 @@ export interface Page {
   blocks?: ReadonlyArray<Block>;
 }
 
-export const Page: Schema.Schema<Page> =
+export const Page: Schema.Codec<Page> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
@@ -2431,7 +2431,7 @@ export interface GoogleCloudVisionV1p2beta1ColorInfo {
   pixelFraction?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1ColorInfo: Schema.Schema<GoogleCloudVisionV1p2beta1ColorInfo> =
+export const GoogleCloudVisionV1p2beta1ColorInfo: Schema.Codec<GoogleCloudVisionV1p2beta1ColorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     score: Schema.optional(Schema.Number),
@@ -2461,7 +2461,7 @@ export interface GoogleCloudVisionV1p2beta1Feature {
   maxResults?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1Feature: Schema.Schema<GoogleCloudVisionV1p2beta1Feature> =
+export const GoogleCloudVisionV1p2beta1Feature: Schema.Codec<GoogleCloudVisionV1p2beta1Feature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2479,7 +2479,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchParams {
   filter?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1ProductSearchParams: Schema.Schema<GoogleCloudVisionV1p2beta1ProductSearchParams> =
+export const GoogleCloudVisionV1p2beta1ProductSearchParams: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p2beta1BoundingPoly),
     productSet: Schema.optional(Schema.String),
@@ -2494,7 +2494,7 @@ export interface GoogleCloudVisionV1p2beta1TextDetectionParams {
   advancedOcrOptions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudVisionV1p2beta1TextDetectionParams: Schema.Schema<GoogleCloudVisionV1p2beta1TextDetectionParams> =
+export const GoogleCloudVisionV1p2beta1TextDetectionParams: Schema.Codec<GoogleCloudVisionV1p2beta1TextDetectionParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableTextDetectionConfidenceScore: Schema.optional(Schema.Boolean),
     advancedOcrOptions: Schema.optional(Schema.Array(Schema.String)),
@@ -2507,7 +2507,7 @@ export interface GoogleCloudVisionV1p2beta1LatLongRect {
   maxLatLng?: LatLng;
 }
 
-export const GoogleCloudVisionV1p2beta1LatLongRect: Schema.Schema<GoogleCloudVisionV1p2beta1LatLongRect> =
+export const GoogleCloudVisionV1p2beta1LatLongRect: Schema.Codec<GoogleCloudVisionV1p2beta1LatLongRect> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minLatLng: Schema.optional(LatLng),
     maxLatLng: Schema.optional(LatLng),
@@ -2518,7 +2518,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionParams {
   includeGeoResults?: boolean;
 }
 
-export const GoogleCloudVisionV1p2beta1WebDetectionParams: Schema.Schema<GoogleCloudVisionV1p2beta1WebDetectionParams> =
+export const GoogleCloudVisionV1p2beta1WebDetectionParams: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeGeoResults: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1WebDetectionParams" });
@@ -2528,7 +2528,7 @@ export interface GoogleCloudVisionV1p2beta1CropHintsParams {
   aspectRatios?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudVisionV1p2beta1CropHintsParams: Schema.Schema<GoogleCloudVisionV1p2beta1CropHintsParams> =
+export const GoogleCloudVisionV1p2beta1CropHintsParams: Schema.Codec<GoogleCloudVisionV1p2beta1CropHintsParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aspectRatios: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1CropHintsParams" });
@@ -2548,7 +2548,7 @@ export interface GoogleCloudVisionV1p2beta1ImageContext {
   cropHintsParams?: GoogleCloudVisionV1p2beta1CropHintsParams;
 }
 
-export const GoogleCloudVisionV1p2beta1ImageContext: Schema.Schema<GoogleCloudVisionV1p2beta1ImageContext> =
+export const GoogleCloudVisionV1p2beta1ImageContext: Schema.Codec<GoogleCloudVisionV1p2beta1ImageContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productSearchParams: Schema.optional(
       GoogleCloudVisionV1p2beta1ProductSearchParams,
@@ -2573,7 +2573,7 @@ export interface GoogleCloudVisionV1p2beta1AnnotateImageRequest {
   imageContext?: GoogleCloudVisionV1p2beta1ImageContext;
 }
 
-export const GoogleCloudVisionV1p2beta1AnnotateImageRequest: Schema.Schema<GoogleCloudVisionV1p2beta1AnnotateImageRequest> =
+export const GoogleCloudVisionV1p2beta1AnnotateImageRequest: Schema.Codec<GoogleCloudVisionV1p2beta1AnnotateImageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(GoogleCloudVisionV1p2beta1Image),
     features: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Feature)),
@@ -2589,7 +2589,7 @@ export interface GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest {
   parent?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest: Schema.Schema<GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest> =
+export const GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest: Schema.Codec<GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1AnnotateImageRequest),
@@ -2605,7 +2605,7 @@ export interface GoogleCloudVisionV1p2beta1GcsDestination {
   uri?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1GcsDestination: Schema.Schema<GoogleCloudVisionV1p2beta1GcsDestination> =
+export const GoogleCloudVisionV1p2beta1GcsDestination: Schema.Codec<GoogleCloudVisionV1p2beta1GcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1GcsDestination" });
@@ -2617,7 +2617,7 @@ export interface GoogleCloudVisionV1p2beta1OutputConfig {
   gcsDestination?: GoogleCloudVisionV1p2beta1GcsDestination;
 }
 
-export const GoogleCloudVisionV1p2beta1OutputConfig: Schema.Schema<GoogleCloudVisionV1p2beta1OutputConfig> =
+export const GoogleCloudVisionV1p2beta1OutputConfig: Schema.Codec<GoogleCloudVisionV1p2beta1OutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batchSize: Schema.optional(Schema.Number),
     gcsDestination: Schema.optional(GoogleCloudVisionV1p2beta1GcsDestination),
@@ -2628,7 +2628,7 @@ export interface GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse {
   outputConfig?: GoogleCloudVisionV1p2beta1OutputConfig;
 }
 
-export const GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse: Schema.Schema<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse> =
+export const GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p2beta1OutputConfig),
   }).annotate({
@@ -2640,7 +2640,7 @@ export interface GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
   responses?: ReadonlyArray<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>;
 }
 
-export const GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse: Schema.Schema<GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse> =
+export const GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse),
@@ -2658,7 +2658,7 @@ export interface GoogleCloudVisionV1p4beta1ReferenceImage {
   name?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1ReferenceImage: Schema.Schema<GoogleCloudVisionV1p4beta1ReferenceImage> =
+export const GoogleCloudVisionV1p4beta1ReferenceImage: Schema.Codec<GoogleCloudVisionV1p4beta1ReferenceImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     boundingPolys: Schema.optional(
@@ -2678,7 +2678,7 @@ export interface GoogleCloudVisionV1p2beta1AnnotateFileRequest {
   pages?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudVisionV1p2beta1AnnotateFileRequest: Schema.Schema<GoogleCloudVisionV1p2beta1AnnotateFileRequest> =
+export const GoogleCloudVisionV1p2beta1AnnotateFileRequest: Schema.Codec<GoogleCloudVisionV1p2beta1AnnotateFileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageContext: Schema.optional(GoogleCloudVisionV1p2beta1ImageContext),
     inputConfig: Schema.optional(GoogleCloudVisionV1p2beta1InputConfig),
@@ -2695,7 +2695,7 @@ export interface GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest {
   requests?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateFileRequest>;
 }
 
-export const GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest: Schema.Schema<GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest> =
+export const GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest: Schema.Codec<GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2711,7 +2711,7 @@ export interface GcsDestination {
   uri?: string;
 }
 
-export const GcsDestination: Schema.Schema<GcsDestination> =
+export const GcsDestination: Schema.Codec<GcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsDestination" });
@@ -2731,7 +2731,7 @@ export interface GoogleCloudVisionV1p2beta1OperationMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1OperationMetadata: Schema.Schema<GoogleCloudVisionV1p2beta1OperationMetadata> =
+export const GoogleCloudVisionV1p2beta1OperationMetadata: Schema.Codec<GoogleCloudVisionV1p2beta1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -2745,7 +2745,7 @@ export interface GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
   statuses?: ReadonlyArray<Status>;
 }
 
-export const GoogleCloudVisionV1p4beta1ImportProductSetsResponse: Schema.Schema<GoogleCloudVisionV1p4beta1ImportProductSetsResponse> =
+export const GoogleCloudVisionV1p4beta1ImportProductSetsResponse: Schema.Codec<GoogleCloudVisionV1p4beta1ImportProductSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1ReferenceImage),
@@ -2760,7 +2760,7 @@ export interface GcsSource {
   uri?: string;
 }
 
-export const GcsSource: Schema.Schema<GcsSource> =
+export const GcsSource: Schema.Codec<GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsSource" });
@@ -2774,7 +2774,7 @@ export interface InputConfig {
   mimeType?: string;
 }
 
-export const InputConfig: Schema.Schema<InputConfig> =
+export const InputConfig: Schema.Codec<InputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     gcsSource: Schema.optional(GcsSource),
@@ -2788,7 +2788,7 @@ export interface GoogleCloudVisionV1p2beta1ProductKeyValue {
   key?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1ProductKeyValue: Schema.Schema<GoogleCloudVisionV1p2beta1ProductKeyValue> =
+export const GoogleCloudVisionV1p2beta1ProductKeyValue: Schema.Codec<GoogleCloudVisionV1p2beta1ProductKeyValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -2807,7 +2807,7 @@ export interface GoogleCloudVisionV1p2beta1Product {
   productCategory?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1Product: Schema.Schema<GoogleCloudVisionV1p2beta1Product> =
+export const GoogleCloudVisionV1p2beta1Product: Schema.Codec<GoogleCloudVisionV1p2beta1Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productLabels: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1ProductKeyValue),
@@ -2823,7 +2823,7 @@ export interface DominantColorsAnnotation {
   colors?: ReadonlyArray<ColorInfo>;
 }
 
-export const DominantColorsAnnotation: Schema.Schema<DominantColorsAnnotation> =
+export const DominantColorsAnnotation: Schema.Codec<DominantColorsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(ColorInfo)),
   }).annotate({ identifier: "DominantColorsAnnotation" });
@@ -2833,7 +2833,7 @@ export interface ImageProperties {
   dominantColors?: DominantColorsAnnotation;
 }
 
-export const ImageProperties: Schema.Schema<ImageProperties> =
+export const ImageProperties: Schema.Codec<ImageProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(DominantColorsAnnotation),
   }).annotate({ identifier: "ImageProperties" });
@@ -2845,7 +2845,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebImage {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1WebDetectionWebImage: Schema.Schema<GoogleCloudVisionV1p2beta1WebDetectionWebImage> =
+export const GoogleCloudVisionV1p2beta1WebDetectionWebImage: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionWebImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -2864,7 +2864,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebPage {
   url?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1WebDetectionWebPage: Schema.Schema<GoogleCloudVisionV1p2beta1WebDetectionWebPage> =
+export const GoogleCloudVisionV1p2beta1WebDetectionWebPage: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionWebPage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     pageTitle: Schema.optional(Schema.String),
@@ -2886,7 +2886,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
   image?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1ProductSearchResultsResult: Schema.Schema<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> =
+export const GoogleCloudVisionV1p2beta1ProductSearchResultsResult: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     product: Schema.optional(GoogleCloudVisionV1p2beta1Product),
@@ -2908,7 +2908,7 @@ export interface LocalizedObjectAnnotation {
   boundingPoly?: BoundingPoly;
 }
 
-export const LocalizedObjectAnnotation: Schema.Schema<LocalizedObjectAnnotation> =
+export const LocalizedObjectAnnotation: Schema.Codec<LocalizedObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mid: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2932,7 +2932,7 @@ export interface GoogleCloudVisionV1p4beta1BatchOperationMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudVisionV1p4beta1BatchOperationMetadata: Schema.Schema<GoogleCloudVisionV1p4beta1BatchOperationMetadata> =
+export const GoogleCloudVisionV1p4beta1BatchOperationMetadata: Schema.Codec<GoogleCloudVisionV1p4beta1BatchOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     submitTime: Schema.optional(Schema.String),
@@ -2956,7 +2956,7 @@ export interface GoogleCloudVisionV1p1beta1OperationMetadata {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p1beta1OperationMetadata: Schema.Schema<GoogleCloudVisionV1p1beta1OperationMetadata> =
+export const GoogleCloudVisionV1p1beta1OperationMetadata: Schema.Codec<GoogleCloudVisionV1p1beta1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -2972,7 +2972,7 @@ export interface Result {
   score?: number;
 }
 
-export const Result: Schema.Schema<Result> =
+export const Result: Schema.Codec<Result> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     product: Schema.optional(Product),
     image: Schema.optional(Schema.String),
@@ -3027,7 +3027,7 @@ export interface GoogleCloudVisionV1p2beta1SafeSearchAnnotation {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p2beta1SafeSearchAnnotation: Schema.Schema<GoogleCloudVisionV1p2beta1SafeSearchAnnotation> =
+export const GoogleCloudVisionV1p2beta1SafeSearchAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1SafeSearchAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medical: Schema.optional(Schema.String),
     violence: Schema.optional(Schema.String),
@@ -3043,7 +3043,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebImage {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1WebDetectionWebImage: Schema.Schema<GoogleCloudVisionV1p1beta1WebDetectionWebImage> =
+export const GoogleCloudVisionV1p1beta1WebDetectionWebImage: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetectionWebImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -3058,7 +3058,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebEntity {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1WebDetectionWebEntity: Schema.Schema<GoogleCloudVisionV1p1beta1WebDetectionWebEntity> =
+export const GoogleCloudVisionV1p1beta1WebDetectionWebEntity: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetectionWebEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -3080,7 +3080,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebPage {
   url?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1WebDetectionWebPage: Schema.Schema<GoogleCloudVisionV1p1beta1WebDetectionWebPage> =
+export const GoogleCloudVisionV1p1beta1WebDetectionWebPage: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetectionWebPage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partialMatchingImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1WebDetectionWebImage),
@@ -3108,7 +3108,7 @@ export interface GoogleCloudVisionV1p1beta1WebDetection {
   bestGuessLabels?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>;
 }
 
-export const GoogleCloudVisionV1p1beta1WebDetection: Schema.Schema<GoogleCloudVisionV1p1beta1WebDetection> =
+export const GoogleCloudVisionV1p1beta1WebDetection: Schema.Codec<GoogleCloudVisionV1p1beta1WebDetection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visuallySimilarImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1WebDetectionWebImage),
@@ -3143,7 +3143,7 @@ export interface GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
   name?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation: Schema.Schema<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation> =
+export const GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     boundingPoly: Schema.optional(GoogleCloudVisionV1p1beta1BoundingPoly),
@@ -3202,7 +3202,7 @@ export interface GoogleCloudVisionV1p1beta1SafeSearchAnnotation {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p1beta1SafeSearchAnnotation: Schema.Schema<GoogleCloudVisionV1p1beta1SafeSearchAnnotation> =
+export const GoogleCloudVisionV1p1beta1SafeSearchAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1SafeSearchAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medical: Schema.optional(Schema.String),
     adult: Schema.optional(Schema.String),
@@ -3220,7 +3220,7 @@ export interface GoogleCloudVisionV1p1beta1Property {
   uint64Value?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1Property: Schema.Schema<GoogleCloudVisionV1p1beta1Property> =
+export const GoogleCloudVisionV1p1beta1Property: Schema.Codec<GoogleCloudVisionV1p1beta1Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3232,7 +3232,7 @@ export interface GoogleCloudVisionV1p1beta1LocationInfo {
   latLng?: LatLng;
 }
 
-export const GoogleCloudVisionV1p1beta1LocationInfo: Schema.Schema<GoogleCloudVisionV1p1beta1LocationInfo> =
+export const GoogleCloudVisionV1p1beta1LocationInfo: Schema.Codec<GoogleCloudVisionV1p1beta1LocationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1LocationInfo" });
@@ -3258,7 +3258,7 @@ export interface GoogleCloudVisionV1p1beta1EntityAnnotation {
   locations?: ReadonlyArray<GoogleCloudVisionV1p1beta1LocationInfo>;
 }
 
-export const GoogleCloudVisionV1p1beta1EntityAnnotation: Schema.Schema<GoogleCloudVisionV1p1beta1EntityAnnotation> =
+export const GoogleCloudVisionV1p1beta1EntityAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1EntityAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     topicality: Schema.optional(Schema.Number),
@@ -3282,7 +3282,7 @@ export interface GoogleCloudVisionV1p1beta1ProductKeyValue {
   value?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1ProductKeyValue: Schema.Schema<GoogleCloudVisionV1p1beta1ProductKeyValue> =
+export const GoogleCloudVisionV1p1beta1ProductKeyValue: Schema.Codec<GoogleCloudVisionV1p1beta1ProductKeyValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -3301,7 +3301,7 @@ export interface GoogleCloudVisionV1p1beta1Product {
   productCategory?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1Product: Schema.Schema<GoogleCloudVisionV1p1beta1Product> =
+export const GoogleCloudVisionV1p1beta1Product: Schema.Codec<GoogleCloudVisionV1p1beta1Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3321,7 +3321,7 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1ProductSearchResultsResult: Schema.Schema<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> =
+export const GoogleCloudVisionV1p1beta1ProductSearchResultsResult: Schema.Codec<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
     product: Schema.optional(GoogleCloudVisionV1p1beta1Product),
@@ -3341,7 +3341,7 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation 
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation: Schema.Schema<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation> =
+export const GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -3361,7 +3361,7 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
   boundingPoly?: GoogleCloudVisionV1p1beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult: Schema.Schema<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult> =
+export const GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult: Schema.Codec<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1ProductSearchResultsResult),
@@ -3385,7 +3385,7 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResults {
   results?: ReadonlyArray<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>;
 }
 
-export const GoogleCloudVisionV1p1beta1ProductSearchResults: Schema.Schema<GoogleCloudVisionV1p1beta1ProductSearchResults> =
+export const GoogleCloudVisionV1p1beta1ProductSearchResults: Schema.Codec<GoogleCloudVisionV1p1beta1ProductSearchResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productGroupedResults: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult),
@@ -3405,7 +3405,7 @@ export interface GoogleCloudVisionV1p1beta1Position {
   z?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1Position: Schema.Schema<GoogleCloudVisionV1p1beta1Position> =
+export const GoogleCloudVisionV1p1beta1Position: Schema.Codec<GoogleCloudVisionV1p1beta1Position> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -3457,7 +3457,7 @@ export interface GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p1beta1FaceAnnotationLandmark: Schema.Schema<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark> =
+export const GoogleCloudVisionV1p1beta1FaceAnnotationLandmark: Schema.Codec<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(GoogleCloudVisionV1p1beta1Position),
     type: Schema.optional(Schema.String),
@@ -3547,7 +3547,7 @@ export interface GoogleCloudVisionV1p1beta1FaceAnnotation {
   panAngle?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1FaceAnnotation: Schema.Schema<GoogleCloudVisionV1p1beta1FaceAnnotation> =
+export const GoogleCloudVisionV1p1beta1FaceAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1FaceAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p1beta1BoundingPoly),
     rollAngle: Schema.optional(Schema.Number),
@@ -3573,7 +3573,7 @@ export interface GoogleCloudVisionV1p1beta1ImageProperties {
   dominantColors?: GoogleCloudVisionV1p1beta1DominantColorsAnnotation;
 }
 
-export const GoogleCloudVisionV1p1beta1ImageProperties: Schema.Schema<GoogleCloudVisionV1p1beta1ImageProperties> =
+export const GoogleCloudVisionV1p1beta1ImageProperties: Schema.Codec<GoogleCloudVisionV1p1beta1ImageProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(
       GoogleCloudVisionV1p1beta1DominantColorsAnnotation,
@@ -3589,7 +3589,7 @@ export interface GoogleCloudVisionV1p1beta1CropHint {
   confidence?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1CropHint: Schema.Schema<GoogleCloudVisionV1p1beta1CropHint> =
+export const GoogleCloudVisionV1p1beta1CropHint: Schema.Codec<GoogleCloudVisionV1p1beta1CropHint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p1beta1BoundingPoly),
     importanceFraction: Schema.optional(Schema.Number),
@@ -3601,7 +3601,7 @@ export interface GoogleCloudVisionV1p1beta1CropHintsAnnotation {
   cropHints?: ReadonlyArray<GoogleCloudVisionV1p1beta1CropHint>;
 }
 
-export const GoogleCloudVisionV1p1beta1CropHintsAnnotation: Schema.Schema<GoogleCloudVisionV1p1beta1CropHintsAnnotation> =
+export const GoogleCloudVisionV1p1beta1CropHintsAnnotation: Schema.Codec<GoogleCloudVisionV1p1beta1CropHintsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1CropHint),
@@ -3615,7 +3615,7 @@ export interface GoogleCloudVisionV1p1beta1ImageAnnotationContext {
   pageNumber?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1ImageAnnotationContext: Schema.Schema<GoogleCloudVisionV1p1beta1ImageAnnotationContext> =
+export const GoogleCloudVisionV1p1beta1ImageAnnotationContext: Schema.Codec<GoogleCloudVisionV1p1beta1ImageAnnotationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
@@ -3654,7 +3654,7 @@ export interface GoogleCloudVisionV1p1beta1AnnotateImageResponse {
   webDetection?: GoogleCloudVisionV1p1beta1WebDetection;
 }
 
-export const GoogleCloudVisionV1p1beta1AnnotateImageResponse: Schema.Schema<GoogleCloudVisionV1p1beta1AnnotateImageResponse> =
+export const GoogleCloudVisionV1p1beta1AnnotateImageResponse: Schema.Codec<GoogleCloudVisionV1p1beta1AnnotateImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localizedObjectAnnotations: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation),
@@ -3703,7 +3703,7 @@ export interface TextAnnotation {
   pages?: ReadonlyArray<Page>;
 }
 
-export const TextAnnotation: Schema.Schema<TextAnnotation> =
+export const TextAnnotation: Schema.Codec<TextAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     pages: Schema.optional(Schema.Array(Page)),
@@ -3757,7 +3757,7 @@ export interface SafeSearchAnnotation {
     | (string & {});
 }
 
-export const SafeSearchAnnotation: Schema.Schema<SafeSearchAnnotation> =
+export const SafeSearchAnnotation: Schema.Codec<SafeSearchAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adult: Schema.optional(Schema.String),
     spoof: Schema.optional(Schema.String),
@@ -3771,7 +3771,7 @@ export interface LocationInfo {
   latLng?: LatLng;
 }
 
-export const LocationInfo: Schema.Schema<LocationInfo> =
+export const LocationInfo: Schema.Codec<LocationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "LocationInfo" });
@@ -3785,7 +3785,7 @@ export interface Property {
   name?: string;
 }
 
-export const Property: Schema.Schema<Property> =
+export const Property: Schema.Codec<Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     uint64Value: Schema.optional(Schema.String),
@@ -3813,7 +3813,7 @@ export interface EntityAnnotation {
   properties?: ReadonlyArray<Property>;
 }
 
-export const EntityAnnotation: Schema.Schema<EntityAnnotation> =
+export const EntityAnnotation: Schema.Codec<EntityAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -3871,7 +3871,7 @@ export interface Landmark {
   position?: Position;
 }
 
-export const Landmark: Schema.Schema<Landmark> =
+export const Landmark: Schema.Codec<Landmark> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     position: Schema.optional(Position),
@@ -3959,7 +3959,7 @@ export interface FaceAnnotation {
   detectionConfidence?: number;
 }
 
-export const FaceAnnotation: Schema.Schema<FaceAnnotation> =
+export const FaceAnnotation: Schema.Codec<FaceAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollAngle: Schema.optional(Schema.Number),
     boundingPoly: Schema.optional(BoundingPoly),
@@ -3987,7 +3987,7 @@ export interface GroupedResult {
   objectAnnotations?: ReadonlyArray<ObjectAnnotation>;
 }
 
-export const GroupedResult: Schema.Schema<GroupedResult> =
+export const GroupedResult: Schema.Codec<GroupedResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(BoundingPoly),
     results: Schema.optional(Schema.Array(Result)),
@@ -4003,7 +4003,7 @@ export interface ProductSearchResults {
   productGroupedResults?: ReadonlyArray<GroupedResult>;
 }
 
-export const ProductSearchResults: Schema.Schema<ProductSearchResults> =
+export const ProductSearchResults: Schema.Codec<ProductSearchResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexTime: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(Result)),
@@ -4015,7 +4015,7 @@ export interface CropHintsAnnotation {
   cropHints?: ReadonlyArray<CropHint>;
 }
 
-export const CropHintsAnnotation: Schema.Schema<CropHintsAnnotation> =
+export const CropHintsAnnotation: Schema.Codec<CropHintsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(Schema.Array(CropHint)),
   }).annotate({ identifier: "CropHintsAnnotation" });
@@ -4029,7 +4029,7 @@ export interface WebEntity {
   description?: string;
 }
 
-export const WebEntity: Schema.Schema<WebEntity> =
+export const WebEntity: Schema.Codec<WebEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -4049,7 +4049,7 @@ export interface WebPage {
   partialMatchingImages?: ReadonlyArray<WebImage>;
 }
 
-export const WebPage: Schema.Schema<WebPage> =
+export const WebPage: Schema.Codec<WebPage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     fullMatchingImages: Schema.optional(Schema.Array(WebImage)),
@@ -4065,7 +4065,7 @@ export interface WebLabel {
   label?: string;
 }
 
-export const WebLabel: Schema.Schema<WebLabel> =
+export const WebLabel: Schema.Codec<WebLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -4086,7 +4086,7 @@ export interface WebDetection {
   bestGuessLabels?: ReadonlyArray<WebLabel>;
 }
 
-export const WebDetection: Schema.Schema<WebDetection> =
+export const WebDetection: Schema.Codec<WebDetection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visuallySimilarImages: Schema.optional(Schema.Array(WebImage)),
     partialMatchingImages: Schema.optional(Schema.Array(WebImage)),
@@ -4127,7 +4127,7 @@ export interface AnnotateImageResponse {
   logoAnnotations?: ReadonlyArray<EntityAnnotation>;
 }
 
-export const AnnotateImageResponse: Schema.Schema<AnnotateImageResponse> =
+export const AnnotateImageResponse: Schema.Codec<AnnotateImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullTextAnnotation: Schema.optional(TextAnnotation),
     localizedObjectAnnotations: Schema.optional(
@@ -4158,7 +4158,7 @@ export interface AnnotateFileResponse {
   error?: Status;
 }
 
-export const AnnotateFileResponse: Schema.Schema<AnnotateFileResponse> =
+export const AnnotateFileResponse: Schema.Codec<AnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputConfig: Schema.optional(InputConfig),
     responses: Schema.optional(Schema.Array(AnnotateImageResponse)),
@@ -4171,7 +4171,7 @@ export interface GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse {
   outputConfig?: GoogleCloudVisionV1p3beta1OutputConfig;
 }
 
-export const GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse: Schema.Schema<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse> =
+export const GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p3beta1OutputConfig),
   }).annotate({
@@ -4191,7 +4191,7 @@ export interface GoogleCloudVisionV1p3beta1Page {
   blocks?: ReadonlyArray<GoogleCloudVisionV1p3beta1Block>;
 }
 
-export const GoogleCloudVisionV1p3beta1Page: Schema.Schema<GoogleCloudVisionV1p3beta1Page> =
+export const GoogleCloudVisionV1p3beta1Page: Schema.Codec<GoogleCloudVisionV1p3beta1Page> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     height: Schema.optional(Schema.Number),
@@ -4209,7 +4209,7 @@ export interface GoogleCloudVisionV1p3beta1TextAnnotation {
   text?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1TextAnnotation: Schema.Schema<GoogleCloudVisionV1p3beta1TextAnnotation> =
+export const GoogleCloudVisionV1p3beta1TextAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1TextAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pages: Schema.optional(Schema.Array(GoogleCloudVisionV1p3beta1Page)),
     text: Schema.optional(Schema.String),
@@ -4220,7 +4220,7 @@ export interface GoogleCloudVisionV1p1beta1GcsSource {
   uri?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1GcsSource: Schema.Schema<GoogleCloudVisionV1p1beta1GcsSource> =
+export const GoogleCloudVisionV1p1beta1GcsSource: Schema.Codec<GoogleCloudVisionV1p1beta1GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p1beta1GcsSource" });
@@ -4234,7 +4234,7 @@ export interface GoogleCloudVisionV1p1beta1InputConfig {
   mimeType?: string;
 }
 
-export const GoogleCloudVisionV1p1beta1InputConfig: Schema.Schema<GoogleCloudVisionV1p1beta1InputConfig> =
+export const GoogleCloudVisionV1p1beta1InputConfig: Schema.Codec<GoogleCloudVisionV1p1beta1InputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GoogleCloudVisionV1p1beta1GcsSource),
     content: Schema.optional(Schema.String),
@@ -4252,7 +4252,7 @@ export interface GoogleCloudVisionV1p1beta1AnnotateFileResponse {
   totalPages?: number;
 }
 
-export const GoogleCloudVisionV1p1beta1AnnotateFileResponse: Schema.Schema<GoogleCloudVisionV1p1beta1AnnotateFileResponse> =
+export const GoogleCloudVisionV1p1beta1AnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p1beta1AnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     inputConfig: Schema.optional(GoogleCloudVisionV1p1beta1InputConfig),
@@ -4267,7 +4267,7 @@ export interface GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
   colors?: ReadonlyArray<GoogleCloudVisionV1p2beta1ColorInfo>;
 }
 
-export const GoogleCloudVisionV1p2beta1DominantColorsAnnotation: Schema.Schema<GoogleCloudVisionV1p2beta1DominantColorsAnnotation> =
+export const GoogleCloudVisionV1p2beta1DominantColorsAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1DominantColorsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1ColorInfo)),
   }).annotate({
@@ -4279,7 +4279,7 @@ export interface GoogleCloudVisionV1p2beta1LocationInfo {
   latLng?: LatLng;
 }
 
-export const GoogleCloudVisionV1p2beta1LocationInfo: Schema.Schema<GoogleCloudVisionV1p2beta1LocationInfo> =
+export const GoogleCloudVisionV1p2beta1LocationInfo: Schema.Codec<GoogleCloudVisionV1p2beta1LocationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "GoogleCloudVisionV1p2beta1LocationInfo" });
@@ -4293,7 +4293,7 @@ export interface GoogleCloudVisionV1p2beta1Property {
   uint64Value?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1Property: Schema.Schema<GoogleCloudVisionV1p2beta1Property> =
+export const GoogleCloudVisionV1p2beta1Property: Schema.Codec<GoogleCloudVisionV1p2beta1Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4321,7 +4321,7 @@ export interface GoogleCloudVisionV1p2beta1EntityAnnotation {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1EntityAnnotation: Schema.Schema<GoogleCloudVisionV1p2beta1EntityAnnotation> =
+export const GoogleCloudVisionV1p2beta1EntityAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1EntityAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -4347,7 +4347,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebEntity {
   description?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1WebDetectionWebEntity: Schema.Schema<GoogleCloudVisionV1p2beta1WebDetectionWebEntity> =
+export const GoogleCloudVisionV1p2beta1WebDetectionWebEntity: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionWebEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -4363,7 +4363,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebLabel {
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1WebDetectionWebLabel: Schema.Schema<GoogleCloudVisionV1p2beta1WebDetectionWebLabel> =
+export const GoogleCloudVisionV1p2beta1WebDetectionWebLabel: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetectionWebLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -4384,7 +4384,7 @@ export interface GoogleCloudVisionV1p2beta1WebDetection {
   partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
 }
 
-export const GoogleCloudVisionV1p2beta1WebDetection: Schema.Schema<GoogleCloudVisionV1p2beta1WebDetection> =
+export const GoogleCloudVisionV1p2beta1WebDetection: Schema.Codec<GoogleCloudVisionV1p2beta1WebDetection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webEntities: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1WebDetectionWebEntity),
@@ -4411,7 +4411,7 @@ export interface GoogleCloudVisionV1p2beta1CropHintsAnnotation {
   cropHints?: ReadonlyArray<GoogleCloudVisionV1p2beta1CropHint>;
 }
 
-export const GoogleCloudVisionV1p2beta1CropHintsAnnotation: Schema.Schema<GoogleCloudVisionV1p2beta1CropHintsAnnotation> =
+export const GoogleCloudVisionV1p2beta1CropHintsAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1CropHintsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1CropHint),
@@ -4425,7 +4425,7 @@ export interface GoogleCloudVisionV1p2beta1ImageAnnotationContext {
   pageNumber?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1ImageAnnotationContext: Schema.Schema<GoogleCloudVisionV1p2beta1ImageAnnotationContext> =
+export const GoogleCloudVisionV1p2beta1ImageAnnotationContext: Schema.Codec<GoogleCloudVisionV1p2beta1ImageAnnotationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
@@ -4444,7 +4444,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation 
   score?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation: Schema.Schema<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation> =
+export const GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mid: Schema.optional(Schema.String),
@@ -4464,7 +4464,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
   boundingPoly?: GoogleCloudVisionV1p2beta1BoundingPoly;
 }
 
-export const GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult: Schema.Schema<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult> =
+export const GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1ProductSearchResultsResult),
@@ -4488,7 +4488,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResults {
   productGroupedResults?: ReadonlyArray<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>;
 }
 
-export const GoogleCloudVisionV1p2beta1ProductSearchResults: Schema.Schema<GoogleCloudVisionV1p2beta1ProductSearchResults> =
+export const GoogleCloudVisionV1p2beta1ProductSearchResults: Schema.Codec<GoogleCloudVisionV1p2beta1ProductSearchResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexTime: Schema.optional(Schema.String),
     results: Schema.optional(
@@ -4544,7 +4544,7 @@ export interface GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
   position?: GoogleCloudVisionV1p2beta1Position;
 }
 
-export const GoogleCloudVisionV1p2beta1FaceAnnotationLandmark: Schema.Schema<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark> =
+export const GoogleCloudVisionV1p2beta1FaceAnnotationLandmark: Schema.Codec<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     position: Schema.optional(GoogleCloudVisionV1p2beta1Position),
@@ -4634,7 +4634,7 @@ export interface GoogleCloudVisionV1p2beta1FaceAnnotation {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p2beta1FaceAnnotation: Schema.Schema<GoogleCloudVisionV1p2beta1FaceAnnotation> =
+export const GoogleCloudVisionV1p2beta1FaceAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1FaceAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     joyLikelihood: Schema.optional(Schema.String),
     sorrowLikelihood: Schema.optional(Schema.String),
@@ -4660,7 +4660,7 @@ export interface GoogleCloudVisionV1p2beta1ImageProperties {
   dominantColors?: GoogleCloudVisionV1p2beta1DominantColorsAnnotation;
 }
 
-export const GoogleCloudVisionV1p2beta1ImageProperties: Schema.Schema<GoogleCloudVisionV1p2beta1ImageProperties> =
+export const GoogleCloudVisionV1p2beta1ImageProperties: Schema.Codec<GoogleCloudVisionV1p2beta1ImageProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(
       GoogleCloudVisionV1p2beta1DominantColorsAnnotation,
@@ -4680,7 +4680,7 @@ export interface GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
   name?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation: Schema.Schema<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation> =
+export const GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     boundingPoly: Schema.optional(GoogleCloudVisionV1p2beta1BoundingPoly),
@@ -4704,7 +4704,7 @@ export interface GoogleCloudVisionV1p2beta1Page {
   height?: number;
 }
 
-export const GoogleCloudVisionV1p2beta1Page: Schema.Schema<GoogleCloudVisionV1p2beta1Page> =
+export const GoogleCloudVisionV1p2beta1Page: Schema.Codec<GoogleCloudVisionV1p2beta1Page> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blocks: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Block)),
     property: Schema.optional(
@@ -4722,7 +4722,7 @@ export interface GoogleCloudVisionV1p2beta1TextAnnotation {
   text?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1TextAnnotation: Schema.Schema<GoogleCloudVisionV1p2beta1TextAnnotation> =
+export const GoogleCloudVisionV1p2beta1TextAnnotation: Schema.Codec<GoogleCloudVisionV1p2beta1TextAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pages: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Page)),
     text: Schema.optional(Schema.String),
@@ -4759,7 +4759,7 @@ export interface GoogleCloudVisionV1p2beta1AnnotateImageResponse {
   error?: Status;
 }
 
-export const GoogleCloudVisionV1p2beta1AnnotateImageResponse: Schema.Schema<GoogleCloudVisionV1p2beta1AnnotateImageResponse> =
+export const GoogleCloudVisionV1p2beta1AnnotateImageResponse: Schema.Codec<GoogleCloudVisionV1p2beta1AnnotateImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logoAnnotations: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1EntityAnnotation),
@@ -4806,7 +4806,7 @@ export interface GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse {
   responses?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateImageResponse>;
 }
 
-export const GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse: Schema.Schema<GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse> =
+export const GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse: Schema.Codec<GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1AnnotateImageResponse),
@@ -4826,7 +4826,7 @@ export interface GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest {
   imageContext?: GoogleCloudVisionV1p2beta1ImageContext;
 }
 
-export const GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest: Schema.Schema<GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest> =
+export const GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest: Schema.Codec<GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     features: Schema.optional(Schema.Array(GoogleCloudVisionV1p2beta1Feature)),
     inputConfig: Schema.optional(GoogleCloudVisionV1p2beta1InputConfig),
@@ -4845,7 +4845,7 @@ export interface GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest {
   requests?: ReadonlyArray<GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest>;
 }
 
-export const GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest: Schema.Schema<GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest> =
+export const GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest: Schema.Codec<GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     parent: Schema.optional(Schema.String),
@@ -4869,7 +4869,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -4926,7 +4926,7 @@ export interface GoogleCloudVisionV1p3beta1SafeSearchAnnotation {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p3beta1SafeSearchAnnotation: Schema.Schema<GoogleCloudVisionV1p3beta1SafeSearchAnnotation> =
+export const GoogleCloudVisionV1p3beta1SafeSearchAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1SafeSearchAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     violence: Schema.optional(Schema.String),
     racy: Schema.optional(Schema.String),
@@ -4940,7 +4940,7 @@ export interface GoogleCloudVisionV1p3beta1ImageProperties {
   dominantColors?: GoogleCloudVisionV1p3beta1DominantColorsAnnotation;
 }
 
-export const GoogleCloudVisionV1p3beta1ImageProperties: Schema.Schema<GoogleCloudVisionV1p3beta1ImageProperties> =
+export const GoogleCloudVisionV1p3beta1ImageProperties: Schema.Codec<GoogleCloudVisionV1p3beta1ImageProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dominantColors: Schema.optional(
       GoogleCloudVisionV1p3beta1DominantColorsAnnotation,
@@ -4952,7 +4952,7 @@ export interface GoogleCloudVisionV1p3beta1LocationInfo {
   latLng?: LatLng;
 }
 
-export const GoogleCloudVisionV1p3beta1LocationInfo: Schema.Schema<GoogleCloudVisionV1p3beta1LocationInfo> =
+export const GoogleCloudVisionV1p3beta1LocationInfo: Schema.Codec<GoogleCloudVisionV1p3beta1LocationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1LocationInfo" });
@@ -4966,7 +4966,7 @@ export interface GoogleCloudVisionV1p3beta1Property {
   value?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1Property: Schema.Schema<GoogleCloudVisionV1p3beta1Property> =
+export const GoogleCloudVisionV1p3beta1Property: Schema.Codec<GoogleCloudVisionV1p3beta1Property> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uint64Value: Schema.optional(Schema.String),
@@ -4994,7 +4994,7 @@ export interface GoogleCloudVisionV1p3beta1EntityAnnotation {
   properties?: ReadonlyArray<GoogleCloudVisionV1p3beta1Property>;
 }
 
-export const GoogleCloudVisionV1p3beta1EntityAnnotation: Schema.Schema<GoogleCloudVisionV1p3beta1EntityAnnotation> =
+export const GoogleCloudVisionV1p3beta1EntityAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1EntityAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -5018,7 +5018,7 @@ export interface GoogleCloudVisionV1p3beta1ImageAnnotationContext {
   pageNumber?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1ImageAnnotationContext: Schema.Schema<GoogleCloudVisionV1p3beta1ImageAnnotationContext> =
+export const GoogleCloudVisionV1p3beta1ImageAnnotationContext: Schema.Codec<GoogleCloudVisionV1p3beta1ImageAnnotationContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     pageNumber: Schema.optional(Schema.Number),
@@ -5037,7 +5037,7 @@ export interface GoogleCloudVisionV1p2beta1AsyncBatchAnnotateImagesRequest {
   parent?: string;
 }
 
-export const GoogleCloudVisionV1p2beta1AsyncBatchAnnotateImagesRequest: Schema.Schema<GoogleCloudVisionV1p2beta1AsyncBatchAnnotateImagesRequest> =
+export const GoogleCloudVisionV1p2beta1AsyncBatchAnnotateImagesRequest: Schema.Codec<GoogleCloudVisionV1p2beta1AsyncBatchAnnotateImagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1AnnotateImageRequest),
@@ -5054,7 +5054,7 @@ export interface GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse {
   outputConfig?: GoogleCloudVisionV1p4beta1OutputConfig;
 }
 
-export const GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse: Schema.Schema<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse> =
+export const GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p4beta1OutputConfig),
   }).annotate({
@@ -5066,7 +5066,7 @@ export interface GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
   responses?: ReadonlyArray<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>;
 }
 
-export const GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse: Schema.Schema<GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse> =
+export const GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse),
@@ -5082,7 +5082,7 @@ export interface OutputConfig {
   batchSize?: number;
 }
 
-export const OutputConfig: Schema.Schema<OutputConfig> =
+export const OutputConfig: Schema.Codec<OutputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsDestination: Schema.optional(GcsDestination),
     batchSize: Schema.optional(Schema.Number),
@@ -5103,7 +5103,7 @@ export interface GoogleCloudVisionV1p3beta1BatchOperationMetadata {
     | (string & {});
 }
 
-export const GoogleCloudVisionV1p3beta1BatchOperationMetadata: Schema.Schema<GoogleCloudVisionV1p3beta1BatchOperationMetadata> =
+export const GoogleCloudVisionV1p3beta1BatchOperationMetadata: Schema.Codec<GoogleCloudVisionV1p3beta1BatchOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     submitTime: Schema.optional(Schema.String),
@@ -5117,7 +5117,7 @@ export interface GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
   responses?: ReadonlyArray<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>;
 }
 
-export const GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse: Schema.Schema<GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse> =
+export const GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse),
@@ -5131,7 +5131,7 @@ export interface GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
   responses?: ReadonlyArray<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>;
 }
 
-export const GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse: Schema.Schema<GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse> =
+export const GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse),
@@ -5147,7 +5147,7 @@ export interface GoogleCloudVisionV1p3beta1ProductKeyValue {
   key?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1ProductKeyValue: Schema.Schema<GoogleCloudVisionV1p3beta1ProductKeyValue> =
+export const GoogleCloudVisionV1p3beta1ProductKeyValue: Schema.Codec<GoogleCloudVisionV1p3beta1ProductKeyValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -5166,7 +5166,7 @@ export interface GoogleCloudVisionV1p3beta1Product {
   productCategory?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1Product: Schema.Schema<GoogleCloudVisionV1p3beta1Product> =
+export const GoogleCloudVisionV1p3beta1Product: Schema.Codec<GoogleCloudVisionV1p3beta1Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productLabels: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1ProductKeyValue),
@@ -5186,7 +5186,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebEntity {
   entityId?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1WebDetectionWebEntity: Schema.Schema<GoogleCloudVisionV1p3beta1WebDetectionWebEntity> =
+export const GoogleCloudVisionV1p3beta1WebDetectionWebEntity: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetectionWebEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -5202,7 +5202,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebLabel {
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1WebDetectionWebLabel: Schema.Schema<GoogleCloudVisionV1p3beta1WebDetectionWebLabel> =
+export const GoogleCloudVisionV1p3beta1WebDetectionWebLabel: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetectionWebLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -5223,7 +5223,7 @@ export interface GoogleCloudVisionV1p3beta1WebDetection {
   bestGuessLabels?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebLabel>;
 }
 
-export const GoogleCloudVisionV1p3beta1WebDetection: Schema.Schema<GoogleCloudVisionV1p3beta1WebDetection> =
+export const GoogleCloudVisionV1p3beta1WebDetection: Schema.Codec<GoogleCloudVisionV1p3beta1WebDetection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visuallySimilarImages: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1WebDetectionWebImage),
@@ -5258,7 +5258,7 @@ export interface GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
   score?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation: Schema.Schema<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation> =
+export const GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mid: Schema.optional(Schema.String),
@@ -5274,7 +5274,7 @@ export interface GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse {
   outputConfig?: GoogleCloudVisionV1p4beta1OutputConfig;
 }
 
-export const GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse: Schema.Schema<GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse> =
+export const GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse: Schema.Codec<GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(GoogleCloudVisionV1p4beta1OutputConfig),
   }).annotate({
@@ -5363,7 +5363,7 @@ export interface GoogleCloudVisionV1p3beta1FaceAnnotation {
   panAngle?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1FaceAnnotation: Schema.Schema<GoogleCloudVisionV1p3beta1FaceAnnotation> =
+export const GoogleCloudVisionV1p3beta1FaceAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1FaceAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
     rollAngle: Schema.optional(Schema.Number),
@@ -5393,7 +5393,7 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
   product?: GoogleCloudVisionV1p3beta1Product;
 }
 
-export const GoogleCloudVisionV1p3beta1ProductSearchResultsResult: Schema.Schema<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> =
+export const GoogleCloudVisionV1p3beta1ProductSearchResultsResult: Schema.Codec<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     image: Schema.optional(Schema.String),
@@ -5413,7 +5413,7 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation 
   languageCode?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation: Schema.Schema<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation> =
+export const GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -5433,7 +5433,7 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
   objectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>;
 }
 
-export const GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult: Schema.Schema<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult> =
+export const GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult: Schema.Codec<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
     results: Schema.optional(
@@ -5457,7 +5457,7 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResults {
   results?: ReadonlyArray<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>;
 }
 
-export const GoogleCloudVisionV1p3beta1ProductSearchResults: Schema.Schema<GoogleCloudVisionV1p3beta1ProductSearchResults> =
+export const GoogleCloudVisionV1p3beta1ProductSearchResults: Schema.Codec<GoogleCloudVisionV1p3beta1ProductSearchResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     productGroupedResults: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult),
@@ -5477,7 +5477,7 @@ export interface GoogleCloudVisionV1p3beta1CropHint {
   confidence?: number;
 }
 
-export const GoogleCloudVisionV1p3beta1CropHint: Schema.Schema<GoogleCloudVisionV1p3beta1CropHint> =
+export const GoogleCloudVisionV1p3beta1CropHint: Schema.Codec<GoogleCloudVisionV1p3beta1CropHint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boundingPoly: Schema.optional(GoogleCloudVisionV1p3beta1BoundingPoly),
     importanceFraction: Schema.optional(Schema.Number),
@@ -5489,7 +5489,7 @@ export interface GoogleCloudVisionV1p3beta1CropHintsAnnotation {
   cropHints?: ReadonlyArray<GoogleCloudVisionV1p3beta1CropHint>;
 }
 
-export const GoogleCloudVisionV1p3beta1CropHintsAnnotation: Schema.Schema<GoogleCloudVisionV1p3beta1CropHintsAnnotation> =
+export const GoogleCloudVisionV1p3beta1CropHintsAnnotation: Schema.Codec<GoogleCloudVisionV1p3beta1CropHintsAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cropHints: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p3beta1CropHint),
@@ -5527,7 +5527,7 @@ export interface GoogleCloudVisionV1p3beta1AnnotateImageResponse {
   logoAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1EntityAnnotation>;
 }
 
-export const GoogleCloudVisionV1p3beta1AnnotateImageResponse: Schema.Schema<GoogleCloudVisionV1p3beta1AnnotateImageResponse> =
+export const GoogleCloudVisionV1p3beta1AnnotateImageResponse: Schema.Codec<GoogleCloudVisionV1p3beta1AnnotateImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     safeSearchAnnotation: Schema.optional(
@@ -5574,7 +5574,7 @@ export interface GoogleCloudVisionV1p3beta1GcsSource {
   uri?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1GcsSource: Schema.Schema<GoogleCloudVisionV1p3beta1GcsSource> =
+export const GoogleCloudVisionV1p3beta1GcsSource: Schema.Codec<GoogleCloudVisionV1p3beta1GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudVisionV1p3beta1GcsSource" });
@@ -5588,7 +5588,7 @@ export interface GoogleCloudVisionV1p3beta1InputConfig {
   mimeType?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1InputConfig: Schema.Schema<GoogleCloudVisionV1p3beta1InputConfig> =
+export const GoogleCloudVisionV1p3beta1InputConfig: Schema.Codec<GoogleCloudVisionV1p3beta1InputConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(GoogleCloudVisionV1p3beta1GcsSource),
     content: Schema.optional(Schema.String),
@@ -5606,7 +5606,7 @@ export interface GoogleCloudVisionV1p2beta1AnnotateFileResponse {
   error?: Status;
 }
 
-export const GoogleCloudVisionV1p2beta1AnnotateFileResponse: Schema.Schema<GoogleCloudVisionV1p2beta1AnnotateFileResponse> =
+export const GoogleCloudVisionV1p2beta1AnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p2beta1AnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputConfig: Schema.optional(GoogleCloudVisionV1p2beta1InputConfig),
     responses: Schema.optional(
@@ -5621,7 +5621,7 @@ export interface GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse {
   responses?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateFileResponse>;
 }
 
-export const GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse: Schema.Schema<GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse> =
+export const GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p2beta1AnnotateFileResponse),
@@ -5635,7 +5635,7 @@ export interface AsyncBatchAnnotateImagesResponse {
   outputConfig?: OutputConfig;
 }
 
-export const AsyncBatchAnnotateImagesResponse: Schema.Schema<AsyncBatchAnnotateImagesResponse> =
+export const AsyncBatchAnnotateImagesResponse: Schema.Codec<AsyncBatchAnnotateImagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(OutputConfig),
   }).annotate({ identifier: "AsyncBatchAnnotateImagesResponse" });
@@ -5645,7 +5645,7 @@ export interface BatchAnnotateFilesResponse {
   responses?: ReadonlyArray<AnnotateFileResponse>;
 }
 
-export const BatchAnnotateFilesResponse: Schema.Schema<BatchAnnotateFilesResponse> =
+export const BatchAnnotateFilesResponse: Schema.Codec<BatchAnnotateFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(AnnotateFileResponse)),
   }).annotate({ identifier: "BatchAnnotateFilesResponse" });
@@ -5655,7 +5655,7 @@ export interface AsyncAnnotateFileResponse {
   outputConfig?: OutputConfig;
 }
 
-export const AsyncAnnotateFileResponse: Schema.Schema<AsyncAnnotateFileResponse> =
+export const AsyncAnnotateFileResponse: Schema.Codec<AsyncAnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputConfig: Schema.optional(OutputConfig),
   }).annotate({ identifier: "AsyncAnnotateFileResponse" });
@@ -5665,7 +5665,7 @@ export interface GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
   responses?: ReadonlyArray<GoogleCloudVisionV1p4beta1AnnotateFileResponse>;
 }
 
-export const GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse: Schema.Schema<GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse> =
+export const GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse: Schema.Codec<GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(
       Schema.Array(GoogleCloudVisionV1p4beta1AnnotateFileResponse),
@@ -5689,7 +5689,7 @@ export interface GoogleCloudVisionV1p3beta1OperationMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudVisionV1p3beta1OperationMetadata: Schema.Schema<GoogleCloudVisionV1p3beta1OperationMetadata> =
+export const GoogleCloudVisionV1p3beta1OperationMetadata: Schema.Codec<GoogleCloudVisionV1p3beta1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -5701,7 +5701,7 @@ export interface AsyncBatchAnnotateFilesResponse {
   responses?: ReadonlyArray<AsyncAnnotateFileResponse>;
 }
 
-export const AsyncBatchAnnotateFilesResponse: Schema.Schema<AsyncBatchAnnotateFilesResponse> =
+export const AsyncBatchAnnotateFilesResponse: Schema.Codec<AsyncBatchAnnotateFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(AsyncAnnotateFileResponse)),
   }).annotate({ identifier: "AsyncBatchAnnotateFilesResponse" });
@@ -5715,7 +5715,7 @@ export interface ReferenceImage {
   name?: string;
 }
 
-export const ReferenceImage: Schema.Schema<ReferenceImage> =
+export const ReferenceImage: Schema.Codec<ReferenceImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     boundingPolys: Schema.optional(Schema.Array(BoundingPoly)),
@@ -5737,7 +5737,7 @@ export interface BatchOperationMetadata {
   submitTime?: string;
 }
 
-export const BatchOperationMetadata: Schema.Schema<BatchOperationMetadata> =
+export const BatchOperationMetadata: Schema.Codec<BatchOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -5759,7 +5759,7 @@ export interface OperationMetadata {
   updateTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -5777,7 +5777,7 @@ export interface GoogleCloudVisionV1p3beta1AnnotateFileResponse {
   error?: Status;
 }
 
-export const GoogleCloudVisionV1p3beta1AnnotateFileResponse: Schema.Schema<GoogleCloudVisionV1p3beta1AnnotateFileResponse> =
+export const GoogleCloudVisionV1p3beta1AnnotateFileResponse: Schema.Codec<GoogleCloudVisionV1p3beta1AnnotateFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputConfig: Schema.optional(GoogleCloudVisionV1p3beta1InputConfig),
     responses: Schema.optional(
@@ -5794,7 +5794,7 @@ export interface ImportProductSetsResponse {
   statuses?: ReadonlyArray<Status>;
 }
 
-export const ImportProductSetsResponse: Schema.Schema<ImportProductSetsResponse> =
+export const ImportProductSetsResponse: Schema.Codec<ImportProductSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceImages: Schema.optional(Schema.Array(ReferenceImage)),
     statuses: Schema.optional(Schema.Array(Status)),
@@ -5874,7 +5874,7 @@ export const AnnotateProjectsLocationsImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnnotateProjectsLocationsImagesRequest>;
+  ) as unknown as Schema.Codec<AnnotateProjectsLocationsImagesRequest>;
 
 export type AnnotateProjectsLocationsImagesResponse =
   GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse;
@@ -5920,7 +5920,7 @@ export const AsyncBatchAnnotateProjectsLocationsImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>;
+  ) as unknown as Schema.Codec<AsyncBatchAnnotateProjectsLocationsImagesRequest>;
 
 export type AsyncBatchAnnotateProjectsLocationsImagesResponse = Operation;
 export const AsyncBatchAnnotateProjectsLocationsImagesResponse =
@@ -5965,7 +5965,7 @@ export const AnnotateProjectsLocationsFilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnnotateProjectsLocationsFilesRequest>;
+  ) as unknown as Schema.Codec<AnnotateProjectsLocationsFilesRequest>;
 
 export type AnnotateProjectsLocationsFilesResponse =
   GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse;
@@ -6011,7 +6011,7 @@ export const AsyncBatchAnnotateProjectsLocationsFilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>;
+  ) as unknown as Schema.Codec<AsyncBatchAnnotateProjectsLocationsFilesRequest>;
 
 export type AsyncBatchAnnotateProjectsLocationsFilesResponse = Operation;
 export const AsyncBatchAnnotateProjectsLocationsFilesResponse =
@@ -6056,7 +6056,7 @@ export const AnnotateProjectsImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnnotateProjectsImagesRequest>;
+  ) as unknown as Schema.Codec<AnnotateProjectsImagesRequest>;
 
 export type AnnotateProjectsImagesResponse =
   GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse;
@@ -6102,7 +6102,7 @@ export const AsyncBatchAnnotateProjectsImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AsyncBatchAnnotateProjectsImagesRequest>;
+  ) as unknown as Schema.Codec<AsyncBatchAnnotateProjectsImagesRequest>;
 
 export type AsyncBatchAnnotateProjectsImagesResponse = Operation;
 export const AsyncBatchAnnotateProjectsImagesResponse =
@@ -6147,7 +6147,7 @@ export const AsyncBatchAnnotateProjectsFilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AsyncBatchAnnotateProjectsFilesRequest>;
+  ) as unknown as Schema.Codec<AsyncBatchAnnotateProjectsFilesRequest>;
 
 export type AsyncBatchAnnotateProjectsFilesResponse = Operation;
 export const AsyncBatchAnnotateProjectsFilesResponse =
@@ -6192,7 +6192,7 @@ export const AnnotateProjectsFilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AnnotateProjectsFilesRequest>;
+  ) as unknown as Schema.Codec<AnnotateProjectsFilesRequest>;
 
 export type AnnotateProjectsFilesResponse =
   GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse;
@@ -6235,7 +6235,7 @@ export const AsyncBatchAnnotateImagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AsyncBatchAnnotateImagesRequest>;
+  ) as unknown as Schema.Codec<AsyncBatchAnnotateImagesRequest>;
 
 export type AsyncBatchAnnotateImagesResponse_Op = Operation;
 export const AsyncBatchAnnotateImagesResponse_Op =
@@ -6272,7 +6272,7 @@ export const AnnotateImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1p2beta1/images:annotate", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<AnnotateImagesRequest>;
+) as unknown as Schema.Codec<AnnotateImagesRequest>;
 
 export type AnnotateImagesResponse =
   GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse;
@@ -6310,7 +6310,7 @@ export const AnnotateFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1p2beta1/files:annotate", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<AnnotateFilesRequest>;
+) as unknown as Schema.Codec<AnnotateFilesRequest>;
 
 export type AnnotateFilesResponse =
   GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse;
@@ -6353,7 +6353,7 @@ export const AsyncBatchAnnotateFilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AsyncBatchAnnotateFilesRequest>;
+  ) as unknown as Schema.Codec<AsyncBatchAnnotateFilesRequest>;
 
 export type AsyncBatchAnnotateFilesResponse_Op = Operation;
 export const AsyncBatchAnnotateFilesResponse_Op =

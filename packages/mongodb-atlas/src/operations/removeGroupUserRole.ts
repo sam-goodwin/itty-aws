@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface RemoveGroupUserRoleInput {
+  groupId: string;
+  userId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RemoveGroupUserRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,13 +21,12 @@ export const RemoveGroupUserRoleInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/users/{userId}:removeRole",
     }),
-  );
-export type RemoveGroupUserRoleInput = typeof RemoveGroupUserRoleInput.Type;
+  ) as unknown as Schema.Codec<RemoveGroupUserRoleInput>;
 
 // Output Schema
+export type RemoveGroupUserRoleOutput = void;
 export const RemoveGroupUserRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemoveGroupUserRoleOutput = typeof RemoveGroupUserRoleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupUserRoleOutput>;
 
 // The operation
 /**

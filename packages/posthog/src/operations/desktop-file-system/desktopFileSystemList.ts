@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const DesktopFileSystemListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,26 @@ export const DesktopFileSystemListInput =
       method: "GET",
       path: "/api/projects/{project_id}/desktop_file_system/",
     }),
-  );
-export type DesktopFileSystemListInput = typeof DesktopFileSystemListInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemListInput>;
 
 // Output Schema
+export interface DesktopFileSystemListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    path?: string;
+    depth?: number | null;
+    type?: string;
+    ref?: string | null;
+    href?: string | null;
+    meta?: unknown;
+    shortcut?: boolean | null;
+    created_at?: string;
+    last_viewed_at?: string | null;
+  }[];
+}
 export const DesktopFileSystemListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -39,9 +61,7 @@ export const DesktopFileSystemListOutput =
         }),
       ),
     ),
-  });
-export type DesktopFileSystemListOutput =
-  typeof DesktopFileSystemListOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemListOutput>;
 
 // The operation
 /**

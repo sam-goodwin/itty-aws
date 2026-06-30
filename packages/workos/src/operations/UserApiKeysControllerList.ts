@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserApiKeysControllerListInput {
+  userId: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  organization_id?: string;
+}
 export const UserApiKeysControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -14,11 +22,25 @@ export const UserApiKeysControllerListInput =
     organization_id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/users/{userId}/api_keys" }),
-  );
-export type UserApiKeysControllerListInput =
-  typeof UserApiKeysControllerListInput.Type;
+  ) as unknown as Schema.Codec<UserApiKeysControllerListInput>;
 
 // Output Schema
+export interface UserApiKeysControllerListOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    owner: { type: string; id: string; organization_id: string };
+    name: string;
+    obfuscated_value: string;
+    last_used_at: string | null;
+    expires_at: string | null;
+    permissions: string[];
+    created_at: string;
+    updated_at: string;
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const UserApiKeysControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -44,9 +66,7 @@ export const UserApiKeysControllerListOutput =
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type UserApiKeysControllerListOutput =
-  typeof UserApiKeysControllerListOutput.Type;
+  }) as unknown as Schema.Codec<UserApiKeysControllerListOutput>;
 
 // The operation
 /**

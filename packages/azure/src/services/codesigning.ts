@@ -4,11 +4,56 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CertificateProfilesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  profileName: string;
+  properties?: {
+    profileType:
+      | "PublicTrust"
+      | "PrivateTrust"
+      | "PrivateTrustCIPolicy"
+      | "VBSEnclave"
+      | "PublicTrustTest";
+    includeStreetAddress?: boolean;
+    includeCity?: boolean;
+    includeState?: boolean;
+    includeCountry?: boolean;
+    includePostalCode?: boolean;
+    identityValidationId: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+    status?: "Active" | "Disabled" | "Suspended";
+    certificates?: {
+      serialNumber?: string;
+      enhancedKeyUsage?: string;
+      subjectName?: string;
+      thumbprint?: string;
+      createdDate?: string;
+      expiryDate?: string;
+      status?: "Active" | "Expired" | "Revoked";
+      revocation?: {
+        requestedAt?: string;
+        effectiveAt?: string;
+        reason?: string;
+        remarks?: string;
+        status?: "Succeeded" | "InProgress" | "Failed";
+        failureReason?: string;
+      };
+    }[];
+  };
+}
 export const CertificateProfilesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -78,11 +123,22 @@ export const CertificateProfilesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CertificateProfilesCreateInput =
-  typeof CertificateProfilesCreateInput.Type;
+  ) as unknown as Schema.Codec<CertificateProfilesCreateInput>;
 
 // Output Schema
+export interface CertificateProfilesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificateProfilesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -102,9 +158,7 @@ export const CertificateProfilesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CertificateProfilesCreateOutput =
-  typeof CertificateProfilesCreateOutput.Type;
+  }) as unknown as Schema.Codec<CertificateProfilesCreateOutput>;
 
 // The operation
 /**
@@ -123,6 +177,12 @@ export const CertificateProfilesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificateProfilesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  profileName: string;
+}
 export const CertificateProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -135,15 +195,12 @@ export const CertificateProfilesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CertificateProfilesDeleteInput =
-  typeof CertificateProfilesDeleteInput.Type;
+  ) as unknown as Schema.Codec<CertificateProfilesDeleteInput>;
 
 // Output Schema
+export type CertificateProfilesDeleteOutput = void;
 export const CertificateProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CertificateProfilesDeleteOutput =
-  typeof CertificateProfilesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -162,6 +219,12 @@ export const CertificateProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificateProfilesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  profileName: string;
+}
 export const CertificateProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -174,11 +237,22 @@ export const CertificateProfilesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CertificateProfilesGetInput =
-  typeof CertificateProfilesGetInput.Type;
+  ) as unknown as Schema.Codec<CertificateProfilesGetInput>;
 
 // Output Schema
+export interface CertificateProfilesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificateProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -198,9 +272,7 @@ export const CertificateProfilesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CertificateProfilesGetOutput =
-  typeof CertificateProfilesGetOutput.Type;
+  }) as unknown as Schema.Codec<CertificateProfilesGetOutput>;
 
 // The operation
 /**
@@ -219,6 +291,11 @@ export const CertificateProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificateProfilesListByCodeSigningAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const CertificateProfilesListByCodeSigningAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -230,11 +307,25 @@ export const CertificateProfilesListByCodeSigningAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CertificateProfilesListByCodeSigningAccountInput =
-  typeof CertificateProfilesListByCodeSigningAccountInput.Type;
+  ) as unknown as Schema.Codec<CertificateProfilesListByCodeSigningAccountInput>;
 
 // Output Schema
+export interface CertificateProfilesListByCodeSigningAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CertificateProfilesListByCodeSigningAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -269,9 +360,7 @@ export const CertificateProfilesListByCodeSigningAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CertificateProfilesListByCodeSigningAccountOutput =
-  typeof CertificateProfilesListByCodeSigningAccountOutput.Type;
+  }) as unknown as Schema.Codec<CertificateProfilesListByCodeSigningAccountOutput>;
 
 // The operation
 /**
@@ -288,6 +377,17 @@ export const CertificateProfilesListByCodeSigningAccount =
     outputSchema: CertificateProfilesListByCodeSigningAccountOutput,
   }));
 // Input Schema
+export interface CertificateProfilesRevokeCertificateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  profileName: string;
+  serialNumber: string;
+  thumbprint: string;
+  effectiveAt: string;
+  reason: string;
+  remarks?: string;
+}
 export const CertificateProfilesRevokeCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -305,15 +405,12 @@ export const CertificateProfilesRevokeCertificateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}/revokeCertificate",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CertificateProfilesRevokeCertificateInput =
-  typeof CertificateProfilesRevokeCertificateInput.Type;
+  ) as unknown as Schema.Codec<CertificateProfilesRevokeCertificateInput>;
 
 // Output Schema
+export type CertificateProfilesRevokeCertificateOutput = void;
 export const CertificateProfilesRevokeCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CertificateProfilesRevokeCertificateOutput =
-  typeof CertificateProfilesRevokeCertificateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateProfilesRevokeCertificateOutput>;
 
 // The operation
 /**
@@ -331,6 +428,11 @@ export const CertificateProfilesRevokeCertificate =
     outputSchema: CertificateProfilesRevokeCertificateOutput,
   }));
 // Input Schema
+export interface CodeSigningAccountsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  type: string;
+  name: string;
+}
 export const CodeSigningAccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -342,11 +444,14 @@ export const CodeSigningAccountsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/checkNameAvailability",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CodeSigningAccountsCheckNameAvailabilityInput =
-  typeof CodeSigningAccountsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<CodeSigningAccountsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface CodeSigningAccountsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "AccountNameInvalid" | "AlreadyExists";
+  message?: string;
+}
 export const CodeSigningAccountsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
@@ -354,9 +459,7 @@ export const CodeSigningAccountsCheckNameAvailabilityOutput =
       Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
     ),
     message: Schema.optional(Schema.String),
-  });
-export type CodeSigningAccountsCheckNameAvailabilityOutput =
-  typeof CodeSigningAccountsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<CodeSigningAccountsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -371,6 +474,24 @@ export const CodeSigningAccountsCheckNameAvailability =
     outputSchema: CodeSigningAccountsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface CodeSigningAccountsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    accountUri?: string;
+    sku?: { name: "Basic" | "Premium" };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const CodeSigningAccountsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -404,11 +525,22 @@ export const CodeSigningAccountsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CodeSigningAccountsCreateInput =
-  typeof CodeSigningAccountsCreateInput.Type;
+  ) as unknown as Schema.Codec<CodeSigningAccountsCreateInput>;
 
 // Output Schema
+export interface CodeSigningAccountsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CodeSigningAccountsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -428,9 +560,7 @@ export const CodeSigningAccountsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CodeSigningAccountsCreateOutput =
-  typeof CodeSigningAccountsCreateOutput.Type;
+  }) as unknown as Schema.Codec<CodeSigningAccountsCreateOutput>;
 
 // The operation
 /**
@@ -448,6 +578,11 @@ export const CodeSigningAccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CodeSigningAccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const CodeSigningAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -459,15 +594,12 @@ export const CodeSigningAccountsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CodeSigningAccountsDeleteInput =
-  typeof CodeSigningAccountsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CodeSigningAccountsDeleteInput>;
 
 // Output Schema
+export type CodeSigningAccountsDeleteOutput = void;
 export const CodeSigningAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CodeSigningAccountsDeleteOutput =
-  typeof CodeSigningAccountsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeSigningAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -485,6 +617,11 @@ export const CodeSigningAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CodeSigningAccountsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const CodeSigningAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -496,11 +633,22 @@ export const CodeSigningAccountsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CodeSigningAccountsGetInput =
-  typeof CodeSigningAccountsGetInput.Type;
+  ) as unknown as Schema.Codec<CodeSigningAccountsGetInput>;
 
 // Output Schema
+export interface CodeSigningAccountsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CodeSigningAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -520,9 +668,7 @@ export const CodeSigningAccountsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CodeSigningAccountsGetOutput =
-  typeof CodeSigningAccountsGetOutput.Type;
+  }) as unknown as Schema.Codec<CodeSigningAccountsGetOutput>;
 
 // The operation
 /**
@@ -540,6 +686,10 @@ export const CodeSigningAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CodeSigningAccountsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const CodeSigningAccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -550,11 +700,25 @@ export const CodeSigningAccountsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CodeSigningAccountsListByResourceGroupInput =
-  typeof CodeSigningAccountsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CodeSigningAccountsListByResourceGroupInput>;
 
 // Output Schema
+export interface CodeSigningAccountsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CodeSigningAccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -589,9 +753,7 @@ export const CodeSigningAccountsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CodeSigningAccountsListByResourceGroupOutput =
-  typeof CodeSigningAccountsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CodeSigningAccountsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -607,6 +769,9 @@ export const CodeSigningAccountsListByResourceGroup =
     outputSchema: CodeSigningAccountsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface CodeSigningAccountsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const CodeSigningAccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -616,11 +781,25 @@ export const CodeSigningAccountsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/codeSigningAccounts",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CodeSigningAccountsListBySubscriptionInput =
-  typeof CodeSigningAccountsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CodeSigningAccountsListBySubscriptionInput>;
 
 // Output Schema
+export interface CodeSigningAccountsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CodeSigningAccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -655,9 +834,7 @@ export const CodeSigningAccountsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CodeSigningAccountsListBySubscriptionOutput =
-  typeof CodeSigningAccountsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CodeSigningAccountsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -672,6 +849,13 @@ export const CodeSigningAccountsListBySubscription =
     outputSchema: CodeSigningAccountsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface CodeSigningAccountsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tags?: Record<string, string>;
+  properties?: { sku?: { name?: "Basic" | "Premium" } };
+}
 export const CodeSigningAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -693,11 +877,22 @@ export const CodeSigningAccountsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       apiVersion: "2025-10-13",
     }),
-  );
-export type CodeSigningAccountsUpdateInput =
-  typeof CodeSigningAccountsUpdateInput.Type;
+  ) as unknown as Schema.Codec<CodeSigningAccountsUpdateInput>;
 
 // Output Schema
+export interface CodeSigningAccountsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CodeSigningAccountsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -717,9 +912,7 @@ export const CodeSigningAccountsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CodeSigningAccountsUpdateOutput =
-  typeof CodeSigningAccountsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CodeSigningAccountsUpdateOutput>;
 
 // The operation
 /**
@@ -737,6 +930,7 @@ export const CodeSigningAccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -745,10 +939,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.CodeSigning/operations",
     apiVersion: "2025-10-13",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -771,8 +979,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

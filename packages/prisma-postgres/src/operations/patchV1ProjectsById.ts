@@ -4,15 +4,32 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PatchV1ProjectsByIdInput {
+  id: string;
+  name?: string;
+  settings?: Record<string, unknown>;
+}
 export const PatchV1ProjectsByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     settings: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).pipe(T.Http({ method: "PATCH", path: "/v1/projects/{id}" }));
-export type PatchV1ProjectsByIdInput = typeof PatchV1ProjectsByIdInput.Type;
+  }).pipe(
+    T.Http({ method: "PATCH", path: "/v1/projects/{id}" }),
+  ) as unknown as Schema.Codec<PatchV1ProjectsByIdInput>;
 
 // Output Schema
+export interface PatchV1ProjectsByIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+    defaultRegion: string | null;
+    workspace: { id: string; url: string; name: string };
+  };
+}
 export const PatchV1ProjectsByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -28,8 +45,7 @@ export const PatchV1ProjectsByIdOutput =
         name: Schema.String,
       }),
     }),
-  });
-export type PatchV1ProjectsByIdOutput = typeof PatchV1ProjectsByIdOutput.Type;
+  }) as unknown as Schema.Codec<PatchV1ProjectsByIdOutput>;
 
 // The operation
 /**

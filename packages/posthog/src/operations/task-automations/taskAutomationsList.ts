@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TaskAutomationsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const TaskAutomationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,32 @@ export const TaskAutomationsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/task_automations/",
     }),
-  );
-export type TaskAutomationsListInput = typeof TaskAutomationsListInput.Type;
+  ) as unknown as Schema.Codec<TaskAutomationsListInput>;
 
 // Output Schema
+export interface TaskAutomationsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    name: string;
+    prompt: string;
+    repository: string | null;
+    github_integration: number | null;
+    cron_expression: string;
+    timezone: string;
+    template_id: string | null;
+    enabled: boolean;
+    last_run_at: string | null;
+    last_run_status: string | null;
+    last_task_id: string;
+    last_task_run_id: string | null;
+    last_error: string | null;
+    created_at: string;
+    updated_at: string;
+  }[];
+}
 export const TaskAutomationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -43,8 +70,7 @@ export const TaskAutomationsListOutput =
         updated_at: Schema.String,
       }),
     ),
-  });
-export type TaskAutomationsListOutput = typeof TaskAutomationsListOutput.Type;
+  }) as unknown as Schema.Codec<TaskAutomationsListOutput>;
 
 // The operation
 /**

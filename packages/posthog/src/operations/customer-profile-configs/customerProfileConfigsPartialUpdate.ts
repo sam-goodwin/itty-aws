@@ -3,6 +3,15 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomerProfileConfigsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  scope?: "person" | "group_0" | "group_1" | "group_2" | "group_3" | "group_4";
+  content?: unknown;
+  sidebar?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const CustomerProfileConfigsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -26,11 +35,17 @@ export const CustomerProfileConfigsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/customer_profile_configs/{id}/",
     }),
-  );
-export type CustomerProfileConfigsPartialUpdateInput =
-  typeof CustomerProfileConfigsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomerProfileConfigsPartialUpdateInput>;
 
 // Output Schema
+export interface CustomerProfileConfigsPartialUpdateOutput {
+  id?: string;
+  scope?: "person" | "group_0" | "group_1" | "group_2" | "group_3" | "group_4";
+  content?: unknown;
+  sidebar?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const CustomerProfileConfigsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -48,9 +63,7 @@ export const CustomerProfileConfigsPartialUpdateOutput =
     sidebar: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type CustomerProfileConfigsPartialUpdateOutput =
-  typeof CustomerProfileConfigsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomerProfileConfigsPartialUpdateOutput>;
 
 // The operation
 /**

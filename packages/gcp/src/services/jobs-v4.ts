@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Money {
   nanos?: number;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     units: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export interface ProcessingOptions {
   disableStreetAddressResolution?: boolean;
 }
 
-export const ProcessingOptions: Schema.Schema<ProcessingOptions> =
+export const ProcessingOptions: Schema.Codec<ProcessingOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     htmlSanitization: Schema.optional(Schema.String),
     disableStreetAddressResolution: Schema.optional(Schema.Boolean),
@@ -66,7 +66,7 @@ export interface CustomAttribute {
   keywordSearchable?: boolean;
 }
 
-export const CustomAttribute: Schema.Schema<CustomAttribute> =
+export const CustomAttribute: Schema.Codec<CustomAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longValues: Schema.optional(Schema.Array(Schema.String)),
     filterable: Schema.optional(Schema.Boolean),
@@ -81,7 +81,7 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const LatLng: Schema.Codec<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -112,7 +112,7 @@ export interface PostalAddress {
   recipients?: ReadonlyArray<string>;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
+export const PostalAddress: Schema.Codec<PostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locality: Schema.optional(Schema.String),
     revision: Schema.optional(Schema.Number),
@@ -150,7 +150,7 @@ export interface Location {
   postalAddress?: PostalAddress;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
     radiusMiles: Schema.optional(Schema.Number),
@@ -198,7 +198,7 @@ export interface JobDerivedInfo {
   >;
 }
 
-export const JobDerivedInfo: Schema.Schema<JobDerivedInfo> =
+export const JobDerivedInfo: Schema.Codec<JobDerivedInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     jobCategories: Schema.optional(Schema.Array(Schema.String)),
@@ -213,7 +213,7 @@ export interface ApplicationInfo {
   instruction?: string;
 }
 
-export const ApplicationInfo: Schema.Schema<ApplicationInfo> =
+export const ApplicationInfo: Schema.Codec<ApplicationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
     uris: Schema.optional(Schema.Array(Schema.String)),
@@ -227,7 +227,7 @@ export interface CompensationRange {
   maxCompensation?: Money;
 }
 
-export const CompensationRange: Schema.Schema<CompensationRange> =
+export const CompensationRange: Schema.Codec<CompensationRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minCompensation: Schema.optional(Money),
     maxCompensation: Schema.optional(Money),
@@ -267,7 +267,7 @@ export interface CompensationEntry {
     | (string & {});
 }
 
-export const CompensationEntry: Schema.Schema<CompensationEntry> =
+export const CompensationEntry: Schema.Codec<CompensationEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     range: Schema.optional(CompensationRange),
@@ -286,7 +286,7 @@ export interface CompensationInfo {
   annualizedBaseCompensationRange?: CompensationRange;
 }
 
-export const CompensationInfo: Schema.Schema<CompensationInfo> =
+export const CompensationInfo: Schema.Codec<CompensationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(Schema.Array(CompensationEntry)),
     annualizedTotalCompensationRange: Schema.optional(CompensationRange),
@@ -411,8 +411,8 @@ export interface Job {
   jobEndTime?: string;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Job: Schema.Codec<Job> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     jobBenefits: Schema.optional(Schema.Array(Schema.String)),
     promotionValue: Schema.optional(Schema.Number),
     languageCode: Schema.optional(Schema.String),
@@ -445,7 +445,8 @@ export const Job: Schema.Schema<Job> =
     qualifications: Schema.optional(Schema.String),
     compensationInfo: Schema.optional(CompensationInfo),
     jobEndTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Job" });
+  },
+).annotate({ identifier: "Job" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -456,7 +457,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -472,7 +473,7 @@ export interface JobResult {
   status?: Status;
 }
 
-export const JobResult: Schema.Schema<JobResult> =
+export const JobResult: Schema.Codec<JobResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     job: Schema.optional(Job),
     status: Schema.optional(Status),
@@ -483,7 +484,7 @@ export interface BatchCreateJobsResponse {
   jobResults?: ReadonlyArray<JobResult>;
 }
 
-export const BatchCreateJobsResponse: Schema.Schema<BatchCreateJobsResponse> =
+export const BatchCreateJobsResponse: Schema.Codec<BatchCreateJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobResults: Schema.optional(Schema.Array(JobResult)),
   }).annotate({ identifier: "BatchCreateJobsResponse" });
@@ -495,7 +496,7 @@ export interface CommuteInfo {
   jobLocation?: Location;
 }
 
-export const CommuteInfo: Schema.Schema<CommuteInfo> =
+export const CommuteInfo: Schema.Codec<CommuteInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     travelDuration: Schema.optional(Schema.String),
     jobLocation: Schema.optional(Location),
@@ -506,7 +507,7 @@ export interface HistogramQuery {
   histogramQuery?: string;
 }
 
-export const HistogramQuery: Schema.Schema<HistogramQuery> =
+export const HistogramQuery: Schema.Codec<HistogramQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     histogramQuery: Schema.optional(Schema.String),
   }).annotate({ identifier: "HistogramQuery" });
@@ -522,7 +523,7 @@ export interface TimeOfDay {
   hours?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
@@ -535,7 +536,7 @@ export interface ResponseMetadata {
   requestId?: string;
 }
 
-export const ResponseMetadata: Schema.Schema<ResponseMetadata> =
+export const ResponseMetadata: Schema.Codec<ResponseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResponseMetadata" });
@@ -547,7 +548,7 @@ export interface Tenant {
   externalId?: string;
 }
 
-export const Tenant: Schema.Schema<Tenant> =
+export const Tenant: Schema.Codec<Tenant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     externalId: Schema.optional(Schema.String),
@@ -562,7 +563,7 @@ export interface ListTenantsResponse {
   tenants?: ReadonlyArray<Tenant>;
 }
 
-export const ListTenantsResponse: Schema.Schema<ListTenantsResponse> =
+export const ListTenantsResponse: Schema.Codec<ListTenantsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     metadata: Schema.optional(ResponseMetadata),
@@ -593,7 +594,7 @@ export interface JobEvent {
     | (string & {});
 }
 
-export const JobEvent: Schema.Schema<JobEvent> =
+export const JobEvent: Schema.Codec<JobEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(Schema.String)),
     type: Schema.optional(Schema.String),
@@ -614,7 +615,7 @@ export interface CustomRankingInfo {
   rankingExpression?: string;
 }
 
-export const CustomRankingInfo: Schema.Schema<CustomRankingInfo> =
+export const CustomRankingInfo: Schema.Codec<CustomRankingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     importanceLevel: Schema.optional(Schema.String),
     rankingExpression: Schema.optional(Schema.String),
@@ -647,7 +648,7 @@ export interface CompensationFilter {
   includeJobsWithUnspecifiedCompensationRange?: boolean;
 }
 
-export const CompensationFilter: Schema.Schema<CompensationFilter> =
+export const CompensationFilter: Schema.Codec<CompensationFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.Array(Schema.String)),
     type: Schema.optional(Schema.String),
@@ -662,7 +663,7 @@ export interface CompanyDerivedInfo {
   headquartersLocation?: Location;
 }
 
-export const CompanyDerivedInfo: Schema.Schema<CompanyDerivedInfo> =
+export const CompanyDerivedInfo: Schema.Codec<CompanyDerivedInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headquartersLocation: Schema.optional(Location),
   }).annotate({ identifier: "CompanyDerivedInfo" });
@@ -705,7 +706,7 @@ export interface Company {
   eeoText?: string;
 }
 
-export const Company: Schema.Schema<Company> =
+export const Company: Schema.Codec<Company> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keywordSearchableJobCustomAttributes: Schema.optional(
       Schema.Array(Schema.String),
@@ -751,7 +752,7 @@ export interface BatchOperationMetadata {
   updateTime?: string;
 }
 
-export const BatchOperationMetadata: Schema.Schema<BatchOperationMetadata> =
+export const BatchOperationMetadata: Schema.Codec<BatchOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -776,7 +777,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -798,7 +799,7 @@ export interface ClientEvent {
   jobEvent?: JobEvent;
 }
 
-export const ClientEvent: Schema.Schema<ClientEvent> =
+export const ClientEvent: Schema.Codec<ClientEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     eventNotes: Schema.optional(Schema.String),
@@ -814,7 +815,7 @@ export interface BatchUpdateJobsRequest {
   updateMask?: string;
 }
 
-export const BatchUpdateJobsRequest: Schema.Schema<BatchUpdateJobsRequest> =
+export const BatchUpdateJobsRequest: Schema.Codec<BatchUpdateJobsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(Job)),
     updateMask: Schema.optional(Schema.String),
@@ -825,7 +826,7 @@ export interface BatchDeleteJobsResponse {
   jobResults?: ReadonlyArray<JobResult>;
 }
 
-export const BatchDeleteJobsResponse: Schema.Schema<BatchDeleteJobsResponse> =
+export const BatchDeleteJobsResponse: Schema.Codec<BatchDeleteJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobResults: Schema.optional(Schema.Array(JobResult)),
   }).annotate({ identifier: "BatchDeleteJobsResponse" });
@@ -839,7 +840,7 @@ export interface ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListJobsResponse: Schema.Schema<ListJobsResponse> =
+export const ListJobsResponse: Schema.Codec<ListJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(ResponseMetadata),
     jobs: Schema.optional(Schema.Array(Job)),
@@ -859,7 +860,7 @@ export interface MatchingJob {
   jobSummary?: string;
 }
 
-export const MatchingJob: Schema.Schema<MatchingJob> =
+export const MatchingJob: Schema.Codec<MatchingJob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commuteInfo: Schema.optional(CommuteInfo),
     jobTitleSnippet: Schema.optional(Schema.String),
@@ -875,7 +876,7 @@ export interface HistogramQueryResult {
   histogram?: Record<string, string>;
 }
 
-export const HistogramQueryResult: Schema.Schema<HistogramQueryResult> =
+export const HistogramQueryResult: Schema.Codec<HistogramQueryResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     histogramQuery: Schema.optional(Schema.String),
     histogram: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -890,7 +891,7 @@ export interface SpellingCorrection {
   correctedText?: string;
 }
 
-export const SpellingCorrection: Schema.Schema<SpellingCorrection> =
+export const SpellingCorrection: Schema.Codec<SpellingCorrection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     corrected: Schema.optional(Schema.Boolean),
     correctedHtml: Schema.optional(Schema.String),
@@ -916,7 +917,7 @@ export interface SearchJobsResponse {
   metadata?: ResponseMetadata;
 }
 
-export const SearchJobsResponse: Schema.Schema<SearchJobsResponse> =
+export const SearchJobsResponse: Schema.Codec<SearchJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchingJobs: Schema.optional(Schema.Array(MatchingJob)),
     histogramQueryResults: Schema.optional(Schema.Array(HistogramQueryResult)),
@@ -933,7 +934,7 @@ export interface BatchDeleteJobsRequest {
   names?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteJobsRequest: Schema.Schema<BatchDeleteJobsRequest> =
+export const BatchDeleteJobsRequest: Schema.Codec<BatchDeleteJobsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeleteJobsRequest" });
@@ -953,7 +954,7 @@ export interface DeviceInfo {
   id?: string;
 }
 
-export const DeviceInfo: Schema.Schema<DeviceInfo> =
+export const DeviceInfo: Schema.Codec<DeviceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceType: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -972,7 +973,7 @@ export interface RequestMetadata {
   domain?: string;
 }
 
-export const RequestMetadata: Schema.Schema<RequestMetadata> =
+export const RequestMetadata: Schema.Codec<RequestMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionId: Schema.optional(Schema.String),
     allowMissingIds: Schema.optional(Schema.Boolean),
@@ -995,7 +996,7 @@ export interface CompletionResult {
   suggestion?: string;
 }
 
-export const CompletionResult: Schema.Schema<CompletionResult> =
+export const CompletionResult: Schema.Codec<CompletionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     imageUri: Schema.optional(Schema.String),
@@ -1020,7 +1021,7 @@ export interface LocationFilter {
   distanceInMiles?: number;
 }
 
-export const LocationFilter: Schema.Schema<LocationFilter> =
+export const LocationFilter: Schema.Codec<LocationFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latLng: Schema.optional(LatLng),
     address: Schema.optional(Schema.String),
@@ -1031,7 +1032,7 @@ export const LocationFilter: Schema.Schema<LocationFilter> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1062,7 +1063,7 @@ export interface CommuteFilter {
   departureTime?: TimeOfDay;
 }
 
-export const CommuteFilter: Schema.Schema<CommuteFilter> =
+export const CommuteFilter: Schema.Codec<CommuteFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     travelDuration: Schema.optional(Schema.String),
     startCoordinates: Schema.optional(LatLng),
@@ -1077,7 +1078,7 @@ export interface BatchCreateJobsRequest {
   jobs?: ReadonlyArray<Job>;
 }
 
-export const BatchCreateJobsRequest: Schema.Schema<BatchCreateJobsRequest> =
+export const BatchCreateJobsRequest: Schema.Codec<BatchCreateJobsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(Job)),
   }).annotate({ identifier: "BatchCreateJobsRequest" });
@@ -1089,7 +1090,7 @@ export interface TimestampRange {
   endTime?: string;
 }
 
-export const TimestampRange: Schema.Schema<TimestampRange> =
+export const TimestampRange: Schema.Codec<TimestampRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1172,7 +1173,7 @@ export interface JobQuery {
   languageCodes?: ReadonlyArray<string>;
 }
 
-export const JobQuery: Schema.Schema<JobQuery> =
+export const JobQuery: Schema.Codec<JobQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commuteFilter: Schema.optional(CommuteFilter),
     compensationFilter: Schema.optional(CompensationFilter),
@@ -1252,7 +1253,7 @@ export interface SearchJobsRequest {
   disableKeywordMatch?: boolean;
 }
 
-export const SearchJobsRequest: Schema.Schema<SearchJobsRequest> =
+export const SearchJobsRequest: Schema.Codec<SearchJobsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobQuery: Schema.optional(JobQuery),
     jobView: Schema.optional(Schema.String),
@@ -1276,7 +1277,7 @@ export interface BatchUpdateJobsResponse {
   jobResults?: ReadonlyArray<JobResult>;
 }
 
-export const BatchUpdateJobsResponse: Schema.Schema<BatchUpdateJobsResponse> =
+export const BatchUpdateJobsResponse: Schema.Codec<BatchUpdateJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobResults: Schema.optional(Schema.Array(JobResult)),
   }).annotate({ identifier: "BatchUpdateJobsResponse" });
@@ -1290,7 +1291,7 @@ export interface ListCompaniesResponse {
   metadata?: ResponseMetadata;
 }
 
-export const ListCompaniesResponse: Schema.Schema<ListCompaniesResponse> =
+export const ListCompaniesResponse: Schema.Codec<ListCompaniesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     companies: Schema.optional(Schema.Array(Company)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1304,7 +1305,7 @@ export interface CompleteQueryResponse {
   metadata?: ResponseMetadata;
 }
 
-export const CompleteQueryResponse: Schema.Schema<CompleteQueryResponse> =
+export const CompleteQueryResponse: Schema.Codec<CompleteQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     completionResults: Schema.optional(Schema.Array(CompletionResult)),
     metadata: Schema.optional(ResponseMetadata),
@@ -1375,7 +1376,7 @@ export const GetProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTenantsRequest>;
 
 export type GetProjectsTenantsResponse = Tenant;
 export const GetProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
@@ -1430,7 +1431,7 @@ export const CompleteQueryProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+tenant}:completeQuery" }),
     svc,
-  ) as unknown as Schema.Schema<CompleteQueryProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<CompleteQueryProjectsTenantsRequest>;
 
 export type CompleteQueryProjectsTenantsResponse = CompleteQueryResponse;
 export const CompleteQueryProjectsTenantsResponse =
@@ -1467,7 +1468,7 @@ export const CreateProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/{+parent}/tenants", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTenantsRequest>;
 
 export type CreateProjectsTenantsResponse = Tenant;
 export const CreateProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
@@ -1508,7 +1509,7 @@ export const PatchProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsTenantsRequest>;
 
 export type PatchProjectsTenantsResponse = Tenant;
 export const PatchProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
@@ -1543,7 +1544,7 @@ export const DeleteProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsTenantsRequest>;
 
 export type DeleteProjectsTenantsResponse = Empty;
 export const DeleteProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1584,7 +1585,7 @@ export const ListProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+parent}/tenants" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTenantsRequest>;
 
 export type ListProjectsTenantsResponse = ListTenantsResponse;
 export const ListProjectsTenantsResponse =
@@ -1619,7 +1620,7 @@ export const GetProjectsTenantsCompaniesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTenantsCompaniesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTenantsCompaniesRequest>;
 
 export type GetProjectsTenantsCompaniesResponse = Company;
 export const GetProjectsTenantsCompaniesResponse =
@@ -1653,7 +1654,7 @@ export const DeleteProjectsTenantsCompaniesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTenantsCompaniesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsTenantsCompaniesRequest>;
 
 export type DeleteProjectsTenantsCompaniesResponse = Empty;
 export const DeleteProjectsTenantsCompaniesResponse =
@@ -1700,7 +1701,7 @@ export const ListProjectsTenantsCompaniesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+parent}/companies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTenantsCompaniesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTenantsCompaniesRequest>;
 
 export type ListProjectsTenantsCompaniesResponse = ListCompaniesResponse;
 export const ListProjectsTenantsCompaniesResponse =
@@ -1744,7 +1745,7 @@ export const PatchProjectsTenantsCompaniesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTenantsCompaniesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsTenantsCompaniesRequest>;
 
 export type PatchProjectsTenantsCompaniesResponse = Company;
 export const PatchProjectsTenantsCompaniesResponse =
@@ -1783,7 +1784,7 @@ export const CreateProjectsTenantsCompaniesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/{+parent}/companies", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTenantsCompaniesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTenantsCompaniesRequest>;
 
 export type CreateProjectsTenantsCompaniesResponse = Company;
 export const CreateProjectsTenantsCompaniesResponse =
@@ -1826,7 +1827,7 @@ export const CreateProjectsTenantsClientEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTenantsClientEventsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTenantsClientEventsRequest>;
 
 export type CreateProjectsTenantsClientEventsResponse = ClientEvent;
 export const CreateProjectsTenantsClientEventsResponse =
@@ -1865,7 +1866,7 @@ export const SearchProjectsTenantsJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/{+parent}/jobs:search", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsTenantsJobsRequest>;
 
 export type SearchProjectsTenantsJobsResponse = SearchJobsResponse;
 export const SearchProjectsTenantsJobsResponse =
@@ -1907,7 +1908,7 @@ export const PatchProjectsTenantsJobsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsTenantsJobsRequest>;
 
 export type PatchProjectsTenantsJobsResponse = Job;
 export const PatchProjectsTenantsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
@@ -1949,7 +1950,7 @@ export const BatchUpdateProjectsTenantsJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateProjectsTenantsJobsRequest>;
 
 export type BatchUpdateProjectsTenantsJobsResponse = Operation;
 export const BatchUpdateProjectsTenantsJobsResponse =
@@ -1988,7 +1989,7 @@ export const CreateProjectsTenantsJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/{+parent}/jobs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTenantsJobsRequest>;
 
 export type CreateProjectsTenantsJobsResponse = Job;
 export const CreateProjectsTenantsJobsResponse =
@@ -2042,7 +2043,7 @@ export const ListProjectsTenantsJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+parent}/jobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTenantsJobsRequest>;
 
 export type ListProjectsTenantsJobsResponse = ListJobsResponse;
 export const ListProjectsTenantsJobsResponse =
@@ -2077,7 +2078,7 @@ export const GetProjectsTenantsJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTenantsJobsRequest>;
 
 export type GetProjectsTenantsJobsResponse = Job;
 export const GetProjectsTenantsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
@@ -2114,7 +2115,7 @@ export const BatchCreateProjectsTenantsJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<BatchCreateProjectsTenantsJobsRequest>;
 
 export type BatchCreateProjectsTenantsJobsResponse = Operation;
 export const BatchCreateProjectsTenantsJobsResponse =
@@ -2150,7 +2151,7 @@ export const DeleteProjectsTenantsJobsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsTenantsJobsRequest>;
 
 export type DeleteProjectsTenantsJobsResponse = Empty;
 export const DeleteProjectsTenantsJobsResponse =
@@ -2193,7 +2194,7 @@ export const BatchDeleteProjectsTenantsJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteProjectsTenantsJobsRequest>;
 
 export type BatchDeleteProjectsTenantsJobsResponse = Operation;
 export const BatchDeleteProjectsTenantsJobsResponse =
@@ -2236,7 +2237,7 @@ export const SearchForAlertProjectsTenantsJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchForAlertProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<SearchForAlertProjectsTenantsJobsRequest>;
 
 export type SearchForAlertProjectsTenantsJobsResponse = SearchJobsResponse;
 export const SearchForAlertProjectsTenantsJobsResponse =
@@ -2272,7 +2273,7 @@ export const GetProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =

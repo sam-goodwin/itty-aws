@@ -3,6 +3,21 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface NotebooksCollabMarkdownSaveCreateInput {
+  project_id: string;
+  short_id: string;
+  client_id: string;
+  version: number;
+  content: unknown;
+  text_content?: string;
+  title?: string;
+  cursor?: {
+    head?: number;
+    node_index?: number;
+    offset?: number;
+    list_item_index?: number;
+  };
+}
 export const NotebooksCollabMarkdownSaveCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -25,15 +40,12 @@ export const NotebooksCollabMarkdownSaveCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/notebooks/{short_id}/collab/markdown_save/",
     }),
-  );
-export type NotebooksCollabMarkdownSaveCreateInput =
-  typeof NotebooksCollabMarkdownSaveCreateInput.Type;
+  ) as unknown as Schema.Codec<NotebooksCollabMarkdownSaveCreateInput>;
 
 // Output Schema
+export type NotebooksCollabMarkdownSaveCreateOutput = void;
 export const NotebooksCollabMarkdownSaveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebooksCollabMarkdownSaveCreateOutput =
-  typeof NotebooksCollabMarkdownSaveCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksCollabMarkdownSaveCreateOutput>;
 
 // The operation
 /**

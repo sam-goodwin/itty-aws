@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingIssuesUpdateInput {
+  id: string;
+  project_id: string;
+  status?: "active" | "resolved" | "suppressed";
+  name?: string | null;
+  description?: string | null;
+}
 export const ErrorTrackingIssuesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +24,26 @@ export const ErrorTrackingIssuesUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/error_tracking/issues/{id}/",
     }),
-  );
-export type ErrorTrackingIssuesUpdateInput =
-  typeof ErrorTrackingIssuesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingIssuesUpdateInput>;
 
 // Output Schema
+export interface ErrorTrackingIssuesUpdateOutput {
+  id: string;
+  status: string;
+  name: string | null;
+  description: string | null;
+  first_seen: string | null;
+  assignee: { id: number | string | null; type: string } | null;
+  external_issues: {
+    id?: string;
+    integration?: { id?: number; kind?: string; display_name?: string };
+    integration_id?: number;
+    config?: Record<string, string>;
+    issue?: string;
+    external_url?: string;
+  }[];
+  cohort: { id: number; name: string } | null;
+}
 export const ErrorTrackingIssuesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,7 +51,12 @@ export const ErrorTrackingIssuesUpdateOutput =
     name: Schema.NullOr(Schema.String),
     description: Schema.NullOr(Schema.String),
     first_seen: Schema.NullOr(Schema.String),
-    assignee: Schema.Unknown,
+    assignee: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.NullOr(Schema.Union([Schema.Number, Schema.String])),
+        type: Schema.String,
+      }),
+    ),
     external_issues: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -46,10 +73,13 @@ export const ErrorTrackingIssuesUpdateOutput =
         external_url: Schema.optional(Schema.String),
       }),
     ),
-    cohort: Schema.Unknown,
-  });
-export type ErrorTrackingIssuesUpdateOutput =
-  typeof ErrorTrackingIssuesUpdateOutput.Type;
+    cohort: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.Number,
+        name: Schema.String,
+      }),
+    ),
+  }) as unknown as Schema.Codec<ErrorTrackingIssuesUpdateOutput>;
 
 // The operation
 /**

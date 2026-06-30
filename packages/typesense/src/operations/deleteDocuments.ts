@@ -4,19 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteDocumentsInput {
+  collectionName: string;
+  deleteDocumentsParameters?: string;
+}
 export const DeleteDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   deleteDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "DELETE", path: "/collections/{collectionName}/documents" }),
-);
-export type DeleteDocumentsInput = typeof DeleteDocumentsInput.Type;
+) as unknown as Schema.Codec<DeleteDocumentsInput>;
 
 // Output Schema
+export interface DeleteDocumentsOutput {
+  num_deleted: number;
+}
 export const DeleteDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   num_deleted: Schema.Number,
-});
-export type DeleteDocumentsOutput = typeof DeleteDocumentsOutput.Type;
+}) as unknown as Schema.Codec<DeleteDocumentsOutput>;
 
 // The operation
 /**

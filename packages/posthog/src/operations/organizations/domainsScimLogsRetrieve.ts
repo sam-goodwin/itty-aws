@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DomainsScimLogsRetrieveInput {
+  id: string;
+  organization_id: string;
+}
 export const DomainsScimLogsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const DomainsScimLogsRetrieveInput =
       method: "GET",
       path: "/api/organizations/{organization_id}/domains/{id}/scim/logs/",
     }),
-  );
-export type DomainsScimLogsRetrieveInput =
-  typeof DomainsScimLogsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DomainsScimLogsRetrieveInput>;
 
 // Output Schema
+export type DomainsScimLogsRetrieveOutput = void;
 export const DomainsScimLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainsScimLogsRetrieveOutput =
-  typeof DomainsScimLogsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsScimLogsRetrieveOutput>;
 
 // The operation
 /**

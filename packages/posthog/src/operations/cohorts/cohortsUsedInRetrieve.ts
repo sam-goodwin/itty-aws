@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CohortsUsedInRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const CohortsUsedInRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -12,10 +16,26 @@ export const CohortsUsedInRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/cohorts/{id}/used_in/",
     }),
-  );
-export type CohortsUsedInRetrieveInput = typeof CohortsUsedInRetrieveInput.Type;
+  ) as unknown as Schema.Codec<CohortsUsedInRetrieveInput>;
 
 // Output Schema
+export interface CohortsUsedInRetrieveOutput {
+  feature_flags: {
+    results: { id: number; key: string; name: string | null }[];
+    total: number;
+    has_more: boolean;
+  };
+  insights: {
+    results: { id: number; short_id: string; name: string }[];
+    total: number;
+    has_more: boolean;
+  };
+  cohorts: {
+    results: { id: number; name: string }[];
+    total: number;
+    has_more: boolean;
+  };
+}
 export const CohortsUsedInRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feature_flags: Schema.Struct({
@@ -50,9 +70,7 @@ export const CohortsUsedInRetrieveOutput =
       total: Schema.Number,
       has_more: Schema.Boolean,
     }),
-  });
-export type CohortsUsedInRetrieveOutput =
-  typeof CohortsUsedInRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<CohortsUsedInRetrieveOutput>;
 
 // The operation
 /**

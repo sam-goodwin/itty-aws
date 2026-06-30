@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface SiteVerificationWebResourceResource {
   id?: string;
 }
 
-export const SiteVerificationWebResourceResource: Schema.Schema<SiteVerificationWebResourceResource> =
+export const SiteVerificationWebResourceResource: Schema.Codec<SiteVerificationWebResourceResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     owners: Schema.optional(Schema.Array(Schema.String)),
     site: Schema.optional(
@@ -48,7 +48,7 @@ export interface SiteVerificationWebResourceListResponse {
   items?: ReadonlyArray<SiteVerificationWebResourceResource>;
 }
 
-export const SiteVerificationWebResourceListResponse: Schema.Schema<SiteVerificationWebResourceListResponse> =
+export const SiteVerificationWebResourceListResponse: Schema.Codec<SiteVerificationWebResourceListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(SiteVerificationWebResourceResource)),
   }).annotate({ identifier: "SiteVerificationWebResourceListResponse" });
@@ -60,7 +60,7 @@ export interface SiteVerificationWebResourceGettokenRequest {
   verificationMethod?: string;
 }
 
-export const SiteVerificationWebResourceGettokenRequest: Schema.Schema<SiteVerificationWebResourceGettokenRequest> =
+export const SiteVerificationWebResourceGettokenRequest: Schema.Codec<SiteVerificationWebResourceGettokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     site: Schema.optional(
       Schema.Struct({
@@ -78,7 +78,7 @@ export interface SiteVerificationWebResourceGettokenResponse {
   method?: string;
 }
 
-export const SiteVerificationWebResourceGettokenResponse: Schema.Schema<SiteVerificationWebResourceGettokenResponse> =
+export const SiteVerificationWebResourceGettokenResponse: Schema.Codec<SiteVerificationWebResourceGettokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
@@ -154,7 +154,7 @@ export const InsertWebResourceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "webResource", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertWebResourceRequest>;
+  ) as unknown as Schema.Codec<InsertWebResourceRequest>;
 
 export type InsertWebResourceResponse = SiteVerificationWebResourceResource;
 export const InsertWebResourceResponse =
@@ -195,7 +195,7 @@ export const UpdateWebResourceRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "webResource/{id}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateWebResourceRequest>;
+  ) as unknown as Schema.Codec<UpdateWebResourceRequest>;
 
 export type UpdateWebResourceResponse = SiteVerificationWebResourceResource;
 export const UpdateWebResourceResponse =
@@ -230,7 +230,7 @@ export const GetWebResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "webResource/{id}" }),
   svc,
-) as unknown as Schema.Schema<GetWebResourceRequest>;
+) as unknown as Schema.Codec<GetWebResourceRequest>;
 
 export type GetWebResourceResponse = SiteVerificationWebResourceResource;
 export const GetWebResourceResponse =
@@ -263,7 +263,7 @@ export const GetTokenWebResourceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "token", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetTokenWebResourceRequest>;
+  ) as unknown as Schema.Codec<GetTokenWebResourceRequest>;
 
 export type GetTokenWebResourceResponse =
   SiteVerificationWebResourceGettokenResponse;
@@ -305,7 +305,7 @@ export const PatchWebResourceRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "webResource/{id}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchWebResourceRequest>;
+  ) as unknown as Schema.Codec<PatchWebResourceRequest>;
 
 export type PatchWebResourceResponse = SiteVerificationWebResourceResource;
 export const PatchWebResourceResponse =
@@ -337,7 +337,7 @@ export const ListWebResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "webResource" }),
   svc,
-) as unknown as Schema.Schema<ListWebResourceRequest>;
+) as unknown as Schema.Codec<ListWebResourceRequest>;
 
 export type ListWebResourceResponse = SiteVerificationWebResourceListResponse;
 export const ListWebResourceResponse =
@@ -368,13 +368,13 @@ export const DeleteWebResourceRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "webResource/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteWebResourceRequest>;
+  ) as unknown as Schema.Codec<DeleteWebResourceRequest>;
 
 export interface DeleteWebResourceResponse {}
-export const DeleteWebResourceResponse: Schema.Schema<DeleteWebResourceResponse> =
+export const DeleteWebResourceResponse: Schema.Codec<DeleteWebResourceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteWebResourceResponse>;
+  ) as any as Schema.Codec<DeleteWebResourceResponse>;
 
 export type DeleteWebResourceError =
   | DefaultErrors

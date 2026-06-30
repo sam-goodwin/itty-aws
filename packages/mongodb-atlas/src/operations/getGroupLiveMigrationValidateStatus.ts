@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupLiveMigrationValidateStatusInput {
+  groupId: string;
+  validationId: string;
+  envelope?: boolean;
+}
 export const GetGroupLiveMigrationValidateStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const GetGroupLiveMigrationValidateStatusInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId}",
     }),
-  );
-export type GetGroupLiveMigrationValidateStatusInput =
-  typeof GetGroupLiveMigrationValidateStatusInput.Type;
+  ) as unknown as Schema.Codec<GetGroupLiveMigrationValidateStatusInput>;
 
 // Output Schema
+export type GetGroupLiveMigrationValidateStatusOutput = void;
 export const GetGroupLiveMigrationValidateStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupLiveMigrationValidateStatusOutput =
-  typeof GetGroupLiveMigrationValidateStatusOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupLiveMigrationValidateStatusOutput>;
 
 // The operation
 /**

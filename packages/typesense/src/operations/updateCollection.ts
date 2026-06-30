@@ -3,8 +3,50 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface UpdateCollectionInput {
+  collectionName: string;
+  fields?: {
+    name: string;
+    type: string;
+    optional?: boolean;
+    facet?: boolean;
+    index?: boolean;
+    locale?: string;
+    sort?: boolean;
+    infix?: boolean;
+    reference?: string;
+    async_reference?: boolean;
+    num_dim?: number;
+    drop?: boolean;
+    store?: boolean;
+    vec_dist?: string;
+    range_index?: boolean;
+    stem?: boolean;
+    stem_dictionary?: string;
+    token_separators?: string[];
+    symbols_to_index?: string[];
+    embed?: {
+      from: string[];
+      model_config: {
+        model_name: string;
+        api_key?: string | Redacted.Redacted<string>;
+        url?: string;
+        access_token?: string | Redacted.Redacted<string>;
+        refresh_token?: string | Redacted.Redacted<string>;
+        client_id?: string;
+        client_secret?: string | Redacted.Redacted<string>;
+        project_id?: string;
+        indexing_prefix?: string;
+        query_prefix?: string;
+      };
+    };
+  }[];
+  synonym_sets?: string[];
+  metadata?: unknown;
+}
 export const UpdateCollectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   fields: Schema.optional(
@@ -51,10 +93,51 @@ export const UpdateCollectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   synonym_sets: Schema.optional(Schema.Array(Schema.String)),
   metadata: Schema.optional(Schema.Unknown),
-}).pipe(T.Http({ method: "PATCH", path: "/collections/{collectionName}" }));
-export type UpdateCollectionInput = typeof UpdateCollectionInput.Type;
+}).pipe(
+  T.Http({ method: "PATCH", path: "/collections/{collectionName}" }),
+) as unknown as Schema.Codec<UpdateCollectionInput>;
 
 // Output Schema
+export interface UpdateCollectionOutput {
+  fields?: {
+    name: string;
+    type: string;
+    optional?: boolean;
+    facet?: boolean;
+    index?: boolean;
+    locale?: string;
+    sort?: boolean;
+    infix?: boolean;
+    reference?: string;
+    async_reference?: boolean;
+    num_dim?: number;
+    drop?: boolean;
+    store?: boolean;
+    vec_dist?: string;
+    range_index?: boolean;
+    stem?: boolean;
+    stem_dictionary?: string;
+    token_separators?: string[];
+    symbols_to_index?: string[];
+    embed?: {
+      from: string[];
+      model_config: {
+        model_name: string;
+        api_key?: Redacted.Redacted<string>;
+        url?: string;
+        access_token?: Redacted.Redacted<string>;
+        refresh_token?: Redacted.Redacted<string>;
+        client_id?: string;
+        client_secret?: Redacted.Redacted<string>;
+        project_id?: string;
+        indexing_prefix?: string;
+        query_prefix?: string;
+      };
+    };
+  }[];
+  synonym_sets?: string[];
+  metadata?: unknown;
+}
 export const UpdateCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     fields: Schema.optional(
@@ -102,8 +185,7 @@ export const UpdateCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     synonym_sets: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Unknown),
   },
-);
-export type UpdateCollectionOutput = typeof UpdateCollectionOutput.Type;
+) as unknown as Schema.Codec<UpdateCollectionOutput>;
 
 // The operation
 /**

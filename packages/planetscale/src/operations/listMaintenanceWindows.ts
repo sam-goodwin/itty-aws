@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListMaintenanceWindowsInput {
+  id: string;
+  organization: string;
+  database: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListMaintenanceWindowsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,24 @@ export const ListMaintenanceWindowsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/maintenance-schedules/{id}/windows",
     }),
-  );
-export type ListMaintenanceWindowsInput =
-  typeof ListMaintenanceWindowsInput.Type;
+  ) as unknown as Schema.Codec<ListMaintenanceWindowsInput>;
 
 // Output Schema
+export interface ListMaintenanceWindowsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    started_at: string | null;
+    finished_at: string | null;
+  }[];
+}
 export const ListMaintenanceWindowsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -38,9 +58,7 @@ export const ListMaintenanceWindowsOutput =
         finished_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ListMaintenanceWindowsOutput =
-  typeof ListMaintenanceWindowsOutput.Type;
+  }) as unknown as Schema.Codec<ListMaintenanceWindowsOutput>;
 
 // The operation
 /**

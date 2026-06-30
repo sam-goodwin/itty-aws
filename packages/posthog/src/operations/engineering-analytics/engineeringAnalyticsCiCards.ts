@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface EngineeringAnalyticsCiCardsInput {
+  project_id: string;
+  source_id?: string;
+}
 export const EngineeringAnalyticsCiCardsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,20 +17,22 @@ export const EngineeringAnalyticsCiCardsInput =
       method: "GET",
       path: "/api/projects/{project_id}/engineering_analytics/ci_cards/",
     }),
-  );
-export type EngineeringAnalyticsCiCardsInput =
-  typeof EngineeringAnalyticsCiCardsInput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsCiCardsInput>;
 
 // Output Schema
+export interface EngineeringAnalyticsCiCardsOutput {
+  open_prs: number;
+  repos: number;
+  stuck: number;
+  failing_ci: number;
+}
 export const EngineeringAnalyticsCiCardsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     open_prs: Schema.Number,
     repos: Schema.Number,
     stuck: Schema.Number,
     failing_ci: Schema.Number,
-  });
-export type EngineeringAnalyticsCiCardsOutput =
-  typeof EngineeringAnalyticsCiCardsOutput.Type;
+  }) as unknown as Schema.Codec<EngineeringAnalyticsCiCardsOutput>;
 
 // The operation
 /**

@@ -4,20 +4,20 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DeleteV1EnvironmentVariablesByEnvVarIdInput {
+  envVarId: string;
+}
 export const DeleteV1EnvironmentVariablesByEnvVarIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     envVarId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/environment-variables/{envVarId}" }),
-  );
-export type DeleteV1EnvironmentVariablesByEnvVarIdInput =
-  typeof DeleteV1EnvironmentVariablesByEnvVarIdInput.Type;
+  ) as unknown as Schema.Codec<DeleteV1EnvironmentVariablesByEnvVarIdInput>;
 
 // Output Schema
+export type DeleteV1EnvironmentVariablesByEnvVarIdOutput = void;
 export const DeleteV1EnvironmentVariablesByEnvVarIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteV1EnvironmentVariablesByEnvVarIdOutput =
-  typeof DeleteV1EnvironmentVariablesByEnvVarIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1EnvironmentVariablesByEnvVarIdOutput>;
 
 // The operation
 /**

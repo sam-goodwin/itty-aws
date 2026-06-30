@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemShortcutListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const DesktopFileSystemShortcutListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,23 @@ export const DesktopFileSystemShortcutListInput =
       method: "GET",
       path: "/api/projects/{project_id}/desktop_file_system_shortcut/",
     }),
-  );
-export type DesktopFileSystemShortcutListInput =
-  typeof DesktopFileSystemShortcutListInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemShortcutListInput>;
 
 // Output Schema
+export interface DesktopFileSystemShortcutListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    path?: string;
+    type?: string;
+    ref?: string | null;
+    href?: string | null;
+    order?: number;
+    created_at?: string;
+  }[];
+}
 export const DesktopFileSystemShortcutListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -36,9 +53,7 @@ export const DesktopFileSystemShortcutListOutput =
         }),
       ),
     ),
-  });
-export type DesktopFileSystemShortcutListOutput =
-  typeof DesktopFileSystemShortcutListOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemShortcutListOutput>;
 
 // The operation
 /**

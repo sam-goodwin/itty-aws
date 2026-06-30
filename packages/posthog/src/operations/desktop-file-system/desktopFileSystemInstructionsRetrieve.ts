@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemInstructionsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const DesktopFileSystemInstructionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,38 @@ export const DesktopFileSystemInstructionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/desktop_file_system/{id}/instructions/",
     }),
-  );
-export type DesktopFileSystemInstructionsRetrieveInput =
-  typeof DesktopFileSystemInstructionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemInstructionsRetrieveInput>;
 
 // Output Schema
+export interface DesktopFileSystemInstructionsRetrieveOutput {
+  id: string;
+  content: string;
+  version: number;
+  is_latest: boolean;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  updated_at: string;
+}
 export const DesktopFileSystemInstructionsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -34,13 +65,27 @@ export const DesktopFileSystemInstructionsRetrieveOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type DesktopFileSystemInstructionsRetrieveOutput =
-  typeof DesktopFileSystemInstructionsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DesktopFileSystemInstructionsRetrieveOutput>;
 
 // The operation
 /**

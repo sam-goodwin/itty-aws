@@ -3,6 +3,46 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ScheduledChangesPartialUpdateInput {
+  id: number;
+  project_id: string;
+  team_id?: number;
+  record_id?: string;
+  model_name?: "FeatureFlag";
+  payload?: unknown;
+  scheduled_at?: string;
+  executed_at?: string | null;
+  failure_reason?: string | null;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  updated_at?: string;
+  is_recurring?: boolean;
+  recurrence_interval?: "daily" | "weekly" | "monthly" | "yearly" | null;
+  cron_expression?: string | null;
+  last_executed_at?: string | null;
+  end_date?: string | null;
+  timezone?: string | null;
+}
 export const ScheduledChangesPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -27,12 +67,30 @@ export const ScheduledChangesPartialUpdateInput =
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
     updated_at: Schema.optional(Schema.String),
     is_recurring: Schema.optional(Schema.Boolean),
-    recurrence_interval: Schema.optional(Schema.Unknown),
+    recurrence_interval: Schema.optional(
+      Schema.NullOr(Schema.Literals(["daily", "weekly", "monthly", "yearly"])),
+    ),
     cron_expression: Schema.optional(Schema.NullOr(Schema.String)),
     last_executed_at: Schema.optional(Schema.NullOr(Schema.String)),
     end_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -42,11 +100,48 @@ export const ScheduledChangesPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/scheduled_changes/{id}/",
     }),
-  );
-export type ScheduledChangesPartialUpdateInput =
-  typeof ScheduledChangesPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScheduledChangesPartialUpdateInput>;
 
 // Output Schema
+export interface ScheduledChangesPartialUpdateOutput {
+  id: number;
+  team_id: number;
+  record_id: string;
+  model_name: "FeatureFlag";
+  payload: unknown;
+  scheduled_at: string;
+  executed_at: string | null;
+  failure_reason: string | null;
+  created_at: string;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  updated_at: string;
+  is_recurring?: boolean;
+  recurrence_interval?: "daily" | "weekly" | "monthly" | "yearly" | null;
+  cron_expression?: string | null;
+  last_executed_at: string | null;
+  end_date?: string | null;
+  timezone: string | null;
+}
 export const ScheduledChangesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number,
@@ -69,18 +164,34 @@ export const ScheduledChangesPartialUpdateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     updated_at: Schema.String,
     is_recurring: Schema.optional(Schema.Boolean),
-    recurrence_interval: Schema.optional(Schema.Unknown),
+    recurrence_interval: Schema.optional(
+      Schema.NullOr(Schema.Literals(["daily", "weekly", "monthly", "yearly"])),
+    ),
     cron_expression: Schema.optional(Schema.NullOr(Schema.String)),
     last_executed_at: Schema.NullOr(Schema.String),
     end_date: Schema.optional(Schema.NullOr(Schema.String)),
     timezone: Schema.NullOr(Schema.String),
-  });
-export type ScheduledChangesPartialUpdateOutput =
-  typeof ScheduledChangesPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledChangesPartialUpdateOutput>;
 
 // The operation
 /**

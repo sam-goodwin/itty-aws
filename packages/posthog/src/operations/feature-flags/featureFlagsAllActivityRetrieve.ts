@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsAllActivityRetrieveInput {
+  project_id: string;
+  limit?: number;
+  page?: number;
+}
 export const FeatureFlagsAllActivityRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,37 @@ export const FeatureFlagsAllActivityRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/feature_flags/activity/",
     }),
-  );
-export type FeatureFlagsAllActivityRetrieveInput =
-  typeof FeatureFlagsAllActivityRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsAllActivityRetrieveInput>;
 
 // Output Schema
+export interface FeatureFlagsAllActivityRetrieveOutput {
+  results?: {
+    id?: string;
+    user?: unknown | null;
+    activity?: string;
+    scope?: string;
+    item_id?: string;
+    detail?: {
+      id?: string;
+      changes?: {
+        type?: string;
+        action?: string;
+        field?: string;
+        before?: unknown;
+        after?: unknown;
+      }[];
+      merge?: { type?: string; source?: unknown; target?: unknown };
+      trigger?: { job_type?: string; job_id?: string; payload?: unknown };
+      name?: string;
+      short_id?: string;
+      type?: string;
+    };
+    created_at?: string;
+  }[];
+  next?: string | null;
+  previous?: string | null;
+  total_count?: number;
+}
 export const FeatureFlagsAllActivityRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -69,9 +100,7 @@ export const FeatureFlagsAllActivityRetrieveOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     total_count: Schema.optional(Schema.Number),
-  });
-export type FeatureFlagsAllActivityRetrieveOutput =
-  typeof FeatureFlagsAllActivityRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsAllActivityRetrieveOutput>;
 
 // The operation
 /**

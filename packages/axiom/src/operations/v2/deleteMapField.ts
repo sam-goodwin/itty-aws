@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteMapFieldInput {
+  dataset_id: string;
+  map_field_name: string;
+}
 export const DeleteMapFieldInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
   map_field_name: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,12 @@ export const DeleteMapFieldInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/v2/datasets/{dataset_id}/mapfields/{map_field_name}",
   }),
-);
-export type DeleteMapFieldInput = typeof DeleteMapFieldInput.Type;
+) as unknown as Schema.Codec<DeleteMapFieldInput>;
 
 // Output Schema
-export const DeleteMapFieldOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteMapFieldOutput = typeof DeleteMapFieldOutput.Type;
+export type DeleteMapFieldOutput = void;
+export const DeleteMapFieldOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteMapFieldOutput>;
 
 // The operation
 export const deleteMapField = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

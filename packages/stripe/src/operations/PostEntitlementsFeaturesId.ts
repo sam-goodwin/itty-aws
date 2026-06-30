@@ -3,12 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostEntitlementsFeaturesIdInput {
+  id: string;
+  active?: boolean;
+  expand?: string[];
+  metadata?: Record<string, string> | "";
+  name?: string;
+}
 export const PostEntitlementsFeaturesIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     active: Schema.optional(Schema.Boolean),
     expand: Schema.optional(Schema.Array(Schema.String)),
-    metadata: Schema.optional(Schema.Unknown),
+    metadata: Schema.optional(
+      Schema.Union([
+        Schema.Record(Schema.String, Schema.String),
+        Schema.Literals([""]),
+      ]),
+    ),
     name: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -16,11 +28,18 @@ export const PostEntitlementsFeaturesIdInput =
       path: "/v1/entitlements/features/{id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostEntitlementsFeaturesIdInput =
-  typeof PostEntitlementsFeaturesIdInput.Type;
+  ) as unknown as Schema.Codec<PostEntitlementsFeaturesIdInput>;
 
 // Output Schema
+export interface PostEntitlementsFeaturesIdOutput {
+  active: boolean;
+  id: string;
+  livemode: boolean;
+  lookup_key: string;
+  metadata: Record<string, string>;
+  name: string;
+  object: "entitlements.feature";
+}
 export const PostEntitlementsFeaturesIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
@@ -30,9 +49,7 @@ export const PostEntitlementsFeaturesIdOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     name: Schema.String,
     object: Schema.Literals(["entitlements.feature"]),
-  });
-export type PostEntitlementsFeaturesIdOutput =
-  typeof PostEntitlementsFeaturesIdOutput.Type;
+  }) as unknown as Schema.Codec<PostEntitlementsFeaturesIdOutput>;
 
 // The operation
 /**

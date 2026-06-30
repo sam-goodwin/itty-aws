@@ -4,6 +4,29 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateASsoProviderInput {
+  ref: string;
+  provider_id: string;
+  metadata_xml?: string;
+  metadata_url?: string;
+  domains?: string[];
+  attribute_mapping?: {
+    keys: Record<
+      string,
+      {
+        name?: string;
+        names?: string[];
+        default?: {} | number | string | boolean;
+        array?: boolean;
+      }
+    >;
+  };
+  name_id_format?:
+    | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+    | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+    | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+    | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
+}
 export const V1UpdateASsoProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -18,7 +41,14 @@ export const V1UpdateASsoProviderInput =
           Schema.Struct({
             name: Schema.optional(Schema.String),
             names: Schema.optional(Schema.Array(Schema.String)),
-            default: Schema.optional(Schema.Unknown),
+            default: Schema.optional(
+              Schema.Union([
+                Schema.Struct({}),
+                Schema.Number,
+                Schema.String,
+                Schema.Boolean,
+              ]),
+            ),
             array: Schema.optional(Schema.Boolean),
           }),
         ),
@@ -37,10 +67,42 @@ export const V1UpdateASsoProviderInput =
       method: "PUT",
       path: "/v1/projects/{ref}/config/auth/sso/providers/{provider_id}",
     }),
-  );
-export type V1UpdateASsoProviderInput = typeof V1UpdateASsoProviderInput.Type;
+  ) as unknown as Schema.Codec<V1UpdateASsoProviderInput>;
 
 // Output Schema
+export interface V1UpdateASsoProviderOutput {
+  id: string;
+  saml?: {
+    id: string;
+    entity_id: string;
+    metadata_url?: string;
+    metadata_xml?: string;
+    attribute_mapping?: {
+      keys: Record<
+        string,
+        {
+          name?: string;
+          names?: string[];
+          default?: {} | number | string | boolean;
+          array?: boolean;
+        }
+      >;
+    };
+    name_id_format?:
+      | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+      | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+      | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+      | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
+  };
+  domains?: {
+    id: string;
+    domain?: string;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  created_at?: string;
+  updated_at?: string;
+}
 export const V1UpdateASsoProviderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -57,7 +119,14 @@ export const V1UpdateASsoProviderOutput =
               Schema.Struct({
                 name: Schema.optional(Schema.String),
                 names: Schema.optional(Schema.Array(Schema.String)),
-                default: Schema.optional(Schema.Unknown),
+                default: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({}),
+                    Schema.Number,
+                    Schema.String,
+                    Schema.Boolean,
+                  ]),
+                ),
                 array: Schema.optional(Schema.Boolean),
               }),
             ),
@@ -85,8 +154,7 @@ export const V1UpdateASsoProviderOutput =
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type V1UpdateASsoProviderOutput = typeof V1UpdateASsoProviderOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateASsoProviderOutput>;
 
 // The operation
 /**

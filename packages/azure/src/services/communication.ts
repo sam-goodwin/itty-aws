@@ -4,12 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CommunicationServicesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+}
 export const CommunicationServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,19 +27,20 @@ export const CommunicationServicesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/checkNameAvailability",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesCheckNameAvailabilityInput =
-  typeof CommunicationServicesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface CommunicationServicesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const CommunicationServicesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type CommunicationServicesCheckNameAvailabilityOutput =
-  typeof CommunicationServicesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -50,6 +57,46 @@ export const CommunicationServicesCheckNameAvailability =
     outputSchema: CommunicationServicesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface CommunicationServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    hostName?: string;
+    dataLocation: string;
+    notificationHubId?: string;
+    version?: string;
+    immutableResourceId?: string;
+    linkedDomains?: string[];
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    disableLocalAuth?: boolean;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const CommunicationServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -111,11 +158,22 @@ export const CommunicationServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesCreateOrUpdateInput =
-  typeof CommunicationServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface CommunicationServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommunicationServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -135,9 +193,7 @@ export const CommunicationServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommunicationServicesCreateOrUpdateOutput =
-  typeof CommunicationServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -156,6 +212,11 @@ export const CommunicationServicesCreateOrUpdate =
     outputSchema: CommunicationServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CommunicationServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+}
 export const CommunicationServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -167,15 +228,12 @@ export const CommunicationServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesDeleteInput =
-  typeof CommunicationServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesDeleteInput>;
 
 // Output Schema
+export type CommunicationServicesDeleteOutput = void;
 export const CommunicationServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CommunicationServicesDeleteOutput =
-  typeof CommunicationServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommunicationServicesDeleteOutput>;
 
 // The operation
 /**
@@ -195,6 +253,11 @@ export const CommunicationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommunicationServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+}
 export const CommunicationServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -206,11 +269,22 @@ export const CommunicationServicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesGetInput =
-  typeof CommunicationServicesGetInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesGetInput>;
 
 // Output Schema
+export interface CommunicationServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommunicationServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -230,9 +304,7 @@ export const CommunicationServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommunicationServicesGetOutput =
-  typeof CommunicationServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesGetOutput>;
 
 // The operation
 /**
@@ -252,6 +324,13 @@ export const CommunicationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommunicationServicesLinkNotificationHubInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+  resourceId: string;
+  connectionString: string | Redacted.Redacted<string>;
+}
 export const CommunicationServicesLinkNotificationHubInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -265,17 +344,16 @@ export const CommunicationServicesLinkNotificationHubInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/linkNotificationHub",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesLinkNotificationHubInput =
-  typeof CommunicationServicesLinkNotificationHubInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesLinkNotificationHubInput>;
 
 // Output Schema
+export interface CommunicationServicesLinkNotificationHubOutput {
+  resourceId?: string;
+}
 export const CommunicationServicesLinkNotificationHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
-  });
-export type CommunicationServicesLinkNotificationHubOutput =
-  typeof CommunicationServicesLinkNotificationHubOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesLinkNotificationHubOutput>;
 
 // The operation
 /**
@@ -294,6 +372,10 @@ export const CommunicationServicesLinkNotificationHub =
     outputSchema: CommunicationServicesLinkNotificationHubOutput,
   }));
 // Input Schema
+export interface CommunicationServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const CommunicationServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -304,11 +386,25 @@ export const CommunicationServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesListByResourceGroupInput =
-  typeof CommunicationServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface CommunicationServicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CommunicationServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -343,9 +439,7 @@ export const CommunicationServicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CommunicationServicesListByResourceGroupOutput =
-  typeof CommunicationServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -363,6 +457,9 @@ export const CommunicationServicesListByResourceGroup =
     outputSchema: CommunicationServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface CommunicationServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const CommunicationServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -372,11 +469,25 @@ export const CommunicationServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/communicationServices",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesListBySubscriptionInput =
-  typeof CommunicationServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface CommunicationServicesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CommunicationServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -411,9 +522,7 @@ export const CommunicationServicesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CommunicationServicesListBySubscriptionOutput =
-  typeof CommunicationServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -430,6 +539,11 @@ export const CommunicationServicesListBySubscription =
     outputSchema: CommunicationServicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface CommunicationServicesListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+}
 export const CommunicationServicesListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -441,20 +555,22 @@ export const CommunicationServicesListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/listKeys",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesListKeysInput =
-  typeof CommunicationServicesListKeysInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesListKeysInput>;
 
 // Output Schema
+export interface CommunicationServicesListKeysOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+}
 export const CommunicationServicesListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
     secondaryConnectionString: Schema.optional(Schema.String),
-  });
-export type CommunicationServicesListKeysOutput =
-  typeof CommunicationServicesListKeysOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesListKeysOutput>;
 
 // The operation
 /**
@@ -473,6 +589,12 @@ export const CommunicationServicesListKeys =
     outputSchema: CommunicationServicesListKeysOutput,
   }));
 // Input Schema
+export interface CommunicationServicesRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+  keyType?: "Primary" | "Secondary";
+}
 export const CommunicationServicesRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -485,20 +607,22 @@ export const CommunicationServicesRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/regenerateKey",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesRegenerateKeyInput =
-  typeof CommunicationServicesRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesRegenerateKeyInput>;
 
 // Output Schema
+export interface CommunicationServicesRegenerateKeyOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+}
 export const CommunicationServicesRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
     secondaryConnectionString: Schema.optional(Schema.String),
-  });
-export type CommunicationServicesRegenerateKeyOutput =
-  typeof CommunicationServicesRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -517,6 +641,30 @@ export const CommunicationServicesRegenerateKey =
     outputSchema: CommunicationServicesRegenerateKeyOutput,
   }));
 // Input Schema
+export interface CommunicationServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+  properties?: {
+    linkedDomains?: string[];
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    disableLocalAuth?: boolean;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const CommunicationServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -559,11 +707,22 @@ export const CommunicationServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type CommunicationServicesUpdateInput =
-  typeof CommunicationServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<CommunicationServicesUpdateInput>;
 
 // Output Schema
+export interface CommunicationServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommunicationServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -583,9 +742,7 @@ export const CommunicationServicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommunicationServicesUpdateOutput =
-  typeof CommunicationServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CommunicationServicesUpdateOutput>;
 
 // The operation
 /**
@@ -605,6 +762,13 @@ export const CommunicationServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsCancelVerificationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  verificationType: "Domain" | "SPF" | "DKIM" | "DKIM2" | "DMARC";
+}
 export const DomainsCancelVerificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -624,15 +788,12 @@ export const DomainsCancelVerificationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/cancelVerification",
       apiVersion: "2026-03-18",
     }),
-  );
-export type DomainsCancelVerificationInput =
-  typeof DomainsCancelVerificationInput.Type;
+  ) as unknown as Schema.Codec<DomainsCancelVerificationInput>;
 
 // Output Schema
+export type DomainsCancelVerificationOutput = void;
 export const DomainsCancelVerificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainsCancelVerificationOutput =
-  typeof DomainsCancelVerificationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsCancelVerificationOutput>;
 
 // The operation
 /**
@@ -653,6 +814,93 @@ export const DomainsCancelVerification = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    dataLocation?: string;
+    fromSenderDomain?: string;
+    mailFromSenderDomain?: string;
+    domainManagement:
+      | "AzureManaged"
+      | "CustomerManaged"
+      | "CustomerManagedInExchangeOnline";
+    verificationStates?: {
+      Domain?: {
+        status?:
+          | "NotStarted"
+          | "VerificationRequested"
+          | "VerificationInProgress"
+          | "VerificationFailed"
+          | "Verified"
+          | "CancellationRequested";
+        errorCode?: string;
+      };
+      SPF?: {
+        status?:
+          | "NotStarted"
+          | "VerificationRequested"
+          | "VerificationInProgress"
+          | "VerificationFailed"
+          | "Verified"
+          | "CancellationRequested";
+        errorCode?: string;
+      };
+      DKIM?: {
+        status?:
+          | "NotStarted"
+          | "VerificationRequested"
+          | "VerificationInProgress"
+          | "VerificationFailed"
+          | "Verified"
+          | "CancellationRequested";
+        errorCode?: string;
+      };
+      DKIM2?: {
+        status?:
+          | "NotStarted"
+          | "VerificationRequested"
+          | "VerificationInProgress"
+          | "VerificationFailed"
+          | "Verified"
+          | "CancellationRequested";
+        errorCode?: string;
+      };
+      DMARC?: {
+        status?:
+          | "NotStarted"
+          | "VerificationRequested"
+          | "VerificationInProgress"
+          | "VerificationFailed"
+          | "Verified"
+          | "CancellationRequested";
+        errorCode?: string;
+      };
+    };
+    verificationRecords?: {
+      Domain?: { type?: string; name?: string; value?: string; ttl?: number };
+      SPF?: { type?: string; name?: string; value?: string; ttl?: number };
+      DKIM?: { type?: string; name?: string; value?: string; ttl?: number };
+      DKIM2?: { type?: string; name?: string; value?: string; ttl?: number };
+      DMARC?: { type?: string; name?: string; value?: string; ttl?: number };
+    };
+    userEngagementTracking?: "Disabled" | "Enabled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -818,10 +1066,22 @@ export const DomainsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DomainsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DomainsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -841,9 +1101,7 @@ export const DomainsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DomainsCreateOrUpdateOutput =
-  typeof DomainsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DomainsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -864,6 +1122,12 @@ export const DomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+}
 export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -875,12 +1139,12 @@ export const DomainsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
     apiVersion: "2026-03-18",
   }),
-);
-export type DomainsDeleteInput = typeof DomainsDeleteInput.Type;
+) as unknown as Schema.Codec<DomainsDeleteInput>;
 
 // Output Schema
-export const DomainsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainsDeleteOutput = typeof DomainsDeleteOutput.Type;
+export type DomainsDeleteOutput = void;
+export const DomainsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsDeleteOutput>;
 
 // The operation
 /**
@@ -899,6 +1163,12 @@ export const DomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DomainsDeleteOutput,
 }));
 // Input Schema
+export interface DomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+}
 export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -910,10 +1180,22 @@ export const DomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
     apiVersion: "2026-03-18",
   }),
-);
-export type DomainsGetInput = typeof DomainsGetInput.Type;
+) as unknown as Schema.Codec<DomainsGetInput>;
 
 // Output Schema
+export interface DomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -932,8 +1214,7 @@ export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DomainsGetOutput = typeof DomainsGetOutput.Type;
+}) as unknown as Schema.Codec<DomainsGetOutput>;
 
 // The operation
 /**
@@ -952,6 +1233,13 @@ export const DomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DomainsGetOutput,
 }));
 // Input Schema
+export interface DomainsInitiateVerificationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  verificationType: "Domain" | "SPF" | "DKIM" | "DKIM2" | "DMARC";
+}
 export const DomainsInitiateVerificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -971,15 +1259,12 @@ export const DomainsInitiateVerificationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/initiateVerification",
       apiVersion: "2026-03-18",
     }),
-  );
-export type DomainsInitiateVerificationInput =
-  typeof DomainsInitiateVerificationInput.Type;
+  ) as unknown as Schema.Codec<DomainsInitiateVerificationInput>;
 
 // Output Schema
+export type DomainsInitiateVerificationOutput = void;
 export const DomainsInitiateVerificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainsInitiateVerificationOutput =
-  typeof DomainsInitiateVerificationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsInitiateVerificationOutput>;
 
 // The operation
 /**
@@ -1000,6 +1285,11 @@ export const DomainsInitiateVerification = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DomainsListByEmailServiceResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+}
 export const DomainsListByEmailServiceResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1011,11 +1301,25 @@ export const DomainsListByEmailServiceResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains",
       apiVersion: "2026-03-18",
     }),
-  );
-export type DomainsListByEmailServiceResourceInput =
-  typeof DomainsListByEmailServiceResourceInput.Type;
+  ) as unknown as Schema.Codec<DomainsListByEmailServiceResourceInput>;
 
 // Output Schema
+export interface DomainsListByEmailServiceResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DomainsListByEmailServiceResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1050,9 +1354,7 @@ export const DomainsListByEmailServiceResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DomainsListByEmailServiceResourceOutput =
-  typeof DomainsListByEmailServiceResourceOutput.Type;
+  }) as unknown as Schema.Codec<DomainsListByEmailServiceResourceOutput>;
 
 // The operation
 /**
@@ -1071,6 +1373,14 @@ export const DomainsListByEmailServiceResource =
     outputSchema: DomainsListByEmailServiceResourceOutput,
   }));
 // Input Schema
+export interface DomainsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  properties?: { userEngagementTracking?: "Disabled" | "Enabled" };
+  tags?: Record<string, string>;
+}
 export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1090,10 +1400,22 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
     apiVersion: "2026-03-18",
   }),
-);
-export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
+) as unknown as Schema.Codec<DomainsUpdateInput>;
 
 // Output Schema
+export interface DomainsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1112,8 +1434,7 @@ export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DomainsUpdateOutput = typeof DomainsUpdateOutput.Type;
+}) as unknown as Schema.Codec<DomainsUpdateOutput>;
 
 // The operation
 /**
@@ -1132,6 +1453,26 @@ export const DomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DomainsUpdateOutput,
 }));
 // Input Schema
+export interface EmailServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+    dataLocation: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const EmailServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1163,11 +1504,22 @@ export const EmailServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type EmailServicesCreateOrUpdateInput =
-  typeof EmailServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EmailServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface EmailServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EmailServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1187,9 +1539,7 @@ export const EmailServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EmailServicesCreateOrUpdateOutput =
-  typeof EmailServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EmailServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1209,6 +1559,11 @@ export const EmailServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EmailServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+}
 export const EmailServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1220,13 +1575,12 @@ export const EmailServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type EmailServicesDeleteInput = typeof EmailServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<EmailServicesDeleteInput>;
 
 // Output Schema
+export type EmailServicesDeleteOutput = void;
 export const EmailServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EmailServicesDeleteOutput = typeof EmailServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EmailServicesDeleteOutput>;
 
 // The operation
 /**
@@ -1244,6 +1598,11 @@ export const EmailServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmailServicesDeleteOutput,
 }));
 // Input Schema
+export interface EmailServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+}
 export const EmailServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1254,10 +1613,22 @@ export const EmailServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
     apiVersion: "2026-03-18",
   }),
-);
-export type EmailServicesGetInput = typeof EmailServicesGetInput.Type;
+) as unknown as Schema.Codec<EmailServicesGetInput>;
 
 // Output Schema
+export interface EmailServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EmailServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1278,8 +1649,7 @@ export const EmailServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type EmailServicesGetOutput = typeof EmailServicesGetOutput.Type;
+) as unknown as Schema.Codec<EmailServicesGetOutput>;
 
 // The operation
 /**
@@ -1297,6 +1667,10 @@ export const EmailServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmailServicesGetOutput,
 }));
 // Input Schema
+export interface EmailServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const EmailServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1307,11 +1681,25 @@ export const EmailServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices",
       apiVersion: "2026-03-18",
     }),
-  );
-export type EmailServicesListByResourceGroupInput =
-  typeof EmailServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<EmailServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface EmailServicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EmailServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1346,9 +1734,7 @@ export const EmailServicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EmailServicesListByResourceGroupOutput =
-  typeof EmailServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<EmailServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1366,6 +1752,9 @@ export const EmailServicesListByResourceGroup =
     outputSchema: EmailServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface EmailServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const EmailServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1375,11 +1764,25 @@ export const EmailServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/emailServices",
       apiVersion: "2026-03-18",
     }),
-  );
-export type EmailServicesListBySubscriptionInput =
-  typeof EmailServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<EmailServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface EmailServicesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EmailServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1414,9 +1817,7 @@ export const EmailServicesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EmailServicesListBySubscriptionOutput =
-  typeof EmailServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<EmailServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1433,6 +1834,9 @@ export const EmailServicesListBySubscription =
     outputSchema: EmailServicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface EmailServicesListVerifiedExchangeOnlineDomainsInput {
+  subscriptionId: string;
+}
 export const EmailServicesListVerifiedExchangeOnlineDomainsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1442,15 +1846,14 @@ export const EmailServicesListVerifiedExchangeOnlineDomainsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/listVerifiedExchangeOnlineDomains",
       apiVersion: "2026-03-18",
     }),
-  );
-export type EmailServicesListVerifiedExchangeOnlineDomainsInput =
-  typeof EmailServicesListVerifiedExchangeOnlineDomainsInput.Type;
+  ) as unknown as Schema.Codec<EmailServicesListVerifiedExchangeOnlineDomainsInput>;
 
 // Output Schema
+export type EmailServicesListVerifiedExchangeOnlineDomainsOutput = string[];
 export const EmailServicesListVerifiedExchangeOnlineDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.String);
-export type EmailServicesListVerifiedExchangeOnlineDomainsOutput =
-  typeof EmailServicesListVerifiedExchangeOnlineDomainsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.String,
+  ) as unknown as Schema.Codec<EmailServicesListVerifiedExchangeOnlineDomainsOutput>;
 
 // The operation
 /**
@@ -1467,6 +1870,12 @@ export const EmailServicesListVerifiedExchangeOnlineDomains =
     outputSchema: EmailServicesListVerifiedExchangeOnlineDomainsOutput,
   }));
 // Input Schema
+export interface EmailServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  tags?: Record<string, string>;
+}
 export const EmailServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1479,10 +1888,22 @@ export const EmailServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type EmailServicesUpdateInput = typeof EmailServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<EmailServicesUpdateInput>;
 
 // Output Schema
+export interface EmailServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EmailServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1502,8 +1923,7 @@ export const EmailServicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EmailServicesUpdateOutput = typeof EmailServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EmailServicesUpdateOutput>;
 
 // The operation
 /**
@@ -1521,6 +1941,7 @@ export const EmailServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmailServicesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1529,10 +1950,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Communication/operations",
     apiVersion: "2026-03-18",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1555,8 +1990,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1571,6 +2005,28 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SenderUsernamesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  senderUsername: string;
+  properties?: {
+    dataLocation?: string;
+    username: string;
+    displayName?: string;
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Running"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving";
+  };
+}
 export const SenderUsernamesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1604,11 +2060,22 @@ export const SenderUsernamesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SenderUsernamesCreateOrUpdateInput =
-  typeof SenderUsernamesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SenderUsernamesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SenderUsernamesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SenderUsernamesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1628,9 +2095,7 @@ export const SenderUsernamesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SenderUsernamesCreateOrUpdateOutput =
-  typeof SenderUsernamesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SenderUsernamesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1651,6 +2116,13 @@ export const SenderUsernamesCreateOrUpdate =
     outputSchema: SenderUsernamesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SenderUsernamesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  senderUsername: string;
+}
 export const SenderUsernamesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1664,14 +2136,12 @@ export const SenderUsernamesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SenderUsernamesDeleteInput = typeof SenderUsernamesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SenderUsernamesDeleteInput>;
 
 // Output Schema
+export type SenderUsernamesDeleteOutput = void;
 export const SenderUsernamesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SenderUsernamesDeleteOutput =
-  typeof SenderUsernamesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SenderUsernamesDeleteOutput>;
 
 // The operation
 /**
@@ -1693,6 +2163,13 @@ export const SenderUsernamesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SenderUsernamesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  senderUsername: string;
+}
 export const SenderUsernamesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1706,10 +2183,22 @@ export const SenderUsernamesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SenderUsernamesGetInput = typeof SenderUsernamesGetInput.Type;
+  ) as unknown as Schema.Codec<SenderUsernamesGetInput>;
 
 // Output Schema
+export interface SenderUsernamesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SenderUsernamesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1729,8 +2218,7 @@ export const SenderUsernamesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SenderUsernamesGetOutput = typeof SenderUsernamesGetOutput.Type;
+  }) as unknown as Schema.Codec<SenderUsernamesGetOutput>;
 
 // The operation
 /**
@@ -1750,6 +2238,12 @@ export const SenderUsernamesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SenderUsernamesGetOutput,
 }));
 // Input Schema
+export interface SenderUsernamesListByDomainsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+}
 export const SenderUsernamesListByDomainsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1762,11 +2256,25 @@ export const SenderUsernamesListByDomainsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SenderUsernamesListByDomainsInput =
-  typeof SenderUsernamesListByDomainsInput.Type;
+  ) as unknown as Schema.Codec<SenderUsernamesListByDomainsInput>;
 
 // Output Schema
+export interface SenderUsernamesListByDomainsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SenderUsernamesListByDomainsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1801,9 +2309,7 @@ export const SenderUsernamesListByDomainsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SenderUsernamesListByDomainsOutput =
-  typeof SenderUsernamesListByDomainsOutput.Type;
+  }) as unknown as Schema.Codec<SenderUsernamesListByDomainsOutput>;
 
 // The operation
 /**
@@ -1823,6 +2329,17 @@ export const SenderUsernamesListByDomains =
     outputSchema: SenderUsernamesListByDomainsOutput,
   }));
 // Input Schema
+export interface SmtpUsernamesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+  smtpUsername: string;
+  properties?: {
+    username: string;
+    entraApplicationId: string;
+    tenantId: string;
+  };
+}
 export const SmtpUsernamesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1842,11 +2359,22 @@ export const SmtpUsernamesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames/{smtpUsername}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SmtpUsernamesCreateOrUpdateInput =
-  typeof SmtpUsernamesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SmtpUsernamesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SmtpUsernamesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SmtpUsernamesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1866,9 +2394,7 @@ export const SmtpUsernamesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SmtpUsernamesCreateOrUpdateOutput =
-  typeof SmtpUsernamesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SmtpUsernamesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1889,6 +2415,12 @@ export const SmtpUsernamesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SmtpUsernamesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+  smtpUsername: string;
+}
 export const SmtpUsernamesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1901,13 +2433,12 @@ export const SmtpUsernamesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames/{smtpUsername}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SmtpUsernamesDeleteInput = typeof SmtpUsernamesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SmtpUsernamesDeleteInput>;
 
 // Output Schema
+export type SmtpUsernamesDeleteOutput = void;
 export const SmtpUsernamesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SmtpUsernamesDeleteOutput = typeof SmtpUsernamesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SmtpUsernamesDeleteOutput>;
 
 // The operation
 /**
@@ -1926,6 +2457,12 @@ export const SmtpUsernamesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SmtpUsernamesDeleteOutput,
 }));
 // Input Schema
+export interface SmtpUsernamesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+  smtpUsername: string;
+}
 export const SmtpUsernamesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1937,10 +2474,22 @@ export const SmtpUsernamesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames/{smtpUsername}",
     apiVersion: "2026-03-18",
   }),
-);
-export type SmtpUsernamesGetInput = typeof SmtpUsernamesGetInput.Type;
+) as unknown as Schema.Codec<SmtpUsernamesGetInput>;
 
 // Output Schema
+export interface SmtpUsernamesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SmtpUsernamesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1961,8 +2510,7 @@ export const SmtpUsernamesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type SmtpUsernamesGetOutput = typeof SmtpUsernamesGetOutput.Type;
+) as unknown as Schema.Codec<SmtpUsernamesGetOutput>;
 
 // The operation
 /**
@@ -1981,6 +2529,11 @@ export const SmtpUsernamesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SmtpUsernamesGetOutput,
 }));
 // Input Schema
+export interface SmtpUsernamesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communicationServiceName: string;
+}
 export const SmtpUsernamesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1993,10 +2546,25 @@ export const SmtpUsernamesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames",
     apiVersion: "2026-03-18",
   }),
-);
-export type SmtpUsernamesListInput = typeof SmtpUsernamesListInput.Type;
+) as unknown as Schema.Codec<SmtpUsernamesListInput>;
 
 // Output Schema
+export interface SmtpUsernamesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SmtpUsernamesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2031,8 +2599,7 @@ export const SmtpUsernamesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SmtpUsernamesListOutput = typeof SmtpUsernamesListOutput.Type;
+  }) as unknown as Schema.Codec<SmtpUsernamesListOutput>;
 
 // The operation
 /**
@@ -2050,6 +2617,22 @@ export const SmtpUsernamesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SmtpUsernamesListOutput,
 }));
 // Input Schema
+export interface SuppressionListAddressesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  suppressionListName: string;
+  addressId: string;
+  properties?: {
+    email: string;
+    firstName?: string;
+    lastName?: string;
+    notes?: string;
+    lastModified?: string;
+    dataLocation?: string;
+  };
+}
 export const SuppressionListAddressesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2074,11 +2657,22 @@ export const SuppressionListAddressesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses/{addressId}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SuppressionListAddressesCreateOrUpdateInput =
-  typeof SuppressionListAddressesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SuppressionListAddressesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SuppressionListAddressesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SuppressionListAddressesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2098,9 +2692,7 @@ export const SuppressionListAddressesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SuppressionListAddressesCreateOrUpdateOutput =
-  typeof SuppressionListAddressesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SuppressionListAddressesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2122,6 +2714,14 @@ export const SuppressionListAddressesCreateOrUpdate =
     outputSchema: SuppressionListAddressesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SuppressionListAddressesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  suppressionListName: string;
+  addressId: string;
+}
 export const SuppressionListAddressesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2136,15 +2736,12 @@ export const SuppressionListAddressesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses/{addressId}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SuppressionListAddressesDeleteInput =
-  typeof SuppressionListAddressesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SuppressionListAddressesDeleteInput>;
 
 // Output Schema
+export type SuppressionListAddressesDeleteOutput = void;
 export const SuppressionListAddressesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SuppressionListAddressesDeleteOutput =
-  typeof SuppressionListAddressesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SuppressionListAddressesDeleteOutput>;
 
 // The operation
 /**
@@ -2166,6 +2763,14 @@ export const SuppressionListAddressesDelete =
     outputSchema: SuppressionListAddressesDeleteOutput,
   }));
 // Input Schema
+export interface SuppressionListAddressesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  suppressionListName: string;
+  addressId: string;
+}
 export const SuppressionListAddressesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2180,11 +2785,22 @@ export const SuppressionListAddressesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses/{addressId}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SuppressionListAddressesGetInput =
-  typeof SuppressionListAddressesGetInput.Type;
+  ) as unknown as Schema.Codec<SuppressionListAddressesGetInput>;
 
 // Output Schema
+export interface SuppressionListAddressesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SuppressionListAddressesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2204,9 +2820,7 @@ export const SuppressionListAddressesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SuppressionListAddressesGetOutput =
-  typeof SuppressionListAddressesGetOutput.Type;
+  }) as unknown as Schema.Codec<SuppressionListAddressesGetOutput>;
 
 // The operation
 /**
@@ -2229,6 +2843,13 @@ export const SuppressionListAddressesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SuppressionListAddressesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  suppressionListName: string;
+}
 export const SuppressionListAddressesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2242,11 +2863,25 @@ export const SuppressionListAddressesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SuppressionListAddressesListInput =
-  typeof SuppressionListAddressesListInput.Type;
+  ) as unknown as Schema.Codec<SuppressionListAddressesListInput>;
 
 // Output Schema
+export interface SuppressionListAddressesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SuppressionListAddressesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2281,9 +2916,7 @@ export const SuppressionListAddressesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SuppressionListAddressesListOutput =
-  typeof SuppressionListAddressesListOutput.Type;
+  }) as unknown as Schema.Codec<SuppressionListAddressesListOutput>;
 
 // The operation
 /**
@@ -2304,6 +2937,19 @@ export const SuppressionListAddressesList =
     outputSchema: SuppressionListAddressesListOutput,
   }));
 // Input Schema
+export interface SuppressionListsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  suppressionListName: string;
+  properties?: {
+    listName?: string;
+    lastUpdatedTimeStamp?: string;
+    createdTimeStamp?: string;
+    dataLocation?: string;
+  };
+}
 export const SuppressionListsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2325,11 +2971,22 @@ export const SuppressionListsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SuppressionListsCreateOrUpdateInput =
-  typeof SuppressionListsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SuppressionListsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SuppressionListsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SuppressionListsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2349,9 +3006,7 @@ export const SuppressionListsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SuppressionListsCreateOrUpdateOutput =
-  typeof SuppressionListsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SuppressionListsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2372,6 +3027,13 @@ export const SuppressionListsCreateOrUpdate =
     outputSchema: SuppressionListsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SuppressionListsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  suppressionListName: string;
+}
 export const SuppressionListsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2385,15 +3047,12 @@ export const SuppressionListsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SuppressionListsDeleteInput =
-  typeof SuppressionListsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SuppressionListsDeleteInput>;
 
 // Output Schema
+export type SuppressionListsDeleteOutput = void;
 export const SuppressionListsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SuppressionListsDeleteOutput =
-  typeof SuppressionListsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SuppressionListsDeleteOutput>;
 
 // The operation
 /**
@@ -2415,6 +3074,13 @@ export const SuppressionListsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SuppressionListsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+  suppressionListName: string;
+}
 export const SuppressionListsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2428,10 +3094,22 @@ export const SuppressionListsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SuppressionListsGetInput = typeof SuppressionListsGetInput.Type;
+  ) as unknown as Schema.Codec<SuppressionListsGetInput>;
 
 // Output Schema
+export interface SuppressionListsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SuppressionListsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2451,8 +3129,7 @@ export const SuppressionListsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SuppressionListsGetOutput = typeof SuppressionListsGetOutput.Type;
+  }) as unknown as Schema.Codec<SuppressionListsGetOutput>;
 
 // The operation
 /**
@@ -2472,6 +3149,12 @@ export const SuppressionListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SuppressionListsGetOutput,
 }));
 // Input Schema
+export interface SuppressionListsListByDomainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  emailServiceName: string;
+  domainName: string;
+}
 export const SuppressionListsListByDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2484,11 +3167,25 @@ export const SuppressionListsListByDomainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists",
       apiVersion: "2026-03-18",
     }),
-  );
-export type SuppressionListsListByDomainInput =
-  typeof SuppressionListsListByDomainInput.Type;
+  ) as unknown as Schema.Codec<SuppressionListsListByDomainInput>;
 
 // Output Schema
+export interface SuppressionListsListByDomainOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SuppressionListsListByDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2523,9 +3220,7 @@ export const SuppressionListsListByDomainOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SuppressionListsListByDomainOutput =
-  typeof SuppressionListsListByDomainOutput.Type;
+  }) as unknown as Schema.Codec<SuppressionListsListByDomainOutput>;
 
 // The operation
 /**

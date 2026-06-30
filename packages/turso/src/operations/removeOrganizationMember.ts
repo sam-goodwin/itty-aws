@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RemoveOrganizationMemberInput {
+  organizationSlug: string;
+  username: string;
+}
 export const RemoveOrganizationMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -13,17 +17,16 @@ export const RemoveOrganizationMemberInput =
       method: "DELETE",
       path: "/v1/organizations/{organizationSlug}/members/{username}",
     }),
-  );
-export type RemoveOrganizationMemberInput =
-  typeof RemoveOrganizationMemberInput.Type;
+  ) as unknown as Schema.Codec<RemoveOrganizationMemberInput>;
 
 // Output Schema
+export interface RemoveOrganizationMemberOutput {
+  member?: string;
+}
 export const RemoveOrganizationMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     member: Schema.optional(Schema.String),
-  });
-export type RemoveOrganizationMemberOutput =
-  typeof RemoveOrganizationMemberOutput.Type;
+  }) as unknown as Schema.Codec<RemoveOrganizationMemberOutput>;
 
 // The operation
 /**

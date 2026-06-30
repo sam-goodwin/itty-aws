@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesOrgListInput {
+  org_slug: string;
+  include_deleted?: boolean;
+  region?: string;
+  state?: string;
+  summary?: boolean;
+  updated_after?: string;
+  cursor?: string;
+  limit?: number;
+}
 export const MachinesOrgListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_slug: Schema.String.pipe(T.PathParam()),
   include_deleted: Schema.optional(Schema.Boolean),
@@ -13,10 +23,43 @@ export const MachinesOrgListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updated_after: Schema.optional(Schema.String),
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "GET", path: "/orgs/{org_slug}/machines" }));
-export type MachinesOrgListInput = typeof MachinesOrgListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/orgs/{org_slug}/machines" }),
+) as unknown as Schema.Codec<MachinesOrgListInput>;
 
 // Output Schema
+export interface MachinesOrgListOutput {
+  error_regions?: string[];
+  last_machine_id?: string;
+  last_updated_at?: string;
+  machines?: {
+    app_name?: string;
+    config?: {
+      guest?: {
+        cpu_kind?: string;
+        cpus?: number;
+        gpu_kind?: string;
+        gpus?: number;
+        host_dedication_id?: string;
+        kernel_args?: string[];
+        max_memory_mb?: number;
+        memory_mb?: number;
+        persist_rootfs?: "never" | "always" | "restart";
+      };
+      image?: string;
+      metadata?: Record<string, string>;
+    };
+    created_at?: string;
+    id?: string;
+    name?: string;
+    private_ip?: string;
+    region?: string;
+    state?: string;
+    updated_at?: string;
+    version?: string;
+  }[];
+  next_cursor?: string;
+}
 export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   error_regions: Schema.optional(Schema.Array(Schema.String)),
   last_machine_id: Schema.optional(Schema.String),
@@ -60,8 +103,7 @@ export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   next_cursor: Schema.optional(Schema.String),
-});
-export type MachinesOrgListOutput = typeof MachinesOrgListOutput.Type;
+}) as unknown as Schema.Codec<MachinesOrgListOutput>;
 
 // The operation
 /**

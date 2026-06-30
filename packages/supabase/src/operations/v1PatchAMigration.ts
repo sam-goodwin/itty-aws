@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1PatchAMigrationInput {
+  ref: string;
+  version: string;
+  name?: string;
+  rollback?: string;
+}
 export const V1PatchAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -16,12 +22,12 @@ export const V1PatchAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/v1/projects/{ref}/database/migrations/{version}",
   }),
-);
-export type V1PatchAMigrationInput = typeof V1PatchAMigrationInput.Type;
+) as unknown as Schema.Codec<V1PatchAMigrationInput>;
 
 // Output Schema
-export const V1PatchAMigrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1PatchAMigrationOutput = typeof V1PatchAMigrationOutput.Type;
+export type V1PatchAMigrationOutput = void;
+export const V1PatchAMigrationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1PatchAMigrationOutput>;
 
 // The operation
 /**

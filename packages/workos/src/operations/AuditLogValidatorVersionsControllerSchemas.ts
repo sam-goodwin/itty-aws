@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuditLogValidatorVersionsControllerSchemasInput {
+  actionName: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const AuditLogValidatorVersionsControllerSchemasInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionName: Schema.String.pipe(T.PathParam()),
@@ -13,11 +20,21 @@ export const AuditLogValidatorVersionsControllerSchemasInput =
     order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/audit_logs/actions/{actionName}/schemas" }),
-  );
-export type AuditLogValidatorVersionsControllerSchemasInput =
-  typeof AuditLogValidatorVersionsControllerSchemasInput.Type;
+  ) as unknown as Schema.Codec<AuditLogValidatorVersionsControllerSchemasInput>;
 
 // Output Schema
+export interface AuditLogValidatorVersionsControllerSchemasOutput {
+  object?: string;
+  list_metadata?: { before: string | null; after: string | null };
+  data?: {
+    object?: string;
+    version?: number;
+    actor?: { metadata: Record<string, unknown> };
+    targets?: { type: string; metadata?: Record<string, unknown> }[];
+    metadata?: Record<string, unknown>;
+    created_at?: string;
+  }[];
+}
 export const AuditLogValidatorVersionsControllerSchemasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -54,9 +71,7 @@ export const AuditLogValidatorVersionsControllerSchemasOutput =
         }),
       ),
     ),
-  });
-export type AuditLogValidatorVersionsControllerSchemasOutput =
-  typeof AuditLogValidatorVersionsControllerSchemasOutput.Type;
+  }) as unknown as Schema.Codec<AuditLogValidatorVersionsControllerSchemasOutput>;
 
 // The operation
 /**

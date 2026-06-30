@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface ValidateAttestationOccurrenceResponse {
   denialReason?: string;
 }
 
-export const ValidateAttestationOccurrenceResponse: Schema.Schema<ValidateAttestationOccurrenceResponse> =
+export const ValidateAttestationOccurrenceResponse: Schema.Codec<ValidateAttestationOccurrenceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     denialReason: Schema.optional(Schema.String),
@@ -101,7 +101,7 @@ export interface PkixPublicKey {
     | (string & {});
 }
 
-export const PkixPublicKey: Schema.Schema<PkixPublicKey> =
+export const PkixPublicKey: Schema.Codec<PkixPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKeyPem: Schema.optional(Schema.String),
     signatureAlgorithm: Schema.optional(Schema.String),
@@ -118,7 +118,7 @@ export interface AttestorPublicKey {
   pkixPublicKey?: PkixPublicKey;
 }
 
-export const AttestorPublicKey: Schema.Schema<AttestorPublicKey> =
+export const AttestorPublicKey: Schema.Codec<AttestorPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     comment: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -135,7 +135,7 @@ export interface UserOwnedDrydockNote {
   publicKeys?: ReadonlyArray<AttestorPublicKey>;
 }
 
-export const UserOwnedDrydockNote: Schema.Schema<UserOwnedDrydockNote> =
+export const UserOwnedDrydockNote: Schema.Codec<UserOwnedDrydockNote> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegationServiceAccountEmail: Schema.optional(Schema.String),
     noteReference: Schema.optional(Schema.String),
@@ -155,7 +155,7 @@ export interface Attestor {
   description?: string;
 }
 
-export const Attestor: Schema.Schema<Attestor> =
+export const Attestor: Schema.Codec<Attestor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userOwnedDrydockNote: Schema.optional(UserOwnedDrydockNote),
     etag: Schema.optional(Schema.String),
@@ -169,7 +169,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -181,7 +181,7 @@ export interface ListAttestorsResponse {
   nextPageToken?: string;
 }
 
-export const ListAttestorsResponse: Schema.Schema<ListAttestorsResponse> =
+export const ListAttestorsResponse: Schema.Codec<ListAttestorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attestors: Schema.optional(Schema.Array(Attestor)),
     nextPageToken: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface IamPolicy {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const IamPolicy: Schema.Schema<IamPolicy> =
+export const IamPolicy: Schema.Codec<IamPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
@@ -208,17 +208,18 @@ export interface Jwt {
   compactJwt?: string;
 }
 
-export const Jwt: Schema.Schema<Jwt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Jwt: Schema.Codec<Jwt> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     compactJwt: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Jwt" });
+  },
+).annotate({ identifier: "Jwt" });
 
 export interface AdmissionWhitelistPattern {
   /** An image name pattern to allowlist, in the form `registry/path/to/image`. This supports a trailing `*` as a wildcard, but this is allowed only in text after the `registry/` part. `*` wildcard does not match `/`, i.e., `gcr.io/nginx*` matches `gcr.io/nginx@latest`, but it does not match `gcr.io/nginx/image`. This also supports a trailing `**` wildcard which matches subdirectories, i.e., `gcr.io/nginx**` matches `gcr.io/nginx/image`. */
   namePattern?: string;
 }
 
-export const AdmissionWhitelistPattern: Schema.Schema<AdmissionWhitelistPattern> =
+export const AdmissionWhitelistPattern: Schema.Codec<AdmissionWhitelistPattern> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namePattern: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdmissionWhitelistPattern" });
@@ -230,7 +231,7 @@ export interface Signature {
   publicKeyId?: string;
 }
 
-export const Signature: Schema.Schema<Signature> =
+export const Signature: Schema.Codec<Signature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signature: Schema.optional(Schema.String),
     publicKeyId: Schema.optional(Schema.String),
@@ -245,7 +246,7 @@ export interface AttestationOccurrence {
   jwts?: ReadonlyArray<Jwt>;
 }
 
-export const AttestationOccurrence: Schema.Schema<AttestationOccurrence> =
+export const AttestationOccurrence: Schema.Codec<AttestationOccurrence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serializedPayload: Schema.optional(Schema.String),
     signatures: Schema.optional(Schema.Array(Signature)),
@@ -257,7 +258,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -271,7 +272,7 @@ export interface ValidateAttestationOccurrenceRequest {
   occurrenceNote?: string;
 }
 
-export const ValidateAttestationOccurrenceRequest: Schema.Schema<ValidateAttestationOccurrenceRequest> =
+export const ValidateAttestationOccurrenceRequest: Schema.Codec<ValidateAttestationOccurrenceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     occurrenceResourceUri: Schema.optional(Schema.String),
     attestation: Schema.optional(AttestationOccurrence),
@@ -280,7 +281,7 @@ export const ValidateAttestationOccurrenceRequest: Schema.Schema<ValidateAttesta
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -302,7 +303,7 @@ export interface AdmissionRule {
   requireAttestationsBy?: ReadonlyArray<string>;
 }
 
-export const AdmissionRule: Schema.Schema<AdmissionRule> =
+export const AdmissionRule: Schema.Codec<AdmissionRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enforcementMode: Schema.optional(Schema.String),
     evaluationMode: Schema.optional(Schema.String),
@@ -338,7 +339,7 @@ export interface Policy {
   description?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     istioServiceIdentityAdmissionRules: Schema.optional(
       Schema.Record(Schema.String, AdmissionRule),
@@ -368,7 +369,7 @@ export interface SetIamPolicyRequest {
   policy?: IamPolicy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(IamPolicy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -438,7 +439,7 @@ export const GetPolicyProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<GetPolicyProjectsRequest>;
 
 export type GetPolicyProjectsResponse = Policy;
 export const GetPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -471,7 +472,7 @@ export const UpdatePolicyProjectsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<UpdatePolicyProjectsRequest>;
 
 export type UpdatePolicyProjectsResponse = Policy;
 export const UpdatePolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -515,7 +516,7 @@ export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ValidateAttestationOccurrenceProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<ValidateAttestationOccurrenceProjectsAttestorsRequest>;
 
 export type ValidateAttestationOccurrenceProjectsAttestorsResponse =
   ValidateAttestationOccurrenceResponse;
@@ -562,7 +563,7 @@ export const CreateProjectsAttestorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsAttestorsRequest>;
 
 export type CreateProjectsAttestorsResponse = Attestor;
 export const CreateProjectsAttestorsResponse =
@@ -601,7 +602,7 @@ export const UpdateProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsAttestorsRequest>;
 
 export type UpdateProjectsAttestorsResponse = Attestor;
 export const UpdateProjectsAttestorsResponse =
@@ -637,7 +638,7 @@ export const DeleteProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsAttestorsRequest>;
 
 export type DeleteProjectsAttestorsResponse = Empty;
 export const DeleteProjectsAttestorsResponse =
@@ -673,7 +674,7 @@ export const GetProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAttestorsRequest>;
 
 export type GetProjectsAttestorsResponse = Attestor;
 export const GetProjectsAttestorsResponse =
@@ -711,7 +712,7 @@ export const TestIamPermissionsProjectsAttestorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsAttestorsRequest>;
 
 export type TestIamPermissionsProjectsAttestorsResponse =
   TestIamPermissionsResponse;
@@ -753,7 +754,7 @@ export const GetIamPolicyProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsAttestorsRequest>;
 
 export type GetIamPolicyProjectsAttestorsResponse = IamPolicy;
 export const GetIamPolicyProjectsAttestorsResponse =
@@ -793,7 +794,7 @@ export const ListProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/attestors" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAttestorsRequest>;
 
 export type ListProjectsAttestorsResponse = ListAttestorsResponse;
 export const ListProjectsAttestorsResponse =
@@ -835,7 +836,7 @@ export const SetIamPolicyProjectsAttestorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsAttestorsRequest>;
 
 export type SetIamPolicyProjectsAttestorsResponse = IamPolicy;
 export const SetIamPolicyProjectsAttestorsResponse =
@@ -878,7 +879,7 @@ export const SetIamPolicyProjectsPolicyRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsPolicyRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsPolicyRequest>;
 
 export type SetIamPolicyProjectsPolicyResponse = IamPolicy;
 export const SetIamPolicyProjectsPolicyResponse =
@@ -919,7 +920,7 @@ export const GetIamPolicyProjectsPolicyRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsPolicyRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsPolicyRequest>;
 
 export type GetIamPolicyProjectsPolicyResponse = IamPolicy;
 export const GetIamPolicyProjectsPolicyResponse =
@@ -960,7 +961,7 @@ export const TestIamPermissionsProjectsPolicyRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsPolicyRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsPolicyRequest>;
 
 export type TestIamPermissionsProjectsPolicyResponse =
   TestIamPermissionsResponse;
@@ -997,7 +998,7 @@ export const GetPolicySystempolicyRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPolicySystempolicyRequest>;
+  ) as unknown as Schema.Codec<GetPolicySystempolicyRequest>;
 
 export type GetPolicySystempolicyResponse = Policy;
 export const GetPolicySystempolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;

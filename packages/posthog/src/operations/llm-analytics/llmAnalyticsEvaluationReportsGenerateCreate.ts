@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmAnalyticsEvaluationReportsGenerateCreateInput {
+  id: string;
+  project_id: string;
+}
 export const LlmAnalyticsEvaluationReportsGenerateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const LlmAnalyticsEvaluationReportsGenerateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_analytics/evaluation_reports/{id}/generate/",
     }),
-  );
-export type LlmAnalyticsEvaluationReportsGenerateCreateInput =
-  typeof LlmAnalyticsEvaluationReportsGenerateCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsEvaluationReportsGenerateCreateInput>;
 
 // Output Schema
+export type LlmAnalyticsEvaluationReportsGenerateCreateOutput = void;
 export const LlmAnalyticsEvaluationReportsGenerateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LlmAnalyticsEvaluationReportsGenerateCreateOutput =
-  typeof LlmAnalyticsEvaluationReportsGenerateCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LlmAnalyticsEvaluationReportsGenerateCreateOutput>;
 
 // The operation
 /**

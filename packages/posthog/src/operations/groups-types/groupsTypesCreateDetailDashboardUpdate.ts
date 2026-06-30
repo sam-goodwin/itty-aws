@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesCreateDetailDashboardUpdateInput {
+  project_id: string;
+  group_type?: string;
+  group_type_index?: number;
+  name_singular?: string | null;
+  name_plural?: string | null;
+  detail_dashboard?: number | null;
+  default_columns?: string[] | null;
+  created_at?: string | null;
+}
 export const GroupsTypesCreateDetailDashboardUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,15 +31,12 @@ export const GroupsTypesCreateDetailDashboardUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/groups_types/create_detail_dashboard/",
     }),
-  );
-export type GroupsTypesCreateDetailDashboardUpdateInput =
-  typeof GroupsTypesCreateDetailDashboardUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupsTypesCreateDetailDashboardUpdateInput>;
 
 // Output Schema
+export type GroupsTypesCreateDetailDashboardUpdateOutput = void;
 export const GroupsTypesCreateDetailDashboardUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsTypesCreateDetailDashboardUpdateOutput =
-  typeof GroupsTypesCreateDetailDashboardUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsTypesCreateDetailDashboardUpdateOutput>;
 
 // The operation
 /**

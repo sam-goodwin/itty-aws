@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EventsRetrieveInput {
+  id: string;
+  project_id: string;
+  format?: "csv" | "json";
+  include_person?: boolean;
+}
 export const EventsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +17,14 @@ export const EventsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   include_person: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/events/{id}/" }),
-);
-export type EventsRetrieveInput = typeof EventsRetrieveInput.Type;
+) as unknown as Schema.Codec<EventsRetrieveInput>;
 
 // Output Schema
+export type EventsRetrieveOutput = Record<string, unknown>;
 export const EventsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
   Schema.String,
   Schema.Unknown,
-);
-export type EventsRetrieveOutput = typeof EventsRetrieveOutput.Type;
+) as unknown as Schema.Codec<EventsRetrieveOutput>;
 
 // The operation
 /**

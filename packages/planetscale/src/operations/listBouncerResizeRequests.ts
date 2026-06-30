@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListBouncerResizeRequestsInput {
+  organization: string;
+  database: string;
+  branch: string;
+  bouncer: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListBouncerResizeRequestsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,51 @@ export const ListBouncerResizeRequestsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
     }),
-  );
-export type ListBouncerResizeRequestsInput =
-  typeof ListBouncerResizeRequestsInput.Type;
+  ) as unknown as Schema.Codec<ListBouncerResizeRequestsInput>;
 
 // Output Schema
+export interface ListBouncerResizeRequestsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    state: "pending" | "resizing" | "canceled" | "completed";
+    replicas_per_cell: number;
+    parameters: Record<string, unknown>;
+    previous_replicas_per_cell: number;
+    previous_parameters: Record<string, unknown>;
+    started_at: string | null;
+    completed_at: string | null;
+    created_at: string;
+    updated_at: string;
+    actor: { id: string; display_name: string; avatar_url: string };
+    bouncer: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    };
+    sku: {
+      name: string;
+      display_name: string;
+      cpu: string;
+      ram: number;
+      sort_order: number;
+    };
+    previous_sku: {
+      name: string;
+      display_name: string;
+      cpu: string;
+      ram: number;
+      sort_order: number;
+    };
+  }[];
+}
 export const ListBouncerResizeRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -75,9 +123,7 @@ export const ListBouncerResizeRequestsOutput =
         }),
       }),
     ),
-  });
-export type ListBouncerResizeRequestsOutput =
-  typeof ListBouncerResizeRequestsOutput.Type;
+  }) as unknown as Schema.Codec<ListBouncerResizeRequestsOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -36,7 +36,7 @@ export interface AuxiliaryMessage {
   fieldMask?: string;
 }
 
-export const AuxiliaryMessage: Schema.Schema<AuxiliaryMessage> =
+export const AuxiliaryMessage: Schema.Codec<AuxiliaryMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     auxiliaryMessage: Schema.optional(Schema.String),
@@ -62,7 +62,7 @@ export interface Token {
   clientId?: string;
 }
 
-export const Token: Schema.Schema<Token> =
+export const Token: Schema.Codec<Token> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     anonymous: Schema.optional(Schema.Boolean),
     nativeApp: Schema.optional(Schema.Boolean),
@@ -83,7 +83,7 @@ export interface Tokens {
   items?: ReadonlyArray<Token>;
 }
 
-export const Tokens: Schema.Schema<Tokens> =
+export const Tokens: Schema.Codec<Tokens> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -107,8 +107,8 @@ export interface Asp {
   codeId?: number;
 }
 
-export const Asp: Schema.Schema<Asp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Asp: Schema.Codec<Asp> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -116,7 +116,8 @@ export const Asp: Schema.Schema<Asp> =
     userKey: Schema.optional(Schema.String),
     lastTimeUsed: Schema.optional(Schema.String),
     codeId: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Asp" });
+  },
+).annotate({ identifier: "Asp" });
 
 export interface Asps {
   /** The type of the API resource. This is always `admin#directory#aspList`. */
@@ -127,7 +128,7 @@ export interface Asps {
   items?: ReadonlyArray<Asp>;
 }
 
-export const Asps: Schema.Schema<Asps> =
+export const Asps: Schema.Codec<Asps> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -139,7 +140,7 @@ export interface BatchDeletePrintServersRequest {
   printServerIds?: ReadonlyArray<string>;
 }
 
-export const BatchDeletePrintServersRequest: Schema.Schema<BatchDeletePrintServersRequest> =
+export const BatchDeletePrintServersRequest: Schema.Codec<BatchDeletePrintServersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printServerIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeletePrintServersRequest" });
@@ -155,7 +156,7 @@ export interface UserPhone {
   primary?: boolean;
 }
 
-export const UserPhone: Schema.Schema<UserPhone> =
+export const UserPhone: Schema.Codec<UserPhone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -168,7 +169,7 @@ export interface DirectoryChromeosdevicesIssueCommandResponse {
   commandId?: string;
 }
 
-export const DirectoryChromeosdevicesIssueCommandResponse: Schema.Schema<DirectoryChromeosdevicesIssueCommandResponse> =
+export const DirectoryChromeosdevicesIssueCommandResponse: Schema.Codec<DirectoryChromeosdevicesIssueCommandResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commandId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DirectoryChromeosdevicesIssueCommandResponse" });
@@ -191,7 +192,7 @@ export interface DirectoryChromeosdevicesIssueCommandRequest {
   payload?: string;
 }
 
-export const DirectoryChromeosdevicesIssueCommandRequest: Schema.Schema<DirectoryChromeosdevicesIssueCommandRequest> =
+export const DirectoryChromeosdevicesIssueCommandRequest: Schema.Codec<DirectoryChromeosdevicesIssueCommandRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commandType: Schema.optional(Schema.String),
     payload: Schema.optional(Schema.String),
@@ -199,7 +200,7 @@ export const DirectoryChromeosdevicesIssueCommandRequest: Schema.Schema<Director
 
 export interface ChangeChromeOsDeviceStatusSucceeded {}
 
-export const ChangeChromeOsDeviceStatusSucceeded: Schema.Schema<ChangeChromeOsDeviceStatusSucceeded> =
+export const ChangeChromeOsDeviceStatusSucceeded: Schema.Codec<ChangeChromeOsDeviceStatusSucceeded> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ChangeChromeOsDeviceStatusSucceeded",
   });
@@ -213,7 +214,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -231,7 +232,7 @@ export interface ChangeChromeOsDeviceStatusResult {
   error?: Status;
 }
 
-export const ChangeChromeOsDeviceStatusResult: Schema.Schema<ChangeChromeOsDeviceStatusResult> =
+export const ChangeChromeOsDeviceStatusResult: Schema.Codec<ChangeChromeOsDeviceStatusResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     response: Schema.optional(ChangeChromeOsDeviceStatusSucceeded),
@@ -247,7 +248,7 @@ export interface UserLanguage {
   customLanguage?: string;
 }
 
-export const UserLanguage: Schema.Schema<UserLanguage> =
+export const UserLanguage: Schema.Codec<UserLanguage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     preference: Schema.optional(Schema.String),
@@ -277,7 +278,7 @@ export interface Printer {
   id?: string;
 }
 
-export const Printer: Schema.Schema<Printer> =
+export const Printer: Schema.Codec<Printer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -320,7 +321,7 @@ export interface FailureInfo {
   printer?: Printer;
 }
 
-export const FailureInfo: Schema.Schema<FailureInfo> =
+export const FailureInfo: Schema.Codec<FailureInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printerId: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -335,7 +336,7 @@ export interface BatchCreatePrintersResponse {
   printers?: ReadonlyArray<Printer>;
 }
 
-export const BatchCreatePrintersResponse: Schema.Schema<BatchCreatePrintersResponse> =
+export const BatchCreatePrintersResponse: Schema.Codec<BatchCreatePrintersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failures: Schema.optional(Schema.Array(FailureInfo)),
     printers: Schema.optional(Schema.Array(Printer)),
@@ -361,7 +362,7 @@ export interface OsUpdateStatus {
   targetOsVersion?: string;
 }
 
-export const OsUpdateStatus: Schema.Schema<OsUpdateStatus> =
+export const OsUpdateStatus: Schema.Codec<OsUpdateStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateCheckTime: Schema.optional(Schema.String),
     targetKioskAppVersion: Schema.optional(Schema.String),
@@ -376,7 +377,7 @@ export interface FanInfo {
   speedRpm?: number;
 }
 
-export const FanInfo: Schema.Schema<FanInfo> =
+export const FanInfo: Schema.Codec<FanInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speedRpm: Schema.optional(Schema.Number),
   }).annotate({ identifier: "FanInfo" });
@@ -390,7 +391,7 @@ export interface BacklightInfo {
   maxBrightness?: number;
 }
 
-export const BacklightInfo: Schema.Schema<BacklightInfo> =
+export const BacklightInfo: Schema.Codec<BacklightInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     brightness: Schema.optional(Schema.Number),
     path: Schema.optional(Schema.String),
@@ -404,7 +405,7 @@ export interface ByteUsage {
   capacityBytes?: string;
 }
 
-export const ByteUsage: Schema.Schema<ByteUsage> =
+export const ByteUsage: Schema.Codec<ByteUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usedBytes: Schema.optional(Schema.String),
     capacityBytes: Schema.optional(Schema.String),
@@ -417,7 +418,7 @@ export interface BluetoothAdapterInfo {
   address?: string;
 }
 
-export const BluetoothAdapterInfo: Schema.Schema<BluetoothAdapterInfo> =
+export const BluetoothAdapterInfo: Schema.Codec<BluetoothAdapterInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numConnectedDevices: Schema.optional(Schema.Number),
     address: Schema.optional(Schema.String),
@@ -615,7 +616,7 @@ export interface ChromeOsDevice {
   extendedSupportEnabled?: boolean;
 }
 
-export const ChromeOsDevice: Schema.Schema<ChromeOsDevice> =
+export const ChromeOsDevice: Schema.Codec<ChromeOsDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoUpdateExpiration: Schema.optional(Schema.String),
     orgUnitPath: Schema.optional(Schema.String),
@@ -777,7 +778,7 @@ export const ChromeOsDevice: Schema.Schema<ChromeOsDevice> =
     extendedSupportEnabled: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "ChromeOsDevice",
-  }) as any as Schema.Schema<ChromeOsDevice>;
+  }) as any as Schema.Codec<ChromeOsDevice>;
 
 export interface ChromeOsDevices {
   /** A list of Chrome OS Device objects. */
@@ -790,7 +791,7 @@ export interface ChromeOsDevices {
   nextPageToken?: string;
 }
 
-export const ChromeOsDevices: Schema.Schema<ChromeOsDevices> =
+export const ChromeOsDevices: Schema.Codec<ChromeOsDevices> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chromeosdevices: Schema.optional(Schema.Array(ChromeOsDevice)),
     kind: Schema.optional(Schema.String),
@@ -809,7 +810,7 @@ export interface UserWebsite {
   type?: string;
 }
 
-export const UserWebsite: Schema.Schema<UserWebsite> =
+export const UserWebsite: Schema.Codec<UserWebsite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -822,7 +823,7 @@ export interface UserMakeAdmin {
   status?: boolean;
 }
 
-export const UserMakeAdmin: Schema.Schema<UserMakeAdmin> =
+export const UserMakeAdmin: Schema.Codec<UserMakeAdmin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "UserMakeAdmin" });
@@ -854,7 +855,7 @@ export interface UserOrganization {
   primary?: boolean;
 }
 
-export const UserOrganization: Schema.Schema<UserOrganization> =
+export const UserOrganization: Schema.Codec<UserOrganization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
@@ -877,7 +878,7 @@ export interface CreatePrinterRequest {
   printer?: Printer;
 }
 
-export const CreatePrinterRequest: Schema.Schema<CreatePrinterRequest> =
+export const CreatePrinterRequest: Schema.Codec<CreatePrinterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     printer: Schema.optional(Printer),
@@ -888,7 +889,7 @@ export interface BatchCreatePrintersRequest {
   requests?: ReadonlyArray<CreatePrinterRequest>;
 }
 
-export const BatchCreatePrintersRequest: Schema.Schema<BatchCreatePrintersRequest> =
+export const BatchCreatePrintersRequest: Schema.Codec<BatchCreatePrintersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(CreatePrinterRequest)),
   }).annotate({ identifier: "BatchCreatePrintersRequest" });
@@ -898,7 +899,7 @@ export interface BatchChangeChromeOsDeviceStatusResponse {
   changeChromeOsDeviceStatusResults?: ReadonlyArray<ChangeChromeOsDeviceStatusResult>;
 }
 
-export const BatchChangeChromeOsDeviceStatusResponse: Schema.Schema<BatchChangeChromeOsDeviceStatusResponse> =
+export const BatchChangeChromeOsDeviceStatusResponse: Schema.Codec<BatchChangeChromeOsDeviceStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changeChromeOsDeviceStatusResults: Schema.optional(
       Schema.Array(ChangeChromeOsDeviceStatusResult),
@@ -994,7 +995,7 @@ export interface MobileDevice {
   hardware?: string;
 }
 
-export const MobileDevice: Schema.Schema<MobileDevice> =
+export const MobileDevice: Schema.Codec<MobileDevice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     buildNumber: Schema.optional(Schema.String),
@@ -1059,7 +1060,7 @@ export interface MobileDevices {
   nextPageToken?: string;
 }
 
-export const MobileDevices: Schema.Schema<MobileDevices> =
+export const MobileDevices: Schema.Codec<MobileDevices> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mobiledevices: Schema.optional(Schema.Array(MobileDevice)),
     kind: Schema.optional(Schema.String),
@@ -1084,7 +1085,7 @@ export interface Privilege {
   childPrivileges?: ReadonlyArray<Privilege>;
 }
 
-export const Privilege: Schema.Schema<Privilege> =
+export const Privilege: Schema.Codec<Privilege> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       serviceId: Schema.optional(Schema.String),
@@ -1095,7 +1096,7 @@ export const Privilege: Schema.Schema<Privilege> =
       privilegeName: Schema.optional(Schema.String),
       childPrivileges: Schema.optional(Schema.Array(Privilege)),
     }),
-  ).annotate({ identifier: "Privilege" }) as any as Schema.Schema<Privilege>;
+  ).annotate({ identifier: "Privilege" }) as any as Schema.Codec<Privilege>;
 
 export interface Privileges {
   /** The type of the API resource. This is always `admin#directory#privileges`. */
@@ -1106,7 +1107,7 @@ export interface Privileges {
   items?: ReadonlyArray<Privilege>;
 }
 
-export const Privileges: Schema.Schema<Privileges> =
+export const Privileges: Schema.Codec<Privileges> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1120,7 +1121,7 @@ export interface ListPrintersResponse {
   nextPageToken?: string;
 }
 
-export const ListPrintersResponse: Schema.Schema<ListPrintersResponse> =
+export const ListPrintersResponse: Schema.Codec<ListPrintersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printers: Schema.optional(Schema.Array(Printer)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1135,7 +1136,7 @@ export interface UserKeyword {
   value?: string;
 }
 
-export const UserKeyword: Schema.Schema<UserKeyword> =
+export const UserKeyword: Schema.Codec<UserKeyword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     customType: Schema.optional(Schema.String),
@@ -1159,7 +1160,7 @@ export interface PrintServer {
   orgUnitId?: string;
 }
 
-export const PrintServer: Schema.Schema<PrintServer> =
+export const PrintServer: Schema.Codec<PrintServer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1177,7 +1178,7 @@ export interface CreatePrintServerRequest {
   printServer?: PrintServer;
 }
 
-export const CreatePrintServerRequest: Schema.Schema<CreatePrintServerRequest> =
+export const CreatePrintServerRequest: Schema.Codec<CreatePrintServerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     printServer: Schema.optional(PrintServer),
@@ -1202,7 +1203,7 @@ export interface UserPhoto {
   etag?: string;
 }
 
-export const UserPhoto: Schema.Schema<UserPhoto> =
+export const UserPhoto: Schema.Codec<UserPhoto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     primaryEmail: Schema.optional(Schema.String),
@@ -1229,7 +1230,7 @@ export interface DomainAlias {
   domainAliasName?: string;
 }
 
-export const DomainAlias: Schema.Schema<DomainAlias> =
+export const DomainAlias: Schema.Codec<DomainAlias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verified: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
@@ -1256,7 +1257,7 @@ export interface Domains {
   domainAliases?: ReadonlyArray<DomainAlias>;
 }
 
-export const Domains: Schema.Schema<Domains> =
+export const Domains: Schema.Codec<Domains> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1276,7 +1277,7 @@ export interface Domains2 {
   etag?: string;
 }
 
-export const Domains2: Schema.Schema<Domains2> =
+export const Domains2: Schema.Codec<Domains2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Domains)),
     kind: Schema.optional(Schema.String),
@@ -1288,7 +1289,7 @@ export interface MobileDeviceAction {
   action?: string;
 }
 
-export const MobileDeviceAction: Schema.Schema<MobileDeviceAction> =
+export const MobileDeviceAction: Schema.Codec<MobileDeviceAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
   }).annotate({ identifier: "MobileDeviceAction" });
@@ -1298,7 +1299,7 @@ export interface GuestAccountInfo {
   primaryGuestEmail?: string;
 }
 
-export const GuestAccountInfo: Schema.Schema<GuestAccountInfo> =
+export const GuestAccountInfo: Schema.Codec<GuestAccountInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryGuestEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "GuestAccountInfo" });
@@ -1314,7 +1315,7 @@ export interface UserName {
   displayName?: string;
 }
 
-export const UserName: Schema.Schema<UserName> =
+export const UserName: Schema.Codec<UserName> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     familyName: Schema.optional(Schema.String),
     givenName: Schema.optional(Schema.String),
@@ -1323,11 +1324,11 @@ export const UserName: Schema.Schema<UserName> =
   }).annotate({ identifier: "UserName" });
 
 export type UserCustomProperties = Record<string, unknown>;
-export const UserCustomProperties: Schema.Schema<UserCustomProperties> =
+export const UserCustomProperties: Schema.Codec<UserCustomProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
     Schema.String,
     Schema.Unknown,
-  ) as any as Schema.Schema<UserCustomProperties>;
+  ) as any as Schema.Codec<UserCustomProperties>;
 
 export interface User {
   /** Immutable. Indicates if the inserted user is a guest. */
@@ -1431,7 +1432,7 @@ export interface User {
   isEnforcedIn2Sv?: boolean;
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isGuestUser: Schema.optional(Schema.Boolean),
     id: Schema.optional(Schema.String),
@@ -1494,7 +1495,7 @@ export interface ChromeOsDeviceAction {
   action?: string;
 }
 
-export const ChromeOsDeviceAction: Schema.Schema<ChromeOsDeviceAction> =
+export const ChromeOsDeviceAction: Schema.Codec<ChromeOsDeviceAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deprovisionReason: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
@@ -1515,7 +1516,7 @@ export interface UserIm {
   type?: string;
 }
 
-export const UserIm: Schema.Schema<UserIm> =
+export const UserIm: Schema.Codec<UserIm> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customType: Schema.optional(Schema.String),
     protocol: Schema.optional(Schema.String),
@@ -1530,7 +1531,7 @@ export interface MembersHasMember {
   isMember?: boolean;
 }
 
-export const MembersHasMember: Schema.Schema<MembersHasMember> =
+export const MembersHasMember: Schema.Codec<MembersHasMember> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isMember: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "MembersHasMember" });
@@ -1544,7 +1545,7 @@ export interface Feature {
   kind?: string;
 }
 
-export const Feature: Schema.Schema<Feature> =
+export const Feature: Schema.Codec<Feature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etags: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1556,7 +1557,7 @@ export interface FeatureInstance {
   feature?: Feature;
 }
 
-export const FeatureInstance: Schema.Schema<FeatureInstance> =
+export const FeatureInstance: Schema.Codec<FeatureInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feature: Schema.optional(Feature),
   }).annotate({ identifier: "FeatureInstance" });
@@ -1574,7 +1575,7 @@ export interface Users {
   nextPageToken?: string;
 }
 
-export const Users: Schema.Schema<Users> =
+export const Users: Schema.Codec<Users> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trigger_event: Schema.optional(Schema.String),
     users: Schema.optional(Schema.Array(User)),
@@ -1596,7 +1597,7 @@ export interface UserAlias {
   etag?: string;
 }
 
-export const UserAlias: Schema.Schema<UserAlias> =
+export const UserAlias: Schema.Codec<UserAlias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryEmail: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1616,7 +1617,7 @@ export interface VerificationCode {
   userId?: string;
 }
 
-export const VerificationCode: Schema.Schema<VerificationCode> =
+export const VerificationCode: Schema.Codec<VerificationCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verificationCode: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1633,7 +1634,7 @@ export interface VerificationCodes {
   items?: ReadonlyArray<VerificationCode>;
 }
 
-export const VerificationCodes: Schema.Schema<VerificationCodes> =
+export const VerificationCodes: Schema.Codec<VerificationCodes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1648,7 +1649,7 @@ export interface Alias {
   id?: string;
 }
 
-export const Alias: Schema.Schema<Alias> =
+export const Alias: Schema.Codec<Alias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1683,7 +1684,7 @@ export interface BatchChangeChromeOsDeviceStatusRequest {
     | (string & {});
 }
 
-export const BatchChangeChromeOsDeviceStatusRequest: Schema.Schema<BatchChangeChromeOsDeviceStatusRequest> =
+export const BatchChangeChromeOsDeviceStatusRequest: Schema.Codec<BatchChangeChromeOsDeviceStatusRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceIds: Schema.optional(Schema.Array(Schema.String)),
     changeChromeOsDeviceStatusAction: Schema.optional(Schema.String),
@@ -1695,7 +1696,7 @@ export interface UserUndelete {
   orgUnitPath?: string;
 }
 
-export const UserUndelete: Schema.Schema<UserUndelete> =
+export const UserUndelete: Schema.Codec<UserUndelete> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgUnitPath: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserUndelete" });
@@ -1721,7 +1722,7 @@ export interface CustomerPostalAddress {
   region?: string;
 }
 
-export const CustomerPostalAddress: Schema.Schema<CustomerPostalAddress> =
+export const CustomerPostalAddress: Schema.Codec<CustomerPostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contactName: Schema.optional(Schema.String),
     postalCode: Schema.optional(Schema.String),
@@ -1750,7 +1751,7 @@ export interface DirectoryChromeosdevicesCommandResult {
   commandResultPayload?: string;
 }
 
-export const DirectoryChromeosdevicesCommandResult: Schema.Schema<DirectoryChromeosdevicesCommandResult> =
+export const DirectoryChromeosdevicesCommandResult: Schema.Codec<DirectoryChromeosdevicesCommandResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     executeTime: Schema.optional(Schema.String),
@@ -1769,7 +1770,7 @@ export interface Features {
   features?: ReadonlyArray<Feature>;
 }
 
-export const Features: Schema.Schema<Features> =
+export const Features: Schema.Codec<Features> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1796,7 +1797,7 @@ export interface Member {
   email?: string;
 }
 
-export const Member: Schema.Schema<Member> =
+export const Member: Schema.Codec<Member> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1819,7 +1820,7 @@ export interface Members {
   members?: ReadonlyArray<Member>;
 }
 
-export const Members: Schema.Schema<Members> =
+export const Members: Schema.Codec<Members> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1833,7 +1834,7 @@ export interface Aliases {
   aliases?: ReadonlyArray<unknown>;
 }
 
-export const Aliases: Schema.Schema<Aliases> =
+export const Aliases: Schema.Codec<Aliases> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1847,7 +1848,7 @@ export interface BuildingCoordinates {
   latitude?: number;
 }
 
-export const BuildingCoordinates: Schema.Schema<BuildingCoordinates> =
+export const BuildingCoordinates: Schema.Codec<BuildingCoordinates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     longitude: Schema.optional(Schema.Number),
     latitude: Schema.optional(Schema.Number),
@@ -1870,7 +1871,7 @@ export interface BuildingAddress {
   addressLines?: ReadonlyArray<string>;
 }
 
-export const BuildingAddress: Schema.Schema<BuildingAddress> =
+export const BuildingAddress: Schema.Codec<BuildingAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locality: Schema.optional(Schema.String),
     administrativeArea: Schema.optional(Schema.String),
@@ -1900,7 +1901,7 @@ export interface Building {
   address?: BuildingAddress;
 }
 
-export const Building: Schema.Schema<Building> =
+export const Building: Schema.Codec<Building> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etags: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1935,7 +1936,7 @@ export interface SchemaFieldSpec {
   fieldId?: string;
 }
 
-export const SchemaFieldSpec: Schema.Schema<SchemaFieldSpec> =
+export const SchemaFieldSpec: Schema.Codec<SchemaFieldSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     multiValued: Schema.optional(Schema.Boolean),
@@ -1956,7 +1957,7 @@ export const SchemaFieldSpec: Schema.Schema<SchemaFieldSpec> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1984,7 +1985,7 @@ export interface UserPosixAccount {
   username?: string;
 }
 
-export const UserPosixAccount: Schema.Schema<UserPosixAccount> =
+export const UserPosixAccount: Schema.Codec<UserPosixAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shell: Schema.optional(Schema.String),
     primary: Schema.optional(Schema.Boolean),
@@ -2019,7 +2020,7 @@ export interface OrgUnit {
   parentOrgUnitId?: string;
 }
 
-export const OrgUnit: Schema.Schema<OrgUnit> =
+export const OrgUnit: Schema.Codec<OrgUnit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     blockInheritance: Schema.optional(Schema.Boolean),
@@ -2041,7 +2042,7 @@ export interface UserSshPublicKey {
   key?: string;
 }
 
-export const UserSshPublicKey: Schema.Schema<UserSshPublicKey> =
+export const UserSshPublicKey: Schema.Codec<UserSshPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fingerprint: Schema.optional(Schema.String),
     expirationTimeUsec: Schema.optional(Schema.String),
@@ -2057,7 +2058,7 @@ export interface PrinterModel {
   manufacturer?: string;
 }
 
-export const PrinterModel: Schema.Schema<PrinterModel> =
+export const PrinterModel: Schema.Codec<PrinterModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     makeAndModel: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2069,7 +2070,7 @@ export interface BatchDeletePrintersRequest {
   printerIds?: ReadonlyArray<string>;
 }
 
-export const BatchDeletePrintersRequest: Schema.Schema<BatchDeletePrintersRequest> =
+export const BatchDeletePrintersRequest: Schema.Codec<BatchDeletePrintersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printerIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeletePrintersRequest" });
@@ -2085,7 +2086,7 @@ export interface Buildings {
   nextPageToken?: string;
 }
 
-export const Buildings: Schema.Schema<Buildings> =
+export const Buildings: Schema.Codec<Buildings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buildings: Schema.optional(Schema.Array(Building)),
     kind: Schema.optional(Schema.String),
@@ -2102,7 +2103,7 @@ export interface UserGender {
   type?: string;
 }
 
-export const UserGender: Schema.Schema<UserGender> =
+export const UserGender: Schema.Codec<UserGender> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customGender: Schema.optional(Schema.String),
     addressMeAs: Schema.optional(Schema.String),
@@ -2116,7 +2117,7 @@ export interface DirectoryUsersCreateGuestRequest {
   customer?: string;
 }
 
-export const DirectoryUsersCreateGuestRequest: Schema.Schema<DirectoryUsersCreateGuestRequest> =
+export const DirectoryUsersCreateGuestRequest: Schema.Codec<DirectoryUsersCreateGuestRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryGuestEmail: Schema.optional(Schema.String),
     customer: Schema.optional(Schema.String),
@@ -2151,7 +2152,7 @@ export interface PrintServerFailureInfo {
   printServer?: PrintServer;
 }
 
-export const PrintServerFailureInfo: Schema.Schema<PrintServerFailureInfo> =
+export const PrintServerFailureInfo: Schema.Codec<PrintServerFailureInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.String),
@@ -2166,7 +2167,7 @@ export interface BatchCreatePrintServersResponse {
   failures?: ReadonlyArray<PrintServerFailureInfo>;
 }
 
-export const BatchCreatePrintServersResponse: Schema.Schema<BatchCreatePrintServersResponse> =
+export const BatchCreatePrintServersResponse: Schema.Codec<BatchCreatePrintServersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printServers: Schema.optional(Schema.Array(PrintServer)),
     failures: Schema.optional(Schema.Array(PrintServerFailureInfo)),
@@ -2193,7 +2194,7 @@ export interface RoleAssignment {
   roleAssignmentId?: string;
 }
 
-export const RoleAssignment: Schema.Schema<RoleAssignment> =
+export const RoleAssignment: Schema.Codec<RoleAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopeType: Schema.optional(Schema.String),
     assignedTo: Schema.optional(Schema.String),
@@ -2216,7 +2217,7 @@ export interface RoleAssignments {
   items?: ReadonlyArray<RoleAssignment>;
 }
 
-export const RoleAssignments: Schema.Schema<RoleAssignments> =
+export const RoleAssignments: Schema.Codec<RoleAssignments> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -2253,7 +2254,7 @@ export interface UserAddress {
   locality?: string;
 }
 
-export const UserAddress: Schema.Schema<UserAddress> =
+export const UserAddress: Schema.Codec<UserAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countryCode: Schema.optional(Schema.String),
     poBox: Schema.optional(Schema.String),
@@ -2277,7 +2278,7 @@ export interface BatchDeletePrintServersResponse {
   failedPrintServers?: ReadonlyArray<PrintServerFailureInfo>;
 }
 
-export const BatchDeletePrintServersResponse: Schema.Schema<BatchDeletePrintServersResponse> =
+export const BatchDeletePrintServersResponse: Schema.Codec<BatchDeletePrintServersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printServerIds: Schema.optional(Schema.Array(Schema.String)),
     failedPrintServers: Schema.optional(Schema.Array(PrintServerFailureInfo)),
@@ -2300,7 +2301,7 @@ export interface UserEmail {
   };
 }
 
-export const UserEmail: Schema.Schema<UserEmail> =
+export const UserEmail: Schema.Codec<UserEmail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customType: Schema.optional(Schema.String),
     address: Schema.optional(Schema.String),
@@ -2320,7 +2321,7 @@ export interface ChromeOsMoveDevicesToOu {
   deviceIds?: ReadonlyArray<string>;
 }
 
-export const ChromeOsMoveDevicesToOu: Schema.Schema<ChromeOsMoveDevicesToOu> =
+export const ChromeOsMoveDevicesToOu: Schema.Codec<ChromeOsMoveDevicesToOu> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ChromeOsMoveDevicesToOu" });
@@ -2348,7 +2349,7 @@ export interface Channel {
   resourceId?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.optional(Schema.String),
     expiration: Schema.optional(Schema.String),
@@ -2395,7 +2396,7 @@ export interface CalendarResource {
   resourceName?: string;
 }
 
-export const CalendarResource: Schema.Schema<CalendarResource> =
+export const CalendarResource: Schema.Codec<CalendarResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     generatedResourceName: Schema.optional(Schema.String),
@@ -2436,7 +2437,7 @@ export interface Role {
   isSystemRole?: boolean;
 }
 
-export const Role: Schema.Schema<Role> =
+export const Role: Schema.Codec<Role> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleId: Schema.optional(Schema.String),
     isSuperAdminRole: Schema.optional(Schema.Boolean),
@@ -2465,7 +2466,7 @@ export interface Roles {
   items?: ReadonlyArray<Role>;
 }
 
-export const Roles: Schema.Schema<Roles> =
+export const Roles: Schema.Codec<Roles> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -2480,7 +2481,7 @@ export interface ListPrintServersResponse {
   nextPageToken?: string;
 }
 
-export const ListPrintServersResponse: Schema.Schema<ListPrintServersResponse> =
+export const ListPrintServersResponse: Schema.Codec<ListPrintServersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printServers: Schema.optional(Schema.Array(PrintServer)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2501,7 +2502,7 @@ export interface Admin_Schema {
   displayName?: string;
 }
 
-export const Admin_Schema: Schema.Schema<Admin_Schema> =
+export const Admin_Schema: Schema.Codec<Admin_Schema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaId: Schema.optional(Schema.String),
     fields: Schema.optional(Schema.Array(SchemaFieldSpec)),
@@ -2532,7 +2533,7 @@ export interface Customer {
   postalAddress?: CustomerPostalAddress;
 }
 
-export const Customer: Schema.Schema<Customer> =
+export const Customer: Schema.Codec<Customer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     language: Schema.optional(Schema.String),
     customerDomain: Schema.optional(Schema.String),
@@ -2554,7 +2555,7 @@ export interface Schemas {
   schemas?: ReadonlyArray<Admin_Schema>;
 }
 
-export const Schemas: Schema.Schema<Schemas> =
+export const Schemas: Schema.Codec<Schemas> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -2566,7 +2567,7 @@ export interface CountChromeOsDevicesResponse {
   count?: string;
 }
 
-export const CountChromeOsDevicesResponse: Schema.Schema<CountChromeOsDevicesResponse> =
+export const CountChromeOsDevicesResponse: Schema.Codec<CountChromeOsDevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
   }).annotate({ identifier: "CountChromeOsDevicesResponse" });
@@ -2576,7 +2577,7 @@ export interface BatchCreatePrintServersRequest {
   requests?: ReadonlyArray<CreatePrintServerRequest>;
 }
 
-export const BatchCreatePrintServersRequest: Schema.Schema<BatchCreatePrintServersRequest> =
+export const BatchCreatePrintServersRequest: Schema.Codec<BatchCreatePrintServersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(CreatePrintServerRequest)),
   }).annotate({ identifier: "BatchCreatePrintServersRequest" });
@@ -2588,7 +2589,7 @@ export interface UserAbout {
   value?: string;
 }
 
-export const UserAbout: Schema.Schema<UserAbout> =
+export const UserAbout: Schema.Codec<UserAbout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -2603,7 +2604,7 @@ export interface UserExternalId {
   value?: string;
 }
 
-export const UserExternalId: Schema.Schema<UserExternalId> =
+export const UserExternalId: Schema.Codec<UserExternalId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     customType: Schema.optional(Schema.String),
@@ -2619,7 +2620,7 @@ export interface DomainAliases {
   domainAliases?: ReadonlyArray<DomainAlias>;
 }
 
-export const DomainAliases: Schema.Schema<DomainAliases> =
+export const DomainAliases: Schema.Codec<DomainAliases> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -2635,7 +2636,7 @@ export interface OrgUnits {
   etag?: string;
 }
 
-export const OrgUnits: Schema.Schema<OrgUnits> =
+export const OrgUnits: Schema.Codec<OrgUnits> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationUnits: Schema.optional(Schema.Array(OrgUnit)),
     kind: Schema.optional(Schema.String),
@@ -2653,7 +2654,7 @@ export interface CalendarResources {
   items?: ReadonlyArray<CalendarResource>;
 }
 
-export const CalendarResources: Schema.Schema<CalendarResources> =
+export const CalendarResources: Schema.Codec<CalendarResources> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -2666,7 +2667,7 @@ export interface FeatureRename {
   newName?: string;
 }
 
-export const FeatureRename: Schema.Schema<FeatureRename> =
+export const FeatureRename: Schema.Codec<FeatureRename> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newName: Schema.optional(Schema.String),
   }).annotate({ identifier: "FeatureRename" });
@@ -2678,7 +2679,7 @@ export interface BatchDeletePrintersResponse {
   failedPrinters?: ReadonlyArray<FailureInfo>;
 }
 
-export const BatchDeletePrintersResponse: Schema.Schema<BatchDeletePrintersResponse> =
+export const BatchDeletePrintersResponse: Schema.Codec<BatchDeletePrintersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printerIds: Schema.optional(Schema.Array(Schema.String)),
     failedPrinters: Schema.optional(Schema.Array(FailureInfo)),
@@ -2697,7 +2698,7 @@ export interface GroupAlias {
   etag?: string;
 }
 
-export const GroupAlias: Schema.Schema<GroupAlias> =
+export const GroupAlias: Schema.Codec<GroupAlias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     alias: Schema.optional(Schema.String),
@@ -2723,7 +2724,7 @@ export interface UserLocation {
   area?: string;
 }
 
-export const UserLocation: Schema.Schema<UserLocation> =
+export const UserLocation: Schema.Codec<UserLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customType: Schema.optional(Schema.String),
     floorName: Schema.optional(Schema.String),
@@ -2757,7 +2758,7 @@ export interface Group {
   name?: string;
 }
 
-export const Group: Schema.Schema<Group> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     directMembersCount: Schema.optional(Schema.String),
     nonEditableAliases: Schema.optional(Schema.Array(Schema.String)),
@@ -2782,7 +2783,7 @@ export interface Groups {
   nextPageToken?: string;
 }
 
-export const Groups: Schema.Schema<Groups> =
+export const Groups: Schema.Codec<Groups> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -2826,7 +2827,7 @@ export interface DirectoryChromeosdevicesCommand {
     | (string & {});
 }
 
-export const DirectoryChromeosdevicesCommand: Schema.Schema<DirectoryChromeosdevicesCommand> =
+export const DirectoryChromeosdevicesCommand: Schema.Codec<DirectoryChromeosdevicesCommand> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commandResult: Schema.optional(DirectoryChromeosdevicesCommandResult),
     commandId: Schema.optional(Schema.String),
@@ -2844,7 +2845,7 @@ export interface ListPrinterModelsResponse {
   nextPageToken?: string;
 }
 
-export const ListPrinterModelsResponse: Schema.Schema<ListPrinterModelsResponse> =
+export const ListPrinterModelsResponse: Schema.Codec<ListPrinterModelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     printerModels: Schema.optional(Schema.Array(PrinterModel)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2859,7 +2860,7 @@ export interface UserRelation {
   type?: string;
 }
 
-export const UserRelation: Schema.Schema<UserRelation> =
+export const UserRelation: Schema.Codec<UserRelation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customType: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -2941,13 +2942,13 @@ export const ActionChromeosdevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ActionChromeosdevicesRequest>;
+  ) as unknown as Schema.Codec<ActionChromeosdevicesRequest>;
 
 export interface ActionChromeosdevicesResponse {}
-export const ActionChromeosdevicesResponse: Schema.Schema<ActionChromeosdevicesResponse> =
+export const ActionChromeosdevicesResponse: Schema.Codec<ActionChromeosdevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ActionChromeosdevicesResponse>;
+  ) as any as Schema.Codec<ActionChromeosdevicesResponse>;
 
 export type ActionChromeosdevicesError =
   | DefaultErrors
@@ -3017,7 +3018,7 @@ export const ListChromeosdevicesRequest =
       path: "admin/directory/v1/customer/{customerId}/devices/chromeos",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListChromeosdevicesRequest>;
+  ) as unknown as Schema.Codec<ListChromeosdevicesRequest>;
 
 export type ListChromeosdevicesResponse = ChromeOsDevices;
 export const ListChromeosdevicesResponse =
@@ -3065,7 +3066,7 @@ export const PatchChromeosdevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchChromeosdevicesRequest>;
+  ) as unknown as Schema.Codec<PatchChromeosdevicesRequest>;
 
 export type PatchChromeosdevicesResponse = ChromeOsDevice;
 export const PatchChromeosdevicesResponse =
@@ -3111,13 +3112,13 @@ export const MoveDevicesToOuChromeosdevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveDevicesToOuChromeosdevicesRequest>;
+  ) as unknown as Schema.Codec<MoveDevicesToOuChromeosdevicesRequest>;
 
 export interface MoveDevicesToOuChromeosdevicesResponse {}
-export const MoveDevicesToOuChromeosdevicesResponse: Schema.Schema<MoveDevicesToOuChromeosdevicesResponse> =
+export const MoveDevicesToOuChromeosdevicesResponse: Schema.Codec<MoveDevicesToOuChromeosdevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<MoveDevicesToOuChromeosdevicesResponse>;
+  ) as any as Schema.Codec<MoveDevicesToOuChromeosdevicesResponse>;
 
 export type MoveDevicesToOuChromeosdevicesError =
   | DefaultErrors
@@ -3158,7 +3159,7 @@ export const GetChromeosdevicesRequest =
       path: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetChromeosdevicesRequest>;
+  ) as unknown as Schema.Codec<GetChromeosdevicesRequest>;
 
 export type GetChromeosdevicesResponse = ChromeOsDevice;
 export const GetChromeosdevicesResponse =
@@ -3202,7 +3203,7 @@ export const UpdateChromeosdevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateChromeosdevicesRequest>;
+  ) as unknown as Schema.Codec<UpdateChromeosdevicesRequest>;
 
 export type UpdateChromeosdevicesResponse = ChromeOsDevice;
 export const UpdateChromeosdevicesResponse =
@@ -3242,13 +3243,13 @@ export const TurnOffTwoStepVerificationRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TurnOffTwoStepVerificationRequest>;
+  ) as unknown as Schema.Codec<TurnOffTwoStepVerificationRequest>;
 
 export interface TurnOffTwoStepVerificationResponse {}
-export const TurnOffTwoStepVerificationResponse: Schema.Schema<TurnOffTwoStepVerificationResponse> =
+export const TurnOffTwoStepVerificationResponse: Schema.Codec<TurnOffTwoStepVerificationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<TurnOffTwoStepVerificationResponse>;
+  ) as any as Schema.Codec<TurnOffTwoStepVerificationResponse>;
 
 export type TurnOffTwoStepVerificationError =
   | DefaultErrors
@@ -3286,13 +3287,13 @@ export const DeleteRoleAssignmentsRequest =
       path: "admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRoleAssignmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteRoleAssignmentsRequest>;
 
 export interface DeleteRoleAssignmentsResponse {}
-export const DeleteRoleAssignmentsResponse: Schema.Schema<DeleteRoleAssignmentsResponse> =
+export const DeleteRoleAssignmentsResponse: Schema.Codec<DeleteRoleAssignmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteRoleAssignmentsResponse>;
+  ) as any as Schema.Codec<DeleteRoleAssignmentsResponse>;
 
 export type DeleteRoleAssignmentsError =
   | DefaultErrors
@@ -3331,7 +3332,7 @@ export const InsertRoleAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRoleAssignmentsRequest>;
+  ) as unknown as Schema.Codec<InsertRoleAssignmentsRequest>;
 
 export type InsertRoleAssignmentsResponse = RoleAssignment;
 export const InsertRoleAssignmentsResponse =
@@ -3387,7 +3388,7 @@ export const ListRoleAssignmentsRequest =
       path: "admin/directory/v1/customer/{customer}/roleassignments",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRoleAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListRoleAssignmentsRequest>;
 
 export type ListRoleAssignmentsResponse = RoleAssignments;
 export const ListRoleAssignmentsResponse =
@@ -3429,7 +3430,7 @@ export const GetRoleAssignmentsRequest =
       path: "admin/directory/v1/customer/{customer}/roleassignments/{roleAssignmentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRoleAssignmentsRequest>;
+  ) as unknown as Schema.Codec<GetRoleAssignmentsRequest>;
 
 export type GetRoleAssignmentsResponse = RoleAssignment;
 export const GetRoleAssignmentsResponse =
@@ -3465,13 +3466,13 @@ export const DeleteAspsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/users/{userKey}/asps/{codeId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteAspsRequest>;
+) as unknown as Schema.Codec<DeleteAspsRequest>;
 
 export interface DeleteAspsResponse {}
-export const DeleteAspsResponse: Schema.Schema<DeleteAspsResponse> =
+export const DeleteAspsResponse: Schema.Codec<DeleteAspsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAspsResponse>;
+  ) as any as Schema.Codec<DeleteAspsResponse>;
 
 export type DeleteAspsError =
   | DefaultErrors
@@ -3502,7 +3503,7 @@ export const ListAspsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "admin/directory/v1/users/{userKey}/asps" }),
   svc,
-) as unknown as Schema.Schema<ListAspsRequest>;
+) as unknown as Schema.Codec<ListAspsRequest>;
 
 export type ListAspsResponse = Asps;
 export const ListAspsResponse = /*@__PURE__*/ /*#__PURE__*/ Asps;
@@ -3537,7 +3538,7 @@ export const GetAspsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/users/{userKey}/asps/{codeId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetAspsRequest>;
+) as unknown as Schema.Codec<GetAspsRequest>;
 
 export type GetAspsResponse = Asp;
 export const GetAspsResponse = /*@__PURE__*/ /*#__PURE__*/ Asp;
@@ -3569,7 +3570,7 @@ export const ListSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customerId}/schemas",
   }),
   svc,
-) as unknown as Schema.Schema<ListSchemasRequest>;
+) as unknown as Schema.Codec<ListSchemasRequest>;
 
 export type ListSchemasResponse = Schemas;
 export const ListSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Schemas;
@@ -3608,7 +3609,7 @@ export const PatchSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchSchemasRequest>;
+) as unknown as Schema.Codec<PatchSchemasRequest>;
 
 export type PatchSchemasResponse = Admin_Schema;
 export const PatchSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Admin_Schema;
@@ -3648,13 +3649,13 @@ export const DeleteSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteSchemasRequest>;
+) as unknown as Schema.Codec<DeleteSchemasRequest>;
 
 export interface DeleteSchemasResponse {}
-export const DeleteSchemasResponse: Schema.Schema<DeleteSchemasResponse> =
+export const DeleteSchemasResponse: Schema.Codec<DeleteSchemasResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteSchemasResponse>;
+  ) as any as Schema.Codec<DeleteSchemasResponse>;
 
 export type DeleteSchemasError =
   | DefaultErrors
@@ -3692,7 +3693,7 @@ export const InsertSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertSchemasRequest>;
+) as unknown as Schema.Codec<InsertSchemasRequest>;
 
 export type InsertSchemasResponse = Admin_Schema;
 export const InsertSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Admin_Schema;
@@ -3732,7 +3733,7 @@ export const GetSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
   }),
   svc,
-) as unknown as Schema.Schema<GetSchemasRequest>;
+) as unknown as Schema.Codec<GetSchemasRequest>;
 
 export type GetSchemasResponse = Admin_Schema;
 export const GetSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Admin_Schema;
@@ -3771,7 +3772,7 @@ export const UpdateSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateSchemasRequest>;
+) as unknown as Schema.Codec<UpdateSchemasRequest>;
 
 export type UpdateSchemasResponse = Admin_Schema;
 export const UpdateSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Admin_Schema;
@@ -3812,13 +3813,13 @@ export const UndeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UndeleteUsersRequest>;
+) as unknown as Schema.Codec<UndeleteUsersRequest>;
 
 export interface UndeleteUsersResponse {}
-export const UndeleteUsersResponse: Schema.Schema<UndeleteUsersResponse> =
+export const UndeleteUsersResponse: Schema.Codec<UndeleteUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<UndeleteUsersResponse>;
+  ) as any as Schema.Codec<UndeleteUsersResponse>;
 
 export type UndeleteUsersError =
   | DefaultErrors
@@ -3854,7 +3855,7 @@ export const CreateGuestUsersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateGuestUsersRequest>;
+  ) as unknown as Schema.Codec<CreateGuestUsersRequest>;
 
 export type CreateGuestUsersResponse = User;
 export const CreateGuestUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -3893,7 +3894,7 @@ export const InsertUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "admin/directory/v1/users", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertUsersRequest>;
+) as unknown as Schema.Codec<InsertUsersRequest>;
 
 export type InsertUsersResponse = User;
 export const InsertUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -3968,7 +3969,7 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "admin/directory/v1/users" }),
   svc,
-) as unknown as Schema.Schema<ListUsersRequest>;
+) as unknown as Schema.Codec<ListUsersRequest>;
 
 export type ListUsersResponse = Users;
 export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Users;
@@ -4049,7 +4050,7 @@ export const WatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<WatchUsersRequest>;
+) as unknown as Schema.Codec<WatchUsersRequest>;
 
 export type WatchUsersResponse = Channel;
 export const WatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -4087,13 +4088,13 @@ export const SignOutUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<SignOutUsersRequest>;
+) as unknown as Schema.Codec<SignOutUsersRequest>;
 
 export interface SignOutUsersResponse {}
-export const SignOutUsersResponse: Schema.Schema<SignOutUsersResponse> =
+export const SignOutUsersResponse: Schema.Codec<SignOutUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<SignOutUsersResponse>;
+  ) as any as Schema.Codec<SignOutUsersResponse>;
 
 export type SignOutUsersError =
   | DefaultErrors
@@ -4131,7 +4132,7 @@ export const UpdateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateUsersRequest>;
+) as unknown as Schema.Codec<UpdateUsersRequest>;
 
 export type UpdateUsersResponse = User;
 export const UpdateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -4176,7 +4177,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "admin/directory/v1/users/{userKey}" }),
   svc,
-) as unknown as Schema.Schema<GetUsersRequest>;
+) as unknown as Schema.Codec<GetUsersRequest>;
 
 export type GetUsersResponse = User;
 export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -4212,13 +4213,13 @@ export const MakeAdminUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<MakeAdminUsersRequest>;
+) as unknown as Schema.Codec<MakeAdminUsersRequest>;
 
 export interface MakeAdminUsersResponse {}
-export const MakeAdminUsersResponse: Schema.Schema<MakeAdminUsersResponse> =
+export const MakeAdminUsersResponse: Schema.Codec<MakeAdminUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<MakeAdminUsersResponse>;
+  ) as any as Schema.Codec<MakeAdminUsersResponse>;
 
 export type MakeAdminUsersError =
   | DefaultErrors
@@ -4249,13 +4250,13 @@ export const DeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "admin/directory/v1/users/{userKey}" }),
   svc,
-) as unknown as Schema.Schema<DeleteUsersRequest>;
+) as unknown as Schema.Codec<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
-export const DeleteUsersResponse: Schema.Schema<DeleteUsersResponse> =
+export const DeleteUsersResponse: Schema.Codec<DeleteUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersResponse>;
+  ) as any as Schema.Codec<DeleteUsersResponse>;
 
 export type DeleteUsersError =
   | DefaultErrors
@@ -4293,7 +4294,7 @@ export const PatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchUsersRequest>;
+) as unknown as Schema.Codec<PatchUsersRequest>;
 
 export type PatchUsersResponse = User;
 export const PatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -4334,13 +4335,13 @@ export const DeleteUsersAliasesRequest =
       path: "admin/directory/v1/users/{userKey}/aliases/{alias}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersAliasesRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersAliasesRequest>;
 
 export interface DeleteUsersAliasesResponse {}
-export const DeleteUsersAliasesResponse: Schema.Schema<DeleteUsersAliasesResponse> =
+export const DeleteUsersAliasesResponse: Schema.Codec<DeleteUsersAliasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersAliasesResponse>;
+  ) as any as Schema.Codec<DeleteUsersAliasesResponse>;
 
 export type DeleteUsersAliasesError =
   | DefaultErrors
@@ -4379,7 +4380,7 @@ export const InsertUsersAliasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertUsersAliasesRequest>;
+  ) as unknown as Schema.Codec<InsertUsersAliasesRequest>;
 
 export type InsertUsersAliasesResponse = Alias;
 export const InsertUsersAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Alias;
@@ -4424,7 +4425,7 @@ export const WatchUsersAliasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WatchUsersAliasesRequest>;
+  ) as unknown as Schema.Codec<WatchUsersAliasesRequest>;
 
 export type WatchUsersAliasesResponse = Channel;
 export const WatchUsersAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -4465,7 +4466,7 @@ export const ListUsersAliasesRequest =
       path: "admin/directory/v1/users/{userKey}/aliases",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersAliasesRequest>;
+  ) as unknown as Schema.Codec<ListUsersAliasesRequest>;
 
 export type ListUsersAliasesResponse = Aliases;
 export const ListUsersAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Aliases;
@@ -4497,7 +4498,7 @@ export const GetUsersPhotosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/users/{userKey}/photos/thumbnail",
   }),
   svc,
-) as unknown as Schema.Schema<GetUsersPhotosRequest>;
+) as unknown as Schema.Codec<GetUsersPhotosRequest>;
 
 export type GetUsersPhotosResponse = UserPhoto;
 export const GetUsersPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ UserPhoto;
@@ -4534,7 +4535,7 @@ export const UpdateUsersPhotosRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateUsersPhotosRequest>;
+  ) as unknown as Schema.Codec<UpdateUsersPhotosRequest>;
 
 export type UpdateUsersPhotosResponse = UserPhoto;
 export const UpdateUsersPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ UserPhoto;
@@ -4576,7 +4577,7 @@ export const PatchUsersPhotosRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersPhotosRequest>;
+  ) as unknown as Schema.Codec<PatchUsersPhotosRequest>;
 
 export type PatchUsersPhotosResponse = UserPhoto;
 export const PatchUsersPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ UserPhoto;
@@ -4614,13 +4615,13 @@ export const DeleteUsersPhotosRequest =
       path: "admin/directory/v1/users/{userKey}/photos/thumbnail",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersPhotosRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersPhotosRequest>;
 
 export interface DeleteUsersPhotosResponse {}
-export const DeleteUsersPhotosResponse: Schema.Schema<DeleteUsersPhotosResponse> =
+export const DeleteUsersPhotosResponse: Schema.Codec<DeleteUsersPhotosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersPhotosResponse>;
+  ) as any as Schema.Codec<DeleteUsersPhotosResponse>;
 
 export type DeleteUsersPhotosError =
   | DefaultErrors
@@ -4658,13 +4659,13 @@ export const DeleteMobiledevicesRequest =
       path: "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMobiledevicesRequest>;
+  ) as unknown as Schema.Codec<DeleteMobiledevicesRequest>;
 
 export interface DeleteMobiledevicesResponse {}
-export const DeleteMobiledevicesResponse: Schema.Schema<DeleteMobiledevicesResponse> =
+export const DeleteMobiledevicesResponse: Schema.Codec<DeleteMobiledevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteMobiledevicesResponse>;
+  ) as any as Schema.Codec<DeleteMobiledevicesResponse>;
 
 export type DeleteMobiledevicesError =
   | DefaultErrors
@@ -4706,13 +4707,13 @@ export const ActionMobiledevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ActionMobiledevicesRequest>;
+  ) as unknown as Schema.Codec<ActionMobiledevicesRequest>;
 
 export interface ActionMobiledevicesResponse {}
-export const ActionMobiledevicesResponse: Schema.Schema<ActionMobiledevicesResponse> =
+export const ActionMobiledevicesResponse: Schema.Codec<ActionMobiledevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ActionMobiledevicesResponse>;
+  ) as any as Schema.Codec<ActionMobiledevicesResponse>;
 
 export type ActionMobiledevicesError =
   | DefaultErrors
@@ -4774,7 +4775,7 @@ export const ListMobiledevicesRequest =
       path: "admin/directory/v1/customer/{customerId}/devices/mobile",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMobiledevicesRequest>;
+  ) as unknown as Schema.Codec<ListMobiledevicesRequest>;
 
 export type ListMobiledevicesResponse = MobileDevices;
 export const ListMobiledevicesResponse =
@@ -4818,7 +4819,7 @@ export const GetMobiledevicesRequest =
       path: "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMobiledevicesRequest>;
+  ) as unknown as Schema.Codec<GetMobiledevicesRequest>;
 
 export type GetMobiledevicesResponse = MobileDevice;
 export const GetMobiledevicesResponse =
@@ -4853,13 +4854,13 @@ export const GenerateVerificationCodesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateVerificationCodesRequest>;
+  ) as unknown as Schema.Codec<GenerateVerificationCodesRequest>;
 
 export interface GenerateVerificationCodesResponse {}
-export const GenerateVerificationCodesResponse: Schema.Schema<GenerateVerificationCodesResponse> =
+export const GenerateVerificationCodesResponse: Schema.Codec<GenerateVerificationCodesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<GenerateVerificationCodesResponse>;
+  ) as any as Schema.Codec<GenerateVerificationCodesResponse>;
 
 export type GenerateVerificationCodesError =
   | DefaultErrors
@@ -4895,13 +4896,13 @@ export const InvalidateVerificationCodesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InvalidateVerificationCodesRequest>;
+  ) as unknown as Schema.Codec<InvalidateVerificationCodesRequest>;
 
 export interface InvalidateVerificationCodesResponse {}
-export const InvalidateVerificationCodesResponse: Schema.Schema<InvalidateVerificationCodesResponse> =
+export const InvalidateVerificationCodesResponse: Schema.Codec<InvalidateVerificationCodesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<InvalidateVerificationCodesResponse>;
+  ) as any as Schema.Codec<InvalidateVerificationCodesResponse>;
 
 export type InvalidateVerificationCodesError =
   | DefaultErrors
@@ -4936,7 +4937,7 @@ export const ListVerificationCodesRequest =
       path: "admin/directory/v1/users/{userKey}/verificationCodes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListVerificationCodesRequest>;
+  ) as unknown as Schema.Codec<ListVerificationCodesRequest>;
 
 export type ListVerificationCodesResponse = VerificationCodes;
 export const ListVerificationCodesResponse =
@@ -4976,7 +4977,7 @@ export const UpdateOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateOrgunitsRequest>;
+) as unknown as Schema.Codec<UpdateOrgunitsRequest>;
 
 export type UpdateOrgunitsResponse = OrgUnit;
 export const UpdateOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnit;
@@ -5016,7 +5017,7 @@ export const GetOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
   }),
   svc,
-) as unknown as Schema.Schema<GetOrgunitsRequest>;
+) as unknown as Schema.Codec<GetOrgunitsRequest>;
 
 export type GetOrgunitsResponse = OrgUnit;
 export const GetOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnit;
@@ -5051,13 +5052,13 @@ export const DeleteOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteOrgunitsRequest>;
+) as unknown as Schema.Codec<DeleteOrgunitsRequest>;
 
 export interface DeleteOrgunitsResponse {}
-export const DeleteOrgunitsResponse: Schema.Schema<DeleteOrgunitsResponse> =
+export const DeleteOrgunitsResponse: Schema.Codec<DeleteOrgunitsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteOrgunitsResponse>;
+  ) as any as Schema.Codec<DeleteOrgunitsResponse>;
 
 export type DeleteOrgunitsError =
   | DefaultErrors
@@ -5095,7 +5096,7 @@ export const InsertOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertOrgunitsRequest>;
+) as unknown as Schema.Codec<InsertOrgunitsRequest>;
 
 export type InsertOrgunitsResponse = OrgUnit;
 export const InsertOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnit;
@@ -5138,7 +5139,7 @@ export const ListOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customerId}/orgunits",
   }),
   svc,
-) as unknown as Schema.Schema<ListOrgunitsRequest>;
+) as unknown as Schema.Codec<ListOrgunitsRequest>;
 
 export type ListOrgunitsResponse = OrgUnits;
 export const ListOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnits;
@@ -5177,7 +5178,7 @@ export const PatchOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchOrgunitsRequest>;
+) as unknown as Schema.Codec<PatchOrgunitsRequest>;
 
 export type PatchOrgunitsResponse = OrgUnit;
 export const PatchOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnit;
@@ -5211,7 +5212,7 @@ export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "admin/directory/v1/customers/{customerKey}" }),
   svc,
-) as unknown as Schema.Schema<GetCustomersRequest>;
+) as unknown as Schema.Codec<GetCustomersRequest>;
 
 export type GetCustomersResponse = Customer;
 export const GetCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -5249,7 +5250,7 @@ export const UpdateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateCustomersRequest>;
+) as unknown as Schema.Codec<UpdateCustomersRequest>;
 
 export type UpdateCustomersResponse = Customer;
 export const UpdateCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -5290,7 +5291,7 @@ export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchCustomersRequest>;
+) as unknown as Schema.Codec<PatchCustomersRequest>;
 
 export type PatchCustomersResponse = Customer;
 export const PatchCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -5325,7 +5326,7 @@ export const GetCustomersChromePrintersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "admin/directory/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersChromePrintersRequest>;
+  ) as unknown as Schema.Codec<GetCustomersChromePrintersRequest>;
 
 export type GetCustomersChromePrintersResponse = Printer;
 export const GetCustomersChromePrintersResponse =
@@ -5366,7 +5367,7 @@ export const CreateCustomersChromePrintersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersChromePrintersRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersChromePrintersRequest>;
 
 export type CreateCustomersChromePrintersResponse = Printer;
 export const CreateCustomersChromePrintersResponse =
@@ -5409,7 +5410,7 @@ export const BatchCreatePrintersCustomersChromePrintersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreatePrintersCustomersChromePrintersRequest>;
+  ) as unknown as Schema.Codec<BatchCreatePrintersCustomersChromePrintersRequest>;
 
 export type BatchCreatePrintersCustomersChromePrintersResponse =
   BatchCreatePrintersResponse;
@@ -5446,7 +5447,7 @@ export const DeleteCustomersChromePrintersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "admin/directory/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCustomersChromePrintersRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomersChromePrintersRequest>;
 
 export type DeleteCustomersChromePrintersResponse = Empty;
 export const DeleteCustomersChromePrintersResponse =
@@ -5489,7 +5490,7 @@ export const BatchDeletePrintersCustomersChromePrintersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeletePrintersCustomersChromePrintersRequest>;
+  ) as unknown as Schema.Codec<BatchDeletePrintersCustomersChromePrintersRequest>;
 
 export type BatchDeletePrintersCustomersChromePrintersResponse =
   BatchDeletePrintersResponse;
@@ -5538,7 +5539,7 @@ export const ListPrinterModelsCustomersChromePrintersRequest =
       path: "admin/directory/v1/{+parent}/chrome/printers:listPrinterModels",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListPrinterModelsCustomersChromePrintersRequest>;
+  ) as unknown as Schema.Codec<ListPrinterModelsCustomersChromePrintersRequest>;
 
 export type ListPrinterModelsCustomersChromePrintersResponse =
   ListPrinterModelsResponse;
@@ -5595,7 +5596,7 @@ export const ListCustomersChromePrintersRequest =
       path: "admin/directory/v1/{+parent}/chrome/printers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersChromePrintersRequest>;
+  ) as unknown as Schema.Codec<ListCustomersChromePrintersRequest>;
 
 export type ListCustomersChromePrintersResponse = ListPrintersResponse;
 export const ListCustomersChromePrintersResponse =
@@ -5646,7 +5647,7 @@ export const PatchCustomersChromePrintersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCustomersChromePrintersRequest>;
+  ) as unknown as Schema.Codec<PatchCustomersChromePrintersRequest>;
 
 export type PatchCustomersChromePrintersResponse = Printer;
 export const PatchCustomersChromePrintersResponse =
@@ -5682,7 +5683,7 @@ export const DeleteCustomersChromePrintServersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "admin/directory/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCustomersChromePrintServersRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomersChromePrintServersRequest>;
 
 export type DeleteCustomersChromePrintServersResponse = Empty;
 export const DeleteCustomersChromePrintServersResponse =
@@ -5736,7 +5737,7 @@ export const ListCustomersChromePrintServersRequest =
       path: "admin/directory/v1/{+parent}/chrome/printServers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersChromePrintServersRequest>;
+  ) as unknown as Schema.Codec<ListCustomersChromePrintServersRequest>;
 
 export type ListCustomersChromePrintServersResponse = ListPrintServersResponse;
 export const ListCustomersChromePrintServersResponse =
@@ -5784,7 +5785,7 @@ export const PatchCustomersChromePrintServersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCustomersChromePrintServersRequest>;
+  ) as unknown as Schema.Codec<PatchCustomersChromePrintServersRequest>;
 
 export type PatchCustomersChromePrintServersResponse = PrintServer;
 export const PatchCustomersChromePrintServersResponse =
@@ -5827,7 +5828,7 @@ export const BatchCreatePrintServersCustomersChromePrintServersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreatePrintServersCustomersChromePrintServersRequest>;
+  ) as unknown as Schema.Codec<BatchCreatePrintServersCustomersChromePrintServersRequest>;
 
 export type BatchCreatePrintServersCustomersChromePrintServersResponse =
   BatchCreatePrintServersResponse;
@@ -5871,7 +5872,7 @@ export const BatchDeletePrintServersCustomersChromePrintServersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeletePrintServersCustomersChromePrintServersRequest>;
+  ) as unknown as Schema.Codec<BatchDeletePrintServersCustomersChromePrintServersRequest>;
 
 export type BatchDeletePrintServersCustomersChromePrintServersResponse =
   BatchDeletePrintServersResponse;
@@ -5908,7 +5909,7 @@ export const GetCustomersChromePrintServersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "admin/directory/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersChromePrintServersRequest>;
+  ) as unknown as Schema.Codec<GetCustomersChromePrintServersRequest>;
 
 export type GetCustomersChromePrintServersResponse = PrintServer;
 export const GetCustomersChromePrintServersResponse =
@@ -5949,7 +5950,7 @@ export const CreateCustomersChromePrintServersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersChromePrintServersRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersChromePrintServersRequest>;
 
 export type CreateCustomersChromePrintServersResponse = PrintServer;
 export const CreateCustomersChromePrintServersResponse =
@@ -5990,13 +5991,13 @@ export const DeleteTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/users/{userKey}/tokens/{clientId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteTokensRequest>;
+) as unknown as Schema.Codec<DeleteTokensRequest>;
 
 export interface DeleteTokensResponse {}
-export const DeleteTokensResponse: Schema.Schema<DeleteTokensResponse> =
+export const DeleteTokensResponse: Schema.Codec<DeleteTokensResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteTokensResponse>;
+  ) as any as Schema.Codec<DeleteTokensResponse>;
 
 export type DeleteTokensError =
   | DefaultErrors
@@ -6033,7 +6034,7 @@ export const GetTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/users/{userKey}/tokens/{clientId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetTokensRequest>;
+) as unknown as Schema.Codec<GetTokensRequest>;
 
 export type GetTokensResponse = Token;
 export const GetTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Token;
@@ -6062,7 +6063,7 @@ export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "admin/directory/v1/users/{userKey}/tokens" }),
   svc,
-) as unknown as Schema.Schema<ListTokensRequest>;
+) as unknown as Schema.Codec<ListTokensRequest>;
 
 export type ListTokensResponse = Tokens;
 export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Tokens;
@@ -6108,7 +6109,7 @@ export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/groups/{groupKey}/members",
   }),
   svc,
-) as unknown as Schema.Schema<ListMembersRequest>;
+) as unknown as Schema.Codec<ListMembersRequest>;
 
 export type ListMembersResponse = Members;
 export const ListMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Members;
@@ -6151,7 +6152,7 @@ export const PatchMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchMembersRequest>;
+) as unknown as Schema.Codec<PatchMembersRequest>;
 
 export type PatchMembersResponse = Member;
 export const PatchMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Member;
@@ -6191,13 +6192,13 @@ export const DeleteMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteMembersRequest>;
+) as unknown as Schema.Codec<DeleteMembersRequest>;
 
 export interface DeleteMembersResponse {}
-export const DeleteMembersResponse: Schema.Schema<DeleteMembersResponse> =
+export const DeleteMembersResponse: Schema.Codec<DeleteMembersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteMembersResponse>;
+  ) as any as Schema.Codec<DeleteMembersResponse>;
 
 export type DeleteMembersError =
   | DefaultErrors
@@ -6235,7 +6236,7 @@ export const InsertMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertMembersRequest>;
+) as unknown as Schema.Codec<InsertMembersRequest>;
 
 export type InsertMembersResponse = Member;
 export const InsertMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Member;
@@ -6279,7 +6280,7 @@ export const UpdateMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateMembersRequest>;
+) as unknown as Schema.Codec<UpdateMembersRequest>;
 
 export type UpdateMembersResponse = Member;
 export const UpdateMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Member;
@@ -6319,7 +6320,7 @@ export const GetMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
   }),
   svc,
-) as unknown as Schema.Schema<GetMembersRequest>;
+) as unknown as Schema.Codec<GetMembersRequest>;
 
 export type GetMembersResponse = Member;
 export const GetMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Member;
@@ -6355,7 +6356,7 @@ export const HasMemberMembersRequest =
       path: "admin/directory/v1/groups/{groupKey}/hasMember/{memberKey}",
     }),
     svc,
-  ) as unknown as Schema.Schema<HasMemberMembersRequest>;
+  ) as unknown as Schema.Codec<HasMemberMembersRequest>;
 
 export type HasMemberMembersResponse = MembersHasMember;
 export const HasMemberMembersResponse =
@@ -6396,7 +6397,7 @@ export const UpdateResourcesCalendarsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateResourcesCalendarsRequest>;
+  ) as unknown as Schema.Codec<UpdateResourcesCalendarsRequest>;
 
 export type UpdateResourcesCalendarsResponse = CalendarResource;
 export const UpdateResourcesCalendarsResponse =
@@ -6438,7 +6439,7 @@ export const GetResourcesCalendarsRequest =
       path: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetResourcesCalendarsRequest>;
+  ) as unknown as Schema.Codec<GetResourcesCalendarsRequest>;
 
 export type GetResourcesCalendarsResponse = CalendarResource;
 export const GetResourcesCalendarsResponse =
@@ -6484,7 +6485,7 @@ export const ListResourcesCalendarsRequest =
       path: "admin/directory/v1/customer/{customer}/resources/calendars",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListResourcesCalendarsRequest>;
+  ) as unknown as Schema.Codec<ListResourcesCalendarsRequest>;
 
 export type ListResourcesCalendarsResponse = CalendarResources;
 export const ListResourcesCalendarsResponse =
@@ -6530,7 +6531,7 @@ export const PatchResourcesCalendarsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchResourcesCalendarsRequest>;
+  ) as unknown as Schema.Codec<PatchResourcesCalendarsRequest>;
 
 export type PatchResourcesCalendarsResponse = CalendarResource;
 export const PatchResourcesCalendarsResponse =
@@ -6572,13 +6573,13 @@ export const DeleteResourcesCalendarsRequest =
       path: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteResourcesCalendarsRequest>;
+  ) as unknown as Schema.Codec<DeleteResourcesCalendarsRequest>;
 
 export interface DeleteResourcesCalendarsResponse {}
-export const DeleteResourcesCalendarsResponse: Schema.Schema<DeleteResourcesCalendarsResponse> =
+export const DeleteResourcesCalendarsResponse: Schema.Codec<DeleteResourcesCalendarsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteResourcesCalendarsResponse>;
+  ) as any as Schema.Codec<DeleteResourcesCalendarsResponse>;
 
 export type DeleteResourcesCalendarsError =
   | DefaultErrors
@@ -6617,7 +6618,7 @@ export const InsertResourcesCalendarsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertResourcesCalendarsRequest>;
+  ) as unknown as Schema.Codec<InsertResourcesCalendarsRequest>;
 
 export type InsertResourcesCalendarsResponse = CalendarResource;
 export const InsertResourcesCalendarsResponse =
@@ -6663,7 +6664,7 @@ export const UpdateResourcesFeaturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateResourcesFeaturesRequest>;
+  ) as unknown as Schema.Codec<UpdateResourcesFeaturesRequest>;
 
 export type UpdateResourcesFeaturesResponse = Feature;
 export const UpdateResourcesFeaturesResponse =
@@ -6705,7 +6706,7 @@ export const GetResourcesFeaturesRequest =
       path: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetResourcesFeaturesRequest>;
+  ) as unknown as Schema.Codec<GetResourcesFeaturesRequest>;
 
 export type GetResourcesFeaturesResponse = Feature;
 export const GetResourcesFeaturesResponse = /*@__PURE__*/ /*#__PURE__*/ Feature;
@@ -6745,13 +6746,13 @@ export const RenameResourcesFeaturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RenameResourcesFeaturesRequest>;
+  ) as unknown as Schema.Codec<RenameResourcesFeaturesRequest>;
 
 export interface RenameResourcesFeaturesResponse {}
-export const RenameResourcesFeaturesResponse: Schema.Schema<RenameResourcesFeaturesResponse> =
+export const RenameResourcesFeaturesResponse: Schema.Codec<RenameResourcesFeaturesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<RenameResourcesFeaturesResponse>;
+  ) as any as Schema.Codec<RenameResourcesFeaturesResponse>;
 
 export type RenameResourcesFeaturesError =
   | DefaultErrors
@@ -6789,13 +6790,13 @@ export const DeleteResourcesFeaturesRequest =
       path: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteResourcesFeaturesRequest>;
+  ) as unknown as Schema.Codec<DeleteResourcesFeaturesRequest>;
 
 export interface DeleteResourcesFeaturesResponse {}
-export const DeleteResourcesFeaturesResponse: Schema.Schema<DeleteResourcesFeaturesResponse> =
+export const DeleteResourcesFeaturesResponse: Schema.Codec<DeleteResourcesFeaturesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteResourcesFeaturesResponse>;
+  ) as any as Schema.Codec<DeleteResourcesFeaturesResponse>;
 
 export type DeleteResourcesFeaturesError =
   | DefaultErrors
@@ -6834,7 +6835,7 @@ export const InsertResourcesFeaturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertResourcesFeaturesRequest>;
+  ) as unknown as Schema.Codec<InsertResourcesFeaturesRequest>;
 
 export type InsertResourcesFeaturesResponse = Feature;
 export const InsertResourcesFeaturesResponse =
@@ -6879,7 +6880,7 @@ export const ListResourcesFeaturesRequest =
       path: "admin/directory/v1/customer/{customer}/resources/features",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListResourcesFeaturesRequest>;
+  ) as unknown as Schema.Codec<ListResourcesFeaturesRequest>;
 
 export type ListResourcesFeaturesResponse = Features;
 export const ListResourcesFeaturesResponse =
@@ -6924,7 +6925,7 @@ export const PatchResourcesFeaturesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchResourcesFeaturesRequest>;
+  ) as unknown as Schema.Codec<PatchResourcesFeaturesRequest>;
 
 export type PatchResourcesFeaturesResponse = Feature;
 export const PatchResourcesFeaturesResponse =
@@ -6979,7 +6980,7 @@ export const UpdateResourcesBuildingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateResourcesBuildingsRequest>;
+  ) as unknown as Schema.Codec<UpdateResourcesBuildingsRequest>;
 
 export type UpdateResourcesBuildingsResponse = Building;
 export const UpdateResourcesBuildingsResponse =
@@ -7021,7 +7022,7 @@ export const GetResourcesBuildingsRequest =
       path: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetResourcesBuildingsRequest>;
+  ) as unknown as Schema.Codec<GetResourcesBuildingsRequest>;
 
 export type GetResourcesBuildingsResponse = Building;
 export const GetResourcesBuildingsResponse =
@@ -7058,13 +7059,13 @@ export const DeleteResourcesBuildingsRequest =
       path: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteResourcesBuildingsRequest>;
+  ) as unknown as Schema.Codec<DeleteResourcesBuildingsRequest>;
 
 export interface DeleteResourcesBuildingsResponse {}
-export const DeleteResourcesBuildingsResponse: Schema.Schema<DeleteResourcesBuildingsResponse> =
+export const DeleteResourcesBuildingsResponse: Schema.Codec<DeleteResourcesBuildingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteResourcesBuildingsResponse>;
+  ) as any as Schema.Codec<DeleteResourcesBuildingsResponse>;
 
 export type DeleteResourcesBuildingsError =
   | DefaultErrors
@@ -7112,7 +7113,7 @@ export const InsertResourcesBuildingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertResourcesBuildingsRequest>;
+  ) as unknown as Schema.Codec<InsertResourcesBuildingsRequest>;
 
 export type InsertResourcesBuildingsResponse = Building;
 export const InsertResourcesBuildingsResponse =
@@ -7157,7 +7158,7 @@ export const ListResourcesBuildingsRequest =
       path: "admin/directory/v1/customer/{customer}/resources/buildings",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListResourcesBuildingsRequest>;
+  ) as unknown as Schema.Codec<ListResourcesBuildingsRequest>;
 
 export type ListResourcesBuildingsResponse = Buildings;
 export const ListResourcesBuildingsResponse =
@@ -7211,7 +7212,7 @@ export const PatchResourcesBuildingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchResourcesBuildingsRequest>;
+  ) as unknown as Schema.Codec<PatchResourcesBuildingsRequest>;
 
 export type PatchResourcesBuildingsResponse = Building;
 export const PatchResourcesBuildingsResponse =
@@ -7259,7 +7260,7 @@ export const IssueCommandCustomerDevicesChromeosRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<IssueCommandCustomerDevicesChromeosRequest>;
+  ) as unknown as Schema.Codec<IssueCommandCustomerDevicesChromeosRequest>;
 
 export type IssueCommandCustomerDevicesChromeosResponse =
   DirectoryChromeosdevicesIssueCommandResponse;
@@ -7305,7 +7306,7 @@ export const BatchChangeStatusCustomerDevicesChromeosRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchChangeStatusCustomerDevicesChromeosRequest>;
+  ) as unknown as Schema.Codec<BatchChangeStatusCustomerDevicesChromeosRequest>;
 
 export type BatchChangeStatusCustomerDevicesChromeosResponse =
   BatchChangeChromeOsDeviceStatusResponse;
@@ -7358,7 +7359,7 @@ export const CountChromeOsDevicesCustomerDevicesChromeosRequest =
       path: "admin/directory/v1/customer/{customerId}/devices/chromeos:countChromeOsDevices",
     }),
     svc,
-  ) as unknown as Schema.Schema<CountChromeOsDevicesCustomerDevicesChromeosRequest>;
+  ) as unknown as Schema.Codec<CountChromeOsDevicesCustomerDevicesChromeosRequest>;
 
 export type CountChromeOsDevicesCustomerDevicesChromeosResponse =
   CountChromeOsDevicesResponse;
@@ -7402,7 +7403,7 @@ export const GetCustomerDevicesChromeosCommandsRequest =
       path: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}/commands/{commandId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomerDevicesChromeosCommandsRequest>;
+  ) as unknown as Schema.Codec<GetCustomerDevicesChromeosCommandsRequest>;
 
 export type GetCustomerDevicesChromeosCommandsResponse =
   DirectoryChromeosdevicesCommand;
@@ -7440,13 +7441,13 @@ export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<StopChannelsRequest>;
+) as unknown as Schema.Codec<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
+export const StopChannelsResponse: Schema.Codec<StopChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<StopChannelsResponse>;
+  ) as any as Schema.Codec<StopChannelsResponse>;
 
 export type StopChannelsError =
   | DefaultErrors
@@ -7484,13 +7485,13 @@ export const DeleteDomainAliasesRequest =
       path: "admin/directory/v1/customer/{customer}/domainaliases/{domainAliasName}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDomainAliasesRequest>;
+  ) as unknown as Schema.Codec<DeleteDomainAliasesRequest>;
 
 export interface DeleteDomainAliasesResponse {}
-export const DeleteDomainAliasesResponse: Schema.Schema<DeleteDomainAliasesResponse> =
+export const DeleteDomainAliasesResponse: Schema.Codec<DeleteDomainAliasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteDomainAliasesResponse>;
+  ) as any as Schema.Codec<DeleteDomainAliasesResponse>;
 
 export type DeleteDomainAliasesError =
   | DefaultErrors
@@ -7529,7 +7530,7 @@ export const InsertDomainAliasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertDomainAliasesRequest>;
+  ) as unknown as Schema.Codec<InsertDomainAliasesRequest>;
 
 export type InsertDomainAliasesResponse = DomainAlias;
 export const InsertDomainAliasesResponse =
@@ -7571,7 +7572,7 @@ export const GetDomainAliasesRequest =
       path: "admin/directory/v1/customer/{customer}/domainaliases/{domainAliasName}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetDomainAliasesRequest>;
+  ) as unknown as Schema.Codec<GetDomainAliasesRequest>;
 
 export type GetDomainAliasesResponse = DomainAlias;
 export const GetDomainAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ DomainAlias;
@@ -7609,7 +7610,7 @@ export const ListDomainAliasesRequest =
       path: "admin/directory/v1/customer/{customer}/domainaliases",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListDomainAliasesRequest>;
+  ) as unknown as Schema.Codec<ListDomainAliasesRequest>;
 
 export type ListDomainAliasesResponse = DomainAliases;
 export const ListDomainAliasesResponse =
@@ -7646,7 +7647,7 @@ export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateGroupsRequest>;
+) as unknown as Schema.Codec<UpdateGroupsRequest>;
 
 export type UpdateGroupsResponse = Group;
 export const UpdateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
@@ -7680,7 +7681,7 @@ export const GetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "admin/directory/v1/groups/{groupKey}" }),
   svc,
-) as unknown as Schema.Schema<GetGroupsRequest>;
+) as unknown as Schema.Codec<GetGroupsRequest>;
 
 export type GetGroupsResponse = Group;
 export const GetGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
@@ -7709,13 +7710,13 @@ export const DeleteGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "admin/directory/v1/groups/{groupKey}" }),
   svc,
-) as unknown as Schema.Schema<DeleteGroupsRequest>;
+) as unknown as Schema.Codec<DeleteGroupsRequest>;
 
 export interface DeleteGroupsResponse {}
-export const DeleteGroupsResponse: Schema.Schema<DeleteGroupsResponse> =
+export const DeleteGroupsResponse: Schema.Codec<DeleteGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteGroupsResponse>;
+  ) as any as Schema.Codec<DeleteGroupsResponse>;
 
 export type DeleteGroupsError =
   | DefaultErrors
@@ -7746,7 +7747,7 @@ export const InsertGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "admin/directory/v1/groups", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertGroupsRequest>;
+) as unknown as Schema.Codec<InsertGroupsRequest>;
 
 export type InsertGroupsResponse = Group;
 export const InsertGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
@@ -7801,7 +7802,7 @@ export const ListGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "admin/directory/v1/groups" }),
   svc,
-) as unknown as Schema.Schema<ListGroupsRequest>;
+) as unknown as Schema.Codec<ListGroupsRequest>;
 
 export type ListGroupsResponse = Groups;
 export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;
@@ -7841,7 +7842,7 @@ export const PatchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchGroupsRequest>;
+) as unknown as Schema.Codec<PatchGroupsRequest>;
 
 export type PatchGroupsResponse = Group;
 export const PatchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
@@ -7882,13 +7883,13 @@ export const DeleteGroupsAliasesRequest =
       path: "admin/directory/v1/groups/{groupKey}/aliases/{alias}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGroupsAliasesRequest>;
+  ) as unknown as Schema.Codec<DeleteGroupsAliasesRequest>;
 
 export interface DeleteGroupsAliasesResponse {}
-export const DeleteGroupsAliasesResponse: Schema.Schema<DeleteGroupsAliasesResponse> =
+export const DeleteGroupsAliasesResponse: Schema.Codec<DeleteGroupsAliasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteGroupsAliasesResponse>;
+  ) as any as Schema.Codec<DeleteGroupsAliasesResponse>;
 
 export type DeleteGroupsAliasesError =
   | DefaultErrors
@@ -7927,7 +7928,7 @@ export const InsertGroupsAliasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertGroupsAliasesRequest>;
+  ) as unknown as Schema.Codec<InsertGroupsAliasesRequest>;
 
 export type InsertGroupsAliasesResponse = Alias;
 export const InsertGroupsAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Alias;
@@ -7965,7 +7966,7 @@ export const ListGroupsAliasesRequest =
       path: "admin/directory/v1/groups/{groupKey}/aliases",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGroupsAliasesRequest>;
+  ) as unknown as Schema.Codec<ListGroupsAliasesRequest>;
 
 export type ListGroupsAliasesResponse = Aliases;
 export const ListGroupsAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Aliases;
@@ -8000,7 +8001,7 @@ export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customer}/domains/{domainName}",
   }),
   svc,
-) as unknown as Schema.Schema<GetDomainsRequest>;
+) as unknown as Schema.Codec<GetDomainsRequest>;
 
 export type GetDomainsResponse = Domains;
 export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domains;
@@ -8032,7 +8033,7 @@ export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customer}/domains",
   }),
   svc,
-) as unknown as Schema.Schema<ListDomainsRequest>;
+) as unknown as Schema.Codec<ListDomainsRequest>;
 
 export type ListDomainsResponse = Domains2;
 export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domains2;
@@ -8067,13 +8068,13 @@ export const DeleteDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customer}/domains/{domainName}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteDomainsRequest>;
+) as unknown as Schema.Codec<DeleteDomainsRequest>;
 
 export interface DeleteDomainsResponse {}
-export const DeleteDomainsResponse: Schema.Schema<DeleteDomainsResponse> =
+export const DeleteDomainsResponse: Schema.Codec<DeleteDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteDomainsResponse>;
+  ) as any as Schema.Codec<DeleteDomainsResponse>;
 
 export type DeleteDomainsError =
   | DefaultErrors
@@ -8111,7 +8112,7 @@ export const InsertDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertDomainsRequest>;
+) as unknown as Schema.Codec<InsertDomainsRequest>;
 
 export type InsertDomainsResponse = Domains;
 export const InsertDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domains;
@@ -8148,7 +8149,7 @@ export const ListPrivilegesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customer}/roles/ALL/privileges",
   }),
   svc,
-) as unknown as Schema.Schema<ListPrivilegesRequest>;
+) as unknown as Schema.Codec<ListPrivilegesRequest>;
 
 export type ListPrivilegesResponse = Privileges;
 export const ListPrivilegesResponse = /*@__PURE__*/ /*#__PURE__*/ Privileges;
@@ -8187,7 +8188,7 @@ export const UpdateRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateRolesRequest>;
+) as unknown as Schema.Codec<UpdateRolesRequest>;
 
 export type UpdateRolesResponse = Role;
 export const UpdateRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
@@ -8227,7 +8228,7 @@ export const GetRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customer}/roles/{roleId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetRolesRequest>;
+) as unknown as Schema.Codec<GetRolesRequest>;
 
 export type GetRolesResponse = Role;
 export const GetRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
@@ -8262,13 +8263,13 @@ export const DeleteRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customer}/roles/{roleId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteRolesRequest>;
+) as unknown as Schema.Codec<DeleteRolesRequest>;
 
 export interface DeleteRolesResponse {}
-export const DeleteRolesResponse: Schema.Schema<DeleteRolesResponse> =
+export const DeleteRolesResponse: Schema.Codec<DeleteRolesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteRolesResponse>;
+  ) as any as Schema.Codec<DeleteRolesResponse>;
 
 export type DeleteRolesError =
   | DefaultErrors
@@ -8306,7 +8307,7 @@ export const InsertRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertRolesRequest>;
+) as unknown as Schema.Codec<InsertRolesRequest>;
 
 export type InsertRolesResponse = Role;
 export const InsertRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
@@ -8349,7 +8350,7 @@ export const ListRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/directory/v1/customer/{customer}/roles",
   }),
   svc,
-) as unknown as Schema.Schema<ListRolesRequest>;
+) as unknown as Schema.Codec<ListRolesRequest>;
 
 export type ListRolesResponse = Roles;
 export const ListRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Roles;
@@ -8393,7 +8394,7 @@ export const PatchRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchRolesRequest>;
+) as unknown as Schema.Codec<PatchRolesRequest>;
 
 export type PatchRolesResponse = Role;
 export const PatchRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;

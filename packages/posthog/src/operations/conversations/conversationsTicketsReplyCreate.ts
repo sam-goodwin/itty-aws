@@ -1,8 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
+import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsTicketsReplyCreateInput {
+  id: string;
+  project_id: string;
+  message: string;
+  is_private?: boolean;
+  rich_content?: unknown;
+}
 export const ConversationsTicketsReplyCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +23,18 @@ export const ConversationsTicketsReplyCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/conversations/tickets/{id}/reply/",
     }),
-  );
-export type ConversationsTicketsReplyCreateInput =
-  typeof ConversationsTicketsReplyCreateInput.Type;
+  ) as unknown as Schema.Codec<ConversationsTicketsReplyCreateInput>;
 
 // Output Schema
+export interface ConversationsTicketsReplyCreateOutput {
+  id: string;
+  content: string;
+  rich_content: unknown;
+  author_type: string;
+  author_name: string;
+  is_private: boolean;
+  created_at: string;
+}
 export const ConversationsTicketsReplyCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,9 +44,7 @@ export const ConversationsTicketsReplyCreateOutput =
     author_name: Schema.String,
     is_private: Schema.Boolean,
     created_at: Schema.String,
-  });
-export type ConversationsTicketsReplyCreateOutput =
-  typeof ConversationsTicketsReplyCreateOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsTicketsReplyCreateOutput>;
 
 // The operation
 /**
@@ -47,4 +60,5 @@ export const conversationsTicketsReplyCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ConversationsTicketsReplyCreateInput,
     outputSchema: ConversationsTicketsReplyCreateOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

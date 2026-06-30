@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WarehouseColumnAnnotationsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const WarehouseColumnAnnotationsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const WarehouseColumnAnnotationsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/warehouse_column_annotations/{id}/",
     }),
-  );
-export type WarehouseColumnAnnotationsDestroyInput =
-  typeof WarehouseColumnAnnotationsDestroyInput.Type;
+  ) as unknown as Schema.Codec<WarehouseColumnAnnotationsDestroyInput>;
 
 // Output Schema
+export type WarehouseColumnAnnotationsDestroyOutput = void;
 export const WarehouseColumnAnnotationsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WarehouseColumnAnnotationsDestroyOutput =
-  typeof WarehouseColumnAnnotationsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseColumnAnnotationsDestroyOutput>;
 
 // The operation
 /**

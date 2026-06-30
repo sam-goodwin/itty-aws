@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DownloadGroupClusterLogInput {
+  groupId: string;
+  hostName: string;
+  logName: "mongodb" | "mongos" | "mongodb-audit-log" | "mongos-audit-log";
+  envelope?: boolean;
+  endDate?: number;
+  startDate?: number;
+}
 export const DownloadGroupClusterLogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -22,15 +30,12 @@ export const DownloadGroupClusterLogInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz",
     }),
-  );
-export type DownloadGroupClusterLogInput =
-  typeof DownloadGroupClusterLogInput.Type;
+  ) as unknown as Schema.Codec<DownloadGroupClusterLogInput>;
 
 // Output Schema
+export type DownloadGroupClusterLogOutput = void;
 export const DownloadGroupClusterLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupClusterLogOutput =
-  typeof DownloadGroupClusterLogOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupClusterLogOutput>;
 
 // The operation
 /**

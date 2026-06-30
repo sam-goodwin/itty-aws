@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansSymbolStatsCreateInput {
+  project_id: string;
+  query: {
+    filePath: string;
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    symbols?: { name?: string | null; startLine: number; endLine: number }[];
+  };
+}
 export const TracingSpansSymbolStatsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -29,11 +37,41 @@ export const TracingSpansSymbolStatsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tracing/spans/symbol-stats/",
     }),
-  );
-export type TracingSpansSymbolStatsCreateInput =
-  typeof TracingSpansSymbolStatsCreateInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansSymbolStatsCreateInput>;
 
 // Output Schema
+export interface TracingSpansSymbolStatsCreateOutput {
+  results: {
+    count: number;
+    error_count: number;
+    sum_duration_nano: number;
+    p50_duration_nano: number;
+    p95_duration_nano: number;
+    p99_duration_nano: number;
+    busy_count: number;
+    p50_busy_nano: number;
+    p95_busy_nano: number;
+    p99_busy_nano: number;
+    line: number;
+    name?: string | null;
+    end_line?: number | null;
+    previous: {
+      count: number;
+      error_count: number;
+      sum_duration_nano: number;
+      p50_duration_nano: number;
+      p95_duration_nano: number;
+      p99_duration_nano: number;
+      busy_count: number;
+      p50_busy_nano: number;
+      p95_busy_nano: number;
+      p99_busy_nano: number;
+    };
+    count_pct_change: number | null;
+    p95_duration_pct_change: number | null;
+  }[];
+  granularity: "line" | "symbol";
+}
 export const TracingSpansSymbolStatsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -68,9 +106,7 @@ export const TracingSpansSymbolStatsCreateOutput =
       }),
     ),
     granularity: Schema.Literals(["line", "symbol"]),
-  });
-export type TracingSpansSymbolStatsCreateOutput =
-  typeof TracingSpansSymbolStatsCreateOutput.Type;
+  }) as unknown as Schema.Codec<TracingSpansSymbolStatsCreateOutput>;
 
 // The operation
 /**

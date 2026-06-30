@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ExternalDataSourcesCdcStatusRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ExternalDataSourcesCdcStatusRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const ExternalDataSourcesCdcStatusRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/external_data_sources/{id}/cdc_status/",
     }),
-  );
-export type ExternalDataSourcesCdcStatusRetrieveInput =
-  typeof ExternalDataSourcesCdcStatusRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSourcesCdcStatusRetrieveInput>;
 
 // Output Schema
+export type ExternalDataSourcesCdcStatusRetrieveOutput = void;
 export const ExternalDataSourcesCdcStatusRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExternalDataSourcesCdcStatusRetrieveOutput =
-  typeof ExternalDataSourcesCdcStatusRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesCdcStatusRetrieveOutput>;
 
 // The operation
 /**

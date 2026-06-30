@@ -4,14 +4,34 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1SourceRepositoriesByIdInput {
+  id: string;
+}
 export const GetV1SourceRepositoriesByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/source-repositories/{id}" }));
-export type GetV1SourceRepositoriesByIdInput =
-  typeof GetV1SourceRepositoriesByIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/source-repositories/{id}" }),
+  ) as unknown as Schema.Codec<GetV1SourceRepositoriesByIdInput>;
 
 // Output Schema
+export interface GetV1SourceRepositoriesByIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    repoId: number;
+    provider: "github";
+    repoFullName: string;
+    defaultBranch: string;
+    isPrivate: boolean;
+    status: "active" | "archived";
+    projectId: string;
+    installationId: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+}
 export const GetV1SourceRepositoriesByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -29,9 +49,7 @@ export const GetV1SourceRepositoriesByIdOutput =
       createdAt: Schema.String,
       updatedAt: Schema.String,
     }),
-  });
-export type GetV1SourceRepositoriesByIdOutput =
-  typeof GetV1SourceRepositoriesByIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1SourceRepositoriesByIdOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface VolumesExtendInput {
+  app_name: string;
+  volume_id: string;
+  size_gb?: number;
+}
 export const VolumesExtendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   volume_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,35 @@ export const VolumesExtendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/apps/{app_name}/volumes/{volume_id}/extend",
   }),
-);
-export type VolumesExtendInput = typeof VolumesExtendInput.Type;
+) as unknown as Schema.Codec<VolumesExtendInput>;
 
 // Output Schema
+export interface VolumesExtendOutput {
+  needs_restart?: boolean;
+  volume?: {
+    attached_alloc_id?: string;
+    attached_machine_id?: string;
+    auto_backup_enabled?: boolean;
+    block_size?: number;
+    blocks?: number;
+    blocks_avail?: number;
+    blocks_free?: number;
+    bytes_total?: number;
+    bytes_used?: number;
+    created_at?: string;
+    encrypted?: boolean;
+    fstype?: string;
+    host_status?: "ok" | "unknown" | "unreachable";
+    id?: string;
+    name?: string;
+    region?: string;
+    size_gb?: number;
+    snapshot_retention?: number;
+    state?: string;
+    type?: "local" | "cache";
+    zone?: string;
+  };
+}
 export const VolumesExtendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   needs_restart: Schema.optional(Schema.Boolean),
   volume: Schema.optional(
@@ -46,8 +76,7 @@ export const VolumesExtendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       zone: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VolumesExtendOutput = typeof VolumesExtendOutput.Type;
+}) as unknown as Schema.Codec<VolumesExtendOutput>;
 
 // The operation
 /**

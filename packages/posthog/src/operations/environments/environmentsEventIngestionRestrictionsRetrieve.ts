@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EnvironmentsEventIngestionRestrictionsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const EnvironmentsEventIngestionRestrictionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const EnvironmentsEventIngestionRestrictionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/environments/{id}/event_ingestion_restrictions/",
     }),
-  );
-export type EnvironmentsEventIngestionRestrictionsRetrieveInput =
-  typeof EnvironmentsEventIngestionRestrictionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsEventIngestionRestrictionsRetrieveInput>;
 
 // Output Schema
+export type EnvironmentsEventIngestionRestrictionsRetrieveOutput = void;
 export const EnvironmentsEventIngestionRestrictionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentsEventIngestionRestrictionsRetrieveOutput =
-  typeof EnvironmentsEventIngestionRestrictionsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsEventIngestionRestrictionsRetrieveOutput>;
 
 // The operation
 /**

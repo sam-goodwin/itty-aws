@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsProcessingPauseUpdateInput {
+  project_id: string;
+  timestamp?: string;
+}
 export const SignalsProcessingPauseUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +17,18 @@ export const SignalsProcessingPauseUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/signals/processing/pause/",
     }),
-  );
-export type SignalsProcessingPauseUpdateInput =
-  typeof SignalsProcessingPauseUpdateInput.Type;
+  ) as unknown as Schema.Codec<SignalsProcessingPauseUpdateInput>;
 
 // Output Schema
+export interface SignalsProcessingPauseUpdateOutput {
+  status?: string;
+  paused_until?: string;
+}
 export const SignalsProcessingPauseUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     paused_until: Schema.optional(Schema.String),
-  });
-export type SignalsProcessingPauseUpdateOutput =
-  typeof SignalsProcessingPauseUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SignalsProcessingPauseUpdateOutput>;
 
 // The operation
 /**

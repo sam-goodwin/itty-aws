@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface TimePeriod {
   start?: string;
 }
 
-export const TimePeriod: Schema.Schema<TimePeriod> =
+export const TimePeriod: Schema.Codec<TimePeriod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.String),
     start: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface Calendar_Error {
   reason?: string;
 }
 
-export const Calendar_Error: Schema.Schema<Calendar_Error> =
+export const Calendar_Error: Schema.Codec<Calendar_Error> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface FreeBusyCalendar {
   errors?: ReadonlyArray<Calendar_Error>;
 }
 
-export const FreeBusyCalendar: Schema.Schema<FreeBusyCalendar> =
+export const FreeBusyCalendar: Schema.Codec<FreeBusyCalendar> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     busy: Schema.optional(Schema.Array(TimePeriod)),
     errors: Schema.optional(Schema.Array(Calendar_Error)),
@@ -78,7 +78,7 @@ export interface EventWorkingLocationProperties {
   type?: string;
 }
 
-export const EventWorkingLocationProperties: Schema.Schema<EventWorkingLocationProperties> =
+export const EventWorkingLocationProperties: Schema.Codec<EventWorkingLocationProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     officeLocation: Schema.optional(
       Schema.Struct({
@@ -103,7 +103,7 @@ export interface EventOutOfOfficeProperties {
   declineMessage?: string;
 }
 
-export const EventOutOfOfficeProperties: Schema.Schema<EventOutOfOfficeProperties> =
+export const EventOutOfOfficeProperties: Schema.Codec<EventOutOfOfficeProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoDeclineMode: Schema.optional(Schema.String),
     declineMessage: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface ColorDefinition {
   foreground?: string;
 }
 
-export const ColorDefinition: Schema.Schema<ColorDefinition> =
+export const ColorDefinition: Schema.Codec<ColorDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     background: Schema.optional(Schema.String),
     foreground: Schema.optional(Schema.String),
@@ -129,7 +129,7 @@ export interface FreeBusyGroup {
   errors?: ReadonlyArray<Calendar_Error>;
 }
 
-export const FreeBusyGroup: Schema.Schema<FreeBusyGroup> =
+export const FreeBusyGroup: Schema.Codec<FreeBusyGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     calendars: Schema.optional(Schema.Array(Schema.String)),
     errors: Schema.optional(Schema.Array(Calendar_Error)),
@@ -148,7 +148,7 @@ export interface FreeBusyResponse {
   kind?: string;
 }
 
-export const FreeBusyResponse: Schema.Schema<FreeBusyResponse> =
+export const FreeBusyResponse: Schema.Codec<FreeBusyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groups: Schema.optional(Schema.Record(Schema.String, FreeBusyGroup)),
     timeMax: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export interface EventAttendee {
   resource?: boolean;
 }
 
-export const EventAttendee: Schema.Schema<EventAttendee> =
+export const EventAttendee: Schema.Codec<EventAttendee> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asyncOperation: Schema.optional(Schema.String),
     organizer: Schema.optional(Schema.Boolean),
@@ -206,7 +206,7 @@ export interface EventBirthdayProperties {
   customTypeName?: string;
 }
 
-export const EventBirthdayProperties: Schema.Schema<EventBirthdayProperties> =
+export const EventBirthdayProperties: Schema.Codec<EventBirthdayProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contact: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -226,7 +226,7 @@ export interface EventAttachment {
   mimeType?: string;
 }
 
-export const EventAttachment: Schema.Schema<EventAttachment> =
+export const EventAttachment: Schema.Codec<EventAttachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iconLink: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -244,7 +244,7 @@ export interface EventDateTime {
   dateTime?: string;
 }
 
-export const EventDateTime: Schema.Schema<EventDateTime> =
+export const EventDateTime: Schema.Codec<EventDateTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Schema.String),
     timeZone: Schema.optional(Schema.String),
@@ -258,7 +258,7 @@ export interface EventReminder {
   minutes?: number;
 }
 
-export const EventReminder: Schema.Schema<EventReminder> =
+export const EventReminder: Schema.Codec<EventReminder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     minutes: Schema.optional(Schema.Number),
@@ -269,7 +269,7 @@ export interface ConferenceSolutionKey {
   type?: string;
 }
 
-export const ConferenceSolutionKey: Schema.Schema<ConferenceSolutionKey> =
+export const ConferenceSolutionKey: Schema.Codec<ConferenceSolutionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConferenceSolutionKey" });
@@ -283,7 +283,7 @@ export interface ConferenceSolution {
   name?: string;
 }
 
-export const ConferenceSolution: Schema.Schema<ConferenceSolution> =
+export const ConferenceSolution: Schema.Codec<ConferenceSolution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(ConferenceSolutionKey),
     iconUri: Schema.optional(Schema.String),
@@ -294,7 +294,7 @@ export interface ConferenceParametersAddOnParameters {
   parameters?: Record<string, string>;
 }
 
-export const ConferenceParametersAddOnParameters: Schema.Schema<ConferenceParametersAddOnParameters> =
+export const ConferenceParametersAddOnParameters: Schema.Codec<ConferenceParametersAddOnParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "ConferenceParametersAddOnParameters" });
@@ -304,7 +304,7 @@ export interface ConferenceParameters {
   addOnParameters?: ConferenceParametersAddOnParameters;
 }
 
-export const ConferenceParameters: Schema.Schema<ConferenceParameters> =
+export const ConferenceParameters: Schema.Codec<ConferenceParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addOnParameters: Schema.optional(ConferenceParametersAddOnParameters),
   }).annotate({ identifier: "ConferenceParameters" });
@@ -314,7 +314,7 @@ export interface ConferenceRequestStatus {
   statusCode?: string;
 }
 
-export const ConferenceRequestStatus: Schema.Schema<ConferenceRequestStatus> =
+export const ConferenceRequestStatus: Schema.Codec<ConferenceRequestStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConferenceRequestStatus" });
@@ -328,7 +328,7 @@ export interface CreateConferenceRequest {
   status?: ConferenceRequestStatus;
 }
 
-export const CreateConferenceRequest: Schema.Schema<CreateConferenceRequest> =
+export const CreateConferenceRequest: Schema.Codec<CreateConferenceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     conferenceSolutionKey: Schema.optional(ConferenceSolutionKey),
@@ -358,7 +358,7 @@ export interface EntryPoint {
   entryPointFeatures?: ReadonlyArray<string>;
 }
 
-export const EntryPoint: Schema.Schema<EntryPoint> =
+export const EntryPoint: Schema.Codec<EntryPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     passcode: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -389,7 +389,7 @@ export interface ConferenceData {
   entryPoints?: ReadonlyArray<EntryPoint>;
 }
 
-export const ConferenceData: Schema.Schema<ConferenceData> =
+export const ConferenceData: Schema.Codec<ConferenceData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conferenceId: Schema.optional(Schema.String),
     conferenceSolution: Schema.optional(ConferenceSolution),
@@ -409,7 +409,7 @@ export interface EventFocusTimeProperties {
   chatStatus?: string;
 }
 
-export const EventFocusTimeProperties: Schema.Schema<EventFocusTimeProperties> =
+export const EventFocusTimeProperties: Schema.Codec<EventFocusTimeProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoDeclineMode: Schema.optional(Schema.String),
     declineMessage: Schema.optional(Schema.String),
@@ -530,7 +530,7 @@ export interface Event {
   outOfOfficeProperties?: EventOutOfOfficeProperties;
 }
 
-export const Event: Schema.Schema<Event> =
+export const Event: Schema.Codec<Event> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     birthdayProperties: Schema.optional(EventBirthdayProperties),
     etag: Schema.optional(Schema.String),
@@ -644,7 +644,7 @@ export interface Events {
   accessRole?: string;
 }
 
-export const Events: Schema.Schema<Events> =
+export const Events: Schema.Codec<Events> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -664,7 +664,7 @@ export interface ConferenceProperties {
   allowedConferenceSolutionTypes?: ReadonlyArray<string>;
 }
 
-export const ConferenceProperties: Schema.Schema<ConferenceProperties> =
+export const ConferenceProperties: Schema.Codec<ConferenceProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedConferenceSolutionTypes: Schema.optional(
       Schema.Array(Schema.String),
@@ -694,7 +694,7 @@ export interface Calendar {
   etag?: string;
 }
 
-export const Calendar: Schema.Schema<Calendar> =
+export const Calendar: Schema.Codec<Calendar> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoAcceptInvitations: Schema.optional(Schema.Boolean),
     timeZone: Schema.optional(Schema.String),
@@ -722,7 +722,7 @@ export interface Setting {
   value?: string;
 }
 
-export const Setting: Schema.Schema<Setting> =
+export const Setting: Schema.Codec<Setting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -743,7 +743,7 @@ export interface Settings {
   etag?: string;
 }
 
-export const Settings: Schema.Schema<Settings> =
+export const Settings: Schema.Codec<Settings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Setting)),
@@ -759,7 +759,7 @@ export interface CalendarNotification {
   type?: string;
 }
 
-export const CalendarNotification: Schema.Schema<CalendarNotification> =
+export const CalendarNotification: Schema.Codec<CalendarNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -778,7 +778,7 @@ export interface AclRule {
   kind?: string;
 }
 
-export const AclRule: Schema.Schema<AclRule> =
+export const AclRule: Schema.Codec<AclRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     scope: Schema.optional(
@@ -805,14 +805,15 @@ export interface Acl {
   nextSyncToken?: string;
 }
 
-export const Acl: Schema.Schema<Acl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Acl: Schema.Codec<Acl> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     etag: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(AclRule)),
     nextSyncToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Acl" });
+  },
+).annotate({ identifier: "Acl" });
 
 export type LabelProperties = unknown;
 export const LabelProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
@@ -822,7 +823,7 @@ export interface FreeBusyRequestItem {
   id?: string;
 }
 
-export const FreeBusyRequestItem: Schema.Schema<FreeBusyRequestItem> =
+export const FreeBusyRequestItem: Schema.Codec<FreeBusyRequestItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "FreeBusyRequestItem" });
@@ -842,7 +843,7 @@ export interface FreeBusyRequest {
   timeMax?: string;
 }
 
-export const FreeBusyRequest: Schema.Schema<FreeBusyRequest> =
+export const FreeBusyRequest: Schema.Codec<FreeBusyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(FreeBusyRequestItem)),
     groupExpansionMax: Schema.optional(Schema.Number),
@@ -875,7 +876,7 @@ export interface Channel {
   expiration?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -900,7 +901,7 @@ export interface Colors {
   updated?: string;
 }
 
-export const Colors: Schema.Schema<Colors> =
+export const Colors: Schema.Codec<Colors> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     calendar: Schema.optional(Schema.Record(Schema.String, ColorDefinition)),
     event: Schema.optional(Schema.Record(Schema.String, ColorDefinition)),
@@ -955,7 +956,7 @@ export interface CalendarListEntry {
   description?: string;
 }
 
-export const CalendarListEntry: Schema.Schema<CalendarListEntry> =
+export const CalendarListEntry: Schema.Codec<CalendarListEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessRole: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
@@ -997,7 +998,7 @@ export interface CalendarList {
   etag?: string;
 }
 
-export const CalendarList: Schema.Schema<CalendarList> =
+export const CalendarList: Schema.Codec<CalendarList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(CalendarListEntry)),
     nextSyncToken: Schema.optional(Schema.String),
@@ -1089,7 +1090,7 @@ export const WatchAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<WatchAclRequest>;
+) as unknown as Schema.Codec<WatchAclRequest>;
 
 export type WatchAclResponse = Channel;
 export const WatchAclResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -1131,7 +1132,7 @@ export const InsertAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "calendars/{calendarId}/acl", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertAclRequest>;
+) as unknown as Schema.Codec<InsertAclRequest>;
 
 export type InsertAclResponse = AclRule;
 export const InsertAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
@@ -1180,7 +1181,7 @@ export const PatchAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchAclRequest>;
+) as unknown as Schema.Codec<PatchAclRequest>;
 
 export type PatchAclResponse = AclRule;
 export const PatchAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
@@ -1217,13 +1218,13 @@ export const DeleteAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "calendars/{calendarId}/acl/{ruleId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteAclRequest>;
+) as unknown as Schema.Codec<DeleteAclRequest>;
 
 export interface DeleteAclResponse {}
-export const DeleteAclResponse: Schema.Schema<DeleteAclResponse> =
+export const DeleteAclResponse: Schema.Codec<DeleteAclResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteAclResponse>;
+  ) as any as Schema.Codec<DeleteAclResponse>;
 
 export type DeleteAclError =
   | DefaultErrors
@@ -1266,7 +1267,7 @@ export const ListAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "calendars/{calendarId}/acl" }),
   svc,
-) as unknown as Schema.Schema<ListAclRequest>;
+) as unknown as Schema.Codec<ListAclRequest>;
 
 export type ListAclResponse = Acl;
 export const ListAclResponse = /*@__PURE__*/ /*#__PURE__*/ Acl;
@@ -1315,7 +1316,7 @@ export const UpdateAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateAclRequest>;
+) as unknown as Schema.Codec<UpdateAclRequest>;
 
 export type UpdateAclResponse = AclRule;
 export const UpdateAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
@@ -1352,7 +1353,7 @@ export const GetAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "calendars/{calendarId}/acl/{ruleId}" }),
   svc,
-) as unknown as Schema.Schema<GetAclRequest>;
+) as unknown as Schema.Codec<GetAclRequest>;
 
 export type GetAclResponse = AclRule;
 export const GetAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
@@ -1381,13 +1382,13 @@ export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "channels/stop", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<StopChannelsRequest>;
+) as unknown as Schema.Codec<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
+export const StopChannelsResponse: Schema.Codec<StopChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<StopChannelsResponse>;
+  ) as any as Schema.Codec<StopChannelsResponse>;
 
 export type StopChannelsError =
   | DefaultErrors
@@ -1415,7 +1416,7 @@ export const GetColorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "colors" }),
   svc,
-) as unknown as Schema.Schema<GetColorsRequest>;
+) as unknown as Schema.Codec<GetColorsRequest>;
 
 export type GetColorsResponse = Colors;
 export const GetColorsResponse = /*@__PURE__*/ /*#__PURE__*/ Colors;
@@ -1455,13 +1456,13 @@ export const TransferOwnershipCalendarsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TransferOwnershipCalendarsRequest>;
+  ) as unknown as Schema.Codec<TransferOwnershipCalendarsRequest>;
 
 export interface TransferOwnershipCalendarsResponse {}
-export const TransferOwnershipCalendarsResponse: Schema.Schema<TransferOwnershipCalendarsResponse> =
+export const TransferOwnershipCalendarsResponse: Schema.Codec<TransferOwnershipCalendarsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<TransferOwnershipCalendarsResponse>;
+  ) as any as Schema.Codec<TransferOwnershipCalendarsResponse>;
 
 export type TransferOwnershipCalendarsError =
   | DefaultErrors
@@ -1494,13 +1495,13 @@ export const DeleteCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "DELETE", path: "calendars/{calendarId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteCalendarsRequest>;
+) as unknown as Schema.Codec<DeleteCalendarsRequest>;
 
 export interface DeleteCalendarsResponse {}
-export const DeleteCalendarsResponse: Schema.Schema<DeleteCalendarsResponse> =
+export const DeleteCalendarsResponse: Schema.Codec<DeleteCalendarsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteCalendarsResponse>;
+  ) as any as Schema.Codec<DeleteCalendarsResponse>;
 
 export type DeleteCalendarsError =
   | DefaultErrors
@@ -1533,7 +1534,7 @@ export const InsertCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "calendars", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertCalendarsRequest>;
+) as unknown as Schema.Codec<InsertCalendarsRequest>;
 
 export type InsertCalendarsResponse = Calendar;
 export const InsertCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
@@ -1570,7 +1571,7 @@ export const PatchCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "calendars/{calendarId}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchCalendarsRequest>;
+) as unknown as Schema.Codec<PatchCalendarsRequest>;
 
 export type PatchCalendarsResponse = Calendar;
 export const PatchCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
@@ -1604,7 +1605,7 @@ export const GetCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "calendars/{calendarId}" }),
   svc,
-) as unknown as Schema.Schema<GetCalendarsRequest>;
+) as unknown as Schema.Codec<GetCalendarsRequest>;
 
 export type GetCalendarsResponse = Calendar;
 export const GetCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
@@ -1638,7 +1639,7 @@ export const UpdateCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "PUT", path: "calendars/{calendarId}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateCalendarsRequest>;
+) as unknown as Schema.Codec<UpdateCalendarsRequest>;
 
 export type UpdateCalendarsResponse = Calendar;
 export const UpdateCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
@@ -1676,13 +1677,13 @@ export const ClearCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ClearCalendarsRequest>;
+) as unknown as Schema.Codec<ClearCalendarsRequest>;
 
 export interface ClearCalendarsResponse {}
-export const ClearCalendarsResponse: Schema.Schema<ClearCalendarsResponse> =
+export const ClearCalendarsResponse: Schema.Codec<ClearCalendarsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ClearCalendarsResponse>;
+  ) as any as Schema.Codec<ClearCalendarsResponse>;
 
 export type ClearCalendarsError =
   | DefaultErrors
@@ -1746,7 +1747,7 @@ export const WatchCalendarListRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WatchCalendarListRequest>;
+  ) as unknown as Schema.Codec<WatchCalendarListRequest>;
 
 export type WatchCalendarListResponse = Channel;
 export const WatchCalendarListResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -1786,7 +1787,7 @@ export const InsertCalendarListRequest =
   }).pipe(
     T.Http({ method: "POST", path: "users/me/calendarList", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertCalendarListRequest>;
+  ) as unknown as Schema.Codec<InsertCalendarListRequest>;
 
 export type InsertCalendarListResponse = CalendarListEntry;
 export const InsertCalendarListResponse =
@@ -1834,7 +1835,7 @@ export const PatchCalendarListRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchCalendarListRequest>;
+  ) as unknown as Schema.Codec<PatchCalendarListRequest>;
 
 export type PatchCalendarListResponse = CalendarListEntry;
 export const PatchCalendarListResponse =
@@ -1870,13 +1871,13 @@ export const DeleteCalendarListRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "users/me/calendarList/{calendarId}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCalendarListRequest>;
+  ) as unknown as Schema.Codec<DeleteCalendarListRequest>;
 
 export interface DeleteCalendarListResponse {}
-export const DeleteCalendarListResponse: Schema.Schema<DeleteCalendarListResponse> =
+export const DeleteCalendarListResponse: Schema.Codec<DeleteCalendarListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteCalendarListResponse>;
+  ) as any as Schema.Codec<DeleteCalendarListResponse>;
 
 export type DeleteCalendarListError =
   | DefaultErrors
@@ -1933,7 +1934,7 @@ export const ListCalendarListRequest =
   }).pipe(
     T.Http({ method: "GET", path: "users/me/calendarList" }),
     svc,
-  ) as unknown as Schema.Schema<ListCalendarListRequest>;
+  ) as unknown as Schema.Codec<ListCalendarListRequest>;
 
 export type ListCalendarListResponse = CalendarList;
 export const ListCalendarListResponse =
@@ -1981,7 +1982,7 @@ export const UpdateCalendarListRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCalendarListRequest>;
+  ) as unknown as Schema.Codec<UpdateCalendarListRequest>;
 
 export type UpdateCalendarListResponse = CalendarListEntry;
 export const UpdateCalendarListResponse =
@@ -2018,7 +2019,7 @@ export const GetCalendarListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "users/me/calendarList/{calendarId}" }),
   svc,
-) as unknown as Schema.Schema<GetCalendarListRequest>;
+) as unknown as Schema.Codec<GetCalendarListRequest>;
 
 export type GetCalendarListResponse = CalendarListEntry;
 export const GetCalendarListResponse =
@@ -2048,7 +2049,7 @@ export const QueryFreebusyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "freeBusy", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<QueryFreebusyRequest>;
+) as unknown as Schema.Codec<QueryFreebusyRequest>;
 
 export type QueryFreebusyResponse = FreeBusyResponse;
 export const QueryFreebusyResponse =
@@ -2113,7 +2114,7 @@ export const InsertEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertEventsRequest>;
+) as unknown as Schema.Codec<InsertEventsRequest>;
 
 export type InsertEventsResponse = Event;
 export const InsertEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
@@ -2158,13 +2159,13 @@ export const DeleteEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "calendars/{calendarId}/events/{eventId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteEventsRequest>;
+) as unknown as Schema.Codec<DeleteEventsRequest>;
 
 export interface DeleteEventsResponse {}
-export const DeleteEventsResponse: Schema.Schema<DeleteEventsResponse> =
+export const DeleteEventsResponse: Schema.Codec<DeleteEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteEventsResponse>;
+  ) as any as Schema.Codec<DeleteEventsResponse>;
 
 export type DeleteEventsError =
   | DefaultErrors
@@ -2238,7 +2239,7 @@ export const InstancesEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "calendars/{calendarId}/events/{eventId}/instances",
   }),
   svc,
-) as unknown as Schema.Schema<InstancesEventsRequest>;
+) as unknown as Schema.Codec<InstancesEventsRequest>;
 
 export type InstancesEventsResponse = Events;
 export const InstancesEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Events;
@@ -2289,7 +2290,7 @@ export const ImportEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ImportEventsRequest>;
+) as unknown as Schema.Codec<ImportEventsRequest>;
 
 export type ImportEventsResponse = Event;
 export const ImportEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
@@ -2341,7 +2342,7 @@ export const MoveEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<MoveEventsRequest>;
+) as unknown as Schema.Codec<MoveEventsRequest>;
 
 export type MoveEventsResponse = Event;
 export const MoveEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
@@ -2413,7 +2414,7 @@ export const UpdateEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateEventsRequest>;
+) as unknown as Schema.Codec<UpdateEventsRequest>;
 
 export type UpdateEventsResponse = Event;
 export const UpdateEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
@@ -2463,7 +2464,7 @@ export const GetEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "calendars/{calendarId}/events/{eventId}" }),
   svc,
-) as unknown as Schema.Schema<GetEventsRequest>;
+) as unknown as Schema.Codec<GetEventsRequest>;
 
 export type GetEventsResponse = Event;
 export const GetEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
@@ -2507,7 +2508,7 @@ export const QuickAddEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<QuickAddEventsRequest>;
+) as unknown as Schema.Codec<QuickAddEventsRequest>;
 
 export type QuickAddEventsResponse = Event;
 export const QuickAddEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
@@ -2579,7 +2580,7 @@ export const PatchEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchEventsRequest>;
+) as unknown as Schema.Codec<PatchEventsRequest>;
 
 export type PatchEventsResponse = Event;
 export const PatchEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
@@ -2688,7 +2689,7 @@ export const ListEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "calendars/{calendarId}/events" }),
   svc,
-) as unknown as Schema.Schema<ListEventsRequest>;
+) as unknown as Schema.Codec<ListEventsRequest>;
 
 export type ListEventsResponse = Events;
 export const ListEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Events;
@@ -2804,7 +2805,7 @@ export const WatchEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<WatchEventsRequest>;
+) as unknown as Schema.Codec<WatchEventsRequest>;
 
 export type WatchEventsResponse = Channel;
 export const WatchEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
@@ -2844,7 +2845,7 @@ export const ListSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "users/me/settings" }),
   svc,
-) as unknown as Schema.Schema<ListSettingsRequest>;
+) as unknown as Schema.Codec<ListSettingsRequest>;
 
 export type ListSettingsResponse = Settings;
 export const ListSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
@@ -2878,7 +2879,7 @@ export const GetSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "users/me/settings/{setting}" }),
   svc,
-) as unknown as Schema.Schema<GetSettingsRequest>;
+) as unknown as Schema.Codec<GetSettingsRequest>;
 
 export type GetSettingsResponse = Setting;
 export const GetSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Setting;
@@ -2916,7 +2917,7 @@ export const WatchSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "users/me/settings/watch", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<WatchSettingsRequest>;
+) as unknown as Schema.Codec<WatchSettingsRequest>;
 
 export type WatchSettingsResponse = Channel;
 export const WatchSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;

@@ -3,6 +3,16 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsSessionsListInput {
+  id: string;
+  project_id: string;
+  created_after?: string;
+  created_before?: string;
+  limit?: number;
+  offset?: number;
+  revision_id?: string;
+  state?: string;
+}
 export const AgentApplicationsSessionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +28,47 @@ export const AgentApplicationsSessionsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{id}/sessions/",
     }),
-  );
-export type AgentApplicationsSessionsListInput =
-  typeof AgentApplicationsSessionsListInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsSessionsListInput>;
 
 // Output Schema
+export interface AgentApplicationsSessionsListOutput {
+  results: {
+    usage_total: {
+      tokens_in: number;
+      tokens_out: number;
+      cache_read: number;
+      cache_write: number;
+      cost_input: number;
+      cost_output: number;
+      cost_cache_read: number;
+      cost_cache_write: number;
+      cost_total: number;
+    };
+    principal: {
+      kind: "anonymous" | "service" | "internal" | "shared_secret" | "slack";
+      id?: string;
+      team_id?: number;
+    } | null;
+    id: string;
+    application_id: string;
+    revision_id: string;
+    state:
+      | "queued"
+      | "running"
+      | "completed"
+      | "closed"
+      | "cancelled"
+      | "failed";
+    external_key: string | null;
+    trigger_metadata?: Record<string, unknown> | null;
+    turns: number;
+    preview: string | null;
+    retry_count: number;
+    created_at: string;
+    updated_at: string;
+  }[];
+  count: number;
+}
 export const AgentApplicationsSessionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -38,7 +84,19 @@ export const AgentApplicationsSessionsListOutput =
           cost_cache_write: Schema.Number,
           cost_total: Schema.Number,
         }),
-        principal: Schema.Unknown,
+        principal: Schema.NullOr(
+          Schema.Struct({
+            kind: Schema.Literals([
+              "anonymous",
+              "service",
+              "internal",
+              "shared_secret",
+              "slack",
+            ]),
+            id: Schema.optional(Schema.String),
+            team_id: Schema.optional(Schema.Number),
+          }),
+        ),
         id: Schema.String,
         application_id: Schema.String,
         revision_id: Schema.String,
@@ -62,9 +120,7 @@ export const AgentApplicationsSessionsListOutput =
       }),
     ),
     count: Schema.Number,
-  });
-export type AgentApplicationsSessionsListOutput =
-  typeof AgentApplicationsSessionsListOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsSessionsListOutput>;
 
 // The operation
 /**

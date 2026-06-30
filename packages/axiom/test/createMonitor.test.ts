@@ -59,7 +59,7 @@ describe("createMonitor", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   // Removed: the client-side schema requires `name` and `type`, so

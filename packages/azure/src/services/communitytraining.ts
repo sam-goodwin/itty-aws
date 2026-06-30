@@ -4,12 +4,54 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CommunityTrainingsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communityTrainingName: string;
+  properties?: {
+    portalName: string;
+    portalAdminEmailAddress: string;
+    portalOwnerOrganizationName: string;
+    portalOwnerEmailAddress: string;
+    identityConfiguration: {
+      identityType: string;
+      teamsEnabled?: boolean;
+      tenantId: string;
+      domainName: string;
+      clientId: string;
+      clientSecret: string | Redacted.Redacted<string>;
+      b2cAuthenticationPolicy?: string;
+      b2cPasswordResetPolicy?: string | Redacted.Redacted<string>;
+      customLoginParameters?: string;
+    };
+    zoneRedundancyEnabled: boolean;
+    disasterRecoveryEnabled: boolean;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const CommunityTrainingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -66,11 +108,22 @@ export const CommunityTrainingsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
       apiVersion: "2023-11-01",
     }),
-  );
-export type CommunityTrainingsCreateInput =
-  typeof CommunityTrainingsCreateInput.Type;
+  ) as unknown as Schema.Codec<CommunityTrainingsCreateInput>;
 
 // Output Schema
+export interface CommunityTrainingsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommunityTrainingsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -90,9 +143,7 @@ export const CommunityTrainingsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommunityTrainingsCreateOutput =
-  typeof CommunityTrainingsCreateOutput.Type;
+  }) as unknown as Schema.Codec<CommunityTrainingsCreateOutput>;
 
 // The operation
 /**
@@ -110,6 +161,11 @@ export const CommunityTrainingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommunityTrainingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communityTrainingName: string;
+}
 export const CommunityTrainingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -121,15 +177,12 @@ export const CommunityTrainingsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
       apiVersion: "2023-11-01",
     }),
-  );
-export type CommunityTrainingsDeleteInput =
-  typeof CommunityTrainingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CommunityTrainingsDeleteInput>;
 
 // Output Schema
+export type CommunityTrainingsDeleteOutput = void;
 export const CommunityTrainingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CommunityTrainingsDeleteOutput =
-  typeof CommunityTrainingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommunityTrainingsDeleteOutput>;
 
 // The operation
 /**
@@ -147,6 +200,11 @@ export const CommunityTrainingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommunityTrainingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communityTrainingName: string;
+}
 export const CommunityTrainingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -158,10 +216,22 @@ export const CommunityTrainingsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
       apiVersion: "2023-11-01",
     }),
-  );
-export type CommunityTrainingsGetInput = typeof CommunityTrainingsGetInput.Type;
+  ) as unknown as Schema.Codec<CommunityTrainingsGetInput>;
 
 // Output Schema
+export interface CommunityTrainingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommunityTrainingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -181,9 +251,7 @@ export const CommunityTrainingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommunityTrainingsGetOutput =
-  typeof CommunityTrainingsGetOutput.Type;
+  }) as unknown as Schema.Codec<CommunityTrainingsGetOutput>;
 
 // The operation
 /**
@@ -201,6 +269,10 @@ export const CommunityTrainingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommunityTrainingsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const CommunityTrainingsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -211,11 +283,25 @@ export const CommunityTrainingsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings",
       apiVersion: "2023-11-01",
     }),
-  );
-export type CommunityTrainingsListByResourceGroupInput =
-  typeof CommunityTrainingsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CommunityTrainingsListByResourceGroupInput>;
 
 // Output Schema
+export interface CommunityTrainingsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CommunityTrainingsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -250,9 +336,7 @@ export const CommunityTrainingsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CommunityTrainingsListByResourceGroupOutput =
-  typeof CommunityTrainingsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CommunityTrainingsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -268,6 +352,9 @@ export const CommunityTrainingsListByResourceGroup =
     outputSchema: CommunityTrainingsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface CommunityTrainingsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const CommunityTrainingsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -277,11 +364,25 @@ export const CommunityTrainingsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Community/communityTrainings",
       apiVersion: "2023-11-01",
     }),
-  );
-export type CommunityTrainingsListBySubscriptionInput =
-  typeof CommunityTrainingsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CommunityTrainingsListBySubscriptionInput>;
 
 // Output Schema
+export interface CommunityTrainingsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CommunityTrainingsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -316,9 +417,7 @@ export const CommunityTrainingsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CommunityTrainingsListBySubscriptionOutput =
-  typeof CommunityTrainingsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CommunityTrainingsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -333,6 +432,32 @@ export const CommunityTrainingsListBySubscription =
     outputSchema: CommunityTrainingsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface CommunityTrainingsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  communityTrainingName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    identityConfiguration?: {
+      identityType?: string;
+      teamsEnabled?: boolean;
+      tenantId?: string;
+      domainName?: string;
+      clientId?: string;
+      clientSecret?: string | Redacted.Redacted<string>;
+      b2cAuthenticationPolicy?: string;
+      b2cPasswordResetPolicy?: string | Redacted.Redacted<string>;
+      customLoginParameters?: string;
+    };
+  };
+}
 export const CommunityTrainingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -373,11 +498,22 @@ export const CommunityTrainingsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
       apiVersion: "2023-11-01",
     }),
-  );
-export type CommunityTrainingsUpdateInput =
-  typeof CommunityTrainingsUpdateInput.Type;
+  ) as unknown as Schema.Codec<CommunityTrainingsUpdateInput>;
 
 // Output Schema
+export interface CommunityTrainingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommunityTrainingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -397,9 +533,7 @@ export const CommunityTrainingsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommunityTrainingsUpdateOutput =
-  typeof CommunityTrainingsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CommunityTrainingsUpdateOutput>;
 
 // The operation
 /**
@@ -417,6 +551,7 @@ export const CommunityTrainingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -425,10 +560,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Community/operations",
     apiVersion: "2023-11-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -451,8 +600,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

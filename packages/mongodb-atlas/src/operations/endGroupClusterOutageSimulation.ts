@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface EndGroupClusterOutageSimulationInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const EndGroupClusterOutageSimulationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const EndGroupClusterOutageSimulationInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation",
     }),
-  );
-export type EndGroupClusterOutageSimulationInput =
-  typeof EndGroupClusterOutageSimulationInput.Type;
+  ) as unknown as Schema.Codec<EndGroupClusterOutageSimulationInput>;
 
 // Output Schema
+export type EndGroupClusterOutageSimulationOutput = void;
 export const EndGroupClusterOutageSimulationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EndGroupClusterOutageSimulationOutput =
-  typeof EndGroupClusterOutageSimulationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndGroupClusterOutageSimulationOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsUsersListInput {
+  id: string;
+  project_id: string;
+}
 export const AgentApplicationsUsersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,30 @@ export const AgentApplicationsUsersListInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{id}/users/",
     }),
-  );
-export type AgentApplicationsUsersListInput =
-  typeof AgentApplicationsUsersListInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsUsersListInput>;
 
 // Output Schema
+export interface AgentApplicationsUsersListOutput {
+  count: number;
+  results: {
+    id: string;
+    principal_kind: string;
+    principal_id: string;
+    metadata?: unknown;
+    created_at: string;
+    connections: {
+      id: string;
+      provider: string;
+      scopes: string[];
+      state: string;
+      subject?: string | null;
+      access_expires_at?: string | null;
+      created_at: string;
+      updated_at: string;
+      revoked_at?: string | null;
+    }[];
+  }[];
+}
 export const AgentApplicationsUsersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -42,9 +65,7 @@ export const AgentApplicationsUsersListOutput =
         ),
       }),
     ),
-  });
-export type AgentApplicationsUsersListOutput =
-  typeof AgentApplicationsUsersListOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsUsersListOutput>;
 
 // The operation
 /**

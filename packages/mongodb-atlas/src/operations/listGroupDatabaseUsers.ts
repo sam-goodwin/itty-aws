@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupDatabaseUsersInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupDatabaseUsersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const ListGroupDatabaseUsersInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/databaseUsers",
     }),
-  );
-export type ListGroupDatabaseUsersInput =
-  typeof ListGroupDatabaseUsersInput.Type;
+  ) as unknown as Schema.Codec<ListGroupDatabaseUsersInput>;
 
 // Output Schema
+export type ListGroupDatabaseUsersOutput = void;
 export const ListGroupDatabaseUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupDatabaseUsersOutput =
-  typeof ListGroupDatabaseUsersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDatabaseUsersOutput>;
 
 // The operation
 /**

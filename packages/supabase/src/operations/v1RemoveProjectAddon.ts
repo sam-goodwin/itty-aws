@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1RemoveProjectAddonInput {
+  ref: string;
+  addon_variant: string;
+}
 export const V1RemoveProjectAddonInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const V1RemoveProjectAddonInput =
       method: "DELETE",
       path: "/v1/projects/{ref}/billing/addons/{addon_variant}",
     }),
-  );
-export type V1RemoveProjectAddonInput = typeof V1RemoveProjectAddonInput.Type;
+  ) as unknown as Schema.Codec<V1RemoveProjectAddonInput>;
 
 // Output Schema
+export type V1RemoveProjectAddonOutput = void;
 export const V1RemoveProjectAddonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1RemoveProjectAddonOutput = typeof V1RemoveProjectAddonOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RemoveProjectAddonOutput>;
 
 // The operation
 /**

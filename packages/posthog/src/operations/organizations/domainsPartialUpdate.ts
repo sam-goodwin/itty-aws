@@ -4,6 +4,28 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DomainsPartialUpdateInput {
+  id: string;
+  organization_id: string;
+  domain?: string;
+  is_verified?: boolean;
+  verified_at?: string | null;
+  verification_challenge?: string;
+  jit_provisioning_enabled?: boolean;
+  sso_enforcement?: string;
+  has_saml?: boolean;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
+  has_scim?: boolean;
+  scim_enabled?: boolean;
+  scim_base_url?: string | null;
+  scim_bearer_token?: string | null;
+  has_id_jag?: boolean;
+  id_jag_issuer_url?: string | null;
+  id_jag_jwks_url?: string | null;
+  id_jag_allowed_clients?: string[];
+}
 export const DomainsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -31,10 +53,30 @@ export const DomainsPartialUpdateInput =
       method: "PATCH",
       path: "/api/organizations/{organization_id}/domains/{id}/",
     }),
-  );
-export type DomainsPartialUpdateInput = typeof DomainsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<DomainsPartialUpdateInput>;
 
 // Output Schema
+export interface DomainsPartialUpdateOutput {
+  id?: string;
+  domain?: string;
+  is_verified?: boolean;
+  verified_at?: string | null;
+  verification_challenge?: string;
+  jit_provisioning_enabled?: boolean;
+  sso_enforcement?: string;
+  has_saml?: boolean;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
+  has_scim?: boolean;
+  scim_enabled?: boolean;
+  scim_base_url?: string | null;
+  scim_bearer_token?: string | null;
+  has_id_jag?: boolean;
+  id_jag_issuer_url?: string | null;
+  id_jag_jwks_url?: string | null;
+  id_jag_allowed_clients?: string[];
+}
 export const DomainsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -56,8 +98,7 @@ export const DomainsPartialUpdateOutput =
     id_jag_issuer_url: Schema.optional(Schema.NullOr(Schema.String)),
     id_jag_jwks_url: Schema.optional(Schema.NullOr(Schema.String)),
     id_jag_allowed_clients: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type DomainsPartialUpdateOutput = typeof DomainsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DomainsPartialUpdateOutput>;
 
 // The operation
 /**

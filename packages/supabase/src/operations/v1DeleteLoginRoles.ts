@@ -4,20 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1DeleteLoginRolesInput {
+  ref: string;
+}
 export const V1DeleteLoginRolesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/cli/login-role" }),
-  );
-export type V1DeleteLoginRolesInput = typeof V1DeleteLoginRolesInput.Type;
+  ) as unknown as Schema.Codec<V1DeleteLoginRolesInput>;
 
 // Output Schema
+export interface V1DeleteLoginRolesOutput {
+  message: "ok";
+}
 export const V1DeleteLoginRolesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.Literals(["ok"]),
-  });
-export type V1DeleteLoginRolesOutput = typeof V1DeleteLoginRolesOutput.Type;
+  }) as unknown as Schema.Codec<V1DeleteLoginRolesOutput>;
 
 // The operation
 /**

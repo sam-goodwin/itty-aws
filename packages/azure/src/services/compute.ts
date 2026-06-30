@@ -4,12 +4,100 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ContainerServicesCreateOrUpdateInput {
+  resourceGroupName: string;
+  containerServiceName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?: string;
+    orchestratorProfile?: {
+      orchestratorType: "Swarm" | "DCOS" | "Custom" | "Kubernetes";
+    };
+    customProfile?: { orchestrator: string };
+    servicePrincipalProfile?: {
+      clientId: string;
+      secret: string | Redacted.Redacted<string>;
+    };
+    masterProfile: { count?: 1 | 3 | 5; dnsPrefix: string; fqdn?: string };
+    agentPoolProfiles: {
+      name: string;
+      count: number;
+      vmSize:
+        | "Standard_A0"
+        | "Standard_A1"
+        | "Standard_A2"
+        | "Standard_A3"
+        | "Standard_A4"
+        | "Standard_A5"
+        | "Standard_A6"
+        | "Standard_A7"
+        | "Standard_A8"
+        | "Standard_A9"
+        | "Standard_A10"
+        | "Standard_A11"
+        | "Standard_D1"
+        | "Standard_D2"
+        | "Standard_D3"
+        | "Standard_D4"
+        | "Standard_D11"
+        | "Standard_D12"
+        | "Standard_D13"
+        | "Standard_D14"
+        | "Standard_D1_v2"
+        | "Standard_D2_v2"
+        | "Standard_D3_v2"
+        | "Standard_D4_v2"
+        | "Standard_D5_v2"
+        | "Standard_D11_v2"
+        | "Standard_D12_v2"
+        | "Standard_D13_v2"
+        | "Standard_D14_v2"
+        | "Standard_G1"
+        | "Standard_G2"
+        | "Standard_G3"
+        | "Standard_G4"
+        | "Standard_G5"
+        | "Standard_DS1"
+        | "Standard_DS2"
+        | "Standard_DS3"
+        | "Standard_DS4"
+        | "Standard_DS11"
+        | "Standard_DS12"
+        | "Standard_DS13"
+        | "Standard_DS14"
+        | "Standard_GS1"
+        | "Standard_GS2"
+        | "Standard_GS3"
+        | "Standard_GS4"
+        | "Standard_GS5";
+      dnsPrefix: string;
+      fqdn?: string;
+    }[];
+    windowsProfile?: {
+      adminUsername: string;
+      adminPassword: string | Redacted.Redacted<string>;
+    };
+    linuxProfile: {
+      adminUsername: string;
+      ssh: { publicKeys: { keyData: string }[] };
+    };
+    diagnosticsProfile?: {
+      vmDiagnostics: { enabled: boolean; storageUri?: string };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const ContainerServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -138,11 +226,16 @@ export const ContainerServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
       apiVersion: "2017-01-31",
     }),
-  );
-export type ContainerServicesCreateOrUpdateInput =
-  typeof ContainerServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ContainerServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ContainerServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const ContainerServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -150,9 +243,7 @@ export const ContainerServicesCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ContainerServicesCreateOrUpdateOutput =
-  typeof ContainerServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ContainerServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -171,6 +262,11 @@ export const ContainerServicesCreateOrUpdate =
     outputSchema: ContainerServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ContainerServicesDeleteInput {
+  resourceGroupName: string;
+  containerServiceName: string;
+  subscriptionId: string;
+}
 export const ContainerServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -182,15 +278,12 @@ export const ContainerServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
       apiVersion: "2017-01-31",
     }),
-  );
-export type ContainerServicesDeleteInput =
-  typeof ContainerServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ContainerServicesDeleteInput>;
 
 // Output Schema
+export type ContainerServicesDeleteOutput = void;
 export const ContainerServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContainerServicesDeleteOutput =
-  typeof ContainerServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainerServicesDeleteOutput>;
 
 // The operation
 /**
@@ -210,6 +303,11 @@ export const ContainerServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContainerServicesGetInput {
+  resourceGroupName: string;
+  containerServiceName: string;
+  subscriptionId: string;
+}
 export const ContainerServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -221,10 +319,16 @@ export const ContainerServicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
       apiVersion: "2017-01-31",
     }),
-  );
-export type ContainerServicesGetInput = typeof ContainerServicesGetInput.Type;
+  ) as unknown as Schema.Codec<ContainerServicesGetInput>;
 
 // Output Schema
+export interface ContainerServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const ContainerServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -232,8 +336,7 @@ export const ContainerServicesGetOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ContainerServicesGetOutput = typeof ContainerServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<ContainerServicesGetOutput>;
 
 // The operation
 /**
@@ -253,6 +356,9 @@ export const ContainerServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContainerServicesListInput {
+  subscriptionId: string;
+}
 export const ContainerServicesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -262,10 +368,19 @@ export const ContainerServicesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices",
       apiVersion: "2017-01-31",
     }),
-  );
-export type ContainerServicesListInput = typeof ContainerServicesListInput.Type;
+  ) as unknown as Schema.Codec<ContainerServicesListInput>;
 
 // Output Schema
+export interface ContainerServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ContainerServicesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -280,9 +395,7 @@ export const ContainerServicesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContainerServicesListOutput =
-  typeof ContainerServicesListOutput.Type;
+  }) as unknown as Schema.Codec<ContainerServicesListOutput>;
 
 // The operation
 /**
@@ -300,6 +413,10 @@ export const ContainerServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContainerServicesListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const ContainerServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -310,11 +427,19 @@ export const ContainerServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices",
       apiVersion: "2017-01-31",
     }),
-  );
-export type ContainerServicesListByResourceGroupInput =
-  typeof ContainerServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ContainerServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface ContainerServicesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ContainerServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -329,9 +454,7 @@ export const ContainerServicesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContainerServicesListByResourceGroupOutput =
-  typeof ContainerServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ContainerServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -349,6 +472,31 @@ export const ContainerServicesListByResourceGroup =
     outputSchema: ContainerServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DiskAccessesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+  properties?: {
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    provisioningState?: string;
+    timeCreated?: string;
+  };
+  extendedLocation?: { name?: string; type?: "EdgeZone" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DiskAccessesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -407,11 +555,22 @@ export const DiskAccessesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesCreateOrUpdateInput =
-  typeof DiskAccessesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DiskAccessesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskAccessesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -431,9 +590,7 @@ export const DiskAccessesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiskAccessesCreateOrUpdateOutput =
-  typeof DiskAccessesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DiskAccessesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -451,6 +608,11 @@ export const DiskAccessesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiskAccessesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+}
 export const DiskAccessesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -462,12 +624,12 @@ export const DiskAccessesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesDeleteInput = typeof DiskAccessesDeleteInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesDeleteInput>;
 
 // Output Schema
-export const DiskAccessesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiskAccessesDeleteOutput = typeof DiskAccessesDeleteOutput.Type;
+export type DiskAccessesDeleteOutput = void;
+export const DiskAccessesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskAccessesDeleteOutput>;
 
 // The operation
 /**
@@ -483,6 +645,12 @@ export const DiskAccessesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskAccessesDeleteOutput,
 }));
 // Input Schema
+export interface DiskAccessesDeleteAPrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+  privateEndpointConnectionName: string;
+}
 export const DiskAccessesDeleteAPrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -495,15 +663,12 @@ export const DiskAccessesDeleteAPrivateEndpointConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesDeleteAPrivateEndpointConnectionInput =
-  typeof DiskAccessesDeleteAPrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesDeleteAPrivateEndpointConnectionInput>;
 
 // Output Schema
+export type DiskAccessesDeleteAPrivateEndpointConnectionOutput = void;
 export const DiskAccessesDeleteAPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiskAccessesDeleteAPrivateEndpointConnectionOutput =
-  typeof DiskAccessesDeleteAPrivateEndpointConnectionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskAccessesDeleteAPrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -521,6 +686,11 @@ export const DiskAccessesDeleteAPrivateEndpointConnection =
     outputSchema: DiskAccessesDeleteAPrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface DiskAccessesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+}
 export const DiskAccessesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -531,10 +701,22 @@ export const DiskAccessesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}",
     apiVersion: "2026-03-02",
   }),
-);
-export type DiskAccessesGetInput = typeof DiskAccessesGetInput.Type;
+) as unknown as Schema.Codec<DiskAccessesGetInput>;
 
 // Output Schema
+export interface DiskAccessesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskAccessesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -553,8 +735,7 @@ export const DiskAccessesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DiskAccessesGetOutput = typeof DiskAccessesGetOutput.Type;
+}) as unknown as Schema.Codec<DiskAccessesGetOutput>;
 
 // The operation
 /**
@@ -570,6 +751,12 @@ export const DiskAccessesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskAccessesGetOutput,
 }));
 // Input Schema
+export interface DiskAccessesGetAPrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+  privateEndpointConnectionName: string;
+}
 export const DiskAccessesGetAPrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -582,11 +769,22 @@ export const DiskAccessesGetAPrivateEndpointConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesGetAPrivateEndpointConnectionInput =
-  typeof DiskAccessesGetAPrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesGetAPrivateEndpointConnectionInput>;
 
 // Output Schema
+export interface DiskAccessesGetAPrivateEndpointConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskAccessesGetAPrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -606,9 +804,7 @@ export const DiskAccessesGetAPrivateEndpointConnectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiskAccessesGetAPrivateEndpointConnectionOutput =
-  typeof DiskAccessesGetAPrivateEndpointConnectionOutput.Type;
+  }) as unknown as Schema.Codec<DiskAccessesGetAPrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -626,6 +822,11 @@ export const DiskAccessesGetAPrivateEndpointConnection =
     outputSchema: DiskAccessesGetAPrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface DiskAccessesGetPrivateLinkResourcesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+}
 export const DiskAccessesGetPrivateLinkResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -637,11 +838,21 @@ export const DiskAccessesGetPrivateLinkResourcesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privatelinkresources",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesGetPrivateLinkResourcesInput =
-  typeof DiskAccessesGetPrivateLinkResourcesInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesGetPrivateLinkResourcesInput>;
 
 // Output Schema
+export interface DiskAccessesGetPrivateLinkResourcesOutput {
+  value?: {
+    properties?: {
+      groupId?: string;
+      requiredMembers?: string[];
+      requiredZoneNames?: string[];
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+  }[];
+}
 export const DiskAccessesGetPrivateLinkResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -660,9 +871,7 @@ export const DiskAccessesGetPrivateLinkResourcesOutput =
         }),
       ),
     ),
-  });
-export type DiskAccessesGetPrivateLinkResourcesOutput =
-  typeof DiskAccessesGetPrivateLinkResourcesOutput.Type;
+  }) as unknown as Schema.Codec<DiskAccessesGetPrivateLinkResourcesOutput>;
 
 // The operation
 /**
@@ -679,6 +888,9 @@ export const DiskAccessesGetPrivateLinkResources =
     outputSchema: DiskAccessesGetPrivateLinkResourcesOutput,
   }));
 // Input Schema
+export interface DiskAccessesListInput {
+  subscriptionId: string;
+}
 export const DiskAccessesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -687,10 +899,25 @@ export const DiskAccessesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/diskAccesses",
     apiVersion: "2026-03-02",
   }),
-);
-export type DiskAccessesListInput = typeof DiskAccessesListInput.Type;
+) as unknown as Schema.Codec<DiskAccessesListInput>;
 
 // Output Schema
+export interface DiskAccessesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiskAccessesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -726,8 +953,7 @@ export const DiskAccessesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type DiskAccessesListOutput = typeof DiskAccessesListOutput.Type;
+) as unknown as Schema.Codec<DiskAccessesListOutput>;
 
 // The operation
 /**
@@ -741,6 +967,10 @@ export const DiskAccessesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskAccessesListOutput,
 }));
 // Input Schema
+export interface DiskAccessesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DiskAccessesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -751,11 +981,25 @@ export const DiskAccessesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesListByResourceGroupInput =
-  typeof DiskAccessesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesListByResourceGroupInput>;
 
 // Output Schema
+export interface DiskAccessesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiskAccessesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -790,9 +1034,7 @@ export const DiskAccessesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskAccessesListByResourceGroupOutput =
-  typeof DiskAccessesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DiskAccessesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -808,6 +1050,11 @@ export const DiskAccessesListByResourceGroup =
     outputSchema: DiskAccessesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DiskAccessesListPrivateEndpointConnectionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+}
 export const DiskAccessesListPrivateEndpointConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -819,11 +1066,25 @@ export const DiskAccessesListPrivateEndpointConnectionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesListPrivateEndpointConnectionsInput =
-  typeof DiskAccessesListPrivateEndpointConnectionsInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesListPrivateEndpointConnectionsInput>;
 
 // Output Schema
+export interface DiskAccessesListPrivateEndpointConnectionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiskAccessesListPrivateEndpointConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -858,9 +1119,7 @@ export const DiskAccessesListPrivateEndpointConnectionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskAccessesListPrivateEndpointConnectionsOutput =
-  typeof DiskAccessesListPrivateEndpointConnectionsOutput.Type;
+  }) as unknown as Schema.Codec<DiskAccessesListPrivateEndpointConnectionsOutput>;
 
 // The operation
 /**
@@ -877,6 +1136,12 @@ export const DiskAccessesListPrivateEndpointConnections =
     outputSchema: DiskAccessesListPrivateEndpointConnectionsOutput,
   }));
 // Input Schema
+export interface DiskAccessesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+  tags?: Record<string, string>;
+}
 export const DiskAccessesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -889,10 +1154,22 @@ export const DiskAccessesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesUpdateInput = typeof DiskAccessesUpdateInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesUpdateInput>;
 
 // Output Schema
+export interface DiskAccessesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskAccessesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -912,8 +1189,7 @@ export const DiskAccessesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiskAccessesUpdateOutput = typeof DiskAccessesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DiskAccessesUpdateOutput>;
 
 // The operation
 /**
@@ -929,6 +1205,21 @@ export const DiskAccessesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskAccessesUpdateOutput,
 }));
 // Input Schema
+export interface DiskAccessesUpdateAPrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskAccessName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+}
 export const DiskAccessesUpdateAPrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -960,11 +1251,22 @@ export const DiskAccessesUpdateAPrivateEndpointConnectionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskAccessesUpdateAPrivateEndpointConnectionInput =
-  typeof DiskAccessesUpdateAPrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<DiskAccessesUpdateAPrivateEndpointConnectionInput>;
 
 // Output Schema
+export interface DiskAccessesUpdateAPrivateEndpointConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskAccessesUpdateAPrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -984,9 +1286,7 @@ export const DiskAccessesUpdateAPrivateEndpointConnectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiskAccessesUpdateAPrivateEndpointConnectionOutput =
-  typeof DiskAccessesUpdateAPrivateEndpointConnectionOutput.Type;
+  }) as unknown as Schema.Codec<DiskAccessesUpdateAPrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -1004,6 +1304,45 @@ export const DiskAccessesUpdateAPrivateEndpointConnection =
     outputSchema: DiskAccessesUpdateAPrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface DiskEncryptionSetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskEncryptionSetName: string;
+  properties?: {
+    encryptionType?:
+      | "EncryptionAtRestWithCustomerKey"
+      | "EncryptionAtRestWithPlatformAndCustomerKeys"
+      | "ConfidentialVmEncryptedWithCustomerKey";
+    activeKey?: { sourceVault?: { id?: string }; keyUrl: string };
+    previousKeys?: { sourceVault?: { id?: string }; keyUrl: string }[];
+    provisioningState?: string;
+    rotationToLatestKeyVersionEnabled?: boolean;
+    lastKeyRotationTimestamp?: string;
+    autoKeyRotationError?: {
+      details?: { code?: string; target?: string; message?: string }[];
+      innererror?: { exceptiontype?: string; errordetail?: string };
+      code?: string;
+      target?: string;
+      message?: string;
+    };
+    federatedClientId?: string;
+  };
+  identity?: {
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DiskEncryptionSetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1099,11 +1438,22 @@ export const DiskEncryptionSetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskEncryptionSetsCreateOrUpdateInput =
-  typeof DiskEncryptionSetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DiskEncryptionSetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DiskEncryptionSetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskEncryptionSetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1123,9 +1473,7 @@ export const DiskEncryptionSetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiskEncryptionSetsCreateOrUpdateOutput =
-  typeof DiskEncryptionSetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DiskEncryptionSetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1142,6 +1490,11 @@ export const DiskEncryptionSetsCreateOrUpdate =
     outputSchema: DiskEncryptionSetsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DiskEncryptionSetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskEncryptionSetName: string;
+}
 export const DiskEncryptionSetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1153,15 +1506,12 @@ export const DiskEncryptionSetsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskEncryptionSetsDeleteInput =
-  typeof DiskEncryptionSetsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DiskEncryptionSetsDeleteInput>;
 
 // Output Schema
+export type DiskEncryptionSetsDeleteOutput = void;
 export const DiskEncryptionSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiskEncryptionSetsDeleteOutput =
-  typeof DiskEncryptionSetsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskEncryptionSetsDeleteOutput>;
 
 // The operation
 /**
@@ -1179,6 +1529,11 @@ export const DiskEncryptionSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiskEncryptionSetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskEncryptionSetName: string;
+}
 export const DiskEncryptionSetsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1190,10 +1545,22 @@ export const DiskEncryptionSetsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskEncryptionSetsGetInput = typeof DiskEncryptionSetsGetInput.Type;
+  ) as unknown as Schema.Codec<DiskEncryptionSetsGetInput>;
 
 // Output Schema
+export interface DiskEncryptionSetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskEncryptionSetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1213,9 +1580,7 @@ export const DiskEncryptionSetsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiskEncryptionSetsGetOutput =
-  typeof DiskEncryptionSetsGetOutput.Type;
+  }) as unknown as Schema.Codec<DiskEncryptionSetsGetOutput>;
 
 // The operation
 /**
@@ -1233,6 +1598,9 @@ export const DiskEncryptionSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiskEncryptionSetsListInput {
+  subscriptionId: string;
+}
 export const DiskEncryptionSetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1242,11 +1610,25 @@ export const DiskEncryptionSetsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/diskEncryptionSets",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskEncryptionSetsListInput =
-  typeof DiskEncryptionSetsListInput.Type;
+  ) as unknown as Schema.Codec<DiskEncryptionSetsListInput>;
 
 // Output Schema
+export interface DiskEncryptionSetsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiskEncryptionSetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1281,9 +1663,7 @@ export const DiskEncryptionSetsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskEncryptionSetsListOutput =
-  typeof DiskEncryptionSetsListOutput.Type;
+  }) as unknown as Schema.Codec<DiskEncryptionSetsListOutput>;
 
 // The operation
 /**
@@ -1299,6 +1679,11 @@ export const DiskEncryptionSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiskEncryptionSetsListAssociatedResourcesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskEncryptionSetName: string;
+}
 export const DiskEncryptionSetsListAssociatedResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1310,18 +1695,18 @@ export const DiskEncryptionSetsListAssociatedResourcesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}/associatedResources",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskEncryptionSetsListAssociatedResourcesInput =
-  typeof DiskEncryptionSetsListAssociatedResourcesInput.Type;
+  ) as unknown as Schema.Codec<DiskEncryptionSetsListAssociatedResourcesInput>;
 
 // Output Schema
+export interface DiskEncryptionSetsListAssociatedResourcesOutput {
+  value: string[];
+  nextLink?: string;
+}
 export const DiskEncryptionSetsListAssociatedResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(Schema.String),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskEncryptionSetsListAssociatedResourcesOutput =
-  typeof DiskEncryptionSetsListAssociatedResourcesOutput.Type;
+  }) as unknown as Schema.Codec<DiskEncryptionSetsListAssociatedResourcesOutput>;
 
 // The operation
 /**
@@ -1338,6 +1723,10 @@ export const DiskEncryptionSetsListAssociatedResources =
     outputSchema: DiskEncryptionSetsListAssociatedResourcesOutput,
   }));
 // Input Schema
+export interface DiskEncryptionSetsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DiskEncryptionSetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1348,11 +1737,25 @@ export const DiskEncryptionSetsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskEncryptionSetsListByResourceGroupInput =
-  typeof DiskEncryptionSetsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DiskEncryptionSetsListByResourceGroupInput>;
 
 // Output Schema
+export interface DiskEncryptionSetsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiskEncryptionSetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1387,9 +1790,7 @@ export const DiskEncryptionSetsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskEncryptionSetsListByResourceGroupOutput =
-  typeof DiskEncryptionSetsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DiskEncryptionSetsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1405,6 +1806,34 @@ export const DiskEncryptionSetsListByResourceGroup =
     outputSchema: DiskEncryptionSetsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DiskEncryptionSetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskEncryptionSetName: string;
+  properties?: {
+    encryptionType?:
+      | "EncryptionAtRestWithCustomerKey"
+      | "EncryptionAtRestWithPlatformAndCustomerKeys"
+      | "ConfidentialVmEncryptedWithCustomerKey";
+    activeKey?: { sourceVault?: { id?: string }; keyUrl: string };
+    rotationToLatestKeyVersionEnabled?: boolean;
+    federatedClientId?: string;
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DiskEncryptionSetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1463,11 +1892,22 @@ export const DiskEncryptionSetsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskEncryptionSetsUpdateInput =
-  typeof DiskEncryptionSetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DiskEncryptionSetsUpdateInput>;
 
 // Output Schema
+export interface DiskEncryptionSetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskEncryptionSetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1487,9 +1927,7 @@ export const DiskEncryptionSetsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiskEncryptionSetsUpdateOutput =
-  typeof DiskEncryptionSetsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DiskEncryptionSetsUpdateOutput>;
 
 // The operation
 /**
@@ -1507,6 +1945,13 @@ export const DiskEncryptionSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiskRestorePointGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  restorePointCollectionName: string;
+  vmRestorePointName: string;
+  diskRestorePointName: string;
+}
 export const DiskRestorePointGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1520,10 +1965,22 @@ export const DiskRestorePointGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskRestorePointGetInput = typeof DiskRestorePointGetInput.Type;
+  ) as unknown as Schema.Codec<DiskRestorePointGetInput>;
 
 // Output Schema
+export interface DiskRestorePointGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiskRestorePointGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1543,8 +2000,7 @@ export const DiskRestorePointGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiskRestorePointGetOutput = typeof DiskRestorePointGetOutput.Type;
+  }) as unknown as Schema.Codec<DiskRestorePointGetOutput>;
 
 // The operation
 /**
@@ -1562,6 +2018,17 @@ export const DiskRestorePointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskRestorePointGetOutput,
 }));
 // Input Schema
+export interface DiskRestorePointGrantAccessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  restorePointCollectionName: string;
+  vmRestorePointName: string;
+  diskRestorePointName: string;
+  access: "None" | "Read" | "Write";
+  durationInSeconds: number;
+  getSecureVMGuestStateSAS?: boolean;
+  fileFormat?: "VHD" | "VHDX";
+}
 export const DiskRestorePointGrantAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1579,19 +2046,20 @@ export const DiskRestorePointGrantAccessInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}/beginGetAccess",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskRestorePointGrantAccessInput =
-  typeof DiskRestorePointGrantAccessInput.Type;
+  ) as unknown as Schema.Codec<DiskRestorePointGrantAccessInput>;
 
 // Output Schema
+export interface DiskRestorePointGrantAccessOutput {
+  accessSAS?: string;
+  securityDataAccessSAS?: string;
+  securityMetadataAccessSAS?: string;
+}
 export const DiskRestorePointGrantAccessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessSAS: Schema.optional(Schema.String),
     securityDataAccessSAS: Schema.optional(Schema.String),
     securityMetadataAccessSAS: Schema.optional(Schema.String),
-  });
-export type DiskRestorePointGrantAccessOutput =
-  typeof DiskRestorePointGrantAccessOutput.Type;
+  }) as unknown as Schema.Codec<DiskRestorePointGrantAccessOutput>;
 
 // The operation
 /**
@@ -1611,6 +2079,12 @@ export const DiskRestorePointGrantAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiskRestorePointListByRestorePointInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  restorePointCollectionName: string;
+  vmRestorePointName: string;
+}
 export const DiskRestorePointListByRestorePointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1623,11 +2097,25 @@ export const DiskRestorePointListByRestorePointInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskRestorePointListByRestorePointInput =
-  typeof DiskRestorePointListByRestorePointInput.Type;
+  ) as unknown as Schema.Codec<DiskRestorePointListByRestorePointInput>;
 
 // Output Schema
+export interface DiskRestorePointListByRestorePointOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DiskRestorePointListByRestorePointOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1662,9 +2150,7 @@ export const DiskRestorePointListByRestorePointOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskRestorePointListByRestorePointOutput =
-  typeof DiskRestorePointListByRestorePointOutput.Type;
+  }) as unknown as Schema.Codec<DiskRestorePointListByRestorePointOutput>;
 
 // The operation
 /**
@@ -1682,6 +2168,13 @@ export const DiskRestorePointListByRestorePoint =
     outputSchema: DiskRestorePointListByRestorePointOutput,
   }));
 // Input Schema
+export interface DiskRestorePointRevokeAccessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  restorePointCollectionName: string;
+  vmRestorePointName: string;
+  diskRestorePointName: string;
+}
 export const DiskRestorePointRevokeAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1695,15 +2188,12 @@ export const DiskRestorePointRevokeAccessInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}/restorePoints/{vmRestorePointName}/diskRestorePoints/{diskRestorePointName}/endGetAccess",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DiskRestorePointRevokeAccessInput =
-  typeof DiskRestorePointRevokeAccessInput.Type;
+  ) as unknown as Schema.Codec<DiskRestorePointRevokeAccessInput>;
 
 // Output Schema
+export type DiskRestorePointRevokeAccessOutput = void;
 export const DiskRestorePointRevokeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiskRestorePointRevokeAccessOutput =
-  typeof DiskRestorePointRevokeAccessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskRestorePointRevokeAccessOutput>;
 
 // The operation
 /**
@@ -1722,6 +2212,142 @@ export const DiskRestorePointRevokeAccess =
     outputSchema: DiskRestorePointRevokeAccessOutput,
   }));
 // Input Schema
+export interface DisksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskName: string;
+  properties?: {
+    timeCreated?: string;
+    osType?: "Windows" | "Linux";
+    hyperVGeneration?: "V1" | "V2";
+    purchasePlan?: {
+      name: string;
+      publisher: string;
+      product: string;
+      promotionCode?: string;
+    };
+    supportedCapabilities?: {
+      diskControllerTypes?: string;
+      acceleratedNetwork?: boolean;
+      architecture?: "x64" | "Arm64";
+      supportedSecurityOption?:
+        | "TrustedLaunchSupported"
+        | "TrustedLaunchAndConfidentialVMSupported";
+    };
+    creationData: {
+      createOption:
+        | "Empty"
+        | "Attach"
+        | "FromImage"
+        | "Import"
+        | "Copy"
+        | "Restore"
+        | "Upload"
+        | "CopyStart"
+        | "ImportSecure"
+        | "UploadPreparedSecure"
+        | "CopyFromSanSnapshot";
+      storageAccountId?: string;
+      imageReference?: {
+        id?: string;
+        sharedGalleryImageId?: string;
+        communityGalleryImageId?: string;
+        lun?: number;
+      };
+      galleryImageReference?: {
+        id?: string;
+        sharedGalleryImageId?: string;
+        communityGalleryImageId?: string;
+        lun?: number;
+      };
+      sourceUri?: string;
+      sourceResourceId?: string;
+      sourceUniqueId?: string;
+      uploadSizeBytes?: number;
+      logicalSectorSize?: number;
+      securityDataUri?: string;
+      securityMetadataUri?: string;
+      performancePlus?: boolean;
+      elasticSanResourceId?: string;
+      provisionedBandwidthCopySpeed?: "None" | "Enhanced";
+      instantAccessDurationMinutes?: number;
+    };
+    diskSizeGB?: number;
+    diskSizeBytes?: number;
+    uniqueId?: string;
+    encryptionSettingsCollection?: {
+      enabled: boolean;
+      encryptionSettings?: {
+        diskEncryptionKey?: { sourceVault: { id?: string }; secretUrl: string };
+        keyEncryptionKey?: { sourceVault: { id?: string }; keyUrl: string };
+      }[];
+      encryptionSettingsVersion?: string;
+    };
+    provisioningState?: string;
+    diskIOPSReadWrite?: number;
+    diskMBpsReadWrite?: number;
+    diskIOPSReadOnly?: number;
+    diskMBpsReadOnly?: number;
+    diskState?:
+      | "Unattached"
+      | "Attached"
+      | "Reserved"
+      | "Frozen"
+      | "ActiveSAS"
+      | "ActiveSASFrozen"
+      | "ReadyToUpload"
+      | "ActiveUpload";
+    encryption?: {
+      diskEncryptionSetId?: string;
+      type?:
+        | "EncryptionAtRestWithPlatformKey"
+        | "EncryptionAtRestWithCustomerKey"
+        | "EncryptionAtRestWithPlatformAndCustomerKeys";
+    };
+    maxShares?: number;
+    shareInfo?: { vmUri?: string }[];
+    networkAccessPolicy?: "AllowAll" | "AllowPrivate" | "DenyAll";
+    diskAccessId?: string;
+    burstingEnabledTime?: string;
+    tier?: string;
+    burstingEnabled?: boolean;
+    propertyUpdatesInProgress?: { targetTier?: string };
+    supportsHibernation?: boolean;
+    securityProfile?: {
+      securityType?:
+        | "TrustedLaunch"
+        | "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey"
+        | "ConfidentialVM_DiskEncryptedWithPlatformKey"
+        | "ConfidentialVM_DiskEncryptedWithCustomerKey"
+        | "ConfidentialVM_NonPersistedTPM";
+      secureVMDiskEncryptionSetId?: string;
+      confidentialVMVersion?: "V1" | "V2";
+    };
+    completionPercent?: number;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    dataAccessAuthMode?: "AzureActiveDirectory" | "None";
+    optimizedForFrequentAttach?: boolean;
+    LastOwnershipUpdateTime?: string;
+    availabilityPolicy?: { actionOnDiskDelay?: "None" | "AutomaticReattach" };
+  };
+  managedBy?: string;
+  managedByExtended?: string[];
+  sku?: {
+    name?:
+      | "Standard_LRS"
+      | "Premium_LRS"
+      | "StandardSSD_LRS"
+      | "UltraSSD_LRS"
+      | "Premium_ZRS"
+      | "StandardSSD_ZRS"
+      | "PremiumV2_LRS";
+    tier?: string;
+  };
+  zones?: string[];
+  extendedLocation?: { name?: string; type?: "EdgeZone" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DisksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1947,10 +2573,22 @@ export const DisksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DisksCreateOrUpdateInput = typeof DisksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DisksCreateOrUpdateInput>;
 
 // Output Schema
+export interface DisksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1970,8 +2608,7 @@ export const DisksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DisksCreateOrUpdateOutput = typeof DisksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DisksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1987,6 +2624,11 @@ export const DisksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface DisksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskName: string;
+}
 export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1997,12 +2639,12 @@ export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
     apiVersion: "2026-03-02",
   }),
-);
-export type DisksDeleteInput = typeof DisksDeleteInput.Type;
+) as unknown as Schema.Codec<DisksDeleteInput>;
 
 // Output Schema
-export const DisksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisksDeleteOutput = typeof DisksDeleteOutput.Type;
+export type DisksDeleteOutput = void;
+export const DisksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDeleteOutput>;
 
 // The operation
 /**
@@ -2018,6 +2660,11 @@ export const DisksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksDeleteOutput,
 }));
 // Input Schema
+export interface DisksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskName: string;
+}
 export const DisksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2028,10 +2675,22 @@ export const DisksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
     apiVersion: "2026-03-02",
   }),
-);
-export type DisksGetInput = typeof DisksGetInput.Type;
+) as unknown as Schema.Codec<DisksGetInput>;
 
 // Output Schema
+export interface DisksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2050,8 +2709,7 @@ export const DisksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DisksGetOutput = typeof DisksGetOutput.Type;
+}) as unknown as Schema.Codec<DisksGetOutput>;
 
 // The operation
 /**
@@ -2067,6 +2725,15 @@ export const DisksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksGetOutput,
 }));
 // Input Schema
+export interface DisksGrantAccessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskName: string;
+  access: "None" | "Read" | "Write";
+  durationInSeconds: number;
+  getSecureVMGuestStateSAS?: boolean;
+  fileFormat?: "VHD" | "VHDX";
+}
 export const DisksGrantAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2081,18 +2748,21 @@ export const DisksGrantAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess",
     apiVersion: "2026-03-02",
   }),
-);
-export type DisksGrantAccessInput = typeof DisksGrantAccessInput.Type;
+) as unknown as Schema.Codec<DisksGrantAccessInput>;
 
 // Output Schema
+export interface DisksGrantAccessOutput {
+  accessSAS?: string;
+  securityDataAccessSAS?: string;
+  securityMetadataAccessSAS?: string;
+}
 export const DisksGrantAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accessSAS: Schema.optional(Schema.String),
     securityDataAccessSAS: Schema.optional(Schema.String),
     securityMetadataAccessSAS: Schema.optional(Schema.String),
   },
-);
-export type DisksGrantAccessOutput = typeof DisksGrantAccessOutput.Type;
+) as unknown as Schema.Codec<DisksGrantAccessOutput>;
 
 // The operation
 /**
@@ -2108,6 +2778,9 @@ export const DisksGrantAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksGrantAccessOutput,
 }));
 // Input Schema
+export interface DisksListInput {
+  subscriptionId: string;
+}
 export const DisksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2116,10 +2789,25 @@ export const DisksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/disks",
     apiVersion: "2026-03-02",
   }),
-);
-export type DisksListInput = typeof DisksListInput.Type;
+) as unknown as Schema.Codec<DisksListInput>;
 
 // Output Schema
+export interface DisksListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DisksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2143,8 +2831,7 @@ export const DisksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type DisksListOutput = typeof DisksListOutput.Type;
+}) as unknown as Schema.Codec<DisksListOutput>;
 
 // The operation
 /**
@@ -2158,6 +2845,10 @@ export const DisksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksListOutput,
 }));
 // Input Schema
+export interface DisksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DisksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2168,11 +2859,25 @@ export const DisksListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks",
       apiVersion: "2026-03-02",
     }),
-  );
-export type DisksListByResourceGroupInput =
-  typeof DisksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DisksListByResourceGroupInput>;
 
 // Output Schema
+export interface DisksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DisksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2207,9 +2912,7 @@ export const DisksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DisksListByResourceGroupOutput =
-  typeof DisksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DisksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2226,6 +2929,11 @@ export const DisksListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DisksRevokeAccessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskName: string;
+}
 export const DisksRevokeAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2238,12 +2946,12 @@ export const DisksRevokeAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess",
     apiVersion: "2026-03-02",
   }),
-);
-export type DisksRevokeAccessInput = typeof DisksRevokeAccessInput.Type;
+) as unknown as Schema.Codec<DisksRevokeAccessInput>;
 
 // Output Schema
-export const DisksRevokeAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisksRevokeAccessOutput = typeof DisksRevokeAccessOutput.Type;
+export type DisksRevokeAccessOutput = void;
+export const DisksRevokeAccessOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksRevokeAccessOutput>;
 
 // The operation
 /**
@@ -2259,6 +2967,71 @@ export const DisksRevokeAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksRevokeAccessOutput,
 }));
 // Input Schema
+export interface DisksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskName: string;
+  properties?: {
+    osType?: "Windows" | "Linux";
+    diskSizeGB?: number;
+    encryptionSettingsCollection?: {
+      enabled: boolean;
+      encryptionSettings?: {
+        diskEncryptionKey?: { sourceVault: { id?: string }; secretUrl: string };
+        keyEncryptionKey?: { sourceVault: { id?: string }; keyUrl: string };
+      }[];
+      encryptionSettingsVersion?: string;
+    };
+    diskIOPSReadWrite?: number;
+    diskMBpsReadWrite?: number;
+    diskIOPSReadOnly?: number;
+    diskMBpsReadOnly?: number;
+    maxShares?: number;
+    encryption?: {
+      diskEncryptionSetId?: string;
+      type?:
+        | "EncryptionAtRestWithPlatformKey"
+        | "EncryptionAtRestWithCustomerKey"
+        | "EncryptionAtRestWithPlatformAndCustomerKeys";
+    };
+    networkAccessPolicy?: "AllowAll" | "AllowPrivate" | "DenyAll";
+    diskAccessId?: string;
+    tier?: string;
+    burstingEnabled?: boolean;
+    purchasePlan?: {
+      name: string;
+      publisher: string;
+      product: string;
+      promotionCode?: string;
+    };
+    supportedCapabilities?: {
+      diskControllerTypes?: string;
+      acceleratedNetwork?: boolean;
+      architecture?: "x64" | "Arm64";
+      supportedSecurityOption?:
+        | "TrustedLaunchSupported"
+        | "TrustedLaunchAndConfidentialVMSupported";
+    };
+    propertyUpdatesInProgress?: { targetTier?: string };
+    supportsHibernation?: boolean;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    dataAccessAuthMode?: "AzureActiveDirectory" | "None";
+    optimizedForFrequentAttach?: boolean;
+    availabilityPolicy?: { actionOnDiskDelay?: "None" | "AutomaticReattach" };
+  };
+  tags?: Record<string, string>;
+  sku?: {
+    name?:
+      | "Standard_LRS"
+      | "Premium_LRS"
+      | "StandardSSD_LRS"
+      | "UltraSSD_LRS"
+      | "Premium_ZRS"
+      | "StandardSSD_ZRS"
+      | "PremiumV2_LRS";
+    tier?: string;
+  };
+}
 export const DisksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2384,10 +3157,22 @@ export const DisksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
     apiVersion: "2026-03-02",
   }),
-);
-export type DisksUpdateInput = typeof DisksUpdateInput.Type;
+) as unknown as Schema.Codec<DisksUpdateInput>;
 
 // Output Schema
+export interface DisksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DisksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2406,8 +3191,7 @@ export const DisksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DisksUpdateOutput = typeof DisksUpdateOutput.Type;
+}) as unknown as Schema.Codec<DisksUpdateOutput>;
 
 // The operation
 /**
@@ -2423,6 +3207,7 @@ export const DisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DisksUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2431,10 +3216,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Compute/operations",
     apiVersion: "2026-06-06",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2457,8 +3256,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2471,6 +3269,139 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SnapshotsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  snapshotName: string;
+  properties?: {
+    timeCreated?: string;
+    osType?: "Windows" | "Linux";
+    hyperVGeneration?: "V1" | "V2";
+    purchasePlan?: {
+      name: string;
+      publisher: string;
+      product: string;
+      promotionCode?: string;
+    };
+    supportedCapabilities?: {
+      diskControllerTypes?: string;
+      acceleratedNetwork?: boolean;
+      architecture?: "x64" | "Arm64";
+      supportedSecurityOption?:
+        | "TrustedLaunchSupported"
+        | "TrustedLaunchAndConfidentialVMSupported";
+    };
+    creationData: {
+      createOption:
+        | "Empty"
+        | "Attach"
+        | "FromImage"
+        | "Import"
+        | "Copy"
+        | "Restore"
+        | "Upload"
+        | "CopyStart"
+        | "ImportSecure"
+        | "UploadPreparedSecure"
+        | "CopyFromSanSnapshot";
+      storageAccountId?: string;
+      imageReference?: {
+        id?: string;
+        sharedGalleryImageId?: string;
+        communityGalleryImageId?: string;
+        lun?: number;
+      };
+      galleryImageReference?: {
+        id?: string;
+        sharedGalleryImageId?: string;
+        communityGalleryImageId?: string;
+        lun?: number;
+      };
+      sourceUri?: string;
+      sourceResourceId?: string;
+      sourceUniqueId?: string;
+      uploadSizeBytes?: number;
+      logicalSectorSize?: number;
+      securityDataUri?: string;
+      securityMetadataUri?: string;
+      performancePlus?: boolean;
+      elasticSanResourceId?: string;
+      provisionedBandwidthCopySpeed?: "None" | "Enhanced";
+      instantAccessDurationMinutes?: number;
+    };
+    diskSizeGB?: number;
+    diskSizeBytes?: number;
+    diskState?:
+      | "Unattached"
+      | "Attached"
+      | "Reserved"
+      | "Frozen"
+      | "ActiveSAS"
+      | "ActiveSASFrozen"
+      | "ReadyToUpload"
+      | "ActiveUpload";
+    uniqueId?: string;
+    encryptionSettingsCollection?: {
+      enabled: boolean;
+      encryptionSettings?: {
+        diskEncryptionKey?: { sourceVault: { id?: string }; secretUrl: string };
+        keyEncryptionKey?: { sourceVault: { id?: string }; keyUrl: string };
+      }[];
+      encryptionSettingsVersion?: string;
+    };
+    provisioningState?: string;
+    incremental?: boolean;
+    incrementalSnapshotFamilyId?: string;
+    encryption?: {
+      diskEncryptionSetId?: string;
+      type?:
+        | "EncryptionAtRestWithPlatformKey"
+        | "EncryptionAtRestWithCustomerKey"
+        | "EncryptionAtRestWithPlatformAndCustomerKeys";
+    };
+    networkAccessPolicy?: "AllowAll" | "AllowPrivate" | "DenyAll";
+    diskAccessId?: string;
+    securityProfile?: {
+      securityType?:
+        | "TrustedLaunch"
+        | "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey"
+        | "ConfidentialVM_DiskEncryptedWithPlatformKey"
+        | "ConfidentialVM_DiskEncryptedWithCustomerKey"
+        | "ConfidentialVM_NonPersistedTPM";
+      secureVMDiskEncryptionSetId?: string;
+      confidentialVMVersion?: "V1" | "V2";
+    };
+    supportsHibernation?: boolean;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    completionPercent?: number;
+    copyCompletionError?: {
+      errorCode: "CopySourceNotFound";
+      errorMessage: string;
+    };
+    dataAccessAuthMode?: "AzureActiveDirectory" | "None";
+    snapshotAccessState?:
+      | "Unknown"
+      | "Pending"
+      | "Available"
+      | "InstantAccess"
+      | "AvailableWithInstantAccess";
+    immutabilityPolicy?: {
+      immutabilityDurationDays?: number;
+      type?: "Unlocked" | "Locked";
+      policyStartTime?: string;
+      policyExpirationTime?: string;
+      isPolicyExpired?: boolean;
+    };
+  };
+  managedBy?: string;
+  sku?: {
+    name?: "Standard_LRS" | "Premium_LRS" | "Standard_ZRS";
+    tier?: string;
+  };
+  extendedLocation?: { name?: string; type?: "EdgeZone" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SnapshotsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2683,11 +3614,22 @@ export const SnapshotsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}",
       apiVersion: "2026-03-02",
     }),
-  );
-export type SnapshotsCreateOrUpdateInput =
-  typeof SnapshotsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SnapshotsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SnapshotsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SnapshotsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2707,9 +3649,7 @@ export const SnapshotsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SnapshotsCreateOrUpdateOutput =
-  typeof SnapshotsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SnapshotsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2727,6 +3667,11 @@ export const SnapshotsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SnapshotsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  snapshotName: string;
+}
 export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2737,12 +3682,12 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}",
     apiVersion: "2026-03-02",
   }),
-);
-export type SnapshotsDeleteInput = typeof SnapshotsDeleteInput.Type;
+) as unknown as Schema.Codec<SnapshotsDeleteInput>;
 
 // Output Schema
-export const SnapshotsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SnapshotsDeleteOutput = typeof SnapshotsDeleteOutput.Type;
+export type SnapshotsDeleteOutput = void;
+export const SnapshotsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsDeleteOutput>;
 
 // The operation
 /**
@@ -2758,6 +3703,11 @@ export const SnapshotsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SnapshotsDeleteOutput,
 }));
 // Input Schema
+export interface SnapshotsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  snapshotName: string;
+}
 export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2768,10 +3718,22 @@ export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}",
     apiVersion: "2026-03-02",
   }),
-);
-export type SnapshotsGetInput = typeof SnapshotsGetInput.Type;
+) as unknown as Schema.Codec<SnapshotsGetInput>;
 
 // Output Schema
+export interface SnapshotsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2790,8 +3752,7 @@ export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SnapshotsGetOutput = typeof SnapshotsGetOutput.Type;
+}) as unknown as Schema.Codec<SnapshotsGetOutput>;
 
 // The operation
 /**
@@ -2807,6 +3768,15 @@ export const SnapshotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SnapshotsGetOutput,
 }));
 // Input Schema
+export interface SnapshotsGrantAccessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  snapshotName: string;
+  access: "None" | "Read" | "Write";
+  durationInSeconds: number;
+  getSecureVMGuestStateSAS?: boolean;
+  fileFormat?: "VHD" | "VHDX";
+}
 export const SnapshotsGrantAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2822,17 +3792,20 @@ export const SnapshotsGrantAccessInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/beginGetAccess",
       apiVersion: "2026-03-02",
     }),
-  );
-export type SnapshotsGrantAccessInput = typeof SnapshotsGrantAccessInput.Type;
+  ) as unknown as Schema.Codec<SnapshotsGrantAccessInput>;
 
 // Output Schema
+export interface SnapshotsGrantAccessOutput {
+  accessSAS?: string;
+  securityDataAccessSAS?: string;
+  securityMetadataAccessSAS?: string;
+}
 export const SnapshotsGrantAccessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessSAS: Schema.optional(Schema.String),
     securityDataAccessSAS: Schema.optional(Schema.String),
     securityMetadataAccessSAS: Schema.optional(Schema.String),
-  });
-export type SnapshotsGrantAccessOutput = typeof SnapshotsGrantAccessOutput.Type;
+  }) as unknown as Schema.Codec<SnapshotsGrantAccessOutput>;
 
 // The operation
 /**
@@ -2850,6 +3823,9 @@ export const SnapshotsGrantAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SnapshotsListInput {
+  subscriptionId: string;
+}
 export const SnapshotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2858,10 +3834,25 @@ export const SnapshotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/snapshots",
     apiVersion: "2026-03-02",
   }),
-);
-export type SnapshotsListInput = typeof SnapshotsListInput.Type;
+) as unknown as Schema.Codec<SnapshotsListInput>;
 
 // Output Schema
+export interface SnapshotsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SnapshotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2885,8 +3876,7 @@ export const SnapshotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SnapshotsListOutput = typeof SnapshotsListOutput.Type;
+}) as unknown as Schema.Codec<SnapshotsListOutput>;
 
 // The operation
 /**
@@ -2900,6 +3890,10 @@ export const SnapshotsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SnapshotsListOutput,
 }));
 // Input Schema
+export interface SnapshotsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SnapshotsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2910,11 +3904,25 @@ export const SnapshotsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots",
       apiVersion: "2026-03-02",
     }),
-  );
-export type SnapshotsListByResourceGroupInput =
-  typeof SnapshotsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SnapshotsListByResourceGroupInput>;
 
 // Output Schema
+export interface SnapshotsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SnapshotsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2949,9 +3957,7 @@ export const SnapshotsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SnapshotsListByResourceGroupOutput =
-  typeof SnapshotsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SnapshotsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2967,6 +3973,11 @@ export const SnapshotsListByResourceGroup =
     outputSchema: SnapshotsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SnapshotsRevokeAccessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  snapshotName: string;
+}
 export const SnapshotsRevokeAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2978,14 +3989,12 @@ export const SnapshotsRevokeAccessInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/endGetAccess",
       apiVersion: "2026-03-02",
     }),
-  );
-export type SnapshotsRevokeAccessInput = typeof SnapshotsRevokeAccessInput.Type;
+  ) as unknown as Schema.Codec<SnapshotsRevokeAccessInput>;
 
 // Output Schema
+export type SnapshotsRevokeAccessOutput = void;
 export const SnapshotsRevokeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SnapshotsRevokeAccessOutput =
-  typeof SnapshotsRevokeAccessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsRevokeAccessOutput>;
 
 // The operation
 /**
@@ -3003,6 +4012,54 @@ export const SnapshotsRevokeAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SnapshotsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  snapshotName: string;
+  properties?: {
+    osType?: "Windows" | "Linux";
+    diskSizeGB?: number;
+    encryptionSettingsCollection?: {
+      enabled: boolean;
+      encryptionSettings?: {
+        diskEncryptionKey?: { sourceVault: { id?: string }; secretUrl: string };
+        keyEncryptionKey?: { sourceVault: { id?: string }; keyUrl: string };
+      }[];
+      encryptionSettingsVersion?: string;
+    };
+    encryption?: {
+      diskEncryptionSetId?: string;
+      type?:
+        | "EncryptionAtRestWithPlatformKey"
+        | "EncryptionAtRestWithCustomerKey"
+        | "EncryptionAtRestWithPlatformAndCustomerKeys";
+    };
+    networkAccessPolicy?: "AllowAll" | "AllowPrivate" | "DenyAll";
+    diskAccessId?: string;
+    supportsHibernation?: boolean;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    dataAccessAuthMode?: "AzureActiveDirectory" | "None";
+    supportedCapabilities?: {
+      diskControllerTypes?: string;
+      acceleratedNetwork?: boolean;
+      architecture?: "x64" | "Arm64";
+      supportedSecurityOption?:
+        | "TrustedLaunchSupported"
+        | "TrustedLaunchAndConfidentialVMSupported";
+    };
+    snapshotAccessState?:
+      | "Unknown"
+      | "Pending"
+      | "Available"
+      | "InstantAccess"
+      | "AvailableWithInstantAccess";
+  };
+  tags?: Record<string, string>;
+  sku?: {
+    name?: "Standard_LRS" | "Premium_LRS" | "Standard_ZRS";
+    tier?: string;
+  };
+}
 export const SnapshotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3101,10 +4158,22 @@ export const SnapshotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}",
     apiVersion: "2026-03-02",
   }),
-);
-export type SnapshotsUpdateInput = typeof SnapshotsUpdateInput.Type;
+) as unknown as Schema.Codec<SnapshotsUpdateInput>;
 
 // Output Schema
+export interface SnapshotsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SnapshotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3123,8 +4192,7 @@ export const SnapshotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SnapshotsUpdateOutput = typeof SnapshotsUpdateOutput.Type;
+}) as unknown as Schema.Codec<SnapshotsUpdateOutput>;
 
 // The operation
 /**
@@ -3140,6 +4208,13 @@ export const SnapshotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SnapshotsUpdateOutput,
 }));
 // Input Schema
+export interface SnapshotsUpdateImmutabilityPolicyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  snapshotName: string;
+  immutabilityDurationDays: number;
+  type: "Unlocked" | "Locked";
+}
 export const SnapshotsUpdateImmutabilityPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3153,11 +4228,22 @@ export const SnapshotsUpdateImmutabilityPolicyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/updateImmutabilityPolicy",
       apiVersion: "2026-03-02",
     }),
-  );
-export type SnapshotsUpdateImmutabilityPolicyInput =
-  typeof SnapshotsUpdateImmutabilityPolicyInput.Type;
+  ) as unknown as Schema.Codec<SnapshotsUpdateImmutabilityPolicyInput>;
 
 // Output Schema
+export interface SnapshotsUpdateImmutabilityPolicyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SnapshotsUpdateImmutabilityPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3177,9 +4263,7 @@ export const SnapshotsUpdateImmutabilityPolicyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SnapshotsUpdateImmutabilityPolicyOutput =
-  typeof SnapshotsUpdateImmutabilityPolicyOutput.Type;
+  }) as unknown as Schema.Codec<SnapshotsUpdateImmutabilityPolicyOutput>;
 
 // The operation
 /**
@@ -3196,6 +4280,13 @@ export const SnapshotsUpdateImmutabilityPolicy =
     outputSchema: SnapshotsUpdateImmutabilityPolicyOutput,
   }));
 // Input Schema
+export interface SnapshotsUpdateImmutabilityPolicyLockInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  snapshotName: string;
+  immutabilityDurationDays: number;
+  type: "Unlocked" | "Locked";
+}
 export const SnapshotsUpdateImmutabilityPolicyLockInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3209,11 +4300,22 @@ export const SnapshotsUpdateImmutabilityPolicyLockInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}/updateImmutabilityPolicyLock",
       apiVersion: "2026-03-02",
     }),
-  );
-export type SnapshotsUpdateImmutabilityPolicyLockInput =
-  typeof SnapshotsUpdateImmutabilityPolicyLockInput.Type;
+  ) as unknown as Schema.Codec<SnapshotsUpdateImmutabilityPolicyLockInput>;
 
 // Output Schema
+export interface SnapshotsUpdateImmutabilityPolicyLockOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SnapshotsUpdateImmutabilityPolicyLockOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3233,9 +4335,7 @@ export const SnapshotsUpdateImmutabilityPolicyLockOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SnapshotsUpdateImmutabilityPolicyLockOutput =
-  typeof SnapshotsUpdateImmutabilityPolicyLockOutput.Type;
+  }) as unknown as Schema.Codec<SnapshotsUpdateImmutabilityPolicyLockOutput>;
 
 // The operation
 /**
@@ -3252,6 +4352,10 @@ export const SnapshotsUpdateImmutabilityPolicyLock =
     outputSchema: SnapshotsUpdateImmutabilityPolicyLockOutput,
   }));
 // Input Schema
+export interface SpotPlacementScoresGetInput {
+  subscriptionId: string;
+  location: string;
+}
 export const SpotPlacementScoresGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3262,11 +4366,22 @@ export const SpotPlacementScoresGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot",
       apiVersion: "2025-06-05",
     }),
-  );
-export type SpotPlacementScoresGetInput =
-  typeof SpotPlacementScoresGetInput.Type;
+  ) as unknown as Schema.Codec<SpotPlacementScoresGetInput>;
 
 // Output Schema
+export interface SpotPlacementScoresGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SpotPlacementScoresGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3286,9 +4401,7 @@ export const SpotPlacementScoresGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SpotPlacementScoresGetOutput =
-  typeof SpotPlacementScoresGetOutput.Type;
+  }) as unknown as Schema.Codec<SpotPlacementScoresGetOutput>;
 
 // The operation
 /**
@@ -3305,6 +4418,14 @@ export const SpotPlacementScoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SpotPlacementScoresPostInput {
+  subscriptionId: string;
+  location: string;
+  desiredLocations?: string[];
+  desiredSizes?: { sku?: string }[];
+  desiredCount?: number;
+  availabilityZones?: boolean;
+}
 export const SpotPlacementScoresPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3325,11 +4446,22 @@ export const SpotPlacementScoresPostInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
       apiVersion: "2025-06-05",
     }),
-  );
-export type SpotPlacementScoresPostInput =
-  typeof SpotPlacementScoresPostInput.Type;
+  ) as unknown as Schema.Codec<SpotPlacementScoresPostInput>;
 
 // Output Schema
+export interface SpotPlacementScoresPostOutput {
+  desiredLocations?: string[];
+  desiredSizes?: { sku?: string }[];
+  desiredCount?: number;
+  availabilityZones?: boolean;
+  placementScores?: {
+    sku?: string;
+    region?: string;
+    availabilityZone?: string;
+    score?: string;
+    isQuotaAvailable?: boolean;
+  }[];
+}
 export const SpotPlacementScoresPostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     desiredLocations: Schema.optional(Schema.Array(Schema.String)),
@@ -3353,9 +4485,7 @@ export const SpotPlacementScoresPostOutput =
         }),
       ),
     ),
-  });
-export type SpotPlacementScoresPostOutput =
-  typeof SpotPlacementScoresPostOutput.Type;
+  }) as unknown as Schema.Codec<SpotPlacementScoresPostOutput>;
 
 // The operation
 /**
@@ -3372,6 +4502,12 @@ export const SpotPlacementScoresPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineBulkOperationsBulkCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  operationIds: string[];
+}
 export const VirtualMachineBulkOperationsBulkCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3384,11 +4520,65 @@ export const VirtualMachineBulkOperationsBulkCancelInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkCancel",
       apiVersion: "2026-06-06",
     }),
-  );
-export type VirtualMachineBulkOperationsBulkCancelInput =
-  typeof VirtualMachineBulkOperationsBulkCancelInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkCancelInput>;
 
 // Output Schema
+export interface VirtualMachineBulkOperationsBulkCancelOutput {
+  results: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      fallbackOperationInfo?: {
+        lastOpType:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+        status: string;
+        error?: { errorCode: string; errorDetails: string };
+      };
+      completedAt?: string;
+      retryPolicy?: {
+        retryCount?: number;
+        retryWindowInMinutes?: number;
+        onFailureAction?:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+      };
+    };
+  }[];
+}
 export const VirtualMachineBulkOperationsBulkCancelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -3475,9 +4665,7 @@ export const VirtualMachineBulkOperationsBulkCancelOutput =
         ),
       }),
     ),
-  });
-export type VirtualMachineBulkOperationsBulkCancelOutput =
-  typeof VirtualMachineBulkOperationsBulkCancelOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkCancelOutput>;
 
 // The operation
 /**
@@ -3494,6 +4682,25 @@ export const VirtualMachineBulkOperationsBulkCancel =
     outputSchema: VirtualMachineBulkOperationsBulkCancelOutput,
   }));
 // Input Schema
+export interface VirtualMachineBulkOperationsBulkDeallocateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  executionParameters: {
+    retryPolicy?: {
+      retryCount?: number;
+      retryWindowInMinutes?: number;
+      onFailureAction?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+    };
+  };
+  resources: { ids: string[] };
+}
 export const VirtualMachineBulkOperationsBulkDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3526,11 +4733,68 @@ export const VirtualMachineBulkOperationsBulkDeallocateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkDeallocate",
       apiVersion: "2026-06-06",
     }),
-  );
-export type VirtualMachineBulkOperationsBulkDeallocateInput =
-  typeof VirtualMachineBulkOperationsBulkDeallocateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkDeallocateInput>;
 
 // Output Schema
+export interface VirtualMachineBulkOperationsBulkDeallocateOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      fallbackOperationInfo?: {
+        lastOpType:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+        status: string;
+        error?: { errorCode: string; errorDetails: string };
+      };
+      completedAt?: string;
+      retryPolicy?: {
+        retryCount?: number;
+        retryWindowInMinutes?: number;
+        onFailureAction?:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+      };
+    };
+  }[];
+}
 export const VirtualMachineBulkOperationsBulkDeallocateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -3622,9 +4886,7 @@ export const VirtualMachineBulkOperationsBulkDeallocateOutput =
         }),
       ),
     ),
-  });
-export type VirtualMachineBulkOperationsBulkDeallocateOutput =
-  typeof VirtualMachineBulkOperationsBulkDeallocateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkDeallocateOutput>;
 
 // The operation
 /**
@@ -3641,6 +4903,26 @@ export const VirtualMachineBulkOperationsBulkDeallocate =
     outputSchema: VirtualMachineBulkOperationsBulkDeallocateOutput,
   }));
 // Input Schema
+export interface VirtualMachineBulkOperationsBulkDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  executionParameters: {
+    retryPolicy?: {
+      retryCount?: number;
+      retryWindowInMinutes?: number;
+      onFailureAction?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+    };
+  };
+  resources: { ids: string[] };
+  forceDeletion?: boolean;
+}
 export const VirtualMachineBulkOperationsBulkDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3674,11 +4956,68 @@ export const VirtualMachineBulkOperationsBulkDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkDelete",
       apiVersion: "2026-06-06",
     }),
-  );
-export type VirtualMachineBulkOperationsBulkDeleteInput =
-  typeof VirtualMachineBulkOperationsBulkDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkDeleteInput>;
 
 // Output Schema
+export interface VirtualMachineBulkOperationsBulkDeleteOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      fallbackOperationInfo?: {
+        lastOpType:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+        status: string;
+        error?: { errorCode: string; errorDetails: string };
+      };
+      completedAt?: string;
+      retryPolicy?: {
+        retryCount?: number;
+        retryWindowInMinutes?: number;
+        onFailureAction?:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+      };
+    };
+  }[];
+}
 export const VirtualMachineBulkOperationsBulkDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -3770,9 +5109,7 @@ export const VirtualMachineBulkOperationsBulkDeleteOutput =
         }),
       ),
     ),
-  });
-export type VirtualMachineBulkOperationsBulkDeleteOutput =
-  typeof VirtualMachineBulkOperationsBulkDeleteOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkDeleteOutput>;
 
 // The operation
 /**
@@ -3789,6 +5126,12 @@ export const VirtualMachineBulkOperationsBulkDelete =
     outputSchema: VirtualMachineBulkOperationsBulkDeleteOutput,
   }));
 // Input Schema
+export interface VirtualMachineBulkOperationsBulkGetOperationsStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  operationIds: string[];
+}
 export const VirtualMachineBulkOperationsBulkGetOperationsStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3801,11 +5144,65 @@ export const VirtualMachineBulkOperationsBulkGetOperationsStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkGetOperationStatus",
       apiVersion: "2026-06-06",
     }),
-  );
-export type VirtualMachineBulkOperationsBulkGetOperationsStatusInput =
-  typeof VirtualMachineBulkOperationsBulkGetOperationsStatusInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkGetOperationsStatusInput>;
 
 // Output Schema
+export interface VirtualMachineBulkOperationsBulkGetOperationsStatusOutput {
+  results: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      fallbackOperationInfo?: {
+        lastOpType:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+        status: string;
+        error?: { errorCode: string; errorDetails: string };
+      };
+      completedAt?: string;
+      retryPolicy?: {
+        retryCount?: number;
+        retryWindowInMinutes?: number;
+        onFailureAction?:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+      };
+    };
+  }[];
+}
 export const VirtualMachineBulkOperationsBulkGetOperationsStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -3892,9 +5289,7 @@ export const VirtualMachineBulkOperationsBulkGetOperationsStatusOutput =
         ),
       }),
     ),
-  });
-export type VirtualMachineBulkOperationsBulkGetOperationsStatusOutput =
-  typeof VirtualMachineBulkOperationsBulkGetOperationsStatusOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkGetOperationsStatusOutput>;
 
 // The operation
 /**
@@ -3911,6 +5306,25 @@ export const VirtualMachineBulkOperationsBulkGetOperationsStatus =
     outputSchema: VirtualMachineBulkOperationsBulkGetOperationsStatusOutput,
   }));
 // Input Schema
+export interface VirtualMachineBulkOperationsBulkHibernateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  executionParameters: {
+    retryPolicy?: {
+      retryCount?: number;
+      retryWindowInMinutes?: number;
+      onFailureAction?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+    };
+  };
+  resources: { ids: string[] };
+}
 export const VirtualMachineBulkOperationsBulkHibernateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3943,11 +5357,68 @@ export const VirtualMachineBulkOperationsBulkHibernateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkHibernate",
       apiVersion: "2026-06-06",
     }),
-  );
-export type VirtualMachineBulkOperationsBulkHibernateInput =
-  typeof VirtualMachineBulkOperationsBulkHibernateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkHibernateInput>;
 
 // Output Schema
+export interface VirtualMachineBulkOperationsBulkHibernateOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      fallbackOperationInfo?: {
+        lastOpType:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+        status: string;
+        error?: { errorCode: string; errorDetails: string };
+      };
+      completedAt?: string;
+      retryPolicy?: {
+        retryCount?: number;
+        retryWindowInMinutes?: number;
+        onFailureAction?:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+      };
+    };
+  }[];
+}
 export const VirtualMachineBulkOperationsBulkHibernateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -4039,9 +5510,7 @@ export const VirtualMachineBulkOperationsBulkHibernateOutput =
         }),
       ),
     ),
-  });
-export type VirtualMachineBulkOperationsBulkHibernateOutput =
-  typeof VirtualMachineBulkOperationsBulkHibernateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkHibernateOutput>;
 
 // The operation
 /**
@@ -4058,6 +5527,25 @@ export const VirtualMachineBulkOperationsBulkHibernate =
     outputSchema: VirtualMachineBulkOperationsBulkHibernateOutput,
   }));
 // Input Schema
+export interface VirtualMachineBulkOperationsBulkStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  executionParameters: {
+    retryPolicy?: {
+      retryCount?: number;
+      retryWindowInMinutes?: number;
+      onFailureAction?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+    };
+  };
+  resources: { ids: string[] };
+}
 export const VirtualMachineBulkOperationsBulkStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4090,11 +5578,68 @@ export const VirtualMachineBulkOperationsBulkStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkStart",
       apiVersion: "2026-06-06",
     }),
-  );
-export type VirtualMachineBulkOperationsBulkStartInput =
-  typeof VirtualMachineBulkOperationsBulkStartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkStartInput>;
 
 // Output Schema
+export interface VirtualMachineBulkOperationsBulkStartOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?:
+        | "Unknown"
+        | "Start"
+        | "Deallocate"
+        | "Hibernate"
+        | "Create"
+        | "Delete";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      fallbackOperationInfo?: {
+        lastOpType:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+        status: string;
+        error?: { errorCode: string; errorDetails: string };
+      };
+      completedAt?: string;
+      retryPolicy?: {
+        retryCount?: number;
+        retryWindowInMinutes?: number;
+        onFailureAction?:
+          | "Unknown"
+          | "Start"
+          | "Deallocate"
+          | "Hibernate"
+          | "Create"
+          | "Delete";
+      };
+    };
+  }[];
+}
 export const VirtualMachineBulkOperationsBulkStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -4186,9 +5731,7 @@ export const VirtualMachineBulkOperationsBulkStartOutput =
         }),
       ),
     ),
-  });
-export type VirtualMachineBulkOperationsBulkStartOutput =
-  typeof VirtualMachineBulkOperationsBulkStartOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineBulkOperationsBulkStartOutput>;
 
 // The operation
 /**

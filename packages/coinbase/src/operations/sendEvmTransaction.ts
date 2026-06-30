@@ -3,6 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SendEvmTransactionInput {
+  address: string;
+  network:
+    | "base"
+    | "base-sepolia"
+    | "ethereum"
+    | "ethereum-sepolia"
+    | "avalanche"
+    | "polygon"
+    | "optimism"
+    | "arbitrum"
+    | "arbitrum-sepolia"
+    | "world"
+    | "world-sepolia";
+  transaction: string;
+}
 export const SendEvmTransactionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -25,15 +41,16 @@ export const SendEvmTransactionInput =
       method: "POST",
       path: "/v2/evm/accounts/{address}/send/transaction",
     }),
-  );
-export type SendEvmTransactionInput = typeof SendEvmTransactionInput.Type;
+  ) as unknown as Schema.Codec<SendEvmTransactionInput>;
 
 // Output Schema
+export interface SendEvmTransactionOutput {
+  transactionHash: string;
+}
 export const SendEvmTransactionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionHash: Schema.String,
-  });
-export type SendEvmTransactionOutput = typeof SendEvmTransactionOutput.Type;
+  }) as unknown as Schema.Codec<SendEvmTransactionOutput>;
 
 // The operation
 /**

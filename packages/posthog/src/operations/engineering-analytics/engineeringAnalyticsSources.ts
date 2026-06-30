@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface EngineeringAnalyticsSourcesInput {
+  project_id: string;
+}
 export const EngineeringAnalyticsSourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,14 @@ export const EngineeringAnalyticsSourcesInput =
       method: "GET",
       path: "/api/projects/{project_id}/engineering_analytics/sources/",
     }),
-  );
-export type EngineeringAnalyticsSourcesInput =
-  typeof EngineeringAnalyticsSourcesInput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsSourcesInput>;
 
 // Output Schema
+export type EngineeringAnalyticsSourcesOutput = {
+  id: string;
+  repo: string;
+  prefix: string;
+}[];
 export const EngineeringAnalyticsSourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -23,9 +29,7 @@ export const EngineeringAnalyticsSourcesOutput =
       repo: Schema.String,
       prefix: Schema.String,
     }),
-  );
-export type EngineeringAnalyticsSourcesOutput =
-  typeof EngineeringAnalyticsSourcesOutput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsSourcesOutput>;
 
 // The operation
 /**

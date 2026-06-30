@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UsersTwoFactorStartSetupRetrieveInput {
+  uuid: string;
+}
 export const UsersTwoFactorStartSetupRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const UsersTwoFactorStartSetupRetrieveInput =
       method: "GET",
       path: "/api/users/{uuid}/two_factor_start_setup/",
     }),
-  );
-export type UsersTwoFactorStartSetupRetrieveInput =
-  typeof UsersTwoFactorStartSetupRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UsersTwoFactorStartSetupRetrieveInput>;
 
 // Output Schema
+export type UsersTwoFactorStartSetupRetrieveOutput = void;
 export const UsersTwoFactorStartSetupRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersTwoFactorStartSetupRetrieveOutput =
-  typeof UsersTwoFactorStartSetupRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersTwoFactorStartSetupRetrieveOutput>;
 
 // The operation
 export const usersTwoFactorStartSetupRetrieve =

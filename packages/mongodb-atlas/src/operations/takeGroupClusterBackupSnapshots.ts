@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface TakeGroupClusterBackupSnapshotsInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const TakeGroupClusterBackupSnapshotsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const TakeGroupClusterBackupSnapshotsInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots",
     }),
-  );
-export type TakeGroupClusterBackupSnapshotsInput =
-  typeof TakeGroupClusterBackupSnapshotsInput.Type;
+  ) as unknown as Schema.Codec<TakeGroupClusterBackupSnapshotsInput>;
 
 // Output Schema
+export type TakeGroupClusterBackupSnapshotsOutput = void;
 export const TakeGroupClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TakeGroupClusterBackupSnapshotsOutput =
-  typeof TakeGroupClusterBackupSnapshotsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TakeGroupClusterBackupSnapshotsOutput>;
 
 // The operation
 /**

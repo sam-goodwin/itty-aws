@@ -4,12 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface DashboardsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dashboardName: string;
+}
 export const DashboardsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -20,10 +26,22 @@ export const DashboardsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type DashboardsGetInput = typeof DashboardsGetInput.Type;
+) as unknown as Schema.Codec<DashboardsGetInput>;
 
 // Output Schema
+export interface DashboardsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DashboardsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -42,8 +60,7 @@ export const DashboardsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DashboardsGetOutput = typeof DashboardsGetOutput.Type;
+}) as unknown as Schema.Codec<DashboardsGetOutput>;
 
 // The operation
 /**
@@ -59,6 +76,10 @@ export const DashboardsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DashboardsGetOutput,
 }));
 // Input Schema
+export interface DashboardsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DashboardsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -68,10 +89,25 @@ export const DashboardsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards",
     apiVersion: "2025-08-01",
   }),
-);
-export type DashboardsListInput = typeof DashboardsListInput.Type;
+) as unknown as Schema.Codec<DashboardsListInput>;
 
 // Output Schema
+export interface DashboardsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -95,8 +131,7 @@ export const DashboardsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type DashboardsListOutput = typeof DashboardsListOutput.Type;
+}) as unknown as Schema.Codec<DashboardsListOutput>;
 
 // The operation
 /**
@@ -111,6 +146,9 @@ export const DashboardsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DashboardsListOutput,
 }));
 // Input Schema
+export interface DashboardsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DashboardsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -120,11 +158,25 @@ export const DashboardsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/dashboards",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DashboardsListBySubscriptionInput =
-  typeof DashboardsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DashboardsListBySubscriptionInput>;
 
 // Output Schema
+export interface DashboardsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DashboardsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -159,9 +211,7 @@ export const DashboardsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DashboardsListBySubscriptionOutput =
-  typeof DashboardsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DashboardsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -176,6 +226,11 @@ export const DashboardsListBySubscription =
     outputSchema: DashboardsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface GrafanaCheckEnterpriseDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const GrafanaCheckEnterpriseDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -187,11 +242,23 @@ export const GrafanaCheckEnterpriseDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/checkEnterpriseDetails",
       apiVersion: "2025-08-01",
     }),
-  );
-export type GrafanaCheckEnterpriseDetailsInput =
-  typeof GrafanaCheckEnterpriseDetailsInput.Type;
+  ) as unknown as Schema.Codec<GrafanaCheckEnterpriseDetailsInput>;
 
 // Output Schema
+export interface GrafanaCheckEnterpriseDetailsOutput {
+  saasSubscriptionDetails?: {
+    planId?: string;
+    offerId?: string;
+    publisherId?: string;
+    term?: { termUnit?: string; startDate?: string; endDate?: string };
+  };
+  marketplaceTrialQuota?: {
+    availablePromotion?: "None" | "FreeTrial";
+    grafanaResourceId?: string;
+    trialStartAt?: string;
+    trialEndAt?: string;
+  };
+}
 export const GrafanaCheckEnterpriseDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     saasSubscriptionDetails: Schema.optional(
@@ -218,9 +285,7 @@ export const GrafanaCheckEnterpriseDetailsOutput =
         trialEndAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GrafanaCheckEnterpriseDetailsOutput =
-  typeof GrafanaCheckEnterpriseDetailsOutput.Type;
+  }) as unknown as Schema.Codec<GrafanaCheckEnterpriseDetailsOutput>;
 
 // The operation
 /**
@@ -237,6 +302,91 @@ export const GrafanaCheckEnterpriseDetails =
     outputSchema: GrafanaCheckEnterpriseDetailsOutput,
   }));
 // Input Schema
+export interface GrafanaCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+    grafanaVersion?: string;
+    endpoint?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    zoneRedundancy?: "Disabled" | "Enabled";
+    apiKey?: "Disabled" | "Enabled";
+    creatorCanAdmin?: "Disabled" | "Enabled";
+    deterministicOutboundIP?: "Disabled" | "Enabled";
+    outboundIPs?: string[];
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    autoGeneratedDomainNameLabelScope?: "TenantReuse";
+    grafanaIntegrations?: {
+      azureMonitorWorkspaceIntegrations?: {
+        azureMonitorWorkspaceResourceId?: string;
+      }[];
+    };
+    enterpriseConfigurations?: {
+      marketplacePlanId?: string;
+      marketplaceAutoRenew?: "Disabled" | "Enabled";
+    };
+    grafanaConfigurations?: {
+      smtp?: {
+        enabled?: boolean;
+        host?: string;
+        user?: string;
+        password?: string | Redacted.Redacted<string>;
+        fromAddress?: string;
+        fromName?: string;
+        startTLSPolicy?:
+          | "OpportunisticStartTLS"
+          | "MandatoryStartTLS"
+          | "NoStartTLS";
+        skipVerify?: boolean;
+      };
+      snapshots?: { externalEnabled?: boolean };
+      users?: { viewersCanEdit?: boolean; editorsCanAdmin?: boolean };
+      security?: { csrfAlwaysCheck?: boolean };
+      unifiedAlertingScreenshots?: { captureEnabled?: boolean };
+    };
+    grafanaPlugins?: Record<string, { pluginId?: string }>;
+    grafanaMajorVersion?: string;
+  };
+  sku?: { name: string; size?: "X1" | "X2" };
+  tags?: Record<string, string>;
+  location?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+}
 export const GrafanaCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -416,10 +566,22 @@ export const GrafanaCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type GrafanaCreateInput = typeof GrafanaCreateInput.Type;
+) as unknown as Schema.Codec<GrafanaCreateInput>;
 
 // Output Schema
+export interface GrafanaCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GrafanaCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -438,8 +600,7 @@ export const GrafanaCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GrafanaCreateOutput = typeof GrafanaCreateOutput.Type;
+}) as unknown as Schema.Codec<GrafanaCreateOutput>;
 
 // The operation
 /**
@@ -455,6 +616,11 @@ export const GrafanaCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GrafanaCreateOutput,
 }));
 // Input Schema
+export interface GrafanaDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const GrafanaDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -465,12 +631,12 @@ export const GrafanaDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type GrafanaDeleteInput = typeof GrafanaDeleteInput.Type;
+) as unknown as Schema.Codec<GrafanaDeleteInput>;
 
 // Output Schema
-export const GrafanaDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GrafanaDeleteOutput = typeof GrafanaDeleteOutput.Type;
+export type GrafanaDeleteOutput = void;
+export const GrafanaDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GrafanaDeleteOutput>;
 
 // The operation
 /**
@@ -486,6 +652,11 @@ export const GrafanaDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GrafanaDeleteOutput,
 }));
 // Input Schema
+export interface GrafanaFetchAvailablePluginsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const GrafanaFetchAvailablePluginsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -497,11 +668,18 @@ export const GrafanaFetchAvailablePluginsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/fetchAvailablePlugins",
       apiVersion: "2025-08-01",
     }),
-  );
-export type GrafanaFetchAvailablePluginsInput =
-  typeof GrafanaFetchAvailablePluginsInput.Type;
+  ) as unknown as Schema.Codec<GrafanaFetchAvailablePluginsInput>;
 
 // Output Schema
+export interface GrafanaFetchAvailablePluginsOutput {
+  value?: {
+    pluginId?: string;
+    name?: string;
+    type?: string;
+    author?: string;
+  }[];
+  nextLink?: string;
+}
 export const GrafanaFetchAvailablePluginsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -515,9 +693,7 @@ export const GrafanaFetchAvailablePluginsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GrafanaFetchAvailablePluginsOutput =
-  typeof GrafanaFetchAvailablePluginsOutput.Type;
+  }) as unknown as Schema.Codec<GrafanaFetchAvailablePluginsOutput>;
 
 // The operation
 /**
@@ -534,6 +710,11 @@ export const GrafanaFetchAvailablePlugins =
     outputSchema: GrafanaFetchAvailablePluginsOutput,
   }));
 // Input Schema
+export interface GrafanaGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const GrafanaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -544,10 +725,22 @@ export const GrafanaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type GrafanaGetInput = typeof GrafanaGetInput.Type;
+) as unknown as Schema.Codec<GrafanaGetInput>;
 
 // Output Schema
+export interface GrafanaGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GrafanaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -566,8 +759,7 @@ export const GrafanaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GrafanaGetOutput = typeof GrafanaGetOutput.Type;
+}) as unknown as Schema.Codec<GrafanaGetOutput>;
 
 // The operation
 /**
@@ -583,6 +775,9 @@ export const GrafanaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GrafanaGetOutput,
 }));
 // Input Schema
+export interface GrafanaListInput {
+  subscriptionId: string;
+}
 export const GrafanaListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -591,10 +786,25 @@ export const GrafanaListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/grafana",
     apiVersion: "2025-08-01",
   }),
-);
-export type GrafanaListInput = typeof GrafanaListInput.Type;
+) as unknown as Schema.Codec<GrafanaListInput>;
 
 // Output Schema
+export interface GrafanaListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GrafanaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -618,8 +828,7 @@ export const GrafanaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type GrafanaListOutput = typeof GrafanaListOutput.Type;
+}) as unknown as Schema.Codec<GrafanaListOutput>;
 
 // The operation
 /**
@@ -633,6 +842,10 @@ export const GrafanaList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GrafanaListOutput,
 }));
 // Input Schema
+export interface GrafanaListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const GrafanaListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -643,11 +856,25 @@ export const GrafanaListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana",
       apiVersion: "2025-08-01",
     }),
-  );
-export type GrafanaListByResourceGroupInput =
-  typeof GrafanaListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<GrafanaListByResourceGroupInput>;
 
 // Output Schema
+export interface GrafanaListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GrafanaListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -682,9 +909,7 @@ export const GrafanaListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GrafanaListByResourceGroupOutput =
-  typeof GrafanaListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<GrafanaListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -701,6 +926,63 @@ export const GrafanaListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GrafanaUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  sku?: { name: string; size?: "X1" | "X2" };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    zoneRedundancy?: "Disabled" | "Enabled";
+    apiKey?: "Disabled" | "Enabled";
+    creatorCanAdmin?: "Disabled" | "Enabled";
+    deterministicOutboundIP?: "Disabled" | "Enabled";
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    grafanaIntegrations?: {
+      azureMonitorWorkspaceIntegrations?: {
+        azureMonitorWorkspaceResourceId?: string;
+      }[];
+    };
+    enterpriseConfigurations?: {
+      marketplacePlanId?: string;
+      marketplaceAutoRenew?: "Disabled" | "Enabled";
+    };
+    grafanaConfigurations?: {
+      smtp?: {
+        enabled?: boolean;
+        host?: string;
+        user?: string;
+        password?: string | Redacted.Redacted<string>;
+        fromAddress?: string;
+        fromName?: string;
+        startTLSPolicy?:
+          | "OpportunisticStartTLS"
+          | "MandatoryStartTLS"
+          | "NoStartTLS";
+        skipVerify?: boolean;
+      };
+      snapshots?: { externalEnabled?: boolean };
+      users?: { viewersCanEdit?: boolean; editorsCanAdmin?: boolean };
+      security?: { csrfAlwaysCheck?: boolean };
+      unifiedAlertingScreenshots?: { captureEnabled?: boolean };
+    };
+    grafanaPlugins?: Record<string, { pluginId?: string }>;
+    grafanaMajorVersion?: string;
+  };
+}
 export const GrafanaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -827,10 +1109,22 @@ export const GrafanaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type GrafanaUpdateInput = typeof GrafanaUpdateInput.Type;
+) as unknown as Schema.Codec<GrafanaUpdateInput>;
 
 // Output Schema
+export interface GrafanaUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GrafanaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -849,8 +1143,7 @@ export const GrafanaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GrafanaUpdateOutput = typeof GrafanaUpdateOutput.Type;
+}) as unknown as Schema.Codec<GrafanaUpdateOutput>;
 
 // The operation
 /**
@@ -866,6 +1159,29 @@ export const GrafanaUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GrafanaUpdateOutput,
 }));
 // Input Schema
+export interface IntegrationFabricsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  integrationFabricName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+    targetResourceId?: string;
+    dataSourceResourceId?: string;
+    scenarios?: string[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const IntegrationFabricsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -900,11 +1216,22 @@ export const IntegrationFabricsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type IntegrationFabricsCreateInput =
-  typeof IntegrationFabricsCreateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationFabricsCreateInput>;
 
 // Output Schema
+export interface IntegrationFabricsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IntegrationFabricsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -924,9 +1251,7 @@ export const IntegrationFabricsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IntegrationFabricsCreateOutput =
-  typeof IntegrationFabricsCreateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationFabricsCreateOutput>;
 
 // The operation
 /**
@@ -945,6 +1270,12 @@ export const IntegrationFabricsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationFabricsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  integrationFabricName: string;
+}
 export const IntegrationFabricsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -957,15 +1288,12 @@ export const IntegrationFabricsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type IntegrationFabricsDeleteInput =
-  typeof IntegrationFabricsDeleteInput.Type;
+  ) as unknown as Schema.Codec<IntegrationFabricsDeleteInput>;
 
 // Output Schema
+export type IntegrationFabricsDeleteOutput = void;
 export const IntegrationFabricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationFabricsDeleteOutput =
-  typeof IntegrationFabricsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationFabricsDeleteOutput>;
 
 // The operation
 /**
@@ -984,6 +1312,12 @@ export const IntegrationFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationFabricsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  integrationFabricName: string;
+}
 export const IntegrationFabricsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -996,10 +1330,22 @@ export const IntegrationFabricsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type IntegrationFabricsGetInput = typeof IntegrationFabricsGetInput.Type;
+  ) as unknown as Schema.Codec<IntegrationFabricsGetInput>;
 
 // Output Schema
+export interface IntegrationFabricsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IntegrationFabricsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1019,9 +1365,7 @@ export const IntegrationFabricsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IntegrationFabricsGetOutput =
-  typeof IntegrationFabricsGetOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationFabricsGetOutput>;
 
 // The operation
 /**
@@ -1040,6 +1384,11 @@ export const IntegrationFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationFabricsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const IntegrationFabricsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1051,11 +1400,25 @@ export const IntegrationFabricsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics",
       apiVersion: "2025-08-01",
     }),
-  );
-export type IntegrationFabricsListInput =
-  typeof IntegrationFabricsListInput.Type;
+  ) as unknown as Schema.Codec<IntegrationFabricsListInput>;
 
 // Output Schema
+export interface IntegrationFabricsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IntegrationFabricsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1090,9 +1453,7 @@ export const IntegrationFabricsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IntegrationFabricsListOutput =
-  typeof IntegrationFabricsListOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationFabricsListOutput>;
 
 // The operation
 /**
@@ -1110,6 +1471,14 @@ export const IntegrationFabricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationFabricsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  integrationFabricName: string;
+  tags?: Record<string, string>;
+  properties?: { scenarios?: string[] };
+}
 export const IntegrationFabricsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1128,11 +1497,22 @@ export const IntegrationFabricsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type IntegrationFabricsUpdateInput =
-  typeof IntegrationFabricsUpdateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationFabricsUpdateInput>;
 
 // Output Schema
+export interface IntegrationFabricsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IntegrationFabricsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1152,9 +1532,7 @@ export const IntegrationFabricsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IntegrationFabricsUpdateOutput =
-  typeof IntegrationFabricsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationFabricsUpdateOutput>;
 
 // The operation
 /**
@@ -1173,6 +1551,25 @@ export const IntegrationFabricsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedDashboardsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dashboardName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ManagedDashboardsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1203,11 +1600,22 @@ export const ManagedDashboardsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedDashboardsCreateInput =
-  typeof ManagedDashboardsCreateInput.Type;
+  ) as unknown as Schema.Codec<ManagedDashboardsCreateInput>;
 
 // Output Schema
+export interface ManagedDashboardsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedDashboardsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1227,9 +1635,7 @@ export const ManagedDashboardsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedDashboardsCreateOutput =
-  typeof ManagedDashboardsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedDashboardsCreateOutput>;
 
 // The operation
 /**
@@ -1247,6 +1653,11 @@ export const ManagedDashboardsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedDashboardsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dashboardName: string;
+}
 export const ManagedDashboardsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1258,15 +1669,12 @@ export const ManagedDashboardsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedDashboardsDeleteInput =
-  typeof ManagedDashboardsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManagedDashboardsDeleteInput>;
 
 // Output Schema
+export type ManagedDashboardsDeleteOutput = void;
 export const ManagedDashboardsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedDashboardsDeleteOutput =
-  typeof ManagedDashboardsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedDashboardsDeleteOutput>;
 
 // The operation
 /**
@@ -1284,6 +1692,12 @@ export const ManagedDashboardsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedDashboardsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dashboardName: string;
+  tags?: Record<string, string>;
+}
 export const ManagedDashboardsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1296,11 +1710,22 @@ export const ManagedDashboardsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedDashboardsUpdateInput =
-  typeof ManagedDashboardsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedDashboardsUpdateInput>;
 
 // Output Schema
+export interface ManagedDashboardsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedDashboardsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1320,9 +1745,7 @@ export const ManagedDashboardsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedDashboardsUpdateOutput =
-  typeof ManagedDashboardsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedDashboardsUpdateOutput>;
 
 // The operation
 /**
@@ -1340,6 +1763,36 @@ export const ManagedDashboardsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedPrivateEndpointsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  managedPrivateEndpointName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+    privateLinkResourceId?: string;
+    privateLinkResourceRegion?: string;
+    groupIds?: string[];
+    requestMessage?: string;
+    connectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+    };
+    privateLinkServiceUrl?: string;
+    privateLinkServicePrivateIP?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ManagedPrivateEndpointsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1390,11 +1843,22 @@ export const ManagedPrivateEndpointsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedPrivateEndpointsCreateInput =
-  typeof ManagedPrivateEndpointsCreateInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsCreateInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedPrivateEndpointsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1414,9 +1878,7 @@ export const ManagedPrivateEndpointsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedPrivateEndpointsCreateOutput =
-  typeof ManagedPrivateEndpointsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsCreateOutput>;
 
 // The operation
 /**
@@ -1434,6 +1896,12 @@ export const ManagedPrivateEndpointsCreate =
     outputSchema: ManagedPrivateEndpointsCreateOutput,
   }));
 // Input Schema
+export interface ManagedPrivateEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  managedPrivateEndpointName: string;
+}
 export const ManagedPrivateEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1446,15 +1914,12 @@ export const ManagedPrivateEndpointsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedPrivateEndpointsDeleteInput =
-  typeof ManagedPrivateEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteInput>;
 
 // Output Schema
+export type ManagedPrivateEndpointsDeleteOutput = void;
 export const ManagedPrivateEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedPrivateEndpointsDeleteOutput =
-  typeof ManagedPrivateEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -1472,6 +1937,12 @@ export const ManagedPrivateEndpointsDelete =
     outputSchema: ManagedPrivateEndpointsDeleteOutput,
   }));
 // Input Schema
+export interface ManagedPrivateEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  managedPrivateEndpointName: string;
+}
 export const ManagedPrivateEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1484,11 +1955,22 @@ export const ManagedPrivateEndpointsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedPrivateEndpointsGetInput =
-  typeof ManagedPrivateEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsGetInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedPrivateEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1508,9 +1990,7 @@ export const ManagedPrivateEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedPrivateEndpointsGetOutput =
-  typeof ManagedPrivateEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsGetOutput>;
 
 // The operation
 /**
@@ -1529,6 +2009,11 @@ export const ManagedPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedPrivateEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const ManagedPrivateEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1540,11 +2025,25 @@ export const ManagedPrivateEndpointsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedPrivateEndpointsListInput =
-  typeof ManagedPrivateEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsListInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedPrivateEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1579,9 +2078,7 @@ export const ManagedPrivateEndpointsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedPrivateEndpointsListOutput =
-  typeof ManagedPrivateEndpointsListOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsListOutput>;
 
 // The operation
 /**
@@ -1599,6 +2096,11 @@ export const ManagedPrivateEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedPrivateEndpointsRefreshInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const ManagedPrivateEndpointsRefreshInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1610,15 +2112,12 @@ export const ManagedPrivateEndpointsRefreshInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/refreshManagedPrivateEndpoints",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedPrivateEndpointsRefreshInput =
-  typeof ManagedPrivateEndpointsRefreshInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsRefreshInput>;
 
 // Output Schema
+export type ManagedPrivateEndpointsRefreshOutput = void;
 export const ManagedPrivateEndpointsRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedPrivateEndpointsRefreshOutput =
-  typeof ManagedPrivateEndpointsRefreshOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsRefreshOutput>;
 
 // The operation
 /**
@@ -1635,6 +2134,13 @@ export const ManagedPrivateEndpointsRefresh =
     outputSchema: ManagedPrivateEndpointsRefreshOutput,
   }));
 // Input Schema
+export interface ManagedPrivateEndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  managedPrivateEndpointName: string;
+  tags?: Record<string, string>;
+}
 export const ManagedPrivateEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1648,11 +2154,22 @@ export const ManagedPrivateEndpointsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ManagedPrivateEndpointsUpdateInput =
-  typeof ManagedPrivateEndpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsUpdateInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedPrivateEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1672,9 +2189,7 @@ export const ManagedPrivateEndpointsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedPrivateEndpointsUpdateOutput =
-  typeof ManagedPrivateEndpointsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -1692,6 +2207,7 @@ export const ManagedPrivateEndpointsUpdate =
     outputSchema: ManagedPrivateEndpointsUpdateOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1700,10 +2216,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Dashboard/operations",
     apiVersion: "2025-08-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1726,8 +2256,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1740,6 +2269,22 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsApproveInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    groupIds?: string[];
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsApproveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1772,11 +2317,22 @@ export const PrivateEndpointConnectionsApproveInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateEndpointConnectionsApproveInput =
-  typeof PrivateEndpointConnectionsApproveInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsApproveInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsApproveOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsApproveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1796,9 +2352,7 @@ export const PrivateEndpointConnectionsApproveOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsApproveOutput =
-  typeof PrivateEndpointConnectionsApproveOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsApproveOutput>;
 
 // The operation
 /**
@@ -1816,6 +2370,12 @@ export const PrivateEndpointConnectionsApprove =
     outputSchema: PrivateEndpointConnectionsApproveOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1828,15 +2388,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1854,6 +2411,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1866,11 +2429,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1890,9 +2464,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1910,6 +2482,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1921,11 +2498,25 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1960,9 +2551,7 @@ export const PrivateEndpointConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -1979,6 +2568,12 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1991,11 +2586,22 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2015,9 +2621,7 @@ export const PrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -2035,6 +2639,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2046,11 +2655,25 @@ export const PrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateLinkResources",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2085,9 +2708,7 @@ export const PrivateLinkResourcesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**

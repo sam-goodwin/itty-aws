@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -49,7 +49,7 @@ export interface OperationMetadata {
   target?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -106,7 +106,7 @@ export interface DataExchange {
   listingCount?: number;
 }
 
-export const DataExchange: Schema.Schema<DataExchange> =
+export const DataExchange: Schema.Codec<DataExchange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     primaryContact: Schema.optional(Schema.String),
@@ -124,7 +124,7 @@ export interface ListDataExchangesResponse {
   dataExchanges?: ReadonlyArray<DataExchange>;
 }
 
-export const ListDataExchangesResponse: Schema.Schema<ListDataExchangesResponse> =
+export const ListDataExchangesResponse: Schema.Codec<ListDataExchangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dataExchanges: Schema.optional(Schema.Array(DataExchange)),
@@ -139,7 +139,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -158,7 +158,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -171,7 +171,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -188,7 +188,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     version: Schema.optional(Schema.Number),
@@ -203,7 +203,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -218,7 +218,7 @@ export interface LinkedResource {
   listing?: string;
 }
 
-export const LinkedResource: Schema.Schema<LinkedResource> =
+export const LinkedResource: Schema.Codec<LinkedResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkedPubsubSubscription: Schema.optional(Schema.String),
     linkedDataset: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface GoogleCloudMarketplaceInfo {
   order?: string;
 }
 
-export const GoogleCloudMarketplaceInfo: Schema.Schema<GoogleCloudMarketplaceInfo> =
+export const GoogleCloudMarketplaceInfo: Schema.Codec<GoogleCloudMarketplaceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     order: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudMarketplaceInfo" });
@@ -240,7 +240,7 @@ export interface CommercialInfo {
   cloudMarketplace?: GoogleCloudMarketplaceInfo;
 }
 
-export const CommercialInfo: Schema.Schema<CommercialInfo> =
+export const CommercialInfo: Schema.Codec<CommercialInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudMarketplace: Schema.optional(GoogleCloudMarketplaceInfo),
   }).annotate({ identifier: "CommercialInfo" });
@@ -252,7 +252,7 @@ export interface DestinationDatasetReference {
   projectId?: string;
 }
 
-export const DestinationDatasetReference: Schema.Schema<DestinationDatasetReference> =
+export const DestinationDatasetReference: Schema.Codec<DestinationDatasetReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -273,7 +273,7 @@ export interface DestinationDataset {
   replicaLocations?: ReadonlyArray<string>;
 }
 
-export const DestinationDataset: Schema.Schema<DestinationDataset> =
+export const DestinationDataset: Schema.Codec<DestinationDataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     friendlyName: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -325,7 +325,7 @@ export interface Subscription {
   destinationDataset?: DestinationDataset;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
+export const Subscription: Schema.Codec<Subscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkedDatasetMap: Schema.optional(
       Schema.Record(Schema.String, LinkedResource),
@@ -353,7 +353,7 @@ export interface DataProvider {
   name?: string;
 }
 
-export const DataProvider: Schema.Schema<DataProvider> =
+export const DataProvider: Schema.Codec<DataProvider> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryContact: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -366,7 +366,7 @@ export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReferen
   projectId?: string;
 }
 
-export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference: Schema.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference> =
+export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference: Schema.Codec<GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -388,7 +388,7 @@ export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset {
   labels?: Record<string, string>;
 }
 
-export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset: Schema.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset> =
+export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset: Schema.Codec<GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetReference: Schema.optional(
       GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference,
@@ -410,7 +410,7 @@ export interface RestrictedExportConfig {
   restrictQueryResult?: boolean;
 }
 
-export const RestrictedExportConfig: Schema.Schema<RestrictedExportConfig> =
+export const RestrictedExportConfig: Schema.Codec<RestrictedExportConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restrictDirectTableAccess: Schema.optional(Schema.Boolean),
     enabled: Schema.optional(Schema.Boolean),
@@ -424,7 +424,7 @@ export interface Publisher {
   primaryContact?: string;
 }
 
-export const Publisher: Schema.Schema<Publisher> =
+export const Publisher: Schema.Codec<Publisher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     primaryContact: Schema.optional(Schema.String),
@@ -435,7 +435,7 @@ export interface BigQueryDatasetSource {
   dataset?: string;
 }
 
-export const BigQueryDatasetSource: Schema.Schema<BigQueryDatasetSource> =
+export const BigQueryDatasetSource: Schema.Codec<BigQueryDatasetSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
   }).annotate({ identifier: "BigQueryDatasetSource" });
@@ -494,7 +494,7 @@ export interface Listing {
   bigqueryDataset?: BigQueryDatasetSource;
 }
 
-export const Listing: Schema.Schema<Listing> =
+export const Listing: Schema.Codec<Listing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     documentation: Schema.optional(Schema.String),
@@ -519,7 +519,7 @@ export interface ListListingsResponse {
   nextPageToken?: string;
 }
 
-export const ListListingsResponse: Schema.Schema<ListListingsResponse> =
+export const ListListingsResponse: Schema.Codec<ListListingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     listings: Schema.optional(Schema.Array(Listing)),
     nextPageToken: Schema.optional(Schema.String),
@@ -530,14 +530,14 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -547,7 +547,7 @@ export interface RefreshSubscriptionResponse {
   subscription?: Subscription;
 }
 
-export const RefreshSubscriptionResponse: Schema.Schema<RefreshSubscriptionResponse> =
+export const RefreshSubscriptionResponse: Schema.Codec<RefreshSubscriptionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Subscription),
   }).annotate({ identifier: "RefreshSubscriptionResponse" });
@@ -557,7 +557,7 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
@@ -567,7 +567,7 @@ export interface SubscribeListingRequest {
   destinationDataset?: GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset;
 }
 
-export const SubscribeListingRequest: Schema.Schema<SubscribeListingRequest> =
+export const SubscribeListingRequest: Schema.Codec<SubscribeListingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationDataset: Schema.optional(
       GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset,
@@ -579,14 +579,14 @@ export interface SubscribeDataExchangeResponse {
   subscription?: Subscription;
 }
 
-export const SubscribeDataExchangeResponse: Schema.Schema<SubscribeDataExchangeResponse> =
+export const SubscribeDataExchangeResponse: Schema.Codec<SubscribeDataExchangeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Subscription),
   }).annotate({ identifier: "SubscribeDataExchangeResponse" });
 
 export interface SubscribeListingResponse {}
 
-export const SubscribeListingResponse: Schema.Schema<SubscribeListingResponse> =
+export const SubscribeListingResponse: Schema.Codec<SubscribeListingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SubscribeListingResponse",
   });
@@ -598,7 +598,7 @@ export interface ListOrgDataExchangesResponse {
   dataExchanges?: ReadonlyArray<DataExchange>;
 }
 
-export const ListOrgDataExchangesResponse: Schema.Schema<ListOrgDataExchangesResponse> =
+export const ListOrgDataExchangesResponse: Schema.Codec<ListOrgDataExchangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     dataExchanges: Schema.optional(Schema.Array(DataExchange)),
@@ -669,7 +669,7 @@ export const GetProjectsLocationsDataExchangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataExchangesRequest>;
 
 export type GetProjectsLocationsDataExchangesResponse = DataExchange;
 export const GetProjectsLocationsDataExchangesResponse =
@@ -715,7 +715,7 @@ export const CreateProjectsLocationsDataExchangesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataExchangesRequest>;
 
 export type CreateProjectsLocationsDataExchangesResponse = DataExchange;
 export const CreateProjectsLocationsDataExchangesResponse =
@@ -757,7 +757,7 @@ export const PatchProjectsLocationsDataExchangesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataExchangesRequest>;
 
 export type PatchProjectsLocationsDataExchangesResponse = DataExchange;
 export const PatchProjectsLocationsDataExchangesResponse =
@@ -793,7 +793,7 @@ export const DeleteProjectsLocationsDataExchangesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataExchangesRequest>;
 
 export type DeleteProjectsLocationsDataExchangesResponse = Empty;
 export const DeleteProjectsLocationsDataExchangesResponse =
@@ -836,7 +836,7 @@ export const SetIamPolicyProjectsLocationsDataExchangesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataExchangesRequest>;
 
 export type SetIamPolicyProjectsLocationsDataExchangesResponse = Policy;
 export const SetIamPolicyProjectsLocationsDataExchangesResponse =
@@ -879,7 +879,7 @@ export const TestIamPermissionsProjectsLocationsDataExchangesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataExchangesRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataExchangesResponse =
   TestIamPermissionsResponse;
@@ -922,7 +922,7 @@ export const ListProjectsLocationsDataExchangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/dataExchanges" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataExchangesRequest>;
 
 export type ListProjectsLocationsDataExchangesResponse =
   ListDataExchangesResponse;
@@ -968,7 +968,7 @@ export const GetIamPolicyProjectsLocationsDataExchangesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataExchangesRequest>;
 
 export type GetIamPolicyProjectsLocationsDataExchangesResponse = Policy;
 export const GetIamPolicyProjectsLocationsDataExchangesResponse =
@@ -1010,7 +1010,7 @@ export const ListProjectsLocationsDataExchangesListingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/listings" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDataExchangesListingsRequest>;
 
 export type ListProjectsLocationsDataExchangesListingsResponse =
   ListListingsResponse;
@@ -1056,7 +1056,7 @@ export const GetIamPolicyProjectsLocationsDataExchangesListingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsDataExchangesListingsRequest>;
 
 export type GetIamPolicyProjectsLocationsDataExchangesListingsResponse = Policy;
 export const GetIamPolicyProjectsLocationsDataExchangesListingsResponse =
@@ -1098,7 +1098,7 @@ export const PatchProjectsLocationsDataExchangesListingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDataExchangesListingsRequest>;
 
 export type PatchProjectsLocationsDataExchangesListingsResponse = Listing;
 export const PatchProjectsLocationsDataExchangesListingsResponse =
@@ -1134,7 +1134,7 @@ export const DeleteProjectsLocationsDataExchangesListingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDataExchangesListingsRequest>;
 
 export type DeleteProjectsLocationsDataExchangesListingsResponse = Empty;
 export const DeleteProjectsLocationsDataExchangesListingsResponse =
@@ -1177,7 +1177,7 @@ export const SetIamPolicyProjectsLocationsDataExchangesListingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsDataExchangesListingsRequest>;
 
 export type SetIamPolicyProjectsLocationsDataExchangesListingsResponse = Policy;
 export const SetIamPolicyProjectsLocationsDataExchangesListingsResponse =
@@ -1220,7 +1220,7 @@ export const TestIamPermissionsProjectsLocationsDataExchangesListingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsDataExchangesListingsRequest>;
 
 export type TestIamPermissionsProjectsLocationsDataExchangesListingsResponse =
   TestIamPermissionsResponse;
@@ -1257,7 +1257,7 @@ export const GetProjectsLocationsDataExchangesListingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDataExchangesListingsRequest>;
 
 export type GetProjectsLocationsDataExchangesListingsResponse = Listing;
 export const GetProjectsLocationsDataExchangesListingsResponse =
@@ -1298,7 +1298,7 @@ export const SubscribeProjectsLocationsDataExchangesListingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SubscribeProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<SubscribeProjectsLocationsDataExchangesListingsRequest>;
 
 export type SubscribeProjectsLocationsDataExchangesListingsResponse =
   SubscribeListingResponse;
@@ -1345,7 +1345,7 @@ export const CreateProjectsLocationsDataExchangesListingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDataExchangesListingsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDataExchangesListingsRequest>;
 
 export type CreateProjectsLocationsDataExchangesListingsResponse = Listing;
 export const CreateProjectsLocationsDataExchangesListingsResponse =
@@ -1387,7 +1387,7 @@ export const ListOrganizationsLocationsDataExchangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+organization}/dataExchanges" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsDataExchangesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsDataExchangesRequest>;
 
 export type ListOrganizationsLocationsDataExchangesResponse =
   ListOrgDataExchangesResponse;

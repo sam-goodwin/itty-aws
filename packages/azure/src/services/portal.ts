@@ -4,11 +4,36 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DashboardsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dashboardName: string;
+  properties?: {
+    lenses?: {
+      order: number;
+      parts: {
+        position: {
+          x: number;
+          y: number;
+          rowSpan: number;
+          colSpan: number;
+          metadata?: unknown;
+        };
+        metadata?: { type: "Extension/HubsExtension/PartType/MarkdownPart" };
+      }[];
+      metadata?: unknown;
+    }[];
+    metadata?: unknown;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DashboardsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -56,11 +81,22 @@ export const DashboardsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type DashboardsCreateOrUpdateInput =
-  typeof DashboardsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DashboardsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DashboardsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DashboardsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -80,9 +116,7 @@ export const DashboardsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DashboardsCreateOrUpdateOutput =
-  typeof DashboardsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DashboardsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -100,6 +134,11 @@ export const DashboardsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DashboardsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dashboardName: string;
+}
 export const DashboardsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -110,12 +149,12 @@ export const DashboardsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type DashboardsDeleteInput = typeof DashboardsDeleteInput.Type;
+) as unknown as Schema.Codec<DashboardsDeleteInput>;
 
 // Output Schema
-export const DashboardsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DashboardsDeleteOutput = typeof DashboardsDeleteOutput.Type;
+export type DashboardsDeleteOutput = void;
+export const DashboardsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDeleteOutput>;
 
 // The operation
 /**
@@ -131,6 +170,11 @@ export const DashboardsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DashboardsDeleteOutput,
 }));
 // Input Schema
+export interface DashboardsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dashboardName: string;
+}
 export const DashboardsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -141,10 +185,22 @@ export const DashboardsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type DashboardsGetInput = typeof DashboardsGetInput.Type;
+) as unknown as Schema.Codec<DashboardsGetInput>;
 
 // Output Schema
+export interface DashboardsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DashboardsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -163,8 +219,7 @@ export const DashboardsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DashboardsGetOutput = typeof DashboardsGetOutput.Type;
+}) as unknown as Schema.Codec<DashboardsGetOutput>;
 
 // The operation
 /**
@@ -180,6 +235,10 @@ export const DashboardsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DashboardsGetOutput,
 }));
 // Input Schema
+export interface DashboardsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DashboardsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -190,11 +249,25 @@ export const DashboardsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards",
       apiVersion: "2026-04-01",
     }),
-  );
-export type DashboardsListByResourceGroupInput =
-  typeof DashboardsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DashboardsListByResourceGroupInput>;
 
 // Output Schema
+export interface DashboardsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DashboardsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -229,9 +302,7 @@ export const DashboardsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DashboardsListByResourceGroupOutput =
-  typeof DashboardsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DashboardsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -247,6 +318,9 @@ export const DashboardsListByResourceGroup =
     outputSchema: DashboardsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DashboardsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DashboardsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -256,11 +330,25 @@ export const DashboardsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Portal/dashboards",
       apiVersion: "2026-04-01",
     }),
-  );
-export type DashboardsListBySubscriptionInput =
-  typeof DashboardsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DashboardsListBySubscriptionInput>;
 
 // Output Schema
+export interface DashboardsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DashboardsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -295,9 +383,7 @@ export const DashboardsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DashboardsListBySubscriptionOutput =
-  typeof DashboardsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DashboardsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -312,6 +398,29 @@ export const DashboardsListBySubscription =
     outputSchema: DashboardsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DashboardsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dashboardName: string;
+  properties?: {
+    lenses?: {
+      order: number;
+      parts: {
+        position: {
+          x: number;
+          y: number;
+          rowSpan: number;
+          colSpan: number;
+          metadata?: unknown;
+        };
+        metadata?: { type: "Extension/HubsExtension/PartType/MarkdownPart" };
+      }[];
+      metadata?: unknown;
+    }[];
+    metadata?: unknown;
+  };
+  tags?: Record<string, string>;
+}
 export const DashboardsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -354,10 +463,22 @@ export const DashboardsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type DashboardsUpdateInput = typeof DashboardsUpdateInput.Type;
+) as unknown as Schema.Codec<DashboardsUpdateInput>;
 
 // Output Schema
+export interface DashboardsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DashboardsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -378,8 +499,7 @@ export const DashboardsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type DashboardsUpdateOutput = typeof DashboardsUpdateOutput.Type;
+) as unknown as Schema.Codec<DashboardsUpdateOutput>;
 
 // The operation
 /**
@@ -395,6 +515,7 @@ export const DashboardsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DashboardsUpdateOutput,
 }));
 // Input Schema
+export interface ListTenantConfigurationViolationsListInput {}
 export const ListTenantConfigurationViolationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -402,11 +523,13 @@ export const ListTenantConfigurationViolationsListInput =
       path: "/providers/Microsoft.Portal/listTenantConfigurationViolations",
       apiVersion: "2026-04-01",
     }),
-  );
-export type ListTenantConfigurationViolationsListInput =
-  typeof ListTenantConfigurationViolationsListInput.Type;
+  ) as unknown as Schema.Codec<ListTenantConfigurationViolationsListInput>;
 
 // Output Schema
+export interface ListTenantConfigurationViolationsListOutput {
+  value: { id?: string; userId?: string; errorMessage?: string }[];
+  nextLink?: string;
+}
 export const ListTenantConfigurationViolationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -417,9 +540,7 @@ export const ListTenantConfigurationViolationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ListTenantConfigurationViolationsListOutput =
-  typeof ListTenantConfigurationViolationsListOutput.Type;
+  }) as unknown as Schema.Codec<ListTenantConfigurationViolationsListOutput>;
 
 // The operation
 /**
@@ -433,6 +554,7 @@ export const ListTenantConfigurationViolationsList =
     outputSchema: ListTenantConfigurationViolationsListOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -441,10 +563,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Portal/operations",
     apiVersion: "2026-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -467,8 +603,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -481,6 +616,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface TenantConfigurationsCreateInput {
+  configurationName: string;
+  properties?: {
+    enforcePrivateMarkdownStorage?: boolean;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+}
 export const TenantConfigurationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationName: Schema.String.pipe(T.PathParam()),
@@ -498,11 +640,22 @@ export const TenantConfigurationsCreateInput =
       path: "/providers/Microsoft.Portal/tenantConfigurations/{configurationName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type TenantConfigurationsCreateInput =
-  typeof TenantConfigurationsCreateInput.Type;
+  ) as unknown as Schema.Codec<TenantConfigurationsCreateInput>;
 
 // Output Schema
+export interface TenantConfigurationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TenantConfigurationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -522,9 +675,7 @@ export const TenantConfigurationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TenantConfigurationsCreateOutput =
-  typeof TenantConfigurationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<TenantConfigurationsCreateOutput>;
 
 // The operation
 /**
@@ -540,6 +691,9 @@ export const TenantConfigurationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TenantConfigurationsDeleteInput {
+  configurationName: string;
+}
 export const TenantConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationName: Schema.String.pipe(T.PathParam()),
@@ -549,15 +703,12 @@ export const TenantConfigurationsDeleteInput =
       path: "/providers/Microsoft.Portal/tenantConfigurations/{configurationName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type TenantConfigurationsDeleteInput =
-  typeof TenantConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<TenantConfigurationsDeleteInput>;
 
 // Output Schema
+export type TenantConfigurationsDeleteOutput = void;
 export const TenantConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TenantConfigurationsDeleteOutput =
-  typeof TenantConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TenantConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -573,6 +724,9 @@ export const TenantConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TenantConfigurationsGetInput {
+  configurationName: string;
+}
 export const TenantConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationName: Schema.String.pipe(T.PathParam()),
@@ -582,11 +736,22 @@ export const TenantConfigurationsGetInput =
       path: "/providers/Microsoft.Portal/tenantConfigurations/{configurationName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type TenantConfigurationsGetInput =
-  typeof TenantConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<TenantConfigurationsGetInput>;
 
 // Output Schema
+export interface TenantConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TenantConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -606,9 +771,7 @@ export const TenantConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TenantConfigurationsGetOutput =
-  typeof TenantConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<TenantConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -624,6 +787,7 @@ export const TenantConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TenantConfigurationsListInput {}
 export const TenantConfigurationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -631,11 +795,25 @@ export const TenantConfigurationsListInput =
       path: "/providers/Microsoft.Portal/tenantConfigurations",
       apiVersion: "2026-04-01",
     }),
-  );
-export type TenantConfigurationsListInput =
-  typeof TenantConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<TenantConfigurationsListInput>;
 
 // Output Schema
+export interface TenantConfigurationsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TenantConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -670,9 +848,7 @@ export const TenantConfigurationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TenantConfigurationsListOutput =
-  typeof TenantConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<TenantConfigurationsListOutput>;
 
 // The operation
 /**

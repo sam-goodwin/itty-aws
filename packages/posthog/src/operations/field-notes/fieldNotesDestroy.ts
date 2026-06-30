@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface FieldNotesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const FieldNotesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String.pipe(T.PathParam()),
@@ -13,12 +17,12 @@ export const FieldNotesDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/api/projects/{project_id}/field_notes/{id}/",
   }),
-);
-export type FieldNotesDestroyInput = typeof FieldNotesDestroyInput.Type;
+) as unknown as Schema.Codec<FieldNotesDestroyInput>;
 
 // Output Schema
-export const FieldNotesDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FieldNotesDestroyOutput = typeof FieldNotesDestroyOutput.Type;
+export type FieldNotesDestroyOutput = void;
+export const FieldNotesDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FieldNotesDestroyOutput>;
 
 // The operation
 /**

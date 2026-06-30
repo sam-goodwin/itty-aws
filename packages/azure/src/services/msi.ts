@@ -4,11 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface FederatedIdentityCredentialsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  federatedIdentityCredentialResourceName: string;
+  properties?: { issuer: string; subject: string; audiences: string[] };
+}
 export const FederatedIdentityCredentialsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -28,11 +35,22 @@ export const FederatedIdentityCredentialsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}",
       apiVersion: "2024-11-30",
     }),
-  );
-export type FederatedIdentityCredentialsCreateOrUpdateInput =
-  typeof FederatedIdentityCredentialsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FederatedIdentityCredentialsCreateOrUpdateInput>;
 
 // Output Schema
+export interface FederatedIdentityCredentialsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FederatedIdentityCredentialsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -52,9 +70,7 @@ export const FederatedIdentityCredentialsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FederatedIdentityCredentialsCreateOrUpdateOutput =
-  typeof FederatedIdentityCredentialsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FederatedIdentityCredentialsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -72,6 +88,12 @@ export const FederatedIdentityCredentialsCreateOrUpdate =
     outputSchema: FederatedIdentityCredentialsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FederatedIdentityCredentialsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  federatedIdentityCredentialResourceName: string;
+}
 export const FederatedIdentityCredentialsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -84,15 +106,12 @@ export const FederatedIdentityCredentialsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}",
       apiVersion: "2024-11-30",
     }),
-  );
-export type FederatedIdentityCredentialsDeleteInput =
-  typeof FederatedIdentityCredentialsDeleteInput.Type;
+  ) as unknown as Schema.Codec<FederatedIdentityCredentialsDeleteInput>;
 
 // Output Schema
+export type FederatedIdentityCredentialsDeleteOutput = void;
 export const FederatedIdentityCredentialsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FederatedIdentityCredentialsDeleteOutput =
-  typeof FederatedIdentityCredentialsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FederatedIdentityCredentialsDeleteOutput>;
 
 // The operation
 /**
@@ -110,6 +129,12 @@ export const FederatedIdentityCredentialsDelete =
     outputSchema: FederatedIdentityCredentialsDeleteOutput,
   }));
 // Input Schema
+export interface FederatedIdentityCredentialsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  federatedIdentityCredentialResourceName: string;
+}
 export const FederatedIdentityCredentialsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -122,11 +147,22 @@ export const FederatedIdentityCredentialsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}",
       apiVersion: "2024-11-30",
     }),
-  );
-export type FederatedIdentityCredentialsGetInput =
-  typeof FederatedIdentityCredentialsGetInput.Type;
+  ) as unknown as Schema.Codec<FederatedIdentityCredentialsGetInput>;
 
 // Output Schema
+export interface FederatedIdentityCredentialsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FederatedIdentityCredentialsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -146,9 +182,7 @@ export const FederatedIdentityCredentialsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FederatedIdentityCredentialsGetOutput =
-  typeof FederatedIdentityCredentialsGetOutput.Type;
+  }) as unknown as Schema.Codec<FederatedIdentityCredentialsGetOutput>;
 
 // The operation
 /**
@@ -166,6 +200,13 @@ export const FederatedIdentityCredentialsGet =
     outputSchema: FederatedIdentityCredentialsGetOutput,
   }));
 // Input Schema
+export interface FederatedIdentityCredentialsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  $top?: number;
+  $skiptoken?: string;
+}
 export const FederatedIdentityCredentialsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -179,11 +220,25 @@ export const FederatedIdentityCredentialsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials",
       apiVersion: "2024-11-30",
     }),
-  );
-export type FederatedIdentityCredentialsListInput =
-  typeof FederatedIdentityCredentialsListInput.Type;
+  ) as unknown as Schema.Codec<FederatedIdentityCredentialsListInput>;
 
 // Output Schema
+export interface FederatedIdentityCredentialsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FederatedIdentityCredentialsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -218,9 +273,7 @@ export const FederatedIdentityCredentialsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FederatedIdentityCredentialsListOutput =
-  typeof FederatedIdentityCredentialsListOutput.Type;
+  }) as unknown as Schema.Codec<FederatedIdentityCredentialsListOutput>;
 
 // The operation
 /**
@@ -239,6 +292,7 @@ export const FederatedIdentityCredentialsList =
     outputSchema: FederatedIdentityCredentialsListOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -247,10 +301,21 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ManagedIdentity/operations",
     apiVersion: "2024-11-30",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      operation?: string;
+      resource?: string;
+      description?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -266,8 +331,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -280,6 +344,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SystemAssignedIdentitiesGetByScopeInput {
+  scope: string;
+}
 export const SystemAssignedIdentitiesGetByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -289,11 +356,22 @@ export const SystemAssignedIdentitiesGetByScopeInput =
       path: "/{scope}/providers/Microsoft.ManagedIdentity/identities/default",
       apiVersion: "2024-11-30",
     }),
-  );
-export type SystemAssignedIdentitiesGetByScopeInput =
-  typeof SystemAssignedIdentitiesGetByScopeInput.Type;
+  ) as unknown as Schema.Codec<SystemAssignedIdentitiesGetByScopeInput>;
 
 // Output Schema
+export interface SystemAssignedIdentitiesGetByScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SystemAssignedIdentitiesGetByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -313,9 +391,7 @@ export const SystemAssignedIdentitiesGetByScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SystemAssignedIdentitiesGetByScopeOutput =
-  typeof SystemAssignedIdentitiesGetByScopeOutput.Type;
+  }) as unknown as Schema.Codec<SystemAssignedIdentitiesGetByScopeOutput>;
 
 // The operation
 /**
@@ -330,6 +406,19 @@ export const SystemAssignedIdentitiesGetByScope =
     outputSchema: SystemAssignedIdentitiesGetByScopeOutput,
   }));
 // Input Schema
+export interface UserAssignedIdentitiesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    tenantId?: string;
+    principalId?: string;
+    clientId?: string;
+    isolationScope?: "None" | "Regional";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const UserAssignedIdentitiesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -351,11 +440,22 @@ export const UserAssignedIdentitiesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
       apiVersion: "2024-11-30",
     }),
-  );
-export type UserAssignedIdentitiesCreateOrUpdateInput =
-  typeof UserAssignedIdentitiesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<UserAssignedIdentitiesCreateOrUpdateInput>;
 
 // Output Schema
+export interface UserAssignedIdentitiesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UserAssignedIdentitiesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -375,9 +475,7 @@ export const UserAssignedIdentitiesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UserAssignedIdentitiesCreateOrUpdateOutput =
-  typeof UserAssignedIdentitiesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<UserAssignedIdentitiesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -394,6 +492,11 @@ export const UserAssignedIdentitiesCreateOrUpdate =
     outputSchema: UserAssignedIdentitiesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface UserAssignedIdentitiesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const UserAssignedIdentitiesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -405,15 +508,12 @@ export const UserAssignedIdentitiesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
       apiVersion: "2024-11-30",
     }),
-  );
-export type UserAssignedIdentitiesDeleteInput =
-  typeof UserAssignedIdentitiesDeleteInput.Type;
+  ) as unknown as Schema.Codec<UserAssignedIdentitiesDeleteInput>;
 
 // Output Schema
+export type UserAssignedIdentitiesDeleteOutput = void;
 export const UserAssignedIdentitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserAssignedIdentitiesDeleteOutput =
-  typeof UserAssignedIdentitiesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserAssignedIdentitiesDeleteOutput>;
 
 // The operation
 /**
@@ -430,6 +530,11 @@ export const UserAssignedIdentitiesDelete =
     outputSchema: UserAssignedIdentitiesDeleteOutput,
   }));
 // Input Schema
+export interface UserAssignedIdentitiesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const UserAssignedIdentitiesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -441,11 +546,22 @@ export const UserAssignedIdentitiesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
       apiVersion: "2024-11-30",
     }),
-  );
-export type UserAssignedIdentitiesGetInput =
-  typeof UserAssignedIdentitiesGetInput.Type;
+  ) as unknown as Schema.Codec<UserAssignedIdentitiesGetInput>;
 
 // Output Schema
+export interface UserAssignedIdentitiesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UserAssignedIdentitiesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -465,9 +581,7 @@ export const UserAssignedIdentitiesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UserAssignedIdentitiesGetOutput =
-  typeof UserAssignedIdentitiesGetOutput.Type;
+  }) as unknown as Schema.Codec<UserAssignedIdentitiesGetOutput>;
 
 // The operation
 /**
@@ -485,6 +599,10 @@ export const UserAssignedIdentitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UserAssignedIdentitiesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const UserAssignedIdentitiesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -495,11 +613,25 @@ export const UserAssignedIdentitiesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities",
       apiVersion: "2024-11-30",
     }),
-  );
-export type UserAssignedIdentitiesListByResourceGroupInput =
-  typeof UserAssignedIdentitiesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<UserAssignedIdentitiesListByResourceGroupInput>;
 
 // Output Schema
+export interface UserAssignedIdentitiesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UserAssignedIdentitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -534,9 +666,7 @@ export const UserAssignedIdentitiesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UserAssignedIdentitiesListByResourceGroupOutput =
-  typeof UserAssignedIdentitiesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<UserAssignedIdentitiesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -552,6 +682,9 @@ export const UserAssignedIdentitiesListByResourceGroup =
     outputSchema: UserAssignedIdentitiesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface UserAssignedIdentitiesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const UserAssignedIdentitiesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -561,11 +694,25 @@ export const UserAssignedIdentitiesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedIdentity/userAssignedIdentities",
       apiVersion: "2024-11-30",
     }),
-  );
-export type UserAssignedIdentitiesListBySubscriptionInput =
-  typeof UserAssignedIdentitiesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<UserAssignedIdentitiesListBySubscriptionInput>;
 
 // Output Schema
+export interface UserAssignedIdentitiesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UserAssignedIdentitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -600,9 +747,7 @@ export const UserAssignedIdentitiesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UserAssignedIdentitiesListBySubscriptionOutput =
-  typeof UserAssignedIdentitiesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<UserAssignedIdentitiesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -617,6 +762,30 @@ export const UserAssignedIdentitiesListBySubscription =
     outputSchema: UserAssignedIdentitiesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface UserAssignedIdentitiesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  location?: string;
+  tags?: Record<string, string>;
+  properties?: {
+    tenantId?: string;
+    principalId?: string;
+    clientId?: string;
+    isolationScope?: "None" | "Regional";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UserAssignedIdentitiesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -655,11 +824,22 @@ export const UserAssignedIdentitiesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
       apiVersion: "2024-11-30",
     }),
-  );
-export type UserAssignedIdentitiesUpdateInput =
-  typeof UserAssignedIdentitiesUpdateInput.Type;
+  ) as unknown as Schema.Codec<UserAssignedIdentitiesUpdateInput>;
 
 // Output Schema
+export interface UserAssignedIdentitiesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UserAssignedIdentitiesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -679,9 +859,7 @@ export const UserAssignedIdentitiesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UserAssignedIdentitiesUpdateOutput =
-  typeof UserAssignedIdentitiesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<UserAssignedIdentitiesUpdateOutput>;
 
 // The operation
 /**

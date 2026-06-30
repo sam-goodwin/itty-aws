@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -30,7 +30,7 @@ export interface RouterApplianceInstance {
   ipAddress?: string;
 }
 
-export const RouterApplianceInstance: Schema.Schema<RouterApplianceInstance> =
+export const RouterApplianceInstance: Schema.Codec<RouterApplianceInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualMachine: Schema.optional(Schema.String),
     networkInterface: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface Spoke {
   linkedVpnTunnels?: ReadonlyArray<string>;
 }
 
-export const Spoke: Schema.Schema<Spoke> =
+export const Spoke: Schema.Codec<Spoke> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkedInterconnectAttachments: Schema.optional(Schema.Array(Schema.String)),
     createTime: Schema.optional(Schema.String),
@@ -95,7 +95,7 @@ export interface ListSpokesResponse {
   nextPageToken?: string;
 }
 
-export const ListSpokesResponse: Schema.Schema<ListSpokesResponse> =
+export const ListSpokesResponse: Schema.Codec<ListSpokesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spokes: Schema.optional(Schema.Array(Spoke)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -113,7 +113,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -123,7 +123,7 @@ export const Expr: Schema.Schema<Expr> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -140,7 +140,7 @@ export interface AuditLogConfig {
     | (string & {});
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -172,7 +172,7 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     name: Schema.optional(Schema.String),
@@ -188,7 +188,7 @@ export interface ListLocationsResponse {
   locations?: ReadonlyArray<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
@@ -203,7 +203,7 @@ export interface GoogleRpcStatus {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -238,8 +238,8 @@ export interface Hub {
     | (string & {});
 }
 
-export const Hub: Schema.Schema<Hub> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Hub: Schema.Codec<Hub> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     name: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     createTime: Schema.optional(Schema.String),
@@ -248,7 +248,8 @@ export const Hub: Schema.Schema<Hub> =
     updateTime: Schema.optional(Schema.String),
     spokes: Schema.optional(Schema.Array(Schema.String)),
     state: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Hub" });
+  },
+).annotate({ identifier: "Hub" });
 
 export interface ListHubsResponse {
   /** Hubs to be returned. */
@@ -259,7 +260,7 @@ export interface ListHubsResponse {
   nextPageToken?: string;
 }
 
-export const ListHubsResponse: Schema.Schema<ListHubsResponse> =
+export const ListHubsResponse: Schema.Codec<ListHubsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hubs: Schema.optional(Schema.Array(Hub)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -279,7 +280,7 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(GoogleRpcStatus),
@@ -297,7 +298,7 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -317,7 +318,7 @@ export interface AllocationOptions {
   firstAvailableRangesLookupSize?: number;
 }
 
-export const AllocationOptions: Schema.Schema<AllocationOptions> =
+export const AllocationOptions: Schema.Codec<AllocationOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allocationStrategy: Schema.optional(Schema.String),
     firstAvailableRangesLookupSize: Schema.optional(Schema.Number),
@@ -330,7 +331,7 @@ export interface Migration {
   source?: string;
 }
 
-export const Migration: Schema.Schema<Migration> =
+export const Migration: Schema.Codec<Migration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
@@ -394,7 +395,7 @@ export interface InternalRange {
   prefixLength?: number;
 }
 
-export const InternalRange: Schema.Schema<InternalRange> =
+export const InternalRange: Schema.Codec<InternalRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -425,7 +426,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -443,7 +444,7 @@ export interface Policy {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     version: Schema.optional(Schema.Number),
@@ -458,7 +459,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -481,7 +482,7 @@ export interface OperationMetadata {
   createTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
@@ -494,7 +495,7 @@ export const OperationMetadata: Schema.Schema<OperationMetadata> =
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
@@ -504,7 +505,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -518,7 +519,7 @@ export interface ListInternalRangesResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListInternalRangesResponse: Schema.Schema<ListInternalRangesResponse> =
+export const ListInternalRangesResponse: Schema.Codec<ListInternalRangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     internalRanges: Schema.optional(Schema.Array(InternalRange)),
@@ -530,7 +531,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -614,7 +615,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -649,7 +650,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -689,7 +690,7 @@ export const PatchProjectsLocationsSpokesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSpokesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSpokesRequest>;
 
 export type PatchProjectsLocationsSpokesResponse = GoogleLongrunningOperation;
 export const PatchProjectsLocationsSpokesResponse =
@@ -728,7 +729,7 @@ export const DeleteProjectsLocationsSpokesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSpokesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSpokesRequest>;
 
 export type DeleteProjectsLocationsSpokesResponse = GoogleLongrunningOperation;
 export const DeleteProjectsLocationsSpokesResponse =
@@ -764,7 +765,7 @@ export const GetProjectsLocationsSpokesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSpokesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSpokesRequest>;
 
 export type GetProjectsLocationsSpokesResponse = Spoke;
 export const GetProjectsLocationsSpokesResponse =
@@ -805,7 +806,7 @@ export const SetIamPolicyProjectsLocationsSpokesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsSpokesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsSpokesRequest>;
 
 export type SetIamPolicyProjectsLocationsSpokesResponse = Policy;
 export const SetIamPolicyProjectsLocationsSpokesResponse =
@@ -848,7 +849,7 @@ export const TestIamPermissionsProjectsLocationsSpokesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsSpokesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsSpokesRequest>;
 
 export type TestIamPermissionsProjectsLocationsSpokesResponse =
   TestIamPermissionsResponse;
@@ -898,7 +899,7 @@ export const CreateProjectsLocationsSpokesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSpokesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSpokesRequest>;
 
 export type CreateProjectsLocationsSpokesResponse = GoogleLongrunningOperation;
 export const CreateProjectsLocationsSpokesResponse =
@@ -939,7 +940,7 @@ export const GetIamPolicyProjectsLocationsSpokesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSpokesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsSpokesRequest>;
 
 export type GetIamPolicyProjectsLocationsSpokesResponse = Policy;
 export const GetIamPolicyProjectsLocationsSpokesResponse =
@@ -985,7 +986,7 @@ export const ListProjectsLocationsSpokesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/spokes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSpokesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSpokesRequest>;
 
 export type ListProjectsLocationsSpokesResponse = ListSpokesResponse;
 export const ListProjectsLocationsSpokesResponse =
@@ -1035,7 +1036,7 @@ export const ListProjectsLocationsInternalRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/internalRanges" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInternalRangesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInternalRangesRequest>;
 
 export type ListProjectsLocationsInternalRangesResponse =
   ListInternalRangesResponse;
@@ -1089,7 +1090,7 @@ export const CreateProjectsLocationsInternalRangesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsInternalRangesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsInternalRangesRequest>;
 
 export type CreateProjectsLocationsInternalRangesResponse =
   GoogleLongrunningOperation;
@@ -1131,7 +1132,7 @@ export const GetIamPolicyProjectsLocationsInternalRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsInternalRangesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsInternalRangesRequest>;
 
 export type GetIamPolicyProjectsLocationsInternalRangesResponse = Policy;
 export const GetIamPolicyProjectsLocationsInternalRangesResponse =
@@ -1165,7 +1166,7 @@ export const GetProjectsLocationsInternalRangesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInternalRangesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInternalRangesRequest>;
 
 export type GetProjectsLocationsInternalRangesResponse = InternalRange;
 export const GetProjectsLocationsInternalRangesResponse =
@@ -1206,7 +1207,7 @@ export const SetIamPolicyProjectsLocationsInternalRangesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsInternalRangesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsInternalRangesRequest>;
 
 export type SetIamPolicyProjectsLocationsInternalRangesResponse = Policy;
 export const SetIamPolicyProjectsLocationsInternalRangesResponse =
@@ -1249,7 +1250,7 @@ export const TestIamPermissionsProjectsLocationsInternalRangesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsInternalRangesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsInternalRangesRequest>;
 
 export type TestIamPermissionsProjectsLocationsInternalRangesResponse =
   TestIamPermissionsResponse;
@@ -1295,7 +1296,7 @@ export const PatchProjectsLocationsInternalRangesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsInternalRangesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsInternalRangesRequest>;
 
 export type PatchProjectsLocationsInternalRangesResponse =
   GoogleLongrunningOperation;
@@ -1335,7 +1336,7 @@ export const DeleteProjectsLocationsInternalRangesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInternalRangesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsInternalRangesRequest>;
 
 export type DeleteProjectsLocationsInternalRangesResponse =
   GoogleLongrunningOperation;
@@ -1381,7 +1382,7 @@ export const CreateProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+parent}/hubs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGlobalHubsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsGlobalHubsRequest>;
 
 export type CreateProjectsLocationsGlobalHubsResponse =
   GoogleLongrunningOperation;
@@ -1423,7 +1424,7 @@ export const GetIamPolicyProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalHubsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsGlobalHubsRequest>;
 
 export type GetIamPolicyProjectsLocationsGlobalHubsResponse = Policy;
 export const GetIamPolicyProjectsLocationsGlobalHubsResponse =
@@ -1469,7 +1470,7 @@ export const ListProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/hubs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGlobalHubsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsGlobalHubsRequest>;
 
 export type ListProjectsLocationsGlobalHubsResponse = ListHubsResponse;
 export const ListProjectsLocationsGlobalHubsResponse =
@@ -1516,7 +1517,7 @@ export const PatchProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalHubsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsGlobalHubsRequest>;
 
 export type PatchProjectsLocationsGlobalHubsResponse =
   GoogleLongrunningOperation;
@@ -1556,7 +1557,7 @@ export const DeleteProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalHubsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsGlobalHubsRequest>;
 
 export type DeleteProjectsLocationsGlobalHubsResponse =
   GoogleLongrunningOperation;
@@ -1593,7 +1594,7 @@ export const GetProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGlobalHubsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsGlobalHubsRequest>;
 
 export type GetProjectsLocationsGlobalHubsResponse = Hub;
 export const GetProjectsLocationsGlobalHubsResponse =
@@ -1634,7 +1635,7 @@ export const SetIamPolicyProjectsLocationsGlobalHubsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGlobalHubsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsGlobalHubsRequest>;
 
 export type SetIamPolicyProjectsLocationsGlobalHubsResponse = Policy;
 export const SetIamPolicyProjectsLocationsGlobalHubsResponse =
@@ -1677,7 +1678,7 @@ export const TestIamPermissionsProjectsLocationsGlobalHubsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGlobalHubsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsGlobalHubsRequest>;
 
 export type TestIamPermissionsProjectsLocationsGlobalHubsResponse =
   TestIamPermissionsResponse;
@@ -1728,7 +1729,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1767,7 +1768,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1801,7 +1802,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -1842,7 +1843,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =

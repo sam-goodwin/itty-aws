@@ -4,6 +4,62 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardsCreateInput {
+  project_id: string;
+  format?: "json" | "txt";
+  id?: number;
+  name?: string | null;
+  description?: string;
+  pinned?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_accessed_at?: string | null;
+  last_viewed_at?: string | null;
+  folder?: string | null;
+  is_shared?: boolean;
+  deleted?: boolean;
+  creation_mode?: "default" | "template" | "duplicate" | "unlisted";
+  filters?: Record<string, unknown>;
+  variables?: Record<string, unknown> | null;
+  breakdown_colors?: unknown;
+  data_color_theme_id?: number | null;
+  tags?: unknown[];
+  restriction_level?: 21 | 37;
+  effective_restriction_level?: 21 | 37;
+  effective_privilege_level?: 21 | 37;
+  user_access_level?: string | null;
+  access_control_version?: string;
+  last_refresh?: string | null;
+  persisted_filters?: Record<string, unknown> | null;
+  persisted_variables?: Record<string, unknown> | null;
+  team_id?: number;
+  quick_filter_ids?: string[] | null;
+  tiles?: Record<string, unknown>[] | null;
+  use_template?: string;
+  use_dashboard?: number | null;
+  delete_insights?: boolean;
+  _create_in_folder?: string;
+}
 export const DashboardsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["json", "txt"])),
@@ -25,7 +81,23 @@ export const DashboardsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -67,10 +139,63 @@ export const DashboardsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   _create_in_folder: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/dashboards/" }),
-);
-export type DashboardsCreateInput = typeof DashboardsCreateInput.Type;
+) as unknown as Schema.Codec<DashboardsCreateInput>;
 
 // Output Schema
+export interface DashboardsCreateOutput {
+  id?: number;
+  name?: string | null;
+  description?: string;
+  pinned?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_accessed_at?: string | null;
+  last_viewed_at?: string | null;
+  folder?: string | null;
+  is_shared?: boolean;
+  deleted?: boolean;
+  creation_mode?: "default" | "template" | "duplicate" | "unlisted";
+  filters?: Record<string, unknown>;
+  variables?: Record<string, unknown> | null;
+  breakdown_colors?: unknown;
+  data_color_theme_id?: number | null;
+  tags?: unknown[];
+  restriction_level?: 21 | 37;
+  effective_restriction_level?: 21 | 37;
+  effective_privilege_level?: 21 | 37;
+  user_access_level?: string | null;
+  access_control_version?: string;
+  last_refresh?: string | null;
+  persisted_filters?: Record<string, unknown> | null;
+  persisted_variables?: Record<string, unknown> | null;
+  team_id?: number;
+  quick_filter_ids?: string[] | null;
+  tiles?: Record<string, unknown>[] | null;
+  use_template?: string;
+  use_dashboard?: number | null;
+  delete_insights?: boolean;
+  _create_in_folder?: string;
+}
 export const DashboardsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.Number),
@@ -91,7 +216,23 @@ export const DashboardsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -134,8 +275,7 @@ export const DashboardsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     delete_insights: Schema.optional(Schema.Boolean),
     _create_in_folder: Schema.optional(Schema.String),
   },
-);
-export type DashboardsCreateOutput = typeof DashboardsCreateOutput.Type;
+) as unknown as Schema.Codec<DashboardsCreateOutput>;
 
 // The operation
 /**

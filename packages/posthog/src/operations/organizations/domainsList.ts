@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DomainsListInput {
+  organization_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
@@ -13,10 +18,35 @@ export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/organizations/{organization_id}/domains/",
   }),
-);
-export type DomainsListInput = typeof DomainsListInput.Type;
+) as unknown as Schema.Codec<DomainsListInput>;
 
 // Output Schema
+export interface DomainsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    domain?: string;
+    is_verified?: boolean;
+    verified_at?: string | null;
+    verification_challenge?: string;
+    jit_provisioning_enabled?: boolean;
+    sso_enforcement?: string;
+    has_saml?: boolean;
+    saml_entity_id?: string | null;
+    saml_acs_url?: string | null;
+    saml_x509_cert?: string | null;
+    has_scim?: boolean;
+    scim_enabled?: boolean;
+    scim_base_url?: string | null;
+    scim_bearer_token?: string | null;
+    has_id_jag?: boolean;
+    id_jag_issuer_url?: string | null;
+    id_jag_jwks_url?: string | null;
+    id_jag_allowed_clients?: string[];
+  }[];
+}
 export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -46,8 +76,7 @@ export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type DomainsListOutput = typeof DomainsListOutput.Type;
+}) as unknown as Schema.Codec<DomainsListOutput>;
 
 // The operation
 /**

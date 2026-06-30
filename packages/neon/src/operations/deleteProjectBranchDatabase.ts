@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteProjectBranchDatabaseInput {
+  project_id: string;
+  branch_id: string;
+  database_name: string;
+}
 export const DeleteProjectBranchDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,73 @@ export const DeleteProjectBranchDatabaseInput =
       method: "DELETE",
       path: "/projects/{project_id}/branches/{branch_id}/databases/{database_name}",
     }),
-  );
-export type DeleteProjectBranchDatabaseInput =
-  typeof DeleteProjectBranchDatabaseInput.Type;
+  ) as unknown as Schema.Codec<DeleteProjectBranchDatabaseInput>;
 
 // Output Schema
+export interface DeleteProjectBranchDatabaseOutput {
+  database: {
+    id: number;
+    branch_id: string;
+    name: string;
+    owner_name: string;
+    created_at: string;
+    updated_at: string;
+  };
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+}
 export const DeleteProjectBranchDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.Struct({
@@ -87,9 +154,7 @@ export const DeleteProjectBranchDatabaseOutput =
         total_duration_ms: Schema.Number,
       }),
     ),
-  });
-export type DeleteProjectBranchDatabaseOutput =
-  typeof DeleteProjectBranchDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<DeleteProjectBranchDatabaseOutput>;
 
 // The operation
 /**

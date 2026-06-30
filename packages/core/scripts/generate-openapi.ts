@@ -350,6 +350,40 @@ function getBaseType(prop: SchemaObject): string | undefined {
   return prop.type;
 }
 
+/**
+ * Guards against combinatorial blow-up when inlining `oneOf`/`anyOf` unions.
+ * Large recursive union graphs (e.g. PostHog's HogQL query AST) otherwise
+ * expand into hundreds of MB of generated types. A union collapses to
+ * `unknown` once it nests past `MAX_UNION_INLINE_DEPTH` `$ref` hops (bounds
+ * build cost) or its rendered text exceeds `MAX_UNION_INLINE_CHARS` (bounds
+ * the breadth of any single union node).
+ */
+const MAX_UNION_INLINE_DEPTH = 4;
+const MAX_UNION_INLINE_CHARS = 4000;
+
+/**
+ * A `oneOf`/`anyOf` branch that contributes only nullability — an explicit
+ * `{ "type": "null" }` branch or a `$ref` to a null-only enum (PostHog's
+ * `NullEnum` is `{ "enum": [null] }`). Such branches collapse into a
+ * `Schema.NullOr` / `| null` wrapper rather than becoming a union member.
+ */
+function isNullBranch(branch: SchemaObject, spec: any): boolean {
+  let b = branch;
+  if (b.$ref) {
+    b = resolveRef(spec, b.$ref);
+  }
+  if (b.type === "null") return true;
+  if (Array.isArray(b.type) && b.type.every((t) => t === "null")) return true;
+  if (
+    Array.isArray(b.enum) &&
+    b.enum.length > 0 &&
+    b.enum.every((v) => v === null)
+  ) {
+    return true;
+  }
+  return false;
+}
+
 // ============================================================================
 // Sensitive Field Detection
 // ============================================================================
@@ -484,9 +518,32 @@ function openApiTypeToEffectSchema(
     return generateStructSchema(mergedSchema, spec, indent, seenRefs, ctx);
   }
 
-  // Handle oneOf/anyOf - use Unknown for now
+  // Handle oneOf/anyOf — emit a union of the branch schemas. Branches that
+  // only express nullability (`{type:"null"}`, PostHog's `NullEnum`) collapse
+  // into a `Schema.NullOr` wrapper instead of becoming a `Schema.Null` member.
   if (prop.oneOf || prop.anyOf) {
-    return "Schema.Unknown";
+    // Bail out of deeply-nested unions. Inlining recursive union graphs (e.g.
+    // PostHog's HogQL `query` AST) expands combinatorially into multi-hundred-MB
+    // files; beyond a few `$ref` hops the precise shape isn't useful anyway.
+    if (seenRefs.size > MAX_UNION_INLINE_DEPTH) return "Schema.Unknown";
+    const branches = (prop.oneOf ?? prop.anyOf)!;
+    let nullable = isNullable(prop);
+    const members: string[] = [];
+    for (const branch of branches) {
+      if (isNullBranch(branch, spec)) {
+        nullable = true;
+        continue;
+      }
+      members.push(
+        openApiTypeToEffectSchema(branch, spec, indent, seenRefs, ctx),
+      );
+    }
+    const uniq = [...new Set(members)];
+    if (uniq.length === 0) return "Schema.Null";
+    const base =
+      uniq.length === 1 ? uniq[0] : `Schema.Union([${uniq.join(", ")}])`;
+    const result = nullable ? `Schema.NullOr(${base})` : base;
+    return result.length > MAX_UNION_INLINE_CHARS ? "Schema.Unknown" : result;
   }
 
   // Handle enum
@@ -626,6 +683,240 @@ function generateStructSchema(
 }
 
 // ============================================================================
+// TypeScript type printer
+//
+// Mirrors `openApiTypeToEffectSchema` but emits a TS *type* string instead of a
+// runtime schema. Used to emit an explicit `interface`/`type` for every
+// Input/Output schema so the generated const can be cast
+// `... as unknown as Schema.Codec<Name>` instead of relying on the expensive
+// `export type X = typeof X.Type` inference (which serializes the full
+// `Schema.Struct<{...}>` into every `.d.ts` and forces consumers to
+// re-instantiate `.Type`). Keeps the public type fully inlined and
+// self-contained.
+// ============================================================================
+
+/** Sensitive decoded `.Type` mapping, kept in sync with `core/src/sensitive.ts`. */
+function sensitiveTsType(direction: "input" | "output", nullable: boolean): string {
+  if (direction === "output") {
+    return nullable ? "Redacted.Redacted<string> | null" : "Redacted.Redacted<string>";
+  }
+  return nullable
+    ? "string | Redacted.Redacted<string> | null"
+    : "string | Redacted.Redacted<string>";
+}
+
+function openApiTypeToTsType(
+  prop: SchemaObject,
+  spec: any,
+  seenRefs: Set<string> = new Set(),
+  ctx?: SchemaGenerationContext,
+): string {
+  // $ref — resolve and inline (self-contained type, no private-name references).
+  if (prop.$ref) {
+    if (seenRefs.has(prop.$ref)) return "unknown";
+    const resolved = resolveRef(spec, prop.$ref);
+    return openApiTypeToTsType(
+      resolved,
+      spec,
+      new Set([...seenRefs, prop.$ref]),
+      ctx,
+    );
+  }
+
+  // allOf — single passes through; multiple merge into one object.
+  if (prop.allOf && prop.allOf.length > 0) {
+    if (prop.allOf.length === 1) {
+      let resolved = prop.allOf[0];
+      if (resolved.$ref) {
+        if (seenRefs.has(resolved.$ref)) return "unknown";
+        const refKey = resolved.$ref;
+        resolved = resolveRef(spec, refKey);
+        const mergedProp: SchemaObject = {
+          ...resolved,
+          ...(prop.nullable !== undefined ? { nullable: prop.nullable } : {}),
+          ...(prop["x-nullable"] !== undefined
+            ? { "x-nullable": prop["x-nullable"] }
+            : {}),
+          ...(prop["x-sensitive"] !== undefined
+            ? { "x-sensitive": prop["x-sensitive"] }
+            : {}),
+        };
+        return openApiTypeToTsType(
+          mergedProp,
+          spec,
+          new Set([...seenRefs, refKey]),
+          ctx,
+        );
+      }
+      return openApiTypeToTsType(resolved, spec, seenRefs, ctx);
+    }
+    const mergedProps: Record<string, SchemaObject> = {};
+    const mergedRequired: string[] = [];
+    for (const subSchema of prop.allOf) {
+      let resolved = subSchema;
+      if (subSchema.$ref) resolved = resolveRef(spec, subSchema.$ref);
+      if (resolved.properties) Object.assign(mergedProps, resolved.properties);
+      if (resolved.required) mergedRequired.push(...resolved.required);
+    }
+    return structObjectToTsType(
+      { type: "object", properties: mergedProps, required: [...new Set(mergedRequired)] },
+      spec,
+      seenRefs,
+      ctx,
+    );
+  }
+
+  if (prop.oneOf || prop.anyOf) {
+    if (seenRefs.size > MAX_UNION_INLINE_DEPTH) return "unknown";
+    const branches = (prop.oneOf ?? prop.anyOf)!;
+    let nullable = isNullable(prop);
+    const members: string[] = [];
+    for (const branch of branches) {
+      if (isNullBranch(branch, spec)) {
+        nullable = true;
+        continue;
+      }
+      members.push(openApiTypeToTsType(branch, spec, seenRefs, ctx));
+    }
+    const uniq = [...new Set(members)];
+    if (uniq.length === 0) return "null";
+    const base = uniq.join(" | ");
+    const result = nullable ? `${base} | null` : base;
+    return result.length > MAX_UNION_INLINE_CHARS ? "unknown" : result;
+  }
+
+  if (prop.enum && prop.enum.length > 0) {
+    const base = prop.enum
+      .map((v) => (typeof v === "string" ? JSON.stringify(v) : String(v)))
+      .join(" | ");
+    return isNullable(prop) ? `${base} | null` : base;
+  }
+
+  const baseType = getBaseType(prop);
+  let ts: string;
+  switch (baseType) {
+    case "string":
+      if (prop["x-sensitive"]) {
+        return sensitiveTsType(ctx?.direction === "output" ? "output" : "input", isNullable(prop));
+      }
+      ts = "string";
+      break;
+    case "integer":
+    case "number":
+      ts = "number";
+      break;
+    case "boolean":
+      ts = "boolean";
+      break;
+    case "array": {
+      const item = prop.items
+        ? openApiTypeToTsType(prop.items, spec, seenRefs, ctx)
+        : "unknown";
+      ts = /[|&]/.test(item) ? `(${item})[]` : `${item}[]`;
+      break;
+    }
+    case "object":
+      if (prop.properties) {
+        ts = structObjectToTsType(prop, spec, seenRefs, ctx);
+      } else if (prop.additionalProperties) {
+        const val =
+          typeof prop.additionalProperties === "boolean"
+            ? "unknown"
+            : openApiTypeToTsType(prop.additionalProperties, spec, seenRefs, ctx);
+        ts = `Record<string, ${val}>`;
+      } else {
+        ts = "unknown";
+      }
+      break;
+    default:
+      ts = prop.properties
+        ? structObjectToTsType(prop, spec, seenRefs, ctx)
+        : "unknown";
+      break;
+  }
+  return isNullable(prop) ? `${ts} | null` : ts;
+}
+
+/** Emit an inline `{ k: T; k2?: T2 }` object type for a struct schema. */
+function structObjectToTsType(
+  schema: SchemaObject,
+  spec: any,
+  seenRefs: Set<string>,
+  ctx?: SchemaGenerationContext,
+): string {
+  if (!schema.properties) return "Record<string, unknown>";
+  const required = new Set(schema.required || []);
+  const parts: string[] = [];
+  for (const [key, value] of Object.entries(schema.properties)) {
+    const baseType = getBaseType(value);
+    const isSensitiveByName =
+      baseType === "string" &&
+      !value["x-sensitive"] &&
+      !value.enum &&
+      isSensitiveFieldName(key);
+    const effectiveValue = isSensitiveByName
+      ? { ...value, "x-sensitive": true }
+      : value;
+    const tsType = openApiTypeToTsType(effectiveValue, spec, seenRefs, ctx);
+    const opt = required.has(key) ? "" : "?";
+    parts.push(`${quotePropKey(key)}${opt}: ${tsType}`);
+  }
+  return `{ ${parts.join("; ")} }`;
+}
+
+/**
+ * Build an explicit `export interface`/`export type` declaration plus a
+ * `Schema.Codec<Name>` cast appended to the schema const. The const code passed
+ * in must NOT include the trailing `export type X = typeof X.Type` line.
+ */
+function emitTypedSchema(
+  name: string,
+  tsType: string,
+  constCode: string,
+): string {
+  // Append the explicit cast to the schema const (before its terminating `;`).
+  const castedConst = constCode.replace(/;\s*$/, ` as unknown as Schema.Codec<${name}>;`);
+  // Prefer an `interface` for *pure* object types (cheap, named) and a `type`
+  // alias otherwise. A pure object literal both starts with `{` and ends with
+  // `}` — this deliberately excludes array (`{...}[]`) and nullable
+  // (`{...} | null`) shapes, which must stay `type` aliases.
+  const decl = isSingleObjectLiteral(tsType)
+    ? `export interface ${name} ${tsType}`
+    : `export type ${name} = ${tsType};`;
+  return `${decl}\n${castedConst}`;
+}
+
+/**
+ * True only when `s` is a single object literal — i.e. its leading `{` closes
+ * exactly at the trailing `}`. Excludes arrays (`{...}[]`), nullable shapes
+ * (`{...} | null`) and unions of objects (`{...} | {...}`), all of which must
+ * be emitted as `type` aliases rather than `interface` declarations.
+ */
+function isSingleObjectLiteral(s: string): boolean {
+  const t = s.trim();
+  if (!t.startsWith("{") || !t.endsWith("}")) return false;
+  let depth = 0;
+  let inStr: string | null = null;
+  for (let i = 0; i < t.length; i++) {
+    const c = t[i];
+    if (inStr) {
+      if (c === inStr && t[i - 1] !== "\\") inStr = null;
+      continue;
+    }
+    if (c === '"' || c === "'") {
+      inStr = c;
+    } else if (c === "{") {
+      depth++;
+    } else if (c === "}") {
+      depth--;
+      // The outermost object closed before the end → not a single literal.
+      if (depth === 0 && i !== t.length - 1) return false;
+    }
+  }
+  return true;
+}
+
+// ============================================================================
 // JSDoc Generation
 // ============================================================================
 
@@ -758,6 +1049,19 @@ function generateInputSchemaSwagger(
   const bodyParam = parameters.find((p) => p.in === "body");
 
   const fields: string[] = [];
+  // Parallel TS-type fields for the explicit input interface.
+  const tsFields: string[] = [];
+  const paramEnumTs = (
+    values: (string | number | boolean)[],
+    type: string | undefined,
+  ): string =>
+    values
+      .map((v) =>
+        type === "integer" || type === "number" || type === "boolean"
+          ? String(v)
+          : JSON.stringify(v),
+      )
+      .join(" | ");
   // Track emitted field names so later groups (query, body) don't redeclare a
   // name already taken by an earlier group. Path params win — without this, a
   // body field sharing a path param's name (e.g. `billingAccountId`) would be
@@ -774,6 +1078,12 @@ function generateInputSchemaSwagger(
         ? "Schema.Number"
         : "Schema.String";
     fields.push(`  ${param.name}: ${baseSchema}.pipe(T.PathParam()),`);
+    const tsBase = param.enum
+      ? paramEnumTs(param.enum, param.type)
+      : param.type === "integer"
+        ? "number"
+        : "string";
+    tsFields.push(`${quotePropKey(param.name)}: ${tsBase}`);
   }
 
   // Query parameters
@@ -792,6 +1102,14 @@ function generateInputSchemaSwagger(
       schema = `Schema.optional(${schema})`;
     }
     fields.push(`  ${param.name}: ${schema},`);
+    const tsBase = param.enum
+      ? paramEnumTs(param.enum, param.type)
+      : param.type === "integer" || param.type === "number"
+        ? "number"
+        : param.type === "boolean"
+          ? "boolean"
+          : "string";
+    tsFields.push(`${quotePropKey(param.name)}${param.required ? "" : "?"}: ${tsBase}`);
   }
 
   // Body parameters
@@ -850,10 +1168,14 @@ function generateInputSchemaSwagger(
           new Set(),
           ctx,
         );
+        const fieldTs = openApiTypeToTsType(effectiveValue, spec, new Set(), ctx);
         if (!required.has(key)) {
           fieldSchema = `Schema.optional(${fieldSchema})`;
         }
         fields.push(`  ${quotePropKey(key)}: ${fieldSchema},`);
+        tsFields.push(
+          `${quotePropKey(key)}${required.has(key) ? "" : "?"}: ${fieldTs}`,
+        );
       }
     }
   }
@@ -865,12 +1187,13 @@ function generateInputSchemaSwagger(
   if (apiVersion) {
     swaggerHttpTraitParts.push(`apiVersion: "${apiVersion}"`);
   }
-  const inputSchemaCode =
+  const inputSchemaCode = emitTypedSchema(
+    inputSchemaName,
+    `{ ${tsFields.join("; ")} }`,
     annotatePureExportConst(`export const ${inputSchemaName} = Schema.Struct({
 ${fields.join("\n")}
-}).pipe(T.Http({ ${swaggerHttpTraitParts.join(", ")} }));`) +
-    `
-export type ${inputSchemaName} = typeof ${inputSchemaName}.Type;`;
+}).pipe(T.Http({ ${swaggerHttpTraitParts.join(", ")} }));`),
+  );
 
   return { inputSchemaCode, inputSchemaName };
 }
@@ -933,6 +1256,26 @@ function generateInputSchema3(
   );
 
   const fields: string[] = [];
+  const tsFields: string[] = [];
+  const paramSchemaTs = (schema: SchemaObject | undefined): string => {
+    if (!schema) return "string";
+    if (schema.enum && schema.enum.length > 0) {
+      return schema.enum
+        .map((v) =>
+          schema.type === "integer" ||
+          schema.type === "number" ||
+          schema.type === "boolean"
+            ? String(v)
+            : JSON.stringify(v),
+        )
+        .join(" | ");
+    }
+    return schema.type === "integer" || schema.type === "number"
+      ? "number"
+      : schema.type === "boolean"
+        ? "boolean"
+        : "string";
+  };
   const usedNames = new Set<string>();
 
   // Path parameters
@@ -947,6 +1290,7 @@ function generateInputSchema3(
           ? "Schema.Number"
           : "Schema.String";
     fields.push(`  ${param.name}: ${baseSchema}.pipe(T.PathParam()),`);
+    tsFields.push(`${quotePropKey(param.name)}: ${paramSchemaTs(schema)}`);
   }
 
   // Query parameters
@@ -967,6 +1311,9 @@ function generateInputSchema3(
       schemaStr = `Schema.optional(${schemaStr})`;
     }
     fields.push(`  ${param.name}: ${schemaStr},`);
+    tsFields.push(
+      `${quotePropKey(param.name)}${param.required ? "" : "?"}: ${paramSchemaTs(schema)}`,
+    );
   }
 
   // Request body — check for JSON, form-urlencoded, or multipart content
@@ -1038,10 +1385,14 @@ function generateInputSchema3(
             new Set(),
             ctx,
           );
+          const fieldTs = openApiTypeToTsType(effectiveValue, spec, new Set(), ctx);
           if (!required.has(key)) {
             fieldSchema = `Schema.optional(${fieldSchema})`;
           }
           fields.push(`  ${quotePropKey(key)}: ${fieldSchema},`);
+          tsFields.push(
+            `${quotePropKey(key)}${required.has(key) ? "" : "?"}: ${fieldTs}`,
+          );
         }
       }
     }
@@ -1067,12 +1418,13 @@ function generateInputSchema3(
     traitChain.push(`T.NoFollowRedirect()`);
   }
 
-  const inputSchemaCode =
+  const inputSchemaCode = emitTypedSchema(
+    inputSchemaName,
+    `{ ${tsFields.join("; ")} }`,
     annotatePureExportConst(`export const ${inputSchemaName} = Schema.Struct({
 ${fields.join("\n")}
-}).pipe(${traitChain.join(", ")});`) +
-    `
-export type ${inputSchemaName} = typeof ${inputSchemaName}.Type;`;
+}).pipe(${traitChain.join(", ")});`),
+  );
 
   return { inputSchemaCode, inputSchemaName };
 }
@@ -1139,8 +1491,11 @@ function generateOutputSchema(
 
   if (!responseSchema) {
     return {
-      outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
+      outputSchemaCode: emitTypedSchema(
+        outputSchemaName,
+        "void",
+        `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;`,
+      ),
       outputSchemaName,
       sensitiveImports: {
         usesSensitiveString: false,
@@ -1165,9 +1520,13 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
       new Set(),
       ctx,
     );
+    const itemTs = openApiTypeToTsType(responseSchema.items, spec, new Set(), ctx);
     return {
-      outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(${itemSchema});
-export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
+      outputSchemaCode: emitTypedSchema(
+        outputSchemaName,
+        /[|&]/.test(itemTs) ? `(${itemTs})[]` : `${itemTs}[]`,
+        `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(${itemSchema});`,
+      ),
       outputSchemaName,
       sensitiveImports: {
         usesSensitiveString: ctx.usesSensitiveString,
@@ -1186,9 +1545,13 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
     new Set(),
     ctx,
   );
+  const responseTs = openApiTypeToTsType(responseSchema, spec, new Set(), ctx);
   return {
-    outputSchemaCode: `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ ${schemaCode};
-export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
+    outputSchemaCode: emitTypedSchema(
+      outputSchemaName,
+      responseTs,
+      `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ ${schemaCode};`,
+    ),
     outputSchemaName,
     sensitiveImports: {
       usesSensitiveString: ctx.usesSensitiveString,
@@ -1263,6 +1626,9 @@ import * as T from "${traitsImport}.ts";`;
   }
   if (sensitiveTypesToImport.length > 0) {
     imports += `\nimport { ${sensitiveTypesToImport.join(", ")} } from "${sensitiveImportPath}.ts";`;
+    // The explicit Input/Output type aliases reference `Redacted.Redacted<...>`
+    // for sensitive fields (see openApiTypeToTsType / sensitiveTsType).
+    imports += `\nimport * as Redacted from "effect/Redacted";`;
   }
 
   return [
@@ -1818,6 +2184,9 @@ import * as T from "${traitsImport}.ts";`;
   }
   if (sensitiveTypesToImport.length > 0) {
     imports += `\nimport { ${sensitiveTypesToImport.join(", ")} } from "${sensitiveImportPath}.ts";`;
+    // The explicit Input/Output type aliases reference `Redacted.Redacted<...>`
+    // for sensitive fields (see openApiTypeToTsType / sensitiveTsType).
+    imports += `\nimport * as Redacted from "effect/Redacted";`;
   }
 
   return [

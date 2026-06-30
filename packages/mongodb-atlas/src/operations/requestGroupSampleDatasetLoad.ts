@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface RequestGroupSampleDatasetLoadInput {
+  groupId: string;
+  name: string;
+  envelope?: boolean;
+}
 export const RequestGroupSampleDatasetLoadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const RequestGroupSampleDatasetLoadInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}",
     }),
-  );
-export type RequestGroupSampleDatasetLoadInput =
-  typeof RequestGroupSampleDatasetLoadInput.Type;
+  ) as unknown as Schema.Codec<RequestGroupSampleDatasetLoadInput>;
 
 // Output Schema
+export type RequestGroupSampleDatasetLoadOutput = void;
 export const RequestGroupSampleDatasetLoadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RequestGroupSampleDatasetLoadOutput =
-  typeof RequestGroupSampleDatasetLoadOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RequestGroupSampleDatasetLoadOutput>;
 
 // The operation
 /**

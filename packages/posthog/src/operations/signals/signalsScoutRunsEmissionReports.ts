@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsScoutRunsEmissionReportsInput {
+  project_id: string;
+  run_id: string;
+}
 export const SignalsScoutRunsEmissionReportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,21 +17,28 @@ export const SignalsScoutRunsEmissionReportsInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/scout/runs/{run_id}/emissions/reports/",
     }),
-  );
-export type SignalsScoutRunsEmissionReportsInput =
-  typeof SignalsScoutRunsEmissionReportsInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutRunsEmissionReportsInput>;
 
 // Output Schema
+export type SignalsScoutRunsEmissionReportsOutput = {
+  finding_id: string;
+  source_id: string;
+  report: { id: string; title: string | null; status: string } | null;
+}[];
 export const SignalsScoutRunsEmissionReportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
       finding_id: Schema.String,
       source_id: Schema.String,
-      report: Schema.Unknown,
+      report: Schema.NullOr(
+        Schema.Struct({
+          id: Schema.String,
+          title: Schema.NullOr(Schema.String),
+          status: Schema.String,
+        }),
+      ),
     }),
-  );
-export type SignalsScoutRunsEmissionReportsOutput =
-  typeof SignalsScoutRunsEmissionReportsOutput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutRunsEmissionReportsOutput>;
 
 // The operation
 /**

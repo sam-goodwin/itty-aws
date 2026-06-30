@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse> =
+export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse",
@@ -51,7 +51,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue {
   strValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue> =
+export const GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skipValue: Schema.optional(Schema.Boolean),
     score: Schema.optional(Schema.Number),
@@ -77,7 +77,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource {
   answerValue?: GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource> =
+export const GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceType: Schema.optional(Schema.String),
     answerValue: Schema.optional(
@@ -102,7 +102,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswer {
   answerSources?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaAnswer: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswer> =
+export const GoogleCloudContactcenterinsightsV1alpha1QaAnswer: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QaAnswer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answerValue: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue,
@@ -125,7 +125,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConf
   qaScorecardRevisions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList> =
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -138,7 +138,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConf
   scorecardList?: GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig> =
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scorecardList: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList,
@@ -161,7 +161,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummar
   conversationProfile?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig> =
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summarizationModel: Schema.optional(Schema.String),
     generator: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector {
   runSummarizationAnnotator?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector> =
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaConfig: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig,
@@ -235,7 +235,7 @@ export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest
   dataset?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination> =
+export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -252,7 +252,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationLevelSilence 
   silenceDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationLevelSilence: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationLevelSilence> =
+export const GoogleCloudContactcenterinsightsV1mainConversationLevelSilence: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationLevelSilence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     silencePercentage: Schema.optional(Schema.Number),
     silenceDuration: Schema.optional(Schema.String),
@@ -272,7 +272,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagRes
   potentialScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult> =
+export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -300,7 +300,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSou
   normalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource> =
+export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaTagResults: Schema.optional(
       Schema.Array(
@@ -337,7 +337,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue {
   score?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue> =
+export const GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     strValue: Schema.optional(Schema.String),
     numValue: Schema.optional(Schema.Number),
@@ -363,7 +363,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource> =
+export const GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answerValue: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue,
@@ -388,7 +388,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaAnswer {
   qaQuestion?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaAnswer: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswer> =
+export const GoogleCloudContactcenterinsightsV1mainQaAnswer: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQaAnswer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(Schema.String),
     questionBody: Schema.optional(Schema.String),
@@ -427,7 +427,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResult {
   qaTagResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaScorecardResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResult> =
+export const GoogleCloudContactcenterinsightsV1mainQaScorecardResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQaScorecardResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scoreSources: Schema.optional(
       Schema.Array(
@@ -461,7 +461,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSentimentData {
   magnitude?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSentimentData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSentimentData> =
+export const GoogleCloudContactcenterinsightsV1mainSentimentData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSentimentData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
@@ -476,7 +476,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationLevelSentimen
   sentimentData?: GoogleCloudContactcenterinsightsV1mainSentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment> =
+export const GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelTag: Schema.optional(Schema.Number),
     sentimentData: Schema.optional(
@@ -514,7 +514,7 @@ export interface GoogleCloudContactcenterinsightsV1mainEntity {
   sentiment?: GoogleCloudContactcenterinsightsV1mainSentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainEntity: Schema.Schema<GoogleCloudContactcenterinsightsV1mainEntity> =
+export const GoogleCloudContactcenterinsightsV1mainEntity: Schema.Codec<GoogleCloudContactcenterinsightsV1mainEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     salience: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
@@ -534,7 +534,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueAssignment {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueAssignment: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueAssignment> =
+export const GoogleCloudContactcenterinsightsV1mainIssueAssignment: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIssueAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     issue: Schema.optional(Schema.String),
@@ -550,7 +550,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelResult {
   issues?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainIssueAssignment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModelResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelResult> =
+export const GoogleCloudContactcenterinsightsV1mainIssueModelResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIssueModelResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueModel: Schema.optional(Schema.String),
     issues: Schema.optional(
@@ -567,7 +567,7 @@ export interface GoogleCloudContactcenterinsightsV1mainPhraseMatchData {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainPhraseMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainPhraseMatchData> =
+export const GoogleCloudContactcenterinsightsV1mainPhraseMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainPhraseMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phraseMatcher: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -580,7 +580,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueMatchData {
   issueAssignment?: GoogleCloudContactcenterinsightsV1mainIssueAssignment;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueMatchData> =
+export const GoogleCloudContactcenterinsightsV1mainIssueMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIssueMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueAssignment: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainIssueAssignment,
@@ -594,7 +594,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIntentMatchData {
   intentUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIntentMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIntentMatchData> =
+export const GoogleCloudContactcenterinsightsV1mainIntentMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIntentMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intentUniqueId: Schema.optional(Schema.String),
   }).annotate({
@@ -603,7 +603,7 @@ export const GoogleCloudContactcenterinsightsV1mainIntentMatchData: Schema.Schem
 
 export interface GoogleCloudContactcenterinsightsV1mainSilenceData {}
 
-export const GoogleCloudContactcenterinsightsV1mainSilenceData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSilenceData> =
+export const GoogleCloudContactcenterinsightsV1mainSilenceData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSilenceData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainSilenceData",
   });
@@ -615,7 +615,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotationBoundary {
   wordIndex?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotationBoundary: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotationBoundary> =
+export const GoogleCloudContactcenterinsightsV1mainAnnotationBoundary: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnnotationBoundary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transcriptIndex: Schema.optional(Schema.Number),
     wordIndex: Schema.optional(Schema.Number),
@@ -625,14 +625,14 @@ export const GoogleCloudContactcenterinsightsV1mainAnnotationBoundary: Schema.Sc
 
 export interface GoogleCloudContactcenterinsightsV1mainHoldData {}
 
-export const GoogleCloudContactcenterinsightsV1mainHoldData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainHoldData> =
+export const GoogleCloudContactcenterinsightsV1mainHoldData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainHoldData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainHoldData",
   });
 
 export interface GoogleCloudContactcenterinsightsV1mainInterruptionData {}
 
-export const GoogleCloudContactcenterinsightsV1mainInterruptionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainInterruptionData> =
+export const GoogleCloudContactcenterinsightsV1mainInterruptionData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainInterruptionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainInterruptionData",
   });
@@ -646,7 +646,7 @@ export interface GoogleCloudContactcenterinsightsV1mainEntityMentionData {
   sentiment?: GoogleCloudContactcenterinsightsV1mainSentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainEntityMentionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainEntityMentionData> =
+export const GoogleCloudContactcenterinsightsV1mainEntityMentionData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainEntityMentionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     entityUniqueId: Schema.optional(Schema.String),
@@ -682,7 +682,7 @@ export interface GoogleCloudContactcenterinsightsV1mainCallAnnotation {
   entityMentionData?: GoogleCloudContactcenterinsightsV1mainEntityMentionData;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCallAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCallAnnotation> =
+export const GoogleCloudContactcenterinsightsV1mainCallAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1mainCallAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueMatchData: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainIssueMatchData,
@@ -724,7 +724,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIntent {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIntent: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIntent> =
+export const GoogleCloudContactcenterinsightsV1mainIntent: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -752,7 +752,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysi
   intents?: Record<string, GoogleCloudContactcenterinsightsV1mainIntent>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     silence: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainConversationLevelSilence,
@@ -801,7 +801,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnalysisResult {
   callAnalysisMetadata?: GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnalysisResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysisResult> =
+export const GoogleCloudContactcenterinsightsV1mainAnalysisResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnalysisResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     callAnalysisMetadata: Schema.optional(
@@ -818,7 +818,7 @@ export interface GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionReques
   validateOnly?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest> =
+export const GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -834,7 +834,7 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSer
   conversationCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval> =
+export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval: Schema.Codec<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     conversationCount: Schema.optional(Schema.Number),
@@ -850,7 +850,7 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSer
   intervalDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries> =
+export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries: Schema.Codec<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     points: Schema.optional(
       Schema.Array(
@@ -872,7 +872,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStat
   issue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats> =
+export const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats: Schema.Codec<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labeledConversationsCount: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -904,7 +904,7 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   customHighlighterMatches?: Record<string, number>;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse> =
+export const GoogleCloudContactcenterinsightsV1CalculateStatsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1CalculateStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueMatches: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
     smartHighlighterMatches: Schema.optional(
@@ -934,7 +934,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimen
   qaScorecardId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardId: Schema.optional(Schema.String),
   }).annotate({
@@ -947,7 +947,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -964,7 +964,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadat
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -987,7 +987,7 @@ export interface GoogleCloudContactcenterinsightsV1SampleRule {
   sampleRow?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1SampleRule: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleRule> =
+export const GoogleCloudContactcenterinsightsV1SampleRule: Schema.Codec<GoogleCloudContactcenterinsightsV1SampleRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     conversationFilter: Schema.optional(Schema.String),
@@ -1006,7 +1006,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SmartReplyData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SmartReplyData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SmartReplyData> =
+export const GoogleCloudContactcenterinsightsV1alpha1SmartReplyData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SmartReplyData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reply: Schema.optional(Schema.String),
     confidenceScore: Schema.optional(Schema.Number),
@@ -1021,7 +1021,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig
   qaScorecardRevisions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList> =
+export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1034,7 +1034,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig
   scorecardList?: GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig> =
+export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scorecardList: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList,
@@ -1057,7 +1057,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummariz
   generator?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig> =
+export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationProfile: Schema.optional(Schema.String),
     summarizationModel: Schema.optional(Schema.String),
@@ -1098,7 +1098,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelector {
   issueModels?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelector: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelector> =
+export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelector: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnnotatorSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runEntityAnnotator: Schema.optional(Schema.Boolean),
     runPhraseMatcherAnnotator: Schema.optional(Schema.Boolean),
@@ -1127,7 +1127,7 @@ export interface GoogleCloudContactcenterinsightsV1ExactMatchConfig {
   caseSensitive?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExactMatchConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1ExactMatchConfig> =
+export const GoogleCloudContactcenterinsightsV1ExactMatchConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1ExactMatchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     caseSensitive: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -1136,7 +1136,7 @@ export const GoogleCloudContactcenterinsightsV1ExactMatchConfig: Schema.Schema<G
 
 export interface GoogleCloudContactcenterinsightsV1RegexMatchConfig {}
 
-export const GoogleCloudContactcenterinsightsV1RegexMatchConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1RegexMatchConfig> =
+export const GoogleCloudContactcenterinsightsV1RegexMatchConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1RegexMatchConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1RegexMatchConfig",
   });
@@ -1148,7 +1148,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
   regexMatchConfig?: GoogleCloudContactcenterinsightsV1RegexMatchConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig> =
+export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exactMatchConfig: Schema.optional(
       GoogleCloudContactcenterinsightsV1ExactMatchConfig,
@@ -1162,7 +1162,7 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig: Schema.Sch
 
 export interface GoogleCloudContactcenterinsightsV1SilenceData {}
 
-export const GoogleCloudContactcenterinsightsV1SilenceData: Schema.Schema<GoogleCloudContactcenterinsightsV1SilenceData> =
+export const GoogleCloudContactcenterinsightsV1SilenceData: Schema.Codec<GoogleCloudContactcenterinsightsV1SilenceData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SilenceData",
   });
@@ -1178,7 +1178,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversations
   maxDeleteCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -1198,7 +1198,7 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1218,7 +1218,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversations
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -1246,7 +1246,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel {
   labeledResource?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel> =
+export const GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -1295,7 +1295,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMeta
   versionId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     team: Schema.optional(Schema.String),
     dispositionCode: Schema.optional(Schema.String),
@@ -1328,7 +1328,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMeta
   agentInfo?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerSatisfactionRating: Schema.optional(Schema.Number),
     waitDuration: Schema.optional(Schema.String),
@@ -1353,7 +1353,7 @@ export interface GoogleCloudContactcenterinsightsV1SpeechConfig {
   disableWordTimeOffsets?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1SpeechConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1SpeechConfig> =
+export const GoogleCloudContactcenterinsightsV1SpeechConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1SpeechConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speechRecognizer: Schema.optional(Schema.String),
     disableWordTimeOffsets: Schema.optional(Schema.Boolean),
@@ -1372,7 +1372,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag {
   qaQuestionIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag> =
+export const GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1390,7 +1390,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequ
   qaQuestionTag?: GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     qaQuestionTag: Schema.optional(
@@ -1410,7 +1410,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMeta
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -1435,7 +1435,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTag {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionTag: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTag> =
+export const GoogleCloudContactcenterinsightsV1QaQuestionTag: Schema.Codec<GoogleCloudContactcenterinsightsV1QaQuestionTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     qaQuestionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1453,7 +1453,7 @@ export interface GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest> =
+export const GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestionTag: Schema.optional(
       GoogleCloudContactcenterinsightsV1QaQuestionTag,
@@ -1472,7 +1472,7 @@ export interface GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata> =
+export const GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest,
@@ -1492,7 +1492,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueAssignment {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueAssignment: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueAssignment> =
+export const GoogleCloudContactcenterinsightsV1alpha1IssueAssignment: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IssueAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     issue: Schema.optional(Schema.String),
@@ -1508,7 +1508,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelResult {
   issueModel?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModelResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModelResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IssueModelResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issues: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1alpha1IssueAssignment),
@@ -1523,7 +1523,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -1544,7 +1544,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsR
   annotatorSelector?: GoogleCloudContactcenterinsightsV1mainAnnotatorSelector;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     analysisPercentage: Schema.optional(Schema.Number),
@@ -1577,7 +1577,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsM
   totalRequestedAnalysesCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     completedAnalysesCount: Schema.optional(Schema.Number),
     endTime: Schema.optional(Schema.String),
@@ -1603,7 +1603,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationResult
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult> =
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     correlationId: Schema.optional(Schema.String),
     ruleId: Schema.optional(Schema.String),
@@ -1620,7 +1620,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationResult
   ruleResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationResult> =
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationCorrelationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(Schema.String),
     ruleResults: Schema.optional(
@@ -1642,7 +1642,7 @@ export interface GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRul
   constraintMet?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult: Schema.Schema<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult> =
+export const GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult: Schema.Codec<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(GoogleRpcStatus),
     ruleId: Schema.optional(Schema.String),
@@ -1661,7 +1661,7 @@ export interface GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult {
   ruleConstraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult> =
+export const GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationA: Schema.optional(Schema.String),
     conversationB: Schema.optional(Schema.String),
@@ -1681,7 +1681,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse
   constraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults> =
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults: Schema.Codec<GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     joinKeyResults: Schema.optional(
       Schema.Array(
@@ -1705,7 +1705,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse> =
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detailedResults: Schema.optional(
       GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults,
@@ -1721,7 +1721,7 @@ export interface GoogleCloudCesV1mainEndSession {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudCesV1mainEndSession: Schema.Schema<GoogleCloudCesV1mainEndSession> =
+export const GoogleCloudCesV1mainEndSession: Schema.Codec<GoogleCloudCesV1mainEndSession> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudCesV1mainEndSession" });
@@ -1731,7 +1731,7 @@ export interface GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation {
   endSession?: GoogleCloudCesV1mainEndSession;
 }
 
-export const GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation> =
+export const GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endSession: Schema.optional(GoogleCloudCesV1mainEndSession),
   }).annotate({
@@ -1743,7 +1743,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata {
   errorMessages?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
   }).annotate({
@@ -1759,7 +1759,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionC
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig> =
+export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({
@@ -1776,7 +1776,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   p99?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     p90: Schema.optional(Schema.Number),
     p50: Schema.optional(Schema.Number),
@@ -1799,7 +1799,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   percentileAudioInAudioOutLatency?: GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentileLlmCallLatency: Schema.optional(
       GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
@@ -1823,7 +1823,7 @@ export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoin
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -1837,7 +1837,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequ
   agentChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig> =
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerChannel: Schema.optional(Schema.Number),
     agentId: Schema.optional(Schema.String),
@@ -1854,7 +1854,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SpeechConfig {
   disableWordTimeOffsets?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SpeechConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SpeechConfig> =
+export const GoogleCloudContactcenterinsightsV1alpha1SpeechConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SpeechConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speechRecognizer: Schema.optional(Schema.String),
     disableWordTimeOffsets: Schema.optional(Schema.Boolean),
@@ -1867,7 +1867,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequ
   medium?: "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig> =
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medium: Schema.optional(Schema.String),
   }).annotate({
@@ -1894,7 +1894,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequ
   metadataBucketUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource> =
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transcriptBucketUri: Schema.optional(Schema.String),
     audioBucketUri: Schema.optional(Schema.String),
@@ -1914,7 +1914,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1RedactionConfig {
   inspectTemplate?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1RedactionConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RedactionConfig> =
+export const GoogleCloudContactcenterinsightsV1alpha1RedactionConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1RedactionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deidentifyTemplate: Schema.optional(Schema.String),
     inspectTemplate: Schema.optional(Schema.String),
@@ -1939,7 +1939,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequ
   redactionConfig?: GoogleCloudContactcenterinsightsV1alpha1RedactionConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationConfig: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig,
@@ -1968,7 +1968,7 @@ export interface GoogleCloudContactcenterinsightsV1NoteQaQuestionNote {
   qaQuestion?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1NoteQaQuestionNote: Schema.Schema<GoogleCloudContactcenterinsightsV1NoteQaQuestionNote> =
+export const GoogleCloudContactcenterinsightsV1NoteQaQuestionNote: Schema.Codec<GoogleCloudContactcenterinsightsV1NoteQaQuestionNote> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestion: Schema.optional(Schema.String),
   }).annotate({
@@ -1980,7 +1980,7 @@ export interface GoogleCloudContactcenterinsightsV1NoteConversationTurnNote {
   turnIndex?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote: Schema.Schema<GoogleCloudContactcenterinsightsV1NoteConversationTurnNote> =
+export const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote: Schema.Codec<GoogleCloudContactcenterinsightsV1NoteConversationTurnNote> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     turnIndex: Schema.optional(Schema.Number),
   }).annotate({
@@ -1989,7 +1989,7 @@ export const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote: Schema.
 
 export interface GoogleCloudContactcenterinsightsV1NoteAssessmentNote {}
 
-export const GoogleCloudContactcenterinsightsV1NoteAssessmentNote: Schema.Schema<GoogleCloudContactcenterinsightsV1NoteAssessmentNote> =
+export const GoogleCloudContactcenterinsightsV1NoteAssessmentNote: Schema.Codec<GoogleCloudContactcenterinsightsV1NoteAssessmentNote> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1NoteAssessmentNote",
   });
@@ -1999,7 +1999,7 @@ export interface GoogleCloudContactcenterinsightsV1UserInfo {
   username?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UserInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1UserInfo> =
+export const GoogleCloudContactcenterinsightsV1UserInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1UserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1UserInfo" });
@@ -2023,7 +2023,7 @@ export interface GoogleCloudContactcenterinsightsV1Note {
   noteCreator?: GoogleCloudContactcenterinsightsV1UserInfo;
 }
 
-export const GoogleCloudContactcenterinsightsV1Note: Schema.Schema<GoogleCloudContactcenterinsightsV1Note> =
+export const GoogleCloudContactcenterinsightsV1Note: Schema.Codec<GoogleCloudContactcenterinsightsV1Note> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestionNote: Schema.optional(
       GoogleCloudContactcenterinsightsV1NoteQaQuestionNote,
@@ -2046,7 +2046,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IntentMatchData {
   intentUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IntentMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IntentMatchData> =
+export const GoogleCloudContactcenterinsightsV1alpha1IntentMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IntentMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intentUniqueId: Schema.optional(Schema.String),
   }).annotate({
@@ -2058,7 +2058,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueMatchData {
   issueAssignment?: GoogleCloudContactcenterinsightsV1alpha1IssueAssignment;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueMatchData> =
+export const GoogleCloudContactcenterinsightsV1alpha1IssueMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IssueMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueAssignment: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1IssueAssignment,
@@ -2074,7 +2074,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary {
   transcriptIndex?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary> =
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wordIndex: Schema.optional(Schema.Number),
     transcriptIndex: Schema.optional(Schema.Number),
@@ -2089,7 +2089,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData> =
+export const GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phraseMatcher: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2099,14 +2099,14 @@ export const GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData: Schema.Sch
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SilenceData {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1SilenceData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SilenceData> =
+export const GoogleCloudContactcenterinsightsV1alpha1SilenceData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SilenceData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1SilenceData",
   });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1HoldData {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1HoldData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1HoldData> =
+export const GoogleCloudContactcenterinsightsV1alpha1HoldData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1HoldData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1HoldData",
   });
@@ -2118,7 +2118,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SentimentData {
   magnitude?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SentimentData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SentimentData> =
+export const GoogleCloudContactcenterinsightsV1alpha1SentimentData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SentimentData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
@@ -2128,7 +2128,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1SentimentData: Schema.Schem
 
 export interface GoogleCloudContactcenterinsightsV1alpha1InterruptionData {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1InterruptionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InterruptionData> =
+export const GoogleCloudContactcenterinsightsV1alpha1InterruptionData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1InterruptionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1InterruptionData",
   });
@@ -2142,7 +2142,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1EntityMentionData {
   sentiment?: GoogleCloudContactcenterinsightsV1alpha1SentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1EntityMentionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1EntityMentionData> =
+export const GoogleCloudContactcenterinsightsV1alpha1EntityMentionData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1EntityMentionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     entityUniqueId: Schema.optional(Schema.String),
@@ -2178,7 +2178,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CallAnnotation {
   entityMentionData?: GoogleCloudContactcenterinsightsV1alpha1EntityMentionData;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CallAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CallAnnotation> =
+export const GoogleCloudContactcenterinsightsV1alpha1CallAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1CallAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intentMatchData: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1IntentMatchData,
@@ -2225,7 +2225,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsRespons
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
     textType: Schema.optional(Schema.String),
@@ -2245,7 +2245,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsRespons
   textOutput?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textMessage: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput,
@@ -2263,7 +2263,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadat
   errorMessages?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
   }).annotate({
@@ -2288,7 +2288,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationSummarization
   conversationModel?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answerRecord: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -2323,7 +2323,7 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   strValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue: Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue> =
+export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue: Schema.Codec<GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skipValue: Schema.optional(Schema.Boolean),
     score: Schema.optional(Schema.Number),
@@ -2353,7 +2353,7 @@ export interface GoogleCloudContactcenterinsightsV1FeedbackLabel {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1FeedbackLabel: Schema.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel> =
+export const GoogleCloudContactcenterinsightsV1FeedbackLabel: Schema.Codec<GoogleCloudContactcenterinsightsV1FeedbackLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -2402,7 +2402,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAg
   deploymentDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo> =
+export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     teams: Schema.optional(Schema.Array(Schema.String)),
     deploymentId: Schema.optional(Schema.String),
@@ -2435,7 +2435,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   agentInfo?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata> =
+export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feedbackLabels: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel),
@@ -2461,7 +2461,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelation
   correlationId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleId: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -2478,7 +2478,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelation
   ruleResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(Schema.String),
     ruleResults: Schema.optional(
@@ -2500,7 +2500,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationRes
   constraintMet?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleId: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -2519,7 +2519,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationRes
   conversationA?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationB: Schema.optional(Schema.String),
     ruleConstraintResults: Schema.optional(
@@ -2540,7 +2540,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigRe
   constraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults> =
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     joinKeyResults: Schema.optional(
       Schema.Array(
@@ -2562,7 +2562,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagReques
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest> =
+export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -2577,7 +2577,7 @@ export interface GoogleCloudContactcenterinsightsV1RedactionConfig {
   inspectTemplate?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1RedactionConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1RedactionConfig> =
+export const GoogleCloudContactcenterinsightsV1RedactionConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1RedactionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deidentifyTemplate: Schema.optional(Schema.String),
     inspectTemplate: Schema.optional(Schema.String),
@@ -2592,7 +2592,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
   agentChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationCallMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCallMetadata> =
+export const GoogleCloudContactcenterinsightsV1ConversationCallMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationCallMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerChannel: Schema.optional(Schema.Number),
     agentChannel: Schema.optional(Schema.Number),
@@ -2617,7 +2617,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationSummarizationSugg
   conversationModel?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answerRecord: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -2638,7 +2638,7 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowSource {
   audioUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DialogflowSource: Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowSource> =
+export const GoogleCloudContactcenterinsightsV1DialogflowSource: Schema.Codec<GoogleCloudContactcenterinsightsV1DialogflowSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowConversation: Schema.optional(Schema.String),
     audioUri: Schema.optional(Schema.String),
@@ -2653,7 +2653,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLev
   audioGcsUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio> =
+export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioDuration: Schema.optional(Schema.String),
     audioGcsUri: Schema.optional(Schema.String),
@@ -2669,7 +2669,7 @@ export interface GoogleCloudContactcenterinsightsV1GcsSource {
   transcriptUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1GcsSource> =
+export const GoogleCloudContactcenterinsightsV1GcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioUri: Schema.optional(Schema.String),
     transcriptUri: Schema.optional(Schema.String),
@@ -2686,7 +2686,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
   gcsSource?: GoogleCloudContactcenterinsightsV1GcsSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationDataSource: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSource> =
+export const GoogleCloudContactcenterinsightsV1ConversationDataSource: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowSource: Schema.optional(
       GoogleCloudContactcenterinsightsV1DialogflowSource,
@@ -2709,7 +2709,7 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
   confidence?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1DialogflowInteractionData: Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowInteractionData> =
+export const GoogleCloudContactcenterinsightsV1DialogflowInteractionData: Schema.Codec<GoogleCloudContactcenterinsightsV1DialogflowInteractionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowIntentId: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -2732,7 +2732,7 @@ export interface GoogleCloudContactcenterinsightsV1FaqAnswerData {
   confidenceScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1FaqAnswerData: Schema.Schema<GoogleCloudContactcenterinsightsV1FaqAnswerData> =
+export const GoogleCloudContactcenterinsightsV1FaqAnswerData: Schema.Codec<GoogleCloudContactcenterinsightsV1FaqAnswerData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     answer: Schema.optional(Schema.String),
     question: Schema.optional(Schema.String),
@@ -2751,7 +2751,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotationBoundary {
   transcriptIndex?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotationBoundary: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotationBoundary> =
+export const GoogleCloudContactcenterinsightsV1AnnotationBoundary: Schema.Codec<GoogleCloudContactcenterinsightsV1AnnotationBoundary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wordIndex: Schema.optional(Schema.Number),
     transcriptIndex: Schema.optional(Schema.Number),
@@ -2770,7 +2770,7 @@ export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestion: Schema.optional(Schema.String),
     confidenceScore: Schema.optional(Schema.Number),
@@ -2793,7 +2793,7 @@ export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
   generatorName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput: Schema.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput> =
+export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput: Schema.Codec<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     querySource: Schema.optional(Schema.String),
@@ -2816,7 +2816,7 @@ export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
   clicked?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnswerFeedback: Schema.Schema<GoogleCloudContactcenterinsightsV1AnswerFeedback> =
+export const GoogleCloudContactcenterinsightsV1AnswerFeedback: Schema.Codec<GoogleCloudContactcenterinsightsV1AnswerFeedback> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     correctnessLevel: Schema.optional(Schema.String),
     displayed: Schema.optional(Schema.Boolean),
@@ -2840,7 +2840,7 @@ export interface GoogleCloudCesV1mainSpan {
   childSpans?: ReadonlyArray<GoogleCloudCesV1mainSpan>;
 }
 
-export const GoogleCloudCesV1mainSpan: Schema.Schema<GoogleCloudCesV1mainSpan> =
+export const GoogleCloudCesV1mainSpan: Schema.Codec<GoogleCloudCesV1mainSpan> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       endTime: Schema.optional(Schema.String),
@@ -2852,7 +2852,7 @@ export const GoogleCloudCesV1mainSpan: Schema.Schema<GoogleCloudCesV1mainSpan> =
     }),
   ).annotate({
     identifier: "GoogleCloudCesV1mainSpan",
-  }) as any as Schema.Schema<GoogleCloudCesV1mainSpan>;
+  }) as any as Schema.Codec<GoogleCloudCesV1mainSpan>;
 
 export interface GoogleCloudCesV1mainBlob {
   /** Required. The IANA standard MIME type of the source data. */
@@ -2861,7 +2861,7 @@ export interface GoogleCloudCesV1mainBlob {
   data?: string;
 }
 
-export const GoogleCloudCesV1mainBlob: Schema.Schema<GoogleCloudCesV1mainBlob> =
+export const GoogleCloudCesV1mainBlob: Schema.Codec<GoogleCloudCesV1mainBlob> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -2874,7 +2874,7 @@ export interface GoogleCloudCesV1mainAgentTransfer {
   targetAgent?: string;
 }
 
-export const GoogleCloudCesV1mainAgentTransfer: Schema.Schema<GoogleCloudCesV1mainAgentTransfer> =
+export const GoogleCloudCesV1mainAgentTransfer: Schema.Codec<GoogleCloudCesV1mainAgentTransfer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     targetAgent: Schema.optional(Schema.String),
@@ -2887,7 +2887,7 @@ export interface GoogleCloudCesV1mainToolsetTool {
   toolset?: string;
 }
 
-export const GoogleCloudCesV1mainToolsetTool: Schema.Schema<GoogleCloudCesV1mainToolsetTool> =
+export const GoogleCloudCesV1mainToolsetTool: Schema.Codec<GoogleCloudCesV1mainToolsetTool> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolId: Schema.optional(Schema.String),
     toolset: Schema.optional(Schema.String),
@@ -2906,7 +2906,7 @@ export interface GoogleCloudCesV1mainToolCall {
   id?: string;
 }
 
-export const GoogleCloudCesV1mainToolCall: Schema.Schema<GoogleCloudCesV1mainToolCall> =
+export const GoogleCloudCesV1mainToolCall: Schema.Codec<GoogleCloudCesV1mainToolCall> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tool: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2922,7 +2922,7 @@ export interface GoogleCloudCesV1mainImage {
   data?: string;
 }
 
-export const GoogleCloudCesV1mainImage: Schema.Schema<GoogleCloudCesV1mainImage> =
+export const GoogleCloudCesV1mainImage: Schema.Codec<GoogleCloudCesV1mainImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
@@ -2941,7 +2941,7 @@ export interface GoogleCloudCesV1mainToolResponse {
   id?: string;
 }
 
-export const GoogleCloudCesV1mainToolResponse: Schema.Schema<GoogleCloudCesV1mainToolResponse> =
+export const GoogleCloudCesV1mainToolResponse: Schema.Codec<GoogleCloudCesV1mainToolResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolsetTool: Schema.optional(GoogleCloudCesV1mainToolsetTool),
     tool: Schema.optional(Schema.String),
@@ -2973,7 +2973,7 @@ export interface GoogleCloudCesV1mainChunk {
   transcript?: string;
 }
 
-export const GoogleCloudCesV1mainChunk: Schema.Schema<GoogleCloudCesV1mainChunk> =
+export const GoogleCloudCesV1mainChunk: Schema.Codec<GoogleCloudCesV1mainChunk> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blob: Schema.optional(GoogleCloudCesV1mainBlob),
     agentTransfer: Schema.optional(GoogleCloudCesV1mainAgentTransfer),
@@ -3000,7 +3000,7 @@ export interface GoogleCloudCesV1mainMessage {
   eventTime?: string;
 }
 
-export const GoogleCloudCesV1mainMessage: Schema.Schema<GoogleCloudCesV1mainMessage> =
+export const GoogleCloudCesV1mainMessage: Schema.Codec<GoogleCloudCesV1mainMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     chunks: Schema.optional(Schema.Array(GoogleCloudCesV1mainChunk)),
@@ -3014,7 +3014,7 @@ export interface GoogleCloudContactcenterinsightsV1CesTurnAnnotation {
   messages?: ReadonlyArray<GoogleCloudCesV1mainMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1CesTurnAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1CesTurnAnnotation> =
+export const GoogleCloudContactcenterinsightsV1CesTurnAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1CesTurnAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootSpan: Schema.optional(GoogleCloudCesV1mainSpan),
     messages: Schema.optional(Schema.Array(GoogleCloudCesV1mainMessage)),
@@ -3037,7 +3037,7 @@ export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ArticleSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1ArticleSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1ArticleSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1ArticleSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -3060,7 +3060,7 @@ export interface GoogleCloudContactcenterinsightsV1SmartReplyData {
   confidenceScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1SmartReplyData: Schema.Schema<GoogleCloudContactcenterinsightsV1SmartReplyData> =
+export const GoogleCloudContactcenterinsightsV1SmartReplyData: Schema.Codec<GoogleCloudContactcenterinsightsV1SmartReplyData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     queryRecord: Schema.optional(Schema.String),
@@ -3101,7 +3101,7 @@ export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotation> =
+export const GoogleCloudContactcenterinsightsV1RuntimeAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1RuntimeAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowInteraction: Schema.optional(
       GoogleCloudContactcenterinsightsV1DialogflowInteractionData,
@@ -3159,7 +3159,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
   mergedFullConversationCorrelationId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo> =
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullConversationCorrelationId: Schema.optional(Schema.String),
     correlationTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -3173,7 +3173,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   smartReplyAllowlistCovered?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -3188,7 +3188,7 @@ export interface GoogleCloudContactcenterinsightsV1SentimentData {
   magnitude?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1SentimentData: Schema.Schema<GoogleCloudContactcenterinsightsV1SentimentData> =
+export const GoogleCloudContactcenterinsightsV1SentimentData: Schema.Codec<GoogleCloudContactcenterinsightsV1SentimentData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
@@ -3215,7 +3215,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
   userId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationParticipant: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationParticipant> =
+export const GoogleCloudContactcenterinsightsV1ConversationParticipant: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationParticipant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     obfuscatedExternalUserId: Schema.optional(Schema.String),
     dialogflowParticipantName: Schema.optional(Schema.String),
@@ -3237,7 +3237,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   endOffset?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo> =
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     word: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -3271,7 +3271,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   words?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment> =
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowSegmentMetadata: Schema.optional(
       GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
@@ -3303,7 +3303,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscript {
   transcriptSegments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscript> =
+export const GoogleCloudContactcenterinsightsV1ConversationTranscript: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationTranscript> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transcriptSegments: Schema.optional(
       Schema.Array(
@@ -3327,7 +3327,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizatio
   conversationProfile?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig> =
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summarizationModel: Schema.optional(Schema.String),
     generator: Schema.optional(Schema.String),
@@ -3342,7 +3342,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScor
   qaScorecardRevisions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList> =
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList: Schema.Codec<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -3355,7 +3355,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig {
   scorecardList?: GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig> =
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scorecardList: Schema.optional(
       GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList,
@@ -3395,7 +3395,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   qaConfig?: GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelector: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelector> =
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelector: Schema.Codec<GoogleCloudContactcenterinsightsV1AnnotatorSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runSentimentAnnotator: Schema.optional(Schema.Boolean),
     runSummarizationAnnotator: Schema.optional(Schema.Boolean),
@@ -3426,7 +3426,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
   silenceDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationLevelSilence: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSilence> =
+export const GoogleCloudContactcenterinsightsV1ConversationLevelSilence: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationLevelSilence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     silencePercentage: Schema.optional(Schema.Number),
     silenceDuration: Schema.optional(Schema.String),
@@ -3445,7 +3445,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult 
   normalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult> =
+export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult: Schema.Codec<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     potentialScore: Schema.optional(Schema.Number),
     tag: Schema.optional(Schema.String),
@@ -3473,7 +3473,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource 
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource> =
+export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource: Schema.Codec<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaTagResults: Schema.optional(
       Schema.Array(
@@ -3500,7 +3500,7 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
   answerValue?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource: Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource> =
+export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource: Schema.Codec<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceType: Schema.optional(Schema.String),
     answerValue: Schema.optional(
@@ -3525,7 +3525,7 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswer {
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaAnswer: Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswer> =
+export const GoogleCloudContactcenterinsightsV1QaAnswer: Schema.Codec<GoogleCloudContactcenterinsightsV1QaAnswer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestion: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(Schema.String)),
@@ -3564,7 +3564,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecardResult: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResult> =
+export const GoogleCloudContactcenterinsightsV1QaScorecardResult: Schema.Codec<GoogleCloudContactcenterinsightsV1QaScorecardResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardRevision: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3618,7 +3618,7 @@ export interface GoogleCloudContactcenterinsightsV1Entity {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1Entity: Schema.Schema<GoogleCloudContactcenterinsightsV1Entity> =
+export const GoogleCloudContactcenterinsightsV1Entity: Schema.Codec<GoogleCloudContactcenterinsightsV1Entity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     salience: Schema.optional(Schema.Number),
     displayName: Schema.optional(Schema.String),
@@ -3636,7 +3636,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueAssignment {
   score?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueAssignment: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueAssignment> =
+export const GoogleCloudContactcenterinsightsV1IssueAssignment: Schema.Codec<GoogleCloudContactcenterinsightsV1IssueAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     issue: Schema.optional(Schema.String),
@@ -3652,7 +3652,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelResult {
   issues?: ReadonlyArray<GoogleCloudContactcenterinsightsV1IssueAssignment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModelResult: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelResult> =
+export const GoogleCloudContactcenterinsightsV1IssueModelResult: Schema.Codec<GoogleCloudContactcenterinsightsV1IssueModelResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueModel: Schema.optional(Schema.String),
     issues: Schema.optional(
@@ -3669,7 +3669,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
   sentimentData?: GoogleCloudContactcenterinsightsV1SentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationLevelSentiment: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment> =
+export const GoogleCloudContactcenterinsightsV1ConversationLevelSentiment: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelTag: Schema.optional(Schema.Number),
     sentimentData: Schema.optional(
@@ -3686,7 +3686,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchData {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchData> =
+export const GoogleCloudContactcenterinsightsV1PhraseMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1PhraseMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phraseMatcher: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3701,7 +3701,7 @@ export interface GoogleCloudContactcenterinsightsV1Intent {
   id?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Intent: Schema.Schema<GoogleCloudContactcenterinsightsV1Intent> =
+export const GoogleCloudContactcenterinsightsV1Intent: Schema.Codec<GoogleCloudContactcenterinsightsV1Intent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -3709,14 +3709,14 @@ export const GoogleCloudContactcenterinsightsV1Intent: Schema.Schema<GoogleCloud
 
 export interface GoogleCloudContactcenterinsightsV1HoldData {}
 
-export const GoogleCloudContactcenterinsightsV1HoldData: Schema.Schema<GoogleCloudContactcenterinsightsV1HoldData> =
+export const GoogleCloudContactcenterinsightsV1HoldData: Schema.Codec<GoogleCloudContactcenterinsightsV1HoldData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1HoldData",
   });
 
 export interface GoogleCloudContactcenterinsightsV1InterruptionData {}
 
-export const GoogleCloudContactcenterinsightsV1InterruptionData: Schema.Schema<GoogleCloudContactcenterinsightsV1InterruptionData> =
+export const GoogleCloudContactcenterinsightsV1InterruptionData: Schema.Codec<GoogleCloudContactcenterinsightsV1InterruptionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1InterruptionData",
   });
@@ -3730,7 +3730,7 @@ export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
   sentiment?: GoogleCloudContactcenterinsightsV1SentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1EntityMentionData: Schema.Schema<GoogleCloudContactcenterinsightsV1EntityMentionData> =
+export const GoogleCloudContactcenterinsightsV1EntityMentionData: Schema.Codec<GoogleCloudContactcenterinsightsV1EntityMentionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     entityUniqueId: Schema.optional(Schema.String),
@@ -3744,7 +3744,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueMatchData {
   issueAssignment?: GoogleCloudContactcenterinsightsV1IssueAssignment;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueMatchData> =
+export const GoogleCloudContactcenterinsightsV1IssueMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1IssueMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueAssignment: Schema.optional(
       GoogleCloudContactcenterinsightsV1IssueAssignment,
@@ -3758,7 +3758,7 @@ export interface GoogleCloudContactcenterinsightsV1IntentMatchData {
   intentUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IntentMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1IntentMatchData> =
+export const GoogleCloudContactcenterinsightsV1IntentMatchData: Schema.Codec<GoogleCloudContactcenterinsightsV1IntentMatchData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intentUniqueId: Schema.optional(Schema.String),
   }).annotate({
@@ -3790,7 +3790,7 @@ export interface GoogleCloudContactcenterinsightsV1CallAnnotation {
   annotationStartBoundary?: GoogleCloudContactcenterinsightsV1AnnotationBoundary;
 }
 
-export const GoogleCloudContactcenterinsightsV1CallAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1CallAnnotation> =
+export const GoogleCloudContactcenterinsightsV1CallAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1CallAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sentimentData: Schema.optional(
       GoogleCloudContactcenterinsightsV1SentimentData,
@@ -3845,7 +3845,7 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMet
   annotations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1CallAnnotation>;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata> =
+export const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     silence: Schema.optional(
       GoogleCloudContactcenterinsightsV1ConversationLevelSilence,
@@ -3888,7 +3888,7 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResult {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnalysisResult: Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisResult> =
+export const GoogleCloudContactcenterinsightsV1AnalysisResult: Schema.Codec<GoogleCloudContactcenterinsightsV1AnalysisResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     callAnalysisMetadata: Schema.optional(
       GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata,
@@ -3911,7 +3911,7 @@ export interface GoogleCloudContactcenterinsightsV1Analysis {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Analysis: Schema.Schema<GoogleCloudContactcenterinsightsV1Analysis> =
+export const GoogleCloudContactcenterinsightsV1Analysis: Schema.Codec<GoogleCloudContactcenterinsightsV1Analysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
@@ -3929,7 +3929,7 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowIntent {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DialogflowIntent: Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntent> =
+export const GoogleCloudContactcenterinsightsV1DialogflowIntent: Schema.Codec<GoogleCloudContactcenterinsightsV1DialogflowIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({
@@ -3988,7 +3988,7 @@ export interface GoogleCloudContactcenterinsightsV1Conversation {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Conversation: Schema.Schema<GoogleCloudContactcenterinsightsV1Conversation> =
+export const GoogleCloudContactcenterinsightsV1Conversation: Schema.Codec<GoogleCloudContactcenterinsightsV1Conversation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     callMetadata: Schema.optional(
       GoogleCloudContactcenterinsightsV1ConversationCallMetadata,
@@ -4047,7 +4047,7 @@ export interface GoogleCloudContactcenterinsightsV1UploadConversationRequest {
   redactionConfig?: GoogleCloudContactcenterinsightsV1RedactionConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1UploadConversationRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1UploadConversationRequest> =
+export const GoogleCloudContactcenterinsightsV1UploadConversationRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1UploadConversationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationId: Schema.optional(Schema.String),
     speechConfig: Schema.optional(
@@ -4077,7 +4077,7 @@ export interface GoogleCloudContactcenterinsightsV1UploadConversationMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UploadConversationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1UploadConversationMetadata> =
+export const GoogleCloudContactcenterinsightsV1UploadConversationMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1UploadConversationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appliedRedactionConfig: Schema.optional(
       GoogleCloudContactcenterinsightsV1RedactionConfig,
@@ -4101,7 +4101,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig> =
+export const GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medium: Schema.optional(Schema.String),
     trainingConversationsCount: Schema.optional(Schema.String),
@@ -4120,7 +4120,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssue
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats> =
+export const GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issue: Schema.optional(Schema.String),
     labeledConversationsCount: Schema.optional(Schema.String),
@@ -4142,7 +4142,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats {
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats> =
+export const GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyzedConversationsCount: Schema.optional(Schema.String),
     unclassifiedConversationsCount: Schema.optional(Schema.String),
@@ -4186,7 +4186,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModel {
   trainingStats?: GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModel: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModel> =
+export const GoogleCloudContactcenterinsightsV1mainIssueModel: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIssueModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     issueCount: Schema.optional(Schema.String),
@@ -4213,7 +4213,7 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest {
   issueModel?: GoogleCloudContactcenterinsightsV1mainIssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     issueModel: Schema.optional(
@@ -4232,7 +4232,7 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata 
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest,
@@ -4256,7 +4256,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
     textType: Schema.optional(Schema.String),
@@ -4280,7 +4280,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
   score?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice> =
+export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice: Schema.Codec<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     strValue: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -4299,7 +4299,7 @@ export interface GoogleCloudContactcenterinsightsV1MetricDefinition {
   sourceId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1MetricDefinition: Schema.Schema<GoogleCloudContactcenterinsightsV1MetricDefinition> =
+export const GoogleCloudContactcenterinsightsV1MetricDefinition: Schema.Codec<GoogleCloudContactcenterinsightsV1MetricDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     sourceId: Schema.optional(Schema.String),
@@ -4312,7 +4312,7 @@ export interface GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfi
   metrics?: Record<string, GoogleCloudContactcenterinsightsV1MetricDefinition>;
 }
 
-export const GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig> =
+export const GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metrics: Schema.optional(
       Schema.Record(
@@ -4334,7 +4334,7 @@ export interface GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
 }
 
-export const GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig> =
+export const GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runtimeIntegrationAnalysisPercentage: Schema.optional(Schema.Number),
     uploadConversationAnalysisPercentage: Schema.optional(Schema.Number),
@@ -4372,7 +4372,7 @@ export interface GoogleCloudContactcenterinsightsV1Settings {
   speechConfig?: GoogleCloudContactcenterinsightsV1SpeechConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1Settings: Schema.Schema<GoogleCloudContactcenterinsightsV1Settings> =
+export const GoogleCloudContactcenterinsightsV1Settings: Schema.Codec<GoogleCloudContactcenterinsightsV1Settings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(Schema.String),
     redactionConfig: Schema.optional(
@@ -4412,7 +4412,7 @@ export interface GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRa
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange: Schema.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange> =
+export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange: Schema.Codec<GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quantity: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
@@ -4428,7 +4428,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryInterval {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryInterval: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryInterval> =
+export const GoogleCloudContactcenterinsightsV1QueryInterval: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -4443,7 +4443,7 @@ export interface GoogleCloudContactcenterinsightsV1DateRangeConfig {
   absoluteDateRange?: GoogleCloudContactcenterinsightsV1QueryInterval;
 }
 
-export const GoogleCloudContactcenterinsightsV1DateRangeConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfig> =
+export const GoogleCloudContactcenterinsightsV1DateRangeConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1DateRangeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relativeDateRange: Schema.optional(
       GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange,
@@ -4459,7 +4459,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetrics {
   request?: Record<string, unknown>;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetrics: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetrics> =
+export const GoogleCloudContactcenterinsightsV1QueryMetrics: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1QueryMetrics" });
@@ -4469,7 +4469,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -4489,7 +4489,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     texts: Schema.optional(Schema.Array(Schema.String)),
     type: Schema.optional(Schema.String),
@@ -4507,7 +4507,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   generatedSqlQuery?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     textOutput: Schema.optional(
@@ -4530,7 +4530,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   messageId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userMessage: Schema.optional(
       GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage,
@@ -4556,7 +4556,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   messages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     conversationId: Schema.optional(Schema.String),
@@ -4578,7 +4578,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckp
   revisionId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionId: Schema.optional(Schema.String),
     revisionId: Schema.optional(Schema.String),
@@ -4601,7 +4601,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsights {
   sqlComparisonKey?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsights: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsights> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsights: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsights> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sqlQuery: Schema.optional(Schema.String),
     chartConversations: Schema.optional(
@@ -4626,7 +4626,7 @@ export interface GoogleCloudContactcenterinsightsV1ChartDataSource {
   generativeInsights?: GoogleCloudContactcenterinsightsV1GenerativeInsights;
 }
 
-export const GoogleCloudContactcenterinsightsV1ChartDataSource: Schema.Schema<GoogleCloudContactcenterinsightsV1ChartDataSource> =
+export const GoogleCloudContactcenterinsightsV1ChartDataSource: Schema.Codec<GoogleCloudContactcenterinsightsV1ChartDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryMetrics: Schema.optional(
       GoogleCloudContactcenterinsightsV1QueryMetrics,
@@ -4645,7 +4645,7 @@ export interface GoogleCloudContactcenterinsightsV1RedirectAction {
   relativePath?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1RedirectAction: Schema.Schema<GoogleCloudContactcenterinsightsV1RedirectAction> =
+export const GoogleCloudContactcenterinsightsV1RedirectAction: Schema.Codec<GoogleCloudContactcenterinsightsV1RedirectAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryParams: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     relativePath: Schema.optional(Schema.String),
@@ -4660,7 +4660,7 @@ export interface GoogleCloudContactcenterinsightsV1ChartAction {
   conversationFilter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ChartAction: Schema.Schema<GoogleCloudContactcenterinsightsV1ChartAction> =
+export const GoogleCloudContactcenterinsightsV1ChartAction: Schema.Codec<GoogleCloudContactcenterinsightsV1ChartAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redirectAction: Schema.optional(
       GoogleCloudContactcenterinsightsV1RedirectAction,
@@ -4712,7 +4712,7 @@ export interface GoogleCloudContactcenterinsightsV1Chart {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Chart: Schema.Schema<GoogleCloudContactcenterinsightsV1Chart> =
+export const GoogleCloudContactcenterinsightsV1Chart: Schema.Codec<GoogleCloudContactcenterinsightsV1Chart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(
       GoogleCloudContactcenterinsightsV1ChartDataSource,
@@ -4744,7 +4744,7 @@ export interface GoogleCloudContactcenterinsightsV1Widget {
   chart?: GoogleCloudContactcenterinsightsV1Chart;
 }
 
-export const GoogleCloudContactcenterinsightsV1Widget: Schema.Schema<GoogleCloudContactcenterinsightsV1Widget> =
+export const GoogleCloudContactcenterinsightsV1Widget: Schema.Codec<GoogleCloudContactcenterinsightsV1Widget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       chartReference: Schema.optional(Schema.String),
@@ -4754,7 +4754,7 @@ export const GoogleCloudContactcenterinsightsV1Widget: Schema.Schema<GoogleCloud
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Widget",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Widget>;
+  }) as any as Schema.Codec<GoogleCloudContactcenterinsightsV1Widget>;
 
 export interface GoogleCloudContactcenterinsightsV1Container {
   /** The width of the container in grid units. */
@@ -4775,7 +4775,7 @@ export interface GoogleCloudContactcenterinsightsV1Container {
   height?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1Container: Schema.Schema<GoogleCloudContactcenterinsightsV1Container> =
+export const GoogleCloudContactcenterinsightsV1Container: Schema.Codec<GoogleCloudContactcenterinsightsV1Container> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       width: Schema.optional(Schema.Number),
@@ -4793,7 +4793,7 @@ export const GoogleCloudContactcenterinsightsV1Container: Schema.Schema<GoogleCl
     }),
   ).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1Container",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Container>;
+  }) as any as Schema.Codec<GoogleCloudContactcenterinsightsV1Container>;
 
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats {
   /** The number of new feedback labels downloaded during this operation. Different from "processed" because some labels might not be downloaded because an error. */
@@ -4806,7 +4806,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMet
   fileNames?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats> =
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successfulDownloadCount: Schema.optional(Schema.Number),
     processedObjectCount: Schema.optional(Schema.Number),
@@ -4824,7 +4824,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgents
   toolId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolDisplayName: Schema.optional(Schema.String),
     toolId: Schema.optional(Schema.String),
@@ -4835,7 +4835,7 @@ export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsTool
 
 export interface GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse",
@@ -4853,7 +4853,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModelLabelStats: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStats> =
+export const GoogleCloudContactcenterinsightsV1IssueModelLabelStats: Schema.Codec<GoogleCloudContactcenterinsightsV1IssueModelLabelStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyzedConversationsCount: Schema.optional(Schema.String),
     unclassifiedConversationsCount: Schema.optional(Schema.String),
@@ -4876,7 +4876,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig> =
+export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medium: Schema.optional(Schema.String),
     trainingConversationsCount: Schema.optional(Schema.String),
@@ -4915,7 +4915,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModel {
   inputDataConfig?: GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModel: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModel> =
+export const GoogleCloudContactcenterinsightsV1IssueModel: Schema.Codec<GoogleCloudContactcenterinsightsV1IssueModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -4938,7 +4938,7 @@ export interface GoogleCloudContactcenterinsightsV1ImportIssueModelResponse {
   issueModel?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1ImportIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ImportIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueModel: Schema.optional(GoogleCloudContactcenterinsightsV1IssueModel),
   }).annotate({
@@ -4952,7 +4952,7 @@ export interface GoogleCloudContactcenterinsightsV1mainEncryptionSpec {
   kmsKey?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainEncryptionSpec: Schema.Schema<GoogleCloudContactcenterinsightsV1mainEncryptionSpec> =
+export const GoogleCloudContactcenterinsightsV1mainEncryptionSpec: Schema.Codec<GoogleCloudContactcenterinsightsV1mainEncryptionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kmsKey: Schema.optional(Schema.String),
@@ -4971,7 +4971,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDime
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardId: Schema.optional(Schema.String),
     answerValue: Schema.optional(Schema.String),
@@ -4989,7 +4989,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetada
   labelValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelKey: Schema.optional(Schema.String),
     labelValue: Schema.optional(Schema.String),
@@ -5003,7 +5003,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationProfileD
   conversationProfileId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationProfileId: Schema.optional(Schema.String),
   }).annotate({
@@ -5016,7 +5016,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionClientSentimentCateg
   sentimentCategory?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sentimentCategory: Schema.optional(Schema.String),
   }).annotate({
@@ -5033,7 +5033,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionM
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardId: Schema.optional(Schema.String),
     qaQuestionId: Schema.optional(Schema.String),
@@ -5048,7 +5048,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetad
   medium?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medium: Schema.optional(Schema.String),
   }).annotate({
@@ -5065,7 +5065,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetada
   issueModelId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueDisplayName: Schema.optional(Schema.String),
     issueId: Schema.optional(Schema.String),
@@ -5092,7 +5092,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetada
   agentVersionId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentId: Schema.optional(Schema.String),
     agentTeam: Schema.optional(Schema.String),
@@ -5111,7 +5111,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimension
   qaScorecardId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardId: Schema.optional(Schema.String),
   }).annotate({
@@ -5126,7 +5126,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgents
   playbookDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     playbookId: Schema.optional(Schema.String),
     playbookDisplayName: Schema.optional(Schema.String),
@@ -5185,7 +5185,7 @@ export interface GoogleCloudContactcenterinsightsV1Dimension {
   conversationalAgentsPlaybookDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1Dimension: Schema.Schema<GoogleCloudContactcenterinsightsV1Dimension> =
+export const GoogleCloudContactcenterinsightsV1Dimension: Schema.Codec<GoogleCloudContactcenterinsightsV1Dimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestionAnswerDimensionMetadata: Schema.optional(
       GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata,
@@ -5242,7 +5242,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
   measureMask?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsRequest> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     timeGranularity: Schema.optional(Schema.String),
@@ -5265,7 +5265,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIn
   processedObjectCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats> =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats: Schema.Codec<GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duplicatesSkippedCount: Schema.optional(Schema.Number),
     successfulIngestCount: Schema.optional(Schema.Number),
@@ -5281,7 +5281,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestTra
   medium?: "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig> =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medium: Schema.optional(Schema.String),
   }).annotate({
@@ -5300,7 +5300,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleRule {
   sampleRow?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSampleRule: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleRule> =
+export const GoogleCloudContactcenterinsightsV1mainSampleRule: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSampleRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     conversationFilter: Schema.optional(Schema.String),
@@ -5317,7 +5317,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec {
   kmsKey?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec> =
+export const GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kmsKey: Schema.optional(Schema.String),
@@ -5330,7 +5330,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpe
   encryptionSpec?: GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptionSpec: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec,
@@ -5345,7 +5345,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent> =
+export const GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({
@@ -5371,7 +5371,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant
   userId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     dialogflowParticipantName: Schema.optional(Schema.String),
@@ -5394,7 +5394,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptT
   endOffset?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     word: Schema.optional(Schema.String),
@@ -5410,7 +5410,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptT
   smartReplyAllowlistCovered?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -5425,7 +5425,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceT
   audioDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioGcsUri: Schema.optional(Schema.String),
     audioDuration: Schema.optional(Schema.String),
@@ -5457,7 +5457,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptT
   sentiment?: GoogleCloudContactcenterinsightsV1alpha1SentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     segmentParticipant: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant,
@@ -5491,7 +5491,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript 
   transcriptSegments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transcriptSegments: Schema.optional(
       Schema.Array(
@@ -5510,7 +5510,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilenc
   silencePercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     silenceDuration: Schema.optional(Schema.String),
     silencePercentage: Schema.optional(Schema.Number),
@@ -5530,7 +5530,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagR
   normalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     potentialScore: Schema.optional(Schema.Number),
     tag: Schema.optional(Schema.String),
@@ -5558,7 +5558,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreS
   qaTagResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource> =
+export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     potentialScore: Schema.optional(Schema.Number),
     score: Schema.optional(Schema.Number),
@@ -5599,7 +5599,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult {
   qaScorecardRevision?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
@@ -5633,7 +5633,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentim
   sentimentData?: GoogleCloudContactcenterinsightsV1alpha1SentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channelTag: Schema.optional(Schema.Number),
     sentimentData: Schema.optional(
@@ -5671,7 +5671,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Entity {
   salience?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Entity: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Entity> =
+export const GoogleCloudContactcenterinsightsV1alpha1Entity: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1Entity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5689,7 +5689,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Intent {
   id?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Intent: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Intent> =
+export const GoogleCloudContactcenterinsightsV1alpha1Intent: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1Intent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -5717,7 +5717,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnaly
   intents?: Record<string, GoogleCloudContactcenterinsightsV1alpha1Intent>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     silence: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence,
@@ -5766,7 +5766,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnalysisResult {
   callAnalysisMetadata?: GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnalysisResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnalysisResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1AnalysisResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1AnalysisResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     callAnalysisMetadata: Schema.optional(
@@ -5789,7 +5789,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Analysis {
   annotatorSelector?: GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Analysis: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Analysis> =
+export const GoogleCloudContactcenterinsightsV1alpha1Analysis: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1Analysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     analysisResult: Schema.optional(
@@ -5809,7 +5809,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CesEndSessionAnnotation
   endSession?: GoogleCloudCesV1mainEndSession;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CesEndSessionAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CesEndSessionAnnotation> =
+export const GoogleCloudContactcenterinsightsV1alpha1CesEndSessionAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1CesEndSessionAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endSession: Schema.optional(GoogleCloudCesV1mainEndSession),
   }).annotate({
@@ -5830,7 +5830,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserIn
   generatorName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput> =
+export const GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     querySource: Schema.optional(Schema.String),
@@ -5851,7 +5851,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionD
   suggestion?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     queryRecord: Schema.optional(Schema.String),
@@ -5879,7 +5879,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizati
   answerRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     textSections: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -5908,7 +5908,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData {
   question?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData> =
+export const GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     source: Schema.optional(Schema.String),
@@ -5927,7 +5927,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionDa
   confidence?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData> =
+export const GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowIntentId: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -5951,7 +5951,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidenceScore: Schema.optional(Schema.Number),
     title: Schema.optional(Schema.String),
@@ -5970,7 +5970,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CesTurnAnnotation {
   messages?: ReadonlyArray<GoogleCloudCesV1mainMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CesTurnAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CesTurnAnnotation> =
+export const GoogleCloudContactcenterinsightsV1alpha1CesTurnAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1CesTurnAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootSpan: Schema.optional(GoogleCloudCesV1mainSpan),
     messages: Schema.optional(Schema.Array(GoogleCloudCesV1mainMessage)),
@@ -5992,7 +5992,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback {
   displayed?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback> =
+export const GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clicked: Schema.optional(Schema.Boolean),
     correctnessLevel: Schema.optional(Schema.String),
@@ -6032,7 +6032,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation {
   answerFeedback?: GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation> =
+export const GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cesEndSessionAnnotation: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1CesEndSessionAnnotation,
@@ -6092,7 +6092,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelation
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mergedFullConversationCorrelationId: Schema.optional(Schema.String),
     fullConversationCorrelationId: Schema.optional(Schema.String),
@@ -6109,7 +6109,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GcsSource {
   transcriptUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GcsSource> =
+export const GoogleCloudContactcenterinsightsV1alpha1GcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioUri: Schema.optional(Schema.String),
     transcriptUri: Schema.optional(Schema.String),
@@ -6124,7 +6124,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DialogflowSource {
   audioUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DialogflowSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowSource> =
+export const GoogleCloudContactcenterinsightsV1alpha1DialogflowSource: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DialogflowSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowConversation: Schema.optional(Schema.String),
     audioUri: Schema.optional(Schema.String),
@@ -6143,7 +6143,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource 
   dialogflowSource?: GoogleCloudContactcenterinsightsV1alpha1DialogflowSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1GcsSource,
@@ -6169,7 +6169,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadat
   agentChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerChannel: Schema.optional(Schema.Number),
     agentChannel: Schema.optional(Schema.Number),
@@ -6230,7 +6230,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Conversation {
   qualityMetadata?: GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Conversation: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Conversation> =
+export const GoogleCloudContactcenterinsightsV1alpha1Conversation: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1Conversation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowIntents: Schema.optional(
       Schema.Record(
@@ -6292,7 +6292,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
     textType: Schema.optional(Schema.String),
@@ -6314,7 +6314,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   textMessage?: GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generatedSqlQuery: Schema.optional(Schema.String),
     chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -6345,7 +6345,7 @@ export interface GoogleCloudContactcenterinsightsV1Issue {
   displayDescription?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Issue: Schema.Schema<GoogleCloudContactcenterinsightsV1Issue> =
+export const GoogleCloudContactcenterinsightsV1Issue: Schema.Codec<GoogleCloudContactcenterinsightsV1Issue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6368,7 +6368,7 @@ export interface GoogleCloudContactcenterinsightsV1AuthorizedView {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AuthorizedView: Schema.Schema<GoogleCloudContactcenterinsightsV1AuthorizedView> =
+export const GoogleCloudContactcenterinsightsV1AuthorizedView: Schema.Codec<GoogleCloudContactcenterinsightsV1AuthorizedView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     conversationFilter: Schema.optional(Schema.String),
@@ -6392,7 +6392,7 @@ export interface GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInpu
   generatorName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput: Schema.Schema<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput> =
+export const GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput: Schema.Codec<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     querySource: Schema.optional(Schema.String),
@@ -6407,7 +6407,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -6428,7 +6428,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   textMessage?: GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generatedSqlQuery: Schema.optional(Schema.String),
     chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -6449,7 +6449,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   systemMessages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemMessages: Schema.optional(
       Schema.Array(
@@ -6472,7 +6472,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   messageId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     userMessage: Schema.optional(
@@ -6498,7 +6498,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   messages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     conversationId: Schema.optional(Schema.String),
@@ -6528,7 +6528,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Issue {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Issue: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Issue> =
+export const GoogleCloudContactcenterinsightsV1alpha1Issue: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1Issue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampleUtterances: Schema.optional(Schema.Array(Schema.String)),
     createTime: Schema.optional(Schema.String),
@@ -6543,7 +6543,7 @@ export interface GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecR
   encryptionSpec?: GoogleCloudContactcenterinsightsV1mainEncryptionSpec;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest> =
+export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptionSpec: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainEncryptionSpec,
@@ -6564,7 +6564,7 @@ export interface GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecM
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -6579,7 +6579,7 @@ export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetad
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse",
@@ -6592,7 +6592,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsRespons
   transcript?: GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generativeResponses: Schema.optional(
       Schema.Array(
@@ -6614,7 +6614,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSpeechConfig {
   disableWordTimeOffsets?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSpeechConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSpeechConfig> =
+export const GoogleCloudContactcenterinsightsV1mainSpeechConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSpeechConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speechRecognizer: Schema.optional(Schema.String),
     disableWordTimeOffsets: Schema.optional(Schema.Boolean),
@@ -6633,7 +6633,7 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationRule {
   active?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1CorrelationRule: Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationRule> =
+export const GoogleCloudContactcenterinsightsV1CorrelationRule: Schema.Codec<GoogleCloudContactcenterinsightsV1CorrelationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleId: Schema.optional(Schema.String),
     constraintExpression: Schema.optional(Schema.String),
@@ -6648,7 +6648,7 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationTypeConfig {
   correlationRules?: ReadonlyArray<GoogleCloudContactcenterinsightsV1CorrelationRule>;
 }
 
-export const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationTypeConfig> =
+export const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1CorrelationTypeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     correlationRules: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1CorrelationRule),
@@ -6668,7 +6668,7 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationConfig {
   fullConversationConfig?: GoogleCloudContactcenterinsightsV1CorrelationTypeConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1CorrelationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationConfig> =
+export const GoogleCloudContactcenterinsightsV1CorrelationConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1CorrelationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -6685,7 +6685,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestC
   conversations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Conversation>;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations> =
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations: Schema.Codec<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversations: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Conversation),
@@ -6706,7 +6706,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest 
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest> =
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     correlationConfig: Schema.optional(
       GoogleCloudContactcenterinsightsV1CorrelationConfig,
@@ -6736,7 +6736,7 @@ export interface GoogleCloudContactcenterinsightsV1mainFeedbackLabel {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainFeedbackLabel: Schema.Schema<GoogleCloudContactcenterinsightsV1mainFeedbackLabel> =
+export const GoogleCloudContactcenterinsightsV1mainFeedbackLabel: Schema.Codec<GoogleCloudContactcenterinsightsV1mainFeedbackLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labeledResource: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6785,7 +6785,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationQualityMetada
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo> =
+export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6818,7 +6818,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationQualityMetada
   agentInfo?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerSatisfactionRating: Schema.optional(Schema.Number),
     waitDuration: Schema.optional(Schema.String),
@@ -6843,7 +6843,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCallMetadata 
   agentChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationCallMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCallMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainConversationCallMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationCallMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerChannel: Schema.optional(Schema.Number),
     agentChannel: Schema.optional(Schema.Number),
@@ -6859,7 +6859,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationDataSourceTur
   audioGcsUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio> =
+export const GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioDuration: Schema.optional(Schema.String),
     audioGcsUri: Schema.optional(Schema.String),
@@ -6875,7 +6875,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDialogflowSource {
   dialogflowConversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDialogflowSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowSource> =
+export const GoogleCloudContactcenterinsightsV1mainDialogflowSource: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDialogflowSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioUri: Schema.optional(Schema.String),
     dialogflowConversation: Schema.optional(Schema.String),
@@ -6890,7 +6890,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGcsSource {
   transcriptUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGcsSource> =
+export const GoogleCloudContactcenterinsightsV1mainGcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1mainGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audioUri: Schema.optional(Schema.String),
     transcriptUri: Schema.optional(Schema.String),
@@ -6909,7 +6909,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationDataSource {
   gcsSource?: GoogleCloudContactcenterinsightsV1mainGcsSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationDataSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationDataSource> =
+export const GoogleCloudContactcenterinsightsV1mainConversationDataSource: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationDataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadataUri: Schema.optional(Schema.String),
     turnLevelAudios: Schema.optional(
@@ -6941,7 +6941,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationIn
   mergedFullConversationCorrelationId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo> =
+export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullConversationCorrelationId: Schema.optional(Schema.String),
     correlationTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -6966,7 +6966,7 @@ export interface GoogleCloudContactcenterinsightsV1mainFaqAnswerData {
   source?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainFaqAnswerData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainFaqAnswerData> =
+export const GoogleCloudContactcenterinsightsV1mainFaqAnswerData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainFaqAnswerData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryRecord: Schema.optional(Schema.String),
     answer: Schema.optional(Schema.String),
@@ -6985,7 +6985,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData
   confidence?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData> =
+export const GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowIntentId: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -6999,7 +6999,7 @@ export interface GoogleCloudContactcenterinsightsV1mainCesEndSessionAnnotation {
   endSession?: GoogleCloudCesV1mainEndSession;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCesEndSessionAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCesEndSessionAnnotation> =
+export const GoogleCloudContactcenterinsightsV1mainCesEndSessionAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1mainCesEndSessionAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endSession: Schema.optional(GoogleCloudCesV1mainEndSession),
   }).annotate({
@@ -7017,7 +7017,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionDat
   suggestion?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidenceScore: Schema.optional(Schema.Number),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -7035,7 +7035,7 @@ export interface GoogleCloudContactcenterinsightsV1mainCesTurnAnnotation {
   messages?: ReadonlyArray<GoogleCloudCesV1mainMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCesTurnAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCesTurnAnnotation> =
+export const GoogleCloudContactcenterinsightsV1mainCesTurnAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1mainCesTurnAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rootSpan: Schema.optional(GoogleCloudCesV1mainSpan),
     messages: Schema.optional(Schema.Array(GoogleCloudCesV1mainMessage)),
@@ -7057,7 +7057,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnswerFeedback {
   clicked?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnswerFeedback: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnswerFeedback> =
+export const GoogleCloudContactcenterinsightsV1mainAnswerFeedback: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnswerFeedback> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     correctnessLevel: Schema.optional(Schema.String),
     displayed: Schema.optional(Schema.Boolean),
@@ -7081,7 +7081,7 @@ export interface GoogleCloudContactcenterinsightsV1mainArticleSuggestionData {
   confidenceScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainArticleSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainArticleSuggestionData> =
+export const GoogleCloudContactcenterinsightsV1mainArticleSuggestionData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainArticleSuggestionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queryRecord: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -7104,7 +7104,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSmartReplyData {
   confidenceScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSmartReplyData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSmartReplyData> =
+export const GoogleCloudContactcenterinsightsV1mainSmartReplyData: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSmartReplyData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     queryRecord: Schema.optional(Schema.String),
@@ -7145,7 +7145,7 @@ export interface GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation {
   smartReply?: GoogleCloudContactcenterinsightsV1mainSmartReplyData;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation> =
+export const GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation: Schema.Codec<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationSummarizationSuggestion: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData,
@@ -7202,7 +7202,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnalysis {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnalysis: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysis> =
+export const GoogleCloudContactcenterinsightsV1mainAnalysis: Schema.Codec<GoogleCloudContactcenterinsightsV1mainAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analysisResult: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainAnalysisResult,
@@ -7220,7 +7220,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTra
   smartReplyAllowlistCovered?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -7239,7 +7239,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTra
   endOffset?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo> =
+export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     word: Schema.optional(Schema.String),
@@ -7269,7 +7269,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationParticipant {
   obfuscatedExternalUserId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationParticipant: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationParticipant> =
+export const GoogleCloudContactcenterinsightsV1mainConversationParticipant: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationParticipant> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -7303,7 +7303,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTra
   segmentParticipant?: GoogleCloudContactcenterinsightsV1mainConversationParticipant;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment> =
+export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sentiment: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainSentimentData,
@@ -7337,7 +7337,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationTranscript {
   transcriptSegments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscript> =
+export const GoogleCloudContactcenterinsightsV1mainConversationTranscript: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationTranscript> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transcriptSegments: Schema.optional(
       Schema.Array(
@@ -7353,7 +7353,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDialogflowIntent {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDialogflowIntent: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowIntent> =
+export const GoogleCloudContactcenterinsightsV1mainDialogflowIntent: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDialogflowIntent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({
@@ -7412,7 +7412,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversation {
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversation: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversation> =
+export const GoogleCloudContactcenterinsightsV1mainConversation: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qualityMetadata: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata,
@@ -7469,7 +7469,7 @@ export interface GoogleCloudContactcenterinsightsV1mainRedactionConfig {
   inspectTemplate?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainRedactionConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainRedactionConfig> =
+export const GoogleCloudContactcenterinsightsV1mainRedactionConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1mainRedactionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deidentifyTemplate: Schema.optional(Schema.String),
     inspectTemplate: Schema.optional(Schema.String),
@@ -7490,7 +7490,7 @@ export interface GoogleCloudContactcenterinsightsV1mainUploadConversationRequest
   redactionConfig?: GoogleCloudContactcenterinsightsV1mainRedactionConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUploadConversationRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUploadConversationRequest> =
+export const GoogleCloudContactcenterinsightsV1mainUploadConversationRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainUploadConversationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speechConfig: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainSpeechConfig,
@@ -7510,7 +7510,7 @@ export const GoogleCloudContactcenterinsightsV1mainUploadConversationRequest: Sc
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse",
@@ -7525,7 +7525,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRule {
   config?: GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRule: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRule> =
+export const GoogleCloudContactcenterinsightsV1PhraseMatchRule: Schema.Codec<GoogleCloudContactcenterinsightsV1PhraseMatchRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negated: Schema.optional(Schema.Boolean),
     query: Schema.optional(Schema.String),
@@ -7547,7 +7547,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup> =
+export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup: Schema.Codec<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     phraseMatchRules: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1PhraseMatchRule),
@@ -7592,7 +7592,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
   active?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatcher: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcher> =
+export const GoogleCloudContactcenterinsightsV1PhraseMatcher: Schema.Codec<GoogleCloudContactcenterinsightsV1PhraseMatcher> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activationUpdateTime: Schema.optional(Schema.String),
     roleMatch: Schema.optional(Schema.String),
@@ -7618,7 +7618,7 @@ export interface GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   phraseMatchers?: ReadonlyArray<GoogleCloudContactcenterinsightsV1PhraseMatcher>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse> =
+export const GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     phraseMatchers: Schema.optional(
@@ -7641,7 +7641,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversation
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     annotatorSelector: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector,
@@ -7674,7 +7674,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversation
   relabel?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     completedAnalysesCount: Schema.optional(Schema.Number),
     endTime: Schema.optional(Schema.String),
@@ -7700,7 +7700,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResul
   constraintMet?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult> =
+export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleId: Schema.optional(Schema.String),
     error: Schema.optional(GoogleRpcStatus),
@@ -7719,7 +7719,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResul
   conversationA?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult> =
+export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationB: Schema.optional(Schema.String),
     ruleConstraintResults: Schema.optional(
@@ -7740,7 +7740,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   averageTagNormalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     averageTagNormalizedScore: Schema.optional(Schema.Number),
@@ -7862,7 +7862,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   knowledgeSearchResultCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     knowledgeSearchNegativeFeedbackRatio: Schema.optional(Schema.Number),
     summarizationSuggestionEditRatio: Schema.optional(Schema.Number),
@@ -7945,7 +7945,7 @@ export interface GoogleTypeInterval {
   endTime?: string;
 }
 
-export const GoogleTypeInterval: Schema.Schema<GoogleTypeInterval> =
+export const GoogleTypeInterval: Schema.Codec<GoogleTypeInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -7960,7 +7960,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   p90?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     p50: Schema.optional(Schema.Number),
     p99: Schema.optional(Schema.Number),
@@ -7983,7 +7983,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   percentileTtsLatency?: GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentileAudioInAudioOutLatency: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
@@ -8014,7 +8014,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   dialogflowInteractionMeasure?: GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationMeasure: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure,
@@ -8033,7 +8033,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   dataPoints?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataPoints: Schema.optional(
       Schema.Array(
@@ -8054,7 +8054,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationRe
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult> =
+export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     correlationId: Schema.optional(Schema.String),
     ruleId: Schema.optional(Schema.String),
@@ -8071,7 +8071,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationRe
   conversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult> =
+export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ruleResults: Schema.optional(
       Schema.Array(
@@ -8091,7 +8091,7 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResp
   constraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults> =
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults: Schema.Codec<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     joinKeyResults: Schema.optional(
       Schema.Array(
@@ -8113,7 +8113,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   systemMessages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemMessages: Schema.optional(
       Schema.Array(
@@ -8164,7 +8164,7 @@ export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest
   bigQueryDestination?: GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest> =
+export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     kmsKey: Schema.optional(Schema.String),
@@ -8194,7 +8194,7 @@ export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadat
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest,
@@ -8214,7 +8214,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -8224,7 +8224,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversati
 
 export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse",
@@ -8235,7 +8235,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDim
   qaScorecardId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardId: Schema.optional(Schema.String),
   }).annotate({
@@ -8248,7 +8248,7 @@ export interface GoogleCloudContactcenterinsightsV1ListIssuesResponse {
   issues?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Issue>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListIssuesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListIssuesResponse> =
+export const GoogleCloudContactcenterinsightsV1ListIssuesResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListIssuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issues: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Issue),
@@ -8264,7 +8264,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAnalysesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAnalysesResponse> =
+export const GoogleCloudContactcenterinsightsV1ListAnalysesResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListAnalysesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyses: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Analysis),
@@ -8281,7 +8281,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsReque
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest> =
+export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -8299,7 +8299,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIss
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats> =
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issue: Schema.optional(Schema.String),
     labeledConversationsCount: Schema.optional(Schema.String),
@@ -8321,7 +8321,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats {
   analyzedConversationsCount?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats> =
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unclassifiedConversationsCount: Schema.optional(Schema.String),
     issueStats: Schema.optional(
@@ -8344,7 +8344,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConf
   medium?: "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig> =
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainingConversationsCount: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -8384,7 +8384,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModel {
   modelType?: "MODEL_TYPE_UNSPECIFIED" | "TYPE_V1" | "TYPE_V2" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModel: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModel> =
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModel: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IssueModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -8406,7 +8406,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1IssueModel: Schema.Schema<G
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse",
@@ -8417,7 +8417,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataOptions {
   includeDialogflowInteractionData?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationDataOptions: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataOptions> =
+export const GoogleCloudContactcenterinsightsV1ConversationDataOptions: Schema.Codec<GoogleCloudContactcenterinsightsV1ConversationDataOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeDialogflowInteractionData: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -8426,7 +8426,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationDataOptions: Schema.S
 
 export interface GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest {}
 
-export const GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest> =
+export const GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest",
@@ -8443,7 +8443,7 @@ export interface GoogleCloudContactcenterinsightsV1AuthorizedViewSet {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AuthorizedViewSet: Schema.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSet> =
+export const GoogleCloudContactcenterinsightsV1AuthorizedViewSet: Schema.Codec<GoogleCloudContactcenterinsightsV1AuthorizedViewSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -8460,7 +8460,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsRespons
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizedViewSets: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1AuthorizedViewSet),
@@ -8476,7 +8476,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
+export const GoogleIamV1TestIamPermissionsRequest: Schema.Codec<GoogleIamV1TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
@@ -8500,7 +8500,7 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisRule {
   analysisPercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnalysisRule: Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisRule> =
+export const GoogleCloudContactcenterinsightsV1AnalysisRule: Schema.Codec<GoogleCloudContactcenterinsightsV1AnalysisRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     annotatorSelector: Schema.optional(
       GoogleCloudContactcenterinsightsV1AnnotatorSelector,
@@ -8521,7 +8521,7 @@ export interface GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversations: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Conversation),
@@ -8544,7 +8544,7 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -8562,7 +8562,7 @@ export interface GoogleLongrunningListOperationsResponse {
   operations?: ReadonlyArray<GoogleLongrunningOperation>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -8571,7 +8571,7 @@ export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongru
 
 export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse",
   });
@@ -8583,7 +8583,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueModel: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1IssueModel,
@@ -8599,7 +8599,7 @@ export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSou
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource> =
+export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -8612,7 +8612,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptio
   conversationDataOptions?: GoogleCloudContactcenterinsightsV1ConversationDataOptions;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions> =
+export const GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions: Schema.Codec<GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationDataOptions: Schema.optional(
       GoogleCloudContactcenterinsightsV1ConversationDataOptions,
@@ -8639,7 +8639,7 @@ export interface GoogleCloudContactcenterinsightsV1Dataset {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Dataset: Schema.Schema<GoogleCloudContactcenterinsightsV1Dataset> =
+export const GoogleCloudContactcenterinsightsV1Dataset: Schema.Codec<GoogleCloudContactcenterinsightsV1Dataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -8657,7 +8657,7 @@ export interface GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListDatasetsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListDatasetsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListDatasetsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListDatasetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasets: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Dataset),
@@ -8674,7 +8674,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   averageTagNormalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     averageTagNormalizedScore: Schema.optional(Schema.Number),
@@ -8685,7 +8685,7 @@ export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceData
 
 export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse",
@@ -8698,7 +8698,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   averageTagNormalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
     averageTagNormalizedScore: Schema.optional(Schema.Number),
@@ -8718,7 +8718,7 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMe
   annotatorSelector?: GoogleCloudContactcenterinsightsV1mainAnnotatorSelector;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     conversation: Schema.optional(Schema.String),
@@ -8738,7 +8738,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsRe
   feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     feedbackLabels: Schema.optional(
@@ -8758,7 +8758,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataReque
   dataset?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination> =
+export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -8807,7 +8807,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataReque
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigQueryDestination: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination,
@@ -8837,7 +8837,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetad
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest,
@@ -8867,7 +8867,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssue {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssue: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssue> =
+export const GoogleCloudContactcenterinsightsV1mainIssue: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -8893,7 +8893,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
   tuningError?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata> =
+export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalValidLabelCount: Schema.optional(Schema.String),
     datasetValidationWarnings: Schema.optional(Schema.Array(Schema.String)),
@@ -8907,7 +8907,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
   accuracy?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionMetrics: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionMetrics> =
+export const GoogleCloudContactcenterinsightsV1QaQuestionMetrics: Schema.Codec<GoogleCloudContactcenterinsightsV1QaQuestionMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accuracy: Schema.optional(Schema.Number),
   }).annotate({
@@ -8949,7 +8949,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestion {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestion: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestion> =
+export const GoogleCloudContactcenterinsightsV1QaQuestion: Schema.Codec<GoogleCloudContactcenterinsightsV1QaQuestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
     abbreviation: Schema.optional(Schema.String),
@@ -8988,7 +8988,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnsw
   answerValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestionId: Schema.optional(Schema.String),
     questionBody: Schema.optional(Schema.String),
@@ -9001,7 +9001,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDi
 
 export interface GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse",
@@ -9009,7 +9009,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRes
 
 export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse",
@@ -9027,7 +9027,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
     textType: Schema.optional(Schema.String),
@@ -9049,7 +9049,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   generatedSqlQuery?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textMessage: Schema.optional(
       GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput,
@@ -9078,7 +9078,7 @@ export interface GoogleCloudContactcenterinsightsV1View {
   value?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1View: Schema.Schema<GoogleCloudContactcenterinsightsV1View> =
+export const GoogleCloudContactcenterinsightsV1View: Schema.Codec<GoogleCloudContactcenterinsightsV1View> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -9094,7 +9094,7 @@ export interface GoogleCloudContactcenterinsightsV1ListViewsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListViewsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListViewsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListViewsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListViewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     views: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1View),
@@ -9117,7 +9117,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   recordsPerFileCount?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination> =
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     format: Schema.optional(Schema.String),
     addWhitespace: Schema.optional(Schema.Boolean),
@@ -9134,7 +9134,7 @@ export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGc
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination> =
+export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -9149,7 +9149,7 @@ export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest {
   gcsDestination?: GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     gcsDestination: Schema.optional(
@@ -9170,7 +9170,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   systemMessageWrapper?: GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageId: Schema.optional(Schema.String),
     userMessage: Schema.optional(
@@ -9190,7 +9190,7 @@ export interface GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -9207,7 +9207,7 @@ export interface GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadat
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -9228,7 +9228,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimension
   issueDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueId: Schema.optional(Schema.String),
     issueModelId: Schema.optional(Schema.String),
@@ -9245,7 +9245,7 @@ export interface GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResp
   feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     feedbackLabels: Schema.optional(
@@ -9263,7 +9263,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimension
   labelValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelKey: Schema.optional(Schema.String),
     labelValue: Schema.optional(Schema.String),
@@ -9277,7 +9277,7 @@ export interface GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -9296,7 +9296,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGen
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
     textType: Schema.optional(Schema.String),
@@ -9310,7 +9310,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOvervie
   summaryText?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summaryText: Schema.optional(Schema.String),
   }).annotate({
@@ -9323,7 +9323,7 @@ export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -9337,7 +9337,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsR
   failedAnalysisCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successfulAnalysisCount: Schema.optional(Schema.Number),
     failedAnalysisCount: Schema.optional(Schema.Number),
@@ -9351,7 +9351,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination> =
+export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -9378,7 +9378,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcs
   customMetadataKeys?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource> =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucketUri: Schema.optional(Schema.String),
     bucketObjectType: Schema.optional(Schema.String),
@@ -9400,7 +9400,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestCon
   customerChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig> =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentId: Schema.optional(Schema.String),
     agentChannel: Schema.optional(Schema.Number),
@@ -9427,7 +9427,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   speechConfig?: GoogleCloudContactcenterinsightsV1SpeechConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1IngestConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(
       GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource,
@@ -9465,7 +9465,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsMetadata {
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1IngestConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     ingestConversationsStats: Schema.optional(
@@ -9486,7 +9486,7 @@ export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGc
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource> =
+export const GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -9503,7 +9503,7 @@ export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest {
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createNewModel: Schema.optional(Schema.Boolean),
     gcsSource: Schema.optional(
@@ -9521,7 +9521,7 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResp
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse> =
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detailedResults: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults,
@@ -9537,7 +9537,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionConversationPr
   conversationProfileId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationProfileId: Schema.optional(Schema.String),
   }).annotate({
@@ -9552,7 +9552,7 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateIssueRequest {
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateIssueRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueRequest> =
+export const GoogleCloudContactcenterinsightsV1mainCreateIssueRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainCreateIssueRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issue: Schema.optional(GoogleCloudContactcenterinsightsV1mainIssue),
     parent: Schema.optional(Schema.String),
@@ -9569,7 +9569,7 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -9582,7 +9582,7 @@ export const GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata: Schema.S
 
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse",
@@ -9605,7 +9605,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Dataset {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Dataset: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Dataset> =
+export const GoogleCloudContactcenterinsightsV1alpha1Dataset: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1Dataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -9629,7 +9629,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleRule {
   sampleRow?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleRule: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleRule> =
+export const GoogleCloudContactcenterinsightsV1alpha1SampleRule: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SampleRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     conversationFilter: Schema.optional(Schema.String),
@@ -9648,7 +9648,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequ
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationDataset: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1Dataset,
@@ -9669,7 +9669,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMeta
   failedSampleCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats> =
+export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successfulSampleCount: Schema.optional(Schema.Number),
     failedSampleCount: Schema.optional(Schema.Number),
@@ -9691,7 +9691,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMeta
   sampleConversationsStats?: GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -9716,7 +9716,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQ
   table?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination> =
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -9765,7 +9765,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest> =
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     writeDisposition: Schema.optional(Schema.String),
@@ -9781,7 +9781,7 @@ export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest: Schema
 
 export interface GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse> =
+export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse",
@@ -9794,7 +9794,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigRe
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detailedResults: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults,
@@ -9816,7 +9816,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   successfulDownloadCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalFilesWritten: Schema.optional(Schema.Number),
     fileNames: Schema.optional(Schema.Array(Schema.String)),
@@ -9838,7 +9838,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGen
   chartSpec?: Record<string, unknown>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generatedSqlQuery: Schema.optional(Schema.String),
     textOutput: Schema.optional(Schema.String),
@@ -9858,7 +9858,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionConversational
   toolDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolId: Schema.optional(Schema.String),
     toolDisplayName: Schema.optional(Schema.String),
@@ -9872,7 +9872,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimen
   sentimentCategory?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sentimentCategory: Schema.optional(Schema.String),
   }).annotate({
@@ -9887,7 +9887,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionConversational
   playbookDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     playbookId: Schema.optional(Schema.String),
     playbookDisplayName: Schema.optional(Schema.String),
@@ -9913,7 +9913,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimension
   agentVersionDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentDeploymentDisplayName: Schema.optional(Schema.String),
     agentDisplayName: Schema.optional(Schema.String),
@@ -9932,7 +9932,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensio
   medium?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medium: Schema.optional(Schema.String),
   }).annotate({
@@ -9949,7 +9949,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDime
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardId: Schema.optional(Schema.String),
     qaQuestionId: Schema.optional(Schema.String),
@@ -10009,7 +10009,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Dimension {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Dimension: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Dimension> =
+export const GoogleCloudContactcenterinsightsV1alpha1Dimension: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1Dimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationalAgentsToolDimensionMetadata: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata,
@@ -10058,7 +10058,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   timeSeries?: GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1alpha1Dimension),
@@ -10079,7 +10079,7 @@ export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse 
   issueModel?: GoogleCloudContactcenterinsightsV1mainIssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueModel: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainIssueModel,
@@ -10096,7 +10096,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMe
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(Schema.String),
     status: Schema.optional(GoogleRpcStatus),
@@ -10117,7 +10117,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsRespo
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
     textType: Schema.optional(Schema.String),
@@ -10137,7 +10137,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsRespo
   textOutput?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textMessage: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput,
@@ -10163,7 +10163,7 @@ export interface GoogleCloudContactcenterinsightsV1mainUploadConversationMetadat
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -10200,7 +10200,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest {
   revisionId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userProvidedChartSpec: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -10219,7 +10219,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest: Schema
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse",
@@ -10232,7 +10232,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest
   gcsDestination?: GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     gcsDestination: Schema.optional(
@@ -10248,7 +10248,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource> =
+export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -10265,7 +10265,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest
   gcsSource?: GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createNewModel: Schema.optional(Schema.Boolean),
     parent: Schema.optional(Schema.String),
@@ -10286,7 +10286,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadat
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest,
@@ -10307,7 +10307,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetada
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest,
@@ -10324,7 +10324,7 @@ export interface GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1DeployIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1DeployIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -10336,7 +10336,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetad
   errorMessages?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
   }).annotate({
@@ -10351,7 +10351,7 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMeta
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Codec<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(Schema.String),
     status: Schema.optional(GoogleRpcStatus),
@@ -10373,7 +10373,7 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMeta
   conversationCorrelationErrors?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats> =
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Codec<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedConversationsCount: Schema.optional(Schema.Number),
     sampledConversationsCount: Schema.optional(Schema.Number),
@@ -10398,7 +10398,7 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMeta
   dataset?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     stats: Schema.optional(
@@ -10422,7 +10422,7 @@ export interface GoogleIamV1AuditLogConfig {
     | (string & {});
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
@@ -10435,7 +10435,7 @@ export interface GoogleIamV1AuditConfig {
   service?: string;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
     service: Schema.optional(Schema.String),
@@ -10452,7 +10452,7 @@ export interface GoogleTypeExpr {
   expression?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -10469,7 +10469,7 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -10487,7 +10487,7 @@ export interface GoogleIamV1Policy {
   version?: number;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
     etag: Schema.optional(Schema.String),
@@ -10502,7 +10502,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   policy?: GoogleIamV1Policy;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(GoogleIamV1Policy),
@@ -10510,7 +10510,7 @@ export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPoli
 
 export interface GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse",
@@ -10518,7 +10518,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse:
 
 export interface GoogleCloudContactcenterinsightsV1PublishAssessmentRequest {}
 
-export const GoogleCloudContactcenterinsightsV1PublishAssessmentRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1PublishAssessmentRequest> =
+export const GoogleCloudContactcenterinsightsV1PublishAssessmentRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1PublishAssessmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1PublishAssessmentRequest",
   });
@@ -10530,7 +10530,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabel
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -10544,7 +10544,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewReque
   agentId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource> =
+export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentId: Schema.optional(Schema.String),
   }).annotate({
@@ -10563,7 +10563,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewReque
   agentPerformanceSource?: GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest> =
+export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     comparisonQueryInterval: Schema.optional(
@@ -10593,7 +10593,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsReque
   analysisPercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     annotatorSelector: Schema.optional(
       GoogleCloudContactcenterinsightsV1AnnotatorSelector,
@@ -10626,7 +10626,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetad
   completedAnalysesCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest,
@@ -10654,7 +10654,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpe
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -10684,7 +10684,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMe
   agentDeploymentId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     agentVersionId: Schema.optional(Schema.String),
     agentDeploymentDisplayName: Schema.optional(Schema.String),
@@ -10711,7 +10711,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMe
   failedConversationsCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats> =
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationCorrelationErrors: Schema.optional(
       Schema.Array(
@@ -10736,7 +10736,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMe
   dataset?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     stats: Schema.optional(
@@ -10757,7 +10757,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMe
   issueDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueId: Schema.optional(Schema.String),
     issueModelId: Schema.optional(Schema.String),
@@ -10776,7 +10776,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsReques
   agentChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig> =
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerChannel: Schema.optional(Schema.Number),
     agentId: Schema.optional(Schema.String),
@@ -10791,7 +10791,7 @@ export interface GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest> =
+export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -10807,7 +10807,7 @@ export interface GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata {
   request?: GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata> =
+export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -10820,7 +10820,7 @@ export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata: Sche
 
 export interface GoogleCloudContactcenterinsightsV1DeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1DeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1DeployIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1DeployIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DeployIssueModelResponse",
   });
@@ -10830,7 +10830,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentC
   sentimentCategory?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sentimentCategory: Schema.optional(Schema.String),
   }).annotate({
@@ -10859,7 +10859,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecard {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecard: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecard> =
+export const GoogleCloudContactcenterinsightsV1QaScorecard: Schema.Codec<GoogleCloudContactcenterinsightsV1QaScorecard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     isDefault: Schema.optional(Schema.Boolean),
@@ -10891,7 +10891,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecardRevision: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevision> =
+export const GoogleCloudContactcenterinsightsV1QaScorecardRevision: Schema.Codec<GoogleCloudContactcenterinsightsV1QaScorecardRevision> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snapshot: Schema.optional(GoogleCloudContactcenterinsightsV1QaScorecard),
     name: Schema.optional(Schema.String),
@@ -10909,7 +10909,7 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsRespo
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardRevisions: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1QaScorecardRevision),
@@ -10927,7 +10927,7 @@ export interface GoogleCloudContactcenterinsightsV1EncryptionSpec {
   kmsKey?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1EncryptionSpec: Schema.Schema<GoogleCloudContactcenterinsightsV1EncryptionSpec> =
+export const GoogleCloudContactcenterinsightsV1EncryptionSpec: Schema.Codec<GoogleCloudContactcenterinsightsV1EncryptionSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kmsKey: Schema.optional(Schema.String),
@@ -10940,7 +10940,7 @@ export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecReque
   encryptionSpec?: GoogleCloudContactcenterinsightsV1EncryptionSpec;
 }
 
-export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest> =
+export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptionSpec: Schema.optional(
       GoogleCloudContactcenterinsightsV1EncryptionSpec,
@@ -10963,7 +10963,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaQuestionTag {
   qaQuestionIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaQuestionTag: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaQuestionTag> =
+export const GoogleCloudContactcenterinsightsV1mainQaQuestionTag: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQaQuestionTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -10981,7 +10981,7 @@ export interface GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsRespons
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feedbackLabels: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1mainFeedbackLabel),
@@ -11003,7 +11003,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswer
   answerValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestionId: Schema.optional(Schema.String),
     questionBody: Schema.optional(Schema.String),
@@ -11016,7 +11016,7 @@ export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDime
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse",
@@ -11029,7 +11029,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetad
   request?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata> =
+export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
     request: Schema.optional(
@@ -11153,7 +11153,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   averageQaQuestionNormalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     knowledgeSearchUriClickRatio: Schema.optional(Schema.Number),
     conversationalAgentsAverageTtsLatency: Schema.optional(Schema.Number),
@@ -11236,7 +11236,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabel
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest,
@@ -11260,7 +11260,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alwaysPrintEmptyFields: Schema.optional(Schema.Boolean),
     recordsPerFileCount: Schema.optional(Schema.String),
@@ -11385,7 +11385,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   containedConversationCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summarizationSuggestionResultCount: Schema.optional(Schema.Number),
     averageSummarizationSuggestionEditDistance: Schema.optional(Schema.Number),
@@ -11470,7 +11470,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   dialogflowInteractionMeasure?: GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationMeasure: Schema.optional(
       GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure,
@@ -11489,7 +11489,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequ
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -11508,7 +11508,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMeta
   successfulIngestCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats> =
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processedObjectCount: Schema.optional(Schema.Number),
     failedIngestCount: Schema.optional(Schema.Number),
@@ -11524,7 +11524,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDes
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination> =
+export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -11539,7 +11539,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
   gcsDestination?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1ExportIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     gcsDestination: Schema.optional(
@@ -11558,7 +11558,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -11576,7 +11576,7 @@ export interface GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagReques
   updateMask?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest> =
+export const GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestionTag: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainQaQuestionTag,
@@ -11596,7 +11596,7 @@ export interface GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetada
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -11619,7 +11619,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationId: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -11641,7 +11641,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsRespo
   transcript?: GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generativeResponses: Schema.optional(
       Schema.Array(
@@ -11677,7 +11677,7 @@ export interface GoogleCloudContactcenterinsightsV1Dashboard {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Dashboard: Schema.Schema<GoogleCloudContactcenterinsightsV1Dashboard> =
+export const GoogleCloudContactcenterinsightsV1Dashboard: Schema.Codec<GoogleCloudContactcenterinsightsV1Dashboard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -11699,7 +11699,7 @@ export interface GoogleCloudContactcenterinsightsV1ListDashboardsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListDashboardsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListDashboardsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListDashboardsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListDashboardsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dashboards: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Dashboard),
@@ -11718,7 +11718,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   p99?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     p90: Schema.optional(Schema.Number),
     p50: Schema.optional(Schema.Number),
@@ -11741,7 +11741,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   percentileAudioInAudioOutLatency?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentileLlmCallLatency: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
@@ -11772,7 +11772,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   conversationMeasure?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialogflowInteractionMeasure: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure,
@@ -11791,7 +11791,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   dataPoints?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataPoints: Schema.optional(
       Schema.Array(
@@ -11812,7 +11812,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimens
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecardId: Schema.optional(Schema.String),
     qaQuestionId: Schema.optional(Schema.String),
@@ -11827,7 +11827,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionM
   medium?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medium: Schema.optional(Schema.String),
   }).annotate({
@@ -11842,7 +11842,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionConversationalAg
   playbookDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     playbookId: Schema.optional(Schema.String),
     playbookDisplayName: Schema.optional(Schema.String),
@@ -11856,7 +11856,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionConversationProf
   conversationProfileId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationProfileId: Schema.optional(Schema.String),
   }).annotate({
@@ -11871,7 +11871,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionConversationalAg
   toolId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     toolDisplayName: Schema.optional(Schema.String),
     toolId: Schema.optional(Schema.String),
@@ -11887,7 +11887,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMe
   labelValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelKey: Schema.optional(Schema.String),
     labelValue: Schema.optional(Schema.String),
@@ -11946,7 +11946,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDimension {
   qaQuestionAnswerDimensionMetadata?: GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimension: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimension> =
+export const GoogleCloudContactcenterinsightsV1mainDimension: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestionDimensionMetadata: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata,
@@ -11995,7 +11995,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   dimensions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainDimension>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     total: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint,
@@ -12018,7 +12018,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Codec<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(Schema.String),
     status: Schema.optional(GoogleRpcStatus),
@@ -12040,7 +12040,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
   sampledConversationsCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats> =
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Codec<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
     correlatedConversationsCount: Schema.optional(Schema.Number),
@@ -12061,7 +12061,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
   spreadsheetUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource> =
+export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetUri: Schema.optional(Schema.String),
   }).annotate({
@@ -12076,7 +12076,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   sheetTitle?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetUri: Schema.optional(Schema.String),
     sheetTitle: Schema.optional(Schema.String),
@@ -12109,7 +12109,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   conversationFilter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     templateQaScorecardId: Schema.optional(Schema.Array(Schema.String)),
@@ -12141,7 +12141,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   downloadStats?: GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest,
@@ -12159,7 +12159,7 @@ export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMet
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata",
@@ -12172,7 +12172,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse> =
+export const GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analysisRules: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1AnalysisRule),
@@ -12189,7 +12189,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRespo
   failedAnalysisCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successfulAnalysisCount: Schema.optional(Schema.Number),
     failedAnalysisCount: Schema.optional(Schema.Number),
@@ -12205,7 +12205,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsRespo
   feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     feedbackLabels: Schema.optional(
@@ -12223,7 +12223,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   sheetTitle?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination> =
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetUri: Schema.optional(Schema.String),
     sheetTitle: Schema.optional(Schema.String),
@@ -12234,7 +12234,7 @@ export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse",
@@ -12251,7 +12251,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slices: Schema.optional(
       Schema.Array(
@@ -12272,7 +12272,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -12285,7 +12285,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   systemMessages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemMessages: Schema.optional(
       Schema.Array(
@@ -12308,7 +12308,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   systemMessageWrapper?: GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageId: Schema.optional(Schema.String),
     userMessage: Schema.optional(
@@ -12334,7 +12334,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   messages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     conversationId: Schema.optional(Schema.String),
@@ -12358,7 +12358,7 @@ export interface GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1DeployIssueModelRequest,
@@ -12380,7 +12380,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperation
   conversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -12400,7 +12400,7 @@ export interface GoogleCloudContactcenterinsightsV1ListNotesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListNotesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListNotesResponse> =
+export const GoogleCloudContactcenterinsightsV1ListNotesResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListNotesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notes: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Note),
@@ -12412,7 +12412,7 @@ export const GoogleCloudContactcenterinsightsV1ListNotesResponse: Schema.Schema<
 
 export interface GoogleCloudContactcenterinsightsV1SampleConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1SampleConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1SampleConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1SampleConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SampleConversationsResponse",
   });
@@ -12426,7 +12426,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
   stats?: GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata> =
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -12451,7 +12451,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UploadConversationReque
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1Conversation,
@@ -12482,7 +12482,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetad
   analysisOperation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -12509,7 +12509,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsReques
   force?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDeleteCount: Schema.optional(Schema.Number),
     filter: Schema.optional(Schema.String),
@@ -12531,7 +12531,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetada
   request?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -12551,7 +12551,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource> =
+export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     format: Schema.optional(Schema.String),
     objectUri: Schema.optional(Schema.String),
@@ -12569,7 +12569,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
   sheetsSource?: GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest> =
+export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(
       GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource,
@@ -12607,7 +12607,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   templateQaScorecardId?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest> =
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDownloadCount: Schema.optional(Schema.Number),
     gcsDestination: Schema.optional(
@@ -12633,7 +12633,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsR
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.String),
@@ -12651,7 +12651,7 @@ export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata 
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -12668,7 +12668,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -12682,7 +12682,7 @@ export interface GoogleCloudContactcenterinsightsV1CreateIssueRequest {
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateIssueRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueRequest> =
+export const GoogleCloudContactcenterinsightsV1CreateIssueRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1CreateIssueRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issue: Schema.optional(GoogleCloudContactcenterinsightsV1Issue),
     parent: Schema.optional(Schema.String),
@@ -12699,7 +12699,7 @@ export interface GoogleCloudContactcenterinsightsV1CreateIssueMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateIssueMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueMetadata> =
+export const GoogleCloudContactcenterinsightsV1CreateIssueMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1CreateIssueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -12717,7 +12717,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest {
   issue?: GoogleCloudContactcenterinsightsV1alpha1Issue;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     issue: Schema.optional(GoogleCloudContactcenterinsightsV1alpha1Issue),
@@ -12732,7 +12732,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsMetada
   failedSampleCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats> =
+export const GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successfulSampleCount: Schema.optional(Schema.Number),
     failedSampleCount: Schema.optional(Schema.Number),
@@ -12760,7 +12760,7 @@ export interface GoogleCloudContactcenterinsightsV1Assessment {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Assessment: Schema.Schema<GoogleCloudContactcenterinsightsV1Assessment> =
+export const GoogleCloudContactcenterinsightsV1Assessment: Schema.Codec<GoogleCloudContactcenterinsightsV1Assessment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -12778,7 +12778,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAssessmentsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListAssessmentsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessments: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Assessment),
@@ -12797,7 +12797,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -12817,7 +12817,7 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsRequest {
   sampleRule?: GoogleCloudContactcenterinsightsV1SampleRule;
 }
 
-export const GoogleCloudContactcenterinsightsV1SampleConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1SampleConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1SampleConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     destinationDataset: Schema.optional(
@@ -12833,7 +12833,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelReque
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -12850,7 +12850,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetad
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -12867,7 +12867,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsReques
   medium?: "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig> =
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medium: Schema.optional(Schema.String),
   }).annotate({
@@ -12888,7 +12888,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMet
   request?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata> =
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadStats: Schema.optional(
       GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats,
@@ -12911,7 +12911,7 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaScorecards: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1QaScorecard),
@@ -12923,7 +12923,7 @@ export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse: Schema.
 
 export interface GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest {}
 
-export const GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest> =
+export const GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest",
   });
@@ -12939,7 +12939,7 @@ export interface GoogleCloudContactcenterinsightsV1ScheduleInfo {
   schedule?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ScheduleInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1ScheduleInfo> =
+export const GoogleCloudContactcenterinsightsV1ScheduleInfo: Schema.Codec<GoogleCloudContactcenterinsightsV1ScheduleInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeZone: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -12964,7 +12964,7 @@ export interface GoogleCloudContactcenterinsightsV1AssessmentRule {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AssessmentRule: Schema.Schema<GoogleCloudContactcenterinsightsV1AssessmentRule> =
+export const GoogleCloudContactcenterinsightsV1AssessmentRule: Schema.Codec<GoogleCloudContactcenterinsightsV1AssessmentRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     scheduleInfo: Schema.optional(
@@ -12986,7 +12986,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse> =
+export const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessmentRules: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1AssessmentRule),
@@ -13003,7 +13003,7 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondi
   condition?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition: Schema.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition> =
+export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition: Schema.Codec<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     condition: Schema.optional(Schema.String),
@@ -13036,7 +13036,7 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRule {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRule: Schema.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRule> =
+export const GoogleCloudContactcenterinsightsV1AutoLabelingRule: Schema.Codec<GoogleCloudContactcenterinsightsV1AutoLabelingRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelKey: Schema.optional(Schema.String),
     conditions: Schema.optional(
@@ -13062,7 +13062,7 @@ export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest {
   autoLabelingRule?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest> =
+export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.optional(
       GoogleCloudContactcenterinsightsV1Conversation,
@@ -13083,7 +13083,7 @@ export interface GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata {
   request?: GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -13105,7 +13105,7 @@ export interface GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetada
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata> =
+export const GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     conversation: Schema.optional(Schema.String),
@@ -13125,7 +13125,7 @@ export interface GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     feedbackLabels: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel),
@@ -13152,7 +13152,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDataset {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDataset: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDataset> =
+export const GoogleCloudContactcenterinsightsV1mainDataset: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -13172,7 +13172,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsReques
   destinationDataset?: GoogleCloudContactcenterinsightsV1mainDataset;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     sampleRule: Schema.optional(
@@ -13197,7 +13197,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRe
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDeleteCount: Schema.optional(Schema.Number),
     parent: Schema.optional(Schema.String),
@@ -13215,7 +13215,7 @@ export interface GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse
   authorizedViews?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AuthorizedView>;
 }
 
-export const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse> =
+export const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     authorizedViews: Schema.optional(
@@ -13241,7 +13241,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata {
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata> =
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest,
@@ -13262,7 +13262,7 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSa
   failedSampleCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats> =
+export const GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats: Schema.Codec<GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successfulSampleCount: Schema.optional(Schema.Number),
     failedSampleCount: Schema.optional(Schema.Number),
@@ -13284,7 +13284,7 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsMetadata {
   partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1SampleConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1SampleConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1SampleConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     sampleConversationsStats: Schema.optional(
@@ -13310,7 +13310,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsMetada
   processedObjectCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats> =
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duplicatesSkippedCount: Schema.optional(Schema.Number),
     successfulIngestCount: Schema.optional(Schema.Number),
@@ -13332,7 +13332,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse {
   macroAverageSlice?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -13353,7 +13353,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRespons
   issueModel?: GoogleCloudContactcenterinsightsV1alpha1IssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueModel: Schema.optional(
       GoogleCloudContactcenterinsightsV1alpha1IssueModel,
@@ -13370,7 +13370,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse {
   transcript?: GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse> =
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generativeResponses: Schema.optional(
       Schema.Array(
@@ -13393,7 +13393,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadat
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -13407,7 +13407,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata: S
 
 export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata {}
 
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata> =
+export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata",
@@ -13418,7 +13418,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTime
   dataPoints?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint>;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataPoints: Schema.optional(
       Schema.Array(
@@ -13435,7 +13435,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata {
   resultIsTruncated?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultIsTruncated: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -13451,7 +13451,7 @@ export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
   gcsSource?: GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1ImportIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createNewModel: Schema.optional(Schema.Boolean),
     parent: Schema.optional(Schema.String),
@@ -13467,7 +13467,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -13483,7 +13483,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata 
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -13514,7 +13514,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsReques
   metadataBucketUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource> =
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transcriptBucketUri: Schema.optional(Schema.String),
     audioBucketUri: Schema.optional(Schema.String),
@@ -13544,7 +13544,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsReques
   redactionConfig?: GoogleCloudContactcenterinsightsV1mainRedactionConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest> =
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversationConfig: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig,
@@ -13583,7 +13583,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsMetada
   ingestConversationsStats?: GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampledConversations: Schema.optional(Schema.Array(Schema.String)),
     endTime: Schema.optional(Schema.String),
@@ -13602,7 +13602,7 @@ export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata: 
 
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse {}
 
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse> =
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse",
   });
@@ -13614,7 +13614,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversation
   failedAnalysisCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     successfulAnalysisCount: Schema.optional(Schema.Number),
     failedAnalysisCount: Schema.optional(Schema.Number),
@@ -13628,7 +13628,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewR
   summaryText?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse> =
+export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summaryText: Schema.optional(Schema.String),
   }).annotate({
@@ -13643,7 +13643,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
   feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     feedbackLabels: Schema.optional(
@@ -13661,7 +13661,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
   authorizedViews?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AuthorizedView>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     authorizedViews: Schema.optional(
@@ -13678,7 +13678,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse> =
+export const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoLabelingRules: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1AutoLabelingRule),
@@ -13698,7 +13698,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadat
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -13712,7 +13712,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata: S
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata {}
 
-export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata",
@@ -13720,7 +13720,7 @@ export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetad
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1IngestConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1IngestConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IngestConversationsResponse",
   });
@@ -13730,7 +13730,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRespo
   summaryText?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse> =
+export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summaryText: Schema.optional(Schema.String),
   }).annotate({
@@ -13751,7 +13751,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsMetada
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
@@ -13776,7 +13776,7 @@ export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -13796,7 +13796,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMeta
   request?: GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -13813,7 +13813,7 @@ export interface GoogleCloudContactcenterinsightsV1ListIssueModelsResponse {
   issueModels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1IssueModel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListIssueModelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListIssueModelsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListIssueModelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListIssueModelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueModels: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1IssueModel),
@@ -13827,7 +13827,7 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsRequest {
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateStatsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsRequest> =
+export const GoogleCloudContactcenterinsightsV1CalculateStatsRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1CalculateStatsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
   }).annotate({
@@ -13836,14 +13836,14 @@ export const GoogleCloudContactcenterinsightsV1CalculateStatsRequest: Schema.Sch
 
 export interface GoogleCloudContactcenterinsightsV1ExportIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1ExportIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ExportIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportIssueModelResponse",
   });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse",
@@ -13858,7 +13858,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadat
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -13877,7 +13877,7 @@ export interface GoogleCloudContactcenterinsightsV1CreateIssueModelRequest {
   issueModel?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueModelRequest> =
+export const GoogleCloudContactcenterinsightsV1CreateIssueModelRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1CreateIssueModelRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     issueModel: Schema.optional(GoogleCloudContactcenterinsightsV1IssueModel),
@@ -13894,7 +13894,7 @@ export interface GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata 
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -13915,7 +13915,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice {
   dimensions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Dimension>;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     total: Schema.optional(
       GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint,
@@ -13935,7 +13935,7 @@ export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse 
   labelResult?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse> =
+export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelResult: Schema.optional(Schema.String),
   }).annotate({
@@ -13948,7 +13948,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
+export const GoogleIamV1TestIamPermissionsResponse: Schema.Codec<GoogleIamV1TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
@@ -13958,7 +13958,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsMetadata {
   resultIsTruncated?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsMetadata> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultIsTruncated: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -13976,7 +13976,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponse {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponse> =
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1QueryMetricsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slices: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice),
@@ -13992,7 +13992,7 @@ export const GoogleCloudContactcenterinsightsV1QueryMetricsResponse: Schema.Sche
 
 export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse {}
 
-export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse> =
+export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse",
@@ -14007,7 +14007,7 @@ export interface GoogleCloudContactcenterinsightsV1SignedAudioUris {
   signedTurnLevelAudios?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
 }
 
-export const GoogleCloudContactcenterinsightsV1SignedAudioUris: Schema.Schema<GoogleCloudContactcenterinsightsV1SignedAudioUris> =
+export const GoogleCloudContactcenterinsightsV1SignedAudioUris: Schema.Codec<GoogleCloudContactcenterinsightsV1SignedAudioUris> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedGcsAudioUri: Schema.optional(Schema.String),
     signedDialogflowAudioUri: Schema.optional(Schema.String),
@@ -14025,7 +14025,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerateConversationSignedAud
   signedAudioUris?: GoogleCloudContactcenterinsightsV1SignedAudioUris;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse> =
+export const GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedAudioUris: Schema.optional(
       GoogleCloudContactcenterinsightsV1SignedAudioUris,
@@ -14037,7 +14037,7 @@ export const GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioRe
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse",
@@ -14045,14 +14045,14 @@ export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse:
 
 export interface GoogleCloudContactcenterinsightsV1AppealAssessmentRequest {}
 
-export const GoogleCloudContactcenterinsightsV1AppealAssessmentRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1AppealAssessmentRequest> =
+export const GoogleCloudContactcenterinsightsV1AppealAssessmentRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1AppealAssessmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AppealAssessmentRequest",
   });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse",
@@ -14065,7 +14065,7 @@ export interface GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestionTags: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1QaQuestionTag),
@@ -14077,7 +14077,7 @@ export const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse: Schem
 
 export interface GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest {}
 
-export const GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest> =
+export const GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest: Schema.Codec<GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest",
@@ -14090,7 +14090,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsM
   request?: GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
     request: Schema.optional(
@@ -14116,7 +14116,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMeta
   request?: GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sampledConversations: Schema.optional(Schema.Array(Schema.String)),
     endTime: Schema.optional(Schema.String),
@@ -14140,7 +14140,7 @@ export interface GoogleCloudContactcenterinsightsV1ListChartsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListChartsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListChartsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListChartsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListChartsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     charts: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1Chart),
@@ -14161,7 +14161,7 @@ export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetad
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata> =
+export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest,
@@ -14183,7 +14183,7 @@ export interface GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1ImportIssueModelRequest,
@@ -14201,7 +14201,7 @@ export interface GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse> =
+export const GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qaQuestions: Schema.optional(
       Schema.Array(GoogleCloudContactcenterinsightsV1QaQuestion),
@@ -14216,7 +14216,7 @@ export interface GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsRespo
   currentStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse> =
+export const GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentStats: Schema.optional(
       GoogleCloudContactcenterinsightsV1IssueModelLabelStats,
@@ -14235,7 +14235,7 @@ export interface GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1CreateIssueModelRequest,
@@ -14248,7 +14248,7 @@ export const GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata: Schema.
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse",
@@ -14256,7 +14256,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse
 
 export interface GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse> =
+export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse",
@@ -14273,7 +14273,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMe
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest,
@@ -14288,7 +14288,7 @@ export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetada
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse",
@@ -14299,7 +14299,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata {
   resultIsTruncated?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata> =
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultIsTruncated: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -14315,7 +14315,7 @@ export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata 
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata> =
+export const GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata: Schema.Codec<GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     request: Schema.optional(
@@ -14329,7 +14329,7 @@ export const GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata: Sch
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse> =
+export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse: Schema.Codec<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse",
@@ -14400,7 +14400,7 @@ export const GetCorrelationConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCorrelationConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetCorrelationConfigProjectsLocationsRequest>;
 
 export type GetCorrelationConfigProjectsLocationsResponse =
   GoogleCloudContactcenterinsightsV1CorrelationConfig;
@@ -14444,7 +14444,7 @@ export const QueryPerformanceOverviewProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryPerformanceOverviewProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<QueryPerformanceOverviewProjectsLocationsRequest>;
 
 export type QueryPerformanceOverviewProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -14490,7 +14490,7 @@ export const BulkUploadFeedbackLabelsProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkUploadFeedbackLabelsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<BulkUploadFeedbackLabelsProjectsLocationsRequest>;
 
 export type BulkUploadFeedbackLabelsProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -14527,7 +14527,7 @@ export const GetEncryptionSpecProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEncryptionSpecProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetEncryptionSpecProjectsLocationsRequest>;
 
 export type GetEncryptionSpecProjectsLocationsResponse =
   GoogleCloudContactcenterinsightsV1EncryptionSpec;
@@ -14571,7 +14571,7 @@ export const QueryMetricsProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryMetricsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<QueryMetricsProjectsLocationsRequest>;
 
 export type QueryMetricsProjectsLocationsResponse = GoogleLongrunningOperation;
 export const QueryMetricsProjectsLocationsResponse =
@@ -14615,7 +14615,7 @@ export const UpdateCorrelationConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateCorrelationConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateCorrelationConfigProjectsLocationsRequest>;
 
 export type UpdateCorrelationConfigProjectsLocationsResponse =
   GoogleCloudContactcenterinsightsV1CorrelationConfig;
@@ -14661,7 +14661,7 @@ export const GenerativeInsightsProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerativeInsightsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GenerativeInsightsProjectsLocationsRequest>;
 
 export type GenerativeInsightsProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -14707,7 +14707,7 @@ export const TestCorrelationConfigProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestCorrelationConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<TestCorrelationConfigProjectsLocationsRequest>;
 
 export type TestCorrelationConfigProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -14752,7 +14752,7 @@ export const UpdateSettingsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSettingsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateSettingsProjectsLocationsRequest>;
 
 export type UpdateSettingsProjectsLocationsResponse =
   GoogleCloudContactcenterinsightsV1Settings;
@@ -14789,7 +14789,7 @@ export const GetSettingsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSettingsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetSettingsProjectsLocationsRequest>;
 
 export type GetSettingsProjectsLocationsResponse =
   GoogleCloudContactcenterinsightsV1Settings;
@@ -14833,7 +14833,7 @@ export const ListAllFeedbackLabelsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:listAllFeedbackLabels" }),
     svc,
-  ) as unknown as Schema.Schema<ListAllFeedbackLabelsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListAllFeedbackLabelsProjectsLocationsRequest>;
 
 export type ListAllFeedbackLabelsProjectsLocationsResponse =
   GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse;
@@ -14881,7 +14881,7 @@ export const BulkDownloadFeedbackLabelsProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkDownloadFeedbackLabelsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<BulkDownloadFeedbackLabelsProjectsLocationsRequest>;
 
 export type BulkDownloadFeedbackLabelsProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -14927,7 +14927,7 @@ export const BulkDeleteFeedbackLabelsProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkDeleteFeedbackLabelsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteFeedbackLabelsProjectsLocationsRequest>;
 
 export type BulkDeleteFeedbackLabelsProjectsLocationsResponse =
   GoogleLongrunningOperation;
@@ -14969,7 +14969,7 @@ export const UndeployProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:undeploy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeployProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<UndeployProjectsLocationsIssueModelsRequest>;
 
 export type UndeployProjectsLocationsIssueModelsResponse =
   GoogleLongrunningOperation;
@@ -15011,7 +15011,7 @@ export const CreateProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/issueModels", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsIssueModelsRequest>;
 
 export type CreateProjectsLocationsIssueModelsResponse =
   GoogleLongrunningOperation;
@@ -15056,7 +15056,7 @@ export const PatchProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsIssueModelsRequest>;
 
 export type PatchProjectsLocationsIssueModelsResponse =
   GoogleCloudContactcenterinsightsV1IssueModel;
@@ -15096,7 +15096,7 @@ export const CalculateIssueModelStatsProjectsLocationsIssueModelsRequest =
       path: "v1/{+issueModel}:calculateIssueModelStats",
     }),
     svc,
-  ) as unknown as Schema.Schema<CalculateIssueModelStatsProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<CalculateIssueModelStatsProjectsLocationsIssueModelsRequest>;
 
 export type CalculateIssueModelStatsProjectsLocationsIssueModelsResponse =
   GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse;
@@ -15131,7 +15131,7 @@ export const GetProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsIssueModelsRequest>;
 
 export type GetProjectsLocationsIssueModelsResponse =
   GoogleCloudContactcenterinsightsV1IssueModel;
@@ -15166,7 +15166,7 @@ export const DeleteProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsIssueModelsRequest>;
 
 export type DeleteProjectsLocationsIssueModelsResponse =
   GoogleLongrunningOperation;
@@ -15208,7 +15208,7 @@ export const ExportProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:export", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsIssueModelsRequest>;
 
 export type ExportProjectsLocationsIssueModelsResponse =
   GoogleLongrunningOperation;
@@ -15254,7 +15254,7 @@ export const ImportProjectsLocationsIssueModelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsIssueModelsRequest>;
 
 export type ImportProjectsLocationsIssueModelsResponse =
   GoogleLongrunningOperation;
@@ -15291,7 +15291,7 @@ export const ListProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/issueModels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIssueModelsRequest>;
 
 export type ListProjectsLocationsIssueModelsResponse =
   GoogleCloudContactcenterinsightsV1ListIssueModelsResponse;
@@ -15331,7 +15331,7 @@ export const DeployProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:deploy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeployProjectsLocationsIssueModelsRequest>;
+  ) as unknown as Schema.Codec<DeployProjectsLocationsIssueModelsRequest>;
 
 export type DeployProjectsLocationsIssueModelsResponse =
   GoogleLongrunningOperation;
@@ -15376,7 +15376,7 @@ export const PatchProjectsLocationsIssueModelsIssuesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsIssueModelsIssuesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsIssueModelsIssuesRequest>;
 
 export type PatchProjectsLocationsIssueModelsIssuesResponse =
   GoogleCloudContactcenterinsightsV1Issue;
@@ -15418,7 +15418,7 @@ export const CreateProjectsLocationsIssueModelsIssuesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/issues", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsIssueModelsIssuesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsIssueModelsIssuesRequest>;
 
 export type CreateProjectsLocationsIssueModelsIssuesResponse =
   GoogleLongrunningOperation;
@@ -15455,7 +15455,7 @@ export const GetProjectsLocationsIssueModelsIssuesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsIssueModelsIssuesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsIssueModelsIssuesRequest>;
 
 export type GetProjectsLocationsIssueModelsIssuesResponse =
   GoogleCloudContactcenterinsightsV1Issue;
@@ -15490,7 +15490,7 @@ export const ListProjectsLocationsIssueModelsIssuesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/issues" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIssueModelsIssuesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIssueModelsIssuesRequest>;
 
 export type ListProjectsLocationsIssueModelsIssuesResponse =
   GoogleCloudContactcenterinsightsV1ListIssuesResponse;
@@ -15525,7 +15525,7 @@ export const DeleteProjectsLocationsIssueModelsIssuesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsIssueModelsIssuesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsIssueModelsIssuesRequest>;
 
 export type DeleteProjectsLocationsIssueModelsIssuesResponse =
   GoogleProtobufEmpty;
@@ -15572,7 +15572,7 @@ export const CreateProjectsLocationsDashboardsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/dashboards", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDashboardsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDashboardsRequest>;
 
 export type CreateProjectsLocationsDashboardsResponse =
   GoogleCloudContactcenterinsightsV1Dashboard;
@@ -15617,7 +15617,7 @@ export const PatchProjectsLocationsDashboardsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDashboardsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDashboardsRequest>;
 
 export type PatchProjectsLocationsDashboardsResponse =
   GoogleCloudContactcenterinsightsV1Dashboard;
@@ -15654,7 +15654,7 @@ export const GetProjectsLocationsDashboardsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDashboardsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDashboardsRequest>;
 
 export type GetProjectsLocationsDashboardsResponse =
   GoogleCloudContactcenterinsightsV1Dashboard;
@@ -15701,7 +15701,7 @@ export const ListProjectsLocationsDashboardsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dashboards" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDashboardsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDashboardsRequest>;
 
 export type ListProjectsLocationsDashboardsResponse =
   GoogleCloudContactcenterinsightsV1ListDashboardsResponse;
@@ -15740,7 +15740,7 @@ export const DeleteProjectsLocationsDashboardsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDashboardsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDashboardsRequest>;
 
 export type DeleteProjectsLocationsDashboardsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsDashboardsResponse =
@@ -15776,7 +15776,7 @@ export const GetProjectsLocationsDashboardsChartsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDashboardsChartsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDashboardsChartsRequest>;
 
 export type GetProjectsLocationsDashboardsChartsResponse =
   GoogleCloudContactcenterinsightsV1Chart;
@@ -15811,7 +15811,7 @@ export const ListProjectsLocationsDashboardsChartsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/charts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDashboardsChartsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDashboardsChartsRequest>;
 
 export type ListProjectsLocationsDashboardsChartsResponse =
   GoogleCloudContactcenterinsightsV1ListChartsResponse;
@@ -15846,7 +15846,7 @@ export const DeleteProjectsLocationsDashboardsChartsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDashboardsChartsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDashboardsChartsRequest>;
 
 export type DeleteProjectsLocationsDashboardsChartsResponse =
   GoogleProtobufEmpty;
@@ -15891,7 +15891,7 @@ export const CreateProjectsLocationsDashboardsChartsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/charts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDashboardsChartsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDashboardsChartsRequest>;
 
 export type CreateProjectsLocationsDashboardsChartsResponse =
   GoogleCloudContactcenterinsightsV1Chart;
@@ -15936,7 +15936,7 @@ export const PatchProjectsLocationsDashboardsChartsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDashboardsChartsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDashboardsChartsRequest>;
 
 export type PatchProjectsLocationsDashboardsChartsResponse =
   GoogleCloudContactcenterinsightsV1Chart;
@@ -15987,7 +15987,7 @@ export const CreateProjectsLocationsQaQuestionTagsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsQaQuestionTagsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsQaQuestionTagsRequest>;
 
 export type CreateProjectsLocationsQaQuestionTagsResponse =
   GoogleCloudContactcenterinsightsV1QaQuestionTag;
@@ -16032,7 +16032,7 @@ export const PatchProjectsLocationsQaQuestionTagsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsQaQuestionTagsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsQaQuestionTagsRequest>;
 
 export type PatchProjectsLocationsQaQuestionTagsResponse =
   GoogleLongrunningOperation;
@@ -16069,7 +16069,7 @@ export const GetProjectsLocationsQaQuestionTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsQaQuestionTagsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsQaQuestionTagsRequest>;
 
 export type GetProjectsLocationsQaQuestionTagsResponse =
   GoogleCloudContactcenterinsightsV1QaQuestionTag;
@@ -16104,7 +16104,7 @@ export const DeleteProjectsLocationsQaQuestionTagsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsQaQuestionTagsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsQaQuestionTagsRequest>;
 
 export type DeleteProjectsLocationsQaQuestionTagsResponse =
   GoogleLongrunningOperation;
@@ -16144,7 +16144,7 @@ export const ListProjectsLocationsQaQuestionTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/qaQuestionTags" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsQaQuestionTagsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsQaQuestionTagsRequest>;
 
 export type ListProjectsLocationsQaQuestionTagsResponse =
   GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse;
@@ -16193,7 +16193,7 @@ export const CreateProjectsLocationsAutoLabelingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAutoLabelingRulesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAutoLabelingRulesRequest>;
 
 export type CreateProjectsLocationsAutoLabelingRulesResponse =
   GoogleCloudContactcenterinsightsV1AutoLabelingRule;
@@ -16238,7 +16238,7 @@ export const PatchProjectsLocationsAutoLabelingRulesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAutoLabelingRulesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAutoLabelingRulesRequest>;
 
 export type PatchProjectsLocationsAutoLabelingRulesResponse =
   GoogleCloudContactcenterinsightsV1AutoLabelingRule;
@@ -16284,7 +16284,7 @@ export const TestProjectsLocationsAutoLabelingRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestProjectsLocationsAutoLabelingRulesRequest>;
+  ) as unknown as Schema.Codec<TestProjectsLocationsAutoLabelingRulesRequest>;
 
 export type TestProjectsLocationsAutoLabelingRulesResponse =
   GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse;
@@ -16327,7 +16327,7 @@ export const ListProjectsLocationsAutoLabelingRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/autoLabelingRules" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAutoLabelingRulesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAutoLabelingRulesRequest>;
 
 export type ListProjectsLocationsAutoLabelingRulesResponse =
   GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse;
@@ -16366,7 +16366,7 @@ export const GetProjectsLocationsAutoLabelingRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAutoLabelingRulesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAutoLabelingRulesRequest>;
 
 export type GetProjectsLocationsAutoLabelingRulesResponse =
   GoogleCloudContactcenterinsightsV1AutoLabelingRule;
@@ -16401,7 +16401,7 @@ export const DeleteProjectsLocationsAutoLabelingRulesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAutoLabelingRulesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAutoLabelingRulesRequest>;
 
 export type DeleteProjectsLocationsAutoLabelingRulesResponse =
   GoogleProtobufEmpty;
@@ -16452,7 +16452,7 @@ export const CreateProjectsLocationsQaScorecardsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsQaScorecardsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsQaScorecardsRequest>;
 
 export type CreateProjectsLocationsQaScorecardsResponse =
   GoogleCloudContactcenterinsightsV1QaScorecard;
@@ -16497,7 +16497,7 @@ export const PatchProjectsLocationsQaScorecardsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsQaScorecardsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsQaScorecardsRequest>;
 
 export type PatchProjectsLocationsQaScorecardsResponse =
   GoogleCloudContactcenterinsightsV1QaScorecard;
@@ -16534,7 +16534,7 @@ export const GetProjectsLocationsQaScorecardsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsQaScorecardsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsQaScorecardsRequest>;
 
 export type GetProjectsLocationsQaScorecardsResponse =
   GoogleCloudContactcenterinsightsV1QaScorecard;
@@ -16572,7 +16572,7 @@ export const DeleteProjectsLocationsQaScorecardsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsQaScorecardsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsQaScorecardsRequest>;
 
 export type DeleteProjectsLocationsQaScorecardsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsQaScorecardsResponse =
@@ -16623,7 +16623,7 @@ export const ListProjectsLocationsQaScorecardsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/qaScorecards" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsQaScorecardsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsQaScorecardsRequest>;
 
 export type ListProjectsLocationsQaScorecardsResponse =
   GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse;
@@ -16662,7 +16662,7 @@ export const GetProjectsLocationsQaScorecardsRevisionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsQaScorecardsRevisionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type GetProjectsLocationsQaScorecardsRevisionsResponse =
   GoogleCloudContactcenterinsightsV1QaScorecardRevision;
@@ -16706,7 +16706,7 @@ export const TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsReques
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest>;
+  ) as unknown as Schema.Codec<TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsResponse =
   GoogleLongrunningOperation;
@@ -16714,7 +16714,11 @@ export const TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Fine tune one or more QaModels. */
 export const tuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisions: API.OperationMethod<
@@ -16744,7 +16748,7 @@ export const DeployProjectsLocationsQaScorecardsRevisionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:deploy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeployProjectsLocationsQaScorecardsRevisionsRequest>;
+  ) as unknown as Schema.Codec<DeployProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type DeployProjectsLocationsQaScorecardsRevisionsResponse =
   GoogleCloudContactcenterinsightsV1QaScorecardRevision;
@@ -16784,7 +16788,7 @@ export const DeleteProjectsLocationsQaScorecardsRevisionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsQaScorecardsRevisionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type DeleteProjectsLocationsQaScorecardsRevisionsResponse =
   GoogleProtobufEmpty;
@@ -16839,7 +16843,7 @@ export const ListProjectsLocationsQaScorecardsRevisionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/revisions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsQaScorecardsRevisionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type ListProjectsLocationsQaScorecardsRevisionsResponse =
   GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse;
@@ -16888,7 +16892,7 @@ export const CreateProjectsLocationsQaScorecardsRevisionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/revisions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsQaScorecardsRevisionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type CreateProjectsLocationsQaScorecardsRevisionsResponse =
   GoogleCloudContactcenterinsightsV1QaScorecardRevision;
@@ -16930,7 +16934,7 @@ export const UndeployProjectsLocationsQaScorecardsRevisionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:undeploy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeployProjectsLocationsQaScorecardsRevisionsRequest>;
+  ) as unknown as Schema.Codec<UndeployProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type UndeployProjectsLocationsQaScorecardsRevisionsResponse =
   GoogleCloudContactcenterinsightsV1QaScorecardRevision;
@@ -16977,7 +16981,7 @@ export const CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/qaQuestions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export type CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsResponse =
   GoogleCloudContactcenterinsightsV1QaQuestion;
@@ -17022,7 +17026,7 @@ export const PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export type PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsResponse =
   GoogleCloudContactcenterinsightsV1QaQuestion;
@@ -17059,7 +17063,7 @@ export const GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export type GetProjectsLocationsQaScorecardsRevisionsQaQuestionsResponse =
   GoogleCloudContactcenterinsightsV1QaQuestion;
@@ -17094,7 +17098,7 @@ export const DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export type DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsResponse =
   GoogleProtobufEmpty;
@@ -17137,7 +17141,7 @@ export const ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/qaQuestions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export type ListProjectsLocationsQaScorecardsRevisionsQaQuestionsResponse =
   GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse;
@@ -17176,7 +17180,7 @@ export const GetProjectsLocationsPhraseMatchersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsPhraseMatchersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsPhraseMatchersRequest>;
 
 export type GetProjectsLocationsPhraseMatchersResponse =
   GoogleCloudContactcenterinsightsV1PhraseMatcher;
@@ -17220,7 +17224,7 @@ export const ListProjectsLocationsPhraseMatchersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/phraseMatchers" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsPhraseMatchersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsPhraseMatchersRequest>;
 
 export type ListProjectsLocationsPhraseMatchersResponse =
   GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse;
@@ -17259,7 +17263,7 @@ export const DeleteProjectsLocationsPhraseMatchersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsPhraseMatchersRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsPhraseMatchersRequest>;
 
 export type DeleteProjectsLocationsPhraseMatchersResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsPhraseMatchersResponse =
@@ -17304,7 +17308,7 @@ export const CreateProjectsLocationsPhraseMatchersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsPhraseMatchersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsPhraseMatchersRequest>;
 
 export type CreateProjectsLocationsPhraseMatchersResponse =
   GoogleCloudContactcenterinsightsV1PhraseMatcher;
@@ -17349,7 +17353,7 @@ export const PatchProjectsLocationsPhraseMatchersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsPhraseMatchersRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsPhraseMatchersRequest>;
 
 export type PatchProjectsLocationsPhraseMatchersResponse =
   GoogleCloudContactcenterinsightsV1PhraseMatcher;
@@ -17395,7 +17399,7 @@ export const ListProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/datasets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsRequest>;
 
 export type ListProjectsLocationsDatasetsResponse =
   GoogleCloudContactcenterinsightsV1ListDatasetsResponse;
@@ -17443,7 +17447,7 @@ export const BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest>;
 
 export type BulkUploadFeedbackLabelsProjectsLocationsDatasetsResponse =
   GoogleLongrunningOperation;
@@ -17489,7 +17493,7 @@ export const BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest>;
 
 export type BulkDeleteFeedbackLabelsProjectsLocationsDatasetsResponse =
   GoogleLongrunningOperation;
@@ -17534,7 +17538,7 @@ export const CreateProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/datasets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsRequest>;
 
 export type CreateProjectsLocationsDatasetsResponse =
   GoogleCloudContactcenterinsightsV1Dataset;
@@ -17579,7 +17583,7 @@ export const PatchProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsRequest>;
 
 export type PatchProjectsLocationsDatasetsResponse =
   GoogleCloudContactcenterinsightsV1Dataset;
@@ -17625,7 +17629,7 @@ export const ListAllFeedbackLabelsProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:listAllFeedbackLabels" }),
     svc,
-  ) as unknown as Schema.Schema<ListAllFeedbackLabelsProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<ListAllFeedbackLabelsProjectsLocationsDatasetsRequest>;
 
 export type ListAllFeedbackLabelsProjectsLocationsDatasetsResponse =
   GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse;
@@ -17673,7 +17677,7 @@ export const BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest>;
 
 export type BulkDownloadFeedbackLabelsProjectsLocationsDatasetsResponse =
   GoogleLongrunningOperation;
@@ -17710,7 +17714,7 @@ export const GetProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsRequest>;
 
 export type GetProjectsLocationsDatasetsResponse =
   GoogleCloudContactcenterinsightsV1Dataset;
@@ -17745,7 +17749,7 @@ export const DeleteProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsRequest>;
 
 export type DeleteProjectsLocationsDatasetsResponse =
   GoogleLongrunningOperation;
@@ -17791,7 +17795,7 @@ export const ExportProjectsLocationsDatasetsInsightsdataRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsDatasetsInsightsdataRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsDatasetsInsightsdataRequest>;
 
 export type ExportProjectsLocationsDatasetsInsightsdataResponse =
   GoogleLongrunningOperation;
@@ -17831,7 +17835,7 @@ export const GetProjectsLocationsDatasetsConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConversationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsConversationsRequest>;
 
 export type GetProjectsLocationsDatasetsConversationsResponse =
   GoogleCloudContactcenterinsightsV1Conversation;
@@ -17881,7 +17885,7 @@ export const ListProjectsLocationsDatasetsConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/conversations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConversationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsConversationsRequest>;
 
 export type ListProjectsLocationsDatasetsConversationsResponse =
   GoogleCloudContactcenterinsightsV1ListConversationsResponse;
@@ -17923,7 +17927,7 @@ export const DeleteProjectsLocationsDatasetsConversationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConversationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsConversationsRequest>;
 
 export type DeleteProjectsLocationsDatasetsConversationsResponse =
   GoogleProtobufEmpty;
@@ -17969,7 +17973,7 @@ export const IngestProjectsLocationsDatasetsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<IngestProjectsLocationsDatasetsConversationsRequest>;
+  ) as unknown as Schema.Codec<IngestProjectsLocationsDatasetsConversationsRequest>;
 
 export type IngestProjectsLocationsDatasetsConversationsResponse =
   GoogleLongrunningOperation;
@@ -18015,7 +18019,7 @@ export const CalculateStatsProjectsLocationsDatasetsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CalculateStatsProjectsLocationsDatasetsConversationsRequest>;
+  ) as unknown as Schema.Codec<CalculateStatsProjectsLocationsDatasetsConversationsRequest>;
 
 export type CalculateStatsProjectsLocationsDatasetsConversationsResponse =
   GoogleCloudContactcenterinsightsV1CalculateStatsResponse;
@@ -18052,7 +18056,7 @@ export const GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:generateSignedAudio" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest>;
+  ) as unknown as Schema.Codec<GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest>;
 
 export type GenerateSignedAudioProjectsLocationsDatasetsConversationsResponse =
   GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse;
@@ -18096,7 +18100,7 @@ export const SampleProjectsLocationsDatasetsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SampleProjectsLocationsDatasetsConversationsRequest>;
+  ) as unknown as Schema.Codec<SampleProjectsLocationsDatasetsConversationsRequest>;
 
 export type SampleProjectsLocationsDatasetsConversationsResponse =
   GoogleLongrunningOperation;
@@ -18142,7 +18146,7 @@ export const BulkDeleteProjectsLocationsDatasetsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkDeleteProjectsLocationsDatasetsConversationsRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteProjectsLocationsDatasetsConversationsRequest>;
 
 export type BulkDeleteProjectsLocationsDatasetsConversationsResponse =
   GoogleLongrunningOperation;
@@ -18188,7 +18192,7 @@ export const ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/feedbackLabels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export type ListProjectsLocationsDatasetsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse;
@@ -18227,7 +18231,7 @@ export const GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export type GetProjectsLocationsDatasetsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -18262,7 +18266,7 @@ export const DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export type DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsResponse =
   GoogleProtobufEmpty;
@@ -18313,7 +18317,7 @@ export const CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export type CreateProjectsLocationsDatasetsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -18358,7 +18362,7 @@ export const PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export type PatchProjectsLocationsDatasetsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -18395,7 +18399,7 @@ export const GetProjectsLocationsAssessmentRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAssessmentRulesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAssessmentRulesRequest>;
 
 export type GetProjectsLocationsAssessmentRulesResponse =
   GoogleCloudContactcenterinsightsV1AssessmentRule;
@@ -18436,7 +18440,7 @@ export const ListProjectsLocationsAssessmentRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/assessmentRules" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAssessmentRulesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAssessmentRulesRequest>;
 
 export type ListProjectsLocationsAssessmentRulesResponse =
   GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse;
@@ -18475,7 +18479,7 @@ export const DeleteProjectsLocationsAssessmentRulesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAssessmentRulesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAssessmentRulesRequest>;
 
 export type DeleteProjectsLocationsAssessmentRulesResponse =
   GoogleProtobufEmpty;
@@ -18526,7 +18530,7 @@ export const CreateProjectsLocationsAssessmentRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAssessmentRulesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAssessmentRulesRequest>;
 
 export type CreateProjectsLocationsAssessmentRulesResponse =
   GoogleCloudContactcenterinsightsV1AssessmentRule;
@@ -18571,7 +18575,7 @@ export const PatchProjectsLocationsAssessmentRulesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAssessmentRulesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAssessmentRulesRequest>;
 
 export type PatchProjectsLocationsAssessmentRulesResponse =
   GoogleCloudContactcenterinsightsV1AssessmentRule;
@@ -18622,7 +18626,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -18661,7 +18665,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -18695,7 +18699,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -18731,7 +18735,7 @@ export const GenerateSignedAudioProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:generateSignedAudio" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateSignedAudioProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<GenerateSignedAudioProjectsLocationsConversationsRequest>;
 
 export type GenerateSignedAudioProjectsLocationsConversationsResponse =
   GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse;
@@ -18769,7 +18773,7 @@ export const GetProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConversationsRequest>;
 
 export type GetProjectsLocationsConversationsResponse =
   GoogleCloudContactcenterinsightsV1Conversation;
@@ -18807,7 +18811,7 @@ export const DeleteProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConversationsRequest>;
 
 export type DeleteProjectsLocationsConversationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsConversationsResponse =
@@ -18852,7 +18856,7 @@ export const IngestProjectsLocationsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<IngestProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<IngestProjectsLocationsConversationsRequest>;
 
 export type IngestProjectsLocationsConversationsResponse =
   GoogleLongrunningOperation;
@@ -18903,7 +18907,7 @@ export const CreateProjectsLocationsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConversationsRequest>;
 
 export type CreateProjectsLocationsConversationsResponse =
   GoogleCloudContactcenterinsightsV1Conversation;
@@ -18961,7 +18965,7 @@ export const PatchProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConversationsRequest>;
 
 export type PatchProjectsLocationsConversationsResponse =
   GoogleCloudContactcenterinsightsV1Conversation;
@@ -19007,7 +19011,7 @@ export const BulkAnalyzeProjectsLocationsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkAnalyzeProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<BulkAnalyzeProjectsLocationsConversationsRequest>;
 
 export type BulkAnalyzeProjectsLocationsConversationsResponse =
   GoogleLongrunningOperation;
@@ -19053,7 +19057,7 @@ export const SampleProjectsLocationsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SampleProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<SampleProjectsLocationsConversationsRequest>;
 
 export type SampleProjectsLocationsConversationsResponse =
   GoogleLongrunningOperation;
@@ -19105,7 +19109,7 @@ export const ListProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/conversations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConversationsRequest>;
 
 export type ListProjectsLocationsConversationsResponse =
   GoogleCloudContactcenterinsightsV1ListConversationsResponse;
@@ -19150,7 +19154,7 @@ export const CalculateStatsProjectsLocationsConversationsRequest =
       path: "v1/{+location}/conversations:calculateStats",
     }),
     svc,
-  ) as unknown as Schema.Schema<CalculateStatsProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<CalculateStatsProjectsLocationsConversationsRequest>;
 
 export type CalculateStatsProjectsLocationsConversationsResponse =
   GoogleCloudContactcenterinsightsV1CalculateStatsResponse;
@@ -19194,7 +19198,7 @@ export const UploadProjectsLocationsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsConversationsRequest>;
 
 export type UploadProjectsLocationsConversationsResponse =
   GoogleLongrunningOperation;
@@ -19240,7 +19244,7 @@ export const BulkDeleteProjectsLocationsConversationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkDeleteProjectsLocationsConversationsRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteProjectsLocationsConversationsRequest>;
 
 export type BulkDeleteProjectsLocationsConversationsResponse =
   GoogleLongrunningOperation;
@@ -19286,7 +19290,7 @@ export const BulkAnalyzeProjectsLocationsConversationsSegmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BulkAnalyzeProjectsLocationsConversationsSegmentsRequest>;
+  ) as unknown as Schema.Codec<BulkAnalyzeProjectsLocationsConversationsSegmentsRequest>;
 
 export type BulkAnalyzeProjectsLocationsConversationsSegmentsResponse =
   GoogleLongrunningOperation;
@@ -19332,7 +19336,7 @@ export const ListProjectsLocationsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/feedbackLabels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConversationsFeedbackLabelsRequest>;
 
 export type ListProjectsLocationsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse;
@@ -19371,7 +19375,7 @@ export const GetProjectsLocationsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConversationsFeedbackLabelsRequest>;
 
 export type GetProjectsLocationsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -19406,7 +19410,7 @@ export const DeleteProjectsLocationsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConversationsFeedbackLabelsRequest>;
 
 export type DeleteProjectsLocationsConversationsFeedbackLabelsResponse =
   GoogleProtobufEmpty;
@@ -19457,7 +19461,7 @@ export const CreateProjectsLocationsConversationsFeedbackLabelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConversationsFeedbackLabelsRequest>;
 
 export type CreateProjectsLocationsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -19502,7 +19506,7 @@ export const PatchProjectsLocationsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConversationsFeedbackLabelsRequest>;
 
 export type PatchProjectsLocationsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -19544,7 +19548,7 @@ export const PublishProjectsLocationsConversationsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:publish", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PublishProjectsLocationsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<PublishProjectsLocationsConversationsAssessmentsRequest>;
 
 export type PublishProjectsLocationsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -19581,7 +19585,7 @@ export const GetProjectsLocationsConversationsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConversationsAssessmentsRequest>;
 
 export type GetProjectsLocationsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -19625,7 +19629,7 @@ export const ListProjectsLocationsConversationsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/assessments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConversationsAssessmentsRequest>;
 
 export type ListProjectsLocationsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1ListAssessmentsResponse;
@@ -19667,7 +19671,7 @@ export const DeleteProjectsLocationsConversationsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConversationsAssessmentsRequest>;
 
 export type DeleteProjectsLocationsConversationsAssessmentsResponse =
   GoogleProtobufEmpty;
@@ -19709,7 +19713,7 @@ export const FinalizeProjectsLocationsConversationsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:finalize", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<FinalizeProjectsLocationsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<FinalizeProjectsLocationsConversationsAssessmentsRequest>;
 
 export type FinalizeProjectsLocationsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -19751,7 +19755,7 @@ export const AppealProjectsLocationsConversationsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:appeal", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AppealProjectsLocationsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<AppealProjectsLocationsConversationsAssessmentsRequest>;
 
 export type AppealProjectsLocationsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -19793,7 +19797,7 @@ export const CreateProjectsLocationsConversationsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/assessments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConversationsAssessmentsRequest>;
 
 export type CreateProjectsLocationsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -19835,7 +19839,7 @@ export const CreateProjectsLocationsConversationsAssessmentsNotesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/notes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConversationsAssessmentsNotesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConversationsAssessmentsNotesRequest>;
 
 export type CreateProjectsLocationsConversationsAssessmentsNotesResponse =
   GoogleCloudContactcenterinsightsV1Note;
@@ -19878,7 +19882,7 @@ export const ListProjectsLocationsConversationsAssessmentsNotesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/notes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConversationsAssessmentsNotesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConversationsAssessmentsNotesRequest>;
 
 export type ListProjectsLocationsConversationsAssessmentsNotesResponse =
   GoogleCloudContactcenterinsightsV1ListNotesResponse;
@@ -19925,7 +19929,7 @@ export const PatchProjectsLocationsConversationsAssessmentsNotesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConversationsAssessmentsNotesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConversationsAssessmentsNotesRequest>;
 
 export type PatchProjectsLocationsConversationsAssessmentsNotesResponse =
   GoogleCloudContactcenterinsightsV1Note;
@@ -19962,7 +19966,7 @@ export const DeleteProjectsLocationsConversationsAssessmentsNotesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsAssessmentsNotesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConversationsAssessmentsNotesRequest>;
 
 export type DeleteProjectsLocationsConversationsAssessmentsNotesResponse =
   GoogleProtobufEmpty;
@@ -20004,7 +20008,7 @@ export const CreateProjectsLocationsConversationsAnalysesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/analyses", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConversationsAnalysesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConversationsAnalysesRequest>;
 
 export type CreateProjectsLocationsConversationsAnalysesResponse =
   GoogleLongrunningOperation;
@@ -20041,7 +20045,7 @@ export const GetProjectsLocationsConversationsAnalysesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConversationsAnalysesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConversationsAnalysesRequest>;
 
 export type GetProjectsLocationsConversationsAnalysesResponse =
   GoogleCloudContactcenterinsightsV1Analysis;
@@ -20085,7 +20089,7 @@ export const ListProjectsLocationsConversationsAnalysesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/analyses" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConversationsAnalysesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConversationsAnalysesRequest>;
 
 export type ListProjectsLocationsConversationsAnalysesResponse =
   GoogleCloudContactcenterinsightsV1ListAnalysesResponse;
@@ -20124,7 +20128,7 @@ export const DeleteProjectsLocationsConversationsAnalysesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsAnalysesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConversationsAnalysesRequest>;
 
 export type DeleteProjectsLocationsConversationsAnalysesResponse =
   GoogleProtobufEmpty;
@@ -20166,7 +20170,7 @@ export const CreateProjectsLocationsViewsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/views", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsViewsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsViewsRequest>;
 
 export type CreateProjectsLocationsViewsResponse =
   GoogleCloudContactcenterinsightsV1View;
@@ -20211,7 +20215,7 @@ export const PatchProjectsLocationsViewsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsViewsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsViewsRequest>;
 
 export type PatchProjectsLocationsViewsResponse =
   GoogleCloudContactcenterinsightsV1View;
@@ -20248,7 +20252,7 @@ export const GetProjectsLocationsViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsViewsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsViewsRequest>;
 
 export type GetProjectsLocationsViewsResponse =
   GoogleCloudContactcenterinsightsV1View;
@@ -20289,7 +20293,7 @@ export const ListProjectsLocationsViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/views" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsViewsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsViewsRequest>;
 
 export type ListProjectsLocationsViewsResponse =
   GoogleCloudContactcenterinsightsV1ListViewsResponse;
@@ -20328,7 +20332,7 @@ export const DeleteProjectsLocationsViewsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsViewsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsViewsRequest>;
 
 export type DeleteProjectsLocationsViewsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsViewsResponse =
@@ -20373,7 +20377,7 @@ export const ExportProjectsLocationsInsightsdataRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportProjectsLocationsInsightsdataRequest>;
+  ) as unknown as Schema.Codec<ExportProjectsLocationsInsightsdataRequest>;
 
 export type ExportProjectsLocationsInsightsdataResponse =
   GoogleLongrunningOperation;
@@ -20415,7 +20419,7 @@ export const InitializeProjectsLocationsEncryptionSpecRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:initialize", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InitializeProjectsLocationsEncryptionSpecRequest>;
+  ) as unknown as Schema.Codec<InitializeProjectsLocationsEncryptionSpecRequest>;
 
 export type InitializeProjectsLocationsEncryptionSpecResponse =
   GoogleLongrunningOperation;
@@ -20452,7 +20456,7 @@ export const GetProjectsLocationsAuthorizedViewSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAuthorizedViewSetsRequest>;
 
 export type GetProjectsLocationsAuthorizedViewSetsResponse =
   GoogleCloudContactcenterinsightsV1AuthorizedViewSet;
@@ -20499,7 +20503,7 @@ export const ListProjectsLocationsAuthorizedViewSetsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/authorizedViewSets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthorizedViewSetsRequest>;
 
 export type ListProjectsLocationsAuthorizedViewSetsResponse =
   GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse;
@@ -20541,7 +20545,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAuthorizedViewSetsRequest>;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsResponse =
   GoogleProtobufEmpty;
@@ -20592,7 +20596,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAuthorizedViewSetsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAuthorizedViewSetsRequest>;
 
 export type CreateProjectsLocationsAuthorizedViewSetsResponse =
   GoogleCloudContactcenterinsightsV1AuthorizedViewSet;
@@ -20637,7 +20641,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizedViewSetsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAuthorizedViewSetsRequest>;
 
 export type PatchProjectsLocationsAuthorizedViewSetsResponse =
   GoogleCloudContactcenterinsightsV1AuthorizedViewSet;
@@ -20674,7 +20678,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleCloudContactcenterinsightsV1AuthorizedView;
@@ -20709,7 +20713,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleProtobufEmpty;
@@ -20753,7 +20757,7 @@ export const SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleIamV1Policy;
@@ -20761,7 +20765,11 @@ export const SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -20792,7 +20800,7 @@ export const GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsReque
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleIamV1Policy;
@@ -20800,7 +20808,9 @@ export const GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -20840,7 +20850,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleCloudContactcenterinsightsV1AuthorizedView;
@@ -20889,7 +20899,7 @@ export const SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/authorizedViews:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse;
@@ -20936,7 +20946,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleCloudContactcenterinsightsV1AuthorizedView;
@@ -20982,7 +20992,7 @@ export const TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedView
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -20990,7 +21000,11 @@ export const TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedView
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -21029,7 +21043,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/authorizedViews" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse;
@@ -21077,7 +21091,7 @@ export const GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedView
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleLongrunningOperation;
@@ -21085,7 +21099,11 @@ export const GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedView
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics. */
 export const generativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -21121,7 +21139,7 @@ export const QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthoriz
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleLongrunningOperation;
@@ -21129,7 +21147,11 @@ export const QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthoriz
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period. */
 export const queryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -21165,7 +21187,7 @@ export const QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsResponse =
   GoogleLongrunningOperation;
@@ -21173,7 +21195,11 @@ export const QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Query metrics. */
 export const queryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.OperationMethod<
@@ -21199,7 +21225,7 @@ export const GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedVie
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:generateSignedAudio" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
+  ) as unknown as Schema.Codec<GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
 export type GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResponse =
   GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse;
@@ -21207,7 +21233,9 @@ export const GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedVie
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse;
 
 export type GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the signed URI for the audio for the given conversation. */
 export const generateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
@@ -21237,7 +21265,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsR
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResponse =
   GoogleCloudContactcenterinsightsV1Conversation;
@@ -21245,7 +21273,9 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Conversation;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a conversation. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
@@ -21287,7 +21317,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/conversations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResponse =
   GoogleCloudContactcenterinsightsV1ListConversationsResponse;
@@ -21295,7 +21325,9 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1ListConversationsResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists conversations. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.PaginatedOperationMethod<
@@ -21329,7 +21361,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResponse =
   GoogleProtobufEmpty;
@@ -21337,7 +21369,11 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a conversation. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
@@ -21370,7 +21406,7 @@ export const CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsCon
       path: "v1/{+location}/conversations:calculateStats",
     }),
     svc,
-  ) as unknown as Schema.Schema<CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
+  ) as unknown as Schema.Codec<CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
 export type CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResponse =
   GoogleCloudContactcenterinsightsV1CalculateStatsResponse;
@@ -21378,7 +21414,9 @@ export const CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsCon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1CalculateStatsResponse;
 
 export type CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets conversation statistics. */
 export const calculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations: API.OperationMethod<
@@ -21419,7 +21457,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -21427,7 +21465,11 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1FeedbackLabel;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create feedback label. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
@@ -21462,7 +21504,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -21470,7 +21512,11 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1FeedbackLabel;
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update feedback label. */
 export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
@@ -21506,7 +21552,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/feedbackLabels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse;
@@ -21514,7 +21560,9 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List feedback labels. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.PaginatedOperationMethod<
@@ -21545,7 +21593,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsF
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResponse =
   GoogleCloudContactcenterinsightsV1FeedbackLabel;
@@ -21553,7 +21601,9 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsF
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1FeedbackLabel;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get feedback label. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
@@ -21580,7 +21630,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsResponse =
   GoogleProtobufEmpty;
@@ -21588,7 +21638,11 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete feedback label. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabels: API.OperationMethod<
@@ -21615,7 +21669,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsA
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -21623,7 +21677,9 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsA
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get Assessment. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -21659,7 +21715,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/assessments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1ListAssessmentsResponse;
@@ -21667,7 +21723,9 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1ListAssessmentsResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List Assessments. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.PaginatedOperationMethod<
@@ -21701,7 +21759,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResponse =
   GoogleProtobufEmpty;
@@ -21709,7 +21767,11 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an Assessment. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -21741,7 +21803,7 @@ export const PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversati
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:publish", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
 export type PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -21749,7 +21811,11 @@ export const PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversati
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Publish an Assessment. */
 export const publishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -21781,7 +21847,7 @@ export const AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:appeal", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
 export type AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -21789,7 +21855,11 @@ export const AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Appeal an Assessment. */
 export const appealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -21821,7 +21891,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/assessments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -21829,7 +21899,11 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create Assessment. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -21861,7 +21935,7 @@ export const FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:finalize", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
 export type FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsResponse =
   GoogleCloudContactcenterinsightsV1Assessment;
@@ -21869,7 +21943,11 @@ export const FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Assessment;
 
 export type FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finalize an Assessment. */
 export const finalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments: API.OperationMethod<
@@ -21901,7 +21979,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/notes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesResponse =
   GoogleCloudContactcenterinsightsV1Note;
@@ -21909,7 +21987,11 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Note;
 
 export type CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create Note. */
 export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
@@ -21942,7 +22024,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/notes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesResponse =
   GoogleCloudContactcenterinsightsV1ListNotesResponse;
@@ -21950,7 +22032,9 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1ListNotesResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List Notes. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.PaginatedOperationMethod<
@@ -21989,7 +22073,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesResponse =
   GoogleCloudContactcenterinsightsV1Note;
@@ -21997,7 +22081,11 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContactcenterinsightsV1Note;
 
 export type PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update Note. */
 export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
@@ -22024,7 +22112,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesResponse =
   GoogleProtobufEmpty;
@@ -22032,7 +22120,11 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Note. */
 export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotes: API.OperationMethod<
@@ -22059,7 +22151,7 @@ export const CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsR
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
 
 export type CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResponse =
   GoogleProtobufEmpty;
@@ -22067,7 +22159,11 @@ export const CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.OperationMethod<
@@ -22108,7 +22204,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsReq
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -22116,7 +22212,9 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.PaginatedOperationMethod<
@@ -22147,7 +22245,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequ
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResponse =
   GoogleLongrunningOperation;
@@ -22155,7 +22253,9 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: API.OperationMethod<
@@ -22190,7 +22290,7 @@ export const CreateProjectsLocationsAnalysisRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAnalysisRulesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAnalysisRulesRequest>;
 
 export type CreateProjectsLocationsAnalysisRulesResponse =
   GoogleCloudContactcenterinsightsV1AnalysisRule;
@@ -22235,7 +22335,7 @@ export const PatchProjectsLocationsAnalysisRulesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAnalysisRulesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAnalysisRulesRequest>;
 
 export type PatchProjectsLocationsAnalysisRulesResponse =
   GoogleCloudContactcenterinsightsV1AnalysisRule;
@@ -22272,7 +22372,7 @@ export const GetProjectsLocationsAnalysisRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAnalysisRulesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAnalysisRulesRequest>;
 
 export type GetProjectsLocationsAnalysisRulesResponse =
   GoogleCloudContactcenterinsightsV1AnalysisRule;
@@ -22313,7 +22413,7 @@ export const ListProjectsLocationsAnalysisRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/analysisRules" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAnalysisRulesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAnalysisRulesRequest>;
 
 export type ListProjectsLocationsAnalysisRulesResponse =
   GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse;
@@ -22352,7 +22452,7 @@ export const DeleteProjectsLocationsAnalysisRulesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAnalysisRulesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAnalysisRulesRequest>;
 
 export type DeleteProjectsLocationsAnalysisRulesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAnalysisRulesResponse =

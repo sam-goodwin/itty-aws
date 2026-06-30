@@ -4,12 +4,29 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface NamespacesCheckAvailabilityInput {
+  subscriptionId: string;
+  id?: string;
+  name: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  isAvailiable?: boolean;
+  sku?: {
+    name: "Free" | "Basic" | "Standard";
+    tier?: string;
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+}
 export const NamespacesCheckAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -34,11 +51,22 @@ export const NamespacesCheckAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesCheckAvailabilityInput =
-  typeof NamespacesCheckAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCheckAvailabilityInput>;
 
 // Output Schema
+export interface NamespacesCheckAvailabilityOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesCheckAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -58,9 +86,7 @@ export const NamespacesCheckAvailabilityOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesCheckAvailabilityOutput =
-  typeof NamespacesCheckAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCheckAvailabilityOutput>;
 
 // The operation
 /**
@@ -76,6 +102,128 @@ export const NamespacesCheckAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  sku: {
+    name: "Free" | "Basic" | "Standard";
+    tier?: string;
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    name?: string;
+    provisioningState?:
+      | "Unknown"
+      | "InProgress"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Disabled";
+    status?: "Created" | "Creating" | "Suspended" | "Deleting";
+    enabled?: boolean;
+    critical?: boolean;
+    subscriptionId?: string;
+    region?: string;
+    metricId?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    namespaceType?: "Messaging" | "NotificationHub";
+    replicationRegion?:
+      | "Default"
+      | "WestUs2"
+      | "NorthEurope"
+      | "AustraliaEast"
+      | "BrazilSouth"
+      | "SouthEastAsia"
+      | "SouthAfricaNorth"
+      | "None";
+    zoneRedundancy?: "Disabled" | "Enabled";
+    networkAcls?: {
+      ipRules?: { ipMask: string; rights: ("Manage" | "Send" | "Listen")[] }[];
+      publicNetworkRule?: { rights: ("Manage" | "Send" | "Listen")[] };
+    };
+    pnsCredentials?: {
+      admCredential?: {
+        properties: {
+          clientId: string;
+          clientSecret: string | Redacted.Redacted<string>;
+          authTokenUrl: string;
+        };
+      };
+      apnsCredential?: {
+        properties: {
+          apnsCertificate?: string;
+          certificateKey?: string;
+          endpoint: string;
+          thumbprint?: string;
+          keyId?: string;
+          appName?: string;
+          appId?: string;
+          token?: string;
+        };
+      };
+      baiduCredential?: {
+        properties: {
+          baiduApiKey: string;
+          baiduEndPoint: string;
+          baiduSecretKey: string | Redacted.Redacted<string>;
+        };
+      };
+      browserCredential?: {
+        properties: {
+          subject: string;
+          vapidPrivateKey: string;
+          vapidPublicKey: string;
+        };
+      };
+      gcmCredential?: {
+        properties: { gcmEndpoint?: string; googleApiKey: string };
+      };
+      mpnsCredential?: {
+        properties: {
+          mpnsCertificate: string;
+          certificateKey: string;
+          thumbprint: string;
+        };
+      };
+      wnsCredential?: {
+        properties: {
+          packageSid?: string;
+          secretKey?: string | Redacted.Redacted<string>;
+          windowsLiveEndpoint?: string;
+          certificateKey?: string;
+          wnsCertificate?: string;
+        };
+      };
+      xiaomiCredential?: {
+        properties: { appSecret?: string; endpoint?: string };
+      };
+    };
+    serviceBusEndpoint?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    scaleUnit?: string;
+    dataCenter?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -281,11 +429,22 @@ export const NamespacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesCreateOrUpdateInput =
-  typeof NamespacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface NamespacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -305,9 +464,7 @@ export const NamespacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesCreateOrUpdateOutput =
-  typeof NamespacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -325,6 +482,25 @@ export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesCreateOrUpdateAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+  properties?: {
+    rights: ("Manage" | "Send" | "Listen")[];
+    primaryKey?: string;
+    secondaryKey?: string;
+    keyName?: string;
+    modifiedTime?: string;
+    createdTime?: string;
+    claimType?: string;
+    claimValue?: string;
+    revision?: number;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const NamespacesCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -352,11 +528,22 @@ export const NamespacesCreateOrUpdateAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesCreateOrUpdateAuthorizationRuleInput =
-  typeof NamespacesCreateOrUpdateAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCreateOrUpdateAuthorizationRuleInput>;
 
 // Output Schema
+export interface NamespacesCreateOrUpdateAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -376,9 +563,7 @@ export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
-  typeof NamespacesCreateOrUpdateAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCreateOrUpdateAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -396,6 +581,11 @@ export const NamespacesCreateOrUpdateAuthorizationRule =
     outputSchema: NamespacesCreateOrUpdateAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NamespacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -406,12 +596,12 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
     apiVersion: "2023-09-01",
   }),
-);
-export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
+) as unknown as Schema.Codec<NamespacesDeleteInput>;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
+export type NamespacesDeleteOutput = void;
+export const NamespacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespacesDeleteOutput>;
 
 // The operation
 /**
@@ -427,6 +617,12 @@ export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesDeleteOutput,
 }));
 // Input Schema
+export interface NamespacesDeleteAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+}
 export const NamespacesDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -439,15 +635,12 @@ export const NamespacesDeleteAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesDeleteAuthorizationRuleInput =
-  typeof NamespacesDeleteAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NamespacesDeleteAuthorizationRuleInput>;
 
 // Output Schema
+export type NamespacesDeleteAuthorizationRuleOutput = void;
 export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespacesDeleteAuthorizationRuleOutput =
-  typeof NamespacesDeleteAuthorizationRuleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespacesDeleteAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -465,6 +658,11 @@ export const NamespacesDeleteAuthorizationRule =
     outputSchema: NamespacesDeleteAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NamespacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -475,10 +673,22 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
     apiVersion: "2023-09-01",
   }),
-);
-export type NamespacesGetInput = typeof NamespacesGetInput.Type;
+) as unknown as Schema.Codec<NamespacesGetInput>;
 
 // Output Schema
+export interface NamespacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -497,8 +707,7 @@ export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
+}) as unknown as Schema.Codec<NamespacesGetOutput>;
 
 // The operation
 /**
@@ -514,6 +723,12 @@ export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesGetOutput,
 }));
 // Input Schema
+export interface NamespacesGetAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+}
 export const NamespacesGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -526,11 +741,22 @@ export const NamespacesGetAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesGetAuthorizationRuleInput =
-  typeof NamespacesGetAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NamespacesGetAuthorizationRuleInput>;
 
 // Output Schema
+export interface NamespacesGetAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -550,9 +776,7 @@ export const NamespacesGetAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesGetAuthorizationRuleOutput =
-  typeof NamespacesGetAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesGetAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -570,6 +794,11 @@ export const NamespacesGetAuthorizationRule =
     outputSchema: NamespacesGetAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NamespacesGetPnsCredentialsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesGetPnsCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -581,11 +810,22 @@ export const NamespacesGetPnsCredentialsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/pnsCredentials",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesGetPnsCredentialsInput =
-  typeof NamespacesGetPnsCredentialsInput.Type;
+  ) as unknown as Schema.Codec<NamespacesGetPnsCredentialsInput>;
 
 // Output Schema
+export interface NamespacesGetPnsCredentialsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesGetPnsCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -605,9 +845,7 @@ export const NamespacesGetPnsCredentialsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesGetPnsCredentialsOutput =
-  typeof NamespacesGetPnsCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesGetPnsCredentialsOutput>;
 
 // The operation
 /**
@@ -625,6 +863,12 @@ export const NamespacesGetPnsCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -636,10 +880,25 @@ export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces",
     apiVersion: "2023-09-01",
   }),
-);
-export type NamespacesListInput = typeof NamespacesListInput.Type;
+) as unknown as Schema.Codec<NamespacesListInput>;
 
 // Output Schema
+export interface NamespacesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -675,8 +934,7 @@ export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type NamespacesListOutput = typeof NamespacesListOutput.Type;
+}) as unknown as Schema.Codec<NamespacesListOutput>;
 
 // The operation
 /**
@@ -693,6 +951,11 @@ export const NamespacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesListOutput,
 }));
 // Input Schema
+export interface NamespacesListAllInput {
+  subscriptionId: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const NamespacesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -705,10 +968,25 @@ export const NamespacesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/namespaces",
     apiVersion: "2023-09-01",
   }),
-);
-export type NamespacesListAllInput = typeof NamespacesListAllInput.Type;
+) as unknown as Schema.Codec<NamespacesListAllInput>;
 
 // Output Schema
+export interface NamespacesListAllOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespacesListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -745,8 +1023,7 @@ export const NamespacesListAllOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespacesListAllOutput = typeof NamespacesListAllOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListAllOutput>;
 
 // The operation
 /**
@@ -762,6 +1039,11 @@ export const NamespacesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesListAllOutput,
 }));
 // Input Schema
+export interface NamespacesListAuthorizationRulesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -773,11 +1055,25 @@ export const NamespacesListAuthorizationRulesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesListAuthorizationRulesInput =
-  typeof NamespacesListAuthorizationRulesInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListAuthorizationRulesInput>;
 
 // Output Schema
+export interface NamespacesListAuthorizationRulesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespacesListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -814,9 +1110,7 @@ export const NamespacesListAuthorizationRulesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespacesListAuthorizationRulesOutput =
-  typeof NamespacesListAuthorizationRulesOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListAuthorizationRulesOutput>;
 
 // The operation
 /**
@@ -833,6 +1127,12 @@ export const NamespacesListAuthorizationRules =
     outputSchema: NamespacesListAuthorizationRulesOutput,
   }));
 // Input Schema
+export interface NamespacesListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+}
 export const NamespacesListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -845,10 +1145,16 @@ export const NamespacesListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesListKeysInput = typeof NamespacesListKeysInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListKeysInput>;
 
 // Output Schema
+export interface NamespacesListKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const NamespacesListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -856,8 +1162,7 @@ export const NamespacesListKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListKeysOutput>;
 
 // The operation
 /**
@@ -874,6 +1179,13 @@ export const NamespacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesListKeysOutput,
 }));
 // Input Schema
+export interface NamespacesRegenerateKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+  policyKey: "PrimaryKey" | "SecondaryKey";
+}
 export const NamespacesRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -887,11 +1199,16 @@ export const NamespacesRegenerateKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NamespacesRegenerateKeysInput =
-  typeof NamespacesRegenerateKeysInput.Type;
+  ) as unknown as Schema.Codec<NamespacesRegenerateKeysInput>;
 
 // Output Schema
+export interface NamespacesRegenerateKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const NamespacesRegenerateKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -899,9 +1216,7 @@ export const NamespacesRegenerateKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type NamespacesRegenerateKeysOutput =
-  typeof NamespacesRegenerateKeysOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesRegenerateKeysOutput>;
 
 // The operation
 /**
@@ -920,6 +1235,127 @@ export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  sku?: {
+    name: "Free" | "Basic" | "Standard";
+    tier?: string;
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  properties?: {
+    name?: string;
+    provisioningState?:
+      | "Unknown"
+      | "InProgress"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Disabled";
+    status?: "Created" | "Creating" | "Suspended" | "Deleting";
+    enabled?: boolean;
+    critical?: boolean;
+    subscriptionId?: string;
+    region?: string;
+    metricId?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    namespaceType?: "Messaging" | "NotificationHub";
+    replicationRegion?:
+      | "Default"
+      | "WestUs2"
+      | "NorthEurope"
+      | "AustraliaEast"
+      | "BrazilSouth"
+      | "SouthEastAsia"
+      | "SouthAfricaNorth"
+      | "None";
+    zoneRedundancy?: "Disabled" | "Enabled";
+    networkAcls?: {
+      ipRules?: { ipMask: string; rights: ("Manage" | "Send" | "Listen")[] }[];
+      publicNetworkRule?: { rights: ("Manage" | "Send" | "Listen")[] };
+    };
+    pnsCredentials?: {
+      admCredential?: {
+        properties: {
+          clientId: string;
+          clientSecret: string | Redacted.Redacted<string>;
+          authTokenUrl: string;
+        };
+      };
+      apnsCredential?: {
+        properties: {
+          apnsCertificate?: string;
+          certificateKey?: string;
+          endpoint: string;
+          thumbprint?: string;
+          keyId?: string;
+          appName?: string;
+          appId?: string;
+          token?: string;
+        };
+      };
+      baiduCredential?: {
+        properties: {
+          baiduApiKey: string;
+          baiduEndPoint: string;
+          baiduSecretKey: string | Redacted.Redacted<string>;
+        };
+      };
+      browserCredential?: {
+        properties: {
+          subject: string;
+          vapidPrivateKey: string;
+          vapidPublicKey: string;
+        };
+      };
+      gcmCredential?: {
+        properties: { gcmEndpoint?: string; googleApiKey: string };
+      };
+      mpnsCredential?: {
+        properties: {
+          mpnsCertificate: string;
+          certificateKey: string;
+          thumbprint: string;
+        };
+      };
+      wnsCredential?: {
+        properties: {
+          packageSid?: string;
+          secretKey?: string | Redacted.Redacted<string>;
+          windowsLiveEndpoint?: string;
+          certificateKey?: string;
+          wnsCertificate?: string;
+        };
+      };
+      xiaomiCredential?: {
+        properties: { appSecret?: string; endpoint?: string };
+      };
+    };
+    serviceBusEndpoint?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    scaleUnit?: string;
+    dataCenter?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  tags?: Record<string, string>;
+}
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1123,10 +1559,22 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
     apiVersion: "2023-09-01",
   }),
-);
-export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
+) as unknown as Schema.Codec<NamespacesUpdateInput>;
 
 // Output Schema
+export interface NamespacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1147,8 +1595,7 @@ export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
+) as unknown as Schema.Codec<NamespacesUpdateOutput>;
 
 // The operation
 /**
@@ -1164,6 +1611,24 @@ export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
+export interface NotificationHubsCheckNotificationHubAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  id?: string;
+  name: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+  isAvailiable?: boolean;
+  sku?: {
+    name: "Free" | "Basic" | "Standard";
+    tier?: string;
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+}
 export const NotificationHubsCheckNotificationHubAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1190,11 +1655,22 @@ export const NotificationHubsCheckNotificationHubAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/checkNotificationHubAvailability",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsCheckNotificationHubAvailabilityInput =
-  typeof NotificationHubsCheckNotificationHubAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsCheckNotificationHubAvailabilityInput>;
 
 // Output Schema
+export interface NotificationHubsCheckNotificationHubAvailabilityOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationHubsCheckNotificationHubAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1214,9 +1690,7 @@ export const NotificationHubsCheckNotificationHubAvailabilityOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationHubsCheckNotificationHubAvailabilityOutput =
-  typeof NotificationHubsCheckNotificationHubAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsCheckNotificationHubAvailabilityOutput>;
 
 // The operation
 /**
@@ -1233,6 +1707,92 @@ export const NotificationHubsCheckNotificationHubAvailability =
     outputSchema: NotificationHubsCheckNotificationHubAvailabilityOutput,
   }));
 // Input Schema
+export interface NotificationHubsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+  properties?: {
+    name?: string;
+    registrationTtl?: string;
+    authorizationRules?: {
+      rights: ("Manage" | "Send" | "Listen")[];
+      primaryKey?: string;
+      secondaryKey?: string;
+      keyName?: string;
+      modifiedTime?: string;
+      createdTime?: string;
+      claimType?: string;
+      claimValue?: string;
+      revision?: number;
+    }[];
+    apnsCredential?: {
+      properties: {
+        apnsCertificate?: string;
+        certificateKey?: string;
+        endpoint: string;
+        thumbprint?: string;
+        keyId?: string;
+        appName?: string;
+        appId?: string;
+        token?: string;
+      };
+    };
+    wnsCredential?: {
+      properties: {
+        packageSid?: string;
+        secretKey?: string | Redacted.Redacted<string>;
+        windowsLiveEndpoint?: string;
+        certificateKey?: string;
+        wnsCertificate?: string;
+      };
+    };
+    gcmCredential?: {
+      properties: { gcmEndpoint?: string; googleApiKey: string };
+    };
+    mpnsCredential?: {
+      properties: {
+        mpnsCertificate: string;
+        certificateKey: string;
+        thumbprint: string;
+      };
+    };
+    admCredential?: {
+      properties: {
+        clientId: string;
+        clientSecret: string | Redacted.Redacted<string>;
+        authTokenUrl: string;
+      };
+    };
+    baiduCredential?: {
+      properties: {
+        baiduApiKey: string;
+        baiduEndPoint: string;
+        baiduSecretKey: string | Redacted.Redacted<string>;
+      };
+    };
+    browserCredential?: {
+      properties: {
+        subject: string;
+        vapidPrivateKey: string;
+        vapidPublicKey: string;
+      };
+    };
+    xiaomiCredential?: {
+      properties: { appSecret?: string; endpoint?: string };
+    };
+    dailyMaxActiveDevices?: number;
+  };
+  sku?: {
+    name: "Free" | "Basic" | "Standard";
+    tier?: string;
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NotificationHubsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1357,11 +1917,22 @@ export const NotificationHubsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsCreateOrUpdateInput =
-  typeof NotificationHubsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NotificationHubsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationHubsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1381,9 +1952,7 @@ export const NotificationHubsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationHubsCreateOrUpdateOutput =
-  typeof NotificationHubsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1401,6 +1970,26 @@ export const NotificationHubsCreateOrUpdate =
     outputSchema: NotificationHubsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NotificationHubsCreateOrUpdateAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+  authorizationRuleName: string;
+  properties?: {
+    rights: ("Manage" | "Send" | "Listen")[];
+    primaryKey?: string;
+    secondaryKey?: string;
+    keyName?: string;
+    modifiedTime?: string;
+    createdTime?: string;
+    claimType?: string;
+    claimValue?: string;
+    revision?: number;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const NotificationHubsCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1429,11 +2018,22 @@ export const NotificationHubsCreateOrUpdateAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsCreateOrUpdateAuthorizationRuleInput =
-  typeof NotificationHubsCreateOrUpdateAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsCreateOrUpdateAuthorizationRuleInput>;
 
 // Output Schema
+export interface NotificationHubsCreateOrUpdateAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationHubsCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1453,9 +2053,7 @@ export const NotificationHubsCreateOrUpdateAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationHubsCreateOrUpdateAuthorizationRuleOutput =
-  typeof NotificationHubsCreateOrUpdateAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsCreateOrUpdateAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -1474,6 +2072,12 @@ export const NotificationHubsCreateOrUpdateAuthorizationRule =
     outputSchema: NotificationHubsCreateOrUpdateAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NotificationHubsDebugSendInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+}
 export const NotificationHubsDebugSendInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1486,11 +2090,22 @@ export const NotificationHubsDebugSendInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/debugsend",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsDebugSendInput =
-  typeof NotificationHubsDebugSendInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsDebugSendInput>;
 
 // Output Schema
+export interface NotificationHubsDebugSendOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationHubsDebugSendOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1510,9 +2125,7 @@ export const NotificationHubsDebugSendOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationHubsDebugSendOutput =
-  typeof NotificationHubsDebugSendOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsDebugSendOutput>;
 
 // The operation
 /**
@@ -1531,6 +2144,12 @@ export const NotificationHubsDebugSend = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationHubsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+}
 export const NotificationHubsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1543,15 +2162,12 @@ export const NotificationHubsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsDeleteInput =
-  typeof NotificationHubsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsDeleteInput>;
 
 // Output Schema
+export type NotificationHubsDeleteOutput = void;
 export const NotificationHubsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotificationHubsDeleteOutput =
-  typeof NotificationHubsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationHubsDeleteOutput>;
 
 // The operation
 /**
@@ -1570,6 +2186,13 @@ export const NotificationHubsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationHubsDeleteAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+  authorizationRuleName: string;
+}
 export const NotificationHubsDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1583,15 +2206,12 @@ export const NotificationHubsDeleteAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsDeleteAuthorizationRuleInput =
-  typeof NotificationHubsDeleteAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsDeleteAuthorizationRuleInput>;
 
 // Output Schema
+export type NotificationHubsDeleteAuthorizationRuleOutput = void;
 export const NotificationHubsDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotificationHubsDeleteAuthorizationRuleOutput =
-  typeof NotificationHubsDeleteAuthorizationRuleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationHubsDeleteAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -1610,6 +2230,12 @@ export const NotificationHubsDeleteAuthorizationRule =
     outputSchema: NotificationHubsDeleteAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NotificationHubsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+}
 export const NotificationHubsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1622,10 +2248,22 @@ export const NotificationHubsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsGetInput = typeof NotificationHubsGetInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsGetInput>;
 
 // Output Schema
+export interface NotificationHubsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationHubsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1645,8 +2283,7 @@ export const NotificationHubsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationHubsGetOutput = typeof NotificationHubsGetOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsGetOutput>;
 
 // The operation
 /**
@@ -1663,6 +2300,13 @@ export const NotificationHubsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NotificationHubsGetOutput,
 }));
 // Input Schema
+export interface NotificationHubsGetAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+  authorizationRuleName: string;
+}
 export const NotificationHubsGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1676,11 +2320,22 @@ export const NotificationHubsGetAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsGetAuthorizationRuleInput =
-  typeof NotificationHubsGetAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsGetAuthorizationRuleInput>;
 
 // Output Schema
+export interface NotificationHubsGetAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationHubsGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1700,9 +2355,7 @@ export const NotificationHubsGetAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationHubsGetAuthorizationRuleOutput =
-  typeof NotificationHubsGetAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsGetAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -1721,6 +2374,12 @@ export const NotificationHubsGetAuthorizationRule =
     outputSchema: NotificationHubsGetAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NotificationHubsGetPnsCredentialsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+}
 export const NotificationHubsGetPnsCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1733,11 +2392,22 @@ export const NotificationHubsGetPnsCredentialsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/pnsCredentials",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsGetPnsCredentialsInput =
-  typeof NotificationHubsGetPnsCredentialsInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsGetPnsCredentialsInput>;
 
 // Output Schema
+export interface NotificationHubsGetPnsCredentialsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationHubsGetPnsCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1757,9 +2427,7 @@ export const NotificationHubsGetPnsCredentialsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationHubsGetPnsCredentialsOutput =
-  typeof NotificationHubsGetPnsCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsGetPnsCredentialsOutput>;
 
 // The operation
 /**
@@ -1777,6 +2445,13 @@ export const NotificationHubsGetPnsCredentials =
     outputSchema: NotificationHubsGetPnsCredentialsOutput,
   }));
 // Input Schema
+export interface NotificationHubsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const NotificationHubsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1790,10 +2465,25 @@ export const NotificationHubsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsListInput = typeof NotificationHubsListInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsListInput>;
 
 // Output Schema
+export interface NotificationHubsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NotificationHubsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1830,8 +2520,7 @@ export const NotificationHubsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NotificationHubsListOutput = typeof NotificationHubsListOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsListOutput>;
 
 // The operation
 /**
@@ -1851,6 +2540,12 @@ export const NotificationHubsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationHubsListAuthorizationRulesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+}
 export const NotificationHubsListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1863,11 +2558,25 @@ export const NotificationHubsListAuthorizationRulesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsListAuthorizationRulesInput =
-  typeof NotificationHubsListAuthorizationRulesInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsListAuthorizationRulesInput>;
 
 // Output Schema
+export interface NotificationHubsListAuthorizationRulesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NotificationHubsListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1904,9 +2613,7 @@ export const NotificationHubsListAuthorizationRulesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NotificationHubsListAuthorizationRulesOutput =
-  typeof NotificationHubsListAuthorizationRulesOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsListAuthorizationRulesOutput>;
 
 // The operation
 /**
@@ -1924,6 +2631,13 @@ export const NotificationHubsListAuthorizationRules =
     outputSchema: NotificationHubsListAuthorizationRulesOutput,
   }));
 // Input Schema
+export interface NotificationHubsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+  authorizationRuleName: string;
+}
 export const NotificationHubsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1937,11 +2651,16 @@ export const NotificationHubsListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}/listKeys",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsListKeysInput =
-  typeof NotificationHubsListKeysInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsListKeysInput>;
 
 // Output Schema
+export interface NotificationHubsListKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const NotificationHubsListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -1949,9 +2668,7 @@ export const NotificationHubsListKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type NotificationHubsListKeysOutput =
-  typeof NotificationHubsListKeysOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsListKeysOutput>;
 
 // The operation
 /**
@@ -1971,6 +2688,14 @@ export const NotificationHubsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationHubsRegenerateKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+  authorizationRuleName: string;
+  policyKey: "PrimaryKey" | "SecondaryKey";
+}
 export const NotificationHubsRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1985,11 +2710,16 @@ export const NotificationHubsRegenerateKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsRegenerateKeysInput =
-  typeof NotificationHubsRegenerateKeysInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsRegenerateKeysInput>;
 
 // Output Schema
+export interface NotificationHubsRegenerateKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const NotificationHubsRegenerateKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -1997,9 +2727,7 @@ export const NotificationHubsRegenerateKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type NotificationHubsRegenerateKeysOutput =
-  typeof NotificationHubsRegenerateKeysOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsRegenerateKeysOutput>;
 
 // The operation
 /**
@@ -2018,6 +2746,91 @@ export const NotificationHubsRegenerateKeys =
     outputSchema: NotificationHubsRegenerateKeysOutput,
   }));
 // Input Schema
+export interface NotificationHubsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  notificationHubName: string;
+  properties?: {
+    name?: string;
+    registrationTtl?: string;
+    authorizationRules?: {
+      rights: ("Manage" | "Send" | "Listen")[];
+      primaryKey?: string;
+      secondaryKey?: string;
+      keyName?: string;
+      modifiedTime?: string;
+      createdTime?: string;
+      claimType?: string;
+      claimValue?: string;
+      revision?: number;
+    }[];
+    apnsCredential?: {
+      properties: {
+        apnsCertificate?: string;
+        certificateKey?: string;
+        endpoint: string;
+        thumbprint?: string;
+        keyId?: string;
+        appName?: string;
+        appId?: string;
+        token?: string;
+      };
+    };
+    wnsCredential?: {
+      properties: {
+        packageSid?: string;
+        secretKey?: string | Redacted.Redacted<string>;
+        windowsLiveEndpoint?: string;
+        certificateKey?: string;
+        wnsCertificate?: string;
+      };
+    };
+    gcmCredential?: {
+      properties: { gcmEndpoint?: string; googleApiKey: string };
+    };
+    mpnsCredential?: {
+      properties: {
+        mpnsCertificate: string;
+        certificateKey: string;
+        thumbprint: string;
+      };
+    };
+    admCredential?: {
+      properties: {
+        clientId: string;
+        clientSecret: string | Redacted.Redacted<string>;
+        authTokenUrl: string;
+      };
+    };
+    baiduCredential?: {
+      properties: {
+        baiduApiKey: string;
+        baiduEndPoint: string;
+        baiduSecretKey: string | Redacted.Redacted<string>;
+      };
+    };
+    browserCredential?: {
+      properties: {
+        subject: string;
+        vapidPrivateKey: string;
+        vapidPublicKey: string;
+      };
+    };
+    xiaomiCredential?: {
+      properties: { appSecret?: string; endpoint?: string };
+    };
+    dailyMaxActiveDevices?: number;
+  };
+  sku?: {
+    name: "Free" | "Basic" | "Standard";
+    tier?: string;
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const NotificationHubsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2141,11 +2954,22 @@ export const NotificationHubsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type NotificationHubsUpdateInput =
-  typeof NotificationHubsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NotificationHubsUpdateInput>;
 
 // Output Schema
+export interface NotificationHubsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationHubsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2165,9 +2989,7 @@ export const NotificationHubsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationHubsUpdateOutput =
-  typeof NotificationHubsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NotificationHubsUpdateOutput>;
 
 // The operation
 /**
@@ -2186,6 +3008,7 @@ export const NotificationHubsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2194,10 +3017,41 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.NotificationHubs/operations",
     apiVersion: "2023-09-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          availabilities?: { timeGrain?: string; blobDuration?: string }[];
+          metricFilterPattern?: string;
+          fillGapWithZero?: boolean;
+        }[];
+      };
+    };
+    isDataAction?: boolean;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2254,8 +3108,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2268,6 +3121,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2280,15 +3139,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2307,6 +3163,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2319,11 +3181,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2343,9 +3216,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -2364,6 +3235,12 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetGroupIdInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  subResourceName: string;
+}
 export const PrivateEndpointConnectionsGetGroupIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2376,11 +3253,22 @@ export const PrivateEndpointConnectionsGetGroupIdInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateLinkResources/{subResourceName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetGroupIdInput =
-  typeof PrivateEndpointConnectionsGetGroupIdInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetGroupIdInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetGroupIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetGroupIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2400,9 +3288,7 @@ export const PrivateEndpointConnectionsGetGroupIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetGroupIdOutput =
-  typeof PrivateEndpointConnectionsGetGroupIdOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetGroupIdOutput>;
 
 // The operation
 /**
@@ -2424,6 +3310,11 @@ export const PrivateEndpointConnectionsGetGroupId =
     outputSchema: PrivateEndpointConnectionsGetGroupIdOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2435,11 +3326,25 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections",
       apiVersion: "2023-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2476,9 +3381,7 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -2496,6 +3399,11 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListGroupIdsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const PrivateEndpointConnectionsListGroupIdsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2507,11 +3415,25 @@ export const PrivateEndpointConnectionsListGroupIdsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateLinkResources",
       apiVersion: "2023-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsListGroupIdsInput =
-  typeof PrivateEndpointConnectionsListGroupIdsInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListGroupIdsInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListGroupIdsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListGroupIdsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2548,9 +3470,7 @@ export const PrivateEndpointConnectionsListGroupIdsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListGroupIdsOutput =
-  typeof PrivateEndpointConnectionsListGroupIdsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListGroupIdsOutput>;
 
 // The operation
 /**
@@ -2571,6 +3491,30 @@ export const PrivateEndpointConnectionsListGroupIds =
     outputSchema: PrivateEndpointConnectionsListGroupIdsOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Creating"
+      | "Updating"
+      | "UpdatingByProxy"
+      | "Deleting"
+      | "DeletingByProxy"
+      | "Deleted";
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status?: "Disconnected" | "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2619,11 +3563,22 @@ export const PrivateEndpointConnectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsUpdateInput =
-  typeof PrivateEndpointConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2643,9 +3598,7 @@ export const PrivateEndpointConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsUpdateOutput =
-  typeof PrivateEndpointConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateOutput>;
 
 // The operation
 /**

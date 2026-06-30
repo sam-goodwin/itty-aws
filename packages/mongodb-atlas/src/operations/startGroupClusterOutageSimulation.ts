@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface StartGroupClusterOutageSimulationInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const StartGroupClusterOutageSimulationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const StartGroupClusterOutageSimulationInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation",
     }),
-  );
-export type StartGroupClusterOutageSimulationInput =
-  typeof StartGroupClusterOutageSimulationInput.Type;
+  ) as unknown as Schema.Codec<StartGroupClusterOutageSimulationInput>;
 
 // Output Schema
+export type StartGroupClusterOutageSimulationOutput = void;
 export const StartGroupClusterOutageSimulationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StartGroupClusterOutageSimulationOutput =
-  typeof StartGroupClusterOutageSimulationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StartGroupClusterOutageSimulationOutput>;
 
 // The operation
 /**

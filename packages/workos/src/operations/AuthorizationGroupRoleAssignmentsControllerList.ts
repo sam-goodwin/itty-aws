@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationGroupRoleAssignmentsControllerListInput {
+  group_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const AuthorizationGroupRoleAssignmentsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,22 @@ export const AuthorizationGroupRoleAssignmentsControllerListInput =
       method: "GET",
       path: "/authorization/groups/{group_id}/role_assignments",
     }),
-  );
-export type AuthorizationGroupRoleAssignmentsControllerListInput =
-  typeof AuthorizationGroupRoleAssignmentsControllerListInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerListInput>;
 
 // Output Schema
+export interface AuthorizationGroupRoleAssignmentsControllerListOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    group_id: string;
+    role: { slug?: string };
+    resource: { id: string; external_id: string; resource_type_slug: string };
+    created_at: string;
+    updated_at: string;
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const AuthorizationGroupRoleAssignmentsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -45,9 +63,7 @@ export const AuthorizationGroupRoleAssignmentsControllerListOutput =
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type AuthorizationGroupRoleAssignmentsControllerListOutput =
-  typeof AuthorizationGroupRoleAssignmentsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerListOutput>;
 
 // The operation
 /**

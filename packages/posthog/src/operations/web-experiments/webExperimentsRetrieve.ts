@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WebExperimentsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const WebExperimentsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,11 +17,16 @@ export const WebExperimentsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/web_experiments/{id}/",
     }),
-  );
-export type WebExperimentsRetrieveInput =
-  typeof WebExperimentsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<WebExperimentsRetrieveInput>;
 
 // Output Schema
+export interface WebExperimentsRetrieveOutput {
+  id?: number;
+  name?: string;
+  created_at?: string;
+  feature_flag_key?: string;
+  variants?: unknown;
+}
 export const WebExperimentsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -25,9 +34,7 @@ export const WebExperimentsRetrieveOutput =
     created_at: Schema.optional(Schema.String),
     feature_flag_key: Schema.optional(Schema.String),
     variants: Schema.optional(Schema.Unknown),
-  });
-export type WebExperimentsRetrieveOutput =
-  typeof WebExperimentsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<WebExperimentsRetrieveOutput>;
 
 // The operation
 /**

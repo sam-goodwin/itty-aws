@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersCredentialsReviewCompleteCreateInput {
+  uuid: string;
+}
 export const UsersCredentialsReviewCompleteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const UsersCredentialsReviewCompleteCreateInput =
       method: "POST",
       path: "/api/users/{uuid}/credentials_review_complete/",
     }),
-  );
-export type UsersCredentialsReviewCompleteCreateInput =
-  typeof UsersCredentialsReviewCompleteCreateInput.Type;
+  ) as unknown as Schema.Codec<UsersCredentialsReviewCompleteCreateInput>;
 
 // Output Schema
+export type UsersCredentialsReviewCompleteCreateOutput = void;
 export const UsersCredentialsReviewCompleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersCredentialsReviewCompleteCreateOutput =
-  typeof UsersCredentialsReviewCompleteCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersCredentialsReviewCompleteCreateOutput>;
 
 // The operation
 /**

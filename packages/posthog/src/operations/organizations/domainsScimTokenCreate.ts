@@ -4,6 +4,28 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DomainsScimTokenCreateInput {
+  id: string;
+  organization_id: string;
+  domain?: string;
+  is_verified?: boolean;
+  verified_at?: string | null;
+  verification_challenge?: string;
+  jit_provisioning_enabled?: boolean;
+  sso_enforcement?: string;
+  has_saml?: boolean;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
+  has_scim?: boolean;
+  scim_enabled?: boolean;
+  scim_base_url?: string | null;
+  scim_bearer_token?: string | null;
+  has_id_jag?: boolean;
+  id_jag_issuer_url?: string | null;
+  id_jag_jwks_url?: string | null;
+  id_jag_allowed_clients?: string[];
+}
 export const DomainsScimTokenCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -31,15 +53,12 @@ export const DomainsScimTokenCreateInput =
       method: "POST",
       path: "/api/organizations/{organization_id}/domains/{id}/scim/token/",
     }),
-  );
-export type DomainsScimTokenCreateInput =
-  typeof DomainsScimTokenCreateInput.Type;
+  ) as unknown as Schema.Codec<DomainsScimTokenCreateInput>;
 
 // Output Schema
+export type DomainsScimTokenCreateOutput = void;
 export const DomainsScimTokenCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DomainsScimTokenCreateOutput =
-  typeof DomainsScimTokenCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsScimTokenCreateOutput>;
 
 // The operation
 /**

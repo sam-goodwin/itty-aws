@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface CustomDimension {
   value?: string;
 }
 
-export const CustomDimension: Schema.Schema<CustomDimension> =
+export const CustomDimension: Schema.Codec<CustomDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface CustomMetric {
   value?: number;
 }
 
-export const CustomMetric: Schema.Schema<CustomMetric> =
+export const CustomMetric: Schema.Codec<CustomMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -121,7 +121,7 @@ export interface Conversion {
   engineAccountId?: string;
 }
 
-export const Conversion: Schema.Schema<Conversion> =
+export const Conversion: Schema.Codec<Conversion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -167,7 +167,7 @@ export interface ConversionList {
   kind?: string;
 }
 
-export const ConversionList: Schema.Schema<ConversionList> =
+export const ConversionList: Schema.Codec<ConversionList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversion: Schema.optional(Schema.Array(Conversion)),
     kind: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export interface Availability {
   segmentationName?: string;
 }
 
-export const Availability: Schema.Schema<Availability> =
+export const Availability: Schema.Codec<Availability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     segmentationType: Schema.optional(Schema.String),
     availabilityTimestamp: Schema.optional(Schema.String),
@@ -206,14 +206,14 @@ export interface UpdateAvailabilityRequest {
   availabilities?: ReadonlyArray<Availability>;
 }
 
-export const UpdateAvailabilityRequest: Schema.Schema<UpdateAvailabilityRequest> =
+export const UpdateAvailabilityRequest: Schema.Codec<UpdateAvailabilityRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilities: Schema.optional(Schema.Array(Availability)),
   }).annotate({ identifier: "UpdateAvailabilityRequest" });
 
 export interface IdMappingFile {}
 
-export const IdMappingFile: Schema.Schema<IdMappingFile> =
+export const IdMappingFile: Schema.Codec<IdMappingFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "IdMappingFile",
   });
@@ -223,17 +223,17 @@ export interface UpdateAvailabilityResponse {
   availabilities?: ReadonlyArray<Availability>;
 }
 
-export const UpdateAvailabilityResponse: Schema.Schema<UpdateAvailabilityResponse> =
+export const UpdateAvailabilityResponse: Schema.Codec<UpdateAvailabilityResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilities: Schema.optional(Schema.Array(Availability)),
   }).annotate({ identifier: "UpdateAvailabilityResponse" });
 
 export type ReportRow = Record<string, unknown>;
-export const ReportRow: Schema.Schema<ReportRow> =
+export const ReportRow: Schema.Codec<ReportRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
     Schema.String,
     Schema.Unknown,
-  ) as any as Schema.Schema<ReportRow>;
+  ) as any as Schema.Codec<ReportRow>;
 
 export interface SavedColumn {
   /** The type of data this saved column will produce. */
@@ -244,7 +244,7 @@ export interface SavedColumn {
   kind?: string;
 }
 
-export const SavedColumn: Schema.Schema<SavedColumn> =
+export const SavedColumn: Schema.Codec<SavedColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     savedColumnName: Schema.optional(Schema.String),
@@ -274,7 +274,7 @@ export interface ReportApiColumnSpec {
   platformSource?: string;
 }
 
-export const ReportApiColumnSpec: Schema.Schema<ReportApiColumnSpec> =
+export const ReportApiColumnSpec: Schema.Codec<ReportApiColumnSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupByColumn: Schema.optional(Schema.Boolean),
     savedColumnName: Schema.optional(Schema.String),
@@ -336,7 +336,7 @@ export interface ReportRequest {
   };
 }
 
-export const ReportRequest: Schema.Schema<ReportRequest> =
+export const ReportRequest: Schema.Codec<ReportRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orderBy: Schema.optional(
       Schema.Array(
@@ -407,7 +407,7 @@ export interface Report {
   statisticsTimeZone?: string;
 }
 
-export const Report: Schema.Schema<Report> =
+export const Report: Schema.Codec<Report> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     rows: Schema.optional(Schema.Array(ReportRow)),
@@ -434,7 +434,7 @@ export interface SavedColumnList {
   items?: ReadonlyArray<SavedColumn>;
 }
 
-export const SavedColumnList: Schema.Schema<SavedColumnList> =
+export const SavedColumnList: Schema.Codec<SavedColumnList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(SavedColumn)),
@@ -511,7 +511,7 @@ export const ListSavedColumnsRequest =
       path: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListSavedColumnsRequest>;
+  ) as unknown as Schema.Codec<ListSavedColumnsRequest>;
 
 export type ListSavedColumnsResponse = SavedColumnList;
 export const ListSavedColumnsResponse =
@@ -546,7 +546,7 @@ export const UpdateConversionRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateConversionRequest>;
+  ) as unknown as Schema.Codec<UpdateConversionRequest>;
 
 export type UpdateConversionResponse = ConversionList;
 export const UpdateConversionResponse =
@@ -586,7 +586,7 @@ export const UpdateAvailabilityConversionRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAvailabilityConversionRequest>;
+  ) as unknown as Schema.Codec<UpdateAvailabilityConversionRequest>;
 
 export type UpdateAvailabilityConversionResponse = UpdateAvailabilityResponse;
 export const UpdateAvailabilityConversionResponse =
@@ -657,7 +657,7 @@ export const GetConversionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion",
   }),
   svc,
-) as unknown as Schema.Schema<GetConversionRequest>;
+) as unknown as Schema.Codec<GetConversionRequest>;
 
 export type GetConversionResponse = ConversionList;
 export const GetConversionResponse = /*@__PURE__*/ /*#__PURE__*/ ConversionList;
@@ -729,7 +729,7 @@ export const GetByCustomerIdConversionRequest =
       path: "doubleclicksearch/v2/customer/{customerId}/conversion",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetByCustomerIdConversionRequest>;
+  ) as unknown as Schema.Codec<GetByCustomerIdConversionRequest>;
 
 export type GetByCustomerIdConversionResponse = ConversionList;
 export const GetByCustomerIdConversionResponse =
@@ -767,7 +767,7 @@ export const InsertConversionRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertConversionRequest>;
+  ) as unknown as Schema.Codec<InsertConversionRequest>;
 
 export type InsertConversionResponse = ConversionList;
 export const InsertConversionResponse =
@@ -808,13 +808,13 @@ export const GetFileReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}",
   }),
   svc,
-) as unknown as Schema.Schema<GetFileReportsRequest>;
+) as unknown as Schema.Codec<GetFileReportsRequest>;
 
 export interface GetFileReportsResponse {}
-export const GetFileReportsResponse: Schema.Schema<GetFileReportsResponse> =
+export const GetFileReportsResponse: Schema.Codec<GetFileReportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<GetFileReportsResponse>;
+  ) as any as Schema.Codec<GetFileReportsResponse>;
 
 export type GetFileReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -840,7 +840,7 @@ export const GetReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "doubleclicksearch/v2/reports/{reportId}" }),
   svc,
-) as unknown as Schema.Schema<GetReportsRequest>;
+) as unknown as Schema.Codec<GetReportsRequest>;
 
 export type GetReportsResponse = Report;
 export const GetReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
@@ -876,7 +876,7 @@ export const GetIdMappingFileReportsRequest =
       path: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIdMappingFileReportsRequest>;
+  ) as unknown as Schema.Codec<GetIdMappingFileReportsRequest>;
 
 export type GetIdMappingFileReportsResponse = IdMappingFile;
 export const GetIdMappingFileReportsResponse =
@@ -910,7 +910,7 @@ export const RequestReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<RequestReportsRequest>;
+) as unknown as Schema.Codec<RequestReportsRequest>;
 
 export type RequestReportsResponse = Report;
 export const RequestReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
@@ -950,7 +950,7 @@ export const GenerateReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<GenerateReportsRequest>;
+) as unknown as Schema.Codec<GenerateReportsRequest>;
 
 export type GenerateReportsResponse = Report;
 export const GenerateReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;

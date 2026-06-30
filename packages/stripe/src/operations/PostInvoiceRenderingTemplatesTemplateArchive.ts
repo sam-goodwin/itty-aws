@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostInvoiceRenderingTemplatesTemplateArchiveInput {
+  template: string;
+  expand?: string[];
+}
 export const PostInvoiceRenderingTemplatesTemplateArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,19 @@ export const PostInvoiceRenderingTemplatesTemplateArchiveInput =
       path: "/v1/invoice_rendering_templates/{template}/archive",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostInvoiceRenderingTemplatesTemplateArchiveInput =
-  typeof PostInvoiceRenderingTemplatesTemplateArchiveInput.Type;
+  ) as unknown as Schema.Codec<PostInvoiceRenderingTemplatesTemplateArchiveInput>;
 
 // Output Schema
+export interface PostInvoiceRenderingTemplatesTemplateArchiveOutput {
+  created: number;
+  id: string;
+  livemode: boolean;
+  metadata: Record<string, string> | null;
+  nickname: string | null;
+  object: "invoice_rendering_template";
+  status: "active" | "archived";
+  version: number;
+}
 export const PostInvoiceRenderingTemplatesTemplateArchiveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -28,9 +40,7 @@ export const PostInvoiceRenderingTemplatesTemplateArchiveOutput =
     object: Schema.Literals(["invoice_rendering_template"]),
     status: Schema.Literals(["active", "archived"]),
     version: Schema.Number,
-  });
-export type PostInvoiceRenderingTemplatesTemplateArchiveOutput =
-  typeof PostInvoiceRenderingTemplatesTemplateArchiveOutput.Type;
+  }) as unknown as Schema.Codec<PostInvoiceRenderingTemplatesTemplateArchiveOutput>;
 
 // The operation
 /**

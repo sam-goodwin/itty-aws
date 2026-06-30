@@ -4,11 +4,30 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DiskPoolsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+  sku: { name: string; tier?: string };
+  properties: {
+    availabilityZones?: string[];
+    disks?: { id: string }[];
+    subnetId: string;
+    additionalCapabilities?: string[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  managedBy?: string;
+  managedByExtended?: string[];
+}
 export const DiskPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -43,19 +62,20 @@ export const DiskPoolsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DiskPoolsCreateOrUpdateInput =
-  typeof DiskPoolsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DiskPoolsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DiskPoolsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DiskPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DiskPoolsCreateOrUpdateOutput =
-  typeof DiskPoolsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DiskPoolsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -73,6 +93,11 @@ export const DiskPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiskPoolsDeallocateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+}
 export const DiskPoolsDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -84,13 +109,12 @@ export const DiskPoolsDeallocateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/deallocate",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DiskPoolsDeallocateInput = typeof DiskPoolsDeallocateInput.Type;
+  ) as unknown as Schema.Codec<DiskPoolsDeallocateInput>;
 
 // Output Schema
+export type DiskPoolsDeallocateOutput = void;
 export const DiskPoolsDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiskPoolsDeallocateOutput = typeof DiskPoolsDeallocateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsDeallocateOutput>;
 
 // The operation
 /**
@@ -106,6 +130,11 @@ export const DiskPoolsDeallocate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskPoolsDeallocateOutput,
 }));
 // Input Schema
+export interface DiskPoolsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+}
 export const DiskPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -116,12 +145,12 @@ export const DiskPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type DiskPoolsDeleteInput = typeof DiskPoolsDeleteInput.Type;
+) as unknown as Schema.Codec<DiskPoolsDeleteInput>;
 
 // Output Schema
-export const DiskPoolsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiskPoolsDeleteOutput = typeof DiskPoolsDeleteOutput.Type;
+export type DiskPoolsDeleteOutput = void;
+export const DiskPoolsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsDeleteOutput>;
 
 // The operation
 /**
@@ -137,6 +166,11 @@ export const DiskPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskPoolsDeleteOutput,
 }));
 // Input Schema
+export interface DiskPoolsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+}
 export const DiskPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -147,16 +181,19 @@ export const DiskPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type DiskPoolsGetInput = typeof DiskPoolsGetInput.Type;
+) as unknown as Schema.Codec<DiskPoolsGetInput>;
 
 // Output Schema
+export interface DiskPoolsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DiskPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type DiskPoolsGetOutput = typeof DiskPoolsGetOutput.Type;
+}) as unknown as Schema.Codec<DiskPoolsGetOutput>;
 
 // The operation
 /**
@@ -172,6 +209,10 @@ export const DiskPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskPoolsGetOutput,
 }));
 // Input Schema
+export interface DiskPoolsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DiskPoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -182,11 +223,13 @@ export const DiskPoolsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DiskPoolsListByResourceGroupInput =
-  typeof DiskPoolsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DiskPoolsListByResourceGroupInput>;
 
 // Output Schema
+export interface DiskPoolsListByResourceGroupOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const DiskPoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -197,9 +240,7 @@ export const DiskPoolsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskPoolsListByResourceGroupOutput =
-  typeof DiskPoolsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DiskPoolsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -215,6 +256,9 @@ export const DiskPoolsListByResourceGroup =
     outputSchema: DiskPoolsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DiskPoolsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DiskPoolsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -224,11 +268,13 @@ export const DiskPoolsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/diskPools",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DiskPoolsListBySubscriptionInput =
-  typeof DiskPoolsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DiskPoolsListBySubscriptionInput>;
 
 // Output Schema
+export interface DiskPoolsListBySubscriptionOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const DiskPoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -239,9 +285,7 @@ export const DiskPoolsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskPoolsListBySubscriptionOutput =
-  typeof DiskPoolsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DiskPoolsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -257,6 +301,11 @@ export const DiskPoolsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiskPoolsListOutboundNetworkDependenciesEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+}
 export const DiskPoolsListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -268,11 +317,24 @@ export const DiskPoolsListOutboundNetworkDependenciesEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/outboundNetworkDependenciesEndpoints",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DiskPoolsListOutboundNetworkDependenciesEndpointsInput =
-  typeof DiskPoolsListOutboundNetworkDependenciesEndpointsInput.Type;
+  ) as unknown as Schema.Codec<DiskPoolsListOutboundNetworkDependenciesEndpointsInput>;
 
 // Output Schema
+export interface DiskPoolsListOutboundNetworkDependenciesEndpointsOutput {
+  value: {
+    category?: string;
+    endpoints?: {
+      domainName?: string;
+      endpointDetails?: {
+        ipAddress?: string;
+        port?: number;
+        latency?: number;
+        isAccessible?: boolean;
+      }[];
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const DiskPoolsListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -298,9 +360,7 @@ export const DiskPoolsListOutboundNetworkDependenciesEndpointsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskPoolsListOutboundNetworkDependenciesEndpointsOutput =
-  typeof DiskPoolsListOutboundNetworkDependenciesEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<DiskPoolsListOutboundNetworkDependenciesEndpointsOutput>;
 
 // The operation
 /**
@@ -317,6 +377,11 @@ export const DiskPoolsListOutboundNetworkDependenciesEndpoints =
     outputSchema: DiskPoolsListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
+export interface DiskPoolsStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+}
 export const DiskPoolsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -327,12 +392,12 @@ export const DiskPoolsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/start",
     apiVersion: "2021-08-01",
   }),
-);
-export type DiskPoolsStartInput = typeof DiskPoolsStartInput.Type;
+) as unknown as Schema.Codec<DiskPoolsStartInput>;
 
 // Output Schema
-export const DiskPoolsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiskPoolsStartOutput = typeof DiskPoolsStartOutput.Type;
+export type DiskPoolsStartOutput = void;
+export const DiskPoolsStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsStartOutput>;
 
 // The operation
 /**
@@ -348,6 +413,16 @@ export const DiskPoolsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskPoolsStartOutput,
 }));
 // Input Schema
+export interface DiskPoolsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+  managedBy?: string;
+  managedByExtended?: string[];
+  properties: { disks?: { id: string }[] };
+  sku?: { name: string; tier?: string };
+  tags?: Record<string, string>;
+}
 export const DiskPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -376,16 +451,19 @@ export const DiskPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type DiskPoolsUpdateInput = typeof DiskPoolsUpdateInput.Type;
+) as unknown as Schema.Codec<DiskPoolsUpdateInput>;
 
 // Output Schema
+export interface DiskPoolsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DiskPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type DiskPoolsUpdateOutput = typeof DiskPoolsUpdateOutput.Type;
+}) as unknown as Schema.Codec<DiskPoolsUpdateOutput>;
 
 // The operation
 /**
@@ -401,6 +479,11 @@ export const DiskPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskPoolsUpdateOutput,
 }));
 // Input Schema
+export interface DiskPoolsUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+}
 export const DiskPoolsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -411,12 +494,12 @@ export const DiskPoolsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/upgrade",
     apiVersion: "2021-08-01",
   }),
-);
-export type DiskPoolsUpgradeInput = typeof DiskPoolsUpgradeInput.Type;
+) as unknown as Schema.Codec<DiskPoolsUpgradeInput>;
 
 // Output Schema
-export const DiskPoolsUpgradeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DiskPoolsUpgradeOutput = typeof DiskPoolsUpgradeOutput.Type;
+export type DiskPoolsUpgradeOutput = void;
+export const DiskPoolsUpgradeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskPoolsUpgradeOutput>;
 
 // The operation
 /**
@@ -432,6 +515,10 @@ export const DiskPoolsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskPoolsUpgradeOutput,
 }));
 // Input Schema
+export interface DiskPoolZonesListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const DiskPoolZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -443,10 +530,17 @@ export const DiskPoolZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/diskPoolZones",
     apiVersion: "2021-08-01",
   }),
-);
-export type DiskPoolZonesListInput = typeof DiskPoolZonesListInput.Type;
+) as unknown as Schema.Codec<DiskPoolZonesListInput>;
 
 // Output Schema
+export interface DiskPoolZonesListOutput {
+  value?: {
+    availabilityZones?: string[];
+    additionalCapabilities?: string[];
+    sku?: { name: string; tier?: string };
+  }[];
+  nextLink?: string;
+}
 export const DiskPoolZonesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -464,8 +558,7 @@ export const DiskPoolZonesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DiskPoolZonesListOutput = typeof DiskPoolZonesListOutput.Type;
+  }) as unknown as Schema.Codec<DiskPoolZonesListOutput>;
 
 // The operation
 /**
@@ -480,6 +573,20 @@ export const DiskPoolZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DiskPoolZonesListOutput,
 }));
 // Input Schema
+export interface IscsiTargetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+  iscsiTargetName: string;
+  properties: {
+    aclMode: "Dynamic" | "Static";
+    targetIqn?: string;
+    staticAcls?: { initiatorIqn: string; mappedLuns: string[] }[];
+    luns?: { name: string; managedDiskAzureResourceId: string; lun?: number }[];
+  };
+  managedBy?: string;
+  managedByExtended?: string[];
+}
 export const IscsiTargetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -515,19 +622,20 @@ export const IscsiTargetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type IscsiTargetsCreateOrUpdateInput =
-  typeof IscsiTargetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IscsiTargetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface IscsiTargetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const IscsiTargetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type IscsiTargetsCreateOrUpdateOutput =
-  typeof IscsiTargetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IscsiTargetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -546,6 +654,12 @@ export const IscsiTargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IscsiTargetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+  iscsiTargetName: string;
+}
 export const IscsiTargetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -558,12 +672,12 @@ export const IscsiTargetsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type IscsiTargetsDeleteInput = typeof IscsiTargetsDeleteInput.Type;
+  ) as unknown as Schema.Codec<IscsiTargetsDeleteInput>;
 
 // Output Schema
-export const IscsiTargetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IscsiTargetsDeleteOutput = typeof IscsiTargetsDeleteOutput.Type;
+export type IscsiTargetsDeleteOutput = void;
+export const IscsiTargetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IscsiTargetsDeleteOutput>;
 
 // The operation
 /**
@@ -580,6 +694,12 @@ export const IscsiTargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IscsiTargetsDeleteOutput,
 }));
 // Input Schema
+export interface IscsiTargetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+  iscsiTargetName: string;
+}
 export const IscsiTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -591,16 +711,19 @@ export const IscsiTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type IscsiTargetsGetInput = typeof IscsiTargetsGetInput.Type;
+) as unknown as Schema.Codec<IscsiTargetsGetInput>;
 
 // Output Schema
+export interface IscsiTargetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const IscsiTargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type IscsiTargetsGetOutput = typeof IscsiTargetsGetOutput.Type;
+}) as unknown as Schema.Codec<IscsiTargetsGetOutput>;
 
 // The operation
 /**
@@ -617,6 +740,11 @@ export const IscsiTargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IscsiTargetsGetOutput,
 }));
 // Input Schema
+export interface IscsiTargetsListByDiskPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+}
 export const IscsiTargetsListByDiskPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -628,11 +756,13 @@ export const IscsiTargetsListByDiskPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets",
       apiVersion: "2021-08-01",
     }),
-  );
-export type IscsiTargetsListByDiskPoolInput =
-  typeof IscsiTargetsListByDiskPoolInput.Type;
+  ) as unknown as Schema.Codec<IscsiTargetsListByDiskPoolInput>;
 
 // Output Schema
+export interface IscsiTargetsListByDiskPoolOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const IscsiTargetsListByDiskPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -643,9 +773,7 @@ export const IscsiTargetsListByDiskPoolOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IscsiTargetsListByDiskPoolOutput =
-  typeof IscsiTargetsListByDiskPoolOutput.Type;
+  }) as unknown as Schema.Codec<IscsiTargetsListByDiskPoolOutput>;
 
 // The operation
 /**
@@ -663,6 +791,18 @@ export const IscsiTargetsListByDiskPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IscsiTargetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  diskPoolName: string;
+  iscsiTargetName: string;
+  properties: {
+    staticAcls?: { initiatorIqn: string; mappedLuns: string[] }[];
+    luns?: { name: string; managedDiskAzureResourceId: string; lun?: number }[];
+  };
+  managedBy?: string;
+  managedByExtended?: string[];
+}
 export const IscsiTargetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -696,17 +836,20 @@ export const IscsiTargetsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type IscsiTargetsUpdateInput = typeof IscsiTargetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<IscsiTargetsUpdateInput>;
 
 // Output Schema
+export interface IscsiTargetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const IscsiTargetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type IscsiTargetsUpdateOutput = typeof IscsiTargetsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IscsiTargetsUpdateOutput>;
 
 // The operation
 /**
@@ -723,6 +866,7 @@ export const IscsiTargetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IscsiTargetsUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -731,10 +875,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.StoragePool/operations",
     apiVersion: "2021-08-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name: string;
+    isDataAction: boolean;
+    actionType?: string;
+    display: {
+      provider: string;
+      resource: string;
+      operation: string;
+      description: string;
+    };
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -751,8 +909,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -765,6 +922,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ResourceSkusListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -774,10 +935,33 @@ export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/skus",
     apiVersion: "2021-08-01",
   }),
-);
-export type ResourceSkusListInput = typeof ResourceSkusListInput.Type;
+) as unknown as Schema.Codec<ResourceSkusListInput>;
 
 // Output Schema
+export interface ResourceSkusListOutput {
+  value?: {
+    apiVersion?: string;
+    resourceType?: string;
+    capabilities?: { name?: string; value?: string }[];
+    locationInfo?: {
+      location?: string;
+      zones?: string[];
+      zoneDetails?: {
+        name?: string[];
+        capabilities?: { name?: string; value?: string }[];
+      }[];
+    };
+    name?: string;
+    tier?: string;
+    restrictions?: {
+      type?: "Location" | "Zone";
+      values?: string[];
+      restrictionInfo?: { locations?: string[]; zones?: string[] };
+      reasonCode?: "QuotaId" | "NotAvailableForSubscription";
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -838,8 +1022,7 @@ export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ResourceSkusListOutput = typeof ResourceSkusListOutput.Type;
+) as unknown as Schema.Codec<ResourceSkusListOutput>;
 
 // The operation
 /**

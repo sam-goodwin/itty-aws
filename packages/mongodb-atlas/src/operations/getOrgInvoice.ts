@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgInvoiceInput {
+  orgId: string;
+  invoiceId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetOrgInvoiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   invoiceId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const GetOrgInvoiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}",
   }),
-);
-export type GetOrgInvoiceInput = typeof GetOrgInvoiceInput.Type;
+) as unknown as Schema.Codec<GetOrgInvoiceInput>;
 
 // Output Schema
-export const GetOrgInvoiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgInvoiceOutput = typeof GetOrgInvoiceOutput.Type;
+export type GetOrgInvoiceOutput = void;
+export const GetOrgInvoiceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgInvoiceOutput>;
 
 // The operation
 /**

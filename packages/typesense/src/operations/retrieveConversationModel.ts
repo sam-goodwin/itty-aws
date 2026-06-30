@@ -4,20 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RetrieveConversationModelInput {
+  modelId: string;
+}
 export const RetrieveConversationModelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/conversations/models/{modelId}" }));
-export type RetrieveConversationModelInput =
-  typeof RetrieveConversationModelInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/conversations/models/{modelId}" }),
+  ) as unknown as Schema.Codec<RetrieveConversationModelInput>;
 
 // Output Schema
+export interface RetrieveConversationModelOutput {
+  id: string;
+}
 export const RetrieveConversationModelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type RetrieveConversationModelOutput =
-  typeof RetrieveConversationModelOutput.Type;
+  }) as unknown as Schema.Codec<RetrieveConversationModelOutput>;
 
 // The operation
 /**

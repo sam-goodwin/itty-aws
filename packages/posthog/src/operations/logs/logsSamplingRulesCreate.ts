@@ -3,6 +3,22 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LogsSamplingRulesCreateInput {
+  project_id: string;
+  id: string;
+  name: string;
+  enabled?: boolean;
+  priority?: number | null;
+  rule_type: "severity_sampling" | "path_drop" | "rate_limit";
+  scope_service?: string | null;
+  scope_path_pattern?: string | null;
+  scope_attribute_filters?: Record<string, unknown>[];
+  config: unknown;
+  version: number;
+  created_by: number;
+  created_at: string;
+  updated_at: string | null;
+}
 export const LogsSamplingRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -30,11 +46,24 @@ export const LogsSamplingRulesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/logs/sampling_rules/",
     }),
-  );
-export type LogsSamplingRulesCreateInput =
-  typeof LogsSamplingRulesCreateInput.Type;
+  ) as unknown as Schema.Codec<LogsSamplingRulesCreateInput>;
 
 // Output Schema
+export interface LogsSamplingRulesCreateOutput {
+  id: string;
+  name: string;
+  enabled?: boolean;
+  priority?: number | null;
+  rule_type: "severity_sampling" | "path_drop" | "rate_limit";
+  scope_service?: string | null;
+  scope_path_pattern?: string | null;
+  scope_attribute_filters?: Record<string, unknown>[];
+  config: unknown;
+  version: number;
+  created_by: number;
+  created_at: string;
+  updated_at: string | null;
+}
 export const LogsSamplingRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -56,9 +85,7 @@ export const LogsSamplingRulesCreateOutput =
     created_by: Schema.Number,
     created_at: Schema.String,
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type LogsSamplingRulesCreateOutput =
-  typeof LogsSamplingRulesCreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsSamplingRulesCreateOutput>;
 
 // The operation
 /**

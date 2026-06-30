@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -38,7 +38,7 @@ export interface ProjectSettings {
     | (string & {});
 }
 
-export const ProjectSettings: Schema.Schema<ProjectSettings> =
+export const ProjectSettings: Schema.Codec<ProjectSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     pullPercent: Schema.optional(Schema.Number),
@@ -52,7 +52,7 @@ export interface ImportAptArtifactsGcsSource {
   useWildcards?: boolean;
 }
 
-export const ImportAptArtifactsGcsSource: Schema.Schema<ImportAptArtifactsGcsSource> =
+export const ImportAptArtifactsGcsSource: Schema.Codec<ImportAptArtifactsGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uris: Schema.optional(Schema.Array(Schema.String)),
     useWildcards: Schema.optional(Schema.Boolean),
@@ -63,7 +63,7 @@ export interface ImportAptArtifactsRequest {
   gcsSource?: ImportAptArtifactsGcsSource;
 }
 
-export const ImportAptArtifactsRequest: Schema.Schema<ImportAptArtifactsRequest> =
+export const ImportAptArtifactsRequest: Schema.Codec<ImportAptArtifactsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(ImportAptArtifactsGcsSource),
   }).annotate({ identifier: "ImportAptArtifactsRequest" });
@@ -80,7 +80,7 @@ export interface Hash {
   value?: string;
 }
 
-export const Hash: Schema.Schema<Hash> =
+export const Hash: Schema.Codec<Hash> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -95,7 +95,7 @@ export interface PrewarmedArtifact {
   location?: string;
 }
 
-export const PrewarmedArtifact: Schema.Schema<PrewarmedArtifact> =
+export const PrewarmedArtifact: Schema.Codec<PrewarmedArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     expirationTime: Schema.optional(Schema.String),
@@ -104,7 +104,7 @@ export const PrewarmedArtifact: Schema.Schema<PrewarmedArtifact> =
 
 export interface UploadGoogetArtifactMetadata {}
 
-export const UploadGoogetArtifactMetadata: Schema.Schema<UploadGoogetArtifactMetadata> =
+export const UploadGoogetArtifactMetadata: Schema.Codec<UploadGoogetArtifactMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadGoogetArtifactMetadata",
   });
@@ -120,7 +120,7 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -135,7 +135,7 @@ export interface ListPrewarmedArtifactsResponse {
   nextPageToken?: string;
 }
 
-export const ListPrewarmedArtifactsResponse: Schema.Schema<ListPrewarmedArtifactsResponse> =
+export const ListPrewarmedArtifactsResponse: Schema.Codec<ListPrewarmedArtifactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prewarmedArtifacts: Schema.optional(Schema.Array(PrewarmedArtifact)),
     nextPageToken: Schema.optional(Schema.String),
@@ -143,7 +143,7 @@ export const ListPrewarmedArtifactsResponse: Schema.Schema<ListPrewarmedArtifact
 
 export interface UploadGenericArtifactMetadata {}
 
-export const UploadGenericArtifactMetadata: Schema.Schema<UploadGenericArtifactMetadata> =
+export const UploadGenericArtifactMetadata: Schema.Codec<UploadGenericArtifactMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadGenericArtifactMetadata",
   });
@@ -157,7 +157,7 @@ export interface RemovePrewarmedArtifactRequest {
   tag?: string;
 }
 
-export const RemovePrewarmedArtifactRequest: Schema.Schema<RemovePrewarmedArtifactRequest> =
+export const RemovePrewarmedArtifactRequest: Schema.Codec<RemovePrewarmedArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     streamLocation: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -173,7 +173,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -195,7 +195,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Status),
@@ -209,7 +209,7 @@ export interface UploadAptArtifactMediaResponse {
   operation?: Operation;
 }
 
-export const UploadAptArtifactMediaResponse: Schema.Schema<UploadAptArtifactMediaResponse> =
+export const UploadAptArtifactMediaResponse: Schema.Codec<UploadAptArtifactMediaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Operation),
   }).annotate({ identifier: "UploadAptArtifactMediaResponse" });
@@ -219,7 +219,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumReposi
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository> =
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository: Schema.Codec<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -247,7 +247,7 @@ export interface CleanupPolicyCondition {
   newerThan?: string;
 }
 
-export const CleanupPolicyCondition: Schema.Schema<CleanupPolicyCondition> =
+export const CleanupPolicyCondition: Schema.Codec<CleanupPolicyCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     olderThan: Schema.optional(Schema.String),
     tagState: Schema.optional(Schema.String),
@@ -264,7 +264,7 @@ export interface CleanupPolicyMostRecentVersions {
   keepCount?: number;
 }
 
-export const CleanupPolicyMostRecentVersions: Schema.Schema<CleanupPolicyMostRecentVersions> =
+export const CleanupPolicyMostRecentVersions: Schema.Codec<CleanupPolicyMostRecentVersions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
     keepCount: Schema.optional(Schema.Number),
@@ -281,7 +281,7 @@ export interface CleanupPolicy {
   condition?: CleanupPolicyCondition;
 }
 
-export const CleanupPolicy: Schema.Schema<CleanupPolicy> =
+export const CleanupPolicy: Schema.Codec<CleanupPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     mostRecentVersions: Schema.optional(CleanupPolicyMostRecentVersions),
@@ -306,7 +306,7 @@ export interface MavenArtifact {
   updateTime?: string;
 }
 
-export const MavenArtifact: Schema.Schema<MavenArtifact> =
+export const MavenArtifact: Schema.Codec<MavenArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     pomUri: Schema.optional(Schema.String),
@@ -326,7 +326,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -342,7 +342,7 @@ export interface Policy {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     etag: Schema.optional(Schema.String),
@@ -354,7 +354,7 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -368,7 +368,7 @@ export interface UpstreamPolicy {
   repository?: string;
 }
 
-export const UpstreamPolicy: Schema.Schema<UpstreamPolicy> =
+export const UpstreamPolicy: Schema.Codec<UpstreamPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priority: Schema.optional(Schema.Number),
     id: Schema.optional(Schema.String),
@@ -380,7 +380,7 @@ export interface VirtualRepositoryConfig {
   upstreamPolicies?: ReadonlyArray<UpstreamPolicy>;
 }
 
-export const VirtualRepositoryConfig: Schema.Schema<VirtualRepositoryConfig> =
+export const VirtualRepositoryConfig: Schema.Codec<VirtualRepositoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upstreamPolicies: Schema.optional(Schema.Array(UpstreamPolicy)),
   }).annotate({ identifier: "VirtualRepositoryConfig" });
@@ -394,7 +394,7 @@ export interface ExportedFile {
   gcsObjectPath?: string;
 }
 
-export const ExportedFile: Schema.Schema<ExportedFile> =
+export const ExportedFile: Schema.Codec<ExportedFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     hashes: Schema.optional(Schema.Array(Hash)),
@@ -406,7 +406,7 @@ export interface ExportArtifactMetadata {
   exportedFiles?: ReadonlyArray<ExportedFile>;
 }
 
-export const ExportArtifactMetadata: Schema.Schema<ExportArtifactMetadata> =
+export const ExportArtifactMetadata: Schema.Codec<ExportArtifactMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportedFiles: Schema.optional(Schema.Array(ExportedFile)),
   }).annotate({ identifier: "ExportArtifactMetadata" });
@@ -424,7 +424,7 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -440,7 +440,7 @@ export interface UploadKfpArtifactRequest {
   description?: string;
 }
 
-export const UploadKfpArtifactRequest: Schema.Schema<UploadKfpArtifactRequest> =
+export const UploadKfpArtifactRequest: Schema.Codec<UploadKfpArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
     description: Schema.optional(Schema.String),
@@ -451,7 +451,7 @@ export interface BatchDeleteVersionsMetadata {
   failedVersions?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteVersionsMetadata: Schema.Schema<BatchDeleteVersionsMetadata> =
+export const BatchDeleteVersionsMetadata: Schema.Codec<BatchDeleteVersionsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failedVersions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeleteVersionsMetadata" });
@@ -461,7 +461,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptReposi
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository> =
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository: Schema.Codec<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -480,7 +480,7 @@ export interface GenericArtifact {
   version?: string;
 }
 
-export const GenericArtifact: Schema.Schema<GenericArtifact> =
+export const GenericArtifact: Schema.Codec<GenericArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -495,18 +495,19 @@ export interface Tag {
   version?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tag" });
+  },
+).annotate({ identifier: "Tag" });
 
 export interface UploadFileMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
 
-export const UploadFileMediaResponse: Schema.Schema<UploadFileMediaResponse> =
+export const UploadFileMediaResponse: Schema.Codec<UploadFileMediaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Operation),
   }).annotate({ identifier: "UploadFileMediaResponse" });
@@ -516,7 +517,7 @@ export interface CheckPrewarmedArtifactResponse {
   prewarmedArtifact?: PrewarmedArtifact;
 }
 
-export const CheckPrewarmedArtifactResponse: Schema.Schema<CheckPrewarmedArtifactResponse> =
+export const CheckPrewarmedArtifactResponse: Schema.Codec<CheckPrewarmedArtifactResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prewarmedArtifact: Schema.optional(PrewarmedArtifact),
   }).annotate({ identifier: "CheckPrewarmedArtifactResponse" });
@@ -538,7 +539,7 @@ export interface ImageManifest {
   digest?: string;
 }
 
-export const ImageManifest: Schema.Schema<ImageManifest> =
+export const ImageManifest: Schema.Codec<ImageManifest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variant: Schema.optional(Schema.String),
     os: Schema.optional(Schema.String),
@@ -556,7 +557,7 @@ export interface UsernamePasswordCredentials {
   passwordSecretVersion?: string;
 }
 
-export const UsernamePasswordCredentials: Schema.Schema<UsernamePasswordCredentials> =
+export const UsernamePasswordCredentials: Schema.Codec<UsernamePasswordCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     passwordSecretVersion: Schema.optional(Schema.String),
@@ -569,7 +570,7 @@ export interface ImportGoogetArtifactsGcsSource {
   useWildcards?: boolean;
 }
 
-export const ImportGoogetArtifactsGcsSource: Schema.Schema<ImportGoogetArtifactsGcsSource> =
+export const ImportGoogetArtifactsGcsSource: Schema.Codec<ImportGoogetArtifactsGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uris: Schema.optional(Schema.Array(Schema.String)),
     useWildcards: Schema.optional(Schema.Boolean),
@@ -582,7 +583,7 @@ export interface ImportGoogetArtifactsErrorInfo {
   error?: Status;
 }
 
-export const ImportGoogetArtifactsErrorInfo: Schema.Schema<ImportGoogetArtifactsErrorInfo> =
+export const ImportGoogetArtifactsErrorInfo: Schema.Codec<ImportGoogetArtifactsErrorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(ImportGoogetArtifactsGcsSource),
     error: Schema.optional(Status),
@@ -590,7 +591,7 @@ export const ImportGoogetArtifactsErrorInfo: Schema.Schema<ImportGoogetArtifacts
 
 export interface UploadAptArtifactMetadata {}
 
-export const UploadAptArtifactMetadata: Schema.Schema<UploadAptArtifactMetadata> =
+export const UploadAptArtifactMetadata: Schema.Codec<UploadAptArtifactMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadAptArtifactMetadata",
   });
@@ -602,7 +603,7 @@ export interface BatchDeleteVersionsRequest {
   names?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteVersionsRequest: Schema.Schema<BatchDeleteVersionsRequest> =
+export const BatchDeleteVersionsRequest: Schema.Codec<BatchDeleteVersionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     names: Schema.optional(Schema.Array(Schema.String)),
@@ -623,7 +624,7 @@ export interface NpmPackage {
   updateTime?: string;
 }
 
-export const NpmPackage: Schema.Schema<NpmPackage> =
+export const NpmPackage: Schema.Codec<NpmPackage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
     packageName: Schema.optional(Schema.String),
@@ -640,7 +641,7 @@ export interface ListNpmPackagesResponse {
   nextPageToken?: string;
 }
 
-export const ListNpmPackagesResponse: Schema.Schema<ListNpmPackagesResponse> =
+export const ListNpmPackagesResponse: Schema.Codec<ListNpmPackagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     npmPackages: Schema.optional(Schema.Array(NpmPackage)),
     nextPageToken: Schema.optional(Schema.String),
@@ -665,7 +666,7 @@ export interface AptArtifact {
   architecture?: string;
 }
 
-export const AptArtifact: Schema.Schema<AptArtifact> =
+export const AptArtifact: Schema.Codec<AptArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     component: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -682,7 +683,7 @@ export interface PrewarmPlatform {
   os?: string;
 }
 
-export const PrewarmPlatform: Schema.Schema<PrewarmPlatform> =
+export const PrewarmPlatform: Schema.Codec<PrewarmPlatform> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     architecture: Schema.optional(Schema.String),
     os: Schema.optional(Schema.String),
@@ -703,7 +704,7 @@ export interface PrewarmArtifactRequest {
   tag?: string;
 }
 
-export const PrewarmArtifactRequest: Schema.Schema<PrewarmArtifactRequest> =
+export const PrewarmArtifactRequest: Schema.Codec<PrewarmArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platform: Schema.optional(PrewarmPlatform),
     version: Schema.optional(Schema.String),
@@ -725,7 +726,7 @@ export interface GoogleDevtoolsArtifactregistryV1Rule {
   condition?: Expr;
 }
 
-export const GoogleDevtoolsArtifactregistryV1Rule: Schema.Schema<GoogleDevtoolsArtifactregistryV1Rule> =
+export const GoogleDevtoolsArtifactregistryV1Rule: Schema.Codec<GoogleDevtoolsArtifactregistryV1Rule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageId: Schema.optional(Schema.String),
     operation: Schema.optional(Schema.String),
@@ -741,7 +742,7 @@ export interface ListRulesResponse {
   nextPageToken?: string;
 }
 
-export const ListRulesResponse: Schema.Schema<ListRulesResponse> =
+export const ListRulesResponse: Schema.Codec<ListRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(GoogleDevtoolsArtifactregistryV1Rule)),
     nextPageToken: Schema.optional(Schema.String),
@@ -762,7 +763,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumReposi
   repositoryPath?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository> =
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository: Schema.Codec<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositoryBase: Schema.optional(Schema.String),
     repositoryPath: Schema.optional(Schema.String),
@@ -778,7 +779,7 @@ export interface YumRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository;
 }
 
-export const YumRepository: Schema.Schema<YumRepository> =
+export const YumRepository: Schema.Codec<YumRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicRepository: Schema.optional(
       GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository,
@@ -795,7 +796,7 @@ export interface ImportYumArtifactsGcsSource {
   useWildcards?: boolean;
 }
 
-export const ImportYumArtifactsGcsSource: Schema.Schema<ImportYumArtifactsGcsSource> =
+export const ImportYumArtifactsGcsSource: Schema.Codec<ImportYumArtifactsGcsSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uris: Schema.optional(Schema.Array(Schema.String)),
     useWildcards: Schema.optional(Schema.Boolean),
@@ -806,7 +807,7 @@ export interface ImportYumArtifactsRequest {
   gcsSource?: ImportYumArtifactsGcsSource;
 }
 
-export const ImportYumArtifactsRequest: Schema.Schema<ImportYumArtifactsRequest> =
+export const ImportYumArtifactsRequest: Schema.Codec<ImportYumArtifactsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(ImportYumArtifactsGcsSource),
   }).annotate({ identifier: "ImportYumArtifactsRequest" });
@@ -816,7 +817,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmReposi
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository> =
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository: Schema.Codec<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -831,7 +832,7 @@ export interface NpmRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository;
 }
 
-export const NpmRepository: Schema.Schema<NpmRepository> =
+export const NpmRepository: Schema.Codec<NpmRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicRepository: Schema.optional(Schema.String),
     customRepository: Schema.optional(
@@ -841,14 +842,14 @@ export const NpmRepository: Schema.Schema<NpmRepository> =
 
 export interface UploadGoogetArtifactRequest {}
 
-export const UploadGoogetArtifactRequest: Schema.Schema<UploadGoogetArtifactRequest> =
+export const UploadGoogetArtifactRequest: Schema.Codec<UploadGoogetArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadGoogetArtifactRequest",
   });
 
 export interface UploadGoModuleMetadata {}
 
-export const UploadGoModuleMetadata: Schema.Schema<UploadGoModuleMetadata> =
+export const UploadGoModuleMetadata: Schema.Codec<UploadGoModuleMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadGoModuleMetadata",
   });
@@ -874,7 +875,7 @@ export interface PlatformLogsConfig {
     | (string & {});
 }
 
-export const PlatformLogsConfig: Schema.Schema<PlatformLogsConfig> =
+export const PlatformLogsConfig: Schema.Codec<PlatformLogsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     loggingState: Schema.optional(Schema.String),
     severityLevel: Schema.optional(Schema.String),
@@ -885,7 +886,7 @@ export interface DockerRepositoryConfig {
   immutableTags?: boolean;
 }
 
-export const DockerRepositoryConfig: Schema.Schema<DockerRepositoryConfig> =
+export const DockerRepositoryConfig: Schema.Codec<DockerRepositoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     immutableTags: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DockerRepositoryConfig" });
@@ -910,7 +911,7 @@ export interface VulnerabilityScanningConfig {
   enablementStateReason?: string;
 }
 
-export const VulnerabilityScanningConfig: Schema.Schema<VulnerabilityScanningConfig> =
+export const VulnerabilityScanningConfig: Schema.Codec<VulnerabilityScanningConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enablementConfig: Schema.optional(Schema.String),
     enablementState: Schema.optional(Schema.String),
@@ -930,7 +931,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptReposi
   repositoryPath?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository> =
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository: Schema.Codec<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositoryBase: Schema.optional(Schema.String),
     repositoryPath: Schema.optional(Schema.String),
@@ -946,7 +947,7 @@ export interface AptRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository;
 }
 
-export const AptRepository: Schema.Schema<AptRepository> =
+export const AptRepository: Schema.Codec<AptRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicRepository: Schema.optional(
       GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository,
@@ -961,7 +962,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRep
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository> =
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository: Schema.Codec<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -976,7 +977,7 @@ export interface PythonRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository;
 }
 
-export const PythonRepository: Schema.Schema<PythonRepository> =
+export const PythonRepository: Schema.Codec<PythonRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicRepository: Schema.optional(Schema.String),
     customRepository: Schema.optional(
@@ -989,7 +990,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRep
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository> =
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository: Schema.Codec<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -1007,7 +1008,7 @@ export interface DockerRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository;
 }
 
-export const DockerRepository: Schema.Schema<DockerRepository> =
+export const DockerRepository: Schema.Codec<DockerRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicRepository: Schema.optional(Schema.String),
     customRepository: Schema.optional(
@@ -1020,7 +1021,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepo
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository> =
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository: Schema.Codec<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -1038,7 +1039,7 @@ export interface MavenRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository;
 }
 
-export const MavenRepository: Schema.Schema<MavenRepository> =
+export const MavenRepository: Schema.Codec<MavenRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicRepository: Schema.optional(Schema.String),
     customRepository: Schema.optional(
@@ -1051,7 +1052,7 @@ export interface CommonRemoteRepository {
   uri?: string;
 }
 
-export const CommonRemoteRepository: Schema.Schema<CommonRemoteRepository> =
+export const CommonRemoteRepository: Schema.Codec<CommonRemoteRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommonRemoteRepository" });
@@ -1061,7 +1062,7 @@ export interface UpstreamCredentials {
   usernamePasswordCredentials?: UsernamePasswordCredentials;
 }
 
-export const UpstreamCredentials: Schema.Schema<UpstreamCredentials> =
+export const UpstreamCredentials: Schema.Codec<UpstreamCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usernamePasswordCredentials: Schema.optional(UsernamePasswordCredentials),
   }).annotate({ identifier: "UpstreamCredentials" });
@@ -1089,7 +1090,7 @@ export interface RemoteRepositoryConfig {
   upstreamCredentials?: UpstreamCredentials;
 }
 
-export const RemoteRepositoryConfig: Schema.Schema<RemoteRepositoryConfig> =
+export const RemoteRepositoryConfig: Schema.Codec<RemoteRepositoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aptRepository: Schema.optional(AptRepository),
     npmRepository: Schema.optional(NpmRepository),
@@ -1114,7 +1115,7 @@ export interface MavenRepositoryConfig {
     | (string & {});
 }
 
-export const MavenRepositoryConfig: Schema.Schema<MavenRepositoryConfig> =
+export const MavenRepositoryConfig: Schema.Codec<MavenRepositoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowSnapshotOverwrites: Schema.optional(Schema.Boolean),
     versionPolicy: Schema.optional(Schema.String),
@@ -1185,7 +1186,7 @@ export interface Repository {
   cleanupPolicyDryRun?: boolean;
 }
 
-export const Repository: Schema.Schema<Repository> =
+export const Repository: Schema.Codec<Repository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disallowUnspecifiedMode: Schema.optional(Schema.Boolean),
     platformLogsConfig: Schema.optional(PlatformLogsConfig),
@@ -1219,7 +1220,7 @@ export interface ListRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
+export const ListRepositoriesResponse: Schema.Codec<ListRepositoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositories: Schema.optional(Schema.Array(Repository)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1227,7 +1228,7 @@ export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1239,7 +1240,7 @@ export interface KfpArtifact {
   version?: string;
 }
 
-export const KfpArtifact: Schema.Schema<KfpArtifact> =
+export const KfpArtifact: Schema.Codec<KfpArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -1252,7 +1253,7 @@ export interface ImportAptArtifactsErrorInfo {
   error?: Status;
 }
 
-export const ImportAptArtifactsErrorInfo: Schema.Schema<ImportAptArtifactsErrorInfo> =
+export const ImportAptArtifactsErrorInfo: Schema.Codec<ImportAptArtifactsErrorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(ImportAptArtifactsGcsSource),
     error: Schema.optional(Status),
@@ -1265,7 +1266,7 @@ export interface ImportAptArtifactsResponse {
   errors?: ReadonlyArray<ImportAptArtifactsErrorInfo>;
 }
 
-export const ImportAptArtifactsResponse: Schema.Schema<ImportAptArtifactsResponse> =
+export const ImportAptArtifactsResponse: Schema.Codec<ImportAptArtifactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aptArtifacts: Schema.optional(Schema.Array(AptArtifact)),
     errors: Schema.optional(Schema.Array(ImportAptArtifactsErrorInfo)),
@@ -1280,7 +1281,7 @@ export interface CheckPrewarmedArtifactRequest {
   streamLocation?: string;
 }
 
-export const CheckPrewarmedArtifactRequest: Schema.Schema<CheckPrewarmedArtifactRequest> =
+export const CheckPrewarmedArtifactRequest: Schema.Codec<CheckPrewarmedArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.String),
@@ -1294,7 +1295,7 @@ export interface ImportYumArtifactsErrorInfo {
   error?: Status;
 }
 
-export const ImportYumArtifactsErrorInfo: Schema.Schema<ImportYumArtifactsErrorInfo> =
+export const ImportYumArtifactsErrorInfo: Schema.Codec<ImportYumArtifactsErrorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(ImportYumArtifactsGcsSource),
     error: Schema.optional(Status),
@@ -1305,7 +1306,7 @@ export interface RemovePrewarmedArtifactResponse {
   prewarmedArtifact?: PrewarmedArtifact;
 }
 
-export const RemovePrewarmedArtifactResponse: Schema.Schema<RemovePrewarmedArtifactResponse> =
+export const RemovePrewarmedArtifactResponse: Schema.Codec<RemovePrewarmedArtifactResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prewarmedArtifact: Schema.optional(PrewarmedArtifact),
   }).annotate({ identifier: "RemovePrewarmedArtifactResponse" });
@@ -1333,7 +1334,7 @@ export interface DockerImage {
   uploadTime?: string;
 }
 
-export const DockerImage: Schema.Schema<DockerImage> =
+export const DockerImage: Schema.Codec<DockerImage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(Schema.String)),
@@ -1366,7 +1367,7 @@ export interface GoogleDevtoolsArtifactregistryV1File {
   createTime?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1File: Schema.Schema<GoogleDevtoolsArtifactregistryV1File> =
+export const GoogleDevtoolsArtifactregistryV1File: Schema.Codec<GoogleDevtoolsArtifactregistryV1File> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hashes: Schema.optional(Schema.Array(Hash)),
     fetchTime: Schema.optional(Schema.String),
@@ -1380,7 +1381,7 @@ export const GoogleDevtoolsArtifactregistryV1File: Schema.Schema<GoogleDevtoolsA
 
 export interface DownloadFileResponse {}
 
-export const DownloadFileResponse: Schema.Schema<DownloadFileResponse> =
+export const DownloadFileResponse: Schema.Codec<DownloadFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DownloadFileResponse",
   });
@@ -1392,7 +1393,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1403,7 +1404,7 @@ export interface UploadGoModuleMediaResponse {
   operation?: Operation;
 }
 
-export const UploadGoModuleMediaResponse: Schema.Schema<UploadGoModuleMediaResponse> =
+export const UploadGoModuleMediaResponse: Schema.Codec<UploadGoModuleMediaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Operation),
   }).annotate({ identifier: "UploadGoModuleMediaResponse" });
@@ -1415,7 +1416,7 @@ export interface ListDockerImagesResponse {
   nextPageToken?: string;
 }
 
-export const ListDockerImagesResponse: Schema.Schema<ListDockerImagesResponse> =
+export const ListDockerImagesResponse: Schema.Codec<ListDockerImagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dockerImages: Schema.optional(Schema.Array(DockerImage)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1434,7 +1435,7 @@ export interface Package {
   annotations?: Record<string, string>;
 }
 
-export const Package: Schema.Schema<Package> =
+export const Package: Schema.Codec<Package> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1458,7 +1459,7 @@ export interface PythonPackage {
   updateTime?: string;
 }
 
-export const PythonPackage: Schema.Schema<PythonPackage> =
+export const PythonPackage: Schema.Codec<PythonPackage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1475,7 +1476,7 @@ export interface ListPythonPackagesResponse {
   pythonPackages?: ReadonlyArray<PythonPackage>;
 }
 
-export const ListPythonPackagesResponse: Schema.Schema<ListPythonPackagesResponse> =
+export const ListPythonPackagesResponse: Schema.Codec<ListPythonPackagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     pythonPackages: Schema.optional(Schema.Array(PythonPackage)),
@@ -1486,7 +1487,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -1500,7 +1501,7 @@ export interface GoogetArtifact {
   architecture?: string;
 }
 
-export const GoogetArtifact: Schema.Schema<GoogetArtifact> =
+export const GoogetArtifact: Schema.Codec<GoogetArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -1512,7 +1513,7 @@ export interface UploadGoogetArtifactResponse {
   googetArtifacts?: ReadonlyArray<GoogetArtifact>;
 }
 
-export const UploadGoogetArtifactResponse: Schema.Schema<UploadGoogetArtifactResponse> =
+export const UploadGoogetArtifactResponse: Schema.Codec<UploadGoogetArtifactResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googetArtifacts: Schema.optional(Schema.Array(GoogetArtifact)),
   }).annotate({ identifier: "UploadGoogetArtifactResponse" });
@@ -1524,7 +1525,7 @@ export interface ListPackagesResponse {
   nextPageToken?: string;
 }
 
-export const ListPackagesResponse: Schema.Schema<ListPackagesResponse> =
+export const ListPackagesResponse: Schema.Codec<ListPackagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packages: Schema.optional(Schema.Array(Package)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1532,14 +1533,14 @@ export const ListPackagesResponse: Schema.Schema<ListPackagesResponse> =
 
 export interface UploadGoModuleRequest {}
 
-export const UploadGoModuleRequest: Schema.Schema<UploadGoModuleRequest> =
+export const UploadGoModuleRequest: Schema.Codec<UploadGoModuleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadGoModuleRequest",
   });
 
 export interface ImportYumArtifactsMetadata {}
 
-export const ImportYumArtifactsMetadata: Schema.Schema<ImportYumArtifactsMetadata> =
+export const ImportYumArtifactsMetadata: Schema.Codec<ImportYumArtifactsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportYumArtifactsMetadata",
   });
@@ -1551,7 +1552,7 @@ export interface ImportGoogetArtifactsResponse {
   errors?: ReadonlyArray<ImportGoogetArtifactsErrorInfo>;
 }
 
-export const ImportGoogetArtifactsResponse: Schema.Schema<ImportGoogetArtifactsResponse> =
+export const ImportGoogetArtifactsResponse: Schema.Codec<ImportGoogetArtifactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     googetArtifacts: Schema.optional(Schema.Array(GoogetArtifact)),
     errors: Schema.optional(Schema.Array(ImportGoogetArtifactsErrorInfo)),
@@ -1564,7 +1565,7 @@ export interface ListTagsResponse {
   nextPageToken?: string;
 }
 
-export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
+export const ListTagsResponse: Schema.Codec<ListTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1572,7 +1573,7 @@ export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
 
 export interface ImportAptArtifactsMetadata {}
 
-export const ImportAptArtifactsMetadata: Schema.Schema<ImportAptArtifactsMetadata> =
+export const ImportAptArtifactsMetadata: Schema.Codec<ImportAptArtifactsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportAptArtifactsMetadata",
   });
@@ -1582,7 +1583,7 @@ export interface UploadGenericArtifactMediaResponse {
   operation?: Operation;
 }
 
-export const UploadGenericArtifactMediaResponse: Schema.Schema<UploadGenericArtifactMediaResponse> =
+export const UploadGenericArtifactMediaResponse: Schema.Codec<UploadGenericArtifactMediaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Operation),
   }).annotate({ identifier: "UploadGenericArtifactMediaResponse" });
@@ -1594,7 +1595,7 @@ export interface ListMavenArtifactsResponse {
   mavenArtifacts?: ReadonlyArray<MavenArtifact>;
 }
 
-export const ListMavenArtifactsResponse: Schema.Schema<ListMavenArtifactsResponse> =
+export const ListMavenArtifactsResponse: Schema.Codec<ListMavenArtifactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     mavenArtifacts: Schema.optional(Schema.Array(MavenArtifact)),
@@ -1605,7 +1606,7 @@ export interface UploadFileRequest {
   fileId?: string;
 }
 
-export const UploadFileRequest: Schema.Schema<UploadFileRequest> =
+export const UploadFileRequest: Schema.Codec<UploadFileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UploadFileRequest" });
@@ -1615,7 +1616,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -1635,7 +1636,7 @@ export interface YumArtifact {
   architecture?: string;
 }
 
-export const YumArtifact: Schema.Schema<YumArtifact> =
+export const YumArtifact: Schema.Codec<YumArtifact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -1652,7 +1653,7 @@ export interface ExportArtifactRequest {
   sourceTag?: string;
 }
 
-export const ExportArtifactRequest: Schema.Schema<ExportArtifactRequest> =
+export const ExportArtifactRequest: Schema.Codec<ExportArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsPath: Schema.optional(Schema.String),
     sourceVersion: Schema.optional(Schema.String),
@@ -1678,7 +1679,7 @@ export interface Version {
   metadata?: Record<string, unknown>;
 }
 
-export const Version: Schema.Schema<Version> =
+export const Version: Schema.Codec<Version> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     updateTime: Schema.optional(Schema.String),
@@ -1697,7 +1698,7 @@ export interface ListVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
+export const ListVersionsResponse: Schema.Codec<ListVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(Version)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1708,7 +1709,7 @@ export interface UploadAptArtifactResponse {
   aptArtifacts?: ReadonlyArray<AptArtifact>;
 }
 
-export const UploadAptArtifactResponse: Schema.Schema<UploadAptArtifactResponse> =
+export const UploadAptArtifactResponse: Schema.Codec<UploadAptArtifactResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aptArtifacts: Schema.optional(Schema.Array(AptArtifact)),
   }).annotate({ identifier: "UploadAptArtifactResponse" });
@@ -1720,7 +1721,7 @@ export interface ImportYumArtifactsResponse {
   errors?: ReadonlyArray<ImportYumArtifactsErrorInfo>;
 }
 
-export const ImportYumArtifactsResponse: Schema.Schema<ImportYumArtifactsResponse> =
+export const ImportYumArtifactsResponse: Schema.Codec<ImportYumArtifactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yumArtifacts: Schema.optional(Schema.Array(YumArtifact)),
     errors: Schema.optional(Schema.Array(ImportYumArtifactsErrorInfo)),
@@ -1731,7 +1732,7 @@ export interface UploadKfpArtifactMediaResponse {
   operation?: Operation;
 }
 
-export const UploadKfpArtifactMediaResponse: Schema.Schema<UploadKfpArtifactMediaResponse> =
+export const UploadKfpArtifactMediaResponse: Schema.Codec<UploadKfpArtifactMediaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Operation),
   }).annotate({ identifier: "UploadKfpArtifactMediaResponse" });
@@ -1741,7 +1742,7 @@ export interface UploadYumArtifactMediaResponse {
   operation?: Operation;
 }
 
-export const UploadYumArtifactMediaResponse: Schema.Schema<UploadYumArtifactMediaResponse> =
+export const UploadYumArtifactMediaResponse: Schema.Codec<UploadYumArtifactMediaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Operation),
   }).annotate({ identifier: "UploadYumArtifactMediaResponse" });
@@ -1757,7 +1758,7 @@ export interface GoModule {
   version?: string;
 }
 
-export const GoModule: Schema.Schema<GoModule> =
+export const GoModule: Schema.Codec<GoModule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1786,7 +1787,7 @@ export interface Attachment {
   createTime?: string;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
+export const Attachment: Schema.Codec<Attachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ociVersionName: Schema.optional(Schema.String),
     attachmentNamespace: Schema.optional(Schema.String),
@@ -1806,7 +1807,7 @@ export interface ListAttachmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListAttachmentsResponse: Schema.Schema<ListAttachmentsResponse> =
+export const ListAttachmentsResponse: Schema.Codec<ListAttachmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attachments: Schema.optional(Schema.Array(Attachment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1814,7 +1815,7 @@ export const ListAttachmentsResponse: Schema.Schema<ListAttachmentsResponse> =
 
 export interface UploadYumArtifactMetadata {}
 
-export const UploadYumArtifactMetadata: Schema.Schema<UploadYumArtifactMetadata> =
+export const UploadYumArtifactMetadata: Schema.Codec<UploadYumArtifactMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadYumArtifactMetadata",
   });
@@ -1828,7 +1829,7 @@ export interface UploadGenericArtifactRequest {
   versionId?: string;
 }
 
-export const UploadGenericArtifactRequest: Schema.Schema<UploadGenericArtifactRequest> =
+export const UploadGenericArtifactRequest: Schema.Codec<UploadGenericArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filename: Schema.optional(Schema.String),
     packageId: Schema.optional(Schema.String),
@@ -1837,7 +1838,7 @@ export const UploadGenericArtifactRequest: Schema.Schema<UploadGenericArtifactRe
 
 export interface ImportGoogetArtifactsMetadata {}
 
-export const ImportGoogetArtifactsMetadata: Schema.Schema<ImportGoogetArtifactsMetadata> =
+export const ImportGoogetArtifactsMetadata: Schema.Codec<ImportGoogetArtifactsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportGoogetArtifactsMetadata",
   });
@@ -1849,7 +1850,7 @@ export interface ProjectConfig {
   platformLogsConfig?: PlatformLogsConfig;
 }
 
-export const ProjectConfig: Schema.Schema<ProjectConfig> =
+export const ProjectConfig: Schema.Codec<ProjectConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     platformLogsConfig: Schema.optional(PlatformLogsConfig),
@@ -1862,7 +1863,7 @@ export interface VPCSCConfig {
   vpcscPolicy?: "VPCSC_POLICY_UNSPECIFIED" | "DENY" | "ALLOW" | (string & {});
 }
 
-export const VPCSCConfig: Schema.Schema<VPCSCConfig> =
+export const VPCSCConfig: Schema.Codec<VPCSCConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     vpcscPolicy: Schema.optional(Schema.String),
@@ -1873,35 +1874,35 @@ export interface UploadGoogetArtifactMediaResponse {
   operation?: Operation;
 }
 
-export const UploadGoogetArtifactMediaResponse: Schema.Schema<UploadGoogetArtifactMediaResponse> =
+export const UploadGoogetArtifactMediaResponse: Schema.Codec<UploadGoogetArtifactMediaResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Operation),
   }).annotate({ identifier: "UploadGoogetArtifactMediaResponse" });
 
 export interface UploadYumArtifactRequest {}
 
-export const UploadYumArtifactRequest: Schema.Schema<UploadYumArtifactRequest> =
+export const UploadYumArtifactRequest: Schema.Codec<UploadYumArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadYumArtifactRequest",
   });
 
 export interface UploadAptArtifactRequest {}
 
-export const UploadAptArtifactRequest: Schema.Schema<UploadAptArtifactRequest> =
+export const UploadAptArtifactRequest: Schema.Codec<UploadAptArtifactRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadAptArtifactRequest",
   });
 
 export interface UploadKfpArtifactMetadata {}
 
-export const UploadKfpArtifactMetadata: Schema.Schema<UploadKfpArtifactMetadata> =
+export const UploadKfpArtifactMetadata: Schema.Codec<UploadKfpArtifactMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadKfpArtifactMetadata",
   });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -1911,7 +1912,7 @@ export interface PrewarmArtifactResponse {
   prewarmedArtifact?: PrewarmedArtifact;
 }
 
-export const PrewarmArtifactResponse: Schema.Schema<PrewarmArtifactResponse> =
+export const PrewarmArtifactResponse: Schema.Codec<PrewarmArtifactResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     prewarmedArtifact: Schema.optional(PrewarmedArtifact),
   }).annotate({ identifier: "PrewarmArtifactResponse" });
@@ -1923,7 +1924,7 @@ export interface ListFilesResponse {
   nextPageToken?: string;
 }
 
-export const ListFilesResponse: Schema.Schema<ListFilesResponse> =
+export const ListFilesResponse: Schema.Codec<ListFilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Array(GoogleDevtoolsArtifactregistryV1File)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1934,7 +1935,7 @@ export interface UploadYumArtifactResponse {
   yumArtifacts?: ReadonlyArray<YumArtifact>;
 }
 
-export const UploadYumArtifactResponse: Schema.Schema<UploadYumArtifactResponse> =
+export const UploadYumArtifactResponse: Schema.Codec<UploadYumArtifactResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yumArtifacts: Schema.optional(Schema.Array(YumArtifact)),
   }).annotate({ identifier: "UploadYumArtifactResponse" });
@@ -1944,14 +1945,14 @@ export interface ImportGoogetArtifactsRequest {
   gcsSource?: ImportGoogetArtifactsGcsSource;
 }
 
-export const ImportGoogetArtifactsRequest: Schema.Schema<ImportGoogetArtifactsRequest> =
+export const ImportGoogetArtifactsRequest: Schema.Codec<ImportGoogetArtifactsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcsSource: Schema.optional(ImportGoogetArtifactsGcsSource),
   }).annotate({ identifier: "ImportGoogetArtifactsRequest" });
 
 export interface OperationMetadata {}
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "OperationMetadata",
   });
@@ -1961,7 +1962,7 @@ export interface ExportArtifactResponse {
   exportedVersion?: Version;
 }
 
-export const ExportArtifactResponse: Schema.Schema<ExportArtifactResponse> =
+export const ExportArtifactResponse: Schema.Codec<ExportArtifactResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportedVersion: Schema.optional(Version),
   }).annotate({ identifier: "ExportArtifactResponse" });
@@ -2031,7 +2032,7 @@ export const GetProjectSettingsProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectSettingsProjectsRequest>;
+  ) as unknown as Schema.Codec<GetProjectSettingsProjectsRequest>;
 
 export type GetProjectSettingsProjectsResponse = ProjectSettings;
 export const GetProjectSettingsProjectsResponse =
@@ -2071,7 +2072,7 @@ export const UpdateProjectSettingsProjectsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectSettingsProjectsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectSettingsProjectsRequest>;
 
 export type UpdateProjectSettingsProjectsResponse = ProjectSettings;
 export const UpdateProjectSettingsProjectsResponse =
@@ -2107,7 +2108,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -2138,7 +2139,7 @@ export const GetVpcscConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVpcscConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetVpcscConfigProjectsLocationsRequest>;
 
 export type GetVpcscConfigProjectsLocationsResponse = VPCSCConfig;
 export const GetVpcscConfigProjectsLocationsResponse =
@@ -2172,7 +2173,7 @@ export const GetProjectConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectConfigProjectsLocationsRequest>;
 
 export type GetProjectConfigProjectsLocationsResponse = ProjectConfig;
 export const GetProjectConfigProjectsLocationsResponse =
@@ -2212,7 +2213,7 @@ export const UpdateProjectConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectConfigProjectsLocationsRequest>;
 
 export type UpdateProjectConfigProjectsLocationsResponse = ProjectConfig;
 export const UpdateProjectConfigProjectsLocationsResponse =
@@ -2254,7 +2255,7 @@ export const UpdateVpcscConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateVpcscConfigProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateVpcscConfigProjectsLocationsRequest>;
 
 export type UpdateVpcscConfigProjectsLocationsResponse = VPCSCConfig;
 export const UpdateVpcscConfigProjectsLocationsResponse =
@@ -2304,7 +2305,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -2342,7 +2343,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -2378,7 +2379,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -2424,7 +2425,7 @@ export const ListProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/repositories" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesRequest>;
 
 export type ListProjectsLocationsRepositoriesResponse =
   ListRepositoriesResponse;
@@ -2469,7 +2470,7 @@ export const PatchProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesRequest>;
 
 export type PatchProjectsLocationsRepositoriesResponse = Repository;
 export const PatchProjectsLocationsRepositoriesResponse =
@@ -2512,7 +2513,7 @@ export const RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest>;
 
 export type RemovePrewarmedArtifactProjectsLocationsRepositoriesResponse =
   RemovePrewarmedArtifactResponse;
@@ -2554,7 +2555,7 @@ export const GetIamPolicyProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 export type GetIamPolicyProjectsLocationsRepositoriesResponse = Policy;
 export const GetIamPolicyProjectsLocationsRepositoriesResponse =
@@ -2595,7 +2596,7 @@ export const PrewarmArtifactProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PrewarmArtifactProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<PrewarmArtifactProjectsLocationsRepositoriesRequest>;
 
 export type PrewarmArtifactProjectsLocationsRepositoriesResponse = Operation;
 export const PrewarmArtifactProjectsLocationsRepositoriesResponse =
@@ -2643,7 +2644,7 @@ export const CreateProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesRequest>;
 
 export type CreateProjectsLocationsRepositoriesResponse = Operation;
 export const CreateProjectsLocationsRepositoriesResponse =
@@ -2679,7 +2680,7 @@ export const GetProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesRequest>;
 
 export type GetProjectsLocationsRepositoriesResponse = Repository;
 export const GetProjectsLocationsRepositoriesResponse =
@@ -2720,7 +2721,7 @@ export const TestIamPermissionsProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
 
 export type TestIamPermissionsProjectsLocationsRepositoriesResponse =
   TestIamPermissionsResponse;
@@ -2757,7 +2758,7 @@ export const DeleteProjectsLocationsRepositoriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesRequest>;
 
 export type DeleteProjectsLocationsRepositoriesResponse = Operation;
 export const DeleteProjectsLocationsRepositoriesResponse =
@@ -2800,7 +2801,7 @@ export const ExportArtifactProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportArtifactProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<ExportArtifactProjectsLocationsRepositoriesRequest>;
 
 export type ExportArtifactProjectsLocationsRepositoriesResponse = Operation;
 export const ExportArtifactProjectsLocationsRepositoriesResponse =
@@ -2843,7 +2844,7 @@ export const CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest>;
 
 export type CheckPrewarmedArtifactProjectsLocationsRepositoriesResponse =
   CheckPrewarmedArtifactResponse;
@@ -2887,7 +2888,7 @@ export const SetIamPolicyProjectsLocationsRepositoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 export type SetIamPolicyProjectsLocationsRepositoriesResponse = Policy;
 export const SetIamPolicyProjectsLocationsRepositoriesResponse =
@@ -2930,7 +2931,7 @@ export const UploadProjectsLocationsRepositoriesKfpArtifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsRepositoriesKfpArtifactsRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsRepositoriesKfpArtifactsRequest>;
 
 export type UploadProjectsLocationsRepositoriesKfpArtifactsResponse =
   UploadKfpArtifactMediaResponse;
@@ -2974,7 +2975,7 @@ export const UploadProjectsLocationsRepositoriesGenericArtifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsRepositoriesGenericArtifactsRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsRepositoriesGenericArtifactsRequest>;
 
 export type UploadProjectsLocationsRepositoriesGenericArtifactsResponse =
   UploadGenericArtifactMediaResponse;
@@ -3017,7 +3018,7 @@ export const ListProjectsLocationsRepositoriesPythonPackagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/pythonPackages" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPythonPackagesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesPythonPackagesRequest>;
 
 export type ListProjectsLocationsRepositoriesPythonPackagesResponse =
   ListPythonPackagesResponse;
@@ -3056,7 +3057,7 @@ export const GetProjectsLocationsRepositoriesPythonPackagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesPythonPackagesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesPythonPackagesRequest>;
 
 export type GetProjectsLocationsRepositoriesPythonPackagesResponse =
   PythonPackage;
@@ -3098,7 +3099,7 @@ export const ImportProjectsLocationsRepositoriesGoogetArtifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsRepositoriesGoogetArtifactsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsRepositoriesGoogetArtifactsRequest>;
 
 export type ImportProjectsLocationsRepositoriesGoogetArtifactsResponse =
   Operation;
@@ -3142,7 +3143,7 @@ export const UploadProjectsLocationsRepositoriesGoogetArtifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsRepositoriesGoogetArtifactsRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsRepositoriesGoogetArtifactsRequest>;
 
 export type UploadProjectsLocationsRepositoriesGoogetArtifactsResponse =
   UploadGoogetArtifactMediaResponse;
@@ -3179,7 +3180,7 @@ export const GetProjectsLocationsRepositoriesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesAttachmentsRequest>;
 
 export type GetProjectsLocationsRepositoriesAttachmentsResponse = Attachment;
 export const GetProjectsLocationsRepositoriesAttachmentsResponse =
@@ -3222,7 +3223,7 @@ export const ListProjectsLocationsRepositoriesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attachments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesAttachmentsRequest>;
 
 export type ListProjectsLocationsRepositoriesAttachmentsResponse =
   ListAttachmentsResponse;
@@ -3261,7 +3262,7 @@ export const DeleteProjectsLocationsRepositoriesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesAttachmentsRequest>;
 
 export type DeleteProjectsLocationsRepositoriesAttachmentsResponse = Operation;
 export const DeleteProjectsLocationsRepositoriesAttachmentsResponse =
@@ -3305,7 +3306,7 @@ export const CreateProjectsLocationsRepositoriesAttachmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/attachments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesAttachmentsRequest>;
 
 export type CreateProjectsLocationsRepositoriesAttachmentsResponse = Operation;
 export const CreateProjectsLocationsRepositoriesAttachmentsResponse =
@@ -3350,7 +3351,7 @@ export const ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/prewarmedArtifacts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest>;
 
 export type ListProjectsLocationsRepositoriesPrewarmedArtifactsResponse =
   ListPrewarmedArtifactsResponse;
@@ -3396,7 +3397,7 @@ export const UploadProjectsLocationsRepositoriesGoModulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsRepositoriesGoModulesRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsRepositoriesGoModulesRequest>;
 
 export type UploadProjectsLocationsRepositoriesGoModulesResponse =
   UploadGoModuleMediaResponse;
@@ -3439,7 +3440,7 @@ export const ListProjectsLocationsRepositoriesNpmPackagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/npmPackages" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesNpmPackagesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesNpmPackagesRequest>;
 
 export type ListProjectsLocationsRepositoriesNpmPackagesResponse =
   ListNpmPackagesResponse;
@@ -3478,7 +3479,7 @@ export const GetProjectsLocationsRepositoriesNpmPackagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesNpmPackagesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesNpmPackagesRequest>;
 
 export type GetProjectsLocationsRepositoriesNpmPackagesResponse = NpmPackage;
 export const GetProjectsLocationsRepositoriesNpmPackagesResponse =
@@ -3519,7 +3520,7 @@ export const ImportProjectsLocationsRepositoriesAptArtifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsRepositoriesAptArtifactsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsRepositoriesAptArtifactsRequest>;
 
 export type ImportProjectsLocationsRepositoriesAptArtifactsResponse = Operation;
 export const ImportProjectsLocationsRepositoriesAptArtifactsResponse =
@@ -3562,7 +3563,7 @@ export const UploadProjectsLocationsRepositoriesAptArtifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsRepositoriesAptArtifactsRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsRepositoriesAptArtifactsRequest>;
 
 export type UploadProjectsLocationsRepositoriesAptArtifactsResponse =
   UploadAptArtifactMediaResponse;
@@ -3606,7 +3607,7 @@ export const ImportProjectsLocationsRepositoriesYumArtifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsRepositoriesYumArtifactsRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsRepositoriesYumArtifactsRequest>;
 
 export type ImportProjectsLocationsRepositoriesYumArtifactsResponse = Operation;
 export const ImportProjectsLocationsRepositoriesYumArtifactsResponse =
@@ -3649,7 +3650,7 @@ export const UploadProjectsLocationsRepositoriesYumArtifactsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsRepositoriesYumArtifactsRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsRepositoriesYumArtifactsRequest>;
 
 export type UploadProjectsLocationsRepositoriesYumArtifactsResponse =
   UploadYumArtifactMediaResponse;
@@ -3692,7 +3693,7 @@ export const ListProjectsLocationsRepositoriesMavenArtifactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/mavenArtifacts" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesMavenArtifactsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesMavenArtifactsRequest>;
 
 export type ListProjectsLocationsRepositoriesMavenArtifactsResponse =
   ListMavenArtifactsResponse;
@@ -3731,7 +3732,7 @@ export const GetProjectsLocationsRepositoriesMavenArtifactsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesMavenArtifactsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesMavenArtifactsRequest>;
 
 export type GetProjectsLocationsRepositoriesMavenArtifactsResponse =
   MavenArtifact;
@@ -3772,7 +3773,7 @@ export const ListProjectsLocationsRepositoriesRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/rules" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesRulesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesRulesRequest>;
 
 export type ListProjectsLocationsRepositoriesRulesResponse = ListRulesResponse;
 export const ListProjectsLocationsRepositoriesRulesResponse =
@@ -3818,7 +3819,7 @@ export const PatchProjectsLocationsRepositoriesRulesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesRulesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesRulesRequest>;
 
 export type PatchProjectsLocationsRepositoriesRulesResponse =
   GoogleDevtoolsArtifactregistryV1Rule;
@@ -3855,7 +3856,7 @@ export const DeleteProjectsLocationsRepositoriesRulesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesRulesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesRulesRequest>;
 
 export type DeleteProjectsLocationsRepositoriesRulesResponse = Empty;
 export const DeleteProjectsLocationsRepositoriesRulesResponse =
@@ -3899,7 +3900,7 @@ export const CreateProjectsLocationsRepositoriesRulesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/rules", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesRulesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesRulesRequest>;
 
 export type CreateProjectsLocationsRepositoriesRulesResponse =
   GoogleDevtoolsArtifactregistryV1Rule;
@@ -3936,7 +3937,7 @@ export const GetProjectsLocationsRepositoriesRulesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesRulesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesRulesRequest>;
 
 export type GetProjectsLocationsRepositoriesRulesResponse =
   GoogleDevtoolsArtifactregistryV1Rule;
@@ -3980,7 +3981,7 @@ export const ListProjectsLocationsRepositoriesDockerImagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dockerImages" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesDockerImagesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesDockerImagesRequest>;
 
 export type ListProjectsLocationsRepositoriesDockerImagesResponse =
   ListDockerImagesResponse;
@@ -4019,7 +4020,7 @@ export const GetProjectsLocationsRepositoriesDockerImagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesDockerImagesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesDockerImagesRequest>;
 
 export type GetProjectsLocationsRepositoriesDockerImagesResponse = DockerImage;
 export const GetProjectsLocationsRepositoriesDockerImagesResponse =
@@ -4060,7 +4061,7 @@ export const UploadProjectsLocationsRepositoriesFilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsRepositoriesFilesRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsRepositoriesFilesRequest>;
 
 export type UploadProjectsLocationsRepositoriesFilesResponse =
   UploadFileMediaResponse;
@@ -4097,7 +4098,7 @@ export const DeleteProjectsLocationsRepositoriesFilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesFilesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesFilesRequest>;
 
 export type DeleteProjectsLocationsRepositoriesFilesResponse = Operation;
 export const DeleteProjectsLocationsRepositoriesFilesResponse =
@@ -4133,7 +4134,7 @@ export const GetProjectsLocationsRepositoriesFilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesFilesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesFilesRequest>;
 
 export type GetProjectsLocationsRepositoriesFilesResponse =
   GoogleDevtoolsArtifactregistryV1File;
@@ -4168,7 +4169,7 @@ export const DownloadProjectsLocationsRepositoriesFilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsLocationsRepositoriesFilesRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsLocationsRepositoriesFilesRequest>;
 
 export type DownloadProjectsLocationsRepositoriesFilesResponse =
   DownloadFileResponse;
@@ -4215,7 +4216,7 @@ export const ListProjectsLocationsRepositoriesFilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/files" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesFilesRequest>;
 
 export type ListProjectsLocationsRepositoriesFilesResponse = ListFilesResponse;
 export const ListProjectsLocationsRepositoriesFilesResponse =
@@ -4261,7 +4262,7 @@ export const PatchProjectsLocationsRepositoriesFilesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesFilesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesFilesRequest>;
 
 export type PatchProjectsLocationsRepositoriesFilesResponse =
   GoogleDevtoolsArtifactregistryV1File;
@@ -4310,7 +4311,7 @@ export const ListProjectsLocationsRepositoriesPackagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/packages" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesPackagesRequest>;
 
 export type ListProjectsLocationsRepositoriesPackagesResponse =
   ListPackagesResponse;
@@ -4349,7 +4350,7 @@ export const DeleteProjectsLocationsRepositoriesPackagesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesPackagesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesPackagesRequest>;
 
 export type DeleteProjectsLocationsRepositoriesPackagesResponse = Operation;
 export const DeleteProjectsLocationsRepositoriesPackagesResponse =
@@ -4391,7 +4392,7 @@ export const PatchProjectsLocationsRepositoriesPackagesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesPackagesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesPackagesRequest>;
 
 export type PatchProjectsLocationsRepositoriesPackagesResponse = Package;
 export const PatchProjectsLocationsRepositoriesPackagesResponse =
@@ -4427,7 +4428,7 @@ export const GetProjectsLocationsRepositoriesPackagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesPackagesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesPackagesRequest>;
 
 export type GetProjectsLocationsRepositoriesPackagesResponse = Package;
 export const GetProjectsLocationsRepositoriesPackagesResponse =
@@ -4468,7 +4469,7 @@ export const BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type BatchDeleteProjectsLocationsRepositoriesPackagesVersionsResponse =
   Operation;
@@ -4520,7 +4521,7 @@ export const ListProjectsLocationsRepositoriesPackagesVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type ListProjectsLocationsRepositoriesPackagesVersionsResponse =
   ListVersionsResponse;
@@ -4565,7 +4566,7 @@ export const PatchProjectsLocationsRepositoriesPackagesVersionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesPackagesVersionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type PatchProjectsLocationsRepositoriesPackagesVersionsResponse =
   Version;
@@ -4605,7 +4606,7 @@ export const GetProjectsLocationsRepositoriesPackagesVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type GetProjectsLocationsRepositoriesPackagesVersionsResponse = Version;
 export const GetProjectsLocationsRepositoriesPackagesVersionsResponse =
@@ -4642,7 +4643,7 @@ export const DeleteProjectsLocationsRepositoriesPackagesVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type DeleteProjectsLocationsRepositoriesPackagesVersionsResponse =
   Operation;
@@ -4688,7 +4689,7 @@ export const ListProjectsLocationsRepositoriesPackagesTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/tags" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRepositoriesPackagesTagsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRepositoriesPackagesTagsRequest>;
 
 export type ListProjectsLocationsRepositoriesPackagesTagsResponse =
   ListTagsResponse;
@@ -4733,7 +4734,7 @@ export const PatchProjectsLocationsRepositoriesPackagesTagsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsRepositoriesPackagesTagsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsRepositoriesPackagesTagsRequest>;
 
 export type PatchProjectsLocationsRepositoriesPackagesTagsResponse = Tag;
 export const PatchProjectsLocationsRepositoriesPackagesTagsResponse =
@@ -4769,7 +4770,7 @@ export const DeleteProjectsLocationsRepositoriesPackagesTagsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsRepositoriesPackagesTagsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsRepositoriesPackagesTagsRequest>;
 
 export type DeleteProjectsLocationsRepositoriesPackagesTagsResponse = Empty;
 export const DeleteProjectsLocationsRepositoriesPackagesTagsResponse =
@@ -4811,7 +4812,7 @@ export const CreateProjectsLocationsRepositoriesPackagesTagsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/tags", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsRepositoriesPackagesTagsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsRepositoriesPackagesTagsRequest>;
 
 export type CreateProjectsLocationsRepositoriesPackagesTagsResponse = Tag;
 export const CreateProjectsLocationsRepositoriesPackagesTagsResponse =
@@ -4847,7 +4848,7 @@ export const GetProjectsLocationsRepositoriesPackagesTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRepositoriesPackagesTagsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRepositoriesPackagesTagsRequest>;
 
 export type GetProjectsLocationsRepositoriesPackagesTagsResponse = Tag;
 export const GetProjectsLocationsRepositoriesPackagesTagsResponse =

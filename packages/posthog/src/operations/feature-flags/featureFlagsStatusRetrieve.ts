@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsStatusRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const FeatureFlagsStatusRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,11 +17,19 @@ export const FeatureFlagsStatusRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/feature_flags/{id}/status/",
     }),
-  );
-export type FeatureFlagsStatusRetrieveInput =
-  typeof FeatureFlagsStatusRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsStatusRetrieveInput>;
 
 // Output Schema
+export interface FeatureFlagsStatusRetrieveOutput {
+  status?: string;
+  reason?: string;
+  rollout?: {
+    effectively_full_rollout: boolean;
+    has_targeting_conditions: boolean;
+    max_rollout_percentage: number | null;
+    is_multivariate: boolean;
+  };
+}
 export const FeatureFlagsStatusRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
@@ -30,9 +42,7 @@ export const FeatureFlagsStatusRetrieveOutput =
         is_multivariate: Schema.Boolean,
       }),
     ),
-  });
-export type FeatureFlagsStatusRetrieveOutput =
-  typeof FeatureFlagsStatusRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsStatusRetrieveOutput>;
 
 // The operation
 /**

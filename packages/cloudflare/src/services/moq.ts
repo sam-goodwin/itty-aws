@@ -5,12 +5,94 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service moq
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface LingeringSubscribe {
+  enabled?: boolean | null;
+  /** Relay-level ceiling on lingering subscribe timeout (ms). Default 30000. */
+  maxTimeoutMs?: number | null;
+}
+const LingeringSubscribe = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    maxTimeoutMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({ enabled: "enabled", maxTimeoutMs: "max_timeout_ms" }),
+  ),
+) as unknown as Schema.Codec<LingeringSubscribe>;
+
+interface Origin {
+  /** Upstream origin relay URL. */
+  url?: string | null;
+}
+const Origin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Origin>;
+
+interface OriginFallback {
+  enabled?: boolean | null;
+  /** Ordered list of upstream origin relays. Each entry is an object (not a bare string) so per-origin configuration can be added in the future without another breaking change. */
+  origins?: { url?: string | null }[] | null;
+}
+const OriginFallback = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    origins: Schema.optional(Schema.Union([Schema.Array(Origin), Schema.Null])),
+  }),
+) as unknown as Schema.Codec<OriginFallback>;
+
+interface Config {
+  lingeringSubscribe?: {
+    enabled?: boolean | null;
+    maxTimeoutMs?: number | null;
+  } | null;
+  originFallback?: {
+    enabled?: boolean | null;
+    origins?: { url?: string | null }[] | null;
+  } | null;
+}
+const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lingeringSubscribe: Schema.optional(
+      Schema.Union([LingeringSubscribe, Schema.Null]),
+    ),
+    originFallback: Schema.optional(
+      Schema.Union([OriginFallback, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      lingeringSubscribe: "lingering_subscribe",
+      originFallback: "origin_fallback",
+    }),
+  ),
+) as unknown as Schema.Codec<Config>;
+
+interface ListRelaysResponseResult {
+  created: string;
+  modified: string;
+  name: string;
+  uid: string;
+}
+const ListRelaysResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      created: Schema.String,
+      modified: Schema.String,
+      name: Schema.String,
+      uid: Schema.String,
+    }),
+) as unknown as Schema.Codec<ListRelaysResponseResult>;
 
 // =============================================================================
 // Relay
@@ -32,7 +114,7 @@ export const GetRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/moq/relays/{relayId}",
     }),
   ),
-) as unknown as Schema.Schema<GetRelayRequest>;
+) as unknown as Schema.Codec<GetRelayRequest>;
 
 export interface GetRelayResponse {
   /** origin_fallback and lingering_subscribe are mutually exclusive. */
@@ -56,53 +138,7 @@ export interface GetRelayResponse {
 
 export const GetRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
-    config: Schema.Struct({
-      lingeringSubscribe: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            maxTimeoutMs: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              enabled: "enabled",
-              maxTimeoutMs: "max_timeout_ms",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      originFallback: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            origins: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Struct({
-                    url: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        lingeringSubscribe: "lingering_subscribe",
-        originFallback: "origin_fallback",
-      }),
-    ),
+    config: Config,
     created: Schema.String,
     modified: Schema.String,
     name: Schema.String,
@@ -111,7 +147,7 @@ export const GetRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       Schema.Union([Schema.Literal("connected"), Schema.Null]),
     ),
   }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetRelayResponse>;
+) as unknown as Schema.Codec<GetRelayResponse>;
 
 export type GetRelayError = DefaultErrors;
 
@@ -154,7 +190,7 @@ export const ListRelaysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/moq/relays" }),
     ),
-) as unknown as Schema.Schema<ListRelaysRequest>;
+) as unknown as Schema.Codec<ListRelaysRequest>;
 
 export interface ListRelaysResponse {
   result: { created: string; modified: string; name: string; uid: string }[];
@@ -163,16 +199,9 @@ export interface ListRelaysResponse {
 export const ListRelaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          created: Schema.String,
-          modified: Schema.String,
-          name: Schema.String,
-          uid: Schema.String,
-        }),
-      ),
+      result: Schema.Array(ListRelaysResponseResult),
     }),
-) as unknown as Schema.Schema<ListRelaysResponse>;
+) as unknown as Schema.Codec<ListRelaysResponse>;
 
 export type ListRelaysError = DefaultErrors;
 
@@ -206,7 +235,7 @@ export const CreateRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "POST", path: "/accounts/{account_id}/moq/relays" }),
     ),
-) as unknown as Schema.Schema<CreateRelayRequest>;
+) as unknown as Schema.Codec<CreateRelayRequest>;
 
 export interface CreateRelayResponse {
   /** origin_fallback and lingering_subscribe are mutually exclusive. */
@@ -234,53 +263,7 @@ export interface CreateRelayResponse {
 export const CreateRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      config: Schema.Struct({
-        lingeringSubscribe: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              enabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              maxTimeoutMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                enabled: "enabled",
-                maxTimeoutMs: "max_timeout_ms",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        originFallback: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              enabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              origins: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      url: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          lingeringSubscribe: "lingering_subscribe",
-          originFallback: "origin_fallback",
-        }),
-      ),
+      config: Config,
       created: Schema.String,
       modified: Schema.String,
       name: Schema.String,
@@ -300,7 +283,7 @@ export const CreateRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateRelayResponse>;
+) as unknown as Schema.Codec<CreateRelayResponse>;
 
 export type CreateRelayError = DefaultErrors;
 
@@ -333,38 +316,7 @@ export const UpdateRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       relayId: Schema.String.pipe(T.HttpPath("relayId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      config: Schema.optional(
-        Schema.Struct({
-          lingeringSubscribe: Schema.optional(
-            Schema.Struct({
-              enabled: Schema.optional(Schema.Boolean),
-              maxTimeoutMs: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                enabled: "enabled",
-                maxTimeoutMs: "max_timeout_ms",
-              }),
-            ),
-          ),
-          originFallback: Schema.optional(
-            Schema.Struct({
-              enabled: Schema.optional(Schema.Boolean),
-              origins: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    url: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            lingeringSubscribe: "lingering_subscribe",
-            originFallback: "origin_fallback",
-          }),
-        ),
-      ),
+      config: Schema.optional(Config),
       name: Schema.optional(Schema.String),
     }).pipe(
       T.Http({
@@ -372,7 +324,7 @@ export const UpdateRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/moq/relays/{relayId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateRelayRequest>;
+) as unknown as Schema.Codec<UpdateRelayRequest>;
 
 export interface UpdateRelayResponse {
   /** origin_fallback and lingering_subscribe are mutually exclusive. */
@@ -397,53 +349,7 @@ export interface UpdateRelayResponse {
 export const UpdateRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      config: Schema.Struct({
-        lingeringSubscribe: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              enabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              maxTimeoutMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                enabled: "enabled",
-                maxTimeoutMs: "max_timeout_ms",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        originFallback: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              enabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              origins: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      url: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          lingeringSubscribe: "lingering_subscribe",
-          originFallback: "origin_fallback",
-        }),
-      ),
+      config: Config,
       created: Schema.String,
       modified: Schema.String,
       name: Schema.String,
@@ -452,7 +358,7 @@ export const UpdateRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.Literal("connected"), Schema.Null]),
       ),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateRelayResponse>;
+) as unknown as Schema.Codec<UpdateRelayResponse>;
 
 export type UpdateRelayError = DefaultErrors;
 
@@ -484,13 +390,13 @@ export const DeleteRelayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/moq/relays/{relayId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteRelayRequest>;
+) as unknown as Schema.Codec<DeleteRelayRequest>;
 
 export type DeleteRelayResponse = unknown;
 
 export const DeleteRelayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown.pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteRelayResponse>;
+) as unknown as Schema.Codec<DeleteRelayResponse>;
 
 export type DeleteRelayError = DefaultErrors;
 
@@ -532,7 +438,7 @@ export const RotateRelayTokenRequest =
         path: "/accounts/{account_id}/moq/relays/{relayId}/tokens/rotate",
       }),
     ),
-  ) as unknown as Schema.Schema<RotateRelayTokenRequest>;
+  ) as unknown as Schema.Codec<RotateRelayTokenRequest>;
 
 export interface RotateRelayTokenResponse {
   /** New token value (shown once). Treat as sensitive. */
@@ -549,7 +455,7 @@ export const RotateRelayTokenResponse =
         Schema.String,
       ]),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<RotateRelayTokenResponse>;
+  ) as unknown as Schema.Codec<RotateRelayTokenResponse>;
 
 export type RotateRelayTokenError = DefaultErrors;
 

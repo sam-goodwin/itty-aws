@@ -4,12 +4,19 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CustomizationPoliciesGetInput {
+  subscriptionId: string;
+  regionId: string;
+  pcName: string;
+  customizationPolicyName: string;
+}
 export const CustomizationPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22,11 +29,49 @@ export const CustomizationPoliciesGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/customizationPolicies/{customizationPolicyName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type CustomizationPoliciesGetInput =
-  typeof CustomizationPoliciesGetInput.Type;
+  ) as unknown as Schema.Codec<CustomizationPoliciesGetInput>;
 
 // Output Schema
+export interface CustomizationPoliciesGetOutput {
+  id?: string;
+  location?: string;
+  name?: string;
+  properties?: {
+    description?: string;
+    privateCloudId?: string;
+    specification?: {
+      identity?: {
+        data?: string;
+        hostName?: {
+          name?: string;
+          type?:
+            | "USER_DEFINED"
+            | "PREFIX_BASED"
+            | "FIXED"
+            | "VIRTUAL_MACHINE_NAME"
+            | "CUSTOM_NAME";
+        };
+        type?: "WINDOWS_TEXT" | "WINDOWS" | "LINUX";
+        userData?: { isPasswordPredefined?: boolean };
+      };
+      nicSettings?: {
+        adapter?: {
+          gateway?: string[];
+          ip?: {
+            argument?: string;
+            ipAddress?: string;
+            type?: "CUSTOM" | "DHCP_IP" | "FIXED_IP" | "USER_DEFINED";
+          };
+          subnetMask?: string;
+        };
+        macAddress?: string;
+      }[];
+    };
+    type?: "LINUX" | "WINDOWS";
+    version?: string;
+  };
+  type?: string;
+}
 export const CustomizationPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -99,9 +144,7 @@ export const CustomizationPoliciesGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type CustomizationPoliciesGetOutput =
-  typeof CustomizationPoliciesGetOutput.Type;
+  }) as unknown as Schema.Codec<CustomizationPoliciesGetOutput>;
 
 // The operation
 /**
@@ -122,6 +165,12 @@ export const customizationPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomizationPoliciesListInput {
+  subscriptionId: string;
+  regionId: string;
+  pcName: string;
+  $filter?: string;
+}
 export const CustomizationPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -134,11 +183,52 @@ export const CustomizationPoliciesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/customizationPolicies",
       apiVersion: "2019-04-01",
     }),
-  );
-export type CustomizationPoliciesListInput =
-  typeof CustomizationPoliciesListInput.Type;
+  ) as unknown as Schema.Codec<CustomizationPoliciesListInput>;
 
 // Output Schema
+export interface CustomizationPoliciesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location?: string;
+    name?: string;
+    properties?: {
+      description?: string;
+      privateCloudId?: string;
+      specification?: {
+        identity?: {
+          data?: string;
+          hostName?: {
+            name?: string;
+            type?:
+              | "USER_DEFINED"
+              | "PREFIX_BASED"
+              | "FIXED"
+              | "VIRTUAL_MACHINE_NAME"
+              | "CUSTOM_NAME";
+          };
+          type?: "WINDOWS_TEXT" | "WINDOWS" | "LINUX";
+          userData?: { isPasswordPredefined?: boolean };
+        };
+        nicSettings?: {
+          adapter?: {
+            gateway?: string[];
+            ip?: {
+              argument?: string;
+              ipAddress?: string;
+              type?: "CUSTOM" | "DHCP_IP" | "FIXED_IP" | "USER_DEFINED";
+            };
+            subnetMask?: string;
+          };
+          macAddress?: string;
+        }[];
+      };
+      type?: "LINUX" | "WINDOWS";
+      version?: string;
+    };
+    type?: string;
+  }[];
+}
 export const CustomizationPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -220,9 +310,7 @@ export const CustomizationPoliciesListOutput =
         }),
       ),
     ),
-  });
-export type CustomizationPoliciesListOutput =
-  typeof CustomizationPoliciesListOutput.Type;
+  }) as unknown as Schema.Codec<CustomizationPoliciesListOutput>;
 
 // The operation
 /**
@@ -243,6 +331,39 @@ export const customizationPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DedicatedCloudNodesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dedicatedCloudNodeName: string;
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    availabilityZoneId: string;
+    availabilityZoneName?: string;
+    cloudRackName?: string;
+    created?: string;
+    nodesCount: number;
+    placementGroupId: string;
+    placementGroupName?: string;
+    privateCloudId?: string;
+    privateCloudName?: string;
+    provisioningState?: string;
+    purchaseId: string;
+    skuDescription?: { id: string; name: string };
+    status?: "unused" | "used";
+    vmwareClusterName?: string;
+  };
+  sku?: {
+    capacity?: string;
+    description?: string;
+    family?: string;
+    name: string;
+    tier?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const DedicatedCloudNodesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -291,11 +412,39 @@ export const DedicatedCloudNodesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudNodesCreateOrUpdateInput =
-  typeof DedicatedCloudNodesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudNodesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DedicatedCloudNodesCreateOrUpdateOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    availabilityZoneId: string;
+    availabilityZoneName?: string;
+    cloudRackName?: string;
+    created?: string;
+    nodesCount: number;
+    placementGroupId: string;
+    placementGroupName?: string;
+    privateCloudId?: string;
+    privateCloudName?: string;
+    provisioningState?: string;
+    purchaseId: string;
+    skuDescription?: { id: string; name: string };
+    status?: "unused" | "used";
+    vmwareClusterName?: string;
+  };
+  sku?: {
+    capacity?: string;
+    description?: string;
+    family?: string;
+    name: string;
+    tier?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const DedicatedCloudNodesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -335,9 +484,7 @@ export const DedicatedCloudNodesCreateOrUpdateOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type DedicatedCloudNodesCreateOrUpdateOutput =
-  typeof DedicatedCloudNodesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudNodesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -357,6 +504,11 @@ export const DedicatedCloudNodesCreateOrUpdate =
     outputSchema: DedicatedCloudNodesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DedicatedCloudNodesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dedicatedCloudNodeName: string;
+}
 export const DedicatedCloudNodesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -368,15 +520,12 @@ export const DedicatedCloudNodesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudNodesDeleteInput =
-  typeof DedicatedCloudNodesDeleteInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudNodesDeleteInput>;
 
 // Output Schema
+export type DedicatedCloudNodesDeleteOutput = void;
 export const DedicatedCloudNodesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DedicatedCloudNodesDeleteOutput =
-  typeof DedicatedCloudNodesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DedicatedCloudNodesDeleteOutput>;
 
 // The operation
 /**
@@ -396,6 +545,11 @@ export const DedicatedCloudNodesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DedicatedCloudNodesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dedicatedCloudNodeName: string;
+}
 export const DedicatedCloudNodesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -407,11 +561,39 @@ export const DedicatedCloudNodesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudNodesGetInput =
-  typeof DedicatedCloudNodesGetInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudNodesGetInput>;
 
 // Output Schema
+export interface DedicatedCloudNodesGetOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    availabilityZoneId: string;
+    availabilityZoneName?: string;
+    cloudRackName?: string;
+    created?: string;
+    nodesCount: number;
+    placementGroupId: string;
+    placementGroupName?: string;
+    privateCloudId?: string;
+    privateCloudName?: string;
+    provisioningState?: string;
+    purchaseId: string;
+    skuDescription?: { id: string; name: string };
+    status?: "unused" | "used";
+    vmwareClusterName?: string;
+  };
+  sku?: {
+    capacity?: string;
+    description?: string;
+    family?: string;
+    name: string;
+    tier?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const DedicatedCloudNodesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -451,9 +633,7 @@ export const DedicatedCloudNodesGetOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type DedicatedCloudNodesGetOutput =
-  typeof DedicatedCloudNodesGetOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudNodesGetOutput>;
 
 // The operation
 /**
@@ -473,6 +653,13 @@ export const DedicatedCloudNodesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DedicatedCloudNodesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const DedicatedCloudNodesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -486,11 +673,42 @@ export const DedicatedCloudNodesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudNodesListByResourceGroupInput =
-  typeof DedicatedCloudNodesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudNodesListByResourceGroupInput>;
 
 // Output Schema
+export interface DedicatedCloudNodesListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location: string;
+    name?: string;
+    properties?: {
+      availabilityZoneId: string;
+      availabilityZoneName?: string;
+      cloudRackName?: string;
+      created?: string;
+      nodesCount: number;
+      placementGroupId: string;
+      placementGroupName?: string;
+      privateCloudId?: string;
+      privateCloudName?: string;
+      provisioningState?: string;
+      purchaseId: string;
+      skuDescription?: { id: string; name: string };
+      status?: "unused" | "used";
+      vmwareClusterName?: string;
+    };
+    sku?: {
+      capacity?: string;
+      description?: string;
+      family?: string;
+      name: string;
+      tier?: string;
+    };
+    tags?: unknown;
+    type?: string;
+  }[];
+}
 export const DedicatedCloudNodesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -537,9 +755,7 @@ export const DedicatedCloudNodesListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type DedicatedCloudNodesListByResourceGroupOutput =
-  typeof DedicatedCloudNodesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudNodesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -560,6 +776,12 @@ export const DedicatedCloudNodesListByResourceGroup =
     outputSchema: DedicatedCloudNodesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DedicatedCloudNodesListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const DedicatedCloudNodesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -572,11 +794,42 @@ export const DedicatedCloudNodesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudNodesListBySubscriptionInput =
-  typeof DedicatedCloudNodesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudNodesListBySubscriptionInput>;
 
 // Output Schema
+export interface DedicatedCloudNodesListBySubscriptionOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location: string;
+    name?: string;
+    properties?: {
+      availabilityZoneId: string;
+      availabilityZoneName?: string;
+      cloudRackName?: string;
+      created?: string;
+      nodesCount: number;
+      placementGroupId: string;
+      placementGroupName?: string;
+      privateCloudId?: string;
+      privateCloudName?: string;
+      provisioningState?: string;
+      purchaseId: string;
+      skuDescription?: { id: string; name: string };
+      status?: "unused" | "used";
+      vmwareClusterName?: string;
+    };
+    sku?: {
+      capacity?: string;
+      description?: string;
+      family?: string;
+      name: string;
+      tier?: string;
+    };
+    tags?: unknown;
+    type?: string;
+  }[];
+}
 export const DedicatedCloudNodesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -623,9 +876,7 @@ export const DedicatedCloudNodesListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type DedicatedCloudNodesListBySubscriptionOutput =
-  typeof DedicatedCloudNodesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudNodesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -645,6 +896,12 @@ export const DedicatedCloudNodesListBySubscription =
     outputSchema: DedicatedCloudNodesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DedicatedCloudNodesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dedicatedCloudNodeName: string;
+  tags?: unknown;
+}
 export const DedicatedCloudNodesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -657,11 +914,39 @@ export const DedicatedCloudNodesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudNodesUpdateInput =
-  typeof DedicatedCloudNodesUpdateInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudNodesUpdateInput>;
 
 // Output Schema
+export interface DedicatedCloudNodesUpdateOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    availabilityZoneId: string;
+    availabilityZoneName?: string;
+    cloudRackName?: string;
+    created?: string;
+    nodesCount: number;
+    placementGroupId: string;
+    placementGroupName?: string;
+    privateCloudId?: string;
+    privateCloudName?: string;
+    provisioningState?: string;
+    purchaseId: string;
+    skuDescription?: { id: string; name: string };
+    status?: "unused" | "used";
+    vmwareClusterName?: string;
+  };
+  sku?: {
+    capacity?: string;
+    description?: string;
+    family?: string;
+    name: string;
+    tier?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const DedicatedCloudNodesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -701,9 +986,7 @@ export const DedicatedCloudNodesUpdateOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type DedicatedCloudNodesUpdateOutput =
-  typeof DedicatedCloudNodesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudNodesUpdateOutput>;
 
 // The operation
 /**
@@ -723,6 +1006,26 @@ export const DedicatedCloudNodesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DedicatedCloudServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dedicatedCloudServiceName: string;
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    gatewaySubnet: string;
+    isAccountOnboarded?:
+      | "notOnBoarded"
+      | "onBoarded"
+      | "onBoardingFailed"
+      | "onBoarding";
+    nodes?: number;
+    serviceURL?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const DedicatedCloudServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -754,11 +1057,26 @@ export const DedicatedCloudServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudServicesCreateOrUpdateInput =
-  typeof DedicatedCloudServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DedicatedCloudServicesCreateOrUpdateOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    gatewaySubnet: string;
+    isAccountOnboarded?:
+      | "notOnBoarded"
+      | "onBoarded"
+      | "onBoardingFailed"
+      | "onBoarding";
+    nodes?: number;
+    serviceURL?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const DedicatedCloudServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -781,9 +1099,7 @@ export const DedicatedCloudServicesCreateOrUpdateOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type DedicatedCloudServicesCreateOrUpdateOutput =
-  typeof DedicatedCloudServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -802,6 +1118,11 @@ export const DedicatedCloudServicesCreateOrUpdate =
     outputSchema: DedicatedCloudServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DedicatedCloudServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dedicatedCloudServiceName: string;
+}
 export const DedicatedCloudServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -813,15 +1134,12 @@ export const DedicatedCloudServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudServicesDeleteInput =
-  typeof DedicatedCloudServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudServicesDeleteInput>;
 
 // Output Schema
+export type DedicatedCloudServicesDeleteOutput = void;
 export const DedicatedCloudServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DedicatedCloudServicesDeleteOutput =
-  typeof DedicatedCloudServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DedicatedCloudServicesDeleteOutput>;
 
 // The operation
 /**
@@ -840,6 +1158,11 @@ export const DedicatedCloudServicesDelete =
     outputSchema: DedicatedCloudServicesDeleteOutput,
   }));
 // Input Schema
+export interface DedicatedCloudServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dedicatedCloudServiceName: string;
+}
 export const DedicatedCloudServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -851,11 +1174,26 @@ export const DedicatedCloudServicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudServicesGetInput =
-  typeof DedicatedCloudServicesGetInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudServicesGetInput>;
 
 // Output Schema
+export interface DedicatedCloudServicesGetOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    gatewaySubnet: string;
+    isAccountOnboarded?:
+      | "notOnBoarded"
+      | "onBoarded"
+      | "onBoardingFailed"
+      | "onBoarding";
+    nodes?: number;
+    serviceURL?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const DedicatedCloudServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -878,9 +1216,7 @@ export const DedicatedCloudServicesGetOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type DedicatedCloudServicesGetOutput =
-  typeof DedicatedCloudServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudServicesGetOutput>;
 
 // The operation
 /**
@@ -900,6 +1236,13 @@ export const DedicatedCloudServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DedicatedCloudServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const DedicatedCloudServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -913,11 +1256,29 @@ export const DedicatedCloudServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudServicesListByResourceGroupInput =
-  typeof DedicatedCloudServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface DedicatedCloudServicesListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location: string;
+    name?: string;
+    properties?: {
+      gatewaySubnet: string;
+      isAccountOnboarded?:
+        | "notOnBoarded"
+        | "onBoarded"
+        | "onBoardingFailed"
+        | "onBoarding";
+      nodes?: number;
+      serviceURL?: string;
+    };
+    tags?: unknown;
+    type?: string;
+  }[];
+}
 export const DedicatedCloudServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -947,9 +1308,7 @@ export const DedicatedCloudServicesListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type DedicatedCloudServicesListByResourceGroupOutput =
-  typeof DedicatedCloudServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -970,6 +1329,12 @@ export const DedicatedCloudServicesListByResourceGroup =
     outputSchema: DedicatedCloudServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DedicatedCloudServicesListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const DedicatedCloudServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -982,11 +1347,29 @@ export const DedicatedCloudServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudServicesListBySubscriptionInput =
-  typeof DedicatedCloudServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface DedicatedCloudServicesListBySubscriptionOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location: string;
+    name?: string;
+    properties?: {
+      gatewaySubnet: string;
+      isAccountOnboarded?:
+        | "notOnBoarded"
+        | "onBoarded"
+        | "onBoardingFailed"
+        | "onBoarding";
+      nodes?: number;
+      serviceURL?: string;
+    };
+    tags?: unknown;
+    type?: string;
+  }[];
+}
 export const DedicatedCloudServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1016,9 +1399,7 @@ export const DedicatedCloudServicesListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type DedicatedCloudServicesListBySubscriptionOutput =
-  typeof DedicatedCloudServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1038,6 +1419,12 @@ export const DedicatedCloudServicesListBySubscription =
     outputSchema: DedicatedCloudServicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DedicatedCloudServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dedicatedCloudServiceName: string;
+  tags?: unknown;
+}
 export const DedicatedCloudServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1050,11 +1437,26 @@ export const DedicatedCloudServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type DedicatedCloudServicesUpdateInput =
-  typeof DedicatedCloudServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<DedicatedCloudServicesUpdateInput>;
 
 // Output Schema
+export interface DedicatedCloudServicesUpdateOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    gatewaySubnet: string;
+    isAccountOnboarded?:
+      | "notOnBoarded"
+      | "onBoarded"
+      | "onBoardingFailed"
+      | "onBoarding";
+    nodes?: number;
+    serviceURL?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const DedicatedCloudServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1077,9 +1479,7 @@ export const DedicatedCloudServicesUpdateOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type DedicatedCloudServicesUpdateOutput =
-  typeof DedicatedCloudServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DedicatedCloudServicesUpdateOutput>;
 
 // The operation
 /**
@@ -1098,6 +1498,11 @@ export const DedicatedCloudServicesUpdate =
     outputSchema: DedicatedCloudServicesUpdateOutput,
   }));
 // Input Schema
+export interface OperationsGetInput {
+  subscriptionId: string;
+  regionId: string;
+  operationId: string;
+}
 export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   regionId: Schema.String.pipe(T.PathParam()),
@@ -1108,10 +1513,17 @@ export const OperationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/operationResults/{operationId}",
     apiVersion: "2019-04-01",
   }),
-);
-export type OperationsGetInput = typeof OperationsGetInput.Type;
+) as unknown as Schema.Codec<OperationsGetInput>;
 
 // Output Schema
+export interface OperationsGetOutput {
+  endTime?: string;
+  error?: { code?: string; message?: string };
+  id?: string;
+  name?: string;
+  startTime?: string;
+  status?: string;
+}
 export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
@@ -1124,8 +1536,7 @@ export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   startTime: Schema.optional(Schema.String),
   status: Schema.optional(Schema.String),
-});
-export type OperationsGetOutput = typeof OperationsGetOutput.Type;
+}) as unknown as Schema.Codec<OperationsGetOutput>;
 
 // The operation
 /**
@@ -1144,6 +1555,7 @@ export const OperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsGetOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1152,10 +1564,34 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.VMwareCloudSimple/operations",
     apiVersion: "2019-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  nextLink?: string;
+  value?: {
+    display?: {
+      description?: string;
+      operation?: string;
+      provider?: string;
+      resource?: string;
+    };
+    isDataAction?: boolean;
+    name?: string;
+    origin?: "user" | "system" | "user,system";
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          aggregationType: "Average" | "Total";
+          displayDescription: string;
+          displayName: string;
+          name: string;
+          unit: string;
+        }[];
+      };
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -1196,8 +1632,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1212,6 +1647,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateCloudsGetInput {
+  subscriptionId: string;
+  pcName: string;
+  regionId: string;
+}
 export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   pcName: Schema.String.pipe(T.PathParam()),
@@ -1222,10 +1662,120 @@ export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}",
     apiVersion: "2019-04-01",
   }),
-);
-export type PrivateCloudsGetInput = typeof PrivateCloudsGetInput.Type;
+) as unknown as Schema.Codec<PrivateCloudsGetInput>;
 
 // Output Schema
+export interface PrivateCloudsGetOutput {
+  id?: string;
+  location?: string;
+  name?: string;
+  properties?: {
+    availabilityZoneId?: string;
+    availabilityZoneName?: string;
+    clustersNumber?: number;
+    createdBy?: string;
+    createdOn?: string;
+    dnsServers?: string[];
+    expires?: string;
+    nsxType?: string;
+    placementGroupId?: string;
+    placementGroupName?: string;
+    privateCloudId?: string;
+    resourcePools?: {
+      id: string;
+      location?: string;
+      name?: string;
+      privateCloudId?: string;
+      properties?: { fullName?: string };
+      type?: string;
+    }[];
+    state?: string;
+    totalCpuCores?: number;
+    totalNodes?: number;
+    totalRam?: number;
+    totalStorage?: number;
+    type?: string;
+    vSphereVersion?: string;
+    vcenterFqdn?: string;
+    vcenterRefid?: string;
+    virtualMachineTemplates?: {
+      id?: string;
+      location?: string;
+      name?: string;
+      properties?: {
+        amountOfRam?: number;
+        controllers?: {
+          id?: string;
+          name?: string;
+          subType?: string;
+          type?: string;
+        }[];
+        description?: string;
+        disks?: {
+          controllerId: string;
+          independenceMode:
+            | "persistent"
+            | "independent_persistent"
+            | "independent_nonpersistent";
+          totalSize: number;
+          virtualDiskId?: string;
+          virtualDiskName?: string;
+        }[];
+        exposeToGuestVM?: boolean;
+        guestOS?: string;
+        guestOSType?: string;
+        nics?: {
+          customization?: {
+            allocation?: "static" | "dynamic";
+            dnsServers?: string[];
+            gateway?: string[];
+            ipAddress?: string;
+            mask?: string;
+            primaryWinsServer?: string;
+            secondaryWinsServer?: string;
+          };
+          ipAddresses?: string[];
+          macAddress?: string;
+          network: {
+            assignable?: boolean;
+            id: string;
+            location?: string;
+            name?: string;
+            properties?: { privateCloudId?: string };
+            type?: string;
+          };
+          nicType:
+            | "E1000"
+            | "E1000E"
+            | "PCNET32"
+            | "VMXNET"
+            | "VMXNET2"
+            | "VMXNET3";
+          powerOnBoot?: boolean;
+          virtualNicId?: string;
+          virtualNicName?: string;
+        }[];
+        numberOfCores?: number;
+        path?: string;
+        privateCloudId: string;
+        vSphereNetworks?: string[];
+        vSphereTags?: string[];
+        vmwaretools?: string;
+      };
+      type?: string;
+    }[];
+    virtualNetworks?: {
+      assignable?: boolean;
+      id: string;
+      location?: string;
+      name?: string;
+      properties?: { privateCloudId?: string };
+      type?: string;
+    }[];
+    vrOpsEnabled?: boolean;
+  };
+  type?: "Microsoft.VMwareCloudSimple/privateClouds";
+}
 export const PrivateCloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1392,8 +1942,7 @@ export const PrivateCloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Literals(["Microsoft.VMwareCloudSimple/privateClouds"]),
     ),
   },
-);
-export type PrivateCloudsGetOutput = typeof PrivateCloudsGetOutput.Type;
+) as unknown as Schema.Codec<PrivateCloudsGetOutput>;
 
 // The operation
 /**
@@ -1411,6 +1960,10 @@ export const PrivateCloudsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateCloudsGetOutput,
 }));
 // Input Schema
+export interface PrivateCloudsListInput {
+  subscriptionId: string;
+  regionId: string;
+}
 export const PrivateCloudsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1422,10 +1975,123 @@ export const PrivateCloudsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds",
     apiVersion: "2019-04-01",
   }),
-);
-export type PrivateCloudsListInput = typeof PrivateCloudsListInput.Type;
+) as unknown as Schema.Codec<PrivateCloudsListInput>;
 
 // Output Schema
+export interface PrivateCloudsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location?: string;
+    name?: string;
+    properties?: {
+      availabilityZoneId?: string;
+      availabilityZoneName?: string;
+      clustersNumber?: number;
+      createdBy?: string;
+      createdOn?: string;
+      dnsServers?: string[];
+      expires?: string;
+      nsxType?: string;
+      placementGroupId?: string;
+      placementGroupName?: string;
+      privateCloudId?: string;
+      resourcePools?: {
+        id: string;
+        location?: string;
+        name?: string;
+        privateCloudId?: string;
+        properties?: { fullName?: string };
+        type?: string;
+      }[];
+      state?: string;
+      totalCpuCores?: number;
+      totalNodes?: number;
+      totalRam?: number;
+      totalStorage?: number;
+      type?: string;
+      vSphereVersion?: string;
+      vcenterFqdn?: string;
+      vcenterRefid?: string;
+      virtualMachineTemplates?: {
+        id?: string;
+        location?: string;
+        name?: string;
+        properties?: {
+          amountOfRam?: number;
+          controllers?: {
+            id?: string;
+            name?: string;
+            subType?: string;
+            type?: string;
+          }[];
+          description?: string;
+          disks?: {
+            controllerId: string;
+            independenceMode:
+              | "persistent"
+              | "independent_persistent"
+              | "independent_nonpersistent";
+            totalSize: number;
+            virtualDiskId?: string;
+            virtualDiskName?: string;
+          }[];
+          exposeToGuestVM?: boolean;
+          guestOS?: string;
+          guestOSType?: string;
+          nics?: {
+            customization?: {
+              allocation?: "static" | "dynamic";
+              dnsServers?: string[];
+              gateway?: string[];
+              ipAddress?: string;
+              mask?: string;
+              primaryWinsServer?: string;
+              secondaryWinsServer?: string;
+            };
+            ipAddresses?: string[];
+            macAddress?: string;
+            network: {
+              assignable?: boolean;
+              id: string;
+              location?: string;
+              name?: string;
+              properties?: { privateCloudId?: string };
+              type?: string;
+            };
+            nicType:
+              | "E1000"
+              | "E1000E"
+              | "PCNET32"
+              | "VMXNET"
+              | "VMXNET2"
+              | "VMXNET3";
+            powerOnBoot?: boolean;
+            virtualNicId?: string;
+            virtualNicName?: string;
+          }[];
+          numberOfCores?: number;
+          path?: string;
+          privateCloudId: string;
+          vSphereNetworks?: string[];
+          vSphereTags?: string[];
+          vmwaretools?: string;
+        };
+        type?: string;
+      }[];
+      virtualNetworks?: {
+        assignable?: boolean;
+        id: string;
+        location?: string;
+        name?: string;
+        properties?: { privateCloudId?: string };
+        type?: string;
+      }[];
+      vrOpsEnabled?: boolean;
+    };
+    type?: "Microsoft.VMwareCloudSimple/privateClouds";
+  }[];
+}
 export const PrivateCloudsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1608,8 +2274,7 @@ export const PrivateCloudsListOutput =
         }),
       ),
     ),
-  });
-export type PrivateCloudsListOutput = typeof PrivateCloudsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateCloudsListOutput>;
 
 // The operation
 /**
@@ -1626,6 +2291,12 @@ export const PrivateCloudsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateCloudsListOutput,
 }));
 // Input Schema
+export interface ResourcePoolsGetInput {
+  subscriptionId: string;
+  regionId: string;
+  pcName: string;
+  resourcePoolName: string;
+}
 export const ResourcePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   regionId: Schema.String.pipe(T.PathParam()),
@@ -1637,10 +2308,17 @@ export const ResourcePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/resourcePools/{resourcePoolName}",
     apiVersion: "2019-04-01",
   }),
-);
-export type ResourcePoolsGetInput = typeof ResourcePoolsGetInput.Type;
+) as unknown as Schema.Codec<ResourcePoolsGetInput>;
 
 // Output Schema
+export interface ResourcePoolsGetOutput {
+  id: string;
+  location?: string;
+  name?: string;
+  privateCloudId?: string;
+  properties?: { fullName?: string };
+  type?: string;
+}
 export const ResourcePoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
@@ -1654,8 +2332,7 @@ export const ResourcePoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     type: Schema.optional(Schema.String),
   },
-);
-export type ResourcePoolsGetOutput = typeof ResourcePoolsGetOutput.Type;
+) as unknown as Schema.Codec<ResourcePoolsGetOutput>;
 
 // The operation
 /**
@@ -1674,6 +2351,11 @@ export const ResourcePoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ResourcePoolsGetOutput,
 }));
 // Input Schema
+export interface ResourcePoolsListInput {
+  subscriptionId: string;
+  regionId: string;
+  pcName: string;
+}
 export const ResourcePoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1686,10 +2368,20 @@ export const ResourcePoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/resourcePools",
     apiVersion: "2019-04-01",
   }),
-);
-export type ResourcePoolsListInput = typeof ResourcePoolsListInput.Type;
+) as unknown as Schema.Codec<ResourcePoolsListInput>;
 
 // Output Schema
+export interface ResourcePoolsListOutput {
+  nextLink?: string;
+  value?: {
+    id: string;
+    location?: string;
+    name?: string;
+    privateCloudId?: string;
+    properties?: { fullName?: string };
+    type?: string;
+  }[];
+}
 export const ResourcePoolsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1709,8 +2401,7 @@ export const ResourcePoolsListOutput =
         }),
       ),
     ),
-  });
-export type ResourcePoolsListOutput = typeof ResourcePoolsListOutput.Type;
+  }) as unknown as Schema.Codec<ResourcePoolsListOutput>;
 
 // The operation
 /**
@@ -1728,6 +2419,11 @@ export const ResourcePoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ResourcePoolsListOutput,
 }));
 // Input Schema
+export interface SkusAvailabilityListInput {
+  subscriptionId: string;
+  regionId: string;
+  skuId?: string;
+}
 export const SkusAvailabilityListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1739,10 +2435,22 @@ export const SkusAvailabilityListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/availabilities",
       apiVersion: "2019-04-01",
     }),
-  );
-export type SkusAvailabilityListInput = typeof SkusAvailabilityListInput.Type;
+  ) as unknown as Schema.Codec<SkusAvailabilityListInput>;
 
 // Output Schema
+export interface SkusAvailabilityListOutput {
+  nextLink?: string;
+  value?: {
+    dedicatedAvailabilityZoneId?: string;
+    dedicatedAvailabilityZoneName?: string;
+    dedicatedPlacementGroupId?: string;
+    dedicatedPlacementGroupName?: string;
+    limit: number;
+    resourceType?: string;
+    skuId?: string;
+    skuName?: string;
+  }[];
+}
 export const SkusAvailabilityListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1760,8 +2468,7 @@ export const SkusAvailabilityListOutput =
         }),
       ),
     ),
-  });
-export type SkusAvailabilityListOutput = typeof SkusAvailabilityListOutput.Type;
+  }) as unknown as Schema.Codec<SkusAvailabilityListOutput>;
 
 // The operation
 /**
@@ -1781,6 +2488,11 @@ export const SkusAvailabilityList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UsagesListInput {
+  subscriptionId: string;
+  regionId: string;
+  $filter?: string;
+}
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   regionId: Schema.String.pipe(T.PathParam()),
@@ -1791,10 +2503,24 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/usages",
     apiVersion: "2019-04-01",
   }),
-);
-export type UsagesListInput = typeof UsagesListInput.Type;
+) as unknown as Schema.Codec<UsagesListInput>;
 
 // Output Schema
+export interface UsagesListOutput {
+  nextLink?: string;
+  value?: {
+    currentValue: number;
+    limit: number;
+    name?: { localizedValue?: string; value?: string };
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond";
+  }[];
+}
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -1821,8 +2547,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type UsagesListOutput = typeof UsagesListOutput.Type;
+}) as unknown as Schema.Codec<UsagesListOutput>;
 
 // The operation
 /**
@@ -1840,6 +2565,103 @@ export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsagesListOutput,
 }));
 // Input Schema
+export interface VirtualMachinesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    amountOfRam: number;
+    controllers?: {
+      id?: string;
+      name?: string;
+      subType?: string;
+      type?: string;
+    }[];
+    customization?: {
+      dnsServers?: string[];
+      hostName?: string;
+      password?: string | Redacted.Redacted<string>;
+      policyId?: string;
+      username?: string;
+    };
+    disks?: {
+      controllerId: string;
+      independenceMode:
+        | "persistent"
+        | "independent_persistent"
+        | "independent_nonpersistent";
+      totalSize: number;
+      virtualDiskId?: string;
+      virtualDiskName?: string;
+    }[];
+    dnsname?: string;
+    exposeToGuestVM?: boolean;
+    folder?: string;
+    guestOS?: string;
+    guestOSType?: "linux" | "windows" | "other";
+    nics?: {
+      customization?: {
+        allocation?: "static" | "dynamic";
+        dnsServers?: string[];
+        gateway?: string[];
+        ipAddress?: string;
+        mask?: string;
+        primaryWinsServer?: string;
+        secondaryWinsServer?: string;
+      };
+      ipAddresses?: string[];
+      macAddress?: string;
+      network: {
+        assignable?: boolean;
+        id: string;
+        location?: string;
+        name?: string;
+        properties?: { privateCloudId?: string };
+        type?: string;
+      };
+      nicType:
+        | "E1000"
+        | "E1000E"
+        | "PCNET32"
+        | "VMXNET"
+        | "VMXNET2"
+        | "VMXNET3";
+      powerOnBoot?: boolean;
+      virtualNicId?: string;
+      virtualNicName?: string;
+    }[];
+    numberOfCores: number;
+    password?: string | Redacted.Redacted<string>;
+    privateCloudId: string;
+    provisioningState?: string;
+    publicIP?: string;
+    resourcePool?: {
+      id: string;
+      location?: string;
+      name?: string;
+      privateCloudId?: string;
+      properties?: { fullName?: string };
+      type?: string;
+    };
+    status?:
+      | "running"
+      | "suspended"
+      | "poweredoff"
+      | "updating"
+      | "deallocating"
+      | "deleting";
+    templateId?: string;
+    username?: string;
+    vSphereNetworks?: string[];
+    vmId?: string;
+    vmwaretools?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const VirtualMachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1980,11 +2802,103 @@ export const VirtualMachinesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachinesCreateOrUpdateInput =
-  typeof VirtualMachinesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualMachinesCreateOrUpdateOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    amountOfRam: number;
+    controllers?: {
+      id?: string;
+      name?: string;
+      subType?: string;
+      type?: string;
+    }[];
+    customization?: {
+      dnsServers?: string[];
+      hostName?: string;
+      password?: Redacted.Redacted<string>;
+      policyId?: string;
+      username?: string;
+    };
+    disks?: {
+      controllerId: string;
+      independenceMode:
+        | "persistent"
+        | "independent_persistent"
+        | "independent_nonpersistent";
+      totalSize: number;
+      virtualDiskId?: string;
+      virtualDiskName?: string;
+    }[];
+    dnsname?: string;
+    exposeToGuestVM?: boolean;
+    folder?: string;
+    guestOS?: string;
+    guestOSType?: "linux" | "windows" | "other";
+    nics?: {
+      customization?: {
+        allocation?: "static" | "dynamic";
+        dnsServers?: string[];
+        gateway?: string[];
+        ipAddress?: string;
+        mask?: string;
+        primaryWinsServer?: string;
+        secondaryWinsServer?: string;
+      };
+      ipAddresses?: string[];
+      macAddress?: string;
+      network: {
+        assignable?: boolean;
+        id: string;
+        location?: string;
+        name?: string;
+        properties?: { privateCloudId?: string };
+        type?: string;
+      };
+      nicType:
+        | "E1000"
+        | "E1000E"
+        | "PCNET32"
+        | "VMXNET"
+        | "VMXNET2"
+        | "VMXNET3";
+      powerOnBoot?: boolean;
+      virtualNicId?: string;
+      virtualNicName?: string;
+    }[];
+    numberOfCores: number;
+    password?: Redacted.Redacted<string>;
+    privateCloudId: string;
+    provisioningState?: string;
+    publicIP?: string;
+    resourcePool?: {
+      id: string;
+      location?: string;
+      name?: string;
+      privateCloudId?: string;
+      properties?: { fullName?: string };
+      type?: string;
+    };
+    status?:
+      | "running"
+      | "suspended"
+      | "poweredoff"
+      | "updating"
+      | "deallocating"
+      | "deleting";
+    templateId?: string;
+    username?: string;
+    vSphereNetworks?: string[];
+    vmId?: string;
+    vmwaretools?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const VirtualMachinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2116,9 +3030,7 @@ export const VirtualMachinesCreateOrUpdateOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type VirtualMachinesCreateOrUpdateOutput =
-  typeof VirtualMachinesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2138,6 +3050,11 @@ export const VirtualMachinesCreateOrUpdate =
     outputSchema: VirtualMachinesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachinesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+}
 export const VirtualMachinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2149,14 +3066,12 @@ export const VirtualMachinesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesDeleteInput>;
 
 // Output Schema
+export type VirtualMachinesDeleteOutput = void;
 export const VirtualMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesDeleteOutput =
-  typeof VirtualMachinesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -2177,6 +3092,11 @@ export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+}
 export const VirtualMachinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2188,10 +3108,103 @@ export const VirtualMachinesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesGetInput>;
 
 // Output Schema
+export interface VirtualMachinesGetOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    amountOfRam: number;
+    controllers?: {
+      id?: string;
+      name?: string;
+      subType?: string;
+      type?: string;
+    }[];
+    customization?: {
+      dnsServers?: string[];
+      hostName?: string;
+      password?: Redacted.Redacted<string>;
+      policyId?: string;
+      username?: string;
+    };
+    disks?: {
+      controllerId: string;
+      independenceMode:
+        | "persistent"
+        | "independent_persistent"
+        | "independent_nonpersistent";
+      totalSize: number;
+      virtualDiskId?: string;
+      virtualDiskName?: string;
+    }[];
+    dnsname?: string;
+    exposeToGuestVM?: boolean;
+    folder?: string;
+    guestOS?: string;
+    guestOSType?: "linux" | "windows" | "other";
+    nics?: {
+      customization?: {
+        allocation?: "static" | "dynamic";
+        dnsServers?: string[];
+        gateway?: string[];
+        ipAddress?: string;
+        mask?: string;
+        primaryWinsServer?: string;
+        secondaryWinsServer?: string;
+      };
+      ipAddresses?: string[];
+      macAddress?: string;
+      network: {
+        assignable?: boolean;
+        id: string;
+        location?: string;
+        name?: string;
+        properties?: { privateCloudId?: string };
+        type?: string;
+      };
+      nicType:
+        | "E1000"
+        | "E1000E"
+        | "PCNET32"
+        | "VMXNET"
+        | "VMXNET2"
+        | "VMXNET3";
+      powerOnBoot?: boolean;
+      virtualNicId?: string;
+      virtualNicName?: string;
+    }[];
+    numberOfCores: number;
+    password?: Redacted.Redacted<string>;
+    privateCloudId: string;
+    provisioningState?: string;
+    publicIP?: string;
+    resourcePool?: {
+      id: string;
+      location?: string;
+      name?: string;
+      privateCloudId?: string;
+      properties?: { fullName?: string };
+      type?: string;
+    };
+    status?:
+      | "running"
+      | "suspended"
+      | "poweredoff"
+      | "updating"
+      | "deallocating"
+      | "deleting";
+    templateId?: string;
+    username?: string;
+    vSphereNetworks?: string[];
+    vmId?: string;
+    vmwaretools?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const VirtualMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2323,8 +3336,7 @@ export const VirtualMachinesGetOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesGetOutput>;
 
 // The operation
 /**
@@ -2342,6 +3354,13 @@ export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesGetOutput,
 }));
 // Input Schema
+export interface VirtualMachinesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const VirtualMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2355,11 +3374,106 @@ export const VirtualMachinesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachinesListByResourceGroupInput =
-  typeof VirtualMachinesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesListByResourceGroupInput>;
 
 // Output Schema
+export interface VirtualMachinesListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location: string;
+    name?: string;
+    properties?: {
+      amountOfRam: number;
+      controllers?: {
+        id?: string;
+        name?: string;
+        subType?: string;
+        type?: string;
+      }[];
+      customization?: {
+        dnsServers?: string[];
+        hostName?: string;
+        password?: Redacted.Redacted<string>;
+        policyId?: string;
+        username?: string;
+      };
+      disks?: {
+        controllerId: string;
+        independenceMode:
+          | "persistent"
+          | "independent_persistent"
+          | "independent_nonpersistent";
+        totalSize: number;
+        virtualDiskId?: string;
+        virtualDiskName?: string;
+      }[];
+      dnsname?: string;
+      exposeToGuestVM?: boolean;
+      folder?: string;
+      guestOS?: string;
+      guestOSType?: "linux" | "windows" | "other";
+      nics?: {
+        customization?: {
+          allocation?: "static" | "dynamic";
+          dnsServers?: string[];
+          gateway?: string[];
+          ipAddress?: string;
+          mask?: string;
+          primaryWinsServer?: string;
+          secondaryWinsServer?: string;
+        };
+        ipAddresses?: string[];
+        macAddress?: string;
+        network: {
+          assignable?: boolean;
+          id: string;
+          location?: string;
+          name?: string;
+          properties?: { privateCloudId?: string };
+          type?: string;
+        };
+        nicType:
+          | "E1000"
+          | "E1000E"
+          | "PCNET32"
+          | "VMXNET"
+          | "VMXNET2"
+          | "VMXNET3";
+        powerOnBoot?: boolean;
+        virtualNicId?: string;
+        virtualNicName?: string;
+      }[];
+      numberOfCores: number;
+      password?: Redacted.Redacted<string>;
+      privateCloudId: string;
+      provisioningState?: string;
+      publicIP?: string;
+      resourcePool?: {
+        id: string;
+        location?: string;
+        name?: string;
+        privateCloudId?: string;
+        properties?: { fullName?: string };
+        type?: string;
+      };
+      status?:
+        | "running"
+        | "suspended"
+        | "poweredoff"
+        | "updating"
+        | "deallocating"
+        | "deleting";
+      templateId?: string;
+      username?: string;
+      vSphereNetworks?: string[];
+      vmId?: string;
+      vmwaretools?: string;
+    };
+    tags?: unknown;
+    type?: string;
+  }[];
+}
 export const VirtualMachinesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2500,9 +3614,7 @@ export const VirtualMachinesListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type VirtualMachinesListByResourceGroupOutput =
-  typeof VirtualMachinesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2523,6 +3635,12 @@ export const VirtualMachinesListByResourceGroup =
     outputSchema: VirtualMachinesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface VirtualMachinesListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const VirtualMachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2535,11 +3653,106 @@ export const VirtualMachinesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/virtualMachines",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachinesListBySubscriptionInput =
-  typeof VirtualMachinesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesListBySubscriptionInput>;
 
 // Output Schema
+export interface VirtualMachinesListBySubscriptionOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location: string;
+    name?: string;
+    properties?: {
+      amountOfRam: number;
+      controllers?: {
+        id?: string;
+        name?: string;
+        subType?: string;
+        type?: string;
+      }[];
+      customization?: {
+        dnsServers?: string[];
+        hostName?: string;
+        password?: Redacted.Redacted<string>;
+        policyId?: string;
+        username?: string;
+      };
+      disks?: {
+        controllerId: string;
+        independenceMode:
+          | "persistent"
+          | "independent_persistent"
+          | "independent_nonpersistent";
+        totalSize: number;
+        virtualDiskId?: string;
+        virtualDiskName?: string;
+      }[];
+      dnsname?: string;
+      exposeToGuestVM?: boolean;
+      folder?: string;
+      guestOS?: string;
+      guestOSType?: "linux" | "windows" | "other";
+      nics?: {
+        customization?: {
+          allocation?: "static" | "dynamic";
+          dnsServers?: string[];
+          gateway?: string[];
+          ipAddress?: string;
+          mask?: string;
+          primaryWinsServer?: string;
+          secondaryWinsServer?: string;
+        };
+        ipAddresses?: string[];
+        macAddress?: string;
+        network: {
+          assignable?: boolean;
+          id: string;
+          location?: string;
+          name?: string;
+          properties?: { privateCloudId?: string };
+          type?: string;
+        };
+        nicType:
+          | "E1000"
+          | "E1000E"
+          | "PCNET32"
+          | "VMXNET"
+          | "VMXNET2"
+          | "VMXNET3";
+        powerOnBoot?: boolean;
+        virtualNicId?: string;
+        virtualNicName?: string;
+      }[];
+      numberOfCores: number;
+      password?: Redacted.Redacted<string>;
+      privateCloudId: string;
+      provisioningState?: string;
+      publicIP?: string;
+      resourcePool?: {
+        id: string;
+        location?: string;
+        name?: string;
+        privateCloudId?: string;
+        properties?: { fullName?: string };
+        type?: string;
+      };
+      status?:
+        | "running"
+        | "suspended"
+        | "poweredoff"
+        | "updating"
+        | "deallocating"
+        | "deleting";
+      templateId?: string;
+      username?: string;
+      vSphereNetworks?: string[];
+      vmId?: string;
+      vmwaretools?: string;
+    };
+    tags?: unknown;
+    type?: string;
+  }[];
+}
 export const VirtualMachinesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2680,9 +3893,7 @@ export const VirtualMachinesListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type VirtualMachinesListBySubscriptionOutput =
-  typeof VirtualMachinesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2702,6 +3913,11 @@ export const VirtualMachinesListBySubscription =
     outputSchema: VirtualMachinesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface VirtualMachinesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+}
 export const VirtualMachinesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2713,13 +3929,12 @@ export const VirtualMachinesStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}/start",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesStartInput>;
 
 // Output Schema
+export type VirtualMachinesStartOutput = void;
 export const VirtualMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStartOutput>;
 
 // The operation
 /**
@@ -2740,6 +3955,12 @@ export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  mode?: "reboot" | "suspend" | "shutdown" | "poweroff";
+}
 export const VirtualMachinesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2754,13 +3975,12 @@ export const VirtualMachinesStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}/stop",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesStopInput>;
 
 // Output Schema
+export type VirtualMachinesStopOutput = void;
 export const VirtualMachinesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesStopOutput = typeof VirtualMachinesStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStopOutput>;
 
 // The operation
 /**
@@ -2780,6 +4000,12 @@ export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesStopOutput,
 }));
 // Input Schema
+export interface VirtualMachinesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  tags?: unknown;
+}
 export const VirtualMachinesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2792,10 +4018,103 @@ export const VirtualMachinesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesUpdateInput>;
 
 // Output Schema
+export interface VirtualMachinesUpdateOutput {
+  id?: string;
+  location: string;
+  name?: string;
+  properties?: {
+    amountOfRam: number;
+    controllers?: {
+      id?: string;
+      name?: string;
+      subType?: string;
+      type?: string;
+    }[];
+    customization?: {
+      dnsServers?: string[];
+      hostName?: string;
+      password?: Redacted.Redacted<string>;
+      policyId?: string;
+      username?: string;
+    };
+    disks?: {
+      controllerId: string;
+      independenceMode:
+        | "persistent"
+        | "independent_persistent"
+        | "independent_nonpersistent";
+      totalSize: number;
+      virtualDiskId?: string;
+      virtualDiskName?: string;
+    }[];
+    dnsname?: string;
+    exposeToGuestVM?: boolean;
+    folder?: string;
+    guestOS?: string;
+    guestOSType?: "linux" | "windows" | "other";
+    nics?: {
+      customization?: {
+        allocation?: "static" | "dynamic";
+        dnsServers?: string[];
+        gateway?: string[];
+        ipAddress?: string;
+        mask?: string;
+        primaryWinsServer?: string;
+        secondaryWinsServer?: string;
+      };
+      ipAddresses?: string[];
+      macAddress?: string;
+      network: {
+        assignable?: boolean;
+        id: string;
+        location?: string;
+        name?: string;
+        properties?: { privateCloudId?: string };
+        type?: string;
+      };
+      nicType:
+        | "E1000"
+        | "E1000E"
+        | "PCNET32"
+        | "VMXNET"
+        | "VMXNET2"
+        | "VMXNET3";
+      powerOnBoot?: boolean;
+      virtualNicId?: string;
+      virtualNicName?: string;
+    }[];
+    numberOfCores: number;
+    password?: Redacted.Redacted<string>;
+    privateCloudId: string;
+    provisioningState?: string;
+    publicIP?: string;
+    resourcePool?: {
+      id: string;
+      location?: string;
+      name?: string;
+      privateCloudId?: string;
+      properties?: { fullName?: string };
+      type?: string;
+    };
+    status?:
+      | "running"
+      | "suspended"
+      | "poweredoff"
+      | "updating"
+      | "deallocating"
+      | "deleting";
+    templateId?: string;
+    username?: string;
+    vSphereNetworks?: string[];
+    vmId?: string;
+    vmwaretools?: string;
+  };
+  tags?: unknown;
+  type?: string;
+}
 export const VirtualMachinesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2927,9 +4246,7 @@ export const VirtualMachinesUpdateOutput =
     ),
     tags: Schema.optional(Schema.Unknown),
     type: Schema.optional(Schema.String),
-  });
-export type VirtualMachinesUpdateOutput =
-  typeof VirtualMachinesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesUpdateOutput>;
 
 // The operation
 /**
@@ -2949,6 +4266,12 @@ export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineTemplatesGetInput {
+  subscriptionId: string;
+  regionId: string;
+  pcName: string;
+  virtualMachineTemplateName: string;
+}
 export const VirtualMachineTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2961,11 +4284,75 @@ export const VirtualMachineTemplatesGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachineTemplatesGetInput =
-  typeof VirtualMachineTemplatesGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineTemplatesGetInput>;
 
 // Output Schema
+export interface VirtualMachineTemplatesGetOutput {
+  id?: string;
+  location?: string;
+  name?: string;
+  properties?: {
+    amountOfRam?: number;
+    controllers?: {
+      id?: string;
+      name?: string;
+      subType?: string;
+      type?: string;
+    }[];
+    description?: string;
+    disks?: {
+      controllerId: string;
+      independenceMode:
+        | "persistent"
+        | "independent_persistent"
+        | "independent_nonpersistent";
+      totalSize: number;
+      virtualDiskId?: string;
+      virtualDiskName?: string;
+    }[];
+    exposeToGuestVM?: boolean;
+    guestOS?: string;
+    guestOSType?: string;
+    nics?: {
+      customization?: {
+        allocation?: "static" | "dynamic";
+        dnsServers?: string[];
+        gateway?: string[];
+        ipAddress?: string;
+        mask?: string;
+        primaryWinsServer?: string;
+        secondaryWinsServer?: string;
+      };
+      ipAddresses?: string[];
+      macAddress?: string;
+      network: {
+        assignable?: boolean;
+        id: string;
+        location?: string;
+        name?: string;
+        properties?: { privateCloudId?: string };
+        type?: string;
+      };
+      nicType:
+        | "E1000"
+        | "E1000E"
+        | "PCNET32"
+        | "VMXNET"
+        | "VMXNET2"
+        | "VMXNET3";
+      powerOnBoot?: boolean;
+      virtualNicId?: string;
+      virtualNicName?: string;
+    }[];
+    numberOfCores?: number;
+    path?: string;
+    privateCloudId: string;
+    vSphereNetworks?: string[];
+    vSphereTags?: string[];
+    vmwaretools?: string;
+  };
+  type?: string;
+}
 export const VirtualMachineTemplatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3056,9 +4443,7 @@ export const VirtualMachineTemplatesGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type VirtualMachineTemplatesGetOutput =
-  typeof VirtualMachineTemplatesGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineTemplatesGetOutput>;
 
 // The operation
 /**
@@ -3079,6 +4464,12 @@ export const VirtualMachineTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineTemplatesListInput {
+  subscriptionId: string;
+  pcName: string;
+  regionId: string;
+  resourcePoolName: string;
+}
 export const VirtualMachineTemplatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3091,11 +4482,78 @@ export const VirtualMachineTemplatesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualMachineTemplates",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualMachineTemplatesListInput =
-  typeof VirtualMachineTemplatesListInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineTemplatesListInput>;
 
 // Output Schema
+export interface VirtualMachineTemplatesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    location?: string;
+    name?: string;
+    properties?: {
+      amountOfRam?: number;
+      controllers?: {
+        id?: string;
+        name?: string;
+        subType?: string;
+        type?: string;
+      }[];
+      description?: string;
+      disks?: {
+        controllerId: string;
+        independenceMode:
+          | "persistent"
+          | "independent_persistent"
+          | "independent_nonpersistent";
+        totalSize: number;
+        virtualDiskId?: string;
+        virtualDiskName?: string;
+      }[];
+      exposeToGuestVM?: boolean;
+      guestOS?: string;
+      guestOSType?: string;
+      nics?: {
+        customization?: {
+          allocation?: "static" | "dynamic";
+          dnsServers?: string[];
+          gateway?: string[];
+          ipAddress?: string;
+          mask?: string;
+          primaryWinsServer?: string;
+          secondaryWinsServer?: string;
+        };
+        ipAddresses?: string[];
+        macAddress?: string;
+        network: {
+          assignable?: boolean;
+          id: string;
+          location?: string;
+          name?: string;
+          properties?: { privateCloudId?: string };
+          type?: string;
+        };
+        nicType:
+          | "E1000"
+          | "E1000E"
+          | "PCNET32"
+          | "VMXNET"
+          | "VMXNET2"
+          | "VMXNET3";
+        powerOnBoot?: boolean;
+        virtualNicId?: string;
+        virtualNicName?: string;
+      }[];
+      numberOfCores?: number;
+      path?: string;
+      privateCloudId: string;
+      vSphereNetworks?: string[];
+      vSphereTags?: string[];
+      vmwaretools?: string;
+    };
+    type?: string;
+  }[];
+}
 export const VirtualMachineTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3195,9 +4653,7 @@ export const VirtualMachineTemplatesListOutput =
         }),
       ),
     ),
-  });
-export type VirtualMachineTemplatesListOutput =
-  typeof VirtualMachineTemplatesListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineTemplatesListOutput>;
 
 // The operation
 /**
@@ -3218,6 +4674,12 @@ export const VirtualMachineTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworksGetInput {
+  subscriptionId: string;
+  regionId: string;
+  pcName: string;
+  virtualNetworkName: string;
+}
 export const VirtualNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3230,10 +4692,17 @@ export const VirtualNetworksGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksGetInput>;
 
 // Output Schema
+export interface VirtualNetworksGetOutput {
+  assignable?: boolean;
+  id: string;
+  location?: string;
+  name?: string;
+  properties?: { privateCloudId?: string };
+  type?: string;
+}
 export const VirtualNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignable: Schema.optional(Schema.Boolean),
@@ -3246,8 +4715,7 @@ export const VirtualNetworksGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksGetOutput>;
 
 // The operation
 /**
@@ -3266,6 +4734,12 @@ export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualNetworksGetOutput,
 }));
 // Input Schema
+export interface VirtualNetworksListInput {
+  subscriptionId: string;
+  regionId: string;
+  pcName: string;
+  resourcePoolName: string;
+}
 export const VirtualNetworksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3278,10 +4752,20 @@ export const VirtualNetworksListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualNetworks",
       apiVersion: "2019-04-01",
     }),
-  );
-export type VirtualNetworksListInput = typeof VirtualNetworksListInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksListInput>;
 
 // Output Schema
+export interface VirtualNetworksListOutput {
+  nextLink?: string;
+  value?: {
+    assignable?: boolean;
+    id: string;
+    location?: string;
+    name?: string;
+    properties?: { privateCloudId?: string };
+    type?: string;
+  }[];
+}
 export const VirtualNetworksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3301,8 +4785,7 @@ export const VirtualNetworksListOutput =
         }),
       ),
     ),
-  });
-export type VirtualNetworksListOutput = typeof VirtualNetworksListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksListOutput>;
 
 // The operation
 /**

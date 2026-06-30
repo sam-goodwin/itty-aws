@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateTrafficRuleInput {
+  organization: string;
+  database: string;
+  branch: string;
+  budget_id: string;
+  kind?: "match" | "each";
+  keyspace?: string;
+  fingerprint?: string;
+  tags?: string[];
+}
 export const CreateTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     organization: Schema.String.pipe(T.PathParam()),
@@ -20,10 +30,25 @@ export const CreateTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{budget_id}/rules",
   }),
-);
-export type CreateTrafficRuleInput = typeof CreateTrafficRuleInput.Type;
+) as unknown as Schema.Codec<CreateTrafficRuleInput>;
 
 // Output Schema
+export interface CreateTrafficRuleOutput {
+  id: string;
+  kind: "match" | "each";
+  tags: {
+    key_id: string;
+    key: string;
+    value: string;
+    source: "sql" | "system";
+  }[];
+  fingerprint?: string | null;
+  keyspace?: string | null;
+  actor: { id: string; display_name: string; avatar_url: string };
+  syntax_highlighted_sql: string;
+  created_at: string;
+  updated_at: string;
+}
 export const CreateTrafficRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -46,8 +71,7 @@ export const CreateTrafficRuleOutput =
     syntax_highlighted_sql: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type CreateTrafficRuleOutput = typeof CreateTrafficRuleOutput.Type;
+  }) as unknown as Schema.Codec<CreateTrafficRuleOutput>;
 
 // The operation
 /**

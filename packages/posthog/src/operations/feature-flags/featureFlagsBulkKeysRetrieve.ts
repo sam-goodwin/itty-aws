@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsBulkKeysRetrieveInput {
+  project_id: string;
+  ids?: unknown[];
+}
 export const FeatureFlagsBulkKeysRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +17,18 @@ export const FeatureFlagsBulkKeysRetrieveInput =
       method: "POST",
       path: "/api/projects/{project_id}/feature_flags/bulk_keys/",
     }),
-  );
-export type FeatureFlagsBulkKeysRetrieveInput =
-  typeof FeatureFlagsBulkKeysRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsBulkKeysRetrieveInput>;
 
 // Output Schema
+export interface FeatureFlagsBulkKeysRetrieveOutput {
+  keys: Record<string, string>;
+  warning?: string;
+}
 export const FeatureFlagsBulkKeysRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.Record(Schema.String, Schema.String),
     warning: Schema.optional(Schema.String),
-  });
-export type FeatureFlagsBulkKeysRetrieveOutput =
-  typeof FeatureFlagsBulkKeysRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsBulkKeysRetrieveOutput>;
 
 // The operation
 /**

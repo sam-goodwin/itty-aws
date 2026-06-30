@@ -4,14 +4,48 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1AppsByAppIdDomainsInput {
+  appId: string;
+}
 export const GetV1AppsByAppIdDomainsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/apps/{appId}/domains" }));
-export type GetV1AppsByAppIdDomainsInput =
-  typeof GetV1AppsByAppIdDomainsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/apps/{appId}/domains" }),
+  ) as unknown as Schema.Codec<GetV1AppsByAppIdDomainsInput>;
 
 // Output Schema
+export interface GetV1AppsByAppIdDomainsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    hostname: string;
+    appId: string;
+    computeServiceId: string;
+    status:
+      | "pending_dns"
+      | "verifying"
+      | "verified_routing_blocked"
+      | "provisioning_tls"
+      | "active"
+      | "failed"
+      | "removing";
+    foundryStatus: string;
+    failureReason: string | null;
+    failureCategory: "dns" | "acme" | "storage" | "unknown" | null | null;
+    certExpiresAt: string | null;
+    createdAt: string;
+    updatedAt: string;
+    dnsRecords: {
+      type: string;
+      name: string;
+      value: string;
+      ttl: number | null;
+    }[];
+  }[];
+  pagination: { hasMore: boolean; nextCursor: unknown };
+}
 export const GetV1AppsByAppIdDomainsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -53,9 +87,7 @@ export const GetV1AppsByAppIdDomainsOutput =
       hasMore: Schema.Boolean,
       nextCursor: Schema.Unknown,
     }),
-  });
-export type GetV1AppsByAppIdDomainsOutput =
-  typeof GetV1AppsByAppIdDomainsOutput.Type;
+  }) as unknown as Schema.Codec<GetV1AppsByAppIdDomainsOutput>;
 
 // The operation
 /**

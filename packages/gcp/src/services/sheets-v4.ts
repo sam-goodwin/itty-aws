@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -37,7 +37,7 @@ export interface ConditionValue {
     | (string & {});
 }
 
-export const ConditionValue: Schema.Schema<ConditionValue> =
+export const ConditionValue: Schema.Codec<ConditionValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userEnteredValue: Schema.optional(Schema.String),
     relativeDate: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface BooleanCondition {
   values?: ReadonlyArray<ConditionValue>;
 }
 
-export const BooleanCondition: Schema.Schema<BooleanCondition> =
+export const BooleanCondition: Schema.Codec<BooleanCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(ConditionValue)),
@@ -101,7 +101,7 @@ export interface DataValidationRule {
   condition?: BooleanCondition;
 }
 
-export const DataValidationRule: Schema.Schema<DataValidationRule> =
+export const DataValidationRule: Schema.Codec<DataValidationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputMessage: Schema.optional(Schema.String),
     showCustomUi: Schema.optional(Schema.Boolean),
@@ -122,7 +122,7 @@ export interface GridRange {
   startColumnIndex?: number;
 }
 
-export const GridRange: Schema.Schema<GridRange> =
+export const GridRange: Schema.Codec<GridRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sheetId: Schema.optional(Schema.Number),
     endRowIndex: Schema.optional(Schema.Number),
@@ -140,7 +140,7 @@ export interface SetDataValidationRequest {
   range?: GridRange;
 }
 
-export const SetDataValidationRequest: Schema.Schema<SetDataValidationRequest> =
+export const SetDataValidationRequest: Schema.Codec<SetDataValidationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rule: Schema.optional(DataValidationRule),
     filteredRowsIncluded: Schema.optional(Schema.Boolean),
@@ -158,7 +158,7 @@ export interface Color {
   green?: number;
 }
 
-export const Color: Schema.Schema<Color> =
+export const Color: Schema.Codec<Color> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blue: Schema.optional(Schema.Number),
     alpha: Schema.optional(Schema.Number),
@@ -184,7 +184,7 @@ export interface ColorStyle {
     | (string & {});
 }
 
-export const ColorStyle: Schema.Schema<ColorStyle> =
+export const ColorStyle: Schema.Codec<ColorStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rgbColor: Schema.optional(Color),
     themeColor: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export interface TreemapChartColorScale {
   minValueColorStyle?: ColorStyle;
 }
 
-export const TreemapChartColorScale: Schema.Schema<TreemapChartColorScale> =
+export const TreemapChartColorScale: Schema.Codec<TreemapChartColorScale> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     midValueColor: Schema.optional(Color),
     midValueColorStyle: Schema.optional(ColorStyle),
@@ -238,7 +238,7 @@ export interface PointStyle {
     | (string & {});
 }
 
-export const PointStyle: Schema.Schema<PointStyle> =
+export const PointStyle: Schema.Codec<PointStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     size: Schema.optional(Schema.Number),
     shape: Schema.optional(Schema.String),
@@ -255,7 +255,7 @@ export interface BasicSeriesDataPointStyleOverride {
   pointStyle?: PointStyle;
 }
 
-export const BasicSeriesDataPointStyleOverride: Schema.Schema<BasicSeriesDataPointStyleOverride> =
+export const BasicSeriesDataPointStyleOverride: Schema.Codec<BasicSeriesDataPointStyleOverride> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     colorStyle: Schema.optional(ColorStyle),
@@ -302,7 +302,7 @@ export interface DataExecutionStatus {
   lastRefreshTime?: string;
 }
 
-export const DataExecutionStatus: Schema.Schema<DataExecutionStatus> =
+export const DataExecutionStatus: Schema.Codec<DataExecutionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
@@ -319,7 +319,7 @@ export interface GridCoordinate {
   sheetId?: number;
 }
 
-export const GridCoordinate: Schema.Schema<GridCoordinate> =
+export const GridCoordinate: Schema.Codec<GridCoordinate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnIndex: Schema.optional(Schema.Number),
     rowIndex: Schema.optional(Schema.Number),
@@ -339,7 +339,7 @@ export interface DataSourceObjectReference {
   dataSourcePivotTableAnchorCell?: GridCoordinate;
 }
 
-export const DataSourceObjectReference: Schema.Schema<DataSourceObjectReference> =
+export const DataSourceObjectReference: Schema.Codec<DataSourceObjectReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceFormulaCell: Schema.optional(GridCoordinate),
     dataSourceTableAnchorCell: Schema.optional(GridCoordinate),
@@ -355,7 +355,7 @@ export interface RefreshDataSourceObjectExecutionStatus {
   reference?: DataSourceObjectReference;
 }
 
-export const RefreshDataSourceObjectExecutionStatus: Schema.Schema<RefreshDataSourceObjectExecutionStatus> =
+export const RefreshDataSourceObjectExecutionStatus: Schema.Codec<RefreshDataSourceObjectExecutionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataExecutionStatus: Schema.optional(DataExecutionStatus),
     reference: Schema.optional(DataSourceObjectReference),
@@ -366,7 +366,7 @@ export interface RefreshDataSourceResponse {
   statuses?: ReadonlyArray<RefreshDataSourceObjectExecutionStatus>;
 }
 
-export const RefreshDataSourceResponse: Schema.Schema<RefreshDataSourceResponse> =
+export const RefreshDataSourceResponse: Schema.Codec<RefreshDataSourceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statuses: Schema.optional(
       Schema.Array(RefreshDataSourceObjectExecutionStatus),
@@ -378,7 +378,7 @@ export interface Link {
   uri?: string;
 }
 
-export const Link: Schema.Schema<Link> =
+export const Link: Schema.Codec<Link> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "Link" });
@@ -404,7 +404,7 @@ export interface TextFormat {
   link?: Link;
 }
 
-export const TextFormat: Schema.Schema<TextFormat> =
+export const TextFormat: Schema.Codec<TextFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     foregroundColorStyle: Schema.optional(ColorStyle),
     fontFamily: Schema.optional(Schema.String),
@@ -427,7 +427,7 @@ export interface TextPosition {
     | (string & {});
 }
 
-export const TextPosition: Schema.Schema<TextPosition> =
+export const TextPosition: Schema.Codec<TextPosition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     horizontalAlignment: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextPosition" });
@@ -439,7 +439,7 @@ export interface KeyValueFormat {
   position?: TextPosition;
 }
 
-export const KeyValueFormat: Schema.Schema<KeyValueFormat> =
+export const KeyValueFormat: Schema.Codec<KeyValueFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textFormat: Schema.optional(TextFormat),
     position: Schema.optional(TextPosition),
@@ -454,7 +454,7 @@ export interface LookerDataSourceSpec {
   explore?: string;
 }
 
-export const LookerDataSourceSpec: Schema.Schema<LookerDataSourceSpec> =
+export const LookerDataSourceSpec: Schema.Codec<LookerDataSourceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instanceUri: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
@@ -470,7 +470,7 @@ export interface DataSourceParameter {
   name?: string;
 }
 
-export const DataSourceParameter: Schema.Schema<DataSourceParameter> =
+export const DataSourceParameter: Schema.Codec<DataSourceParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     namedRangeId: Schema.optional(Schema.String),
@@ -482,7 +482,7 @@ export interface BigQueryQuerySpec {
   rawQuery?: string;
 }
 
-export const BigQueryQuerySpec: Schema.Schema<BigQueryQuerySpec> =
+export const BigQueryQuerySpec: Schema.Codec<BigQueryQuerySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rawQuery: Schema.optional(Schema.String),
   }).annotate({ identifier: "BigQueryQuerySpec" });
@@ -496,7 +496,7 @@ export interface BigQueryTableSpec {
   tableProjectId?: string;
 }
 
-export const BigQueryTableSpec: Schema.Schema<BigQueryTableSpec> =
+export const BigQueryTableSpec: Schema.Codec<BigQueryTableSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String),
     datasetId: Schema.optional(Schema.String),
@@ -512,7 +512,7 @@ export interface BigQueryDataSourceSpec {
   tableSpec?: BigQueryTableSpec;
 }
 
-export const BigQueryDataSourceSpec: Schema.Schema<BigQueryDataSourceSpec> =
+export const BigQueryDataSourceSpec: Schema.Codec<BigQueryDataSourceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     querySpec: Schema.optional(BigQueryQuerySpec),
@@ -528,7 +528,7 @@ export interface DataSourceSpec {
   bigQuery?: BigQueryDataSourceSpec;
 }
 
-export const DataSourceSpec: Schema.Schema<DataSourceSpec> =
+export const DataSourceSpec: Schema.Codec<DataSourceSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     looker: Schema.optional(LookerDataSourceSpec),
     parameters: Schema.optional(Schema.Array(DataSourceParameter)),
@@ -557,7 +557,7 @@ export interface ChartDateTimeRule {
     | (string & {});
 }
 
-export const ChartDateTimeRule: Schema.Schema<ChartDateTimeRule> =
+export const ChartDateTimeRule: Schema.Codec<ChartDateTimeRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChartDateTimeRule" });
@@ -571,7 +571,7 @@ export interface ChartHistogramRule {
   intervalSize?: number;
 }
 
-export const ChartHistogramRule: Schema.Schema<ChartHistogramRule> =
+export const ChartHistogramRule: Schema.Codec<ChartHistogramRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxValue: Schema.optional(Schema.Number),
     minValue: Schema.optional(Schema.Number),
@@ -585,7 +585,7 @@ export interface ChartGroupRule {
   histogramRule?: ChartHistogramRule;
 }
 
-export const ChartGroupRule: Schema.Schema<ChartGroupRule> =
+export const ChartGroupRule: Schema.Codec<ChartGroupRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dateTimeRule: Schema.optional(ChartDateTimeRule),
     histogramRule: Schema.optional(ChartHistogramRule),
@@ -596,7 +596,7 @@ export interface DataSourceColumnReference {
   name?: string;
 }
 
-export const DataSourceColumnReference: Schema.Schema<DataSourceColumnReference> =
+export const DataSourceColumnReference: Schema.Codec<DataSourceColumnReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataSourceColumnReference" });
@@ -606,7 +606,7 @@ export interface ChartSourceRange {
   sources?: ReadonlyArray<GridRange>;
 }
 
-export const ChartSourceRange: Schema.Schema<ChartSourceRange> =
+export const ChartSourceRange: Schema.Codec<ChartSourceRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(GridRange)),
   }).annotate({ identifier: "ChartSourceRange" });
@@ -630,7 +630,7 @@ export interface ChartData {
   sourceRange?: ChartSourceRange;
 }
 
-export const ChartData: Schema.Schema<ChartData> =
+export const ChartData: Schema.Codec<ChartData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupRule: Schema.optional(ChartGroupRule),
     aggregateType: Schema.optional(Schema.String),
@@ -645,7 +645,7 @@ export interface CandlestickDomain {
   reversed?: boolean;
 }
 
-export const CandlestickDomain: Schema.Schema<CandlestickDomain> =
+export const CandlestickDomain: Schema.Codec<CandlestickDomain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(ChartData),
     reversed: Schema.optional(Schema.Boolean),
@@ -658,7 +658,7 @@ export interface WaterfallChartDomain {
   data?: ChartData;
 }
 
-export const WaterfallChartDomain: Schema.Schema<WaterfallChartDomain> =
+export const WaterfallChartDomain: Schema.Codec<WaterfallChartDomain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reversed: Schema.optional(Schema.Boolean),
     data: Schema.optional(ChartData),
@@ -677,7 +677,7 @@ export interface OverlayPosition {
   offsetXPixels?: number;
 }
 
-export const OverlayPosition: Schema.Schema<OverlayPosition> =
+export const OverlayPosition: Schema.Codec<OverlayPosition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offsetYPixels: Schema.optional(Schema.Number),
     heightPixels: Schema.optional(Schema.Number),
@@ -695,7 +695,7 @@ export interface EmbeddedObjectPosition {
   newSheet?: boolean;
 }
 
-export const EmbeddedObjectPosition: Schema.Schema<EmbeddedObjectPosition> =
+export const EmbeddedObjectPosition: Schema.Codec<EmbeddedObjectPosition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sheetId: Schema.optional(Schema.Number),
     overlayPosition: Schema.optional(OverlayPosition),
@@ -709,7 +709,7 @@ export interface EmbeddedObjectBorder {
   colorStyle?: ColorStyle;
 }
 
-export const EmbeddedObjectBorder: Schema.Schema<EmbeddedObjectBorder> =
+export const EmbeddedObjectBorder: Schema.Codec<EmbeddedObjectBorder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     colorStyle: Schema.optional(ColorStyle),
@@ -729,7 +729,7 @@ export interface ChartAxisViewWindowOptions {
   viewWindowMin?: number;
 }
 
-export const ChartAxisViewWindowOptions: Schema.Schema<ChartAxisViewWindowOptions> =
+export const ChartAxisViewWindowOptions: Schema.Codec<ChartAxisViewWindowOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewWindowMax: Schema.optional(Schema.Number),
     viewWindowMode: Schema.optional(Schema.String),
@@ -754,7 +754,7 @@ export interface BasicChartAxis {
     | (string & {});
 }
 
-export const BasicChartAxis: Schema.Schema<BasicChartAxis> =
+export const BasicChartAxis: Schema.Codec<BasicChartAxis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     titleTextPosition: Schema.optional(TextPosition),
     title: Schema.optional(Schema.String),
@@ -789,7 +789,7 @@ export interface DataLabel {
     | (string & {});
 }
 
-export const DataLabel: Schema.Schema<DataLabel> =
+export const DataLabel: Schema.Codec<DataLabel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textFormat: Schema.optional(TextFormat),
     placement: Schema.optional(Schema.String),
@@ -804,7 +804,7 @@ export interface BasicChartDomain {
   reversed?: boolean;
 }
 
-export const BasicChartDomain: Schema.Schema<BasicChartDomain> =
+export const BasicChartDomain: Schema.Codec<BasicChartDomain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(ChartData),
     reversed: Schema.optional(Schema.Boolean),
@@ -827,7 +827,7 @@ export interface LineStyle {
     | (string & {});
 }
 
-export const LineStyle: Schema.Schema<LineStyle> =
+export const LineStyle: Schema.Codec<LineStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
@@ -868,7 +868,7 @@ export interface BasicChartSeries {
   pointStyle?: PointStyle;
 }
 
-export const BasicChartSeries: Schema.Schema<BasicChartSeries> =
+export const BasicChartSeries: Schema.Codec<BasicChartSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     colorStyle: Schema.optional(ColorStyle),
     type: Schema.optional(Schema.String),
@@ -935,7 +935,7 @@ export interface BasicChartSpec {
   interpolateNulls?: boolean;
 }
 
-export const BasicChartSpec: Schema.Schema<BasicChartSpec> =
+export const BasicChartSpec: Schema.Codec<BasicChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     legendPosition: Schema.optional(Schema.String),
     headerCount: Schema.optional(Schema.Number),
@@ -972,7 +972,7 @@ export interface PieChartSpec {
     | (string & {});
 }
 
-export const PieChartSpec: Schema.Schema<PieChartSpec> =
+export const PieChartSpec: Schema.Codec<PieChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pieHole: Schema.optional(Schema.Number),
     domain: Schema.optional(ChartData),
@@ -990,7 +990,7 @@ export interface HistogramSeries {
   barColor?: Color;
 }
 
-export const HistogramSeries: Schema.Schema<HistogramSeries> =
+export const HistogramSeries: Schema.Codec<HistogramSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     barColorStyle: Schema.optional(ColorStyle),
     data: Schema.optional(ChartData),
@@ -1018,7 +1018,7 @@ export interface HistogramChartSpec {
   series?: ReadonlyArray<HistogramSeries>;
 }
 
-export const HistogramChartSpec: Schema.Schema<HistogramChartSpec> =
+export const HistogramChartSpec: Schema.Codec<HistogramChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     showItemDividers: Schema.optional(Schema.Boolean),
     bucketSize: Schema.optional(Schema.Number),
@@ -1042,7 +1042,7 @@ export interface FilterCriteria {
   visibleForegroundColor?: Color;
 }
 
-export const FilterCriteria: Schema.Schema<FilterCriteria> =
+export const FilterCriteria: Schema.Codec<FilterCriteria> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hiddenValues: Schema.optional(Schema.Array(Schema.String)),
     visibleBackgroundColorStyle: Schema.optional(ColorStyle),
@@ -1061,7 +1061,7 @@ export interface FilterSpec {
   columnIndex?: number;
 }
 
-export const FilterSpec: Schema.Schema<FilterSpec> =
+export const FilterSpec: Schema.Codec<FilterSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
     filterCriteria: Schema.optional(FilterCriteria),
@@ -1077,7 +1077,7 @@ export interface WaterfallChartColumnStyle {
   label?: string;
 }
 
-export const WaterfallChartColumnStyle: Schema.Schema<WaterfallChartColumnStyle> =
+export const WaterfallChartColumnStyle: Schema.Codec<WaterfallChartColumnStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     colorStyle: Schema.optional(ColorStyle),
@@ -1093,7 +1093,7 @@ export interface WaterfallChartCustomSubtotal {
   label?: string;
 }
 
-export const WaterfallChartCustomSubtotal: Schema.Schema<WaterfallChartCustomSubtotal> =
+export const WaterfallChartCustomSubtotal: Schema.Codec<WaterfallChartCustomSubtotal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataIsSubtotal: Schema.optional(Schema.Boolean),
     subtotalIndex: Schema.optional(Schema.Number),
@@ -1117,7 +1117,7 @@ export interface WaterfallChartSeries {
   negativeColumnsStyle?: WaterfallChartColumnStyle;
 }
 
-export const WaterfallChartSeries: Schema.Schema<WaterfallChartSeries> =
+export const WaterfallChartSeries: Schema.Codec<WaterfallChartSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hideTrailingSubtotal: Schema.optional(Schema.Boolean),
     subtotalColumnsStyle: Schema.optional(WaterfallChartColumnStyle),
@@ -1151,7 +1151,7 @@ export interface WaterfallChartSpec {
   totalDataLabel?: DataLabel;
 }
 
-export const WaterfallChartSpec: Schema.Schema<WaterfallChartSpec> =
+export const WaterfallChartSpec: Schema.Codec<WaterfallChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(WaterfallChartDomain),
     series: Schema.optional(Schema.Array(WaterfallChartSeries)),
@@ -1169,7 +1169,7 @@ export interface ChartCustomNumberFormatOptions {
   prefix?: string;
 }
 
-export const ChartCustomNumberFormatOptions: Schema.Schema<ChartCustomNumberFormatOptions> =
+export const ChartCustomNumberFormatOptions: Schema.Codec<ChartCustomNumberFormatOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suffix: Schema.optional(Schema.String),
     prefix: Schema.optional(Schema.String),
@@ -1198,7 +1198,7 @@ export interface BaselineValueFormat {
   positiveColorStyle?: ColorStyle;
 }
 
-export const BaselineValueFormat: Schema.Schema<BaselineValueFormat> =
+export const BaselineValueFormat: Schema.Codec<BaselineValueFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negativeColor: Schema.optional(Color),
     negativeColorStyle: Schema.optional(ColorStyle),
@@ -1241,7 +1241,7 @@ export interface ScorecardChartSpec {
     | (string & {});
 }
 
-export const ScorecardChartSpec: Schema.Schema<ScorecardChartSpec> =
+export const ScorecardChartSpec: Schema.Codec<ScorecardChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scaleFactor: Schema.optional(Schema.Number),
     aggregateType: Schema.optional(Schema.String),
@@ -1260,7 +1260,7 @@ export interface DataSourceChartProperties {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const DataSourceChartProperties: Schema.Schema<DataSourceChartProperties> =
+export const DataSourceChartProperties: Schema.Codec<DataSourceChartProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceId: Schema.optional(Schema.String),
     dataExecutionStatus: Schema.optional(DataExecutionStatus),
@@ -1301,7 +1301,7 @@ export interface BubbleChartSpec {
   bubbleLabels?: ChartData;
 }
 
-export const BubbleChartSpec: Schema.Schema<BubbleChartSpec> =
+export const BubbleChartSpec: Schema.Codec<BubbleChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bubbleBorderColor: Schema.optional(Color),
     series: Schema.optional(ChartData),
@@ -1346,7 +1346,7 @@ export interface TreemapChartSpec {
   headerColor?: Color;
 }
 
-export const TreemapChartSpec: Schema.Schema<TreemapChartSpec> =
+export const TreemapChartSpec: Schema.Codec<TreemapChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentLabels: Schema.optional(ChartData),
     sizeData: Schema.optional(ChartData),
@@ -1368,7 +1368,7 @@ export interface CandlestickSeries {
   data?: ChartData;
 }
 
-export const CandlestickSeries: Schema.Schema<CandlestickSeries> =
+export const CandlestickSeries: Schema.Codec<CandlestickSeries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(ChartData),
   }).annotate({ identifier: "CandlestickSeries" });
@@ -1384,7 +1384,7 @@ export interface CandlestickData {
   openSeries?: CandlestickSeries;
 }
 
-export const CandlestickData: Schema.Schema<CandlestickData> =
+export const CandlestickData: Schema.Codec<CandlestickData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     closeSeries: Schema.optional(CandlestickSeries),
     highSeries: Schema.optional(CandlestickSeries),
@@ -1399,7 +1399,7 @@ export interface CandlestickChartSpec {
   data?: ReadonlyArray<CandlestickData>;
 }
 
-export const CandlestickChartSpec: Schema.Schema<CandlestickChartSpec> =
+export const CandlestickChartSpec: Schema.Codec<CandlestickChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(CandlestickDomain),
     data: Schema.optional(Schema.Array(CandlestickData)),
@@ -1426,7 +1426,7 @@ export interface SortSpec {
   foregroundColorStyle?: ColorStyle;
 }
 
-export const SortSpec: Schema.Schema<SortSpec> =
+export const SortSpec: Schema.Codec<SortSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sortOrder: Schema.optional(Schema.String),
     backgroundColorStyle: Schema.optional(ColorStyle),
@@ -1461,7 +1461,7 @@ export interface OrgChartSpec {
   selectedNodeColorStyle?: ColorStyle;
 }
 
-export const OrgChartSpec: Schema.Schema<OrgChartSpec> =
+export const OrgChartSpec: Schema.Codec<OrgChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentLabels: Schema.optional(ChartData),
     selectedNodeColor: Schema.optional(Color),
@@ -1530,7 +1530,7 @@ export interface ChartSpec {
   orgChart?: OrgChartSpec;
 }
 
-export const ChartSpec: Schema.Schema<ChartSpec> =
+export const ChartSpec: Schema.Codec<ChartSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maximized: Schema.optional(Schema.Boolean),
     basicChart: Schema.optional(BasicChartSpec),
@@ -1569,7 +1569,7 @@ export interface EmbeddedChart {
   spec?: ChartSpec;
 }
 
-export const EmbeddedChart: Schema.Schema<EmbeddedChart> =
+export const EmbeddedChart: Schema.Codec<EmbeddedChart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chartId: Schema.optional(Schema.Number),
     position: Schema.optional(EmbeddedObjectPosition),
@@ -1582,7 +1582,7 @@ export interface AddChartRequest {
   chart?: EmbeddedChart;
 }
 
-export const AddChartRequest: Schema.Schema<AddChartRequest> =
+export const AddChartRequest: Schema.Codec<AddChartRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chart: Schema.optional(EmbeddedChart),
   }).annotate({ identifier: "AddChartRequest" });
@@ -1606,7 +1606,7 @@ export interface FilterView {
   filterSpecs?: ReadonlyArray<FilterSpec>;
 }
 
-export const FilterView: Schema.Schema<FilterView> =
+export const FilterView: Schema.Codec<FilterView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     tableId: Schema.optional(Schema.String),
@@ -1623,7 +1623,7 @@ export interface AddFilterViewResponse {
   filter?: FilterView;
 }
 
-export const AddFilterViewResponse: Schema.Schema<AddFilterViewResponse> =
+export const AddFilterViewResponse: Schema.Codec<AddFilterViewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(FilterView),
   }).annotate({ identifier: "AddFilterViewResponse" });
@@ -1635,7 +1635,7 @@ export interface PivotGroupLimit {
   applyOrder?: number;
 }
 
-export const PivotGroupLimit: Schema.Schema<PivotGroupLimit> =
+export const PivotGroupLimit: Schema.Codec<PivotGroupLimit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     countLimit: Schema.optional(Schema.Number),
     applyOrder: Schema.optional(Schema.Number),
@@ -1646,7 +1646,7 @@ export interface TableColumnDataValidationRule {
   condition?: BooleanCondition;
 }
 
-export const TableColumnDataValidationRule: Schema.Schema<TableColumnDataValidationRule> =
+export const TableColumnDataValidationRule: Schema.Codec<TableColumnDataValidationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(BooleanCondition),
   }).annotate({ identifier: "TableColumnDataValidationRule" });
@@ -1662,7 +1662,7 @@ export interface DimensionRange {
   dimension?: "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS" | (string & {});
 }
 
-export const DimensionRange: Schema.Schema<DimensionRange> =
+export const DimensionRange: Schema.Codec<DimensionRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sheetId: Schema.optional(Schema.Number),
     endIndex: Schema.optional(Schema.Number),
@@ -1687,7 +1687,7 @@ export interface DeveloperMetadataLocation {
   sheetId?: number;
 }
 
-export const DeveloperMetadataLocation: Schema.Schema<DeveloperMetadataLocation> =
+export const DeveloperMetadataLocation: Schema.Codec<DeveloperMetadataLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationType: Schema.optional(Schema.String),
     spreadsheet: Schema.optional(Schema.Boolean),
@@ -1712,7 +1712,7 @@ export interface DeveloperMetadata {
   metadataValue?: string;
 }
 
-export const DeveloperMetadata: Schema.Schema<DeveloperMetadata> =
+export const DeveloperMetadata: Schema.Codec<DeveloperMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visibility: Schema.optional(Schema.String),
     metadataKey: Schema.optional(Schema.String),
@@ -1752,7 +1752,7 @@ export interface DeveloperMetadataLookup {
     | (string & {});
 }
 
-export const DeveloperMetadataLookup: Schema.Schema<DeveloperMetadataLookup> =
+export const DeveloperMetadataLookup: Schema.Codec<DeveloperMetadataLookup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationMatchingStrategy: Schema.optional(Schema.String),
     metadataLocation: Schema.optional(DeveloperMetadataLocation),
@@ -1772,7 +1772,7 @@ export interface DataFilter {
   developerMetadataLookup?: DeveloperMetadataLookup;
 }
 
-export const DataFilter: Schema.Schema<DataFilter> =
+export const DataFilter: Schema.Codec<DataFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     a1Range: Schema.optional(Schema.String),
     gridRange: Schema.optional(GridRange),
@@ -1786,7 +1786,7 @@ export interface MatchedDeveloperMetadata {
   dataFilters?: ReadonlyArray<DataFilter>;
 }
 
-export const MatchedDeveloperMetadata: Schema.Schema<MatchedDeveloperMetadata> =
+export const MatchedDeveloperMetadata: Schema.Codec<MatchedDeveloperMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerMetadata: Schema.optional(DeveloperMetadata),
     dataFilters: Schema.optional(Schema.Array(DataFilter)),
@@ -1797,7 +1797,7 @@ export interface SearchDeveloperMetadataResponse {
   matchedDeveloperMetadata?: ReadonlyArray<MatchedDeveloperMetadata>;
 }
 
-export const SearchDeveloperMetadataResponse: Schema.Schema<SearchDeveloperMetadataResponse> =
+export const SearchDeveloperMetadataResponse: Schema.Codec<SearchDeveloperMetadataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchedDeveloperMetadata: Schema.optional(
       Schema.Array(MatchedDeveloperMetadata),
@@ -1811,7 +1811,7 @@ export interface DataSourceColumn {
   reference?: DataSourceColumnReference;
 }
 
-export const DataSourceColumn: Schema.Schema<DataSourceColumn> =
+export const DataSourceColumn: Schema.Codec<DataSourceColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     formula: Schema.optional(Schema.String),
     reference: Schema.optional(DataSourceColumnReference),
@@ -1822,7 +1822,7 @@ export interface DeleteDeveloperMetadataRequest {
   dataFilter?: DataFilter;
 }
 
-export const DeleteDeveloperMetadataRequest: Schema.Schema<DeleteDeveloperMetadataRequest> =
+export const DeleteDeveloperMetadataRequest: Schema.Codec<DeleteDeveloperMetadataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFilter: Schema.optional(DataFilter),
   }).annotate({ identifier: "DeleteDeveloperMetadataRequest" });
@@ -1834,7 +1834,7 @@ export interface TextFormatRun {
   format?: TextFormat;
 }
 
-export const TextFormatRun: Schema.Schema<TextFormatRun> =
+export const TextFormatRun: Schema.Codec<TextFormatRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     format: Schema.optional(TextFormat),
@@ -1858,7 +1858,7 @@ export interface ErrorValue {
   message?: string;
 }
 
-export const ErrorValue: Schema.Schema<ErrorValue> =
+export const ErrorValue: Schema.Codec<ErrorValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -1877,7 +1877,7 @@ export interface ExtendedValue {
   formulaValue?: string;
 }
 
-export const ExtendedValue: Schema.Schema<ExtendedValue> =
+export const ExtendedValue: Schema.Codec<ExtendedValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorValue: Schema.optional(ErrorValue),
     stringValue: Schema.optional(Schema.String),
@@ -1893,7 +1893,7 @@ export interface PivotGroupSortValueBucket {
   valuesIndex?: number;
 }
 
-export const PivotGroupSortValueBucket: Schema.Schema<PivotGroupSortValueBucket> =
+export const PivotGroupSortValueBucket: Schema.Codec<PivotGroupSortValueBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buckets: Schema.optional(Schema.Array(ExtendedValue)),
     valuesIndex: Schema.optional(Schema.Number),
@@ -1906,7 +1906,7 @@ export interface ManualRuleGroup {
   items?: ReadonlyArray<ExtendedValue>;
 }
 
-export const ManualRuleGroup: Schema.Schema<ManualRuleGroup> =
+export const ManualRuleGroup: Schema.Codec<ManualRuleGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupName: Schema.optional(ExtendedValue),
     items: Schema.optional(Schema.Array(ExtendedValue)),
@@ -1917,7 +1917,7 @@ export interface ManualRule {
   groups?: ReadonlyArray<ManualRuleGroup>;
 }
 
-export const ManualRule: Schema.Schema<ManualRule> =
+export const ManualRule: Schema.Codec<ManualRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groups: Schema.optional(Schema.Array(ManualRuleGroup)),
   }).annotate({ identifier: "ManualRule" });
@@ -1931,7 +1931,7 @@ export interface HistogramRule {
   end?: number;
 }
 
-export const HistogramRule: Schema.Schema<HistogramRule> =
+export const HistogramRule: Schema.Codec<HistogramRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interval: Schema.optional(Schema.Number),
     start: Schema.optional(Schema.Number),
@@ -1960,7 +1960,7 @@ export interface DateTimeRule {
     | (string & {});
 }
 
-export const DateTimeRule: Schema.Schema<DateTimeRule> =
+export const DateTimeRule: Schema.Codec<DateTimeRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "DateTimeRule" });
@@ -1974,7 +1974,7 @@ export interface PivotGroupRule {
   dateTimeRule?: DateTimeRule;
 }
 
-export const PivotGroupRule: Schema.Schema<PivotGroupRule> =
+export const PivotGroupRule: Schema.Codec<PivotGroupRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     manualRule: Schema.optional(ManualRule),
     histogramRule: Schema.optional(HistogramRule),
@@ -1988,7 +1988,7 @@ export interface PivotGroupValueMetadata {
   value?: ExtendedValue;
 }
 
-export const PivotGroupValueMetadata: Schema.Schema<PivotGroupValueMetadata> =
+export const PivotGroupValueMetadata: Schema.Codec<PivotGroupValueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collapsed: Schema.optional(Schema.Boolean),
     value: Schema.optional(ExtendedValue),
@@ -2021,7 +2021,7 @@ export interface PivotGroup {
   dataSourceColumnReference?: DataSourceColumnReference;
 }
 
-export const PivotGroup: Schema.Schema<PivotGroup> =
+export const PivotGroup: Schema.Codec<PivotGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceColumnOffset: Schema.optional(Schema.Number),
     repeatHeadings: Schema.optional(Schema.Boolean),
@@ -2044,7 +2044,7 @@ export interface PivotFilterCriteria {
   visibleByDefault?: boolean;
 }
 
-export const PivotFilterCriteria: Schema.Schema<PivotFilterCriteria> =
+export const PivotFilterCriteria: Schema.Codec<PivotFilterCriteria> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visibleValues: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(BooleanCondition),
@@ -2060,7 +2060,7 @@ export interface PivotFilterSpec {
   filterCriteria?: PivotFilterCriteria;
 }
 
-export const PivotFilterSpec: Schema.Schema<PivotFilterSpec> =
+export const PivotFilterSpec: Schema.Codec<PivotFilterSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnOffsetIndex: Schema.optional(Schema.Number),
     dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
@@ -2104,7 +2104,7 @@ export interface PivotValue {
   formula?: string;
 }
 
-export const PivotValue: Schema.Schema<PivotValue> =
+export const PivotValue: Schema.Codec<PivotValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
     calculatedDisplayType: Schema.optional(Schema.String),
@@ -2135,7 +2135,7 @@ export interface PivotTable {
   values?: ReadonlyArray<PivotValue>;
 }
 
-export const PivotTable: Schema.Schema<PivotTable> =
+export const PivotTable: Schema.Codec<PivotTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(Schema.Array(PivotGroup)),
     criteria: Schema.optional(
@@ -2171,7 +2171,7 @@ export interface DataSourceTable {
   sortSpecs?: ReadonlyArray<SortSpec>;
 }
 
-export const DataSourceTable: Schema.Schema<DataSourceTable> =
+export const DataSourceTable: Schema.Codec<DataSourceTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnSelectionType: Schema.optional(Schema.String),
     filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
@@ -2194,7 +2194,7 @@ export interface PersonProperties {
     | (string & {});
 }
 
-export const PersonProperties: Schema.Schema<PersonProperties> =
+export const PersonProperties: Schema.Codec<PersonProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     displayFormat: Schema.optional(Schema.String),
@@ -2207,7 +2207,7 @@ export interface RichLinkProperties {
   uri?: string;
 }
 
-export const RichLinkProperties: Schema.Schema<RichLinkProperties> =
+export const RichLinkProperties: Schema.Codec<RichLinkProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mimeType: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -2220,7 +2220,7 @@ export interface Chip {
   richLinkProperties?: RichLinkProperties;
 }
 
-export const Chip: Schema.Schema<Chip> =
+export const Chip: Schema.Codec<Chip> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     personProperties: Schema.optional(PersonProperties),
     richLinkProperties: Schema.optional(RichLinkProperties),
@@ -2233,7 +2233,7 @@ export interface ChipRun {
   chip?: Chip;
 }
 
-export const ChipRun: Schema.Schema<ChipRun> =
+export const ChipRun: Schema.Codec<ChipRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     chip: Schema.optional(Chip),
@@ -2256,7 +2256,7 @@ export interface NumberFormat {
   pattern?: string;
 }
 
-export const NumberFormat: Schema.Schema<NumberFormat> =
+export const NumberFormat: Schema.Codec<NumberFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     pattern: Schema.optional(Schema.String),
@@ -2269,7 +2269,7 @@ export interface TextRotation {
   vertical?: boolean;
 }
 
-export const TextRotation: Schema.Schema<TextRotation> =
+export const TextRotation: Schema.Codec<TextRotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     angle: Schema.optional(Schema.Number),
     vertical: Schema.optional(Schema.Boolean),
@@ -2295,7 +2295,7 @@ export interface Border {
   colorStyle?: ColorStyle;
 }
 
-export const Border: Schema.Schema<Border> =
+export const Border: Schema.Codec<Border> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     style: Schema.optional(Schema.String),
     width: Schema.optional(Schema.Number),
@@ -2314,7 +2314,7 @@ export interface Borders {
   bottom?: Border;
 }
 
-export const Borders: Schema.Schema<Borders> =
+export const Borders: Schema.Codec<Borders> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     right: Schema.optional(Border),
     top: Schema.optional(Border),
@@ -2333,7 +2333,7 @@ export interface Padding {
   right?: number;
 }
 
-export const Padding: Schema.Schema<Padding> =
+export const Padding: Schema.Codec<Padding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     top: Schema.optional(Schema.Number),
     left: Schema.optional(Schema.Number),
@@ -2392,7 +2392,7 @@ export interface CellFormat {
     | (string & {});
 }
 
-export const CellFormat: Schema.Schema<CellFormat> =
+export const CellFormat: Schema.Codec<CellFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textDirection: Schema.optional(Schema.String),
     backgroundColor: Schema.optional(Color),
@@ -2415,7 +2415,7 @@ export interface DataSourceFormula {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const DataSourceFormula: Schema.Schema<DataSourceFormula> =
+export const DataSourceFormula: Schema.Codec<DataSourceFormula> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceId: Schema.optional(Schema.String),
     dataExecutionStatus: Schema.optional(DataExecutionStatus),
@@ -2450,7 +2450,7 @@ export interface CellData {
   userEnteredValue?: ExtendedValue;
 }
 
-export const CellData: Schema.Schema<CellData> =
+export const CellData: Schema.Codec<CellData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hyperlink: Schema.optional(Schema.String),
     textFormatRuns: Schema.optional(Schema.Array(TextFormatRun)),
@@ -2472,7 +2472,7 @@ export interface RowData {
   values?: ReadonlyArray<CellData>;
 }
 
-export const RowData: Schema.Schema<RowData> =
+export const RowData: Schema.Codec<RowData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(CellData)),
   }).annotate({ identifier: "RowData" });
@@ -2484,7 +2484,7 @@ export interface BooleanRule {
   format?: CellFormat;
 }
 
-export const BooleanRule: Schema.Schema<BooleanRule> =
+export const BooleanRule: Schema.Codec<BooleanRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(BooleanCondition),
     format: Schema.optional(CellFormat),
@@ -2508,7 +2508,7 @@ export interface InterpolationPoint {
     | (string & {});
 }
 
-export const InterpolationPoint: Schema.Schema<InterpolationPoint> =
+export const InterpolationPoint: Schema.Codec<InterpolationPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     colorStyle: Schema.optional(ColorStyle),
@@ -2525,7 +2525,7 @@ export interface GradientRule {
   maxpoint?: InterpolationPoint;
 }
 
-export const GradientRule: Schema.Schema<GradientRule> =
+export const GradientRule: Schema.Codec<GradientRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     midpoint: Schema.optional(InterpolationPoint),
     minpoint: Schema.optional(InterpolationPoint),
@@ -2541,7 +2541,7 @@ export interface ConditionalFormatRule {
   ranges?: ReadonlyArray<GridRange>;
 }
 
-export const ConditionalFormatRule: Schema.Schema<ConditionalFormatRule> =
+export const ConditionalFormatRule: Schema.Codec<ConditionalFormatRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     booleanRule: Schema.optional(BooleanRule),
     gradientRule: Schema.optional(GradientRule),
@@ -2559,7 +2559,7 @@ export interface UpdateConditionalFormatRuleResponse {
   oldIndex?: number;
 }
 
-export const UpdateConditionalFormatRuleResponse: Schema.Schema<UpdateConditionalFormatRuleResponse> =
+export const UpdateConditionalFormatRuleResponse: Schema.Codec<UpdateConditionalFormatRuleResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newIndex: Schema.optional(Schema.Number),
     oldRule: Schema.optional(ConditionalFormatRule),
@@ -2576,7 +2576,7 @@ export interface ValueRange {
   values?: ReadonlyArray<ReadonlyArray<unknown>>;
 }
 
-export const ValueRange: Schema.Schema<ValueRange> =
+export const ValueRange: Schema.Codec<ValueRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(Schema.String),
     majorDimension: Schema.optional(Schema.String),
@@ -2598,7 +2598,7 @@ export interface UpdateValuesByDataFilterResponse {
   updatedCells?: number;
 }
 
-export const UpdateValuesByDataFilterResponse: Schema.Schema<UpdateValuesByDataFilterResponse> =
+export const UpdateValuesByDataFilterResponse: Schema.Codec<UpdateValuesByDataFilterResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFilter: Schema.optional(DataFilter),
     updatedRange: Schema.optional(Schema.String),
@@ -2623,7 +2623,7 @@ export interface BatchUpdateValuesByDataFilterResponse {
   spreadsheetId?: string;
 }
 
-export const BatchUpdateValuesByDataFilterResponse: Schema.Schema<BatchUpdateValuesByDataFilterResponse> =
+export const BatchUpdateValuesByDataFilterResponse: Schema.Codec<BatchUpdateValuesByDataFilterResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalUpdatedCells: Schema.optional(Schema.Number),
     totalUpdatedRows: Schema.optional(Schema.Number),
@@ -2638,7 +2638,7 @@ export interface DeleteDeveloperMetadataResponse {
   deletedDeveloperMetadata?: ReadonlyArray<DeveloperMetadata>;
 }
 
-export const DeleteDeveloperMetadataResponse: Schema.Schema<DeleteDeveloperMetadataResponse> =
+export const DeleteDeveloperMetadataResponse: Schema.Codec<DeleteDeveloperMetadataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletedDeveloperMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
   }).annotate({ identifier: "DeleteDeveloperMetadataResponse" });
@@ -2650,7 +2650,7 @@ export interface InsertDimensionRequest {
   inheritFromBefore?: boolean;
 }
 
-export const InsertDimensionRequest: Schema.Schema<InsertDimensionRequest> =
+export const InsertDimensionRequest: Schema.Codec<InsertDimensionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(DimensionRange),
     inheritFromBefore: Schema.optional(Schema.Boolean),
@@ -2661,7 +2661,7 @@ export interface DataSourceObjectReferences {
   references?: ReadonlyArray<DataSourceObjectReference>;
 }
 
-export const DataSourceObjectReferences: Schema.Schema<DataSourceObjectReferences> =
+export const DataSourceObjectReferences: Schema.Codec<DataSourceObjectReferences> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     references: Schema.optional(Schema.Array(DataSourceObjectReference)),
   }).annotate({ identifier: "DataSourceObjectReferences" });
@@ -2677,7 +2677,7 @@ export interface RefreshDataSourceRequest {
   isAll?: boolean;
 }
 
-export const RefreshDataSourceRequest: Schema.Schema<RefreshDataSourceRequest> =
+export const RefreshDataSourceRequest: Schema.Codec<RefreshDataSourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     references: Schema.optional(DataSourceObjectReferences),
@@ -2692,7 +2692,7 @@ export interface MatchedValueRange {
   valueRange?: ValueRange;
 }
 
-export const MatchedValueRange: Schema.Schema<MatchedValueRange> =
+export const MatchedValueRange: Schema.Codec<MatchedValueRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFilters: Schema.optional(Schema.Array(DataFilter)),
     valueRange: Schema.optional(ValueRange),
@@ -2705,7 +2705,7 @@ export interface BatchGetValuesByDataFilterResponse {
   valueRanges?: ReadonlyArray<MatchedValueRange>;
 }
 
-export const BatchGetValuesByDataFilterResponse: Schema.Schema<BatchGetValuesByDataFilterResponse> =
+export const BatchGetValuesByDataFilterResponse: Schema.Codec<BatchGetValuesByDataFilterResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetId: Schema.optional(Schema.String),
     valueRanges: Schema.optional(Schema.Array(MatchedValueRange)),
@@ -2738,7 +2738,7 @@ export interface TableColumnProperties {
   columnName?: string;
 }
 
-export const TableColumnProperties: Schema.Schema<TableColumnProperties> =
+export const TableColumnProperties: Schema.Codec<TableColumnProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataValidationRule: Schema.optional(TableColumnDataValidationRule),
     columnType: Schema.optional(Schema.String),
@@ -2757,7 +2757,7 @@ export interface TableRowsProperties {
   secondBandColorStyle?: ColorStyle;
 }
 
-export const TableRowsProperties: Schema.Schema<TableRowsProperties> =
+export const TableRowsProperties: Schema.Codec<TableRowsProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstBandColorStyle: Schema.optional(ColorStyle),
     footerColorStyle: Schema.optional(ColorStyle),
@@ -2778,7 +2778,7 @@ export interface Table {
   rowsProperties?: TableRowsProperties;
 }
 
-export const Table: Schema.Schema<Table> =
+export const Table: Schema.Codec<Table> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnProperties: Schema.optional(Schema.Array(TableColumnProperties)),
     range: Schema.optional(GridRange),
@@ -2794,7 +2794,7 @@ export interface UpdateTableRequest {
   fields?: string;
 }
 
-export const UpdateTableRequest: Schema.Schema<UpdateTableRequest> =
+export const UpdateTableRequest: Schema.Codec<UpdateTableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Table),
     fields: Schema.optional(Schema.String),
@@ -2805,7 +2805,7 @@ export interface DeleteTableRequest {
   tableId?: string;
 }
 
-export const DeleteTableRequest: Schema.Schema<DeleteTableRequest> =
+export const DeleteTableRequest: Schema.Codec<DeleteTableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteTableRequest" });
@@ -2821,7 +2821,7 @@ export interface DuplicateSheetRequest {
   sourceSheetId?: number;
 }
 
-export const DuplicateSheetRequest: Schema.Schema<DuplicateSheetRequest> =
+export const DuplicateSheetRequest: Schema.Codec<DuplicateSheetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newSheetId: Schema.optional(Schema.Number),
     insertSheetIndex: Schema.optional(Schema.Number),
@@ -2836,7 +2836,7 @@ export interface AddConditionalFormatRuleRequest {
   rule?: ConditionalFormatRule;
 }
 
-export const AddConditionalFormatRuleRequest: Schema.Schema<AddConditionalFormatRuleRequest> =
+export const AddConditionalFormatRuleRequest: Schema.Codec<AddConditionalFormatRuleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     rule: Schema.optional(ConditionalFormatRule),
@@ -2849,7 +2849,7 @@ export interface UpdateChartSpecRequest {
   spec?: ChartSpec;
 }
 
-export const UpdateChartSpecRequest: Schema.Schema<UpdateChartSpecRequest> =
+export const UpdateChartSpecRequest: Schema.Codec<UpdateChartSpecRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chartId: Schema.optional(Schema.Number),
     spec: Schema.optional(ChartSpec),
@@ -2862,7 +2862,7 @@ export interface IterativeCalculationSettings {
   convergenceThreshold?: number;
 }
 
-export const IterativeCalculationSettings: Schema.Schema<IterativeCalculationSettings> =
+export const IterativeCalculationSettings: Schema.Codec<IterativeCalculationSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxIterations: Schema.optional(Schema.Number),
     convergenceThreshold: Schema.optional(Schema.Number),
@@ -2873,7 +2873,7 @@ export interface AddFilterViewRequest {
   filter?: FilterView;
 }
 
-export const AddFilterViewRequest: Schema.Schema<AddFilterViewRequest> =
+export const AddFilterViewRequest: Schema.Codec<AddFilterViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(FilterView),
   }).annotate({ identifier: "AddFilterViewRequest" });
@@ -2885,7 +2885,7 @@ export interface MergeCellsRequest {
   mergeType?: "MERGE_ALL" | "MERGE_COLUMNS" | "MERGE_ROWS" | (string & {});
 }
 
-export const MergeCellsRequest: Schema.Schema<MergeCellsRequest> =
+export const MergeCellsRequest: Schema.Codec<MergeCellsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     mergeType: Schema.optional(Schema.String),
@@ -2902,7 +2902,7 @@ export interface DataSource {
   dataSourceId?: string;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
+export const DataSource: Schema.Codec<DataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spec: Schema.optional(DataSourceSpec),
     calculatedColumns: Schema.optional(Schema.Array(DataSourceColumn)),
@@ -2917,7 +2917,7 @@ export interface AddDataSourceResponse {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const AddDataSourceResponse: Schema.Schema<AddDataSourceResponse> =
+export const AddDataSourceResponse: Schema.Codec<AddDataSourceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(DataSource),
     dataExecutionStatus: Schema.optional(DataExecutionStatus),
@@ -2932,7 +2932,7 @@ export interface UpdateDeveloperMetadataRequest {
   fields?: string;
 }
 
-export const UpdateDeveloperMetadataRequest: Schema.Schema<UpdateDeveloperMetadataRequest> =
+export const UpdateDeveloperMetadataRequest: Schema.Codec<UpdateDeveloperMetadataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFilters: Schema.optional(Schema.Array(DataFilter)),
     developerMetadata: Schema.optional(DeveloperMetadata),
@@ -2944,7 +2944,7 @@ export interface TrimWhitespaceResponse {
   cellsChangedCount?: number;
 }
 
-export const TrimWhitespaceResponse: Schema.Schema<TrimWhitespaceResponse> =
+export const TrimWhitespaceResponse: Schema.Codec<TrimWhitespaceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cellsChangedCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "TrimWhitespaceResponse" });
@@ -2954,7 +2954,7 @@ export interface UnmergeCellsRequest {
   range?: GridRange;
 }
 
-export const UnmergeCellsRequest: Schema.Schema<UnmergeCellsRequest> =
+export const UnmergeCellsRequest: Schema.Codec<UnmergeCellsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
   }).annotate({ identifier: "UnmergeCellsRequest" });
@@ -2970,7 +2970,7 @@ export interface UpdateConditionalFormatRuleRequest {
   sheetId?: number;
 }
 
-export const UpdateConditionalFormatRuleRequest: Schema.Schema<UpdateConditionalFormatRuleRequest> =
+export const UpdateConditionalFormatRuleRequest: Schema.Codec<UpdateConditionalFormatRuleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newIndex: Schema.optional(Schema.Number),
     rule: Schema.optional(ConditionalFormatRule),
@@ -2987,7 +2987,7 @@ export interface DimensionGroup {
   range?: DimensionRange;
 }
 
-export const DimensionGroup: Schema.Schema<DimensionGroup> =
+export const DimensionGroup: Schema.Codec<DimensionGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     depth: Schema.optional(Schema.Number),
     collapsed: Schema.optional(Schema.Boolean),
@@ -3003,7 +3003,7 @@ export interface DataSourceSheetProperties {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const DataSourceSheetProperties: Schema.Schema<DataSourceSheetProperties> =
+export const DataSourceSheetProperties: Schema.Codec<DataSourceSheetProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(Schema.Array(DataSourceColumn)),
     dataSourceId: Schema.optional(Schema.String),
@@ -3027,7 +3027,7 @@ export interface GridProperties {
   rowGroupControlAfter?: boolean;
 }
 
-export const GridProperties: Schema.Schema<GridProperties> =
+export const GridProperties: Schema.Codec<GridProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnCount: Schema.optional(Schema.Number),
     hideGridlines: Schema.optional(Schema.Boolean),
@@ -3066,7 +3066,7 @@ export interface SheetProperties {
   tabColor?: Color;
 }
 
-export const SheetProperties: Schema.Schema<SheetProperties> =
+export const SheetProperties: Schema.Codec<SheetProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rightToLeft: Schema.optional(Schema.Boolean),
     index: Schema.optional(Schema.Number),
@@ -3085,7 +3085,7 @@ export interface AddSheetRequest {
   properties?: SheetProperties;
 }
 
-export const AddSheetRequest: Schema.Schema<AddSheetRequest> =
+export const AddSheetRequest: Schema.Codec<AddSheetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(SheetProperties),
   }).annotate({ identifier: "AddSheetRequest" });
@@ -3095,7 +3095,7 @@ export interface CopySheetToAnotherSpreadsheetRequest {
   destinationSpreadsheetId?: string;
 }
 
-export const CopySheetToAnotherSpreadsheetRequest: Schema.Schema<CopySheetToAnotherSpreadsheetRequest> =
+export const CopySheetToAnotherSpreadsheetRequest: Schema.Codec<CopySheetToAnotherSpreadsheetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationSpreadsheetId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CopySheetToAnotherSpreadsheetRequest" });
@@ -3119,7 +3119,7 @@ export interface BandingProperties {
   footerColorStyle?: ColorStyle;
 }
 
-export const BandingProperties: Schema.Schema<BandingProperties> =
+export const BandingProperties: Schema.Codec<BandingProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headerColor: Schema.optional(Color),
     secondBandColorStyle: Schema.optional(ColorStyle),
@@ -3138,7 +3138,7 @@ export interface InsertRangeRequest {
   shiftDimension?: "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS" | (string & {});
 }
 
-export const InsertRangeRequest: Schema.Schema<InsertRangeRequest> =
+export const InsertRangeRequest: Schema.Codec<InsertRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     shiftDimension: Schema.optional(Schema.String),
@@ -3170,7 +3170,7 @@ export interface SlicerSpec {
   filterCriteria?: FilterCriteria;
 }
 
-export const SlicerSpec: Schema.Schema<SlicerSpec> =
+export const SlicerSpec: Schema.Codec<SlicerSpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataRange: Schema.optional(GridRange),
     textFormat: Schema.optional(TextFormat),
@@ -3192,7 +3192,7 @@ export interface Slicer {
   slicerId?: number;
 }
 
-export const Slicer: Schema.Schema<Slicer> =
+export const Slicer: Schema.Codec<Slicer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spec: Schema.optional(SlicerSpec),
     position: Schema.optional(EmbeddedObjectPosition),
@@ -3210,7 +3210,7 @@ export interface AppendCellsRequest {
   rows?: ReadonlyArray<RowData>;
 }
 
-export const AppendCellsRequest: Schema.Schema<AppendCellsRequest> =
+export const AppendCellsRequest: Schema.Codec<AppendCellsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String),
     sheetId: Schema.optional(Schema.Number),
@@ -3225,7 +3225,7 @@ export interface DeleteDuplicatesRequest {
   comparisonColumns?: ReadonlyArray<DimensionRange>;
 }
 
-export const DeleteDuplicatesRequest: Schema.Schema<DeleteDuplicatesRequest> =
+export const DeleteDuplicatesRequest: Schema.Codec<DeleteDuplicatesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     comparisonColumns: Schema.optional(Schema.Array(DimensionRange)),
@@ -3240,7 +3240,7 @@ export interface NamedRange {
   name?: string;
 }
 
-export const NamedRange: Schema.Schema<NamedRange> =
+export const NamedRange: Schema.Codec<NamedRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     namedRangeId: Schema.optional(Schema.String),
@@ -3254,7 +3254,7 @@ export interface UpdateNamedRangeRequest {
   fields?: string;
 }
 
-export const UpdateNamedRangeRequest: Schema.Schema<UpdateNamedRangeRequest> =
+export const UpdateNamedRangeRequest: Schema.Codec<UpdateNamedRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namedRange: Schema.optional(NamedRange),
     fields: Schema.optional(Schema.String),
@@ -3271,7 +3271,7 @@ export interface UpdateCellsRequest {
   start?: GridCoordinate;
 }
 
-export const UpdateCellsRequest: Schema.Schema<UpdateCellsRequest> =
+export const UpdateCellsRequest: Schema.Codec<UpdateCellsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     fields: Schema.optional(Schema.String),
@@ -3284,7 +3284,7 @@ export interface DeleteEmbeddedObjectRequest {
   objectId?: number;
 }
 
-export const DeleteEmbeddedObjectRequest: Schema.Schema<DeleteEmbeddedObjectRequest> =
+export const DeleteEmbeddedObjectRequest: Schema.Codec<DeleteEmbeddedObjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeleteEmbeddedObjectRequest" });
@@ -3294,7 +3294,7 @@ export interface DeleteNamedRangeRequest {
   namedRangeId?: string;
 }
 
-export const DeleteNamedRangeRequest: Schema.Schema<DeleteNamedRangeRequest> =
+export const DeleteNamedRangeRequest: Schema.Codec<DeleteNamedRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namedRangeId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteNamedRangeRequest" });
@@ -3306,7 +3306,7 @@ export interface UpdateDimensionGroupRequest {
   fields?: string;
 }
 
-export const UpdateDimensionGroupRequest: Schema.Schema<UpdateDimensionGroupRequest> =
+export const UpdateDimensionGroupRequest: Schema.Codec<UpdateDimensionGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionGroup: Schema.optional(DimensionGroup),
     fields: Schema.optional(Schema.String),
@@ -3323,7 +3323,7 @@ export interface TimeOfDay {
   minutes?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     hours: Schema.optional(Schema.Number),
@@ -3336,7 +3336,7 @@ export interface DataSourceRefreshDailySchedule {
   startTime?: TimeOfDay;
 }
 
-export const DataSourceRefreshDailySchedule: Schema.Schema<DataSourceRefreshDailySchedule> =
+export const DataSourceRefreshDailySchedule: Schema.Codec<DataSourceRefreshDailySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(TimeOfDay),
   }).annotate({ identifier: "DataSourceRefreshDailySchedule" });
@@ -3348,7 +3348,7 @@ export interface BatchClearValuesResponse {
   clearedRanges?: ReadonlyArray<string>;
 }
 
-export const BatchClearValuesResponse: Schema.Schema<BatchClearValuesResponse> =
+export const BatchClearValuesResponse: Schema.Codec<BatchClearValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetId: Schema.optional(Schema.String),
     clearedRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -3359,7 +3359,7 @@ export interface TrimWhitespaceRequest {
   range?: GridRange;
 }
 
-export const TrimWhitespaceRequest: Schema.Schema<TrimWhitespaceRequest> =
+export const TrimWhitespaceRequest: Schema.Codec<TrimWhitespaceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
   }).annotate({ identifier: "TrimWhitespaceRequest" });
@@ -3371,7 +3371,7 @@ export interface MoveDimensionRequest {
   destinationIndex?: number;
 }
 
-export const MoveDimensionRequest: Schema.Schema<MoveDimensionRequest> =
+export const MoveDimensionRequest: Schema.Codec<MoveDimensionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(DimensionRange),
     destinationIndex: Schema.optional(Schema.Number),
@@ -3386,7 +3386,7 @@ export interface CancelDataSourceRefreshRequest {
   isAll?: boolean;
 }
 
-export const CancelDataSourceRefreshRequest: Schema.Schema<CancelDataSourceRefreshRequest> =
+export const CancelDataSourceRefreshRequest: Schema.Codec<CancelDataSourceRefreshRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     references: Schema.optional(DataSourceObjectReferences),
     dataSourceId: Schema.optional(Schema.String),
@@ -3400,7 +3400,7 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -3411,7 +3411,7 @@ export interface AddTableRequest {
   table?: Table;
 }
 
-export const AddTableRequest: Schema.Schema<AddTableRequest> =
+export const AddTableRequest: Schema.Codec<AddTableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Table),
   }).annotate({ identifier: "AddTableRequest" });
@@ -3429,7 +3429,7 @@ export interface DimensionProperties {
   dataSourceColumnReference?: DataSourceColumnReference;
 }
 
-export const DimensionProperties: Schema.Schema<DimensionProperties> =
+export const DimensionProperties: Schema.Codec<DimensionProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
     pixelSize: Schema.optional(Schema.Number),
@@ -3451,7 +3451,7 @@ export interface GridData {
   startRow?: number;
 }
 
-export const GridData: Schema.Schema<GridData> =
+export const GridData: Schema.Codec<GridData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startColumn: Schema.optional(Schema.Number),
     rowData: Schema.optional(Schema.Array(RowData)),
@@ -3473,7 +3473,7 @@ export interface BasicFilter {
   range?: GridRange;
 }
 
-export const BasicFilter: Schema.Schema<BasicFilter> =
+export const BasicFilter: Schema.Codec<BasicFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
     criteria: Schema.optional(Schema.Record(Schema.String, FilterCriteria)),
@@ -3491,7 +3491,7 @@ export interface Editors {
   users?: ReadonlyArray<string>;
 }
 
-export const Editors: Schema.Schema<Editors> =
+export const Editors: Schema.Codec<Editors> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groups: Schema.optional(Schema.Array(Schema.String)),
     domainUsersCanEdit: Schema.optional(Schema.Boolean),
@@ -3519,7 +3519,7 @@ export interface ProtectedRange {
   tableId?: string;
 }
 
-export const ProtectedRange: Schema.Schema<ProtectedRange> =
+export const ProtectedRange: Schema.Codec<ProtectedRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     requestingUserCanEdit: Schema.optional(Schema.Boolean),
@@ -3545,7 +3545,7 @@ export interface BandedRange {
   columnProperties?: BandingProperties;
 }
 
-export const BandedRange: Schema.Schema<BandedRange> =
+export const BandedRange: Schema.Codec<BandedRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bandedRangeId: Schema.optional(Schema.Number),
     range: Schema.optional(GridRange),
@@ -3585,7 +3585,7 @@ export interface Sheet {
   rowGroups?: ReadonlyArray<DimensionGroup>;
 }
 
-export const Sheet: Schema.Schema<Sheet> =
+export const Sheet: Schema.Codec<Sheet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Array(GridData)),
     tables: Schema.optional(Schema.Array(Table)),
@@ -3608,7 +3608,7 @@ export interface DeleteDuplicatesResponse {
   duplicatesRemovedCount?: number;
 }
 
-export const DeleteDuplicatesResponse: Schema.Schema<DeleteDuplicatesResponse> =
+export const DeleteDuplicatesResponse: Schema.Codec<DeleteDuplicatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duplicatesRemovedCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeleteDuplicatesResponse" });
@@ -3618,7 +3618,7 @@ export interface CreateDeveloperMetadataResponse {
   developerMetadata?: DeveloperMetadata;
 }
 
-export const CreateDeveloperMetadataResponse: Schema.Schema<CreateDeveloperMetadataResponse> =
+export const CreateDeveloperMetadataResponse: Schema.Codec<CreateDeveloperMetadataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerMetadata: Schema.optional(DeveloperMetadata),
   }).annotate({ identifier: "CreateDeveloperMetadataResponse" });
@@ -3628,7 +3628,7 @@ export interface AddSlicerRequest {
   slicer?: Slicer;
 }
 
-export const AddSlicerRequest: Schema.Schema<AddSlicerRequest> =
+export const AddSlicerRequest: Schema.Codec<AddSlicerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slicer: Schema.optional(Slicer),
   }).annotate({ identifier: "AddSlicerRequest" });
@@ -3651,7 +3651,7 @@ export interface ThemeColorPair {
   color?: ColorStyle;
 }
 
-export const ThemeColorPair: Schema.Schema<ThemeColorPair> =
+export const ThemeColorPair: Schema.Codec<ThemeColorPair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     colorType: Schema.optional(Schema.String),
     color: Schema.optional(ColorStyle),
@@ -3664,7 +3664,7 @@ export interface SpreadsheetTheme {
   themeColors?: ReadonlyArray<ThemeColorPair>;
 }
 
-export const SpreadsheetTheme: Schema.Schema<SpreadsheetTheme> =
+export const SpreadsheetTheme: Schema.Codec<SpreadsheetTheme> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryFontFamily: Schema.optional(Schema.String),
     themeColors: Schema.optional(Schema.Array(ThemeColorPair)),
@@ -3694,7 +3694,7 @@ export interface SpreadsheetProperties {
   timeZone?: string;
 }
 
-export const SpreadsheetProperties: Schema.Schema<SpreadsheetProperties> =
+export const SpreadsheetProperties: Schema.Codec<SpreadsheetProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iterativeCalculationSettings: Schema.optional(IterativeCalculationSettings),
     spreadsheetTheme: Schema.optional(SpreadsheetTheme),
@@ -3713,7 +3713,7 @@ export interface DataSourceRefreshMonthlySchedule {
   daysOfMonth?: ReadonlyArray<number>;
 }
 
-export const DataSourceRefreshMonthlySchedule: Schema.Schema<DataSourceRefreshMonthlySchedule> =
+export const DataSourceRefreshMonthlySchedule: Schema.Codec<DataSourceRefreshMonthlySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(TimeOfDay),
     daysOfMonth: Schema.optional(Schema.Array(Schema.Number)),
@@ -3736,7 +3736,7 @@ export interface DataSourceRefreshWeeklySchedule {
   >;
 }
 
-export const DataSourceRefreshWeeklySchedule: Schema.Schema<DataSourceRefreshWeeklySchedule> =
+export const DataSourceRefreshWeeklySchedule: Schema.Codec<DataSourceRefreshWeeklySchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(TimeOfDay),
     daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
@@ -3760,7 +3760,7 @@ export interface DataSourceRefreshSchedule {
   nextRun?: Interval;
 }
 
-export const DataSourceRefreshSchedule: Schema.Schema<DataSourceRefreshSchedule> =
+export const DataSourceRefreshSchedule: Schema.Codec<DataSourceRefreshSchedule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     refreshScope: Schema.optional(Schema.String),
     monthlySchedule: Schema.optional(DataSourceRefreshMonthlySchedule),
@@ -3789,7 +3789,7 @@ export interface Spreadsheet {
   sheets?: ReadonlyArray<Sheet>;
 }
 
-export const Spreadsheet: Schema.Schema<Spreadsheet> =
+export const Spreadsheet: Schema.Codec<Spreadsheet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetUrl: Schema.optional(Schema.String),
     spreadsheetId: Schema.optional(Schema.String),
@@ -3808,7 +3808,7 @@ export interface AddSlicerResponse {
   slicer?: Slicer;
 }
 
-export const AddSlicerResponse: Schema.Schema<AddSlicerResponse> =
+export const AddSlicerResponse: Schema.Codec<AddSlicerResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slicer: Schema.optional(Slicer),
   }).annotate({ identifier: "AddSlicerResponse" });
@@ -3818,7 +3818,7 @@ export interface AddNamedRangeResponse {
   namedRange?: NamedRange;
 }
 
-export const AddNamedRangeResponse: Schema.Schema<AddNamedRangeResponse> =
+export const AddNamedRangeResponse: Schema.Codec<AddNamedRangeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namedRange: Schema.optional(NamedRange),
   }).annotate({ identifier: "AddNamedRangeResponse" });
@@ -3828,7 +3828,7 @@ export interface DuplicateSheetResponse {
   properties?: SheetProperties;
 }
 
-export const DuplicateSheetResponse: Schema.Schema<DuplicateSheetResponse> =
+export const DuplicateSheetResponse: Schema.Codec<DuplicateSheetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(SheetProperties),
   }).annotate({ identifier: "DuplicateSheetResponse" });
@@ -3838,7 +3838,7 @@ export interface DuplicateFilterViewResponse {
   filter?: FilterView;
 }
 
-export const DuplicateFilterViewResponse: Schema.Schema<DuplicateFilterViewResponse> =
+export const DuplicateFilterViewResponse: Schema.Codec<DuplicateFilterViewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(FilterView),
   }).annotate({ identifier: "DuplicateFilterViewResponse" });
@@ -3848,7 +3848,7 @@ export interface AddProtectedRangeResponse {
   protectedRange?: ProtectedRange;
 }
 
-export const AddProtectedRangeResponse: Schema.Schema<AddProtectedRangeResponse> =
+export const AddProtectedRangeResponse: Schema.Codec<AddProtectedRangeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protectedRange: Schema.optional(ProtectedRange),
   }).annotate({ identifier: "AddProtectedRangeResponse" });
@@ -3858,7 +3858,7 @@ export interface AddChartResponse {
   chart?: EmbeddedChart;
 }
 
-export const AddChartResponse: Schema.Schema<AddChartResponse> =
+export const AddChartResponse: Schema.Codec<AddChartResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chart: Schema.optional(EmbeddedChart),
   }).annotate({ identifier: "AddChartResponse" });
@@ -3868,7 +3868,7 @@ export interface DeleteConditionalFormatRuleResponse {
   rule?: ConditionalFormatRule;
 }
 
-export const DeleteConditionalFormatRuleResponse: Schema.Schema<DeleteConditionalFormatRuleResponse> =
+export const DeleteConditionalFormatRuleResponse: Schema.Codec<DeleteConditionalFormatRuleResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rule: Schema.optional(ConditionalFormatRule),
   }).annotate({ identifier: "DeleteConditionalFormatRuleResponse" });
@@ -3878,7 +3878,7 @@ export interface DeleteDimensionGroupResponse {
   dimensionGroups?: ReadonlyArray<DimensionGroup>;
 }
 
-export const DeleteDimensionGroupResponse: Schema.Schema<DeleteDimensionGroupResponse> =
+export const DeleteDimensionGroupResponse: Schema.Codec<DeleteDimensionGroupResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionGroups: Schema.optional(Schema.Array(DimensionGroup)),
   }).annotate({ identifier: "DeleteDimensionGroupResponse" });
@@ -3896,7 +3896,7 @@ export interface FindReplaceResponse {
   formulasChanged?: number;
 }
 
-export const FindReplaceResponse: Schema.Schema<FindReplaceResponse> =
+export const FindReplaceResponse: Schema.Codec<FindReplaceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     valuesChanged: Schema.optional(Schema.Number),
     rowsChanged: Schema.optional(Schema.Number),
@@ -3912,7 +3912,7 @@ export interface UpdateDataSourceResponse {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const UpdateDataSourceResponse: Schema.Schema<UpdateDataSourceResponse> =
+export const UpdateDataSourceResponse: Schema.Codec<UpdateDataSourceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(DataSource),
     dataExecutionStatus: Schema.optional(DataExecutionStatus),
@@ -3936,7 +3936,7 @@ export interface RefreshCancellationStatus {
     | (string & {});
 }
 
-export const RefreshCancellationStatus: Schema.Schema<RefreshCancellationStatus> =
+export const RefreshCancellationStatus: Schema.Codec<RefreshCancellationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.String),
@@ -3949,7 +3949,7 @@ export interface CancelDataSourceRefreshStatus {
   refreshCancellationStatus?: RefreshCancellationStatus;
 }
 
-export const CancelDataSourceRefreshStatus: Schema.Schema<CancelDataSourceRefreshStatus> =
+export const CancelDataSourceRefreshStatus: Schema.Codec<CancelDataSourceRefreshStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reference: Schema.optional(DataSourceObjectReference),
     refreshCancellationStatus: Schema.optional(RefreshCancellationStatus),
@@ -3960,7 +3960,7 @@ export interface CancelDataSourceRefreshResponse {
   statuses?: ReadonlyArray<CancelDataSourceRefreshStatus>;
 }
 
-export const CancelDataSourceRefreshResponse: Schema.Schema<CancelDataSourceRefreshResponse> =
+export const CancelDataSourceRefreshResponse: Schema.Codec<CancelDataSourceRefreshResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statuses: Schema.optional(Schema.Array(CancelDataSourceRefreshStatus)),
   }).annotate({ identifier: "CancelDataSourceRefreshResponse" });
@@ -3970,7 +3970,7 @@ export interface UpdateDeveloperMetadataResponse {
   developerMetadata?: ReadonlyArray<DeveloperMetadata>;
 }
 
-export const UpdateDeveloperMetadataResponse: Schema.Schema<UpdateDeveloperMetadataResponse> =
+export const UpdateDeveloperMetadataResponse: Schema.Codec<UpdateDeveloperMetadataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
   }).annotate({ identifier: "UpdateDeveloperMetadataResponse" });
@@ -3980,7 +3980,7 @@ export interface AddBandingResponse {
   bandedRange?: BandedRange;
 }
 
-export const AddBandingResponse: Schema.Schema<AddBandingResponse> =
+export const AddBandingResponse: Schema.Codec<AddBandingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bandedRange: Schema.optional(BandedRange),
   }).annotate({ identifier: "AddBandingResponse" });
@@ -3990,7 +3990,7 @@ export interface AddTableResponse {
   table?: Table;
 }
 
-export const AddTableResponse: Schema.Schema<AddTableResponse> =
+export const AddTableResponse: Schema.Codec<AddTableResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     table: Schema.optional(Table),
   }).annotate({ identifier: "AddTableResponse" });
@@ -4000,7 +4000,7 @@ export interface UpdateEmbeddedObjectPositionResponse {
   position?: EmbeddedObjectPosition;
 }
 
-export const UpdateEmbeddedObjectPositionResponse: Schema.Schema<UpdateEmbeddedObjectPositionResponse> =
+export const UpdateEmbeddedObjectPositionResponse: Schema.Codec<UpdateEmbeddedObjectPositionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(EmbeddedObjectPosition),
   }).annotate({ identifier: "UpdateEmbeddedObjectPositionResponse" });
@@ -4010,7 +4010,7 @@ export interface AddDimensionGroupResponse {
   dimensionGroups?: ReadonlyArray<DimensionGroup>;
 }
 
-export const AddDimensionGroupResponse: Schema.Schema<AddDimensionGroupResponse> =
+export const AddDimensionGroupResponse: Schema.Codec<AddDimensionGroupResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensionGroups: Schema.optional(Schema.Array(DimensionGroup)),
   }).annotate({ identifier: "AddDimensionGroupResponse" });
@@ -4020,7 +4020,7 @@ export interface AddSheetResponse {
   properties?: SheetProperties;
 }
 
-export const AddSheetResponse: Schema.Schema<AddSheetResponse> =
+export const AddSheetResponse: Schema.Codec<AddSheetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(SheetProperties),
   }).annotate({ identifier: "AddSheetResponse" });
@@ -4078,7 +4078,7 @@ export interface Response {
   addDataSource?: AddDataSourceResponse;
 }
 
-export const Response: Schema.Schema<Response> =
+export const Response: Schema.Codec<Response> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addSlicer: Schema.optional(AddSlicerResponse),
     addNamedRange: Schema.optional(AddNamedRangeResponse),
@@ -4122,7 +4122,7 @@ export interface BatchUpdateSpreadsheetResponse {
   replies?: ReadonlyArray<Response>;
 }
 
-export const BatchUpdateSpreadsheetResponse: Schema.Schema<BatchUpdateSpreadsheetResponse> =
+export const BatchUpdateSpreadsheetResponse: Schema.Codec<BatchUpdateSpreadsheetResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updatedSpreadsheet: Schema.optional(Spreadsheet),
     spreadsheetId: Schema.optional(Schema.String),
@@ -4136,7 +4136,7 @@ export interface DeleteRangeRequest {
   shiftDimension?: "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS" | (string & {});
 }
 
-export const DeleteRangeRequest: Schema.Schema<DeleteRangeRequest> =
+export const DeleteRangeRequest: Schema.Codec<DeleteRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     shiftDimension: Schema.optional(Schema.String),
@@ -4163,7 +4163,7 @@ export interface PasteDataRequest {
   data?: string;
 }
 
-export const PasteDataRequest: Schema.Schema<PasteDataRequest> =
+export const PasteDataRequest: Schema.Codec<PasteDataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coordinate: Schema.optional(GridCoordinate),
     html: Schema.optional(Schema.Boolean),
@@ -4177,7 +4177,7 @@ export interface CreateDeveloperMetadataRequest {
   developerMetadata?: DeveloperMetadata;
 }
 
-export const CreateDeveloperMetadataRequest: Schema.Schema<CreateDeveloperMetadataRequest> =
+export const CreateDeveloperMetadataRequest: Schema.Codec<CreateDeveloperMetadataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     developerMetadata: Schema.optional(DeveloperMetadata),
   }).annotate({ identifier: "CreateDeveloperMetadataRequest" });
@@ -4189,7 +4189,7 @@ export interface DeleteConditionalFormatRuleRequest {
   sheetId?: number;
 }
 
-export const DeleteConditionalFormatRuleRequest: Schema.Schema<DeleteConditionalFormatRuleRequest> =
+export const DeleteConditionalFormatRuleRequest: Schema.Codec<DeleteConditionalFormatRuleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     sheetId: Schema.optional(Schema.Number),
@@ -4200,7 +4200,7 @@ export interface DeleteFilterViewRequest {
   filterId?: number;
 }
 
-export const DeleteFilterViewRequest: Schema.Schema<DeleteFilterViewRequest> =
+export const DeleteFilterViewRequest: Schema.Codec<DeleteFilterViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterId: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeleteFilterViewRequest" });
@@ -4214,7 +4214,7 @@ export interface SourceAndDestination {
   fillLength?: number;
 }
 
-export const SourceAndDestination: Schema.Schema<SourceAndDestination> =
+export const SourceAndDestination: Schema.Codec<SourceAndDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     source: Schema.optional(GridRange),
@@ -4230,7 +4230,7 @@ export interface AutoFillRequest {
   useAlternateSeries?: boolean;
 }
 
-export const AutoFillRequest: Schema.Schema<AutoFillRequest> =
+export const AutoFillRequest: Schema.Codec<AutoFillRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceAndDestination: Schema.optional(SourceAndDestination),
     range: Schema.optional(GridRange),
@@ -4244,7 +4244,7 @@ export interface UpdateSpreadsheetPropertiesRequest {
   properties?: SpreadsheetProperties;
 }
 
-export const UpdateSpreadsheetPropertiesRequest: Schema.Schema<UpdateSpreadsheetPropertiesRequest> =
+export const UpdateSpreadsheetPropertiesRequest: Schema.Codec<UpdateSpreadsheetPropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     properties: Schema.optional(SpreadsheetProperties),
@@ -4255,7 +4255,7 @@ export interface DeleteProtectedRangeRequest {
   protectedRangeId?: number;
 }
 
-export const DeleteProtectedRangeRequest: Schema.Schema<DeleteProtectedRangeRequest> =
+export const DeleteProtectedRangeRequest: Schema.Codec<DeleteProtectedRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protectedRangeId: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeleteProtectedRangeRequest" });
@@ -4265,7 +4265,7 @@ export interface AddBandingRequest {
   bandedRange?: BandedRange;
 }
 
-export const AddBandingRequest: Schema.Schema<AddBandingRequest> =
+export const AddBandingRequest: Schema.Codec<AddBandingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bandedRange: Schema.optional(BandedRange),
   }).annotate({ identifier: "AddBandingRequest" });
@@ -4275,7 +4275,7 @@ export interface ClearBasicFilterRequest {
   sheetId?: number;
 }
 
-export const ClearBasicFilterRequest: Schema.Schema<ClearBasicFilterRequest> =
+export const ClearBasicFilterRequest: Schema.Codec<ClearBasicFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sheetId: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ClearBasicFilterRequest" });
@@ -4287,7 +4287,7 @@ export interface SortRangeRequest {
   sortSpecs?: ReadonlyArray<SortSpec>;
 }
 
-export const SortRangeRequest: Schema.Schema<SortRangeRequest> =
+export const SortRangeRequest: Schema.Codec<SortRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
     sortSpecs: Schema.optional(Schema.Array(SortSpec)),
@@ -4302,7 +4302,7 @@ export interface UpdateEmbeddedObjectPositionRequest {
   fields?: string;
 }
 
-export const UpdateEmbeddedObjectPositionRequest: Schema.Schema<UpdateEmbeddedObjectPositionRequest> =
+export const UpdateEmbeddedObjectPositionRequest: Schema.Codec<UpdateEmbeddedObjectPositionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.Number),
     newPosition: Schema.optional(EmbeddedObjectPosition),
@@ -4316,7 +4316,7 @@ export interface DataSourceSheetDimensionRange {
   sheetId?: number;
 }
 
-export const DataSourceSheetDimensionRange: Schema.Schema<DataSourceSheetDimensionRange> =
+export const DataSourceSheetDimensionRange: Schema.Codec<DataSourceSheetDimensionRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnReferences: Schema.optional(Schema.Array(DataSourceColumnReference)),
     sheetId: Schema.optional(Schema.Number),
@@ -4329,7 +4329,7 @@ export interface AutoResizeDimensionsRequest {
   dimensions?: DimensionRange;
 }
 
-export const AutoResizeDimensionsRequest: Schema.Schema<AutoResizeDimensionsRequest> =
+export const AutoResizeDimensionsRequest: Schema.Codec<AutoResizeDimensionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceSheetDimensions: Schema.optional(DataSourceSheetDimensionRange),
     dimensions: Schema.optional(DimensionRange),
@@ -4342,7 +4342,7 @@ export interface UpdateProtectedRangeRequest {
   fields?: string;
 }
 
-export const UpdateProtectedRangeRequest: Schema.Schema<UpdateProtectedRangeRequest> =
+export const UpdateProtectedRangeRequest: Schema.Codec<UpdateProtectedRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protectedRange: Schema.optional(ProtectedRange),
     fields: Schema.optional(Schema.String),
@@ -4357,7 +4357,7 @@ export interface UpdateEmbeddedObjectBorderRequest {
   fields?: string;
 }
 
-export const UpdateEmbeddedObjectBorderRequest: Schema.Schema<UpdateEmbeddedObjectBorderRequest> =
+export const UpdateEmbeddedObjectBorderRequest: Schema.Codec<UpdateEmbeddedObjectBorderRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.Number),
     border: Schema.optional(EmbeddedObjectBorder),
@@ -4369,7 +4369,7 @@ export interface AddDataSourceRequest {
   dataSource?: DataSource;
 }
 
-export const AddDataSourceRequest: Schema.Schema<AddDataSourceRequest> =
+export const AddDataSourceRequest: Schema.Codec<AddDataSourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(DataSource),
   }).annotate({ identifier: "AddDataSourceRequest" });
@@ -4391,7 +4391,7 @@ export interface UpdateBordersRequest {
   bottom?: Border;
 }
 
-export const UpdateBordersRequest: Schema.Schema<UpdateBordersRequest> =
+export const UpdateBordersRequest: Schema.Codec<UpdateBordersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     top: Schema.optional(Border),
     left: Schema.optional(Border),
@@ -4407,7 +4407,7 @@ export interface DeleteDataSourceRequest {
   dataSourceId?: string;
 }
 
-export const DeleteDataSourceRequest: Schema.Schema<DeleteDataSourceRequest> =
+export const DeleteDataSourceRequest: Schema.Codec<DeleteDataSourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteDataSourceRequest" });
@@ -4433,7 +4433,7 @@ export interface FindReplaceRequest {
   matchEntireCell?: boolean;
 }
 
-export const FindReplaceRequest: Schema.Schema<FindReplaceRequest> =
+export const FindReplaceRequest: Schema.Codec<FindReplaceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchByRegex: Schema.optional(Schema.Boolean),
     range: Schema.optional(GridRange),
@@ -4451,7 +4451,7 @@ export interface DeleteDimensionRequest {
   range?: DimensionRange;
 }
 
-export const DeleteDimensionRequest: Schema.Schema<DeleteDimensionRequest> =
+export const DeleteDimensionRequest: Schema.Codec<DeleteDimensionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(DimensionRange),
   }).annotate({ identifier: "DeleteDimensionRequest" });
@@ -4461,7 +4461,7 @@ export interface SetBasicFilterRequest {
   filter?: BasicFilter;
 }
 
-export const SetBasicFilterRequest: Schema.Schema<SetBasicFilterRequest> =
+export const SetBasicFilterRequest: Schema.Codec<SetBasicFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(BasicFilter),
   }).annotate({ identifier: "SetBasicFilterRequest" });
@@ -4471,7 +4471,7 @@ export interface AddProtectedRangeRequest {
   protectedRange?: ProtectedRange;
 }
 
-export const AddProtectedRangeRequest: Schema.Schema<AddProtectedRangeRequest> =
+export const AddProtectedRangeRequest: Schema.Codec<AddProtectedRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protectedRange: Schema.optional(ProtectedRange),
   }).annotate({ identifier: "AddProtectedRangeRequest" });
@@ -4485,7 +4485,7 @@ export interface RepeatCellRequest {
   fields?: string;
 }
 
-export const RepeatCellRequest: Schema.Schema<RepeatCellRequest> =
+export const RepeatCellRequest: Schema.Codec<RepeatCellRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cell: Schema.optional(CellData),
     range: Schema.optional(GridRange),
@@ -4497,7 +4497,7 @@ export interface RandomizeRangeRequest {
   range?: GridRange;
 }
 
-export const RandomizeRangeRequest: Schema.Schema<RandomizeRangeRequest> =
+export const RandomizeRangeRequest: Schema.Codec<RandomizeRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(GridRange),
   }).annotate({ identifier: "RandomizeRangeRequest" });
@@ -4509,7 +4509,7 @@ export interface UpdateFilterViewRequest {
   filter?: FilterView;
 }
 
-export const UpdateFilterViewRequest: Schema.Schema<UpdateFilterViewRequest> =
+export const UpdateFilterViewRequest: Schema.Codec<UpdateFilterViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     filter: Schema.optional(FilterView),
@@ -4522,7 +4522,7 @@ export interface UpdateSheetPropertiesRequest {
   fields?: string;
 }
 
-export const UpdateSheetPropertiesRequest: Schema.Schema<UpdateSheetPropertiesRequest> =
+export const UpdateSheetPropertiesRequest: Schema.Codec<UpdateSheetPropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(SheetProperties),
     fields: Schema.optional(Schema.String),
@@ -4533,7 +4533,7 @@ export interface DeleteSheetRequest {
   sheetId?: number;
 }
 
-export const DeleteSheetRequest: Schema.Schema<DeleteSheetRequest> =
+export const DeleteSheetRequest: Schema.Codec<DeleteSheetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sheetId: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeleteSheetRequest" });
@@ -4555,7 +4555,7 @@ export interface TextToColumnsRequest {
     | (string & {});
 }
 
-export const TextToColumnsRequest: Schema.Schema<TextToColumnsRequest> =
+export const TextToColumnsRequest: Schema.Codec<TextToColumnsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(GridRange),
     delimiter: Schema.optional(Schema.String),
@@ -4567,7 +4567,7 @@ export interface AddNamedRangeRequest {
   namedRange?: NamedRange;
 }
 
-export const AddNamedRangeRequest: Schema.Schema<AddNamedRangeRequest> =
+export const AddNamedRangeRequest: Schema.Codec<AddNamedRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namedRange: Schema.optional(NamedRange),
   }).annotate({ identifier: "AddNamedRangeRequest" });
@@ -4581,7 +4581,7 @@ export interface UpdateSlicerSpecRequest {
   slicerId?: number;
 }
 
-export const UpdateSlicerSpecRequest: Schema.Schema<UpdateSlicerSpecRequest> =
+export const UpdateSlicerSpecRequest: Schema.Codec<UpdateSlicerSpecRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spec: Schema.optional(SlicerSpec),
     fields: Schema.optional(Schema.String),
@@ -4593,7 +4593,7 @@ export interface DuplicateFilterViewRequest {
   filterId?: number;
 }
 
-export const DuplicateFilterViewRequest: Schema.Schema<DuplicateFilterViewRequest> =
+export const DuplicateFilterViewRequest: Schema.Codec<DuplicateFilterViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterId: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DuplicateFilterViewRequest" });
@@ -4603,7 +4603,7 @@ export interface AddDimensionGroupRequest {
   range?: DimensionRange;
 }
 
-export const AddDimensionGroupRequest: Schema.Schema<AddDimensionGroupRequest> =
+export const AddDimensionGroupRequest: Schema.Codec<AddDimensionGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(DimensionRange),
   }).annotate({ identifier: "AddDimensionGroupRequest" });
@@ -4619,7 +4619,7 @@ export interface UpdateDimensionPropertiesRequest {
   fields?: string;
 }
 
-export const UpdateDimensionPropertiesRequest: Schema.Schema<UpdateDimensionPropertiesRequest> =
+export const UpdateDimensionPropertiesRequest: Schema.Codec<UpdateDimensionPropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(DimensionProperties),
     dataSourceSheetRange: Schema.optional(DataSourceSheetDimensionRange),
@@ -4634,7 +4634,7 @@ export interface UpdateBandingRequest {
   bandedRange?: BandedRange;
 }
 
-export const UpdateBandingRequest: Schema.Schema<UpdateBandingRequest> =
+export const UpdateBandingRequest: Schema.Codec<UpdateBandingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     bandedRange: Schema.optional(BandedRange),
@@ -4645,7 +4645,7 @@ export interface DeleteBandingRequest {
   bandedRangeId?: number;
 }
 
-export const DeleteBandingRequest: Schema.Schema<DeleteBandingRequest> =
+export const DeleteBandingRequest: Schema.Codec<DeleteBandingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bandedRangeId: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeleteBandingRequest" });
@@ -4659,7 +4659,7 @@ export interface AppendDimensionRequest {
   sheetId?: number;
 }
 
-export const AppendDimensionRequest: Schema.Schema<AppendDimensionRequest> =
+export const AppendDimensionRequest: Schema.Codec<AppendDimensionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     length: Schema.optional(Schema.Number),
@@ -4685,7 +4685,7 @@ export interface CopyPasteRequest {
   pasteOrientation?: "NORMAL" | "TRANSPOSE" | (string & {});
 }
 
-export const CopyPasteRequest: Schema.Schema<CopyPasteRequest> =
+export const CopyPasteRequest: Schema.Codec<CopyPasteRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(GridRange),
     source: Schema.optional(GridRange),
@@ -4710,7 +4710,7 @@ export interface CutPasteRequest {
   destination?: GridCoordinate;
 }
 
-export const CutPasteRequest: Schema.Schema<CutPasteRequest> =
+export const CutPasteRequest: Schema.Codec<CutPasteRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pasteType: Schema.optional(Schema.String),
     source: Schema.optional(GridRange),
@@ -4722,7 +4722,7 @@ export interface DeleteDimensionGroupRequest {
   range?: DimensionRange;
 }
 
-export const DeleteDimensionGroupRequest: Schema.Schema<DeleteDimensionGroupRequest> =
+export const DeleteDimensionGroupRequest: Schema.Codec<DeleteDimensionGroupRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(DimensionRange),
   }).annotate({ identifier: "DeleteDimensionGroupRequest" });
@@ -4734,7 +4734,7 @@ export interface UpdateDataSourceRequest {
   fields?: string;
 }
 
-export const UpdateDataSourceRequest: Schema.Schema<UpdateDataSourceRequest> =
+export const UpdateDataSourceRequest: Schema.Codec<UpdateDataSourceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(DataSource),
     fields: Schema.optional(Schema.String),
@@ -4881,7 +4881,7 @@ export interface Request {
   cancelDataSourceRefresh?: CancelDataSourceRefreshRequest;
 }
 
-export const Request: Schema.Schema<Request> =
+export const Request: Schema.Codec<Request> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addConditionalFormatRule: Schema.optional(AddConditionalFormatRuleRequest),
     deleteTable: Schema.optional(DeleteTableRequest),
@@ -4977,7 +4977,7 @@ export interface BatchUpdateSpreadsheetRequest {
   responseIncludeGridData?: boolean;
 }
 
-export const BatchUpdateSpreadsheetRequest: Schema.Schema<BatchUpdateSpreadsheetRequest> =
+export const BatchUpdateSpreadsheetRequest: Schema.Codec<BatchUpdateSpreadsheetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(Request)),
     includeSpreadsheetInResponse: Schema.optional(Schema.Boolean),
@@ -5000,7 +5000,7 @@ export interface BatchGetValuesByDataFilterRequest {
   dateTimeRenderOption?: "SERIAL_NUMBER" | "FORMATTED_STRING" | (string & {});
 }
 
-export const BatchGetValuesByDataFilterRequest: Schema.Schema<BatchGetValuesByDataFilterRequest> =
+export const BatchGetValuesByDataFilterRequest: Schema.Codec<BatchGetValuesByDataFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFilters: Schema.optional(Schema.Array(DataFilter)),
     majorDimension: Schema.optional(Schema.String),
@@ -5023,7 +5023,7 @@ export interface UpdateValuesResponse {
   updatedRows?: number;
 }
 
-export const UpdateValuesResponse: Schema.Schema<UpdateValuesResponse> =
+export const UpdateValuesResponse: Schema.Codec<UpdateValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updatedData: Schema.optional(ValueRange),
     updatedColumns: Schema.optional(Schema.Number),
@@ -5048,7 +5048,7 @@ export interface BatchUpdateValuesResponse {
   spreadsheetId?: string;
 }
 
-export const BatchUpdateValuesResponse: Schema.Schema<BatchUpdateValuesResponse> =
+export const BatchUpdateValuesResponse: Schema.Codec<BatchUpdateValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalUpdatedCells: Schema.optional(Schema.Number),
     totalUpdatedRows: Schema.optional(Schema.Number),
@@ -5082,7 +5082,7 @@ export interface BatchUpdateValuesRequest {
   includeValuesInResponse?: boolean;
 }
 
-export const BatchUpdateValuesRequest: Schema.Schema<BatchUpdateValuesRequest> =
+export const BatchUpdateValuesRequest: Schema.Codec<BatchUpdateValuesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responseDateTimeRenderOption: Schema.optional(Schema.String),
     valueInputOption: Schema.optional(Schema.String),
@@ -5096,7 +5096,7 @@ export interface BatchClearValuesByDataFilterRequest {
   dataFilters?: ReadonlyArray<DataFilter>;
 }
 
-export const BatchClearValuesByDataFilterRequest: Schema.Schema<BatchClearValuesByDataFilterRequest> =
+export const BatchClearValuesByDataFilterRequest: Schema.Codec<BatchClearValuesByDataFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFilters: Schema.optional(Schema.Array(DataFilter)),
   }).annotate({ identifier: "BatchClearValuesByDataFilterRequest" });
@@ -5106,7 +5106,7 @@ export interface SearchDeveloperMetadataRequest {
   dataFilters?: ReadonlyArray<DataFilter>;
 }
 
-export const SearchDeveloperMetadataRequest: Schema.Schema<SearchDeveloperMetadataRequest> =
+export const SearchDeveloperMetadataRequest: Schema.Codec<SearchDeveloperMetadataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFilters: Schema.optional(Schema.Array(DataFilter)),
   }).annotate({ identifier: "SearchDeveloperMetadataRequest" });
@@ -5118,7 +5118,7 @@ export interface BatchClearValuesByDataFilterResponse {
   clearedRanges?: ReadonlyArray<string>;
 }
 
-export const BatchClearValuesByDataFilterResponse: Schema.Schema<BatchClearValuesByDataFilterResponse> =
+export const BatchClearValuesByDataFilterResponse: Schema.Codec<BatchClearValuesByDataFilterResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetId: Schema.optional(Schema.String),
     clearedRanges: Schema.optional(Schema.Array(Schema.String)),
@@ -5133,7 +5133,7 @@ export interface DataFilterValueRange {
   values?: ReadonlyArray<ReadonlyArray<unknown>>;
 }
 
-export const DataFilterValueRange: Schema.Schema<DataFilterValueRange> =
+export const DataFilterValueRange: Schema.Codec<DataFilterValueRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataFilter: Schema.optional(DataFilter),
     majorDimension: Schema.optional(Schema.String),
@@ -5164,7 +5164,7 @@ export interface BatchUpdateValuesByDataFilterRequest {
     | (string & {});
 }
 
-export const BatchUpdateValuesByDataFilterRequest: Schema.Schema<BatchUpdateValuesByDataFilterRequest> =
+export const BatchUpdateValuesByDataFilterRequest: Schema.Codec<BatchUpdateValuesByDataFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Array(DataFilterValueRange)),
     includeValuesInResponse: Schema.optional(Schema.Boolean),
@@ -5175,7 +5175,7 @@ export const BatchUpdateValuesByDataFilterRequest: Schema.Schema<BatchUpdateValu
 
 export interface ClearValuesRequest {}
 
-export const ClearValuesRequest: Schema.Schema<ClearValuesRequest> =
+export const ClearValuesRequest: Schema.Codec<ClearValuesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ClearValuesRequest",
   });
@@ -5185,7 +5185,7 @@ export interface BatchClearValuesRequest {
   ranges?: ReadonlyArray<string>;
 }
 
-export const BatchClearValuesRequest: Schema.Schema<BatchClearValuesRequest> =
+export const BatchClearValuesRequest: Schema.Codec<BatchClearValuesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ranges: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchClearValuesRequest" });
@@ -5199,7 +5199,7 @@ export interface AppendValuesResponse {
   tableRange?: string;
 }
 
-export const AppendValuesResponse: Schema.Schema<AppendValuesResponse> =
+export const AppendValuesResponse: Schema.Codec<AppendValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updates: Schema.optional(UpdateValuesResponse),
     spreadsheetId: Schema.optional(Schema.String),
@@ -5213,7 +5213,7 @@ export interface BatchGetValuesResponse {
   valueRanges?: ReadonlyArray<ValueRange>;
 }
 
-export const BatchGetValuesResponse: Schema.Schema<BatchGetValuesResponse> =
+export const BatchGetValuesResponse: Schema.Codec<BatchGetValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetId: Schema.optional(Schema.String),
     valueRanges: Schema.optional(Schema.Array(ValueRange)),
@@ -5228,7 +5228,7 @@ export interface GetSpreadsheetByDataFilterRequest {
   dataFilters?: ReadonlyArray<DataFilter>;
 }
 
-export const GetSpreadsheetByDataFilterRequest: Schema.Schema<GetSpreadsheetByDataFilterRequest> =
+export const GetSpreadsheetByDataFilterRequest: Schema.Codec<GetSpreadsheetByDataFilterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludeTablesInBandedRanges: Schema.optional(Schema.Boolean),
     includeGridData: Schema.optional(Schema.Boolean),
@@ -5242,7 +5242,7 @@ export interface ClearValuesResponse {
   clearedRange?: string;
 }
 
-export const ClearValuesResponse: Schema.Schema<ClearValuesResponse> =
+export const ClearValuesResponse: Schema.Codec<ClearValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetId: Schema.optional(Schema.String),
     clearedRange: Schema.optional(Schema.String),
@@ -5329,7 +5329,7 @@ export const GetSpreadsheetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v4/spreadsheets/{spreadsheetId}" }),
   svc,
-) as unknown as Schema.Schema<GetSpreadsheetsRequest>;
+) as unknown as Schema.Codec<GetSpreadsheetsRequest>;
 
 export type GetSpreadsheetsResponse = Spreadsheet;
 export const GetSpreadsheetsResponse = /*@__PURE__*/ /*#__PURE__*/ Spreadsheet;
@@ -5366,7 +5366,7 @@ export const GetByDataFilterSpreadsheetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetByDataFilterSpreadsheetsRequest>;
+  ) as unknown as Schema.Codec<GetByDataFilterSpreadsheetsRequest>;
 
 export type GetByDataFilterSpreadsheetsResponse = Spreadsheet;
 export const GetByDataFilterSpreadsheetsResponse =
@@ -5409,7 +5409,7 @@ export const BatchUpdateSpreadsheetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateSpreadsheetsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateSpreadsheetsRequest>;
 
 export type BatchUpdateSpreadsheetsResponse = BatchUpdateSpreadsheetResponse;
 export const BatchUpdateSpreadsheetsResponse =
@@ -5445,7 +5445,7 @@ export const CreateSpreadsheetsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/spreadsheets", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateSpreadsheetsRequest>;
+  ) as unknown as Schema.Codec<CreateSpreadsheetsRequest>;
 
 export type CreateSpreadsheetsResponse = Spreadsheet;
 export const CreateSpreadsheetsResponse =
@@ -5493,7 +5493,7 @@ export const CopyToSpreadsheetsSheetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CopyToSpreadsheetsSheetsRequest>;
+  ) as unknown as Schema.Codec<CopyToSpreadsheetsSheetsRequest>;
 
 export type CopyToSpreadsheetsSheetsResponse = SheetProperties;
 export const CopyToSpreadsheetsSheetsResponse =
@@ -5575,7 +5575,7 @@ export const AppendSpreadsheetsValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AppendSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<AppendSpreadsheetsValuesRequest>;
 
 export type AppendSpreadsheetsValuesResponse = AppendValuesResponse;
 export const AppendSpreadsheetsValuesResponse =
@@ -5620,7 +5620,7 @@ export const BatchClearByDataFilterSpreadsheetsValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchClearByDataFilterSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<BatchClearByDataFilterSpreadsheetsValuesRequest>;
 
 export type BatchClearByDataFilterSpreadsheetsValuesResponse =
   BatchClearValuesByDataFilterResponse;
@@ -5684,7 +5684,7 @@ export const BatchGetSpreadsheetsValuesRequest =
       path: "v4/spreadsheets/{spreadsheetId}/values:batchGet",
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<BatchGetSpreadsheetsValuesRequest>;
 
 export type BatchGetSpreadsheetsValuesResponse = BatchGetValuesResponse;
 export const BatchGetSpreadsheetsValuesResponse =
@@ -5725,7 +5725,7 @@ export const BatchGetByDataFilterSpreadsheetsValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetByDataFilterSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<BatchGetByDataFilterSpreadsheetsValuesRequest>;
 
 export type BatchGetByDataFilterSpreadsheetsValuesResponse =
   BatchGetValuesByDataFilterResponse;
@@ -5787,7 +5787,7 @@ export const GetSpreadsheetsValuesRequest =
       path: "v4/spreadsheets/{spreadsheetId}/values/{range}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<GetSpreadsheetsValuesRequest>;
 
 export type GetSpreadsheetsValuesResponse = ValueRange;
 export const GetSpreadsheetsValuesResponse =
@@ -5827,7 +5827,7 @@ export const BatchUpdateByDataFilterSpreadsheetsValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateByDataFilterSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateByDataFilterSpreadsheetsValuesRequest>;
 
 export type BatchUpdateByDataFilterSpreadsheetsValuesResponse =
   BatchUpdateValuesByDataFilterResponse;
@@ -5905,7 +5905,7 @@ export const UpdateSpreadsheetsValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<UpdateSpreadsheetsValuesRequest>;
 
 export type UpdateSpreadsheetsValuesResponse = UpdateValuesResponse;
 export const UpdateSpreadsheetsValuesResponse =
@@ -5948,7 +5948,7 @@ export const BatchUpdateSpreadsheetsValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<BatchUpdateSpreadsheetsValuesRequest>;
 
 export type BatchUpdateSpreadsheetsValuesResponse = BatchUpdateValuesResponse;
 export const BatchUpdateSpreadsheetsValuesResponse =
@@ -5991,7 +5991,7 @@ export const BatchClearSpreadsheetsValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchClearSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<BatchClearSpreadsheetsValuesRequest>;
 
 export type BatchClearSpreadsheetsValuesResponse = BatchClearValuesResponse;
 export const BatchClearSpreadsheetsValuesResponse =
@@ -6037,7 +6037,7 @@ export const ClearSpreadsheetsValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ClearSpreadsheetsValuesRequest>;
+  ) as unknown as Schema.Codec<ClearSpreadsheetsValuesRequest>;
 
 export type ClearSpreadsheetsValuesResponse = ClearValuesResponse;
 export const ClearSpreadsheetsValuesResponse =
@@ -6079,7 +6079,7 @@ export const GetSpreadsheetsDeveloperMetadataRequest =
       path: "v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSpreadsheetsDeveloperMetadataRequest>;
+  ) as unknown as Schema.Codec<GetSpreadsheetsDeveloperMetadataRequest>;
 
 export type GetSpreadsheetsDeveloperMetadataResponse = DeveloperMetadata;
 export const GetSpreadsheetsDeveloperMetadataResponse =
@@ -6120,7 +6120,7 @@ export const SearchSpreadsheetsDeveloperMetadataRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchSpreadsheetsDeveloperMetadataRequest>;
+  ) as unknown as Schema.Codec<SearchSpreadsheetsDeveloperMetadataRequest>;
 
 export type SearchSpreadsheetsDeveloperMetadataResponse =
   SearchDeveloperMetadataResponse;

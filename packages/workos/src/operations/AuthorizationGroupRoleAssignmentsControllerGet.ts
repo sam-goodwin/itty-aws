@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationGroupRoleAssignmentsControllerGetInput {
+  group_id: string;
+  role_assignment_id: string;
+}
 export const AuthorizationGroupRoleAssignmentsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,18 @@ export const AuthorizationGroupRoleAssignmentsControllerGetInput =
       method: "GET",
       path: "/authorization/groups/{group_id}/role_assignments/{role_assignment_id}",
     }),
-  );
-export type AuthorizationGroupRoleAssignmentsControllerGetInput =
-  typeof AuthorizationGroupRoleAssignmentsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerGetInput>;
 
 // Output Schema
+export interface AuthorizationGroupRoleAssignmentsControllerGetOutput {
+  object: string;
+  id: string;
+  group_id: string;
+  role: { slug?: string };
+  resource: { id: string; external_id: string; resource_type_slug: string };
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationGroupRoleAssignmentsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -33,9 +44,7 @@ export const AuthorizationGroupRoleAssignmentsControllerGetOutput =
     }),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationGroupRoleAssignmentsControllerGetOutput =
-  typeof AuthorizationGroupRoleAssignmentsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerGetOutput>;
 
 // The operation
 /**

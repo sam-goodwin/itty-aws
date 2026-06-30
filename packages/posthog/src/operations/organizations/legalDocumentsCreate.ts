@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LegalDocumentsCreateInput {
+  organization_id: string;
+  document_type?: "BAA" | "DPA";
+  company_name?: string;
+  company_address?: string;
+  representative_email?: string;
+}
 export const LegalDocumentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -16,10 +23,18 @@ export const LegalDocumentsCreateInput =
       method: "POST",
       path: "/api/organizations/{organization_id}/legal_documents/",
     }),
-  );
-export type LegalDocumentsCreateInput = typeof LegalDocumentsCreateInput.Type;
+  ) as unknown as Schema.Codec<LegalDocumentsCreateInput>;
 
 // Output Schema
+export interface LegalDocumentsCreateOutput {
+  id?: string;
+  document_type?: string;
+  company_name?: string;
+  representative_email?: string;
+  status?: string;
+  created_by?: { first_name?: string; email?: string } | null;
+  created_at?: string;
+}
 export const LegalDocumentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -27,10 +42,16 @@ export const LegalDocumentsCreateOutput =
     company_name: Schema.optional(Schema.String),
     representative_email: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-    created_by: Schema.optional(Schema.Unknown),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          first_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     created_at: Schema.optional(Schema.String),
-  });
-export type LegalDocumentsCreateOutput = typeof LegalDocumentsCreateOutput.Type;
+  }) as unknown as Schema.Codec<LegalDocumentsCreateOutput>;
 
 // The operation
 /**

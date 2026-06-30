@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsEvaluationReasonsRetrieveInput {
+  project_id: string;
+  distinct_id: string;
+  groups?: string;
+}
 export const FeatureFlagsEvaluationReasonsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const FeatureFlagsEvaluationReasonsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/feature_flags/evaluation_reasons/",
     }),
-  );
-export type FeatureFlagsEvaluationReasonsRetrieveInput =
-  typeof FeatureFlagsEvaluationReasonsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsEvaluationReasonsRetrieveInput>;
 
 // Output Schema
+export type FeatureFlagsEvaluationReasonsRetrieveOutput = void;
 export const FeatureFlagsEvaluationReasonsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FeatureFlagsEvaluationReasonsRetrieveOutput =
-  typeof FeatureFlagsEvaluationReasonsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsEvaluationReasonsRetrieveOutput>;
 
 // The operation
 /**

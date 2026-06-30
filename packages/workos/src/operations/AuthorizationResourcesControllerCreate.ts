@@ -10,6 +10,13 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesControllerCreateInput {
+  external_id: string;
+  name: string;
+  description?: string | null;
+  resource_type_slug: string;
+  organization_id: string;
+}
 export const AuthorizationResourcesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     external_id: Schema.String,
@@ -17,11 +24,23 @@ export const AuthorizationResourcesControllerCreateInput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     resource_type_slug: Schema.String,
     organization_id: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/authorization/resources" }));
-export type AuthorizationResourcesControllerCreateInput =
-  typeof AuthorizationResourcesControllerCreateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/authorization/resources" }),
+  ) as unknown as Schema.Codec<AuthorizationResourcesControllerCreateInput>;
 
 // Output Schema
+export interface AuthorizationResourcesControllerCreateOutput {
+  object: string;
+  name: string;
+  description: string | null;
+  organization_id: string;
+  parent_resource_id: string | null;
+  id: string;
+  external_id: string;
+  resource_type_slug: string;
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationResourcesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -34,9 +53,7 @@ export const AuthorizationResourcesControllerCreateOutput =
     resource_type_slug: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationResourcesControllerCreateOutput =
-  typeof AuthorizationResourcesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationResourcesControllerCreateOutput>;
 
 // The operation
 /**

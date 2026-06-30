@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupEventInput {
+  groupId: string;
+  eventId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeRaw?: boolean;
+}
 export const GetGroupEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   eventId: Schema.String.pipe(T.PathParam()),
@@ -15,12 +22,12 @@ export const GetGroupEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/groups/{groupId}/events/{eventId}",
   }),
-);
-export type GetGroupEventInput = typeof GetGroupEventInput.Type;
+) as unknown as Schema.Codec<GetGroupEventInput>;
 
 // Output Schema
-export const GetGroupEventOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupEventOutput = typeof GetGroupEventOutput.Type;
+export type GetGroupEventOutput = void;
+export const GetGroupEventOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupEventOutput>;
 
 // The operation
 /**

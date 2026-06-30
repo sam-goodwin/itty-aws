@@ -4,17 +4,21 @@ import * as T from "../traits.ts";
 import { PaymentRequired, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MigrateGroupInput {
+  groupId: string;
+  envelope?: boolean;
+}
 export const MigrateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}:migrate" }),
-);
-export type MigrateGroupInput = typeof MigrateGroupInput.Type;
+) as unknown as Schema.Codec<MigrateGroupInput>;
 
 // Output Schema
-export const MigrateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MigrateGroupOutput = typeof MigrateGroupOutput.Type;
+export type MigrateGroupOutput = void;
+export const MigrateGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MigrateGroupOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupDataFederationInput {
+  groupId: string;
+  tenantName: string;
+  envelope?: boolean;
+}
 export const GetGroupDataFederationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const GetGroupDataFederationInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}",
     }),
-  );
-export type GetGroupDataFederationInput =
-  typeof GetGroupDataFederationInput.Type;
+  ) as unknown as Schema.Codec<GetGroupDataFederationInput>;
 
 // Output Schema
+export type GetGroupDataFederationOutput = void;
 export const GetGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupDataFederationOutput =
-  typeof GetGroupDataFederationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupDataFederationOutput>;
 
 // The operation
 /**

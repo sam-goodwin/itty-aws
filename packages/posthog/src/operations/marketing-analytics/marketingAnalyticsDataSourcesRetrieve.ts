@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MarketingAnalyticsDataSourcesRetrieveInput {
+  project_id: string;
+  source_type?: string;
+}
 export const MarketingAnalyticsDataSourcesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,39 @@ export const MarketingAnalyticsDataSourcesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/marketing_analytics/data_sources/",
     }),
-  );
-export type MarketingAnalyticsDataSourcesRetrieveInput =
-  typeof MarketingAnalyticsDataSourcesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MarketingAnalyticsDataSourcesRetrieveInput>;
 
 // Output Schema
+export interface MarketingAnalyticsDataSourcesRetrieveOutput {
+  integrations: {
+    source_type: string;
+    is_native: boolean;
+    display_name: string;
+    connected: boolean;
+    last_sync_at: string | null;
+    last_sync_status: string;
+    last_error: string | null;
+    rows_last_24h: number;
+    rows_last_7d: number;
+    sources_map_present: boolean;
+    schema_columns_mapped: string[];
+    schema_columns_required_missing: string[];
+    required_tables: {
+      table_name: string;
+      present: boolean;
+      should_sync: boolean;
+      status: string | null;
+      last_synced_at: string | null;
+    }[];
+    settings_url: string;
+    schemas_url: string | null;
+    diagnosis: string;
+    fix_suggestion: string | null;
+  }[];
+  has_any_data: boolean;
+  overall_status: string;
+  issues_summary: string[];
+}
 export const MarketingAnalyticsDataSourcesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrations: Schema.Array(
@@ -51,9 +83,7 @@ export const MarketingAnalyticsDataSourcesRetrieveOutput =
     has_any_data: Schema.Boolean,
     overall_status: Schema.String,
     issues_summary: Schema.Array(Schema.String),
-  });
-export type MarketingAnalyticsDataSourcesRetrieveOutput =
-  typeof MarketingAnalyticsDataSourcesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MarketingAnalyticsDataSourcesRetrieveOutput>;
 
 // The operation
 /**

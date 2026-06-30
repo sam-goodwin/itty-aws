@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateProjectSigningKeyInput {
+  id: string;
+  ref: string;
+  status: "in_use" | "previously_used" | "revoked" | "standby";
+}
 export const V1UpdateProjectSigningKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,11 +24,17 @@ export const V1UpdateProjectSigningKeyInput =
       method: "PATCH",
       path: "/v1/projects/{ref}/config/auth/signing-keys/{id}",
     }),
-  );
-export type V1UpdateProjectSigningKeyInput =
-  typeof V1UpdateProjectSigningKeyInput.Type;
+  ) as unknown as Schema.Codec<V1UpdateProjectSigningKeyInput>;
 
 // Output Schema
+export interface V1UpdateProjectSigningKeyOutput {
+  id: string;
+  algorithm: "EdDSA" | "ES256" | "RS256" | "HS256";
+  status: "in_use" | "previously_used" | "revoked" | "standby";
+  public_jwk?: unknown | null;
+  created_at: string;
+  updated_at: string;
+}
 export const V1UpdateProjectSigningKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -37,9 +48,7 @@ export const V1UpdateProjectSigningKeyOutput =
     public_jwk: Schema.optional(Schema.NullOr(Schema.Unknown)),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type V1UpdateProjectSigningKeyOutput =
-  typeof V1UpdateProjectSigningKeyOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateProjectSigningKeyOutput>;
 
 // The operation
 /**

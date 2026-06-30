@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgResourcePoliciesInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListOrgResourcePoliciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const ListOrgResourcePoliciesInput =
       method: "GET",
       path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies",
     }),
-  );
-export type ListOrgResourcePoliciesInput =
-  typeof ListOrgResourcePoliciesInput.Type;
+  ) as unknown as Schema.Codec<ListOrgResourcePoliciesInput>;
 
 // Output Schema
+export type ListOrgResourcePoliciesOutput = void;
 export const ListOrgResourcePoliciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgResourcePoliciesOutput =
-  typeof ListOrgResourcePoliciesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgResourcePoliciesOutput>;
 
 // The operation
 /**

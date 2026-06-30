@@ -4,14 +4,87 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ConnectionsControllerFindInput {
+  id: string;
+}
 export const ConnectionsControllerFindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/connections/{id}" }));
-export type ConnectionsControllerFindInput =
-  typeof ConnectionsControllerFindInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/connections/{id}" }),
+  ) as unknown as Schema.Codec<ConnectionsControllerFindInput>;
 
 // Output Schema
+export interface ConnectionsControllerFindOutput {
+  object?: string;
+  id?: string;
+  organization_id?: string;
+  connection_type?:
+    | "Pending"
+    | "ADFSSAML"
+    | "AdpOidc"
+    | "AppleOAuth"
+    | "Auth0Migration"
+    | "Auth0SAML"
+    | "AzureSAML"
+    | "BitbucketOAuth"
+    | "CasSAML"
+    | "ClassLinkSAML"
+    | "CleverOIDC"
+    | "CloudflareSAML"
+    | "CyberArkSAML"
+    | "DiscordOAuth"
+    | "DuoSAML"
+    | "EntraIdOIDC"
+    | "GenericOIDC"
+    | "GenericSAML"
+    | "GitHubOAuth"
+    | "GitLabOAuth"
+    | "GoogleOAuth"
+    | "GoogleOIDC"
+    | "GoogleSAML"
+    | "IntuitOAuth"
+    | "JumpCloudSAML"
+    | "KeycloakSAML"
+    | "LastPassSAML"
+    | "LinkedInOAuth"
+    | "LoginGovOidc"
+    | "MagicLink"
+    | "MicrosoftOAuth"
+    | "MiniOrangeSAML"
+    | "NetIqSAML"
+    | "OktaOIDC"
+    | "OktaSAML"
+    | "OneLoginSAML"
+    | "OracleSAML"
+    | "PingFederateSAML"
+    | "PingOneSAML"
+    | "RipplingSAML"
+    | "SalesforceSAML"
+    | "ShibbolethGenericSAML"
+    | "ShibbolethSAML"
+    | "SimpleSamlPhpSAML"
+    | "SalesforceOAuth"
+    | "SlackOAuth"
+    | "TestIdp"
+    | "VercelMarketplaceOAuth"
+    | "VercelOAuth"
+    | "VMwareSAML"
+    | "XeroOAuth";
+  name?: string;
+  state?:
+    | "requires_type"
+    | "draft"
+    | "active"
+    | "validating"
+    | "inactive"
+    | "deleting";
+  status?: "linked" | "unlinked";
+  domains?: { id: string; object: string; domain: string }[];
+  options?: { signing_cert: string | null };
+  created_at?: string;
+  updated_at?: string;
+}
 export const ConnectionsControllerFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -100,9 +173,7 @@ export const ConnectionsControllerFindOutput =
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ConnectionsControllerFindOutput =
-  typeof ConnectionsControllerFindOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionsControllerFindOutput>;
 
 // The operation
 /**

@@ -4,11 +4,28 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AttestationsCreateOrUpdateAtResourceInput {
+  resourceId: string;
+  attestationName: string;
+  properties: {
+    policyAssignmentId: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: "Compliant" | "NonCompliant" | "Unknown";
+    expiresOn?: string;
+    owner?: string;
+    comments?: string;
+    evidence?: { description?: string; sourceUri?: string }[];
+    provisioningState?: string;
+    lastComplianceStateChangeAt?: string;
+    assessmentDate?: string;
+    metadata?: unknown;
+  };
+}
 export const AttestationsCreateOrUpdateAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -41,11 +58,22 @@ export const AttestationsCreateOrUpdateAtResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsCreateOrUpdateAtResourceInput =
-  typeof AttestationsCreateOrUpdateAtResourceInput.Type;
+  ) as unknown as Schema.Codec<AttestationsCreateOrUpdateAtResourceInput>;
 
 // Output Schema
+export interface AttestationsCreateOrUpdateAtResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationsCreateOrUpdateAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -65,9 +93,7 @@ export const AttestationsCreateOrUpdateAtResourceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationsCreateOrUpdateAtResourceOutput =
-  typeof AttestationsCreateOrUpdateAtResourceOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsCreateOrUpdateAtResourceOutput>;
 
 // The operation
 /**
@@ -83,6 +109,24 @@ export const AttestationsCreateOrUpdateAtResource =
     outputSchema: AttestationsCreateOrUpdateAtResourceOutput,
   }));
 // Input Schema
+export interface AttestationsCreateOrUpdateAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  attestationName: string;
+  properties: {
+    policyAssignmentId: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: "Compliant" | "NonCompliant" | "Unknown";
+    expiresOn?: string;
+    owner?: string;
+    comments?: string;
+    evidence?: { description?: string; sourceUri?: string }[];
+    provisioningState?: string;
+    lastComplianceStateChangeAt?: string;
+    assessmentDate?: string;
+    metadata?: unknown;
+  };
+}
 export const AttestationsCreateOrUpdateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -116,11 +160,22 @@ export const AttestationsCreateOrUpdateAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsCreateOrUpdateAtResourceGroupInput =
-  typeof AttestationsCreateOrUpdateAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AttestationsCreateOrUpdateAtResourceGroupInput>;
 
 // Output Schema
+export interface AttestationsCreateOrUpdateAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationsCreateOrUpdateAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -140,9 +195,7 @@ export const AttestationsCreateOrUpdateAtResourceGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationsCreateOrUpdateAtResourceGroupOutput =
-  typeof AttestationsCreateOrUpdateAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsCreateOrUpdateAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -159,6 +212,23 @@ export const AttestationsCreateOrUpdateAtResourceGroup =
     outputSchema: AttestationsCreateOrUpdateAtResourceGroupOutput,
   }));
 // Input Schema
+export interface AttestationsCreateOrUpdateAtSubscriptionInput {
+  subscriptionId: string;
+  attestationName: string;
+  properties: {
+    policyAssignmentId: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: "Compliant" | "NonCompliant" | "Unknown";
+    expiresOn?: string;
+    owner?: string;
+    comments?: string;
+    evidence?: { description?: string; sourceUri?: string }[];
+    provisioningState?: string;
+    lastComplianceStateChangeAt?: string;
+    assessmentDate?: string;
+    metadata?: unknown;
+  };
+}
 export const AttestationsCreateOrUpdateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -191,11 +261,22 @@ export const AttestationsCreateOrUpdateAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsCreateOrUpdateAtSubscriptionInput =
-  typeof AttestationsCreateOrUpdateAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AttestationsCreateOrUpdateAtSubscriptionInput>;
 
 // Output Schema
+export interface AttestationsCreateOrUpdateAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationsCreateOrUpdateAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -215,9 +296,7 @@ export const AttestationsCreateOrUpdateAtSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationsCreateOrUpdateAtSubscriptionOutput =
-  typeof AttestationsCreateOrUpdateAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsCreateOrUpdateAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -233,6 +312,10 @@ export const AttestationsCreateOrUpdateAtSubscription =
     outputSchema: AttestationsCreateOrUpdateAtSubscriptionOutput,
   }));
 // Input Schema
+export interface AttestationsDeleteAtResourceInput {
+  resourceId: string;
+  attestationName: string;
+}
 export const AttestationsDeleteAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -243,15 +326,12 @@ export const AttestationsDeleteAtResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsDeleteAtResourceInput =
-  typeof AttestationsDeleteAtResourceInput.Type;
+  ) as unknown as Schema.Codec<AttestationsDeleteAtResourceInput>;
 
 // Output Schema
+export type AttestationsDeleteAtResourceOutput = void;
 export const AttestationsDeleteAtResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AttestationsDeleteAtResourceOutput =
-  typeof AttestationsDeleteAtResourceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AttestationsDeleteAtResourceOutput>;
 
 // The operation
 /**
@@ -267,6 +347,11 @@ export const AttestationsDeleteAtResource =
     outputSchema: AttestationsDeleteAtResourceOutput,
   }));
 // Input Schema
+export interface AttestationsDeleteAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  attestationName: string;
+}
 export const AttestationsDeleteAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -278,15 +363,12 @@ export const AttestationsDeleteAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsDeleteAtResourceGroupInput =
-  typeof AttestationsDeleteAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AttestationsDeleteAtResourceGroupInput>;
 
 // Output Schema
+export type AttestationsDeleteAtResourceGroupOutput = void;
 export const AttestationsDeleteAtResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AttestationsDeleteAtResourceGroupOutput =
-  typeof AttestationsDeleteAtResourceGroupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AttestationsDeleteAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -303,6 +385,10 @@ export const AttestationsDeleteAtResourceGroup =
     outputSchema: AttestationsDeleteAtResourceGroupOutput,
   }));
 // Input Schema
+export interface AttestationsDeleteAtSubscriptionInput {
+  subscriptionId: string;
+  attestationName: string;
+}
 export const AttestationsDeleteAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -313,15 +399,12 @@ export const AttestationsDeleteAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsDeleteAtSubscriptionInput =
-  typeof AttestationsDeleteAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AttestationsDeleteAtSubscriptionInput>;
 
 // Output Schema
+export type AttestationsDeleteAtSubscriptionOutput = void;
 export const AttestationsDeleteAtSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AttestationsDeleteAtSubscriptionOutput =
-  typeof AttestationsDeleteAtSubscriptionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AttestationsDeleteAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -337,6 +420,10 @@ export const AttestationsDeleteAtSubscription =
     outputSchema: AttestationsDeleteAtSubscriptionOutput,
   }));
 // Input Schema
+export interface AttestationsGetAtResourceInput {
+  resourceId: string;
+  attestationName: string;
+}
 export const AttestationsGetAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -347,11 +434,22 @@ export const AttestationsGetAtResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsGetAtResourceInput =
-  typeof AttestationsGetAtResourceInput.Type;
+  ) as unknown as Schema.Codec<AttestationsGetAtResourceInput>;
 
 // Output Schema
+export interface AttestationsGetAtResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationsGetAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -371,9 +469,7 @@ export const AttestationsGetAtResourceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationsGetAtResourceOutput =
-  typeof AttestationsGetAtResourceOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsGetAtResourceOutput>;
 
 // The operation
 /**
@@ -390,6 +486,11 @@ export const AttestationsGetAtResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AttestationsGetAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  attestationName: string;
+}
 export const AttestationsGetAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -401,11 +502,22 @@ export const AttestationsGetAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsGetAtResourceGroupInput =
-  typeof AttestationsGetAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AttestationsGetAtResourceGroupInput>;
 
 // Output Schema
+export interface AttestationsGetAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationsGetAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -425,9 +537,7 @@ export const AttestationsGetAtResourceGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationsGetAtResourceGroupOutput =
-  typeof AttestationsGetAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsGetAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -444,6 +554,10 @@ export const AttestationsGetAtResourceGroup =
     outputSchema: AttestationsGetAtResourceGroupOutput,
   }));
 // Input Schema
+export interface AttestationsGetAtSubscriptionInput {
+  subscriptionId: string;
+  attestationName: string;
+}
 export const AttestationsGetAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -454,11 +568,22 @@ export const AttestationsGetAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations/{attestationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsGetAtSubscriptionInput =
-  typeof AttestationsGetAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AttestationsGetAtSubscriptionInput>;
 
 // Output Schema
+export interface AttestationsGetAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationsGetAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -478,9 +603,7 @@ export const AttestationsGetAtSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationsGetAtSubscriptionOutput =
-  typeof AttestationsGetAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsGetAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -496,6 +619,11 @@ export const AttestationsGetAtSubscription =
     outputSchema: AttestationsGetAtSubscriptionOutput,
   }));
 // Input Schema
+export interface AttestationsListForResourceInput {
+  resourceId: string;
+  $top?: number;
+  $filter?: string;
+}
 export const AttestationsListForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -507,11 +635,25 @@ export const AttestationsListForResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/attestations",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsListForResourceInput =
-  typeof AttestationsListForResourceInput.Type;
+  ) as unknown as Schema.Codec<AttestationsListForResourceInput>;
 
 // Output Schema
+export interface AttestationsListForResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AttestationsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -546,9 +688,7 @@ export const AttestationsListForResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AttestationsListForResourceOutput =
-  typeof AttestationsListForResourceOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsListForResourceOutput>;
 
 // The operation
 /**
@@ -566,6 +706,12 @@ export const AttestationsListForResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AttestationsListForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $filter?: string;
+}
 export const AttestationsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -578,11 +724,25 @@ export const AttestationsListForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsListForResourceGroupInput =
-  typeof AttestationsListForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AttestationsListForResourceGroupInput>;
 
 // Output Schema
+export interface AttestationsListForResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AttestationsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -617,9 +777,7 @@ export const AttestationsListForResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AttestationsListForResourceGroupOutput =
-  typeof AttestationsListForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsListForResourceGroupOutput>;
 
 // The operation
 /**
@@ -637,6 +795,11 @@ export const AttestationsListForResourceGroup =
     outputSchema: AttestationsListForResourceGroupOutput,
   }));
 // Input Schema
+export interface AttestationsListForSubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $filter?: string;
+}
 export const AttestationsListForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -648,11 +811,25 @@ export const AttestationsListForSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations",
       apiVersion: "2024-10-01",
     }),
-  );
-export type AttestationsListForSubscriptionInput =
-  typeof AttestationsListForSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AttestationsListForSubscriptionInput>;
 
 // Output Schema
+export interface AttestationsListForSubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AttestationsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -687,9 +864,7 @@ export const AttestationsListForSubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AttestationsListForSubscriptionOutput =
-  typeof AttestationsListForSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AttestationsListForSubscriptionOutput>;
 
 // The operation
 /**
@@ -706,6 +881,19 @@ export const AttestationsListForSubscription =
     outputSchema: AttestationsListForSubscriptionOutput,
   }));
 // Input Schema
+export interface ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput {
+  subscriptionId: string;
+  authorizationNamespace: "Microsoft.Authorization";
+  policyDefinitionName: string;
+  componentPolicyStatesResource: "latest";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+}
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -729,11 +917,58 @@ export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput =
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput =
-  typeof ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput.Type;
+  ) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForPolicyDefinitionInput>;
 
 // Output Schema
+export interface ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    componentId?: string;
+    componentType?: string;
+    componentName?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      reason?: string;
+    };
+    policyDefinitionGroupNames?: string[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -795,9 +1030,7 @@ export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput =
         }),
       ),
     ),
-  });
-export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput =
-  typeof ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput>;
 
 // The operation
 /**
@@ -823,6 +1056,18 @@ export const ComponentPolicyStatesListQueryResultsForPolicyDefinition =
       ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput,
   }));
 // Input Schema
+export interface ComponentPolicyStatesListQueryResultsForResourceInput {
+  resourceId: string;
+  componentPolicyStatesResource: "latest";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $expand?: string;
+}
 export const ComponentPolicyStatesListQueryResultsForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -843,11 +1088,58 @@ export const ComponentPolicyStatesListQueryResultsForResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type ComponentPolicyStatesListQueryResultsForResourceInput =
-  typeof ComponentPolicyStatesListQueryResultsForResourceInput.Type;
+  ) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForResourceInput>;
 
 // Output Schema
+export interface ComponentPolicyStatesListQueryResultsForResourceOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    componentId?: string;
+    componentType?: string;
+    componentName?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      reason?: string;
+    };
+    policyDefinitionGroupNames?: string[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const ComponentPolicyStatesListQueryResultsForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -909,9 +1201,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceOutput =
         }),
       ),
     ),
-  });
-export type ComponentPolicyStatesListQueryResultsForResourceOutput =
-  typeof ComponentPolicyStatesListQueryResultsForResourceOutput.Type;
+  }) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForResourceOutput>;
 
 // The operation
 /**
@@ -935,6 +1225,18 @@ export const ComponentPolicyStatesListQueryResultsForResource =
     outputSchema: ComponentPolicyStatesListQueryResultsForResourceOutput,
   }));
 // Input Schema
+export interface ComponentPolicyStatesListQueryResultsForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  componentPolicyStatesResource: "latest";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+}
 export const ComponentPolicyStatesListQueryResultsForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -955,11 +1257,58 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type ComponentPolicyStatesListQueryResultsForResourceGroupInput =
-  typeof ComponentPolicyStatesListQueryResultsForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForResourceGroupInput>;
 
 // Output Schema
+export interface ComponentPolicyStatesListQueryResultsForResourceGroupOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    componentId?: string;
+    componentType?: string;
+    componentName?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      reason?: string;
+    };
+    policyDefinitionGroupNames?: string[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const ComponentPolicyStatesListQueryResultsForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1021,9 +1370,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type ComponentPolicyStatesListQueryResultsForResourceGroupOutput =
-  typeof ComponentPolicyStatesListQueryResultsForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForResourceGroupOutput>;
 
 // The operation
 /**
@@ -1047,6 +1394,20 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroup =
     outputSchema: ComponentPolicyStatesListQueryResultsForResourceGroupOutput,
   }));
 // Input Schema
+export interface ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  authorizationNamespace: "Microsoft.Authorization";
+  policyAssignmentName: string;
+  componentPolicyStatesResource: "latest";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+}
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1071,11 +1432,58 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
-  typeof ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput.Type;
+  ) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput>;
 
 // Output Schema
+export interface ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    componentId?: string;
+    componentType?: string;
+    componentName?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      reason?: string;
+    };
+    policyDefinitionGroupNames?: string[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1137,9 +1545,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
         }),
       ),
     ),
-  });
-export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
-  typeof ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput>;
 
 // The operation
 /**
@@ -1167,6 +1573,17 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
       ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput,
   }));
 // Input Schema
+export interface ComponentPolicyStatesListQueryResultsForSubscriptionInput {
+  subscriptionId: string;
+  componentPolicyStatesResource: "latest";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+}
 export const ComponentPolicyStatesListQueryResultsForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1186,11 +1603,58 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type ComponentPolicyStatesListQueryResultsForSubscriptionInput =
-  typeof ComponentPolicyStatesListQueryResultsForSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForSubscriptionInput>;
 
 // Output Schema
+export interface ComponentPolicyStatesListQueryResultsForSubscriptionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    componentId?: string;
+    componentType?: string;
+    componentName?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      reason?: string;
+    };
+    policyDefinitionGroupNames?: string[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const ComponentPolicyStatesListQueryResultsForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1252,9 +1716,7 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionOutput =
         }),
       ),
     ),
-  });
-export type ComponentPolicyStatesListQueryResultsForSubscriptionOutput =
-  typeof ComponentPolicyStatesListQueryResultsForSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForSubscriptionOutput>;
 
 // The operation
 /**
@@ -1277,6 +1739,19 @@ export const ComponentPolicyStatesListQueryResultsForSubscription =
     outputSchema: ComponentPolicyStatesListQueryResultsForSubscriptionOutput,
   }));
 // Input Schema
+export interface ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput {
+  subscriptionId: string;
+  authorizationNamespace: "Microsoft.Authorization";
+  policyAssignmentName: string;
+  componentPolicyStatesResource: "latest";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+}
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1300,11 +1775,58 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssi
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/componentPolicyStates/{componentPolicyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
-  typeof ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput.Type;
+  ) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput>;
 
 // Output Schema
+export interface ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    componentId?: string;
+    componentType?: string;
+    componentName?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      reason?: string;
+    };
+    policyDefinitionGroupNames?: string[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1366,9 +1888,7 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssi
         }),
       ),
     ),
-  });
-export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
-  typeof ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput>;
 
 // The operation
 /**
@@ -1395,6 +1915,7 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssi
       ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1403,10 +1924,22 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.PolicyInsights/operations",
     apiVersion: "2024-10-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  "@odata.count"?: number;
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   "@odata.count": Schema.optional(Schema.Number),
   value: Schema.optional(
@@ -1425,8 +1958,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1439,6 +1971,19 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PolicyEventsListQueryResultsForManagementGroupInput {
+  policyEventsResource: "default";
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyEventsListQueryResultsForManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
@@ -1460,11 +2005,55 @@ export const PolicyEventsListQueryResultsForManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyEventsListQueryResultsForManagementGroupInput =
-  typeof PolicyEventsListQueryResultsForManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyEventsListQueryResultsForManagementGroupInput>;
 
 // Output Schema
+export interface PolicyEventsListQueryResultsForManagementGroupOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    tenantId?: string;
+    principalOid?: string;
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      tenantId?: string;
+      principalOid?: string;
+      policyDefinitionAction?: string;
+    }[];
+  }[];
+}
 export const PolicyEventsListQueryResultsForManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1519,9 +2108,7 @@ export const PolicyEventsListQueryResultsForManagementGroupOutput =
         }),
       ),
     ),
-  });
-export type PolicyEventsListQueryResultsForManagementGroupOutput =
-  typeof PolicyEventsListQueryResultsForManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyEventsListQueryResultsForManagementGroupOutput>;
 
 // The operation
 /**
@@ -1546,6 +2133,20 @@ export const PolicyEventsListQueryResultsForManagementGroup =
     outputSchema: PolicyEventsListQueryResultsForManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyEventsListQueryResultsForPolicyDefinitionInput {
+  subscriptionId: string;
+  policyEventsResource: "default";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyDefinitionName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyEventsListQueryResultsForPolicyDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1568,11 +2169,55 @@ export const PolicyEventsListQueryResultsForPolicyDefinitionInput =
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyEventsListQueryResultsForPolicyDefinitionInput =
-  typeof PolicyEventsListQueryResultsForPolicyDefinitionInput.Type;
+  ) as unknown as Schema.Codec<PolicyEventsListQueryResultsForPolicyDefinitionInput>;
 
 // Output Schema
+export interface PolicyEventsListQueryResultsForPolicyDefinitionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    tenantId?: string;
+    principalOid?: string;
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      tenantId?: string;
+      principalOid?: string;
+      policyDefinitionAction?: string;
+    }[];
+  }[];
+}
 export const PolicyEventsListQueryResultsForPolicyDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1627,9 +2272,7 @@ export const PolicyEventsListQueryResultsForPolicyDefinitionOutput =
         }),
       ),
     ),
-  });
-export type PolicyEventsListQueryResultsForPolicyDefinitionOutput =
-  typeof PolicyEventsListQueryResultsForPolicyDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyEventsListQueryResultsForPolicyDefinitionOutput>;
 
 // The operation
 /**
@@ -1655,6 +2298,20 @@ export const PolicyEventsListQueryResultsForPolicyDefinition =
     outputSchema: PolicyEventsListQueryResultsForPolicyDefinitionOutput,
   }));
 // Input Schema
+export interface PolicyEventsListQueryResultsForPolicySetDefinitionInput {
+  subscriptionId: string;
+  policyEventsResource: "default";
+  authorizationNamespace: "Microsoft.Authorization";
+  policySetDefinitionName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyEventsListQueryResultsForPolicySetDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1677,11 +2334,55 @@ export const PolicyEventsListQueryResultsForPolicySetDefinitionInput =
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyEventsListQueryResultsForPolicySetDefinitionInput =
-  typeof PolicyEventsListQueryResultsForPolicySetDefinitionInput.Type;
+  ) as unknown as Schema.Codec<PolicyEventsListQueryResultsForPolicySetDefinitionInput>;
 
 // Output Schema
+export interface PolicyEventsListQueryResultsForPolicySetDefinitionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    tenantId?: string;
+    principalOid?: string;
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      tenantId?: string;
+      principalOid?: string;
+      policyDefinitionAction?: string;
+    }[];
+  }[];
+}
 export const PolicyEventsListQueryResultsForPolicySetDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1736,9 +2437,7 @@ export const PolicyEventsListQueryResultsForPolicySetDefinitionOutput =
         }),
       ),
     ),
-  });
-export type PolicyEventsListQueryResultsForPolicySetDefinitionOutput =
-  typeof PolicyEventsListQueryResultsForPolicySetDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyEventsListQueryResultsForPolicySetDefinitionOutput>;
 
 // The operation
 /**
@@ -1764,6 +2463,19 @@ export const PolicyEventsListQueryResultsForPolicySetDefinition =
     outputSchema: PolicyEventsListQueryResultsForPolicySetDefinitionOutput,
   }));
 // Input Schema
+export interface PolicyEventsListQueryResultsForResourceInput {
+  policyEventsResource: "default";
+  resourceId: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $expand?: string;
+  $skiptoken?: string;
+}
 export const PolicyEventsListQueryResultsForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyEventsResource: Schema.Literals(["default"]).pipe(T.PathParam()),
@@ -1783,11 +2495,55 @@ export const PolicyEventsListQueryResultsForResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyEventsListQueryResultsForResourceInput =
-  typeof PolicyEventsListQueryResultsForResourceInput.Type;
+  ) as unknown as Schema.Codec<PolicyEventsListQueryResultsForResourceInput>;
 
 // Output Schema
+export interface PolicyEventsListQueryResultsForResourceOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    tenantId?: string;
+    principalOid?: string;
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      tenantId?: string;
+      principalOid?: string;
+      policyDefinitionAction?: string;
+    }[];
+  }[];
+}
 export const PolicyEventsListQueryResultsForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1842,9 +2598,7 @@ export const PolicyEventsListQueryResultsForResourceOutput =
         }),
       ),
     ),
-  });
-export type PolicyEventsListQueryResultsForResourceOutput =
-  typeof PolicyEventsListQueryResultsForResourceOutput.Type;
+  }) as unknown as Schema.Codec<PolicyEventsListQueryResultsForResourceOutput>;
 
 // The operation
 /**
@@ -1869,6 +2623,19 @@ export const PolicyEventsListQueryResultsForResource =
     outputSchema: PolicyEventsListQueryResultsForResourceOutput,
   }));
 // Input Schema
+export interface PolicyEventsListQueryResultsForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyEventsResource: "default";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyEventsListQueryResultsForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1888,11 +2655,55 @@ export const PolicyEventsListQueryResultsForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyEventsListQueryResultsForResourceGroupInput =
-  typeof PolicyEventsListQueryResultsForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyEventsListQueryResultsForResourceGroupInput>;
 
 // Output Schema
+export interface PolicyEventsListQueryResultsForResourceGroupOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    tenantId?: string;
+    principalOid?: string;
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      tenantId?: string;
+      principalOid?: string;
+      policyDefinitionAction?: string;
+    }[];
+  }[];
+}
 export const PolicyEventsListQueryResultsForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -1947,9 +2758,7 @@ export const PolicyEventsListQueryResultsForResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type PolicyEventsListQueryResultsForResourceGroupOutput =
-  typeof PolicyEventsListQueryResultsForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyEventsListQueryResultsForResourceGroupOutput>;
 
 // The operation
 /**
@@ -1974,6 +2783,21 @@ export const PolicyEventsListQueryResultsForResourceGroup =
     outputSchema: PolicyEventsListQueryResultsForResourceGroupOutput,
   }));
 // Input Schema
+export interface PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyEventsResource: "default";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyAssignmentName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1997,11 +2821,55 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentIn
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
-  typeof PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentInput.Type;
+  ) as unknown as Schema.Codec<PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentInput>;
 
 // Output Schema
+export interface PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    tenantId?: string;
+    principalOid?: string;
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      tenantId?: string;
+      principalOid?: string;
+      policyDefinitionAction?: string;
+    }[];
+  }[];
+}
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -2056,9 +2924,7 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOu
         }),
       ),
     ),
-  });
-export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
-  typeof PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOutput>;
 
 // The operation
 /**
@@ -2087,6 +2953,18 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignment =
       PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOutput,
   }));
 // Input Schema
+export interface PolicyEventsListQueryResultsForSubscriptionInput {
+  subscriptionId: string;
+  policyEventsResource: "default";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyEventsListQueryResultsForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2105,11 +2983,55 @@ export const PolicyEventsListQueryResultsForSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyEventsListQueryResultsForSubscriptionInput =
-  typeof PolicyEventsListQueryResultsForSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PolicyEventsListQueryResultsForSubscriptionInput>;
 
 // Output Schema
+export interface PolicyEventsListQueryResultsForSubscriptionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    tenantId?: string;
+    principalOid?: string;
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      tenantId?: string;
+      principalOid?: string;
+      policyDefinitionAction?: string;
+    }[];
+  }[];
+}
 export const PolicyEventsListQueryResultsForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -2164,9 +3086,7 @@ export const PolicyEventsListQueryResultsForSubscriptionOutput =
         }),
       ),
     ),
-  });
-export type PolicyEventsListQueryResultsForSubscriptionOutput =
-  typeof PolicyEventsListQueryResultsForSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyEventsListQueryResultsForSubscriptionOutput>;
 
 // The operation
 /**
@@ -2190,6 +3110,20 @@ export const PolicyEventsListQueryResultsForSubscription =
     outputSchema: PolicyEventsListQueryResultsForSubscriptionOutput,
   }));
 // Input Schema
+export interface PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInput {
+  subscriptionId: string;
+  policyEventsResource: "default";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyAssignmentName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2212,11 +3146,55 @@ export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInp
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
-  typeof PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInput.Type;
+  ) as unknown as Schema.Codec<PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentInput>;
 
 // Output Schema
+export interface PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    tenantId?: string;
+    principalOid?: string;
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      tenantId?: string;
+      principalOid?: string;
+      policyDefinitionAction?: string;
+    }[];
+  }[];
+}
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -2271,9 +3249,7 @@ export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOut
         }),
       ),
     ),
-  });
-export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
-  typeof PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOutput>;
 
 // The operation
 /**
@@ -2301,6 +3277,9 @@ export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignment =
       PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOutput,
   }));
 // Input Schema
+export interface PolicyMetadataGetResourceInput {
+  resourceName: string;
+}
 export const PolicyMetadataGetResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2310,11 +3289,22 @@ export const PolicyMetadataGetResourceInput =
       path: "/providers/Microsoft.PolicyInsights/policyMetadata/{resourceName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyMetadataGetResourceInput =
-  typeof PolicyMetadataGetResourceInput.Type;
+  ) as unknown as Schema.Codec<PolicyMetadataGetResourceInput>;
 
 // Output Schema
+export interface PolicyMetadataGetResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyMetadataGetResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2334,9 +3324,7 @@ export const PolicyMetadataGetResourceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyMetadataGetResourceOutput =
-  typeof PolicyMetadataGetResourceOutput.Type;
+  }) as unknown as Schema.Codec<PolicyMetadataGetResourceOutput>;
 
 // The operation
 /**
@@ -2352,6 +3340,9 @@ export const PolicyMetadataGetResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyMetadataListInput {
+  $top?: number;
+}
 export const PolicyMetadataListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $top: Schema.optional(Schema.Number),
@@ -2361,10 +3352,25 @@ export const PolicyMetadataListInput =
       path: "/providers/Microsoft.PolicyInsights/policyMetadata",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyMetadataListInput = typeof PolicyMetadataListInput.Type;
+  ) as unknown as Schema.Codec<PolicyMetadataListInput>;
 
 // Output Schema
+export interface PolicyMetadataListOutput {
+  value: {
+    properties?: {
+      metadataId?: string;
+      category?: string;
+      title?: string;
+      owner?: string;
+      additionalContentUrl?: string;
+      metadata?: unknown;
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+  }[];
+  nextLink?: string;
+}
 export const PolicyMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2385,8 +3391,7 @@ export const PolicyMetadataListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyMetadataListOutput = typeof PolicyMetadataListOutput.Type;
+  }) as unknown as Schema.Codec<PolicyMetadataListOutput>;
 
 // The operation
 /**
@@ -2400,6 +3405,16 @@ export const PolicyMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PolicyMetadataListOutput,
 }));
 // Input Schema
+export interface PolicyRestrictionsCheckAtManagementGroupScopeInput {
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupId: string;
+  resourceDetails?: {
+    resourceContent: unknown;
+    apiVersion?: string;
+    scope?: string;
+  };
+  pendingFields?: { field: string; values?: string[] }[];
+}
 export const PolicyRestrictionsCheckAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
@@ -2427,11 +3442,52 @@ export const PolicyRestrictionsCheckAtManagementGroupScopeInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyRestrictionsCheckAtManagementGroupScopeInput =
-  typeof PolicyRestrictionsCheckAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<PolicyRestrictionsCheckAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface PolicyRestrictionsCheckAtManagementGroupScopeOutput {
+  fieldRestrictions?: {
+    field?: string;
+    restrictions?: {
+      result?: "Required" | "Removed" | "Deny" | "Audit";
+      defaultValue?: string;
+      values?: string[];
+      policy?: {
+        policyDefinitionId?: string;
+        policySetDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyAssignmentId?: string;
+      };
+      policyEffect?: string;
+      reason?: string;
+    }[];
+  }[];
+  contentEvaluationResult?: {
+    policyEvaluations?: {
+      policyInfo?: {
+        policyDefinitionId?: string;
+        policySetDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyAssignmentId?: string;
+      };
+      evaluationResult?: string;
+      evaluationDetails?: {
+        evaluatedExpressions?: {
+          result?: string;
+          expression?: string;
+          expressionKind?: string;
+          path?: string;
+          expressionValue?: unknown;
+          targetValue?: unknown;
+          operator?: string;
+        }[];
+        ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+        reason?: string;
+      };
+      effectDetails?: { policyEffect?: string };
+    }[];
+  };
+}
 export const PolicyRestrictionsCheckAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldRestrictions: Schema.optional(
@@ -2510,9 +3566,7 @@ export const PolicyRestrictionsCheckAtManagementGroupScopeOutput =
         ),
       }),
     ),
-  });
-export type PolicyRestrictionsCheckAtManagementGroupScopeOutput =
-  typeof PolicyRestrictionsCheckAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<PolicyRestrictionsCheckAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -2528,6 +3582,17 @@ export const PolicyRestrictionsCheckAtManagementGroupScope =
     outputSchema: PolicyRestrictionsCheckAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface PolicyRestrictionsCheckAtResourceGroupScopeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceDetails: {
+    resourceContent: unknown;
+    apiVersion?: string;
+    scope?: string;
+  };
+  pendingFields?: { field: string; values?: string[] }[];
+  includeAuditEffect?: boolean;
+}
 export const PolicyRestrictionsCheckAtResourceGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2552,11 +3617,52 @@ export const PolicyRestrictionsCheckAtResourceGroupScopeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyRestrictionsCheckAtResourceGroupScopeInput =
-  typeof PolicyRestrictionsCheckAtResourceGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<PolicyRestrictionsCheckAtResourceGroupScopeInput>;
 
 // Output Schema
+export interface PolicyRestrictionsCheckAtResourceGroupScopeOutput {
+  fieldRestrictions?: {
+    field?: string;
+    restrictions?: {
+      result?: "Required" | "Removed" | "Deny" | "Audit";
+      defaultValue?: string;
+      values?: string[];
+      policy?: {
+        policyDefinitionId?: string;
+        policySetDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyAssignmentId?: string;
+      };
+      policyEffect?: string;
+      reason?: string;
+    }[];
+  }[];
+  contentEvaluationResult?: {
+    policyEvaluations?: {
+      policyInfo?: {
+        policyDefinitionId?: string;
+        policySetDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyAssignmentId?: string;
+      };
+      evaluationResult?: string;
+      evaluationDetails?: {
+        evaluatedExpressions?: {
+          result?: string;
+          expression?: string;
+          expressionKind?: string;
+          path?: string;
+          expressionValue?: unknown;
+          targetValue?: unknown;
+          operator?: string;
+        }[];
+        ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+        reason?: string;
+      };
+      effectDetails?: { policyEffect?: string };
+    }[];
+  };
+}
 export const PolicyRestrictionsCheckAtResourceGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldRestrictions: Schema.optional(
@@ -2635,9 +3741,7 @@ export const PolicyRestrictionsCheckAtResourceGroupScopeOutput =
         ),
       }),
     ),
-  });
-export type PolicyRestrictionsCheckAtResourceGroupScopeOutput =
-  typeof PolicyRestrictionsCheckAtResourceGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<PolicyRestrictionsCheckAtResourceGroupScopeOutput>;
 
 // The operation
 /**
@@ -2653,6 +3757,16 @@ export const PolicyRestrictionsCheckAtResourceGroupScope =
     outputSchema: PolicyRestrictionsCheckAtResourceGroupScopeOutput,
   }));
 // Input Schema
+export interface PolicyRestrictionsCheckAtSubscriptionScopeInput {
+  subscriptionId: string;
+  resourceDetails: {
+    resourceContent: unknown;
+    apiVersion?: string;
+    scope?: string;
+  };
+  pendingFields?: { field: string; values?: string[] }[];
+  includeAuditEffect?: boolean;
+}
 export const PolicyRestrictionsCheckAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2676,11 +3790,52 @@ export const PolicyRestrictionsCheckAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/checkPolicyRestrictions",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyRestrictionsCheckAtSubscriptionScopeInput =
-  typeof PolicyRestrictionsCheckAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<PolicyRestrictionsCheckAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface PolicyRestrictionsCheckAtSubscriptionScopeOutput {
+  fieldRestrictions?: {
+    field?: string;
+    restrictions?: {
+      result?: "Required" | "Removed" | "Deny" | "Audit";
+      defaultValue?: string;
+      values?: string[];
+      policy?: {
+        policyDefinitionId?: string;
+        policySetDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyAssignmentId?: string;
+      };
+      policyEffect?: string;
+      reason?: string;
+    }[];
+  }[];
+  contentEvaluationResult?: {
+    policyEvaluations?: {
+      policyInfo?: {
+        policyDefinitionId?: string;
+        policySetDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyAssignmentId?: string;
+      };
+      evaluationResult?: string;
+      evaluationDetails?: {
+        evaluatedExpressions?: {
+          result?: string;
+          expression?: string;
+          expressionKind?: string;
+          path?: string;
+          expressionValue?: unknown;
+          targetValue?: unknown;
+          operator?: string;
+        }[];
+        ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+        reason?: string;
+      };
+      effectDetails?: { policyEffect?: string };
+    }[];
+  };
+}
 export const PolicyRestrictionsCheckAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldRestrictions: Schema.optional(
@@ -2759,9 +3914,7 @@ export const PolicyRestrictionsCheckAtSubscriptionScopeOutput =
         ),
       }),
     ),
-  });
-export type PolicyRestrictionsCheckAtSubscriptionScopeOutput =
-  typeof PolicyRestrictionsCheckAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<PolicyRestrictionsCheckAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -2776,6 +3929,19 @@ export const PolicyRestrictionsCheckAtSubscriptionScope =
     outputSchema: PolicyRestrictionsCheckAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface PolicyStatesListQueryResultsForManagementGroupInput {
+  policyStatesResource: "default" | "latest";
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyStatesListQueryResultsForManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
@@ -2799,11 +3965,67 @@ export const PolicyStatesListQueryResultsForManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesListQueryResultsForManagementGroupInput =
-  typeof PolicyStatesListQueryResultsForManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesListQueryResultsForManagementGroupInput>;
 
 // Output Schema
+export interface PolicyStatesListQueryResultsForManagementGroupOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+    };
+    policyDefinitionGroupNames?: string[];
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      complianceState?: string;
+    }[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const PolicyStatesListQueryResultsForManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -2883,9 +4105,7 @@ export const PolicyStatesListQueryResultsForManagementGroupOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesListQueryResultsForManagementGroupOutput =
-  typeof PolicyStatesListQueryResultsForManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesListQueryResultsForManagementGroupOutput>;
 
 // The operation
 /**
@@ -2910,6 +4130,20 @@ export const PolicyStatesListQueryResultsForManagementGroup =
     outputSchema: PolicyStatesListQueryResultsForManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyStatesListQueryResultsForPolicyDefinitionInput {
+  subscriptionId: string;
+  policyStatesResource: "default" | "latest";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyDefinitionName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyStatesListQueryResultsForPolicyDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2934,11 +4168,67 @@ export const PolicyStatesListQueryResultsForPolicyDefinitionInput =
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesListQueryResultsForPolicyDefinitionInput =
-  typeof PolicyStatesListQueryResultsForPolicyDefinitionInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesListQueryResultsForPolicyDefinitionInput>;
 
 // Output Schema
+export interface PolicyStatesListQueryResultsForPolicyDefinitionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+    };
+    policyDefinitionGroupNames?: string[];
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      complianceState?: string;
+    }[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const PolicyStatesListQueryResultsForPolicyDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -3018,9 +4308,7 @@ export const PolicyStatesListQueryResultsForPolicyDefinitionOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesListQueryResultsForPolicyDefinitionOutput =
-  typeof PolicyStatesListQueryResultsForPolicyDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesListQueryResultsForPolicyDefinitionOutput>;
 
 // The operation
 /**
@@ -3046,6 +4334,20 @@ export const PolicyStatesListQueryResultsForPolicyDefinition =
     outputSchema: PolicyStatesListQueryResultsForPolicyDefinitionOutput,
   }));
 // Input Schema
+export interface PolicyStatesListQueryResultsForPolicySetDefinitionInput {
+  subscriptionId: string;
+  policyStatesResource: "default" | "latest";
+  authorizationNamespace: "Microsoft.Authorization";
+  policySetDefinitionName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyStatesListQueryResultsForPolicySetDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3070,11 +4372,67 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionInput =
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesListQueryResultsForPolicySetDefinitionInput =
-  typeof PolicyStatesListQueryResultsForPolicySetDefinitionInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesListQueryResultsForPolicySetDefinitionInput>;
 
 // Output Schema
+export interface PolicyStatesListQueryResultsForPolicySetDefinitionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+    };
+    policyDefinitionGroupNames?: string[];
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      complianceState?: string;
+    }[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const PolicyStatesListQueryResultsForPolicySetDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -3154,9 +4512,7 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesListQueryResultsForPolicySetDefinitionOutput =
-  typeof PolicyStatesListQueryResultsForPolicySetDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesListQueryResultsForPolicySetDefinitionOutput>;
 
 // The operation
 /**
@@ -3182,6 +4538,19 @@ export const PolicyStatesListQueryResultsForPolicySetDefinition =
     outputSchema: PolicyStatesListQueryResultsForPolicySetDefinitionOutput,
   }));
 // Input Schema
+export interface PolicyStatesListQueryResultsForResourceInput {
+  policyStatesResource: "default" | "latest";
+  resourceId: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $expand?: string;
+  $skiptoken?: string;
+}
 export const PolicyStatesListQueryResultsForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyStatesResource: Schema.Literals(["default", "latest"]).pipe(
@@ -3203,11 +4572,67 @@ export const PolicyStatesListQueryResultsForResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesListQueryResultsForResourceInput =
-  typeof PolicyStatesListQueryResultsForResourceInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesListQueryResultsForResourceInput>;
 
 // Output Schema
+export interface PolicyStatesListQueryResultsForResourceOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+    };
+    policyDefinitionGroupNames?: string[];
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      complianceState?: string;
+    }[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const PolicyStatesListQueryResultsForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -3287,9 +4712,7 @@ export const PolicyStatesListQueryResultsForResourceOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesListQueryResultsForResourceOutput =
-  typeof PolicyStatesListQueryResultsForResourceOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesListQueryResultsForResourceOutput>;
 
 // The operation
 /**
@@ -3314,6 +4737,19 @@ export const PolicyStatesListQueryResultsForResource =
     outputSchema: PolicyStatesListQueryResultsForResourceOutput,
   }));
 // Input Schema
+export interface PolicyStatesListQueryResultsForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyStatesResource: "default" | "latest";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyStatesListQueryResultsForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3335,11 +4771,67 @@ export const PolicyStatesListQueryResultsForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesListQueryResultsForResourceGroupInput =
-  typeof PolicyStatesListQueryResultsForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesListQueryResultsForResourceGroupInput>;
 
 // Output Schema
+export interface PolicyStatesListQueryResultsForResourceGroupOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+    };
+    policyDefinitionGroupNames?: string[];
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      complianceState?: string;
+    }[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const PolicyStatesListQueryResultsForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -3419,9 +4911,7 @@ export const PolicyStatesListQueryResultsForResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesListQueryResultsForResourceGroupOutput =
-  typeof PolicyStatesListQueryResultsForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesListQueryResultsForResourceGroupOutput>;
 
 // The operation
 /**
@@ -3446,6 +4936,21 @@ export const PolicyStatesListQueryResultsForResourceGroup =
     outputSchema: PolicyStatesListQueryResultsForResourceGroupOutput,
   }));
 // Input Schema
+export interface PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyStatesResource: "default" | "latest";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyAssignmentName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3471,11 +4976,67 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentIn
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput =
-  typeof PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentInput>;
 
 // Output Schema
+export interface PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+    };
+    policyDefinitionGroupNames?: string[];
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      complianceState?: string;
+    }[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -3555,9 +5116,7 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOu
         }),
       ),
     ),
-  });
-export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
-  typeof PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput>;
 
 // The operation
 /**
@@ -3586,6 +5145,18 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignment =
       PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput,
   }));
 // Input Schema
+export interface PolicyStatesListQueryResultsForSubscriptionInput {
+  subscriptionId: string;
+  policyStatesResource: "default" | "latest";
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyStatesListQueryResultsForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3606,11 +5177,67 @@ export const PolicyStatesListQueryResultsForSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesListQueryResultsForSubscriptionInput =
-  typeof PolicyStatesListQueryResultsForSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesListQueryResultsForSubscriptionInput>;
 
 // Output Schema
+export interface PolicyStatesListQueryResultsForSubscriptionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+    };
+    policyDefinitionGroupNames?: string[];
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      complianceState?: string;
+    }[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const PolicyStatesListQueryResultsForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -3690,9 +5317,7 @@ export const PolicyStatesListQueryResultsForSubscriptionOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesListQueryResultsForSubscriptionOutput =
-  typeof PolicyStatesListQueryResultsForSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesListQueryResultsForSubscriptionOutput>;
 
 // The operation
 /**
@@ -3716,6 +5341,20 @@ export const PolicyStatesListQueryResultsForSubscription =
     outputSchema: PolicyStatesListQueryResultsForSubscriptionOutput,
   }));
 // Input Schema
+export interface PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput {
+  subscriptionId: string;
+  policyStatesResource: "default" | "latest";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyAssignmentName: string;
+  $top?: number;
+  $orderby?: string;
+  $select?: string;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+  $apply?: string;
+  $skiptoken?: string;
+}
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3740,11 +5379,67 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInp
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput =
-  typeof PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentInput>;
 
 // Output Schema
+export interface PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  "@odata.nextLink"?: string;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    timestamp?: string;
+    resourceId?: string;
+    policyAssignmentId?: string;
+    policyDefinitionId?: string;
+    effectiveParameters?: string;
+    isCompliant?: boolean;
+    subscriptionId?: string;
+    resourceType?: string;
+    resourceLocation?: string;
+    resourceGroup?: string;
+    resourceTags?: string;
+    policyAssignmentName?: string;
+    policyAssignmentOwner?: string;
+    policyAssignmentParameters?: string;
+    policyAssignmentScope?: string;
+    policyDefinitionName?: string;
+    policyDefinitionAction?: string;
+    policyDefinitionCategory?: string;
+    policySetDefinitionId?: string;
+    policySetDefinitionName?: string;
+    policySetDefinitionOwner?: string;
+    policySetDefinitionCategory?: string;
+    policySetDefinitionParameters?: string;
+    managementGroupIds?: string;
+    policyDefinitionReferenceId?: string;
+    complianceState?: string;
+    policyEvaluationDetails?: {
+      evaluatedExpressions?: {
+        result?: string;
+        expression?: string;
+        expressionKind?: string;
+        path?: string;
+        expressionValue?: unknown;
+        targetValue?: unknown;
+        operator?: string;
+      }[];
+      ifNotExistsDetails?: { resourceId?: string; totalResources?: number };
+    };
+    policyDefinitionGroupNames?: string[];
+    components?: {
+      id?: string;
+      type?: string;
+      name?: string;
+      timestamp?: string;
+      complianceState?: string;
+    }[];
+    policyDefinitionVersion?: string;
+    policySetDefinitionVersion?: string;
+    policyAssignmentVersion?: string;
+  }[];
+}
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -3824,9 +5519,7 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOut
         }),
       ),
     ),
-  });
-export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
-  typeof PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput>;
 
 // The operation
 /**
@@ -3854,6 +5547,15 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignment =
       PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput,
   }));
 // Input Schema
+export interface PolicyStatesSummarizeForManagementGroupInput {
+  policyStatesSummaryResource: "latest";
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupName: string;
+  $top?: number;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+}
 export const PolicyStatesSummarizeForManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
@@ -3873,11 +5575,62 @@ export const PolicyStatesSummarizeForManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesSummarizeForManagementGroupInput =
-  typeof PolicyStatesSummarizeForManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesSummarizeForManagementGroupInput>;
 
 // Output Schema
+export interface PolicyStatesSummarizeForManagementGroupOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    results?: {
+      queryResultsUri?: string;
+      nonCompliantResources?: number;
+      nonCompliantPolicies?: number;
+      resourceDetails?: { complianceState?: string; count?: number }[];
+      policyDetails?: { complianceState?: string; count?: number }[];
+      policyGroupDetails?: { complianceState?: string; count?: number }[];
+    };
+    policyAssignments?: {
+      policyAssignmentId?: string;
+      policySetDefinitionId?: string;
+      results?: {
+        queryResultsUri?: string;
+        nonCompliantResources?: number;
+        nonCompliantPolicies?: number;
+        resourceDetails?: { complianceState?: string; count?: number }[];
+        policyDetails?: { complianceState?: string; count?: number }[];
+        policyGroupDetails?: { complianceState?: string; count?: number }[];
+      };
+      policyDefinitions?: {
+        policyDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyDefinitionGroupNames?: string[];
+        effect?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+      policyGroups?: {
+        policyGroupName?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+    }[];
+  }[];
+}
 export const PolicyStatesSummarizeForManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -4043,9 +5796,7 @@ export const PolicyStatesSummarizeForManagementGroupOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesSummarizeForManagementGroupOutput =
-  typeof PolicyStatesSummarizeForManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesSummarizeForManagementGroupOutput>;
 
 // The operation
 /**
@@ -4066,6 +5817,16 @@ export const PolicyStatesSummarizeForManagementGroup =
     outputSchema: PolicyStatesSummarizeForManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyStatesSummarizeForPolicyDefinitionInput {
+  subscriptionId: string;
+  policyStatesSummaryResource: "latest";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyDefinitionName: string;
+  $top?: number;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+}
 export const PolicyStatesSummarizeForPolicyDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4086,11 +5847,62 @@ export const PolicyStatesSummarizeForPolicyDefinitionInput =
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesSummarizeForPolicyDefinitionInput =
-  typeof PolicyStatesSummarizeForPolicyDefinitionInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesSummarizeForPolicyDefinitionInput>;
 
 // Output Schema
+export interface PolicyStatesSummarizeForPolicyDefinitionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    results?: {
+      queryResultsUri?: string;
+      nonCompliantResources?: number;
+      nonCompliantPolicies?: number;
+      resourceDetails?: { complianceState?: string; count?: number }[];
+      policyDetails?: { complianceState?: string; count?: number }[];
+      policyGroupDetails?: { complianceState?: string; count?: number }[];
+    };
+    policyAssignments?: {
+      policyAssignmentId?: string;
+      policySetDefinitionId?: string;
+      results?: {
+        queryResultsUri?: string;
+        nonCompliantResources?: number;
+        nonCompliantPolicies?: number;
+        resourceDetails?: { complianceState?: string; count?: number }[];
+        policyDetails?: { complianceState?: string; count?: number }[];
+        policyGroupDetails?: { complianceState?: string; count?: number }[];
+      };
+      policyDefinitions?: {
+        policyDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyDefinitionGroupNames?: string[];
+        effect?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+      policyGroups?: {
+        policyGroupName?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+    }[];
+  }[];
+}
 export const PolicyStatesSummarizeForPolicyDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -4256,9 +6068,7 @@ export const PolicyStatesSummarizeForPolicyDefinitionOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesSummarizeForPolicyDefinitionOutput =
-  typeof PolicyStatesSummarizeForPolicyDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesSummarizeForPolicyDefinitionOutput>;
 
 // The operation
 /**
@@ -4280,6 +6090,16 @@ export const PolicyStatesSummarizeForPolicyDefinition =
     outputSchema: PolicyStatesSummarizeForPolicyDefinitionOutput,
   }));
 // Input Schema
+export interface PolicyStatesSummarizeForPolicySetDefinitionInput {
+  subscriptionId: string;
+  policyStatesSummaryResource: "latest";
+  authorizationNamespace: "Microsoft.Authorization";
+  policySetDefinitionName: string;
+  $top?: number;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+}
 export const PolicyStatesSummarizeForPolicySetDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4300,11 +6120,62 @@ export const PolicyStatesSummarizeForPolicySetDefinitionInput =
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesSummarizeForPolicySetDefinitionInput =
-  typeof PolicyStatesSummarizeForPolicySetDefinitionInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesSummarizeForPolicySetDefinitionInput>;
 
 // Output Schema
+export interface PolicyStatesSummarizeForPolicySetDefinitionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    results?: {
+      queryResultsUri?: string;
+      nonCompliantResources?: number;
+      nonCompliantPolicies?: number;
+      resourceDetails?: { complianceState?: string; count?: number }[];
+      policyDetails?: { complianceState?: string; count?: number }[];
+      policyGroupDetails?: { complianceState?: string; count?: number }[];
+    };
+    policyAssignments?: {
+      policyAssignmentId?: string;
+      policySetDefinitionId?: string;
+      results?: {
+        queryResultsUri?: string;
+        nonCompliantResources?: number;
+        nonCompliantPolicies?: number;
+        resourceDetails?: { complianceState?: string; count?: number }[];
+        policyDetails?: { complianceState?: string; count?: number }[];
+        policyGroupDetails?: { complianceState?: string; count?: number }[];
+      };
+      policyDefinitions?: {
+        policyDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyDefinitionGroupNames?: string[];
+        effect?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+      policyGroups?: {
+        policyGroupName?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+    }[];
+  }[];
+}
 export const PolicyStatesSummarizeForPolicySetDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -4470,9 +6341,7 @@ export const PolicyStatesSummarizeForPolicySetDefinitionOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesSummarizeForPolicySetDefinitionOutput =
-  typeof PolicyStatesSummarizeForPolicySetDefinitionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesSummarizeForPolicySetDefinitionOutput>;
 
 // The operation
 /**
@@ -4494,6 +6363,14 @@ export const PolicyStatesSummarizeForPolicySetDefinition =
     outputSchema: PolicyStatesSummarizeForPolicySetDefinitionOutput,
   }));
 // Input Schema
+export interface PolicyStatesSummarizeForResourceInput {
+  policyStatesSummaryResource: "latest";
+  resourceId: string;
+  $top?: number;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+}
 export const PolicyStatesSummarizeForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyStatesSummaryResource: Schema.Literals(["latest"]).pipe(
@@ -4510,11 +6387,62 @@ export const PolicyStatesSummarizeForResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesSummarizeForResourceInput =
-  typeof PolicyStatesSummarizeForResourceInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesSummarizeForResourceInput>;
 
 // Output Schema
+export interface PolicyStatesSummarizeForResourceOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    results?: {
+      queryResultsUri?: string;
+      nonCompliantResources?: number;
+      nonCompliantPolicies?: number;
+      resourceDetails?: { complianceState?: string; count?: number }[];
+      policyDetails?: { complianceState?: string; count?: number }[];
+      policyGroupDetails?: { complianceState?: string; count?: number }[];
+    };
+    policyAssignments?: {
+      policyAssignmentId?: string;
+      policySetDefinitionId?: string;
+      results?: {
+        queryResultsUri?: string;
+        nonCompliantResources?: number;
+        nonCompliantPolicies?: number;
+        resourceDetails?: { complianceState?: string; count?: number }[];
+        policyDetails?: { complianceState?: string; count?: number }[];
+        policyGroupDetails?: { complianceState?: string; count?: number }[];
+      };
+      policyDefinitions?: {
+        policyDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyDefinitionGroupNames?: string[];
+        effect?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+      policyGroups?: {
+        policyGroupName?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+    }[];
+  }[];
+}
 export const PolicyStatesSummarizeForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -4680,9 +6608,7 @@ export const PolicyStatesSummarizeForResourceOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesSummarizeForResourceOutput =
-  typeof PolicyStatesSummarizeForResourceOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesSummarizeForResourceOutput>;
 
 // The operation
 /**
@@ -4702,6 +6628,15 @@ export const PolicyStatesSummarizeForResource =
     outputSchema: PolicyStatesSummarizeForResourceOutput,
   }));
 // Input Schema
+export interface PolicyStatesSummarizeForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyStatesSummaryResource: "latest";
+  $top?: number;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+}
 export const PolicyStatesSummarizeForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4719,11 +6654,62 @@ export const PolicyStatesSummarizeForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesSummarizeForResourceGroupInput =
-  typeof PolicyStatesSummarizeForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesSummarizeForResourceGroupInput>;
 
 // Output Schema
+export interface PolicyStatesSummarizeForResourceGroupOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    results?: {
+      queryResultsUri?: string;
+      nonCompliantResources?: number;
+      nonCompliantPolicies?: number;
+      resourceDetails?: { complianceState?: string; count?: number }[];
+      policyDetails?: { complianceState?: string; count?: number }[];
+      policyGroupDetails?: { complianceState?: string; count?: number }[];
+    };
+    policyAssignments?: {
+      policyAssignmentId?: string;
+      policySetDefinitionId?: string;
+      results?: {
+        queryResultsUri?: string;
+        nonCompliantResources?: number;
+        nonCompliantPolicies?: number;
+        resourceDetails?: { complianceState?: string; count?: number }[];
+        policyDetails?: { complianceState?: string; count?: number }[];
+        policyGroupDetails?: { complianceState?: string; count?: number }[];
+      };
+      policyDefinitions?: {
+        policyDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyDefinitionGroupNames?: string[];
+        effect?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+      policyGroups?: {
+        policyGroupName?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+    }[];
+  }[];
+}
 export const PolicyStatesSummarizeForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -4889,9 +6875,7 @@ export const PolicyStatesSummarizeForResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesSummarizeForResourceGroupOutput =
-  typeof PolicyStatesSummarizeForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesSummarizeForResourceGroupOutput>;
 
 // The operation
 /**
@@ -4912,6 +6896,17 @@ export const PolicyStatesSummarizeForResourceGroup =
     outputSchema: PolicyStatesSummarizeForResourceGroupOutput,
   }));
 // Input Schema
+export interface PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyStatesSummaryResource: "latest";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyAssignmentName: string;
+  $top?: number;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+}
 export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4933,11 +6928,62 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput =
-  typeof PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentInput>;
 
 // Output Schema
+export interface PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    results?: {
+      queryResultsUri?: string;
+      nonCompliantResources?: number;
+      nonCompliantPolicies?: number;
+      resourceDetails?: { complianceState?: string; count?: number }[];
+      policyDetails?: { complianceState?: string; count?: number }[];
+      policyGroupDetails?: { complianceState?: string; count?: number }[];
+    };
+    policyAssignments?: {
+      policyAssignmentId?: string;
+      policySetDefinitionId?: string;
+      results?: {
+        queryResultsUri?: string;
+        nonCompliantResources?: number;
+        nonCompliantPolicies?: number;
+        resourceDetails?: { complianceState?: string; count?: number }[];
+        policyDetails?: { complianceState?: string; count?: number }[];
+        policyGroupDetails?: { complianceState?: string; count?: number }[];
+      };
+      policyDefinitions?: {
+        policyDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyDefinitionGroupNames?: string[];
+        effect?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+      policyGroups?: {
+        policyGroupName?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+    }[];
+  }[];
+}
 export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -5103,9 +7149,7 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput =
-  typeof PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput>;
 
 // The operation
 /**
@@ -5130,6 +7174,14 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignment =
       PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput,
   }));
 // Input Schema
+export interface PolicyStatesSummarizeForSubscriptionInput {
+  subscriptionId: string;
+  policyStatesSummaryResource: "latest";
+  $top?: number;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+}
 export const PolicyStatesSummarizeForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5146,11 +7198,62 @@ export const PolicyStatesSummarizeForSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesSummarizeForSubscriptionInput =
-  typeof PolicyStatesSummarizeForSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesSummarizeForSubscriptionInput>;
 
 // Output Schema
+export interface PolicyStatesSummarizeForSubscriptionOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    results?: {
+      queryResultsUri?: string;
+      nonCompliantResources?: number;
+      nonCompliantPolicies?: number;
+      resourceDetails?: { complianceState?: string; count?: number }[];
+      policyDetails?: { complianceState?: string; count?: number }[];
+      policyGroupDetails?: { complianceState?: string; count?: number }[];
+    };
+    policyAssignments?: {
+      policyAssignmentId?: string;
+      policySetDefinitionId?: string;
+      results?: {
+        queryResultsUri?: string;
+        nonCompliantResources?: number;
+        nonCompliantPolicies?: number;
+        resourceDetails?: { complianceState?: string; count?: number }[];
+        policyDetails?: { complianceState?: string; count?: number }[];
+        policyGroupDetails?: { complianceState?: string; count?: number }[];
+      };
+      policyDefinitions?: {
+        policyDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyDefinitionGroupNames?: string[];
+        effect?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+      policyGroups?: {
+        policyGroupName?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+    }[];
+  }[];
+}
 export const PolicyStatesSummarizeForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -5316,9 +7419,7 @@ export const PolicyStatesSummarizeForSubscriptionOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesSummarizeForSubscriptionOutput =
-  typeof PolicyStatesSummarizeForSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesSummarizeForSubscriptionOutput>;
 
 // The operation
 /**
@@ -5338,6 +7439,16 @@ export const PolicyStatesSummarizeForSubscription =
     outputSchema: PolicyStatesSummarizeForSubscriptionOutput,
   }));
 // Input Schema
+export interface PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput {
+  subscriptionId: string;
+  policyStatesSummaryResource: "latest";
+  authorizationNamespace: "Microsoft.Authorization";
+  policyAssignmentName: string;
+  $top?: number;
+  $from?: string;
+  $to?: string;
+  $filter?: string;
+}
 export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5358,11 +7469,62 @@ export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput =
       path: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesSummaryResource}/summarize",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput =
-  typeof PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentInput>;
 
 // Output Schema
+export interface PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput {
+  "@odata.context"?: string;
+  "@odata.count"?: number;
+  value?: {
+    "@odata.id"?: string;
+    "@odata.context"?: string;
+    results?: {
+      queryResultsUri?: string;
+      nonCompliantResources?: number;
+      nonCompliantPolicies?: number;
+      resourceDetails?: { complianceState?: string; count?: number }[];
+      policyDetails?: { complianceState?: string; count?: number }[];
+      policyGroupDetails?: { complianceState?: string; count?: number }[];
+    };
+    policyAssignments?: {
+      policyAssignmentId?: string;
+      policySetDefinitionId?: string;
+      results?: {
+        queryResultsUri?: string;
+        nonCompliantResources?: number;
+        nonCompliantPolicies?: number;
+        resourceDetails?: { complianceState?: string; count?: number }[];
+        policyDetails?: { complianceState?: string; count?: number }[];
+        policyGroupDetails?: { complianceState?: string; count?: number }[];
+      };
+      policyDefinitions?: {
+        policyDefinitionId?: string;
+        policyDefinitionReferenceId?: string;
+        policyDefinitionGroupNames?: string[];
+        effect?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+      policyGroups?: {
+        policyGroupName?: string;
+        results?: {
+          queryResultsUri?: string;
+          nonCompliantResources?: number;
+          nonCompliantPolicies?: number;
+          resourceDetails?: { complianceState?: string; count?: number }[];
+          policyDetails?: { complianceState?: string; count?: number }[];
+          policyGroupDetails?: { complianceState?: string; count?: number }[];
+        };
+      }[];
+    }[];
+  }[];
+}
 export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
@@ -5528,9 +7690,7 @@ export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput =
         }),
       ),
     ),
-  });
-export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput =
-  typeof PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput.Type;
+  }) as unknown as Schema.Codec<PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput>;
 
 // The operation
 /**
@@ -5553,6 +7713,10 @@ export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignment =
       PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput,
   }));
 // Input Schema
+export interface PolicyStatesTriggerResourceGroupEvaluationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PolicyStatesTriggerResourceGroupEvaluationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5563,15 +7727,12 @@ export const PolicyStatesTriggerResourceGroupEvaluationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesTriggerResourceGroupEvaluationInput =
-  typeof PolicyStatesTriggerResourceGroupEvaluationInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesTriggerResourceGroupEvaluationInput>;
 
 // Output Schema
+export type PolicyStatesTriggerResourceGroupEvaluationOutput = void;
 export const PolicyStatesTriggerResourceGroupEvaluationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicyStatesTriggerResourceGroupEvaluationOutput =
-  typeof PolicyStatesTriggerResourceGroupEvaluationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicyStatesTriggerResourceGroupEvaluationOutput>;
 
 // The operation
 /**
@@ -5587,6 +7748,9 @@ export const PolicyStatesTriggerResourceGroupEvaluation =
     outputSchema: PolicyStatesTriggerResourceGroupEvaluationOutput,
   }));
 // Input Schema
+export interface PolicyStatesTriggerSubscriptionEvaluationInput {
+  subscriptionId: string;
+}
 export const PolicyStatesTriggerSubscriptionEvaluationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5596,15 +7760,12 @@ export const PolicyStatesTriggerSubscriptionEvaluationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PolicyStatesTriggerSubscriptionEvaluationInput =
-  typeof PolicyStatesTriggerSubscriptionEvaluationInput.Type;
+  ) as unknown as Schema.Codec<PolicyStatesTriggerSubscriptionEvaluationInput>;
 
 // Output Schema
+export type PolicyStatesTriggerSubscriptionEvaluationOutput = void;
 export const PolicyStatesTriggerSubscriptionEvaluationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicyStatesTriggerSubscriptionEvaluationOutput =
-  typeof PolicyStatesTriggerSubscriptionEvaluationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicyStatesTriggerSubscriptionEvaluationOutput>;
 
 // The operation
 /**
@@ -5619,6 +7780,11 @@ export const PolicyStatesTriggerSubscriptionEvaluation =
     outputSchema: PolicyStatesTriggerSubscriptionEvaluationOutput,
   }));
 // Input Schema
+export interface RemediationsCancelAtManagementGroupInput {
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupId: string;
+  remediationName: string;
+}
 export const RemediationsCancelAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
@@ -5632,11 +7798,22 @@ export const RemediationsCancelAtManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsCancelAtManagementGroupInput =
-  typeof RemediationsCancelAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsCancelAtManagementGroupInput>;
 
 // Output Schema
+export interface RemediationsCancelAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsCancelAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5656,9 +7833,7 @@ export const RemediationsCancelAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsCancelAtManagementGroupOutput =
-  typeof RemediationsCancelAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsCancelAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -5675,6 +7850,10 @@ export const RemediationsCancelAtManagementGroup =
     outputSchema: RemediationsCancelAtManagementGroupOutput,
   }));
 // Input Schema
+export interface RemediationsCancelAtResourceInput {
+  resourceId: string;
+  remediationName: string;
+}
 export const RemediationsCancelAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -5685,11 +7864,22 @@ export const RemediationsCancelAtResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsCancelAtResourceInput =
-  typeof RemediationsCancelAtResourceInput.Type;
+  ) as unknown as Schema.Codec<RemediationsCancelAtResourceInput>;
 
 // Output Schema
+export interface RemediationsCancelAtResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsCancelAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5709,9 +7899,7 @@ export const RemediationsCancelAtResourceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsCancelAtResourceOutput =
-  typeof RemediationsCancelAtResourceOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsCancelAtResourceOutput>;
 
 // The operation
 /**
@@ -5727,6 +7915,11 @@ export const RemediationsCancelAtResource =
     outputSchema: RemediationsCancelAtResourceOutput,
   }));
 // Input Schema
+export interface RemediationsCancelAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  remediationName: string;
+}
 export const RemediationsCancelAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5738,11 +7931,22 @@ export const RemediationsCancelAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsCancelAtResourceGroupInput =
-  typeof RemediationsCancelAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsCancelAtResourceGroupInput>;
 
 // Output Schema
+export interface RemediationsCancelAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsCancelAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5762,9 +7966,7 @@ export const RemediationsCancelAtResourceGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsCancelAtResourceGroupOutput =
-  typeof RemediationsCancelAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsCancelAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -5781,6 +7983,10 @@ export const RemediationsCancelAtResourceGroup =
     outputSchema: RemediationsCancelAtResourceGroupOutput,
   }));
 // Input Schema
+export interface RemediationsCancelAtSubscriptionInput {
+  subscriptionId: string;
+  remediationName: string;
+}
 export const RemediationsCancelAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5791,11 +7997,22 @@ export const RemediationsCancelAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/cancel",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsCancelAtSubscriptionInput =
-  typeof RemediationsCancelAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RemediationsCancelAtSubscriptionInput>;
 
 // Output Schema
+export interface RemediationsCancelAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsCancelAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5815,9 +8032,7 @@ export const RemediationsCancelAtSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsCancelAtSubscriptionOutput =
-  typeof RemediationsCancelAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsCancelAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -5833,6 +8048,30 @@ export const RemediationsCancelAtSubscription =
     outputSchema: RemediationsCancelAtSubscriptionOutput,
   }));
 // Input Schema
+export interface RemediationsCreateOrUpdateAtManagementGroupInput {
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupId: string;
+  remediationName: string;
+  properties?: {
+    policyAssignmentId?: string;
+    policyDefinitionReferenceId?: string;
+    resourceDiscoveryMode?: "ExistingNonCompliant" | "ReEvaluateCompliance";
+    provisioningState?: string;
+    createdOn?: string;
+    lastUpdatedOn?: string;
+    filters?: { locations?: string[]; resourceIds?: string[] };
+    deploymentStatus?: {
+      totalDeployments?: number;
+      successfulDeployments?: number;
+      failedDeployments?: number;
+    };
+    statusMessage?: string;
+    correlationId?: string;
+    resourceCount?: number;
+    parallelDeployments?: number;
+    failureThreshold?: { percentage?: number };
+  };
+}
 export const RemediationsCreateOrUpdateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
@@ -5880,11 +8119,22 @@ export const RemediationsCreateOrUpdateAtManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsCreateOrUpdateAtManagementGroupInput =
-  typeof RemediationsCreateOrUpdateAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsCreateOrUpdateAtManagementGroupInput>;
 
 // Output Schema
+export interface RemediationsCreateOrUpdateAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsCreateOrUpdateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5904,9 +8154,7 @@ export const RemediationsCreateOrUpdateAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsCreateOrUpdateAtManagementGroupOutput =
-  typeof RemediationsCreateOrUpdateAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsCreateOrUpdateAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -5923,6 +8171,29 @@ export const RemediationsCreateOrUpdateAtManagementGroup =
     outputSchema: RemediationsCreateOrUpdateAtManagementGroupOutput,
   }));
 // Input Schema
+export interface RemediationsCreateOrUpdateAtResourceInput {
+  resourceId: string;
+  remediationName: string;
+  properties?: {
+    policyAssignmentId?: string;
+    policyDefinitionReferenceId?: string;
+    resourceDiscoveryMode?: "ExistingNonCompliant" | "ReEvaluateCompliance";
+    provisioningState?: string;
+    createdOn?: string;
+    lastUpdatedOn?: string;
+    filters?: { locations?: string[]; resourceIds?: string[] };
+    deploymentStatus?: {
+      totalDeployments?: number;
+      successfulDeployments?: number;
+      failedDeployments?: number;
+    };
+    statusMessage?: string;
+    correlationId?: string;
+    resourceCount?: number;
+    parallelDeployments?: number;
+    failureThreshold?: { percentage?: number };
+  };
+}
 export const RemediationsCreateOrUpdateAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -5967,11 +8238,22 @@ export const RemediationsCreateOrUpdateAtResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsCreateOrUpdateAtResourceInput =
-  typeof RemediationsCreateOrUpdateAtResourceInput.Type;
+  ) as unknown as Schema.Codec<RemediationsCreateOrUpdateAtResourceInput>;
 
 // Output Schema
+export interface RemediationsCreateOrUpdateAtResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsCreateOrUpdateAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5991,9 +8273,7 @@ export const RemediationsCreateOrUpdateAtResourceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsCreateOrUpdateAtResourceOutput =
-  typeof RemediationsCreateOrUpdateAtResourceOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsCreateOrUpdateAtResourceOutput>;
 
 // The operation
 /**
@@ -6009,6 +8289,30 @@ export const RemediationsCreateOrUpdateAtResource =
     outputSchema: RemediationsCreateOrUpdateAtResourceOutput,
   }));
 // Input Schema
+export interface RemediationsCreateOrUpdateAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  remediationName: string;
+  properties?: {
+    policyAssignmentId?: string;
+    policyDefinitionReferenceId?: string;
+    resourceDiscoveryMode?: "ExistingNonCompliant" | "ReEvaluateCompliance";
+    provisioningState?: string;
+    createdOn?: string;
+    lastUpdatedOn?: string;
+    filters?: { locations?: string[]; resourceIds?: string[] };
+    deploymentStatus?: {
+      totalDeployments?: number;
+      successfulDeployments?: number;
+      failedDeployments?: number;
+    };
+    statusMessage?: string;
+    correlationId?: string;
+    resourceCount?: number;
+    parallelDeployments?: number;
+    failureThreshold?: { percentage?: number };
+  };
+}
 export const RemediationsCreateOrUpdateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6054,11 +8358,22 @@ export const RemediationsCreateOrUpdateAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsCreateOrUpdateAtResourceGroupInput =
-  typeof RemediationsCreateOrUpdateAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsCreateOrUpdateAtResourceGroupInput>;
 
 // Output Schema
+export interface RemediationsCreateOrUpdateAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsCreateOrUpdateAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6078,9 +8393,7 @@ export const RemediationsCreateOrUpdateAtResourceGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsCreateOrUpdateAtResourceGroupOutput =
-  typeof RemediationsCreateOrUpdateAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsCreateOrUpdateAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -6097,6 +8410,29 @@ export const RemediationsCreateOrUpdateAtResourceGroup =
     outputSchema: RemediationsCreateOrUpdateAtResourceGroupOutput,
   }));
 // Input Schema
+export interface RemediationsCreateOrUpdateAtSubscriptionInput {
+  subscriptionId: string;
+  remediationName: string;
+  properties?: {
+    policyAssignmentId?: string;
+    policyDefinitionReferenceId?: string;
+    resourceDiscoveryMode?: "ExistingNonCompliant" | "ReEvaluateCompliance";
+    provisioningState?: string;
+    createdOn?: string;
+    lastUpdatedOn?: string;
+    filters?: { locations?: string[]; resourceIds?: string[] };
+    deploymentStatus?: {
+      totalDeployments?: number;
+      successfulDeployments?: number;
+      failedDeployments?: number;
+    };
+    statusMessage?: string;
+    correlationId?: string;
+    resourceCount?: number;
+    parallelDeployments?: number;
+    failureThreshold?: { percentage?: number };
+  };
+}
 export const RemediationsCreateOrUpdateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6141,11 +8477,22 @@ export const RemediationsCreateOrUpdateAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsCreateOrUpdateAtSubscriptionInput =
-  typeof RemediationsCreateOrUpdateAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RemediationsCreateOrUpdateAtSubscriptionInput>;
 
 // Output Schema
+export interface RemediationsCreateOrUpdateAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsCreateOrUpdateAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6165,9 +8512,7 @@ export const RemediationsCreateOrUpdateAtSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsCreateOrUpdateAtSubscriptionOutput =
-  typeof RemediationsCreateOrUpdateAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsCreateOrUpdateAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -6183,6 +8528,11 @@ export const RemediationsCreateOrUpdateAtSubscription =
     outputSchema: RemediationsCreateOrUpdateAtSubscriptionOutput,
   }));
 // Input Schema
+export interface RemediationsDeleteAtManagementGroupInput {
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupId: string;
+  remediationName: string;
+}
 export const RemediationsDeleteAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
@@ -6196,11 +8546,22 @@ export const RemediationsDeleteAtManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsDeleteAtManagementGroupInput =
-  typeof RemediationsDeleteAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsDeleteAtManagementGroupInput>;
 
 // Output Schema
+export interface RemediationsDeleteAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsDeleteAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6220,9 +8581,7 @@ export const RemediationsDeleteAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsDeleteAtManagementGroupOutput =
-  typeof RemediationsDeleteAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsDeleteAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -6239,6 +8598,10 @@ export const RemediationsDeleteAtManagementGroup =
     outputSchema: RemediationsDeleteAtManagementGroupOutput,
   }));
 // Input Schema
+export interface RemediationsDeleteAtResourceInput {
+  resourceId: string;
+  remediationName: string;
+}
 export const RemediationsDeleteAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -6249,11 +8612,22 @@ export const RemediationsDeleteAtResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsDeleteAtResourceInput =
-  typeof RemediationsDeleteAtResourceInput.Type;
+  ) as unknown as Schema.Codec<RemediationsDeleteAtResourceInput>;
 
 // Output Schema
+export interface RemediationsDeleteAtResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsDeleteAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6273,9 +8647,7 @@ export const RemediationsDeleteAtResourceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsDeleteAtResourceOutput =
-  typeof RemediationsDeleteAtResourceOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsDeleteAtResourceOutput>;
 
 // The operation
 /**
@@ -6291,6 +8663,11 @@ export const RemediationsDeleteAtResource =
     outputSchema: RemediationsDeleteAtResourceOutput,
   }));
 // Input Schema
+export interface RemediationsDeleteAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  remediationName: string;
+}
 export const RemediationsDeleteAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6302,11 +8679,22 @@ export const RemediationsDeleteAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsDeleteAtResourceGroupInput =
-  typeof RemediationsDeleteAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsDeleteAtResourceGroupInput>;
 
 // Output Schema
+export interface RemediationsDeleteAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsDeleteAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6326,9 +8714,7 @@ export const RemediationsDeleteAtResourceGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsDeleteAtResourceGroupOutput =
-  typeof RemediationsDeleteAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsDeleteAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -6345,6 +8731,10 @@ export const RemediationsDeleteAtResourceGroup =
     outputSchema: RemediationsDeleteAtResourceGroupOutput,
   }));
 // Input Schema
+export interface RemediationsDeleteAtSubscriptionInput {
+  subscriptionId: string;
+  remediationName: string;
+}
 export const RemediationsDeleteAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6355,11 +8745,22 @@ export const RemediationsDeleteAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsDeleteAtSubscriptionInput =
-  typeof RemediationsDeleteAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RemediationsDeleteAtSubscriptionInput>;
 
 // Output Schema
+export interface RemediationsDeleteAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsDeleteAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6379,9 +8780,7 @@ export const RemediationsDeleteAtSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsDeleteAtSubscriptionOutput =
-  typeof RemediationsDeleteAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsDeleteAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -6397,6 +8796,11 @@ export const RemediationsDeleteAtSubscription =
     outputSchema: RemediationsDeleteAtSubscriptionOutput,
   }));
 // Input Schema
+export interface RemediationsGetAtManagementGroupInput {
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupId: string;
+  remediationName: string;
+}
 export const RemediationsGetAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
@@ -6410,11 +8814,22 @@ export const RemediationsGetAtManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsGetAtManagementGroupInput =
-  typeof RemediationsGetAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsGetAtManagementGroupInput>;
 
 // Output Schema
+export interface RemediationsGetAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsGetAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6434,9 +8849,7 @@ export const RemediationsGetAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsGetAtManagementGroupOutput =
-  typeof RemediationsGetAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsGetAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -6453,6 +8866,10 @@ export const RemediationsGetAtManagementGroup =
     outputSchema: RemediationsGetAtManagementGroupOutput,
   }));
 // Input Schema
+export interface RemediationsGetAtResourceInput {
+  resourceId: string;
+  remediationName: string;
+}
 export const RemediationsGetAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -6463,11 +8880,22 @@ export const RemediationsGetAtResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsGetAtResourceInput =
-  typeof RemediationsGetAtResourceInput.Type;
+  ) as unknown as Schema.Codec<RemediationsGetAtResourceInput>;
 
 // Output Schema
+export interface RemediationsGetAtResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsGetAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6487,9 +8915,7 @@ export const RemediationsGetAtResourceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsGetAtResourceOutput =
-  typeof RemediationsGetAtResourceOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsGetAtResourceOutput>;
 
 // The operation
 /**
@@ -6506,6 +8932,11 @@ export const RemediationsGetAtResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RemediationsGetAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  remediationName: string;
+}
 export const RemediationsGetAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6517,11 +8948,22 @@ export const RemediationsGetAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsGetAtResourceGroupInput =
-  typeof RemediationsGetAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsGetAtResourceGroupInput>;
 
 // Output Schema
+export interface RemediationsGetAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsGetAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6541,9 +8983,7 @@ export const RemediationsGetAtResourceGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsGetAtResourceGroupOutput =
-  typeof RemediationsGetAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsGetAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -6560,6 +9000,10 @@ export const RemediationsGetAtResourceGroup =
     outputSchema: RemediationsGetAtResourceGroupOutput,
   }));
 // Input Schema
+export interface RemediationsGetAtSubscriptionInput {
+  subscriptionId: string;
+  remediationName: string;
+}
 export const RemediationsGetAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6570,11 +9014,22 @@ export const RemediationsGetAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsGetAtSubscriptionInput =
-  typeof RemediationsGetAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RemediationsGetAtSubscriptionInput>;
 
 // Output Schema
+export interface RemediationsGetAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RemediationsGetAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6594,9 +9049,7 @@ export const RemediationsGetAtSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RemediationsGetAtSubscriptionOutput =
-  typeof RemediationsGetAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsGetAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -6612,6 +9065,12 @@ export const RemediationsGetAtSubscription =
     outputSchema: RemediationsGetAtSubscriptionOutput,
   }));
 // Input Schema
+export interface RemediationsListDeploymentsAtManagementGroupInput {
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupId: string;
+  remediationName: string;
+  $top?: number;
+}
 export const RemediationsListDeploymentsAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
@@ -6626,11 +9085,27 @@ export const RemediationsListDeploymentsAtManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsListDeploymentsAtManagementGroupInput =
-  typeof RemediationsListDeploymentsAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsListDeploymentsAtManagementGroupInput>;
 
 // Output Schema
+export interface RemediationsListDeploymentsAtManagementGroupOutput {
+  value: {
+    remediatedResourceId?: string;
+    deploymentId?: string;
+    status?: string;
+    resourceLocation?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    createdOn?: string;
+    lastUpdatedOn?: string;
+  }[];
+  nextLink?: string;
+}
 export const RemediationsListDeploymentsAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6660,9 +9135,7 @@ export const RemediationsListDeploymentsAtManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RemediationsListDeploymentsAtManagementGroupOutput =
-  typeof RemediationsListDeploymentsAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsListDeploymentsAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -6680,6 +9153,11 @@ export const RemediationsListDeploymentsAtManagementGroup =
     outputSchema: RemediationsListDeploymentsAtManagementGroupOutput,
   }));
 // Input Schema
+export interface RemediationsListDeploymentsAtResourceInput {
+  resourceId: string;
+  remediationName: string;
+  $top?: number;
+}
 export const RemediationsListDeploymentsAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -6691,11 +9169,27 @@ export const RemediationsListDeploymentsAtResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsListDeploymentsAtResourceInput =
-  typeof RemediationsListDeploymentsAtResourceInput.Type;
+  ) as unknown as Schema.Codec<RemediationsListDeploymentsAtResourceInput>;
 
 // Output Schema
+export interface RemediationsListDeploymentsAtResourceOutput {
+  value: {
+    remediatedResourceId?: string;
+    deploymentId?: string;
+    status?: string;
+    resourceLocation?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    createdOn?: string;
+    lastUpdatedOn?: string;
+  }[];
+  nextLink?: string;
+}
 export const RemediationsListDeploymentsAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6725,9 +9219,7 @@ export const RemediationsListDeploymentsAtResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RemediationsListDeploymentsAtResourceOutput =
-  typeof RemediationsListDeploymentsAtResourceOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsListDeploymentsAtResourceOutput>;
 
 // The operation
 /**
@@ -6744,6 +9236,12 @@ export const RemediationsListDeploymentsAtResource =
     outputSchema: RemediationsListDeploymentsAtResourceOutput,
   }));
 // Input Schema
+export interface RemediationsListDeploymentsAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  remediationName: string;
+  $top?: number;
+}
 export const RemediationsListDeploymentsAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6756,11 +9254,27 @@ export const RemediationsListDeploymentsAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsListDeploymentsAtResourceGroupInput =
-  typeof RemediationsListDeploymentsAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsListDeploymentsAtResourceGroupInput>;
 
 // Output Schema
+export interface RemediationsListDeploymentsAtResourceGroupOutput {
+  value: {
+    remediatedResourceId?: string;
+    deploymentId?: string;
+    status?: string;
+    resourceLocation?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    createdOn?: string;
+    lastUpdatedOn?: string;
+  }[];
+  nextLink?: string;
+}
 export const RemediationsListDeploymentsAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6790,9 +9304,7 @@ export const RemediationsListDeploymentsAtResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RemediationsListDeploymentsAtResourceGroupOutput =
-  typeof RemediationsListDeploymentsAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsListDeploymentsAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -6810,6 +9322,11 @@ export const RemediationsListDeploymentsAtResourceGroup =
     outputSchema: RemediationsListDeploymentsAtResourceGroupOutput,
   }));
 // Input Schema
+export interface RemediationsListDeploymentsAtSubscriptionInput {
+  subscriptionId: string;
+  remediationName: string;
+  $top?: number;
+}
 export const RemediationsListDeploymentsAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6821,11 +9338,27 @@ export const RemediationsListDeploymentsAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsListDeploymentsAtSubscriptionInput =
-  typeof RemediationsListDeploymentsAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RemediationsListDeploymentsAtSubscriptionInput>;
 
 // Output Schema
+export interface RemediationsListDeploymentsAtSubscriptionOutput {
+  value: {
+    remediatedResourceId?: string;
+    deploymentId?: string;
+    status?: string;
+    resourceLocation?: string;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    createdOn?: string;
+    lastUpdatedOn?: string;
+  }[];
+  nextLink?: string;
+}
 export const RemediationsListDeploymentsAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6855,9 +9388,7 @@ export const RemediationsListDeploymentsAtSubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RemediationsListDeploymentsAtSubscriptionOutput =
-  typeof RemediationsListDeploymentsAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsListDeploymentsAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -6874,6 +9405,12 @@ export const RemediationsListDeploymentsAtSubscription =
     outputSchema: RemediationsListDeploymentsAtSubscriptionOutput,
   }));
 // Input Schema
+export interface RemediationsListForManagementGroupInput {
+  managementGroupsNamespace: "Microsoft.Management";
+  managementGroupId: string;
+  $top?: number;
+  $filter?: string;
+}
 export const RemediationsListForManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupsNamespace: Schema.Literals(["Microsoft.Management"]).pipe(
@@ -6888,11 +9425,25 @@ export const RemediationsListForManagementGroupInput =
       path: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsListForManagementGroupInput =
-  typeof RemediationsListForManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsListForManagementGroupInput>;
 
 // Output Schema
+export interface RemediationsListForManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RemediationsListForManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6927,9 +9478,7 @@ export const RemediationsListForManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RemediationsListForManagementGroupOutput =
-  typeof RemediationsListForManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsListForManagementGroupOutput>;
 
 // The operation
 /**
@@ -6947,6 +9496,11 @@ export const RemediationsListForManagementGroup =
     outputSchema: RemediationsListForManagementGroupOutput,
   }));
 // Input Schema
+export interface RemediationsListForResourceInput {
+  resourceId: string;
+  $top?: number;
+  $filter?: string;
+}
 export const RemediationsListForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -6958,11 +9512,25 @@ export const RemediationsListForResourceInput =
       path: "/{resourceId}/providers/Microsoft.PolicyInsights/remediations",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsListForResourceInput =
-  typeof RemediationsListForResourceInput.Type;
+  ) as unknown as Schema.Codec<RemediationsListForResourceInput>;
 
 // Output Schema
+export interface RemediationsListForResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RemediationsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6997,9 +9565,7 @@ export const RemediationsListForResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RemediationsListForResourceOutput =
-  typeof RemediationsListForResourceOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsListForResourceOutput>;
 
 // The operation
 /**
@@ -7017,6 +9583,12 @@ export const RemediationsListForResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RemediationsListForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $filter?: string;
+}
 export const RemediationsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7029,11 +9601,25 @@ export const RemediationsListForResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsListForResourceGroupInput =
-  typeof RemediationsListForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RemediationsListForResourceGroupInput>;
 
 // Output Schema
+export interface RemediationsListForResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RemediationsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7068,9 +9654,7 @@ export const RemediationsListForResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RemediationsListForResourceGroupOutput =
-  typeof RemediationsListForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsListForResourceGroupOutput>;
 
 // The operation
 /**
@@ -7088,6 +9672,11 @@ export const RemediationsListForResourceGroup =
     outputSchema: RemediationsListForResourceGroupOutput,
   }));
 // Input Schema
+export interface RemediationsListForSubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $filter?: string;
+}
 export const RemediationsListForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7099,11 +9688,25 @@ export const RemediationsListForSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations",
       apiVersion: "2024-10-01",
     }),
-  );
-export type RemediationsListForSubscriptionInput =
-  typeof RemediationsListForSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RemediationsListForSubscriptionInput>;
 
 // Output Schema
+export interface RemediationsListForSubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RemediationsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7138,9 +9741,7 @@ export const RemediationsListForSubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RemediationsListForSubscriptionOutput =
-  typeof RemediationsListForSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RemediationsListForSubscriptionOutput>;
 
 // The operation
 /**

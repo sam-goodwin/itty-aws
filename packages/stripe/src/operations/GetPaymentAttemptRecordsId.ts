@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetPaymentAttemptRecordsIdInput {
+  id: string;
+  expand?: string;
+}
 export const GetPaymentAttemptRecordsIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,51 @@ export const GetPaymentAttemptRecordsIdInput =
       path: "/v1/payment_attempt_records/{id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetPaymentAttemptRecordsIdInput =
-  typeof GetPaymentAttemptRecordsIdInput.Type;
+  ) as unknown as Schema.Codec<GetPaymentAttemptRecordsIdInput>;
 
 // Output Schema
+export interface GetPaymentAttemptRecordsIdOutput {
+  amount: { currency: string; value: number };
+  amount_authorized: { currency: string; value: number };
+  amount_canceled: { currency: string; value: number };
+  amount_failed: { currency: string; value: number };
+  amount_guaranteed: { currency: string; value: number };
+  amount_refunded: { currency: string; value: number };
+  amount_requested: { currency: string; value: number };
+  application: string | null;
+  created: number;
+  customer_details: {
+    customer: string | null;
+    email: string | null;
+    name: string | null;
+    phone: string | null;
+  } | null;
+  customer_presence: "off_session" | "on_session" | null;
+  description: string | null;
+  id: string;
+  livemode: boolean;
+  metadata: Record<string, string>;
+  object: "payment_attempt_record";
+  payment_method_details: unknown;
+  payment_record: string | null;
+  processor_details: {
+    custom?: { payment_reference: string | null };
+    type: "custom";
+  };
+  reported_by: "self" | "stripe";
+  shipping_details: {
+    address: {
+      city: string | null;
+      country: string | null;
+      line1: string | null;
+      line2: string | null;
+      postal_code: string | null;
+      state: string | null;
+    };
+    name: string | null;
+    phone: string | null;
+  } | null;
+}
 export const GetPaymentAttemptRecordsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
@@ -50,7 +94,14 @@ export const GetPaymentAttemptRecordsIdOutput =
     }),
     application: Schema.NullOr(Schema.String),
     created: Schema.Number,
-    customer_details: Schema.Unknown,
+    customer_details: Schema.NullOr(
+      Schema.Struct({
+        customer: Schema.NullOr(Schema.String),
+        email: Schema.NullOr(Schema.String),
+        name: Schema.NullOr(Schema.String),
+        phone: Schema.NullOr(Schema.String),
+      }),
+    ),
     customer_presence: Schema.NullOr(
       Schema.Literals(["off_session", "on_session"]),
     ),
@@ -70,10 +121,21 @@ export const GetPaymentAttemptRecordsIdOutput =
       type: Schema.Literals(["custom"]),
     }),
     reported_by: Schema.Literals(["self", "stripe"]),
-    shipping_details: Schema.Unknown,
-  });
-export type GetPaymentAttemptRecordsIdOutput =
-  typeof GetPaymentAttemptRecordsIdOutput.Type;
+    shipping_details: Schema.NullOr(
+      Schema.Struct({
+        address: Schema.Struct({
+          city: Schema.NullOr(Schema.String),
+          country: Schema.NullOr(Schema.String),
+          line1: Schema.NullOr(Schema.String),
+          line2: Schema.NullOr(Schema.String),
+          postal_code: Schema.NullOr(Schema.String),
+          state: Schema.NullOr(Schema.String),
+        }),
+        name: Schema.NullOr(Schema.String),
+        phone: Schema.NullOr(Schema.String),
+      }),
+    ),
+  }) as unknown as Schema.Codec<GetPaymentAttemptRecordsIdOutput>;
 
 // The operation
 /**

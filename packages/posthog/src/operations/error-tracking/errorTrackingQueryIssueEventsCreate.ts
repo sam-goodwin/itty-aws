@@ -4,6 +4,71 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingQueryIssueEventsCreateInput {
+  project_id: string;
+  issueId: string;
+  dateRange?: { date_from?: string; date_to?: string | null };
+  filterTestAccounts?: boolean;
+  filterGroup?: {
+    key?: string;
+    value?: string | number | boolean | (string | number)[];
+    operator?:
+      | "exact"
+      | "is_not"
+      | "icontains"
+      | "not_icontains"
+      | "regex"
+      | "not_regex"
+      | "gt"
+      | "lt"
+      | "gte"
+      | "lte"
+      | "is_set"
+      | "is_not_set"
+      | "is_date_exact"
+      | "is_date_after"
+      | "is_date_before"
+      | "in"
+      | "not_in"
+      | ""
+      | null;
+    type?:
+      | "event"
+      | "event_metadata"
+      | "feature"
+      | "person"
+      | "cohort"
+      | "element"
+      | "static-cohort"
+      | "dynamic-cohort"
+      | "precalculated-cohort"
+      | "group"
+      | "recording"
+      | "log_entry"
+      | "behavioral"
+      | "session"
+      | "hogql"
+      | "data_warehouse"
+      | "data_warehouse_person_property"
+      | "error_tracking_issue"
+      | "log"
+      | "log_attribute"
+      | "log_resource_attribute"
+      | "span"
+      | "span_attribute"
+      | "span_resource_attribute"
+      | "revenue_analytics"
+      | "flag"
+      | "workflow_variable"
+      | "";
+  }[];
+  searchQuery?: string;
+  orderDirection?: "ASC" | "DESC";
+  limit?: number;
+  offset?: number;
+  verbosity?: "summary" | "stack" | "raw";
+  onlyAppFrames?: boolean;
+}
 export const ErrorTrackingQueryIssueEventsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -19,9 +84,74 @@ export const ErrorTrackingQueryIssueEventsCreateInput =
       Schema.Array(
         Schema.Struct({
           key: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.Unknown),
-          operator: Schema.optional(Schema.Unknown),
-          type: Schema.optional(Schema.Unknown),
+          value: Schema.optional(
+            Schema.Union([
+              Schema.String,
+              Schema.Number,
+              Schema.Boolean,
+              Schema.Array(Schema.Union([Schema.String, Schema.Number])),
+            ]),
+          ),
+          operator: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "exact",
+                  "is_not",
+                  "icontains",
+                  "not_icontains",
+                  "regex",
+                  "not_regex",
+                  "gt",
+                  "lt",
+                  "gte",
+                  "lte",
+                  "is_set",
+                  "is_not_set",
+                  "is_date_exact",
+                  "is_date_after",
+                  "is_date_before",
+                  "in",
+                  "not_in",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "event",
+                "event_metadata",
+                "feature",
+                "person",
+                "cohort",
+                "element",
+                "static-cohort",
+                "dynamic-cohort",
+                "precalculated-cohort",
+                "group",
+                "recording",
+                "log_entry",
+                "behavioral",
+                "session",
+                "hogql",
+                "data_warehouse",
+                "data_warehouse_person_property",
+                "error_tracking_issue",
+                "log",
+                "log_attribute",
+                "log_resource_attribute",
+                "span",
+                "span_attribute",
+                "span_resource_attribute",
+                "revenue_analytics",
+                "flag",
+                "workflow_variable",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
         }),
       ),
     ),
@@ -36,11 +166,21 @@ export const ErrorTrackingQueryIssueEventsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/query/issue_events/",
     }),
-  );
-export type ErrorTrackingQueryIssueEventsCreateInput =
-  typeof ErrorTrackingQueryIssueEventsCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingQueryIssueEventsCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingQueryIssueEventsCreateOutput {
+  results: {
+    uuid?: string;
+    distinct_id?: string;
+    timestamp?: string;
+    properties?: Record<string, unknown>;
+  }[];
+  hasMore: boolean;
+  limit: number;
+  offset: number;
+  nextOffset?: number;
+}
 export const ErrorTrackingQueryIssueEventsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -57,9 +197,7 @@ export const ErrorTrackingQueryIssueEventsCreateOutput =
     limit: Schema.Number,
     offset: Schema.Number,
     nextOffset: Schema.optional(Schema.Number),
-  });
-export type ErrorTrackingQueryIssueEventsCreateOutput =
-  typeof ErrorTrackingQueryIssueEventsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingQueryIssueEventsCreateOutput>;
 
 // The operation
 /**

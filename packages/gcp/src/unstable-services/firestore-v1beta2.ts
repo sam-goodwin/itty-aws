@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleFirestoreAdminV1beta2Progress {
   completedWork?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2Progress: Schema.Schema<GoogleFirestoreAdminV1beta2Progress> =
+export const GoogleFirestoreAdminV1beta2Progress: Schema.Codec<GoogleFirestoreAdminV1beta2Progress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedWork: Schema.optional(Schema.String),
     completedWork: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export interface GoogleFirestoreAdminV1beta2IndexField {
   order?: "ORDER_UNSPECIFIED" | "ASCENDING" | "DESCENDING" | (string & {});
 }
 
-export const GoogleFirestoreAdminV1beta2IndexField: Schema.Schema<GoogleFirestoreAdminV1beta2IndexField> =
+export const GoogleFirestoreAdminV1beta2IndexField: Schema.Codec<GoogleFirestoreAdminV1beta2IndexField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     arrayConfig: Schema.optional(Schema.String),
     fieldPath: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface GoogleFirestoreAdminV1beta2Index {
     | (string & {});
 }
 
-export const GoogleFirestoreAdminV1beta2Index: Schema.Schema<GoogleFirestoreAdminV1beta2Index> =
+export const GoogleFirestoreAdminV1beta2Index: Schema.Codec<GoogleFirestoreAdminV1beta2Index> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(
       Schema.Array(GoogleFirestoreAdminV1beta2IndexField),
@@ -88,7 +88,7 @@ export interface GoogleFirestoreAdminV1beta2IndexConfigDelta {
   index?: GoogleFirestoreAdminV1beta2Index;
 }
 
-export const GoogleFirestoreAdminV1beta2IndexConfigDelta: Schema.Schema<GoogleFirestoreAdminV1beta2IndexConfigDelta> =
+export const GoogleFirestoreAdminV1beta2IndexConfigDelta: Schema.Codec<GoogleFirestoreAdminV1beta2IndexConfigDelta> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changeType: Schema.optional(Schema.String),
     index: Schema.optional(GoogleFirestoreAdminV1beta2Index),
@@ -120,7 +120,7 @@ export interface GoogleFirestoreAdminV1beta2FieldOperationMetadata {
     | (string & {});
 }
 
-export const GoogleFirestoreAdminV1beta2FieldOperationMetadata: Schema.Schema<GoogleFirestoreAdminV1beta2FieldOperationMetadata> =
+export const GoogleFirestoreAdminV1beta2FieldOperationMetadata: Schema.Codec<GoogleFirestoreAdminV1beta2FieldOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bytesProgress: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
     documentProgress: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
@@ -142,7 +142,7 @@ export interface GoogleFirestoreAdminV1Progress {
   completedWork?: string;
 }
 
-export const GoogleFirestoreAdminV1Progress: Schema.Schema<GoogleFirestoreAdminV1Progress> =
+export const GoogleFirestoreAdminV1Progress: Schema.Codec<GoogleFirestoreAdminV1Progress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedWork: Schema.optional(Schema.String),
     completedWork: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   progressDocuments?: GoogleFirestoreAdminV1Progress;
 }
 
-export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata> =
+export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
     snapshotTime: Schema.optional(Schema.String),
@@ -197,7 +197,7 @@ export interface GoogleFirestoreAdminV1beta2ListIndexesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2ListIndexesResponse: Schema.Schema<GoogleFirestoreAdminV1beta2ListIndexesResponse> =
+export const GoogleFirestoreAdminV1beta2ListIndexesResponse: Schema.Codec<GoogleFirestoreAdminV1beta2ListIndexesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Index)),
     nextPageToken: Schema.optional(Schema.String),
@@ -214,7 +214,7 @@ export interface GoogleFirestoreAdminV1beta2IndexConfig {
   ancestorField?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2IndexConfig: Schema.Schema<GoogleFirestoreAdminV1beta2IndexConfig> =
+export const GoogleFirestoreAdminV1beta2IndexConfig: Schema.Codec<GoogleFirestoreAdminV1beta2IndexConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usesAncestorConfig: Schema.optional(Schema.Boolean),
     indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Index)),
@@ -229,7 +229,7 @@ export interface GoogleFirestoreAdminV1beta2Field {
   indexConfig?: GoogleFirestoreAdminV1beta2IndexConfig;
 }
 
-export const GoogleFirestoreAdminV1beta2Field: Schema.Schema<GoogleFirestoreAdminV1beta2Field> =
+export const GoogleFirestoreAdminV1beta2Field: Schema.Codec<GoogleFirestoreAdminV1beta2Field> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     indexConfig: Schema.optional(GoogleFirestoreAdminV1beta2IndexConfig),
@@ -237,7 +237,7 @@ export const GoogleFirestoreAdminV1beta2Field: Schema.Schema<GoogleFirestoreAdmi
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -249,7 +249,7 @@ export interface GoogleFirestoreAdminV1beta2ExportDocumentsRequest {
   outputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2ExportDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsRequest> =
+export const GoogleFirestoreAdminV1beta2ExportDocumentsRequest: Schema.Codec<GoogleFirestoreAdminV1beta2ExportDocumentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
     outputUriPrefix: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export const GoogleFirestoreAdminV1beta2ExportDocumentsRequest: Schema.Schema<Go
 
 export interface GoogleFirestoreAdminV1UpdateDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1UpdateDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1UpdateDatabaseMetadata> =
+export const GoogleFirestoreAdminV1UpdateDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1UpdateDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1UpdateDatabaseMetadata",
   });
@@ -271,7 +271,7 @@ export interface GoogleFirestoreAdminV1beta2ListFieldsResponse {
   fields?: ReadonlyArray<GoogleFirestoreAdminV1beta2Field>;
 }
 
-export const GoogleFirestoreAdminV1beta2ListFieldsResponse: Schema.Schema<GoogleFirestoreAdminV1beta2ListFieldsResponse> =
+export const GoogleFirestoreAdminV1beta2ListFieldsResponse: Schema.Codec<GoogleFirestoreAdminV1beta2ListFieldsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     fields: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Field)),
@@ -282,7 +282,7 @@ export interface GoogleFirestoreAdminV1beta2ExportDocumentsResponse {
   outputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2ExportDocumentsResponse: Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsResponse> =
+export const GoogleFirestoreAdminV1beta2ExportDocumentsResponse: Schema.Codec<GoogleFirestoreAdminV1beta2ExportDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputUriPrefix: Schema.optional(Schema.String),
   }).annotate({
@@ -298,7 +298,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -309,7 +309,7 @@ export const Status: Schema.Schema<Status> =
 
 export interface GoogleFirestoreAdminV1DeleteDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1DeleteDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1DeleteDatabaseMetadata> =
+export const GoogleFirestoreAdminV1DeleteDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1DeleteDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1DeleteDatabaseMetadata",
   });
@@ -323,7 +323,7 @@ export interface GoogleFirestoreAdminV1PitrSnapshot {
   snapshotTime?: string;
 }
 
-export const GoogleFirestoreAdminV1PitrSnapshot: Schema.Schema<GoogleFirestoreAdminV1PitrSnapshot> =
+export const GoogleFirestoreAdminV1PitrSnapshot: Schema.Codec<GoogleFirestoreAdminV1PitrSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     databaseUid: Schema.optional(Schema.String),
@@ -354,7 +354,7 @@ export interface GoogleFirestoreAdminV1CloneDatabaseMetadata {
     | (string & {});
 }
 
-export const GoogleFirestoreAdminV1CloneDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1CloneDatabaseMetadata> =
+export const GoogleFirestoreAdminV1CloneDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1CloneDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -366,7 +366,7 @@ export const GoogleFirestoreAdminV1CloneDatabaseMetadata: Schema.Schema<GoogleFi
 
 export interface GoogleFirestoreAdminV1CreateDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1CreateDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1CreateDatabaseMetadata> =
+export const GoogleFirestoreAdminV1CreateDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1CreateDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1CreateDatabaseMetadata",
   });
@@ -397,7 +397,7 @@ export interface GoogleFirestoreAdminV1beta2ExportDocumentsMetadata {
   outputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2ExportDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsMetadata> =
+export const GoogleFirestoreAdminV1beta2ExportDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1beta2ExportDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     progressBytes: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
     endTime: Schema.optional(Schema.String),
@@ -436,7 +436,7 @@ export interface GoogleFirestoreAdminV1beta2ImportDocumentsMetadata {
   progressBytes?: GoogleFirestoreAdminV1beta2Progress;
 }
 
-export const GoogleFirestoreAdminV1beta2ImportDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1beta2ImportDocumentsMetadata> =
+export const GoogleFirestoreAdminV1beta2ImportDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1beta2ImportDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
@@ -462,7 +462,7 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -495,7 +495,7 @@ export interface GoogleFirestoreAdminV1RestoreDatabaseMetadata {
   startTime?: string;
 }
 
-export const GoogleFirestoreAdminV1RestoreDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1RestoreDatabaseMetadata> =
+export const GoogleFirestoreAdminV1RestoreDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1RestoreDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backup: Schema.optional(Schema.String),
     database: Schema.optional(Schema.String),
@@ -512,7 +512,7 @@ export interface GoogleFirestoreAdminV1beta2ImportDocumentsRequest {
   collectionIds?: ReadonlyArray<string>;
 }
 
-export const GoogleFirestoreAdminV1beta2ImportDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1beta2ImportDocumentsRequest> =
+export const GoogleFirestoreAdminV1beta2ImportDocumentsRequest: Schema.Codec<GoogleFirestoreAdminV1beta2ImportDocumentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputUriPrefix: Schema.optional(Schema.String),
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -544,7 +544,7 @@ export interface GoogleFirestoreAdminV1beta2IndexOperationMetadata {
   progressDocuments?: GoogleFirestoreAdminV1beta2Progress;
 }
 
-export const GoogleFirestoreAdminV1beta2IndexOperationMetadata: Schema.Schema<GoogleFirestoreAdminV1beta2IndexOperationMetadata> =
+export const GoogleFirestoreAdminV1beta2IndexOperationMetadata: Schema.Codec<GoogleFirestoreAdminV1beta2IndexOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     progressBytes: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
     endTime: Schema.optional(Schema.String),
@@ -630,7 +630,7 @@ export const ExportDocumentsProjectsDatabasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportDocumentsProjectsDatabasesRequest>;
+  ) as unknown as Schema.Codec<ExportDocumentsProjectsDatabasesRequest>;
 
 export type ExportDocumentsProjectsDatabasesResponse =
   GoogleLongrunningOperation;
@@ -676,7 +676,7 @@ export const ImportDocumentsProjectsDatabasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportDocumentsProjectsDatabasesRequest>;
+  ) as unknown as Schema.Codec<ImportDocumentsProjectsDatabasesRequest>;
 
 export type ImportDocumentsProjectsDatabasesResponse =
   GoogleLongrunningOperation;
@@ -720,7 +720,7 @@ export const CreateProjectsDatabasesCollectionGroupsIndexesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
 
 export type CreateProjectsDatabasesCollectionGroupsIndexesResponse =
   GoogleLongrunningOperation;
@@ -757,7 +757,7 @@ export const GetProjectsDatabasesCollectionGroupsIndexesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDatabasesCollectionGroupsIndexesRequest>;
 
 export type GetProjectsDatabasesCollectionGroupsIndexesResponse =
   GoogleFirestoreAdminV1beta2Index;
@@ -792,7 +792,7 @@ export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>;
 
 export type DeleteProjectsDatabasesCollectionGroupsIndexesResponse = Empty;
 export const DeleteProjectsDatabasesCollectionGroupsIndexesResponse =
@@ -837,7 +837,7 @@ export const ListProjectsDatabasesCollectionGroupsIndexesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+parent}/indexes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDatabasesCollectionGroupsIndexesRequest>;
 
 export type ListProjectsDatabasesCollectionGroupsIndexesResponse =
   GoogleFirestoreAdminV1beta2ListIndexesResponse;
@@ -876,7 +876,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GetProjectsDatabasesCollectionGroupsFieldsResponse =
   GoogleFirestoreAdminV1beta2Field;
@@ -917,7 +917,7 @@ export const PatchProjectsDatabasesCollectionGroupsFieldsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type PatchProjectsDatabasesCollectionGroupsFieldsResponse =
   GoogleLongrunningOperation;
@@ -963,7 +963,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+parent}/fields" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type ListProjectsDatabasesCollectionGroupsFieldsResponse =
   GoogleFirestoreAdminV1beta2ListFieldsResponse;

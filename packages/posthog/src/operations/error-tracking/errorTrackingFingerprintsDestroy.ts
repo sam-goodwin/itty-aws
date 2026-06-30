@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingFingerprintsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingFingerprintsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const ErrorTrackingFingerprintsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/error_tracking/fingerprints/{id}/",
     }),
-  );
-export type ErrorTrackingFingerprintsDestroyInput =
-  typeof ErrorTrackingFingerprintsDestroyInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingFingerprintsDestroyInput>;
 
 // Output Schema
+export type ErrorTrackingFingerprintsDestroyOutput = void;
 export const ErrorTrackingFingerprintsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingFingerprintsDestroyOutput =
-  typeof ErrorTrackingFingerprintsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingFingerprintsDestroyOutput>;
 
 // The operation
 /**

@@ -4,22 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetProjectLegacyApiKeysInput {
+  ref: string;
+}
 export const V1GetProjectLegacyApiKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/api-keys/legacy" }),
-  );
-export type V1GetProjectLegacyApiKeysInput =
-  typeof V1GetProjectLegacyApiKeysInput.Type;
+  ) as unknown as Schema.Codec<V1GetProjectLegacyApiKeysInput>;
 
 // Output Schema
+export interface V1GetProjectLegacyApiKeysOutput {
+  enabled: boolean;
+}
 export const V1GetProjectLegacyApiKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
-  });
-export type V1GetProjectLegacyApiKeysOutput =
-  typeof V1GetProjectLegacyApiKeysOutput.Type;
+  }) as unknown as Schema.Codec<V1GetProjectLegacyApiKeysOutput>;
 
 // The operation
 /**

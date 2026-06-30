@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterBackupSnapshotsInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  pointInTimeUtcSeconds?: number;
+  oplogTs?: number;
+  oplogInc?: number;
+}
 export const ListGroupClusterBackupSnapshotsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +33,12 @@ export const ListGroupClusterBackupSnapshotsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots",
     }),
-  );
-export type ListGroupClusterBackupSnapshotsInput =
-  typeof ListGroupClusterBackupSnapshotsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterBackupSnapshotsInput>;
 
 // Output Schema
+export type ListGroupClusterBackupSnapshotsOutput = void;
 export const ListGroupClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterBackupSnapshotsOutput =
-  typeof ListGroupClusterBackupSnapshotsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterBackupSnapshotsOutput>;
 
 // The operation
 /**

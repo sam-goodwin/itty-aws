@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AvailableServiceTiersListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const AvailableServiceTiersListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20,11 +25,25 @@ export const AvailableServiceTiersListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/availableServiceTiers",
       apiVersion: "2025-07-01",
     }),
-  );
-export type AvailableServiceTiersListByWorkspaceInput =
-  typeof AvailableServiceTiersListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<AvailableServiceTiersListByWorkspaceInput>;
 
 // Output Schema
+export type AvailableServiceTiersListByWorkspaceOutput = {
+  serviceTier?:
+    | "Free"
+    | "Standard"
+    | "Premium"
+    | "PerNode"
+    | "PerGB2018"
+    | "Standalone"
+    | "CapacityReservation";
+  enabled?: boolean;
+  minimumRetention?: number;
+  maximumRetention?: number;
+  defaultRetention?: number;
+  capacityReservationLevel?: number;
+  lastSkuUpdate?: string;
+}[];
 export const AvailableServiceTiersListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -46,9 +65,7 @@ export const AvailableServiceTiersListByWorkspaceOutput =
       capacityReservationLevel: Schema.optional(Schema.Number),
       lastSkuUpdate: Schema.optional(Schema.String),
     }),
-  );
-export type AvailableServiceTiersListByWorkspaceOutput =
-  typeof AvailableServiceTiersListByWorkspaceOutput.Type;
+  ) as unknown as Schema.Codec<AvailableServiceTiersListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -65,6 +82,76 @@ export const AvailableServiceTiersListByWorkspace =
     outputSchema: AvailableServiceTiersListByWorkspaceOutput,
   }));
 // Input Schema
+export interface ClustersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    clusterId?: string;
+    provisioningState?:
+      | "Creating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleting"
+      | "ProvisioningAccount"
+      | "Updating";
+    isDoubleEncryptionEnabled?: boolean;
+    isAvailabilityZonesEnabled?: boolean;
+    billingType?: "Cluster" | "Workspaces";
+    keyVaultProperties?: {
+      keyVaultUri?: string;
+      keyName?: string;
+      keyVersion?: string;
+      keyRsaSize?: number;
+    };
+    lastModifiedDate?: string;
+    createdDate?: string;
+    associatedWorkspaces?: {
+      workspaceId?: string;
+      workspaceName?: string;
+      resourceId?: string;
+      associateDate?: string;
+    }[];
+    capacityReservationProperties?: {
+      lastSkuUpdate?: string;
+      minCapacity?: number;
+    };
+    replication?: {
+      location?: string;
+      enabled?: boolean;
+      isAvailabilityZonesEnabled?: boolean;
+      provisioningState?:
+        | "Succeeded"
+        | "EnableRequested"
+        | "Enabling"
+        | "DisableRequested"
+        | "Disabling"
+        | "RollbackRequested"
+        | "RollingBack"
+        | "Failed"
+        | "Canceled";
+      createdDate?: string;
+      lastModifiedDate?: string;
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  sku?: { capacity?: number | null; name?: "CapacityReservation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -174,11 +261,22 @@ export const ClustersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type ClustersCreateOrUpdateInput =
-  typeof ClustersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClustersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClustersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -198,9 +296,7 @@ export const ClustersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersCreateOrUpdateOutput =
-  typeof ClustersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClustersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -218,6 +314,11 @@ export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -228,12 +329,12 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
+) as unknown as Schema.Codec<ClustersDeleteInput>;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
+export type ClustersDeleteOutput = void;
+export const ClustersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -249,6 +350,11 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
+export interface ClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -259,10 +365,22 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type ClustersGetInput = typeof ClustersGetInput.Type;
+) as unknown as Schema.Codec<ClustersGetInput>;
 
 // Output Schema
+export interface ClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -281,8 +399,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersGetOutput = typeof ClustersGetOutput.Type;
+}) as unknown as Schema.Codec<ClustersGetOutput>;
 
 // The operation
 /**
@@ -298,6 +415,9 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
+export interface ClustersListInput {
+  subscriptionId: string;
+}
 export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -306,10 +426,25 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/clusters",
     apiVersion: "2025-07-01",
   }),
-);
-export type ClustersListInput = typeof ClustersListInput.Type;
+) as unknown as Schema.Codec<ClustersListInput>;
 
 // Output Schema
+export interface ClustersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -333,8 +468,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ClustersListOutput = typeof ClustersListOutput.Type;
+}) as unknown as Schema.Codec<ClustersListOutput>;
 
 // The operation
 /**
@@ -348,6 +482,10 @@ export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersListOutput,
 }));
 // Input Schema
+export interface ClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -358,11 +496,25 @@ export const ClustersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters",
       apiVersion: "2025-07-01",
     }),
-  );
-export type ClustersListByResourceGroupInput =
-  typeof ClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface ClustersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -397,9 +549,7 @@ export const ClustersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListByResourceGroupOutput =
-  typeof ClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -416,6 +566,35 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    keyVaultProperties?: {
+      keyVaultUri?: string;
+      keyName?: string;
+      keyVersion?: string;
+      keyRsaSize?: number;
+    };
+    billingType?: "Cluster" | "Workspaces";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  sku?: { capacity?: number | null; name?: "CapacityReservation" };
+  tags?: Record<string, string>;
+}
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -467,10 +646,22 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters/{clusterName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
+) as unknown as Schema.Codec<ClustersUpdateInput>;
 
 // Output Schema
+export interface ClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -489,8 +680,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
+}) as unknown as Schema.Codec<ClustersUpdateOutput>;
 
 // The operation
 /**
@@ -506,6 +696,24 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
+export interface DataExportsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataExportName: string;
+  properties?: {
+    dataExportId?: string;
+    tableNames: string[];
+    destination?: {
+      resourceId: string;
+      type?: "StorageAccount" | "EventHub";
+      metaData?: { eventHubName?: string };
+    };
+    enable?: boolean;
+    createdDate?: string;
+    lastModifiedDate?: string;
+  };
+}
 export const DataExportsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -540,11 +748,22 @@ export const DataExportsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DataExportsCreateOrUpdateInput =
-  typeof DataExportsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataExportsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataExportsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataExportsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -564,9 +783,7 @@ export const DataExportsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataExportsCreateOrUpdateOutput =
-  typeof DataExportsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataExportsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -585,6 +802,12 @@ export const DataExportsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataExportsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataExportName: string;
+}
 export const DataExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -598,12 +821,12 @@ export const DataExportsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type DataExportsDeleteInput = typeof DataExportsDeleteInput.Type;
+) as unknown as Schema.Codec<DataExportsDeleteInput>;
 
 // Output Schema
-export const DataExportsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataExportsDeleteOutput = typeof DataExportsDeleteOutput.Type;
+export type DataExportsDeleteOutput = void;
+export const DataExportsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataExportsDeleteOutput>;
 
 // The operation
 /**
@@ -620,6 +843,12 @@ export const DataExportsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataExportsDeleteOutput,
 }));
 // Input Schema
+export interface DataExportsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataExportName: string;
+}
 export const DataExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -631,10 +860,22 @@ export const DataExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type DataExportsGetInput = typeof DataExportsGetInput.Type;
+) as unknown as Schema.Codec<DataExportsGetInput>;
 
 // Output Schema
+export interface DataExportsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -653,8 +894,7 @@ export const DataExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DataExportsGetOutput = typeof DataExportsGetOutput.Type;
+}) as unknown as Schema.Codec<DataExportsGetOutput>;
 
 // The operation
 /**
@@ -671,6 +911,11 @@ export const DataExportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataExportsGetOutput,
 }));
 // Input Schema
+export interface DataExportsListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const DataExportsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -682,11 +927,25 @@ export const DataExportsListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DataExportsListByWorkspaceInput =
-  typeof DataExportsListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<DataExportsListByWorkspaceInput>;
 
 // Output Schema
+export interface DataExportsListByWorkspaceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataExportsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -723,9 +982,7 @@ export const DataExportsListByWorkspaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataExportsListByWorkspaceOutput =
-  typeof DataExportsListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<DataExportsListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -743,6 +1000,49 @@ export const DataExportsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataSourcesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataSourceName: string;
+  properties: unknown;
+  etag?: string;
+  kind:
+    | "WindowsEvent"
+    | "WindowsPerformanceCounter"
+    | "IISLogs"
+    | "LinuxSyslog"
+    | "LinuxSyslogCollection"
+    | "LinuxPerformanceObject"
+    | "LinuxPerformanceCollection"
+    | "CustomLog"
+    | "CustomLogCollection"
+    | "AzureAuditLog"
+    | "AzureActivityLog"
+    | "GenericDataSource"
+    | "ChangeTrackingCustomPath"
+    | "ChangeTrackingPath"
+    | "ChangeTrackingServices"
+    | "ChangeTrackingDataTypeConfiguration"
+    | "ChangeTrackingDefaultRegistry"
+    | "ChangeTrackingRegistry"
+    | "ChangeTrackingLinuxPath"
+    | "LinuxChangeTrackingPath"
+    | "ChangeTrackingContentLocation"
+    | "WindowsTelemetry"
+    | "Office365"
+    | "SecurityWindowsBaselineConfiguration"
+    | "SecurityCenterSecurityWindowsBaselineConfiguration"
+    | "SecurityEventCollectionConfiguration"
+    | "SecurityInsightsSecurityEventCollectionConfiguration"
+    | "ImportComputerGroup"
+    | "NetworkMonitoring"
+    | "Itsm"
+    | "DnsAnalytics"
+    | "ApplicationInsights"
+    | "SqlDataClassification";
+  tags?: Record<string, string>;
+}
 export const DataSourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -793,11 +1093,22 @@ export const DataSourcesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DataSourcesCreateOrUpdateInput =
-  typeof DataSourcesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataSourcesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataSourcesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataSourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -817,9 +1128,7 @@ export const DataSourcesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataSourcesCreateOrUpdateOutput =
-  typeof DataSourcesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataSourcesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -838,6 +1147,12 @@ export const DataSourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataSourcesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataSourceName: string;
+}
 export const DataSourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -851,12 +1166,12 @@ export const DataSourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type DataSourcesDeleteInput = typeof DataSourcesDeleteInput.Type;
+) as unknown as Schema.Codec<DataSourcesDeleteInput>;
 
 // Output Schema
-export const DataSourcesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataSourcesDeleteOutput = typeof DataSourcesDeleteOutput.Type;
+export type DataSourcesDeleteOutput = void;
+export const DataSourcesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSourcesDeleteOutput>;
 
 // The operation
 /**
@@ -873,6 +1188,12 @@ export const DataSourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataSourcesDeleteOutput,
 }));
 // Input Schema
+export interface DataSourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataSourceName: string;
+}
 export const DataSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -884,10 +1205,22 @@ export const DataSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type DataSourcesGetInput = typeof DataSourcesGetInput.Type;
+) as unknown as Schema.Codec<DataSourcesGetInput>;
 
 // Output Schema
+export interface DataSourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -906,8 +1239,7 @@ export const DataSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DataSourcesGetOutput = typeof DataSourcesGetOutput.Type;
+}) as unknown as Schema.Codec<DataSourcesGetOutput>;
 
 // The operation
 /**
@@ -924,6 +1256,13 @@ export const DataSourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataSourcesGetOutput,
 }));
 // Input Schema
+export interface DataSourcesListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $filter: string;
+  $skiptoken?: string;
+}
 export const DataSourcesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -937,11 +1276,25 @@ export const DataSourcesListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DataSourcesListByWorkspaceInput =
-  typeof DataSourcesListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<DataSourcesListByWorkspaceInput>;
 
 // Output Schema
+export interface DataSourcesListByWorkspaceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataSourcesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -976,9 +1329,7 @@ export const DataSourcesListByWorkspaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataSourcesListByWorkspaceOutput =
-  typeof DataSourcesListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<DataSourcesListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -998,6 +1349,9 @@ export const DataSourcesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeletedWorkspacesListInput {
+  subscriptionId: string;
+}
 export const DeletedWorkspacesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1007,10 +1361,25 @@ export const DeletedWorkspacesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeletedWorkspacesListInput = typeof DeletedWorkspacesListInput.Type;
+  ) as unknown as Schema.Codec<DeletedWorkspacesListInput>;
 
 // Output Schema
+export interface DeletedWorkspacesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeletedWorkspacesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1047,9 +1416,7 @@ export const DeletedWorkspacesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeletedWorkspacesListOutput =
-  typeof DeletedWorkspacesListOutput.Type;
+  }) as unknown as Schema.Codec<DeletedWorkspacesListOutput>;
 
 // The operation
 /**
@@ -1065,6 +1432,10 @@ export const DeletedWorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeletedWorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DeletedWorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1075,11 +1446,25 @@ export const DeletedWorkspacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeletedWorkspacesListByResourceGroupInput =
-  typeof DeletedWorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeletedWorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface DeletedWorkspacesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeletedWorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1116,9 +1501,7 @@ export const DeletedWorkspacesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeletedWorkspacesListByResourceGroupOutput =
-  typeof DeletedWorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeletedWorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1134,6 +1517,12 @@ export const DeletedWorkspacesListByResourceGroup =
     outputSchema: DeletedWorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface GatewaysDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  gatewayId: string;
+}
 export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1145,12 +1534,12 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/gateways/{gatewayId}",
     apiVersion: "2025-07-01",
   }),
-);
-export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
+) as unknown as Schema.Codec<GatewaysDeleteInput>;
 
 // Output Schema
-export const GatewaysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
+export type GatewaysDeleteOutput = void;
+export const GatewaysDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewaysDeleteOutput>;
 
 // The operation
 /**
@@ -1167,6 +1556,12 @@ export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GatewaysDeleteOutput,
 }));
 // Input Schema
+export interface IntelligencePacksDisableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  intelligencePackName: string;
+}
 export const IntelligencePacksDisableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1179,15 +1574,12 @@ export const IntelligencePacksDisableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Disable",
       apiVersion: "2025-07-01",
     }),
-  );
-export type IntelligencePacksDisableInput =
-  typeof IntelligencePacksDisableInput.Type;
+  ) as unknown as Schema.Codec<IntelligencePacksDisableInput>;
 
 // Output Schema
+export type IntelligencePacksDisableOutput = void;
 export const IntelligencePacksDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntelligencePacksDisableOutput =
-  typeof IntelligencePacksDisableOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntelligencePacksDisableOutput>;
 
 // The operation
 /**
@@ -1206,6 +1598,12 @@ export const IntelligencePacksDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntelligencePacksEnableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  intelligencePackName: string;
+}
 export const IntelligencePacksEnableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1218,15 +1616,12 @@ export const IntelligencePacksEnableInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks/{intelligencePackName}/Enable",
       apiVersion: "2025-07-01",
     }),
-  );
-export type IntelligencePacksEnableInput =
-  typeof IntelligencePacksEnableInput.Type;
+  ) as unknown as Schema.Codec<IntelligencePacksEnableInput>;
 
 // Output Schema
+export type IntelligencePacksEnableOutput = void;
 export const IntelligencePacksEnableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntelligencePacksEnableOutput =
-  typeof IntelligencePacksEnableOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntelligencePacksEnableOutput>;
 
 // The operation
 /**
@@ -1245,6 +1640,11 @@ export const IntelligencePacksEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntelligencePacksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const IntelligencePacksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1256,10 +1656,14 @@ export const IntelligencePacksListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/intelligencePacks",
       apiVersion: "2025-07-01",
     }),
-  );
-export type IntelligencePacksListInput = typeof IntelligencePacksListInput.Type;
+  ) as unknown as Schema.Codec<IntelligencePacksListInput>;
 
 // Output Schema
+export type IntelligencePacksListOutput = {
+  name?: string;
+  enabled?: boolean;
+  displayName?: string;
+}[];
 export const IntelligencePacksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -1267,9 +1671,7 @@ export const IntelligencePacksListOutput =
       enabled: Schema.optional(Schema.Boolean),
       displayName: Schema.optional(Schema.String),
     }),
-  );
-export type IntelligencePacksListOutput =
-  typeof IntelligencePacksListOutput.Type;
+  ) as unknown as Schema.Codec<IntelligencePacksListOutput>;
 
 // The operation
 /**
@@ -1287,6 +1689,22 @@ export const IntelligencePacksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LinkedServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  linkedServiceName: string;
+  properties: {
+    resourceId?: string;
+    writeAccessResourceId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Deleting"
+      | "ProvisioningAccount"
+      | "Updating";
+  };
+  tags?: Record<string, string>;
+}
 export const LinkedServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1312,11 +1730,22 @@ export const LinkedServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type LinkedServicesCreateOrUpdateInput =
-  typeof LinkedServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LinkedServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface LinkedServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LinkedServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1336,9 +1765,7 @@ export const LinkedServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LinkedServicesCreateOrUpdateOutput =
-  typeof LinkedServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LinkedServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1356,6 +1783,12 @@ export const LinkedServicesCreateOrUpdate =
     outputSchema: LinkedServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface LinkedServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  linkedServiceName: string;
+}
 export const LinkedServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1368,10 +1801,22 @@ export const LinkedServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type LinkedServicesDeleteInput = typeof LinkedServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<LinkedServicesDeleteInput>;
 
 // Output Schema
+export interface LinkedServicesDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LinkedServicesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1391,8 +1836,7 @@ export const LinkedServicesDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LinkedServicesDeleteOutput = typeof LinkedServicesDeleteOutput.Type;
+  }) as unknown as Schema.Codec<LinkedServicesDeleteOutput>;
 
 // The operation
 /**
@@ -1411,6 +1855,12 @@ export const LinkedServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LinkedServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  linkedServiceName: string;
+}
 export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1424,10 +1874,22 @@ export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type LinkedServicesGetInput = typeof LinkedServicesGetInput.Type;
+) as unknown as Schema.Codec<LinkedServicesGetInput>;
 
 // Output Schema
+export interface LinkedServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LinkedServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1447,8 +1909,7 @@ export const LinkedServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LinkedServicesGetOutput = typeof LinkedServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<LinkedServicesGetOutput>;
 
 // The operation
 /**
@@ -1465,6 +1926,11 @@ export const LinkedServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LinkedServicesGetOutput,
 }));
 // Input Schema
+export interface LinkedServicesListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const LinkedServicesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1476,11 +1942,25 @@ export const LinkedServicesListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices",
       apiVersion: "2025-07-01",
     }),
-  );
-export type LinkedServicesListByWorkspaceInput =
-  typeof LinkedServicesListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<LinkedServicesListByWorkspaceInput>;
 
 // Output Schema
+export interface LinkedServicesListByWorkspaceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LinkedServicesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1517,9 +1997,7 @@ export const LinkedServicesListByWorkspaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LinkedServicesListByWorkspaceOutput =
-  typeof LinkedServicesListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<LinkedServicesListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -1536,6 +2014,26 @@ export const LinkedServicesListByWorkspace =
     outputSchema: LinkedServicesListByWorkspaceOutput,
   }));
 // Input Schema
+export interface LinkedStorageAccountsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataSourceType:
+    | "CustomLogs"
+    | "AzureWatson"
+    | "Query"
+    | "Ingestion"
+    | "Alerts";
+  properties: {
+    dataSourceType?:
+      | "CustomLogs"
+      | "AzureWatson"
+      | "Query"
+      | "Ingestion"
+      | "Alerts";
+    storageAccountIds?: string[];
+  };
+}
 export const LinkedStorageAccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1566,11 +2064,22 @@ export const LinkedStorageAccountsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type LinkedStorageAccountsCreateOrUpdateInput =
-  typeof LinkedStorageAccountsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LinkedStorageAccountsCreateOrUpdateInput>;
 
 // Output Schema
+export interface LinkedStorageAccountsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LinkedStorageAccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1590,9 +2099,7 @@ export const LinkedStorageAccountsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LinkedStorageAccountsCreateOrUpdateOutput =
-  typeof LinkedStorageAccountsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LinkedStorageAccountsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1610,6 +2117,17 @@ export const LinkedStorageAccountsCreateOrUpdate =
     outputSchema: LinkedStorageAccountsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface LinkedStorageAccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataSourceType:
+    | "CustomLogs"
+    | "AzureWatson"
+    | "Query"
+    | "Ingestion"
+    | "Alerts";
+}
 export const LinkedStorageAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1628,15 +2146,12 @@ export const LinkedStorageAccountsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type LinkedStorageAccountsDeleteInput =
-  typeof LinkedStorageAccountsDeleteInput.Type;
+  ) as unknown as Schema.Codec<LinkedStorageAccountsDeleteInput>;
 
 // Output Schema
+export type LinkedStorageAccountsDeleteOutput = void;
 export const LinkedStorageAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LinkedStorageAccountsDeleteOutput =
-  typeof LinkedStorageAccountsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkedStorageAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -1655,6 +2170,17 @@ export const LinkedStorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LinkedStorageAccountsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  dataSourceType:
+    | "CustomLogs"
+    | "AzureWatson"
+    | "Query"
+    | "Ingestion"
+    | "Alerts";
+}
 export const LinkedStorageAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1673,11 +2199,22 @@ export const LinkedStorageAccountsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type LinkedStorageAccountsGetInput =
-  typeof LinkedStorageAccountsGetInput.Type;
+  ) as unknown as Schema.Codec<LinkedStorageAccountsGetInput>;
 
 // Output Schema
+export interface LinkedStorageAccountsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LinkedStorageAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1697,9 +2234,7 @@ export const LinkedStorageAccountsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LinkedStorageAccountsGetOutput =
-  typeof LinkedStorageAccountsGetOutput.Type;
+  }) as unknown as Schema.Codec<LinkedStorageAccountsGetOutput>;
 
 // The operation
 /**
@@ -1718,6 +2253,11 @@ export const LinkedStorageAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LinkedStorageAccountsListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const LinkedStorageAccountsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1729,11 +2269,25 @@ export const LinkedStorageAccountsListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts",
       apiVersion: "2025-07-01",
     }),
-  );
-export type LinkedStorageAccountsListByWorkspaceInput =
-  typeof LinkedStorageAccountsListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<LinkedStorageAccountsListByWorkspaceInput>;
 
 // Output Schema
+export interface LinkedStorageAccountsListByWorkspaceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LinkedStorageAccountsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1770,9 +2324,7 @@ export const LinkedStorageAccountsListByWorkspaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LinkedStorageAccountsListByWorkspaceOutput =
-  typeof LinkedStorageAccountsListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<LinkedStorageAccountsListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -1789,6 +2341,11 @@ export const LinkedStorageAccountsListByWorkspace =
     outputSchema: LinkedStorageAccountsListByWorkspaceOutput,
   }));
 // Input Schema
+export interface ManagementGroupsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const ManagementGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1800,10 +2357,24 @@ export const ManagementGroupsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/managementGroups",
       apiVersion: "2025-07-01",
     }),
-  );
-export type ManagementGroupsListInput = typeof ManagementGroupsListInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupsListInput>;
 
 // Output Schema
+export interface ManagementGroupsListOutput {
+  value?: {
+    properties?: {
+      serverCount?: number;
+      isGateway?: boolean;
+      name?: string;
+      id?: string;
+      created?: string;
+      dataReceived?: string;
+      version?: string;
+      sku?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagementGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1825,8 +2396,7 @@ export const ManagementGroupsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagementGroupsListOutput = typeof ManagementGroupsListOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupsListOutput>;
 
 // The operation
 /**
@@ -1844,6 +2414,7 @@ export const ManagementGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1852,10 +2423,21 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.OperationalInsights/operations",
     apiVersion: "2025-07-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1871,8 +2453,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1885,6 +2466,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationStatusesGetInput {
+  location: string;
+  asyncOperationId: string;
+  subscriptionId: string;
+}
 export const OperationStatusesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -1896,10 +2482,25 @@ export const OperationStatusesGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/locations/{location}/operationStatuses/{asyncOperationId}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
+  ) as unknown as Schema.Codec<OperationStatusesGetInput>;
 
 // Output Schema
+export interface OperationStatusesGetOutput {
+  id?: string;
+  name?: string;
+  startTime?: string;
+  endTime?: string;
+  status?: string;
+  error?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  };
+}
 export const OperationStatusesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1927,8 +2528,7 @@ export const OperationStatusesGetOutput =
         ),
       }),
     ),
-  });
-export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationStatusesGetOutput>;
 
 // The operation
 /**
@@ -1946,6 +2546,12 @@ export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QueriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+  id: string;
+}
 export const QueriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1957,12 +2563,12 @@ export const QueriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueriesDeleteInput = typeof QueriesDeleteInput.Type;
+) as unknown as Schema.Codec<QueriesDeleteInput>;
 
 // Output Schema
-export const QueriesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type QueriesDeleteOutput = typeof QueriesDeleteOutput.Type;
+export type QueriesDeleteOutput = void;
+export const QueriesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<QueriesDeleteOutput>;
 
 // The operation
 /**
@@ -1979,6 +2585,12 @@ export const QueriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueriesDeleteOutput,
 }));
 // Input Schema
+export interface QueriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+  id: string;
+}
 export const QueriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1990,10 +2602,22 @@ export const QueriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueriesGetInput = typeof QueriesGetInput.Type;
+) as unknown as Schema.Codec<QueriesGetInput>;
 
 // Output Schema
+export interface QueriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2012,8 +2636,7 @@ export const QueriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QueriesGetOutput = typeof QueriesGetOutput.Type;
+}) as unknown as Schema.Codec<QueriesGetOutput>;
 
 // The operation
 /**
@@ -2030,6 +2653,14 @@ export const QueriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueriesGetOutput,
 }));
 // Input Schema
+export interface QueriesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+  $top?: number;
+  includeBody?: boolean;
+  $skipToken?: string;
+}
 export const QueriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2043,10 +2674,25 @@ export const QueriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueriesListInput = typeof QueriesListInput.Type;
+) as unknown as Schema.Codec<QueriesListInput>;
 
 // Output Schema
+export interface QueriesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QueriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2070,8 +2716,7 @@ export const QueriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QueriesListOutput = typeof QueriesListOutput.Type;
+}) as unknown as Schema.Codec<QueriesListOutput>;
 
 // The operation
 /**
@@ -2090,6 +2735,28 @@ export const QueriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueriesListOutput,
 }));
 // Input Schema
+export interface QueriesPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+  id: string;
+  properties?: {
+    id?: string;
+    displayName: string;
+    timeCreated?: string;
+    timeModified?: string;
+    author?: string;
+    description?: string;
+    body: string;
+    related?: {
+      categories?: string[];
+      resourceTypes?: string[];
+      solutions?: string[];
+    };
+    tags?: Record<string, string[]>;
+    properties?: unknown;
+  };
+}
 export const QueriesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2123,10 +2790,22 @@ export const QueriesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueriesPutInput = typeof QueriesPutInput.Type;
+) as unknown as Schema.Codec<QueriesPutInput>;
 
 // Output Schema
+export interface QueriesPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueriesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2145,8 +2824,7 @@ export const QueriesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QueriesPutOutput = typeof QueriesPutOutput.Type;
+}) as unknown as Schema.Codec<QueriesPutOutput>;
 
 // The operation
 /**
@@ -2163,6 +2841,20 @@ export const QueriesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueriesPutOutput,
 }));
 // Input Schema
+export interface QueriesSearchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+  $top?: number;
+  includeBody?: boolean;
+  $skipToken?: string;
+  related?: {
+    categories?: string[];
+    resourceTypes?: string[];
+    solutions?: string[];
+  };
+  tags?: Record<string, string[]>;
+}
 export const QueriesSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2186,10 +2878,25 @@ export const QueriesSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/search",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueriesSearchInput = typeof QueriesSearchInput.Type;
+) as unknown as Schema.Codec<QueriesSearchInput>;
 
 // Output Schema
+export interface QueriesSearchOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QueriesSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2213,8 +2920,7 @@ export const QueriesSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QueriesSearchOutput = typeof QueriesSearchOutput.Type;
+}) as unknown as Schema.Codec<QueriesSearchOutput>;
 
 // The operation
 /**
@@ -2233,6 +2939,28 @@ export const QueriesSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueriesSearchOutput,
 }));
 // Input Schema
+export interface QueriesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+  id: string;
+  properties?: {
+    id?: string;
+    displayName: string;
+    timeCreated?: string;
+    timeModified?: string;
+    author?: string;
+    description?: string;
+    body: string;
+    related?: {
+      categories?: string[];
+      resourceTypes?: string[];
+      solutions?: string[];
+    };
+    tags?: Record<string, string[]>;
+    properties?: unknown;
+  };
+}
 export const QueriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2266,10 +2994,22 @@ export const QueriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/{id}",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueriesUpdateInput = typeof QueriesUpdateInput.Type;
+) as unknown as Schema.Codec<QueriesUpdateInput>;
 
 // Output Schema
+export interface QueriesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2288,8 +3028,7 @@ export const QueriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QueriesUpdateOutput = typeof QueriesUpdateOutput.Type;
+}) as unknown as Schema.Codec<QueriesUpdateOutput>;
 
 // The operation
 /**
@@ -2306,6 +3045,19 @@ export const QueriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueriesUpdateOutput,
 }));
 // Input Schema
+export interface QueryPacksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+  properties: {
+    queryPackId?: string;
+    timeCreated?: string;
+    timeModified?: string;
+    provisioningState?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const QueryPacksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2325,11 +3077,22 @@ export const QueryPacksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type QueryPacksCreateOrUpdateInput =
-  typeof QueryPacksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<QueryPacksCreateOrUpdateInput>;
 
 // Output Schema
+export interface QueryPacksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueryPacksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2349,9 +3112,7 @@ export const QueryPacksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QueryPacksCreateOrUpdateOutput =
-  typeof QueryPacksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<QueryPacksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2369,6 +3130,18 @@ export const QueryPacksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QueryPacksCreateOrUpdateWithoutNameInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  properties: {
+    queryPackId?: string;
+    timeCreated?: string;
+    timeModified?: string;
+    provisioningState?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const QueryPacksCreateOrUpdateWithoutNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2387,11 +3160,22 @@ export const QueryPacksCreateOrUpdateWithoutNameInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
       apiVersion: "2025-07-01",
     }),
-  );
-export type QueryPacksCreateOrUpdateWithoutNameInput =
-  typeof QueryPacksCreateOrUpdateWithoutNameInput.Type;
+  ) as unknown as Schema.Codec<QueryPacksCreateOrUpdateWithoutNameInput>;
 
 // Output Schema
+export interface QueryPacksCreateOrUpdateWithoutNameOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueryPacksCreateOrUpdateWithoutNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2411,9 +3195,7 @@ export const QueryPacksCreateOrUpdateWithoutNameOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QueryPacksCreateOrUpdateWithoutNameOutput =
-  typeof QueryPacksCreateOrUpdateWithoutNameOutput.Type;
+  }) as unknown as Schema.Codec<QueryPacksCreateOrUpdateWithoutNameOutput>;
 
 // The operation
 /**
@@ -2429,6 +3211,11 @@ export const QueryPacksCreateOrUpdateWithoutName =
     outputSchema: QueryPacksCreateOrUpdateWithoutNameOutput,
   }));
 // Input Schema
+export interface QueryPacksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+}
 export const QueryPacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2439,12 +3226,12 @@ export const QueryPacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueryPacksDeleteInput = typeof QueryPacksDeleteInput.Type;
+) as unknown as Schema.Codec<QueryPacksDeleteInput>;
 
 // Output Schema
-export const QueryPacksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type QueryPacksDeleteOutput = typeof QueryPacksDeleteOutput.Type;
+export type QueryPacksDeleteOutput = void;
+export const QueryPacksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<QueryPacksDeleteOutput>;
 
 // The operation
 /**
@@ -2460,6 +3247,11 @@ export const QueryPacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueryPacksDeleteOutput,
 }));
 // Input Schema
+export interface QueryPacksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+}
 export const QueryPacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2470,10 +3262,22 @@ export const QueryPacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueryPacksGetInput = typeof QueryPacksGetInput.Type;
+) as unknown as Schema.Codec<QueryPacksGetInput>;
 
 // Output Schema
+export interface QueryPacksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueryPacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2492,8 +3296,7 @@ export const QueryPacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QueryPacksGetOutput = typeof QueryPacksGetOutput.Type;
+}) as unknown as Schema.Codec<QueryPacksGetOutput>;
 
 // The operation
 /**
@@ -2509,6 +3312,9 @@ export const QueryPacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueryPacksGetOutput,
 }));
 // Input Schema
+export interface QueryPacksListInput {
+  subscriptionId: string;
+}
 export const QueryPacksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2517,10 +3323,25 @@ export const QueryPacksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/queryPacks",
     apiVersion: "2025-07-01",
   }),
-);
-export type QueryPacksListInput = typeof QueryPacksListInput.Type;
+) as unknown as Schema.Codec<QueryPacksListInput>;
 
 // Output Schema
+export interface QueryPacksListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QueryPacksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2544,8 +3365,7 @@ export const QueryPacksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QueryPacksListOutput = typeof QueryPacksListOutput.Type;
+}) as unknown as Schema.Codec<QueryPacksListOutput>;
 
 // The operation
 /**
@@ -2559,6 +3379,10 @@ export const QueryPacksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QueryPacksListOutput,
 }));
 // Input Schema
+export interface QueryPacksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const QueryPacksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2569,11 +3393,25 @@ export const QueryPacksListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
       apiVersion: "2025-07-01",
     }),
-  );
-export type QueryPacksListByResourceGroupInput =
-  typeof QueryPacksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<QueryPacksListByResourceGroupInput>;
 
 // Output Schema
+export interface QueryPacksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QueryPacksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2608,9 +3446,7 @@ export const QueryPacksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type QueryPacksListByResourceGroupOutput =
-  typeof QueryPacksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<QueryPacksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2626,6 +3462,12 @@ export const QueryPacksListByResourceGroup =
     outputSchema: QueryPacksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface QueryPacksUpdateTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  queryPackName: string;
+  tags?: Record<string, string>;
+}
 export const QueryPacksUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2638,10 +3480,22 @@ export const QueryPacksUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type QueryPacksUpdateTagsInput = typeof QueryPacksUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<QueryPacksUpdateTagsInput>;
 
 // Output Schema
+export interface QueryPacksUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QueryPacksUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2661,8 +3515,7 @@ export const QueryPacksUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QueryPacksUpdateTagsOutput = typeof QueryPacksUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<QueryPacksUpdateTagsOutput>;
 
 // The operation
 /**
@@ -2680,6 +3533,22 @@ export const QueryPacksUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SavedSearchesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  savedSearchId: string;
+  properties: {
+    category: string;
+    displayName: string;
+    query: string;
+    functionAlias?: string;
+    functionParameters?: string;
+    version?: number;
+    tags?: { name: string; value: string }[];
+  };
+  etag?: string;
+}
 export const SavedSearchesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2709,11 +3578,22 @@ export const SavedSearchesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type SavedSearchesCreateOrUpdateInput =
-  typeof SavedSearchesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SavedSearchesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SavedSearchesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SavedSearchesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2733,9 +3613,7 @@ export const SavedSearchesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SavedSearchesCreateOrUpdateOutput =
-  typeof SavedSearchesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SavedSearchesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2754,6 +3632,12 @@ export const SavedSearchesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SavedSearchesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  savedSearchId: string;
+}
 export const SavedSearchesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2766,13 +3650,12 @@ export const SavedSearchesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type SavedSearchesDeleteInput = typeof SavedSearchesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SavedSearchesDeleteInput>;
 
 // Output Schema
+export type SavedSearchesDeleteOutput = void;
 export const SavedSearchesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SavedSearchesDeleteOutput = typeof SavedSearchesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SavedSearchesDeleteOutput>;
 
 // The operation
 /**
@@ -2789,6 +3672,12 @@ export const SavedSearchesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SavedSearchesDeleteOutput,
 }));
 // Input Schema
+export interface SavedSearchesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  savedSearchId: string;
+}
 export const SavedSearchesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2800,10 +3689,22 @@ export const SavedSearchesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
     apiVersion: "2025-07-01",
   }),
-);
-export type SavedSearchesGetInput = typeof SavedSearchesGetInput.Type;
+) as unknown as Schema.Codec<SavedSearchesGetInput>;
 
 // Output Schema
+export interface SavedSearchesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SavedSearchesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2824,8 +3725,7 @@ export const SavedSearchesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type SavedSearchesGetOutput = typeof SavedSearchesGetOutput.Type;
+) as unknown as Schema.Codec<SavedSearchesGetOutput>;
 
 // The operation
 /**
@@ -2842,6 +3742,11 @@ export const SavedSearchesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SavedSearchesGetOutput,
 }));
 // Input Schema
+export interface SavedSearchesListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const SavedSearchesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2853,11 +3758,24 @@ export const SavedSearchesListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches",
       apiVersion: "2025-07-01",
     }),
-  );
-export type SavedSearchesListByWorkspaceInput =
-  typeof SavedSearchesListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<SavedSearchesListByWorkspaceInput>;
 
 // Output Schema
+export interface SavedSearchesListByWorkspaceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const SavedSearchesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2893,9 +3811,7 @@ export const SavedSearchesListByWorkspaceOutput =
         }),
       ),
     ),
-  });
-export type SavedSearchesListByWorkspaceOutput =
-  typeof SavedSearchesListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<SavedSearchesListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -2912,6 +3828,11 @@ export const SavedSearchesListByWorkspace =
     outputSchema: SavedSearchesListByWorkspaceOutput,
   }));
 // Input Schema
+export interface SchemaGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const SchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2922,10 +3843,39 @@ export const SchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/schema",
     apiVersion: "2025-07-01",
   }),
-);
-export type SchemaGetInput = typeof SchemaGetInput.Type;
+) as unknown as Schema.Codec<SchemaGetInput>;
 
 // Output Schema
+export interface SchemaGetOutput {
+  metadata?: {
+    requestId?: string;
+    resultType?: string;
+    total?: number;
+    top?: number;
+    id?: string;
+    coreSummaries?: { status?: string; numberOfDocuments: number }[];
+    status?: string;
+    startTime?: string;
+    lastUpdated?: string;
+    eTag?: string;
+    sort?: { name?: string; order?: "asc" | "desc" }[];
+    requestTime?: number;
+    aggregatedValueField?: string;
+    aggregatedGroupingFields?: string;
+    sum?: number;
+    max?: number;
+    schema?: { name?: string; version?: number };
+  };
+  value?: {
+    name?: string;
+    displayName?: string;
+    type?: string;
+    indexed: boolean;
+    stored: boolean;
+    facet: boolean;
+    ownerType?: string[];
+  }[];
+}
 export const SchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   metadata: Schema.optional(
     Schema.Struct({
@@ -2980,8 +3930,7 @@ export const SchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type SchemaGetOutput = typeof SchemaGetOutput.Type;
+}) as unknown as Schema.Codec<SchemaGetOutput>;
 
 // The operation
 /**
@@ -2997,6 +3946,11 @@ export const SchemaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemaGetOutput,
 }));
 // Input Schema
+export interface SharedKeysGetSharedKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const SharedKeysGetSharedKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3008,18 +3962,18 @@ export const SharedKeysGetSharedKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/sharedKeys",
       apiVersion: "2025-07-01",
     }),
-  );
-export type SharedKeysGetSharedKeysInput =
-  typeof SharedKeysGetSharedKeysInput.Type;
+  ) as unknown as Schema.Codec<SharedKeysGetSharedKeysInput>;
 
 // Output Schema
+export interface SharedKeysGetSharedKeysOutput {
+  primarySharedKey?: string;
+  secondarySharedKey?: string;
+}
 export const SharedKeysGetSharedKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primarySharedKey: Schema.optional(Schema.String),
     secondarySharedKey: Schema.optional(Schema.String),
-  });
-export type SharedKeysGetSharedKeysOutput =
-  typeof SharedKeysGetSharedKeysOutput.Type;
+  }) as unknown as Schema.Codec<SharedKeysGetSharedKeysOutput>;
 
 // The operation
 /**
@@ -3037,6 +3991,11 @@ export const SharedKeysGetSharedKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SharedKeysRegenerateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const SharedKeysRegenerateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3048,16 +4007,18 @@ export const SharedKeysRegenerateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/regenerateSharedKey",
       apiVersion: "2025-07-01",
     }),
-  );
-export type SharedKeysRegenerateInput = typeof SharedKeysRegenerateInput.Type;
+  ) as unknown as Schema.Codec<SharedKeysRegenerateInput>;
 
 // Output Schema
+export interface SharedKeysRegenerateOutput {
+  primarySharedKey?: string;
+  secondarySharedKey?: string;
+}
 export const SharedKeysRegenerateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primarySharedKey: Schema.optional(Schema.String),
     secondarySharedKey: Schema.optional(Schema.String),
-  });
-export type SharedKeysRegenerateOutput = typeof SharedKeysRegenerateOutput.Type;
+  }) as unknown as Schema.Codec<SharedKeysRegenerateOutput>;
 
 // The operation
 /**
@@ -3075,6 +4036,20 @@ export const SharedKeysRegenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageInsightConfigsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  storageInsightName: string;
+  properties?: {
+    containers?: string[];
+    tables?: string[];
+    storageAccount: { id: string; key: string };
+    status?: { state: "OK" | "ERROR"; description?: string };
+  };
+  eTag?: string;
+  tags?: Record<string, string>;
+}
 export const StorageInsightConfigsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3105,11 +4080,22 @@ export const StorageInsightConfigsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type StorageInsightConfigsCreateOrUpdateInput =
-  typeof StorageInsightConfigsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageInsightConfigsCreateOrUpdateInput>;
 
 // Output Schema
+export interface StorageInsightConfigsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageInsightConfigsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3129,9 +4115,7 @@ export const StorageInsightConfigsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageInsightConfigsCreateOrUpdateOutput =
-  typeof StorageInsightConfigsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageInsightConfigsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3149,6 +4133,12 @@ export const StorageInsightConfigsCreateOrUpdate =
     outputSchema: StorageInsightConfigsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface StorageInsightConfigsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  storageInsightName: string;
+}
 export const StorageInsightConfigsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3161,15 +4151,12 @@ export const StorageInsightConfigsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type StorageInsightConfigsDeleteInput =
-  typeof StorageInsightConfigsDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageInsightConfigsDeleteInput>;
 
 // Output Schema
+export type StorageInsightConfigsDeleteOutput = void;
 export const StorageInsightConfigsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageInsightConfigsDeleteOutput =
-  typeof StorageInsightConfigsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageInsightConfigsDeleteOutput>;
 
 // The operation
 /**
@@ -3188,6 +4175,12 @@ export const StorageInsightConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageInsightConfigsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  storageInsightName: string;
+}
 export const StorageInsightConfigsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3200,11 +4193,22 @@ export const StorageInsightConfigsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type StorageInsightConfigsGetInput =
-  typeof StorageInsightConfigsGetInput.Type;
+  ) as unknown as Schema.Codec<StorageInsightConfigsGetInput>;
 
 // Output Schema
+export interface StorageInsightConfigsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageInsightConfigsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3224,9 +4228,7 @@ export const StorageInsightConfigsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageInsightConfigsGetOutput =
-  typeof StorageInsightConfigsGetOutput.Type;
+  }) as unknown as Schema.Codec<StorageInsightConfigsGetOutput>;
 
 // The operation
 /**
@@ -3245,6 +4247,11 @@ export const StorageInsightConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageInsightConfigsListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const StorageInsightConfigsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3256,11 +4263,25 @@ export const StorageInsightConfigsListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs",
       apiVersion: "2025-07-01",
     }),
-  );
-export type StorageInsightConfigsListByWorkspaceInput =
-  typeof StorageInsightConfigsListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<StorageInsightConfigsListByWorkspaceInput>;
 
 // Output Schema
+export interface StorageInsightConfigsListByWorkspaceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  "@odata.nextLink"?: string;
+}
 export const StorageInsightConfigsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3297,9 +4318,7 @@ export const StorageInsightConfigsListByWorkspaceOutput =
       ),
     ),
     "@odata.nextLink": Schema.optional(Schema.String),
-  });
-export type StorageInsightConfigsListByWorkspaceOutput =
-  typeof StorageInsightConfigsListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<StorageInsightConfigsListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -3316,6 +4335,33 @@ export const StorageInsightConfigsListByWorkspace =
     outputSchema: StorageInsightConfigsListByWorkspaceOutput,
   }));
 // Input Schema
+export interface SummaryLogsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  summaryLogsName: string;
+  properties?: {
+    ruleType?: "User";
+    displayName?: string;
+    description?: string;
+    isActive?: boolean;
+    statusCode?: "UserAction" | "DataPlaneError";
+    provisioningState?:
+      | "Updating"
+      | "Succeeded"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    ruleDefinition?: {
+      query?: string;
+      binSize?: number;
+      binDelay?: number;
+      binStartTime?: string;
+      timeSelector?: "TimeGenerated";
+      destinationTable?: string;
+    };
+  };
+}
 export const SummaryLogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3358,11 +4404,22 @@ export const SummaryLogsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type SummaryLogsCreateOrUpdateInput =
-  typeof SummaryLogsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SummaryLogsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SummaryLogsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SummaryLogsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3382,9 +4439,7 @@ export const SummaryLogsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SummaryLogsCreateOrUpdateOutput =
-  typeof SummaryLogsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SummaryLogsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3403,6 +4458,12 @@ export const SummaryLogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SummaryLogsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  summaryLogsName: string;
+}
 export const SummaryLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3416,12 +4477,12 @@ export const SummaryLogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type SummaryLogsDeleteInput = typeof SummaryLogsDeleteInput.Type;
+) as unknown as Schema.Codec<SummaryLogsDeleteInput>;
 
 // Output Schema
-export const SummaryLogsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SummaryLogsDeleteOutput = typeof SummaryLogsDeleteOutput.Type;
+export type SummaryLogsDeleteOutput = void;
+export const SummaryLogsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsDeleteOutput>;
 
 // The operation
 /**
@@ -3438,6 +4499,12 @@ export const SummaryLogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SummaryLogsDeleteOutput,
 }));
 // Input Schema
+export interface SummaryLogsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  summaryLogsName: string;
+}
 export const SummaryLogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3449,10 +4516,22 @@ export const SummaryLogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type SummaryLogsGetInput = typeof SummaryLogsGetInput.Type;
+) as unknown as Schema.Codec<SummaryLogsGetInput>;
 
 // Output Schema
+export interface SummaryLogsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SummaryLogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3471,8 +4550,7 @@ export const SummaryLogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SummaryLogsGetOutput = typeof SummaryLogsGetOutput.Type;
+}) as unknown as Schema.Codec<SummaryLogsGetOutput>;
 
 // The operation
 /**
@@ -3489,6 +4567,11 @@ export const SummaryLogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SummaryLogsGetOutput,
 }));
 // Input Schema
+export interface SummaryLogsListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const SummaryLogsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3500,11 +4583,25 @@ export const SummaryLogsListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs",
       apiVersion: "2025-07-01",
     }),
-  );
-export type SummaryLogsListByWorkspaceInput =
-  typeof SummaryLogsListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<SummaryLogsListByWorkspaceInput>;
 
 // Output Schema
+export interface SummaryLogsListByWorkspaceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SummaryLogsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3539,9 +4636,7 @@ export const SummaryLogsListByWorkspaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SummaryLogsListByWorkspaceOutput =
-  typeof SummaryLogsListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<SummaryLogsListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -3559,6 +4654,13 @@ export const SummaryLogsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SummaryLogsRetryBinInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  summaryLogsName: string;
+  properties?: { retryBinStartTime: string };
+}
 export const SummaryLogsRetryBinInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3576,13 +4678,12 @@ export const SummaryLogsRetryBinInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/retrybin",
       apiVersion: "2025-07-01",
     }),
-  );
-export type SummaryLogsRetryBinInput = typeof SummaryLogsRetryBinInput.Type;
+  ) as unknown as Schema.Codec<SummaryLogsRetryBinInput>;
 
 // Output Schema
+export type SummaryLogsRetryBinOutput = void;
 export const SummaryLogsRetryBinOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SummaryLogsRetryBinOutput = typeof SummaryLogsRetryBinOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsRetryBinOutput>;
 
 // The operation
 /**
@@ -3599,6 +4700,12 @@ export const SummaryLogsRetryBin = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SummaryLogsRetryBinOutput,
 }));
 // Input Schema
+export interface SummaryLogsStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  summaryLogsName: string;
+}
 export const SummaryLogsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3610,12 +4717,12 @@ export const SummaryLogsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/start",
     apiVersion: "2025-07-01",
   }),
-);
-export type SummaryLogsStartInput = typeof SummaryLogsStartInput.Type;
+) as unknown as Schema.Codec<SummaryLogsStartInput>;
 
 // Output Schema
-export const SummaryLogsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SummaryLogsStartOutput = typeof SummaryLogsStartOutput.Type;
+export type SummaryLogsStartOutput = void;
+export const SummaryLogsStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsStartOutput>;
 
 // The operation
 /**
@@ -3632,6 +4739,12 @@ export const SummaryLogsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SummaryLogsStartOutput,
 }));
 // Input Schema
+export interface SummaryLogsStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  summaryLogsName: string;
+}
 export const SummaryLogsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3643,12 +4756,12 @@ export const SummaryLogsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}/stop",
     apiVersion: "2025-07-01",
   }),
-);
-export type SummaryLogsStopInput = typeof SummaryLogsStopInput.Type;
+) as unknown as Schema.Codec<SummaryLogsStopInput>;
 
 // Output Schema
-export const SummaryLogsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SummaryLogsStopOutput = typeof SummaryLogsStopOutput.Type;
+export type SummaryLogsStopOutput = void;
+export const SummaryLogsStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SummaryLogsStopOutput>;
 
 // The operation
 /**
@@ -3665,6 +4778,12 @@ export const SummaryLogsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SummaryLogsStopOutput,
 }));
 // Input Schema
+export interface TablesCancelSearchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  tableName: string;
+}
 export const TablesCancelSearchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3677,12 +4796,12 @@ export const TablesCancelSearchInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/cancelSearch",
       apiVersion: "2025-07-01",
     }),
-  );
-export type TablesCancelSearchInput = typeof TablesCancelSearchInput.Type;
+  ) as unknown as Schema.Codec<TablesCancelSearchInput>;
 
 // Output Schema
-export const TablesCancelSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TablesCancelSearchOutput = typeof TablesCancelSearchOutput.Type;
+export type TablesCancelSearchOutput = void;
+export const TablesCancelSearchOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesCancelSearchOutput>;
 
 // The operation
 /**
@@ -3699,6 +4818,87 @@ export const TablesCancelSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TablesCancelSearchOutput,
 }));
 // Input Schema
+export interface TablesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  tableName: string;
+  properties?: {
+    retentionInDays?: number;
+    totalRetentionInDays?: number;
+    archiveRetentionInDays?: number;
+    searchResults?: {
+      query?: string;
+      description?: string;
+      limit?: number;
+      startSearchTime?: string;
+      endSearchTime?: string;
+      sourceTable?: string;
+      azureAsyncOperationId?: string;
+    };
+    restoredLogs?: {
+      startRestoreTime?: string;
+      endRestoreTime?: string;
+      sourceTable?: string;
+      azureAsyncOperationId?: string;
+    };
+    resultStatistics?: {
+      progress?: number;
+      ingestedRecords?: number;
+      scannedGb?: number;
+    };
+    plan?: "Basic" | "Analytics" | "Auxiliary";
+    lastPlanModifiedDate?: string;
+    schema?: {
+      name?: string;
+      displayName?: string;
+      description?: string;
+      columns?: {
+        name?: string;
+        type?:
+          | "string"
+          | "int"
+          | "long"
+          | "real"
+          | "boolean"
+          | "dateTime"
+          | "guid"
+          | "dynamic";
+        dataTypeHint?: "uri" | "guid" | "armPath" | "ip";
+        displayName?: string;
+        description?: string;
+        isDefaultDisplay?: boolean;
+        isHidden?: boolean;
+      }[];
+      standardColumns?: {
+        name?: string;
+        type?:
+          | "string"
+          | "int"
+          | "long"
+          | "real"
+          | "boolean"
+          | "dateTime"
+          | "guid"
+          | "dynamic";
+        dataTypeHint?: "uri" | "guid" | "armPath" | "ip";
+        displayName?: string;
+        description?: string;
+        isDefaultDisplay?: boolean;
+        isHidden?: boolean;
+      }[];
+      categories?: string[];
+      labels?: string[];
+      source?: "microsoft" | "customer";
+      tableType?: "Microsoft" | "CustomLog" | "RestoredLogs" | "SearchResults";
+      tableSubType?: "Any" | "Classic" | "DataCollectionRuleBased";
+      solutions?: string[];
+    };
+    provisioningState?: "Updating" | "InProgress" | "Succeeded" | "Deleting";
+    retentionInDaysAsDefault?: boolean;
+    totalRetentionInDaysAsDefault?: boolean;
+  };
+}
 export const TablesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3827,10 +5027,22 @@ export const TablesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type TablesCreateOrUpdateInput = typeof TablesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TablesCreateOrUpdateInput>;
 
 // Output Schema
+export interface TablesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TablesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3850,8 +5062,7 @@ export const TablesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TablesCreateOrUpdateOutput = typeof TablesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TablesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3870,6 +5081,12 @@ export const TablesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TablesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  tableName: string;
+}
 export const TablesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3881,12 +5098,12 @@ export const TablesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type TablesDeleteInput = typeof TablesDeleteInput.Type;
+) as unknown as Schema.Codec<TablesDeleteInput>;
 
 // Output Schema
-export const TablesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TablesDeleteOutput = typeof TablesDeleteOutput.Type;
+export type TablesDeleteOutput = void;
+export const TablesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesDeleteOutput>;
 
 // The operation
 /**
@@ -3903,6 +5120,12 @@ export const TablesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TablesDeleteOutput,
 }));
 // Input Schema
+export interface TablesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  tableName: string;
+}
 export const TablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3914,10 +5137,22 @@ export const TablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type TablesGetInput = typeof TablesGetInput.Type;
+) as unknown as Schema.Codec<TablesGetInput>;
 
 // Output Schema
+export interface TablesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3936,8 +5171,7 @@ export const TablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TablesGetOutput = typeof TablesGetOutput.Type;
+}) as unknown as Schema.Codec<TablesGetOutput>;
 
 // The operation
 /**
@@ -3954,6 +5188,11 @@ export const TablesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TablesGetOutput,
 }));
 // Input Schema
+export interface TablesListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const TablesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3965,10 +5204,25 @@ export const TablesListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables",
       apiVersion: "2025-07-01",
     }),
-  );
-export type TablesListByWorkspaceInput = typeof TablesListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<TablesListByWorkspaceInput>;
 
 // Output Schema
+export interface TablesListByWorkspaceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TablesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4005,9 +5259,7 @@ export const TablesListByWorkspaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TablesListByWorkspaceOutput =
-  typeof TablesListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<TablesListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -4025,6 +5277,12 @@ export const TablesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TablesMigrateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  tableName: string;
+}
 export const TablesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4036,12 +5294,12 @@ export const TablesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/migrate",
     apiVersion: "2025-07-01",
   }),
-);
-export type TablesMigrateInput = typeof TablesMigrateInput.Type;
+) as unknown as Schema.Codec<TablesMigrateInput>;
 
 // Output Schema
-export const TablesMigrateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TablesMigrateOutput = typeof TablesMigrateOutput.Type;
+export type TablesMigrateOutput = void;
+export const TablesMigrateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TablesMigrateOutput>;
 
 // The operation
 /**
@@ -4058,6 +5316,87 @@ export const TablesMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TablesMigrateOutput,
 }));
 // Input Schema
+export interface TablesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  tableName: string;
+  properties?: {
+    retentionInDays?: number;
+    totalRetentionInDays?: number;
+    archiveRetentionInDays?: number;
+    searchResults?: {
+      query?: string;
+      description?: string;
+      limit?: number;
+      startSearchTime?: string;
+      endSearchTime?: string;
+      sourceTable?: string;
+      azureAsyncOperationId?: string;
+    };
+    restoredLogs?: {
+      startRestoreTime?: string;
+      endRestoreTime?: string;
+      sourceTable?: string;
+      azureAsyncOperationId?: string;
+    };
+    resultStatistics?: {
+      progress?: number;
+      ingestedRecords?: number;
+      scannedGb?: number;
+    };
+    plan?: "Basic" | "Analytics" | "Auxiliary";
+    lastPlanModifiedDate?: string;
+    schema?: {
+      name?: string;
+      displayName?: string;
+      description?: string;
+      columns?: {
+        name?: string;
+        type?:
+          | "string"
+          | "int"
+          | "long"
+          | "real"
+          | "boolean"
+          | "dateTime"
+          | "guid"
+          | "dynamic";
+        dataTypeHint?: "uri" | "guid" | "armPath" | "ip";
+        displayName?: string;
+        description?: string;
+        isDefaultDisplay?: boolean;
+        isHidden?: boolean;
+      }[];
+      standardColumns?: {
+        name?: string;
+        type?:
+          | "string"
+          | "int"
+          | "long"
+          | "real"
+          | "boolean"
+          | "dateTime"
+          | "guid"
+          | "dynamic";
+        dataTypeHint?: "uri" | "guid" | "armPath" | "ip";
+        displayName?: string;
+        description?: string;
+        isDefaultDisplay?: boolean;
+        isHidden?: boolean;
+      }[];
+      categories?: string[];
+      labels?: string[];
+      source?: "microsoft" | "customer";
+      tableType?: "Microsoft" | "CustomLog" | "RestoredLogs" | "SearchResults";
+      tableSubType?: "Any" | "Classic" | "DataCollectionRuleBased";
+      solutions?: string[];
+    };
+    provisioningState?: "Updating" | "InProgress" | "Succeeded" | "Deleting";
+    retentionInDaysAsDefault?: boolean;
+    totalRetentionInDaysAsDefault?: boolean;
+  };
+}
 export const TablesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4185,10 +5524,22 @@ export const TablesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type TablesUpdateInput = typeof TablesUpdateInput.Type;
+) as unknown as Schema.Codec<TablesUpdateInput>;
 
 // Output Schema
+export interface TablesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TablesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4207,8 +5558,7 @@ export const TablesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TablesUpdateOutput = typeof TablesUpdateOutput.Type;
+}) as unknown as Schema.Codec<TablesUpdateOutput>;
 
 // The operation
 /**
@@ -4225,6 +5575,11 @@ export const TablesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TablesUpdateOutput,
 }));
 // Input Schema
+export interface UsagesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4235,10 +5590,20 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/usages",
     apiVersion: "2025-07-01",
   }),
-);
-export type UsagesListInput = typeof UsagesListInput.Type;
+) as unknown as Schema.Codec<UsagesListInput>;
 
 // Output Schema
+export interface UsagesListOutput {
+  value?: {
+    name?: { value?: string; localizedValue?: string };
+    unit?: string;
+    currentValue?: number;
+    limit?: number;
+    nextResetTime?: string;
+    quotaPeriod?: string;
+  }[];
+  nextLink?: string;
+}
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4258,8 +5623,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UsagesListOutput = typeof UsagesListOutput.Type;
+}) as unknown as Schema.Codec<UsagesListOutput>;
 
 // The operation
 /**
@@ -4275,6 +5639,12 @@ export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsagesListOutput,
 }));
 // Input Schema
+export interface WorkspacePurgeGetPurgeStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  purgeId: string;
+}
 export const WorkspacePurgeGetPurgeStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4287,17 +5657,16 @@ export const WorkspacePurgeGetPurgeStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/operations/{purgeId}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type WorkspacePurgeGetPurgeStatusInput =
-  typeof WorkspacePurgeGetPurgeStatusInput.Type;
+  ) as unknown as Schema.Codec<WorkspacePurgeGetPurgeStatusInput>;
 
 // Output Schema
+export interface WorkspacePurgeGetPurgeStatusOutput {
+  status: "pending" | "completed";
+}
 export const WorkspacePurgeGetPurgeStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.Literals(["pending", "completed"]),
-  });
-export type WorkspacePurgeGetPurgeStatusOutput =
-  typeof WorkspacePurgeGetPurgeStatusOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacePurgeGetPurgeStatusOutput>;
 
 // The operation
 /**
@@ -4315,6 +5684,18 @@ export const WorkspacePurgeGetPurgeStatus =
     outputSchema: WorkspacePurgeGetPurgeStatusOutput,
   }));
 // Input Schema
+export interface WorkspacePurgePurgeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  table: string;
+  filters: {
+    column?: string;
+    operator?: string;
+    value?: unknown;
+    key?: string;
+  }[];
+}
 export const WorkspacePurgePurgeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4335,13 +5716,12 @@ export const WorkspacePurgePurgeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/purge",
       apiVersion: "2025-07-01",
     }),
-  );
-export type WorkspacePurgePurgeInput = typeof WorkspacePurgePurgeInput.Type;
+  ) as unknown as Schema.Codec<WorkspacePurgePurgeInput>;
 
 // Output Schema
+export type WorkspacePurgePurgeOutput = void;
 export const WorkspacePurgePurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacePurgePurgeOutput = typeof WorkspacePurgePurgeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacePurgePurgeOutput>;
 
 // The operation
 /**
@@ -4359,6 +5739,98 @@ export const WorkspacePurgePurge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacePurgePurgeOutput,
 }));
 // Input Schema
+export interface WorkspacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleting"
+      | "ProvisioningAccount"
+      | "Updating";
+    customerId?: string;
+    sku?: {
+      name:
+        | "Free"
+        | "Standard"
+        | "Premium"
+        | "PerNode"
+        | "PerGB2018"
+        | "Standalone"
+        | "CapacityReservation"
+        | "LACluster";
+      capacityReservationLevel?: number | null;
+      lastSkuUpdate?: string;
+    };
+    retentionInDays?: number | null;
+    workspaceCapping?: {
+      dailyQuotaGb?: number;
+      quotaNextResetTime?: string;
+      dataIngestionStatus?:
+        | "RespectQuota"
+        | "ForceOn"
+        | "ForceOff"
+        | "OverQuota"
+        | "SubscriptionSuspended"
+        | "ApproachingQuota";
+    };
+    createdDate?: string;
+    modifiedDate?: string;
+    publicNetworkAccessForIngestion?:
+      | "Enabled"
+      | "Disabled"
+      | "SecuredByPerimeter";
+    publicNetworkAccessForQuery?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    forceCmkForQuery?: boolean;
+    privateLinkScopedResources?: { resourceId?: string; scopeId?: string }[];
+    features?: {
+      enableDataExport?: boolean | null;
+      immediatePurgeDataOn30Days?: boolean | null;
+      enableLogAccessUsingOnlyResourcePermissions?: boolean | null;
+      clusterResourceId?: string | null;
+      disableLocalAuth?: boolean | null;
+      unifiedSentinelBillingOnly?: boolean | null;
+      associations?: string[];
+    };
+    defaultDataCollectionRuleResourceId?: string;
+    replication?: {
+      location?: string;
+      enabled?: boolean;
+      provisioningState?:
+        | "Succeeded"
+        | "EnableRequested"
+        | "Enabling"
+        | "DisableRequested"
+        | "Disabling"
+        | "RollbackRequested"
+        | "RollingBack"
+        | "Failed"
+        | "Canceled";
+      createdDate?: string;
+      lastModifiedDate?: string;
+    };
+    failover?: {
+      state?: "Inactive" | "Activating" | "Active" | "Deactivating" | "Failed";
+      lastModifiedDate?: string;
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4510,11 +5982,22 @@ export const WorkspacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type WorkspacesCreateOrUpdateInput =
-  typeof WorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkspacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4534,9 +6017,7 @@ export const WorkspacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkspacesCreateOrUpdateOutput =
-  typeof WorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4554,6 +6035,12 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  force?: boolean;
+}
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4565,12 +6052,12 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
+) as unknown as Schema.Codec<WorkspacesDeleteInput>;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
+export type WorkspacesDeleteOutput = void;
+export const WorkspacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -4587,6 +6074,11 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
+export interface WorkspacesFailbackInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesFailbackInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4598,12 +6090,12 @@ export const WorkspacesFailbackInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/failback",
       apiVersion: "2025-07-01",
     }),
-  );
-export type WorkspacesFailbackInput = typeof WorkspacesFailbackInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesFailbackInput>;
 
 // Output Schema
-export const WorkspacesFailbackOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesFailbackOutput = typeof WorkspacesFailbackOutput.Type;
+export type WorkspacesFailbackOutput = void;
+export const WorkspacesFailbackOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesFailbackOutput>;
 
 // The operation
 /**
@@ -4620,6 +6112,12 @@ export const WorkspacesFailback = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesFailbackOutput,
 }));
 // Input Schema
+export interface WorkspacesFailoverInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  workspaceName: string;
+}
 export const WorkspacesFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4632,12 +6130,12 @@ export const WorkspacesFailoverInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/locations/{location}/workspaces/{workspaceName}/failover",
       apiVersion: "2025-07-01",
     }),
-  );
-export type WorkspacesFailoverInput = typeof WorkspacesFailoverInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesFailoverInput>;
 
 // Output Schema
-export const WorkspacesFailoverOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesFailoverOutput = typeof WorkspacesFailoverOutput.Type;
+export type WorkspacesFailoverOutput = void;
+export const WorkspacesFailoverOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesFailoverOutput>;
 
 // The operation
 /**
@@ -4655,6 +6153,11 @@ export const WorkspacesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesFailoverOutput,
 }));
 // Input Schema
+export interface WorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4665,10 +6168,22 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
+) as unknown as Schema.Codec<WorkspacesGetInput>;
 
 // Output Schema
+export interface WorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4687,8 +6202,7 @@ export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesGetOutput>;
 
 // The operation
 /**
@@ -4704,6 +6218,12 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
+export interface WorkspacesGetNSPInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  networkSecurityPerimeterConfigurationName: string;
+}
 export const WorkspacesGetNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4715,10 +6235,22 @@ export const WorkspacesGetNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type WorkspacesGetNSPInput = typeof WorkspacesGetNSPInput.Type;
+) as unknown as Schema.Codec<WorkspacesGetNSPInput>;
 
 // Output Schema
+export interface WorkspacesGetNSPOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesGetNSPOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -4739,8 +6271,7 @@ export const WorkspacesGetNSPOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type WorkspacesGetNSPOutput = typeof WorkspacesGetNSPOutput.Type;
+) as unknown as Schema.Codec<WorkspacesGetNSPOutput>;
 
 // The operation
 /**
@@ -4757,6 +6288,9 @@ export const WorkspacesGetNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesGetNSPOutput,
 }));
 // Input Schema
+export interface WorkspacesListInput {
+  subscriptionId: string;
+}
 export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -4765,10 +6299,25 @@ export const WorkspacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/workspaces",
     apiVersion: "2025-07-01",
   }),
-);
-export type WorkspacesListInput = typeof WorkspacesListInput.Type;
+) as unknown as Schema.Codec<WorkspacesListInput>;
 
 // Output Schema
+export interface WorkspacesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4804,8 +6353,7 @@ export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesListOutput>;
 
 // The operation
 /**
@@ -4819,6 +6367,10 @@ export const WorkspacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesListOutput,
 }));
 // Input Schema
+export interface WorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4829,11 +6381,25 @@ export const WorkspacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces",
       apiVersion: "2025-07-01",
     }),
-  );
-export type WorkspacesListByResourceGroupInput =
-  typeof WorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface WorkspacesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4870,9 +6436,7 @@ export const WorkspacesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListByResourceGroupOutput =
-  typeof WorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4888,6 +6452,11 @@ export const WorkspacesListByResourceGroup =
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface WorkspacesListNSPInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesListNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4900,10 +6469,25 @@ export const WorkspacesListNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations",
     apiVersion: "2025-07-01",
   }),
-);
-export type WorkspacesListNSPInput = typeof WorkspacesListNSPInput.Type;
+) as unknown as Schema.Codec<WorkspacesListNSPInput>;
 
 // Output Schema
+export interface WorkspacesListNSPOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListNSPOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4940,8 +6524,7 @@ export const WorkspacesListNSPOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListNSPOutput = typeof WorkspacesListNSPOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListNSPOutput>;
 
 // The operation
 /**
@@ -4957,6 +6540,12 @@ export const WorkspacesListNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesListNSPOutput,
 }));
 // Input Schema
+export interface WorkspacesReconcileNSPInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  networkSecurityPerimeterConfigurationName: string;
+}
 export const WorkspacesReconcileNSPInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4971,15 +6560,12 @@ export const WorkspacesReconcileNSPInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
       apiVersion: "2025-07-01",
     }),
-  );
-export type WorkspacesReconcileNSPInput =
-  typeof WorkspacesReconcileNSPInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesReconcileNSPInput>;
 
 // Output Schema
+export type WorkspacesReconcileNSPOutput = void;
 export const WorkspacesReconcileNSPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesReconcileNSPOutput =
-  typeof WorkspacesReconcileNSPOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesReconcileNSPOutput>;
 
 // The operation
 /**
@@ -4998,6 +6584,97 @@ export const WorkspacesReconcileNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleting"
+      | "ProvisioningAccount"
+      | "Updating";
+    customerId?: string;
+    sku?: {
+      name:
+        | "Free"
+        | "Standard"
+        | "Premium"
+        | "PerNode"
+        | "PerGB2018"
+        | "Standalone"
+        | "CapacityReservation"
+        | "LACluster";
+      capacityReservationLevel?: number | null;
+      lastSkuUpdate?: string;
+    };
+    retentionInDays?: number | null;
+    workspaceCapping?: {
+      dailyQuotaGb?: number;
+      quotaNextResetTime?: string;
+      dataIngestionStatus?:
+        | "RespectQuota"
+        | "ForceOn"
+        | "ForceOff"
+        | "OverQuota"
+        | "SubscriptionSuspended"
+        | "ApproachingQuota";
+    };
+    createdDate?: string;
+    modifiedDate?: string;
+    publicNetworkAccessForIngestion?:
+      | "Enabled"
+      | "Disabled"
+      | "SecuredByPerimeter";
+    publicNetworkAccessForQuery?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    forceCmkForQuery?: boolean;
+    privateLinkScopedResources?: { resourceId?: string; scopeId?: string }[];
+    features?: {
+      enableDataExport?: boolean | null;
+      immediatePurgeDataOn30Days?: boolean | null;
+      enableLogAccessUsingOnlyResourcePermissions?: boolean | null;
+      clusterResourceId?: string | null;
+      disableLocalAuth?: boolean | null;
+      unifiedSentinelBillingOnly?: boolean | null;
+      associations?: string[];
+    };
+    defaultDataCollectionRuleResourceId?: string;
+    replication?: {
+      location?: string;
+      enabled?: boolean;
+      provisioningState?:
+        | "Succeeded"
+        | "EnableRequested"
+        | "Enabling"
+        | "DisableRequested"
+        | "Disabling"
+        | "RollbackRequested"
+        | "RollingBack"
+        | "Failed"
+        | "Canceled";
+      createdDate?: string;
+      lastModifiedDate?: string;
+    };
+    failover?: {
+      state?: "Inactive" | "Activating" | "Active" | "Deactivating" | "Failed";
+      lastModifiedDate?: string;
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5147,10 +6824,22 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateInput>;
 
 // Output Schema
+export interface WorkspacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -5171,8 +6860,7 @@ export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
 
 // The operation
 /**

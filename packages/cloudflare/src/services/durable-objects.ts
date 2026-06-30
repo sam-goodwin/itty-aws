@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service durable-objects
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -41,6 +41,100 @@ export class NamespaceNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListNamespacesResponseResult {
+  id?: string | null;
+  class?: string | null;
+  name?: string | null;
+  script?: string | null;
+  useSqlite?: boolean | null;
+}
+const ListNamespacesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      class: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      useSqlite: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        class: "class",
+        name: "name",
+        script: "script",
+        useSqlite: "use_sqlite",
+      }),
+    ),
+) as unknown as Schema.Codec<ListNamespacesResponseResult>;
+
+interface ListNamespacesResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListNamespacesResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListNamespacesResponseResultInfo>;
+
+interface ListNamespaceObjectsResponseResult {
+  /** ID of the Durable Object. */
+  id?: string | null;
+  /** Whether the Durable Object has stored data. */
+  hasStoredData?: boolean | null;
+}
+const ListNamespaceObjectsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hasStoredData: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListNamespaceObjectsResponseResult>;
+
+interface ListNamespaceObjectsResponseResultInfoCursors {
+  after?: string | null;
+}
+const ListNamespaceObjectsResponseResultInfoCursors =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<ListNamespaceObjectsResponseResultInfoCursors>;
+
+interface ListNamespaceObjectsResponseResultInfo {
+  cursors?: { after?: string | null } | null;
+}
+const ListNamespaceObjectsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cursors: Schema.optional(
+        Schema.Union([
+          ListNamespaceObjectsResponseResultInfoCursors,
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListNamespaceObjectsResponseResultInfo>;
+
+// =============================================================================
 // Namespace
 // =============================================================================
 
@@ -63,7 +157,7 @@ export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/workers/durable_objects/namespaces",
       }),
     ),
-) as unknown as Schema.Schema<ListNamespacesRequest>;
+) as unknown as Schema.Codec<ListNamespacesRequest>;
 
 export interface ListNamespacesResponse {
   result: {
@@ -84,49 +178,12 @@ export interface ListNamespacesResponse {
 export const ListNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          class: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          useSqlite: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            class: "class",
-            name: "name",
-            script: "script",
-            useSqlite: "use_sqlite",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListNamespacesResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListNamespacesResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListNamespacesResponse>;
+  ) as unknown as Schema.Codec<ListNamespacesResponse>;
 
 export type ListNamespacesError = DefaultErrors | InvalidIdentifier;
 
@@ -174,7 +231,7 @@ export const ListNamespaceObjectsRequest =
         path: "/accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects",
       }),
     ),
-  ) as unknown as Schema.Schema<ListNamespaceObjectsRequest>;
+  ) as unknown as Schema.Codec<ListNamespaceObjectsRequest>;
 
 export interface ListNamespaceObjectsResponse {
   result: { id?: string | null; hasStoredData?: boolean | null }[];
@@ -184,33 +241,12 @@ export interface ListNamespaceObjectsResponse {
 export const ListNamespaceObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          hasStoredData: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }),
-      ),
+      result: Schema.Array(ListNamespaceObjectsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            cursors: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  after: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ListNamespaceObjectsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListNamespaceObjectsResponse>;
+  ) as unknown as Schema.Codec<ListNamespaceObjectsResponse>;
 
 export type ListNamespaceObjectsError =
   | DefaultErrors

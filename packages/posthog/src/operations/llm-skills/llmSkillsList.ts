@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmSkillsListInput {
+  project_id: string;
+  category?: string;
+  created_by_id?: number;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const LlmSkillsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   category: Schema.optional(Schema.String),
@@ -12,10 +20,54 @@ export const LlmSkillsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   search: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/llm_skills/" }),
-);
-export type LlmSkillsListInput = typeof LlmSkillsListInput.Type;
+) as unknown as Schema.Codec<LlmSkillsListInput>;
 
 // Output Schema
+export interface LlmSkillsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    license?: string;
+    compatibility?: string;
+    allowed_tools?: string[];
+    metadata?: Record<string, unknown>;
+    category?: string;
+    outline?: { level?: number; text?: string }[];
+    version?: number;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string;
+    updated_at?: string;
+    deleted?: boolean;
+    is_latest?: boolean;
+    latest_version?: number;
+    version_count?: number;
+    first_version_created_at?: string;
+  }[];
+}
 export const LlmSkillsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -53,7 +105,23 @@ export const LlmSkillsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -67,8 +135,7 @@ export const LlmSkillsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type LlmSkillsListOutput = typeof LlmSkillsListOutput.Type;
+}) as unknown as Schema.Codec<LlmSkillsListOutput>;
 
 // The operation
 /**

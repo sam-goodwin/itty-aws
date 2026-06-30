@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface ApplicationsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  organization_id?: string;
+}
 export const ApplicationsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -11,11 +18,25 @@ export const ApplicationsControllerListInput =
     limit: Schema.optional(Schema.Number),
     order: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/connect/applications" }));
-export type ApplicationsControllerListInput =
-  typeof ApplicationsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/connect/applications" }),
+  ) as unknown as Schema.Codec<ApplicationsControllerListInput>;
 
 // Output Schema
+export interface ApplicationsControllerListOutput {
+  object?: string;
+  data?: {
+    object: string;
+    id: string;
+    client_id: string;
+    description: string | null;
+    name: string;
+    scopes: string[];
+    created_at: string;
+    updated_at: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const ApplicationsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -39,9 +60,7 @@ export const ApplicationsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ApplicationsControllerListOutput =
-  typeof ApplicationsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsControllerListOutput>;
 
 // The operation
 /**

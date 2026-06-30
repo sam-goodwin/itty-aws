@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface EngineeringAnalyticsWorkflowJobsInput {
+  project_id: string;
+  run_attempt?: number;
+  run_id: number;
+  source_id?: string;
+}
 export const EngineeringAnalyticsWorkflowJobsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,22 @@ export const EngineeringAnalyticsWorkflowJobsInput =
       method: "GET",
       path: "/api/projects/{project_id}/engineering_analytics/workflow_jobs/",
     }),
-  );
-export type EngineeringAnalyticsWorkflowJobsInput =
-  typeof EngineeringAnalyticsWorkflowJobsInput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsWorkflowJobsInput>;
 
 // Output Schema
+export type EngineeringAnalyticsWorkflowJobsOutput = {
+  id: number;
+  run_id: number;
+  name: string;
+  status: string;
+  conclusion: string | null;
+  started_at: string | null;
+  completed_at: string | null;
+  duration_seconds: number | null;
+  runner_provider: string;
+  runner_label: string;
+  estimated_cost_usd: number | null;
+}[];
 export const EngineeringAnalyticsWorkflowJobsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -35,9 +52,7 @@ export const EngineeringAnalyticsWorkflowJobsOutput =
       runner_label: Schema.String,
       estimated_cost_usd: Schema.NullOr(Schema.Number),
     }),
-  );
-export type EngineeringAnalyticsWorkflowJobsOutput =
-  typeof EngineeringAnalyticsWorkflowJobsOutput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsWorkflowJobsOutput>;
 
 // The operation
 /**

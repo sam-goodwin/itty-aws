@@ -3,18 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface UserlandUsersControllerGetPasswordResetInput {
+  id: string;
+}
 export const UserlandUsersControllerGetPasswordResetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/password_reset/{id}" }),
-  );
-export type UserlandUsersControllerGetPasswordResetInput =
-  typeof UserlandUsersControllerGetPasswordResetInput.Type;
+  ) as unknown as Schema.Codec<UserlandUsersControllerGetPasswordResetInput>;
 
 // Output Schema
+export interface UserlandUsersControllerGetPasswordResetOutput {
+  object?: string;
+  id?: string;
+  user_id?: string;
+  email?: string;
+  expires_at?: string;
+  created_at?: string;
+  password_reset_token?: Redacted.Redacted<string>;
+  password_reset_url?: Redacted.Redacted<string>;
+}
 export const UserlandUsersControllerGetPasswordResetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -25,9 +37,7 @@ export const UserlandUsersControllerGetPasswordResetOutput =
     created_at: Schema.optional(Schema.String),
     password_reset_token: Schema.optional(SensitiveOutputString),
     password_reset_url: Schema.optional(SensitiveOutputString),
-  });
-export type UserlandUsersControllerGetPasswordResetOutput =
-  typeof UserlandUsersControllerGetPasswordResetOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerGetPasswordResetOutput>;
 
 // The operation
 /**

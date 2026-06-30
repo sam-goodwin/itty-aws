@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ElementsCreateInput {
+  project_id: string;
+  text?: string | null;
+  tag_name?: string | null;
+  attr_class?: string[] | null;
+  href?: string | null;
+  attr_id?: string | null;
+  nth_child?: number | null;
+  nth_of_type?: number | null;
+  attributes?: unknown;
+  order?: number | null;
+}
 export const ElementsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   text: Schema.optional(Schema.NullOr(Schema.String)),
@@ -17,10 +29,20 @@ export const ElementsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   order: Schema.optional(Schema.NullOr(Schema.Number)),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/elements/" }),
-);
-export type ElementsCreateInput = typeof ElementsCreateInput.Type;
+) as unknown as Schema.Codec<ElementsCreateInput>;
 
 // Output Schema
+export interface ElementsCreateOutput {
+  text?: string | null;
+  tag_name?: string | null;
+  attr_class?: string[] | null;
+  href?: string | null;
+  attr_id?: string | null;
+  nth_child?: number | null;
+  nth_of_type?: number | null;
+  attributes?: unknown;
+  order?: number | null;
+}
 export const ElementsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   text: Schema.optional(Schema.NullOr(Schema.String)),
   tag_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -31,8 +53,7 @@ export const ElementsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nth_of_type: Schema.optional(Schema.NullOr(Schema.Number)),
   attributes: Schema.optional(Schema.Unknown),
   order: Schema.optional(Schema.NullOr(Schema.Number)),
-});
-export type ElementsCreateOutput = typeof ElementsCreateOutput.Type;
+}) as unknown as Schema.Codec<ElementsCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EngineeringAnalyticsPrLifecycleInput {
+  project_id: string;
+  pr_number: number;
+  repo: string;
+  source_id?: string;
+}
 export const EngineeringAnalyticsPrLifecycleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,35 @@ export const EngineeringAnalyticsPrLifecycleInput =
       method: "GET",
       path: "/api/projects/{project_id}/engineering_analytics/pr_lifecycle/",
     }),
-  );
-export type EngineeringAnalyticsPrLifecycleInput =
-  typeof EngineeringAnalyticsPrLifecycleInput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsPrLifecycleInput>;
 
 // Output Schema
+export interface EngineeringAnalyticsPrLifecycleOutput {
+  pull_request: {
+    author: {
+      handle: string;
+      display_name: string;
+      avatar_url: string;
+      is_bot: boolean;
+    };
+    repo: { provider: string; owner: string; name: string };
+    id: number;
+    number: number;
+    title: string;
+    state: "open" | "closed" | "merged";
+    is_draft: boolean;
+    created_at: string;
+    merged_at: string | null;
+    closed_at: string | null;
+  };
+  events: {
+    kind: "opened" | "ci_started" | "ci_finished" | "merged" | "closed";
+    at: string;
+    detail?: string | null;
+    run_id?: number | null;
+  }[];
+  metric_quality?: "precise" | "coarse" | "partial";
+}
 export const EngineeringAnalyticsPrLifecycleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pull_request: Schema.Struct({
@@ -60,9 +90,7 @@ export const EngineeringAnalyticsPrLifecycleOutput =
     metric_quality: Schema.optional(
       Schema.Literals(["precise", "coarse", "partial"]),
     ),
-  });
-export type EngineeringAnalyticsPrLifecycleOutput =
-  typeof EngineeringAnalyticsPrLifecycleOutput.Type;
+  }) as unknown as Schema.Codec<EngineeringAnalyticsPrLifecycleOutput>;
 
 // The operation
 /**

@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsBatchByDistinctIdsCreateInput {
+  project_id: string;
+  format?: "csv" | "json";
+  id?: number;
+  name?: string;
+  distinct_ids?: string[];
+  properties?: unknown;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+}
 export const PersonsBatchByDistinctIdsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -20,15 +31,12 @@ export const PersonsBatchByDistinctIdsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/persons/batch_by_distinct_ids/",
     }),
-  );
-export type PersonsBatchByDistinctIdsCreateInput =
-  typeof PersonsBatchByDistinctIdsCreateInput.Type;
+  ) as unknown as Schema.Codec<PersonsBatchByDistinctIdsCreateInput>;
 
 // Output Schema
+export type PersonsBatchByDistinctIdsCreateOutput = void;
 export const PersonsBatchByDistinctIdsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PersonsBatchByDistinctIdsCreateOutput =
-  typeof PersonsBatchByDistinctIdsCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsBatchByDistinctIdsCreateOutput>;
 
 // The operation
 /**

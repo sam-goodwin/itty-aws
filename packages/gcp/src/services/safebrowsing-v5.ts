@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit {
   encodedData?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit: Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit> =
+export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit: Schema.Codec<GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     riceParameter: Schema.optional(Schema.Number),
     entriesCount: Schema.optional(Schema.Number),
@@ -60,7 +60,7 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit {
   entriesCount?: number;
 }
 
-export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit: Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit> =
+export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit: Schema.Codec<GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstValueFirstPart: Schema.optional(Schema.String),
     firstValueSecondPart: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit {
   encodedData?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit: Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit> =
+export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit: Schema.Codec<GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firstValue: Schema.optional(Schema.Number),
     riceParameter: Schema.optional(Schema.Number),
@@ -109,7 +109,7 @@ export interface GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
   >;
 }
 
-export const GoogleSecuritySafebrowsingV5FullHashFullHashDetail: Schema.Schema<GoogleSecuritySafebrowsingV5FullHashFullHashDetail> =
+export const GoogleSecuritySafebrowsingV5FullHashFullHashDetail: Schema.Codec<GoogleSecuritySafebrowsingV5FullHashFullHashDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threatType: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(Schema.String)),
@@ -131,7 +131,7 @@ export interface GoogleSecuritySafebrowsingV5ThreatUrl {
   >;
 }
 
-export const GoogleSecuritySafebrowsingV5ThreatUrl: Schema.Schema<GoogleSecuritySafebrowsingV5ThreatUrl> =
+export const GoogleSecuritySafebrowsingV5ThreatUrl: Schema.Codec<GoogleSecuritySafebrowsingV5ThreatUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     threatTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -144,7 +144,7 @@ export interface GoogleSecuritySafebrowsingV5SearchUrlsResponse {
   threats?: ReadonlyArray<GoogleSecuritySafebrowsingV5ThreatUrl>;
 }
 
-export const GoogleSecuritySafebrowsingV5SearchUrlsResponse: Schema.Schema<GoogleSecuritySafebrowsingV5SearchUrlsResponse> =
+export const GoogleSecuritySafebrowsingV5SearchUrlsResponse: Schema.Codec<GoogleSecuritySafebrowsingV5SearchUrlsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cacheDuration: Schema.optional(Schema.String),
     threats: Schema.optional(
@@ -182,7 +182,7 @@ export interface GoogleSecuritySafebrowsingV5HashListMetadata {
   description?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5HashListMetadata: Schema.Schema<GoogleSecuritySafebrowsingV5HashListMetadata> =
+export const GoogleSecuritySafebrowsingV5HashListMetadata: Schema.Codec<GoogleSecuritySafebrowsingV5HashListMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hashLength: Schema.optional(Schema.String),
     threatTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -203,7 +203,7 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit {
   riceParameter?: number;
 }
 
-export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit: Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit> =
+export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit: Schema.Codec<GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encodedData: Schema.optional(Schema.String),
     entriesCount: Schema.optional(Schema.Number),
@@ -239,7 +239,7 @@ export interface GoogleSecuritySafebrowsingV5HashList {
   partialUpdate?: boolean;
 }
 
-export const GoogleSecuritySafebrowsingV5HashList: Schema.Schema<GoogleSecuritySafebrowsingV5HashList> =
+export const GoogleSecuritySafebrowsingV5HashList: Schema.Codec<GoogleSecuritySafebrowsingV5HashList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionsSixteenBytes: Schema.optional(
       GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit,
@@ -269,7 +269,7 @@ export interface GoogleSecuritySafebrowsingV5BatchGetHashListsResponse {
   hashLists?: ReadonlyArray<GoogleSecuritySafebrowsingV5HashList>;
 }
 
-export const GoogleSecuritySafebrowsingV5BatchGetHashListsResponse: Schema.Schema<GoogleSecuritySafebrowsingV5BatchGetHashListsResponse> =
+export const GoogleSecuritySafebrowsingV5BatchGetHashListsResponse: Schema.Codec<GoogleSecuritySafebrowsingV5BatchGetHashListsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hashLists: Schema.optional(
       Schema.Array(GoogleSecuritySafebrowsingV5HashList),
@@ -285,7 +285,7 @@ export interface GoogleSecuritySafebrowsingV5FullHash {
   fullHash?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5FullHash: Schema.Schema<GoogleSecuritySafebrowsingV5FullHash> =
+export const GoogleSecuritySafebrowsingV5FullHash: Schema.Codec<GoogleSecuritySafebrowsingV5FullHash> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullHashDetails: Schema.optional(
       Schema.Array(GoogleSecuritySafebrowsingV5FullHashFullHashDetail),
@@ -300,7 +300,7 @@ export interface GoogleSecuritySafebrowsingV5SearchHashesResponse {
   cacheDuration?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5SearchHashesResponse: Schema.Schema<GoogleSecuritySafebrowsingV5SearchHashesResponse> =
+export const GoogleSecuritySafebrowsingV5SearchHashesResponse: Schema.Codec<GoogleSecuritySafebrowsingV5SearchHashesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullHashes: Schema.optional(
       Schema.Array(GoogleSecuritySafebrowsingV5FullHash),
@@ -317,7 +317,7 @@ export interface GoogleSecuritySafebrowsingV5ListHashListsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5ListHashListsResponse: Schema.Schema<GoogleSecuritySafebrowsingV5ListHashListsResponse> =
+export const GoogleSecuritySafebrowsingV5ListHashListsResponse: Schema.Codec<GoogleSecuritySafebrowsingV5ListHashListsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hashLists: Schema.optional(
       Schema.Array(GoogleSecuritySafebrowsingV5HashList),
@@ -371,7 +371,7 @@ export const ListHashListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v5/hashLists" }),
   svc,
-) as unknown as Schema.Schema<ListHashListsRequest>;
+) as unknown as Schema.Codec<ListHashListsRequest>;
 
 export type ListHashListsResponse =
   GoogleSecuritySafebrowsingV5ListHashListsResponse;
@@ -424,7 +424,7 @@ export const BatchGetHashListsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v5/hashLists:batchGet" }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetHashListsRequest>;
+  ) as unknown as Schema.Codec<BatchGetHashListsRequest>;
 
 export type BatchGetHashListsResponse =
   GoogleSecuritySafebrowsingV5BatchGetHashListsResponse;
@@ -455,7 +455,7 @@ export const SearchUrlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v5/urls:search" }),
   svc,
-) as unknown as Schema.Schema<SearchUrlsRequest>;
+) as unknown as Schema.Codec<SearchUrlsRequest>;
 
 export type SearchUrlsResponse = GoogleSecuritySafebrowsingV5SearchUrlsResponse;
 export const SearchUrlsResponse =
@@ -487,7 +487,7 @@ export const SearchHashesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v5/hashes:search" }),
   svc,
-) as unknown as Schema.Schema<SearchHashesRequest>;
+) as unknown as Schema.Codec<SearchHashesRequest>;
 
 export type SearchHashesResponse =
   GoogleSecuritySafebrowsingV5SearchHashesResponse;
@@ -531,7 +531,7 @@ export const GetHashListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v5/hashList/{name}" }),
   svc,
-) as unknown as Schema.Schema<GetHashListRequest>;
+) as unknown as Schema.Codec<GetHashListRequest>;
 
 export type GetHashListResponse = GoogleSecuritySafebrowsingV5HashList;
 export const GetHashListResponse =

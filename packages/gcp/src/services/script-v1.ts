@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface ExecutionRequest {
   parameters?: ReadonlyArray<unknown>;
 }
 
-export const ExecutionRequest: Schema.Schema<ExecutionRequest> =
+export const ExecutionRequest: Schema.Codec<ExecutionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionState: Schema.optional(Schema.String),
     devMode: Schema.optional(Schema.Boolean),
@@ -58,7 +58,7 @@ export interface GoogleAppsScriptTypeWebAppConfig {
     | (string & {});
 }
 
-export const GoogleAppsScriptTypeWebAppConfig: Schema.Schema<GoogleAppsScriptTypeWebAppConfig> =
+export const GoogleAppsScriptTypeWebAppConfig: Schema.Codec<GoogleAppsScriptTypeWebAppConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     access: Schema.optional(Schema.String),
     executeAs: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface GoogleAppsScriptTypeWebAppEntryPoint {
   url?: string;
 }
 
-export const GoogleAppsScriptTypeWebAppEntryPoint: Schema.Schema<GoogleAppsScriptTypeWebAppEntryPoint> =
+export const GoogleAppsScriptTypeWebAppEntryPoint: Schema.Codec<GoogleAppsScriptTypeWebAppEntryPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryPointConfig: Schema.optional(GoogleAppsScriptTypeWebAppConfig),
     url: Schema.optional(Schema.String),
@@ -88,7 +88,7 @@ export interface DeploymentConfig {
   manifestFileName?: string;
 }
 
-export const DeploymentConfig: Schema.Schema<DeploymentConfig> =
+export const DeploymentConfig: Schema.Codec<DeploymentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptId: Schema.optional(Schema.String),
     versionNumber: Schema.optional(Schema.Number),
@@ -107,7 +107,7 @@ export interface GoogleAppsScriptTypeExecutionApiConfig {
     | (string & {});
 }
 
-export const GoogleAppsScriptTypeExecutionApiConfig: Schema.Schema<GoogleAppsScriptTypeExecutionApiConfig> =
+export const GoogleAppsScriptTypeExecutionApiConfig: Schema.Codec<GoogleAppsScriptTypeExecutionApiConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     access: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAppsScriptTypeExecutionApiConfig" });
@@ -117,7 +117,7 @@ export interface GoogleAppsScriptTypeExecutionApiEntryPoint {
   entryPointConfig?: GoogleAppsScriptTypeExecutionApiConfig;
 }
 
-export const GoogleAppsScriptTypeExecutionApiEntryPoint: Schema.Schema<GoogleAppsScriptTypeExecutionApiEntryPoint> =
+export const GoogleAppsScriptTypeExecutionApiEntryPoint: Schema.Codec<GoogleAppsScriptTypeExecutionApiEntryPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryPointConfig: Schema.optional(GoogleAppsScriptTypeExecutionApiConfig),
   }).annotate({ identifier: "GoogleAppsScriptTypeExecutionApiEntryPoint" });
@@ -137,7 +137,7 @@ export interface GoogleAppsScriptTypeAddOnEntryPoint {
   reportIssueUrl?: string;
 }
 
-export const GoogleAppsScriptTypeAddOnEntryPoint: Schema.Schema<GoogleAppsScriptTypeAddOnEntryPoint> =
+export const GoogleAppsScriptTypeAddOnEntryPoint: Schema.Codec<GoogleAppsScriptTypeAddOnEntryPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -163,7 +163,7 @@ export interface EntryPoint {
   addOn?: GoogleAppsScriptTypeAddOnEntryPoint;
 }
 
-export const EntryPoint: Schema.Schema<EntryPoint> =
+export const EntryPoint: Schema.Codec<EntryPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryPointType: Schema.optional(Schema.String),
     executionApi: Schema.optional(GoogleAppsScriptTypeExecutionApiEntryPoint),
@@ -182,7 +182,7 @@ export interface Deployment {
   entryPoints?: ReadonlyArray<EntryPoint>;
 }
 
-export const Deployment: Schema.Schema<Deployment> =
+export const Deployment: Schema.Codec<Deployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentId: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -197,7 +197,7 @@ export interface ListDeploymentsResponse {
   deployments?: ReadonlyArray<Deployment>;
 }
 
-export const ListDeploymentsResponse: Schema.Schema<ListDeploymentsResponse> =
+export const ListDeploymentsResponse: Schema.Codec<ListDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     deployments: Schema.optional(Schema.Array(Deployment)),
@@ -212,7 +212,7 @@ export interface MetricsValue {
   endTime?: string;
 }
 
-export const MetricsValue: Schema.Schema<MetricsValue> =
+export const MetricsValue: Schema.Codec<MetricsValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -228,7 +228,7 @@ export interface Metrics {
   totalExecutions?: ReadonlyArray<MetricsValue>;
 }
 
-export const Metrics: Schema.Schema<Metrics> =
+export const Metrics: Schema.Codec<Metrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activeUsers: Schema.optional(Schema.Array(MetricsValue)),
     failedExecutions: Schema.optional(Schema.Array(MetricsValue)),
@@ -244,7 +244,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -262,7 +262,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -276,7 +276,7 @@ export interface GoogleAppsScriptTypeFunction {
   name?: string;
 }
 
-export const GoogleAppsScriptTypeFunction: Schema.Schema<GoogleAppsScriptTypeFunction> =
+export const GoogleAppsScriptTypeFunction: Schema.Codec<GoogleAppsScriptTypeFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -287,7 +287,7 @@ export interface GoogleAppsScriptTypeFunctionSet {
   values?: ReadonlyArray<GoogleAppsScriptTypeFunction>;
 }
 
-export const GoogleAppsScriptTypeFunctionSet: Schema.Schema<GoogleAppsScriptTypeFunctionSet> =
+export const GoogleAppsScriptTypeFunctionSet: Schema.Codec<GoogleAppsScriptTypeFunctionSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(GoogleAppsScriptTypeFunction)),
   }).annotate({ identifier: "GoogleAppsScriptTypeFunctionSet" });
@@ -297,7 +297,7 @@ export interface UpdateDeploymentRequest {
   deploymentConfig?: DeploymentConfig;
 }
 
-export const UpdateDeploymentRequest: Schema.Schema<UpdateDeploymentRequest> =
+export const UpdateDeploymentRequest: Schema.Codec<UpdateDeploymentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentConfig: Schema.optional(DeploymentConfig),
   }).annotate({ identifier: "UpdateDeploymentRequest" });
@@ -313,7 +313,7 @@ export interface GoogleAppsScriptTypeUser {
   domain?: string;
 }
 
-export const GoogleAppsScriptTypeUser: Schema.Schema<GoogleAppsScriptTypeUser> =
+export const GoogleAppsScriptTypeUser: Schema.Codec<GoogleAppsScriptTypeUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -343,7 +343,7 @@ export interface File {
   updateTime?: string;
 }
 
-export const File: Schema.Schema<File> =
+export const File: Schema.Codec<File> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     functionSet: Schema.optional(GoogleAppsScriptTypeFunctionSet),
@@ -361,7 +361,7 @@ export interface CreateProjectRequest {
   title?: string;
 }
 
-export const CreateProjectRequest: Schema.Schema<CreateProjectRequest> =
+export const CreateProjectRequest: Schema.Codec<CreateProjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parentId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -418,7 +418,7 @@ export interface GoogleAppsScriptTypeProcess {
     | (string & {});
 }
 
-export const GoogleAppsScriptTypeProcess: Schema.Schema<GoogleAppsScriptTypeProcess> =
+export const GoogleAppsScriptTypeProcess: Schema.Codec<GoogleAppsScriptTypeProcess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userAccessLevel: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -437,7 +437,7 @@ export interface ListUserProcessesResponse {
   nextPageToken?: string;
 }
 
-export const ListUserProcessesResponse: Schema.Schema<ListUserProcessesResponse> =
+export const ListUserProcessesResponse: Schema.Codec<ListUserProcessesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processes: Schema.optional(Schema.Array(GoogleAppsScriptTypeProcess)),
     nextPageToken: Schema.optional(Schema.String),
@@ -454,7 +454,7 @@ export interface Version {
   createTime?: string;
 }
 
-export const Version: Schema.Schema<Version> =
+export const Version: Schema.Codec<Version> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptId: Schema.optional(Schema.String),
     versionNumber: Schema.optional(Schema.Number),
@@ -469,7 +469,7 @@ export interface ScriptStackTraceElement {
   lineNumber?: number;
 }
 
-export const ScriptStackTraceElement: Schema.Schema<ScriptStackTraceElement> =
+export const ScriptStackTraceElement: Schema.Codec<ScriptStackTraceElement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     function: Schema.optional(Schema.String),
     lineNumber: Schema.optional(Schema.Number),
@@ -477,7 +477,7 @@ export const ScriptStackTraceElement: Schema.Schema<ScriptStackTraceElement> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -487,7 +487,7 @@ export interface ExecutionResponse {
   result?: unknown;
 }
 
-export const ExecutionResponse: Schema.Schema<ExecutionResponse> =
+export const ExecutionResponse: Schema.Codec<ExecutionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Unknown),
   }).annotate({ identifier: "ExecutionResponse" });
@@ -499,7 +499,7 @@ export interface ListVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
+export const ListVersionsResponse: Schema.Codec<ListVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versions: Schema.optional(Schema.Array(Version)),
     nextPageToken: Schema.optional(Schema.String),
@@ -522,7 +522,7 @@ export interface Project {
   lastModifyUser?: GoogleAppsScriptTypeUser;
 }
 
-export const Project: Schema.Schema<Project> =
+export const Project: Schema.Codec<Project> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     scriptId: Schema.optional(Schema.String),
@@ -542,7 +542,7 @@ export interface ExecutionError {
   errorType?: string;
 }
 
-export const ExecutionError: Schema.Schema<ExecutionError> =
+export const ExecutionError: Schema.Codec<ExecutionError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptStackTraceElements: Schema.optional(
       Schema.Array(ScriptStackTraceElement),
@@ -558,7 +558,7 @@ export interface Content {
   scriptId?: string;
 }
 
-export const Content: Schema.Schema<Content> =
+export const Content: Schema.Codec<Content> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Array(File)),
     scriptId: Schema.optional(Schema.String),
@@ -571,7 +571,7 @@ export interface ListScriptProcessesResponse {
   processes?: ReadonlyArray<GoogleAppsScriptTypeProcess>;
 }
 
-export const ListScriptProcessesResponse: Schema.Schema<ListScriptProcessesResponse> =
+export const ListScriptProcessesResponse: Schema.Codec<ListScriptProcessesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     processes: Schema.optional(Schema.Array(GoogleAppsScriptTypeProcess)),
@@ -717,7 +717,7 @@ export const ListProcessesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/processes" }),
   svc,
-) as unknown as Schema.Schema<ListProcessesRequest>;
+) as unknown as Schema.Codec<ListProcessesRequest>;
 
 export type ListProcessesResponse = ListUserProcessesResponse;
 export const ListProcessesResponse =
@@ -821,7 +821,7 @@ export const ListScriptProcessesProcessesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/processes:listScriptProcesses" }),
     svc,
-  ) as unknown as Schema.Schema<ListScriptProcessesProcessesRequest>;
+  ) as unknown as Schema.Codec<ListScriptProcessesProcessesRequest>;
 
 export type ListScriptProcessesProcessesResponse = ListScriptProcessesResponse;
 export const ListScriptProcessesProcessesResponse =
@@ -861,7 +861,7 @@ export const RunScriptsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/scripts/{scriptId}:run", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<RunScriptsRequest>;
+) as unknown as Schema.Codec<RunScriptsRequest>;
 
 export type RunScriptsResponse = Operation;
 export const RunScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -900,7 +900,7 @@ export const GetContentProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{scriptId}/content" }),
     svc,
-  ) as unknown as Schema.Schema<GetContentProjectsRequest>;
+  ) as unknown as Schema.Codec<GetContentProjectsRequest>;
 
 export type GetContentProjectsResponse = Content;
 export const GetContentProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Content;
@@ -937,7 +937,7 @@ export const UpdateContentProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateContentProjectsRequest>;
+  ) as unknown as Schema.Codec<UpdateContentProjectsRequest>;
 
 export type UpdateContentProjectsResponse = Content;
 export const UpdateContentProjectsResponse =
@@ -972,7 +972,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/projects/{scriptId}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
+) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -1016,7 +1016,7 @@ export const GetMetricsProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{scriptId}/metrics" }),
     svc,
-  ) as unknown as Schema.Schema<GetMetricsProjectsRequest>;
+  ) as unknown as Schema.Codec<GetMetricsProjectsRequest>;
 
 export type GetMetricsProjectsResponse = Metrics;
 export const GetMetricsProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Metrics;
@@ -1045,7 +1045,7 @@ export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/projects", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateProjectsRequest>;
+) as unknown as Schema.Codec<CreateProjectsRequest>;
 
 export type CreateProjectsResponse = Project;
 export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -1086,7 +1086,7 @@ export const DeleteProjectsDeploymentsRequest =
       path: "v1/projects/{scriptId}/deployments/{deploymentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsDeploymentsRequest>;
 
 export type DeleteProjectsDeploymentsResponse = Empty;
 export const DeleteProjectsDeploymentsResponse =
@@ -1128,7 +1128,7 @@ export const GetProjectsDeploymentsRequest =
       path: "v1/projects/{scriptId}/deployments/{deploymentId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDeploymentsRequest>;
 
 export type GetProjectsDeploymentsResponse = Deployment;
 export const GetProjectsDeploymentsResponse =
@@ -1166,7 +1166,7 @@ export const CreateProjectsDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDeploymentsRequest>;
 
 export type CreateProjectsDeploymentsResponse = Deployment;
 export const CreateProjectsDeploymentsResponse =
@@ -1208,7 +1208,7 @@ export const ListProjectsDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{scriptId}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDeploymentsRequest>;
 
 export type ListProjectsDeploymentsResponse = ListDeploymentsResponse;
 export const ListProjectsDeploymentsResponse =
@@ -1253,7 +1253,7 @@ export const UpdateProjectsDeploymentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsDeploymentsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsDeploymentsRequest>;
 
 export type UpdateProjectsDeploymentsResponse = Deployment;
 export const UpdateProjectsDeploymentsResponse =
@@ -1296,7 +1296,7 @@ export const CreateProjectsVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsVersionsRequest>;
 
 export type CreateProjectsVersionsResponse = Version;
 export const CreateProjectsVersionsResponse =
@@ -1338,7 +1338,7 @@ export const ListProjectsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{scriptId}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsVersionsRequest>;
 
 export type ListProjectsVersionsResponse = ListVersionsResponse;
 export const ListProjectsVersionsResponse =
@@ -1379,7 +1379,7 @@ export const GetProjectsVersionsRequest =
       path: "v1/projects/{scriptId}/versions/{versionNumber}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsVersionsRequest>;
 
 export type GetProjectsVersionsResponse = Version;
 export const GetProjectsVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;

@@ -3,17 +3,56 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostV1ConnectionsInput {
+  databaseId: string;
+  name: string;
+}
 export const PostV1ConnectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     databaseId: Schema.String,
     name: Schema.String,
   },
-).pipe(T.Http({ method: "POST", path: "/v1/connections" }));
-export type PostV1ConnectionsInput = typeof PostV1ConnectionsInput.Type;
+).pipe(
+  T.Http({ method: "POST", path: "/v1/connections" }),
+) as unknown as Schema.Codec<PostV1ConnectionsInput>;
 
 // Output Schema
+export interface PostV1ConnectionsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+    kind: "postgres" | "accelerate";
+    endpoints: {
+      direct?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+      pooled?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+      accelerate?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+    };
+    connectionString: Redacted.Redacted<string>;
+    directConnection?: { host: string; pass: string; user: string } | null;
+    database: { id: string; url: string; name: string };
+    host: string | null;
+    pass: string | null;
+    user: string | null;
+  };
+}
 export const PostV1ConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -65,8 +104,7 @@ export const PostV1ConnectionsOutput =
       pass: Schema.NullOr(Schema.String),
       user: Schema.NullOr(Schema.String),
     }),
-  });
-export type PostV1ConnectionsOutput = typeof PostV1ConnectionsOutput.Type;
+  }) as unknown as Schema.Codec<PostV1ConnectionsOutput>;
 
 // The operation
 /**

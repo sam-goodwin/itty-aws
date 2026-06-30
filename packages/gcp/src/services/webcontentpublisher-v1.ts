@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface TosAcceptance {
   userAccepted?: boolean;
 }
 
-export const TosAcceptance: Schema.Schema<TosAcceptance> =
+export const TosAcceptance: Schema.Codec<TosAcceptance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signerTitle: Schema.optional(Schema.String),
     signer: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export interface RrmProduct {
   productTosUrl?: string;
 }
 
-export const RrmProduct: Schema.Schema<RrmProduct> =
+export const RrmProduct: Schema.Codec<RrmProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tosAcceptance: Schema.optional(TosAcceptance),
     enabled: Schema.optional(Schema.Boolean),
@@ -61,7 +61,7 @@ export interface DomainProperty {
   url?: string;
 }
 
-export const DomainProperty: Schema.Schema<DomainProperty> =
+export const DomainProperty: Schema.Codec<DomainProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ownershipVerified: Schema.optional(Schema.Boolean),
     url: Schema.optional(Schema.String),
@@ -82,7 +82,7 @@ export interface ContentPolicyStatus {
   policyInfoUrl?: string;
 }
 
-export const ContentPolicyStatus: Schema.Schema<ContentPolicyStatus> =
+export const ContentPolicyStatus: Schema.Codec<ContentPolicyStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     policyInfoUrl: Schema.optional(Schema.String),
@@ -95,7 +95,7 @@ export interface SlProduct {
   gcpProjectNumber?: string;
 }
 
-export const SlProduct: Schema.Schema<SlProduct> =
+export const SlProduct: Schema.Codec<SlProduct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     gcpProjectNumber: Schema.optional(Schema.String),
@@ -146,7 +146,7 @@ export interface Publication {
   primaryDomain?: DomainProperty;
 }
 
-export const Publication: Schema.Schema<Publication> =
+export const Publication: Schema.Codec<Publication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -177,7 +177,7 @@ export interface NewsletterConfig {
   customMessage?: string;
 }
 
-export const NewsletterConfig: Schema.Schema<NewsletterConfig> =
+export const NewsletterConfig: Schema.Codec<NewsletterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameRequired: Schema.optional(Schema.Boolean),
     customConsentText: Schema.optional(Schema.String),
@@ -198,14 +198,15 @@ export interface Cta {
   displayName?: string;
 }
 
-export const Cta: Schema.Schema<Cta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Cta: Schema.Codec<Cta> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     newsletterConfig: Schema.optional(NewsletterConfig),
     state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Cta" });
+  },
+).annotate({ identifier: "Cta" });
 
 export interface ListPublicationsResponse {
   /** Output only. The list of publications. */
@@ -214,7 +215,7 @@ export interface ListPublicationsResponse {
   nextPageToken?: string;
 }
 
-export const ListPublicationsResponse: Schema.Schema<ListPublicationsResponse> =
+export const ListPublicationsResponse: Schema.Codec<ListPublicationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publications: Schema.optional(Schema.Array(Publication)),
     nextPageToken: Schema.optional(Schema.String),
@@ -225,7 +226,7 @@ export interface CheckFreeAccessResponse {
   isAllowed?: boolean;
 }
 
-export const CheckFreeAccessResponse: Schema.Schema<CheckFreeAccessResponse> =
+export const CheckFreeAccessResponse: Schema.Codec<CheckFreeAccessResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isAllowed: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckFreeAccessResponse" });
@@ -237,7 +238,7 @@ export interface ListCtasResponse {
   nextPageToken?: string;
 }
 
-export const ListCtasResponse: Schema.Schema<ListCtasResponse> =
+export const ListCtasResponse: Schema.Codec<ListCtasResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ctas: Schema.optional(Schema.Array(Cta)),
     nextPageToken: Schema.optional(Schema.String),
@@ -316,7 +317,7 @@ export const CheckFreeAccessPublicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:checkFreeAccess" }),
     svc,
-  ) as unknown as Schema.Schema<CheckFreeAccessPublicationsRequest>;
+  ) as unknown as Schema.Codec<CheckFreeAccessPublicationsRequest>;
 
 export type CheckFreeAccessPublicationsResponse = CheckFreeAccessResponse;
 export const CheckFreeAccessPublicationsResponse =
@@ -362,7 +363,7 @@ export const CreateOrganizationsPublicationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsPublicationsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsPublicationsRequest>;
 
 export type CreateOrganizationsPublicationsResponse = Publication;
 export const CreateOrganizationsPublicationsResponse =
@@ -398,7 +399,7 @@ export const GetOrganizationsPublicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsPublicationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsPublicationsRequest>;
 
 export type GetOrganizationsPublicationsResponse = Publication;
 export const GetOrganizationsPublicationsResponse =
@@ -441,7 +442,7 @@ export const ListOrganizationsPublicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/publications" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsPublicationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsPublicationsRequest>;
 
 export type ListOrganizationsPublicationsResponse = ListPublicationsResponse;
 export const ListOrganizationsPublicationsResponse =
@@ -485,7 +486,7 @@ export const PatchOrganizationsPublicationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsPublicationsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsPublicationsRequest>;
 
 export type PatchOrganizationsPublicationsResponse = Publication;
 export const PatchOrganizationsPublicationsResponse =
@@ -527,7 +528,7 @@ export const CreateOrganizationsPublicationsCtasRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/ctas", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsPublicationsCtasRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsPublicationsCtasRequest>;
 
 export type CreateOrganizationsPublicationsCtasResponse = Cta;
 export const CreateOrganizationsPublicationsCtasResponse =
@@ -563,7 +564,7 @@ export const GetOrganizationsPublicationsCtasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsPublicationsCtasRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsPublicationsCtasRequest>;
 
 export type GetOrganizationsPublicationsCtasResponse = Cta;
 export const GetOrganizationsPublicationsCtasResponse =
@@ -603,7 +604,7 @@ export const ListOrganizationsPublicationsCtasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/ctas" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsPublicationsCtasRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsPublicationsCtasRequest>;
 
 export type ListOrganizationsPublicationsCtasResponse = ListCtasResponse;
 export const ListOrganizationsPublicationsCtasResponse =

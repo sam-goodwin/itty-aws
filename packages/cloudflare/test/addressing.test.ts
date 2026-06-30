@@ -479,7 +479,7 @@ describe("Addressing", () => {
     test("error - returns error for null loaDocumentId", () =>
       Addressing.getLoaDocument({
         accountId: accountId(),
-        loaDocumentId: null,
+        loaDocumentId: null as unknown as string,
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("LoaDocumentNotFound")),

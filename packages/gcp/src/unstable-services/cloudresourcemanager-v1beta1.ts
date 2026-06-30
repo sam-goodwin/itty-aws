@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface UndeleteFolderMetadata {}
 
-export const UndeleteFolderMetadata: Schema.Schema<UndeleteFolderMetadata> =
+export const UndeleteFolderMetadata: Schema.Codec<UndeleteFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteFolderMetadata",
   });
@@ -36,7 +36,7 @@ export interface ResourceId {
   id?: string;
 }
 
-export const ResourceId: Schema.Schema<ResourceId> =
+export const ResourceId: Schema.Codec<ResourceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface Project {
   parent?: ResourceId;
 }
 
-export const Project: Schema.Schema<Project> =
+export const Project: Schema.Codec<Project> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     projectNumber: Schema.optional(Schema.String),
@@ -95,7 +95,7 @@ export interface FolderOperationError {
     | (string & {});
 }
 
-export const FolderOperationError: Schema.Schema<FolderOperationError> =
+export const FolderOperationError: Schema.Codec<FolderOperationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessageId: Schema.optional(Schema.String),
   }).annotate({ identifier: "FolderOperationError" });
@@ -112,7 +112,7 @@ export interface AuditLogConfig {
     | (string & {});
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -142,7 +142,7 @@ export interface Expr {
   expression?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export interface Binding {
   members?: ReadonlyArray<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     condition: Schema.optional(Expr),
@@ -177,7 +177,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     version: Schema.optional(Schema.Number),
@@ -190,14 +190,14 @@ export interface Ancestor {
   resourceId?: ResourceId;
 }
 
-export const Ancestor: Schema.Schema<Ancestor> =
+export const Ancestor: Schema.Codec<Ancestor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(ResourceId),
   }).annotate({ identifier: "Ancestor" });
 
 export interface UndeleteProjectMetadata {}
 
-export const UndeleteProjectMetadata: Schema.Schema<UndeleteProjectMetadata> =
+export const UndeleteProjectMetadata: Schema.Codec<UndeleteProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteProjectMetadata",
   });
@@ -207,7 +207,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -217,7 +217,7 @@ export interface OrganizationOwner {
   directoryCustomerId?: string;
 }
 
-export const OrganizationOwner: Schema.Schema<OrganizationOwner> =
+export const OrganizationOwner: Schema.Codec<OrganizationOwner> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     directoryCustomerId: Schema.optional(Schema.String),
   }).annotate({ identifier: "OrganizationOwner" });
@@ -231,7 +231,7 @@ export interface CreateProjectMetadata {
   ready?: boolean;
 }
 
-export const CreateProjectMetadata: Schema.Schema<CreateProjectMetadata> =
+export const CreateProjectMetadata: Schema.Codec<CreateProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     gettable: Schema.optional(Schema.Boolean),
@@ -240,14 +240,14 @@ export const CreateProjectMetadata: Schema.Schema<CreateProjectMetadata> =
 
 export interface UpdateProjectMetadata {}
 
-export const UpdateProjectMetadata: Schema.Schema<UpdateProjectMetadata> =
+export const UpdateProjectMetadata: Schema.Codec<UpdateProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateProjectMetadata",
   });
 
 export interface DeleteTagKeyMetadata {}
 
-export const DeleteTagKeyMetadata: Schema.Schema<DeleteTagKeyMetadata> =
+export const DeleteTagKeyMetadata: Schema.Codec<DeleteTagKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteTagKeyMetadata",
   });
@@ -259,7 +259,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -280,7 +280,7 @@ export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOpe
   displayName?: string;
 }
 
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Codec<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
     sourceParent: Schema.optional(Schema.String),
@@ -293,7 +293,7 @@ export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperati
 
 export interface UndeleteOrganizationMetadata {}
 
-export const UndeleteOrganizationMetadata: Schema.Schema<UndeleteOrganizationMetadata> =
+export const UndeleteOrganizationMetadata: Schema.Codec<UndeleteOrganizationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteOrganizationMetadata",
   });
@@ -307,7 +307,7 @@ export interface ProjectCreationStatus {
   gettable?: boolean;
 }
 
-export const ProjectCreationStatus: Schema.Schema<ProjectCreationStatus> =
+export const ProjectCreationStatus: Schema.Codec<ProjectCreationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ready: Schema.optional(Schema.Boolean),
     createTime: Schema.optional(Schema.String),
@@ -319,28 +319,28 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
 
 export interface DeleteProjectMetadata {}
 
-export const DeleteProjectMetadata: Schema.Schema<DeleteProjectMetadata> =
+export const DeleteProjectMetadata: Schema.Codec<DeleteProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteProjectMetadata",
   });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface DeleteTagValueMetadata {}
 
-export const DeleteTagValueMetadata: Schema.Schema<DeleteTagValueMetadata> =
+export const DeleteTagValueMetadata: Schema.Codec<DeleteTagValueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteTagValueMetadata",
   });
@@ -354,7 +354,7 @@ export interface MoveFolderMetadata {
   destinationParent?: string;
 }
 
-export const MoveFolderMetadata: Schema.Schema<MoveFolderMetadata> =
+export const MoveFolderMetadata: Schema.Codec<MoveFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     sourceParent: Schema.optional(Schema.String),
@@ -363,7 +363,7 @@ export const MoveFolderMetadata: Schema.Schema<MoveFolderMetadata> =
 
 export interface UpdateTagKeyMetadata {}
 
-export const UpdateTagKeyMetadata: Schema.Schema<UpdateTagKeyMetadata> =
+export const UpdateTagKeyMetadata: Schema.Codec<UpdateTagKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateTagKeyMetadata",
   });
@@ -375,7 +375,7 @@ export interface ListProjectsResponse {
   nextPageToken?: string;
 }
 
-export const ListProjectsResponse: Schema.Schema<ListProjectsResponse> =
+export const ListProjectsResponse: Schema.Codec<ListProjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.optional(Schema.Array(Project)),
     nextPageToken: Schema.optional(Schema.String),
@@ -383,7 +383,7 @@ export const ListProjectsResponse: Schema.Schema<ListProjectsResponse> =
 
 export interface UpdateTagValueMetadata {}
 
-export const UpdateTagValueMetadata: Schema.Schema<UpdateTagValueMetadata> =
+export const UpdateTagValueMetadata: Schema.Codec<UpdateTagValueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateTagValueMetadata",
   });
@@ -393,28 +393,28 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface DeleteOrganizationMetadata {}
 
-export const DeleteOrganizationMetadata: Schema.Schema<DeleteOrganizationMetadata> =
+export const DeleteOrganizationMetadata: Schema.Codec<DeleteOrganizationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteOrganizationMetadata",
   });
 
 export interface CreateTagKeyMetadata {}
 
-export const CreateTagKeyMetadata: Schema.Schema<CreateTagKeyMetadata> =
+export const CreateTagKeyMetadata: Schema.Codec<CreateTagKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagKeyMetadata",
   });
 
 export interface CreateTagValueMetadata {}
 
-export const CreateTagValueMetadata: Schema.Schema<CreateTagValueMetadata> =
+export const CreateTagValueMetadata: Schema.Codec<CreateTagValueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagValueMetadata",
   });
@@ -424,7 +424,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -444,7 +444,7 @@ export interface FolderOperation {
   displayName?: string;
 }
 
-export const FolderOperation: Schema.Schema<FolderOperation> =
+export const FolderOperation: Schema.Codec<FolderOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
     sourceParent: Schema.optional(Schema.String),
@@ -454,21 +454,21 @@ export const FolderOperation: Schema.Schema<FolderOperation> =
 
 export interface MoveProjectMetadata {}
 
-export const MoveProjectMetadata: Schema.Schema<MoveProjectMetadata> =
+export const MoveProjectMetadata: Schema.Codec<MoveProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MoveProjectMetadata",
   });
 
 export interface DeleteTagBindingMetadata {}
 
-export const DeleteTagBindingMetadata: Schema.Schema<DeleteTagBindingMetadata> =
+export const DeleteTagBindingMetadata: Schema.Codec<DeleteTagBindingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteTagBindingMetadata",
   });
 
 export interface GetAncestryRequest {}
 
-export const GetAncestryRequest: Schema.Schema<GetAncestryRequest> =
+export const GetAncestryRequest: Schema.Codec<GetAncestryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GetAncestryRequest",
   });
@@ -480,7 +480,7 @@ export interface CreateFolderMetadata {
   displayName?: string;
 }
 
-export const CreateFolderMetadata: Schema.Schema<CreateFolderMetadata> =
+export const CreateFolderMetadata: Schema.Codec<CreateFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -488,7 +488,7 @@ export const CreateFolderMetadata: Schema.Schema<CreateFolderMetadata> =
 
 export interface UndeleteProjectRequest {}
 
-export const UndeleteProjectRequest: Schema.Schema<UndeleteProjectRequest> =
+export const UndeleteProjectRequest: Schema.Codec<UndeleteProjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteProjectRequest",
   });
@@ -498,14 +498,14 @@ export interface GetAncestryResponse {
   ancestor?: ReadonlyArray<Ancestor>;
 }
 
-export const GetAncestryResponse: Schema.Schema<GetAncestryResponse> =
+export const GetAncestryResponse: Schema.Codec<GetAncestryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ancestor: Schema.optional(Schema.Array(Ancestor)),
   }).annotate({ identifier: "GetAncestryResponse" });
 
 export interface CreateTagBindingMetadata {}
 
-export const CreateTagBindingMetadata: Schema.Schema<CreateTagBindingMetadata> =
+export const CreateTagBindingMetadata: Schema.Codec<CreateTagBindingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagBindingMetadata",
   });
@@ -525,7 +525,7 @@ export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOper
   destinationParent?: string;
 }
 
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Codec<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     operationType: Schema.optional(Schema.String),
@@ -555,7 +555,7 @@ export interface Organization {
     | (string & {});
 }
 
-export const Organization: Schema.Schema<Organization> =
+export const Organization: Schema.Codec<Organization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     creationTime: Schema.optional(Schema.String),
@@ -572,7 +572,7 @@ export interface ListOrganizationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOrganizationsResponse: Schema.Schema<ListOrganizationsResponse> =
+export const ListOrganizationsResponse: Schema.Codec<ListOrganizationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizations: Schema.optional(Schema.Array(Organization)),
     nextPageToken: Schema.optional(Schema.String),
@@ -580,14 +580,14 @@ export const ListOrganizationsResponse: Schema.Schema<ListOrganizationsResponse>
 
 export interface UpdateFolderMetadata {}
 
-export const UpdateFolderMetadata: Schema.Schema<UpdateFolderMetadata> =
+export const UpdateFolderMetadata: Schema.Codec<UpdateFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateFolderMetadata",
   });
 
 export interface DeleteFolderMetadata {}
 
-export const DeleteFolderMetadata: Schema.Schema<DeleteFolderMetadata> =
+export const DeleteFolderMetadata: Schema.Codec<DeleteFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteFolderMetadata",
   });
@@ -663,7 +663,7 @@ export const ListOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/organizations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsRequest>;
 
 export type ListOrganizationsResponse_Op = ListOrganizationsResponse;
 export const ListOrganizationsResponse_Op =
@@ -703,7 +703,7 @@ export const GetOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsRequest>;
 
 export type GetOrganizationsResponse = Organization;
 export const GetOrganizationsResponse =
@@ -741,7 +741,7 @@ export const GetIamPolicyOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyOrganizationsRequest>;
 
 export type GetIamPolicyOrganizationsResponse = Policy;
 export const GetIamPolicyOrganizationsResponse =
@@ -780,7 +780,7 @@ export const UpdateOrganizationsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsRequest>;
+  ) as unknown as Schema.Codec<UpdateOrganizationsRequest>;
 
 export type UpdateOrganizationsResponse = Organization;
 export const UpdateOrganizationsResponse =
@@ -823,7 +823,7 @@ export const TestIamPermissionsOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsOrganizationsRequest>;
 
 export type TestIamPermissionsOrganizationsResponse =
   TestIamPermissionsResponse;
@@ -867,7 +867,7 @@ export const SetIamPolicyOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyOrganizationsRequest>;
 
 export type SetIamPolicyOrganizationsResponse = Policy;
 export const SetIamPolicyOrganizationsResponse =
@@ -909,7 +909,7 @@ export const UpdateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateProjectsRequest>;
+) as unknown as Schema.Codec<UpdateProjectsRequest>;
 
 export type UpdateProjectsResponse = Project;
 export const UpdateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -948,7 +948,7 @@ export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1beta1/projects", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateProjectsRequest>;
+) as unknown as Schema.Codec<CreateProjectsRequest>;
 
 export type CreateProjectsResponse = Project;
 export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -990,7 +990,7 @@ export const UndeleteProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsRequest>;
 
 export type UndeleteProjectsResponse = Empty;
 export const UndeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1032,7 +1032,7 @@ export const GetAncestryProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAncestryProjectsRequest>;
+  ) as unknown as Schema.Codec<GetAncestryProjectsRequest>;
 
 export type GetAncestryProjectsResponse = GetAncestryResponse;
 export const GetAncestryProjectsResponse =
@@ -1075,7 +1075,7 @@ export const TestIamPermissionsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsRequest>;
 
 export type TestIamPermissionsProjectsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsResponse =
@@ -1110,7 +1110,7 @@ export const DeleteProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1beta1/projects/{projectId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteProjectsRequest>;
+) as unknown as Schema.Codec<DeleteProjectsRequest>;
 
 export type DeleteProjectsResponse = Empty;
 export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1152,7 +1152,7 @@ export const SetIamPolicyProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsRequest>;
 
 export type SetIamPolicyProjectsResponse = Policy;
 export const SetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -1186,7 +1186,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/projects/{projectId}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
+) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -1223,7 +1223,7 @@ export const GetIamPolicyProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsRequest>;
 
 export type GetIamPolicyProjectsResponse = Policy;
 export const GetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -1263,7 +1263,7 @@ export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/projects" }),
   svc,
-) as unknown as Schema.Schema<ListProjectsRequest>;
+) as unknown as Schema.Codec<ListProjectsRequest>;
 
 export type ListProjectsResponse_Op = ListProjectsResponse;
 export const ListProjectsResponse_Op =

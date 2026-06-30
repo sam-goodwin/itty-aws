@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterQueryShapeInsightSummariesInput {
+  groupId: string;
+  clusterName: string;
+  since?: number;
+  until?: number;
+  processIds?: string;
+  namespaces?: string;
+  commands?: string;
+  nSummaries?: number;
+  series?: string;
+  queryShapeHashes?: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListGroupClusterQueryShapeInsightSummariesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -23,15 +37,12 @@ export const ListGroupClusterQueryShapeInsightSummariesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries",
     }),
-  );
-export type ListGroupClusterQueryShapeInsightSummariesInput =
-  typeof ListGroupClusterQueryShapeInsightSummariesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterQueryShapeInsightSummariesInput>;
 
 // Output Schema
+export type ListGroupClusterQueryShapeInsightSummariesOutput = void;
 export const ListGroupClusterQueryShapeInsightSummariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterQueryShapeInsightSummariesOutput =
-  typeof ListGroupClusterQueryShapeInsightSummariesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterQueryShapeInsightSummariesOutput>;
 
 // The operation
 /**

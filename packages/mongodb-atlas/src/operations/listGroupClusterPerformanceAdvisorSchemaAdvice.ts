@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterPerformanceAdvisorSchemaAdviceInput {
+  groupId: string;
+  clusterName: string;
+}
 export const ListGroupClusterPerformanceAdvisorSchemaAdviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ListGroupClusterPerformanceAdvisorSchemaAdviceInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/schemaAdvice",
     }),
-  );
-export type ListGroupClusterPerformanceAdvisorSchemaAdviceInput =
-  typeof ListGroupClusterPerformanceAdvisorSchemaAdviceInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorSchemaAdviceInput>;
 
 // Output Schema
+export type ListGroupClusterPerformanceAdvisorSchemaAdviceOutput = void;
 export const ListGroupClusterPerformanceAdvisorSchemaAdviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterPerformanceAdvisorSchemaAdviceOutput =
-  typeof ListGroupClusterPerformanceAdvisorSchemaAdviceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorSchemaAdviceOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExternalDataSourcesWebhookInfoRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const ExternalDataSourcesWebhookInfoRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ExternalDataSourcesWebhookInfoRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/external_data_sources/{id}/webhook_info/",
     }),
-  );
-export type ExternalDataSourcesWebhookInfoRetrieveInput =
-  typeof ExternalDataSourcesWebhookInfoRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSourcesWebhookInfoRetrieveInput>;
 
 // Output Schema
+export type ExternalDataSourcesWebhookInfoRetrieveOutput = void;
 export const ExternalDataSourcesWebhookInfoRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExternalDataSourcesWebhookInfoRetrieveOutput =
-  typeof ExternalDataSourcesWebhookInfoRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesWebhookInfoRetrieveOutput>;
 
 // The operation
 /**

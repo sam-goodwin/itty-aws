@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CohortsRemovePersonFromStaticCohortPartialUpdateInput {
+  id: number;
+  project_id: string;
+  person_id?: string;
+}
 export const CohortsRemovePersonFromStaticCohortPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const CohortsRemovePersonFromStaticCohortPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/cohorts/{id}/remove_person_from_static_cohort/",
     }),
-  );
-export type CohortsRemovePersonFromStaticCohortPartialUpdateInput =
-  typeof CohortsRemovePersonFromStaticCohortPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<CohortsRemovePersonFromStaticCohortPartialUpdateInput>;
 
 // Output Schema
+export type CohortsRemovePersonFromStaticCohortPartialUpdateOutput = void;
 export const CohortsRemovePersonFromStaticCohortPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CohortsRemovePersonFromStaticCohortPartialUpdateOutput =
-  typeof CohortsRemovePersonFromStaticCohortPartialUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CohortsRemovePersonFromStaticCohortPartialUpdateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TaskAutomationsCreateInput {
+  project_id: string;
+  name: string;
+  prompt: string;
+  repository: string;
+  github_integration?: number | null;
+  cron_expression: string;
+  timezone?: string;
+  template_id?: string | null;
+  enabled?: boolean;
+}
 export const TaskAutomationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -20,10 +31,27 @@ export const TaskAutomationsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/task_automations/",
     }),
-  );
-export type TaskAutomationsCreateInput = typeof TaskAutomationsCreateInput.Type;
+  ) as unknown as Schema.Codec<TaskAutomationsCreateInput>;
 
 // Output Schema
+export interface TaskAutomationsCreateOutput {
+  id: string;
+  name: string;
+  prompt: string;
+  repository: string | null;
+  github_integration: number | null;
+  cron_expression: string;
+  timezone: string;
+  template_id: string | null;
+  enabled: boolean;
+  last_run_at: string | null;
+  last_run_status: string | null;
+  last_task_id: string;
+  last_task_run_id: string | null;
+  last_error: string | null;
+  created_at: string;
+  updated_at: string;
+}
 export const TaskAutomationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -42,9 +70,7 @@ export const TaskAutomationsCreateOutput =
     last_error: Schema.NullOr(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type TaskAutomationsCreateOutput =
-  typeof TaskAutomationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<TaskAutomationsCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DataWarehouseProvisionCreateInput {
+  project_id: string;
+  database_name: string;
+  table_name: string;
+}
 export const DataWarehouseProvisionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const DataWarehouseProvisionCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/data_warehouse/provision/",
     }),
-  );
-export type DataWarehouseProvisionCreateInput =
-  typeof DataWarehouseProvisionCreateInput.Type;
+  ) as unknown as Schema.Codec<DataWarehouseProvisionCreateInput>;
 
 // Output Schema
+export type DataWarehouseProvisionCreateOutput = void;
 export const DataWarehouseProvisionCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataWarehouseProvisionCreateOutput =
-  typeof DataWarehouseProvisionCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataWarehouseProvisionCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationApiKeysControllerCreateInput {
+  organizationId: string;
+  name?: string;
+  permissions?: string[];
+  expires_at?: string;
+}
 export const OrganizationApiKeysControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,22 @@ export const OrganizationApiKeysControllerCreateInput =
       method: "POST",
       path: "/organizations/{organizationId}/api_keys",
     }),
-  );
-export type OrganizationApiKeysControllerCreateInput =
-  typeof OrganizationApiKeysControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<OrganizationApiKeysControllerCreateInput>;
 
 // Output Schema
+export interface OrganizationApiKeysControllerCreateOutput {
+  object: string;
+  id: string;
+  owner: { type: string; id: string };
+  name: string;
+  obfuscated_value: string;
+  last_used_at: string | null;
+  expires_at: string | null;
+  permissions: string[];
+  created_at: string;
+  updated_at: string;
+  value: string;
+}
 export const OrganizationApiKeysControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -36,9 +53,7 @@ export const OrganizationApiKeysControllerCreateOutput =
     created_at: Schema.String,
     updated_at: Schema.String,
     value: Schema.String,
-  });
-export type OrganizationApiKeysControllerCreateOutput =
-  typeof OrganizationApiKeysControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationApiKeysControllerCreateOutput>;
 
 // The operation
 /**

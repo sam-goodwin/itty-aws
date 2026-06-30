@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ManagedViewsetsRetrieveInput {
+  kind: "revenue_analytics";
+  project_id: string;
+}
 export const ManagedViewsetsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.Literals(["revenue_analytics"]).pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const ManagedViewsetsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/managed_viewsets/{kind}/",
     }),
-  );
-export type ManagedViewsetsRetrieveInput =
-  typeof ManagedViewsetsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ManagedViewsetsRetrieveInput>;
 
 // Output Schema
+export type ManagedViewsetsRetrieveOutput = void;
 export const ManagedViewsetsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedViewsetsRetrieveOutput =
-  typeof ManagedViewsetsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedViewsetsRetrieveOutput>;
 
 // The operation
 /**

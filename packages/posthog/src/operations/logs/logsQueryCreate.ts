@@ -4,6 +4,45 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsQueryCreateInput {
+  project_id: string;
+  query?: {
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    severityLevels?: (
+      | "trace"
+      | "debug"
+      | "info"
+      | "warn"
+      | "error"
+      | "fatal"
+    )[];
+    serviceNames?: string[];
+    orderBy?: "latest" | "earliest";
+    searchTerm?: string;
+    filterGroup?: {
+      key?: string;
+      type?: "log" | "log_attribute" | "log_resource_attribute";
+      operator?:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_date_exact"
+        | "is_date_before"
+        | "is_date_after"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+    limit?: number;
+    after?: string;
+    excludeAttributes?: boolean;
+  };
+}
 export const LogsQueryCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   query: Schema.optional(
@@ -61,10 +100,30 @@ export const LogsQueryCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/logs/query/" }),
-);
-export type LogsQueryCreateInput = typeof LogsQueryCreateInput.Type;
+) as unknown as Schema.Codec<LogsQueryCreateInput>;
 
 // Output Schema
+export interface LogsQueryCreateOutput {
+  query?: Record<string, unknown>;
+  results?: {
+    uuid?: string;
+    timestamp?: string;
+    observed_timestamp?: string;
+    body?: string;
+    severity_text?: string;
+    severity_number?: number;
+    level?: string;
+    trace_id?: string;
+    span_id?: string;
+    trace_flags?: number;
+    attributes?: Record<string, string>;
+    resource_attributes?: Record<string, string>;
+    event_name?: string;
+  }[];
+  hasMore?: boolean;
+  nextCursor?: string | null;
+  maxExportableLogs?: number;
+}
 export const LogsQueryCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   query: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   results: Schema.optional(
@@ -93,8 +152,7 @@ export const LogsQueryCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hasMore: Schema.optional(Schema.Boolean),
   nextCursor: Schema.optional(Schema.NullOr(Schema.String)),
   maxExportableLogs: Schema.optional(Schema.Number),
-});
-export type LogsQueryCreateOutput = typeof LogsQueryCreateOutput.Type;
+}) as unknown as Schema.Codec<LogsQueryCreateOutput>;
 
 // The operation
 /**

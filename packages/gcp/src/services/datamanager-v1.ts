@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface IngestEventsResponse {
   requestId?: string;
 }
 
-export const IngestEventsResponse: Schema.Schema<IngestEventsResponse> =
+export const IngestEventsResponse: Schema.Codec<IngestEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "IngestEventsResponse" });
@@ -45,7 +45,7 @@ export interface DataTypeCount {
   count?: string;
 }
 
-export const DataTypeCount: Schema.Schema<DataTypeCount> =
+export const DataTypeCount: Schema.Codec<DataTypeCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface RemoveCompositeDataStatus {
   recordCount?: string;
 }
 
-export const RemoveCompositeDataStatus: Schema.Schema<RemoveCompositeDataStatus> =
+export const RemoveCompositeDataStatus: Schema.Codec<RemoveCompositeDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataTypeCounts: Schema.optional(Schema.Array(DataTypeCount)),
     recordCount: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export const RemoveCompositeDataStatus: Schema.Schema<RemoveCompositeDataStatus>
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -102,7 +102,7 @@ export interface UserListLicensePricing {
   pricingActive?: boolean;
 }
 
-export const UserListLicensePricing: Schema.Schema<UserListLicensePricing> =
+export const UserListLicensePricing: Schema.Codec<UserListLicensePricing> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     buyerApprovalState: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export interface PartnerAudienceInfo {
   commercePartner?: string;
 }
 
-export const PartnerAudienceInfo: Schema.Schema<PartnerAudienceInfo> =
+export const PartnerAudienceInfo: Schema.Codec<PartnerAudienceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partnerAudienceSource: Schema.optional(Schema.String),
     commercePartner: Schema.optional(Schema.String),
@@ -144,7 +144,7 @@ export interface GcpWrappedKeyInfo {
   kekUri?: string;
 }
 
-export const GcpWrappedKeyInfo: Schema.Schema<GcpWrappedKeyInfo> =
+export const GcpWrappedKeyInfo: Schema.Codec<GcpWrappedKeyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyType: Schema.optional(Schema.String),
     wipProvider: Schema.optional(Schema.String),
@@ -163,7 +163,7 @@ export interface AwsWrappedKeyInfo {
   encryptedDek?: string;
 }
 
-export const AwsWrappedKeyInfo: Schema.Schema<AwsWrappedKeyInfo> =
+export const AwsWrappedKeyInfo: Schema.Codec<AwsWrappedKeyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kekUri: Schema.optional(Schema.String),
     keyType: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export interface CoordinatorKeyInfo {
   keyId?: string;
 }
 
-export const CoordinatorKeyInfo: Schema.Schema<CoordinatorKeyInfo> =
+export const CoordinatorKeyInfo: Schema.Codec<CoordinatorKeyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CoordinatorKeyInfo" });
@@ -190,7 +190,7 @@ export interface EncryptionInfo {
   coordinatorKeyInfo?: CoordinatorKeyInfo;
 }
 
-export const EncryptionInfo: Schema.Schema<EncryptionInfo> =
+export const EncryptionInfo: Schema.Codec<EncryptionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcpWrappedKeyInfo: Schema.optional(GcpWrappedKeyInfo),
     awsWrappedKeyInfo: Schema.optional(AwsWrappedKeyInfo),
@@ -224,7 +224,7 @@ export interface DeviceInfo {
   languageCode?: string;
 }
 
-export const DeviceInfo: Schema.Schema<DeviceInfo> =
+export const DeviceInfo: Schema.Codec<DeviceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operatingSystemVersion: Schema.optional(Schema.String),
     browserVersion: Schema.optional(Schema.String),
@@ -251,7 +251,7 @@ export interface AddressInfo {
   postalCode?: string;
 }
 
-export const AddressInfo: Schema.Schema<AddressInfo> =
+export const AddressInfo: Schema.Codec<AddressInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     givenName: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -268,7 +268,7 @@ export interface UserIdentifier {
   address?: AddressInfo;
 }
 
-export const UserIdentifier: Schema.Schema<UserIdentifier> =
+export const UserIdentifier: Schema.Codec<UserIdentifier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
@@ -280,7 +280,7 @@ export interface UserData {
   userIdentifiers?: ReadonlyArray<UserIdentifier>;
 }
 
-export const UserData: Schema.Schema<UserData> =
+export const UserData: Schema.Codec<UserData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userIdentifiers: Schema.optional(Schema.Array(UserIdentifier)),
   }).annotate({ identifier: "UserData" });
@@ -315,7 +315,7 @@ export interface ViewabilityInfo {
   mediaVolumePercent?: number;
 }
 
-export const ViewabilityInfo: Schema.Schema<ViewabilityInfo> =
+export const ViewabilityInfo: Schema.Codec<ViewabilityInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewType: Schema.optional(Schema.String),
     mediaQuartile: Schema.optional(Schema.String),
@@ -472,7 +472,7 @@ export interface AdEvent {
   mobileDeviceId?: string;
 }
 
-export const AdEvent: Schema.Schema<AdEvent> =
+export const AdEvent: Schema.Codec<AdEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     campaignName: Schema.optional(Schema.String),
     adFormat: Schema.optional(Schema.String),
@@ -518,7 +518,7 @@ export interface IngestAdEventsRequest {
   adEvents?: ReadonlyArray<AdEvent>;
 }
 
-export const IngestAdEventsRequest: Schema.Schema<IngestAdEventsRequest> =
+export const IngestAdEventsRequest: Schema.Codec<IngestAdEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     encryptionInfo: Schema.optional(EncryptionInfo),
@@ -550,7 +550,7 @@ export interface MarketingDataInsightsAttribute {
   userInterestId?: string;
 }
 
-export const MarketingDataInsightsAttribute: Schema.Schema<MarketingDataInsightsAttribute> =
+export const MarketingDataInsightsAttribute: Schema.Codec<MarketingDataInsightsAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lift: Schema.optional(Schema.Number),
     ageRange: Schema.optional(Schema.String),
@@ -572,7 +572,7 @@ export interface MarketingDataInsight {
   attributes?: ReadonlyArray<MarketingDataInsightsAttribute>;
 }
 
-export const MarketingDataInsight: Schema.Schema<MarketingDataInsight> =
+export const MarketingDataInsight: Schema.Codec<MarketingDataInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimension: Schema.optional(Schema.String),
     attributes: Schema.optional(Schema.Array(MarketingDataInsightsAttribute)),
@@ -596,7 +596,7 @@ export interface WarningCount {
     | (string & {});
 }
 
-export const WarningCount: Schema.Schema<WarningCount> =
+export const WarningCount: Schema.Codec<WarningCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -609,7 +609,7 @@ export interface IngestUserIdDataStatus {
   recordCount?: string;
 }
 
-export const IngestUserIdDataStatus: Schema.Schema<IngestUserIdDataStatus> =
+export const IngestUserIdDataStatus: Schema.Codec<IngestUserIdDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userIdCount: Schema.optional(Schema.String),
     recordCount: Schema.optional(Schema.String),
@@ -630,7 +630,7 @@ export interface MobileIdInfo {
     | (string & {});
 }
 
-export const MobileIdInfo: Schema.Schema<MobileIdInfo> =
+export const MobileIdInfo: Schema.Codec<MobileIdInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keySpace: Schema.optional(Schema.String),
     appId: Schema.optional(Schema.String),
@@ -652,7 +652,7 @@ export interface EventLocation {
   continentCode?: string;
 }
 
-export const EventLocation: Schema.Schema<EventLocation> =
+export const EventLocation: Schema.Codec<EventLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subdivisionCode: Schema.optional(Schema.String),
     storeId: Schema.optional(Schema.String),
@@ -675,7 +675,7 @@ export interface PairIdInfo {
   cleanRoomIdentifier?: string;
 }
 
-export const PairIdInfo: Schema.Schema<PairIdInfo> =
+export const PairIdInfo: Schema.Codec<PairIdInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publisherId: Schema.optional(Schema.String),
     matchRatePercentage: Schema.optional(Schema.Number),
@@ -696,7 +696,7 @@ export interface PseudonymousIdInfo {
   billableRecordCount?: string;
 }
 
-export const PseudonymousIdInfo: Schema.Schema<PseudonymousIdInfo> =
+export const PseudonymousIdInfo: Schema.Codec<PseudonymousIdInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syncStatus: Schema.optional(Schema.String),
     billableRecordCount: Schema.optional(Schema.String),
@@ -715,7 +715,7 @@ export interface ContactIdInfo {
   matchRatePercentage?: number;
 }
 
-export const ContactIdInfo: Schema.Schema<ContactIdInfo> =
+export const ContactIdInfo: Schema.Codec<ContactIdInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceType: Schema.optional(Schema.String),
     matchRatePercentage: Schema.optional(Schema.Number),
@@ -732,7 +732,7 @@ export interface UserIdInfo {
     | (string & {});
 }
 
-export const UserIdInfo: Schema.Schema<UserIdInfo> =
+export const UserIdInfo: Schema.Codec<UserIdInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSourceType: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserIdInfo" });
@@ -762,7 +762,7 @@ export interface IngestedUserListInfo {
   userIdInfo?: UserIdInfo;
 }
 
-export const IngestedUserListInfo: Schema.Schema<IngestedUserListInfo> =
+export const IngestedUserListInfo: Schema.Codec<IngestedUserListInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uploadKeyTypes: Schema.optional(Schema.Array(Schema.String)),
     partnerAudienceInfo: Schema.optional(PartnerAudienceInfo),
@@ -782,7 +782,7 @@ export interface PartnerCustomerAccount {
   accountType?: string;
 }
 
-export const PartnerCustomerAccount: Schema.Schema<PartnerCustomerAccount> =
+export const PartnerCustomerAccount: Schema.Codec<PartnerCustomerAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     accountName: Schema.optional(Schema.String),
@@ -813,7 +813,7 @@ export interface ProductAccount {
     | (string & {});
 }
 
-export const ProductAccount: Schema.Schema<ProductAccount> =
+export const ProductAccount: Schema.Codec<ProductAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountType: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -825,7 +825,7 @@ export interface PartnerLinkMetadata {
   implicitAccounts?: ReadonlyArray<PartnerCustomerAccount>;
 }
 
-export const PartnerLinkMetadata: Schema.Schema<PartnerLinkMetadata> =
+export const PartnerLinkMetadata: Schema.Codec<PartnerLinkMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     implicitAccounts: Schema.optional(Schema.Array(PartnerCustomerAccount)),
   }).annotate({ identifier: "PartnerLinkMetadata" });
@@ -851,7 +851,7 @@ export interface PartnerLink {
   partnerLinkMetadata?: PartnerLinkMetadata;
 }
 
-export const PartnerLink: Schema.Schema<PartnerLink> =
+export const PartnerLink: Schema.Codec<PartnerLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partnerCustomerAccount: Schema.optional(PartnerCustomerAccount),
     partnerAccount: Schema.optional(ProductAccount),
@@ -869,7 +869,7 @@ export interface SearchPartnerLinksResponse {
   nextPageToken?: string;
 }
 
-export const SearchPartnerLinksResponse: Schema.Schema<SearchPartnerLinksResponse> =
+export const SearchPartnerLinksResponse: Schema.Codec<SearchPartnerLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partnerLinks: Schema.optional(Schema.Array(PartnerLink)),
     nextPageToken: Schema.optional(Schema.String),
@@ -880,7 +880,7 @@ export interface IngestAudienceMembersResponse {
   requestId?: string;
 }
 
-export const IngestAudienceMembersResponse: Schema.Schema<IngestAudienceMembersResponse> =
+export const IngestAudienceMembersResponse: Schema.Codec<IngestAudienceMembersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "IngestAudienceMembersResponse" });
@@ -892,7 +892,7 @@ export interface RemoveUserDataStatus {
   recordCount?: string;
 }
 
-export const RemoveUserDataStatus: Schema.Schema<RemoveUserDataStatus> =
+export const RemoveUserDataStatus: Schema.Codec<RemoveUserDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userIdentifierCount: Schema.optional(Schema.String),
     recordCount: Schema.optional(Schema.String),
@@ -903,7 +903,7 @@ export interface Location {
   regionCodes?: ReadonlyArray<string>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Location" });
@@ -915,7 +915,7 @@ export interface Baseline {
   locationAutoDetectionEnabled?: boolean;
 }
 
-export const Baseline: Schema.Schema<Baseline> =
+export const Baseline: Schema.Codec<Baseline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baselineLocation: Schema.optional(Location),
     locationAutoDetectionEnabled: Schema.optional(Schema.Boolean),
@@ -928,7 +928,7 @@ export interface RetrieveInsightsRequest {
   baseline?: Baseline;
 }
 
-export const RetrieveInsightsRequest: Schema.Schema<RetrieveInsightsRequest> =
+export const RetrieveInsightsRequest: Schema.Codec<RetrieveInsightsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userListId: Schema.optional(Schema.String),
     baseline: Schema.optional(Baseline),
@@ -947,7 +947,7 @@ export interface UserListLicenseMetrics {
   startDate?: string;
 }
 
-export const UserListLicenseMetrics: Schema.Schema<UserListLicenseMetrics> =
+export const UserListLicenseMetrics: Schema.Codec<UserListLicenseMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clickCount: Schema.optional(Schema.String),
     revenueUsdMicros: Schema.optional(Schema.String),
@@ -984,7 +984,7 @@ export interface UserListGlobalLicense {
   pricing?: UserListLicensePricing;
 }
 
-export const UserListGlobalLicense: Schema.Schema<UserListGlobalLicense> =
+export const UserListGlobalLicense: Schema.Codec<UserListGlobalLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userListDisplayName: Schema.optional(Schema.String),
     metrics: Schema.optional(UserListLicenseMetrics),
@@ -1048,7 +1048,7 @@ export interface ErrorCount {
     | (string & {});
 }
 
-export const ErrorCount: Schema.Schema<ErrorCount> =
+export const ErrorCount: Schema.Codec<ErrorCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -1059,7 +1059,7 @@ export interface ErrorInfo {
   errorCounts?: ReadonlyArray<ErrorCount>;
 }
 
-export const ErrorInfo: Schema.Schema<ErrorInfo> =
+export const ErrorInfo: Schema.Codec<ErrorInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCounts: Schema.optional(Schema.Array(ErrorCount)),
   }).annotate({ identifier: "ErrorInfo" });
@@ -1069,7 +1069,7 @@ export interface IngestEventsStatus {
   recordCount?: string;
 }
 
-export const IngestEventsStatus: Schema.Schema<IngestEventsStatus> =
+export const IngestEventsStatus: Schema.Codec<IngestEventsStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
   }).annotate({ identifier: "IngestEventsStatus" });
@@ -1079,7 +1079,7 @@ export interface PpidData {
   ppids?: ReadonlyArray<string>;
 }
 
-export const PpidData: Schema.Schema<PpidData> =
+export const PpidData: Schema.Codec<PpidData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ppids: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PpidData" });
@@ -1093,7 +1093,7 @@ export interface ItemCustomVariable {
   variable?: string;
 }
 
-export const ItemCustomVariable: Schema.Schema<ItemCustomVariable> =
+export const ItemCustomVariable: Schema.Codec<ItemCustomVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     destinationReferences: Schema.optional(Schema.Array(Schema.String)),
@@ -1107,7 +1107,7 @@ export interface ItemParameter {
   value?: string;
 }
 
-export const ItemParameter: Schema.Schema<ItemParameter> =
+export const ItemParameter: Schema.Codec<ItemParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameterName: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1136,7 +1136,7 @@ export interface Item {
   merchantFeedLanguageCode?: string;
 }
 
-export const Item: Schema.Schema<Item> =
+export const Item: Schema.Codec<Item> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unitPrice: Schema.optional(Schema.Number),
     merchantFeedLabel: Schema.optional(Schema.String),
@@ -1157,7 +1157,7 @@ export interface ListUserListGlobalLicensesResponse {
   userListGlobalLicenses?: ReadonlyArray<UserListGlobalLicense>;
 }
 
-export const ListUserListGlobalLicensesResponse: Schema.Schema<ListUserListGlobalLicensesResponse> =
+export const ListUserListGlobalLicensesResponse: Schema.Codec<ListUserListGlobalLicensesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     userListGlobalLicenses: Schema.optional(
@@ -1176,7 +1176,7 @@ export interface SizeInfo {
   gmailMembersCount?: string;
 }
 
-export const SizeInfo: Schema.Schema<SizeInfo> =
+export const SizeInfo: Schema.Codec<SizeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchNetworkMembersCount: Schema.optional(Schema.String),
     displayNetworkMembersCount: Schema.optional(Schema.String),
@@ -1199,7 +1199,7 @@ export interface CartData {
   couponCodes?: ReadonlyArray<string>;
 }
 
-export const CartData: Schema.Schema<CartData> =
+export const CartData: Schema.Codec<CartData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Item)),
     merchantFeedLabel: Schema.optional(Schema.String),
@@ -1216,7 +1216,7 @@ export interface IngestPairDataStatus {
   pairIdCount?: string;
 }
 
-export const IngestPairDataStatus: Schema.Schema<IngestPairDataStatus> =
+export const IngestPairDataStatus: Schema.Codec<IngestPairDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     pairIdCount: Schema.optional(Schema.String),
@@ -1245,7 +1245,7 @@ export interface EncryptedUserId {
     | (string & {});
 }
 
-export const EncryptedUserId: Schema.Schema<EncryptedUserId> =
+export const EncryptedUserId: Schema.Codec<EncryptedUserId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     source: Schema.optional(Schema.String),
@@ -1276,7 +1276,7 @@ export interface AdIdentifiers {
   wbraid?: string;
 }
 
-export const AdIdentifiers: Schema.Schema<AdIdentifiers> =
+export const AdIdentifiers: Schema.Codec<AdIdentifiers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionAttributes: Schema.optional(Schema.String),
     landingPageDeviceInfo: Schema.optional(DeviceInfo),
@@ -1303,7 +1303,7 @@ export interface Destination {
   productDestinationId?: string;
 }
 
-export const Destination: Schema.Schema<Destination> =
+export const Destination: Schema.Codec<Destination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reference: Schema.optional(Schema.String),
     operatingAccount: Schema.optional(ProductAccount),
@@ -1321,7 +1321,7 @@ export interface IpData {
   observeStartTime?: string;
 }
 
-export const IpData: Schema.Schema<IpData> =
+export const IpData: Schema.Codec<IpData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     observeEndTime: Schema.optional(Schema.String),
     ipAddress: Schema.optional(Schema.String),
@@ -1335,7 +1335,7 @@ export interface CompositeData {
   ipData?: ReadonlyArray<IpData>;
 }
 
-export const CompositeData: Schema.Schema<CompositeData> =
+export const CompositeData: Schema.Codec<CompositeData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userData: Schema.optional(UserData),
     ipData: Schema.optional(Schema.Array(IpData)),
@@ -1346,7 +1346,7 @@ export interface PairData {
   pairIds?: ReadonlyArray<string>;
 }
 
-export const PairData: Schema.Schema<PairData> =
+export const PairData: Schema.Codec<PairData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pairIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PairData" });
@@ -1356,7 +1356,7 @@ export interface UserIdData {
   userId?: string;
 }
 
-export const UserIdData: Schema.Schema<UserIdData> =
+export const UserIdData: Schema.Codec<UserIdData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserIdData" });
@@ -1376,7 +1376,7 @@ export interface Consent {
     | (string & {});
 }
 
-export const Consent: Schema.Schema<Consent> =
+export const Consent: Schema.Codec<Consent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adUserData: Schema.optional(Schema.String),
     adPersonalization: Schema.optional(Schema.String),
@@ -1387,7 +1387,7 @@ export interface MobileData {
   mobileIds?: ReadonlyArray<string>;
 }
 
-export const MobileData: Schema.Schema<MobileData> =
+export const MobileData: Schema.Codec<MobileData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mobileIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "MobileData" });
@@ -1411,7 +1411,7 @@ export interface AudienceMember {
   mobileData?: MobileData;
 }
 
-export const AudienceMember: Schema.Schema<AudienceMember> =
+export const AudienceMember: Schema.Codec<AudienceMember> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ppidData: Schema.optional(PpidData),
     compositeData: Schema.optional(CompositeData),
@@ -1436,7 +1436,7 @@ export interface RemoveAudienceMembersRequest {
   encoding?: "ENCODING_UNSPECIFIED" | "HEX" | "BASE64" | (string & {});
 }
 
-export const RemoveAudienceMembersRequest: Schema.Schema<RemoveAudienceMembersRequest> =
+export const RemoveAudienceMembersRequest: Schema.Codec<RemoveAudienceMembersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinations: Schema.optional(Schema.Array(Destination)),
     audienceMembers: Schema.optional(Schema.Array(AudienceMember)),
@@ -1450,7 +1450,7 @@ export interface WarningInfo {
   warningCounts?: ReadonlyArray<WarningCount>;
 }
 
-export const WarningInfo: Schema.Schema<WarningInfo> =
+export const WarningInfo: Schema.Codec<WarningInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warningCounts: Schema.optional(Schema.Array(WarningCount)),
   }).annotate({ identifier: "WarningInfo" });
@@ -1462,7 +1462,7 @@ export interface ExperimentalField {
   value?: string;
 }
 
-export const ExperimentalField: Schema.Schema<ExperimentalField> =
+export const ExperimentalField: Schema.Codec<ExperimentalField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1475,7 +1475,7 @@ export interface RemovePpidDataStatus {
   ppidCount?: string;
 }
 
-export const RemovePpidDataStatus: Schema.Schema<RemovePpidDataStatus> =
+export const RemovePpidDataStatus: Schema.Codec<RemovePpidDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     ppidCount: Schema.optional(Schema.String),
@@ -1490,7 +1490,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1508,7 +1508,7 @@ export interface CustomVariable {
   destinationReferences?: ReadonlyArray<string>;
 }
 
-export const CustomVariable: Schema.Schema<CustomVariable> =
+export const CustomVariable: Schema.Codec<CustomVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variable: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1522,7 +1522,7 @@ export interface UserProperty {
   value?: string;
 }
 
-export const UserProperty: Schema.Schema<UserProperty> =
+export const UserProperty: Schema.Codec<UserProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertyName: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -1547,7 +1547,7 @@ export interface UserProperties {
   additionalUserProperties?: ReadonlyArray<UserProperty>;
 }
 
-export const UserProperties: Schema.Schema<UserProperties> =
+export const UserProperties: Schema.Codec<UserProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerType: Schema.optional(Schema.String),
     customerValueBucket: Schema.optional(Schema.String),
@@ -1561,7 +1561,7 @@ export interface EventParameter {
   parameterName?: string;
 }
 
-export const EventParameter: Schema.Schema<EventParameter> =
+export const EventParameter: Schema.Codec<EventParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     parameterName: Schema.optional(Schema.String),
@@ -1624,7 +1624,7 @@ export interface Event {
   additionalEventParameters?: ReadonlyArray<EventParameter>;
 }
 
-export const Event: Schema.Schema<Event> =
+export const Event: Schema.Codec<Event> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventDeviceInfo: Schema.optional(DeviceInfo),
     experimentalFields: Schema.optional(Schema.Array(ExperimentalField)),
@@ -1666,7 +1666,7 @@ export interface IngestEventsRequest {
   encoding?: "ENCODING_UNSPECIFIED" | "HEX" | "BASE64" | (string & {});
 }
 
-export const IngestEventsRequest: Schema.Schema<IngestEventsRequest> =
+export const IngestEventsRequest: Schema.Codec<IngestEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     destinations: Schema.optional(Schema.Array(Destination)),
@@ -1709,7 +1709,7 @@ export interface UserListDirectLicense {
   clientAccountDisplayName?: string;
 }
 
-export const UserListDirectLicense: Schema.Schema<UserListDirectLicense> =
+export const UserListDirectLicense: Schema.Codec<UserListDirectLicense> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientAccountType: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1730,7 +1730,7 @@ export interface ListUserListDirectLicensesResponse {
   userListDirectLicenses?: ReadonlyArray<UserListDirectLicense>;
 }
 
-export const ListUserListDirectLicensesResponse: Schema.Schema<ListUserListDirectLicensesResponse> =
+export const ListUserListDirectLicensesResponse: Schema.Codec<ListUserListDirectLicensesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     userListDirectLicenses: Schema.optional(
@@ -1745,7 +1745,7 @@ export interface TargetNetworkInfo {
   eligibleForSearch?: boolean;
 }
 
-export const TargetNetworkInfo: Schema.Schema<TargetNetworkInfo> =
+export const TargetNetworkInfo: Schema.Codec<TargetNetworkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eligibleForDisplay: Schema.optional(Schema.Boolean),
     eligibleForSearch: Schema.optional(Schema.Boolean),
@@ -1797,7 +1797,7 @@ export interface UserList {
   name?: string;
 }
 
-export const UserList: Schema.Schema<UserList> =
+export const UserList: Schema.Codec<UserList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membershipStatus: Schema.optional(Schema.String),
     closingReason: Schema.optional(Schema.String),
@@ -1824,7 +1824,7 @@ export interface TermsOfService {
     | (string & {});
 }
 
-export const TermsOfService: Schema.Schema<TermsOfService> =
+export const TermsOfService: Schema.Codec<TermsOfService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerMatchTermsOfServiceStatus: Schema.optional(Schema.String),
   }).annotate({ identifier: "TermsOfService" });
@@ -1836,7 +1836,7 @@ export interface RemoveMobileDataStatus {
   mobileIdCount?: string;
 }
 
-export const RemoveMobileDataStatus: Schema.Schema<RemoveMobileDataStatus> =
+export const RemoveMobileDataStatus: Schema.Codec<RemoveMobileDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     mobileIdCount: Schema.optional(Schema.String),
@@ -1849,7 +1849,7 @@ export interface ListUserListsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserListsResponse: Schema.Schema<ListUserListsResponse> =
+export const ListUserListsResponse: Schema.Codec<ListUserListsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userLists: Schema.optional(Schema.Array(UserList)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1862,7 +1862,7 @@ export interface IngestMobileDataStatus {
   mobileIdCount?: string;
 }
 
-export const IngestMobileDataStatus: Schema.Schema<IngestMobileDataStatus> =
+export const IngestMobileDataStatus: Schema.Codec<IngestMobileDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     mobileIdCount: Schema.optional(Schema.String),
@@ -1889,7 +1889,7 @@ export interface IngestCompositeDataStatus {
     | (string & {});
 }
 
-export const IngestCompositeDataStatus: Schema.Schema<IngestCompositeDataStatus> =
+export const IngestCompositeDataStatus: Schema.Codec<IngestCompositeDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     dataTypeCounts: Schema.optional(Schema.Array(DataTypeCount)),
@@ -1917,7 +1917,7 @@ export interface IngestUserDataStatus {
     | (string & {});
 }
 
-export const IngestUserDataStatus: Schema.Schema<IngestUserDataStatus> =
+export const IngestUserDataStatus: Schema.Codec<IngestUserDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     userIdentifierCount: Schema.optional(Schema.String),
@@ -1931,7 +1931,7 @@ export interface IngestPpidDataStatus {
   ppidCount?: string;
 }
 
-export const IngestPpidDataStatus: Schema.Schema<IngestPpidDataStatus> =
+export const IngestPpidDataStatus: Schema.Codec<IngestPpidDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     ppidCount: Schema.optional(Schema.String),
@@ -1952,7 +1952,7 @@ export interface IngestAudienceMembersStatus {
   ppidDataIngestionStatus?: IngestPpidDataStatus;
 }
 
-export const IngestAudienceMembersStatus: Schema.Schema<IngestAudienceMembersStatus> =
+export const IngestAudienceMembersStatus: Schema.Codec<IngestAudienceMembersStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mobileDataIngestionStatus: Schema.optional(IngestMobileDataStatus),
     compositeDataIngestionStatus: Schema.optional(IngestCompositeDataStatus),
@@ -1969,7 +1969,7 @@ export interface RemovePairDataStatus {
   pairIdCount?: string;
 }
 
-export const RemovePairDataStatus: Schema.Schema<RemovePairDataStatus> =
+export const RemovePairDataStatus: Schema.Codec<RemovePairDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     pairIdCount: Schema.optional(Schema.String),
@@ -1982,7 +1982,7 @@ export interface RemoveUserIdDataStatus {
   userIdCount?: string;
 }
 
-export const RemoveUserIdDataStatus: Schema.Schema<RemoveUserIdDataStatus> =
+export const RemoveUserIdDataStatus: Schema.Codec<RemoveUserIdDataStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordCount: Schema.optional(Schema.String),
     userIdCount: Schema.optional(Schema.String),
@@ -2003,7 +2003,7 @@ export interface RemoveAudienceMembersStatus {
   compositeDataRemovalStatus?: RemoveCompositeDataStatus;
 }
 
-export const RemoveAudienceMembersStatus: Schema.Schema<RemoveAudienceMembersStatus> =
+export const RemoveAudienceMembersStatus: Schema.Codec<RemoveAudienceMembersStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mobileDataRemovalStatus: Schema.optional(RemoveMobileDataStatus),
     pairDataRemovalStatus: Schema.optional(RemovePairDataStatus),
@@ -2036,7 +2036,7 @@ export interface RequestStatusPerDestination {
     | (string & {});
 }
 
-export const RequestStatusPerDestination: Schema.Schema<RequestStatusPerDestination> =
+export const RequestStatusPerDestination: Schema.Codec<RequestStatusPerDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audienceMembersIngestionStatus: Schema.optional(
       IngestAudienceMembersStatus,
@@ -2054,7 +2054,7 @@ export interface RetrieveInsightsResponse {
   marketingDataInsights?: ReadonlyArray<MarketingDataInsight>;
 }
 
-export const RetrieveInsightsResponse: Schema.Schema<RetrieveInsightsResponse> =
+export const RetrieveInsightsResponse: Schema.Codec<RetrieveInsightsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     marketingDataInsights: Schema.optional(Schema.Array(MarketingDataInsight)),
   }).annotate({ identifier: "RetrieveInsightsResponse" });
@@ -2099,7 +2099,7 @@ export interface UserListGlobalLicenseCustomerInfo {
   metrics?: UserListLicenseMetrics;
 }
 
-export const UserListGlobalLicenseCustomerInfo: Schema.Schema<UserListGlobalLicenseCustomerInfo> =
+export const UserListGlobalLicenseCustomerInfo: Schema.Codec<UserListGlobalLicenseCustomerInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     licenseType: Schema.optional(Schema.String),
@@ -2116,7 +2116,7 @@ export const UserListGlobalLicenseCustomerInfo: Schema.Schema<UserListGlobalLice
 
 export interface IngestAdEventsResponse {}
 
-export const IngestAdEventsResponse: Schema.Schema<IngestAdEventsResponse> =
+export const IngestAdEventsResponse: Schema.Codec<IngestAdEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "IngestAdEventsResponse",
   });
@@ -2126,7 +2126,7 @@ export interface RemoveAudienceMembersResponse {
   requestId?: string;
 }
 
-export const RemoveAudienceMembersResponse: Schema.Schema<RemoveAudienceMembersResponse> =
+export const RemoveAudienceMembersResponse: Schema.Codec<RemoveAudienceMembersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveAudienceMembersResponse" });
@@ -2138,7 +2138,7 @@ export interface ListUserListGlobalLicenseCustomerInfosResponse {
   nextPageToken?: string;
 }
 
-export const ListUserListGlobalLicenseCustomerInfosResponse: Schema.Schema<ListUserListGlobalLicenseCustomerInfosResponse> =
+export const ListUserListGlobalLicenseCustomerInfosResponse: Schema.Codec<ListUserListGlobalLicenseCustomerInfosResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userListGlobalLicenseCustomerInfos: Schema.optional(
       Schema.Array(UserListGlobalLicenseCustomerInfo),
@@ -2163,7 +2163,7 @@ export interface IngestAudienceMembersRequest {
   consent?: Consent;
 }
 
-export const IngestAudienceMembersRequest: Schema.Schema<IngestAudienceMembersRequest> =
+export const IngestAudienceMembersRequest: Schema.Codec<IngestAudienceMembersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinations: Schema.optional(Schema.Array(Destination)),
     audienceMembers: Schema.optional(Schema.Array(AudienceMember)),
@@ -2179,7 +2179,7 @@ export interface RetrieveRequestStatusResponse {
   requestStatusPerDestination?: ReadonlyArray<RequestStatusPerDestination>;
 }
 
-export const RetrieveRequestStatusResponse: Schema.Schema<RetrieveRequestStatusResponse> =
+export const RetrieveRequestStatusResponse: Schema.Codec<RetrieveRequestStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestStatusPerDestination: Schema.optional(
       Schema.Array(RequestStatusPerDestination),
@@ -2252,7 +2252,7 @@ export const IngestEventsRequest_Op = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1/events:ingest", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<IngestEventsRequest_Op>;
+) as unknown as Schema.Codec<IngestEventsRequest_Op>;
 
 export type IngestEventsResponse_Op = IngestEventsResponse;
 export const IngestEventsResponse_Op =
@@ -2295,7 +2295,7 @@ export const CreateAccountTypesAccountsPartnerLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountTypesAccountsPartnerLinksRequest>;
+  ) as unknown as Schema.Codec<CreateAccountTypesAccountsPartnerLinksRequest>;
 
 export type CreateAccountTypesAccountsPartnerLinksResponse = PartnerLink;
 export const CreateAccountTypesAccountsPartnerLinksResponse =
@@ -2331,7 +2331,7 @@ export const DeleteAccountTypesAccountsPartnerLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountTypesAccountsPartnerLinksRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountTypesAccountsPartnerLinksRequest>;
 
 export type DeleteAccountTypesAccountsPartnerLinksResponse = Empty;
 export const DeleteAccountTypesAccountsPartnerLinksResponse =
@@ -2376,7 +2376,7 @@ export const SearchAccountTypesAccountsPartnerLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/partnerLinks:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchAccountTypesAccountsPartnerLinksRequest>;
+  ) as unknown as Schema.Codec<SearchAccountTypesAccountsPartnerLinksRequest>;
 
 export type SearchAccountTypesAccountsPartnerLinksResponse =
   SearchPartnerLinksResponse;
@@ -2422,7 +2422,7 @@ export const CreateAccountTypesAccountsUserListDirectLicensesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountTypesAccountsUserListDirectLicensesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountTypesAccountsUserListDirectLicensesRequest>;
 
 export type CreateAccountTypesAccountsUserListDirectLicensesResponse =
   UserListDirectLicense;
@@ -2459,7 +2459,7 @@ export const GetAccountTypesAccountsUserListDirectLicensesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountTypesAccountsUserListDirectLicensesRequest>;
+  ) as unknown as Schema.Codec<GetAccountTypesAccountsUserListDirectLicensesRequest>;
 
 export type GetAccountTypesAccountsUserListDirectLicensesResponse =
   UserListDirectLicense;
@@ -2500,7 +2500,7 @@ export const PatchAccountTypesAccountsUserListDirectLicensesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountTypesAccountsUserListDirectLicensesRequest>;
+  ) as unknown as Schema.Codec<PatchAccountTypesAccountsUserListDirectLicensesRequest>;
 
 export type PatchAccountTypesAccountsUserListDirectLicensesResponse =
   UserListDirectLicense;
@@ -2546,7 +2546,7 @@ export const ListAccountTypesAccountsUserListDirectLicensesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/userListDirectLicenses" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountTypesAccountsUserListDirectLicensesRequest>;
+  ) as unknown as Schema.Codec<ListAccountTypesAccountsUserListDirectLicensesRequest>;
 
 export type ListAccountTypesAccountsUserListDirectLicensesResponse =
   ListUserListDirectLicensesResponse;
@@ -2592,7 +2592,7 @@ export const CreateAccountTypesAccountsUserListGlobalLicensesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountTypesAccountsUserListGlobalLicensesRequest>;
+  ) as unknown as Schema.Codec<CreateAccountTypesAccountsUserListGlobalLicensesRequest>;
 
 export type CreateAccountTypesAccountsUserListGlobalLicensesResponse =
   UserListGlobalLicense;
@@ -2638,7 +2638,7 @@ export const ListAccountTypesAccountsUserListGlobalLicensesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/userListGlobalLicenses" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountTypesAccountsUserListGlobalLicensesRequest>;
+  ) as unknown as Schema.Codec<ListAccountTypesAccountsUserListGlobalLicensesRequest>;
 
 export type ListAccountTypesAccountsUserListGlobalLicensesResponse =
   ListUserListGlobalLicensesResponse;
@@ -2683,7 +2683,7 @@ export const PatchAccountTypesAccountsUserListGlobalLicensesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountTypesAccountsUserListGlobalLicensesRequest>;
+  ) as unknown as Schema.Codec<PatchAccountTypesAccountsUserListGlobalLicensesRequest>;
 
 export type PatchAccountTypesAccountsUserListGlobalLicensesResponse =
   UserListGlobalLicense;
@@ -2720,7 +2720,7 @@ export const GetAccountTypesAccountsUserListGlobalLicensesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountTypesAccountsUserListGlobalLicensesRequest>;
+  ) as unknown as Schema.Codec<GetAccountTypesAccountsUserListGlobalLicensesRequest>;
 
 export type GetAccountTypesAccountsUserListGlobalLicensesResponse =
   UserListGlobalLicense;
@@ -2767,7 +2767,7 @@ export const ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
       path: "v1/{+parent}/userListGlobalLicenseCustomerInfos",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest>;
+  ) as unknown as Schema.Codec<ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest>;
 
 export type ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResponse =
   ListUserListGlobalLicenseCustomerInfosResponse;
@@ -2775,7 +2775,9 @@ export const ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
   /*@__PURE__*/ /*#__PURE__*/ ListUserListGlobalLicenseCustomerInfosResponse;
 
 export type ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all customer info for a user list global license. This feature is only available to data partners. */
 export const listAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfos: API.PaginatedOperationMethod<
@@ -2813,7 +2815,7 @@ export const RetrieveAccountTypesAccountsInsightsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveAccountTypesAccountsInsightsRequest>;
+  ) as unknown as Schema.Codec<RetrieveAccountTypesAccountsInsightsRequest>;
 
 export type RetrieveAccountTypesAccountsInsightsResponse =
   RetrieveInsightsResponse;
@@ -2850,7 +2852,7 @@ export const GetAccountTypesAccountsUserListsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountTypesAccountsUserListsRequest>;
+  ) as unknown as Schema.Codec<GetAccountTypesAccountsUserListsRequest>;
 
 export type GetAccountTypesAccountsUserListsResponse = UserList;
 export const GetAccountTypesAccountsUserListsResponse =
@@ -2889,7 +2891,7 @@ export const DeleteAccountTypesAccountsUserListsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountTypesAccountsUserListsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountTypesAccountsUserListsRequest>;
 
 export type DeleteAccountTypesAccountsUserListsResponse = Empty;
 export const DeleteAccountTypesAccountsUserListsResponse =
@@ -2934,7 +2936,7 @@ export const ListAccountTypesAccountsUserListsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/userLists" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountTypesAccountsUserListsRequest>;
+  ) as unknown as Schema.Codec<ListAccountTypesAccountsUserListsRequest>;
 
 export type ListAccountTypesAccountsUserListsResponse = ListUserListsResponse;
 export const ListAccountTypesAccountsUserListsResponse =
@@ -2983,7 +2985,7 @@ export const PatchAccountTypesAccountsUserListsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountTypesAccountsUserListsRequest>;
+  ) as unknown as Schema.Codec<PatchAccountTypesAccountsUserListsRequest>;
 
 export type PatchAccountTypesAccountsUserListsResponse = UserList;
 export const PatchAccountTypesAccountsUserListsResponse =
@@ -3027,7 +3029,7 @@ export const CreateAccountTypesAccountsUserListsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/userLists", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountTypesAccountsUserListsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountTypesAccountsUserListsRequest>;
 
 export type CreateAccountTypesAccountsUserListsResponse = UserList;
 export const CreateAccountTypesAccountsUserListsResponse =
@@ -3063,7 +3065,7 @@ export const RetrieveRequestStatusRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/requestStatus:retrieve" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveRequestStatusRequest>;
+  ) as unknown as Schema.Codec<RetrieveRequestStatusRequest>;
 
 export type RetrieveRequestStatusResponse_Op = RetrieveRequestStatusResponse;
 export const RetrieveRequestStatusResponse_Op =
@@ -3098,7 +3100,7 @@ export const RemoveAudienceMembersRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveAudienceMembersRequest_Op>;
+  ) as unknown as Schema.Codec<RemoveAudienceMembersRequest_Op>;
 
 export type RemoveAudienceMembersResponse_Op = RemoveAudienceMembersResponse;
 export const RemoveAudienceMembersResponse_Op =
@@ -3138,7 +3140,7 @@ export const IngestAudienceMembersRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<IngestAudienceMembersRequest_Op>;
+  ) as unknown as Schema.Codec<IngestAudienceMembersRequest_Op>;
 
 export type IngestAudienceMembersResponse_Op = IngestAudienceMembersResponse;
 export const IngestAudienceMembersResponse_Op =
@@ -3174,7 +3176,7 @@ export const IngestAdEventsRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "v1/adEvents:ingest", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<IngestAdEventsRequest_Op>;
+  ) as unknown as Schema.Codec<IngestAdEventsRequest_Op>;
 
 export type IngestAdEventsResponse_Op = IngestAdEventsResponse;
 export const IngestAdEventsResponse_Op =

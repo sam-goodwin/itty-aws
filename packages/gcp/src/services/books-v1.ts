@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -49,7 +49,7 @@ export interface DownloadAccessRestriction {
   signature?: string;
 }
 
-export const DownloadAccessRestriction: Schema.Schema<DownloadAccessRestriction> =
+export const DownloadAccessRestriction: Schema.Codec<DownloadAccessRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     justAcquired: Schema.optional(Schema.Boolean),
@@ -90,7 +90,7 @@ export interface ConcurrentAccessRestriction {
   kind?: string;
 }
 
-export const ConcurrentAccessRestriction: Schema.Schema<ConcurrentAccessRestriction> =
+export const ConcurrentAccessRestriction: Schema.Codec<ConcurrentAccessRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restricted: Schema.optional(Schema.Boolean),
     source: Schema.optional(Schema.String),
@@ -114,7 +114,7 @@ export interface RequestAccessData {
   kind?: string;
 }
 
-export const RequestAccessData: Schema.Schema<RequestAccessData> =
+export const RequestAccessData: Schema.Codec<RequestAccessData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadAccess: Schema.optional(DownloadAccessRestriction),
     concurrentAccess: Schema.optional(ConcurrentAccessRestriction),
@@ -128,7 +128,7 @@ export interface BooksCloudloadingResource {
   processingState?: string;
 }
 
-export const BooksCloudloadingResource: Schema.Schema<BooksCloudloadingResource> =
+export const BooksCloudloadingResource: Schema.Codec<BooksCloudloadingResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     volumeId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -149,7 +149,7 @@ export interface Metadata {
   }>;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
+export const Metadata: Schema.Codec<Metadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -179,7 +179,7 @@ export interface Usersettings {
   };
 }
 
-export const Usersettings: Schema.Schema<Usersettings> =
+export const Usersettings: Schema.Codec<Usersettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     notesExport: Schema.optional(
@@ -220,7 +220,7 @@ export interface BooksAnnotationsRange {
   endOffset?: string;
 }
 
-export const BooksAnnotationsRange: Schema.Schema<BooksAnnotationsRange> =
+export const BooksAnnotationsRange: Schema.Codec<BooksAnnotationsRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startOffset: Schema.optional(Schema.String),
     endPosition: Schema.optional(Schema.String),
@@ -264,7 +264,7 @@ export interface Volumeannotation {
   annotationDataId?: string;
 }
 
-export const Volumeannotation: Schema.Schema<Volumeannotation> =
+export const Volumeannotation: Schema.Codec<Volumeannotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     volumeId: Schema.optional(Schema.String),
     updated: Schema.optional(Schema.String),
@@ -306,7 +306,7 @@ export interface ReadingPosition {
   epubCfiPosition?: string;
 }
 
-export const ReadingPosition: Schema.Schema<ReadingPosition> =
+export const ReadingPosition: Schema.Codec<ReadingPosition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     volumeId: Schema.optional(Schema.String),
     gbImagePosition: Schema.optional(Schema.String),
@@ -340,7 +340,7 @@ export interface Review {
   source?: { description?: string; url?: string; extraDescription?: string };
 }
 
-export const Review: Schema.Schema<Review> =
+export const Review: Schema.Codec<Review> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(Schema.String),
     rating: Schema.optional(Schema.String),
@@ -380,7 +380,7 @@ export interface Volumeseriesinfo {
   shortSeriesBookTitle?: string;
 }
 
-export const Volumeseriesinfo: Schema.Schema<Volumeseriesinfo> =
+export const Volumeseriesinfo: Schema.Codec<Volumeseriesinfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     volumeSeries: Schema.optional(
       Schema.Array(
@@ -542,7 +542,7 @@ export interface Volume {
   selfLink?: string;
 }
 
-export const Volume: Schema.Schema<Volume> =
+export const Volume: Schema.Codec<Volume> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     recommendedInfo: Schema.optional(
@@ -763,7 +763,7 @@ export interface Volumes {
   totalItems?: number;
 }
 
-export const Volumes: Schema.Schema<Volumes> =
+export const Volumes: Schema.Codec<Volumes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Volume)),
@@ -781,7 +781,7 @@ export interface AnnotationsSummary {
   }>;
 }
 
-export const AnnotationsSummary: Schema.Schema<AnnotationsSummary> =
+export const AnnotationsSummary: Schema.Codec<AnnotationsSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     layers: Schema.optional(
@@ -818,7 +818,7 @@ export interface Discoveryclusters {
   }>;
 }
 
-export const Discoveryclusters: Schema.Schema<Discoveryclusters> =
+export const Discoveryclusters: Schema.Codec<Discoveryclusters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalClusters: Schema.optional(Schema.Number),
     kind: Schema.optional(Schema.String),
@@ -883,7 +883,7 @@ export interface Dictlayerdata {
   common?: { title?: string };
 }
 
-export const Dictlayerdata: Schema.Schema<Dictlayerdata> =
+export const Dictlayerdata: Schema.Codec<Dictlayerdata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     dict: Schema.optional(
@@ -916,7 +916,7 @@ export const Dictlayerdata: Schema.Schema<Dictlayerdata> =
     ),
   }).annotate({
     identifier: "Dictlayerdata",
-  }) as any as Schema.Schema<Dictlayerdata>;
+  }) as any as Schema.Codec<Dictlayerdata>;
 
 export interface Volume2 {
   /** A list of volumes. */
@@ -926,7 +926,7 @@ export interface Volume2 {
   kind?: string;
 }
 
-export const Volume2: Schema.Schema<Volume2> =
+export const Volume2: Schema.Codec<Volume2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Volume)),
     nextPageToken: Schema.optional(Schema.String),
@@ -954,7 +954,7 @@ export interface Notification {
   pcampaign_id?: string;
 }
 
-export const Notification: Schema.Schema<Notification> =
+export const Notification: Schema.Codec<Notification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iconUrl: Schema.optional(Schema.String),
     crmExperimentIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1003,7 +1003,7 @@ export interface Layersummary {
   annotationsLink?: string;
 }
 
-export const Layersummary: Schema.Schema<Layersummary> =
+export const Layersummary: Schema.Codec<Layersummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     contentVersion: Schema.optional(Schema.String),
@@ -1039,7 +1039,7 @@ export interface Offers {
   }>;
 }
 
-export const Offers: Schema.Schema<Offers> =
+export const Offers: Schema.Codec<Offers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -1072,7 +1072,7 @@ export interface Seriesmembership {
   kind?: string;
 }
 
-export const Seriesmembership: Schema.Schema<Seriesmembership> =
+export const Seriesmembership: Schema.Codec<Seriesmembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     member: Schema.optional(Schema.Array(Volume)),
@@ -1086,7 +1086,7 @@ export interface DownloadAccesses {
   kind?: string;
 }
 
-export const DownloadAccesses: Schema.Schema<DownloadAccesses> =
+export const DownloadAccesses: Schema.Codec<DownloadAccesses> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadAccessList: Schema.optional(
       Schema.Array(DownloadAccessRestriction),
@@ -1098,7 +1098,7 @@ export interface BooksVolumesRecommendedRateResponse {
   consistency_token?: string;
 }
 
-export const BooksVolumesRecommendedRateResponse: Schema.Schema<BooksVolumesRecommendedRateResponse> =
+export const BooksVolumesRecommendedRateResponse: Schema.Codec<BooksVolumesRecommendedRateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consistency_token: Schema.optional(Schema.String),
   }).annotate({ identifier: "BooksVolumesRecommendedRateResponse" });
@@ -1127,7 +1127,7 @@ export interface Geolayerdata {
   };
 }
 
-export const Geolayerdata: Schema.Schema<Geolayerdata> =
+export const Geolayerdata: Schema.Codec<Geolayerdata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     geo: Schema.optional(
@@ -1189,7 +1189,7 @@ export interface GeoAnnotationdata {
   id?: string;
 }
 
-export const GeoAnnotationdata: Schema.Schema<GeoAnnotationdata> =
+export const GeoAnnotationdata: Schema.Codec<GeoAnnotationdata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     layerId: Schema.optional(Schema.String),
@@ -1215,7 +1215,7 @@ export interface FamilyInfo {
   };
 }
 
-export const FamilyInfo: Schema.Schema<FamilyInfo> =
+export const FamilyInfo: Schema.Codec<FamilyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     membership: Schema.optional(
@@ -1238,7 +1238,7 @@ export interface Layersummaries {
   kind?: string;
 }
 
-export const Layersummaries: Schema.Schema<Layersummaries> =
+export const Layersummaries: Schema.Codec<Layersummaries> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Layersummary)),
     totalItems: Schema.optional(Schema.Number),
@@ -1256,7 +1256,7 @@ export interface Annotationsdata {
   kind?: string;
 }
 
-export const Annotationsdata: Schema.Schema<Annotationsdata> =
+export const Annotationsdata: Schema.Codec<Annotationsdata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(GeoAnnotationdata)),
     totalItems: Schema.optional(Schema.Number),
@@ -1285,7 +1285,7 @@ export interface DictionaryAnnotationdata {
   annotationType?: string;
 }
 
-export const DictionaryAnnotationdata: Schema.Schema<DictionaryAnnotationdata> =
+export const DictionaryAnnotationdata: Schema.Codec<DictionaryAnnotationdata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     data: Schema.optional(Dictlayerdata),
@@ -1300,7 +1300,7 @@ export const DictionaryAnnotationdata: Schema.Schema<DictionaryAnnotationdata> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1328,7 +1328,7 @@ export interface Bookshelf {
   selfLink?: string;
 }
 
-export const Bookshelf: Schema.Schema<Bookshelf> =
+export const Bookshelf: Schema.Codec<Bookshelf> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     access: Schema.optional(Schema.String),
     updated: Schema.optional(Schema.String),
@@ -1353,7 +1353,7 @@ export interface Category {
   }>;
 }
 
-export const Category: Schema.Schema<Category> =
+export const Category: Schema.Codec<Category> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -1419,7 +1419,7 @@ export interface Annotation {
   };
 }
 
-export const Annotation: Schema.Schema<Annotation> =
+export const Annotation: Schema.Codec<Annotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
@@ -1473,7 +1473,7 @@ export interface Annotations {
   kind?: string;
 }
 
-export const Annotations: Schema.Schema<Annotations> =
+export const Annotations: Schema.Codec<Annotations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Annotation)),
     totalItems: Schema.optional(Schema.Number),
@@ -1488,7 +1488,7 @@ export interface Bookshelves {
   items?: ReadonlyArray<Bookshelf>;
 }
 
-export const Bookshelves: Schema.Schema<Bookshelves> =
+export const Bookshelves: Schema.Codec<Bookshelves> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Bookshelf)),
@@ -1526,7 +1526,7 @@ export interface Series {
   }>;
 }
 
-export const Series: Schema.Schema<Series> =
+export const Series: Schema.Codec<Series> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     series: Schema.optional(
@@ -1581,7 +1581,7 @@ export interface Volumeannotations {
   kind?: string;
 }
 
-export const Volumeannotations: Schema.Schema<Volumeannotations> =
+export const Volumeannotations: Schema.Codec<Volumeannotations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Volumeannotation)),
     totalItems: Schema.optional(Schema.Number),
@@ -1675,7 +1675,7 @@ export const InsertMylibraryAnnotationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertMylibraryAnnotationsRequest>;
+  ) as unknown as Schema.Codec<InsertMylibraryAnnotationsRequest>;
 
 export type InsertMylibraryAnnotationsResponse = Annotation;
 export const InsertMylibraryAnnotationsResponse =
@@ -1717,7 +1717,7 @@ export const DeleteMylibraryAnnotationsRequest =
       path: "books/v1/mylibrary/annotations/{annotationId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMylibraryAnnotationsRequest>;
+  ) as unknown as Schema.Codec<DeleteMylibraryAnnotationsRequest>;
 
 export type DeleteMylibraryAnnotationsResponse = Empty;
 export const DeleteMylibraryAnnotationsResponse =
@@ -1763,7 +1763,7 @@ export const SummaryMylibraryAnnotationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SummaryMylibraryAnnotationsRequest>;
+  ) as unknown as Schema.Codec<SummaryMylibraryAnnotationsRequest>;
 
 export type SummaryMylibraryAnnotationsResponse = AnnotationsSummary;
 export const SummaryMylibraryAnnotationsResponse =
@@ -1832,7 +1832,7 @@ export const ListMylibraryAnnotationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/mylibrary/annotations" }),
     svc,
-  ) as unknown as Schema.Schema<ListMylibraryAnnotationsRequest>;
+  ) as unknown as Schema.Codec<ListMylibraryAnnotationsRequest>;
 
 export type ListMylibraryAnnotationsResponse = Annotations;
 export const ListMylibraryAnnotationsResponse =
@@ -1881,7 +1881,7 @@ export const UpdateMylibraryAnnotationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateMylibraryAnnotationsRequest>;
+  ) as unknown as Schema.Codec<UpdateMylibraryAnnotationsRequest>;
 
 export type UpdateMylibraryAnnotationsResponse = Annotation;
 export const UpdateMylibraryAnnotationsResponse =
@@ -1930,7 +1930,7 @@ export const RemoveVolumeMylibraryBookshelvesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveVolumeMylibraryBookshelvesRequest>;
+  ) as unknown as Schema.Codec<RemoveVolumeMylibraryBookshelvesRequest>;
 
 export type RemoveVolumeMylibraryBookshelvesResponse = Empty;
 export const RemoveVolumeMylibraryBookshelvesResponse =
@@ -1973,7 +1973,7 @@ export const ClearVolumesMylibraryBookshelvesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ClearVolumesMylibraryBookshelvesRequest>;
+  ) as unknown as Schema.Codec<ClearVolumesMylibraryBookshelvesRequest>;
 
 export type ClearVolumesMylibraryBookshelvesResponse = Empty;
 export const ClearVolumesMylibraryBookshelvesResponse =
@@ -2022,7 +2022,7 @@ export const MoveVolumeMylibraryBookshelvesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MoveVolumeMylibraryBookshelvesRequest>;
+  ) as unknown as Schema.Codec<MoveVolumeMylibraryBookshelvesRequest>;
 
 export type MoveVolumeMylibraryBookshelvesResponse = Empty;
 export const MoveVolumeMylibraryBookshelvesResponse =
@@ -2058,7 +2058,7 @@ export const ListMylibraryBookshelvesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/mylibrary/bookshelves" }),
     svc,
-  ) as unknown as Schema.Schema<ListMylibraryBookshelvesRequest>;
+  ) as unknown as Schema.Codec<ListMylibraryBookshelvesRequest>;
 
 export type ListMylibraryBookshelvesResponse = Bookshelves;
 export const ListMylibraryBookshelvesResponse =
@@ -2110,7 +2110,7 @@ export const AddVolumeMylibraryBookshelvesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddVolumeMylibraryBookshelvesRequest>;
+  ) as unknown as Schema.Codec<AddVolumeMylibraryBookshelvesRequest>;
 
 export type AddVolumeMylibraryBookshelvesResponse = Empty;
 export const AddVolumeMylibraryBookshelvesResponse =
@@ -2149,7 +2149,7 @@ export const GetMylibraryBookshelvesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/mylibrary/bookshelves/{shelf}" }),
     svc,
-  ) as unknown as Schema.Schema<GetMylibraryBookshelvesRequest>;
+  ) as unknown as Schema.Codec<GetMylibraryBookshelvesRequest>;
 
 export type GetMylibraryBookshelvesResponse = Bookshelf;
 export const GetMylibraryBookshelvesResponse =
@@ -2206,7 +2206,7 @@ export const ListMylibraryBookshelvesVolumesRequest =
       path: "books/v1/mylibrary/bookshelves/{shelf}/volumes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMylibraryBookshelvesVolumesRequest>;
+  ) as unknown as Schema.Codec<ListMylibraryBookshelvesVolumesRequest>;
 
 export type ListMylibraryBookshelvesVolumesResponse = Volumes;
 export const ListMylibraryBookshelvesVolumesResponse =
@@ -2251,7 +2251,7 @@ export const GetMylibraryReadingpositionsRequest =
       path: "books/v1/mylibrary/readingpositions/{volumeId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMylibraryReadingpositionsRequest>;
+  ) as unknown as Schema.Codec<GetMylibraryReadingpositionsRequest>;
 
 export type GetMylibraryReadingpositionsResponse = ReadingPosition;
 export const GetMylibraryReadingpositionsResponse =
@@ -2319,7 +2319,7 @@ export const SetPositionMylibraryReadingpositionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetPositionMylibraryReadingpositionsRequest>;
+  ) as unknown as Schema.Codec<SetPositionMylibraryReadingpositionsRequest>;
 
 export type SetPositionMylibraryReadingpositionsResponse = Empty;
 export const SetPositionMylibraryReadingpositionsResponse =
@@ -2372,7 +2372,7 @@ export const AddBookCloudloadingRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddBookCloudloadingRequest>;
+  ) as unknown as Schema.Codec<AddBookCloudloadingRequest>;
 
 export type AddBookCloudloadingResponse = BooksCloudloadingResource;
 export const AddBookCloudloadingResponse =
@@ -2412,7 +2412,7 @@ export const DeleteBookCloudloadingRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteBookCloudloadingRequest>;
+  ) as unknown as Schema.Codec<DeleteBookCloudloadingRequest>;
 
 export type DeleteBookCloudloadingResponse = Empty;
 export const DeleteBookCloudloadingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2451,7 +2451,7 @@ export const UpdateBookCloudloadingRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateBookCloudloadingRequest>;
+  ) as unknown as Schema.Codec<UpdateBookCloudloadingRequest>;
 
 export type UpdateBookCloudloadingResponse = BooksCloudloadingResource;
 export const UpdateBookCloudloadingResponse =
@@ -2520,7 +2520,7 @@ export const SyncVolumeLicensesMyconfigRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SyncVolumeLicensesMyconfigRequest>;
+  ) as unknown as Schema.Codec<SyncVolumeLicensesMyconfigRequest>;
 
 export type SyncVolumeLicensesMyconfigResponse = Volumes;
 export const SyncVolumeLicensesMyconfigResponse =
@@ -2582,7 +2582,7 @@ export const RequestAccessMyconfigRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RequestAccessMyconfigRequest>;
+  ) as unknown as Schema.Codec<RequestAccessMyconfigRequest>;
 
 export type RequestAccessMyconfigResponse = RequestAccessData;
 export const RequestAccessMyconfigResponse =
@@ -2631,7 +2631,7 @@ export const ReleaseDownloadAccessMyconfigRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReleaseDownloadAccessMyconfigRequest>;
+  ) as unknown as Schema.Codec<ReleaseDownloadAccessMyconfigRequest>;
 
 export type ReleaseDownloadAccessMyconfigResponse = DownloadAccesses;
 export const ReleaseDownloadAccessMyconfigResponse =
@@ -2671,7 +2671,7 @@ export const UpdateUserSettingsMyconfigRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateUserSettingsMyconfigRequest>;
+  ) as unknown as Schema.Codec<UpdateUserSettingsMyconfigRequest>;
 
 export type UpdateUserSettingsMyconfigResponse = Usersettings;
 export const UpdateUserSettingsMyconfigResponse =
@@ -2707,7 +2707,7 @@ export const GetUserSettingsMyconfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/myconfig/getUserSettings" }),
     svc,
-  ) as unknown as Schema.Schema<GetUserSettingsMyconfigRequest>;
+  ) as unknown as Schema.Codec<GetUserSettingsMyconfigRequest>;
 
 export type GetUserSettingsMyconfigResponse = Usersettings;
 export const GetUserSettingsMyconfigResponse =
@@ -2758,7 +2758,7 @@ export const GetVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "books/v1/volumes/{volumeId}" }),
   svc,
-) as unknown as Schema.Schema<GetVolumesRequest>;
+) as unknown as Schema.Codec<GetVolumesRequest>;
 
 export type GetVolumesResponse = Volume;
 export const GetVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ Volume;
@@ -2854,7 +2854,7 @@ export const ListVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "books/v1/volumes" }),
   svc,
-) as unknown as Schema.Schema<ListVolumesRequest>;
+) as unknown as Schema.Codec<ListVolumesRequest>;
 
 export type ListVolumesResponse = Volumes;
 export const ListVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ Volumes;
@@ -2909,7 +2909,7 @@ export const ListVolumesAssociatedRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/volumes/{volumeId}/associated" }),
     svc,
-  ) as unknown as Schema.Schema<ListVolumesAssociatedRequest>;
+  ) as unknown as Schema.Codec<ListVolumesAssociatedRequest>;
 
 export type ListVolumesAssociatedResponse = Volumes;
 export const ListVolumesAssociatedResponse =
@@ -2977,7 +2977,7 @@ export const ListVolumesMybooksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/volumes/mybooks" }),
     svc,
-  ) as unknown as Schema.Schema<ListVolumesMybooksRequest>;
+  ) as unknown as Schema.Codec<ListVolumesMybooksRequest>;
 
 export type ListVolumesMybooksResponse = Volumes;
 export const ListVolumesMybooksResponse = /*@__PURE__*/ /*#__PURE__*/ Volumes;
@@ -3031,7 +3031,7 @@ export const ListVolumesUseruploadedRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/volumes/useruploaded" }),
     svc,
-  ) as unknown as Schema.Schema<ListVolumesUseruploadedRequest>;
+  ) as unknown as Schema.Codec<ListVolumesUseruploadedRequest>;
 
 export type ListVolumesUseruploadedResponse = Volumes;
 export const ListVolumesUseruploadedResponse =
@@ -3074,7 +3074,7 @@ export const ListVolumesRecommendedRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/volumes/recommended" }),
     svc,
-  ) as unknown as Schema.Schema<ListVolumesRecommendedRequest>;
+  ) as unknown as Schema.Codec<ListVolumesRecommendedRequest>;
 
 export type ListVolumesRecommendedResponse = Volumes;
 export const ListVolumesRecommendedResponse =
@@ -3118,7 +3118,7 @@ export const RateVolumesRecommendedRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RateVolumesRecommendedRequest>;
+  ) as unknown as Schema.Codec<RateVolumesRecommendedRequest>;
 
 export type RateVolumesRecommendedResponse =
   BooksVolumesRecommendedRateResponse;
@@ -3155,7 +3155,7 @@ export const GetFamilyInfoFamilysharingRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/familysharing/getFamilyInfo" }),
     svc,
-  ) as unknown as Schema.Schema<GetFamilyInfoFamilysharingRequest>;
+  ) as unknown as Schema.Codec<GetFamilyInfoFamilysharingRequest>;
 
 export type GetFamilyInfoFamilysharingResponse = FamilyInfo;
 export const GetFamilyInfoFamilysharingResponse =
@@ -3199,7 +3199,7 @@ export const ShareFamilysharingRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ShareFamilysharingRequest>;
+  ) as unknown as Schema.Codec<ShareFamilysharingRequest>;
 
 export type ShareFamilysharingResponse = Empty;
 export const ShareFamilysharingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3244,7 +3244,7 @@ export const UnshareFamilysharingRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnshareFamilysharingRequest>;
+  ) as unknown as Schema.Codec<UnshareFamilysharingRequest>;
 
 export type UnshareFamilysharingResponse = Empty;
 export const UnshareFamilysharingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3279,7 +3279,7 @@ export const ListCategoriesOnboardingRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/onboarding/listCategories" }),
     svc,
-  ) as unknown as Schema.Schema<ListCategoriesOnboardingRequest>;
+  ) as unknown as Schema.Codec<ListCategoriesOnboardingRequest>;
 
 export type ListCategoriesOnboardingResponse = Category;
 export const ListCategoriesOnboardingResponse =
@@ -3333,7 +3333,7 @@ export const ListCategoryVolumesOnboardingRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/onboarding/listCategoryVolumes" }),
     svc,
-  ) as unknown as Schema.Schema<ListCategoryVolumesOnboardingRequest>;
+  ) as unknown as Schema.Codec<ListCategoryVolumesOnboardingRequest>;
 
 export type ListCategoryVolumesOnboardingResponse = Volume2;
 export const ListCategoryVolumesOnboardingResponse =
@@ -3385,7 +3385,7 @@ export const ListLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "books/v1/volumes/{volumeId}/layersummary" }),
   svc,
-) as unknown as Schema.Schema<ListLayersRequest>;
+) as unknown as Schema.Codec<ListLayersRequest>;
 
 export type ListLayersResponse = Layersummaries;
 export const ListLayersResponse = /*@__PURE__*/ /*#__PURE__*/ Layersummaries;
@@ -3428,7 +3428,7 @@ export const GetLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "books/v1/volumes/{volumeId}/layersummary/{summaryId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetLayersRequest>;
+) as unknown as Schema.Codec<GetLayersRequest>;
 
 export type GetLayersResponse = Layersummary;
 export const GetLayersResponse = /*@__PURE__*/ /*#__PURE__*/ Layersummary;
@@ -3499,7 +3499,7 @@ export const ListLayersAnnotationDataRequest =
       path: "books/v1/volumes/{volumeId}/layers/{layerId}/data",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListLayersAnnotationDataRequest>;
+  ) as unknown as Schema.Codec<ListLayersAnnotationDataRequest>;
 
 export type ListLayersAnnotationDataResponse = Annotationsdata;
 export const ListLayersAnnotationDataResponse =
@@ -3570,7 +3570,7 @@ export const GetLayersAnnotationDataRequest =
       path: "books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetLayersAnnotationDataRequest>;
+  ) as unknown as Schema.Codec<GetLayersAnnotationDataRequest>;
 
 export type GetLayersAnnotationDataResponse = DictionaryAnnotationdata;
 export const GetLayersAnnotationDataResponse =
@@ -3616,7 +3616,7 @@ export const GetLayersVolumeAnnotationsRequest =
       path: "books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetLayersVolumeAnnotationsRequest>;
+  ) as unknown as Schema.Codec<GetLayersVolumeAnnotationsRequest>;
 
 export type GetLayersVolumeAnnotationsResponse = Volumeannotation;
 export const GetLayersVolumeAnnotationsResponse =
@@ -3705,7 +3705,7 @@ export const ListLayersVolumeAnnotationsRequest =
       path: "books/v1/volumes/{volumeId}/layers/{layerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListLayersVolumeAnnotationsRequest>;
+  ) as unknown as Schema.Codec<ListLayersVolumeAnnotationsRequest>;
 
 export type ListLayersVolumeAnnotationsResponse = Volumeannotations;
 export const ListLayersVolumeAnnotationsResponse =
@@ -3748,7 +3748,7 @@ export const ListBookshelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "books/v1/users/{userId}/bookshelves" }),
   svc,
-) as unknown as Schema.Schema<ListBookshelvesRequest>;
+) as unknown as Schema.Codec<ListBookshelvesRequest>;
 
 export type ListBookshelvesResponse = Bookshelves;
 export const ListBookshelvesResponse = /*@__PURE__*/ /*#__PURE__*/ Bookshelves;
@@ -3786,7 +3786,7 @@ export const GetBookshelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "books/v1/users/{userId}/bookshelves/{shelf}",
   }),
   svc,
-) as unknown as Schema.Schema<GetBookshelvesRequest>;
+) as unknown as Schema.Codec<GetBookshelvesRequest>;
 
 export type GetBookshelvesResponse = Bookshelf;
 export const GetBookshelvesResponse = /*@__PURE__*/ /*#__PURE__*/ Bookshelf;
@@ -3836,7 +3836,7 @@ export const ListBookshelvesVolumesRequest =
       path: "books/v1/users/{userId}/bookshelves/{shelf}/volumes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListBookshelvesVolumesRequest>;
+  ) as unknown as Schema.Codec<ListBookshelvesVolumesRequest>;
 
 export type ListBookshelvesVolumesResponse = Volumes;
 export const ListBookshelvesVolumesResponse =
@@ -3874,7 +3874,7 @@ export const GetNotificationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "books/v1/notification/get" }),
   svc,
-) as unknown as Schema.Schema<GetNotificationRequest>;
+) as unknown as Schema.Codec<GetNotificationRequest>;
 
 export type GetNotificationResponse = Notification;
 export const GetNotificationResponse = /*@__PURE__*/ /*#__PURE__*/ Notification;
@@ -3930,7 +3930,7 @@ export const AcceptPromoofferRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AcceptPromoofferRequest>;
+  ) as unknown as Schema.Codec<AcceptPromoofferRequest>;
 
 export type AcceptPromoofferResponse = Empty;
 export const AcceptPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -3989,7 +3989,7 @@ export const DismissPromoofferRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DismissPromoofferRequest>;
+  ) as unknown as Schema.Codec<DismissPromoofferRequest>;
 
 export type DismissPromoofferResponse = Empty;
 export const DismissPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -4040,7 +4040,7 @@ export const GetPromoofferRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "books/v1/promooffer/get" }),
   svc,
-) as unknown as Schema.Schema<GetPromoofferRequest>;
+) as unknown as Schema.Codec<GetPromoofferRequest>;
 
 export type GetPromoofferResponse = Offers;
 export const GetPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Offers;
@@ -4082,7 +4082,7 @@ export const GetPersonalizedstreamRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/personalizedstream/get" }),
     svc,
-  ) as unknown as Schema.Schema<GetPersonalizedstreamRequest>;
+  ) as unknown as Schema.Codec<GetPersonalizedstreamRequest>;
 
 export type GetPersonalizedstreamResponse = Discoveryclusters;
 export const GetPersonalizedstreamResponse =
@@ -4113,7 +4113,7 @@ export const ListOfflineMetadataDictionaryRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/dictionary/listOfflineMetadata" }),
     svc,
-  ) as unknown as Schema.Schema<ListOfflineMetadataDictionaryRequest>;
+  ) as unknown as Schema.Codec<ListOfflineMetadataDictionaryRequest>;
 
 export type ListOfflineMetadataDictionaryResponse = Metadata;
 export const ListOfflineMetadataDictionaryResponse =
@@ -4146,7 +4146,7 @@ export const GetSeriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "books/v1/series/get" }),
   svc,
-) as unknown as Schema.Schema<GetSeriesRequest>;
+) as unknown as Schema.Codec<GetSeriesRequest>;
 
 export type GetSeriesResponse = Series;
 export const GetSeriesResponse = /*@__PURE__*/ /*#__PURE__*/ Series;
@@ -4182,7 +4182,7 @@ export const GetSeriesMembershipRequest =
   }).pipe(
     T.Http({ method: "GET", path: "books/v1/series/membership/get" }),
     svc,
-  ) as unknown as Schema.Schema<GetSeriesMembershipRequest>;
+  ) as unknown as Schema.Codec<GetSeriesMembershipRequest>;
 
 export type GetSeriesMembershipResponse = Seriesmembership;
 export const GetSeriesMembershipResponse =

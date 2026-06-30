@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRoleAssignmentsControllerAssignRoleInput {
+  organization_membership_id: string;
+  role_slug: string;
+}
 export const AuthorizationRoleAssignmentsControllerAssignRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,18 @@ export const AuthorizationRoleAssignmentsControllerAssignRoleInput =
       method: "POST",
       path: "/authorization/organization_memberships/{organization_membership_id}/role_assignments",
     }),
-  );
-export type AuthorizationRoleAssignmentsControllerAssignRoleInput =
-  typeof AuthorizationRoleAssignmentsControllerAssignRoleInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerAssignRoleInput>;
 
 // Output Schema
+export interface AuthorizationRoleAssignmentsControllerAssignRoleOutput {
+  object: string;
+  id: string;
+  organization_membership_id: string;
+  role: { slug?: string };
+  resource: { id: string; external_id: string; resource_type_slug: string };
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationRoleAssignmentsControllerAssignRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -33,9 +44,7 @@ export const AuthorizationRoleAssignmentsControllerAssignRoleOutput =
     }),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationRoleAssignmentsControllerAssignRoleOutput =
-  typeof AuthorizationRoleAssignmentsControllerAssignRoleOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerAssignRoleOutput>;
 
 // The operation
 /**

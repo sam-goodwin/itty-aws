@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service certificate-authorities
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -48,7 +48,7 @@ export const GetHostnameAssociationRequest =
         path: "/zones/{zone_id}/certificate_authorities/hostname_associations",
       }),
     ),
-  ) as unknown as Schema.Schema<GetHostnameAssociationRequest>;
+  ) as unknown as Schema.Codec<GetHostnameAssociationRequest>;
 
 export interface GetHostnameAssociationResponse {
   hostnames?: string[] | null;
@@ -61,7 +61,7 @@ export const GetHostnameAssociationResponse =
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetHostnameAssociationResponse>;
+  ) as unknown as Schema.Codec<GetHostnameAssociationResponse>;
 
 export type GetHostnameAssociationError = DefaultErrors | Forbidden;
 
@@ -101,7 +101,7 @@ export const PutHostnameAssociationRequest =
         path: "/zones/{zone_id}/certificate_authorities/hostname_associations",
       }),
     ),
-  ) as unknown as Schema.Schema<PutHostnameAssociationRequest>;
+  ) as unknown as Schema.Codec<PutHostnameAssociationRequest>;
 
 export interface PutHostnameAssociationResponse {
   hostnames?: string[] | null;
@@ -114,7 +114,7 @@ export const PutHostnameAssociationResponse =
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutHostnameAssociationResponse>;
+  ) as unknown as Schema.Codec<PutHostnameAssociationResponse>;
 
 export type PutHostnameAssociationError = DefaultErrors | Forbidden;
 

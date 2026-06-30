@@ -10,6 +10,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupClusterInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,12 +22,12 @@ export const CreateGroupClusterInput =
     pretty: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters" }),
-  );
-export type CreateGroupClusterInput = typeof CreateGroupClusterInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupClusterInput>;
 
 // Output Schema
-export const CreateGroupClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupClusterOutput = typeof CreateGroupClusterOutput.Type;
+export type CreateGroupClusterOutput = void;
+export const CreateGroupClusterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterOutput>;
 
 // The operation
 /**

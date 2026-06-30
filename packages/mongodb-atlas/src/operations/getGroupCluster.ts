@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupClusterInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const GetGroupClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}",
   }),
-);
-export type GetGroupClusterInput = typeof GetGroupClusterInput.Type;
+) as unknown as Schema.Codec<GetGroupClusterInput>;
 
 // Output Schema
-export const GetGroupClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterOutput = typeof GetGroupClusterOutput.Type;
+export type GetGroupClusterOutput = void;
+export const GetGroupClusterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterOutput>;
 
 // The operation
 /**

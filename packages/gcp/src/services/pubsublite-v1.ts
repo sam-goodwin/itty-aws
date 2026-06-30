@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface Cursor {
   offset?: string;
 }
 
-export const Cursor: Schema.Schema<Cursor> =
+export const Cursor: Schema.Codec<Cursor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     offset: Schema.optional(Schema.String),
   }).annotate({ identifier: "Cursor" });
@@ -41,7 +41,7 @@ export interface ComputeMessageStatsRequest {
   endCursor?: Cursor;
 }
 
-export const ComputeMessageStatsRequest: Schema.Schema<ComputeMessageStatsRequest> =
+export const ComputeMessageStatsRequest: Schema.Codec<ComputeMessageStatsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partition: Schema.optional(Schema.String),
     startCursor: Schema.optional(Cursor),
@@ -55,7 +55,7 @@ export interface PartitionCursor {
   partition?: string;
 }
 
-export const PartitionCursor: Schema.Schema<PartitionCursor> =
+export const PartitionCursor: Schema.Codec<PartitionCursor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Cursor),
     partition: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface ListPartitionCursorsResponse {
   nextPageToken?: string;
 }
 
-export const ListPartitionCursorsResponse: Schema.Schema<ListPartitionCursorsResponse> =
+export const ListPartitionCursorsResponse: Schema.Codec<ListPartitionCursorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionCursors: Schema.optional(Schema.Array(PartitionCursor)),
     nextPageToken: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface ComputeTimeCursorResponse {
   cursor?: Cursor;
 }
 
-export const ComputeTimeCursorResponse: Schema.Schema<ComputeTimeCursorResponse> =
+export const ComputeTimeCursorResponse: Schema.Codec<ComputeTimeCursorResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Cursor),
   }).annotate({ identifier: "ComputeTimeCursorResponse" });
@@ -91,7 +91,7 @@ export interface Capacity {
   subscribeMibPerSec?: number;
 }
 
-export const Capacity: Schema.Schema<Capacity> =
+export const Capacity: Schema.Codec<Capacity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishMibPerSec: Schema.optional(Schema.Number),
     subscribeMibPerSec: Schema.optional(Schema.Number),
@@ -106,7 +106,7 @@ export interface PartitionConfig {
   capacity?: Capacity;
 }
 
-export const PartitionConfig: Schema.Schema<PartitionConfig> =
+export const PartitionConfig: Schema.Codec<PartitionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     scale: Schema.optional(Schema.Number),
@@ -120,7 +120,7 @@ export interface RetentionConfig {
   period?: string;
 }
 
-export const RetentionConfig: Schema.Schema<RetentionConfig> =
+export const RetentionConfig: Schema.Codec<RetentionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     perPartitionBytes: Schema.optional(Schema.String),
     period: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface ReservationConfig {
   throughputReservation?: string;
 }
 
-export const ReservationConfig: Schema.Schema<ReservationConfig> =
+export const ReservationConfig: Schema.Codec<ReservationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     throughputReservation: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReservationConfig" });
@@ -147,7 +147,7 @@ export interface Topic {
   reservationConfig?: ReservationConfig;
 }
 
-export const Topic: Schema.Schema<Topic> =
+export const Topic: Schema.Codec<Topic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionConfig: Schema.optional(PartitionConfig),
     retentionConfig: Schema.optional(RetentionConfig),
@@ -162,7 +162,7 @@ export interface ListTopicsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
+export const ListTopicsResponse: Schema.Codec<ListTopicsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topics: Schema.optional(Schema.Array(Topic)),
     nextPageToken: Schema.optional(Schema.String),
@@ -175,7 +175,7 @@ export interface Reservation {
   throughputCapacity?: string;
 }
 
-export const Reservation: Schema.Schema<Reservation> =
+export const Reservation: Schema.Codec<Reservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     throughputCapacity: Schema.optional(Schema.String),
@@ -188,7 +188,7 @@ export interface TimeTarget {
   eventTime?: string;
 }
 
-export const TimeTarget: Schema.Schema<TimeTarget> =
+export const TimeTarget: Schema.Codec<TimeTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publishTime: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
@@ -201,7 +201,7 @@ export interface SeekSubscriptionRequest {
   timeTarget?: TimeTarget;
 }
 
-export const SeekSubscriptionRequest: Schema.Schema<SeekSubscriptionRequest> =
+export const SeekSubscriptionRequest: Schema.Codec<SeekSubscriptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namedTarget: Schema.optional(Schema.String),
     timeTarget: Schema.optional(TimeTarget),
@@ -214,7 +214,7 @@ export interface ListReservationTopicsResponse {
   nextPageToken?: string;
 }
 
-export const ListReservationTopicsResponse: Schema.Schema<ListReservationTopicsResponse> =
+export const ListReservationTopicsResponse: Schema.Codec<ListReservationTopicsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topics: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -251,7 +251,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -262,7 +262,7 @@ export const Operation: Schema.Schema<Operation> =
 
 export interface CommitCursorResponse {}
 
-export const CommitCursorResponse: Schema.Schema<CommitCursorResponse> =
+export const CommitCursorResponse: Schema.Codec<CommitCursorResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CommitCursorResponse",
   });
@@ -276,7 +276,7 @@ export interface DeliveryConfig {
     | (string & {});
 }
 
-export const DeliveryConfig: Schema.Schema<DeliveryConfig> =
+export const DeliveryConfig: Schema.Codec<DeliveryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deliveryRequirement: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeliveryConfig" });
@@ -292,7 +292,7 @@ export interface ComputeMessageStatsResponse {
   messageCount?: string;
 }
 
-export const ComputeMessageStatsResponse: Schema.Schema<ComputeMessageStatsResponse> =
+export const ComputeMessageStatsResponse: Schema.Codec<ComputeMessageStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messageBytes: Schema.optional(Schema.String),
     minimumPublishTime: Schema.optional(Schema.String),
@@ -305,7 +305,7 @@ export interface ComputeHeadCursorRequest {
   partition?: string;
 }
 
-export const ComputeHeadCursorRequest: Schema.Schema<ComputeHeadCursorRequest> =
+export const ComputeHeadCursorRequest: Schema.Codec<ComputeHeadCursorRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partition: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComputeHeadCursorRequest" });
@@ -315,7 +315,7 @@ export interface PubSubConfig {
   topic?: string;
 }
 
-export const PubSubConfig: Schema.Schema<PubSubConfig> =
+export const PubSubConfig: Schema.Codec<PubSubConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
   }).annotate({ identifier: "PubSubConfig" });
@@ -343,7 +343,7 @@ export interface ExportConfig {
     | (string & {});
 }
 
-export const ExportConfig: Schema.Schema<ExportConfig> =
+export const ExportConfig: Schema.Codec<ExportConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     desiredState: Schema.optional(Schema.String),
     deadLetterTopic: Schema.optional(Schema.String),
@@ -362,7 +362,7 @@ export interface Subscription {
   deliveryConfig?: DeliveryConfig;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
+export const Subscription: Schema.Codec<Subscription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
     exportConfig: Schema.optional(ExportConfig),
@@ -377,7 +377,7 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
+export const ListSubscriptionsResponse: Schema.Codec<ListSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Subscription)),
     nextPageToken: Schema.optional(Schema.String),
@@ -390,7 +390,7 @@ export interface ListReservationsResponse {
   nextPageToken?: string;
 }
 
-export const ListReservationsResponse: Schema.Schema<ListReservationsResponse> =
+export const ListReservationsResponse: Schema.Codec<ListReservationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservations: Schema.optional(Schema.Array(Reservation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -398,7 +398,7 @@ export const ListReservationsResponse: Schema.Schema<ListReservationsResponse> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -408,7 +408,7 @@ export interface TopicPartitions {
   partitionCount?: string;
 }
 
-export const TopicPartitions: Schema.Schema<TopicPartitions> =
+export const TopicPartitions: Schema.Codec<TopicPartitions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionCount: Schema.optional(Schema.String),
   }).annotate({ identifier: "TopicPartitions" });
@@ -420,7 +420,7 @@ export interface CommitCursorRequest {
   partition?: string;
 }
 
-export const CommitCursorRequest: Schema.Schema<CommitCursorRequest> =
+export const CommitCursorRequest: Schema.Codec<CommitCursorRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Cursor),
     partition: Schema.optional(Schema.String),
@@ -435,7 +435,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -444,14 +444,14 @@ export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
 
 export interface SeekSubscriptionResponse {}
 
-export const SeekSubscriptionResponse: Schema.Schema<SeekSubscriptionResponse> =
+export const SeekSubscriptionResponse: Schema.Codec<SeekSubscriptionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SeekSubscriptionResponse",
   });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -467,7 +467,7 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -480,7 +480,7 @@ export interface ComputeHeadCursorResponse {
   headCursor?: Cursor;
 }
 
-export const ComputeHeadCursorResponse: Schema.Schema<ComputeHeadCursorResponse> =
+export const ComputeHeadCursorResponse: Schema.Codec<ComputeHeadCursorResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     headCursor: Schema.optional(Cursor),
   }).annotate({ identifier: "ComputeHeadCursorResponse" });
@@ -492,7 +492,7 @@ export interface ComputeTimeCursorRequest {
   target?: TimeTarget;
 }
 
-export const ComputeTimeCursorRequest: Schema.Schema<ComputeTimeCursorRequest> =
+export const ComputeTimeCursorRequest: Schema.Codec<ComputeTimeCursorRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partition: Schema.optional(Schema.String),
     target: Schema.optional(TimeTarget),
@@ -505,7 +505,7 @@ export interface ListTopicSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicSubscriptionsResponse: Schema.Schema<ListTopicSubscriptionsResponse> =
+export const ListTopicSubscriptionsResponse: Schema.Codec<ListTopicSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -583,7 +583,7 @@ export const CommitCursorCursorProjectsLocationsSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CommitCursorCursorProjectsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CommitCursorCursorProjectsLocationsSubscriptionsRequest>;
 
 export type CommitCursorCursorProjectsLocationsSubscriptionsResponse =
   CommitCursorResponse;
@@ -626,7 +626,7 @@ export const ListCursorProjectsLocationsSubscriptionsCursorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/cursor/{+parent}/cursors" }),
     svc,
-  ) as unknown as Schema.Schema<ListCursorProjectsLocationsSubscriptionsCursorsRequest>;
+  ) as unknown as Schema.Codec<ListCursorProjectsLocationsSubscriptionsCursorsRequest>;
 
 export type ListCursorProjectsLocationsSubscriptionsCursorsResponse =
   ListPartitionCursorsResponse;
@@ -672,7 +672,7 @@ export const ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest>;
 
 export type ComputeMessageStatsTopicStatsProjectsLocationsTopicsResponse =
   ComputeMessageStatsResponse;
@@ -716,7 +716,7 @@ export const ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest>;
 
 export type ComputeHeadCursorTopicStatsProjectsLocationsTopicsResponse =
   ComputeHeadCursorResponse;
@@ -760,7 +760,7 @@ export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest>;
 
 export type ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse =
   ComputeTimeCursorResponse;
@@ -811,7 +811,7 @@ export const ListAdminProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdminProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListAdminProjectsLocationsOperationsRequest>;
 
 export type ListAdminProjectsLocationsOperationsResponse =
   ListOperationsResponse;
@@ -850,7 +850,7 @@ export const GetAdminProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAdminProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetAdminProjectsLocationsOperationsRequest>;
 
 export type GetAdminProjectsLocationsOperationsResponse = Operation;
 export const GetAdminProjectsLocationsOperationsResponse =
@@ -884,7 +884,7 @@ export const DeleteAdminProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/admin/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdminProjectsLocationsOperationsRequest>;
 
 export type DeleteAdminProjectsLocationsOperationsResponse = Empty;
 export const DeleteAdminProjectsLocationsOperationsResponse =
@@ -923,7 +923,7 @@ export const CancelAdminProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/admin/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelAdminProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelAdminProjectsLocationsOperationsRequest>;
 
 export type CancelAdminProjectsLocationsOperationsResponse = Empty;
 export const CancelAdminProjectsLocationsOperationsResponse =
@@ -959,7 +959,7 @@ export const GetAdminProjectsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAdminProjectsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetAdminProjectsLocationsSubscriptionsRequest>;
 
 export type GetAdminProjectsLocationsSubscriptionsResponse = Subscription;
 export const GetAdminProjectsLocationsSubscriptionsResponse =
@@ -996,7 +996,7 @@ export const SeekAdminProjectsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/admin/{+name}:seek", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SeekAdminProjectsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<SeekAdminProjectsLocationsSubscriptionsRequest>;
 
 export type SeekAdminProjectsLocationsSubscriptionsResponse = Operation;
 export const SeekAdminProjectsLocationsSubscriptionsResponse =
@@ -1038,7 +1038,7 @@ export const ListAdminProjectsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+parent}/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListAdminProjectsLocationsSubscriptionsRequest>;
 
 export type ListAdminProjectsLocationsSubscriptionsResponse =
   ListSubscriptionsResponse;
@@ -1077,7 +1077,7 @@ export const DeleteAdminProjectsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/admin/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdminProjectsLocationsSubscriptionsRequest>;
 
 export type DeleteAdminProjectsLocationsSubscriptionsResponse = Empty;
 export const DeleteAdminProjectsLocationsSubscriptionsResponse =
@@ -1130,7 +1130,7 @@ export const CreateAdminProjectsLocationsSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdminProjectsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<CreateAdminProjectsLocationsSubscriptionsRequest>;
 
 export type CreateAdminProjectsLocationsSubscriptionsResponse = Subscription;
 export const CreateAdminProjectsLocationsSubscriptionsResponse =
@@ -1172,7 +1172,7 @@ export const PatchAdminProjectsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/admin/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdminProjectsLocationsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<PatchAdminProjectsLocationsSubscriptionsRequest>;
 
 export type PatchAdminProjectsLocationsSubscriptionsResponse = Subscription;
 export const PatchAdminProjectsLocationsSubscriptionsResponse =
@@ -1208,7 +1208,7 @@ export const GetAdminProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAdminProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<GetAdminProjectsLocationsReservationsRequest>;
 
 export type GetAdminProjectsLocationsReservationsResponse = Reservation;
 export const GetAdminProjectsLocationsReservationsResponse =
@@ -1248,7 +1248,7 @@ export const ListAdminProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+parent}/reservations" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdminProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<ListAdminProjectsLocationsReservationsRequest>;
 
 export type ListAdminProjectsLocationsReservationsResponse =
   ListReservationsResponse;
@@ -1287,7 +1287,7 @@ export const DeleteAdminProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/admin/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdminProjectsLocationsReservationsRequest>;
 
 export type DeleteAdminProjectsLocationsReservationsResponse = Empty;
 export const DeleteAdminProjectsLocationsReservationsResponse =
@@ -1335,7 +1335,7 @@ export const CreateAdminProjectsLocationsReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdminProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<CreateAdminProjectsLocationsReservationsRequest>;
 
 export type CreateAdminProjectsLocationsReservationsResponse = Reservation;
 export const CreateAdminProjectsLocationsReservationsResponse =
@@ -1377,7 +1377,7 @@ export const PatchAdminProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/admin/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdminProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<PatchAdminProjectsLocationsReservationsRequest>;
 
 export type PatchAdminProjectsLocationsReservationsResponse = Reservation;
 export const PatchAdminProjectsLocationsReservationsResponse =
@@ -1419,7 +1419,7 @@ export const ListAdminProjectsLocationsReservationsTopicsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+name}/topics" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdminProjectsLocationsReservationsTopicsRequest>;
+  ) as unknown as Schema.Codec<ListAdminProjectsLocationsReservationsTopicsRequest>;
 
 export type ListAdminProjectsLocationsReservationsTopicsResponse =
   ListReservationTopicsResponse;
@@ -1458,7 +1458,7 @@ export const GetAdminProjectsLocationsTopicsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAdminProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<GetAdminProjectsLocationsTopicsRequest>;
 
 export type GetAdminProjectsLocationsTopicsResponse = Topic;
 export const GetAdminProjectsLocationsTopicsResponse =
@@ -1498,7 +1498,7 @@ export const ListAdminProjectsLocationsTopicsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+parent}/topics" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdminProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<ListAdminProjectsLocationsTopicsRequest>;
 
 export type ListAdminProjectsLocationsTopicsResponse = ListTopicsResponse;
 export const ListAdminProjectsLocationsTopicsResponse =
@@ -1536,7 +1536,7 @@ export const DeleteAdminProjectsLocationsTopicsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/admin/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<DeleteAdminProjectsLocationsTopicsRequest>;
 
 export type DeleteAdminProjectsLocationsTopicsResponse = Empty;
 export const DeleteAdminProjectsLocationsTopicsResponse =
@@ -1582,7 +1582,7 @@ export const CreateAdminProjectsLocationsTopicsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAdminProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<CreateAdminProjectsLocationsTopicsRequest>;
 
 export type CreateAdminProjectsLocationsTopicsResponse = Topic;
 export const CreateAdminProjectsLocationsTopicsResponse =
@@ -1618,7 +1618,7 @@ export const GetPartitionsAdminProjectsLocationsTopicsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+name}/partitions" }),
     svc,
-  ) as unknown as Schema.Schema<GetPartitionsAdminProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<GetPartitionsAdminProjectsLocationsTopicsRequest>;
 
 export type GetPartitionsAdminProjectsLocationsTopicsResponse = TopicPartitions;
 export const GetPartitionsAdminProjectsLocationsTopicsResponse =
@@ -1658,7 +1658,7 @@ export const PatchAdminProjectsLocationsTopicsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/admin/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAdminProjectsLocationsTopicsRequest>;
+  ) as unknown as Schema.Codec<PatchAdminProjectsLocationsTopicsRequest>;
 
 export type PatchAdminProjectsLocationsTopicsResponse = Topic;
 export const PatchAdminProjectsLocationsTopicsResponse =
@@ -1700,7 +1700,7 @@ export const ListAdminProjectsLocationsTopicsSubscriptionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/admin/{+name}/subscriptions" }),
     svc,
-  ) as unknown as Schema.Schema<ListAdminProjectsLocationsTopicsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListAdminProjectsLocationsTopicsSubscriptionsRequest>;
 
 export type ListAdminProjectsLocationsTopicsSubscriptionsResponse =
   ListTopicSubscriptionsResponse;

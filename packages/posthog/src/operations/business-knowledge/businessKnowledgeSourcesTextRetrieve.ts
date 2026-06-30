@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface BusinessKnowledgeSourcesTextRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const BusinessKnowledgeSourcesTextRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const BusinessKnowledgeSourcesTextRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/business_knowledge/sources/{id}/text/",
     }),
-  );
-export type BusinessKnowledgeSourcesTextRetrieveInput =
-  typeof BusinessKnowledgeSourcesTextRetrieveInput.Type;
+  ) as unknown as Schema.Codec<BusinessKnowledgeSourcesTextRetrieveInput>;
 
 // Output Schema
+export interface BusinessKnowledgeSourcesTextRetrieveOutput {
+  text?: string;
+}
 export const BusinessKnowledgeSourcesTextRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
-  });
-export type BusinessKnowledgeSourcesTextRetrieveOutput =
-  typeof BusinessKnowledgeSourcesTextRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<BusinessKnowledgeSourcesTextRetrieveOutput>;
 
 // The operation
 /**

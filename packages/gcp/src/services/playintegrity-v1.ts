@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface WriteDates {
   yyyymmSecond?: number;
 }
 
-export const WriteDates: Schema.Schema<WriteDates> =
+export const WriteDates: Schema.Codec<WriteDates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     yyyymmFirst: Schema.optional(Schema.Number),
     yyyymmThird: Schema.optional(Schema.Number),
@@ -40,7 +40,7 @@ export const WriteDates: Schema.Schema<WriteDates> =
 
 export interface WriteDeviceRecallResponse {}
 
-export const WriteDeviceRecallResponse: Schema.Schema<WriteDeviceRecallResponse> =
+export const WriteDeviceRecallResponse: Schema.Codec<WriteDeviceRecallResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WriteDeviceRecallResponse",
   });
@@ -61,7 +61,7 @@ export interface AppIntegrity {
   versionCode?: string;
 }
 
-export const AppIntegrity: Schema.Schema<AppIntegrity> =
+export const AppIntegrity: Schema.Codec<AppIntegrity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     appRecognitionVerdict: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface DeviceAttributes {
   sdkVersion?: number;
 }
 
-export const DeviceAttributes: Schema.Schema<DeviceAttributes> =
+export const DeviceAttributes: Schema.Codec<DeviceAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sdkVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeviceAttributes" });
@@ -84,7 +84,7 @@ export interface PcTestingDetails {
   isTestingResponse?: boolean;
 }
 
-export const PcTestingDetails: Schema.Schema<PcTestingDetails> =
+export const PcTestingDetails: Schema.Codec<PcTestingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isTestingResponse: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "PcTestingDetails" });
@@ -94,7 +94,7 @@ export interface DecodeIntegrityTokenRequest {
   integrityToken?: string;
 }
 
-export const DecodeIntegrityTokenRequest: Schema.Schema<DecodeIntegrityTokenRequest> =
+export const DecodeIntegrityTokenRequest: Schema.Codec<DecodeIntegrityTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrityToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "DecodeIntegrityTokenRequest" });
@@ -115,7 +115,7 @@ export interface AppAccessRiskVerdict {
   >;
 }
 
-export const AppAccessRiskVerdict: Schema.Schema<AppAccessRiskVerdict> =
+export const AppAccessRiskVerdict: Schema.Codec<AppAccessRiskVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appsDetected: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AppAccessRiskVerdict" });
@@ -135,7 +135,7 @@ export interface EnvironmentDetails {
     | (string & {});
 }
 
-export const EnvironmentDetails: Schema.Schema<EnvironmentDetails> =
+export const EnvironmentDetails: Schema.Codec<EnvironmentDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appAccessRiskVerdict: Schema.optional(AppAccessRiskVerdict),
     playProtectVerdict: Schema.optional(Schema.String),
@@ -152,7 +152,7 @@ export interface RequestDetails {
   nonce?: string;
 }
 
-export const RequestDetails: Schema.Schema<RequestDetails> =
+export const RequestDetails: Schema.Codec<RequestDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timestampMillis: Schema.optional(Schema.String),
     requestHash: Schema.optional(Schema.String),
@@ -172,7 +172,7 @@ export interface RecentDeviceActivity {
     | (string & {});
 }
 
-export const RecentDeviceActivity: Schema.Schema<RecentDeviceActivity> =
+export const RecentDeviceActivity: Schema.Codec<RecentDeviceActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceActivityLevel: Schema.optional(Schema.String),
   }).annotate({ identifier: "RecentDeviceActivity" });
@@ -186,7 +186,7 @@ export interface Values {
   bitThird?: boolean;
 }
 
-export const Values: Schema.Schema<Values> =
+export const Values: Schema.Codec<Values> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bitFirst: Schema.optional(Schema.Boolean),
     bitSecond: Schema.optional(Schema.Boolean),
@@ -200,7 +200,7 @@ export interface DeviceRecall {
   writeDates?: WriteDates;
 }
 
-export const DeviceRecall: Schema.Schema<DeviceRecall> =
+export const DeviceRecall: Schema.Codec<DeviceRecall> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Values),
     writeDates: Schema.optional(WriteDates),
@@ -233,7 +233,7 @@ export interface DeviceIntegrity {
   deviceRecall?: DeviceRecall;
 }
 
-export const DeviceIntegrity: Schema.Schema<DeviceIntegrity> =
+export const DeviceIntegrity: Schema.Codec<DeviceIntegrity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     legacyDeviceRecognitionVerdict: Schema.optional(
       Schema.Array(Schema.String),
@@ -256,7 +256,7 @@ export interface AccountActivity {
     | (string & {});
 }
 
-export const AccountActivity: Schema.Schema<AccountActivity> =
+export const AccountActivity: Schema.Codec<AccountActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activityLevel: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccountActivity" });
@@ -273,7 +273,7 @@ export interface AccountDetails {
   accountActivity?: AccountActivity;
 }
 
-export const AccountDetails: Schema.Schema<AccountDetails> =
+export const AccountDetails: Schema.Codec<AccountDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appLicensingVerdict: Schema.optional(Schema.String),
     accountActivity: Schema.optional(AccountActivity),
@@ -284,7 +284,7 @@ export interface TestingDetails {
   isTestingResponse?: boolean;
 }
 
-export const TestingDetails: Schema.Schema<TestingDetails> =
+export const TestingDetails: Schema.Codec<TestingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isTestingResponse: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "TestingDetails" });
@@ -304,7 +304,7 @@ export interface TokenPayloadExternal {
   testingDetails?: TestingDetails;
 }
 
-export const TokenPayloadExternal: Schema.Schema<TokenPayloadExternal> =
+export const TokenPayloadExternal: Schema.Codec<TokenPayloadExternal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestDetails: Schema.optional(RequestDetails),
     deviceIntegrity: Schema.optional(DeviceIntegrity),
@@ -319,7 +319,7 @@ export interface DecodePcIntegrityTokenRequest {
   integrityToken?: string;
 }
 
-export const DecodePcIntegrityTokenRequest: Schema.Schema<DecodePcIntegrityTokenRequest> =
+export const DecodePcIntegrityTokenRequest: Schema.Codec<DecodePcIntegrityTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrityToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "DecodePcIntegrityTokenRequest" });
@@ -329,7 +329,7 @@ export interface DecodeIntegrityTokenResponse {
   tokenPayloadExternal?: TokenPayloadExternal;
 }
 
-export const DecodeIntegrityTokenResponse: Schema.Schema<DecodeIntegrityTokenResponse> =
+export const DecodeIntegrityTokenResponse: Schema.Codec<DecodeIntegrityTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenPayloadExternal: Schema.optional(TokenPayloadExternal),
   }).annotate({ identifier: "DecodeIntegrityTokenResponse" });
@@ -343,7 +343,7 @@ export interface PcDeviceIntegrity {
   >;
 }
 
-export const PcDeviceIntegrity: Schema.Schema<PcDeviceIntegrity> =
+export const PcDeviceIntegrity: Schema.Codec<PcDeviceIntegrity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PcDeviceIntegrity" });
@@ -357,7 +357,7 @@ export interface PcRequestDetails {
   requestPackageName?: string;
 }
 
-export const PcRequestDetails: Schema.Schema<PcRequestDetails> =
+export const PcRequestDetails: Schema.Codec<PcRequestDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestTime: Schema.optional(Schema.String),
     requestHash: Schema.optional(Schema.String),
@@ -374,7 +374,7 @@ export interface PcAccountDetails {
     | (string & {});
 }
 
-export const PcAccountDetails: Schema.Schema<PcAccountDetails> =
+export const PcAccountDetails: Schema.Codec<PcAccountDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appLicensingVerdict: Schema.optional(Schema.String),
   }).annotate({ identifier: "PcAccountDetails" });
@@ -390,7 +390,7 @@ export interface PcTokenPayloadExternal {
   testingDetails?: PcTestingDetails;
 }
 
-export const PcTokenPayloadExternal: Schema.Schema<PcTokenPayloadExternal> =
+export const PcTokenPayloadExternal: Schema.Codec<PcTokenPayloadExternal> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceIntegrity: Schema.optional(PcDeviceIntegrity),
     requestDetails: Schema.optional(PcRequestDetails),
@@ -403,7 +403,7 @@ export interface DecodePcIntegrityTokenResponse {
   tokenPayloadExternal?: PcTokenPayloadExternal;
 }
 
-export const DecodePcIntegrityTokenResponse: Schema.Schema<DecodePcIntegrityTokenResponse> =
+export const DecodePcIntegrityTokenResponse: Schema.Codec<DecodePcIntegrityTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tokenPayloadExternal: Schema.optional(PcTokenPayloadExternal),
   }).annotate({ identifier: "DecodePcIntegrityTokenResponse" });
@@ -415,7 +415,7 @@ export interface WriteDeviceRecallRequest {
   newValues?: Values;
 }
 
-export const WriteDeviceRecallRequest: Schema.Schema<WriteDeviceRecallRequest> =
+export const WriteDeviceRecallRequest: Schema.Codec<WriteDeviceRecallRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrityToken: Schema.optional(Schema.String),
     newValues: Schema.optional(Values),
@@ -493,7 +493,7 @@ export const WriteDeviceRecallRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WriteDeviceRecallRequest_Op>;
+  ) as unknown as Schema.Codec<WriteDeviceRecallRequest_Op>;
 
 export type WriteDeviceRecallResponse_Op = WriteDeviceRecallResponse;
 export const WriteDeviceRecallResponse_Op =
@@ -536,7 +536,7 @@ export const DecodeIntegrityTokenV1Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DecodeIntegrityTokenV1Request>;
+  ) as unknown as Schema.Codec<DecodeIntegrityTokenV1Request>;
 
 export type DecodeIntegrityTokenV1Response = DecodeIntegrityTokenResponse;
 export const DecodeIntegrityTokenV1Response =
@@ -579,7 +579,7 @@ export const DecodePcIntegrityTokenV1Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DecodePcIntegrityTokenV1Request>;
+  ) as unknown as Schema.Codec<DecodePcIntegrityTokenV1Request>;
 
 export type DecodePcIntegrityTokenV1Response = DecodePcIntegrityTokenResponse;
 export const DecodePcIntegrityTokenV1Response =

@@ -10,6 +10,12 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface UnpinGroupClusterFeatureCompatibilityVersionInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UnpinGroupClusterFeatureCompatibilityVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +27,12 @@ export const UnpinGroupClusterFeatureCompatibilityVersionInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion",
     }),
-  );
-export type UnpinGroupClusterFeatureCompatibilityVersionInput =
-  typeof UnpinGroupClusterFeatureCompatibilityVersionInput.Type;
+  ) as unknown as Schema.Codec<UnpinGroupClusterFeatureCompatibilityVersionInput>;
 
 // Output Schema
+export type UnpinGroupClusterFeatureCompatibilityVersionOutput = void;
 export const UnpinGroupClusterFeatureCompatibilityVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UnpinGroupClusterFeatureCompatibilityVersionOutput =
-  typeof UnpinGroupClusterFeatureCompatibilityVersionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UnpinGroupClusterFeatureCompatibilityVersionOutput>;
 
 // The operation
 /**

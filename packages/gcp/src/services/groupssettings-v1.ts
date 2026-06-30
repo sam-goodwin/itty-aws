@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -151,7 +151,7 @@ export interface Groups {
   membersCanPostAsTheGroup?: string;
 }
 
-export const Groups: Schema.Schema<Groups> =
+export const Groups: Schema.Codec<Groups> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     whoCanPostAnnouncements: Schema.optional(Schema.String),
     allowWebPosting: Schema.optional(Schema.String),
@@ -282,7 +282,7 @@ export const GetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "{groupUniqueId}" }),
   svc,
-) as unknown as Schema.Schema<GetGroupsRequest>;
+) as unknown as Schema.Codec<GetGroupsRequest>;
 
 export type GetGroupsResponse = Groups;
 export const GetGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;
@@ -314,7 +314,7 @@ export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "{groupUniqueId}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateGroupsRequest>;
+) as unknown as Schema.Codec<UpdateGroupsRequest>;
 
 export type UpdateGroupsResponse = Groups;
 export const UpdateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;
@@ -351,7 +351,7 @@ export const PatchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "{groupUniqueId}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchGroupsRequest>;
+) as unknown as Schema.Codec<PatchGroupsRequest>;
 
 export type PatchGroupsResponse = Groups;
 export const PatchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;

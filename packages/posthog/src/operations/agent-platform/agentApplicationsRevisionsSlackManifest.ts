@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsRevisionsSlackManifestInput {
+  application_id: string;
+  id: string;
+  project_id: string;
+}
 export const AgentApplicationsRevisionsSlackManifestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,16 @@ export const AgentApplicationsRevisionsSlackManifestInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/slack_manifest/",
     }),
-  );
-export type AgentApplicationsRevisionsSlackManifestInput =
-  typeof AgentApplicationsRevisionsSlackManifestInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsRevisionsSlackManifestInput>;
 
 // Output Schema
+export interface AgentApplicationsRevisionsSlackManifestOutput {
+  revision_id: string;
+  manifest: unknown;
+  notes: string[];
+  events_url: string | null;
+  interactivity_url: string | null;
+}
 export const AgentApplicationsRevisionsSlackManifestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     revision_id: Schema.String,
@@ -25,9 +35,7 @@ export const AgentApplicationsRevisionsSlackManifestOutput =
     notes: Schema.Array(Schema.String),
     events_url: Schema.NullOr(Schema.String),
     interactivity_url: Schema.NullOr(Schema.String),
-  });
-export type AgentApplicationsRevisionsSlackManifestOutput =
-  typeof AgentApplicationsRevisionsSlackManifestOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsRevisionsSlackManifestOutput>;
 
 // The operation
 /**

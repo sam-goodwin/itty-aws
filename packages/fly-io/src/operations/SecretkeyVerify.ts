@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SecretkeyVerifyInput {
+  app_name: string;
+  secret_name: string;
+  min_version?: string;
+  plaintext?: number[];
+  signature?: number[];
+}
 export const SecretkeyVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
@@ -15,12 +22,12 @@ export const SecretkeyVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/apps/{app_name}/secretkeys/{secret_name}/verify",
   }),
-);
-export type SecretkeyVerifyInput = typeof SecretkeyVerifyInput.Type;
+) as unknown as Schema.Codec<SecretkeyVerifyInput>;
 
 // Output Schema
-export const SecretkeyVerifyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SecretkeyVerifyOutput = typeof SecretkeyVerifyOutput.Type;
+export type SecretkeyVerifyOutput = void;
+export const SecretkeyVerifyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecretkeyVerifyOutput>;
 
 // The operation
 /**

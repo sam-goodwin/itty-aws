@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsPreviewTokenInput {
+  id: string;
+  project_id: string;
+  revision_id: string;
+}
 export const AgentApplicationsPreviewTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,17 @@ export const AgentApplicationsPreviewTokenInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{id}/preview-token/",
     }),
-  );
-export type AgentApplicationsPreviewTokenInput =
-  typeof AgentApplicationsPreviewTokenInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsPreviewTokenInput>;
 
 // Output Schema
+export interface AgentApplicationsPreviewTokenOutput {
+  token: string;
+  expires_in: number;
+  ingress_slug: string;
+  endpoints: unknown;
+  auth: unknown;
+  preview_proxy: unknown;
+}
 export const AgentApplicationsPreviewTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.String,
@@ -26,9 +37,7 @@ export const AgentApplicationsPreviewTokenOutput =
     endpoints: Schema.Unknown,
     auth: Schema.Unknown,
     preview_proxy: Schema.Unknown,
-  });
-export type AgentApplicationsPreviewTokenOutput =
-  typeof AgentApplicationsPreviewTokenOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsPreviewTokenOutput>;
 
 // The operation
 /**

@@ -2,8 +2,12 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { SensitiveOutputString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput {
+  project_id: string;
+}
 export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,53 @@ export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/llm_analytics/provider_keys/trial_evaluations/",
     }),
-  );
-export type LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput =
-  typeof LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput>;
 
 // Output Schema
+export interface LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput {
+  id?: string;
+  provider?:
+    | "openai"
+    | "anthropic"
+    | "gemini"
+    | "openrouter"
+    | "fireworks"
+    | "azure_openai"
+    | "together_ai";
+  name?: string;
+  state?: "unknown" | "ok" | "invalid" | "error";
+  error_message?: string | null;
+  api_key?: Redacted.Redacted<string>;
+  api_key_masked?: string;
+  azure_endpoint?: string;
+  api_version?: string;
+  azure_endpoint_display?: string | null;
+  api_version_display?: string | null;
+  set_as_active?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_used_at?: string | null;
+}
 export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -57,14 +103,28 @@ export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput =
-  typeof LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput>;
 
 // The operation
 /**

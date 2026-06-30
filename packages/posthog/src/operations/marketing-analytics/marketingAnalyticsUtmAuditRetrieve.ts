@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MarketingAnalyticsUtmAuditRetrieveInput {
+  project_id: string;
+  date_from?: string;
+  date_to?: string;
+}
 export const MarketingAnalyticsUtmAuditRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,34 @@ export const MarketingAnalyticsUtmAuditRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/marketing_analytics/utm_audit/",
     }),
-  );
-export type MarketingAnalyticsUtmAuditRetrieveInput =
-  typeof MarketingAnalyticsUtmAuditRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MarketingAnalyticsUtmAuditRetrieveInput>;
 
 // Output Schema
+export interface MarketingAnalyticsUtmAuditRetrieveOutput {
+  total_campaigns: number;
+  campaigns_with_issues: number;
+  campaigns_without_issues: number;
+  total_spend_at_risk: number;
+  results: {
+    campaign_name: string;
+    campaign_id: string;
+    source_name: string;
+    spend: number;
+    clicks: number;
+    impressions: number;
+    has_utm_events: boolean;
+    event_count: number;
+    issues: { field: string; severity: "error" | "warning"; message: string }[];
+  }[];
+  all_utm_events: {
+    utm_campaign: string;
+    utm_source: string;
+    event_count: number;
+    campaign_match: "none" | "auto" | "mapped";
+    source_match: "none" | "auto" | "mapped";
+    matched_campaign: string | null;
+  }[];
+}
 export const MarketingAnalyticsUtmAuditRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     total_campaigns: Schema.Number,
@@ -53,9 +81,7 @@ export const MarketingAnalyticsUtmAuditRetrieveOutput =
         matched_campaign: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type MarketingAnalyticsUtmAuditRetrieveOutput =
-  typeof MarketingAnalyticsUtmAuditRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MarketingAnalyticsUtmAuditRetrieveOutput>;
 
 // The operation
 /**

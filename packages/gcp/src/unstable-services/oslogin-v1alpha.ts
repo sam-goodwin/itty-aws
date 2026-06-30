@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -51,7 +51,7 @@ export interface PosixAccount {
   name?: string;
 }
 
-export const PosixAccount: Schema.Schema<PosixAccount> =
+export const PosixAccount: Schema.Codec<PosixAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uid: Schema.optional(Schema.String),
     systemId: Schema.optional(Schema.String),
@@ -71,14 +71,14 @@ export interface SignSshPublicKeyResponse {
   signedSshPublicKey?: string;
 }
 
-export const SignSshPublicKeyResponse: Schema.Schema<SignSshPublicKeyResponse> =
+export const SignSshPublicKeyResponse: Schema.Codec<SignSshPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedSshPublicKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignSshPublicKeyResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -88,7 +88,7 @@ export interface GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRe
   signedSshPublicKey?: string;
 }
 
-export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse: Schema.Schema<GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse> =
+export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse: Schema.Codec<GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedSshPublicKey: Schema.optional(Schema.String),
   }).annotate({
@@ -101,7 +101,7 @@ export interface WebAuthn {
   rpId?: string;
 }
 
-export const WebAuthn: Schema.Schema<WebAuthn> =
+export const WebAuthn: Schema.Codec<WebAuthn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rpId: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebAuthn" });
@@ -117,7 +117,7 @@ export interface SshPublicKey {
   expirationTimeUsec?: string;
 }
 
-export const SshPublicKey: Schema.Schema<SshPublicKey> =
+export const SshPublicKey: Schema.Codec<SshPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fingerprint: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -130,7 +130,7 @@ export interface UniversalTwoFactor {
   appId?: string;
 }
 
-export const UniversalTwoFactor: Schema.Schema<UniversalTwoFactor> =
+export const UniversalTwoFactor: Schema.Codec<UniversalTwoFactor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.optional(Schema.String),
   }).annotate({ identifier: "UniversalTwoFactor" });
@@ -148,7 +148,7 @@ export interface SecurityKey {
   deviceNickname?: string;
 }
 
-export const SecurityKey: Schema.Schema<SecurityKey> =
+export const SecurityKey: Schema.Codec<SecurityKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateKey: Schema.optional(Schema.String),
     universalTwoFactor: Schema.optional(UniversalTwoFactor),
@@ -168,7 +168,7 @@ export interface LoginProfile {
   posixAccounts?: ReadonlyArray<PosixAccount>;
 }
 
-export const LoginProfile: Schema.Schema<LoginProfile> =
+export const LoginProfile: Schema.Codec<LoginProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sshPublicKeys: Schema.optional(Schema.Record(Schema.String, SshPublicKey)),
     name: Schema.optional(Schema.String),
@@ -183,7 +183,7 @@ export interface ImportSshPublicKeyResponse {
   loginProfile?: LoginProfile;
 }
 
-export const ImportSshPublicKeyResponse: Schema.Schema<ImportSshPublicKeyResponse> =
+export const ImportSshPublicKeyResponse: Schema.Codec<ImportSshPublicKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(Schema.String),
     loginProfile: Schema.optional(LoginProfile),
@@ -202,7 +202,7 @@ export interface GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRe
   cloudRunResource?: string;
 }
 
-export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest: Schema.Schema<GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest> =
+export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest: Schema.Codec<GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sshPublicKey: Schema.optional(Schema.String),
     computeInstance: Schema.optional(Schema.String),
@@ -219,7 +219,7 @@ export interface ProvisionPosixAccountRequest {
   regions?: ReadonlyArray<string>;
 }
 
-export const ProvisionPosixAccountRequest: Schema.Schema<ProvisionPosixAccountRequest> =
+export const ProvisionPosixAccountRequest: Schema.Codec<ProvisionPosixAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ProvisionPosixAccountRequest" });
@@ -229,7 +229,7 @@ export interface SignSshPublicKeyRequest {
   sshPublicKey?: string;
 }
 
-export const SignSshPublicKeyRequest: Schema.Schema<SignSshPublicKeyRequest> =
+export const SignSshPublicKeyRequest: Schema.Codec<SignSshPublicKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sshPublicKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignSshPublicKeyRequest" });
@@ -308,7 +308,7 @@ export const SignSshPublicKeyProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SignSshPublicKeyProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SignSshPublicKeyProjectsLocationsRequest>;
 
 export type SignSshPublicKeyProjectsLocationsResponse =
   GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse;
@@ -367,7 +367,7 @@ export const GetLoginProfileUsersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/loginProfile" }),
     svc,
-  ) as unknown as Schema.Schema<GetLoginProfileUsersRequest>;
+  ) as unknown as Schema.Codec<GetLoginProfileUsersRequest>;
 
 export type GetLoginProfileUsersResponse = LoginProfile;
 export const GetLoginProfileUsersResponse =
@@ -420,7 +420,7 @@ export const ImportSshPublicKeyUsersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportSshPublicKeyUsersRequest>;
+  ) as unknown as Schema.Codec<ImportSshPublicKeyUsersRequest>;
 
 export type ImportSshPublicKeyUsersResponse = ImportSshPublicKeyResponse;
 export const ImportSshPublicKeyUsersResponse =
@@ -459,7 +459,7 @@ export const ProvisionPosixAccountUsersProjectsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionPosixAccountUsersProjectsRequest>;
+  ) as unknown as Schema.Codec<ProvisionPosixAccountUsersProjectsRequest>;
 
 export type ProvisionPosixAccountUsersProjectsResponse = PosixAccount;
 export const ProvisionPosixAccountUsersProjectsResponse =
@@ -504,7 +504,7 @@ export const DeleteUsersProjectsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersProjectsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersProjectsRequest>;
 
 export type DeleteUsersProjectsResponse = Empty;
 export const DeleteUsersProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -546,7 +546,7 @@ export const SignSshPublicKeyUsersProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SignSshPublicKeyUsersProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SignSshPublicKeyUsersProjectsLocationsRequest>;
 
 export type SignSshPublicKeyUsersProjectsLocationsResponse =
   SignSshPublicKeyResponse;
@@ -590,7 +590,7 @@ export const SignSshPublicKeyUsersProjectsZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SignSshPublicKeyUsersProjectsZonesRequest>;
+  ) as unknown as Schema.Codec<SignSshPublicKeyUsersProjectsZonesRequest>;
 
 export type SignSshPublicKeyUsersProjectsZonesResponse =
   SignSshPublicKeyResponse;
@@ -627,7 +627,7 @@ export const DeleteUsersSshPublicKeysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSshPublicKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSshPublicKeysRequest>;
 
 export type DeleteUsersSshPublicKeysResponse = Empty;
 export const DeleteUsersSshPublicKeysResponse =
@@ -670,7 +670,7 @@ export const CreateUsersSshPublicKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSshPublicKeysRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSshPublicKeysRequest>;
 
 export type CreateUsersSshPublicKeysResponse = SshPublicKey;
 export const CreateUsersSshPublicKeysResponse =
@@ -706,7 +706,7 @@ export const GetUsersSshPublicKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSshPublicKeysRequest>;
+  ) as unknown as Schema.Codec<GetUsersSshPublicKeysRequest>;
 
 export type GetUsersSshPublicKeysResponse = SshPublicKey;
 export const GetUsersSshPublicKeysResponse =
@@ -743,7 +743,7 @@ export const PatchUsersSshPublicKeysRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersSshPublicKeysRequest>;
+  ) as unknown as Schema.Codec<PatchUsersSshPublicKeysRequest>;
 
 export type PatchUsersSshPublicKeysResponse = SshPublicKey;
 export const PatchUsersSshPublicKeysResponse =

@@ -4,6 +4,15 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardsRunInsightsRetrieveInput {
+  id: number;
+  project_id: string;
+  filters_override?: string;
+  format?: "json" | "txt";
+  output_format?: "json" | "optimized";
+  refresh?: "blocking" | "force_blocking" | "force_cache";
+  variables_override?: string;
+}
 export const DashboardsRunInsightsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -20,11 +29,21 @@ export const DashboardsRunInsightsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/dashboards/{id}/run_insights/",
     }),
-  );
-export type DashboardsRunInsightsRetrieveInput =
-  typeof DashboardsRunInsightsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DashboardsRunInsightsRetrieveInput>;
 
 // Output Schema
+export interface DashboardsRunInsightsRetrieveOutput {
+  results?: {
+    id?: number;
+    insight?: {
+      id?: number;
+      short_id?: string;
+      name?: string | null;
+      derived_name?: string | null;
+      result?: unknown;
+    };
+  }[];
+}
 export const DashboardsRunInsightsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -43,9 +62,7 @@ export const DashboardsRunInsightsRetrieveOutput =
         }),
       ),
     ),
-  });
-export type DashboardsRunInsightsRetrieveOutput =
-  typeof DashboardsRunInsightsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DashboardsRunInsightsRetrieveOutput>;
 
 // The operation
 /**

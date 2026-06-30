@@ -4,11 +4,20 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AdDomainServiceMembersListInput {
+  serviceName: string;
+  $filter?: string;
+  isGroupbySite: boolean;
+  query?: string;
+  nextPartitionKey: " ";
+  nextRowKey: " ";
+  takeCount?: number;
+}
 export const AdDomainServiceMembersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -24,11 +33,58 @@ export const AdDomainServiceMembersListInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addomainservicemembers",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AdDomainServiceMembersListInput =
-  typeof AdDomainServiceMembersListInput.Type;
+  ) as unknown as Schema.Codec<AdDomainServiceMembersListInput>;
 
 // Output Schema
+export interface AdDomainServiceMembersListOutput {
+  nextLink?: string;
+  value?: {
+    domainName?: string;
+    siteName?: string;
+    addsRoles?: string[];
+    gcReachable?: boolean;
+    isAdvertising?: boolean;
+    pdcReachable?: boolean;
+    sysvolState?: boolean;
+    dcTypes?: string[];
+    serviceMemberId?: string;
+    serviceId?: string;
+    tenantId?: string;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    createdDate?: string;
+    dimensions?: { key?: string; value?: string }[];
+    disabled?: boolean;
+    disabledReason?: number;
+    installedQfes?: {
+      kbName?: string;
+      link?: string;
+      installedDate?: string;
+    }[];
+    lastDisabled?: string;
+    lastReboot?: string;
+    lastServerReportedMonitoringLevelChange?: string;
+    lastUpdated?: string;
+    machineId?: string;
+    machineName?: string;
+    monitoringConfigurationsComputed?: { key?: string; value?: string }[];
+    monitoringConfigurationsCustomized?: { key?: string; value?: string }[];
+    osName?: string;
+    osVersion?: string;
+    properties?: { key?: string; value?: string }[];
+    recommendedQfes?: {
+      kbName?: string;
+      link?: string;
+      installedDate?: string;
+    }[];
+    resolvedAlerts?: number;
+    role?: string;
+    serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+    status?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AdDomainServiceMembersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -122,9 +178,7 @@ export const AdDomainServiceMembersListOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AdDomainServiceMembersListOutput =
-  typeof AdDomainServiceMembersListOutput.Type;
+  }) as unknown as Schema.Codec<AdDomainServiceMembersListOutput>;
 
 // The operation
 /**
@@ -146,6 +200,14 @@ export const adDomainServiceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AddsServiceGetMetricsInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+  groupKey?: string;
+  fromDate?: string;
+  toDate?: string;
+}
 export const AddsServiceGetMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -160,10 +222,13 @@ export const AddsServiceGetMetricsInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServiceGetMetricsInput = typeof AddsServiceGetMetricsInput.Type;
+  ) as unknown as Schema.Codec<AddsServiceGetMetricsInput>;
 
 // Output Schema
+export interface AddsServiceGetMetricsOutput {
+  sets?: { setName?: string; values?: number[] }[];
+  timeStamps?: string[];
+}
 export const AddsServiceGetMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sets: Schema.optional(
@@ -175,9 +240,7 @@ export const AddsServiceGetMetricsOutput =
       ),
     ),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type AddsServiceGetMetricsOutput =
-  typeof AddsServiceGetMetricsOutput.Type;
+  }) as unknown as Schema.Codec<AddsServiceGetMetricsOutput>;
 
 // The operation
 /**
@@ -198,6 +261,11 @@ export const addsServiceGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AddsServiceMembersDeleteInput {
+  serviceName: string;
+  serviceMemberId: string;
+  confirm?: boolean;
+}
 export const AddsServiceMembersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -209,15 +277,12 @@ export const AddsServiceMembersDeleteInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServiceMembersDeleteInput =
-  typeof AddsServiceMembersDeleteInput.Type;
+  ) as unknown as Schema.Codec<AddsServiceMembersDeleteInput>;
 
 // Output Schema
+export type AddsServiceMembersDeleteOutput = void;
 export const AddsServiceMembersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddsServiceMembersDeleteOutput =
-  typeof AddsServiceMembersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServiceMembersDeleteOutput>;
 
 // The operation
 /**
@@ -235,6 +300,10 @@ export const addsServiceMembersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AddsServiceMembersGetInput {
+  serviceName: string;
+  serviceMemberId: string;
+}
 export const AddsServiceMembersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -245,10 +314,37 @@ export const AddsServiceMembersGetInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServiceMembersGetInput = typeof AddsServiceMembersGetInput.Type;
+  ) as unknown as Schema.Codec<AddsServiceMembersGetInput>;
 
 // Output Schema
+export interface AddsServiceMembersGetOutput {
+  serviceMemberId?: string;
+  serviceId?: string;
+  tenantId?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  dimensions?: unknown;
+  disabled?: boolean;
+  disabledReason?: number;
+  installedQfes?: unknown;
+  lastDisabled?: string;
+  lastReboot?: string;
+  lastServerReportedMonitoringLevelChange?: string;
+  lastUpdated?: string;
+  machineId?: string;
+  machineName?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  osName?: string;
+  osVersion?: string;
+  properties?: unknown;
+  recommendedQfes?: unknown;
+  resolvedAlerts?: number;
+  role?: string;
+  serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+  status?: string;
+}
 export const AddsServiceMembersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.optional(Schema.String),
@@ -279,9 +375,7 @@ export const AddsServiceMembersGetOutput =
       Schema.Literals(["Partial", "Full", "Off"]),
     ),
     status: Schema.optional(Schema.String),
-  });
-export type AddsServiceMembersGetOutput =
-  typeof AddsServiceMembersGetOutput.Type;
+  }) as unknown as Schema.Codec<AddsServiceMembersGetOutput>;
 
 // The operation
 /**
@@ -298,6 +392,10 @@ export const addsServiceMembersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AddsServiceMembersListInput {
+  serviceName: string;
+  $filter?: string;
+}
 export const AddsServiceMembersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -308,11 +406,58 @@ export const AddsServiceMembersListInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addsservicemembers",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServiceMembersListInput =
-  typeof AddsServiceMembersListInput.Type;
+  ) as unknown as Schema.Codec<AddsServiceMembersListInput>;
 
 // Output Schema
+export interface AddsServiceMembersListOutput {
+  nextLink?: string;
+  value?: {
+    domainName?: string;
+    siteName?: string;
+    addsRoles?: string[];
+    gcReachable?: boolean;
+    isAdvertising?: boolean;
+    pdcReachable?: boolean;
+    sysvolState?: boolean;
+    dcTypes?: string[];
+    serviceMemberId?: string;
+    serviceId?: string;
+    tenantId?: string;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    createdDate?: string;
+    dimensions?: { key?: string; value?: string }[];
+    disabled?: boolean;
+    disabledReason?: number;
+    installedQfes?: {
+      kbName?: string;
+      link?: string;
+      installedDate?: string;
+    }[];
+    lastDisabled?: string;
+    lastReboot?: string;
+    lastServerReportedMonitoringLevelChange?: string;
+    lastUpdated?: string;
+    machineId?: string;
+    machineName?: string;
+    monitoringConfigurationsComputed?: { key?: string; value?: string }[];
+    monitoringConfigurationsCustomized?: { key?: string; value?: string }[];
+    osName?: string;
+    osVersion?: string;
+    properties?: { key?: string; value?: string }[];
+    recommendedQfes?: {
+      kbName?: string;
+      link?: string;
+      installedDate?: string;
+    }[];
+    resolvedAlerts?: number;
+    role?: string;
+    serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+    status?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AddsServiceMembersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -406,9 +551,7 @@ export const AddsServiceMembersListOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AddsServiceMembersListOutput =
-  typeof AddsServiceMembersListOutput.Type;
+  }) as unknown as Schema.Codec<AddsServiceMembersListOutput>;
 
 // The operation
 /**
@@ -425,6 +568,11 @@ export const addsServiceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AddsServiceMembersListCredentialsInput {
+  serviceName: string;
+  serviceMemberId: string;
+  $filter?: string;
+}
 export const AddsServiceMembersListCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -436,11 +584,12 @@ export const AddsServiceMembersListCredentialsInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/credentials",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServiceMembersListCredentialsInput =
-  typeof AddsServiceMembersListCredentialsInput.Type;
+  ) as unknown as Schema.Codec<AddsServiceMembersListCredentialsInput>;
 
 // Output Schema
+export interface AddsServiceMembersListCredentialsOutput {
+  value?: { identifier?: string; type?: string; credentialData?: string[] }[];
+}
 export const AddsServiceMembersListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -452,9 +601,7 @@ export const AddsServiceMembersListCredentialsOutput =
         }),
       ),
     ),
-  });
-export type AddsServiceMembersListCredentialsOutput =
-  typeof AddsServiceMembersListCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<AddsServiceMembersListCredentialsOutput>;
 
 // The operation
 /**
@@ -471,6 +618,32 @@ export const addsServiceMembersListCredentials =
     outputSchema: AddsServiceMembersListCredentialsOutput,
   }));
 // Input Schema
+export interface AddsServicesAddInput {
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  serviceName?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const AddsServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
@@ -502,10 +675,35 @@ export const AddsServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ADHybridHealthService/addsservices",
     apiVersion: "2014-01-01",
   }),
-);
-export type AddsServicesAddInput = typeof AddsServicesAddInput.Type;
+) as unknown as Schema.Codec<AddsServicesAddInput>;
 
 // Output Schema
+export interface AddsServicesAddOutput {
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  serviceName?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const AddsServicesAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
@@ -531,8 +729,7 @@ export const AddsServicesAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   simpleProperties: Schema.optional(Schema.Unknown),
   tenantId: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type AddsServicesAddOutput = typeof AddsServicesAddOutput.Type;
+}) as unknown as Schema.Codec<AddsServicesAddOutput>;
 
 // The operation
 /**
@@ -545,6 +742,10 @@ export const addsServicesAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddsServicesAddOutput,
 }));
 // Input Schema
+export interface AddsServicesDeleteInput {
+  serviceName: string;
+  confirm?: boolean;
+}
 export const AddsServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -555,12 +756,12 @@ export const AddsServicesDeleteInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesDeleteInput = typeof AddsServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesDeleteInput>;
 
 // Output Schema
-export const AddsServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddsServicesDeleteOutput = typeof AddsServicesDeleteOutput.Type;
+export type AddsServicesDeleteOutput = void;
+export const AddsServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesDeleteOutput>;
 
 // The operation
 /**
@@ -575,6 +776,9 @@ export const addsServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddsServicesDeleteOutput,
 }));
 // Input Schema
+export interface AddsServicesGetInput {
+  serviceName: string;
+}
 export const AddsServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -583,10 +787,35 @@ export const AddsServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
     apiVersion: "2014-01-01",
   }),
-);
-export type AddsServicesGetInput = typeof AddsServicesGetInput.Type;
+) as unknown as Schema.Codec<AddsServicesGetInput>;
 
 // Output Schema
+export interface AddsServicesGetOutput {
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  serviceName?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const AddsServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
@@ -612,8 +841,7 @@ export const AddsServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   simpleProperties: Schema.optional(Schema.Unknown),
   tenantId: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type AddsServicesGetOutput = typeof AddsServicesGetOutput.Type;
+}) as unknown as Schema.Codec<AddsServicesGetOutput>;
 
 // The operation
 /**
@@ -627,6 +855,9 @@ export const addsServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddsServicesGetOutput,
 }));
 // Input Schema
+export interface AddsServicesGetForestSummaryInput {
+  serviceName: string;
+}
 export const AddsServicesGetForestSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -636,11 +867,18 @@ export const AddsServicesGetForestSummaryInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/forestsummary",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesGetForestSummaryInput =
-  typeof AddsServicesGetForestSummaryInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesGetForestSummaryInput>;
 
 // Output Schema
+export interface AddsServicesGetForestSummaryOutput {
+  forestName?: string;
+  domainCount?: number;
+  siteCount?: number;
+  monitoredDcCount?: number;
+  totalDcCount?: number;
+  domains?: string[];
+  sites?: string[];
+}
 export const AddsServicesGetForestSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forestName: Schema.optional(Schema.String),
@@ -650,9 +888,7 @@ export const AddsServicesGetForestSummaryOutput =
     totalDcCount: Schema.optional(Schema.Number),
     domains: Schema.optional(Schema.Array(Schema.String)),
     sites: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type AddsServicesGetForestSummaryOutput =
-  typeof AddsServicesGetForestSummaryOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesGetForestSummaryOutput>;
 
 // The operation
 /**
@@ -667,6 +903,10 @@ export const addsServicesGetForestSummary =
     outputSchema: AddsServicesGetForestSummaryOutput,
   }));
 // Input Schema
+export interface AddsServicesGetMetricMetadataInput {
+  serviceName: string;
+  metricName: string;
+}
 export const AddsServicesGetMetricMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -677,11 +917,26 @@ export const AddsServicesGetMetricMetadataInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesGetMetricMetadataInput =
-  typeof AddsServicesGetMetricMetadataInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesGetMetricMetadataInput>;
 
 // Output Schema
+export interface AddsServicesGetMetricMetadataOutput {
+  metricsProcessorClassName?: string;
+  metricName?: string;
+  groupings?: {
+    key?: string;
+    displayName?: string;
+    invisibleForUi?: boolean;
+  }[];
+  displayName?: string;
+  valueKind?: string;
+  minValue?: number;
+  maxValue?: number;
+  kind?: string;
+  isDefault?: boolean;
+  isPerfCounter?: boolean;
+  isDevOps?: boolean;
+}
 export const AddsServicesGetMetricMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricsProcessorClassName: Schema.optional(Schema.String),
@@ -703,9 +958,7 @@ export const AddsServicesGetMetricMetadataOutput =
     isDefault: Schema.optional(Schema.Boolean),
     isPerfCounter: Schema.optional(Schema.Boolean),
     isDevOps: Schema.optional(Schema.Boolean),
-  });
-export type AddsServicesGetMetricMetadataOutput =
-  typeof AddsServicesGetMetricMetadataOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesGetMetricMetadataOutput>;
 
 // The operation
 /**
@@ -721,6 +974,14 @@ export const addsServicesGetMetricMetadata =
     outputSchema: AddsServicesGetMetricMetadataOutput,
   }));
 // Input Schema
+export interface AddsServicesGetMetricMetadataForGroupInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+  groupKey?: string;
+  fromDate?: string;
+  toDate?: string;
+}
 export const AddsServicesGetMetricMetadataForGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -735,11 +996,13 @@ export const AddsServicesGetMetricMetadataForGroupInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesGetMetricMetadataForGroupInput =
-  typeof AddsServicesGetMetricMetadataForGroupInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesGetMetricMetadataForGroupInput>;
 
 // Output Schema
+export interface AddsServicesGetMetricMetadataForGroupOutput {
+  sets?: { setName?: string; values?: number[] }[];
+  timeStamps?: string[];
+}
 export const AddsServicesGetMetricMetadataForGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sets: Schema.optional(
@@ -751,9 +1014,7 @@ export const AddsServicesGetMetricMetadataForGroupOutput =
       ),
     ),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type AddsServicesGetMetricMetadataForGroupOutput =
-  typeof AddsServicesGetMetricMetadataForGroupOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesGetMetricMetadataForGroupOutput>;
 
 // The operation
 /**
@@ -773,6 +1034,12 @@ export const addsServicesGetMetricMetadataForGroup =
     outputSchema: AddsServicesGetMetricMetadataForGroupOutput,
   }));
 // Input Schema
+export interface AddsServicesListInput {
+  $filter?: string;
+  serviceType?: string;
+  skipCount?: number;
+  takeCount?: number;
+}
 export const AddsServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   serviceType: Schema.optional(Schema.String),
@@ -784,10 +1051,40 @@ export const AddsServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ADHybridHealthService/addsservices",
     apiVersion: "2014-01-01",
   }),
-);
-export type AddsServicesListInput = typeof AddsServicesListInput.Type;
+) as unknown as Schema.Codec<AddsServicesListInput>;
 
 // Output Schema
+export interface AddsServicesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    createdDate?: string;
+    customNotificationEmails?: string[];
+    disabled?: boolean;
+    displayName?: string;
+    health?: string;
+    lastDisabled?: string;
+    lastUpdated?: string;
+    monitoringConfigurationsComputed?: unknown;
+    monitoringConfigurationsCustomized?: unknown;
+    notificationEmailEnabled?: boolean;
+    notificationEmailEnabledForGlobalAdmins?: boolean;
+    notificationEmailsEnabledForGlobalAdmins?: boolean;
+    notificationEmails?: string[];
+    originalDisabledState?: boolean;
+    resolvedAlerts?: number;
+    serviceId?: string;
+    serviceName?: string;
+    signature?: string;
+    simpleProperties?: unknown;
+    tenantId?: string;
+    type?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AddsServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     nextLink: Schema.optional(Schema.String),
@@ -830,8 +1127,7 @@ export const AddsServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
   },
-);
-export type AddsServicesListOutput = typeof AddsServicesListOutput.Type;
+) as unknown as Schema.Codec<AddsServicesListOutput>;
 
 // The operation
 /**
@@ -848,6 +1144,11 @@ export const addsServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddsServicesListOutput,
 }));
 // Input Schema
+export interface AddsServicesListMetricMetadataInput {
+  serviceName: string;
+  $filter?: string;
+  perfCounter?: boolean;
+}
 export const AddsServicesListMetricMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -859,11 +1160,31 @@ export const AddsServicesListMetricMetadataInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesListMetricMetadataInput =
-  typeof AddsServicesListMetricMetadataInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesListMetricMetadataInput>;
 
 // Output Schema
+export interface AddsServicesListMetricMetadataOutput {
+  nextLink?: string;
+  value?: {
+    metricsProcessorClassName?: string;
+    metricName?: string;
+    groupings?: {
+      key?: string;
+      displayName?: string;
+      invisibleForUi?: boolean;
+    }[];
+    displayName?: string;
+    valueKind?: string;
+    minValue?: number;
+    maxValue?: number;
+    kind?: string;
+    isDefault?: boolean;
+    isPerfCounter?: boolean;
+    isDevOps?: boolean;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AddsServicesListMetricMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -894,9 +1215,7 @@ export const AddsServicesListMetricMetadataOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AddsServicesListMetricMetadataOutput =
-  typeof AddsServicesListMetricMetadataOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesListMetricMetadataOutput>;
 
 // The operation
 /**
@@ -913,6 +1232,11 @@ export const addsServicesListMetricMetadata =
     outputSchema: AddsServicesListMetricMetadataOutput,
   }));
 // Input Schema
+export interface AddsServicesListMetricsAverageInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+}
 export const AddsServicesListMetricsAverageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -924,11 +1248,15 @@ export const AddsServicesListMetricsAverageInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesListMetricsAverageInput =
-  typeof AddsServicesListMetricsAverageInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesListMetricsAverageInput>;
 
 // Output Schema
+export interface AddsServicesListMetricsAverageOutput {
+  nextLink?: string;
+  value?: { key?: string; value?: string }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AddsServicesListMetricsAverageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -942,9 +1270,7 @@ export const AddsServicesListMetricsAverageOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AddsServicesListMetricsAverageOutput =
-  typeof AddsServicesListMetricsAverageOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesListMetricsAverageOutput>;
 
 // The operation
 /**
@@ -961,6 +1287,11 @@ export const addsServicesListMetricsAverage =
     outputSchema: AddsServicesListMetricsAverageOutput,
   }));
 // Input Schema
+export interface AddsServicesListMetricsSumInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+}
 export const AddsServicesListMetricsSumInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -972,11 +1303,15 @@ export const AddsServicesListMetricsSumInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesListMetricsSumInput =
-  typeof AddsServicesListMetricsSumInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesListMetricsSumInput>;
 
 // Output Schema
+export interface AddsServicesListMetricsSumOutput {
+  nextLink?: string;
+  value?: { key?: string; value?: string }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AddsServicesListMetricsSumOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -990,9 +1325,7 @@ export const AddsServicesListMetricsSumOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AddsServicesListMetricsSumOutput =
-  typeof AddsServicesListMetricsSumOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesListMetricsSumOutput>;
 
 // The operation
 /**
@@ -1010,6 +1343,12 @@ export const addsServicesListMetricsSum = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AddsServicesListPremiumServicesInput {
+  $filter?: string;
+  serviceType?: string;
+  skipCount?: number;
+  takeCount?: number;
+}
 export const AddsServicesListPremiumServicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -1022,11 +1361,40 @@ export const AddsServicesListPremiumServicesInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/premiumCheck",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesListPremiumServicesInput =
-  typeof AddsServicesListPremiumServicesInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesListPremiumServicesInput>;
 
 // Output Schema
+export interface AddsServicesListPremiumServicesOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    createdDate?: string;
+    customNotificationEmails?: string[];
+    disabled?: boolean;
+    displayName?: string;
+    health?: string;
+    lastDisabled?: string;
+    lastUpdated?: string;
+    monitoringConfigurationsComputed?: unknown;
+    monitoringConfigurationsCustomized?: unknown;
+    notificationEmailEnabled?: boolean;
+    notificationEmailEnabledForGlobalAdmins?: boolean;
+    notificationEmailsEnabledForGlobalAdmins?: boolean;
+    notificationEmails?: string[];
+    originalDisabledState?: boolean;
+    resolvedAlerts?: number;
+    serviceId?: string;
+    serviceName?: string;
+    signature?: string;
+    simpleProperties?: unknown;
+    tenantId?: string;
+    type?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AddsServicesListPremiumServicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1068,9 +1436,7 @@ export const AddsServicesListPremiumServicesOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AddsServicesListPremiumServicesOutput =
-  typeof AddsServicesListPremiumServicesOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesListPremiumServicesOutput>;
 
 // The operation
 /**
@@ -1088,6 +1454,11 @@ export const addsServicesListPremiumServices =
     outputSchema: AddsServicesListPremiumServicesOutput,
   }));
 // Input Schema
+export interface AddsServicesListReplicationDetailsInput {
+  serviceName: string;
+  $filter?: string;
+  withDetails?: boolean;
+}
 export const AddsServicesListReplicationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1099,11 +1470,37 @@ export const AddsServicesListReplicationDetailsInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationdetails",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesListReplicationDetailsInput =
-  typeof AddsServicesListReplicationDetailsInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesListReplicationDetailsInput>;
 
 // Output Schema
+export interface AddsServicesListReplicationDetailsOutput {
+  value?: {
+    targetServer?: string;
+    site?: string;
+    domain?: string;
+    status?: number;
+    lastAttemptedSync?: string;
+    lastSuccessfulSync?: string;
+    inboundNeighborCollection?: {
+      sourceDomainController?: string;
+      consecutiveFailureCount?: number;
+      namingContext?: string;
+      status?: number;
+      lastAttemptedSync?: string;
+      lastSuccessfulSync?: string;
+      lastErrorCode?: number;
+      lastErrorMessage?: string;
+      errorTitle?: string;
+      errorDescription?: string;
+      fixLink?: string;
+      fixDetails?: string;
+      additionalInfo?: string;
+    }[];
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+  nextLink?: string;
+}
 export const AddsServicesListReplicationDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1140,9 +1537,7 @@ export const AddsServicesListReplicationDetailsOutput =
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AddsServicesListReplicationDetailsOutput =
-  typeof AddsServicesListReplicationDetailsOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesListReplicationDetailsOutput>;
 
 // The operation
 /**
@@ -1159,6 +1554,15 @@ export const addsServicesListReplicationDetails =
     outputSchema: AddsServicesListReplicationDetailsOutput,
   }));
 // Input Schema
+export interface AddsServicesListReplicationSummaryInput {
+  serviceName: string;
+  $filter?: string;
+  isGroupbySite: boolean;
+  query: string;
+  nextPartitionKey: " ";
+  nextRowKey: " ";
+  takeCount?: number;
+}
 export const AddsServicesListReplicationSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1174,11 +1578,34 @@ export const AddsServicesListReplicationSummaryInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationsummary",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesListReplicationSummaryInput =
-  typeof AddsServicesListReplicationSummaryInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesListReplicationSummaryInput>;
 
 // Output Schema
+export interface AddsServicesListReplicationSummaryOutput {
+  value?: {
+    targetServer?: string;
+    site?: string;
+    domain?: string;
+    status?: number;
+    lastAttemptedSync?: string;
+    lastSuccessfulSync?: string;
+    inboundNeighborCollection?: {
+      sourceDomainController?: string;
+      consecutiveFailureCount?: number;
+      namingContext?: string;
+      status?: number;
+      lastAttemptedSync?: string;
+      lastSuccessfulSync?: string;
+      lastErrorCode?: number;
+      lastErrorMessage?: string;
+      errorTitle?: string;
+      errorDescription?: string;
+      fixLink?: string;
+      fixDetails?: string;
+      additionalInfo?: string;
+    }[];
+  }[];
+}
 export const AddsServicesListReplicationSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1212,9 +1639,7 @@ export const AddsServicesListReplicationSummaryOutput =
         }),
       ),
     ),
-  });
-export type AddsServicesListReplicationSummaryOutput =
-  typeof AddsServicesListReplicationSummaryOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesListReplicationSummaryOutput>;
 
 // The operation
 /**
@@ -1235,6 +1660,14 @@ export const addsServicesListReplicationSummary =
     outputSchema: AddsServicesListReplicationSummaryOutput,
   }));
 // Input Schema
+export interface AddsServicesListServerAlertsInput {
+  serviceMemberId: string;
+  serviceName: string;
+  $filter?: string;
+  state?: string;
+  from?: string;
+  to?: string;
+}
 export const AddsServicesListServerAlertsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.String.pipe(T.PathParam()),
@@ -1249,11 +1682,45 @@ export const AddsServicesListServerAlertsInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/alerts",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesListServerAlertsInput =
-  typeof AddsServicesListServerAlertsInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesListServerAlertsInput>;
 
 // Output Schema
+export interface AddsServicesListServerAlertsOutput {
+  value?: {
+    alertId?: string;
+    level?: "Warning" | "Error" | "PreWarning";
+    state?:
+      | "Active"
+      | "ResolvedByPositiveResult"
+      | "ResolvedManually"
+      | "ResolvedByTimer"
+      | "ResolvedByStateChange";
+    shortName?: string;
+    displayName?: string;
+    description?: string;
+    remediation?: string;
+    relatedLinks?: { title?: string; url?: string }[];
+    scope?: string;
+    additionalInformation?: {
+      titleName?: string;
+      titleValue?: string;
+      properties?: unknown;
+      hasProperties?: boolean;
+    }[];
+    createdDate?: string;
+    resolvedDate?: string;
+    lastUpdated?: string;
+    monitorRoleType?: string;
+    activeAlertProperties?: { key?: string; value?: string }[];
+    resolvedAlertProperties?: { key?: string; value?: string }[];
+    tenantId?: string;
+    serviceId?: string;
+    serviceMemberId?: string;
+  }[];
+  nextLink?: string;
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AddsServicesListServerAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1324,9 +1791,7 @@ export const AddsServicesListServerAlertsOutput =
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AddsServicesListServerAlertsOutput =
-  typeof AddsServicesListServerAlertsOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesListServerAlertsOutput>;
 
 // The operation
 /**
@@ -1346,6 +1811,9 @@ export const addsServicesListServerAlerts =
     outputSchema: AddsServicesListServerAlertsOutput,
   }));
 // Input Schema
+export interface AddsServicesReplicationStatusGetInput {
+  serviceName: string;
+}
 export const AddsServicesReplicationStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1355,19 +1823,20 @@ export const AddsServicesReplicationStatusGetInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationstatus",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesReplicationStatusGetInput =
-  typeof AddsServicesReplicationStatusGetInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesReplicationStatusGetInput>;
 
 // Output Schema
+export interface AddsServicesReplicationStatusGetOutput {
+  forestName?: string;
+  totalDcCount?: number;
+  errorDcCount?: number;
+}
 export const AddsServicesReplicationStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forestName: Schema.optional(Schema.String),
     totalDcCount: Schema.optional(Schema.Number),
     errorDcCount: Schema.optional(Schema.Number),
-  });
-export type AddsServicesReplicationStatusGetOutput =
-  typeof AddsServicesReplicationStatusGetOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesReplicationStatusGetOutput>;
 
 // The operation
 /**
@@ -1382,6 +1851,35 @@ export const addsServicesReplicationStatusGet =
     outputSchema: AddsServicesReplicationStatusGetOutput,
   }));
 // Input Schema
+export interface AddsServicesServiceMembersAddInput {
+  serviceName: string;
+  serviceMemberId?: string;
+  serviceId?: string;
+  tenantId?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  dimensions?: unknown;
+  disabled?: boolean;
+  disabledReason?: number;
+  installedQfes?: unknown;
+  lastDisabled?: string;
+  lastReboot?: string;
+  lastServerReportedMonitoringLevelChange?: string;
+  lastUpdated?: string;
+  machineId?: string;
+  machineName?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  osName?: string;
+  osVersion?: string;
+  properties?: unknown;
+  recommendedQfes?: unknown;
+  resolvedAlerts?: number;
+  role?: string;
+  serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+  status?: string;
+}
 export const AddsServicesServiceMembersAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1419,11 +1917,37 @@ export const AddsServicesServiceMembersAddInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesServiceMembersAddInput =
-  typeof AddsServicesServiceMembersAddInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesServiceMembersAddInput>;
 
 // Output Schema
+export interface AddsServicesServiceMembersAddOutput {
+  serviceMemberId?: string;
+  serviceId?: string;
+  tenantId?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  dimensions?: unknown;
+  disabled?: boolean;
+  disabledReason?: number;
+  installedQfes?: unknown;
+  lastDisabled?: string;
+  lastReboot?: string;
+  lastServerReportedMonitoringLevelChange?: string;
+  lastUpdated?: string;
+  machineId?: string;
+  machineName?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  osName?: string;
+  osVersion?: string;
+  properties?: unknown;
+  recommendedQfes?: unknown;
+  resolvedAlerts?: number;
+  role?: string;
+  serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+  status?: string;
+}
 export const AddsServicesServiceMembersAddOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.optional(Schema.String),
@@ -1454,9 +1978,7 @@ export const AddsServicesServiceMembersAddOutput =
       Schema.Literals(["Partial", "Full", "Off"]),
     ),
     status: Schema.optional(Schema.String),
-  });
-export type AddsServicesServiceMembersAddOutput =
-  typeof AddsServicesServiceMembersAddOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesServiceMembersAddOutput>;
 
 // The operation
 /**
@@ -1471,6 +1993,12 @@ export const addsServicesServiceMembersAdd =
     outputSchema: AddsServicesServiceMembersAddOutput,
   }));
 // Input Schema
+export interface AddsServicesServiceMembersListInput {
+  serviceName: string;
+  $filter?: string;
+  dimensionType?: string;
+  dimensionSignature?: string;
+}
 export const AddsServicesServiceMembersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1483,11 +2011,42 @@ export const AddsServicesServiceMembersListInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesServiceMembersListInput =
-  typeof AddsServicesServiceMembersListInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesServiceMembersListInput>;
 
 // Output Schema
+export interface AddsServicesServiceMembersListOutput {
+  nextLink?: string;
+  value?: {
+    serviceMemberId?: string;
+    serviceId?: string;
+    tenantId?: string;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    createdDate?: string;
+    dimensions?: unknown;
+    disabled?: boolean;
+    disabledReason?: number;
+    installedQfes?: unknown;
+    lastDisabled?: string;
+    lastReboot?: string;
+    lastServerReportedMonitoringLevelChange?: string;
+    lastUpdated?: string;
+    machineId?: string;
+    machineName?: string;
+    monitoringConfigurationsComputed?: unknown;
+    monitoringConfigurationsCustomized?: unknown;
+    osName?: string;
+    osVersion?: string;
+    properties?: unknown;
+    recommendedQfes?: unknown;
+    resolvedAlerts?: number;
+    role?: string;
+    serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+    status?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AddsServicesServiceMembersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1529,9 +2088,7 @@ export const AddsServicesServiceMembersListOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AddsServicesServiceMembersListOutput =
-  typeof AddsServicesServiceMembersListOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesServiceMembersListOutput>;
 
 // The operation
 /**
@@ -1549,6 +2106,32 @@ export const addsServicesServiceMembersList =
     outputSchema: AddsServicesServiceMembersListOutput,
   }));
 // Input Schema
+export interface AddsServicesUpdateInput {
+  serviceName: string;
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const AddsServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1581,10 +2164,35 @@ export const AddsServicesUpdateInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesUpdateInput = typeof AddsServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesUpdateInput>;
 
 // Output Schema
+export interface AddsServicesUpdateOutput {
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  serviceName?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const AddsServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1611,8 +2219,7 @@ export const AddsServicesUpdateOutput =
     simpleProperties: Schema.optional(Schema.Unknown),
     tenantId: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AddsServicesUpdateOutput = typeof AddsServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesUpdateOutput>;
 
 // The operation
 /**
@@ -1626,6 +2233,11 @@ export const addsServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddsServicesUpdateOutput,
 }));
 // Input Schema
+export interface AddsServicesUserPreferenceAddInput {
+  serviceName: string;
+  featureName: string;
+  metricNames?: string[];
+}
 export const AddsServicesUserPreferenceAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1637,15 +2249,12 @@ export const AddsServicesUserPreferenceAddInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesUserPreferenceAddInput =
-  typeof AddsServicesUserPreferenceAddInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesUserPreferenceAddInput>;
 
 // Output Schema
+export type AddsServicesUserPreferenceAddOutput = void;
 export const AddsServicesUserPreferenceAddOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddsServicesUserPreferenceAddOutput =
-  typeof AddsServicesUserPreferenceAddOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesUserPreferenceAddOutput>;
 
 // The operation
 /**
@@ -1661,6 +2270,10 @@ export const addsServicesUserPreferenceAdd =
     outputSchema: AddsServicesUserPreferenceAddOutput,
   }));
 // Input Schema
+export interface AddsServicesUserPreferenceDeleteInput {
+  serviceName: string;
+  featureName: string;
+}
 export const AddsServicesUserPreferenceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1671,15 +2284,12 @@ export const AddsServicesUserPreferenceDeleteInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesUserPreferenceDeleteInput =
-  typeof AddsServicesUserPreferenceDeleteInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesUserPreferenceDeleteInput>;
 
 // Output Schema
+export type AddsServicesUserPreferenceDeleteOutput = void;
 export const AddsServicesUserPreferenceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddsServicesUserPreferenceDeleteOutput =
-  typeof AddsServicesUserPreferenceDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesUserPreferenceDeleteOutput>;
 
 // The operation
 /**
@@ -1695,6 +2305,10 @@ export const addsServicesUserPreferenceDelete =
     outputSchema: AddsServicesUserPreferenceDeleteOutput,
   }));
 // Input Schema
+export interface AddsServicesUserPreferenceGetInput {
+  serviceName: string;
+  featureName: string;
+}
 export const AddsServicesUserPreferenceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1705,17 +2319,16 @@ export const AddsServicesUserPreferenceGetInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AddsServicesUserPreferenceGetInput =
-  typeof AddsServicesUserPreferenceGetInput.Type;
+  ) as unknown as Schema.Codec<AddsServicesUserPreferenceGetInput>;
 
 // Output Schema
+export interface AddsServicesUserPreferenceGetOutput {
+  metricNames?: string[];
+}
 export const AddsServicesUserPreferenceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricNames: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type AddsServicesUserPreferenceGetOutput =
-  typeof AddsServicesUserPreferenceGetOutput.Type;
+  }) as unknown as Schema.Codec<AddsServicesUserPreferenceGetOutput>;
 
 // The operation
 /**
@@ -1731,6 +2344,13 @@ export const addsServicesUserPreferenceGet =
     outputSchema: AddsServicesUserPreferenceGetOutput,
   }));
 // Input Schema
+export interface AlertsListAddsAlertsInput {
+  serviceName: string;
+  $filter?: string;
+  state?: string;
+  from?: string;
+  to?: string;
+}
 export const AlertsListAddsAlertsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1744,10 +2364,45 @@ export const AlertsListAddsAlertsInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/alerts",
       apiVersion: "2014-01-01",
     }),
-  );
-export type AlertsListAddsAlertsInput = typeof AlertsListAddsAlertsInput.Type;
+  ) as unknown as Schema.Codec<AlertsListAddsAlertsInput>;
 
 // Output Schema
+export interface AlertsListAddsAlertsOutput {
+  value?: {
+    alertId?: string;
+    level?: "Warning" | "Error" | "PreWarning";
+    state?:
+      | "Active"
+      | "ResolvedByPositiveResult"
+      | "ResolvedManually"
+      | "ResolvedByTimer"
+      | "ResolvedByStateChange";
+    shortName?: string;
+    displayName?: string;
+    description?: string;
+    remediation?: string;
+    relatedLinks?: { title?: string; url?: string }[];
+    scope?: string;
+    additionalInformation?: {
+      titleName?: string;
+      titleValue?: string;
+      properties?: unknown;
+      hasProperties?: boolean;
+    }[];
+    createdDate?: string;
+    resolvedDate?: string;
+    lastUpdated?: string;
+    monitorRoleType?: string;
+    activeAlertProperties?: { key?: string; value?: string }[];
+    resolvedAlertProperties?: { key?: string; value?: string }[];
+    tenantId?: string;
+    serviceId?: string;
+    serviceMemberId?: string;
+  }[];
+  nextLink?: string;
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const AlertsListAddsAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1818,8 +2473,7 @@ export const AlertsListAddsAlertsOutput =
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type AlertsListAddsAlertsOutput = typeof AlertsListAddsAlertsOutput.Type;
+  }) as unknown as Schema.Codec<AlertsListAddsAlertsOutput>;
 
 // The operation
 /**
@@ -1839,6 +2493,7 @@ export const alertsListAddsAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationAddInput {}
 export const ConfigurationAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1847,10 +2502,32 @@ export const ConfigurationAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ADHybridHealthService/configuration",
     apiVersion: "2014-01-01",
   }),
-);
-export type ConfigurationAddInput = typeof ConfigurationAddInput.Type;
+) as unknown as Schema.Codec<ConfigurationAddInput>;
 
 // Output Schema
+export interface ConfigurationAddOutput {
+  tenantId?: string;
+  aadLicense?: string;
+  aadPremium?: boolean;
+  agentAutoUpdate?: boolean;
+  alertSuppressionTimeInMins?: number;
+  consentedToMicrosoftDevOps?: boolean;
+  countryLetterCode?: string;
+  createdDate?: string;
+  devOpsTtl?: string;
+  disabled?: boolean;
+  disabledReason?: number;
+  globalAdminsEmail?: string[];
+  initialDomain?: string;
+  lastDisabled?: string;
+  lastVerified?: string;
+  onboardingAllowed?: boolean;
+  onboarded?: boolean;
+  pksCertificate?: unknown;
+  privatePreviewTenant?: boolean;
+  tenantInQuarantine?: boolean;
+  tenantName?: string;
+}
 export const ConfigurationAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     tenantId: Schema.optional(Schema.String),
@@ -1875,8 +2552,7 @@ export const ConfigurationAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     tenantInQuarantine: Schema.optional(Schema.Boolean),
     tenantName: Schema.optional(Schema.String),
   },
-);
-export type ConfigurationAddOutput = typeof ConfigurationAddOutput.Type;
+) as unknown as Schema.Codec<ConfigurationAddOutput>;
 
 // The operation
 /**
@@ -1889,6 +2565,7 @@ export const configurationAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationAddOutput,
 }));
 // Input Schema
+export interface ConfigurationGetInput {}
 export const ConfigurationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1897,10 +2574,32 @@ export const ConfigurationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ADHybridHealthService/configuration",
     apiVersion: "2014-01-01",
   }),
-);
-export type ConfigurationGetInput = typeof ConfigurationGetInput.Type;
+) as unknown as Schema.Codec<ConfigurationGetInput>;
 
 // Output Schema
+export interface ConfigurationGetOutput {
+  tenantId?: string;
+  aadLicense?: string;
+  aadPremium?: boolean;
+  agentAutoUpdate?: boolean;
+  alertSuppressionTimeInMins?: number;
+  consentedToMicrosoftDevOps?: boolean;
+  countryLetterCode?: string;
+  createdDate?: string;
+  devOpsTtl?: string;
+  disabled?: boolean;
+  disabledReason?: number;
+  globalAdminsEmail?: string[];
+  initialDomain?: string;
+  lastDisabled?: string;
+  lastVerified?: string;
+  onboardingAllowed?: boolean;
+  onboarded?: boolean;
+  pksCertificate?: unknown;
+  privatePreviewTenant?: boolean;
+  tenantInQuarantine?: boolean;
+  tenantName?: string;
+}
 export const ConfigurationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     tenantId: Schema.optional(Schema.String),
@@ -1925,8 +2624,7 @@ export const ConfigurationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     tenantInQuarantine: Schema.optional(Schema.Boolean),
     tenantName: Schema.optional(Schema.String),
   },
-);
-export type ConfigurationGetOutput = typeof ConfigurationGetOutput.Type;
+) as unknown as Schema.Codec<ConfigurationGetOutput>;
 
 // The operation
 /**
@@ -1939,6 +2637,10 @@ export const configurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationGetOutput,
 }));
 // Input Schema
+export interface ConfigurationListAddsConfigurationsInput {
+  serviceName: string;
+  grouping?: string;
+}
 export const ConfigurationListAddsConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -1949,11 +2651,15 @@ export const ConfigurationListAddsConfigurationsInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/configuration",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ConfigurationListAddsConfigurationsInput =
-  typeof ConfigurationListAddsConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationListAddsConfigurationsInput>;
 
 // Output Schema
+export interface ConfigurationListAddsConfigurationsOutput {
+  nextLink?: string;
+  value?: { key?: string; value?: string }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ConfigurationListAddsConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1967,9 +2673,7 @@ export const ConfigurationListAddsConfigurationsOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ConfigurationListAddsConfigurationsOutput =
-  typeof ConfigurationListAddsConfigurationsOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationListAddsConfigurationsOutput>;
 
 // The operation
 /**
@@ -1984,6 +2688,29 @@ export const configurationListAddsConfigurations =
     outputSchema: ConfigurationListAddsConfigurationsOutput,
   }));
 // Input Schema
+export interface ConfigurationUpdateInput {
+  tenantId?: string;
+  aadLicense?: string;
+  aadPremium?: boolean;
+  agentAutoUpdate?: boolean;
+  alertSuppressionTimeInMins?: number;
+  consentedToMicrosoftDevOps?: boolean;
+  countryLetterCode?: string;
+  createdDate?: string;
+  devOpsTtl?: string;
+  disabled?: boolean;
+  disabledReason?: number;
+  globalAdminsEmail?: string[];
+  initialDomain?: string;
+  lastDisabled?: string;
+  lastVerified?: string;
+  onboardingAllowed?: boolean;
+  onboarded?: boolean;
+  pksCertificate?: unknown;
+  privatePreviewTenant?: boolean;
+  tenantInQuarantine?: boolean;
+  tenantName?: string;
+}
 export const ConfigurationUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
@@ -2013,10 +2740,32 @@ export const ConfigurationUpdateInput =
       path: "/providers/Microsoft.ADHybridHealthService/configuration",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ConfigurationUpdateInput = typeof ConfigurationUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationUpdateInput>;
 
 // Output Schema
+export interface ConfigurationUpdateOutput {
+  tenantId?: string;
+  aadLicense?: string;
+  aadPremium?: boolean;
+  agentAutoUpdate?: boolean;
+  alertSuppressionTimeInMins?: number;
+  consentedToMicrosoftDevOps?: boolean;
+  countryLetterCode?: string;
+  createdDate?: string;
+  devOpsTtl?: string;
+  disabled?: boolean;
+  disabledReason?: number;
+  globalAdminsEmail?: string[];
+  initialDomain?: string;
+  lastDisabled?: string;
+  lastVerified?: string;
+  onboardingAllowed?: boolean;
+  onboarded?: boolean;
+  pksCertificate?: unknown;
+  privatePreviewTenant?: boolean;
+  tenantInQuarantine?: boolean;
+  tenantName?: string;
+}
 export const ConfigurationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
@@ -2040,8 +2789,7 @@ export const ConfigurationUpdateOutput =
     privatePreviewTenant: Schema.optional(Schema.Boolean),
     tenantInQuarantine: Schema.optional(Schema.Boolean),
     tenantName: Schema.optional(Schema.String),
-  });
-export type ConfigurationUpdateOutput = typeof ConfigurationUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationUpdateOutput>;
 
 // The operation
 /**
@@ -2054,6 +2802,10 @@ export const configurationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationUpdateOutput,
 }));
 // Input Schema
+export interface DimensionsListAddsDimensionsInput {
+  serviceName: string;
+  dimension: string;
+}
 export const DimensionsListAddsDimensionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2064,11 +2816,25 @@ export const DimensionsListAddsDimensionsInput =
       path: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/dimensions/{dimension}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type DimensionsListAddsDimensionsInput =
-  typeof DimensionsListAddsDimensionsInput.Type;
+  ) as unknown as Schema.Codec<DimensionsListAddsDimensionsInput>;
 
 // Output Schema
+export interface DimensionsListAddsDimensionsOutput {
+  nextLink?: string;
+  value?: {
+    health?: "Healthy" | "Warning" | "Error" | "NotMonitored" | "Missing";
+    simpleProperties?: unknown;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    lastUpdated?: string;
+    displayName?: string;
+    resolvedAlerts?: number;
+    signature?: string;
+    type?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const DimensionsListAddsDimensionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2097,9 +2863,7 @@ export const DimensionsListAddsDimensionsOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type DimensionsListAddsDimensionsOutput =
-  typeof DimensionsListAddsDimensionsOutput.Type;
+  }) as unknown as Schema.Codec<DimensionsListAddsDimensionsOutput>;
 
 // The operation
 /**
@@ -2115,6 +2879,10 @@ export const dimensionsListAddsDimensions =
     outputSchema: DimensionsListAddsDimensionsOutput,
   }));
 // Input Schema
+export interface ListIPAddressAggregatesByServiceInput {
+  serviceName: string;
+  skiptoken?: string;
+}
 export const ListIPAddressAggregatesByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2125,11 +2893,33 @@ export const ListIPAddressAggregatesByServiceInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregates",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ListIPAddressAggregatesByServiceInput =
-  typeof ListIPAddressAggregatesByServiceInput.Type;
+  ) as unknown as Schema.Codec<ListIPAddressAggregatesByServiceInput>;
 
 // Output Schema
+export interface ListIPAddressAggregatesByServiceOutput {
+  value?: {
+    id?: string;
+    tenantId?: string;
+    serviceId?: string;
+    ipAddress?: string;
+    timestamp?: string;
+    firstAuditTimestamp?: string;
+    lastAuditTimestamp?: string;
+    extranetLockoutErrorCount?: number;
+    badPasswordErrorCount?: number;
+    uniqueUsernamesAttemptedCount?: number;
+    attemptCountThresholdIsExceeded?: boolean;
+    timeSpan?: string;
+    isWhitelistedIpAddress?: boolean;
+    networkLocation?: string;
+    attemptCountThresholdOnTrigger?: number;
+    attemptThresholdTypeOnTrigger?: string;
+    geographicLocation?: string;
+  }[];
+  nextLink?: string;
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ListIPAddressAggregatesByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2158,9 +2948,7 @@ export const ListIPAddressAggregatesByServiceOutput =
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ListIPAddressAggregatesByServiceOutput =
-  typeof ListIPAddressAggregatesByServiceOutput.Type;
+  }) as unknown as Schema.Codec<ListIPAddressAggregatesByServiceOutput>;
 
 // The operation
 /**
@@ -2176,6 +2964,9 @@ export const listIPAddressAggregatesByService =
     outputSchema: ListIPAddressAggregatesByServiceOutput,
   }));
 // Input Schema
+export interface ListIPAddressAggregateSettingsInput {
+  serviceName: string;
+}
 export const ListIPAddressAggregateSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2185,11 +2976,17 @@ export const ListIPAddressAggregateSettingsInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregateSettings",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ListIPAddressAggregateSettingsInput =
-  typeof ListIPAddressAggregateSettingsInput.Type;
+  ) as unknown as Schema.Codec<ListIPAddressAggregateSettingsInput>;
 
 // Output Schema
+export interface ListIPAddressAggregateSettingsOutput {
+  id?: string;
+  badPasswordAndExtranetLockoutCombinedDailyThreshold?: number;
+  badPasswordAndExtranetLockoutCombinedHourlyThreshold?: number;
+  extranetLockoutDailyThreshold?: number;
+  extranetLockoutHourlyThreshold?: number;
+  emailNotificationEnabled?: boolean;
+}
 export const ListIPAddressAggregateSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2202,9 +2999,7 @@ export const ListIPAddressAggregateSettingsOutput =
     extranetLockoutDailyThreshold: Schema.optional(Schema.Number),
     extranetLockoutHourlyThreshold: Schema.optional(Schema.Number),
     emailNotificationEnabled: Schema.optional(Schema.Boolean),
-  });
-export type ListIPAddressAggregateSettingsOutput =
-  typeof ListIPAddressAggregateSettingsOutput.Type;
+  }) as unknown as Schema.Codec<ListIPAddressAggregateSettingsOutput>;
 
 // The operation
 /**
@@ -2219,6 +3014,7 @@ export const listIPAddressAggregateSettings =
     outputSchema: ListIPAddressAggregateSettingsOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2227,10 +3023,15 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ADHybridHealthService/operations",
     apiVersion: "2014-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  nextLink?: string;
+  value?: { name?: string; display?: unknown }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -2243,8 +3044,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   totalCount: Schema.optional(Schema.Number),
   continuationToken: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2257,6 +3057,7 @@ export const operationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ReportsGetDevOpsInput {}
 export const ReportsGetDevOpsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2265,16 +3066,17 @@ export const ReportsGetDevOpsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps",
     apiVersion: "2014-01-01",
   }),
-);
-export type ReportsGetDevOpsInput = typeof ReportsGetDevOpsInput.Type;
+) as unknown as Schema.Codec<ReportsGetDevOpsInput>;
 
 // Output Schema
+export interface ReportsGetDevOpsOutput {
+  value?: boolean;
+}
 export const ReportsGetDevOpsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(Schema.Boolean),
   },
-);
-export type ReportsGetDevOpsOutput = typeof ReportsGetDevOpsOutput.Type;
+) as unknown as Schema.Codec<ReportsGetDevOpsOutput>;
 
 // The operation
 /**
@@ -2287,6 +3089,14 @@ export const reportsGetDevOps = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReportsGetDevOpsOutput,
 }));
 // Input Schema
+export interface ServiceGetMetricsInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+  groupKey?: string;
+  fromDate?: string;
+  toDate?: string;
+}
 export const ServiceGetMetricsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2302,10 +3112,13 @@ export const ServiceGetMetricsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}",
     apiVersion: "2014-01-01",
   }),
-);
-export type ServiceGetMetricsInput = typeof ServiceGetMetricsInput.Type;
+) as unknown as Schema.Codec<ServiceGetMetricsInput>;
 
 // Output Schema
+export interface ServiceGetMetricsOutput {
+  sets?: { setName?: string; values?: number[] }[];
+  timeStamps?: string[];
+}
 export const ServiceGetMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sets: Schema.optional(
@@ -2317,8 +3130,7 @@ export const ServiceGetMetricsOutput =
       ),
     ),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ServiceGetMetricsOutput = typeof ServiceGetMetricsOutput.Type;
+  }) as unknown as Schema.Codec<ServiceGetMetricsOutput>;
 
 // The operation
 /**
@@ -2337,6 +3149,35 @@ export const serviceGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceGetMetricsOutput,
 }));
 // Input Schema
+export interface ServiceMembersAddInput {
+  serviceName: string;
+  serviceMemberId?: string;
+  serviceId?: string;
+  tenantId?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  dimensions?: unknown;
+  disabled?: boolean;
+  disabledReason?: number;
+  installedQfes?: unknown;
+  lastDisabled?: string;
+  lastReboot?: string;
+  lastServerReportedMonitoringLevelChange?: string;
+  lastUpdated?: string;
+  machineId?: string;
+  machineName?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  osName?: string;
+  osVersion?: string;
+  properties?: unknown;
+  recommendedQfes?: unknown;
+  resolvedAlerts?: number;
+  role?: string;
+  serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+  status?: string;
+}
 export const ServiceMembersAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2375,10 +3216,37 @@ export const ServiceMembersAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
     apiVersion: "2014-01-01",
   }),
-);
-export type ServiceMembersAddInput = typeof ServiceMembersAddInput.Type;
+) as unknown as Schema.Codec<ServiceMembersAddInput>;
 
 // Output Schema
+export interface ServiceMembersAddOutput {
+  serviceMemberId?: string;
+  serviceId?: string;
+  tenantId?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  dimensions?: unknown;
+  disabled?: boolean;
+  disabledReason?: number;
+  installedQfes?: unknown;
+  lastDisabled?: string;
+  lastReboot?: string;
+  lastServerReportedMonitoringLevelChange?: string;
+  lastUpdated?: string;
+  machineId?: string;
+  machineName?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  osName?: string;
+  osVersion?: string;
+  properties?: unknown;
+  recommendedQfes?: unknown;
+  resolvedAlerts?: number;
+  role?: string;
+  serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+  status?: string;
+}
 export const ServiceMembersAddOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.optional(Schema.String),
@@ -2409,8 +3277,7 @@ export const ServiceMembersAddOutput =
       Schema.Literals(["Partial", "Full", "Off"]),
     ),
     status: Schema.optional(Schema.String),
-  });
-export type ServiceMembersAddOutput = typeof ServiceMembersAddOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersAddOutput>;
 
 // The operation
 /**
@@ -2424,6 +3291,11 @@ export const serviceMembersAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceMembersAddOutput,
 }));
 // Input Schema
+export interface ServiceMembersDeleteInput {
+  serviceName: string;
+  serviceMemberId: string;
+  confirm?: boolean;
+}
 export const ServiceMembersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2435,13 +3307,12 @@ export const ServiceMembersDeleteInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersDeleteInput = typeof ServiceMembersDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersDeleteInput>;
 
 // Output Schema
+export type ServiceMembersDeleteOutput = void;
 export const ServiceMembersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceMembersDeleteOutput = typeof ServiceMembersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceMembersDeleteOutput>;
 
 // The operation
 /**
@@ -2459,6 +3330,10 @@ export const serviceMembersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceMembersDeleteDataInput {
+  serviceName: string;
+  serviceMemberId: string;
+}
 export const ServiceMembersDeleteDataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2469,15 +3344,12 @@ export const ServiceMembersDeleteDataInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/data",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersDeleteDataInput =
-  typeof ServiceMembersDeleteDataInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersDeleteDataInput>;
 
 // Output Schema
+export type ServiceMembersDeleteDataOutput = void;
 export const ServiceMembersDeleteDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceMembersDeleteDataOutput =
-  typeof ServiceMembersDeleteDataOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceMembersDeleteDataOutput>;
 
 // The operation
 /**
@@ -2494,6 +3366,10 @@ export const serviceMembersDeleteData = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceMembersGetInput {
+  serviceName: string;
+  serviceMemberId: string;
+}
 export const ServiceMembersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2505,10 +3381,37 @@ export const ServiceMembersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
     apiVersion: "2014-01-01",
   }),
-);
-export type ServiceMembersGetInput = typeof ServiceMembersGetInput.Type;
+) as unknown as Schema.Codec<ServiceMembersGetInput>;
 
 // Output Schema
+export interface ServiceMembersGetOutput {
+  serviceMemberId?: string;
+  serviceId?: string;
+  tenantId?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  dimensions?: unknown;
+  disabled?: boolean;
+  disabledReason?: number;
+  installedQfes?: unknown;
+  lastDisabled?: string;
+  lastReboot?: string;
+  lastServerReportedMonitoringLevelChange?: string;
+  lastUpdated?: string;
+  machineId?: string;
+  machineName?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  osName?: string;
+  osVersion?: string;
+  properties?: unknown;
+  recommendedQfes?: unknown;
+  resolvedAlerts?: number;
+  role?: string;
+  serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+  status?: string;
+}
 export const ServiceMembersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.optional(Schema.String),
@@ -2539,8 +3442,7 @@ export const ServiceMembersGetOutput =
       Schema.Literals(["Partial", "Full", "Off"]),
     ),
     status: Schema.optional(Schema.String),
-  });
-export type ServiceMembersGetOutput = typeof ServiceMembersGetOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersGetOutput>;
 
 // The operation
 /**
@@ -2555,6 +3457,11 @@ export const serviceMembersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceMembersGetOutput,
 }));
 // Input Schema
+export interface ServiceMembersGetConnectorMetadataInput {
+  serviceName: string;
+  serviceMemberId: string;
+  metricName: string;
+}
 export const ServiceMembersGetConnectorMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2566,11 +3473,13 @@ export const ServiceMembersGetConnectorMetadataInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersGetConnectorMetadataInput =
-  typeof ServiceMembersGetConnectorMetadataInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersGetConnectorMetadataInput>;
 
 // Output Schema
+export interface ServiceMembersGetConnectorMetadataOutput {
+  connectors?: { connectorId?: string; connectorDisplayName?: string }[];
+  runProfileNames?: string[];
+}
 export const ServiceMembersGetConnectorMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectors: Schema.optional(
@@ -2582,9 +3491,7 @@ export const ServiceMembersGetConnectorMetadataOutput =
       ),
     ),
     runProfileNames: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ServiceMembersGetConnectorMetadataOutput =
-  typeof ServiceMembersGetConnectorMetadataOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersGetConnectorMetadataOutput>;
 
 // The operation
 /**
@@ -2601,6 +3508,15 @@ export const serviceMembersGetConnectorMetadata =
     outputSchema: ServiceMembersGetConnectorMetadataOutput,
   }));
 // Input Schema
+export interface ServiceMembersGetMetricsInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+  serviceMemberId: string;
+  groupKey?: string;
+  fromDate?: string;
+  toDate?: string;
+}
 export const ServiceMembersGetMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2616,11 +3532,13 @@ export const ServiceMembersGetMetricsInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}/groups/{groupName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersGetMetricsInput =
-  typeof ServiceMembersGetMetricsInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersGetMetricsInput>;
 
 // Output Schema
+export interface ServiceMembersGetMetricsOutput {
+  sets?: { setName?: string; values?: number[] }[];
+  timeStamps?: string[];
+}
 export const ServiceMembersGetMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sets: Schema.optional(
@@ -2632,9 +3550,7 @@ export const ServiceMembersGetMetricsOutput =
       ),
     ),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ServiceMembersGetMetricsOutput =
-  typeof ServiceMembersGetMetricsOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersGetMetricsOutput>;
 
 // The operation
 /**
@@ -2656,6 +3572,10 @@ export const serviceMembersGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceMembersGetServiceConfigurationInput {
+  serviceName: string;
+  serviceMemberId: string;
+}
 export const ServiceMembersGetServiceConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2666,11 +3586,20 @@ export const ServiceMembersGetServiceConfigurationInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/serviceconfiguration",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersGetServiceConfigurationInput =
-  typeof ServiceMembersGetServiceConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersGetServiceConfigurationInput>;
 
 // Output Schema
+export interface ServiceMembersGetServiceConfigurationOutput {
+  version?: string;
+  serviceType?: number;
+  serviceAccount?: string;
+  sqlServer?: string;
+  sqlVersion?: string;
+  sqlEdition?: string;
+  sqlInstance?: string;
+  sqlDatabaseName?: string;
+  sqlDatabaseSize?: number;
+}
 export const ServiceMembersGetServiceConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
@@ -2682,9 +3611,7 @@ export const ServiceMembersGetServiceConfigurationOutput =
     sqlInstance: Schema.optional(Schema.String),
     sqlDatabaseName: Schema.optional(Schema.String),
     sqlDatabaseSize: Schema.optional(Schema.Number),
-  });
-export type ServiceMembersGetServiceConfigurationOutput =
-  typeof ServiceMembersGetServiceConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersGetServiceConfigurationOutput>;
 
 // The operation
 /**
@@ -2700,6 +3627,12 @@ export const serviceMembersGetServiceConfiguration =
     outputSchema: ServiceMembersGetServiceConfigurationOutput,
   }));
 // Input Schema
+export interface ServiceMembersListInput {
+  serviceName: string;
+  $filter?: string;
+  dimensionType?: string;
+  dimensionSignature?: string;
+}
 export const ServiceMembersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2712,10 +3645,42 @@ export const ServiceMembersListInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersListInput = typeof ServiceMembersListInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersListInput>;
 
 // Output Schema
+export interface ServiceMembersListOutput {
+  nextLink?: string;
+  value?: {
+    serviceMemberId?: string;
+    serviceId?: string;
+    tenantId?: string;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    createdDate?: string;
+    dimensions?: unknown;
+    disabled?: boolean;
+    disabledReason?: number;
+    installedQfes?: unknown;
+    lastDisabled?: string;
+    lastReboot?: string;
+    lastServerReportedMonitoringLevelChange?: string;
+    lastUpdated?: string;
+    machineId?: string;
+    machineName?: string;
+    monitoringConfigurationsComputed?: unknown;
+    monitoringConfigurationsCustomized?: unknown;
+    osName?: string;
+    osVersion?: string;
+    properties?: unknown;
+    recommendedQfes?: unknown;
+    resolvedAlerts?: number;
+    role?: string;
+    serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
+    status?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServiceMembersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2757,8 +3722,7 @@ export const ServiceMembersListOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServiceMembersListOutput = typeof ServiceMembersListOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersListOutput>;
 
 // The operation
 /**
@@ -2775,6 +3739,14 @@ export const serviceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServiceMembersListOutput,
 }));
 // Input Schema
+export interface ServiceMembersListAlertsInput {
+  serviceMemberId: string;
+  serviceName: string;
+  $filter?: string;
+  state?: string;
+  from?: string;
+  to?: string;
+}
 export const ServiceMembersListAlertsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.String.pipe(T.PathParam()),
@@ -2789,11 +3761,45 @@ export const ServiceMembersListAlertsInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/alerts",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersListAlertsInput =
-  typeof ServiceMembersListAlertsInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersListAlertsInput>;
 
 // Output Schema
+export interface ServiceMembersListAlertsOutput {
+  value?: {
+    alertId?: string;
+    level?: "Warning" | "Error" | "PreWarning";
+    state?:
+      | "Active"
+      | "ResolvedByPositiveResult"
+      | "ResolvedManually"
+      | "ResolvedByTimer"
+      | "ResolvedByStateChange";
+    shortName?: string;
+    displayName?: string;
+    description?: string;
+    remediation?: string;
+    relatedLinks?: { title?: string; url?: string }[];
+    scope?: string;
+    additionalInformation?: {
+      titleName?: string;
+      titleValue?: string;
+      properties?: unknown;
+      hasProperties?: boolean;
+    }[];
+    createdDate?: string;
+    resolvedDate?: string;
+    lastUpdated?: string;
+    monitorRoleType?: string;
+    activeAlertProperties?: { key?: string; value?: string }[];
+    resolvedAlertProperties?: { key?: string; value?: string }[];
+    tenantId?: string;
+    serviceId?: string;
+    serviceMemberId?: string;
+  }[];
+  nextLink?: string;
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServiceMembersListAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2864,9 +3870,7 @@ export const ServiceMembersListAlertsOutput =
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServiceMembersListAlertsOutput =
-  typeof ServiceMembersListAlertsOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersListAlertsOutput>;
 
 // The operation
 /**
@@ -2887,6 +3891,10 @@ export const serviceMembersListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceMembersListConnectorsInput {
+  serviceName: string;
+  serviceMemberId: string;
+}
 export const ServiceMembersListConnectorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2897,11 +3905,55 @@ export const ServiceMembersListConnectorsInput =
       path: "/providers/Microsoft.ADHybridHealthService/service/{serviceName}/servicemembers/{serviceMemberId}/connectors",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersListConnectorsInput =
-  typeof ServiceMembersListConnectorsInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersListConnectorsInput>;
 
 // Output Schema
+export interface ServiceMembersListConnectorsOutput {
+  value?: {
+    connectorId?: string;
+    id?: string;
+    name?: string;
+    version?: number;
+    type?: string;
+    description?: string;
+    schemaXml?: string;
+    passwordManagementSettings?: unknown;
+    passwordHashSyncConfiguration?: unknown;
+    timeCreated?: string;
+    timeLastModified?: string;
+    partitions?: {
+      id?: string;
+      dn?: string;
+      enabled?: boolean;
+      timeCreated?: string;
+      timeLastModified?: string;
+      partitionScope?: {
+        isDefault?: boolean;
+        objectClasses?: string[];
+        containersIncluded?: string[];
+        containersExcluded?: string[];
+      };
+      name?: string;
+      isDomain?: boolean;
+      type?: string;
+    }[];
+    runProfiles?: {
+      id?: string;
+      name?: string;
+      runSteps?: {
+        batchSize?: number;
+        objectProcessLimit?: number;
+        objectDeleteLimit?: number;
+        pageSize?: number;
+        partitionId?: string;
+        operationType?: number;
+        timeout?: number;
+      }[];
+    }[];
+    classesIncluded?: string[];
+    attributesIncluded?: string[];
+  }[];
+}
 export const ServiceMembersListConnectorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2970,9 +4022,7 @@ export const ServiceMembersListConnectorsOutput =
         }),
       ),
     ),
-  });
-export type ServiceMembersListConnectorsOutput =
-  typeof ServiceMembersListConnectorsOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersListConnectorsOutput>;
 
 // The operation
 /**
@@ -2988,6 +4038,11 @@ export const serviceMembersListConnectors =
     outputSchema: ServiceMembersListConnectorsOutput,
   }));
 // Input Schema
+export interface ServiceMembersListCredentialsInput {
+  serviceName: string;
+  serviceMemberId: string;
+  $filter?: string;
+}
 export const ServiceMembersListCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -2999,11 +4054,12 @@ export const ServiceMembersListCredentialsInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/credentials",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersListCredentialsInput =
-  typeof ServiceMembersListCredentialsInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersListCredentialsInput>;
 
 // Output Schema
+export interface ServiceMembersListCredentialsOutput {
+  value?: { identifier?: string; type?: string; credentialData?: string[] }[];
+}
 export const ServiceMembersListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3015,9 +4071,7 @@ export const ServiceMembersListCredentialsOutput =
         }),
       ),
     ),
-  });
-export type ServiceMembersListCredentialsOutput =
-  typeof ServiceMembersListCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersListCredentialsOutput>;
 
 // The operation
 /**
@@ -3034,6 +4088,10 @@ export const serviceMembersListCredentials =
     outputSchema: ServiceMembersListCredentialsOutput,
   }));
 // Input Schema
+export interface ServiceMembersListDataFreshnessInput {
+  serviceName: string;
+  serviceMemberId: string;
+}
 export const ServiceMembersListDataFreshnessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3044,11 +4102,12 @@ export const ServiceMembersListDataFreshnessInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/datafreshness",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersListDataFreshnessInput =
-  typeof ServiceMembersListDataFreshnessInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersListDataFreshnessInput>;
 
 // Output Schema
+export interface ServiceMembersListDataFreshnessOutput {
+  value?: { key?: string; value?: string }[];
+}
 export const ServiceMembersListDataFreshnessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3059,9 +4118,7 @@ export const ServiceMembersListDataFreshnessOutput =
         }),
       ),
     ),
-  });
-export type ServiceMembersListDataFreshnessOutput =
-  typeof ServiceMembersListDataFreshnessOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersListDataFreshnessOutput>;
 
 // The operation
 /**
@@ -3077,6 +4134,10 @@ export const serviceMembersListDataFreshness =
     outputSchema: ServiceMembersListDataFreshnessOutput,
   }));
 // Input Schema
+export interface ServiceMembersListExportStatusInput {
+  serviceName: string;
+  serviceMemberId: string;
+}
 export const ServiceMembersListExportStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3087,11 +4148,20 @@ export const ServiceMembersListExportStatusInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/exportstatus",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersListExportStatusInput =
-  typeof ServiceMembersListExportStatusInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersListExportStatusInput>;
 
 // Output Schema
+export interface ServiceMembersListExportStatusOutput {
+  nextLink?: string;
+  value?: {
+    serviceId?: string;
+    serviceMemberId?: string;
+    endTime?: string;
+    runStepResultId?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServiceMembersListExportStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3107,9 +4177,7 @@ export const ServiceMembersListExportStatusOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServiceMembersListExportStatusOutput =
-  typeof ServiceMembersListExportStatusOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersListExportStatusOutput>;
 
 // The operation
 /**
@@ -3125,6 +4193,10 @@ export const serviceMembersListExportStatus =
     outputSchema: ServiceMembersListExportStatusOutput,
   }));
 // Input Schema
+export interface ServiceMembersListGlobalConfigurationInput {
+  serviceName: string;
+  serviceMemberId: string;
+}
 export const ServiceMembersListGlobalConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3135,11 +4207,18 @@ export const ServiceMembersListGlobalConfigurationInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/globalconfiguration",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServiceMembersListGlobalConfigurationInput =
-  typeof ServiceMembersListGlobalConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ServiceMembersListGlobalConfigurationInput>;
 
 // Output Schema
+export interface ServiceMembersListGlobalConfigurationOutput {
+  value?: {
+    version?: number;
+    schemaXml?: string;
+    passwordSyncEnabled?: boolean;
+    numSavedPwdEvent?: number;
+    featureSet?: { key?: string; value?: string }[];
+  }[];
+}
 export const ServiceMembersListGlobalConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3160,9 +4239,7 @@ export const ServiceMembersListGlobalConfigurationOutput =
         }),
       ),
     ),
-  });
-export type ServiceMembersListGlobalConfigurationOutput =
-  typeof ServiceMembersListGlobalConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ServiceMembersListGlobalConfigurationOutput>;
 
 // The operation
 /**
@@ -3178,6 +4255,32 @@ export const serviceMembersListGlobalConfiguration =
     outputSchema: ServiceMembersListGlobalConfigurationOutput,
   }));
 // Input Schema
+export interface ServicesAddInput {
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  serviceName?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const ServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
@@ -3209,10 +4312,35 @@ export const ServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ADHybridHealthService/services",
     apiVersion: "2014-01-01",
   }),
-);
-export type ServicesAddInput = typeof ServicesAddInput.Type;
+) as unknown as Schema.Codec<ServicesAddInput>;
 
 // Output Schema
+export interface ServicesAddOutput {
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  serviceName?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const ServicesAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
@@ -3238,8 +4366,7 @@ export const ServicesAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   simpleProperties: Schema.optional(Schema.Unknown),
   tenantId: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ServicesAddOutput = typeof ServicesAddOutput.Type;
+}) as unknown as Schema.Codec<ServicesAddOutput>;
 
 // The operation
 /**
@@ -3252,6 +4379,17 @@ export const servicesAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesAddOutput,
 }));
 // Input Schema
+export interface ServicesAddAlertFeedbackInput {
+  serviceName: string;
+  level?: string;
+  state?: string;
+  shortName?: string;
+  feedback?: string;
+  comment?: string;
+  consentedToShare?: boolean;
+  serviceMemberId?: string;
+  createdDate?: string;
+}
 export const ServicesAddAlertFeedbackInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3269,11 +4407,19 @@ export const ServicesAddAlertFeedbackInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/feedbacktype/alerts/feedback",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesAddAlertFeedbackInput =
-  typeof ServicesAddAlertFeedbackInput.Type;
+  ) as unknown as Schema.Codec<ServicesAddAlertFeedbackInput>;
 
 // Output Schema
+export interface ServicesAddAlertFeedbackOutput {
+  level?: string;
+  state?: string;
+  shortName?: string;
+  feedback?: string;
+  comment?: string;
+  consentedToShare?: boolean;
+  serviceMemberId?: string;
+  createdDate?: string;
+}
 export const ServicesAddAlertFeedbackOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     level: Schema.optional(Schema.String),
@@ -3284,9 +4430,7 @@ export const ServicesAddAlertFeedbackOutput =
     consentedToShare: Schema.optional(Schema.Boolean),
     serviceMemberId: Schema.optional(Schema.String),
     createdDate: Schema.optional(Schema.String),
-  });
-export type ServicesAddAlertFeedbackOutput =
-  typeof ServicesAddAlertFeedbackOutput.Type;
+  }) as unknown as Schema.Codec<ServicesAddAlertFeedbackOutput>;
 
 // The operation
 /**
@@ -3302,6 +4446,10 @@ export const servicesAddAlertFeedback = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesDeleteInput {
+  serviceName: string;
+  confirm?: boolean;
+}
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   confirm: Schema.optional(Schema.Boolean),
@@ -3311,12 +4459,12 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
     apiVersion: "2014-01-01",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+export type ServicesDeleteOutput = void;
+export const ServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -3331,6 +4479,9 @@ export const servicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
+export interface ServicesGetInput {
+  serviceName: string;
+}
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3339,10 +4490,35 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
     apiVersion: "2014-01-01",
   }),
-);
-export type ServicesGetInput = typeof ServicesGetInput.Type;
+) as unknown as Schema.Codec<ServicesGetInput>;
 
 // Output Schema
+export interface ServicesGetOutput {
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  serviceName?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
@@ -3368,8 +4544,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   simpleProperties: Schema.optional(Schema.Unknown),
   tenantId: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ServicesGetOutput = typeof ServicesGetOutput.Type;
+}) as unknown as Schema.Codec<ServicesGetOutput>;
 
 // The operation
 /**
@@ -3383,6 +4558,10 @@ export const servicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
+export interface ServicesGetFeatureAvailibilityInput {
+  serviceName: string;
+  featureName: string;
+}
 export const ServicesGetFeatureAvailibilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3393,17 +4572,16 @@ export const ServicesGetFeatureAvailibilityInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/checkServiceFeatureAvailibility/{featureName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesGetFeatureAvailibilityInput =
-  typeof ServicesGetFeatureAvailibilityInput.Type;
+  ) as unknown as Schema.Codec<ServicesGetFeatureAvailibilityInput>;
 
 // Output Schema
+export interface ServicesGetFeatureAvailibilityOutput {
+  value?: boolean;
+}
 export const ServicesGetFeatureAvailibilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
-  });
-export type ServicesGetFeatureAvailibilityOutput =
-  typeof ServicesGetFeatureAvailibilityOutput.Type;
+  }) as unknown as Schema.Codec<ServicesGetFeatureAvailibilityOutput>;
 
 // The operation
 /**
@@ -3419,6 +4597,10 @@ export const servicesGetFeatureAvailibility =
     outputSchema: ServicesGetFeatureAvailibilityOutput,
   }));
 // Input Schema
+export interface ServicesGetMetricMetadataInput {
+  serviceName: string;
+  metricName: string;
+}
 export const ServicesGetMetricMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3429,11 +4611,26 @@ export const ServicesGetMetricMetadataInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesGetMetricMetadataInput =
-  typeof ServicesGetMetricMetadataInput.Type;
+  ) as unknown as Schema.Codec<ServicesGetMetricMetadataInput>;
 
 // Output Schema
+export interface ServicesGetMetricMetadataOutput {
+  metricsProcessorClassName?: string;
+  metricName?: string;
+  groupings?: {
+    key?: string;
+    displayName?: string;
+    invisibleForUi?: boolean;
+  }[];
+  displayName?: string;
+  valueKind?: string;
+  minValue?: number;
+  maxValue?: number;
+  kind?: string;
+  isDefault?: boolean;
+  isPerfCounter?: boolean;
+  isDevOps?: boolean;
+}
 export const ServicesGetMetricMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricsProcessorClassName: Schema.optional(Schema.String),
@@ -3455,9 +4652,7 @@ export const ServicesGetMetricMetadataOutput =
     isDefault: Schema.optional(Schema.Boolean),
     isPerfCounter: Schema.optional(Schema.Boolean),
     isDevOps: Schema.optional(Schema.Boolean),
-  });
-export type ServicesGetMetricMetadataOutput =
-  typeof ServicesGetMetricMetadataOutput.Type;
+  }) as unknown as Schema.Codec<ServicesGetMetricMetadataOutput>;
 
 // The operation
 /**
@@ -3474,6 +4669,14 @@ export const servicesGetMetricMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesGetMetricMetadataForGroupInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+  groupKey?: string;
+  fromDate?: string;
+  toDate?: string;
+}
 export const ServicesGetMetricMetadataForGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3488,11 +4691,13 @@ export const ServicesGetMetricMetadataForGroupInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesGetMetricMetadataForGroupInput =
-  typeof ServicesGetMetricMetadataForGroupInput.Type;
+  ) as unknown as Schema.Codec<ServicesGetMetricMetadataForGroupInput>;
 
 // Output Schema
+export interface ServicesGetMetricMetadataForGroupOutput {
+  sets?: { setName?: string; values?: number[] }[];
+  timeStamps?: string[];
+}
 export const ServicesGetMetricMetadataForGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sets: Schema.optional(
@@ -3504,9 +4709,7 @@ export const ServicesGetMetricMetadataForGroupOutput =
       ),
     ),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ServicesGetMetricMetadataForGroupOutput =
-  typeof ServicesGetMetricMetadataForGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServicesGetMetricMetadataForGroupOutput>;
 
 // The operation
 /**
@@ -3526,6 +4729,10 @@ export const servicesGetMetricMetadataForGroup =
     outputSchema: ServicesGetMetricMetadataForGroupOutput,
   }));
 // Input Schema
+export interface ServicesGetTenantWhitelistingInput {
+  serviceName: string;
+  featureName: string;
+}
 export const ServicesGetTenantWhitelistingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3536,17 +4743,16 @@ export const ServicesGetTenantWhitelistingInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/TenantWhitelisting/{featureName}",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesGetTenantWhitelistingInput =
-  typeof ServicesGetTenantWhitelistingInput.Type;
+  ) as unknown as Schema.Codec<ServicesGetTenantWhitelistingInput>;
 
 // Output Schema
+export interface ServicesGetTenantWhitelistingOutput {
+  value?: boolean;
+}
 export const ServicesGetTenantWhitelistingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
-  });
-export type ServicesGetTenantWhitelistingOutput =
-  typeof ServicesGetTenantWhitelistingOutput.Type;
+  }) as unknown as Schema.Codec<ServicesGetTenantWhitelistingOutput>;
 
 // The operation
 /**
@@ -3562,6 +4768,12 @@ export const servicesGetTenantWhitelisting =
     outputSchema: ServicesGetTenantWhitelistingOutput,
   }));
 // Input Schema
+export interface ServicesListInput {
+  $filter?: string;
+  serviceType?: string;
+  skipCount?: number;
+  takeCount?: number;
+}
 export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   serviceType: Schema.optional(Schema.String),
@@ -3573,10 +4785,40 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ADHybridHealthService/services",
     apiVersion: "2014-01-01",
   }),
-);
-export type ServicesListInput = typeof ServicesListInput.Type;
+) as unknown as Schema.Codec<ServicesListInput>;
 
 // Output Schema
+export interface ServicesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    createdDate?: string;
+    customNotificationEmails?: string[];
+    disabled?: boolean;
+    displayName?: string;
+    health?: string;
+    lastDisabled?: string;
+    lastUpdated?: string;
+    monitoringConfigurationsComputed?: unknown;
+    monitoringConfigurationsCustomized?: unknown;
+    notificationEmailEnabled?: boolean;
+    notificationEmailEnabledForGlobalAdmins?: boolean;
+    notificationEmailsEnabledForGlobalAdmins?: boolean;
+    notificationEmails?: string[];
+    originalDisabledState?: boolean;
+    resolvedAlerts?: number;
+    serviceId?: string;
+    serviceName?: string;
+    signature?: string;
+    simpleProperties?: unknown;
+    tenantId?: string;
+    type?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -3615,8 +4857,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   totalCount: Schema.optional(Schema.Number),
   continuationToken: Schema.optional(Schema.String),
-});
-export type ServicesListOutput = typeof ServicesListOutput.Type;
+}) as unknown as Schema.Codec<ServicesListOutput>;
 
 // The operation
 /**
@@ -3633,6 +4874,10 @@ export const servicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
+export interface ServicesListAlertFeedbackInput {
+  serviceName: string;
+  shortName: string;
+}
 export const ServicesListAlertFeedbackInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3643,11 +4888,21 @@ export const ServicesListAlertFeedbackInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/feedbacktype/alerts/{shortName}/alertfeedback",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListAlertFeedbackInput =
-  typeof ServicesListAlertFeedbackInput.Type;
+  ) as unknown as Schema.Codec<ServicesListAlertFeedbackInput>;
 
 // Output Schema
+export interface ServicesListAlertFeedbackOutput {
+  value?: {
+    level?: string;
+    state?: string;
+    shortName?: string;
+    feedback?: string;
+    comment?: string;
+    consentedToShare?: boolean;
+    serviceMemberId?: string;
+    createdDate?: string;
+  }[];
+}
 export const ServicesListAlertFeedbackOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3664,9 +4919,7 @@ export const ServicesListAlertFeedbackOutput =
         }),
       ),
     ),
-  });
-export type ServicesListAlertFeedbackOutput =
-  typeof ServicesListAlertFeedbackOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListAlertFeedbackOutput>;
 
 // The operation
 /**
@@ -3683,6 +4936,13 @@ export const servicesListAlertFeedback = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListAlertsInput {
+  serviceName: string;
+  $filter?: string;
+  state?: string;
+  from?: string;
+  to?: string;
+}
 export const ServicesListAlertsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3696,10 +4956,45 @@ export const ServicesListAlertsInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/alerts",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListAlertsInput = typeof ServicesListAlertsInput.Type;
+  ) as unknown as Schema.Codec<ServicesListAlertsInput>;
 
 // Output Schema
+export interface ServicesListAlertsOutput {
+  value?: {
+    alertId?: string;
+    level?: "Warning" | "Error" | "PreWarning";
+    state?:
+      | "Active"
+      | "ResolvedByPositiveResult"
+      | "ResolvedManually"
+      | "ResolvedByTimer"
+      | "ResolvedByStateChange";
+    shortName?: string;
+    displayName?: string;
+    description?: string;
+    remediation?: string;
+    relatedLinks?: { title?: string; url?: string }[];
+    scope?: string;
+    additionalInformation?: {
+      titleName?: string;
+      titleValue?: string;
+      properties?: unknown;
+      hasProperties?: boolean;
+    }[];
+    createdDate?: string;
+    resolvedDate?: string;
+    lastUpdated?: string;
+    monitorRoleType?: string;
+    activeAlertProperties?: { key?: string; value?: string }[];
+    resolvedAlertProperties?: { key?: string; value?: string }[];
+    tenantId?: string;
+    serviceId?: string;
+    serviceMemberId?: string;
+  }[];
+  nextLink?: string;
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServicesListAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3770,8 +5065,7 @@ export const ServicesListAlertsOutput =
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServicesListAlertsOutput = typeof ServicesListAlertsOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListAlertsOutput>;
 
 // The operation
 /**
@@ -3789,6 +5083,9 @@ export const servicesListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListAlertsOutput,
 }));
 // Input Schema
+export interface ServicesListAllRiskyIpDownloadReportInput {
+  serviceName: string;
+}
 export const ServicesListAllRiskyIpDownloadReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3798,11 +5095,19 @@ export const ServicesListAllRiskyIpDownloadReportInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/riskyIp/blobUris",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListAllRiskyIpDownloadReportInput =
-  typeof ServicesListAllRiskyIpDownloadReportInput.Type;
+  ) as unknown as Schema.Codec<ServicesListAllRiskyIpDownloadReportInput>;
 
 // Output Schema
+export interface ServicesListAllRiskyIpDownloadReportOutput {
+  value?: {
+    tenantId?: string;
+    serviceId?: string;
+    resultSasUri?: string;
+    blobCreateDateTime?: string;
+    jobCompletionTime?: string;
+    status?: string;
+  }[];
+}
 export const ServicesListAllRiskyIpDownloadReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3817,9 +5122,7 @@ export const ServicesListAllRiskyIpDownloadReportOutput =
         }),
       ),
     ),
-  });
-export type ServicesListAllRiskyIpDownloadReportOutput =
-  typeof ServicesListAllRiskyIpDownloadReportOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListAllRiskyIpDownloadReportOutput>;
 
 // The operation
 /**
@@ -3834,6 +5137,9 @@ export const servicesListAllRiskyIpDownloadReport =
     outputSchema: ServicesListAllRiskyIpDownloadReportOutput,
   }));
 // Input Schema
+export interface ServicesListCurrentRiskyIpDownloadReportInput {
+  serviceName: string;
+}
 export const ServicesListCurrentRiskyIpDownloadReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3843,11 +5149,19 @@ export const ServicesListCurrentRiskyIpDownloadReportInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/riskyIp/generateBlobUri",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListCurrentRiskyIpDownloadReportInput =
-  typeof ServicesListCurrentRiskyIpDownloadReportInput.Type;
+  ) as unknown as Schema.Codec<ServicesListCurrentRiskyIpDownloadReportInput>;
 
 // Output Schema
+export interface ServicesListCurrentRiskyIpDownloadReportOutput {
+  value?: {
+    tenantId?: string;
+    serviceId?: string;
+    resultSasUri?: string;
+    blobCreateDateTime?: string;
+    jobCompletionTime?: string;
+    status?: string;
+  }[];
+}
 export const ServicesListCurrentRiskyIpDownloadReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3862,9 +5176,7 @@ export const ServicesListCurrentRiskyIpDownloadReportOutput =
         }),
       ),
     ),
-  });
-export type ServicesListCurrentRiskyIpDownloadReportOutput =
-  typeof ServicesListCurrentRiskyIpDownloadReportOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListCurrentRiskyIpDownloadReportOutput>;
 
 // The operation
 /**
@@ -3879,6 +5191,9 @@ export const servicesListCurrentRiskyIpDownloadReport =
     outputSchema: ServicesListCurrentRiskyIpDownloadReportOutput,
   }));
 // Input Schema
+export interface ServicesListExportErrorsInput {
+  serviceName: string;
+}
 export const ServicesListExportErrorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3888,11 +5203,12 @@ export const ServicesListExportErrorsInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exporterrors/counts",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListExportErrorsInput =
-  typeof ServicesListExportErrorsInput.Type;
+  ) as unknown as Schema.Codec<ServicesListExportErrorsInput>;
 
 // Output Schema
+export interface ServicesListExportErrorsOutput {
+  value?: { errorBucket?: string; count?: number; truncated?: boolean }[];
+}
 export const ServicesListExportErrorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3904,9 +5220,7 @@ export const ServicesListExportErrorsOutput =
         }),
       ),
     ),
-  });
-export type ServicesListExportErrorsOutput =
-  typeof ServicesListExportErrorsOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListExportErrorsOutput>;
 
 // The operation
 /**
@@ -3922,6 +5236,10 @@ export const servicesListExportErrors = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListExportErrorsV2Input {
+  serviceName: string;
+  errorBucket: string;
+}
 export const ServicesListExportErrorsV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -3932,11 +5250,61 @@ export const ServicesListExportErrorsV2Input =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exporterrors/listV2",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListExportErrorsV2Input =
-  typeof ServicesListExportErrorsV2Input.Type;
+  ) as unknown as Schema.Codec<ServicesListExportErrorsV2Input>;
 
 // Output Schema
+export interface ServicesListExportErrorsV2Output {
+  value?: {
+    id?: string;
+    incomingObjectDisplayName?: string;
+    incomingObjectType?: string;
+    userPrincipalName?: string;
+    type?: string;
+    attributeName?: string;
+    attributeValue?: string;
+    timeOccurred?: string;
+    timeFirstOccurred?: string;
+    csObjectId?: string;
+    dn?: string;
+    incomingObject?: {
+      displayName?: string;
+      distinguishedName?: string;
+      lastDirSyncTime?: string;
+      mail?: string;
+      objectGuid?: string;
+      objectType?: string;
+      onpremisesUserPrincipalName?: string;
+      proxyAddresses?: string;
+      sourceAnchor?: string;
+      sourceOfAuthority?: string;
+      timeOccurred?: string;
+      userPrincipalName?: string;
+    };
+    existingObject?: {
+      displayName?: string;
+      distinguishedName?: string;
+      lastDirSyncTime?: string;
+      mail?: string;
+      objectGuid?: string;
+      objectType?: string;
+      onpremisesUserPrincipalName?: string;
+      proxyAddresses?: string;
+      sourceAnchor?: string;
+      sourceOfAuthority?: string;
+      timeOccurred?: string;
+      userPrincipalName?: string;
+    };
+    modifiedOrRemovedAttributeValue?: string;
+    runStepResultId?: string;
+    samAccountName?: string;
+    serverErrorDetail?: string;
+    serviceId?: string;
+    serviceMemberId?: string;
+    mergedEntityId?: string;
+    createdDate?: string;
+    exportErrorStatus?: number;
+  }[];
+}
 export const ServicesListExportErrorsV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3997,9 +5365,7 @@ export const ServicesListExportErrorsV2Output =
         }),
       ),
     ),
-  });
-export type ServicesListExportErrorsV2Output =
-  typeof ServicesListExportErrorsV2Output.Type;
+  }) as unknown as Schema.Codec<ServicesListExportErrorsV2Output>;
 
 // The operation
 /**
@@ -4016,6 +5382,9 @@ export const servicesListExportErrorsV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListExportStatusInput {
+  serviceName: string;
+}
 export const ServicesListExportStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4025,11 +5394,20 @@ export const ServicesListExportStatusInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exportstatus",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListExportStatusInput =
-  typeof ServicesListExportStatusInput.Type;
+  ) as unknown as Schema.Codec<ServicesListExportStatusInput>;
 
 // Output Schema
+export interface ServicesListExportStatusOutput {
+  nextLink?: string;
+  value?: {
+    serviceId?: string;
+    serviceMemberId?: string;
+    endTime?: string;
+    runStepResultId?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServicesListExportStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4045,9 +5423,7 @@ export const ServicesListExportStatusOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServicesListExportStatusOutput =
-  typeof ServicesListExportStatusOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListExportStatusOutput>;
 
 // The operation
 /**
@@ -4063,6 +5439,11 @@ export const servicesListExportStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListMetricMetadataInput {
+  serviceName: string;
+  $filter?: string;
+  perfCounter?: boolean;
+}
 export const ServicesListMetricMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4074,11 +5455,31 @@ export const ServicesListMetricMetadataInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListMetricMetadataInput =
-  typeof ServicesListMetricMetadataInput.Type;
+  ) as unknown as Schema.Codec<ServicesListMetricMetadataInput>;
 
 // Output Schema
+export interface ServicesListMetricMetadataOutput {
+  nextLink?: string;
+  value?: {
+    metricsProcessorClassName?: string;
+    metricName?: string;
+    groupings?: {
+      key?: string;
+      displayName?: string;
+      invisibleForUi?: boolean;
+    }[];
+    displayName?: string;
+    valueKind?: string;
+    minValue?: number;
+    maxValue?: number;
+    kind?: string;
+    isDefault?: boolean;
+    isPerfCounter?: boolean;
+    isDevOps?: boolean;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServicesListMetricMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4109,9 +5510,7 @@ export const ServicesListMetricMetadataOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServicesListMetricMetadataOutput =
-  typeof ServicesListMetricMetadataOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListMetricMetadataOutput>;
 
 // The operation
 /**
@@ -4129,6 +5528,11 @@ export const servicesListMetricMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListMetricsAverageInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+}
 export const ServicesListMetricsAverageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4140,11 +5544,15 @@ export const ServicesListMetricsAverageInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListMetricsAverageInput =
-  typeof ServicesListMetricsAverageInput.Type;
+  ) as unknown as Schema.Codec<ServicesListMetricsAverageInput>;
 
 // Output Schema
+export interface ServicesListMetricsAverageOutput {
+  nextLink?: string;
+  value?: { key?: string; value?: string }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServicesListMetricsAverageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4158,9 +5566,7 @@ export const ServicesListMetricsAverageOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServicesListMetricsAverageOutput =
-  typeof ServicesListMetricsAverageOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListMetricsAverageOutput>;
 
 // The operation
 /**
@@ -4178,6 +5584,11 @@ export const servicesListMetricsAverage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListMetricsSumInput {
+  serviceName: string;
+  metricName: string;
+  groupName: string;
+}
 export const ServicesListMetricsSumInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4189,11 +5600,15 @@ export const ServicesListMetricsSumInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListMetricsSumInput =
-  typeof ServicesListMetricsSumInput.Type;
+  ) as unknown as Schema.Codec<ServicesListMetricsSumInput>;
 
 // Output Schema
+export interface ServicesListMetricsSumOutput {
+  nextLink?: string;
+  value?: { key?: string; value?: string }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServicesListMetricsSumOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4207,9 +5622,7 @@ export const ServicesListMetricsSumOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServicesListMetricsSumOutput =
-  typeof ServicesListMetricsSumOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListMetricsSumOutput>;
 
 // The operation
 /**
@@ -4227,6 +5640,9 @@ export const servicesListMetricsSum = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListMonitoringConfigurationsInput {
+  serviceName: string;
+}
 export const ServicesListMonitoringConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4236,11 +5652,12 @@ export const ServicesListMonitoringConfigurationsInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/monitoringconfigurations",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListMonitoringConfigurationsInput =
-  typeof ServicesListMonitoringConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<ServicesListMonitoringConfigurationsInput>;
 
 // Output Schema
+export interface ServicesListMonitoringConfigurationsOutput {
+  value?: { key?: string; value?: string }[];
+}
 export const ServicesListMonitoringConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4251,9 +5668,7 @@ export const ServicesListMonitoringConfigurationsOutput =
         }),
       ),
     ),
-  });
-export type ServicesListMonitoringConfigurationsOutput =
-  typeof ServicesListMonitoringConfigurationsOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListMonitoringConfigurationsOutput>;
 
 // The operation
 /**
@@ -4268,6 +5683,12 @@ export const servicesListMonitoringConfigurations =
     outputSchema: ServicesListMonitoringConfigurationsOutput,
   }));
 // Input Schema
+export interface ServicesListPremiumInput {
+  $filter?: string;
+  serviceType?: string;
+  skipCount?: number;
+  takeCount?: number;
+}
 export const ServicesListPremiumInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -4280,10 +5701,40 @@ export const ServicesListPremiumInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/premiumCheck",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListPremiumInput = typeof ServicesListPremiumInput.Type;
+  ) as unknown as Schema.Codec<ServicesListPremiumInput>;
 
 // Output Schema
+export interface ServicesListPremiumOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    activeAlerts?: number;
+    additionalInformation?: string;
+    createdDate?: string;
+    customNotificationEmails?: string[];
+    disabled?: boolean;
+    displayName?: string;
+    health?: string;
+    lastDisabled?: string;
+    lastUpdated?: string;
+    monitoringConfigurationsComputed?: unknown;
+    monitoringConfigurationsCustomized?: unknown;
+    notificationEmailEnabled?: boolean;
+    notificationEmailEnabledForGlobalAdmins?: boolean;
+    notificationEmailsEnabledForGlobalAdmins?: boolean;
+    notificationEmails?: string[];
+    originalDisabledState?: boolean;
+    resolvedAlerts?: number;
+    serviceId?: string;
+    serviceName?: string;
+    signature?: string;
+    simpleProperties?: unknown;
+    tenantId?: string;
+    type?: string;
+  }[];
+  totalCount?: number;
+  continuationToken?: string;
+}
 export const ServicesListPremiumOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4325,8 +5776,7 @@ export const ServicesListPremiumOutput =
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ServicesListPremiumOutput = typeof ServicesListPremiumOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListPremiumOutput>;
 
 // The operation
 /**
@@ -4343,6 +5793,10 @@ export const servicesListPremium = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListPremiumOutput,
 }));
 // Input Schema
+export interface ServicesListUserBadPasswordReportInput {
+  serviceName: string;
+  dataSource?: string;
+}
 export const ServicesListUserBadPasswordReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4353,11 +5807,18 @@ export const ServicesListUserBadPasswordReportInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/badpassword/details/user",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesListUserBadPasswordReportInput =
-  typeof ServicesListUserBadPasswordReportInput.Type;
+  ) as unknown as Schema.Codec<ServicesListUserBadPasswordReportInput>;
 
 // Output Schema
+export interface ServicesListUserBadPasswordReportOutput {
+  value?: {
+    userId?: string;
+    ipAddress?: string;
+    lastUpdated?: string;
+    uniqueIpAddresses?: string;
+    totalErrorAttempts?: number;
+  }[];
+}
 export const ServicesListUserBadPasswordReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4371,9 +5832,7 @@ export const ServicesListUserBadPasswordReportOutput =
         }),
       ),
     ),
-  });
-export type ServicesListUserBadPasswordReportOutput =
-  typeof ServicesListUserBadPasswordReportOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListUserBadPasswordReportOutput>;
 
 // The operation
 /**
@@ -4389,6 +5848,32 @@ export const servicesListUserBadPasswordReport =
     outputSchema: ServicesListUserBadPasswordReportOutput,
   }));
 // Input Schema
+export interface ServicesUpdateInput {
+  serviceName: string;
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
@@ -4420,10 +5905,35 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
     apiVersion: "2014-01-01",
   }),
-);
-export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
+) as unknown as Schema.Codec<ServicesUpdateInput>;
 
 // Output Schema
+export interface ServicesUpdateOutput {
+  id?: string;
+  activeAlerts?: number;
+  additionalInformation?: string;
+  createdDate?: string;
+  customNotificationEmails?: string[];
+  disabled?: boolean;
+  displayName?: string;
+  health?: string;
+  lastDisabled?: string;
+  lastUpdated?: string;
+  monitoringConfigurationsComputed?: unknown;
+  monitoringConfigurationsCustomized?: unknown;
+  notificationEmailEnabled?: boolean;
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  notificationEmails?: string[];
+  originalDisabledState?: boolean;
+  resolvedAlerts?: number;
+  serviceId?: string;
+  serviceName?: string;
+  signature?: string;
+  simpleProperties?: unknown;
+  tenantId?: string;
+  type?: string;
+}
 export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
@@ -4449,8 +5959,7 @@ export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   simpleProperties: Schema.optional(Schema.Unknown),
   tenantId: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ServicesUpdateOutput>;
 
 // The operation
 /**
@@ -4464,6 +5973,11 @@ export const servicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
+export interface ServicesUpdateMonitoringConfigurationInput {
+  serviceName: string;
+  key?: string;
+  value?: string;
+}
 export const ServicesUpdateMonitoringConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4475,15 +5989,12 @@ export const ServicesUpdateMonitoringConfigurationInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/monitoringconfiguration",
       apiVersion: "2014-01-01",
     }),
-  );
-export type ServicesUpdateMonitoringConfigurationInput =
-  typeof ServicesUpdateMonitoringConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ServicesUpdateMonitoringConfigurationInput>;
 
 // Output Schema
+export type ServicesUpdateMonitoringConfigurationOutput = void;
 export const ServicesUpdateMonitoringConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesUpdateMonitoringConfigurationOutput =
-  typeof ServicesUpdateMonitoringConfigurationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesUpdateMonitoringConfigurationOutput>;
 
 // The operation
 /**
@@ -4498,6 +6009,15 @@ export const servicesUpdateMonitoringConfiguration =
     outputSchema: ServicesUpdateMonitoringConfigurationOutput,
   }));
 // Input Schema
+export interface UpdateIPAddressAggregateSettingsInput {
+  serviceName: string;
+  id?: string;
+  badPasswordAndExtranetLockoutCombinedDailyThreshold?: number;
+  badPasswordAndExtranetLockoutCombinedHourlyThreshold?: number;
+  extranetLockoutDailyThreshold?: number;
+  extranetLockoutHourlyThreshold?: number;
+  emailNotificationEnabled?: boolean;
+}
 export const UpdateIPAddressAggregateSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
@@ -4517,11 +6037,17 @@ export const UpdateIPAddressAggregateSettingsInput =
       path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregateSettings",
       apiVersion: "2014-01-01",
     }),
-  );
-export type UpdateIPAddressAggregateSettingsInput =
-  typeof UpdateIPAddressAggregateSettingsInput.Type;
+  ) as unknown as Schema.Codec<UpdateIPAddressAggregateSettingsInput>;
 
 // Output Schema
+export interface UpdateIPAddressAggregateSettingsOutput {
+  id?: string;
+  badPasswordAndExtranetLockoutCombinedDailyThreshold?: number;
+  badPasswordAndExtranetLockoutCombinedHourlyThreshold?: number;
+  extranetLockoutDailyThreshold?: number;
+  extranetLockoutHourlyThreshold?: number;
+  emailNotificationEnabled?: boolean;
+}
 export const UpdateIPAddressAggregateSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4534,9 +6060,7 @@ export const UpdateIPAddressAggregateSettingsOutput =
     extranetLockoutDailyThreshold: Schema.optional(Schema.Number),
     extranetLockoutHourlyThreshold: Schema.optional(Schema.Number),
     emailNotificationEnabled: Schema.optional(Schema.Boolean),
-  });
-export type UpdateIPAddressAggregateSettingsOutput =
-  typeof UpdateIPAddressAggregateSettingsOutput.Type;
+  }) as unknown as Schema.Codec<UpdateIPAddressAggregateSettingsOutput>;
 
 // The operation
 /**

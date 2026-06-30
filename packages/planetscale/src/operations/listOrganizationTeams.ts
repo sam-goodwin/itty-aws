@@ -9,6 +9,12 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface ListOrganizationTeamsInput {
+  organization: string;
+  q?: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListOrganizationTeamsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -17,10 +23,61 @@ export const ListOrganizationTeamsInput =
     per_page: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{organization}/teams" }),
-  );
-export type ListOrganizationTeamsInput = typeof ListOrganizationTeamsInput.Type;
+  ) as unknown as Schema.Codec<ListOrganizationTeamsInput>;
 
 // Output Schema
+export interface ListOrganizationTeamsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    display_name: string;
+    creator: { id: string; display_name: string; avatar_url: string };
+    members: {
+      id: string;
+      display_name: string;
+      name: string;
+      email: string;
+      avatar_url: string;
+      created_at: string;
+      updated_at: string;
+      two_factor_auth_configured: boolean;
+      default_organization?: {
+        id: string;
+        name: string;
+        created_at: string;
+        updated_at: string;
+        deleted_at: string | null;
+      } | null;
+      sso?: boolean | null;
+      managed?: boolean | null;
+      directory_managed?: boolean | null;
+      email_verified?: boolean | null;
+    }[];
+    databases: {
+      id: string;
+      name: string;
+      url: string;
+      branches_url: string;
+    }[];
+    analyst_databases: {
+      id: string;
+      name: string;
+      url: string;
+      branches_url: string;
+    }[];
+    name: string;
+    slug: string;
+    created_at: string;
+    updated_at: string;
+    description: string | null;
+    managed: boolean;
+  }[];
+}
 export const ListOrganizationTeamsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -89,9 +146,7 @@ export const ListOrganizationTeamsOutput =
         managed: Schema.Boolean,
       }),
     ),
-  });
-export type ListOrganizationTeamsOutput =
-  typeof ListOrganizationTeamsOutput.Type;
+  }) as unknown as Schema.Codec<ListOrganizationTeamsOutput>;
 
 // The operation
 /**

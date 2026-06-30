@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AvailableGroundStationsListByCapabilityInput {
+  subscriptionId: string;
+  capability: "EarthObservation" | "Communication";
+}
 export const AvailableGroundStationsListByCapabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19,11 +23,26 @@ export const AvailableGroundStationsListByCapabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/availableGroundStations",
       apiVersion: "2022-11-01",
     }),
-  );
-export type AvailableGroundStationsListByCapabilityInput =
-  typeof AvailableGroundStationsListByCapabilityInput.Type;
+  ) as unknown as Schema.Codec<AvailableGroundStationsListByCapabilityInput>;
 
 // Output Schema
+export interface AvailableGroundStationsListByCapabilityOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    location?: string;
+    type?: string;
+    properties: {
+      city?: string;
+      providerName?: string;
+      longitudeDegrees?: number;
+      latitudeDegrees?: number;
+      altitudeMeters?: number;
+      releaseMode?: "Preview" | "GA";
+    };
+  }[];
+  nextLink?: string;
+}
 export const AvailableGroundStationsListByCapabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -45,9 +64,7 @@ export const AvailableGroundStationsListByCapabilityOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvailableGroundStationsListByCapabilityOutput =
-  typeof AvailableGroundStationsListByCapabilityOutput.Type;
+  }) as unknown as Schema.Codec<AvailableGroundStationsListByCapabilityOutput>;
 
 // The operation
 /**
@@ -63,6 +80,53 @@ export const AvailableGroundStationsListByCapability =
     outputSchema: AvailableGroundStationsListByCapabilityOutput,
   }));
 // Input Schema
+export interface ContactProfilesCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  contactProfileName: string;
+  properties: {
+    provisioningState?:
+      | "creating"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "updating"
+      | "deleting";
+    minimumViableContactDuration?: string;
+    minimumElevationDegrees?: number;
+    autoTrackingConfiguration?: "disabled" | "xBand" | "sBand";
+    eventHubUri?: string;
+    networkConfiguration: { subnetId: string };
+    thirdPartyConfigurations?: {
+      providerName: string;
+      missionConfiguration: string;
+    }[];
+    links: {
+      name: string;
+      polarization: "RHCP" | "LHCP" | "linearVertical" | "linearHorizontal";
+      direction: "Uplink" | "Downlink";
+      gainOverTemperature?: number;
+      eirpdBW?: number;
+      channels: {
+        name: string;
+        centerFrequencyMHz: number;
+        bandwidthMHz: number;
+        endPoint: {
+          ipAddress: string;
+          endPointName: string;
+          port: string;
+          protocol: "TCP" | "UDP";
+        };
+        modulationConfiguration?: string;
+        demodulationConfiguration?: string;
+        encodingConfiguration?: string;
+        decodingConfiguration?: string;
+      }[];
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ContactProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -136,11 +200,22 @@ export const ContactProfilesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ContactProfilesCreateOrUpdateInput =
-  typeof ContactProfilesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ContactProfilesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ContactProfilesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContactProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -160,9 +235,7 @@ export const ContactProfilesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContactProfilesCreateOrUpdateOutput =
-  typeof ContactProfilesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ContactProfilesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -179,6 +252,11 @@ export const ContactProfilesCreateOrUpdate =
     outputSchema: ContactProfilesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ContactProfilesDeleteInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  contactProfileName: string;
+}
 export const ContactProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -190,14 +268,12 @@ export const ContactProfilesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ContactProfilesDeleteInput = typeof ContactProfilesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ContactProfilesDeleteInput>;
 
 // Output Schema
+export type ContactProfilesDeleteOutput = void;
 export const ContactProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContactProfilesDeleteOutput =
-  typeof ContactProfilesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContactProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -215,6 +291,11 @@ export const ContactProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContactProfilesGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  contactProfileName: string;
+}
 export const ContactProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -226,10 +307,22 @@ export const ContactProfilesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ContactProfilesGetInput = typeof ContactProfilesGetInput.Type;
+  ) as unknown as Schema.Codec<ContactProfilesGetInput>;
 
 // Output Schema
+export interface ContactProfilesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContactProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -249,8 +342,7 @@ export const ContactProfilesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContactProfilesGetOutput = typeof ContactProfilesGetOutput.Type;
+  }) as unknown as Schema.Codec<ContactProfilesGetOutput>;
 
 // The operation
 /**
@@ -266,6 +358,11 @@ export const ContactProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContactProfilesGetOutput,
 }));
 // Input Schema
+export interface ContactProfilesListInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  $skiptoken?: string;
+}
 export const ContactProfilesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -277,10 +374,25 @@ export const ContactProfilesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ContactProfilesListInput = typeof ContactProfilesListInput.Type;
+  ) as unknown as Schema.Codec<ContactProfilesListInput>;
 
 // Output Schema
+export interface ContactProfilesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ContactProfilesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -317,8 +429,7 @@ export const ContactProfilesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContactProfilesListOutput = typeof ContactProfilesListOutput.Type;
+  }) as unknown as Schema.Codec<ContactProfilesListOutput>;
 
 // The operation
 /**
@@ -334,6 +445,10 @@ export const ContactProfilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContactProfilesListOutput,
 }));
 // Input Schema
+export interface ContactProfilesListBySubscriptionInput {
+  subscriptionId: string;
+  $skiptoken?: string;
+}
 export const ContactProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -344,11 +459,25 @@ export const ContactProfilesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/contactProfiles",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ContactProfilesListBySubscriptionInput =
-  typeof ContactProfilesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ContactProfilesListBySubscriptionInput>;
 
 // Output Schema
+export interface ContactProfilesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ContactProfilesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -385,9 +514,7 @@ export const ContactProfilesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContactProfilesListBySubscriptionOutput =
-  typeof ContactProfilesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ContactProfilesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -403,6 +530,12 @@ export const ContactProfilesListBySubscription =
     outputSchema: ContactProfilesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ContactProfilesUpdateTagsInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  contactProfileName: string;
+  tags?: Record<string, string>;
+}
 export const ContactProfilesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -415,11 +548,22 @@ export const ContactProfilesUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ContactProfilesUpdateTagsInput =
-  typeof ContactProfilesUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<ContactProfilesUpdateTagsInput>;
 
 // Output Schema
+export interface ContactProfilesUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContactProfilesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -439,9 +583,7 @@ export const ContactProfilesUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContactProfilesUpdateTagsOutput =
-  typeof ContactProfilesUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<ContactProfilesUpdateTagsOutput>;
 
 // The operation
 /**
@@ -459,6 +601,42 @@ export const ContactProfilesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContactsCreateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+  contactName: string;
+  properties: {
+    provisioningState?:
+      | "creating"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "updating"
+      | "deleting";
+    status?:
+      | "scheduled"
+      | "cancelled"
+      | "succeeded"
+      | "failed"
+      | "providerCancelled";
+    reservationStartTime: string;
+    reservationEndTime: string;
+    rxStartTime?: string;
+    rxEndTime?: string;
+    txStartTime?: string;
+    txEndTime?: string;
+    errorMessage?: string;
+    maximumElevationDegrees?: number;
+    startAzimuthDegrees?: number;
+    endAzimuthDegrees?: number;
+    groundStationName: string;
+    startElevationDegrees?: number;
+    endElevationDegrees?: number;
+    antennaConfiguration?: { destinationIp?: string; sourceIps?: string[] };
+    contactProfile: { id: string };
+  };
+}
 export const ContactsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -513,10 +691,22 @@ export const ContactsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
     apiVersion: "2022-11-01",
   }),
-);
-export type ContactsCreateInput = typeof ContactsCreateInput.Type;
+) as unknown as Schema.Codec<ContactsCreateInput>;
 
 // Output Schema
+export interface ContactsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContactsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -535,8 +725,7 @@ export const ContactsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ContactsCreateOutput = typeof ContactsCreateOutput.Type;
+}) as unknown as Schema.Codec<ContactsCreateOutput>;
 
 // The operation
 /**
@@ -553,6 +742,12 @@ export const ContactsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContactsCreateOutput,
 }));
 // Input Schema
+export interface ContactsDeleteInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+  contactName: string;
+}
 export const ContactsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -564,12 +759,12 @@ export const ContactsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
     apiVersion: "2022-11-01",
   }),
-);
-export type ContactsDeleteInput = typeof ContactsDeleteInput.Type;
+) as unknown as Schema.Codec<ContactsDeleteInput>;
 
 // Output Schema
-export const ContactsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContactsDeleteOutput = typeof ContactsDeleteOutput.Type;
+export type ContactsDeleteOutput = void;
+export const ContactsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContactsDeleteOutput>;
 
 // The operation
 /**
@@ -586,6 +781,12 @@ export const ContactsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContactsDeleteOutput,
 }));
 // Input Schema
+export interface ContactsGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+  contactName: string;
+}
 export const ContactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -597,10 +798,22 @@ export const ContactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
     apiVersion: "2022-11-01",
   }),
-);
-export type ContactsGetInput = typeof ContactsGetInput.Type;
+) as unknown as Schema.Codec<ContactsGetInput>;
 
 // Output Schema
+export interface ContactsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -619,8 +832,7 @@ export const ContactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ContactsGetOutput = typeof ContactsGetOutput.Type;
+}) as unknown as Schema.Codec<ContactsGetOutput>;
 
 // The operation
 /**
@@ -637,6 +849,12 @@ export const ContactsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContactsGetOutput,
 }));
 // Input Schema
+export interface ContactsListInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+  $skiptoken?: string;
+}
 export const ContactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -648,10 +866,25 @@ export const ContactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts",
     apiVersion: "2022-11-01",
   }),
-);
-export type ContactsListInput = typeof ContactsListInput.Type;
+) as unknown as Schema.Codec<ContactsListInput>;
 
 // Output Schema
+export interface ContactsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ContactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -687,8 +920,7 @@ export const ContactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ContactsListOutput = typeof ContactsListOutput.Type;
+}) as unknown as Schema.Codec<ContactsListOutput>;
 
 // The operation
 /**
@@ -705,6 +937,14 @@ export const ContactsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContactsListOutput,
 }));
 // Input Schema
+export interface EdgeSitesCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  edgeSiteName: string;
+  properties: { globalCommunicationsSite: { id: string } };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const EdgeSitesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -723,11 +963,22 @@ export const EdgeSitesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type EdgeSitesCreateOrUpdateInput =
-  typeof EdgeSitesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EdgeSitesCreateOrUpdateInput>;
 
 // Output Schema
+export interface EdgeSitesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EdgeSitesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -747,9 +998,7 @@ export const EdgeSitesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EdgeSitesCreateOrUpdateOutput =
-  typeof EdgeSitesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EdgeSitesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -767,6 +1016,11 @@ export const EdgeSitesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EdgeSitesDeleteInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  edgeSiteName: string;
+}
 export const EdgeSitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -777,12 +1031,12 @@ export const EdgeSitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type EdgeSitesDeleteInput = typeof EdgeSitesDeleteInput.Type;
+) as unknown as Schema.Codec<EdgeSitesDeleteInput>;
 
 // Output Schema
-export const EdgeSitesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EdgeSitesDeleteOutput = typeof EdgeSitesDeleteOutput.Type;
+export type EdgeSitesDeleteOutput = void;
+export const EdgeSitesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeSitesDeleteOutput>;
 
 // The operation
 /**
@@ -798,6 +1052,11 @@ export const EdgeSitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeSitesDeleteOutput,
 }));
 // Input Schema
+export interface EdgeSitesGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  edgeSiteName: string;
+}
 export const EdgeSitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -808,10 +1067,22 @@ export const EdgeSitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type EdgeSitesGetInput = typeof EdgeSitesGetInput.Type;
+) as unknown as Schema.Codec<EdgeSitesGetInput>;
 
 // Output Schema
+export interface EdgeSitesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EdgeSitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -830,8 +1101,7 @@ export const EdgeSitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EdgeSitesGetOutput = typeof EdgeSitesGetOutput.Type;
+}) as unknown as Schema.Codec<EdgeSitesGetOutput>;
 
 // The operation
 /**
@@ -847,6 +1117,11 @@ export const EdgeSitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeSitesGetOutput,
 }));
 // Input Schema
+export interface EdgeSitesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skiptoken?: string;
+}
 export const EdgeSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -857,10 +1132,25 @@ export const EdgeSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites",
     apiVersion: "2024-03-01",
   }),
-);
-export type EdgeSitesListInput = typeof EdgeSitesListInput.Type;
+) as unknown as Schema.Codec<EdgeSitesListInput>;
 
 // Output Schema
+export interface EdgeSitesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EdgeSitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -896,8 +1186,7 @@ export const EdgeSitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type EdgeSitesListOutput = typeof EdgeSitesListOutput.Type;
+}) as unknown as Schema.Codec<EdgeSitesListOutput>;
 
 // The operation
 /**
@@ -913,6 +1202,10 @@ export const EdgeSitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeSitesListOutput,
 }));
 // Input Schema
+export interface EdgeSitesListBySubscriptionInput {
+  subscriptionId: string;
+  $skiptoken?: string;
+}
 export const EdgeSitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -923,11 +1216,25 @@ export const EdgeSitesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/edgeSites",
       apiVersion: "2024-03-01",
     }),
-  );
-export type EdgeSitesListBySubscriptionInput =
-  typeof EdgeSitesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<EdgeSitesListBySubscriptionInput>;
 
 // Output Schema
+export interface EdgeSitesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EdgeSitesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -964,9 +1271,7 @@ export const EdgeSitesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EdgeSitesListBySubscriptionOutput =
-  typeof EdgeSitesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<EdgeSitesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -983,6 +1288,11 @@ export const EdgeSitesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EdgeSitesListL2ConnectionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  edgeSiteName: string;
+}
 export const EdgeSitesListL2ConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -994,11 +1304,13 @@ export const EdgeSitesListL2ConnectionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}/listL2Connections",
       apiVersion: "2024-03-01",
     }),
-  );
-export type EdgeSitesListL2ConnectionsInput =
-  typeof EdgeSitesListL2ConnectionsInput.Type;
+  ) as unknown as Schema.Codec<EdgeSitesListL2ConnectionsInput>;
 
 // Output Schema
+export interface EdgeSitesListL2ConnectionsOutput {
+  value?: { id?: string }[];
+  nextLink?: string;
+}
 export const EdgeSitesListL2ConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1009,9 +1321,7 @@ export const EdgeSitesListL2ConnectionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EdgeSitesListL2ConnectionsOutput =
-  typeof EdgeSitesListL2ConnectionsOutput.Type;
+  }) as unknown as Schema.Codec<EdgeSitesListL2ConnectionsOutput>;
 
 // The operation
 /**
@@ -1029,6 +1339,12 @@ export const EdgeSitesListL2Connections = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EdgeSitesUpdateTagsInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  edgeSiteName: string;
+  tags?: Record<string, string>;
+}
 export const EdgeSitesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1041,10 +1357,22 @@ export const EdgeSitesUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type EdgeSitesUpdateTagsInput = typeof EdgeSitesUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<EdgeSitesUpdateTagsInput>;
 
 // Output Schema
+export interface EdgeSitesUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EdgeSitesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1064,8 +1392,7 @@ export const EdgeSitesUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EdgeSitesUpdateTagsOutput = typeof EdgeSitesUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<EdgeSitesUpdateTagsOutput>;
 
 // The operation
 /**
@@ -1081,6 +1408,9 @@ export const EdgeSitesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeSitesUpdateTagsOutput,
 }));
 // Input Schema
+export interface GlobalCommunicationsSitesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const GlobalCommunicationsSitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1090,11 +1420,25 @@ export const GlobalCommunicationsSitesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/globalCommunicationsSites",
       apiVersion: "2024-03-01",
     }),
-  );
-export type GlobalCommunicationsSitesListBySubscriptionInput =
-  typeof GlobalCommunicationsSitesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<GlobalCommunicationsSitesListBySubscriptionInput>;
 
 // Output Schema
+export interface GlobalCommunicationsSitesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GlobalCommunicationsSitesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1131,9 +1475,7 @@ export const GlobalCommunicationsSitesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GlobalCommunicationsSitesListBySubscriptionOutput =
-  typeof GlobalCommunicationsSitesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<GlobalCommunicationsSitesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1148,6 +1490,23 @@ export const GlobalCommunicationsSitesListBySubscription =
     outputSchema: GlobalCommunicationsSitesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface GroundStationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  groundStationName: string;
+  properties?: {
+    city?: string;
+    capabilities: ("EarthObservation" | "Communication")[];
+    providerName?: string;
+    longitudeDegrees?: number;
+    latitudeDegrees?: number;
+    altitudeMeters?: number;
+    releaseMode?: "Preview" | "GA";
+    globalCommunicationsSite: { id: string };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const GroundStationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1177,11 +1536,22 @@ export const GroundStationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type GroundStationsCreateOrUpdateInput =
-  typeof GroundStationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroundStationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface GroundStationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroundStationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1201,9 +1571,7 @@ export const GroundStationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroundStationsCreateOrUpdateOutput =
-  typeof GroundStationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroundStationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1220,6 +1588,11 @@ export const GroundStationsCreateOrUpdate =
     outputSchema: GroundStationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GroundStationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  groundStationName: string;
+}
 export const GroundStationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1231,13 +1604,12 @@ export const GroundStationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type GroundStationsDeleteInput = typeof GroundStationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<GroundStationsDeleteInput>;
 
 // Output Schema
+export type GroundStationsDeleteOutput = void;
 export const GroundStationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroundStationsDeleteOutput = typeof GroundStationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroundStationsDeleteOutput>;
 
 // The operation
 /**
@@ -1255,6 +1627,11 @@ export const GroundStationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroundStationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  groundStationName: string;
+}
 export const GroundStationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1267,10 +1644,22 @@ export const GroundStationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type GroundStationsGetInput = typeof GroundStationsGetInput.Type;
+) as unknown as Schema.Codec<GroundStationsGetInput>;
 
 // Output Schema
+export interface GroundStationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroundStationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1290,8 +1679,7 @@ export const GroundStationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroundStationsGetOutput = typeof GroundStationsGetOutput.Type;
+  }) as unknown as Schema.Codec<GroundStationsGetOutput>;
 
 // The operation
 /**
@@ -1307,6 +1695,11 @@ export const GroundStationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GroundStationsGetOutput,
 }));
 // Input Schema
+export interface GroundStationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skiptoken?: string;
+}
 export const GroundStationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1318,10 +1711,25 @@ export const GroundStationsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations",
       apiVersion: "2024-03-01",
     }),
-  );
-export type GroundStationsListInput = typeof GroundStationsListInput.Type;
+  ) as unknown as Schema.Codec<GroundStationsListInput>;
 
 // Output Schema
+export interface GroundStationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroundStationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1358,8 +1766,7 @@ export const GroundStationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroundStationsListOutput = typeof GroundStationsListOutput.Type;
+  }) as unknown as Schema.Codec<GroundStationsListOutput>;
 
 // The operation
 /**
@@ -1375,6 +1782,10 @@ export const GroundStationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GroundStationsListOutput,
 }));
 // Input Schema
+export interface GroundStationsListBySubscriptionInput {
+  subscriptionId: string;
+  $skiptoken?: string;
+}
 export const GroundStationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1385,11 +1796,25 @@ export const GroundStationsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/groundStations",
       apiVersion: "2024-03-01",
     }),
-  );
-export type GroundStationsListBySubscriptionInput =
-  typeof GroundStationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<GroundStationsListBySubscriptionInput>;
 
 // Output Schema
+export interface GroundStationsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroundStationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1426,9 +1851,7 @@ export const GroundStationsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroundStationsListBySubscriptionOutput =
-  typeof GroundStationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<GroundStationsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1444,6 +1867,11 @@ export const GroundStationsListBySubscription =
     outputSchema: GroundStationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface GroundStationsListL2ConnectionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  groundStationName: string;
+}
 export const GroundStationsListL2ConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1455,11 +1883,13 @@ export const GroundStationsListL2ConnectionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}/listL2Connections",
       apiVersion: "2024-03-01",
     }),
-  );
-export type GroundStationsListL2ConnectionsInput =
-  typeof GroundStationsListL2ConnectionsInput.Type;
+  ) as unknown as Schema.Codec<GroundStationsListL2ConnectionsInput>;
 
 // Output Schema
+export interface GroundStationsListL2ConnectionsOutput {
+  value?: { id?: string }[];
+  nextLink?: string;
+}
 export const GroundStationsListL2ConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1470,9 +1900,7 @@ export const GroundStationsListL2ConnectionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroundStationsListL2ConnectionsOutput =
-  typeof GroundStationsListL2ConnectionsOutput.Type;
+  }) as unknown as Schema.Codec<GroundStationsListL2ConnectionsOutput>;
 
 // The operation
 /**
@@ -1489,6 +1917,12 @@ export const GroundStationsListL2Connections =
     outputSchema: GroundStationsListL2ConnectionsOutput,
   }));
 // Input Schema
+export interface GroundStationsUpdateTagsInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  groundStationName: string;
+  tags?: Record<string, string>;
+}
 export const GroundStationsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1501,11 +1935,22 @@ export const GroundStationsUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type GroundStationsUpdateTagsInput =
-  typeof GroundStationsUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<GroundStationsUpdateTagsInput>;
 
 // Output Schema
+export interface GroundStationsUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroundStationsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1525,9 +1970,7 @@ export const GroundStationsUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroundStationsUpdateTagsOutput =
-  typeof GroundStationsUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<GroundStationsUpdateTagsOutput>;
 
 // The operation
 /**
@@ -1545,6 +1988,28 @@ export const GroundStationsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L2ConnectionsCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  l2ConnectionName: string;
+  properties: {
+    provisioningState?:
+      | "Creating"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Updating"
+      | "Deleting";
+    circuitId?: string;
+    edgeSite: { id: string };
+    edgeSitePartnerRouter: { name: string };
+    groundStation: { id: string };
+    groundStationPartnerRouter: { name: string };
+    vlanId: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const L2ConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1584,11 +2049,22 @@ export const L2ConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type L2ConnectionsCreateOrUpdateInput =
-  typeof L2ConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<L2ConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface L2ConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2ConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1608,9 +2084,7 @@ export const L2ConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L2ConnectionsCreateOrUpdateOutput =
-  typeof L2ConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<L2ConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1628,6 +2102,11 @@ export const L2ConnectionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L2ConnectionsDeleteInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  l2ConnectionName: string;
+}
 export const L2ConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1639,13 +2118,12 @@ export const L2ConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type L2ConnectionsDeleteInput = typeof L2ConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<L2ConnectionsDeleteInput>;
 
 // Output Schema
+export type L2ConnectionsDeleteOutput = void;
 export const L2ConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type L2ConnectionsDeleteOutput = typeof L2ConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L2ConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1661,6 +2139,11 @@ export const L2ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: L2ConnectionsDeleteOutput,
 }));
 // Input Schema
+export interface L2ConnectionsGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  l2ConnectionName: string;
+}
 export const L2ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1671,10 +2154,22 @@ export const L2ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
     apiVersion: "2024-03-01",
   }),
-);
-export type L2ConnectionsGetInput = typeof L2ConnectionsGetInput.Type;
+) as unknown as Schema.Codec<L2ConnectionsGetInput>;
 
 // Output Schema
+export interface L2ConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1695,8 +2190,7 @@ export const L2ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type L2ConnectionsGetOutput = typeof L2ConnectionsGetOutput.Type;
+) as unknown as Schema.Codec<L2ConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1712,6 +2206,11 @@ export const L2ConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: L2ConnectionsGetOutput,
 }));
 // Input Schema
+export interface L2ConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skiptoken?: string;
+}
 export const L2ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1724,10 +2223,25 @@ export const L2ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections",
     apiVersion: "2024-03-01",
   }),
-);
-export type L2ConnectionsListInput = typeof L2ConnectionsListInput.Type;
+) as unknown as Schema.Codec<L2ConnectionsListInput>;
 
 // Output Schema
+export interface L2ConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L2ConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1764,8 +2278,7 @@ export const L2ConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L2ConnectionsListOutput = typeof L2ConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<L2ConnectionsListOutput>;
 
 // The operation
 /**
@@ -1781,6 +2294,10 @@ export const L2ConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: L2ConnectionsListOutput,
 }));
 // Input Schema
+export interface L2ConnectionsListBySubscriptionInput {
+  subscriptionId: string;
+  $skiptoken?: string;
+}
 export const L2ConnectionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1791,11 +2308,25 @@ export const L2ConnectionsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/l2Connections",
       apiVersion: "2024-03-01",
     }),
-  );
-export type L2ConnectionsListBySubscriptionInput =
-  typeof L2ConnectionsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<L2ConnectionsListBySubscriptionInput>;
 
 // Output Schema
+export interface L2ConnectionsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L2ConnectionsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1832,9 +2363,7 @@ export const L2ConnectionsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L2ConnectionsListBySubscriptionOutput =
-  typeof L2ConnectionsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<L2ConnectionsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1850,6 +2379,12 @@ export const L2ConnectionsListBySubscription =
     outputSchema: L2ConnectionsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface L2ConnectionsUpdateTagsInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  l2ConnectionName: string;
+  tags?: Record<string, string>;
+}
 export const L2ConnectionsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1862,11 +2397,22 @@ export const L2ConnectionsUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
       apiVersion: "2024-03-01",
     }),
-  );
-export type L2ConnectionsUpdateTagsInput =
-  typeof L2ConnectionsUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<L2ConnectionsUpdateTagsInput>;
 
 // Output Schema
+export interface L2ConnectionsUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2ConnectionsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1886,9 +2432,7 @@ export const L2ConnectionsUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L2ConnectionsUpdateTagsOutput =
-  typeof L2ConnectionsUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<L2ConnectionsUpdateTagsOutput>;
 
 // The operation
 /**
@@ -1906,6 +2450,7 @@ export const L2ConnectionsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1914,10 +2459,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Orbital/operations",
     apiVersion: "2022-11-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1940,8 +2499,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1954,6 +2512,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationsResultsGetInput {
+  subscriptionId: string;
+  location: string;
+  operationId: string;
+}
 export const OperationsResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1965,10 +2528,21 @@ export const OperationsResultsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/locations/{location}/operationResults/{operationId}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type OperationsResultsGetInput = typeof OperationsResultsGetInput.Type;
+  ) as unknown as Schema.Codec<OperationsResultsGetInput>;
 
 // Output Schema
+export interface OperationsResultsGetOutput {
+  id?: string;
+  name?: string;
+  status?: "Succeeded" | "Canceled" | "Failed" | "Running";
+  startTime?: string;
+  endTime?: string;
+  percentComplete?: number;
+  value?: {}[];
+  nextLink?: string;
+  properties?: {};
+  error?: { code?: string; message?: string };
+}
 export const OperationsResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1988,8 +2562,7 @@ export const OperationsResultsGetOutput =
         message: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OperationsResultsGetOutput = typeof OperationsResultsGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationsResultsGetOutput>;
 
 // The operation
 /**
@@ -2007,6 +2580,34 @@ export const OperationsResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SpacecraftsCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+  properties: {
+    provisioningState?:
+      | "creating"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "updating"
+      | "deleting";
+    noradId?: string;
+    titleLine: string;
+    tleLine1: string;
+    tleLine2: string;
+    links: {
+      name: string;
+      centerFrequencyMHz: number;
+      bandwidthMHz: number;
+      direction: "Uplink" | "Downlink";
+      polarization: "RHCP" | "LHCP" | "linearVertical" | "linearHorizontal";
+      authorizations?: { groundStation: string; expirationDate: string }[];
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SpacecraftsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2058,11 +2659,22 @@ export const SpacecraftsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type SpacecraftsCreateOrUpdateInput =
-  typeof SpacecraftsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SpacecraftsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SpacecraftsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SpacecraftsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2082,9 +2694,7 @@ export const SpacecraftsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SpacecraftsCreateOrUpdateOutput =
-  typeof SpacecraftsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SpacecraftsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2102,6 +2712,11 @@ export const SpacecraftsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SpacecraftsDeleteInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+}
 export const SpacecraftsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2114,12 +2729,12 @@ export const SpacecraftsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
     apiVersion: "2022-11-01",
   }),
-);
-export type SpacecraftsDeleteInput = typeof SpacecraftsDeleteInput.Type;
+) as unknown as Schema.Codec<SpacecraftsDeleteInput>;
 
 // Output Schema
-export const SpacecraftsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SpacecraftsDeleteOutput = typeof SpacecraftsDeleteOutput.Type;
+export type SpacecraftsDeleteOutput = void;
+export const SpacecraftsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SpacecraftsDeleteOutput>;
 
 // The operation
 /**
@@ -2135,6 +2750,11 @@ export const SpacecraftsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SpacecraftsDeleteOutput,
 }));
 // Input Schema
+export interface SpacecraftsGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+}
 export const SpacecraftsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2145,10 +2765,22 @@ export const SpacecraftsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
     apiVersion: "2022-11-01",
   }),
-);
-export type SpacecraftsGetInput = typeof SpacecraftsGetInput.Type;
+) as unknown as Schema.Codec<SpacecraftsGetInput>;
 
 // Output Schema
+export interface SpacecraftsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SpacecraftsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2167,8 +2799,7 @@ export const SpacecraftsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SpacecraftsGetOutput = typeof SpacecraftsGetOutput.Type;
+}) as unknown as Schema.Codec<SpacecraftsGetOutput>;
 
 // The operation
 /**
@@ -2184,6 +2815,11 @@ export const SpacecraftsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SpacecraftsGetOutput,
 }));
 // Input Schema
+export interface SpacecraftsListInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  $skiptoken?: string;
+}
 export const SpacecraftsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2194,10 +2830,25 @@ export const SpacecraftsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts",
     apiVersion: "2022-11-01",
   }),
-);
-export type SpacecraftsListInput = typeof SpacecraftsListInput.Type;
+) as unknown as Schema.Codec<SpacecraftsListInput>;
 
 // Output Schema
+export interface SpacecraftsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SpacecraftsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2233,8 +2884,7 @@ export const SpacecraftsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SpacecraftsListOutput = typeof SpacecraftsListOutput.Type;
+}) as unknown as Schema.Codec<SpacecraftsListOutput>;
 
 // The operation
 /**
@@ -2250,6 +2900,15 @@ export const SpacecraftsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SpacecraftsListOutput,
 }));
 // Input Schema
+export interface SpacecraftsListAvailableContactsInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+  contactProfile: { id: string };
+  groundStationName: string;
+  startTime: string;
+  endTime: string;
+}
 export const SpacecraftsListAvailableContactsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2267,11 +2926,27 @@ export const SpacecraftsListAvailableContactsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/listAvailableContacts",
       apiVersion: "2022-11-01",
     }),
-  );
-export type SpacecraftsListAvailableContactsInput =
-  typeof SpacecraftsListAvailableContactsInput.Type;
+  ) as unknown as Schema.Codec<SpacecraftsListAvailableContactsInput>;
 
 // Output Schema
+export interface SpacecraftsListAvailableContactsOutput {
+  value?: {
+    spacecraft?: { id: string };
+    groundStationName?: string;
+    properties?: {
+      maximumElevationDegrees?: number;
+      txStartTime?: string;
+      txEndTime?: string;
+      rxStartTime?: string;
+      rxEndTime?: string;
+      startAzimuthDegrees?: number;
+      endAzimuthDegrees?: number;
+      startElevationDegrees?: number;
+      endElevationDegrees?: number;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SpacecraftsListAvailableContactsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2300,9 +2975,7 @@ export const SpacecraftsListAvailableContactsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SpacecraftsListAvailableContactsOutput =
-  typeof SpacecraftsListAvailableContactsOutput.Type;
+  }) as unknown as Schema.Codec<SpacecraftsListAvailableContactsOutput>;
 
 // The operation
 /**
@@ -2319,6 +2992,10 @@ export const SpacecraftsListAvailableContacts =
     outputSchema: SpacecraftsListAvailableContactsOutput,
   }));
 // Input Schema
+export interface SpacecraftsListBySubscriptionInput {
+  subscriptionId: string;
+  $skiptoken?: string;
+}
 export const SpacecraftsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2329,11 +3006,25 @@ export const SpacecraftsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/spacecrafts",
       apiVersion: "2022-11-01",
     }),
-  );
-export type SpacecraftsListBySubscriptionInput =
-  typeof SpacecraftsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SpacecraftsListBySubscriptionInput>;
 
 // Output Schema
+export interface SpacecraftsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SpacecraftsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2370,9 +3061,7 @@ export const SpacecraftsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SpacecraftsListBySubscriptionOutput =
-  typeof SpacecraftsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SpacecraftsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2388,6 +3077,12 @@ export const SpacecraftsListBySubscription =
     outputSchema: SpacecraftsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SpacecraftsUpdateTagsInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  spacecraftName: string;
+  tags?: Record<string, string>;
+}
 export const SpacecraftsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2400,10 +3095,22 @@ export const SpacecraftsUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type SpacecraftsUpdateTagsInput = typeof SpacecraftsUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<SpacecraftsUpdateTagsInput>;
 
 // Output Schema
+export interface SpacecraftsUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SpacecraftsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2423,9 +3130,7 @@ export const SpacecraftsUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SpacecraftsUpdateTagsOutput =
-  typeof SpacecraftsUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<SpacecraftsUpdateTagsOutput>;
 
 // The operation
 /**

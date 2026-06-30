@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansHasSpansRetrieveInput {
+  project_id: string;
+}
 export const TracingSpansHasSpansRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,17 +14,16 @@ export const TracingSpansHasSpansRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tracing/spans/has_spans/",
     }),
-  );
-export type TracingSpansHasSpansRetrieveInput =
-  typeof TracingSpansHasSpansRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansHasSpansRetrieveInput>;
 
 // Output Schema
+export interface TracingSpansHasSpansRetrieveOutput {
+  hasSpans: boolean;
+}
 export const TracingSpansHasSpansRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasSpans: Schema.Boolean,
-  });
-export type TracingSpansHasSpansRetrieveOutput =
-  typeof TracingSpansHasSpansRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<TracingSpansHasSpansRetrieveOutput>;
 
 // The operation
 /**

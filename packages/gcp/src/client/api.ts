@@ -160,5 +160,17 @@ const _API = makeAPI<Credentials>({
   retry: Retry as any,
 });
 
-export const make = _API.make;
-export const makePaginated = _API.makePaginated;
+/**
+ * Operation builders are deliberately typed as `(...args: any[]) => any`.
+ *
+ * Every generated `export const op: API.OperationMethod<Req, Res, Err, R> =
+ * API.make(() => ({...}))` carries an explicit annotation, so the real method
+ * type is fixed by that annotation. Letting `make`/`makePaginated` infer their
+ * return type instead would force the compiler to instantiate the heavy
+ * `OperationMethod` / `PaginatedOperationMethod` generic once per operation
+ * (~13k operations) and then re-check it against the annotation — pure waste
+ * that dominated this package's type-check cost. Collapsing the builder return
+ * to `any` removes that instantiation entirely; runtime is unchanged.
+ */
+export const make: (...args: any[]) => any = _API.make as any;
+export const makePaginated: (...args: any[]) => any = _API.makePaginated as any;

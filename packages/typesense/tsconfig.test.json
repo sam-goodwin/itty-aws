@@ -1,16 +1,15 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": [
-    "src/**/*.ts",
     "test/**/*.ts"
   ],
   "compilerOptions": {
-    "rootDir": ".",
     "noEmit": true,
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
+    "rewriteRelativeImportExtensions": false
+  },
+  "references": [
+    {
+      "path": "./tsconfig.json"
     }
-  }
+  ]
 }

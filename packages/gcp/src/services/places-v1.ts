@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleTypeTimeZone {
   id?: string;
 }
 
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
+export const GoogleTypeTimeZone: Schema.Codec<GoogleTypeTimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface GoogleTypeLocalizedText {
   languageCode?: string;
 }
 
-export const GoogleTypeLocalizedText: Schema.Schema<GoogleTypeLocalizedText> =
+export const GoogleTypeLocalizedText: Schema.Codec<GoogleTypeLocalizedText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -73,7 +73,7 @@ export interface GoogleMapsPlacesV1AddressDescriptorLandmark {
   displayName?: GoogleTypeLocalizedText;
 }
 
-export const GoogleMapsPlacesV1AddressDescriptorLandmark: Schema.Schema<GoogleMapsPlacesV1AddressDescriptorLandmark> =
+export const GoogleMapsPlacesV1AddressDescriptorLandmark: Schema.Codec<GoogleMapsPlacesV1AddressDescriptorLandmark> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     spatialRelationship: Schema.optional(Schema.String),
@@ -100,7 +100,7 @@ export interface GoogleMapsPlacesV1AddressDescriptorArea {
   displayName?: GoogleTypeLocalizedText;
 }
 
-export const GoogleMapsPlacesV1AddressDescriptorArea: Schema.Schema<GoogleMapsPlacesV1AddressDescriptorArea> =
+export const GoogleMapsPlacesV1AddressDescriptorArea: Schema.Codec<GoogleMapsPlacesV1AddressDescriptorArea> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     containment: Schema.optional(Schema.String),
@@ -115,7 +115,7 @@ export interface GoogleMapsPlacesV1AddressDescriptor {
   areas?: ReadonlyArray<GoogleMapsPlacesV1AddressDescriptorArea>;
 }
 
-export const GoogleMapsPlacesV1AddressDescriptor: Schema.Schema<GoogleMapsPlacesV1AddressDescriptor> =
+export const GoogleMapsPlacesV1AddressDescriptor: Schema.Codec<GoogleMapsPlacesV1AddressDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     landmarks: Schema.optional(
       Schema.Array(GoogleMapsPlacesV1AddressDescriptorLandmark),
@@ -132,7 +132,7 @@ export interface GoogleMapsPlacesV1TransitIcon {
   nameIncluded?: boolean;
 }
 
-export const GoogleMapsPlacesV1TransitIcon: Schema.Schema<GoogleMapsPlacesV1TransitIcon> =
+export const GoogleMapsPlacesV1TransitIcon: Schema.Codec<GoogleMapsPlacesV1TransitIcon> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     nameIncluded: Schema.optional(Schema.Boolean),
@@ -182,7 +182,7 @@ export interface GoogleMapsPlacesV1TransitLine {
     | (string & {});
 }
 
-export const GoogleMapsPlacesV1TransitLine: Schema.Schema<GoogleMapsPlacesV1TransitLine> =
+export const GoogleMapsPlacesV1TransitLine: Schema.Codec<GoogleMapsPlacesV1TransitLine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(GoogleTypeLocalizedText),
     id: Schema.optional(Schema.String),
@@ -208,7 +208,7 @@ export interface GoogleMapsPlacesV1TransitAgency {
   lines?: ReadonlyArray<GoogleMapsPlacesV1TransitLine>;
 }
 
-export const GoogleMapsPlacesV1TransitAgency: Schema.Schema<GoogleMapsPlacesV1TransitAgency> =
+export const GoogleMapsPlacesV1TransitAgency: Schema.Codec<GoogleMapsPlacesV1TransitAgency> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     displayName: Schema.optional(GoogleTypeLocalizedText),
@@ -224,7 +224,7 @@ export interface GoogleMapsPlacesV1PlaceContainingPlace {
   id?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceContainingPlace: Schema.Schema<GoogleMapsPlacesV1PlaceContainingPlace> =
+export const GoogleMapsPlacesV1PlaceContainingPlace: Schema.Codec<GoogleMapsPlacesV1PlaceContainingPlace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -237,7 +237,7 @@ export interface GoogleTypeLatLng {
   longitude?: number;
 }
 
-export const GoogleTypeLatLng: Schema.Schema<GoogleTypeLatLng> =
+export const GoogleTypeLatLng: Schema.Codec<GoogleTypeLatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -254,7 +254,7 @@ export interface GoogleMapsPlacesV1RouteModifiers {
   avoidTolls?: boolean;
 }
 
-export const GoogleMapsPlacesV1RouteModifiers: Schema.Schema<GoogleMapsPlacesV1RouteModifiers> =
+export const GoogleMapsPlacesV1RouteModifiers: Schema.Codec<GoogleMapsPlacesV1RouteModifiers> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     avoidFerries: Schema.optional(Schema.Boolean),
     avoidIndoor: Schema.optional(Schema.Boolean),
@@ -284,7 +284,7 @@ export interface GoogleMapsPlacesV1RoutingParameters {
     | (string & {});
 }
 
-export const GoogleMapsPlacesV1RoutingParameters: Schema.Schema<GoogleMapsPlacesV1RoutingParameters> =
+export const GoogleMapsPlacesV1RoutingParameters: Schema.Codec<GoogleMapsPlacesV1RoutingParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     origin: Schema.optional(GoogleTypeLatLng),
     routeModifiers: Schema.optional(GoogleMapsPlacesV1RouteModifiers),
@@ -303,7 +303,7 @@ export interface GoogleMapsPlacesV1PlacePaymentOptions {
   acceptsCashOnly?: boolean;
 }
 
-export const GoogleMapsPlacesV1PlacePaymentOptions: Schema.Schema<GoogleMapsPlacesV1PlacePaymentOptions> =
+export const GoogleMapsPlacesV1PlacePaymentOptions: Schema.Codec<GoogleMapsPlacesV1PlacePaymentOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acceptsCreditCards: Schema.optional(Schema.Boolean),
     acceptsNfc: Schema.optional(Schema.Boolean),
@@ -318,7 +318,7 @@ export interface GoogleMapsPlacesV1Circle {
   radius?: number;
 }
 
-export const GoogleMapsPlacesV1Circle: Schema.Schema<GoogleMapsPlacesV1Circle> =
+export const GoogleMapsPlacesV1Circle: Schema.Codec<GoogleMapsPlacesV1Circle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     center: Schema.optional(GoogleTypeLatLng),
     radius: Schema.optional(Schema.Number),
@@ -331,7 +331,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRan
   endOffset?: number;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange> =
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startOffset: Schema.optional(Schema.Number),
     endOffset: Schema.optional(Schema.Number),
@@ -347,7 +347,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattab
   matches?: ReadonlyArray<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText> =
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     matches: Schema.optional(
@@ -367,7 +367,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructure
   secondaryText?: GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat> =
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mainText: Schema.optional(
       GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
@@ -387,7 +387,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPred
   structuredFormat?: GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction> =
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(
       GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
@@ -417,7 +417,7 @@ export interface GoogleMapsPlacesV1TransitStop {
   wheelchairAccessibleEntrance?: boolean;
 }
 
-export const GoogleMapsPlacesV1TransitStop: Schema.Schema<GoogleMapsPlacesV1TransitStop> =
+export const GoogleMapsPlacesV1TransitStop: Schema.Codec<GoogleMapsPlacesV1TransitStop> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stopCode: Schema.optional(GoogleTypeLocalizedText),
     platformCode: Schema.optional(GoogleTypeLocalizedText),
@@ -433,7 +433,7 @@ export interface GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction {
   circle?: GoogleMapsPlacesV1Circle;
 }
 
-export const GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction: Schema.Schema<GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction> =
+export const GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction: Schema.Codec<GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     circle: Schema.optional(GoogleMapsPlacesV1Circle),
   }).annotate({
@@ -447,7 +447,7 @@ export interface GoogleMapsPlacesV1ContentBlock {
   content?: GoogleTypeLocalizedText;
 }
 
-export const GoogleMapsPlacesV1ContentBlock: Schema.Schema<GoogleMapsPlacesV1ContentBlock> =
+export const GoogleMapsPlacesV1ContentBlock: Schema.Codec<GoogleMapsPlacesV1ContentBlock> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referencedPlaces: Schema.optional(Schema.Array(Schema.String)),
     content: Schema.optional(GoogleTypeLocalizedText),
@@ -468,7 +468,7 @@ export interface GoogleMapsPlacesV1PlaceEvChargeAmenitySummary {
   disclosureText?: GoogleTypeLocalizedText;
 }
 
-export const GoogleMapsPlacesV1PlaceEvChargeAmenitySummary: Schema.Schema<GoogleMapsPlacesV1PlaceEvChargeAmenitySummary> =
+export const GoogleMapsPlacesV1PlaceEvChargeAmenitySummary: Schema.Codec<GoogleMapsPlacesV1PlaceEvChargeAmenitySummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overview: Schema.optional(GoogleMapsPlacesV1ContentBlock),
     restaurant: Schema.optional(GoogleMapsPlacesV1ContentBlock),
@@ -505,7 +505,7 @@ export interface GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation {
     | (string & {});
 }
 
-export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation: Schema.Schema<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation> =
+export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation: Schema.Codec<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     availableCount: Schema.optional(Schema.Number),
@@ -524,7 +524,7 @@ export interface GoogleMapsPlacesV1EVChargeOptions {
   connectorCount?: number;
 }
 
-export const GoogleMapsPlacesV1EVChargeOptions: Schema.Schema<GoogleMapsPlacesV1EVChargeOptions> =
+export const GoogleMapsPlacesV1EVChargeOptions: Schema.Codec<GoogleMapsPlacesV1EVChargeOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectorAggregation: Schema.optional(
       Schema.Array(GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation),
@@ -539,7 +539,7 @@ export interface GoogleMapsPlacesV1PlaceSubDestination {
   id?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceSubDestination: Schema.Schema<GoogleMapsPlacesV1PlaceSubDestination> =
+export const GoogleMapsPlacesV1PlaceSubDestination: Schema.Codec<GoogleMapsPlacesV1PlaceSubDestination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -554,7 +554,7 @@ export interface GoogleTypeMoney {
   currencyCode?: string;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
+export const GoogleTypeMoney: Schema.Codec<GoogleTypeMoney> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     units: Schema.optional(Schema.String),
@@ -568,7 +568,7 @@ export interface GoogleMapsPlacesV1PriceRange {
   endPrice?: GoogleTypeMoney;
 }
 
-export const GoogleMapsPlacesV1PriceRange: Schema.Schema<GoogleMapsPlacesV1PriceRange> =
+export const GoogleMapsPlacesV1PriceRange: Schema.Codec<GoogleMapsPlacesV1PriceRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startPrice: Schema.optional(GoogleTypeMoney),
     endPrice: Schema.optional(GoogleTypeMoney),
@@ -583,7 +583,7 @@ export interface GoogleTypeDate {
   year?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
+export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -603,7 +603,7 @@ export interface GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint {
   minute?: number;
 }
 
-export const GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint: Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint> =
+export const GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint: Schema.Codec<GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(GoogleTypeDate),
     day: Schema.optional(Schema.Number),
@@ -619,7 +619,7 @@ export interface GoogleMapsPlacesV1PlaceOpeningHoursPeriod {
   close?: GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint;
 }
 
-export const GoogleMapsPlacesV1PlaceOpeningHoursPeriod: Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursPeriod> =
+export const GoogleMapsPlacesV1PlaceOpeningHoursPeriod: Schema.Codec<GoogleMapsPlacesV1PlaceOpeningHoursPeriod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     open: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint),
     close: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint),
@@ -630,7 +630,7 @@ export interface GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay {
   date?: GoogleTypeDate;
 }
 
-export const GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay: Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay> =
+export const GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay: Schema.Codec<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     date: Schema.optional(GoogleTypeDate),
   }).annotate({ identifier: "GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay" });
@@ -667,7 +667,7 @@ export interface GoogleMapsPlacesV1PlaceOpeningHours {
   specialDays?: ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
 }
 
-export const GoogleMapsPlacesV1PlaceOpeningHours: Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHours> =
+export const GoogleMapsPlacesV1PlaceOpeningHours: Schema.Codec<GoogleMapsPlacesV1PlaceOpeningHours> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weekdayDescriptions: Schema.optional(Schema.Array(Schema.String)),
     nextOpenTime: Schema.optional(Schema.String),
@@ -689,7 +689,7 @@ export interface GoogleMapsPlacesV1PlacePlusCode {
   compoundCode?: string;
 }
 
-export const GoogleMapsPlacesV1PlacePlusCode: Schema.Schema<GoogleMapsPlacesV1PlacePlusCode> =
+export const GoogleMapsPlacesV1PlacePlusCode: Schema.Codec<GoogleMapsPlacesV1PlacePlusCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     globalCode: Schema.optional(Schema.String),
     compoundCode: Schema.optional(Schema.String),
@@ -702,7 +702,7 @@ export interface GoogleGeoTypeViewport {
   high?: GoogleTypeLatLng;
 }
 
-export const GoogleGeoTypeViewport: Schema.Schema<GoogleGeoTypeViewport> =
+export const GoogleGeoTypeViewport: Schema.Codec<GoogleGeoTypeViewport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     low: Schema.optional(GoogleTypeLatLng),
     high: Schema.optional(GoogleTypeLatLng),
@@ -725,7 +725,7 @@ export interface GoogleMapsPlacesV1PlaceParkingOptions {
   freeGarageParking?: boolean;
 }
 
-export const GoogleMapsPlacesV1PlaceParkingOptions: Schema.Schema<GoogleMapsPlacesV1PlaceParkingOptions> =
+export const GoogleMapsPlacesV1PlaceParkingOptions: Schema.Codec<GoogleMapsPlacesV1PlaceParkingOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freeParkingLot: Schema.optional(Schema.Boolean),
     freeStreetParking: Schema.optional(Schema.Boolean),
@@ -745,7 +745,7 @@ export interface GoogleMapsPlacesV1TransitStation {
   agencies?: ReadonlyArray<GoogleMapsPlacesV1TransitAgency>;
 }
 
-export const GoogleMapsPlacesV1TransitStation: Schema.Schema<GoogleMapsPlacesV1TransitStation> =
+export const GoogleMapsPlacesV1TransitStation: Schema.Codec<GoogleMapsPlacesV1TransitStation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(GoogleTypeLocalizedText),
     stops: Schema.optional(Schema.Array(GoogleMapsPlacesV1TransitStop)),
@@ -761,7 +761,7 @@ export interface GoogleMapsPlacesV1AuthorAttribution {
   displayName?: string;
 }
 
-export const GoogleMapsPlacesV1AuthorAttribution: Schema.Schema<GoogleMapsPlacesV1AuthorAttribution> =
+export const GoogleMapsPlacesV1AuthorAttribution: Schema.Codec<GoogleMapsPlacesV1AuthorAttribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     photoUri: Schema.optional(Schema.String),
@@ -783,7 +783,7 @@ export interface GoogleMapsPlacesV1Photo {
   widthPx?: number;
 }
 
-export const GoogleMapsPlacesV1Photo: Schema.Schema<GoogleMapsPlacesV1Photo> =
+export const GoogleMapsPlacesV1Photo: Schema.Codec<GoogleMapsPlacesV1Photo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flagContentUri: Schema.optional(Schema.String),
     googleMapsUri: Schema.optional(Schema.String),
@@ -806,7 +806,7 @@ export interface GoogleMapsPlacesV1PlaceAddressComponent {
   longText?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceAddressComponent: Schema.Schema<GoogleMapsPlacesV1PlaceAddressComponent> =
+export const GoogleMapsPlacesV1PlaceAddressComponent: Schema.Codec<GoogleMapsPlacesV1PlaceAddressComponent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     shortText: Schema.optional(Schema.String),
@@ -825,7 +825,7 @@ export interface GoogleMapsPlacesV1PlaceAccessibilityOptions {
   wheelchairAccessibleEntrance?: boolean;
 }
 
-export const GoogleMapsPlacesV1PlaceAccessibilityOptions: Schema.Schema<GoogleMapsPlacesV1PlaceAccessibilityOptions> =
+export const GoogleMapsPlacesV1PlaceAccessibilityOptions: Schema.Codec<GoogleMapsPlacesV1PlaceAccessibilityOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wheelchairAccessibleParking: Schema.optional(Schema.Boolean),
     wheelchairAccessibleRestroom: Schema.optional(Schema.Boolean),
@@ -844,7 +844,7 @@ export interface GoogleMapsPlacesV1PlaceReviewSummary {
   disclosureText?: GoogleTypeLocalizedText;
 }
 
-export const GoogleMapsPlacesV1PlaceReviewSummary: Schema.Schema<GoogleMapsPlacesV1PlaceReviewSummary> =
+export const GoogleMapsPlacesV1PlaceReviewSummary: Schema.Codec<GoogleMapsPlacesV1PlaceReviewSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reviewsUri: Schema.optional(Schema.String),
     text: Schema.optional(GoogleTypeLocalizedText),
@@ -863,7 +863,7 @@ export interface GoogleMapsPlacesV1PlaceNeighborhoodSummary {
   disclosureText?: GoogleTypeLocalizedText;
 }
 
-export const GoogleMapsPlacesV1PlaceNeighborhoodSummary: Schema.Schema<GoogleMapsPlacesV1PlaceNeighborhoodSummary> =
+export const GoogleMapsPlacesV1PlaceNeighborhoodSummary: Schema.Codec<GoogleMapsPlacesV1PlaceNeighborhoodSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(GoogleMapsPlacesV1ContentBlock),
     overview: Schema.optional(GoogleMapsPlacesV1ContentBlock),
@@ -884,7 +884,7 @@ export interface GoogleMapsPlacesV1PlaceGoogleMapsLinks {
   writeAReviewUri?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceGoogleMapsLinks: Schema.Schema<GoogleMapsPlacesV1PlaceGoogleMapsLinks> =
+export const GoogleMapsPlacesV1PlaceGoogleMapsLinks: Schema.Codec<GoogleMapsPlacesV1PlaceGoogleMapsLinks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reviewsUri: Schema.optional(Schema.String),
     directionsUri: Schema.optional(Schema.String),
@@ -902,7 +902,7 @@ export interface GoogleMapsPlacesV1PlaceGenerativeSummary {
   overviewFlagContentUri?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceGenerativeSummary: Schema.Schema<GoogleMapsPlacesV1PlaceGenerativeSummary> =
+export const GoogleMapsPlacesV1PlaceGenerativeSummary: Schema.Codec<GoogleMapsPlacesV1PlaceGenerativeSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disclosureText: Schema.optional(GoogleTypeLocalizedText),
     overview: Schema.optional(GoogleTypeLocalizedText),
@@ -916,7 +916,7 @@ export interface GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink {
   uri?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink: Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink> =
+export const GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink: Schema.Codec<GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -933,7 +933,7 @@ export interface GoogleMapsPlacesV1PlaceConsumerAlertDetails {
   aboutLink?: GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink;
 }
 
-export const GoogleMapsPlacesV1PlaceConsumerAlertDetails: Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlertDetails> =
+export const GoogleMapsPlacesV1PlaceConsumerAlertDetails: Schema.Codec<GoogleMapsPlacesV1PlaceConsumerAlertDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -949,7 +949,7 @@ export interface GoogleMapsPlacesV1PlaceConsumerAlert {
   languageCode?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceConsumerAlert: Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlert> =
+export const GoogleMapsPlacesV1PlaceConsumerAlert: Schema.Codec<GoogleMapsPlacesV1PlaceConsumerAlert> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(GoogleMapsPlacesV1PlaceConsumerAlertDetails),
     overview: Schema.optional(Schema.String),
@@ -981,7 +981,7 @@ export interface GoogleTypePostalAddress {
   regionCode?: string;
 }
 
-export const GoogleTypePostalAddress: Schema.Schema<GoogleTypePostalAddress> =
+export const GoogleTypePostalAddress: Schema.Codec<GoogleTypePostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addressLines: Schema.optional(Schema.Array(Schema.String)),
     sublocality: Schema.optional(Schema.String),
@@ -1003,7 +1003,7 @@ export interface GoogleMapsPlacesV1PlaceAttribution {
   provider?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceAttribution: Schema.Schema<GoogleMapsPlacesV1PlaceAttribution> =
+export const GoogleMapsPlacesV1PlaceAttribution: Schema.Codec<GoogleMapsPlacesV1PlaceAttribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     providerUri: Schema.optional(Schema.String),
     provider: Schema.optional(Schema.String),
@@ -1032,7 +1032,7 @@ export interface GoogleMapsPlacesV1Review {
   rating?: number;
 }
 
-export const GoogleMapsPlacesV1Review: Schema.Schema<GoogleMapsPlacesV1Review> =
+export const GoogleMapsPlacesV1Review: Schema.Codec<GoogleMapsPlacesV1Review> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visitDate: Schema.optional(GoogleTypeDate),
     text: Schema.optional(GoogleTypeLocalizedText),
@@ -1077,7 +1077,7 @@ export interface GoogleMapsPlacesV1FuelOptionsFuelPrice {
   updateTime?: string;
 }
 
-export const GoogleMapsPlacesV1FuelOptionsFuelPrice: Schema.Schema<GoogleMapsPlacesV1FuelOptionsFuelPrice> =
+export const GoogleMapsPlacesV1FuelOptionsFuelPrice: Schema.Codec<GoogleMapsPlacesV1FuelOptionsFuelPrice> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     price: Schema.optional(GoogleTypeMoney),
     type: Schema.optional(Schema.String),
@@ -1089,7 +1089,7 @@ export interface GoogleMapsPlacesV1FuelOptions {
   fuelPrices?: ReadonlyArray<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
 }
 
-export const GoogleMapsPlacesV1FuelOptions: Schema.Schema<GoogleMapsPlacesV1FuelOptions> =
+export const GoogleMapsPlacesV1FuelOptions: Schema.Codec<GoogleMapsPlacesV1FuelOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fuelPrices: Schema.optional(
       Schema.Array(GoogleMapsPlacesV1FuelOptionsFuelPrice),
@@ -1268,7 +1268,7 @@ export interface GoogleMapsPlacesV1Place {
   reservable?: boolean;
 }
 
-export const GoogleMapsPlacesV1Place: Schema.Schema<GoogleMapsPlacesV1Place> =
+export const GoogleMapsPlacesV1Place: Schema.Codec<GoogleMapsPlacesV1Place> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     internationalPhoneNumber: Schema.optional(Schema.String),
     menuForChildren: Schema.optional(Schema.Boolean),
@@ -1377,7 +1377,7 @@ export interface GoogleMapsPlacesV1RoutingSummaryLeg {
   distanceMeters?: number;
 }
 
-export const GoogleMapsPlacesV1RoutingSummaryLeg: Schema.Schema<GoogleMapsPlacesV1RoutingSummaryLeg> =
+export const GoogleMapsPlacesV1RoutingSummaryLeg: Schema.Codec<GoogleMapsPlacesV1RoutingSummaryLeg> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     distanceMeters: Schema.optional(Schema.Number),
@@ -1390,7 +1390,7 @@ export interface GoogleMapsPlacesV1RoutingSummary {
   directionsUri?: string;
 }
 
-export const GoogleMapsPlacesV1RoutingSummary: Schema.Schema<GoogleMapsPlacesV1RoutingSummary> =
+export const GoogleMapsPlacesV1RoutingSummary: Schema.Codec<GoogleMapsPlacesV1RoutingSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     legs: Schema.optional(Schema.Array(GoogleMapsPlacesV1RoutingSummaryLeg)),
     directionsUri: Schema.optional(Schema.String),
@@ -1401,7 +1401,7 @@ export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustifica
   endIndex?: number;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange> =
+export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange: Schema.Codec<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     endIndex: Schema.optional(Schema.Number),
@@ -1416,7 +1416,7 @@ export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustifica
   text?: string;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText> =
+export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText: Schema.Codec<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     highlightedTextRanges: Schema.optional(
       Schema.Array(
@@ -1435,7 +1435,7 @@ export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustifica
   review?: GoogleMapsPlacesV1Review;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustification: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustification> =
+export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustification: Schema.Codec<GoogleMapsPlacesV1ContextualContentJustificationReviewJustification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     highlightedText: Schema.optional(
       GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText,
@@ -1455,7 +1455,7 @@ export interface GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailab
   delivery?: boolean;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification> =
+export const GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification: Schema.Codec<GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     takeout: Schema.optional(Schema.Boolean),
     dineIn: Schema.optional(Schema.Boolean),
@@ -1470,7 +1470,7 @@ export interface GoogleMapsPlacesV1ContextualContentJustification {
   businessAvailabilityAttributesJustification?: GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustification: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustification> =
+export const GoogleMapsPlacesV1ContextualContentJustification: Schema.Codec<GoogleMapsPlacesV1ContextualContentJustification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reviewJustification: Schema.optional(
       GoogleMapsPlacesV1ContextualContentJustificationReviewJustification,
@@ -1491,7 +1491,7 @@ export interface GoogleMapsPlacesV1ContextualContent {
   reviews?: ReadonlyArray<GoogleMapsPlacesV1Review>;
 }
 
-export const GoogleMapsPlacesV1ContextualContent: Schema.Schema<GoogleMapsPlacesV1ContextualContent> =
+export const GoogleMapsPlacesV1ContextualContent: Schema.Codec<GoogleMapsPlacesV1ContextualContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     justifications: Schema.optional(
       Schema.Array(GoogleMapsPlacesV1ContextualContentJustification),
@@ -1513,7 +1513,7 @@ export interface GoogleMapsPlacesV1SearchTextResponse {
   contextualContents?: ReadonlyArray<GoogleMapsPlacesV1ContextualContent>;
 }
 
-export const GoogleMapsPlacesV1SearchTextResponse: Schema.Schema<GoogleMapsPlacesV1SearchTextResponse> =
+export const GoogleMapsPlacesV1SearchTextResponse: Schema.Codec<GoogleMapsPlacesV1SearchTextResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     searchUri: Schema.optional(Schema.String),
@@ -1541,7 +1541,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePred
   place?: string;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction> =
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(
       GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
@@ -1565,7 +1565,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion {
   queryPrediction?: GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion> =
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     placePrediction: Schema.optional(
       GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction,
@@ -1582,7 +1582,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponse {
   suggestions?: ReadonlyArray<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponse: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponse> =
+export const GoogleMapsPlacesV1AutocompletePlacesResponse: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(
       Schema.Array(GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion),
@@ -1596,7 +1596,7 @@ export interface GoogleMapsPlacesV1PhotoMedia {
   photoUri?: string;
 }
 
-export const GoogleMapsPlacesV1PhotoMedia: Schema.Schema<GoogleMapsPlacesV1PhotoMedia> =
+export const GoogleMapsPlacesV1PhotoMedia: Schema.Codec<GoogleMapsPlacesV1PhotoMedia> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     photoUri: Schema.optional(Schema.String),
@@ -1609,7 +1609,7 @@ export interface GoogleMapsPlacesV1SearchTextRequestLocationBias {
   circle?: GoogleMapsPlacesV1Circle;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequestLocationBias: Schema.Schema<GoogleMapsPlacesV1SearchTextRequestLocationBias> =
+export const GoogleMapsPlacesV1SearchTextRequestLocationBias: Schema.Codec<GoogleMapsPlacesV1SearchTextRequestLocationBias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rectangle: Schema.optional(GoogleGeoTypeViewport),
     circle: Schema.optional(GoogleMapsPlacesV1Circle),
@@ -1624,7 +1624,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias {
   circle?: GoogleMapsPlacesV1Circle;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias> =
+export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rectangle: Schema.optional(GoogleGeoTypeViewport),
     circle: Schema.optional(GoogleMapsPlacesV1Circle),
@@ -1637,7 +1637,7 @@ export interface GoogleMapsPlacesV1Polyline {
   encodedPolyline?: string;
 }
 
-export const GoogleMapsPlacesV1Polyline: Schema.Schema<GoogleMapsPlacesV1Polyline> =
+export const GoogleMapsPlacesV1Polyline: Schema.Codec<GoogleMapsPlacesV1Polyline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encodedPolyline: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleMapsPlacesV1Polyline" });
@@ -1647,7 +1647,7 @@ export interface GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters {
   polyline?: GoogleMapsPlacesV1Polyline;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters: Schema.Schema<GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters> =
+export const GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters: Schema.Codec<GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     polyline: Schema.optional(GoogleMapsPlacesV1Polyline),
   }).annotate({
@@ -1661,7 +1661,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction 
   circle?: GoogleMapsPlacesV1Circle;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction> =
+export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rectangle: Schema.optional(GoogleGeoTypeViewport),
     circle: Schema.optional(GoogleMapsPlacesV1Circle),
@@ -1699,7 +1699,7 @@ export interface GoogleMapsPlacesV1SearchNearbyRequest {
   locationRestriction?: GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction;
 }
 
-export const GoogleMapsPlacesV1SearchNearbyRequest: Schema.Schema<GoogleMapsPlacesV1SearchNearbyRequest> =
+export const GoogleMapsPlacesV1SearchNearbyRequest: Schema.Codec<GoogleMapsPlacesV1SearchNearbyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludedTypes: Schema.optional(Schema.Array(Schema.String)),
     regionCode: Schema.optional(Schema.String),
@@ -1723,7 +1723,7 @@ export interface GoogleMapsPlacesV1SearchNearbyResponse {
   routingSummaries?: ReadonlyArray<GoogleMapsPlacesV1RoutingSummary>;
 }
 
-export const GoogleMapsPlacesV1SearchNearbyResponse: Schema.Schema<GoogleMapsPlacesV1SearchNearbyResponse> =
+export const GoogleMapsPlacesV1SearchNearbyResponse: Schema.Codec<GoogleMapsPlacesV1SearchNearbyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     places: Schema.optional(Schema.Array(GoogleMapsPlacesV1Place)),
     routingSummaries: Schema.optional(
@@ -1736,7 +1736,7 @@ export interface GoogleMapsPlacesV1SearchTextRequestLocationRestriction {
   rectangle?: GoogleGeoTypeViewport;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequestLocationRestriction: Schema.Schema<GoogleMapsPlacesV1SearchTextRequestLocationRestriction> =
+export const GoogleMapsPlacesV1SearchTextRequestLocationRestriction: Schema.Codec<GoogleMapsPlacesV1SearchTextRequestLocationRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rectangle: Schema.optional(GoogleGeoTypeViewport),
   }).annotate({
@@ -1763,7 +1763,7 @@ export interface GoogleMapsPlacesV1SearchTextRequestEVOptions {
   >;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequestEVOptions: Schema.Schema<GoogleMapsPlacesV1SearchTextRequestEVOptions> =
+export const GoogleMapsPlacesV1SearchTextRequestEVOptions: Schema.Codec<GoogleMapsPlacesV1SearchTextRequestEVOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minimumChargingRateKw: Schema.optional(Schema.Number),
     connectorTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -1822,7 +1822,7 @@ export interface GoogleMapsPlacesV1SearchTextRequest {
   includedType?: string;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequest: Schema.Schema<GoogleMapsPlacesV1SearchTextRequest> =
+export const GoogleMapsPlacesV1SearchTextRequest: Schema.Codec<GoogleMapsPlacesV1SearchTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     searchAlongRouteParameters: Schema.optional(
       GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters,
@@ -1880,7 +1880,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesRequest {
   includedRegionCodes?: ReadonlyArray<string>;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesRequest: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequest> =
+export const GoogleMapsPlacesV1AutocompletePlacesRequest: Schema.Codec<GoogleMapsPlacesV1AutocompletePlacesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationRestriction: Schema.optional(
       GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction,
@@ -1968,7 +1968,7 @@ export const AutocompletePlacesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/places:autocomplete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AutocompletePlacesRequest>;
+  ) as unknown as Schema.Codec<AutocompletePlacesRequest>;
 
 export type AutocompletePlacesResponse =
   GoogleMapsPlacesV1AutocompletePlacesResponse;
@@ -2017,7 +2017,7 @@ export const GetPlacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetPlacesRequest>;
+) as unknown as Schema.Codec<GetPlacesRequest>;
 
 export type GetPlacesResponse = GoogleMapsPlacesV1Place;
 export const GetPlacesResponse =
@@ -2050,7 +2050,7 @@ export const SearchNearbyPlacesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/places:searchNearby", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SearchNearbyPlacesRequest>;
+  ) as unknown as Schema.Codec<SearchNearbyPlacesRequest>;
 
 export type SearchNearbyPlacesResponse = GoogleMapsPlacesV1SearchNearbyResponse;
 export const SearchNearbyPlacesResponse =
@@ -2088,7 +2088,7 @@ export const SearchTextPlacesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/places:searchText", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SearchTextPlacesRequest>;
+  ) as unknown as Schema.Codec<SearchTextPlacesRequest>;
 
 export type SearchTextPlacesResponse = GoogleMapsPlacesV1SearchTextResponse;
 export const SearchTextPlacesResponse =
@@ -2137,7 +2137,7 @@ export const GetMediaPlacesPhotosRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetMediaPlacesPhotosRequest>;
+  ) as unknown as Schema.Codec<GetMediaPlacesPhotosRequest>;
 
 export type GetMediaPlacesPhotosResponse = GoogleMapsPlacesV1PhotoMedia;
 export const GetMediaPlacesPhotosResponse =

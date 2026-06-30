@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewRunsSnapshotHistoryListInput {
+  id: string;
+  project_id: string;
+  identifier: string;
+  limit?: number;
+  offset?: number;
+}
 export const VisualReviewRunsSnapshotHistoryListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,35 @@ export const VisualReviewRunsSnapshotHistoryListInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/runs/{id}/snapshot-history/",
     }),
-  );
-export type VisualReviewRunsSnapshotHistoryListInput =
-  typeof VisualReviewRunsSnapshotHistoryListInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsSnapshotHistoryListInput>;
 
 // Output Schema
+export interface VisualReviewRunsSnapshotHistoryListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    current_artifact?: {
+      id?: string;
+      content_hash?: string;
+      width?: number | null;
+      height?: number | null;
+      download_url?: string | null;
+    } | null;
+    run_id?: string;
+    snapshot_id?: string;
+    result?: string;
+    branch?: string;
+    commit_sha?: string;
+    created_at?: string;
+    pr_number?: number | null;
+    diff_percentage?: number | null;
+    review_state?: string;
+    ssim_score?: number | null;
+    change_kind?: string;
+    size_mismatch?: boolean;
+  }[];
+}
 export const VisualReviewRunsSnapshotHistoryListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -29,7 +60,17 @@ export const VisualReviewRunsSnapshotHistoryListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          current_artifact: Schema.optional(Schema.Unknown),
+          current_artifact: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                content_hash: Schema.optional(Schema.String),
+                width: Schema.optional(Schema.NullOr(Schema.Number)),
+                height: Schema.optional(Schema.NullOr(Schema.Number)),
+                download_url: Schema.optional(Schema.NullOr(Schema.String)),
+              }),
+            ),
+          ),
           run_id: Schema.optional(Schema.String),
           snapshot_id: Schema.optional(Schema.String),
           result: Schema.optional(Schema.String),
@@ -45,9 +86,7 @@ export const VisualReviewRunsSnapshotHistoryListOutput =
         }),
       ),
     ),
-  });
-export type VisualReviewRunsSnapshotHistoryListOutput =
-  typeof VisualReviewRunsSnapshotHistoryListOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsSnapshotHistoryListOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -55,7 +55,7 @@ export interface PlaceActionLink {
   uri?: string;
 }
 
-export const PlaceActionLink: Schema.Schema<PlaceActionLink> =
+export const PlaceActionLink: Schema.Codec<PlaceActionLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface ListPlaceActionLinksResponse {
   nextPageToken?: string;
 }
 
-export const ListPlaceActionLinksResponse: Schema.Schema<ListPlaceActionLinksResponse> =
+export const ListPlaceActionLinksResponse: Schema.Codec<ListPlaceActionLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     placeActionLinks: Schema.optional(Schema.Array(PlaceActionLink)),
     nextPageToken: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface PlaceActionTypeMetadata {
     | (string & {});
 }
 
-export const PlaceActionTypeMetadata: Schema.Schema<PlaceActionTypeMetadata> =
+export const PlaceActionTypeMetadata: Schema.Codec<PlaceActionTypeMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     placeActionType: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface ListPlaceActionTypeMetadataResponse {
   nextPageToken?: string;
 }
 
-export const ListPlaceActionTypeMetadataResponse: Schema.Schema<ListPlaceActionTypeMetadataResponse> =
+export const ListPlaceActionTypeMetadataResponse: Schema.Codec<ListPlaceActionTypeMetadataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     placeActionTypeMetadata: Schema.optional(
       Schema.Array(PlaceActionTypeMetadata),
@@ -120,7 +120,7 @@ export const ListPlaceActionTypeMetadataResponse: Schema.Schema<ListPlaceActionT
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -197,7 +197,7 @@ export const CreateLocationsPlaceActionLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateLocationsPlaceActionLinksRequest>;
+  ) as unknown as Schema.Codec<CreateLocationsPlaceActionLinksRequest>;
 
 export type CreateLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const CreateLocationsPlaceActionLinksResponse =
@@ -242,7 +242,7 @@ export const ListLocationsPlaceActionLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/placeActionLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ListLocationsPlaceActionLinksRequest>;
+  ) as unknown as Schema.Codec<ListLocationsPlaceActionLinksRequest>;
 
 export type ListLocationsPlaceActionLinksResponse =
   ListPlaceActionLinksResponse;
@@ -281,7 +281,7 @@ export const GetLocationsPlaceActionLinksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetLocationsPlaceActionLinksRequest>;
+  ) as unknown as Schema.Codec<GetLocationsPlaceActionLinksRequest>;
 
 export type GetLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const GetLocationsPlaceActionLinksResponse =
@@ -321,7 +321,7 @@ export const PatchLocationsPlaceActionLinksRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchLocationsPlaceActionLinksRequest>;
+  ) as unknown as Schema.Codec<PatchLocationsPlaceActionLinksRequest>;
 
 export type PatchLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const PatchLocationsPlaceActionLinksResponse =
@@ -357,7 +357,7 @@ export const DeleteLocationsPlaceActionLinksRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLocationsPlaceActionLinksRequest>;
+  ) as unknown as Schema.Codec<DeleteLocationsPlaceActionLinksRequest>;
 
 export type DeleteLocationsPlaceActionLinksResponse = Empty;
 export const DeleteLocationsPlaceActionLinksResponse =
@@ -404,7 +404,7 @@ export const ListPlaceActionTypeMetadataRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/placeActionTypeMetadata" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlaceActionTypeMetadataRequest>;
+  ) as unknown as Schema.Codec<ListPlaceActionTypeMetadataRequest>;
 
 export type ListPlaceActionTypeMetadataResponse_Op =
   ListPlaceActionTypeMetadataResponse;

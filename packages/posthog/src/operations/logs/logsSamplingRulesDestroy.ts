@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LogsSamplingRulesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const LogsSamplingRulesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const LogsSamplingRulesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/logs/sampling_rules/{id}/",
     }),
-  );
-export type LogsSamplingRulesDestroyInput =
-  typeof LogsSamplingRulesDestroyInput.Type;
+  ) as unknown as Schema.Codec<LogsSamplingRulesDestroyInput>;
 
 // Output Schema
+export type LogsSamplingRulesDestroyOutput = void;
 export const LogsSamplingRulesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LogsSamplingRulesDestroyOutput =
-  typeof LogsSamplingRulesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LogsSamplingRulesDestroyOutput>;
 
 // The operation
 /**

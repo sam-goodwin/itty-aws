@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpServerInstallationsToolsRefreshCreateInput {
+  id: string;
+  project_id: string;
+  template_id?: string | null;
+  name?: string;
+  icon_key?: string;
+  display_name?: string;
+  url?: string;
+  description?: string;
+  auth_type?: "api_key" | "oauth";
+  is_enabled?: boolean;
+  needs_reauth?: boolean;
+  pending_oauth?: boolean;
+  proxy_url?: string;
+  tool_count?: number;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const McpServerInstallationsToolsRefreshCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -26,11 +44,26 @@ export const McpServerInstallationsToolsRefreshCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/mcp_server_installations/{id}/tools/refresh/",
     }),
-  );
-export type McpServerInstallationsToolsRefreshCreateInput =
-  typeof McpServerInstallationsToolsRefreshCreateInput.Type;
+  ) as unknown as Schema.Codec<McpServerInstallationsToolsRefreshCreateInput>;
 
 // Output Schema
+export interface McpServerInstallationsToolsRefreshCreateOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    tool_name?: string;
+    display_name?: string;
+    description?: string;
+    input_schema?: unknown;
+    approval_state?: "approved" | "needs_approval" | "do_not_use";
+    last_seen_at?: string;
+    removed_at?: string | null;
+    created_at?: string;
+    updated_at?: string | null;
+  }[];
+}
 export const McpServerInstallationsToolsRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -54,9 +87,7 @@ export const McpServerInstallationsToolsRefreshCreateOutput =
         }),
       ),
     ),
-  });
-export type McpServerInstallationsToolsRefreshCreateOutput =
-  typeof McpServerInstallationsToolsRefreshCreateOutput.Type;
+  }) as unknown as Schema.Codec<McpServerInstallationsToolsRefreshCreateOutput>;
 
 // The operation
 /**

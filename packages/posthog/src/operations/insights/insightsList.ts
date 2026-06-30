@@ -4,6 +4,44 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightsListInput {
+  project_id: string;
+  basic?: boolean;
+  created_by?: string;
+  created_date_from?: string;
+  created_date_to?: string;
+  dashboards?: string;
+  date_from?: string;
+  date_to?: string;
+  favorited?: boolean;
+  format?: "csv" | "json";
+  insight?:
+    | "FUNNELS"
+    | "JSON"
+    | "LIFECYCLE"
+    | "PATHS"
+    | "RETENTION"
+    | "SQL"
+    | "STICKINESS"
+    | "TRENDS";
+  last_viewed_date_from?: string;
+  last_viewed_date_to?: string;
+  limit?: number;
+  offset?: number;
+  refresh?:
+    | "async"
+    | "async_except_on_cache_miss"
+    | "blocking"
+    | "force_async"
+    | "force_blocking"
+    | "force_cache"
+    | "lazy_async";
+  saved?: boolean;
+  search?: string;
+  short_id?: string;
+  tags?: string;
+  user?: boolean;
+}
 export const InsightsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   basic: Schema.optional(Schema.Boolean),
@@ -49,10 +87,97 @@ export const InsightsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   user: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/insights/" }),
-);
-export type InsightsListInput = typeof InsightsListInput.Type;
+) as unknown as Schema.Codec<InsightsListInput>;
 
 // Output Schema
+export interface InsightsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: number;
+    short_id?: string;
+    name?: string | null;
+    derived_name?: string | null;
+    query?: unknown | null;
+    order?: number | null;
+    deleted?: boolean;
+    dashboards?: number[];
+    dashboard_tiles?: {
+      id?: number;
+      dashboard_id?: number;
+      deleted?: boolean | null;
+    }[];
+    last_refresh?: string | null;
+    cache_target_age?: string | null;
+    next_allowed_client_refresh?: string | null;
+    result?: unknown;
+    hasMore?: boolean | null;
+    columns?: string[] | null;
+    created_at?: string | null;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    description?: string | null;
+    updated_at?: string;
+    tags?: unknown[];
+    favorited?: boolean;
+    last_modified_at?: string;
+    last_modified_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    is_sample?: boolean;
+    effective_restriction_level?: 21 | 37;
+    effective_privilege_level?: 21 | 37;
+    user_access_level?: string | null;
+    timezone?: string | null;
+    is_cached?: boolean;
+    query_status?: unknown;
+    hogql?: string | null;
+    types?: unknown[] | null;
+    resolved_date_range?: { date_from?: string; date_to?: string } | null;
+    _create_in_folder?: string;
+    alerts?: unknown[];
+    last_viewed_at?: string | null;
+    search_match_type?: "exact" | "similar" | null;
+  }[];
+}
 export const InsightsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -64,7 +189,7 @@ export const InsightsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         short_id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.NullOr(Schema.String)),
         derived_name: Schema.optional(Schema.NullOr(Schema.String)),
-        query: Schema.optional(Schema.Unknown),
+        query: Schema.optional(Schema.NullOr(Schema.Unknown)),
         order: Schema.optional(Schema.NullOr(Schema.Number)),
         deleted: Schema.optional(Schema.Boolean),
         dashboards: Schema.optional(Schema.Array(Schema.Number)),
@@ -99,7 +224,23 @@ export const InsightsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -121,7 +262,23 @@ export const InsightsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -145,12 +302,13 @@ export const InsightsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         _create_in_folder: Schema.optional(Schema.String),
         alerts: Schema.optional(Schema.Array(Schema.Unknown)),
         last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
-        search_match_type: Schema.optional(Schema.Unknown),
+        search_match_type: Schema.optional(
+          Schema.NullOr(Schema.Literals(["exact", "similar"])),
+        ),
       }),
     ),
   ),
-});
-export type InsightsListOutput = typeof InsightsListOutput.Type;
+}) as unknown as Schema.Codec<InsightsListOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -40,7 +40,7 @@ export interface MailExportOptions {
     | (string & {});
 }
 
-export const MailExportOptions: Schema.Schema<MailExportOptions> =
+export const MailExportOptions: Schema.Codec<MailExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     showConfidentialModeContent: Schema.optional(Schema.Boolean),
     useNewExport: Schema.optional(Schema.Boolean),
@@ -61,7 +61,7 @@ export interface HeldAccount {
   firstName?: string;
 }
 
-export const HeldAccount: Schema.Schema<HeldAccount> =
+export const HeldAccount: Schema.Codec<HeldAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastName: Schema.optional(Schema.String),
     holdTime: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export interface RemoveHeldAccountsRequest {
   accountIds?: ReadonlyArray<string>;
 }
 
-export const RemoveHeldAccountsRequest: Schema.Schema<RemoveHeldAccountsRequest> =
+export const RemoveHeldAccountsRequest: Schema.Codec<RemoveHeldAccountsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RemoveHeldAccountsRequest" });
@@ -87,7 +87,7 @@ export interface HeldDriveQuery {
   includeSharedDriveFiles?: boolean;
 }
 
-export const HeldDriveQuery: Schema.Schema<HeldDriveQuery> =
+export const HeldDriveQuery: Schema.Codec<HeldDriveQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeTeamDriveFiles: Schema.optional(Schema.Boolean),
     includeSharedDriveFiles: Schema.optional(Schema.Boolean),
@@ -98,7 +98,7 @@ export interface HeldHangoutsChatQuery {
   includeRooms?: boolean;
 }
 
-export const HeldHangoutsChatQuery: Schema.Schema<HeldHangoutsChatQuery> =
+export const HeldHangoutsChatQuery: Schema.Codec<HeldHangoutsChatQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeRooms: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "HeldHangoutsChatQuery" });
@@ -114,14 +114,14 @@ export interface HeldVoiceQuery {
   >;
 }
 
-export const HeldVoiceQuery: Schema.Schema<HeldVoiceQuery> =
+export const HeldVoiceQuery: Schema.Codec<HeldVoiceQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coveredData: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "HeldVoiceQuery" });
 
 export interface HeldCalendarQuery {}
 
-export const HeldCalendarQuery: Schema.Schema<HeldCalendarQuery> =
+export const HeldCalendarQuery: Schema.Codec<HeldCalendarQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "HeldCalendarQuery",
   });
@@ -135,7 +135,7 @@ export interface HeldMailQuery {
   endTime?: string;
 }
 
-export const HeldMailQuery: Schema.Schema<HeldMailQuery> =
+export const HeldMailQuery: Schema.Codec<HeldMailQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     terms: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -151,7 +151,7 @@ export interface HeldGroupsQuery {
   endTime?: string;
 }
 
-export const HeldGroupsQuery: Schema.Schema<HeldGroupsQuery> =
+export const HeldGroupsQuery: Schema.Codec<HeldGroupsQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     terms: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -160,7 +160,7 @@ export const HeldGroupsQuery: Schema.Schema<HeldGroupsQuery> =
 
 export interface HeldGeminiQuery {}
 
-export const HeldGeminiQuery: Schema.Schema<HeldGeminiQuery> =
+export const HeldGeminiQuery: Schema.Codec<HeldGeminiQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "HeldGeminiQuery",
   });
@@ -182,7 +182,7 @@ export interface CorpusQuery {
   geminiQuery?: HeldGeminiQuery;
 }
 
-export const CorpusQuery: Schema.Schema<CorpusQuery> =
+export const CorpusQuery: Schema.Codec<CorpusQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveQuery: Schema.optional(HeldDriveQuery),
     hangoutsChatQuery: Schema.optional(HeldHangoutsChatQuery),
@@ -198,7 +198,7 @@ export interface DriveExportOptions {
   includeAccessInfo?: boolean;
 }
 
-export const DriveExportOptions: Schema.Schema<DriveExportOptions> =
+export const DriveExportOptions: Schema.Codec<DriveExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeAccessInfo: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DriveExportOptions" });
@@ -210,7 +210,7 @@ export interface HeldOrgUnit {
   orgUnitId?: string;
 }
 
-export const HeldOrgUnit: Schema.Schema<HeldOrgUnit> =
+export const HeldOrgUnit: Schema.Codec<HeldOrgUnit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     holdTime: Schema.optional(Schema.String),
     orgUnitId: Schema.optional(Schema.String),
@@ -242,7 +242,7 @@ export interface Hold {
     | (string & {});
 }
 
-export const Hold: Schema.Schema<Hold> =
+export const Hold: Schema.Codec<Hold> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     query: Schema.optional(CorpusQuery),
@@ -258,7 +258,7 @@ export interface ListHeldAccountsResponse {
   accounts?: ReadonlyArray<HeldAccount>;
 }
 
-export const ListHeldAccountsResponse: Schema.Schema<ListHeldAccountsResponse> =
+export const ListHeldAccountsResponse: Schema.Codec<ListHeldAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(HeldAccount)),
   }).annotate({ identifier: "ListHeldAccountsResponse" });
@@ -270,7 +270,7 @@ export interface UserInfo {
   displayName?: string;
 }
 
-export const UserInfo: Schema.Schema<UserInfo> =
+export const UserInfo: Schema.Codec<UserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -283,7 +283,7 @@ export interface AccountCount {
   count?: string;
 }
 
-export const AccountCount: Schema.Schema<AccountCount> =
+export const AccountCount: Schema.Codec<AccountCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.optional(UserInfo),
     count: Schema.optional(Schema.String),
@@ -303,7 +303,7 @@ export interface AccountCountError {
   account?: UserInfo;
 }
 
-export const AccountCountError: Schema.Schema<AccountCountError> =
+export const AccountCountError: Schema.Codec<AccountCountError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorType: Schema.optional(Schema.String),
     account: Schema.optional(UserInfo),
@@ -322,7 +322,7 @@ export interface MailCountResult {
   nonQueryableAccounts?: ReadonlyArray<string>;
 }
 
-export const MailCountResult: Schema.Schema<MailCountResult> =
+export const MailCountResult: Schema.Codec<MailCountResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountCounts: Schema.optional(Schema.Array(AccountCount)),
     queriedAccountsCount: Schema.optional(Schema.String),
@@ -342,14 +342,14 @@ export interface VoiceOptions {
   >;
 }
 
-export const VoiceOptions: Schema.Schema<VoiceOptions> =
+export const VoiceOptions: Schema.Codec<VoiceOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     coveredData: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "VoiceOptions" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -359,14 +359,14 @@ export interface TeamDriveInfo {
   teamDriveIds?: ReadonlyArray<string>;
 }
 
-export const TeamDriveInfo: Schema.Schema<TeamDriveInfo> =
+export const TeamDriveInfo: Schema.Codec<TeamDriveInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     teamDriveIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TeamDriveInfo" });
 
 export interface CloseMatterRequest {}
 
-export const CloseMatterRequest: Schema.Schema<CloseMatterRequest> =
+export const CloseMatterRequest: Schema.Codec<CloseMatterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseMatterRequest",
   });
@@ -382,7 +382,7 @@ export interface CloudStorageFile {
   size?: string;
 }
 
-export const CloudStorageFile: Schema.Schema<CloudStorageFile> =
+export const CloudStorageFile: Schema.Codec<CloudStorageFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     md5Hash: Schema.optional(Schema.String),
     bucketName: Schema.optional(Schema.String),
@@ -397,7 +397,7 @@ export interface MatterPermission {
   accountId?: string;
 }
 
-export const MatterPermission: Schema.Schema<MatterPermission> =
+export const MatterPermission: Schema.Codec<MatterPermission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -408,7 +408,7 @@ export interface OrgUnitInfo {
   orgUnitId?: string;
 }
 
-export const OrgUnitInfo: Schema.Schema<OrgUnitInfo> =
+export const OrgUnitInfo: Schema.Codec<OrgUnitInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgUnitId: Schema.optional(Schema.String),
   }).annotate({ identifier: "OrgUnitInfo" });
@@ -418,14 +418,14 @@ export interface HangoutsChatOptions {
   includeRooms?: boolean;
 }
 
-export const HangoutsChatOptions: Schema.Schema<HangoutsChatOptions> =
+export const HangoutsChatOptions: Schema.Codec<HangoutsChatOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     includeRooms: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "HangoutsChatOptions" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -439,7 +439,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -455,7 +455,7 @@ export interface AddHeldAccountResult {
   account?: HeldAccount;
 }
 
-export const AddHeldAccountResult: Schema.Schema<AddHeldAccountResult> =
+export const AddHeldAccountResult: Schema.Codec<AddHeldAccountResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Status),
     account: Schema.optional(HeldAccount),
@@ -473,14 +473,14 @@ export interface GeminiExportOptions {
     | (string & {});
 }
 
-export const GeminiExportOptions: Schema.Schema<GeminiExportOptions> =
+export const GeminiExportOptions: Schema.Codec<GeminiExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "GeminiExportOptions" });
 
 export interface GeminiOptions {}
 
-export const GeminiOptions: Schema.Schema<GeminiOptions> =
+export const GeminiOptions: Schema.Codec<GeminiOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GeminiOptions",
   });
@@ -497,7 +497,7 @@ export interface HangoutsChatExportOptions {
     | (string & {});
 }
 
-export const HangoutsChatExportOptions: Schema.Schema<HangoutsChatExportOptions> =
+export const HangoutsChatExportOptions: Schema.Codec<HangoutsChatExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "HangoutsChatExportOptions" });
@@ -507,7 +507,7 @@ export interface SitesUrlInfo {
   urls?: ReadonlyArray<string>;
 }
 
-export const SitesUrlInfo: Schema.Schema<SitesUrlInfo> =
+export const SitesUrlInfo: Schema.Codec<SitesUrlInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     urls: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SitesUrlInfo" });
@@ -517,7 +517,7 @@ export interface DriveDocumentIds {
   ids?: ReadonlyArray<string>;
 }
 
-export const DriveDocumentIds: Schema.Schema<DriveDocumentIds> =
+export const DriveDocumentIds: Schema.Codec<DriveDocumentIds> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ids: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DriveDocumentIds" });
@@ -527,7 +527,7 @@ export interface DriveDocumentInfo {
   documentIds?: DriveDocumentIds;
 }
 
-export const DriveDocumentInfo: Schema.Schema<DriveDocumentInfo> =
+export const DriveDocumentInfo: Schema.Codec<DriveDocumentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentIds: Schema.optional(DriveDocumentIds),
   }).annotate({ identifier: "DriveDocumentInfo" });
@@ -555,7 +555,7 @@ export interface DriveOptions {
   includeSharedDrives?: boolean;
 }
 
-export const DriveOptions: Schema.Schema<DriveOptions> =
+export const DriveOptions: Schema.Codec<DriveOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionDate: Schema.optional(Schema.String),
     includeTeamDrives: Schema.optional(Schema.Boolean),
@@ -569,7 +569,7 @@ export interface SharedDriveInfo {
   sharedDriveIds?: ReadonlyArray<string>;
 }
 
-export const SharedDriveInfo: Schema.Schema<SharedDriveInfo> =
+export const SharedDriveInfo: Schema.Codec<SharedDriveInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sharedDriveIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SharedDriveInfo" });
@@ -579,7 +579,7 @@ export interface HangoutsChatInfo {
   roomId?: ReadonlyArray<string>;
 }
 
-export const HangoutsChatInfo: Schema.Schema<HangoutsChatInfo> =
+export const HangoutsChatInfo: Schema.Codec<HangoutsChatInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roomId: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "HangoutsChatInfo" });
@@ -604,7 +604,7 @@ export interface CalendarOptions {
   minusWords?: ReadonlyArray<string>;
 }
 
-export const CalendarOptions: Schema.Schema<CalendarOptions> =
+export const CalendarOptions: Schema.Codec<CalendarOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responseStatuses: Schema.optional(Schema.Array(Schema.String)),
     versionDate: Schema.optional(Schema.String),
@@ -618,7 +618,7 @@ export interface AccountInfo {
   emails?: ReadonlyArray<string>;
 }
 
-export const AccountInfo: Schema.Schema<AccountInfo> =
+export const AccountInfo: Schema.Codec<AccountInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AccountInfo" });
@@ -635,7 +635,7 @@ export interface MailOptions {
     | (string & {});
 }
 
-export const MailOptions: Schema.Schema<MailOptions> =
+export const MailOptions: Schema.Codec<MailOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     excludeDrafts: Schema.optional(Schema.Boolean),
     clientSideEncryptedOption: Schema.optional(Schema.String),
@@ -720,7 +720,7 @@ export interface Query {
   mailOptions?: MailOptions;
 }
 
-export const Query: Schema.Schema<Query> =
+export const Query: Schema.Codec<Query> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sitesUrlInfo: Schema.optional(SitesUrlInfo),
     endTime: Schema.optional(Schema.String),
@@ -758,7 +758,7 @@ export interface SavedQuery {
   query?: Query;
 }
 
-export const SavedQuery: Schema.Schema<SavedQuery> =
+export const SavedQuery: Schema.Codec<SavedQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matterId: Schema.optional(Schema.String),
     savedQueryId: Schema.optional(Schema.String),
@@ -774,7 +774,7 @@ export interface ListSavedQueriesResponse {
   savedQueries?: ReadonlyArray<SavedQuery>;
 }
 
-export const ListSavedQueriesResponse: Schema.Schema<ListSavedQueriesResponse> =
+export const ListSavedQueriesResponse: Schema.Codec<ListSavedQueriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     savedQueries: Schema.optional(Schema.Array(SavedQuery)),
@@ -782,7 +782,7 @@ export const ListSavedQueriesResponse: Schema.Schema<ListSavedQueriesResponse> =
 
 export interface ReopenMatterRequest {}
 
-export const ReopenMatterRequest: Schema.Schema<ReopenMatterRequest> =
+export const ReopenMatterRequest: Schema.Codec<ReopenMatterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReopenMatterRequest",
   });
@@ -799,7 +799,7 @@ export interface VoiceExportOptions {
     | (string & {});
 }
 
-export const VoiceExportOptions: Schema.Schema<VoiceExportOptions> =
+export const VoiceExportOptions: Schema.Codec<VoiceExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "VoiceExportOptions" });
@@ -817,7 +817,7 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -837,7 +837,7 @@ export interface CountArtifactsRequest {
     | (string & {});
 }
 
-export const CountArtifactsRequest: Schema.Schema<CountArtifactsRequest> =
+export const CountArtifactsRequest: Schema.Codec<CountArtifactsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Query),
     view: Schema.optional(Schema.String),
@@ -850,7 +850,7 @@ export interface ListHoldsResponse {
   nextPageToken?: string;
 }
 
-export const ListHoldsResponse: Schema.Schema<ListHoldsResponse> =
+export const ListHoldsResponse: Schema.Codec<ListHoldsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     holds: Schema.optional(Schema.Array(Hold)),
     nextPageToken: Schema.optional(Schema.String),
@@ -861,7 +861,7 @@ export interface RemoveHeldAccountsResponse {
   statuses?: ReadonlyArray<Status>;
 }
 
-export const RemoveHeldAccountsResponse: Schema.Schema<RemoveHeldAccountsResponse> =
+export const RemoveHeldAccountsResponse: Schema.Codec<RemoveHeldAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statuses: Schema.optional(Schema.Array(Status)),
   }).annotate({ identifier: "RemoveHeldAccountsResponse" });
@@ -878,7 +878,7 @@ export interface GroupsExportOptions {
     | (string & {});
 }
 
-export const GroupsExportOptions: Schema.Schema<GroupsExportOptions> =
+export const GroupsExportOptions: Schema.Codec<GroupsExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupsExportOptions" });
@@ -895,7 +895,7 @@ export interface CalendarExportOptions {
     | (string & {});
 }
 
-export const CalendarExportOptions: Schema.Schema<CalendarExportOptions> =
+export const CalendarExportOptions: Schema.Codec<CalendarExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "CalendarExportOptions" });
@@ -924,7 +924,7 @@ export interface ExportOptions {
     | (string & {});
 }
 
-export const ExportOptions: Schema.Schema<ExportOptions> =
+export const ExportOptions: Schema.Codec<ExportOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveOptions: Schema.optional(DriveExportOptions),
     hangoutsChatOptions: Schema.optional(HangoutsChatExportOptions),
@@ -947,7 +947,7 @@ export interface CountArtifactsMetadata {
   query?: Query;
 }
 
-export const CountArtifactsMetadata: Schema.Schema<CountArtifactsMetadata> =
+export const CountArtifactsMetadata: Schema.Codec<CountArtifactsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -975,7 +975,7 @@ export interface Matter {
   matterId?: string;
 }
 
-export const Matter: Schema.Schema<Matter> =
+export const Matter: Schema.Codec<Matter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -990,7 +990,7 @@ export interface ReopenMatterResponse {
   matter?: Matter;
 }
 
-export const ReopenMatterResponse: Schema.Schema<ReopenMatterResponse> =
+export const ReopenMatterResponse: Schema.Codec<ReopenMatterResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matter: Schema.optional(Matter),
   }).annotate({ identifier: "ReopenMatterResponse" });
@@ -1000,7 +1000,7 @@ export interface CloseMatterResponse {
   matter?: Matter;
 }
 
-export const CloseMatterResponse: Schema.Schema<CloseMatterResponse> =
+export const CloseMatterResponse: Schema.Codec<CloseMatterResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matter: Schema.optional(Matter),
   }).annotate({ identifier: "CloseMatterResponse" });
@@ -1010,7 +1010,7 @@ export interface CloudStorageSink {
   files?: ReadonlyArray<CloudStorageFile>;
 }
 
-export const CloudStorageSink: Schema.Schema<CloudStorageSink> =
+export const CloudStorageSink: Schema.Codec<CloudStorageSink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Array(CloudStorageFile)),
   }).annotate({ identifier: "CloudStorageSink" });
@@ -1024,7 +1024,7 @@ export interface ExportStats {
   exportedArtifactCount?: string;
 }
 
-export const ExportStats: Schema.Schema<ExportStats> =
+export const ExportStats: Schema.Codec<ExportStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalArtifactCount: Schema.optional(Schema.String),
     sizeInBytes: Schema.optional(Schema.String),
@@ -1061,7 +1061,7 @@ export interface Export {
   name?: string;
 }
 
-export const Export: Schema.Schema<Export> =
+export const Export: Schema.Codec<Export> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requester: Schema.optional(UserInfo),
     query: Schema.optional(Query),
@@ -1089,7 +1089,7 @@ export interface GroupsCountResult {
   nonQueryableAccounts?: ReadonlyArray<string>;
 }
 
-export const GroupsCountResult: Schema.Schema<GroupsCountResult> =
+export const GroupsCountResult: Schema.Codec<GroupsCountResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountCounts: Schema.optional(Schema.Array(AccountCount)),
     queriedAccountsCount: Schema.optional(Schema.String),
@@ -1107,7 +1107,7 @@ export interface CountArtifactsResponse {
   totalCount?: string;
 }
 
-export const CountArtifactsResponse: Schema.Schema<CountArtifactsResponse> =
+export const CountArtifactsResponse: Schema.Codec<CountArtifactsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mailCountResult: Schema.optional(MailCountResult),
     groupsCountResult: Schema.optional(GroupsCountResult),
@@ -1123,7 +1123,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -1137,7 +1137,7 @@ export interface ListExportsResponse {
   exports?: ReadonlyArray<Export>;
 }
 
-export const ListExportsResponse: Schema.Schema<ListExportsResponse> =
+export const ListExportsResponse: Schema.Codec<ListExportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     exports: Schema.optional(Schema.Array(Export)),
@@ -1152,7 +1152,7 @@ export interface AddMatterPermissionsRequest {
   ccMe?: boolean;
 }
 
-export const AddMatterPermissionsRequest: Schema.Schema<AddMatterPermissionsRequest> =
+export const AddMatterPermissionsRequest: Schema.Codec<AddMatterPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matterPermission: Schema.optional(MatterPermission),
     sendEmails: Schema.optional(Schema.Boolean),
@@ -1166,7 +1166,7 @@ export interface ListMattersResponse {
   nextPageToken?: string;
 }
 
-export const ListMattersResponse: Schema.Schema<ListMattersResponse> =
+export const ListMattersResponse: Schema.Codec<ListMattersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matters: Schema.optional(Schema.Array(Matter)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1179,7 +1179,7 @@ export interface AddHeldAccountsRequest {
   accountIds?: ReadonlyArray<string>;
 }
 
-export const AddHeldAccountsRequest: Schema.Schema<AddHeldAccountsRequest> =
+export const AddHeldAccountsRequest: Schema.Codec<AddHeldAccountsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
     accountIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1190,7 +1190,7 @@ export interface AddHeldAccountsResponse {
   responses?: ReadonlyArray<AddHeldAccountResult>;
 }
 
-export const AddHeldAccountsResponse: Schema.Schema<AddHeldAccountsResponse> =
+export const AddHeldAccountsResponse: Schema.Codec<AddHeldAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(AddHeldAccountResult)),
   }).annotate({ identifier: "AddHeldAccountsResponse" });
@@ -1200,14 +1200,14 @@ export interface RemoveMatterPermissionsRequest {
   accountId?: string;
 }
 
-export const RemoveMatterPermissionsRequest: Schema.Schema<RemoveMatterPermissionsRequest> =
+export const RemoveMatterPermissionsRequest: Schema.Codec<RemoveMatterPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveMatterPermissionsRequest" });
 
 export interface UndeleteMatterRequest {}
 
-export const UndeleteMatterRequest: Schema.Schema<UndeleteMatterRequest> =
+export const UndeleteMatterRequest: Schema.Codec<UndeleteMatterRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteMatterRequest",
   });
@@ -1276,7 +1276,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1319,7 +1319,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
@@ -1354,7 +1354,7 @@ export const DeleteOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1392,7 +1392,7 @@ export const CancelOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1434,7 +1434,7 @@ export const AddPermissionsMattersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddPermissionsMattersRequest>;
+  ) as unknown as Schema.Codec<AddPermissionsMattersRequest>;
 
 export type AddPermissionsMattersResponse = MatterPermission;
 export const AddPermissionsMattersResponse =
@@ -1472,7 +1472,7 @@ export const UpdateMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "v1/matters/{matterId}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateMattersRequest>;
+) as unknown as Schema.Codec<UpdateMattersRequest>;
 
 export type UpdateMattersResponse = Matter;
 export const UpdateMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
@@ -1509,7 +1509,7 @@ export const GetMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/matters/{matterId}" }),
   svc,
-) as unknown as Schema.Schema<GetMattersRequest>;
+) as unknown as Schema.Codec<GetMattersRequest>;
 
 export type GetMattersResponse = Matter;
 export const GetMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
@@ -1547,7 +1547,7 @@ export const ListMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/matters" }),
   svc,
-) as unknown as Schema.Schema<ListMattersRequest>;
+) as unknown as Schema.Codec<ListMattersRequest>;
 
 export type ListMattersResponse_Op = ListMattersResponse;
 export const ListMattersResponse_Op =
@@ -1590,7 +1590,7 @@ export const UndeleteMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UndeleteMattersRequest>;
+) as unknown as Schema.Codec<UndeleteMattersRequest>;
 
 export type UndeleteMattersResponse = Matter;
 export const UndeleteMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
@@ -1624,7 +1624,7 @@ export const DeleteMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/matters/{matterId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteMattersRequest>;
+) as unknown as Schema.Codec<DeleteMattersRequest>;
 
 export type DeleteMattersResponse = Matter;
 export const DeleteMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
@@ -1665,7 +1665,7 @@ export const CountMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CountMattersRequest>;
+) as unknown as Schema.Codec<CountMattersRequest>;
 
 export type CountMattersResponse = Operation;
 export const CountMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1706,7 +1706,7 @@ export const CloseMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CloseMattersRequest>;
+) as unknown as Schema.Codec<CloseMattersRequest>;
 
 export type CloseMattersResponse = CloseMatterResponse;
 export const CloseMattersResponse =
@@ -1741,7 +1741,7 @@ export const CreateMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/matters", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateMattersRequest>;
+) as unknown as Schema.Codec<CreateMattersRequest>;
 
 export type CreateMattersResponse = Matter;
 export const CreateMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
@@ -1782,7 +1782,7 @@ export const ReopenMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ReopenMattersRequest>;
+) as unknown as Schema.Codec<ReopenMattersRequest>;
 
 export type ReopenMattersResponse = ReopenMatterResponse;
 export const ReopenMattersResponse =
@@ -1825,7 +1825,7 @@ export const RemovePermissionsMattersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemovePermissionsMattersRequest>;
+  ) as unknown as Schema.Codec<RemovePermissionsMattersRequest>;
 
 export type RemovePermissionsMattersResponse = Empty;
 export const RemovePermissionsMattersResponse =
@@ -1864,7 +1864,7 @@ export const DeleteMattersHoldsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/matters/{matterId}/holds/{holdId}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMattersHoldsRequest>;
+  ) as unknown as Schema.Codec<DeleteMattersHoldsRequest>;
 
 export type DeleteMattersHoldsResponse = Empty;
 export const DeleteMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -1909,7 +1909,7 @@ export const UpdateMattersHoldsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateMattersHoldsRequest>;
+  ) as unknown as Schema.Codec<UpdateMattersHoldsRequest>;
 
 export type UpdateMattersHoldsResponse = Hold;
 export const UpdateMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
@@ -1954,7 +1954,7 @@ export const AddHeldAccountsMattersHoldsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddHeldAccountsMattersHoldsRequest>;
+  ) as unknown as Schema.Codec<AddHeldAccountsMattersHoldsRequest>;
 
 export type AddHeldAccountsMattersHoldsResponse = AddHeldAccountsResponse;
 export const AddHeldAccountsMattersHoldsResponse =
@@ -1997,7 +1997,7 @@ export const GetMattersHoldsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/matters/{matterId}/holds/{holdId}" }),
   svc,
-) as unknown as Schema.Schema<GetMattersHoldsRequest>;
+) as unknown as Schema.Codec<GetMattersHoldsRequest>;
 
 export type GetMattersHoldsResponse = Hold;
 export const GetMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
@@ -2036,7 +2036,7 @@ export const ListMattersHoldsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/matters/{matterId}/holds" }),
     svc,
-  ) as unknown as Schema.Schema<ListMattersHoldsRequest>;
+  ) as unknown as Schema.Codec<ListMattersHoldsRequest>;
 
 export type ListMattersHoldsResponse = ListHoldsResponse;
 export const ListMattersHoldsResponse =
@@ -2078,7 +2078,7 @@ export const CreateMattersHoldsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateMattersHoldsRequest>;
+  ) as unknown as Schema.Codec<CreateMattersHoldsRequest>;
 
 export type CreateMattersHoldsResponse = Hold;
 export const CreateMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
@@ -2123,7 +2123,7 @@ export const RemoveHeldAccountsMattersHoldsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveHeldAccountsMattersHoldsRequest>;
+  ) as unknown as Schema.Codec<RemoveHeldAccountsMattersHoldsRequest>;
 
 export type RemoveHeldAccountsMattersHoldsResponse = RemoveHeldAccountsResponse;
 export const RemoveHeldAccountsMattersHoldsResponse =
@@ -2168,7 +2168,7 @@ export const DeleteMattersHoldsAccountsRequest =
       path: "v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMattersHoldsAccountsRequest>;
+  ) as unknown as Schema.Codec<DeleteMattersHoldsAccountsRequest>;
 
 export type DeleteMattersHoldsAccountsResponse = Empty;
 export const DeleteMattersHoldsAccountsResponse =
@@ -2210,7 +2210,7 @@ export const ListMattersHoldsAccountsRequest =
       path: "v1/matters/{matterId}/holds/{holdId}/accounts",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMattersHoldsAccountsRequest>;
+  ) as unknown as Schema.Codec<ListMattersHoldsAccountsRequest>;
 
 export type ListMattersHoldsAccountsResponse = ListHeldAccountsResponse;
 export const ListMattersHoldsAccountsResponse =
@@ -2254,7 +2254,7 @@ export const CreateMattersHoldsAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateMattersHoldsAccountsRequest>;
+  ) as unknown as Schema.Codec<CreateMattersHoldsAccountsRequest>;
 
 export type CreateMattersHoldsAccountsResponse = HeldAccount;
 export const CreateMattersHoldsAccountsResponse =
@@ -2296,7 +2296,7 @@ export const DeleteMattersSavedQueriesRequest =
       path: "v1/matters/{matterId}/savedQueries/{savedQueryId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMattersSavedQueriesRequest>;
+  ) as unknown as Schema.Codec<DeleteMattersSavedQueriesRequest>;
 
 export type DeleteMattersSavedQueriesResponse = Empty;
 export const DeleteMattersSavedQueriesResponse =
@@ -2338,7 +2338,7 @@ export const ListMattersSavedQueriesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/matters/{matterId}/savedQueries" }),
     svc,
-  ) as unknown as Schema.Schema<ListMattersSavedQueriesRequest>;
+  ) as unknown as Schema.Codec<ListMattersSavedQueriesRequest>;
 
 export type ListMattersSavedQueriesResponse = ListSavedQueriesResponse;
 export const ListMattersSavedQueriesResponse =
@@ -2379,7 +2379,7 @@ export const GetMattersSavedQueriesRequest =
       path: "v1/matters/{matterId}/savedQueries/{savedQueryId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMattersSavedQueriesRequest>;
+  ) as unknown as Schema.Codec<GetMattersSavedQueriesRequest>;
 
 export type GetMattersSavedQueriesResponse = SavedQuery;
 export const GetMattersSavedQueriesResponse =
@@ -2417,7 +2417,7 @@ export const CreateMattersSavedQueriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateMattersSavedQueriesRequest>;
+  ) as unknown as Schema.Codec<CreateMattersSavedQueriesRequest>;
 
 export type CreateMattersSavedQueriesResponse = SavedQuery;
 export const CreateMattersSavedQueriesResponse =
@@ -2460,7 +2460,7 @@ export const CreateMattersExportsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateMattersExportsRequest>;
+  ) as unknown as Schema.Codec<CreateMattersExportsRequest>;
 
 export type CreateMattersExportsResponse = Export;
 export const CreateMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Export;
@@ -2498,7 +2498,7 @@ export const GetMattersExportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/matters/{matterId}/exports/{exportId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetMattersExportsRequest>;
+  ) as unknown as Schema.Codec<GetMattersExportsRequest>;
 
 export type GetMattersExportsResponse = Export;
 export const GetMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Export;
@@ -2534,7 +2534,7 @@ export const DeleteMattersExportsRequest =
       path: "v1/matters/{matterId}/exports/{exportId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteMattersExportsRequest>;
+  ) as unknown as Schema.Codec<DeleteMattersExportsRequest>;
 
 export type DeleteMattersExportsResponse = Empty;
 export const DeleteMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2575,7 +2575,7 @@ export const ListMattersExportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/matters/{matterId}/exports" }),
     svc,
-  ) as unknown as Schema.Schema<ListMattersExportsRequest>;
+  ) as unknown as Schema.Codec<ListMattersExportsRequest>;
 
 export type ListMattersExportsResponse = ListExportsResponse;
 export const ListMattersExportsResponse =

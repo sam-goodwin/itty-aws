@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ConversationsQueueDestroyInput {
+  conversation: string;
+  project_id: string;
+  queue_id: string;
+}
 export const ConversationsQueueDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const ConversationsQueueDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/conversations/{conversation}/queue/{queue_id}/",
     }),
-  );
-export type ConversationsQueueDestroyInput =
-  typeof ConversationsQueueDestroyInput.Type;
+  ) as unknown as Schema.Codec<ConversationsQueueDestroyInput>;
 
 // Output Schema
+export type ConversationsQueueDestroyOutput = void;
 export const ConversationsQueueDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConversationsQueueDestroyOutput =
-  typeof ConversationsQueueDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConversationsQueueDestroyOutput>;
 
 // The operation
 /**

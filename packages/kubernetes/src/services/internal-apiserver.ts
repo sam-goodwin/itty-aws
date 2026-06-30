@@ -4,12 +4,70 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateInternalApiserverV1alpha1StorageVersionInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const CreateInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -91,11 +149,63 @@ export const CreateInternalApiserverV1alpha1StorageVersionInput =
       method: "POST",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions",
     }),
-  );
-export type CreateInternalApiserverV1alpha1StorageVersionInput =
-  typeof CreateInternalApiserverV1alpha1StorageVersionInput.Type;
+  ) as unknown as Schema.Codec<CreateInternalApiserverV1alpha1StorageVersionInput>;
 
 // Output Schema
+export interface CreateInternalApiserverV1alpha1StorageVersionOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const CreateInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -168,9 +278,7 @@ export const CreateInternalApiserverV1alpha1StorageVersionOutput =
         ),
       }),
     ),
-  });
-export type CreateInternalApiserverV1alpha1StorageVersionOutput =
-  typeof CreateInternalApiserverV1alpha1StorageVersionOutput.Type;
+  }) as unknown as Schema.Codec<CreateInternalApiserverV1alpha1StorageVersionOutput>;
 
 // The operation
 /**
@@ -188,6 +296,26 @@ export const createInternalApiserverV1alpha1StorageVersion =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteInternalApiserverV1alpha1CollectionStorageVersionInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteInternalApiserverV1alpha1CollectionStorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -220,11 +348,32 @@ export const DeleteInternalApiserverV1alpha1CollectionStorageVersionInput =
       method: "DELETE",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions",
     }),
-  );
-export type DeleteInternalApiserverV1alpha1CollectionStorageVersionInput =
-  typeof DeleteInternalApiserverV1alpha1CollectionStorageVersionInput.Type;
+  ) as unknown as Schema.Codec<DeleteInternalApiserverV1alpha1CollectionStorageVersionInput>;
 
 // Output Schema
+export interface DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -264,9 +413,7 @@ export const DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput =
-  typeof DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput.Type;
+  }) as unknown as Schema.Codec<DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput>;
 
 // The operation
 /**
@@ -335,6 +482,18 @@ export const deleteInternalApiserverV1alpha1CollectionStorageVersion =
     outputSchema: DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput,
   }));
 // Input Schema
+export interface DeleteInternalApiserverV1alpha1StorageVersionInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -359,11 +518,32 @@ export const DeleteInternalApiserverV1alpha1StorageVersionInput =
       method: "DELETE",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}",
     }),
-  );
-export type DeleteInternalApiserverV1alpha1StorageVersionInput =
-  typeof DeleteInternalApiserverV1alpha1StorageVersionInput.Type;
+  ) as unknown as Schema.Codec<DeleteInternalApiserverV1alpha1StorageVersionInput>;
 
 // Output Schema
+export interface DeleteInternalApiserverV1alpha1StorageVersionOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -403,9 +583,7 @@ export const DeleteInternalApiserverV1alpha1StorageVersionOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteInternalApiserverV1alpha1StorageVersionOutput =
-  typeof DeleteInternalApiserverV1alpha1StorageVersionOutput.Type;
+  }) as unknown as Schema.Codec<DeleteInternalApiserverV1alpha1StorageVersionOutput>;
 
 // The operation
 /**
@@ -426,14 +604,21 @@ export const deleteInternalApiserverV1alpha1StorageVersion =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetInternalApiserverAPIGroupInput {}
 export const GetInternalApiserverAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/internal.apiserver.k8s.io/" }),
-  );
-export type GetInternalApiserverAPIGroupInput =
-  typeof GetInternalApiserverAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetInternalApiserverAPIGroupInput>;
 
 // Output Schema
+export interface GetInternalApiserverAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetInternalApiserverAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -459,9 +644,7 @@ export const GetInternalApiserverAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetInternalApiserverAPIGroupOutput =
-  typeof GetInternalApiserverAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetInternalApiserverAPIGroupOutput>;
 
 // The operation
 /**
@@ -473,17 +656,33 @@ export const getInternalApiserverAPIGroup =
     outputSchema: GetInternalApiserverAPIGroupOutput,
   }));
 // Input Schema
+export interface GetInternalApiserverV1alpha1APIResourcesInput {}
 export const GetInternalApiserverV1alpha1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/",
     }),
-  );
-export type GetInternalApiserverV1alpha1APIResourcesInput =
-  typeof GetInternalApiserverV1alpha1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetInternalApiserverV1alpha1APIResourcesInput>;
 
 // Output Schema
+export interface GetInternalApiserverV1alpha1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetInternalApiserverV1alpha1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -503,9 +702,7 @@ export const GetInternalApiserverV1alpha1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetInternalApiserverV1alpha1APIResourcesOutput =
-  typeof GetInternalApiserverV1alpha1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetInternalApiserverV1alpha1APIResourcesOutput>;
 
 // The operation
 /**
@@ -517,6 +714,20 @@ export const getInternalApiserverV1alpha1APIResources =
     outputSchema: GetInternalApiserverV1alpha1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListInternalApiserverV1alpha1StorageVersionInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -536,11 +747,74 @@ export const ListInternalApiserverV1alpha1StorageVersionInput =
       method: "GET",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions",
     }),
-  );
-export type ListInternalApiserverV1alpha1StorageVersionInput =
-  typeof ListInternalApiserverV1alpha1StorageVersionInput.Type;
+  ) as unknown as Schema.Codec<ListInternalApiserverV1alpha1StorageVersionInput>;
 
 // Output Schema
+export interface ListInternalApiserverV1alpha1StorageVersionOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: unknown;
+    status?: {
+      commonEncodingVersion?: string;
+      conditions?: {
+        lastTransitionTime?: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      storageVersions?: {
+        apiServerID: string;
+        decodableVersions: string[];
+        encodingVersion: string;
+        servedVersions?: string[];
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -634,9 +908,7 @@ export const ListInternalApiserverV1alpha1StorageVersionOutput =
         ),
       }),
     ),
-  });
-export type ListInternalApiserverV1alpha1StorageVersionOutput =
-  typeof ListInternalApiserverV1alpha1StorageVersionOutput.Type;
+  }) as unknown as Schema.Codec<ListInternalApiserverV1alpha1StorageVersionOutput>;
 
 // The operation
 /**
@@ -702,6 +974,14 @@ export const listInternalApiserverV1alpha1StorageVersion =
     outputSchema: ListInternalApiserverV1alpha1StorageVersionOutput,
   }));
 // Input Schema
+export interface PatchInternalApiserverV1alpha1StorageVersionInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -715,11 +995,63 @@ export const PatchInternalApiserverV1alpha1StorageVersionInput =
       method: "PATCH",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}",
     }),
-  );
-export type PatchInternalApiserverV1alpha1StorageVersionInput =
-  typeof PatchInternalApiserverV1alpha1StorageVersionInput.Type;
+  ) as unknown as Schema.Codec<PatchInternalApiserverV1alpha1StorageVersionInput>;
 
 // Output Schema
+export interface PatchInternalApiserverV1alpha1StorageVersionOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const PatchInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -792,9 +1124,7 @@ export const PatchInternalApiserverV1alpha1StorageVersionOutput =
         ),
       }),
     ),
-  });
-export type PatchInternalApiserverV1alpha1StorageVersionOutput =
-  typeof PatchInternalApiserverV1alpha1StorageVersionOutput.Type;
+  }) as unknown as Schema.Codec<PatchInternalApiserverV1alpha1StorageVersionOutput>;
 
 // The operation
 /**
@@ -814,6 +1144,14 @@ export const patchInternalApiserverV1alpha1StorageVersion =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchInternalApiserverV1alpha1StorageVersionStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchInternalApiserverV1alpha1StorageVersionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -827,11 +1165,63 @@ export const PatchInternalApiserverV1alpha1StorageVersionStatusInput =
       method: "PATCH",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status",
     }),
-  );
-export type PatchInternalApiserverV1alpha1StorageVersionStatusInput =
-  typeof PatchInternalApiserverV1alpha1StorageVersionStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchInternalApiserverV1alpha1StorageVersionStatusInput>;
 
 // Output Schema
+export interface PatchInternalApiserverV1alpha1StorageVersionStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const PatchInternalApiserverV1alpha1StorageVersionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -904,9 +1294,7 @@ export const PatchInternalApiserverV1alpha1StorageVersionStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchInternalApiserverV1alpha1StorageVersionStatusOutput =
-  typeof PatchInternalApiserverV1alpha1StorageVersionStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchInternalApiserverV1alpha1StorageVersionStatusOutput>;
 
 // The operation
 /**
@@ -926,6 +1314,10 @@ export const patchInternalApiserverV1alpha1StorageVersionStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadInternalApiserverV1alpha1StorageVersionInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -935,11 +1327,63 @@ export const ReadInternalApiserverV1alpha1StorageVersionInput =
       method: "GET",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}",
     }),
-  );
-export type ReadInternalApiserverV1alpha1StorageVersionInput =
-  typeof ReadInternalApiserverV1alpha1StorageVersionInput.Type;
+  ) as unknown as Schema.Codec<ReadInternalApiserverV1alpha1StorageVersionInput>;
 
 // Output Schema
+export interface ReadInternalApiserverV1alpha1StorageVersionOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const ReadInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1012,9 +1456,7 @@ export const ReadInternalApiserverV1alpha1StorageVersionOutput =
         ),
       }),
     ),
-  });
-export type ReadInternalApiserverV1alpha1StorageVersionOutput =
-  typeof ReadInternalApiserverV1alpha1StorageVersionOutput.Type;
+  }) as unknown as Schema.Codec<ReadInternalApiserverV1alpha1StorageVersionOutput>;
 
 // The operation
 /**
@@ -1030,6 +1472,10 @@ export const readInternalApiserverV1alpha1StorageVersion =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadInternalApiserverV1alpha1StorageVersionStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadInternalApiserverV1alpha1StorageVersionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1039,11 +1485,63 @@ export const ReadInternalApiserverV1alpha1StorageVersionStatusInput =
       method: "GET",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status",
     }),
-  );
-export type ReadInternalApiserverV1alpha1StorageVersionStatusInput =
-  typeof ReadInternalApiserverV1alpha1StorageVersionStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadInternalApiserverV1alpha1StorageVersionStatusInput>;
 
 // Output Schema
+export interface ReadInternalApiserverV1alpha1StorageVersionStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const ReadInternalApiserverV1alpha1StorageVersionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1116,9 +1614,7 @@ export const ReadInternalApiserverV1alpha1StorageVersionStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadInternalApiserverV1alpha1StorageVersionStatusOutput =
-  typeof ReadInternalApiserverV1alpha1StorageVersionStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadInternalApiserverV1alpha1StorageVersionStatusOutput>;
 
 // The operation
 /**
@@ -1134,6 +1630,65 @@ export const readInternalApiserverV1alpha1StorageVersionStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceInternalApiserverV1alpha1StorageVersionInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const ReplaceInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1216,11 +1771,63 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionInput =
       method: "PUT",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}",
     }),
-  );
-export type ReplaceInternalApiserverV1alpha1StorageVersionInput =
-  typeof ReplaceInternalApiserverV1alpha1StorageVersionInput.Type;
+  ) as unknown as Schema.Codec<ReplaceInternalApiserverV1alpha1StorageVersionInput>;
 
 // Output Schema
+export interface ReplaceInternalApiserverV1alpha1StorageVersionOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const ReplaceInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1293,9 +1900,7 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionOutput =
         ),
       }),
     ),
-  });
-export type ReplaceInternalApiserverV1alpha1StorageVersionOutput =
-  typeof ReplaceInternalApiserverV1alpha1StorageVersionOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceInternalApiserverV1alpha1StorageVersionOutput>;
 
 // The operation
 /**
@@ -1314,6 +1919,65 @@ export const replaceInternalApiserverV1alpha1StorageVersion =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceInternalApiserverV1alpha1StorageVersionStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const ReplaceInternalApiserverV1alpha1StorageVersionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1396,11 +2060,63 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionStatusInput =
       method: "PUT",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status",
     }),
-  );
-export type ReplaceInternalApiserverV1alpha1StorageVersionStatusInput =
-  typeof ReplaceInternalApiserverV1alpha1StorageVersionStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceInternalApiserverV1alpha1StorageVersionStatusInput>;
 
 // Output Schema
+export interface ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: unknown;
+  status?: {
+    commonEncodingVersion?: string;
+    conditions?: {
+      lastTransitionTime?: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    storageVersions?: {
+      apiServerID: string;
+      decodableVersions: string[];
+      encodingVersion: string;
+      servedVersions?: string[];
+    }[];
+  };
+}
 export const ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1473,9 +2189,7 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput =
-  typeof ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput>;
 
 // The operation
 /**
@@ -1494,6 +2208,21 @@ export const replaceInternalApiserverV1alpha1StorageVersionStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchInternalApiserverV1alpha1StorageVersionInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1514,18 +2243,18 @@ export const WatchInternalApiserverV1alpha1StorageVersionInput =
       method: "GET",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}",
     }),
-  );
-export type WatchInternalApiserverV1alpha1StorageVersionInput =
-  typeof WatchInternalApiserverV1alpha1StorageVersionInput.Type;
+  ) as unknown as Schema.Codec<WatchInternalApiserverV1alpha1StorageVersionInput>;
 
 // Output Schema
+export interface WatchInternalApiserverV1alpha1StorageVersionOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchInternalApiserverV1alpha1StorageVersionOutput =
-  typeof WatchInternalApiserverV1alpha1StorageVersionOutput.Type;
+  }) as unknown as Schema.Codec<WatchInternalApiserverV1alpha1StorageVersionOutput>;
 
 // The operation
 /**
@@ -1592,6 +2321,20 @@ export const watchInternalApiserverV1alpha1StorageVersion =
     outputSchema: WatchInternalApiserverV1alpha1StorageVersionOutput,
   }));
 // Input Schema
+export interface WatchInternalApiserverV1alpha1StorageVersionListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchInternalApiserverV1alpha1StorageVersionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1611,18 +2354,18 @@ export const WatchInternalApiserverV1alpha1StorageVersionListInput =
       method: "GET",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions",
     }),
-  );
-export type WatchInternalApiserverV1alpha1StorageVersionListInput =
-  typeof WatchInternalApiserverV1alpha1StorageVersionListInput.Type;
+  ) as unknown as Schema.Codec<WatchInternalApiserverV1alpha1StorageVersionListInput>;
 
 // Output Schema
+export interface WatchInternalApiserverV1alpha1StorageVersionListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchInternalApiserverV1alpha1StorageVersionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchInternalApiserverV1alpha1StorageVersionListOutput =
-  typeof WatchInternalApiserverV1alpha1StorageVersionListOutput.Type;
+  }) as unknown as Schema.Codec<WatchInternalApiserverV1alpha1StorageVersionListOutput>;
 
 // The operation
 /**

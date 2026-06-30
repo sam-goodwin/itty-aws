@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -39,7 +39,7 @@ export interface IngressSource {
   resource?: string;
 }
 
-export const IngressSource: Schema.Schema<IngressSource> =
+export const IngressSource: Schema.Codec<IngressSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessLevel: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface IngressFrom {
     | (string & {});
 }
 
-export const IngressFrom: Schema.Schema<IngressFrom> =
+export const IngressFrom: Schema.Codec<IngressFrom> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(IngressSource)),
     identities: Schema.optional(Schema.Array(Schema.String)),
@@ -73,7 +73,7 @@ export interface MethodSelector {
   permission?: string;
 }
 
-export const MethodSelector: Schema.Schema<MethodSelector> =
+export const MethodSelector: Schema.Codec<MethodSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface ApiOperation {
   methodSelectors?: ReadonlyArray<MethodSelector>;
 }
 
-export const ApiOperation: Schema.Schema<ApiOperation> =
+export const ApiOperation: Schema.Codec<ApiOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceName: Schema.optional(Schema.String),
     methodSelectors: Schema.optional(Schema.Array(MethodSelector)),
@@ -103,7 +103,7 @@ export interface EgressTo {
   externalResources?: ReadonlyArray<string>;
 }
 
-export const EgressTo: Schema.Schema<EgressTo> =
+export const EgressTo: Schema.Codec<EgressTo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roles: Schema.optional(Schema.Array(Schema.String)),
     resources: Schema.optional(Schema.Array(Schema.String)),
@@ -118,7 +118,7 @@ export interface EgressSource {
   accessLevel?: string;
 }
 
-export const EgressSource: Schema.Schema<EgressSource> =
+export const EgressSource: Schema.Codec<EgressSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     accessLevel: Schema.optional(Schema.String),
@@ -144,7 +144,7 @@ export interface EgressFrom {
     | (string & {});
 }
 
-export const EgressFrom: Schema.Schema<EgressFrom> =
+export const EgressFrom: Schema.Codec<EgressFrom> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sources: Schema.optional(Schema.Array(EgressSource)),
     sourceRestriction: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export interface EgressPolicy {
   title?: string;
 }
 
-export const EgressPolicy: Schema.Schema<EgressPolicy> =
+export const EgressPolicy: Schema.Codec<EgressPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     egressTo: Schema.optional(EgressTo),
     egressFrom: Schema.optional(EgressFrom),
@@ -175,7 +175,7 @@ export interface Application {
   clientId?: string;
 }
 
-export const Application: Schema.Schema<Application> =
+export const Application: Schema.Codec<Application> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -199,7 +199,7 @@ export interface SessionSettings {
   sessionLength?: string;
 }
 
-export const SessionSettings: Schema.Schema<SessionSettings> =
+export const SessionSettings: Schema.Codec<SessionSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionReauthMethod: Schema.optional(Schema.String),
     maxInactivity: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface AccessSettings {
   sessionSettings?: SessionSettings;
 }
 
-export const AccessSettings: Schema.Schema<AccessSettings> =
+export const AccessSettings: Schema.Codec<AccessSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(Schema.String)),
     sessionSettings: Schema.optional(SessionSettings),
@@ -226,7 +226,7 @@ export interface ClientScope {
   restrictedClientApplication?: Application;
 }
 
-export const ClientScope: Schema.Schema<ClientScope> =
+export const ClientScope: Schema.Codec<ClientScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restrictedClientApplication: Schema.optional(Application),
   }).annotate({ identifier: "ClientScope" });
@@ -236,7 +236,7 @@ export interface AccessScope {
   clientScope?: ClientScope;
 }
 
-export const AccessScope: Schema.Schema<AccessScope> =
+export const AccessScope: Schema.Codec<AccessScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientScope: Schema.optional(ClientScope),
   }).annotate({ identifier: "AccessScope" });
@@ -250,7 +250,7 @@ export interface ScopedAccessSettings {
   scope?: AccessScope;
 }
 
-export const ScopedAccessSettings: Schema.Schema<ScopedAccessSettings> =
+export const ScopedAccessSettings: Schema.Codec<ScopedAccessSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activeSettings: Schema.optional(AccessSettings),
     dryRunSettings: Schema.optional(AccessSettings),
@@ -274,7 +274,7 @@ export interface GcpUserAccessBinding {
   scopedAccessSettings?: ReadonlyArray<ScopedAccessSettings>;
 }
 
-export const GcpUserAccessBinding: Schema.Schema<GcpUserAccessBinding> =
+export const GcpUserAccessBinding: Schema.Codec<GcpUserAccessBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     restrictedClientApplications: Schema.optional(Schema.Array(Application)),
@@ -292,7 +292,7 @@ export interface VpcSubNetwork {
   vpcIpSubnetworks?: ReadonlyArray<string>;
 }
 
-export const VpcSubNetwork: Schema.Schema<VpcSubNetwork> =
+export const VpcSubNetwork: Schema.Codec<VpcSubNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     vpcIpSubnetworks: Schema.optional(Schema.Array(Schema.String)),
@@ -303,7 +303,7 @@ export interface VpcNetworkSource {
   vpcSubnetwork?: VpcSubNetwork;
 }
 
-export const VpcNetworkSource: Schema.Schema<VpcNetworkSource> =
+export const VpcNetworkSource: Schema.Codec<VpcNetworkSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpcSubnetwork: Schema.optional(VpcSubNetwork),
   }).annotate({ identifier: "VpcNetworkSource" });
@@ -325,7 +325,7 @@ export interface OsConstraint {
   minimumVersion?: string;
 }
 
-export const OsConstraint: Schema.Schema<OsConstraint> =
+export const OsConstraint: Schema.Codec<OsConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requireVerifiedChromeOs: Schema.optional(Schema.Boolean),
     osType: Schema.optional(Schema.String),
@@ -355,7 +355,7 @@ export interface DevicePolicy {
   osConstraints?: ReadonlyArray<OsConstraint>;
 }
 
-export const DevicePolicy: Schema.Schema<DevicePolicy> =
+export const DevicePolicy: Schema.Codec<DevicePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedDeviceManagementLevels: Schema.optional(Schema.Array(Schema.String)),
     requireScreenlock: Schema.optional(Schema.Boolean),
@@ -382,7 +382,7 @@ export interface Condition {
   regions?: ReadonlyArray<string>;
 }
 
-export const Condition: Schema.Schema<Condition> =
+export const Condition: Schema.Codec<Condition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpcNetworkSources: Schema.optional(Schema.Array(VpcNetworkSource)),
     negate: Schema.optional(Schema.Boolean),
@@ -405,7 +405,7 @@ export interface AuditLogConfig {
     | (string & {});
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
     logType: Schema.optional(Schema.String),
@@ -418,7 +418,7 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
@@ -429,7 +429,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -441,7 +441,7 @@ export interface VpcAccessibleServices {
   enableRestriction?: boolean;
 }
 
-export const VpcAccessibleServices: Schema.Schema<VpcAccessibleServices> =
+export const VpcAccessibleServices: Schema.Codec<VpcAccessibleServices> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedServices: Schema.optional(Schema.Array(Schema.String)),
     enableRestriction: Schema.optional(Schema.Boolean),
@@ -456,7 +456,7 @@ export interface IngressTo {
   operations?: ReadonlyArray<ApiOperation>;
 }
 
-export const IngressTo: Schema.Schema<IngressTo> =
+export const IngressTo: Schema.Codec<IngressTo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roles: Schema.optional(Schema.Array(Schema.String)),
     resources: Schema.optional(Schema.Array(Schema.String)),
@@ -472,7 +472,7 @@ export interface IngressPolicy {
   ingressTo?: IngressTo;
 }
 
-export const IngressPolicy: Schema.Schema<IngressPolicy> =
+export const IngressPolicy: Schema.Codec<IngressPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     ingressFrom: Schema.optional(IngressFrom),
@@ -494,7 +494,7 @@ export interface ServicePerimeterConfig {
   restrictedServices?: ReadonlyArray<string>;
 }
 
-export const ServicePerimeterConfig: Schema.Schema<ServicePerimeterConfig> =
+export const ServicePerimeterConfig: Schema.Codec<ServicePerimeterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     egressPolicies: Schema.optional(Schema.Array(EgressPolicy)),
     vpcAccessibleServices: Schema.optional(VpcAccessibleServices),
@@ -513,7 +513,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -533,7 +533,7 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -546,7 +546,7 @@ export interface CustomLevel {
   expr?: Expr;
 }
 
-export const CustomLevel: Schema.Schema<CustomLevel> =
+export const CustomLevel: Schema.Codec<CustomLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expr: Schema.optional(Expr),
   }).annotate({ identifier: "CustomLevel" });
@@ -558,7 +558,7 @@ export interface BasicLevel {
   combiningFunction?: "AND" | "OR" | (string & {});
 }
 
-export const BasicLevel: Schema.Schema<BasicLevel> =
+export const BasicLevel: Schema.Codec<BasicLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(Schema.Array(Condition)),
     combiningFunction: Schema.optional(Schema.String),
@@ -577,7 +577,7 @@ export interface AccessLevel {
   basic?: BasicLevel;
 }
 
-export const AccessLevel: Schema.Schema<AccessLevel> =
+export const AccessLevel: Schema.Codec<AccessLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -591,7 +591,7 @@ export interface ReplaceAccessLevelsResponse {
   accessLevels?: ReadonlyArray<AccessLevel>;
 }
 
-export const ReplaceAccessLevelsResponse: Schema.Schema<ReplaceAccessLevelsResponse> =
+export const ReplaceAccessLevelsResponse: Schema.Codec<ReplaceAccessLevelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(AccessLevel)),
   }).annotate({ identifier: "ReplaceAccessLevelsResponse" });
@@ -605,7 +605,7 @@ export interface Binding {
   members?: ReadonlyArray<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     role: Schema.optional(Schema.String),
@@ -623,7 +623,7 @@ export interface Policy {
   auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     etag: Schema.optional(Schema.String),
@@ -638,7 +638,7 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(Policy),
@@ -646,7 +646,7 @@ export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -673,7 +673,7 @@ export interface ServicePerimeter {
   spec?: ServicePerimeterConfig;
 }
 
-export const ServicePerimeter: Schema.Schema<ServicePerimeter> =
+export const ServicePerimeter: Schema.Codec<ServicePerimeter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -698,7 +698,7 @@ export interface AccessPolicy {
   parent?: string;
 }
 
-export const AccessPolicy: Schema.Schema<AccessPolicy> =
+export const AccessPolicy: Schema.Codec<AccessPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     scopes: Schema.optional(Schema.Array(Schema.String)),
@@ -714,7 +714,7 @@ export interface ListAccessPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListAccessPoliciesResponse: Schema.Schema<ListAccessPoliciesResponse> =
+export const ListAccessPoliciesResponse: Schema.Codec<ListAccessPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessPolicies: Schema.optional(Schema.Array(AccessPolicy)),
     nextPageToken: Schema.optional(Schema.String),
@@ -727,7 +727,7 @@ export interface ReplaceServicePerimetersRequest {
   etag?: string;
 }
 
-export const ReplaceServicePerimetersRequest: Schema.Schema<ReplaceServicePerimetersRequest> =
+export const ReplaceServicePerimetersRequest: Schema.Codec<ReplaceServicePerimetersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
     etag: Schema.optional(Schema.String),
@@ -746,7 +746,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -764,7 +764,7 @@ export interface ListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -778,7 +778,7 @@ export interface ListGcpUserAccessBindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListGcpUserAccessBindingsResponse: Schema.Schema<ListGcpUserAccessBindingsResponse> =
+export const ListGcpUserAccessBindingsResponse: Schema.Codec<ListGcpUserAccessBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gcpUserAccessBindings: Schema.optional(Schema.Array(GcpUserAccessBinding)),
     nextPageToken: Schema.optional(Schema.String),
@@ -791,7 +791,7 @@ export interface ReplaceAccessLevelsRequest {
   etag?: string;
 }
 
-export const ReplaceAccessLevelsRequest: Schema.Schema<ReplaceAccessLevelsRequest> =
+export const ReplaceAccessLevelsRequest: Schema.Codec<ReplaceAccessLevelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(AccessLevel)),
     etag: Schema.optional(Schema.String),
@@ -821,7 +821,7 @@ export interface AuthorizedOrgsDesc {
     | (string & {});
 }
 
-export const AuthorizedOrgsDesc: Schema.Schema<AuthorizedOrgsDesc> =
+export const AuthorizedOrgsDesc: Schema.Codec<AuthorizedOrgsDesc> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizationDirection: Schema.optional(Schema.String),
     orgs: Schema.optional(Schema.Array(Schema.String)),
@@ -832,7 +832,7 @@ export const AuthorizedOrgsDesc: Schema.Schema<AuthorizedOrgsDesc> =
 
 export interface GcpUserAccessBindingOperationMetadata {}
 
-export const GcpUserAccessBindingOperationMetadata: Schema.Schema<GcpUserAccessBindingOperationMetadata> =
+export const GcpUserAccessBindingOperationMetadata: Schema.Codec<GcpUserAccessBindingOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GcpUserAccessBindingOperationMetadata",
   });
@@ -842,14 +842,14 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface AccessContextManagerOperationMetadata {}
 
-export const AccessContextManagerOperationMetadata: Schema.Schema<AccessContextManagerOperationMetadata> =
+export const AccessContextManagerOperationMetadata: Schema.Codec<AccessContextManagerOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AccessContextManagerOperationMetadata",
   });
@@ -861,7 +861,7 @@ export interface ListServicePerimetersResponse {
   nextPageToken?: string;
 }
 
-export const ListServicePerimetersResponse: Schema.Schema<ListServicePerimetersResponse> =
+export const ListServicePerimetersResponse: Schema.Codec<ListServicePerimetersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
     nextPageToken: Schema.optional(Schema.String),
@@ -872,14 +872,14 @@ export interface CommitServicePerimetersRequest {
   etag?: string;
 }
 
-export const CommitServicePerimetersRequest: Schema.Schema<CommitServicePerimetersRequest> =
+export const CommitServicePerimetersRequest: Schema.Codec<CommitServicePerimetersRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
   }).annotate({ identifier: "CommitServicePerimetersRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -891,7 +891,7 @@ export interface ListAuthorizedOrgsDescsResponse {
   nextPageToken?: string;
 }
 
-export const ListAuthorizedOrgsDescsResponse: Schema.Schema<ListAuthorizedOrgsDescsResponse> =
+export const ListAuthorizedOrgsDescsResponse: Schema.Codec<ListAuthorizedOrgsDescsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizedOrgsDescs: Schema.optional(Schema.Array(AuthorizedOrgsDesc)),
     nextPageToken: Schema.optional(Schema.String),
@@ -902,7 +902,7 @@ export interface ReplaceServicePerimetersResponse {
   servicePerimeters?: ReadonlyArray<ServicePerimeter>;
 }
 
-export const ReplaceServicePerimetersResponse: Schema.Schema<ReplaceServicePerimetersResponse> =
+export const ReplaceServicePerimetersResponse: Schema.Codec<ReplaceServicePerimetersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
   }).annotate({ identifier: "ReplaceServicePerimetersResponse" });
@@ -938,7 +938,7 @@ export interface SupportedService {
     | (string & {});
 }
 
-export const SupportedService: Schema.Schema<SupportedService> =
+export const SupportedService: Schema.Codec<SupportedService> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     availableOnRestrictedVip: Schema.optional(Schema.Boolean),
@@ -956,7 +956,7 @@ export interface ListSupportedServicesResponse {
   nextPageToken?: string;
 }
 
-export const ListSupportedServicesResponse: Schema.Schema<ListSupportedServicesResponse> =
+export const ListSupportedServicesResponse: Schema.Codec<ListSupportedServicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportedServices: Schema.optional(Schema.Array(SupportedService)),
     nextPageToken: Schema.optional(Schema.String),
@@ -967,7 +967,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -977,7 +977,7 @@ export interface CommitServicePerimetersResponse {
   servicePerimeters?: ReadonlyArray<ServicePerimeter>;
 }
 
-export const CommitServicePerimetersResponse: Schema.Schema<CommitServicePerimetersResponse> =
+export const CommitServicePerimetersResponse: Schema.Codec<CommitServicePerimetersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
   }).annotate({ identifier: "CommitServicePerimetersResponse" });
@@ -989,7 +989,7 @@ export interface ListSupportedPermissionsResponse {
   supportedPermissions?: ReadonlyArray<string>;
 }
 
-export const ListSupportedPermissionsResponse: Schema.Schema<ListSupportedPermissionsResponse> =
+export const ListSupportedPermissionsResponse: Schema.Codec<ListSupportedPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     supportedPermissions: Schema.optional(Schema.Array(Schema.String)),
@@ -1002,7 +1002,7 @@ export interface ListAccessLevelsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccessLevelsResponse: Schema.Schema<ListAccessLevelsResponse> =
+export const ListAccessLevelsResponse: Schema.Codec<ListAccessLevelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessLevels: Schema.optional(Schema.Array(AccessLevel)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1079,7 +1079,7 @@ export const PatchAccessPoliciesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchAccessPoliciesRequest>;
 
 export type PatchAccessPoliciesResponse = Operation;
 export const PatchAccessPoliciesResponse =
@@ -1115,7 +1115,7 @@ export const GetAccessPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetAccessPoliciesRequest>;
 
 export type GetAccessPoliciesResponse = AccessPolicy;
 export const GetAccessPoliciesResponse =
@@ -1146,7 +1146,7 @@ export const DeleteAccessPoliciesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccessPoliciesRequest>;
 
 export type DeleteAccessPoliciesResponse = Operation;
 export const DeleteAccessPoliciesResponse =
@@ -1189,7 +1189,7 @@ export const GetIamPolicyAccessPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyAccessPoliciesRequest>;
 
 export type GetIamPolicyAccessPoliciesResponse = Policy;
 export const GetIamPolicyAccessPoliciesResponse =
@@ -1225,7 +1225,7 @@ export const CreateAccessPoliciesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/accessPolicies", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<CreateAccessPoliciesRequest>;
 
 export type CreateAccessPoliciesResponse = Operation;
 export const CreateAccessPoliciesResponse =
@@ -1268,7 +1268,7 @@ export const SetIamPolicyAccessPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyAccessPoliciesRequest>;
 
 export type SetIamPolicyAccessPoliciesResponse = Policy;
 export const SetIamPolicyAccessPoliciesResponse =
@@ -1311,7 +1311,7 @@ export const TestIamPermissionsAccessPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsAccessPoliciesRequest>;
 
 export type TestIamPermissionsAccessPoliciesResponse =
   TestIamPermissionsResponse;
@@ -1354,7 +1354,7 @@ export const ListAccessPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/accessPolicies" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListAccessPoliciesRequest>;
 
 export type ListAccessPoliciesResponse_Op = ListAccessPoliciesResponse;
 export const ListAccessPoliciesResponse_Op =
@@ -1395,7 +1395,7 @@ export const ListAccessPoliciesAuthorizedOrgsDescsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/authorizedOrgsDescs" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccessPoliciesAuthorizedOrgsDescsRequest>;
+  ) as unknown as Schema.Codec<ListAccessPoliciesAuthorizedOrgsDescsRequest>;
 
 export type ListAccessPoliciesAuthorizedOrgsDescsResponse =
   ListAuthorizedOrgsDescsResponse;
@@ -1440,7 +1440,7 @@ export const PatchAccessPoliciesAuthorizedOrgsDescsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccessPoliciesAuthorizedOrgsDescsRequest>;
+  ) as unknown as Schema.Codec<PatchAccessPoliciesAuthorizedOrgsDescsRequest>;
 
 export type PatchAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const PatchAccessPoliciesAuthorizedOrgsDescsResponse =
@@ -1476,7 +1476,7 @@ export const GetAccessPoliciesAuthorizedOrgsDescsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccessPoliciesAuthorizedOrgsDescsRequest>;
+  ) as unknown as Schema.Codec<GetAccessPoliciesAuthorizedOrgsDescsRequest>;
 
 export type GetAccessPoliciesAuthorizedOrgsDescsResponse = AuthorizedOrgsDesc;
 export const GetAccessPoliciesAuthorizedOrgsDescsResponse =
@@ -1510,7 +1510,7 @@ export const DeleteAccessPoliciesAuthorizedOrgsDescsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccessPoliciesAuthorizedOrgsDescsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccessPoliciesAuthorizedOrgsDescsRequest>;
 
 export type DeleteAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const DeleteAccessPoliciesAuthorizedOrgsDescsResponse =
@@ -1553,7 +1553,7 @@ export const CreateAccessPoliciesAuthorizedOrgsDescsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccessPoliciesAuthorizedOrgsDescsRequest>;
+  ) as unknown as Schema.Codec<CreateAccessPoliciesAuthorizedOrgsDescsRequest>;
 
 export type CreateAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const CreateAccessPoliciesAuthorizedOrgsDescsResponse =
@@ -1596,7 +1596,7 @@ export const CreateAccessPoliciesAccessLevelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccessPoliciesAccessLevelsRequest>;
+  ) as unknown as Schema.Codec<CreateAccessPoliciesAccessLevelsRequest>;
 
 export type CreateAccessPoliciesAccessLevelsResponse = Operation;
 export const CreateAccessPoliciesAccessLevelsResponse =
@@ -1639,7 +1639,7 @@ export const ReplaceAllAccessPoliciesAccessLevelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReplaceAllAccessPoliciesAccessLevelsRequest>;
+  ) as unknown as Schema.Codec<ReplaceAllAccessPoliciesAccessLevelsRequest>;
 
 export type ReplaceAllAccessPoliciesAccessLevelsResponse = Operation;
 export const ReplaceAllAccessPoliciesAccessLevelsResponse =
@@ -1675,7 +1675,7 @@ export const DeleteAccessPoliciesAccessLevelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccessPoliciesAccessLevelsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccessPoliciesAccessLevelsRequest>;
 
 export type DeleteAccessPoliciesAccessLevelsResponse = Operation;
 export const DeleteAccessPoliciesAccessLevelsResponse =
@@ -1720,7 +1720,7 @@ export const GetAccessPoliciesAccessLevelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccessPoliciesAccessLevelsRequest>;
+  ) as unknown as Schema.Codec<GetAccessPoliciesAccessLevelsRequest>;
 
 export type GetAccessPoliciesAccessLevelsResponse = AccessLevel;
 export const GetAccessPoliciesAccessLevelsResponse =
@@ -1760,7 +1760,7 @@ export const PatchAccessPoliciesAccessLevelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccessPoliciesAccessLevelsRequest>;
+  ) as unknown as Schema.Codec<PatchAccessPoliciesAccessLevelsRequest>;
 
 export type PatchAccessPoliciesAccessLevelsResponse = Operation;
 export const PatchAccessPoliciesAccessLevelsResponse =
@@ -1811,7 +1811,7 @@ export const ListAccessPoliciesAccessLevelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/accessLevels" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccessPoliciesAccessLevelsRequest>;
+  ) as unknown as Schema.Codec<ListAccessPoliciesAccessLevelsRequest>;
 
 export type ListAccessPoliciesAccessLevelsResponse = ListAccessLevelsResponse;
 export const ListAccessPoliciesAccessLevelsResponse =
@@ -1856,7 +1856,7 @@ export const TestIamPermissionsAccessPoliciesAccessLevelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsAccessPoliciesAccessLevelsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsAccessPoliciesAccessLevelsRequest>;
 
 export type TestIamPermissionsAccessPoliciesAccessLevelsResponse =
   TestIamPermissionsResponse;
@@ -1893,7 +1893,7 @@ export const DeleteAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccessPoliciesServicePerimetersRequest>;
+  ) as unknown as Schema.Codec<DeleteAccessPoliciesServicePerimetersRequest>;
 
 export type DeleteAccessPoliciesServicePerimetersResponse = Operation;
 export const DeleteAccessPoliciesServicePerimetersResponse =
@@ -1936,7 +1936,7 @@ export const CreateAccessPoliciesServicePerimetersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccessPoliciesServicePerimetersRequest>;
+  ) as unknown as Schema.Codec<CreateAccessPoliciesServicePerimetersRequest>;
 
 export type CreateAccessPoliciesServicePerimetersResponse = Operation;
 export const CreateAccessPoliciesServicePerimetersResponse =
@@ -1979,7 +1979,7 @@ export const ReplaceAllAccessPoliciesServicePerimetersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReplaceAllAccessPoliciesServicePerimetersRequest>;
+  ) as unknown as Schema.Codec<ReplaceAllAccessPoliciesServicePerimetersRequest>;
 
 export type ReplaceAllAccessPoliciesServicePerimetersResponse = Operation;
 export const ReplaceAllAccessPoliciesServicePerimetersResponse =
@@ -2021,7 +2021,7 @@ export const PatchAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccessPoliciesServicePerimetersRequest>;
+  ) as unknown as Schema.Codec<PatchAccessPoliciesServicePerimetersRequest>;
 
 export type PatchAccessPoliciesServicePerimetersResponse = Operation;
 export const PatchAccessPoliciesServicePerimetersResponse =
@@ -2057,7 +2057,7 @@ export const GetAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccessPoliciesServicePerimetersRequest>;
+  ) as unknown as Schema.Codec<GetAccessPoliciesServicePerimetersRequest>;
 
 export type GetAccessPoliciesServicePerimetersResponse = ServicePerimeter;
 export const GetAccessPoliciesServicePerimetersResponse =
@@ -2098,7 +2098,7 @@ export const CommitAccessPoliciesServicePerimetersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CommitAccessPoliciesServicePerimetersRequest>;
+  ) as unknown as Schema.Codec<CommitAccessPoliciesServicePerimetersRequest>;
 
 export type CommitAccessPoliciesServicePerimetersResponse = Operation;
 export const CommitAccessPoliciesServicePerimetersResponse =
@@ -2140,7 +2140,7 @@ export const ListAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/servicePerimeters" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccessPoliciesServicePerimetersRequest>;
+  ) as unknown as Schema.Codec<ListAccessPoliciesServicePerimetersRequest>;
 
 export type ListAccessPoliciesServicePerimetersResponse =
   ListServicePerimetersResponse;
@@ -2186,7 +2186,7 @@ export const TestIamPermissionsAccessPoliciesServicePerimetersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsAccessPoliciesServicePerimetersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsAccessPoliciesServicePerimetersRequest>;
 
 export type TestIamPermissionsAccessPoliciesServicePerimetersResponse =
   TestIamPermissionsResponse;
@@ -2227,7 +2227,7 @@ export const ListPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/permissions" }),
   svc,
-) as unknown as Schema.Schema<ListPermissionsRequest>;
+) as unknown as Schema.Codec<ListPermissionsRequest>;
 
 export type ListPermissionsResponse = ListSupportedPermissionsResponse;
 export const ListPermissionsResponse =
@@ -2262,7 +2262,7 @@ export const DeleteOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2310,7 +2310,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
@@ -2348,7 +2348,7 @@ export const CancelOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2382,7 +2382,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2414,7 +2414,7 @@ export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/services" }),
   svc,
-) as unknown as Schema.Schema<ListServicesRequest>;
+) as unknown as Schema.Codec<ListServicesRequest>;
 
 export type ListServicesResponse = ListSupportedServicesResponse;
 export const ListServicesResponse =
@@ -2448,7 +2448,7 @@ export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/services/{name}" }),
   svc,
-) as unknown as Schema.Schema<GetServicesRequest>;
+) as unknown as Schema.Codec<GetServicesRequest>;
 
 export type GetServicesResponse = SupportedService;
 export const GetServicesResponse = /*@__PURE__*/ /*#__PURE__*/ SupportedService;
@@ -2478,7 +2478,7 @@ export const DeleteOrganizationsGcpUserAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsGcpUserAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsGcpUserAccessBindingsRequest>;
 
 export type DeleteOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const DeleteOrganizationsGcpUserAccessBindingsResponse =
@@ -2521,7 +2521,7 @@ export const CreateOrganizationsGcpUserAccessBindingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsGcpUserAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsGcpUserAccessBindingsRequest>;
 
 export type CreateOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const CreateOrganizationsGcpUserAccessBindingsResponse =
@@ -2566,7 +2566,7 @@ export const PatchOrganizationsGcpUserAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsGcpUserAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsGcpUserAccessBindingsRequest>;
 
 export type PatchOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const PatchOrganizationsGcpUserAccessBindingsResponse =
@@ -2602,7 +2602,7 @@ export const GetOrganizationsGcpUserAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsGcpUserAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsGcpUserAccessBindingsRequest>;
 
 export type GetOrganizationsGcpUserAccessBindingsResponse =
   GcpUserAccessBinding;
@@ -2643,7 +2643,7 @@ export const ListOrganizationsGcpUserAccessBindingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/gcpUserAccessBindings" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsGcpUserAccessBindingsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsGcpUserAccessBindingsRequest>;
 
 export type ListOrganizationsGcpUserAccessBindingsResponse =
   ListGcpUserAccessBindingsResponse;

@@ -38,7 +38,7 @@ describe("getOrg", () => {
 
       await runEffect(effect);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -53,6 +53,6 @@ describe("getOrg", () => {
 
       expect((error as { _tag: string })._tag).toBe("InternalServerError");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

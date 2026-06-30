@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest } from "../../errors.ts";
 
 // Input Schema
+export interface EngineeringAnalyticsPullRequestsInput {
+  project_id: string;
+  author?: string;
+  date_from?: string;
+  source_id?: string;
+}
 export const EngineeringAnalyticsPullRequestsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,35 @@ export const EngineeringAnalyticsPullRequestsInput =
       method: "GET",
       path: "/api/projects/{project_id}/engineering_analytics/pull_requests/",
     }),
-  );
-export type EngineeringAnalyticsPullRequestsInput =
-  typeof EngineeringAnalyticsPullRequestsInput.Type;
+  ) as unknown as Schema.Codec<EngineeringAnalyticsPullRequestsInput>;
 
 // Output Schema
+export interface EngineeringAnalyticsPullRequestsOutput {
+  items: {
+    author: {
+      handle: string;
+      display_name: string;
+      avatar_url: string;
+      is_bot: boolean;
+    };
+    repo: { provider: string; owner: string; name: string };
+    ci: { runs: number; passing: number; failing: number; pending: number };
+    number: number;
+    title: string;
+    state: "open" | "closed" | "merged";
+    is_draft: boolean;
+    created_at: string;
+    merged_at: string | null;
+    open_to_merge_seconds: number | null;
+    labels: string[];
+    pushes: number;
+    rerun_cycles: number;
+    estimated_cost_usd?: number | null;
+    billable_minutes?: number | null;
+  }[];
+  truncated: boolean;
+  limit: number;
+}
 export const EngineeringAnalyticsPullRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.Array(
@@ -57,9 +87,7 @@ export const EngineeringAnalyticsPullRequestsOutput =
     ),
     truncated: Schema.Boolean,
     limit: Schema.Number,
-  });
-export type EngineeringAnalyticsPullRequestsOutput =
-  typeof EngineeringAnalyticsPullRequestsOutput.Type;
+  }) as unknown as Schema.Codec<EngineeringAnalyticsPullRequestsOutput>;
 
 // The operation
 /**

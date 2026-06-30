@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisualReviewReposBaselinesRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const VisualReviewReposBaselinesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,16 +16,82 @@ export const VisualReviewReposBaselinesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/repos/{id}/baselines/",
     }),
-  );
-export type VisualReviewReposBaselinesRetrieveInput =
-  typeof VisualReviewReposBaselinesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposBaselinesRetrieveInput>;
 
 // Output Schema
+export interface VisualReviewReposBaselinesRetrieveOutput {
+  entries: {
+    quarantine?: {
+      created_by?: { id?: number; first_name?: string; email?: string } | null;
+      source_run?: {
+        id: string;
+        branch: string;
+        commit_sha: string;
+        created_at: string;
+        pr_number?: number | null;
+      } | null;
+      id: string;
+      reason: string;
+      expires_at: string | null;
+      created_at: string;
+    } | null;
+    identifier: string;
+    run_type: string;
+    browser: string | null;
+    thumbnail_hash: string | null;
+    width: number | null;
+    height: number | null;
+    tolerate_count_30d: number;
+    tolerate_count_90d: number;
+    is_quarantined: boolean;
+    last_run_at: string;
+    baseline_change_count: number;
+    recent_drift_avg: number | null;
+  }[];
+  totals: {
+    by_run_type: Record<string, number>;
+    all_snapshots: number;
+    recently_tolerated: number;
+    frequently_tolerated: number;
+    currently_quarantined: number;
+  };
+  truncated: boolean;
+  generated_at: string;
+}
 export const VisualReviewReposBaselinesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.Array(
       Schema.Struct({
-        quarantine: Schema.optional(Schema.Unknown),
+        quarantine: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              created_by: Schema.optional(
+                Schema.NullOr(
+                  Schema.Struct({
+                    id: Schema.optional(Schema.Number),
+                    first_name: Schema.optional(Schema.String),
+                    email: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              source_run: Schema.optional(
+                Schema.NullOr(
+                  Schema.Struct({
+                    id: Schema.String,
+                    branch: Schema.String,
+                    commit_sha: Schema.String,
+                    created_at: Schema.String,
+                    pr_number: Schema.optional(Schema.NullOr(Schema.Number)),
+                  }),
+                ),
+              ),
+              id: Schema.String,
+              reason: Schema.String,
+              expires_at: Schema.NullOr(Schema.String),
+              created_at: Schema.String,
+            }),
+          ),
+        ),
         identifier: Schema.String,
         run_type: Schema.String,
         browser: Schema.NullOr(Schema.String),
@@ -45,9 +115,7 @@ export const VisualReviewReposBaselinesRetrieveOutput =
     }),
     truncated: Schema.Boolean,
     generated_at: Schema.String,
-  });
-export type VisualReviewReposBaselinesRetrieveOutput =
-  typeof VisualReviewReposBaselinesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewReposBaselinesRetrieveOutput>;
 
 // The operation
 /**

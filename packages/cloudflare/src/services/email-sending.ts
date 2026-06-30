@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service email-sending
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -39,6 +39,223 @@ export class SendingSubdomainNotFound extends T.applyErrorMatchers(
   ),
   [{ code: 2033 }],
 ) {}
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface EmailSendingEmailAddressObject {
+  /** Email address (e.g., 'user@example.com'). */
+  address: string;
+  /** Display name for the email address (e.g., 'John Doe'). */
+  name: string;
+}
+const EmailSendingEmailAddressObject =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      address: Schema.String,
+      name: Schema.String,
+    }),
+  ) as unknown as Schema.Codec<EmailSendingEmailAddressObject>;
+
+interface EmailSendingEmailInlineAttachment {
+  /** Base64-encoded content of the attachment. */
+  content: string;
+  /** Content ID used to reference this attachment in HTML via cid: URI (e.g., <img src="cid:logo">). */
+  contentId: string;
+  /** Must be 'inline'. Indicates the attachment is embedded in the email body. */
+  disposition: "inline";
+  /** Filename for the attachment. */
+  filename: string;
+  /** MIME type of the attachment (e.g., 'image/png', 'text/plain'). */
+  type: string;
+}
+const EmailSendingEmailInlineAttachment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      content: Schema.String,
+      contentId: Schema.String,
+      disposition: Schema.Literal("inline"),
+      filename: Schema.String,
+      type: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        content: "content",
+        contentId: "content_id",
+        disposition: "disposition",
+        filename: "filename",
+        type: "type",
+      }),
+    ),
+  ) as unknown as Schema.Codec<EmailSendingEmailInlineAttachment>;
+
+interface EmailSendingEmailAttachment {
+  /** Base64-encoded content of the attachment. */
+  content: string;
+  /** Must be 'attachment'. Indicates a standard file attachment. */
+  disposition: "attachment";
+  /** Filename for the attachment. */
+  filename: string;
+  /** MIME type of the attachment (e.g., 'application/pdf', 'text/plain'). */
+  type: string;
+}
+const EmailSendingEmailAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      content: Schema.String,
+      disposition: Schema.Literal("attachment"),
+      filename: Schema.String,
+      type: Schema.String,
+    }),
+) as unknown as Schema.Codec<EmailSendingEmailAttachment>;
+
+interface ListSubdomainsResponseResult {
+  /** Whether Email Sending is enabled on this subdomain. */
+  enabled: boolean;
+  /** The subdomain domain name. */
+  name: string;
+  /** Sending subdomain identifier. */
+  tag: string;
+  /** The date and time the destination address has been created. */
+  created?: string | null;
+  /** The DKIM selector used for email signing. */
+  dkimSelector?: string | null;
+  /** The date and time the destination address was last modified. */
+  modified?: string | null;
+  /** The return-path domain used for bounce handling. */
+  returnPathDomain?: string | null;
+}
+const ListSubdomainsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      tag: Schema.String,
+      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      dkimSelector: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      returnPathDomain: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        name: "name",
+        tag: "tag",
+        created: "created",
+        dkimSelector: "dkim_selector",
+        modified: "modified",
+        returnPathDomain: "return_path_domain",
+      }),
+    ),
+) as unknown as Schema.Codec<ListSubdomainsResponseResult>;
+
+interface Source {
+  pointer?: string | null;
+}
+const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Source>;
+
+interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: { pointer?: string | null } | null;
+}
+const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.Number,
+    message: Schema.String,
+    documentationUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      code: "code",
+      message: "message",
+      documentationUrl: "documentation_url",
+      source: "source",
+    }),
+  ),
+) as unknown as Schema.Codec<Error2>;
+
+interface Dnsrecord {
+  /** DNS record content. */
+  content?: string | null;
+  /** DNS record name (or @ for the zone apex). */
+  name?: string | null;
+  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
+  priority?: number | null;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  ttl?: number | "1" | null;
+  /** DNS record type. */
+  type?:
+    | "A"
+    | "AAAA"
+    | "CNAME"
+    | "HTTPS"
+    | "TXT"
+    | "SRV"
+    | "LOC"
+    | "MX"
+    | "NS"
+    | "CERT"
+    | "DNSKEY"
+    | "DS"
+    | "NAPTR"
+    | "SMIMEA"
+    | "SSHFP"
+    | "SVCB"
+    | "TLSA"
+    | "URI"
+    | (string & {})
+    | null;
+}
+const Dnsrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    ttl: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Number, Schema.Literal("1")]),
+        Schema.Null,
+      ]),
+    ),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "A",
+            "AAAA",
+            "CNAME",
+            "HTTPS",
+            "TXT",
+            "SRV",
+            "LOC",
+            "MX",
+            "NS",
+            "CERT",
+            "DNSKEY",
+            "DS",
+            "NAPTR",
+            "SMIMEA",
+            "SSHFP",
+            "SVCB",
+            "TLSA",
+            "URI",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<Dnsrecord>;
 
 // =============================================================================
 // EmailSending
@@ -87,38 +304,13 @@ export const SendEmailSendingRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      from: Schema.Union([
-        Schema.Struct({
-          address: Schema.String,
-          name: Schema.String,
-        }),
-        Schema.String,
-      ]),
+      from: Schema.Union([EmailSendingEmailAddressObject, Schema.String]),
       subject: Schema.String,
       attachments: Schema.optional(
         Schema.Array(
           Schema.Union([
-            Schema.Struct({
-              content: Schema.String,
-              contentId: Schema.String,
-              disposition: Schema.Literal("inline"),
-              filename: Schema.String,
-              type: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                content: "content",
-                contentId: "content_id",
-                disposition: "disposition",
-                filename: "filename",
-                type: "type",
-              }),
-            ),
-            Schema.Struct({
-              content: Schema.String,
-              disposition: Schema.Literal("attachment"),
-              filename: Schema.String,
-              type: Schema.String,
-            }),
+            EmailSendingEmailInlineAttachment,
+            EmailSendingEmailAttachment,
           ]),
         ),
       ),
@@ -131,13 +323,7 @@ export const SendEmailSendingRequest =
       headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       html: Schema.optional(Schema.String),
       replyTo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            address: Schema.String,
-            name: Schema.String,
-          }),
-          Schema.String,
-        ]),
+        Schema.Union([EmailSendingEmailAddressObject, Schema.String]),
       ),
       text: Schema.optional(Schema.String),
       to: Schema.optional(
@@ -161,7 +347,7 @@ export const SendEmailSendingRequest =
         path: "/accounts/{account_id}/email/sending/send",
       }),
     ),
-  ) as unknown as Schema.Schema<SendEmailSendingRequest>;
+  ) as unknown as Schema.Codec<SendEmailSendingRequest>;
 
 export interface SendEmailSendingResponse {
   /** Email addresses to which the message was delivered immediately. */
@@ -191,7 +377,7 @@ export const SendEmailSendingResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<SendEmailSendingResponse>;
+  ) as unknown as Schema.Codec<SendEmailSendingResponse>;
 
 export type SendEmailSendingError = DefaultErrors;
 
@@ -239,7 +425,7 @@ export const SendRawEmailSendingRequest =
         path: "/accounts/{account_id}/email/sending/send_raw",
       }),
     ),
-  ) as unknown as Schema.Schema<SendRawEmailSendingRequest>;
+  ) as unknown as Schema.Codec<SendRawEmailSendingRequest>;
 
 export interface SendRawEmailSendingResponse {
   /** Email addresses to which the message was delivered immediately. */
@@ -269,7 +455,7 @@ export const SendRawEmailSendingResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<SendRawEmailSendingResponse>;
+  ) as unknown as Schema.Codec<SendRawEmailSendingResponse>;
 
 export type SendRawEmailSendingError = DefaultErrors;
 
@@ -305,7 +491,7 @@ export const GetSubdomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/email/sending/subdomains/{subdomainId}",
       }),
     ),
-) as unknown as Schema.Schema<GetSubdomainRequest>;
+) as unknown as Schema.Codec<GetSubdomainRequest>;
 
 export interface GetSubdomainResponse {
   /** Whether Email Sending is enabled on this subdomain. */
@@ -349,7 +535,7 @@ export const GetSubdomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetSubdomainResponse>;
+) as unknown as Schema.Codec<GetSubdomainResponse>;
 
 export type GetSubdomainError =
   | DefaultErrors
@@ -382,7 +568,7 @@ export const ListSubdomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/email/sending/subdomains",
       }),
     ),
-) as unknown as Schema.Schema<ListSubdomainsRequest>;
+) as unknown as Schema.Codec<ListSubdomainsRequest>;
 
 export interface ListSubdomainsResponse {
   result: {
@@ -399,33 +585,9 @@ export interface ListSubdomainsResponse {
 export const ListSubdomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          tag: Schema.String,
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          dkimSelector: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          returnPathDomain: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            enabled: "enabled",
-            name: "name",
-            tag: "tag",
-            created: "created",
-            dkimSelector: "dkim_selector",
-            modified: "modified",
-            returnPathDomain: "return_path_domain",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListSubdomainsResponseResult),
     }),
-  ) as unknown as Schema.Schema<ListSubdomainsResponse>;
+  ) as unknown as Schema.Codec<ListSubdomainsResponse>;
 
 export type ListSubdomainsError = DefaultErrors | Forbidden;
 
@@ -462,7 +624,7 @@ export const CreateSubdomainRequest =
         path: "/zones/{zone_id}/email/sending/subdomains",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateSubdomainRequest>;
+  ) as unknown as Schema.Codec<CreateSubdomainRequest>;
 
 export interface CreateSubdomainResponse {
   /** Whether Email Sending is enabled on this subdomain. */
@@ -506,7 +668,7 @@ export const CreateSubdomainResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateSubdomainResponse>;
+  ) as unknown as Schema.Codec<CreateSubdomainResponse>;
 
 export type CreateSubdomainError =
   | DefaultErrors
@@ -541,7 +703,7 @@ export const DeleteSubdomainRequest =
         path: "/zones/{zone_id}/email/sending/subdomains/{subdomainId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteSubdomainRequest>;
+  ) as unknown as Schema.Codec<DeleteSubdomainRequest>;
 
 export interface DeleteSubdomainResponse {
   errors: {
@@ -563,61 +725,11 @@ export interface DeleteSubdomainResponse {
 export const DeleteSubdomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<DeleteSubdomainResponse>;
+  ) as unknown as Schema.Codec<DeleteSubdomainResponse>;
 
 export type DeleteSubdomainError =
   | DefaultErrors
@@ -656,7 +768,7 @@ export const GetSubdomainDnsRequest =
         path: "/zones/{zone_id}/email/sending/subdomains/{subdomainId}/dns",
       }),
     ),
-  ) as unknown as Schema.Schema<GetSubdomainDnsRequest>;
+  ) as unknown as Schema.Codec<GetSubdomainDnsRequest>;
 
 export interface GetSubdomainDnsResponse {
   result: {
@@ -691,49 +803,9 @@ export interface GetSubdomainDnsResponse {
 export const GetSubdomainDnsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          ttl: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Number, Schema.Literal("1")]),
-              Schema.Null,
-            ]),
-          ),
-          type: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "A",
-                  "AAAA",
-                  "CNAME",
-                  "HTTPS",
-                  "TXT",
-                  "SRV",
-                  "LOC",
-                  "MX",
-                  "NS",
-                  "CERT",
-                  "DNSKEY",
-                  "DS",
-                  "NAPTR",
-                  "SMIMEA",
-                  "SSHFP",
-                  "SVCB",
-                  "TLSA",
-                  "URI",
-                ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-      ),
+      result: Schema.Array(Dnsrecord),
     }),
-  ) as unknown as Schema.Schema<GetSubdomainDnsResponse>;
+  ) as unknown as Schema.Codec<GetSubdomainDnsResponse>;
 
 export type GetSubdomainDnsError = DefaultErrors;
 

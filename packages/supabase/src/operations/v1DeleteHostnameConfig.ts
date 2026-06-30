@@ -4,21 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1DeleteHostnameConfigInput {
+  ref: string;
+  remove_addon?: boolean;
+}
 export const V1DeleteHostnameConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     remove_addon: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/custom-hostname" }),
-  );
-export type V1DeleteHostnameConfigInput =
-  typeof V1DeleteHostnameConfigInput.Type;
+  ) as unknown as Schema.Codec<V1DeleteHostnameConfigInput>;
 
 // Output Schema
+export type V1DeleteHostnameConfigOutput = void;
 export const V1DeleteHostnameConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DeleteHostnameConfigOutput =
-  typeof V1DeleteHostnameConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteHostnameConfigOutput>;
 
 // The operation
 /**

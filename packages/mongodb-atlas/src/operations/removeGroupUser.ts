@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RemoveGroupUserInput {
+  groupId: string;
+  userId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RemoveGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const RemoveGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/api/atlas/v2/groups/{groupId}/users/{userId}",
   }),
-);
-export type RemoveGroupUserInput = typeof RemoveGroupUserInput.Type;
+) as unknown as Schema.Codec<RemoveGroupUserInput>;
 
 // Output Schema
-export const RemoveGroupUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemoveGroupUserOutput = typeof RemoveGroupUserOutput.Type;
+export type RemoveGroupUserOutput = void;
+export const RemoveGroupUserOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupUserOutput>;
 
 // The operation
 /**

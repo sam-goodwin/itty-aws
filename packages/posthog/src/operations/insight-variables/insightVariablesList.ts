@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightVariablesListInput {
+  project_id: string;
+  page?: number;
+}
 export const InsightVariablesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,24 @@ export const InsightVariablesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/insight_variables/",
     }),
-  );
-export type InsightVariablesListInput = typeof InsightVariablesListInput.Type;
+  ) as unknown as Schema.Codec<InsightVariablesListInput>;
 
 // Output Schema
+export interface InsightVariablesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    type?: "String" | "Number" | "Boolean" | "List" | "Date";
+    default_value?: unknown;
+    created_by?: number | null;
+    created_at?: string;
+    code_name?: string | null;
+    values?: unknown;
+  }[];
+}
 export const InsightVariablesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -38,8 +56,7 @@ export const InsightVariablesListOutput =
         }),
       ),
     ),
-  });
-export type InsightVariablesListOutput = typeof InsightVariablesListOutput.Type;
+  }) as unknown as Schema.Codec<InsightVariablesListOutput>;
 
 // The operation
 /**

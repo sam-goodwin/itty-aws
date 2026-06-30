@@ -4,6 +4,32 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput {
+  id: string;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+  schemas?: {
+    id?: string;
+    should_sync?: boolean;
+    sync_type?:
+      | "full_refresh"
+      | "incremental"
+      | "append"
+      | "webhook"
+      | "cdc"
+      | "xmin"
+      | null;
+    incremental_field?: string | null;
+    incremental_field_type?: string | null;
+    sync_frequency?: string | null;
+    sync_time_of_day?: string | null;
+    cdc_table_mode?: "consolidated" | "cdc_only" | "both" | null;
+    enabled_columns?: string[] | null;
+    row_filters?: { column: string; operator: string; value: unknown }[] | null;
+  }[];
+}
 export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -16,12 +42,27 @@ export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput =
         Schema.Struct({
           id: Schema.optional(Schema.String),
           should_sync: Schema.optional(Schema.Boolean),
-          sync_type: Schema.optional(Schema.Unknown),
+          sync_type: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "full_refresh",
+                "incremental",
+                "append",
+                "webhook",
+                "cdc",
+                "xmin",
+              ]),
+            ),
+          ),
           incremental_field: Schema.optional(Schema.NullOr(Schema.String)),
           incremental_field_type: Schema.optional(Schema.NullOr(Schema.String)),
           sync_frequency: Schema.optional(Schema.NullOr(Schema.String)),
           sync_time_of_day: Schema.optional(Schema.NullOr(Schema.String)),
-          cdc_table_mode: Schema.optional(Schema.Unknown),
+          cdc_table_mode: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals(["consolidated", "cdc_only", "both"]),
+            ),
+          ),
           enabled_columns: Schema.optional(
             Schema.NullOr(Schema.Array(Schema.String)),
           ),
@@ -44,11 +85,74 @@ export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/external_data_sources/{id}/bulk_update_schemas/",
     }),
-  );
-export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput =
-  typeof ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ExternalDataSourcesBulkUpdateSchemasPartialUpdateInput>;
 
 // Output Schema
+export interface ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    label?: string | null;
+    table?: Record<string, unknown> | null;
+    should_sync?: boolean;
+    last_synced_at?: string | null;
+    latest_error?: string | null;
+    incremental?: boolean;
+    status?: string | null;
+    sync_type?:
+      | "full_refresh"
+      | "incremental"
+      | "append"
+      | "webhook"
+      | "cdc"
+      | "xmin"
+      | null;
+    incremental_field?: string | null;
+    incremental_field_type?:
+      | "integer"
+      | "numeric"
+      | "datetime"
+      | "date"
+      | "timestamp"
+      | "objectid"
+      | "xid"
+      | null;
+    incremental_field_lookback_seconds?: number | null;
+    sync_frequency?:
+      | "never"
+      | "1min"
+      | "5min"
+      | "15min"
+      | "30min"
+      | "1hour"
+      | "6hour"
+      | "12hour"
+      | "24hour"
+      | "7day"
+      | "30day"
+      | null;
+    sync_time_of_day?: string | null;
+    description?: string | null;
+    primary_key_columns?: string[] | null;
+    cdc_table_mode?: "consolidated" | "cdc_only" | "both" | null;
+    enabled_columns?: string[] | null;
+    row_filters?: { column: string; operator: string; value: unknown }[] | null;
+    available_columns?: {
+      name: string;
+      data_type?: string;
+      is_nullable?: boolean;
+    }[];
+    source?: {
+      id?: string;
+      source_type?: string;
+      supports_column_selection?: boolean;
+      user_access_level?: string | null;
+    } | null;
+  }[];
+}
 export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -68,19 +172,62 @@ export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput =
           latest_error: Schema.optional(Schema.NullOr(Schema.String)),
           incremental: Schema.optional(Schema.Boolean),
           status: Schema.optional(Schema.NullOr(Schema.String)),
-          sync_type: Schema.optional(Schema.Unknown),
+          sync_type: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "full_refresh",
+                "incremental",
+                "append",
+                "webhook",
+                "cdc",
+                "xmin",
+              ]),
+            ),
+          ),
           incremental_field: Schema.optional(Schema.NullOr(Schema.String)),
-          incremental_field_type: Schema.optional(Schema.Unknown),
+          incremental_field_type: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "integer",
+                "numeric",
+                "datetime",
+                "date",
+                "timestamp",
+                "objectid",
+                "xid",
+              ]),
+            ),
+          ),
           incremental_field_lookback_seconds: Schema.optional(
             Schema.NullOr(Schema.Number),
           ),
-          sync_frequency: Schema.optional(Schema.Unknown),
+          sync_frequency: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "never",
+                "1min",
+                "5min",
+                "15min",
+                "30min",
+                "1hour",
+                "6hour",
+                "12hour",
+                "24hour",
+                "7day",
+                "30day",
+              ]),
+            ),
+          ),
           sync_time_of_day: Schema.optional(Schema.NullOr(Schema.String)),
           description: Schema.optional(Schema.NullOr(Schema.String)),
           primary_key_columns: Schema.optional(
             Schema.NullOr(Schema.Array(Schema.String)),
           ),
-          cdc_table_mode: Schema.optional(Schema.Unknown),
+          cdc_table_mode: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals(["consolidated", "cdc_only", "both"]),
+            ),
+          ),
           enabled_columns: Schema.optional(
             Schema.NullOr(Schema.Array(Schema.String)),
           ),
@@ -119,9 +266,7 @@ export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput =
         }),
       ),
     ),
-  });
-export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput =
-  typeof ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalDataSourcesBulkUpdateSchemasPartialUpdateOutput>;
 
 // The operation
 /**

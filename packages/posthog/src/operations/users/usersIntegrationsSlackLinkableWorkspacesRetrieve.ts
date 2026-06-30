@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UsersIntegrationsSlackLinkableWorkspacesRetrieveInput {
+  uuid: string;
+}
 export const UsersIntegrationsSlackLinkableWorkspacesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,18 @@ export const UsersIntegrationsSlackLinkableWorkspacesRetrieveInput =
       method: "GET",
       path: "/api/users/{uuid}/integrations/slack/linkable_workspaces/",
     }),
-  );
-export type UsersIntegrationsSlackLinkableWorkspacesRetrieveInput =
-  typeof UsersIntegrationsSlackLinkableWorkspacesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UsersIntegrationsSlackLinkableWorkspacesRetrieveInput>;
 
 // Output Schema
+export interface UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput {
+  results: {
+    posthog_team_id: number;
+    posthog_team_name: string;
+    posthog_organization_name: string;
+    slack_team_id: string;
+    slack_team_name?: string | null;
+  }[];
+}
 export const UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -27,9 +37,7 @@ export const UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput =
         slack_team_name: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput =
-  typeof UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateTrafficBudgetInput {
+  organization: string;
+  database: string;
+  branch: string;
+  id: string;
+  name?: string;
+  mode?: "enforce" | "warn" | "off";
+  capacity?: number;
+  rate?: number;
+  burst?: number;
+  concurrency?: number;
+  warning_threshold?: number;
+  rules?: string[];
+}
 export const UpdateTrafficBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -23,10 +37,38 @@ export const UpdateTrafficBudgetInput =
       method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{id}",
     }),
-  );
-export type UpdateTrafficBudgetInput = typeof UpdateTrafficBudgetInput.Type;
+  ) as unknown as Schema.Codec<UpdateTrafficBudgetInput>;
 
 // Output Schema
+export interface UpdateTrafficBudgetOutput {
+  id: string;
+  name: string;
+  mode: "enforce" | "warn" | "off";
+  capacity?: number | null;
+  rate?: number | null;
+  burst?: number | null;
+  concurrency?: number | null;
+  warning_threshold?: number | null;
+  actor: { id: string; display_name: string; avatar_url: string };
+  rules: {
+    id: string;
+    kind: "match" | "each";
+    tags: {
+      key_id: string;
+      key: string;
+      value: string;
+      source: "sql" | "system";
+    }[];
+    fingerprint?: string | null;
+    keyspace?: string | null;
+    actor: { id: string; display_name: string; avatar_url: string };
+    syntax_highlighted_sql: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  created_at: string;
+  updated_at: string;
+}
 export const UpdateTrafficBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -68,8 +110,7 @@ export const UpdateTrafficBudgetOutput =
     ),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type UpdateTrafficBudgetOutput = typeof UpdateTrafficBudgetOutput.Type;
+  }) as unknown as Schema.Codec<UpdateTrafficBudgetOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface IntegrationsGithubPrepareCallbackCreateInput {
+  project_id: string;
+  next?: string;
+  installation_id?: string;
+}
 export const IntegrationsGithubPrepareCallbackCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const IntegrationsGithubPrepareCallbackCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/integrations/github/prepare_callback/",
     }),
-  );
-export type IntegrationsGithubPrepareCallbackCreateInput =
-  typeof IntegrationsGithubPrepareCallbackCreateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGithubPrepareCallbackCreateInput>;
 
 // Output Schema
+export type IntegrationsGithubPrepareCallbackCreateOutput = void;
 export const IntegrationsGithubPrepareCallbackCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsGithubPrepareCallbackCreateOutput =
-  typeof IntegrationsGithubPrepareCallbackCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsGithubPrepareCallbackCreateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisualReviewReposRunsListInput {
+  project_id: string;
+  repo_id: string;
+  limit?: number;
+  offset?: number;
+  review_state?: string;
+  search?: string;
+}
 export const VisualReviewReposRunsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +24,42 @@ export const VisualReviewReposRunsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/repos/{repo_id}/runs/",
     }),
-  );
-export type VisualReviewReposRunsListInput =
-  typeof VisualReviewReposRunsListInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposRunsListInput>;
 
 // Output Schema
+export interface VisualReviewReposRunsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    approved_by?: { id?: number; first_name?: string; email?: string } | null;
+    search_match_type?: "exact" | "similar" | null;
+    id?: string;
+    repo_id?: string;
+    status?: string;
+    run_type?: string;
+    commit_sha?: string;
+    branch?: string;
+    pr_number?: number | null;
+    approved?: boolean;
+    approved_at?: string | null;
+    summary?: {
+      total?: number;
+      changed?: number;
+      new?: number;
+      removed?: number;
+      unchanged?: number;
+      unresolved?: number;
+      tolerated_matched?: number;
+    };
+    error_message?: string | null;
+    created_at?: string;
+    completed_at?: string | null;
+    is_stale?: boolean;
+    superseded_by_id?: string | null;
+    metadata?: Record<string, unknown>;
+  }[];
+}
 export const VisualReviewReposRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -29,8 +68,18 @@ export const VisualReviewReposRunsListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          approved_by: Schema.optional(Schema.Unknown),
-          search_match_type: Schema.optional(Schema.Unknown),
+          approved_by: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.Number),
+                first_name: Schema.optional(Schema.String),
+                email: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          search_match_type: Schema.optional(
+            Schema.NullOr(Schema.Literals(["exact", "similar"])),
+          ),
           id: Schema.optional(Schema.String),
           repo_id: Schema.optional(Schema.String),
           status: Schema.optional(Schema.String),
@@ -62,9 +111,7 @@ export const VisualReviewReposRunsListOutput =
         }),
       ),
     ),
-  });
-export type VisualReviewReposRunsListOutput =
-  typeof VisualReviewReposRunsListOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewReposRunsListOutput>;
 
 // The operation
 /**

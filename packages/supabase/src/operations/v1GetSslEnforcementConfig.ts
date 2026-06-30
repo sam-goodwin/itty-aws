@@ -4,25 +4,28 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetSslEnforcementConfigInput {
+  ref: string;
+}
 export const V1GetSslEnforcementConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/ssl-enforcement" }),
-  );
-export type V1GetSslEnforcementConfigInput =
-  typeof V1GetSslEnforcementConfigInput.Type;
+  ) as unknown as Schema.Codec<V1GetSslEnforcementConfigInput>;
 
 // Output Schema
+export interface V1GetSslEnforcementConfigOutput {
+  currentConfig: { database: boolean };
+  appliedSuccessfully: boolean;
+}
 export const V1GetSslEnforcementConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentConfig: Schema.Struct({
       database: Schema.Boolean,
     }),
     appliedSuccessfully: Schema.Boolean,
-  });
-export type V1GetSslEnforcementConfigOutput =
-  typeof V1GetSslEnforcementConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1GetSslEnforcementConfigOutput>;
 
 // The operation
 /**

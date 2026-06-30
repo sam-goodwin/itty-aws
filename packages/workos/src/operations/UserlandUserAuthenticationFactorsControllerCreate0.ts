@@ -3,8 +3,16 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface UserlandUserAuthenticationFactorsControllerCreate0Input {
+  userlandUserId: string;
+  type?: string;
+  totp_issuer?: string;
+  totp_user?: string;
+  totp_secret?: string | Redacted.Redacted<string>;
+}
 export const UserlandUserAuthenticationFactorsControllerCreate0Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userlandUserId: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,36 @@ export const UserlandUserAuthenticationFactorsControllerCreate0Input =
       method: "POST",
       path: "/user_management/users/{userlandUserId}/auth_factors",
     }),
-  );
-export type UserlandUserAuthenticationFactorsControllerCreate0Input =
-  typeof UserlandUserAuthenticationFactorsControllerCreate0Input.Type;
+  ) as unknown as Schema.Codec<UserlandUserAuthenticationFactorsControllerCreate0Input>;
 
 // Output Schema
+export interface UserlandUserAuthenticationFactorsControllerCreate0Output {
+  authentication_factor?: {
+    object?: string;
+    id?: string;
+    type?: "generic_otp" | "sms" | "totp" | "webauthn";
+    user_id?: string;
+    sms?: { phone_number: string };
+    totp?: {
+      issuer: string;
+      user: string;
+      secret: Redacted.Redacted<string>;
+      qr_code: string;
+      uri: string;
+    };
+    created_at?: string;
+    updated_at?: string;
+  };
+  authentication_challenge?: {
+    object?: string;
+    id?: string;
+    expires_at?: string;
+    code?: string;
+    authentication_factor_id?: string;
+    created_at?: string;
+    updated_at?: string;
+  };
+}
 export const UserlandUserAuthenticationFactorsControllerCreate0Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authentication_factor: Schema.optional(
@@ -61,9 +94,7 @@ export const UserlandUserAuthenticationFactorsControllerCreate0Output =
         updated_at: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UserlandUserAuthenticationFactorsControllerCreate0Output =
-  typeof UserlandUserAuthenticationFactorsControllerCreate0Output.Type;
+  }) as unknown as Schema.Codec<UserlandUserAuthenticationFactorsControllerCreate0Output>;
 
 // The operation
 /**

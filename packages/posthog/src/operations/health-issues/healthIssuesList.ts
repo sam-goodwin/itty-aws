@@ -3,6 +3,15 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface HealthIssuesListInput {
+  project_id: string;
+  dismissed?: boolean;
+  kind?: string;
+  limit?: number;
+  offset?: number;
+  severity?: string;
+  status?: string;
+}
 export const HealthIssuesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   dismissed: Schema.optional(Schema.Boolean),
@@ -13,10 +22,25 @@ export const HealthIssuesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/health_issues/" }),
-);
-export type HealthIssuesListInput = typeof HealthIssuesListInput.Type;
+) as unknown as Schema.Codec<HealthIssuesListInput>;
 
 // Output Schema
+export interface HealthIssuesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    kind?: string;
+    severity?: "critical" | "warning" | "info";
+    status?: "active" | "resolved";
+    dismissed?: boolean;
+    payload?: Record<string, unknown>;
+    created_at?: string;
+    updated_at?: string;
+    resolved_at?: string | null;
+  }[];
+}
 export const HealthIssuesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     count: Schema.optional(Schema.Number),
@@ -42,8 +66,7 @@ export const HealthIssuesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type HealthIssuesListOutput = typeof HealthIssuesListOutput.Type;
+) as unknown as Schema.Codec<HealthIssuesListOutput>;
 
 // The operation
 /**

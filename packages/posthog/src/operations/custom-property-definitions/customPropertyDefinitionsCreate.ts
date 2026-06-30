@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomPropertyDefinitionsCreateInput {
+  project_id: string;
+  id: string;
+  name: string;
+  description?: string | null;
+  display_type:
+    | "text"
+    | "number"
+    | "currency"
+    | "percent"
+    | "date"
+    | "datetime"
+    | "boolean";
+  is_big_number?: boolean;
+  created_at: string;
+  created_by: number | null;
+  updated_at: string | null;
+}
 export const CustomPropertyDefinitionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -27,11 +45,26 @@ export const CustomPropertyDefinitionsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/custom_property_definitions/",
     }),
-  );
-export type CustomPropertyDefinitionsCreateInput =
-  typeof CustomPropertyDefinitionsCreateInput.Type;
+  ) as unknown as Schema.Codec<CustomPropertyDefinitionsCreateInput>;
 
 // Output Schema
+export interface CustomPropertyDefinitionsCreateOutput {
+  id: string;
+  name: string;
+  description?: string | null;
+  display_type:
+    | "text"
+    | "number"
+    | "currency"
+    | "percent"
+    | "date"
+    | "datetime"
+    | "boolean";
+  is_big_number?: boolean;
+  created_at: string;
+  created_by: number | null;
+  updated_at: string | null;
+}
 export const CustomPropertyDefinitionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -50,9 +83,7 @@ export const CustomPropertyDefinitionsCreateOutput =
     created_at: Schema.String,
     created_by: Schema.NullOr(Schema.Number),
     updated_at: Schema.NullOr(Schema.String),
-  });
-export type CustomPropertyDefinitionsCreateOutput =
-  typeof CustomPropertyDefinitionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<CustomPropertyDefinitionsCreateOutput>;
 
 // The operation
 /**

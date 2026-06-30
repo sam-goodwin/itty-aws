@@ -3,8 +3,16 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AuthenticationFactorsControllerCreateInput {
+  type: "generic_otp" | "sms" | "totp";
+  phone_number?: string;
+  totp_issuer?: string;
+  totp_user?: string;
+  user_id?: string;
+}
 export const AuthenticationFactorsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.Literals(["generic_otp", "sms", "totp"]),
@@ -12,11 +20,27 @@ export const AuthenticationFactorsControllerCreateInput =
     totp_issuer: Schema.optional(Schema.String),
     totp_user: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/auth/factors/enroll" }));
-export type AuthenticationFactorsControllerCreateInput =
-  typeof AuthenticationFactorsControllerCreateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/auth/factors/enroll" }),
+  ) as unknown as Schema.Codec<AuthenticationFactorsControllerCreateInput>;
 
 // Output Schema
+export interface AuthenticationFactorsControllerCreateOutput {
+  object?: string;
+  id?: string;
+  type?: "generic_otp" | "sms" | "totp" | "webauthn";
+  user_id?: string;
+  sms?: { phone_number: string };
+  totp?: {
+    issuer: string;
+    user: string;
+    secret: Redacted.Redacted<string>;
+    qr_code: string;
+    uri: string;
+  };
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuthenticationFactorsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -41,9 +65,7 @@ export const AuthenticationFactorsControllerCreateOutput =
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuthenticationFactorsControllerCreateOutput =
-  typeof AuthenticationFactorsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<AuthenticationFactorsControllerCreateOutput>;
 
 // The operation
 /**

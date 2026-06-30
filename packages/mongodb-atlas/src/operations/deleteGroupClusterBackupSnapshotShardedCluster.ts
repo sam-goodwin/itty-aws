@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupClusterBackupSnapshotShardedClusterInput {
+  groupId: string;
+  clusterName: string;
+  snapshotId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupClusterBackupSnapshotShardedClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const DeleteGroupClusterBackupSnapshotShardedClusterInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}",
     }),
-  );
-export type DeleteGroupClusterBackupSnapshotShardedClusterInput =
-  typeof DeleteGroupClusterBackupSnapshotShardedClusterInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupClusterBackupSnapshotShardedClusterInput>;
 
 // Output Schema
+export type DeleteGroupClusterBackupSnapshotShardedClusterOutput = void;
 export const DeleteGroupClusterBackupSnapshotShardedClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterBackupSnapshotShardedClusterOutput =
-  typeof DeleteGroupClusterBackupSnapshotShardedClusterOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterBackupSnapshotShardedClusterOutput>;
 
 // The operation
 /**

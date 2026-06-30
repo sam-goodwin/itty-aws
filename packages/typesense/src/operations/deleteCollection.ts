@@ -3,14 +3,67 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface DeleteCollectionInput {
+  collectionName: string;
+}
 export const DeleteCollectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/collections/{collectionName}" }));
-export type DeleteCollectionInput = typeof DeleteCollectionInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/collections/{collectionName}" }),
+) as unknown as Schema.Codec<DeleteCollectionInput>;
 
 // Output Schema
+export interface DeleteCollectionOutput {
+  name: string;
+  fields: {
+    name: string;
+    type: string;
+    optional?: boolean;
+    facet?: boolean;
+    index?: boolean;
+    locale?: string;
+    sort?: boolean;
+    infix?: boolean;
+    reference?: string;
+    async_reference?: boolean;
+    num_dim?: number;
+    drop?: boolean;
+    store?: boolean;
+    vec_dist?: string;
+    range_index?: boolean;
+    stem?: boolean;
+    stem_dictionary?: string;
+    token_separators?: string[];
+    symbols_to_index?: string[];
+    embed?: {
+      from: string[];
+      model_config: {
+        model_name: string;
+        api_key?: Redacted.Redacted<string>;
+        url?: string;
+        access_token?: Redacted.Redacted<string>;
+        refresh_token?: Redacted.Redacted<string>;
+        client_id?: string;
+        client_secret?: Redacted.Redacted<string>;
+        project_id?: string;
+        indexing_prefix?: string;
+        query_prefix?: string;
+      };
+    };
+  }[];
+  default_sorting_field?: string;
+  token_separators?: string[];
+  synonym_sets?: string[];
+  enable_nested_fields?: boolean;
+  symbols_to_index?: string[];
+  voice_query_model?: { model_name?: string };
+  metadata?: unknown;
+  num_documents: number;
+  created_at: number;
+}
 export const DeleteCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     name: Schema.String,
@@ -68,8 +121,7 @@ export const DeleteCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     num_documents: Schema.Number,
     created_at: Schema.Number,
   },
-);
-export type DeleteCollectionOutput = typeof DeleteCollectionOutput.Type;
+) as unknown as Schema.Codec<DeleteCollectionOutput>;
 
 // The operation
 /**

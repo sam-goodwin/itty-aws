@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface BitLockerKeysListInput {
+  jobName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const BitLockerKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     jobName: Schema.String.pipe(T.PathParam()),
@@ -21,10 +26,12 @@ export const BitLockerKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}/listBitLockerKeys",
     apiVersion: "2020-08-01",
   }),
-);
-export type BitLockerKeysListInput = typeof BitLockerKeysListInput.Type;
+) as unknown as Schema.Codec<BitLockerKeysListInput>;
 
 // Output Schema
+export interface BitLockerKeysListOutput {
+  value?: { bitLockerKey?: string; driveId?: string }[];
+}
 export const BitLockerKeysListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -35,8 +42,7 @@ export const BitLockerKeysListOutput =
         }),
       ),
     ),
-  });
-export type BitLockerKeysListOutput = typeof BitLockerKeysListOutput.Type;
+  }) as unknown as Schema.Codec<BitLockerKeysListOutput>;
 
 // The operation
 /**
@@ -53,6 +59,90 @@ export const BitLockerKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BitLockerKeysListOutput,
 }));
 // Input Schema
+export interface JobsCreateInput {
+  jobName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  location?: string;
+  tags?: unknown;
+  properties?: {
+    storageAccountId?: string;
+    jobType?: string;
+    returnAddress?: {
+      recipientName: string;
+      streetAddress1: string;
+      streetAddress2?: string;
+      city: string;
+      stateOrProvince?: string;
+      postalCode: string;
+      countryOrRegion: string;
+      phone: string;
+      email: string;
+    };
+    returnShipping?: { carrierName: string; carrierAccountNumber: string };
+    shippingInformation?: {
+      recipientName?: string;
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      postalCode?: string;
+      countryOrRegion?: string;
+      phone?: string;
+      additionalInformation?: string;
+    };
+    deliveryPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount?: number;
+      shipDate?: string;
+    };
+    returnPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount: number;
+      shipDate: string;
+    };
+    diagnosticsPath?: string;
+    logLevel?: string;
+    backupDriveManifest?: boolean;
+    state?: string;
+    cancelRequested?: boolean;
+    percentComplete?: number;
+    incompleteBlobListUri?: string;
+    driveList?: {
+      driveId?: string;
+      bitLockerKey?: string;
+      manifestFile?: string;
+      manifestHash?: string;
+      driveHeaderHash?: string;
+      state?:
+        | "Specified"
+        | "Received"
+        | "NeverReceived"
+        | "Transferring"
+        | "Completed"
+        | "CompletedMoreInfo"
+        | "ShippedBack";
+      copyStatus?: string;
+      percentComplete?: number;
+      verboseLogUri?: string;
+      errorLogUri?: string;
+      manifestUri?: string;
+      bytesSucceeded?: number;
+    }[];
+    export?: {
+      blobList?: { blobPath?: string[]; blobPathPrefix?: string[] };
+      blobListBlobPath?: string;
+    };
+    provisioningState?: string;
+    encryptionKey?: {
+      kekType?: "MicrosoftManaged" | "CustomerManaged";
+      kekUrl?: string;
+      kekVaultResourceID?: string;
+    };
+  };
+}
 export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -175,10 +265,106 @@ export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
     apiVersion: "2020-08-01",
   }),
-);
-export type JobsCreateInput = typeof JobsCreateInput.Type;
+) as unknown as Schema.Codec<JobsCreateInput>;
 
 // Output Schema
+export interface JobsCreateOutput {
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: unknown;
+  properties?: {
+    storageAccountId?: string;
+    jobType?: string;
+    returnAddress?: {
+      recipientName: string;
+      streetAddress1: string;
+      streetAddress2?: string;
+      city: string;
+      stateOrProvince?: string;
+      postalCode: string;
+      countryOrRegion: string;
+      phone: string;
+      email: string;
+    };
+    returnShipping?: { carrierName: string; carrierAccountNumber: string };
+    shippingInformation?: {
+      recipientName?: string;
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      postalCode?: string;
+      countryOrRegion?: string;
+      phone?: string;
+      additionalInformation?: string;
+    };
+    deliveryPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount?: number;
+      shipDate?: string;
+    };
+    returnPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount: number;
+      shipDate: string;
+    };
+    diagnosticsPath?: string;
+    logLevel?: string;
+    backupDriveManifest?: boolean;
+    state?: string;
+    cancelRequested?: boolean;
+    percentComplete?: number;
+    incompleteBlobListUri?: string;
+    driveList?: {
+      driveId?: string;
+      bitLockerKey?: string;
+      manifestFile?: string;
+      manifestHash?: string;
+      driveHeaderHash?: string;
+      state?:
+        | "Specified"
+        | "Received"
+        | "NeverReceived"
+        | "Transferring"
+        | "Completed"
+        | "CompletedMoreInfo"
+        | "ShippedBack";
+      copyStatus?: string;
+      percentComplete?: number;
+      verboseLogUri?: string;
+      errorLogUri?: string;
+      manifestUri?: string;
+      bytesSucceeded?: number;
+    }[];
+    export?: {
+      blobList?: { blobPath?: string[]; blobPathPrefix?: string[] };
+      blobListBlobPath?: string;
+    };
+    provisioningState?: string;
+    encryptionKey?: {
+      kekType?: "MicrosoftManaged" | "CustomerManaged";
+      kekUrl?: string;
+      kekVaultResourceID?: string;
+    };
+  };
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+}
 export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   systemData: Schema.optional(
     Schema.Struct({
@@ -318,8 +504,7 @@ export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       tenantId: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsCreateOutput = typeof JobsCreateOutput.Type;
+}) as unknown as Schema.Codec<JobsCreateOutput>;
 
 // The operation
 /**
@@ -337,6 +522,11 @@ export const JobsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsCreateOutput,
 }));
 // Input Schema
+export interface JobsDeleteInput {
+  jobName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -347,12 +537,12 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
     apiVersion: "2020-08-01",
   }),
-);
-export type JobsDeleteInput = typeof JobsDeleteInput.Type;
+) as unknown as Schema.Codec<JobsDeleteInput>;
 
 // Output Schema
-export const JobsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
+export type JobsDeleteOutput = void;
+export const JobsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsDeleteOutput>;
 
 // The operation
 /**
@@ -369,6 +559,11 @@ export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsDeleteOutput,
 }));
 // Input Schema
+export interface JobsGetInput {
+  jobName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -379,10 +574,106 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
     apiVersion: "2020-08-01",
   }),
-);
-export type JobsGetInput = typeof JobsGetInput.Type;
+) as unknown as Schema.Codec<JobsGetInput>;
 
 // Output Schema
+export interface JobsGetOutput {
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: unknown;
+  properties?: {
+    storageAccountId?: string;
+    jobType?: string;
+    returnAddress?: {
+      recipientName: string;
+      streetAddress1: string;
+      streetAddress2?: string;
+      city: string;
+      stateOrProvince?: string;
+      postalCode: string;
+      countryOrRegion: string;
+      phone: string;
+      email: string;
+    };
+    returnShipping?: { carrierName: string; carrierAccountNumber: string };
+    shippingInformation?: {
+      recipientName?: string;
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      postalCode?: string;
+      countryOrRegion?: string;
+      phone?: string;
+      additionalInformation?: string;
+    };
+    deliveryPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount?: number;
+      shipDate?: string;
+    };
+    returnPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount: number;
+      shipDate: string;
+    };
+    diagnosticsPath?: string;
+    logLevel?: string;
+    backupDriveManifest?: boolean;
+    state?: string;
+    cancelRequested?: boolean;
+    percentComplete?: number;
+    incompleteBlobListUri?: string;
+    driveList?: {
+      driveId?: string;
+      bitLockerKey?: string;
+      manifestFile?: string;
+      manifestHash?: string;
+      driveHeaderHash?: string;
+      state?:
+        | "Specified"
+        | "Received"
+        | "NeverReceived"
+        | "Transferring"
+        | "Completed"
+        | "CompletedMoreInfo"
+        | "ShippedBack";
+      copyStatus?: string;
+      percentComplete?: number;
+      verboseLogUri?: string;
+      errorLogUri?: string;
+      manifestUri?: string;
+      bytesSucceeded?: number;
+    }[];
+    export?: {
+      blobList?: { blobPath?: string[]; blobPathPrefix?: string[] };
+      blobListBlobPath?: string;
+    };
+    provisioningState?: string;
+    encryptionKey?: {
+      kekType?: "MicrosoftManaged" | "CustomerManaged";
+      kekUrl?: string;
+      kekVaultResourceID?: string;
+    };
+  };
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+}
 export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   systemData: Schema.optional(
     Schema.Struct({
@@ -522,8 +813,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       tenantId: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsGetOutput = typeof JobsGetOutput.Type;
+}) as unknown as Schema.Codec<JobsGetOutput>;
 
 // The operation
 /**
@@ -540,6 +830,12 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsGetOutput,
 }));
 // Input Schema
+export interface JobsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $filter?: string;
+}
 export const JobsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -552,11 +848,109 @@ export const JobsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs",
       apiVersion: "2020-08-01",
     }),
-  );
-export type JobsListByResourceGroupInput =
-  typeof JobsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<JobsListByResourceGroupInput>;
 
 // Output Schema
+export interface JobsListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: unknown;
+    properties?: {
+      storageAccountId?: string;
+      jobType?: string;
+      returnAddress?: {
+        recipientName: string;
+        streetAddress1: string;
+        streetAddress2?: string;
+        city: string;
+        stateOrProvince?: string;
+        postalCode: string;
+        countryOrRegion: string;
+        phone: string;
+        email: string;
+      };
+      returnShipping?: { carrierName: string; carrierAccountNumber: string };
+      shippingInformation?: {
+        recipientName?: string;
+        streetAddress1?: string;
+        streetAddress2?: string;
+        city?: string;
+        stateOrProvince?: string;
+        postalCode?: string;
+        countryOrRegion?: string;
+        phone?: string;
+        additionalInformation?: string;
+      };
+      deliveryPackage?: {
+        carrierName: string;
+        trackingNumber: string;
+        driveCount?: number;
+        shipDate?: string;
+      };
+      returnPackage?: {
+        carrierName: string;
+        trackingNumber: string;
+        driveCount: number;
+        shipDate: string;
+      };
+      diagnosticsPath?: string;
+      logLevel?: string;
+      backupDriveManifest?: boolean;
+      state?: string;
+      cancelRequested?: boolean;
+      percentComplete?: number;
+      incompleteBlobListUri?: string;
+      driveList?: {
+        driveId?: string;
+        bitLockerKey?: string;
+        manifestFile?: string;
+        manifestHash?: string;
+        driveHeaderHash?: string;
+        state?:
+          | "Specified"
+          | "Received"
+          | "NeverReceived"
+          | "Transferring"
+          | "Completed"
+          | "CompletedMoreInfo"
+          | "ShippedBack";
+        copyStatus?: string;
+        percentComplete?: number;
+        verboseLogUri?: string;
+        errorLogUri?: string;
+        manifestUri?: string;
+        bytesSucceeded?: number;
+      }[];
+      export?: {
+        blobList?: { blobPath?: string[]; blobPathPrefix?: string[] };
+        blobListBlobPath?: string;
+      };
+      provisioningState?: string;
+      encryptionKey?: {
+        kekType?: "MicrosoftManaged" | "CustomerManaged";
+        kekUrl?: string;
+        kekVaultResourceID?: string;
+      };
+    };
+    identity?: {
+      type?: "None" | "SystemAssigned" | "UserAssigned";
+      principalId?: string;
+      tenantId?: string;
+    };
+  }[];
+}
 export const JobsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -716,9 +1110,7 @@ export const JobsListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type JobsListByResourceGroupOutput =
-  typeof JobsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<JobsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -738,6 +1130,11 @@ export const JobsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobsListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $filter?: string;
+}
 export const JobsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -749,11 +1146,109 @@ export const JobsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ImportExport/jobs",
       apiVersion: "2020-08-01",
     }),
-  );
-export type JobsListBySubscriptionInput =
-  typeof JobsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<JobsListBySubscriptionInput>;
 
 // Output Schema
+export interface JobsListBySubscriptionOutput {
+  nextLink?: string;
+  value?: {
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: unknown;
+    properties?: {
+      storageAccountId?: string;
+      jobType?: string;
+      returnAddress?: {
+        recipientName: string;
+        streetAddress1: string;
+        streetAddress2?: string;
+        city: string;
+        stateOrProvince?: string;
+        postalCode: string;
+        countryOrRegion: string;
+        phone: string;
+        email: string;
+      };
+      returnShipping?: { carrierName: string; carrierAccountNumber: string };
+      shippingInformation?: {
+        recipientName?: string;
+        streetAddress1?: string;
+        streetAddress2?: string;
+        city?: string;
+        stateOrProvince?: string;
+        postalCode?: string;
+        countryOrRegion?: string;
+        phone?: string;
+        additionalInformation?: string;
+      };
+      deliveryPackage?: {
+        carrierName: string;
+        trackingNumber: string;
+        driveCount?: number;
+        shipDate?: string;
+      };
+      returnPackage?: {
+        carrierName: string;
+        trackingNumber: string;
+        driveCount: number;
+        shipDate: string;
+      };
+      diagnosticsPath?: string;
+      logLevel?: string;
+      backupDriveManifest?: boolean;
+      state?: string;
+      cancelRequested?: boolean;
+      percentComplete?: number;
+      incompleteBlobListUri?: string;
+      driveList?: {
+        driveId?: string;
+        bitLockerKey?: string;
+        manifestFile?: string;
+        manifestHash?: string;
+        driveHeaderHash?: string;
+        state?:
+          | "Specified"
+          | "Received"
+          | "NeverReceived"
+          | "Transferring"
+          | "Completed"
+          | "CompletedMoreInfo"
+          | "ShippedBack";
+        copyStatus?: string;
+        percentComplete?: number;
+        verboseLogUri?: string;
+        errorLogUri?: string;
+        manifestUri?: string;
+        bytesSucceeded?: number;
+      }[];
+      export?: {
+        blobList?: { blobPath?: string[]; blobPathPrefix?: string[] };
+        blobListBlobPath?: string;
+      };
+      provisioningState?: string;
+      encryptionKey?: {
+        kekType?: "MicrosoftManaged" | "CustomerManaged";
+        kekUrl?: string;
+        kekVaultResourceID?: string;
+      };
+    };
+    identity?: {
+      type?: "None" | "SystemAssigned" | "UserAssigned";
+      principalId?: string;
+      tenantId?: string;
+    };
+  }[];
+}
 export const JobsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -913,9 +1408,7 @@ export const JobsListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type JobsListBySubscriptionOutput =
-  typeof JobsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<JobsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -934,6 +1427,57 @@ export const JobsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobsUpdateInput {
+  jobName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  tags?: unknown;
+  properties?: {
+    cancelRequested?: boolean;
+    state?: string;
+    returnAddress?: {
+      recipientName: string;
+      streetAddress1: string;
+      streetAddress2?: string;
+      city: string;
+      stateOrProvince?: string;
+      postalCode: string;
+      countryOrRegion: string;
+      phone: string;
+      email: string;
+    };
+    returnShipping?: { carrierName: string; carrierAccountNumber: string };
+    deliveryPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount?: number;
+      shipDate?: string;
+    };
+    logLevel?: string;
+    backupDriveManifest?: boolean;
+    driveList?: {
+      driveId?: string;
+      bitLockerKey?: string;
+      manifestFile?: string;
+      manifestHash?: string;
+      driveHeaderHash?: string;
+      state?:
+        | "Specified"
+        | "Received"
+        | "NeverReceived"
+        | "Transferring"
+        | "Completed"
+        | "CompletedMoreInfo"
+        | "ShippedBack";
+      copyStatus?: string;
+      percentComplete?: number;
+      verboseLogUri?: string;
+      errorLogUri?: string;
+      manifestUri?: string;
+      bytesSucceeded?: number;
+    }[];
+  };
+}
 export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1008,10 +1552,106 @@ export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
     apiVersion: "2020-08-01",
   }),
-);
-export type JobsUpdateInput = typeof JobsUpdateInput.Type;
+) as unknown as Schema.Codec<JobsUpdateInput>;
 
 // Output Schema
+export interface JobsUpdateOutput {
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: unknown;
+  properties?: {
+    storageAccountId?: string;
+    jobType?: string;
+    returnAddress?: {
+      recipientName: string;
+      streetAddress1: string;
+      streetAddress2?: string;
+      city: string;
+      stateOrProvince?: string;
+      postalCode: string;
+      countryOrRegion: string;
+      phone: string;
+      email: string;
+    };
+    returnShipping?: { carrierName: string; carrierAccountNumber: string };
+    shippingInformation?: {
+      recipientName?: string;
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      postalCode?: string;
+      countryOrRegion?: string;
+      phone?: string;
+      additionalInformation?: string;
+    };
+    deliveryPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount?: number;
+      shipDate?: string;
+    };
+    returnPackage?: {
+      carrierName: string;
+      trackingNumber: string;
+      driveCount: number;
+      shipDate: string;
+    };
+    diagnosticsPath?: string;
+    logLevel?: string;
+    backupDriveManifest?: boolean;
+    state?: string;
+    cancelRequested?: boolean;
+    percentComplete?: number;
+    incompleteBlobListUri?: string;
+    driveList?: {
+      driveId?: string;
+      bitLockerKey?: string;
+      manifestFile?: string;
+      manifestHash?: string;
+      driveHeaderHash?: string;
+      state?:
+        | "Specified"
+        | "Received"
+        | "NeverReceived"
+        | "Transferring"
+        | "Completed"
+        | "CompletedMoreInfo"
+        | "ShippedBack";
+      copyStatus?: string;
+      percentComplete?: number;
+      verboseLogUri?: string;
+      errorLogUri?: string;
+      manifestUri?: string;
+      bytesSucceeded?: number;
+    }[];
+    export?: {
+      blobList?: { blobPath?: string[]; blobPathPrefix?: string[] };
+      blobListBlobPath?: string;
+    };
+    provisioningState?: string;
+    encryptionKey?: {
+      kekType?: "MicrosoftManaged" | "CustomerManaged";
+      kekUrl?: string;
+      kekVaultResourceID?: string;
+    };
+  };
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+}
 export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   systemData: Schema.optional(
     Schema.Struct({
@@ -1151,8 +1791,7 @@ export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       tenantId: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsUpdateOutput = typeof JobsUpdateOutput.Type;
+}) as unknown as Schema.Codec<JobsUpdateOutput>;
 
 // The operation
 /**
@@ -1169,6 +1808,9 @@ export const JobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsUpdateOutput,
 }));
 // Input Schema
+export interface LocationsGetInput {
+  locationName: string;
+}
 export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   locationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1177,10 +1819,27 @@ export const LocationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.ImportExport/locations/{locationName}",
     apiVersion: "2020-08-01",
   }),
-);
-export type LocationsGetInput = typeof LocationsGetInput.Type;
+) as unknown as Schema.Codec<LocationsGetInput>;
 
 // Output Schema
+export interface LocationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    recipientName?: string;
+    streetAddress1?: string;
+    streetAddress2?: string;
+    city?: string;
+    stateOrProvince?: string;
+    postalCode?: string;
+    countryOrRegion?: string;
+    phone?: string;
+    additionalShippingInformation?: string;
+    supportedCarriers?: string[];
+    alternateLocations?: string[];
+  };
+}
 export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1200,8 +1859,7 @@ export const LocationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       alternateLocations: Schema.optional(Schema.Array(Schema.String)),
     }),
   ),
-});
-export type LocationsGetOutput = typeof LocationsGetOutput.Type;
+}) as unknown as Schema.Codec<LocationsGetOutput>;
 
 // The operation
 /**
@@ -1216,6 +1874,7 @@ export const LocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocationsGetOutput,
 }));
 // Input Schema
+export interface LocationsListInput {}
 export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1224,10 +1883,29 @@ export const LocationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ImportExport/locations",
     apiVersion: "2020-08-01",
   }),
-);
-export type LocationsListInput = typeof LocationsListInput.Type;
+) as unknown as Schema.Codec<LocationsListInput>;
 
 // Output Schema
+export interface LocationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      recipientName?: string;
+      streetAddress1?: string;
+      streetAddress2?: string;
+      city?: string;
+      stateOrProvince?: string;
+      postalCode?: string;
+      countryOrRegion?: string;
+      phone?: string;
+      additionalShippingInformation?: string;
+      supportedCarriers?: string[];
+      alternateLocations?: string[];
+    };
+  }[];
+}
 export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1253,8 +1931,7 @@ export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type LocationsListOutput = typeof LocationsListOutput.Type;
+}) as unknown as Schema.Codec<LocationsListOutput>;
 
 // The operation
 /**
@@ -1268,6 +1945,7 @@ export const LocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocationsListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1276,10 +1954,20 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ImportExport/operations",
     apiVersion: "2020-08-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name: string;
+    display: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1294,8 +1982,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

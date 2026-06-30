@@ -4,16 +4,39 @@ import * as T from "../traits.ts";
 import { Forbidden, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1AppsInput {
+  cursor?: string;
+  limit?: number;
+  projectId?: string;
+  branchId?: string;
+  branchGitName?: string;
+}
 export const GetV1AppsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   projectId: Schema.optional(Schema.String),
   branchId: Schema.optional(Schema.String),
   branchGitName: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v1/apps" }));
-export type GetV1AppsInput = typeof GetV1AppsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/apps" }),
+) as unknown as Schema.Codec<GetV1AppsInput>;
 
 // Output Schema
+export interface GetV1AppsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    region: { id: string; name: string };
+    projectId: string;
+    branchId: string | null;
+    latestDeploymentId: string | null;
+    appEndpointDomain: string;
+    createdAt: string;
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1AppsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -36,8 +59,7 @@ export const GetV1AppsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextCursor: Schema.NullOr(Schema.String),
     hasMore: Schema.Boolean,
   }),
-});
-export type GetV1AppsOutput = typeof GetV1AppsOutput.Type;
+}) as unknown as Schema.Codec<GetV1AppsOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
   customer?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest> =
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest: Schema.Codec<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
   }).annotate({
@@ -58,7 +58,7 @@ export interface GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   ctsProfileMatch?: boolean;
 }
 
-export const GoogleAppsCloudidentityDevicesV1AndroidAttributes: Schema.Schema<GoogleAppsCloudidentityDevicesV1AndroidAttributes> =
+export const GoogleAppsCloudidentityDevicesV1AndroidAttributes: Schema.Codec<GoogleAppsCloudidentityDevicesV1AndroidAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportsWorkProfile: Schema.optional(Schema.Boolean),
     ownershipPrivilege: Schema.optional(Schema.String),
@@ -119,7 +119,7 @@ export interface GoogleAppsCloudidentityDevicesV1BrowserInfo {
   isSecurityEventAnalysisEnabled?: boolean;
 }
 
-export const GoogleAppsCloudidentityDevicesV1BrowserInfo: Schema.Schema<GoogleAppsCloudidentityDevicesV1BrowserInfo> =
+export const GoogleAppsCloudidentityDevicesV1BrowserInfo: Schema.Codec<GoogleAppsCloudidentityDevicesV1BrowserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isFileDownloadAnalysisEnabled: Schema.optional(Schema.Boolean),
     isRealtimeUrlCheckEnabled: Schema.optional(Schema.Boolean),
@@ -146,7 +146,7 @@ export interface GoogleAppsCloudidentityDevicesV1BrowserAttributes {
   chromeProfileId?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1BrowserAttributes: Schema.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributes> =
+export const GoogleAppsCloudidentityDevicesV1BrowserAttributes: Schema.Codec<GoogleAppsCloudidentityDevicesV1BrowserAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastProfileSyncTime: Schema.optional(Schema.String),
     chromeBrowserInfo: Schema.optional(
@@ -166,7 +166,7 @@ export interface GoogleAppsCloudidentityDevicesV1CertificateTemplate {
   id?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CertificateTemplate: Schema.Schema<GoogleAppsCloudidentityDevicesV1CertificateTemplate> =
+export const GoogleAppsCloudidentityDevicesV1CertificateTemplate: Schema.Codec<GoogleAppsCloudidentityDevicesV1CertificateTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     majorVersion: Schema.optional(Schema.Number),
     minorVersion: Schema.optional(Schema.Number),
@@ -200,7 +200,7 @@ export interface GoogleAppsCloudidentityDevicesV1CertificateAttributes {
   certificateTemplate?: GoogleAppsCloudidentityDevicesV1CertificateTemplate;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CertificateAttributes: Schema.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributes> =
+export const GoogleAppsCloudidentityDevicesV1CertificateAttributes: Schema.Codec<GoogleAppsCloudidentityDevicesV1CertificateAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     thumbprint: Schema.optional(Schema.String),
     validityStartTime: Schema.optional(Schema.String),
@@ -226,7 +226,7 @@ export interface GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAtt
   certificateAttributes?: ReadonlyArray<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
 }
 
-export const GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes: Schema.Schema<GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes> =
+export const GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes: Schema.Codec<GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     additionalSignals: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -339,7 +339,7 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
     | (string & {});
 }
 
-export const GoogleAppsCloudidentityDevicesV1Device: Schema.Schema<GoogleAppsCloudidentityDevicesV1Device> =
+export const GoogleAppsCloudidentityDevicesV1Device: Schema.Codec<GoogleAppsCloudidentityDevicesV1Device> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ownerType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -384,7 +384,7 @@ export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
   device?: GoogleAppsCloudidentityDevicesV1Device;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse> =
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     device: Schema.optional(GoogleAppsCloudidentityDevicesV1Device),
   }).annotate({
@@ -398,7 +398,7 @@ export interface GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1ListDevicesResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1ListDevicesResponse> =
+export const GoogleAppsCloudidentityDevicesV1ListDevicesResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1ListDevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     devices: Schema.optional(
       Schema.Array(GoogleAppsCloudidentityDevicesV1Device),
@@ -410,7 +410,7 @@ export const GoogleAppsCloudidentityDevicesV1ListDevicesResponse: Schema.Schema<
 
 export interface DeleteInboundOidcSsoProfileOperationMetadata {}
 
-export const DeleteInboundOidcSsoProfileOperationMetadata: Schema.Schema<DeleteInboundOidcSsoProfileOperationMetadata> =
+export const DeleteInboundOidcSsoProfileOperationMetadata: Schema.Codec<DeleteInboundOidcSsoProfileOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteInboundOidcSsoProfileOperationMetadata",
   });
@@ -422,7 +422,7 @@ export interface EntityKey {
   id?: string;
 }
 
-export const EntityKey: Schema.Schema<EntityKey> =
+export const EntityKey: Schema.Codec<EntityKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -433,7 +433,7 @@ export interface TransitiveMembershipRole {
   role?: string;
 }
 
-export const TransitiveMembershipRole: Schema.Schema<TransitiveMembershipRole> =
+export const TransitiveMembershipRole: Schema.Codec<TransitiveMembershipRole> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
   }).annotate({ identifier: "TransitiveMembershipRole" });
@@ -458,7 +458,7 @@ export interface GroupRelation {
   roles?: ReadonlyArray<TransitiveMembershipRole>;
 }
 
-export const GroupRelation: Schema.Schema<GroupRelation> =
+export const GroupRelation: Schema.Codec<GroupRelation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupKey: Schema.optional(EntityKey),
     displayName: Schema.optional(Schema.String),
@@ -475,7 +475,7 @@ export interface SearchTransitiveGroupsResponse {
   nextPageToken?: string;
 }
 
-export const SearchTransitiveGroupsResponse: Schema.Schema<SearchTransitiveGroupsResponse> =
+export const SearchTransitiveGroupsResponse: Schema.Codec<SearchTransitiveGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(GroupRelation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -486,7 +486,7 @@ export interface ExpiryDetail {
   expireTime?: string;
 }
 
-export const ExpiryDetail: Schema.Schema<ExpiryDetail> =
+export const ExpiryDetail: Schema.Codec<ExpiryDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExpiryDetail" });
@@ -502,7 +502,7 @@ export interface MembershipRoleRestrictionEvaluation {
     | (string & {});
 }
 
-export const MembershipRoleRestrictionEvaluation: Schema.Schema<MembershipRoleRestrictionEvaluation> =
+export const MembershipRoleRestrictionEvaluation: Schema.Codec<MembershipRoleRestrictionEvaluation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "MembershipRoleRestrictionEvaluation" });
@@ -512,7 +512,7 @@ export interface RestrictionEvaluations {
   memberRestrictionEvaluation?: MembershipRoleRestrictionEvaluation;
 }
 
-export const RestrictionEvaluations: Schema.Schema<RestrictionEvaluations> =
+export const RestrictionEvaluations: Schema.Codec<RestrictionEvaluations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberRestrictionEvaluation: Schema.optional(
       MembershipRoleRestrictionEvaluation,
@@ -528,7 +528,7 @@ export interface MembershipRole {
   restrictionEvaluations?: RestrictionEvaluations;
 }
 
-export const MembershipRole: Schema.Schema<MembershipRole> =
+export const MembershipRole: Schema.Codec<MembershipRole> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     expiryDetail: Schema.optional(ExpiryDetail),
@@ -568,7 +568,7 @@ export interface Membership {
   roles?: ReadonlyArray<MembershipRole>;
 }
 
-export const Membership: Schema.Schema<Membership> =
+export const Membership: Schema.Codec<Membership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deliverySetting: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -586,7 +586,7 @@ export interface ListMembershipsResponse {
   nextPageToken?: string;
 }
 
-export const ListMembershipsResponse: Schema.Schema<ListMembershipsResponse> =
+export const ListMembershipsResponse: Schema.Codec<ListMembershipsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(Membership)),
     nextPageToken: Schema.optional(Schema.String),
@@ -599,7 +599,7 @@ export interface DynamicGroupQuery {
   query?: string;
 }
 
-export const DynamicGroupQuery: Schema.Schema<DynamicGroupQuery> =
+export const DynamicGroupQuery: Schema.Codec<DynamicGroupQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     query: Schema.optional(Schema.String),
@@ -617,7 +617,7 @@ export interface DynamicGroupStatus {
   statusTime?: string;
 }
 
-export const DynamicGroupStatus: Schema.Schema<DynamicGroupStatus> =
+export const DynamicGroupStatus: Schema.Codec<DynamicGroupStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     statusTime: Schema.optional(Schema.String),
@@ -630,7 +630,7 @@ export interface DynamicGroupMetadata {
   status?: DynamicGroupStatus;
 }
 
-export const DynamicGroupMetadata: Schema.Schema<DynamicGroupMetadata> =
+export const DynamicGroupMetadata: Schema.Codec<DynamicGroupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     queries: Schema.optional(Schema.Array(DynamicGroupQuery)),
     status: Schema.optional(DynamicGroupStatus),
@@ -659,7 +659,7 @@ export interface Group {
   groupKey?: EntityKey;
 }
 
-export const Group: Schema.Schema<Group> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -678,7 +678,7 @@ export interface RsaPublicKeyInfo {
   keySize?: number;
 }
 
-export const RsaPublicKeyInfo: Schema.Schema<RsaPublicKeyInfo> =
+export const RsaPublicKeyInfo: Schema.Codec<RsaPublicKeyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keySize: Schema.optional(Schema.Number),
   }).annotate({ identifier: "RsaPublicKeyInfo" });
@@ -722,7 +722,7 @@ export interface GoogleAppsCloudidentityDevicesV1DeviceUser {
     | (string & {});
 }
 
-export const GoogleAppsCloudidentityDevicesV1DeviceUser: Schema.Schema<GoogleAppsCloudidentityDevicesV1DeviceUser> =
+export const GoogleAppsCloudidentityDevicesV1DeviceUser: Schema.Codec<GoogleAppsCloudidentityDevicesV1DeviceUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userAgent: Schema.optional(Schema.String),
     passwordState: Schema.optional(Schema.String),
@@ -753,7 +753,7 @@ export interface UserInvitation {
   mailsSentCount?: string;
 }
 
-export const UserInvitation: Schema.Schema<UserInvitation> =
+export const UserInvitation: Schema.Codec<UserInvitation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -763,7 +763,7 @@ export const UserInvitation: Schema.Schema<UserInvitation> =
 
 export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata> =
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata",
   });
@@ -773,7 +773,7 @@ export interface DsaPublicKeyInfo {
   keySize?: number;
 }
 
-export const DsaPublicKeyInfo: Schema.Schema<DsaPublicKeyInfo> =
+export const DsaPublicKeyInfo: Schema.Codec<DsaPublicKeyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keySize: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DsaPublicKeyInfo" });
@@ -789,7 +789,7 @@ export interface IdpCredential {
   updateTime?: string;
 }
 
-export const IdpCredential: Schema.Schema<IdpCredential> =
+export const IdpCredential: Schema.Codec<IdpCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dsaKeyInfo: Schema.optional(DsaPublicKeyInfo),
     rsaKeyInfo: Schema.optional(RsaPublicKeyInfo),
@@ -804,7 +804,7 @@ export interface ListIdpCredentialsResponse {
   nextPageToken?: string;
 }
 
-export const ListIdpCredentialsResponse: Schema.Schema<ListIdpCredentialsResponse> =
+export const ListIdpCredentialsResponse: Schema.Codec<ListIdpCredentialsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     idpCredentials: Schema.optional(Schema.Array(IdpCredential)),
     nextPageToken: Schema.optional(Schema.String),
@@ -821,7 +821,7 @@ export interface PolicyQuery {
   query?: string;
 }
 
-export const PolicyQuery: Schema.Schema<PolicyQuery> =
+export const PolicyQuery: Schema.Codec<PolicyQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgUnit: Schema.optional(Schema.String),
     group: Schema.optional(Schema.String),
@@ -836,7 +836,7 @@ export interface Setting {
   value?: Record<string, unknown>;
 }
 
-export const Setting: Schema.Schema<Setting> =
+export const Setting: Schema.Codec<Setting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -855,7 +855,7 @@ export interface Policy {
   setting?: Setting;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     customer: Schema.optional(Schema.String),
@@ -871,7 +871,7 @@ export interface ListPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListPoliciesResponse: Schema.Schema<ListPoliciesResponse> =
+export const ListPoliciesResponse: Schema.Codec<ListPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policies: Schema.optional(Schema.Array(Policy)),
     nextPageToken: Schema.optional(Schema.String),
@@ -884,7 +884,7 @@ export interface SamlSpConfig {
   entityId?: string;
 }
 
-export const SamlSpConfig: Schema.Schema<SamlSpConfig> =
+export const SamlSpConfig: Schema.Codec<SamlSpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assertionConsumerServiceUri: Schema.optional(Schema.String),
     entityId: Schema.optional(Schema.String),
@@ -901,7 +901,7 @@ export interface SamlIdpConfig {
   entityId?: string;
 }
 
-export const SamlIdpConfig: Schema.Schema<SamlIdpConfig> =
+export const SamlIdpConfig: Schema.Codec<SamlIdpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     singleSignOnServiceUri: Schema.optional(Schema.String),
     logoutRedirectUri: Schema.optional(Schema.String),
@@ -922,7 +922,7 @@ export interface InboundSamlSsoProfile {
   idpConfig?: SamlIdpConfig;
 }
 
-export const InboundSamlSsoProfile: Schema.Schema<InboundSamlSsoProfile> =
+export const InboundSamlSsoProfile: Schema.Codec<InboundSamlSsoProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spConfig: Schema.optional(SamlSpConfig),
     name: Schema.optional(Schema.String),
@@ -936,7 +936,7 @@ export interface AddIdpCredentialRequest {
   pemData?: string;
 }
 
-export const AddIdpCredentialRequest: Schema.Schema<AddIdpCredentialRequest> =
+export const AddIdpCredentialRequest: Schema.Codec<AddIdpCredentialRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pemData: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddIdpCredentialRequest" });
@@ -952,7 +952,7 @@ export interface RestrictionEvaluation {
     | (string & {});
 }
 
-export const RestrictionEvaluation: Schema.Schema<RestrictionEvaluation> =
+export const RestrictionEvaluation: Schema.Codec<RestrictionEvaluation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "RestrictionEvaluation" });
@@ -964,7 +964,7 @@ export interface MemberRestriction {
   query?: string;
 }
 
-export const MemberRestriction: Schema.Schema<MemberRestriction> =
+export const MemberRestriction: Schema.Codec<MemberRestriction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluation: Schema.optional(RestrictionEvaluation),
     query: Schema.optional(Schema.String),
@@ -977,7 +977,7 @@ export interface SecuritySettings {
   name?: string;
 }
 
-export const SecuritySettings: Schema.Schema<SecuritySettings> =
+export const SecuritySettings: Schema.Codec<SecuritySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberRestriction: Schema.optional(MemberRestriction),
     name: Schema.optional(Schema.String),
@@ -988,7 +988,7 @@ export interface ModifyMembershipRolesResponse {
   membership?: Membership;
 }
 
-export const ModifyMembershipRolesResponse: Schema.Schema<ModifyMembershipRolesResponse> =
+export const ModifyMembershipRolesResponse: Schema.Codec<ModifyMembershipRolesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     membership: Schema.optional(Membership),
   }).annotate({ identifier: "ModifyMembershipRolesResponse" });
@@ -1000,7 +1000,7 @@ export interface OidcIdpConfig {
   changePasswordUri?: string;
 }
 
-export const OidcIdpConfig: Schema.Schema<OidcIdpConfig> =
+export const OidcIdpConfig: Schema.Codec<OidcIdpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issuerUri: Schema.optional(Schema.String),
     changePasswordUri: Schema.optional(Schema.String),
@@ -1015,7 +1015,7 @@ export interface OidcRpConfig {
   redirectUris?: ReadonlyArray<string>;
 }
 
-export const OidcRpConfig: Schema.Schema<OidcRpConfig> =
+export const OidcRpConfig: Schema.Codec<OidcRpConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     clientSecret: Schema.optional(Schema.String),
@@ -1035,7 +1035,7 @@ export interface InboundOidcSsoProfile {
   customer?: string;
 }
 
-export const InboundOidcSsoProfile: Schema.Schema<InboundOidcSsoProfile> =
+export const InboundOidcSsoProfile: Schema.Codec<InboundOidcSsoProfile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     idpConfig: Schema.optional(OidcIdpConfig),
@@ -1051,7 +1051,7 @@ export interface ListInboundOidcSsoProfilesResponse {
   inboundOidcSsoProfiles?: ReadonlyArray<InboundOidcSsoProfile>;
 }
 
-export const ListInboundOidcSsoProfilesResponse: Schema.Schema<ListInboundOidcSsoProfilesResponse> =
+export const ListInboundOidcSsoProfilesResponse: Schema.Codec<ListInboundOidcSsoProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     inboundOidcSsoProfiles: Schema.optional(
@@ -1064,7 +1064,7 @@ export interface SamlSsoInfo {
   inboundSamlSsoProfile?: string;
 }
 
-export const SamlSsoInfo: Schema.Schema<SamlSsoInfo> =
+export const SamlSsoInfo: Schema.Codec<SamlSsoInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inboundSamlSsoProfile: Schema.optional(Schema.String),
   }).annotate({ identifier: "SamlSsoInfo" });
@@ -1077,7 +1077,7 @@ export interface SignInBehavior {
     | (string & {});
 }
 
-export const SignInBehavior: Schema.Schema<SignInBehavior> =
+export const SignInBehavior: Schema.Codec<SignInBehavior> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     redirectCondition: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignInBehavior" });
@@ -1087,7 +1087,7 @@ export interface OidcSsoInfo {
   inboundOidcSsoProfile?: string;
 }
 
-export const OidcSsoInfo: Schema.Schema<OidcSsoInfo> =
+export const OidcSsoInfo: Schema.Codec<OidcSsoInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inboundOidcSsoProfile: Schema.optional(Schema.String),
   }).annotate({ identifier: "OidcSsoInfo" });
@@ -1119,7 +1119,7 @@ export interface InboundSsoAssignment {
   oidcSsoInfo?: OidcSsoInfo;
 }
 
-export const InboundSsoAssignment: Schema.Schema<InboundSsoAssignment> =
+export const InboundSsoAssignment: Schema.Codec<InboundSsoAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetOrgUnit: Schema.optional(Schema.String),
     samlSsoInfo: Schema.optional(SamlSsoInfo),
@@ -1137,7 +1137,7 @@ export interface GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
   deviceUser?: GoogleAppsCloudidentityDevicesV1DeviceUser;
 }
 
-export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse> =
+export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
   }).annotate({
@@ -1149,7 +1149,7 @@ export interface AddIdpCredentialOperationMetadata {
   state?: string;
 }
 
-export const AddIdpCredentialOperationMetadata: Schema.Schema<AddIdpCredentialOperationMetadata> =
+export const AddIdpCredentialOperationMetadata: Schema.Codec<AddIdpCredentialOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddIdpCredentialOperationMetadata" });
@@ -1161,7 +1161,7 @@ export interface GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse> =
+export const GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceUsers: Schema.optional(
       Schema.Array(GoogleAppsCloudidentityDevicesV1DeviceUser),
@@ -1176,7 +1176,7 @@ export interface LookupMembershipNameResponse {
   name?: string;
 }
 
-export const LookupMembershipNameResponse: Schema.Schema<LookupMembershipNameResponse> =
+export const LookupMembershipNameResponse: Schema.Codec<LookupMembershipNameResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "LookupMembershipNameResponse" });
@@ -1186,7 +1186,7 @@ export interface LookupGroupNameResponse {
   name?: string;
 }
 
-export const LookupGroupNameResponse: Schema.Schema<LookupGroupNameResponse> =
+export const LookupGroupNameResponse: Schema.Codec<LookupGroupNameResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "LookupGroupNameResponse" });
@@ -1198,7 +1198,7 @@ export interface ListInboundSsoAssignmentsResponse {
   inboundSsoAssignments?: ReadonlyArray<InboundSsoAssignment>;
 }
 
-export const ListInboundSsoAssignmentsResponse: Schema.Schema<ListInboundSsoAssignmentsResponse> =
+export const ListInboundSsoAssignmentsResponse: Schema.Codec<ListInboundSsoAssignmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     inboundSsoAssignments: Schema.optional(Schema.Array(InboundSsoAssignment)),
@@ -1209,7 +1209,7 @@ export interface GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
   customer?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest: Schema.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest> =
+export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest: Schema.Codec<GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
   }).annotate({
@@ -1218,7 +1218,7 @@ export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest: Schema.Sche
 
 export interface GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata> =
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata",
   });
@@ -1228,21 +1228,21 @@ export interface CreateInboundSamlSsoProfileOperationMetadata {
   state?: string;
 }
 
-export const CreateInboundSamlSsoProfileOperationMetadata: Schema.Schema<CreateInboundSamlSsoProfileOperationMetadata> =
+export const CreateInboundSamlSsoProfileOperationMetadata: Schema.Codec<CreateInboundSamlSsoProfileOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateInboundSamlSsoProfileOperationMetadata" });
 
 export interface GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata> =
+export const GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata",
   });
 
 export interface CreateMembershipMetadata {}
 
-export const CreateMembershipMetadata: Schema.Schema<CreateMembershipMetadata> =
+export const CreateMembershipMetadata: Schema.Codec<CreateMembershipMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateMembershipMetadata",
   });
@@ -1252,7 +1252,7 @@ export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
   customer?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest> =
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest: Schema.Codec<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
   }).annotate({
@@ -1268,7 +1268,7 @@ export interface GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   stringValue?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CustomAttributeValue: Schema.Schema<GoogleAppsCloudidentityDevicesV1CustomAttributeValue> =
+export const GoogleAppsCloudidentityDevicesV1CustomAttributeValue: Schema.Codec<GoogleAppsCloudidentityDevicesV1CustomAttributeValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     boolValue: Schema.optional(Schema.Boolean),
     numberValue: Schema.optional(Schema.Number),
@@ -1326,7 +1326,7 @@ export interface GoogleAppsCloudidentityDevicesV1ClientState {
     | (string & {});
 }
 
-export const GoogleAppsCloudidentityDevicesV1ClientState: Schema.Schema<GoogleAppsCloudidentityDevicesV1ClientState> =
+export const GoogleAppsCloudidentityDevicesV1ClientState: Schema.Codec<GoogleAppsCloudidentityDevicesV1ClientState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assetTags: Schema.optional(Schema.Array(Schema.String)),
     managed: Schema.optional(Schema.String),
@@ -1349,14 +1349,14 @@ export const GoogleAppsCloudidentityDevicesV1ClientState: Schema.Schema<GoogleAp
 
 export interface UpdateMembershipMetadata {}
 
-export const UpdateMembershipMetadata: Schema.Schema<UpdateMembershipMetadata> =
+export const UpdateMembershipMetadata: Schema.Codec<UpdateMembershipMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateMembershipMetadata",
   });
 
 export interface DeleteMembershipMetadata {}
 
-export const DeleteMembershipMetadata: Schema.Schema<DeleteMembershipMetadata> =
+export const DeleteMembershipMetadata: Schema.Codec<DeleteMembershipMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteMembershipMetadata",
   });
@@ -1378,7 +1378,7 @@ export interface MembershipRelation {
   description?: string;
 }
 
-export const MembershipRelation: Schema.Schema<MembershipRelation> =
+export const MembershipRelation: Schema.Codec<MembershipRelation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roles: Schema.optional(Schema.Array(MembershipRole)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1396,7 +1396,7 @@ export interface SearchDirectGroupsResponse {
   nextPageToken?: string;
 }
 
-export const SearchDirectGroupsResponse: Schema.Schema<SearchDirectGroupsResponse> =
+export const SearchDirectGroupsResponse: Schema.Codec<SearchDirectGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(MembershipRelation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1404,7 +1404,7 @@ export const SearchDirectGroupsResponse: Schema.Schema<SearchDirectGroupsRespons
 
 export interface SendUserInvitationRequest {}
 
-export const SendUserInvitationRequest: Schema.Schema<SendUserInvitationRequest> =
+export const SendUserInvitationRequest: Schema.Codec<SendUserInvitationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SendUserInvitationRequest",
   });
@@ -1418,7 +1418,7 @@ export interface GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   customer?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse> =
+export const GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     names: Schema.optional(Schema.Array(Schema.String)),
@@ -1429,7 +1429,7 @@ export const GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse: Sche
 
 export interface CancelUserInvitationRequest {}
 
-export const CancelUserInvitationRequest: Schema.Schema<CancelUserInvitationRequest> =
+export const CancelUserInvitationRequest: Schema.Codec<CancelUserInvitationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelUserInvitationRequest",
   });
@@ -1439,21 +1439,21 @@ export interface UpdateInboundOidcSsoProfileOperationMetadata {
   state?: string;
 }
 
-export const UpdateInboundOidcSsoProfileOperationMetadata: Schema.Schema<UpdateInboundOidcSsoProfileOperationMetadata> =
+export const UpdateInboundOidcSsoProfileOperationMetadata: Schema.Codec<UpdateInboundOidcSsoProfileOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateInboundOidcSsoProfileOperationMetadata" });
 
 export interface GetMembershipGraphMetadata {}
 
-export const GetMembershipGraphMetadata: Schema.Schema<GetMembershipGraphMetadata> =
+export const GetMembershipGraphMetadata: Schema.Codec<GetMembershipGraphMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GetMembershipGraphMetadata",
   });
 
 export interface GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata> =
+export const GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata",
   });
@@ -1465,7 +1465,7 @@ export interface ListGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListGroupsResponse: Schema.Schema<ListGroupsResponse> =
+export const ListGroupsResponse: Schema.Codec<ListGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groups: Schema.optional(Schema.Array(Group)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1473,7 +1473,7 @@ export const ListGroupsResponse: Schema.Schema<ListGroupsResponse> =
 
 export interface CreateInboundSsoAssignmentOperationMetadata {}
 
-export const CreateInboundSsoAssignmentOperationMetadata: Schema.Schema<CreateInboundSsoAssignmentOperationMetadata> =
+export const CreateInboundSsoAssignmentOperationMetadata: Schema.Codec<CreateInboundSsoAssignmentOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateInboundSsoAssignmentOperationMetadata",
   });
@@ -1483,21 +1483,21 @@ export interface CheckTransitiveMembershipResponse {
   hasMembership?: boolean;
 }
 
-export const CheckTransitiveMembershipResponse: Schema.Schema<CheckTransitiveMembershipResponse> =
+export const CheckTransitiveMembershipResponse: Schema.Codec<CheckTransitiveMembershipResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasMembership: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckTransitiveMembershipResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata> =
+export const GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata",
   });
 
 export interface DeleteGroupMetadata {}
 
-export const DeleteGroupMetadata: Schema.Schema<DeleteGroupMetadata> =
+export const DeleteGroupMetadata: Schema.Codec<DeleteGroupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteGroupMetadata",
   });
@@ -1511,7 +1511,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1522,7 +1522,7 @@ export const Status: Schema.Schema<Status> =
 
 export interface UpdateInboundSsoAssignmentOperationMetadata {}
 
-export const UpdateInboundSsoAssignmentOperationMetadata: Schema.Schema<UpdateInboundSsoAssignmentOperationMetadata> =
+export const UpdateInboundSsoAssignmentOperationMetadata: Schema.Codec<UpdateInboundSsoAssignmentOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateInboundSsoAssignmentOperationMetadata",
   });
@@ -1543,7 +1543,7 @@ export interface MemberRelation {
   roles?: ReadonlyArray<TransitiveMembershipRole>;
 }
 
-export const MemberRelation: Schema.Schema<MemberRelation> =
+export const MemberRelation: Schema.Codec<MemberRelation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relationType: Schema.optional(Schema.String),
     member: Schema.optional(Schema.String),
@@ -1558,7 +1558,7 @@ export interface SearchTransitiveMembershipsResponse {
   nextPageToken?: string;
 }
 
-export const SearchTransitiveMembershipsResponse: Schema.Schema<SearchTransitiveMembershipsResponse> =
+export const SearchTransitiveMembershipsResponse: Schema.Codec<SearchTransitiveMembershipsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     memberships: Schema.optional(Schema.Array(MemberRelation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1571,7 +1571,7 @@ export interface MembershipAdjacencyList {
   group?: string;
 }
 
-export const MembershipAdjacencyList: Schema.Schema<MembershipAdjacencyList> =
+export const MembershipAdjacencyList: Schema.Codec<MembershipAdjacencyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     edges: Schema.optional(Schema.Array(Membership)),
     group: Schema.optional(Schema.String),
@@ -1582,7 +1582,7 @@ export interface GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
   customer?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest: Schema.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest> =
+export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest: Schema.Codec<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
   }).annotate({
@@ -1594,7 +1594,7 @@ export interface GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
   customer?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest> =
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest: Schema.Codec<GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
   }).annotate({
@@ -1603,28 +1603,28 @@ export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest: Schema.Schem
 
 export interface GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata> =
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata",
   });
 
 export interface DeleteInboundSamlSsoProfileOperationMetadata {}
 
-export const DeleteInboundSamlSsoProfileOperationMetadata: Schema.Schema<DeleteInboundSamlSsoProfileOperationMetadata> =
+export const DeleteInboundSamlSsoProfileOperationMetadata: Schema.Codec<DeleteInboundSamlSsoProfileOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteInboundSamlSsoProfileOperationMetadata",
   });
 
 export interface UpdateGroupMetadata {}
 
-export const UpdateGroupMetadata: Schema.Schema<UpdateGroupMetadata> =
+export const UpdateGroupMetadata: Schema.Codec<UpdateGroupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateGroupMetadata",
   });
 
 export interface GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata> =
+export const GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata",
   });
@@ -1642,7 +1642,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     name: Schema.optional(Schema.String),
@@ -1656,21 +1656,21 @@ export interface IsInvitableUserResponse {
   isInvitableUser?: boolean;
 }
 
-export const IsInvitableUserResponse: Schema.Schema<IsInvitableUserResponse> =
+export const IsInvitableUserResponse: Schema.Codec<IsInvitableUserResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isInvitableUser: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "IsInvitableUserResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata> =
+export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata",
   });
 
 export interface GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata> =
+export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata",
   });
@@ -1682,7 +1682,7 @@ export interface UpdateMembershipRolesParams {
   membershipRole?: MembershipRole;
 }
 
-export const UpdateMembershipRolesParams: Schema.Schema<UpdateMembershipRolesParams> =
+export const UpdateMembershipRolesParams: Schema.Codec<UpdateMembershipRolesParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldMask: Schema.optional(Schema.String),
     membershipRole: Schema.optional(MembershipRole),
@@ -1697,7 +1697,7 @@ export interface ModifyMembershipRolesRequest {
   removeRoles?: ReadonlyArray<string>;
 }
 
-export const ModifyMembershipRolesRequest: Schema.Schema<ModifyMembershipRolesRequest> =
+export const ModifyMembershipRolesRequest: Schema.Codec<ModifyMembershipRolesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addRoles: Schema.optional(Schema.Array(MembershipRole)),
     updateRolesParams: Schema.optional(
@@ -1711,14 +1711,14 @@ export interface UpdateInboundSamlSsoProfileOperationMetadata {
   state?: string;
 }
 
-export const UpdateInboundSamlSsoProfileOperationMetadata: Schema.Schema<UpdateInboundSamlSsoProfileOperationMetadata> =
+export const UpdateInboundSamlSsoProfileOperationMetadata: Schema.Codec<UpdateInboundSamlSsoProfileOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpdateInboundSamlSsoProfileOperationMetadata" });
 
 export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata> =
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata",
   });
@@ -1728,7 +1728,7 @@ export interface GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
   deviceUser?: GoogleAppsCloudidentityDevicesV1DeviceUser;
 }
 
-export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse> =
+export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
   }).annotate({
@@ -1740,7 +1740,7 @@ export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
   deviceUser?: GoogleAppsCloudidentityDevicesV1DeviceUser;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse> =
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
   }).annotate({
@@ -1749,7 +1749,7 @@ export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse: Schem
 
 export interface GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata> =
+export const GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata",
   });
@@ -1761,7 +1761,7 @@ export interface ListUserInvitationsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserInvitationsResponse: Schema.Schema<ListUserInvitationsResponse> =
+export const ListUserInvitationsResponse: Schema.Codec<ListUserInvitationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userInvitations: Schema.optional(Schema.Array(UserInvitation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1772,7 +1772,7 @@ export interface GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
   deviceUser?: GoogleAppsCloudidentityDevicesV1DeviceUser;
 }
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse> =
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
   }).annotate({
@@ -1784,7 +1784,7 @@ export interface GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
   device?: GoogleAppsCloudidentityDevicesV1Device;
 }
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceResponse> =
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1WipeDeviceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     device: Schema.optional(GoogleAppsCloudidentityDevicesV1Device),
   }).annotate({
@@ -1793,7 +1793,7 @@ export const GoogleAppsCloudidentityDevicesV1WipeDeviceResponse: Schema.Schema<G
 
 export interface CreateGroupMetadata {}
 
-export const CreateGroupMetadata: Schema.Schema<CreateGroupMetadata> =
+export const CreateGroupMetadata: Schema.Codec<CreateGroupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateGroupMetadata",
   });
@@ -1805,7 +1805,7 @@ export interface GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1ListClientStatesResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse> =
+export const GoogleAppsCloudidentityDevicesV1ListClientStatesResponse: Schema.Codec<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientStates: Schema.optional(
       Schema.Array(GoogleAppsCloudidentityDevicesV1ClientState),
@@ -1817,14 +1817,14 @@ export const GoogleAppsCloudidentityDevicesV1ListClientStatesResponse: Schema.Sc
 
 export interface DeleteInboundSsoAssignmentOperationMetadata {}
 
-export const DeleteInboundSsoAssignmentOperationMetadata: Schema.Schema<DeleteInboundSsoAssignmentOperationMetadata> =
+export const DeleteInboundSsoAssignmentOperationMetadata: Schema.Codec<DeleteInboundSsoAssignmentOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteInboundSsoAssignmentOperationMetadata",
   });
 
 export interface GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata> =
+export const GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata",
   });
@@ -1836,7 +1836,7 @@ export interface GetMembershipGraphResponse {
   groups?: ReadonlyArray<Group>;
 }
 
-export const GetMembershipGraphResponse: Schema.Schema<GetMembershipGraphResponse> =
+export const GetMembershipGraphResponse: Schema.Codec<GetMembershipGraphResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adjacencyList: Schema.optional(Schema.Array(MembershipAdjacencyList)),
     groups: Schema.optional(Schema.Array(Group)),
@@ -1849,7 +1849,7 @@ export interface ListInboundSamlSsoProfilesResponse {
   nextPageToken?: string;
 }
 
-export const ListInboundSamlSsoProfilesResponse: Schema.Schema<ListInboundSamlSsoProfilesResponse> =
+export const ListInboundSamlSsoProfilesResponse: Schema.Codec<ListInboundSamlSsoProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inboundSamlSsoProfiles: Schema.optional(
       Schema.Array(InboundSamlSsoProfile),
@@ -1859,7 +1859,7 @@ export const ListInboundSamlSsoProfilesResponse: Schema.Schema<ListInboundSamlSs
 
 export interface GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata> =
+export const GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata: Schema.Codec<GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata",
   });
@@ -1871,7 +1871,7 @@ export interface GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
   removeResetLock?: boolean;
 }
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceRequest: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceRequest> =
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceRequest: Schema.Codec<GoogleAppsCloudidentityDevicesV1WipeDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
     removeResetLock: Schema.optional(Schema.Boolean),
@@ -1886,7 +1886,7 @@ export interface SearchGroupsResponse {
   nextPageToken?: string;
 }
 
-export const SearchGroupsResponse: Schema.Schema<SearchGroupsResponse> =
+export const SearchGroupsResponse: Schema.Codec<SearchGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groups: Schema.optional(Schema.Array(Group)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1894,7 +1894,7 @@ export const SearchGroupsResponse: Schema.Schema<SearchGroupsResponse> =
 
 export interface DeleteIdpCredentialOperationMetadata {}
 
-export const DeleteIdpCredentialOperationMetadata: Schema.Schema<DeleteIdpCredentialOperationMetadata> =
+export const DeleteIdpCredentialOperationMetadata: Schema.Codec<DeleteIdpCredentialOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteIdpCredentialOperationMetadata",
   });
@@ -1904,7 +1904,7 @@ export interface CreateInboundOidcSsoProfileOperationMetadata {
   state?: string;
 }
 
-export const CreateInboundOidcSsoProfileOperationMetadata: Schema.Schema<CreateInboundOidcSsoProfileOperationMetadata> =
+export const CreateInboundOidcSsoProfileOperationMetadata: Schema.Codec<CreateInboundOidcSsoProfileOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateInboundOidcSsoProfileOperationMetadata" });
@@ -1980,7 +1980,7 @@ export const ListInboundSamlSsoProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/inboundSamlSsoProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListInboundSamlSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<ListInboundSamlSsoProfilesRequest>;
 
 export type ListInboundSamlSsoProfilesResponse_Op =
   ListInboundSamlSsoProfilesResponse;
@@ -2019,7 +2019,7 @@ export const DeleteInboundSamlSsoProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInboundSamlSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteInboundSamlSsoProfilesRequest>;
 
 export type DeleteInboundSamlSsoProfilesResponse = Operation;
 export const DeleteInboundSamlSsoProfilesResponse =
@@ -2055,7 +2055,7 @@ export const GetInboundSamlSsoProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetInboundSamlSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<GetInboundSamlSsoProfilesRequest>;
 
 export type GetInboundSamlSsoProfilesResponse = InboundSamlSsoProfile;
 export const GetInboundSamlSsoProfilesResponse =
@@ -2095,7 +2095,7 @@ export const PatchInboundSamlSsoProfilesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchInboundSamlSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<PatchInboundSamlSsoProfilesRequest>;
 
 export type PatchInboundSamlSsoProfilesResponse = Operation;
 export const PatchInboundSamlSsoProfilesResponse =
@@ -2135,7 +2135,7 @@ export const CreateInboundSamlSsoProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateInboundSamlSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<CreateInboundSamlSsoProfilesRequest>;
 
 export type CreateInboundSamlSsoProfilesResponse = Operation;
 export const CreateInboundSamlSsoProfilesResponse =
@@ -2171,7 +2171,7 @@ export const DeleteInboundSamlSsoProfilesIdpCredentialsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>;
+  ) as unknown as Schema.Codec<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>;
 
 export type DeleteInboundSamlSsoProfilesIdpCredentialsResponse = Operation;
 export const DeleteInboundSamlSsoProfilesIdpCredentialsResponse =
@@ -2213,7 +2213,7 @@ export const ListInboundSamlSsoProfilesIdpCredentialsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/idpCredentials" }),
     svc,
-  ) as unknown as Schema.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
+  ) as unknown as Schema.Codec<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
 
 export type ListInboundSamlSsoProfilesIdpCredentialsResponse =
   ListIdpCredentialsResponse;
@@ -2252,7 +2252,7 @@ export const GetInboundSamlSsoProfilesIdpCredentialsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetInboundSamlSsoProfilesIdpCredentialsRequest>;
+  ) as unknown as Schema.Codec<GetInboundSamlSsoProfilesIdpCredentialsRequest>;
 
 export type GetInboundSamlSsoProfilesIdpCredentialsResponse = IdpCredential;
 export const GetInboundSamlSsoProfilesIdpCredentialsResponse =
@@ -2293,7 +2293,7 @@ export const AddInboundSamlSsoProfilesIdpCredentialsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddInboundSamlSsoProfilesIdpCredentialsRequest>;
+  ) as unknown as Schema.Codec<AddInboundSamlSsoProfilesIdpCredentialsRequest>;
 
 export type AddInboundSamlSsoProfilesIdpCredentialsResponse = Operation;
 export const AddInboundSamlSsoProfilesIdpCredentialsResponse =
@@ -2329,7 +2329,7 @@ export const DeleteInboundSsoAssignmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInboundSsoAssignmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteInboundSsoAssignmentsRequest>;
 
 export type DeleteInboundSsoAssignmentsResponse = Operation;
 export const DeleteInboundSsoAssignmentsResponse =
@@ -2371,7 +2371,7 @@ export const ListInboundSsoAssignmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/inboundSsoAssignments" }),
     svc,
-  ) as unknown as Schema.Schema<ListInboundSsoAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListInboundSsoAssignmentsRequest>;
 
 export type ListInboundSsoAssignmentsResponse_Op =
   ListInboundSsoAssignmentsResponse;
@@ -2410,7 +2410,7 @@ export const GetInboundSsoAssignmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetInboundSsoAssignmentsRequest>;
+  ) as unknown as Schema.Codec<GetInboundSsoAssignmentsRequest>;
 
 export type GetInboundSsoAssignmentsResponse = InboundSsoAssignment;
 export const GetInboundSsoAssignmentsResponse =
@@ -2450,7 +2450,7 @@ export const PatchInboundSsoAssignmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchInboundSsoAssignmentsRequest>;
+  ) as unknown as Schema.Codec<PatchInboundSsoAssignmentsRequest>;
 
 export type PatchInboundSsoAssignmentsResponse = Operation;
 export const PatchInboundSsoAssignmentsResponse =
@@ -2486,7 +2486,7 @@ export const CreateInboundSsoAssignmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/inboundSsoAssignments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateInboundSsoAssignmentsRequest>;
+  ) as unknown as Schema.Codec<CreateInboundSsoAssignmentsRequest>;
 
 export type CreateInboundSsoAssignmentsResponse = Operation;
 export const CreateInboundSsoAssignmentsResponse =
@@ -2526,7 +2526,7 @@ export const CreateDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/devices", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateDevicesRequest>;
+) as unknown as Schema.Codec<CreateDevicesRequest>;
 
 export type CreateDevicesResponse = Operation;
 export const CreateDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2565,7 +2565,7 @@ export const WipeDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/{+name}:wipe", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<WipeDevicesRequest>;
+) as unknown as Schema.Codec<WipeDevicesRequest>;
 
 export type WipeDevicesResponse = Operation;
 export const WipeDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2618,7 +2618,7 @@ export const ListDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/devices" }),
   svc,
-) as unknown as Schema.Schema<ListDevicesRequest>;
+) as unknown as Schema.Codec<ListDevicesRequest>;
 
 export type ListDevicesResponse =
   GoogleAppsCloudidentityDevicesV1ListDevicesResponse;
@@ -2659,7 +2659,7 @@ export const CancelWipeDevicesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancelWipe", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelWipeDevicesRequest>;
+  ) as unknown as Schema.Codec<CancelWipeDevicesRequest>;
 
 export type CancelWipeDevicesResponse = Operation;
 export const CancelWipeDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2696,7 +2696,7 @@ export const DeleteDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteDevicesRequest>;
+) as unknown as Schema.Codec<DeleteDevicesRequest>;
 
 export type DeleteDevicesResponse = Operation;
 export const DeleteDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2733,7 +2733,7 @@ export const GetDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetDevicesRequest>;
+) as unknown as Schema.Codec<GetDevicesRequest>;
 
 export type GetDevicesResponse = GoogleAppsCloudidentityDevicesV1Device;
 export const GetDevicesResponse =
@@ -2769,7 +2769,7 @@ export const ApproveDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApproveDevicesDeviceUsersRequest>;
+  ) as unknown as Schema.Codec<ApproveDevicesDeviceUsersRequest>;
 
 export type ApproveDevicesDeviceUsersResponse = Operation;
 export const ApproveDevicesDeviceUsersResponse =
@@ -2810,7 +2810,7 @@ export const WipeDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:wipe", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<WipeDevicesDeviceUsersRequest>;
+  ) as unknown as Schema.Codec<WipeDevicesDeviceUsersRequest>;
 
 export type WipeDevicesDeviceUsersResponse = Operation;
 export const WipeDevicesDeviceUsersResponse =
@@ -2861,7 +2861,7 @@ export const ListDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/deviceUsers" }),
     svc,
-  ) as unknown as Schema.Schema<ListDevicesDeviceUsersRequest>;
+  ) as unknown as Schema.Codec<ListDevicesDeviceUsersRequest>;
 
 export type ListDevicesDeviceUsersResponse =
   GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse;
@@ -2902,7 +2902,7 @@ export const BlockDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:block", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BlockDevicesDeviceUsersRequest>;
+  ) as unknown as Schema.Codec<BlockDevicesDeviceUsersRequest>;
 
 export type BlockDevicesDeviceUsersResponse = Operation;
 export const BlockDevicesDeviceUsersResponse =
@@ -2943,7 +2943,7 @@ export const CancelWipeDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancelWipe", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelWipeDevicesDeviceUsersRequest>;
+  ) as unknown as Schema.Codec<CancelWipeDevicesDeviceUsersRequest>;
 
 export type CancelWipeDevicesDeviceUsersResponse = Operation;
 export const CancelWipeDevicesDeviceUsersResponse =
@@ -2982,7 +2982,7 @@ export const DeleteDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDevicesDeviceUsersRequest>;
+  ) as unknown as Schema.Codec<DeleteDevicesDeviceUsersRequest>;
 
 export type DeleteDevicesDeviceUsersResponse = Operation;
 export const DeleteDevicesDeviceUsersResponse =
@@ -3043,7 +3043,7 @@ export const LookupDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:lookup" }),
     svc,
-  ) as unknown as Schema.Schema<LookupDevicesDeviceUsersRequest>;
+  ) as unknown as Schema.Codec<LookupDevicesDeviceUsersRequest>;
 
 export type LookupDevicesDeviceUsersResponse =
   GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse;
@@ -3085,7 +3085,7 @@ export const GetDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDevicesDeviceUsersRequest>;
+  ) as unknown as Schema.Codec<GetDevicesDeviceUsersRequest>;
 
 export type GetDevicesDeviceUsersResponse =
   GoogleAppsCloudidentityDevicesV1DeviceUser;
@@ -3128,7 +3128,7 @@ export const PatchDevicesDeviceUsersClientStatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchDevicesDeviceUsersClientStatesRequest>;
+  ) as unknown as Schema.Codec<PatchDevicesDeviceUsersClientStatesRequest>;
 
 export type PatchDevicesDeviceUsersClientStatesResponse = Operation;
 export const PatchDevicesDeviceUsersClientStatesResponse =
@@ -3176,7 +3176,7 @@ export const ListDevicesDeviceUsersClientStatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/clientStates" }),
     svc,
-  ) as unknown as Schema.Schema<ListDevicesDeviceUsersClientStatesRequest>;
+  ) as unknown as Schema.Codec<ListDevicesDeviceUsersClientStatesRequest>;
 
 export type ListDevicesDeviceUsersClientStatesResponse =
   GoogleAppsCloudidentityDevicesV1ListClientStatesResponse;
@@ -3218,7 +3218,7 @@ export const GetDevicesDeviceUsersClientStatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDevicesDeviceUsersClientStatesRequest>;
+  ) as unknown as Schema.Codec<GetDevicesDeviceUsersClientStatesRequest>;
 
 export type GetDevicesDeviceUsersClientStatesResponse =
   GoogleAppsCloudidentityDevicesV1ClientState;
@@ -3252,7 +3252,7 @@ export const GetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetGroupsRequest>;
+) as unknown as Schema.Codec<GetGroupsRequest>;
 
 export type GetGroupsResponse = Group;
 export const GetGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
@@ -3285,7 +3285,7 @@ export const GetSecuritySettingsGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetSecuritySettingsGroupsRequest>;
+  ) as unknown as Schema.Codec<GetSecuritySettingsGroupsRequest>;
 
 export type GetSecuritySettingsGroupsResponse = SecuritySettings;
 export const GetSecuritySettingsGroupsResponse =
@@ -3327,7 +3327,7 @@ export const CreateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/groups", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateGroupsRequest>;
+) as unknown as Schema.Codec<CreateGroupsRequest>;
 
 export type CreateGroupsResponse = Operation;
 export const CreateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -3370,7 +3370,7 @@ export const SearchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/groups:search" }),
   svc,
-) as unknown as Schema.Schema<SearchGroupsRequest>;
+) as unknown as Schema.Codec<SearchGroupsRequest>;
 
 export type SearchGroupsResponse_Op = SearchGroupsResponse;
 export const SearchGroupsResponse_Op =
@@ -3411,7 +3411,7 @@ export const UpdateSecuritySettingsGroupsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSecuritySettingsGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateSecuritySettingsGroupsRequest>;
 
 export type UpdateSecuritySettingsGroupsResponse = Operation;
 export const UpdateSecuritySettingsGroupsResponse =
@@ -3446,7 +3446,7 @@ export const DeleteGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteGroupsRequest>;
+) as unknown as Schema.Codec<DeleteGroupsRequest>;
 
 export type DeleteGroupsResponse = Operation;
 export const DeleteGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -3487,7 +3487,7 @@ export const LookupGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/groups:lookup" }),
   svc,
-) as unknown as Schema.Schema<LookupGroupsRequest>;
+) as unknown as Schema.Codec<LookupGroupsRequest>;
 
 export type LookupGroupsResponse = LookupGroupNameResponse;
 export const LookupGroupsResponse =
@@ -3526,7 +3526,7 @@ export const ListGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/groups" }),
   svc,
-) as unknown as Schema.Schema<ListGroupsRequest>;
+) as unknown as Schema.Codec<ListGroupsRequest>;
 
 export type ListGroupsResponse_Op = ListGroupsResponse;
 export const ListGroupsResponse_Op =
@@ -3566,7 +3566,7 @@ export const PatchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchGroupsRequest>;
+) as unknown as Schema.Codec<PatchGroupsRequest>;
 
 export type PatchGroupsResponse = Operation;
 export const PatchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -3607,7 +3607,7 @@ export const CheckTransitiveMembershipGroupsMembershipsRequest =
       path: "v1/{+parent}/memberships:checkTransitiveMembership",
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckTransitiveMembershipGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<CheckTransitiveMembershipGroupsMembershipsRequest>;
 
 export type CheckTransitiveMembershipGroupsMembershipsResponse =
   CheckTransitiveMembershipResponse;
@@ -3651,7 +3651,7 @@ export const ListGroupsMembershipsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/memberships" }),
     svc,
-  ) as unknown as Schema.Schema<ListGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<ListGroupsMembershipsRequest>;
 
 export type ListGroupsMembershipsResponse = ListMembershipsResponse;
 export const ListGroupsMembershipsResponse =
@@ -3686,7 +3686,7 @@ export const DeleteGroupsMembershipsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<DeleteGroupsMembershipsRequest>;
 
 export type DeleteGroupsMembershipsResponse = Operation;
 export const DeleteGroupsMembershipsResponse =
@@ -3732,7 +3732,7 @@ export const LookupGroupsMembershipsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/memberships:lookup" }),
     svc,
-  ) as unknown as Schema.Schema<LookupGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<LookupGroupsMembershipsRequest>;
 
 export type LookupGroupsMembershipsResponse = LookupMembershipNameResponse;
 export const LookupGroupsMembershipsResponse =
@@ -3775,7 +3775,7 @@ export const SearchTransitiveGroupsGroupsMembershipsRequest =
       path: "v1/{+parent}/memberships:searchTransitiveGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchTransitiveGroupsGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<SearchTransitiveGroupsGroupsMembershipsRequest>;
 
 export type SearchTransitiveGroupsGroupsMembershipsResponse =
   SearchTransitiveGroupsResponse;
@@ -3821,7 +3821,7 @@ export const ModifyMembershipRolesGroupsMembershipsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyMembershipRolesGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<ModifyMembershipRolesGroupsMembershipsRequest>;
 
 export type ModifyMembershipRolesGroupsMembershipsResponse =
   ModifyMembershipRolesResponse;
@@ -3861,7 +3861,7 @@ export const CreateGroupsMembershipsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/memberships", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<CreateGroupsMembershipsRequest>;
 
 export type CreateGroupsMembershipsResponse = Operation;
 export const CreateGroupsMembershipsResponse =
@@ -3912,7 +3912,7 @@ export const SearchDirectGroupsGroupsMembershipsRequest =
       path: "v1/{+parent}/memberships:searchDirectGroups",
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchDirectGroupsGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<SearchDirectGroupsGroupsMembershipsRequest>;
 
 export type SearchDirectGroupsGroupsMembershipsResponse =
   SearchDirectGroupsResponse;
@@ -3957,7 +3957,7 @@ export const GetMembershipGraphGroupsMembershipsRequest =
       path: "v1/{+parent}/memberships:getMembershipGraph",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetMembershipGraphGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<GetMembershipGraphGroupsMembershipsRequest>;
 
 export type GetMembershipGraphGroupsMembershipsResponse = Operation;
 export const GetMembershipGraphGroupsMembershipsResponse =
@@ -3991,7 +3991,7 @@ export const GetGroupsMembershipsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<GetGroupsMembershipsRequest>;
 
 export type GetGroupsMembershipsResponse = Membership;
 export const GetGroupsMembershipsResponse =
@@ -4031,7 +4031,7 @@ export const SearchTransitiveMembershipsGroupsMembershipsRequest =
       path: "v1/{+parent}/memberships:searchTransitiveMemberships",
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchTransitiveMembershipsGroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<SearchTransitiveMembershipsGroupsMembershipsRequest>;
 
 export type SearchTransitiveMembershipsGroupsMembershipsResponse =
   SearchTransitiveMembershipsResponse;
@@ -4070,7 +4070,7 @@ export const GetInboundOidcSsoProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetInboundOidcSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<GetInboundOidcSsoProfilesRequest>;
 
 export type GetInboundOidcSsoProfilesResponse = InboundOidcSsoProfile;
 export const GetInboundOidcSsoProfilesResponse =
@@ -4110,7 +4110,7 @@ export const ListInboundOidcSsoProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/inboundOidcSsoProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListInboundOidcSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<ListInboundOidcSsoProfilesRequest>;
 
 export type ListInboundOidcSsoProfilesResponse_Op =
   ListInboundOidcSsoProfilesResponse;
@@ -4149,7 +4149,7 @@ export const DeleteInboundOidcSsoProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteInboundOidcSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteInboundOidcSsoProfilesRequest>;
 
 export type DeleteInboundOidcSsoProfilesResponse = Operation;
 export const DeleteInboundOidcSsoProfilesResponse =
@@ -4189,7 +4189,7 @@ export const CreateInboundOidcSsoProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateInboundOidcSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<CreateInboundOidcSsoProfilesRequest>;
 
 export type CreateInboundOidcSsoProfilesResponse = Operation;
 export const CreateInboundOidcSsoProfilesResponse =
@@ -4231,7 +4231,7 @@ export const PatchInboundOidcSsoProfilesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchInboundOidcSsoProfilesRequest>;
+  ) as unknown as Schema.Codec<PatchInboundOidcSsoProfilesRequest>;
 
 export type PatchInboundOidcSsoProfilesResponse = Operation;
 export const PatchInboundOidcSsoProfilesResponse =
@@ -4266,7 +4266,7 @@ export const CreatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/policies", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreatePoliciesRequest>;
+) as unknown as Schema.Codec<CreatePoliciesRequest>;
 
 export type CreatePoliciesResponse = Operation;
 export const CreatePoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -4303,7 +4303,7 @@ export const PatchPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchPoliciesRequest>;
+) as unknown as Schema.Codec<PatchPoliciesRequest>;
 
 export type PatchPoliciesResponse = Operation;
 export const PatchPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -4337,7 +4337,7 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetPoliciesRequest>;
+) as unknown as Schema.Codec<GetPoliciesRequest>;
 
 export type GetPoliciesResponse = Policy;
 export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -4372,7 +4372,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/policies" }),
   svc,
-) as unknown as Schema.Schema<ListPoliciesRequest>;
+) as unknown as Schema.Codec<ListPoliciesRequest>;
 
 export type ListPoliciesResponse_Op = ListPoliciesResponse;
 export const ListPoliciesResponse_Op =
@@ -4406,7 +4406,7 @@ export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeletePoliciesRequest>;
+) as unknown as Schema.Codec<DeletePoliciesRequest>;
 
 export type DeletePoliciesResponse = Operation;
 export const DeletePoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -4441,7 +4441,7 @@ export const GetCustomersUserinvitationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersUserinvitationsRequest>;
+  ) as unknown as Schema.Codec<GetCustomersUserinvitationsRequest>;
 
 export type GetCustomersUserinvitationsResponse = UserInvitation;
 export const GetCustomersUserinvitationsResponse =
@@ -4478,7 +4478,7 @@ export const CancelCustomersUserinvitationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelCustomersUserinvitationsRequest>;
+  ) as unknown as Schema.Codec<CancelCustomersUserinvitationsRequest>;
 
 export type CancelCustomersUserinvitationsResponse = Operation;
 export const CancelCustomersUserinvitationsResponse =
@@ -4514,7 +4514,7 @@ export const IsInvitableUserCustomersUserinvitationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:isInvitableUser" }),
     svc,
-  ) as unknown as Schema.Schema<IsInvitableUserCustomersUserinvitationsRequest>;
+  ) as unknown as Schema.Codec<IsInvitableUserCustomersUserinvitationsRequest>;
 
 export type IsInvitableUserCustomersUserinvitationsResponse =
   IsInvitableUserResponse;
@@ -4561,7 +4561,7 @@ export const ListCustomersUserinvitationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/userinvitations" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersUserinvitationsRequest>;
+  ) as unknown as Schema.Codec<ListCustomersUserinvitationsRequest>;
 
 export type ListCustomersUserinvitationsResponse = ListUserInvitationsResponse;
 export const ListCustomersUserinvitationsResponse =
@@ -4602,7 +4602,7 @@ export const SendCustomersUserinvitationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:send", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SendCustomersUserinvitationsRequest>;
+  ) as unknown as Schema.Codec<SendCustomersUserinvitationsRequest>;
 
 export type SendCustomersUserinvitationsResponse = Operation;
 export const SendCustomersUserinvitationsResponse =

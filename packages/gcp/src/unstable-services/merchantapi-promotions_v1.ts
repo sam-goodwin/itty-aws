@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface CustomAttribute {
   groupValues?: ReadonlyArray<CustomAttribute>;
 }
 
-export const CustomAttribute: Schema.Schema<CustomAttribute> =
+export const CustomAttribute: Schema.Codec<CustomAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       value: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export const CustomAttribute: Schema.Schema<CustomAttribute> =
     }),
   ).annotate({
     identifier: "CustomAttribute",
-  }) as any as Schema.Schema<CustomAttribute>;
+  }) as any as Schema.Codec<CustomAttribute>;
 
 export interface DestinationStatus {
   /** Output only. The name of the promotion destination. */
@@ -78,7 +78,7 @@ export interface DestinationStatus {
     | (string & {});
 }
 
-export const DestinationStatus: Schema.Schema<DestinationStatus> =
+export const DestinationStatus: Schema.Codec<DestinationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface ItemLevelIssue {
     | (string & {});
 }
 
-export const ItemLevelIssue: Schema.Schema<ItemLevelIssue> =
+export const ItemLevelIssue: Schema.Codec<ItemLevelIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detail: Schema.optional(Schema.String),
     documentation: Schema.optional(Schema.String),
@@ -155,7 +155,7 @@ export interface PromotionStatus {
   itemLevelIssues?: ReadonlyArray<ItemLevelIssue>;
 }
 
-export const PromotionStatus: Schema.Schema<PromotionStatus> =
+export const PromotionStatus: Schema.Codec<PromotionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationDate: Schema.optional(Schema.String),
     lastUpdateDate: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface Price {
   currencyCode?: string;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -183,7 +183,7 @@ export interface Interval {
   startTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -331,7 +331,7 @@ export interface Attributes {
   itemIdExclusion?: ReadonlyArray<string>;
 }
 
-export const Attributes: Schema.Schema<Attributes> =
+export const Attributes: Schema.Codec<Attributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     freeGiftDescription: Schema.optional(Schema.String),
     minimumPurchaseAmount: Schema.optional(Price),
@@ -401,7 +401,7 @@ export interface Promotion {
   versionNumber?: string;
 }
 
-export const Promotion: Schema.Schema<Promotion> =
+export const Promotion: Schema.Codec<Promotion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
     name: Schema.optional(Schema.String),
@@ -422,7 +422,7 @@ export interface ListPromotionsResponse {
   promotions?: ReadonlyArray<Promotion>;
 }
 
-export const ListPromotionsResponse: Schema.Schema<ListPromotionsResponse> =
+export const ListPromotionsResponse: Schema.Codec<ListPromotionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     promotions: Schema.optional(Schema.Array(Promotion)),
@@ -460,7 +460,7 @@ export interface ProductChange {
   newValue?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
@@ -475,7 +475,7 @@ export interface InsertPromotionRequest {
   promotion?: Promotion;
 }
 
-export const InsertPromotionRequest: Schema.Schema<InsertPromotionRequest> =
+export const InsertPromotionRequest: Schema.Codec<InsertPromotionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.String),
     promotion: Schema.optional(Promotion),
@@ -506,7 +506,7 @@ export interface ProductStatusChangeMessage {
   expirationTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(ProductChange)),
     managingAccount: Schema.optional(Schema.String),
@@ -591,7 +591,7 @@ export const InsertAccountsPromotionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsPromotionsRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsPromotionsRequest>;
 
 export type InsertAccountsPromotionsResponse = Promotion;
 export const InsertAccountsPromotionsResponse =
@@ -633,7 +633,7 @@ export const ListAccountsPromotionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "promotions/v1/{+parent}/promotions" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsPromotionsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsPromotionsRequest>;
 
 export type ListAccountsPromotionsResponse = ListPromotionsResponse;
 export const ListAccountsPromotionsResponse =
@@ -668,7 +668,7 @@ export const GetAccountsPromotionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "promotions/v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsPromotionsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsPromotionsRequest>;
 
 export type GetAccountsPromotionsResponse = Promotion;
 export const GetAccountsPromotionsResponse =

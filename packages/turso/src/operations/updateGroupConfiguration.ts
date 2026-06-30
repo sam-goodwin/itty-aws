@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupConfigurationInput {
+  organizationSlug: string;
+  groupName: string;
+  delete_protection?: boolean;
+}
 export const UpdateGroupConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -14,17 +19,16 @@ export const UpdateGroupConfigurationInput =
       method: "PATCH",
       path: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration",
     }),
-  );
-export type UpdateGroupConfigurationInput =
-  typeof UpdateGroupConfigurationInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupConfigurationInput>;
 
 // Output Schema
+export interface UpdateGroupConfigurationOutput {
+  delete_protection?: boolean;
+}
 export const UpdateGroupConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delete_protection: Schema.optional(Schema.Boolean),
-  });
-export type UpdateGroupConfigurationOutput =
-  typeof UpdateGroupConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<UpdateGroupConfigurationOutput>;
 
 // The operation
 /**

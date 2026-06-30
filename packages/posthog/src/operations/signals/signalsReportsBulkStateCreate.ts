@@ -3,6 +3,20 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsReportsBulkStateCreateInput {
+  project_id: string;
+  state: "suppressed" | "potential";
+  dismissal_reason?:
+    | "already_fixed"
+    | "report_unclear"
+    | "analysis_wrong"
+    | "wontfix_intentional"
+    | "wontfix_irrelevant"
+    | "other";
+  dismissal_note?: string;
+  snooze_for?: number;
+  ids: string[];
+}
 export const SignalsReportsBulkStateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -25,11 +39,21 @@ export const SignalsReportsBulkStateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/reports/bulk-state/",
     }),
-  );
-export type SignalsReportsBulkStateCreateInput =
-  typeof SignalsReportsBulkStateCreateInput.Type;
+  ) as unknown as Schema.Codec<SignalsReportsBulkStateCreateInput>;
 
 // Output Schema
+export interface SignalsReportsBulkStateCreateOutput {
+  results: {
+    id: string;
+    outcome: string;
+    status?: string | null;
+    detail?: string | null;
+  }[];
+  transitioned_count: number;
+  skipped_count: number;
+  failed_count: number;
+  not_found_count: number;
+}
 export const SignalsReportsBulkStateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -44,9 +68,7 @@ export const SignalsReportsBulkStateCreateOutput =
     skipped_count: Schema.Number,
     failed_count: Schema.Number,
     not_found_count: Schema.Number,
-  });
-export type SignalsReportsBulkStateCreateOutput =
-  typeof SignalsReportsBulkStateCreateOutput.Type;
+  }) as unknown as Schema.Codec<SignalsReportsBulkStateCreateOutput>;
 
 // The operation
 /**

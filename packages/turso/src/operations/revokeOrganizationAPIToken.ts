@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RevokeOrganizationAPITokenInput {
+  organizationSlug: string;
+  tokenId: string;
+}
 export const RevokeOrganizationAPITokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const RevokeOrganizationAPITokenInput =
       method: "DELETE",
       path: "/v1/organizations/{organizationSlug}/api-tokens/{tokenId}",
     }),
-  );
-export type RevokeOrganizationAPITokenInput =
-  typeof RevokeOrganizationAPITokenInput.Type;
+  ) as unknown as Schema.Codec<RevokeOrganizationAPITokenInput>;
 
 // Output Schema
+export interface RevokeOrganizationAPITokenOutput {
+  token?: string;
+}
 export const RevokeOrganizationAPITokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
-  });
-export type RevokeOrganizationAPITokenOutput =
-  typeof RevokeOrganizationAPITokenOutput.Type;
+  }) as unknown as Schema.Codec<RevokeOrganizationAPITokenOutput>;
 
 // The operation
 /**

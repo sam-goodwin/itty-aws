@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface TemplateVariableCondition {
   comparator?: "COMPARATOR_UNSPECIFIED" | "REGEX_FULL_MATCH" | (string & {});
 }
 
-export const TemplateVariableCondition: Schema.Schema<TemplateVariableCondition> =
+export const TemplateVariableCondition: Schema.Codec<TemplateVariableCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     templateVariableValue: Schema.optional(Schema.String),
     templateVariable: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export interface SingleViewGroup {
   displayType?: "DISPLAY_TYPE_UNSPECIFIED" | "DROPDOWN" | "TAB" | (string & {});
 }
 
-export const SingleViewGroup: Schema.Schema<SingleViewGroup> =
+export const SingleViewGroup: Schema.Codec<SingleViewGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayType: Schema.optional(Schema.String),
   }).annotate({ identifier: "SingleViewGroup" });
@@ -57,7 +57,7 @@ export interface ErrorReportingPanel {
   versions?: ReadonlyArray<string>;
 }
 
-export const ErrorReportingPanel: Schema.Schema<ErrorReportingPanel> =
+export const ErrorReportingPanel: Schema.Codec<ErrorReportingPanel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(Schema.String)),
     projectNames: Schema.optional(Schema.Array(Schema.String)),
@@ -69,7 +69,7 @@ export interface CollapsibleGroup {
   collapsed?: boolean;
 }
 
-export const CollapsibleGroup: Schema.Schema<CollapsibleGroup> =
+export const CollapsibleGroup: Schema.Codec<CollapsibleGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collapsed: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CollapsibleGroup" });
@@ -79,7 +79,7 @@ export interface AlertChart {
   name?: string;
 }
 
-export const AlertChart: Schema.Schema<AlertChart> =
+export const AlertChart: Schema.Codec<AlertChart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AlertChart" });
@@ -89,7 +89,7 @@ export interface VisibilityCondition {
   templateVariableCondition?: TemplateVariableCondition;
 }
 
-export const VisibilityCondition: Schema.Schema<VisibilityCondition> =
+export const VisibilityCondition: Schema.Codec<VisibilityCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     templateVariableCondition: Schema.optional(TemplateVariableCondition),
   }).annotate({ identifier: "VisibilityCondition" });
@@ -101,7 +101,7 @@ export interface GaugeView {
   upperBound?: number;
 }
 
-export const GaugeView: Schema.Schema<GaugeView> =
+export const GaugeView: Schema.Codec<GaugeView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lowerBound: Schema.optional(Schema.Number),
     upperBound: Schema.optional(Schema.Number),
@@ -118,7 +118,7 @@ export interface SparkChartView {
     | (string & {});
 }
 
-export const SparkChartView: Schema.Schema<SparkChartView> =
+export const SparkChartView: Schema.Codec<SparkChartView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minAlignmentPeriod: Schema.optional(Schema.String),
     sparkChartType: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface Parameter {
   doubleValue?: number;
 }
 
-export const Parameter: Schema.Schema<Parameter> =
+export const Parameter: Schema.Codec<Parameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intValue: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
@@ -144,7 +144,7 @@ export interface AggregationFunction {
   type?: string;
 }
 
-export const AggregationFunction: Schema.Schema<AggregationFunction> =
+export const AggregationFunction: Schema.Codec<AggregationFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Array(Parameter)),
     type: Schema.optional(Schema.String),
@@ -166,7 +166,7 @@ export interface Breakdown {
   column?: string;
 }
 
-export const Breakdown: Schema.Schema<Breakdown> =
+export const Breakdown: Schema.Codec<Breakdown> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.Number),
     aggregationFunction: Schema.optional(AggregationFunction),
@@ -176,7 +176,7 @@ export const Breakdown: Schema.Schema<Breakdown> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -194,7 +194,7 @@ export interface Threshold {
   value?: number;
 }
 
-export const Threshold: Schema.Schema<Threshold> =
+export const Threshold: Schema.Codec<Threshold> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetAxis: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -249,7 +249,7 @@ export interface Aggregation {
   groupByFields?: ReadonlyArray<string>;
 }
 
-export const Aggregation: Schema.Schema<Aggregation> =
+export const Aggregation: Schema.Codec<Aggregation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alignmentPeriod: Schema.optional(Schema.String),
     perSeriesAligner: Schema.optional(Schema.String),
@@ -264,7 +264,7 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -288,7 +288,7 @@ export interface PickTimeSeriesFilter {
   numTimeSeries?: number;
 }
 
-export const PickTimeSeriesFilter: Schema.Schema<PickTimeSeriesFilter> =
+export const PickTimeSeriesFilter: Schema.Codec<PickTimeSeriesFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interval: Schema.optional(Interval),
     rankingMethod: Schema.optional(Schema.String),
@@ -306,7 +306,7 @@ export interface StatisticalTimeSeriesFilter {
   numTimeSeries?: number;
 }
 
-export const StatisticalTimeSeriesFilter: Schema.Schema<StatisticalTimeSeriesFilter> =
+export const StatisticalTimeSeriesFilter: Schema.Codec<StatisticalTimeSeriesFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rankingMethod: Schema.optional(Schema.String),
     numTimeSeries: Schema.optional(Schema.Number),
@@ -325,7 +325,7 @@ export interface TimeSeriesFilter {
   statisticalTimeSeriesFilter?: StatisticalTimeSeriesFilter;
 }
 
-export const TimeSeriesFilter: Schema.Schema<TimeSeriesFilter> =
+export const TimeSeriesFilter: Schema.Codec<TimeSeriesFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secondaryAggregation: Schema.optional(Aggregation),
     pickTimeSeriesFilter: Schema.optional(PickTimeSeriesFilter),
@@ -341,7 +341,7 @@ export interface SpanAttributeFilter {
   value?: ReadonlyArray<string>;
 }
 
-export const SpanAttributeFilter: Schema.Schema<SpanAttributeFilter> =
+export const SpanAttributeFilter: Schema.Codec<SpanAttributeFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Array(Schema.String)),
@@ -372,7 +372,7 @@ export interface SpanFilters {
   kinds?: ReadonlyArray<string>;
 }
 
-export const SpanFilters: Schema.Schema<SpanFilters> =
+export const SpanFilters: Schema.Codec<SpanFilters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minDuration: Schema.optional(Schema.String),
     apphubWorkloads: Schema.optional(Schema.Array(Schema.String)),
@@ -401,7 +401,7 @@ export interface TraceQuery {
     | (string & {});
 }
 
-export const TraceQuery: Schema.Schema<TraceQuery> =
+export const TraceQuery: Schema.Codec<TraceQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spanFilters: Schema.optional(SpanFilters),
     resourceContainer: Schema.optional(Schema.String),
@@ -413,7 +413,7 @@ export interface OpsAnalyticsQuery {
   sql?: string;
 }
 
-export const OpsAnalyticsQuery: Schema.Schema<OpsAnalyticsQuery> =
+export const OpsAnalyticsQuery: Schema.Codec<OpsAnalyticsQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sql: Schema.optional(Schema.String),
   }).annotate({ identifier: "OpsAnalyticsQuery" });
@@ -425,7 +425,7 @@ export interface RatioPart {
   aggregation?: Aggregation;
 }
 
-export const RatioPart: Schema.Schema<RatioPart> =
+export const RatioPart: Schema.Codec<RatioPart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     aggregation: Schema.optional(Aggregation),
@@ -444,7 +444,7 @@ export interface TimeSeriesFilterRatio {
   denominator?: RatioPart;
 }
 
-export const TimeSeriesFilterRatio: Schema.Schema<TimeSeriesFilterRatio> =
+export const TimeSeriesFilterRatio: Schema.Codec<TimeSeriesFilterRatio> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numerator: Schema.optional(RatioPart),
     statisticalTimeSeriesFilter: Schema.optional(StatisticalTimeSeriesFilter),
@@ -472,7 +472,7 @@ export interface TimeSeriesQuery {
   timeSeriesFilterRatio?: TimeSeriesFilterRatio;
 }
 
-export const TimeSeriesQuery: Schema.Schema<TimeSeriesQuery> =
+export const TimeSeriesQuery: Schema.Codec<TimeSeriesQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeSeriesQueryLanguage: Schema.optional(Schema.String),
     prometheusQuery: Schema.optional(Schema.String),
@@ -491,7 +491,7 @@ export interface Measure {
   aggregationFunction?: AggregationFunction;
 }
 
-export const Measure: Schema.Schema<Measure> =
+export const Measure: Schema.Codec<Measure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     column: Schema.optional(Schema.String),
     aggregationFunction: Schema.optional(AggregationFunction),
@@ -525,7 +525,7 @@ export interface Dimension {
   columnType?: string;
 }
 
-export const Dimension: Schema.Schema<Dimension> =
+export const Dimension: Schema.Codec<Dimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sortColumn: Schema.optional(Schema.String),
     timeBinSize: Schema.optional(Schema.String),
@@ -558,7 +558,7 @@ export interface Scorecard {
   dimensions?: ReadonlyArray<Dimension>;
 }
 
-export const Scorecard: Schema.Schema<Scorecard> =
+export const Scorecard: Schema.Codec<Scorecard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gaugeView: Schema.optional(GaugeView),
     sparkChartView: Schema.optional(SparkChartView),
@@ -575,7 +575,7 @@ export interface TableDisplayOptions {
   shownColumns?: ReadonlyArray<string>;
 }
 
-export const TableDisplayOptions: Schema.Schema<TableDisplayOptions> =
+export const TableDisplayOptions: Schema.Codec<TableDisplayOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shownColumns: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TableDisplayOptions" });
@@ -591,7 +591,7 @@ export interface TableDataSet {
   minAlignmentPeriod?: string;
 }
 
-export const TableDataSet: Schema.Schema<TableDataSet> =
+export const TableDataSet: Schema.Codec<TableDataSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeSeriesQuery: Schema.optional(TimeSeriesQuery),
     tableDisplayOptions: Schema.optional(TableDisplayOptions),
@@ -617,7 +617,7 @@ export interface ColumnSettings {
   thresholds?: ReadonlyArray<Threshold>;
 }
 
-export const ColumnSettings: Schema.Schema<ColumnSettings> =
+export const ColumnSettings: Schema.Codec<ColumnSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visible: Schema.optional(Schema.Boolean),
     displayName: Schema.optional(Schema.String),
@@ -639,7 +639,7 @@ export interface TimeSeriesTable {
   columnSettings?: ReadonlyArray<ColumnSettings>;
 }
 
-export const TimeSeriesTable: Schema.Schema<TimeSeriesTable> =
+export const TimeSeriesTable: Schema.Codec<TimeSeriesTable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSets: Schema.optional(Schema.Array(TableDataSet)),
     metricVisualization: Schema.optional(Schema.String),
@@ -651,7 +651,7 @@ export interface FilterControl {
   templateVariable?: string;
 }
 
-export const FilterControl: Schema.Schema<FilterControl> =
+export const FilterControl: Schema.Codec<FilterControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     templateVariable: Schema.optional(Schema.String),
   }).annotate({ identifier: "FilterControl" });
@@ -668,7 +668,7 @@ export interface ColumnSortingOptions {
     | (string & {});
 }
 
-export const ColumnSortingOptions: Schema.Schema<ColumnSortingOptions> =
+export const ColumnSortingOptions: Schema.Codec<ColumnSortingOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     column: Schema.optional(Schema.String),
     direction: Schema.optional(Schema.String),
@@ -701,7 +701,7 @@ export interface DataSet {
   breakdowns?: ReadonlyArray<Breakdown>;
 }
 
-export const DataSet: Schema.Schema<DataSet> =
+export const DataSet: Schema.Codec<DataSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(Dimension)),
     timeSeriesQuery: Schema.optional(TimeSeriesQuery),
@@ -721,7 +721,7 @@ export interface Axis {
   scale?: "SCALE_UNSPECIFIED" | "LINEAR" | "LOG10" | (string & {});
 }
 
-export const Axis: Schema.Schema<Axis> =
+export const Axis: Schema.Codec<Axis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     scale: Schema.optional(Schema.String),
@@ -734,7 +734,7 @@ export interface ChartOptions {
   mode?: "MODE_UNSPECIFIED" | "COLOR" | "X_RAY" | "STATS" | (string & {});
 }
 
-export const ChartOptions: Schema.Schema<ChartOptions> =
+export const ChartOptions: Schema.Codec<ChartOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayHorizontal: Schema.optional(Schema.Boolean),
     mode: Schema.optional(Schema.String),
@@ -757,7 +757,7 @@ export interface XyChart {
   y2Axis?: Axis;
 }
 
-export const XyChart: Schema.Schema<XyChart> =
+export const XyChart: Schema.Codec<XyChart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSets: Schema.optional(Schema.Array(DataSet)),
     thresholds: Schema.optional(Schema.Array(Threshold)),
@@ -775,7 +775,7 @@ export interface MonitoredResource {
   type?: string;
 }
 
-export const MonitoredResource: Schema.Schema<MonitoredResource> =
+export const MonitoredResource: Schema.Codec<MonitoredResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     type: Schema.optional(Schema.String),
@@ -788,7 +788,7 @@ export interface IncidentList {
   policyNames?: ReadonlyArray<string>;
 }
 
-export const IncidentList: Schema.Schema<IncidentList> =
+export const IncidentList: Schema.Codec<IncidentList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     monitoredResources: Schema.optional(Schema.Array(MonitoredResource)),
     policyNames: Schema.optional(Schema.Array(Schema.String)),
@@ -849,7 +849,7 @@ export interface TextStyle {
     | (string & {});
 }
 
-export const TextStyle: Schema.Schema<TextStyle> =
+export const TextStyle: Schema.Codec<TextStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     padding: Schema.optional(Schema.String),
     backgroundColor: Schema.optional(Schema.String),
@@ -869,7 +869,7 @@ export interface Text {
   style?: TextStyle;
 }
 
-export const Text: Schema.Schema<Text> =
+export const Text: Schema.Codec<Text> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     format: Schema.optional(Schema.String),
@@ -883,7 +883,7 @@ export interface LogsPanel {
   resourceNames?: ReadonlyArray<string>;
 }
 
-export const LogsPanel: Schema.Schema<LogsPanel> =
+export const LogsPanel: Schema.Codec<LogsPanel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     resourceNames: Schema.optional(Schema.Array(Schema.String)),
@@ -896,7 +896,7 @@ export interface SectionHeader {
   dividerBelow?: boolean;
 }
 
-export const SectionHeader: Schema.Schema<SectionHeader> =
+export const SectionHeader: Schema.Codec<SectionHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subtitle: Schema.optional(Schema.String),
     dividerBelow: Schema.optional(Schema.Boolean),
@@ -911,7 +911,7 @@ export interface TreemapDataSet {
   breakdowns?: ReadonlyArray<Breakdown>;
 }
 
-export const TreemapDataSet: Schema.Schema<TreemapDataSet> =
+export const TreemapDataSet: Schema.Codec<TreemapDataSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeSeriesQuery: Schema.optional(TimeSeriesQuery),
     measures: Schema.optional(Schema.Array(Measure)),
@@ -925,7 +925,7 @@ export interface Treemap {
   dataSets?: ReadonlyArray<TreemapDataSet>;
 }
 
-export const Treemap: Schema.Schema<Treemap> =
+export const Treemap: Schema.Codec<Treemap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     treemapHierarchy: Schema.optional(Schema.Array(Schema.String)),
     dataSets: Schema.optional(Schema.Array(TreemapDataSet)),
@@ -944,7 +944,7 @@ export interface PieChartDataSet {
   minAlignmentPeriod?: string;
 }
 
-export const PieChartDataSet: Schema.Schema<PieChartDataSet> =
+export const PieChartDataSet: Schema.Codec<PieChartDataSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeSeriesQuery: Schema.optional(TimeSeriesQuery),
     measures: Schema.optional(Schema.Array(Measure)),
@@ -962,7 +962,7 @@ export interface PieChart {
   showLabels?: boolean;
 }
 
-export const PieChart: Schema.Schema<PieChart> =
+export const PieChart: Schema.Codec<PieChart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chartType: Schema.optional(Schema.String),
     dataSets: Schema.optional(Schema.Array(PieChartDataSet)),
@@ -1008,7 +1008,7 @@ export interface Widget {
   pieChart?: PieChart;
 }
 
-export const Widget: Schema.Schema<Widget> =
+export const Widget: Schema.Codec<Widget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorReportingPanel: Schema.optional(ErrorReportingPanel),
     collapsibleGroup: Schema.optional(CollapsibleGroup),
@@ -1037,7 +1037,7 @@ export interface Column {
   widgets?: ReadonlyArray<Widget>;
 }
 
-export const Column: Schema.Schema<Column> =
+export const Column: Schema.Codec<Column> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.String),
     widgets: Schema.optional(Schema.Array(Widget)),
@@ -1048,7 +1048,7 @@ export interface ColumnLayout {
   columns?: ReadonlyArray<Column>;
 }
 
-export const ColumnLayout: Schema.Schema<ColumnLayout> =
+export const ColumnLayout: Schema.Codec<ColumnLayout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(Schema.Array(Column)),
   }).annotate({ identifier: "ColumnLayout" });
@@ -1094,7 +1094,7 @@ export interface EventAnnotation {
   filter?: string;
 }
 
-export const EventAnnotation: Schema.Schema<EventAnnotation> =
+export const EventAnnotation: Schema.Codec<EventAnnotation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
@@ -1110,7 +1110,7 @@ export interface DashboardAnnotations {
   defaultResourceNames?: ReadonlyArray<string>;
 }
 
-export const DashboardAnnotations: Schema.Schema<DashboardAnnotations> =
+export const DashboardAnnotations: Schema.Codec<DashboardAnnotations> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventAnnotations: Schema.optional(Schema.Array(EventAnnotation)),
     defaultResourceNames: Schema.optional(Schema.Array(Schema.String)),
@@ -1123,7 +1123,7 @@ export interface GridLayout {
   columns?: string;
 }
 
-export const GridLayout: Schema.Schema<GridLayout> =
+export const GridLayout: Schema.Codec<GridLayout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     widgets: Schema.optional(Schema.Array(Widget)),
     columns: Schema.optional(Schema.String),
@@ -1142,7 +1142,7 @@ export interface Tile {
   height?: number;
 }
 
-export const Tile: Schema.Schema<Tile> =
+export const Tile: Schema.Codec<Tile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     xPos: Schema.optional(Schema.Number),
     widget: Schema.optional(Widget),
@@ -1158,7 +1158,7 @@ export interface MosaicLayout {
   tiles?: ReadonlyArray<Tile>;
 }
 
-export const MosaicLayout: Schema.Schema<MosaicLayout> =
+export const MosaicLayout: Schema.Codec<MosaicLayout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(Schema.Number),
     tiles: Schema.optional(Schema.Array(Tile)),
@@ -1171,18 +1171,19 @@ export interface Row {
   widgets?: ReadonlyArray<Widget>;
 }
 
-export const Row: Schema.Schema<Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Row: Schema.Codec<Row> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     weight: Schema.optional(Schema.String),
     widgets: Schema.optional(Schema.Array(Widget)),
-  }).annotate({ identifier: "Row" });
+  },
+).annotate({ identifier: "Row" });
 
 export interface RowLayout {
   /** The rows of content to display. */
   rows?: ReadonlyArray<Row>;
 }
 
-export const RowLayout: Schema.Schema<RowLayout> =
+export const RowLayout: Schema.Codec<RowLayout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rows: Schema.optional(Schema.Array(Row)),
   }).annotate({ identifier: "RowLayout" });
@@ -1192,7 +1193,7 @@ export interface StringArray {
   values?: ReadonlyArray<string>;
 }
 
-export const StringArray: Schema.Schema<StringArray> =
+export const StringArray: Schema.Codec<StringArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringArray" });
@@ -1228,7 +1229,7 @@ export interface DashboardFilter {
   timeSeriesQuery?: TimeSeriesQuery;
 }
 
-export const DashboardFilter: Schema.Schema<DashboardFilter> =
+export const DashboardFilter: Schema.Codec<DashboardFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filterType: Schema.optional(Schema.String),
     stringArray: Schema.optional(StringArray),
@@ -1263,7 +1264,7 @@ export interface Dashboard {
   dashboardFilters?: ReadonlyArray<DashboardFilter>;
 }
 
-export const Dashboard: Schema.Schema<Dashboard> =
+export const Dashboard: Schema.Codec<Dashboard> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     columnLayout: Schema.optional(ColumnLayout),
@@ -1286,7 +1287,7 @@ export interface QueryLabelsRequest {
   match?: string;
 }
 
-export const QueryLabelsRequest: Schema.Schema<QueryLabelsRequest> =
+export const QueryLabelsRequest: Schema.Codec<QueryLabelsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
@@ -1302,7 +1303,7 @@ export interface HttpBody {
   contentType?: string;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
+export const HttpBody: Schema.Codec<HttpBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.String),
     extensions: Schema.optional(
@@ -1316,7 +1317,7 @@ export interface SpanContext {
   spanName?: string;
 }
 
-export const SpanContext: Schema.Schema<SpanContext> =
+export const SpanContext: Schema.Codec<SpanContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spanName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SpanContext" });
@@ -1330,7 +1331,7 @@ export interface QueryInstantRequest {
   timeout?: string;
 }
 
-export const QueryInstantRequest: Schema.Schema<QueryInstantRequest> =
+export const QueryInstantRequest: Schema.Codec<QueryInstantRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     time: Schema.optional(Schema.String),
@@ -1346,7 +1347,7 @@ export interface QueryExemplarsRequest {
   start?: string;
 }
 
-export const QueryExemplarsRequest: Schema.Schema<QueryExemplarsRequest> =
+export const QueryExemplarsRequest: Schema.Codec<QueryExemplarsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.String),
     query: Schema.optional(Schema.String),
@@ -1362,7 +1363,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1376,7 +1377,7 @@ export interface SourceContext {
   fileName?: string;
 }
 
-export const SourceContext: Schema.Schema<SourceContext> =
+export const SourceContext: Schema.Codec<SourceContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SourceContext" });
@@ -1388,7 +1389,7 @@ export interface Option {
   name?: string;
 }
 
-export const Option: Schema.Schema<Option> =
+export const Option: Schema.Codec<Option> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -1442,7 +1443,7 @@ export interface Field {
   name?: string;
 }
 
-export const Field: Schema.Schema<Field> =
+export const Field: Schema.Codec<Field> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(Schema.Array(Option)),
     defaultValue: Schema.optional(Schema.String),
@@ -1463,7 +1464,7 @@ export interface QuerySeriesRequest {
   start?: string;
 }
 
-export const QuerySeriesRequest: Schema.Schema<QuerySeriesRequest> =
+export const QuerySeriesRequest: Schema.Codec<QuerySeriesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Schema.String),
     start: Schema.optional(Schema.String),
@@ -1476,7 +1477,7 @@ export interface ListDashboardsResponse {
   nextPageToken?: string;
 }
 
-export const ListDashboardsResponse: Schema.Schema<ListDashboardsResponse> =
+export const ListDashboardsResponse: Schema.Codec<ListDashboardsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dashboards: Schema.optional(Schema.Array(Dashboard)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1497,7 +1498,7 @@ export interface OperationMetadata {
     | (string & {});
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1513,7 +1514,7 @@ export interface MonitoredProject {
   isTombstoned?: boolean;
 }
 
-export const MonitoredProject: Schema.Schema<MonitoredProject> =
+export const MonitoredProject: Schema.Codec<MonitoredProject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1531,7 +1532,7 @@ export interface MetricsScope {
   name?: string;
 }
 
-export const MetricsScope: Schema.Schema<MetricsScope> =
+export const MetricsScope: Schema.Codec<MetricsScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1552,7 +1553,7 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -1574,7 +1575,7 @@ export interface QueryRangeRequest {
   timeout?: string;
 }
 
-export const QueryRangeRequest: Schema.Schema<QueryRangeRequest> =
+export const QueryRangeRequest: Schema.Codec<QueryRangeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     start: Schema.optional(Schema.String),
     end: Schema.optional(Schema.String),
@@ -1588,7 +1589,7 @@ export interface DroppedLabels {
   label?: Record<string, string>;
 }
 
-export const DroppedLabels: Schema.Schema<DroppedLabels> =
+export const DroppedLabels: Schema.Codec<DroppedLabels> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "DroppedLabels" });
@@ -1598,7 +1599,7 @@ export interface ListMetricsScopesByMonitoredProjectResponse {
   metricsScopes?: ReadonlyArray<MetricsScope>;
 }
 
-export const ListMetricsScopesByMonitoredProjectResponse: Schema.Schema<ListMetricsScopesByMonitoredProjectResponse> =
+export const ListMetricsScopesByMonitoredProjectResponse: Schema.Codec<ListMetricsScopesByMonitoredProjectResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metricsScopes: Schema.optional(Schema.Array(MetricsScope)),
   }).annotate({ identifier: "ListMetricsScopesByMonitoredProjectResponse" });
@@ -1624,7 +1625,7 @@ export interface Type {
   edition?: string;
 }
 
-export const Type: Schema.Schema<Type> =
+export const Type: Schema.Codec<Type> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(Field)),
     options: Schema.optional(Schema.Array(Option)),
@@ -1700,7 +1701,7 @@ export const GetLocationsGlobalMetricsScopesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetLocationsGlobalMetricsScopesRequest>;
+  ) as unknown as Schema.Codec<GetLocationsGlobalMetricsScopesRequest>;
 
 export type GetLocationsGlobalMetricsScopesResponse = MetricsScope;
 export const GetLocationsGlobalMetricsScopesResponse =
@@ -1739,7 +1740,7 @@ export const ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequ
       path: "v1/locations/global/metricsScopes:listMetricsScopesByMonitoredProject",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest>;
+  ) as unknown as Schema.Codec<ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest>;
 
 export type ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesResponse =
   ListMetricsScopesByMonitoredProjectResponse;
@@ -1747,7 +1748,9 @@ export const ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesResp
   /*@__PURE__*/ /*#__PURE__*/ ListMetricsScopesByMonitoredProjectResponse;
 
 export type ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of every Metrics Scope that a specific MonitoredProject has been added to. The metrics scope representing the specified monitored project will always be the first entry in the response. */
 export const listMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopes: API.OperationMethod<
@@ -1773,7 +1776,7 @@ export const DeleteLocationsGlobalMetricsScopesProjectsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteLocationsGlobalMetricsScopesProjectsRequest>;
+  ) as unknown as Schema.Codec<DeleteLocationsGlobalMetricsScopesProjectsRequest>;
 
 export type DeleteLocationsGlobalMetricsScopesProjectsResponse = Operation;
 export const DeleteLocationsGlobalMetricsScopesProjectsResponse =
@@ -1812,7 +1815,7 @@ export const CreateLocationsGlobalMetricsScopesProjectsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/projects", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateLocationsGlobalMetricsScopesProjectsRequest>;
+  ) as unknown as Schema.Codec<CreateLocationsGlobalMetricsScopesProjectsRequest>;
 
 export type CreateLocationsGlobalMetricsScopesProjectsResponse = Operation;
 export const CreateLocationsGlobalMetricsScopesProjectsResponse =
@@ -1847,7 +1850,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1885,7 +1888,7 @@ export const PatchProjectsDashboardsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsDashboardsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsDashboardsRequest>;
 
 export type PatchProjectsDashboardsResponse = Dashboard;
 export const PatchProjectsDashboardsResponse =
@@ -1921,7 +1924,7 @@ export const GetProjectsDashboardsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDashboardsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDashboardsRequest>;
 
 export type GetProjectsDashboardsResponse = Dashboard;
 export const GetProjectsDashboardsResponse =
@@ -1952,7 +1955,7 @@ export const DeleteProjectsDashboardsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsDashboardsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsDashboardsRequest>;
 
 export type DeleteProjectsDashboardsResponse = Empty;
 export const DeleteProjectsDashboardsResponse =
@@ -1996,7 +1999,7 @@ export const CreateProjectsDashboardsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/dashboards", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDashboardsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDashboardsRequest>;
 
 export type CreateProjectsDashboardsResponse = Dashboard;
 export const CreateProjectsDashboardsResponse =
@@ -2038,7 +2041,7 @@ export const ListProjectsDashboardsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dashboards" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDashboardsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDashboardsRequest>;
 
 export type ListProjectsDashboardsResponse = ListDashboardsResponse;
 export const ListProjectsDashboardsResponse =
@@ -2083,7 +2086,7 @@ export const LabelsProjectsLocationPrometheusApiV1Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<LabelsProjectsLocationPrometheusApiV1Request>;
+  ) as unknown as Schema.Codec<LabelsProjectsLocationPrometheusApiV1Request>;
 
 export type LabelsProjectsLocationPrometheusApiV1Response = HttpBody;
 export const LabelsProjectsLocationPrometheusApiV1Response =
@@ -2129,7 +2132,7 @@ export const Query_exemplarsProjectsLocationPrometheusApiV1Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Query_exemplarsProjectsLocationPrometheusApiV1Request>;
+  ) as unknown as Schema.Codec<Query_exemplarsProjectsLocationPrometheusApiV1Request>;
 
 export type Query_exemplarsProjectsLocationPrometheusApiV1Response = HttpBody;
 export const Query_exemplarsProjectsLocationPrometheusApiV1Response =
@@ -2175,7 +2178,7 @@ export const QueryProjectsLocationPrometheusApiV1Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryProjectsLocationPrometheusApiV1Request>;
+  ) as unknown as Schema.Codec<QueryProjectsLocationPrometheusApiV1Request>;
 
 export type QueryProjectsLocationPrometheusApiV1Response = HttpBody;
 export const QueryProjectsLocationPrometheusApiV1Response =
@@ -2221,7 +2224,7 @@ export const SeriesProjectsLocationPrometheusApiV1Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SeriesProjectsLocationPrometheusApiV1Request>;
+  ) as unknown as Schema.Codec<SeriesProjectsLocationPrometheusApiV1Request>;
 
 export type SeriesProjectsLocationPrometheusApiV1Response = HttpBody;
 export const SeriesProjectsLocationPrometheusApiV1Response =
@@ -2267,7 +2270,7 @@ export const Query_rangeProjectsLocationPrometheusApiV1Request =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<Query_rangeProjectsLocationPrometheusApiV1Request>;
+  ) as unknown as Schema.Codec<Query_rangeProjectsLocationPrometheusApiV1Request>;
 
 export type Query_rangeProjectsLocationPrometheusApiV1Response = HttpBody;
 export const Query_rangeProjectsLocationPrometheusApiV1Response =
@@ -2321,7 +2324,7 @@ export const ValuesProjectsLocationPrometheusApiV1LabelRequest =
       path: "v1/{+name}/location/{location}/prometheus/api/v1/label/{label}/values",
     }),
     svc,
-  ) as unknown as Schema.Schema<ValuesProjectsLocationPrometheusApiV1LabelRequest>;
+  ) as unknown as Schema.Codec<ValuesProjectsLocationPrometheusApiV1LabelRequest>;
 
 export type ValuesProjectsLocationPrometheusApiV1LabelResponse = HttpBody;
 export const ValuesProjectsLocationPrometheusApiV1LabelResponse =
@@ -2367,7 +2370,7 @@ export const ListProjectsLocationPrometheusApiV1MetadataRequest =
       path: "v1/{+name}/location/{location}/prometheus/api/v1/metadata",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationPrometheusApiV1MetadataRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationPrometheusApiV1MetadataRequest>;
 
 export type ListProjectsLocationPrometheusApiV1MetadataResponse = HttpBody;
 export const ListProjectsLocationPrometheusApiV1MetadataResponse =

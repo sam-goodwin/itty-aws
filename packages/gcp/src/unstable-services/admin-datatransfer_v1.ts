@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface ApplicationTransferParam {
   value?: ReadonlyArray<string>;
 }
 
-export const ApplicationTransferParam: Schema.Schema<ApplicationTransferParam> =
+export const ApplicationTransferParam: Schema.Codec<ApplicationTransferParam> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Array(Schema.String)),
@@ -44,7 +44,7 @@ export interface ApplicationDataTransfer {
   applicationTransferParams?: ReadonlyArray<ApplicationTransferParam>;
 }
 
-export const ApplicationDataTransfer: Schema.Schema<ApplicationDataTransfer> =
+export const ApplicationDataTransfer: Schema.Codec<ApplicationDataTransfer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.optional(Schema.String),
     applicationTransferStatus: Schema.optional(Schema.String),
@@ -72,7 +72,7 @@ export interface DataTransfer {
   requestTime?: string;
 }
 
-export const DataTransfer: Schema.Schema<DataTransfer> =
+export const DataTransfer: Schema.Codec<DataTransfer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     oldOwnerUserId: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface DataTransfersListResponse {
   kind?: string;
 }
 
-export const DataTransfersListResponse: Schema.Schema<DataTransfersListResponse> =
+export const DataTransfersListResponse: Schema.Codec<DataTransfersListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     dataTransfers: Schema.optional(Schema.Array(DataTransfer)),
@@ -118,7 +118,7 @@ export interface Application {
   transferParams?: ReadonlyArray<ApplicationTransferParam>;
 }
 
-export const Application: Schema.Schema<Application> =
+export const Application: Schema.Codec<Application> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface ApplicationsListResponse {
   kind?: string;
 }
 
-export const ApplicationsListResponse: Schema.Schema<ApplicationsListResponse> =
+export const ApplicationsListResponse: Schema.Codec<ApplicationsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export const GetApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "admin/datatransfer/v1/applications/{applicationId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetApplicationsRequest>;
+) as unknown as Schema.Codec<GetApplicationsRequest>;
 
 export type GetApplicationsResponse = Application;
 export const GetApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ Application;
@@ -251,7 +251,7 @@ export const ListApplicationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "admin/datatransfer/v1/applications" }),
     svc,
-  ) as unknown as Schema.Schema<ListApplicationsRequest>;
+  ) as unknown as Schema.Codec<ListApplicationsRequest>;
 
 export type ListApplicationsResponse = ApplicationsListResponse;
 export const ListApplicationsResponse =
@@ -288,7 +288,7 @@ export const GetTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "admin/datatransfer/v1/transfers/{dataTransferId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetTransfersRequest>;
+) as unknown as Schema.Codec<GetTransfersRequest>;
 
 export type GetTransfersResponse = DataTransfer;
 export const GetTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
@@ -323,7 +323,7 @@ export const InsertTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertTransfersRequest>;
+) as unknown as Schema.Codec<InsertTransfersRequest>;
 
 export type InsertTransfersResponse = DataTransfer;
 export const InsertTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
@@ -376,7 +376,7 @@ export const ListTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "admin/datatransfer/v1/transfers" }),
   svc,
-) as unknown as Schema.Schema<ListTransfersRequest>;
+) as unknown as Schema.Codec<ListTransfersRequest>;
 
 export type ListTransfersResponse = DataTransfersListResponse;
 export const ListTransfersResponse =

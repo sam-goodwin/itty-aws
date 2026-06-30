@@ -3,18 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface V1GetProfileInput {}
 export const V1GetProfileInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v1/profile" }));
-export type V1GetProfileInput = typeof V1GetProfileInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v1/profile" }),
+) as unknown as Schema.Codec<V1GetProfileInput>;
 
 // Output Schema
+export interface V1GetProfileOutput {
+  gotrue_id: string;
+  primary_email: string;
+  username: string;
+}
 export const V1GetProfileOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   gotrue_id: Schema.String,
   primary_email: Schema.String,
   username: Schema.String,
-});
-export type V1GetProfileOutput = typeof V1GetProfileOutput.Type;
+}) as unknown as Schema.Codec<V1GetProfileOutput>;
 
 // The operation
 /**

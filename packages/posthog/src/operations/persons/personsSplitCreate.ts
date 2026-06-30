@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsSplitCreateInput {
+  id: string;
+  project_id: string;
+  format?: "csv" | "json";
+  main_distinct_id?: string | null;
+  distinct_ids_to_split?: string[] | null;
+}
 export const PersonsSplitCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -18,15 +25,16 @@ export const PersonsSplitCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/persons/{id}/split/",
     }),
-  );
-export type PersonsSplitCreateInput = typeof PersonsSplitCreateInput.Type;
+  ) as unknown as Schema.Codec<PersonsSplitCreateInput>;
 
 // Output Schema
+export interface PersonsSplitCreateOutput {
+  success: boolean;
+}
 export const PersonsSplitCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
-  });
-export type PersonsSplitCreateOutput = typeof PersonsSplitCreateOutput.Type;
+  }) as unknown as Schema.Codec<PersonsSplitCreateOutput>;
 
 // The operation
 /**

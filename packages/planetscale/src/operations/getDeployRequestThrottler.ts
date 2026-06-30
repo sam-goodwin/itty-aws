@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetDeployRequestThrottlerInput {
+  organization: string;
+  database: string;
+  number: number;
+}
 export const GetDeployRequestThrottlerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,20 @@ export const GetDeployRequestThrottlerInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/throttler",
     }),
-  );
-export type GetDeployRequestThrottlerInput =
-  typeof GetDeployRequestThrottlerInput.Type;
+  ) as unknown as Schema.Codec<GetDeployRequestThrottlerInput>;
 
 // Output Schema
+export interface GetDeployRequestThrottlerOutput {
+  keyspaces: string[];
+  configurable: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  configurations: { keyspace_name: string; ratio: number }[];
+}
 export const GetDeployRequestThrottlerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyspaces: Schema.Array(Schema.String),
@@ -35,9 +49,7 @@ export const GetDeployRequestThrottlerOutput =
         ratio: Schema.Number,
       }),
     ),
-  });
-export type GetDeployRequestThrottlerOutput =
-  typeof GetDeployRequestThrottlerOutput.Type;
+  }) as unknown as Schema.Codec<GetDeployRequestThrottlerOutput>;
 
 // The operation
 /**

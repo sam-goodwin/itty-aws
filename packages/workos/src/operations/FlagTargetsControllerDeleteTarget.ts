@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface FlagTargetsControllerDeleteTargetInput {
+  resourceId: string;
+  slug: string;
+}
 export const FlagTargetsControllerDeleteTargetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const FlagTargetsControllerDeleteTargetInput =
       method: "DELETE",
       path: "/feature-flags/{slug}/targets/{resourceId}",
     }),
-  );
-export type FlagTargetsControllerDeleteTargetInput =
-  typeof FlagTargetsControllerDeleteTargetInput.Type;
+  ) as unknown as Schema.Codec<FlagTargetsControllerDeleteTargetInput>;
 
 // Output Schema
+export type FlagTargetsControllerDeleteTargetOutput = void;
 export const FlagTargetsControllerDeleteTargetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FlagTargetsControllerDeleteTargetOutput =
-  typeof FlagTargetsControllerDeleteTargetOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FlagTargetsControllerDeleteTargetOutput>;
 
 // The operation
 /**

@@ -3,6 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostShippingRatesShippingRateTokenInput {
+  shipping_rate_token: string;
+  active?: boolean;
+  expand?: string[];
+  fixed_amount?: {
+    currency_options?: Record<
+      string,
+      {
+        amount?: number;
+        tax_behavior?: "exclusive" | "inclusive" | "unspecified";
+      }
+    >;
+  };
+  metadata?: Record<string, string> | "";
+  tax_behavior?: "exclusive" | "inclusive" | "unspecified";
+}
 export const PostShippingRatesShippingRateTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shipping_rate_token: Schema.String.pipe(T.PathParam()),
@@ -23,7 +39,12 @@ export const PostShippingRatesShippingRateTokenInput =
         ),
       }),
     ),
-    metadata: Schema.optional(Schema.Unknown),
+    metadata: Schema.optional(
+      Schema.Union([
+        Schema.Record(Schema.String, Schema.String),
+        Schema.Literals([""]),
+      ]),
+    ),
     tax_behavior: Schema.optional(
       Schema.Literals(["exclusive", "inclusive", "unspecified"]),
     ),
@@ -33,16 +54,77 @@ export const PostShippingRatesShippingRateTokenInput =
       path: "/v1/shipping_rates/{shipping_rate_token}",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostShippingRatesShippingRateTokenInput =
-  typeof PostShippingRatesShippingRateTokenInput.Type;
+  ) as unknown as Schema.Codec<PostShippingRatesShippingRateTokenInput>;
 
 // Output Schema
+export interface PostShippingRatesShippingRateTokenOutput {
+  active: boolean;
+  created: number;
+  delivery_estimate: {
+    maximum: {
+      unit: "business_day" | "day" | "hour" | "month" | "week";
+      value: number;
+    } | null;
+    minimum: {
+      unit: "business_day" | "day" | "hour" | "month" | "week";
+      value: number;
+    } | null;
+  } | null;
+  display_name: string | null;
+  fixed_amount?: {
+    amount: number;
+    currency: string;
+    currency_options?: Record<
+      string,
+      {
+        amount: number;
+        tax_behavior: "exclusive" | "inclusive" | "unspecified";
+      }
+    >;
+  };
+  id: string;
+  livemode: boolean;
+  metadata: Record<string, string>;
+  object: "shipping_rate";
+  tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
+  tax_code:
+    | string
+    | { description: string; id: string; name: string; object: "tax_code" }
+    | null;
+  type: "fixed_amount";
+}
 export const PostShippingRatesShippingRateTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     created: Schema.Number,
-    delivery_estimate: Schema.Unknown,
+    delivery_estimate: Schema.NullOr(
+      Schema.Struct({
+        maximum: Schema.NullOr(
+          Schema.Struct({
+            unit: Schema.Literals([
+              "business_day",
+              "day",
+              "hour",
+              "month",
+              "week",
+            ]),
+            value: Schema.Number,
+          }),
+        ),
+        minimum: Schema.NullOr(
+          Schema.Struct({
+            unit: Schema.Literals([
+              "business_day",
+              "day",
+              "hour",
+              "month",
+              "week",
+            ]),
+            value: Schema.Number,
+          }),
+        ),
+      }),
+    ),
     display_name: Schema.NullOr(Schema.String),
     fixed_amount: Schema.optional(
       Schema.Struct({
@@ -70,11 +152,19 @@ export const PostShippingRatesShippingRateTokenOutput =
     tax_behavior: Schema.NullOr(
       Schema.Literals(["exclusive", "inclusive", "unspecified"]),
     ),
-    tax_code: Schema.Unknown,
+    tax_code: Schema.NullOr(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          description: Schema.String,
+          id: Schema.String,
+          name: Schema.String,
+          object: Schema.Literals(["tax_code"]),
+        }),
+      ]),
+    ),
     type: Schema.Literals(["fixed_amount"]),
-  });
-export type PostShippingRatesShippingRateTokenOutput =
-  typeof PostShippingRatesShippingRateTokenOutput.Type;
+  }) as unknown as Schema.Codec<PostShippingRatesShippingRateTokenOutput>;
 
 // The operation
 /**

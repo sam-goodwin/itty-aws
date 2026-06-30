@@ -3,18 +3,68 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateDepositDestinationInput {}
 export const CreateDepositDestinationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/v2/deposit-destinations" }),
-  );
-export type CreateDepositDestinationInput =
-  typeof CreateDepositDestinationInput.Type;
+  ) as unknown as Schema.Codec<CreateDepositDestinationInput>;
 
 // Output Schema
+export interface CreateDepositDestinationOutput {
+  depositDestinationId: string;
+  accountId: string;
+  type: "crypto";
+  crypto: {
+    network:
+      | "base"
+      | "ethereum"
+      | "solana"
+      | "aptos"
+      | "arbitrum"
+      | "arbitrum-sepolia"
+      | "optimism"
+      | "polygon"
+      | "world"
+      | "world-sepolia";
+    address: string;
+  };
+  target?: { accountId?: string; asset: string };
+  status: "active" | "inactive" | "pending";
+  metadata?: Record<string, string>;
+  createdAt: string;
+  updatedAt: string;
+}
 export const CreateDepositDestinationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type CreateDepositDestinationOutput =
-  typeof CreateDepositDestinationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    depositDestinationId: Schema.String,
+    accountId: Schema.String,
+    type: Schema.Literals(["crypto"]),
+    crypto: Schema.Struct({
+      network: Schema.Literals([
+        "base",
+        "ethereum",
+        "solana",
+        "aptos",
+        "arbitrum",
+        "arbitrum-sepolia",
+        "optimism",
+        "polygon",
+        "world",
+        "world-sepolia",
+      ]),
+      address: Schema.String,
+    }),
+    target: Schema.optional(
+      Schema.Struct({
+        accountId: Schema.optional(Schema.String),
+        asset: Schema.String,
+      }),
+    ),
+    status: Schema.Literals(["active", "inactive", "pending"]),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createdAt: Schema.String,
+    updatedAt: Schema.String,
+  }) as unknown as Schema.Codec<CreateDepositDestinationOutput>;
 
 // The operation
 /**

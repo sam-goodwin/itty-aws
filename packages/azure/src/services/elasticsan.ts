@@ -4,11 +4,62 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ElasticSansCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  properties: {
+    sku: { name: "Premium_LRS" | "Premium_ZRS"; tier?: "Premium" };
+    availabilityZones?: string[];
+    provisioningState?:
+      | "Invalid"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Deleted"
+      | "Restoring";
+    baseSizeTiB: number;
+    extendedCapacitySizeTiB: number;
+    totalVolumeSizeGiB?: number;
+    volumeGroupCount?: number;
+    totalIops?: number;
+    totalMBps?: number;
+    totalSizeTiB?: number;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    autoScaleProperties?: {
+      scaleUpProperties?: {
+        unusedSizeTiB?: number;
+        increaseCapacityUnitByTiB?: number;
+        capacityUnitScaleUpLimitTiB?: number;
+        autoScalePolicyEnforcement?: "None" | "Enabled" | "Disabled";
+      };
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ElasticSansCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -101,10 +152,22 @@ export const ElasticSansCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type ElasticSansCreateInput = typeof ElasticSansCreateInput.Type;
+) as unknown as Schema.Codec<ElasticSansCreateInput>;
 
 // Output Schema
+export interface ElasticSansCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ElasticSansCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -124,8 +187,7 @@ export const ElasticSansCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ElasticSansCreateOutput = typeof ElasticSansCreateOutput.Type;
+  }) as unknown as Schema.Codec<ElasticSansCreateOutput>;
 
 // The operation
 /**
@@ -141,6 +203,11 @@ export const ElasticSansCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ElasticSansCreateOutput,
 }));
 // Input Schema
+export interface ElasticSansDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+}
 export const ElasticSansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -153,12 +220,12 @@ export const ElasticSansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type ElasticSansDeleteInput = typeof ElasticSansDeleteInput.Type;
+) as unknown as Schema.Codec<ElasticSansDeleteInput>;
 
 // Output Schema
-export const ElasticSansDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ElasticSansDeleteOutput = typeof ElasticSansDeleteOutput.Type;
+export type ElasticSansDeleteOutput = void;
+export const ElasticSansDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ElasticSansDeleteOutput>;
 
 // The operation
 /**
@@ -174,6 +241,11 @@ export const ElasticSansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ElasticSansDeleteOutput,
 }));
 // Input Schema
+export interface ElasticSansGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+}
 export const ElasticSansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -184,10 +256,22 @@ export const ElasticSansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type ElasticSansGetInput = typeof ElasticSansGetInput.Type;
+) as unknown as Schema.Codec<ElasticSansGetInput>;
 
 // Output Schema
+export interface ElasticSansGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ElasticSansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -206,8 +290,7 @@ export const ElasticSansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ElasticSansGetOutput = typeof ElasticSansGetOutput.Type;
+}) as unknown as Schema.Codec<ElasticSansGetOutput>;
 
 // The operation
 /**
@@ -223,6 +306,10 @@ export const ElasticSansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ElasticSansGetOutput,
 }));
 // Input Schema
+export interface ElasticSansListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ElasticSansListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -233,11 +320,25 @@ export const ElasticSansListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ElasticSansListByResourceGroupInput =
-  typeof ElasticSansListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ElasticSansListByResourceGroupInput>;
 
 // Output Schema
+export interface ElasticSansListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ElasticSansListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -272,9 +373,7 @@ export const ElasticSansListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ElasticSansListByResourceGroupOutput =
-  typeof ElasticSansListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ElasticSansListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -290,6 +389,9 @@ export const ElasticSansListByResourceGroup =
     outputSchema: ElasticSansListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ElasticSansListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ElasticSansListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -299,11 +401,25 @@ export const ElasticSansListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ElasticSan/elasticSans",
       apiVersion: "2025-09-01",
     }),
-  );
-export type ElasticSansListBySubscriptionInput =
-  typeof ElasticSansListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ElasticSansListBySubscriptionInput>;
 
 // Output Schema
+export interface ElasticSansListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ElasticSansListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -338,9 +454,7 @@ export const ElasticSansListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ElasticSansListBySubscriptionOutput =
-  typeof ElasticSansListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ElasticSansListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -355,6 +469,25 @@ export const ElasticSansListBySubscription =
     outputSchema: ElasticSansListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ElasticSansUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  properties?: {
+    baseSizeTiB?: number;
+    extendedCapacitySizeTiB?: number;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    autoScaleProperties?: {
+      scaleUpProperties?: {
+        unusedSizeTiB?: number;
+        increaseCapacityUnitByTiB?: number;
+        capacityUnitScaleUpLimitTiB?: number;
+        autoScalePolicyEnforcement?: "None" | "Enabled" | "Disabled";
+      };
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const ElasticSansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -391,10 +524,22 @@ export const ElasticSansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type ElasticSansUpdateInput = typeof ElasticSansUpdateInput.Type;
+) as unknown as Schema.Codec<ElasticSansUpdateInput>;
 
 // Output Schema
+export interface ElasticSansUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ElasticSansUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -414,8 +559,7 @@ export const ElasticSansUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ElasticSansUpdateOutput = typeof ElasticSansUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ElasticSansUpdateOutput>;
 
 // The operation
 /**
@@ -431,6 +575,7 @@ export const ElasticSansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ElasticSansUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -439,10 +584,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ElasticSan/operations",
     apiVersion: "2025-09-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -465,8 +624,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -479,6 +637,32 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  privateEndpointConnectionName: string;
+  properties: {
+    provisioningState?:
+      | "Invalid"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Deleted"
+      | "Restoring";
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Failed" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    groupIds?: string[];
+  };
+}
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -520,11 +704,22 @@ export const PrivateEndpointConnectionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateInput =
-  typeof PrivateEndpointConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -544,9 +739,7 @@ export const PrivateEndpointConnectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOutput =
-  typeof PrivateEndpointConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -564,6 +757,12 @@ export const PrivateEndpointConnectionsCreate =
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -576,15 +775,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -602,6 +798,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -614,11 +816,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -638,9 +851,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -658,6 +869,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -669,11 +885,25 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -708,9 +938,7 @@ export const PrivateEndpointConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -727,6 +955,11 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListByElasticSanInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+}
 export const PrivateLinkResourcesListByElasticSanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -738,11 +971,25 @@ export const PrivateLinkResourcesListByElasticSanInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateLinkResources",
       apiVersion: "2025-09-01",
     }),
-  );
-export type PrivateLinkResourcesListByElasticSanInput =
-  typeof PrivateLinkResourcesListByElasticSanInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByElasticSanInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByElasticSanOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByElasticSanOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -777,9 +1024,7 @@ export const PrivateLinkResourcesListByElasticSanOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByElasticSanOutput =
-  typeof PrivateLinkResourcesListByElasticSanOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByElasticSanOutput>;
 
 // The operation
 /**
@@ -796,6 +1041,10 @@ export const PrivateLinkResourcesListByElasticSan =
     outputSchema: PrivateLinkResourcesListByElasticSanOutput,
   }));
 // Input Schema
+export interface SkusListInput {
+  subscriptionId: string;
+  $filter?: string;
+}
 export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
@@ -805,10 +1054,20 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ElasticSan/skus",
     apiVersion: "2025-09-01",
   }),
-);
-export type SkusListInput = typeof SkusListInput.Type;
+) as unknown as Schema.Codec<SkusListInput>;
 
 // Output Schema
+export interface SkusListOutput {
+  value: {
+    name: "Premium_LRS" | "Premium_ZRS";
+    tier?: "Premium";
+    resourceType?: string;
+    locations?: string[];
+    locationInfo?: { location?: string; zones?: string[] }[];
+    capabilities?: { name?: string; value?: string }[];
+  }[];
+  nextLink?: string;
+}
 export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -835,8 +1094,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SkusListOutput = typeof SkusListOutput.Type;
+}) as unknown as Schema.Codec<SkusListOutput>;
 
 // The operation
 /**
@@ -851,6 +1109,64 @@ export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkusListOutput,
 }));
 // Input Schema
+export interface VolumeGroupsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    provisioningState?:
+      | "Invalid"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Deleted"
+      | "Restoring";
+    protocolType?: "Iscsi" | "None";
+    encryption?:
+      | "EncryptionAtRestWithPlatformKey"
+      | "EncryptionAtRestWithCustomerManagedKey";
+    encryptionProperties?: {
+      keyVaultProperties?: {
+        keyName?: string;
+        keyVersion?: string;
+        keyVaultUri?: string;
+        currentVersionedKeyIdentifier?: string;
+        lastKeyRotationTimestamp?: string;
+        currentVersionedKeyExpirationTimestamp?: string;
+      };
+      identity?: { userAssignedIdentity?: string };
+    };
+    networkAcls?: { virtualNetworkRules?: { id: string; action?: "Allow" }[] };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    enforceDataIntegrityCheckForIscsi?: boolean;
+  };
+}
 export const VolumeGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -971,10 +1287,22 @@ export const VolumeGroupsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumeGroupsCreateInput = typeof VolumeGroupsCreateInput.Type;
+  ) as unknown as Schema.Codec<VolumeGroupsCreateInput>;
 
 // Output Schema
+export interface VolumeGroupsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumeGroupsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -994,8 +1322,7 @@ export const VolumeGroupsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VolumeGroupsCreateOutput = typeof VolumeGroupsCreateOutput.Type;
+  }) as unknown as Schema.Codec<VolumeGroupsCreateOutput>;
 
 // The operation
 /**
@@ -1012,6 +1339,12 @@ export const VolumeGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumeGroupsCreateOutput,
 }));
 // Input Schema
+export interface VolumeGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+}
 export const VolumeGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1024,12 +1357,12 @@ export const VolumeGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<VolumeGroupsDeleteInput>;
 
 // Output Schema
-export const VolumeGroupsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VolumeGroupsDeleteOutput = typeof VolumeGroupsDeleteOutput.Type;
+export type VolumeGroupsDeleteOutput = void;
+export const VolumeGroupsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -1046,6 +1379,12 @@ export const VolumeGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumeGroupsDeleteOutput,
 }));
 // Input Schema
+export interface VolumeGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+}
 export const VolumeGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1057,10 +1396,22 @@ export const VolumeGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type VolumeGroupsGetInput = typeof VolumeGroupsGetInput.Type;
+) as unknown as Schema.Codec<VolumeGroupsGetInput>;
 
 // Output Schema
+export interface VolumeGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumeGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1079,8 +1430,7 @@ export const VolumeGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VolumeGroupsGetOutput = typeof VolumeGroupsGetOutput.Type;
+}) as unknown as Schema.Codec<VolumeGroupsGetOutput>;
 
 // The operation
 /**
@@ -1097,6 +1447,11 @@ export const VolumeGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumeGroupsGetOutput,
 }));
 // Input Schema
+export interface VolumeGroupsListByElasticSanInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+}
 export const VolumeGroupsListByElasticSanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1108,11 +1463,25 @@ export const VolumeGroupsListByElasticSanInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumeGroupsListByElasticSanInput =
-  typeof VolumeGroupsListByElasticSanInput.Type;
+  ) as unknown as Schema.Codec<VolumeGroupsListByElasticSanInput>;
 
 // Output Schema
+export interface VolumeGroupsListByElasticSanOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VolumeGroupsListByElasticSanOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1147,9 +1516,7 @@ export const VolumeGroupsListByElasticSanOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VolumeGroupsListByElasticSanOutput =
-  typeof VolumeGroupsListByElasticSanOutput.Type;
+  }) as unknown as Schema.Codec<VolumeGroupsListByElasticSanOutput>;
 
 // The operation
 /**
@@ -1166,6 +1533,40 @@ export const VolumeGroupsListByElasticSan =
     outputSchema: VolumeGroupsListByElasticSanOutput,
   }));
 // Input Schema
+export interface VolumeGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    protocolType?: "Iscsi" | "None";
+    encryption?:
+      | "EncryptionAtRestWithPlatformKey"
+      | "EncryptionAtRestWithCustomerManagedKey";
+    encryptionProperties?: {
+      keyVaultProperties?: {
+        keyName?: string;
+        keyVersion?: string;
+        keyVaultUri?: string;
+        currentVersionedKeyIdentifier?: string;
+        lastKeyRotationTimestamp?: string;
+        currentVersionedKeyExpirationTimestamp?: string;
+      };
+      identity?: { userAssignedIdentity?: string };
+    };
+    networkAcls?: { virtualNetworkRules?: { id: string; action?: "Allow" }[] };
+    enforceDataIntegrityCheckForIscsi?: boolean;
+  };
+}
 export const VolumeGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1239,10 +1640,22 @@ export const VolumeGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumeGroupsUpdateInput = typeof VolumeGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<VolumeGroupsUpdateInput>;
 
 // Output Schema
+export interface VolumeGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumeGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1262,8 +1675,7 @@ export const VolumeGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VolumeGroupsUpdateOutput = typeof VolumeGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VolumeGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -1280,6 +1692,63 @@ export const VolumeGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumeGroupsUpdateOutput,
 }));
 // Input Schema
+export interface VolumesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  volumeName: string;
+  properties: {
+    volumeId?: string;
+    creationData?: {
+      createSource?:
+        | "None"
+        | "VolumeSnapshot"
+        | "DiskSnapshot"
+        | "Disk"
+        | "DiskRestorePoint";
+      sourceId?: string;
+    };
+    sizeGiB: number;
+    storageTarget?: {
+      targetIqn?: string;
+      targetPortalHostname?: string;
+      targetPortalPort?: number;
+      provisioningState?:
+        | "Invalid"
+        | "Succeeded"
+        | "Failed"
+        | "Canceled"
+        | "Pending"
+        | "Creating"
+        | "Updating"
+        | "Deleting"
+        | "Deleted"
+        | "Restoring";
+      status?:
+        | "Invalid"
+        | "Unknown"
+        | "Healthy"
+        | "Unhealthy"
+        | "Updating"
+        | "Running"
+        | "Stopped"
+        | "Stopped (deallocated)";
+    };
+    managedBy?: { resourceId?: string };
+    provisioningState?:
+      | "Invalid"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Deleted"
+      | "Restoring";
+  };
+}
 export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1362,10 +1831,22 @@ export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type VolumesCreateInput = typeof VolumesCreateInput.Type;
+) as unknown as Schema.Codec<VolumesCreateInput>;
 
 // Output Schema
+export interface VolumesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1384,8 +1865,7 @@ export const VolumesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VolumesCreateOutput = typeof VolumesCreateOutput.Type;
+}) as unknown as Schema.Codec<VolumesCreateOutput>;
 
 // The operation
 /**
@@ -1403,6 +1883,13 @@ export const VolumesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumesCreateOutput,
 }));
 // Input Schema
+export interface VolumesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  volumeName: string;
+}
 export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1415,12 +1902,12 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
+) as unknown as Schema.Codec<VolumesDeleteInput>;
 
 // Output Schema
-export const VolumesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VolumesDeleteOutput = typeof VolumesDeleteOutput.Type;
+export type VolumesDeleteOutput = void;
+export const VolumesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteOutput>;
 
 // The operation
 /**
@@ -1440,6 +1927,13 @@ export const VolumesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumesDeleteOutput,
 }));
 // Input Schema
+export interface VolumesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  volumeName: string;
+}
 export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1452,10 +1946,22 @@ export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type VolumesGetInput = typeof VolumesGetInput.Type;
+) as unknown as Schema.Codec<VolumesGetInput>;
 
 // Output Schema
+export interface VolumesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1474,8 +1980,7 @@ export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VolumesGetOutput = typeof VolumesGetOutput.Type;
+}) as unknown as Schema.Codec<VolumesGetOutput>;
 
 // The operation
 /**
@@ -1493,6 +1998,12 @@ export const VolumesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumesGetOutput,
 }));
 // Input Schema
+export interface VolumesListByVolumeGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+}
 export const VolumesListByVolumeGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1505,11 +2016,25 @@ export const VolumesListByVolumeGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumesListByVolumeGroupInput =
-  typeof VolumesListByVolumeGroupInput.Type;
+  ) as unknown as Schema.Codec<VolumesListByVolumeGroupInput>;
 
 // Output Schema
+export interface VolumesListByVolumeGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VolumesListByVolumeGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1544,9 +2069,7 @@ export const VolumesListByVolumeGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VolumesListByVolumeGroupOutput =
-  typeof VolumesListByVolumeGroupOutput.Type;
+  }) as unknown as Schema.Codec<VolumesListByVolumeGroupOutput>;
 
 // The operation
 /**
@@ -1565,6 +2088,29 @@ export const VolumesListByVolumeGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VolumeSnapshotsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  snapshotName: string;
+  properties: {
+    creationData: { sourceId: string };
+    provisioningState?:
+      | "Invalid"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Deleted"
+      | "Restoring";
+    sourceVolumeSizeGiB?: number;
+    volumeName?: string;
+  };
+}
 export const VolumeSnapshotsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1599,10 +2145,22 @@ export const VolumeSnapshotsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumeSnapshotsCreateInput = typeof VolumeSnapshotsCreateInput.Type;
+  ) as unknown as Schema.Codec<VolumeSnapshotsCreateInput>;
 
 // Output Schema
+export interface VolumeSnapshotsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumeSnapshotsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1622,9 +2180,7 @@ export const VolumeSnapshotsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VolumeSnapshotsCreateOutput =
-  typeof VolumeSnapshotsCreateOutput.Type;
+  }) as unknown as Schema.Codec<VolumeSnapshotsCreateOutput>;
 
 // The operation
 /**
@@ -1644,6 +2200,13 @@ export const VolumeSnapshotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VolumeSnapshotsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  snapshotName: string;
+}
 export const VolumeSnapshotsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1657,14 +2220,12 @@ export const VolumeSnapshotsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumeSnapshotsDeleteInput = typeof VolumeSnapshotsDeleteInput.Type;
+  ) as unknown as Schema.Codec<VolumeSnapshotsDeleteInput>;
 
 // Output Schema
+export type VolumeSnapshotsDeleteOutput = void;
 export const VolumeSnapshotsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VolumeSnapshotsDeleteOutput =
-  typeof VolumeSnapshotsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumeSnapshotsDeleteOutput>;
 
 // The operation
 /**
@@ -1684,6 +2245,13 @@ export const VolumeSnapshotsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VolumeSnapshotsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  snapshotName: string;
+}
 export const VolumeSnapshotsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1697,10 +2265,22 @@ export const VolumeSnapshotsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumeSnapshotsGetInput = typeof VolumeSnapshotsGetInput.Type;
+  ) as unknown as Schema.Codec<VolumeSnapshotsGetInput>;
 
 // Output Schema
+export interface VolumeSnapshotsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumeSnapshotsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1720,8 +2300,7 @@ export const VolumeSnapshotsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VolumeSnapshotsGetOutput = typeof VolumeSnapshotsGetOutput.Type;
+  }) as unknown as Schema.Codec<VolumeSnapshotsGetOutput>;
 
 // The operation
 /**
@@ -1739,6 +2318,13 @@ export const VolumeSnapshotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumeSnapshotsGetOutput,
 }));
 // Input Schema
+export interface VolumeSnapshotsListByVolumeGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  $filter?: string;
+}
 export const VolumeSnapshotsListByVolumeGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1752,11 +2338,25 @@ export const VolumeSnapshotsListByVolumeGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots",
       apiVersion: "2025-09-01",
     }),
-  );
-export type VolumeSnapshotsListByVolumeGroupInput =
-  typeof VolumeSnapshotsListByVolumeGroupInput.Type;
+  ) as unknown as Schema.Codec<VolumeSnapshotsListByVolumeGroupInput>;
 
 // Output Schema
+export interface VolumeSnapshotsListByVolumeGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VolumeSnapshotsListByVolumeGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1791,9 +2391,7 @@ export const VolumeSnapshotsListByVolumeGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VolumeSnapshotsListByVolumeGroupOutput =
-  typeof VolumeSnapshotsListByVolumeGroupOutput.Type;
+  }) as unknown as Schema.Codec<VolumeSnapshotsListByVolumeGroupOutput>;
 
 // The operation
 /**
@@ -1812,6 +2410,13 @@ export const VolumeSnapshotsListByVolumeGroup =
     outputSchema: VolumeSnapshotsListByVolumeGroupOutput,
   }));
 // Input Schema
+export interface VolumesPreBackupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  volumeNames: string[];
+}
 export const VolumesPreBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1824,16 +2429,17 @@ export const VolumesPreBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/preBackup",
     apiVersion: "2025-09-01",
   }),
-);
-export type VolumesPreBackupInput = typeof VolumesPreBackupInput.Type;
+) as unknown as Schema.Codec<VolumesPreBackupInput>;
 
 // Output Schema
+export interface VolumesPreBackupOutput {
+  validationStatus?: string;
+}
 export const VolumesPreBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     validationStatus: Schema.optional(Schema.String),
   },
-);
-export type VolumesPreBackupOutput = typeof VolumesPreBackupOutput.Type;
+) as unknown as Schema.Codec<VolumesPreBackupOutput>;
 
 // The operation
 /**
@@ -1850,6 +2456,13 @@ export const VolumesPreBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumesPreBackupOutput,
 }));
 // Input Schema
+export interface VolumesPreRestoreInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  diskSnapshotIds: string[];
+}
 export const VolumesPreRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1864,15 +2477,16 @@ export const VolumesPreRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/preRestore",
     apiVersion: "2025-09-01",
   }),
-);
-export type VolumesPreRestoreInput = typeof VolumesPreRestoreInput.Type;
+) as unknown as Schema.Codec<VolumesPreRestoreInput>;
 
 // Output Schema
+export interface VolumesPreRestoreOutput {
+  validationStatus?: string;
+}
 export const VolumesPreRestoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationStatus: Schema.optional(Schema.String),
-  });
-export type VolumesPreRestoreOutput = typeof VolumesPreRestoreOutput.Type;
+  }) as unknown as Schema.Codec<VolumesPreRestoreOutput>;
 
 // The operation
 /**
@@ -1889,6 +2503,14 @@ export const VolumesPreRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumesPreRestoreOutput,
 }));
 // Input Schema
+export interface VolumesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  elasticSanName: string;
+  volumeGroupName: string;
+  volumeName: string;
+  properties?: { sizeGiB?: number; managedBy?: { resourceId?: string } };
+}
 export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1911,10 +2533,22 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;
+) as unknown as Schema.Codec<VolumesUpdateInput>;
 
 // Output Schema
+export interface VolumesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1933,8 +2567,7 @@ export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VolumesUpdateOutput = typeof VolumesUpdateOutput.Type;
+}) as unknown as Schema.Codec<VolumesUpdateOutput>;
 
 // The operation
 /**

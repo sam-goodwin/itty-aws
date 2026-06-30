@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface DriveResourceInfo {
   resourceKey?: string;
 }
 
-export const DriveResourceInfo: Schema.Schema<DriveResourceInfo> =
+export const DriveResourceInfo: Schema.Codec<DriveResourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveFileId: Schema.optional(Schema.String),
     resourceKey: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export interface SpaceInfo {
   space?: string;
 }
 
-export const SpaceInfo: Schema.Schema<SpaceInfo> =
+export const SpaceInfo: Schema.Codec<SpaceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "SpaceInfo" });
@@ -61,7 +61,7 @@ export interface AssignmentInfo {
   spaceInfo?: SpaceInfo;
 }
 
-export const AssignmentInfo: Schema.Schema<AssignmentInfo> =
+export const AssignmentInfo: Schema.Codec<AssignmentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     driveResourceInfo: Schema.optional(DriveResourceInfo),
     surfaceType: Schema.optional(Schema.String),
@@ -106,7 +106,7 @@ export interface Task {
   status?: string;
 }
 
-export const Task: Schema.Schema<Task> =
+export const Task: Schema.Codec<Task> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     notes: Schema.optional(Schema.String),
@@ -146,7 +146,7 @@ export interface Tasks {
   items?: ReadonlyArray<Task>;
 }
 
-export const Tasks: Schema.Schema<Tasks> =
+export const Tasks: Schema.Codec<Tasks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -169,7 +169,7 @@ export interface TaskList {
   kind?: string;
 }
 
-export const TaskList: Schema.Schema<TaskList> =
+export const TaskList: Schema.Codec<TaskList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export interface TaskLists {
   etag?: string;
 }
 
-export const TaskLists: Schema.Schema<TaskLists> =
+export const TaskLists: Schema.Codec<TaskLists> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(TaskList)),
@@ -303,7 +303,7 @@ export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "tasks/v1/lists/{tasklist}/tasks" }),
   svc,
-) as unknown as Schema.Schema<ListTasksRequest>;
+) as unknown as Schema.Codec<ListTasksRequest>;
 
 export type ListTasksResponse = Tasks;
 export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Tasks;
@@ -341,13 +341,13 @@ export const ClearTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ClearTasksRequest>;
+) as unknown as Schema.Codec<ClearTasksRequest>;
 
 export interface ClearTasksResponse {}
-export const ClearTasksResponse: Schema.Schema<ClearTasksResponse> =
+export const ClearTasksResponse: Schema.Codec<ClearTasksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ClearTasksResponse>;
+  ) as any as Schema.Codec<ClearTasksResponse>;
 
 export type ClearTasksError =
   | DefaultErrors
@@ -381,13 +381,13 @@ export const DeleteTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "tasks/v1/lists/{tasklist}/tasks/{task}" }),
   svc,
-) as unknown as Schema.Schema<DeleteTasksRequest>;
+) as unknown as Schema.Codec<DeleteTasksRequest>;
 
 export interface DeleteTasksResponse {}
-export const DeleteTasksResponse: Schema.Schema<DeleteTasksResponse> =
+export const DeleteTasksResponse: Schema.Codec<DeleteTasksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteTasksResponse>;
+  ) as any as Schema.Codec<DeleteTasksResponse>;
 
 export type DeleteTasksError =
   | DefaultErrors
@@ -431,7 +431,7 @@ export const InsertTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertTasksRequest>;
+) as unknown as Schema.Codec<InsertTasksRequest>;
 
 export type InsertTasksResponse = Task;
 export const InsertTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
@@ -468,7 +468,7 @@ export const GetTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "tasks/v1/lists/{tasklist}/tasks/{task}" }),
   svc,
-) as unknown as Schema.Schema<GetTasksRequest>;
+) as unknown as Schema.Codec<GetTasksRequest>;
 
 export type GetTasksResponse = Task;
 export const GetTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
@@ -515,7 +515,7 @@ export const MoveTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<MoveTasksRequest>;
+) as unknown as Schema.Codec<MoveTasksRequest>;
 
 export type MoveTasksResponse = Task;
 export const MoveTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
@@ -559,7 +559,7 @@ export const UpdateTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateTasksRequest>;
+) as unknown as Schema.Codec<UpdateTasksRequest>;
 
 export type UpdateTasksResponse = Task;
 export const UpdateTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
@@ -603,7 +603,7 @@ export const PatchTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchTasksRequest>;
+) as unknown as Schema.Codec<PatchTasksRequest>;
 
 export type PatchTasksResponse = Task;
 export const PatchTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
@@ -644,7 +644,7 @@ export const PatchTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchTasklistsRequest>;
+) as unknown as Schema.Codec<PatchTasklistsRequest>;
 
 export type PatchTasklistsResponse = TaskList;
 export const PatchTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
@@ -687,7 +687,7 @@ export const UpdateTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateTasklistsRequest>;
+) as unknown as Schema.Codec<UpdateTasklistsRequest>;
 
 export type UpdateTasklistsResponse = TaskList;
 export const UpdateTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
@@ -721,7 +721,7 @@ export const GetTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "tasks/v1/users/@me/lists/{tasklist}" }),
   svc,
-) as unknown as Schema.Schema<GetTasklistsRequest>;
+) as unknown as Schema.Codec<GetTasklistsRequest>;
 
 export type GetTasklistsResponse = TaskList;
 export const GetTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
@@ -752,13 +752,13 @@ export const DeleteTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "DELETE", path: "tasks/v1/users/@me/lists/{tasklist}" }),
   svc,
-) as unknown as Schema.Schema<DeleteTasklistsRequest>;
+) as unknown as Schema.Codec<DeleteTasklistsRequest>;
 
 export interface DeleteTasklistsResponse {}
-export const DeleteTasklistsResponse: Schema.Schema<DeleteTasklistsResponse> =
+export const DeleteTasklistsResponse: Schema.Codec<DeleteTasklistsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteTasklistsResponse>;
+  ) as any as Schema.Codec<DeleteTasklistsResponse>;
 
 export type DeleteTasklistsError =
   | DefaultErrors
@@ -791,7 +791,7 @@ export const InsertTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "tasks/v1/users/@me/lists", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertTasklistsRequest>;
+) as unknown as Schema.Codec<InsertTasklistsRequest>;
 
 export type InsertTasklistsResponse = TaskList;
 export const InsertTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
@@ -828,7 +828,7 @@ export const ListTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "tasks/v1/users/@me/lists" }),
   svc,
-) as unknown as Schema.Schema<ListTasklistsRequest>;
+) as unknown as Schema.Codec<ListTasklistsRequest>;
 
 export type ListTasklistsResponse = TaskLists;
 export const ListTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskLists;

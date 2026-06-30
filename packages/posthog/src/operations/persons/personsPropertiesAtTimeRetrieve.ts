@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsPropertiesAtTimeRetrieveInput {
+  project_id: string;
+  distinct_id?: string;
+  format?: "csv" | "json";
+  include_set_once?: boolean;
+  person_id?: string;
+  timestamp: string;
+}
 export const PersonsPropertiesAtTimeRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,27 @@ export const PersonsPropertiesAtTimeRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/persons/properties_at_time/",
     }),
-  );
-export type PersonsPropertiesAtTimeRetrieveInput =
-  typeof PersonsPropertiesAtTimeRetrieveInput.Type;
+  ) as unknown as Schema.Codec<PersonsPropertiesAtTimeRetrieveInput>;
 
 // Output Schema
+export interface PersonsPropertiesAtTimeRetrieveOutput {
+  id?: number;
+  name?: string;
+  distinct_ids?: string[];
+  properties?: Record<string, string | null>;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+  point_in_time_metadata?: {
+    queried_timestamp?: string;
+    include_set_once?: boolean;
+    distinct_id_used?: string | null;
+    person_id_used?: string | null;
+    query_mode?: string;
+    distinct_ids_queried?: string[];
+    distinct_ids_count?: number;
+  };
+}
 export const PersonsPropertiesAtTimeRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -44,9 +68,7 @@ export const PersonsPropertiesAtTimeRetrieveOutput =
         distinct_ids_count: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type PersonsPropertiesAtTimeRetrieveOutput =
-  typeof PersonsPropertiesAtTimeRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<PersonsPropertiesAtTimeRetrieveOutput>;
 
 // The operation
 /**

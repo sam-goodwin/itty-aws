@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface Groups {
   responseCode?: string;
 }
 
-export const Groups: Schema.Schema<Groups> =
+export const Groups: Schema.Codec<Groups> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     responseCode: Schema.optional(Schema.String),
@@ -103,7 +103,7 @@ export const InsertArchiveRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertArchiveRequest>;
+) as unknown as Schema.Codec<InsertArchiveRequest>;
 
 export type InsertArchiveResponse = Groups;
 export const InsertArchiveResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;

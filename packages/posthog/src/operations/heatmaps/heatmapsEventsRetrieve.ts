@@ -4,6 +4,23 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HeatmapsEventsRetrieveInput {
+  project_id: string;
+  aggregation?: "unique_visitors" | "total_count";
+  cohort_ids?: string;
+  date_from?: string;
+  date_to?: string;
+  filter_test_accounts?: string;
+  hide_zero_coordinates?: boolean;
+  limit?: number;
+  offset?: number;
+  points: string;
+  type?: string;
+  url_exact?: string;
+  url_pattern?: string;
+  viewport_width_max?: number;
+  viewport_width_min?: number;
+}
 export const HeatmapsEventsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -28,11 +45,22 @@ export const HeatmapsEventsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/heatmaps/events/",
     }),
-  );
-export type HeatmapsEventsRetrieveInput =
-  typeof HeatmapsEventsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HeatmapsEventsRetrieveInput>;
 
 // Output Schema
+export interface HeatmapsEventsRetrieveOutput {
+  results: {
+    session_id?: string | null;
+    distinct_id: string;
+    timestamp: string;
+    pointer_relative_x: number;
+    pointer_y: number;
+    current_url: string;
+    type: string;
+  }[];
+  total_count: number;
+  has_more: boolean;
+}
 export const HeatmapsEventsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -48,9 +76,7 @@ export const HeatmapsEventsRetrieveOutput =
     ),
     total_count: Schema.Number,
     has_more: Schema.Boolean,
-  });
-export type HeatmapsEventsRetrieveOutput =
-  typeof HeatmapsEventsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<HeatmapsEventsRetrieveOutput>;
 
 // The operation
 /**

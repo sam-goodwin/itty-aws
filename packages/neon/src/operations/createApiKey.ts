@@ -3,20 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateApiKeyInput {
+  key_name: string;
+}
 export const CreateApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   key_name: Schema.String,
-}).pipe(T.Http({ method: "POST", path: "/api_keys" }));
-export type CreateApiKeyInput = typeof CreateApiKeyInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/api_keys" }),
+) as unknown as Schema.Codec<CreateApiKeyInput>;
 
 // Output Schema
+export interface CreateApiKeyOutput {
+  id: number;
+  key: string;
+  name: string;
+  created_at: string;
+  created_by: string;
+}
 export const CreateApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.Number,
   key: Schema.String,
   name: Schema.String,
   created_at: Schema.String,
   created_by: Schema.String,
-});
-export type CreateApiKeyOutput = typeof CreateApiKeyOutput.Type;
+}) as unknown as Schema.Codec<CreateApiKeyOutput>;
 
 // The operation
 /**

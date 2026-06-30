@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmPromptsNameDuplicateCreateInput {
+  project_id: string;
+  prompt_name: string;
+  new_name?: string;
+}
 export const LlmPromptsNameDuplicateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,44 @@ export const LlmPromptsNameDuplicateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_prompts/name/{prompt_name}/duplicate/",
     }),
-  );
-export type LlmPromptsNameDuplicateCreateInput =
-  typeof LlmPromptsNameDuplicateCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmPromptsNameDuplicateCreateInput>;
 
 // Output Schema
+export interface LlmPromptsNameDuplicateCreateOutput {
+  id?: string;
+  name?: string;
+  prompt?: unknown;
+  version?: number;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+  outline?: { level?: number; text?: string }[];
+}
 export const LlmPromptsNameDuplicateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -37,7 +75,23 @@ export const LlmPromptsNameDuplicateCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -56,9 +110,7 @@ export const LlmPromptsNameDuplicateCreateOutput =
         }),
       ),
     ),
-  });
-export type LlmPromptsNameDuplicateCreateOutput =
-  typeof LlmPromptsNameDuplicateCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmPromptsNameDuplicateCreateOutput>;
 
 // The operation
 /**

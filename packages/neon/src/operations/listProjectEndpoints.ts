@@ -4,13 +4,54 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListProjectEndpointsInput {
+  project_id: string;
+}
 export const ListProjectEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/endpoints" }));
-export type ListProjectEndpointsInput = typeof ListProjectEndpointsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/projects/{project_id}/endpoints" }),
+  ) as unknown as Schema.Codec<ListProjectEndpointsInput>;
 
 // Output Schema
+export interface ListProjectEndpointsOutput {
+  endpoints: {
+    host: string;
+    id: string;
+    name?: string;
+    project_id: string;
+    branch_id: string;
+    autoscaling_limit_min_cu: number;
+    autoscaling_limit_max_cu: number;
+    region_id: string;
+    type: "read_only" | "read_write";
+    current_state: "init" | "active" | "idle";
+    pending_state?: "init" | "active" | "idle";
+    settings: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pooler_enabled: boolean;
+    pooler_mode: "transaction";
+    disabled: boolean;
+    passwordless_access: boolean;
+    last_active?: string;
+    creation_source: string;
+    created_at: string;
+    updated_at: string;
+    started_at?: string;
+    suspended_at?: string;
+    proxy_host: string;
+    suspend_timeout_seconds: number;
+    provisioner: string;
+    compute_release_version?: string;
+  }[];
+}
 export const ListProjectEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoints: Schema.Array(
@@ -58,8 +99,7 @@ export const ListProjectEndpointsOutput =
         compute_release_version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ListProjectEndpointsOutput = typeof ListProjectEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<ListProjectEndpointsOutput>;
 
 // The operation
 /**

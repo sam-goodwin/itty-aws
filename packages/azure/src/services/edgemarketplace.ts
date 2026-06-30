@@ -4,12 +4,25 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface OffersGenerateAccessTokenInput {
+  resourceUri: string;
+  offerId: string;
+  publisherName?: string;
+  edgeMarketPlaceRegion: string;
+  egeMarketPlaceResourceId?: string;
+  hypervGeneration?: string;
+  marketPlaceSku?: string;
+  marketPlaceSkuVersion?: string;
+  deviceSku?: string;
+  deviceVersion?: string;
+}
 export const OffersGenerateAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -28,19 +41,20 @@ export const OffersGenerateAccessTokenInput =
       path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/generateAccessToken",
       apiVersion: "2024-10-01",
     }),
-  );
-export type OffersGenerateAccessTokenInput =
-  typeof OffersGenerateAccessTokenInput.Type;
+  ) as unknown as Schema.Codec<OffersGenerateAccessTokenInput>;
 
 // Output Schema
+export interface OffersGenerateAccessTokenOutput {
+  diskId?: string;
+  status?: string;
+  accessToken: Redacted.Redacted<string>;
+}
 export const OffersGenerateAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     accessToken: SensitiveOutputString,
-  });
-export type OffersGenerateAccessTokenOutput =
-  typeof OffersGenerateAccessTokenOutput.Type;
+  }) as unknown as Schema.Codec<OffersGenerateAccessTokenOutput>;
 
 // The operation
 /**
@@ -57,6 +71,10 @@ export const OffersGenerateAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OffersGetInput {
+  resourceUri: string;
+  offerId: string;
+}
 export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   offerId: Schema.String.pipe(T.PathParam()),
@@ -66,10 +84,22 @@ export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}",
     apiVersion: "2024-10-01",
   }),
-);
-export type OffersGetInput = typeof OffersGetInput.Type;
+) as unknown as Schema.Codec<OffersGetInput>;
 
 // Output Schema
+export interface OffersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -88,8 +118,7 @@ export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OffersGetOutput = typeof OffersGetOutput.Type;
+}) as unknown as Schema.Codec<OffersGetOutput>;
 
 // The operation
 /**
@@ -104,6 +133,11 @@ export const OffersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OffersGetOutput,
 }));
 // Input Schema
+export interface OffersGetAccessTokenInput {
+  resourceUri: string;
+  offerId: string;
+  requestId: string;
+}
 export const OffersGetAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -115,17 +149,20 @@ export const OffersGetAccessTokenInput =
       path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/getAccessToken",
       apiVersion: "2024-10-01",
     }),
-  );
-export type OffersGetAccessTokenInput = typeof OffersGetAccessTokenInput.Type;
+  ) as unknown as Schema.Codec<OffersGetAccessTokenInput>;
 
 // Output Schema
+export interface OffersGetAccessTokenOutput {
+  diskId?: string;
+  status?: string;
+  accessToken: Redacted.Redacted<string>;
+}
 export const OffersGetAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diskId: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     accessToken: SensitiveOutputString,
-  });
-export type OffersGetAccessTokenOutput = typeof OffersGetAccessTokenOutput.Type;
+  }) as unknown as Schema.Codec<OffersGetAccessTokenOutput>;
 
 // The operation
 /**
@@ -142,6 +179,14 @@ export const OffersGetAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OffersListInput {
+  resourceUri: string;
+  $top?: number;
+  skip?: number;
+  maxpagesize?: number;
+  $filter?: string;
+  $skipToken?: string;
+}
 export const OffersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
@@ -155,10 +200,25 @@ export const OffersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers",
     apiVersion: "2024-10-01",
   }),
-);
-export type OffersListInput = typeof OffersListInput.Type;
+) as unknown as Schema.Codec<OffersListInput>;
 
 // Output Schema
+export interface OffersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OffersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -182,8 +242,7 @@ export const OffersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OffersListOutput = typeof OffersListOutput.Type;
+}) as unknown as Schema.Codec<OffersListOutput>;
 
 // The operation
 /**
@@ -202,6 +261,9 @@ export const OffersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OffersListOutput,
 }));
 // Input Schema
+export interface OffersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const OffersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -211,11 +273,25 @@ export const OffersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeMarketplace/offers",
       apiVersion: "2024-10-01",
     }),
-  );
-export type OffersListBySubscriptionInput =
-  typeof OffersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<OffersListBySubscriptionInput>;
 
 // Output Schema
+export interface OffersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OffersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -250,9 +326,7 @@ export const OffersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OffersListBySubscriptionOutput =
-  typeof OffersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<OffersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -268,6 +342,7 @@ export const OffersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -276,10 +351,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.EdgeMarketplace/operations",
     apiVersion: "2024-10-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -302,8 +391,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -316,6 +404,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PublishersGetInput {
+  resourceUri: string;
+  publisherName: string;
+}
 export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
@@ -325,10 +417,22 @@ export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/publishers/{publisherName}",
     apiVersion: "2024-10-01",
   }),
-);
-export type PublishersGetInput = typeof PublishersGetInput.Type;
+) as unknown as Schema.Codec<PublishersGetInput>;
 
 // Output Schema
+export interface PublishersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -347,8 +451,7 @@ export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PublishersGetOutput = typeof PublishersGetOutput.Type;
+}) as unknown as Schema.Codec<PublishersGetOutput>;
 
 // The operation
 /**
@@ -363,6 +466,14 @@ export const PublishersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PublishersGetOutput,
 }));
 // Input Schema
+export interface PublishersListInput {
+  resourceUri: string;
+  $top?: number;
+  skip?: number;
+  maxpagesize?: number;
+  $filter?: string;
+  $skipToken?: string;
+}
 export const PublishersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
@@ -376,10 +487,25 @@ export const PublishersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/publishers",
     apiVersion: "2024-10-01",
   }),
-);
-export type PublishersListInput = typeof PublishersListInput.Type;
+) as unknown as Schema.Codec<PublishersListInput>;
 
 // Output Schema
+export interface PublishersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PublishersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -403,8 +529,7 @@ export const PublishersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type PublishersListOutput = typeof PublishersListOutput.Type;
+}) as unknown as Schema.Codec<PublishersListOutput>;
 
 // The operation
 /**
@@ -423,6 +548,9 @@ export const PublishersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PublishersListOutput,
 }));
 // Input Schema
+export interface PublishersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PublishersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -432,11 +560,25 @@ export const PublishersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeMarketplace/publishers",
       apiVersion: "2024-10-01",
     }),
-  );
-export type PublishersListBySubscriptionInput =
-  typeof PublishersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PublishersListBySubscriptionInput>;
 
 // Output Schema
+export interface PublishersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PublishersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -471,9 +613,7 @@ export const PublishersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PublishersListBySubscriptionOutput =
-  typeof PublishersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PublishersListBySubscriptionOutput>;
 
 // The operation
 /**

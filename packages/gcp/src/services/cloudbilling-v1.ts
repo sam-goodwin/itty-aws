@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface ProjectBillingInfo {
   projectId?: string;
 }
 
-export const ProjectBillingInfo: Schema.Schema<ProjectBillingInfo> =
+export const ProjectBillingInfo: Schema.Codec<ProjectBillingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.optional(Schema.String),
     billingEnabled: Schema.optional(Schema.Boolean),
@@ -48,7 +48,7 @@ export interface ListProjectBillingInfoResponse {
   projectBillingInfo?: ReadonlyArray<ProjectBillingInfo>;
 }
 
-export const ListProjectBillingInfoResponse: Schema.Schema<ListProjectBillingInfoResponse> =
+export const ListProjectBillingInfoResponse: Schema.Codec<ListProjectBillingInfoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     projectBillingInfo: Schema.optional(Schema.Array(ProjectBillingInfo)),
@@ -69,7 +69,7 @@ export interface BillingAccount {
   displayName?: string;
 }
 
-export const BillingAccount: Schema.Schema<BillingAccount> =
+export const BillingAccount: Schema.Codec<BillingAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     open: Schema.optional(Schema.Boolean),
     masterBillingAccount: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface ListBillingAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListBillingAccountsResponse: Schema.Schema<ListBillingAccountsResponse> =
+export const ListBillingAccountsResponse: Schema.Codec<ListBillingAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccounts: Schema.optional(Schema.Array(BillingAccount)),
     nextPageToken: Schema.optional(Schema.String),
@@ -101,7 +101,7 @@ export interface Money {
   units?: string;
 }
 
-export const Money: Schema.Schema<Money> =
+export const Money: Schema.Codec<Money> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -115,7 +115,7 @@ export interface TierRate {
   unitPrice?: Money;
 }
 
-export const TierRate: Schema.Schema<TierRate> =
+export const TierRate: Schema.Codec<TierRate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startUsageAmount: Schema.optional(Schema.Number),
     unitPrice: Schema.optional(Money),
@@ -138,7 +138,7 @@ export interface PricingExpression {
   displayQuantity?: number;
 }
 
-export const PricingExpression: Schema.Schema<PricingExpression> =
+export const PricingExpression: Schema.Codec<PricingExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tieredRates: Schema.optional(Schema.Array(TierRate)),
     usageUnitDescription: Schema.optional(Schema.String),
@@ -164,7 +164,7 @@ export interface AggregationInfo {
     | (string & {});
 }
 
-export const AggregationInfo: Schema.Schema<AggregationInfo> =
+export const AggregationInfo: Schema.Codec<AggregationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregationInterval: Schema.optional(Schema.String),
     aggregationCount: Schema.optional(Schema.Number),
@@ -184,7 +184,7 @@ export interface PricingInfo {
   effectiveTime?: string;
 }
 
-export const PricingInfo: Schema.Schema<PricingInfo> =
+export const PricingInfo: Schema.Codec<PricingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currencyConversionRate: Schema.optional(Schema.Number),
     pricingExpression: Schema.optional(PricingExpression),
@@ -198,7 +198,7 @@ export interface MoveBillingAccountRequest {
   destinationParent?: string;
 }
 
-export const MoveBillingAccountRequest: Schema.Schema<MoveBillingAccountRequest> =
+export const MoveBillingAccountRequest: Schema.Codec<MoveBillingAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationParent: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveBillingAccountRequest" });
@@ -214,7 +214,7 @@ export interface Category {
   usageType?: string;
 }
 
-export const Category: Schema.Schema<Category> =
+export const Category: Schema.Codec<Category> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceDisplayName: Schema.optional(Schema.String),
     resourceFamily: Schema.optional(Schema.String),
@@ -234,7 +234,7 @@ export interface GeoTaxonomy {
   regions?: ReadonlyArray<string>;
 }
 
-export const GeoTaxonomy: Schema.Schema<GeoTaxonomy> =
+export const GeoTaxonomy: Schema.Codec<GeoTaxonomy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     regions: Schema.optional(Schema.Array(Schema.String)),
@@ -259,8 +259,8 @@ export interface Sku {
   description?: string;
 }
 
-export const Sku: Schema.Schema<Sku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Sku: Schema.Codec<Sku> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     name: Schema.optional(Schema.String),
     skuId: Schema.optional(Schema.String),
     serviceProviderName: Schema.optional(Schema.String),
@@ -269,7 +269,8 @@ export const Sku: Schema.Schema<Sku> =
     pricingInfo: Schema.optional(Schema.Array(PricingInfo)),
     geoTaxonomy: Schema.optional(GeoTaxonomy),
     description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Sku" });
+  },
+).annotate({ identifier: "Sku" });
 
 export interface ListSkusResponse {
   /** The list of public SKUs of the given service. */
@@ -278,7 +279,7 @@ export interface ListSkusResponse {
   nextPageToken?: string;
 }
 
-export const ListSkusResponse: Schema.Schema<ListSkusResponse> =
+export const ListSkusResponse: Schema.Codec<ListSkusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skus: Schema.optional(Schema.Array(Sku)),
     nextPageToken: Schema.optional(Schema.String),
@@ -296,7 +297,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -313,7 +314,7 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -330,7 +331,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -342,7 +343,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -354,7 +355,7 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
@@ -371,7 +372,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
@@ -384,7 +385,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -396,7 +397,7 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     policy: Schema.optional(Policy),
@@ -413,7 +414,7 @@ export interface Service {
   displayName?: string;
 }
 
-export const Service: Schema.Schema<Service> =
+export const Service: Schema.Codec<Service> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     businessEntityName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -428,7 +429,7 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 
-export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
+export const ListServicesResponse: Schema.Codec<ListServicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     services: Schema.optional(Schema.Array(Service)),
     nextPageToken: Schema.optional(Schema.String),
@@ -501,7 +502,7 @@ export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/services" }),
   svc,
-) as unknown as Schema.Schema<ListServicesRequest>;
+) as unknown as Schema.Codec<ListServicesRequest>;
 
 export type ListServicesResponse_Op = ListServicesResponse;
 export const ListServicesResponse_Op =
@@ -553,7 +554,7 @@ export const ListServicesSkusRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/skus" }),
     svc,
-  ) as unknown as Schema.Schema<ListServicesSkusRequest>;
+  ) as unknown as Schema.Codec<ListServicesSkusRequest>;
 
 export type ListServicesSkusResponse = ListSkusResponse;
 export const ListServicesSkusResponse =
@@ -597,7 +598,7 @@ export const ListOrganizationsBillingAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/billingAccounts" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsBillingAccountsRequest>;
 
 export type ListOrganizationsBillingAccountsResponse =
   ListBillingAccountsResponse;
@@ -643,7 +644,7 @@ export const CreateOrganizationsBillingAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsBillingAccountsRequest>;
 
 export type CreateOrganizationsBillingAccountsResponse = BillingAccount;
 export const CreateOrganizationsBillingAccountsResponse =
@@ -682,7 +683,7 @@ export const MoveOrganizationsBillingAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+destinationParent}/{+name}:move" }),
     svc,
-  ) as unknown as Schema.Schema<MoveOrganizationsBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<MoveOrganizationsBillingAccountsRequest>;
 
 export type MoveOrganizationsBillingAccountsResponse = BillingAccount;
 export const MoveOrganizationsBillingAccountsResponse =
@@ -722,7 +723,7 @@ export const PatchBillingAccountsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<PatchBillingAccountsRequest>;
 
 export type PatchBillingAccountsResponse = BillingAccount;
 export const PatchBillingAccountsResponse =
@@ -763,7 +764,7 @@ export const GetIamPolicyBillingAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyBillingAccountsRequest>;
 
 export type GetIamPolicyBillingAccountsResponse = Policy;
 export const GetIamPolicyBillingAccountsResponse =
@@ -804,7 +805,7 @@ export const TestIamPermissionsBillingAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsBillingAccountsRequest>;
 
 export type TestIamPermissionsBillingAccountsResponse =
   TestIamPermissionsResponse;
@@ -841,7 +842,7 @@ export const GetBillingAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<GetBillingAccountsRequest>;
 
 export type GetBillingAccountsResponse = BillingAccount;
 export const GetBillingAccountsResponse =
@@ -875,7 +876,7 @@ export const MoveBillingAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<MoveBillingAccountsRequest>;
 
 export type MoveBillingAccountsResponse = BillingAccount;
 export const MoveBillingAccountsResponse =
@@ -920,7 +921,7 @@ export const ListBillingAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/billingAccounts" }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<ListBillingAccountsRequest>;
 
 export type ListBillingAccountsResponse_Op = ListBillingAccountsResponse;
 export const ListBillingAccountsResponse_Op =
@@ -958,7 +959,7 @@ export const CreateBillingAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/billingAccounts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<CreateBillingAccountsRequest>;
 
 export type CreateBillingAccountsResponse = BillingAccount;
 export const CreateBillingAccountsResponse =
@@ -1001,7 +1002,7 @@ export const SetIamPolicyBillingAccountsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyBillingAccountsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyBillingAccountsRequest>;
 
 export type SetIamPolicyBillingAccountsResponse = Policy;
 export const SetIamPolicyBillingAccountsResponse =
@@ -1046,7 +1047,7 @@ export const ListBillingAccountsSubAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/subAccounts" }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsSubAccountsRequest>;
+  ) as unknown as Schema.Codec<ListBillingAccountsSubAccountsRequest>;
 
 export type ListBillingAccountsSubAccountsResponse =
   ListBillingAccountsResponse;
@@ -1088,7 +1089,7 @@ export const CreateBillingAccountsSubAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/subAccounts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateBillingAccountsSubAccountsRequest>;
+  ) as unknown as Schema.Codec<CreateBillingAccountsSubAccountsRequest>;
 
 export type CreateBillingAccountsSubAccountsResponse = BillingAccount;
 export const CreateBillingAccountsSubAccountsResponse =
@@ -1130,7 +1131,7 @@ export const ListBillingAccountsProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/projects" }),
     svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsProjectsRequest>;
+  ) as unknown as Schema.Codec<ListBillingAccountsProjectsRequest>;
 
 export type ListBillingAccountsProjectsResponse =
   ListProjectBillingInfoResponse;
@@ -1172,7 +1173,7 @@ export const UpdateBillingInfoProjectsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}/billingInfo", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateBillingInfoProjectsRequest>;
+  ) as unknown as Schema.Codec<UpdateBillingInfoProjectsRequest>;
 
 export type UpdateBillingInfoProjectsResponse = ProjectBillingInfo;
 export const UpdateBillingInfoProjectsResponse =
@@ -1208,7 +1209,7 @@ export const GetBillingInfoProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/billingInfo" }),
     svc,
-  ) as unknown as Schema.Schema<GetBillingInfoProjectsRequest>;
+  ) as unknown as Schema.Codec<GetBillingInfoProjectsRequest>;
 
 export type GetBillingInfoProjectsResponse = ProjectBillingInfo;
 export const GetBillingInfoProjectsResponse =

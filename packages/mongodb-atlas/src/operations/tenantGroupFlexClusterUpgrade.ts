@@ -10,6 +10,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface TenantGroupFlexClusterUpgradeInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const TenantGroupFlexClusterUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -20,15 +25,12 @@ export const TenantGroupFlexClusterUpgradeInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade",
     }),
-  );
-export type TenantGroupFlexClusterUpgradeInput =
-  typeof TenantGroupFlexClusterUpgradeInput.Type;
+  ) as unknown as Schema.Codec<TenantGroupFlexClusterUpgradeInput>;
 
 // Output Schema
+export type TenantGroupFlexClusterUpgradeOutput = void;
 export const TenantGroupFlexClusterUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TenantGroupFlexClusterUpgradeOutput =
-  typeof TenantGroupFlexClusterUpgradeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TenantGroupFlexClusterUpgradeOutput>;
 
 // The operation
 /**

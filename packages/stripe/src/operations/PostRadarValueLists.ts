@@ -3,6 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostRadarValueListsInput {
+  alias: string;
+  expand?: string[];
+  item_type?:
+    | "account"
+    | "card_bin"
+    | "card_fingerprint"
+    | "case_sensitive_string"
+    | "country"
+    | "crypto_fingerprint"
+    | "customer_id"
+    | "email"
+    | "ip_address"
+    | "sepa_debit_fingerprint"
+    | "string"
+    | "us_bank_account_fingerprint";
+  metadata?: Record<string, string>;
+  name: string;
+}
 export const PostRadarValueListsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alias: Schema.String,
@@ -31,10 +50,46 @@ export const PostRadarValueListsInput =
       path: "/v1/radar/value_lists",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostRadarValueListsInput = typeof PostRadarValueListsInput.Type;
+  ) as unknown as Schema.Codec<PostRadarValueListsInput>;
 
 // Output Schema
+export interface PostRadarValueListsOutput {
+  alias: string;
+  created: number;
+  created_by: string;
+  id: string;
+  item_type:
+    | "account"
+    | "card_bin"
+    | "card_fingerprint"
+    | "case_sensitive_string"
+    | "country"
+    | "crypto_fingerprint"
+    | "customer_id"
+    | "email"
+    | "ip_address"
+    | "sepa_debit_fingerprint"
+    | "string"
+    | "us_bank_account_fingerprint";
+  list_items: {
+    data: {
+      created: number;
+      created_by: string;
+      id: string;
+      livemode: boolean;
+      object: "radar.value_list_item";
+      value: string;
+      value_list: string;
+    }[];
+    has_more: boolean;
+    object: "list";
+    url: string;
+  };
+  livemode: boolean;
+  metadata: Record<string, string>;
+  name: string;
+  object: "radar.value_list";
+}
 export const PostRadarValueListsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alias: Schema.String,
@@ -75,8 +130,7 @@ export const PostRadarValueListsOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     name: Schema.String,
     object: Schema.Literals(["radar.value_list"]),
-  });
-export type PostRadarValueListsOutput = typeof PostRadarValueListsOutput.Type;
+  }) as unknown as Schema.Codec<PostRadarValueListsOutput>;
 
 // The operation
 /**

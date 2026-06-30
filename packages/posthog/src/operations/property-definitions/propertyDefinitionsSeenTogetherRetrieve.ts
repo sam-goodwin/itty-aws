@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PropertyDefinitionsSeenTogetherRetrieveInput {
+  project_id: string;
+}
 export const PropertyDefinitionsSeenTogetherRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const PropertyDefinitionsSeenTogetherRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/property_definitions/seen_together/",
     }),
-  );
-export type PropertyDefinitionsSeenTogetherRetrieveInput =
-  typeof PropertyDefinitionsSeenTogetherRetrieveInput.Type;
+  ) as unknown as Schema.Codec<PropertyDefinitionsSeenTogetherRetrieveInput>;
 
 // Output Schema
+export type PropertyDefinitionsSeenTogetherRetrieveOutput = void;
 export const PropertyDefinitionsSeenTogetherRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PropertyDefinitionsSeenTogetherRetrieveOutput =
-  typeof PropertyDefinitionsSeenTogetherRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PropertyDefinitionsSeenTogetherRetrieveOutput>;
 
 // The operation
 /**

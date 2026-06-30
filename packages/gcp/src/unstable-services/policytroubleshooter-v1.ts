@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface GoogleTypeExpr {
   description?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
+export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -82,7 +82,7 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
@@ -99,7 +99,7 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
@@ -124,7 +124,7 @@ export interface GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMem
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership: Schema.Schema<GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership> =
+export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership: Schema.Codec<GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevance: Schema.optional(Schema.String),
     membership: Schema.optional(Schema.String),
@@ -172,7 +172,7 @@ export interface GoogleCloudPolicytroubleshooterV1BindingExplanation {
     | (string & {});
 }
 
-export const GoogleCloudPolicytroubleshooterV1BindingExplanation: Schema.Schema<GoogleCloudPolicytroubleshooterV1BindingExplanation> =
+export const GoogleCloudPolicytroubleshooterV1BindingExplanation: Schema.Codec<GoogleCloudPolicytroubleshooterV1BindingExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rolePermission: Schema.optional(Schema.String),
     rolePermissionRelevance: Schema.optional(Schema.String),
@@ -213,7 +213,7 @@ export interface GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   bindingExplanations?: ReadonlyArray<GoogleCloudPolicytroubleshooterV1BindingExplanation>;
 }
 
-export const GoogleCloudPolicytroubleshooterV1ExplainedPolicy: Schema.Schema<GoogleCloudPolicytroubleshooterV1ExplainedPolicy> =
+export const GoogleCloudPolicytroubleshooterV1ExplainedPolicy: Schema.Codec<GoogleCloudPolicytroubleshooterV1ExplainedPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relevance: Schema.optional(Schema.String),
     policy: Schema.optional(GoogleIamV1Policy),
@@ -235,7 +235,7 @@ export interface GoogleCloudPolicytroubleshooterV1AccessTuple {
   permission?: string;
 }
 
-export const GoogleCloudPolicytroubleshooterV1AccessTuple: Schema.Schema<GoogleCloudPolicytroubleshooterV1AccessTuple> =
+export const GoogleCloudPolicytroubleshooterV1AccessTuple: Schema.Codec<GoogleCloudPolicytroubleshooterV1AccessTuple> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     principal: Schema.optional(Schema.String),
     fullResourceName: Schema.optional(Schema.String),
@@ -251,7 +251,7 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -265,7 +265,7 @@ export interface GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
   accessTuple?: GoogleCloudPolicytroubleshooterV1AccessTuple;
 }
 
-export const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest: Schema.Schema<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest> =
+export const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest: Schema.Codec<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessTuple: Schema.optional(GoogleCloudPolicytroubleshooterV1AccessTuple),
   }).annotate({
@@ -287,7 +287,7 @@ export interface GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse 
   explainedPolicies?: ReadonlyArray<GoogleCloudPolicytroubleshooterV1ExplainedPolicy>;
 }
 
-export const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse: Schema.Schema<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse> =
+export const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse: Schema.Codec<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
     access: Schema.optional(Schema.String),
@@ -367,7 +367,7 @@ export const TroubleshootIamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v1/iam:troubleshoot", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<TroubleshootIamRequest>;
+) as unknown as Schema.Codec<TroubleshootIamRequest>;
 
 export type TroubleshootIamResponse =
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse;

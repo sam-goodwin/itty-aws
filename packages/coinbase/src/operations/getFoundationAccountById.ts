@@ -3,14 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetFoundationAccountByIdInput {
+  accountId: string;
+}
 export const GetFoundationAccountByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v2/accounts/{accountId}" }));
-export type GetFoundationAccountByIdInput =
-  typeof GetFoundationAccountByIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v2/accounts/{accountId}" }),
+  ) as unknown as Schema.Codec<GetFoundationAccountByIdInput>;
 
 // Output Schema
+export interface GetFoundationAccountByIdOutput {
+  accountId: string;
+  type: "prime" | "business" | "cdp";
+  owner: string;
+  name?: string;
+  createdAt: string;
+  updatedAt: string;
+}
 export const GetFoundationAccountByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String,
@@ -19,9 +30,7 @@ export const GetFoundationAccountByIdOutput =
     name: Schema.optional(Schema.String),
     createdAt: Schema.String,
     updatedAt: Schema.String,
-  });
-export type GetFoundationAccountByIdOutput =
-  typeof GetFoundationAccountByIdOutput.Type;
+  }) as unknown as Schema.Codec<GetFoundationAccountByIdOutput>;
 
 // The operation
 /**

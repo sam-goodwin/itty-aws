@@ -4,14 +4,19 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteDatasetInput {
+  dataset_id: string;
+}
 export const DeleteDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/datasets/{dataset_id}" }));
-export type DeleteDatasetInput = typeof DeleteDatasetInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v2/datasets/{dataset_id}" }),
+) as unknown as Schema.Codec<DeleteDatasetInput>;
 
 // Output Schema
-export const DeleteDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteDatasetOutput = typeof DeleteDatasetOutput.Type;
+export type DeleteDatasetOutput = void;
+export const DeleteDatasetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDatasetOutput>;
 
 // The operation
 /**

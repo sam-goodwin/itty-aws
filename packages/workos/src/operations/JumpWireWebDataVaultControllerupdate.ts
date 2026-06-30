@@ -4,16 +4,34 @@ import * as T from "../traits.ts";
 import { BadRequest, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface JumpWireWebDataVaultControllerupdateInput {
+  id: string;
+  value: string;
+  version_check?: string | null;
+}
 export const JumpWireWebDataVaultControllerupdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     value: Schema.String,
     version_check: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "PUT", path: "/vault/v1/kv/{id}" }));
-export type JumpWireWebDataVaultControllerupdateInput =
-  typeof JumpWireWebDataVaultControllerupdateInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/vault/v1/kv/{id}" }),
+  ) as unknown as Schema.Codec<JumpWireWebDataVaultControllerupdateInput>;
 
 // Output Schema
+export interface JumpWireWebDataVaultControllerupdateOutput {
+  id: string;
+  metadata: {
+    context: Record<string, string>;
+    environment_id: string;
+    id: string;
+    key_id: string;
+    updated_at: string;
+    updated_by: { id: string; name: string };
+    version_id?: string | null;
+  };
+  name: string;
+}
 export const JumpWireWebDataVaultControllerupdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -30,9 +48,7 @@ export const JumpWireWebDataVaultControllerupdateOutput =
       version_id: Schema.optional(Schema.NullOr(Schema.String)),
     }),
     name: Schema.String,
-  });
-export type JumpWireWebDataVaultControllerupdateOutput =
-  typeof JumpWireWebDataVaultControllerupdateOutput.Type;
+  }) as unknown as Schema.Codec<JumpWireWebDataVaultControllerupdateOutput>;
 
 // The operation
 /**

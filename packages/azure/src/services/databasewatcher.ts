@@ -4,12 +4,27 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AlertRuleResourcesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  alertRuleResourceName: string;
+  properties?: {
+    alertRuleResourceId: string;
+    createdWithProperties: "CreatedWithActionGroup" | "None";
+    creationTime: string;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    alertRuleTemplateId: string;
+    alertRuleTemplateVersion: string;
+  };
+}
 export const AlertRuleResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -37,11 +52,22 @@ export const AlertRuleResourcesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type AlertRuleResourcesCreateOrUpdateInput =
-  typeof AlertRuleResourcesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AlertRuleResourcesCreateOrUpdateInput>;
 
 // Output Schema
+export interface AlertRuleResourcesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AlertRuleResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -61,9 +87,7 @@ export const AlertRuleResourcesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AlertRuleResourcesCreateOrUpdateOutput =
-  typeof AlertRuleResourcesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AlertRuleResourcesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -81,6 +105,12 @@ export const AlertRuleResourcesCreateOrUpdate =
     outputSchema: AlertRuleResourcesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AlertRuleResourcesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  alertRuleResourceName: string;
+}
 export const AlertRuleResourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -93,15 +123,12 @@ export const AlertRuleResourcesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type AlertRuleResourcesDeleteInput =
-  typeof AlertRuleResourcesDeleteInput.Type;
+  ) as unknown as Schema.Codec<AlertRuleResourcesDeleteInput>;
 
 // Output Schema
+export type AlertRuleResourcesDeleteOutput = void;
 export const AlertRuleResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AlertRuleResourcesDeleteOutput =
-  typeof AlertRuleResourcesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertRuleResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -120,6 +147,12 @@ export const AlertRuleResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AlertRuleResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  alertRuleResourceName: string;
+}
 export const AlertRuleResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -132,10 +165,22 @@ export const AlertRuleResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources/{alertRuleResourceName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type AlertRuleResourcesGetInput = typeof AlertRuleResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<AlertRuleResourcesGetInput>;
 
 // Output Schema
+export interface AlertRuleResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AlertRuleResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -155,9 +200,7 @@ export const AlertRuleResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AlertRuleResourcesGetOutput =
-  typeof AlertRuleResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<AlertRuleResourcesGetOutput>;
 
 // The operation
 /**
@@ -176,6 +219,11 @@ export const AlertRuleResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AlertRuleResourcesListByParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+}
 export const AlertRuleResourcesListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -187,11 +235,25 @@ export const AlertRuleResourcesListByParentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources",
       apiVersion: "2025-01-02",
     }),
-  );
-export type AlertRuleResourcesListByParentInput =
-  typeof AlertRuleResourcesListByParentInput.Type;
+  ) as unknown as Schema.Codec<AlertRuleResourcesListByParentInput>;
 
 // Output Schema
+export interface AlertRuleResourcesListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AlertRuleResourcesListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -226,9 +288,7 @@ export const AlertRuleResourcesListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AlertRuleResourcesListByParentOutput =
-  typeof AlertRuleResourcesListByParentOutput.Type;
+  }) as unknown as Schema.Codec<AlertRuleResourcesListByParentOutput>;
 
 // The operation
 /**
@@ -245,6 +305,12 @@ export const AlertRuleResourcesListByParent =
     outputSchema: AlertRuleResourcesListByParentOutput,
   }));
 // Input Schema
+export interface HealthValidationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  healthValidationName: string;
+}
 export const HealthValidationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -257,10 +323,22 @@ export const HealthValidationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations/{healthValidationName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type HealthValidationsGetInput = typeof HealthValidationsGetInput.Type;
+  ) as unknown as Schema.Codec<HealthValidationsGetInput>;
 
 // Output Schema
+export interface HealthValidationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HealthValidationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -280,8 +358,7 @@ export const HealthValidationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HealthValidationsGetOutput = typeof HealthValidationsGetOutput.Type;
+  }) as unknown as Schema.Codec<HealthValidationsGetOutput>;
 
 // The operation
 /**
@@ -300,6 +377,11 @@ export const HealthValidationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HealthValidationsListByParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+}
 export const HealthValidationsListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -311,11 +393,25 @@ export const HealthValidationsListByParentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations",
       apiVersion: "2025-01-02",
     }),
-  );
-export type HealthValidationsListByParentInput =
-  typeof HealthValidationsListByParentInput.Type;
+  ) as unknown as Schema.Codec<HealthValidationsListByParentInput>;
 
 // Output Schema
+export interface HealthValidationsListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HealthValidationsListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -350,9 +446,7 @@ export const HealthValidationsListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HealthValidationsListByParentOutput =
-  typeof HealthValidationsListByParentOutput.Type;
+  }) as unknown as Schema.Codec<HealthValidationsListByParentOutput>;
 
 // The operation
 /**
@@ -369,6 +463,12 @@ export const HealthValidationsListByParent =
     outputSchema: HealthValidationsListByParentOutput,
   }));
 // Input Schema
+export interface HealthValidationsStartValidationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  healthValidationName: string;
+}
 export const HealthValidationsStartValidationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -381,11 +481,22 @@ export const HealthValidationsStartValidationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations/{healthValidationName}/startValidation",
       apiVersion: "2025-01-02",
     }),
-  );
-export type HealthValidationsStartValidationInput =
-  typeof HealthValidationsStartValidationInput.Type;
+  ) as unknown as Schema.Codec<HealthValidationsStartValidationInput>;
 
 // Output Schema
+export interface HealthValidationsStartValidationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HealthValidationsStartValidationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -405,9 +516,7 @@ export const HealthValidationsStartValidationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HealthValidationsStartValidationOutput =
-  typeof HealthValidationsStartValidationOutput.Type;
+  }) as unknown as Schema.Codec<HealthValidationsStartValidationOutput>;
 
 // The operation
 /**
@@ -425,6 +534,7 @@ export const HealthValidationsStartValidation =
     outputSchema: HealthValidationsStartValidationOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -433,10 +543,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DatabaseWatcher/operations",
     apiVersion: "2025-01-02",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -459,8 +583,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -473,6 +596,20 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SharedPrivateLinkResourcesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  sharedPrivateLinkResourceName: string;
+  properties?: {
+    privateLinkResourceId: string;
+    groupId: string;
+    requestMessage: string;
+    dnsZone?: string;
+    status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+}
 export const SharedPrivateLinkResourcesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -499,11 +636,22 @@ export const SharedPrivateLinkResourcesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type SharedPrivateLinkResourcesCreateInput =
-  typeof SharedPrivateLinkResourcesCreateInput.Type;
+  ) as unknown as Schema.Codec<SharedPrivateLinkResourcesCreateInput>;
 
 // Output Schema
+export interface SharedPrivateLinkResourcesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SharedPrivateLinkResourcesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -523,9 +671,7 @@ export const SharedPrivateLinkResourcesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SharedPrivateLinkResourcesCreateOutput =
-  typeof SharedPrivateLinkResourcesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SharedPrivateLinkResourcesCreateOutput>;
 
 // The operation
 /**
@@ -543,6 +689,12 @@ export const SharedPrivateLinkResourcesCreate =
     outputSchema: SharedPrivateLinkResourcesCreateOutput,
   }));
 // Input Schema
+export interface SharedPrivateLinkResourcesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  sharedPrivateLinkResourceName: string;
+}
 export const SharedPrivateLinkResourcesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -555,15 +707,12 @@ export const SharedPrivateLinkResourcesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type SharedPrivateLinkResourcesDeleteInput =
-  typeof SharedPrivateLinkResourcesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SharedPrivateLinkResourcesDeleteInput>;
 
 // Output Schema
+export type SharedPrivateLinkResourcesDeleteOutput = void;
 export const SharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SharedPrivateLinkResourcesDeleteOutput =
-  typeof SharedPrivateLinkResourcesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SharedPrivateLinkResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -581,6 +730,12 @@ export const SharedPrivateLinkResourcesDelete =
     outputSchema: SharedPrivateLinkResourcesDeleteOutput,
   }));
 // Input Schema
+export interface SharedPrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  sharedPrivateLinkResourceName: string;
+}
 export const SharedPrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -593,11 +748,22 @@ export const SharedPrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type SharedPrivateLinkResourcesGetInput =
-  typeof SharedPrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<SharedPrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface SharedPrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -617,9 +783,7 @@ export const SharedPrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SharedPrivateLinkResourcesGetOutput =
-  typeof SharedPrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<SharedPrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -637,6 +801,11 @@ export const SharedPrivateLinkResourcesGet =
     outputSchema: SharedPrivateLinkResourcesGetOutput,
   }));
 // Input Schema
+export interface SharedPrivateLinkResourcesListByWatcherInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+}
 export const SharedPrivateLinkResourcesListByWatcherInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -648,11 +817,25 @@ export const SharedPrivateLinkResourcesListByWatcherInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources",
       apiVersion: "2025-01-02",
     }),
-  );
-export type SharedPrivateLinkResourcesListByWatcherInput =
-  typeof SharedPrivateLinkResourcesListByWatcherInput.Type;
+  ) as unknown as Schema.Codec<SharedPrivateLinkResourcesListByWatcherInput>;
 
 // Output Schema
+export interface SharedPrivateLinkResourcesListByWatcherOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SharedPrivateLinkResourcesListByWatcherOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -687,9 +870,7 @@ export const SharedPrivateLinkResourcesListByWatcherOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SharedPrivateLinkResourcesListByWatcherOutput =
-  typeof SharedPrivateLinkResourcesListByWatcherOutput.Type;
+  }) as unknown as Schema.Codec<SharedPrivateLinkResourcesListByWatcherOutput>;
 
 // The operation
 /**
@@ -706,6 +887,23 @@ export const SharedPrivateLinkResourcesListByWatcher =
     outputSchema: SharedPrivateLinkResourcesListByWatcherOutput,
   }));
 // Input Schema
+export interface TargetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  targetName: string;
+  properties?: {
+    targetType: string;
+    targetAuthenticationType: "Aad" | "Sql";
+    targetVault?: {
+      akvResourceId?: string;
+      akvTargetUser?: string;
+      akvTargetPassword?: string | Redacted.Redacted<string>;
+    };
+    connectionServerName: string;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+}
 export const TargetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -735,10 +933,22 @@ export const TargetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TargetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TargetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -758,9 +968,7 @@ export const TargetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TargetsCreateOrUpdateOutput =
-  typeof TargetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TargetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -779,6 +987,12 @@ export const TargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  targetName: string;
+}
 export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -790,12 +1004,12 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
     apiVersion: "2025-01-02",
   }),
-);
-export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
+) as unknown as Schema.Codec<TargetsDeleteInput>;
 
 // Output Schema
-export const TargetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TargetsDeleteOutput = typeof TargetsDeleteOutput.Type;
+export type TargetsDeleteOutput = void;
+export const TargetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsDeleteOutput>;
 
 // The operation
 /**
@@ -812,6 +1026,12 @@ export const TargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetsDeleteOutput,
 }));
 // Input Schema
+export interface TargetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  targetName: string;
+}
 export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -823,10 +1043,22 @@ export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
     apiVersion: "2025-01-02",
   }),
-);
-export type TargetsGetInput = typeof TargetsGetInput.Type;
+) as unknown as Schema.Codec<TargetsGetInput>;
 
 // Output Schema
+export interface TargetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -845,8 +1077,7 @@ export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TargetsGetOutput = typeof TargetsGetOutput.Type;
+}) as unknown as Schema.Codec<TargetsGetOutput>;
 
 // The operation
 /**
@@ -863,6 +1094,11 @@ export const TargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetsGetOutput,
 }));
 // Input Schema
+export interface TargetsListByWatcherInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+}
 export const TargetsListByWatcherInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -874,10 +1110,25 @@ export const TargetsListByWatcherInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets",
       apiVersion: "2025-01-02",
     }),
-  );
-export type TargetsListByWatcherInput = typeof TargetsListByWatcherInput.Type;
+  ) as unknown as Schema.Codec<TargetsListByWatcherInput>;
 
 // Output Schema
+export interface TargetsListByWatcherOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TargetsListByWatcherOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -912,8 +1163,7 @@ export const TargetsListByWatcherOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TargetsListByWatcherOutput = typeof TargetsListByWatcherOutput.Type;
+  }) as unknown as Schema.Codec<TargetsListByWatcherOutput>;
 
 // The operation
 /**
@@ -931,6 +1181,40 @@ export const TargetsListByWatcher = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  properties?: {
+    datastore?: {
+      adxClusterResourceId?: string;
+      kustoClusterDisplayName?: string;
+      kustoClusterUri: string;
+      kustoDataIngestionUri: string;
+      kustoDatabaseName: string;
+      kustoManagementUrl: string;
+      kustoOfferingType: "adx" | "free" | "fabric";
+    };
+    status?: "Starting" | "Running" | "Stopping" | "Stopped" | "Deleting";
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    defaultAlertRuleIdentityResourceId?: string;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WatchersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -993,11 +1277,22 @@ export const WatchersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
       apiVersion: "2025-01-02",
     }),
-  );
-export type WatchersCreateOrUpdateInput =
-  typeof WatchersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WatchersCreateOrUpdateInput>;
 
 // Output Schema
+export interface WatchersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1017,9 +1312,7 @@ export const WatchersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WatchersCreateOrUpdateOutput =
-  typeof WatchersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WatchersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1037,6 +1330,11 @@ export const WatchersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+}
 export const WatchersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1047,12 +1345,12 @@ export const WatchersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
     apiVersion: "2025-01-02",
   }),
-);
-export type WatchersDeleteInput = typeof WatchersDeleteInput.Type;
+) as unknown as Schema.Codec<WatchersDeleteInput>;
 
 // Output Schema
-export const WatchersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WatchersDeleteOutput = typeof WatchersDeleteOutput.Type;
+export type WatchersDeleteOutput = void;
+export const WatchersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatchersDeleteOutput>;
 
 // The operation
 /**
@@ -1068,6 +1366,11 @@ export const WatchersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatchersDeleteOutput,
 }));
 // Input Schema
+export interface WatchersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+}
 export const WatchersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1078,10 +1381,22 @@ export const WatchersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
     apiVersion: "2025-01-02",
   }),
-);
-export type WatchersGetInput = typeof WatchersGetInput.Type;
+) as unknown as Schema.Codec<WatchersGetInput>;
 
 // Output Schema
+export interface WatchersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1100,8 +1415,7 @@ export const WatchersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WatchersGetOutput = typeof WatchersGetOutput.Type;
+}) as unknown as Schema.Codec<WatchersGetOutput>;
 
 // The operation
 /**
@@ -1117,6 +1431,10 @@ export const WatchersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatchersGetOutput,
 }));
 // Input Schema
+export interface WatchersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const WatchersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1127,11 +1445,25 @@ export const WatchersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers",
       apiVersion: "2025-01-02",
     }),
-  );
-export type WatchersListByResourceGroupInput =
-  typeof WatchersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WatchersListByResourceGroupInput>;
 
 // Output Schema
+export interface WatchersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WatchersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1166,9 +1498,7 @@ export const WatchersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WatchersListByResourceGroupOutput =
-  typeof WatchersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WatchersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1185,6 +1515,9 @@ export const WatchersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const WatchersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1194,11 +1527,25 @@ export const WatchersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DatabaseWatcher/watchers",
       apiVersion: "2025-01-02",
     }),
-  );
-export type WatchersListBySubscriptionInput =
-  typeof WatchersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<WatchersListBySubscriptionInput>;
 
 // Output Schema
+export interface WatchersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WatchersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1233,9 +1580,7 @@ export const WatchersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WatchersListBySubscriptionOutput =
-  typeof WatchersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<WatchersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1251,6 +1596,11 @@ export const WatchersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchersStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+}
 export const WatchersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1261,10 +1611,22 @@ export const WatchersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/start",
     apiVersion: "2025-01-02",
   }),
-);
-export type WatchersStartInput = typeof WatchersStartInput.Type;
+) as unknown as Schema.Codec<WatchersStartInput>;
 
 // Output Schema
+export interface WatchersStartOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1283,8 +1645,7 @@ export const WatchersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WatchersStartOutput = typeof WatchersStartOutput.Type;
+}) as unknown as Schema.Codec<WatchersStartOutput>;
 
 // The operation
 /**
@@ -1300,6 +1661,11 @@ export const WatchersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatchersStartOutput,
 }));
 // Input Schema
+export interface WatchersStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+}
 export const WatchersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1310,10 +1676,22 @@ export const WatchersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/stop",
     apiVersion: "2025-01-02",
   }),
-);
-export type WatchersStopInput = typeof WatchersStopInput.Type;
+) as unknown as Schema.Codec<WatchersStopInput>;
 
 // Output Schema
+export interface WatchersStopOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1332,8 +1710,7 @@ export const WatchersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WatchersStopOutput = typeof WatchersStopOutput.Type;
+}) as unknown as Schema.Codec<WatchersStopOutput>;
 
 // The operation
 /**
@@ -1349,6 +1726,37 @@ export const WatchersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatchersStopOutput,
 }));
 // Input Schema
+export interface WatchersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  watcherName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    datastore?: {
+      adxClusterResourceId?: string;
+      kustoClusterDisplayName?: string;
+      kustoClusterUri?: string;
+      kustoDataIngestionUri?: string;
+      kustoDatabaseName?: string;
+      kustoManagementUrl?: string;
+      kustoOfferingType?: "adx" | "free" | "fabric";
+    };
+    defaultAlertRuleIdentityResourceId?: string;
+  };
+}
 export const WatchersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1399,10 +1807,22 @@ export const WatchersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
     apiVersion: "2025-01-02",
   }),
-);
-export type WatchersUpdateInput = typeof WatchersUpdateInput.Type;
+) as unknown as Schema.Codec<WatchersUpdateInput>;
 
 // Output Schema
+export interface WatchersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatchersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1421,8 +1841,7 @@ export const WatchersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WatchersUpdateOutput = typeof WatchersUpdateOutput.Type;
+}) as unknown as Schema.Codec<WatchersUpdateOutput>;
 
 // The operation
 /**

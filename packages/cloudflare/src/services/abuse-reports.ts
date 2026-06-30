@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service abuse-reports
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -41,6 +41,562 @@ export class InvalidRequest extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface MitigationSummary {
+  /** How many of the reported URLs were confirmed as abusive. */
+  acceptedUrlCount: number;
+  /** How many mitigations are active. */
+  activeCount: number;
+  /** Whether the report has been forwarded to an external hosting provider. */
+  externalHostNotified: boolean;
+  /** How many mitigations are under review. */
+  inReviewCount: number;
+  /** How many mitigations are pending their effective date. */
+  pendingCount: number;
+}
+const MitigationSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    acceptedUrlCount: Schema.Number,
+    activeCount: Schema.Number,
+    externalHostNotified: Schema.Boolean,
+    inReviewCount: Schema.Number,
+    pendingCount: Schema.Number,
+  }).pipe(
+    Schema.encodeKeys({
+      acceptedUrlCount: "accepted_url_count",
+      activeCount: "active_count",
+      externalHostNotified: "external_host_notified",
+      inReviewCount: "in_review_count",
+      pendingCount: "pending_count",
+    }),
+  ),
+) as unknown as Schema.Codec<MitigationSummary>;
+
+interface Submitter {
+  company?: string | null;
+  email?: string | null;
+  name?: string | null;
+  telephone?: string | null;
+}
+const Submitter = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    company: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    telephone: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Submitter>;
+
+interface Report {
+  /** Public facing ID of abuse report, aka abuse_rand. */
+  id: string;
+  /** Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
+  cdate: string;
+  /** Domain that relates to the report. */
+  domain: string;
+  /** A summary of the mitigations related to this report. */
+  mitigationSummary: {
+    acceptedUrlCount: number;
+    activeCount: number;
+    externalHostNotified: boolean;
+    inReviewCount: number;
+    pendingCount: number;
+  };
+  /** An enum value that represents the status of an abuse record */
+  status: "accepted" | "in_review" | (string & {});
+  /** The abuse report type */
+  type:
+    | "PHISH"
+    | "GEN"
+    | "THREAT"
+    | "DMCA"
+    | "EMER"
+    | "TM"
+    | "REG_WHO"
+    | "NCSEI"
+    | "NETWORK"
+    | (string & {});
+  /** Justification for the report. */
+  justification?: string | null;
+  /** Original work / Targeted brand in the alleged abuse. */
+  originalWork?: string | null;
+  /** Information about the submitter of the report. */
+  submitter?: {
+    company?: string | null;
+    email?: string | null;
+    name?: string | null;
+    telephone?: string | null;
+  } | null;
+  urls?: string[] | null;
+}
+const Report = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    cdate: Schema.String,
+    domain: Schema.String,
+    mitigationSummary: MitigationSummary,
+    status: Schema.Union([
+      Schema.Literals(["accepted", "in_review"]),
+      Schema.String,
+    ]),
+    type: Schema.Union([
+      Schema.Literals([
+        "PHISH",
+        "GEN",
+        "THREAT",
+        "DMCA",
+        "EMER",
+        "TM",
+        "REG_WHO",
+        "NCSEI",
+        "NETWORK",
+      ]),
+      Schema.String,
+    ]),
+    justification: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    originalWork: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    submitter: Schema.optional(Schema.Union([Submitter, Schema.Null])),
+    urls: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      cdate: "cdate",
+      domain: "domain",
+      mitigationSummary: "mitigation_summary",
+      status: "status",
+      type: "type",
+      justification: "justification",
+      originalWork: "original_work",
+      submitter: "submitter",
+      urls: "urls",
+    }),
+  ),
+) as unknown as Schema.Codec<Report>;
+
+interface ListAbuseReportsResponseResultItem {
+  reports: {
+    id: string;
+    cdate: string;
+    domain: string;
+    mitigationSummary: {
+      acceptedUrlCount: number;
+      activeCount: number;
+      externalHostNotified: boolean;
+      inReviewCount: number;
+      pendingCount: number;
+    };
+    status: "accepted" | "in_review" | (string & {});
+    type:
+      | "PHISH"
+      | "GEN"
+      | "THREAT"
+      | "DMCA"
+      | "EMER"
+      | "TM"
+      | "REG_WHO"
+      | "NCSEI"
+      | "NETWORK"
+      | (string & {});
+    justification?: string | null;
+    originalWork?: string | null;
+    submitter?: {
+      company?: string | null;
+      email?: string | null;
+      name?: string | null;
+      telephone?: string | null;
+    } | null;
+    urls?: string[] | null;
+  }[];
+}
+const ListAbuseReportsResponseResultItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      reports: Schema.Array(Report),
+    }),
+  ) as unknown as Schema.Codec<ListAbuseReportsResponseResultItem>;
+
+interface ListAbuseReportsResponseResult {
+  items?:
+    | {
+        reports: {
+          id: string;
+          cdate: string;
+          domain: string;
+          mitigationSummary: {
+            acceptedUrlCount: number;
+            activeCount: number;
+            externalHostNotified: boolean;
+            inReviewCount: number;
+            pendingCount: number;
+          };
+          status: "accepted" | "in_review" | (string & {});
+          type:
+            | "PHISH"
+            | "GEN"
+            | "THREAT"
+            | "DMCA"
+            | "EMER"
+            | "TM"
+            | "REG_WHO"
+            | "NCSEI"
+            | "NETWORK"
+            | (string & {});
+          justification?: string | null;
+          originalWork?: string | null;
+          submitter?: {
+            company?: string | null;
+            email?: string | null;
+            name?: string | null;
+            telephone?: string | null;
+          } | null;
+          urls?: string[] | null;
+        }[];
+      }[]
+    | null;
+}
+const ListAbuseReportsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      items: Schema.optional(
+        Schema.Union([
+          Schema.Array(ListAbuseReportsResponseResultItem),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListAbuseReportsResponseResult>;
+
+interface ListAbuseReportsResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListAbuseReportsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListAbuseReportsResponseResultInfo>;
+
+interface RegWhoRequest {
+  /** Affirmation that the request is made in good faith per RDP 10.2.4. Must be true. */
+  regWhoGoodFaithAffirmation: boolean;
+  /** Agreement to process data lawfully per RDP 10.2.5. Must be true. */
+  regWhoLawfulProcessingAgreement: boolean;
+  /** Legal rights and rationale for the request per RDP 10.2.3. Required for all WHOIS requests. */
+  regWhoLegalBasis: string;
+  /** The type of WHOIS data request per RDP procedure. */
+  regWhoRequestType: "disclosure" | "invalid_whois" | (string & {});
+  /** The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests. */
+  regWhoRequestedDataElements: (
+    | "registrant_name"
+    | "registrant_organization"
+    | "registrant_email"
+    | "registrant_phone"
+    | "registrant_address"
+    | "registrant_address_country"
+    | "registrant_address_postal_code"
+    | "admin_name"
+    | "admin_organization"
+    | "admin_email"
+    | "admin_phone"
+    | "admin_address"
+    | "tech_name"
+    | "tech_organization"
+    | "tech_email"
+    | "tech_phone"
+    | "tech_address"
+    | (string & {})
+  )[];
+  /** Optional authorization statement or power of attorney per RDP 10.2.1.3. */
+  regWhoAuthorizationStatement?: string | null;
+  /** The nature of the requestor per RDP 10.2.1.2. */
+  regWhoRequestorType?:
+    | "government"
+    | "corporation"
+    | "individual"
+    | (string & {})
+    | null;
+}
+const RegWhoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    regWhoGoodFaithAffirmation: Schema.Boolean,
+    regWhoLawfulProcessingAgreement: Schema.Boolean,
+    regWhoLegalBasis: Schema.String,
+    regWhoRequestType: Schema.Union([
+      Schema.Literals(["disclosure", "invalid_whois"]),
+      Schema.String,
+    ]),
+    regWhoRequestedDataElements: Schema.Array(
+      Schema.Union([
+        Schema.Literals([
+          "registrant_name",
+          "registrant_organization",
+          "registrant_email",
+          "registrant_phone",
+          "registrant_address",
+          "registrant_address_country",
+          "registrant_address_postal_code",
+          "admin_name",
+          "admin_organization",
+          "admin_email",
+          "admin_phone",
+          "admin_address",
+          "tech_name",
+          "tech_organization",
+          "tech_email",
+          "tech_phone",
+          "tech_address",
+        ]),
+        Schema.String,
+      ]),
+    ),
+    regWhoAuthorizationStatement: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    regWhoRequestorType: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["government", "corporation", "individual"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      regWhoGoodFaithAffirmation: "reg_who_good_faith_affirmation",
+      regWhoLawfulProcessingAgreement: "reg_who_lawful_processing_agreement",
+      regWhoLegalBasis: "reg_who_legal_basis",
+      regWhoRequestType: "reg_who_request_type",
+      regWhoRequestedDataElements: "reg_who_requested_data_elements",
+      regWhoAuthorizationStatement: "reg_who_authorization_statement",
+      regWhoRequestorType: "reg_who_requestor_type",
+    }),
+  ),
+) as unknown as Schema.Codec<RegWhoRequest>;
+
+interface Mitigation {
+  /** ID of remediation. */
+  id: string;
+  /** Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
+  effectiveDate: string;
+  entityId: string;
+  /** The type of entity targeted by a mitigation. */
+  entityType: "url_pattern" | "account" | "zone" | (string & {});
+  /** The status of a mitigation */
+  status:
+    | "pending"
+    | "active"
+    | "in_review"
+    | "cancelled"
+    | "removed"
+    | (string & {});
+  /** The type of mitigation applied to a reported entity. */
+  type:
+    | "account_suspend"
+    | "copyright_interstitial"
+    | "geo_block"
+    | "legal_block"
+    | "malware_interstitial"
+    | "misleading_interstitial"
+    | "network_block"
+    | "phishing_interstitial"
+    | "playfairite_enforce"
+    | "r2_takedown_account"
+    | "r2_takedown_bucket"
+    | "r2_takedown_object"
+    | "rate_limit_cache"
+    | "redirect_video_stream"
+    | "registrar_freeze"
+    | "registrar_parking"
+    | "stream_block_account"
+    | "user_suspend"
+    | "workers_takedown_by_zone_id"
+    | (string & {});
+}
+const Mitigation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    effectiveDate: Schema.String,
+    entityId: Schema.String,
+    entityType: Schema.Union([
+      Schema.Literals(["url_pattern", "account", "zone"]),
+      Schema.String,
+    ]),
+    status: Schema.Union([
+      Schema.Literals([
+        "pending",
+        "active",
+        "in_review",
+        "cancelled",
+        "removed",
+      ]),
+      Schema.String,
+    ]),
+    type: Schema.Union([
+      Schema.Literals([
+        "account_suspend",
+        "copyright_interstitial",
+        "geo_block",
+        "legal_block",
+        "malware_interstitial",
+        "misleading_interstitial",
+        "network_block",
+        "phishing_interstitial",
+        "playfairite_enforce",
+        "r2_takedown_account",
+        "r2_takedown_bucket",
+        "r2_takedown_object",
+        "rate_limit_cache",
+        "redirect_video_stream",
+        "registrar_freeze",
+        "registrar_parking",
+        "stream_block_account",
+        "user_suspend",
+        "workers_takedown_by_zone_id",
+      ]),
+      Schema.String,
+    ]),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      effectiveDate: "effective_date",
+      entityId: "entity_id",
+      entityType: "entity_type",
+      status: "status",
+      type: "type",
+    }),
+  ),
+) as unknown as Schema.Codec<Mitigation>;
+
+interface ListMitigationsResponseResultItem {
+  mitigations: {
+    id: string;
+    effectiveDate: string;
+    entityId: string;
+    entityType: "url_pattern" | "account" | "zone" | (string & {});
+    status:
+      | "pending"
+      | "active"
+      | "in_review"
+      | "cancelled"
+      | "removed"
+      | (string & {});
+    type:
+      | "account_suspend"
+      | "copyright_interstitial"
+      | "geo_block"
+      | "legal_block"
+      | "malware_interstitial"
+      | "misleading_interstitial"
+      | "network_block"
+      | "phishing_interstitial"
+      | "playfairite_enforce"
+      | "r2_takedown_account"
+      | "r2_takedown_bucket"
+      | "r2_takedown_object"
+      | "rate_limit_cache"
+      | "redirect_video_stream"
+      | "registrar_freeze"
+      | "registrar_parking"
+      | "stream_block_account"
+      | "user_suspend"
+      | "workers_takedown_by_zone_id"
+      | (string & {});
+  }[];
+}
+const ListMitigationsResponseResultItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      mitigations: Schema.Array(Mitigation),
+    }),
+  ) as unknown as Schema.Codec<ListMitigationsResponseResultItem>;
+
+interface ListMitigationsResponseResult {
+  items?:
+    | {
+        mitigations: {
+          id: string;
+          effectiveDate: string;
+          entityId: string;
+          entityType: "url_pattern" | "account" | "zone" | (string & {});
+          status:
+            | "pending"
+            | "active"
+            | "in_review"
+            | "cancelled"
+            | "removed"
+            | (string & {});
+          type:
+            | "account_suspend"
+            | "copyright_interstitial"
+            | "geo_block"
+            | "legal_block"
+            | "malware_interstitial"
+            | "misleading_interstitial"
+            | "network_block"
+            | "phishing_interstitial"
+            | "playfairite_enforce"
+            | "r2_takedown_account"
+            | "r2_takedown_bucket"
+            | "r2_takedown_object"
+            | "rate_limit_cache"
+            | "redirect_video_stream"
+            | "registrar_freeze"
+            | "registrar_parking"
+            | "stream_block_account"
+            | "user_suspend"
+            | "workers_takedown_by_zone_id"
+            | (string & {});
+        }[];
+      }[]
+    | null;
+}
+const ListMitigationsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      items: Schema.optional(
+        Schema.Union([
+          Schema.Array(ListMitigationsResponseResultItem),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListMitigationsResponseResult>;
+
+interface Appeal {
+  /** ID of the mitigation to appeal. */
+  id: string;
+  /** Reason why the customer is appealing. */
+  reason: "removed" | "misclassified" | (string & {});
+}
+const Appeal = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    reason: Schema.Union([
+      Schema.Literals(["removed", "misclassified"]),
+      Schema.String,
+    ]),
+  }),
+) as unknown as Schema.Codec<Appeal>;
+
+// =============================================================================
 // AbuseReport
 // =============================================================================
 
@@ -61,7 +617,7 @@ export const GetAbuseReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/abuse-reports/{reportParam}",
       }),
     ),
-) as unknown as Schema.Schema<GetAbuseReportRequest>;
+) as unknown as Schema.Codec<GetAbuseReportRequest>;
 
 export interface GetAbuseReportResponse {
   /** Public facing ID of abuse report, aka abuse_rand. */
@@ -112,21 +668,7 @@ export const GetAbuseReportResponse =
       id: Schema.String,
       cdate: Schema.String,
       domain: Schema.String,
-      mitigationSummary: Schema.Struct({
-        acceptedUrlCount: Schema.Number,
-        activeCount: Schema.Number,
-        externalHostNotified: Schema.Boolean,
-        inReviewCount: Schema.Number,
-        pendingCount: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          acceptedUrlCount: "accepted_url_count",
-          activeCount: "active_count",
-          externalHostNotified: "external_host_notified",
-          inReviewCount: "in_review_count",
-          pendingCount: "pending_count",
-        }),
-      ),
+      mitigationSummary: MitigationSummary,
       status: Schema.Union([
         Schema.Literals(["accepted", "in_review"]),
         Schema.String,
@@ -149,21 +691,7 @@ export const GetAbuseReportResponse =
         Schema.Union([Schema.String, Schema.Null]),
       ),
       originalWork: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      submitter: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            company: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            telephone: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      submitter: Schema.optional(Schema.Union([Submitter, Schema.Null])),
       urls: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -183,7 +711,7 @@ export const GetAbuseReportResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetAbuseReportResponse>;
+  ) as unknown as Schema.Codec<GetAbuseReportResponse>;
 
 export type GetAbuseReportError =
   | DefaultErrors
@@ -289,7 +817,7 @@ export const ListAbuseReportsRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/abuse-reports" }),
     ),
-  ) as unknown as Schema.Schema<ListAbuseReportsRequest>;
+  ) as unknown as Schema.Codec<ListAbuseReportsRequest>;
 
 export interface ListAbuseReportsResponse {
   result: {
@@ -342,122 +870,12 @@ export interface ListAbuseReportsResponse {
 export const ListAbuseReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Struct({
-        items: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                reports: Schema.Array(
-                  Schema.Struct({
-                    id: Schema.String,
-                    cdate: Schema.String,
-                    domain: Schema.String,
-                    mitigationSummary: Schema.Struct({
-                      acceptedUrlCount: Schema.Number,
-                      activeCount: Schema.Number,
-                      externalHostNotified: Schema.Boolean,
-                      inReviewCount: Schema.Number,
-                      pendingCount: Schema.Number,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        acceptedUrlCount: "accepted_url_count",
-                        activeCount: "active_count",
-                        externalHostNotified: "external_host_notified",
-                        inReviewCount: "in_review_count",
-                        pendingCount: "pending_count",
-                      }),
-                    ),
-                    status: Schema.Union([
-                      Schema.Literals(["accepted", "in_review"]),
-                      Schema.String,
-                    ]),
-                    type: Schema.Union([
-                      Schema.Literals([
-                        "PHISH",
-                        "GEN",
-                        "THREAT",
-                        "DMCA",
-                        "EMER",
-                        "TM",
-                        "REG_WHO",
-                        "NCSEI",
-                        "NETWORK",
-                      ]),
-                      Schema.String,
-                    ]),
-                    justification: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    originalWork: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    submitter: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          company: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          email: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          name: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          telephone: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }),
-                        Schema.Null,
-                      ]),
-                    ),
-                    urls: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      cdate: "cdate",
-                      domain: "domain",
-                      mitigationSummary: "mitigation_summary",
-                      status: "status",
-                      type: "type",
-                      justification: "justification",
-                      originalWork: "original_work",
-                      submitter: "submitter",
-                      urls: "urls",
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
+      result: ListAbuseReportsResponseResult,
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListAbuseReportsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListAbuseReportsResponse>;
+  ) as unknown as Schema.Codec<ListAbuseReportsResponse>;
 
 export type ListAbuseReportsError = DefaultErrors | InvalidAccountId;
 
@@ -640,59 +1058,7 @@ export const CreateAbuseReportRequest =
       ncmecNotification: Schema.optional(
         Schema.Union([Schema.Literals(["send", "send-anon"]), Schema.String]),
       ),
-      regWhoRequest: Schema.optional(
-        Schema.Struct({
-          regWhoGoodFaithAffirmation: Schema.Boolean,
-          regWhoLawfulProcessingAgreement: Schema.Boolean,
-          regWhoLegalBasis: Schema.String,
-          regWhoRequestType: Schema.Union([
-            Schema.Literals(["disclosure", "invalid_whois"]),
-            Schema.String,
-          ]),
-          regWhoRequestedDataElements: Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "registrant_name",
-                "registrant_organization",
-                "registrant_email",
-                "registrant_phone",
-                "registrant_address",
-                "registrant_address_country",
-                "registrant_address_postal_code",
-                "admin_name",
-                "admin_organization",
-                "admin_email",
-                "admin_phone",
-                "admin_address",
-                "tech_name",
-                "tech_organization",
-                "tech_email",
-                "tech_phone",
-                "tech_address",
-              ]),
-              Schema.String,
-            ]),
-          ),
-          regWhoAuthorizationStatement: Schema.optional(Schema.String),
-          regWhoRequestorType: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["government", "corporation", "individual"]),
-              Schema.String,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            regWhoGoodFaithAffirmation: "reg_who_good_faith_affirmation",
-            regWhoLawfulProcessingAgreement:
-              "reg_who_lawful_processing_agreement",
-            regWhoLegalBasis: "reg_who_legal_basis",
-            regWhoRequestType: "reg_who_request_type",
-            regWhoRequestedDataElements: "reg_who_requested_data_elements",
-            regWhoAuthorizationStatement: "reg_who_authorization_statement",
-            regWhoRequestorType: "reg_who_requestor_type",
-          }),
-        ),
-      ),
+      regWhoRequest: Schema.optional(RegWhoRequest),
       ncseiSubjectRepresentation: Schema.optional(Schema.Boolean),
     }).pipe(
       Schema.encodeKeys({
@@ -733,14 +1099,14 @@ export const CreateAbuseReportRequest =
         path: "/accounts/{account_id}/abuse-reports/{reportParam}",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateAbuseReportRequest>;
+  ) as unknown as Schema.Codec<CreateAbuseReportRequest>;
 
 export type CreateAbuseReportResponse = string;
 
 export const CreateAbuseReportResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateAbuseReportResponse>;
+  ) as unknown as Schema.Codec<CreateAbuseReportResponse>;
 
 export type CreateAbuseReportError = DefaultErrors | InvalidRequest;
 
@@ -892,7 +1258,7 @@ export const ListMitigationsRequest =
         path: "/accounts/{account_id}/abuse-reports/{reportId}/mitigations",
       }),
     ),
-  ) as unknown as Schema.Schema<ListMitigationsRequest>;
+  ) as unknown as Schema.Codec<ListMitigationsRequest>;
 
 export interface ListMitigationsResponse {
   result: {
@@ -946,95 +1312,12 @@ export interface ListMitigationsResponse {
 export const ListMitigationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Struct({
-        items: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                mitigations: Schema.Array(
-                  Schema.Struct({
-                    id: Schema.String,
-                    effectiveDate: Schema.String,
-                    entityId: Schema.String,
-                    entityType: Schema.Union([
-                      Schema.Literals(["url_pattern", "account", "zone"]),
-                      Schema.String,
-                    ]),
-                    status: Schema.Union([
-                      Schema.Literals([
-                        "pending",
-                        "active",
-                        "in_review",
-                        "cancelled",
-                        "removed",
-                      ]),
-                      Schema.String,
-                    ]),
-                    type: Schema.Union([
-                      Schema.Literals([
-                        "account_suspend",
-                        "copyright_interstitial",
-                        "geo_block",
-                        "legal_block",
-                        "malware_interstitial",
-                        "misleading_interstitial",
-                        "network_block",
-                        "phishing_interstitial",
-                        "playfairite_enforce",
-                        "r2_takedown_account",
-                        "r2_takedown_bucket",
-                        "r2_takedown_object",
-                        "rate_limit_cache",
-                        "redirect_video_stream",
-                        "registrar_freeze",
-                        "registrar_parking",
-                        "stream_block_account",
-                        "user_suspend",
-                        "workers_takedown_by_zone_id",
-                      ]),
-                      Schema.String,
-                    ]),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      effectiveDate: "effective_date",
-                      entityId: "entity_id",
-                      entityType: "entity_type",
-                      status: "status",
-                      type: "type",
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
+      result: ListMitigationsResponseResult,
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListAbuseReportsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListMitigationsResponse>;
+  ) as unknown as Schema.Codec<ListMitigationsResponse>;
 
 export type ListMitigationsError = DefaultErrors;
 
@@ -1072,22 +1355,14 @@ export const ReviewMitigationRequest =
     Schema.Struct({
       reportId: Schema.String.pipe(T.HttpPath("reportId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      appeals: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          reason: Schema.Union([
-            Schema.Literals(["removed", "misclassified"]),
-            Schema.String,
-          ]),
-        }),
-      ),
+      appeals: Schema.Array(Appeal),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/abuse-reports/{reportId}/mitigations/appeal",
       }),
     ),
-  ) as unknown as Schema.Schema<ReviewMitigationRequest>;
+  ) as unknown as Schema.Codec<ReviewMitigationRequest>;
 
 export interface ReviewMitigationResponse {
   result: {
@@ -1129,62 +1404,9 @@ export interface ReviewMitigationResponse {
 export const ReviewMitigationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          effectiveDate: Schema.String,
-          entityId: Schema.String,
-          entityType: Schema.Union([
-            Schema.Literals(["url_pattern", "account", "zone"]),
-            Schema.String,
-          ]),
-          status: Schema.Union([
-            Schema.Literals([
-              "pending",
-              "active",
-              "in_review",
-              "cancelled",
-              "removed",
-            ]),
-            Schema.String,
-          ]),
-          type: Schema.Union([
-            Schema.Literals([
-              "account_suspend",
-              "copyright_interstitial",
-              "geo_block",
-              "legal_block",
-              "malware_interstitial",
-              "misleading_interstitial",
-              "network_block",
-              "phishing_interstitial",
-              "playfairite_enforce",
-              "r2_takedown_account",
-              "r2_takedown_bucket",
-              "r2_takedown_object",
-              "rate_limit_cache",
-              "redirect_video_stream",
-              "registrar_freeze",
-              "registrar_parking",
-              "stream_block_account",
-              "user_suspend",
-              "workers_takedown_by_zone_id",
-            ]),
-            Schema.String,
-          ]),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            effectiveDate: "effective_date",
-            entityId: "entity_id",
-            entityType: "entity_type",
-            status: "status",
-            type: "type",
-          }),
-        ),
-      ),
+      result: Schema.Array(Mitigation),
     }),
-  ) as unknown as Schema.Schema<ReviewMitigationResponse>;
+  ) as unknown as Schema.Codec<ReviewMitigationResponse>;
 
 export type ReviewMitigationError = DefaultErrors;
 

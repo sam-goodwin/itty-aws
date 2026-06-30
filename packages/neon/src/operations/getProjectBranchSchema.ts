@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetProjectBranchSchemaInput {
+  project_id: string;
+  branch_id: string;
+  db_name: string;
+  lsn?: string;
+  timestamp?: string;
+  format?: string;
+}
 export const GetProjectBranchSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,30 @@ export const GetProjectBranchSchemaInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/schema",
     }),
-  );
-export type GetProjectBranchSchemaInput =
-  typeof GetProjectBranchSchemaInput.Type;
+  ) as unknown as Schema.Codec<GetProjectBranchSchemaInput>;
 
 // Output Schema
+export interface GetProjectBranchSchemaOutput {
+  sql?: string;
+  json?: {
+    tables: {
+      schema: string;
+      name: string;
+      columns: {
+        name: string;
+        type: string;
+        nullable?: boolean;
+        generated?: boolean;
+      }[];
+      constraints?: {
+        type: string;
+        columns: string[];
+        name?: string;
+        referenced_table?: { schema: string; table: string; columns: string[] };
+      }[];
+    }[];
+  };
+}
 export const GetProjectBranchSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sql: Schema.optional(Schema.String),
@@ -59,9 +86,7 @@ export const GetProjectBranchSchemaOutput =
         ),
       }),
     ),
-  });
-export type GetProjectBranchSchemaOutput =
-  typeof GetProjectBranchSchemaOutput.Type;
+  }) as unknown as Schema.Codec<GetProjectBranchSchemaOutput>;
 
 // The operation
 /**

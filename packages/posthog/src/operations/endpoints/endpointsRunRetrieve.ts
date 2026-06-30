@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EndpointsRunRetrieveInput {
+  name: string;
+  project_id: string;
+}
 export const EndpointsRunRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,17 @@ export const EndpointsRunRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/endpoints/{name}/run/",
     }),
-  );
-export type EndpointsRunRetrieveInput = typeof EndpointsRunRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EndpointsRunRetrieveInput>;
 
 // Output Schema
+export interface EndpointsRunRetrieveOutput {
+  name?: string;
+  execution_id?: string;
+  results?: unknown[];
+  columns?: string[];
+  hasMore?: boolean;
+  endpoint_version?: number;
+}
 export const EndpointsRunRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -25,8 +36,7 @@ export const EndpointsRunRetrieveOutput =
     columns: Schema.optional(Schema.Array(Schema.String)),
     hasMore: Schema.optional(Schema.Boolean),
     endpoint_version: Schema.optional(Schema.Number),
-  });
-export type EndpointsRunRetrieveOutput = typeof EndpointsRunRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsRunRetrieveOutput>;
 
 // The operation
 /**

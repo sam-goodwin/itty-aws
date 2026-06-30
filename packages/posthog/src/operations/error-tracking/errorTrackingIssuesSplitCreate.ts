@@ -3,6 +3,15 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingIssuesSplitCreateInput {
+  id: string;
+  project_id: string;
+  fingerprints?: {
+    fingerprint?: string;
+    name?: string;
+    description?: string;
+  }[];
+}
 export const ErrorTrackingIssuesSplitCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -21,18 +30,18 @@ export const ErrorTrackingIssuesSplitCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/issues/{id}/split/",
     }),
-  );
-export type ErrorTrackingIssuesSplitCreateInput =
-  typeof ErrorTrackingIssuesSplitCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingIssuesSplitCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingIssuesSplitCreateOutput {
+  success?: boolean;
+  new_issue_ids?: string[];
+}
 export const ErrorTrackingIssuesSplitCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.optional(Schema.Boolean),
     new_issue_ids: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ErrorTrackingIssuesSplitCreateOutput =
-  typeof ErrorTrackingIssuesSplitCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingIssuesSplitCreateOutput>;
 
 // The operation
 /**

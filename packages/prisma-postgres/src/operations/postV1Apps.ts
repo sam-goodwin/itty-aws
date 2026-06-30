@@ -9,6 +9,19 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface PostV1AppsInput {
+  displayName: string;
+  regionId?:
+    | "us-east-1"
+    | "us-west-1"
+    | "eu-west-3"
+    | "eu-central-1"
+    | "ap-northeast-1"
+    | "ap-southeast-1";
+  branchId?: string | null;
+  branchGitName?: string | null;
+  projectId: string;
+}
 export const PostV1AppsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   displayName: Schema.String,
   regionId: Schema.optional(
@@ -24,10 +37,25 @@ export const PostV1AppsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branchId: Schema.optional(Schema.NullOr(Schema.String)),
   branchGitName: Schema.optional(Schema.NullOr(Schema.String)),
   projectId: Schema.String,
-}).pipe(T.Http({ method: "POST", path: "/v1/apps" }));
-export type PostV1AppsInput = typeof PostV1AppsInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v1/apps" }),
+) as unknown as Schema.Codec<PostV1AppsInput>;
 
 // Output Schema
+export interface PostV1AppsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    region: { id: string; name: string };
+    projectId: string;
+    branchId: string | null;
+    latestDeploymentId: string | null;
+    appEndpointDomain: string;
+    createdAt: string;
+  };
+}
 export const PostV1AppsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Struct({
     id: Schema.String,
@@ -44,8 +72,7 @@ export const PostV1AppsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appEndpointDomain: Schema.String,
     createdAt: Schema.String,
   }),
-});
-export type PostV1AppsOutput = typeof PostV1AppsOutput.Type;
+}) as unknown as Schema.Codec<PostV1AppsOutput>;
 
 // The operation
 /**

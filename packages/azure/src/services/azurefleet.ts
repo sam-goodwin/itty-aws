@@ -4,12 +4,645 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface FleetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Migrating";
+    spotPriorityProfile?: {
+      capacity?: number;
+      minCapacity?: number;
+      maxPricePerVM?: number;
+      evictionPolicy?: "Delete" | "Deallocate";
+      allocationStrategy?:
+        | "PriceCapacityOptimized"
+        | "LowestPrice"
+        | "CapacityOptimized";
+      maintain?: boolean;
+    };
+    regularPriorityProfile?: {
+      capacity?: number;
+      minCapacity?: number;
+      allocationStrategy?: "LowestPrice" | "Prioritized";
+    };
+    vmSizesProfile: { name: string; rank?: number }[];
+    vmAttributes?: {
+      vCpuCount: { min?: number; max?: number };
+      memoryInGiB: { min?: number; max?: number };
+      memoryInGiBPerVCpu?: { min?: number; max?: number };
+      localStorageSupport?: "Excluded" | "Included" | "Required";
+      localStorageInGiB?: { min?: number; max?: number };
+      localStorageDiskTypes?: ("HDD" | "SSD")[];
+      dataDiskCount?: { min?: number; max?: number };
+      networkInterfaceCount?: { min?: number; max?: number };
+      networkBandwidthInMbps?: { min?: number; max?: number };
+      rdmaSupport?: "Excluded" | "Included" | "Required";
+      rdmaNetworkInterfaceCount?: { min?: number; max?: number };
+      acceleratorSupport?: "Excluded" | "Included" | "Required";
+      acceleratorManufacturers?: ("AMD" | "Nvidia" | "Xilinx")[];
+      acceleratorTypes?: ("GPU" | "FPGA")[];
+      acceleratorCount?: { min?: number; max?: number };
+      vmCategories?: (
+        | "GeneralPurpose"
+        | "ComputeOptimized"
+        | "MemoryOptimized"
+        | "StorageOptimized"
+        | "GpuAccelerated"
+        | "FpgaAccelerated"
+        | "HighPerformanceCompute"
+      )[];
+      architectureTypes?: ("ARM64" | "X64")[];
+      cpuManufacturers?: ("Intel" | "AMD" | "Microsoft" | "Ampere")[];
+      burstableSupport?: "Excluded" | "Included" | "Required";
+      excludedVMSizes?: string[];
+    };
+    additionalLocationsProfile?: {
+      locationProfiles: {
+        location: string;
+        virtualMachineProfileOverride?: {
+          osProfile?: {
+            computerNamePrefix?: string;
+            adminUsername?: string;
+            adminPassword?: string | Redacted.Redacted<string>;
+            customData?: string;
+            windowsConfiguration?: {
+              provisionVMAgent?: boolean;
+              enableAutomaticUpdates?: boolean;
+              timeZone?: string;
+              additionalUnattendContent?: {
+                passName?: "OobeSystem";
+                componentName?: "Microsoft-Windows-Shell-Setup";
+                settingName?: "AutoLogon" | "FirstLogonCommands";
+                content?: string;
+              }[];
+              patchSettings?: {
+                patchMode?: "Manual" | "AutomaticByOS" | "AutomaticByPlatform";
+                enableHotpatching?: boolean;
+                assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+                automaticByPlatformSettings?: {
+                  rebootSetting?: "Unknown" | "IfRequired" | "Never" | "Always";
+                  bypassPlatformSafetyChecksOnUserSchedule?: boolean;
+                };
+              };
+              winRM?: {
+                listeners?: {
+                  protocol?: "Http" | "Https";
+                  certificateUrl?: string;
+                }[];
+              };
+              enableVMAgentPlatformUpdates?: boolean;
+            };
+            linuxConfiguration?: {
+              disablePasswordAuthentication?: boolean;
+              ssh?: { publicKeys?: { path?: string; keyData?: string }[] };
+              provisionVMAgent?: boolean;
+              patchSettings?: {
+                patchMode?: "ImageDefault" | "AutomaticByPlatform";
+                assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+                automaticByPlatformSettings?: {
+                  rebootSetting?: "Unknown" | "IfRequired" | "Never" | "Always";
+                  bypassPlatformSafetyChecksOnUserSchedule?: boolean;
+                };
+              };
+              enableVMAgentPlatformUpdates?: boolean;
+            };
+            secrets?: {
+              sourceVault?: { id?: string };
+              vaultCertificates?: {
+                certificateUrl?: string;
+                certificateStore?: string;
+              }[];
+            }[];
+            allowExtensionOperations?: boolean;
+            requireGuestProvisionSignal?: boolean;
+          };
+          storageProfile?: {
+            imageReference?: {
+              id?: string;
+              publisher?: string;
+              offer?: string;
+              sku?: string;
+              version?: string;
+              exactVersion?: string;
+              sharedGalleryImageId?: string;
+              communityGalleryImageId?: string;
+            };
+            osDisk?: {
+              name?: string;
+              caching?: "None" | "ReadOnly" | "ReadWrite";
+              writeAcceleratorEnabled?: boolean;
+              createOption:
+                | "FromImage"
+                | "Empty"
+                | "Attach"
+                | "Copy"
+                | "Restore";
+              diffDiskSettings?: {
+                option?: "Local";
+                placement?: "CacheDisk" | "ResourceDisk" | "NvmeDisk";
+              };
+              diskSizeGB?: number;
+              osType?: "Windows" | "Linux";
+              image?: { uri?: string };
+              vhdContainers?: string[];
+              managedDisk?: {
+                storageAccountType?:
+                  | "Standard_LRS"
+                  | "Premium_LRS"
+                  | "StandardSSD_LRS"
+                  | "UltraSSD_LRS"
+                  | "Premium_ZRS"
+                  | "StandardSSD_ZRS"
+                  | "PremiumV2_LRS";
+                diskEncryptionSet?: { id?: string };
+                securityProfile?: {
+                  securityEncryptionType?:
+                    | "VMGuestStateOnly"
+                    | "DiskWithVMGuestState"
+                    | "NonPersistedTPM";
+                  diskEncryptionSet?: { id?: string };
+                };
+              };
+              deleteOption?: "Delete" | "Detach";
+            };
+            dataDisks?: {
+              name?: string;
+              lun: number;
+              caching?: "None" | "ReadOnly" | "ReadWrite";
+              writeAcceleratorEnabled?: boolean;
+              createOption:
+                | "FromImage"
+                | "Empty"
+                | "Attach"
+                | "Copy"
+                | "Restore";
+              diskSizeGB?: number;
+              managedDisk?: {
+                storageAccountType?:
+                  | "Standard_LRS"
+                  | "Premium_LRS"
+                  | "StandardSSD_LRS"
+                  | "UltraSSD_LRS"
+                  | "Premium_ZRS"
+                  | "StandardSSD_ZRS"
+                  | "PremiumV2_LRS";
+                diskEncryptionSet?: { id?: string };
+                securityProfile?: {
+                  securityEncryptionType?:
+                    | "VMGuestStateOnly"
+                    | "DiskWithVMGuestState"
+                    | "NonPersistedTPM";
+                  diskEncryptionSet?: { id?: string };
+                };
+              };
+              diskIOPSReadWrite?: number;
+              diskMBpsReadWrite?: number;
+              deleteOption?: "Delete" | "Detach";
+            }[];
+            diskControllerType?: "SCSI" | "NVMe";
+          };
+          networkProfile?: {
+            healthProbe?: { id?: string };
+            networkInterfaceConfigurations?: {
+              name: string;
+              properties?: {
+                primary?: boolean;
+                enableAcceleratedNetworking?: boolean;
+                disableTcpStateTracking?: boolean;
+                enableFpga?: boolean;
+                networkSecurityGroup?: { id?: string };
+                dnsSettings?: { dnsServers?: string[] };
+                ipConfigurations: {
+                  name: string;
+                  properties?: {
+                    subnet?: { id?: string };
+                    primary?: boolean;
+                    publicIPAddressConfiguration?: {
+                      name: string;
+                      properties?: {
+                        idleTimeoutInMinutes?: number;
+                        dnsSettings?: {
+                          domainNameLabel: string;
+                          domainNameLabelScope?:
+                            | "TenantReuse"
+                            | "SubscriptionReuse"
+                            | "ResourceGroupReuse"
+                            | "NoReuse";
+                        };
+                        ipTags?: { ipTagType?: string; tag?: string }[];
+                        publicIPPrefix?: { id?: string };
+                        publicIPAddressVersion?: "IPv4" | "IPv6";
+                        deleteOption?: "Delete" | "Detach";
+                      };
+                      sku?: {
+                        name?: "Basic" | "Standard";
+                        tier?: "Regional" | "Global";
+                      };
+                    };
+                    privateIPAddressVersion?: "IPv4" | "IPv6";
+                    applicationGatewayBackendAddressPools?: { id?: string }[];
+                    applicationSecurityGroups?: { id?: string }[];
+                    loadBalancerBackendAddressPools?: { id?: string }[];
+                    loadBalancerInboundNatPools?: { id?: string }[];
+                  };
+                }[];
+                enableIPForwarding?: boolean;
+                deleteOption?: "Delete" | "Detach";
+                auxiliaryMode?: "None" | "AcceleratedConnections" | "Floating";
+                auxiliarySku?: "None" | "A1" | "A2" | "A4" | "A8";
+              };
+            }[];
+            networkApiVersion?: "2020-11-01";
+          };
+          securityProfile?: {
+            uefiSettings?: {
+              secureBootEnabled?: boolean;
+              vTpmEnabled?: boolean;
+            };
+            encryptionAtHost?: boolean;
+            securityType?: "TrustedLaunch" | "ConfidentialVM";
+            encryptionIdentity?: { userAssignedIdentityResourceId?: string };
+            proxyAgentSettings?: {
+              enabled?: boolean;
+              mode?: "Audit" | "Enforce";
+              keyIncarnationId?: number;
+            };
+          };
+          diagnosticsProfile?: {
+            bootDiagnostics?: { enabled?: boolean; storageUri?: string };
+          };
+          extensionProfile?: {
+            extensions?: {
+              id?: string;
+              name?: string;
+              type?: string;
+              properties?: {
+                forceUpdateTag?: string;
+                publisher?: string;
+                type?: string;
+                typeHandlerVersion?: string;
+                autoUpgradeMinorVersion?: boolean;
+                enableAutomaticUpgrade?: boolean;
+                settings?: Record<string, unknown>;
+                protectedSettings?: Record<string, unknown>;
+                provisioningState?: string;
+                provisionAfterExtensions?: string[];
+                suppressFailures?: boolean;
+                protectedSettingsFromKeyVault?: {
+                  secretUrl: string;
+                  sourceVault: { id?: string };
+                };
+              };
+            }[];
+            extensionsTimeBudget?: string;
+          };
+          licenseType?: string;
+          scheduledEventsProfile?: {
+            terminateNotificationProfile?: {
+              notBeforeTimeout?: string;
+              enable?: boolean;
+            };
+            osImageNotificationProfile?: {
+              notBeforeTimeout?: string;
+              enable?: boolean;
+            };
+          };
+          userData?: string;
+          capacityReservation?: { capacityReservationGroup?: { id?: string } };
+          applicationProfile?: {
+            galleryApplications?: {
+              tags?: string;
+              order?: number;
+              packageReferenceId: string;
+              configurationReference?: string;
+              treatFailureAsDeploymentFailure?: boolean;
+              enableAutomaticUpgrade?: boolean;
+            }[];
+          };
+          hardwareProfile?: {
+            vmSizeProperties?: {
+              vCPUsAvailable?: number;
+              vCPUsPerCore?: number;
+            };
+          };
+          serviceArtifactReference?: { id?: string };
+          securityPostureReference?: {
+            id?: string;
+            excludeExtensions?: string[];
+            isOverridable?: boolean;
+          };
+          timeCreated?: string;
+        };
+      }[];
+    };
+    computeProfile: {
+      baseVirtualMachineProfile: {
+        osProfile?: {
+          computerNamePrefix?: string;
+          adminUsername?: string;
+          adminPassword?: string | Redacted.Redacted<string>;
+          customData?: string;
+          windowsConfiguration?: {
+            provisionVMAgent?: boolean;
+            enableAutomaticUpdates?: boolean;
+            timeZone?: string;
+            additionalUnattendContent?: {
+              passName?: "OobeSystem";
+              componentName?: "Microsoft-Windows-Shell-Setup";
+              settingName?: "AutoLogon" | "FirstLogonCommands";
+              content?: string;
+            }[];
+            patchSettings?: {
+              patchMode?: "Manual" | "AutomaticByOS" | "AutomaticByPlatform";
+              enableHotpatching?: boolean;
+              assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+              automaticByPlatformSettings?: {
+                rebootSetting?: "Unknown" | "IfRequired" | "Never" | "Always";
+                bypassPlatformSafetyChecksOnUserSchedule?: boolean;
+              };
+            };
+            winRM?: {
+              listeners?: {
+                protocol?: "Http" | "Https";
+                certificateUrl?: string;
+              }[];
+            };
+            enableVMAgentPlatformUpdates?: boolean;
+          };
+          linuxConfiguration?: {
+            disablePasswordAuthentication?: boolean;
+            ssh?: { publicKeys?: { path?: string; keyData?: string }[] };
+            provisionVMAgent?: boolean;
+            patchSettings?: {
+              patchMode?: "ImageDefault" | "AutomaticByPlatform";
+              assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+              automaticByPlatformSettings?: {
+                rebootSetting?: "Unknown" | "IfRequired" | "Never" | "Always";
+                bypassPlatformSafetyChecksOnUserSchedule?: boolean;
+              };
+            };
+            enableVMAgentPlatformUpdates?: boolean;
+          };
+          secrets?: {
+            sourceVault?: { id?: string };
+            vaultCertificates?: {
+              certificateUrl?: string;
+              certificateStore?: string;
+            }[];
+          }[];
+          allowExtensionOperations?: boolean;
+          requireGuestProvisionSignal?: boolean;
+        };
+        storageProfile?: {
+          imageReference?: {
+            id?: string;
+            publisher?: string;
+            offer?: string;
+            sku?: string;
+            version?: string;
+            exactVersion?: string;
+            sharedGalleryImageId?: string;
+            communityGalleryImageId?: string;
+          };
+          osDisk?: {
+            name?: string;
+            caching?: "None" | "ReadOnly" | "ReadWrite";
+            writeAcceleratorEnabled?: boolean;
+            createOption: "FromImage" | "Empty" | "Attach" | "Copy" | "Restore";
+            diffDiskSettings?: {
+              option?: "Local";
+              placement?: "CacheDisk" | "ResourceDisk" | "NvmeDisk";
+            };
+            diskSizeGB?: number;
+            osType?: "Windows" | "Linux";
+            image?: { uri?: string };
+            vhdContainers?: string[];
+            managedDisk?: {
+              storageAccountType?:
+                | "Standard_LRS"
+                | "Premium_LRS"
+                | "StandardSSD_LRS"
+                | "UltraSSD_LRS"
+                | "Premium_ZRS"
+                | "StandardSSD_ZRS"
+                | "PremiumV2_LRS";
+              diskEncryptionSet?: { id?: string };
+              securityProfile?: {
+                securityEncryptionType?:
+                  | "VMGuestStateOnly"
+                  | "DiskWithVMGuestState"
+                  | "NonPersistedTPM";
+                diskEncryptionSet?: { id?: string };
+              };
+            };
+            deleteOption?: "Delete" | "Detach";
+          };
+          dataDisks?: {
+            name?: string;
+            lun: number;
+            caching?: "None" | "ReadOnly" | "ReadWrite";
+            writeAcceleratorEnabled?: boolean;
+            createOption: "FromImage" | "Empty" | "Attach" | "Copy" | "Restore";
+            diskSizeGB?: number;
+            managedDisk?: {
+              storageAccountType?:
+                | "Standard_LRS"
+                | "Premium_LRS"
+                | "StandardSSD_LRS"
+                | "UltraSSD_LRS"
+                | "Premium_ZRS"
+                | "StandardSSD_ZRS"
+                | "PremiumV2_LRS";
+              diskEncryptionSet?: { id?: string };
+              securityProfile?: {
+                securityEncryptionType?:
+                  | "VMGuestStateOnly"
+                  | "DiskWithVMGuestState"
+                  | "NonPersistedTPM";
+                diskEncryptionSet?: { id?: string };
+              };
+            };
+            diskIOPSReadWrite?: number;
+            diskMBpsReadWrite?: number;
+            deleteOption?: "Delete" | "Detach";
+          }[];
+          diskControllerType?: "SCSI" | "NVMe";
+        };
+        networkProfile?: {
+          healthProbe?: { id?: string };
+          networkInterfaceConfigurations?: {
+            name: string;
+            properties?: {
+              primary?: boolean;
+              enableAcceleratedNetworking?: boolean;
+              disableTcpStateTracking?: boolean;
+              enableFpga?: boolean;
+              networkSecurityGroup?: { id?: string };
+              dnsSettings?: { dnsServers?: string[] };
+              ipConfigurations: {
+                name: string;
+                properties?: {
+                  subnet?: { id?: string };
+                  primary?: boolean;
+                  publicIPAddressConfiguration?: {
+                    name: string;
+                    properties?: {
+                      idleTimeoutInMinutes?: number;
+                      dnsSettings?: {
+                        domainNameLabel: string;
+                        domainNameLabelScope?:
+                          | "TenantReuse"
+                          | "SubscriptionReuse"
+                          | "ResourceGroupReuse"
+                          | "NoReuse";
+                      };
+                      ipTags?: { ipTagType?: string; tag?: string }[];
+                      publicIPPrefix?: { id?: string };
+                      publicIPAddressVersion?: "IPv4" | "IPv6";
+                      deleteOption?: "Delete" | "Detach";
+                    };
+                    sku?: {
+                      name?: "Basic" | "Standard";
+                      tier?: "Regional" | "Global";
+                    };
+                  };
+                  privateIPAddressVersion?: "IPv4" | "IPv6";
+                  applicationGatewayBackendAddressPools?: { id?: string }[];
+                  applicationSecurityGroups?: { id?: string }[];
+                  loadBalancerBackendAddressPools?: { id?: string }[];
+                  loadBalancerInboundNatPools?: { id?: string }[];
+                };
+              }[];
+              enableIPForwarding?: boolean;
+              deleteOption?: "Delete" | "Detach";
+              auxiliaryMode?: "None" | "AcceleratedConnections" | "Floating";
+              auxiliarySku?: "None" | "A1" | "A2" | "A4" | "A8";
+            };
+          }[];
+          networkApiVersion?: "2020-11-01";
+        };
+        securityProfile?: {
+          uefiSettings?: { secureBootEnabled?: boolean; vTpmEnabled?: boolean };
+          encryptionAtHost?: boolean;
+          securityType?: "TrustedLaunch" | "ConfidentialVM";
+          encryptionIdentity?: { userAssignedIdentityResourceId?: string };
+          proxyAgentSettings?: {
+            enabled?: boolean;
+            mode?: "Audit" | "Enforce";
+            keyIncarnationId?: number;
+          };
+        };
+        diagnosticsProfile?: {
+          bootDiagnostics?: { enabled?: boolean; storageUri?: string };
+        };
+        extensionProfile?: {
+          extensions?: {
+            id?: string;
+            name?: string;
+            type?: string;
+            properties?: {
+              forceUpdateTag?: string;
+              publisher?: string;
+              type?: string;
+              typeHandlerVersion?: string;
+              autoUpgradeMinorVersion?: boolean;
+              enableAutomaticUpgrade?: boolean;
+              settings?: Record<string, unknown>;
+              protectedSettings?: Record<string, unknown>;
+              provisioningState?: string;
+              provisionAfterExtensions?: string[];
+              suppressFailures?: boolean;
+              protectedSettingsFromKeyVault?: {
+                secretUrl: string;
+                sourceVault: { id?: string };
+              };
+            };
+          }[];
+          extensionsTimeBudget?: string;
+        };
+        licenseType?: string;
+        scheduledEventsProfile?: {
+          terminateNotificationProfile?: {
+            notBeforeTimeout?: string;
+            enable?: boolean;
+          };
+          osImageNotificationProfile?: {
+            notBeforeTimeout?: string;
+            enable?: boolean;
+          };
+        };
+        userData?: string;
+        capacityReservation?: { capacityReservationGroup?: { id?: string } };
+        applicationProfile?: {
+          galleryApplications?: {
+            tags?: string;
+            order?: number;
+            packageReferenceId: string;
+            configurationReference?: string;
+            treatFailureAsDeploymentFailure?: boolean;
+            enableAutomaticUpgrade?: boolean;
+          }[];
+        };
+        hardwareProfile?: {
+          vmSizeProperties?: { vCPUsAvailable?: number; vCPUsPerCore?: number };
+        };
+        serviceArtifactReference?: { id?: string };
+        securityPostureReference?: {
+          id?: string;
+          excludeExtensions?: string[];
+          isOverridable?: boolean;
+        };
+        timeCreated?: string;
+      };
+      computeApiVersion?: string;
+      platformFaultDomainCount?: number;
+      additionalVirtualMachineCapabilities?: {
+        ultraSSDEnabled?: boolean;
+        hibernationEnabled?: boolean;
+      };
+    };
+    timeCreated?: string;
+    uniqueId?: string;
+  };
+  zones?: string[];
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const FleetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1606,10 +2239,22 @@ export const FleetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type FleetsCreateOrUpdateInput = typeof FleetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FleetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface FleetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1629,8 +2274,7 @@ export const FleetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FleetsCreateOrUpdateOutput = typeof FleetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FleetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1648,6 +2292,11 @@ export const FleetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FleetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+}
 export const FleetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1658,12 +2307,12 @@ export const FleetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
     apiVersion: "2024-11-01",
   }),
-);
-export type FleetsDeleteInput = typeof FleetsDeleteInput.Type;
+) as unknown as Schema.Codec<FleetsDeleteInput>;
 
 // Output Schema
-export const FleetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FleetsDeleteOutput = typeof FleetsDeleteOutput.Type;
+export type FleetsDeleteOutput = void;
+export const FleetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FleetsDeleteOutput>;
 
 // The operation
 /**
@@ -1679,6 +2328,11 @@ export const FleetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetsDeleteOutput,
 }));
 // Input Schema
+export interface FleetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+}
 export const FleetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1689,10 +2343,22 @@ export const FleetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
     apiVersion: "2024-11-01",
   }),
-);
-export type FleetsGetInput = typeof FleetsGetInput.Type;
+) as unknown as Schema.Codec<FleetsGetInput>;
 
 // Output Schema
+export interface FleetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1711,8 +2377,7 @@ export const FleetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FleetsGetOutput = typeof FleetsGetOutput.Type;
+}) as unknown as Schema.Codec<FleetsGetOutput>;
 
 // The operation
 /**
@@ -1728,6 +2393,10 @@ export const FleetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetsGetOutput,
 }));
 // Input Schema
+export interface FleetsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const FleetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1738,11 +2407,25 @@ export const FleetsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets",
       apiVersion: "2024-11-01",
     }),
-  );
-export type FleetsListByResourceGroupInput =
-  typeof FleetsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<FleetsListByResourceGroupInput>;
 
 // Output Schema
+export interface FleetsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FleetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1777,9 +2460,7 @@ export const FleetsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FleetsListByResourceGroupOutput =
-  typeof FleetsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<FleetsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1796,6 +2477,9 @@ export const FleetsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FleetsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const FleetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1805,11 +2489,25 @@ export const FleetsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureFleet/fleets",
       apiVersion: "2024-11-01",
     }),
-  );
-export type FleetsListBySubscriptionInput =
-  typeof FleetsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<FleetsListBySubscriptionInput>;
 
 // Output Schema
+export interface FleetsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FleetsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1844,9 +2542,7 @@ export const FleetsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FleetsListBySubscriptionOutput =
-  typeof FleetsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<FleetsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1862,6 +2558,11 @@ export const FleetsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FleetsListVirtualMachineScaleSetsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const FleetsListVirtualMachineScaleSetsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1873,11 +2574,32 @@ export const FleetsListVirtualMachineScaleSetsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{name}/virtualMachineScaleSets",
       apiVersion: "2024-11-01",
     }),
-  );
-export type FleetsListVirtualMachineScaleSetsInput =
-  typeof FleetsListVirtualMachineScaleSetsInput.Type;
+  ) as unknown as Schema.Codec<FleetsListVirtualMachineScaleSetsInput>;
 
 // Output Schema
+export interface FleetsListVirtualMachineScaleSetsOutput {
+  value: {
+    name: string;
+    id: string;
+    type?: string;
+    operationStatus:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Migrating";
+    error?: {
+      code?: string;
+      target?: string;
+      message?: string;
+      details?: { code?: string; target?: string; message?: string }[];
+      innererror?: { exceptionType?: string; errorDetail?: string };
+    };
+  }[];
+  nextLink?: string;
+}
 export const FleetsListVirtualMachineScaleSetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1919,9 +2641,7 @@ export const FleetsListVirtualMachineScaleSetsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FleetsListVirtualMachineScaleSetsOutput =
-  typeof FleetsListVirtualMachineScaleSetsOutput.Type;
+  }) as unknown as Schema.Codec<FleetsListVirtualMachineScaleSetsOutput>;
 
 // The operation
 /**
@@ -1938,6 +2658,634 @@ export const FleetsListVirtualMachineScaleSets =
     outputSchema: FleetsListVirtualMachineScaleSetsOutput,
   }));
 // Input Schema
+export interface FleetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fleetName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  plan?: {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Migrating";
+    spotPriorityProfile?: {
+      capacity?: number;
+      minCapacity?: number;
+      maxPricePerVM?: number;
+      evictionPolicy?: "Delete" | "Deallocate";
+      allocationStrategy?:
+        | "PriceCapacityOptimized"
+        | "LowestPrice"
+        | "CapacityOptimized";
+      maintain?: boolean;
+    };
+    regularPriorityProfile?: {
+      capacity?: number;
+      minCapacity?: number;
+      allocationStrategy?: "LowestPrice" | "Prioritized";
+    };
+    vmSizesProfile: { name: string; rank?: number }[];
+    vmAttributes?: {
+      vCpuCount: { min?: number; max?: number };
+      memoryInGiB: { min?: number; max?: number };
+      memoryInGiBPerVCpu?: { min?: number; max?: number };
+      localStorageSupport?: "Excluded" | "Included" | "Required";
+      localStorageInGiB?: { min?: number; max?: number };
+      localStorageDiskTypes?: ("HDD" | "SSD")[];
+      dataDiskCount?: { min?: number; max?: number };
+      networkInterfaceCount?: { min?: number; max?: number };
+      networkBandwidthInMbps?: { min?: number; max?: number };
+      rdmaSupport?: "Excluded" | "Included" | "Required";
+      rdmaNetworkInterfaceCount?: { min?: number; max?: number };
+      acceleratorSupport?: "Excluded" | "Included" | "Required";
+      acceleratorManufacturers?: ("AMD" | "Nvidia" | "Xilinx")[];
+      acceleratorTypes?: ("GPU" | "FPGA")[];
+      acceleratorCount?: { min?: number; max?: number };
+      vmCategories?: (
+        | "GeneralPurpose"
+        | "ComputeOptimized"
+        | "MemoryOptimized"
+        | "StorageOptimized"
+        | "GpuAccelerated"
+        | "FpgaAccelerated"
+        | "HighPerformanceCompute"
+      )[];
+      architectureTypes?: ("ARM64" | "X64")[];
+      cpuManufacturers?: ("Intel" | "AMD" | "Microsoft" | "Ampere")[];
+      burstableSupport?: "Excluded" | "Included" | "Required";
+      excludedVMSizes?: string[];
+    };
+    additionalLocationsProfile?: {
+      locationProfiles: {
+        location: string;
+        virtualMachineProfileOverride?: {
+          osProfile?: {
+            computerNamePrefix?: string;
+            adminUsername?: string;
+            adminPassword?: string | Redacted.Redacted<string>;
+            customData?: string;
+            windowsConfiguration?: {
+              provisionVMAgent?: boolean;
+              enableAutomaticUpdates?: boolean;
+              timeZone?: string;
+              additionalUnattendContent?: {
+                passName?: "OobeSystem";
+                componentName?: "Microsoft-Windows-Shell-Setup";
+                settingName?: "AutoLogon" | "FirstLogonCommands";
+                content?: string;
+              }[];
+              patchSettings?: {
+                patchMode?: "Manual" | "AutomaticByOS" | "AutomaticByPlatform";
+                enableHotpatching?: boolean;
+                assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+                automaticByPlatformSettings?: {
+                  rebootSetting?: "Unknown" | "IfRequired" | "Never" | "Always";
+                  bypassPlatformSafetyChecksOnUserSchedule?: boolean;
+                };
+              };
+              winRM?: {
+                listeners?: {
+                  protocol?: "Http" | "Https";
+                  certificateUrl?: string;
+                }[];
+              };
+              enableVMAgentPlatformUpdates?: boolean;
+            };
+            linuxConfiguration?: {
+              disablePasswordAuthentication?: boolean;
+              ssh?: { publicKeys?: { path?: string; keyData?: string }[] };
+              provisionVMAgent?: boolean;
+              patchSettings?: {
+                patchMode?: "ImageDefault" | "AutomaticByPlatform";
+                assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+                automaticByPlatformSettings?: {
+                  rebootSetting?: "Unknown" | "IfRequired" | "Never" | "Always";
+                  bypassPlatformSafetyChecksOnUserSchedule?: boolean;
+                };
+              };
+              enableVMAgentPlatformUpdates?: boolean;
+            };
+            secrets?: {
+              sourceVault?: { id?: string };
+              vaultCertificates?: {
+                certificateUrl?: string;
+                certificateStore?: string;
+              }[];
+            }[];
+            allowExtensionOperations?: boolean;
+            requireGuestProvisionSignal?: boolean;
+          };
+          storageProfile?: {
+            imageReference?: {
+              id?: string;
+              publisher?: string;
+              offer?: string;
+              sku?: string;
+              version?: string;
+              exactVersion?: string;
+              sharedGalleryImageId?: string;
+              communityGalleryImageId?: string;
+            };
+            osDisk?: {
+              name?: string;
+              caching?: "None" | "ReadOnly" | "ReadWrite";
+              writeAcceleratorEnabled?: boolean;
+              createOption:
+                | "FromImage"
+                | "Empty"
+                | "Attach"
+                | "Copy"
+                | "Restore";
+              diffDiskSettings?: {
+                option?: "Local";
+                placement?: "CacheDisk" | "ResourceDisk" | "NvmeDisk";
+              };
+              diskSizeGB?: number;
+              osType?: "Windows" | "Linux";
+              image?: { uri?: string };
+              vhdContainers?: string[];
+              managedDisk?: {
+                storageAccountType?:
+                  | "Standard_LRS"
+                  | "Premium_LRS"
+                  | "StandardSSD_LRS"
+                  | "UltraSSD_LRS"
+                  | "Premium_ZRS"
+                  | "StandardSSD_ZRS"
+                  | "PremiumV2_LRS";
+                diskEncryptionSet?: { id?: string };
+                securityProfile?: {
+                  securityEncryptionType?:
+                    | "VMGuestStateOnly"
+                    | "DiskWithVMGuestState"
+                    | "NonPersistedTPM";
+                  diskEncryptionSet?: { id?: string };
+                };
+              };
+              deleteOption?: "Delete" | "Detach";
+            };
+            dataDisks?: {
+              name?: string;
+              lun: number;
+              caching?: "None" | "ReadOnly" | "ReadWrite";
+              writeAcceleratorEnabled?: boolean;
+              createOption:
+                | "FromImage"
+                | "Empty"
+                | "Attach"
+                | "Copy"
+                | "Restore";
+              diskSizeGB?: number;
+              managedDisk?: {
+                storageAccountType?:
+                  | "Standard_LRS"
+                  | "Premium_LRS"
+                  | "StandardSSD_LRS"
+                  | "UltraSSD_LRS"
+                  | "Premium_ZRS"
+                  | "StandardSSD_ZRS"
+                  | "PremiumV2_LRS";
+                diskEncryptionSet?: { id?: string };
+                securityProfile?: {
+                  securityEncryptionType?:
+                    | "VMGuestStateOnly"
+                    | "DiskWithVMGuestState"
+                    | "NonPersistedTPM";
+                  diskEncryptionSet?: { id?: string };
+                };
+              };
+              diskIOPSReadWrite?: number;
+              diskMBpsReadWrite?: number;
+              deleteOption?: "Delete" | "Detach";
+            }[];
+            diskControllerType?: "SCSI" | "NVMe";
+          };
+          networkProfile?: {
+            healthProbe?: { id?: string };
+            networkInterfaceConfigurations?: {
+              name: string;
+              properties?: {
+                primary?: boolean;
+                enableAcceleratedNetworking?: boolean;
+                disableTcpStateTracking?: boolean;
+                enableFpga?: boolean;
+                networkSecurityGroup?: { id?: string };
+                dnsSettings?: { dnsServers?: string[] };
+                ipConfigurations: {
+                  name: string;
+                  properties?: {
+                    subnet?: { id?: string };
+                    primary?: boolean;
+                    publicIPAddressConfiguration?: {
+                      name: string;
+                      properties?: {
+                        idleTimeoutInMinutes?: number;
+                        dnsSettings?: {
+                          domainNameLabel: string;
+                          domainNameLabelScope?:
+                            | "TenantReuse"
+                            | "SubscriptionReuse"
+                            | "ResourceGroupReuse"
+                            | "NoReuse";
+                        };
+                        ipTags?: { ipTagType?: string; tag?: string }[];
+                        publicIPPrefix?: { id?: string };
+                        publicIPAddressVersion?: "IPv4" | "IPv6";
+                        deleteOption?: "Delete" | "Detach";
+                      };
+                      sku?: {
+                        name?: "Basic" | "Standard";
+                        tier?: "Regional" | "Global";
+                      };
+                    };
+                    privateIPAddressVersion?: "IPv4" | "IPv6";
+                    applicationGatewayBackendAddressPools?: { id?: string }[];
+                    applicationSecurityGroups?: { id?: string }[];
+                    loadBalancerBackendAddressPools?: { id?: string }[];
+                    loadBalancerInboundNatPools?: { id?: string }[];
+                  };
+                }[];
+                enableIPForwarding?: boolean;
+                deleteOption?: "Delete" | "Detach";
+                auxiliaryMode?: "None" | "AcceleratedConnections" | "Floating";
+                auxiliarySku?: "None" | "A1" | "A2" | "A4" | "A8";
+              };
+            }[];
+            networkApiVersion?: "2020-11-01";
+          };
+          securityProfile?: {
+            uefiSettings?: {
+              secureBootEnabled?: boolean;
+              vTpmEnabled?: boolean;
+            };
+            encryptionAtHost?: boolean;
+            securityType?: "TrustedLaunch" | "ConfidentialVM";
+            encryptionIdentity?: { userAssignedIdentityResourceId?: string };
+            proxyAgentSettings?: {
+              enabled?: boolean;
+              mode?: "Audit" | "Enforce";
+              keyIncarnationId?: number;
+            };
+          };
+          diagnosticsProfile?: {
+            bootDiagnostics?: { enabled?: boolean; storageUri?: string };
+          };
+          extensionProfile?: {
+            extensions?: {
+              id?: string;
+              name?: string;
+              type?: string;
+              properties?: {
+                forceUpdateTag?: string;
+                publisher?: string;
+                type?: string;
+                typeHandlerVersion?: string;
+                autoUpgradeMinorVersion?: boolean;
+                enableAutomaticUpgrade?: boolean;
+                settings?: Record<string, unknown>;
+                protectedSettings?: Record<string, unknown>;
+                provisioningState?: string;
+                provisionAfterExtensions?: string[];
+                suppressFailures?: boolean;
+                protectedSettingsFromKeyVault?: {
+                  secretUrl: string;
+                  sourceVault: { id?: string };
+                };
+              };
+            }[];
+            extensionsTimeBudget?: string;
+          };
+          licenseType?: string;
+          scheduledEventsProfile?: {
+            terminateNotificationProfile?: {
+              notBeforeTimeout?: string;
+              enable?: boolean;
+            };
+            osImageNotificationProfile?: {
+              notBeforeTimeout?: string;
+              enable?: boolean;
+            };
+          };
+          userData?: string;
+          capacityReservation?: { capacityReservationGroup?: { id?: string } };
+          applicationProfile?: {
+            galleryApplications?: {
+              tags?: string;
+              order?: number;
+              packageReferenceId: string;
+              configurationReference?: string;
+              treatFailureAsDeploymentFailure?: boolean;
+              enableAutomaticUpgrade?: boolean;
+            }[];
+          };
+          hardwareProfile?: {
+            vmSizeProperties?: {
+              vCPUsAvailable?: number;
+              vCPUsPerCore?: number;
+            };
+          };
+          serviceArtifactReference?: { id?: string };
+          securityPostureReference?: {
+            id?: string;
+            excludeExtensions?: string[];
+            isOverridable?: boolean;
+          };
+          timeCreated?: string;
+        };
+      }[];
+    };
+    computeProfile: {
+      baseVirtualMachineProfile: {
+        osProfile?: {
+          computerNamePrefix?: string;
+          adminUsername?: string;
+          adminPassword?: string | Redacted.Redacted<string>;
+          customData?: string;
+          windowsConfiguration?: {
+            provisionVMAgent?: boolean;
+            enableAutomaticUpdates?: boolean;
+            timeZone?: string;
+            additionalUnattendContent?: {
+              passName?: "OobeSystem";
+              componentName?: "Microsoft-Windows-Shell-Setup";
+              settingName?: "AutoLogon" | "FirstLogonCommands";
+              content?: string;
+            }[];
+            patchSettings?: {
+              patchMode?: "Manual" | "AutomaticByOS" | "AutomaticByPlatform";
+              enableHotpatching?: boolean;
+              assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+              automaticByPlatformSettings?: {
+                rebootSetting?: "Unknown" | "IfRequired" | "Never" | "Always";
+                bypassPlatformSafetyChecksOnUserSchedule?: boolean;
+              };
+            };
+            winRM?: {
+              listeners?: {
+                protocol?: "Http" | "Https";
+                certificateUrl?: string;
+              }[];
+            };
+            enableVMAgentPlatformUpdates?: boolean;
+          };
+          linuxConfiguration?: {
+            disablePasswordAuthentication?: boolean;
+            ssh?: { publicKeys?: { path?: string; keyData?: string }[] };
+            provisionVMAgent?: boolean;
+            patchSettings?: {
+              patchMode?: "ImageDefault" | "AutomaticByPlatform";
+              assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+              automaticByPlatformSettings?: {
+                rebootSetting?: "Unknown" | "IfRequired" | "Never" | "Always";
+                bypassPlatformSafetyChecksOnUserSchedule?: boolean;
+              };
+            };
+            enableVMAgentPlatformUpdates?: boolean;
+          };
+          secrets?: {
+            sourceVault?: { id?: string };
+            vaultCertificates?: {
+              certificateUrl?: string;
+              certificateStore?: string;
+            }[];
+          }[];
+          allowExtensionOperations?: boolean;
+          requireGuestProvisionSignal?: boolean;
+        };
+        storageProfile?: {
+          imageReference?: {
+            id?: string;
+            publisher?: string;
+            offer?: string;
+            sku?: string;
+            version?: string;
+            exactVersion?: string;
+            sharedGalleryImageId?: string;
+            communityGalleryImageId?: string;
+          };
+          osDisk?: {
+            name?: string;
+            caching?: "None" | "ReadOnly" | "ReadWrite";
+            writeAcceleratorEnabled?: boolean;
+            createOption: "FromImage" | "Empty" | "Attach" | "Copy" | "Restore";
+            diffDiskSettings?: {
+              option?: "Local";
+              placement?: "CacheDisk" | "ResourceDisk" | "NvmeDisk";
+            };
+            diskSizeGB?: number;
+            osType?: "Windows" | "Linux";
+            image?: { uri?: string };
+            vhdContainers?: string[];
+            managedDisk?: {
+              storageAccountType?:
+                | "Standard_LRS"
+                | "Premium_LRS"
+                | "StandardSSD_LRS"
+                | "UltraSSD_LRS"
+                | "Premium_ZRS"
+                | "StandardSSD_ZRS"
+                | "PremiumV2_LRS";
+              diskEncryptionSet?: { id?: string };
+              securityProfile?: {
+                securityEncryptionType?:
+                  | "VMGuestStateOnly"
+                  | "DiskWithVMGuestState"
+                  | "NonPersistedTPM";
+                diskEncryptionSet?: { id?: string };
+              };
+            };
+            deleteOption?: "Delete" | "Detach";
+          };
+          dataDisks?: {
+            name?: string;
+            lun: number;
+            caching?: "None" | "ReadOnly" | "ReadWrite";
+            writeAcceleratorEnabled?: boolean;
+            createOption: "FromImage" | "Empty" | "Attach" | "Copy" | "Restore";
+            diskSizeGB?: number;
+            managedDisk?: {
+              storageAccountType?:
+                | "Standard_LRS"
+                | "Premium_LRS"
+                | "StandardSSD_LRS"
+                | "UltraSSD_LRS"
+                | "Premium_ZRS"
+                | "StandardSSD_ZRS"
+                | "PremiumV2_LRS";
+              diskEncryptionSet?: { id?: string };
+              securityProfile?: {
+                securityEncryptionType?:
+                  | "VMGuestStateOnly"
+                  | "DiskWithVMGuestState"
+                  | "NonPersistedTPM";
+                diskEncryptionSet?: { id?: string };
+              };
+            };
+            diskIOPSReadWrite?: number;
+            diskMBpsReadWrite?: number;
+            deleteOption?: "Delete" | "Detach";
+          }[];
+          diskControllerType?: "SCSI" | "NVMe";
+        };
+        networkProfile?: {
+          healthProbe?: { id?: string };
+          networkInterfaceConfigurations?: {
+            name: string;
+            properties?: {
+              primary?: boolean;
+              enableAcceleratedNetworking?: boolean;
+              disableTcpStateTracking?: boolean;
+              enableFpga?: boolean;
+              networkSecurityGroup?: { id?: string };
+              dnsSettings?: { dnsServers?: string[] };
+              ipConfigurations: {
+                name: string;
+                properties?: {
+                  subnet?: { id?: string };
+                  primary?: boolean;
+                  publicIPAddressConfiguration?: {
+                    name: string;
+                    properties?: {
+                      idleTimeoutInMinutes?: number;
+                      dnsSettings?: {
+                        domainNameLabel: string;
+                        domainNameLabelScope?:
+                          | "TenantReuse"
+                          | "SubscriptionReuse"
+                          | "ResourceGroupReuse"
+                          | "NoReuse";
+                      };
+                      ipTags?: { ipTagType?: string; tag?: string }[];
+                      publicIPPrefix?: { id?: string };
+                      publicIPAddressVersion?: "IPv4" | "IPv6";
+                      deleteOption?: "Delete" | "Detach";
+                    };
+                    sku?: {
+                      name?: "Basic" | "Standard";
+                      tier?: "Regional" | "Global";
+                    };
+                  };
+                  privateIPAddressVersion?: "IPv4" | "IPv6";
+                  applicationGatewayBackendAddressPools?: { id?: string }[];
+                  applicationSecurityGroups?: { id?: string }[];
+                  loadBalancerBackendAddressPools?: { id?: string }[];
+                  loadBalancerInboundNatPools?: { id?: string }[];
+                };
+              }[];
+              enableIPForwarding?: boolean;
+              deleteOption?: "Delete" | "Detach";
+              auxiliaryMode?: "None" | "AcceleratedConnections" | "Floating";
+              auxiliarySku?: "None" | "A1" | "A2" | "A4" | "A8";
+            };
+          }[];
+          networkApiVersion?: "2020-11-01";
+        };
+        securityProfile?: {
+          uefiSettings?: { secureBootEnabled?: boolean; vTpmEnabled?: boolean };
+          encryptionAtHost?: boolean;
+          securityType?: "TrustedLaunch" | "ConfidentialVM";
+          encryptionIdentity?: { userAssignedIdentityResourceId?: string };
+          proxyAgentSettings?: {
+            enabled?: boolean;
+            mode?: "Audit" | "Enforce";
+            keyIncarnationId?: number;
+          };
+        };
+        diagnosticsProfile?: {
+          bootDiagnostics?: { enabled?: boolean; storageUri?: string };
+        };
+        extensionProfile?: {
+          extensions?: {
+            id?: string;
+            name?: string;
+            type?: string;
+            properties?: {
+              forceUpdateTag?: string;
+              publisher?: string;
+              type?: string;
+              typeHandlerVersion?: string;
+              autoUpgradeMinorVersion?: boolean;
+              enableAutomaticUpgrade?: boolean;
+              settings?: Record<string, unknown>;
+              protectedSettings?: Record<string, unknown>;
+              provisioningState?: string;
+              provisionAfterExtensions?: string[];
+              suppressFailures?: boolean;
+              protectedSettingsFromKeyVault?: {
+                secretUrl: string;
+                sourceVault: { id?: string };
+              };
+            };
+          }[];
+          extensionsTimeBudget?: string;
+        };
+        licenseType?: string;
+        scheduledEventsProfile?: {
+          terminateNotificationProfile?: {
+            notBeforeTimeout?: string;
+            enable?: boolean;
+          };
+          osImageNotificationProfile?: {
+            notBeforeTimeout?: string;
+            enable?: boolean;
+          };
+        };
+        userData?: string;
+        capacityReservation?: { capacityReservationGroup?: { id?: string } };
+        applicationProfile?: {
+          galleryApplications?: {
+            tags?: string;
+            order?: number;
+            packageReferenceId: string;
+            configurationReference?: string;
+            treatFailureAsDeploymentFailure?: boolean;
+            enableAutomaticUpgrade?: boolean;
+          }[];
+        };
+        hardwareProfile?: {
+          vmSizeProperties?: { vCPUsAvailable?: number; vCPUsPerCore?: number };
+        };
+        serviceArtifactReference?: { id?: string };
+        securityPostureReference?: {
+          id?: string;
+          excludeExtensions?: string[];
+          isOverridable?: boolean;
+        };
+        timeCreated?: string;
+      };
+      computeApiVersion?: string;
+      platformFaultDomainCount?: number;
+      additionalVirtualMachineCapabilities?: {
+        ultraSSDEnabled?: boolean;
+        hibernationEnabled?: boolean;
+      };
+    };
+    timeCreated?: string;
+    uniqueId?: string;
+  };
+}
 export const FleetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3493,10 +4841,22 @@ export const FleetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
     apiVersion: "2024-11-01",
   }),
-);
-export type FleetsUpdateInput = typeof FleetsUpdateInput.Type;
+) as unknown as Schema.Codec<FleetsUpdateInput>;
 
 // Output Schema
+export interface FleetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FleetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3515,8 +4875,7 @@ export const FleetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FleetsUpdateOutput = typeof FleetsUpdateOutput.Type;
+}) as unknown as Schema.Codec<FleetsUpdateOutput>;
 
 // The operation
 /**
@@ -3532,6 +4891,7 @@ export const FleetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FleetsUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -3540,10 +4900,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AzureFleet/operations",
     apiVersion: "2024-11-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -3566,8 +4940,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

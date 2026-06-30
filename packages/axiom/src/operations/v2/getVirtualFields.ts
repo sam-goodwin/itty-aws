@@ -3,12 +3,25 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface GetVirtualFieldsInput {
+  dataset: string;
+}
 export const GetVirtualFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataset: Schema.String,
-}).pipe(T.Http({ method: "GET", path: "/v2/vfields" }));
-export type GetVirtualFieldsInput = typeof GetVirtualFieldsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/vfields" }),
+) as unknown as Schema.Codec<GetVirtualFieldsInput>;
 
 // Output Schema
+export type GetVirtualFieldsOutput = {
+  dataset: string;
+  description?: string;
+  expression: string;
+  name: string;
+  type?: string;
+  unit?: string;
+  id: string;
+}[];
 export const GetVirtualFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     dataset: Schema.String,
@@ -19,8 +32,7 @@ export const GetVirtualFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     unit: Schema.optional(Schema.String),
     id: Schema.String,
   }),
-);
-export type GetVirtualFieldsOutput = typeof GetVirtualFieldsOutput.Type;
+) as unknown as Schema.Codec<GetVirtualFieldsOutput>;
 
 // The operation
 export const getVirtualFields = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

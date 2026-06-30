@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentRevisionsEnvKeysSetInput {
+  application_id: string;
+  id: string;
+  key: string;
+  project_id: string;
+  value: string;
+}
 export const AgentRevisionsEnvKeysSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -15,18 +22,18 @@ export const AgentRevisionsEnvKeysSetInput =
       method: "PUT",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/env_keys/{key}/",
     }),
-  );
-export type AgentRevisionsEnvKeysSetInput =
-  typeof AgentRevisionsEnvKeysSetInput.Type;
+  ) as unknown as Schema.Codec<AgentRevisionsEnvKeysSetInput>;
 
 // Output Schema
+export interface AgentRevisionsEnvKeysSetOutput {
+  key: string;
+  is_set: boolean;
+}
 export const AgentRevisionsEnvKeysSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.String,
     is_set: Schema.Boolean,
-  });
-export type AgentRevisionsEnvKeysSetOutput =
-  typeof AgentRevisionsEnvKeysSetOutput.Type;
+  }) as unknown as Schema.Codec<AgentRevisionsEnvKeysSetOutput>;
 
 // The operation
 /**

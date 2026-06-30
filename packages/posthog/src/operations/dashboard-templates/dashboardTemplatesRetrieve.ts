@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardTemplatesRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const DashboardTemplatesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,51 @@ export const DashboardTemplatesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/dashboard_templates/{id}/",
     }),
-  );
-export type DashboardTemplatesRetrieveInput =
-  typeof DashboardTemplatesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DashboardTemplatesRetrieveInput>;
 
 // Output Schema
+export interface DashboardTemplatesRetrieveOutput {
+  id?: string;
+  template_name?: string | null;
+  dashboard_description?: string | null;
+  dashboard_filters?: unknown;
+  tags?: string[] | null;
+  tiles?: unknown;
+  variables?: unknown;
+  deleted?: boolean | null;
+  created_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  image_url?: string | null;
+  team_id?: number | null;
+  scope?: "team" | "organization" | "global" | "feature_flag" | "" | null;
+  availability_contexts?: string[] | null;
+  is_featured?: boolean;
+  non_portable_references?: {
+    actions: number;
+    cohorts: number;
+    warehouse_tables: string[];
+  };
+}
 export const DashboardTemplatesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -42,13 +86,36 @@ export const DashboardTemplatesRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     image_url: Schema.optional(Schema.NullOr(Schema.String)),
     team_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    scope: Schema.optional(Schema.Unknown),
+    scope: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["team", "organization", "global", "feature_flag"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     availability_contexts: Schema.optional(
       Schema.NullOr(Schema.Array(Schema.String)),
     ),
@@ -60,9 +127,7 @@ export const DashboardTemplatesRetrieveOutput =
         warehouse_tables: Schema.Array(Schema.String),
       }),
     ),
-  });
-export type DashboardTemplatesRetrieveOutput =
-  typeof DashboardTemplatesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DashboardTemplatesRetrieveOutput>;
 
 // The operation
 /**

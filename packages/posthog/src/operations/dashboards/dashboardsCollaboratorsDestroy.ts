@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardsCollaboratorsDestroyInput {
+  dashboard_id: number;
+  project_id: string;
+  user__uuid: string;
+}
 export const DashboardsCollaboratorsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dashboard_id: Schema.Number.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const DashboardsCollaboratorsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/{user__uuid}/",
     }),
-  );
-export type DashboardsCollaboratorsDestroyInput =
-  typeof DashboardsCollaboratorsDestroyInput.Type;
+  ) as unknown as Schema.Codec<DashboardsCollaboratorsDestroyInput>;
 
 // Output Schema
+export type DashboardsCollaboratorsDestroyOutput = void;
 export const DashboardsCollaboratorsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DashboardsCollaboratorsDestroyOutput =
-  typeof DashboardsCollaboratorsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsCollaboratorsDestroyOutput>;
 
 // The operation
 /**

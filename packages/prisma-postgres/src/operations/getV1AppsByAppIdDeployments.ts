@@ -4,16 +4,31 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetV1AppsByAppIdDeploymentsInput {
+  appId: string;
+  cursor?: string;
+  limit?: number;
+}
 export const GetV1AppsByAppIdDeploymentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "GET", path: "/v1/apps/{appId}/deployments" }));
-export type GetV1AppsByAppIdDeploymentsInput =
-  typeof GetV1AppsByAppIdDeploymentsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/apps/{appId}/deployments" }),
+  ) as unknown as Schema.Codec<GetV1AppsByAppIdDeploymentsInput>;
 
 // Output Schema
+export interface GetV1AppsByAppIdDeploymentsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    foundryVersionId: string;
+    createdAt: string;
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1AppsByAppIdDeploymentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -29,9 +44,7 @@ export const GetV1AppsByAppIdDeploymentsOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1AppsByAppIdDeploymentsOutput =
-  typeof GetV1AppsByAppIdDeploymentsOutput.Type;
+  }) as unknown as Schema.Codec<GetV1AppsByAppIdDeploymentsOutput>;
 
 // The operation
 /**

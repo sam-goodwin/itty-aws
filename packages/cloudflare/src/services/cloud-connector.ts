@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service cloud-connector
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -33,6 +33,60 @@ export class Forbidden extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Parameters {
+  /** Host to perform Cloud Connection to */
+  host?: string | null;
+}
+const Parameters = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Parameters>;
+
+interface ListRulesResponseResult {
+  id?: string | null;
+  description?: string | null;
+  enabled?: boolean | null;
+  expression?: string | null;
+  /** Parameters of Cloud Connector Rule */
+  parameters?: { host?: string | null } | null;
+  /** Cloud Provider type */
+  provider?:
+    | "aws_s3"
+    | "cloudflare_r2"
+    | "gcp_storage"
+    | "azure_storage"
+    | (string & {})
+    | null;
+}
+const ListRulesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    parameters: Schema.optional(Schema.Union([Parameters, Schema.Null])),
+    provider: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "aws_s3",
+            "cloudflare_r2",
+            "gcp_storage",
+            "azure_storage",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<ListRulesResponseResult>;
+
+// =============================================================================
 // Rule
 // =============================================================================
 
@@ -47,7 +101,7 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/cloud_connector/rules" }),
   ),
-) as unknown as Schema.Schema<ListRulesRequest>;
+) as unknown as Schema.Codec<ListRulesRequest>;
 
 export interface ListRulesResponse {
   result: {
@@ -69,44 +123,9 @@ export interface ListRulesResponse {
 export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          expression: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          parameters: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                host: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          provider: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "aws_s3",
-                  "cloudflare_r2",
-                  "gcp_storage",
-                  "azure_storage",
-                ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-      ),
+      result: Schema.Array(ListRulesResponseResult),
     }),
-) as unknown as Schema.Schema<ListRulesResponse>;
+) as unknown as Schema.Codec<ListRulesResponse>;
 
 export type ListRulesError =
   | DefaultErrors
@@ -150,36 +169,13 @@ export interface PutRuleRequest {
 export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    rules: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          enabled: Schema.optional(Schema.Boolean),
-          expression: Schema.optional(Schema.String),
-          parameters: Schema.optional(
-            Schema.Struct({
-              host: Schema.optional(Schema.String),
-            }),
-          ),
-          provider: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "aws_s3",
-                "cloudflare_r2",
-                "gcp_storage",
-                "azure_storage",
-              ]),
-              Schema.String,
-            ]),
-          ),
-        }),
-      ),
-    ).pipe(T.HttpBody()),
+    rules: Schema.optional(Schema.Array(ListRulesResponseResult)).pipe(
+      T.HttpBody(),
+    ),
   }).pipe(
     T.Http({ method: "PUT", path: "/zones/{zone_id}/cloud_connector/rules" }),
   ),
-) as unknown as Schema.Schema<PutRuleRequest>;
+) as unknown as Schema.Codec<PutRuleRequest>;
 
 export interface PutRuleResponse {
   result: {
@@ -200,40 +196,9 @@ export interface PutRuleResponse {
 
 export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        parameters: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        provider: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "aws_s3",
-                "cloudflare_r2",
-                "gcp_storage",
-                "azure_storage",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ),
+    result: Schema.Array(ListRulesResponseResult),
   }),
-) as unknown as Schema.Schema<PutRuleResponse>;
+) as unknown as Schema.Codec<PutRuleResponse>;
 
 export type PutRuleError = DefaultErrors | Forbidden;
 

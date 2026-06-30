@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -40,7 +40,7 @@ export interface SmtpMsa {
   username?: string;
 }
 
-export const SmtpMsa: Schema.Schema<SmtpMsa> =
+export const SmtpMsa: Schema.Codec<SmtpMsa> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -74,7 +74,7 @@ export interface SendAs {
     | (string & {});
 }
 
-export const SendAs: Schema.Schema<SendAs> =
+export const SendAs: Schema.Codec<SendAs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signature: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -92,7 +92,7 @@ export interface ListSendAsResponse {
   sendAs?: ReadonlyArray<SendAs>;
 }
 
-export const ListSendAsResponse: Schema.Schema<ListSendAsResponse> =
+export const ListSendAsResponse: Schema.Codec<ListSendAsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sendAs: Schema.optional(Schema.Array(SendAs)),
   }).annotate({ identifier: "ListSendAsResponse" });
@@ -104,7 +104,7 @@ export interface ClassificationLabelFieldValue {
   selection?: string;
 }
 
-export const ClassificationLabelFieldValue: Schema.Schema<ClassificationLabelFieldValue> =
+export const ClassificationLabelFieldValue: Schema.Codec<ClassificationLabelFieldValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldId: Schema.optional(Schema.String),
     selection: Schema.optional(Schema.String),
@@ -123,7 +123,7 @@ export interface Delegate {
   delegateEmail?: string;
 }
 
-export const Delegate: Schema.Schema<Delegate> =
+export const Delegate: Schema.Codec<Delegate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verificationStatus: Schema.optional(Schema.String),
     delegateEmail: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export interface ListDelegatesResponse {
   delegates?: ReadonlyArray<Delegate>;
 }
 
-export const ListDelegatesResponse: Schema.Schema<ListDelegatesResponse> =
+export const ListDelegatesResponse: Schema.Codec<ListDelegatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegates: Schema.optional(Schema.Array(Delegate)),
   }).annotate({ identifier: "ListDelegatesResponse" });
@@ -146,7 +146,7 @@ export interface ClassificationLabelValue {
   labelId?: string;
 }
 
-export const ClassificationLabelValue: Schema.Schema<ClassificationLabelValue> =
+export const ClassificationLabelValue: Schema.Codec<ClassificationLabelValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(ClassificationLabelFieldValue)),
     labelId: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export interface MessagePartHeader {
   value?: string;
 }
 
-export const MessagePartHeader: Schema.Schema<MessagePartHeader> =
+export const MessagePartHeader: Schema.Codec<MessagePartHeader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -174,7 +174,7 @@ export interface MessagePartBody {
   data?: string;
 }
 
-export const MessagePartBody: Schema.Schema<MessagePartBody> =
+export const MessagePartBody: Schema.Codec<MessagePartBody> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     size: Schema.optional(Schema.Number),
     attachmentId: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface MessagePart {
   body?: MessagePartBody;
 }
 
-export const MessagePart: Schema.Schema<MessagePart> =
+export const MessagePart: Schema.Codec<MessagePart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mimeType: Schema.optional(Schema.String),
@@ -206,9 +206,7 @@ export const MessagePart: Schema.Schema<MessagePart> =
       parts: Schema.optional(Schema.Array(MessagePart)),
       body: Schema.optional(MessagePartBody),
     }),
-  ).annotate({
-    identifier: "MessagePart",
-  }) as any as Schema.Schema<MessagePart>;
+  ).annotate({ identifier: "MessagePart" }) as any as Schema.Codec<MessagePart>;
 
 export interface Message {
   /** Classification Label values on the message. Available Classification Label schemas can be queried using the Google Drive Labels API. Each classification label ID must be unique. If duplicate IDs are provided, only one will be retained, and the selection is arbitrary. Only used for Google Workspace accounts. There's a limit of 20 Classification Label values per request. If the Classification Label values exceeds the maximum allowed number, the request fails. */
@@ -233,7 +231,7 @@ export interface Message {
   sizeEstimate?: number;
 }
 
-export const Message: Schema.Schema<Message> =
+export const Message: Schema.Codec<Message> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     classificationLabelValues: Schema.optional(
       Schema.Array(ClassificationLabelValue),
@@ -255,7 +253,7 @@ export interface HistoryLabelRemoved {
   labelIds?: ReadonlyArray<string>;
 }
 
-export const HistoryLabelRemoved: Schema.Schema<HistoryLabelRemoved> =
+export const HistoryLabelRemoved: Schema.Codec<HistoryLabelRemoved> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
     labelIds: Schema.optional(Schema.Array(Schema.String)),
@@ -272,7 +270,7 @@ export interface Profile {
   emailAddress?: string;
 }
 
-export const Profile: Schema.Schema<Profile> =
+export const Profile: Schema.Codec<Profile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messagesTotal: Schema.optional(Schema.Number),
     historyId: Schema.optional(Schema.String),
@@ -291,7 +289,7 @@ export interface ModifyMessageRequest {
   removeLabelIds?: ReadonlyArray<string>;
 }
 
-export const ModifyMessageRequest: Schema.Schema<ModifyMessageRequest> =
+export const ModifyMessageRequest: Schema.Codec<ModifyMessageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addLabelIds: Schema.optional(Schema.Array(Schema.String)),
     addClassificationLabels: Schema.optional(
@@ -310,7 +308,7 @@ export interface FilterAction {
   forward?: string;
 }
 
-export const FilterAction: Schema.Schema<FilterAction> =
+export const FilterAction: Schema.Codec<FilterAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addLabelIds: Schema.optional(Schema.Array(Schema.String)),
     removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
@@ -338,7 +336,7 @@ export interface FilterCriteria {
   hasAttachment?: boolean;
 }
 
-export const FilterCriteria: Schema.Schema<FilterCriteria> =
+export const FilterCriteria: Schema.Codec<FilterCriteria> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negatedQuery: Schema.optional(Schema.String),
     sizeComparison: Schema.optional(Schema.String),
@@ -360,7 +358,7 @@ export interface Filter {
   criteria?: FilterCriteria;
 }
 
-export const Filter: Schema.Schema<Filter> =
+export const Filter: Schema.Codec<Filter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     action: Schema.optional(FilterAction),
@@ -382,7 +380,7 @@ export interface AutoForwarding {
   enabled?: boolean;
 }
 
-export const AutoForwarding: Schema.Schema<AutoForwarding> =
+export const AutoForwarding: Schema.Codec<AutoForwarding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     disposition: Schema.optional(Schema.String),
@@ -394,7 +392,7 @@ export interface ListFiltersResponse {
   filter?: ReadonlyArray<Filter>;
 }
 
-export const ListFiltersResponse: Schema.Schema<ListFiltersResponse> =
+export const ListFiltersResponse: Schema.Codec<ListFiltersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.Array(Filter)),
   }).annotate({ identifier: "ListFiltersResponse" });
@@ -406,7 +404,7 @@ export interface LabelColor {
   textColor?: string;
 }
 
-export const LabelColor: Schema.Schema<LabelColor> =
+export const LabelColor: Schema.Codec<LabelColor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     backgroundColor: Schema.optional(Schema.String),
     textColor: Schema.optional(Schema.String),
@@ -439,7 +437,7 @@ export interface Label {
   threadsUnread?: number;
 }
 
-export const Label: Schema.Schema<Label> =
+export const Label: Schema.Codec<Label> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -460,7 +458,7 @@ export interface SignAndEncryptKeyPairs {
   encryptionKeyPairId?: string;
 }
 
-export const SignAndEncryptKeyPairs: Schema.Schema<SignAndEncryptKeyPairs> =
+export const SignAndEncryptKeyPairs: Schema.Codec<SignAndEncryptKeyPairs> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signingKeyPairId: Schema.optional(Schema.String),
     encryptionKeyPairId: Schema.optional(Schema.String),
@@ -475,7 +473,7 @@ export interface CseIdentity {
   emailAddress?: string;
 }
 
-export const CseIdentity: Schema.Schema<CseIdentity> =
+export const CseIdentity: Schema.Codec<CseIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKeyPairId: Schema.optional(Schema.String),
     signAndEncryptKeyPairs: Schema.optional(SignAndEncryptKeyPairs),
@@ -499,7 +497,7 @@ export interface SmimeInfo {
   pem?: string;
 }
 
-export const SmimeInfo: Schema.Schema<SmimeInfo> =
+export const SmimeInfo: Schema.Codec<SmimeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isDefault: Schema.optional(Schema.Boolean),
     expiration: Schema.optional(Schema.String),
@@ -514,7 +512,7 @@ export interface HistoryMessageDeleted {
   message?: Message;
 }
 
-export const HistoryMessageDeleted: Schema.Schema<HistoryMessageDeleted> =
+export const HistoryMessageDeleted: Schema.Codec<HistoryMessageDeleted> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "HistoryMessageDeleted" });
@@ -530,7 +528,7 @@ export interface ForwardingAddress {
     | (string & {});
 }
 
-export const ForwardingAddress: Schema.Schema<ForwardingAddress> =
+export const ForwardingAddress: Schema.Codec<ForwardingAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forwardingEmail: Schema.optional(Schema.String),
     verificationStatus: Schema.optional(Schema.String),
@@ -538,7 +536,7 @@ export const ForwardingAddress: Schema.Schema<ForwardingAddress> =
 
 export interface DisableCseKeyPairRequest {}
 
-export const DisableCseKeyPairRequest: Schema.Schema<DisableCseKeyPairRequest> =
+export const DisableCseKeyPairRequest: Schema.Codec<DisableCseKeyPairRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableCseKeyPairRequest",
   });
@@ -550,7 +548,7 @@ export interface WatchResponse {
   expiration?: string;
 }
 
-export const WatchResponse: Schema.Schema<WatchResponse> =
+export const WatchResponse: Schema.Codec<WatchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     historyId: Schema.optional(Schema.String),
     expiration: Schema.optional(Schema.String),
@@ -567,7 +565,7 @@ export interface WatchRequest {
   topicName?: string;
 }
 
-export const WatchRequest: Schema.Schema<WatchRequest> =
+export const WatchRequest: Schema.Codec<WatchRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelIds: Schema.optional(Schema.Array(Schema.String)),
     labelFilterAction: Schema.optional(Schema.String),
@@ -580,7 +578,7 @@ export interface HardwareKeyMetadata {
   description?: string;
 }
 
-export const HardwareKeyMetadata: Schema.Schema<HardwareKeyMetadata> =
+export const HardwareKeyMetadata: Schema.Codec<HardwareKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "HardwareKeyMetadata" });
@@ -592,7 +590,7 @@ export interface KaclsKeyMetadata {
   kaclsData?: string;
 }
 
-export const KaclsKeyMetadata: Schema.Schema<KaclsKeyMetadata> =
+export const KaclsKeyMetadata: Schema.Codec<KaclsKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kaclsUri: Schema.optional(Schema.String),
     kaclsData: Schema.optional(Schema.String),
@@ -607,7 +605,7 @@ export interface CsePrivateKeyMetadata {
   kaclsKeyMetadata?: KaclsKeyMetadata;
 }
 
-export const CsePrivateKeyMetadata: Schema.Schema<CsePrivateKeyMetadata> =
+export const CsePrivateKeyMetadata: Schema.Codec<CsePrivateKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateKeyMetadataId: Schema.optional(Schema.String),
     hardwareKeyMetadata: Schema.optional(HardwareKeyMetadata),
@@ -619,7 +617,7 @@ export interface LanguageSettings {
   displayLanguage?: string;
 }
 
-export const LanguageSettings: Schema.Schema<LanguageSettings> =
+export const LanguageSettings: Schema.Codec<LanguageSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayLanguage: Schema.optional(Schema.String),
   }).annotate({ identifier: "LanguageSettings" });
@@ -641,7 +639,7 @@ export interface CseKeyPair {
   enablementState?: "stateUnspecified" | "enabled" | "disabled" | (string & {});
 }
 
-export const CseKeyPair: Schema.Schema<CseKeyPair> =
+export const CseKeyPair: Schema.Codec<CseKeyPair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateKeyMetadata: Schema.optional(Schema.Array(CsePrivateKeyMetadata)),
     disableTime: Schema.optional(Schema.String),
@@ -659,7 +657,7 @@ export interface ListCseKeyPairsResponse {
   nextPageToken?: string;
 }
 
-export const ListCseKeyPairsResponse: Schema.Schema<ListCseKeyPairsResponse> =
+export const ListCseKeyPairsResponse: Schema.Codec<ListCseKeyPairsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cseKeyPairs: Schema.optional(Schema.Array(CseKeyPair)),
     nextPageToken: Schema.optional(Schema.String),
@@ -672,7 +670,7 @@ export interface ListCseIdentitiesResponse {
   nextPageToken?: string;
 }
 
-export const ListCseIdentitiesResponse: Schema.Schema<ListCseIdentitiesResponse> =
+export const ListCseIdentitiesResponse: Schema.Codec<ListCseIdentitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cseIdentities: Schema.optional(Schema.Array(CseIdentity)),
     nextPageToken: Schema.optional(Schema.String),
@@ -683,7 +681,7 @@ export interface BatchDeleteMessagesRequest {
   ids?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteMessagesRequest: Schema.Schema<BatchDeleteMessagesRequest> =
+export const BatchDeleteMessagesRequest: Schema.Codec<BatchDeleteMessagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ids: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "BatchDeleteMessagesRequest" });
@@ -692,7 +690,7 @@ export interface HistoryMessageAdded {
   message?: Message;
 }
 
-export const HistoryMessageAdded: Schema.Schema<HistoryMessageAdded> =
+export const HistoryMessageAdded: Schema.Codec<HistoryMessageAdded> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Message),
   }).annotate({ identifier: "HistoryMessageAdded" });
@@ -708,7 +706,7 @@ export interface Thread {
   messages?: ReadonlyArray<Message>;
 }
 
-export const Thread: Schema.Schema<Thread> =
+export const Thread: Schema.Codec<Thread> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     snippet: Schema.optional(Schema.String),
     historyId: Schema.optional(Schema.String),
@@ -725,7 +723,7 @@ export interface ListThreadsResponse {
   nextPageToken?: string;
 }
 
-export const ListThreadsResponse: Schema.Schema<ListThreadsResponse> =
+export const ListThreadsResponse: Schema.Codec<ListThreadsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threads: Schema.optional(Schema.Array(Thread)),
     resultSizeEstimate: Schema.optional(Schema.Number),
@@ -741,7 +739,7 @@ export interface ListMessagesResponse {
   resultSizeEstimate?: number;
 }
 
-export const ListMessagesResponse: Schema.Schema<ListMessagesResponse> =
+export const ListMessagesResponse: Schema.Codec<ListMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(Message)),
     nextPageToken: Schema.optional(Schema.String),
@@ -750,7 +748,7 @@ export const ListMessagesResponse: Schema.Schema<ListMessagesResponse> =
 
 export interface EnableCseKeyPairRequest {}
 
-export const EnableCseKeyPairRequest: Schema.Schema<EnableCseKeyPairRequest> =
+export const EnableCseKeyPairRequest: Schema.Codec<EnableCseKeyPairRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableCseKeyPairRequest",
   });
@@ -761,7 +759,7 @@ export interface HistoryLabelAdded {
   message?: Message;
 }
 
-export const HistoryLabelAdded: Schema.Schema<HistoryLabelAdded> =
+export const HistoryLabelAdded: Schema.Codec<HistoryLabelAdded> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labelIds: Schema.optional(Schema.Array(Schema.String)),
     message: Schema.optional(Message),
@@ -782,7 +780,7 @@ export interface History {
   labelsAdded?: ReadonlyArray<HistoryLabelAdded>;
 }
 
-export const History: Schema.Schema<History> =
+export const History: Schema.Codec<History> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     messagesDeleted: Schema.optional(Schema.Array(HistoryMessageDeleted)),
     messages: Schema.optional(Schema.Array(Message)),
@@ -799,7 +797,7 @@ export interface ModifyThreadRequest {
   removeLabelIds?: ReadonlyArray<string>;
 }
 
-export const ModifyThreadRequest: Schema.Schema<ModifyThreadRequest> =
+export const ModifyThreadRequest: Schema.Codec<ModifyThreadRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addLabelIds: Schema.optional(Schema.Array(Schema.String)),
     removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
@@ -812,7 +810,7 @@ export interface Draft {
   message?: Message;
 }
 
-export const Draft: Schema.Schema<Draft> =
+export const Draft: Schema.Codec<Draft> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     message: Schema.optional(Message),
@@ -827,7 +825,7 @@ export interface ListDraftsResponse {
   nextPageToken?: string;
 }
 
-export const ListDraftsResponse: Schema.Schema<ListDraftsResponse> =
+export const ListDraftsResponse: Schema.Codec<ListDraftsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resultSizeEstimate: Schema.optional(Schema.Number),
     drafts: Schema.optional(Schema.Array(Draft)),
@@ -839,7 +837,7 @@ export interface ListForwardingAddressesResponse {
   forwardingAddresses?: ReadonlyArray<ForwardingAddress>;
 }
 
-export const ListForwardingAddressesResponse: Schema.Schema<ListForwardingAddressesResponse> =
+export const ListForwardingAddressesResponse: Schema.Codec<ListForwardingAddressesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forwardingAddresses: Schema.optional(Schema.Array(ForwardingAddress)),
   }).annotate({ identifier: "ListForwardingAddressesResponse" });
@@ -862,7 +860,7 @@ export interface PopSettings {
     | (string & {});
 }
 
-export const PopSettings: Schema.Schema<PopSettings> =
+export const PopSettings: Schema.Codec<PopSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessWindow: Schema.optional(Schema.String),
     disposition: Schema.optional(Schema.String),
@@ -873,7 +871,7 @@ export interface ListLabelsResponse {
   labels?: ReadonlyArray<Label>;
 }
 
-export const ListLabelsResponse: Schema.Schema<ListLabelsResponse> =
+export const ListLabelsResponse: Schema.Codec<ListLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Label)),
   }).annotate({ identifier: "ListLabelsResponse" });
@@ -897,7 +895,7 @@ export interface VacationSettings {
   endTime?: string;
 }
 
-export const VacationSettings: Schema.Schema<VacationSettings> =
+export const VacationSettings: Schema.Codec<VacationSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responseBodyPlainText: Schema.optional(Schema.String),
     restrictToDomain: Schema.optional(Schema.Boolean),
@@ -911,7 +909,7 @@ export const VacationSettings: Schema.Schema<VacationSettings> =
 
 export interface ObliterateCseKeyPairRequest {}
 
-export const ObliterateCseKeyPairRequest: Schema.Schema<ObliterateCseKeyPairRequest> =
+export const ObliterateCseKeyPairRequest: Schema.Codec<ObliterateCseKeyPairRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ObliterateCseKeyPairRequest",
   });
@@ -932,7 +930,7 @@ export interface ImapSettings {
   maxFolderSize?: number;
 }
 
-export const ImapSettings: Schema.Schema<ImapSettings> =
+export const ImapSettings: Schema.Codec<ImapSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoExpunge: Schema.optional(Schema.Boolean),
     expungeBehavior: Schema.optional(Schema.String),
@@ -945,7 +943,7 @@ export interface ListSmimeInfoResponse {
   smimeInfo?: ReadonlyArray<SmimeInfo>;
 }
 
-export const ListSmimeInfoResponse: Schema.Schema<ListSmimeInfoResponse> =
+export const ListSmimeInfoResponse: Schema.Codec<ListSmimeInfoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     smimeInfo: Schema.optional(Schema.Array(SmimeInfo)),
   }).annotate({ identifier: "ListSmimeInfoResponse" });
@@ -963,7 +961,7 @@ export interface BatchModifyMessagesRequest {
   removeLabelIds?: ReadonlyArray<string>;
 }
 
-export const BatchModifyMessagesRequest: Schema.Schema<BatchModifyMessagesRequest> =
+export const BatchModifyMessagesRequest: Schema.Codec<BatchModifyMessagesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addLabelIds: Schema.optional(Schema.Array(Schema.String)),
     ids: Schema.optional(Schema.Array(Schema.String)),
@@ -983,7 +981,7 @@ export interface ListHistoryResponse {
   nextPageToken?: string;
 }
 
-export const ListHistoryResponse: Schema.Schema<ListHistoryResponse> =
+export const ListHistoryResponse: Schema.Codec<ListHistoryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     historyId: Schema.optional(Schema.String),
     history: Schema.optional(Schema.Array(History)),
@@ -1058,13 +1056,13 @@ export const StopUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<StopUsersRequest>;
+) as unknown as Schema.Codec<StopUsersRequest>;
 
 export interface StopUsersResponse {}
-export const StopUsersResponse: Schema.Schema<StopUsersResponse> =
+export const StopUsersResponse: Schema.Codec<StopUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<StopUsersResponse>;
+  ) as any as Schema.Codec<StopUsersResponse>;
 
 export type StopUsersError =
   | DefaultErrors
@@ -1102,7 +1100,7 @@ export const WatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<WatchUsersRequest>;
+) as unknown as Schema.Codec<WatchUsersRequest>;
 
 export type WatchUsersResponse = WatchResponse;
 export const WatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ WatchResponse;
@@ -1138,7 +1136,7 @@ export const GetProfileUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/profile" }),
   svc,
-) as unknown as Schema.Schema<GetProfileUsersRequest>;
+) as unknown as Schema.Codec<GetProfileUsersRequest>;
 
 export type GetProfileUsersResponse = Profile;
 export const GetProfileUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Profile;
@@ -1192,7 +1190,7 @@ export const ListUsersHistoryRequest =
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/history" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersHistoryRequest>;
+  ) as unknown as Schema.Codec<ListUsersHistoryRequest>;
 
 export type ListUsersHistoryResponse = ListHistoryResponse;
 export const ListUsersHistoryResponse =
@@ -1227,7 +1225,7 @@ export const GetPopUsersSettingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/settings/pop" }),
     svc,
-  ) as unknown as Schema.Schema<GetPopUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<GetPopUsersSettingsRequest>;
 
 export type GetPopUsersSettingsResponse = PopSettings;
 export const GetPopUsersSettingsResponse =
@@ -1261,7 +1259,7 @@ export const GetAutoForwardingUsersSettingsRequest =
       path: "gmail/v1/users/{userId}/settings/autoForwarding",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAutoForwardingUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<GetAutoForwardingUsersSettingsRequest>;
 
 export type GetAutoForwardingUsersSettingsResponse = AutoForwarding;
 export const GetAutoForwardingUsersSettingsResponse =
@@ -1295,7 +1293,7 @@ export const GetImapUsersSettingsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/settings/imap" }),
     svc,
-  ) as unknown as Schema.Schema<GetImapUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<GetImapUsersSettingsRequest>;
 
 export type GetImapUsersSettingsResponse = ImapSettings;
 export const GetImapUsersSettingsResponse =
@@ -1333,7 +1331,7 @@ export const UpdateLanguageUsersSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateLanguageUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<UpdateLanguageUsersSettingsRequest>;
 
 export type UpdateLanguageUsersSettingsResponse = LanguageSettings;
 export const UpdateLanguageUsersSettingsResponse =
@@ -1372,7 +1370,7 @@ export const GetVacationUsersSettingsRequest =
       path: "gmail/v1/users/{userId}/settings/vacation",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetVacationUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<GetVacationUsersSettingsRequest>;
 
 export type GetVacationUsersSettingsResponse = VacationSettings;
 export const GetVacationUsersSettingsResponse =
@@ -1413,7 +1411,7 @@ export const UpdateAutoForwardingUsersSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAutoForwardingUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<UpdateAutoForwardingUsersSettingsRequest>;
 
 export type UpdateAutoForwardingUsersSettingsResponse = AutoForwarding;
 export const UpdateAutoForwardingUsersSettingsResponse =
@@ -1456,7 +1454,7 @@ export const UpdateImapUsersSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateImapUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<UpdateImapUsersSettingsRequest>;
 
 export type UpdateImapUsersSettingsResponse = ImapSettings;
 export const UpdateImapUsersSettingsResponse =
@@ -1499,7 +1497,7 @@ export const UpdatePopUsersSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePopUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<UpdatePopUsersSettingsRequest>;
 
 export type UpdatePopUsersSettingsResponse = PopSettings;
 export const UpdatePopUsersSettingsResponse =
@@ -1542,7 +1540,7 @@ export const UpdateVacationUsersSettingsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateVacationUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<UpdateVacationUsersSettingsRequest>;
 
 export type UpdateVacationUsersSettingsResponse = VacationSettings;
 export const UpdateVacationUsersSettingsResponse =
@@ -1581,7 +1579,7 @@ export const GetLanguageUsersSettingsRequest =
       path: "gmail/v1/users/{userId}/settings/language",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetLanguageUsersSettingsRequest>;
+  ) as unknown as Schema.Codec<GetLanguageUsersSettingsRequest>;
 
 export type GetLanguageUsersSettingsResponse = LanguageSettings;
 export const GetLanguageUsersSettingsResponse =
@@ -1621,13 +1619,13 @@ export const DeleteUsersSettingsFiltersRequest =
       path: "gmail/v1/users/{userId}/settings/filters/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSettingsFiltersRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSettingsFiltersRequest>;
 
 export interface DeleteUsersSettingsFiltersResponse {}
-export const DeleteUsersSettingsFiltersResponse: Schema.Schema<DeleteUsersSettingsFiltersResponse> =
+export const DeleteUsersSettingsFiltersResponse: Schema.Codec<DeleteUsersSettingsFiltersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersSettingsFiltersResponse>;
+  ) as any as Schema.Codec<DeleteUsersSettingsFiltersResponse>;
 
 export type DeleteUsersSettingsFiltersError =
   | DefaultErrors
@@ -1665,7 +1663,7 @@ export const GetUsersSettingsFiltersRequest =
       path: "gmail/v1/users/{userId}/settings/filters/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSettingsFiltersRequest>;
+  ) as unknown as Schema.Codec<GetUsersSettingsFiltersRequest>;
 
 export type GetUsersSettingsFiltersResponse = Filter;
 export const GetUsersSettingsFiltersResponse =
@@ -1696,7 +1694,7 @@ export const ListUsersSettingsFiltersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/settings/filters" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSettingsFiltersRequest>;
+  ) as unknown as Schema.Codec<ListUsersSettingsFiltersRequest>;
 
 export type ListUsersSettingsFiltersResponse = ListFiltersResponse;
 export const ListUsersSettingsFiltersResponse =
@@ -1737,7 +1735,7 @@ export const CreateUsersSettingsFiltersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSettingsFiltersRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSettingsFiltersRequest>;
 
 export type CreateUsersSettingsFiltersResponse = Filter;
 export const CreateUsersSettingsFiltersResponse =
@@ -1780,7 +1778,7 @@ export const CreateUsersSettingsForwardingAddressesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSettingsForwardingAddressesRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSettingsForwardingAddressesRequest>;
 
 export type CreateUsersSettingsForwardingAddressesResponse = ForwardingAddress;
 export const CreateUsersSettingsForwardingAddressesResponse =
@@ -1819,7 +1817,7 @@ export const ListUsersSettingsForwardingAddressesRequest =
       path: "gmail/v1/users/{userId}/settings/forwardingAddresses",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSettingsForwardingAddressesRequest>;
+  ) as unknown as Schema.Codec<ListUsersSettingsForwardingAddressesRequest>;
 
 export type ListUsersSettingsForwardingAddressesResponse =
   ListForwardingAddressesResponse;
@@ -1860,7 +1858,7 @@ export const GetUsersSettingsForwardingAddressesRequest =
       path: "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSettingsForwardingAddressesRequest>;
+  ) as unknown as Schema.Codec<GetUsersSettingsForwardingAddressesRequest>;
 
 export type GetUsersSettingsForwardingAddressesResponse = ForwardingAddress;
 export const GetUsersSettingsForwardingAddressesResponse =
@@ -1900,13 +1898,13 @@ export const DeleteUsersSettingsForwardingAddressesRequest =
       path: "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSettingsForwardingAddressesRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSettingsForwardingAddressesRequest>;
 
 export interface DeleteUsersSettingsForwardingAddressesResponse {}
-export const DeleteUsersSettingsForwardingAddressesResponse: Schema.Schema<DeleteUsersSettingsForwardingAddressesResponse> =
+export const DeleteUsersSettingsForwardingAddressesResponse: Schema.Codec<DeleteUsersSettingsForwardingAddressesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersSettingsForwardingAddressesResponse>;
+  ) as any as Schema.Codec<DeleteUsersSettingsForwardingAddressesResponse>;
 
 export type DeleteUsersSettingsForwardingAddressesError =
   | DefaultErrors
@@ -1944,13 +1942,13 @@ export const DeleteUsersSettingsSendAsRequest =
       path: "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSettingsSendAsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSettingsSendAsRequest>;
 
 export interface DeleteUsersSettingsSendAsResponse {}
-export const DeleteUsersSettingsSendAsResponse: Schema.Schema<DeleteUsersSettingsSendAsResponse> =
+export const DeleteUsersSettingsSendAsResponse: Schema.Codec<DeleteUsersSettingsSendAsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersSettingsSendAsResponse>;
+  ) as any as Schema.Codec<DeleteUsersSettingsSendAsResponse>;
 
 export type DeleteUsersSettingsSendAsError =
   | DefaultErrors
@@ -1982,7 +1980,7 @@ export const ListUsersSettingsSendAsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/settings/sendAs" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSettingsSendAsRequest>;
+  ) as unknown as Schema.Codec<ListUsersSettingsSendAsRequest>;
 
 export type ListUsersSettingsSendAsResponse = ListSendAsResponse;
 export const ListUsersSettingsSendAsResponse =
@@ -2023,7 +2021,7 @@ export const PatchUsersSettingsSendAsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersSettingsSendAsRequest>;
+  ) as unknown as Schema.Codec<PatchUsersSettingsSendAsRequest>;
 
 export type PatchUsersSettingsSendAsResponse = SendAs;
 export const PatchUsersSettingsSendAsResponse =
@@ -2065,7 +2063,7 @@ export const GetUsersSettingsSendAsRequest =
       path: "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSettingsSendAsRequest>;
+  ) as unknown as Schema.Codec<GetUsersSettingsSendAsRequest>;
 
 export type GetUsersSettingsSendAsResponse = SendAs;
 export const GetUsersSettingsSendAsResponse =
@@ -2103,7 +2101,7 @@ export const CreateUsersSettingsSendAsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSettingsSendAsRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSettingsSendAsRequest>;
 
 export type CreateUsersSettingsSendAsResponse = SendAs;
 export const CreateUsersSettingsSendAsResponse =
@@ -2149,7 +2147,7 @@ export const UpdateUsersSettingsSendAsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateUsersSettingsSendAsRequest>;
+  ) as unknown as Schema.Codec<UpdateUsersSettingsSendAsRequest>;
 
 export type UpdateUsersSettingsSendAsResponse = SendAs;
 export const UpdateUsersSettingsSendAsResponse =
@@ -2192,13 +2190,13 @@ export const VerifyUsersSettingsSendAsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<VerifyUsersSettingsSendAsRequest>;
+  ) as unknown as Schema.Codec<VerifyUsersSettingsSendAsRequest>;
 
 export interface VerifyUsersSettingsSendAsResponse {}
-export const VerifyUsersSettingsSendAsResponse: Schema.Schema<VerifyUsersSettingsSendAsResponse> =
+export const VerifyUsersSettingsSendAsResponse: Schema.Codec<VerifyUsersSettingsSendAsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<VerifyUsersSettingsSendAsResponse>;
+  ) as any as Schema.Codec<VerifyUsersSettingsSendAsResponse>;
 
 export type VerifyUsersSettingsSendAsError =
   | DefaultErrors
@@ -2236,7 +2234,7 @@ export const ListUsersSettingsSendAsSmimeInfoRequest =
       path: "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSettingsSendAsSmimeInfoRequest>;
+  ) as unknown as Schema.Codec<ListUsersSettingsSendAsSmimeInfoRequest>;
 
 export type ListUsersSettingsSendAsSmimeInfoResponse = ListSmimeInfoResponse;
 export const ListUsersSettingsSendAsSmimeInfoResponse =
@@ -2279,13 +2277,13 @@ export const DeleteUsersSettingsSendAsSmimeInfoRequest =
       path: "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSettingsSendAsSmimeInfoRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSettingsSendAsSmimeInfoRequest>;
 
 export interface DeleteUsersSettingsSendAsSmimeInfoResponse {}
-export const DeleteUsersSettingsSendAsSmimeInfoResponse: Schema.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse> =
+export const DeleteUsersSettingsSendAsSmimeInfoResponse: Schema.Codec<DeleteUsersSettingsSendAsSmimeInfoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>;
+  ) as any as Schema.Codec<DeleteUsersSettingsSendAsSmimeInfoResponse>;
 
 export type DeleteUsersSettingsSendAsSmimeInfoError =
   | DefaultErrors
@@ -2327,7 +2325,7 @@ export const InsertUsersSettingsSendAsSmimeInfoRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertUsersSettingsSendAsSmimeInfoRequest>;
+  ) as unknown as Schema.Codec<InsertUsersSettingsSendAsSmimeInfoRequest>;
 
 export type InsertUsersSettingsSendAsSmimeInfoResponse = SmimeInfo;
 export const InsertUsersSettingsSendAsSmimeInfoResponse =
@@ -2372,7 +2370,7 @@ export const GetUsersSettingsSendAsSmimeInfoRequest =
       path: "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSettingsSendAsSmimeInfoRequest>;
+  ) as unknown as Schema.Codec<GetUsersSettingsSendAsSmimeInfoRequest>;
 
 export type GetUsersSettingsSendAsSmimeInfoResponse = SmimeInfo;
 export const GetUsersSettingsSendAsSmimeInfoResponse =
@@ -2416,13 +2414,13 @@ export const SetDefaultUsersSettingsSendAsSmimeInfoRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetDefaultUsersSettingsSendAsSmimeInfoRequest>;
+  ) as unknown as Schema.Codec<SetDefaultUsersSettingsSendAsSmimeInfoRequest>;
 
 export interface SetDefaultUsersSettingsSendAsSmimeInfoResponse {}
-export const SetDefaultUsersSettingsSendAsSmimeInfoResponse: Schema.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse> =
+export const SetDefaultUsersSettingsSendAsSmimeInfoResponse: Schema.Codec<SetDefaultUsersSettingsSendAsSmimeInfoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>;
+  ) as any as Schema.Codec<SetDefaultUsersSettingsSendAsSmimeInfoResponse>;
 
 export type SetDefaultUsersSettingsSendAsSmimeInfoError =
   | DefaultErrors
@@ -2463,7 +2461,7 @@ export const ListUsersSettingsCseIdentitiesRequest =
       path: "gmail/v1/users/{userId}/settings/cse/identities",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSettingsCseIdentitiesRequest>;
+  ) as unknown as Schema.Codec<ListUsersSettingsCseIdentitiesRequest>;
 
 export type ListUsersSettingsCseIdentitiesResponse = ListCseIdentitiesResponse;
 export const ListUsersSettingsCseIdentitiesResponse =
@@ -2511,7 +2509,7 @@ export const PatchUsersSettingsCseIdentitiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersSettingsCseIdentitiesRequest>;
+  ) as unknown as Schema.Codec<PatchUsersSettingsCseIdentitiesRequest>;
 
 export type PatchUsersSettingsCseIdentitiesResponse = CseIdentity;
 export const PatchUsersSettingsCseIdentitiesResponse =
@@ -2553,13 +2551,13 @@ export const DeleteUsersSettingsCseIdentitiesRequest =
       path: "gmail/v1/users/{userId}/settings/cse/identities/{cseEmailAddress}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSettingsCseIdentitiesRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSettingsCseIdentitiesRequest>;
 
 export interface DeleteUsersSettingsCseIdentitiesResponse {}
-export const DeleteUsersSettingsCseIdentitiesResponse: Schema.Schema<DeleteUsersSettingsCseIdentitiesResponse> =
+export const DeleteUsersSettingsCseIdentitiesResponse: Schema.Codec<DeleteUsersSettingsCseIdentitiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersSettingsCseIdentitiesResponse>;
+  ) as any as Schema.Codec<DeleteUsersSettingsCseIdentitiesResponse>;
 
 export type DeleteUsersSettingsCseIdentitiesError =
   | DefaultErrors
@@ -2598,7 +2596,7 @@ export const CreateUsersSettingsCseIdentitiesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSettingsCseIdentitiesRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSettingsCseIdentitiesRequest>;
 
 export type CreateUsersSettingsCseIdentitiesResponse = CseIdentity;
 export const CreateUsersSettingsCseIdentitiesResponse =
@@ -2640,7 +2638,7 @@ export const GetUsersSettingsCseIdentitiesRequest =
       path: "gmail/v1/users/{userId}/settings/cse/identities/{cseEmailAddress}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSettingsCseIdentitiesRequest>;
+  ) as unknown as Schema.Codec<GetUsersSettingsCseIdentitiesRequest>;
 
 export type GetUsersSettingsCseIdentitiesResponse = CseIdentity;
 export const GetUsersSettingsCseIdentitiesResponse =
@@ -2684,13 +2682,13 @@ export const ObliterateUsersSettingsCseKeypairsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ObliterateUsersSettingsCseKeypairsRequest>;
+  ) as unknown as Schema.Codec<ObliterateUsersSettingsCseKeypairsRequest>;
 
 export interface ObliterateUsersSettingsCseKeypairsResponse {}
-export const ObliterateUsersSettingsCseKeypairsResponse: Schema.Schema<ObliterateUsersSettingsCseKeypairsResponse> =
+export const ObliterateUsersSettingsCseKeypairsResponse: Schema.Codec<ObliterateUsersSettingsCseKeypairsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<ObliterateUsersSettingsCseKeypairsResponse>;
+  ) as any as Schema.Codec<ObliterateUsersSettingsCseKeypairsResponse>;
 
 export type ObliterateUsersSettingsCseKeypairsError =
   | DefaultErrors
@@ -2731,7 +2729,7 @@ export const ListUsersSettingsCseKeypairsRequest =
       path: "gmail/v1/users/{userId}/settings/cse/keypairs",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSettingsCseKeypairsRequest>;
+  ) as unknown as Schema.Codec<ListUsersSettingsCseKeypairsRequest>;
 
 export type ListUsersSettingsCseKeypairsResponse = ListCseKeyPairsResponse;
 export const ListUsersSettingsCseKeypairsResponse =
@@ -2776,7 +2774,7 @@ export const CreateUsersSettingsCseKeypairsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSettingsCseKeypairsRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSettingsCseKeypairsRequest>;
 
 export type CreateUsersSettingsCseKeypairsResponse = CseKeyPair;
 export const CreateUsersSettingsCseKeypairsResponse =
@@ -2822,7 +2820,7 @@ export const EnableUsersSettingsCseKeypairsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnableUsersSettingsCseKeypairsRequest>;
+  ) as unknown as Schema.Codec<EnableUsersSettingsCseKeypairsRequest>;
 
 export type EnableUsersSettingsCseKeypairsResponse = CseKeyPair;
 export const EnableUsersSettingsCseKeypairsResponse =
@@ -2864,7 +2862,7 @@ export const GetUsersSettingsCseKeypairsRequest =
       path: "gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSettingsCseKeypairsRequest>;
+  ) as unknown as Schema.Codec<GetUsersSettingsCseKeypairsRequest>;
 
 export type GetUsersSettingsCseKeypairsResponse = CseKeyPair;
 export const GetUsersSettingsCseKeypairsResponse =
@@ -2908,7 +2906,7 @@ export const DisableUsersSettingsCseKeypairsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DisableUsersSettingsCseKeypairsRequest>;
+  ) as unknown as Schema.Codec<DisableUsersSettingsCseKeypairsRequest>;
 
 export type DisableUsersSettingsCseKeypairsResponse = CseKeyPair;
 export const DisableUsersSettingsCseKeypairsResponse =
@@ -2947,7 +2945,7 @@ export const ListUsersSettingsDelegatesRequest =
       path: "gmail/v1/users/{userId}/settings/delegates",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSettingsDelegatesRequest>;
+  ) as unknown as Schema.Codec<ListUsersSettingsDelegatesRequest>;
 
 export type ListUsersSettingsDelegatesResponse = ListDelegatesResponse;
 export const ListUsersSettingsDelegatesResponse =
@@ -2988,7 +2986,7 @@ export const CreateUsersSettingsDelegatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersSettingsDelegatesRequest>;
+  ) as unknown as Schema.Codec<CreateUsersSettingsDelegatesRequest>;
 
 export type CreateUsersSettingsDelegatesResponse = Delegate;
 export const CreateUsersSettingsDelegatesResponse =
@@ -3030,13 +3028,13 @@ export const DeleteUsersSettingsDelegatesRequest =
       path: "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSettingsDelegatesRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSettingsDelegatesRequest>;
 
 export interface DeleteUsersSettingsDelegatesResponse {}
-export const DeleteUsersSettingsDelegatesResponse: Schema.Schema<DeleteUsersSettingsDelegatesResponse> =
+export const DeleteUsersSettingsDelegatesResponse: Schema.Codec<DeleteUsersSettingsDelegatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersSettingsDelegatesResponse>;
+  ) as any as Schema.Codec<DeleteUsersSettingsDelegatesResponse>;
 
 export type DeleteUsersSettingsDelegatesError =
   | DefaultErrors
@@ -3074,7 +3072,7 @@ export const GetUsersSettingsDelegatesRequest =
       path: "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersSettingsDelegatesRequest>;
+  ) as unknown as Schema.Codec<GetUsersSettingsDelegatesRequest>;
 
 export type GetUsersSettingsDelegatesResponse = Delegate;
 export const GetUsersSettingsDelegatesResponse =
@@ -3118,7 +3116,7 @@ export const ModifyUsersThreadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyUsersThreadsRequest>;
+  ) as unknown as Schema.Codec<ModifyUsersThreadsRequest>;
 
 export type ModifyUsersThreadsResponse = Thread;
 export const ModifyUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
@@ -3165,7 +3163,7 @@ export const GetUsersThreadsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/threads/{id}" }),
   svc,
-) as unknown as Schema.Schema<GetUsersThreadsRequest>;
+) as unknown as Schema.Codec<GetUsersThreadsRequest>;
 
 export type GetUsersThreadsResponse = Thread;
 export const GetUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
@@ -3202,7 +3200,7 @@ export const TrashUsersThreadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TrashUsersThreadsRequest>;
+  ) as unknown as Schema.Codec<TrashUsersThreadsRequest>;
 
 export type TrashUsersThreadsResponse = Thread;
 export const TrashUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
@@ -3256,7 +3254,7 @@ export const ListUsersThreadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/threads" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersThreadsRequest>;
+  ) as unknown as Schema.Codec<ListUsersThreadsRequest>;
 
 export type ListUsersThreadsResponse = ListThreadsResponse;
 export const ListUsersThreadsResponse =
@@ -3298,7 +3296,7 @@ export const UntrashUsersThreadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UntrashUsersThreadsRequest>;
+  ) as unknown as Schema.Codec<UntrashUsersThreadsRequest>;
 
 export type UntrashUsersThreadsResponse = Thread;
 export const UntrashUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
@@ -3336,13 +3334,13 @@ export const DeleteUsersThreadsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "gmail/v1/users/{userId}/threads/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersThreadsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersThreadsRequest>;
 
 export interface DeleteUsersThreadsResponse {}
-export const DeleteUsersThreadsResponse: Schema.Schema<DeleteUsersThreadsResponse> =
+export const DeleteUsersThreadsResponse: Schema.Codec<DeleteUsersThreadsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersThreadsResponse>;
+  ) as any as Schema.Codec<DeleteUsersThreadsResponse>;
 
 export type DeleteUsersThreadsError =
   | DefaultErrors
@@ -3375,7 +3373,7 @@ export const ListUsersLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/labels" }),
   svc,
-) as unknown as Schema.Schema<ListUsersLabelsRequest>;
+) as unknown as Schema.Codec<ListUsersLabelsRequest>;
 
 export type ListUsersLabelsResponse = ListLabelsResponse;
 export const ListUsersLabelsResponse =
@@ -3416,7 +3414,7 @@ export const PatchUsersLabelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersLabelsRequest>;
+  ) as unknown as Schema.Codec<PatchUsersLabelsRequest>;
 
 export type PatchUsersLabelsResponse = Label;
 export const PatchUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
@@ -3454,13 +3452,13 @@ export const DeleteUsersLabelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "gmail/v1/users/{userId}/labels/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersLabelsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersLabelsRequest>;
 
 export interface DeleteUsersLabelsResponse {}
-export const DeleteUsersLabelsResponse: Schema.Schema<DeleteUsersLabelsResponse> =
+export const DeleteUsersLabelsResponse: Schema.Codec<DeleteUsersLabelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersLabelsResponse>;
+  ) as any as Schema.Codec<DeleteUsersLabelsResponse>;
 
 export type DeleteUsersLabelsError =
   | DefaultErrors
@@ -3499,7 +3497,7 @@ export const CreateUsersLabelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersLabelsRequest>;
+  ) as unknown as Schema.Codec<CreateUsersLabelsRequest>;
 
 export type CreateUsersLabelsResponse = Label;
 export const CreateUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
@@ -3544,7 +3542,7 @@ export const UpdateUsersLabelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateUsersLabelsRequest>;
+  ) as unknown as Schema.Codec<UpdateUsersLabelsRequest>;
 
 export type UpdateUsersLabelsResponse = Label;
 export const UpdateUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
@@ -3581,7 +3579,7 @@ export const GetUsersLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/labels/{id}" }),
   svc,
-) as unknown as Schema.Schema<GetUsersLabelsRequest>;
+) as unknown as Schema.Codec<GetUsersLabelsRequest>;
 
 export type GetUsersLabelsResponse = Label;
 export const GetUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
@@ -3614,13 +3612,13 @@ export const DeleteUsersDraftsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "gmail/v1/users/{userId}/drafts/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersDraftsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersDraftsRequest>;
 
 export interface DeleteUsersDraftsResponse {}
-export const DeleteUsersDraftsResponse: Schema.Schema<DeleteUsersDraftsResponse> =
+export const DeleteUsersDraftsResponse: Schema.Codec<DeleteUsersDraftsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersDraftsResponse>;
+  ) as any as Schema.Codec<DeleteUsersDraftsResponse>;
 
 export type DeleteUsersDraftsError =
   | DefaultErrors
@@ -3667,7 +3665,7 @@ export const ListUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/drafts" }),
   svc,
-) as unknown as Schema.Schema<ListUsersDraftsRequest>;
+) as unknown as Schema.Codec<ListUsersDraftsRequest>;
 
 export type ListUsersDraftsResponse = ListDraftsResponse;
 export const ListUsersDraftsResponse =
@@ -3707,7 +3705,7 @@ export const GetUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "gmail/v1/users/{userId}/drafts/{id}" }),
   svc,
-) as unknown as Schema.Schema<GetUsersDraftsRequest>;
+) as unknown as Schema.Codec<GetUsersDraftsRequest>;
 
 export type GetUsersDraftsResponse = Draft;
 export const GetUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
@@ -3745,7 +3743,7 @@ export const SendUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<SendUsersDraftsRequest>;
+) as unknown as Schema.Codec<SendUsersDraftsRequest>;
 
 export type SendUsersDraftsResponse = Message;
 export const SendUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -3787,7 +3785,7 @@ export const CreateUsersDraftsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersDraftsRequest>;
+  ) as unknown as Schema.Codec<CreateUsersDraftsRequest>;
 
 export type CreateUsersDraftsResponse = Draft;
 export const CreateUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
@@ -3832,7 +3830,7 @@ export const UpdateUsersDraftsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateUsersDraftsRequest>;
+  ) as unknown as Schema.Codec<UpdateUsersDraftsRequest>;
 
 export type UpdateUsersDraftsResponse = Draft;
 export const UpdateUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
@@ -3882,7 +3880,7 @@ export const InsertUsersMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<InsertUsersMessagesRequest>;
 
 export type InsertUsersMessagesResponse = Message;
 export const InsertUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -3928,7 +3926,7 @@ export const GetUsersMessagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/messages/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<GetUsersMessagesRequest>;
 
 export type GetUsersMessagesResponse = Message;
 export const GetUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -3965,7 +3963,7 @@ export const SendUsersMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SendUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<SendUsersMessagesRequest>;
 
 export type SendUsersMessagesResponse = Message;
 export const SendUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4010,7 +4008,7 @@ export const ModifyUsersMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ModifyUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<ModifyUsersMessagesRequest>;
 
 export type ModifyUsersMessagesResponse = Message;
 export const ModifyUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4052,13 +4050,13 @@ export const BatchModifyUsersMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchModifyUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<BatchModifyUsersMessagesRequest>;
 
 export interface BatchModifyUsersMessagesResponse {}
-export const BatchModifyUsersMessagesResponse: Schema.Schema<BatchModifyUsersMessagesResponse> =
+export const BatchModifyUsersMessagesResponse: Schema.Codec<BatchModifyUsersMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<BatchModifyUsersMessagesResponse>;
+  ) as any as Schema.Codec<BatchModifyUsersMessagesResponse>;
 
 export type BatchModifyUsersMessagesError =
   | DefaultErrors
@@ -4097,7 +4095,7 @@ export const TrashUsersMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TrashUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<TrashUsersMessagesRequest>;
 
 export type TrashUsersMessagesResponse = Message;
 export const TrashUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4139,13 +4137,13 @@ export const BatchDeleteUsersMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteUsersMessagesRequest>;
 
 export interface BatchDeleteUsersMessagesResponse {}
-export const BatchDeleteUsersMessagesResponse: Schema.Schema<BatchDeleteUsersMessagesResponse> =
+export const BatchDeleteUsersMessagesResponse: Schema.Codec<BatchDeleteUsersMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<BatchDeleteUsersMessagesResponse>;
+  ) as any as Schema.Codec<BatchDeleteUsersMessagesResponse>;
 
 export type BatchDeleteUsersMessagesError =
   | DefaultErrors
@@ -4196,7 +4194,7 @@ export const ListUsersMessagesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "gmail/v1/users/{userId}/messages" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<ListUsersMessagesRequest>;
 
 export type ListUsersMessagesResponse = ListMessagesResponse;
 export const ListUsersMessagesResponse =
@@ -4256,7 +4254,7 @@ export const ImportUsersMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<ImportUsersMessagesRequest>;
 
 export type ImportUsersMessagesResponse = Message;
 export const ImportUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4298,7 +4296,7 @@ export const UntrashUsersMessagesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UntrashUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<UntrashUsersMessagesRequest>;
 
 export type UntrashUsersMessagesResponse = Message;
 export const UntrashUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
@@ -4336,13 +4334,13 @@ export const DeleteUsersMessagesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "gmail/v1/users/{userId}/messages/{id}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersMessagesRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersMessagesRequest>;
 
 export interface DeleteUsersMessagesResponse {}
-export const DeleteUsersMessagesResponse: Schema.Schema<DeleteUsersMessagesResponse> =
+export const DeleteUsersMessagesResponse: Schema.Codec<DeleteUsersMessagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersMessagesResponse>;
+  ) as any as Schema.Codec<DeleteUsersMessagesResponse>;
 
 export type DeleteUsersMessagesError =
   | DefaultErrors
@@ -4383,7 +4381,7 @@ export const GetUsersMessagesAttachmentsRequest =
       path: "gmail/v1/users/{userId}/messages/{messageId}/attachments/{id}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersMessagesAttachmentsRequest>;
+  ) as unknown as Schema.Codec<GetUsersMessagesAttachmentsRequest>;
 
 export type GetUsersMessagesAttachmentsResponse = MessagePartBody;
 export const GetUsersMessagesAttachmentsResponse =

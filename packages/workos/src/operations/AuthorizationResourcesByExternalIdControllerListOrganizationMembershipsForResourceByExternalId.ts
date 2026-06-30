@@ -9,6 +9,17 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdInput {
+  organization_id: string;
+  resource_type_slug: string;
+  external_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  permission_slug: string;
+  assignment?: "direct" | "indirect";
+}
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -25,11 +36,41 @@ export const AuthorizationResourcesByExternalIdControllerListOrganizationMembers
       method: "GET",
       path: "/authorization/organizations/{organization_id}/resources/{resource_type_slug}/{external_id}/organization_memberships",
     }),
-  );
-export type AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdInput =
-  typeof AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdInput>;
 
 // Output Schema
+export interface AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    user_id: string;
+    organization_id: string;
+    status: "active" | "inactive" | "pending";
+    directory_managed: boolean;
+    organization_name?: string;
+    custom_attributes?: Record<string, unknown>;
+    created_at: string;
+    updated_at: string;
+    user: {
+      object?: string;
+      id?: string;
+      first_name?: string | null;
+      last_name?: string | null;
+      name?: string | null;
+      profile_picture_url?: string | null;
+      email?: string;
+      email_verified?: boolean;
+      external_id?: string | null;
+      metadata?: Record<string, string>;
+      last_sign_in_at?: string | null;
+      locale?: string | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -71,9 +112,7 @@ export const AuthorizationResourcesByExternalIdControllerListOrganizationMembers
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdOutput =
-  typeof AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdOutput>;
 
 // The operation
 /**

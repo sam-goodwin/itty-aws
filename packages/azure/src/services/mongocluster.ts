@@ -4,12 +4,30 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface FirewallRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  firewallRuleName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "InProgress"
+      | "Updating"
+      | "Dropping";
+    startIpAddress: string;
+    endIpAddress: string;
+  };
+}
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -38,11 +56,22 @@ export const FirewallRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FirewallRulesCreateOrUpdateInput =
-  typeof FirewallRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface FirewallRulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -62,9 +91,7 @@ export const FirewallRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FirewallRulesCreateOrUpdateOutput =
-  typeof FirewallRulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FirewallRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -83,6 +110,12 @@ export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FirewallRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  firewallRuleName: string;
+}
 export const FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -95,13 +128,12 @@ export const FirewallRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesDeleteInput>;
 
 // Output Schema
+export type FirewallRulesDeleteOutput = void;
 export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
 
 // The operation
 /**
@@ -118,6 +150,12 @@ export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirewallRulesDeleteOutput,
 }));
 // Input Schema
+export interface FirewallRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  firewallRuleName: string;
+}
 export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -129,10 +167,22 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
     apiVersion: "2026-06-01",
   }),
-);
-export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
+) as unknown as Schema.Codec<FirewallRulesGetInput>;
 
 // Output Schema
+export interface FirewallRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -153,8 +203,7 @@ export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
+) as unknown as Schema.Codec<FirewallRulesGetOutput>;
 
 // The operation
 /**
@@ -171,6 +220,11 @@ export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirewallRulesGetOutput,
 }));
 // Input Schema
+export interface FirewallRulesListByMongoClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+}
 export const FirewallRulesListByMongoClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -182,11 +236,25 @@ export const FirewallRulesListByMongoClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules",
       apiVersion: "2026-06-01",
     }),
-  );
-export type FirewallRulesListByMongoClusterInput =
-  typeof FirewallRulesListByMongoClusterInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesListByMongoClusterInput>;
 
 // Output Schema
+export interface FirewallRulesListByMongoClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FirewallRulesListByMongoClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -221,9 +289,7 @@ export const FirewallRulesListByMongoClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FirewallRulesListByMongoClusterOutput =
-  typeof FirewallRulesListByMongoClusterOutput.Type;
+  }) as unknown as Schema.Codec<FirewallRulesListByMongoClusterOutput>;
 
 // The operation
 /**
@@ -240,6 +306,12 @@ export const FirewallRulesListByMongoCluster =
     outputSchema: FirewallRulesListByMongoClusterOutput,
   }));
 // Input Schema
+export interface MongoClustersCheckNameAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  name?: string;
+  type?: string;
+}
 export const MongoClustersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -252,19 +324,20 @@ export const MongoClustersCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/checkMongoClusterNameAvailability",
       apiVersion: "2026-06-01",
     }),
-  );
-export type MongoClustersCheckNameAvailabilityInput =
-  typeof MongoClustersCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<MongoClustersCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface MongoClustersCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const MongoClustersCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type MongoClustersCheckNameAvailabilityOutput =
-  typeof MongoClustersCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<MongoClustersCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -282,6 +355,98 @@ export const MongoClustersCheckNameAvailability =
     outputSchema: MongoClustersCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface MongoClustersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  properties?: {
+    createMode?: "Default" | "PointInTimeRestore" | "GeoReplica" | "Replica";
+    restoreParameters?: { pointInTimeUTC?: string; sourceResourceId?: string };
+    replicaParameters?: { sourceResourceId: string; sourceLocation: string };
+    administrator?: {
+      userName?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    serverVersion?: string;
+    connectionString?: string | Redacted.Redacted<string>;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "InProgress"
+      | "Updating"
+      | "Dropping";
+    clusterStatus?:
+      | "Ready"
+      | "Provisioning"
+      | "Updating"
+      | "Starting"
+      | "Stopping"
+      | "Stopped"
+      | "Dropping";
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    highAvailability?: {
+      targetMode?: "Disabled" | "SameZone" | "ZoneRedundantPreferred";
+    };
+    storage?: { sizeGb?: number; type?: "PremiumSSD" | "PremiumSSDv2" };
+    sharding?: { shardCount?: number };
+    compute?: { tier?: string };
+    backup?: { earliestRestoreTime?: string };
+    dataApi?: { mode?: "Enabled" | "Disabled" };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    previewFeatures?: "GeoReplicas"[];
+    replica?: {
+      sourceResourceId?: string;
+      role?: "Primary" | "AsyncReplica" | "GeoAsyncReplica";
+      replicationState?:
+        | "Active"
+        | "Catchup"
+        | "Provisioning"
+        | "Updating"
+        | "Broken"
+        | "Reconfiguring";
+    };
+    infrastructureVersion?: string;
+    authConfig?: { allowedModes?: ("NativeAuth" | "MicrosoftEntraID")[] };
+    encryption?: {
+      customerManagedKeyEncryption?: {
+        keyEncryptionKeyIdentity?: {
+          identityType?: "UserAssignedIdentity";
+          userAssignedIdentityResourceId?: string;
+        };
+        keyEncryptionKeyUrl?: string;
+      };
+    };
+    networkBypassMode?: "None" | "AzureCosmosDB";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MongoClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -495,11 +660,22 @@ export const MongoClustersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type MongoClustersCreateOrUpdateInput =
-  typeof MongoClustersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MongoClustersCreateOrUpdateInput>;
 
 // Output Schema
+export interface MongoClustersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -519,9 +695,7 @@ export const MongoClustersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoClustersCreateOrUpdateOutput =
-  typeof MongoClustersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MongoClustersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -539,6 +713,11 @@ export const MongoClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MongoClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+}
 export const MongoClustersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -550,13 +729,12 @@ export const MongoClustersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type MongoClustersDeleteInput = typeof MongoClustersDeleteInput.Type;
+  ) as unknown as Schema.Codec<MongoClustersDeleteInput>;
 
 // Output Schema
+export type MongoClustersDeleteOutput = void;
 export const MongoClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MongoClustersDeleteOutput = typeof MongoClustersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoClustersDeleteOutput>;
 
 // The operation
 /**
@@ -572,6 +750,11 @@ export const MongoClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MongoClustersDeleteOutput,
 }));
 // Input Schema
+export interface MongoClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+}
 export const MongoClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -582,10 +765,22 @@ export const MongoClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
     apiVersion: "2026-06-01",
   }),
-);
-export type MongoClustersGetInput = typeof MongoClustersGetInput.Type;
+) as unknown as Schema.Codec<MongoClustersGetInput>;
 
 // Output Schema
+export interface MongoClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -606,8 +801,7 @@ export const MongoClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type MongoClustersGetOutput = typeof MongoClustersGetOutput.Type;
+) as unknown as Schema.Codec<MongoClustersGetOutput>;
 
 // The operation
 /**
@@ -623,6 +817,9 @@ export const MongoClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MongoClustersGetOutput,
 }));
 // Input Schema
+export interface MongoClustersListInput {
+  subscriptionId: string;
+}
 export const MongoClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -633,10 +830,25 @@ export const MongoClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/mongoClusters",
     apiVersion: "2026-06-01",
   }),
-);
-export type MongoClustersListInput = typeof MongoClustersListInput.Type;
+) as unknown as Schema.Codec<MongoClustersListInput>;
 
 // Output Schema
+export interface MongoClustersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MongoClustersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -671,8 +883,7 @@ export const MongoClustersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MongoClustersListOutput = typeof MongoClustersListOutput.Type;
+  }) as unknown as Schema.Codec<MongoClustersListOutput>;
 
 // The operation
 /**
@@ -686,6 +897,10 @@ export const MongoClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MongoClustersListOutput,
 }));
 // Input Schema
+export interface MongoClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const MongoClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -696,11 +911,25 @@ export const MongoClustersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters",
       apiVersion: "2026-06-01",
     }),
-  );
-export type MongoClustersListByResourceGroupInput =
-  typeof MongoClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<MongoClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface MongoClustersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MongoClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -735,9 +964,7 @@ export const MongoClustersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MongoClustersListByResourceGroupOutput =
-  typeof MongoClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<MongoClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -753,6 +980,11 @@ export const MongoClustersListByResourceGroup =
     outputSchema: MongoClustersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface MongoClustersListConnectionStringsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+}
 export const MongoClustersListConnectionStringsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -764,11 +996,16 @@ export const MongoClustersListConnectionStringsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/listConnectionStrings",
       apiVersion: "2026-06-01",
     }),
-  );
-export type MongoClustersListConnectionStringsInput =
-  typeof MongoClustersListConnectionStringsInput.Type;
+  ) as unknown as Schema.Codec<MongoClustersListConnectionStringsInput>;
 
 // Output Schema
+export interface MongoClustersListConnectionStringsOutput {
+  connectionStrings?: {
+    connectionString?: Redacted.Redacted<string>;
+    description?: string;
+    name?: string;
+  }[];
+}
 export const MongoClustersListConnectionStringsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionStrings: Schema.optional(
@@ -780,9 +1017,7 @@ export const MongoClustersListConnectionStringsOutput =
         }),
       ),
     ),
-  });
-export type MongoClustersListConnectionStringsOutput =
-  typeof MongoClustersListConnectionStringsOutput.Type;
+  }) as unknown as Schema.Codec<MongoClustersListConnectionStringsOutput>;
 
 // The operation
 /**
@@ -799,6 +1034,13 @@ export const MongoClustersListConnectionStrings =
     outputSchema: MongoClustersListConnectionStringsOutput,
   }));
 // Input Schema
+export interface MongoClustersPromoteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  promoteOption: "Forced";
+  mode?: "Switchover";
+}
 export const MongoClustersPromoteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -812,13 +1054,12 @@ export const MongoClustersPromoteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/promote",
       apiVersion: "2026-06-01",
     }),
-  );
-export type MongoClustersPromoteInput = typeof MongoClustersPromoteInput.Type;
+  ) as unknown as Schema.Codec<MongoClustersPromoteInput>;
 
 // Output Schema
+export type MongoClustersPromoteOutput = void;
 export const MongoClustersPromoteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MongoClustersPromoteOutput = typeof MongoClustersPromoteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoClustersPromoteOutput>;
 
 // The operation
 /**
@@ -836,6 +1077,53 @@ export const MongoClustersPromote = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MongoClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    administrator?: {
+      userName?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    serverVersion?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    highAvailability?: {
+      targetMode?: "Disabled" | "SameZone" | "ZoneRedundantPreferred";
+    };
+    storage?: { sizeGb?: number; type?: "PremiumSSD" | "PremiumSSDv2" };
+    sharding?: { shardCount?: number };
+    compute?: { tier?: string };
+    backup?: { earliestRestoreTime?: string };
+    dataApi?: { mode?: "Enabled" | "Disabled" };
+    previewFeatures?: "GeoReplicas"[];
+    authConfig?: { allowedModes?: ("NativeAuth" | "MicrosoftEntraID")[] };
+    encryption?: {
+      customerManagedKeyEncryption?: {
+        keyEncryptionKeyIdentity?: {
+          identityType?: "UserAssignedIdentity";
+          userAssignedIdentityResourceId?: string;
+        };
+        keyEncryptionKeyUrl?: string;
+      };
+    };
+    networkBypassMode?: "None" | "AzureCosmosDB";
+  };
+}
 export const MongoClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -954,10 +1242,22 @@ export const MongoClustersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type MongoClustersUpdateInput = typeof MongoClustersUpdateInput.Type;
+  ) as unknown as Schema.Codec<MongoClustersUpdateInput>;
 
 // Output Schema
+export interface MongoClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MongoClustersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -977,8 +1277,7 @@ export const MongoClustersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MongoClustersUpdateOutput = typeof MongoClustersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MongoClustersUpdateOutput>;
 
 // The operation
 /**
@@ -994,6 +1293,7 @@ export const MongoClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MongoClustersUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1002,10 +1302,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DocumentDB/operations",
     apiVersion: "2026-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1028,8 +1342,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1042,6 +1355,22 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1074,11 +1403,22 @@ export const PrivateEndpointConnectionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateInput =
-  typeof PrivateEndpointConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1098,9 +1438,7 @@ export const PrivateEndpointConnectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOutput =
-  typeof PrivateEndpointConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -1118,6 +1456,12 @@ export const PrivateEndpointConnectionsCreate =
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1130,15 +1474,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1156,6 +1497,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1168,11 +1515,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1192,9 +1550,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1212,6 +1568,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByMongoClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+}
 export const PrivateEndpointConnectionsListByMongoClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1223,11 +1584,25 @@ export const PrivateEndpointConnectionsListByMongoClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsListByMongoClusterInput =
-  typeof PrivateEndpointConnectionsListByMongoClusterInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByMongoClusterInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByMongoClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByMongoClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1262,9 +1637,7 @@ export const PrivateEndpointConnectionsListByMongoClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByMongoClusterOutput =
-  typeof PrivateEndpointConnectionsListByMongoClusterOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByMongoClusterOutput>;
 
 // The operation
 /**
@@ -1281,6 +1654,11 @@ export const PrivateEndpointConnectionsListByMongoCluster =
     outputSchema: PrivateEndpointConnectionsListByMongoClusterOutput,
   }));
 // Input Schema
+export interface PrivateLinksListByMongoClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+}
 export const PrivateLinksListByMongoClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1292,11 +1670,25 @@ export const PrivateLinksListByMongoClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateLinkResources",
       apiVersion: "2026-06-01",
     }),
-  );
-export type PrivateLinksListByMongoClusterInput =
-  typeof PrivateLinksListByMongoClusterInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinksListByMongoClusterInput>;
 
 // Output Schema
+export interface PrivateLinksListByMongoClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinksListByMongoClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1331,9 +1723,7 @@ export const PrivateLinksListByMongoClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinksListByMongoClusterOutput =
-  typeof PrivateLinksListByMongoClusterOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinksListByMongoClusterOutput>;
 
 // The operation
 /**
@@ -1350,6 +1740,11 @@ export const PrivateLinksListByMongoCluster =
     outputSchema: PrivateLinksListByMongoClusterOutput,
   }));
 // Input Schema
+export interface ReplicasListByParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+}
 export const ReplicasListByParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1361,10 +1756,25 @@ export const ReplicasListByParentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/replicas",
       apiVersion: "2026-06-01",
     }),
-  );
-export type ReplicasListByParentInput = typeof ReplicasListByParentInput.Type;
+  ) as unknown as Schema.Codec<ReplicasListByParentInput>;
 
 // Output Schema
+export interface ReplicasListByParentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReplicasListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1399,8 +1809,7 @@ export const ReplicasListByParentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReplicasListByParentOutput = typeof ReplicasListByParentOutput.Type;
+  }) as unknown as Schema.Codec<ReplicasListByParentOutput>;
 
 // The operation
 /**
@@ -1418,6 +1827,23 @@ export const ReplicasListByParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UsersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  userName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "InProgress"
+      | "Updating"
+      | "Dropping";
+    identityProvider?: { type: "MicrosoftEntraID" };
+    roles?: { db: string; role: "root" }[];
+  };
+}
 export const UsersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1457,10 +1883,22 @@ export const UsersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
       apiVersion: "2026-06-01",
     }),
-  );
-export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<UsersCreateOrUpdateInput>;
 
 // Output Schema
+export interface UsersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1480,8 +1918,7 @@ export const UsersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UsersCreateOrUpdateOutput = typeof UsersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<UsersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1498,6 +1935,12 @@ export const UsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface UsersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  userName: string;
+}
 export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1509,12 +1952,12 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
     apiVersion: "2026-06-01",
   }),
-);
-export type UsersDeleteInput = typeof UsersDeleteInput.Type;
+) as unknown as Schema.Codec<UsersDeleteInput>;
 
 // Output Schema
-export const UsersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
+export type UsersDeleteOutput = void;
+export const UsersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
 
 // The operation
 /**
@@ -1531,6 +1974,12 @@ export const UsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersDeleteOutput,
 }));
 // Input Schema
+export interface UsersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+  userName: string;
+}
 export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1542,10 +1991,22 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
     apiVersion: "2026-06-01",
   }),
-);
-export type UsersGetInput = typeof UsersGetInput.Type;
+) as unknown as Schema.Codec<UsersGetInput>;
 
 // Output Schema
+export interface UsersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1564,8 +2025,7 @@ export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UsersGetOutput = typeof UsersGetOutput.Type;
+}) as unknown as Schema.Codec<UsersGetOutput>;
 
 // The operation
 /**
@@ -1582,6 +2042,11 @@ export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersGetOutput,
 }));
 // Input Schema
+export interface UsersListByMongoClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  mongoClusterName: string;
+}
 export const UsersListByMongoClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1593,11 +2058,25 @@ export const UsersListByMongoClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users",
       apiVersion: "2026-06-01",
     }),
-  );
-export type UsersListByMongoClusterInput =
-  typeof UsersListByMongoClusterInput.Type;
+  ) as unknown as Schema.Codec<UsersListByMongoClusterInput>;
 
 // Output Schema
+export interface UsersListByMongoClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UsersListByMongoClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1632,9 +2111,7 @@ export const UsersListByMongoClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UsersListByMongoClusterOutput =
-  typeof UsersListByMongoClusterOutput.Type;
+  }) as unknown as Schema.Codec<UsersListByMongoClusterOutput>;
 
 // The operation
 /**

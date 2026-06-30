@@ -3,16 +3,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface VoteInput {}
 export const VoteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/operations/vote" }),
-);
-export type VoteInput = typeof VoteInput.Type;
+) as unknown as Schema.Codec<VoteInput>;
 
 // Output Schema
+export interface VoteOutput {
+  success: boolean;
+}
 export const VoteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.Boolean,
-});
-export type VoteOutput = typeof VoteOutput.Type;
+}) as unknown as Schema.Codec<VoteOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export const Status: Schema.Schema<Status> =
 
 export interface V2UndeleteKeyRequest {}
 
-export const V2UndeleteKeyRequest: Schema.Schema<V2UndeleteKeyRequest> =
+export const V2UndeleteKeyRequest: Schema.Codec<V2UndeleteKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V2UndeleteKeyRequest",
   });
@@ -54,7 +54,7 @@ export interface V2ApiTarget {
   service?: string;
 }
 
-export const V2ApiTarget: Schema.Schema<V2ApiTarget> =
+export const V2ApiTarget: Schema.Codec<V2ApiTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     service: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export interface V2BrowserKeyRestrictions {
   allowedReferrers?: ReadonlyArray<string>;
 }
 
-export const V2BrowserKeyRestrictions: Schema.Schema<V2BrowserKeyRestrictions> =
+export const V2BrowserKeyRestrictions: Schema.Codec<V2BrowserKeyRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedReferrers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V2BrowserKeyRestrictions" });
@@ -77,7 +77,7 @@ export interface V2AndroidApplication {
   packageName?: string;
 }
 
-export const V2AndroidApplication: Schema.Schema<V2AndroidApplication> =
+export const V2AndroidApplication: Schema.Codec<V2AndroidApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha1Fingerprint: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -88,7 +88,7 @@ export interface V2AndroidKeyRestrictions {
   allowedApplications?: ReadonlyArray<V2AndroidApplication>;
 }
 
-export const V2AndroidKeyRestrictions: Schema.Schema<V2AndroidKeyRestrictions> =
+export const V2AndroidKeyRestrictions: Schema.Codec<V2AndroidKeyRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedApplications: Schema.optional(Schema.Array(V2AndroidApplication)),
   }).annotate({ identifier: "V2AndroidKeyRestrictions" });
@@ -98,7 +98,7 @@ export interface V2ServerKeyRestrictions {
   allowedIps?: ReadonlyArray<string>;
 }
 
-export const V2ServerKeyRestrictions: Schema.Schema<V2ServerKeyRestrictions> =
+export const V2ServerKeyRestrictions: Schema.Codec<V2ServerKeyRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedIps: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V2ServerKeyRestrictions" });
@@ -108,7 +108,7 @@ export interface V2IosKeyRestrictions {
   allowedBundleIds?: ReadonlyArray<string>;
 }
 
-export const V2IosKeyRestrictions: Schema.Schema<V2IosKeyRestrictions> =
+export const V2IosKeyRestrictions: Schema.Codec<V2IosKeyRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedBundleIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V2IosKeyRestrictions" });
@@ -126,7 +126,7 @@ export interface V2Restrictions {
   iosKeyRestrictions?: V2IosKeyRestrictions;
 }
 
-export const V2Restrictions: Schema.Schema<V2Restrictions> =
+export const V2Restrictions: Schema.Codec<V2Restrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiTargets: Schema.optional(Schema.Array(V2ApiTarget)),
     browserKeyRestrictions: Schema.optional(V2BrowserKeyRestrictions),
@@ -160,7 +160,7 @@ export interface V2Key {
   updateTime?: string;
 }
 
-export const V2Key: Schema.Schema<V2Key> =
+export const V2Key: Schema.Codec<V2Key> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uid: Schema.optional(Schema.String),
     deleteTime: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export interface V2LookupKeyResponse {
   parent?: string;
 }
 
-export const V2LookupKeyResponse: Schema.Schema<V2LookupKeyResponse> =
+export const V2LookupKeyResponse: Schema.Codec<V2LookupKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -193,7 +193,7 @@ export interface V2GetKeyStringResponse {
   keyString?: string;
 }
 
-export const V2GetKeyStringResponse: Schema.Schema<V2GetKeyStringResponse> =
+export const V2GetKeyStringResponse: Schema.Codec<V2GetKeyStringResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyString: Schema.optional(Schema.String),
   }).annotate({ identifier: "V2GetKeyStringResponse" });
@@ -205,7 +205,7 @@ export interface V2ListKeysResponse {
   nextPageToken?: string;
 }
 
-export const V2ListKeysResponse: Schema.Schema<V2ListKeysResponse> =
+export const V2ListKeysResponse: Schema.Codec<V2ListKeysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.optional(Schema.Array(V2Key)),
     nextPageToken: Schema.optional(Schema.String),
@@ -224,7 +224,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -297,7 +297,7 @@ export const LookupKeyKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/keys:lookupKey" }),
   svc,
-) as unknown as Schema.Schema<LookupKeyKeysRequest>;
+) as unknown as Schema.Codec<LookupKeyKeysRequest>;
 
 export type LookupKeyKeysResponse = V2LookupKeyResponse;
 export const LookupKeyKeysResponse =
@@ -327,7 +327,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -363,7 +363,7 @@ export const CreateProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/keys", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsKeysRequest>;
 
 export type CreateProjectsLocationsKeysResponse = Operation;
 export const CreateProjectsLocationsKeysResponse =
@@ -402,7 +402,7 @@ export const DeleteProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsKeysRequest>;
 
 export type DeleteProjectsLocationsKeysResponse = Operation;
 export const DeleteProjectsLocationsKeysResponse =
@@ -444,7 +444,7 @@ export const PatchProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsKeysRequest>;
 
 export type PatchProjectsLocationsKeysResponse = Operation;
 export const PatchProjectsLocationsKeysResponse =
@@ -483,7 +483,7 @@ export const UndeleteProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsLocationsKeysRequest>;
 
 export type UndeleteProjectsLocationsKeysResponse = Operation;
 export const UndeleteProjectsLocationsKeysResponse =
@@ -519,7 +519,7 @@ export const GetProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsKeysRequest>;
 
 export type GetProjectsLocationsKeysResponse = V2Key;
 export const GetProjectsLocationsKeysResponse =
@@ -564,7 +564,7 @@ export const ListProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/keys" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsKeysRequest>;
 
 export type ListProjectsLocationsKeysResponse = V2ListKeysResponse;
 export const ListProjectsLocationsKeysResponse =
@@ -602,7 +602,7 @@ export const GetKeyStringProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/keyString" }),
     svc,
-  ) as unknown as Schema.Schema<GetKeyStringProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<GetKeyStringProjectsLocationsKeysRequest>;
 
 export type GetKeyStringProjectsLocationsKeysResponse = V2GetKeyStringResponse;
 export const GetKeyStringProjectsLocationsKeysResponse =

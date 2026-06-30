@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface McpServerInstallationsAuthorizeRetrieveInput {
+  project_id: string;
+  install_source?: "posthog" | "posthog-code";
+  installation_id?: string;
+  posthog_code_callback_url?: string;
+  template_id?: string;
+}
 export const McpServerInstallationsAuthorizeRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,15 +24,12 @@ export const McpServerInstallationsAuthorizeRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/mcp_server_installations/authorize/",
     }),
-  );
-export type McpServerInstallationsAuthorizeRetrieveInput =
-  typeof McpServerInstallationsAuthorizeRetrieveInput.Type;
+  ) as unknown as Schema.Codec<McpServerInstallationsAuthorizeRetrieveInput>;
 
 // Output Schema
+export type McpServerInstallationsAuthorizeRetrieveOutput = void;
 export const McpServerInstallationsAuthorizeRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type McpServerInstallationsAuthorizeRetrieveOutput =
-  typeof McpServerInstallationsAuthorizeRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<McpServerInstallationsAuthorizeRetrieveOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ConversationsTicketsBulkUpdateStatusCreateInput {
+  project_id: string;
+  ids: string[];
+  status: "new" | "open" | "pending" | "on_hold" | "resolved";
+}
 export const ConversationsTicketsBulkUpdateStatusCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +18,18 @@ export const ConversationsTicketsBulkUpdateStatusCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/conversations/tickets/bulk_update_status/",
     }),
-  );
-export type ConversationsTicketsBulkUpdateStatusCreateInput =
-  typeof ConversationsTicketsBulkUpdateStatusCreateInput.Type;
+  ) as unknown as Schema.Codec<ConversationsTicketsBulkUpdateStatusCreateInput>;
 
 // Output Schema
+export interface ConversationsTicketsBulkUpdateStatusCreateOutput {
+  updated: number;
+  ids: string[];
+}
 export const ConversationsTicketsBulkUpdateStatusCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updated: Schema.Number,
     ids: Schema.Array(Schema.String),
-  });
-export type ConversationsTicketsBulkUpdateStatusCreateOutput =
-  typeof ConversationsTicketsBulkUpdateStatusCreateOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsTicketsBulkUpdateStatusCreateOutput>;
 
 // The operation
 /**

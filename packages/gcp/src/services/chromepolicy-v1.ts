@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleChromePolicyVersionsV1NumericRangeConstraint {
   maximum?: string;
 }
 
-export const GoogleChromePolicyVersionsV1NumericRangeConstraint: Schema.Schema<GoogleChromePolicyVersionsV1NumericRangeConstraint> =
+export const GoogleChromePolicyVersionsV1NumericRangeConstraint: Schema.Codec<GoogleChromePolicyVersionsV1NumericRangeConstraint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minimum: Schema.optional(Schema.String),
     maximum: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export interface GoogleChromePolicyVersionsV1UploadedFileConstraints {
   >;
 }
 
-export const GoogleChromePolicyVersionsV1UploadedFileConstraints: Schema.Schema<GoogleChromePolicyVersionsV1UploadedFileConstraints> =
+export const GoogleChromePolicyVersionsV1UploadedFileConstraints: Schema.Codec<GoogleChromePolicyVersionsV1UploadedFileConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sizeLimitBytes: Schema.optional(Schema.String),
     supportedContentTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -73,7 +73,7 @@ export interface GoogleChromePolicyVersionsV1FieldConstraints {
   uploadedFileConstraints?: GoogleChromePolicyVersionsV1UploadedFileConstraints;
 }
 
-export const GoogleChromePolicyVersionsV1FieldConstraints: Schema.Schema<GoogleChromePolicyVersionsV1FieldConstraints> =
+export const GoogleChromePolicyVersionsV1FieldConstraints: Schema.Codec<GoogleChromePolicyVersionsV1FieldConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numericRangeConstraint: Schema.optional(
       GoogleChromePolicyVersionsV1NumericRangeConstraint,
@@ -90,7 +90,7 @@ export interface GoogleChromePolicyVersionsV1NetworkSetting {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1NetworkSetting: Schema.Schema<GoogleChromePolicyVersionsV1NetworkSetting> =
+export const GoogleChromePolicyVersionsV1NetworkSetting: Schema.Codec<GoogleChromePolicyVersionsV1NetworkSetting> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     policySchema: Schema.optional(Schema.String),
@@ -107,7 +107,7 @@ export interface GoogleChromePolicyVersionsV1DefineCertificateRequest {
   settings?: ReadonlyArray<GoogleChromePolicyVersionsV1NetworkSetting>;
 }
 
-export const GoogleChromePolicyVersionsV1DefineCertificateRequest: Schema.Schema<GoogleChromePolicyVersionsV1DefineCertificateRequest> =
+export const GoogleChromePolicyVersionsV1DefineCertificateRequest: Schema.Codec<GoogleChromePolicyVersionsV1DefineCertificateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     ceritificateName: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaRequiredItems {
   requiredFields?: ReadonlyArray<string>;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaRequiredItems: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems> =
+export const GoogleChromePolicyVersionsV1PolicySchemaRequiredItems: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldConditions: Schema.optional(Schema.Array(Schema.String)),
     requiredFields: Schema.optional(Schema.Array(Schema.String)),
@@ -141,7 +141,7 @@ export interface GoogleChromePolicyVersionsV1PolicyTargetKey {
   additionalTargetKeys?: Record<string, string>;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyTargetKey: Schema.Schema<GoogleChromePolicyVersionsV1PolicyTargetKey> =
+export const GoogleChromePolicyVersionsV1PolicyTargetKey: Schema.Codec<GoogleChromePolicyVersionsV1PolicyTargetKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     additionalTargetKeys: Schema.optional(
@@ -158,7 +158,7 @@ export interface GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
   policyTargetKey?: GoogleChromePolicyVersionsV1PolicyTargetKey;
 }
 
-export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest: Schema.Schema<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest> =
+export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest: Schema.Codec<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyNamespace: Schema.optional(Schema.String),
     policySchema: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface GoogleChromePolicyVersionsV1DefineCertificateResponse {
   settings?: ReadonlyArray<GoogleChromePolicyVersionsV1NetworkSetting>;
 }
 
-export const GoogleChromePolicyVersionsV1DefineCertificateResponse: Schema.Schema<GoogleChromePolicyVersionsV1DefineCertificateResponse> =
+export const GoogleChromePolicyVersionsV1DefineCertificateResponse: Schema.Codec<GoogleChromePolicyVersionsV1DefineCertificateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
@@ -196,7 +196,7 @@ export interface GoogleChromePolicyVersionsV1PolicyModificationFieldError {
   field?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyModificationFieldError: Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationFieldError> =
+export const GoogleChromePolicyVersionsV1PolicyModificationFieldError: Schema.Codec<GoogleChromePolicyVersionsV1PolicyModificationFieldError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Schema.String),
     field: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface GoogleChromePolicyVersionsV1PolicyModificationError {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyModificationError: Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationError> =
+export const GoogleChromePolicyVersionsV1PolicyModificationError: Schema.Codec<GoogleChromePolicyVersionsV1PolicyModificationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
@@ -234,7 +234,7 @@ export interface GoogleChromePolicyVersionsV1PolicyModificationErrorDetails {
   modificationErrors?: ReadonlyArray<GoogleChromePolicyVersionsV1PolicyModificationError>;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyModificationErrorDetails: Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationErrorDetails> =
+export const GoogleChromePolicyVersionsV1PolicyModificationErrorDetails: Schema.Codec<GoogleChromePolicyVersionsV1PolicyModificationErrorDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modificationErrors: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1PolicyModificationError),
@@ -250,7 +250,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies {
   sourceFieldValue?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies> =
+export const GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceField: Schema.optional(Schema.String),
     sourceFieldValue: Schema.optional(Schema.String),
@@ -299,7 +299,7 @@ export interface Proto2FieldDescriptorProto {
     | (string & {});
 }
 
-export const Proto2FieldDescriptorProto: Schema.Schema<Proto2FieldDescriptorProto> =
+export const Proto2FieldDescriptorProto: Schema.Codec<Proto2FieldDescriptorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     oneofIndex: Schema.optional(Schema.Number),
@@ -317,7 +317,7 @@ export interface Proto2EnumValueDescriptorProto {
   number?: number;
 }
 
-export const Proto2EnumValueDescriptorProto: Schema.Schema<Proto2EnumValueDescriptorProto> =
+export const Proto2EnumValueDescriptorProto: Schema.Codec<Proto2EnumValueDescriptorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     number: Schema.optional(Schema.Number),
@@ -334,7 +334,7 @@ export interface Proto2EnumDescriptorProto {
     | (string & {});
 }
 
-export const Proto2EnumDescriptorProto: Schema.Schema<Proto2EnumDescriptorProto> =
+export const Proto2EnumDescriptorProto: Schema.Codec<Proto2EnumDescriptorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Proto2EnumValueDescriptorProto)),
     name: Schema.optional(Schema.String),
@@ -345,7 +345,7 @@ export interface Proto2OneofDescriptorProto {
   name?: string;
 }
 
-export const Proto2OneofDescriptorProto: Schema.Schema<Proto2OneofDescriptorProto> =
+export const Proto2OneofDescriptorProto: Schema.Codec<Proto2OneofDescriptorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Proto2OneofDescriptorProto" });
@@ -364,7 +364,7 @@ export interface Proto2DescriptorProto {
     | (string & {});
 }
 
-export const Proto2DescriptorProto: Schema.Schema<Proto2DescriptorProto> =
+export const Proto2DescriptorProto: Schema.Codec<Proto2DescriptorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -376,7 +376,7 @@ export const Proto2DescriptorProto: Schema.Schema<Proto2DescriptorProto> =
     }),
   ).annotate({
     identifier: "Proto2DescriptorProto",
-  }) as any as Schema.Schema<Proto2DescriptorProto>;
+  }) as any as Schema.Codec<Proto2DescriptorProto>;
 
 export interface Proto2FileDescriptorProto {
   /** e.g. "foo", "foo.bar", etc. */
@@ -394,7 +394,7 @@ export interface Proto2FileDescriptorProto {
   editionDeprecated?: string;
 }
 
-export const Proto2FileDescriptorProto: Schema.Schema<Proto2FileDescriptorProto> =
+export const Proto2FileDescriptorProto: Schema.Codec<Proto2FileDescriptorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     package: Schema.optional(Schema.String),
     optionDependency: Schema.optional(Schema.Array(Schema.String)),
@@ -412,7 +412,7 @@ export interface GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest: Schema.Schema<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest> =
+export const GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest: Schema.Codec<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
@@ -427,7 +427,7 @@ export interface GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest 
   requests?: ReadonlyArray<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest>;
 }
 
-export const GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest: Schema.Schema<GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest> =
+export const GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest: Schema.Codec<GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest),
@@ -448,7 +448,7 @@ export interface GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse: Schema.Schema<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse> =
+export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse: Schema.Codec<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
@@ -469,7 +469,7 @@ export interface GoogleTypeDate {
   month?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
+export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -485,7 +485,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescript
   description?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription> =
+export const GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     fieldDependencies: Schema.optional(
@@ -522,7 +522,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
   fieldDescription?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaFieldDescription: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> =
+export const GoogleChromePolicyVersionsV1PolicySchemaFieldDescription: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       nestedFieldDescriptions: Schema.optional(
@@ -551,14 +551,14 @@ export const GoogleChromePolicyVersionsV1PolicySchemaFieldDescription: Schema.Sc
     }),
   ).annotate({
     identifier: "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>;
+  }) as any as Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>;
 
 export interface GoogleChromePolicyVersionsV1UploadPolicyFileResponse {
   /** The uri for end user to download the file. */
   downloadUri?: string;
 }
 
-export const GoogleChromePolicyVersionsV1UploadPolicyFileResponse: Schema.Schema<GoogleChromePolicyVersionsV1UploadPolicyFileResponse> =
+export const GoogleChromePolicyVersionsV1UploadPolicyFileResponse: Schema.Codec<GoogleChromePolicyVersionsV1UploadPolicyFileResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     downloadUri: Schema.optional(Schema.String),
   }).annotate({
@@ -572,7 +572,7 @@ export interface GoogleChromePolicyVersionsV1PolicyValue {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyValue: Schema.Schema<GoogleChromePolicyVersionsV1PolicyValue> =
+export const GoogleChromePolicyVersionsV1PolicyValue: Schema.Codec<GoogleChromePolicyVersionsV1PolicyValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     policySchema: Schema.optional(Schema.String),
@@ -580,7 +580,7 @@ export const GoogleChromePolicyVersionsV1PolicyValue: Schema.Schema<GoogleChrome
 
 export interface GoogleChromePolicyVersionsV1RemoveCertificateResponse {}
 
-export const GoogleChromePolicyVersionsV1RemoveCertificateResponse: Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateResponse> =
+export const GoogleChromePolicyVersionsV1RemoveCertificateResponse: Schema.Codec<GoogleChromePolicyVersionsV1RemoveCertificateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveCertificateResponse",
   });
@@ -592,7 +592,7 @@ export interface GoogleChromePolicyVersionsV1RemoveNetworkRequest {
   networkId?: string;
 }
 
-export const GoogleChromePolicyVersionsV1RemoveNetworkRequest: Schema.Schema<GoogleChromePolicyVersionsV1RemoveNetworkRequest> =
+export const GoogleChromePolicyVersionsV1RemoveNetworkRequest: Schema.Codec<GoogleChromePolicyVersionsV1RemoveNetworkRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
@@ -609,7 +609,7 @@ export interface GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest: Schema.Schema<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest> =
+export const GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest: Schema.Codec<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
@@ -631,7 +631,7 @@ export interface GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest 
   groupIds?: ReadonlyArray<string>;
 }
 
-export const GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest: Schema.Schema<GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest> =
+export const GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest: Schema.Codec<GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyNamespace: Schema.optional(Schema.String),
     policySchema: Schema.optional(Schema.String),
@@ -651,7 +651,7 @@ export interface GoogleChromePolicyVersionsV1AdditionalTargetKeyName {
   keyDescription?: string;
 }
 
-export const GoogleChromePolicyVersionsV1AdditionalTargetKeyName: Schema.Schema<GoogleChromePolicyVersionsV1AdditionalTargetKeyName> =
+export const GoogleChromePolicyVersionsV1AdditionalTargetKeyName: Schema.Codec<GoogleChromePolicyVersionsV1AdditionalTargetKeyName> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     keyDescription: Schema.optional(Schema.String),
@@ -670,7 +670,7 @@ export interface GoogleChromePolicyVersionsV1ResolvedPolicy {
   addedSourceKey?: GoogleChromePolicyVersionsV1PolicyTargetKey;
 }
 
-export const GoogleChromePolicyVersionsV1ResolvedPolicy: Schema.Schema<GoogleChromePolicyVersionsV1ResolvedPolicy> =
+export const GoogleChromePolicyVersionsV1ResolvedPolicy: Schema.Codec<GoogleChromePolicyVersionsV1ResolvedPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(GoogleChromePolicyVersionsV1PolicyValue),
     targetKey: Schema.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
@@ -687,7 +687,7 @@ export interface GoogleChromePolicyVersionsV1ResolveResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ResolveResponse: Schema.Schema<GoogleChromePolicyVersionsV1ResolveResponse> =
+export const GoogleChromePolicyVersionsV1ResolveResponse: Schema.Codec<GoogleChromePolicyVersionsV1ResolveResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resolvedPolicies: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1ResolvedPolicy),
@@ -702,7 +702,7 @@ export interface GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest: Schema.Schema<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest> =
+export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest: Schema.Codec<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
@@ -714,7 +714,7 @@ export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest: Schema.Schema
 
 export interface GoogleChromePolicyVersionsV1RemoveNetworkResponse {}
 
-export const GoogleChromePolicyVersionsV1RemoveNetworkResponse: Schema.Schema<GoogleChromePolicyVersionsV1RemoveNetworkResponse> =
+export const GoogleChromePolicyVersionsV1RemoveNetworkResponse: Schema.Codec<GoogleChromePolicyVersionsV1RemoveNetworkResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveNetworkResponse",
   });
@@ -726,7 +726,7 @@ export interface GoogleChromePolicyVersionsV1CertificateReference {
   network?: string;
 }
 
-export const GoogleChromePolicyVersionsV1CertificateReference: Schema.Schema<GoogleChromePolicyVersionsV1CertificateReference> =
+export const GoogleChromePolicyVersionsV1CertificateReference: Schema.Codec<GoogleChromePolicyVersionsV1CertificateReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgUnitId: Schema.optional(Schema.String),
     network: Schema.optional(Schema.String),
@@ -739,7 +739,7 @@ export interface GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails {
   certificateReferences?: ReadonlyArray<GoogleChromePolicyVersionsV1CertificateReference>;
 }
 
-export const GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails: Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails> =
+export const GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails: Schema.Codec<GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateReferences: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1CertificateReference),
@@ -757,7 +757,7 @@ export interface GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest: Schema.Schema<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest> =
+export const GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest: Schema.Codec<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
@@ -773,7 +773,7 @@ export interface GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest {
   requests?: ReadonlyArray<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest>;
 }
 
-export const GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest: Schema.Schema<GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest> =
+export const GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest: Schema.Codec<GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest),
@@ -801,7 +801,7 @@ export interface GoogleChromePolicyVersionsV1PolicyApiLifecycle {
     | (string & {});
 }
 
-export const GoogleChromePolicyVersionsV1PolicyApiLifecycle: Schema.Schema<GoogleChromePolicyVersionsV1PolicyApiLifecycle> =
+export const GoogleChromePolicyVersionsV1PolicyApiLifecycle: Schema.Codec<GoogleChromePolicyVersionsV1PolicyApiLifecycle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endSupport: Schema.optional(GoogleTypeDate),
     description: Schema.optional(Schema.String),
@@ -819,7 +819,7 @@ export interface GoogleChromePolicyVersionsV1DefineNetworkRequest {
   settings?: ReadonlyArray<GoogleChromePolicyVersionsV1NetworkSetting>;
 }
 
-export const GoogleChromePolicyVersionsV1DefineNetworkRequest: Schema.Schema<GoogleChromePolicyVersionsV1DefineNetworkRequest> =
+export const GoogleChromePolicyVersionsV1DefineNetworkRequest: Schema.Codec<GoogleChromePolicyVersionsV1DefineNetworkRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -841,7 +841,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription {
   acknowledgementRequired?: boolean;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription> =
+export const GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     noticeValue: Schema.optional(Schema.String),
@@ -889,7 +889,7 @@ export interface GoogleChromePolicyVersionsV1PolicySchema {
   policyDescription?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchema: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchema> =
+export const GoogleChromePolicyVersionsV1PolicySchema: Schema.Codec<GoogleChromePolicyVersionsV1PolicySchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     fieldDescriptions: Schema.optional(
@@ -925,7 +925,7 @@ export interface GoogleChromePolicyVersionsV1ResolveRequest {
   pageToken?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ResolveRequest: Schema.Schema<GoogleChromePolicyVersionsV1ResolveRequest> =
+export const GoogleChromePolicyVersionsV1ResolveRequest: Schema.Codec<GoogleChromePolicyVersionsV1ResolveRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTargetKey: Schema.optional(
       GoogleChromePolicyVersionsV1PolicyTargetKey,
@@ -940,7 +940,7 @@ export interface GoogleChromePolicyVersionsV1UploadPolicyFileRequest {
   policyField?: string;
 }
 
-export const GoogleChromePolicyVersionsV1UploadPolicyFileRequest: Schema.Schema<GoogleChromePolicyVersionsV1UploadPolicyFileRequest> =
+export const GoogleChromePolicyVersionsV1UploadPolicyFileRequest: Schema.Codec<GoogleChromePolicyVersionsV1UploadPolicyFileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyField: Schema.optional(Schema.String),
   }).annotate({
@@ -954,7 +954,7 @@ export interface GoogleChromePolicyVersionsV1RemoveCertificateRequest {
   networkId?: string;
 }
 
-export const GoogleChromePolicyVersionsV1RemoveCertificateRequest: Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateRequest> =
+export const GoogleChromePolicyVersionsV1RemoveCertificateRequest: Schema.Codec<GoogleChromePolicyVersionsV1RemoveCertificateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
@@ -969,7 +969,7 @@ export interface GoogleChromePolicyVersionsV1ListPolicySchemasResponse {
   policySchemas?: ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchema>;
 }
 
-export const GoogleChromePolicyVersionsV1ListPolicySchemasResponse: Schema.Schema<GoogleChromePolicyVersionsV1ListPolicySchemasResponse> =
+export const GoogleChromePolicyVersionsV1ListPolicySchemasResponse: Schema.Codec<GoogleChromePolicyVersionsV1ListPolicySchemasResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     policySchemas: Schema.optional(
@@ -981,7 +981,7 @@ export const GoogleChromePolicyVersionsV1ListPolicySchemasResponse: Schema.Schem
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -991,7 +991,7 @@ export interface GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest {
   requests?: ReadonlyArray<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest>;
 }
 
-export const GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest: Schema.Schema<GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest> =
+export const GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest: Schema.Codec<GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest),
@@ -1005,7 +1005,7 @@ export interface GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest {
   requests?: ReadonlyArray<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
 }
 
-export const GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest: Schema.Schema<GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest> =
+export const GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest: Schema.Codec<GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest),
@@ -1023,7 +1023,7 @@ export interface GoogleChromePolicyVersionsV1DefineNetworkResponse {
   settings?: ReadonlyArray<GoogleChromePolicyVersionsV1NetworkSetting>;
 }
 
-export const GoogleChromePolicyVersionsV1DefineNetworkResponse: Schema.Schema<GoogleChromePolicyVersionsV1DefineNetworkResponse> =
+export const GoogleChromePolicyVersionsV1DefineNetworkResponse: Schema.Codec<GoogleChromePolicyVersionsV1DefineNetworkResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetResource: Schema.optional(Schema.String),
     networkId: Schema.optional(Schema.String),
@@ -1108,7 +1108,7 @@ export const ResolveCustomersPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResolveCustomersPoliciesRequest>;
+  ) as unknown as Schema.Codec<ResolveCustomersPoliciesRequest>;
 
 export type ResolveCustomersPoliciesResponse =
   GoogleChromePolicyVersionsV1ResolveResponse;
@@ -1154,7 +1154,7 @@ export const BatchModifyCustomersPoliciesOrgunitsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchModifyCustomersPoliciesOrgunitsRequest>;
+  ) as unknown as Schema.Codec<BatchModifyCustomersPoliciesOrgunitsRequest>;
 
 export type BatchModifyCustomersPoliciesOrgunitsResponse = GoogleProtobufEmpty;
 export const BatchModifyCustomersPoliciesOrgunitsResponse =
@@ -1199,7 +1199,7 @@ export const BatchInheritCustomersPoliciesOrgunitsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchInheritCustomersPoliciesOrgunitsRequest>;
+  ) as unknown as Schema.Codec<BatchInheritCustomersPoliciesOrgunitsRequest>;
 
 export type BatchInheritCustomersPoliciesOrgunitsResponse = GoogleProtobufEmpty;
 export const BatchInheritCustomersPoliciesOrgunitsResponse =
@@ -1244,7 +1244,7 @@ export const BatchModifyCustomersPoliciesGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchModifyCustomersPoliciesGroupsRequest>;
+  ) as unknown as Schema.Codec<BatchModifyCustomersPoliciesGroupsRequest>;
 
 export type BatchModifyCustomersPoliciesGroupsResponse = GoogleProtobufEmpty;
 export const BatchModifyCustomersPoliciesGroupsResponse =
@@ -1289,7 +1289,7 @@ export const BatchDeleteCustomersPoliciesGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteCustomersPoliciesGroupsRequest>;
+  ) as unknown as Schema.Codec<BatchDeleteCustomersPoliciesGroupsRequest>;
 
 export type BatchDeleteCustomersPoliciesGroupsResponse = GoogleProtobufEmpty;
 export const BatchDeleteCustomersPoliciesGroupsResponse =
@@ -1334,7 +1334,7 @@ export const ListGroupPriorityOrderingCustomersPoliciesGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListGroupPriorityOrderingCustomersPoliciesGroupsRequest>;
+  ) as unknown as Schema.Codec<ListGroupPriorityOrderingCustomersPoliciesGroupsRequest>;
 
 export type ListGroupPriorityOrderingCustomersPoliciesGroupsResponse =
   GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse;
@@ -1380,7 +1380,7 @@ export const UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest>;
+  ) as unknown as Schema.Codec<UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest>;
 
 export type UpdateGroupPriorityOrderingCustomersPoliciesGroupsResponse =
   GoogleProtobufEmpty;
@@ -1426,7 +1426,7 @@ export const DefineCertificateCustomersPoliciesNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DefineCertificateCustomersPoliciesNetworksRequest>;
+  ) as unknown as Schema.Codec<DefineCertificateCustomersPoliciesNetworksRequest>;
 
 export type DefineCertificateCustomersPoliciesNetworksResponse =
   GoogleChromePolicyVersionsV1DefineCertificateResponse;
@@ -1472,7 +1472,7 @@ export const RemoveCertificateCustomersPoliciesNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveCertificateCustomersPoliciesNetworksRequest>;
+  ) as unknown as Schema.Codec<RemoveCertificateCustomersPoliciesNetworksRequest>;
 
 export type RemoveCertificateCustomersPoliciesNetworksResponse =
   GoogleChromePolicyVersionsV1RemoveCertificateResponse;
@@ -1518,7 +1518,7 @@ export const RemoveNetworkCustomersPoliciesNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveNetworkCustomersPoliciesNetworksRequest>;
+  ) as unknown as Schema.Codec<RemoveNetworkCustomersPoliciesNetworksRequest>;
 
 export type RemoveNetworkCustomersPoliciesNetworksResponse =
   GoogleChromePolicyVersionsV1RemoveNetworkResponse;
@@ -1564,7 +1564,7 @@ export const DefineNetworkCustomersPoliciesNetworksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DefineNetworkCustomersPoliciesNetworksRequest>;
+  ) as unknown as Schema.Codec<DefineNetworkCustomersPoliciesNetworksRequest>;
 
 export type DefineNetworkCustomersPoliciesNetworksResponse =
   GoogleChromePolicyVersionsV1DefineNetworkResponse;
@@ -1610,7 +1610,7 @@ export const ListCustomersPolicySchemasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/policySchemas" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersPolicySchemasRequest>;
+  ) as unknown as Schema.Codec<ListCustomersPolicySchemasRequest>;
 
 export type ListCustomersPolicySchemasResponse =
   GoogleChromePolicyVersionsV1ListPolicySchemasResponse;
@@ -1649,7 +1649,7 @@ export const GetCustomersPolicySchemasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersPolicySchemasRequest>;
+  ) as unknown as Schema.Codec<GetCustomersPolicySchemasRequest>;
 
 export type GetCustomersPolicySchemasResponse =
   GoogleChromePolicyVersionsV1PolicySchema;
@@ -1692,7 +1692,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse =
   GoogleChromePolicyVersionsV1UploadPolicyFileResponse;

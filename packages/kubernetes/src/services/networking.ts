@@ -4,12 +4,60 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateNetworkingV1IPAddressInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    parentRef: {
+      group?: string;
+      name: string;
+      namespace?: string;
+      resource: string;
+    };
+  };
+}
 export const CreateNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -72,11 +120,53 @@ export const CreateNetworkingV1IPAddressInput =
     }),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
-  );
-export type CreateNetworkingV1IPAddressInput =
-  typeof CreateNetworkingV1IPAddressInput.Type;
+  ) as unknown as Schema.Codec<CreateNetworkingV1IPAddressInput>;
 
 // Output Schema
+export interface CreateNetworkingV1IPAddressOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    parentRef: {
+      group?: string;
+      name: string;
+      namespace?: string;
+      resource: string;
+    };
+  };
+}
 export const CreateNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -133,9 +223,7 @@ export const CreateNetworkingV1IPAddressOutput =
         resource: Schema.String,
       }),
     }),
-  });
-export type CreateNetworkingV1IPAddressOutput =
-  typeof CreateNetworkingV1IPAddressOutput.Type;
+  }) as unknown as Schema.Codec<CreateNetworkingV1IPAddressOutput>;
 
 // The operation
 /**
@@ -154,6 +242,56 @@ export const createNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CreateNetworkingV1IngressClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    controller?: string;
+    parameters?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+      scope?: string;
+    };
+  };
+}
 export const CreateNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -225,11 +363,55 @@ export const CreateNetworkingV1IngressClassInput =
       method: "POST",
       path: "/apis/networking.k8s.io/v1/ingressclasses",
     }),
-  );
-export type CreateNetworkingV1IngressClassInput =
-  typeof CreateNetworkingV1IngressClassInput.Type;
+  ) as unknown as Schema.Codec<CreateNetworkingV1IngressClassInput>;
 
 // Output Schema
+export interface CreateNetworkingV1IngressClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    controller?: string;
+    parameters?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+      scope?: string;
+    };
+  };
+}
 export const CreateNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -292,9 +474,7 @@ export const CreateNetworkingV1IngressClassOutput =
         ),
       }),
     ),
-  });
-export type CreateNetworkingV1IngressClassOutput =
-  typeof CreateNetworkingV1IngressClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateNetworkingV1IngressClassOutput>;
 
 // The operation
 /**
@@ -312,6 +492,80 @@ export const createNetworkingV1IngressClass =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateNetworkingV1NamespacedIngressInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const CreateNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -467,11 +721,78 @@ export const CreateNetworkingV1NamespacedIngressInput =
       method: "POST",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
     }),
-  );
-export type CreateNetworkingV1NamespacedIngressInput =
-  typeof CreateNetworkingV1NamespacedIngressInput.Type;
+  ) as unknown as Schema.Codec<CreateNetworkingV1NamespacedIngressInput>;
 
 // Output Schema
+export interface CreateNetworkingV1NamespacedIngressOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const CreateNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -617,9 +938,7 @@ export const CreateNetworkingV1NamespacedIngressOutput =
         ),
       }),
     ),
-  });
-export type CreateNetworkingV1NamespacedIngressOutput =
-  typeof CreateNetworkingV1NamespacedIngressOutput.Type;
+  }) as unknown as Schema.Codec<CreateNetworkingV1NamespacedIngressOutput>;
 
 // The operation
 /**
@@ -638,6 +957,98 @@ export const createNetworkingV1NamespacedIngress =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateNetworkingV1NamespacedNetworkPolicyInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    egress?: {
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+      to?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+    }[];
+    ingress?: {
+      from?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+    }[];
+    podSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    policyTypes?: string[];
+  };
+}
 export const CreateNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -843,11 +1254,96 @@ export const CreateNetworkingV1NamespacedNetworkPolicyInput =
       method: "POST",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
     }),
-  );
-export type CreateNetworkingV1NamespacedNetworkPolicyInput =
-  typeof CreateNetworkingV1NamespacedNetworkPolicyInput.Type;
+  ) as unknown as Schema.Codec<CreateNetworkingV1NamespacedNetworkPolicyInput>;
 
 // Output Schema
+export interface CreateNetworkingV1NamespacedNetworkPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    egress?: {
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+      to?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+    }[];
+    ingress?: {
+      from?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+    }[];
+    podSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    policyTypes?: string[];
+  };
+}
 export const CreateNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1043,9 +1539,7 @@ export const CreateNetworkingV1NamespacedNetworkPolicyOutput =
         policyTypes: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type CreateNetworkingV1NamespacedNetworkPolicyOutput =
-  typeof CreateNetworkingV1NamespacedNetworkPolicyOutput.Type;
+  }) as unknown as Schema.Codec<CreateNetworkingV1NamespacedNetworkPolicyOutput>;
 
 // The operation
 /**
@@ -1064,6 +1558,57 @@ export const createNetworkingV1NamespacedNetworkPolicy =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateNetworkingV1ServiceCIDRInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1139,11 +1684,56 @@ export const CreateNetworkingV1ServiceCIDRInput =
     ),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
-  );
-export type CreateNetworkingV1ServiceCIDRInput =
-  typeof CreateNetworkingV1ServiceCIDRInput.Type;
+  ) as unknown as Schema.Codec<CreateNetworkingV1ServiceCIDRInput>;
 
 // Output Schema
+export interface CreateNetworkingV1ServiceCIDROutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1213,9 +1803,7 @@ export const CreateNetworkingV1ServiceCIDROutput =
         ),
       }),
     ),
-  });
-export type CreateNetworkingV1ServiceCIDROutput =
-  typeof CreateNetworkingV1ServiceCIDROutput.Type;
+  }) as unknown as Schema.Codec<CreateNetworkingV1ServiceCIDROutput>;
 
 // The operation
 /**
@@ -1233,6 +1821,26 @@ export const createNetworkingV1ServiceCIDR =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteNetworkingV1CollectionIPAddressInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1CollectionIPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1265,11 +1873,32 @@ export const DeleteNetworkingV1CollectionIPAddressInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/ipaddresses",
     }),
-  );
-export type DeleteNetworkingV1CollectionIPAddressInput =
-  typeof DeleteNetworkingV1CollectionIPAddressInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1CollectionIPAddressInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1CollectionIPAddressOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1CollectionIPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1309,9 +1938,7 @@ export const DeleteNetworkingV1CollectionIPAddressOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1CollectionIPAddressOutput =
-  typeof DeleteNetworkingV1CollectionIPAddressOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1CollectionIPAddressOutput>;
 
 // The operation
 /**
@@ -1380,6 +2007,26 @@ export const deleteNetworkingV1CollectionIPAddress =
     outputSchema: DeleteNetworkingV1CollectionIPAddressOutput,
   }));
 // Input Schema
+export interface DeleteNetworkingV1CollectionIngressClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1CollectionIngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1412,11 +2059,32 @@ export const DeleteNetworkingV1CollectionIngressClassInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/ingressclasses",
     }),
-  );
-export type DeleteNetworkingV1CollectionIngressClassInput =
-  typeof DeleteNetworkingV1CollectionIngressClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1CollectionIngressClassInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1CollectionIngressClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1CollectionIngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1456,9 +2124,7 @@ export const DeleteNetworkingV1CollectionIngressClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1CollectionIngressClassOutput =
-  typeof DeleteNetworkingV1CollectionIngressClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1CollectionIngressClassOutput>;
 
 // The operation
 /**
@@ -1527,6 +2193,27 @@ export const deleteNetworkingV1CollectionIngressClass =
     outputSchema: DeleteNetworkingV1CollectionIngressClassOutput,
   }));
 // Input Schema
+export interface DeleteNetworkingV1CollectionNamespacedIngressInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1CollectionNamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1560,11 +2247,32 @@ export const DeleteNetworkingV1CollectionNamespacedIngressInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
     }),
-  );
-export type DeleteNetworkingV1CollectionNamespacedIngressInput =
-  typeof DeleteNetworkingV1CollectionNamespacedIngressInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1CollectionNamespacedIngressInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1CollectionNamespacedIngressOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1CollectionNamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1604,9 +2312,7 @@ export const DeleteNetworkingV1CollectionNamespacedIngressOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1CollectionNamespacedIngressOutput =
-  typeof DeleteNetworkingV1CollectionNamespacedIngressOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1CollectionNamespacedIngressOutput>;
 
 // The operation
 /**
@@ -1676,6 +2382,27 @@ export const deleteNetworkingV1CollectionNamespacedIngress =
     outputSchema: DeleteNetworkingV1CollectionNamespacedIngressOutput,
   }));
 // Input Schema
+export interface DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1709,11 +2436,32 @@ export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
     }),
-  );
-export type DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput =
-  typeof DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1753,9 +2501,7 @@ export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput =
-  typeof DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput>;
 
 // The operation
 /**
@@ -1825,6 +2571,26 @@ export const deleteNetworkingV1CollectionNamespacedNetworkPolicy =
     outputSchema: DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput,
   }));
 // Input Schema
+export interface DeleteNetworkingV1CollectionServiceCIDRInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1CollectionServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1857,11 +2623,32 @@ export const DeleteNetworkingV1CollectionServiceCIDRInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/servicecidrs",
     }),
-  );
-export type DeleteNetworkingV1CollectionServiceCIDRInput =
-  typeof DeleteNetworkingV1CollectionServiceCIDRInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1CollectionServiceCIDRInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1CollectionServiceCIDROutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1CollectionServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1901,9 +2688,7 @@ export const DeleteNetworkingV1CollectionServiceCIDROutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1CollectionServiceCIDROutput =
-  typeof DeleteNetworkingV1CollectionServiceCIDROutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1CollectionServiceCIDROutput>;
 
 // The operation
 /**
@@ -1972,6 +2757,18 @@ export const deleteNetworkingV1CollectionServiceCIDR =
     outputSchema: DeleteNetworkingV1CollectionServiceCIDROutput,
   }));
 // Input Schema
+export interface DeleteNetworkingV1IPAddressInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1996,11 +2793,32 @@ export const DeleteNetworkingV1IPAddressInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
     }),
-  );
-export type DeleteNetworkingV1IPAddressInput =
-  typeof DeleteNetworkingV1IPAddressInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1IPAddressInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1IPAddressOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2040,9 +2858,7 @@ export const DeleteNetworkingV1IPAddressOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1IPAddressOutput =
-  typeof DeleteNetworkingV1IPAddressOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1IPAddressOutput>;
 
 // The operation
 /**
@@ -2064,6 +2880,18 @@ export const deleteNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeleteNetworkingV1IngressClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2088,11 +2916,32 @@ export const DeleteNetworkingV1IngressClassInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
     }),
-  );
-export type DeleteNetworkingV1IngressClassInput =
-  typeof DeleteNetworkingV1IngressClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1IngressClassInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1IngressClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2132,9 +2981,7 @@ export const DeleteNetworkingV1IngressClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1IngressClassOutput =
-  typeof DeleteNetworkingV1IngressClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1IngressClassOutput>;
 
 // The operation
 /**
@@ -2155,6 +3002,19 @@ export const deleteNetworkingV1IngressClass =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteNetworkingV1NamespacedIngressInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2180,11 +3040,32 @@ export const DeleteNetworkingV1NamespacedIngressInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
     }),
-  );
-export type DeleteNetworkingV1NamespacedIngressInput =
-  typeof DeleteNetworkingV1NamespacedIngressInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1NamespacedIngressInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1NamespacedIngressOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2224,9 +3105,7 @@ export const DeleteNetworkingV1NamespacedIngressOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1NamespacedIngressOutput =
-  typeof DeleteNetworkingV1NamespacedIngressOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1NamespacedIngressOutput>;
 
 // The operation
 /**
@@ -2248,6 +3127,19 @@ export const deleteNetworkingV1NamespacedIngress =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteNetworkingV1NamespacedNetworkPolicyInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2273,11 +3165,32 @@ export const DeleteNetworkingV1NamespacedNetworkPolicyInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
     }),
-  );
-export type DeleteNetworkingV1NamespacedNetworkPolicyInput =
-  typeof DeleteNetworkingV1NamespacedNetworkPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1NamespacedNetworkPolicyInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1NamespacedNetworkPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2317,9 +3230,7 @@ export const DeleteNetworkingV1NamespacedNetworkPolicyOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1NamespacedNetworkPolicyOutput =
-  typeof DeleteNetworkingV1NamespacedNetworkPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1NamespacedNetworkPolicyOutput>;
 
 // The operation
 /**
@@ -2341,6 +3252,18 @@ export const deleteNetworkingV1NamespacedNetworkPolicy =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteNetworkingV1ServiceCIDRInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2365,11 +3288,32 @@ export const DeleteNetworkingV1ServiceCIDRInput =
       method: "DELETE",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
     }),
-  );
-export type DeleteNetworkingV1ServiceCIDRInput =
-  typeof DeleteNetworkingV1ServiceCIDRInput.Type;
+  ) as unknown as Schema.Codec<DeleteNetworkingV1ServiceCIDRInput>;
 
 // Output Schema
+export interface DeleteNetworkingV1ServiceCIDROutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2409,9 +3353,7 @@ export const DeleteNetworkingV1ServiceCIDROutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteNetworkingV1ServiceCIDROutput =
-  typeof DeleteNetworkingV1ServiceCIDROutput.Type;
+  }) as unknown as Schema.Codec<DeleteNetworkingV1ServiceCIDROutput>;
 
 // The operation
 /**
@@ -2432,13 +3374,21 @@ export const deleteNetworkingV1ServiceCIDR =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetNetworkingAPIGroupInput {}
 export const GetNetworkingAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/" }),
-  );
-export type GetNetworkingAPIGroupInput = typeof GetNetworkingAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetNetworkingAPIGroupInput>;
 
 // Output Schema
+export interface GetNetworkingAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetNetworkingAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2464,9 +3414,7 @@ export const GetNetworkingAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetNetworkingAPIGroupOutput =
-  typeof GetNetworkingAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetNetworkingAPIGroupOutput>;
 
 // The operation
 /**
@@ -2479,14 +3427,30 @@ export const getNetworkingAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetNetworkingV1APIResourcesInput {}
 export const GetNetworkingV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/" }),
-  );
-export type GetNetworkingV1APIResourcesInput =
-  typeof GetNetworkingV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetNetworkingV1APIResourcesInput>;
 
 // Output Schema
+export interface GetNetworkingV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetNetworkingV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2506,9 +3470,7 @@ export const GetNetworkingV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetNetworkingV1APIResourcesOutput =
-  typeof GetNetworkingV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetNetworkingV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -2521,6 +3483,20 @@ export const getNetworkingV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListNetworkingV1IPAddressInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2537,11 +3513,64 @@ export const ListNetworkingV1IPAddressInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
-  );
-export type ListNetworkingV1IPAddressInput =
-  typeof ListNetworkingV1IPAddressInput.Type;
+  ) as unknown as Schema.Codec<ListNetworkingV1IPAddressInput>;
 
 // Output Schema
+export interface ListNetworkingV1IPAddressOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      parentRef: {
+        group?: string;
+        name: string;
+        namespace?: string;
+        resource: string;
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2619,9 +3648,7 @@ export const ListNetworkingV1IPAddressOutput =
         ),
       }),
     ),
-  });
-export type ListNetworkingV1IPAddressOutput =
-  typeof ListNetworkingV1IPAddressOutput.Type;
+  }) as unknown as Schema.Codec<ListNetworkingV1IPAddressOutput>;
 
 // The operation
 /**
@@ -2688,6 +3715,20 @@ export const listNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListNetworkingV1IngressClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2707,11 +3748,66 @@ export const ListNetworkingV1IngressClassInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/ingressclasses",
     }),
-  );
-export type ListNetworkingV1IngressClassInput =
-  typeof ListNetworkingV1IngressClassInput.Type;
+  ) as unknown as Schema.Codec<ListNetworkingV1IngressClassInput>;
 
 // Output Schema
+export interface ListNetworkingV1IngressClassOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      controller?: string;
+      parameters?: {
+        apiGroup?: string;
+        kind: string;
+        name: string;
+        namespace?: string;
+        scope?: string;
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2795,9 +3891,7 @@ export const ListNetworkingV1IngressClassOutput =
         ),
       }),
     ),
-  });
-export type ListNetworkingV1IngressClassOutput =
-  typeof ListNetworkingV1IngressClassOutput.Type;
+  }) as unknown as Schema.Codec<ListNetworkingV1IngressClassOutput>;
 
 // The operation
 /**
@@ -2863,6 +3957,20 @@ export const listNetworkingV1IngressClass =
     outputSchema: ListNetworkingV1IngressClassOutput,
   }));
 // Input Schema
+export interface ListNetworkingV1IngressForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListNetworkingV1IngressForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2879,11 +3987,89 @@ export const ListNetworkingV1IngressForAllNamespacesInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/ingresses" }),
-  );
-export type ListNetworkingV1IngressForAllNamespacesInput =
-  typeof ListNetworkingV1IngressForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListNetworkingV1IngressForAllNamespacesInput>;
 
 // Output Schema
+export interface ListNetworkingV1IngressForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      defaultBackend?: {
+        resource?: { apiGroup?: string; kind: string; name: string };
+        service?: { name: string; port?: { name?: string; number?: number } };
+      };
+      ingressClassName?: string;
+      rules?: {
+        host?: string;
+        http?: {
+          paths: {
+            backend: {
+              resource?: { apiGroup?: string; kind: string; name: string };
+              service?: {
+                name: string;
+                port?: { name?: string; number?: number };
+              };
+            };
+            path?: string;
+            pathType: string;
+          }[];
+        };
+      }[];
+      tls?: { hosts?: string[]; secretName?: string }[];
+    };
+    status?: {
+      loadBalancer?: {
+        ingress?: {
+          hostname?: string;
+          ip?: string;
+          ports?: { error?: string; port: number; protocol: string }[];
+        }[];
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListNetworkingV1IngressForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3050,9 +4236,7 @@ export const ListNetworkingV1IngressForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListNetworkingV1IngressForAllNamespacesOutput =
-  typeof ListNetworkingV1IngressForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListNetworkingV1IngressForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -3118,6 +4302,21 @@ export const listNetworkingV1IngressForAllNamespaces =
     outputSchema: ListNetworkingV1IngressForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListNetworkingV1NamespacedIngressInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3138,11 +4337,89 @@ export const ListNetworkingV1NamespacedIngressInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
     }),
-  );
-export type ListNetworkingV1NamespacedIngressInput =
-  typeof ListNetworkingV1NamespacedIngressInput.Type;
+  ) as unknown as Schema.Codec<ListNetworkingV1NamespacedIngressInput>;
 
 // Output Schema
+export interface ListNetworkingV1NamespacedIngressOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      defaultBackend?: {
+        resource?: { apiGroup?: string; kind: string; name: string };
+        service?: { name: string; port?: { name?: string; number?: number } };
+      };
+      ingressClassName?: string;
+      rules?: {
+        host?: string;
+        http?: {
+          paths: {
+            backend: {
+              resource?: { apiGroup?: string; kind: string; name: string };
+              service?: {
+                name: string;
+                port?: { name?: string; number?: number };
+              };
+            };
+            path?: string;
+            pathType: string;
+          }[];
+        };
+      }[];
+      tls?: { hosts?: string[]; secretName?: string }[];
+    };
+    status?: {
+      loadBalancer?: {
+        ingress?: {
+          hostname?: string;
+          ip?: string;
+          ports?: { error?: string; port: number; protocol: string }[];
+        }[];
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3309,9 +4586,7 @@ export const ListNetworkingV1NamespacedIngressOutput =
         ),
       }),
     ),
-  });
-export type ListNetworkingV1NamespacedIngressOutput =
-  typeof ListNetworkingV1NamespacedIngressOutput.Type;
+  }) as unknown as Schema.Codec<ListNetworkingV1NamespacedIngressOutput>;
 
 // The operation
 /**
@@ -3378,6 +4653,21 @@ export const listNetworkingV1NamespacedIngress =
     outputSchema: ListNetworkingV1NamespacedIngressOutput,
   }));
 // Input Schema
+export interface ListNetworkingV1NamespacedNetworkPolicyInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3398,11 +4688,111 @@ export const ListNetworkingV1NamespacedNetworkPolicyInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
     }),
-  );
-export type ListNetworkingV1NamespacedNetworkPolicyInput =
-  typeof ListNetworkingV1NamespacedNetworkPolicyInput.Type;
+  ) as unknown as Schema.Codec<ListNetworkingV1NamespacedNetworkPolicyInput>;
 
 // Output Schema
+export interface ListNetworkingV1NamespacedNetworkPolicyOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      egress?: {
+        ports?: { endPort?: number; port?: string; protocol?: string }[];
+        to?: {
+          ipBlock?: { cidr: string; except?: string[] };
+          namespaceSelector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+          podSelector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        }[];
+      }[];
+      ingress?: {
+        from?: {
+          ipBlock?: { cidr: string; except?: string[] };
+          namespaceSelector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+          podSelector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        }[];
+        ports?: { endPort?: number; port?: string; protocol?: string }[];
+      }[];
+      podSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      policyTypes?: string[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3623,9 +5013,7 @@ export const ListNetworkingV1NamespacedNetworkPolicyOutput =
         ),
       }),
     ),
-  });
-export type ListNetworkingV1NamespacedNetworkPolicyOutput =
-  typeof ListNetworkingV1NamespacedNetworkPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ListNetworkingV1NamespacedNetworkPolicyOutput>;
 
 // The operation
 /**
@@ -3692,6 +5080,20 @@ export const listNetworkingV1NamespacedNetworkPolicy =
     outputSchema: ListNetworkingV1NamespacedNetworkPolicyOutput,
   }));
 // Input Schema
+export interface ListNetworkingV1NetworkPolicyForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListNetworkingV1NetworkPolicyForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3711,11 +5113,111 @@ export const ListNetworkingV1NetworkPolicyForAllNamespacesInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/networkpolicies",
     }),
-  );
-export type ListNetworkingV1NetworkPolicyForAllNamespacesInput =
-  typeof ListNetworkingV1NetworkPolicyForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListNetworkingV1NetworkPolicyForAllNamespacesInput>;
 
 // Output Schema
+export interface ListNetworkingV1NetworkPolicyForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      egress?: {
+        ports?: { endPort?: number; port?: string; protocol?: string }[];
+        to?: {
+          ipBlock?: { cidr: string; except?: string[] };
+          namespaceSelector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+          podSelector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        }[];
+      }[];
+      ingress?: {
+        from?: {
+          ipBlock?: { cidr: string; except?: string[] };
+          namespaceSelector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+          podSelector?: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchLabels?: Record<string, string>;
+          };
+        }[];
+        ports?: { endPort?: number; port?: string; protocol?: string }[];
+      }[];
+      podSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      policyTypes?: string[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3936,9 +5438,7 @@ export const ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
-  typeof ListNetworkingV1NetworkPolicyForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListNetworkingV1NetworkPolicyForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -4004,6 +5504,20 @@ export const listNetworkingV1NetworkPolicyForAllNamespaces =
     outputSchema: ListNetworkingV1NetworkPolicyForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListNetworkingV1ServiceCIDRInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -4020,11 +5534,67 @@ export const ListNetworkingV1ServiceCIDRInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
-  );
-export type ListNetworkingV1ServiceCIDRInput =
-  typeof ListNetworkingV1ServiceCIDRInput.Type;
+  ) as unknown as Schema.Codec<ListNetworkingV1ServiceCIDRInput>;
 
 // Output Schema
+export interface ListNetworkingV1ServiceCIDROutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: { cidrs?: string[] };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4115,9 +5685,7 @@ export const ListNetworkingV1ServiceCIDROutput =
         ),
       }),
     ),
-  });
-export type ListNetworkingV1ServiceCIDROutput =
-  typeof ListNetworkingV1ServiceCIDROutput.Type;
+  }) as unknown as Schema.Codec<ListNetworkingV1ServiceCIDROutput>;
 
 // The operation
 /**
@@ -4184,6 +5752,14 @@ export const listNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PatchNetworkingV1IPAddressInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4197,11 +5773,53 @@ export const PatchNetworkingV1IPAddressInput =
       method: "PATCH",
       path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
     }),
-  );
-export type PatchNetworkingV1IPAddressInput =
-  typeof PatchNetworkingV1IPAddressInput.Type;
+  ) as unknown as Schema.Codec<PatchNetworkingV1IPAddressInput>;
 
 // Output Schema
+export interface PatchNetworkingV1IPAddressOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    parentRef: {
+      group?: string;
+      name: string;
+      namespace?: string;
+      resource: string;
+    };
+  };
+}
 export const PatchNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4258,9 +5876,7 @@ export const PatchNetworkingV1IPAddressOutput =
         resource: Schema.String,
       }),
     }),
-  });
-export type PatchNetworkingV1IPAddressOutput =
-  typeof PatchNetworkingV1IPAddressOutput.Type;
+  }) as unknown as Schema.Codec<PatchNetworkingV1IPAddressOutput>;
 
 // The operation
 /**
@@ -4281,6 +5897,14 @@ export const patchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PatchNetworkingV1IngressClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4294,11 +5918,55 @@ export const PatchNetworkingV1IngressClassInput =
       method: "PATCH",
       path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
     }),
-  );
-export type PatchNetworkingV1IngressClassInput =
-  typeof PatchNetworkingV1IngressClassInput.Type;
+  ) as unknown as Schema.Codec<PatchNetworkingV1IngressClassInput>;
 
 // Output Schema
+export interface PatchNetworkingV1IngressClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    controller?: string;
+    parameters?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+      scope?: string;
+    };
+  };
+}
 export const PatchNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4361,9 +6029,7 @@ export const PatchNetworkingV1IngressClassOutput =
         ),
       }),
     ),
-  });
-export type PatchNetworkingV1IngressClassOutput =
-  typeof PatchNetworkingV1IngressClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchNetworkingV1IngressClassOutput>;
 
 // The operation
 /**
@@ -4383,6 +6049,15 @@ export const patchNetworkingV1IngressClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchNetworkingV1NamespacedIngressInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4397,11 +6072,78 @@ export const PatchNetworkingV1NamespacedIngressInput =
       method: "PATCH",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
     }),
-  );
-export type PatchNetworkingV1NamespacedIngressInput =
-  typeof PatchNetworkingV1NamespacedIngressInput.Type;
+  ) as unknown as Schema.Codec<PatchNetworkingV1NamespacedIngressInput>;
 
 // Output Schema
+export interface PatchNetworkingV1NamespacedIngressOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const PatchNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4547,9 +6289,7 @@ export const PatchNetworkingV1NamespacedIngressOutput =
         ),
       }),
     ),
-  });
-export type PatchNetworkingV1NamespacedIngressOutput =
-  typeof PatchNetworkingV1NamespacedIngressOutput.Type;
+  }) as unknown as Schema.Codec<PatchNetworkingV1NamespacedIngressOutput>;
 
 // The operation
 /**
@@ -4570,6 +6310,15 @@ export const patchNetworkingV1NamespacedIngress =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchNetworkingV1NamespacedIngressStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchNetworkingV1NamespacedIngressStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4584,11 +6333,78 @@ export const PatchNetworkingV1NamespacedIngressStatusInput =
       method: "PATCH",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status",
     }),
-  );
-export type PatchNetworkingV1NamespacedIngressStatusInput =
-  typeof PatchNetworkingV1NamespacedIngressStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchNetworkingV1NamespacedIngressStatusInput>;
 
 // Output Schema
+export interface PatchNetworkingV1NamespacedIngressStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const PatchNetworkingV1NamespacedIngressStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4734,9 +6550,7 @@ export const PatchNetworkingV1NamespacedIngressStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchNetworkingV1NamespacedIngressStatusOutput =
-  typeof PatchNetworkingV1NamespacedIngressStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchNetworkingV1NamespacedIngressStatusOutput>;
 
 // The operation
 /**
@@ -4757,6 +6571,15 @@ export const patchNetworkingV1NamespacedIngressStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchNetworkingV1NamespacedNetworkPolicyInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4771,11 +6594,96 @@ export const PatchNetworkingV1NamespacedNetworkPolicyInput =
       method: "PATCH",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
     }),
-  );
-export type PatchNetworkingV1NamespacedNetworkPolicyInput =
-  typeof PatchNetworkingV1NamespacedNetworkPolicyInput.Type;
+  ) as unknown as Schema.Codec<PatchNetworkingV1NamespacedNetworkPolicyInput>;
 
 // Output Schema
+export interface PatchNetworkingV1NamespacedNetworkPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    egress?: {
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+      to?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+    }[];
+    ingress?: {
+      from?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+    }[];
+    podSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    policyTypes?: string[];
+  };
+}
 export const PatchNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4971,9 +6879,7 @@ export const PatchNetworkingV1NamespacedNetworkPolicyOutput =
         policyTypes: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type PatchNetworkingV1NamespacedNetworkPolicyOutput =
-  typeof PatchNetworkingV1NamespacedNetworkPolicyOutput.Type;
+  }) as unknown as Schema.Codec<PatchNetworkingV1NamespacedNetworkPolicyOutput>;
 
 // The operation
 /**
@@ -4994,6 +6900,14 @@ export const patchNetworkingV1NamespacedNetworkPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchNetworkingV1ServiceCIDRInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5007,11 +6921,56 @@ export const PatchNetworkingV1ServiceCIDRInput =
       method: "PATCH",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
     }),
-  );
-export type PatchNetworkingV1ServiceCIDRInput =
-  typeof PatchNetworkingV1ServiceCIDRInput.Type;
+  ) as unknown as Schema.Codec<PatchNetworkingV1ServiceCIDRInput>;
 
 // Output Schema
+export interface PatchNetworkingV1ServiceCIDROutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5081,9 +7040,7 @@ export const PatchNetworkingV1ServiceCIDROutput =
         ),
       }),
     ),
-  });
-export type PatchNetworkingV1ServiceCIDROutput =
-  typeof PatchNetworkingV1ServiceCIDROutput.Type;
+  }) as unknown as Schema.Codec<PatchNetworkingV1ServiceCIDROutput>;
 
 // The operation
 /**
@@ -5103,6 +7060,14 @@ export const patchNetworkingV1ServiceCIDR =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchNetworkingV1ServiceCIDRStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchNetworkingV1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5116,11 +7081,56 @@ export const PatchNetworkingV1ServiceCIDRStatusInput =
       method: "PATCH",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}/status",
     }),
-  );
-export type PatchNetworkingV1ServiceCIDRStatusInput =
-  typeof PatchNetworkingV1ServiceCIDRStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchNetworkingV1ServiceCIDRStatusInput>;
 
 // Output Schema
+export interface PatchNetworkingV1ServiceCIDRStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchNetworkingV1ServiceCIDRStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5190,9 +7200,7 @@ export const PatchNetworkingV1ServiceCIDRStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchNetworkingV1ServiceCIDRStatusOutput =
-  typeof PatchNetworkingV1ServiceCIDRStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchNetworkingV1ServiceCIDRStatusOutput>;
 
 // The operation
 /**
@@ -5212,6 +7220,10 @@ export const patchNetworkingV1ServiceCIDRStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadNetworkingV1IPAddressInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5221,11 +7233,53 @@ export const ReadNetworkingV1IPAddressInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
     }),
-  );
-export type ReadNetworkingV1IPAddressInput =
-  typeof ReadNetworkingV1IPAddressInput.Type;
+  ) as unknown as Schema.Codec<ReadNetworkingV1IPAddressInput>;
 
 // Output Schema
+export interface ReadNetworkingV1IPAddressOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    parentRef: {
+      group?: string;
+      name: string;
+      namespace?: string;
+      resource: string;
+    };
+  };
+}
 export const ReadNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5282,9 +7336,7 @@ export const ReadNetworkingV1IPAddressOutput =
         resource: Schema.String,
       }),
     }),
-  });
-export type ReadNetworkingV1IPAddressOutput =
-  typeof ReadNetworkingV1IPAddressOutput.Type;
+  }) as unknown as Schema.Codec<ReadNetworkingV1IPAddressOutput>;
 
 // The operation
 /**
@@ -5301,6 +7353,10 @@ export const readNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReadNetworkingV1IngressClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5310,11 +7366,55 @@ export const ReadNetworkingV1IngressClassInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
     }),
-  );
-export type ReadNetworkingV1IngressClassInput =
-  typeof ReadNetworkingV1IngressClassInput.Type;
+  ) as unknown as Schema.Codec<ReadNetworkingV1IngressClassInput>;
 
 // Output Schema
+export interface ReadNetworkingV1IngressClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    controller?: string;
+    parameters?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+      scope?: string;
+    };
+  };
+}
 export const ReadNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5377,9 +7477,7 @@ export const ReadNetworkingV1IngressClassOutput =
         ),
       }),
     ),
-  });
-export type ReadNetworkingV1IngressClassOutput =
-  typeof ReadNetworkingV1IngressClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadNetworkingV1IngressClassOutput>;
 
 // The operation
 /**
@@ -5395,6 +7493,11 @@ export const readNetworkingV1IngressClass =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadNetworkingV1NamespacedIngressInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5405,11 +7508,78 @@ export const ReadNetworkingV1NamespacedIngressInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
     }),
-  );
-export type ReadNetworkingV1NamespacedIngressInput =
-  typeof ReadNetworkingV1NamespacedIngressInput.Type;
+  ) as unknown as Schema.Codec<ReadNetworkingV1NamespacedIngressInput>;
 
 // Output Schema
+export interface ReadNetworkingV1NamespacedIngressOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const ReadNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5555,9 +7725,7 @@ export const ReadNetworkingV1NamespacedIngressOutput =
         ),
       }),
     ),
-  });
-export type ReadNetworkingV1NamespacedIngressOutput =
-  typeof ReadNetworkingV1NamespacedIngressOutput.Type;
+  }) as unknown as Schema.Codec<ReadNetworkingV1NamespacedIngressOutput>;
 
 // The operation
 /**
@@ -5574,6 +7742,11 @@ export const readNetworkingV1NamespacedIngress =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadNetworkingV1NamespacedIngressStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadNetworkingV1NamespacedIngressStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5584,11 +7757,78 @@ export const ReadNetworkingV1NamespacedIngressStatusInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status",
     }),
-  );
-export type ReadNetworkingV1NamespacedIngressStatusInput =
-  typeof ReadNetworkingV1NamespacedIngressStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadNetworkingV1NamespacedIngressStatusInput>;
 
 // Output Schema
+export interface ReadNetworkingV1NamespacedIngressStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const ReadNetworkingV1NamespacedIngressStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5734,9 +7974,7 @@ export const ReadNetworkingV1NamespacedIngressStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadNetworkingV1NamespacedIngressStatusOutput =
-  typeof ReadNetworkingV1NamespacedIngressStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadNetworkingV1NamespacedIngressStatusOutput>;
 
 // The operation
 /**
@@ -5753,6 +7991,11 @@ export const readNetworkingV1NamespacedIngressStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadNetworkingV1NamespacedNetworkPolicyInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5763,11 +8006,96 @@ export const ReadNetworkingV1NamespacedNetworkPolicyInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
     }),
-  );
-export type ReadNetworkingV1NamespacedNetworkPolicyInput =
-  typeof ReadNetworkingV1NamespacedNetworkPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReadNetworkingV1NamespacedNetworkPolicyInput>;
 
 // Output Schema
+export interface ReadNetworkingV1NamespacedNetworkPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    egress?: {
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+      to?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+    }[];
+    ingress?: {
+      from?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+    }[];
+    podSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    policyTypes?: string[];
+  };
+}
 export const ReadNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5963,9 +8291,7 @@ export const ReadNetworkingV1NamespacedNetworkPolicyOutput =
         policyTypes: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type ReadNetworkingV1NamespacedNetworkPolicyOutput =
-  typeof ReadNetworkingV1NamespacedNetworkPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReadNetworkingV1NamespacedNetworkPolicyOutput>;
 
 // The operation
 /**
@@ -5982,6 +8308,10 @@ export const readNetworkingV1NamespacedNetworkPolicy =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadNetworkingV1ServiceCIDRInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5991,11 +8321,56 @@ export const ReadNetworkingV1ServiceCIDRInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
     }),
-  );
-export type ReadNetworkingV1ServiceCIDRInput =
-  typeof ReadNetworkingV1ServiceCIDRInput.Type;
+  ) as unknown as Schema.Codec<ReadNetworkingV1ServiceCIDRInput>;
 
 // Output Schema
+export interface ReadNetworkingV1ServiceCIDROutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6065,9 +8440,7 @@ export const ReadNetworkingV1ServiceCIDROutput =
         ),
       }),
     ),
-  });
-export type ReadNetworkingV1ServiceCIDROutput =
-  typeof ReadNetworkingV1ServiceCIDROutput.Type;
+  }) as unknown as Schema.Codec<ReadNetworkingV1ServiceCIDROutput>;
 
 // The operation
 /**
@@ -6084,6 +8457,10 @@ export const readNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReadNetworkingV1ServiceCIDRStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadNetworkingV1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6093,11 +8470,56 @@ export const ReadNetworkingV1ServiceCIDRStatusInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}/status",
     }),
-  );
-export type ReadNetworkingV1ServiceCIDRStatusInput =
-  typeof ReadNetworkingV1ServiceCIDRStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadNetworkingV1ServiceCIDRStatusInput>;
 
 // Output Schema
+export interface ReadNetworkingV1ServiceCIDRStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadNetworkingV1ServiceCIDRStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6167,9 +8589,7 @@ export const ReadNetworkingV1ServiceCIDRStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadNetworkingV1ServiceCIDRStatusOutput =
-  typeof ReadNetworkingV1ServiceCIDRStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadNetworkingV1ServiceCIDRStatusOutput>;
 
 // The operation
 /**
@@ -6185,6 +8605,55 @@ export const readNetworkingV1ServiceCIDRStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceNetworkingV1IPAddressInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    parentRef: {
+      group?: string;
+      name: string;
+      namespace?: string;
+      resource: string;
+    };
+  };
+}
 export const ReplaceNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6251,11 +8720,53 @@ export const ReplaceNetworkingV1IPAddressInput =
       method: "PUT",
       path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
     }),
-  );
-export type ReplaceNetworkingV1IPAddressInput =
-  typeof ReplaceNetworkingV1IPAddressInput.Type;
+  ) as unknown as Schema.Codec<ReplaceNetworkingV1IPAddressInput>;
 
 // Output Schema
+export interface ReplaceNetworkingV1IPAddressOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    parentRef: {
+      group?: string;
+      name: string;
+      namespace?: string;
+      resource: string;
+    };
+  };
+}
 export const ReplaceNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6312,9 +8823,7 @@ export const ReplaceNetworkingV1IPAddressOutput =
         resource: Schema.String,
       }),
     }),
-  });
-export type ReplaceNetworkingV1IPAddressOutput =
-  typeof ReplaceNetworkingV1IPAddressOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceNetworkingV1IPAddressOutput>;
 
 // The operation
 /**
@@ -6333,6 +8842,57 @@ export const replaceNetworkingV1IPAddress =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceNetworkingV1IngressClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    controller?: string;
+    parameters?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+      scope?: string;
+    };
+  };
+}
 export const ReplaceNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6405,11 +8965,55 @@ export const ReplaceNetworkingV1IngressClassInput =
       method: "PUT",
       path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
     }),
-  );
-export type ReplaceNetworkingV1IngressClassInput =
-  typeof ReplaceNetworkingV1IngressClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceNetworkingV1IngressClassInput>;
 
 // Output Schema
+export interface ReplaceNetworkingV1IngressClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    controller?: string;
+    parameters?: {
+      apiGroup?: string;
+      kind: string;
+      name: string;
+      namespace?: string;
+      scope?: string;
+    };
+  };
+}
 export const ReplaceNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6472,9 +9076,7 @@ export const ReplaceNetworkingV1IngressClassOutput =
         ),
       }),
     ),
-  });
-export type ReplaceNetworkingV1IngressClassOutput =
-  typeof ReplaceNetworkingV1IngressClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceNetworkingV1IngressClassOutput>;
 
 // The operation
 /**
@@ -6493,6 +9095,81 @@ export const replaceNetworkingV1IngressClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceNetworkingV1NamespacedIngressInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const ReplaceNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6649,11 +9326,78 @@ export const ReplaceNetworkingV1NamespacedIngressInput =
       method: "PUT",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
     }),
-  );
-export type ReplaceNetworkingV1NamespacedIngressInput =
-  typeof ReplaceNetworkingV1NamespacedIngressInput.Type;
+  ) as unknown as Schema.Codec<ReplaceNetworkingV1NamespacedIngressInput>;
 
 // Output Schema
+export interface ReplaceNetworkingV1NamespacedIngressOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const ReplaceNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6799,9 +9543,7 @@ export const ReplaceNetworkingV1NamespacedIngressOutput =
         ),
       }),
     ),
-  });
-export type ReplaceNetworkingV1NamespacedIngressOutput =
-  typeof ReplaceNetworkingV1NamespacedIngressOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceNetworkingV1NamespacedIngressOutput>;
 
 // The operation
 /**
@@ -6821,6 +9563,81 @@ export const replaceNetworkingV1NamespacedIngress =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceNetworkingV1NamespacedIngressStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const ReplaceNetworkingV1NamespacedIngressStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6977,11 +9794,78 @@ export const ReplaceNetworkingV1NamespacedIngressStatusInput =
       method: "PUT",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status",
     }),
-  );
-export type ReplaceNetworkingV1NamespacedIngressStatusInput =
-  typeof ReplaceNetworkingV1NamespacedIngressStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceNetworkingV1NamespacedIngressStatusInput>;
 
 // Output Schema
+export interface ReplaceNetworkingV1NamespacedIngressStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    defaultBackend?: {
+      resource?: { apiGroup?: string; kind: string; name: string };
+      service?: { name: string; port?: { name?: string; number?: number } };
+    };
+    ingressClassName?: string;
+    rules?: {
+      host?: string;
+      http?: {
+        paths: {
+          backend: {
+            resource?: { apiGroup?: string; kind: string; name: string };
+            service?: {
+              name: string;
+              port?: { name?: string; number?: number };
+            };
+          };
+          path?: string;
+          pathType: string;
+        }[];
+      };
+    }[];
+    tls?: { hosts?: string[]; secretName?: string }[];
+  };
+  status?: {
+    loadBalancer?: {
+      ingress?: {
+        hostname?: string;
+        ip?: string;
+        ports?: { error?: string; port: number; protocol: string }[];
+      }[];
+    };
+  };
+}
 export const ReplaceNetworkingV1NamespacedIngressStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7127,9 +10011,7 @@ export const ReplaceNetworkingV1NamespacedIngressStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceNetworkingV1NamespacedIngressStatusOutput =
-  typeof ReplaceNetworkingV1NamespacedIngressStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceNetworkingV1NamespacedIngressStatusOutput>;
 
 // The operation
 /**
@@ -7149,6 +10031,99 @@ export const replaceNetworkingV1NamespacedIngressStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceNetworkingV1NamespacedNetworkPolicyInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    egress?: {
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+      to?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+    }[];
+    ingress?: {
+      from?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+    }[];
+    podSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    policyTypes?: string[];
+  };
+}
 export const ReplaceNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7355,11 +10330,96 @@ export const ReplaceNetworkingV1NamespacedNetworkPolicyInput =
       method: "PUT",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
     }),
-  );
-export type ReplaceNetworkingV1NamespacedNetworkPolicyInput =
-  typeof ReplaceNetworkingV1NamespacedNetworkPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReplaceNetworkingV1NamespacedNetworkPolicyInput>;
 
 // Output Schema
+export interface ReplaceNetworkingV1NamespacedNetworkPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    egress?: {
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+      to?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+    }[];
+    ingress?: {
+      from?: {
+        ipBlock?: { cidr: string; except?: string[] };
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        podSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      }[];
+      ports?: { endPort?: number; port?: string; protocol?: string }[];
+    }[];
+    podSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    policyTypes?: string[];
+  };
+}
 export const ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7555,9 +10615,7 @@ export const ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
         policyTypes: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
-  typeof ReplaceNetworkingV1NamespacedNetworkPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceNetworkingV1NamespacedNetworkPolicyOutput>;
 
 // The operation
 /**
@@ -7577,6 +10635,58 @@ export const replaceNetworkingV1NamespacedNetworkPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceNetworkingV1ServiceCIDRInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7656,11 +10766,56 @@ export const ReplaceNetworkingV1ServiceCIDRInput =
       method: "PUT",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
     }),
-  );
-export type ReplaceNetworkingV1ServiceCIDRInput =
-  typeof ReplaceNetworkingV1ServiceCIDRInput.Type;
+  ) as unknown as Schema.Codec<ReplaceNetworkingV1ServiceCIDRInput>;
 
 // Output Schema
+export interface ReplaceNetworkingV1ServiceCIDROutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7730,9 +10885,7 @@ export const ReplaceNetworkingV1ServiceCIDROutput =
         ),
       }),
     ),
-  });
-export type ReplaceNetworkingV1ServiceCIDROutput =
-  typeof ReplaceNetworkingV1ServiceCIDROutput.Type;
+  }) as unknown as Schema.Codec<ReplaceNetworkingV1ServiceCIDROutput>;
 
 // The operation
 /**
@@ -7751,6 +10904,58 @@ export const replaceNetworkingV1ServiceCIDR =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceNetworkingV1ServiceCIDRStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceNetworkingV1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7830,11 +11035,56 @@ export const ReplaceNetworkingV1ServiceCIDRStatusInput =
       method: "PUT",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}/status",
     }),
-  );
-export type ReplaceNetworkingV1ServiceCIDRStatusInput =
-  typeof ReplaceNetworkingV1ServiceCIDRStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceNetworkingV1ServiceCIDRStatusInput>;
 
 // Output Schema
+export interface ReplaceNetworkingV1ServiceCIDRStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: { cidrs?: string[] };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceNetworkingV1ServiceCIDRStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7904,9 +11154,7 @@ export const ReplaceNetworkingV1ServiceCIDRStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceNetworkingV1ServiceCIDRStatusOutput =
-  typeof ReplaceNetworkingV1ServiceCIDRStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceNetworkingV1ServiceCIDRStatusOutput>;
 
 // The operation
 /**
@@ -7925,6 +11173,21 @@ export const replaceNetworkingV1ServiceCIDRStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchNetworkingV1IPAddressInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7945,18 +11208,18 @@ export const WatchNetworkingV1IPAddressInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ipaddresses/{name}",
     }),
-  );
-export type WatchNetworkingV1IPAddressInput =
-  typeof WatchNetworkingV1IPAddressInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1IPAddressInput>;
 
 // Output Schema
+export interface WatchNetworkingV1IPAddressOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1IPAddressOutput =
-  typeof WatchNetworkingV1IPAddressOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1IPAddressOutput>;
 
 // The operation
 /**
@@ -8024,6 +11287,20 @@ export const watchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchNetworkingV1IPAddressListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1IPAddressListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -8043,18 +11320,18 @@ export const WatchNetworkingV1IPAddressListInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ipaddresses",
     }),
-  );
-export type WatchNetworkingV1IPAddressListInput =
-  typeof WatchNetworkingV1IPAddressListInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1IPAddressListInput>;
 
 // Output Schema
+export interface WatchNetworkingV1IPAddressListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1IPAddressListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1IPAddressListOutput =
-  typeof WatchNetworkingV1IPAddressListOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1IPAddressListOutput>;
 
 // The operation
 /**
@@ -8120,6 +11397,21 @@ export const watchNetworkingV1IPAddressList =
     outputSchema: WatchNetworkingV1IPAddressListOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1IngressClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8140,18 +11432,18 @@ export const WatchNetworkingV1IngressClassInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ingressclasses/{name}",
     }),
-  );
-export type WatchNetworkingV1IngressClassInput =
-  typeof WatchNetworkingV1IngressClassInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1IngressClassInput>;
 
 // Output Schema
+export interface WatchNetworkingV1IngressClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1IngressClassOutput =
-  typeof WatchNetworkingV1IngressClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1IngressClassOutput>;
 
 // The operation
 /**
@@ -8218,6 +11510,20 @@ export const watchNetworkingV1IngressClass =
     outputSchema: WatchNetworkingV1IngressClassOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1IngressClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1IngressClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -8237,18 +11543,18 @@ export const WatchNetworkingV1IngressClassListInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ingressclasses",
     }),
-  );
-export type WatchNetworkingV1IngressClassListInput =
-  typeof WatchNetworkingV1IngressClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1IngressClassListInput>;
 
 // Output Schema
+export interface WatchNetworkingV1IngressClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1IngressClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1IngressClassListOutput =
-  typeof WatchNetworkingV1IngressClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1IngressClassListOutput>;
 
 // The operation
 /**
@@ -8314,6 +11620,20 @@ export const watchNetworkingV1IngressClassList =
     outputSchema: WatchNetworkingV1IngressClassListOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1IngressListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1IngressListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -8333,18 +11653,18 @@ export const WatchNetworkingV1IngressListForAllNamespacesInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ingresses",
     }),
-  );
-export type WatchNetworkingV1IngressListForAllNamespacesInput =
-  typeof WatchNetworkingV1IngressListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1IngressListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchNetworkingV1IngressListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1IngressListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1IngressListForAllNamespacesOutput =
-  typeof WatchNetworkingV1IngressListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1IngressListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -8410,6 +11730,22 @@ export const watchNetworkingV1IngressListForAllNamespaces =
     outputSchema: WatchNetworkingV1IngressListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1NamespacedIngressInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8431,18 +11767,18 @@ export const WatchNetworkingV1NamespacedIngressInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}",
     }),
-  );
-export type WatchNetworkingV1NamespacedIngressInput =
-  typeof WatchNetworkingV1NamespacedIngressInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1NamespacedIngressInput>;
 
 // Output Schema
+export interface WatchNetworkingV1NamespacedIngressOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1NamespacedIngressOutput =
-  typeof WatchNetworkingV1NamespacedIngressOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1NamespacedIngressOutput>;
 
 // The operation
 /**
@@ -8510,6 +11846,21 @@ export const watchNetworkingV1NamespacedIngress =
     outputSchema: WatchNetworkingV1NamespacedIngressOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1NamespacedIngressListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1NamespacedIngressListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -8530,18 +11881,18 @@ export const WatchNetworkingV1NamespacedIngressListInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses",
     }),
-  );
-export type WatchNetworkingV1NamespacedIngressListInput =
-  typeof WatchNetworkingV1NamespacedIngressListInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1NamespacedIngressListInput>;
 
 // Output Schema
+export interface WatchNetworkingV1NamespacedIngressListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1NamespacedIngressListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1NamespacedIngressListOutput =
-  typeof WatchNetworkingV1NamespacedIngressListOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1NamespacedIngressListOutput>;
 
 // The operation
 /**
@@ -8608,6 +11959,22 @@ export const watchNetworkingV1NamespacedIngressList =
     outputSchema: WatchNetworkingV1NamespacedIngressListOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1NamespacedNetworkPolicyInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8629,18 +11996,18 @@ export const WatchNetworkingV1NamespacedNetworkPolicyInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}",
     }),
-  );
-export type WatchNetworkingV1NamespacedNetworkPolicyInput =
-  typeof WatchNetworkingV1NamespacedNetworkPolicyInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1NamespacedNetworkPolicyInput>;
 
 // Output Schema
+export interface WatchNetworkingV1NamespacedNetworkPolicyOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1NamespacedNetworkPolicyOutput =
-  typeof WatchNetworkingV1NamespacedNetworkPolicyOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1NamespacedNetworkPolicyOutput>;
 
 // The operation
 /**
@@ -8708,6 +12075,21 @@ export const watchNetworkingV1NamespacedNetworkPolicy =
     outputSchema: WatchNetworkingV1NamespacedNetworkPolicyOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1NamespacedNetworkPolicyListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1NamespacedNetworkPolicyListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -8728,18 +12110,18 @@ export const WatchNetworkingV1NamespacedNetworkPolicyListInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies",
     }),
-  );
-export type WatchNetworkingV1NamespacedNetworkPolicyListInput =
-  typeof WatchNetworkingV1NamespacedNetworkPolicyListInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1NamespacedNetworkPolicyListInput>;
 
 // Output Schema
+export interface WatchNetworkingV1NamespacedNetworkPolicyListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1NamespacedNetworkPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1NamespacedNetworkPolicyListOutput =
-  typeof WatchNetworkingV1NamespacedNetworkPolicyListOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1NamespacedNetworkPolicyListOutput>;
 
 // The operation
 /**
@@ -8806,6 +12188,20 @@ export const watchNetworkingV1NamespacedNetworkPolicyList =
     outputSchema: WatchNetworkingV1NamespacedNetworkPolicyListOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1NetworkPolicyListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1NetworkPolicyListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -8825,18 +12221,18 @@ export const WatchNetworkingV1NetworkPolicyListForAllNamespacesInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/networkpolicies",
     }),
-  );
-export type WatchNetworkingV1NetworkPolicyListForAllNamespacesInput =
-  typeof WatchNetworkingV1NetworkPolicyListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1NetworkPolicyListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput =
-  typeof WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -8902,6 +12298,21 @@ export const watchNetworkingV1NetworkPolicyListForAllNamespaces =
     outputSchema: WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1ServiceCIDRInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8922,18 +12333,18 @@ export const WatchNetworkingV1ServiceCIDRInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/servicecidrs/{name}",
     }),
-  );
-export type WatchNetworkingV1ServiceCIDRInput =
-  typeof WatchNetworkingV1ServiceCIDRInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1ServiceCIDRInput>;
 
 // Output Schema
+export interface WatchNetworkingV1ServiceCIDROutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1ServiceCIDROutput =
-  typeof WatchNetworkingV1ServiceCIDROutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1ServiceCIDROutput>;
 
 // The operation
 /**
@@ -9000,6 +12411,20 @@ export const watchNetworkingV1ServiceCIDR =
     outputSchema: WatchNetworkingV1ServiceCIDROutput,
   }));
 // Input Schema
+export interface WatchNetworkingV1ServiceCIDRListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchNetworkingV1ServiceCIDRListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -9019,18 +12444,18 @@ export const WatchNetworkingV1ServiceCIDRListInput =
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/servicecidrs",
     }),
-  );
-export type WatchNetworkingV1ServiceCIDRListInput =
-  typeof WatchNetworkingV1ServiceCIDRListInput.Type;
+  ) as unknown as Schema.Codec<WatchNetworkingV1ServiceCIDRListInput>;
 
 // Output Schema
+export interface WatchNetworkingV1ServiceCIDRListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchNetworkingV1ServiceCIDRListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchNetworkingV1ServiceCIDRListOutput =
-  typeof WatchNetworkingV1ServiceCIDRListOutput.Type;
+  }) as unknown as Schema.Codec<WatchNetworkingV1ServiceCIDRListOutput>;
 
 // The operation
 /**

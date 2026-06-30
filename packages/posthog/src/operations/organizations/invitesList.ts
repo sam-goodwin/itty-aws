@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InvitesListInput {
+  organization_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const InvitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
@@ -13,10 +18,49 @@ export const InvitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/organizations/{organization_id}/invites/",
   }),
-);
-export type InvitesListInput = typeof InvitesListInput.Type;
+) as unknown as Schema.Codec<InvitesListInput>;
 
 // Output Schema
+export interface InvitesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    target_email?: string;
+    first_name?: string;
+    emailing_attempt_made?: boolean;
+    level?: 1 | 8 | 15;
+    is_expired?: boolean;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string;
+    updated_at?: string;
+    message?: string | null;
+    private_project_access?: unknown;
+    send_email?: boolean;
+    combine_pending_invites?: boolean;
+  }[];
+}
 export const InvitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -43,7 +87,23 @@ export const InvitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -56,8 +116,7 @@ export const InvitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type InvitesListOutput = typeof InvitesListOutput.Type;
+}) as unknown as Schema.Codec<InvitesListOutput>;
 
 // The operation
 /**

@@ -3,13 +3,21 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV1RegionsPostgresInput {}
 export const GetV1RegionsPostgresInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/v1/regions/postgres" }),
-  );
-export type GetV1RegionsPostgresInput = typeof GetV1RegionsPostgresInput.Type;
+  ) as unknown as Schema.Codec<GetV1RegionsPostgresInput>;
 
 // Output Schema
+export interface GetV1RegionsPostgresOutput {
+  data: {
+    id: string;
+    type: string;
+    name: string;
+    status: "available" | "unavailable";
+  }[];
+}
 export const GetV1RegionsPostgresOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -20,8 +28,7 @@ export const GetV1RegionsPostgresOutput =
         status: Schema.Literals(["available", "unavailable"]),
       }),
     ),
-  });
-export type GetV1RegionsPostgresOutput = typeof GetV1RegionsPostgresOutput.Type;
+  }) as unknown as Schema.Codec<GetV1RegionsPostgresOutput>;
 
 // The operation
 /**

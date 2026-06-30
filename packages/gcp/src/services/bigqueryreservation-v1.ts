@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface Expr {
   expression?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -69,7 +69,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -82,7 +82,7 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
@@ -99,7 +99,7 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(Binding)),
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
@@ -114,7 +114,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -137,7 +137,7 @@ export interface SchedulingPolicy {
   concurrency?: string;
 }
 
-export const SchedulingPolicy: Schema.Schema<SchedulingPolicy> =
+export const SchedulingPolicy: Schema.Codec<SchedulingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxSlots: Schema.optional(Schema.String),
     concurrency: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface Assignment {
   name?: string;
 }
 
-export const Assignment: Schema.Schema<Assignment> =
+export const Assignment: Schema.Codec<Assignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignee: Schema.optional(Schema.String),
     jobType: Schema.optional(Schema.String),
@@ -188,7 +188,7 @@ export interface SearchAllAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const SearchAllAssignmentsResponse: Schema.Schema<SearchAllAssignmentsResponse> =
+export const SearchAllAssignmentsResponse: Schema.Codec<SearchAllAssignmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignments: Schema.optional(Schema.Array(Assignment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -201,7 +201,7 @@ export interface MergeCapacityCommitmentsRequest {
   capacityCommitmentId?: string;
 }
 
-export const MergeCapacityCommitmentsRequest: Schema.Schema<MergeCapacityCommitmentsRequest> =
+export const MergeCapacityCommitmentsRequest: Schema.Codec<MergeCapacityCommitmentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     capacityCommitmentIds: Schema.optional(Schema.Array(Schema.String)),
     capacityCommitmentId: Schema.optional(Schema.String),
@@ -216,7 +216,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -236,7 +236,7 @@ export interface ReplicationStatus {
   lastReplicationTime?: string;
 }
 
-export const ReplicationStatus: Schema.Schema<ReplicationStatus> =
+export const ReplicationStatus: Schema.Codec<ReplicationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     lastErrorTime: Schema.optional(Schema.String),
@@ -296,7 +296,7 @@ export interface CapacityCommitment {
     | (string & {});
 }
 
-export const CapacityCommitment: Schema.Schema<CapacityCommitment> =
+export const CapacityCommitment: Schema.Codec<CapacityCommitment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failureStatus: Schema.optional(Status),
     slotCount: Schema.optional(Schema.String),
@@ -318,7 +318,7 @@ export interface ListCapacityCommitmentsResponse {
   capacityCommitments?: ReadonlyArray<CapacityCommitment>;
 }
 
-export const ListCapacityCommitmentsResponse: Schema.Schema<ListCapacityCommitmentsResponse> =
+export const ListCapacityCommitmentsResponse: Schema.Codec<ListCapacityCommitmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     capacityCommitments: Schema.optional(Schema.Array(CapacityCommitment)),
@@ -329,7 +329,7 @@ export interface ReservationGroup {
   name?: string;
 }
 
-export const ReservationGroup: Schema.Schema<ReservationGroup> =
+export const ReservationGroup: Schema.Codec<ReservationGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReservationGroup" });
@@ -343,7 +343,7 @@ export interface TableReference {
   tableId?: string;
 }
 
-export const TableReference: Schema.Schema<TableReference> =
+export const TableReference: Schema.Codec<TableReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -361,7 +361,7 @@ export interface BiReservation {
   preferredTables?: ReadonlyArray<TableReference>;
 }
 
-export const BiReservation: Schema.Schema<BiReservation> =
+export const BiReservation: Schema.Codec<BiReservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     size: Schema.optional(Schema.String),
@@ -376,7 +376,7 @@ export interface SplitCapacityCommitmentResponse {
   second?: CapacityCommitment;
 }
 
-export const SplitCapacityCommitmentResponse: Schema.Schema<SplitCapacityCommitmentResponse> =
+export const SplitCapacityCommitmentResponse: Schema.Codec<SplitCapacityCommitmentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     first: Schema.optional(CapacityCommitment),
     second: Schema.optional(CapacityCommitment),
@@ -389,7 +389,7 @@ export interface ListAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListAssignmentsResponse: Schema.Schema<ListAssignmentsResponse> =
+export const ListAssignmentsResponse: Schema.Codec<ListAssignmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignments: Schema.optional(Schema.Array(Assignment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -402,7 +402,7 @@ export interface Autoscale {
   currentSlots?: string;
 }
 
-export const Autoscale: Schema.Schema<Autoscale> =
+export const Autoscale: Schema.Codec<Autoscale> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxSlots: Schema.optional(Schema.String),
     currentSlots: Schema.optional(Schema.String),
@@ -457,7 +457,7 @@ export interface Reservation {
   labels?: Record<string, string>;
 }
 
-export const Reservation: Schema.Schema<Reservation> =
+export const Reservation: Schema.Codec<Reservation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replicationStatus: Schema.optional(ReplicationStatus),
     updateTime: Schema.optional(Schema.String),
@@ -486,7 +486,7 @@ export interface SearchAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const SearchAssignmentsResponse: Schema.Schema<SearchAssignmentsResponse> =
+export const SearchAssignmentsResponse: Schema.Codec<SearchAssignmentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assignments: Schema.optional(Schema.Array(Assignment)),
     nextPageToken: Schema.optional(Schema.String),
@@ -499,7 +499,7 @@ export interface MoveAssignmentRequest {
   assignmentId?: string;
 }
 
-export const MoveAssignmentRequest: Schema.Schema<MoveAssignmentRequest> =
+export const MoveAssignmentRequest: Schema.Codec<MoveAssignmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationId: Schema.optional(Schema.String),
     assignmentId: Schema.optional(Schema.String),
@@ -507,7 +507,7 @@ export const MoveAssignmentRequest: Schema.Schema<MoveAssignmentRequest> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -517,7 +517,7 @@ export interface SplitCapacityCommitmentRequest {
   slotCount?: string;
 }
 
-export const SplitCapacityCommitmentRequest: Schema.Schema<SplitCapacityCommitmentRequest> =
+export const SplitCapacityCommitmentRequest: Schema.Codec<SplitCapacityCommitmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slotCount: Schema.optional(Schema.String),
   }).annotate({ identifier: "SplitCapacityCommitmentRequest" });
@@ -529,7 +529,7 @@ export interface ListReservationGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListReservationGroupsResponse: Schema.Schema<ListReservationGroupsResponse> =
+export const ListReservationGroupsResponse: Schema.Codec<ListReservationGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationGroups: Schema.optional(Schema.Array(ReservationGroup)),
     nextPageToken: Schema.optional(Schema.String),
@@ -540,7 +540,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -550,7 +550,7 @@ export interface FailoverReservationRequest {
   failoverMode?: "FAILOVER_MODE_UNSPECIFIED" | "SOFT" | "HARD" | (string & {});
 }
 
-export const FailoverReservationRequest: Schema.Schema<FailoverReservationRequest> =
+export const FailoverReservationRequest: Schema.Codec<FailoverReservationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failoverMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "FailoverReservationRequest" });
@@ -562,7 +562,7 @@ export interface ListReservationsResponse {
   nextPageToken?: string;
 }
 
-export const ListReservationsResponse: Schema.Schema<ListReservationsResponse> =
+export const ListReservationsResponse: Schema.Codec<ListReservationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservations: Schema.optional(Schema.Array(Reservation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -642,7 +642,7 @@ export const SearchAssignmentsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:searchAssignments" }),
     svc,
-  ) as unknown as Schema.Schema<SearchAssignmentsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SearchAssignmentsProjectsLocationsRequest>;
 
 export type SearchAssignmentsProjectsLocationsResponse =
   SearchAssignmentsResponse;
@@ -687,7 +687,7 @@ export const UpdateBiReservationProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateBiReservationProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<UpdateBiReservationProjectsLocationsRequest>;
 
 export type UpdateBiReservationProjectsLocationsResponse = BiReservation;
 export const UpdateBiReservationProjectsLocationsResponse =
@@ -732,7 +732,7 @@ export const SearchAllAssignmentsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:searchAllAssignments" }),
     svc,
-  ) as unknown as Schema.Schema<SearchAllAssignmentsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SearchAllAssignmentsProjectsLocationsRequest>;
 
 export type SearchAllAssignmentsProjectsLocationsResponse =
   SearchAllAssignmentsResponse;
@@ -771,7 +771,7 @@ export const GetBiReservationProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBiReservationProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetBiReservationProjectsLocationsRequest>;
 
 export type GetBiReservationProjectsLocationsResponse = BiReservation;
 export const GetBiReservationProjectsLocationsResponse =
@@ -812,7 +812,7 @@ export const FailoverReservationProjectsLocationsReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FailoverReservationProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<FailoverReservationProjectsLocationsReservationsRequest>;
 
 export type FailoverReservationProjectsLocationsReservationsResponse =
   Reservation;
@@ -856,7 +856,7 @@ export const SetIamPolicyProjectsLocationsReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsReservationsRequest>;
 
 export type SetIamPolicyProjectsLocationsReservationsResponse = Policy;
 export const SetIamPolicyProjectsLocationsReservationsResponse =
@@ -892,7 +892,7 @@ export const GetProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsReservationsRequest>;
 
 export type GetProjectsLocationsReservationsResponse = Reservation;
 export const GetProjectsLocationsReservationsResponse =
@@ -926,7 +926,7 @@ export const DeleteProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsReservationsRequest>;
 
 export type DeleteProjectsLocationsReservationsResponse = Empty;
 export const DeleteProjectsLocationsReservationsResponse =
@@ -968,7 +968,7 @@ export const PatchProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsReservationsRequest>;
 
 export type PatchProjectsLocationsReservationsResponse = Reservation;
 export const PatchProjectsLocationsReservationsResponse =
@@ -1010,7 +1010,7 @@ export const ListProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/reservations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsReservationsRequest>;
 
 export type ListProjectsLocationsReservationsResponse =
   ListReservationsResponse;
@@ -1056,7 +1056,7 @@ export const TestIamPermissionsProjectsLocationsReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsReservationsRequest>;
 
 export type TestIamPermissionsProjectsLocationsReservationsResponse =
   TestIamPermissionsResponse;
@@ -1105,7 +1105,7 @@ export const CreateProjectsLocationsReservationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsReservationsRequest>;
 
 export type CreateProjectsLocationsReservationsResponse = Reservation;
 export const CreateProjectsLocationsReservationsResponse =
@@ -1146,7 +1146,7 @@ export const GetIamPolicyProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsReservationsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsReservationsRequest>;
 
 export type GetIamPolicyProjectsLocationsReservationsResponse = Policy;
 export const GetIamPolicyProjectsLocationsReservationsResponse =
@@ -1187,7 +1187,7 @@ export const SetIamPolicyProjectsLocationsReservationsAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
 
 export type SetIamPolicyProjectsLocationsReservationsAssignmentsResponse =
   Policy;
@@ -1230,7 +1230,7 @@ export const PatchProjectsLocationsReservationsAssignmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsReservationsAssignmentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsReservationsAssignmentsRequest>;
 
 export type PatchProjectsLocationsReservationsAssignmentsResponse = Assignment;
 export const PatchProjectsLocationsReservationsAssignmentsResponse =
@@ -1266,7 +1266,7 @@ export const DeleteProjectsLocationsReservationsAssignmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsReservationsAssignmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsReservationsAssignmentsRequest>;
 
 export type DeleteProjectsLocationsReservationsAssignmentsResponse = Empty;
 export const DeleteProjectsLocationsReservationsAssignmentsResponse =
@@ -1310,7 +1310,7 @@ export const CreateProjectsLocationsReservationsAssignmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/assignments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsReservationsAssignmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsReservationsAssignmentsRequest>;
 
 export type CreateProjectsLocationsReservationsAssignmentsResponse = Assignment;
 export const CreateProjectsLocationsReservationsAssignmentsResponse =
@@ -1349,7 +1349,7 @@ export const MoveProjectsLocationsReservationsAssignmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveProjectsLocationsReservationsAssignmentsRequest>;
+  ) as unknown as Schema.Codec<MoveProjectsLocationsReservationsAssignmentsRequest>;
 
 export type MoveProjectsLocationsReservationsAssignmentsResponse = Assignment;
 export const MoveProjectsLocationsReservationsAssignmentsResponse =
@@ -1390,7 +1390,7 @@ export const GetIamPolicyProjectsLocationsReservationsAssignmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
 
 export type GetIamPolicyProjectsLocationsReservationsAssignmentsResponse =
   Policy;
@@ -1431,7 +1431,7 @@ export const ListProjectsLocationsReservationsAssignmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/assignments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsReservationsAssignmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsReservationsAssignmentsRequest>;
 
 export type ListProjectsLocationsReservationsAssignmentsResponse =
   ListAssignmentsResponse;
@@ -1477,7 +1477,7 @@ export const TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest>;
 
 export type TestIamPermissionsProjectsLocationsReservationsAssignmentsResponse =
   TestIamPermissionsResponse;
@@ -1520,7 +1520,7 @@ export const ListProjectsLocationsReservationGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/reservationGroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsReservationGroupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsReservationGroupsRequest>;
 
 export type ListProjectsLocationsReservationGroupsResponse =
   ListReservationGroupsResponse;
@@ -1559,7 +1559,7 @@ export const GetProjectsLocationsReservationGroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsReservationGroupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsReservationGroupsRequest>;
 
 export type GetProjectsLocationsReservationGroupsResponse = ReservationGroup;
 export const GetProjectsLocationsReservationGroupsResponse =
@@ -1593,7 +1593,7 @@ export const DeleteProjectsLocationsReservationGroupsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsReservationGroupsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsReservationGroupsRequest>;
 
 export type DeleteProjectsLocationsReservationGroupsResponse = Empty;
 export const DeleteProjectsLocationsReservationGroupsResponse =
@@ -1641,7 +1641,7 @@ export const CreateProjectsLocationsReservationGroupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsReservationGroupsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsReservationGroupsRequest>;
 
 export type CreateProjectsLocationsReservationGroupsResponse = ReservationGroup;
 export const CreateProjectsLocationsReservationGroupsResponse =
@@ -1683,7 +1683,7 @@ export const ListProjectsLocationsCapacityCommitmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/capacityCommitments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCapacityCommitmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCapacityCommitmentsRequest>;
 
 export type ListProjectsLocationsCapacityCommitmentsResponse =
   ListCapacityCommitmentsResponse;
@@ -1722,7 +1722,7 @@ export const GetProjectsLocationsCapacityCommitmentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCapacityCommitmentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCapacityCommitmentsRequest>;
 
 export type GetProjectsLocationsCapacityCommitmentsResponse =
   CapacityCommitment;
@@ -1760,7 +1760,7 @@ export const DeleteProjectsLocationsCapacityCommitmentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCapacityCommitmentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCapacityCommitmentsRequest>;
 
 export type DeleteProjectsLocationsCapacityCommitmentsResponse = Empty;
 export const DeleteProjectsLocationsCapacityCommitmentsResponse =
@@ -1813,7 +1813,7 @@ export const CreateProjectsLocationsCapacityCommitmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCapacityCommitmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCapacityCommitmentsRequest>;
 
 export type CreateProjectsLocationsCapacityCommitmentsResponse =
   CapacityCommitment;
@@ -1857,7 +1857,7 @@ export const MergeProjectsLocationsCapacityCommitmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MergeProjectsLocationsCapacityCommitmentsRequest>;
+  ) as unknown as Schema.Codec<MergeProjectsLocationsCapacityCommitmentsRequest>;
 
 export type MergeProjectsLocationsCapacityCommitmentsResponse =
   CapacityCommitment;
@@ -1900,7 +1900,7 @@ export const PatchProjectsLocationsCapacityCommitmentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCapacityCommitmentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCapacityCommitmentsRequest>;
 
 export type PatchProjectsLocationsCapacityCommitmentsResponse =
   CapacityCommitment;
@@ -1940,7 +1940,7 @@ export const SplitProjectsLocationsCapacityCommitmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:split", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SplitProjectsLocationsCapacityCommitmentsRequest>;
+  ) as unknown as Schema.Codec<SplitProjectsLocationsCapacityCommitmentsRequest>;
 
 export type SplitProjectsLocationsCapacityCommitmentsResponse =
   SplitCapacityCommitmentResponse;

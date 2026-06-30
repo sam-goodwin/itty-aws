@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  organization_id?: string;
+  resource_type_slug?: string;
+  resource_external_id?: string;
+  parent_resource_id?: string;
+  parent_resource_type_slug?: string;
+  parent_external_id?: string;
+}
 export const AuthorizationResourcesControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -16,11 +28,27 @@ export const AuthorizationResourcesControllerListInput =
     parent_resource_id: Schema.optional(Schema.String),
     parent_resource_type_slug: Schema.optional(Schema.String),
     parent_external_id: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/authorization/resources" }));
-export type AuthorizationResourcesControllerListInput =
-  typeof AuthorizationResourcesControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/authorization/resources" }),
+  ) as unknown as Schema.Codec<AuthorizationResourcesControllerListInput>;
 
 // Output Schema
+export interface AuthorizationResourcesControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    name?: string;
+    description?: string | null;
+    organization_id?: string;
+    parent_resource_id?: string | null;
+    id?: string;
+    external_id?: string;
+    resource_type_slug?: string;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const AuthorizationResourcesControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -46,9 +74,7 @@ export const AuthorizationResourcesControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AuthorizationResourcesControllerListOutput =
-  typeof AuthorizationResourcesControllerListOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationResourcesControllerListOutput>;
 
 // The operation
 /**

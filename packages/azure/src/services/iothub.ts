@@ -4,12 +4,32 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CertificatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+  properties?: {
+    subject?: string;
+    expiry?: string;
+    thumbprint?: string;
+    isVerified?: boolean;
+    created?: string;
+    updated?: string;
+    certificate?: string;
+  };
+  id?: string;
+  name?: string;
+  etag?: string;
+  type?: string;
+}
 export const CertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -37,11 +57,24 @@ export const CertificatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type CertificatesCreateOrUpdateInput =
-  typeof CertificatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CertificatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface CertificatesCreateOrUpdateOutput {
+  properties?: {
+    subject?: string;
+    expiry?: string;
+    thumbprint?: string;
+    isVerified?: boolean;
+    created?: string;
+    updated?: string;
+    certificate?: string;
+  };
+  id?: string;
+  name?: string;
+  etag?: string;
+  type?: string;
+}
 export const CertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -59,9 +92,7 @@ export const CertificatesCreateOrUpdateOutput =
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type CertificatesCreateOrUpdateOutput =
-  typeof CertificatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CertificatesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -83,6 +114,12 @@ export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+}
 export const CertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -95,12 +132,12 @@ export const CertificatesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<CertificatesDeleteInput>;
 
 // Output Schema
-export const CertificatesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
+export type CertificatesDeleteOutput = void;
+export const CertificatesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -120,6 +157,12 @@ export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CertificatesDeleteOutput,
 }));
 // Input Schema
+export interface CertificatesGenerateVerificationCodeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+}
 export const CertificatesGenerateVerificationCodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -132,11 +175,25 @@ export const CertificatesGenerateVerificationCodeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/generateVerificationCode",
       apiVersion: "2023-06-30",
     }),
-  );
-export type CertificatesGenerateVerificationCodeInput =
-  typeof CertificatesGenerateVerificationCodeInput.Type;
+  ) as unknown as Schema.Codec<CertificatesGenerateVerificationCodeInput>;
 
 // Output Schema
+export interface CertificatesGenerateVerificationCodeOutput {
+  properties?: {
+    subject?: string;
+    expiry?: string;
+    thumbprint?: string;
+    isVerified?: boolean;
+    created?: string;
+    updated?: string;
+    verificationCode?: string;
+    certificate?: string;
+  };
+  id?: string;
+  name?: string;
+  etag?: string;
+  type?: string;
+}
 export const CertificatesGenerateVerificationCodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -155,9 +212,7 @@ export const CertificatesGenerateVerificationCodeOutput =
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type CertificatesGenerateVerificationCodeOutput =
-  typeof CertificatesGenerateVerificationCodeOutput.Type;
+  }) as unknown as Schema.Codec<CertificatesGenerateVerificationCodeOutput>;
 
 // The operation
 /**
@@ -178,6 +233,12 @@ export const CertificatesGenerateVerificationCode =
     outputSchema: CertificatesGenerateVerificationCodeOutput,
   }));
 // Input Schema
+export interface CertificatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+}
 export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -189,10 +250,24 @@ export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}",
     apiVersion: "2023-06-30",
   }),
-);
-export type CertificatesGetInput = typeof CertificatesGetInput.Type;
+) as unknown as Schema.Codec<CertificatesGetInput>;
 
 // Output Schema
+export interface CertificatesGetOutput {
+  properties?: {
+    subject?: string;
+    expiry?: string;
+    thumbprint?: string;
+    isVerified?: boolean;
+    created?: string;
+    updated?: string;
+    certificate?: string;
+  };
+  id?: string;
+  name?: string;
+  etag?: string;
+  type?: string;
+}
 export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
@@ -209,8 +284,7 @@ export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   etag: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
+}) as unknown as Schema.Codec<CertificatesGetOutput>;
 
 // The operation
 /**
@@ -229,6 +303,11 @@ export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CertificatesGetOutput,
 }));
 // Input Schema
+export interface CertificatesListByIotHubInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const CertificatesListByIotHubInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -240,11 +319,26 @@ export const CertificatesListByIotHubInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates",
       apiVersion: "2023-06-30",
     }),
-  );
-export type CertificatesListByIotHubInput =
-  typeof CertificatesListByIotHubInput.Type;
+  ) as unknown as Schema.Codec<CertificatesListByIotHubInput>;
 
 // Output Schema
+export interface CertificatesListByIotHubOutput {
+  value?: {
+    properties?: {
+      subject?: string;
+      expiry?: string;
+      thumbprint?: string;
+      isVerified?: boolean;
+      created?: string;
+      updated?: string;
+      certificate?: string;
+    };
+    id?: string;
+    name?: string;
+    etag?: string;
+    type?: string;
+  }[];
+}
 export const CertificatesListByIotHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -268,9 +362,7 @@ export const CertificatesListByIotHubOutput =
         }),
       ),
     ),
-  });
-export type CertificatesListByIotHubOutput =
-  typeof CertificatesListByIotHubOutput.Type;
+  }) as unknown as Schema.Codec<CertificatesListByIotHubOutput>;
 
 // The operation
 /**
@@ -290,6 +382,13 @@ export const CertificatesListByIotHub = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificatesVerifyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  certificateName: string;
+  certificate?: string;
+}
 export const CertificatesVerifyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -303,10 +402,24 @@ export const CertificatesVerifyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/verify",
       apiVersion: "2023-06-30",
     }),
-  );
-export type CertificatesVerifyInput = typeof CertificatesVerifyInput.Type;
+  ) as unknown as Schema.Codec<CertificatesVerifyInput>;
 
 // Output Schema
+export interface CertificatesVerifyOutput {
+  properties?: {
+    subject?: string;
+    expiry?: string;
+    thumbprint?: string;
+    isVerified?: boolean;
+    created?: string;
+    updated?: string;
+    certificate?: string;
+  };
+  id?: string;
+  name?: string;
+  etag?: string;
+  type?: string;
+}
 export const CertificatesVerifyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -324,8 +437,7 @@ export const CertificatesVerifyOutput =
     name: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type CertificatesVerifyOutput = typeof CertificatesVerifyOutput.Type;
+  }) as unknown as Schema.Codec<CertificatesVerifyOutput>;
 
 // The operation
 /**
@@ -345,6 +457,12 @@ export const CertificatesVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CertificatesVerifyOutput,
 }));
 // Input Schema
+export interface IotHubManualFailoverInput {
+  iotHubName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  failoverRegion: string;
+}
 export const IotHubManualFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
@@ -357,13 +475,12 @@ export const IotHubManualFailoverInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/failover",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubManualFailoverInput = typeof IotHubManualFailoverInput.Type;
+  ) as unknown as Schema.Codec<IotHubManualFailoverInput>;
 
 // Output Schema
+export type IotHubManualFailoverOutput = void;
 export const IotHubManualFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IotHubManualFailoverOutput = typeof IotHubManualFailoverOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IotHubManualFailoverOutput>;
 
 // The operation
 /**
@@ -383,6 +500,10 @@ export const IotHubManualFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+}
 export const IotHubResourceCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -393,19 +514,20 @@ export const IotHubResourceCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/checkNameAvailability",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceCheckNameAvailabilityInput =
-  typeof IotHubResourceCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface IotHubResourceCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const IotHubResourceCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type IotHubResourceCheckNameAvailabilityOutput =
-  typeof IotHubResourceCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -422,6 +544,14 @@ export const IotHubResourceCheckNameAvailability =
     outputSchema: IotHubResourceCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface IotHubResourceCreateEventHubConsumerGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  eventHubEndpointName: string;
+  name: string;
+  properties: { name: string };
+}
 export const IotHubResourceCreateEventHubConsumerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -438,11 +568,16 @@ export const IotHubResourceCreateEventHubConsumerGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceCreateEventHubConsumerGroupInput =
-  typeof IotHubResourceCreateEventHubConsumerGroupInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceCreateEventHubConsumerGroupInput>;
 
 // Output Schema
+export interface IotHubResourceCreateEventHubConsumerGroupOutput {
+  properties?: Record<string, unknown>;
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+}
 export const IotHubResourceCreateEventHubConsumerGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -450,9 +585,7 @@ export const IotHubResourceCreateEventHubConsumerGroupOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
-  });
-export type IotHubResourceCreateEventHubConsumerGroupOutput =
-  typeof IotHubResourceCreateEventHubConsumerGroupOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceCreateEventHubConsumerGroupOutput>;
 
 // The operation
 /**
@@ -473,6 +606,229 @@ export const IotHubResourceCreateEventHubConsumerGroup =
     outputSchema: IotHubResourceCreateEventHubConsumerGroupOutput,
   }));
 // Input Schema
+export interface IotHubResourceCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  etag?: string;
+  properties?: {
+    authorizationPolicies?: {
+      keyName: string;
+      primaryKey?: string;
+      secondaryKey?: string;
+      rights:
+        | "RegistryRead"
+        | "RegistryWrite"
+        | "ServiceConnect"
+        | "DeviceConnect"
+        | "RegistryRead, RegistryWrite"
+        | "RegistryRead, ServiceConnect"
+        | "RegistryRead, DeviceConnect"
+        | "RegistryWrite, ServiceConnect"
+        | "RegistryWrite, DeviceConnect"
+        | "ServiceConnect, DeviceConnect"
+        | "RegistryRead, RegistryWrite, ServiceConnect"
+        | "RegistryRead, RegistryWrite, DeviceConnect"
+        | "RegistryRead, ServiceConnect, DeviceConnect"
+        | "RegistryWrite, ServiceConnect, DeviceConnect"
+        | "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect";
+    }[];
+    disableLocalAuth?: boolean;
+    disableDeviceSAS?: boolean;
+    disableModuleSAS?: boolean;
+    restrictOutboundNetworkAccess?: boolean;
+    allowedFqdnList?: string[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    ipFilterRules?: {
+      filterName: string;
+      action: "Accept" | "Reject";
+      ipMask: string;
+    }[];
+    networkRuleSets?: {
+      defaultAction?: "Deny" | "Allow";
+      applyToBuiltInEventHubEndpoint: boolean;
+      ipRules: { filterName: string; action?: "Allow"; ipMask: string }[];
+    };
+    minTlsVersion?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      properties: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState: {
+          status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+          description: string;
+          actionsRequired?: string;
+        };
+      };
+    }[];
+    provisioningState?: string;
+    state?: string;
+    hostName?: string;
+    eventHubEndpoints?: Record<
+      string,
+      {
+        retentionTimeInDays?: number;
+        partitionCount?: number;
+        partitionIds?: string[];
+        path?: string;
+        endpoint?: string;
+      }
+    >;
+    routing?: {
+      endpoints?: {
+        serviceBusQueues?: {
+          id?: string;
+          connectionString?: string | Redacted.Redacted<string>;
+          endpointUri?: string;
+          entityPath?: string;
+          authenticationType?: "keyBased" | "identityBased";
+          identity?: { userAssignedIdentity?: string };
+          name: string;
+          subscriptionId?: string;
+          resourceGroup?: string;
+        }[];
+        serviceBusTopics?: {
+          id?: string;
+          connectionString?: string | Redacted.Redacted<string>;
+          endpointUri?: string;
+          entityPath?: string;
+          authenticationType?: "keyBased" | "identityBased";
+          identity?: { userAssignedIdentity?: string };
+          name: string;
+          subscriptionId?: string;
+          resourceGroup?: string;
+        }[];
+        eventHubs?: {
+          id?: string;
+          connectionString?: string | Redacted.Redacted<string>;
+          endpointUri?: string;
+          entityPath?: string;
+          authenticationType?: "keyBased" | "identityBased";
+          identity?: { userAssignedIdentity?: string };
+          name: string;
+          subscriptionId?: string;
+          resourceGroup?: string;
+        }[];
+        storageContainers?: {
+          id?: string;
+          connectionString?: string | Redacted.Redacted<string>;
+          endpointUri?: string;
+          authenticationType?: "keyBased" | "identityBased";
+          identity?: { userAssignedIdentity?: string };
+          name: string;
+          subscriptionId?: string;
+          resourceGroup?: string;
+          containerName: string;
+          fileNameFormat?: string;
+          batchFrequencyInSeconds?: number;
+          maxChunkSizeInBytes?: number;
+          encoding?: "Avro" | "AvroDeflate" | "JSON";
+        }[];
+        cosmosDBSqlContainers?: {
+          name: string;
+          id?: string;
+          subscriptionId?: string;
+          resourceGroup?: string;
+          endpointUri: string;
+          authenticationType?: "keyBased" | "identityBased";
+          identity?: { userAssignedIdentity?: string };
+          primaryKey?: string;
+          secondaryKey?: string;
+          databaseName: string;
+          containerName: string;
+          partitionKeyName?: string;
+          partitionKeyTemplate?: string;
+        }[];
+      };
+      routes?: {
+        name: string;
+        source:
+          | "Invalid"
+          | "DeviceMessages"
+          | "TwinChangeEvents"
+          | "DeviceLifecycleEvents"
+          | "DeviceJobLifecycleEvents"
+          | "DeviceConnectionStateEvents";
+        condition?: string;
+        endpointNames: string[];
+        isEnabled: boolean;
+      }[];
+      fallbackRoute?: {
+        name?: string;
+        source: "DeviceMessages";
+        condition?: string;
+        endpointNames: string[];
+        isEnabled: boolean;
+      };
+      enrichments?: { key: string; value: string; endpointNames: string[] }[];
+    };
+    storageEndpoints?: Record<
+      string,
+      {
+        sasTtlAsIso8601?: string;
+        connectionString: string | Redacted.Redacted<string>;
+        containerName: string;
+        authenticationType?: "keyBased" | "identityBased";
+        identity?: { userAssignedIdentity?: string };
+      }
+    >;
+    messagingEndpoints?: Record<
+      string,
+      {
+        lockDurationAsIso8601?: string;
+        ttlAsIso8601?: string;
+        maxDeliveryCount?: number;
+      }
+    >;
+    enableFileUploadNotifications?: boolean;
+    cloudToDevice?: {
+      maxDeliveryCount?: number;
+      defaultTtlAsIso8601?: string;
+      feedback?: {
+        lockDurationAsIso8601?: string;
+        ttlAsIso8601?: string;
+        maxDeliveryCount?: number;
+      };
+    };
+    comments?: string;
+    features?: "None" | "DeviceManagement";
+    locations?: { location?: string; role?: "primary" | "secondary" }[];
+    enableDataResidency?: boolean;
+  };
+  sku: {
+    name: "F1" | "S1" | "S2" | "S3" | "B1" | "B2" | "B3";
+    tier?: "Free" | "Standard" | "Basic";
+    capacity?: number;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const IotHubResourceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -848,11 +1204,16 @@ export const IotHubResourceCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceCreateOrUpdateInput =
-  typeof IotHubResourceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceCreateOrUpdateInput>;
 
 // Output Schema
+export interface IotHubResourceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const IotHubResourceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -860,9 +1221,7 @@ export const IotHubResourceCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type IotHubResourceCreateOrUpdateOutput =
-  typeof IotHubResourceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -882,6 +1241,11 @@ export const IotHubResourceCreateOrUpdate =
     outputSchema: IotHubResourceCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface IotHubResourceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const IotHubResourceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -893,10 +1257,16 @@ export const IotHubResourceDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceDeleteInput = typeof IotHubResourceDeleteInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceDeleteInput>;
 
 // Output Schema
+export interface IotHubResourceDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const IotHubResourceDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -904,8 +1274,7 @@ export const IotHubResourceDeleteOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type IotHubResourceDeleteOutput = typeof IotHubResourceDeleteOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceDeleteOutput>;
 
 // The operation
 /**
@@ -925,6 +1294,13 @@ export const IotHubResourceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceDeleteEventHubConsumerGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  eventHubEndpointName: string;
+  name: string;
+}
 export const IotHubResourceDeleteEventHubConsumerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -938,15 +1314,12 @@ export const IotHubResourceDeleteEventHubConsumerGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceDeleteEventHubConsumerGroupInput =
-  typeof IotHubResourceDeleteEventHubConsumerGroupInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceDeleteEventHubConsumerGroupInput>;
 
 // Output Schema
+export type IotHubResourceDeleteEventHubConsumerGroupOutput = void;
 export const IotHubResourceDeleteEventHubConsumerGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IotHubResourceDeleteEventHubConsumerGroupOutput =
-  typeof IotHubResourceDeleteEventHubConsumerGroupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IotHubResourceDeleteEventHubConsumerGroupOutput>;
 
 // The operation
 /**
@@ -967,6 +1340,18 @@ export const IotHubResourceDeleteEventHubConsumerGroup =
     outputSchema: IotHubResourceDeleteEventHubConsumerGroupOutput,
   }));
 // Input Schema
+export interface IotHubResourceExportDevicesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  exportBlobContainerUri: string;
+  excludeKeys: boolean;
+  exportBlobName?: string;
+  authenticationType?: "keyBased" | "identityBased";
+  identity?: { userAssignedIdentity?: string };
+  includeConfigurations?: boolean;
+  configurationsBlobName?: string;
+}
 export const IotHubResourceExportDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -991,11 +1376,35 @@ export const IotHubResourceExportDevicesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/exportDevices",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceExportDevicesInput =
-  typeof IotHubResourceExportDevicesInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceExportDevicesInput>;
 
 // Output Schema
+export interface IotHubResourceExportDevicesOutput {
+  jobId?: string;
+  startTimeUtc?: string;
+  endTimeUtc?: string;
+  type?:
+    | "unknown"
+    | "export"
+    | "import"
+    | "backup"
+    | "readDeviceProperties"
+    | "writeDeviceProperties"
+    | "updateDeviceConfiguration"
+    | "rebootDevice"
+    | "factoryResetDevice"
+    | "firmwareUpdate";
+  status?:
+    | "unknown"
+    | "enqueued"
+    | "running"
+    | "completed"
+    | "failed"
+    | "cancelled";
+  failureReason?: string;
+  statusMessage?: string;
+  parentJobId?: string;
+}
 export const IotHubResourceExportDevicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
@@ -1028,9 +1437,7 @@ export const IotHubResourceExportDevicesOutput =
     failureReason: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     parentJobId: Schema.optional(Schema.String),
-  });
-export type IotHubResourceExportDevicesOutput =
-  typeof IotHubResourceExportDevicesOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceExportDevicesOutput>;
 
 // The operation
 /**
@@ -1050,6 +1457,11 @@ export const IotHubResourceExportDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const IotHubResourceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1062,10 +1474,16 @@ export const IotHubResourceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
     apiVersion: "2023-06-30",
   }),
-);
-export type IotHubResourceGetInput = typeof IotHubResourceGetInput.Type;
+) as unknown as Schema.Codec<IotHubResourceGetInput>;
 
 // Output Schema
+export interface IotHubResourceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const IotHubResourceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1073,8 +1491,7 @@ export const IotHubResourceGetOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type IotHubResourceGetOutput = typeof IotHubResourceGetOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceGetOutput>;
 
 // The operation
 /**
@@ -1092,6 +1509,11 @@ export const IotHubResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IotHubResourceGetOutput,
 }));
 // Input Schema
+export interface IotHubResourceGetEndpointHealthInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  iotHubName: string;
+}
 export const IotHubResourceGetEndpointHealthInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1103,11 +1525,20 @@ export const IotHubResourceGetEndpointHealthInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routingEndpointsHealth",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceGetEndpointHealthInput =
-  typeof IotHubResourceGetEndpointHealthInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceGetEndpointHealthInput>;
 
 // Output Schema
+export interface IotHubResourceGetEndpointHealthOutput {
+  value?: {
+    endpointId?: string;
+    healthStatus?: "unknown" | "healthy" | "degraded" | "unhealthy" | "dead";
+    lastKnownError?: string;
+    lastKnownErrorTime?: string;
+    lastSuccessfulSendAttemptTime?: string;
+    lastSendAttemptTime?: string;
+  }[];
+  nextLink?: string;
+}
 export const IotHubResourceGetEndpointHealthOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1131,9 +1562,7 @@ export const IotHubResourceGetEndpointHealthOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IotHubResourceGetEndpointHealthOutput =
-  typeof IotHubResourceGetEndpointHealthOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceGetEndpointHealthOutput>;
 
 // The operation
 /**
@@ -1150,6 +1579,13 @@ export const IotHubResourceGetEndpointHealth =
     outputSchema: IotHubResourceGetEndpointHealthOutput,
   }));
 // Input Schema
+export interface IotHubResourceGetEventHubConsumerGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  eventHubEndpointName: string;
+  name: string;
+}
 export const IotHubResourceGetEventHubConsumerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1163,11 +1599,16 @@ export const IotHubResourceGetEventHubConsumerGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceGetEventHubConsumerGroupInput =
-  typeof IotHubResourceGetEventHubConsumerGroupInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceGetEventHubConsumerGroupInput>;
 
 // Output Schema
+export interface IotHubResourceGetEventHubConsumerGroupOutput {
+  properties?: Record<string, unknown>;
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+}
 export const IotHubResourceGetEventHubConsumerGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1175,9 +1616,7 @@ export const IotHubResourceGetEventHubConsumerGroupOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
-  });
-export type IotHubResourceGetEventHubConsumerGroupOutput =
-  typeof IotHubResourceGetEventHubConsumerGroupOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceGetEventHubConsumerGroupOutput>;
 
 // The operation
 /**
@@ -1198,6 +1637,12 @@ export const IotHubResourceGetEventHubConsumerGroup =
     outputSchema: IotHubResourceGetEventHubConsumerGroupOutput,
   }));
 // Input Schema
+export interface IotHubResourceGetJobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  jobId: string;
+}
 export const IotHubResourceGetJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1210,10 +1655,35 @@ export const IotHubResourceGetJobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs/{jobId}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceGetJobInput = typeof IotHubResourceGetJobInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceGetJobInput>;
 
 // Output Schema
+export interface IotHubResourceGetJobOutput {
+  jobId?: string;
+  startTimeUtc?: string;
+  endTimeUtc?: string;
+  type?:
+    | "unknown"
+    | "export"
+    | "import"
+    | "backup"
+    | "readDeviceProperties"
+    | "writeDeviceProperties"
+    | "updateDeviceConfiguration"
+    | "rebootDevice"
+    | "factoryResetDevice"
+    | "firmwareUpdate";
+  status?:
+    | "unknown"
+    | "enqueued"
+    | "running"
+    | "completed"
+    | "failed"
+    | "cancelled";
+  failureReason?: string;
+  statusMessage?: string;
+  parentJobId?: string;
+}
 export const IotHubResourceGetJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
@@ -1246,8 +1716,7 @@ export const IotHubResourceGetJobOutput =
     failureReason: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     parentJobId: Schema.optional(Schema.String),
-  });
-export type IotHubResourceGetJobOutput = typeof IotHubResourceGetJobOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceGetJobOutput>;
 
 // The operation
 /**
@@ -1268,6 +1737,12 @@ export const IotHubResourceGetJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceGetKeysForKeyNameInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  keyName: string;
+}
 export const IotHubResourceGetKeysForKeyNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1280,11 +1755,30 @@ export const IotHubResourceGetKeysForKeyNameInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubKeys/{keyName}/listkeys",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceGetKeysForKeyNameInput =
-  typeof IotHubResourceGetKeysForKeyNameInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceGetKeysForKeyNameInput>;
 
 // Output Schema
+export interface IotHubResourceGetKeysForKeyNameOutput {
+  keyName: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  rights:
+    | "RegistryRead"
+    | "RegistryWrite"
+    | "ServiceConnect"
+    | "DeviceConnect"
+    | "RegistryRead, RegistryWrite"
+    | "RegistryRead, ServiceConnect"
+    | "RegistryRead, DeviceConnect"
+    | "RegistryWrite, ServiceConnect"
+    | "RegistryWrite, DeviceConnect"
+    | "ServiceConnect, DeviceConnect"
+    | "RegistryRead, RegistryWrite, ServiceConnect"
+    | "RegistryRead, RegistryWrite, DeviceConnect"
+    | "RegistryRead, ServiceConnect, DeviceConnect"
+    | "RegistryWrite, ServiceConnect, DeviceConnect"
+    | "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect";
+}
 export const IotHubResourceGetKeysForKeyNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyName: Schema.String,
@@ -1307,9 +1801,7 @@ export const IotHubResourceGetKeysForKeyNameOutput =
       "RegistryWrite, ServiceConnect, DeviceConnect",
       "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect",
     ]),
-  });
-export type IotHubResourceGetKeysForKeyNameOutput =
-  typeof IotHubResourceGetKeysForKeyNameOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceGetKeysForKeyNameOutput>;
 
 // The operation
 /**
@@ -1329,6 +1821,11 @@ export const IotHubResourceGetKeysForKeyName =
     outputSchema: IotHubResourceGetKeysForKeyNameOutput,
   }));
 // Input Schema
+export interface IotHubResourceGetQuotaMetricsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const IotHubResourceGetQuotaMetricsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1340,11 +1837,13 @@ export const IotHubResourceGetQuotaMetricsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceGetQuotaMetricsInput =
-  typeof IotHubResourceGetQuotaMetricsInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceGetQuotaMetricsInput>;
 
 // Output Schema
+export interface IotHubResourceGetQuotaMetricsOutput {
+  value?: { name?: string; currentValue?: number; maxValue?: number }[];
+  nextLink?: string;
+}
 export const IotHubResourceGetQuotaMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1357,9 +1856,7 @@ export const IotHubResourceGetQuotaMetricsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IotHubResourceGetQuotaMetricsOutput =
-  typeof IotHubResourceGetQuotaMetricsOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceGetQuotaMetricsOutput>;
 
 // The operation
 /**
@@ -1378,6 +1875,11 @@ export const IotHubResourceGetQuotaMetrics =
     outputSchema: IotHubResourceGetQuotaMetricsOutput,
   }));
 // Input Schema
+export interface IotHubResourceGetStatsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const IotHubResourceGetStatsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1389,19 +1891,20 @@ export const IotHubResourceGetStatsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubStats",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceGetStatsInput =
-  typeof IotHubResourceGetStatsInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceGetStatsInput>;
 
 // Output Schema
+export interface IotHubResourceGetStatsOutput {
+  totalDeviceCount?: number;
+  enabledDeviceCount?: number;
+  disabledDeviceCount?: number;
+}
 export const IotHubResourceGetStatsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalDeviceCount: Schema.optional(Schema.Number),
     enabledDeviceCount: Schema.optional(Schema.Number),
     disabledDeviceCount: Schema.optional(Schema.Number),
-  });
-export type IotHubResourceGetStatsOutput =
-  typeof IotHubResourceGetStatsOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceGetStatsOutput>;
 
 // The operation
 /**
@@ -1421,6 +1924,11 @@ export const IotHubResourceGetStats = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceGetValidSkusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const IotHubResourceGetValidSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1432,11 +1940,26 @@ export const IotHubResourceGetValidSkusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceGetValidSkusInput =
-  typeof IotHubResourceGetValidSkusInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceGetValidSkusInput>;
 
 // Output Schema
+export interface IotHubResourceGetValidSkusOutput {
+  value?: {
+    resourceType?: string;
+    sku: {
+      name: "F1" | "S1" | "S2" | "S3" | "B1" | "B2" | "B3";
+      tier?: "Free" | "Standard" | "Basic";
+      capacity?: number;
+    };
+    capacity: {
+      minimum?: number;
+      maximum?: number;
+      default?: number;
+      scaleType?: "Automatic" | "Manual" | "None";
+    };
+  }[];
+  nextLink?: string;
+}
 export const IotHubResourceGetValidSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1462,9 +1985,7 @@ export const IotHubResourceGetValidSkusOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IotHubResourceGetValidSkusOutput =
-  typeof IotHubResourceGetValidSkusOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceGetValidSkusOutput>;
 
 // The operation
 /**
@@ -1484,6 +2005,19 @@ export const IotHubResourceGetValidSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceImportDevicesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  inputBlobContainerUri: string;
+  outputBlobContainerUri: string;
+  inputBlobName?: string;
+  outputBlobName?: string;
+  authenticationType?: "keyBased" | "identityBased";
+  identity?: { userAssignedIdentity?: string };
+  includeConfigurations?: boolean;
+  configurationsBlobName?: string;
+}
 export const IotHubResourceImportDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1509,11 +2043,35 @@ export const IotHubResourceImportDevicesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/importDevices",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceImportDevicesInput =
-  typeof IotHubResourceImportDevicesInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceImportDevicesInput>;
 
 // Output Schema
+export interface IotHubResourceImportDevicesOutput {
+  jobId?: string;
+  startTimeUtc?: string;
+  endTimeUtc?: string;
+  type?:
+    | "unknown"
+    | "export"
+    | "import"
+    | "backup"
+    | "readDeviceProperties"
+    | "writeDeviceProperties"
+    | "updateDeviceConfiguration"
+    | "rebootDevice"
+    | "factoryResetDevice"
+    | "firmwareUpdate";
+  status?:
+    | "unknown"
+    | "enqueued"
+    | "running"
+    | "completed"
+    | "failed"
+    | "cancelled";
+  failureReason?: string;
+  statusMessage?: string;
+  parentJobId?: string;
+}
 export const IotHubResourceImportDevicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobId: Schema.optional(Schema.String),
@@ -1546,9 +2104,7 @@ export const IotHubResourceImportDevicesOutput =
     failureReason: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     parentJobId: Schema.optional(Schema.String),
-  });
-export type IotHubResourceImportDevicesOutput =
-  typeof IotHubResourceImportDevicesOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceImportDevicesOutput>;
 
 // The operation
 /**
@@ -1568,6 +2124,10 @@ export const IotHubResourceImportDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const IotHubResourceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1578,11 +2138,19 @@ export const IotHubResourceListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceListByResourceGroupInput =
-  typeof IotHubResourceListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceListByResourceGroupInput>;
 
 // Output Schema
+export interface IotHubResourceListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const IotHubResourceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1597,9 +2165,7 @@ export const IotHubResourceListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IotHubResourceListByResourceGroupOutput =
-  typeof IotHubResourceListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1617,6 +2183,9 @@ export const IotHubResourceListByResourceGroup =
     outputSchema: IotHubResourceListByResourceGroupOutput,
   }));
 // Input Schema
+export interface IotHubResourceListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const IotHubResourceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1626,11 +2195,19 @@ export const IotHubResourceListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/IotHubs",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceListBySubscriptionInput =
-  typeof IotHubResourceListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceListBySubscriptionInput>;
 
 // Output Schema
+export interface IotHubResourceListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const IotHubResourceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1645,9 +2222,7 @@ export const IotHubResourceListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IotHubResourceListBySubscriptionOutput =
-  typeof IotHubResourceListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1664,6 +2239,12 @@ export const IotHubResourceListBySubscription =
     outputSchema: IotHubResourceListBySubscriptionOutput,
   }));
 // Input Schema
+export interface IotHubResourceListEventHubConsumerGroupsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  eventHubEndpointName: string;
+}
 export const IotHubResourceListEventHubConsumerGroupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1676,11 +2257,19 @@ export const IotHubResourceListEventHubConsumerGroupsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceListEventHubConsumerGroupsInput =
-  typeof IotHubResourceListEventHubConsumerGroupsInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceListEventHubConsumerGroupsInput>;
 
 // Output Schema
+export interface IotHubResourceListEventHubConsumerGroupsOutput {
+  value?: {
+    properties?: Record<string, unknown>;
+    id?: string;
+    name?: string;
+    type?: string;
+    etag?: string;
+  }[];
+  nextLink?: string;
+}
 export const IotHubResourceListEventHubConsumerGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1697,9 +2286,7 @@ export const IotHubResourceListEventHubConsumerGroupsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IotHubResourceListEventHubConsumerGroupsOutput =
-  typeof IotHubResourceListEventHubConsumerGroupsOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceListEventHubConsumerGroupsOutput>;
 
 // The operation
 /**
@@ -1719,6 +2306,11 @@ export const IotHubResourceListEventHubConsumerGroups =
     outputSchema: IotHubResourceListEventHubConsumerGroupsOutput,
   }));
 // Input Schema
+export interface IotHubResourceListJobsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const IotHubResourceListJobsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1730,11 +2322,38 @@ export const IotHubResourceListJobsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceListJobsInput =
-  typeof IotHubResourceListJobsInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceListJobsInput>;
 
 // Output Schema
+export interface IotHubResourceListJobsOutput {
+  value?: {
+    jobId?: string;
+    startTimeUtc?: string;
+    endTimeUtc?: string;
+    type?:
+      | "unknown"
+      | "export"
+      | "import"
+      | "backup"
+      | "readDeviceProperties"
+      | "writeDeviceProperties"
+      | "updateDeviceConfiguration"
+      | "rebootDevice"
+      | "factoryResetDevice"
+      | "firmwareUpdate";
+    status?:
+      | "unknown"
+      | "enqueued"
+      | "running"
+      | "completed"
+      | "failed"
+      | "cancelled";
+    failureReason?: string;
+    statusMessage?: string;
+    parentJobId?: string;
+  }[];
+  nextLink?: string;
+}
 export const IotHubResourceListJobsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1774,9 +2393,7 @@ export const IotHubResourceListJobsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IotHubResourceListJobsOutput =
-  typeof IotHubResourceListJobsOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceListJobsOutput>;
 
 // The operation
 /**
@@ -1796,6 +2413,11 @@ export const IotHubResourceListJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const IotHubResourceListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1807,11 +2429,33 @@ export const IotHubResourceListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/listkeys",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceListKeysInput =
-  typeof IotHubResourceListKeysInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceListKeysInput>;
 
 // Output Schema
+export interface IotHubResourceListKeysOutput {
+  value?: {
+    keyName: string;
+    primaryKey?: string;
+    secondaryKey?: string;
+    rights:
+      | "RegistryRead"
+      | "RegistryWrite"
+      | "ServiceConnect"
+      | "DeviceConnect"
+      | "RegistryRead, RegistryWrite"
+      | "RegistryRead, ServiceConnect"
+      | "RegistryRead, DeviceConnect"
+      | "RegistryWrite, ServiceConnect"
+      | "RegistryWrite, DeviceConnect"
+      | "ServiceConnect, DeviceConnect"
+      | "RegistryRead, RegistryWrite, ServiceConnect"
+      | "RegistryRead, RegistryWrite, DeviceConnect"
+      | "RegistryRead, ServiceConnect, DeviceConnect"
+      | "RegistryWrite, ServiceConnect, DeviceConnect"
+      | "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect";
+  }[];
+  nextLink?: string;
+}
 export const IotHubResourceListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1841,9 +2485,7 @@ export const IotHubResourceListKeysOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IotHubResourceListKeysOutput =
-  typeof IotHubResourceListKeysOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceListKeysOutput>;
 
 // The operation
 /**
@@ -1863,6 +2505,27 @@ export const IotHubResourceListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceTestAllRoutesInput {
+  iotHubName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  routingSource?:
+    | "Invalid"
+    | "DeviceMessages"
+    | "TwinChangeEvents"
+    | "DeviceLifecycleEvents"
+    | "DeviceJobLifecycleEvents"
+    | "DeviceConnectionStateEvents";
+  message?: {
+    body?: string;
+    appProperties?: Record<string, string>;
+    systemProperties?: Record<string, string>;
+  };
+  twin?: {
+    tags?: unknown;
+    properties?: { desired?: unknown; reported?: unknown };
+  };
+}
 export const IotHubResourceTestAllRoutesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
@@ -1906,11 +2569,26 @@ export const IotHubResourceTestAllRoutesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testall",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceTestAllRoutesInput =
-  typeof IotHubResourceTestAllRoutesInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceTestAllRoutesInput>;
 
 // Output Schema
+export interface IotHubResourceTestAllRoutesOutput {
+  routes?: {
+    properties?: {
+      name: string;
+      source:
+        | "Invalid"
+        | "DeviceMessages"
+        | "TwinChangeEvents"
+        | "DeviceLifecycleEvents"
+        | "DeviceJobLifecycleEvents"
+        | "DeviceConnectionStateEvents";
+      condition?: string;
+      endpointNames: string[];
+      isEnabled: boolean;
+    };
+  }[];
+}
 export const IotHubResourceTestAllRoutesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routes: Schema.optional(
@@ -1935,9 +2613,7 @@ export const IotHubResourceTestAllRoutesOutput =
         }),
       ),
     ),
-  });
-export type IotHubResourceTestAllRoutesOutput =
-  typeof IotHubResourceTestAllRoutesOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceTestAllRoutesOutput>;
 
 // The operation
 /**
@@ -1957,6 +2633,33 @@ export const IotHubResourceTestAllRoutes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceTestRouteInput {
+  iotHubName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  message?: {
+    body?: string;
+    appProperties?: Record<string, string>;
+    systemProperties?: Record<string, string>;
+  };
+  route: {
+    name: string;
+    source:
+      | "Invalid"
+      | "DeviceMessages"
+      | "TwinChangeEvents"
+      | "DeviceLifecycleEvents"
+      | "DeviceJobLifecycleEvents"
+      | "DeviceConnectionStateEvents";
+    condition?: string;
+    endpointNames: string[];
+    isEnabled: boolean;
+  };
+  twin?: {
+    tags?: unknown;
+    properties?: { desired?: unknown; reported?: unknown };
+  };
+}
 export const IotHubResourceTestRouteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
@@ -2004,11 +2707,22 @@ export const IotHubResourceTestRouteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{iotHubName}/routing/routes/$testnew",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceTestRouteInput =
-  typeof IotHubResourceTestRouteInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceTestRouteInput>;
 
 // Output Schema
+export interface IotHubResourceTestRouteOutput {
+  result?: "undefined" | "false" | "true";
+  details?: {
+    compilationErrors?: {
+      message?: string;
+      severity?: "error" | "warning";
+      location?: {
+        start?: { line?: number; column?: number };
+        end?: { line?: number; column?: number };
+      };
+    }[];
+  };
+}
 export const IotHubResourceTestRouteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Literals(["undefined", "false", "true"])),
@@ -2040,9 +2754,7 @@ export const IotHubResourceTestRouteOutput =
         ),
       }),
     ),
-  });
-export type IotHubResourceTestRouteOutput =
-  typeof IotHubResourceTestRouteOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceTestRouteOutput>;
 
 // The operation
 /**
@@ -2062,6 +2774,12 @@ export const IotHubResourceTestRoute = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotHubResourceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: unknown;
+}
 export const IotHubResourceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2074,10 +2792,16 @@ export const IotHubResourceUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type IotHubResourceUpdateInput = typeof IotHubResourceUpdateInput.Type;
+  ) as unknown as Schema.Codec<IotHubResourceUpdateInput>;
 
 // Output Schema
+export interface IotHubResourceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const IotHubResourceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2085,8 +2809,7 @@ export const IotHubResourceUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type IotHubResourceUpdateOutput = typeof IotHubResourceUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IotHubResourceUpdateOutput>;
 
 // The operation
 /**
@@ -2106,6 +2829,7 @@ export const IotHubResourceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2114,10 +2838,21 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Devices/operations",
     apiVersion: "2023-06-30",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2135,8 +2870,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2149,6 +2883,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2161,11 +2901,22 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const PrivateEndpointConnectionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2188,9 +2939,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
         actionsRequired: Schema.optional(Schema.String),
       }),
     }),
-  });
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2210,6 +2959,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2222,11 +2977,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2249,9 +3015,7 @@ export const PrivateEndpointConnectionsGetOutput =
         actionsRequired: Schema.optional(Schema.String),
       }),
     }),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -2271,6 +3035,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2282,11 +3051,22 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections",
       apiVersion: "2023-06-30",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsListOutput = {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description: string;
+      actionsRequired?: string;
+    };
+  };
+}[];
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -2311,9 +3091,7 @@ export const PrivateEndpointConnectionsListOutput =
         }),
       }),
     }),
-  );
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -2332,6 +3110,23 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2364,11 +3159,22 @@ export const PrivateEndpointConnectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type PrivateEndpointConnectionsUpdateInput =
-  typeof PrivateEndpointConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const PrivateEndpointConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2391,9 +3197,7 @@ export const PrivateEndpointConnectionsUpdateOutput =
         actionsRequired: Schema.optional(Schema.String),
       }),
     }),
-  });
-export type PrivateEndpointConnectionsUpdateOutput =
-  typeof PrivateEndpointConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -2413,6 +3217,12 @@ export const PrivateEndpointConnectionsUpdate =
     outputSchema: PrivateEndpointConnectionsUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  groupId: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2425,11 +3235,19 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources/{groupId}",
       apiVersion: "2023-06-30",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties: {
+    groupId?: string;
+    requiredMembers?: string[];
+    requiredZoneNames?: string[];
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2440,9 +3258,7 @@ export const PrivateLinkResourcesGetOutput =
       requiredMembers: Schema.optional(Schema.Array(Schema.String)),
       requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
     }),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -2463,6 +3279,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2474,11 +3295,21 @@ export const PrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources",
       apiVersion: "2023-06-30",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties: {
+      groupId?: string;
+      requiredMembers?: string[];
+      requiredZoneNames?: string[];
+    };
+  }[];
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2495,9 +3326,7 @@ export const PrivateLinkResourcesListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -2517,6 +3346,9 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ResourceProviderCommonGetSubscriptionQuotaInput {
+  subscriptionId: string;
+}
 export const ResourceProviderCommonGetSubscriptionQuotaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2526,11 +3358,20 @@ export const ResourceProviderCommonGetSubscriptionQuotaInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/usages",
       apiVersion: "2023-06-30",
     }),
-  );
-export type ResourceProviderCommonGetSubscriptionQuotaInput =
-  typeof ResourceProviderCommonGetSubscriptionQuotaInput.Type;
+  ) as unknown as Schema.Codec<ResourceProviderCommonGetSubscriptionQuotaInput>;
 
 // Output Schema
+export interface ResourceProviderCommonGetSubscriptionQuotaOutput {
+  value?: {
+    id?: string;
+    type?: string;
+    unit?: string;
+    currentValue?: number;
+    limit?: number;
+    name?: { value?: string; localizedValue?: string };
+  }[];
+  nextLink?: string;
+}
 export const ResourceProviderCommonGetSubscriptionQuotaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2551,9 +3392,7 @@ export const ResourceProviderCommonGetSubscriptionQuotaOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ResourceProviderCommonGetSubscriptionQuotaOutput =
-  typeof ResourceProviderCommonGetSubscriptionQuotaOutput.Type;
+  }) as unknown as Schema.Codec<ResourceProviderCommonGetSubscriptionQuotaOutput>;
 
 // The operation
 /**

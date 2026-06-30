@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsGenerateLinksCreateInput {
+  id: string;
+  project_id: string;
+}
 export const UserInterviewTopicsGenerateLinksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,20 @@ export const UserInterviewTopicsGenerateLinksCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/user_interview_topics/{id}/generate_links/",
     }),
-  );
-export type UserInterviewTopicsGenerateLinksCreateInput =
-  typeof UserInterviewTopicsGenerateLinksCreateInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsGenerateLinksCreateInput>;
 
 // Output Schema
+export interface UserInterviewTopicsGenerateLinksCreateOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    interviewee_identifier: string;
+    user_name: string;
+    interview_url: string;
+    agent_context: string;
+  }[];
+}
 export const UserInterviewTopicsGenerateLinksCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -30,9 +43,7 @@ export const UserInterviewTopicsGenerateLinksCreateOutput =
         agent_context: Schema.String,
       }),
     ),
-  });
-export type UserInterviewTopicsGenerateLinksCreateOutput =
-  typeof UserInterviewTopicsGenerateLinksCreateOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewTopicsGenerateLinksCreateOutput>;
 
 // The operation
 /**
